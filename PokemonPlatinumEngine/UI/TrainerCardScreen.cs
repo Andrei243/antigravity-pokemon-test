@@ -60,8 +60,8 @@ public class TrainerCardScreen
         RenderHelper.DrawTextWithShadow($"TIME: {mins:D2}:{secs:D2}", infoX, infoY + 144, 26, Palette.TextDark);
 
         // Lucas Character Sprite Preview on card
-        var playerTex = PixelArtGenerator.GetNpcSprite("TRAINER", Data.Direction.Down);
-        Raylib.DrawTextureEx(playerTex, new System.Numerics.Vector2(cx + cardWidth - 240, infoY + 10), 0f, 3.5f, Color.White);
+        var playerTex = PixelArtGenerator.GetNpcSprite("PLAYER", Data.Direction.Down);
+        Raylib.DrawTextureEx(playerTex, new System.Numerics.Vector2(cx + cardWidth - 220, infoY - 10), 0f, 8f, Color.White);
 
         // Sinnoh Badges Section
         int badgeY = cy + 330;

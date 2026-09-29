@@ -13,6 +13,8 @@ public class Map
     public string Name { get; set; } = "Twinleaf Town";
     public string DisplayName { get; set; } = "Twinleaf Town";
     public string BgmTrack { get; set; } = "Twinleaf";
+    public InteriorStyle Interior { get; set; } = InteriorStyle.None;
+    public bool IsIndoors => Interior != InteriorStyle.None;
     public int Width { get; }
     public int Height { get; }
 
@@ -42,6 +44,10 @@ public class Map
     }
 
     public bool InBounds(int x, int y) => x >= 0 && x < Width && y >= 0 && y < Height;
+
+    public TileType GetGroundTile(int x, int y) => groundLayer[y * Width + x];
+
+    public TileType? GetOverheadTile(int x, int y) => overheadLayer[y * Width + x];
 
     public void SetGroundTile(int x, int y, TileType type, bool isSolid = false)
     {
@@ -124,100 +130,74 @@ public class Map
         return null;
     }
 
-    public void DrawGroundAndEntities(int cameraX, int cameraY, Player player)
+    public void DrawGroundAndEntities(Player player)
     {
-        var tileset = PixelArtGenerator.GetTilesetTexture();
-        int tile = Player.TileSize; // 32px
+        MapRenderer.DrawGround(this);
 
-        // Ground layer
-        for (int y = 0; y < Height; y++)
+        // Characters are depth-sorted so whoever stands lower on screen is drawn in front
+        bool playerDrawn = false;
+        foreach (var npc in NPCs.Where(n => !n.IsPCTerminal).OrderBy(n => n.GridY))
         {
-            for (int x = 0; x < Width; x++)
+            if (!playerDrawn && player.PixelY < npc.GridY * Player.TileSize)
             {
-                int px = x * tile - cameraX;
-                int py = y * tile - cameraY;
-
-                TileType t = groundLayer[y * Width + x];
-                Rectangle src = GetTileSourceRect(t);
-                Raylib.DrawTextureRec(tileset, src, new Vector2(px, py), Color.White);
+                DrawPlayer(player);
+                playerDrawn = true;
             }
+            DrawNpc(npc);
         }
-
-        // NPCs
-        foreach (var npc in NPCs.OrderBy(n => n.GridY))
-        {
-            int nx = npc.GridX * tile - cameraX;
-            int ny = npc.GridY * tile - cameraY;
-
-            if (npc.IsStarterBriefcase)
-            {
-                // Draw Starter Briefcase HD
-                Raylib.DrawRectangle(nx + 2, ny + 6, 28, 20, new Color(160, 112, 64, 255));
-                Raylib.DrawRectangle(nx + 6, ny + 2, 20, 4, new Color(112, 72, 40, 255));
-                Raylib.DrawCircle(nx + 16, ny + 16, 5, Color.Gold);
-            }
-            else
-            {
-                var npcTex = PixelArtGenerator.GetNpcSprite(npc.NpcType, npc.Facing);
-                Raylib.DrawTexture(npcTex, nx - 8, ny - 14, Color.White);
-            }
-
-            if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
-            {
-                Raylib.DrawCircle(nx + 16, ny - 24, 12, Color.White);
-                Raylib.DrawCircle(nx + 16, ny - 24, 9, Palette.UiAccent);
-                Raylib.DrawText("!", nx + 13, ny - 30, 16, Color.White);
-            }
-        }
-
-        // Player
-        player.Draw(cameraX, cameraY);
+        if (!playerDrawn) DrawPlayer(player);
     }
 
-    public void DrawOverhead(int cameraX, int cameraY)
+    private void DrawPlayer(Player player)
     {
-        var tileset = PixelArtGenerator.GetTilesetTexture();
-        int tile = Player.TileSize;
+        player.Draw();
 
+        int tx = (int)MathF.Round(player.PixelX / Player.TileSize);
+        int ty = (int)MathF.Round(player.PixelY / Player.TileSize);
+        if (!player.IsHoppingLedge && IsTallGrass(tx, ty))
+        {
+            MapRenderer.DrawTallGrassFront(tx, ty);
+        }
+    }
+
+    private void DrawNpc(NPC npc)
+    {
+        int tile = Player.TileSize;
+        int nx = npc.GridX * tile;
+        int ny = npc.GridY * tile;
+
+        var tex = PixelArtGenerator.GetNpcSprite(npc.NpcType, npc.Facing);
+        var src = new Rectangle(0, 0, tex.Width, tex.Height);
+        var dst = new Rectangle(nx, ny + tile - tex.Height * 2 + 2, tex.Width * 2, tex.Height * 2);
+        Raylib.DrawTexturePro(tex, src, dst, Vector2.Zero, 0f, Color.White);
+
+        if (IsTallGrass(npc.GridX, npc.GridY))
+        {
+            MapRenderer.DrawTallGrassFront(npc.GridX, npc.GridY);
+        }
+
+        if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
+        {
+            int bx = nx + tile / 2, by = ny - 40;
+            Raylib.DrawCircle(bx, by, 13, Palette.UiDarkBorder);
+            Raylib.DrawCircle(bx, by, 11, Color.White);
+            Raylib.DrawRectangle(bx - 2, by - 7, 4, 9, Palette.UiAccent);
+            Raylib.DrawRectangle(bx - 2, by + 4, 4, 4, Palette.UiAccent);
+        }
+    }
+
+    public void DrawOverhead()
+    {
         for (int y = 0; y < Height; y++)
         {
             for (int x = 0; x < Width; x++)
             {
-                int px = x * tile - cameraX;
-                int py = y * tile - cameraY;
-
                 var t = overheadLayer[y * Width + x];
                 if (t.HasValue)
                 {
-                    Rectangle src = GetTileSourceRect(t.Value);
-                    Raylib.DrawTextureRec(tileset, src, new Vector2(px, py), Color.White);
+                    MapRenderer.DrawOverheadTile(t.Value, x, y);
                 }
             }
         }
-    }
-
-    private static Rectangle GetTileSourceRect(TileType t)
-    {
-        int tile = 32;
-        int col = t switch
-        {
-            TileType.Grass => 0,
-            TileType.FlowerGrass => 1,
-            TileType.TallGrass => 2,
-            TileType.Path => 3,
-            TileType.Water => 4,
-            TileType.LedgeDown => 5,
-            TileType.Tree => 6,
-            TileType.TreeTrunk => 7,
-            TileType.RoofRed => 8,
-            TileType.RoofBlue => 9,
-            TileType.Wall => 10,
-            TileType.Door => 11,
-            TileType.Floor => 12,
-            TileType.Signpost => 13,
-            TileType.PC => 14,
-            _ => 0
-        };
-        return new Rectangle(col * tile, 0, tile, tile);
     }
 }

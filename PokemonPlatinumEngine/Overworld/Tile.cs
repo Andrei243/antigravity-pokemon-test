@@ -23,6 +23,16 @@ public enum TileType
     PC
 }
 
+/// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>
+public enum InteriorStyle
+{
+    None,
+    House,
+    PokemonCenter,
+    PokeMart,
+    Lab
+}
+
 public class Warp
 {
     public int SourceX { get; set; }

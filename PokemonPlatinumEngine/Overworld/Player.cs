@@ -220,23 +220,15 @@ public class Player
         }
     }
 
-    public void Draw(int cameraX = 0, int cameraY = 0)
+    public void Draw()
     {
         var sheet = PixelArtGenerator.GetPlayerSpriteSheet();
-        int frameSize = 48;
-        int row = (int)Facing;
-        int col = animFrame;
+        int fw = PixelArtGenerator.CharacterFrameWidth;
+        int fh = PixelArtGenerator.CharacterFrameHeight;
 
-        Rectangle src = new(col * frameSize, row * frameSize, frameSize, frameSize);
-        // Center 48x48 sprite on 32x32 tile (offset -8px X, -14px Y relative to camera)
-        Vector2 pos = new(PixelX - cameraX - 8, PixelY - cameraY - 14);
-
-        Raylib.DrawTextureRec(sheet, src, pos, Color.White);
-
-        // Grass blades overlay when walking in tall grass
-        if (InTallGrass && !IsHoppingLedge)
-        {
-            Raylib.DrawRectangle((int)(PixelX - cameraX), (int)(PixelY - cameraY) + 20, TileSize, 12, new Color(52, 160, 68, 190));
-        }
+        // Sprite art is drawn at 2x; feet sit on the bottom of the current tile
+        Rectangle src = new(animFrame * fw, (int)Facing * fh, fw, fh);
+        Rectangle dst = new(PixelX, PixelY + TileSize - fh * 2 + 2, fw * 2, fh * 2);
+        Raylib.DrawTexturePro(sheet, src, dst, Vector2.Zero, 0f, Color.White);
     }
 }

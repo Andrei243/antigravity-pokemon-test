@@ -570,7 +570,7 @@ public static class MapDatabase
         map.NPCs.Add(new NPC
         {
             Name = "Distortion Rift",
-            NpcType = "Trainer",
+            NpcType = "Rift",
             GridX = 14,
             GridY = 2,
             Facing = Direction.Down,
@@ -590,6 +590,7 @@ public static class MapDatabase
         var map = new Map(w, h)
         {
             Name = "PlayerHouse",
+            Interior = InteriorStyle.House,
             DisplayName = "Lucas's Home",
             BgmTrack = "Twinleaf"
         };
@@ -624,7 +625,7 @@ public static class MapDatabase
         map.NPCs.Add(new NPC
         {
             Name = "Mom",
-            NpcType = "Nurse",
+            NpcType = "Mom",
             GridX = 6,
             GridY = 4,
             Facing = Direction.Left,
@@ -646,6 +647,7 @@ public static class MapDatabase
         var map = new Map(w, h)
         {
             Name = "PokemonCenter",
+            Interior = InteriorStyle.PokemonCenter,
             DisplayName = "Pokémon Center",
             BgmTrack = "Twinleaf"
         };
@@ -701,7 +703,7 @@ public static class MapDatabase
             Name = "PC Terminal",
             NpcType = "Trainer",
             GridX = 9,
-            GridY = 3,
+            GridY = 2,
             Facing = Direction.Up,
             IsPCTerminal = true
         });
@@ -715,6 +717,7 @@ public static class MapDatabase
         var map = new Map(w, h)
         {
             Name = "PokeMart",
+            Interior = InteriorStyle.PokeMart,
             DisplayName = "Poké Mart",
             BgmTrack = "Twinleaf"
         };
@@ -765,6 +768,7 @@ public static class MapDatabase
         var map = new Map(w, h)
         {
             Name = "RowanLab",
+            Interior = InteriorStyle.Lab,
             DisplayName = "Rowan's Pokémon Lab",
             BgmTrack = "Twinleaf"
         };

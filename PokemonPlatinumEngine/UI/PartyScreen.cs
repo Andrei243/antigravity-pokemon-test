@@ -121,7 +121,7 @@ public class PartyScreen
 
             // Icon (1.8x scale)
             var icon = PixelArtGenerator.GetPokemonIcon(pkmn.Species.Name);
-            Raylib.DrawTextureEx(icon, new Vector2(64, sy + 24), 0f, 1.8f, Color.White);
+            Raylib.DrawTextureEx(icon, new Vector2(60, sy + 18), 0f, 2.0f, Color.White);
 
             // Name & Level
             RenderHelper.DrawTextWithShadow(pkmn.DisplayName, 190, sy + 34, 28, isSelected ? Palette.UiAccent : Palette.TextDark);
@@ -156,7 +156,7 @@ public class PartyScreen
 
         // Big HD Sprite Preview (3.2x scale)
         var sprite = PixelArtGenerator.GetPokemonSprite(pkmn.Species.Name, isBack: false);
-        Raylib.DrawTextureEx(sprite, new Vector2(px + 60, py + 60), 0f, 3.2f, Color.White);
+        Raylib.DrawTextureEx(sprite, new Vector2(px + 60, py + 60), 0f, 3.0f, Color.White);
 
         // Basic Info
         int tx = px + 520;

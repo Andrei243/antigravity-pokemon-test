@@ -19,6 +19,34 @@ public enum BattleMenuState
 
 public class BattleHUD
 {
+    // Battlefield layout: where each Pokémon's feet touch its platform (virtual-screen pixels)
+    public static readonly Vector2 EnemyFeet = new(1430, 400);
+    public static readonly Vector2 PlayerFeet = new(470, 800);
+
+    // Sprite scales are multiples of 0.5 so every 64px art pixel lands on a whole number of screen pixels
+    private const float EnemySpriteScale = 3.0f;
+    private const float PlayerSpriteScale = 3.5f;
+    private const float EnemyPlatformScale = 5f;
+    private const float PlayerPlatformScale = 6f;
+
+    // Rough body centres, used as targets for move effects and Poké Ball throws
+    public static Vector2 EnemyCenter => EnemyFeet - new Vector2(0, 24 * EnemySpriteScale * 2);
+    public static Vector2 PlayerCenter => PlayerFeet - new Vector2(0, 24 * PlayerSpriteScale * 2);
+
+    private static void DrawPlatform(Texture2D tex, Vector2 feet, float scale)
+    {
+        float w = tex.Width * scale, h = tex.Height * scale;
+        Raylib.DrawTextureEx(tex, new Vector2(feet.X - w / 2f, feet.Y - h * 0.45f), 0f, scale, Color.White);
+    }
+
+    private static void DrawPokemon(Texture2D tex, Vector2 feet, float scale, float offsetX, Color tint)
+    {
+        // Sprite art has its feet about 3 art pixels above the bottom edge (6 texels at 2x)
+        float w = tex.Width * scale, h = tex.Height * scale;
+        var pos = new Vector2(MathF.Round(feet.X - w / 2f + offsetX), MathF.Round(feet.Y - h + 6 * scale));
+        Raylib.DrawTextureEx(tex, pos, 0f, scale, tint);
+    }
+
     public BattleMenuState MenuState { get; set; } = BattleMenuState.Main;
     public int MainMenuIndex { get; set; } = 0;
     public int MoveMenuIndex { get; set; } = 0;
@@ -41,38 +69,32 @@ public class BattleHUD
         bool enemyDamageFlash,
         Inventory inventory)
     {
-        // 1. Battlefield Sky & Ground Gradient
+        // 1. Pixel-art backdrop (240x135 art scaled 8x to the 1920x1080 virtual screen)
         int panelHeight = 260;
         int panelY = screenHeight - panelHeight;
 
-        Raylib.DrawRectangleGradientV(0, 0, screenWidth, panelY - 180, new Color(168, 212, 248, 255), new Color(224, 240, 255, 255));
-        Raylib.DrawRectangleGradientV(0, panelY - 180, screenWidth, 180, new Color(120, 200, 104, 255), new Color(88, 168, 80, 255));
+        var background = PixelArtGenerator.GetBattleBackground();
+        Raylib.DrawTexturePro(background, new Rectangle(0, 0, background.Width, background.Height),
+            new Rectangle(0, 0, screenWidth, screenHeight), Vector2.Zero, 0f, Color.White);
 
-        // 2. Battle Platforms (Full HD 2.0x / 2.2x scale)
-        var enemyPlatform = PixelArtGenerator.GetBattlePlatformTexture(isPlayer: false);
-        var playerPlatform = PixelArtGenerator.GetBattlePlatformTexture(isPlayer: true);
+        // 2. Platforms centred under each Pokémon's feet
+        DrawPlatform(PixelArtGenerator.GetBattlePlatformTexture(isPlayer: false), EnemyFeet, EnemyPlatformScale);
+        DrawPlatform(PixelArtGenerator.GetBattlePlatformTexture(isPlayer: true), PlayerFeet, PlayerPlatformScale);
 
-        Raylib.DrawTextureEx(enemyPlatform, new Vector2(1150, 270), 0f, 2.0f, Color.White);
-        Raylib.DrawTextureEx(playerPlatform, new Vector2(150, 530), 0f, 2.2f, Color.White);
-
-        // 3. Enemy Pokémon Sprite (2.8x scale)
+        // 3. Enemy Pokémon (front sprite)
         if (!enemyPokemon.IsFainted)
         {
             var enemyTex = PixelArtGenerator.GetPokemonSprite(enemyPokemon.Species.Name, isBack: false);
-            int ex = 1270 + (int)enemySpriteOffset;
-            int ey = 110;
-            Color tint = enemyDamageFlash ? Color.Red : Color.White;
-            Raylib.DrawTextureEx(enemyTex, new Vector2(ex, ey), 0f, 2.8f, tint);
+            Color tint = enemyDamageFlash ? new Color(255, 110, 110, 255) : Color.White;
+            DrawPokemon(enemyTex, EnemyFeet, EnemySpriteScale, enemySpriteOffset, tint);
         }
 
-        // 4. Player Pokémon Back Sprite (3.2x scale)
+        // 4. Player Pokémon (back sprite)
         if (!playerPokemon.IsFainted)
         {
             var playerTex = PixelArtGenerator.GetPokemonSprite(playerPokemon.Species.Name, isBack: true);
-            int px = 280 + (int)playerSpriteOffset;
-            int py = 310;
-            Color tint = playerDamageFlash ? Color.Red : Color.White;
-            Raylib.DrawTextureEx(playerTex, new Vector2(px, py), 0f, 3.2f, tint);
+            Color tint = playerDamageFlash ? new Color(255, 110, 110, 255) : Color.White;
+            DrawPokemon(playerTex, PlayerFeet, PlayerSpriteScale, playerSpriteOffset, tint);
         }
 
         // 5. Enemy HP Box (Top Left: x = 80, y = 60)
@@ -113,9 +135,7 @@ public class BattleHUD
         RenderHelper.DrawPlatinumPanel(x, y, w, h, Palette.UiPanelBg);
 
         RenderHelper.DrawTextWithShadow(pokemon.DisplayName, x + 24, y + 16, 26, Palette.TextDark);
-        string genderStr = pokemon.Gender == Gender.Male ? "♂" : pokemon.Gender == Gender.Female ? "♀" : "";
-        Color genderColor = pokemon.Gender == Gender.Male ? new Color(56, 120, 240, 255) : new Color(240, 88, 136, 255);
-        Raylib.DrawText(genderStr, x + 310, y + 16, 24, genderColor);
+        RenderHelper.DrawGenderSymbol(x + 316, y + 18, 24, pokemon.Gender);
 
         RenderHelper.DrawTextWithShadow($"Lv.{pokemon.Level}", x + 360, y + 16, 24, Palette.TextDark);
         RenderHelper.DrawHPBar(x + 24, y + 58, w - 48, 24, pokemon.CurrentHP, pokemon.MaxHP);
@@ -133,15 +153,13 @@ public class BattleHUD
         RenderHelper.DrawPlatinumPanel(x, y, w, h, Palette.UiPanelBg);
 
         RenderHelper.DrawTextWithShadow(pokemon.DisplayName, x + 24, y + 16, 28, Palette.TextDark);
-        string genderStr = pokemon.Gender == Gender.Male ? "♂" : pokemon.Gender == Gender.Female ? "♀" : "";
-        Color genderColor = pokemon.Gender == Gender.Male ? new Color(56, 120, 240, 255) : new Color(240, 88, 136, 255);
-        Raylib.DrawText(genderStr, x + 360, y + 18, 24, genderColor);
+        RenderHelper.DrawGenderSymbol(x + 366, y + 20, 24, pokemon.Gender);
 
         RenderHelper.DrawTextWithShadow($"Lv.{pokemon.Level}", x + 420, y + 18, 26, Palette.TextDark);
         RenderHelper.DrawHPBar(x + 24, y + 58, w - 48, 24, pokemon.CurrentHP, pokemon.MaxHP);
 
         string hpText = $"{pokemon.CurrentHP}/{pokemon.MaxHP}";
-        int hpTextWidth = Raylib.MeasureText(hpText, 22);
+        int hpTextWidth = RenderHelper.MeasureText(hpText, 22);
         RenderHelper.DrawTextWithShadow(hpText, x + w - hpTextWidth - 28, y + 92, 22, Palette.TextDark);
 
         RenderHelper.DrawStatusBadge(x + 24, y + 92, pokemon.Status);

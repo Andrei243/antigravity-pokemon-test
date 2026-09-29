@@ -498,8 +498,8 @@ public class BattleEngine
         QueueMessage($"{userStr} used {move.Name}!", () =>
         {
             // Trigger Visual FX
-            Vector2 src = isPlayer ? new Vector2(450, 500) : new Vector2(1450, 240);
-            Vector2 dst = isPlayer ? new Vector2(1450, 240) : new Vector2(450, 500);
+            Vector2 src = isPlayer ? BattleHUD.PlayerCenter : BattleHUD.EnemyCenter;
+            Vector2 dst = isPlayer ? BattleHUD.EnemyCenter : BattleHUD.PlayerCenter;
 
             VfxType vfxType = move.Type switch
             {
@@ -627,7 +627,7 @@ public class BattleEngine
             {
                 AudioManager.PlaySound("ball_throw");
                 var catchRes = CatchCalculator.AttemptCatch(EnemyPokemon, item);
-                VFX.TriggerPokeballThrow(new Vector2(350, 520), new Vector2(1450, 240), catchRes.Shakes, 2.2f);
+                VFX.TriggerPokeballThrow(new Vector2(200, 720), BattleHUD.EnemyCenter, catchRes.Shakes, 2.2f);
 
                 messageWaitTimer = 2.4f;
                 turnEventQueue.Enqueue(() =>

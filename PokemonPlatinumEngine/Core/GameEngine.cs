@@ -522,7 +522,7 @@ public class GameEngine
             Target = new Vector2(player.PixelX + Player.TileSize / 2f, player.PixelY + Player.TileSize / 2f),
             Offset = new Vector2(VirtualWidth / 2f, VirtualHeight / 2f),
             Rotation = 0f,
-            Zoom = 2.0f
+            Zoom = currentMap.IsIndoors ? 3.0f : 2.0f
         };
 
         // Clamp camera target to map boundaries
@@ -550,8 +550,8 @@ public class GameEngine
         }
 
         Raylib.BeginMode2D(overworldCam);
-        currentMap.DrawGroundAndEntities(0, 0, player);
-        currentMap.DrawOverhead(0, 0);
+        currentMap.DrawGroundAndEntities(player);
+        currentMap.DrawOverhead();
         Raylib.EndMode2D();
     }
 

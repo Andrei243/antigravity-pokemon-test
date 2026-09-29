@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Data;
@@ -8,72 +10,140 @@ namespace PokemonPlatinumEngine.Graphics;
 
 public static class RenderHelper
 {
+    // Bold UI fonts commonly installed on each platform; Raylib's built-in pixel font is the fallback
+    private static readonly string[] FontCandidates =
+    {
+        "C:/Windows/Fonts/segoeuib.ttf",
+        "C:/Windows/Fonts/arialbd.ttf",
+        "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+        "/Library/Fonts/Arial Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
+    };
+
+    private static Font? uiFont;
+    private static bool usingDefaultFont;
+
+    private static Font UiFont
+    {
+        get
+        {
+            if (uiFont.HasValue) return uiFont.Value;
+
+            string? path = FontCandidates.FirstOrDefault(File.Exists);
+            if (path != null)
+            {
+                // Latin-1 covers accented letters used in the game text (é in Pokémon, ¥)
+                int[] codepoints = Enumerable.Range(32, 224).ToArray();
+                var font = Raylib.LoadFontEx(path, 72, codepoints, codepoints.Length);
+                if (font.Texture.Id != 0)
+                {
+                    Raylib.GenTextureMipmaps(ref font.Texture);
+                    Raylib.SetTextureFilter(font.Texture, TextureFilter.Trilinear);
+                    uiFont = font;
+                    return font;
+                }
+            }
+
+            usingDefaultFont = true;
+            uiFont = Raylib.GetFontDefault();
+            return uiFont.Value;
+        }
+    }
+
+    private static float Spacing(int fontSize) => usingDefaultFont ? fontSize / 10f : 0.5f;
+
+    public static void DrawText(string text, int x, int y, int fontSize, Color color)
+    {
+        var font = UiFont;
+        Raylib.DrawTextEx(font, text, new Vector2(x, y), fontSize, Spacing(fontSize), color);
+    }
+
+    public static int MeasureText(string text, int fontSize)
+    {
+        var font = UiFont;
+        return (int)MathF.Ceiling(Raylib.MeasureTextEx(font, text, fontSize, Spacing(fontSize)).X);
+    }
+
     public static void DrawPlatinumPanel(int x, int y, int width, int height, Color? bgColor = null)
     {
         Color bg = bgColor ?? Palette.UiPanelBg;
-        Color borderDark = Palette.UiDarkBorder;
-        Color borderLight = Palette.UiLightBorder;
-        Color accent = Palette.UiAccent;
+        float radius = Math.Min(14f, Math.Min(width, height) / 2f);
+        Rectangle Rect(float inset) => new(x + inset, y + inset, width - inset * 2, height - inset * 2);
+        float Round(Rectangle r, float rad) => Math.Clamp(rad * 2f / Math.Max(1f, Math.Min(r.Width, r.Height)), 0f, 1f);
 
-        // Outer drop shadow
-        Raylib.DrawRectangle(x + 2, y + 2, width, height, new Color(0, 0, 0, 80));
+        // Drop shadow, dark rim, light inner bevel, then the fill
+        var shadow = new Rectangle(x + 4, y + 5, width, height);
+        Raylib.DrawRectangleRounded(shadow, Round(shadow, radius), 8, new Color(0, 0, 0, 70));
 
-        // Outer border
-        Raylib.DrawRectangle(x, y, width, height, borderDark);
+        var outer = Rect(0);
+        Raylib.DrawRectangleRounded(outer, Round(outer, radius), 8, Palette.UiDarkBorder);
 
-        // Inner frame
-        Raylib.DrawRectangle(x + 2, y + 2, width - 4, height - 4, borderLight);
-        Raylib.DrawRectangle(x + 4, y + 4, width - 8, height - 8, borderDark);
+        var bevel = Rect(3);
+        Raylib.DrawRectangleRounded(bevel, Round(bevel, radius - 3), 8, new Color(250, 252, 255, 255));
 
-        // Fill
-        Raylib.DrawRectangle(x + 5, y + 5, width - 10, height - 10, bg);
+        var fill = Rect(5);
+        Raylib.DrawRectangleRounded(fill, Round(fill, radius - 5), 8, bg);
 
-        // Platinum top-left corner accent
-        Raylib.DrawRectangle(x + 5, y + 5, 8, 2, accent);
-        Raylib.DrawRectangle(x + 5, y + 5, 2, 8, accent);
+        // Soft gloss fading down from the top edge
+        if (fill.Height > 16)
+        {
+            int inset = (int)MathF.Max(4f, radius - 4f);
+            int glossH = (int)Math.Min(fill.Height * 0.5f, 48f);
+            Raylib.DrawRectangleGradientV((int)fill.X + inset, (int)fill.Y + 2, (int)fill.Width - inset * 2, glossH,
+                new Color(255, 255, 255, 90), new Color(255, 255, 255, 0));
+        }
     }
 
     public static void DrawTextWithShadow(string text, int x, int y, int fontSize, Color textColor, Color? shadowColor = null)
     {
         Color shadow = shadowColor ?? Palette.TextShadow;
-        Raylib.DrawText(text, x + 1, y + 1, fontSize, shadow);
-        Raylib.DrawText(text, x, y, fontSize, textColor);
+        int offset = fontSize >= 24 ? 2 : 1;
+        DrawText(text, x + offset, y + offset, fontSize, shadow);
+        DrawText(text, x, y, fontSize, textColor);
     }
 
     public static void DrawHPBar(int x, int y, int width, int height, int currentHP, int maxHP)
     {
         float ratio = maxHP > 0 ? Math.Clamp((float)currentHP / maxHP, 0f, 1f) : 0f;
-        int fillWidth = (int)((width - 4) * ratio);
 
-        // Background / Border
-        Raylib.DrawRectangle(x, y, width, height, Palette.HpBg);
-        Raylib.DrawRectangle(x + 1, y + 1, width - 2, height - 2, new Color(32, 32, 40, 255));
+        var frame = new Rectangle(x, y, width, height);
+        Raylib.DrawRectangleRounded(frame, 1f, 8, new Color(44, 48, 62, 255));
 
-        // HP Label Tag
-        Raylib.DrawRectangle(x + 2, y + 2, 16, height - 4, new Color(248, 208, 48, 255));
-        Raylib.DrawText("HP", x + 3, y + 2, height - 4, new Color(48, 48, 48, 255));
+        // "HP" tag
+        int tagWidth = (int)(height * 1.9f);
+        var tag = new Rectangle(x + 3, y + 3, tagWidth, height - 6);
+        Raylib.DrawRectangleRounded(tag, 1f, 8, new Color(250, 186, 56, 255));
+        int labelSize = height - 4;
+        int labelWidth = MeasureText("HP", labelSize);
+        DrawText("HP", x + 3 + (tagWidth - labelWidth) / 2, y + 1, labelSize, new Color(92, 52, 20, 255));
 
-        // Bar Fill Color
+        // Track and fill
+        int barX = x + tagWidth + 6;
+        int barW = width - tagWidth - 9;
+        var track = new Rectangle(barX, y + 4, barW, height - 8);
+        Raylib.DrawRectangleRounded(track, 1f, 8, new Color(84, 90, 108, 255));
+
         Color barColor = ratio > 0.5f ? Palette.HpGreen : ratio > 0.2f ? Palette.HpYellow : Palette.HpRed;
-        int barStartX = x + 19;
-        int barAvailWidth = width - 21;
-        int barActualWidth = (int)(barAvailWidth * ratio);
-
-        if (barActualWidth > 0)
+        int fillW = (int)(barW * ratio);
+        if (fillW > 0)
         {
-            Raylib.DrawRectangle(barStartX, y + 2, barActualWidth, height - 4, barColor);
-            Raylib.DrawRectangle(barStartX, y + 2, barActualWidth, 1, Color.White); // Highlight
+            var fill = new Rectangle(barX, y + 4, Math.Max(fillW, height - 8), height - 8);
+            Raylib.DrawRectangleRounded(fill, 1f, 8, barColor);
+            var shine = new Rectangle(barX + 3, y + 5, Math.Max(0, fill.Width - 6), Math.Max(2, (height - 8) / 3f));
+            Raylib.DrawRectangleRounded(shine, 1f, 8, new Color(255, 255, 255, 110));
         }
     }
 
     public static void DrawExpBar(int x, int y, int width, int height, float expRatio)
     {
         expRatio = Math.Clamp(expRatio, 0f, 1f);
-        Raylib.DrawRectangle(x, y, width, height, Palette.HpBg);
-        int fillWidth = (int)((width - 2) * expRatio);
+        Raylib.DrawRectangleRounded(new Rectangle(x, y, width, height), 1f, 8, new Color(44, 48, 62, 255));
+        int fillWidth = (int)((width - 4) * expRatio);
         if (fillWidth > 0)
         {
-            Raylib.DrawRectangle(x + 1, y + 1, fillWidth, height - 2, Palette.ExpBlue);
+            Raylib.DrawRectangleRounded(new Rectangle(x + 2, y + 2, Math.Max(fillWidth, height - 4), height - 4), 1f, 8, Palette.ExpBlue);
         }
     }
 
@@ -82,14 +152,17 @@ public static class RenderHelper
         string typeName = type.ToString().ToUpperInvariant();
         Color bg = Palette.GetTypeColor(typeName);
 
-        Raylib.DrawRectangle(x, y, width, height, new Color(32, 32, 40, 255));
-        Raylib.DrawRectangle(x + 1, y + 1, width - 2, height - 2, bg);
-        Raylib.DrawRectangle(x + 1, y + 1, width - 2, 2, new Color(255, 255, 255, 100));
+        var rect = new Rectangle(x, y, width, height);
+        Raylib.DrawRectangleRounded(rect, 0.6f, 8, PixelCanvas.Shadow(bg, 0.45f));
+        var inner = new Rectangle(x + 2, y + 2, width - 4, height - 4);
+        Raylib.DrawRectangleRounded(inner, 0.6f, 8, bg);
+        Raylib.DrawRectangleRounded(new Rectangle(x + 4, y + 3, width - 8, (height - 6) / 2f), 0.6f, 8, new Color(255, 255, 255, 60));
 
-        int textWidth = Raylib.MeasureText(typeName, 10);
+        int fontSize = Math.Max(10, (int)(height * 0.62f));
+        int textWidth = MeasureText(typeName, fontSize);
         int tx = x + (width - textWidth) / 2;
-        int ty = y + (height - 10) / 2;
-        DrawTextWithShadow(typeName, tx, ty, 10, Color.White, new Color(0, 0, 0, 150));
+        int ty = y + (height - fontSize) / 2;
+        DrawTextWithShadow(typeName, tx, ty, fontSize, Color.White, new Color(0, 0, 0, 120));
     }
 
     public static void DrawStatusBadge(int x, int y, StatusCondition status)
@@ -118,62 +191,92 @@ public static class RenderHelper
             _ => Color.Gray
         };
 
-        int w = 32;
-        int h = 14;
-        Raylib.DrawRectangle(x, y, w, h, bg);
-        Raylib.DrawText(code, x + 4, y + 2, 10, Color.White);
+        int w = 52;
+        int h = 24;
+        Raylib.DrawRectangleRounded(new Rectangle(x, y, w, h), 0.5f, 8, PixelCanvas.Shadow(bg, 0.4f));
+        Raylib.DrawRectangleRounded(new Rectangle(x + 2, y + 2, w - 4, h - 4), 0.5f, 8, bg);
+        int tw = MeasureText(code, 16);
+        DrawText(code, x + (w - tw) / 2, y + 4, 16, Color.White);
+    }
+
+    /// <summary>Draws ♂ / ♀ as shapes (the UI font may not include those glyphs).</summary>
+    public static void DrawGenderSymbol(int x, int y, int size, Gender gender)
+    {
+        if (gender != Gender.Male && gender != Gender.Female) return;
+
+        bool male = gender == Gender.Male;
+        Color color = male ? new Color(56, 120, 240, 255) : new Color(240, 88, 136, 255);
+        float thickness = Math.Max(2f, size / 8f);
+        float r = size * 0.28f;
+
+        if (male)
+        {
+            var center = new Vector2(x + r + thickness, y + size - r - thickness);
+            Raylib.DrawRing(center, r - thickness / 2f, r + thickness / 2f, 0, 360, 24, color);
+            var tip = new Vector2(x + size - thickness, y + thickness);
+            var start = center + Vector2.Normalize(tip - center) * r;
+            Raylib.DrawLineEx(start, tip, thickness, color);
+            Raylib.DrawLineEx(tip, tip + new Vector2(-size * 0.32f, 0), thickness, color);
+            Raylib.DrawLineEx(tip, tip + new Vector2(0, size * 0.32f), thickness, color);
+        }
+        else
+        {
+            var center = new Vector2(x + size / 2f, y + r + thickness);
+            Raylib.DrawRing(center, r - thickness / 2f, r + thickness / 2f, 0, 360, 24, color);
+            var bottom = new Vector2(center.X, y + size);
+            Raylib.DrawLineEx(center + new Vector2(0, r), bottom, thickness, color);
+            float barY = center.Y + r + (bottom.Y - center.Y - r) * 0.45f;
+            Raylib.DrawLineEx(new Vector2(center.X - size * 0.2f, barY), new Vector2(center.X + size * 0.2f, barY), thickness, color);
+        }
     }
 
     public static void DrawPartyBallStatus(int x, int y, Party party)
     {
         for (int i = 0; i < 6; i++)
         {
-            int bx = x + i * 14;
+            int bx = x + i * 22;
             if (i < party.Count)
             {
                 var pkmn = party.Members[i];
-                Color c = pkmn.IsFainted ? Color.DarkGray : (pkmn.Status != StatusCondition.None ? Color.Orange : Color.Red);
-                Raylib.DrawCircle(bx + 5, y + 5, 5, Color.Black);
-                Raylib.DrawCircle(bx + 5, y + 5, 4, c);
-                Raylib.DrawCircle(bx + 5, y + 5, 2, Color.White);
+                Color c = pkmn.IsFainted ? Color.DarkGray : (pkmn.Status != StatusCondition.None ? Color.Orange : new Color(228, 56, 56, 255));
+                Raylib.DrawCircle(bx + 8, y + 8, 8, Palette.UiDarkBorder);
+                Raylib.DrawCircleSector(new Vector2(bx + 8, y + 8), 6.5f, 180, 360, 12, c);
+                Raylib.DrawCircleSector(new Vector2(bx + 8, y + 8), 6.5f, 0, 180, 12, Color.White);
+                Raylib.DrawRectangle(bx + 1, y + 7, 14, 2, Palette.UiDarkBorder);
+                Raylib.DrawCircle(bx + 8, y + 8, 2.5f, Color.White);
             }
             else
             {
-                // Empty slot outline
-                Raylib.DrawCircleLines(bx + 5, y + 5, 4, Color.Gray);
+                Raylib.DrawCircleLines(bx + 8, y + 8, 7, Color.Gray);
             }
         }
     }
-
-    public static int MeasureText(string text, int fontSize) => Raylib.MeasureText(text, fontSize);
 
     public static void DrawWrappedText(string text, int x, int y, int maxWidth, int fontSize, Color textColor, int lineSpacing = 6)
     {
         if (string.IsNullOrEmpty(text)) return;
-        string[] words = text.Split(' ');
-        string currentLine = "";
         int currentY = y;
 
-        foreach (var word in words)
+        foreach (var paragraph in text.Split('\n'))
         {
-            string testLine = string.IsNullOrEmpty(currentLine) ? word : $"{currentLine} {word}";
-            int testWidth = Raylib.MeasureText(testLine, fontSize);
-            if (testWidth > maxWidth && !string.IsNullOrEmpty(currentLine))
+            string currentLine = "";
+            foreach (var word in paragraph.Split(' '))
             {
-                DrawTextWithShadow(currentLine, x, currentY, fontSize, textColor);
-                currentY += fontSize + lineSpacing;
-                currentLine = word;
+                string testLine = string.IsNullOrEmpty(currentLine) ? word : $"{currentLine} {word}";
+                if (MeasureText(testLine, fontSize) > maxWidth && !string.IsNullOrEmpty(currentLine))
+                {
+                    DrawTextWithShadow(currentLine, x, currentY, fontSize, textColor);
+                    currentY += fontSize + lineSpacing;
+                    currentLine = word;
+                }
+                else
+                {
+                    currentLine = testLine;
+                }
             }
-            else
-            {
-                currentLine = testLine;
-            }
-        }
 
-        if (!string.IsNullOrEmpty(currentLine))
-        {
             DrawTextWithShadow(currentLine, x, currentY, fontSize, textColor);
+            currentY += fontSize + lineSpacing;
         }
     }
 }
-

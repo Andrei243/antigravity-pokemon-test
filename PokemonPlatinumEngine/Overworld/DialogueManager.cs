@@ -94,17 +94,17 @@ public class DialogueManager
         // Speaker name tag
         if (!string.IsNullOrEmpty(currentSpeaker))
         {
-            int tagWidth = Math.Max(180, Raylib.MeasureText(currentSpeaker, 24) + 40);
+            int tagWidth = Math.Max(180, RenderHelper.MeasureText(currentSpeaker, 26) + 44);
             int tagHeight = 44;
             int tagX = boxX + 28;
             int tagY = boxY - 32;
             RenderHelper.DrawPlatinumPanel(tagX, tagY, tagWidth, tagHeight, Palette.UiBackground);
-            RenderHelper.DrawTextWithShadow(currentSpeaker, tagX + 18, tagY + 8, 24, Palette.UiAccent);
+            RenderHelper.DrawTextWithShadow(currentSpeaker, tagX + 20, tagY + 8, 26, Palette.UiAccent);
         }
 
         // Revealed text (Crisp Full HD font)
         string visibleText = currentLine[..charIndex];
-        RenderHelper.DrawTextWithShadow(visibleText, boxX + 36, boxY + 36, 28, Palette.TextDark, Palette.TextShadow);
+        RenderHelper.DrawWrappedText(visibleText, boxX + 40, boxY + 36, boxWidth - 120, 32, Palette.TextDark, 14);
 
         // Blinking advance triangle
         if (IsCurrentLineComplete)

@@ -103,7 +103,7 @@ public class StarterSelectScreen
             // Sprite preview
             var sprite = PixelArtGenerator.GetPokemonSprite(sp.Name, isBack: false);
             float bob = isSelected ? MathF.Sin((float)Raylib.GetTime() * 6f) * 10f : 0f;
-            float spriteScale = 2.6f;
+            float spriteScale = 2.5f;
             float px = sx + (slotWidth - sprite.Width * spriteScale) / 2f;
             float py = startY + 36 + bob;
             Raylib.DrawTextureEx(sprite, new Vector2(px, py), 0f, spriteScale, Color.White);
