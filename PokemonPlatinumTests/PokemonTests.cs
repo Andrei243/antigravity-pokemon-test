@@ -146,15 +146,7 @@ public class PokemonTests
     }
 
     [Theory]
-    [InlineData("TwinleafTown")]
-    [InlineData("Route201")]
-    [InlineData("LakeVerity")]
-    [InlineData("SandgemTown")]
-    [InlineData("Route202")]
-    [InlineData("PlayerHouse")]
-    [InlineData("PokemonCenter")]
-    [InlineData("PokeMart")]
-    [InlineData("RowanLab")]
+    [MemberData(nameof(AllMaps))]
     public void TestEveryWarpIsReachableFromEveryArrivalPoint(string mapName)
     {
         MapDatabase.Initialize();
@@ -163,7 +155,7 @@ public class PokemonTests
         Assert.NotEmpty(map.Warps);
 
         // Every tile another map warps the player onto in this map
-        var arrivals = new[] { "TwinleafTown", "Route201", "LakeVerity", "SandgemTown", "Route202", "PlayerHouse", "PokemonCenter", "PokeMart", "RowanLab" }
+        var arrivals = MapDatabase.MapNames
             .SelectMany(n => MapDatabase.Get(n).Warps)
             .Where(w => w.TargetMap == mapName)
             .Select(w => (w.TargetX, w.TargetY))
@@ -197,6 +189,88 @@ public class PokemonTests
                 Assert.True(reached.Contains((warp.SourceX, warp.SourceY)),
                     $"{mapName}: warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) is unreachable from arrival ({startX},{startY})");
             }
+        }
+    }
+
+    public static IEnumerable<object[]> AllMaps => MapDatabase.MapNames.Select(n => new object[] { n }).ToList();
+
+    [Fact]
+    public void TestEveryDoorOnAHouseLeadsInside()
+    {
+        MapDatabase.Initialize();
+        foreach (var name in MapDatabase.MapNames)
+        {
+            var map = MapDatabase.Get(name);
+            foreach (var building in MapStructures.FindBuildings(map))
+            {
+                foreach (var (x, target) in building.Doors)
+                {
+                    Assert.False(target == null, $"{name}: the door at ({x},{building.Y1}) doesn't lead anywhere");
+                    Assert.Contains(target, MapDatabase.MapNames);
+                }
+            }
+        }
+    }
+
+    [Fact]
+    public void TestFurnitureBlocksMovementButRugsDoNot()
+    {
+        MapDatabase.Initialize();
+        var home = MapDatabase.Get("PlayerHouse");
+
+        Assert.False(home.IsWalkable(4, 4), "the dining table should be solid");
+        Assert.False(home.IsWalkable(8, 3), "the stairs should be solid");
+        Assert.True(home.IsWalkable(4, 6), "the rug by the door should be walkable");
+        Assert.True(home.IsWalkable(4, 5), "the white-out spot must stay free");
+
+        // Nurse Joy stands behind the counter and is talked to across it
+        var center = MapDatabase.Get("PokemonCenter");
+        Assert.True(center.IsCounter(5, 3));
+        Assert.False(center.IsWalkable(5, 3));
+        Assert.NotNull(center.GetNpcAt(5, 2));
+    }
+
+    [Fact]
+    public void TestRunningFromAWildBattleEndsItRightAway()
+    {
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
+        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Starly")!, 3), new Inventory(), new Pokedex());
+        SkipMessages(battle);
+        Assert.Equal(BattleMenuState.Main, battle.HUD.MenuState);
+
+        battle.SelectMainMenuOption(3);
+
+        Assert.Equal(BattleMenuState.Message, battle.HUD.MenuState);
+        Assert.Equal("Got away safely!", battle.CurrentMessage);
+        battle.ConfirmMessage();
+        Assert.Equal(BattleResult.PlayerRan, battle.Result);
+        Assert.True(battle.IsBattleOver);
+    }
+
+    [Fact]
+    public void TestRunningFromATrainerIsRefusedRightAway()
+    {
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
+        var trainer = new Trainer { Name = "Tristan", TrainerClass = "Youngster" };
+        trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 4));
+        var battle = new BattleEngine(party, trainer.Party.Members[0], new Inventory(), new Pokedex(), trainer);
+        SkipMessages(battle);
+
+        battle.SelectMainMenuOption(3);
+
+        Assert.Equal("No! There's no running from a Trainer battle!", battle.CurrentMessage);
+        battle.ConfirmMessage();
+        Assert.Equal(BattleMenuState.Main, battle.HUD.MenuState);
+        Assert.False(battle.IsBattleOver);
+    }
+
+    private static void SkipMessages(BattleEngine battle)
+    {
+        for (int i = 0; i < 10 && battle.HUD.MenuState == BattleMenuState.Message; i++)
+        {
+            battle.ConfirmMessage();
         }
     }
 }

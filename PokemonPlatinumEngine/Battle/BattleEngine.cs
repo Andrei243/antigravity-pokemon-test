@@ -115,19 +115,7 @@ public class BattleEngine
         {
             if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Cancel) || Raylib.IsKeyPressed(KeyboardKey.Enter))
             {
-                waitingForMessageConfirm = false;
-                var cb = currentMessageCallback;
-                currentMessageCallback = null;
-                cb?.Invoke();
-
-                if (turnEventQueue.Count > 0)
-                {
-                    AdvanceEventQueue();
-                }
-                else if (Result == BattleResult.None)
-                {
-                    HUD.MenuState = BattleMenuState.Main;
-                }
+                ConfirmMessage();
             }
             return;
         }
@@ -177,24 +165,7 @@ public class BattleEngine
                 if (InputManager.IsActionPressed(GameAction.Confirm))
                 {
                     AudioManager.PlaySound("select");
-                    switch (HUD.MainMenuIndex)
-                    {
-                        case 0: // FIGHT
-                            HUD.MenuState = BattleMenuState.Moves;
-                            HUD.MoveMenuIndex = 0;
-                            break;
-                        case 1: // BAG
-                            HUD.MenuState = BattleMenuState.SelectBagItem;
-                            HUD.BagMenuIndex = 0;
-                            break;
-                        case 2: // POKEMON
-                            HUD.MenuState = BattleMenuState.SwitchPokemon;
-                            HUD.SwitchMenuIndex = 0;
-                            break;
-                        case 3: // RUN
-                            AttemptRun();
-                            break;
-                    }
+                    SelectMainMenuOption(HUD.MainMenuIndex);
                 }
                 break;
 
@@ -356,6 +327,52 @@ public class BattleEngine
         }
     }
 
+    /// <summary>The message currently on screen.</summary>
+    public string CurrentMessage => currentMessage;
+
+    /// <summary>Acts on a choice from the main battle menu: 0 FIGHT, 1 BAG, 2 POKÉMON, 3 RUN.</summary>
+    public void SelectMainMenuOption(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                HUD.MenuState = BattleMenuState.Moves;
+                HUD.MoveMenuIndex = 0;
+                break;
+            case 1:
+                HUD.MenuState = BattleMenuState.SelectBagItem;
+                HUD.BagMenuIndex = 0;
+                break;
+            case 2:
+                HUD.MenuState = BattleMenuState.SwitchPokemon;
+                HUD.SwitchMenuIndex = 0;
+                break;
+            case 3:
+                AttemptRun();
+                break;
+        }
+    }
+
+    /// <summary>Dismisses the message on screen and carries on with whatever it was waiting to trigger.</summary>
+    public void ConfirmMessage()
+    {
+        if (!waitingForMessageConfirm) return;
+
+        waitingForMessageConfirm = false;
+        var cb = currentMessageCallback;
+        currentMessageCallback = null;
+        cb?.Invoke();
+
+        if (turnEventQueue.Count > 0)
+        {
+            AdvanceEventQueue();
+        }
+        else if (Result == BattleResult.None)
+        {
+            HUD.MenuState = BattleMenuState.Main;
+        }
+    }
+
     private void AttemptRun()
     {
         if (IsTrainerBattle)
@@ -364,14 +381,17 @@ public class BattleEngine
             {
                 HUD.MenuState = BattleMenuState.Main;
             });
-            return;
+        }
+        else
+        {
+            QueueMessage("Got away safely!", () =>
+            {
+                Result = BattleResult.PlayerRan;
+            });
         }
 
-        AudioManager.PlaySound("select");
-        QueueMessage("Got away safely!", () =>
-        {
-            Result = BattleResult.PlayerRan;
-        });
+        // Show the message right away; queued messages otherwise wait for the next turn
+        AdvanceEventQueue();
     }
 
     private void ExecuteTurn(BattleAction playerAction)

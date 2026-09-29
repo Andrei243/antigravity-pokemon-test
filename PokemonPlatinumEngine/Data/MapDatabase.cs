@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Data;
 
-public static class MapDatabase
+public static partial class MapDatabase
 {
     private static readonly Dictionary<string, Map> Maps = new(System.StringComparer.OrdinalIgnoreCase);
 
@@ -18,6 +18,7 @@ public static class MapDatabase
         Maps["SandgemTown"] = BuildSandgemTown();
         Maps["Route202"] = BuildRoute202();
         Maps["PlayerHouse"] = BuildPlayerHouse();
+        Maps["RivalHouse"] = BuildRivalHouse();
         Maps["PokemonCenter"] = BuildPokemonCenter();
         Maps["PokeMart"] = BuildPokeMart();
         Maps["RowanLab"] = BuildRowanLab();
@@ -28,6 +29,15 @@ public static class MapDatabase
         if (Maps.Count == 0) Initialize();
         if (Maps.TryGetValue(name, out var map)) return map;
         return Maps["TwinleafTown"];
+    }
+
+    public static IReadOnlyCollection<string> MapNames
+    {
+        get
+        {
+            if (Maps.Count == 0) Initialize();
+            return Maps.Keys;
+        }
     }
 
     private static Map BuildTwinleafTown()
@@ -113,8 +123,9 @@ public static class MapDatabase
         map.Signboards[(5, 7)] = "Lucas's House";
 
         // Warps
-        // House door
+        // House doors
         map.Warps.Add(new Warp { SourceX = 6, SourceY = 7, TargetMap = "PlayerHouse", TargetX = 4, TargetY = 6, TargetFacing = Direction.Up });
+        map.Warps.Add(new Warp { SourceX = 17, SourceY = 7, TargetMap = "RivalHouse", TargetX = 5, TargetY = 7, TargetFacing = Direction.Up });
 
         // North exit to Route 201 (Walkable at y = 0)
         map.Warps.Add(new Warp { SourceX = 11, SourceY = 0, TargetMap = "Route201", TargetX = 14, TargetY = 20, TargetFacing = Direction.Up });
@@ -580,236 +591,6 @@ public static class MapDatabase
             {
                 "A shadowy spatial rift trembles before you...",
                 "You feel the chilling gaze of the Renegade Pokémon, GIRATINA, observing you from the Distortion World!"
-            }
-        });
-
-        return map;
-    }
-
-    private static Map BuildPlayerHouse()
-    {
-        int w = 10, h = 9;
-        var map = new Map(w, h)
-        {
-            Name = "PlayerHouse",
-            Interior = InteriorStyle.House,
-            DisplayName = "Lucas's Home",
-            BgmTrack = "Twinleaf"
-        };
-
-        for (int x = 0; x < w; x++)
-        {
-            map.SetGroundTile(x, 0, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, 1, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, h - 1, TileType.Wall, isSolid: true);
-        }
-        for (int y = 0; y < h; y++)
-        {
-            map.SetGroundTile(0, y, TileType.Wall, isSolid: true);
-            map.SetGroundTile(w - 1, y, TileType.Wall, isSolid: true);
-        }
-
-        for (int x = 1; x < w - 1; x++)
-        {
-            for (int y = 2; y < h - 1; y++) map.SetGroundTile(x, y, TileType.Floor);
-        }
-
-        map.SetGroundTile(2, 2, TileType.PC, isSolid: true);
-        map.SetGroundTile(4, 4, TileType.Wall, isSolid: true);
-        map.SetGroundTile(5, 4, TileType.Wall, isSolid: true);
-
-        // Exit door (must be walkable, it sits in the solid bottom wall)
-        map.SetGroundTile(4, 7, TileType.Floor);
-        map.SetGroundTile(4, 8, TileType.Door, isSolid: false);
-        map.Warps.Add(new Warp { SourceX = 4, SourceY = 8, TargetMap = "TwinleafTown", TargetX = 6, TargetY = 8, TargetFacing = Direction.Down });
-
-        // Mom NPC
-        map.NPCs.Add(new NPC
-        {
-            Name = "Mom",
-            NpcType = "Mom",
-            GridX = 6,
-            GridY = 4,
-            Facing = Direction.Left,
-            IsHealingNurse = true,
-            DialogLines = new()
-            {
-                "Mom: Welcome home, honey! You and your Pokémon look like you need a rest.",
-                "Mom: ...There! All your Pokémon are fully healed and ready for adventure!",
-                "Mom: Don't forget your Running Shoes! Hold B, X or Shift to run anywhere!"
-            }
-        });
-
-        return map;
-    }
-
-    private static Map BuildPokemonCenter()
-    {
-        int w = 11, h = 9;
-        var map = new Map(w, h)
-        {
-            Name = "PokemonCenter",
-            Interior = InteriorStyle.PokemonCenter,
-            DisplayName = "Pokémon Center",
-            BgmTrack = "Twinleaf"
-        };
-
-        for (int x = 0; x < w; x++)
-        {
-            map.SetGroundTile(x, 0, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, 1, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, h - 1, TileType.Wall, isSolid: true);
-        }
-        for (int y = 0; y < h; y++)
-        {
-            map.SetGroundTile(0, y, TileType.Wall, isSolid: true);
-            map.SetGroundTile(w - 1, y, TileType.Wall, isSolid: true);
-        }
-
-        for (int x = 1; x < w - 1; x++)
-        {
-            for (int y = 2; y < h - 1; y++) map.SetGroundTile(x, y, TileType.Floor);
-        }
-
-        // Nurse Counter
-        for (int x = 3; x <= 7; x++) map.SetGroundTile(x, 3, TileType.Wall, isSolid: true);
-
-        // PC Terminal on right
-        map.SetGroundTile(9, 2, TileType.PC, isSolid: true);
-
-        // Warp Door
-        map.SetGroundTile(5, 8, TileType.Door, isSolid: false);
-        map.Warps.Add(new Warp { SourceX = 5, SourceY = 8, TargetMap = "SandgemTown", TargetX = 6, TargetY = 7, TargetFacing = Direction.Down });
-
-        // Nurse Joy
-        map.NPCs.Add(new NPC
-        {
-            Name = "Nurse Joy",
-            NpcType = "Nurse",
-            GridX = 5,
-            GridY = 2,
-            Facing = Direction.Down,
-            IsHealingNurse = true,
-            DialogLines = new()
-            {
-                "Nurse Joy: Hello, and welcome to the Pokémon Center!",
-                "Nurse Joy: We restore your tired Pokémon to full health!",
-                "Nurse Joy: ...Thank you for waiting. Your Pokémon are fully healed!",
-                "Nurse Joy: We hope to see you again!"
-            }
-        });
-
-        // PC Terminal NPC
-        map.NPCs.Add(new NPC
-        {
-            Name = "PC Terminal",
-            NpcType = "Trainer",
-            GridX = 9,
-            GridY = 2,
-            Facing = Direction.Up,
-            IsPCTerminal = true
-        });
-
-        return map;
-    }
-
-    private static Map BuildPokeMart()
-    {
-        int w = 9, h = 8;
-        var map = new Map(w, h)
-        {
-            Name = "PokeMart",
-            Interior = InteriorStyle.PokeMart,
-            DisplayName = "Poké Mart",
-            BgmTrack = "Twinleaf"
-        };
-
-        for (int x = 0; x < w; x++)
-        {
-            map.SetGroundTile(x, 0, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, 1, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, h - 1, TileType.Wall, isSolid: true);
-        }
-        for (int y = 0; y < h; y++)
-        {
-            map.SetGroundTile(0, y, TileType.Wall, isSolid: true);
-            map.SetGroundTile(w - 1, y, TileType.Wall, isSolid: true);
-        }
-
-        for (int x = 1; x < w - 1; x++)
-        {
-            for (int y = 2; y < h - 1; y++) map.SetGroundTile(x, y, TileType.Floor);
-        }
-
-        for (int y = 2; y <= 5; y++) map.SetGroundTile(2, y, TileType.Wall, isSolid: true);
-
-        // Warp Door
-        map.SetGroundTile(4, 7, TileType.Door, isSolid: false);
-        map.Warps.Add(new Warp { SourceX = 4, SourceY = 7, TargetMap = "SandgemTown", TargetX = 22, TargetY = 7, TargetFacing = Direction.Down });
-
-        map.NPCs.Add(new NPC
-        {
-            Name = "Clerk",
-            NpcType = "Clerk",
-            GridX = 1,
-            GridY = 3,
-            Facing = Direction.Right,
-            IsPokeMartClerk = true,
-            DialogLines = new()
-            {
-                "Clerk: Welcome to the Sandgem Poké Mart! How may I serve you today?"
-            }
-        });
-
-        return map;
-    }
-
-    private static Map BuildRowanLab()
-    {
-        int w = 11, h = 10;
-        var map = new Map(w, h)
-        {
-            Name = "RowanLab",
-            Interior = InteriorStyle.Lab,
-            DisplayName = "Rowan's Pokémon Lab",
-            BgmTrack = "Twinleaf"
-        };
-
-        for (int x = 0; x < w; x++)
-        {
-            map.SetGroundTile(x, 0, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, 1, TileType.Wall, isSolid: true);
-            map.SetGroundTile(x, h - 1, TileType.Wall, isSolid: true);
-        }
-        for (int y = 0; y < h; y++)
-        {
-            map.SetGroundTile(0, y, TileType.Wall, isSolid: true);
-            map.SetGroundTile(w - 1, y, TileType.Wall, isSolid: true);
-        }
-
-        for (int x = 1; x < w - 1; x++)
-        {
-            for (int y = 2; y < h - 1; y++) map.SetGroundTile(x, y, TileType.Floor);
-        }
-
-        for (int x = 3; x <= 7; x++) map.SetGroundTile(x, 3, TileType.Wall, isSolid: true);
-
-        // Warp Door
-        map.SetGroundTile(5, 9, TileType.Door, isSolid: false);
-        map.Warps.Add(new Warp { SourceX = 5, SourceY = 9, TargetMap = "SandgemTown", TargetX = 7, TargetY = 18, TargetFacing = Direction.Down });
-
-        map.NPCs.Add(new NPC
-        {
-            Name = "Prof. Rowan",
-            NpcType = "Rowan",
-            GridX = 5,
-            GridY = 2,
-            Facing = Direction.Down,
-            DialogLines = new()
-            {
-                "Prof. Rowan: Ah, Lucas! Welcome to my research facility.",
-                "Prof. Rowan: The bond between trainers and Pokémon is truly limitless.",
-                "Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!"
             }
         });
 

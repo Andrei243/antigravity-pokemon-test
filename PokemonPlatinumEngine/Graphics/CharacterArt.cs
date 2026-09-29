@@ -67,6 +67,12 @@ internal static class CharacterArt
             Top = new(246, 166, 120, 255), Accent = new(252, 244, 232, 255),
             Bottom = new(120, 96, 176, 255), Skirt = true, Shoes = new(120, 70, 60, 255)
         },
+        "LADY" => new Style
+        {
+            HairColor = new(244, 206, 104, 255), HairStyle = Hair.Long,
+            Top = new(118, 186, 132, 255), Accent = new(252, 248, 236, 255),
+            Bottom = new(96, 140, 110, 255), Skirt = true, Shoes = new(110, 76, 60, 255)
+        },
         "CLERK" => new Style
         {
             HairColor = new(96, 64, 48, 255),

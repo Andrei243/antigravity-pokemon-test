@@ -21,6 +21,7 @@ public class Map
     private readonly bool[] solidGrid;
 
     public List<NPC> NPCs { get; } = new();
+    public List<Prop> Props { get; } = new();
     public List<Warp> Warps { get; } = new();
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public Dictionary<(int X, int Y), string> Signboards { get; } = new();
@@ -58,6 +59,22 @@ public class Map
         if (!InBounds(x, y)) return;
         overheadLayer[y * Width + x] = type;
     }
+
+    /// <summary>Places furniture or decoration; furniture makes the tiles it covers solid.</summary>
+    public Prop AddProp(PropType type, int x, int y, int width = 1, int depth = 1)
+    {
+        var prop = new Prop { Type = type, X = x, Y = y, Width = width, Depth = depth };
+        Props.Add(prop);
+        if (prop.IsSolid)
+        {
+            for (int ty = y; ty < y + depth; ty++)
+                for (int tx = x; tx < x + width; tx++)
+                    SetSolid(tx, ty, true);
+        }
+        return prop;
+    }
+
+    public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y));
 
     public void SetSolid(int x, int y, bool isSolid)
     {

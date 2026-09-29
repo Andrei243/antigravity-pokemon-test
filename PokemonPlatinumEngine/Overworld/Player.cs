@@ -31,6 +31,10 @@ public class Player
     private float animTimer = 0f;
     private int animFrame = 0;
 
+    // Walking into something plays one thud per step-length, not one per frame
+    private const float BumpInterval = 0.4f;
+    private float bumpCooldown = 0f;
+
     // Grass stepping effects
     public bool InTallGrass { get; private set; }
     public float GrassRustleTimer { get; private set; }
@@ -57,6 +61,8 @@ public class Player
 
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger)
     {
+        if (bumpCooldown > 0f) bumpCooldown -= dt;
+
         if (IsMoving)
         {
             float speed = IsRunning ? 8.0f : 4.5f;
@@ -151,11 +157,23 @@ public class Player
                 else
                 {
                     TryStep(desiredDir, map);
+
+                    if (!IsMoving)
+                    {
+                        // Blocked: walk in place against the obstacle, a little slower than walking
+                        animTimer += dt * 6f;
+                        if (animTimer >= 1f)
+                        {
+                            animTimer = 0f;
+                            animFrame = (animFrame + 1) % 4;
+                        }
+                    }
                 }
             }
             else
             {
                 animFrame = 0;
+                bumpCooldown = 0f;
             }
         }
 
@@ -188,7 +206,7 @@ public class Player
             {
                 return;
             }
-            AudioManager.PlaySound("bump");
+            Bump();
             return;
         }
 
@@ -218,7 +236,14 @@ public class Player
         }
         else
         {
-            AudioManager.PlaySound("bump");
+            Bump();
         }
+    }
+
+    private void Bump()
+    {
+        if (bumpCooldown > 0f) return;
+        AudioManager.PlaySound("bump");
+        bumpCooldown = BumpInterval;
     }
 }

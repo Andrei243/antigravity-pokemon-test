@@ -340,8 +340,12 @@ public class GameEngine
         int targetX = player.GridX + dx;
         int targetY = player.GridY + dy;
 
-        // Check NPC interaction
+        // Check NPC interaction; reception and shop counters can be talked across
         var npc = currentMap.GetNpcAt(targetX, targetY);
+        if (npc == null && currentMap.IsCounter(targetX, targetY))
+        {
+            npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);
+        }
         if (npc != null)
         {
             // Face player

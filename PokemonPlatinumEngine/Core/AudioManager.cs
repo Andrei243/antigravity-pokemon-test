@@ -70,7 +70,7 @@ public static class AudioManager
         RegisterSynthSound("select", 880f, 0.08f, WaveType.Square);
         RegisterSynthSound("cursor", 440f, 0.04f, WaveType.Square);
         RegisterSynthSound("cancel", 220f, 0.10f, WaveType.Triangle);
-        RegisterSynthSound("bump", 110f, 0.08f, WaveType.Noise);
+        RegisterSamples("bump", SynthesizeBump());
         RegisterSynthSound("grass", 600f, 0.06f, WaveType.Noise);
         RegisterSynthSound("hit_normal", 240f, 0.12f, WaveType.Noise);
         RegisterSynthSound("hit_super", 380f, 0.20f, WaveType.Square);
@@ -83,55 +83,95 @@ public static class AudioManager
 
     private enum WaveType { Sine, Square, Triangle, Sawtooth, Noise }
 
-    private static unsafe void RegisterSynthSound(string name, float baseFreq, float durationSec, WaveType type)
+    private const uint SampleRate = 22050;
+
+    private static void RegisterSynthSound(string name, float baseFreq, float durationSec, WaveType type)
+    {
+        int totalSamples = (int)(SampleRate * durationSec);
+        var samples = new float[totalSamples];
+        Random rng = new(42);
+
+        for (int i = 0; i < totalSamples; i++)
+        {
+            float t = (float)i / SampleRate;
+            float progress = (float)i / totalSamples;
+            float envelope = 1.0f - progress;
+            float sample = 0f;
+
+            float freq = baseFreq;
+            if (name == "select") freq += progress * 400f;
+            if (name == "faint") freq -= progress * 80f;
+
+            switch (type)
+            {
+                case WaveType.Sine:
+                    sample = MathF.Sin(2f * MathF.PI * freq * t);
+                    break;
+                case WaveType.Square:
+                    sample = MathF.Sin(2f * MathF.PI * freq * t) >= 0 ? 0.7f : -0.7f;
+                    break;
+                case WaveType.Triangle:
+                    sample = (MathF.Abs((t * freq % 1f) - 0.5f) * 4f) - 1f;
+                    break;
+                case WaveType.Sawtooth:
+                    sample = ((t * freq % 1f) * 2f) - 1f;
+                    break;
+                case WaveType.Noise:
+                    sample = (float)(rng.NextDouble() * 2.0 - 1.0);
+                    break;
+            }
+
+            samples[i] = sample * envelope * (12000f / 32767f);
+        }
+
+        RegisterSamples(name, samples);
+    }
+
+    /// <summary>
+    /// A soft, low "thud" for walking into something: a sine body whose pitch drops quickly, with a
+    /// little low-passed noise for the impact and a short fade-in so it doesn't click.
+    /// </summary>
+    private static float[] SynthesizeBump()
+    {
+        const float duration = 0.14f;
+        var samples = new float[(int)(SampleRate * duration)];
+        var rng = new Random(7);
+        float phase = 0f, noise = 0f;
+
+        for (int i = 0; i < samples.Length; i++)
+        {
+            float t = (float)i / SampleRate;
+            float freq = 105f + 150f * MathF.Exp(-t * 30f);
+            phase += MathF.Tau * freq / SampleRate;
+
+            // Second harmonic keeps the thud audible on small speakers
+            float body = (MathF.Sin(phase) + 0.35f * MathF.Sin(phase * 2f)) * MathF.Exp(-t * 26f);
+            noise += ((float)rng.NextDouble() * 2f - 1f - noise) * 0.11f;
+            float impact = noise * MathF.Exp(-t * 70f) * 1.4f;
+            float attack = Math.Min(1f, t / 0.004f);
+
+            samples[i] = (body * 0.7f + impact) * attack * 0.42f;
+        }
+        return samples;
+    }
+
+    /// <summary>Loads mono samples in [-1, 1] as a sound effect, replacing any earlier sound of that name.</summary>
+    private static unsafe void RegisterSamples(string name, float[] samples)
     {
         try
         {
-            uint sampleRate = 22050;
-            uint totalSamples = (uint)(sampleRate * durationSec);
-            int byteCount = (int)totalSamples * sizeof(short);
-
+            int byteCount = samples.Length * sizeof(short);
             IntPtr unmanagedMem = Marshal.AllocHGlobal(byteCount);
             short* ptr = (short*)unmanagedMem.ToPointer();
-            Random rng = new(42);
-
-            for (int i = 0; i < totalSamples; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                float t = (float)i / sampleRate;
-                float progress = (float)i / totalSamples;
-                float envelope = 1.0f - progress;
-                float sample = 0f;
-
-                float freq = baseFreq;
-                if (name == "select") freq += progress * 400f;
-                if (name == "faint") freq -= progress * 80f;
-
-                switch (type)
-                {
-                    case WaveType.Sine:
-                        sample = MathF.Sin(2f * MathF.PI * freq * t);
-                        break;
-                    case WaveType.Square:
-                        sample = MathF.Sin(2f * MathF.PI * freq * t) >= 0 ? 0.7f : -0.7f;
-                        break;
-                    case WaveType.Triangle:
-                        sample = (MathF.Abs((t * freq % 1f) - 0.5f) * 4f) - 1f;
-                        break;
-                    case WaveType.Sawtooth:
-                        sample = ((t * freq % 1f) * 2f) - 1f;
-                        break;
-                    case WaveType.Noise:
-                        sample = (float)(rng.NextDouble() * 2.0 - 1.0);
-                        break;
-                }
-
-                ptr[i] = (short)(sample * envelope * 12000);
+                ptr[i] = (short)(Math.Clamp(samples[i], -1f, 1f) * 32767f);
             }
 
             Wave wave = new()
             {
-                SampleCount = totalSamples,
-                SampleRate = sampleRate,
+                SampleCount = (uint)samples.Length,
+                SampleRate = SampleRate,
                 SampleSize = 16,
                 Channels = 1,
                 Data = (void*)unmanagedMem

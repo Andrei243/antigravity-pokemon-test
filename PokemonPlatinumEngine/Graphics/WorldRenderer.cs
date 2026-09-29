@@ -7,9 +7,9 @@ using PokemonPlatinumEngine.Overworld;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Renders the overworld in 3D the way Pokémon Platinum does: 3D terrain and buildings under Platinum's field
-/// camera, with characters as upright pixel-art sprites. The scene is drawn into a supersampled render target
-/// that is filtered down when composited, which smooths polygon edges without blurring the pixel art.
+/// Renders the field in 3D with Pokémon Platinum's camera: lit, shadowed terrain, buildings and rooms, with the
+/// characters as upright pixel-art sprites. Each frame renders a shadow map from the sun, then the scene into
+/// a supersampled target, which is composited with a tilt-shift and colour-grading pass.
 /// </summary>
 public sealed class WorldRenderer
 {
@@ -22,8 +22,10 @@ public sealed class WorldRenderer
     private readonly int width;
     private readonly int height;
     private RenderTexture2D target;
-    private Shader cutoutShader;
+    private readonly FieldShaders shaders = new();
+    private readonly ShadowMap shadowMap = new();
     private bool loaded;
+    private bool lastWasIndoors;
     private readonly Dictionary<string, MapScene> scenes = new(StringComparer.OrdinalIgnoreCase);
 
     public WorldRenderer(int width, int height)
@@ -32,41 +34,13 @@ public sealed class WorldRenderer
         this.height = height;
     }
 
-    private const string VertexShader = @"#version 330
-in vec3 vertexPosition;
-in vec2 vertexTexCoord;
-in vec4 vertexColor;
-uniform mat4 mvp;
-out vec2 fragTexCoord;
-out vec4 fragColor;
-void main()
-{
-    fragTexCoord = vertexTexCoord;
-    fragColor = vertexColor;
-    gl_Position = mvp * vec4(vertexPosition, 1.0);
-}";
-
-    // Pixel art is either fully opaque or fully transparent, so transparent texels are discarded instead of
-    // blended. That keeps depth testing correct for sprites, tall grass and decals in any draw order.
-    private const string FragmentShader = @"#version 330
-in vec2 fragTexCoord;
-in vec4 fragColor;
-uniform sampler2D texture0;
-uniform vec4 colDiffuse;
-out vec4 finalColor;
-void main()
-{
-    vec4 texel = texture(texture0, fragTexCoord);
-    if (texel.a < 0.5) discard;
-    finalColor = vec4(texel.rgb, 1.0) * colDiffuse * fragColor;
-}";
-
     private void EnsureLoaded()
     {
         if (loaded) return;
         target = Raylib.LoadRenderTexture(width * SuperSample, height * SuperSample);
         Raylib.SetTextureFilter(target.Texture, TextureFilter.Bilinear);
-        cutoutShader = Raylib.LoadShaderFromMemory(VertexShader, FragmentShader);
+        shaders.Load();
+        shadowMap.Load();
         loaded = true;
     }
 
@@ -74,7 +48,7 @@ void main()
     {
         if (!scenes.TryGetValue(map.Name, out var scene))
         {
-            scene = MapScene.Build(map, cutoutShader);
+            scene = MapScene.Build(map, shaders);
             scenes[map.Name] = scene;
         }
         return scene;
@@ -85,73 +59,83 @@ void main()
     {
         EnsureLoaded();
         var scene = GetScene(map);
-        float time = (float)Raylib.GetTime();
+        lastWasIndoors = scene.Indoors;
+        var light = scene.Lighting;
 
         float px = player.PixelX / Player.TileSize + 0.5f;
         float pz = player.PixelY / Player.TileSize + 0.5f;
+        float lift = player.HopHeight / Player.TileSize * scene.VS;
         var camera = BuildCamera(scene, px, pz);
+        shaders.SetTime((float)Raylib.GetTime());
 
+        // 1. Shadow map: depth of everything that casts shadows, seen from the sun
+        var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
+        var lightCamera = ShadowMap.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
+
+        Raylib.BeginTextureMode(shadowMap.Target);
+        Raylib.ClearBackground(Color.White);
+        Rlgl.SetClipPlanes(1.0, 200.0);
+        Raylib.BeginMode3D(lightCamera);
+        var lightView = Rlgl.GetMatrixModelview();
+        var lightProjection = Rlgl.GetMatrixProjection();
+        Rlgl.DisableBackfaceCulling();
+        scene.DrawDepth();
+        Raylib.BeginShaderMode(shaders.Depth);
+        DrawCharacters(scene, map, player, px, pz, lift, 1f / scene.VS);
+        Raylib.EndShaderMode();
+        Rlgl.EnableBackfaceCulling();
+        Raylib.EndMode3D();
+        Raylib.EndTextureMode();
+
+        shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, shadowMap.Texel);
+
+        // 2. The scene itself, sampling the shadow map
         Raylib.BeginTextureMode(target);
         Raylib.ClearBackground(scene.Background);
-
-        if (scene.Indoors) Rlgl.SetClipPlanes(1.0, 200.0);
+        if (scene.Indoors) Rlgl.SetClipPlanes(1.0, 100.0);
         else Rlgl.SetClipPlanes(10.0, 140.0);
 
         Raylib.BeginMode3D(camera);
         Rlgl.DisableBackfaceCulling();
+        Rlgl.ActiveTextureSlot(FieldShaders.ShadowMapSlot);
+        Rlgl.EnableTexture(shadowMap.DepthTextureId);
+        Rlgl.ActiveTextureSlot(0);
 
-        scene.DrawStatic();
+        scene.Draw();
+        DrawContactShadows(map, px, pz, lift);
 
-        Raylib.BeginShaderMode(cutoutShader);
-        scene.DrawWater(time);
-        Raylib.EndShaderMode();
-
-        DrawShadows(map, px, pz, player.HopHeight / Player.TileSize);
-
-        Raylib.BeginShaderMode(cutoutShader);
-        foreach (var npc in map.NPCs)
-        {
-            if (npc.IsPCTerminal) continue;
-            var tex = PixelArtGenerator.GetNpcSprite(npc.NpcType, npc.Facing);
-            DrawSprite(scene, tex, new Rectangle(0, 0, tex.Width, tex.Height), npc.GridX + 0.5f, npc.GridY + 0.5f, 0f);
-        }
-
-        var sheet = PixelArtGenerator.GetPlayerSpriteSheet();
-        int fw = PixelArtGenerator.CharacterFrameWidth, fh = PixelArtGenerator.CharacterFrameHeight;
-        var frame = new Rectangle(player.AnimFrame * fw, (int)player.Facing * fh, fw, fh);
-        DrawSprite(scene, sheet, frame, px, pz, player.HopHeight / Player.TileSize * scene.VS);
-
-        // "!" bubble over trainers who have spotted the player, just above the head
-        var bubble = SceneTextures.Exclamation;
-        foreach (var npc in map.NPCs)
-        {
-            if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
-            {
-                float y0 = (SpriteRows - SpriteFootGap * SpriteRows + 0.1f) * scene.VS;
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.GridX + 0.5f, npc.GridY + 0.55f, y0, 0.7f, 0.7f * scene.VS);
-            }
-        }
+        Raylib.BeginShaderMode(shaders.Sprite);
+        DrawCharacters(scene, map, player, px, pz, lift, 1f);
+        DrawSpottedBubbles(scene, map);
         Raylib.EndShaderMode();
 
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
+
+        Rlgl.ActiveTextureSlot(FieldShaders.ShadowMapSlot);
+        Rlgl.DisableTexture();
+        Rlgl.ActiveTextureSlot(0);
         Rlgl.SetClipPlanes(0.01, 1000.0);
     }
 
-    /// <summary>Draws the last rendered frame into the current target, filtered down to the given size.</summary>
+    /// <summary>Composites the last rendered frame into the current target with tilt-shift blur and grading.</summary>
     public void DrawToScreen(int destWidth, int destHeight)
     {
         if (!loaded) return;
+        shaders.SetPost(new Vector2(1f / target.Texture.Width, 1f / target.Texture.Height), lastWasIndoors ? 3.5f : 6f);
+        Raylib.BeginShaderMode(shaders.Post);
         var src = new Rectangle(0, 0, target.Texture.Width, -target.Texture.Height);
         Raylib.DrawTexturePro(target.Texture, src, new Rectangle(0, 0, destWidth, destHeight), Vector2.Zero, 0f, Color.White);
+        Raylib.EndShaderMode();
     }
 
     public void Unload()
     {
         if (!loaded) return;
         Raylib.UnloadRenderTexture(target);
-        Raylib.UnloadShader(cutoutShader);
+        shaders.Unload();
+        shadowMap.Unload();
         loaded = false;
     }
 
@@ -164,9 +148,11 @@ void main()
 
         if (scene.Indoors)
         {
+            // Deeper rooms pull the camera back a little so the whole room stays in frame
             var roomTarget = scene.RoomCenter;
-            return new Camera3D(roomTarget + dir * MapScene.IndoorDistance, roomTarget, Vector3.UnitY,
-                MapScene.IndoorViewHeight, CameraProjection.Orthographic);
+            float distance = MapScene.IndoorDistance * Math.Max(1f, (scene.Map.Height - 1) / 8f);
+            return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
+                MapScene.IndoorFovYDeg, CameraProjection.Perspective);
         }
 
         // Aim at the player's middle so they sit near the centre of the screen, then keep the view
@@ -206,13 +192,46 @@ void main()
 
     // ------------------------------------------------------------------ characters
 
+    /// <param name="heightScale">
+    /// 1 for the visible sprites. The shadow pass uses 1 / VS: characters are stretched upward to look right
+    /// from the tilted camera, and casting shadows from that stretched height would make them far too long.
+    /// </param>
+    private static void DrawCharacters(MapScene scene, Map map, Player player, float px, float pz, float lift, float heightScale)
+    {
+        foreach (var npc in map.NPCs)
+        {
+            if (npc.IsPCTerminal) continue;
+            var tex = PixelArtGenerator.GetNpcSprite(npc.NpcType, npc.Facing);
+            DrawSprite(scene, tex, new Rectangle(0, 0, tex.Width, tex.Height), npc.GridX + 0.5f, npc.GridY + 0.5f, 0f, heightScale);
+        }
+
+        var sheet = PixelArtGenerator.GetPlayerSpriteSheet();
+        int fw = PixelArtGenerator.CharacterFrameWidth, fh = PixelArtGenerator.CharacterFrameHeight;
+        var frame = new Rectangle(player.AnimFrame * fw, (int)player.Facing * fh, fw, fh);
+        DrawSprite(scene, sheet, frame, px, pz, lift, heightScale);
+    }
+
+    /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>
+    private static void DrawSpottedBubbles(MapScene scene, Map map)
+    {
+        var bubble = SceneTextures.Exclamation;
+        foreach (var npc in map.NPCs)
+        {
+            if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
+            {
+                float y0 = (SpriteRows - SpriteFootGap * SpriteRows + 0.1f) * scene.VS;
+                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.GridX + 0.5f, npc.GridY + 0.55f, y0, 0.7f, 0.7f * scene.VS);
+            }
+        }
+    }
+
     /// <summary>
     /// Characters stand upright on their tile. Their height is divided by cos(pitch) so the sprite keeps its
     /// true proportions on screen, and upright quads never lean into walls behind them.
     /// </summary>
-    private static void DrawSprite(MapScene scene, Texture2D tex, Rectangle src, float cx, float cz, float lift)
+    private static void DrawSprite(MapScene scene, Texture2D tex, Rectangle src, float cx, float cz, float lift, float heightScale)
     {
-        float h = SpriteRows * scene.VS;
+        float h = SpriteRows * scene.VS * heightScale;
         DrawUpright(tex, src, cx, cz, lift - SpriteFootGap * h, 1f, h);
     }
 
@@ -228,6 +247,7 @@ void main()
         Rlgl.SetTexture(tex.Id);
         Rlgl.Begin(DrawMode.Quads);
         Rlgl.Color4ub(255, 255, 255, 255);
+        Rlgl.Normal3f(0, 0, 1);
         Rlgl.TexCoord2f(u0, v1); Rlgl.Vertex3f(x0, y0, cz);
         Rlgl.TexCoord2f(u1, v1); Rlgl.Vertex3f(x1, y0, cz);
         Rlgl.TexCoord2f(u1, v0); Rlgl.Vertex3f(x1, y1, cz);
@@ -236,15 +256,18 @@ void main()
         Rlgl.SetTexture(0);
     }
 
-    /// <summary>Soft blob shadows under every character, alpha-blended without writing depth.</summary>
-    private static void DrawShadows(Map map, float px, float pz, float hopTiles)
+    /// <summary>
+    /// A faint dark patch right under each character's feet. The shadow map casts their real shadow; this keeps
+    /// them grounded when the sun is high or they are standing in shade.
+    /// </summary>
+    private static void DrawContactShadows(Map map, float px, float pz, float lift)
     {
         var tex = SceneTextures.ShadowBlob;
         Rlgl.DisableDepthMask();
 
         void Blob(float cx, float cz, float scale)
         {
-            float rx = 0.42f * scale, rz = 0.3f * scale, y = 0.015f;
+            float rx = 0.36f * scale, rz = 0.24f * scale, y = 0.015f;
             Rlgl.CheckRenderBatchLimit(4);
             Rlgl.SetTexture(tex.Id);
             Rlgl.Begin(DrawMode.Quads);
@@ -260,7 +283,7 @@ void main()
         {
             if (!npc.IsPCTerminal) Blob(npc.GridX + 0.5f, npc.GridY + 0.52f, 1f);
         }
-        Blob(px, pz + 0.02f, 1f - Math.Clamp(hopTiles, 0f, 0.5f));
+        Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.3f, 0f, 0.5f));
 
         Rlgl.SetTexture(0);
         Rlgl.DrawRenderBatchActive();
