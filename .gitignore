@@ -1,0 +1,14 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio / IDE state
+.vs/
+*.user
+*.suo
+
+# Test results
+TestResults/
+
+# Local game saves
+savegame.json

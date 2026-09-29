@@ -1,0 +1,177 @@
+using System.Linq;
+using Xunit;
+using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
+
+namespace PokemonPlatinumTests;
+
+public class PokemonTests
+{
+    [Fact]
+    public void TestTypeEffectivenessMatrix()
+    {
+        // Water -> Fire = 2.0x
+        Assert.Equal(2.0f, TypeChart.GetEffectiveness(PokemonType.Water, PokemonType.Fire));
+
+        // Fire -> Water = 0.5x
+        Assert.Equal(0.5f, TypeChart.GetEffectiveness(PokemonType.Fire, PokemonType.Water));
+
+        // Electric -> Ground = 0.0x (Immunity)
+        Assert.Equal(0.0f, TypeChart.GetEffectiveness(PokemonType.Electric, PokemonType.Ground));
+
+        // Normal -> Ghost = 0.0x
+        Assert.Equal(0.0f, TypeChart.GetEffectiveness(PokemonType.Normal, PokemonType.Ghost));
+
+        // Grass -> Water / Ground dual type = 2.0 * 2.0 = 4.0x (Quadruple weakness)
+        Assert.Equal(4.0f, TypeChart.GetEffectiveness(PokemonType.Grass, PokemonType.Water, PokemonType.Ground));
+
+        // Fighting -> Steel = 2.0x
+        Assert.Equal(2.0f, TypeChart.GetEffectiveness(PokemonType.Fighting, PokemonType.Steel));
+    }
+
+    [Fact]
+    public void TestDamageCalculationAndSplit()
+    {
+        var attackerSpecies = PokemonDatabase.Get("Chimchar")!;
+        var defenderSpecies = PokemonDatabase.Get("Turtwig")!;
+
+        var chimchar = new Pokemon(attackerSpecies, 10);
+        var turtwig = new Pokemon(defenderSpecies, 10);
+
+        // Special Fire Move (Ember) against Grass type: Super effective with STAB!
+        var ember = MoveDatabase.Create("Ember");
+        var result = DamageCalculator.CalculateDamage(chimchar, turtwig, ember);
+
+        Assert.True(result.IsSuperEffective);
+        Assert.True(result.IsSTAB);
+        Assert.True(result.Damage > 0);
+
+        // Physical Normal Move (Scratch) against Grass type: Neutral
+        var scratch = MoveDatabase.Create("Scratch");
+        var neutralResult = DamageCalculator.CalculateDamage(chimchar, turtwig, scratch);
+        Assert.Equal(1.0f, neutralResult.TypeMultiplier);
+    }
+
+    [Fact]
+    public void TestCatchRateFormula()
+    {
+        var starlySpecies = PokemonDatabase.Get("Starly")!;
+        var wildStarly = new Pokemon(starlySpecies, 3);
+
+        // Master Ball always succeeds
+        var masterBall = ItemDatabase.Get("Master Ball")!;
+        var masterCatch = CatchCalculator.AttemptCatch(wildStarly, masterBall);
+        Assert.True(masterCatch.IsCaught);
+        Assert.Equal(4, masterCatch.Shakes);
+
+        // Poke Ball on low HP Starly
+        wildStarly.CurrentHP = 1;
+        var pokeBall = ItemDatabase.Get("Poké Ball")!;
+        var catchAttempt = CatchCalculator.AttemptCatch(wildStarly, pokeBall);
+        Assert.True(catchAttempt.Shakes >= 0 && catchAttempt.Shakes <= 4);
+    }
+
+    [Fact]
+    public void TestLevelUpAndEvolution()
+    {
+        var turtwigSpecies = PokemonDatabase.Get("Turtwig")!;
+        var turtwig = new Pokemon(turtwigSpecies, 17);
+
+        Assert.Equal("Turtwig", turtwig.Species.Name);
+        Assert.Equal(17, turtwig.Level);
+
+        // Give enough EXP to level up to 18 (Turtwig evolution level)
+        int expNeeded = turtwig.ExpForNextLevel - turtwig.CurrentExp + 10;
+        bool leveledUp = turtwig.GainExp(expNeeded, out var newMoves, out bool evolved, out string oldName);
+
+        Assert.True(leveledUp);
+        Assert.Equal(18, turtwig.Level);
+        Assert.True(evolved);
+        Assert.Equal("Grotle", turtwig.Species.Name);
+        Assert.Equal("Turtwig", oldName);
+    }
+
+    [Fact]
+    public void TestPartyAndInventoryManagement()
+    {
+        var party = new Party();
+        var turtwig = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
+        var chimchar = new Pokemon(PokemonDatabase.Get("Chimchar")!, 5);
+
+        Assert.True(party.Add(turtwig));
+        Assert.True(party.Add(chimchar));
+        Assert.Equal(2, party.Count);
+
+        // Lead Pokemon is Turtwig
+        Assert.Equal("Turtwig", party.Members[0].Species.Name);
+
+        // Swap lead to Chimchar
+        party.Swap(0, 1);
+        Assert.Equal("Chimchar", party.Members[0].Species.Name);
+
+        // Inventory
+        var inventory = new Inventory();
+        var potion = ItemDatabase.Get("Potion")!;
+        inventory.AddItem(potion, 3);
+        Assert.Equal(3, inventory.GetQuantity(potion));
+
+        inventory.RemoveItem(potion, 1);
+        Assert.Equal(2, inventory.GetQuantity(potion));
+    }
+
+    [Theory]
+    [InlineData("TwinleafTown")]
+    [InlineData("Route201")]
+    [InlineData("LakeVerity")]
+    [InlineData("SandgemTown")]
+    [InlineData("Route202")]
+    [InlineData("PlayerHouse")]
+    [InlineData("PokemonCenter")]
+    [InlineData("PokeMart")]
+    [InlineData("RowanLab")]
+    public void TestEveryWarpIsReachableFromEveryArrivalPoint(string mapName)
+    {
+        MapDatabase.Initialize();
+        var map = MapDatabase.Get(mapName);
+        Assert.Equal(mapName, map.Name);
+        Assert.NotEmpty(map.Warps);
+
+        // Every tile another map warps the player onto in this map
+        var arrivals = new[] { "TwinleafTown", "Route201", "LakeVerity", "SandgemTown", "Route202", "PlayerHouse", "PokemonCenter", "PokeMart", "RowanLab" }
+            .SelectMany(n => MapDatabase.Get(n).Warps)
+            .Where(w => w.TargetMap == mapName)
+            .Select(w => (w.TargetX, w.TargetY))
+            .ToList();
+        Assert.NotEmpty(arrivals);
+
+        foreach (var (startX, startY) in arrivals)
+        {
+            Assert.True(map.IsWalkable(startX, startY), $"{mapName}: arrival tile ({startX},{startY}) is not walkable");
+
+            // Flood fill; stepping onto a warp tile triggers it, so don't expand past one
+            var reached = new HashSet<(int, int)> { (startX, startY) };
+            var queue = new Queue<(int X, int Y)>();
+            queue.Enqueue((startX, startY));
+            while (queue.Count > 0)
+            {
+                var (x, y) = queue.Dequeue();
+                if ((x, y) != (startX, startY) && map.GetWarpAt(x, y) != null) continue;
+
+                foreach (var (nx, ny) in new[] { (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1) })
+                {
+                    if (map.IsWalkable(nx, ny) && reached.Add((nx, ny)))
+                    {
+                        queue.Enqueue((nx, ny));
+                    }
+                }
+            }
+
+            foreach (var warp in map.Warps)
+            {
+                Assert.True(reached.Contains((warp.SourceX, warp.SourceY)),
+                    $"{mapName}: warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) is unreachable from arrival ({startX},{startY})");
+            }
+        }
+    }
+}
