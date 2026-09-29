@@ -20,7 +20,15 @@ public enum TileType
     Door,
     Floor,
     Signpost,
-    PC
+    PC,
+    RoofGreen
+}
+
+/// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>
+public enum TreeStyle
+{
+    Round,
+    Pine
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

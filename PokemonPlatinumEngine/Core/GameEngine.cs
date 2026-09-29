@@ -34,10 +34,12 @@ public class GameEngine
 
     private RenderTexture2D virtualScreen;
     private GameState currentState = GameState.Overworld;
+    private GameState stateBeforeTransition = GameState.Overworld;
     private GameState stateAfterTransition = GameState.Overworld;
 
     private Map currentMap = null!;
     private Player player = null!;
+    private readonly WorldRenderer world = new(VirtualWidth, VirtualHeight);
     private readonly DialogueManager dialogue = new();
     private BattleEngine? battle;
 
@@ -61,9 +63,7 @@ public class GameEngine
     private float playTime = 0f;
     private readonly string playerName = "Lucas";
 
-    // Camera & Screen Transitions
-    private int cameraX = 0;
-    private int cameraY = 0;
+    // Screen Transitions
     private float transitionTimer = 0f;
     private float transitionDuration = 0.4f;
     private bool isFadingOut = true;
@@ -324,13 +324,6 @@ public class GameEngine
         {
             TryInteract();
         }
-
-        // Update Camera
-        cameraX = (int)(player.PixelX + Player.TileSize / 2 - VirtualWidth / 2);
-        cameraY = (int)(player.PixelY + Player.TileSize / 2 - VirtualHeight / 2);
-
-        cameraX = Math.Clamp(cameraX, 0, Math.Max(0, currentMap.Width * Player.TileSize - VirtualWidth));
-        cameraY = Math.Clamp(cameraY, 0, Math.Max(0, currentMap.Height * Player.TileSize - VirtualHeight));
     }
 
     private void TryInteract()
@@ -485,6 +478,7 @@ public class GameEngine
 
     private void StartTransition(GameState nextState, Action? onMidpoint = null)
     {
+        stateBeforeTransition = currentState;
         stateAfterTransition = nextState;
         midTransitionCallback = onMidpoint;
         currentState = GameState.Transition;
@@ -514,47 +508,6 @@ public class GameEngine
         }
     }
 
-    private void DrawOverworldScene()
-    {
-        // 2.0x Zoom 2D Camera for crisp Sinnoh overworld in 1080p Full HD
-        Camera2D overworldCam = new()
-        {
-            Target = new Vector2(player.PixelX + Player.TileSize / 2f, player.PixelY + Player.TileSize / 2f),
-            Offset = new Vector2(VirtualWidth / 2f, VirtualHeight / 2f),
-            Rotation = 0f,
-            Zoom = currentMap.IsIndoors ? 3.0f : 2.0f
-        };
-
-        // Clamp camera target to map boundaries
-        float halfVisibleW = (VirtualWidth / (2f * overworldCam.Zoom));
-        float halfVisibleH = (VirtualHeight / (2f * overworldCam.Zoom));
-        float mapPixelW = currentMap.Width * Player.TileSize;
-        float mapPixelH = currentMap.Height * Player.TileSize;
-
-        if (mapPixelW <= halfVisibleW * 2f)
-        {
-            overworldCam.Target.X = mapPixelW / 2f;
-        }
-        else
-        {
-            overworldCam.Target.X = Math.Clamp(overworldCam.Target.X, halfVisibleW, mapPixelW - halfVisibleW);
-        }
-
-        if (mapPixelH <= halfVisibleH * 2f)
-        {
-            overworldCam.Target.Y = mapPixelH / 2f;
-        }
-        else
-        {
-            overworldCam.Target.Y = Math.Clamp(overworldCam.Target.Y, halfVisibleH, mapPixelH - halfVisibleH);
-        }
-
-        Raylib.BeginMode2D(overworldCam);
-        currentMap.DrawGroundAndEntities(player);
-        currentMap.DrawOverhead();
-        Raylib.EndMode2D();
-    }
-
     public void ShowNotification(string message)
     {
         notificationMessage = message;
@@ -563,6 +516,18 @@ public class GameEngine
 
     public void Draw()
     {
+        // During a fade, show the screen being left while fading out and the new one while fading in
+        GameState scene = currentState == GameState.Transition
+            ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)
+            : currentState;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue;
+
+        // The 3D field renders into its own target first (texture modes can't nest)
+        if (showWorld)
+        {
+            world.Render(currentMap, player);
+        }
+
         // Render scene to native 1920x1080 Full HD buffer
         Raylib.BeginTextureMode(virtualScreen);
         Raylib.ClearBackground(Color.Black);
@@ -571,7 +536,7 @@ public class GameEngine
         {
             case GameState.Overworld:
             case GameState.Dialogue:
-                DrawOverworldScene();
+                world.DrawToScreen(VirtualWidth, VirtualHeight);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 startMenu.Draw(VirtualWidth);
                 break;
@@ -608,7 +573,8 @@ public class GameEngine
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);
                 break;
             case GameState.Transition:
-                DrawOverworldScene();
+                if (scene == GameState.Battle) battle?.Draw(VirtualWidth, VirtualHeight);
+                else if (showWorld) world.DrawToScreen(VirtualWidth, VirtualHeight);
                 break;
         }
 
@@ -658,6 +624,7 @@ public class GameEngine
 
     public void Close()
     {
+        world.Unload();
         Raylib.UnloadRenderTexture(virtualScreen);
         AudioManager.Close();
     }

@@ -1,9 +1,7 @@
 using System;
 using System.Numerics;
-using Raylib_cs;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Graphics;
 
 namespace PokemonPlatinumEngine.Overworld;
 
@@ -17,6 +15,12 @@ public class Player
 
     public float PixelX { get; private set; }
     public float PixelY { get; private set; }
+
+    /// <summary>Height of the ledge-hop arc above the ground, in pixels (0 when on the ground).</summary>
+    public float HopHeight { get; private set; }
+
+    /// <summary>Current walk-cycle frame: 0/2 standing, 1/3 mid-step.</summary>
+    public int AnimFrame => animFrame;
 
     public bool IsMoving { get; private set; }
     public bool IsRunning { get; private set; }
@@ -45,6 +49,7 @@ public class Player
         Facing = facing;
         PixelX = gx * TileSize;
         PixelY = gy * TileSize;
+        HopHeight = 0f;
         IsMoving = false;
         IsHoppingLedge = false;
         moveProgress = 0f;
@@ -72,6 +77,7 @@ public class Player
                 GridY = targetGridY;
                 PixelX = GridX * TileSize;
                 PixelY = GridY * TileSize;
+                HopHeight = 0f;
                 IsMoving = false;
                 IsHoppingLedge = false;
                 moveProgress = 0f;
@@ -116,12 +122,8 @@ public class Player
                 PixelX = startX + (endX - startX) * moveProgress;
                 PixelY = startY + (endY - startY) * moveProgress;
 
-                // Ledge hop arc
-                if (IsHoppingLedge)
-                {
-                    float arc = MathF.Sin(moveProgress * MathF.PI) * 16f;
-                    PixelY -= arc;
-                }
+                // Ledge hop arc (height above the ground, in the same pixel units)
+                HopHeight = IsHoppingLedge ? MathF.Sin(moveProgress * MathF.PI) * 16f : 0f;
             }
         }
         else
@@ -218,17 +220,5 @@ public class Player
         {
             AudioManager.PlaySound("bump");
         }
-    }
-
-    public void Draw()
-    {
-        var sheet = PixelArtGenerator.GetPlayerSpriteSheet();
-        int fw = PixelArtGenerator.CharacterFrameWidth;
-        int fh = PixelArtGenerator.CharacterFrameHeight;
-
-        // Sprite art is drawn at 2x; feet sit on the bottom of the current tile
-        Rectangle src = new(animFrame * fw, (int)Facing * fh, fw, fh);
-        Rectangle dst = new(PixelX, PixelY + TileSize - fh * 2 + 2, fw * 2, fh * 2);
-        Raylib.DrawTexturePro(sheet, src, dst, Vector2.Zero, 0f, Color.White);
     }
 }

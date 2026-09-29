@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using Raylib_cs;
 using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Graphics;
 
 namespace PokemonPlatinumEngine.Overworld;
 
@@ -15,6 +12,7 @@ public class Map
     public string BgmTrack { get; set; } = "Twinleaf";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public bool IsIndoors => Interior != InteriorStyle.None;
+    public TreeStyle Trees { get; set; } = TreeStyle.Round;
     public int Width { get; }
     public int Height { get; }
 
@@ -46,8 +44,6 @@ public class Map
     public bool InBounds(int x, int y) => x >= 0 && x < Width && y >= 0 && y < Height;
 
     public TileType GetGroundTile(int x, int y) => groundLayer[y * Width + x];
-
-    public TileType? GetOverheadTile(int x, int y) => overheadLayer[y * Width + x];
 
     public void SetGroundTile(int x, int y, TileType type, bool isSolid = false)
     {
@@ -128,76 +124,5 @@ public class Map
             return WildEncounters.First();
         }
         return null;
-    }
-
-    public void DrawGroundAndEntities(Player player)
-    {
-        MapRenderer.DrawGround(this);
-
-        // Characters are depth-sorted so whoever stands lower on screen is drawn in front
-        bool playerDrawn = false;
-        foreach (var npc in NPCs.Where(n => !n.IsPCTerminal).OrderBy(n => n.GridY))
-        {
-            if (!playerDrawn && player.PixelY < npc.GridY * Player.TileSize)
-            {
-                DrawPlayer(player);
-                playerDrawn = true;
-            }
-            DrawNpc(npc);
-        }
-        if (!playerDrawn) DrawPlayer(player);
-    }
-
-    private void DrawPlayer(Player player)
-    {
-        player.Draw();
-
-        int tx = (int)MathF.Round(player.PixelX / Player.TileSize);
-        int ty = (int)MathF.Round(player.PixelY / Player.TileSize);
-        if (!player.IsHoppingLedge && IsTallGrass(tx, ty))
-        {
-            MapRenderer.DrawTallGrassFront(tx, ty);
-        }
-    }
-
-    private void DrawNpc(NPC npc)
-    {
-        int tile = Player.TileSize;
-        int nx = npc.GridX * tile;
-        int ny = npc.GridY * tile;
-
-        var tex = PixelArtGenerator.GetNpcSprite(npc.NpcType, npc.Facing);
-        var src = new Rectangle(0, 0, tex.Width, tex.Height);
-        var dst = new Rectangle(nx, ny + tile - tex.Height * 2 + 2, tex.Width * 2, tex.Height * 2);
-        Raylib.DrawTexturePro(tex, src, dst, Vector2.Zero, 0f, Color.White);
-
-        if (IsTallGrass(npc.GridX, npc.GridY))
-        {
-            MapRenderer.DrawTallGrassFront(npc.GridX, npc.GridY);
-        }
-
-        if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
-        {
-            int bx = nx + tile / 2, by = ny - 40;
-            Raylib.DrawCircle(bx, by, 13, Palette.UiDarkBorder);
-            Raylib.DrawCircle(bx, by, 11, Color.White);
-            Raylib.DrawRectangle(bx - 2, by - 7, 4, 9, Palette.UiAccent);
-            Raylib.DrawRectangle(bx - 2, by + 4, 4, 4, Palette.UiAccent);
-        }
-    }
-
-    public void DrawOverhead()
-    {
-        for (int y = 0; y < Height; y++)
-        {
-            for (int x = 0; x < Width; x++)
-            {
-                var t = overheadLayer[y * Width + x];
-                if (t.HasValue)
-                {
-                    MapRenderer.DrawOverheadTile(t.Value, x, y);
-                }
-            }
-        }
     }
 }

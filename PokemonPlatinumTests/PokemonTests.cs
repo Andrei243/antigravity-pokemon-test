@@ -3,11 +3,36 @@ using Xunit;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumTests;
 
 public class PokemonTests
 {
+    [Fact]
+    public void TestBuildingsAreDetectedForThe3DField()
+    {
+        MapDatabase.Initialize();
+
+        var twinleaf = MapStructures.FindBuildings(MapDatabase.Get("TwinleafTown"));
+        Assert.Equal(2, twinleaf.Count);
+        var home = twinleaf.Single(b => b.X0 == 4);
+        Assert.Equal((4, 4, 8, 7), (home.X0, home.Y0, home.X1, home.Y1));
+        Assert.Equal(BuildingKind.House, home.Kind);
+        Assert.Equal(TileType.RoofGreen, home.RoofTile);
+        Assert.Equal(new[] { (6, (string?)"PlayerHouse") }, home.Doors);
+        Assert.Equal(new[] { 5 }, home.Plaques);
+
+        var sandgem = MapStructures.FindBuildings(MapDatabase.Get("SandgemTown"));
+        Assert.Equal(3, sandgem.Count);
+        Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokemonCenter && (b.X0, b.Y0, b.X1, b.Y1) == (4, 3, 8, 6));
+        Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokeMart && (b.X0, b.Y0, b.X1, b.Y1) == (20, 3, 24, 6));
+        Assert.Contains(sandgem, b => b.Kind == BuildingKind.Lab && (b.X0, b.Y0, b.X1, b.Y1) == (4, 14, 10, 17));
+
+        // Interior walls are room walls, not buildings
+        Assert.Empty(MapStructures.FindBuildings(MapDatabase.Get("PokemonCenter")));
+    }
+
     [Fact]
     public void TestTypeEffectivenessMatrix()
     {

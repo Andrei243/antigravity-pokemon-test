@@ -106,7 +106,6 @@ internal static class CharacterArt
 
         if (mirror) c.MirrorHorizontal();
         c.OutlinePass(innerSeams: false);
-        c.GroundShadow(8f, 22.4f, 5.2f, 1.7f, 70);
         return c;
     }
 
@@ -377,7 +376,6 @@ internal static class CharacterArt
         c.Rect(7, 16, 2, 3, new Color(250, 210, 80, 255));
         c.Set(7, 16, Color.White);
         c.OutlinePass();
-        c.GroundShadow(8f, 22.4f, 6.5f, 1.6f, 70);
         return c;
     }
 

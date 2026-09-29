@@ -37,7 +37,8 @@ public static class MapDatabase
         {
             Name = "TwinleafTown",
             DisplayName = "Twinleaf Town",
-            BgmTrack = "Twinleaf"
+            BgmTrack = "Twinleaf",
+            Trees = TreeStyle.Pine
         };
 
         // Surrounding border trees (leave North road (11,0) and (12,0) open!)
@@ -74,7 +75,7 @@ public static class MapDatabase
         {
             for (int y = 4; y <= 6; y++)
             {
-                map.SetGroundTile(x, y, TileType.RoofRed, isSolid: true);
+                map.SetGroundTile(x, y, TileType.RoofGreen, isSolid: true);
             }
             map.SetGroundTile(x, 7, TileType.Wall, isSolid: true);
         }
@@ -85,7 +86,7 @@ public static class MapDatabase
         {
             for (int y = 4; y <= 6; y++)
             {
-                map.SetGroundTile(x, y, TileType.RoofBlue, isSolid: true);
+                map.SetGroundTile(x, y, TileType.RoofGreen, isSolid: true);
             }
             map.SetGroundTile(x, 7, TileType.Wall, isSolid: true);
         }
@@ -271,7 +272,8 @@ public static class MapDatabase
         {
             Name = "LakeVerity",
             DisplayName = "Lake Verity",
-            BgmTrack = "Twinleaf"
+            BgmTrack = "Twinleaf",
+            Trees = TreeStyle.Pine
         };
 
         // Surrounding trees
