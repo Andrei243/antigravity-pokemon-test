@@ -5,26 +5,33 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Battle sky for the new looks: a three-stop gradient that pales toward a hazy horizon, and soft cumulus clouds
-/// with sunlit tops and cool, flat undersides drifting across it.
+/// Battle sky: a three-stop gradient that pales toward a hazy horizon, soft cumulus clouds with lit tops and
+/// cool, flat undersides drifting across it, and twinkling stars after dark. Colours come from the time of day.
 /// </summary>
 internal static class SkyPainter
 {
     private static Texture2D? cloud;
 
-    private static readonly Color Zenith = new(78, 146, 226, 255);
-    private static readonly Color Middle = new(140, 194, 244, 255);
-    private static readonly Color Horizon = new(224, 238, 250, 255);
-
-    public static void Draw(float time, int width, int height)
+    public static void Draw(float time, int width, int height, SkyColors sky)
     {
-        Raylib.ClearBackground(Horizon);
+        Raylib.ClearBackground(sky.Horizon);
         int mid = (int)(height * 0.22f), low = (int)(height * 0.46f);
-        Raylib.DrawRectangleGradientV(0, 0, width, mid, Zenith, Middle);
-        Raylib.DrawRectangleGradientV(0, mid, width, low - mid, Middle, Horizon);
+        Raylib.DrawRectangleGradientV(0, 0, width, mid, sky.Zenith, sky.Middle);
+        Raylib.DrawRectangleGradientV(0, mid, width, low - mid, sky.Middle, sky.Horizon);
+
+        float unit = width / 3840f;
+        if (sky.Stars > 0f)
+        {
+            for (int i = 0; i < 90; i++)
+            {
+                float x = SoftCanvas.Rand(i, 0, 71) * width, y = SoftCanvas.Rand(i, 1, 71) * mid * 1.3f;
+                float twinkle = 0.6f + 0.4f * MathF.Sin(time * (1.5f + SoftCanvas.Rand(i, 2, 71) * 2f) + i);
+                float r = (1.4f + SoftCanvas.Rand(i, 3, 71) * 2.2f) * unit * 2f;
+                Raylib.DrawCircleV(new Vector2(x, y), r, new Color(255, 250, 235, (int)(230 * twinkle * sky.Stars)));
+            }
+        }
 
         var tex = Cloud;
-        float unit = width / 3840f;
         (float X, float Y, float W, float Speed)[] clouds =
         {
             (0.06f, 0.012f, 620f, 10f), (0.4f, 0.0f, 780f, 7f), (0.74f, 0.03f, 520f, 13f),
@@ -38,7 +45,7 @@ internal static class SkyPainter
             var dest = new Rectangle(x, cy * height, w, h);
             // Farther (higher, smaller) clouds sit a little deeper in the haze
             byte alpha = (byte)(cw > 500f ? 245 : 215);
-            Raylib.DrawTexturePro(tex, new Rectangle(0, 0, tex.Width, tex.Height), dest, Vector2.Zero, 0f, new Color((byte)255, (byte)255, (byte)255, alpha));
+            Raylib.DrawTexturePro(tex, new Rectangle(0, 0, tex.Width, tex.Height), dest, Vector2.Zero, 0f, sky.CloudTint with { A = alpha });
         }
     }
 

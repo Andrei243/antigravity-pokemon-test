@@ -655,7 +655,6 @@ public class GameEngine
 
     public void Close()
     {
-        battleRenderer.Unload();
         renderContext.Unload();
         Raylib.UnloadRenderTexture(virtualScreen);
         AudioManager.Close();

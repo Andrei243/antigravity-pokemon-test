@@ -24,7 +24,6 @@ internal sealed class BattleStage
     private const float PitchDeg = 9f;
     public const float FovYDeg = 24f;
 
-    public SceneLighting Lighting { get; } = ArtLook.Battle;
 
     private readonly SceneMeshes meshes;
 
@@ -100,16 +99,16 @@ internal sealed class BattleStage
                 float jitterZ = (GroundBaker.Rand01(seed, row, 2) - 0.5f) * 2.4f;
                 float scale = 1.0f + row * 0.2f + GroundBaker.Rand01(seed, row, 3) * 0.3f;
                 // Pines are taller than the round trees, so they are scaled down to keep the sky in view
-                if (trees == TreeStyle.Pine) TreeModels.Pine(batches, x + jitterX, z + jitterZ, seed, row, scale * 0.8f, ArtLook.ModelBattle);
-                else TreeModels.Round(batches, x + jitterX, z + jitterZ, seed, row, scale, ArtLook.ModelBattle);
+                if (trees == TreeStyle.Pine) TreeModels.Pine(batches, x + jitterX, z + jitterZ, seed, row, scale * 0.8f, soft: true);
+                else TreeModels.Round(batches, x + jitterX, z + jitterZ, seed, row, scale, soft: true);
             }
         }
         // A few trees framing the left side of the field
         for (int i = 0; i < 6; i++)
         {
             float x = -17f - i * 1.8f, z = 4f - i * 3.2f;
-            if (trees == TreeStyle.Pine) TreeModels.Pine(batches, x, z, 100 + i, 7, 1.3f, ArtLook.ModelBattle);
-            else TreeModels.Round(batches, x, z, 100 + i, 7, 1.3f, ArtLook.ModelBattle);
+            if (trees == TreeStyle.Pine) TreeModels.Pine(batches, x, z, 100 + i, 7, 1.3f, soft: true);
+            else TreeModels.Round(batches, x, z, 100 + i, 7, 1.3f, soft: true);
         }
 
         // Rolling hills on the horizon
@@ -123,15 +122,13 @@ internal sealed class BattleStage
         }
 
         // Tufts of grass scattered over the meadow and around the platforms
-        var tufts = batches.For(SceneTextures.GrassTuft);
         for (int i = 0; i < 140; i++)
         {
             float x = -26f + GroundBaker.Rand01(i, 5, 11) * 44f;
             float z = -9f + GroundBaker.Rand01(i, 6, 11) * 28f;
             if (Vector2.Distance(new(x, z), new(EnemySpot.X, EnemySpot.Z)) < EnemyPlatformRadius + 0.2f) continue;
             if (Vector2.Distance(new(x, z), new(PlayerSpot.X, PlayerSpot.Z)) < PlayerPlatformRadius + 0.2f) continue;
-            if (ArtLook.ModelBattle) SoftFoliage.Tuft(batches.For(SceneTextures.White), x, z, 0.7f, 0.42f, i);
-            else TreeModels.Crossed(tufts, x, z, 0.7f, 0.45f, i);
+            SoftFoliage.Tuft(batches.For(SceneTextures.White), x, z, 0.7f, 0.42f, i);
         }
 
         return new BattleStage(SceneMeshes.Upload(batches, shaders));

@@ -10,62 +10,21 @@ namespace PokemonPlatinumEngine.Graphics;
 
 public static class RenderHelper
 {
-    // Bold UI fonts commonly installed on each platform; Raylib's built-in pixel font is the fallback
-    private static readonly string[] FontCandidates =
-    {
-        "C:/Windows/Fonts/segoeuib.ttf",
-        "C:/Windows/Fonts/arialbd.ttf",
-        "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
-        "/Library/Fonts/Arial Bold.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
-        "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf",
-        "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"
-    };
+    // The older screens share the interface typeface until G3 rebuilds them with the UI kit
+    private static Font UiFont => UI.Kit.UiFonts.Get(UI.Kit.UiWeight.ExtraBold);
 
-    private static Font? uiFont;
-    private static bool usingDefaultFont;
-
-    private static Font UiFont
-    {
-        get
-        {
-            // The vector interface uses its own typeface everywhere
-            if (ArtLook.VectorUi) return UI.Kit.UiFonts.Get(UI.Kit.UiWeight.ExtraBold);
-            if (uiFont.HasValue) return uiFont.Value;
-
-            string? path = FontCandidates.FirstOrDefault(File.Exists);
-            if (path != null)
-            {
-                // Latin-1 covers accented letters used in the game text (é in Pokémon, ¥)
-                int[] codepoints = Enumerable.Range(32, 224).ToArray();
-                var font = Raylib.LoadFontEx(path, 72, codepoints, codepoints.Length);
-                if (font.Texture.Id != 0)
-                {
-                    Raylib.GenTextureMipmaps(ref font.Texture);
-                    Raylib.SetTextureFilter(font.Texture, TextureFilter.Trilinear);
-                    uiFont = font;
-                    return font;
-                }
-            }
-
-            usingDefaultFont = true;
-            uiFont = Raylib.GetFontDefault();
-            return uiFont.Value;
-        }
-    }
-
-    private static float Spacing(int fontSize) => usingDefaultFont && !ArtLook.VectorUi ? fontSize / 10f : 0.5f;
+    private const float Spacing = 0.5f;
 
     public static void DrawText(string text, int x, int y, int fontSize, Color color)
     {
         var font = UiFont;
-        Raylib.DrawTextEx(font, text, new Vector2(x, y), fontSize, Spacing(fontSize), color);
+        Raylib.DrawTextEx(font, text, new Vector2(x, y), fontSize, Spacing, color);
     }
 
     public static int MeasureText(string text, int fontSize)
     {
         var font = UiFont;
-        return (int)MathF.Ceiling(Raylib.MeasureTextEx(font, text, fontSize, Spacing(fontSize)).X);
+        return (int)MathF.Ceiling(Raylib.MeasureTextEx(font, text, fontSize, Spacing).X);
     }
 
     public static void DrawPlatinumPanel(int x, int y, int width, int height, Color? bgColor = null)

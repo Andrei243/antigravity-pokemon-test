@@ -92,7 +92,7 @@ public class PartyScreen
     {
         if (!IsActive) return;
 
-        if (!ShowSummary && ArtLook.VectorUi)
+        if (!ShowSummary || SelectedIndex >= party.Count)
         {
             ModernUi.DrawParty(screenWidth, screenHeight, party, SelectedIndex, SwapSourceIndex);
             return;
@@ -105,51 +105,8 @@ public class PartyScreen
         RenderHelper.DrawTextWithShadow("POKÉMON PARTY", 54, 36, 26, Palette.UiAccent);
         RenderHelper.DrawTextWithShadow("Z: Summary   |   Shift / X: Move Slot   |   Esc: Back", screenWidth - 520, 40, 18, Palette.TextDark);
 
-        if (ShowSummary && SelectedIndex < party.Count)
-        {
-            DrawPokemonSummary(screenWidth, screenHeight, party.Members[SelectedIndex]);
-            return;
-        }
-
-        int startY = 100;
-        int slotHeight = 136;
-
-        for (int i = 0; i < party.Count; i++)
-        {
-            var pkmn = party.Members[i];
-            int sy = startY + i * (slotHeight + 16);
-
-            bool isSelected = SelectedIndex == i;
-            bool isSwapping = SwapSourceIndex == i;
-
-            Color bgColor = isSwapping ? new Color(255, 230, 200, 255) : isSelected ? Color.White : Palette.UiPanelBg;
-            RenderHelper.DrawPlatinumPanel(40, sy, screenWidth - 80, slotHeight, bgColor);
-
-            // Icon (1.8x scale)
-            var icon = PixelArtGenerator.GetPokemonIcon(pkmn.Species.Name);
-            Raylib.DrawTextureEx(icon, new Vector2(60, sy + 18), 0f, 2.0f, Color.White);
-
-            // Name & Level
-            RenderHelper.DrawTextWithShadow(pkmn.DisplayName, 190, sy + 34, 28, isSelected ? Palette.UiAccent : Palette.TextDark);
-            RenderHelper.DrawTextWithShadow($"Lv.{pkmn.Level}", 480, sy + 38, 24, Palette.TextDark);
-
-            // Type Badge
-            RenderHelper.DrawTypeBadge(620, sy + 34, pkmn.Species.PrimaryType, 110, 34);
-
-            // HP Bar & Text
-            RenderHelper.DrawHPBar(780, sy + 36, 560, 28, pkmn.CurrentHP, pkmn.MaxHP);
-            string hpStr = $"{pkmn.CurrentHP} / {pkmn.MaxHP}";
-            RenderHelper.DrawTextWithShadow(hpStr, 1370, sy + 38, 24, Palette.TextDark);
-
-            // Status
-            RenderHelper.DrawStatusBadge(1560, sy + 36, pkmn.Status);
-
-            if (i == 0)
-            {
-                Raylib.DrawRectangle(screenWidth - 190, sy + 34, 80, 32, Palette.UiAccentSecondary);
-                RenderHelper.DrawTextWithShadow("LEAD", screenWidth - 176, sy + 40, 18, Color.White);
-            }
-        }
+        // The summary keeps its older layout until G10 rebuilds it
+        DrawPokemonSummary(screenWidth, screenHeight, party.Members[SelectedIndex]);
     }
 
     private static void DrawPokemonSummary(int screenWidth, int screenHeight, Pokemon pkmn)

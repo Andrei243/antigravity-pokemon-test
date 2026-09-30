@@ -9,18 +9,18 @@ namespace PokemonPlatinumEngine.Graphics;
 /// </summary>
 internal sealed class ShadowMap
 {
-    public const int Resolution = 2048;
-
     private RenderTexture2D target;
     private bool loaded;
 
+    public int Resolution { get; private set; } = 2048;
     public RenderTexture2D Target => target;
     public uint DepthTextureId => target.Depth.Id;
     public float Texel => 1f / Resolution;
 
-    public void Load()
+    public void Load(int resolution)
     {
         if (loaded) return;
+        Resolution = resolution;
         target = new RenderTexture2D { Id = Rlgl.LoadFramebuffer() };
         target.Texture.Width = Resolution;
         target.Texture.Height = Resolution;
@@ -53,7 +53,7 @@ internal sealed class ShadowMap
     /// <paramref name="extent"/> world units. The centre is snapped to whole shadow-map texels so shadow
     /// edges stay still while the view scrolls.
     /// </summary>
-    public static Camera3D LightCamera(Vector3 focus, Vector3 sunDirection, float extent)
+    public Camera3D LightCamera(Vector3 focus, Vector3 sunDirection, float extent)
     {
         var forward = -Vector3.Normalize(sunDirection);
         var right = Vector3.Normalize(Vector3.Cross(forward, Vector3.UnitY));

@@ -155,7 +155,7 @@ internal static class CharacterModels
     /// <summary>The GPU-ready rig for a character type (built and uploaded on first use).</summary>
     public static CharacterRig Get(string npcType, Shader characterShader)
     {
-        string key = $"{ArtLook.Direction}|{npcType}";
+        string key = npcType;
         if (Cache.TryGetValue(key, out var rig)) return rig;
         rig = Build(npcType);
         Upload(rig, characterShader);

@@ -98,17 +98,19 @@ internal static class ModernUi
 
     // ------------------------------------------------------------------ battle
 
-    /// <summary>Draws the battle HUD; returns false for menu states the prototype doesn't cover.</summary>
+    /// <summary>
+    /// Draws the HP boxes, move effects and the bottom panel. Returns false for the menus not rebuilt yet (switching
+    /// and the bag), whose panels the caller draws.
+    /// </summary>
     public static bool DrawBattle(BattleHUD hud, int sw, int sh, Pokemon active, Party? trainerParty, string message, BattleVFX vfx, BattleAnimator anim)
     {
-        if (hud.MenuState is BattleMenuState.SwitchPokemon or BattleMenuState.SelectBagItem) return false;
-
         float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
         if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy);
         float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
         if (playerSlide >= 0f) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
 
         vfx.Draw();
+        if (hud.MenuState is BattleMenuState.SwitchPokemon or BattleMenuState.SelectBagItem) return false;
 
         switch (hud.MenuState)
         {

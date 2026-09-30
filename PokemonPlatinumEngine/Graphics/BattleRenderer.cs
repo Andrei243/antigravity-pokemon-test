@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Draws a battle: the lit 3D stage (with the trainers on their platforms), then both Pokémon as live pixel-art
-/// sprites rendered from their 3D models and composited with send-out, attack, hit, faint and capture effects.
+/// Draws a battle in 3D: the modelled stage under the time of day's sky and light, the trainers on their
+/// platforms, and both Pokémon as lit, shadowed models with send-out, attack, hit, faint and capture animations.
 /// </summary>
 public sealed class BattleRenderer
 {
     private const float PlatformTop = 0.16f;
+    private const float Near = 0.5f, Far = 300f;
 
     private readonly RenderContext context;
-    private readonly Dictionary<(ArtDirection, TreeStyle), BattleStage> stages = new(); // per look and forest style, built on first use
-    private LiveSprite? playerSprite, enemySprite;
+    private readonly Dictionary<TreeStyle, BattleStage> stages = new(); // one per forest style, built on first use
     private Camera3D camera;
 
     // Layout projected from the 3D camera each frame, in virtual-screen pixels
@@ -29,30 +30,24 @@ public sealed class BattleRenderer
 
     public BattleRenderer(RenderContext context) => this.context = context;
 
-    /// <summary>Renders the stage and both sprites offscreen. Call outside any other texture mode.</summary>
+    /// <summary>Renders the stage and the Pokémon offscreen. Call outside any other texture mode.</summary>
     public void Render(BattleEngine battle)
     {
         context.EnsureLoaded();
-        if (!stages.TryGetValue((ArtLook.Direction, Trees), out var stage))
+        if (!stages.TryGetValue(Trees, out var stage))
         {
             stage = BattleStage.Build(context.Shaders, Trees);
-            stages[(ArtLook.Direction, Trees)] = stage;
+            stages[Trees] = stage;
         }
-        playerSprite ??= new LiveSprite();
-        enemySprite ??= new LiveSprite();
 
         var anim = battle.Anim;
         float shake = anim.ShakeAge >= 0f ? 1f - anim.ShakeAge / 0.4f : 0f;
         camera = BattleStage.Camera(anim.Time, shake);
-        UpdateLayout(anim.Time);
+        UpdateLayout();
 
-        if (!ArtLook.ModelBattle)
-        {
-            RenderPokemon(anim.Player, SpriteView.Back, playerSprite, anim.Time, 0.37f);
-            RenderPokemon(anim.Enemy, SpriteView.Front, enemySprite, anim.Time, 0f);
-        }
-        RenderStage(stage, anim);
-        context.PreparePost(ArtLook.BattlePost);
+        var rig = ArtLook.BattleRig(GameClock.Hour);
+        RenderStage(stage, anim, rig);
+        context.PreparePost(rig.Post, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
     }
 
     /// <summary>Draws the stage and the Pokémon into the current target (the virtual screen).</summary>
@@ -61,13 +56,13 @@ public sealed class BattleRenderer
         if (!context.Loaded) return;
         context.Composite(new Rectangle(0, 0, screenWidth, screenHeight));
         var anim = battle.Anim;
-        DrawPokemon(anim, anim.Enemy, enemySprite, SpriteView.Front, enemyFeet, enemyScale, isPlayer: false, screenWidth);
-        DrawPokemon(anim, anim.Player, playerSprite, SpriteView.Back, playerFeet, playerScale, isPlayer: true, screenWidth);
+        DrawSendOutRing(Appear(anim, anim.Enemy, isPlayer: false), enemyFeet, PokemonSprites.Size * enemyScale, enemyScale);
+        DrawSendOutRing(Appear(anim, anim.Player, isPlayer: true), playerFeet, PokemonSprites.Size * playerScale, playerScale);
     }
 
     // ------------------------------------------------------------------ layout
 
-    private void UpdateLayout(float time)
+    private void UpdateLayout()
     {
         Vector2 Project(Vector3 p) => Raylib.GetWorldToScreenEx(p, camera, context.Width, context.Height);
         var up = new Vector3(0, PlatformTop, 0);
@@ -79,9 +74,9 @@ public sealed class BattleRenderer
         float playerWidth = Vector2.Distance(Project(BattleStage.PlayerSpot + up - Vector3.UnitX * BattleStage.PlayerPlatformRadius),
             Project(BattleStage.PlayerSpot + up + Vector3.UnitX * BattleStage.PlayerPlatformRadius));
 
-        // Sprites scale with their platforms; once the camera settles, snap to half steps so pixels stay even
-        enemyScale = Snap(enemyWidth / 158f, time);
-        playerScale = Snap(playerWidth / 150f, time);
+        // Screen size of a 128-px sprite frame on each platform (the size rule the 3D models follow)
+        enemyScale = enemyWidth / 158f;
+        playerScale = playerWidth / 150f;
 
         BattleHUD.EnemyFeet = enemyFeet;
         BattleHUD.PlayerFeet = playerFeet;
@@ -89,33 +84,16 @@ public sealed class BattleRenderer
         BattleHUD.PlayerCenter = playerFeet - new Vector2(0, 58 * playerScale);
     }
 
-    private static float Snap(float scale, float time) => time < 1.8f ? scale : MathF.Round(scale * 2f) / 2f;
-
     // ------------------------------------------------------------------ offscreen passes
 
-    private void RenderPokemon(CombatantView view, SpriteView side, LiveSprite sprite, float time, float phase)
-    {
-        if (view.Shown == null) return;
-        var model = PokemonModels.Get(view.Shown.Species.Name);
-        var pose = new PokePose
-        {
-            // Stepped at 15 frames a second, like hand-animated sprites
-            Time = MathF.Floor((time + phase) * 15f) / 15f,
-            Blink = (time + phase * 3f) % 3.3f < 0.12f ? 1f : 0f,
-            Attack = Math.Max(0f, BattleAnimator.Progress(view.AttackAge, BattleAnimator.AttackTime)),
-            Hurt = Math.Max(0f, BattleAnimator.Progress(view.HitAge, BattleAnimator.HitTime))
-        };
-        PokemonSprites.Render(context, model, side, pose, sprite.Target);
-    }
-
-    private void RenderStage(BattleStage stage, BattleAnimator anim)
+    private void RenderStage(BattleStage stage, BattleAnimator anim, LightRig rig)
     {
         var shaders = context.Shaders;
-        var light = stage.Lighting;
+        var light = rig.Light;
         shaders.SetTime(anim.Time);
 
         // 1. Shadow map over the whole field
-        var lightCamera = ShadowMap.LightCamera(new Vector3(-6f, 0, -6f), light.SunDirection, 72f);
+        var lightCamera = context.Shadows.LightCamera(new Vector3(-6f, 0, -6f), light.SunDirection, 72f);
         Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
         Rlgl.SetClipPlanes(1.0, 200.0);
@@ -131,25 +109,17 @@ public sealed class BattleRenderer
         Raylib.EndTextureMode();
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
-        shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: ArtLook.ModelBattle ? 0.3f : 0.45f);
+        shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
         shaders.SetWorldRamp(ArtLook.BattleRamp);
+        shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
 
         // 2. Sky, then the field
         var target = context.Target;
         int tw = target.Texture.Width, th = target.Texture.Height;
         Raylib.BeginTextureMode(target);
-        if (!ArtLook.ModelBattle)
-        {
-            Raylib.ClearBackground(new Color(214, 236, 252, 255));
-            Raylib.DrawRectangleGradientV(0, 0, tw, th / 2, new Color(112, 178, 244, 255), new Color(214, 236, 252, 255));
-            DrawClouds(anim.Time, tw, th);
-        }
-        else
-        {
-            SkyPainter.Draw(anim.Time, tw, th);
-        }
+        SkyPainter.Draw(anim.Time, tw, th, rig.Sky);
 
-        Rlgl.SetClipPlanes(0.5, 300.0);
+        Rlgl.SetClipPlanes(Near, Far);
         Raylib.BeginMode3D(camera);
         Rlgl.DisableBackfaceCulling();
         context.BindShadowMap();
@@ -168,24 +138,7 @@ public sealed class BattleRenderer
         Rlgl.SetClipPlanes(0.01, 1000.0);
     }
 
-    private static void DrawClouds(float time, int width, int height)
-    {
-        var cloud = new Color(252, 253, 255, 235);
-        var shade = new Color(224, 234, 246, 235);
-        for (int i = 0; i < 5; i++)
-        {
-            float span = width + 900f;
-            float x = (i * 830f + time * (14f + i * 3f)) % span - 450f;
-            float y = height * (0.04f + (i % 3) * 0.05f);
-            float s = 1f + (i % 2) * 0.4f;
-            Raylib.DrawEllipse((int)x, (int)(y + 26 * s), 190 * s, 40 * s, shade);
-            Raylib.DrawEllipse((int)x, (int)y, 180 * s, 50 * s, cloud);
-            Raylib.DrawEllipse((int)(x - 80 * s), (int)(y + 8 * s), 100 * s, 44 * s, cloud);
-            Raylib.DrawEllipse((int)(x + 70 * s), (int)(y - 16 * s), 110 * s, 58 * s, cloud);
-        }
-    }
-
-    /// <summary>Soft round shadows on the platforms under the Pokémon (their sprites are drawn in 2D later).</summary>
+    /// <summary>Soft contact shadows on the platforms under the Pokémon, below their cast shadows.</summary>
     private static void DrawPokemonShadows(BattleAnimator anim)
     {
         var tex = SceneTextures.ShadowBlob;
@@ -250,7 +203,7 @@ public sealed class BattleRenderer
         return 1f + c3 * MathF.Pow(t - 1f, 3f) + c1 * MathF.Pow(t - 1f, 2f);
     }
 
-    /// <summary>How a Pokémon looks this frame, shared by the 2D sprites and the 3D models.</summary>
+    /// <summary>How a Pokémon looks this frame.</summary>
     private struct Appearance
     {
         public bool Visible;
@@ -258,17 +211,15 @@ public sealed class BattleRenderer
         public float Lunge;           // 0..1 toward the opponent
         public float Shake;           // -1..1 sideways jolt after a hit
         public float Sink;            // 0..1 of its height sunk below the platform while fainting
-        public float Alpha;
         public float Flash;
         public Color FlashColor;
         public float Silhouette;      // 0..1 dark silhouette of a wild Pokémon before the camera settles
         public float SendOut;         // send-out progress for the ring effect (-1 when not sending out)
-        public bool Clipped;          // fainting: hide whatever sinks below the platform edge
     }
 
     private static Appearance Appear(BattleAnimator anim, CombatantView v, bool isPlayer)
     {
-        var a = new Appearance { Grow = 1f, Alpha = 1f, FlashColor = Color.White, SendOut = -1f, Visible = true };
+        var a = new Appearance { Grow = 1f, FlashColor = Color.White, SendOut = -1f, Visible = true };
         bool fainting = v.FaintAge >= 0f, recalling = v.RecallAge >= 0f, capturing = v.CaptureAge >= 0f;
         if (v.Shown == null || (!v.Present && !fainting && !recalling && !capturing))
         {
@@ -297,13 +248,11 @@ public sealed class BattleRenderer
             a.Shake = MathF.Sin(p * 48f) * (1f - p);
         }
 
-        // Faint: slide down behind the edge of the platform while fading
+        // Faint: sink into the platform, which hides the model as it goes
         if (fainting && v.FaintDelay <= 0f)
         {
             p = Math.Clamp(v.FaintAge / BattleAnimator.FaintTime, 0f, 1f);
             a.Sink = p * p;
-            a.Alpha = 1f - p * 0.5f;
-            a.Clipped = true;
         }
 
         // Recall or capture: shrink away into a red beam of light
@@ -341,46 +290,6 @@ public sealed class BattleRenderer
             var spark = center + new Vector2(MathF.Cos(ang), MathF.Sin(ang) * 0.6f) * ring * 1.15f;
             Raylib.DrawCircleV(spark, 7f * (1f - p) * scale / 3f, new Color(255, 250, 200, (int)(255 * (1f - p))));
         }
-    }
-
-    private static void DrawPokemon(BattleAnimator anim, CombatantView v, LiveSprite? sprite, SpriteView view, Vector2 feet, float scale,
-        bool isPlayer, int screenWidth)
-    {
-        if (v.Shown == null) return;
-        var a = Appear(anim, v, isPlayer);
-        float size = PokemonSprites.Size * scale;
-        DrawSendOutRing(a, feet, size, scale);
-
-        // 3D battles draw the Pokémon as models inside the scene; only the effects are 2D
-        if (ArtLook.ModelBattle || sprite == null || !a.Visible) return;
-
-        var framing = PokemonSprites.Framing(PokemonModels.Get(v.Shown.Species.Name), view, PokemonSprites.Size);
-        var offset = Vector2.Zero;
-        if (a.Lunge > 0f)
-        {
-            var dir = Vector2.Normalize(isPlayer ? new Vector2(1f, -0.45f) : new Vector2(-1f, 0.45f));
-            offset += dir * 22f * scale * a.Lunge;
-        }
-        offset.X += a.Shake * 4f * scale;
-        offset.Y += a.Sink * size;
-        float clipBelow = a.Clipped ? feet.Y + 4f : -1f;
-        var tint = PixelCanvas.Mix(Color.White, SilhouetteColor, a.Silhouette);
-
-        float drawSize = size * a.Grow;
-        var anchor = feet + offset;
-        var dest = new Rectangle(MathF.Round(anchor.X - drawSize / 2f), MathF.Round(anchor.Y - framing.FeetRow * drawSize), drawSize, drawSize);
-        var src = new Rectangle(0, 0, sprite.Target.Texture.Width, -sprite.Target.Texture.Height);
-
-        if (clipBelow > 0f) Raylib.BeginScissorMode(0, 0, screenWidth, (int)clipBelow);
-        Raylib.DrawTexturePro(sprite.Target.Texture, src, dest, Vector2.Zero, 0f, new Color(tint.R, tint.G, tint.B, (int)(255 * a.Alpha)));
-        if (a.Flash > 0f)
-        {
-            Raylib.BeginBlendMode(BlendMode.Additive);
-            Raylib.DrawTexturePro(sprite.Target.Texture, src, dest, Vector2.Zero, 0f,
-                new Color(a.FlashColor.R, a.FlashColor.G, a.FlashColor.B, (int)(255 * Math.Clamp(a.Flash, 0f, 1f))));
-            Raylib.EndBlendMode();
-        }
-        if (clipBelow > 0f) Raylib.EndScissorMode();
     }
 
     private static readonly Matrix4x4[] BoneMatrices = new Matrix4x4[64];
@@ -445,15 +354,7 @@ public sealed class BattleRenderer
 
     private void DrawPokemon3D(BattleAnimator anim, CharacterPass pass)
     {
-        if (!ArtLook.ModelBattle) return;
         DrawPokemon3D(anim, anim.Enemy, isPlayer: false, pass);
         DrawPokemon3D(anim, anim.Player, isPlayer: true, pass);
-    }
-
-    public void Unload()
-    {
-        playerSprite?.Unload();
-        enemySprite?.Unload();
-        playerSprite = enemySprite = null;
     }
 }

@@ -109,7 +109,8 @@ internal static class CharacterSprites
         if (!Cache.TryGetValue(key, out var baked)) return;
 
         // The sprite's bottom row is a little below the feet (the frame leaves a margin under the shoes)
-        var m = Matrix4x4.CreateScale(FrameW, FrameH * vs, 1f) * Matrix4x4.CreateTranslation(feet + new Vector3(0, -0.05f * vs, 0.02f));
+        var at = new Vector3(WorldRenderer.SnapToTexel(feet.X), feet.Y, WorldRenderer.SnapToTexel(feet.Z));
+        var m = Matrix4x4.CreateScale(FrameW, FrameH * vs, 1f) * Matrix4x4.CreateTranslation(at + new Vector3(0, -0.05f * vs, 0.02f));
         Raylib.DrawMesh(quad, pass == CharacterPass.Depth ? baked.Depth : baked.Color, Matrix4x4.Transpose(m));
     }
 }

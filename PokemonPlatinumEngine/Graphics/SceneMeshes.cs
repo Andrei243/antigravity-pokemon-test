@@ -6,7 +6,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>How a batch of static geometry is shaded.</summary>
-internal enum MeshPass { Opaque, Ground, Water }
+internal enum MeshPass { Opaque, Ground, Water, Glow }
 
 /// <summary>Collects static geometry into one mesh per texture and pass, which keeps draw calls low.</summary>
 internal sealed class MeshBatches
@@ -30,30 +30,37 @@ internal sealed class MeshBatches
 }
 
 /// <summary>
-/// Uploaded static scenery: each batch drawn with the lit field shader (or the water shader), and the opaque
-/// batches drawn again into the shadow map.
+/// Uploaded static scenery: each batch drawn with the lit scene shader (or the water shader), and the opaque
+/// batches drawn again into the shadow map. Glazed batches (windows, glass doors) glow after dark.
 /// </summary>
 internal sealed class SceneMeshes
 {
-    private sealed record Part(Mesh Mesh, Material Main, Material? Depth);
+    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, bool Glows);
     private readonly List<Part> parts = new();
+    private FieldShaders shaders = null!;
 
     public static SceneMeshes Upload(MeshBatches batches, FieldShaders shaders)
     {
-        var result = new SceneMeshes();
+        var result = new SceneMeshes { shaders = shaders };
         foreach (var (tex, pass, builder) in batches.All)
         {
             if (builder.VertexCount == 0) continue;
             var main = RenderContext.MaterialFor(pass == MeshPass.Water ? shaders.Water : shaders.World, tex);
-            Material? depth = pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
-            result.parts.Add(new Part(builder.Upload(), main, depth));
+            Material? depth = pass is MeshPass.Opaque or MeshPass.Glow ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
+            result.parts.Add(new Part(builder.Upload(), main, depth, pass == MeshPass.Glow));
         }
         return result;
     }
 
-    public void Draw()
+    /// <param name="glow">How brightly windows and glass doors are lit from inside (0 by day).</param>
+    public void Draw(float glow = 0f)
     {
-        foreach (var part in parts) Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
+        foreach (var part in parts)
+        {
+            if (part.Glows) shaders.SetGlow(glow);
+            Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
+            if (part.Glows) shaders.SetGlow(0f);
+        }
     }
 
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>

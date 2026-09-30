@@ -22,8 +22,8 @@ internal sealed class SpriteFraming
 }
 
 /// <summary>
-/// Renders the 3D Pokémon models into low-resolution pixel-art sprites: live every frame for battles (so they
-/// animate), and once at start-up for the menus.
+/// Renders the 3D Pokémon models into low-resolution pixel-art sprites for the menus (2D sprites, as in the main
+/// games), baked once at start-up. Also holds the outline hulls battles use when they draw the models in 3D.
 /// </summary>
 internal static class PokemonSprites
 {
@@ -197,16 +197,3 @@ internal static class PokemonSprites
         Baked.TryGetValue(Key(name, view), out var tex) ? tex : null;
 }
 
-/// <summary>A render target that holds one live, animated battle sprite.</summary>
-internal sealed class LiveSprite
-{
-    public RenderTexture2D Target { get; }
-
-    public LiveSprite()
-    {
-        Target = Raylib.LoadRenderTexture(PokemonSprites.Size, PokemonSprites.Size);
-        Raylib.SetTextureFilter(Target.Texture, TextureFilter.Point);
-    }
-
-    public void Unload() => Raylib.UnloadRenderTexture(Target);
-}

@@ -1,17 +1,17 @@
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// GPU resources shared by the 3D renderers (field and battle): shaders, the sun's shadow map, a supersampled
-/// scene target, half-resolution blur and bloom chains, and the materials used for characters. Only one 3D
-/// scene is rendered per frame, so they can share everything.
+/// GPU resources shared by the 3D renderers (field and battle): shaders, the sun's shadow map, the scene target
+/// (supersampled on the high preset, with a depth texture the post passes can read), half-resolution blur,
+/// bloom and ambient-occlusion buffers, and the materials used for characters. Only one 3D scene is rendered per
+/// frame, so they can share everything.
 /// </summary>
 public sealed class RenderContext
 {
-    public const int SuperSample = 2;
-
     public int Width { get; }
     public int Height { get; }
 
@@ -22,9 +22,16 @@ public sealed class RenderContext
     internal Material Outline { get; private set; }
     internal Material Depth { get; private set; }
 
-    // Half-resolution ping-pong pairs: a blurred copy of the scene (depth of field) and its glow (bloom)
-    private RenderTexture2D blurA, blurB, bloomA, bloomB;
+    /// <summary>What the current graphics preset turns on.</summary>
+    public QualityProfile Quality { get; private set; } = QualityProfile.For(GraphicsQuality.High);
+
+    // Half-resolution ping-pong pairs: a blurred copy of the scene (depth of field), its glow (bloom), and
+    // ambient occlusion
+    private RenderTexture2D blurA, blurB, bloomA, bloomB, aoA, aoB;
     private PostSettings post;
+    private DepthRange depthRange = new(1f, 100f, 30f, 16f / 9f);
+    private GraphicsQuality? pendingQuality;
+    private bool targetsLoaded;
 
     public bool Loaded { get; private set; }
 
@@ -34,22 +41,72 @@ public sealed class RenderContext
         Height = height;
     }
 
+    /// <summary>Requests a preset; it takes effect before the next frame is rendered.</summary>
+    public void SetQuality(GraphicsQuality quality) => pendingQuality = quality;
+
     public void EnsureLoaded()
     {
-        if (Loaded) return;
-        Target = Raylib.LoadRenderTexture(Width * SuperSample, Height * SuperSample);
-        Raylib.SetTextureFilter(Target.Texture, TextureFilter.Bilinear);
+        if (pendingQuality.HasValue)
+        {
+            var profile = QualityProfile.For(pendingQuality.Value);
+            pendingQuality = null;
+            if (profile != Quality)
+            {
+                // Only the targets depend on the preset; shaders stay, since cached materials refer to them
+                UnloadTargets();
+                Quality = profile;
+            }
+        }
+        if (!Loaded)
+        {
+            Shaders.Load();
+            Toon = MaterialFor(Shaders.Character, SceneTextures.White);
+            Outline = MaterialFor(Shaders.Outline, SceneTextures.White);
+            Depth = MaterialFor(Shaders.Depth, SceneTextures.White);
+            Loaded = true;
+        }
+        if (targetsLoaded) return;
+
+        Target = LoadSceneTarget(Width * Quality.SuperSample, Height * Quality.SuperSample);
         blurA = HalfTarget();
         blurB = HalfTarget();
         bloomA = HalfTarget();
         bloomB = HalfTarget();
-        Shaders.Load();
-        Shadows.Load();
+        aoA = HalfTarget();
+        aoB = HalfTarget();
+        Shadows.Load(Quality.ShadowMapSize);
+        Shaders.SetShadowQuality(Quality.ShadowTaps, 1.8f);
+        targetsLoaded = true;
+    }
 
-        Toon = MaterialFor(Shaders.Character, SceneTextures.White);
-        Outline = MaterialFor(Shaders.Outline, SceneTextures.White);
-        Depth = MaterialFor(Shaders.Depth, SceneTextures.White);
-        Loaded = true;
+    /// <summary>A colour target whose depth is a texture (raylib's own render textures keep depth in a renderbuffer).</summary>
+    private static unsafe RenderTexture2D LoadSceneTarget(int width, int height)
+    {
+        var rt = new RenderTexture2D { Id = Rlgl.LoadFramebuffer() };
+        Rlgl.EnableFramebuffer(rt.Id);
+        rt.Texture = new Texture2D
+        {
+            Id = Rlgl.LoadTexture(null, width, height, PixelFormat.UncompressedR8G8B8A8, 1),
+            Width = width,
+            Height = height,
+            Format = PixelFormat.UncompressedR8G8B8A8,
+            Mipmaps = 1
+        };
+        rt.Depth = new Texture2D
+        {
+            Id = Rlgl.LoadTextureDepth(width, height, false),
+            Width = width,
+            Height = height,
+            Format = (PixelFormat)19,
+            Mipmaps = 1
+        };
+        Rlgl.FramebufferAttach(rt.Id, rt.Texture.Id, FramebufferAttachType.ColorChannel0, FramebufferAttachTextureType.Texture2D, 0);
+        Rlgl.FramebufferAttach(rt.Id, rt.Depth.Id, FramebufferAttachType.Depth, FramebufferAttachTextureType.Texture2D, 0);
+        Rlgl.FramebufferComplete(rt.Id);
+        Rlgl.DisableFramebuffer();
+        Raylib.SetTextureFilter(rt.Texture, TextureFilter.Bilinear);
+        Raylib.SetTextureWrap(rt.Texture, TextureWrap.Clamp);
+        return rt;
     }
 
     private RenderTexture2D HalfTarget()
@@ -68,7 +125,7 @@ public sealed class RenderContext
         return material;
     }
 
-    /// <summary>Binds the shadow map for sampling by the field shaders.</summary>
+    /// <summary>Binds the shadow map for sampling by the scene shaders.</summary>
     internal void BindShadowMap()
     {
         Rlgl.ActiveTextureSlot(FieldShaders.ShadowMapSlot);
@@ -84,35 +141,47 @@ public sealed class RenderContext
     }
 
     /// <summary>
-    /// Chooses the grading for the next composite and, when it needs them, renders the blurred and glowing copies
-    /// of the scene target. Call after the scene is rendered, outside any other texture mode.
+    /// Chooses the grading for the next composite and renders what it needs from the scene target: the blurred
+    /// and glowing copies, and ambient occlusion from the depth buffer (<paramref name="depth"/> describes the
+    /// camera that drew it). Call after the scene is rendered, outside any other texture mode.
     /// </summary>
-    internal void PreparePost(PostSettings settings)
+    internal void PreparePost(PostSettings settings, DepthRange depth, float aoRadius = 0.6f)
     {
         post = settings;
-        if (!Loaded) return;
-        if (settings.Dof > 0f)
+        depthRange = depth;
+        if (!Quality.DepthOfField) post = post with { Dof = 0f };
+        if (!Quality.AmbientOcclusion) post = post with { AoStrength = 0f };
+        if (!targetsLoaded) return;
+
+        if (post.Dof > 0f)
         {
             Pass(Target.Texture, blurA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), 1f));
-            BlurChain(blurA, blurB, 1.5f);
+            BlurChain(blurA, blurB, 1.5f, rounds: 2);
         }
-        if (settings.BloomStrength > 0f)
+        if (post.BloomStrength > 0f)
         {
-            Pass(Target.Texture, bloomA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), settings.BloomThreshold));
-            BlurChain(bloomA, bloomB, 1.2f);
+            Pass(Target.Texture, bloomA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), post.BloomThreshold));
+            BlurChain(bloomA, bloomB, 1.2f, rounds: 2);
+        }
+        if (post.AoStrength > 0f)
+        {
+            Pass(Target.Depth, aoA, Shaders.Ssao, () => Shaders.SetSsao(Texel(Target.Depth), depth, aoRadius));
+            BlurChain(aoA, aoB, 0.8f, rounds: 1);
         }
     }
 
     private static Vector2 Texel(Texture2D t) => new(1f / t.Width, 1f / t.Height);
 
-    /// <summary>Two rounds of separable blur, the second twice as wide, ending back in <paramref name="a"/>.</summary>
-    private void BlurChain(RenderTexture2D a, RenderTexture2D b, float radius)
+    /// <summary>Rounds of separable blur, each twice as wide as the last, ending back in <paramref name="a"/>.</summary>
+    private void BlurChain(RenderTexture2D a, RenderTexture2D b, float radius, int rounds)
     {
         var texel = Texel(a.Texture);
-        foreach (float r in new[] { radius, radius * 2.2f })
+        float r = radius;
+        for (int i = 0; i < rounds; i++, r *= 2.2f)
         {
-            Pass(a.Texture, b, Shaders.Blur, () => Shaders.SetBlur(new Vector2(texel.X * r, 0)));
-            Pass(b.Texture, a, Shaders.Blur, () => Shaders.SetBlur(new Vector2(0, texel.Y * r)));
+            float rr = r;
+            Pass(a.Texture, b, Shaders.Blur, () => Shaders.SetBlur(new Vector2(texel.X * rr, 0)));
+            Pass(b.Texture, a, Shaders.Blur, () => Shaders.SetBlur(new Vector2(0, texel.Y * rr)));
         }
     }
 
@@ -129,25 +198,34 @@ public sealed class RenderContext
         Raylib.EndTextureMode();
     }
 
-    /// <summary>Draws the scene target into the current target, filtered down, with tilt-shift, bloom and colour grading.</summary>
+    /// <summary>Draws the scene target into the current target with the post effects and colour grading.</summary>
     public void Composite(Rectangle destination)
     {
-        if (!Loaded) return;
-        Shaders.SetPost(Texel(Target.Texture), post);
+        if (!targetsLoaded) return;
+        Shaders.SetPost(Texel(Target.Texture), post, depthRange, Quality.Fxaa, Quality.SuperSample);
         Raylib.BeginShaderMode(Shaders.Post);
-        Shaders.BindPostTextures(blurA.Texture, bloomA.Texture);
+        Shaders.BindPostTextures(blurA.Texture, bloomA.Texture, aoA.Texture, Target.Depth);
         var src = new Rectangle(0, 0, Target.Texture.Width, -Target.Texture.Height);
         Raylib.DrawTexturePro(Target.Texture, src, destination, Vector2.Zero, 0f, Color.White);
         Raylib.EndShaderMode();
     }
 
+    private void UnloadTargets()
+    {
+        if (!targetsLoaded) return;
+        Rlgl.UnloadFramebuffer(Target.Id);
+        Rlgl.UnloadTexture(Target.Texture.Id);
+        Rlgl.UnloadTexture(Target.Depth.Id);
+        foreach (var rt in new[] { blurA, blurB, bloomA, bloomB, aoA, aoB }) Raylib.UnloadRenderTexture(rt);
+        Shadows.Unload();
+        targetsLoaded = false;
+    }
+
     public void Unload()
     {
+        UnloadTargets();
         if (!Loaded) return;
-        Raylib.UnloadRenderTexture(Target);
-        foreach (var rt in new[] { blurA, blurB, bloomA, bloomB }) Raylib.UnloadRenderTexture(rt);
         Shaders.Unload();
-        Shadows.Unload();
         Loaded = false;
     }
 }

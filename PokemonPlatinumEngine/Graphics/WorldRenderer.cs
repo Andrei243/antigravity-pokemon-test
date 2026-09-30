@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Renders the field in 3D with Pokémon Platinum's camera: lit, shadowed terrain, buildings and rooms, and
-/// cel-shaded 3D characters. Each frame renders a shadow map from the sun, then the scene into a supersampled
-/// target, which is composited with a tilt-shift and colour-grading pass.
+/// Renders the HD-2D field with Pokémon Platinum's camera: pixel-art terrain, buildings and rooms in 3D, and
+/// characters as baked pixel sprites, lit by the time of day's light rig. Each frame renders a shadow map from the
+/// sun (or moon), then the scene into the scene target, which is composited with depth of field, bloom and grading.
 /// </summary>
 public sealed class WorldRenderer
 {
@@ -28,7 +29,7 @@ public sealed class WorldRenderer
 
     private MapScene GetScene(Map map)
     {
-        string key = $"{ArtLook.Direction}|{map.Name}";
+        string key = map.Name;
         if (!scenes.TryGetValue(key, out var scene))
         {
             scene = MapScene.Build(map, shaders);
@@ -43,7 +44,8 @@ public sealed class WorldRenderer
         context.EnsureLoaded();
         var scene = GetScene(map);
         lastWasIndoors = scene.Indoors;
-        var light = scene.Lighting;
+        var rig = ArtLook.FieldRig(GameClock.Hour, scene.Indoors);
+        var light = rig.Light;
 
         float time = (float)Raylib.GetTime();
         float px = player.PixelX / Player.TileSize + 0.5f;
@@ -53,14 +55,11 @@ public sealed class WorldRenderer
         shaders.SetTime(time);
         GatherActors(map, player, px, pz, lift, time);
         VerticalScale = scene.VS;
-        if (ArtLook.PixelField)
-        {
-            foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
-        }
+        foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
 
-        // 1. Shadow map: depth of everything that casts shadows, seen from the sun
+        // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
         var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
-        var lightCamera = ShadowMap.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
+        var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
 
         Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
@@ -70,41 +69,29 @@ public sealed class WorldRenderer
         var lightProjection = Rlgl.GetMatrixProjection();
         Rlgl.DisableBackfaceCulling();
         scene.DrawDepth();
-        DrawActors(CharacterPass.Depth, lean: 0f);
+        DrawActors(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
-        shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
+        shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
         shaders.SetWorldRamp(0f);
+        shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
 
         // 2. The scene itself, sampling the shadow map
+        float near = scene.Indoors ? 1f : 10f, far = scene.Indoors ? 100f : 140f;
         Raylib.BeginTextureMode(context.Target);
-        Raylib.ClearBackground(scene.Background);
-        if (scene.Indoors) Rlgl.SetClipPlanes(1.0, 100.0);
-        else Rlgl.SetClipPlanes(10.0, 140.0);
+        Raylib.ClearBackground(rig.Background);
+        Rlgl.SetClipPlanes(near, far);
 
         Raylib.BeginMode3D(camera);
         Rlgl.DisableBackfaceCulling();
         context.BindShadowMap();
 
-        scene.Draw();
+        scene.Draw(rig.WindowGlow);
         DrawContactShadows(map, px, pz, lift);
-        if (ArtLook.PixelField)
-        {
-            DrawActors(CharacterPass.Color, 0f);
-        }
-        else
-        {
-            DrawActors(CharacterPass.Color, ActorLean);
-
-            // Outline hulls only show their back faces
-            Rlgl.EnableBackfaceCulling();
-            DrawActors(CharacterPass.Outline, ActorLean);
-            Rlgl.DisableBackfaceCulling();
-        }
-
+        DrawActors(CharacterPass.Color);
         DrawSpottedBubbles(scene, map);
 
         Rlgl.EnableBackfaceCulling();
@@ -113,7 +100,7 @@ public sealed class WorldRenderer
 
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
-        context.PreparePost(ArtLook.FieldPost(scene.Indoors));
+        context.PreparePost(rig.Post, new DepthRange(near, far, camera.FovY, (float)width / height));
     }
 
     /// <summary>Composites the last rendered frame into the current target with tilt-shift blur and grading.</summary>
@@ -145,8 +132,14 @@ public sealed class WorldRenderer
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
         t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
 
+        // Scroll in whole texels of the pixel art, so textures and sprites don't shimmer as the view moves
+        t.X = SnapToTexel(t.X);
+        t.Z = SnapToTexel(t.Z);
+
         return new Camera3D(t + dir * MapScene.OutdoorDistance, t, Vector3.UnitY, MapScene.OutdoorFovYDeg, CameraProjection.Perspective);
     }
+
+    internal static float SnapToTexel(float v) => MathF.Round(v * CharacterSprites.TexelsPerUnit) / CharacterSprites.TexelsPerUnit;
 
     private static float ClampOrCenter(float v, float min, float max) =>
         min > max ? (min + max) / 2f : Math.Clamp(v, min, max);
@@ -190,9 +183,6 @@ public sealed class WorldRenderer
         }
     }
 
-    // Characters lean back a little so their faces read from the high field camera; shadows use the upright pose
-    private const float ActorLean = 12f * MathF.PI / 180f;
-
     private readonly List<Actor> actors = new();
 
     /// <summary>The current scene's vertical stretch, for HD-2D sprites.</summary>
@@ -224,20 +214,11 @@ public sealed class WorldRenderer
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
 
-    private void DrawActors(CharacterPass pass, float lean)
+    /// <summary>Each character is a pixel-art sprite baked from its 3D model, standing upright like the walls.</summary>
+    private void DrawActors(CharacterPass pass)
     {
-        if (ArtLook.PixelField)
-        {
-            // HD-2D: each character is a pixel-art sprite baked from its 3D model, standing upright like the walls
-            foreach (var actor in actors)
-                CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
-            return;
-        }
         foreach (var actor in actors)
-        {
-            var root = Matrix4x4.CreateRotationY(actor.Yaw) * Matrix4x4.CreateRotationX(-lean) * Matrix4x4.CreateTranslation(actor.Feet);
-            CharacterRenderer.Draw(context, actor.Rig, actor.Pose, root, pass, trueProportions: pass == CharacterPass.Depth);
-        }
+            CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
     }
 
     /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>

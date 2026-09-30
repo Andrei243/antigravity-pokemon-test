@@ -34,8 +34,6 @@ internal sealed class MapScene
     /// <summary>World height of one screen row: vertical sizes are divided by cos(pitch) so they read at full size.</summary>
     public float VS { get; }
     public int Margin { get; }
-    public Color Background { get; }
-    public SceneLighting Lighting { get; }
     public Vector3 RoomCenter { get; private set; }
 
     private SceneMeshes meshes = null!;
@@ -46,19 +44,12 @@ internal sealed class MapScene
         PitchDeg = map.IsIndoors ? IndoorPitchDeg : OutdoorPitchDeg;
         VS = 1f / MathF.Cos(PitchDeg * MathF.PI / 180f);
         Margin = map.IsIndoors ? 0 : OutdoorMargin;
-        Background = map.IsIndoors ? Color.Black : new Color(38, 100, 66, 255);
-
-        // Outdoors: bright sun from the upper left with cool sky light filling the shadows.
-        // Indoors: softer, warmer light coming in from the open front of the room.
-        Lighting = map.IsIndoors
-            ? new SceneLighting(Vector3.Normalize(new Vector3(-0.35f, 0.82f, 0.46f)), new Vector3(0.46f, 0.42f, 0.36f),
-                new Vector3(0.66f, 0.63f, 0.6f), new Vector3(0.52f, 0.47f, 0.42f))
-            : ArtLook.FieldDay;
     }
 
     // ------------------------------------------------------------------ drawing
 
-    public void Draw() => meshes.Draw();
+    /// <param name="glow">How brightly windows and glass doors are lit from inside.</param>
+    public void Draw(float glow) => meshes.Draw(glow);
 
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>
     public void DrawDepth() => meshes.DrawDepth();
@@ -71,8 +62,7 @@ internal sealed class MapScene
         var batches = new MeshBatches();
         var buildings = MapStructures.FindBuildings(map);
 
-        var ground = (ArtLook.PixelField && !map.IsIndoors ? PixelGround.Bake(map, scene.Margin, buildings)
-            : GroundBaker.BakeGround(map, scene.Margin, buildings)).ToTexture();
+        var ground = (map.IsIndoors ? GroundBaker.BakeInterior(map) : PixelGround.Bake(map, scene.Margin, buildings)).ToTexture();
         scene.AddGround(batches.For(ground, MeshPass.Ground), batches.For(SceneTextures.White, MeshPass.Ground));
 
         if (map.IsIndoors)
@@ -407,7 +397,7 @@ internal sealed class MapScene
 
         // Round window in the gable and a stone chimney on the left slope
         float gw = 0.46f, gy = wallH + 0.3f * VS;
-        batches.For(SceneTextures.GableWindow).Decal(new(xm - gw / 2, gy - gw * VS / 2, zF + 0.02f), new(xm + gw / 2, gy - gw * VS / 2, zF + 0.02f),
+        batches.For(SceneTextures.GableWindow, MeshPass.Glow).Decal(new(xm - gw / 2, gy - gw * VS / 2, zF + 0.02f), new(xm + gw / 2, gy - gw * VS / 2, zF + 0.02f),
             new(xm + gw / 2, gy + gw * VS / 2, zF + 0.02f), new(xm - gw / 2, gy + gw * VS / 2, zF + 0.02f), Color.White, South);
 
         float chX = xL + 0.55f, chZ = zBack + 0.6f;
@@ -471,7 +461,7 @@ internal sealed class MapScene
         {
             float cx = x + 0.5f;
             float w = house ? 0.66f : 0.98f, h = (house ? 1.08f : 1.05f) * VS;
-            var decal = batches.For(house ? SceneTextures.DoorWood : SceneTextures.DoorGlass);
+            var decal = batches.For(house ? SceneTextures.DoorWood : SceneTextures.DoorGlass, MeshPass.Glow);
             decal.Decal(new(cx - w / 2, 0, zF + 0.012f), new(cx + w / 2, 0, zF + 0.012f), new(cx + w / 2, h, zF + 0.012f), new(cx - w / 2, h, zF + 0.012f), Color.White, South);
             // Door frame and a stone step in front
             white.Box(new(cx - w / 2 - 0.07f, 0, zF), new(cx - w / 2, h + 0.06f, zF + 0.06f), frame, BoxFaces.Visible);
@@ -492,7 +482,7 @@ internal sealed class MapScene
             bool nearDoor = b.Doors.Exists(d => Math.Abs(d.X - x) <= 1);
             if (nearDoor || b.Plaques.Contains(x)) continue;
             float cx = x + 0.5f, w = 0.66f, h = 0.5f * VS, y0 = 0.55f * VS;
-            batches.For(SceneTextures.Window).Decal(new(cx - w / 2, y0, zF + 0.01f), new(cx + w / 2, y0, zF + 0.01f),
+            batches.For(SceneTextures.Window, MeshPass.Glow).Decal(new(cx - w / 2, y0, zF + 0.01f), new(cx + w / 2, y0, zF + 0.01f),
                 new(cx + w / 2, y0 + h, zF + 0.01f), new(cx - w / 2, y0 + h, zF + 0.01f), Color.White, South);
             // Frame and sill stand proud of the wall
             white.Box(new(cx - w / 2 - 0.05f, y0 + h, zF), new(cx + w / 2 + 0.05f, y0 + h + 0.05f * VS, zF + 0.05f), frame, BoxFaces.Visible);
@@ -522,7 +512,7 @@ internal sealed class MapScene
             else if (b.Kind == BuildingKind.PokeMart)
             {
                 float w = 2.0f, h = 0.8f * VS, y0 = wallH - 0.1f * VS;
-                batches.For(SceneTextures.MartSign).Decal(new(cx - w / 2, y0, zF + 0.34f), new(cx + w / 2, y0, zF + 0.34f),
+                batches.For(SceneTextures.MartSign, MeshPass.Glow).Decal(new(cx - w / 2, y0, zF + 0.34f), new(cx + w / 2, y0, zF + 0.34f),
                     new(cx + w / 2, y0 + h, zF + 0.34f), new(cx - w / 2, y0 + h, zF + 0.34f), Color.White, South);
             }
         }
