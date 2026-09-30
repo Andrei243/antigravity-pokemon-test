@@ -19,8 +19,17 @@ public class Player
     /// <summary>Height of the ledge-hop arc above the ground, in pixels (0 when on the ground).</summary>
     public float HopHeight { get; private set; }
 
-    /// <summary>Current walk-cycle frame: 0/2 standing, 1/3 mid-step.</summary>
-    public int AnimFrame => animFrame;
+    /// <summary>Walk cycle for the 3D model: advances one unit every two steps.</summary>
+    public float WalkCycle { get; private set; }
+
+    /// <summary>0 standing still .. 1 walking, eased so the legs settle smoothly when stopping.</summary>
+    public float WalkBlend { get; private set; }
+
+    /// <summary>Facing as an angle about the vertical axis (0 = toward the camera), eased when turning.</summary>
+    public float Yaw { get; private set; }
+
+    /// <summary>Progress through the current ledge hop (0 when not hopping).</summary>
+    public float HopProgress => IsHoppingLedge ? moveProgress : 0f;
 
     public bool IsMoving { get; private set; }
     public bool IsRunning { get; private set; }
@@ -28,8 +37,6 @@ public class Player
     private float moveProgress = 0f;
     private int targetGridX = 0;
     private int targetGridY = 0;
-    private float animTimer = 0f;
-    private int animFrame = 0;
 
     // Walking into something plays one thud per step-length, not one per frame
     private const float BumpInterval = 0.4f;
@@ -57,24 +64,29 @@ public class Player
         IsMoving = false;
         IsHoppingLedge = false;
         moveProgress = 0f;
+        Yaw = YawOf(facing);
+        WalkBlend = 0f;
     }
+
+    /// <summary>Model yaw for a facing direction; the model faces +Z (toward the camera) at 0.</summary>
+    public static float YawOf(Direction facing) => facing switch
+    {
+        Direction.Up => MathF.PI,
+        Direction.Left => -MathF.PI / 2f,
+        Direction.Right => MathF.PI / 2f,
+        _ => 0f
+    };
 
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger)
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
+        bool walkingInPlace = false;
 
         if (IsMoving)
         {
             float speed = IsRunning ? 8.0f : 4.5f;
             moveProgress += speed * dt;
-
-            // Frame animation
-            animTimer += dt * (IsRunning ? 16f : 10f);
-            if (animTimer >= 1f)
-            {
-                animTimer = 0f;
-                animFrame = (animFrame + 1) % 4;
-            }
+            WalkCycle += speed * dt * 0.5f;
 
             if (moveProgress >= 1f)
             {
@@ -87,7 +99,6 @@ public class Player
                 IsMoving = false;
                 IsHoppingLedge = false;
                 moveProgress = 0f;
-                animFrame = 0;
 
                 // Check warp
                 var warp = map.GetWarpAt(GridX, GridY);
@@ -161,21 +172,23 @@ public class Player
                     if (!IsMoving)
                     {
                         // Blocked: walk in place against the obstacle, a little slower than walking
-                        animTimer += dt * 6f;
-                        if (animTimer >= 1f)
-                        {
-                            animTimer = 0f;
-                            animFrame = (animFrame + 1) % 4;
-                        }
+                        walkingInPlace = true;
+                        WalkCycle += dt * 1.1f;
                     }
                 }
             }
             else
             {
-                animFrame = 0;
                 bumpCooldown = 0f;
             }
         }
+
+        // Ease the walk in and out, and turn smoothly toward the facing direction
+        float targetBlend = IsMoving || walkingInPlace ? 1f : 0f;
+        WalkBlend += (targetBlend - WalkBlend) * Math.Min(1f, dt * 12f);
+        float turn = YawOf(Facing) - Yaw;
+        turn = MathF.IEEERemainder(turn, MathF.Tau);
+        Yaw += turn * Math.Min(1f, dt * 18f);
 
         if (GrassRustleTimer > 0f)
         {

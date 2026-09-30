@@ -13,88 +13,6 @@ internal static class CharacterArt
     public const int FrameW = 16;
     public const int FrameH = 24;
 
-    private enum Headwear { None, Beret, Cap, NurseCap }
-    private enum Hair { Short, Spiky, Long, Swept }
-
-    private sealed class Style
-    {
-        public Color Skin = new(252, 218, 184, 255);
-        public Color HairColor = new(72, 52, 44, 255);
-        public Hair HairStyle = Hair.Short;
-        public Headwear Hat = Headwear.None;
-        public Color HatColor = Color.White;
-        public Color HatBand = Color.White;
-        public Color Top = new(80, 160, 96, 255);
-        public Color Accent = new(240, 240, 240, 255);
-        public Color Bottom = new(60, 64, 88, 255);
-        public Color Shoes = new(72, 56, 52, 255);
-        public bool Skirt, Shorts, Mustache, Stripes, Coat;
-        public Color? Bag;
-    }
-
-    private static Style StyleFor(string npcType) => npcType.ToUpperInvariant() switch
-    {
-        "PLAYER" or "TRAINER" or "LUCAS" => new Style
-        {
-            HairColor = new(70, 56, 78, 255),
-            Hat = Headwear.Beret, HatColor = new(220, 56, 60, 255), HatBand = new(246, 246, 250, 255),
-            Top = new(58, 78, 138, 255), Accent = new(236, 70, 70, 255),
-            Bottom = new(48, 50, 70, 255), Shoes = new(200, 70, 60, 255),
-            Bag = new(242, 196, 70, 255)
-        },
-        "RIVAL" => new Style
-        {
-            HairColor = new(250, 212, 80, 255), HairStyle = Hair.Spiky,
-            Top = new(244, 132, 52, 255), Accent = new(72, 176, 104, 255), Stripes = true,
-            Bottom = new(58, 70, 108, 255), Shoes = new(236, 236, 240, 255)
-        },
-        "ROWAN" => new Style
-        {
-            HairColor = new(236, 236, 242, 255), HairStyle = Hair.Swept, Mustache = true, Coat = true,
-            Top = new(126, 92, 66, 255), Accent = new(236, 236, 242, 255),
-            Bottom = new(84, 66, 56, 255), Shoes = new(52, 42, 40, 255)
-        },
-        "NURSE" => new Style
-        {
-            HairColor = new(248, 150, 190, 255), HairStyle = Hair.Long,
-            Hat = Headwear.NurseCap, HatColor = Color.White, HatBand = new(232, 72, 96, 255),
-            Top = new(252, 252, 255, 255), Accent = new(248, 170, 200, 255),
-            Bottom = new(248, 170, 200, 255), Skirt = true, Shoes = new(248, 248, 252, 255)
-        },
-        "MOM" => new Style
-        {
-            HairColor = new(176, 84, 60, 255), HairStyle = Hair.Long,
-            Top = new(246, 166, 120, 255), Accent = new(252, 244, 232, 255),
-            Bottom = new(120, 96, 176, 255), Skirt = true, Shoes = new(120, 70, 60, 255)
-        },
-        "LADY" => new Style
-        {
-            HairColor = new(244, 206, 104, 255), HairStyle = Hair.Long,
-            Top = new(118, 186, 132, 255), Accent = new(252, 248, 236, 255),
-            Bottom = new(96, 140, 110, 255), Skirt = true, Shoes = new(110, 76, 60, 255)
-        },
-        "CLERK" => new Style
-        {
-            HairColor = new(96, 64, 48, 255),
-            Top = new(76, 132, 222, 255), Accent = new(246, 246, 250, 255), Stripes = true,
-            Bottom = new(56, 60, 80, 255)
-        },
-        "YOUNGSTER" => new Style
-        {
-            HairColor = new(84, 56, 44, 255),
-            Hat = Headwear.Cap, HatColor = new(250, 200, 60, 255), HatBand = new(60, 110, 200, 255),
-            Top = new(250, 250, 252, 255), Accent = new(60, 110, 200, 255),
-            Bottom = new(64, 104, 190, 255), Shorts = true, Shoes = new(220, 72, 64, 255)
-        },
-        "LASS" => new Style
-        {
-            HairColor = new(96, 60, 52, 255), HairStyle = Hair.Long,
-            Top = new(236, 104, 132, 255), Accent = new(252, 240, 244, 255),
-            Bottom = new(72, 92, 168, 255), Skirt = true, Shoes = new(84, 56, 52, 255)
-        },
-        _ => new Style()
-    };
-
     /// <summary>Returns a 16x24 frame. Frames 0/2 stand, 1/3 are opposite steps.</summary>
     public static PixelCanvas DrawFrame(string npcType, Direction dir, int frame)
     {
@@ -102,7 +20,7 @@ internal static class CharacterArt
         if (type == "STARTERBRIEFCASE") return DrawBriefcase();
         if (type == "RIFT") return DrawRift();
 
-        var s = StyleFor(type);
+        var s = CharacterStyle.For(type);
         var c = new PixelCanvas(FrameW, FrameH);
         bool mirror = dir == Direction.Left;
         if (mirror) dir = Direction.Right;
@@ -115,7 +33,7 @@ internal static class CharacterArt
         return c;
     }
 
-    private static void DrawFrontOrBack(PixelCanvas c, Style s, int frame, bool back)
+    private static void DrawFrontOrBack(PixelCanvas c, CharacterStyle s, int frame, bool back)
     {
         var skinShade = PixelCanvas.Shadow(s.Skin, 0.25f);
         var topShade = PixelCanvas.Shadow(s.Top, 0.3f);
@@ -124,7 +42,7 @@ internal static class CharacterArt
         int rightLift = frame == 1 ? 1 : 0;
 
         // Long hair falls behind the shoulders
-        if (s.HairStyle == Hair.Long)
+        if (s.Hair == HairCut.Long)
         {
             c.Rect(2, 5, 12, 8, back ? s.HairColor : hairShade);
         }
@@ -235,7 +153,7 @@ internal static class CharacterArt
             }
         }
 
-        if (s.HairStyle == Hair.Spiky)
+        if (s.Hair == HairCut.Spiky)
         {
             c.Set(4, 0, s.HairColor);
             c.Set(3, 0, s.HairColor);
@@ -245,7 +163,7 @@ internal static class CharacterArt
             c.Set(13, 1, s.HairColor);
             c.Set(2, 2, s.HairColor);
         }
-        else if (s.HairStyle == Hair.Swept)
+        else if (s.Hair == HairCut.Swept)
         {
             c.Rect(3, 0, 9, 2, s.HairColor);
             c.Set(12, 1, s.HairColor);
@@ -254,14 +172,14 @@ internal static class CharacterArt
         DrawHat(c, s, back, side: false);
     }
 
-    private static void DrawSide(PixelCanvas c, Style s, int frame)
+    private static void DrawSide(PixelCanvas c, CharacterStyle s, int frame)
     {
         var skinShade = PixelCanvas.Shadow(s.Skin, 0.25f);
         var topShade = PixelCanvas.Shadow(s.Top, 0.3f);
         var hairShade = PixelCanvas.Shadow(s.HairColor, 0.3f);
         bool stepping = frame % 2 == 1;
 
-        if (s.HairStyle == Hair.Long) c.Rect(3, 5, 5, 8, hairShade);
+        if (s.Hair == HairCut.Long) c.Rect(3, 5, 5, 8, hairShade);
 
         // Legs: together when standing, apart mid-stride
         var leg = s.Shorts || s.Skirt ? s.Skin : s.Bottom;
@@ -325,7 +243,7 @@ internal static class CharacterArt
         c.Set(11, 8, PixelCanvas.Mix(s.Skin, new Color(250, 140, 140, 255), 0.35f));
         if (s.Mustache) c.HLine(10, 9, 3, s.HairColor);
 
-        if (s.HairStyle == Hair.Spiky)
+        if (s.Hair == HairCut.Spiky)
         {
             c.Set(3, 1, s.HairColor);
             c.Set(2, 3, s.HairColor);
@@ -333,7 +251,7 @@ internal static class CharacterArt
             c.Set(9, 0, s.HairColor);
             c.Set(3, 5, s.HairColor);
         }
-        else if (s.HairStyle == Hair.Swept)
+        else if (s.Hair == HairCut.Swept)
         {
             c.Rect(4, 0, 8, 2, s.HairColor);
             c.Set(12, 1, s.HairColor);
@@ -342,7 +260,7 @@ internal static class CharacterArt
         DrawHat(c, s, back: false, side: true);
     }
 
-    private static void DrawHat(PixelCanvas c, Style s, bool back, bool side)
+    private static void DrawHat(PixelCanvas c, CharacterStyle s, bool back, bool side)
     {
         var shade = PixelCanvas.Shadow(s.HatColor, 0.3f);
         switch (s.Hat)

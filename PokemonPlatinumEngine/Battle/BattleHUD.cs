@@ -19,33 +19,18 @@ public enum BattleMenuState
 
 public class BattleHUD
 {
-    // Battlefield layout: where each Pokémon's feet touch its platform (virtual-screen pixels)
-    public static readonly Vector2 EnemyFeet = new(1430, 400);
-    public static readonly Vector2 PlayerFeet = new(470, 800);
+    // Battlefield layout in virtual-screen pixels. The battle renderer projects these from its 3D camera every
+    // frame; the defaults match the settled camera.
 
-    // Sprite scales are multiples of 0.5 so every 64px art pixel lands on a whole number of screen pixels
-    private const float EnemySpriteScale = 3.0f;
-    private const float PlayerSpriteScale = 3.5f;
-    private const float EnemyPlatformScale = 5f;
-    private const float PlayerPlatformScale = 6f;
+    /// <summary>Where each Pokémon's feet touch its platform.</summary>
+    public static Vector2 EnemyFeet { get; set; } = new(1430, 400);
+    public static Vector2 PlayerFeet { get; set; } = new(470, 800);
 
-    // Rough body centres, used as targets for move effects and Poké Ball throws
-    public static Vector2 EnemyCenter => EnemyFeet - new Vector2(0, 24 * EnemySpriteScale * 2);
-    public static Vector2 PlayerCenter => PlayerFeet - new Vector2(0, 24 * PlayerSpriteScale * 2);
+    /// <summary>Rough body centres, used as targets for move effects and Poké Ball throws.</summary>
+    public static Vector2 EnemyCenter { get; set; } = new(1430, 226);
+    public static Vector2 PlayerCenter { get; set; } = new(470, 568);
 
-    private static void DrawPlatform(Texture2D tex, Vector2 feet, float scale)
-    {
-        float w = tex.Width * scale, h = tex.Height * scale;
-        Raylib.DrawTextureEx(tex, new Vector2(feet.X - w / 2f, feet.Y - h * 0.45f), 0f, scale, Color.White);
-    }
-
-    private static void DrawPokemon(Texture2D tex, Vector2 feet, float scale, float offsetX, Color tint)
-    {
-        // Sprite art has its feet about 3 art pixels above the bottom edge (6 texels at 2x)
-        float w = tex.Width * scale, h = tex.Height * scale;
-        var pos = new Vector2(MathF.Round(feet.X - w / 2f + offsetX), MathF.Round(feet.Y - h + 6 * scale));
-        Raylib.DrawTextureEx(tex, pos, 0f, scale, tint);
-    }
+    private const float BoxSlideTime = 0.35f;
 
     public BattleMenuState MenuState { get; set; } = BattleMenuState.Main;
     public int MainMenuIndex { get; set; } = 0;
@@ -53,60 +38,34 @@ public class BattleHUD
     public int SwitchMenuIndex { get; set; } = 0;
     public int BagMenuIndex { get; set; } = 0;
 
+    /// <summary>Draws the HP boxes, move effects and the bottom panel over the battle field.</summary>
+    /// <param name="playerPokemon">The Pokémon the menus act for.</param>
+    /// <param name="anim">What the field shows: the HP boxes follow the Pokémon on the platforms and their draining bars.</param>
     public void Draw(
         int screenWidth,
         int screenHeight,
         Pokemon playerPokemon,
-        Pokemon enemyPokemon,
         Party playerParty,
         Party? enemyTrainerParty,
-        bool isTrainerBattle,
         string battleMessage,
         BattleVFX vfx,
-        float playerSpriteOffset,
-        float enemySpriteOffset,
-        bool playerDamageFlash,
-        bool enemyDamageFlash,
+        BattleAnimator anim,
         Inventory inventory)
     {
-        // 1. Pixel-art backdrop (240x135 art scaled 8x to the 1920x1080 virtual screen)
         int panelHeight = 260;
         int panelY = screenHeight - panelHeight;
 
-        var background = PixelArtGenerator.GetBattleBackground();
-        Raylib.DrawTexturePro(background, new Rectangle(0, 0, background.Width, background.Height),
-            new Rectangle(0, 0, screenWidth, screenHeight), Vector2.Zero, 0f, Color.White);
+        // 1. HP boxes slide in once their Pokémon is out and disappear when it leaves the field
+        float enemySlide = BoxSlide(anim, anim.Enemy);
+        if (enemySlide >= 0f) DrawEnemyHPBox((int)(80 - 700 * enemySlide), 60, anim.Enemy, enemyTrainerParty);
 
-        // 2. Platforms centred under each Pokémon's feet
-        DrawPlatform(PixelArtGenerator.GetBattlePlatformTexture(isPlayer: false), EnemyFeet, EnemyPlatformScale);
-        DrawPlatform(PixelArtGenerator.GetBattlePlatformTexture(isPlayer: true), PlayerFeet, PlayerPlatformScale);
+        float playerSlide = BoxSlide(anim, anim.Player);
+        if (playerSlide >= 0f) DrawPlayerHPBox((int)(1160 + 800 * playerSlide), 490, anim.Player);
 
-        // 3. Enemy Pokémon (front sprite)
-        if (!enemyPokemon.IsFainted)
-        {
-            var enemyTex = PixelArtGenerator.GetPokemonSprite(enemyPokemon.Species.Name, isBack: false);
-            Color tint = enemyDamageFlash ? new Color(255, 110, 110, 255) : Color.White;
-            DrawPokemon(enemyTex, EnemyFeet, EnemySpriteScale, enemySpriteOffset, tint);
-        }
-
-        // 4. Player Pokémon (back sprite)
-        if (!playerPokemon.IsFainted)
-        {
-            var playerTex = PixelArtGenerator.GetPokemonSprite(playerPokemon.Species.Name, isBack: true);
-            Color tint = playerDamageFlash ? new Color(255, 110, 110, 255) : Color.White;
-            DrawPokemon(playerTex, PlayerFeet, PlayerSpriteScale, playerSpriteOffset, tint);
-        }
-
-        // 5. Enemy HP Box (Top Left: x = 80, y = 60)
-        DrawEnemyHPBox(80, 60, enemyPokemon, enemyTrainerParty);
-
-        // 6. Player HP Box (Bottom Right: x = 1160, y = 490)
-        DrawPlayerHPBox(1160, 490, playerPokemon);
-
-        // 7. Visual FX layer
+        // 2. Visual FX layer
         vfx.Draw();
 
-        // 8. Bottom Battle Control Panel (y = panelY, height = 260)
+        // 3. Bottom Battle Control Panel (y = panelY, height = 260)
         RenderHelper.DrawPlatinumPanel(0, panelY, screenWidth, panelHeight, Palette.UiBackground);
 
         switch (MenuState)
@@ -129,8 +88,22 @@ public class BattleHUD
         }
     }
 
-    private static void DrawEnemyHPBox(int x, int y, Pokemon pokemon, Party? trainerParty)
+    /// <summary>How far a side's HP box is slid off screen: 0 = in place, 1 = fully out, -1 = hidden.</summary>
+    private static float BoxSlide(BattleAnimator anim, CombatantView view)
     {
+        if (view.Shown == null || !view.Present) return -1f;
+
+        float t = 1f;
+        if (view.SendOutAge >= 0f) t = view.SendOutAge / BoxSlideTime;
+        else if (view == anim.Enemy && anim.Time < 1.2f + BoxSlideTime) t = (anim.Time - 1.2f) / BoxSlideTime; // wild Pokémon, after the camera sweep
+
+        t = Math.Clamp(t, 0f, 1f);
+        return (1f - t) * (1f - t) * (1f - t);
+    }
+
+    private static void DrawEnemyHPBox(int x, int y, CombatantView view, Party? trainerParty)
+    {
+        var pokemon = view.Shown!;
         int w = 540, h = 130;
         RenderHelper.DrawPlatinumPanel(x, y, w, h, Palette.UiPanelBg);
 
@@ -138,7 +111,7 @@ public class BattleHUD
         RenderHelper.DrawGenderSymbol(x + 316, y + 18, 24, pokemon.Gender);
 
         RenderHelper.DrawTextWithShadow($"Lv.{pokemon.Level}", x + 360, y + 16, 24, Palette.TextDark);
-        RenderHelper.DrawHPBar(x + 24, y + 58, w - 48, 24, pokemon.CurrentHP, pokemon.MaxHP);
+        RenderHelper.DrawHPBar(x + 24, y + 58, w - 48, 24, (int)MathF.Ceiling(view.DisplayedHp), pokemon.MaxHP);
         RenderHelper.DrawStatusBadge(x + w - 90, y + 16, pokemon.Status);
 
         if (trainerParty != null)
@@ -147,23 +120,26 @@ public class BattleHUD
         }
     }
 
-    private static void DrawPlayerHPBox(int x, int y, Pokemon pokemon)
+    private static void DrawPlayerHPBox(int x, int y, CombatantView view)
     {
+        var pokemon = view.Shown!;
         int w = 640, h = 155;
         RenderHelper.DrawPlatinumPanel(x, y, w, h, Palette.UiPanelBg);
 
         RenderHelper.DrawTextWithShadow(pokemon.DisplayName, x + 24, y + 16, 28, Palette.TextDark);
         RenderHelper.DrawGenderSymbol(x + 366, y + 20, 24, pokemon.Gender);
 
+        // HP counts down with the bar as it drains
+        int hp = (int)MathF.Ceiling(view.DisplayedHp);
         RenderHelper.DrawTextWithShadow($"Lv.{pokemon.Level}", x + 420, y + 18, 26, Palette.TextDark);
-        RenderHelper.DrawHPBar(x + 24, y + 58, w - 48, 24, pokemon.CurrentHP, pokemon.MaxHP);
+        RenderHelper.DrawHPBar(x + 24, y + 58, w - 48, 24, hp, pokemon.MaxHP);
 
-        string hpText = $"{pokemon.CurrentHP}/{pokemon.MaxHP}";
+        string hpText = $"{hp}/{pokemon.MaxHP}";
         int hpTextWidth = RenderHelper.MeasureText(hpText, 22);
         RenderHelper.DrawTextWithShadow(hpText, x + w - hpTextWidth - 28, y + 92, 22, Palette.TextDark);
 
         RenderHelper.DrawStatusBadge(x + 24, y + 92, pokemon.Status);
-        RenderHelper.DrawExpBar(x + 130, y + 130, w - 160, 10, pokemon.ExpProgressRatio);
+        RenderHelper.DrawExpBar(x + 130, y + 130, w - 160, 10, view.DisplayedExp);
     }
 
     private void DrawMainMenu(int screenWidth, int panelY, string activePkmnName)

@@ -16,16 +16,22 @@ internal sealed class FieldShaders
 
     public Shader World { get; private set; }
     public Shader Depth { get; private set; }
-    public Shader Sprite { get; private set; }
+    public Shader Character { get; private set; }
+    public Shader Outline { get; private set; }
     public Shader Water { get; private set; }
     public Shader Post { get; private set; }
 
+    private Shader[] FieldPrograms => new[] { World, Depth, Character, Water };
+
+    // raylib's DrawMesh fills in mvp, matModel and matNormal for each mesh it draws
     private const string CommonVertex = @"#version 330
 in vec3 vertexPosition;
 in vec2 vertexTexCoord;
 in vec3 vertexNormal;
 in vec4 vertexColor;
 uniform mat4 mvp;
+uniform mat4 matModel;
+uniform mat4 matNormal;
 uniform mat4 lightVP;
 uniform float time;
 out vec2 fragTexCoord;
@@ -34,24 +40,46 @@ out vec3 fragNormal;
 out vec3 fragWorld;
 out vec4 fragLight;
 
-// Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves)
-vec3 Sway(vec3 p, float weight)
+// Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves). Only static scenery sways,
+// and scenery is drawn with an identity model matrix, so the world-space offset can be added in model space.
+vec3 SwayOffset(vec3 p, float weight)
 {
-    if (weight <= 0.0) return p;
+    if (weight <= 0.0) return vec3(0.0);
     float t = time * 1.6 + p.x * 0.63 + p.z * 0.41;
-    return p + vec3(sin(t) * 0.07, 0.0, cos(t * 0.83) * 0.035) * weight;
+    return vec3(sin(t) * 0.07, 0.0, cos(t * 0.83) * 0.035) * weight;
 }
 
 void main()
 {
-    vec3 p = Sway(vertexPosition, 1.0 - vertexColor.a);
+    vec3 world = (matModel * vec4(vertexPosition, 1.0)).xyz;
+    vec3 sway = SwayOffset(world, 1.0 - vertexColor.a);
+    vec3 n = normalize((matNormal * vec4(vertexNormal, 0.0)).xyz);
     fragTexCoord = vertexTexCoord;
     fragColor = vec4(vertexColor.rgb, 1.0);
-    fragNormal = vertexNormal;
-    fragWorld = p;
+    fragNormal = n;
+    fragWorld = world + sway;
     // Offsetting along the normal before projecting into light space avoids shadow acne
-    fragLight = lightVP * vec4(p + vertexNormal * 0.035, 1.0);
-    gl_Position = mvp * vec4(p, 1.0);
+    fragLight = lightVP * vec4(fragWorld + n * 0.035, 1.0);
+    gl_Position = mvp * vec4(vertexPosition + sway, 1.0);
+}";
+
+    private const string OutlineVertex = @"#version 330
+in vec3 vertexPosition;
+in vec4 vertexColor;
+uniform mat4 mvp;
+out vec4 fragColor;
+void main()
+{
+    fragColor = vertexColor;
+    gl_Position = mvp * vec4(vertexPosition, 1.0);
+}";
+
+    private const string OutlineFragment = @"#version 330
+in vec4 fragColor;
+out vec4 finalColor;
+void main()
+{
+    finalColor = vec4(fragColor.rgb, 1.0);
 }";
 
     private const string ShadowFunctions = @"
@@ -126,23 +154,40 @@ void main()
     finalColor = vec4(1.0);
 }";
 
-    // Characters are hand-drawn art, so they aren't shaded by the sun, only darkened when standing in shadow
-    private const string SpriteFragment = @"#version 330
+    // Characters and Pokémon: two-tone cel shading with a soft terminator, plus a rim light so they stand out.
+    // shadowStrength 0 skips the shadow map (for models rendered outside the field, e.g. battle sprites).
+    private const string CharacterFragment = @"#version 330
 in vec2 fragTexCoord;
 in vec4 fragColor;
+in vec3 fragNormal;
+in vec3 fragWorld;
 in vec4 fragLight;
 uniform sampler2D texture0;
-uniform vec3 skyAmbient;
+uniform vec4 colDiffuse;
+uniform vec3 sunDir;
 uniform vec3 sunColor;
+uniform vec3 skyAmbient;
+uniform vec3 groundAmbient;
+uniform vec3 viewPos;
+uniform float shadowStrength;
+uniform float rimStrength;
 out vec4 finalColor;
 " + ShadowFunctions + @"
 void main()
 {
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
-    float shadow = Shadow(fragLight);
-    vec3 shade = skyAmbient / (skyAmbient + sunColor * 0.8);
-    finalColor = vec4(texel.rgb * fragColor.rgb * mix(shade, vec3(1.0), shadow), 1.0);
+    vec3 albedo = texel.rgb * colDiffuse.rgb * fragColor.rgb;
+    vec3 n = normalize(fragNormal);
+    float ndl = dot(n, sunDir);
+    float lit = smoothstep(0.0, 0.12, ndl);
+    if (shadowStrength > 0.0) lit *= mix(1.0, Shadow(fragLight), shadowStrength);
+    vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
+    vec3 color = albedo * (ambient * 1.08 + sunColor * lit);
+    vec3 v = normalize(viewPos - fragWorld);
+    float rim = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 3.0);
+    color += (albedo * 0.6 + vec3(0.1)) * rim * rimStrength;
+    finalColor = vec4(color, 1.0);
 }";
 
     // Two drifting layers of the water texture, rippling sun glints, a fresnel sky tint and shoreline foam
@@ -223,41 +268,56 @@ void main()
     finalColor = vec4(clamp(color, 0.0, 1.0), 1.0);
 }";
 
+    public bool Loaded { get; private set; }
+
     public void Load()
     {
+        if (Loaded) return;
         World = Raylib.LoadShaderFromMemory(CommonVertex, WorldFragment);
         Depth = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
-        Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
+        Character = Raylib.LoadShaderFromMemory(CommonVertex, CharacterFragment);
+        Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
         Water = Raylib.LoadShaderFromMemory(CommonVertex, WaterFragment);
         Post = Raylib.LoadShaderFromMemory(PostVertex, PostFragment);
 
-        foreach (var shader in new[] { World, Sprite, Water })
+        foreach (var shader in new[] { World, Character, Water })
         {
             Set(shader, "shadowMap", ShadowMapSlot);
         }
+        SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
+        Loaded = true;
     }
 
     public void Unload()
     {
-        foreach (var shader in new[] { World, Depth, Sprite, Water, Post })
+        if (!Loaded) return;
+        foreach (var shader in new[] { World, Depth, Character, Outline, Water, Post })
         {
             Raylib.UnloadShader(shader);
         }
+        Loaded = false;
     }
 
     /// <summary>Animation time (wind, water); set before the shadow pass so both passes sway together.</summary>
     public void SetTime(float time)
     {
-        foreach (var shader in new[] { World, Depth, Sprite, Water })
+        foreach (var shader in FieldPrograms)
         {
             Set(shader, "time", time);
         }
     }
 
+    /// <summary>How strongly characters receive field shadows, and how bright their rim light is.</summary>
+    public void SetCharacterStyle(float shadowStrength, float rimStrength)
+    {
+        Set(Character, "shadowStrength", shadowStrength);
+        Set(Character, "rimStrength", rimStrength);
+    }
+
     /// <summary>Per-frame lighting values shared by the field shaders, once the sun's shadow map is rendered.</summary>
     public void SetLighting(Matrix4x4 lightViewProjection, SceneLighting light, Vector3 viewPosition, float shadowTexel)
     {
-        foreach (var shader in new[] { World, Depth, Sprite, Water })
+        foreach (var shader in FieldPrograms)
         {
             SetMatrix(shader, "lightVP", lightViewProjection);
             Set(shader, "sunDir", light.SunDirection);

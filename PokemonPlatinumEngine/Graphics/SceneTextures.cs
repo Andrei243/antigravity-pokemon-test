@@ -303,6 +303,71 @@ internal static class SceneTextures
         return c;
     }, repeat: true);
 
+    /// <summary>Smooth noise that wraps every <paramref name="period"/> cells, for seamless tiling textures.</summary>
+    private static float TileNoise(float x, float y, int period, int salt)
+    {
+        int x0 = (int)MathF.Floor(x), y0 = (int)MathF.Floor(y);
+        float fx = x - x0, fy = y - y0;
+        fx = fx * fx * (3 - 2 * fx);
+        fy = fy * fy * (3 - 2 * fy);
+        float H(int ix, int iy) => R(((ix % period) + period) % period, ((iy % period) + period) % period, salt);
+        float a = H(x0, y0), b = H(x0 + 1, y0), c = H(x0, y0 + 1), d = H(x0 + 1, y0 + 1);
+        return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+    }
+
+    /// <summary>Seamless 128px meadow for the battle field (covers four world units).</summary>
+    public static Texture2D Meadow => Get("meadow", () =>
+    {
+        const int s = 128;
+        var c = new PixelCanvas(s, s);
+        var baseCol = Rgb(122, 208, 124);
+        var dark = PixelCanvas.Shadow(baseCol, 0.2f);
+        var light = PixelCanvas.Light1(baseCol, 0.35f);
+        for (int y = 0; y < s; y++)
+            for (int x = 0; x < s; x++)
+            {
+                float n = TileNoise(x / 32f, y / 32f, 4, 30) * 0.65f + TileNoise(x / 8f, y / 8f, 16, 31) * 0.35f;
+                var col = n < 0.45f ? PixelCanvas.Mix(baseCol, dark, (0.45f - n) * 1.4f) : PixelCanvas.Mix(baseCol, light, (n - 0.45f) * 0.8f);
+                c.Set(x, y, col);
+            }
+        for (int i = 0; i < 140; i++)
+        {
+            int bx = (int)(R(i, 0, 32) * s), by = (int)(R(i, 1, 32) * s);
+            int h = 3 + (int)(R(i, 2, 32) * 3);
+            for (int k = 0; k < h; k++)
+                c.Set((bx + (k == h - 1 ? 1 : 0)) % s, ((by - k) % s + s) % s, k == h - 1 ? light : dark);
+        }
+        return c;
+    }, repeat: true);
+
+    /// <summary>Top of a battle platform: lush grass, lighter in the middle with a worn ring near the rim.</summary>
+    public static Texture2D PlatformTop => Get("platform_top", () =>
+    {
+        const int s = 128;
+        var c = new PixelCanvas(s, s);
+        var inner = Rgb(150, 226, 138);
+        var outer = Rgb(104, 186, 104);
+        for (int y = 0; y < s; y++)
+            for (int x = 0; x < s; x++)
+            {
+                float u = (x + 0.5f) / s * 2f - 1f, v = (y + 0.5f) / s * 2f - 1f;
+                float d = MathF.Sqrt(u * u + v * v);
+                var col = PixelCanvas.Mix(inner, outer, Math.Clamp((d - 0.25f) / 0.6f, 0f, 1f));
+                col = PixelCanvas.Mix(col, PixelCanvas.Shadow(col, 0.2f), TileNoise(x / 10f, y / 10f, 13, 40) * 0.5f);
+                if (d > 0.8f && d < 0.86f) col = PixelCanvas.Shadow(col, 0.14f);
+                if (d > 0.93f) col = PixelCanvas.Shadow(outer, 0.18f);
+                c.Set(x, y, col);
+            }
+        for (int i = 0; i < 90; i++)
+        {
+            float a = R(i, 0, 41) * MathF.Tau, rr = MathF.Sqrt(R(i, 1, 41)) * 0.9f;
+            int bx = (int)((0.5f + MathF.Cos(a) * rr * 0.5f) * s), by = (int)((0.5f + MathF.Sin(a) * rr * 0.5f) * s);
+            c.Set(bx, by, PixelCanvas.Light1(inner, 0.35f));
+            c.Set(bx, by + 1, PixelCanvas.Shadow(outer, 0.2f));
+        }
+        return c;
+    }, repeat: false);
+
     // ------------------------------------------------------------------ decals
 
     public static Texture2D DoorWood => Get("door_wood", () =>

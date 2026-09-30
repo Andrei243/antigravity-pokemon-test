@@ -38,8 +38,7 @@ internal sealed class MapScene
     public SceneLighting Lighting { get; }
     public Vector3 RoomCenter { get; private set; }
 
-    private sealed record ScenePart(Mesh Mesh, Material Main, Material? Depth);
-    private readonly List<ScenePart> parts = new();
+    private SceneMeshes meshes = null!;
 
     private MapScene(Map map)
     {
@@ -60,53 +59,21 @@ internal sealed class MapScene
 
     // ------------------------------------------------------------------ drawing
 
-    public void Draw()
-    {
-        foreach (var part in parts) Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
-    }
+    public void Draw() => meshes.Draw();
 
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>
-    public void DrawDepth()
-    {
-        foreach (var part in parts)
-        {
-            if (part.Depth.HasValue) Raylib.DrawMesh(part.Mesh, part.Depth.Value, Matrix4x4.Identity);
-        }
-    }
+    public void DrawDepth() => meshes.DrawDepth();
 
     // ------------------------------------------------------------------ building the scene
-
-    private enum Pass { Opaque, Ground, Water }
-
-    /// <summary>One mesh per texture and pass keeps draw calls low.</summary>
-    private sealed class Batches
-    {
-        private readonly Dictionary<(uint, Pass), (Texture2D Tex, MeshBuilder Builder)> map = new();
-
-        public MeshBuilder For(Texture2D tex, Pass pass = Pass.Opaque)
-        {
-            if (!map.TryGetValue((tex.Id, pass), out var entry))
-            {
-                entry = (tex, new MeshBuilder());
-                map[(tex.Id, pass)] = entry;
-            }
-            return entry.Builder;
-        }
-
-        public IEnumerable<(Texture2D Tex, Pass Pass, MeshBuilder Builder)> All
-        {
-            get { foreach (var (key, e) in map) yield return (e.Tex, key.Item2, e.Builder); }
-        }
-    }
 
     public static MapScene Build(Map map, FieldShaders shaders)
     {
         var scene = new MapScene(map);
-        var batches = new Batches();
+        var batches = new MeshBatches();
         var buildings = MapStructures.FindBuildings(map);
 
         var ground = GroundBaker.BakeGround(map, scene.Margin, buildings).ToTexture();
-        scene.AddGround(batches.For(ground, Pass.Ground), batches.For(SceneTextures.White, Pass.Ground));
+        scene.AddGround(batches.For(ground, MeshPass.Ground), batches.For(SceneTextures.White, MeshPass.Ground));
 
         if (map.IsIndoors)
         {
@@ -114,7 +81,7 @@ internal sealed class MapScene
         }
         else
         {
-            scene.AddWater(batches.For(SceneTextures.Water, Pass.Water), batches.For(SceneTextures.White, Pass.Ground));
+            scene.AddWater(batches.For(SceneTextures.Water, MeshPass.Water), batches.For(SceneTextures.White, MeshPass.Ground));
             scene.AddTrees(batches);
             scene.AddTallGrass(batches.For(SceneTextures.GrassBlades));
             scene.AddLawnDetail(batches);
@@ -123,23 +90,7 @@ internal sealed class MapScene
             foreach (var b in buildings) scene.AddBuilding(b, batches);
         }
 
-        foreach (var (tex, pass, builder) in batches.All)
-        {
-            if (builder.VertexCount == 0) continue;
-            var main = Raylib.LoadMaterialDefault();
-            main.Shader = pass == Pass.Water ? shaders.Water : shaders.World;
-            Raylib.SetMaterialTexture(ref main, MaterialMapIndex.Albedo, tex);
-
-            Material? depth = null;
-            if (pass == Pass.Opaque)
-            {
-                var d = Raylib.LoadMaterialDefault();
-                d.Shader = shaders.Depth;
-                Raylib.SetMaterialTexture(ref d, MaterialMapIndex.Albedo, tex);
-                depth = d;
-            }
-            scene.parts.Add(new ScenePart(builder.Upload(), main, depth));
-        }
+        scene.meshes = SceneMeshes.Upload(batches, shaders);
         return scene;
     }
 
@@ -251,7 +202,7 @@ internal sealed class MapScene
 
     // ------------------------------------------------------------------ trees
 
-    private void AddTrees(Batches batches)
+    private void AddTrees(MeshBatches batches)
     {
         for (int ty = -Margin; ty < Map.Height + Margin; ty++)
         {
@@ -265,63 +216,10 @@ internal sealed class MapScene
 
                 float cx = tx + 0.5f + (Rand(tx, ty, 1) - 0.5f) * 0.12f;
                 float cz = ty + 0.5f + (Rand(tx, ty, 2) - 0.5f) * 0.12f;
-                if (Map.Trees == TreeStyle.Pine) AddPine(batches, cx, cz, tx, ty);
-                else AddRoundTree(batches, cx, cz, tx, ty);
+                if (Map.Trees == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty);
+                else TreeModels.Round(batches, cx, cz, tx, ty);
             }
         }
-    }
-
-    /// <summary>Sinnoh pine: four tiers of needled cones with serrated, cut-out rims.</summary>
-    private void AddPine(Batches batches, float cx, float cz, int tx, int ty)
-    {
-        float s = 0.92f + Rand(tx, ty, 3) * 0.16f;
-        batches.For(SceneTextures.Bark).Cylinder(new(cx, 0, cz), 0.12f, 0.08f, 1.1f * s, 7, Color.White, cap: false);
-
-        var tint = PixelCanvas.Mix(new Color(104, 178, 118, 255), new Color(126, 196, 128, 255), Rand(tx, ty, 4));
-        var b = batches.For(SceneTextures.Needles);
-        (float BaseY, float ApexY, float R)[] tiers =
-        {
-            (0.5f, 2.0f, 0.7f), (1.25f, 2.7f, 0.6f), (2.0f, 3.4f, 0.48f), (2.75f, 4.1f, 0.34f)
-        };
-        const int segments = 14;
-        float spin = Rand(tx, ty, 5) * MathF.Tau;
-        for (int k = 0; k < tiers.Length; k++)
-        {
-            var (baseY, apexY, radius) = tiers[k];
-            float h = (apexY - baseY) * s, r = radius * s;
-            var apex = new Vector3(cx, apexY * s, cz);
-            // Lower tiers are a touch darker; everything sways a little, more toward the top
-            var tierColor = MeshBuilder.Scale(tint, 0.86f + k * 0.06f);
-            float sway = 0.12f + k * 0.08f;
-
-            for (int i = 0; i < segments; i++)
-            {
-                float a0 = spin + i * MathF.Tau / segments, a1 = spin + (i + 1) * MathF.Tau / segments;
-                var d0 = new Vector3(MathF.Cos(a0), 0, MathF.Sin(a0));
-                var d1 = new Vector3(MathF.Cos(a1), 0, MathF.Sin(a1));
-                var rim0 = new Vector3(cx, baseY * s, cz) + d0 * r;
-                var rim1 = new Vector3(cx, baseY * s, cz) + d1 * r;
-                var n0 = Vector3.Normalize(d0 * h + Up * r);
-                var n1 = Vector3.Normalize(d1 * h + Up * r);
-                var na = Vector3.Normalize(n0 + n1);
-                float u0 = i / (float)segments * 3f, u1 = (i + 1) / (float)segments * 3f;
-                b.Tri(apex, rim0, rim1, new((u0 + u1) / 2f, 0), new(u0, 1), new(u1, 1), na, n0, n1,
-                    MeshBuilder.Sway(PixelCanvas.Light1(tierColor, 0.15f), sway), MeshBuilder.Sway(tierColor, sway * 0.6f), MeshBuilder.Sway(tierColor, sway * 0.6f));
-            }
-        }
-    }
-
-    /// <summary>Round broadleaf tree: a few leafy clumps on a short trunk.</summary>
-    private void AddRoundTree(Batches batches, float cx, float cz, int tx, int ty)
-    {
-        float s = 0.92f + Rand(tx, ty, 3) * 0.16f;
-        batches.For(SceneTextures.Bark).Cylinder(new(cx, 0, cz), 0.14f, 0.1f, 0.9f * s, 7, Color.White, cap: false);
-
-        // The crown hangs low over a short trunk, so trees cut off by the top of the screen still read as foliage
-        var tint = PixelCanvas.Mix(new Color(96, 176, 104, 255), new Color(118, 192, 108, 255), Rand(tx, ty, 4));
-        PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx, 1.45f * s, cz), 0.74f * s, 0.86f * s, tint, 0.25f);
-        PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx - 0.22f, 2.05f * s, cz + 0.06f), 0.5f * s, 0.58f * s, PixelCanvas.Light1(tint, 0.08f), 0.4f);
-        PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx + 0.26f, 1.85f * s, cz - 0.1f), 0.46f * s, 0.52f * s, tint, 0.35f);
     }
 
     // ------------------------------------------------------------------ tall grass, lawns, ledges, signs
@@ -352,7 +250,7 @@ internal sealed class MapScene
     }
 
     /// <summary>Scattered grass tufts on lawns and 3D flowers in the flower beds.</summary>
-    private void AddLawnDetail(Batches batches)
+    private void AddLawnDetail(MeshBatches batches)
     {
         var tufts = batches.For(SceneTextures.GrassTuft);
         var flowers = batches.For(SceneTextures.FlowerTuft);
@@ -364,29 +262,13 @@ internal sealed class MapScene
                 if (t == TileType.FlowerGrass)
                 {
                     for (int i = 0; i < 3; i++)
-                        Crossed(flowers, tx + 0.2f + Rand(tx, ty, 60 + i) * 0.6f, ty + 0.2f + Rand(tx, ty, 70 + i) * 0.6f, 0.42f, 0.3f * VS, tx * 3 + i);
+                        TreeModels.Crossed(flowers, tx + 0.2f + Rand(tx, ty, 60 + i) * 0.6f, ty + 0.2f + Rand(tx, ty, 70 + i) * 0.6f, 0.42f, 0.3f * VS, tx * 3 + i);
                 }
                 else if (t == TileType.Grass && Rand(tx, ty, 80) < 0.35f)
                 {
-                    Crossed(tufts, tx + 0.2f + Rand(tx, ty, 81) * 0.6f, ty + 0.2f + Rand(tx, ty, 82) * 0.6f, 0.46f, 0.3f * VS, tx + ty);
+                    TreeModels.Crossed(tufts, tx + 0.2f + Rand(tx, ty, 81) * 0.6f, ty + 0.2f + Rand(tx, ty, 82) * 0.6f, 0.46f, 0.3f * VS, tx + ty);
                 }
             }
-        }
-    }
-
-    /// <summary>Two quads crossing at right angles (a classic foliage card), swaying at the top.</summary>
-    private static void Crossed(MeshBuilder b, float cx, float cz, float w, float h, int seed)
-    {
-        float a = 0.785f + (seed % 7) * 0.2f;
-        for (int k = 0; k < 2; k++)
-        {
-            float ang = a + k * MathF.PI / 2f;
-            var d = new Vector3(MathF.Cos(ang), 0, MathF.Sin(ang)) * (w / 2f);
-            var p0 = new Vector3(cx, 0, cz) - d;
-            var p1 = new Vector3(cx, 0, cz) + d;
-            var normal = Vector3.Normalize(new Vector3(0, 0.8f, 0.6f));
-            b.Quad(p0, p1, p1 with { Y = h }, p0 with { Y = h }, new(0, 1), new(1, 1), new(1, 0), new(0, 0),
-                new Color(190, 190, 190, 255), MeshBuilder.Sway(Color.White, 1f), normal);
         }
     }
 
@@ -426,7 +308,7 @@ internal sealed class MapScene
         }
     }
 
-    private void AddSigns(Batches batches)
+    private void AddSigns(MeshBatches batches)
     {
         var wood = new Color(170, 118, 72, 255);
         var white = batches.For(SceneTextures.White);
@@ -461,7 +343,7 @@ internal sealed class MapScene
         }
     };
 
-    private void AddBuilding(BuildingInfo b, Batches batches)
+    private void AddBuilding(BuildingInfo b, MeshBatches batches)
     {
         bool house = b.Kind == BuildingKind.House;
         float wallH = (house ? 1.55f : 1.45f) * VS;
@@ -482,7 +364,7 @@ internal sealed class MapScene
     }
 
     /// <summary>Front-facing gable like Twinleaf's houses: the ridge runs north-south and the gable faces the camera.</summary>
-    private void AddGableRoof(Batches batches, float xL, float xR, float zF, float zB, float wallH, Color roof)
+    private void AddGableRoof(MeshBatches batches, float xL, float xR, float zF, float zB, float wallH, Color roof)
     {
         var shingles = batches.For(SceneTextures.Shingles);
         var white = batches.For(SceneTextures.White);
@@ -535,7 +417,7 @@ internal sealed class MapScene
     }
 
     /// <summary>Hip roof for Pokémon Centers, Marts and the lab: four slopes meeting at a short ridge.</summary>
-    private void AddHipRoof(Batches batches, BuildingInfo b, float xL, float xR, float zF, float zB, float wallH, Color roof)
+    private void AddHipRoof(MeshBatches batches, BuildingInfo b, float xL, float xR, float zF, float zB, float wallH, Color roof)
     {
         var shingles = batches.For(SceneTextures.Shingles);
         var white = batches.For(SceneTextures.White);
@@ -578,7 +460,7 @@ internal sealed class MapScene
         }
     }
 
-    private void AddFrontDetails(Batches batches, BuildingInfo b, float zF, float wallH)
+    private void AddFrontDetails(MeshBatches batches, BuildingInfo b, float zF, float wallH)
     {
         bool house = b.Kind == BuildingKind.House;
         var white = batches.For(SceneTextures.White);
@@ -652,7 +534,7 @@ internal sealed class MapScene
     /// A room seen like a doll's house: tall back and side walls with wallpaper and wainscot, a low cut-away
     /// front wall with a gap for the door, and 3D furniture.
     /// </summary>
-    private void AddInterior(Batches batches)
+    private void AddInterior(MeshBatches batches)
     {
         int w = Map.Width, h = Map.Height;
         var white = batches.For(SceneTextures.White);

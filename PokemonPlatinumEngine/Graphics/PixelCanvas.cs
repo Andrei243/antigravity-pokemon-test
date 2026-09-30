@@ -345,6 +345,16 @@ public sealed class PixelCanvas
         }
     }
 
+    /// <summary>Copies an image's pixels into a new canvas.</summary>
+    public static unsafe PixelCanvas FromImage(Image image)
+    {
+        var canvas = new PixelCanvas(image.Width, image.Height);
+        Color* colors = Raylib.LoadImageColors(image);
+        for (int i = 0; i < canvas.pixels.Length; i++) canvas.pixels[i] = colors[i];
+        Raylib.UnloadImageColors(colors);
+        return canvas;
+    }
+
     // ---------------------------------------------------------------- upload
 
     public unsafe Image ToImage(int upscale = 1)

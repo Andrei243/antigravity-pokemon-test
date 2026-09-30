@@ -266,6 +266,116 @@ public class PokemonTests
         Assert.False(battle.IsBattleOver);
     }
 
+    [Fact]
+    public void TestTheHitLandsAfterTheAttackersLungeAndTheBarDrains()
+    {
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 12, new Random(1)));
+        var foe = new Pokemon(PokemonDatabase.Get("Bidoof")!, 8, new Random(2));
+        var battle = new BattleEngine(party, foe, new Inventory(), new Pokedex());
+        SkipMessages(battle);
+        int hp = foe.CurrentHP;
+
+        // Piplup is much faster, so its move comes first
+        battle.SelectMove(party.Members[0].Moves.FindIndex(m => m.Category != MoveCategory.Status));
+        Assert.StartsWith("Piplup used", battle.CurrentMessage);
+        Assert.True(battle.Anim.Player.AttackAge >= 0f);
+
+        // The lunge plays first; the hit lands a moment later and the bar drains toward the new HP
+        Tick(battle, 0.3f);
+        Assert.Equal(hp, foe.CurrentHP);
+        Tick(battle, 0.1f);
+        bool hit = foe.CurrentHP < hp;
+        if (hit)
+        {
+            Assert.True(battle.Anim.Enemy.HitAge >= 0f);
+            Assert.True(battle.Anim.Enemy.DisplayedHp > foe.CurrentHP);
+            Tick(battle, 2f);
+            Assert.Equal(foe.CurrentHP, battle.Anim.Enemy.DisplayedHp, 3);
+        }
+
+        battle.ConfirmMessage();
+        if (!hit) Assert.Contains("missed", battle.CurrentMessage);
+    }
+
+    [Fact]
+    public void TestAFaintedPokemonMustBeReplaced()
+    {
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5, new Random(3)));
+        party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 5, new Random(4)));
+        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Starly")!, 10, new Random(5)), new Inventory(), new Pokedex());
+        SkipMessages(battle);
+
+        // One HP and a burn: fainted by the foe's attack or by the burn at the end of the turn
+        battle.PlayerPokemon.CurrentHP = 1;
+        battle.PlayerPokemon.Status = StatusCondition.Burn;
+        battle.SelectMove(0);
+        SkipMessages(battle);
+
+        Assert.True(battle.PlayerPokemon.IsFainted);
+        Assert.Equal(BattleMenuState.SwitchPokemon, battle.HUD.MenuState);
+    }
+
+    [Fact]
+    public void TestTheTrainerStepsAsideWhenSendingOutAPokemon()
+    {
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
+        var trainer = new Trainer { Name = "Tristan", TrainerClass = "Youngster" };
+        trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 4));
+        var battle = new BattleEngine(party, trainer.Party.Members[0], new Inventory(), new Pokedex(), trainer);
+
+        // Both trainers stand on their platforms until the Pokémon come out
+        Assert.Equal("Youngster", battle.Anim.EnemyTrainer);
+        Assert.False(battle.Anim.Enemy.Present);
+
+        battle.ConfirmMessage();
+        Assert.Contains("sent out", battle.CurrentMessage);
+        Assert.True(battle.Anim.Enemy.Present);
+        Tick(battle, 1f);
+        Assert.Null(battle.Anim.EnemyTrainer);
+        Assert.Equal("PLAYER", battle.Anim.PlayerTrainer);
+
+        battle.ConfirmMessage();
+        Assert.StartsWith("Go!", battle.CurrentMessage);
+        Tick(battle, 1f);
+        Assert.Null(battle.Anim.PlayerTrainer);
+        Assert.True(battle.Anim.Player.Present);
+    }
+
+    [Fact]
+    public void TestACapturedPokemonLeavesTheFieldUntilItBreaksFree()
+    {
+        var anim = new BattleAnimator();
+        var mine = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
+        var foe = new Pokemon(PokemonDatabase.Get("Starly")!, 3);
+        anim.Appear(BattleSide.Enemy, foe);
+
+        // Drawn into the ball once it arrives
+        anim.Capture(0.8f);
+        for (int i = 0; i < 30; i++) anim.Update(1f / 60f, mine, foe);
+        Assert.True(anim.Enemy.Present);
+        for (int i = 0; i < 60; i++) anim.Update(1f / 60f, mine, foe);
+        Assert.False(anim.Enemy.Present);
+
+        anim.BreakFree();
+        Assert.True(anim.Enemy.Present);
+        Assert.True(anim.Enemy.SendOutAge >= 0f);
+    }
+
+    [Fact]
+    public void TestEverySpeciesHasItsOwn3DModel()
+    {
+        var missing = PokemonDatabase.GetAll().Select(s => s.Name).Where(n => !PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n)).ToList();
+        Assert.Empty(missing);
+    }
+
+    private static void Tick(BattleEngine battle, float seconds)
+    {
+        for (float t = 0f; t < seconds - 1e-4f; t += 1f / 60f) battle.Update(1f / 60f);
+    }
+
     private static void SkipMessages(BattleEngine battle)
     {
         for (int i = 0; i < 10 && battle.HUD.MenuState == BattleMenuState.Message; i++)

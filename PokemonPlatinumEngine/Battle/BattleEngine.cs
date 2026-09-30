@@ -33,16 +33,17 @@ public class BattleEngine
     public BattleHUD HUD { get; } = new();
     public BattleVFX VFX { get; } = new();
 
+    /// <summary>What the battle looks like: send-outs, attacks, hits, faints and the HP bars as they drain.</summary>
+    public BattleAnimator Anim { get; } = new();
+
     private readonly Queue<Action> turnEventQueue = new();
     private string currentMessage = "";
     private float messageWaitTimer = 0f;
     private bool waitingForMessageConfirm = false;
 
-    // Sprite animation offsets
-    private float playerSpriteOffset = 0f;
-    private float enemySpriteOffset = 0f;
-    private float playerDamageFlashTimer = 0f;
-    private float enemyDamageFlashTimer = 0f;
+    // Effects that land a moment after the message that started them, like a hit after the attacker's lunge
+    private const float HitDelay = 0.35f;
+    private readonly List<(float Delay, Action Effect)> pendingEffects = new();
 
     private readonly List<Pokemon>? pcBoxStorage;
     private Action? currentMessageCallback = null;
@@ -74,28 +75,30 @@ public class BattleEngine
 
         AudioManager.PlayBGM("Battle");
 
-        // Initial Intro Message
+        // Initial Intro Message: trainers stand on their platforms until they send their Pokémon out
         if (IsTrainerBattle)
         {
-            QueueMessage($"{OpponentTrainer!.FullTitle} wants to battle!", () =>
+            Anim.EnemyTrainer = OpponentTrainer!.TrainerClass;
+            QueueMessage($"{OpponentTrainer.FullTitle} wants to battle!", () =>
             {
                 QueueMessage($"{OpponentTrainer.FullTitle} sent out {EnemyPokemon.DisplayName}!", () =>
                 {
                     QueueMessage($"Go! {PlayerPokemon.DisplayName}!", () =>
                     {
                         HUD.MenuState = BattleMenuState.Main;
-                    });
-                });
+                    }, onShow: () => Anim.SendOut(BattleSide.Player, PlayerPokemon));
+                }, onShow: () => Anim.SendOut(BattleSide.Enemy, EnemyPokemon));
             });
         }
         else
         {
+            Anim.Appear(BattleSide.Enemy, EnemyPokemon);
             QueueMessage($"A wild {EnemyPokemon.DisplayName} appeared!", () =>
             {
                 QueueMessage($"Go! {PlayerPokemon.DisplayName}!", () =>
                 {
                     HUD.MenuState = BattleMenuState.Main;
-                });
+                }, onShow: () => Anim.SendOut(BattleSide.Player, PlayerPokemon));
             });
         }
 
@@ -106,10 +109,8 @@ public class BattleEngine
     {
         VFX.Update(dt);
 
-        if (playerDamageFlashTimer > 0f) playerDamageFlashTimer -= dt;
-        if (enemyDamageFlashTimer > 0f) enemyDamageFlashTimer -= dt;
-        playerSpriteOffset = MathF.Sin((float)Raylib.GetTime() * 4f) * 2f;
-        enemySpriteOffset = MathF.Cos((float)Raylib.GetTime() * 4f) * 2f;
+        Anim.Update(dt, PlayerPokemon, EnemyPokemon);
+        UpdatePendingEffects(dt);
 
         if (waitingForMessageConfirm)
         {
@@ -188,20 +189,7 @@ public class BattleEngine
                 }
                 if (InputManager.IsActionPressed(GameAction.Confirm))
                 {
-                    if (HUD.MoveMenuIndex < PlayerPokemon.Moves.Count)
-                    {
-                        var move = PlayerPokemon.Moves[HUD.MoveMenuIndex];
-                        if (move.CurrentPP > 0)
-                        {
-                            AudioManager.PlaySound("select");
-                            ExecuteTurn(new BattleAction { Type = ActionType.Fight, IsPlayer = true, Move = move });
-                        }
-                        else
-                        {
-                            AudioManager.PlaySound("cancel");
-                            QueueMessage("There's no PP left for this move!");
-                        }
-                    }
+                    SelectMove(HUD.MoveMenuIndex);
                 }
                 break;
 
@@ -249,7 +237,7 @@ public class BattleEngine
                             QueueMessage($"Go! {PlayerPokemon.DisplayName}!", () =>
                             {
                                 HUD.MenuState = BattleMenuState.Main;
-                            });
+                            }, onShow: () => Anim.SendOut(BattleSide.Player, PlayerPokemon));
                             AdvanceEventQueue();
                         }
                         else
@@ -353,22 +341,51 @@ public class BattleEngine
         }
     }
 
+    /// <summary>Uses the move in the given slot, as chosen from the FIGHT menu.</summary>
+    public void SelectMove(int index)
+    {
+        if (index < 0 || index >= PlayerPokemon.Moves.Count) return;
+
+        var move = PlayerPokemon.Moves[index];
+        if (move.CurrentPP > 0)
+        {
+            AudioManager.PlaySound("select");
+            ExecuteTurn(new BattleAction { Type = ActionType.Fight, IsPlayer = true, Move = move });
+        }
+        else
+        {
+            AudioManager.PlaySound("cancel");
+            QueueMessage("There's no PP left for this move!", () =>
+            {
+                HUD.MenuState = BattleMenuState.Moves;
+            });
+            AdvanceEventQueue();
+        }
+    }
+
     /// <summary>Dismisses the message on screen and carries on with whatever it was waiting to trigger.</summary>
     public void ConfirmMessage()
     {
         if (!waitingForMessageConfirm) return;
+
+        // Anything the message started lands now, so the battle logic never runs ahead of it
+        FlushPendingEffects();
 
         waitingForMessageConfirm = false;
         var cb = currentMessageCallback;
         currentMessageCallback = null;
         cb?.Invoke();
 
+        // A timed animation (the Poké Ball throw) holds the queue; Update releases it when the animation ends
+        if (messageWaitTimer > 0f) return;
+
         if (turnEventQueue.Count > 0)
         {
             AdvanceEventQueue();
         }
-        else if (Result == BattleResult.None)
+        else if (Result == BattleResult.None && HUD.MenuState == BattleMenuState.Message)
         {
+            // Back to the main menu, unless the message led somewhere else (like choosing a Pokémon to send out)
             HUD.MenuState = BattleMenuState.Main;
         }
     }
@@ -515,9 +532,25 @@ public class BattleEngine
         string userStr = isPlayer ? attacker.DisplayName : $"Foe {attacker.DisplayName}";
         string defStr = isPlayer ? $"Foe {defender.DisplayName}" : defender.DisplayName;
 
-        QueueMessage($"{userStr} used {move.Name}!", () =>
+        var attackerSide = isPlayer ? BattleSide.Player : BattleSide.Enemy;
+        var defenderSide = isPlayer ? BattleSide.Enemy : BattleSide.Player;
+
+        // The move resolves as its message appears: the attacker lunges, the effect flies across and the hit lands
+        // a moment later. The follow-up messages come once the player dismisses it.
+        bool missed = false;
+        var dmg = new DamageCalculator.DamageResult { TypeMultiplier = 1f };
+
+        void PlayAttack()
         {
-            // Trigger Visual FX
+            Anim.Attack(attackerSide);
+
+            // Accuracy Check
+            missed = move.Accuracy > 0 && rng.Next(100) >= move.Accuracy;
+            if (missed || move.Category == MoveCategory.Status) return;
+
+            // Damage Calculation
+            dmg = DamageCalculator.CalculateDamage(attacker, defender, move);
+
             Vector2 src = isPlayer ? BattleHUD.PlayerCenter : BattleHUD.EnemyCenter;
             Vector2 dst = isPlayer ? BattleHUD.EnemyCenter : BattleHUD.PlayerCenter;
 
@@ -531,9 +564,22 @@ public class BattleEngine
             };
 
             VFX.TriggerVfx(vfxType, src, dst, 0.4f);
+            if (dmg.IsImmune) return;
 
-            // Accuracy Check
-            if (move.Accuracy > 0 && rng.Next(100) >= move.Accuracy)
+            // Apply Damage: the target flinches and its HP bar drains
+            After(HitDelay, () =>
+            {
+                defender.CurrentHP = Math.Max(0, defender.CurrentHP - dmg.Damage);
+                Anim.Hit(defenderSide);
+
+                if (dmg.IsSuperEffective) AudioManager.PlaySound("hit_super");
+                else AudioManager.PlaySound("hit_normal");
+            });
+        }
+
+        QueueMessage($"{userStr} used {move.Name}!", () =>
+        {
+            if (missed)
             {
                 QueueMessage($"{userStr}'s attack missed!", onComplete);
                 return;
@@ -546,22 +592,11 @@ public class BattleEngine
                 return;
             }
 
-            // Damage Calculation
-            var dmg = DamageCalculator.CalculateDamage(attacker, defender, move);
-
             if (dmg.IsImmune)
             {
                 QueueMessage($"It doesn't affect {defStr}...", onComplete);
                 return;
             }
-
-            // Apply Damage
-            defender.CurrentHP = Math.Max(0, defender.CurrentHP - dmg.Damage);
-            if (isPlayer) enemyDamageFlashTimer = 0.25f;
-            else playerDamageFlashTimer = 0.25f;
-
-            if (dmg.IsSuperEffective) AudioManager.PlaySound("hit_super");
-            else AudioManager.PlaySound("hit_normal");
 
             List<string> msgs = new();
             if (dmg.IsCritical) msgs.Add("A critical hit!");
@@ -571,26 +606,33 @@ public class BattleEngine
             if (defender.CurrentHP <= 0)
             {
                 defender.Status = StatusCondition.Faint;
-                AudioManager.PlaySound("faint");
-                msgs.Add($"{defStr} fainted!");
-
                 QueueMessageSequence(msgs, () =>
                 {
-                    if (isPlayer)
+                    QueueMessage($"{defStr} fainted!", () =>
                     {
-                        AwardExp(defender, onComplete);
-                    }
-                    else
-                    {
-                        HandlePlayerPokemonFaint(onComplete);
-                    }
+                        if (isPlayer)
+                        {
+                            AwardExp(defender, onComplete);
+                        }
+                        else
+                        {
+                            HandlePlayerPokemonFaint(onComplete);
+                        }
+                    }, onShow: () => PlayFaint(defenderSide));
                 });
             }
             else
             {
                 QueueMessageSequence(msgs, onComplete);
             }
-        });
+        }, onShow: PlayAttack);
+    }
+
+    /// <summary>The fainting cry and slide off the platform, started as the "fainted!" message appears.</summary>
+    private void PlayFaint(BattleSide side)
+    {
+        AudioManager.PlaySound("faint");
+        Anim.Faint(side, 0.15f);
     }
 
     private void ApplyStatusMove(bool isPlayer, Pokemon attacker, Pokemon defender, Move move, Action onComplete)
@@ -629,8 +671,8 @@ public class BattleEngine
         {
             PlayerPokemon = nextPkmn;
             AudioManager.PlaySound("select");
-            QueueMessage($"Go! {PlayerPokemon.DisplayName}!", onComplete);
-        });
+            QueueMessage($"Go! {PlayerPokemon.DisplayName}!", onComplete, onShow: () => Anim.SendOut(BattleSide.Player, PlayerPokemon));
+        }, onShow: () => Anim.Recall(BattleSide.Player));
     }
 
     private void ExecuteItemUse(ItemData item, Action onComplete)
@@ -647,9 +689,12 @@ public class BattleEngine
             {
                 AudioManager.PlaySound("ball_throw");
                 var catchRes = CatchCalculator.AttemptCatch(EnemyPokemon, item);
-                VFX.TriggerPokeballThrow(new Vector2(200, 720), BattleHUD.EnemyCenter, catchRes.Shakes, 2.2f);
 
-                messageWaitTimer = 2.4f;
+                // The ball opens over the foe, which vanishes into it; the result shows once the ball settles
+                VFX.TriggerPokeballThrow(item.Name, new Vector2(200, 720), BattleHUD.EnemyCenter, BattleHUD.EnemyFeet, catchRes.Shakes);
+                Anim.Capture(BattleVFX.BallFlightTime);
+
+                messageWaitTimer = BattleVFX.BallThrowTime(catchRes.Shakes) + 0.1f;
                 turnEventQueue.Enqueue(() =>
                 {
                     if (catchRes.IsCaught)
@@ -687,7 +732,7 @@ public class BattleEngine
                             3 => "Gah! It was so close, too!",
                             _ => "The Pokémon broke free!"
                         };
-                        QueueMessage(msg, onComplete);
+                        QueueMessage(msg, onComplete, onShow: Anim.BreakFree);
                     }
                 });
             });
@@ -753,7 +798,7 @@ public class BattleEngine
             QueueMessage($"{OpponentTrainer!.FullTitle} sent out {EnemyPokemon.DisplayName}!", () =>
             {
                 onComplete();
-            });
+            }, onShow: () => Anim.SendOut(BattleSide.Enemy, EnemyPokemon));
         }
         else
         {
@@ -801,61 +846,70 @@ public class BattleEngine
 
     private void ExecutePostTurnStatusChecks()
     {
-        List<string> msgs = new();
-        bool playerHurt = false;
-        bool enemyHurt = false;
-
+        // Burn and poison sting at the end of the turn: each Pokémon flinches and loses HP as its message appears
+        var hurt = new List<(Pokemon Pokemon, BattleSide Side, string Message)>();
         if (!PlayerPokemon.IsFainted && (PlayerPokemon.Status == StatusCondition.Burn || PlayerPokemon.Status == StatusCondition.Poison))
         {
-            int dmg = Math.Max(1, PlayerPokemon.MaxHP / 16);
-            PlayerPokemon.CurrentHP = Math.Max(0, PlayerPokemon.CurrentHP - dmg);
-            msgs.Add($"{PlayerPokemon.DisplayName} is hurt by its {PlayerPokemon.Status}!");
-            playerHurt = true;
+            hurt.Add((PlayerPokemon, BattleSide.Player, $"{PlayerPokemon.DisplayName} is hurt by its {PlayerPokemon.Status}!"));
         }
 
         if (!EnemyPokemon.IsFainted && (EnemyPokemon.Status == StatusCondition.Burn || EnemyPokemon.Status == StatusCondition.Poison))
         {
-            int dmg = Math.Max(1, EnemyPokemon.MaxHP / 16);
-            EnemyPokemon.CurrentHP = Math.Max(0, EnemyPokemon.CurrentHP - dmg);
-            msgs.Add($"Foe {EnemyPokemon.DisplayName} is hurt by its {EnemyPokemon.Status}!");
-            enemyHurt = true;
+            hurt.Add((EnemyPokemon, BattleSide.Enemy, $"Foe {EnemyPokemon.DisplayName} is hurt by its {EnemyPokemon.Status}!"));
         }
 
-        QueueMessageSequence(msgs, () =>
+        void QueueNext(int index)
         {
-            if (playerHurt && PlayerPokemon.CurrentHP <= 0)
+            if (index == hurt.Count)
             {
-                PlayerPokemon.Status = StatusCondition.Faint;
-                AudioManager.PlaySound("faint");
-                QueueMessage($"{PlayerPokemon.DisplayName} fainted!", () =>
-                {
-                    HandlePlayerPokemonFaint(() => { });
-                });
+                FinishPostTurnStatusChecks(hurt.Exists(h => h.Side == BattleSide.Player), hurt.Exists(h => h.Side == BattleSide.Enemy));
                 return;
             }
 
-            if (enemyHurt && EnemyPokemon.CurrentHP <= 0)
+            var (pokemon, side, message) = hurt[index];
+            QueueMessage(message, () => QueueNext(index + 1), onShow: () =>
             {
-                EnemyPokemon.Status = StatusCondition.Faint;
-                AudioManager.PlaySound("faint");
-                QueueMessage($"Foe {EnemyPokemon.DisplayName} fainted!", () =>
+                pokemon.CurrentHP = Math.Max(0, pokemon.CurrentHP - Math.Max(1, pokemon.MaxHP / 16));
+                Anim.Hit(side);
+                AudioManager.PlaySound("hit_normal");
+            });
+        }
+
+        QueueNext(0);
+    }
+
+    private void FinishPostTurnStatusChecks(bool playerHurt, bool enemyHurt)
+    {
+        if (playerHurt && PlayerPokemon.CurrentHP <= 0)
+        {
+            PlayerPokemon.Status = StatusCondition.Faint;
+            QueueMessage($"{PlayerPokemon.DisplayName} fainted!", () =>
+            {
+                HandlePlayerPokemonFaint(() => { });
+            }, onShow: () => PlayFaint(BattleSide.Player));
+            return;
+        }
+
+        if (enemyHurt && EnemyPokemon.CurrentHP <= 0)
+        {
+            EnemyPokemon.Status = StatusCondition.Faint;
+            QueueMessage($"Foe {EnemyPokemon.DisplayName} fainted!", () =>
+            {
+                AwardExp(EnemyPokemon, () =>
                 {
-                    AwardExp(EnemyPokemon, () =>
+                    if (!IsBattleOver && !PlayerPokemon.IsFainted && !EnemyPokemon.IsFainted)
                     {
-                        if (!IsBattleOver && !PlayerPokemon.IsFainted && !EnemyPokemon.IsFainted)
-                        {
-                            HUD.MenuState = BattleMenuState.Main;
-                        }
-                    });
+                        HUD.MenuState = BattleMenuState.Main;
+                    }
                 });
-                return;
-            }
+            }, onShow: () => PlayFaint(BattleSide.Enemy));
+            return;
+        }
 
-            if (!IsBattleOver && !PlayerPokemon.IsFainted && !EnemyPokemon.IsFainted)
-            {
-                HUD.MenuState = BattleMenuState.Main;
-            }
-        });
+        if (!IsBattleOver && !PlayerPokemon.IsFainted && !EnemyPokemon.IsFainted)
+        {
+            HUD.MenuState = BattleMenuState.Main;
+        }
     }
 
     private void QueueMessageSequence(List<string> msgs, Action? onComplete)
@@ -881,7 +935,9 @@ public class BattleEngine
         QueueNext(0);
     }
 
-    private void QueueMessage(string msg, Action? onComplete = null)
+    /// <param name="onComplete">Runs once the player dismisses the message.</param>
+    /// <param name="onShow">Runs as the message appears (starts the animation the message describes).</param>
+    private void QueueMessage(string msg, Action? onComplete = null, Action? onShow = null)
     {
         turnEventQueue.Enqueue(() =>
         {
@@ -889,7 +945,35 @@ public class BattleEngine
             waitingForMessageConfirm = true;
             HUD.MenuState = BattleMenuState.Message;
             currentMessageCallback = onComplete;
+            onShow?.Invoke();
         });
+    }
+
+    private void After(float delay, Action effect) => pendingEffects.Add((delay, effect));
+
+    private void UpdatePendingEffects(float dt)
+    {
+        for (int i = 0; i < pendingEffects.Count; i++)
+        {
+            var (delay, effect) = pendingEffects[i];
+            if ((delay -= dt) > 0f)
+            {
+                pendingEffects[i] = (delay, effect);
+                continue;
+            }
+            pendingEffects.RemoveAt(i--);
+            effect();
+        }
+    }
+
+    private void FlushPendingEffects()
+    {
+        while (pendingEffects.Count > 0)
+        {
+            var effect = pendingEffects[0].Effect;
+            pendingEffects.RemoveAt(0);
+            effect();
+        }
     }
 
     private void AdvanceEventQueue()
@@ -905,22 +989,18 @@ public class BattleEngine
         }
     }
 
+    /// <summary>Draws the HUD, menus and move effects over the battle field (see <see cref="Graphics.BattleRenderer"/>).</summary>
     public void Draw(int screenWidth, int screenHeight)
     {
         HUD.Draw(
             screenWidth,
             screenHeight,
             PlayerPokemon,
-            EnemyPokemon,
             PlayerParty,
             EnemyParty,
-            IsTrainerBattle,
             currentMessage,
             VFX,
-            playerSpriteOffset,
-            enemySpriteOffset,
-            playerDamageFlashTimer > 0f,
-            enemyDamageFlashTimer > 0f,
+            Anim,
             PlayerInventory);
     }
 }

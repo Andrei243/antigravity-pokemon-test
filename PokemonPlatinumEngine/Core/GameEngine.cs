@@ -39,7 +39,9 @@ public class GameEngine
 
     private Map currentMap = null!;
     private Player player = null!;
-    private readonly WorldRenderer world = new(VirtualWidth, VirtualHeight);
+    private readonly RenderContext renderContext = new(VirtualWidth, VirtualHeight);
+    private readonly WorldRenderer world;
+    private readonly BattleRenderer battleRenderer;
     private readonly DialogueManager dialogue = new();
     private BattleEngine? battle;
 
@@ -73,6 +75,12 @@ public class GameEngine
     private string notificationMessage = "";
     private float notificationTimer = 0f;
 
+    public GameEngine()
+    {
+        world = new WorldRenderer(renderContext);
+        battleRenderer = new BattleRenderer(renderContext);
+    }
+
     public void Initialize()
     {
         virtualScreen = Raylib.LoadRenderTexture(VirtualWidth, VirtualHeight);
@@ -83,6 +91,10 @@ public class GameEngine
         PokemonDatabase.Initialize();
         ItemDatabase.Initialize();
         MapDatabase.Initialize();
+
+        // Menu sprites are rendered from the 3D Pokémon models once, up front
+        renderContext.EnsureLoaded();
+        PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name));
 
         // Check savegame or init fresh
         var save = SaveManager.LoadGame();
@@ -440,6 +452,7 @@ public class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
+            battleRenderer.Trees = currentMap.Trees;
             AudioManager.PlayBGM("Battle");
         });
     }
@@ -455,6 +468,7 @@ public class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(playerParty, trainer.Party.Members.First(), playerInventory, playerPokedex, trainer, pcBoxStorage);
+            battleRenderer.Trees = currentMap.Trees;
             trainerNpc.HasBattled = true;
             AudioManager.PlayBGM("Battle");
         });
@@ -525,11 +539,16 @@ public class GameEngine
             ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)
             : currentState;
         bool showWorld = scene is GameState.Overworld or GameState.Dialogue;
+        bool showBattle = scene == GameState.Battle && battle != null;
 
-        // The 3D field renders into its own target first (texture modes can't nest)
+        // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
         {
             world.Render(currentMap, player);
+        }
+        else if (showBattle)
+        {
+            battleRenderer.Render(battle!);
         }
 
         // Render scene to native 1920x1080 Full HD buffer
@@ -545,7 +564,7 @@ public class GameEngine
                 startMenu.Draw(VirtualWidth);
                 break;
             case GameState.Battle:
-                battle?.Draw(VirtualWidth, VirtualHeight);
+                DrawBattle();
                 break;
             case GameState.PartyMenu:
                 partyScreen.Draw(VirtualWidth, VirtualHeight, playerParty);
@@ -577,7 +596,7 @@ public class GameEngine
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);
                 break;
             case GameState.Transition:
-                if (scene == GameState.Battle) battle?.Draw(VirtualWidth, VirtualHeight);
+                if (showBattle) DrawBattle();
                 else if (showWorld) world.DrawToScreen(VirtualWidth, VirtualHeight);
                 break;
         }
@@ -626,9 +645,18 @@ public class GameEngine
         Raylib.EndDrawing();
     }
 
+    /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>
+    private void DrawBattle()
+    {
+        if (battle == null) return;
+        battleRenderer.DrawField(battle, VirtualWidth, VirtualHeight);
+        battle.Draw(VirtualWidth, VirtualHeight);
+    }
+
     public void Close()
     {
-        world.Unload();
+        battleRenderer.Unload();
+        renderContext.Unload();
         Raylib.UnloadRenderTexture(virtualScreen);
         AudioManager.Close();
     }

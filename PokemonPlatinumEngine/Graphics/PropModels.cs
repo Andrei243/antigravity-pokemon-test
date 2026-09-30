@@ -143,7 +143,7 @@ internal static class PropModels
             {
                 bool center = map.Interior == InteriorStyle.PokemonCenter;
                 var panel = center ? Rgb(226, 92, 100) : Rgb(80, 128, 216);
-                float top = H(0.95f);
+                float top = H(0.8f);
                 white.Box(new(x0 + 0.02f, 0, z0 + 0.12f), new(x1 - 0.02f, top - 0.08f, z1 - 0.12f), panel, BoxFaces.Visible);
                 white.Box(new(x0 + 0.02f, H(0.55f), z1 - 0.12f), new(x1 - 0.02f, H(0.62f), z1 - 0.1f), Rgb(250, 250, 252), BoxFaces.South | BoxFaces.Top);
                 white.Box(new(x0 - 0.04f, top - 0.08f, z0 + 0.06f), new(x1 + 0.04f, top, z1 - 0.04f), Rgb(248, 248, 252), BoxFaces.Visible);
@@ -191,7 +191,7 @@ internal static class PropModels
 
             case PropType.LabDesk:
             {
-                float top = H(0.78f);
+                float top = H(0.7f);
                 white.Box(new(x0 + 0.02f, 0, z0 + 0.14f), new(x1 - 0.02f, top - 0.06f, z1 - 0.14f), Rgb(150, 160, 186), BoxFaces.Visible);
                 white.Box(new(x0 - 0.02f, top - 0.06f, z0 + 0.08f), new(x1 + 0.02f, top, z1 - 0.08f), Rgb(240, 242, 248), BoxFaces.Visible);
                 // A computer at one end and some papers

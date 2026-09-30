@@ -7,41 +7,23 @@ using PokemonPlatinumEngine.Overworld;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Renders the field in 3D with Pokémon Platinum's camera: lit, shadowed terrain, buildings and rooms, with the
-/// characters as upright pixel-art sprites. Each frame renders a shadow map from the sun, then the scene into
-/// a supersampled target, which is composited with a tilt-shift and colour-grading pass.
+/// Renders the field in 3D with Pokémon Platinum's camera: lit, shadowed terrain, buildings and rooms, and
+/// cel-shaded 3D characters. Each frame renders a shadow map from the sun, then the scene into a supersampled
+/// target, which is composited with a tilt-shift and colour-grading pass.
 /// </summary>
 public sealed class WorldRenderer
 {
-    private const int SuperSample = 2;
-
-    // Characters are 24 art pixels tall; the bottom two rows are empty space below the feet
-    private const float SpriteRows = 1.5f;
-    private const float SpriteFootGap = 2f / 24f;
-
-    private readonly int width;
-    private readonly int height;
-    private RenderTexture2D target;
-    private readonly FieldShaders shaders = new();
-    private readonly ShadowMap shadowMap = new();
-    private bool loaded;
+    private readonly RenderContext context;
     private bool lastWasIndoors;
     private readonly Dictionary<string, MapScene> scenes = new(StringComparer.OrdinalIgnoreCase);
 
-    public WorldRenderer(int width, int height)
-    {
-        this.width = width;
-        this.height = height;
-    }
+    private FieldShaders shaders => context.Shaders;
+    private int width => context.Width;
+    private int height => context.Height;
 
-    private void EnsureLoaded()
+    public WorldRenderer(RenderContext context)
     {
-        if (loaded) return;
-        target = Raylib.LoadRenderTexture(width * SuperSample, height * SuperSample);
-        Raylib.SetTextureFilter(target.Texture, TextureFilter.Bilinear);
-        shaders.Load();
-        shadowMap.Load();
-        loaded = true;
+        this.context = context;
     }
 
     private MapScene GetScene(Map map)
@@ -57,22 +39,24 @@ public sealed class WorldRenderer
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
     public void Render(Map map, Player player)
     {
-        EnsureLoaded();
+        context.EnsureLoaded();
         var scene = GetScene(map);
         lastWasIndoors = scene.Indoors;
         var light = scene.Lighting;
 
+        float time = (float)Raylib.GetTime();
         float px = player.PixelX / Player.TileSize + 0.5f;
         float pz = player.PixelY / Player.TileSize + 0.5f;
-        float lift = player.HopHeight / Player.TileSize * scene.VS;
+        float lift = player.HopHeight / Player.TileSize;
         var camera = BuildCamera(scene, px, pz);
-        shaders.SetTime((float)Raylib.GetTime());
+        shaders.SetTime(time);
+        GatherActors(map, player, px, pz, lift, time);
 
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun
         var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
         var lightCamera = ShadowMap.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
 
-        Raylib.BeginTextureMode(shadowMap.Target);
+        Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
         Rlgl.SetClipPlanes(1.0, 200.0);
         Raylib.BeginMode3D(lightCamera);
@@ -80,64 +64,46 @@ public sealed class WorldRenderer
         var lightProjection = Rlgl.GetMatrixProjection();
         Rlgl.DisableBackfaceCulling();
         scene.DrawDepth();
-        Raylib.BeginShaderMode(shaders.Depth);
-        DrawCharacters(scene, map, player, px, pz, lift, 1f / scene.VS);
-        Raylib.EndShaderMode();
+        DrawActors(CharacterPass.Depth, lean: 0f);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
 
-        shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, shadowMap.Texel);
+        shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
+        shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
 
         // 2. The scene itself, sampling the shadow map
-        Raylib.BeginTextureMode(target);
+        Raylib.BeginTextureMode(context.Target);
         Raylib.ClearBackground(scene.Background);
         if (scene.Indoors) Rlgl.SetClipPlanes(1.0, 100.0);
         else Rlgl.SetClipPlanes(10.0, 140.0);
 
         Raylib.BeginMode3D(camera);
         Rlgl.DisableBackfaceCulling();
-        Rlgl.ActiveTextureSlot(FieldShaders.ShadowMapSlot);
-        Rlgl.EnableTexture(shadowMap.DepthTextureId);
-        Rlgl.ActiveTextureSlot(0);
+        context.BindShadowMap();
 
         scene.Draw();
         DrawContactShadows(map, px, pz, lift);
+        DrawActors(CharacterPass.Color, ActorLean);
 
-        Raylib.BeginShaderMode(shaders.Sprite);
-        DrawCharacters(scene, map, player, px, pz, lift, 1f);
+        // Outline hulls only show their back faces
+        Rlgl.EnableBackfaceCulling();
+        DrawActors(CharacterPass.Outline, ActorLean);
+        Rlgl.DisableBackfaceCulling();
+
         DrawSpottedBubbles(scene, map);
-        Raylib.EndShaderMode();
 
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
 
-        Rlgl.ActiveTextureSlot(FieldShaders.ShadowMapSlot);
-        Rlgl.DisableTexture();
-        Rlgl.ActiveTextureSlot(0);
+        context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
     }
 
     /// <summary>Composites the last rendered frame into the current target with tilt-shift blur and grading.</summary>
-    public void DrawToScreen(int destWidth, int destHeight)
-    {
-        if (!loaded) return;
-        shaders.SetPost(new Vector2(1f / target.Texture.Width, 1f / target.Texture.Height), lastWasIndoors ? 3.5f : 6f);
-        Raylib.BeginShaderMode(shaders.Post);
-        var src = new Rectangle(0, 0, target.Texture.Width, -target.Texture.Height);
-        Raylib.DrawTexturePro(target.Texture, src, new Rectangle(0, 0, destWidth, destHeight), Vector2.Zero, 0f, Color.White);
-        Raylib.EndShaderMode();
-    }
-
-    public void Unload()
-    {
-        if (!loaded) return;
-        Raylib.UnloadRenderTexture(target);
-        shaders.Unload();
-        shadowMap.Unload();
-        loaded = false;
-    }
+    public void DrawToScreen(int destWidth, int destHeight) =>
+        context.Composite(new Rectangle(0, 0, destWidth, destHeight), lastWasIndoors ? 3.5f : 6f);
 
     // ------------------------------------------------------------------ camera
 
@@ -192,23 +158,61 @@ public sealed class WorldRenderer
 
     // ------------------------------------------------------------------ characters
 
-    /// <param name="heightScale">
-    /// 1 for the visible sprites. The shadow pass uses 1 / VS: characters are stretched upward to look right
-    /// from the tilted camera, and casting shadows from that stretched height would make them far too long.
-    /// </param>
-    private static void DrawCharacters(MapScene scene, Map map, Player player, float px, float pz, float lift, float heightScale)
+
+    private readonly struct Actor
     {
+        public readonly CharacterRig Rig;
+        public readonly Vector3 Feet;
+        public readonly float Yaw;
+        public readonly CharacterPose Pose;
+
+        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose)
+        {
+            Rig = rig;
+            Feet = feet;
+            Yaw = yaw;
+            Pose = pose;
+        }
+    }
+
+    // Characters lean back a little so their faces read from the high field camera; shadows use the upright pose
+    private const float ActorLean = 12f * MathF.PI / 180f;
+
+    private readonly List<Actor> actors = new();
+
+    private void GatherActors(Map map, Player player, float px, float pz, float lift, float time)
+    {
+        actors.Clear();
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal) continue;
-            var tex = PixelArtGenerator.GetNpcSprite(npc.NpcType, npc.Facing);
-            DrawSprite(scene, tex, new Rectangle(0, 0, tex.Width, tex.Height), npc.GridX + 0.5f, npc.GridY + 0.5f, 0f, heightScale);
+            float seed = (npc.Name.GetHashCode() & 0xFFFF) / 65536f;
+            var pose = new CharacterPose { Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
+            actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders.Character),
+                new Vector3(npc.GridX + 0.5f, 0, npc.GridY + 0.5f), Player.YawOf(npc.Facing), pose));
         }
 
-        var sheet = PixelArtGenerator.GetPlayerSpriteSheet();
-        int fw = PixelArtGenerator.CharacterFrameWidth, fh = PixelArtGenerator.CharacterFrameHeight;
-        var frame = new Rectangle(player.AnimFrame * fw, (int)player.Facing * fh, fw, fh);
-        DrawSprite(scene, sheet, frame, px, pz, lift, heightScale);
+        var playerPose = new CharacterPose
+        {
+            Walk = player.WalkCycle,
+            WalkBlend = player.WalkBlend,
+            Running = player.IsRunning,
+            Hop = player.HopProgress,
+            Time = time,
+            Blink = IsBlinking(time, 0.37f)
+        };
+        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders.Character), new Vector3(px, lift, pz), player.Yaw, playerPose));
+    }
+
+    private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
+
+    private void DrawActors(CharacterPass pass, float lean)
+    {
+        foreach (var actor in actors)
+        {
+            var root = Matrix4x4.CreateRotationY(actor.Yaw) * Matrix4x4.CreateRotationX(-lean) * Matrix4x4.CreateTranslation(actor.Feet);
+            CharacterRenderer.Draw(context, actor.Rig, actor.Pose, root, pass, trueProportions: pass == CharacterPass.Depth);
+        }
     }
 
     /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>
@@ -219,20 +223,10 @@ public sealed class WorldRenderer
         {
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
             {
-                float y0 = (SpriteRows - SpriteFootGap * SpriteRows + 0.1f) * scene.VS;
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.GridX + 0.5f, npc.GridY + 0.55f, y0, 0.7f, 0.7f * scene.VS);
+                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.GridX + 0.5f, npc.GridY + 0.15f, 1.95f, 0.7f, 0.7f * scene.VS);
             }
         }
-    }
-
-    /// <summary>
-    /// Characters stand upright on their tile. Their height is divided by cos(pitch) so the sprite keeps its
-    /// true proportions on screen, and upright quads never lean into walls behind them.
-    /// </summary>
-    private static void DrawSprite(MapScene scene, Texture2D tex, Rectangle src, float cx, float cz, float lift, float heightScale)
-    {
-        float h = SpriteRows * scene.VS * heightScale;
-        DrawUpright(tex, src, cx, cz, lift - SpriteFootGap * h, 1f, h);
+        Rlgl.DrawRenderBatchActive();
     }
 
     /// <summary>An upright textured quad facing the camera's direction, centred on x and standing at y0.</summary>
@@ -247,7 +241,6 @@ public sealed class WorldRenderer
         Rlgl.SetTexture(tex.Id);
         Rlgl.Begin(DrawMode.Quads);
         Rlgl.Color4ub(255, 255, 255, 255);
-        Rlgl.Normal3f(0, 0, 1);
         Rlgl.TexCoord2f(u0, v1); Rlgl.Vertex3f(x0, y0, cz);
         Rlgl.TexCoord2f(u1, v1); Rlgl.Vertex3f(x1, y0, cz);
         Rlgl.TexCoord2f(u1, v0); Rlgl.Vertex3f(x1, y1, cz);
@@ -267,7 +260,7 @@ public sealed class WorldRenderer
 
         void Blob(float cx, float cz, float scale)
         {
-            float rx = 0.36f * scale, rz = 0.24f * scale, y = 0.015f;
+            float rx = 0.3f * scale, rz = 0.2f * scale, y = 0.015f;
             Rlgl.CheckRenderBatchLimit(4);
             Rlgl.SetTexture(tex.Id);
             Rlgl.Begin(DrawMode.Quads);
@@ -283,7 +276,7 @@ public sealed class WorldRenderer
         {
             if (!npc.IsPCTerminal) Blob(npc.GridX + 0.5f, npc.GridY + 0.52f, 1f);
         }
-        Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.3f, 0f, 0.5f));
+        Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 
         Rlgl.SetTexture(0);
         Rlgl.DrawRenderBatchActive();
