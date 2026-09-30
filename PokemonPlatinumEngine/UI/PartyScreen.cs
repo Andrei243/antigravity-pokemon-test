@@ -92,6 +92,12 @@ public class PartyScreen
     {
         if (!IsActive) return;
 
+        if (!ShowSummary && ArtLook.VectorUi)
+        {
+            ModernUi.DrawParty(screenWidth, screenHeight, party, SelectedIndex, SwapSourceIndex);
+            return;
+        }
+
         Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Palette.UiBackground);
 
         // Header

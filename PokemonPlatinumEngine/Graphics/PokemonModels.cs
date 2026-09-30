@@ -39,6 +39,10 @@ internal sealed class PokeBone
     public readonly MeshBuilder Geometry = new();
 
     public Mesh Mesh, Outline;
+
+    /// <summary>Thinner, coloured outline for the model drawn in the 3D battle scene.</summary>
+    public Mesh SceneOutline;
+    public bool SceneOutlineUploaded;
     public bool Uploaded;
 }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using PokemonPlatinumEngine.Battle;
@@ -362,6 +363,68 @@ public class PokemonTests
         anim.BreakFree();
         Assert.True(anim.Enemy.Present);
         Assert.True(anim.Enemy.SendOutAge >= 0f);
+    }
+
+    [Fact]
+    public void TestACaughtPokemonJoinsThePartyAndEndsTheBattle()
+    {
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
+        var inventory = new Inventory();
+        inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
+        var pokedex = new Pokedex();
+
+        // Asleep on 1 HP: a Poké Ball can't miss
+        var foe = new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1, Status = StatusCondition.Sleep };
+        var battle = new BattleEngine(party, foe, inventory, pokedex, null, new List<Pokemon>());
+        SkipMessages(battle);
+
+        battle.SelectBagItem(0);
+        Assert.Equal("Lucas used one Poké Ball!", battle.CurrentMessage);
+        battle.ConfirmMessage();
+        Tick(battle, BattleVFX.BallThrowTime(4) + 0.5f);
+
+        Assert.Equal("Gotcha! Starly was caught!", battle.CurrentMessage);
+        Assert.Contains(foe, party.Members);
+        Assert.True(pokedex.IsCaught(foe.Species.DexNumber));
+        battle.ConfirmMessage();
+        Assert.Equal(BattleResult.EnemyCaught, battle.Result);
+        Assert.True(battle.IsBattleOver);
+    }
+
+    [Fact]
+    public void TestAPokemonThatBreaksFreeIsBackOnTheFieldBeforeTheMessage()
+    {
+        // Giratina at full HP almost always breaks out of a Poké Ball; try again on the rare catch
+        for (int attempt = 0; attempt < 10; attempt++)
+        {
+            var party = new Party();
+            party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
+            var inventory = new Inventory();
+            inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
+            var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Giratina")!, 70), inventory, new Pokedex());
+            SkipMessages(battle);
+
+            battle.SelectBagItem(0);
+            string thrown = battle.CurrentMessage;
+            battle.ConfirmMessage();
+
+            bool vanished = false;
+            for (float t = 0f; t < 8f && battle.CurrentMessage == thrown; t += 1f / 60f)
+            {
+                battle.Update(1f / 60f);
+                vanished |= !battle.Anim.Enemy.Present;
+            }
+            if (battle.CurrentMessage.StartsWith("Gotcha")) continue;
+
+            // Drawn into the ball, then fully burst back out before the message says how close it was
+            Assert.True(vanished);
+            Assert.True(battle.Anim.Enemy.Present);
+            Assert.True(battle.Anim.Enemy.SendOutAge < 0f);
+            Assert.Single(party.Members);
+            return;
+        }
+        Assert.Fail("Giratina was caught every time");
     }
 
     [Fact]

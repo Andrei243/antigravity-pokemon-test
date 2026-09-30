@@ -47,7 +47,7 @@
 - Generalise the tests (every warp reachable, doors lead inside) to all imported areas; teach the harness to jump to an area by name.
 - **Done when** you can walk from Twinleaf to Route 202 with no loading screens, the screenshots look at least as good as today, and a frame stays under 8 ms.
 
-### M3 · Terrain features
+### M3 · Terrain features (with plan 04 · G4's materials)
 - Elevation, cliffs, slopes, stairs and bridges; ledges in every direction.
 - Water: animated surface with shorelines; Surf (start from the shore, ride, land), with surf encounters; waterfalls (rendered, climbed with Waterfall).
 - Sand, mud slopes (need the bike's speed), snow and deep snow, ice (slide until blocked), rock-climb walls.
@@ -56,7 +56,7 @@
 - Unit tests for the movement rules of each behaviour, run on `World` and `Player` without rendering; a test map in the harness that shows every behaviour.
 - **Done when** each feature has a test and a screenshot.
 
-### M4 · Buildings and landmarks
+### M4 · Buildings and landmarks (with plan 04 · G5's building kit)
 - Map building model ids to procedural building kinds. Houses vary by town (Twinleaf's green roofs, Jubilife's modern blocks, Eterna's older timber, Snowpoint's snowed roofs, Sunyshore's seaside homes); Pokémon Centers, Marts and a distinct gym per city.
 - Landmarks: Jubilife TV, Global Terminal and Trainers' School; Oreburgh's mine works; Floaroma's flower fields; Valley Windworks' turbines; Eterna's statue and Galactic building; Hearthome's contest hall, church and Amity Square; Solaceon ruins entrance; Veilstone's department store, meteorites and Galactic HQ; Pastoria's Great Marsh; Celestic's shrine; Canalave's drawbridge, library and harbour; Snowpoint's temple; Sunyshore's solar walkways and Vista Lighthouse; the Pokémon League.
 - Scenery: tree styles per area, rocks, fences, flowers, signs, lamps, benches.

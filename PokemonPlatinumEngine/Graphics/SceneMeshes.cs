@@ -74,8 +74,13 @@ internal static class TreeModels
     private static float Rand(int x, int y, int salt) => GroundBaker.Rand01(x, y, salt);
 
     /// <summary>Sinnoh pine: four tiers of needled cones with serrated, cut-out rims.</summary>
-    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f)
+    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false)
     {
+        if (soft)
+        {
+            SoftFoliage.Pine(batches, cx, cz, seedX, seedY, scale);
+            return;
+        }
         float s = (0.92f + Rand(seedX, seedY, 3) * 0.16f) * scale;
         batches.For(SceneTextures.Bark).Cylinder(new(cx, 0, cz), 0.12f * scale, 0.08f * scale, 1.1f * s, 7, Color.White, cap: false);
 
@@ -114,8 +119,13 @@ internal static class TreeModels
     }
 
     /// <summary>Round broadleaf tree: a few leafy clumps on a short trunk.</summary>
-    public static void Round(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f)
+    public static void Round(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false)
     {
+        if (soft)
+        {
+            SoftFoliage.Round(batches, cx, cz, seedX, seedY, scale);
+            return;
+        }
         float s = (0.92f + Rand(seedX, seedY, 3) * 0.16f) * scale;
         batches.For(SceneTextures.Bark).Cylinder(new(cx, 0, cz), 0.14f * scale, 0.1f * scale, 0.9f * s, 7, Color.White, cap: false);
 

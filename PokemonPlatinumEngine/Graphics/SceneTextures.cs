@@ -316,7 +316,7 @@ internal static class SceneTextures
     }
 
     /// <summary>Seamless 128px meadow for the battle field (covers four world units).</summary>
-    public static Texture2D Meadow => Get("meadow", () =>
+    public static Texture2D Meadow => ArtLook.ModelBattle ? SoftTextures.Meadow : Get("meadow", () =>
     {
         const int s = 128;
         var c = new PixelCanvas(s, s);
@@ -341,7 +341,7 @@ internal static class SceneTextures
     }, repeat: true);
 
     /// <summary>Top of a battle platform: lush grass, lighter in the middle with a worn ring near the rim.</summary>
-    public static Texture2D PlatformTop => Get("platform_top", () =>
+    public static Texture2D PlatformTop => ArtLook.ModelBattle ? SoftTextures.PlatformTop : Get("platform_top", () =>
     {
         const int s = 128;
         var c = new PixelCanvas(s, s);

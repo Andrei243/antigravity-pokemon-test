@@ -1,0 +1,135 @@
+# Plan 04 · Graphics overhaul
+
+**Goal**: make the game look polished and professionally made: one coherent art style from the overworld to battles and menus, with Platinum's charm and the finish of a modern 3D release. Every other plan builds its content on top of this, so start here.
+
+## Why it looks amateurish today
+
+Findings from the current screenshots:
+
+- **No single style.** Pixel-art pieces (the 128 px Pokémon sprites, grass tufts, flower beds, speckled ground) sit next to smooth cel-shaded 3D and flat UI boxes. The low-resolution Pokémon look pasted onto a high-resolution scene.
+- **Noise instead of texture.** Grass, paths and the battle meadow are covered in single-pixel speckles that read as TV static; path edges are jagged pixel fringes; tree canopies are noisy balls.
+- **Models built from visible primitives.** Characters and Pokémon are spheres, cylinders and cones pushed into each other: hard seams, tiny painted faces, stick arms, helmet-like hair.
+- **Flat light.** No ambient occlusion, a flat ambient term, near-black outlines on everything, no bloom, colour grading or atmospheric depth; the battle sky is a gradient with flat 2D ellipse clouds.
+- **Generic UI.** Pale rounded boxes, one plain font, big empty areas (the battle message box takes a quarter of the screen for one line), almost no icons, no motion, nothing of Platinum's identity.
+- **No life.** Grass doesn't move; no footsteps, dust, ripples or weather; plain fades between scenes.
+
+## Direction (decided in G1)
+
+**Chosen: "Sinnoh Diorama", a mix of the two candidates** (user's choice on 2026-10-01, after comparing both on the same frames):
+
+- **Overworld: HD-2D.** Pixel-art ground, buildings and characters in the lit 3D diorama, with strong tilt-shift depth of field, bloom and warm grading. Characters are pixel sprites baked from the 3D rigs.
+- **Battles: modern 3D.** Real 3D Pokémon and trainers on a modelled stage, soft cel shading with coloured outlines, smooth filtered textures, modelled foliage, painted sky.
+- **Interface: modern vector UI** in Platinum's colour language (Nunito, anti-aliased panels), with Pokémon shown as **2D pixel sprites** in menus, like the main games (no 3D renders in menus).
+
+The rules and numbers are in [`docs/art/style-guide.md`](../art/style-guide.md); `ArtLook.PixelField`, `ArtLook.ModelBattle` and `ArtLook.VectorUi` switch each layer. The candidates were:
+
+*Modern 3D Sinnoh.* The overworld as a chibi diorama, full 3D Pokémon in battle, soft cel shading, clean low-frequency textures, bloom and grading, and a crisp HD interface. (Its battle and interface were kept.)
+
+*HD-2D.* Pixel-art characters and Pokémon as sprites in a 3D diorama with pixel-textured terrain, depth of field and bloom. (Its overworld was kept; its battles and pixel-framed interface were not.)
+
+## Asset policy (confirmed in G1)
+
+- Procedural generation stays the backbone: it scales to 1025 species and every town.
+- Free-licensed assets are welcome where they beat code: OFL fonts (Google Fonts), CC0 textures and skies (Poly Haven, ambientCG), CC0 props and nature pieces (Kenney, Quaternius, KayKit) through a glTF import path. Record each one in `docs/art/CREDITS.md`, and get the user's OK before downloading.
+- An override folder, `overrides/models/` next to the game (ignored by git): a glTF model named after a species, character or building replaces the procedural one, so hand-made Blender models can be dropped in at any time.
+- No assets taken from the Pokémon games, and no fan rips.
+
+## Architecture
+
+Each item names the layer it serves: **field** (HD-2D), **battle** (3D) or **UI**.
+
+- **Materials as data** (battle): base colour or texture, shading ramp, outline colour and width, rim, specular, emission; one set per material kind (skin, cloth, hair, foliage, wood, stone, metal, glass, water). The field's materials are pixel-art textures on the 32-texel grid.
+- **Lighting** (both): hemisphere ambient, tinted soft shadows (more PCF taps, normal-offset bias), per-area light rigs and palettes for Platinum's five times of day; ramp-based cel shading with soft band edges in battle, smooth Lambert light in the field (the pixel art carries the shading).
+- **Post chain** (both, settings per layer in `ArtLook`): scene target → half-resolution blur and bloom chains (done in G1) → colour grading → tilt-shift depth of field (done in G1) → FXAA for the battle. Ambient occlusion for the battle. Revisit 2× supersampling once FXAA is in.
+- **Outlines** (battle): inverted hulls for characters and Pokémon (tinted, done in G1), screen-space edge detection for the stage. Field sprites carry a one-texel outline in their pixel art.
+- **Sky and atmosphere**: a sky dome or painted sky with lit clouds for the battle (painted sky done in G1); distance fog in the sky's colour for both.
+- **Wind and instancing** (both): one wind field sways grass, flowers and trees; grass, flowers and trees are GPU-instanced.
+- **Character sprites** (field): 3D rigs baked into pixel sprites per facing and walk frame, drawn as upright lit billboards that cast shadows (done in G1, `CharacterSprites`); hand-drawn overrides can replace any frame.
+- **SDF modelling kit** (`SdfModel`, battle and sprite sources): spheres, ellipsoids, capsules, rounded boxes, cones and tori combined with smooth unions and cuts, each carrying a colour; meshed with marching cubes into smooth normals and blended vertex colours; decals for eyes, markings and patterns; meshes cached on disk. It replaces the primitive assembly in `Graphics/CharacterModels.cs` and `Graphics/PokemonModels.cs` (the existing `PokeBuilder` shapes translate almost one-to-one) and is the base of plan 03's model generator. The same models feed the 3D battles and the baked sprites (field characters, menu Pokémon).
+- **Skeletal animation** (battle): skinned meshes (raylib 5.5's GPU skinning, or CPU skinning), animation clips written in code (keyframes plus procedural motion), blending between clips.
+- **UI kit** (UI): fonts (Nunito, done in G1; SDF fonts later), design tokens, components drawn with `UiShapes` (panel, button, list, tab, bar, dialogue box, icon), vector-drawn icons, tweens for motion. Pokémon appear as 2D pixel sprites.
+- **Look-dev tools**: harness modes for model turntables, a UI gallery and before/after pairs (`look` mode, done in G1); shader hot-reload while tuning.
+
+## Sessions
+
+Every session starts by capturing "before" screenshots with the harness and ends with before/after pairs for the user to approve.
+
+### G1 · Direction, references and style guide
+- Capture the current look; confirm the direction and the asset policy with the user.
+- Collect reference pictures (the user can supply some; keep them out of the repo).
+- Write the style guide: palettes per area and time of day, shading ramps, outline rules, texture rules (no single-pixel noise, texel density), proportions for characters and Pokémon, typography scale, UI colours and components, dos and don'ts.
+- Prototype the target on three frames (Twinleaf, a battle, the party screen): palette, lighting and font changes, enough for the user to judge the direction before the big work starts.
+- **Done when** the user approves the style guide and the prototype frames.
+
+**Outcome (2026-10-01).** Both candidate looks were prototyped on the same frames and compared side by side; the user chose the mix described under *Direction* and approved Nunito and the asset policy. What exists now:
+- `ArtLook` switches the field, battle and interface layers; the chosen look is the default. `ArtDirection.Current` (the old look) remains until each area is rebuilt.
+- Post chain with half-resolution depth-of-field and bloom targets and per-layer grading (`RenderContext.PreparePost`).
+- Field: `PixelGround` (clean pixel-art ground; the old ground was ~30 % single-texel specks, the new one ~0.6 %, checked by `StyleGuideTests`) and `CharacterSprites` (rigs baked to outlined pixel sprites, drawn as shadow-casting billboards).
+- Battle: Pokémon drawn as lit 3D models on the platforms with tinted outlines (`BattleRenderer.DrawPokemon3D`), `SoftFoliage` trees and tufts, `SoftTextures` meadow and platforms, `SkyPainter` sky.
+- Interface: `UI/Kit` (Nunito loader, `UiShapes` SDF panels) and `ModernUi` (battle HUD main/move/message states, party screen with 2D pixel sprites, dialogue box).
+- Harness `look` mode: reference frames in the old and new look, plus before/after boards.
+- Not yet covered: see *Known gaps* in the style guide.
+
+### G2 · Rendering foundation
+Per the style guide's layers. Field: soft shadow filtering, fog, the five time-of-day light rigs and grades (confirm Platinum's hour boundaries from pret/pokeplatinum), pixel-perfect sprite and texture placement. Battle: material system, ambient occlusion, screen-space outlines for the stage, FXAA, the time-of-day rigs. Both: a graphics settings screen (quality presets, resolution, full screen, vsync). Remove the `Current` paths this session replaces. Tune on Twinleaf, Route 201 and the grass battle.
+**Done when** the before/after pairs show a clear step up and a frame stays under 8 ms.
+
+### G3 · UI kit and core screens
+Grow `UI/Kit` and `ModernUi` into the kit: tokens, components and motion from the style guide; then rebuild the start menu, the battle's switch and bag panels, the summary (2D sprites), and polish the dialogue box, battle HUD (animated bars) and party screen. Add the location-name sign shown when entering an area.
+**Done when** those screens use only kit components and pass review in the harness `menus`, `battle` and `look` modes.
+
+### G4 · Terrain and nature
+Field, in pixel art on the 32-texel grid: sand, dirt, snow and cave ground for `PixelGround`; bevelled ledges and cliffs; tall grass and flowers that sway and part around the player; trees with clean pixel-art bark and leaf textures (no noise); rocks; the water (pixel-art depth bands, shoreline foam, sparkles). Battle: pines and round trees per arena, rocks, water edges in the smooth style.
+**Done when** Twinleaf, Route 201 and Lake Verity look finished.
+
+### G5 · Buildings, props and interiors
+A modular building kit in pixel art with a style per town: planks and plaster with one-texel bevels, framed windows with glass, doors with steps, roof tiles with ridges, overhangs and gutters, chimneys, foundations. Props: fences, signs, lamps, mailboxes, benches, flower boxes. Interiors with warm light, wood and tile floors, rugs and furniture. No per-texel noise anywhere.
+**Done when** every existing building and interior is rebuilt.
+
+### G6 · SDF kit and characters
+`SdfModel` with meshing and caching. Rebuild the player and every NPC type: better proportions, hands and shoes, sculpted hair, clothing detail, expressive faces (eyes with highlights, blinking, a few mouth shapes and expressions). Skinned skeletons with walk, run, idle and emote animations with follow-through (hair and bag bounce). The models serve both layers: 3D trainers in battle, and the source of the field sprites (re-bake, with more walk frames and legible faces at sprite size; hand-drawn overrides where a bake falls short).
+**Done when** the lineup, sprite sheet and walk-cycle shots pass review.
+
+### G7 · Pokémon models, version 2
+Rebuild the existing species with the SDF kit plus eye and marking decals; skeletons per body plan (biped, quadruped, bird, serpent, fish, floating); animations for idle, physical and special attacks, hit, faint and entry. Battles already draw the Pokémon as 3D models (G1); menu icons, summary and Pokédex pictures stay 2D pixel sprites baked from the same models.
+**Done when** the contact sheet and battle shots pass review. Plan 03's generator (D5) and hand-built batches (D6–D9) then use this kit.
+
+### G8 · Battle presentation
+Arenas per environment (grass, forest, cave, water, snow, sand, indoors, each gym, the League rooms) and time of day; camera choreography (intro sweep, send-out close-up, following the attacker and cutting to the target, a zoom on critical hits); a 3D effects system (particles, trails, beams, shockwaves, screen flashes) with a template per type and overrides per move; a 3D Poké Ball thrown by the trainer.
+**Done when** a scripted demo battle in the harness looks right.
+
+### G9 · Life
+Wind, footprints and dust, water ripples and splashes, rustling grass, rain, snow and fog, day and night, doors that open, emote bubbles, eased camera moves, and battle intro transitions (swirls, shutters, shatter effects) that carry the player from the pixel diorama into the 3D battle.
+
+### G10 · Remaining screens
+Bag, Pokédex (2D sprites, per the style guide), trainer card, shop, PC boxes, starter choice, a title screen with a diorama scene, the new-game introduction, save and load, options; all in the vector UI kit.
+
+### G11 · Performance and final pass
+Profiling, instancing, levels of detail, caches, settings presets, and a last before/after review of every harness shot.
+
+## Risks
+
+- **Procedural limits**: some species will still look off; the override folder lets a hand-made model replace any of them.
+- **Cost of effects**: 2× supersampling plus ambient occlusion and bloom is heavy; measure each addition and keep presets for slower machines. After G1: field 4.2 ms, battle 5.0 ms per frame in the harness.
+- **Two techniques, one game**: the pixel field and the 3D battles could feel like two games. Keep palettes, light direction and the interface shared, and make the battle intro transition (G9) sell the change.
+- **Endless polish**: every session has a done-when and a user review; move on once it passes.
+- **raylib limits**: OpenGL 3.3 without compute shaders, so everything runs as vertex and fragment passes.
+
+## Needs and gives
+
+- **Needs** nothing first: start with G1.
+- **Gives** every other plan its look. Build plan 01's regions (M4 onwards) after G4–G5, plan 03's models (D5–D9) after G7, plan 02's cutscenes after G6.
+
+## Status
+
+- [x] G1 Direction, references and style guide (2026-10-01: Sinnoh Diorama; see the style guide)
+- [ ] G2 Rendering foundation
+- [ ] G3 UI kit and core screens
+- [ ] G4 Terrain and nature
+- [ ] G5 Buildings, props and interiors
+- [ ] G6 SDF kit and characters
+- [ ] G7 Pokémon models, version 2
+- [ ] G8 Battle presentation
+- [ ] G9 Life
+- [ ] G10 Remaining screens
+- [ ] G11 Performance and final pass

@@ -52,6 +52,9 @@ public class BattleHUD
         BattleAnimator anim,
         Inventory inventory)
     {
+        // The vector interface (plan 04 · G1 prototype) draws the states it covers; G3 rebuilds the rest
+        if (ArtLook.VectorUi && UI.ModernUi.DrawBattle(this, screenWidth, screenHeight, playerPokemon, enemyTrainerParty, battleMessage, vfx, anim)) return;
+
         int panelHeight = 260;
         int panelY = screenHeight - panelHeight;
 
@@ -89,7 +92,7 @@ public class BattleHUD
     }
 
     /// <summary>How far a side's HP box is slid off screen: 0 = in place, 1 = fully out, -1 = hidden.</summary>
-    private static float BoxSlide(BattleAnimator anim, CombatantView view)
+    internal static float BoxSlide(BattleAnimator anim, CombatantView view)
     {
         if (view.Shown == null || !view.Present) return -1f;
 

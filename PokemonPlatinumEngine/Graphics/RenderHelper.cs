@@ -29,6 +29,8 @@ public static class RenderHelper
     {
         get
         {
+            // The vector interface uses its own typeface everywhere
+            if (ArtLook.VectorUi) return UI.Kit.UiFonts.Get(UI.Kit.UiWeight.ExtraBold);
             if (uiFont.HasValue) return uiFont.Value;
 
             string? path = FontCandidates.FirstOrDefault(File.Exists);
@@ -52,7 +54,7 @@ public static class RenderHelper
         }
     }
 
-    private static float Spacing(int fontSize) => usingDefaultFont ? fontSize / 10f : 0.5f;
+    private static float Spacing(int fontSize) => usingDefaultFont && !ArtLook.VectorUi ? fontSize / 10f : 0.5f;
 
     public static void DrawText(string text, int x, int y, int fontSize, Color color)
     {

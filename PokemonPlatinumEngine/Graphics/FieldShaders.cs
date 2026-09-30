@@ -19,9 +19,12 @@ internal sealed class FieldShaders
     public Shader Character { get; private set; }
     public Shader Outline { get; private set; }
     public Shader Water { get; private set; }
+    public Shader Sprite { get; private set; }
     public Shader Post { get; private set; }
+    public Shader Down { get; private set; }
+    public Shader Blur { get; private set; }
 
-    private Shader[] FieldPrograms => new[] { World, Depth, Character, Water };
+    private Shader[] FieldPrograms => new[] { World, Depth, Character, Water, Sprite };
 
     // raylib's DrawMesh fills in mvp, matModel and matNormal for each mesh it draws
     private const string CommonVertex = @"#version 330
@@ -128,6 +131,7 @@ uniform vec3 sunDir;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
 uniform vec3 groundAmbient;
+uniform float worldRamp;
 out vec4 finalColor;
 " + ShadowFunctions + @"
 void main()
@@ -139,8 +143,25 @@ void main()
     float ndl = dot(n, sunDir);
     float shadow = ndl > 0.0 ? Shadow(fragLight) : 0.0;
     vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
-    vec3 color = albedo * (ambient + sunColor * max(ndl, 0.0) * shadow);
+    // worldRamp blends smooth Lambert light toward a soft two-tone cel band
+    float diffuse = mix(max(ndl, 0.0), smoothstep(0.0, 0.3, ndl) * 0.92 + max(ndl, 0.0) * 0.08, worldRamp);
+    vec3 color = albedo * (ambient + sunColor * diffuse * shadow);
     finalColor = vec4(color, 1.0);
+}";
+
+    // HD-2D billboards: pixel-art sprites lit by the scene's sun and sky, without self-shadowing
+    private const string SpriteFragment = @"#version 330
+in vec2 fragTexCoord;
+in vec4 fragColor;
+uniform sampler2D texture0;
+uniform vec3 sunColor;
+uniform vec3 skyAmbient;
+out vec4 finalColor;
+void main()
+{
+    vec4 texel = texture(texture0, fragTexCoord);
+    if (texel.a < 0.5) discard;
+    finalColor = vec4(texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78), 1.0);
 }";
 
     // Shadow pass: only depth matters, but cut-out texels must not cast shadows
@@ -171,6 +192,7 @@ uniform vec3 groundAmbient;
 uniform vec3 viewPos;
 uniform float shadowStrength;
 uniform float rimStrength;
+uniform vec4 flash;
 out vec4 finalColor;
 " + ShadowFunctions + @"
 void main()
@@ -187,7 +209,7 @@ void main()
     vec3 v = normalize(viewPos - fragWorld);
     float rim = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 3.0);
     color += (albedo * 0.6 + vec3(0.1)) * rim * rimStrength;
-    finalColor = vec4(color, 1.0);
+    finalColor = vec4(mix(color, flash.rgb, flash.a), 1.0);
 }";
 
     // Two drifting layers of the water texture, rippling sun glints, a fresnel sky tint and shoreline foam
@@ -230,14 +252,24 @@ void main()
     finalColor = vec4(color, 1.0);
 }";
 
-    // Final composite: tilt-shift blur toward the top and bottom of the screen (the diorama look),
-    // a gentle vignette and a little extra saturation and contrast
+    // Final composite: tilt-shift blur toward the top and bottom of the screen (the diorama look), an optional
+    // wider depth-of-field blur and bloom from the half-resolution chains, then grading and a vignette
     private const string PostFragment = @"#version 330
 in vec2 fragTexCoord;
 in vec4 fragColor;
 uniform sampler2D texture0;
+uniform sampler2D blurTex;
+uniform sampler2D bloomTex;
 uniform vec2 texel;
 uniform float blurStrength;
+uniform float dof;
+uniform float focusBand;
+uniform float bloomStrength;
+uniform float saturation;
+uniform float contrast;
+uniform vec3 shadowTint;
+uniform vec3 highlightTint;
+uniform float vignette;
 out vec4 finalColor;
 
 const vec2 taps[12] = vec2[](
@@ -251,21 +283,63 @@ void main()
     vec3 color = texture(texture0, uv).rgb;
 
     float band = abs(uv.y - 0.5) * 2.0;
-    float radius = smoothstep(0.5, 1.0, band) * blurStrength;
+    float edge = smoothstep(focusBand, 1.0, band);
+    float radius = edge * blurStrength;
     if (radius > 0.05)
     {
         vec3 sum = color;
         for (int i = 0; i < 12; i++) sum += texture(texture0, uv + taps[i] * radius * texel).rgb;
         color = sum / 13.0;
     }
+    if (dof > 0.0) color = mix(color, texture(blurTex, uv).rgb, edge * dof);
+    if (bloomStrength > 0.0) color += texture(bloomTex, uv).rgb * bloomStrength;
 
     float luma = dot(color, vec3(0.299, 0.587, 0.114));
-    color = mix(vec3(luma), color, 1.1);
-    color = (color - 0.5) * 1.04 + 0.5;
+    color *= mix(shadowTint, highlightTint, smoothstep(0.15, 0.85, luma));
+    color = mix(vec3(luma), color, saturation);
+    color = (color - 0.5) * contrast + 0.5;
 
     vec2 d = (uv - 0.5) * vec2(1.25, 1.0);
-    color *= mix(0.84, 1.0, smoothstep(0.85, 0.3, length(d)));
+    color *= mix(1.0 - vignette, 1.0, smoothstep(0.85, 0.3, length(d)));
     finalColor = vec4(clamp(color, 0.0, 1.0), 1.0);
+}";
+
+    // Half-resolution chains for bloom and depth of field: a 4-tap downsample (optionally keeping only what is
+    // brighter than a threshold), then separable 9-tap Gaussian blurs
+    private const string DownFragment = @"#version 330
+in vec2 fragTexCoord;
+uniform sampler2D texture0;
+uniform vec2 texel;
+uniform float threshold;
+out vec4 finalColor;
+void main()
+{
+    vec3 c = texture(texture0, fragTexCoord + vec2(-texel.x, -texel.y)).rgb
+           + texture(texture0, fragTexCoord + vec2(texel.x, -texel.y)).rgb
+           + texture(texture0, fragTexCoord + vec2(-texel.x, texel.y)).rgb
+           + texture(texture0, fragTexCoord + vec2(texel.x, texel.y)).rgb;
+    c *= 0.25;
+    if (threshold < 1.0)
+    {
+        float luma = max(c.r, max(c.g, c.b));
+        c *= smoothstep(threshold, threshold + 0.2, luma);
+    }
+    finalColor = vec4(c, 1.0);
+}";
+
+    private const string BlurFragment = @"#version 330
+in vec2 fragTexCoord;
+uniform sampler2D texture0;
+uniform vec2 direction;
+out vec4 finalColor;
+void main()
+{
+    vec3 c = texture(texture0, fragTexCoord).rgb * 0.2270270270;
+    c += texture(texture0, fragTexCoord + direction * 1.3846153846).rgb * 0.3162162162;
+    c += texture(texture0, fragTexCoord - direction * 1.3846153846).rgb * 0.3162162162;
+    c += texture(texture0, fragTexCoord + direction * 3.2307692308).rgb * 0.0702702703;
+    c += texture(texture0, fragTexCoord - direction * 3.2307692308).rgb * 0.0702702703;
+    finalColor = vec4(c, 1.0);
 }";
 
     public bool Loaded { get; private set; }
@@ -278,20 +352,24 @@ void main()
         Character = Raylib.LoadShaderFromMemory(CommonVertex, CharacterFragment);
         Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
         Water = Raylib.LoadShaderFromMemory(CommonVertex, WaterFragment);
+        Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
         Post = Raylib.LoadShaderFromMemory(PostVertex, PostFragment);
+        Down = Raylib.LoadShaderFromMemory(PostVertex, DownFragment);
+        Blur = Raylib.LoadShaderFromMemory(PostVertex, BlurFragment);
 
         foreach (var shader in new[] { World, Character, Water })
         {
             Set(shader, "shadowMap", ShadowMapSlot);
         }
         SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
+        SetFlash(default, 0f);
         Loaded = true;
     }
 
     public void Unload()
     {
         if (!Loaded) return;
-        foreach (var shader in new[] { World, Depth, Character, Outline, Water, Post })
+        foreach (var shader in new[] { World, Depth, Character, Outline, Water, Sprite, Post, Down, Blur })
         {
             Raylib.UnloadShader(shader);
         }
@@ -329,11 +407,41 @@ void main()
         }
     }
 
-    public void SetPost(Vector2 texel, float blurStrength)
+    public void SetPost(Vector2 texel, PostSettings post)
     {
         Set(Post, "texel", texel);
-        Set(Post, "blurStrength", blurStrength);
+        Set(Post, "blurStrength", post.TiltShift);
+        Set(Post, "dof", post.Dof);
+        Set(Post, "focusBand", post.FocusBand);
+        Set(Post, "bloomStrength", post.BloomStrength);
+        Set(Post, "saturation", post.Saturation);
+        Set(Post, "contrast", post.Contrast);
+        Set(Post, "shadowTint", post.ShadowTint);
+        Set(Post, "highlightTint", post.HighlightTint);
+        Set(Post, "vignette", post.Vignette);
     }
+
+    /// <summary>Binds the half-resolution blur and bloom textures for the composite; call inside its shader mode.</summary>
+    public void BindPostTextures(Texture2D blur, Texture2D bloom)
+    {
+        Raylib.SetShaderValueTexture(Post, Raylib.GetShaderLocation(Post, "blurTex"), blur);
+        Raylib.SetShaderValueTexture(Post, Raylib.GetShaderLocation(Post, "bloomTex"), bloom);
+    }
+
+    public void SetDown(Vector2 texel, float threshold)
+    {
+        Set(Down, "texel", texel);
+        Set(Down, "threshold", threshold);
+    }
+
+    public void SetBlur(Vector2 direction) => Set(Blur, "direction", direction);
+
+    /// <summary>How strongly scenery takes a cel-shaded light band (see <see cref="ArtLook.BattleRamp"/>).</summary>
+    public void SetWorldRamp(float ramp) => Set(World, "worldRamp", ramp);
+
+    /// <summary>Blends characters toward a flat colour (hit flashes, the dark silhouette of a wild Pokémon).</summary>
+    public void SetFlash(Color color, float amount) =>
+        Set(Character, "flash", new Vector4(color.R / 255f, color.G / 255f, color.B / 255f, amount));
 
     private static void Set(Shader shader, string name, float value)
     {
@@ -357,6 +465,12 @@ void main()
     {
         int loc = Raylib.GetShaderLocation(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Vec3);
+    }
+
+    private static void Set(Shader shader, string name, Vector4 value)
+    {
+        int loc = Raylib.GetShaderLocation(shader, name);
+        if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Vec4);
     }
 
     private static void SetMatrix(Shader shader, string name, Matrix4x4 value)

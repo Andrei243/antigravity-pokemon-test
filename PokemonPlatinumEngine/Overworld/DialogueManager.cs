@@ -83,6 +83,12 @@ public class DialogueManager
     {
         if (!IsActive) return;
 
+        if (ArtLook.VectorUi)
+        {
+            UI.ModernUi.DrawDialogue(screenWidth, screenHeight, currentSpeaker, currentLine[..charIndex], IsCurrentLineComplete);
+            return;
+        }
+
         int boxHeight = 180;
         int boxWidth = screenWidth - 80;
         int boxX = 40;

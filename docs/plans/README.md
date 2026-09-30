@@ -1,39 +1,57 @@
 # Roadmap: from demo to the full Platinum
 
-Three plans, each worked through over several sessions:
+Five plans, each worked through over several sessions:
 
-| Plan | Delivers | Rough size |
-|---|---|---|
-| [01 · Sinnoh map](01-sinnoh-map.md) | Every town, route, forest, cave, lake, sea route, gym and the Pokémon League, in 3D, with surfing, elevation, weather and seamless travel | 12–16 sessions |
-| [02 · Story](02-story.md) | The whole story from Twinleaf Town to the Hall of Fame and the post-game, paced like the original: HM obstacles, story blockers, key items, badges, rival and Team Galactic events | 14–18 sessions |
-| [03 · National Pokédex](03-national-dex.md) | All 1025 species: the Sinnoh Pokédex (210) during the story, the National Pokédex after the Hall of Fame, with moves, abilities, evolutions, 3D models and a way to obtain each one | 15–20 sessions |
+| Plan | Delivers | First session | Rough size |
+|---|---|---|---|
+| [01 · Sinnoh map](01-sinnoh-map.md) | Every town, route, forest, cave, lake, sea route, gym and the Pokémon League, with surfing, elevation, weather and seamless travel | M1 | 12–16 sessions |
+| [02 · Story](02-story.md) | The whole story from Twinleaf Town to the Hall of Fame and the post-game, paced like the original: HM obstacles, story blockers, key items, badges, rival and Team Galactic | S1 | 14–18 sessions |
+| [03 · National Pokédex](03-national-dex.md) | All 1025 species: the Sinnoh Pokédex during the story, the National Pokédex after the Hall of Fame, with moves, abilities, evolutions, models and a way to get each one | D1 | 15–20 sessions |
+| [04 · Graphics overhaul](04-graphics-overhaul.md) | One polished art style everywhere: lighting, materials, terrain, buildings, characters, Pokémon, battles and a new interface | G1 | 11+ sessions |
+| [05 · Sound and music](05-sound-and-music.md) | Music and sounds that behave like Platinum's: day and night themes, trainer eye music, battle and victory themes, fanfares, a sound for every action, a cry for every species | A1 | 7+ sessions |
 
 ## Order
 
-The plans depend on each other, so interleave them instead of finishing one before starting the next.
+The plans depend on each other, so interleave them rather than finishing one before starting the next.
 
-1. **Foundations**, in this order:
-   1. 03 · D1: species, moves and learnsets loaded from data files (every trainer and encounter table needs this).
-   2. 01 · M1–M3: world data format and import, chunk streaming, terrain features (water, elevation, caves).
-   3. 02 · S1–S3: event scripts and story flags, field moves and obstacles, the battle features the story needs.
-2. **Chapters**: then advance region by region. For each region: its map (01), then its story beats (02), then the species found there (03). Every session should end with something playable.
-3. **Endgame**: Pokémon League, National Pokédex unlock, post-game areas, the remaining species.
+1. **Look and sound first.** Everything built later inherits them.
+   - 04 · G1–G3: style guide, rendering foundation, interface kit.
+   - 05 · A1–A3: audio engine, music director, sound effects. Independent of the rest; fit them in whenever convenient.
+2. **Foundations for content.**
+   - 03 · D1: species, moves and learnsets from data files.
+   - 01 · M1–M3: world import, chunk streaming, terrain; then 04 · G4–G5: the nature and building kits.
+   - 02 · S1–S3: scripting and story flags, field moves and obstacles, battle features.
+   - 04 · G6–G8: characters, Pokémon models, battle presentation; 05 · A4–A5: cries and the core music.
+3. **Chapters.** Region by region: the map (01), its story (02), its species (03), its music (05 · A6). End every session with something playable.
+4. **Endgame.** Pokémon League, National Pokédex, post-game areas, remaining species; polish with 04 · G9–G11 and 05 · A7.
 
-The dependency points are called out in each plan ("Needs: …").
+Each plan's "Needs and gives" section lists the exact dependencies.
 
 ## Starting a session
 
-Paste something like:
+One session per conversation works best. Any of these prompts starts one:
 
-> Read docs/plans/README.md and docs/plans/02-story.md, then do session S4. Verify with the build, the tests and the screenshot harness, and tick off what's done in the plan.
+```text
+Do session G1 of the roadmap.
+```
 
-At the end of a session, update the plan's status checklist and note any decision that was made, so the next session starts from the truth.
+```text
+Do the next unchecked session of plan 01.
+```
+
+```text
+Read docs/plans/README.md and docs/plans/04-graphics-overhaul.md, then do session G1. Verify with the build, the tests and the screenshot harness, show me before/after screenshots, and tick the session off in the plan.
+```
+
+The short forms work because Claude's memory points to these plans; the long form spells everything out. At the end of a session, the plan's status checklist is updated and any decision taken is written into the plan, so the next session starts from the truth.
 
 ## Shared conventions
 
-- **Build and test**: `dotnet build PokemonPlatinum.sln`, `dotnet test PokemonPlatinumTests`. Keep tests green; add tests for new rules (movement, scripts, battle effects, data completeness).
-- **Visual checks**: `dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|sheets]` renders the game in a hidden window and saves PNGs. Add shots for every new area or feature and look at them before calling it done. The harness reaches into `GameEngine`'s private fields by reflection, so update it when those change.
-- **Faithfulness**: follow Platinum, not Diamond/Pearl, wherever they differ (gym order, HM locations, badge effects, Distortion World, encounter tables).
-- **Reference data**: the pret/pokeplatinum decompilation (<https://github.com/pret/pokeplatinum>) has most of the game's data as JSON: `res/field/events/events_<map>.json` (NPCs, warps, triggers, signs), `res/field/encounters/encounters_<map>.json`, `res/trainers/data/<trainer>.json`, `res/pokemon/<species>/data.json`, map scripts in `res/field/scripts/scripts_<map>.s`, the world grid in `res/field/matrices/`, per-chunk land data in `res/field/maps/data/`. Raw files download from `https://raw.githubusercontent.com/pret/pokeplatinum/main/<path>`. Bulbapedia blocks automated fetching; pokemondb.net and Serebii work.
-- **Our own assets**: keep generating art procedurally (3D models, textures, sprites baked from models) and write dialogue in our own words that follows the original beats. Don't copy the games' sprites, models, music or script text; the decomp is a reference for layouts, numbers and story structure.
+- **Build and test**: `dotnet build PokemonPlatinum.sln`, `dotnet test PokemonPlatinumTests`. Keep tests green; add tests for new rules (movement, scripts, battle effects, data completeness, music switching).
+- **Visual checks**: `dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|sheets]` renders the game in a hidden window and saves PNGs (`look` renders the style guide's reference frames in the old and new look, with before/after boards). Add shots for every new area or feature and look at them before calling it done; graphics sessions show before/after pairs. The harness reaches into `GameEngine`'s private fields by reflection, so update it when those change.
+- **Sound checks**: Claude can't listen. Render sounds to WAV files and spectrogram images for checks (levels, clipping, timing, loops), and have the user listen to approve.
+- **Art direction**: follow [`docs/art/style-guide.md`](../art/style-guide.md) ("Sinnoh Diorama", chosen in 04 · G1): an HD-2D pixel-art overworld, full 3D battles, and a vector interface that shows Pokémon as 2D sprites.
+- **Faithfulness**: follow Platinum, not Diamond/Pearl, wherever they differ (gym order, HM locations, badge effects, the Distortion World, encounter tables, music roles).
+- **Reference data**: the pret/pokeplatinum decompilation (<https://github.com/pret/pokeplatinum>) has most of the game's data as JSON: `res/field/events/events_<map>.json` (NPCs, warps, triggers, signs), `res/field/encounters/encounters_<map>.json`, `res/trainers/data/<trainer>.json`, `res/pokemon/<species>/data.json`, map scripts in `res/field/scripts/scripts_<map>.s`, the world grid in `res/field/matrices/`, per-chunk land data in `res/field/maps/data/`, and the names of every music track and sound effect in `res/sound/pl_sound_data.json`. Raw files download from `https://raw.githubusercontent.com/pret/pokeplatinum/main/<path>`. Bulbapedia blocks automated fetching; pokemondb.net and Serebii work.
+- **Assets**: our own art, models, music, sound effects and dialogue (written in our own words, following the original beats), plus free-licensed assets where they help (OFL fonts, CC0 textures, models and sounds, MIT-licensed libraries), each credited in `docs/art/CREDITS.md`. Nothing taken from the games themselves: no sprites, models, textures, music, sound effects, cries or script text. Files the user supplies can go in the `overrides/` folder.
 - **Commits**: the user commits and pushes; don't commit unless asked.

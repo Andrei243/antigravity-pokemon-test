@@ -66,8 +66,11 @@ public class BattleVFX
     public bool IsActive => activeType != VfxType.None && vfxTimer < totalTime;
 
     /// <summary>How long a throw with <paramref name="shakes"/> successful shake checks takes to play out.</summary>
-    public static float BallThrowTime(int shakes) =>
-        BallFlightTime + BallOpenTime + BallDropTime + BallWobbleTime * Math.Min(shakes, 3) + BallEndTime;
+    public static float BallThrowTime(int shakes) => BallSettleTime(shakes) + BallEndTime;
+
+    /// <summary>When the ball stops wobbling: it clicks shut, or bursts open and the Pokémon breaks free.</summary>
+    public static float BallSettleTime(int shakes) =>
+        BallFlightTime + BallOpenTime + BallDropTime + BallWobbleTime * Math.Min(shakes, 3);
 
     /// <param name="duration">Flight time from <paramref name="source"/> to <paramref name="target"/>; the impact follows.</param>
     public void TriggerVfx(VfxType type, Vector2 source, Vector2 target, float duration = 0.6f)

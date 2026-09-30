@@ -28,10 +28,11 @@ public sealed class WorldRenderer
 
     private MapScene GetScene(Map map)
     {
-        if (!scenes.TryGetValue(map.Name, out var scene))
+        string key = $"{ArtLook.Direction}|{map.Name}";
+        if (!scenes.TryGetValue(key, out var scene))
         {
             scene = MapScene.Build(map, shaders);
-            scenes[map.Name] = scene;
+            scenes[key] = scene;
         }
         return scene;
     }
@@ -51,6 +52,11 @@ public sealed class WorldRenderer
         var camera = BuildCamera(scene, px, pz);
         shaders.SetTime(time);
         GatherActors(map, player, px, pz, lift, time);
+        VerticalScale = scene.VS;
+        if (ArtLook.PixelField)
+        {
+            foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
+        }
 
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun
         var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
@@ -71,6 +77,7 @@ public sealed class WorldRenderer
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
+        shaders.SetWorldRamp(0f);
 
         // 2. The scene itself, sampling the shadow map
         Raylib.BeginTextureMode(context.Target);
@@ -84,12 +91,19 @@ public sealed class WorldRenderer
 
         scene.Draw();
         DrawContactShadows(map, px, pz, lift);
-        DrawActors(CharacterPass.Color, ActorLean);
+        if (ArtLook.PixelField)
+        {
+            DrawActors(CharacterPass.Color, 0f);
+        }
+        else
+        {
+            DrawActors(CharacterPass.Color, ActorLean);
 
-        // Outline hulls only show their back faces
-        Rlgl.EnableBackfaceCulling();
-        DrawActors(CharacterPass.Outline, ActorLean);
-        Rlgl.DisableBackfaceCulling();
+            // Outline hulls only show their back faces
+            Rlgl.EnableBackfaceCulling();
+            DrawActors(CharacterPass.Outline, ActorLean);
+            Rlgl.DisableBackfaceCulling();
+        }
 
         DrawSpottedBubbles(scene, map);
 
@@ -99,11 +113,12 @@ public sealed class WorldRenderer
 
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
+        context.PreparePost(ArtLook.FieldPost(scene.Indoors));
     }
 
     /// <summary>Composites the last rendered frame into the current target with tilt-shift blur and grading.</summary>
     public void DrawToScreen(int destWidth, int destHeight) =>
-        context.Composite(new Rectangle(0, 0, destWidth, destHeight), lastWasIndoors ? 3.5f : 6f);
+        context.Composite(new Rectangle(0, 0, destWidth, destHeight));
 
     // ------------------------------------------------------------------ camera
 
@@ -180,6 +195,9 @@ public sealed class WorldRenderer
 
     private readonly List<Actor> actors = new();
 
+    /// <summary>The current scene's vertical stretch, for HD-2D sprites.</summary>
+    private float VerticalScale = 1f;
+
     private void GatherActors(Map map, Player player, float px, float pz, float lift, float time)
     {
         actors.Clear();
@@ -208,6 +226,13 @@ public sealed class WorldRenderer
 
     private void DrawActors(CharacterPass pass, float lean)
     {
+        if (ArtLook.PixelField)
+        {
+            // HD-2D: each character is a pixel-art sprite baked from its 3D model, standing upright like the walls
+            foreach (var actor in actors)
+                CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
+            return;
+        }
         foreach (var actor in actors)
         {
             var root = Matrix4x4.CreateRotationY(actor.Yaw) * Matrix4x4.CreateRotationX(-lean) * Matrix4x4.CreateTranslation(actor.Feet);

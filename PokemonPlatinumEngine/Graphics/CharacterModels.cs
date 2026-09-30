@@ -155,10 +155,11 @@ internal static class CharacterModels
     /// <summary>The GPU-ready rig for a character type (built and uploaded on first use).</summary>
     public static CharacterRig Get(string npcType, Shader characterShader)
     {
-        if (Cache.TryGetValue(npcType, out var rig)) return rig;
+        string key = $"{ArtLook.Direction}|{npcType}";
+        if (Cache.TryGetValue(key, out var rig)) return rig;
         rig = Build(npcType);
         Upload(rig, characterShader);
-        Cache[npcType] = rig;
+        Cache[key] = rig;
         return rig;
     }
 
@@ -185,7 +186,7 @@ internal static class CharacterModels
             // Outlines hug the whole part, face included
             var hullSource = part.Geometry.Clone();
             if (part.FaceGeometry != null) hullSource.Append(part.FaceGeometry, Matrix4x4.Identity);
-            var hull = hullSource.BuildOutline(OutlineThickness, c => PixelCanvas.Mix(c, new Color(34, 26, 40, 255), 0.72f));
+            var hull = hullSource.BuildOutline(OutlineThickness, c => PixelCanvas.Mix(c, new Color(34, 26, 40, 255), ArtLook.OutlineInkAmount));
 
             part.Body = part.Geometry.Upload();
             part.Outline = hull.Upload();

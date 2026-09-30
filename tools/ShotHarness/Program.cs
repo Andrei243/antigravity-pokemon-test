@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|sheets]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|look|sheets]
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -345,6 +345,75 @@ if (Run("menus"))
     ((BagScreen)Get("bagScreen")).Open();
     Frames(1); Shot("22_bag");
     Set("currentState", GameState.Overworld);
+}
+
+// ---------------------------------------------------------------- art direction (plan 04 · G1, docs/art/style-guide.md)
+
+if (Run("look"))
+{
+    // The style guide's reference frames in the pre-overhaul look and in the chosen "Sinnoh Diorama" look, then
+    // side-by-side boards. Pass "current" or "diorama" as the third argument to render only one look.
+    string only = args.Length > 2 ? args[2] : "";
+    foreach (var name in new[] { "Starly", "Shinx", "Bidoof" })
+        if (party.Count < 6) party.Add(new Pokemon(PokemonDatabase.Get(name)!, 4 + party.Count));
+    party.Members[1].CurrentHP = party.Members[1].MaxHP / 3;
+    party.Members[3].CurrentHP = party.Members[3].MaxHP / 7;
+
+    foreach (var look in new[] { ArtDirection.Current, ArtDirection.Diorama })
+    {
+        string tag = look.ToString().ToLowerInvariant();
+        if (only != "" && only != tag) continue;
+        ArtLook.Set(look);
+
+        GoTo("TwinleafTown", 11, 8, Direction.Down); Frames(2); Shot($"look_{tag}_1_twinleaf");
+
+        GoTo("TwinleafTown", 12, 7, Direction.Up);
+        ((DialogueManager)Get("dialogue")).ShowDialogue("Barry", new List<string> { "Barry: Hey, Lucas! You're finally ready! Professor Rowan is waiting at Lake Verity!" });
+        Set("currentState", GameState.Dialogue);
+        Frames(180); Shot($"look_{tag}_2_dialogue");
+        Set("dialogue", new DialogueManager());
+
+        var pb = StartBattle("Shinx", 5);
+        ToMainMenu(pb);
+        Shot($"look_{tag}_3_battle");
+        pb.HUD.MenuState = BattleMenuState.Moves; Frames(1); Shot($"look_{tag}_3b_moves");
+        pb.HUD.MenuState = BattleMenuState.Main;
+
+        Set("currentState", GameState.PartyMenu);
+        ((PartyScreen)Get("partyScreen")).Open();
+        Frames(1); Shot($"look_{tag}_4_party");
+        ((PartyScreen)Get("partyScreen")).Close();
+
+        GoTo("Route201", 24, 8, Direction.Up); Frames(2); Shot($"look_{tag}_5_route201");
+        GoTo("PlayerHouse", 4, 6, Direction.Up); Frames(2); Shot($"look_{tag}_6_house");
+
+        GoTo("TwinleafTown", 11, 8, Direction.Down);
+        Timing($"{tag} field");
+        StartBattle("Luxray", 30);
+        ToMainMenu((BattleEngine)Get("battle"));
+        Timing($"{tag} battle");
+    }
+    ArtLook.Set(ArtDirection.Diorama);
+
+    if (only == "")
+    {
+        foreach (var frame in new[] { "1_twinleaf", "2_dialogue", "3_battle", "3b_moves", "4_party", "5_route201", "6_house" })
+        {
+            var board = Raylib.GenImageColor(1920 + 30, 540 + 76, new Color(24, 26, 34, 255));
+            int col = 0;
+            foreach (var (tag, label) in new[] { ("current", "BEFORE"), ("diorama", "AFTER  (SINNOH DIORAMA)") })
+            {
+                var img = Raylib.LoadImage(Path.Combine(outDir, $"look_{tag}_{frame}.png"));
+                Raylib.ImageResize(ref img, 960, 540);
+                int x = 10 + col * 970;
+                Raylib.ImageDraw(ref board, img, new Rectangle(0, 0, 960, 540), new Rectangle(x, 66, 960, 540), Color.White);
+                Raylib.ImageDrawText(ref board, label, x + 4, 18, 40, Color.White);
+                Raylib.UnloadImage(img);
+                col++;
+            }
+            Save(board, $"compare_{frame}");
+        }
+    }
 }
 
 // ---------------------------------------------------------------- contact sheets

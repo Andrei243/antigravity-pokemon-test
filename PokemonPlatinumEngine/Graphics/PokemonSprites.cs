@@ -87,7 +87,7 @@ internal static class PokemonSprites
         return f;
     }
 
-    private static void EnsureUploaded(PokeModel model)
+    internal static void EnsureUploaded(PokeModel model)
     {
         if (Uploaded.Contains(model)) return;
 
@@ -139,6 +139,23 @@ internal static class PokemonSprites
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
         Rlgl.SetClipPlanes(0.01, 1000.0);
+    }
+
+
+    /// <summary>
+    /// Outline hulls for drawing the model straight into the 3D battle scene: about half a sprite pixel thick
+    /// and tinted from the surface colour instead of near-black.
+    /// </summary>
+    public static void EnsureSceneOutline(PokeModel model)
+    {
+        EnsureUploaded(model);
+        float thickness = Framing(model, SpriteView.Front, Size).WorldPerPixel * 0.55f;
+        foreach (var bone in model.Bones)
+        {
+            if (!bone.Uploaded || bone.SceneOutlineUploaded) continue;
+            bone.SceneOutline = bone.Geometry.BuildOutline(thickness, c => PixelCanvas.Mix(c, new Color(40, 30, 56, 255), 0.5f)).Upload();
+            bone.SceneOutlineUploaded = true;
+        }
     }
 
     // ------------------------------------------------------------------ static sprites for menus

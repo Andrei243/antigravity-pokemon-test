@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="8.0.0" />
+    <None Include="Assets\**\*" CopyToOutputDirectory="PreserveNewest" />
     <InternalsVisibleTo Include="PokemonPlatinumTests" />
   </ItemGroup>
 

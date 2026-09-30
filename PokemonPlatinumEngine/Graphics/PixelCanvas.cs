@@ -94,6 +94,12 @@ public sealed class PixelCanvas
         partIds[i] = currentPart;
     }
 
+    /// <summary>Writes a pixel as-is, alpha included (no blending); for smooth, filtered textures.</summary>
+    public void SetRaw(int x, int y, Color c)
+    {
+        if (InBounds(x, y)) pixels[y * Width + x] = c;
+    }
+
     public void Fill(Color c)
     {
         Array.Fill(pixels, c);

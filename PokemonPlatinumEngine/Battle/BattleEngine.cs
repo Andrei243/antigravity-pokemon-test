@@ -255,7 +255,6 @@ public class BattleEngine
                     HUD.MenuState = BattleMenuState.Main;
                     return;
                 }
-                string[] bagItems = { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
                 if (InputManager.IsActionPressed(GameAction.Up) || InputManager.IsActionPressed(GameAction.Down))
                 {
                     HUD.BagMenuIndex = (HUD.BagMenuIndex + 2) % 4;
@@ -268,51 +267,60 @@ public class BattleEngine
                 }
                 if (InputManager.IsActionPressed(GameAction.Confirm))
                 {
-                    string itemName = bagItems[HUD.BagMenuIndex];
-                    var itemData = ItemDatabase.Get(itemName);
-                    if (itemData != null)
-                    {
-                        int qty = PlayerInventory.GetQuantity(itemData);
-                        if (qty <= 0)
-                        {
-                            AudioManager.PlaySound("cancel");
-                            QueueMessage($"You don't have any {itemName}s left!", () =>
-                            {
-                                HUD.MenuState = BattleMenuState.SelectBagItem;
-                            });
-                            AdvanceEventQueue();
-                            return;
-                        }
-
-                        if (itemData.Pocket == ItemPocket.PokeBalls && IsTrainerBattle)
-                        {
-                            AudioManager.PlaySound("cancel");
-                            QueueMessage("The Trainer blocked the Ball! Don't be a thief!", () =>
-                            {
-                                HUD.MenuState = BattleMenuState.SelectBagItem;
-                            });
-                            AdvanceEventQueue();
-                            return;
-                        }
-
-                        if (itemData.EffectType == ItemEffectType.HealHP && PlayerPokemon.CurrentHP >= PlayerPokemon.MaxHP)
-                        {
-                            AudioManager.PlaySound("cancel");
-                            QueueMessage("It won't have any effect!", () =>
-                            {
-                                HUD.MenuState = BattleMenuState.SelectBagItem;
-                            });
-                            AdvanceEventQueue();
-                            return;
-                        }
-
-                        PlayerInventory.RemoveItem(itemData, 1);
-                        AudioManager.PlaySound("select");
-                        ExecuteTurn(new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = itemData });
-                    }
+                    SelectBagItem(HUD.BagMenuIndex);
                 }
                 break;
         }
+    }
+
+    private static readonly string[] BagItems = { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
+
+    /// <summary>Uses the item in the given slot, as chosen from the BAG menu.</summary>
+    public void SelectBagItem(int index)
+    {
+        if (index < 0 || index >= BagItems.Length) return;
+
+        string itemName = BagItems[index];
+        var itemData = ItemDatabase.Get(itemName);
+        if (itemData == null) return;
+
+        int qty = PlayerInventory.GetQuantity(itemData);
+        if (qty <= 0)
+        {
+            AudioManager.PlaySound("cancel");
+            QueueMessage($"You don't have any {itemName}s left!", () =>
+            {
+                HUD.MenuState = BattleMenuState.SelectBagItem;
+            });
+            AdvanceEventQueue();
+            return;
+        }
+
+        if (itemData.Pocket == ItemPocket.PokeBalls && IsTrainerBattle)
+        {
+            AudioManager.PlaySound("cancel");
+            QueueMessage("The Trainer blocked the Ball! Don't be a thief!", () =>
+            {
+                HUD.MenuState = BattleMenuState.SelectBagItem;
+            });
+            AdvanceEventQueue();
+            return;
+        }
+
+        if (itemData.EffectType == ItemEffectType.HealHP && PlayerPokemon.CurrentHP >= PlayerPokemon.MaxHP)
+        {
+            AudioManager.PlaySound("cancel");
+            QueueMessage("It won't have any effect!", () =>
+            {
+                HUD.MenuState = BattleMenuState.SelectBagItem;
+            });
+            AdvanceEventQueue();
+            return;
+        }
+
+        PlayerInventory.RemoveItem(itemData, 1);
+        AudioManager.PlaySound("select");
+        ExecuteTurn(new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = itemData });
     }
 
     /// <summary>The message currently on screen.</summary>
@@ -690,11 +698,20 @@ public class BattleEngine
                 AudioManager.PlaySound("ball_throw");
                 var catchRes = CatchCalculator.AttemptCatch(EnemyPokemon, item);
 
-                // The ball opens over the foe, which vanishes into it; the result shows once the ball settles
+                // The ball opens over the foe, which vanishes into it; the result shows once the ball settles.
+                // A foe that breaks free bursts out with the ball and is back on its platform before the message.
                 VFX.TriggerPokeballThrow(item.Name, new Vector2(200, 720), BattleHUD.EnemyCenter, BattleHUD.EnemyFeet, catchRes.Shakes);
                 Anim.Capture(BattleVFX.BallFlightTime);
 
-                messageWaitTimer = BattleVFX.BallThrowTime(catchRes.Shakes) + 0.1f;
+                if (catchRes.IsCaught)
+                {
+                    messageWaitTimer = BattleVFX.BallThrowTime(catchRes.Shakes) + 0.1f;
+                }
+                else
+                {
+                    After(BattleVFX.BallSettleTime(catchRes.Shakes), Anim.BreakFree);
+                    messageWaitTimer = BattleVFX.BallSettleTime(catchRes.Shakes) + BattleAnimator.SendOutTime + 0.1f;
+                }
                 turnEventQueue.Enqueue(() =>
                 {
                     if (catchRes.IsCaught)
@@ -732,7 +749,7 @@ public class BattleEngine
                             3 => "Gah! It was so close, too!",
                             _ => "The Pokémon broke free!"
                         };
-                        QueueMessage(msg, onComplete, onShow: Anim.BreakFree);
+                        QueueMessage(msg, onComplete);
                     }
                 });
             });

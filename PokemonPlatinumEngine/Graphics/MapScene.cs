@@ -53,8 +53,7 @@ internal sealed class MapScene
         Lighting = map.IsIndoors
             ? new SceneLighting(Vector3.Normalize(new Vector3(-0.35f, 0.82f, 0.46f)), new Vector3(0.46f, 0.42f, 0.36f),
                 new Vector3(0.66f, 0.63f, 0.6f), new Vector3(0.52f, 0.47f, 0.42f))
-            : new SceneLighting(Vector3.Normalize(new Vector3(-0.42f, 1.0f, 0.3f)), new Vector3(0.46f, 0.44f, 0.39f),
-                new Vector3(0.58f, 0.62f, 0.7f), new Vector3(0.5f, 0.48f, 0.42f));
+            : ArtLook.FieldDay;
     }
 
     // ------------------------------------------------------------------ drawing
@@ -72,7 +71,8 @@ internal sealed class MapScene
         var batches = new MeshBatches();
         var buildings = MapStructures.FindBuildings(map);
 
-        var ground = GroundBaker.BakeGround(map, scene.Margin, buildings).ToTexture();
+        var ground = (ArtLook.PixelField && !map.IsIndoors ? PixelGround.Bake(map, scene.Margin, buildings)
+            : GroundBaker.BakeGround(map, scene.Margin, buildings)).ToTexture();
         scene.AddGround(batches.For(ground, MeshPass.Ground), batches.For(SceneTextures.White, MeshPass.Ground));
 
         if (map.IsIndoors)

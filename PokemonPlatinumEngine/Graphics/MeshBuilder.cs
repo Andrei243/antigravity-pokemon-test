@@ -338,6 +338,17 @@ internal sealed class MeshBuilder
         for (int i = 0; i < positions.Count; i++) uvs[i] = map(positions[i]);
     }
 
+    /// <summary>Rewrites every vertex's normal and colour from its position, normal and colour.</summary>
+    public void MapVertices(Func<Vector3, Vector3, Color, (Vector3 Normal, Color Color)> map)
+    {
+        for (int i = 0; i < positions.Count; i++)
+        {
+            var (n, c) = map(positions[i], normals[i], colors[i]);
+            normals[i] = n;
+            colors[i] = c;
+        }
+    }
+
     /// <summary>A copy of the triangle data, for building derived meshes.</summary>
     public MeshBuilder Clone()
     {

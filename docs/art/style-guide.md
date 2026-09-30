@@ -1,0 +1,202 @@
+# Style guide: Sinnoh Diorama
+
+The art direction chosen in plan 04 · G1 (2026-10-01). Every graphics session follows these rules; when a rule has to change, change it here first.
+
+## The direction in one paragraph
+
+Three layers, each with one job:
+
+| Layer | Style | Code switch |
+|---|---|---|
+| **Overworld** | HD-2D: pixel-art ground, buildings and characters inside a lit 3D diorama, with strong tilt-shift depth of field, bloom and warm grading | `ArtLook.PixelField` |
+| **Battles** | Full 3D: smooth cel-shaded Pokémon and trainers on a modelled stage with soft foliage, a painted sky and clean filtered textures | `ArtLook.ModelBattle` |
+| **Interface** | Crisp vector UI (Nunito, anti-aliased panels) in Platinum's colour language; Pokémon appear as **2D pixel sprites**, as in the main games | `ArtLook.VectorUi` |
+
+The layers are allowed to differ in rendering technique, never in palette, light direction or mood. What ties them together: the same greens, sands and sky blues; light always from the upper left; the same interface on top of both; and (G9) a battle intro transition that carries the player from the diorama into the 3D stage.
+
+`ArtDirection.Current` is the pre-overhaul look. It stays only until the session that rebuilds an area replaces it, and for before/after shots.
+
+## Reference frames
+
+`dotnet run --project tools/ShotHarness -- <dir> look` renders the reference frames (Twinleaf, dialogue, battle, move menu, party, Route 201, Player's house) in the old and new look, plus `compare_*.png` before/after boards. Graphics sessions start and end with these boards.
+
+## Rules for every layer
+
+- **No single-pixel noise.** Texture detail comes from placed shapes and clusters, never from per-texel random values. The field ground is tested: under 1.5 % of its texels may differ from all eight neighbours (`StyleGuideTests`). The old ground was about 30 %.
+- **Light from the upper left**, sun slightly toward the camera, so faces and fronts are lit and shadows fall to the upper right.
+- **Shade with colour, not black.** Shadows lean violet-blue, highlights lean warm; outlines are a darker shade of the surface they surround.
+- **One pixel size per layer.** Pixel art is shown at one texel density and whole-number scales only, with point filtering; smooth art is mipmapped and filtered. Never mix the two inside one layer.
+- **Readable at a glance.** Silhouettes before detail: if a detail doesn't read from the game camera, leave it out.
+
+## Overworld (HD-2D)
+
+### Pixel grid
+
+- **32 texels per world unit** (one tile) for everything: ground (`GroundBaker.ArtTile`), buildings and props (`SceneTextures`), character sprites (`CharacterSprites.TexelsPerUnit`). With the field camera that is about 3 screen pixels per texel at 1080p.
+- Point filtering everywhere; no mipmaps on pixel art.
+- Upright things (walls, sprites, signs) are stretched by `VS = 1 / cos(pitch)` so they read at true proportions from Platinum's steep camera (pitch 59.05°, FOV 16.18°).
+
+### Ground
+
+Baked per map by `PixelGround`: soft tile masks thresholded into hard pixel edges, then placed details.
+
+| Element | Colour | Notes |
+|---|---|---|
+| Lawn | `104,190,98` | flat base |
+| Lawn patches | `120,200,102` | clean-edged blobs a few tiles wide, one step lighter |
+| Tuft marks | `70,150,82`, tip `160,222,122` | three-blade "v", 2–3 per tile on a jittered grid |
+| Forest floor | `58,126,82` | under the tree margin |
+| Tall-grass ground | `40,112,66` | |
+| Path | `222,204,160` | rounded corners, never pixel fringes |
+| Path rim / inner light | `166,140,104` / `236,222,186` | one texel each; the light line on the north and west sides |
+| Pebbles | `168,160,150`, light `208,202,192`, shadow `214,186,132` | 2×2 with a highlight texel, at most one cluster per tile |
+| Pond stones / sea sand | `168,160,150` / `238,224,172` | band around water |
+| Contact shade by walls | two flat steps, 14 % and 28 % toward `30,70,50` | never a smooth gradient |
+
+### Buildings and props
+
+- Existing pixel-art textures at 32 texels per unit. G5 redraws them in the same rules: bevels and trims drawn as one-texel light and dark lines, two or three shades per material, no random per-texel variation.
+- Roofs keep Platinum's colours per town (Twinleaf: teal `52,166,138`).
+
+### Characters
+
+- Built as 3D rigs (`CharacterModels`) and **baked to sprites** (`CharacterSprites`): 40×58 texels, orthographic, seen from 24° above, studio light from the upper left, then a one-texel outline tinted from the neighbouring colour (`PixelCanvas.OutlinePass`).
+- Frames: 4 facings × idle + 4 walk frames (+4 run frames). Drawn as upright cards lit by the scene (sky × 0.62 + sun × 0.78), casting real shadows, with a soft contact blob under the feet.
+- Proportions: chibi, about 1.2 tiles tall, head about 40 % of the height, big eyes; the player reads at about 130 px tall on screen.
+- G6 improves the source rigs (SDF kit); the sprites improve with them. Hand-drawn sprite overrides may replace any baked frame.
+
+### Light and grading (daytime)
+
+| Setting | Value |
+|---|---|
+| Sun direction | normalize(−0.6, 0.8, 0.42) |
+| Sun colour | 0.66, 0.55, 0.40 (golden) |
+| Sky / ground ambient | 0.50, 0.55, 0.74 / 0.46, 0.44, 0.40 |
+| Diffuse | smooth Lambert (the pixel art carries the shading) |
+| Tilt-shift | 12-tap blur radius 6 texels, plus 95 % mix toward a wide blur outside a ±30 % focus band |
+| Bloom | threshold 0.86, strength 0.38 |
+| Grade | saturation 1.10, contrast 1.08, shadows × (0.88, 0.92, 1.10), highlights × (1.07, 1.00, 0.90) |
+| Vignette | 0.26 |
+| Rooms | tilt-shift 4, depth of field 60 %, focus ±36 %, bloom threshold 0.93 at 0.22 |
+
+The numbers live in `ArtLook` (`FieldDay`, `FieldPost`).
+
+## Battles (3D)
+
+### Models
+
+- Pokémon and trainers are real 3D models on the platforms (no pixelation), lit and shadowed with the stage.
+- Size rule: a Pokémon covers the part of the screen its 128-px sprite frame would, i.e. the frame spans the platform's width ÷ 158 px (opponent) or ÷ 150 px (player).
+- Shading: two-tone cel ramp with a soft terminator (`smoothstep(0, 0.12, N·L)`), hemisphere ambient × 1.08, rim light 0.30.
+- Outlines: inverted hulls about half a sprite pixel thick (`WorldPerPixel × 0.55`), colour = surface mixed 50 % toward `40,30,56`.
+- Flashes (send-out, hit, recall, the dark silhouette of a wild Pokémon before the camera settles) are colour blends in the shader, not extra sprites.
+- G7 replaces the primitive-built models with the SDF kit; the menu sprites are re-baked from those models.
+
+### Stage
+
+- Textures are smooth, mipmapped and filtered (`SoftTextures`): meadow `114,190,100` with light `138,202,104` and deep `90,168,94` patches a few metres across; platform tops lighter in the middle (`150,220,124` → `100,182,96`) with one soft worn ring.
+- Foliage is modelled (`SoftFoliage`): tiered pines with drooping rims and dark undersides; round trees made of overlapping blobs whose normals bend toward the canopy centre so the crown shades as one soft mass; seven-blade tufts, dark at the root, light at the tip. Colour comes from vertex gradients.
+- Scenery takes a soft cel band (`BattleRamp` 0.85).
+- Sky (`SkyPainter`): zenith `78,146,226`, middle `140,194,244` at 22 % height, hazy horizon `224,238,250` at 46 %; soft cumulus with a white crown and a cool `196,212,236` underside, drifting slowly.
+
+### Light and grading
+
+| Setting | Value |
+|---|---|
+| Sun | normalize(−0.5, 0.9, 0.5), colour 0.47, 0.43, 0.35 |
+| Sky / ground ambient | 0.54, 0.60, 0.72 / 0.50, 0.50, 0.40 |
+| Tilt-shift | radius 2, 15 % wide blur outside ±50 % |
+| Bloom | threshold 0.86, strength 0.28 |
+| Grade | saturation 1.05, contrast 1.05, shadows × (0.94, 0.97, 1.06), highlights × (1.04, 1.01, 0.95), vignette 0.10 |
+
+## Interface (vector)
+
+### Typography
+
+- **Nunito** (SIL Open Font License, see `CREDITS.md`) in three weights: Bold for running text, ExtraBold for labels and dialogue, Black for names, numbers and buttons.
+- Scale (px at 1080p): 18–20 captions and tags · 24–26 small labels · 30–32 numbers and move names · 36–42 names, prompts and dialogue · 52 screen titles · 60 the FIGHT button.
+- Tracking +0.8 up to 20 px, +0.4 up to 39 px, 0 above. Level reads as a small muted "Lv" before a large number.
+- No drop shadows on text over panels; white text on coloured buttons gets a 2 px shadow at 20 % black.
+
+### Colour tokens (`ModernUi`)
+
+| Token | Value | Use |
+|---|---|---|
+| Ink | `36,44,68` | text |
+| Muted | `110,120,148` | secondary labels |
+| Frame | `52,64,96` | panel borders |
+| Panel | white → `234,240,248` | panel fill (top to bottom) |
+| Shadow | `14,22,46` at 31 % | drop shadows |
+| Red / Gold / Green / Blue | `232,72,76` / `240,176,56` / `56,182,104` / `70,136,232` | FIGHT / BAG / POKÉMON / RUN, and accents |
+| Track | `62,72,98` | bar backgrounds |
+| HP | `70,214,110` > 50 %, `246,196,50` > 20 %, `240,72,64` | HP fill |
+| EXP | `72,176,250` | EXP bar |
+| Selection | `240,104,70` | selected card border and glow |
+| Type colours | `Palette.GetTypeColor` | type pills, move bands |
+| Party backdrop | `44,112,146` → `24,60,98`, 28° stripes of 5 % white | Pokémon menu |
+
+### Shapes and components
+
+- Everything is drawn by `UiShapes` (signed-distance rounded rectangles with 1 px anti-aliasing, vertical gradients, borders, slanted sides and blurred shadows). No raylib rounded rectangles in the new UI.
+- Panels: radius 22–34, 4 px Frame border, shadow blur 22 at offset (0, 8).
+- Buttons: pills; gradient 18 % lighter at the top to 12 % darker at the bottom, border 35 % darker, a soft shine over the top 38 %. Selected: a 6 px white ring and a glow in the button's colour.
+- HP boxes: slanted sides (skew ±0.2), name + gender left, level right, HP bar under; the player's box adds HP numbers and an EXP line.
+- HP bar: pill with an amber "HP" tag 2.3× its height.
+- Dialogue: wide panel near the bottom, speaker in a red pill tag on its top edge, a bobbing red arrow when the line is complete.
+- Layout grid: 1920×1080 virtual screen, 48–64 px margins, 24–32 px gutters. Battle: opponent box top-left, player box right above the commands, prompt bottom-left, a large FIGHT button with BAG, POKÉMON and RUN stacked beside it.
+
+### Pokémon in menus
+
+- Always **2D pixel sprites** baked from the models (`PokemonSprites`): 48-px icons and 128-px front/back sprites with a one-texel outline.
+- Shown at whole-number scales only (party icons at 4×), point-filtered.
+- Icons hop like the main games: the selected one 3 sprite-pixels every 0.16 s, the others 1 sprite-pixel every 0.4 s; fainted ones stay still.
+
+### Motion (targets for G3)
+
+Boxes slide in with an ease-out over 0.2–0.35 s; bars drain instead of jumping; selection moves instantly and glows; nothing bounces except Pokémon icons and the advance arrow.
+
+## Areas and times of day (targets)
+
+Implemented so far: Twinleaf, Route 201 and the grass battle stage by day. Later sessions extend these families; each new area gets a line here.
+
+| Area family | Ground and foliage | Mood |
+|---|---|---|
+| Towns and routes (Twinleaf, Sandgem, Routes 201–202) | spring greens above, sand paths, teal/red/blue roofs | bright, warm |
+| Lakes (Verity, Valor, Acuity) | the same greens, pale stone shores, clear blue water | calm, cooler shade |
+| Forests (Eterna) | deeper greens, dark trunks, dappled light | green-tinted shade, stronger vignette |
+| Caves and mines | warm browns, cool blue shadows | torch-warm highlights |
+| Snow (Route 216–217, Snowpoint) | white-blue ground, dark pines | low sun, cold grading |
+| Coast (Pastoria, Sunyshore) | warm sand, turquoise water | high sun, saturated |
+| Cities (Jubilife, Veilstone) | pale paving, glass and steel | neutral, crisp |
+| Distortion World | desaturated violets and greys | flat, eerie light |
+
+Platinum's clock has five light states: morning, day, twilight, night and late night (confirm the hour boundaries from pret/pokeplatinum in G2). Targets: morning pale gold sun and pink-blue shade; day as above; twilight orange sun, magenta-violet shade, stronger bloom; night moonlit blue with warm windows and lamps; late night darker blue with less saturation.
+
+## Do and don't
+
+**Do**
+- Draw pixel art with placed clusters, one-texel rims and two or three flat shades.
+- Keep every pixel-art element on the 32-texel grid and at whole-number scales.
+- Use the tokens and components above for every new screen.
+- Show before/after boards from the harness for every visual change.
+
+**Don't**
+- Don't add random per-texel variation, dithering or "grain" to any texture.
+- Don't draw 3D renders of Pokémon in menus, or pixel sprites of Pokémon in battle.
+- Don't scale pixel art by fractions or filter it bilinearly.
+- Don't use near-black outlines, pure black shadows or flat, unshaded UI boxes.
+- Don't copy art, models, textures, fonts or UI from the Pokémon games.
+
+## Assets policy (confirmed in G1)
+
+- Procedural generation stays the backbone: it scales to 1025 species and every town.
+- Free-licensed assets are welcome where they beat code (OFL fonts, CC0 textures, skies, props), each recorded in `docs/art/CREDITS.md`, and only downloaded with the user's OK.
+- An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
+- Nothing taken from the Pokémon games and no fan rips.
+
+## Known gaps after G1
+
+- Building, prop and interior textures are still the older pixel art with light per-texel variation (G5).
+- Field water still uses the older water texture and shader (G4).
+- Start menu, bag, Pokédex, summary, shop, PC and the battle's switch/bag panels keep their old layouts with the new font (G3, G10).
+- The jump from the pixel field to the 3D battle needs its intro transition (G9).
