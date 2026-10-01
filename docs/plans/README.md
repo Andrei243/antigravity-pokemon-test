@@ -1,6 +1,6 @@
 # Roadmap: from demo to the full Platinum
 
-Five plans, each worked through over several sessions:
+Six plans, each worked through over several sessions:
 
 | Plan | Delivers | First session | Rough size |
 |---|---|---|---|
@@ -9,6 +9,7 @@ Five plans, each worked through over several sessions:
 | [03 · National Pokédex](03-national-dex.md) | All 1025 species: the Sinnoh Pokédex during the story, the National Pokédex after the Hall of Fame, with moves, abilities, evolutions, models and a way to get each one | D1 | 15–20 sessions |
 | [04 · Graphics overhaul](04-graphics-overhaul.md) | One polished art style everywhere: lighting, materials, terrain, buildings, characters, Pokémon, battles and a new interface | G1 | 11+ sessions |
 | [05 · Sound and music](05-sound-and-music.md) | Music and sounds that behave like Platinum's: day and night themes, trainer eye music, battle and victory themes, fanfares, a sound for every action, a cry for every species | A1 | 7+ sessions |
+| [06 · Online trading and battles](06-online.md) | Trading and battling with friends over the internet through a small .NET server: link codes and friend codes, server-checked trades with crash-safe receipts, server-run battles with Flat 50 rules, working across every chained region | O1 | 7–8 sessions |
 
 ## Order
 
