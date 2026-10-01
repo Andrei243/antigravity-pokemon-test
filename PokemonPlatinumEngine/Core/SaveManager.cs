@@ -24,6 +24,9 @@ public class SaveData
     public List<SavedItemData> Inventory { get; set; } = new();
     public List<int> SeenSpecies { get; set; } = new();
     public List<int> CaughtSpecies { get; set; } = new();
+
+    /// <summary>Ids of the trainers already beaten; they don't challenge again.</summary>
+    public List<string> DefeatedTrainers { get; set; } = new();
 }
 
 public class SavedPokemonData

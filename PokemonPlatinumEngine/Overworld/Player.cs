@@ -77,7 +77,11 @@ public class Player
         _ => 0f
     };
 
-    public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger)
+    /// <param name="onArrive">
+    /// Called when a step ends on a new tile. True means something there takes over (a trainer catching the
+    /// player's eye), so no wild Pokémon appears on that step.
+    /// </param>
+    public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
@@ -108,6 +112,9 @@ public class Player
                     return;
                 }
 
+                // A trainer's challenge comes before any wild Pokémon in the grass
+                bool interrupted = onArrive != null && onArrive();
+
                 // Check tall grass step & encounter
                 if (map.IsTallGrass(GridX, GridY))
                 {
@@ -116,7 +123,7 @@ public class Player
                     AudioManager.PlaySound("grass");
 
                     // Roll for wild encounter
-                    var wild = map.RollWildEncounter();
+                    var wild = interrupted ? null : map.RollWildEncounter();
                     if (wild != null)
                     {
                         onWildEncounter(wild);
@@ -183,9 +190,20 @@ public class Player
             }
         }
 
-        // Ease the walk in and out, and turn smoothly toward the facing direction
-        float targetBlend = IsMoving || walkingInPlace ? 1f : 0f;
-        WalkBlend += (targetBlend - WalkBlend) * Math.Min(1f, dt * 12f);
+        Settle(dt, IsMoving || walkingInPlace);
+    }
+
+    /// <summary>Keeps the player in place while something else plays out: the legs settle and the body turns to face.</summary>
+    public void StandStill(float dt)
+    {
+        IsRunning = false;
+        Settle(dt, walking: false);
+    }
+
+    /// <summary>Eases the walk in and out, and turns smoothly toward the facing direction.</summary>
+    private void Settle(float dt, bool walking)
+    {
+        WalkBlend += ((walking ? 1f : 0f) - WalkBlend) * Math.Min(1f, dt * 12f);
         float turn = YawOf(Facing) - Yaw;
         turn = MathF.IEEERemainder(turn, MathF.Tau);
         Yaw += turn * Math.Min(1f, dt * 18f);

@@ -1,0 +1,81 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+A fan remake of Pokémon Platinum in C# (.NET 9) on Raylib-cs 8.0, built toward the full game over many sessions. The roadmap lives in `docs/plans/` (start with `docs/plans/README.md`); the art rules live in `docs/art/style-guide.md`. Read the relevant plan before continuing roadmap work, and tick its status checklist and record decisions in it when a session ends.
+
+The git repository is this folder. The parent folder has the same name and is not a repository; sessions often start there.
+
+## Commands
+
+Run from this folder.
+
+```bash
+dotnet build PokemonPlatinum.sln
+dotnet test PokemonPlatinumTests
+dotnet test PokemonPlatinumTests --filter "FullyQualifiedName~TestCatchRateFormula"   # one test
+dotnet run --project PokemonPlatinumEngine                                             # play
+dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|times|sheets] [before dir]
+```
+
+- `tools/ShotHarness` is not in the solution, so `dotnet build PokemonPlatinum.sln` doesn't compile it. Build it too after renaming or removing engine members.
+- The game reads and writes `savegame.json` and `settings.json` in the working directory. The harness makes `<out dir>` its working directory, so it never touches a real save.
+- No linter or formatter is configured.
+- This machine has no Python and no `gh` CLI. Git Bash heredocs containing apostrophes or non-ASCII text tend to fail; write such content with the Write tool.
+
+## Checking visual work
+
+Claude can't see the game window. `tools/ShotHarness` runs the engine in a hidden 1920×1080 window, drives it into known states and saves PNGs of the virtual screen. Write its output to a scratch directory, open the PNGs with the Read tool before calling graphics work done, and show the user before/after pairs. It also prints frame timings (the budget is 8 ms per frame).
+
+The harness sets `GameEngine`'s private fields by reflection (`currentMap`, `player`, `currentState`, `battle`, `battleRenderer`, `virtualScreen`, `dialogue`, the menu screens, `playerParty`, `playerInventory`, `playerPokedex`), so renaming those means updating `tools/ShotHarness/Program.cs`. It can't see `internal` types: `InternalsVisibleTo` covers only the test project.
+
+## Architecture
+
+### Game loop and states
+
+`Program.cs` opens the window and calls `GameEngine.Update(dt)` then `GameEngine.Draw()` each frame. `GameEngine` (Core) owns everything: the current `Map` and `Player`, the party, bag, Pokédex and PC storage, the active `BattleEngine`, one instance of each menu screen, and a `GameState` enum that decides which of them updates and draws. State changes that swap scenes go through `StartTransition(next, onMidpoint)`: fade out, run the callback (load the map, create the battle), fade in.
+
+Everything draws into a 1920×1080 `virtualScreen` render texture, which is then letterboxed into the window. UI code lays out in those fixed coordinates.
+
+### Logic stays free of the GPU
+
+Tests create `BattleEngine`, `Map`, `Pokemon` and the databases without a window, and drive battles through `SelectMainMenuOption`, `SelectMove`, `ConfirmMessage` and `Update(dt)`. Keep rules (battle flow, movement, map queries, texture baking into `PixelCanvas`) callable without raylib GPU or input calls; put drawing and key handling in separate methods.
+
+### Data
+
+All game data is C# code in `Data/`: `PokemonDatabase` (species, learnsets, evolutions), `MoveDatabase`, `ItemDatabase`, `TypeChart`, and `MapDatabase` (a partial class with one `Build<MapName>()` method per map, interiors in `MapDatabase.Interiors.cs`). Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 and plan 01 · M1–M2 move this data into files.
+
+### Rendering
+
+The field and battles are 3D scenes; almost every asset is generated in code at start-up (meshes, textures, character rigs, Pokémon models, sound).
+
+- **`RenderContext`** holds the GPU resources shared by both 3D renderers: the shaders (`FieldShaders`, GLSL embedded as strings), the shadow map, the scene target with a depth texture, and the half-resolution blur, bloom and ambient-occlusion buffers. Only one 3D scene renders per frame.
+- **Frame order in `GameEngine.Draw`**: the active renderer's `Render(...)` runs first (shadow pass → scene pass → `PreparePost`), then `BeginTextureMode(virtualScreen)` opens and `DrawToScreen` / `DrawField` composites the scene through the post shader, with the 2D interface drawn on top.
+- **Field**: `MapStructures.FindBuildings` derives buildings from the tile grid; `MapScene.Build` turns a `Map` into cached meshes (ground baked by `PixelGround`/`GroundBaker`, water, trees, buildings, furnished rooms); `WorldRenderer` draws it with Platinum's field camera (pitch 59.05°, FOV 16.18°, taken from the decompilation). Characters are 3D rigs (`CharacterModels`) baked to pixel sprites (`CharacterSprites`) and drawn as lit, shadow-casting billboards. One world unit is one tile, +Z is south, and pixel art is 32 texels per unit.
+- **Battle**: `BattleEngine` runs the rules and a queue of messages; `BattleAnimator` holds what the battle looks like at this moment (send-out, lunge, hit, faint, capture, displayed HP); `BattleRenderer` draws the stage (`BattleStage`, `SoftFoliage`, `SkyPainter`) and the Pokémon as 3D models from `PokemonModels`; `BattleHUD` and `ModernUi` draw the interface.
+- **Pokémon**: `PokemonModels` builds each species from primitives with `PokeBuilder`. The same models appear in 3D in battle and are baked by `PokemonSprites` into 2D pixel sprites for menus. A test requires every species in `PokemonDatabase` to have a model.
+- **Look**: `ArtLook` holds the numbers of the style guide as light rigs (sun, ambient, fog, post settings, sky) for Platinum's five times of day, blended around each boundary. `GameClock` gives the hour from the system clock unless the options fix it.
+- **Interface**: new screens use `UI/Kit` (`UiFonts` for Nunito, `UiShapes` for anti-aliased SDF panels) through `ModernUi` and its colour tokens. Older screens still use `RenderHelper`; they are replaced in plan 04 · G3 and G10.
+
+### Rendering rules that have caused bugs
+
+- raylib texture modes can't nest. Every offscreen pass (field, battle stage, sprite baking, post buffers) must finish before `BeginTextureMode(virtualScreen)`.
+- Matrices are built with System.Numerics (row vectors: "A then B" is `A * B`) and must be transposed for `Raylib.DrawMesh`. The light view-projection is `Raymath.MatrixMultiply(view, proj)`.
+- rlgl immediate-mode batches don't set `matModel`, which the custom shaders use. Draw immediate-mode quads (speech bubbles, blob shadows) with the default shader.
+- Extra samplers set with `SetShaderValueTexture` must be bound after `BeginShaderMode`; each batch flush clears them.
+- `WorldRenderer` and `BattleRenderer` share `RenderContext`, so each must set its own uniforms every frame (lighting, character style, fog, time).
+- Upright things in the field are stretched by `MapScene.VS` (1 / cos(pitch)) to offset the steep camera. Pass true proportions for the shadow pass and in battle.
+- Models rendered on their own (sprite bakes) must call `shaders.SetStudio()` first, or fog and cloud shade from the last scene leak into them.
+- `GameEngine.ApplySettings` re-syncs the clock, mute and quality from `Settings`. Change `engine.Settings` and call it (the harness does) rather than setting `GameClock.Fixed` directly. A quality change reloads only the render targets; shaders stay loaded because cached materials refer to them.
+- Battle timing: `QueueMessage(text, onComplete, onShow)` — `onShow` starts the animation the message describes; damage lands `HitDelay` after the lunge through pending effects, which `ConfirmMessage` flushes first.
+
+## Project rules
+
+- **Follow Platinum**, not Diamond/Pearl, wherever they differ (gym order, encounter tables, HM locations, music roles).
+- **Nothing taken from the games**: no sprites, models, textures, music, cries or script text. Art, sound and dialogue are our own; dialogue follows the original beats in our own words. Free-licensed assets (OFL, CC0, MIT) are allowed with the user's OK before downloading, and each gets a line in `docs/art/CREDITS.md`.
+- **Reference data**: the pret/pokeplatinum decompilation has most game data as JSON. `docs/plans/README.md` lists the paths; fetch raw files from `https://raw.githubusercontent.com/pret/pokeplatinum/main/<path>`. Bulbapedia blocks automated fetching; pokemondb.net and Serebii work.
+- **Style guide first**: when a visual rule has to change, change `docs/art/style-guide.md` before the code. `StyleGuideTests` checks the rules that can be tested without a GPU.
+- **Add tests for new rules** (movement, scripts, battle effects, data completeness) and keep them green.
+- **Commits**: commit or push only when the user asks; commit on `main`.

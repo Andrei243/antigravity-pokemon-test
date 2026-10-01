@@ -25,8 +25,8 @@ public sealed class RenderContext
     /// <summary>What the current graphics preset turns on.</summary>
     public QualityProfile Quality { get; private set; } = QualityProfile.For(GraphicsQuality.High);
 
-    // Half-resolution ping-pong pairs: a blurred copy of the scene (depth of field), its glow (bloom), and
-    // ambient occlusion
+    // Ping-pong pairs: half-resolution blurred copy of the scene (depth of field) and its glow (bloom), and
+    // quarter-resolution ambient occlusion
     private RenderTexture2D blurA, blurB, bloomA, bloomB, aoA, aoB;
     private PostSettings post;
     private DepthRange depthRange = new(1f, 100f, 30f, 16f / 9f);
@@ -72,8 +72,8 @@ public sealed class RenderContext
         blurB = HalfTarget();
         bloomA = HalfTarget();
         bloomB = HalfTarget();
-        aoA = HalfTarget();
-        aoB = HalfTarget();
+        aoA = HalfTarget(4);
+        aoB = HalfTarget(4);
         Shadows.Load(Quality.ShadowMapSize);
         Shaders.SetShadowQuality(Quality.ShadowTaps, 1.8f);
         targetsLoaded = true;
@@ -109,9 +109,10 @@ public sealed class RenderContext
         return rt;
     }
 
-    private RenderTexture2D HalfTarget()
+    /// <summary>A filtered target a fraction of the virtual screen (half for blur and bloom, a quarter for occlusion).</summary>
+    private RenderTexture2D HalfTarget(int divisor = 2)
     {
-        var rt = Raylib.LoadRenderTexture(Width / 2, Height / 2);
+        var rt = Raylib.LoadRenderTexture(Width / divisor, Height / divisor);
         Raylib.SetTextureFilter(rt.Texture, TextureFilter.Bilinear);
         Raylib.SetTextureWrap(rt.Texture, TextureWrap.Clamp);
         return rt;
@@ -166,7 +167,7 @@ public sealed class RenderContext
         if (post.AoStrength > 0f)
         {
             Pass(Target.Depth, aoA, Shaders.Ssao, () => Shaders.SetSsao(Texel(Target.Depth), depth, aoRadius));
-            BlurChain(aoA, aoB, 0.8f, rounds: 1);
+            BlurChain(aoA, aoB, 0.6f, rounds: 1);
         }
     }
 

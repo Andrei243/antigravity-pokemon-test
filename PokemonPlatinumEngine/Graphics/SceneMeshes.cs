@@ -6,7 +6,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>How a batch of static geometry is shaded.</summary>
-internal enum MeshPass { Opaque, Ground, Water, Glow }
+internal enum MeshPass { Opaque, Ground, Water, Glow, Light }
 
 /// <summary>Collects static geometry into one mesh per texture and pass, which keeps draw calls low.</summary>
 internal sealed class MeshBatches
@@ -37,6 +37,7 @@ internal sealed class SceneMeshes
 {
     private sealed record Part(Mesh Mesh, Material Main, Material? Depth, bool Glows);
     private readonly List<Part> parts = new();
+    private readonly List<(Mesh Mesh, Material Material)> lights = new();
     private FieldShaders shaders = null!;
 
     public static SceneMeshes Upload(MeshBatches batches, FieldShaders shaders)
@@ -45,6 +46,14 @@ internal sealed class SceneMeshes
         foreach (var (tex, pass, builder) in batches.All)
         {
             if (builder.VertexCount == 0) continue;
+            if (pass == MeshPass.Light)
+            {
+                // Light pools are unlit and added on top of the scene, so they use raylib's default shader
+                var glowing = Raylib.LoadMaterialDefault();
+                Raylib.SetMaterialTexture(ref glowing, MaterialMapIndex.Albedo, tex);
+                result.lights.Add((builder.Upload(), glowing));
+                continue;
+            }
             var main = RenderContext.MaterialFor(pass == MeshPass.Water ? shaders.Water : shaders.World, tex);
             Material? depth = pass is MeshPass.Opaque or MeshPass.Glow ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
             result.parts.Add(new Part(builder.Upload(), main, depth, pass == MeshPass.Glow));
@@ -61,6 +70,24 @@ internal sealed class SceneMeshes
             Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
             if (part.Glows) shaders.SetGlow(0f);
         }
+    }
+
+    /// <summary>Adds the warm light that lit windows and doors throw on the ground, scaled by <paramref name="glow"/>.</summary>
+    public unsafe void DrawLights(float glow)
+    {
+        if (glow <= 0.01f || lights.Count == 0) return;
+        byte level = (byte)(255 * Math.Clamp(glow, 0f, 1f));
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.SetBlendMode(BlendMode.Additive);
+        Rlgl.DisableDepthMask();
+        foreach (var (mesh, material) in lights)
+        {
+            material.Maps[(int)MaterialMapIndex.Albedo].Color = new Color(level, level, level, level);
+            Raylib.DrawMesh(mesh, material, Matrix4x4.Identity);
+        }
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.SetBlendMode(BlendMode.Alpha);
+        Rlgl.EnableDepthMask();
     }
 
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>

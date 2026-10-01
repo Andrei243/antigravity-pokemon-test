@@ -232,6 +232,52 @@ public class PokemonTests
     }
 
     [Fact]
+    public void TestEveryTrainerBringsTheirOwnTeam()
+    {
+        MapDatabase.Initialize();
+        var trainers = MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Where(n => n.IsTrainer).ToList();
+
+        Assert.NotEmpty(trainers);
+        Assert.All(trainers, t => Assert.True(t.TrainerData!.Party.Count > 0, $"{t.Name} has no Pokémon"));
+
+        var logan = trainers.Single(t => t.Name == "Logan").TrainerData!;
+        Assert.Equal(new[] { "Bidoof", "Starly" }, logan.Party.Members.Select(p => p.Species.Name));
+    }
+
+    [Fact]
+    public void TestBeatenTrainersAreRememberedInTheSave()
+    {
+        MapDatabase.Initialize();
+
+        // The save names trainers by id, so each needs one of their own
+        var ids = MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Where(n => n.IsTrainer).Select(n => n.TrainerData!.Id).ToList();
+        Assert.DoesNotContain("", ids);
+        Assert.Equal(ids.Count, ids.Distinct().Count());
+
+        Assert.Empty(MapDatabase.DefeatedTrainerIds());
+        MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer).HasBattled = true;
+        var save = new PokemonPlatinumEngine.Core.SaveData { DefeatedTrainers = MapDatabase.DefeatedTrainerIds() };
+        Assert.Equal(new[] { "trainer_tristan" }, save.DefeatedTrainers);
+        string json = System.Text.Json.JsonSerializer.Serialize(save);
+
+        // The game starts again with everyone waiting, then the save is loaded
+        MapDatabase.Initialize();
+        var route = MapDatabase.Get("Route201");
+        Assert.NotNull(TrainerApproach.FindSpotter(route, 24, 9));
+
+        var loaded = System.Text.Json.JsonSerializer.Deserialize<PokemonPlatinumEngine.Core.SaveData>(json)!;
+        MapDatabase.RestoreDefeatedTrainers(loaded.DefeatedTrainers);
+        Assert.True(route.NPCs.First(n => n.IsTrainer).HasBattled);
+        Assert.Null(TrainerApproach.FindSpotter(route, 24, 9));
+        Assert.All(MapDatabase.Get("Route202").NPCs.Where(n => n.IsTrainer), n => Assert.False(n.HasBattled));
+
+        // A save from before trainers were recorded still loads: nobody has been beaten
+        Assert.Empty(System.Text.Json.JsonSerializer.Deserialize<PokemonPlatinumEngine.Core.SaveData>("{}")!.DefeatedTrainers);
+
+        MapDatabase.Initialize();
+    }
+
+    [Fact]
     public void TestRunningFromAWildBattleEndsItRightAway()
     {
         var party = new Party();

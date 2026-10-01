@@ -72,6 +72,7 @@ public static class AudioManager
         RegisterSynthSound("cancel", 220f, 0.10f, WaveType.Triangle);
         RegisterSamples("bump", SynthesizeBump());
         RegisterSynthSound("grass", 600f, 0.06f, WaveType.Noise);
+        RegisterSynthSound("exclaim", 1318.5f, 0.18f, WaveType.Square);
         RegisterSynthSound("hit_normal", 240f, 0.12f, WaveType.Noise);
         RegisterSynthSound("hit_super", 380f, 0.20f, WaveType.Square);
         RegisterSynthSound("faint", 150f, 0.50f, WaveType.Sawtooth);

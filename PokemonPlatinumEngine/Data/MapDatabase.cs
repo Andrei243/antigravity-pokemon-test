@@ -267,6 +267,7 @@ public static partial class MapDatabase
                 Id = "trainer_tristan",
                 Name = "Tristan",
                 TrainerClass = "Youngster",
+                Party = youngsterParty,
                 PrizeMoney = 160,
                 DialogueBefore = "Youngster Tristan: Our eyes met! That means we have to battle!",
                 DialogueAfter = "Youngster Tristan: Aww, my Starly fought hard! You're really tough!"
@@ -550,6 +551,7 @@ public static partial class MapDatabase
                 Id = "trainer_natalie",
                 Name = "Natalie",
                 TrainerClass = "Lass",
+                Party = lassParty,
                 PrizeMoney = 240,
                 DialogueBefore = "Lass Natalie: My cute Shinx is fully charged! Prepare for a shock!",
                 DialogueAfter = "Lass Natalie: Wow, you're strong! Keep going toward the Distortion Gateway!"
@@ -573,6 +575,7 @@ public static partial class MapDatabase
                 Id = "trainer_logan",
                 Name = "Logan",
                 TrainerClass = "Youngster",
+                Party = youngsterParty2,
                 PrizeMoney = 280,
                 DialogueBefore = "Youngster Logan: I've caught two Pokémon already! Let's see your team!",
                 DialogueAfter = "Youngster Logan: No way! You've got an amazing team balance!"

@@ -8,23 +8,26 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        // 1920x1080 Full HD Native Window Setup
-        Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | ConfigFlags.VSyncHint);
-        Raylib.InitWindow(1920, 1080, "Pokémon Platinum - Sinnoh Distortion Engine (Full HD)");
+        // The window opens at the size and V-Sync choice saved in the options
+        var settings = GameSettings.Load();
+        Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | (settings.VSync ? ConfigFlags.VSyncHint : 0));
+        Raylib.InitWindow(settings.WindowWidth, settings.WindowHeight, "Pokémon Platinum - Sinnoh Distortion Engine");
         Raylib.SetWindowMinSize(960, 540);
         Raylib.SetTargetFPS(60);
+        Raylib.SetExitKey(KeyboardKey.Null); // Esc is "back" in the menus; the window closes with its own button
+        WindowSettings.Apply(settings);
 
         // Initialize Engine
-        GameEngine engine = new();
+        GameEngine engine = new(settings);
         engine.Initialize();
 
         // Main Game Loop
         while (!Raylib.WindowShouldClose())
         {
-            // Toggle Fullscreen on F11 or Alt+Enter
+            // Toggle full screen on F11 or Alt+Enter
             if (Raylib.IsKeyPressed(KeyboardKey.F11) || (Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter)))
             {
-                Raylib.ToggleFullscreen();
+                engine.ToggleFullscreen();
             }
 
             float dt = Raylib.GetFrameTime();

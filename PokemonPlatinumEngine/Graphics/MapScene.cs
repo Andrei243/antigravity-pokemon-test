@@ -51,6 +51,9 @@ internal sealed class MapScene
     /// <param name="glow">How brightly windows and glass doors are lit from inside.</param>
     public void Draw(float glow) => meshes.Draw(glow);
 
+    /// <summary>Adds the light pools under lit windows and doors (after dark).</summary>
+    public void DrawLights(float glow) => meshes.DrawLights(glow);
+
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>
     public void DrawDepth() => meshes.DrawDepth();
 
@@ -450,6 +453,15 @@ internal sealed class MapScene
         }
     }
 
+    /// <summary>A patch of ground lit through a window or door after dark: brightest at the wall, fading to the south.</summary>
+    private static void AddLightPool(MeshBatches batches, float cx, float zWall, float width, float depth)
+    {
+        const float y = 0.03f;
+        batches.For(SceneTextures.LightPool, MeshPass.Light).Quad(
+            new(cx - width / 2, y, zWall + depth), new(cx + width / 2, y, zWall + depth), new(cx + width / 2, y, zWall), new(cx - width / 2, y, zWall),
+            new(0, 1), new(1, 1), new(1, 0), new(0, 0), Color.White, Up);
+    }
+
     private void AddFrontDetails(MeshBatches batches, BuildingInfo b, float zF, float wallH)
     {
         bool house = b.Kind == BuildingKind.House;
@@ -463,6 +475,7 @@ internal sealed class MapScene
             float w = house ? 0.66f : 0.98f, h = (house ? 1.08f : 1.05f) * VS;
             var decal = batches.For(house ? SceneTextures.DoorWood : SceneTextures.DoorGlass, MeshPass.Glow);
             decal.Decal(new(cx - w / 2, 0, zF + 0.012f), new(cx + w / 2, 0, zF + 0.012f), new(cx + w / 2, h, zF + 0.012f), new(cx - w / 2, h, zF + 0.012f), Color.White, South);
+            AddLightPool(batches, cx, zF, w * 3.2f, 2.8f);
             // Door frame and a stone step in front
             white.Box(new(cx - w / 2 - 0.07f, 0, zF), new(cx - w / 2, h + 0.06f, zF + 0.06f), frame, BoxFaces.Visible);
             white.Box(new(cx + w / 2, 0, zF), new(cx + w / 2 + 0.07f, h + 0.06f, zF + 0.06f), frame, BoxFaces.Visible);
@@ -484,6 +497,7 @@ internal sealed class MapScene
             float cx = x + 0.5f, w = 0.66f, h = 0.5f * VS, y0 = 0.55f * VS;
             batches.For(SceneTextures.Window, MeshPass.Glow).Decal(new(cx - w / 2, y0, zF + 0.01f), new(cx + w / 2, y0, zF + 0.01f),
                 new(cx + w / 2, y0 + h, zF + 0.01f), new(cx - w / 2, y0 + h, zF + 0.01f), Color.White, South);
+            AddLightPool(batches, cx, zF, 2.2f, 2.2f);
             // Frame and sill stand proud of the wall
             white.Box(new(cx - w / 2 - 0.05f, y0 + h, zF), new(cx + w / 2 + 0.05f, y0 + h + 0.05f * VS, zF + 0.05f), frame, BoxFaces.Visible);
             white.Box(new(cx - w / 2 - 0.05f, y0 - 0.04f * VS, zF), new(cx - w / 2, y0 + h, zF + 0.05f), frame, BoxFaces.Visible);

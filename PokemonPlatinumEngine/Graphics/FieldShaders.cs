@@ -95,7 +95,8 @@ void main()
 }";
 
     // Percentage-closer filtering over a Poisson disc, rotated per pixel so the few taps blend into a soft
-    // penumbra instead of banding. shadowTaps (4..16) comes from the quality preset.
+    // penumbra instead of banding. The centre and four outer taps go first: where they agree the pixel is fully
+    // lit or fully shadowed and the rest are skipped, so only penumbras pay for all shadowTaps (5..16).
     private const string ShadowFunctions = @"
 uniform sampler2D shadowMap;
 uniform float shadowTexel;
@@ -103,23 +104,23 @@ uniform float shadowSoftness;
 uniform int shadowTaps;
 
 const vec2 poisson[16] = vec2[](
-    vec2(-0.9420, -0.3991), vec2(0.9456, -0.7689), vec2(-0.0942, -0.9294), vec2(0.3450, 0.2939),
-    vec2(-0.9159, 0.4577), vec2(-0.8154, -0.8791), vec2(-0.3828, 0.2768), vec2(0.9748, 0.7565),
-    vec2(0.4432, -0.9751), vec2(0.5374, -0.4737), vec2(-0.2650, -0.4189), vec2(0.7920, 0.1909),
-    vec2(-0.2419, 0.9971), vec2(-0.8141, 0.9144), vec2(0.1998, 0.7864), vec2(0.1438, -0.1410));
+    vec2(0.0, 0.0), vec2(-0.9420, -0.3991), vec2(0.9456, -0.7689), vec2(-0.9159, 0.4577),
+    vec2(0.9748, 0.7565), vec2(-0.0942, -0.9294), vec2(0.3450, 0.2939), vec2(-0.8154, -0.8791),
+    vec2(-0.3828, 0.2768), vec2(0.4432, -0.9751), vec2(0.5374, -0.4737), vec2(-0.2650, -0.4189),
+    vec2(0.7920, 0.1909), vec2(-0.2419, 0.9971), vec2(-0.8141, 0.9144), vec2(0.1998, 0.7864));
 
 float Shadow(vec4 lightPos)
 {
     vec3 p = lightPos.xyz / lightPos.w * 0.5 + 0.5;
     if (p.x <= 0.0 || p.x >= 1.0 || p.y <= 0.0 || p.y >= 1.0 || p.z >= 1.0) return 1.0;
     float a = 6.2831853 * fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
-    mat2 rot = mat2(cos(a), sin(a), -sin(a), cos(a));
+    mat2 rot = mat2(cos(a), sin(a), -sin(a), cos(a)) * (shadowTexel * shadowSoftness);
     float lit = 0.0;
-    for (int i = 0; i < shadowTaps; i++)
-    {
-        float d = texture(shadowMap, p.xy + rot * poisson[i] * shadowTexel * shadowSoftness).r;
-        lit += (p.z - 0.0014 > d) ? 0.0 : 1.0;
-    }
+    for (int i = 0; i < 5; i++)
+        lit += (p.z - 0.0014 > texture(shadowMap, p.xy + rot * poisson[i]).r) ? 0.0 : 1.0;
+    if (shadowTaps <= 5 || lit == 0.0 || lit == 5.0) return lit / 5.0;
+    for (int i = 5; i < shadowTaps; i++)
+        lit += (p.z - 0.0014 > texture(shadowMap, p.xy + rot * poisson[i]).r) ? 0.0 : 1.0;
     return lit / float(shadowTaps);
 }";
 
@@ -135,6 +136,19 @@ vec3 ApplyFog(vec3 color, vec3 world)
 {
     float f = smoothstep(fogNear, fogFar, length(viewPos - world)) * fogAmount;
     return mix(color, fogColor, f);
+}";
+
+    // Slow, broad patches of cloud shade drifting across the sunlight
+    private const string CloudFunctions = @"
+uniform float cloudShade;
+uniform float cloudTime;
+
+float CloudLight(vec3 world)
+{
+    if (cloudShade <= 0.0) return 1.0;
+    vec2 p = world.xz * 0.05 + vec2(cloudTime * 0.016, cloudTime * 0.009);
+    float n = sin(p.x * 3.1 + sin(p.y * 2.3) * 1.7) * 0.5 + sin(p.y * 2.7 + sin(p.x * 1.9) * 1.3) * 0.5;
+    return 1.0 - cloudShade * smoothstep(-0.2, 0.7, n);
 }";
 
     private const string PostVertex = @"#version 330
@@ -168,7 +182,7 @@ uniform vec3 groundAmbient;
 uniform float worldRamp;
 uniform float glow;
 out vec4 finalColor;
-" + ShadowFunctions + FogFunctions + @"
+" + ShadowFunctions + FogFunctions + CloudFunctions + @"
 void main()
 {
     vec4 texel = texture(texture0, fragTexCoord);
@@ -179,7 +193,7 @@ void main()
     float shadow = ndl > 0.0 ? Shadow(fragLight) : 0.0;
     vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
     float diffuse = mix(max(ndl, 0.0), smoothstep(0.0, 0.3, ndl) * 0.92 + max(ndl, 0.0) * 0.08, worldRamp);
-    vec3 color = albedo * (ambient + sunColor * diffuse * shadow);
+    vec3 color = albedo * (ambient + sunColor * diffuse * shadow * CloudLight(fragWorld));
     if (glow > 0.0)
     {
         float glass = smoothstep(0.04, 0.16, texel.b - texel.r) * glow;
@@ -197,12 +211,12 @@ uniform sampler2D texture0;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
 out vec4 finalColor;
-" + FogFunctions + @"
+" + FogFunctions + CloudFunctions + @"
 void main()
 {
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
-    vec3 color = texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78);
+    vec3 color = texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78 * CloudLight(fragWorld));
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
 }";
 
@@ -235,7 +249,7 @@ uniform float shadowStrength;
 uniform float rimStrength;
 uniform vec4 flash;
 out vec4 finalColor;
-" + ShadowFunctions + FogFunctions + @"
+" + ShadowFunctions + FogFunctions + CloudFunctions + @"
 void main()
 {
     vec4 texel = texture(texture0, fragTexCoord);
@@ -246,7 +260,7 @@ void main()
     float lit = smoothstep(0.0, 0.12, ndl);
     if (shadowStrength > 0.0) lit *= mix(1.0, Shadow(fragLight), shadowStrength);
     vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
-    vec3 color = albedo * (ambient * 1.08 + sunColor * lit);
+    vec3 color = albedo * (ambient * 1.08 + sunColor * lit * CloudLight(fragWorld));
     vec3 v = normalize(viewPos - fragWorld);
     float rim = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 3.0);
     color += (albedo * 0.6 + vec3(0.1)) * rim * rimStrength;
@@ -470,7 +484,7 @@ void main()
     vec2 uv = fragTexCoord;
     if (texture(texture0, uv).r >= 0.99999) { finalColor = vec4(1.0); return; }
     vec3 p = ViewPos(uv);
-    vec2 dx = vec2(depthTexel.x * 2.0, 0.0), dy = vec2(0.0, depthTexel.y * 2.0);
+    vec2 dx = vec2(depthTexel.x * 3.0, 0.0), dy = vec2(0.0, depthTexel.y * 3.0);
     vec3 pr = ViewPos(uv + dx), pl = ViewPos(uv - dx), pu = ViewPos(uv + dy), pd = ViewPos(uv - dy);
     vec3 ddx = abs(pr.z - p.z) < abs(p.z - pl.z) ? pr - p : p - pl;
     vec3 ddy = abs(pu.z - p.z) < abs(p.z - pd.z) ? pu - p : p - pd;
@@ -539,6 +553,7 @@ void main()
         foreach (var shader in FieldPrograms)
         {
             Set(shader, "time", time);
+            Set(shader, "cloudTime", time);
         }
     }
 
@@ -576,12 +591,26 @@ void main()
         }
     }
 
+    /// <summary>Clears the scene-only effects (fog, cloud shade, flash) before a model is rendered on its own.</summary>
+    public void SetStudio()
+    {
+        SetFog(Vector3.One, 0f, 1000f, 2000f);
+        SetCloudShade(0f);
+        SetFlash(default, 0f);
+    }
+
+    /// <summary>How much drifting cloud shade dims the sunlight (0 for none).</summary>
+    public void SetCloudShade(float amount)
+    {
+        foreach (var shader in new[] { World, Character, Sprite }) Set(shader, "cloudShade", amount);
+    }
+
     /// <summary>Shadow filtering: taps from the quality preset, softness as the disc radius in shadow-map texels.</summary>
     public void SetShadowQuality(int taps, float softness)
     {
         foreach (var shader in new[] { World, Character, Water })
         {
-            Set(shader, "shadowTaps", Math.Clamp(taps, 1, 16));
+            Set(shader, "shadowTaps", Math.Clamp(taps, 5, 16));
             Set(shader, "shadowSoftness", softness);
         }
     }

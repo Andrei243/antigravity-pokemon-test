@@ -12,9 +12,9 @@ public readonly record struct QualityProfile(int SuperSample, bool AmbientOcclus
 {
     public static QualityProfile For(GraphicsQuality quality) => quality switch
     {
-        GraphicsQuality.Low => new QualityProfile(1, false, true, 4, 1024, false),
-        GraphicsQuality.Medium => new QualityProfile(1, true, true, 8, 2048, true),
-        _ => new QualityProfile(2, true, false, 16, 2048, true)
+        GraphicsQuality.Low => new QualityProfile(1, false, true, 5, 1024, false),
+        GraphicsQuality.Medium => new QualityProfile(1, true, true, 7, 2048, true),
+        _ => new QualityProfile(2, true, false, 9, 2048, true)
     };
 }
 

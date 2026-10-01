@@ -18,16 +18,49 @@ public class NPC
     // Trainer specific
     public bool IsTrainer { get; set; } = false;
     public Trainer? TrainerData { get; set; }
-    public int VisionDistance { get; set; } = 3;
     public bool HasSpottedPlayer { get; set; } = false;
     public float ExclamationTimer { get; set; } = 0f;
     public bool HasBattled { get; set; } = false;
+
+    // Walking (a trainer stepping up to the player): the grid position is where the current step ends
+    public float StepOffsetX { get; set; }
+    public float StepOffsetY { get; set; }
+    public float WalkCycle { get; set; }
+    public float WalkBlend { get; set; }
+
+    /// <summary>Where the character is drawn, in tiles (differs from the grid position mid-step).</summary>
+    public float DrawX => GridX + StepOffsetX;
+    public float DrawY => GridY + StepOffsetY;
+
+    private (int X, int Y, Direction Facing)? post;
 
     // Special Interactions
     public bool IsStarterBriefcase { get; set; } = false;
     public bool IsHealingNurse { get; set; } = false;
     public bool IsPokeMartClerk { get; set; } = false;
     public bool IsPCTerminal { get; set; } = false;
+
+    /// <summary>Remembers where the trainer was standing, before they walk up to the player.</summary>
+    public void LeavePost() => post ??= (GridX, GridY, Facing);
+
+    /// <summary>
+    /// A beaten trainer stays where the battle happened and doesn't challenge again. One who won goes back to
+    /// their post with a healed team, so the player can return for a rematch.
+    /// </summary>
+    public void FinishBattle(bool playerWon)
+    {
+        if (playerWon)
+        {
+            HasBattled = true;
+            return;
+        }
+
+        TrainerData?.Party.HealAll();
+        if (post.HasValue)
+        {
+            (GridX, GridY, Facing) = post.Value;
+        }
+    }
 
     public void FaceTowards(int playerX, int playerY)
     {

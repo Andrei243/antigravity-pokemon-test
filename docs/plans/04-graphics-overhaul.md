@@ -21,7 +21,7 @@ Findings from the current screenshots:
 - **Battles: modern 3D.** Real 3D Pokémon and trainers on a modelled stage, soft cel shading with coloured outlines, smooth filtered textures, modelled foliage, painted sky.
 - **Interface: modern vector UI** in Platinum's colour language (Nunito, anti-aliased panels), with Pokémon shown as **2D pixel sprites** in menus, like the main games (no 3D renders in menus).
 
-The rules and numbers are in [`docs/art/style-guide.md`](../art/style-guide.md); `ArtLook.PixelField`, `ArtLook.ModelBattle` and `ArtLook.VectorUi` switch each layer. The candidates were:
+The rules and numbers are in [`docs/art/style-guide.md`](../art/style-guide.md), with the numbers in code in `ArtLook`. The candidates were:
 
 *Modern 3D Sinnoh.* The overworld as a chibi diorama, full 3D Pokémon in battle, soft cel shading, clean low-frequency textures, bloom and grading, and a crisp HD interface. (Its battle and interface were kept.)
 
@@ -62,7 +62,7 @@ Every session starts by capturing "before" screenshots with the harness and ends
 - **Done when** the user approves the style guide and the prototype frames.
 
 **Outcome (2026-10-01).** Both candidate looks were prototyped on the same frames and compared side by side; the user chose the mix described under *Direction* and approved Nunito and the asset policy. What exists now:
-- `ArtLook` switches the field, battle and interface layers; the chosen look is the default. `ArtDirection.Current` (the old look) remains until each area is rebuilt.
+- `ArtLook` switched the field, battle and interface layers between the old and new look (the switch and the old look were removed in G2).
 - Post chain with half-resolution depth-of-field and bloom targets and per-layer grading (`RenderContext.PreparePost`).
 - Field: `PixelGround` (clean pixel-art ground; the old ground was ~30 % single-texel specks, the new one ~0.6 %, checked by `StyleGuideTests`) and `CharacterSprites` (rigs baked to outlined pixel sprites, drawn as shadow-casting billboards).
 - Battle: Pokémon drawn as lit 3D models on the platforms with tinted outlines (`BattleRenderer.DrawPokemon3D`), `SoftFoliage` trees and tufts, `SoftTextures` meadow and platforms, `SkyPainter` sky.
@@ -74,8 +74,20 @@ Every session starts by capturing "before" screenshots with the harness and ends
 Per the style guide's layers. Field: soft shadow filtering, fog, the five time-of-day light rigs and grades (confirm Platinum's hour boundaries from pret/pokeplatinum), pixel-perfect sprite and texture placement. Battle: material system, ambient occlusion, screen-space outlines for the stage, FXAA, the time-of-day rigs. Both: a graphics settings screen (quality presets, resolution, full screen, vsync). Remove the `Current` paths this session replaces. Tune on Twinleaf, Route 201 and the grass battle.
 **Done when** the before/after pairs show a clear step up and a frame stays under 8 ms.
 
+**Outcome (2026-10-01).**
+- **Time of day**: `GameClock` follows the computer's clock with Platinum's table from the decompilation (`src/rtc.c`: late night 0–3, morning 4–9, day 10–16, twilight 17–19, night 20–23). `ArtLook` holds a light rig per time for the field and for battles (sun or moon, ambient, fog, grading, sky, window glow) and blends them within half an hour of each change. Rooms keep their own light.
+- **Night**: glass in windows, doors and the Mart sign lights up (`MeshPass.Glow`), and warm light pools on the ground in front (`MeshPass.Light`); battles get a night sky with stars.
+- **Shadows, fog, clouds**: rotated Poisson-disc soft shadows with an early-out, distance fog in every lit shader, slow cloud shade over the sunlight.
+- **Depth-based passes**: the scene target now has a depth texture; quarter-resolution ambient occlusion (field and battle), depth-step outlines for the battle stage, FXAA for the single-sample presets.
+- **Pixel-perfect field**: the camera target and sprites snap to the 1/32-unit texel grid.
+- **Options screen** (start menu → OPTIONS): quality (Low/Medium/High), window size, full screen (borderless, also F11), V-Sync, time of day, sound; saved in `settings.json` (`GameSettings`, `WindowSettings`). Esc no longer closes the game.
+- **Old look removed**: `ArtDirection` and its branches are gone (old ground painter, 2D battle sprites, old HUD, old dialogue and party list). The battle's switch and bag panels and the summary are the only old-style panels left on those screens.
+- **Harness**: `look [before dir]` (reference frames plus before/after boards against an earlier run) and `times` (five times of day, three presets).
+- **Frame time on High**: fields 5.7–6.9 ms (Route 201 is the heaviest), battles 6.3–7 ms; Medium about 4 ms, Low about 3 ms.
+- **Deferred**: the material system (specular, emission per surface kind) needs models that carry material ids, so it moves to G6 and G7 with the SDF kit. Street lamps come with the props in G5.
+
 ### G3 · UI kit and core screens
-Grow `UI/Kit` and `ModernUi` into the kit: tokens, components and motion from the style guide; then rebuild the start menu, the battle's switch and bag panels, the summary (2D sprites), and polish the dialogue box, battle HUD (animated bars) and party screen. Add the location-name sign shown when entering an area.
+Grow `UI/Kit` and `ModernUi` into the kit: tokens, components and motion from the style guide; then rebuild the start menu, the battle's switch and bag panels, the summary (2D sprites), and polish the dialogue box, battle HUD (animated bars), party screen and options screen. Add the location-name sign shown when entering an area.
 **Done when** those screens use only kit components and pass review in the harness `menus`, `battle` and `look` modes.
 
 ### G4 · Terrain and nature
@@ -87,7 +99,7 @@ A modular building kit in pixel art with a style per town: planks and plaster wi
 **Done when** every existing building and interior is rebuilt.
 
 ### G6 · SDF kit and characters
-`SdfModel` with meshing and caching. Rebuild the player and every NPC type: better proportions, hands and shoes, sculpted hair, clothing detail, expressive faces (eyes with highlights, blinking, a few mouth shapes and expressions). Skinned skeletons with walk, run, idle and emote animations with follow-through (hair and bag bounce). The models serve both layers: 3D trainers in battle, and the source of the field sprites (re-bake, with more walk frames and legible faces at sprite size; hand-drawn overrides where a bake falls short).
+`SdfModel` with meshing and caching, and the material data deferred from G2 (per-surface ramp, specular and emission, carried as material ids on the models). Rebuild the player and every NPC type: better proportions, hands and shoes, sculpted hair, clothing detail, expressive faces (eyes with highlights, blinking, a few mouth shapes and expressions). Skinned skeletons with walk, run, idle and emote animations with follow-through (hair and bag bounce). The models serve both layers: 3D trainers in battle, and the source of the field sprites (re-bake, with more walk frames and legible faces at sprite size; hand-drawn overrides where a bake falls short).
 **Done when** the lineup, sprite sheet and walk-cycle shots pass review.
 
 ### G7 · Pokémon models, version 2
@@ -110,7 +122,7 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 ## Risks
 
 - **Procedural limits**: some species will still look off; the override folder lets a hand-made model replace any of them.
-- **Cost of effects**: 2× supersampling plus ambient occlusion and bloom is heavy; measure each addition and keep presets for slower machines. After G1: field 4.2 ms, battle 5.0 ms per frame in the harness.
+- **Cost of effects**: 2× supersampling plus ambient occlusion and bloom is heavy; measure each addition and keep presets for slower machines. After G2 on High: fields 5.7–6.9 ms, battles 6.3–7 ms per frame in the harness, against a budget of 8; little headroom is left, so new effects must pay for themselves or go to Medium/Low as well.
 - **Two techniques, one game**: the pixel field and the 3D battles could feel like two games. Keep palettes, light direction and the interface shared, and make the battle intro transition (G9) sell the change.
 - **Endless polish**: every session has a done-when and a user review; move on once it passes.
 - **raylib limits**: OpenGL 3.3 without compute shaders, so everything runs as vertex and fragment passes.
@@ -123,7 +135,7 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 ## Status
 
 - [x] G1 Direction, references and style guide (2026-10-01: Sinnoh Diorama; see the style guide)
-- [ ] G2 Rendering foundation
+- [x] G2 Rendering foundation (2026-10-01: time of day, soft shadows, fog, ambient occlusion, outlines, FXAA, options screen; materials moved to G6/G7)
 - [ ] G3 UI kit and core screens
 - [ ] G4 Terrain and nature
 - [ ] G5 Buildings, props and interiors

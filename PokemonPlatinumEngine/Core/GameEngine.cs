@@ -24,6 +24,7 @@ public enum GameState
     StarterSelect,
     Shop,
     PCStorage,
+    Options,
     Transition
 }
 
@@ -45,6 +46,13 @@ public class GameEngine
     private readonly DialogueManager dialogue = new();
     private BattleEngine? battle;
 
+    // A trainer who spotted the player and is walking up, and the one being battled
+    private TrainerApproach? trainerApproach;
+    private NPC? battleTrainer;
+
+    // Set on arriving somewhere without walking (through a door, from a save, after a battle): trainers look once
+    private bool trainersLookOnArrival = true;
+
     // UI Sub-screens
     private readonly StartMenu startMenu = new();
     private readonly PartyScreen partyScreen = new();
@@ -54,6 +62,10 @@ public class GameEngine
     private readonly StarterSelectScreen starterSelectScreen = new();
     private readonly ShopScreen shopScreen = new();
     private readonly PCScreen pcScreen = new();
+    private readonly OptionsScreen optionsScreen = new();
+
+    /// <summary>Player options (graphics, window, time of day, sound), kept in settings.json.</summary>
+    public GameSettings Settings { get; }
 
     // Player Save State
     private readonly Party playerParty = new();
@@ -75,8 +87,9 @@ public class GameEngine
     private string notificationMessage = "";
     private float notificationTimer = 0f;
 
-    public GameEngine()
+    public GameEngine(GameSettings? settings = null)
     {
+        Settings = settings ?? GameSettings.Load();
         world = new WorldRenderer(renderContext);
         battleRenderer = new BattleRenderer(renderContext);
     }
@@ -91,6 +104,8 @@ public class GameEngine
         PokemonDatabase.Initialize();
         ItemDatabase.Initialize();
         MapDatabase.Initialize();
+
+        ApplySettings(window: false);
 
         // Menu sprites are rendered from the 3D Pokémon models once, up front
         renderContext.EnsureLoaded();
@@ -108,6 +123,22 @@ public class GameEngine
         }
 
         AudioManager.PlayBGM(currentMap.BgmTrack);
+    }
+
+    /// <summary>Applies the options to the renderer, the clock and the sound, and optionally to the window.</summary>
+    public void ApplySettings(bool window)
+    {
+        renderContext.SetQuality(Settings.Quality);
+        GameClock.Fixed = Settings.TimeOfDay;
+        if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
+        if (window) WindowSettings.Apply(Settings);
+    }
+
+    public void ToggleFullscreen()
+    {
+        Settings.Fullscreen = !Settings.Fullscreen;
+        ApplySettings(window: true);
+        Settings.Save();
     }
 
     private void InitializeNewGame()
@@ -170,6 +201,8 @@ public class GameEngine
         foreach (var seen in save.SeenSpecies) playerPokedex.RegisterSeen(seen);
         foreach (var caught in save.CaughtSpecies) playerPokedex.RegisterCaught(caught);
 
+        MapDatabase.RestoreDefeatedTrainers(save.DefeatedTrainers);
+
         playerMoney = save.Money;
         badgesMask = save.Badges;
         playTime = save.PlayTimeSeconds;
@@ -189,6 +222,7 @@ public class GameEngine
             Inventory = playerInventory.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
             SeenSpecies = playerPokedex.SeenSpecies.ToList(),
             CaughtSpecies = playerPokedex.CaughtSpecies.ToList(),
+            DefeatedTrainers = MapDatabase.DefeatedTrainerIds(),
             Money = playerMoney,
             Badges = badgesMask,
             PlayTimeSeconds = playTime
@@ -211,8 +245,10 @@ public class GameEngine
         // Global Mute Toggle (M)
         if (Raylib.IsKeyPressed(KeyboardKey.M))
         {
-            AudioManager.ToggleMute();
-            ShowNotification("Sound toggled");
+            Settings.Muted = !Settings.Muted;
+            ApplySettings(window: false);
+            Settings.Save();
+            ShowNotification(Settings.Muted ? "Sound off" : "Sound on");
         }
 
         switch (currentState)
@@ -222,7 +258,9 @@ public class GameEngine
                 break;
             case GameState.Dialogue:
                 dialogue.Update(dt);
-                if (!dialogue.IsActive)
+
+                // Back to the field, unless the last line led somewhere else (a trainer's challenge fades into battle)
+                if (!dialogue.IsActive && currentState == GameState.Dialogue)
                 {
                     currentState = GameState.Overworld;
                 }
@@ -237,6 +275,10 @@ public class GameEngine
                         {
                             playerMoney += battle.OpponentTrainer.PrizeMoney;
                         }
+
+                        // Only a beaten trainer is done; after a loss they wait for a rematch
+                        battleTrainer?.FinishBattle(battle.Result == BattleResult.PlayerVictory);
+                        battleTrainer = null;
                         EndBattle();
                     }
                 }
@@ -277,6 +319,14 @@ public class GameEngine
                 pcScreen.Update(playerParty, pcBoxStorage, ShowNotification);
                 if (!pcScreen.IsActive) currentState = GameState.Overworld;
                 break;
+            case GameState.Options:
+                if (optionsScreen.Update(Settings))
+                {
+                    ApplySettings(window: true);
+                    Settings.Save();
+                }
+                if (!optionsScreen.IsActive) currentState = GameState.Overworld;
+                break;
             case GameState.Transition:
                 UpdateTransition(dt);
                 break;
@@ -285,6 +335,25 @@ public class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // A trainer has spotted the player: nothing else happens until they have walked up
+        if (trainerApproach != null)
+        {
+            trainerApproach.Update(dt, player);
+            if (trainerApproach.IsDone)
+            {
+                var trainer = trainerApproach.Trainer;
+                trainerApproach = null;
+                ChallengeTrainer(trainer);
+            }
+            return;
+        }
+
+        if (trainersLookOnArrival)
+        {
+            trainersLookOnArrival = false;
+            if (CheckTrainerSight()) return;
+        }
+
         // Check Start Menu
         if (startMenu.IsActive)
         {
@@ -313,8 +382,8 @@ public class GameEngine
                         SaveCurrentGame();
                         break;
                     case "OPTIONS":
-                        AudioManager.ToggleMute();
-                        ShowNotification(AudioManager.IsMuted ? "Sound muted (press M to unmute)" : "Sound unmuted");
+                        currentState = GameState.Options;
+                        optionsScreen.Open();
                         break;
                 }
                 startMenu.Close();
@@ -329,13 +398,34 @@ public class GameEngine
         }
 
         // Overworld Player Movement
-        player.Update(dt, currentMap, StartWildBattle, HandleWarp);
+        player.Update(dt, currentMap, StartWildBattle, HandleWarp, CheckTrainerSight);
+        if (trainerApproach != null) return;
 
         // Interaction (Z / Space)
         if (!player.IsMoving && InputManager.IsActionPressed(GameAction.Confirm))
         {
             TryInteract();
         }
+    }
+
+    /// <summary>After each step: a trainer looking this way notices the player and comes over to battle.</summary>
+    private bool CheckTrainerSight()
+    {
+        var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY);
+        if (trainer == null) return false;
+
+        trainerApproach = new TrainerApproach(trainer, player);
+        AudioManager.PlaySound("exclaim");
+        return true;
+    }
+
+    private void ChallengeTrainer(NPC npc)
+    {
+        dialogue.ShowDialogue(npc.Name, npc.TrainerData!.DialogueBefore, () =>
+        {
+            StartTrainerBattle(npc);
+        });
+        currentState = GameState.Dialogue;
     }
 
     private void TryInteract()
@@ -360,8 +450,9 @@ public class GameEngine
         }
         if (npc != null)
         {
-            // Face player
-            npc.Facing = (Direction)(((int)player.Facing + 2) % 4);
+            // Face player (a trainer goes back to looking the old way if they win)
+            if (npc.IsTrainer) npc.LeavePost();
+            npc.FaceTowards(player.GridX, player.GridY);
 
             if (npc.IsStarterBriefcase)
             {
@@ -398,11 +489,7 @@ public class GameEngine
 
             if (npc.IsTrainer && !npc.HasBattled)
             {
-                dialogue.ShowDialogue(npc.Name, npc.TrainerData!.DialogueBefore, () =>
-                {
-                    StartTrainerBattle(npc);
-                });
-                currentState = GameState.Dialogue;
+                ChallengeTrainer(npc);
                 return;
             }
 
@@ -469,7 +556,7 @@ public class GameEngine
         {
             battle = new BattleEngine(playerParty, trainer.Party.Members.First(), playerInventory, playerPokedex, trainer, pcBoxStorage);
             battleRenderer.Trees = currentMap.Trees;
-            trainerNpc.HasBattled = true;
+            battleTrainer = trainerNpc;
             AudioManager.PlayBGM("Battle");
         });
     }
@@ -522,6 +609,7 @@ public class GameEngine
             if (transitionTimer >= transitionDuration)
             {
                 currentState = stateAfterTransition;
+                trainersLookOnArrival = currentState == GameState.Overworld;
             }
         }
     }
@@ -594,6 +682,9 @@ public class GameEngine
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);
+                break;
+            case GameState.Options:
+                optionsScreen.Draw(VirtualWidth, VirtualHeight, Settings);
                 break;
             case GameState.Transition:
                 if (showBattle) DrawBattle();

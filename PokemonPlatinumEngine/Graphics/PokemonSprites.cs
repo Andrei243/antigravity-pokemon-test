@@ -119,6 +119,7 @@ internal static class PokemonSprites
 
         shaders.SetLighting(Matrix4x4.Identity, Light, framing.Camera.Position, 1f);
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.32f);
+        shaders.SetStudio();
 
         model.BoneTransforms(pose, BoneMatrices);
         var turn = Matrix4x4.CreateRotationY(framing.Yaw);

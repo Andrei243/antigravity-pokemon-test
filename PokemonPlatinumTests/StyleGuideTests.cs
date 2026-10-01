@@ -10,15 +10,6 @@ namespace PokemonPlatinumTests;
 /// <summary>Rules from docs/art/style-guide.md that can be checked without a GPU.</summary>
 public class StyleGuideTests
 {
-    [Fact]
-    public void TheChosenArtDirectionIsOnByDefault()
-    {
-        Assert.Equal(ArtDirection.Diorama, ArtLook.Direction);
-        Assert.True(ArtLook.PixelField);
-        Assert.True(ArtLook.ModelBattle);
-        Assert.True(ArtLook.VectorUi);
-    }
-
     [Theory]
     [InlineData("Nunito-Bold.ttf")]
     [InlineData("Nunito-ExtraBold.ttf")]

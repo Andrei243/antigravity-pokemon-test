@@ -82,6 +82,7 @@ internal static class CharacterSprites
         Raylib.BeginMode3D(camera);
         shaders.SetLighting(Matrix4x4.Identity, StudioLight, camera.Position, 1f);
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.2f);
+        shaders.SetStudio();
         CharacterRenderer.Draw(context, rig, bakePose, Matrix4x4.CreateRotationY(bakeYaw), CharacterPass.Color, trueProportions: true);
         Raylib.EndMode3D();
         Raylib.EndTextureMode();

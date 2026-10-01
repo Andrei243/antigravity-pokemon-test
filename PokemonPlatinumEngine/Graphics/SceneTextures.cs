@@ -489,6 +489,32 @@ internal static class SceneTextures
         return c;
     }, repeat: false);
 
+    /// <summary>
+    /// Warm light spilling onto the ground from a lit window or door (drawn additively at night): brightest at
+    /// the wall (top edge, centre) and fading out in a half ellipse.
+    /// </summary>
+    public static Texture2D LightPool
+    {
+        get
+        {
+            if (Cache.TryGetValue("light_pool", out var cached)) return cached;
+            const int s = 64;
+            var c = new PixelCanvas(s, s);
+            for (int y = 0; y < s; y++)
+                for (int x = 0; x < s; x++)
+                {
+                    float u = (x + 0.5f) / s * 2f - 1f, v = (y + 0.5f) / s;
+                    float fall = Math.Clamp(1f - MathF.Sqrt(u * u + v * v), 0f, 1f);
+                    c.SetRaw(x, y, new Color(255, 184, 104, (int)(105 * fall * fall * (3f - 2f * fall))));
+                }
+            var tex = c.ToTexture();
+            Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
+            Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
+            Cache["light_pool"] = tex;
+            return tex;
+        }
+    }
+
     public static Texture2D Exclamation => Get("exclamation", () =>
     {
         var c = new PixelCanvas(16, 16);

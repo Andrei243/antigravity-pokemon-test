@@ -49,14 +49,15 @@ internal readonly record struct LightRig(
     PostSettings Post,
     float WindowGlow,
     float Rim,
-    SkyColors Sky)
+    SkyColors Sky,
+    float CloudShade = 0f)
 {
     public static LightRig Lerp(LightRig a, LightRig b, float t) => new(
         SceneLighting.Lerp(a.Light, b.Light, t), PixelCanvas.Mix(a.Background, b.Background, t),
         Vector3.Lerp(a.FogColor, b.FogColor, t), a.FogAmount + (b.FogAmount - a.FogAmount) * t,
         a.FogNear + (b.FogNear - a.FogNear) * t, a.FogFar + (b.FogFar - a.FogFar) * t,
         PostSettings.Lerp(a.Post, b.Post, t), a.WindowGlow + (b.WindowGlow - a.WindowGlow) * t,
-        a.Rim + (b.Rim - a.Rim) * t, SkyColors.Lerp(a.Sky, b.Sky, t));
+        a.Rim + (b.Rim - a.Rim) * t, SkyColors.Lerp(a.Sky, b.Sky, t), a.CloudShade + (b.CloudShade - a.CloudShade) * t);
 }
 
 /// <summary>
@@ -113,7 +114,7 @@ internal static class ArtLook
 
     // Strong tilt-shift depth of field, warm highlights and violet shade
     private static readonly PostSettings FieldDayPost = new(6f, 0.95f, 0.3f, 0.86f, 0.38f, 1.1f, 1.08f,
-        V(0.88f, 0.92f, 1.1f), V(1.07f, 1.0f, 0.9f), 0.26f);
+        V(0.88f, 0.92f, 1.1f), V(1.07f, 1.0f, 0.9f), 0.26f, AoStrength: 0.4f);
 
     private static readonly SkyColors NoSky = new(Color.Black, Color.Black, Color.Black, Color.White, 0f);
 
@@ -124,29 +125,29 @@ internal static class ArtLook
             new SceneLighting(Dir(-0.62f, 0.6f, 0.5f), V(0.64f, 0.54f, 0.46f), V(0.52f, 0.56f, 0.72f), V(0.46f, 0.45f, 0.44f)),
             Rgb(40, 96, 70), V(0.84f, 0.86f, 0.94f), 0.32f, 40f, 68f,
             FieldDayPost with { BloomStrength = 0.44f, Saturation = 1.04f, Contrast = 1.05f, ShadowTint = V(0.9f, 0.92f, 1.1f), HighlightTint = V(1.06f, 1.0f, 0.95f), Vignette = 0.24f },
-            0f, 0.3f, NoSky),
+            0f, 0.3f, NoSky, CloudShade: 0.14f),
         // Golden late-morning sun with violet-blue shade, like a lit diorama
         TimeOfDay.Day => new LightRig(
             new SceneLighting(Dir(-0.6f, 0.8f, 0.42f), V(0.66f, 0.55f, 0.4f), V(0.5f, 0.55f, 0.74f), V(0.46f, 0.44f, 0.4f)),
             Rgb(38, 100, 66), V(0.72f, 0.82f, 0.92f), 0.18f, 44f, 72f,
-            FieldDayPost, 0f, 0.3f, NoSky),
+            FieldDayPost, 0f, 0.3f, NoSky, CloudShade: 0.2f),
         // Low orange sun, magenta-violet shade, lamps coming on
         TimeOfDay.Twilight => new LightRig(
-            new SceneLighting(Dir(-0.72f, 0.42f, 0.5f), V(0.8f, 0.48f, 0.28f), V(0.44f, 0.38f, 0.6f), V(0.42f, 0.34f, 0.34f)),
+            new SceneLighting(Dir(-0.72f, 0.42f, 0.5f), V(0.9f, 0.56f, 0.32f), V(0.5f, 0.44f, 0.62f), V(0.44f, 0.36f, 0.36f)),
             Rgb(40, 60, 62), V(0.9f, 0.62f, 0.52f), 0.28f, 42f, 70f,
             FieldDayPost with { BloomThreshold = 0.8f, BloomStrength = 0.55f, Saturation = 1.12f, ShadowTint = V(0.88f, 0.84f, 1.1f), HighlightTint = V(1.1f, 0.96f, 0.82f), Vignette = 0.3f },
-            0.45f, 0.35f, NoSky),
+            0.45f, 0.35f, NoSky, CloudShade: 0.1f),
         // Cool moonlight; warm windows glow and bloom
         TimeOfDay.Night => new LightRig(
-            new SceneLighting(Dir(-0.38f, 0.86f, 0.34f), V(0.24f, 0.3f, 0.5f), V(0.2f, 0.26f, 0.44f), V(0.13f, 0.15f, 0.22f)),
+            new SceneLighting(Dir(-0.38f, 0.86f, 0.34f), V(0.27f, 0.31f, 0.44f), V(0.22f, 0.26f, 0.4f), V(0.14f, 0.15f, 0.21f)),
             Rgb(12, 26, 34), V(0.1f, 0.14f, 0.28f), 0.35f, 40f, 68f,
-            FieldDayPost with { BloomThreshold = 0.55f, BloomStrength = 0.7f, Saturation = 0.88f, Contrast = 1.06f, ShadowTint = V(0.85f, 0.9f, 1.18f), HighlightTint = V(1.0f, 1.0f, 1.05f), Vignette = 0.4f },
+            FieldDayPost with { BloomThreshold = 0.55f, BloomStrength = 0.7f, Saturation = 0.8f, Contrast = 1.06f, ShadowTint = V(0.85f, 0.9f, 1.18f), HighlightTint = V(1.0f, 1.0f, 1.05f), Vignette = 0.4f },
             1f, 0.5f, NoSky),
         // Deeper night; fewer lights still on
         _ => new LightRig(
-            new SceneLighting(Dir(-0.34f, 0.88f, 0.3f), V(0.18f, 0.23f, 0.4f), V(0.15f, 0.2f, 0.36f), V(0.1f, 0.11f, 0.17f)),
+            new SceneLighting(Dir(-0.34f, 0.88f, 0.3f), V(0.2f, 0.24f, 0.36f), V(0.17f, 0.2f, 0.33f), V(0.11f, 0.12f, 0.17f)),
             Rgb(8, 18, 26), V(0.07f, 0.1f, 0.22f), 0.4f, 38f, 66f,
-            FieldDayPost with { BloomThreshold = 0.55f, BloomStrength = 0.6f, Saturation = 0.78f, Contrast = 1.06f, ShadowTint = V(0.85f, 0.9f, 1.2f), HighlightTint = V(1.0f, 1.0f, 1.06f), Vignette = 0.45f },
+            FieldDayPost with { BloomThreshold = 0.55f, BloomStrength = 0.6f, Saturation = 0.72f, Contrast = 1.06f, ShadowTint = V(0.85f, 0.9f, 1.2f), HighlightTint = V(1.0f, 1.0f, 1.06f), Vignette = 0.45f },
             0.6f, 0.5f, NoSky)
     };
 
@@ -159,11 +160,11 @@ internal static class ArtLook
 
     // ------------------------------------------------------------------ battles (3D)
 
-    private static readonly PostSettings BattleDayPost = new(2f, 0.15f, 0.5f, 0.86f, 0.28f, 1.05f, 1.05f,
+    private static readonly PostSettings BattleDayPost = new(2f, 0f, 0.5f, 0.86f, 0.28f, 1.05f, 1.05f,
         V(0.94f, 0.97f, 1.06f), V(1.04f, 1.01f, 0.95f), 0.1f, AoStrength: 0.6f, OutlineStrength: 0.35f);
 
     private static LightRig Battle(SceneLighting light, SkyColors sky, float fog, float rim, PostSettings post) =>
-        new(light, sky.Horizon, Of(sky.Horizon), fog, 40f, 140f, post, 0f, rim, sky);
+        new(light, sky.Horizon, Of(sky.Horizon), fog, 40f, 140f, post, 0f, rim, sky, sky.Stars > 0f ? 0f : 0.16f);
 
     public static LightRig BattleRigFor(TimeOfDay time) => time switch
     {
@@ -180,12 +181,12 @@ internal static class ArtLook
             new SkyColors(Rgb(54, 62, 128), Rgb(190, 110, 132), Rgb(252, 168, 108), Rgb(255, 196, 170), 0f), 0.35f, 0.45f,
             BattleDayPost with { BloomStrength = 0.38f, Saturation = 1.1f, ShadowTint = V(0.9f, 0.86f, 1.08f), HighlightTint = V(1.08f, 0.97f, 0.86f) }),
         TimeOfDay.Night => Battle(
-            new SceneLighting(Dir(-0.4f, 0.85f, 0.4f), V(0.22f, 0.28f, 0.46f), V(0.24f, 0.3f, 0.46f), V(0.15f, 0.17f, 0.24f)),
+            new SceneLighting(Dir(-0.4f, 0.85f, 0.4f), V(0.27f, 0.3f, 0.38f), V(0.29f, 0.32f, 0.4f), V(0.18f, 0.19f, 0.23f)),
             new SkyColors(Rgb(8, 14, 38), Rgb(18, 32, 72), Rgb(40, 58, 100), Rgb(70, 84, 120), 1f), 0.4f, 0.55f,
-            BattleDayPost with { BloomThreshold = 0.75f, BloomStrength = 0.35f, Saturation = 0.9f, ShadowTint = V(0.88f, 0.92f, 1.12f), HighlightTint = V(0.98f, 1.0f, 1.06f), Vignette = 0.25f }),
+            BattleDayPost with { BloomThreshold = 0.75f, BloomStrength = 0.35f, Saturation = 0.84f, ShadowTint = V(0.88f, 0.92f, 1.12f), HighlightTint = V(0.98f, 1.0f, 1.06f), Vignette = 0.25f }),
         _ => Battle(
-            new SceneLighting(Dir(-0.36f, 0.88f, 0.36f), V(0.18f, 0.23f, 0.4f), V(0.2f, 0.25f, 0.4f), V(0.12f, 0.14f, 0.2f)),
+            new SceneLighting(Dir(-0.36f, 0.88f, 0.36f), V(0.22f, 0.25f, 0.33f), V(0.24f, 0.27f, 0.35f), V(0.15f, 0.16f, 0.2f)),
             new SkyColors(Rgb(4, 8, 26), Rgb(12, 22, 54), Rgb(28, 42, 80), Rgb(50, 60, 90), 1f), 0.45f, 0.55f,
-            BattleDayPost with { BloomThreshold = 0.75f, BloomStrength = 0.3f, Saturation = 0.82f, ShadowTint = V(0.88f, 0.92f, 1.14f), HighlightTint = V(0.98f, 1.0f, 1.06f), Vignette = 0.3f })
+            BattleDayPost with { BloomThreshold = 0.75f, BloomStrength = 0.3f, Saturation = 0.78f, ShadowTint = V(0.88f, 0.92f, 1.14f), HighlightTint = V(0.98f, 1.0f, 1.06f), Vignette = 0.3f })
     };
 }

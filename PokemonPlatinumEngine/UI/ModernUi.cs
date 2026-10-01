@@ -254,12 +254,18 @@ internal static class ModernUi
 
     // ------------------------------------------------------------------ party
 
-    public static void DrawParty(int sw, int sh, Party party, int selected, int? swapping)
+    /// <summary>Full-screen menu backdrop: deep teal with faint diagonal stripes.</summary>
+    public static void Backdrop(int sw, int sh)
     {
-        // Deep teal backdrop with faint diagonal stripes
         Raylib.DrawRectangleGradientV(0, 0, sw, sh, new Color(44, 112, 146, 255), new Color(24, 60, 98, 255));
         for (int i = -10; i < 40; i++)
             Raylib.DrawRectanglePro(new Rectangle(i * 90, -200, 34, 1600), Vector2.Zero, 28f, new Color(255, 255, 255, 12));
+    }
+
+    public static void DrawParty(int sw, int sh, Party party, int selected, int? swapping)
+    {
+        Backdrop(sw, sh);
+
 
         UiFonts.Draw("POKÉMON", 64, 36, 52, Color.White, UiWeight.Black);
         HintPill(1320, 44, "Z", "Summary");
@@ -282,7 +288,8 @@ internal static class ModernUi
         UiFonts.DrawCentered(swapping.HasValue ? "Move to where?" : "Choose a Pokémon.", prompt.X + 52, prompt.Y + prompt.Height / 2f, 40, Ink, UiWeight.ExtraBold);
     }
 
-    private static void HintPill(float x, float y, string key, string label)
+    /// <summary>A key cap and what it does, for the top-right corner of menu screens.</summary>
+    public static void HintPill(float x, float y, string key, string label)
     {
         float kw = Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24);
         float lw = UiFonts.Measure(label, 24, UiWeight.ExtraBold);

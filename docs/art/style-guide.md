@@ -6,19 +6,19 @@ The art direction chosen in plan 04 · G1 (2026-10-01). Every graphics session f
 
 Three layers, each with one job:
 
-| Layer | Style | Code switch |
+| Layer | Style | Code |
 |---|---|---|
-| **Overworld** | HD-2D: pixel-art ground, buildings and characters inside a lit 3D diorama, with strong tilt-shift depth of field, bloom and warm grading | `ArtLook.PixelField` |
-| **Battles** | Full 3D: smooth cel-shaded Pokémon and trainers on a modelled stage with soft foliage, a painted sky and clean filtered textures | `ArtLook.ModelBattle` |
-| **Interface** | Crisp vector UI (Nunito, anti-aliased panels) in Platinum's colour language; Pokémon appear as **2D pixel sprites**, as in the main games | `ArtLook.VectorUi` |
+| **Overworld** | HD-2D: pixel-art ground, buildings and characters inside a lit 3D diorama, with strong tilt-shift depth of field, bloom and warm grading | `WorldRenderer`, `PixelGround`, `CharacterSprites` |
+| **Battles** | Full 3D: smooth cel-shaded Pokémon and trainers on a modelled stage with soft foliage, a painted sky and clean filtered textures | `BattleRenderer`, `SoftFoliage`, `SkyPainter` |
+| **Interface** | Crisp vector UI (Nunito, anti-aliased panels) in Platinum's colour language; Pokémon appear as **2D pixel sprites**, as in the main games | `ModernUi`, `UI/Kit` |
 
-The layers are allowed to differ in rendering technique, never in palette, light direction or mood. What ties them together: the same greens, sands and sky blues; light always from the upper left; the same interface on top of both; and (G9) a battle intro transition that carries the player from the diorama into the 3D stage.
+The layers are allowed to differ in rendering technique, never in palette, light direction or mood. What ties them together: the same greens, sands and sky blues; light always from the upper left; the same time of day in the field and in battle; the same interface on top of both; and (G9) a battle intro transition that carries the player from the diorama into the 3D stage.
 
-`ArtDirection.Current` is the pre-overhaul look. It stays only until the session that rebuilds an area replaces it, and for before/after shots.
+The numbers in this guide live in `ArtLook` as one light rig per layer and time of day.
 
 ## Reference frames
 
-`dotnet run --project tools/ShotHarness -- <dir> look` renders the reference frames (Twinleaf, dialogue, battle, move menu, party, Route 201, Player's house) in the old and new look, plus `compare_*.png` before/after boards. Graphics sessions start and end with these boards.
+`dotnet run --project tools/ShotHarness -- <dir> look [before dir]` renders the reference frames by day (Twinleaf, dialogue, battle, move menu, party, Route 201, Player's house, Lake Verity, options). Given the folder of an earlier run, it also writes `compare_*.png` before/after boards. `times` renders Twinleaf, Sandgem and a battle at each time of day, then each quality preset. Graphics sessions start with a `look` run (the "before") and end with the boards.
 
 ## Rules for every layer
 
@@ -65,7 +65,7 @@ Baked per map by `PixelGround`: soft tile masks thresholded into hard pixel edge
 - Proportions: chibi, about 1.2 tiles tall, head about 40 % of the height, big eyes; the player reads at about 130 px tall on screen.
 - G6 improves the source rigs (SDF kit); the sprites improve with them. Hand-drawn sprite overrides may replace any baked frame.
 
-### Light and grading (daytime)
+### Light, shadow and grading (day)
 
 | Setting | Value |
 |---|---|
@@ -73,13 +73,17 @@ Baked per map by `PixelGround`: soft tile masks thresholded into hard pixel edge
 | Sun colour | 0.66, 0.55, 0.40 (golden) |
 | Sky / ground ambient | 0.50, 0.55, 0.74 / 0.46, 0.44, 0.40 |
 | Diffuse | smooth Lambert (the pixel art carries the shading) |
+| Shadows | soft: Poisson-disc filter 1.8 shadow-map texels wide, rotated per pixel; 9 taps on High, with a 5-tap early-out where a pixel is fully lit or fully shaded |
+| Cloud shade | 20 % dimmer sunlight in broad patches that drift slowly across the map |
+| Fog | toward `0.72, 0.82, 0.92`, 18 % at the far edge (starts 44 units from the camera, full at 72) |
+| Ambient occlusion | screen-space, quarter resolution, radius 0.45 units, strength 0.4: grounds walls, props and sprites |
 | Tilt-shift | 12-tap blur radius 6 texels, plus 95 % mix toward a wide blur outside a ±30 % focus band |
 | Bloom | threshold 0.86, strength 0.38 |
 | Grade | saturation 1.10, contrast 1.08, shadows × (0.88, 0.92, 1.10), highlights × (1.07, 1.00, 0.90) |
 | Vignette | 0.26 |
-| Rooms | tilt-shift 4, depth of field 60 %, focus ±36 %, bloom threshold 0.93 at 0.22 |
+| Rooms | their own warm lamp light at every hour; tilt-shift 4, depth of field 60 %, focus ±36 %, bloom threshold 0.93 at 0.22 |
 
-The numbers live in `ArtLook` (`FieldDay`, `FieldPost`).
+The camera target and every sprite snap to the texel grid (1/32 unit), so pixel art scrolls in whole texels and doesn't shimmer. The other times of day are under *Time of day* below.
 
 ## Battles (3D)
 
@@ -99,15 +103,45 @@ The numbers live in `ArtLook` (`FieldDay`, `FieldPost`).
 - Scenery takes a soft cel band (`BattleRamp` 0.85).
 - Sky (`SkyPainter`): zenith `78,146,226`, middle `140,194,244` at 22 % height, hazy horizon `224,238,250` at 46 %; soft cumulus with a white crown and a cool `196,212,236` underside, drifting slowly.
 
-### Light and grading
+### Light, shadow and grading (day)
 
 | Setting | Value |
 |---|---|
 | Sun | normalize(−0.5, 0.9, 0.5), colour 0.47, 0.43, 0.35 |
 | Sky / ground ambient | 0.54, 0.60, 0.72 / 0.50, 0.50, 0.40 |
-| Tilt-shift | radius 2, 15 % wide blur outside ±50 % |
+| Shadows and cloud shade | as in the field; cloud shade 16 % |
+| Fog | aerial perspective toward the sky's horizon colour, 35 % at the hills (from 40 to 140 units) |
+| Ambient occlusion | radius 0.6 units, strength 0.6: contact shade under Pokémon, tufts and tree crowns |
+| Stage outlines | drawn where depth steps, on the near side only, 1 px wide, darkening the surface by up to 35 % (inverse depth is flat across the ground, so only silhouettes and creases fire) |
+| Tilt-shift | radius 2 outside ±50 %; no wide blur |
 | Bloom | threshold 0.86, strength 0.28 |
 | Grade | saturation 1.05, contrast 1.05, shadows × (0.94, 0.97, 1.06), highlights × (1.04, 1.01, 0.95), vignette 0.10 |
+
+## Time of day
+
+The world follows the computer's clock, like the DS's real-time clock, with Platinum's five light states (pret/pokeplatinum, `src/rtc.c`). The options screen can fix a time. Each state has a light rig for the field and one for battles (`ArtLook.FieldRigFor`, `BattleRigFor`); within half an hour of a change the two rigs blend.
+
+| Time | Hours | Field light | Field grade and extras | Battle sky (zenith → horizon) |
+|---|---|---|---|---|
+| Morning | 4–9 | pale gold sun, lower in the sky; soft blue shade | mist (fog 32 %), gentler contrast | `104,150,214` → peach `246,224,206` |
+| Day | 10–16 | golden sun, violet-blue shade | as in the tables above | `78,146,226` → `224,238,250` |
+| Twilight | 17–19 | low orange sun `0.90,0.56,0.32`, magenta-violet shade, long shadows | more bloom and saturation; windows start to glow (45 %) | `54,62,128` → orange `252,168,108`, pink clouds |
+| Night | 20–23 | cool moonlight `0.27,0.31,0.44` | saturation 0.80, vignette 0.40; windows and glass doors fully lit, warm light pools on the ground in front of them, bloom from the lit glass | `8,14,38` → `40,58,100`, stars, dark clouds |
+| Late night | 0–3 | dimmer moonlight | saturation 0.72, vignette 0.45; fewer lights (60 %) | `4,8,26` → `28,42,80`, stars |
+
+- Lit glass is found by colour: bluish texels of glazed textures (windows, glass doors, the Mart sign) turn to warm lamplight `255,204,117` by the rig's glow amount.
+- Night battles stay a little brighter than the night field and gain a stronger rim light (0.55), so Pokémon read clearly.
+- Light never drops to black: the darkest ambient is about 0.15, and nights lean blue, never grey.
+
+## Quality presets
+
+| Preset | Scene resolution | Anti-aliasing | Shadow taps | Shadow map | Ambient occlusion | Wide depth of field |
+|---|---|---|---|---|---|---|
+| High (default) | 2× supersampled | from the supersampling | 9 | 2048 | yes | yes |
+| Medium | 1× | FXAA | 7 | 2048 | yes | yes |
+| Low | 1× | FXAA | 5 | 1024 | no | no |
+
+A frame must stay under 8 ms on High (after G2 in the harness: fields 5.7–6.9 ms, Route 201 being the heaviest; battles 6.3–7 ms). Options are saved in `settings.json`.
 
 ## Interface (vector)
 
@@ -155,9 +189,9 @@ The numbers live in `ArtLook` (`FieldDay`, `FieldPost`).
 
 Boxes slide in with an ease-out over 0.2–0.35 s; bars drain instead of jumping; selection moves instantly and glows; nothing bounces except Pokémon icons and the advance arrow.
 
-## Areas and times of day (targets)
+## Areas (targets)
 
-Implemented so far: Twinleaf, Route 201 and the grass battle stage by day. Later sessions extend these families; each new area gets a line here.
+Implemented so far: Twinleaf, Sandgem, Routes 201–202, Lake Verity and the grass battle stage. Later sessions extend these families; each new area gets a line here.
 
 | Area family | Ground and foliage | Mood |
 |---|---|---|
@@ -170,7 +204,7 @@ Implemented so far: Twinleaf, Route 201 and the grass battle stage by day. Later
 | Cities (Jubilife, Veilstone) | pale paving, glass and steel | neutral, crisp |
 | Distortion World | desaturated violets and greys | flat, eerie light |
 
-Platinum's clock has five light states: morning, day, twilight, night and late night (confirm the hour boundaries from pret/pokeplatinum in G2). Targets: morning pale gold sun and pink-blue shade; day as above; twilight orange sun, magenta-violet shade, stronger bloom; night moonlit blue with warm windows and lamps; late night darker blue with less saturation.
+Caves, buildings and the Distortion World will need their own rigs that ignore the clock, as rooms do today.
 
 ## Do and don't
 
@@ -194,9 +228,11 @@ Platinum's clock has five light states: morning, day, twilight, night and late n
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G1
+## Known gaps after G2
 
 - Building, prop and interior textures are still the older pixel art with light per-texel variation (G5).
-- Field water still uses the older water texture and shader (G4).
+- Field water still uses the older water texture and shader, and reads too bright at night (G4).
 - Start menu, bag, Pokédex, summary, shop, PC and the battle's switch/bag panels keep their old layouts with the new font (G3, G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
+- Materials (specular, emission per surface kind) wait for models that carry material ids: the SDF kit in G6 and G7.
+- Street lamps and other light sources besides windows come with the props in G5; rooms don't change with the hour yet.

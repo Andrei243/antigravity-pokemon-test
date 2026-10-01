@@ -78,6 +78,7 @@ public sealed class WorldRenderer
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
         shaders.SetWorldRamp(0f);
         shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
+        shaders.SetCloudShade(rig.CloudShade);
 
         // 2. The scene itself, sampling the shadow map
         float near = scene.Indoors ? 1f : 10f, far = scene.Indoors ? 100f : 140f;
@@ -90,6 +91,7 @@ public sealed class WorldRenderer
         context.BindShadowMap();
 
         scene.Draw(rig.WindowGlow);
+        scene.DrawLights(rig.WindowGlow);
         DrawContactShadows(map, px, pz, lift);
         DrawActors(CharacterPass.Color);
         DrawSpottedBubbles(scene, map);
@@ -100,7 +102,7 @@ public sealed class WorldRenderer
 
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
-        context.PreparePost(rig.Post, new DepthRange(near, far, camera.FovY, (float)width / height));
+        context.PreparePost(rig.Post, new DepthRange(near, far, camera.FovY, (float)width / height), aoRadius: 0.45f);
     }
 
     /// <summary>Composites the last rendered frame into the current target with tilt-shift blur and grading.</summary>
@@ -195,9 +197,9 @@ public sealed class WorldRenderer
         {
             if (npc.IsPCTerminal) continue;
             float seed = (npc.Name.GetHashCode() & 0xFFFF) / 65536f;
-            var pose = new CharacterPose { Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
+            var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
             actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders.Character),
-                new Vector3(npc.GridX + 0.5f, 0, npc.GridY + 0.5f), Player.YawOf(npc.Facing), pose));
+                new Vector3(npc.DrawX + 0.5f, 0, npc.DrawY + 0.5f), Player.YawOf(npc.Facing), pose));
         }
 
         var playerPose = new CharacterPose
@@ -229,7 +231,7 @@ public sealed class WorldRenderer
         {
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
             {
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.GridX + 0.5f, npc.GridY + 0.15f, 1.95f, 0.7f, 0.7f * scene.VS);
+                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.DrawX + 0.5f, npc.DrawY + 0.15f, 1.95f, 0.7f, 0.7f * scene.VS);
             }
         }
         Rlgl.DrawRenderBatchActive();
@@ -280,7 +282,7 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            if (!npc.IsPCTerminal) Blob(npc.GridX + 0.5f, npc.GridY + 0.52f, 1f);
+            if (!npc.IsPCTerminal) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, 1f);
         }
         Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 

@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|look|sheets]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|look|times|sheets] [before dir]
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -18,6 +18,7 @@ using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI;
 
+string startDir = Environment.CurrentDirectory;
 string outDir = Path.GetFullPath(args.Length > 0 ? args[0] : "shots");
 string mode = args.Length > 1 ? args[1] : "all";
 bool Run(string section) => mode == "all" || mode == section;
@@ -31,7 +32,11 @@ Raylib.InitWindow(1920, 1080, "shots");
 
 var engine = new GameEngine();
 engine.Initialize();
-AudioManager.ToggleMute();
+
+// Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
+engine.Settings.Muted = true;
+engine.Settings.TimeOfDay = TimeOfDay.Day;
+engine.ApplySettings(window: false);
 
 // ---------------------------------------------------------------- helpers
 
@@ -93,7 +98,7 @@ void SetPlayerAnim(float walk, float blend, bool running = false)
     PT.GetField("<IsRunning>k__BackingField", Private)!.SetValue(p, running);
 }
 
-void Timing(string label, int frames = 120)
+void Timing(string label, int frames = 300)
 {
     var sw = System.Diagnostics.Stopwatch.StartNew();
     Frames(frames);
@@ -309,8 +314,8 @@ if (Run("battle"))
 
 if (Run("flow"))
 {
-    // Grass encounter -> fade -> battle -> run -> fade back to the field
-    GoTo("Route201", 24, 8, Direction.Up);
+    // Grass encounter -> fade -> battle -> run -> fade back to the field (in grass no trainer is watching)
+    GoTo("Route201", 24, 14, Direction.Up);
     T.GetMethod("StartWildBattle", Private)!
         .Invoke(engine, new object[] { new WildEncounterEntry { SpeciesName = "Starly", MinLevel = 3, MaxLevel = 3 } });
     Frames(12); Shot("80_flow_fade_out");
@@ -347,72 +352,108 @@ if (Run("menus"))
     Set("currentState", GameState.Overworld);
 }
 
-// ---------------------------------------------------------------- art direction (plan 04 · G1, docs/art/style-guide.md)
+// ---------------------------------------------------------------- style guide reference frames (docs/art/style-guide.md)
+
+// Boards: the same frame from an earlier run next to this run's, at half size with a label over each
+void Boards(string beforeDir, string[] frames)
+{
+    foreach (var frame in frames)
+    {
+        string before = Path.Combine(Path.GetFullPath(beforeDir, startDir), frame + ".png");
+        string after = Path.Combine(outDir, frame + ".png");
+        if (!File.Exists(before) || !File.Exists(after)) continue;
+        var board = Raylib.GenImageColor(1920 + 30, 540 + 76, new Color(24, 26, 34, 255));
+        int col = 0;
+        foreach (var (path, label) in new[] { (before, "BEFORE"), (after, "AFTER") })
+        {
+            var img = Raylib.LoadImage(path);
+            Raylib.ImageResize(ref img, 960, 540);
+            int x = 10 + col * 970;
+            Raylib.ImageDraw(ref board, img, new Rectangle(0, 0, 960, 540), new Rectangle(x, 66, 960, 540), Color.White);
+            Raylib.ImageDrawText(ref board, label, x + 4, 18, 40, Color.White);
+            Raylib.UnloadImage(img);
+            col++;
+        }
+        Save(board, "compare_" + frame);
+    }
+}
 
 if (Run("look"))
 {
-    // The style guide's reference frames in the pre-overhaul look and in the chosen "Sinnoh Diorama" look, then
-    // side-by-side boards. Pass "current" or "diorama" as the third argument to render only one look.
-    string only = args.Length > 2 ? args[2] : "";
+    // The reference frames by day. Pass the folder of an earlier run as the third argument to also get
+    // before/after boards (compare_*.png).
     foreach (var name in new[] { "Starly", "Shinx", "Bidoof" })
         if (party.Count < 6) party.Add(new Pokemon(PokemonDatabase.Get(name)!, 4 + party.Count));
     party.Members[1].CurrentHP = party.Members[1].MaxHP / 3;
     party.Members[3].CurrentHP = party.Members[3].MaxHP / 7;
 
-    foreach (var look in new[] { ArtDirection.Current, ArtDirection.Diorama })
+    GoTo("TwinleafTown", 11, 8, Direction.Down); Frames(2); Shot("look_1_twinleaf");
+
+    GoTo("TwinleafTown", 12, 7, Direction.Up);
+    ((DialogueManager)Get("dialogue")).ShowDialogue("Barry", new List<string> { "Barry: Hey, Lucas! You're finally ready! Professor Rowan is waiting at Lake Verity!" });
+    Set("currentState", GameState.Dialogue);
+    Frames(180); Shot("look_2_dialogue");
+    Set("dialogue", new DialogueManager());
+
+    var pb = StartBattle("Shinx", 5);
+    ToMainMenu(pb);
+    Shot("look_3_battle");
+    pb.HUD.MenuState = BattleMenuState.Moves; Frames(1); Shot("look_3b_moves");
+    pb.HUD.MenuState = BattleMenuState.Main;
+
+    Set("currentState", GameState.PartyMenu);
+    ((PartyScreen)Get("partyScreen")).Open();
+    Frames(1); Shot("look_4_party");
+    ((PartyScreen)Get("partyScreen")).Close();
+
+    GoTo("Route201", 24, 8, Direction.Up); Frames(2); Shot("look_5_route201");
+    GoTo("PlayerHouse", 4, 6, Direction.Up); Frames(2); Shot("look_6_house");
+    GoTo("LakeVerity", 14, 11, Direction.Up); Frames(2); Shot("look_7_lake");
+
+    Set("currentState", GameState.Options);
+    ((OptionsScreen)Get("optionsScreen")).Open();
+    Frames(1); Shot("look_8_options");
+    Set("currentState", GameState.Overworld);
+
+    GoTo("TwinleafTown", 11, 8, Direction.Down);
+    Timing("field");
+    StartBattle("Luxray", 30);
+    ToMainMenu((BattleEngine)Get("battle"));
+    Timing("battle");
+
+    if (args.Length > 2)
+        Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
+}
+
+// ---------------------------------------------------------------- times of day
+
+if (Run("times"))
+{
+    // Twinleaf, Route 201 and a battle at each of Platinum's five times of day, then each quality preset
+    foreach (var time in new[] { TimeOfDay.Morning, TimeOfDay.Day, TimeOfDay.Twilight, TimeOfDay.Night, TimeOfDay.LateNight })
     {
-        string tag = look.ToString().ToLowerInvariant();
-        if (only != "" && only != tag) continue;
-        ArtLook.Set(look);
-
-        GoTo("TwinleafTown", 11, 8, Direction.Down); Frames(2); Shot($"look_{tag}_1_twinleaf");
-
-        GoTo("TwinleafTown", 12, 7, Direction.Up);
-        ((DialogueManager)Get("dialogue")).ShowDialogue("Barry", new List<string> { "Barry: Hey, Lucas! You're finally ready! Professor Rowan is waiting at Lake Verity!" });
-        Set("currentState", GameState.Dialogue);
-        Frames(180); Shot($"look_{tag}_2_dialogue");
-        Set("dialogue", new DialogueManager());
-
-        var pb = StartBattle("Shinx", 5);
-        ToMainMenu(pb);
-        Shot($"look_{tag}_3_battle");
-        pb.HUD.MenuState = BattleMenuState.Moves; Frames(1); Shot($"look_{tag}_3b_moves");
-        pb.HUD.MenuState = BattleMenuState.Main;
-
-        Set("currentState", GameState.PartyMenu);
-        ((PartyScreen)Get("partyScreen")).Open();
-        Frames(1); Shot($"look_{tag}_4_party");
-        ((PartyScreen)Get("partyScreen")).Close();
-
-        GoTo("Route201", 24, 8, Direction.Up); Frames(2); Shot($"look_{tag}_5_route201");
-        GoTo("PlayerHouse", 4, 6, Direction.Up); Frames(2); Shot($"look_{tag}_6_house");
-
-        GoTo("TwinleafTown", 11, 8, Direction.Down);
-        Timing($"{tag} field");
-        StartBattle("Luxray", 30);
-        ToMainMenu((BattleEngine)Get("battle"));
-        Timing($"{tag} battle");
+        engine.Settings.TimeOfDay = time;
+        engine.ApplySettings(window: false);
+        string tag = time.ToString().ToLowerInvariant();
+        GoTo("TwinleafTown", 11, 8, Direction.Down); Frames(2); Shot($"time_{tag}_twinleaf");
+        GoTo("SandgemTown", 14, 8, Direction.Up); Frames(2); Shot($"time_{tag}_sandgem");
+        var tb = StartBattle("Shinx", 5);
+        ToMainMenu(tb);
+        Shot($"time_{tag}_battle");
     }
-    ArtLook.Set(ArtDirection.Diorama);
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
 
-    if (only == "")
+    foreach (var quality in new[] { GraphicsQuality.Low, GraphicsQuality.Medium, GraphicsQuality.High })
     {
-        foreach (var frame in new[] { "1_twinleaf", "2_dialogue", "3_battle", "3b_moves", "4_party", "5_route201", "6_house" })
-        {
-            var board = Raylib.GenImageColor(1920 + 30, 540 + 76, new Color(24, 26, 34, 255));
-            int col = 0;
-            foreach (var (tag, label) in new[] { ("current", "BEFORE"), ("diorama", "AFTER  (SINNOH DIORAMA)") })
-            {
-                var img = Raylib.LoadImage(Path.Combine(outDir, $"look_{tag}_{frame}.png"));
-                Raylib.ImageResize(ref img, 960, 540);
-                int x = 10 + col * 970;
-                Raylib.ImageDraw(ref board, img, new Rectangle(0, 0, 960, 540), new Rectangle(x, 66, 960, 540), Color.White);
-                Raylib.ImageDrawText(ref board, label, x + 4, 18, 40, Color.White);
-                Raylib.UnloadImage(img);
-                col++;
-            }
-            Save(board, $"compare_{frame}");
-        }
+        engine.Settings.Quality = quality;
+        engine.ApplySettings(window: false);
+        string tag = quality.ToString().ToLowerInvariant();
+        GoTo("TwinleafTown", 11, 8, Direction.Down); Frames(2); Shot($"quality_{tag}_twinleaf");
+        Timing($"{tag} field");
+        var qb = StartBattle("Shinx", 5);
+        ToMainMenu(qb);
+        Shot($"quality_{tag}_battle");
+        Timing($"{tag} battle");
     }
 }
 
