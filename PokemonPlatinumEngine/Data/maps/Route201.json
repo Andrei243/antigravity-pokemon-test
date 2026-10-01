@@ -1,7 +1,7 @@
 {
   "name": "Route201",
   "displayName": "Route 201",
-  "bgmTrack": "Route201",
+  "bgmTrack": "sinnoh/route201",
   "interior": "None",
   "trees": "Round",
   "width": 36,

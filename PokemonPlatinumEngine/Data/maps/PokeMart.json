@@ -1,7 +1,7 @@
 {
   "name": "PokeMart",
   "displayName": "Poké Mart",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/sandgem",
   "interior": "PokeMart",
   "trees": "Round",
   "width": 9,

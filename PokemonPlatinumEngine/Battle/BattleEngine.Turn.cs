@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -196,7 +197,7 @@ public partial class BattleEngine
             {
                 if (catchRes.IsCaught)
                 {
-                    AudioManager.PlayBGM("Victory");
+                    AudioManager.PlayMusic(MusicRole.VictoryWild);
                     Pokedex.RegisterCaught(foe.Species.DexNumber);
                     foe.ResetStatStages();
 
@@ -356,7 +357,7 @@ public partial class BattleEngine
 
         if (SideDefeated(EnemySlots))
         {
-            AudioManager.PlayBGM("Victory");
+            AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
             if (IsTrainerBattle)
             {
                 string beaten = string.Join(" and ", Trainers.Select(t => t.FullTitle));
@@ -416,7 +417,7 @@ public partial class BattleEngine
                     return;
                 }
 
-                AudioManager.PlaySound("levelup");
+                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
                 QueueMessage($"{p.DisplayName} grew to Lv. {p.Level}!", () =>
                 {
                     var learnMsgs = moves.Select(m => $"{p.DisplayName} learned {m}!").ToList();

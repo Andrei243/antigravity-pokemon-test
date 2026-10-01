@@ -9,7 +9,7 @@ public class Map
 {
     public string Name { get; set; } = "Twinleaf Town";
     public string DisplayName { get; set; } = "Twinleaf Town";
-    public string BgmTrack { get; set; } = "Twinleaf";
+    public string BgmTrack { get; set; } = "";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public bool IsIndoors => Interior != InteriorStyle.None;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;

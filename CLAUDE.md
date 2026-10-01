@@ -20,9 +20,10 @@ dotnet run --project PokemonPlatinumEngine                                      
 dotnet run --project PokemonPlatinumEngine -- --region Sinnoh                         # new games start in Sinnoh instead of Kanto
 dotnet run --project tools/DataImporter                                               # regenerate species/moves/abilities/items JSON
 dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|title|times|sheets] [before dir]
+dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--night] [--stems]                    # songs to WAV, with level and clash checks
 ```
 
-- `tools/DataImporter` is in the solution; `tools/ShotHarness` is not, so `dotnet build PokemonPlatinum.sln` doesn't compile it. Build it too after renaming or removing engine members.
+- `tools/DataImporter` is in the solution; `tools/ShotHarness` and `tools/MusicRender` are not, so `dotnet build PokemonPlatinum.sln` doesn't compile them. Build them too after renaming or removing engine members.
 - The game reads and writes `savegame.json` and `settings.json` in the working directory. The harness makes `<out dir>` its working directory, so it never touches a real save.
 - No linter or formatter is configured.
 - This machine has no Python and no `gh` CLI. Git Bash heredocs containing apostrophes or non-ASCII text tend to fail; write such content with the Write tool.
@@ -66,6 +67,7 @@ The field and battles are 3D scenes; almost every asset is generated in code at 
 - **Pokémon**: `PokemonModels` builds the species seen so far from primitives with `PokeBuilder`; every other species uses its generic stand-in until plan 03 · D5. The same models appear in 3D in battle and are baked by `PokemonSprites` into 2D pixel sprites for menus (only the hand-built ones and the stand-in, at start-up). A test keeps the hand-built list from shrinking.
 - **Look**: `ArtLook` holds the numbers of the style guide as light rigs (sun, ambient, fog, post settings, sky) for Platinum's five times of day, blended around each boundary. `GameClock` gives the hour from the system clock unless the options fix it.
 - **Interface**: screens are composed from the kit. `UI/Kit` has `UiFonts` (Nunito), `UiShapes` (anti-aliased SDF panels, rings, lines, triangles), `UiIcons`, and the GPU-free `UiMotion`/`UiReveal` (easing, slide-in) and `UiNav` (grid cursors). `ModernUi` (a partial class: shared components, `.Battle`, `.Party`, `.Field`) holds the colour tokens and components; add a component there rather than drawing shapes in a screen. Each screen keeps its logic in methods that take no input (`StartMenu.Move/Confirm/Cancel`, `TitleScreen.PressConfirm`, `PartyScreen.MoveCursor`) so tests and the harness can drive it. Bag, Pokédex, trainer card, shop, PC and starter choice still use the old `RenderHelper`; plan 04 · G10 replaces them.
+- **Music**: songs are MML text files in `Data/music/<region>/` and `Data/music/common/`, played by our own synthesiser (`Audio/`) on raylib's audio thread; `docs/music-format.md` describes the format, the instruments and the checks. Maps name their theme in `bgmTrack`; `MusicDirector` picks battle, victory and fanfare themes by role, looking in the region's folder before `common`. Call `AudioManager.PlayMusic` / `PlayFanfare`, never the mixer directly. Claude can't listen: render with `tools/MusicRender`, read its clash and level report, and give the user MP3s to approve.
 - **Leaving the game**: the start menu's QUIT GAME and the title's QUIT set `GameEngine.QuitRequested`, which ends the loop in `Program.cs`. Esc is "back", never "exit".
 
 ### Rendering rules that have caused bugs

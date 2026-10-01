@@ -1,7 +1,7 @@
 {
   "name": "JubilifePokemonCenter",
   "displayName": "Pokémon Center",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "common/pokecenter",
   "interior": "PokemonCenter",
   "trees": "Round",
   "width": 11,

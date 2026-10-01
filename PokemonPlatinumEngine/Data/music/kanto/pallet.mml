@@ -1,0 +1,54 @@
+# Pallet Town: where the journey through every region begins. A quiet morning tune with a
+# handheld square-wave lead. Original composition for this game.
+title Pallet Town
+tempo 92
+meter 4/4
+reverb 0.3
+nighttempo 0.93
+
+track lead square night=flute vol=0.8 pan=0 rev=0.3
+  L o5 a4 f+8 a8 >d4 <a4 | e4 a8 b8 >c+2 | d4. c+8 <b4 f+4 | a2 >c+4 <a4 |
+  b4 g8 b8 >d4 <b4 | a4 f+8 a8 >d2 | <g4 e8 g8 b4 >d4 | c+2. r4 |
+  <a4 f+8 a8 >d4 <a4 | e4 a8 b8 >c+2 | d4. e8 f+4 d4 | c+4. <b8 a2 |
+  b4. a8 g4 d4 | e4 a8 b8 >c+4 e4 | d2 <a4 f+4 | >d4 c4 <a4 f+4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track lead2 flute night=ocarina vol=0.85 pan=0.05 rev=0.35
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o6 d2 <b2 | >c+2. <a4 | a4 >c+4 f+4 e4 | d2. <b4 |
+  g4 b4 >e4 d4 | c+2 e2 | d4 c+8 <b8 b4 >d4 | d2 c+2 |
+
+track piano piano night=harp vol=0.4 pan=0.3 rev=0.3
+  L o3 d8 a8 f+8 a8 >d8 <a8 f+8 a8 | e8 >c+8 <a8 >c+8 e8 c+8 <a8 >c+8 | <d8 b8 f+8 b8 >d8 <b8 f+8 b8 | f+8 >c+8 <a8 >c+8 f+8 c+8 <a8 >c+8 |
+  <d8 b8 g8 b8 >d8 <b8 g8 b8 | d8 a8 f+8 a8 >d8 <a8 f+8 a8 | d8 g8 e8 g8 b8 g8 e8 g8 | e8 a8 g8 a8 >c+8 <a8 g8 a8 |
+  d8 a8 f+8 a8 >d8 <a8 f+8 a8 | e8 >c+8 <a8 >c+8 e8 c+8 <a8 >c+8 | <d8 b8 f+8 b8 >d8 <b8 f+8 b8 | f+8 >c+8 <a8 >c+8 f+8 c+8 <a8 >c+8 |
+  <d8 b8 g8 b8 >d8 <b8 g8 b8 | e8 >c+8 <a8 >c+8 e8 c+8 <a8 >c+8 | <d8 a8 f+8 a8 >d8 <a8 f+8 a8 | d8 a8 f+8 a8 >c8 <a8 f+8 a8 |
+  d8 b8 g8 b8 >d8 <b8 g8 b8 | e8 >c+8 <a8 >c+8 e8 c+8 <a8 >c+8 | <f+8 >c+8 <a8 >c+8 f+8 c+8 <a8 >c+8 | <d8 b8 f+8 b8 >d8 <b8 f+8 b8 |
+  d8 g8 e8 g8 b8 g8 e8 g8 | e8 >c+8 <a8 >c+8 e8 c+8 <a8 >c+8 | <d8 b8 f+8 b8 d8 b8 g8 b8 | d8 a8 e8 a8 e8 >c+8 <a8 >c+8 |
+
+track pad strings night=pad vol=0.38 pan=-0.25 rev=0.4
+  L o4 (d f+ a)1 | (c+ e a)1 | (d f+ b)1 | (c+ f+ a)1 |
+  (d g b)1 | (d f+ a)1 | (d e g)1 | (c+ g a)1 |
+  (d f+ a)1 | (c+ e a)1 | (d f+ b)1 | (c+ f+ a)1 |
+  (d g b)1 | (c+ e a)1 | (d f+ a)1 | (d f+ >c)1 |
+  (d g b)1 | (c+ e a)1 | (c+ f+ a)1 | (d f+ b)1 |
+  (d e g)1 | (c+ e a)1 | (d f+ b)2 (d g b)2 | (d e a)2 (c+ e a)2 |
+
+track bass bass vol=0.68 rev=0.1
+  L o4 d2 <a2 | >c+2 e2 | <b2 >f+2 | <f+2 >c+2 |
+  <g2 >d2 | <f+2 a2 | e2 b2 | a2 >e2 |
+  d2 <a2 | >c+2 e2 | <b2 >f+2 | <f+2 >c+2 |
+  <g2 >d2 | <a2 >e2 | d2 <a2 | >d2 <a2 |
+  g2 >d2 | <a2 >e2 | <f+2 >c+2 | <b2 >f+2 |
+  <e2 b2 | a2 >e2 | <b4 >f+4 <g4 >d4 | <a4 >e4 <a4 >e4 |
+
+track drums kit vol=0.42 rev=0.15
+  v65 L [ [ b4 s4 b4 s4 | ]7 b4 s4 b8 s8 s8 s8 | ]3
+
+track hats kit vol=0.45 pan=0.15 rev=0.1
+  v45 L [ h8 v30 h8 v45 h8 v30 h8 v45 h8 v30 h8 v45 h8 v30 h8 v45 | ]24
+

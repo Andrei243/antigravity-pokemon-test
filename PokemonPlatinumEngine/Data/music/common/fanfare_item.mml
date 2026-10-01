@@ -1,0 +1,22 @@
+# Receiving an item: a bright brass call.
+# Plays once, then the music comes back. Original composition for this game.
+title Item Obtained
+tempo 140
+meter 4/4
+reverb 0.35
+
+track lead trumpet vol=0.9 rev=0.3
+  o5 g8 g16 g16 >c8 <g8 >e4 d8 e8 | f8 d8 <b8 g8 >c4 r4 |
+
+track harmony horn vol=0.55 pan=-0.25 rev=0.3
+  o5 e8 e16 e16 e8 e8 g4 g8 g8 | a8 f8 d8 <b8 >e4 r4 |
+
+track chords strings vol=0.45 pan=0.3 rev=0.4
+  o4 (c e g)2 (c e g)2 | (d f g b)2 (c e g)4 r4 |
+
+track bass tuba vol=0.65 rev=0.15
+  o4 c4 <g4 >c4 <g4 | g4 g4 c4 r4 |
+
+track drums kit vol=0.5 rev=0.15
+  v90 b8 s16 s16 b8 b8 s4 b8 b8 | s8 s8 s8 s8 (b c)4 r4 |
+

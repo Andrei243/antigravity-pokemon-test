@@ -1,0 +1,58 @@
+# The title screen: a slow, grand opening in C minor. Original composition for this game.
+title Title
+tempo 96
+meter 4/4
+reverb 0.4
+
+track lead horn vol=0.9 pan=0 rev=0.4
+  r1 | r1 | r1 | r1 |
+  L o5 c4. g8 g2 | a-4. g8 e-2 | b-4. g8 >e-2 | d2. <b-4 |
+  >c4. <b-8 g4 e-4 | a-4 >c4 e-4 c4 | <f4. a-8 >c4 f4 | d2 <b2 |
+  >c2 e-2 | d2 f2 | g4. f8 d4 <b-4 | >c1 |
+  e-2 c4 <a-4 | >f2 d4 <b-4 | >c4 e-4 d4 f4 | d2 <b2 |
+
+track trumpet trumpet vol=0.55 pan=0.2 rev=0.35
+  r1 | r1 | r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o6 c2 e-2 | d2 f2 | g4. f8 d4 <b-4 | >c1 |
+  e-2 c4 <a-4 | >f2 d4 <b-4 | >c4 e-4 d4 f4 | d2 <b2 |
+
+track choir choir vol=0.45 pan=-0.2 rev=0.5
+  o4 (c e- g)1 | (c e- a-)1 | o3 (b- >d f)1 | (b >d g)1 |
+  L o4 (c e- g)1 | (c e- a-)1 | o3 (b- >e- g)1 | (b- >d f)1 |
+  o4 (c e- g)1 | (c e- a-)1 | (c f a-)1 | o3 (b >d g)1 |
+  o4 (c e- a-)1 | o3 (b- >d f)1 | (b- >d g)1 | o4 (c e- g)1 |
+  (c e- a-)1 | o3 (b- >d f)1 | (a- >c e-)2 (b- >d f)2 | (b >d g)1 |
+
+track harp harp vol=0.4 pan=0.35 rev=0.45
+  r1 | r1 | r1 | r1 |
+  L o3 c8 e-8 g8 >c8 e-8 c8 <g8 e-8 | c8 e-8 a-8 >c8 e-8 c8 <a-8 e-8 | e-8 g8 b-8 >e-8 g8 e-8 <b-8 g8 | d8 f8 b-8 >d8 f8 d8 <b-8 f8 |
+  c8 e-8 g8 >c8 e-8 c8 <g8 e-8 | c8 e-8 a-8 >c8 e-8 c8 <a-8 e-8 | c8 f8 a-8 >c8 f8 c8 <a-8 f8 | d8 g8 b8 >d8 g8 d8 <b8 g8 |
+  c8 e-8 a-8 >c8 e-8 c8 <a-8 e-8 | d8 f8 b-8 >d8 f8 d8 <b-8 f8 | d8 g8 b-8 >d8 g8 d8 <b-8 g8 | c8 e-8 g8 >c8 e-8 c8 <g8 e-8 |
+  c8 e-8 a-8 >c8 e-8 c8 <a-8 e-8 | d8 f8 b-8 >d8 f8 d8 <b-8 f8 | c8 e-8 a-8 >c8 <d8 f8 b-8 >d8 | <d8 g8 b8 >d8 g8 d8 <b8 g8 |
+
+track brass brass vol=0.4 pan=-0.35 rev=0.3
+  r1 | r1 | r1 | r1 |
+  L o4 (c e- g)8. r16 (c e- g)8 r8 r2 | (c e- a-)8. r16 (c e- a-)8 r8 r2 | o3 (b- >e- g)8. r16 (b- >e- g)8 r8 r2 | (b- >d f)8. r16 (b- >d f)8 r8 r2 |
+  o4 (c e- g)8. r16 (c e- g)8 r8 r2 | (c e- a-)8. r16 (c e- a-)8 r8 r2 | (c f a-)8. r16 (c f a-)8 r8 r2 | o3 (b >d g)8. r16 (b >d g)8 r8 r2 |
+  o4 (c e- a-)8. r16 (c e- a-)8 r8 r2 | o3 (b- >d f)8. r16 (b- >d f)8 r8 r2 | (b- >d g)8. r16 (b- >d g)8 r8 r2 | o4 (c e- g)8. r16 (c e- g)8 r8 r2 |
+  (c e- a-)8. r16 (c e- a-)8 r8 r2 | o3 (b- >d f)8. r16 (b- >d f)8 r8 r2 | (a- >c e-)8. r16 (a- >c e-)8 r8 (b- >d f)8. r16 (b- >d f)8 r8 | (b >d g)8. r16 (b >d g)8 r8 r2 |
+
+track bass contrabass vol=0.62 rev=0.25
+  o4 c1 | <a-1 | b-1 | g1 |
+  L >c2 g2 | <a-2 >e-2 | e-2 <b-2 | b-2 >f2 |
+  c2 g2 | <a-2 >e-2 | <f2 >c2 | <g2 >d2 |
+  <a-2 >e-2 | <b-2 >f2 | <g2 >d2 | c2 g2 |
+  <a-2 >e-2 | <b-2 >f2 | <a-4 >e-4 <b-4 >f4 | <g2 >d2 |
+
+track timpani timpani vol=0.65 rev=0.35
+  o4 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 | r1 | r1 | <g16 g16 g16 g16 g16 g16 g16 g16 g16 g16 g16 g16 g4 |
+  L >c4 r4 r2 | r1 | r1 | r1 |
+  c4 r4 r2 | r1 | r1 | <g8 g8 g4 r2 |
+  >c4 r4 r2 | r1 | r1 | r1 |
+  c4 r4 r2 | r1 | r1 | <g8 g8 g4 r2 |
+
+track drums kit vol=0.45 rev=0.25
+  v80 r1 | r1 | r1 | s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 (b c)4 | L [ (b c)4 r8 b8 s4 r4 | [ b4 r8 b8 s4 r4 | ]6 b4 s8 s8 s16 s16 s16 s16 s8 s8 | ]2
+

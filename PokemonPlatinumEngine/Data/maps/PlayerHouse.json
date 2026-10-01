@@ -1,7 +1,7 @@
 {
   "name": "PlayerHouse",
   "displayName": "Lucas's Home",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/twinleaf",
   "interior": "House",
   "trees": "Round",
   "width": 10,

@@ -1,7 +1,7 @@
 {
   "name": "JubilifePokeMart",
   "displayName": "Poké Mart",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/jubilife",
   "interior": "PokeMart",
   "trees": "Round",
   "width": 9,

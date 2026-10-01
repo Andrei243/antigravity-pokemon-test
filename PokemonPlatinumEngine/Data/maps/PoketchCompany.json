@@ -1,7 +1,7 @@
 {
   "name": "PoketchCompany",
   "displayName": "Pokétch Company",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/jubilife",
   "interior": "Lab",
   "trees": "Round",
   "width": 11,

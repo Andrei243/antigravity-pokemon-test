@@ -1,7 +1,7 @@
 {
   "name": "RowanLab",
   "displayName": "Rowan's Pokémon Lab",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/lab",
   "interior": "Lab",
   "trees": "Round",
   "width": 11,

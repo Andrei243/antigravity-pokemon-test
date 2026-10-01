@@ -1,60 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using PokemonPlatinumEngine.Audio;
 using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Core;
 
+/// <summary>
+/// Sound effects (short synthesised samples played through raylib) and music (songs from <c>Data/music</c>
+/// rendered by <see cref="MusicMixer"/> into an audio stream that raylib's audio thread pulls from).
+/// Everything here is a no-op until <see cref="Initialize"/> has opened the audio device, so the game's logic and
+/// tests can call it freely.
+/// </summary>
 public static class AudioManager
 {
     private static readonly Dictionary<string, Sound> SoundEffects = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly MusicMixer music = new();
     private static bool isInitialized = false;
-    private static string currentTrack = "";
-    private static float bgmTimer = 0f;
-    private static int bgmNoteIndex = 0;
+    private static AudioStream musicStream;
     private static bool isMuted = false;
     public static bool IsMuted => isMuted;
 
-    // Sinnoh melody frequencies (Hz)
-    private static readonly (float Freq, float Duration)[] TwinleafTheme = new[]
-    {
-        (392.00f, 0.4f), (493.88f, 0.4f), (587.33f, 0.6f), (523.25f, 0.2f),
-        (493.88f, 0.4f), (440.00f, 0.4f), (392.00f, 0.6f), (329.63f, 0.2f),
-        (349.23f, 0.4f), (392.00f, 0.4f), (440.00f, 0.6f), (392.00f, 0.2f),
-        (349.23f, 0.4f), (329.63f, 0.4f), (293.66f, 0.8f), (0f, 0.2f)
-    };
+    /// <summary>The region whose versions of the shared themes (battles, victories) play; set on entering a map.</summary>
+    public static string? Region { get; set; }
 
-    private static readonly (float Freq, float Duration)[] Route201Theme = new[]
-    {
-        (523.25f, 0.2f), (587.33f, 0.2f), (659.25f, 0.4f), (523.25f, 0.2f),
-        (783.99f, 0.4f), (659.25f, 0.4f), (587.33f, 0.2f), (523.25f, 0.2f),
-        (440.00f, 0.4f), (523.25f, 0.4f), (587.33f, 0.6f), (0f, 0.1f),
-        (659.25f, 0.3f), (587.33f, 0.3f), (523.25f, 0.6f), (0f, 0.2f)
-    };
-
-    private static readonly (float Freq, float Duration)[] BattleTheme = new[]
-    {
-        (220.00f, 0.12f), (246.94f, 0.12f), (261.63f, 0.12f), (293.66f, 0.12f),
-        (329.63f, 0.12f), (349.23f, 0.12f), (392.00f, 0.12f), (440.00f, 0.12f),
-        (587.33f, 0.18f), (523.25f, 0.18f), (493.88f, 0.18f), (440.00f, 0.18f),
-        (392.00f, 0.15f), (440.00f, 0.15f), (493.88f, 0.15f), (523.25f, 0.15f)
-    };
-
-    private static readonly (float Freq, float Duration)[] VictoryTheme = new[]
-    {
-        (523.25f, 0.15f), (523.25f, 0.15f), (523.25f, 0.15f), (523.25f, 0.45f),
-        (415.30f, 0.45f), (466.16f, 0.45f), (523.25f, 0.3f), (0f, 0.1f),
-        (466.16f, 0.15f), (523.25f, 0.8f), (0f, 0.5f)
-    };
-
-    // The title screen: slow and minor, our own melody
-    private static readonly (float Freq, float Duration)[] TitleTheme = new[]
-    {
-        (293.66f, 0.6f), (440.00f, 0.6f), (349.23f, 0.6f), (466.16f, 0.9f), (0f, 0.3f),
-        (440.00f, 0.45f), (392.00f, 0.45f), (349.23f, 0.45f), (329.63f, 0.9f), (0f, 0.3f),
-        (293.66f, 0.6f), (349.23f, 0.6f), (440.00f, 0.6f), (587.33f, 1.2f),
-        (523.25f, 0.6f), (466.16f, 0.6f), (440.00f, 1.2f), (0f, 0.6f)
-    };
+    /// <summary>The song playing now, or about to once the last one has faded.</summary>
+    public static string? CurrentMusic => music.CurrentId;
 
     public static void Initialize()
     {
@@ -66,6 +38,7 @@ public static class AudioManager
             {
                 isInitialized = true;
                 GenerateSoundEffects();
+                StartMusicStream();
             }
         }
         catch
@@ -210,59 +183,85 @@ public static class AudioManager
         }
     }
 
-    public static void PlayBGM(string trackName)
+    /// <summary>
+    /// The audio thread asks for samples about every 30 ms; the mixer renders them on that thread, so the music
+    /// keeps going while the game thread is busy loading a map.
+    /// </summary>
+    private static unsafe void StartMusicStream()
     {
-        if (currentTrack == trackName) return;
-        currentTrack = trackName;
-        bgmTimer = 0f;
-        bgmNoteIndex = 0;
-    }
-
-    public static void Update(float dt)
-    {
-        if (isMuted || !isInitialized || string.IsNullOrEmpty(currentTrack)) return;
-
-        var playlist = currentTrack switch
+        try
         {
-            "Twinleaf" => TwinleafTheme,
-            "Route201" => Route201Theme,
-            "Battle" => BattleTheme,
-            "Victory" => VictoryTheme,
-            "Title" => TitleTheme,
-            _ => TwinleafTheme
-        };
-
-        if (playlist.Length == 0) return;
-
-        bgmTimer += dt;
-        var currentNote = playlist[bgmNoteIndex];
-
-        if (bgmTimer >= currentNote.Duration)
+            Raylib.SetAudioStreamBufferSizeDefault(1024);
+            musicStream = Raylib.LoadAudioStream((uint)Synthesizer.SampleRate, 32, 2);
+            Raylib.SetAudioStreamCallback(musicStream, &FillMusicStream);
+            Raylib.PlayAudioStream(musicStream);
+        }
+        catch
         {
-            bgmTimer = 0f;
-            bgmNoteIndex = (bgmNoteIndex + 1) % playlist.Length;
-            var nextNote = playlist[bgmNoteIndex];
-
-            if (nextNote.Freq > 20f)
-            {
-                PlayToneNote(nextNote.Freq, nextNote.Duration * 0.8f);
-            }
+            // Fallback gracefully: the game runs without music
         }
     }
 
-    private static void PlayToneNote(float freq, float duration)
+    [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
+    private static unsafe void FillMusicStream(void* buffer, uint frames)
     {
-        RegisterSynthSound("current_tone", freq, Math.Min(duration, 0.3f), WaveType.Triangle);
-        if (SoundEffects.TryGetValue("current_tone", out var snd))
+        var output = new Span<float>(buffer, (int)frames * 2);
+        try
         {
-            Raylib.SetSoundVolume(snd, 0.25f);
-            Raylib.PlaySound(snd);
+            music.Render(output);
         }
+        catch
+        {
+            output.Clear();
+        }
+    }
+
+    /// <summary>
+    /// Plays a song by id (<c>sinnoh/twinleaf</c>), in its night arrangement at night. <paramref name="immediate"/>
+    /// starts it from the top at once instead of fading out the current song.
+    /// </summary>
+    public static void PlayMusic(string songId, bool immediate = false)
+    {
+        var song = MusicLibrary.Get(songId);
+        if (song == null)
+        {
+            Console.WriteLine($"WARNING: AUDIO: no song '{songId}'");
+            return;
+        }
+        if (!isInitialized) return;
+        music.Play(song, MusicDirector.IsNightArrangement(GameClock.Now), immediate);
+    }
+
+    /// <summary>
+    /// Plays the current region's song for a role, such as the wild battle theme. <paramref name="immediate"/> cuts
+    /// straight to it (battles) instead of fading the old song out first.
+    /// </summary>
+    public static void PlayMusic(MusicRole role, bool immediate = false)
+    {
+        if (!isInitialized) return;
+        string? id = MusicDirector.Resolve(role, Region, MusicLibrary.Exists);
+        if (id != null) PlayMusic(id, immediate);
+    }
+
+    /// <summary>Pauses the music for a jingle (healing, an item, a level-up), then lets it carry on.</summary>
+    public static void PlayFanfare(MusicRole role)
+    {
+        if (!isInitialized) return;
+        string? id = MusicDirector.Resolve(role, Region, MusicLibrary.Exists);
+        var song = id == null ? null : MusicLibrary.Get(id);
+        if (song != null) music.PlayFanfare(song);
+    }
+
+    /// <summary>Fades the music out.</summary>
+    public static void StopMusic()
+    {
+        if (isInitialized) music.Stop();
     }
 
     public static void ToggleMute()
     {
         isMuted = !isMuted;
+        music.Muted = isMuted;
     }
 
     public static void Close()
@@ -273,6 +272,8 @@ public static class AudioManager
             Raylib.UnloadSound(kvp.Value);
         }
         SoundEffects.Clear();
+        Raylib.StopAudioStream(musicStream);
+        Raylib.UnloadAudioStream(musicStream);
         Raylib.CloseAudioDevice();
         isInitialized = false;
     }

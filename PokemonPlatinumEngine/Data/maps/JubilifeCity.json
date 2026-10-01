@@ -1,7 +1,7 @@
 {
   "name": "JubilifeCity",
   "displayName": "Jubilife City",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/jubilife",
   "interior": "None",
   "trees": "Round",
   "width": 40,

@@ -11,6 +11,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 | `abilities.json` | `AbilityDatabase` | Every ability: `id`, `name`, `generation` and `description`. What an ability does in battle is code, in `Data/AbilityEffectTable.cs`; one without an entry there shows up but does nothing yet. |
 | `items.json` | `ItemDatabase` | A list of `ItemData`. Platinum's items keep their Generation 4 ids; later items are 1000 plus their PokeAPI id, and items made for this game are 9000 and up. `effectValue` is HP restored (9999 for all of it), the share of HP a revive restores, or a ball's catch multiplier × 10; a `HealStatus` item with no `healsStatus` cures any status. `holdEffect` names what the item does when held (from the decompilation) and `teachesMove` the move of a TM or HM. What held items do in battle is in `Battle/Effects/HeldItemEffects.cs`, and `DataFileTests` checks that each of those exists here. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per map; the file name must match its `name`. |
+| `music/<folder>/<name>.mml` | `MusicLibrary` | Songs in a small text format, one folder per region plus `common`; see `docs/music-format.md`. |
 
 An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Trade`, `LevelKnowsMove`, `LevelAtLocation` and so on; see `EvolutionMethod`), `targetSpecies`, and whichever of `level`, `item`, `move`, `type`, `species`, `location`, `value` and `note` that method uses. The engine runs `Level` evolutions; the rest are data for plan 06 · R10.
 
@@ -20,7 +21,7 @@ An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Tr
 {
   "name": "Route201",            // what warps and saves refer to
   "displayName": "Route 201",
-  "bgmTrack": "Route201",
+  "bgmTrack": "sinnoh/route201", // a song in Data/music (docs/music-format.md); houses and marts reuse their town's
   "interior": "None",            // None (outdoors), House, PokemonCenter, PokeMart, Lab
   "trees": "Round",              // Round or Pine
   "width": 36, "height": 22,

@@ -1,7 +1,7 @@
 {
   "name": "SandgemTown",
   "displayName": "Sandgem Town",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/sandgem",
   "interior": "None",
   "trees": "Round",
   "width": 30,
