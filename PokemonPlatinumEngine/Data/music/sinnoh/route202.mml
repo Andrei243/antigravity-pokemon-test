@@ -1,0 +1,53 @@
+# Routes 202 to 204: open fields between towns, a walking tune. Original composition for this game.
+title Route 202
+tempo 120
+meter 4/4
+reverb 0.28
+nighttempo 0.94
+
+track lead flute night=ocarina vol=0.8 pan=0.05 rev=0.3
+  L o5 d4 g8 a8 b4 g4 | a4. f+8 d2 | e8 f+8 g8 a8 b4 >e4 | e4 d8 c8 <g2 |
+  d4 g8 a8 b4 >d4 | c4 <b8 a8 f+4 a4 | g4 e8 g8 >c4 <b8 a8 | a2 f+4 r4 |
+  >c4 <b8 a8 e4 a4 | f+4 a8 >d8 c4 <a4 | b4. a8 g4 d4 | e4 g8 b8 >e2 |
+  e4. d8 c4 <g4 | f+4 a4 >d4 c8 <a8 | b4 >d4 e4 c4 | d2. r4 |
+  <g2 b4 >e4 | e2. d8 c8 | d2 <b2 | a2. r4 |
+  g4 f+8 g8 b4 >e4 | e4 g4 e4 c4 | c4 <b8 a8 >e4 c4 | d2 c4 <f+4 |
+
+track double clarinet night=horn vol=0.42 pan=-0.25 rev=0.3
+  L o4 d4 g8 a8 b4 g4 | a4. f+8 d2 | e8 f+8 g8 a8 b4 >e4 | e4 d8 c8 <g2 |
+  d4 g8 a8 b4 >d4 | c4 <b8 a8 f+4 a4 | g4 e8 g8 >c4 <b8 a8 | a2 f+4 r4 |
+  >c4 <b8 a8 e4 a4 | f+4 a8 >d8 c4 <a4 | b4. a8 g4 d4 | e4 g8 b8 >e2 |
+  e4. d8 c4 <g4 | f+4 a4 >d4 c8 <a8 | b4 >d4 e4 c4 | d2. r4 |
+  e1 | g1 | g2 f+2 | f+1 |
+  e1 | e1 | e2 c2 | c2 <a2 |
+
+track marimba marimba night=vibraphone vol=0.42 pan=0.35 rev=0.25
+  L o3 g8 b8 >d8 <b8 >g8 <b8 >d8 <b8 | a8 >d8 f+8 d8 a8 d8 f+8 d8 | <g8 b8 >e8 <b8 >g8 <b8 >e8 <b8 | g8 >c8 e8 c8 g8 c8 e8 c8 |
+  <g8 b8 >d8 <b8 >g8 <b8 >d8 <b8 | a8 >d8 f+8 d8 a8 d8 f+8 d8 | <g8 >c8 e8 c8 g8 c8 e8 c8 | <a8 >d8 f+8 d8 a8 d8 f+8 d8 |
+  <a8 >c8 e8 c8 a8 c8 e8 c8 | <a8 >d8 f+8 d8 a8 d8 f+8 d8 | <g8 b8 >d8 <b8 >g8 <b8 >d8 <b8 | g8 b8 >e8 <b8 >g8 <b8 >e8 <b8 |
+  g8 >c8 e8 c8 g8 c8 e8 c8 | <a8 >d8 f+8 d8 a8 d8 f+8 d8 | <g8 b8 >d8 <b8 g8 >c8 e8 c8 | <a8 >d8 f+8 d8 a8 d8 f+8 d8 |
+  <g8 b8 >e8 <b8 >g8 <b8 >e8 <b8 | g8 >c8 e8 c8 g8 c8 e8 c8 | <g8 b8 >d8 <b8 >g8 <b8 >d8 <b8 | a8 >d8 f+8 d8 a8 d8 f+8 d8 |
+  <g8 b8 >e8 <b8 >g8 <b8 >e8 <b8 | g8 >c8 e8 c8 g8 c8 e8 c8 | <a8 >c8 e8 c8 a8 c8 e8 c8 | <g8 a8 >c8 <a8 a8 >c8 d8 c8 |
+
+track pad strings night=pad vol=0.32 pan=-0.2 rev=0.4
+  L o3 (b >d g)1 | (a >d f+)1 | (b >e g)1 | o4 (c e g)1 |
+  o3 (b >d g)1 | (a >d f+)1 | (g >c e)1 | (a >d f+)1 |
+  (a >c e)1 | (a >d f+)1 | (b >d g)1 | (b >e g)1 |
+  o4 (c e g)1 | o3 (a >d f+)1 | (b >d g)2 o4 (c e g)2 | o3 (a >d f+)1 |
+  (b >e g)1 | o4 (c e g)1 | o3 (b >d g)1 | (a >d f+)1 |
+  (b >e g)1 | o4 (c e g)1 | (c e a)1 | (c d g)2 (c d f+)2 |
+
+track bass bass vol=0.68 rev=0.1
+  L o3 g4 >d4 g4 d4 | <f+4 a4 >f+4 <a4 | e4 b4 >e4 <b4 | >c4 g4 >c4 <g4 |
+  <g4 >d4 g4 d4 | <f+4 a4 >f+4 <a4 | >c4 g4 >c4 <g4 | d4 <a4 >d4 <a4 |
+  a4 >e4 a4 e4 | d4 <a4 >d4 <a4 | g4 >d4 g4 d4 | <e4 b4 >e4 <b4 |
+  >c4 g4 >c4 <g4 | d4 <a4 >d4 <a4 | g4 >d4 c4 g4 | d4 <a4 >d4 <a4 |
+  e4 b4 >e4 <b4 | >c4 g4 >c4 <g4 | <g4 >d4 g4 d4 | d4 <a4 >d4 <a4 |
+  e4 b4 >e4 <b4 | >c4 g4 >c4 <g4 | <a4 >e4 a4 e4 | d4 <a4 >d4 <a4 |
+
+track drums kit vol=0.5 rev=0.15
+  v90 L [ (b c)4 s4 b8 b8 s4 | [ b4 s4 b8 b8 s4 | ]6 b4 s4 s8 s16 s16 s8 s8 | ]2 v70 [ b2 r4 b4 | ]7 b4 s16 s16 s8 s8 s8 s8 s8 |
+
+track hats kit vol=0.45 pan=0.1 rev=0.1
+  v60 L [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 | ]16 [ k4 k4 k4 k4 | ]8
+

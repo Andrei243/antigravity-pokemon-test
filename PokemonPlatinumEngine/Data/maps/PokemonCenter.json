@@ -1,0 +1,132 @@
+{
+  "name": "PokemonCenter",
+  "displayName": "Pokémon Center",
+  "bgmTrack": "common/pokecenter",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#________P#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "##.....#.##",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "###.....###",
+    "#........##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 8,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "WallEmblem",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "SandgemTown",
+      "targetX": 6,
+      "targetY": 7,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Nurse Joy",
+      "npcType": "Nurse",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "dialog": [
+        "Nurse Joy: Hello, and welcome to the Pokémon Center!",
+        "Nurse Joy: We restore your tired Pokémon to full health!",
+        "Nurse Joy: ...Thank you for waiting. Your Pokémon are fully healed!",
+        "Nurse Joy: We hope to see you again!"
+      ],
+      "isHealingNurse": true
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 9,
+      "y": 2,
+      "facing": "Up",
+      "isPCTerminal": true
+    }
+  ],
+  "wildEncounters": []
+}

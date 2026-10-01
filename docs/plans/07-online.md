@@ -1,8 +1,8 @@
-# Plan 06 · Online trading and battles
+# Plan 07 · Online trading and battles
 
 **Goal**: two people playing the game on different computers can find each other over the internet, trade Pokémon and battle each other, the way Platinum's Union Room and Wi-Fi Club let friends do it. It has to work in every region of the chained game (Kanto first, then Johto, Hoenn, Sinnoh and onward), between players at different points of the story.
 
-It follows the shape of plans 01–05: where we are, design, sessions, decisions to take.
+It follows the shape of plans 01–06: where we are, design, sessions, decisions to take.
 
 ## Where we are
 

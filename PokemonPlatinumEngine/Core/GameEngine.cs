@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -89,6 +90,13 @@ public class GameEngine
     private int badgesMask = 0;
     private float playTime = 0f;
     private readonly string playerName = "Lucas";
+    private readonly StoryProgress story = new();
+
+    /// <summary>
+    /// The region a new game starts in; null for the first region in the chain (Kanto). Set from the command line
+    /// (--region Sinnoh) to test a later region without playing through the ones before it.
+    /// </summary>
+    public string? NewGameRegion { get; set; }
 
     // Screen Transitions
     private float transitionTimer = 0f;
@@ -121,14 +129,15 @@ public class GameEngine
 
         ApplySettings(window: false);
 
-        // Menu sprites are rendered from the 3D Pokémon models once, up front
+        // Menu sprites are rendered from the 3D Pokémon models once, up front. Species without a model of their own
+        // all share the generic stand-in, baked once as PokemonSprites.Fallback.
         renderContext.EnsureLoaded();
-        PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name));
+        PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel));
 
         // The game opens on the title screen, which offers the saved game if there is one
         titleSave = SaveManager.LoadGame();
         titleScreen = new TitleScreen(titleSave);
-        AudioManager.PlayBGM("Title");
+        AudioManager.PlayMusic(MusicRole.Title);
     }
 
     /// <summary>Leaves the title screen into a fresh game.</summary>
@@ -139,6 +148,7 @@ public class GameEngine
         playerPokedex.Clear();
         pcBoxStorage.Clear();
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
+        story.Clear();
         playerMoney = 3000;
         badgesMask = 0;
         playTime = 0f;
@@ -167,7 +177,7 @@ public class GameEngine
         gameStarted = true;
         trainersLookOnArrival = true;
         startMenu.PlayerName = playerName;
-        AudioManager.PlayBGM(currentMap.BgmTrack);
+        PlayAreaMusic(currentMap);
         AnnounceLocation();
 
         stateBeforeTransition = GameState.Overworld;
@@ -196,8 +206,11 @@ public class GameEngine
 
     private void InitializeNewGame()
     {
-        currentMap = MapDatabase.Get("TwinleafTown");
-        player = new Player(11, 8);
+        var region = (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
+        var start = region.Start ?? RegionDatabase.First.Start!;
+        currentMap = MapDatabase.Get(start.Map);
+        player = new Player(start.X, start.Y);
+        player.Facing = start.Facing;
 
         // Give starter items
         playerInventory.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
@@ -255,6 +268,7 @@ public class GameEngine
         foreach (var caught in save.CaughtSpecies) playerPokedex.RegisterCaught(caught);
 
         MapDatabase.RestoreDefeatedTrainers(save.DefeatedTrainers);
+        story.Restore(save.StoryFlags);
 
         playerMoney = save.Money;
         badgesMask = save.Badges;
@@ -276,6 +290,7 @@ public class GameEngine
             SeenSpecies = playerPokedex.SeenSpecies.ToList(),
             CaughtSpecies = playerPokedex.CaughtSpecies.ToList(),
             DefeatedTrainers = MapDatabase.DefeatedTrainerIds(),
+            StoryFlags = story.Flags.ToList(),
             Money = playerMoney,
             Badges = badgesMask,
             PlayTimeSeconds = playTime
@@ -288,7 +303,6 @@ public class GameEngine
     public void Update(float dt)
     {
         if (gameStarted) playTime += dt;
-        AudioManager.Update(dt);
 
         toast.Update(dt);
         startMenu.Animate(dt);
@@ -510,7 +524,7 @@ public class GameEngine
                 dialogue.ShowDialogue(npc.Name, npc.DialogLines, () =>
                 {
                     playerParty.HealAll();
-                    AudioManager.PlaySound("heal");
+                    AudioManager.PlayFanfare(MusicRole.FanfareHeal);
                     ShowNotification("All Pokémon were fully healed!");
                 });
                 currentState = GameState.Dialogue;
@@ -528,6 +542,16 @@ public class GameEngine
             {
                 currentState = GameState.PCStorage;
                 pcScreen.Open();
+                return;
+            }
+
+            if (npc.IsTransportAttendant && RegionDatabase.RegionOfMap(currentMap.Name) is { } here
+                && RegionDatabase.LinkFrom(here.Id) is { } link)
+            {
+                var check = RegionDatabase.CheckTravel(link, story);
+                dialogue.ShowDialogue(npc.Name, RegionDatabase.AttendantLines(link, check),
+                    check == TravelCheck.Ready ? () => TravelTo(RegionDatabase.Get(link.To)!) : null);
+                currentState = GameState.Dialogue;
                 return;
             }
 
@@ -563,13 +587,38 @@ public class GameEngine
 
     private void HandleWarp(Warp warp)
     {
+        // The music fades with the screen, so a building with its own theme starts as the door opens on it
+        PlayAreaMusic(MapDatabase.Get(warp.TargetMap));
         StartTransition(GameState.Overworld, () =>
         {
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
-            AudioManager.PlayBGM(currentMap.BgmTrack);
             AnnounceLocation();
         });
+    }
+
+    /// <summary>Crosses to another region, landing where arrivals from the previous region come in.</summary>
+    private void TravelTo(Region region)
+    {
+        var spot = region.ArrivalSpot!;
+        PlayAreaMusic(MapDatabase.Get(spot.Map));
+        StartTransition(GameState.Overworld, () =>
+        {
+            currentMap = MapDatabase.Get(spot.Map);
+            player.SetPosition(spot.X, spot.Y, spot.Facing);
+            trainersLookOnArrival = true;
+            AnnounceLocation();
+        });
+    }
+
+    /// <summary>
+    /// Plays a map's theme (its night arrangement at night) with its region's versions of the shared themes.
+    /// A map that names no theme keeps whatever is playing; the same theme carries on without a restart.
+    /// </summary>
+    private static void PlayAreaMusic(Map map)
+    {
+        AudioManager.Region = RegionDatabase.RegionOfMap(map.Name)?.Id;
+        if (!string.IsNullOrEmpty(map.BgmTrack)) AudioManager.PlayMusic(map.BgmTrack);
     }
 
     /// <summary>
@@ -635,11 +684,12 @@ public class GameEngine
 
         playerPokedex.RegisterSeen(wildSpecies.DexNumber);
 
+        // The battle theme cuts in as the screen starts to flash, before the battle itself appears
+        AudioManager.PlayMusic(MusicRole.BattleWild, immediate: true);
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
             battleRenderer.Trees = currentMap.Trees;
-            AudioManager.PlayBGM("Battle");
         });
     }
 
@@ -651,12 +701,20 @@ public class GameEngine
             trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
         }
 
+        AudioManager.PlayMusic(MusicDirector.BattleRole(new[] { trainer.TrainerClass }), immediate: true);
         StartTransition(GameState.Battle, () =>
         {
-            battle = new BattleEngine(playerParty, trainer.Party.Members.First(), playerInventory, playerPokedex, trainer, pcBoxStorage);
+            battle = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = playerParty,
+                Inventory = playerInventory,
+                Pokedex = playerPokedex,
+                PcStorage = pcBoxStorage,
+                Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
+                Trainers = new List<Trainer> { trainer }
+            });
             battleRenderer.Trees = currentMap.Trees;
             battleTrainer = trainerNpc;
-            AudioManager.PlayBGM("Battle");
         });
     }
 
@@ -676,7 +734,7 @@ public class GameEngine
                     ? $"Lucas whited out and paid ¥{penalty}... Restored at home!" 
                     : "Lucas whited out... Restored at home!");
             }
-            AudioManager.PlayBGM(currentMap.BgmTrack);
+            PlayAreaMusic(currentMap);
         });
     }
 

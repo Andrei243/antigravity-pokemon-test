@@ -1,0 +1,217 @@
+{
+  "name": "TrainersSchool",
+  "displayName": "Trainers' School",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 11,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "###.......###",
+    "#...........#",
+    "#...........#",
+    "#..##..##...#",
+    "#...........#",
+    "#..##..##...#",
+    "#...........#",
+    "##.........##",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 8,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 10,
+      "targetMap": "JubilifeCity",
+      "targetX": 7,
+      "targetY": 8,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Teacher",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Teacher: Welcome to the Trainers' School! Today's lesson is about status conditions.",
+        "Teacher: A poisoned or burned Pokémon keeps losing HP, even after the battle ends.",
+        "Teacher: An Antidote or a Burn Heal sorts that out. Or rest at a Pokémon Center!",
+        "Teacher: Try a practice battle with my students. They've been studying hard!"
+      ]
+    },
+    {
+      "name": "Barry",
+      "npcType": "Rival",
+      "x": 10,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "Barry: Lucas! What took you so long? I've already learned everything here!",
+        "Barry: Next stop is Oreburgh City and its Gym. I'm getting my first Badge before you!",
+        "Barry: Don't fall behind, or I'll fine you 10 million!"
+      ]
+    },
+    {
+      "id": "trainer_cole",
+      "name": "Cole",
+      "npcType": "Youngster",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "trainer": {
+        "id": "trainer_cole",
+        "name": "Cole",
+        "trainerClass": "School Kid",
+        "party": [
+          {
+            "species": "Bidoof",
+            "level": 7
+          },
+          {
+            "species": "Starly",
+            "level": 7
+          }
+        ],
+        "prizeMoney": 140,
+        "dialogueBefore": "School Kid Cole: I just aced my test on type matchups! Let me show you!",
+        "dialogueAfter": "School Kid Cole: Knowing the theory isn't enough, huh? Back to studying.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "trainer_jenna",
+      "name": "Jenna",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 8,
+      "facing": "Left",
+      "trainer": {
+        "id": "trainer_jenna",
+        "name": "Jenna",
+        "trainerClass": "School Kid",
+        "party": [
+          {
+            "species": "Shinx",
+            "level": 8
+          }
+        ],
+        "prizeMoney": 160,
+        "dialogueBefore": "School Kid Jenna: Practice battle! The teacher says real trainers never say no!",
+        "dialogueAfter": "School Kid Jenna: You're good! Did you study here too?",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

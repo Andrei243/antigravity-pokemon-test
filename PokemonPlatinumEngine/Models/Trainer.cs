@@ -14,5 +14,8 @@ public class Trainer
     public bool IsDefeated { get; set; } = false;
     public int SightRange { get; set; } = 3; // Tiles of vision for line of sight challenge
 
+    /// <summary>Battles two Pokémon at a time (twins, couples), if the player has two that can fight.</summary>
+    public bool DoubleBattle { get; set; }
+
     public string FullTitle => $"{TrainerClass} {Name}";
 }

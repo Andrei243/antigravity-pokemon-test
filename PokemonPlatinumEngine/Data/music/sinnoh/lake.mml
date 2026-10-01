@@ -1,0 +1,37 @@
+# Lake Verity and the other lakes: still water and something watching. Original composition for this game.
+title Lake Verity
+tempo 76
+meter 3/4
+reverb 0.5
+nighttempo 0.95
+
+track lead flute night=ocarina vol=0.75 pan=0 rev=0.5
+  L o4 b2 >e4 | g2. | a4 g4 e4 | d+2 f+4 |
+  <b2 >e4 | >d2 <g4 | a2 f+4 | e2 d+4 |
+  e4 g4 b4 | >d2. | c4 <b4 a4 | g2 e4 |
+  e4 g4 >c4 | <a2 >d4 | c2 <a4 | b2 a4 |
+
+track bell bell night=celesta vol=0.38 pan=0.35 rev=0.7
+  L o5 b2. | r2. | a2. | r2. |
+  b2. | r2. | a2. | r2. |
+  >e2. | r2. | <a2. | r2. |
+  >e2. | r2. | c2. | r2. |
+
+track harp harp vol=0.45 pan=-0.3 rev=0.45
+  L o3 e8 g8 b8 >e8 g8 b8 | <e8 g8 >c8 d8 e8 g8 | <e8 a8 >c8 e8 a8 >c8 | o3 f+8 a8 b8 >d+8 f+8 a8 |
+  <e8 g8 b8 >e8 g8 b8 | <e8 g8 >c8 d8 e8 g8 | <f+8 a8 >d8 f+8 a8 >d8 | o3 e8 f+8 b8 >e8 <f+8 b8 |
+  e8 g8 >c8 d8 e8 g8 | <g8 b8 >d8 g8 b8 >d8 | o3 e8 g8 a8 >c8 e8 g8 | <e8 g8 b8 >e8 g8 b8 |
+  <e8 g8 >c8 d8 e8 g8 | <f+8 a8 >d8 f+8 a8 >d8 | o3 e8 g8 a8 >c8 e8 g8 | <f+8 a8 b8 >d+8 f+8 a8 |
+
+track choir choir night=pad vol=0.42 pan=0.1 rev=0.6
+  L o3 (b >e g)2. | o4 (c d e)2. | o3 (a >c e)2. | (a b >d+)2. |
+  (g b >e)2. | o4 (c d e)2. | o3 (a >d f+)2. | (b >e f+)2 (b >d+ f+)4 |
+  o4 (c d e)2. | o3 (b >d g)2. | (a >c g)2. | (g b >e)2. |
+  o4 (c d e)2. | o3 (a >d f+)2. | (a >c g)2. | (a b >d+)2. |
+
+track bass contrabass vol=0.55 rev=0.3
+  L o3 e2. | >c2. | <a2. | b2. |
+  e2. | >c2. | d2. | <b2 b4 |
+  >c2. | <b2. | a2. | e2. |
+  >c2. | d2. | <a2. | b2. |
+

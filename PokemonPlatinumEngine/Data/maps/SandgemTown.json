@@ -1,0 +1,143 @@
+{
+  "name": "SandgemTown",
+  "displayName": "Sandgem Town",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "None",
+  "trees": "Round",
+  "width": 30,
+  "height": 24,
+  "ground": [
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T...rrrrr.....::....bbbbb....T",
+    "T...rrrrr.....::....bbbbb....T",
+    "T...rrrrr.....::....bbbbb....T",
+    "T...##D##.....::....##D##....T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "::::::::::::::::::::::::::::::",
+    ":::::::::::::S::::::::::::::::",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T...bbbbbbb...::.............T",
+    "T...bbbbbbb...::.............T",
+    "T...bbbbbbb...::.............T",
+    "T...###D###...::.............T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T~~~~~~~~~~~~~~~~~~~~~~~~~~~~T"
+  ],
+  "solid": [
+    "##############..##############",
+    "#............................#",
+    "#............................#",
+    "#...#####...........#####....#",
+    "#...#####...........#####....#",
+    "#...#####...........#####....#",
+    "#...##.##...........##.##....#",
+    "#............................#",
+    "#............................#",
+    "..............................",
+    ".............#................",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#...#######..................#",
+    "#...#######..................#",
+    "#...#######..................#",
+    "#...###.###..................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "##############################"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 6,
+      "targetMap": "PokemonCenter",
+      "targetX": 5,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 22,
+      "sourceY": 6,
+      "targetMap": "PokeMart",
+      "targetX": 4,
+      "targetY": 6,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 17,
+      "targetMap": "RowanLab",
+      "targetX": 5,
+      "targetY": 8,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 9,
+      "targetMap": "Route201",
+      "targetX": 34,
+      "targetY": 9,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 0,
+      "sourceY": 10,
+      "targetMap": "Route201",
+      "targetX": 34,
+      "targetY": 10,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 0,
+      "targetMap": "Route202",
+      "targetX": 14,
+      "targetY": 24,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 0,
+      "targetMap": "Route202",
+      "targetX": 15,
+      "targetY": 24,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 13,
+      "y": 10,
+      "text": "Sandgem Town\nTown of Sand and Sparkle!\nNorth: Route 202 | West: Route 201"
+    }
+  ],
+  "npcs": [
+    {
+      "name": "Dawn",
+      "npcType": "Lass",
+      "x": 17,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Dawn: Hi, Lucas! Welcome to Sandgem Town!",
+        "Dawn: The Pokémon Center on the top-left heals your Pokémon for free!",
+        "Dawn: The Poké Mart on the top-right sells Poké Balls and Potions!",
+        "Dawn: Professor Rowan's Lab is on the bottom-left."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

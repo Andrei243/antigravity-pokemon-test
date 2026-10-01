@@ -1,0 +1,141 @@
+{
+  "name": "PoketchCompany",
+  "displayName": "Pokétch Company",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "##.......##",
+    "#..#####..#",
+    "#.........#",
+    "##.......##",
+    "##.......##",
+    "##.......##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "LabDesk",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "JubilifeCity",
+      "targetX": 26,
+      "targetY": 8,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "President",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "dialog": [
+        "President: Welcome to the Pokétch Company! I'm the president, and the inventor of the Pokétch.",
+        "President: It's a watch made for trainers, and we're giving them away in a campaign!",
+        "President: Three clowns around Jubilife each have a question for you. Answer them all!",
+        "President: Do that, and a brand-new Pokétch is yours. I'll be waiting right here!"
+      ]
+    },
+    {
+      "name": "Engineer",
+      "npcType": "Clerk",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Engineer: Every Pokétch app starts as a sketch on that desk.",
+        "Engineer: A clock, a calculator, a step counter... we're always dreaming up new ones!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

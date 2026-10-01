@@ -9,7 +9,7 @@ public class Map
 {
     public string Name { get; set; } = "Twinleaf Town";
     public string DisplayName { get; set; } = "Twinleaf Town";
-    public string BgmTrack { get; set; } = "Twinleaf";
+    public string BgmTrack { get; set; } = "";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public bool IsIndoors => Interior != InteriorStyle.None;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
@@ -53,6 +53,11 @@ public class Map
         groundLayer[idx] = type;
         solidGrid[idx] = isSolid;
     }
+
+    public TileType? GetOverheadTile(int x, int y) => overheadLayer[y * Width + x];
+
+    /// <summary>Whether the tile itself blocks movement (walls, water, furniture), ignoring NPCs.</summary>
+    public bool IsSolid(int x, int y) => solidGrid[y * Width + x];
 
     public void SetOverheadTile(int x, int y, TileType type)
     {

@@ -1,0 +1,68 @@
+# Battle against a trainer: a climbing intro, then a heroic minor-key march.
+# Original composition for this game.
+title Battle! Trainer
+tempo 168
+meter 4/4
+reverb 0.2
+
+track lead brass vol=0.85 pan=0 rev=0.2
+  o4 a8 b8 >c8 d8 e8 f8 g+8 a8 | o4 (a >c e)8 r8 (a >c e)8 r8 (g+ b >e)4 r4 | L >a4 e8 a8 >c4 <b8 a8 | >c4. <a8 f4 a4 |
+  b4 g8 b8 >d4 c8 <b8 | g+4. a8 b2 | a4 e8 a8 >c4 e4 | f4. e8 c4 <a4 |
+  >d4 f4 <a4 >d8 e8 | e2 d4 <b4 | >c4. <a8 >c4 f4 | d4. <b8 g4 >d4 |
+  e4 d8 <b8 g4 b4 | >c4 <b8 a8 e2 | f4 a4 >d4 f4 | f4 e8 d8 <b4 g4 |
+  >e4. d8 c4 <g4 | g+4 b4 >d4 e4 | <a1 | >c2 <b2 |
+  a1 | >c2 f2 | d1 | <b2 >d2 |
+  e1 | <g+2 b4 >d4 | <a4 e8 a8 >c4 <b8 a8 | >c4. <a8 f4 a4 |
+  b4 g8 b8 >d4 c8 <b8 | g+4. a8 b2 | a4 e8 a8 >c4 e4 | f4. e8 c4 <a4 |
+  >d4 f4 <a4 >d8 e8 | e2 d4 <b4 |
+
+track violin violin vol=0.55 pan=-0.2 rev=0.25
+  r1 | r1 | L o4 a4 e8 a8 >c4 <b8 a8 | >c4. <a8 f4 a4 |
+  b4 g8 b8 >d4 c8 <b8 | g+4. a8 b2 | a4 e8 a8 >c4 e4 | f4. e8 c4 <a4 |
+  >d4 f4 <a4 >d8 e8 | e2 d4 <b4 | >c4. <a8 >c4 f4 | d4. <b8 g4 >d4 |
+  e4 d8 <b8 g4 b4 | >c4 <b8 a8 e2 | f4 a4 >d4 f4 | f4 e8 d8 <b4 g4 |
+  >e4. d8 c4 <g4 | g+4 b4 >d4 e4 | a1 | >c2 <b2 |
+  a1 | >c2 f2 | d1 | <b2 >d2 |
+  e1 | <g+2 b4 >d4 | o4 a4 e8 a8 >c4 <b8 a8 | >c4. <a8 f4 a4 |
+  b4 g8 b8 >d4 c8 <b8 | g+4. a8 b2 | a4 e8 a8 >c4 e4 | f4. e8 c4 <a4 |
+  >d4 f4 <a4 >d8 e8 | e2 d4 <b4 |
+
+track pulse pulse vol=0.36 pan=0.35 rev=0.15
+  r1 | r1 | L o3 a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 | <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 |
+  <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 | <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 | <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 | <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 |
+  <a16 >d16 f16 d16 <a16 >d16 f16 d16 <a16 >d16 f16 d16 <a16 >d16 f16 d16 | <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 | <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 | <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 |
+  <b16 >e16 g16 e16 <b16 >e16 g16 e16 <b16 >e16 g16 e16 <b16 >e16 g16 e16 | <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 | <a16 >d16 f16 d16 <a16 >d16 f16 d16 <a16 >d16 f16 d16 <a16 >d16 f16 d16 | <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 |
+  c16 e16 g16 e16 c16 e16 g16 e16 c16 e16 g16 e16 c16 e16 g16 e16 | <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 | <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 | <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 |
+  <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 | <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 | <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 | <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 |
+  <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 | <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 | <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 | <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 |
+  <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 <b16 >d16 g16 d16 | <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 <b16 >e16 g+16 e16 | <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 <a16 >c16 e16 c16 | <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 <a16 >c16 f16 c16 |
+  <a16 >d16 f16 d16 <a16 >d16 f16 d16 <a16 >d16 f16 d16 <a16 >d16 f16 d16 | <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 <b16 >d16 e16 d16 |
+
+track strings strings vol=0.42 pan=-0.35 rev=0.3
+  r1 | r1 | L o3 (a >c e)1 | (a >c f)1 |
+  (g b >d)1 | (g+ b >e)1 | (a >c e)1 | (a >c f)1 |
+  (a >d f)1 | (g+ >d e)1 | (a >c f)1 | (g b >d)1 |
+  (g b >e)1 | (a >c e)1 | (a >d f)1 | (b >d g)1 |
+  o4 (c e g)1 | (d e g+)1 | (c e a)1 | (c e a)1 |
+  (c f a)1 | (c f a)1 | o3 (b >d g)1 | (b >d g)1 |
+  (b >e g+)1 | o4 (d e g+)1 | (c e a)1 | (c f a)1 |
+  o3 (b >d g)1 | (b >e g+)1 | o4 (c e a)1 | (c f a)1 |
+  (d f a)1 | (d e g+)1 |
+
+track bass synthbass vol=0.72 rev=0.05
+  o3 a8 a8 a8 a8 a8 a8 a8 a8 | a8 r8 a8 r8 e4 r4 | L a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 | <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 |
+  <g8 g16 >d16 <g8 g16 >g16 <g8 g16 >d16 <g8 g16 >g16 | <e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 | <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 |
+  d8 d16 <a16 >d8 d16 >d16 <d8 d16 <a16 >d8 d16 >d16 | o3 e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 | <g8 g16 >d16 <g8 g16 >g16 <g8 g16 >d16 <g8 g16 >g16 |
+  <e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 | d8 d16 <a16 >d8 d16 >d16 <d8 d16 <a16 >d8 d16 >d16 | o3 g8 g16 >d16 <g8 g16 >g16 <g8 g16 >d16 <g8 g16 >g16 |
+  c8 c16 g16 c8 c16 >c16 <c8 c16 g16 c8 c16 >c16 | o3 e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 | <a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 |
+  <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 | <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 | <g8 g16 >d16 <g8 g16 >g16 <g8 g16 >d16 <g8 g16 >g16 | <g8 g16 >d16 <g8 g16 >g16 <g8 g16 >d16 <g8 g16 >g16 |
+  <e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 | <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 |
+  <g8 g16 >d16 <g8 g16 >g16 <g8 g16 >d16 <g8 g16 >g16 | <e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 | <a8 a16 >e16 <a8 a16 >a16 <a8 a16 >e16 <a8 a16 >a16 | <f8 f16 >c16 <f8 f16 >f16 <f8 f16 >c16 <f8 f16 >f16 |
+  d8 d16 <a16 >d8 d16 >d16 <d8 d16 <a16 >d8 d16 >d16 | o3 e8 e16 b16 e8 e16 >e16 <e8 e16 b16 e8 e16 >e16 |
+
+track drums kit vol=0.5 rev=0.12
+  v100 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 | (b c)8 r8 (b c)8 r8 b4 t16 t16 m16 f16 | L [ (b c)8 b8 s8 b8 b8 b8 s8 b8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 s16 s16 s16 s16 s16 s16 s16 s16 | ]4
+
+track hats kit vol=0.5 pan=0.15 rev=0.1
+  r1 | r1 | L v65 [ h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 | ]32
+

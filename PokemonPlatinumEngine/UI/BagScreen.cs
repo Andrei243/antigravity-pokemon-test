@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -20,6 +22,7 @@ public class BagScreen
         ItemPocket.Medicine,
         ItemPocket.PokeBalls,
         ItemPocket.TMsAndHMs,
+        ItemPocket.Berries,
         ItemPocket.KeyItems
     };
 
@@ -141,14 +144,36 @@ public class BagScreen
             {
                 lead.GainExp(lead.ExpForNextLevel - lead.CurrentExp, out var moves, out bool evolved, out string oldName);
                 inventory.RemoveItem(item, 1);
-                AudioManager.PlaySound("levelup");
+                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
                 onNotification($"{lead.DisplayName} grew to Lv. {lead.Level}!");
             }
+        }
+        else if (PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.IsHoldable(item))
+        {
+            GiveToHold(item, inventory, party, onNotification);
         }
         else
         {
             onNotification($"You used the {item.Name}!");
         }
+    }
+
+    /// <summary>Gives a holdable item to the lead Pokémon; whatever it held goes back in the bag.</summary>
+    public static void GiveToHold(ItemData item, Inventory inventory, Party party, Action<string> onNotification)
+    {
+        var lead = party.FirstUsable ?? party.Members.FirstOrDefault();
+        if (lead == null) return;
+
+        inventory.RemoveItem(item, 1);
+        var previous = lead.HeldItem;
+        lead.HeldItem = item;
+        AudioManager.PlaySound("select");
+        if (previous != null)
+        {
+            inventory.AddItem(previous, 1);
+            onNotification($"{lead.DisplayName} swapped its {previous.Name} for the {item.Name}.");
+        }
+        else onNotification($"{lead.DisplayName} was given the {item.Name} to hold.");
     }
 
     public void Draw(int screenWidth, int screenHeight, Inventory inventory)

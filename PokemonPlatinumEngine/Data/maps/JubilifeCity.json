@@ -1,0 +1,296 @@
+{
+  "name": "JubilifeCity",
+  "displayName": "Jubilife City",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "None",
+  "trees": "Round",
+  "width": 40,
+  "height": 34,
+  "ground": [
+    "TTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTT",
+    "T..................S:..................T",
+    "T..................::..................T",
+    "T..................::..........rrrrrrr.T",
+    "T..gggggggg........::..bbbbbbb.rrrrrrr.T",
+    "T..gggggggg........::..bbbbbbb.rrrrrrr.T",
+    "T..gggggggg........::..bbbbbbb.rrrrrrr.T",
+    "T..#S##D###........::..#S#D###.###S###.T",
+    "T.::::::::::::::::::::::::::::::::::::.T",
+    "T.::::::::::::::::::::::::::::::::::::.T",
+    "T.......******.....::..................T",
+    "T.......*~~~~*.....::..................T",
+    "T.......*~~~~*.....::..................T",
+    "T.......*~~~~*.....::..***************.T",
+    "T.......******.....::..................T",
+    "T..................::..................T",
+    ":S::::::::::::::::::::::::::::::::::::S:",
+    "::::::::::::::::::::::::::::::::::::::::",
+    "T..................::..................T",
+    "T..................::..................T",
+    "T..................::..***************.T",
+    "T..................::..................T",
+    "T..................::..................T",
+    "T..bbbbbbbb.ggggg..::..rrrrr..bbbbb....T",
+    "T..bbbbbbbb.ggggg..::..rrrrr..bbbbb....T",
+    "T..bbbbbbbb.ggggg..::..rrrrr..bbbbb....T",
+    "T..###S####.#S###..::..##D##..##D##....T",
+    "T.::::::::::::::::::::::::::::::::::::.T",
+    "T.::::::::::::::::::::::::::::::::::::.T",
+    "T..................::..................T",
+    "T..................::..................T",
+    "T.................S::..................T",
+    "T..................::..................T",
+    "TTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTT"
+  ],
+  "solid": [
+    "###################..###################",
+    "#..................#...................#",
+    "#......................................#",
+    "#..............................#######.#",
+    "#..########............#######.#######.#",
+    "#..########............#######.#######.#",
+    "#..########............#######.#######.#",
+    "#..####.###............###.###.#######.#",
+    "#......................................#",
+    "#......................................#",
+    "#......................................#",
+    "#........####..........................#",
+    "#........####..........................#",
+    "#........####..........................#",
+    "#......................................#",
+    "#......................................#",
+    ".#....................................#.",
+    "........................................",
+    "#......................................#",
+    "#......................................#",
+    "#......................................#",
+    "#......................................#",
+    "#......................................#",
+    "#..########.#####......#####..#####....#",
+    "#..########.#####......#####..#####....#",
+    "#..########.#####......#####..#####....#",
+    "#..########.#####......##.##..##.##....#",
+    "#......................................#",
+    "#......................................#",
+    "#......................................#",
+    "#......................................#",
+    "#.................#....................#",
+    "#......................................#",
+    "###################..###################"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 19,
+      "sourceY": 33,
+      "targetMap": "Route202",
+      "targetX": 14,
+      "targetY": 1,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 20,
+      "sourceY": 33,
+      "targetMap": "Route202",
+      "targetX": 15,
+      "targetY": 1,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 7,
+      "targetMap": "TrainersSchool",
+      "targetX": 6,
+      "targetY": 9,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 26,
+      "sourceY": 7,
+      "targetMap": "PoketchCompany",
+      "targetX": 5,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 25,
+      "sourceY": 26,
+      "targetMap": "JubilifePokemonCenter",
+      "targetX": 5,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 32,
+      "sourceY": 26,
+      "targetMap": "JubilifePokeMart",
+      "targetX": 4,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 4,
+      "y": 7,
+      "text": "Trainers' School\nEvery new trainer is welcome to learn the basics here, free of charge!"
+    },
+    {
+      "x": 24,
+      "y": 7,
+      "text": "Pokétch Company\nWe make the Pokétch, the Pokémon Watch every trainer needs."
+    },
+    {
+      "x": 34,
+      "y": 7,
+      "text": "Jubilife TV\nSinnoh's own broadcast station. Staff only beyond this point."
+    },
+    {
+      "x": 6,
+      "y": 26,
+      "text": "Global Terminal\nTrade with trainers far away. Opening soon!"
+    },
+    {
+      "x": 13,
+      "y": 26,
+      "text": "Jubilife Condominiums"
+    },
+    {
+      "x": 18,
+      "y": 31,
+      "text": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet."
+    },
+    {
+      "x": 19,
+      "y": 1,
+      "text": "Route 204\nNorth: Ravaged Path, Floaroma Town"
+    },
+    {
+      "x": 38,
+      "y": 16,
+      "text": "Route 203\nEast: Oreburgh Gate, Oreburgh City"
+    },
+    {
+      "x": 1,
+      "y": 16,
+      "text": "Route 218 Gate\nWest: the sea road to Canalave City"
+    }
+  ],
+  "npcs": [
+    {
+      "name": "Dawn",
+      "npcType": "Lass",
+      "x": 21,
+      "y": 30,
+      "facing": "Left",
+      "dialog": [
+        "Dawn: Lucas! You made it through Route 202. Welcome to Jubilife City!",
+        "Dawn: It's the biggest city in Sinnoh. There's even a TV station!",
+        "Dawn: Barry ran on ahead to the Trainers' School. It's up the main street, on the left.",
+        "Dawn: Have a look inside! The lessons there are a big help when you're starting out."
+      ]
+    },
+    {
+      "name": "Looker",
+      "npcType": "Looker",
+      "x": 18,
+      "y": 13,
+      "facing": "Right",
+      "dialog": [
+        "???: ...! You did not see me. I am simply a man admiring the street.",
+        "Looker: Very well. You may call me Looker. My work is... the international kind.",
+        "Looker: A certain group is up to something in Sinnoh. I am here to find out what.",
+        "Looker: If you notice anyone suspicious, you will remember my face, yes? Farewell!"
+      ]
+    },
+    {
+      "name": "Clown",
+      "npcType": "Clown",
+      "x": 35,
+      "y": 27,
+      "facing": "Left",
+      "dialog": [
+        "Clown: Ta-da! Welcome to the Pokétch campaign! Here's my question...",
+        "Clown: When a Pokémon wins a battle, does it earn Experience Points and grow stronger?",
+        "Clown: ...Yes, exactly right! Find my two partners around the city for their questions!"
+      ]
+    },
+    {
+      "name": "Clown",
+      "npcType": "Clown",
+      "x": 28,
+      "y": 9,
+      "facing": "Down",
+      "dialog": [
+        "Clown: Pokétch campaign quiz time! Pokémon have types like Fire or Water...",
+        "Clown: ...but do their moves have types as well?",
+        "Clown: ...Yes, they do! A move that matches its user's type hits harder, too!"
+      ]
+    },
+    {
+      "name": "Clown",
+      "npcType": "Clown",
+      "x": 34,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Clown: Last question of the Pokétch campaign! Can a Pokémon carry an item?",
+        "Clown: ...Correct, they can! Now go and tell the president of the Pokétch Company!"
+      ]
+    },
+    {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 9,
+      "facing": "Down",
+      "dialog": [
+        "The fountain was built when the city was founded. Jubilife grew up around it.",
+        "Everything new in Sinnoh seems to start in this city."
+      ]
+    },
+    {
+      "name": "Lady",
+      "npcType": "Lady",
+      "x": 29,
+      "y": 28,
+      "facing": "Up",
+      "dialog": [
+        "The Poké Mart here stocks everything a trainer needs for the road ahead.",
+        "Rest your team at the Pokémon Center next door before you set out!"
+      ]
+    },
+    {
+      "name": "Worker",
+      "npcType": "Clerk",
+      "x": 20,
+      "y": 1,
+      "facing": "Down",
+      "dialog": [
+        "Worker: Sorry! The road north to Route 204 is closed while we lay new paving."
+      ]
+    },
+    {
+      "name": "Worker",
+      "npcType": "Clerk",
+      "x": 38,
+      "y": 17,
+      "facing": "Left",
+      "dialog": [
+        "Worker: Route 203 is being cleared of fallen rocks. Nobody gets through until we're done!"
+      ]
+    },
+    {
+      "name": "Fisherman",
+      "npcType": "Youngster",
+      "x": 1,
+      "y": 17,
+      "facing": "Right",
+      "dialog": [
+        "Past this gate, Route 218 crosses open water.",
+        "Without a Pokémon that can Surf, there's no way over to the other side."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

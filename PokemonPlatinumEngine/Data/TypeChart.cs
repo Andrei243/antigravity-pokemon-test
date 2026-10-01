@@ -148,7 +148,22 @@ public static class TypeChart
         { (PokemonType.Dark, PokemonType.Psychic), 2.0f },
         { (PokemonType.Dark, PokemonType.Ghost), 2.0f },
         { (PokemonType.Dark, PokemonType.Dark), 0.5f },
-        { (PokemonType.Dark, PokemonType.Steel), 0.5f }
+        { (PokemonType.Dark, PokemonType.Steel), 0.5f },
+
+        // Fairy (Generation 6). Only later species and moves have the type: Platinum's species keep their
+        // Generation 4 typings and the rest of the chart stays Platinum's (plan 03, decision 2).
+        { (PokemonType.Fairy, PokemonType.Fire), 0.5f },
+        { (PokemonType.Fairy, PokemonType.Fighting), 2.0f },
+        { (PokemonType.Fairy, PokemonType.Poison), 0.5f },
+        { (PokemonType.Fairy, PokemonType.Dragon), 2.0f },
+        { (PokemonType.Fairy, PokemonType.Dark), 2.0f },
+        { (PokemonType.Fairy, PokemonType.Steel), 0.5f },
+        { (PokemonType.Fighting, PokemonType.Fairy), 0.5f },
+        { (PokemonType.Poison, PokemonType.Fairy), 2.0f },
+        { (PokemonType.Bug, PokemonType.Fairy), 0.5f },
+        { (PokemonType.Dragon, PokemonType.Fairy), 0.0f },
+        { (PokemonType.Dark, PokemonType.Fairy), 0.5f },
+        { (PokemonType.Steel, PokemonType.Fairy), 2.0f }
     };
 
     public static float GetEffectiveness(PokemonType attackType, PokemonType defenderType1, PokemonType? defenderType2 = null)

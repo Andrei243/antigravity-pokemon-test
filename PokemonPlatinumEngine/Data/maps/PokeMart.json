@@ -1,0 +1,98 @@
+{
+  "name": "PokeMart",
+  "displayName": "Poké Mart",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 9,
+  "height": 8,
+  "ground": [
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "####D####"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "#...#####",
+    "#.#.....#",
+    "#.#..##.#",
+    "#.......#",
+    "#......##",
+    "####.####"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "StoreShelf",
+      "x": 4,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 5,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 2,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 7,
+      "targetMap": "SandgemTown",
+      "targetX": 22,
+      "targetY": 7,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 1,
+      "y": 3,
+      "facing": "Right",
+      "dialog": [
+        "Clerk: Welcome to the Sandgem Poké Mart! How may I serve you today?"
+      ],
+      "isPokeMartClerk": true
+    }
+  ],
+  "wildEncounters": []
+}

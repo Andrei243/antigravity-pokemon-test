@@ -1,0 +1,144 @@
+{
+  "name": "PlayerHouse",
+  "displayName": "Lucas's Home",
+  "bgmTrack": "sinnoh/twinleaf",
+  "interior": "House",
+  "trees": "Round",
+  "width": 10,
+  "height": 9,
+  "ground": [
+    "##########",
+    "##########",
+    "#________#",
+    "#________#",
+    "#________#",
+    "#________#",
+    "#________#",
+    "#________#",
+    "####D#####"
+  ],
+  "solid": [
+    "##########",
+    "##########",
+    "####..#.##",
+    "#.......##",
+    "#..###...#",
+    "#........#",
+    "#........#",
+    "##......##",
+    "####.#####"
+  ],
+  "props": [
+    {
+      "type": "Fridge",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stairs",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 3,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 7,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 8,
+      "targetMap": "TwinleafTown",
+      "targetX": 6,
+      "targetY": 8,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Mom",
+      "npcType": "Mom",
+      "x": 6,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "Mom: Welcome home, honey! You and your Pokémon look like you need a rest.",
+        "Mom: ...There! All your Pokémon are fully healed and ready for adventure!",
+        "Mom: Don't forget your Running Shoes! Hold B, X or Shift to run anywhere!"
+      ],
+      "isHealingNurse": true
+    }
+  ],
+  "wildEncounters": []
+}

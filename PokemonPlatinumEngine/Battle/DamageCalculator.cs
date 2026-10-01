@@ -1,12 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle;
 
+/// <summary>Generation 4's damage formula, with abilities and held items joining in through <see cref="BattleEffect"/>.</summary>
 public static class DamageCalculator
 {
-    private static readonly Random rng = new();
+    private static readonly Random sharedRng = new();
 
     public struct DamageResult
     {
@@ -20,74 +24,133 @@ public static class DamageCalculator
         public bool IsImmune => TypeMultiplier == 0f;
     }
 
-    public static DamageResult CalculateDamage(Pokemon attacker, Pokemon defender, Move move)
+    /// <summary>Damage between two Pokémon outside a battle's field (no partner, one target).</summary>
+    public static DamageResult CalculateDamage(Pokemon attacker, Pokemon defender, Move move, Random? rng = null) =>
+        Calculate(new Battler(BattleSide.Player, 0) { Pokemon = attacker }, new Battler(BattleSide.Enemy, 0) { Pokemon = defender },
+            move, rng ?? sharedRng, spread: false);
+
+    /// <summary>How well a move's type hits the target (0, ¼, ½, 1, 2 or 4), counting Scrappy.</summary>
+    public static float Effectiveness(Battler attacker, Battler defender, Move move)
     {
-        var result = new DamageResult
-        {
-            Damage = 0,
-            TypeMultiplier = 1.0f,
-            IsCritical = false,
-            IsSTAB = false
-        };
+        var species = defender.Pokemon!.Species;
+        PokemonType primary = species.PrimaryType;
+        PokemonType? secondary = species.SecondaryType;
 
-        if (move.Category == MoveCategory.Status || move.Power <= 0)
+        bool scrappy = move.Type is PokemonType.Normal or PokemonType.Fighting && BattleEffects.Of(attacker).Any(e => e.HitsGhosts);
+        if (scrappy)
         {
-            return result;
+            if (secondary == PokemonType.Ghost) secondary = null;
+            if (primary == PokemonType.Ghost)
+            {
+                if (secondary == null) return 1f;
+                primary = secondary.Value;
+                secondary = null;
+            }
+        }
+        return TypeChart.GetEffectiveness(move.Type, primary, secondary);
+    }
+
+    /// <param name="spread">The move hits more than one Pokémon this time, so each takes 3/4.</param>
+    /// <param name="powerOverride">A typeless physical hit of this power, which can't be critical (confusion, Struggle).</param>
+    public static DamageResult Calculate(Battler attacker, Battler defender, Move move, Random rng, bool spread, int? powerOverride = null)
+    {
+        var result = new DamageResult { TypeMultiplier = 1f };
+        int power = powerOverride ?? move.Power;
+        if ((move.Category == MoveCategory.Status && !powerOverride.HasValue) || power <= 0) return result;
+
+        var atkPokemon = attacker.Pokemon!;
+        var defPokemon = defender.Pokemon!;
+        var attackerEffects = BattleEffects.Of(attacker).ToList();
+        bool breaksAbility = attackerEffects.Any(e => e.IgnoresTargetAbility);
+        var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaksAbility).ToList();
+
+        result.TypeMultiplier = powerOverride.HasValue ? 1f : Effectiveness(attacker, defender, move);
+        if (result.TypeMultiplier == 0f) return result;
+
+        // Critical hit: Generation 4's stages are 1/16, 1/8, 1/4, 1/3, 1/2
+        if (!powerOverride.HasValue && !defenderEffects.Any(e => e.PreventsCriticalHits))
+        {
+            int stage = move.Data.CritStage + attackerEffects.Sum(e => e.CritStageBonus);
+            int[] odds = { 16, 8, 4, 3, 2 };
+            result.IsCritical = rng.Next(odds[Math.Clamp(stage, 0, 4)]) == 0;
         }
 
-        // Type Effectiveness Check
-        result.TypeMultiplier = TypeChart.GetEffectiveness(
-            move.Type,
-            defender.Species.PrimaryType,
-            defender.Species.SecondaryType);
+        // Base power, then the attacking and defending stats
+        float powerMult = attackerEffects.Aggregate(1f, (m, e) => m * e.PowerMultiplier(attacker, defender, move));
+        int basePower = Math.Max(1, (int)(power * powerMult));
 
-        if (result.TypeMultiplier == 0.0f)
+        bool physical = powerOverride.HasValue || move.Category == MoveCategory.Physical;
+        StatType atkStat = physical ? StatType.Attack : StatType.SpAttack;
+        StatType defStat = physical ? StatType.Defense : StatType.SpDefense;
+
+        int atkStage = atkPokemon.StatStages.GetValueOrDefault(atkStat);
+        int defStage = defPokemon.StatStages.GetValueOrDefault(defStat);
+        if (defenderEffects.Any(e => e.IgnoresOthersStatStages)) atkStage = 0;
+        if (attackerEffects.Any(e => e.IgnoresOthersStatStages)) defStage = 0;
+        if (result.IsCritical)
         {
-            return result;
+            // A critical hit ignores the attacker's drops and the defender's boosts
+            atkStage = Math.Max(0, atkStage);
+            defStage = Math.Min(0, defStage);
         }
 
-        // Stats Selection (Physical vs Special Split)
-        int atkVal = move.Category == MoveCategory.Physical
-            ? attacker.GetEffectiveStat(StatType.Attack)
-            : attacker.GetEffectiveStat(StatType.SpAttack);
+        float atk = RawStat(atkPokemon, atkStat) * StageMultiplier(atkStage);
+        atk *= attackerEffects.Aggregate(1f, (m, e) => m * e.AttackMultiplier(attacker, move));
+        // Thick Fat and Heatproof halve the attacker's stat in Generation 4; as a damage multiplier the result is the same
+        float def = RawStat(defPokemon, defStat) * StageMultiplier(defStage);
+        def *= defenderEffects.Aggregate(1f, (m, e) => m * e.DefenseMultiplier(defender, move));
 
-        int defVal = move.Category == MoveCategory.Physical
-            ? defender.GetEffectiveStat(StatType.Defense)
-            : defender.GetEffectiveStat(StatType.SpDefense);
+        int level = atkPokemon.Level;
+        int damage = (2 * level / 5 + 2) * basePower * Math.Max(1, (int)atk) / Math.Max(1, (int)def) / 50;
 
-        // Gen 4 Critical Hit Check (1/16 base, 1/8 with high crit)
-        int critThreshold = move.Data.CritStage > 0 ? 8 : 16;
-        result.IsCritical = rng.Next(critThreshold) == 0;
-        float critMult = result.IsCritical ? 2.0f : 1.0f;
+        if (atkPokemon.Status == StatusCondition.Burn && physical && !attackerEffects.Any(e => e.IgnoresBurnPenalty)) damage /= 2;
+        if (spread) damage = damage * 3 / 4;
+        damage += 2;
 
-        // Base Formula: ((2 * Level / 5 + 2) * Power * Atk / Def) / 50 + 2
-        float levelFactor = (2.0f * attacker.Level / 5.0f) + 2.0f;
-        float baseDmg = ((levelFactor * move.Power * ((float)atkVal / Math.Max(1, defVal))) / 50.0f) + 2.0f;
+        if (result.IsCritical) damage = (int)(damage * attackerEffects.Aggregate(2f, (m, e) => Math.Max(m, e.CriticalMultiplier)));
 
-        // STAB (Same Type Attack Bonus = 1.5x)
-        if (attacker.Species.PrimaryType == move.Type || attacker.Species.SecondaryType == move.Type)
+        // Random factor 85–100%
+        damage = damage * rng.Next(85, 101) / 100;
+
+        // Same-type attack bonus
+        if (!powerOverride.HasValue && attacker.HasType(move.Type))
         {
             result.IsSTAB = true;
-            baseDmg *= 1.5f;
+            float stab = attackerEffects.Select(e => e.StabOverride).Where(s => s.HasValue).Select(s => s!.Value).DefaultIfEmpty(1.5f).Max();
+            damage = (int)(damage * stab);
         }
 
-        // Type multiplier
-        baseDmg *= result.TypeMultiplier;
+        damage = (int)(damage * result.TypeMultiplier);
 
-        // Critical multiplier
-        baseDmg *= critMult;
+        float finalMult = attackerEffects.Aggregate(1f, (m, e) => m * e.DamageMultiplier(attacker, defender, move, result.TypeMultiplier));
+        finalMult *= defenderEffects.Aggregate(1f, (m, e) => m * e.IncomingDamageMultiplier(defender, attacker, move, result.TypeMultiplier));
+        damage = (int)(damage * finalMult);
 
-        // Burn penalty for physical attackers
-        if (attacker.Status == StatusCondition.Burn && move.Category == MoveCategory.Physical)
-        {
-            baseDmg *= 0.5f;
-        }
-
-        // Random variance (0.85 to 1.00)
-        float randomVariance = (rng.Next(85, 101)) / 100.0f;
-        baseDmg *= randomVariance;
-
-        result.Damage = Math.Max(1, (int)Math.Floor(baseDmg));
+        result.Damage = Math.Max(1, damage);
         return result;
+    }
+
+    /// <summary>The stat before stages (and before paralysis, which only slows).</summary>
+    private static int RawStat(Pokemon p, StatType stat) => stat switch
+    {
+        StatType.Attack => p.Attack,
+        StatType.Defense => p.Defense,
+        StatType.SpAttack => p.SpAttack,
+        StatType.SpDefense => p.SpDefense,
+        StatType.Speed => p.Speed,
+        _ => 100
+    };
+
+    public static float StageMultiplier(int stage)
+    {
+        stage = Math.Clamp(stage, -6, 6);
+        return stage >= 0 ? (2f + stage) / 2f : 2f / (2f - stage);
+    }
+
+    /// <summary>Accuracy and evasion stages combine into one, with thirds instead of halves.</summary>
+    public static float AccuracyStageMultiplier(int stage)
+    {
+        stage = Math.Clamp(stage, -6, 6);
+        return stage >= 0 ? (3f + stage) / 3f : 3f / (3f - stage);
     }
 }

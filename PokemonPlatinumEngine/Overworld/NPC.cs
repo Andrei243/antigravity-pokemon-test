@@ -40,6 +40,9 @@ public class NPC
     public bool IsPokeMartClerk { get; set; } = false;
     public bool IsPCTerminal { get; set; } = false;
 
+    /// <summary>Takes the player to the next region (a ferry sailor, say) once this region's story is finished.</summary>
+    public bool IsTransportAttendant { get; set; } = false;
+
     /// <summary>Remembers where the trainer was standing, before they walk up to the player.</summary>
     public void LeavePost() => post ??= (GridX, GridY, Facing);
 
