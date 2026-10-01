@@ -7,7 +7,7 @@
 - `Core/GameEngine.cs` switches between overworld, dialogue, battle and menu states. NPCs (`Overworld/NPC.cs`) have fixed dialogue lines and can be trainers (line of sight, "!" and a battle), a nurse, a clerk, a PC or the starter briefcase.
 - A fresh game already has a Turtwig, and the Running Shoes are always on.
 - There are no story flags, scripted events, cutscenes, key items, field moves or rival; badges are only a bitmask in the save; `NPC.HasBattled` is not saved.
-- Battles (`Battle/BattleEngine.cs`): single battles with physical/special damage, simple status and stat moves, catching, EXP, level-ups and evolution, switching, a small bag. Presentation (`BattleAnimator`, `BattleRenderer`) is driven by `QueueMessage(text, onComplete, onShow)`: `onShow` starts the animation a message describes. No abilities, held items, double battles or weather.
+- Battles (`Battle/BattleEngine.cs`): single and double battles with physical/special damage, simple status and stat moves, catching, EXP, level-ups and evolution, switching, a small bag. Presentation (`BattleAnimator`, `BattleRenderer`) is driven by `QueueMessage(text, onComplete, onShow)`: `onShow` starts the animation a message describes. Abilities, held items and Gen 4 status rules are partly in (see S3); no weather or tag battles.
 
 ## Design
 
@@ -78,6 +78,8 @@ Party-menu field moves, the badge checks, obstacle objects (cut tree, cracked ro
 
 ### S3 · Battle features for the story
 Double and tag battles, trainer AI switching and items, whiteout money, EXP Share, move-learning prompt, evolution cancel, scripted wild battles.
+
+*Started (battle-system branch):* battles are slot-based (`Battler`, `BattleSetup`, `BattleFormat`). Double battles work against one trainer (`Trainer.DoubleBattle`), two trainers at once and wild pairs, with target choice, spread moves at ×0.75 and replacement of fainted Pokémon. Gen 4 status rules, confusion, flinching, Struggle and EXP split among participants are in. Still to do: tag battles with a partner, weather, trainer AI that switches and uses items, and two trainers spotting the player together in the field.
 
 ### S4–S15 · Chapters
 Follow Bulbapedia's Platinum walkthrough parts. For each chapter: port the scripts of its maps, place its trainers and items, set the flags that open the next area, and add a headless "story walk" test that plays the chapter's scripts with forced battle wins and checks the flags, items, badges and party at the end. Needs the chapter's areas from plan 01 and the species from plan 03.

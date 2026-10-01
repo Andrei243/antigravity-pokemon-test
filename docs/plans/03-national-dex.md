@@ -48,6 +48,8 @@ Table-driven effects: first the common ones (status, stat stages, multi-hit, rec
 ### D3 · Abilities and held items
 Generation 4's abilities (start with the ones on story trainers' Pokémon: Intimidate, Levitate, Sturdy, Static, the starter abilities, weather abilities), held items and berries. Abilities not yet implemented show up but do nothing, marked in the data so a test can list them.
 
+*Started (battle-system branch):* `Battle/Effects/BattleEffect.cs` is one hook class shared by abilities and held items (entry, damage and accuracy modifiers, after a hit, status and stat-drop blocks, end of turn). About 70 Generation 4 abilities work; `AbilityDatabase` lists the rest with `IsImplemented = false` (weather abilities, Sturdy, Swift Swim, Chlorophyll and others wait for weather and D2). About 50 held items and berries work through `HeldItemEffects`. Species abilities for the 23 existing species sit in one table in `AbilityDatabase` until D1 imports them; move targets, contact/punch/sound flags, flinch and confusion chances sit in one `ApplyBattleDetails` block at the end of `MoveDatabase` for D1 to carry into the JSON.
+
 ### D4 · Evolutions and forms
 All Generation 4 evolution methods: level, stone, friendship (day and night), held item and time, known move, location (Mt. Coronet's magnetic field, the Moss Rock in Eterna Forest, the Ice Rock on Route 217), gender, the party-based ones; trade evolutions replaced (decision 4). Forms: Giratina's Origin Forme, Rotom's appliances, Shaymin's Sky Forme, Deoxys, Burmy and Wormadam cloaks, Shellos and Gastrodon's east and west seas, Unown letters, Castform, Cherrim, Arceus's plates. Optional: the Solaceon Day Care and eggs.
 
