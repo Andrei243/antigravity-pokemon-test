@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -40,7 +41,7 @@ public class StarterSelectScreen
                 string chosenSpecies = starters[SelectedIndex];
                 var species = PokemonDatabase.Get(chosenSpecies)!;
                 var pokemon = new Pokemon(species, 5);
-                AudioManager.PlayBGM("Victory");
+                AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
                 Close();
                 return pokemon;
             }

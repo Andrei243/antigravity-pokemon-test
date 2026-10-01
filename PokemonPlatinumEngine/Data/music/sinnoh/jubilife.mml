@@ -1,0 +1,53 @@
+# Jubilife City: the big city, busy and a little jazzy. Original composition for this game.
+title Jubilife City
+tempo 138
+meter 4/4
+reverb 0.25
+nighttempo 0.92
+
+track lead brass night=clarinet vol=0.9 pan=0 rev=0.25
+  L o5 e8 g8 r8 >c8 r8 <b8 g4 | a4. g8 e4 c4 | d8 f8 r8 a8 r8 >c8 <a4 | b4. a8 g2 |
+  e8 g8 r8 >c8 r8 d8 e4 | c4. <b8 a4 e4 | f8 a8 >c8 e8 d4 c4 | d2 <b4 r4 |
+  e8 g8 r8 >c8 r8 <b8 g4 | a-4. b8 >d4 <b4 | >c4. <b8 a4 g4 | e8 g8 b-8 >c8 r8 <b-8 g4 |
+  a4. g8 f4 c4 | a-4. g8 f4 d4 | e8 g8 b4 >c+8 <b8 a4 | >d4 c8 <a8 b4 g4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track violin violin night=flute vol=0.95 pan=0.1 rev=0.35
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 a2. >c4 | <b2. g4 | g4 b4 >e4 d4 | c2 <a2 |
+  f4 a4 >d4 c4 | <b2. >d4 | e2 d8 c8 <b4 | >c2 <b4 g4 |
+
+track stabs brass night=horn vol=0.4 pan=-0.25 rev=0.2
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r8 o4 (e f a)8 r4 (e f a)8 r4. | r8 (f g b)8 r4 (f g b)8 r4. | r8 (e g >d)8 r4 (e g >d)8 r4. | r8 (g a >c)8 r4 (g a >c)8 r4. |
+  r8 (f >c d)8 r4 (f >c d)8 r4. | r8 (f g b)8 r4 (f g b)8 r4. | r8 (e b >c)8 r4 (e b >c)8 r4. | r8 (f g >c)8 r4 r8 (f g b)8 r4 |
+
+track comp epiano night=vibraphone vol=0.32 pan=0.3 rev=0.25
+  L r8 o3 (b >c e g)8 r4 (b >c e g)8 r8 (b >c e g)4 | r8 (a >c e g)8 r4 (a >c e g)8 r8 (a >c e g)4 | r8 (a >c d f)8 r4 (a >c d f)8 r8 (a >c d f)4 | r8 (g b >d f)8 r4 (g b >d f)8 r8 (g b >d f)4 |
+  r8 (g b >c e)8 r4 (g b >c e)8 r8 (g b >c e)4 | r8 (g a >c e)8 r4 (g a >c e)8 r8 (g a >c e)4 | r8 (f a >c e)8 r4 (f a >c e)8 r8 (f a >c e)4 | r8 (f g b >d)8 r4 (f g b >d)8 r8 (f g b >d)4 |
+  r8 (g b >c e)8 r4 (g b >c e)8 r8 (g b >c e)4 | r8 (a- b >d e)8 r4 (a- b >d e)8 r8 (a- b >d e)4 | r8 (g a >c e)8 r4 (g a >c e)8 r8 (g a >c e)4 | r8 (g b- >c e)8 r4 (g b- >c e)8 r8 (g b- >c e)4 |
+  r8 (f a >c e)8 r4 (f a >c e)8 r8 (f a >c e)4 | r8 (f a- >c d)8 r4 (f a- >c d)8 r8 (f a- >c d)4 | r8 (g b >d e)8 r4 r8 (g a >c+ e)8 r4 | r8 (f a >c d)8 r4 r8 (f g b >d)8 r4 |
+  r8 (f a >c e)8 r4 (f a >c e)8 r8 (f a >c e)4 | r8 (f g b >d)8 r4 (f g b >d)8 r8 (f g b >d)4 | r8 (g b >d e)8 r4 (g b >d e)8 r8 (g b >d e)4 | r8 (g a >c e)8 r4 (g a >c e)8 r8 (g a >c e)4 |
+  r8 (f a >c d)8 r4 (f a >c d)8 r8 (f a >c d)4 | r8 (f g b >d)8 r4 (f g b >d)8 r8 (f g b >d)4 | r8 (g b >c e)8 r4 (g b >c e)8 r8 (g b >c e)4 | r8 (g >c d f)8 r4 r8 (g b >d f)8 r4 |
+
+track bass synthbass night=bass vol=0.66 rev=0.05
+  L o4 c4 e4 g4 <g4 | a4 >c4 e4 c4 | d4 f4 <a4 f4 | g4 b4 >d4 d4 |
+  c4 e4 g4 <g4 | a4 >c4 e4 <g4 | f4 a4 >c4 <f4 | g4 b4 >d4 d4 |
+  c4 e4 g4 d4 | <e4 a-4 b4 b4 | a4 >c4 e4 d4 | c4 e4 g4 <g4 |
+  f4 a4 >c4 <g4 | f4 a-4 >c4 d4 | <e4 g4 a4 >c+4 | d4 f4 <g4 b4 |
+  f4 a4 >c4 <f4 | g4 b4 >d4 d4 | <e4 g4 b4 g4 | a4 >c4 e4 c4 |
+  d4 f4 <a4 f4 | g4 b4 >d4 d4 | c4 e4 g4 <a4 | g4 >c4 <g4 b4 |
+
+track drums kit vol=0.55 rev=0.12
+  v95 L [ (b c)8 r8 s8 b8 r8 b8 s8 r8 | [ b8 r8 s8 b8 r8 b8 s8 r8 | ]6 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 | ]3
+
+track hats kit vol=0.6 pan=0.15 rev=0.1
+  v60 L [ [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v50 o8 v60 | ]8 ]3
+

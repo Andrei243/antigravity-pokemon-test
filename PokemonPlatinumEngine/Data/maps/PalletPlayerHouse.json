@@ -1,7 +1,7 @@
 {
   "name": "PalletPlayerHouse",
   "displayName": "Home",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "kanto/pallet",
   "interior": "House",
   "trees": "Round",
   "width": 10,

@@ -8,6 +8,7 @@ The game's species, moves, items and maps live as JSON in `PokemonPlatinumEngine
 | `moves.json` | `MoveDatabase` | A list of `MoveData`. `priority` and the secondary-effect fields (`inflictStatus`, `statusChancePercent`, `targetStatChange`, `statStageAmount`, `statChangeTargetSelf`, `statChangeChancePercent`, `recoilPercent`, `drainPercent`, `critStage`) are left out when they are zero or none, and so are the battle details: `target` (`Selected`, `AllFoes`, `AllOthers`, `User`, `RandomFoe`), `flags` (`Contact`, `Punch`, `Sound`, comma-separated), `flinchChancePercent`, `confuseChancePercent`, `alsoChangesStats` (more stats changed like `targetStatChange`), `thawsUser` and `healPercent`. An unknown move name gives Tackle. |
 | `items.json` | `ItemDatabase` | A list of `ItemData`. `effectValue` is HP restored, or a ball's catch multiplier × 10. Items from id 200 are held in battle; what each one does is in `Battle/Effects/HeldItemEffects.cs`, and `DataFileTests` checks that every one has an effect. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per map; the file name must match its `name`. |
+| `music/<folder>/<name>.mml` | `MusicLibrary` | Songs in a small text format, one folder per region plus `common`; see `docs/music-format.md`. |
 
 ## Maps
 
@@ -15,7 +16,7 @@ The game's species, moves, items and maps live as JSON in `PokemonPlatinumEngine
 {
   "name": "Route201",            // what warps and saves refer to
   "displayName": "Route 201",
-  "bgmTrack": "Route201",
+  "bgmTrack": "sinnoh/route201", // a song in Data/music (docs/music-format.md); houses and marts reuse their town's
   "interior": "None",            // None (outdoors), House, PokemonCenter, PokeMart, Lab
   "trees": "Round",              // Round or Pine
   "width": 36, "height": 22,

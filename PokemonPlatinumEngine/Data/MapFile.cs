@@ -16,7 +16,7 @@ public sealed class MapFile
 {
     public string Name { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
-    public string BgmTrack { get; set; } = "Twinleaf";
+    public string BgmTrack { get; set; } = "";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
     public int Width { get; set; }

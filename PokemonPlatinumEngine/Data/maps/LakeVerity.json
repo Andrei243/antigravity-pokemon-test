@@ -1,7 +1,7 @@
 {
   "name": "LakeVerity",
   "displayName": "Lake Verity",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/lake",
   "interior": "None",
   "trees": "Pine",
   "width": 28,

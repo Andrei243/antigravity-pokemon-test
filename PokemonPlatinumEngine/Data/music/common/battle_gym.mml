@@ -1,0 +1,79 @@
+# Battle against a Gym Leader: timpani and a scale run, then a fierce D-minor theme.
+# Original composition for this game.
+title Battle! Gym Leader
+tempo 176
+meter 4/4
+reverb 0.22
+
+track lead trumpet vol=0.88 pan=0 rev=0.22
+  r1 | r1 | o5 d8 r8 d8 r8 f8 r8 e8 e-8 | d2 a2 |
+  L >d4 <a8 >d8 f4 e8 d8 | d4. <b-8 f4 b-4 | >c4 <g8 >c8 e4 d8 c8 | c+2 e2 |
+  f4 e8 d8 <a4 >d4 | f4. d8 <b-4 >d4 | g4 f8 d8 <b-4 g4 | a4 >c+4 e4 g4 |
+  f2 d4 <b-4 | >e2 c4 <g4 | a4 >c8 e8 a4 e4 | f2. d4 |
+  d4. <b-8 g4 >d4 | e4. c8 <g4 >e4 | f4 e8 c8 <a4 >c4 | c+4 e4 a4 g4 |
+  d8 d8 r8 d8 r8 <b-8 g4 | >c+8 c+8 r8 c+8 r8 e8 <a4 | >d4 f4 a4 f4 | d1 |
+  g8 g8 r8 g8 r8 f8 d4 | e8 e8 r8 e8 r8 c+8 <a4 | b-4 >d4 e4 g4 | a2 g4 e4 |
+  d4 <a8 >d8 f4 e8 d8 | d4. <b-8 f4 b-4 | >c4 <g8 >c8 e4 d8 c8 | c+2 e2 |
+  f4 e8 d8 <a4 >d4 | f4. d8 <b-4 >d4 | g4 f8 d8 <b-4 g4 | a4 >c+4 e4 g4 |
+
+track horn horn vol=0.45 pan=-0.3 rev=0.25
+  r1 | r1 | r1 | r1 |
+  L o4 (d f)1 | (d b-)1 | (e >c)1 | (c+ a)1 |
+  (d f)1 | (d b-)1 | (g b-)1 | (c+ a)1 |
+  (d b-)1 | (e >c)1 | (a >c)1 | (d f)1 |
+  o3 (b- >g)1 | o4 (c e)1 | o3 (a >f)1 | (a >c+)1 |
+  (b- >g)1 | o4 (c+ a)1 | (d f)1 | (d f)1 |
+  o3 (b- >g)1 | o4 (c+ a)1 | (d b-)2 (e >c)2 | (c+ a)1 |
+  (d f)1 | (d b-)1 | (e >c)1 | (c+ a)1 |
+  (d f)1 | (d b-)1 | (g b-)1 | (c+ a)1 |
+
+track strings violin vol=0.45 pan=0.3 rev=0.25
+  o5 d16 e16 f16 g16 a16 b-16 >c+16 d16 c+16 <b-16 a16 g16 f16 e16 d16 c+16 | d16 e16 f16 g16 a16 b-16 >c+16 d16 e16 f16 g16 a16 b-16 a16 g16 f16 | r1 | r1 |
+  L o4 d8 f8 a8 >d8 <a8 f8 d8 f8 | d8 f8 b-8 >d8 <b-8 f8 d8 f8 | e8 g8 >c8 e8 c8 <g8 e8 g8 | e8 a8 >c+8 e8 c+8 <a8 e8 a8 |
+  d8 f8 a8 >d8 <a8 f8 d8 f8 | d8 f8 b-8 >d8 <b-8 f8 d8 f8 | d8 g8 b-8 >d8 <b-8 g8 d8 g8 | e8 g8 a8 >c+8 <a8 g8 e8 g8 |
+  d8 f8 b-8 >d8 <b-8 f8 d8 f8 | e8 g8 >c8 e8 c8 <g8 e8 g8 | e8 a8 >c8 e8 c8 <a8 e8 a8 | d8 f8 a8 >d8 <a8 f8 d8 f8 |
+  d8 g8 b-8 >d8 <b-8 g8 d8 g8 | e8 g8 >c8 e8 c8 <g8 e8 g8 | f8 a8 >c8 f8 c8 <a8 f8 a8 | e8 g8 a8 >c+8 <a8 g8 e8 g8 |
+  d8 g8 b-8 >d8 <b-8 g8 d8 g8 | e8 a8 >c+8 e8 c+8 <a8 e8 a8 | d8 f8 a8 >d8 <a8 f8 d8 f8 | d8 f8 a8 >d8 <a8 f8 d8 f8 |
+  d8 g8 b-8 >d8 <b-8 g8 d8 g8 | e8 a8 >c+8 e8 c+8 <a8 e8 a8 | d8 f8 b-8 >d8 <e8 g8 >c8 e8 | <e8 g8 a8 >c+8 <a8 g8 e8 g8 |
+  d8 f8 a8 >d8 <a8 f8 d8 f8 | d8 f8 b-8 >d8 <b-8 f8 d8 f8 | e8 g8 >c8 e8 c8 <g8 e8 g8 | e8 a8 >c+8 e8 c+8 <a8 e8 a8 |
+  d8 f8 a8 >d8 <a8 f8 d8 f8 | d8 f8 b-8 >d8 <b-8 f8 d8 f8 | d8 g8 b-8 >d8 <b-8 g8 d8 g8 | e8 g8 a8 >c+8 <a8 g8 e8 g8 |
+
+track pulse square vol=0.3 pan=-0.15 rev=0.15
+  r1 | r1 | r1 | r1 |
+  L o3 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 | d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 | e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 | <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 |
+  <d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 | d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 | d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 | e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 |
+  d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 | e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 | <e16 >c16 <a16 >c16 <e16 >c16 <a16 >c16 <e16 >c16 <a16 >c16 <e16 >c16 <a16 >c16 | <d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 |
+  d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 | e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 | <f16 >c16 <a16 >c16 <f16 >c16 <a16 >c16 <f16 >c16 <a16 >c16 <f16 >c16 <a16 >c16 | <e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 |
+  d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 | e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 | <d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 | d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 |
+  d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 | e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 | <d16 b-16 f16 b-16 d16 b-16 f16 b-16 e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 | <e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 |
+  d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 | d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 | e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 <e16 >c16 <g16 >c16 | <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 <e16 >c+16 <a16 >c+16 |
+  <d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 d16 a16 f16 a16 | d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 d16 b-16 f16 b-16 | d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 d16 b-16 g16 b-16 | e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 e16 a16 g16 a16 |
+
+track bass synthbass vol=0.72 rev=0.05
+  o3 d1 | d1 | d8 r8 d8 r8 f8 r8 e8 e-8 | d2 <a2 |
+  L o4 d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 | o3 b-8 >b-8 <b-8 >b-8 <b-8 >b-8 <b-8 >b-8 | c8 >c8 <c8 >c8 <c8 >c8 <c8 >c8 | o3 a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 |
+  d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 | o3 b-8 >b-8 <b-8 >b-8 <b-8 >b-8 <b-8 >b-8 | <g8 >g8 <g8 >g8 <g8 >g8 <g8 >g8 | <a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 |
+  <b-8 >b-8 <b-8 >b-8 <b-8 >b-8 <b-8 >b-8 | c8 >c8 <c8 >c8 <c8 >c8 <c8 >c8 | o3 a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 | d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 |
+  o3 g8 >g8 <g8 >g8 <g8 >g8 <g8 >g8 | c8 >c8 <c8 >c8 <c8 >c8 <c8 >c8 | o3 f8 >f8 <f8 >f8 <f8 >f8 <f8 >f8 | <a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 |
+  <g8 >g8 <g8 >g8 <g8 >g8 <g8 >g8 | <a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 | d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 | <d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 |
+  o3 g8 >g8 <g8 >g8 <g8 >g8 <g8 >g8 | <a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 | <b-8 >b-8 <b-8 >b-8 c8 >c8 <c8 >c8 | o3 a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 |
+  d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 | o3 b-8 >b-8 <b-8 >b-8 <b-8 >b-8 <b-8 >b-8 | c8 >c8 <c8 >c8 <c8 >c8 <c8 >c8 | o3 a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 |
+  d8 >d8 <d8 >d8 <d8 >d8 <d8 >d8 | o3 b-8 >b-8 <b-8 >b-8 <b-8 >b-8 <b-8 >b-8 | <g8 >g8 <g8 >g8 <g8 >g8 <g8 >g8 | <a8 >a8 <a8 >a8 <a8 >a8 <a8 >a8 |
+
+track timpani timpani vol=0.7 rev=0.3
+  o4 d8 d8 d8 d8 d8 d8 d8 d8 | d16 d16 d16 d16 d16 d16 d16 d16 <a16 a16 a16 a16 a16 a16 a16 a16 | >d8 r8 d8 r8 r2 | d2 <a2 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track drums kit vol=0.52 rev=0.12
+  v100 r1 | r1 | b8 r8 b8 r8 s16 s16 s16 s16 s16 s16 s16 s16 | (b c)4 s8 s8 s16 s16 s16 s16 t16 m16 f16 f16 | L [ (b c)8 b8 s8 b8 r8 b8 s8 b16 b16 | [ b8 b8 s8 b8 r8 b8 s8 b16 b16 | ]6 b8 b8 s8 s16 s16 t16 t16 m16 m16 f16 f16 f16 f16 | ]4
+
+track hats kit vol=0.5 pan=0.15 rev=0.1
+  r1 | r1 | r1 | r1 | L v65 [ h8 v45 o8 v65 h8 v45 h8 v65 h8 v45 o8 v65 h8 v45 h8 v65 | ]32
+

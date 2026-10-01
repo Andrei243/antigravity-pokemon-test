@@ -147,7 +147,6 @@ public partial class BattleEngine : IBattleContext
         foreach (var foe in EnemySlots.Where(b => b.Pokemon != null)) Pokedex.RegisterSeen(foe.Pokemon!.Species.DexNumber);
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) b.Pokemon!.ResetStatStages();
 
-        AudioManager.PlayBGM("Battle");
         PlayIntro();
         AdvanceEventQueue();
     }

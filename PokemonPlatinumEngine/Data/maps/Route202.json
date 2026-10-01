@@ -1,7 +1,7 @@
 {
   "name": "Route202",
   "displayName": "Route 202 & Distortion Gateway",
-  "bgmTrack": "Route201",
+  "bgmTrack": "sinnoh/route202",
   "interior": "None",
   "trees": "Round",
   "width": 30,

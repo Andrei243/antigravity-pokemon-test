@@ -1,0 +1,16 @@
+# Healing at a Pokémon Center: a chiming rise and fall.
+# Plays once, then the music comes back. Original composition for this game.
+title Pokémon Healed
+tempo 116
+meter 4/4
+reverb 0.35
+
+track chime celesta vol=0.8 rev=0.5
+  o6 c8 e8 g8 e8 f8 a8 g4 | e8 c8 d8 <g8 >c4 r4 |
+
+track vibes vibraphone vol=0.5 pan=-0.3 rev=0.5
+  o5 (c e g)4 r4 (c f a)4 (c e g)4 | o4 (b >d g)4 r4 o5 (c e g)4 r4 |
+
+track bass bass vol=0.6 rev=0.2
+  o4 c4 r4 <f4 >c4 | <g4 r4 c4 r4 |
+

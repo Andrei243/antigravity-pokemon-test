@@ -1,7 +1,7 @@
 {
   "name": "PalletTown",
   "displayName": "Pallet Town",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "kanto/pallet",
   "interior": "None",
   "trees": "Round",
   "width": 20,

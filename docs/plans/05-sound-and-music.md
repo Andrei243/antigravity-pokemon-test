@@ -4,10 +4,14 @@
 
 ## Where we are
 
-`Core/AudioManager.cs` opens raylib's audio device at 22 kHz mono and has:
-- four hand-typed single-voice melodies (Twinleaf, Route 201, battle, victory), played one note at a time by re-synthesising a new sound for every note;
-- about a dozen synthesised beeps: cursor, select, cancel, bump, grass, two hit sounds, faint, ball throw and shake, level-up, heal;
-- no cries, ambience, volume settings, fades or fanfare handling.
+Since 2026-10-01 (the "better music" session):
+- **Music engine** (`Audio/`): our own synthesiser (40 voices, band-limited wavetables with brightness envelopes, FM, vibrato, unison, synthesised drum kit, reverb) at the DS's 32,768 Hz, fed to a raylib audio stream from its audio thread. `MusicMixer` fades between areas, keeps the same theme running, cuts in for battles, and pauses the music under fanfares.
+- **Songs** are text files in a small MML format under `Data/music/<region>/` and `Data/music/common/` (`docs/music-format.md`): 19 original tracks. Kanto: Pallet Town, a Kanto wild battle. Sinnoh: Twinleaf, Route 201, Routes 202–204, Sandgem, Jubilife, the lakes, Rowan's lab. Shared: title, Pokémon Center, wild, trainer and gym leader battles, wild and trainer victories, and the heal, item, level-up and new-Pokémon fanfares. Area themes have night arrangements (softer instruments, slower, quieter drums).
+- **Director**: maps name their theme (`bgmTrack`); battles pick the wild, trainer, rival or gym theme from the opponent; roles look in the region's folder before `common`. Healing, level-ups (battle and Rare Candy) and receiving a starter play fanfares.
+- **Checks**: `tools/MusicRender` renders WAVs and reports levels, clipping and clashing notes; `MusicTests` covers the director, the mixer and the parser, and renders every song.
+- Still from before: about a dozen synthesised sound effects played through raylib `Sound`s; no cries, ambience or volume settings.
+
+**Decision (2026-10-01)**: the music is synthesised by our own code from MML text rather than MIDI through MeltySynth and a SoundFont, so the game keeps generating all of its audio in code with no downloaded assets. The override folder and a SoundFont remain possible later if the built-in instruments fall short.
 
 ## What "like the original" means
 
@@ -74,10 +78,10 @@ Rain, wind, snow, waterfalls, the sea, cave drips; positional sounds (panned by 
 
 ## Status
 
-- [ ] A1 Audio engine
-- [ ] A2 Music director and sound map
+- [ ] A1 Audio engine — music part done (synth, mixer, stream, fades, render tool); still to do: sound effects through the mixer, buses and volume options
+- [ ] A2 Music director and sound map — area, battle, victory and fanfare rules done; still to do: trainer eye music, bike and surf, the low-HP alarm, a sound map file
 - [ ] A3 Sound effects
 - [ ] A4 Cries
-- [ ] A5 Core music
+- [ ] A5 Core music — 19 tracks done (see above); still to do: new-game introduction, Poké Mart, rival theme and battle, trainer eye themes, bike, surf, evolution, the badge, TM and key-item fanfares
 - [ ] A6 Region music
 - [ ] A7 Ambience and polish

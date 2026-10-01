@@ -12,6 +12,7 @@
     <PackageReference Include="Raylib-cs" Version="8.0.0" />
     <None Include="Assets\**\*" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\**\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\**\*.mml" CopyToOutputDirectory="PreserveNewest" />
     <InternalsVisibleTo Include="PokemonPlatinumTests" />
   </ItemGroup>
 

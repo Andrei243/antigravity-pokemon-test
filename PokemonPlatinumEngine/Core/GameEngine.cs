@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -135,7 +136,7 @@ public class GameEngine
         // The game opens on the title screen, which offers the saved game if there is one
         titleSave = SaveManager.LoadGame();
         titleScreen = new TitleScreen(titleSave);
-        AudioManager.PlayBGM("Title");
+        AudioManager.PlayMusic(MusicRole.Title);
     }
 
     /// <summary>Leaves the title screen into a fresh game.</summary>
@@ -175,7 +176,7 @@ public class GameEngine
         gameStarted = true;
         trainersLookOnArrival = true;
         startMenu.PlayerName = playerName;
-        AudioManager.PlayBGM(currentMap.BgmTrack);
+        PlayAreaMusic(currentMap);
         AnnounceLocation();
 
         stateBeforeTransition = GameState.Overworld;
@@ -301,7 +302,6 @@ public class GameEngine
     public void Update(float dt)
     {
         if (gameStarted) playTime += dt;
-        AudioManager.Update(dt);
 
         toast.Update(dt);
         startMenu.Animate(dt);
@@ -523,7 +523,7 @@ public class GameEngine
                 dialogue.ShowDialogue(npc.Name, npc.DialogLines, () =>
                 {
                     playerParty.HealAll();
-                    AudioManager.PlaySound("heal");
+                    AudioManager.PlayFanfare(MusicRole.FanfareHeal);
                     ShowNotification("All Pokémon were fully healed!");
                 });
                 currentState = GameState.Dialogue;
@@ -586,11 +586,12 @@ public class GameEngine
 
     private void HandleWarp(Warp warp)
     {
+        // The music fades with the screen, so a building with its own theme starts as the door opens on it
+        PlayAreaMusic(MapDatabase.Get(warp.TargetMap));
         StartTransition(GameState.Overworld, () =>
         {
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
-            AudioManager.PlayBGM(currentMap.BgmTrack);
             AnnounceLocation();
         });
     }
@@ -599,14 +600,24 @@ public class GameEngine
     private void TravelTo(Region region)
     {
         var spot = region.ArrivalSpot!;
+        PlayAreaMusic(MapDatabase.Get(spot.Map));
         StartTransition(GameState.Overworld, () =>
         {
             currentMap = MapDatabase.Get(spot.Map);
             player.SetPosition(spot.X, spot.Y, spot.Facing);
             trainersLookOnArrival = true;
-            AudioManager.PlayBGM(currentMap.BgmTrack);
             AnnounceLocation();
         });
+    }
+
+    /// <summary>
+    /// Plays a map's theme (its night arrangement at night) with its region's versions of the shared themes.
+    /// A map that names no theme keeps whatever is playing; the same theme carries on without a restart.
+    /// </summary>
+    private static void PlayAreaMusic(Map map)
+    {
+        AudioManager.Region = RegionDatabase.RegionOfMap(map.Name)?.Id;
+        if (!string.IsNullOrEmpty(map.BgmTrack)) AudioManager.PlayMusic(map.BgmTrack);
     }
 
     /// <summary>
@@ -672,11 +683,12 @@ public class GameEngine
 
         playerPokedex.RegisterSeen(wildSpecies.DexNumber);
 
+        // The battle theme cuts in as the screen starts to flash, before the battle itself appears
+        AudioManager.PlayMusic(MusicRole.BattleWild, immediate: true);
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
             battleRenderer.Trees = currentMap.Trees;
-            AudioManager.PlayBGM("Battle");
         });
     }
 
@@ -688,6 +700,7 @@ public class GameEngine
             trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
         }
 
+        AudioManager.PlayMusic(MusicDirector.BattleRole(new[] { trainer.TrainerClass }), immediate: true);
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(new BattleSetup
@@ -701,7 +714,6 @@ public class GameEngine
             });
             battleRenderer.Trees = currentMap.Trees;
             battleTrainer = trainerNpc;
-            AudioManager.PlayBGM("Battle");
         });
     }
 
@@ -721,7 +733,7 @@ public class GameEngine
                     ? $"Lucas whited out and paid ¥{penalty}... Restored at home!" 
                     : "Lucas whited out... Restored at home!");
             }
-            AudioManager.PlayBGM(currentMap.BgmTrack);
+            PlayAreaMusic(currentMap);
         });
     }
 

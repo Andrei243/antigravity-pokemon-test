@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -143,7 +144,7 @@ public class BagScreen
             {
                 lead.GainExp(lead.ExpForNextLevel - lead.CurrentExp, out var moves, out bool evolved, out string oldName);
                 inventory.RemoveItem(item, 1);
-                AudioManager.PlaySound("levelup");
+                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
                 onNotification($"{lead.DisplayName} grew to Lv. {lead.Level}!");
             }
         }

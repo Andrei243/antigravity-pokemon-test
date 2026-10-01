@@ -1,7 +1,7 @@
 {
   "name": "TwinleafTown",
   "displayName": "Twinleaf Town",
-  "bgmTrack": "Twinleaf",
+  "bgmTrack": "sinnoh/twinleaf",
   "interior": "None",
   "trees": "Pine",
   "width": 24,
