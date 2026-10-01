@@ -20,7 +20,7 @@ Counted on 2026-10-01 from the decompilation and from PokeAPI's data:
 ## Where we are
 
 - `Battle/BattleEngine.cs` (about 1,000 lines) holds the rules, the message queue and the timing in one class. It runs single battles: damage (Generation 4's formula with critical hits, STAB, the type chart and the burn penalty), accuracy, stat stages, simple status and stat moves driven by fields of `MoveData`, burn and poison damage at the end of the turn, switching, running, catching (`CatchCalculator`), a flat EXP formula, level-ups and level evolution.
-- Sleep, freeze, paralysis and confusion can be inflicted but do nothing. There are no abilities, held items, EV gains, friendship, weather, protection, multi-turn moves, hazards, double battles, or trainer AI beyond "strongest move".
+- Since the battle-system branch: Generation 4 status rules, about 70 abilities, about 50 held items and berries, and double battles (see R9 below). There are no EV gains, friendship, weather, protection, multi-turn moves, hazards, tag battles, or trainer AI beyond "strongest move".
 - Data: 45 moves, 18 items in 5 bag pockets, 23 species.
 - Field: walking and running, one-way ledges, one encounter table per map, trainers that spot the player, healing, a shop, PC storage.
 
@@ -125,6 +125,8 @@ Each session ends with its tests green, the coverage report updated and the sess
 - **R7 · Abilities.** All 123, in battle and in the field.
 - **R8 · Held items and berries**, and the items used during battle.
 - **R9 · Double battles and AI.** Doubles and tag battles, targets, the partner, wild doubles, Platinum's trainer AI, the Safari Game, the Pal Park show, scripted battles (the catching lesson, legendaries, roamers that flee). This replaces plan 02 · S3.
+
+*Started ahead of R1–R2 (battle-system branch), on today's `BattleEngine` rather than `Battle/Sim`:* battles are slot-based (`Battler`, `BattleSetup`, `BattleFormat`), with double battles against one trainer (`Trainer.DoubleBattle`), two trainers at once and wild pairs, target choice, spread moves at ×0.75 and replacement of fainted Pokémon. Sleep, freeze, paralysis, confusion and flinching follow Generation 4; Struggle and EXP split among participants are in. Abilities and held items share one hook class (`Battle/Effects/BattleEffect.cs`, the start of the event pipeline): about 70 abilities work and `AbilityDatabase` marks the rest `IsImplemented = false`; about 50 held items and berries work through `HeldItemEffects`. Species abilities, move targets and flags, and the held items are in the JSON files. Still to do for R7–R9: the remaining abilities, weather, tag battles with a partner, trainer AI that switches and uses items, and two trainers spotting the player together in the field. R2 should carry these hooks onto the new core rather than rewrite them.
 - **R10 · After the battle.** EXP, EVs, friendship, Pokérus, the move-learning prompt, every evolution method and Platinum's forms, money and whiting out, obedience, shininess, natures and Hidden Power. This replaces plan 03 · D4.
 
 ### Platinum's systems

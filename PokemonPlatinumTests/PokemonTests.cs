@@ -8,6 +8,8 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumTests;
 
+// MapDatabase is static, so the classes that rebuild it must not run in parallel
+[Collection("MapDatabase")]
 public class PokemonTests
 {
     [Fact]

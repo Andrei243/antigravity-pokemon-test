@@ -34,6 +34,30 @@ public class MoveData
     public int DrainPercent { get; set; } = 0;
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int CritStage { get; set; } = 0;
+
+    /// <summary>More stats changed by the same amount and on the same Pokémon as <see cref="TargetStatChange"/> (Close Combat).</summary>
+    public StatType[]? AlsoChangesStats { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int FlinchChancePercent { get; set; } = 0;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int ConfuseChancePercent { get; set; } = 0;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public MoveTarget Target { get; set; } = MoveTarget.Selected;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public MoveFlags Flags { get; set; } = MoveFlags.None;
+
+    /// <summary>Thaws a frozen user before it attacks (Flame Wheel).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool ThawsUser { get; set; }
+
+    /// <summary>Restores this share of the user's max HP (Synthesis, Recover).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int HealPercent { get; set; } = 0;
+
+    [JsonIgnore]
+    public bool MakesContact => (Flags & MoveFlags.Contact) != 0;
+    [JsonIgnore]
+    public bool HitsSeveral => Target is MoveTarget.AllFoes or MoveTarget.AllOthers;
 }
 
 public class Move
@@ -50,6 +74,7 @@ public class Move
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Priority => Data.Priority;
     public string Description => Data.Description;
+    public MoveTarget Target => Data.Target;
 
     public Move(MoveData data)
     {

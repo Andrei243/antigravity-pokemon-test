@@ -4,9 +4,9 @@ The game's species, moves, items and maps live as JSON in `PokemonPlatinumEngine
 
 | File | Read by | Contents |
 | --- | --- | --- |
-| `species.json` | `PokemonDatabase` | A list of `PokemonSpecies`: dex number, name, category, types, base stats, catch rate, experience yield, growth rate, height, weight, Pokédex text, learnset (`level`, `moveName`) and evolution (`level`, `targetSpecies`). `secondaryType` and `evolution` are left out when there is none. |
-| `moves.json` | `MoveDatabase` | A list of `MoveData`. `priority` and the secondary-effect fields (`inflictStatus`, `statusChancePercent`, `targetStatChange`, `statStageAmount`, `statChangeTargetSelf`, `statChangeChancePercent`, `recoilPercent`, `drainPercent`, `critStage`) are left out when they are zero or none. An unknown move name gives Tackle. |
-| `items.json` | `ItemDatabase` | A list of `ItemData`. `effectValue` is HP restored, or a ball's catch multiplier × 10. |
+| `species.json` | `PokemonDatabase` | A list of `PokemonSpecies`: dex number, name, category, types, base stats, catch rate, experience yield, growth rate, height, weight, Pokédex text, learnset (`level`, `moveName`), evolution (`level`, `targetSpecies`) and `abilities` (names from `AbilityDatabase`, in the order a new Pokémon picks from). `secondaryType` and `evolution` are left out when there is none. |
+| `moves.json` | `MoveDatabase` | A list of `MoveData`. `priority` and the secondary-effect fields (`inflictStatus`, `statusChancePercent`, `targetStatChange`, `statStageAmount`, `statChangeTargetSelf`, `statChangeChancePercent`, `recoilPercent`, `drainPercent`, `critStage`) are left out when they are zero or none, and so are the battle details: `target` (`Selected`, `AllFoes`, `AllOthers`, `User`, `RandomFoe`), `flags` (`Contact`, `Punch`, `Sound`, comma-separated), `flinchChancePercent`, `confuseChancePercent`, `alsoChangesStats` (more stats changed like `targetStatChange`), `thawsUser` and `healPercent`. An unknown move name gives Tackle. |
+| `items.json` | `ItemDatabase` | A list of `ItemData`. `effectValue` is HP restored, or a ball's catch multiplier × 10. Items from id 200 are held in battle; what each one does is in `Battle/Effects/HeldItemEffects.cs`, and `DataFileTests` checks that every one has an effect. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per map; the file name must match its `name`. |
 
 ## Maps

@@ -7,7 +7,7 @@
 - `Core/GameEngine.cs` switches between overworld, dialogue, battle and menu states. NPCs (`Overworld/NPC.cs`) have fixed dialogue lines and can be trainers (line of sight, "!" and a battle), a nurse, a clerk, a PC or the starter briefcase.
 - A fresh game already has a Turtwig, and the Running Shoes are always on.
 - There are no story flags, scripted events, cutscenes, key items, field moves or rival; badges are only a bitmask in the save; `NPC.HasBattled` is not saved.
-- Battles (`Battle/BattleEngine.cs`): single battles with physical/special damage, simple status and stat moves, catching, EXP, level-ups and evolution, switching, a small bag. Presentation (`BattleAnimator`, `BattleRenderer`) is driven by `QueueMessage(text, onComplete, onShow)`: `onShow` starts the animation a message describes. No abilities, held items, double battles or weather.
+- Battles (`Battle/BattleEngine.cs`): single and double battles with physical/special damage, simple status and stat moves, catching, EXP, level-ups and evolution, switching, a small bag. Presentation (`BattleAnimator`, `BattleRenderer`) is driven by `QueueMessage(text, onComplete, onShow)`: `onShow` starts the animation a message describes. Abilities, held items and Gen 4 status rules are partly in (see plan 06 · R7–R9); no weather or tag battles.
 
 ## Design
 

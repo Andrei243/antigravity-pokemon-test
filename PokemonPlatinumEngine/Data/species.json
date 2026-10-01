@@ -45,7 +45,10 @@
     "evolution": {
       "level": 18,
       "targetSpecies": "Grotle"
-    }
+    },
+    "abilities": [
+      "Overgrow"
+    ]
   },
   {
     "dexNumber": 388,
@@ -89,7 +92,10 @@
     "evolution": {
       "level": 32,
       "targetSpecies": "Torterra"
-    }
+    },
+    "abilities": [
+      "Overgrow"
+    ]
   },
   {
     "dexNumber": 389,
@@ -126,6 +132,9 @@
         "level": 45,
         "moveName": "Energy Ball"
       }
+    ],
+    "abilities": [
+      "Overgrow"
     ]
   },
   {
@@ -174,7 +183,10 @@
     "evolution": {
       "level": 14,
       "targetSpecies": "Monferno"
-    }
+    },
+    "abilities": [
+      "Blaze"
+    ]
   },
   {
     "dexNumber": 391,
@@ -219,7 +231,10 @@
     "evolution": {
       "level": 36,
       "targetSpecies": "Infernape"
-    }
+    },
+    "abilities": [
+      "Blaze"
+    ]
   },
   {
     "dexNumber": 392,
@@ -256,6 +271,9 @@
         "level": 53,
         "moveName": "Fire Blast"
       }
+    ],
+    "abilities": [
+      "Blaze"
     ]
   },
   {
@@ -304,7 +322,10 @@
     "evolution": {
       "level": 16,
       "targetSpecies": "Prinplup"
-    }
+    },
+    "abilities": [
+      "Torrent"
+    ]
   },
   {
     "dexNumber": 394,
@@ -348,7 +369,10 @@
     "evolution": {
       "level": 36,
       "targetSpecies": "Empoleon"
-    }
+    },
+    "abilities": [
+      "Torrent"
+    ]
   },
   {
     "dexNumber": 395,
@@ -385,6 +409,9 @@
         "level": 52,
         "moveName": "Hydro Pump"
       }
+    ],
+    "abilities": [
+      "Torrent"
     ]
   },
   {
@@ -430,7 +457,10 @@
     "evolution": {
       "level": 14,
       "targetSpecies": "Staravia"
-    }
+    },
+    "abilities": [
+      "Keen Eye"
+    ]
   },
   {
     "dexNumber": 397,
@@ -471,7 +501,10 @@
     "evolution": {
       "level": 34,
       "targetSpecies": "Staraptor"
-    }
+    },
+    "abilities": [
+      "Intimidate"
+    ]
   },
   {
     "dexNumber": 398,
@@ -504,6 +537,9 @@
         "level": 40,
         "moveName": "Brave Bird"
       }
+    ],
+    "abilities": [
+      "Intimidate"
     ]
   },
   {
@@ -548,7 +584,11 @@
     "evolution": {
       "level": 15,
       "targetSpecies": "Bibarel"
-    }
+    },
+    "abilities": [
+      "Simple",
+      "Unaware"
+    ]
   },
   {
     "dexNumber": 400,
@@ -585,6 +625,10 @@
         "level": 30,
         "moveName": "Surf"
       }
+    ],
+    "abilities": [
+      "Simple",
+      "Unaware"
     ]
   },
   {
@@ -629,7 +673,11 @@
     "evolution": {
       "level": 15,
       "targetSpecies": "Luxio"
-    }
+    },
+    "abilities": [
+      "Rivalry",
+      "Intimidate"
+    ]
   },
   {
     "dexNumber": 404,
@@ -673,7 +721,11 @@
     "evolution": {
       "level": 30,
       "targetSpecies": "Luxray"
-    }
+    },
+    "abilities": [
+      "Rivalry",
+      "Intimidate"
+    ]
   },
   {
     "dexNumber": 405,
@@ -705,6 +757,10 @@
         "level": 42,
         "moveName": "Thunderbolt"
       }
+    ],
+    "abilities": [
+      "Rivalry",
+      "Intimidate"
     ]
   },
   {
@@ -745,7 +801,11 @@
     "evolution": {
       "level": 25,
       "targetSpecies": "Lucario"
-    }
+    },
+    "abilities": [
+      "Steadfast",
+      "Inner Focus"
+    ]
   },
   {
     "dexNumber": 448,
@@ -786,6 +846,10 @@
         "level": 51,
         "moveName": "Earthquake"
       }
+    ],
+    "abilities": [
+      "Steadfast",
+      "Inner Focus"
     ]
   },
   {
@@ -827,7 +891,10 @@
     "evolution": {
       "level": 24,
       "targetSpecies": "Gabite"
-    }
+    },
+    "abilities": [
+      "Sand Veil"
+    ]
   },
   {
     "dexNumber": 444,
@@ -864,7 +931,10 @@
     "evolution": {
       "level": 48,
       "targetSpecies": "Garchomp"
-    }
+    },
+    "abilities": [
+      "Sand Veil"
+    ]
   },
   {
     "dexNumber": 445,
@@ -901,6 +971,9 @@
         "level": 64,
         "moveName": "Swords Dance"
       }
+    ],
+    "abilities": [
+      "Sand Veil"
     ]
   },
   {
@@ -942,6 +1015,9 @@
         "level": 70,
         "moveName": "Shadow Force"
       }
+    ],
+    "abilities": [
+      "Pressure"
     ]
   }
 ]

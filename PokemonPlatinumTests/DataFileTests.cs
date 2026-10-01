@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xunit;
+using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
@@ -9,6 +10,7 @@ using PokemonPlatinumEngine.Overworld;
 namespace PokemonPlatinumTests;
 
 /// <summary>The game data files in <c>Data/</c>: they load, refer to each other correctly and keep their values.</summary>
+[Collection("MapDatabase")]
 public class DataFileTests
 {
     [Fact]
@@ -42,7 +44,7 @@ public class DataFileTests
     public void TestMovesLoadFromFile()
     {
         var all = MoveDatabase.GetAll().ToList();
-        Assert.Equal(45, all.Count);
+        Assert.Equal(49, all.Count);
         Assert.Equal(all.Count, all.Select(m => m.Id).Distinct().Count());
 
         var quickAttack = MoveDatabase.Get("Quick Attack");
@@ -58,6 +60,12 @@ public class DataFileTests
         Assert.Equal((StatType.Defense, 1, true, 100),
             (withdraw.TargetStatChange, withdraw.StatStageAmount, withdraw.StatChangeTargetSelf, withdraw.StatChangeChancePercent));
 
+        // Battle details: targets, flags and extra effects
+        Assert.Equal((MoveTarget.AllOthers, MoveFlags.None), (MoveDatabase.Get("Earthquake").Target, MoveDatabase.Get("Earthquake").Flags));
+        Assert.Equal(MoveFlags.Contact | MoveFlags.Punch, MoveDatabase.Get("Mach Punch").Flags);
+        Assert.Equal(new[] { StatType.SpDefense }, MoveDatabase.Get("Close Combat").AlsoChangesStats);
+        Assert.Equal(30, MoveDatabase.Get("Bite").FlinchChancePercent);
+
         // Unknown moves still fall back to Tackle
         Assert.Equal("Tackle", MoveDatabase.Get("No Such Move").Name);
     }
@@ -66,8 +74,12 @@ public class DataFileTests
     public void TestItemsLoadFromFile()
     {
         var all = ItemDatabase.GetAll().ToList();
-        Assert.Equal(18, all.Count);
+        Assert.Equal(70, all.Count);
         Assert.Equal(all.Count, all.Select(i => i.Id).Distinct().Count());
+
+        // Every item to hold in battle has an effect behind it
+        Assert.All(all.Where(i => i.Id >= 200), i => Assert.True(HeldItemEffects.IsHoldable(i), i.Name));
+        Assert.Equal(ItemPocket.Berries, ItemDatabase.Get("Sitrus Berry")!.Pocket);
 
         var masterBall = ItemDatabase.Get("Master Ball")!;
         Assert.Equal((ItemPocket.PokeBalls, ItemEffectType.CatchPokemon, 9999, 0),
@@ -83,8 +95,8 @@ public class DataFileTests
     [Fact]
     public void TestEveryNameInTheDataRefersToSomethingThatExists()
     {
-        // Learnsets name three moves that aren't written yet; MoveDatabase gives Tackle in their place. This list may only shrink.
-        var notYetWritten = new[] { "Aqua Jet", "Headbutt", "Synthesis" };
+        // Learnsets name a move that isn't written yet; MoveDatabase gives Tackle in its place. This list may only shrink.
+        var notYetWritten = new[] { "Aqua Jet" };
         var moveNames = MoveDatabase.GetAll().Select(m => m.Name).ToHashSet();
         var missing = PokemonDatabase.GetAll().SelectMany(s => s.Learnset).Select(l => l.MoveName)
             .Where(n => !moveNames.Contains(n)).Distinct().OrderBy(n => n).ToArray();

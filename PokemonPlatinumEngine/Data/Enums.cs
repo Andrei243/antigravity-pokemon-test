@@ -105,7 +105,8 @@ public enum ItemPocket
     Medicine,
     PokeBalls,
     TMsAndHMs,
-    KeyItems
+    KeyItems,
+    Berries
 }
 
 public enum Direction
@@ -114,4 +115,32 @@ public enum Direction
     Up,
     Left,
     Right
+}
+
+/// <summary>Which Pokémon a move can hit. In a single battle every "other" target is the one foe.</summary>
+public enum MoveTarget
+{
+    /// <summary>One adjacent Pokémon the user picks (a foe by default).</summary>
+    Selected,
+    /// <summary>Both foes (Growl, Rock Slide); damage is cut to 3/4 when it hits more than one.</summary>
+    AllFoes,
+    /// <summary>Every other Pokémon on the field, the user's partner included (Earthquake, Surf).</summary>
+    AllOthers,
+    /// <summary>The user itself (Swords Dance, Synthesis).</summary>
+    User,
+    /// <summary>A random foe (Outrage, Thrash).</summary>
+    RandomFoe
+}
+
+/// <summary>Properties of a move that abilities and items care about.</summary>
+[System.Flags]
+public enum MoveFlags
+{
+    None = 0,
+    /// <summary>Touches the target: triggers Static, Rough Skin and the like.</summary>
+    Contact = 1,
+    /// <summary>A punching move (Iron Fist).</summary>
+    Punch = 2,
+    /// <summary>A sound-based move (Soundproof).</summary>
+    Sound = 4
 }

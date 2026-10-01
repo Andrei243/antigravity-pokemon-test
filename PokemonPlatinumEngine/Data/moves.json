@@ -7,7 +7,8 @@
     "power": 40,
     "accuracy": 100,
     "maxPP": 35,
-    "description": "A physical attack in which the user charges and slams into the foe."
+    "description": "A physical attack in which the user charges and slams into the foe.",
+    "flags": "Contact"
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "power": 40,
     "accuracy": 100,
     "maxPP": 35,
-    "description": "Hard, pointed, sharp claws rake the target to inflict damage."
+    "description": "Hard, pointed, sharp claws rake the target to inflict damage.",
+    "flags": "Contact"
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "power": 40,
     "accuracy": 100,
     "maxPP": 35,
-    "description": "The target is physically pounded with a long tail or a foreleg, etc."
+    "description": "The target is physically pounded with a long tail or a foreleg, etc.",
+    "flags": "Contact"
   },
   {
     "id": 4,
@@ -38,7 +41,8 @@
     "accuracy": 100,
     "maxPP": 30,
     "priority": 1,
-    "description": "An almost invisibly fast attack that always goes first."
+    "description": "An almost invisibly fast attack that always goes first.",
+    "flags": "Contact"
   },
   {
     "id": 5,
@@ -62,7 +66,9 @@
     "maxPP": 25,
     "description": "The user cloaks itself in fire and charges at the foe.",
     "inflictStatus": "Burn",
-    "statusChancePercent": 10
+    "statusChancePercent": 10,
+    "flags": "Contact",
+    "thawsUser": true
   },
   {
     "id": 7,
@@ -119,7 +125,8 @@
     "power": 60,
     "accuracy": 100,
     "maxPP": 20,
-    "description": "The user attacks the target with a pulsing blast of water."
+    "description": "The user attacks the target with a pulsing blast of water.",
+    "confuseChancePercent": 20
   },
   {
     "id": 12,
@@ -129,7 +136,8 @@
     "power": 95,
     "accuracy": 100,
     "maxPP": 15,
-    "description": "It swamps the entire area around the user with a giant wave."
+    "description": "It swamps the entire area around the user with a giant wave.",
+    "target": "AllOthers"
   },
   {
     "id": 13,
@@ -150,7 +158,8 @@
     "accuracy": 95,
     "maxPP": 25,
     "description": "Sharp-edged leaves are launched to slash at the opposing team.",
-    "critStage": 1
+    "critStage": 1,
+    "flags": "Contact"
   },
   {
     "id": 15,
@@ -160,7 +169,8 @@
     "power": 45,
     "accuracy": 100,
     "maxPP": 25,
-    "description": "The target is struck with slender, whiplike vines to inflict damage."
+    "description": "The target is struck with slender, whiplike vines to inflict damage.",
+    "flags": "Contact"
   },
   {
     "id": 16,
@@ -195,7 +205,8 @@
     "accuracy": 100,
     "maxPP": 15,
     "description": "The user slams its rugged body into the foe. This also damages the user a little.",
-    "recoilPercent": 33
+    "recoilPercent": 33,
+    "flags": "Contact"
   },
   {
     "id": 19,
@@ -219,7 +230,8 @@
     "maxPP": 20,
     "description": "The user throws an electrically charged tackle at the foe.",
     "inflictStatus": "Paralyze",
-    "statusChancePercent": 30
+    "statusChancePercent": 30,
+    "flags": "Contact"
   },
   {
     "id": 21,
@@ -241,7 +253,8 @@
     "power": 60,
     "accuracy": 100,
     "maxPP": 35,
-    "description": "The target is struck with large, imposing wings spread wide."
+    "description": "The target is struck with large, imposing wings spread wide.",
+    "flags": "Contact"
   },
   {
     "id": 23,
@@ -251,7 +264,8 @@
     "power": 60,
     "accuracy": 0,
     "maxPP": 20,
-    "description": "An extremely fast attack that can never miss."
+    "description": "An extremely fast attack that can never miss.",
+    "flags": "Contact"
   },
   {
     "id": 24,
@@ -262,7 +276,8 @@
     "accuracy": 100,
     "maxPP": 15,
     "description": "The user tucks in its wings and charges from a low altitude. This also damages the user.",
-    "recoilPercent": 33
+    "recoilPercent": 33,
+    "flags": "Contact"
   },
   {
     "id": 25,
@@ -272,7 +287,9 @@
     "power": 60,
     "accuracy": 100,
     "maxPP": 25,
-    "description": "The target is bitten with viciously sharp fangs."
+    "description": "The target is bitten with viciously sharp fangs.",
+    "flinchChancePercent": 30,
+    "flags": "Contact"
   },
   {
     "id": 26,
@@ -285,7 +302,8 @@
     "description": "The user crunches up the foe with sharp fangs. It may lower Defense.",
     "targetStatChange": "Defense",
     "statStageAmount": -1,
-    "statChangeChancePercent": 20
+    "statChangeChancePercent": 20,
+    "flags": "Contact"
   },
   {
     "id": 27,
@@ -296,7 +314,8 @@
     "accuracy": 100,
     "maxPP": 30,
     "priority": 1,
-    "description": "The user throws a punch at blinding speed. It always strikes first."
+    "description": "The user throws a punch at blinding speed. It always strikes first.",
+    "flags": "Contact, Punch"
   },
   {
     "id": 28,
@@ -310,7 +329,11 @@
     "targetStatChange": "Defense",
     "statStageAmount": -1,
     "statChangeTargetSelf": true,
-    "statChangeChancePercent": 100
+    "statChangeChancePercent": 100,
+    "alsoChangesStats": [
+      "SpDefense"
+    ],
+    "flags": "Contact"
   },
   {
     "id": 29,
@@ -330,7 +353,8 @@
     "power": 80,
     "accuracy": 100,
     "maxPP": 15,
-    "description": "The user slashes the foe with huge, sharp claws."
+    "description": "The user slashes the foe with huge, sharp claws.",
+    "flags": "Contact"
   },
   {
     "id": 31,
@@ -350,7 +374,8 @@
     "power": 100,
     "accuracy": 100,
     "maxPP": 10,
-    "description": "The user sets off an earthquake that hits all Pokémon in the area."
+    "description": "The user sets off an earthquake that hits all Pokémon in the area.",
+    "target": "AllOthers"
   },
   {
     "id": 33,
@@ -398,7 +423,8 @@
     "power": 120,
     "accuracy": 100,
     "maxPP": 5,
-    "description": "The user disappears, then strikes the foe on the next turn. Giratina's signature move."
+    "description": "The user disappears, then strikes the foe on the next turn. Giratina's signature move.",
+    "flags": "Contact"
   },
   {
     "id": 37,
@@ -411,7 +437,9 @@
     "description": "The user growls in an endearing way, making opposing Pokémon less wary.",
     "targetStatChange": "Attack",
     "statStageAmount": -1,
-    "statChangeChancePercent": 100
+    "statChangeChancePercent": 100,
+    "target": "AllFoes",
+    "flags": "Sound"
   },
   {
     "id": 38,
@@ -424,7 +452,8 @@
     "description": "The user gives opposing Pokémon an intimidating leer that lowers Defense.",
     "targetStatChange": "Defense",
     "statStageAmount": -1,
-    "statChangeChancePercent": 100
+    "statChangeChancePercent": 100,
+    "target": "AllFoes"
   },
   {
     "id": 39,
@@ -437,7 +466,8 @@
     "description": "The user wags its tail cutely, making opposing Pokémon lower their Defense.",
     "targetStatChange": "Defense",
     "statStageAmount": -1,
-    "statChangeChancePercent": 100
+    "statChangeChancePercent": 100,
+    "target": "AllFoes"
   },
   {
     "id": 40,
@@ -451,7 +481,8 @@
     "targetStatChange": "Attack",
     "statStageAmount": 2,
     "statChangeTargetSelf": true,
-    "statChangeChancePercent": 100
+    "statChangeChancePercent": 100,
+    "target": "User"
   },
   {
     "id": 41,
@@ -513,6 +544,54 @@
     "targetStatChange": "Defense",
     "statStageAmount": 1,
     "statChangeTargetSelf": true,
-    "statChangeChancePercent": 100
+    "statChangeChancePercent": 100,
+    "target": "User"
+  },
+  {
+    "id": 46,
+    "name": "Synthesis",
+    "type": "Grass",
+    "category": "Status",
+    "power": 0,
+    "accuracy": 0,
+    "maxPP": 5,
+    "description": "The user soaks up sunlight to restore half of its HP.",
+    "target": "User",
+    "healPercent": 50
+  },
+  {
+    "id": 47,
+    "name": "Confuse Ray",
+    "type": "Ghost",
+    "category": "Status",
+    "power": 0,
+    "accuracy": 100,
+    "maxPP": 10,
+    "description": "An eerie light dazzles the target and leaves it confused.",
+    "confuseChancePercent": 100
+  },
+  {
+    "id": 48,
+    "name": "Rock Slide",
+    "type": "Rock",
+    "category": "Physical",
+    "power": 75,
+    "accuracy": 90,
+    "maxPP": 10,
+    "description": "Large boulders are hurled at the foes. It may make them flinch.",
+    "flinchChancePercent": 30,
+    "target": "AllFoes"
+  },
+  {
+    "id": 49,
+    "name": "Headbutt",
+    "type": "Normal",
+    "category": "Physical",
+    "power": 70,
+    "accuracy": 100,
+    "maxPP": 15,
+    "description": "The user sticks out its head and rams straight into the target. It may make the target flinch.",
+    "flinchChancePercent": 30,
+    "flags": "Contact"
   }
 ]

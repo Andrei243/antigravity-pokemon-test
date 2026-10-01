@@ -49,6 +49,10 @@ public class SavedPokemonData
     public int IvSpDefense { get; set; } = 15;
     public int IvSpeed { get; set; } = 15;
     public int CurrentExp { get; set; } = 0;
+
+    /// <summary>Null in saves from before abilities: the species' first ability is used.</summary>
+    public string? Ability { get; set; }
+    public string? HeldItem { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -69,7 +73,9 @@ public class SavedPokemonData
             IvSpAttack = p.IvSpAttack,
             IvSpDefense = p.IvSpDefense,
             IvSpeed = p.IvSpeed,
-            CurrentExp = p.CurrentExp
+            CurrentExp = p.CurrentExp,
+            Ability = p.AbilityName,
+            HeldItem = p.HeldItem?.Name
         };
 
         foreach (var m in p.Moves)
@@ -93,8 +99,10 @@ public class SavedPokemonData
             IvSpAttack = IvSpAttack,
             IvSpDefense = IvSpDefense,
             IvSpeed = IvSpeed,
-            CurrentExp = CurrentExp
+            CurrentExp = CurrentExp,
+            HeldItem = HeldItem != null ? ItemDatabase.Get(HeldItem) : null
         };
+        if (Ability != null) p.AbilityName = Ability;
         p.RecalculateStats();
         p.CurrentHP = Math.Clamp(CurrentHP, 0, p.MaxHP);
         if (p.CurrentHP <= 0)
