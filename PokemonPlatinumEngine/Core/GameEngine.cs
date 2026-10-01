@@ -653,7 +653,15 @@ public class GameEngine
 
         StartTransition(GameState.Battle, () =>
         {
-            battle = new BattleEngine(playerParty, trainer.Party.Members.First(), playerInventory, playerPokedex, trainer, pcBoxStorage);
+            battle = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = playerParty,
+                Inventory = playerInventory,
+                Pokedex = playerPokedex,
+                PcStorage = pcBoxStorage,
+                Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
+                Trainers = new List<Trainer> { trainer }
+            });
             battleRenderer.Trees = currentMap.Trees;
             battleTrainer = trainerNpc;
             AudioManager.PlayBGM("Battle");

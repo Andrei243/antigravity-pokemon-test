@@ -617,6 +617,87 @@ public static class MoveDatabase
             StatChangeChancePercent = 100,
             Description = "The user withdraws its body into its hard shell, raising its Defense."
         });
+
+        Register(new MoveData
+        {
+            Id = 46,
+            Name = "Synthesis",
+            Type = PokemonType.Grass,
+            Category = MoveCategory.Status,
+            Power = 0,
+            Accuracy = 0,
+            MaxPP = 5,
+            Target = MoveTarget.User,
+            HealPercent = 50,
+            Description = "The user soaks up sunlight to restore half of its HP."
+        });
+
+        Register(new MoveData
+        {
+            Id = 47,
+            Name = "Confuse Ray",
+            Type = PokemonType.Ghost,
+            Category = MoveCategory.Status,
+            Power = 0,
+            Accuracy = 100,
+            MaxPP = 10,
+            ConfuseChancePercent = 100,
+            Description = "An eerie light dazzles the target and leaves it confused."
+        });
+
+        Register(new MoveData
+        {
+            Id = 48,
+            Name = "Rock Slide",
+            Type = PokemonType.Rock,
+            Category = MoveCategory.Physical,
+            Power = 75,
+            Accuracy = 90,
+            MaxPP = 10,
+            Target = MoveTarget.AllFoes,
+            FlinchChancePercent = 30,
+            Description = "Large boulders are hurled at the foes. It may make them flinch."
+        });
+
+        Register(new MoveData
+        {
+            Id = 49,
+            Name = "Headbutt",
+            Type = PokemonType.Normal,
+            Category = MoveCategory.Physical,
+            Power = 70,
+            Accuracy = 100,
+            MaxPP = 15,
+            Description = "The user sticks out its head and rams straight into the target. It may make the target flinch."
+        });
+
+        ApplyBattleDetails();
+    }
+
+    /// <summary>
+    /// Targets, contact and side effects of the moves above, in one place so the move data files (plan 03 · D1)
+    /// can take them over: Platinum's values.
+    /// </summary>
+    private static void ApplyBattleDetails()
+    {
+        string[] noContact = { "Earthquake", "Rock Slide" };
+        foreach (var m in Moves.Values)
+        {
+            if (m.Category == MoveCategory.Physical && System.Array.IndexOf(noContact, m.Name) < 0) m.Flags |= MoveFlags.Contact;
+            if (m.Name.EndsWith("Punch")) m.Flags |= MoveFlags.Punch;
+            if (m.StatChangeTargetSelf && m.Category == MoveCategory.Status) m.Target = MoveTarget.User;
+        }
+
+        foreach (var name in new[] { "Growl", "Leer", "Tail Whip" }) Moves[name].Target = MoveTarget.AllFoes;
+        Moves["Growl"].Flags |= MoveFlags.Sound;
+        Moves["Earthquake"].Target = MoveTarget.AllOthers;
+        Moves["Surf"].Target = MoveTarget.AllOthers;
+
+        Moves["Bite"].FlinchChancePercent = 30;
+        Moves["Headbutt"].FlinchChancePercent = 30;
+        Moves["Water Pulse"].ConfuseChancePercent = 20;
+        Moves["Flame Wheel"].ThawsUser = true;
+        Moves["Close Combat"].AlsoChangesStats = new[] { StatType.SpDefense };
     }
 
     private static void Register(MoveData move)

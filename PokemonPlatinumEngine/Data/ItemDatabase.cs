@@ -218,7 +218,73 @@ public static class ItemDatabase
             CanUseInBattle = false,
             Description = "A mysterious glowing orb that resonates with the Distortion World and legendary power."
         });
+
+        // Items to hold in battle; what they do is in Battle/Effects/HeldItemEffects.cs
+        HeldItem(200, "Leftovers", ItemPocket.Items, 200, "Held: restores a little HP at the end of every turn.");
+        HeldItem(201, "Black Sludge", ItemPocket.Items, 200, "Held: restores a little HP each turn for Poison types, and hurts anyone else.");
+        HeldItem(202, "Shell Bell", ItemPocket.Items, 200, "Held: restores HP by an eighth of the damage its holder deals.");
+        HeldItem(203, "Life Orb", ItemPocket.Items, 200, "Held: boosts the power of moves, but every attack costs the holder some HP.");
+        HeldItem(204, "Expert Belt", ItemPocket.Items, 200, "Held: super-effective moves hit a little harder.");
+        HeldItem(205, "Muscle Band", ItemPocket.Items, 200, "Held: physical moves hit a little harder.");
+        HeldItem(206, "Wise Glasses", ItemPocket.Items, 200, "Held: special moves hit a little harder.");
+        HeldItem(207, "Choice Band", ItemPocket.Items, 200, "Held: boosts Attack, but the holder can only use the first move it picks.");
+        HeldItem(208, "Choice Specs", ItemPocket.Items, 200, "Held: boosts Sp. Atk, but the holder can only use the first move it picks.");
+        HeldItem(209, "Choice Scarf", ItemPocket.Items, 200, "Held: boosts Speed, but the holder can only use the first move it picks.");
+        HeldItem(210, "Scope Lens", ItemPocket.Items, 200, "Held: raises the holder's critical-hit ratio.");
+        HeldItem(211, "Razor Claw", ItemPocket.Items, 2100, "Held: raises the holder's critical-hit ratio.");
+        HeldItem(212, "Wide Lens", ItemPocket.Items, 200, "Held: raises the accuracy of the holder's moves a little.");
+        HeldItem(213, "Bright Powder", ItemPocket.Items, 10, "Held: its glare makes the holder a little harder to hit.");
+        HeldItem(214, "Quick Claw", ItemPocket.Items, 100, "Held: sometimes lets the holder move first.");
+        HeldItem(215, "King's Rock", ItemPocket.Items, 100, "Held: the holder's attacks may make the target flinch.");
+        HeldItem(216, "Razor Fang", ItemPocket.Items, 2100, "Held: the holder's attacks may make the target flinch.");
+        HeldItem(217, "Focus Sash", ItemPocket.Items, 200, "Held: at full HP, the holder survives a knockout blow with 1 HP. Used up once.");
+        HeldItem(218, "Focus Band", ItemPocket.Items, 200, "Held: the holder may hang on with 1 HP when it would faint.");
+        HeldItem(219, "Flame Orb", ItemPocket.Items, 200, "Held: burns its holder at the end of a turn.");
+        HeldItem(220, "Toxic Orb", ItemPocket.Items, 200, "Held: badly poisons its holder at the end of a turn.");
+        HeldItem(221, "Silk Scarf", ItemPocket.Items, 100, "Held: powers up Normal-type moves.");
+        HeldItem(222, "Charcoal", ItemPocket.Items, 9800, "Held: powers up Fire-type moves.");
+        HeldItem(223, "Mystic Water", ItemPocket.Items, 100, "Held: powers up Water-type moves.");
+        HeldItem(224, "Miracle Seed", ItemPocket.Items, 100, "Held: powers up Grass-type moves.");
+        HeldItem(225, "Magnet", ItemPocket.Items, 100, "Held: powers up Electric-type moves.");
+        HeldItem(226, "Never-Melt Ice", ItemPocket.Items, 100, "Held: powers up Ice-type moves.");
+        HeldItem(227, "Black Belt", ItemPocket.Items, 100, "Held: powers up Fighting-type moves.");
+        HeldItem(228, "Poison Barb", ItemPocket.Items, 100, "Held: powers up Poison-type moves.");
+        HeldItem(229, "Soft Sand", ItemPocket.Items, 100, "Held: powers up Ground-type moves.");
+        HeldItem(230, "Sharp Beak", ItemPocket.Items, 100, "Held: powers up Flying-type moves.");
+        HeldItem(231, "Twisted Spoon", ItemPocket.Items, 100, "Held: powers up Psychic-type moves.");
+        HeldItem(232, "Silver Powder", ItemPocket.Items, 100, "Held: powers up Bug-type moves.");
+        HeldItem(233, "Hard Stone", ItemPocket.Items, 100, "Held: powers up Rock-type moves.");
+        HeldItem(234, "Spell Tag", ItemPocket.Items, 100, "Held: powers up Ghost-type moves.");
+        HeldItem(235, "Dragon Fang", ItemPocket.Items, 100, "Held: powers up Dragon-type moves.");
+        HeldItem(236, "Black Glasses", ItemPocket.Items, 100, "Held: powers up Dark-type moves.");
+        HeldItem(237, "Metal Coat", ItemPocket.Items, 100, "Held: powers up Steel-type moves.");
+        HeldItem(238, "Oran Berry", ItemPocket.Berries, 20, "Held: eaten at half HP or less to restore 10 HP.");
+        HeldItem(239, "Sitrus Berry", ItemPocket.Berries, 20, "Held: eaten at half HP or less to restore a quarter of max HP.");
+        HeldItem(240, "Cheri Berry", ItemPocket.Berries, 20, "Held: eaten to cure paralysis.");
+        HeldItem(241, "Chesto Berry", ItemPocket.Berries, 20, "Held: eaten to wake up from sleep.");
+        HeldItem(242, "Pecha Berry", ItemPocket.Berries, 20, "Held: eaten to cure poison.");
+        HeldItem(243, "Rawst Berry", ItemPocket.Berries, 20, "Held: eaten to heal a burn.");
+        HeldItem(244, "Aspear Berry", ItemPocket.Berries, 20, "Held: eaten to thaw out.");
+        HeldItem(245, "Persim Berry", ItemPocket.Berries, 20, "Held: eaten to snap out of confusion.");
+        HeldItem(246, "Lum Berry", ItemPocket.Berries, 20, "Held: eaten to cure any status problem or confusion.");
+        HeldItem(247, "Liechi Berry", ItemPocket.Berries, 20, "Held: eaten at a quarter of HP to raise Attack.");
+        HeldItem(248, "Ganlon Berry", ItemPocket.Berries, 20, "Held: eaten at a quarter of HP to raise Defense.");
+        HeldItem(249, "Salac Berry", ItemPocket.Berries, 20, "Held: eaten at a quarter of HP to raise Speed.");
+        HeldItem(250, "Petaya Berry", ItemPocket.Berries, 20, "Held: eaten at a quarter of HP to raise Sp. Atk.");
+        HeldItem(251, "Apicot Berry", ItemPocket.Berries, 20, "Held: eaten at a quarter of HP to raise Sp. Def.");
     }
+
+    private static void HeldItem(int id, string name, ItemPocket pocket, int price, string description) => Register(new ItemData
+    {
+        Id = id,
+        Name = name,
+        Pocket = pocket,
+        EffectType = ItemEffectType.None,
+        Price = price,
+        CanUseInBattle = false,
+        CanUseInOverworld = false,
+        Description = description
+    });
 
     private static void Register(ItemData item)
     {

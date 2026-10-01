@@ -43,7 +43,7 @@ public sealed class BattleRenderer
         var anim = battle.Anim;
         float shake = anim.ShakeAge >= 0f ? 1f - anim.ShakeAge / 0.4f : 0f;
         camera = BattleStage.Camera(anim.Time, shake);
-        UpdateLayout();
+        UpdateLayout(anim.Slots);
 
         var rig = ArtLook.BattleRig(GameClock.Hour);
         RenderStage(stage, anim, rig);
@@ -56,13 +56,38 @@ public sealed class BattleRenderer
         if (!context.Loaded) return;
         context.Composite(new Rectangle(0, 0, screenWidth, screenHeight));
         var anim = battle.Anim;
-        DrawSendOutRing(Appear(anim, anim.Enemy, isPlayer: false), enemyFeet, PokemonSprites.Size * enemyScale, enemyScale);
-        DrawSendOutRing(Appear(anim, anim.Player, isPlayer: true), playerFeet, PokemonSprites.Size * playerScale, playerScale);
+        float fit = SlotFit(anim);
+        for (int slot = 0; slot < anim.Slots; slot++)
+        {
+            DrawSendOutRing(Appear(anim, anim[BattleSide.Enemy, slot], isPlayer: false), BattleHUD.Feet(BattleSide.Enemy, slot),
+                PokemonSprites.Size * enemyScale * fit, enemyScale * fit);
+            DrawSendOutRing(Appear(anim, anim[BattleSide.Player, slot], isPlayer: true), BattleHUD.Feet(BattleSide.Player, slot),
+                PokemonSprites.Size * playerScale * fit, playerScale * fit);
+        }
+    }
+
+    // ------------------------------------------------------------------ places
+
+    /// <summary>In a double battle two Pokémon share each platform, a little smaller.</summary>
+    private static float SlotFit(BattleAnimator anim) => anim.Slots > 1 ? 0.78f : 1f;
+
+    /// <summary>
+    /// Where a place on the field stands: the middle of its side's platform in a single battle; in a double, left
+    /// and right of the middle (the player's first Pokémon on the left, the foe's first on the right, as in Platinum).
+    /// </summary>
+    private static Vector3 Spot(BattleSide side, int slot, int slots)
+    {
+        bool player = side == BattleSide.Player;
+        var spot = player ? BattleStage.PlayerSpot : BattleStage.EnemySpot;
+        if (slots < 2) return spot;
+        float radius = player ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius;
+        float sign = (player ? -1f : 1f) * (slot == 0 ? 1f : -1f);
+        return spot + Vector3.UnitX * sign * radius * 0.5f;
     }
 
     // ------------------------------------------------------------------ layout
 
-    private void UpdateLayout()
+    private void UpdateLayout(int slots)
     {
         Vector2 Project(Vector3 p) => Raylib.GetWorldToScreenEx(p, camera, context.Width, context.Height);
         var up = new Vector3(0, PlatformTop, 0);
@@ -78,10 +103,14 @@ public sealed class BattleRenderer
         enemyScale = enemyWidth / 158f;
         playerScale = playerWidth / 150f;
 
-        BattleHUD.EnemyFeet = enemyFeet;
-        BattleHUD.PlayerFeet = playerFeet;
-        BattleHUD.EnemyCenter = enemyFeet - new Vector2(0, 58 * enemyScale);
-        BattleHUD.PlayerCenter = playerFeet - new Vector2(0, 58 * playerScale);
+        for (int slot = 0; slot < slots; slot++)
+        {
+            float fit = slots > 1 ? 0.78f : 1f;
+            var ef = Project(Spot(BattleSide.Enemy, slot, slots) + up);
+            var pf = Project(Spot(BattleSide.Player, slot, slots) + up);
+            BattleHUD.SetPlace(BattleSide.Enemy, slot, ef, ef - new Vector2(0, 58 * enemyScale * fit));
+            BattleHUD.SetPlace(BattleSide.Player, slot, pf, pf - new Vector2(0, 58 * playerScale * fit));
+        }
     }
 
     // ------------------------------------------------------------------ offscreen passes
@@ -159,10 +188,16 @@ public sealed class BattleRenderer
             Rlgl.End();
         }
 
-        if (anim.Enemy.Present && anim.Enemy.Shown != null)
-            Blob(BattleStage.EnemySpot, BattleStage.EnemyPlatformRadius * 0.62f * PokemonModels.Get(anim.Enemy.Shown.Species.Name).Fill);
-        if (anim.Player.Present && anim.Player.Shown != null)
-            Blob(BattleStage.PlayerSpot, BattleStage.PlayerPlatformRadius * 0.62f * PokemonModels.Get(anim.Player.Shown.Species.Name).Fill);
+        float fit = SlotFit(anim);
+        for (int slot = 0; slot < anim.Slots; slot++)
+        {
+            var foe = anim[BattleSide.Enemy, slot];
+            if (foe.Present && foe.Shown != null)
+                Blob(Spot(BattleSide.Enemy, slot, anim.Slots), BattleStage.EnemyPlatformRadius * 0.62f * fit * PokemonModels.Get(foe.Shown.Species.Name).Fill);
+            var mine = anim[BattleSide.Player, slot];
+            if (mine.Present && mine.Shown != null)
+                Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.Species.Name).Fill);
+        }
 
         Rlgl.SetTexture(0);
         Rlgl.DrawRenderBatchActive();
@@ -174,7 +209,14 @@ public sealed class BattleRenderer
     {
         if (anim.PlayerTrainer != null)
             DrawTrainer(anim.PlayerTrainer, BattleStage.PlayerSpot, MathF.PI, 1.15f, anim.PlayerTrainerExit, -1f, anim.Time, pass);
-        if (anim.EnemyTrainer != null)
+        if (anim.EnemyTrainer2 != null)
+        {
+            // Two trainers stand side by side, each behind their Pokémon's place
+            if (anim.EnemyTrainer != null)
+                DrawTrainer(anim.EnemyTrainer, Spot(BattleSide.Enemy, 0, 2), 0f, 2.1f, anim.EnemyTrainerExit, 1f, anim.Time + 1.3f, pass);
+            DrawTrainer(anim.EnemyTrainer2, Spot(BattleSide.Enemy, 1, 2), 0f, 2.1f, anim.EnemyTrainerExit, -1f, anim.Time + 0.6f, pass);
+        }
+        else if (anim.EnemyTrainer != null)
             DrawTrainer(anim.EnemyTrainer, BattleStage.EnemySpot, 0f, 2.3f, anim.EnemyTrainerExit, 1f, anim.Time + 1.3f, pass);
     }
 
@@ -299,7 +341,7 @@ public sealed class BattleRenderer
     /// The Pokémon as a 3D model standing on its platform, lit and shadowed with the scene. It is sized
     /// so it covers the same part of the screen as the sprite would.
     /// </summary>
-    private void DrawPokemon3D(BattleAnimator anim, CombatantView v, bool isPlayer, CharacterPass pass)
+    private void DrawPokemon3D(BattleAnimator anim, CombatantView v, bool isPlayer, int slot, CharacterPass pass)
     {
         if (v.Shown == null) return;
         var a = Appear(anim, v, isPlayer);
@@ -309,12 +351,12 @@ public sealed class BattleRenderer
         PokemonSprites.EnsureSceneOutline(model);
         var view = isPlayer ? SpriteView.Back : SpriteView.Front;
         var framing = PokemonSprites.Framing(model, view, PokemonSprites.Size);
-        var spot = isPlayer ? BattleStage.PlayerSpot : BattleStage.EnemySpot;
+        var spot = Spot(isPlayer ? BattleSide.Player : BattleSide.Enemy, slot, anim.Slots);
         var other = isPlayer ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
         float radius = isPlayer ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius;
 
         // Same size rule as the sprites: the sprite frame spans the platform's width divided by 158 (or 150) pixels
-        float scale = 2f * radius / ((isPlayer ? 150f : 158f) * framing.WorldPerPixel);
+        float scale = 2f * radius / ((isPlayer ? 150f : 158f) * framing.WorldPerPixel) * SlotFit(anim);
         float frame = scale * framing.WorldPerPixel * PokemonSprites.Size;
         var toward = Vector3.Normalize(other - spot);
         var feet = spot + new Vector3(0, PlatformTop, 0)
@@ -323,7 +365,7 @@ public sealed class BattleRenderer
             - Vector3.UnitY * a.Sink * frame;
         var root = Matrix4x4.CreateScale(scale * a.Grow) * Matrix4x4.CreateRotationY(framing.Yaw) * Matrix4x4.CreateTranslation(feet);
 
-        float phase = isPlayer ? 0.37f : 0f;
+        float phase = (isPlayer ? 0.37f : 0f) + slot * 0.53f;
         var pose = new PokePose
         {
             Time = anim.Time + phase,
@@ -355,7 +397,10 @@ public sealed class BattleRenderer
 
     private void DrawPokemon3D(BattleAnimator anim, CharacterPass pass)
     {
-        DrawPokemon3D(anim, anim.Enemy, isPlayer: false, pass);
-        DrawPokemon3D(anim, anim.Player, isPlayer: true, pass);
+        for (int slot = 0; slot < anim.Slots; slot++)
+        {
+            DrawPokemon3D(anim, anim[BattleSide.Enemy, slot], isPlayer: false, slot, pass);
+            DrawPokemon3D(anim, anim[BattleSide.Player, slot], isPlayer: true, slot, pass);
+        }
     }
 }

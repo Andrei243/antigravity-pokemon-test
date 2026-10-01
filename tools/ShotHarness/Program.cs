@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|look|title|times|sheets] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|flow|menus|look|title|times|sheets] [before dir]
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -284,8 +284,8 @@ if (Run("battle"))
     {
         b = StartBattle("Starly", 4);
         ToMainMenu(b);
-        typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!
-            .Invoke(b, new object[] { new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get(ball) } });
+        var use = new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get(ball), User = b.PlayerSlots[0], Actor = b.PlayerPokemon };
+        typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!.Invoke(b, new object[] { new List<BattleAction> { use } });
         Confirm(b);
         Frames(24); Shot($"51_{tag}_ball_flight");
         Frames(30); Shot($"52_{tag}_ball_open");
@@ -323,6 +323,70 @@ if (Run("battle"))
 
     StartBattle("Luxray", 30);
     Timing("battle");
+}
+
+// ---------------------------------------------------------------- double battles
+
+if (Run("doubles"))
+{
+    BattleEngine StartDouble(Trainer[] trainers, Pokemon[] wild)
+    {
+        Set("currentMap", MapDatabase.Get("Route201"));
+        var d = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
+            Trainers = trainers.ToList(), WildPokemon = wild.ToList(), Random = new Random(5)
+        });
+        ((BattleRenderer)Get("battleRenderer")).Trees = ((Map)Get("currentMap")).Trees;
+        Set("battle", d);
+        Set("currentState", GameState.Battle);
+        return d;
+    }
+
+    // Twins: one trainer sending two at once
+    party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 8));
+    var twins = new Trainer { Name = "Liv & Liz", TrainerClass = "Lass", DoubleBattle = true };
+    twins.Party.Add(new Pokemon(PokemonDatabase.Get("Bidoof")!, 6));
+    twins.Party.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 6));
+    twins.Party.Add(new Pokemon(PokemonDatabase.Get("Gible")!, 6));
+    var d = StartDouble(new[] { twins }, Array.Empty<Pokemon>());
+    Frames(130); Shot("90_double_intro");
+    Confirm(d); Frames(70); Shot("91_double_foes_out");
+    Confirm(d); Frames(70); Shot("92_double_mine_out");
+    for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(d); Frames(20); }
+    Frames(2); Shot("93_double_main_first");
+    d.SelectMainMenuOption(0); Frames(2); Shot("94_double_moves");
+    int single = d.PlayerPokemon.Moves.FindIndex(m => m.Target == MoveTarget.Selected && m.Category != MoveCategory.Status);
+    d.HUD.MoveMenuIndex = Math.Max(0, single);
+    d.SelectMove(Math.Max(0, single)); Frames(2); Shot("95_double_target");
+    d.HUD.TargetMenuIndex = 1; Frames(2); Shot("95b_double_target_right");
+    d.SelectTarget(1); Frames(2); Shot("96_double_main_second");
+    d.SelectMove(0);
+    if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0);
+    Frames(8); Shot("97_double_attack");
+    for (int guard = 0; guard < 20 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Frames(25); }
+    Shot("98_double_after_turn");
+
+    // A fainted Pokémon of the player's has to be replaced
+    d.PlayerSlots[1].Pokemon!.CurrentHP = 1;
+    d.PlayerSlots[1].Pokemon!.Status = StatusCondition.Burn;
+    d.SelectMove(0); if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0);
+    if (d.HUD.MenuState == BattleMenuState.Main) { d.SelectMove(0); if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0); }
+    for (int guard = 0; guard < 25 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Frames(25); }
+    Shot("99_double_replace");
+
+    // Two trainers together, and two wild Pokémon
+    var a = new Trainer { Name = "Ana", TrainerClass = "Youngster" };
+    a.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 6));
+    var c = new Trainer { Name = "Cal", TrainerClass = "Lass" };
+    c.Party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
+    party.HealAll();
+    d = StartDouble(new[] { a, c }, Array.Empty<Pokemon>());
+    Frames(130); Shot("9a_two_trainers");
+    d = StartDouble(Array.Empty<Trainer>(), new[] { new Pokemon(PokemonDatabase.Get("Bidoof")!, 4), new Pokemon(PokemonDatabase.Get("Gible")!, 4) });
+    Frames(130); Shot("9b_wild_pair");
+    Confirm(d); Frames(70); Confirm(d); Frames(2); Shot("9c_wild_pair_main");
+    Timing("double battle");
 }
 
 // ---------------------------------------------------------------- the real encounter flow

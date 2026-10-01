@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
@@ -14,14 +15,40 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>Draws the HP boxes, the move effects and whichever panel the battle menu is showing.</summary>
-    public static void DrawBattle(BattleHUD hud, int sw, int sh, Pokemon active, Party party, Party? trainerParty, Inventory inventory,
-        string message, BattleVFX vfx, BattleAnimator anim)
+    public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleVFX vfx, BattleAnimator anim)
     {
-        float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
-        if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, trainerParty);
-        float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
-        // The team's cards cover the player's box while switching
-        if (playerSlide >= 0f && hud.MenuState != BattleMenuState.SwitchPokemon) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+        var active = battle.PlayerPokemon;
+        var party = battle.PlayerParty;
+        bool choosing = hud.MenuState is BattleMenuState.Main or BattleMenuState.Moves or BattleMenuState.SelectTarget;
+
+        if (battle.IsDouble)
+        {
+            // Two compact boxes a side: the foes' stacked at the top left, the player's above the menu on the right
+            for (int slot = 0; slot < 2; slot++)
+            {
+                var foe = anim[BattleSide.Enemy, slot];
+                float slide = BattleHUD.BoxSlide(anim, foe);
+                if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f);
+            }
+            if (hud.MenuState != BattleMenuState.SwitchPokemon)
+            {
+                for (int slot = 0; slot < 2; slot++)
+                {
+                    var mine = anim[BattleSide.Player, slot];
+                    float slide = BattleHUD.BoxSlide(anim, mine);
+                    bool turn = choosing && battle.MenuBattler.Slot == slot;
+                    if (slide >= 0f) CompactBox(1240 + slot * 36 + 760 * slide, 586 + slot * 128, mine, true, turn, 0.2f);
+                }
+            }
+        }
+        else
+        {
+            float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
+            if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty);
+            float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
+            // The team's cards cover the player's box while switching
+            if (playerSlide >= 0f && hud.MenuState != BattleMenuState.SwitchPokemon) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+        }
 
         vfx.Draw();
 
@@ -38,8 +65,11 @@ internal static partial class ModernUi
             case BattleMenuState.Moves:
                 MoveMenu(hud, active);
                 break;
+            case BattleMenuState.SelectTarget:
+                TargetMenu(hud, battle);
+                break;
             case BattleMenuState.SwitchPokemon:
-                SwitchPanel(hud, sw, sh, party, active);
+                SwitchPanel(hud, sw, sh, party, active, battle);
                 break;
             case BattleMenuState.SelectBagItem:
                 BagPanel(hud, inventory);
@@ -48,6 +78,97 @@ internal static partial class ModernUi
                 MessageBox(new Rectangle(48, 858, 1824, 172), message, null);
                 break;
         }
+    }
+
+    /// <summary>
+    /// A double battle's HP box: name, level, status and HP bar (with the numbers and EXP for the player's). The
+    /// Pokémon whose action is being chosen gets a glowing frame.
+    /// </summary>
+    private static void CompactBox(float x, float y, CombatantView view, bool mine, bool turn, float skew)
+    {
+        var p = view.Shown!;
+        var r = new Rectangle(x, y, 560, mine ? 116 : 104);
+        if (turn) UiShapes.Shadow(r, 20, 20, Vector2.Zero, Selection with { A = 200 }, skew);
+        Panel(r, 20, skew, turn ? 5f : 4f, turn ? Selection : null);
+
+        float pad = mine ? 46 : 34;
+        float nameW = NameWithGender(p, x + pad, y + 32, 30);
+        StatusPill(x + pad + nameW + 12, y + 17, p.Status, 28);
+        Level(x + r.Width - 40, y + 32, p.Level, 30);
+        HpBar(x + pad, y + 62, r.Width - pad - 44, 20, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        if (mine)
+        {
+            int hp = (int)MathF.Ceiling(view.DisplayedHp);
+            string hpText = $"{hp} / {p.MaxHP}";
+            float hw = UiFonts.Measure(hpText, 24, UiWeight.Black);
+            UiFonts.DrawCentered(hpText, x + r.Width - 40 - hw, y + 94, 24, Ink, UiWeight.Black);
+            ExpBar(new Rectangle(x + pad, y + r.Height - 18, 300, 7), view.DisplayedExp);
+        }
+    }
+
+    /// <summary>
+    /// Where to aim a move in a double battle: the four places as cards laid out like the field (foes on top), the
+    /// ones that can be chosen lit, with the move described beside them.
+    /// </summary>
+    private static void TargetMenu(BattleHUD hud, BattleEngine battle)
+    {
+        var choices = battle.TargetChoices;
+        var places = new[]
+        {
+            battle.EnemySlots.ElementAtOrDefault(1), battle.EnemySlots[0],
+            battle.PlayerSlots[0], battle.PlayerSlots.ElementAtOrDefault(1)
+        };
+        for (int i = 0; i < 4; i++)
+        {
+            var r = new Rectangle(48 + (i % 2) * 556, 836 + (i / 2) * 104, 536, 96);
+            var place = places[i];
+            int choice = place == null ? -1 : IndexOf(choices, place);
+            if (place?.Pokemon == null || place.Pokemon.IsFainted)
+            {
+                UiShapes.Shape(r, 26, new Color(226, 232, 242, 220), new Color(214, 222, 236, 220), new Color(180, 190, 210, 255), 3);
+                continue;
+            }
+
+            bool selected = choice >= 0 && choice == hud.TargetMenuIndex;
+            var accent = place.IsPlayerSide ? Blue : Red;
+            if (choice < 0)
+            {
+                // The Pokémon using the move
+                UiShapes.Shape(r, 26, new Color(232, 236, 244, 235), new Color(220, 226, 238, 235), new Color(186, 196, 214, 255), 3);
+            }
+            else
+            {
+                if (selected) UiShapes.Shadow(r, 26, 26, Vector2.Zero, accent with { A = 190 });
+                else UiShapes.Shadow(r, 26, 14, new Vector2(0, 6), ShadowColor);
+                UiShapes.Shape(r, 26, PanelTop, PanelBottom, selected ? Darker(accent, 0.1f) : Frame, selected ? 5f : 3f);
+            }
+
+            var p = place.Pokemon;
+            Portrait(new Vector2(r.X + 56, r.Y + r.Height / 2f), 38, p, 1, selected);
+            NameWithGender(p, r.X + 112, r.Y + 34, 30);
+            Level(r.X + r.Width - 30, r.Y + 34, p.Level, 28);
+            HpBar(r.X + 112, r.Y + 62, r.Width - 142, 18, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
+            if (choice < 0) UiShapes.Fill(r, 26, new Color(40, 40, 60, 60));
+        }
+
+        var info = new Rectangle(1172, 836, 700, 200);
+        Panel(info, 28);
+        UiFonts.DrawCentered("TARGET", info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
+        HintsDark(info.X + info.Width - 24, info.Y + 18, ("X", "Back"));
+        var move = battle.TargetingMove;
+        if (move != null)
+        {
+            UiFonts.DrawCentered(move.Name, info.X + 44, info.Y + 108, 38, Ink, UiWeight.Black);
+            var target = choices.ElementAtOrDefault(hud.TargetMenuIndex);
+            if (target?.Pokemon != null)
+                UiFonts.DrawCentered($"at {target.Name}", info.X + 44, info.Y + 156, 28, Muted, UiWeight.ExtraBold);
+        }
+    }
+
+    private static int IndexOf(IReadOnlyList<Battler> list, Battler b)
+    {
+        for (int i = 0; i < list.Count; i++) if (list[i] == b) return i;
+        return -1;
     }
 
     private static void EnemyBox(float x, float y, CombatantView view, Party? trainerParty)
@@ -176,7 +297,7 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ switching
 
     /// <summary>The team as six cards over the dimmed field, three to a row.</summary>
-    private static void SwitchPanel(BattleHUD hud, int sw, int sh, Party party, Pokemon active)
+    private static void SwitchPanel(BattleHUD hud, int sw, int sh, Party party, Pokemon active, BattleEngine battle)
     {
         Dim(sw, sh, 120);
 
@@ -209,7 +330,7 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(hpText, r.X + r.Width - 34 - UiFonts.Measure(hpText, 26, UiWeight.Black), r.Y + 136, 26, Ink, UiWeight.Black);
 
             float tagX = x;
-            if (p == active && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, "IN BATTLE", Blue, 32) + 8;
+            if (battle.PlayerSlots.Any(b => b.Pokemon == p) && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, "IN BATTLE", Blue, 32) + 8;
             StatusPill(tagX, r.Y + 120, p.IsFainted ? StatusCondition.Faint : p.Status, 32);
             if (p.IsFainted) UiShapes.Fill(r, 30, new Color(40, 40, 60, 90));
         }

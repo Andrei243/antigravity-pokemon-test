@@ -38,6 +38,9 @@ public class PokemonSpecies
     public string DexEntry { get; set; } = string.Empty;
     public List<LearnableMove> Learnset { get; set; } = new();
     public EvolutionData? Evolution { get; set; }
+
+    /// <summary>The abilities this species can have; empty until the species data files carry them (see <see cref="AbilityDatabase.ForSpecies"/>).</summary>
+    public List<string> Abilities { get; set; } = new();
 }
 
 public class Pokemon
@@ -48,6 +51,13 @@ public class Pokemon
     public Gender Gender { get; set; }
     public Nature Nature { get; set; }
     public bool IsShiny { get; set; }
+
+    /// <summary>The name of its ability (one of its species' abilities), or null if the species has none listed yet.</summary>
+    public string? AbilityName { get; set; }
+    public Ability? Ability => AbilityDatabase.Get(AbilityName);
+
+    /// <summary>The item it holds (null = nothing).</summary>
+    public ItemData? HeldItem { get; set; }
 
     // Stats
     public int CurrentHP { get; set; }
@@ -111,6 +121,7 @@ public class Pokemon
         Gender = rng.Next(2) == 0 ? Gender.Male : Gender.Female;
         Nature = (Nature)rng.Next(Enum.GetValues<Nature>().Length);
         IsShiny = rng.Next(8192) == 0;
+        AbilityName = AbilityDatabase.PickFor(species, rng);
 
         IvHP = rng.Next(32);
         IvAttack = rng.Next(32);
@@ -136,6 +147,7 @@ public class Pokemon
         Gender = gender;
         Nature = nature;
         IsShiny = isShiny;
+        AbilityName = AbilityDatabase.ForSpecies(species).FirstOrDefault();
 
         CurrentExp = GetExpForLevel(Level, Species.GrowthRate);
         RecalculateStats();
@@ -342,7 +354,10 @@ public class Pokemon
                 if (nextSpecies != null)
                 {
                     oldName = Species.Name;
+                    int abilitySlot = Math.Max(0, AbilityDatabase.ForSpecies(Species).ToList().IndexOf(AbilityName ?? ""));
                     Species = nextSpecies;
+                    var abilities = AbilityDatabase.ForSpecies(Species);
+                    if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
                     if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName)
                     {
                         Nickname = Species.Name;

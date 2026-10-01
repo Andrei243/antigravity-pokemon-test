@@ -24,6 +24,22 @@ public class MoveData
     public int RecoilPercent { get; set; } = 0;
     public int DrainPercent { get; set; } = 0;
     public int CritStage { get; set; } = 0;
+
+    /// <summary>More stats changed by the same amount and on the same Pokémon as <see cref="TargetStatChange"/> (Close Combat).</summary>
+    public StatType[] AlsoChangesStats { get; set; } = System.Array.Empty<StatType>();
+    public int FlinchChancePercent { get; set; } = 0;
+    public int ConfuseChancePercent { get; set; } = 0;
+    public MoveTarget Target { get; set; } = MoveTarget.Selected;
+    public MoveFlags Flags { get; set; } = MoveFlags.None;
+
+    /// <summary>Thaws a frozen user before it attacks (Flame Wheel).</summary>
+    public bool ThawsUser { get; set; }
+
+    /// <summary>Restores this share of the user's max HP (Synthesis, Recover).</summary>
+    public int HealPercent { get; set; } = 0;
+
+    public bool MakesContact => (Flags & MoveFlags.Contact) != 0;
+    public bool HitsSeveral => Target is MoveTarget.AllFoes or MoveTarget.AllOthers;
 }
 
 public class Move
@@ -39,6 +55,7 @@ public class Move
     public int Accuracy => Data.Accuracy;
     public int Priority => Data.Priority;
     public string Description => Data.Description;
+    public MoveTarget Target => Data.Target;
 
     public Move(MoveData data)
     {
