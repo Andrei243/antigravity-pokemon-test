@@ -8,13 +8,14 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        // The window opens at the size and V-Sync choice saved in the options
+        // The window opens at the size and V-Sync choice saved in the options (sized for the monitor the first time)
         var settings = GameSettings.Load();
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | (settings.VSync ? ConfigFlags.VSyncHint : 0));
         Raylib.InitWindow(settings.WindowWidth, settings.WindowHeight, "Pokémon Platinum - Sinnoh Distortion Engine");
         Raylib.SetWindowMinSize(960, 540);
         Raylib.SetTargetFPS(60);
         Raylib.SetExitKey(KeyboardKey.Null); // Esc is "back" in the menus; the window closes with its own button
+        WindowSettings.FitToMonitor(settings);
         WindowSettings.Apply(settings);
 
         // Initialize Engine

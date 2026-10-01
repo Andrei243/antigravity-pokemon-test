@@ -9,6 +9,7 @@ using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.Core;
 
@@ -25,16 +26,19 @@ public enum GameState
     Shop,
     PCStorage,
     Options,
+    Title,
     Transition
 }
 
 public class GameEngine
 {
-    public const int VirtualWidth = 1920;  // Native 1080p Full HD Viewport
+    // Interface code lays out in these units; the screen itself is rendered RenderScale times larger (3840x2160)
+    public const int VirtualWidth = 1920;
     public const int VirtualHeight = 1080;
+    public const int RenderScale = 2;
 
     private RenderTexture2D virtualScreen;
-    private GameState currentState = GameState.Overworld;
+    private GameState currentState = GameState.Title;
     private GameState stateBeforeTransition = GameState.Overworld;
     private GameState stateAfterTransition = GameState.Overworld;
 
@@ -63,6 +67,13 @@ public class GameEngine
     private readonly ShopScreen shopScreen = new();
     private readonly PCScreen pcScreen = new();
     private readonly OptionsScreen optionsScreen = new();
+
+    // The opening and title menu, the save it offers to continue, and where the options screen returns to
+    private TitleScreen titleScreen = new(null);
+    private readonly TitleScene titleScene = new();
+    private SaveData? titleSave;
+    private GameState optionsReturnState = GameState.Overworld;
+    private bool gameStarted;
 
     /// <summary>Player options (graphics, window, time of day, sound), kept in settings.json.</summary>
     public GameSettings Settings { get; }
@@ -96,7 +107,8 @@ public class GameEngine
 
     public void Initialize()
     {
-        virtualScreen = Raylib.LoadRenderTexture(VirtualWidth, VirtualHeight);
+        virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
+        UiShapes.PixelScale = RenderScale;
         Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
 
         AudioManager.Initialize();
@@ -111,18 +123,55 @@ public class GameEngine
         renderContext.EnsureLoaded();
         PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name));
 
-        // Check savegame or init fresh
-        var save = SaveManager.LoadGame();
-        if (save != null)
+        // The game opens on the title screen, which offers the saved game if there is one
+        titleSave = SaveManager.LoadGame();
+        titleScreen = new TitleScreen(titleSave);
+        AudioManager.PlayBGM("Title");
+    }
+
+    /// <summary>Leaves the title screen into a fresh game.</summary>
+    public void StartNewGame()
+    {
+        playerParty.Clear();
+        playerInventory.Clear();
+        playerPokedex.Clear();
+        pcBoxStorage.Clear();
+        MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
+        playerMoney = 3000;
+        badgesMask = 0;
+        playTime = 0f;
+
+        InitializeNewGame();
+        EnterGame();
+    }
+
+    /// <summary>Leaves the title screen into the saved game, or into a fresh one when nothing is saved.</summary>
+    public void ContinueGame()
+    {
+        var save = titleSave ?? SaveManager.LoadGame();
+        if (save == null)
         {
-            ApplySaveData(save);
-        }
-        else
-        {
-            InitializeNewGame();
+            StartNewGame();
+            return;
         }
 
+        ApplySaveData(save);
+        EnterGame();
+    }
+
+    /// <summary>Fades in on the field from the black the title screen left behind.</summary>
+    private void EnterGame()
+    {
+        gameStarted = true;
+        trainersLookOnArrival = true;
         AudioManager.PlayBGM(currentMap.BgmTrack);
+
+        stateBeforeTransition = GameState.Overworld;
+        stateAfterTransition = GameState.Overworld;
+        midTransitionCallback = null;
+        currentState = GameState.Transition;
+        isFadingOut = false;
+        transitionTimer = 0f;
     }
 
     /// <summary>Applies the options to the renderer, the clock and the sound, and optionally to the window.</summary>
@@ -234,7 +283,7 @@ public class GameEngine
 
     public void Update(float dt)
     {
-        playTime += dt;
+        if (gameStarted) playTime += dt;
         AudioManager.Update(dt);
 
         if (notificationTimer > 0f)
@@ -253,6 +302,23 @@ public class GameEngine
 
         switch (currentState)
         {
+            case GameState.Title:
+                titleScreen.Update(dt);
+                switch (titleScreen.TakeChoice())
+                {
+                    case TitleChoice.Continue:
+                        ContinueGame();
+                        break;
+                    case TitleChoice.NewGame:
+                        StartNewGame();
+                        break;
+                    case TitleChoice.Options:
+                        optionsReturnState = GameState.Title;
+                        currentState = GameState.Options;
+                        optionsScreen.Open();
+                        break;
+                }
+                break;
             case GameState.Overworld:
                 UpdateOverworld(dt);
                 break;
@@ -325,7 +391,7 @@ public class GameEngine
                     ApplySettings(window: true);
                     Settings.Save();
                 }
-                if (!optionsScreen.IsActive) currentState = GameState.Overworld;
+                if (!optionsScreen.IsActive) currentState = optionsReturnState;
                 break;
             case GameState.Transition:
                 UpdateTransition(dt);
@@ -382,6 +448,7 @@ public class GameEngine
                         SaveCurrentGame();
                         break;
                     case "OPTIONS":
+                        optionsReturnState = GameState.Overworld;
                         currentState = GameState.Options;
                         optionsScreen.Open();
                         break;
@@ -622,12 +689,14 @@ public class GameEngine
 
     public void Draw()
     {
+        renderContext.OutputIsNative = Raylib.GetScreenWidth() > VirtualWidth * RenderScale * 0.75f;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = currentState == GameState.Transition
             ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)
             : currentState;
         bool showWorld = scene is GameState.Overworld or GameState.Dialogue;
         bool showBattle = scene == GameState.Battle && battle != null;
+        bool showTitle = scene == GameState.Title;
 
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)
@@ -638,13 +707,21 @@ public class GameEngine
         {
             battleRenderer.Render(battle!);
         }
+        else if (showTitle)
+        {
+            titleScreen.Render(renderContext, world, titleScene);
+        }
 
         // Render scene to native 1920x1080 Full HD buffer
         Raylib.BeginTextureMode(virtualScreen);
         Raylib.ClearBackground(Color.Black);
+        Raylib.BeginMode2D(new Camera2D { Zoom = RenderScale });
 
         switch (currentState)
         {
+            case GameState.Title:
+                titleScreen.Draw(VirtualWidth, VirtualHeight, renderContext, world);
+                break;
             case GameState.Overworld:
             case GameState.Dialogue:
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
@@ -714,9 +791,10 @@ public class GameEngine
             Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)(alpha * 255)));
         }
 
+        Raylib.EndMode2D();
         Raylib.EndTextureMode();
 
-        // Scale virtual buffer to target window / Full HD display
+        // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)
         int screenW = Raylib.GetScreenWidth();
         int screenH = Raylib.GetScreenHeight();
 

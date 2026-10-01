@@ -100,9 +100,9 @@ public class OptionsScreen
     {
         Row.Quality => ("Graphics quality", s.Quality.ToString(), s.Quality switch
         {
-            GraphicsQuality.High => "Sharpest picture: renders at double resolution with soft shadows and ambient occlusion.",
-            GraphicsQuality.Medium => "Renders at screen resolution with anti-aliasing; keeps soft shadows and ambient occlusion.",
-            _ => "Fastest: screen resolution, simple shadows, no ambient occlusion or depth of field."
+            GraphicsQuality.High => "Sharpest picture: the 3D scenes render at 4K (3840 × 2160) with soft shadows and ambient occlusion.",
+            GraphicsQuality.Medium => "3D scenes render at 2880 × 1620 with anti-aliasing; keeps soft shadows and ambient occlusion.",
+            _ => "Fastest: 3D scenes render at 1920 × 1080 with simple shadows, no ambient occlusion or depth of field."
         }),
         Row.WindowSize => ("Window size", $"{s.WindowWidth} × {s.WindowHeight}", "Size of the game window when it isn't full screen."),
         Row.Fullscreen => ("Full screen", s.Fullscreen ? "On" : "Off", "Fills the whole display (also F11)."),

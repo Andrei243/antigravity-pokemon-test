@@ -33,6 +33,12 @@ public sealed class RenderContext
     private GraphicsQuality? pendingQuality;
     private bool targetsLoaded;
 
+    /// <summary>
+    /// True when the window shows the 4K screen at (close to) full size. A smaller window scales the screen
+    /// down, which already smooths edges, so a full-resolution scene then skips FXAA.
+    /// </summary>
+    public bool OutputIsNative { get; set; }
+
     public bool Loaded { get; private set; }
 
     public RenderContext(int width, int height)
@@ -67,7 +73,7 @@ public sealed class RenderContext
         }
         if (targetsLoaded) return;
 
-        Target = LoadSceneTarget(Width * Quality.SuperSample, Height * Quality.SuperSample);
+        Target = LoadSceneTarget((int)(Width * Quality.SceneScale), (int)(Height * Quality.SceneScale));
         blurA = HalfTarget();
         blurB = HalfTarget();
         bloomA = HalfTarget();
@@ -203,7 +209,8 @@ public sealed class RenderContext
     public void Composite(Rectangle destination)
     {
         if (!targetsLoaded) return;
-        Shaders.SetPost(Texel(Target.Texture), post, depthRange, Quality.Fxaa, Quality.SuperSample);
+        bool fxaa = Quality.Fxaa && (OutputIsNative || Quality.SceneScale < 2f);
+        Shaders.SetPost(Texel(Target.Texture), post, depthRange, fxaa, Quality.SceneScale);
         Raylib.BeginShaderMode(Shaders.Post);
         Shaders.BindPostTextures(blurA.Texture, bloomA.Texture, aoA.Texture, Target.Depth);
         var src = new Rectangle(0, 0, Target.Texture.Width, -Target.Texture.Height);

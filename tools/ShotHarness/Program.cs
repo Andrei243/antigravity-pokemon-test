@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|look|times|sheets] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|flow|menus|look|title|times|sheets] [before dir]
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -38,6 +38,10 @@ engine.Settings.Muted = true;
 engine.Settings.TimeOfDay = TimeOfDay.Day;
 engine.ApplySettings(window: false);
 
+// The game opens on its title screen; everything but the "title" mode wants a game in progress
+engine.StartNewGame();
+typeof(GameEngine).GetField("currentState", BindingFlags.NonPublic | BindingFlags.Instance)!.SetValue(engine, GameState.Overworld);
+
 // ---------------------------------------------------------------- helpers
 
 const BindingFlags Private = BindingFlags.NonPublic | BindingFlags.Instance;
@@ -70,14 +74,25 @@ void Save(Image img, string name)
     Console.WriteLine("wrote " + name);
 }
 
-void Shot(string name) => Save(Capture(), name);
+// The game renders at 3840x2160. Shots are saved at half size (quick to write and review) unless SHOTS_4K=1;
+// coordinates everywhere in this file are layout units (1920x1080).
+bool native4K = Environment.GetEnvironmentVariable("SHOTS_4K") == "1";
+const int S = GameEngine.RenderScale;
 
-// A region of the screen, enlarged with nearest-neighbour filtering for close inspection
+void Shot(string name)
+{
+    var img = Capture();
+    if (!native4K) Raylib.ImageResize(ref img, GameEngine.VirtualWidth, GameEngine.VirtualHeight);
+    Save(img, name);
+}
+
+// A region of the screen at native resolution, enlarged with nearest-neighbour filtering for close inspection
+// (scale is relative to layout units, so 2 means the native 4K pixels)
 void ShotCrop(string name, int x, int y, int w, int h, int scale)
 {
     var img = Capture();
-    Raylib.ImageCrop(ref img, new Rectangle(x, y, w, h));
-    Raylib.ImageResizeNN(ref img, w * scale, h * scale);
+    Raylib.ImageCrop(ref img, new Rectangle(x * S, y * S, w * S, h * S));
+    if (scale > S) Raylib.ImageResizeNN(ref img, w * scale, h * scale);
     Save(img, name);
 }
 
@@ -388,6 +403,7 @@ if (Run("look"))
     party.Members[3].CurrentHP = party.Members[3].MaxHP / 7;
 
     GoTo("TwinleafTown", 11, 8, Direction.Down); Frames(2); Shot("look_1_twinleaf");
+    ShotCrop("look_1b_twinleaf_native", 720, 300, 480, 270, 2);
 
     GoTo("TwinleafTown", 12, 7, Direction.Up);
     ((DialogueManager)Get("dialogue")).ShowDialogue("Barry", new List<string> { "Barry: Hey, Lucas! You're finally ready! Professor Rowan is waiting at Lake Verity!" });
@@ -398,6 +414,7 @@ if (Run("look"))
     var pb = StartBattle("Shinx", 5);
     ToMainMenu(pb);
     Shot("look_3_battle");
+    ShotCrop("look_3c_hud_native", 1200, 640, 480, 270, 2);
     pb.HUD.MenuState = BattleMenuState.Moves; Frames(1); Shot("look_3b_moves");
     pb.HUD.MenuState = BattleMenuState.Main;
 
@@ -423,6 +440,59 @@ if (Run("look"))
 
     if (args.Length > 2)
         Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
+}
+
+// ---------------------------------------------------------------- title screen
+
+if (Run("title"))
+{
+    const float Dt = 1f / 60f;
+    TitleScreen NewTitle(SaveData? save)
+    {
+        var title = new TitleScreen(save);
+        Set("titleScreen", title);
+        Set("currentState", GameState.Title);
+        return title;
+    }
+    void Seconds(float s) => Frames((int)MathF.Round(s / Dt));
+
+    // The opening from the start, with no saved game: notice, three fly-over shots, Giratina, the title, the menu
+    var opening = NewTitle(null);
+    Seconds(1.6f); Shot("title_1_notice");
+    Seconds(TitleScreen.NoticeTime - 1.6f + 1.9f); Shot("title_2_journey_twinleaf");
+    Seconds(TitleScreen.SegmentTime); Shot("title_3_journey_route201");
+    Seconds(TitleScreen.SegmentTime); Shot("title_4_journey_sandgem");
+    Seconds(TitleScreen.SegmentTime - 1.9f + 1.0f); Shot("title_5_reveal_silhouette");
+    Seconds(0.9f); Shot("title_6_reveal_lit");
+    Seconds(2.2f); Shot("title_7_idle");
+    Timing("title");
+    opening.PressConfirm();
+    Seconds(1f); Shot("title_8_menu_no_save");
+
+    // With a saved game: three badges, twelve and a half hours, a party of five
+    var save = new SaveData
+    {
+        PlayerName = "Lucas",
+        CurrentMapName = "SandgemTown",
+        PlayTimeSeconds = 12 * 3600 + 34 * 60 + 20,
+        Badges = 0b0000_0111,
+        Money = 12480,
+        CaughtSpecies = Enumerable.Range(387, 14).ToList(),
+        Party = new[] { ("Grotle", 24), ("Staravia", 22), ("Luxio", 23), ("Bibarel", 20), ("Riolu", 18) }
+            .Select(p => SavedPokemonData.FromPokemon(new Pokemon(PokemonDatabase.Get(p.Item1)!, p.Item2))).ToList()
+    };
+    var saved = NewTitle(save);
+    saved.PressConfirm();
+    Seconds(1.2f);
+    saved.PressConfirm();
+    Seconds(1f); Shot("title_9_menu_continue");
+    ShotCrop("title_9b_continue_native", 1016, 250, 824, 452, 2);
+    saved.Move(1);
+    Seconds(0.2f); Shot("title_10_menu_new_game");
+    saved.PressConfirm();
+    Seconds(0.2f); Shot("title_11_confirm_new_game");
+
+    Set("currentState", GameState.Overworld);
 }
 
 // ---------------------------------------------------------------- times of day

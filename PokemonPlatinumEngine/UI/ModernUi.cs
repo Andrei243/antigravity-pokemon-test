@@ -96,6 +96,49 @@ internal static class ModernUi
         RenderHelper.DrawGenderSymbol((int)(x + w + 10), (int)(centerY - size * 0.36f), (int)(size * 0.7f), p.Gender);
     }
 
+    // ------------------------------------------------------------------ badges
+
+    /// <summary>Sinnoh's eight Gym Badges in order (bit 0 of the badge mask is the Coal Badge).</summary>
+    public static readonly string[] BadgeNames = { "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" };
+
+    private static readonly Color[] BadgeColors =
+    {
+        new(150, 112, 92, 255), new(72, 172, 98, 255), new(218, 138, 76, 255), new(70, 138, 216, 255),
+        new(150, 104, 200, 255), new(144, 156, 178, 255), new(120, 204, 232, 255), new(246, 198, 70, 255)
+    };
+
+    /// <summary>
+    /// A badge as a small enamel medallion in the badge's colour with a simple mark (our own design, not the games'
+    /// badge art); a badge not yet won is an empty socket.
+    /// </summary>
+    public static void Badge(Vector2 center, float r, int index, bool earned)
+    {
+        var slot = new Rectangle(center.X - r, center.Y - r, r * 2, r * 2);
+        if (!earned)
+        {
+            UiShapes.Shape(slot, r, new Color(190, 200, 218, 255), new Color(206, 214, 230, 255), new Color(160, 172, 196, 255), 3f);
+            return;
+        }
+
+        var color = BadgeColors[index % BadgeColors.Length];
+        UiShapes.Shadow(slot, r, 8f, new Vector2(0, 3), ShadowColor);
+        UiShapes.Shape(slot, r, Lighter(color, 0.35f), Darker(color, 0.15f), Darker(color, 0.5f), 3f);
+        var white = new Color(255, 255, 255, 235);
+        float m = r * 0.42f;
+        switch (index % 4)
+        {
+            case 0: UiShapes.Circle(center, m * 0.7f, white); break;
+            case 1: UiShapes.Fill(new Rectangle(center.X - m, center.Y - m * 0.32f, m * 2, m * 0.64f), m * 0.32f, white); break;
+            case 2: UiShapes.Fill(new Rectangle(center.X - m * 0.32f, center.Y - m, m * 0.64f, m * 2), m * 0.32f, white); break;
+            default:
+                UiShapes.Circle(center, m * 0.9f, white);
+                UiShapes.Circle(center, m * 0.45f, Darker(color, 0.1f));
+                break;
+        }
+        // A glint on the upper left
+        UiShapes.Circle(center + new Vector2(-r * 0.42f, -r * 0.45f), r * 0.16f, new Color(255, 255, 255, 150));
+    }
+
     // ------------------------------------------------------------------ battle
 
     /// <summary>

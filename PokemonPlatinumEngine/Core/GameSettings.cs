@@ -8,13 +8,14 @@ namespace PokemonPlatinumEngine.Core;
 public enum GraphicsQuality { Low, Medium, High }
 
 /// <summary>What a graphics quality preset turns on.</summary>
-public readonly record struct QualityProfile(int SuperSample, bool AmbientOcclusion, bool Fxaa, int ShadowTaps, int ShadowMapSize, bool DepthOfField)
+/// <param name="SceneScale">3D scene resolution in layout units: 2 renders the scene at 3840x2160, 1 at 1920x1080.</param>
+public readonly record struct QualityProfile(float SceneScale, bool AmbientOcclusion, bool Fxaa, int ShadowTaps, int ShadowMapSize, bool DepthOfField)
 {
     public static QualityProfile For(GraphicsQuality quality) => quality switch
     {
-        GraphicsQuality.Low => new QualityProfile(1, false, true, 5, 1024, false),
-        GraphicsQuality.Medium => new QualityProfile(1, true, true, 7, 2048, true),
-        _ => new QualityProfile(2, true, false, 9, 2048, true)
+        GraphicsQuality.Low => new QualityProfile(1f, false, true, 5, 1024, false),
+        GraphicsQuality.Medium => new QualityProfile(1.5f, true, true, 7, 2048, true),
+        _ => new QualityProfile(2f, true, true, 9, 2048, true)
     };
 }
 
@@ -23,7 +24,7 @@ public sealed class GameSettings
 {
     public const string FileName = "settings.json";
 
-    public static readonly (int Width, int Height)[] WindowSizes = { (1280, 720), (1600, 900), (1920, 1080), (2560, 1440) };
+    public static readonly (int Width, int Height)[] WindowSizes = { (1280, 720), (1600, 900), (1920, 1080), (2560, 1440), (3840, 2160) };
 
     public GraphicsQuality Quality { get; set; } = GraphicsQuality.High;
     public int WindowWidth { get; set; } = 1920;
@@ -34,6 +35,21 @@ public sealed class GameSettings
 
     /// <summary>A fixed time of day, or null to follow the clock.</summary>
     public TimeOfDay? TimeOfDay { get; set; }
+
+    /// <summary>True when there was no settings file to load, so the window still has to be sized for the monitor.</summary>
+    [JsonIgnore]
+    public bool FirstRun { get; private set; }
+
+    /// <summary>The largest listed window size a monitor can show with its title bar and the taskbar.</summary>
+    public static (int Width, int Height) LargestWindowFor(int monitorWidth, int monitorHeight)
+    {
+        var best = WindowSizes[0];
+        foreach (var size in WindowSizes)
+        {
+            if (size.Width <= monitorWidth && size.Height <= monitorHeight - 80) best = size;
+        }
+        return best;
+    }
 
     private static readonly JsonSerializerOptions Json = new()
     {
@@ -51,7 +67,7 @@ public sealed class GameSettings
         {
             Console.WriteLine($"Could not read {path}: {e.Message}; using default settings.");
         }
-        return new GameSettings();
+        return new GameSettings { FirstRun = !File.Exists(path) };
     }
 
     public void Save(string path = FileName)

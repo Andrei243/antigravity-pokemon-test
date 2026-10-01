@@ -100,9 +100,9 @@ public class LightingAndSettingsTests
         var medium = QualityProfile.For(GraphicsQuality.Medium);
         var high = QualityProfile.For(GraphicsQuality.High);
 
-        Assert.Equal(2, high.SuperSample);
-        Assert.False(high.Fxaa);
-        Assert.Equal(1, medium.SuperSample);
+        Assert.Equal(2f, high.SceneScale);
+        Assert.True(high.Fxaa);
+        Assert.True(medium.SceneScale < high.SceneScale && low.SceneScale < medium.SceneScale);
         Assert.True(medium.Fxaa && medium.AmbientOcclusion);
         Assert.False(low.AmbientOcclusion || low.DepthOfField);
         Assert.True(low.ShadowTaps < medium.ShadowTaps && medium.ShadowTaps < high.ShadowTaps);
@@ -156,6 +156,8 @@ public class LightingAndSettingsTests
 
         OptionsScreen.Change(s, windowSize, 1);
         Assert.Equal((2560, 1440), (s.WindowWidth, s.WindowHeight));
+        OptionsScreen.Change(s, windowSize, 1);
+        Assert.Equal((3840, 2160), (s.WindowWidth, s.WindowHeight));
         OptionsScreen.Change(s, windowSize, 1);
         Assert.Equal((1280, 720), (s.WindowWidth, s.WindowHeight));
 

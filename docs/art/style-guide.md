@@ -32,7 +32,7 @@ The numbers in this guide live in `ArtLook` as one light rig per layer and time 
 
 ### Pixel grid
 
-- **32 texels per world unit** (one tile) for everything: ground (`GroundBaker.ArtTile`), buildings and props (`SceneTextures`), character sprites (`CharacterSprites.TexelsPerUnit`). With the field camera that is about 3 screen pixels per texel at 1080p.
+- **32 texels per world unit** (one tile) for everything: ground (`GroundBaker.ArtTile`), buildings and props (`SceneTextures`), character sprites (`CharacterSprites.TexelsPerUnit`). With the field camera that is about 3 layout units per texel, 6 real pixels at 4K.
 - Point filtering everywhere; no mipmaps on pixel art.
 - Upright things (walls, sprites, signs) are stretched by `VS = 1 / cos(pitch)` so they read at true proportions from Platinum's steep camera (pitch 59.05°, FOV 16.18°).
 
@@ -133,22 +133,30 @@ The world follows the computer's clock, like the DS's real-time clock, with Plat
 - Night battles stay a little brighter than the night field and gain a stronger rim light (0.55), so Pokémon read clearly.
 - Light never drops to black: the darkest ambient is about 0.15, and nights lean blue, never grey.
 
+## Resolution (4K)
+
+- The game's screen is **3840×2160**. Everything is still laid out in **1920×1080 layout units** (`GameEngine.VirtualWidth/Height`); the screen is drawn at `RenderScale = 2` real pixels per unit, so every size in this guide is in layout units unless it says otherwise.
+- The interface is drawn through a ×2 camera straight into the 4K screen: text comes from large font atlases and shapes from signed distances, so both are sharp at 4K. Edges are anti-aliased over one real pixel, not one layout unit (`UiShapes.PixelScale`).
+- Pixel art keeps its whole-number scales: a field texel is about 6 real pixels, a party icon texel is 8.
+- The window shows the 4K screen scaled to fit. Full screen on a 4K display shows it 1:1; a smaller window downsamples it, which also anti-aliases it. The first run picks the largest listed window size the monitor can show.
+- The full-screen window is one row taller than the display (`WindowSettings.FullscreenSize`). A borderless OpenGL window that matches the monitor exactly is taken over by the graphics driver as exclusive full screen and flickers on NVIDIA cards.
+
 ## Quality presets
 
-| Preset | Scene resolution | Anti-aliasing | Shadow taps | Shadow map | Ambient occlusion | Wide depth of field |
+| Preset | 3D scene resolution | Anti-aliasing | Shadow taps | Shadow map | Ambient occlusion | Wide depth of field |
 |---|---|---|---|---|---|---|
-| High (default) | 2× supersampled | from the supersampling | 9 | 2048 | yes | yes |
-| Medium | 1× | FXAA | 7 | 2048 | yes | yes |
-| Low | 1× | FXAA | 5 | 1024 | no | no |
+| High (default) | 3840×2160 | FXAA when the window shows the screen about 1:1 (wider than 2880); otherwise the downscale to the window does it | 9 | 2048 | yes | yes |
+| Medium | 2880×1620 | FXAA | 7 | 2048 | yes | yes |
+| Low | 1920×1080 | FXAA | 5 | 1024 | no | no |
 
-A frame must stay under 8 ms on High (after G2 in the harness: fields 5.7–6.9 ms, Route 201 being the heaviest; battles 6.3–7 ms). Options are saved in `settings.json`.
+The interface is always drawn at 4K; the presets change only the 3D scenes. A frame must stay under 8 ms on High (in the harness after the move to 4K: field 6.7 ms, battle 7.6 ms, title 3.9 ms). Options are saved in `settings.json`.
 
 ## Interface (vector)
 
 ### Typography
 
 - **Nunito** (SIL Open Font License, see `CREDITS.md`) in three weights: Bold for running text, ExtraBold for labels and dialogue, Black for names, numbers and buttons.
-- Scale (px at 1080p): 18–20 captions and tags · 24–26 small labels · 30–32 numbers and move names · 36–42 names, prompts and dialogue · 52 screen titles · 60 the FIGHT button.
+- Scale (layout units): 18–20 captions and tags · 24–26 small labels · 30–32 numbers and move names · 36–42 names, prompts and dialogue · 52 screen titles · 60 the FIGHT button.
 - Tracking +0.8 up to 20 px, +0.4 up to 39 px, 0 above. Level reads as a small muted "Lv" before a large number.
 - No drop shadows on text over panels; white text on coloured buttons gets a 2 px shadow at 20 % black.
 
@@ -171,19 +179,37 @@ A frame must stay under 8 ms on High (after G2 in the harness: fields 5.7–6.9 
 
 ### Shapes and components
 
-- Everything is drawn by `UiShapes` (signed-distance rounded rectangles with 1 px anti-aliasing, vertical gradients, borders, slanted sides and blurred shadows). No raylib rounded rectangles in the new UI.
+- Everything is drawn by `UiShapes` (signed-distance rounded rectangles anti-aliased over one real pixel, vertical gradients, borders, slanted sides and blurred shadows). No raylib rounded rectangles in the new UI.
 - Panels: radius 22–34, 4 px Frame border, shadow blur 22 at offset (0, 8).
 - Buttons: pills; gradient 18 % lighter at the top to 12 % darker at the bottom, border 35 % darker, a soft shine over the top 38 %. Selected: a 6 px white ring and a glow in the button's colour.
 - HP boxes: slanted sides (skew ±0.2), name + gender left, level right, HP bar under; the player's box adds HP numbers and an EXP line.
 - HP bar: pill with an amber "HP" tag 2.3× its height.
 - Dialogue: wide panel near the bottom, speaker in a red pill tag on its top edge, a bobbing red arrow when the line is complete.
-- Layout grid: 1920×1080 virtual screen, 48–64 px margins, 24–32 px gutters. Battle: opponent box top-left, player box right above the commands, prompt bottom-left, a large FIGHT button with BAG, POKÉMON and RUN stacked beside it.
+- Layout grid: 1920×1080 layout units (drawn at 4K), 48–64 margins, 24–32 gutters. Battle: opponent box top-left, player box right above the commands, prompt bottom-left, a large FIGHT button with BAG, POKÉMON and RUN stacked beside it.
 
 ### Pokémon in menus
 
 - Always **2D pixel sprites** baked from the models (`PokemonSprites`): 48-px icons and 128-px front/back sprites with a one-texel outline.
 - Shown at whole-number scales only (party icons at 4×), point-filtered.
 - Icons hop like the main games: the selected one 3 sprite-pixels every 0.16 s, the others 1 sprite-pixel every 0.4 s; fainted ones stay still.
+
+### Badges
+
+- Eight round medallions in gym order (`ModernUi.Badge`), each in its gym's colour with a simple white mark; our own designs, not the games' badge art.
+- Not yet won: a flat grey-blue disc with a darker rim, same size, so the row always shows eight.
+
+### Opening and title screen (`TitleScreen`, `TitleScene`)
+
+The order follows the games' opening: a notice, a short film, the legendary Pokémon with the title, "press start", then the menu. Any button skips to the title.
+
+1. **Notice** (3.4 s): white text on black saying this is a fan-made project with original art.
+2. **Journey** (3 × 3.6 s): slow pans over the field itself at different times of day (Twinleaf Town in the morning, Route 201 by day, Sandgem Town at night with its windows lit), between cinema bars 120 units tall, dipping to black between shots. They are rendered by the field renderer, so they always match the game.
+3. **Reveal** (3.2 s): fade up from black on the void, a white flash, then Giratina and the lettering.
+4. **Title**: Giratina (the 3D model, as in battle) hovers in a dark violet void that deepens to crimson, among drifting stones and rising motes. It stays a **shadow** against the glow behind it, picked out by its ink lines; it is never fully lit. Lettering: "Pokémon" in cream over "PLATINUM" in a white-to-silver gradient (`UiFonts.Display`, Nunito Black) with a band of light sweeping across every 5.5 s, a thin rule and "A FAN REMAKE". It is our own lettering, not the games' logo. A pulsing "PRESS Z OR ENTER" sits under Giratina, and a one-line disclaimer at the bottom edge.
+5. **Menu**: the lettering shrinks to the top left, Giratina slides left and cards slide in on the right: CONTINUE (only with a save), NEW GAME, OPTIONS. Standard panels; the selected card has the Selection border and glow.
+   - **CONTINUE** shows the save at a glance: where it was saved (right of the heading), PLAYER, TIME PLAYED (hours:minutes), POKÉDEX (caught), BADGES n / 8 with the eight medallions, and the PARTY as 2D icons.
+   - **NEW GAME** with a save present asks first ("Start a new game?"), with No selected by default.
+6. **Leaving**: 0.8 s fade to black, then the field fades in.
 
 ### Motion (targets for G3)
 
@@ -236,3 +262,5 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
 - Materials (specular, emission per surface kind) wait for models that carry material ids: the SDF kit in G6 and G7.
 - Street lamps and other light sources besides windows come with the props in G5; rooms don't change with the hour yet.
+- The title keeps Giratina in shadow partly because the version 1 model does not hold up fully lit; revisit the lighting with the version 2 models (G7). The title music is a placeholder melody until plan 05.
+- The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5). The new-game introduction (Professor Rowan) is still to come (G10, plan 02).

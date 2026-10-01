@@ -515,6 +515,29 @@ internal static class SceneTextures
         }
     }
 
+    /// <summary>A soft white dot that fades out evenly, for glows and drifting motes (drawn additively).</summary>
+    public static Texture2D SoftGlow
+    {
+        get
+        {
+            if (Cache.TryGetValue("soft_glow", out var cached)) return cached;
+            const int s = 64;
+            var c = new PixelCanvas(s, s);
+            for (int y = 0; y < s; y++)
+                for (int x = 0; x < s; x++)
+                {
+                    float u = (x + 0.5f) / s * 2f - 1f, v = (y + 0.5f) / s * 2f - 1f;
+                    float fall = Math.Clamp(1f - MathF.Sqrt(u * u + v * v), 0f, 1f);
+                    c.SetRaw(x, y, new Color(255, 255, 255, (int)(255 * fall * fall)));
+                }
+            var tex = c.ToTexture();
+            Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
+            Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
+            Cache["soft_glow"] = tex;
+            return tex;
+        }
+    }
+
     public static Texture2D Exclamation => Get("exclamation", () =>
     {
         var c = new PixelCanvas(16, 16);

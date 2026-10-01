@@ -86,6 +86,15 @@ Per the style guide's layers. Field: soft shadow filtering, fog, the five time-o
 - **Frame time on High**: fields 5.7–6.9 ms (Route 201 is the heaviest), battles 6.3–7 ms; Medium about 4 ms, Low about 3 ms.
 - **Deferred**: the material system (specular, emission per surface kind) needs models that carry material ids, so it moves to G6 and G7 with the SDF kit. Street lamps come with the props in G5.
 
+### Extra · 4K and the title screen (2026-10-01, asked for by the user between G2 and G3)
+
+- **4K**: the screen is now 3840×2160. Layout stays in 1920×1080 units (`VirtualWidth/Height`) and is drawn at `RenderScale = 2` through a ×2 camera, so no screen had to be re-laid out. Fonts use larger atlases, `UiShapes` anti-aliases over one real pixel, and the High preset renders the 3D scenes at 3840×2160 (Medium 2880×1620, Low 1920×1080). FXAA on High runs only when the window shows the screen about 1:1; in a smaller window the downscale already anti-aliases, which keeps the frame in budget. Window sizes go up to 3840×2160, and the first run picks the largest size the monitor can show.
+- **Full-screen flicker fixed**: raylib's borderless mode makes the window exactly the monitor's size; on the user's NVIDIA card the driver then treats it as an exclusive full-screen game (its overlay hooked in) and the picture flickered. `WindowSettings` now does its own borderless full screen with a window one row taller than the display, which stays composited. The window state and rendered frames were verified steady; the flicker itself can only be judged on the display.
+- **Title screen** (part of G10, done early): `GameState.Title` is the starting state. `TitleScreen` runs the opening (notice → three fly-over shots of the field → Giratina's reveal → title → menu) and `TitleScene` renders Giratina in the void. The menu offers CONTINUE (with the save's location, player, time played, Pokédex count, badges and party), NEW GAME (asks first when a save exists) and OPTIONS. `GameEngine.StartNewGame()` and `ContinueGame()` enter the game; play time only counts once a game is running. See the style guide's "Opening and title screen".
+- **Harness**: `title` mode (opening, title, menus with and without a save); `SHOTS_4K=1` saves full 4K shots; `ShotCrop` saves native-resolution crops.
+- **Frame time on High at 4K**: field 6.7 ms, battle 7.6 ms, title 3.9 ms.
+- **Left for later**: the new-game introduction with Professor Rowan (G10 with plan 02), real title music (plan 05), a fully lit Giratina once the version 2 models exist (G7).
+
 ### G3 · UI kit and core screens
 Grow `UI/Kit` and `ModernUi` into the kit: tokens, components and motion from the style guide; then rebuild the start menu, the battle's switch and bag panels, the summary (2D sprites), and polish the dialogue box, battle HUD (animated bars), party screen and options screen. Add the location-name sign shown when entering an area.
 **Done when** those screens use only kit components and pass review in the harness `menus`, `battle` and `look` modes.
@@ -114,7 +123,7 @@ Arenas per environment (grass, forest, cave, water, snow, sand, indoors, each gy
 Wind, footprints and dust, water ripples and splashes, rustling grass, rain, snow and fog, day and night, doors that open, emote bubbles, eased camera moves, and battle intro transitions (swirls, shutters, shatter effects) that carry the player from the pixel diorama into the 3D battle.
 
 ### G10 · Remaining screens
-Bag, Pokédex (2D sprites, per the style guide), trainer card, shop, PC boxes, starter choice, a title screen with a diorama scene, the new-game introduction, save and load, options; all in the vector UI kit.
+Bag, Pokédex (2D sprites, per the style guide), trainer card, shop, PC boxes, starter choice, the new-game introduction, save and load, options; all in the vector UI kit. (The title screen and the continue panel were built early; see "Extra" after G2.)
 
 ### G11 · Performance and final pass
 Profiling, instancing, levels of detail, caches, settings presets, and a last before/after review of every harness shot.
@@ -136,6 +145,7 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 
 - [x] G1 Direction, references and style guide (2026-10-01: Sinnoh Diorama; see the style guide)
 - [x] G2 Rendering foundation (2026-10-01: time of day, soft shadows, fog, ambient occlusion, outlines, FXAA, options screen; materials moved to G6/G7)
+- [x] Extra: 4K rendering, full-screen fix, opening and title screen (2026-10-01)
 - [ ] G3 UI kit and core screens
 - [ ] G4 Terrain and nature
 - [ ] G5 Buildings, props and interiors
@@ -143,5 +153,5 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 - [ ] G7 Pokémon models, version 2
 - [ ] G8 Battle presentation
 - [ ] G9 Life
-- [ ] G10 Remaining screens
+- [ ] G10 Remaining screens (title screen and continue panel done early, 2026-10-01)
 - [ ] G11 Performance and final pass

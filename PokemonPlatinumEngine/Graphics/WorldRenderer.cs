@@ -39,18 +39,25 @@ public sealed class WorldRenderer
     }
 
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
-    public void Render(Map map, Player player)
+    public void Render(Map map, Player player) =>
+        RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, GameClock.Hour);
+
+    /// <summary>
+    /// Renders the map without the player, looking at a point (in tiles) at a given hour: the fly-over shots of
+    /// the opening. Call outside any other texture mode.
+    /// </summary>
+    public void RenderCinematic(Map map, float focusX, float focusZ, float hour) => RenderScene(map, null, focusX, focusZ, hour);
+
+    private void RenderScene(Map map, Player? player, float px, float pz, float hour)
     {
         context.EnsureLoaded();
         var scene = GetScene(map);
         lastWasIndoors = scene.Indoors;
-        var rig = ArtLook.FieldRig(GameClock.Hour, scene.Indoors);
+        var rig = ArtLook.FieldRig(hour, scene.Indoors);
         var light = rig.Light;
 
         float time = (float)Raylib.GetTime();
-        float px = player.PixelX / Player.TileSize + 0.5f;
-        float pz = player.PixelY / Player.TileSize + 0.5f;
-        float lift = player.HopHeight / Player.TileSize;
+        float lift = player != null ? player.HopHeight / Player.TileSize : 0f;
         var camera = BuildCamera(scene, px, pz);
         shaders.SetTime(time);
         GatherActors(map, player, px, pz, lift, time);
@@ -92,7 +99,7 @@ public sealed class WorldRenderer
 
         scene.Draw(rig.WindowGlow);
         scene.DrawLights(rig.WindowGlow);
-        DrawContactShadows(map, px, pz, lift);
+        DrawContactShadows(map, player != null, px, pz, lift);
         DrawActors(CharacterPass.Color);
         DrawSpottedBubbles(scene, map);
 
@@ -190,7 +197,7 @@ public sealed class WorldRenderer
     /// <summary>The current scene's vertical stretch, for HD-2D sprites.</summary>
     private float VerticalScale = 1f;
 
-    private void GatherActors(Map map, Player player, float px, float pz, float lift, float time)
+    private void GatherActors(Map map, Player? player, float px, float pz, float lift, float time)
     {
         actors.Clear();
         foreach (var npc in map.NPCs)
@@ -201,6 +208,8 @@ public sealed class WorldRenderer
             actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders.Character),
                 new Vector3(npc.DrawX + 0.5f, 0, npc.DrawY + 0.5f), Player.YawOf(npc.Facing), pose));
         }
+
+        if (player == null) return;
 
         var playerPose = new CharacterPose
         {
@@ -261,7 +270,7 @@ public sealed class WorldRenderer
     /// A faint dark patch right under each character's feet. The shadow map casts their real shadow; this keeps
     /// them grounded when the sun is high or they are standing in shade.
     /// </summary>
-    private static void DrawContactShadows(Map map, float px, float pz, float lift)
+    private static void DrawContactShadows(Map map, bool withPlayer, float px, float pz, float lift)
     {
         var tex = SceneTextures.ShadowBlob;
         Rlgl.DisableDepthMask();
@@ -284,7 +293,7 @@ public sealed class WorldRenderer
         {
             if (!npc.IsPCTerminal) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, 1f);
         }
-        Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
+        if (withPlayer) Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 
         Rlgl.SetTexture(0);
         Rlgl.DrawRenderBatchActive();

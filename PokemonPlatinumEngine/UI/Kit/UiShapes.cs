@@ -34,6 +34,7 @@ uniform vec4 colorBottom;
 uniform vec4 borderColor;
 uniform float borderWidth;
 uniform float softness;
+uniform float aa;
 out vec4 finalColor;
 
 float RoundBox(vec2 p, vec2 b, float r)
@@ -52,15 +53,18 @@ void main()
     vec4 fill = mix(colorTop, colorBottom, clamp(local.y / (halfSize.y * 2.0) + 0.5, 0.0, 1.0));
     if (borderWidth > 0.0)
     {
-        float b = smoothstep(-borderWidth - 0.6, -borderWidth + 0.6, d);
+        float b = smoothstep(-borderWidth - aa, -borderWidth + aa, d);
         fill = mix(fill, borderColor, b);
     }
     finalColor = vec4(fill.rgb, fill.a * alpha);
 }";
 
+    /// <summary>Real pixels per layout unit (2 when the 1920x1080 layout is rendered at 4K); keeps edges one real pixel soft.</summary>
+    public static float PixelScale { get; set; } = 1f;
+
     private static Shader shader;
     private static bool loaded;
-    private static int locHalf, locRadius, locSkew, locTop, locBottom, locBorder, locBorderWidth, locSoft;
+    private static int locHalf, locRadius, locSkew, locTop, locBottom, locBorder, locBorderWidth, locSoft, locAa;
 
     private static void EnsureLoaded()
     {
@@ -74,6 +78,7 @@ void main()
         locBorder = Raylib.GetShaderLocation(shader, "borderColor");
         locBorderWidth = Raylib.GetShaderLocation(shader, "borderWidth");
         locSoft = Raylib.GetShaderLocation(shader, "softness");
+        locAa = Raylib.GetShaderLocation(shader, "aa");
         loaded = true;
     }
 
@@ -99,7 +104,10 @@ void main()
         Raylib.SetShaderValue(shader, locBottom, V(bottom), ShaderUniformDataType.Vec4);
         Raylib.SetShaderValue(shader, locBorder, V(border), ShaderUniformDataType.Vec4);
         Raylib.SetShaderValue(shader, locBorderWidth, borderWidth, ShaderUniformDataType.Float);
-        Raylib.SetShaderValue(shader, locSoft, Math.Max(0.5f, softness), ShaderUniformDataType.Float);
+        // Crisp shapes get an edge one real pixel wide; shadows keep their blur in layout units
+        float edge = softness <= 1f ? softness / PixelScale : softness;
+        Raylib.SetShaderValue(shader, locSoft, Math.Max(0.25f, edge), ShaderUniformDataType.Float);
+        Raylib.SetShaderValue(shader, locAa, 0.6f / PixelScale, ShaderUniformDataType.Float);
 
         Rlgl.Begin(DrawMode.Quads);
         Rlgl.Color4ub(255, 255, 255, 255);

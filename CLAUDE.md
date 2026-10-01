@@ -17,7 +17,7 @@ dotnet build PokemonPlatinum.sln
 dotnet test PokemonPlatinumTests
 dotnet test PokemonPlatinumTests --filter "FullyQualifiedName~TestCatchRateFormula"   # one test
 dotnet run --project PokemonPlatinumEngine                                             # play
-dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|times|sheets] [before dir]
+dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|title|times|sheets] [before dir]
 ```
 
 - `tools/ShotHarness` is not in the solution, so `dotnet build PokemonPlatinum.sln` doesn't compile it. Build it too after renaming or removing engine members.
@@ -27,9 +27,11 @@ dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flo
 
 ## Checking visual work
 
-Claude can't see the game window. `tools/ShotHarness` runs the engine in a hidden 1920×1080 window, drives it into known states and saves PNGs of the virtual screen. Write its output to a scratch directory, open the PNGs with the Read tool before calling graphics work done, and show the user before/after pairs. It also prints frame timings (the budget is 8 ms per frame).
+Claude can't see the game window. `tools/ShotHarness` runs the engine in a hidden 1920×1080 window, drives it into known states and saves PNGs of the virtual screen (halved to 1920×1080; set `SHOTS_4K=1` for the full 3840×2160, or use `ShotCrop` for a native-resolution crop). Write its output to a scratch directory, open the PNGs with the Read tool before calling graphics work done, and show the user before/after pairs. It also prints frame timings (the budget is 8 ms per frame).
 
-The harness sets `GameEngine`'s private fields by reflection (`currentMap`, `player`, `currentState`, `battle`, `battleRenderer`, `virtualScreen`, `dialogue`, the menu screens, `playerParty`, `playerInventory`, `playerPokedex`), so renaming those means updating `tools/ShotHarness/Program.cs`. It can't see `internal` types: `InternalsVisibleTo` covers only the test project.
+The harness sets `GameEngine`'s private fields by reflection (`currentMap`, `player`, `currentState`, `battle`, `battleRenderer`, `virtualScreen`, `dialogue`, `titleScreen`, the menu screens, `playerParty`, `playerInventory`, `playerPokedex`), so renaming those means updating `tools/ShotHarness/Program.cs`. It can't see `internal` types: `InternalsVisibleTo` covers only the test project. The engine starts on the title screen, so the harness calls `StartNewGame()` first; only its `title` mode goes back there.
+
+The hidden window never shows the screen 1:1 or in full screen. For window problems (full screen, resizing, DPI), write a small program in the scratchpad that mirrors `Program.Main` for a few seconds and logs `GetScreenWidth/Height`, focus and window flags each frame; a full-screen window will appear on the user's display while it runs, so say so first and keep the runs few.
 
 ## Architecture
 
@@ -37,7 +39,9 @@ The harness sets `GameEngine`'s private fields by reflection (`currentMap`, `pla
 
 `Program.cs` opens the window and calls `GameEngine.Update(dt)` then `GameEngine.Draw()` each frame. `GameEngine` (Core) owns everything: the current `Map` and `Player`, the party, bag, Pokédex and PC storage, the active `BattleEngine`, one instance of each menu screen, and a `GameState` enum that decides which of them updates and draws. State changes that swap scenes go through `StartTransition(next, onMidpoint)`: fade out, run the callback (load the map, create the battle), fade in.
 
-Everything draws into a 1920×1080 `virtualScreen` render texture, which is then letterboxed into the window. UI code lays out in those fixed coordinates.
+The game starts in `GameState.Title`: `TitleScreen` plays the opening and shows the menu, and `StartNewGame()` / `ContinueGame()` load the game and fade into the field. Nothing in `currentMap`, `player` or the party is valid before one of them has run.
+
+Everything draws into the `virtualScreen` render texture, which is 3840×2160 and is letterboxed into the window. UI code lays out in 1920×1080 units (`VirtualWidth`, `VirtualHeight`); `Draw` wraps the 2D pass in a ×2 camera (`RenderScale`), so drawing code never multiplies by the scale itself. Sizes that must be one real pixel (anti-aliased edges) divide by `UiShapes.PixelScale`.
 
 ### Logic stays free of the GPU
 
@@ -69,6 +73,8 @@ The field and battles are 3D scenes; almost every asset is generated in code at 
 - Upright things in the field are stretched by `MapScene.VS` (1 / cos(pitch)) to offset the steep camera. Pass true proportions for the shadow pass and in battle.
 - Models rendered on their own (sprite bakes) must call `shaders.SetStudio()` first, or fog and cloud shade from the last scene leak into them.
 - `GameEngine.ApplySettings` re-syncs the clock, mute and quality from `Settings`. Change `engine.Settings` and call it (the harness does) rather than setting `GameClock.Fixed` directly. A quality change reloads only the render targets; shaders stay loaded because cached materials refer to them.
+- Full screen is `WindowSettings`' own borderless window, one row taller than the monitor. Don't use `Raylib.ToggleBorderlessWindowed` or size the window to the monitor exactly: the NVIDIA driver then treats the OpenGL window as exclusive full screen and the picture flickers.
+- `RenderContext.OutputIsNative` (window wider than 2880) turns FXAA on for the High preset; in smaller windows the downscale anti-aliases and FXAA would cost about 1 ms for nothing.
 - Battle timing: `QueueMessage(text, onComplete, onShow)` — `onShow` starts the animation the message describes; damage lands `HitDelay` after the lunge through pending effects, which `ConfirmMessage` flushes first.
 
 ## Project rules

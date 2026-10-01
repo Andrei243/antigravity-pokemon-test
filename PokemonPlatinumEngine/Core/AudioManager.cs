@@ -47,6 +47,15 @@ public static class AudioManager
         (466.16f, 0.15f), (523.25f, 0.8f), (0f, 0.5f)
     };
 
+    // The title screen: slow and minor, our own melody
+    private static readonly (float Freq, float Duration)[] TitleTheme = new[]
+    {
+        (293.66f, 0.6f), (440.00f, 0.6f), (349.23f, 0.6f), (466.16f, 0.9f), (0f, 0.3f),
+        (440.00f, 0.45f), (392.00f, 0.45f), (349.23f, 0.45f), (329.63f, 0.9f), (0f, 0.3f),
+        (293.66f, 0.6f), (349.23f, 0.6f), (440.00f, 0.6f), (587.33f, 1.2f),
+        (523.25f, 0.6f), (466.16f, 0.6f), (440.00f, 1.2f), (0f, 0.6f)
+    };
+
     public static void Initialize()
     {
         if (isInitialized) return;
@@ -219,6 +228,7 @@ public static class AudioManager
             "Route201" => Route201Theme,
             "Battle" => BattleTheme,
             "Victory" => VictoryTheme,
+            "Title" => TitleTheme,
             _ => TwinleafTheme
         };
 
