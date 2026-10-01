@@ -40,8 +40,9 @@
 - Obstacles: cuttable trees and cracked rocks (come back when the map reloads), Strength boulders (stay pushed until the map reloads; boulder puzzles in Victory Road and elsewhere), water, waterfalls, rock walls, fog (Defog), dark caves (Flash), mud slopes and Cycling Road (bike), deep snow (slow), plus story blockers that step aside once a flag is set.
 
 ### Battle features the story needs
-- Double battles (Galactic pairs, twins) and tag battles with a partner: Dawn or Lucas in Jubilife, Cheryl in Eterna Forest, Mira in Wayward Cave, Riley on Iron Island, Barry at Spear Pillar, Buck at Stark Mountain.
-- Abilities and held items (plan 03 · D3), weather moves, trainer AI that switches and uses items, prize money and losing money on a whiteout, the EXP Share, the "forget a move?" prompt, cancelling evolution, scripted wild battles you can't run from.
+These are built in [plan 06](06-game-mechanics.md); the story only uses them.
+- Double battles (Galactic pairs, twins) and tag battles with a partner: Dawn or Lucas in Jubilife, Cheryl in Eterna Forest, Mira in Wayward Cave, Riley on Iron Island, Barry at Spear Pillar, Buck at Stark Mountain (06 · R9).
+- Moves, abilities and held items with their real effects (06 · R3–R8), trainer AI that switches and uses items, scripted wild battles you can't run from (06 · R9), prize money and losing money on a whiteout, the EXP Share, the "forget a move?" prompt, cancelling evolution (06 · R10).
 
 ### Key items and systems
 Running Shoes from Mom, the Pokétch and its apps (from the Pokétch Company in Jubilife), the Works Key (Valley Windworks), the Bicycle (Eterna's cycle shop), the fishing rods, the Galactic Key (Galactic HQ), the SecretPotion (clears the Psyduck on Route 210), the Vs. Seeker, the Poké Radar (post-game). Check where each one is given in Platinum against the decomp's scripts or Bulbapedia's walkthrough when you get to it.
@@ -76,8 +77,8 @@ Wild levels and every other trainer's team come from the decomp (`res/field/enco
 ### S2 · Field moves, obstacles and key items
 Party-menu field moves, the badge checks, obstacle objects (cut tree, cracked rock, boulder, fog, darkness), Surf, Waterfall and Rock Climb hooked to plan 01's movement states, the Bicycle, fishing rods, a Key Items pocket, the Pokétch (clock and party apps first). Tests for each gate: blocked without the move or badge, open with both.
 
-### S3 · Battle features for the story
-Double and tag battles, trainer AI switching and items, whiteout money, EXP Share, move-learning prompt, evolution cancel, scripted wild battles.
+### S3 · Moved to plan 06
+Double and tag battles, trainer AI, scripted wild battles, whiteout money, the EXP Share, the move-learning prompt and cancelling evolution are now [plan 06](06-game-mechanics.md) · R9 and R10. S5's tag battle in Jubilife needs R9 first. The number S3 stays unused so the chapters keep theirs.
 
 ### S4–S15 · Chapters
 Follow Bulbapedia's Platinum walkthrough parts. For each chapter: port the scripts of its maps, place its trainers and items, set the flags that open the next area, and add a headless "story walk" test that plays the chapter's scripts with forced battle wins and checks the flags, items, badges and party at the end. Needs the chapter's areas from plan 01 and the species from plan 03.
@@ -98,17 +99,17 @@ Follow Bulbapedia's Platinum walkthrough parts. For each chapter: port the scrip
 ## Risks
 
 - **Script volume**: hundreds of scripts. Port by chapter, reuse common patterns (item balls, trainers, doors, nurses) as templates, and only transpile the decomp's scripts automatically if hand-porting proves too slow.
-- **Battle scope**: double battles and abilities are large pieces of work; schedule S3 before the chapters that need them (Jubilife's tag battle in S5).
+- **Battle scope**: double battles and abilities are large pieces of work and belong to plan 06; schedule its R2–R9 before the chapters that need them (Jubilife's tag battle in S5).
 - **Save compatibility**: every new saved field needs a default and a migration.
 
 ## Status
 
 - [ ] S1 Story state and scripting
 - [ ] S2 Field moves, obstacles and key items
-- [ ] S3 Battle features for the story
+- S3 moved to plan 06 (R9, R10)
 - [ ] S4 Lake Verity and a Pokédex
 - [ ] S5 Jubilife and Roark
-  - 2026-10-01, ahead of S1–S3: Jubilife City is on the map (`Data/MapDatabase.Jubilife.cs`), north of Route 202, with the Trainers' School (two School Kid trainers, Barry), the Pokétch Company, its own Pokémon Center and Poké Mart, Dawn at the entrance, Looker, and the three campaign clowns. Without story flags the clowns only ask their questions and no Pokétch is given yet; the TV station, Global Terminal and condominiums have no doors. Routes 203, 204 and 218 aren't built, so a sign and an NPC close each road out. The Galactic grunts and the tag battle with Dawn come after the Coal Badge in Platinum, north of the city by Route 204, so they wait for S3 and that part of S5.
+  - 2026-10-01, ahead of S1–S3: Jubilife City is on the map (`Data/maps/JubilifeCity.json`, `TrainersSchool.json`, `PoketchCompany.json`, `JubilifePokemonCenter.json`, `JubilifePokeMart.json`), north of Route 202, with the Trainers' School (two School Kid trainers, Barry), the Pokétch Company, its own Pokémon Center and Poké Mart, Dawn at the entrance, Looker, and the three campaign clowns. Without story flags the clowns only ask their questions and no Pokétch is given yet; the TV station, Global Terminal and condominiums have no doors. Routes 203, 204 and 218 aren't built, so a sign and an NPC close each road out. The Galactic grunts and the tag battle with Dawn come after the Coal Badge in Platinum, north of the city by Route 204, so they wait for plan 06 · R9 (double battles) and that part of S5.
 - [ ] S6 Windworks and Eterna
 - [ ] S7 Hearthome and Solaceon
 - [ ] S8 Veilstone and Pastoria

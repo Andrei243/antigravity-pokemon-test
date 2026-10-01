@@ -55,8 +55,8 @@ public class TitleScreenTests
     [Fact]
     public void ContinueIsOfferedOnlyWhenThereIsASave()
     {
-        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Options }, new TitleScreen(null).Entries);
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Options }, new TitleScreen(Save()).Entries);
+        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Options, TitleChoice.Quit }, new TitleScreen(null).Entries);
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Options, TitleChoice.Quit }, new TitleScreen(Save()).Entries);
     }
 
     [Fact]
@@ -103,7 +103,7 @@ public class TitleScreenTests
     {
         var title = AtMenu(Save());
         title.Move(-1);
-        Assert.Equal(TitleChoice.Options, title.Entries[title.SelectedIndex]);
+        Assert.Equal(TitleChoice.Quit, title.Entries[title.SelectedIndex]);
         title.Move(1);
         Assert.Equal(TitleChoice.Continue, title.Entries[title.SelectedIndex]);
 
@@ -170,6 +170,20 @@ public class TitleScreenTests
         Assert.Equal(TitleChoice.Options, title.TakeChoice());
         Assert.Equal(TitleChoice.None, title.TakeChoice());
         Assert.Equal(TitlePhase.Menu, title.Phase);
+    }
+
+    [Fact]
+    public void QuitIsHandedOverOnceTheScreenHasFadedOut()
+    {
+        var title = AtMenu(null);
+        title.Move(-1);
+        Assert.Equal(TitleChoice.Quit, title.Entries[title.SelectedIndex]);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Leaving, title.Phase);
+        Assert.Equal(TitleChoice.None, title.TakeChoice());
+
+        Run(title, TitleScreen.LeaveTime + 0.05f);
+        Assert.Equal(TitleChoice.Quit, title.TakeChoice());
     }
 
     [Fact]

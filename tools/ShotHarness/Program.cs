@@ -360,20 +360,75 @@ if (Run("flow"))
 
 if (Run("menus"))
 {
+    // Start menu: sliding in, open, and the prompt behind QUIT GAME
     GoTo("TwinleafTown", 11, 8, Direction.Down);
-    ((StartMenu)Get("startMenu")).Open();
-    Frames(1); Shot("09_startmenu");
-    ((StartMenu)Get("startMenu")).Close();
+    var startMenu = (StartMenu)Get("startMenu");
+    startMenu.Open();
+    Frames(4); Shot("09a_startmenu_sliding");
+    Frames(30); Shot("09_startmenu");
+    startMenu.Move(-1);
+    Frames(2); Shot("09b_startmenu_quit");
+    startMenu.Confirm();
+    Frames(30); Shot("09c_quit_prompt");
+    startMenu.Cancel();
+    startMenu.Hide();
 
+    // The sign on arriving somewhere, and a notice
+    var sign = (LocationSign)Get("locationSign");
+    sign.Show("Twinleaf Town");
+    engine.ShowNotification("Game saved.");
+    Frames(40); Shot("10_sign_and_notice");
+    ShotCrop("10b_sign_native", 30, 20, 700, 150, 2);
+    GoTo("Route201", 14, 10, Direction.Left);
+    sign.Show("Route 201");
+    Frames(40); Shot("10c_sign_route");
+    sign.Hide();
+    Frames(200);
+
+    // Pokémon menu and summary, with a poisoned and a fainted Pokémon to show the status pills
+    party.Members[1].Status = StatusCondition.Poison;
+    party.Members[1].CurrentHP = party.Members[1].MaxHP / 3;
+    party.Members[2].CurrentHP = 0;
+    var partyScreen = (PartyScreen)Get("partyScreen");
     Set("currentState", GameState.PartyMenu);
-    ((PartyScreen)Get("partyScreen")).Open();
-    Frames(1); Shot("20_party");
+    partyScreen.Open();
+    Frames(6); Shot("20a_party_opening");
+    Frames(40); Shot("20_party");
+    partyScreen.ShowSummary = true;
+    Frames(30); Shot("20b_summary");
+    partyScreen.MoveCursor(0, 1, party.Count);
+    Frames(30); Shot("20c_summary_second");
+    partyScreen.Close();
+
     Set("currentState", GameState.StarterSelect);
     ((StarterSelectScreen)Get("starterSelectScreen")).Open();
     Frames(1); Shot("21_starter");
     Set("currentState", GameState.BagMenu);
     ((BagScreen)Get("bagScreen")).Open();
     Frames(1); Shot("22_bag");
+
+    // The battle's panels for switching and for the bag
+    var mb = StartBattle("Shinx", 5);
+    ToMainMenu(mb);
+    mb.HUD.MenuState = BattleMenuState.SwitchPokemon;
+    mb.HUD.SwitchMenuIndex = 1;
+    Frames(2); Shot("23_battle_switch");
+    mb.HUD.MenuState = BattleMenuState.SelectBagItem;
+    mb.HUD.BagMenuIndex = 2;
+    Frames(2); Shot("24_battle_bag");
+    ShotCrop("24b_battle_bag_native", 40, 820, 1140, 230, 2);
+    mb.HUD.MenuState = BattleMenuState.Main;
+
+    // A trainer battle, for the row of balls under the foe's box and a long message
+    var menuTrainer = MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer).TrainerData!;
+    mb = StartBattle("", 0, menuTrainer);
+    Frames(131); Confirm(mb); Frames(74); Confirm(mb); Frames(74); Confirm(mb); Frames(2);
+    Shot("25_trainer_hud");
+
+    if (args.Length > 2) Boards(args[2], new[] { "09_startmenu", "20b_summary", "23_battle_switch", "24_battle_bag" });
+
+    party.Members[1].Status = StatusCondition.None;
+    party.HealAll();
     Set("currentState", GameState.Overworld);
 }
 
@@ -430,7 +485,7 @@ if (Run("look"))
 
     Set("currentState", GameState.PartyMenu);
     ((PartyScreen)Get("partyScreen")).Open();
-    Frames(1); Shot("look_4_party");
+    Frames(40); Shot("look_4_party");
     ((PartyScreen)Get("partyScreen")).Close();
 
     GoTo("Route201", 24, 8, Direction.Up); Frames(2); Shot("look_5_route201");

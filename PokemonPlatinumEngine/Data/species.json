@@ -1,0 +1,947 @@
+[
+  {
+    "dexNumber": 387,
+    "name": "Turtwig",
+    "category": "Tiny Leaf",
+    "primaryType": "Grass",
+    "baseHP": 55,
+    "baseAttack": 68,
+    "baseDefense": 64,
+    "baseSpAttack": 45,
+    "baseSpDefense": 55,
+    "baseSpeed": 31,
+    "catchRate": 45,
+    "baseExpYield": 64,
+    "growthRate": "MediumSlow",
+    "height": 0.4,
+    "weight": 10.2,
+    "dexEntry": "Made from soil, the shell on its back hardens when it drinks water. It lives along lakes.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 5,
+        "moveName": "Withdraw"
+      },
+      {
+        "level": 9,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 13,
+        "moveName": "Bite"
+      },
+      {
+        "level": 17,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 25,
+        "moveName": "Synthesis"
+      }
+    ],
+    "evolution": {
+      "level": 18,
+      "targetSpecies": "Grotle"
+    }
+  },
+  {
+    "dexNumber": 388,
+    "name": "Grotle",
+    "category": "Grove",
+    "primaryType": "Grass",
+    "baseHP": 75,
+    "baseAttack": 89,
+    "baseDefense": 85,
+    "baseSpAttack": 55,
+    "baseSpDefense": 65,
+    "baseSpeed": 36,
+    "catchRate": 45,
+    "baseExpYield": 142,
+    "growthRate": "MediumSlow",
+    "height": 1.1,
+    "weight": 97,
+    "dexEntry": "It lives along water in forests. In the daytime, it leaves the forest to sunbathe its treed shell.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 9,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 13,
+        "moveName": "Bite"
+      },
+      {
+        "level": 22,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 27,
+        "moveName": "Earthquake"
+      }
+    ],
+    "evolution": {
+      "level": 32,
+      "targetSpecies": "Torterra"
+    }
+  },
+  {
+    "dexNumber": 389,
+    "name": "Torterra",
+    "category": "Continent",
+    "primaryType": "Grass",
+    "secondaryType": "Ground",
+    "baseHP": 95,
+    "baseAttack": 109,
+    "baseDefense": 105,
+    "baseSpAttack": 75,
+    "baseSpDefense": 85,
+    "baseSpeed": 56,
+    "catchRate": 45,
+    "baseExpYield": 236,
+    "growthRate": "MediumSlow",
+    "height": 2.2,
+    "weight": 310,
+    "dexEntry": "Some Pokémon are born on a Torterra's back and spend their entire life there.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Wood Hammer"
+      },
+      {
+        "level": 32,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 39,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 45,
+        "moveName": "Energy Ball"
+      }
+    ]
+  },
+  {
+    "dexNumber": 390,
+    "name": "Chimchar",
+    "category": "Chimp",
+    "primaryType": "Fire",
+    "baseHP": 44,
+    "baseAttack": 58,
+    "baseDefense": 44,
+    "baseSpAttack": 58,
+    "baseSpDefense": 44,
+    "baseSpeed": 61,
+    "catchRate": 45,
+    "baseExpYield": 62,
+    "growthRate": "MediumSlow",
+    "height": 0.5,
+    "weight": 6.2,
+    "dexEntry": "It agilely scales sheer cliffs to live atop craggy mountains. Its fire is fueled by gas in its belly.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Scratch"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 7,
+        "moveName": "Ember"
+      },
+      {
+        "level": 12,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 15,
+        "moveName": "Mach Punch"
+      },
+      {
+        "level": 19,
+        "moveName": "Flame Wheel"
+      }
+    ],
+    "evolution": {
+      "level": 14,
+      "targetSpecies": "Monferno"
+    }
+  },
+  {
+    "dexNumber": 391,
+    "name": "Monferno",
+    "category": "Playful",
+    "primaryType": "Fire",
+    "secondaryType": "Fighting",
+    "baseHP": 64,
+    "baseAttack": 78,
+    "baseDefense": 52,
+    "baseSpAttack": 78,
+    "baseSpDefense": 52,
+    "baseSpeed": 81,
+    "catchRate": 45,
+    "baseExpYield": 142,
+    "growthRate": "MediumSlow",
+    "height": 0.9,
+    "weight": 22,
+    "dexEntry": "It uses ceilings and walls by bouncing off them with fiery acrobatics.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Scratch"
+      },
+      {
+        "level": 14,
+        "moveName": "Mach Punch"
+      },
+      {
+        "level": 19,
+        "moveName": "Flame Wheel"
+      },
+      {
+        "level": 26,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 33,
+        "moveName": "Flamethrower"
+      }
+    ],
+    "evolution": {
+      "level": 36,
+      "targetSpecies": "Infernape"
+    }
+  },
+  {
+    "dexNumber": 392,
+    "name": "Infernape",
+    "category": "Flame",
+    "primaryType": "Fire",
+    "secondaryType": "Fighting",
+    "baseHP": 76,
+    "baseAttack": 104,
+    "baseDefense": 71,
+    "baseSpAttack": 104,
+    "baseSpDefense": 71,
+    "baseSpeed": 108,
+    "catchRate": 45,
+    "baseExpYield": 240,
+    "growthRate": "MediumSlow",
+    "height": 1.2,
+    "weight": 35,
+    "dexEntry": "Its crown of fire is indicative of its fiery nature. It is beaten by none in terms of quickness.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Mach Punch"
+      },
+      {
+        "level": 36,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 41,
+        "moveName": "Flamethrower"
+      },
+      {
+        "level": 53,
+        "moveName": "Fire Blast"
+      }
+    ]
+  },
+  {
+    "dexNumber": 393,
+    "name": "Piplup",
+    "category": "Penguin",
+    "primaryType": "Water",
+    "baseHP": 53,
+    "baseAttack": 51,
+    "baseDefense": 53,
+    "baseSpAttack": 61,
+    "baseSpDefense": 56,
+    "baseSpeed": 40,
+    "catchRate": 45,
+    "baseExpYield": 63,
+    "growthRate": "MediumSlow",
+    "height": 0.4,
+    "weight": 5.2,
+    "dexEntry": "Because it is very proud, it hates accepting food from people. Its thick down guards it from cold.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Pound"
+      },
+      {
+        "level": 4,
+        "moveName": "Growl"
+      },
+      {
+        "level": 8,
+        "moveName": "Bubble"
+      },
+      {
+        "level": 11,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 15,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 22,
+        "moveName": "Bite"
+      }
+    ],
+    "evolution": {
+      "level": 16,
+      "targetSpecies": "Prinplup"
+    }
+  },
+  {
+    "dexNumber": 394,
+    "name": "Prinplup",
+    "category": "Penguin",
+    "primaryType": "Water",
+    "baseHP": 64,
+    "baseAttack": 66,
+    "baseDefense": 68,
+    "baseSpAttack": 81,
+    "baseSpDefense": 76,
+    "baseSpeed": 50,
+    "catchRate": 45,
+    "baseExpYield": 142,
+    "growthRate": "MediumSlow",
+    "height": 0.8,
+    "weight": 23,
+    "dexEntry": "It lives alone, away from others. Apparently, every one of them believes it is the most important.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Pound"
+      },
+      {
+        "level": 11,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 16,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 24,
+        "moveName": "Surf"
+      },
+      {
+        "level": 31,
+        "moveName": "Hydro Pump"
+      }
+    ],
+    "evolution": {
+      "level": 36,
+      "targetSpecies": "Empoleon"
+    }
+  },
+  {
+    "dexNumber": 395,
+    "name": "Empoleon",
+    "category": "Emperor",
+    "primaryType": "Water",
+    "secondaryType": "Steel",
+    "baseHP": 84,
+    "baseAttack": 86,
+    "baseDefense": 88,
+    "baseSpAttack": 111,
+    "baseSpDefense": 101,
+    "baseSpeed": 60,
+    "catchRate": 45,
+    "baseExpYield": 239,
+    "growthRate": "MediumSlow",
+    "height": 1.7,
+    "weight": 84.5,
+    "dexEntry": "The three horns that extend from its beak attest to its power. The leader has the largest horns.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Aqua Jet"
+      },
+      {
+        "level": 36,
+        "moveName": "Surf"
+      },
+      {
+        "level": 42,
+        "moveName": "Ice Beam"
+      },
+      {
+        "level": 52,
+        "moveName": "Hydro Pump"
+      }
+    ]
+  },
+  {
+    "dexNumber": 396,
+    "name": "Starly",
+    "category": "Starling",
+    "primaryType": "Normal",
+    "secondaryType": "Flying",
+    "baseHP": 40,
+    "baseAttack": 55,
+    "baseDefense": 30,
+    "baseSpAttack": 30,
+    "baseSpDefense": 30,
+    "baseSpeed": 60,
+    "catchRate": 255,
+    "baseExpYield": 49,
+    "growthRate": "MediumSlow",
+    "height": 0.3,
+    "weight": 2,
+    "dexEntry": "They flock in great numbers. Though small, they flap their wings with great power.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Growl"
+      },
+      {
+        "level": 5,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 9,
+        "moveName": "Wing Attack"
+      },
+      {
+        "level": 13,
+        "moveName": "Aerial Ace"
+      }
+    ],
+    "evolution": {
+      "level": 14,
+      "targetSpecies": "Staravia"
+    }
+  },
+  {
+    "dexNumber": 397,
+    "name": "Staravia",
+    "category": "Starling",
+    "primaryType": "Normal",
+    "secondaryType": "Flying",
+    "baseHP": 55,
+    "baseAttack": 75,
+    "baseDefense": 50,
+    "baseSpAttack": 40,
+    "baseSpDefense": 40,
+    "baseSpeed": 80,
+    "catchRate": 120,
+    "baseExpYield": 119,
+    "growthRate": "MediumSlow",
+    "height": 0.6,
+    "weight": 15.5,
+    "dexEntry": "Recognizing their own weakness, they maintain huge flocks. Fierce scuffles break out when flocks meet.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 9,
+        "moveName": "Wing Attack"
+      },
+      {
+        "level": 18,
+        "moveName": "Aerial Ace"
+      },
+      {
+        "level": 28,
+        "moveName": "Brave Bird"
+      }
+    ],
+    "evolution": {
+      "level": 34,
+      "targetSpecies": "Staraptor"
+    }
+  },
+  {
+    "dexNumber": 398,
+    "name": "Staraptor",
+    "category": "Predator",
+    "primaryType": "Normal",
+    "secondaryType": "Flying",
+    "baseHP": 85,
+    "baseAttack": 120,
+    "baseDefense": 70,
+    "baseSpAttack": 50,
+    "baseSpDefense": 60,
+    "baseSpeed": 100,
+    "catchRate": 45,
+    "baseExpYield": 218,
+    "growthRate": "MediumSlow",
+    "height": 1.2,
+    "weight": 24.9,
+    "dexEntry": "It has a savage nature. It will courageously challenge any foe, no matter how much bigger it is.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 34,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 40,
+        "moveName": "Brave Bird"
+      }
+    ]
+  },
+  {
+    "dexNumber": 399,
+    "name": "Bidoof",
+    "category": "Plump Mouse",
+    "primaryType": "Normal",
+    "baseHP": 59,
+    "baseAttack": 45,
+    "baseDefense": 40,
+    "baseSpAttack": 35,
+    "baseSpDefense": 40,
+    "baseSpeed": 31,
+    "catchRate": 255,
+    "baseExpYield": 50,
+    "growthRate": "MediumFast",
+    "height": 0.5,
+    "weight": 20,
+    "dexEntry": "With nerves of steel, nothing can perturb it. It is more agile and active than it appears.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Growl"
+      },
+      {
+        "level": 9,
+        "moveName": "Bite"
+      },
+      {
+        "level": 13,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 17,
+        "moveName": "Headbutt"
+      }
+    ],
+    "evolution": {
+      "level": 15,
+      "targetSpecies": "Bibarel"
+    }
+  },
+  {
+    "dexNumber": 400,
+    "name": "Bibarel",
+    "category": "Beaver",
+    "primaryType": "Normal",
+    "secondaryType": "Water",
+    "baseHP": 79,
+    "baseAttack": 85,
+    "baseDefense": 60,
+    "baseSpAttack": 55,
+    "baseSpDefense": 60,
+    "baseSpeed": 71,
+    "catchRate": 127,
+    "baseExpYield": 144,
+    "growthRate": "MediumFast",
+    "height": 1,
+    "weight": 31.5,
+    "dexEntry": "It makes its nest by damming streams with bark and mud. A river dammed by Bibarel never overflows.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 15,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 23,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 30,
+        "moveName": "Surf"
+      }
+    ]
+  },
+  {
+    "dexNumber": 403,
+    "name": "Shinx",
+    "category": "Flash",
+    "primaryType": "Electric",
+    "baseHP": 45,
+    "baseAttack": 65,
+    "baseDefense": 34,
+    "baseSpAttack": 40,
+    "baseSpDefense": 34,
+    "baseSpeed": 45,
+    "catchRate": 235,
+    "baseExpYield": 53,
+    "growthRate": "MediumSlow",
+    "height": 0.5,
+    "weight": 9.5,
+    "dexEntry": "All of its fur dazzles if danger approaches. It flees while the foe is blinded by the glare.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 5,
+        "moveName": "Leer"
+      },
+      {
+        "level": 9,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 13,
+        "moveName": "Bite"
+      },
+      {
+        "level": 17,
+        "moveName": "Spark"
+      }
+    ],
+    "evolution": {
+      "level": 15,
+      "targetSpecies": "Luxio"
+    }
+  },
+  {
+    "dexNumber": 404,
+    "name": "Luxio",
+    "category": "Spark",
+    "primaryType": "Electric",
+    "baseHP": 60,
+    "baseAttack": 85,
+    "baseDefense": 49,
+    "baseSpAttack": 60,
+    "baseSpDefense": 49,
+    "baseSpeed": 60,
+    "catchRate": 120,
+    "baseExpYield": 127,
+    "growthRate": "MediumSlow",
+    "height": 0.9,
+    "weight": 30.5,
+    "dexEntry": "Strong electricity courses through the tips of its sharp claws. A light scratch causes fainting.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 13,
+        "moveName": "Bite"
+      },
+      {
+        "level": 18,
+        "moveName": "Spark"
+      },
+      {
+        "level": 28,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 38,
+        "moveName": "Thunderbolt"
+      }
+    ],
+    "evolution": {
+      "level": 30,
+      "targetSpecies": "Luxray"
+    }
+  },
+  {
+    "dexNumber": 405,
+    "name": "Luxray",
+    "category": "Gleam Eyes",
+    "primaryType": "Electric",
+    "baseHP": 80,
+    "baseAttack": 120,
+    "baseDefense": 79,
+    "baseSpAttack": 95,
+    "baseSpDefense": 79,
+    "baseSpeed": 70,
+    "catchRate": 45,
+    "baseExpYield": 235,
+    "growthRate": "MediumSlow",
+    "height": 1.4,
+    "weight": 42,
+    "dexEntry": "It has eyes that can see through anything. It spots and captures prey hiding behind walls.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Spark"
+      },
+      {
+        "level": 30,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 42,
+        "moveName": "Thunderbolt"
+      }
+    ]
+  },
+  {
+    "dexNumber": 447,
+    "name": "Riolu",
+    "category": "Emanation",
+    "primaryType": "Fighting",
+    "baseHP": 40,
+    "baseAttack": 70,
+    "baseDefense": 40,
+    "baseSpAttack": 35,
+    "baseSpDefense": 40,
+    "baseSpeed": 60,
+    "catchRate": 75,
+    "baseExpYield": 57,
+    "growthRate": "MediumSlow",
+    "height": 0.7,
+    "weight": 20.2,
+    "dexEntry": "Its body is lithe yet strong. It can crest three mountains and cross two canyons in one night.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 6,
+        "moveName": "Bite"
+      },
+      {
+        "level": 15,
+        "moveName": "Mach Punch"
+      },
+      {
+        "level": 24,
+        "moveName": "Swords Dance"
+      }
+    ],
+    "evolution": {
+      "level": 25,
+      "targetSpecies": "Lucario"
+    }
+  },
+  {
+    "dexNumber": 448,
+    "name": "Lucario",
+    "category": "Aura",
+    "primaryType": "Fighting",
+    "secondaryType": "Steel",
+    "baseHP": 70,
+    "baseAttack": 110,
+    "baseDefense": 70,
+    "baseSpAttack": 115,
+    "baseSpDefense": 70,
+    "baseSpeed": 90,
+    "catchRate": 45,
+    "baseExpYield": 184,
+    "growthRate": "MediumSlow",
+    "height": 1.2,
+    "weight": 54,
+    "dexEntry": "A well-trained one can sense auras to identify and take in the feelings of creatures a mile away.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Mach Punch"
+      },
+      {
+        "level": 25,
+        "moveName": "Aura Sphere"
+      },
+      {
+        "level": 34,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 42,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 51,
+        "moveName": "Earthquake"
+      }
+    ]
+  },
+  {
+    "dexNumber": 443,
+    "name": "Gible",
+    "category": "Land Shark",
+    "primaryType": "Dragon",
+    "secondaryType": "Ground",
+    "baseHP": 58,
+    "baseAttack": 70,
+    "baseDefense": 45,
+    "baseSpAttack": 40,
+    "baseSpDefense": 45,
+    "baseSpeed": 42,
+    "catchRate": 45,
+    "baseExpYield": 60,
+    "growthRate": "Slow",
+    "height": 0.7,
+    "weight": 20.5,
+    "dexEntry": "It nests in small, horizontal holes in cave walls. It pounces to catch prey that stray by.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 7,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 15,
+        "moveName": "Bite"
+      },
+      {
+        "level": 22,
+        "moveName": "Earth Power"
+      }
+    ],
+    "evolution": {
+      "level": 24,
+      "targetSpecies": "Gabite"
+    }
+  },
+  {
+    "dexNumber": 444,
+    "name": "Gabite",
+    "category": "Cave",
+    "primaryType": "Dragon",
+    "secondaryType": "Ground",
+    "baseHP": 68,
+    "baseAttack": 90,
+    "baseDefense": 65,
+    "baseSpAttack": 50,
+    "baseSpDefense": 55,
+    "baseSpeed": 82,
+    "catchRate": 45,
+    "baseExpYield": 144,
+    "growthRate": "Slow",
+    "height": 1.4,
+    "weight": 56,
+    "dexEntry": "It loves shiny things. It searches for gems to stockpile in its nest in dark caves.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 24,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 33,
+        "moveName": "Crunch"
+      }
+    ],
+    "evolution": {
+      "level": 48,
+      "targetSpecies": "Garchomp"
+    }
+  },
+  {
+    "dexNumber": 445,
+    "name": "Garchomp",
+    "category": "Mach",
+    "primaryType": "Dragon",
+    "secondaryType": "Ground",
+    "baseHP": 108,
+    "baseAttack": 130,
+    "baseDefense": 95,
+    "baseSpAttack": 80,
+    "baseSpDefense": 85,
+    "baseSpeed": 102,
+    "catchRate": 45,
+    "baseExpYield": 270,
+    "growthRate": "Slow",
+    "height": 1.9,
+    "weight": 95,
+    "dexEntry": "When it folds up its body and extends its wings, it looks like a jet plane. It flies at sonic speed.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 48,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 55,
+        "moveName": "Fire Blast"
+      },
+      {
+        "level": 64,
+        "moveName": "Swords Dance"
+      }
+    ]
+  },
+  {
+    "dexNumber": 487,
+    "name": "Giratina",
+    "category": "Renegade",
+    "primaryType": "Ghost",
+    "secondaryType": "Dragon",
+    "baseHP": 150,
+    "baseAttack": 120,
+    "baseDefense": 100,
+    "baseSpAttack": 120,
+    "baseSpDefense": 100,
+    "baseSpeed": 90,
+    "catchRate": 3,
+    "baseExpYield": 306,
+    "growthRate": "Slow",
+    "height": 4.5,
+    "weight": 750,
+    "dexEntry": "It was banished for its violence. It silently gazed upon the old world from the Distortion World.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 1,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 50,
+        "moveName": "Earth Power"
+      },
+      {
+        "level": 60,
+        "moveName": "Aura Sphere"
+      },
+      {
+        "level": 70,
+        "moveName": "Shadow Force"
+      }
+    ]
+  }
+]

@@ -1,0 +1,203 @@
+[
+  {
+    "id": 1,
+    "name": "Poké Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 200,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "A device for catching wild Pokémon. It is thrown like a ball at the target."
+  },
+  {
+    "id": 2,
+    "name": "Great Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 15,
+    "price": 600,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "A good, high-performance Ball that provides a higher Pokémon catch rate than a standard Poké Ball."
+  },
+  {
+    "id": 3,
+    "name": "Ultra Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 20,
+    "price": 1200,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "An ultra-performance Ball that provides a higher Pokémon catch rate than a Great Ball."
+  },
+  {
+    "id": 4,
+    "name": "Master Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 9999,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "The best Ball with the ultimate level of performance. It will catch any wild Pokémon without fail."
+  },
+  {
+    "id": 10,
+    "name": "Potion",
+    "pocket": "Medicine",
+    "effectType": "HealHP",
+    "effectValue": 20,
+    "price": 300,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine for treating wounds. It can be used to restore 20 HP to an injured Pokémon."
+  },
+  {
+    "id": 11,
+    "name": "Super Potion",
+    "pocket": "Medicine",
+    "effectType": "HealHP",
+    "effectValue": 50,
+    "price": 700,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine for treating wounds. It can be used to restore 50 HP to an injured Pokémon."
+  },
+  {
+    "id": 12,
+    "name": "Hyper Potion",
+    "pocket": "Medicine",
+    "effectType": "HealHP",
+    "effectValue": 200,
+    "price": 1200,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine for treating wounds. It can be used to restore 200 HP to an injured Pokémon."
+  },
+  {
+    "id": 13,
+    "name": "Max Potion",
+    "pocket": "Medicine",
+    "effectType": "HealHP",
+    "effectValue": 9999,
+    "price": 2500,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine for treating wounds. It can be used to completely restore the max HP of a single Pokémon."
+  },
+  {
+    "id": 14,
+    "name": "Full Restore",
+    "pocket": "Medicine",
+    "effectType": "FullRestore",
+    "effectValue": 9999,
+    "price": 3000,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A medicine that fully restores the HP and heals any status problems of a single Pokémon."
+  },
+  {
+    "id": 15,
+    "name": "Revive",
+    "pocket": "Medicine",
+    "effectType": "Revive",
+    "effectValue": 50,
+    "price": 1500,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A medicine that can revive Pokémon that have fainted. It also restores half of a Pokémon's maximum HP."
+  },
+  {
+    "id": 16,
+    "name": "Antidote",
+    "pocket": "Medicine",
+    "effectType": "HealStatus",
+    "effectValue": 0,
+    "healsStatus": "Poison",
+    "price": 100,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine. It can be used to cure a single Pokémon from poisoning."
+  },
+  {
+    "id": 17,
+    "name": "Paralyze Heal",
+    "pocket": "Medicine",
+    "effectType": "HealStatus",
+    "effectValue": 0,
+    "healsStatus": "Paralyze",
+    "price": 200,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine. It can be used to cure a single Pokémon from paralysis."
+  },
+  {
+    "id": 18,
+    "name": "Awakening",
+    "pocket": "Medicine",
+    "effectType": "HealStatus",
+    "effectValue": 0,
+    "healsStatus": "Sleep",
+    "price": 250,
+    "canUseInBattle": true,
+    "canUseInOverworld": true,
+    "description": "A spray-type medicine. It can be used to rouse a single Pokémon from the clutches of sleep."
+  },
+  {
+    "id": 30,
+    "name": "Rare Candy",
+    "pocket": "Items",
+    "effectType": "LevelUp",
+    "effectValue": 1,
+    "price": 4800,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A candy that is packed with energy. When consumed, it raises the level of a single Pokémon by one."
+  },
+  {
+    "id": 31,
+    "name": "Repel",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 350,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "An item that prevents weak wild Pokémon from appearing for 100 steps."
+  },
+  {
+    "id": 50,
+    "name": "Town Map",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A very convenient map that can be viewed anytime. It even shows your present location in Sinnoh."
+  },
+  {
+    "id": 51,
+    "name": "Running Shoes",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Iconic running shoes! Hold the B / X button or toggle running mode to sprint at high speed."
+  },
+  {
+    "id": 52,
+    "name": "Distortion Orb",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A mysterious glowing orb that resonates with the Distortion World and legendary power."
+  }
+]
