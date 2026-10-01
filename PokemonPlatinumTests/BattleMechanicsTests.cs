@@ -75,6 +75,54 @@ public class BattleMechanicsTests
         return Settle(battle);
     }
 
+    // ---------------------------------------------------------------- imported moves the engine can't run yet
+
+    [Fact]
+    public void TestAMoveWhoseEffectIsMissingDoesNothing()
+    {
+        // Seismic Toss's fixed damage isn't written yet: it neither hits for made-up damage nor crashes
+        var mine = Mon("Riolu", 20, null, M("Seismic Toss"));
+        var foe = Mon("Bidoof", 20, null, Idle);
+        var battle = Wild(mine, foe);
+        int hp = foe.CurrentHP;
+        var said = UseMove(battle);
+        Assert.Contains("But nothing happened!", said);
+        Assert.Equal(hp, foe.CurrentHP);
+
+        // A move whose own effect is missing but that still hits (Fury Attack hits once for now)
+        var striker = Mon("Riolu", 20, null, M("Fury Attack"));
+        var target = Mon("Bidoof", 20, null, Idle);
+        battle = Wild(striker, target);
+        hp = target.CurrentHP;
+        UseMove(battle);
+        Assert.True(target.CurrentHP < hp);
+    }
+
+    [Fact]
+    public void TestTrainersPickMovesThatWorkFirst()
+    {
+        // The foe knows a move that does nothing yet and one that works: it uses the one that works
+        var mine = Mon("Bidoof", 20, null, Idle);
+        var foe = Mon("Riolu", 20, null, M("Seismic Toss"), M("Quick Attack"));
+        var battle = Wild(mine, foe);
+        int hp = mine.CurrentHP;
+        var said = UseMove(battle);
+        Assert.Contains(said, m => m.Contains("used Quick Attack"));
+        Assert.True(mine.CurrentHP < hp);
+    }
+
+    [Fact]
+    public void TestFairyTypeMatchups()
+    {
+        Assert.Equal(2f, TypeChart.GetEffectiveness(PokemonType.Fairy, PokemonType.Dragon));
+        Assert.Equal(0f, TypeChart.GetEffectiveness(PokemonType.Dragon, PokemonType.Fairy));
+        Assert.Equal(2f, TypeChart.GetEffectiveness(PokemonType.Steel, PokemonType.Fairy));
+        Assert.Equal(0.5f, TypeChart.GetEffectiveness(PokemonType.Fairy, PokemonType.Fire));
+        // Platinum's chart stays: Steel still resists Ghost and Dark
+        Assert.Equal(0.5f, TypeChart.GetEffectiveness(PokemonType.Ghost, PokemonType.Steel));
+        Assert.Equal(0.5f, TypeChart.GetEffectiveness(PokemonType.Dark, PokemonType.Steel));
+    }
+
     // ---------------------------------------------------------------- status conditions
 
     [Fact]

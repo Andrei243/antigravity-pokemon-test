@@ -1,20 +1,52 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Models;
 
 public class LearnableMove
 {
+    /// <summary>The level it is learned at; 0 means when the Pokémon evolves into this species (Generation 7 on).</summary>
     public int Level { get; set; }
     public string MoveName { get; set; } = string.Empty;
 }
 
+/// <summary>One way a species evolves. Only the fields its <see cref="Method"/> uses are set.</summary>
 public class EvolutionData
 {
-    public int Level { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public EvolutionMethod Method { get; set; } = EvolutionMethod.Level;
     public string TargetSpecies { get; set; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int Level { get; set; }
+    /// <summary>The item used or held.</summary>
+    public string? Item { get; set; }
+    /// <summary>The move it must know.</summary>
+    public string? Move { get; set; }
+    /// <summary>The move type it must know, or the type a party member must have.</summary>
+    public PokemonType? Type { get; set; }
+    /// <summary>The species that must be in the party, or traded for.</summary>
+    public string? Species { get; set; }
+    /// <summary>Where it must level up (<c>Mt. Coronet</c>, <c>Moss Rock</c>).</summary>
+    public string? Location { get; set; }
+    /// <summary>Beauty or affection needed.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int Value { get; set; }
+    /// <summary>Plain words for <see cref="EvolutionMethod.Other"/> and anything else the fields can't hold.</summary>
+    public string? Note { get; set; }
+}
+
+/// <summary>Points a species gives in each stat when it is defeated.</summary>
+public class StatSpread
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int HP { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int Attack { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int Defense { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int SpAttack { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int SpDefense { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int Speed { get; set; }
 }
 
 public class PokemonSpecies
@@ -22,6 +54,9 @@ public class PokemonSpecies
     public int DexNumber { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = "Pokémon"; // e.g. "Tiny Leaf Pokémon"
+    /// <summary>The generation that introduced the species.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int Generation { get; set; }
     public PokemonType PrimaryType { get; set; }
     public PokemonType? SecondaryType { get; set; }
     public int BaseHP { get; set; }
@@ -30,17 +65,38 @@ public class PokemonSpecies
     public int BaseSpAttack { get; set; }
     public int BaseSpDefense { get; set; }
     public int BaseSpeed { get; set; }
+    public StatSpread? EvYield { get; set; }
     public int CatchRate { get; set; } = 45; // 3 to 255
     public int BaseExpYield { get; set; } = 64;
     public GrowthRate GrowthRate { get; set; } = GrowthRate.MediumSlow;
+    /// <summary>Eighths of the species that are female: 0 is always male, 8 always female, -1 genderless.</summary>
+    public int GenderRatio { get; set; } = 4;
+    public List<string>? EggGroups { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int HatchCycles { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int BaseFriendship { get; set; }
     public float Height { get; set; } = 0.5f; // meters
     public float Weight { get; set; } = 10.0f; // kg
+    /// <summary>Body colour and shape, as the Pokédex sorts them (for the generated models of plan 03 · D5).</summary>
+    public string? Color { get; set; }
+    public string? Shape { get; set; }
     public string DexEntry { get; set; } = string.Empty;
     public List<LearnableMove> Learnset { get; set; } = new();
-    public EvolutionData? Evolution { get; set; }
+    public List<EvolutionData>? Evolutions { get; set; }
 
-    /// <summary>The abilities this species can have: one or two in Platinum, in the order the game picks from.</summary>
+    /// <summary>The abilities this species can have: one or two, in the order the game picks from.</summary>
     public List<string> Abilities { get; set; } = new();
+
+    /// <summary>Its hidden ability from Generation 5 on; Platinum has none, so new Pokémon never get it yet.</summary>
+    public string? HiddenAbility { get; set; }
+
+    /// <summary>The evolution the engine runs on level-up: a plain level with no other condition.</summary>
+    [JsonIgnore]
+    public EvolutionData? LevelEvolution => Evolutions?.FirstOrDefault(e => e.Method == EvolutionMethod.Level && e.Level > 0);
+
+    [JsonIgnore]
+    public bool IsGenderless => GenderRatio < 0;
 }
 
 public class Pokemon
@@ -118,7 +174,7 @@ public class Pokemon
         Species = species;
         Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
-        Gender = rng.Next(2) == 0 ? Gender.Male : Gender.Female;
+        Gender = RollGender(species, rng);
         Nature = (Nature)rng.Next(Enum.GetValues<Nature>().Length);
         IsShiny = rng.Next(8192) == 0;
         AbilityName = AbilityDatabase.PickFor(species, rng);
@@ -155,6 +211,13 @@ public class Pokemon
 
         PopulateMovesForLevel();
         ResetStatStages();
+    }
+
+    /// <summary>Male or female by the species' ratio, or genderless.</summary>
+    public static Gender RollGender(PokemonSpecies species, Random rng)
+    {
+        if (species.IsGenderless) return Gender.Genderless;
+        return rng.Next(8) < species.GenderRatio ? Gender.Female : Gender.Male;
     }
 
     public void CalculateStats() => RecalculateStats();
@@ -244,6 +307,19 @@ public class Pokemon
             GrowthRate.MediumFast => (int)Math.Pow(n, 3),
             GrowthRate.MediumSlow => (int)(1.2 * Math.Pow(n, 3) - 15 * Math.Pow(n, 2) + 100 * n - 140),
             GrowthRate.Slow => (int)(1.25 * Math.Pow(n, 3)),
+            GrowthRate.Erratic => level switch
+            {
+                < 50 => level * level * level * (100 - level) / 50,
+                < 68 => level * level * level * (150 - level) / 100,
+                < 98 => level * level * level * ((1911 - 10 * level) / 3) / 500,
+                _ => level * level * level * (160 - level) / 100
+            },
+            GrowthRate.Fluctuating => level switch
+            {
+                < 15 => level * level * level * ((level + 1) / 3 + 24) / 50,
+                < 36 => level * level * level * (level + 14) / 50,
+                _ => level * level * level * (level / 2 + 32) / 50
+            },
             _ => (int)Math.Pow(n, 3)
         };
     }
@@ -251,9 +327,11 @@ public class Pokemon
     public void PopulateMovesForLevel()
     {
         Moves.Clear();
+        // The last four it would have learned by now, each move once
         var availableMoves = Species.Learnset
             .Where(m => m.Level <= Level)
             .OrderByDescending(m => m.Level)
+            .DistinctBy(m => m.MoveName)
             .Take(4)
             .Reverse();
 
@@ -348,9 +426,9 @@ public class Pokemon
             }
 
             // Check for evolution
-            if (Species.Evolution != null && Level >= Species.Evolution.Level)
+            if (Species.LevelEvolution is { } evolution && Level >= evolution.Level)
             {
-                var nextSpecies = PokemonDatabase.Get(Species.Evolution.TargetSpecies);
+                var nextSpecies = PokemonDatabase.Get(evolution.TargetSpecies);
                 if (nextSpecies != null)
                 {
                     oldName = Species.Name;

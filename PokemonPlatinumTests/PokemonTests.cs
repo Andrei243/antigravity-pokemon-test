@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -513,10 +514,63 @@ public class PokemonTests
     }
 
     [Fact]
-    public void TestEverySpeciesHasItsOwn3DModel()
+    public void TestGenderFollowsTheSpeciesRatio()
     {
-        var missing = PokemonDatabase.GetAll().Select(s => s.Name).Where(n => !PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n)).ToList();
-        Assert.Empty(missing);
+        var rng = new Random(3);
+        for (int i = 0; i < 50; i++)
+        {
+            Assert.Equal(Gender.Genderless, new Pokemon(PokemonDatabase.Get("Magnemite")!, 5, rng).Gender);
+            Assert.Equal(Gender.Female, new Pokemon(PokemonDatabase.Get("Nidoran♀")!, 5, rng).Gender);
+            Assert.Equal(Gender.Male, new Pokemon(PokemonDatabase.Get("Tauros")!, 5, rng).Gender);
+        }
+        // Starters are seven males to one female
+        int females = Enumerable.Range(0, 800).Count(_ => new Pokemon(PokemonDatabase.Get("Piplup")!, 5, rng).Gender == Gender.Female);
+        Assert.InRange(females, 60, 140);
+    }
+
+    [Fact]
+    public void TestEveryGrowthRateReachesItsLevel100Total()
+    {
+        Assert.Equal(600_000, Pokemon.GetExpForLevel(100, GrowthRate.Erratic));
+        Assert.Equal(800_000, Pokemon.GetExpForLevel(100, GrowthRate.Fast));
+        Assert.Equal(1_000_000, Pokemon.GetExpForLevel(100, GrowthRate.MediumFast));
+        Assert.Equal(1_059_860, Pokemon.GetExpForLevel(100, GrowthRate.MediumSlow));
+        Assert.Equal(1_250_000, Pokemon.GetExpForLevel(100, GrowthRate.Slow));
+        Assert.Equal(1_640_000, Pokemon.GetExpForLevel(100, GrowthRate.Fluctuating));
+        foreach (var rate in Enum.GetValues<GrowthRate>())
+            for (int level = 2; level <= 100; level++)
+                Assert.True(Pokemon.GetExpForLevel(level, rate) > Pokemon.GetExpForLevel(level - 1, rate), $"{rate} {level}");
+    }
+
+    [Fact]
+    public void TestOnlyPlainLevelEvolutionsHappenOnLevelUp()
+    {
+        // Riolu evolves by friendship in the daytime, which the engine doesn't track yet: it stays a Riolu
+        var riolu = new Pokemon(PokemonDatabase.Get("Riolu")!, 30, new Random(1));
+        riolu.GainExp(riolu.ExpForNextLevel - riolu.CurrentExp, out _, out bool evolved, out _);
+        Assert.False(evolved);
+        Assert.Equal("Riolu", riolu.Species.Name);
+
+        var starly = new Pokemon(PokemonDatabase.Get("Starly")!, 13, new Random(1));
+        starly.GainExp(starly.ExpForNextLevel - starly.CurrentExp, out _, out evolved, out _);
+        Assert.True(evolved);
+        Assert.Equal("Staravia", starly.Species.Name);
+    }
+
+    [Fact]
+    public void TestEverySpeciesHasA3DModel()
+    {
+        // The species the story shows so far have hand-built models; the rest use the generic stand-in until the
+        // model generator (plan 03 · D5). This list may only grow.
+        string[] handBuilt =
+        {
+            "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
+            "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario",
+            "Gible", "Gabite", "Garchomp", "Giratina"
+        };
+        Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
+        Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
+        Assert.All(PokemonPlatinumEngine.Graphics.PokemonModels.Species, n => Assert.NotNull(PokemonDatabase.Get(n)));
     }
 
     private static void Tick(BattleEngine battle, float seconds)
