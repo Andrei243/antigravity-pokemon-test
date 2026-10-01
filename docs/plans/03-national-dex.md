@@ -31,7 +31,7 @@
 - **`tools/DataImporter`** (console app): reads a local decomp checkout and the PokeAPI CSVs, normalises names (`SPECIES_PIPLUP` → `Piplup`), writes the JSON. Deterministic and re-runnable; hand corrections live in override files it applies last.
 - **Species model** gains: abilities (two plus hidden), gender ratio, egg groups, EV yield, base friendship, hatch cycles, held items, shape, colour, forms, regional dex numbers (Sinnoh 1–210), evolution methods.
 - **Pokémon** gain: ability, EVs, held item, friendship, form, Pokérus (optional), met location and level.
-- **Battle engine**: moves become table-driven: each move names an effect (like the decomp's battle effects: status, stat stages, multi-hit, recoil, draining, fixed damage, two-turn, trapping, weather, screens, healing, protection and so on) and the engine runs a handler per effect. Abilities and held items hook into fixed points (on entry, on damage, end of turn, on status, speed and damage modifiers).
+- **Battle engine**: what moves, abilities and items *do* is [plan 06](06-game-mechanics.md)'s work. This plan supplies their data.
 - **Pokédex**: Sinnoh and National modes; National hidden until the unlock flag (plan 02 sets it after the Hall of Fame); sort and search; "area" view built from the encounter tables; forms viewer (optional).
 - **Sprites at scale**: bake lazily on first use and cache the PNGs on disk (keyed by species and model version) instead of baking everything at start-up; icons the same.
 - **Save format**: species by national number, with a migration for old saves.
@@ -42,14 +42,8 @@
 `tools/DataImporter`, the JSON schema, runtime loaders; import species 1–493 (stats, types, abilities as data only, learnsets, evolutions, Pokédex text) and all Generation 4 moves (power, accuracy, PP, type, category, priority, target, flags, effect id). Keep the 23 existing species behaving the same. Change the model test to "every species has a model, hand-built or generated", and keep a list of species that must be hand-built.
 **Done when** 493 species load, all tests pass and the game plays as before.
 
-### D2 · Move effects
-Table-driven effects: first the common ones (status, stat stages, multi-hit, recoil, draining, fixed and level damage, one-hit KOs, priority, two-turn, trapping, weather, screens, healing, protection, switching moves), then the rest of Generation 4's moves. Unit tests per effect family. Probably two sessions.
-
-### D3 · Abilities and held items
-Generation 4's abilities (start with the ones on story trainers' Pokémon: Intimidate, Levitate, Sturdy, Static, the starter abilities, weather abilities), held items and berries. Abilities not yet implemented show up but do nothing, marked in the data so a test can list them.
-
-### D4 · Evolutions and forms
-All Generation 4 evolution methods: level, stone, friendship (day and night), held item and time, known move, location (Mt. Coronet's magnetic field, the Moss Rock in Eterna Forest, the Ice Rock on Route 217), gender, the party-based ones; trade evolutions replaced (decision 4). Forms: Giratina's Origin Forme, Rotom's appliances, Shaymin's Sky Forme, Deoxys, Burmy and Wormadam cloaks, Shellos and Gastrodon's east and west seas, Unown letters, Castform, Cherrim, Arceus's plates. Optional: the Solaceon Day Care and eggs.
+### D2–D4 · Moved to plan 06
+Move effects, abilities, held items, evolution methods, forms and breeding are now sessions of [plan 06](06-game-mechanics.md): R4–R6 (Platinum's 467 moves), R7 (abilities), R8 (held items and berries), R10 (evolution methods and Platinum's forms; trade evolutions replaced as in decision 4) and R15 (breeding). The numbers D2–D4 stay unused so the later sessions keep theirs.
 
 ### D5 · Procedural models for everyone (after plan 04 · G7)
 The model generator, built on plan 04's SDF modelling kit, from shape, colour, height, types and feature tags; lazy baking with the disk cache; a harness contact sheet showing every species (extend the `sheets` mode with paging). **Done when** all 1025 species (after D11) have a distinct model and start-up time doesn't grow.
@@ -61,7 +55,7 @@ Platinum's 210 Sinnoh species in four batches of about 50, in the order they app
 Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search, the area view, seen and caught counters, the completion reward (a diploma).
 
 ### D11 · Generations 5–9
-Import species 494–1025 with their abilities and level-up moves; add the Fairy type (decision 2); implement the later moves those species learn by level, with the closest existing effect as a stand-in where needed. A test lists every move whose effect is only approximated.
+Import species 494–1025 with their forms (regional, Mega, Gigantamax), abilities and learnsets as data, and add the Fairy type (decision 2). The effects of their moves and abilities come from plan 06 · R24–R27; until those are done, plan 06's coverage report lists what is still approximated.
 
 ### D12 · Every species obtainable
 Encounter tables for Platinum's post-game, the Pal Park-style area, the new zone for later generations, gifts, legendary quests, the trade-evolution replacement. A completeness test fails for any species with no way to get it.
@@ -71,7 +65,7 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 
 ## Risks
 
-- **Move and ability count**: about 900 moves and 300 abilities across all generations. Generation 4's are the priority; later ones can approximate their effects at first, as long as the approximations are listed.
+- **Forms need models too**: 97 Mega forms, 34 Gigantamax forms and the regional forms are extra models; the generator in D5 must treat each form as a model of its own.
 - **Model quality at scale**: generated models will look generic. Hand-build the species players see most, and let feature tags carry the rest.
 - **Start-up time**: baking 1025 × 3 sprites at start-up would take minutes; bake lazily with a disk cache.
 
@@ -83,9 +77,7 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 ## Status
 
 - [ ] D1 Data pipeline
-- [ ] D2 Move effects
-- [ ] D3 Abilities and held items
-- [ ] D4 Evolutions and forms
+- D2–D4 moved to plan 06 (R4–R8, R10, R15)
 - [ ] D5 Procedural models for everyone
 - [ ] D6 Hand-built Sinnoh models, batch 1
 - [ ] D7 Hand-built Sinnoh models, batch 2
