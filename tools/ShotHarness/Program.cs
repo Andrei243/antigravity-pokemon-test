@@ -494,6 +494,21 @@ if (Run("menus"))
     Frames(131); Confirm(mb); Frames(74); Confirm(mb); Frames(74); Confirm(mb); Frames(2);
     Shot("25_trainer_hud");
 
+    // The Pokédex with the whole National Pokédex in it, and a battle against a species from a later generation
+    var dexScreen = (PokedexScreen)Get("pokedexScreen");
+    pokedex.RegisterCaught(387);
+    pokedex.RegisterSeen(906);
+    Set("currentState", GameState.PokedexMenu);
+    dexScreen.Open();
+    dexScreen.SelectedIndex = 386;
+    Frames(1); Shot("26_pokedex_turtwig");
+    dexScreen.SelectedIndex = 905;
+    Frames(1); Shot("26b_pokedex_later_generation");
+    dexScreen.Close();
+    var later = StartBattle("Sprigatito", 5);
+    ToMainMenu(later);
+    Frames(2); Shot("27_battle_later_generation");
+
     if (args.Length > 2) Boards(args[2], new[] { "09_startmenu", "20b_summary", "23_battle_switch", "24_battle_bag" });
 
     party.Members[1].Status = StatusCondition.None;
@@ -666,7 +681,7 @@ if (Run("times"))
 if (Run("sheets"))
 {
     // Every species: front sprite, back sprite and menu icon, as baked from the 3D models
-    var species = PokemonDatabase.GetAll().Select(s => s.Name).ToArray();
+    var species = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).Where(PixelArtGenerator.HasOwnModel).ToArray();
     var sheet = Raylib.LoadRenderTexture(1920, 1080);
     Raylib.BeginTextureMode(sheet);
     Raylib.ClearBackground(new Color(200, 220, 240, 255));

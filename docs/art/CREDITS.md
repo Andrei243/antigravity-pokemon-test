@@ -9,3 +9,12 @@ Everything else in the game (models, textures, sprites, interface, sounds, text)
 | Nunito (Bold, ExtraBold, Black) | `PokemonPlatinumEngine/Assets/Fonts/Nunito-*.ttf` | © 2014 The Nunito Project Authors; designed by Vernon Adams, Cyreal and Jacques Le Bailly | SIL Open Font License 1.1 (`PokemonPlatinumEngine/Assets/Fonts/OFL.txt`) | Google Fonts static instances; project at <https://github.com/googlefonts/nunito> |
 
 The license file ships next to the fonts in every build, as the OFL requires.
+
+## Data
+
+| Data | Files | Author | License | Source |
+|---|---|---|---|---|
+| Species, move, ability and item data for Generations 5–9; names, categories, egg groups, colours, shapes and hidden abilities for all; the short effect descriptions of moves, abilities and items | `PokemonPlatinumEngine/Data/species.json`, `moves.json`, `abilities.json`, `items.json` | © Paul Hallett and PokéAPI contributors | BSD 3-Clause (<https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md>) | PokeAPI CSV files, <https://github.com/PokeAPI/pokeapi> (`data/v2/csv`) |
+| Platinum's species, move and item values (Generations 1–4) | the same files | pret contributors | facts read from the decompilation; no text, graphics or sound from it is used | <https://github.com/pret/pokeplatinum> |
+
+`tools/DataImporter` reads both (pinned commits in `tools/DataImporter/Sources.cs`). The Pokédex entries are generated from the data in our own words; the games' Pokédex, move and item texts are not used. Pokémon and Pokémon character names are trademarks of Nintendo.

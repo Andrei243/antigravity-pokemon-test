@@ -7,6 +7,9 @@ public class MoveData
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
+    /// <summary>The generation that introduced the move (0 for a move made for this game).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int Generation { get; set; }
     public PokemonType Type { get; set; }
     public MoveCategory Category { get; set; }
     public int Power { get; set; }
@@ -53,6 +56,20 @@ public class MoveData
     /// <summary>Restores this share of the user's max HP (Synthesis, Recover).</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int HealPercent { get; set; } = 0;
+
+    /// <summary>
+    /// What the move does beyond its data fields (<c>MultiHit</c>, <c>Protect</c>, <c>RechargeAfter</c>), named after the
+    /// decompilation's battle effect or, for later moves, the first move that has it. Null when the fields say it all.
+    /// </summary>
+    public string? Effect { get; set; }
+
+    /// <summary>The chance of <see cref="Effect"/>, when it has one (Tri Attack's 20%).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int EffectChance { get; set; }
+
+    /// <summary>How much of the move the engine runs; anything but Full has an <see cref="Effect"/> still to write.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public MoveEffectSupport Support { get; set; } = MoveEffectSupport.Full;
 
     [JsonIgnore]
     public bool MakesContact => (Flags & MoveFlags.Contact) != 0;
