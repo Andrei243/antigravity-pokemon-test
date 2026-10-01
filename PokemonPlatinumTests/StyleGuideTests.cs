@@ -8,6 +8,8 @@ using PokemonPlatinumEngine.Overworld;
 namespace PokemonPlatinumTests;
 
 /// <summary>Rules from docs/art/style-guide.md that can be checked without a GPU.</summary>
+// MapDatabase is static, so the classes that rebuild it must not run in parallel
+[Collection("MapDatabase")]
 public class StyleGuideTests
 {
     [Theory]

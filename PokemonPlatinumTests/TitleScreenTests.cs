@@ -7,6 +7,8 @@ using PokemonPlatinumEngine.UI;
 namespace PokemonPlatinumTests;
 
 /// <summary>The opening and the title menu: what plays, what skips it, and what each choice does.</summary>
+// MapDatabase is static, so the classes that rebuild it must not run in parallel
+[Collection("MapDatabase")]
 public class TitleScreenTests
 {
     private const float Step = 1f / 60f;
