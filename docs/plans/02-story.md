@@ -108,6 +108,7 @@ Follow Bulbapedia's Platinum walkthrough parts. For each chapter: port the scrip
 - [ ] S3 Battle features for the story
 - [ ] S4 Lake Verity and a Pokédex
 - [ ] S5 Jubilife and Roark
+  - 2026-10-01, ahead of S1–S3: Jubilife City is on the map (`Data/MapDatabase.Jubilife.cs`), north of Route 202, with the Trainers' School (two School Kid trainers, Barry), the Pokétch Company, its own Pokémon Center and Poké Mart, Dawn at the entrance, Looker, and the three campaign clowns. Without story flags the clowns only ask their questions and no Pokétch is given yet; the TV station, Global Terminal and condominiums have no doors. Routes 203, 204 and 218 aren't built, so a sign and an NPC close each road out. The Galactic grunts and the tag battle with Dawn come after the Coal Badge in Platinum, north of the city by Route 204, so they wait for S3 and that part of S5.
 - [ ] S6 Windworks and Eterna
 - [ ] S7 Hearthome and Solaceon
 - [ ] S8 Veilstone and Pastoria

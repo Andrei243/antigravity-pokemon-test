@@ -22,6 +22,7 @@ public static partial class MapDatabase
         Maps["PokemonCenter"] = BuildPokemonCenter();
         Maps["PokeMart"] = BuildPokeMart();
         Maps["RowanLab"] = BuildRowanLab();
+        AddJubilifeMaps();
     }
 
     public static Map Get(string name)
@@ -533,6 +534,13 @@ public static partial class MapDatabase
         // Warps (South back to Sandgem Town)
         map.Warps.Add(new Warp { SourceX = 14, SourceY = 25, TargetMap = "SandgemTown", TargetX = 14, TargetY = 1, TargetFacing = Direction.Down });
         map.Warps.Add(new Warp { SourceX = 15, SourceY = 25, TargetMap = "SandgemTown", TargetX = 15, TargetY = 1, TargetFacing = Direction.Down });
+
+        // North to Jubilife City
+        map.Warps.Add(new Warp { SourceX = 14, SourceY = 0, TargetMap = "JubilifeCity", TargetX = 19, TargetY = 32, TargetFacing = Direction.Up });
+        map.Warps.Add(new Warp { SourceX = 15, SourceY = 0, TargetMap = "JubilifeCity", TargetX = 20, TargetY = 32, TargetFacing = Direction.Up });
+
+        map.SetGroundTile(13, 22, TileType.Signpost, isSolid: true);
+        map.Signboards[(13, 22)] = "Route 202\nNorth: Jubilife City | South: Sandgem Town";
 
         // Trainers on Route 202
         var lassParty = new Party();

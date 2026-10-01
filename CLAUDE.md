@@ -49,7 +49,7 @@ Tests create `BattleEngine`, `Map`, `Pokemon` and the databases without a window
 
 ### Data
 
-All game data is C# code in `Data/`: `PokemonDatabase` (species, learnsets, evolutions), `MoveDatabase`, `ItemDatabase`, `TypeChart`, and `MapDatabase` (a partial class with one `Build<MapName>()` method per map, interiors in `MapDatabase.Interiors.cs`). Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 and plan 01 · M1–M2 move this data into files.
+All game data is C# code in `Data/`: `PokemonDatabase` (species, learnsets, evolutions), `MoveDatabase`, `ItemDatabase`, `TypeChart`, and `MapDatabase` (a partial class with one `Build<MapName>()` method per map, interiors in `MapDatabase.Interiors.cs`, Jubilife City and its buildings in `MapDatabase.Jubilife.cs`). Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 and plan 01 · M1–M2 move this data into files.
 
 ### Rendering
 

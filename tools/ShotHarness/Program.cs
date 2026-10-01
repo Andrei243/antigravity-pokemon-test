@@ -192,6 +192,16 @@ if (Run("field"))
     GoTo("RowanLab", 5, 7, Direction.Up); Shot("06c_lab");
     GoTo("LakeVerity", 14, 11, Direction.Up); Shot("07_lake");
     GoTo("Route202", 14, 10, Direction.Up); Shot("07b_route202");
+    GoTo("Route202", 15, 2, Direction.Up); Shot("07c_route202_north");
+    GoTo("JubilifeCity", 20, 30, Direction.Up); Shot("08_jubilife_south");
+    GoTo("JubilifeCity", 19, 18, Direction.Up); Shot("08b_jubilife_crossroads");
+    GoTo("JubilifeCity", 7, 9, Direction.Up); Shot("08c_jubilife_school");
+    GoTo("JubilifeCity", 30, 10, Direction.Up); Shot("08d_jubilife_poketch_tv");
+    GoTo("JubilifeCity", 28, 29, Direction.Up); Shot("08e_jubilife_center_mart");
+    GoTo("JubilifeCity", 9, 29, Direction.Up); Shot("08f_jubilife_terminal");
+    GoTo("TrainersSchool", 6, 9, Direction.Up); Shot("09_trainers_school");
+    GoTo("PoketchCompany", 5, 7, Direction.Up); Shot("09b_poketch_company");
+    GoTo("JubilifePokemonCenter", 5, 6, Direction.Up); Shot("09c_jubilife_center");
 
     // A trainer spotting the player
     GoTo("Route201", 24, 9, Direction.Up);

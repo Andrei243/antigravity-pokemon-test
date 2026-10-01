@@ -112,10 +112,13 @@ public static partial class MapDatabase
         return map;
     }
 
-    private static Map BuildPokemonCenter()
+    private static Map BuildPokemonCenter() => BuildPokemonCenter("PokemonCenter", "SandgemTown", 6, 7);
+
+    /// <summary>Every town's Pokémon Center has the same layout; only the street it opens onto differs.</summary>
+    private static Map BuildPokemonCenter(string name, string town, int exitX, int exitY)
     {
-        var map = BuildRoom("PokemonCenter", "Pokémon Center", InteriorStyle.PokemonCenter, 11, 9, doorX: 5);
-        map.Warps.Add(new Warp { SourceX = 5, SourceY = 8, TargetMap = "SandgemTown", TargetX = 6, TargetY = 7, TargetFacing = Direction.Down });
+        var map = BuildRoom(name, "Pokémon Center", InteriorStyle.PokemonCenter, 11, 9, doorX: 5);
+        map.Warps.Add(new Warp { SourceX = 5, SourceY = 8, TargetMap = town, TargetX = exitX, TargetY = exitY, TargetFacing = Direction.Down });
 
         // Reception counter with the healing machine behind it; Nurse Joy is talked to across the counter
         map.AddProp(PropType.Counter, 3, 3, width: 5);
@@ -161,10 +164,13 @@ public static partial class MapDatabase
         return map;
     }
 
-    private static Map BuildPokeMart()
+    private static Map BuildPokeMart() => BuildPokeMart("PokeMart", "SandgemTown", "Sandgem", 22, 7);
+
+    /// <summary>Every town's Poké Mart has the same layout; the clerk greets you with the town's name.</summary>
+    private static Map BuildPokeMart(string name, string town, string townName, int exitX, int exitY)
     {
-        var map = BuildRoom("PokeMart", "Poké Mart", InteriorStyle.PokeMart, 9, 8, doorX: 4);
-        map.Warps.Add(new Warp { SourceX = 4, SourceY = 7, TargetMap = "SandgemTown", TargetX = 22, TargetY = 7, TargetFacing = Direction.Down });
+        var map = BuildRoom(name, "Poké Mart", InteriorStyle.PokeMart, 9, 8, doorX: 4);
+        map.Warps.Add(new Warp { SourceX = 4, SourceY = 7, TargetMap = town, TargetX = exitX, TargetY = exitY, TargetFacing = Direction.Down });
 
         // Cash counter on the left with the clerk behind it, shelves of goods on the right
         map.AddProp(PropType.Counter, 2, 3, depth: 2);
@@ -184,7 +190,7 @@ public static partial class MapDatabase
             IsPokeMartClerk = true,
             DialogLines = new()
             {
-                "Clerk: Welcome to the Sandgem Poké Mart! How may I serve you today?"
+                $"Clerk: Welcome to the {townName} Poké Mart! How may I serve you today?"
             }
         });
 
