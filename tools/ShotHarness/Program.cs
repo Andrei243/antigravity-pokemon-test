@@ -39,6 +39,8 @@ engine.Settings.TimeOfDay = TimeOfDay.Day;
 engine.ApplySettings(window: false);
 
 // The game opens on its title screen; everything but the "title" mode wants a game in progress
+// (in Sinnoh, which the shots below show)
+engine.NewGameRegion = "Sinnoh";
 engine.StartNewGame();
 typeof(GameEngine).GetField("currentState", BindingFlags.NonPublic | BindingFlags.Instance)!.SetValue(engine, GameState.Overworld);
 
@@ -202,6 +204,9 @@ if (Run("field"))
     GoTo("TrainersSchool", 6, 9, Direction.Up); Shot("09_trainers_school");
     GoTo("PoketchCompany", 5, 7, Direction.Up); Shot("09b_poketch_company");
     GoTo("JubilifePokemonCenter", 5, 6, Direction.Up); Shot("09c_jubilife_center");
+    GoTo("PalletTown", 9, 9, Direction.Down); Shot("10_pallet");
+    GoTo("PalletTown", 9, 17, Direction.Down); Shot("10b_pallet_pier");
+    GoTo("PalletPlayerHouse", 4, 6, Direction.Up); Shot("10c_pallet_house");
 
     // A trainer spotting the player
     GoTo("Route201", 24, 9, Direction.Up);

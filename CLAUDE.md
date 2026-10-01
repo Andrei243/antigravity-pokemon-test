@@ -17,6 +17,7 @@ dotnet build PokemonPlatinum.sln
 dotnet test PokemonPlatinumTests
 dotnet test PokemonPlatinumTests --filter "FullyQualifiedName~TestCatchRateFormula"   # one test
 dotnet run --project PokemonPlatinumEngine                                             # play
+dotnet run --project PokemonPlatinumEngine -- --region Sinnoh                         # new games start in Sinnoh instead of Kanto
 dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|title|times|sheets] [before dir]
 ```
 
@@ -49,7 +50,9 @@ Tests create `BattleEngine`, `Map`, `Pokemon` and the databases without a window
 
 ### Data
 
-Species, moves, items and maps are JSON files in `PokemonPlatinumEngine/Data/` (`species.json`, `moves.json`, `items.json`, one `maps/<Name>.json` per map), copied to the build output and read through `GameDataFiles` (camelCase names, enums as strings). `PokemonDatabase`, `MoveDatabase` and `ItemDatabase` load their file in a static constructor; `MapDatabase.Initialize()` reads every map file into fresh `Map` objects (new NPCs, newly rolled trainer Pokémon) through `MapFile.ToMap`. `docs/data-files.md` describes the formats; `MapFile.FromMap` writes a map back out, so a tool can generate map files. `TypeChart` is still code. Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 adds the importer for the full data; plan 01 · M1–M2 replaces the hand-made maps with imported ones.
+Species, moves, items and maps are JSON files in `PokemonPlatinumEngine/Data/` (`species.json`, `moves.json`, `items.json`, one `maps/<Name>.json` per map), copied to the build output and read through `GameDataFiles` (camelCase names, enums as strings). `PokemonDatabase`, `MoveDatabase` and `ItemDatabase` load their file in a static constructor; `MapDatabase.Initialize()` reads every map file into fresh `Map` objects (new NPCs, newly rolled trainer Pokémon) through `MapFile.ToMap`. `docs/data-files.md` describes the formats; `MapFile.FromMap` writes a map back out, so a tool can generate map files. `TypeChart` is still code. Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`, `IsTransportAttendant`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 adds the importer for the full data; plan 01 · M1–M2 replaces the hand-made maps with imported ones.
+
+`RegionDatabase` chains the regions in generation order: a new game starts in Kanto, and finishing a region's story (its `<Region>HallOfFame` story flag in `StoryProgress`, saved as `StoryFlags`) lets the attendant at its departure map take the player to the next region (Kanto to Johto by boat; later links are `Transport.Undecided` until their region is built). Every map belongs to exactly one region and warps never cross regions. Sinnoh is the fourth region; `--region Sinnoh` or `GameEngine.NewGameRegion` starts there for testing, and saves made in Sinnoh load there.
 
 ### Rendering
 

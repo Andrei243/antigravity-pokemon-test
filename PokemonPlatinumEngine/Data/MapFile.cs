@@ -67,6 +67,7 @@ public sealed class MapFile
         public bool? IsHealingNurse { get; set; }
         public bool? IsPokeMartClerk { get; set; }
         public bool? IsPCTerminal { get; set; }
+        public bool? IsTransportAttendant { get; set; }
         public TrainerRecord? Trainer { get; set; }
     }
 
@@ -150,7 +151,8 @@ public sealed class MapFile
             IsStarterBriefcase = n.IsStarterBriefcase ?? false,
             IsHealingNurse = n.IsHealingNurse ?? false,
             IsPokeMartClerk = n.IsPokeMartClerk ?? false,
-            IsPCTerminal = n.IsPCTerminal ?? false
+            IsPCTerminal = n.IsPCTerminal ?? false,
+            IsTransportAttendant = n.IsTransportAttendant ?? false
         };
         if (n.Id != null) npc.Id = n.Id;
 
@@ -248,6 +250,7 @@ public sealed class MapFile
         IsHealingNurse = npc.IsHealingNurse ? true : null,
         IsPokeMartClerk = npc.IsPokeMartClerk ? true : null,
         IsPCTerminal = npc.IsPCTerminal ? true : null,
+        IsTransportAttendant = npc.IsTransportAttendant ? true : null,
         Trainer = npc.IsTrainer && npc.TrainerData is { } t ? new TrainerRecord
         {
             Id = t.Id,

@@ -45,7 +45,7 @@ Tile codes (`TileCodes`):
 
 The ground layer and the solid grid are separate because they don't always agree: doors sit in solid walls but are open, signposts are solid, and furniture props make the floor under them solid.
 
-An NPC has `name`, `npcType` (picks the character model), `x`, `y`, `facing` and optional `dialog` lines, plus whichever of `isHealingNurse`, `isPokeMartClerk`, `isPCTerminal` and `isStarterBriefcase` apply. Give it an `id` only when something else refers to it (trainers, the starter briefcase); the others get a fresh one each load. A trainer carries a `trainer` block:
+An NPC has `name`, `npcType` (picks the character model), `x`, `y`, `facing` and optional `dialog` lines, plus whichever of `isHealingNurse`, `isPokeMartClerk`, `isPCTerminal`, `isStarterBriefcase` and `isTransportAttendant` (takes the player to the next region, see `RegionDatabase`) apply. Give it an `id` only when something else refers to it (trainers, the starter briefcase); the others get a fresh one each load. A trainer carries a `trainer` block:
 
 ```json
 "trainer": {
