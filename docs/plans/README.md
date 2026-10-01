@@ -1,6 +1,6 @@
 # Roadmap: from demo to the full Platinum
 
-Six plans, each worked through over several sessions:
+Seven plans, each worked through over several sessions:
 
 | Plan | Delivers | First session | Rough size |
 |---|---|---|---|
@@ -10,6 +10,7 @@ Six plans, each worked through over several sessions:
 | [04 · Graphics overhaul](04-graphics-overhaul.md) | One polished art style everywhere: lighting, materials, terrain, buildings, characters, Pokémon, battles and a new interface | G1 | 11+ sessions |
 | [05 · Sound and music](05-sound-and-music.md) | Music and sounds that behave like Platinum's: day and night themes, trainer eye music, battle and victory themes, fanfares, a sound for every action, a cry for every species | A1 | 7+ sessions |
 | [06 · Game mechanics](06-game-mechanics.md) | Every rule of Platinum (battles, abilities, items, breeding, encounters, the Pokétch, contests, the Battle Frontier), plus Mega Evolution, Z-Moves, Dynamax and Terastallization, and every move and item of all the main games | R1 | about 30 sessions |
+| [07 · Online trading and battles](07-online.md) | Trading and battling with friends over the internet through a small .NET server: link codes and friend codes, server-checked trades with crash-safe receipts, server-run battles with Flat 50 rules, working across every chained region | O1 | 7–8 sessions |
 
 ## Order
 
