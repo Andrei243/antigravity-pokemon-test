@@ -1,0 +1,106 @@
+{
+  "name": "PalletTown",
+  "displayName": "Pallet Town",
+  "bgmTrack": "Twinleaf",
+  "interior": "None",
+  "trees": "Round",
+  "width": 20,
+  "height": 21,
+  "ground": [
+    "TTTTTTTTTTTTTTTTTTTT",
+    "T........::........T",
+    "T.......S::........T",
+    "T..rrrrr.::........T",
+    "T..rrrrr.::........T",
+    "T..rrrrr.::........T",
+    "T..##D##.::........T",
+    "T..*****.::........T",
+    "T........::........T",
+    "T.......S::........T",
+    "T........::........T",
+    "T........::........T",
+    "T........::........T",
+    "T........::........T",
+    "T........::S.......T",
+    "~~~~~~~~~::~~~~~~~~~",
+    "~~~~~~~~~::~~~~~~~~~",
+    "~~~~~~~~~::~~~~~~~~~",
+    "~~~~~~~~~::~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "solid": [
+    "####################",
+    "#..................#",
+    "#.......#..........#",
+    "#..#####...........#",
+    "#..#####...........#",
+    "#..#####...........#",
+    "#..##.##...........#",
+    "#..................#",
+    "#..................#",
+    "#.......#..........#",
+    "#..................#",
+    "#..................#",
+    "#..................#",
+    "#..................#",
+    "#..........#.......#",
+    "#########..#########",
+    "#########..#########",
+    "#########..#########",
+    "#########..#########",
+    "####################",
+    "####################"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 6,
+      "targetMap": "PalletPlayerHouse",
+      "targetX": 4,
+      "targetY": 6,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 9,
+      "text": "Pallet Town\nA quiet town where every colour begins."
+    },
+    {
+      "x": 8,
+      "y": 2,
+      "text": "Route 1 lies north, toward Viridian City.\nThe road is still being laid."
+    },
+    {
+      "x": 11,
+      "y": 14,
+      "text": "Ferry Pier\nShips to Johto call here for Kanto's Champions."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "PalletTown.Sailor",
+      "name": "Sailor",
+      "npcType": "Clerk",
+      "x": 9,
+      "y": 18,
+      "facing": "Up",
+      "isTransportAttendant": true
+    },
+    {
+      "name": "Townsperson",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "Hello! Everyone in Kanto starts out from a town like this one.",
+        "Become Champion here, and the ferry at the pier will take you across the sea to Johto."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

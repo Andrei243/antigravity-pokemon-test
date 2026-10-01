@@ -108,8 +108,9 @@ public static class MapStructures
                 {
                     kind = target switch
                     {
-                        "PokemonCenter" => BuildingKind.PokemonCenter,
-                        "PokeMart" => BuildingKind.PokeMart,
+                        // Each town has its own Center and Mart ("JubilifePokemonCenter"), named after Sandgem's
+                        string t when t.EndsWith("PokemonCenter") => BuildingKind.PokemonCenter,
+                        string t when t.EndsWith("PokeMart") => BuildingKind.PokeMart,
                         "RowanLab" => BuildingKind.Lab,
                         _ => kind
                     };

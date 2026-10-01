@@ -98,7 +98,8 @@ public static class RegionDatabase
         {
             Id = Sinnoh, Name = "Sinnoh", Generation = 4,
             Start = new MapSpot("TwinleafTown", 11, 8),
-            Maps = new[] { "TwinleafTown", "Route201", "LakeVerity", "SandgemTown", "Route202", "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab" }
+            Maps = new[] { "TwinleafTown", "Route201", "LakeVerity", "SandgemTown", "Route202", "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
+                "JubilifeCity", "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany" }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
