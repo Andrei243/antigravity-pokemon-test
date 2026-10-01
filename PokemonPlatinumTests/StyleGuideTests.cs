@@ -31,6 +31,7 @@ public class StyleGuideTests
     [InlineData("Route201")]
     [InlineData("SandgemTown")]
     [InlineData("LakeVerity")]
+    [InlineData("JubilifeCity")]
     public void TheFieldGroundIsCleanPixelArt(string mapName)
     {
         MapDatabase.Initialize();

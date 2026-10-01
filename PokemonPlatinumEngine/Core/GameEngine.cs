@@ -89,6 +89,13 @@ public class GameEngine
     private int badgesMask = 0;
     private float playTime = 0f;
     private readonly string playerName = "Lucas";
+    private readonly StoryProgress story = new();
+
+    /// <summary>
+    /// The region a new game starts in; null for the first region in the chain (Kanto). Set from the command line
+    /// (--region Sinnoh) to test a later region without playing through the ones before it.
+    /// </summary>
+    public string? NewGameRegion { get; set; }
 
     // Screen Transitions
     private float transitionTimer = 0f;
@@ -139,6 +146,7 @@ public class GameEngine
         playerPokedex.Clear();
         pcBoxStorage.Clear();
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
+        story.Clear();
         playerMoney = 3000;
         badgesMask = 0;
         playTime = 0f;
@@ -196,8 +204,11 @@ public class GameEngine
 
     private void InitializeNewGame()
     {
-        currentMap = MapDatabase.Get("TwinleafTown");
-        player = new Player(11, 8);
+        var region = (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
+        var start = region.Start ?? RegionDatabase.First.Start!;
+        currentMap = MapDatabase.Get(start.Map);
+        player = new Player(start.X, start.Y);
+        player.Facing = start.Facing;
 
         // Give starter items
         playerInventory.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
@@ -255,6 +266,7 @@ public class GameEngine
         foreach (var caught in save.CaughtSpecies) playerPokedex.RegisterCaught(caught);
 
         MapDatabase.RestoreDefeatedTrainers(save.DefeatedTrainers);
+        story.Restore(save.StoryFlags);
 
         playerMoney = save.Money;
         badgesMask = save.Badges;
@@ -276,6 +288,7 @@ public class GameEngine
             SeenSpecies = playerPokedex.SeenSpecies.ToList(),
             CaughtSpecies = playerPokedex.CaughtSpecies.ToList(),
             DefeatedTrainers = MapDatabase.DefeatedTrainerIds(),
+            StoryFlags = story.Flags.ToList(),
             Money = playerMoney,
             Badges = badgesMask,
             PlayTimeSeconds = playTime
@@ -531,6 +544,16 @@ public class GameEngine
                 return;
             }
 
+            if (npc.IsTransportAttendant && RegionDatabase.RegionOfMap(currentMap.Name) is { } here
+                && RegionDatabase.LinkFrom(here.Id) is { } link)
+            {
+                var check = RegionDatabase.CheckTravel(link, story);
+                dialogue.ShowDialogue(npc.Name, RegionDatabase.AttendantLines(link, check),
+                    check == TravelCheck.Ready ? () => TravelTo(RegionDatabase.Get(link.To)!) : null);
+                currentState = GameState.Dialogue;
+                return;
+            }
+
             if (npc.IsTrainer && !npc.HasBattled)
             {
                 ChallengeTrainer(npc);
@@ -567,6 +590,20 @@ public class GameEngine
         {
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
+            AudioManager.PlayBGM(currentMap.BgmTrack);
+            AnnounceLocation();
+        });
+    }
+
+    /// <summary>Crosses to another region, landing where arrivals from the previous region come in.</summary>
+    private void TravelTo(Region region)
+    {
+        var spot = region.ArrivalSpot!;
+        StartTransition(GameState.Overworld, () =>
+        {
+            currentMap = MapDatabase.Get(spot.Map);
+            player.SetPosition(spot.X, spot.Y, spot.Facing);
+            trainersLookOnArrival = true;
             AudioManager.PlayBGM(currentMap.BgmTrack);
             AnnounceLocation();
         });

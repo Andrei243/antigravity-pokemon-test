@@ -39,7 +39,7 @@ public class PokemonSpecies
     public List<LearnableMove> Learnset { get; set; } = new();
     public EvolutionData? Evolution { get; set; }
 
-    /// <summary>The abilities this species can have; empty until the species data files carry them (see <see cref="AbilityDatabase.ForSpecies"/>).</summary>
+    /// <summary>The abilities this species can have: one or two in Platinum, in the order the game picks from.</summary>
     public List<string> Abilities { get; set; } = new();
 }
 

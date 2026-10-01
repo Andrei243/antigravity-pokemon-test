@@ -20,6 +20,7 @@ public static class Program
 
         // Initialize Engine
         GameEngine engine = new(settings);
+        engine.NewGameRegion = RegionArgument(args);
         engine.Initialize();
 
         // Main Game Loop
@@ -41,5 +42,12 @@ public static class Program
         // Cleanup
         engine.Close();
         Raylib.CloseWindow();
+    }
+
+    /// <summary>"--region Sinnoh" starts new games in that region instead of the first one, for testing.</summary>
+    private static string? RegionArgument(string[] args)
+    {
+        int i = Array.IndexOf(args, "--region");
+        return i >= 0 && i + 1 < args.Length ? args[i + 1] : null;
     }
 }

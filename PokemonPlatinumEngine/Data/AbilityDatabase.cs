@@ -26,9 +26,8 @@ public sealed class Ability
 }
 
 /// <summary>
-/// Abilities by name, and which ones each species can have. Effects follow Generation 4. The species table is a
-/// stand-in until the species data files carry abilities (plan 03 · D1); <see cref="PokemonSpecies.Abilities"/>
-/// wins when it is filled.
+/// Abilities by name. Effects follow Generation 4. Which abilities each
+/// species can have is <see cref="PokemonSpecies.Abilities"/>, read from <c>species.json</c>.
 /// </summary>
 public static class AbilityDatabase
 {
@@ -144,20 +143,6 @@ public static class AbilityDatabase
         }
     }
 
-    // The abilities of the species in today's Pokédex (Platinum's; there were no hidden abilities yet)
-    private static readonly Dictionary<string, string[]> SpeciesAbilities = new(StringComparer.OrdinalIgnoreCase)
-    {
-        ["Turtwig"] = new[] { "Overgrow" }, ["Grotle"] = new[] { "Overgrow" }, ["Torterra"] = new[] { "Overgrow" },
-        ["Chimchar"] = new[] { "Blaze" }, ["Monferno"] = new[] { "Blaze" }, ["Infernape"] = new[] { "Blaze" },
-        ["Piplup"] = new[] { "Torrent" }, ["Prinplup"] = new[] { "Torrent" }, ["Empoleon"] = new[] { "Torrent" },
-        ["Starly"] = new[] { "Keen Eye" }, ["Staravia"] = new[] { "Intimidate" }, ["Staraptor"] = new[] { "Intimidate" },
-        ["Bidoof"] = new[] { "Simple", "Unaware" }, ["Bibarel"] = new[] { "Simple", "Unaware" },
-        ["Shinx"] = new[] { "Rivalry", "Intimidate" }, ["Luxio"] = new[] { "Rivalry", "Intimidate" }, ["Luxray"] = new[] { "Rivalry", "Intimidate" },
-        ["Riolu"] = new[] { "Steadfast", "Inner Focus" }, ["Lucario"] = new[] { "Steadfast", "Inner Focus" },
-        ["Gible"] = new[] { "Sand Veil" }, ["Gabite"] = new[] { "Sand Veil" }, ["Garchomp"] = new[] { "Sand Veil" },
-        ["Giratina"] = new[] { "Pressure" },
-    };
-
     public static void Initialize() { }
 
     private static void Add(string name, string description, BattleEffect? effect) =>
@@ -170,8 +155,7 @@ public static class AbilityDatabase
     /// <summary>The abilities a species can have (one or two).</summary>
     public static IReadOnlyList<string> ForSpecies(PokemonSpecies species)
     {
-        if (species.Abilities.Count > 0) return species.Abilities;
-        return SpeciesAbilities.TryGetValue(species.Name, out var list) ? list : Array.Empty<string>();
+        return species.Abilities;
     }
 
     /// <summary>Picks one of the species' abilities at random, as for a newly met Pokémon.</summary>

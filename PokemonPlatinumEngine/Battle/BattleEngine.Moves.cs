@@ -309,7 +309,7 @@ public partial class BattleEngine
                 if (data.TargetStatChange is { } stat && !data.StatChangeTargetSelf && Roll(data.StatChangeChancePercent * chanceMult))
                 {
                     ChangeStat(t, stat, data.StatStageAmount, user);
-                    foreach (var also in data.AlsoChangesStats) ChangeStat(t, also, data.StatStageAmount, user);
+                    foreach (var also in data.AlsoChangesStats ?? []) ChangeStat(t, also, data.StatStageAmount, user);
                 }
                 if (data.ConfuseChancePercent > 0 && Roll(data.ConfuseChancePercent * chanceMult)) Confuse(t, user, announceFailure: false);
                 if (data.FlinchChancePercent > 0 && !t.MovedThisTurn && Roll(data.FlinchChancePercent * chanceMult) &&
@@ -354,7 +354,7 @@ public partial class BattleEngine
                 Roll(data.StatChangeChancePercent * (data.StatChangeChancePercent >= 100 ? 1 : chanceMult)))
             {
                 ChangeStat(user, selfStat, data.StatStageAmount, user);
-                foreach (var also in data.AlsoChangesStats) ChangeStat(user, also, data.StatStageAmount, user);
+                foreach (var also in data.AlsoChangesStats ?? []) ChangeStat(user, also, data.StatStageAmount, user);
             }
 
             if (userStanding) foreach (var e in userEffects) e.AfterAttacking(this, user, move, landed);
@@ -401,7 +401,7 @@ public partial class BattleEngine
             {
                 var who = data.StatChangeTargetSelf ? user : t;
                 did |= ChangeStat(who, stat, data.StatStageAmount, user, announceFailure: true);
-                foreach (var also in data.AlsoChangesStats) did |= ChangeStat(who, also, data.StatStageAmount, user, announceFailure: true);
+                foreach (var also in data.AlsoChangesStats ?? []) did |= ChangeStat(who, also, data.StatStageAmount, user, announceFailure: true);
             }
             if (data.HealPercent > 0)
             {

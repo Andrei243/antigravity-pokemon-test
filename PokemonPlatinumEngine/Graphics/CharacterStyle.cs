@@ -87,6 +87,24 @@ internal sealed class CharacterStyle
             Top = new(236, 104, 132, 255), Accent = new(252, 240, 244, 255), ShortSleeves = true,
             Bottom = new(72, 92, 168, 255), Skirt = true, Shoes = new(84, 56, 52, 255)
         },
+        "CLOWN" => new CharacterStyle
+        {
+            HairColor = new(236, 72, 60, 255), Hair = HairCut.Spiky,
+            Top = new(250, 214, 64, 255), Accent = new(236, 72, 60, 255), Stripes = true,
+            Bottom = new(70, 120, 220, 255), Shoes = new(236, 72, 60, 255), Height = 1.06f
+        },
+        "LOOKER" => new CharacterStyle
+        {
+            HairColor = new(58, 46, 44, 255), Hair = HairCut.Swept, Coat = true,
+            Top = new(196, 168, 118, 255), Accent = new(84, 70, 64, 255),
+            Bottom = new(70, 66, 74, 255), Shoes = new(52, 42, 40, 255), Height = 1.12f
+        },
+        "GENTLEMAN" => new CharacterStyle
+        {
+            HairColor = new(150, 146, 156, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,
+            Top = new(66, 70, 96, 255), Accent = new(246, 246, 250, 255),
+            Bottom = new(56, 58, 76, 255), Shoes = new(52, 42, 40, 255), Height = 1.1f
+        },
         _ => new CharacterStyle()
     };
 }

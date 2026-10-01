@@ -1,0 +1,208 @@
+{
+  "name": "Route202",
+  "displayName": "Route 202 & Distortion Gateway",
+  "bgmTrack": "Route201",
+  "interior": "None",
+  "trees": "Round",
+  "width": 30,
+  "height": 26,
+  "ground": [
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT",
+    "T.............::.............T",
+    "T.............::.............T",
+    "T.............__.............T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wvvvvvvvv..::..vvvvvvvvw..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T..wwwwwwwww..::..wwwwwwwww..T",
+    "T.............::.............T",
+    "T............S::.............T",
+    "T.............::.............T",
+    "T.............::.............T",
+    "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT"
+  ],
+  "solid": [
+    "##############..##############",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............................#",
+    "#............#...............#",
+    "#............................#",
+    "#............................#",
+    "##############..##############"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 14,
+      "sourceY": 25,
+      "targetMap": "SandgemTown",
+      "targetX": 14,
+      "targetY": 1,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 25,
+      "targetMap": "SandgemTown",
+      "targetX": 15,
+      "targetY": 1,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 0,
+      "targetMap": "JubilifeCity",
+      "targetX": 19,
+      "targetY": 32,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 0,
+      "targetMap": "JubilifeCity",
+      "targetX": 20,
+      "targetY": 32,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 13,
+      "y": 22,
+      "text": "Route 202\nNorth: Jubilife City | South: Sandgem Town"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "trainer_natalie",
+      "name": "Natalie",
+      "npcType": "Lass",
+      "x": 18,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "trainer_natalie",
+        "name": "Natalie",
+        "trainerClass": "Lass",
+        "party": [
+          {
+            "species": "Shinx",
+            "level": 6
+          }
+        ],
+        "prizeMoney": 240,
+        "dialogueBefore": "Lass Natalie: My cute Shinx is fully charged! Prepare for a shock!",
+        "dialogueAfter": "Lass Natalie: Wow, you're strong! Keep going toward the Distortion Gateway!",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "trainer_logan",
+      "name": "Logan",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 16,
+      "facing": "Right",
+      "trainer": {
+        "id": "trainer_logan",
+        "name": "Logan",
+        "trainerClass": "Youngster",
+        "party": [
+          {
+            "species": "Bidoof",
+            "level": 6
+          },
+          {
+            "species": "Starly",
+            "level": 7
+          }
+        ],
+        "prizeMoney": 280,
+        "dialogueBefore": "Youngster Logan: I've caught two Pokémon already! Let's see your team!",
+        "dialogueAfter": "Youngster Logan: No way! You've got an amazing team balance!",
+        "sightRange": 3
+      }
+    },
+    {
+      "name": "Distortion Rift",
+      "npcType": "Rift",
+      "x": 14,
+      "y": 2,
+      "facing": "Down",
+      "dialog": [
+        "A shadowy spatial rift trembles before you...",
+        "You feel the chilling gaze of the Renegade Pokémon, GIRATINA, observing you from the Distortion World!"
+      ]
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Shinx",
+      "minLevel": 5,
+      "maxLevel": 7,
+      "weight": 35
+    },
+    {
+      "speciesName": "Starly",
+      "minLevel": 5,
+      "maxLevel": 7,
+      "weight": 25
+    },
+    {
+      "speciesName": "Bidoof",
+      "minLevel": 5,
+      "maxLevel": 6,
+      "weight": 20
+    },
+    {
+      "speciesName": "Riolu",
+      "minLevel": 6,
+      "maxLevel": 8,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gible",
+      "minLevel": 7,
+      "maxLevel": 9,
+      "weight": 8
+    },
+    {
+      "speciesName": "Giratina",
+      "minLevel": 50,
+      "maxLevel": 50,
+      "weight": 2
+    }
+  ]
+}
