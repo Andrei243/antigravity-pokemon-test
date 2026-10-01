@@ -128,9 +128,10 @@ public class GameEngine
 
         ApplySettings(window: false);
 
-        // Menu sprites are rendered from the 3D Pokémon models once, up front
+        // Menu sprites are rendered from the 3D Pokémon models once, up front. Species without a model of their own
+        // all share the generic stand-in, baked once as PokemonSprites.Fallback.
         renderContext.EnsureLoaded();
-        PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name));
+        PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel));
 
         // The game opens on the title screen, which offers the saved game if there is one
         titleSave = SaveManager.LoadGame();

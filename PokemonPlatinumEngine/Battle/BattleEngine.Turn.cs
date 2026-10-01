@@ -468,6 +468,7 @@ public partial class BattleEngine
     private float ScoreMove(Battler user, Move move, Battler? aim, List<Battler> foes, Battler? ally)
     {
         var data = move.Data;
+        if (data.Support == MoveEffectSupport.None) return 1f; // does nothing yet: only when there is nothing else
         if (move.Category == MoveCategory.Status)
         {
             var target = aim ?? foes.FirstOrDefault();

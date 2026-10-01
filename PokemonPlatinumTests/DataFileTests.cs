@@ -16,40 +16,103 @@ public class DataFileTests
     [Fact]
     public void TestSpeciesLoadFromFile()
     {
+        // The whole National Pokédex, numbered 1–1025 without gaps
         var all = PokemonDatabase.GetAll().ToList();
-        Assert.Equal(23, all.Count);
-        Assert.Equal(all.Count, all.Select(s => s.DexNumber).Distinct().Count());
+        Assert.Equal(1025, all.Count);
+        Assert.Equal(Enumerable.Range(1, 1025), all.Select(s => s.DexNumber).Order());
+        Assert.Equal(all.Count, all.Select(s => s.Name).Distinct().Count());
 
+        // Platinum's own data for Turtwig
         var turtwig = PokemonDatabase.GetByDex(387)!;
         Assert.Equal("Turtwig", turtwig.Name);
         Assert.Equal("Tiny Leaf", turtwig.Category);
+        Assert.Equal(4, turtwig.Generation);
         Assert.Equal(PokemonType.Grass, turtwig.PrimaryType);
         Assert.Null(turtwig.SecondaryType);
         Assert.Equal((55, 68, 64, 45, 55, 31),
             (turtwig.BaseHP, turtwig.BaseAttack, turtwig.BaseDefense, turtwig.BaseSpAttack, turtwig.BaseSpDefense, turtwig.BaseSpeed));
-        Assert.Equal(GrowthRate.MediumSlow, turtwig.GrowthRate);
+        Assert.Equal(1, turtwig.EvYield!.Attack);
+        Assert.Equal((45, 64, GrowthRate.MediumSlow, 1), (turtwig.CatchRate, turtwig.BaseExpYield, turtwig.GrowthRate, turtwig.GenderRatio));
+        Assert.Equal(new[] { "Monster", "Grass" }, turtwig.EggGroups);
         Assert.Equal(0.4f, turtwig.Height);
-        Assert.Equal(6, turtwig.Learnset.Count);
+        Assert.Equal(new[] { "Overgrow" }, turtwig.Abilities);
         Assert.Equal((5, "Withdraw"), (turtwig.Learnset[1].Level, turtwig.Learnset[1].MoveName));
-        Assert.Equal((18, "Grotle"), (turtwig.Evolution!.Level, turtwig.Evolution.TargetSpecies));
+        Assert.Equal((45, "Leaf Storm"), (turtwig.Learnset[^1].Level, turtwig.Learnset[^1].MoveName));
+        Assert.Equal((18, "Grotle"), (turtwig.LevelEvolution!.Level, turtwig.LevelEvolution.TargetSpecies));
+        Assert.Null(PokemonDatabase.Get("Torterra")!.Evolutions);
+        Assert.Equal(PokemonType.Ground, PokemonDatabase.Get("Torterra")!.SecondaryType);
 
-        var torterra = PokemonDatabase.Get("Torterra")!;
-        Assert.Equal(PokemonType.Ground, torterra.SecondaryType);
-        Assert.Null(torterra.Evolution);
+        // Platinum's typings stay (Clefairy is Normal); the Fairy type belongs to later species (plan 03, decision 2)
+        Assert.Equal(PokemonType.Normal, PokemonDatabase.Get("Clefairy")!.PrimaryType);
+        Assert.DoesNotContain(all.Where(s => s.DexNumber <= 493), s => s.PrimaryType == PokemonType.Fairy || s.SecondaryType == PokemonType.Fairy);
+        Assert.Equal(PokemonType.Fairy, PokemonDatabase.Get("Sylveon")!.PrimaryType);
 
-        Assert.Contains("Pokémon", PokemonDatabase.Get("Torterra")!.DexEntry);
+        // Later generations from PokeAPI
+        var sprigatito = PokemonDatabase.GetByDex(906)!;
+        Assert.Equal(("Sprigatito", 9, PokemonType.Grass), (sprigatito.Name, sprigatito.Generation, sprigatito.PrimaryType));
+        Assert.Equal((16, "Floragato"), (sprigatito.LevelEvolution!.Level, sprigatito.LevelEvolution.TargetSpecies));
+        Assert.Equal(-1, PokemonDatabase.Get("Magnemite")!.GenderRatio);
+        Assert.Equal(8, PokemonDatabase.Get("Nidoran♀")!.GenderRatio);
+        Assert.Equal("Farfetch'd", PokemonDatabase.GetByDex(83)!.Name);
+
+        // Every species can be met: an ability, moves to use and its own Pokédex text (ours, generated from the data)
+        Assert.All(all, s =>
+        {
+            Assert.NotEmpty(s.Abilities);
+            Assert.NotEmpty(s.Learnset);
+            Assert.StartsWith(s.Name + " is ", s.DexEntry);
+        });
+        Assert.Contains("evolves into Grotle", turtwig.DexEntry);
+    }
+
+    [Fact]
+    public void TestEvolutionsKeepTheirMethods()
+    {
+        var eevee = PokemonDatabase.Get("Eevee")!;
+        Assert.Equal(8, eevee.Evolutions!.Count);
+        Assert.Null(eevee.LevelEvolution);
+        Assert.Contains(eevee.Evolutions, e => e is { Method: EvolutionMethod.UseItem, Item: "Fire Stone", TargetSpecies: "Flareon" });
+        Assert.Contains(eevee.Evolutions, e => e is { Method: EvolutionMethod.LevelAtLocation, Location: "Moss Rock", TargetSpecies: "Leafeon" });
+        Assert.Contains(eevee.Evolutions, e => e is { Method: EvolutionMethod.LevelKnowsMoveType, Type: PokemonType.Fairy, TargetSpecies: "Sylveon" });
+
+        Assert.Equal(EvolutionMethod.FriendshipDay, PokemonDatabase.Get("Riolu")!.Evolutions!.Single().Method);
+        Assert.Equal(("Mantine", "Remoraid"), (PokemonDatabase.Get("Mantyke")!.Evolutions!.Single().TargetSpecies, PokemonDatabase.Get("Mantyke")!.Evolutions!.Single().Species));
+        Assert.Equal("Ancient Power", PokemonDatabase.Get("Piloswine")!.Evolutions!.Single(e => e.TargetSpecies == "Mamoswine").Move);
+
+        // Platinum species that gained an evolution later, but not the ones that start from a regional form
+        Assert.Contains(PokemonDatabase.Get("Scyther")!.Evolutions!, e => e.TargetSpecies == "Kleavor");
+        Assert.DoesNotContain(PokemonDatabase.Get("Meowth")!.Evolutions!, e => e.TargetSpecies == "Perrserker");
+
+        // Every evolution goes somewhere that exists, with items and moves that exist
+        foreach (var s in PokemonDatabase.GetAll())
+        {
+            foreach (var e in s.Evolutions ?? new())
+            {
+                Assert.NotNull(PokemonDatabase.Get(e.TargetSpecies));
+                if (e.Item != null) Assert.True(ItemDatabase.Get(e.Item) != null, $"{s.Name}: {e.Item}");
+                if (e.Move != null) Assert.Equal(e.Move, MoveDatabase.Get(e.Move).Name);
+            }
+        }
     }
 
     [Fact]
     public void TestMovesLoadFromFile()
     {
+        // Platinum's 467 moves (Struggle included) and the later ones, without Z-Moves and Max Moves
         var all = MoveDatabase.GetAll().ToList();
-        Assert.Equal(49, all.Count);
+        Assert.Equal(847, all.Count);
+        Assert.Equal(467, all.Count(m => m.Id <= 467));
         Assert.Equal(all.Count, all.Select(m => m.Id).Distinct().Count());
+        Assert.DoesNotContain(all, m => m.Name is "Breakneck Blitz" or "Max Strike" or "Catastropika");
+
+        // Platinum's values: Tackle was 35 power and 95% accurate in Generation 4
+        var tackle = MoveDatabase.Get("Tackle");
+        Assert.Equal((33, 1, PokemonType.Normal, MoveCategory.Physical, 35, 95, 35), (tackle.Id, tackle.Generation, tackle.Type, tackle.Category, tackle.Power, tackle.Accuracy, tackle.MaxPP));
+        Assert.Equal(MoveEffectSupport.Full, tackle.Support);
+        Assert.Null(tackle.Effect);
 
         var quickAttack = MoveDatabase.Get("Quick Attack");
-        Assert.Equal((PokemonType.Normal, MoveCategory.Physical, 40, 100, 30, 1),
-            (quickAttack.Type, quickAttack.Category, quickAttack.Power, quickAttack.Accuracy, quickAttack.MaxPP, quickAttack.Priority));
+        Assert.Equal((40, 100, 30, 1), (quickAttack.Power, quickAttack.Accuracy, quickAttack.MaxPP, quickAttack.Priority));
 
         var ember = MoveDatabase.Get("Ember");
         Assert.Equal((StatusCondition.Burn, 10), (ember.InflictStatus, ember.StatusChancePercent));
@@ -61,25 +124,85 @@ public class DataFileTests
             (withdraw.TargetStatChange, withdraw.StatStageAmount, withdraw.StatChangeTargetSelf, withdraw.StatChangeChancePercent));
 
         // Battle details: targets, flags and extra effects
-        Assert.Equal((MoveTarget.AllOthers, MoveFlags.None), (MoveDatabase.Get("Earthquake").Target, MoveDatabase.Get("Earthquake").Flags));
-        Assert.Equal(MoveFlags.Contact | MoveFlags.Punch, MoveDatabase.Get("Mach Punch").Flags);
+        Assert.Equal(MoveTarget.AllOthers, MoveDatabase.Get("Earthquake").Target);
+        Assert.False(MoveDatabase.Get("Earthquake").MakesContact);
+        Assert.True(MoveDatabase.Get("Mach Punch").Flags.HasFlag(MoveFlags.Contact | MoveFlags.Punch));
+        Assert.True(MoveDatabase.Get("Growl").Flags.HasFlag(MoveFlags.Sound));
+        Assert.False(MoveDatabase.Get("Razor Leaf").MakesContact);
         Assert.Equal(new[] { StatType.SpDefense }, MoveDatabase.Get("Close Combat").AlsoChangesStats);
         Assert.Equal(30, MoveDatabase.Get("Bite").FlinchChancePercent);
+        Assert.Equal((10, 10), (MoveDatabase.Get("Fire Fang").StatusChancePercent, MoveDatabase.Get("Fire Fang").FlinchChancePercent));
+        Assert.Equal(PokemonType.Ghost, MoveDatabase.Get("Curse").Type); // "???" in Platinum
+
+        // Later moves take their side effects from PokeAPI
+        var moonblast = MoveDatabase.Get("Moonblast");
+        Assert.Equal((PokemonType.Fairy, StatType.SpAttack, -1, 30), (moonblast.Type, moonblast.TargetStatChange, moonblast.StatStageAmount, moonblast.StatChangeChancePercent));
+        Assert.Equal(75, MoveDatabase.Get("Draining Kiss").DrainPercent);
 
         // Unknown moves still fall back to Tackle
         Assert.Equal("Tackle", MoveDatabase.Get("No Such Move").Name);
     }
 
     [Fact]
+    public void TestMovesTheEngineCantRunYetAreFlagged()
+    {
+        foreach (var m in MoveDatabase.GetAll())
+        {
+            // Anything not fully run names the effect still to write
+            Assert.Equal(m.Support != MoveEffectSupport.Full, m.Effect != null);
+            // A move that does nothing yet carries no half-working side effects
+            if (m.Support == MoveEffectSupport.None)
+            {
+                Assert.Equal(StatusCondition.None, m.InflictStatus);
+                Assert.Null(m.TargetStatChange);
+                Assert.Equal(0, m.HealPercent + m.ConfuseChancePercent + m.DrainPercent + m.RecoilPercent);
+            }
+            // Only Partial moves hit
+            if (m.Support == MoveEffectSupport.Partial) Assert.True(m.Category != MoveCategory.Status || m.HealPercent > 0 || m.TargetStatChange != null, m.Name);
+        }
+
+        // How much runs may only grow (docs/mechanics/coverage.md has the details)
+        Assert.True(MoveDatabase.GetAll().Count(m => m.Support == MoveEffectSupport.Full) >= 333);
+        Assert.True(AbilityDatabase.GetAll().Count(a => a.IsImplemented) >= 70);
+
+        Assert.Equal(("MultiHit", MoveEffectSupport.Partial), (MoveDatabase.Get("Fury Attack").Effect, MoveDatabase.Get("Fury Attack").Support));
+        Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Protect").Support);
+        Assert.Equal((0, MoveEffectSupport.None), (MoveDatabase.Get("Seismic Toss").Power, MoveDatabase.Get("Seismic Toss").Support));
+        Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Fake Out").Support); // would always hit without its first-turn rule
+        Assert.Equal((50, "HealHalfMoreInSun"), (MoveDatabase.Get("Synthesis").HealPercent, MoveDatabase.Get("Synthesis").Effect));
+    }
+
+    [Fact]
+    public void TestAbilitiesLoadFromFile()
+    {
+        var all = AbilityDatabase.GetAll().ToList();
+        Assert.Equal(313, all.Count);
+        Assert.All(all, a => Assert.NotEmpty(a.Description));
+
+        // Every ability with battle code is one the data knows
+        var names = all.Select(a => a.Name).ToHashSet();
+        Assert.All(AbilityEffectTable.Names, n => Assert.Contains(n, names));
+        Assert.True(AbilityDatabase.Get("Intimidate")!.IsImplemented);
+        Assert.False(AbilityDatabase.Get("Protean")!.IsImplemented);
+    }
+
+    [Fact]
     public void TestItemsLoadFromFile()
     {
         var all = ItemDatabase.GetAll().ToList();
-        Assert.Equal(70, all.Count);
         Assert.Equal(all.Count, all.Select(i => i.Id).Distinct().Count());
+        Assert.True(all.Count(i => i.Id < 1000) > 400, "Platinum's items");
 
-        // Every item to hold in battle has an effect behind it
-        Assert.All(all.Where(i => i.Id >= 200), i => Assert.True(HeldItemEffects.IsHoldable(i), i.Name));
+        // Every item with battle code is in the data, and has a hold effect
+        foreach (string name in HeldItemEffects.Names)
+        {
+            var item = ItemDatabase.Get(name);
+            Assert.True(item != null, name);
+            Assert.True(item!.HoldEffect != null, name);
+        }
         Assert.Equal(ItemPocket.Berries, ItemDatabase.Get("Sitrus Berry")!.Pocket);
+        Assert.Equal("HpRestoreGradual", ItemDatabase.Get("Leftovers")!.HoldEffect);
+        Assert.Equal("Focus Punch", ItemDatabase.Get("TM01")!.TeachesMove);
 
         var masterBall = ItemDatabase.Get("Master Ball")!;
         Assert.Equal((ItemPocket.PokeBalls, ItemEffectType.CatchPokemon, 9999, 0),
@@ -87,26 +210,29 @@ public class DataFileTests
         Assert.True(masterBall.CanUseInBattle);
         Assert.False(masterBall.CanUseInOverworld);
 
+        var potion = ItemDatabase.Get("Potion")!;
+        Assert.Equal((ItemEffectType.HealHP, 20, 300), (potion.EffectType, potion.EffectValue, potion.Price));
+        Assert.Equal((ItemEffectType.HealStatus, StatusCondition.Poison), (ItemDatabase.Get("Antidote")!.EffectType, ItemDatabase.Get("Antidote")!.HealsStatus));
+        Assert.Equal(ItemEffectType.Revive, ItemDatabase.Get("Revive")!.EffectType);
+        Assert.Equal(ItemEffectType.LevelUp, ItemDatabase.Get("Rare Candy")!.EffectType);
+
         var townMap = ItemDatabase.Get("Town Map")!;
         Assert.Equal(ItemPocket.KeyItems, townMap.Pocket);
         Assert.False(townMap.CanUseInBattle);
+        Assert.Equal(ItemPocket.KeyItems, ItemDatabase.Get("Running Shoes")!.Pocket);
+
+        // Later games' items, for battles and evolutions
+        Assert.NotNull(ItemDatabase.Get("Assault Vest"));
+        Assert.NotNull(ItemDatabase.Get("Auspicious Armor"));
     }
 
     [Fact]
     public void TestEveryNameInTheDataRefersToSomethingThatExists()
     {
-        // Learnsets name a move that isn't written yet; MoveDatabase gives Tackle in its place. This list may only shrink.
-        var notYetWritten = new[] { "Aqua Jet" };
         var moveNames = MoveDatabase.GetAll().Select(m => m.Name).ToHashSet();
         var missing = PokemonDatabase.GetAll().SelectMany(s => s.Learnset).Select(l => l.MoveName)
             .Where(n => !moveNames.Contains(n)).Distinct().OrderBy(n => n).ToArray();
-        Assert.Equal(notYetWritten, missing);
-
-        foreach (var species in PokemonDatabase.GetAll())
-        {
-            if (species.Evolution != null)
-                Assert.NotNull(PokemonDatabase.Get(species.Evolution.TargetSpecies));
-        }
+        Assert.Empty(missing);
 
         foreach (var file in MapFiles())
         {

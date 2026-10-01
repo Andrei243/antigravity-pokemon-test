@@ -143,8 +143,19 @@ public partial class BattleEngine
         switch (move.Target)
         {
             case MoveTarget.User:
+            case MoveTarget.UserSide:
+            case MoveTarget.UserOrAlly:
+            case MoveTarget.Field:
                 return new List<Battler> { user };
+            case MoveTarget.UserAndAllies:
+                return SlotsOf(user.Side).Where(b => b.IsActive).ToList();
+            case MoveTarget.Ally:
+            case MoveTarget.Allies:
+                return SlotsOf(user.Side).Where(b => b.IsActive && b != user).ToList();
+            case MoveTarget.AllPokemon:
+                return AllBattlers.Where(b => b.IsActive).ToList();
             case MoveTarget.AllFoes:
+            case MoveTarget.FoeSide:
                 return foes;
             case MoveTarget.AllOthers:
                 return AllBattlers.Where(b => b.IsActive && b != user).ToList();
@@ -174,7 +185,8 @@ public partial class BattleEngine
         }
 
         var hits = targets.Select(t => new MoveHit { Target = t }).ToList();
-        bool damaging = move.Category != MoveCategory.Status && move.Power > 0;
+        // A move whose effect isn't in the engine yet (Support None) does nothing rather than a made-up hit
+        bool damaging = move.Category != MoveCategory.Status && move.Power > 0 && move.Data.Support != MoveEffectSupport.None;
 
         // The move resolves as its message appears: the attacker lunges, the effect flies across and the hit lands
         // a moment later. The follow-up messages come once the player dismisses it.

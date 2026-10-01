@@ -1,0 +1,25 @@
+// Hand corrections to items.json: a name maps to the fields to change; a name the import doesn't have is a new item.
+{
+  // Platinum gives running shoes as a feature, not an item; this game keeps them in the Key Items pocket
+  "Running Shoes": {
+    "id": 9000,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Shoes for running: hold B, X or Shift to move at speed."
+  },
+  // A key item made for this game; nothing gives it yet
+  "Distortion Orb": {
+    "id": 9001,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A dark orb that seems to pull at the space around it."
+  }
+}

@@ -27,6 +27,13 @@ public class ItemData
     public bool CanUseInBattle { get; set; } = true;
     public bool CanUseInOverworld { get; set; } = true;
     public string Description { get; set; } = string.Empty;
+
+    /// <summary>What it does when held, as the decompilation names it (<c>HpRestoreGradual</c>); null for none.
+    /// The ones the battle engine runs are in <c>Battle/Effects/HeldItemEffects.cs</c>.</summary>
+    public string? HoldEffect { get; set; }
+
+    /// <summary>The move a TM or HM teaches.</summary>
+    public string? TeachesMove { get; set; }
 }
 
 public class ItemStack
