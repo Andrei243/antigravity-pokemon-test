@@ -64,6 +64,11 @@ public sealed class WorldRenderer
         VerticalScale = scene.VS;
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
 
+        // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
+        walkerFeet.Clear();
+        foreach (var actor in actors) walkerFeet.Add(actor.Feet);
+        shaders.SetWalkers(walkerFeet);
+
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
         var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
@@ -193,6 +198,7 @@ public sealed class WorldRenderer
     }
 
     private readonly List<Actor> actors = new();
+    private readonly List<Vector3> walkerFeet = new();
 
     /// <summary>The current scene's vertical stretch, for HD-2D sprites.</summary>
     private float VerticalScale = 1f;

@@ -287,7 +287,11 @@ public static class TileCodes
         (TileType.Door, 'D'),
         (TileType.Floor, '_'),
         (TileType.Signpost, 'S'),
-        (TileType.PC, 'P')
+        (TileType.PC, 'P'),
+        (TileType.Sand, ','),
+        (TileType.Dirt, ';'),
+        (TileType.Snow, '^'),
+        (TileType.CaveFloor, 'c')
     };
 
     public static char CodeOf(TileType type)

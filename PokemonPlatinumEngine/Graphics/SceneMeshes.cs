@@ -6,7 +6,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>How a batch of static geometry is shaded.</summary>
-internal enum MeshPass { Opaque, Ground, Water, Glow, Light }
+internal enum MeshPass { Opaque, Ground, Water, SoftWater, Glow, Light }
 
 /// <summary>Collects static geometry into one mesh per texture and pass, which keeps draw calls low.</summary>
 internal sealed class MeshBatches
@@ -54,7 +54,8 @@ internal sealed class SceneMeshes
                 result.lights.Add((builder.Upload(), glowing));
                 continue;
             }
-            var main = RenderContext.MaterialFor(pass == MeshPass.Water ? shaders.Water : shaders.World, tex);
+            var shader = pass == MeshPass.Water ? shaders.Water : pass == MeshPass.SoftWater ? shaders.SoftWater : shaders.World;
+            var main = RenderContext.MaterialFor(shader, tex);
             Material? depth = pass is MeshPass.Opaque or MeshPass.Glow ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
             result.parts.Add(new Part(builder.Upload(), main, depth, pass == MeshPass.Glow));
         }
@@ -170,19 +171,30 @@ internal static class TreeModels
         PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx + 0.26f * scale, 1.85f * s, cz - 0.1f * scale), 0.46f * s, 0.52f * s, tint, 0.35f);
     }
 
-    /// <summary>Two quads crossing at right angles (a classic foliage card), swaying at the top.</summary>
-    public static void Crossed(MeshBuilder b, float cx, float cz, float w, float h, int seed)
+    /// <summary>
+    /// A boulder with a smaller stone beside it. Heights are stretched by <paramref name="vs"/> like everything
+    /// upright in the field; in water it sits lower, as if standing on the bed.
+    /// </summary>
+    public static void Rock(MeshBatches batches, float cx, float cz, float vs, int seedX, int seedY, bool inWater)
     {
-        float a = 0.785f + (seed % 7) * 0.2f;
-        for (int k = 0; k < 2; k++)
-        {
-            float ang = a + k * MathF.PI / 2f;
-            var d = new Vector3(MathF.Cos(ang), 0, MathF.Sin(ang)) * (w / 2f);
-            var p0 = new Vector3(cx, 0, cz) - d;
-            var p1 = new Vector3(cx, 0, cz) + d;
-            var normal = Vector3.Normalize(new Vector3(0, 0.8f, 0.6f));
-            b.Quad(p0, p1, p1 with { Y = h }, p0 with { Y = h }, new(0, 1), new(1, 1), new(1, 0), new(0, 0),
-                new Color(190, 190, 190, 255), MeshBuilder.Sway(Color.White, 1f), normal);
-        }
+        var b = batches.For(SceneTextures.Rock);
+        float s = 0.86f + Rand(seedX, seedY, 6) * 0.28f;
+        float sink = inWater ? 0.1f : 0.04f;
+        b.Ellipsoid(new Vector3(cx, (0.2f - sink) * s * vs, cz), new Vector3(0.4f * s, 0.3f * s * vs, 0.33f * s), Color.White, 10, 6);
+
+        float side = Rand(seedX, seedY, 7) < 0.5f ? -1f : 1f;
+        float r = 0.17f + Rand(seedX, seedY, 8) * 0.06f;
+        b.Ellipsoid(new Vector3(cx + side * 0.36f * s, (r * 0.7f - sink) * vs, cz + 0.16f), new Vector3(r, r * 0.8f * vs, r * 0.9f), new Color(232, 232, 232, 255), 8, 5);
+    }
+
+    /// <summary>
+    /// An upright card facing the camera (which always looks north), swaying at the top: a grass tuft or a flower.
+    /// <paramref name="x"/> is its left edge; <paramref name="u0"/> and <paramref name="u1"/> pick a frame of the texture.
+    /// </summary>
+    public static void Card(MeshBuilder b, float x, float z, float w, float h, float u0, float u1)
+    {
+        var normal = Vector3.Normalize(new Vector3(0, 0.8f, 0.6f));
+        b.Quad(new(x, 0, z), new(x + w, 0, z), new(x + w, h, z), new(x, h, z), new(u0, 1), new(u1, 1), new(u1, 0), new(u0, 0),
+            Color.White, MeshBuilder.Sway(Color.White, 1f), normal);
     }
 }

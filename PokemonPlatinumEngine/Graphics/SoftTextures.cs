@@ -64,4 +64,24 @@ internal static class SoftTextures
             }
         return c;
     }, repeat: false);
+
+    /// <summary>Battle water (repeats): a calm blue with soft lighter swells; green carries the foam's breakup.</summary>
+    public static Texture2D Water => Get("soft_water", () =>
+    {
+        const int s = 256;
+        var c = new SoftCanvas(s, s);
+        var deep = C(58, 118, 190);
+        var light = C(116, 184, 232);
+        for (int y = 0; y < s; y++)
+            for (int x = 0; x < s; x++)
+            {
+                float swell = SoftCanvas.Fbm(x / 64f, y / 32f, 61, 4);
+                float n = SoftCanvas.Fbm(x / 16f, y / 16f, 62, 16);
+                var col = Vector4.Lerp(deep, light, Math.Clamp((swell - 0.42f) * 2.2f, 0f, 1f) * 0.55f);
+                // The shader reads green as noise for the foam's edge, so keep it close to the colour's own green
+                col.Y = Math.Clamp(col.Y * (0.9f + n * 0.2f), 0f, 1f);
+                c.SetPixel(x, y, col);
+            }
+        return c;
+    }, repeat: true);
 }

@@ -20,6 +20,9 @@ public enum PropType
     LabDesk,
     LabMachine,
 
+    // Outdoors: a rock too big to step over, on land or standing in water
+    Boulder,
+
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
     Window,

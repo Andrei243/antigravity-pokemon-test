@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
 
@@ -26,14 +27,15 @@ internal sealed class FieldShaders
     public Shader Character { get; private set; }
     public Shader Outline { get; private set; }
     public Shader Water { get; private set; }
+    public Shader SoftWater { get; private set; }
     public Shader Sprite { get; private set; }
     public Shader Post { get; private set; }
     public Shader Down { get; private set; }
     public Shader Blur { get; private set; }
     public Shader Ssao { get; private set; }
 
-    private Shader[] FieldPrograms => new[] { World, Depth, Character, Water, Sprite };
-    private Shader[] LitPrograms => new[] { World, Character, Water, Sprite };
+    private Shader[] FieldPrograms => new[] { World, Depth, Character, Water, SoftWater, Sprite };
+    private Shader[] LitPrograms => new[] { World, Character, Water, SoftWater, Sprite };
 
     // raylib's DrawMesh fills in mvp, matModel and matNormal for each mesh it draws
     private const string CommonVertex = @"#version 330
@@ -52,6 +54,10 @@ out vec3 fragNormal;
 out vec3 fragWorld;
 out vec4 fragLight;
 
+// Up to eight walkers (xyz = where their feet are, w = 1): grass leans away from them
+uniform vec4 walkers[8];
+uniform int walkerCount;
+
 // Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves). Only static scenery sways,
 // and scenery is drawn with an identity model matrix, so the world-space offset can be added in model space.
 vec3 SwayOffset(vec3 p, float weight)
@@ -61,10 +67,27 @@ vec3 SwayOffset(vec3 p, float weight)
     return vec3(sin(t) * 0.07, 0.0, cos(t * 0.83) * 0.035) * weight;
 }
 
+// Only what sways fully (grass and flowers, not leaves) parts: pushed outward and pressed down near a walker
+vec3 PartOffset(vec3 p, float weight)
+{
+    vec3 offset = vec3(0.0);
+    float bend = smoothstep(0.7, 1.0, weight);
+    if (bend <= 0.0) return offset;
+    for (int i = 0; i < walkerCount; i++)
+    {
+        vec2 d = p.xz - walkers[i].xz;
+        float k = 1.0 - smoothstep(0.2, 0.8, length(d));
+        if (k <= 0.0) continue;
+        vec2 away = normalize(d + vec2(0.0001, 0.0));
+        offset += vec3(away.x * 0.3, -0.22, away.y * 0.18) * k * bend;
+    }
+    return offset;
+}
+
 void main()
 {
     vec3 world = (matModel * vec4(vertexPosition, 1.0)).xyz;
-    vec3 sway = SwayOffset(world, 1.0 - vertexColor.a);
+    vec3 sway = SwayOffset(world, 1.0 - vertexColor.a) + PartOffset(world, 1.0 - vertexColor.a);
     vec3 n = normalize((matNormal * vec4(vertexNormal, 0.0)).xyz);
     fragTexCoord = vertexTexCoord;
     fragColor = vec4(vertexColor.rgb, 1.0);
@@ -268,9 +291,90 @@ void main()
     finalColor = vec4(mix(color, flash.rgb, flash.a), 1.0);
 }";
 
-    // Two drifting layers of the water texture, rippling sun glints, a fresnel sky tint and shoreline foam
-    // (vertex red channel carries how close each vertex is to the shore).
+    // Field water as pixel art. texture0 is the mask baked by PixelGround (alpha = water surface, red = texels
+    // from the shore x 4). Everything is decided per ground texel and moves in whole texels: three depth bands,
+    // a line of foam lapping at the shore with a broken second line further out, drifting wave marks, and
+    // sparkles in sunlight.
     private const string WaterFragment = @"#version 330
+in vec2 fragTexCoord;
+in vec4 fragColor;
+in vec3 fragWorld;
+in vec4 fragLight;
+uniform sampler2D texture0;
+uniform vec3 sunDir;
+uniform vec3 sunColor;
+uniform vec3 skyAmbient;
+uniform float time;
+out vec4 finalColor;
+" + ShadowFunctions + FogFunctions + CloudFunctions + @"
+const vec3 deep = vec3(58.0, 118.0, 190.0) / 255.0;
+const vec3 middle = vec3(76.0, 146.0, 214.0) / 255.0;
+const vec3 shallow = vec3(116.0, 184.0, 232.0) / 255.0;
+const vec3 foam = vec3(236.0, 246.0, 255.0) / 255.0;
+const vec3 foamThin = vec3(176.0, 218.0, 248.0) / 255.0;
+const vec3 waveLight = vec3(150.0, 206.0, 246.0) / 255.0;
+const vec3 waveDark = vec3(46.0, 104.0, 186.0) / 255.0;
+
+float Hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+
+void main()
+{
+    ivec2 size = textureSize(texture0, 0);
+    ivec2 cell = clamp(ivec2(floor(fragTexCoord * vec2(size))), ivec2(0), size - 1);
+    vec4 mask = texelFetch(texture0, cell, 0);
+    if (mask.a < 0.5) discard;
+    float dist = mask.r * 63.75;
+    vec2 t = floor(fragWorld.xz * 32.0);
+
+    // Depth bands whose edges breathe by a texel
+    float breathe = sin(time * 0.9 + t.x * 0.11 + t.y * 0.17) * 1.2;
+    vec3 color = dist + breathe < 7.0 ? shallow : dist + breathe < 20.0 ? middle : deep;
+
+    // Wave marks: a light dash with dipped ends and a dark line under it, one to a cell, drifting east
+    vec2 p = vec2(t.x - floor(time * 2.0), t.y);
+    vec2 c = floor(p / vec2(22.0, 11.0));
+    vec2 f = p - c * vec2(22.0, 11.0);
+    float h1 = Hash(c), h2 = Hash(c + 17.0), h3 = Hash(c + 43.0);
+    float len = 4.0 + floor(h2 * 5.0);
+    vec2 o = vec2(floor(h1 * (22.0 - len)), 1.0 + floor(h3 * 7.0));
+    if (h2 > 0.3 && fract(h1 + time * 0.09) < 0.72 && dist > 9.0 && f.x >= o.x && f.x < o.x + len)
+    {
+        float dip = (f.x == o.x || f.x == o.x + len - 1.0) ? 1.0 : 0.0;
+        if (f.y == o.y + dip) color = waveLight;
+        else if (f.y == o.y + dip + 1.0) color = waveDark;
+    }
+
+    // Foam: a line at the shore that laps in and out, and a broken one further out
+    float lap = 1.6 + sin(time * 1.3 + (t.x + t.y) * 0.09);
+    float ring = 5.0 + sin(time * 0.8 + (t.x - t.y) * 0.07) * 2.0;
+    if (dist < lap) color = foam;
+    else if (abs(dist - ring) < 0.55 && Hash(floor(t / 3.0) + 5.0) > 0.42) color = foamThin;
+
+    float shadow = Shadow(fragLight);
+    float sun = max(sunDir.y, 0.0) * shadow * CloudLight(fragWorld);
+
+    // Blue water under blue moonlight would glow: after dark it is drawn darker and greyer
+    const vec3 luma = vec3(0.3, 0.5, 0.2);
+    float daylight = smoothstep(0.6, 0.95, dot(skyAmbient + sunColor * max(sunDir.y, 0.0), luma));
+
+    // Sparkles: a plus sign that flashes for a moment, where the sun reaches
+    vec2 sc = floor(t / 30.0);
+    vec2 sf = t - sc * 30.0 - (floor(vec2(Hash(sc + 3.0), Hash(sc + 7.0)) * 24.0) + 3.0);
+    float life = fract(time * 0.4 + Hash(sc + 91.0));
+    if (life < 0.2 && dist > 6.0 && sun > 0.3 && daylight > 0.5)
+    {
+        float arm = (life > 0.05 && life < 0.14) ? 2.0 : 1.0;
+        if ((sf.x == 0.0 && abs(sf.y) <= arm) || (sf.y == 0.0 && abs(sf.x) <= arm)) color = vec3(1.0);
+    }
+
+    color = mix(mix(vec3(dot(color, luma)), color, 0.55) * 0.62, color, daylight);
+    color *= skyAmbient + sunColor * sun;
+    finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
+}";
+
+    // Battle water, in the battles' smooth style: two drifting layers of a soft texture, rippling sun glints, a
+    // sky tint at grazing angles and foam at the shore (vertex red = how close each vertex is to the shore).
+    private const string SoftWaterFragment = @"#version 330
 in vec2 fragTexCoord;
 in vec4 fragColor;
 in vec3 fragWorld;
@@ -284,26 +388,25 @@ out vec4 finalColor;
 " + ShadowFunctions + FogFunctions + @"
 void main()
 {
-    vec2 uv1 = fragWorld.xz * 0.45 + vec2(time * 0.030, time * 0.017);
-    vec2 uv2 = fragWorld.xz * 0.31 + vec2(-time * 0.021, time * 0.026);
+    vec2 uv1 = fragWorld.xz * 0.21 + vec2(time * 0.020, time * 0.011);
+    vec2 uv2 = fragWorld.xz * 0.13 + vec2(-time * 0.014, time * 0.017);
     vec3 water = (texture(texture0, uv1).rgb + texture(texture0, uv2).rgb) * 0.5;
 
-    float w1 = sin(fragWorld.x * 2.3 + time * 1.4) * cos(fragWorld.z * 1.9 - time * 1.1);
-    float w2 = sin((fragWorld.x + fragWorld.z) * 3.1 - time * 2.1);
-    vec3 n = normalize(vec3(w1 * 0.16, 1.0, w2 * 0.16));
+    float w1 = sin(fragWorld.x * 1.3 + time * 1.2) * cos(fragWorld.z * 1.7 - time * 0.9);
+    float w2 = sin((fragWorld.x + fragWorld.z) * 2.1 - time * 1.7);
+    vec3 n = normalize(vec3(w1 * 0.12, 1.0, w2 * 0.12));
     vec3 v = normalize(viewPos - fragWorld);
     vec3 h = normalize(v + sunDir);
     float shadow = Shadow(fragLight);
-    float spec = pow(max(dot(n, h), 0.0), 120.0) * 1.6 * shadow * length(sunColor);
+    float sun = length(sunColor);
+    float spec = pow(max(dot(n, h), 0.0), 90.0) * 0.9 * shadow * sun;
     float fresnel = pow(1.0 - max(dot(n, v), 0.0), 3.0);
 
-    vec3 color = water * (skyAmbient + sunColor * 0.75 * shadow) + vec3(spec);
-    color = mix(color, skyAmbient * 1.3, fresnel * 0.35);
+    vec3 color = water * (skyAmbient + sunColor * 0.7 * shadow) + vec3(spec);
+    color = mix(color, skyAmbient * 1.25 + sunColor * 0.25, fresnel * 0.4);
 
-    // Foam in a thin, broken band right at the water's edge (vertex red = closeness to the shore)
-    float foamNoise = texture(texture0, fragWorld.xz * 1.3 + vec2(time * 0.05, 0.0)).g;
-    float foam = smoothstep(0.45, 0.95, fragColor.r * (0.8 + foamNoise * 0.4));
-    color = mix(color, (skyAmbient + sunColor) * 0.95, foam * 0.8);
+    float foam = smoothstep(0.55, 0.95, fragColor.r + (texture(texture0, fragWorld.xz * 0.6 + vec2(time * 0.04, 0.0)).g - 0.5) * 0.3);
+    color = mix(color, (skyAmbient + sunColor) * 0.95, foam * 0.85);
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
 }";
 
@@ -519,13 +622,14 @@ void main()
         Character = Raylib.LoadShaderFromMemory(CommonVertex, CharacterFragment);
         Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
         Water = Raylib.LoadShaderFromMemory(CommonVertex, WaterFragment);
+        SoftWater = Raylib.LoadShaderFromMemory(CommonVertex, SoftWaterFragment);
         Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
         Post = Raylib.LoadShaderFromMemory(PostVertex, PostFragment);
         Down = Raylib.LoadShaderFromMemory(PostVertex, DownFragment);
         Blur = Raylib.LoadShaderFromMemory(PostVertex, BlurFragment);
         Ssao = Raylib.LoadShaderFromMemory(PostVertex, SsaoFragment);
 
-        foreach (var shader in new[] { World, Character, Water })
+        foreach (var shader in new[] { World, Character, Water, SoftWater })
         {
             Set(shader, "shadowMap", ShadowMapSlot);
         }
@@ -540,7 +644,7 @@ void main()
     public void Unload()
     {
         if (!Loaded) return;
-        foreach (var shader in new[] { World, Depth, Character, Outline, Water, Sprite, Post, Down, Blur, Ssao })
+        foreach (var shader in new[] { World, Depth, Character, Outline, Water, SoftWater, Sprite, Post, Down, Blur, Ssao })
         {
             Raylib.UnloadShader(shader);
         }
@@ -591,24 +695,43 @@ void main()
         }
     }
 
-    /// <summary>Clears the scene-only effects (fog, cloud shade, flash) before a model is rendered on its own.</summary>
+    private readonly Vector4[] walkerBuffer = new Vector4[8];
+
+    /// <summary>
+    /// Where the walkers' feet are, so grass and flowers lean away from them (the last eight are used, and the
+    /// player comes last). Pass none outside the field.
+    /// </summary>
+    public void SetWalkers(IReadOnlyList<Vector3> feet)
+    {
+        int count = Math.Min(walkerBuffer.Length, feet.Count);
+        for (int i = 0; i < count; i++) walkerBuffer[i] = new Vector4(feet[feet.Count - count + i], 1f);
+        foreach (var shader in FieldPrograms)
+        {
+            int location = Raylib.GetShaderLocation(shader, "walkers");
+            if (location >= 0 && count > 0) Raylib.SetShaderValueV(shader, location, walkerBuffer, ShaderUniformDataType.Vec4, count);
+            Set(shader, "walkerCount", count);
+        }
+    }
+
+    /// <summary>Clears the scene-only effects (fog, cloud shade, flash, grass parting) before a model is rendered on its own.</summary>
     public void SetStudio()
     {
         SetFog(Vector3.One, 0f, 1000f, 2000f);
         SetCloudShade(0f);
         SetFlash(default, 0f);
+        SetWalkers(Array.Empty<Vector3>());
     }
 
     /// <summary>How much drifting cloud shade dims the sunlight (0 for none).</summary>
     public void SetCloudShade(float amount)
     {
-        foreach (var shader in new[] { World, Character, Sprite }) Set(shader, "cloudShade", amount);
+        foreach (var shader in new[] { World, Character, Sprite, Water }) Set(shader, "cloudShade", amount);
     }
 
     /// <summary>Shadow filtering: taps from the quality preset, softness as the disc radius in shadow-map texels.</summary>
     public void SetShadowQuality(int taps, float softness)
     {
-        foreach (var shader in new[] { World, Character, Water })
+        foreach (var shader in new[] { World, Character, Water, SoftWater })
         {
             Set(shader, "shadowTaps", Math.Clamp(taps, 5, 16));
             Set(shader, "shadowSoftness", softness);

@@ -99,6 +99,20 @@ internal static class SoftFoliage
         white.Append(canopy, Matrix4x4.Identity);
     }
 
+    /// <summary>A boulder: a squat rounded mass with a smaller one against it, shaded from a dark foot to a pale top.</summary>
+    public static void Rock(MeshBuilder b, float cx, float cz, float size, int seed)
+    {
+        var foot = Rgb(98, 96, 112);
+        var body = Rgb(146, 142, 148);
+        var top = Rgb(196, 192, 190);
+        Color Tone(int ring, int rings) => Lerp(ring < rings / 2 ? foot : body, ring < rings / 2 ? body : top, ring < rings / 2 ? ring / (rings / 2f) : (ring - rings / 2) / (rings / 2f));
+
+        float sx = 0.9f + Rand(seed, 1, 41) * 0.3f, sz = 0.8f + Rand(seed, 2, 41) * 0.25f;
+        b.Ellipsoid(new Vector3(cx, 0.36f * size, cz), new Vector3(0.62f * sx, 0.5f, 0.56f * sz) * size, i => Tone(i, 8), 14, 8);
+        float side = Rand(seed, 3, 41) < 0.5f ? -1f : 1f;
+        b.Ellipsoid(new Vector3(cx + side * 0.6f * size, 0.16f * size, cz + 0.22f * size), new Vector3(0.3f, 0.24f, 0.28f) * size, i => Tone(i, 6), 12, 6);
+    }
+
     /// <summary>A tuft of curved grass blades, dark at the root and light at the tips, swaying in the wind.</summary>
     public static void Tuft(MeshBuilder b, float cx, float cz, float width, float height, int seed)
     {

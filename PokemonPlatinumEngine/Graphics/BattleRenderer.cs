@@ -18,7 +18,7 @@ public sealed class BattleRenderer
     private const float Near = 0.5f, Far = 300f;
 
     private readonly RenderContext context;
-    private readonly Dictionary<TreeStyle, BattleStage> stages = new(); // one per forest style, built on first use
+    private readonly Dictionary<(TreeStyle, bool), BattleStage> stages = new(); // one per kind of arena, built on first use
     private Camera3D camera;
 
     // Layout projected from the 3D camera each frame, in virtual-screen pixels
@@ -28,16 +28,26 @@ public sealed class BattleRenderer
     /// <summary>Forest style behind the field; set from the map the battle started on.</summary>
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
 
+    /// <summary>Whether a lake lies behind the field; set from the map the battle started on.</summary>
+    public bool Lakeside { get; set; }
+
+    /// <summary>Takes the arena from the map the battle starts on: its trees, and a lake if it has one.</summary>
+    public void SetArena(Map map)
+    {
+        Trees = map.Trees;
+        Lakeside = map.HasLake;
+    }
+
     public BattleRenderer(RenderContext context) => this.context = context;
 
     /// <summary>Renders the stage and the Pokémon offscreen. Call outside any other texture mode.</summary>
     public void Render(BattleEngine battle)
     {
         context.EnsureLoaded();
-        if (!stages.TryGetValue(Trees, out var stage))
+        if (!stages.TryGetValue((Trees, Lakeside), out var stage))
         {
-            stage = BattleStage.Build(context.Shaders, Trees);
-            stages[Trees] = stage;
+            stage = BattleStage.Build(context.Shaders, Trees, Lakeside);
+            stages[(Trees, Lakeside)] = stage;
         }
 
         var anim = battle.Anim;
@@ -120,6 +130,7 @@ public sealed class BattleRenderer
         var shaders = context.Shaders;
         var light = rig.Light;
         shaders.SetTime(anim.Time);
+        shaders.SetWalkers(Array.Empty<Vector3>());
 
         // 1. Shadow map over the whole field
         var lightCamera = context.Shadows.LightCamera(new Vector3(-6f, 0, -6f), light.SunDirection, 72f);

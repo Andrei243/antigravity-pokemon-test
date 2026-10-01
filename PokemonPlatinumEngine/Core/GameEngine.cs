@@ -689,7 +689,7 @@ public class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
-            battleRenderer.Trees = currentMap.Trees;
+            battleRenderer.SetArena(currentMap);
         });
     }
 
@@ -713,7 +713,7 @@ public class GameEngine
                 Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = new List<Trainer> { trainer }
             });
-            battleRenderer.Trees = currentMap.Trees;
+            battleRenderer.SetArena(currentMap);
             battleTrainer = trainerNpc;
         });
     }

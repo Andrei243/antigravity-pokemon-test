@@ -114,6 +114,18 @@ Grow `UI/Kit` and `ModernUi` into the kit: tokens, components and motion from th
 Field, in pixel art on the 32-texel grid: sand, dirt, snow and cave ground for `PixelGround`; bevelled ledges and cliffs; tall grass and flowers that sway and part around the player; trees with clean pixel-art bark and leaf textures (no noise); rocks; the water (pixel-art depth bands, shoreline foam, sparkles). Battle: pines and round trees per arena, rocks, water edges in the smooth style.
 **Done when** Twinleaf, Route 201 and Lake Verity look finished.
 
+**Outcome (2026-10-02).**
+- **Water** is now pixel art in the ground plane. `PixelGround` bakes a mask with each water texel's distance to the shore (a chamfer distance transform); the water shader colours it per texel: three depth bands, foam lapping at the shore, drifting wave marks, sparkles by day, darker and greyer after dark (this fixes the night glow). Shores are rounded, north shores show a bank, and the old sunken rectangle with straight walls is gone.
+- **Tall grass** is two staggered rows of clean clumps per tile (four flat shades) instead of a noisy blade texture; it sways, and **leans away from anyone walking through** (`FieldShaders.SetWalkers`, up to eight walkers). Lawn tufts and flowers are single camera-facing cards on the texel grid; none of them cast shadows any more.
+- **Trees**: needles, leaves and bark redrawn in four flat tones without per-texel noise (`NatureArt`, tested).
+- **Ledges** are 12 texels high with a bright edge, a scalloped grass lip and a dirt face.
+- **Rocks**: `PropType.Boulder`, solid, placed in the map files of Twinleaf, Route 201 and Lake Verity; in water they stand in a ring of foam.
+- **Ground kinds**: `TileType.Sand`, `Dirt`, `Snow` and `CaveFloor` (map codes `,` `;` `^` `c`) with palettes, rims and marks; no map uses them yet.
+- **Battle**: boulders round the meadow, and maps with a lake (`Map.HasLake`) get a lake behind the opponent, drawn with a smooth water shader (`BattleRenderer.SetArena`).
+- **Harness**: `terrain [before dir]` renders all of this with native crops and before/after boards.
+- **Frame time on High**: Route 201 7.0–7.3 ms (was 7.5), Lake Verity 6.9–7.1 ms, the lakeside battle 7.5 ms.
+- **Not done here**: cliffs (they need height in the map data, plan 01), and the shapes of ponds and lakes, which are rectangles in the maps.
+
 ### G5 · Buildings, props and interiors
 A modular building kit in pixel art with a style per town: planks and plaster with one-texel bevels, framed windows with glass, doors with steps, roof tiles with ridges, overhangs and gutters, chimneys, foundations. Props: fences, signs, lamps, mailboxes, benches, flower boxes. Interiors with warm light, wood and tile floors, rugs and furniture. No per-texel noise anywhere.
 **Done when** every existing building and interior is rebuilt.
@@ -158,7 +170,7 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 - [x] G2 Rendering foundation (2026-10-01: time of day, soft shadows, fog, ambient occlusion, outlines, FXAA, options screen; materials moved to G6/G7)
 - [x] Extra: 4K rendering, full-screen fix, opening and title screen (2026-10-01)
 - [x] G3 UI kit and core screens (2026-10-01: kit components and motion, start menu with quit, battle switch and bag panels, summary, location sign, notices)
-- [ ] G4 Terrain and nature
+- [x] G4 Terrain and nature (2026-10-02: pixel-art water, tall grass that parts, clean tree art, ledges, boulders, four new ground kinds, lakeside battles)
 - [ ] G5 Buildings, props and interiors
 - [ ] G6 SDF kit and characters
 - [ ] G7 Pokémon models, version 2

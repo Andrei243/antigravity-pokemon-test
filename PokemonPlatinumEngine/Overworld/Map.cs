@@ -12,6 +12,9 @@ public class Map
     public string BgmTrack { get; set; } = "";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public bool IsIndoors => Interior != InteriorStyle.None;
+
+    /// <summary>True for maps with a sizeable body of water (not a garden pond): battles there have a lake behind them.</summary>
+    public bool HasLake => groundLayer.Count(t => t == TileType.Water) >= 40;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
     public int Width { get; }
     public int Height { get; }

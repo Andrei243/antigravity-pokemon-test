@@ -46,12 +46,42 @@ Baked per map by `PixelGround`: soft tile masks thresholded into hard pixel edge
 | Lawn patches | `120,200,102` | clean-edged blobs a few tiles wide, one step lighter |
 | Tuft marks | `70,150,82`, tip `160,222,122` | three-blade "v", 2–3 per tile on a jittered grid |
 | Forest floor | `58,126,82` | under the tree margin |
-| Tall-grass ground | `40,112,66` | |
+| Tall-grass ground | `48,124,70` | |
 | Path | `222,204,160` | rounded corners, never pixel fringes |
 | Path rim / inner light | `166,140,104` / `236,222,186` | one texel each; the light line on the north and west sides |
 | Pebbles | `168,160,150`, light `208,202,192`, shadow `214,186,132` | 2×2 with a highlight texel, at most one cluster per tile |
 | Pond stones / sea sand | `168,160,150` / `238,224,172` | band around water |
 | Contact shade by walls | two flat steps, 14 % and 28 % toward `30,70,50` | never a smooth gradient |
+
+Other ground kinds follow the lawn's recipe (flat base, clean-edged patches one step lighter, a one-texel rim where they meet another ground, placed marks of two texels or more):
+
+| Kind | Base / patches / rim | Marks |
+|---|---|---|
+| Sand | `238,224,172` / `246,236,196` / `206,188,138` | short ripple arcs `214,196,140` |
+| Dirt | `176,136,96` / `194,156,112` / `138,102,70` | clods: 2×2 `146,108,74` with a light texel |
+| Snow | `204,218,240` / `220,230,246` / `168,186,222` | drift lines `184,200,232`, three texels long (kept well below white: sunlit snow still blooms under the towns' day light, so snow areas need their own light rig) |
+| Cave floor | `112,100,104` / `130,118,120` / `74,66,80` | cracks `82,72,84`, pebbles `150,140,140` |
+
+### Water
+
+Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes a shore-distance mask, the water shader colours it), so shores are rounded pixel art and nothing is a smooth gradient.
+
+| Element | Value |
+|---|---|
+| Depth bands | shallow `116,184,232` to 7 texels from the shore, mid `76,146,214` to 20, deep `58,118,190` beyond; the band edges breathe by a texel |
+| Foam | `236,246,255`: a line at the shore 1–3 texels wide that laps in and out, and a broken second line 3–7 texels out |
+| Wave marks | light dashes `150,206,246` 4–8 texels long with a dark line `46,104,186` under them and their ends dipped, drifting east two texels a second, never nearer than 9 texels to the shore |
+| Sparkles | white plus-signs that flash for a moment, in sunlight only |
+| North bank | where land lies to the north the bank shows as a face 5 texels deep, `124,116,116` over `88,84,98`; other shores get a one-texel light rim |
+| Motion | everything moves in whole texels; no sub-texel scrolling |
+
+### Grass, flowers, trees, ledges and rocks
+
+- **Tall grass**: two rows of clumps per tile, each clump five blades in four flat shades (`36,110,62`, `62,150,78`, `106,196,98`, tips `170,232,130`), 16 texels tall, the rows half a clump out of step. They sway at the top and lean away from anyone walking through.
+- **Lawn tufts and flowers**: single upright cards facing the camera (crossed cards read as scribbles from the steep camera). Tufts are a small clump in the lawn's shades; flowers are a stem, two leaves and a five-texel blossom, mostly white, some red or yellow.
+- **Trees**: grey textures in four flat tones (118, 162, 206, 244) tinted per tree. Pine tiers are bands of scalloped needles with a toothed rim; round crowns are overlapping leaf clumps, each with a light crescent on the upper left and a dark one on the lower right. Bark is `116,80,54` with dark grooves `86,58,42` and a light line beside each. No per-texel random variation.
+- **Ledges**: a ridge 12 texels high: a bright edge `160,222,122`, a grass lip (`120,200,102`, scalloped) over a dirt face `178,138,90` with one broken strata line `146,108,72` and a dark base `116,84,60`.
+- **Rocks**: boulders in three flat shades (`196,192,190`, `150,146,150`, `104,100,112`) with a crack line `74,70,86`; in water they stand in a ring of foam.
 
 ### Buildings and props
 
@@ -280,10 +310,12 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G3
+## Known gaps after G4
 
 - Building, prop and interior textures are still the older pixel art with light per-texel variation (G5).
-- Field water still uses the older water texture and shader, and reads too bright at night (G4).
+- Ponds and lakes are still rectangles in the map data, however round their corners are drawn; their shapes come with the maps of plan 01. Cliffs taller than a ledge need height in the maps too.
+- Sand, dirt, snow and cave floors are drawn but no map uses them yet; snow and caves need their own light rigs when their areas are built.
+- Boulders are lit as smooth 3D shapes, so their three shades blend more than the pixel-art rule intends; revisit with the prop kit in G5.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
 - Materials (specular, emission per surface kind) wait for models that carry material ids: the SDF kit in G6 and G7.

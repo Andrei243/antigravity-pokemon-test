@@ -146,162 +146,30 @@ internal static class SceneTextures
         return c;
     }, repeat: true);
 
-    public static Texture2D Bark => Get("bark", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        var bark = Rgb(116, 80, 54);
-        for (int y = 0; y < 32; y++)
-            for (int x = 0; x < 32; x++)
-            {
-                float stripe = (R(x, y / 5, 12) - 0.5f) * 0.4f + ((x % 5 == 0) ? -0.25f : 0f);
-                c.Set(x, y, MeshBuilder.Scale(bark, 1f + stripe));
-            }
-        return c;
-    }, repeat: true);
+    // Plants and rocks: the art is drawn in NatureArt (grey for trees, tinted per tree)
+    public static Texture2D Bark => Get("bark", NatureArt.Bark, repeat: true);
 
-    /// <summary>Dense leaf clusters for the solid core of round tree crowns (tinted per tree).</summary>
-    public static Texture2D Leaves => Get("leaves", () => BuildLeaves(cutout: false), repeat: true);
+    /// <summary>Dense leaf clumps for the solid core of round tree crowns.</summary>
+    public static Texture2D Leaves => Get("leaves", () => NatureArt.Leaves(cutout: false), repeat: true);
 
-    /// <summary>Leaf clusters with gaps, for the outer shell that gives crowns a leafy silhouette.</summary>
-    public static Texture2D LeafShell => Get("leaf_shell", () => BuildLeaves(cutout: true), repeat: true);
+    /// <summary>Leaf clumps with gaps, for the outer shell that gives crowns a leafy silhouette.</summary>
+    public static Texture2D LeafShell => Get("leaf_shell", () => NatureArt.Leaves(cutout: true), repeat: true);
 
-    private static PixelCanvas BuildLeaves(bool cutout)
-    {
-        const int s = 64;
-        var c = new PixelCanvas(s, s);
-        if (!cutout) c.Fill(Rgb(150, 150, 150));
-        for (int i = 0; i < (cutout ? 90 : 170); i++)
-        {
-            float cx = R(i, 0, 13) * s, cy = R(i, 1, 13) * s;
-            float r = 2.2f + R(i, 2, 13) * 2.4f;
-            int tone = 150 + (int)(R(i, 3, 13) * 100);
-            for (int y = (int)(cy - r - 1); y <= (int)(cy + r + 1); y++)
-                for (int x = (int)(cx - r - 1); x <= (int)(cx + r + 1); x++)
-                {
-                    float u = (x + 0.5f - cx) / r, v = (y + 0.5f - cy) / (r * 0.8f);
-                    if (u * u + v * v > 1f) continue;
-                    // Light from the upper left on every leaf
-                    int t = tone + (int)((-u - v) * 22f);
-                    int px = ((x % s) + s) % s, py = ((y % s) + s) % s;
-                    c.Set(px, py, Rgb(Math.Clamp(t, 60, 255), Math.Clamp(t, 60, 255), Math.Clamp(t, 60, 255)));
-                }
-        }
-        return c;
-    }
+    /// <summary>A pine tier: U wraps around the tree, V runs from the tip (0) to the toothed rim (1).</summary>
+    public static Texture2D Needles => Get("needles", NatureArt.Needles, repeat: true);
 
-    /// <summary>
-    /// Pine tier: U wraps around the tree, V runs from the tip (0) to the rim (1). The rim is serrated with
-    /// transparent notches so each tier has a needly edge.
-    /// </summary>
-    public static Texture2D Needles => Get("needles", () =>
-    {
-        const int w = 64, h = 32;
-        var c = new PixelCanvas(w, h);
-        for (int x = 0; x < w; x++)
-        {
-            // Jagged hanging tips along the rim
-            int tip = 23 + (int)(MathF.Abs(MathF.Sin(x * 0.9f)) * 6f + R(x, 0, 14) * 3f);
-            for (int y = 0; y < Math.Min(h, tip); y++)
-            {
-                float t = y / (float)h;
-                int v = (int)(220 - t * 90);
-                if ((x + y) % 5 == 0) v -= 26;
-                if ((x * 3 + y * 2) % 11 == 0) v += 20;
-                v += (int)((R(x, y, 15) - 0.5f) * 18);
-                c.Set(x, y, Rgb(Math.Clamp(v, 40, 255), Math.Clamp(v, 40, 255), Math.Clamp(v, 40, 255)));
-            }
-        }
-        return c;
-    }, repeat: true);
-
-    /// <summary>Blades of tall grass with transparent gaps above (cut out by the field shader).</summary>
-    public static Texture2D GrassBlades => Get("grass_blades", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        for (int i = 0; i < 44; i++)
-        {
-            int x = (int)(R(i, 0, 16) * 32);
-            int h = 14 + (int)(R(i, 1, 16) * 16);
-            float lean = (R(i, 2, 16) - 0.5f) * 0.5f;
-            for (int y = 0; y < h; y++)
-            {
-                float t = y / (float)h;
-                int px = ((x + (int)(lean * y)) % 32 + 32) % 32;
-                var col = t < 0.3f ? Rgb(30, 104, 58) : t < 0.65f ? Rgb(56, 150, 76) : t < 0.9f ? Rgb(96, 192, 94) : Rgb(160, 228, 124);
-                c.Set(px, 31 - y, col);
-                if (t < 0.6f) c.Set((px + 1) % 32, 31 - y, MeshBuilder.Scale(col, 0.82f));
-            }
-        }
-        c.Rect(0, 26, 32, 6, Rgb(30, 102, 58));
-        return c;
-    }, repeat: true);
+    /// <summary>Clumps of tall grass, repeating along a row (cut out by the field shader).</summary>
+    public static Texture2D TallGrass => Get("tall_grass", NatureArt.TallGrass, repeat: true);
 
     /// <summary>A small clump of grass for scattering over lawns.</summary>
-    public static Texture2D GrassTuft => Get("grass_tuft", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        for (int i = 0; i < 12; i++)
-        {
-            float x0 = 16 + (i - 6) * 1.5f;
-            float lean = (i - 6) * 0.45f;
-            int h = 12 + (int)(R(i, 0, 17) * 12);
-            for (int y = 0; y < h; y++)
-            {
-                float t = y / (float)h;
-                int px = (int)(x0 + lean * t * 6f);
-                var col = t < 0.4f ? Rgb(64, 150, 80) : t < 0.8f ? Rgb(100, 196, 104) : Rgb(170, 234, 140);
-                c.Set(px, 31 - y, col);
-            }
-        }
-        return c;
-    }, repeat: false);
+    public static Texture2D LawnTuft => Get("lawn_tuft", NatureArt.LawnTuft, repeat: false);
 
-    /// <summary>A cluster of white (and the odd red) flowers on stems, like Platinum's flower beds.</summary>
-    public static Texture2D FlowerTuft => Get("flower_tuft", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        var stem = Rgb(74, 160, 80);
-        var spots = new[] { (8, 12, 0), (17, 8, 1), (24, 14, 2), (13, 18, 3) };
-        foreach (var (fx, fy, i) in spots)
-        {
-            c.Line(fx, fy + 2, fx + (i % 2 == 0 ? 1 : -1), 31, stem);
-            bool red = i == 1;
-            var petal = red ? Rgb(238, 84, 96) : Rgb(252, 252, 252);
-            var shade = red ? Rgb(190, 56, 70) : Rgb(200, 216, 238);
-            c.FlatEllipse(fx + 0.5f, fy + 0.5f, 3.2f, 3.2f, petal);
-            c.Set(fx, fy + 2, shade); c.Set(fx + 1, fy + 2, shade); c.Set(fx + 2, fy + 1, shade);
-            c.Rect(fx, fy, 2, 2, Rgb(250, 204, 70));
-        }
-        c.FlatEllipse(12, 28, 6, 3, stem);
-        c.FlatEllipse(22, 29, 5, 2.5f, stem);
-        return c;
-    }, repeat: false);
+    /// <summary>Three flowers side by side (white, red, yellow), one frame each.</summary>
+    public static Texture2D Flowers => Get("flowers", NatureArt.Flowers, repeat: false);
 
-    public static Texture2D Water => Get("water", () =>
-    {
-        const int s = 64;
-        var c = new PixelCanvas(s, s);
-        var baseCol = Rgb(74, 158, 234);
-        for (int y = 0; y < s; y++)
-            for (int x = 0; x < s; x++)
-            {
-                float n = MathF.Sin(x * 0.2f + MathF.Sin(y * 0.15f) * 2f) * 0.5f + MathF.Sin(y * 0.33f + x * 0.05f) * 0.5f;
-                c.Set(x, y, MeshBuilder.Scale(baseCol, 0.94f + n * 0.06f));
-            }
-        for (int i = 0; i < 26; i++)
-        {
-            int wx = (int)(R(i, 0, 19) * s), wy = (int)(R(i, 1, 19) * s);
-            int len = 4 + (int)(R(i, 2, 19) * 6);
-            for (int k = 0; k < len; k++)
-            {
-                int x = (wx + k) % s;
-                int y = (wy + (k == 0 || k == len - 1 ? 1 : 0)) % s;
-                c.Set(x, y, Rgb(176, 224, 252));
-                c.Set(x, (y + 1) % s, Rgb(58, 132, 214));
-            }
-        }
-        return c;
-    }, repeat: true);
+    public static Texture2D LedgeFace => Get("ledge_face", NatureArt.LedgeFace, repeat: true);
+
+    public static Texture2D Rock => Get("rock", NatureArt.Rock, repeat: true);
 
     /// <summary>Battle meadow and platform tops are smooth, filtered textures (see <see cref="SoftTextures"/>).</summary>
     public static Texture2D Meadow => SoftTextures.Meadow;

@@ -21,7 +21,13 @@ public enum TileType
     Floor,
     Signpost,
     PC,
-    RoofGreen
+    RoofGreen,
+
+    // Ground kinds beyond lawn and path (drawn by PixelGround; plan 01 places them)
+    Sand,
+    Dirt,
+    Snow,
+    CaveFloor
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>
