@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_NOLOGO: 1
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore
+        run: dotnet restore PokemonPlatinum.sln
+
+      - name: Build
+        run: dotnet build PokemonPlatinum.sln --no-restore -c Release
+
+      # The screenshot harness is not in the solution, so build it on its own
+      # to catch engine renames that break it.
+      - name: Build ShotHarness
+        run: dotnet build tools/ShotHarness -c Release
+
+      - name: Test
+        run: dotnet test PokemonPlatinumTests --no-build -c Release --logger "console;verbosity=normal"
