@@ -41,6 +41,7 @@
 ### D1 · Data pipeline
 `tools/DataImporter`, the JSON schema, runtime loaders; import species 1–493 (stats, types, abilities as data only, learnsets, evolutions, Pokédex text) and all Generation 4 moves (power, accuracy, PP, type, category, priority, target, flags, effect id). Keep the 23 existing species behaving the same. Change the model test to "every species has a model, hand-built or generated", and keep a list of species that must be hand-built.
 **Done when** 493 species load, all tests pass and the game plays as before.
+*Progress:* the runtime loaders and file formats are in (`GameDataFiles`, `docs/data-files.md`); the 23 species, 45 moves, 18 items and 10 maps moved from C# into `PokemonPlatinumEngine/Data/*.json` unchanged. Still to do: `tools/DataImporter` and the full import. Learnsets name three moves that don't exist yet (Aqua Jet, Headbutt, Synthesis; they fall back to Tackle); `DataFileTests` pins that list.
 
 ### D2 · Move effects
 Table-driven effects: first the common ones (status, stat stages, multi-hit, recoil, draining, fixed and level damage, one-hit KOs, priority, two-turn, trapping, weather, screens, healing, protection, switching moves), then the rest of Generation 4's moves. Unit tests per effect family. Probably two sessions.

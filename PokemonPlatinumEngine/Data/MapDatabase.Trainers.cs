@@ -10,7 +10,6 @@ public static partial class MapDatabase
     {
         get
         {
-            if (Maps.Count == 0) Initialize();
             return Maps.Values.SelectMany(m => m.NPCs).Where(n => n.IsTrainer && n.TrainerData != null);
         }
     }

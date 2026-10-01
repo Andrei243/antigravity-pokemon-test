@@ -21,6 +21,7 @@ public class ItemData
     public ItemPocket Pocket { get; set; }
     public ItemEffectType EffectType { get; set; }
     public int EffectValue { get; set; } // e.g. 20 HP, 50 HP, or Ball catch multiplier * 10
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public StatusCondition HealsStatus { get; set; } = StatusCondition.None;
     public int Price { get; set; } = 200;
     public bool CanUseInBattle { get; set; } = true;
