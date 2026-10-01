@@ -110,7 +110,7 @@ public class DataFileTests
     {
         MapDatabase.Initialize();
         var names = MapDatabase.MapNames.ToList();
-        Assert.Equal(10, names.Count);
+        Assert.Equal(15, names.Count);
         Assert.Contains("TwinleafTown", names);
         Assert.Contains("PlayerHouse", names);
 

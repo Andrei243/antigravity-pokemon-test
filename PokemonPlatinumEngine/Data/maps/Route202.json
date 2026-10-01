@@ -29,7 +29,7 @@
     "T..wwwwwwwww..::..wwwwwwwww..T",
     "T..wwwwwwwww..::..wwwwwwwww..T",
     "T.............::.............T",
-    "T.............::.............T",
+    "T............S::.............T",
     "T.............::.............T",
     "T.............::.............T",
     "TTTTTTTTTTTTTT::TTTTTTTTTTTTTT"
@@ -57,7 +57,7 @@
     "#............................#",
     "#............................#",
     "#............................#",
-    "#............................#",
+    "#............#...............#",
     "#............................#",
     "#............................#",
     "##############..##############"
@@ -79,9 +79,31 @@
       "targetX": 15,
       "targetY": 1,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 0,
+      "targetMap": "JubilifeCity",
+      "targetX": 19,
+      "targetY": 32,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 0,
+      "targetMap": "JubilifeCity",
+      "targetX": 20,
+      "targetY": 32,
+      "targetFacing": "Up"
     }
   ],
-  "signboards": [],
+  "signboards": [
+    {
+      "x": 13,
+      "y": 22,
+      "text": "Route 202\nNorth: Jubilife City | South: Sandgem Town"
+    }
+  ],
   "npcs": [
     {
       "id": "trainer_natalie",

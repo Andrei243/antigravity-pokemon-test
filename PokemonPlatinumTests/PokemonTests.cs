@@ -35,6 +35,43 @@ public class PokemonTests
     }
 
     [Fact]
+    public void TestRoute202LeadsToJubilifeCity()
+    {
+        MapDatabase.Initialize();
+
+        var route = MapDatabase.Get("Route202");
+        var north = route.GetWarpAt(14, 0);
+        Assert.NotNull(north);
+        Assert.Equal("JubilifeCity", north!.TargetMap);
+
+        var city = MapDatabase.Get("JubilifeCity");
+        var south = city.GetWarpAt(north.TargetX, north.TargetY + 1);
+        Assert.NotNull(south);
+        Assert.Equal(("Route202", 14, 1), (south!.TargetMap, south.TargetX, south.TargetY));
+
+        // Jubilife has its own Center and Mart, recognised as such in the field
+        var buildings = MapStructures.FindBuildings(city);
+        Assert.Contains(buildings, b => b.Kind == BuildingKind.PokemonCenter && b.Doors.Contains((25, "JubilifePokemonCenter")));
+        Assert.Contains(buildings, b => b.Kind == BuildingKind.PokeMart && b.Doors.Contains((32, "JubilifePokeMart")));
+        Assert.Contains(buildings, b => b.Doors.Contains((7, "TrainersSchool")));
+        Assert.Contains(buildings, b => b.Doors.Contains((26, "PoketchCompany")));
+
+        // Leaving the Center puts you back in Jubilife, not Sandgem
+        var exit = MapDatabase.Get("JubilifePokemonCenter").Warps.Single();
+        Assert.Equal(("JubilifeCity", 25, 27), (exit.TargetMap, exit.TargetX, exit.TargetY));
+        Assert.Contains(MapDatabase.Get("JubilifePokeMart").NPCs, n => n.IsPokeMartClerk && n.DialogLines[0].Contains("Jubilife"));
+
+        // The routes beyond aren't built yet: every road out of the city is closed off short of the edge
+        foreach (var (x, y) in new[] { (19, 0), (20, 0), (0, 16), (0, 17), (39, 16), (39, 17) })
+        {
+            Assert.Null(city.GetWarpAt(x, y));
+        }
+        Assert.False(city.IsWalkable(19, 1) || city.IsWalkable(20, 1), "the road to Route 204 should be closed");
+        Assert.False(city.IsWalkable(1, 16) || city.IsWalkable(1, 17), "the gate to Route 218 should be closed");
+        Assert.False(city.IsWalkable(38, 16) || city.IsWalkable(38, 17), "the road to Route 203 should be closed");
+    }
+
+    [Fact]
     public void TestTypeEffectivenessMatrix()
     {
         // Water -> Fire = 2.0x
