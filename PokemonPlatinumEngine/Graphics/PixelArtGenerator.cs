@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Raylib_cs;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Graphics;
 
@@ -38,6 +39,57 @@ public static class PixelArtGenerator
     /// <summary>2D pixel-art figure of a character (the Trainer Card portrait); the field uses the 3D models.</summary>
     public static Texture2D GetNpcSprite(string npcType, Direction dir) =>
         Cached($"npc_{npcType}_{(int)dir}", () => CharacterArt.DrawFrame(npcType, dir, 0).ToTexture());
+
+    /// <summary>
+    /// 40x40 icon of an item (20x20 art at 2x), like the bag icons of the main games: the ball itself for Poké
+    /// Balls, a spray bottle for medicine (its colour says which), a star for a Revive, a pouch for anything else.
+    /// </summary>
+    public static Texture2D GetItemIcon(ItemData item) => item.Pocket == ItemPocket.PokeBalls
+        ? GetBallTexture(item.Name)
+        : Cached($"item_{item.Name}", () => ItemIcon(item).ToTexture(upscale: 2));
+
+    /// <summary>The 20x20 art of a non-ball item's icon.</summary>
+    internal static PixelCanvas ItemIcon(ItemData item)
+    {
+        var c = new PixelCanvas(20, 20);
+        var white = new Color(244, 244, 248, 255);
+        if (item.EffectType == ItemEffectType.Revive)
+        {
+            // A four-pointed crystal
+            var gold = new Color(250, 204, 70, 255);
+            c.Poly(gold, 10, 2, 13, 7, 18, 10, 13, 13, 10, 18, 7, 13, 2, 10, 7, 7);
+            c.Disc(9, 9, 1.6f, new Color(255, 244, 190, 255));
+        }
+        else if (item.EffectType is ItemEffectType.HealHP or ItemEffectType.HealStatus or ItemEffectType.FullRestore)
+        {
+            Color body = item.Name switch
+            {
+                "Potion" => new Color(168, 98, 214, 255),
+                "Super Potion" => new Color(238, 120, 66, 255),
+                "Hyper Potion" => new Color(232, 86, 150, 255),
+                "Max Potion" => new Color(70, 134, 226, 255),
+                "Full Restore" => new Color(70, 190, 110, 255),
+                "Antidote" => new Color(226, 196, 70, 255),
+                "Paralyze Heal" => new Color(236, 214, 80, 255),
+                _ => new Color(96, 196, 214, 255)
+            };
+            // Spray bottle: body, white label band, grey neck and a nozzle pointing left
+            c.Box(6, 8, 9, 10, body);
+            c.Rect(6, 11, 9, 3, white);
+            c.Box(8, 5, 5, 3, new Color(170, 176, 192, 255));
+            c.Box(7, 2, 7, 3, new Color(206, 210, 222, 255));
+            c.Rect(4, 3, 3, 1, new Color(170, 176, 192, 255));
+        }
+        else
+        {
+            var cloth = new Color(196, 150, 96, 255);
+            c.Ball(10, 12, 7, 6.5f, cloth);
+            c.Box(8, 3, 4, 4, cloth);
+            c.Rect(7, 7, 6, 1, new Color(120, 84, 52, 255));
+        }
+        c.OutlinePass(innerSeams: false);
+        return c;
+    }
 
     /// <summary>40x40 ball (20x20 art at 2x).</summary>
     public static Texture2D GetBallTexture(string ballName) => Cached($"ball_{ballName}", () =>

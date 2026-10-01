@@ -1,15 +1,20 @@
 using System;
-using System.Numerics;
-using Raylib_cs;
 using PokemonPlatinumEngine.Core;
-using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>
+/// The Pokémon menu: the team as two columns of cards, reordering (Shift picks a Pokémon up, A puts it down),
+/// and the summary of the chosen Pokémon, where up and down step through the team.
+/// </summary>
 public class PartyScreen
 {
+    private const float AppearTime = 0.45f, SummaryAppearTime = 0.25f;
+
+    private float openAge, summaryAge;
+
     public int SelectedIndex { get; set; } = 0;
     public int? SwapSourceIndex { get; set; } = null;
     public bool ShowSummary { get; set; } = false;
@@ -21,6 +26,7 @@ public class PartyScreen
         SelectedIndex = 0;
         SwapSourceIndex = null;
         ShowSummary = false;
+        openAge = 0f;
     }
 
     public void Close()
@@ -30,9 +36,26 @@ public class PartyScreen
         ShowSummary = false;
     }
 
-    public void Update(Party party)
+    /// <summary>Moves the cursor over the two-column list, or to the next Pokémon while the summary is open.</summary>
+    public void MoveCursor(int dx, int dy, int count)
+    {
+        if (count <= 0 || (dx == 0 && dy == 0)) return;
+        int next = ShowSummary
+            ? ((SelectedIndex + (dy != 0 ? dy : dx)) % count + count) % count
+            : UiNav.Grid(SelectedIndex, count, 2, dx, dy);
+        if (next == SelectedIndex) return;
+        SelectedIndex = next;
+        AudioManager.PlaySound("cursor");
+    }
+
+    public void Update(Party party, float dt)
     {
         if (!IsActive) return;
+        openAge += dt;
+        summaryAge += dt;
+
+        int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+        int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
 
         if (ShowSummary)
         {
@@ -41,31 +64,19 @@ public class PartyScreen
                 ShowSummary = false;
                 AudioManager.PlaySound("cancel");
             }
+            else MoveCursor(dx, dy, party.Count);
             return;
         }
 
-        if (InputManager.IsActionPressed(GameAction.Up))
+        if (dx != 0 || dy != 0)
         {
-            SelectedIndex = (SelectedIndex - 1 + party.Count) % party.Count;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Down))
-        {
-            SelectedIndex = (SelectedIndex + 1) % party.Count;
-            AudioManager.PlaySound("cursor");
+            MoveCursor(dx, dy, party.Count);
         }
         else if (InputManager.IsActionPressed(GameAction.Cancel))
         {
-            if (SwapSourceIndex.HasValue)
-            {
-                SwapSourceIndex = null;
-                AudioManager.PlaySound("cancel");
-            }
-            else
-            {
-                Close();
-                AudioManager.PlaySound("cancel");
-            }
+            if (SwapSourceIndex.HasValue) SwapSourceIndex = null;
+            else Close();
+            AudioManager.PlaySound("cancel");
         }
         else if (InputManager.IsActionPressed(GameAction.Confirm))
         {
@@ -73,15 +84,15 @@ public class PartyScreen
             {
                 party.Swap(SwapSourceIndex.Value, SelectedIndex);
                 SwapSourceIndex = null;
-                AudioManager.PlaySound("select");
             }
             else
             {
                 ShowSummary = true;
-                AudioManager.PlaySound("select");
+                summaryAge = 0f;
             }
+            AudioManager.PlaySound("select");
         }
-        else if (InputManager.IsActionPressed(GameAction.Run))
+        else if (InputManager.IsActionPressed(GameAction.Run) && !SwapSourceIndex.HasValue)
         {
             SwapSourceIndex = SelectedIndex;
             AudioManager.PlaySound("select");
@@ -92,77 +103,14 @@ public class PartyScreen
     {
         if (!IsActive) return;
 
-        if (!ShowSummary || SelectedIndex >= party.Count)
+        if (ShowSummary && SelectedIndex < party.Count)
         {
-            ModernUi.DrawParty(screenWidth, screenHeight, party, SelectedIndex, SwapSourceIndex);
-            return;
+            ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f));
         }
-
-        Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Palette.UiBackground);
-
-        // Header
-        RenderHelper.DrawPlatinumPanel(30, 24, screenWidth - 60, 56, Palette.UiPanelBg);
-        RenderHelper.DrawTextWithShadow("POKÉMON PARTY", 54, 36, 26, Palette.UiAccent);
-        RenderHelper.DrawTextWithShadow("Z: Summary   |   Shift / X: Move Slot   |   Esc: Back", screenWidth - 520, 40, 18, Palette.TextDark);
-
-        // The summary keeps its older layout until G10 rebuilds it
-        DrawPokemonSummary(screenWidth, screenHeight, party.Members[SelectedIndex]);
-    }
-
-    private static void DrawPokemonSummary(int screenWidth, int screenHeight, Pokemon pkmn)
-    {
-        int panelW = screenWidth - 80;
-        int panelH = screenHeight - 120;
-        int px = 40, py = 90;
-
-        RenderHelper.DrawPlatinumPanel(px, py, panelW, panelH, Palette.UiPanelBg);
-
-        // Big HD Sprite Preview (3.2x scale)
-        var sprite = PixelArtGenerator.GetPokemonSprite(pkmn.Species.Name, isBack: false);
-        Raylib.DrawTextureEx(sprite, new Vector2(px + 60, py + 60), 0f, 3.0f, Color.White);
-
-        // Basic Info
-        int tx = px + 520;
-        RenderHelper.DrawTextWithShadow($"No. {pkmn.Species.DexNumber:D3}   {pkmn.DisplayName}", tx, py + 40, 34, Palette.UiAccent);
-        RenderHelper.DrawTextWithShadow($"The {pkmn.Species.Category} Pokémon", tx, py + 86, 22, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"Nature: {pkmn.Nature}   |   Level: {pkmn.Level}", tx, py + 120, 22, Palette.TextDark);
-
-        // Types
-        RenderHelper.DrawTypeBadge(tx, py + 160, pkmn.Species.PrimaryType, 110, 34);
-        if (pkmn.Species.SecondaryType.HasValue)
+        else
         {
-            RenderHelper.DrawTypeBadge(tx + 130, py + 160, pkmn.Species.SecondaryType.Value, 110, 34);
+            ModernUi.DrawParty(screenWidth, screenHeight, party, SelectedIndex, SwapSourceIndex, Math.Clamp(openAge / AppearTime, 0f, 1f));
         }
-
-        // Stats Box
-        int statsY = py + 220;
-        int statsW = panelW - 560;
-        RenderHelper.DrawPlatinumPanel(tx, statsY, statsW, 180, Palette.UiBackground);
-        RenderHelper.DrawTextWithShadow($"HP:        {pkmn.CurrentHP} / {pkmn.MaxHP}", tx + 32, statsY + 24, 24, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"ATTACK:    {pkmn.Attack}", tx + 32, statsY + 74, 24, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"DEFENSE:   {pkmn.Defense}", tx + 32, statsY + 124, 24, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"SP. ATK:   {pkmn.SpAttack}", tx + 460, statsY + 24, 24, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"SP. DEF:   {pkmn.SpDefense}", tx + 460, statsY + 74, 24, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"SPEED:     {pkmn.Speed}", tx + 460, statsY + 124, 24, Palette.TextDark);
-
-        // Moves Box
-        int movesY = py + 430;
-        RenderHelper.DrawPlatinumPanel(px + 40, movesY, panelW - 80, 240, Palette.UiBackground);
-        RenderHelper.DrawTextWithShadow("KNOWN MOVES:", px + 64, movesY + 20, 24, Palette.UiAccent);
-
-        for (int m = 0; m < pkmn.Moves.Count; m++)
-        {
-            var move = pkmn.Moves[m];
-            int col = m % 2;
-            int row = m / 2;
-            int mx = px + 64 + col * 860;
-            int my = movesY + 68 + row * 76;
-
-            RenderHelper.DrawTypeBadge(mx, my, move.Type, 96, 30);
-            RenderHelper.DrawTextWithShadow(move.Name, mx + 114, my + 2, 24, Palette.TextDark);
-            RenderHelper.DrawTextWithShadow($"PP {move.CurrentPP}/{move.MaxPP}", mx + 420, my + 4, 22, Palette.TextDark);
-        }
-
-        RenderHelper.DrawTextWithShadow("Press Z, Space, or Esc to return", px + panelW - 380, py + panelH - 36, 20, Color.Gray);
     }
 }

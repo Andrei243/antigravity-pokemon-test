@@ -7,21 +7,29 @@ namespace PokemonPlatinumEngine.Data;
 
 public static partial class MapDatabase
 {
-    private static readonly Dictionary<string, Map> Maps = new(System.StringComparer.OrdinalIgnoreCase);
+    // Replaced as a whole by Initialize, never changed in place, so a reader on another thread (tests run their
+    // classes in parallel) always sees a complete set of maps
+    private static Dictionary<string, Map> Maps = new(System.StringComparer.OrdinalIgnoreCase);
+    private static readonly object InitializeLock = new();
 
     public static void Initialize()
     {
-        Maps.Clear();
-        Maps["TwinleafTown"] = BuildTwinleafTown();
-        Maps["Route201"] = BuildRoute201();
-        Maps["LakeVerity"] = BuildLakeVerity();
-        Maps["SandgemTown"] = BuildSandgemTown();
-        Maps["Route202"] = BuildRoute202();
-        Maps["PlayerHouse"] = BuildPlayerHouse();
-        Maps["RivalHouse"] = BuildRivalHouse();
-        Maps["PokemonCenter"] = BuildPokemonCenter();
-        Maps["PokeMart"] = BuildPokeMart();
-        Maps["RowanLab"] = BuildRowanLab();
+        lock (InitializeLock)
+        {
+            Maps = new Dictionary<string, Map>(System.StringComparer.OrdinalIgnoreCase)
+            {
+                ["TwinleafTown"] = BuildTwinleafTown(),
+                ["Route201"] = BuildRoute201(),
+                ["LakeVerity"] = BuildLakeVerity(),
+                ["SandgemTown"] = BuildSandgemTown(),
+                ["Route202"] = BuildRoute202(),
+                ["PlayerHouse"] = BuildPlayerHouse(),
+                ["RivalHouse"] = BuildRivalHouse(),
+                ["PokemonCenter"] = BuildPokemonCenter(),
+                ["PokeMart"] = BuildPokeMart(),
+                ["RowanLab"] = BuildRowanLab()
+            };
+        }
     }
 
     public static Map Get(string name)

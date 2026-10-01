@@ -179,13 +179,37 @@ The interface is always drawn at 4K; the presets change only the 3D scenes. A fr
 
 ### Shapes and components
 
-- Everything is drawn by `UiShapes` (signed-distance rounded rectangles anti-aliased over one real pixel, vertical gradients, borders, slanted sides and blurred shadows). No raylib rounded rectangles in the new UI.
+- Everything is drawn by `UiShapes` (signed-distance rounded rectangles anti-aliased over one real pixel, vertical gradients, borders, slanted sides and blurred shadows; rings, round-ended lines and triangles for icons and arrows). No raylib rounded rectangles, triangles or lines in the kit: their edges are jagged.
+- The components live in `ModernUi` (`Panel`, `Card`, `Button`, `HpBar`, `Bar`, `ExpBar`, `TypePill`, `StatusPill`, `Tag`, `Portrait`, `Hints`, `Prompt`, `Badge`, `Dim`); a screen composes these and adds no drawing of its own beyond text.
 - Panels: radius 22–34, 4 px Frame border, shadow blur 22 at offset (0, 8).
+- Cards (anything that can be chosen: party slots, option rows, title entries): a panel whose selected state is a 6 px Selection border and a glow; gold instead while a Pokémon is being moved. An empty slot is a faint white outline.
+- Pills: types in the type's colour, statuses as three letters (PSN, BRN, PAR, SLP, FRZ, FNT) in the status colour, short tags ("IN BATTLE") in a token colour. Gender is a vector mark after the name, blue ♂ or pink ♀.
+- Icons (`UiIcons`): our own one-colour signs built from the same shapes, white on a coloured chip; on a selected row the chip turns white and the sign takes the colour.
+- Key hints: a white key cap and a label on a translucent pill, right-aligned at the top of a screen (on a Frame-coloured pill when they sit on a light panel).
+- Prompts: a question over the dimmed screen, a muted line of explanation, and a row of buttons; the safe answer comes first and is the one highlighted.
 - Buttons: pills; gradient 18 % lighter at the top to 12 % darker at the bottom, border 35 % darker, a soft shine over the top 38 %. Selected: a 6 px white ring and a glow in the button's colour.
 - HP boxes: slanted sides (skew ±0.2), name + gender left, level right, HP bar under; the player's box adds HP numbers and an EXP line.
 - HP bar: pill with an amber "HP" tag 2.3× its height.
-- Dialogue: wide panel near the bottom, speaker in a red pill tag on its top edge, a bobbing red arrow when the line is complete.
+- Dialogue: wide panel near the bottom, speaker in a red pill tag on its top edge (so the line itself doesn't repeat the name), a bobbing red arrow when the line is complete.
 - Layout grid: 1920×1080 layout units (drawn at 4K), 48–64 margins, 24–32 gutters. Battle: opponent box top-left, player box right above the commands, prompt bottom-left, a large FIGHT button with BAG, POKÉMON and RUN stacked beside it.
+
+### Field menus and notices
+
+- **Start menu** (`StartMenu`): a panel 440 wide on the right that slides in. Platinum's order (Pokédex, Pokémon, Bag, the player's name, Save, Options), then CLOSE, then QUIT GAME under a rule. Each row has its icon on a chip; the selected row is a Selection-coloured pill with white text.
+- **Leaving the game**: QUIT GAME asks "Quit the game?" with KEEP PLAYING (highlighted), SAVE AND QUIT and QUIT. The title menu has a QUIT entry too, with no question because nothing can be lost there.
+- **Location sign** (`LocationSign`): on arriving outdoors (entering a town or route, stepping out of a building) a slanted plate with the place's name drops in at the top left, holds 2.4 s and lifts away. Its colour bar says what kind of place it is: green for routes, blue for lakes, gold for towns and cities. Rooms have no sign.
+- **Notices** (`Toast`): one line in white on a dark pill at the top centre ("Game saved."), 2.6 s; a notice that replaces another does not slide in again.
+
+### Battle panels
+
+- **Switching**: the field dims and the team appears as six cards, three to a row, under a one-line question. Each card has the icon, name, level, HP bar and numbers, and a tag: IN BATTLE, a status, or FNT (the card is greyed). The player's HP box is hidden behind the cards.
+- **Bag**: the same shape as the move menu: four item cards (pixel icon, name, ×count; greyed at ×0) and a panel describing the chosen one. Item icons are 20×20 pixel art shown at 3×: the ball itself, a spray bottle whose colour says which medicine, a crystal for a Revive.
+- **Trainer's team**: a dark tray hangs under the opponent's box with a ball for each Pokémon (grey once fainted) and a dot for each empty place.
+- A message that doesn't fit on one line wraps to two.
+
+### Summary
+
+One Pokémon on three panels: on the left its number, level, the 128-px sprite at 3× on a pale disc, name, category, type pills, nature and experience (points, to next level, bar); top right the six stats, each with its value and a bar whose length and colour follow the species' base stat (red under 50, amber under 80, green under 110, teal above; HP shows current / max in the HP colours); bottom right the moves as rows with type pill, name, category, power, accuracy and PP. Up and down step through the team.
 
 ### Pokémon in menus
 
@@ -206,14 +230,16 @@ The order follows the games' opening: a notice, a short film, the legendary Pok�
 2. **Journey** (3 × 3.6 s): slow pans over the field itself at different times of day (Twinleaf Town in the morning, Route 201 by day, Sandgem Town at night with its windows lit), between cinema bars 120 units tall, dipping to black between shots. They are rendered by the field renderer, so they always match the game.
 3. **Reveal** (3.2 s): fade up from black on the void, a white flash, then Giratina and the lettering.
 4. **Title**: Giratina (the 3D model, as in battle) hovers in a dark violet void that deepens to crimson, among drifting stones and rising motes. It stays a **shadow** against the glow behind it, picked out by its ink lines; it is never fully lit. Lettering: "Pokémon" in cream over "PLATINUM" in a white-to-silver gradient (`UiFonts.Display`, Nunito Black) with a band of light sweeping across every 5.5 s, a thin rule and "A FAN REMAKE". It is our own lettering, not the games' logo. A pulsing "PRESS Z OR ENTER" sits under Giratina, and a one-line disclaimer at the bottom edge.
-5. **Menu**: the lettering shrinks to the top left, Giratina slides left and cards slide in on the right: CONTINUE (only with a save), NEW GAME, OPTIONS. Standard panels; the selected card has the Selection border and glow.
+5. **Menu**: the lettering shrinks to the top left, Giratina slides left and cards slide in on the right: CONTINUE (only with a save), NEW GAME, OPTIONS, QUIT. Standard cards.
    - **CONTINUE** shows the save at a glance: where it was saved (right of the heading), PLAYER, TIME PLAYED (hours:minutes), POKÉDEX (caught), BADGES n / 8 with the eight medallions, and the PARTY as 2D icons.
    - **NEW GAME** with a save present asks first ("Start a new game?"), with No selected by default.
 6. **Leaving**: 0.8 s fade to black, then the field fades in.
 
-### Motion (targets for G3)
+### Motion (`UiMotion`, `UiReveal`)
 
-Boxes slide in with an ease-out over 0.2–0.35 s; bars drain instead of jumping; selection moves instantly and glows; nothing bounces except Pokémon icons and the advance arrow.
+- Things arrive with an ease-out over 0.2–0.35 s and leave faster with an ease-in (0.1–0.15 s): the start menu and prompts slide, the party's cards rise one after another, the summary's panels slide in from the sides, HP boxes slide in with the Pokémon.
+- Bars drain instead of jumping. Selection moves instantly and glows. Nothing bounces except Pokémon icons and the advance arrow.
+- Cursors in grids (`UiNav.Grid`) wrap along rows and columns and skip empty slots.
 
 ## Areas (targets)
 
@@ -254,11 +280,11 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G2
+## Known gaps after G3
 
 - Building, prop and interior textures are still the older pixel art with light per-texel variation (G5).
 - Field water still uses the older water texture and shader, and reads too bright at night (G4).
-- Start menu, bag, Pokédex, summary, shop, PC and the battle's switch/bag panels keep their old layouts with the new font (G3, G10).
+- Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
 - Materials (specular, emission per surface kind) wait for models that carry material ids: the SDF kit in G6 and G7.
 - Street lamps and other light sources besides windows come with the props in G5; rooms don't change with the hour yet.

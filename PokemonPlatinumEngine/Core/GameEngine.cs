@@ -67,6 +67,8 @@ public class GameEngine
     private readonly ShopScreen shopScreen = new();
     private readonly PCScreen pcScreen = new();
     private readonly OptionsScreen optionsScreen = new();
+    private readonly LocationSign locationSign = new();
+    private readonly Toast toast = new();
 
     // The opening and title menu, the save it offers to continue, and where the options screen returns to
     private TitleScreen titleScreen = new(null);
@@ -94,9 +96,9 @@ public class GameEngine
     private bool isFadingOut = true;
     private Action? midTransitionCallback;
 
-    // Toast Notifications
-    private string notificationMessage = "";
-    private float notificationTimer = 0f;
+    /// <summary>Set when the player chose to leave the game from a menu; the main loop closes the window.</summary>
+    public bool QuitRequested { get; private set; }
+
 
     public GameEngine(GameSettings? settings = null)
     {
@@ -164,7 +166,9 @@ public class GameEngine
     {
         gameStarted = true;
         trainersLookOnArrival = true;
+        startMenu.PlayerName = playerName;
         AudioManager.PlayBGM(currentMap.BgmTrack);
+        AnnounceLocation();
 
         stateBeforeTransition = GameState.Overworld;
         stateAfterTransition = GameState.Overworld;
@@ -277,7 +281,7 @@ public class GameEngine
             PlayTimeSeconds = playTime
         };
         SaveManager.SaveGame(save);
-        ShowNotification("Game saved successfully!");
+        ShowNotification("Game saved.");
         AudioManager.PlaySound("select");
     }
 
@@ -286,10 +290,11 @@ public class GameEngine
         if (gameStarted) playTime += dt;
         AudioManager.Update(dt);
 
-        if (notificationTimer > 0f)
-        {
-            notificationTimer -= dt;
-        }
+        toast.Update(dt);
+        startMenu.Animate(dt);
+
+        // The location sign waits while a fade or another screen covers the field
+        if (currentState is GameState.Overworld or GameState.Dialogue) locationSign.Update(dt);
 
         // Global Mute Toggle (M)
         if (Raylib.IsKeyPressed(KeyboardKey.M))
@@ -316,6 +321,9 @@ public class GameEngine
                         optionsReturnState = GameState.Title;
                         currentState = GameState.Options;
                         optionsScreen.Open();
+                        break;
+                    case TitleChoice.Quit:
+                        QuitRequested = true;
                         break;
                 }
                 break;
@@ -350,7 +358,7 @@ public class GameEngine
                 }
                 break;
             case GameState.PartyMenu:
-                partyScreen.Update(playerParty);
+                partyScreen.Update(playerParty, dt);
                 if (!partyScreen.IsActive) currentState = GameState.Overworld;
                 break;
             case GameState.BagMenu:
@@ -423,38 +431,7 @@ public class GameEngine
         // Check Start Menu
         if (startMenu.IsActive)
         {
-            string? choice = startMenu.Update();
-            if (choice != null)
-            {
-                switch (choice)
-                {
-                    case "POKÉDEX":
-                        currentState = GameState.PokedexMenu;
-                        pokedexScreen.Open();
-                        break;
-                    case "POKÉMON":
-                        currentState = GameState.PartyMenu;
-                        partyScreen.Open();
-                        break;
-                    case "BAG":
-                        currentState = GameState.BagMenu;
-                        bagScreen.Open();
-                        break;
-                    case "TRAINER":
-                        currentState = GameState.TrainerCard;
-                        trainerCardScreen.Open();
-                        break;
-                    case "SAVE":
-                        SaveCurrentGame();
-                        break;
-                    case "OPTIONS":
-                        optionsReturnState = GameState.Overworld;
-                        currentState = GameState.Options;
-                        optionsScreen.Open();
-                        break;
-                }
-                startMenu.Close();
-            }
+            HandleStartMenuChoice(startMenu.Update());
             return;
         }
 
@@ -591,7 +568,62 @@ public class GameEngine
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
             AudioManager.PlayBGM(currentMap.BgmTrack);
+            AnnounceLocation();
         });
+    }
+
+    /// <summary>
+    /// Shows the place's name on arriving outdoors, as the games do on entering a town or route or stepping out
+    /// of a building. Rooms have no sign.
+    /// </summary>
+    private void AnnounceLocation()
+    {
+        if (currentMap.IsIndoors) locationSign.Hide();
+        else locationSign.Show(currentMap.DisplayName);
+    }
+
+    private void HandleStartMenuChoice(StartMenuChoice choice)
+    {
+        switch (choice)
+        {
+            case StartMenuChoice.None:
+                return;
+            case StartMenuChoice.Pokedex:
+                currentState = GameState.PokedexMenu;
+                pokedexScreen.Open();
+                break;
+            case StartMenuChoice.Pokemon:
+                currentState = GameState.PartyMenu;
+                partyScreen.Open();
+                break;
+            case StartMenuChoice.Bag:
+                currentState = GameState.BagMenu;
+                bagScreen.Open();
+                break;
+            case StartMenuChoice.Trainer:
+                currentState = GameState.TrainerCard;
+                trainerCardScreen.Open();
+                break;
+            case StartMenuChoice.Options:
+                optionsReturnState = GameState.Overworld;
+                currentState = GameState.Options;
+                optionsScreen.Open();
+                break;
+            case StartMenuChoice.Save:
+                SaveCurrentGame();
+                startMenu.Close();
+                return;
+            case StartMenuChoice.SaveAndQuit:
+                SaveCurrentGame();
+                QuitRequested = true;
+                return;
+            case StartMenuChoice.Quit:
+                QuitRequested = true;
+                return;
+        }
+
+        // A full screen takes over: the menu is gone when the player comes back
+        startMenu.Hide();
     }
 
     private void StartWildBattle(WildEncounterEntry entry)
@@ -683,8 +715,7 @@ public class GameEngine
 
     public void ShowNotification(string message)
     {
-        notificationMessage = message;
-        notificationTimer = 3.0f;
+        toast.Show(message);
     }
 
     public void Draw()
@@ -726,7 +757,8 @@ public class GameEngine
             case GameState.Dialogue:
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
-                startMenu.Draw(VirtualWidth);
+                locationSign.Draw();
+                startMenu.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Battle:
                 DrawBattle();
@@ -769,17 +801,7 @@ public class GameEngine
                 break;
         }
 
-        // Draw Notification Toast (Full HD scaled)
-        if (notificationTimer > 0f)
-        {
-            int toastW = 800;
-            int toastH = 64;
-            int tx = (VirtualWidth - toastW) / 2;
-            int ty = 30;
-
-            RenderHelper.DrawPlatinumPanel(tx, ty, toastW, toastH, Palette.UiAccentSecondary);
-            RenderHelper.DrawTextWithShadow(notificationMessage, tx + 24, ty + 18, 22, Color.White);
-        }
+        toast.Draw(VirtualWidth);
 
         // Draw Fade overlay
         if (currentState == GameState.Transition)
