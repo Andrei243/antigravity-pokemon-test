@@ -1,0 +1,138 @@
+{
+  "name": "RowanLab",
+  "displayName": "Rowan's Pokémon Lab",
+  "bgmTrack": "Twinleaf",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###.....###",
+    "#..#####..#",
+    "#.........#",
+    "##.......##",
+    "##.......##",
+    "#.........#",
+    "##.......##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "LabDesk",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "SandgemTown",
+      "targetX": 7,
+      "targetY": 18,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Prof. Rowan",
+      "npcType": "Rowan",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "dialog": [
+        "Prof. Rowan: Ah, Lucas! Welcome to my research facility.",
+        "Prof. Rowan: The bond between trainers and Pokémon is truly limitless.",
+        "Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

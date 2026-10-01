@@ -41,6 +41,7 @@
 ### D1 · Data pipeline
 `tools/DataImporter`, the JSON schema, runtime loaders; import species 1–493 (stats, types, abilities as data only, learnsets, evolutions, Pokédex text) and all Generation 4 moves (power, accuracy, PP, type, category, priority, target, flags, effect id). Keep the 23 existing species behaving the same. Change the model test to "every species has a model, hand-built or generated", and keep a list of species that must be hand-built.
 **Done when** 493 species load, all tests pass and the game plays as before.
+*Progress:* the runtime loaders and file formats are in (`GameDataFiles`, `docs/data-files.md`); the 23 species, 45 moves, 18 items and 10 maps moved from C# into `PokemonPlatinumEngine/Data/*.json` unchanged. Still to do: `tools/DataImporter` and the full import. Learnsets name three moves that don't exist yet (Aqua Jet, Headbutt, Synthesis; they fall back to Tackle); `DataFileTests` pins that list.
 
 ### D2–D4 · Moved to plan 06
 Move effects, abilities, held items, evolution methods, forms and breeding are now sessions of [plan 06](06-game-mechanics.md): R4–R6 (Platinum's 467 moves), R7 (abilities), R8 (held items and berries), R10 (evolution methods and Platinum's forms; trade evolutions replaced as in decision 4) and R15 (breeding). The numbers D2–D4 stay unused so the later sessions keep theirs.
