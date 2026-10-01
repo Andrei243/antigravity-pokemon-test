@@ -17,6 +17,7 @@ dotnet build PokemonPlatinum.sln
 dotnet test PokemonPlatinumTests
 dotnet test PokemonPlatinumTests --filter "FullyQualifiedName~TestCatchRateFormula"   # one test
 dotnet run --project PokemonPlatinumEngine                                             # play
+dotnet run --project PokemonPlatinumEngine -- --region Sinnoh                         # new games start in Sinnoh instead of Kanto
 dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|flow|menus|look|title|times|sheets] [before dir]
 ```
 
@@ -49,7 +50,9 @@ Tests create `BattleEngine`, `Map`, `Pokemon` and the databases without a window
 
 ### Data
 
-All game data is C# code in `Data/`: `PokemonDatabase` (species, learnsets, evolutions), `MoveDatabase`, `ItemDatabase`, `TypeChart`, and `MapDatabase` (a partial class with one `Build<MapName>()` method per map, interiors in `MapDatabase.Interiors.cs`). Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 and plan 01 · M1–M2 move this data into files.
+All game data is C# code in `Data/`: `PokemonDatabase` (species, learnsets, evolutions), `MoveDatabase`, `ItemDatabase`, `TypeChart`, and `MapDatabase` (a partial class with one `Build<MapName>()` method per map, interiors in `MapDatabase.Interiors.cs`, Kanto in `MapDatabase.Kanto.cs`). Maps are tile grids (`Overworld/Map`: ground layer, overhead layer, solid grid) plus NPCs, props, warps, signboards and wild encounters. NPC behaviour is flag-driven (`IsTrainer`, `IsHealingNurse`, `IsPokeMartClerk`, `IsPCTerminal`, `IsStarterBriefcase`, `IsTransportAttendant`), dispatched in `GameEngine.TryInteract`. Plan 03 · D1 and plan 01 · M1–M2 move this data into files.
+
+`RegionDatabase` chains the regions in generation order: a new game starts in Kanto, and finishing a region's story (its `<Region>HallOfFame` story flag in `StoryProgress`, saved as `StoryFlags`) lets the attendant at its departure map take the player to the next region (Kanto to Johto by boat; later links are `Transport.Undecided` until their region is built). Every map belongs to exactly one region and warps never cross regions. Sinnoh is the fourth region; `--region Sinnoh` or `GameEngine.NewGameRegion` starts there for testing, and saves made in Sinnoh load there.
 
 ### Rendering
 

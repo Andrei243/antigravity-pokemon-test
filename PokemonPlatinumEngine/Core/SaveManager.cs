@@ -27,6 +27,9 @@ public class SaveData
 
     /// <summary>Ids of the trainers already beaten; they don't challenge again.</summary>
     public List<string> DefeatedTrainers { get; set; } = new();
+
+    /// <summary>Story flags set so far, including each region's Hall of Fame (see StoryProgress).</summary>
+    public List<string> StoryFlags { get; set; } = new();
 }
 
 public class SavedPokemonData

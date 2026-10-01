@@ -19,6 +19,8 @@ public static partial class MapDatabase
             Maps = new Dictionary<string, Map>(System.StringComparer.OrdinalIgnoreCase)
             {
                 ["TwinleafTown"] = BuildTwinleafTown(),
+                ["PalletTown"] = BuildPalletTown(),
+                ["PalletPlayerHouse"] = BuildPalletPlayerHouse(),
                 ["Route201"] = BuildRoute201(),
                 ["LakeVerity"] = BuildLakeVerity(),
                 ["SandgemTown"] = BuildSandgemTown(),
