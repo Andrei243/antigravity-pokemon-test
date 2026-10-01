@@ -99,6 +99,17 @@ Per the style guide's layers. Field: soft shadow filtering, fog, the five time-o
 Grow `UI/Kit` and `ModernUi` into the kit: tokens, components and motion from the style guide; then rebuild the start menu, the battle's switch and bag panels, the summary (2D sprites), and polish the dialogue box, battle HUD (animated bars), party screen and options screen. Add the location-name sign shown when entering an area.
 **Done when** those screens use only kit components and pass review in the harness `menus`, `battle` and `look` modes.
 
+**Outcome (2026-10-01).**
+- **Kit**: `UiShapes` gained anti-aliased rings, round-ended lines and triangles (no raylib triangles or lines are left in these screens); `UiIcons` draws the menu icons, gender marks and arrows from them; `UiMotion`/`UiReveal` hold the easing and slide-in timing and `UiNav.Grid` the cursor rules, all free of GPU calls and tested. `ModernUi` is split into parts (shared components, battle, party and summary, field) and now has `Card`, `TypePill`, `StatusPill`, `Tag`, `Portrait`, `Bar`, `ExpBar`, `Hints`, `Prompt` and `Dim`.
+- **Start menu** rebuilt: icon chips, sliding panel, the player's name on the Trainer Card entry, CLOSE, and **QUIT GAME** with a prompt offering to save first. The title menu has QUIT as well. `GameEngine.QuitRequested` ends the main loop, so a full-screen game can be closed from inside.
+- **Battle**: the switch panel (six cards over the dimmed field, grid cursor that skips empty slots) and the bag panel (pixel item icons, description) replace the last old-style panels; a trainer's team shows as balls on a tray under the foe's box; long messages wrap to two lines; status pills and gender marks are kit components.
+- **Summary** rebuilt with the 2D sprite, stat bars, experience and move rows; up and down step through the team. The party cursor now moves over the two columns, and the cards rise into place.
+- **Field**: the location sign on arriving outdoors, notices as a dark pill (the old toast box is gone), dialogue lines no longer repeat the speaker's name.
+- **Options and title** screens draw with the same cards, hints, arrows and prompt.
+- **Also fixed**: `MapDatabase.Initialize` replaced its dictionary in place, which made tests that run in parallel fail now and then; it now swaps in a complete new set.
+- **Frame time on High**: field 6.7 ms, battle 7.1–7.8 ms, title 4.0 ms.
+- **Left for G10**: bag, Pokédex, trainer card, shop, PC and starter choice still use the old `RenderHelper` panels.
+
 ### G4 · Terrain and nature
 Field, in pixel art on the 32-texel grid: sand, dirt, snow and cave ground for `PixelGround`; bevelled ledges and cliffs; tall grass and flowers that sway and part around the player; trees with clean pixel-art bark and leaf textures (no noise); rocks; the water (pixel-art depth bands, shoreline foam, sparkles). Battle: pines and round trees per arena, rocks, water edges in the smooth style.
 **Done when** Twinleaf, Route 201 and Lake Verity look finished.
@@ -146,7 +157,7 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 - [x] G1 Direction, references and style guide (2026-10-01: Sinnoh Diorama; see the style guide)
 - [x] G2 Rendering foundation (2026-10-01: time of day, soft shadows, fog, ambient occlusion, outlines, FXAA, options screen; materials moved to G6/G7)
 - [x] Extra: 4K rendering, full-screen fix, opening and title screen (2026-10-01)
-- [ ] G3 UI kit and core screens
+- [x] G3 UI kit and core screens (2026-10-01: kit components and motion, start menu with quit, battle switch and bag panels, summary, location sign, notices)
 - [ ] G4 Terrain and nature
 - [ ] G5 Buildings, props and interiors
 - [ ] G6 SDF kit and characters

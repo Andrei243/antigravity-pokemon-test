@@ -2,20 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
-using PokemonPlatinumEngine.Battle;
-using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>
-/// The vector interface (prototyped in plan 04 · G1, grown into the UI kit in G3): crisp anti-aliased panels
-/// with soft shadows, Nunito, and Platinum's colour language (red FIGHT, gold BAG, green POKÉMON, blue RUN; light
-/// panels framed in slate). Pokémon appear as 2D pixel sprites, as in the main games. See docs/art/style-guide.md.
+/// The interface kit (plan 04 · G3): crisp anti-aliased panels with soft shadows, Nunito, and Platinum's colour
+/// language (red FIGHT, gold BAG, green POKÉMON, blue RUN; light panels framed in slate). Pokémon appear as 2D
+/// pixel sprites, as in the main games. This file holds the tokens and the components every screen shares; the
+/// other parts lay out the battle, the party and summary, and the field's menus. See docs/art/style-guide.md.
 /// </summary>
-internal static class ModernUi
+internal static partial class ModernUi
 {
     // Design tokens
     public static readonly Color Ink = new(36, 44, 68, 255);
@@ -29,15 +29,32 @@ internal static class ModernUi
     public static readonly Color Green = new(56, 182, 104, 255);
     public static readonly Color Blue = new(70, 136, 232, 255);
     public static readonly Color Track = new(62, 72, 98, 255);
+    public static readonly Color Selection = new(240, 104, 70, 255);
+    public static readonly Color Rule = new(206, 214, 230, 255);
 
-    private static Color Lighter(Color c, float t) => PixelCanvas.Mix(c, Color.White, t);
-    private static Color Darker(Color c, float t) => PixelCanvas.Mix(c, new Color(20, 16, 40, 255), t);
+    internal static Color Lighter(Color c, float t) => PixelCanvas.Mix(c, Color.White, t);
+    internal static Color Darker(Color c, float t) => PixelCanvas.Mix(c, new Color(20, 16, 40, 255), t);
+
+    // ------------------------------------------------------------------ panels and buttons
 
     public static void Panel(Rectangle r, float radius, float skew = 0f, float border = 4f, Color? frame = null)
     {
         UiShapes.Shadow(r, radius, 22f, new Vector2(0, 8), ShadowColor, skew);
         UiShapes.Shape(r, radius, PanelTop, PanelBottom, frame ?? Frame, border, skew);
     }
+
+    /// <summary>A light panel that can be chosen: the selected one gets a thick border and a glow in the accent colour.</summary>
+    public static void Card(Rectangle r, float radius, bool selected, Color? accent = null)
+    {
+        var glow = accent ?? Selection;
+        if (selected) UiShapes.Shadow(r, radius, radius, Vector2.Zero, glow with { A = 190 });
+        else UiShapes.Shadow(r, radius, 22f, new Vector2(0, 9), new Color(6, 14, 34, 105));
+        UiShapes.Shape(r, radius, PanelTop, PanelBottom, selected ? glow : Frame, selected ? 6f : 4f);
+    }
+
+    /// <summary>An empty slot where a card would be: a faint outline on the backdrop.</summary>
+    public static void EmptySlot(Rectangle r, float radius) =>
+        UiShapes.Shape(r, radius, new Color(255, 255, 255, 30), new Color(255, 255, 255, 18), new Color(255, 255, 255, 60), 3);
 
     /// <summary>A coloured pill button: gradient body, bright top edge, white label; selected ones get a white ring and glow.</summary>
     public static void Button(Rectangle r, float radius, Color color, string label, float size, bool selected)
@@ -60,6 +77,11 @@ internal static class ModernUi
         UiFonts.DrawCentered(label, r.X + (r.Width - w) / 2f, r.Y + r.Height / 2f, size, Color.White, UiWeight.Black);
     }
 
+    // ------------------------------------------------------------------ bars
+
+    public static Color HpColor(float ratio) =>
+        ratio > 0.5f ? new Color(70, 214, 110, 255) : ratio > 0.2f ? new Color(246, 196, 50, 255) : new Color(240, 72, 64, 255);
+
     public static void HpBar(float x, float y, float w, float h, float ratio)
     {
         ratio = Math.Clamp(ratio, 0f, 1f);
@@ -68,19 +90,31 @@ internal static class ModernUi
         UiShapes.Shape(tag, h / 2f, new Color(255, 200, 80, 255), new Color(236, 160, 40, 255));
         float ts = h * 0.72f;
         UiFonts.DrawCentered("HP", x + (tagW - UiFonts.Measure("HP", ts, UiWeight.Black)) / 2f, y + h / 2f, ts, new Color(110, 60, 16, 255), UiWeight.Black);
-
-        var track = new Rectangle(x + tagW + 6, y, w - tagW - 6, h);
-        UiShapes.Fill(track, h / 2f, Track);
-        var color = ratio > 0.5f ? new Color(70, 214, 110, 255) : ratio > 0.2f ? new Color(246, 196, 50, 255) : new Color(240, 72, 64, 255);
-        float fw = (track.Width - 6) * ratio;
-        if (fw > 0.5f)
-        {
-            var fill = new Rectangle(track.X + 3, y + 3, Math.Max(fw, h - 6), h - 6);
-            UiShapes.Shape(fill, (h - 6) / 2f, Lighter(color, 0.3f), color);
-        }
+        Bar(new Rectangle(x + tagW + 6, y, w - tagW - 6, h), ratio, HpColor(ratio));
     }
 
-    private static void Level(float rightX, float centerY, int level, float size)
+    /// <summary>A pill-shaped track with a fill that keeps round ends however short it is.</summary>
+    public static void Bar(Rectangle track, float ratio, Color color)
+    {
+        float h = track.Height;
+        UiShapes.Fill(track, h / 2f, Track);
+        float fw = (track.Width - 6) * Math.Clamp(ratio, 0f, 1f);
+        if (fw <= 0.5f) return;
+        var fill = new Rectangle(track.X + 3, track.Y + 3, Math.Max(fw, h - 6), h - 6);
+        UiShapes.Shape(fill, (h - 6) / 2f, Lighter(color, 0.3f), color);
+    }
+
+    public static void ExpBar(Rectangle r, float ratio)
+    {
+        UiShapes.Fill(r, r.Height / 2f, Track);
+        float w = r.Width * Math.Clamp(ratio, 0f, 1f);
+        if (w > 1f) UiShapes.Shape(new Rectangle(r.X, r.Y, Math.Max(w, r.Height), r.Height), r.Height / 2f, new Color(120, 204, 255, 255), new Color(72, 176, 250, 255));
+    }
+
+    // ------------------------------------------------------------------ Pokémon labels
+
+    /// <summary>The level, right-aligned at <paramref name="rightX"/>: a small muted "Lv" before a large number.</summary>
+    public static void Level(float rightX, float centerY, int level, float size)
     {
         string n = level.ToString();
         float nw = UiFonts.Measure(n, size, UiWeight.Black);
@@ -89,11 +123,196 @@ internal static class ModernUi
         UiFonts.DrawCentered(n, rightX - nw, centerY, size, Ink, UiWeight.Black);
     }
 
-    private static void NameWithGender(Pokemon p, float x, float centerY, float size)
+    /// <summary>The name with the gender mark after it; returns the width used.</summary>
+    public static float NameWithGender(Pokemon p, float x, float centerY, float size)
     {
         UiFonts.DrawCentered(p.DisplayName, x, centerY, size, Ink, UiWeight.Black);
         float w = UiFonts.Measure(p.DisplayName, size, UiWeight.Black);
-        RenderHelper.DrawGenderSymbol((int)(x + w + 10), (int)(centerY - size * 0.36f), (int)(size * 0.7f), p.Gender);
+        if (p.Gender is not (Gender.Male or Gender.Female)) return w;
+        UiIcons.GenderMark(new Vector2(x + w + size * 0.5f, centerY), size * 0.74f, p.Gender);
+        return w + size * 0.9f;
+    }
+
+    /// <summary>A type's name on a pill of its colour; returns the pill's width.</summary>
+    public static float TypePill(float x, float y, PokemonType type, float height = 34f, float? width = null)
+    {
+        var color = Palette.GetTypeColor(type.ToString());
+        string name = type.ToString().ToUpperInvariant();
+        float size = height * 0.6f;
+        float textW = UiFonts.Measure(name, size, UiWeight.Black);
+        float w = width ?? textW + height * 1.05f;
+        var pill = new Rectangle(x, y, w, height);
+        UiShapes.Shape(pill, height / 2f, Lighter(color, 0.12f), Darker(color, 0.1f));
+        UiFonts.DrawCentered(name, x + (w - textW) / 2f, y + height / 2f, size, Color.White, UiWeight.Black);
+        return w;
+    }
+
+    public static IEnumerable<PokemonType> TypesOf(Pokemon p)
+    {
+        yield return p.Species.PrimaryType;
+        if (p.Species.SecondaryType.HasValue) yield return p.Species.SecondaryType.Value;
+    }
+
+    /// <summary>Draws the type pills side by side; returns the x after the last one.</summary>
+    public static float TypePills(float x, float y, Pokemon p, float height = 34f)
+    {
+        foreach (var type in TypesOf(p)) x += TypePill(x, y, type, height) + 10;
+        return x;
+    }
+
+    /// <summary>A status condition as a three-letter pill (PSN, BRN, PAR, SLP, FRZ, FNT); returns its width, 0 for none.</summary>
+    public static float StatusPill(float x, float y, StatusCondition status, float height = 34f)
+    {
+        if (status == StatusCondition.None) return 0f;
+        var (code, color) = status switch
+        {
+            StatusCondition.Poison or StatusCondition.Toxic => ("PSN", Palette.StatusPoison),
+            StatusCondition.Burn => ("BRN", Palette.StatusBurn),
+            StatusCondition.Paralyze => ("PAR", Palette.StatusParalyze),
+            StatusCondition.Sleep => ("SLP", Palette.StatusSleep),
+            StatusCondition.Freeze => ("FRZ", Palette.StatusFreeze),
+            _ => ("FNT", Palette.StatusFaint)
+        };
+        float size = height * 0.6f;
+        float textW = UiFonts.Measure(code, size, UiWeight.Black);
+        float w = textW + height * 0.9f;
+        UiShapes.Shape(new Rectangle(x, y, w, height), height / 2f, Lighter(color, 0.1f), Darker(color, 0.12f), Darker(color, 0.4f), 2f);
+        UiFonts.DrawCentered(code, x + (w - textW) / 2f, y + height / 2f, size, Color.White, UiWeight.Black);
+        return w;
+    }
+
+    /// <summary>A small grey tag for a short word ("LEAD", "IN BATTLE"); returns its width.</summary>
+    public static float Tag(float x, float y, string text, Color color, float height = 34f)
+    {
+        float size = height * 0.58f;
+        float textW = UiFonts.Measure(text, size, UiWeight.Black);
+        float w = textW + height * 0.9f;
+        UiShapes.Fill(new Rectangle(x, y, w, height), height / 2f, color);
+        UiFonts.DrawCentered(text, x + (w - textW) / 2f, y + height / 2f, size, Color.White, UiWeight.Black);
+        return w;
+    }
+
+    /// <summary>
+    /// A Pokémon's menu icon on a pale disc with a faint Poké Ball line, at a whole-number scale. Like the main
+    /// games the icons hop: the selected one quickly and high, the rest gently, fainted ones not at all.
+    /// </summary>
+    public static void Portrait(Vector2 c, float radius, Pokemon p, int scale, bool selected)
+    {
+        UiShapes.Circle(c, radius, new Color(226, 234, 246, 255));
+        UiShapes.Fill(new Rectangle(c.X - radius, c.Y - 3, radius * 2, 6), 3, Rule);
+        UiShapes.Circle(c, radius * 0.27f, Rule);
+        UiShapes.Circle(c, radius * 0.18f, new Color(226, 234, 246, 255));
+        var icon = PixelArtGenerator.GetPokemonIcon(p.Species.Name);
+        float t = (float)Raylib.GetTime();
+        int hop = p.IsFainted ? 0 : selected ? ((int)(t / 0.16f) % 2) * 3 * scale : ((int)(t / 0.4f) % 2) * scale;
+        Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
+            new Rectangle(MathF.Round(c.X - icon.Width * scale / 2f), MathF.Round(c.Y - icon.Height * scale / 2f - 1.5f * scale - hop), icon.Width * scale, icon.Height * scale),
+            Vector2.Zero, 0, p.IsFainted ? new Color(170, 170, 190, 255) : Color.White);
+    }
+
+    // ------------------------------------------------------------------ text
+
+    /// <summary>Breaks text into lines no wider than <paramref name="maxWidth"/>; "\n" forces a break.</summary>
+    public static List<string> Wrap(string text, float maxWidth, float size, UiWeight weight = UiWeight.Bold)
+    {
+        var lines = new List<string>();
+        foreach (var paragraph in text.Split('\n'))
+        {
+            string line = "";
+            foreach (var word in paragraph.Split(' '))
+            {
+                string test = line.Length == 0 ? word : line + " " + word;
+                if (line.Length > 0 && UiFonts.Measure(test, size, weight) > maxWidth)
+                {
+                    lines.Add(line);
+                    line = word;
+                }
+                else line = test;
+            }
+            lines.Add(line);
+        }
+        return lines;
+    }
+
+    public static void DrawWrapped(string text, float x, float y, float maxWidth, float size, Color color, float lineHeight, UiWeight weight = UiWeight.Bold)
+    {
+        foreach (var line in Wrap(text, maxWidth, size, weight))
+        {
+            if (line.Length > 0) UiFonts.Draw(line, x, y, size, color, weight);
+            y += lineHeight;
+        }
+    }
+
+    /// <summary>A small caption in capitals above a value.</summary>
+    public static void Label(string text, float x, float y) => UiFonts.Draw(text, x, y, 20, Muted, UiWeight.Black);
+
+    /// <summary>The bobbing red arrow that says a message is waiting for the A button.</summary>
+    public static void AdvanceArrow(float x, float y)
+    {
+        float bob = MathF.Sin((float)Raylib.GetTime() * 6f) * 3f;
+        UiIcons.ArrowDown(new Vector2(x + 14, y + 10 + bob), 18, Red);
+    }
+
+    // ------------------------------------------------------------------ screens
+
+    /// <summary>Full-screen menu backdrop: deep teal with faint diagonal stripes.</summary>
+    public static void Backdrop(int sw, int sh)
+    {
+        Raylib.DrawRectangleGradientV(0, 0, sw, sh, new Color(44, 112, 146, 255), new Color(24, 60, 98, 255));
+        for (int i = -10; i < 40; i++)
+            Raylib.DrawRectanglePro(new Rectangle(i * 90, -200, 34, 1600), Vector2.Zero, 28f, new Color(255, 255, 255, 12));
+    }
+
+    public static void ScreenTitle(string title) => UiFonts.Draw(title, 64, 36, 52, Color.White, UiWeight.Black);
+
+    /// <summary>Darkens what is behind a prompt or a panel that needs the player's attention.</summary>
+    public static void Dim(int sw, int sh, int alpha) => Raylib.DrawRectangle(0, 0, sw, sh, new Color(8, 12, 30, alpha));
+
+    /// <summary>A key cap and what it does; returns its width.</summary>
+    public static float HintPill(float x, float y, string key, string label)
+    {
+        float width = HintWidth(key, label);
+        float kw = Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24);
+        UiShapes.Fill(new Rectangle(x, y, width, 52), 26, new Color(10, 30, 60, 90));
+        var k = new Rectangle(x + 6, y + 6, kw, 40);
+        UiShapes.Fill(k, 20, Color.White);
+        UiFonts.DrawCentered(key, k.X + (kw - UiFonts.Measure(key, 22, UiWeight.Black)) / 2f, k.Y + 20, 22, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(label, k.X + kw + 12, y + 26, 24, Color.White, UiWeight.ExtraBold);
+        return width;
+    }
+
+    private static float HintWidth(string key, string label) =>
+        Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24) + UiFonts.Measure(label, 24, UiWeight.ExtraBold) + 34;
+
+    /// <summary>The key hints of a screen, right-aligned so the last one ends at <paramref name="rightX"/>.</summary>
+    public static void Hints(float rightX, float y, params (string Key, string Label)[] hints)
+    {
+        float x = rightX;
+        for (int i = hints.Length - 1; i >= 0; i--)
+        {
+            x -= HintWidth(hints[i].Key, hints[i].Label);
+            HintPill(x, y, hints[i].Key, hints[i].Label);
+            x -= 20;
+        }
+    }
+
+    /// <summary>
+    /// A question over the dimmed screen with a row of buttons to answer it (leaving a save behind, closing the
+    /// game). <paramref name="appear"/> slides it up into place.
+    /// </summary>
+    public static void Prompt(int sw, int sh, string title, string body, (string Label, Color Color)[] buttons, int selected, float appear = 1f)
+    {
+        Dim(sw, sh, (int)(150 * appear));
+        float width = buttons.Length > 2 ? 1320 : 1040;
+        var r = new Rectangle(sw / 2f - width / 2f, sh / 2f - 170 + (1f - appear) * 60f, width, 340);
+        Panel(r, 36);
+        UiFonts.Draw(title, r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        DrawWrapped(body, r.X + 56, r.Y + 116, r.Width - 112, 30, Muted, 40, UiWeight.ExtraBold);
+
+        const float gap = 32;
+        float bw = (r.Width - 112 - gap * (buttons.Length - 1)) / buttons.Length;
+        for (int i = 0; i < buttons.Length; i++)
+            Button(new Rectangle(r.X + 56 + i * (bw + gap), r.Y + 216, bw, 84), 42, buttons[i].Color, buttons[i].Label, 32, i == selected);
     }
 
     // ------------------------------------------------------------------ badges
@@ -137,277 +356,5 @@ internal static class ModernUi
         }
         // A glint on the upper left
         UiShapes.Circle(center + new Vector2(-r * 0.42f, -r * 0.45f), r * 0.16f, new Color(255, 255, 255, 150));
-    }
-
-    // ------------------------------------------------------------------ battle
-
-    /// <summary>
-    /// Draws the HP boxes, move effects and the bottom panel. Returns false for the menus not rebuilt yet (switching
-    /// and the bag), whose panels the caller draws.
-    /// </summary>
-    public static bool DrawBattle(BattleHUD hud, int sw, int sh, Pokemon active, Party? trainerParty, string message, BattleVFX vfx, BattleAnimator anim)
-    {
-        float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
-        if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy);
-        float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
-        if (playerSlide >= 0f) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
-
-        vfx.Draw();
-        if (hud.MenuState is BattleMenuState.SwitchPokemon or BattleMenuState.SelectBagItem) return false;
-
-        switch (hud.MenuState)
-        {
-            case BattleMenuState.Main:
-                MessageBox(new Rectangle(48, 858, 1060, 172), null, active.DisplayName);
-                string[] labels = { "BAG", "POKÉMON", "RUN" };
-                Color[] colors = { Gold, Green, Blue };
-                Button(new Rectangle(1140, 848, 432, 190), 34, Red, "FIGHT", 60, hud.MainMenuIndex == 0);
-                for (int i = 0; i < 3; i++)
-                    Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
-                break;
-            case BattleMenuState.Moves:
-                MoveMenu(hud, active);
-                break;
-            default:
-                MessageBox(new Rectangle(48, 858, 1824, 172), message, null);
-                break;
-        }
-        return true;
-    }
-
-    private static void EnemyBox(float x, float y, CombatantView view)
-    {
-        var p = view.Shown!;
-        var r = new Rectangle(x, y, 580, 120);
-        Panel(r, 22, skew: -0.2f);
-        NameWithGender(p, x + 38, y + 38, 36);
-        Level(x + r.Width - 46, y + 38, p.Level, 34);
-        HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP));
-        if (p.Status != StatusCondition.None) RenderHelper.DrawStatusBadge((int)(x + 300), (int)(y + 24), p.Status);
-    }
-
-    private static void PlayerBox(float x, float y, CombatantView view)
-    {
-        var p = view.Shown!;
-        var r = new Rectangle(x, y, 628, 162);
-        Panel(r, 22, skew: 0.2f);
-        NameWithGender(p, x + 52, y + 40, 36);
-        Level(x + r.Width - 40, y + 40, p.Level, 34);
-        int hp = (int)MathF.Ceiling(view.DisplayedHp);
-        HpBar(x + 52, y + 74, r.Width - 96, 24, view.DisplayedHp / Math.Max(1, p.MaxHP));
-        string hpText = $"{hp} / {p.MaxHP}";
-        float hw = UiFonts.Measure(hpText, 30, UiWeight.Black);
-        UiFonts.DrawCentered(hpText, x + r.Width - 44 - hw, y + 122, 30, Ink, UiWeight.Black);
-        if (p.Status != StatusCondition.None) RenderHelper.DrawStatusBadge((int)(x + 52), (int)(y + 108), p.Status);
-
-        // EXP runs along the bottom edge of the box
-        var exp = new Rectangle(x + 40, y + r.Height - 18, 360, 8);
-        UiShapes.Fill(exp, 4, Track);
-        float ew = exp.Width * Math.Clamp(view.DisplayedExp, 0f, 1f);
-        if (ew > 1f) UiShapes.Fill(new Rectangle(exp.X, exp.Y, Math.Max(ew, 8), 8), 4, new Color(72, 176, 250, 255));
-    }
-
-    public static void MessageBox(Rectangle r, string? message, string? prompting)
-    {
-        Panel(r, 28);
-        float x = r.X + 52, cy = r.Y + r.Height / 2f;
-        if (prompting != null)
-        {
-            UiFonts.DrawCentered("What will", x, cy, 40, Ink, UiWeight.ExtraBold);
-            float w = UiFonts.Measure("What will ", 40, UiWeight.ExtraBold);
-            UiFonts.DrawCentered(prompting, x + w, cy, 40, Red, UiWeight.Black);
-            float w2 = UiFonts.Measure(prompting + " ", 40, UiWeight.Black);
-            UiFonts.DrawCentered("do?", x + w + w2, cy, 40, Ink, UiWeight.ExtraBold);
-            return;
-        }
-        UiFonts.DrawCentered(message ?? "", x, cy, 40, Ink, UiWeight.ExtraBold);
-        AdvanceArrow(r.X + r.Width - 64, r.Y + r.Height - 52);
-    }
-
-    private static void AdvanceArrow(float x, float y)
-    {
-        float bob = MathF.Sin((float)Raylib.GetTime() * 6f) * 3f;
-        // Both windings, so it shows whichever way the batch culls
-        Raylib.DrawTriangle(new Vector2(x, y + bob), new Vector2(x + 28, y + bob), new Vector2(x + 14, y + 20 + bob), Red);
-        Raylib.DrawTriangle(new Vector2(x, y + bob), new Vector2(x + 14, y + 20 + bob), new Vector2(x + 28, y + bob), Red);
-    }
-
-    private static void MoveMenu(BattleHUD hud, Pokemon p)
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            var r = new Rectangle(48 + (i % 2) * 556, 848 + (i / 2) * 100, 536, 88);
-            bool selected = hud.MoveMenuIndex == i;
-            if (i >= p.Moves.Count)
-            {
-                UiShapes.Shape(r, 26, new Color(226, 232, 242, 220), new Color(214, 222, 236, 220), new Color(180, 190, 210, 255), 3);
-                UiFonts.DrawCentered("—", r.X + 40, r.Y + r.Height / 2f, 32, Muted, UiWeight.Black);
-                continue;
-            }
-            var move = p.Moves[i];
-            var type = Palette.GetTypeColor(move.Type.ToString());
-            if (selected) UiShapes.Shadow(r, 26, 26, Vector2.Zero, type with { A = 170 });
-            else UiShapes.Shadow(r, 26, 14, new Vector2(0, 6), ShadowColor);
-            UiShapes.Shape(r, 26, PanelTop, PanelBottom, selected ? Darker(type, 0.15f) : Frame, selected ? 5f : 3f);
-            var band = new Rectangle(r.X + 10, r.Y + 10, 124, r.Height - 20);
-            UiShapes.Shape(band, 18, Lighter(type, 0.1f), Darker(type, 0.1f));
-            string typeName = move.Type.ToString().ToUpperInvariant();
-            float tw = UiFonts.Measure(typeName, 20, UiWeight.Black);
-            UiFonts.DrawCentered(typeName, band.X + (band.Width - tw) / 2f, band.Y + band.Height / 2f, 20, Color.White, UiWeight.Black);
-            UiFonts.DrawCentered(move.Name, r.X + 156, r.Y + r.Height / 2f, 32, Ink, UiWeight.Black);
-            string pp = $"{move.CurrentPP}/{move.MaxPP}";
-            float pw = UiFonts.Measure(pp, 26, UiWeight.Black);
-            UiFonts.DrawCentered(pp, r.X + r.Width - 30 - pw, r.Y + r.Height / 2f, 26, Ink, UiWeight.Black);
-            UiFonts.DrawCentered("PP", r.X + r.Width - 40 - pw - UiFonts.Measure("PP", 18, UiWeight.ExtraBold), r.Y + r.Height / 2f + 3, 18, Muted, UiWeight.ExtraBold);
-        }
-
-        var info = new Rectangle(1172, 848, 700, 188);
-        Panel(info, 28);
-        if (hud.MoveMenuIndex < p.Moves.Count)
-        {
-            var move = p.Moves[hud.MoveMenuIndex];
-            string cat = move.Category.ToString().ToUpperInvariant();
-            UiFonts.DrawCentered(cat, info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
-            string pwr = move.Power > 0 ? move.Power.ToString() : "—";
-            string acc = move.Accuracy > 0 ? move.Accuracy.ToString() : "—";
-            UiFonts.DrawCentered("POWER", info.X + 260, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
-            UiFonts.DrawCentered(pwr, info.X + 350, info.Y + 44, 30, Ink, UiWeight.Black);
-            UiFonts.DrawCentered("ACCURACY", info.X + 440, info.Y + 44, 20, Muted, UiWeight.ExtraBold);
-            UiFonts.DrawCentered(acc, info.X + 580, info.Y + 44, 30, Ink, UiWeight.Black);
-            DrawWrapped(move.Description, info.X + 44, info.Y + 92, info.Width - 88, 26, Ink, 36);
-        }
-    }
-
-    public static void DrawWrapped(string text, float x, float y, float maxWidth, float size, Color color, float lineHeight, UiWeight weight = UiWeight.Bold)
-    {
-        string line = "";
-        foreach (var word in text.Split(' '))
-        {
-            string test = line.Length == 0 ? word : line + " " + word;
-            if (UiFonts.Measure(test, size, weight) > maxWidth && line.Length > 0)
-            {
-                UiFonts.Draw(line, x, y, size, color, weight);
-                y += lineHeight;
-                line = word;
-            }
-            else line = test;
-        }
-        if (line.Length > 0) UiFonts.Draw(line, x, y, size, color, weight);
-    }
-
-    // ------------------------------------------------------------------ party
-
-    /// <summary>Full-screen menu backdrop: deep teal with faint diagonal stripes.</summary>
-    public static void Backdrop(int sw, int sh)
-    {
-        Raylib.DrawRectangleGradientV(0, 0, sw, sh, new Color(44, 112, 146, 255), new Color(24, 60, 98, 255));
-        for (int i = -10; i < 40; i++)
-            Raylib.DrawRectanglePro(new Rectangle(i * 90, -200, 34, 1600), Vector2.Zero, 28f, new Color(255, 255, 255, 12));
-    }
-
-    public static void DrawParty(int sw, int sh, Party party, int selected, int? swapping)
-    {
-        Backdrop(sw, sh);
-
-
-        UiFonts.Draw("POKÉMON", 64, 36, 52, Color.White, UiWeight.Black);
-        HintPill(1320, 44, "Z", "Summary");
-        HintPill(1540, 44, "X", "Move");
-        HintPill(1710, 44, "Esc", "Back");
-
-        for (int i = 0; i < 6; i++)
-        {
-            var r = new Rectangle(64 + (i % 2) * 912, 132 + (i / 2) * 256, 880, 232);
-            if (i >= party.Count)
-            {
-                UiShapes.Shape(r, 34, new Color(255, 255, 255, 30), new Color(255, 255, 255, 18), new Color(255, 255, 255, 60), 3);
-                continue;
-            }
-            PartyCard(r, party.Members[i], i == selected, i == swapping, i == 0);
-        }
-
-        var prompt = new Rectangle(64, 920, 1792, 112);
-        Panel(prompt, 30);
-        UiFonts.DrawCentered(swapping.HasValue ? "Move to where?" : "Choose a Pokémon.", prompt.X + 52, prompt.Y + prompt.Height / 2f, 40, Ink, UiWeight.ExtraBold);
-    }
-
-    /// <summary>A key cap and what it does, for the top-right corner of menu screens.</summary>
-    public static void HintPill(float x, float y, string key, string label)
-    {
-        float kw = Math.Max(44, UiFonts.Measure(key, 22, UiWeight.Black) + 24);
-        float lw = UiFonts.Measure(label, 24, UiWeight.ExtraBold);
-        var r = new Rectangle(x, y, kw + lw + 34, 52);
-        UiShapes.Fill(r, 26, new Color(10, 30, 60, 90));
-        var k = new Rectangle(x + 6, y + 6, kw, 40);
-        UiShapes.Fill(k, 20, Color.White);
-        UiFonts.DrawCentered(key, k.X + (kw - UiFonts.Measure(key, 22, UiWeight.Black)) / 2f, k.Y + 20, 22, Ink, UiWeight.Black);
-        UiFonts.DrawCentered(label, k.X + kw + 12, y + 26, 24, Color.White, UiWeight.ExtraBold);
-    }
-
-    private static void PartyCard(Rectangle r, Pokemon p, bool selected, bool swapping, bool lead)
-    {
-        var accent = swapping ? Gold : new Color(240, 104, 70, 255);
-        if (selected || swapping) UiShapes.Shadow(r, 34, 34, Vector2.Zero, accent with { A = 190 });
-        else UiShapes.Shadow(r, 34, 24, new Vector2(0, 10), new Color(6, 14, 34, 110));
-        UiShapes.Shape(r, 34, PanelTop, PanelBottom, selected || swapping ? accent : Frame, selected || swapping ? 6f : 4f);
-
-        // Portrait: the Pokémon's 2D pixel sprite at a whole-number scale on a pale disc with a faint Poké Ball
-        // line. Like the main games, the icons hop: the selected one quickly and high, the rest gently.
-        var c = new Vector2(r.X + 136, r.Y + r.Height / 2f);
-        UiShapes.Circle(c, 96, new Color(226, 234, 246, 255));
-        UiShapes.Fill(new Rectangle(c.X - 96, c.Y - 3, 192, 6), 3, new Color(208, 218, 234, 255));
-        UiShapes.Circle(c, 26, new Color(208, 218, 234, 255));
-        UiShapes.Circle(c, 17, new Color(226, 234, 246, 255));
-        var icon = PixelArtGenerator.GetPokemonIcon(p.Species.Name);
-        const int scale = 4;
-        float t = (float)Raylib.GetTime();
-        int hop = p.IsFainted ? 0 : selected ? ((int)(t / 0.16f) % 2) * 3 * scale : ((int)(t / 0.4f) % 2) * scale;
-        Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
-            new Rectangle(MathF.Round(c.X - icon.Width * scale / 2f), MathF.Round(c.Y - icon.Height * scale / 2f - 6 - hop), icon.Width * scale, icon.Height * scale),
-            Vector2.Zero, 0, Color.White);
-
-        float x = r.X + 264;
-        NameWithGender(p, x, r.Y + 58, 42);
-        Level(r.X + r.Width - 44, r.Y + 58, p.Level, 40);
-
-        // Type pills
-        float tx = x;
-        foreach (var type in p.Species.SecondaryType.HasValue ? new[] { p.Species.PrimaryType, p.Species.SecondaryType.Value } : new[] { p.Species.PrimaryType })
-        {
-            var tc = Palette.GetTypeColor(type.ToString());
-            string name = type.ToString().ToUpperInvariant();
-            float w = UiFonts.Measure(name, 20, UiWeight.Black) + 36;
-            var pill = new Rectangle(tx, r.Y + 94, w, 34);
-            UiShapes.Shape(pill, 17, Lighter(tc, 0.12f), Darker(tc, 0.1f));
-            UiFonts.DrawCentered(name, pill.X + 18, pill.Y + 17, 20, Color.White, UiWeight.Black);
-            tx += w + 10;
-        }
-        if (p.Status != StatusCondition.None) RenderHelper.DrawStatusBadge((int)(tx + 6), (int)(r.Y + 99), p.Status);
-
-        HpBar(x, r.Y + 150, r.Width - 308, 26, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
-        string hpText = $"{p.CurrentHP} / {p.MaxHP}";
-        float hw = UiFonts.Measure(hpText, 30, UiWeight.Black);
-        UiFonts.DrawCentered(hpText, r.X + r.Width - 44 - hw, r.Y + 200, 30, Ink, UiWeight.Black);
-        if (lead) UiFonts.DrawCentered("LEAD", x, r.Y + 200, 22, Muted, UiWeight.Black);
-
-        if (p.IsFainted) UiShapes.Fill(r, 34, new Color(40, 40, 60, 90));
-    }
-
-    // ------------------------------------------------------------------ dialogue
-
-    public static void DrawDialogue(int sw, int sh, string speaker, string visibleText, bool complete)
-    {
-        var r = new Rectangle(96, sh - 262, sw - 192, 222);
-        Panel(r, 32);
-        if (!string.IsNullOrEmpty(speaker))
-        {
-            float w = UiFonts.Measure(speaker, 30, UiWeight.Black) + 56;
-            var tag = new Rectangle(r.X + 44, r.Y - 30, w, 58);
-            UiShapes.Shadow(tag, 29, 12, new Vector2(0, 5), ShadowColor);
-            UiShapes.Shape(tag, 29, Lighter(Red, 0.12f), Darker(Red, 0.08f), Darker(Red, 0.3f), 3);
-            UiFonts.DrawCentered(speaker, tag.X + 28, tag.Y + 29, 30, Color.White, UiWeight.Black);
-        }
-        DrawWrapped(visibleText, r.X + 60, r.Y + 58, r.Width - 170, 40, Ink, 58, UiWeight.ExtraBold);
-        if (complete) AdvanceArrow(r.X + r.Width - 80, r.Y + r.Height - 60);
     }
 }

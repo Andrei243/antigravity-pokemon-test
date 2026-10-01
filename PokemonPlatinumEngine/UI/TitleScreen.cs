@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.UI;
 public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving }
 
 /// <summary>What the player picked on the title menu.</summary>
-public enum TitleChoice { None, Continue, NewGame, Options }
+public enum TitleChoice { None, Continue, NewGame, Options, Quit }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
@@ -53,6 +53,7 @@ public sealed class TitleScreen
         if (save != null) entries.Add(TitleChoice.Continue);
         entries.Add(TitleChoice.NewGame);
         entries.Add(TitleChoice.Options);
+        entries.Add(TitleChoice.Quit);
     }
 
     /// <summary>Hours and minutes played, as on the continue panel: 0:07, 12:34, 123:05.</summary>
@@ -122,6 +123,7 @@ public sealed class TitleScreen
                         break;
                     case TitleChoice.NewGame: Leave(TitleChoice.NewGame); break;
                     case TitleChoice.Options: optionsRequested = true; break;
+                    case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
                 break;
             case TitlePhase.ConfirmNewGame:
@@ -158,7 +160,7 @@ public sealed class TitleScreen
     }
 
     /// <summary>
-    /// The player's choice, once: Options straight away, Continue or New Game when the screen has faded out.
+    /// The player's choice, once: Options straight away; Continue, New Game or Quit when the screen has faded out.
     /// </summary>
     public TitleChoice TakeChoice()
     {
@@ -362,26 +364,27 @@ public sealed class TitleScreen
 
     private void DrawMenu(int sw, float ease)
     {
+        const float row = 92, gap = 20, card = 452;
         float slide = (1f - ease) * 520f;
         float x = 1016 + slide, w = 824;
-        float y = HasSave ? 250 : 430;
+        float total = entries.Count * (row + gap) - gap + (HasSave ? card - row : 0);
+        float y = HasSave ? 196 : (1080 - total) / 2f + 40;
         for (int i = 0; i < entries.Count; i++)
         {
             bool selected = i == SelectedIndex && Phase != TitlePhase.Idle;
-            float h = entries[i] == TitleChoice.Continue ? 452 : 112;
+            float h = entries[i] == TitleChoice.Continue ? card : row;
             var r = new Rectangle(x, y, w, h);
-            var accent = new Color(240, 104, 70, 255);
-            if (selected) UiShapes.Shadow(r, 34, 34, Vector2.Zero, accent with { A = 200 });
-            else UiShapes.Shadow(r, 34, 24, new Vector2(0, 10), new Color(4, 2, 14, 150));
-            UiShapes.Shape(r, 34, ModernUi.PanelTop, ModernUi.PanelBottom, selected ? accent : ModernUi.Frame, selected ? 6f : 4f);
+            ModernUi.Card(r, 34, selected);
 
-            switch (entries[i])
+            string label = entries[i] switch
             {
-                case TitleChoice.Continue: DrawContinue(r, save!); break;
-                case TitleChoice.NewGame: UiFonts.DrawCentered("NEW GAME", r.X + 48, r.Y + r.Height / 2f, 44, ModernUi.Ink, UiWeight.Black); break;
-                default: UiFonts.DrawCentered("OPTIONS", r.X + 48, r.Y + r.Height / 2f, 44, ModernUi.Ink, UiWeight.Black); break;
-            }
-            y += h + 24;
+                TitleChoice.NewGame => "NEW GAME",
+                TitleChoice.Options => "OPTIONS",
+                _ => "QUIT"
+            };
+            if (entries[i] == TitleChoice.Continue) DrawContinue(r, save!);
+            else UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, 40, ModernUi.Ink, UiWeight.Black);
+            y += h + gap;
         }
     }
 
@@ -393,9 +396,9 @@ public sealed class TitleScreen
         string where = MapDatabase.Get(save.CurrentMapName).DisplayName;
         float ww = UiFonts.Measure(where, 28, UiWeight.ExtraBold);
         UiFonts.DrawCentered(where, r.X + r.Width - 48 - ww, r.Y + 60, 28, ModernUi.Muted, UiWeight.ExtraBold);
-        UiShapes.Fill(new Rectangle(x, r.Y + 100, r.Width - 96, 3), 1.5f, new Color(206, 214, 230, 255));
+        UiShapes.Fill(new Rectangle(x, r.Y + 100, r.Width - 96, 3), 1.5f, ModernUi.Rule);
 
-        void Label(string text, float lx, float ly) => UiFonts.Draw(text, lx, ly, 20, ModernUi.Muted, UiWeight.Black);
+        static void Label(string text, float lx, float ly) => ModernUi.Label(text, lx, ly);
 
         Label("PLAYER", x, r.Y + 122);
         UiFonts.Draw(save.PlayerName, x, r.Y + 146, 40, ModernUi.Ink, UiWeight.Black);
@@ -420,14 +423,7 @@ public sealed class TitleScreen
         }
     }
 
-    private void DrawConfirm(int sw, int sh)
-    {
-        Raylib.DrawRectangle(0, 0, sw, sh, new Color(6, 4, 18, 150));
-        var r = new Rectangle(sw / 2f - 520, sh / 2f - 170, 1040, 340);
-        ModernUi.Panel(r, 36);
-        UiFonts.Draw("Start a new game?", r.X + 56, r.Y + 44, 48, ModernUi.Ink, UiWeight.Black);
-        ModernUi.DrawWrapped("Your saved game is kept until you save again in the new one.", r.X + 56, r.Y + 116, r.Width - 112, 30, ModernUi.Muted, 40, UiWeight.ExtraBold);
-        ModernUi.Button(new Rectangle(r.X + 56, r.Y + 216, 440, 84), 42, ModernUi.Blue, "NO, GO BACK", 32, !ConfirmYes);
-        ModernUi.Button(new Rectangle(r.X + r.Width - 496, r.Y + 216, 440, 84), 42, ModernUi.Red, "YES, NEW GAME", 32, ConfirmYes);
-    }
+    private void DrawConfirm(int sw, int sh) =>
+        ModernUi.Prompt(sw, sh, "Start a new game?", "Your saved game is kept until you save again in the new one.",
+            new[] { ("NO, GO BACK", ModernUi.Blue), ("YES, NEW GAME", ModernUi.Red) }, ConfirmYes ? 1 : 0);
 }

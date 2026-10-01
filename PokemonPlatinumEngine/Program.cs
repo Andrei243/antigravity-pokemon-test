@@ -23,7 +23,7 @@ public static class Program
         engine.Initialize();
 
         // Main Game Loop
-        while (!Raylib.WindowShouldClose())
+        while (!Raylib.WindowShouldClose() && !engine.QuitRequested)
         {
             // Toggle full screen on F11 or Alt+Enter
             if (Raylib.IsKeyPressed(KeyboardKey.F11) || (Raylib.IsKeyDown(KeyboardKey.LeftAlt) && Raylib.IsKeyPressed(KeyboardKey.Enter)))

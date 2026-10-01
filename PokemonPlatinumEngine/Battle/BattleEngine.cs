@@ -203,11 +203,14 @@ public class BattleEngine
                     }
                     return;
                 }
-                if (InputManager.IsActionPressed(GameAction.Left)) HUD.SwitchMenuIndex = Math.Max(0, HUD.SwitchMenuIndex - 1);
-                if (InputManager.IsActionPressed(GameAction.Right)) HUD.SwitchMenuIndex = Math.Min(PlayerParty.Count - 1, HUD.SwitchMenuIndex + 1);
-                if (InputManager.IsActionPressed(GameAction.Up) || InputManager.IsActionPressed(GameAction.Down))
+                // The team is laid out three to a row
+                int switchDx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+                int switchDy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+                if (switchDx != 0 || switchDy != 0)
                 {
-                    HUD.SwitchMenuIndex = (HUD.SwitchMenuIndex + 3) % PlayerParty.Count;
+                    int next = UI.Kit.UiNav.Grid(HUD.SwitchMenuIndex, PlayerParty.Count, 3, switchDx, switchDy);
+                    if (next != HUD.SwitchMenuIndex) AudioManager.PlaySound("cursor");
+                    HUD.SwitchMenuIndex = next;
                 }
                 if (InputManager.IsActionPressed(GameAction.Confirm))
                 {
@@ -273,12 +276,13 @@ public class BattleEngine
         }
     }
 
-    private static readonly string[] BagItems = { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
+    /// <summary>The items offered by the battle's BAG menu, in slot order.</summary>
+    public static IReadOnlyList<string> BagItems { get; } = new[] { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
 
     /// <summary>Uses the item in the given slot, as chosen from the BAG menu.</summary>
     public void SelectBagItem(int index)
     {
-        if (index < 0 || index >= BagItems.Length) return;
+        if (index < 0 || index >= BagItems.Count) return;
 
         string itemName = BagItems[index];
         var itemData = ItemDatabase.Get(itemName);

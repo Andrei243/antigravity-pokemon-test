@@ -19,6 +19,9 @@ public class DialogueManager
     public bool IsActive => currentLine.Length > 0 || lineQueue.Count > 0;
     public bool IsCurrentLineComplete => charIndex >= currentLine.Length;
 
+    /// <summary>The whole line being typed out, without the speaker's name.</summary>
+    public string CurrentLine => currentLine;
+
     public void ShowDialogue(string speaker, IEnumerable<string> lines, Action? onComplete = null)
     {
         currentSpeaker = speaker;
@@ -38,6 +41,10 @@ public class DialogueManager
         if (lineQueue.Count > 0)
         {
             currentLine = lineQueue.Dequeue();
+
+            // The speaker's name is on the tag above the box, so a line written as "Barry: Hey!" drops the prefix
+            string prefix = currentSpeaker + ": ";
+            if (currentSpeaker.Length > 0 && currentLine.StartsWith(prefix, StringComparison.Ordinal)) currentLine = currentLine[prefix.Length..];
             charIndex = 0;
             charTimer = 0f;
             AudioManager.PlaySound("select");

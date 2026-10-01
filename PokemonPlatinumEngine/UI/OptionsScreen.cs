@@ -122,19 +122,15 @@ public class OptionsScreen
     {
         if (!IsActive) return;
         ModernUi.Backdrop(sw, sh);
-        UiFonts.Draw("OPTIONS", 64, 36, 52, Color.White, UiWeight.Black);
-        ModernUi.HintPill(1370, 44, "Left / Right", "Change");
-        ModernUi.HintPill(1710, 44, "Esc", "Back");
+        ModernUi.ScreenTitle("OPTIONS");
+        ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
 
         for (int i = 0; i < Rows.Length; i++)
         {
             var (label, value, _) = Describe(settings, Rows[i]);
             var r = new Rectangle(64, 136 + i * 124, sw - 128, 108);
             bool selected = i == SelectedIndex;
-            var accent = new Color(240, 104, 70, 255);
-            if (selected) UiShapes.Shadow(r, 30, 30, Vector2.Zero, accent with { A = 170 });
-            else UiShapes.Shadow(r, 30, 20, new Vector2(0, 8), new Color(6, 14, 34, 100));
-            UiShapes.Shape(r, 30, ModernUi.PanelTop, ModernUi.PanelBottom, selected ? accent : ModernUi.Frame, selected ? 6f : 4f);
+            ModernUi.Card(r, 30, selected);
             UiFonts.DrawCentered(label, r.X + 52, r.Y + r.Height / 2f, 38, ModernUi.Ink, UiWeight.ExtraBold);
 
             // The value sits in a pill between two arrows
@@ -143,24 +139,14 @@ public class OptionsScreen
             float vw = UiFonts.Measure(value, 32, UiWeight.Black);
             UiFonts.DrawCentered(value, pill.X + (pill.Width - vw) / 2f, pill.Y + pill.Height / 2f, 32,
                 selected ? Color.White : ModernUi.Ink, UiWeight.Black);
-            var arrow = selected ? accent : new Color(170, 180, 200, 255);
+            var arrow = selected ? ModernUi.Selection : new Color(170, 180, 200, 255);
             float cy = r.Y + r.Height / 2f;
-            Arrow(pill.X - 44, cy, -1, arrow);
-            Arrow(pill.X + pill.Width + 44, cy, 1, arrow);
+            UiIcons.ArrowH(new Vector2(pill.X - 44, cy), 22, -1, arrow);
+            UiIcons.ArrowH(new Vector2(pill.X + pill.Width + 44, cy), 22, 1, arrow);
         }
 
         var help = new Rectangle(64, 136 + Rows.Length * 124 + 12, sw - 128, 104);
         ModernUi.Panel(help, 30);
         ModernUi.DrawWrapped(Describe(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + 32, help.Width - 104, 30, ModernUi.Ink, 40);
-    }
-
-    private static void Arrow(float x, float cy, int direction, Color color)
-    {
-        var tip = new Vector2(x + 14 * direction, cy);
-        var a = new Vector2(x - 10 * direction, cy - 18);
-        var b = new Vector2(x - 10 * direction, cy + 18);
-        // Both windings, so it shows whichever way the batch culls
-        Raylib.DrawTriangle(tip, a, b, color);
-        Raylib.DrawTriangle(tip, b, a, color);
     }
 }
