@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// </summary>
 internal static class SurfaceMaterials
 {
-    public const int Count = 8;
+    public const int Count = 12;
 
     /// <summary>Terminator width, highlight strength, highlight sharpness (exponent), own light; by material.</summary>
     public static readonly Vector4[] LightTable =
@@ -23,7 +23,11 @@ internal static class SurfaceMaterials
         new(0.08f, 0.40f, 36f, 0f), // Leather: shoes, bags, belts
         new(0.10f, 0.35f, 48f, 0f), // Plastic: buttons, the briefcase's clasps
         new(0.06f, 0.60f, 64f, 0f), // Metal
-        new(0.12f, 0f, 1f, 0.85f)   // Glow: lit from within
+        new(0.12f, 0f, 1f, 0.85f),  // Glow: lit from within
+        new(0.20f, 0f, 1f, 0f),     // Fur and feathers: soft and matt
+        new(0.12f, 0.12f, 26f, 0f), // Scales and smooth hide: a small sheen
+        new(0.08f, 0.36f, 30f, 0f), // Shell, horn, claws, beaks and teeth: hard and glossy
+        new(0.22f, 0.06f, 8f, 0f)   // Leaves
     };
 
     /// <summary>Shade tint (multiplies the sky light where the sun doesn't reach) and rim strength; by material.</summary>
@@ -36,7 +40,11 @@ internal static class SurfaceMaterials
         new(1f, 1f, 1f, 1f),
         new(1f, 1f, 1f, 1f),
         new(0.95f, 0.97f, 1.05f, 1f),
-        new(1f, 1f, 1f, 0.5f)
+        new(1f, 1f, 1f, 0.5f),
+        new(1.03f, 1f, 0.98f, 1.15f),  // fur catches a little more rim light
+        new(1f, 1f, 1.02f, 1f),
+        new(1f, 1f, 1f, 0.9f),
+        new(0.94f, 1.06f, 0.94f, 1.25f) // leaves: green bounce in the shade, a bright sunlit edge
     };
 }
 

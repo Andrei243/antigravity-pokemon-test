@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
@@ -23,24 +24,23 @@ internal sealed class SpriteFraming
 
 /// <summary>
 /// Renders the 3D Pokémon models into low-resolution pixel-art sprites for the menus (2D sprites, as in the main
-/// games), baked once at start-up. Also holds the outline hulls battles use when they draw the models in 3D.
+/// games), baked once at start-up, and frames each model the way its sprite does (battles size the 3D models by
+/// that frame).
 /// </summary>
 internal static class PokemonSprites
 {
     public const int Size = 128;
     public const int IconSize = 48;
 
-    private static readonly Dictionary<(string, SpriteView, int), SpriteFraming> Framings = new();
+    // Framings are worked out as models are built, which can happen on several threads at once
+    private static readonly ConcurrentDictionary<(string, SpriteView, int), SpriteFraming> Framings = new();
     private static readonly Dictionary<string, Texture2D> Baked = new(StringComparer.OrdinalIgnoreCase);
-    private static readonly HashSet<PokeModel> Uploaded = new();
-    private static readonly Matrix4x4[] BoneMatrices = new Matrix4x4[64];
 
     // A soft studio light from the upper left, independent of the field's sun
     private static readonly SceneLighting Light = new(Vector3.Normalize(new Vector3(-0.55f, 0.7f, 0.55f)),
         new Vector3(0.6f, 0.58f, 0.53f), new Vector3(0.6f, 0.62f, 0.7f), new Vector3(0.42f, 0.4f, 0.38f));
 
-    private static readonly Color OutlineInk = new(30, 24, 40, 255);
-
+    /// <summary>How a view of the model fills a sprite of <paramref name="size"/> pixels (no GPU calls).</summary>
     public static SpriteFraming Framing(PokeModel model, SpriteView view, int size)
     {
         if (Framings.TryGetValue((model.Species, view, size), out var f)) return f;
@@ -50,21 +50,15 @@ internal static class PokemonSprites
         var up = new Vector3(0, MathF.Cos(pitch), -MathF.Sin(pitch));
         var forward = new Vector3(0, -MathF.Sin(pitch), -MathF.Cos(pitch));
 
-        // Project the rest pose to find the silhouette's extent in this view
-        var rest = new Matrix4x4[model.Bones.Count];
-        model.BoneTransforms(default, rest);
+        // Project the sculpted (rest) pose to find the silhouette's extent in this view
         var turn = Matrix4x4.CreateRotationY(yaw);
         float minU = float.MaxValue, maxU = float.MinValue, minV = float.MaxValue, maxV = float.MinValue;
-        for (int i = 0; i < model.Bones.Count; i++)
+        foreach (var p in model.Mesh.Positions)
         {
-            var m = rest[i] * turn;
-            foreach (var p in model.Bones[i].Geometry.Vertices)
-            {
-                var q = Vector3.Transform(p, m);
-                float u = q.X, v = Vector3.Dot(q, up);
-                minU = MathF.Min(minU, u); maxU = MathF.Max(maxU, u);
-                minV = MathF.Min(minV, v); maxV = MathF.Max(maxV, v);
-            }
+            var q = Vector3.Transform(p, turn);
+            float u = q.X, v = Vector3.Dot(q, up);
+            minU = MathF.Min(minU, u); maxU = MathF.Max(maxU, u);
+            minV = MathF.Min(minV, v); maxV = MathF.Max(maxV, v);
         }
 
         float fill = view == SpriteView.Icon ? 0.86f : model.Fill;
@@ -83,31 +77,13 @@ internal static class PokemonSprites
             FeetRow = view == SpriteView.Icon ? 0.5f + (centerV - minV) / frame : 1f - margin,
             WorldPerPixel = frame / size
         };
-        Framings[(model.Species, view, size)] = f;
-        return f;
-    }
-
-    internal static void EnsureUploaded(PokeModel model)
-    {
-        if (Uploaded.Contains(model)) return;
-
-        // Outline hulls one pixel thick at battle-sprite size
-        float thickness = Framing(model, SpriteView.Front, Size).WorldPerPixel * 0.9f;
-        foreach (var bone in model.Bones)
-        {
-            if (bone.Geometry.VertexCount == 0) continue;
-            bone.Mesh = bone.Geometry.Upload();
-            bone.Outline = bone.Geometry.BuildOutline(thickness, c => PixelCanvas.Mix(c, OutlineInk, 0.78f)).Upload();
-            bone.Uploaded = true;
-        }
-        Uploaded.Add(model);
+        return Framings.GetOrAdd((model.Species, view, size), f);
     }
 
     /// <summary>Renders one frame of a Pokémon into <paramref name="target"/>. Call outside any other texture mode.</summary>
     public static void Render(RenderContext context, PokeModel model, SpriteView view, PokePose pose, RenderTexture2D target, bool hullOutline = true)
     {
         context.EnsureLoaded();
-        EnsureUploaded(model);
         int size = target.Texture.Width;
         var framing = Framing(model, view, size);
         var shaders = context.Shaders;
@@ -121,42 +97,15 @@ internal static class PokemonSprites
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.32f);
         shaders.SetStudio();
 
-        model.BoneTransforms(pose, BoneMatrices);
         var turn = Matrix4x4.CreateRotationY(framing.Yaw);
-        for (int i = 0; i < model.Bones.Count; i++)
-        {
-            var bone = model.Bones[i];
-            if (bone.Uploaded) Raylib.DrawMesh(bone.Mesh, context.Toon, Matrix4x4.Transpose(BoneMatrices[i] * turn));
-        }
-        if (hullOutline)
-        {
-            for (int i = 0; i < model.Bones.Count; i++)
-            {
-                var bone = model.Bones[i];
-                if (bone.Uploaded) Raylib.DrawMesh(bone.Outline, context.Outline, Matrix4x4.Transpose(BoneMatrices[i] * turn));
-            }
-        }
+        Rlgl.DisableBackfaceCulling();
+        PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Color);
+        if (hullOutline) PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Outline);
+        Rlgl.EnableBackfaceCulling();
 
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
         Rlgl.SetClipPlanes(0.01, 1000.0);
-    }
-
-
-    /// <summary>
-    /// Outline hulls for drawing the model straight into the 3D battle scene: about half a sprite pixel thick
-    /// and tinted from the surface colour instead of near-black.
-    /// </summary>
-    public static void EnsureSceneOutline(PokeModel model)
-    {
-        EnsureUploaded(model);
-        float thickness = Framing(model, SpriteView.Front, Size).WorldPerPixel * 0.55f;
-        foreach (var bone in model.Bones)
-        {
-            if (!bone.Uploaded || bone.SceneOutlineUploaded) continue;
-            bone.SceneOutline = bone.Geometry.BuildOutline(thickness, c => PixelCanvas.Mix(c, new Color(40, 30, 56, 255), 0.5f)).Upload();
-            bone.SceneOutlineUploaded = true;
-        }
     }
 
     // ------------------------------------------------------------------ static sprites for menus

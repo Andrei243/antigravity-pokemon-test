@@ -59,7 +59,7 @@ internal static class CharacterFaces
             if (blink)
             {
                 // Shut: a lid line curving down, with the lashes at its outer end
-                Arc(canvas, e + new Vector2(0, eyeH * 0.1f), eyeW * 1.05f, eyeH * 0.45f, MathF.PI * 0.08f, MathF.PI * 0.92f, 1.6f, dark);
+                AaPaint.Arc(canvas, e + new Vector2(0, eyeH * 0.1f), eyeW * 1.05f, eyeH * 0.45f, MathF.PI * 0.08f, MathF.PI * 0.92f, 1.6f, dark);
                 continue;
             }
             float w = eyeW, h = eyeH;
@@ -67,26 +67,26 @@ internal static class CharacterFaces
             if (expression == Expression.Happy) h *= 0.82f;
 
             // Dark rim, the iris lighter toward its bottom, the pupil, then two highlights
-            Ellipse(canvas, e, w, h, dark);
+            AaPaint.Ellipse(canvas, e, w, h, dark);
             for (int y = (int)(e.Y - h); y <= (int)(e.Y + h) + 1; y++)
             {
                 float t = Math.Clamp((y - (e.Y - h * 0.4f)) / (h * 1.4f), 0f, 1f);
                 var col = PixelCanvas.Mix(iris, irisLight, t * 0.8f);
-                EllipseRow(canvas, e + new Vector2(0, h * 0.12f), w * 0.74f, h * 0.76f, y, col);
+                AaPaint.EllipseRow(canvas, e + new Vector2(0, h * 0.12f), w * 0.74f, h * 0.76f, y, col);
             }
             float pupilScale = expression == Expression.Surprised ? 0.6f : 1f;
-            Ellipse(canvas, e + new Vector2(0, h * 0.12f), w * 0.38f * pupilScale, h * 0.42f * pupilScale, pupil);
-            Ellipse(canvas, e + new Vector2(-w * 0.3f, -h * 0.36f), w * 0.34f, w * 0.34f, Color.White);
-            Ellipse(canvas, e + new Vector2(w * 0.32f, h * 0.38f), w * 0.15f, w * 0.15f, Color.White);
+            AaPaint.Ellipse(canvas, e + new Vector2(0, h * 0.12f), w * 0.38f * pupilScale, h * 0.42f * pupilScale, pupil);
+            AaPaint.Ellipse(canvas, e + new Vector2(-w * 0.3f, -h * 0.36f), w * 0.34f, w * 0.34f, Color.White);
+            AaPaint.Ellipse(canvas, e + new Vector2(w * 0.32f, h * 0.38f), w * 0.15f, w * 0.15f, Color.White);
 
             // The upper lid line, heavier than the rim, with a flick at the outer corner for long lashes
-            Arc(canvas, e, w * 1.08f, h * 1.02f, MathF.PI * 1.08f, MathF.PI * 1.92f, adult ? 1.8f : 2.2f, Ink);
+            AaPaint.Arc(canvas, e, w * 1.08f, h * 1.02f, MathF.PI * 1.08f, MathF.PI * 1.92f, adult ? 1.8f : 2.2f, Ink);
             if (s.Lashes)
-                Line(canvas, e + new Vector2(side * w * 0.95f, -h * 0.45f), e + new Vector2(side * w * 1.45f, -h * 0.75f), 1.5f, Ink);
+                AaPaint.Line(canvas, e + new Vector2(side * w * 0.95f, -h * 0.45f), e + new Vector2(side * w * 1.45f, -h * 0.75f), 1.5f, Ink);
             if (expression == Expression.Angry)
             {
                 // A lid pressed down at the inner corner
-                Line(canvas, e + new Vector2(-side * w * 1.1f, -h * 0.55f), e + new Vector2(side * w * 1.1f, -h * 1.05f), 2.4f, Ink);
+                AaPaint.Line(canvas, e + new Vector2(-side * w * 1.1f, -h * 0.55f), e + new Vector2(side * w * 1.1f, -h * 1.05f), 2.4f, Ink);
             }
         }
 
@@ -99,7 +99,7 @@ internal static class CharacterFaces
                 var b = Px(side * face.EyeHalfSpacing, eyeY + (adult ? 0.068f : 0.078f));
                 float rise = expression switch { Expression.Surprised => -0.25f * eyeH, Expression.Sad => 0f, _ => 0f };
                 float tiltIn = expression switch { Expression.Angry => 0.35f * eyeH, Expression.Sad => -0.35f * eyeH, _ => 0f };
-                Line(canvas, b + new Vector2(-side * eyeW * 0.9f, rise + tiltIn), b + new Vector2(side * eyeW * 0.9f, rise - tiltIn * 0.3f), 1.8f, brow);
+                AaPaint.Line(canvas, b + new Vector2(-side * eyeW * 0.9f, rise + tiltIn), b + new Vector2(side * eyeW * 0.9f, rise - tiltIn * 0.3f), 1.8f, brow);
             }
         }
 
@@ -110,97 +110,24 @@ internal static class CharacterFaces
         {
             case Expression.Happy:
                 // An open smile
-                HalfDisc(canvas, m - new Vector2(0, mw * 0.15f), mw * 1.2f, mw * 0.9f, lip);
-                Ellipse(canvas, m + new Vector2(0, mw * 0.42f), mw * 0.6f, mw * 0.3f, new Color(232, 120, 132, 255));
+                AaPaint.HalfDisc(canvas, m - new Vector2(0, mw * 0.15f), mw * 1.2f, mw * 0.9f, lip);
+                AaPaint.Ellipse(canvas, m + new Vector2(0, mw * 0.42f), mw * 0.6f, mw * 0.3f, new Color(232, 120, 132, 255));
                 break;
             case Expression.Surprised:
-                Ellipse(canvas, m, mw * 0.55f, mw * 0.7f, lip);
+                AaPaint.Ellipse(canvas, m, mw * 0.55f, mw * 0.7f, lip);
                 break;
             case Expression.Sad:
-                Arc(canvas, m + new Vector2(0, mw * 0.6f), mw * 0.9f, mw * 0.5f, MathF.PI * 1.15f, MathF.PI * 1.85f, 1.6f, lip);
+                AaPaint.Arc(canvas, m + new Vector2(0, mw * 0.6f), mw * 0.9f, mw * 0.5f, MathF.PI * 1.15f, MathF.PI * 1.85f, 1.6f, lip);
                 break;
             case Expression.Angry:
-                Line(canvas, m + new Vector2(-mw * 0.8f, 0), m + new Vector2(mw * 0.8f, 0), 1.7f, lip);
+                AaPaint.Line(canvas, m + new Vector2(-mw * 0.8f, 0), m + new Vector2(mw * 0.8f, 0), 1.7f, lip);
                 break;
             default:
                 if (s.Mustache) break;
-                Arc(canvas, m - new Vector2(0, mw * 0.4f), mw * 0.8f, mw * 0.5f, MathF.PI * 0.15f, MathF.PI * 0.85f, 1.6f, lip);
+                AaPaint.Arc(canvas, m - new Vector2(0, mw * 0.4f), mw * 0.8f, mw * 0.5f, MathF.PI * 0.15f, MathF.PI * 0.85f, 1.6f, lip);
                 break;
         }
         return canvas;
-    }
-
-    // Anti-aliased shapes: coverage from signed distance over one pixel, composited over what is there
-
-    private static void Plot(PixelCanvas c, int x, int y, Color col, float coverage)
-    {
-        if (coverage <= 0f || !c.InBounds(x, y)) return;
-        var dst = c.Get(x, y);
-        float a = Math.Clamp(coverage, 0f, 1f);
-        float da = dst.A / 255f;
-        float outA = a + da * (1f - a);
-        if (outA <= 0f) return;
-        int r = (int)((col.R * a + dst.R * da * (1f - a)) / outA);
-        int g = (int)((col.G * a + dst.G * da * (1f - a)) / outA);
-        int b = (int)((col.B * a + dst.B * da * (1f - a)) / outA);
-        c.SetRaw(x, y, new Color(r, g, b, (int)(outA * 255f)));
-    }
-
-    private static void Ellipse(PixelCanvas c, Vector2 at, float rx, float ry, Color col)
-    {
-        for (int y = (int)(at.Y - ry - 2); y <= (int)(at.Y + ry + 2); y++)
-            EllipseRow(c, at, rx, ry, y, col);
-    }
-
-    private static void EllipseRow(PixelCanvas c, Vector2 at, float rx, float ry, int y, Color col)
-    {
-        if (rx <= 0f || ry <= 0f) return;
-        for (int x = (int)(at.X - rx - 2); x <= (int)(at.X + rx + 2); x++)
-        {
-            var p = new Vector2(x + 0.5f - at.X, y + 0.5f - at.Y);
-            // Distance to the ellipse, near enough for a one-pixel edge
-            float k0 = new Vector2(p.X / rx, p.Y / ry).Length();
-            float k1 = new Vector2(p.X / (rx * rx), p.Y / (ry * ry)).Length();
-            float d = k1 > 1e-6f ? k0 * (k0 - 1f) / k1 : -Math.Min(rx, ry);
-            Plot(c, x, y, col, 0.5f - d);
-        }
-    }
-
-    /// <summary>The lower half of an ellipse (an open mouth).</summary>
-    private static void HalfDisc(PixelCanvas c, Vector2 at, float rx, float ry, Color col)
-    {
-        for (int y = (int)at.Y; y <= (int)(at.Y + ry + 2); y++)
-            EllipseRow(c, at, rx, ry, y, col);
-    }
-
-    private static void Line(PixelCanvas c, Vector2 a, Vector2 b, float width, Color col)
-    {
-        var min = Vector2.Min(a, b) - new Vector2(width + 2);
-        var max = Vector2.Max(a, b) + new Vector2(width + 2);
-        var ab = b - a;
-        float len2 = Math.Max(1e-6f, ab.LengthSquared());
-        for (int y = (int)min.Y; y <= (int)max.Y; y++)
-            for (int x = (int)min.X; x <= (int)max.X; x++)
-            {
-                var p = new Vector2(x + 0.5f, y + 0.5f);
-                float t = Math.Clamp(Vector2.Dot(p - a, ab) / len2, 0f, 1f);
-                float d = Vector2.Distance(p, a + ab * t) - width * 0.5f;
-                Plot(c, x, y, col, 0.5f - d);
-            }
-    }
-
-    /// <summary>An arc of an ellipse from angle <paramref name="from"/> to <paramref name="to"/> (0 = right, π/2 = down).</summary>
-    private static void Arc(PixelCanvas c, Vector2 at, float rx, float ry, float from, float to, float width, Color col)
-    {
-        const int Steps = 24;
-        var prev = at + new Vector2(MathF.Cos(from) * rx, MathF.Sin(from) * ry);
-        for (int i = 1; i <= Steps; i++)
-        {
-            float t = from + (to - from) * i / Steps;
-            var next = at + new Vector2(MathF.Cos(t) * rx, MathF.Sin(t) * ry);
-            Line(c, prev, next, width, col);
-            prev = next;
-        }
     }
 
     // ------------------------------------------------------------------ pixel faces (field sprites)

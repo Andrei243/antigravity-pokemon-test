@@ -129,13 +129,16 @@ public class GameEngine
 
         // Every character the maps use, sculpted and meshed in the background while the title screen plays
         CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Select(n => n.NpcType).Append("PLAYER"));
+        // The Pokémon models too, meshed side by side; the menu sprites below wait for each one
+        var modelled = PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel).ToList();
+        PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
 
         ApplySettings(window: false);
 
         // Menu sprites are rendered from the 3D Pokémon models once, up front. Species without a model of their own
         // all share the generic stand-in, baked once as PokemonSprites.Fallback.
         renderContext.EnsureLoaded();
-        PokemonSprites.BakeAll(renderContext, PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel));
+        PokemonSprites.BakeAll(renderContext, modelled);
 
         // The game opens on the title screen, which offers the saved game if there is one
         titleSave = SaveManager.LoadGame();

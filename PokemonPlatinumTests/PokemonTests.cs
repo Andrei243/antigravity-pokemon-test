@@ -385,6 +385,27 @@ public class PokemonTests
         if (!hit) Assert.Contains("missed", battle.CurrentMessage);
     }
 
+    [Theory]
+    [InlineData(MoveCategory.Physical)]
+    [InlineData(MoveCategory.Special)]
+    [InlineData(MoveCategory.Status)]
+    public void TestTheAttackAnimationKnowsTheKindOfMove(MoveCategory category)
+    {
+        // A physical move strikes, a special one is cast and a status move is a hop (plan 04 · G7): the animator
+        // is told which kind is being used
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 12, new Random(1)));
+        var foe = new Pokemon(PokemonDatabase.Get("Bidoof")!, 8, new Random(2));
+        var battle = new BattleEngine(party, foe, new Inventory(), new Pokedex());
+        SkipMessages(battle);
+
+        int move = party.Members[0].Moves.FindIndex(m => m.Category == category);
+        Assert.True(move >= 0, $"Piplup knows no {category} move at level 12");
+        battle.SelectMove(move);
+        Assert.True(battle.Anim.Player.AttackAge >= 0f);
+        Assert.Equal(category, battle.Anim.Player.AttackCategory);
+    }
+
     [Fact]
     public void TestAFaintedPokemonMustBeReplaced()
     {
