@@ -1,11 +1,20 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
 internal enum RigKind { Humanoid, Briefcase, Rift }
+
+/// <summary>Faces a character can pull (smooth faces in battle, pixel faces on field sprites).</summary>
+internal enum Expression { Neutral, Happy, Surprised, Sad, Angry }
+
+/// <summary>Short animations played over the idle or the walk.</summary>
+internal enum Emote { None, Wave, Surprised, Nod, Cheer }
 
 /// <summary>Animation inputs for one frame of a character.</summary>
 internal struct CharacterPose
@@ -25,125 +34,105 @@ internal struct CharacterPose
     public float Time;
 
     public bool Blink;
+
+    public Emote Emote;
+
+    /// <summary>Seconds since the emote began.</summary>
+    public float EmoteTime;
+
+    public Expression Expression;
 }
 
-/// <summary>One rigid piece of a character, drawn with its own transform.</summary>
-internal sealed class RigPart
+/// <summary>Bone numbers of every humanoid skeleton (L is the character's left, +X).</summary>
+internal static class HumanBones
 {
-    public MeshBuilder? Geometry;
-    public MeshBuilder? FaceGeometry;
-    public Vector3 Pivot;
-
-    public Mesh Body;
-    public Mesh Outline;
-    public Mesh Face;
-    public bool Uploaded;
-    public bool HasFace;
+    public const int Root = 0, Hips = 1, Spine = 2, Head = 3;
+    public const int UpperArmL = 4, ForeArmL = 5, HandL = 6, UpperArmR = 7, ForeArmR = 8, HandR = 9;
+    public const int ThighL = 10, ShinL = 11, FootL = 12, ThighR = 13, ShinR = 14, FootR = 15;
+    public const int Hair = 16, Bag = 17, Skirt = 18;
+    public const int Count = 19;
 }
 
 /// <summary>
-/// A low-poly chibi character in the style of the Diamond/Pearl remakes: big round head with a painted pixel-art
-/// face, short body, and limbs on pivots so they can swing. Model space: feet at the origin, facing +Z.
+/// Where a humanoid's face is in the sculpted pose: the point on the surface between the eyes (field sprites
+/// stamp their pixel faces there), the eyes' half spacing, and the square the battle face texture covers.
+/// </summary>
+internal readonly record struct FaceLayout(Vector3 Anchor, float EyeHalfSpacing, Vector3 TextureCenter, float TextureHalfSize);
+
+/// <summary>
+/// A character sculpted with the SDF kit (<see cref="SdfModel"/>), meshed once into a smooth skinned mesh, and
+/// posed by its <see cref="Skeleton"/>. Model space: feet at the origin, facing +Z; <see cref="Scale"/> sizes it.
 /// </summary>
 internal sealed class CharacterRig
 {
     public RigKind Kind;
+    public string Type = "";
+    public CharacterStyle Style = new();
     public float Scale = 1f;
+    public readonly Skeleton Skeleton = new();
+    public SdfMesh Mesh = new();
 
-    /// <summary>
-    /// Vertical stretch matching the field, whose walls and furniture are drawn taller than life so they read
-    /// from the steep camera. The head is stretched less than the body so it still looks round on screen.
-    /// </summary>
-    public float BodyStretch = 1f, HeadStretch = 1f;
+    /// <summary>The model's surface pushed out by the outline's thickness (an offset shell, so outlines never cut into creases).</summary>
+    public SdfMesh Shell = new();
 
-    public readonly RigPart Torso = new(), Head = new(), ArmL = new(), ArmR = new(), LegL = new(), LegR = new();
-    public PixelCanvas? FaceOpenArt, FaceBlinkArt;
-    public Material FaceOpen, FaceBlink;
+    /// <summary>Humanoids only: where the face is, and the patch of the head the battle face is drawn on.</summary>
+    public FaceLayout Face;
+    public SdfMesh? FacePatch;
+    public Vector2[]? FaceUVs;
 
-    public IEnumerable<RigPart> Parts
+    // On the GPU (see CharacterModels.Upload)
+    public SkinnedModel? Body;
+    public SkinnedModel? Outline;
+    public SkinnedModel? FaceModel;
+    public Material[] FaceMaterials = Array.Empty<Material>();
+    public bool Uploaded;
+
+    // Scratch for posing: one pose at a time
+    internal SkeletonPose Pose = null!;
+    internal Matrix4x4[] Skin = Array.Empty<Matrix4x4>();
+
+    internal void PrepareScratch()
     {
-        get
-        {
-            yield return LegL; yield return LegR; yield return Torso;
-            yield return ArmL; yield return ArmR; yield return Head;
-        }
+        Pose = new SkeletonPose(Skeleton.Count);
+        Skin = new Matrix4x4[Skeleton.Count];
     }
 
-    // Model-space joint positions (before Scale)
-    public const float HipY = 0.30f, HipX = 0.078f;
-    public const float TorsoPivotY = 0.29f;
-    public const float ShoulderY = 0.265f, ShoulderX = 0.165f, NeckY = 0.33f;
-    public const float HeadRadius = 0.265f;
-    public static readonly Vector3 HeadCenter = new(0, 0.245f, 0.005f);
-
-    /// <summary>
-    /// World transform of each part for a pose (System.Numerics row-vector convention). <paramref name="root"/>
-    /// places the feet and turns the model; <paramref name="trueProportions"/> skips the vertical stretch
-    /// (used for the shadow pass, so shadows aren't stretched too).
-    /// </summary>
-    public void PartTransforms(CharacterPose pose, Matrix4x4 root, Span<Matrix4x4> result, bool trueProportions = false)
+    /// <summary>Poses the skeleton for <paramref name="pose"/>; the result is in <see cref="Skin"/>.</summary>
+    public void Animate(CharacterPose pose)
     {
-        float bodyY = trueProportions ? 1f : BodyStretch;
-        float headY = trueProportions ? 1f : HeadStretch;
-        root = Matrix4x4.CreateScale(Scale, Scale * bodyY, Scale) * root;
-
-        if (Kind == RigKind.Rift)
-        {
-            float t = pose.Time;
-            var floating = Matrix4x4.CreateTranslation(0, 0.08f * MathF.Sin(t * 1.7f), 0) * root;
-            float pulse = 1f + 0.06f * MathF.Sin(t * 3.1f);
-            result[2] = Matrix4x4.CreateScale(pulse) * Matrix4x4.CreateTranslation(Torso.Pivot) * floating;
-            result[5] = Matrix4x4.CreateRotationY(t * 1.9f) * Matrix4x4.CreateRotationX(0.9f) * Matrix4x4.CreateTranslation(Head.Pivot) * floating;
-            result[3] = Matrix4x4.CreateRotationY(-t * 1.3f) * Matrix4x4.CreateRotationZ(1.1f) * Matrix4x4.CreateTranslation(ArmL.Pivot) * floating;
-            result[0] = result[1] = result[4] = floating;
-            return;
-        }
-        if (Kind == RigKind.Briefcase)
-        {
-            for (int i = 0; i < result.Length; i++) result[i] = root;
-            return;
-        }
-
-        float phase = pose.Walk * MathF.Tau;
-        float blend = pose.WalkBlend;
-        float swing = blend * (pose.Running ? 0.78f : 0.55f) * MathF.Sin(phase);
-        float bob = blend * (pose.Running ? 0.04f : 0.024f) * MathF.Abs(MathF.Sin(phase));
-        float idle = 1f - blend;
-        float breath = 1f + 0.016f * MathF.Sin(pose.Time * 2.3f) * idle;
-        float pitch = blend * (pose.Running ? 0.2f : 0.06f);
-        float twist = swing * 0.18f;
-
-        // Ledge hop: legs trail behind, arms fly up
-        float hop = MathF.Sin(Math.Clamp(pose.Hop, 0f, 1f) * MathF.PI);
-        float legHop = 0.55f * hop, armHop = -2.0f * hop;
-
-        var body = Matrix4x4.CreateTranslation(0, bob, 0) * root;
-        result[0] = Matrix4x4.CreateRotationX(swing + legHop) * Matrix4x4.CreateTranslation(LegL.Pivot) * body;
-        result[1] = Matrix4x4.CreateRotationX(-swing + legHop) * Matrix4x4.CreateTranslation(LegR.Pivot) * body;
-
-        var torso = Matrix4x4.CreateScale(1f, breath, 1f) * Matrix4x4.CreateRotationY(twist) * Matrix4x4.CreateRotationX(pitch)
-            * Matrix4x4.CreateTranslation(Torso.Pivot) * body;
-        result[2] = torso;
-
-        float armSwing = swing * (pose.Running ? 1.4f : 1.1f);
-        float armBend = pose.Running ? 0.35f * blend : 0f;
-        result[3] = Matrix4x4.CreateRotationX(-armSwing + armHop - armBend) * Matrix4x4.CreateRotationZ(-0.14f - 0.5f * hop)
-            * Matrix4x4.CreateTranslation(ArmL.Pivot) * torso;
-        result[4] = Matrix4x4.CreateRotationX(armSwing + armHop - armBend) * Matrix4x4.CreateRotationZ(0.14f + 0.5f * hop)
-            * Matrix4x4.CreateTranslation(ArmR.Pivot) * torso;
-
-        // The head tips back a little so the face reads from the high field camera, and nods while breathing
-        float nod = 0.035f * MathF.Sin(pose.Time * 2.3f + 0.6f) * idle + 0.05f * blend * MathF.Sin(phase * 2f);
-        result[5] = Matrix4x4.CreateScale(1f, headY / bodyY, 1f) * Matrix4x4.CreateRotationX(-0.2f + nod)
-            * Matrix4x4.CreateTranslation(Head.Pivot) * torso;
+        CharacterAnimation.Apply(this, pose, Pose);
+        Skeleton.Evaluate(Pose, Skin);
     }
+
+    /// <summary>The face material for an expression, eyes open or shut.</summary>
+    public Material FaceMaterial(Expression expression, bool blink) => FaceMaterials[(int)expression * 2 + (blink ? 1 : 0)];
 }
 
-/// <summary>Builds and caches the 3D character rigs, one per character type.</summary>
+/// <summary>
+/// Builds and caches the characters, one per character type: sculpted with the SDF kit, meshed (cached on disk by
+/// <see cref="SdfCache"/>) and skinned to a humanoid skeleton. The same rig is drawn in 3D in battle and baked
+/// into the field's pixel sprites (<see cref="CharacterSprites"/>).
+/// </summary>
 internal static class CharacterModels
 {
-    public const float OutlineThickness = 0.011f;
+    /// <summary>Outline of the 3D characters in battle, in model units.</summary>
+    public const float OutlineThickness = 0.009f;
+
+    /// <summary>Mesh cell size: about a hundredth of a character's height.</summary>
+    public const float MeshCell = 1f / 112f;
+
     private static readonly Dictionary<string, CharacterRig> Cache = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly ConcurrentDictionary<string, Task<CharacterRig>> Building = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Starts sculpting and meshing these character types in the background (the first run meshes them; later
+    /// runs read the mesh cache), so none holds up a frame when it first appears.
+    /// </summary>
+    public static void Preload(IEnumerable<string> npcTypes)
+    {
+        foreach (var type in npcTypes.Distinct(StringComparer.OrdinalIgnoreCase))
+            Building.GetOrAdd(type, t => Task.Run(() => Build(t)));
+    }
 
     public static RigKind KindOf(string npcType) => npcType.ToUpperInvariant() switch
     {
@@ -153,362 +142,593 @@ internal static class CharacterModels
     };
 
     /// <summary>The GPU-ready rig for a character type (built and uploaded on first use).</summary>
-    public static CharacterRig Get(string npcType, Shader characterShader)
+    public static CharacterRig Get(string npcType, FieldShaders shaders)
     {
-        string key = npcType;
-        if (Cache.TryGetValue(key, out var rig)) return rig;
-        rig = Build(npcType);
-        Upload(rig, characterShader);
-        Cache[key] = rig;
+        if (Cache.TryGetValue(npcType, out var rig) && rig.Uploaded) return rig;
+        // Waits for a background build if one is under way
+        rig ??= Building.TryGetValue(npcType, out var building) ? building.Result : Build(npcType);
+        Upload(rig, shaders);
+        Cache[npcType] = rig;
         return rig;
     }
 
-    /// <summary>CPU-side geometry only (no GPU needed).</summary>
+    /// <summary>CPU-side model only (no GPU needed).</summary>
     public static CharacterRig Build(string npcType)
     {
         var kind = KindOf(npcType);
-        var rig = new CharacterRig { Kind = kind };
+        var rig = new CharacterRig { Kind = kind, Type = npcType.ToUpperInvariant() };
+        var model = new SdfModel("character " + rig.Type);
         switch (kind)
         {
-            case RigKind.Briefcase: BuildBriefcase(rig); break;
-            case RigKind.Rift: BuildRift(rig); break;
-            default: BuildHumanoid(rig, CharacterStyle.For(npcType)); break;
+            case RigKind.Briefcase: BuildBriefcase(rig, model); break;
+            case RigKind.Rift: BuildRift(rig, model); break;
+            default:
+                rig.Style = CharacterStyle.For(npcType);
+                BuildHumanoid(rig, model, rig.Style);
+                break;
         }
+        model.BoneCount = rig.Skeleton.Count;
+        rig.Mesh = SdfCache.Get(model, MeshCell);
+        if (kind == RigKind.Humanoid) { SoftenFace(rig); SoftenHair(rig); }
+        rig.Shell = SdfCache.Get(model, MeshCell * 1.25f, OutlineThickness);
+        if (kind == RigKind.Humanoid) ExtractFacePatch(rig);
+        rig.PrepareScratch();
         return rig;
     }
 
-    private static void Upload(CharacterRig rig, Shader shader)
+    private static void Upload(CharacterRig rig, FieldShaders shaders)
     {
-        foreach (var part in rig.Parts)
+        rig.Body = SkinnedModel.Upload(rig.Mesh, rig.Skeleton.Count);
+        rig.Outline = SkinnedModel.Upload(rig.Shell, rig.Skeleton.Count);
+        if (rig.FacePatch != null && rig.FaceUVs != null && rig.FacePatch.VertexCount > 0)
         {
-            if (part.Geometry == null || part.Geometry.VertexCount == 0) continue;
-
-            // Outlines hug the whole part, face included
-            var hullSource = part.Geometry.Clone();
-            if (part.FaceGeometry != null) hullSource.Append(part.FaceGeometry, Matrix4x4.Identity);
-            var hull = hullSource.BuildOutline(OutlineThickness, c => PixelCanvas.Mix(c, new Color(34, 26, 40, 255), ArtLook.OutlineInkAmount));
-
-            part.Body = part.Geometry.Upload();
-            part.Outline = hull.Upload();
-            if (part.FaceGeometry != null && part.FaceGeometry.VertexCount > 0)
-            {
-                part.Face = part.FaceGeometry.Upload();
-                part.HasFace = true;
-            }
-            part.Uploaded = true;
+            rig.FaceModel = SkinnedModel.Upload(rig.FacePatch, rig.Skeleton.Count, rig.FaceUVs, _ => Color.White);
+            rig.FaceMaterials = CharacterFaces.Materials(rig, shaders);
         }
-
-        if (rig.FaceOpenArt != null && rig.FaceBlinkArt != null)
-        {
-            rig.FaceOpen = FaceMaterial(rig.FaceOpenArt, shader);
-            rig.FaceBlink = FaceMaterial(rig.FaceBlinkArt, shader);
-        }
-    }
-
-    private static Material FaceMaterial(PixelCanvas art, Shader shader)
-    {
-        var tex = art.ToTexture();
-        Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
-        var material = Raylib.LoadMaterialDefault();
-        material.Shader = shader;
-        Raylib.SetMaterialTexture(ref material, MaterialMapIndex.Albedo, tex);
-        return material;
+        rig.Uploaded = true;
     }
 
     // ------------------------------------------------------------------ humanoids
 
+    /// <summary>Joint positions and sizes of a body build (left side; the right mirrors it).</summary>
+    private sealed record Frame(
+        float HipY, float WaistY, float ChestY, float NeckY, Vector3 HeadC, float HeadR,
+        Vector3 Shoulder, Vector3 Elbow, Vector3 Wrist, Vector3 LegTop, Vector3 Knee, Vector3 Ankle,
+        float TorsoW, float TorsoD, float ArmR, float LegR, float EyeDrop, float EyeHalf);
+
+    // Bound in an A-pose (arms a little out from the body), which keeps arms and body apart for clean weights
+    private static readonly Frame Kid = new(
+        HipY: 0.40f, WaistY: 0.50f, ChestY: 0.585f, NeckY: 0.655f, HeadC: new(0, 0.915f, 0.012f), HeadR: 0.27f,
+        Shoulder: new(0.128f, 0.625f, 0), Elbow: new(0.19f, 0.505f, -0.006f), Wrist: new(0.23f, 0.395f, 0.008f),
+        LegTop: new(0.068f, 0.395f, 0), Knee: new(0.071f, 0.222f, 0.008f), Ankle: new(0.072f, 0.07f, 0),
+        TorsoW: 0.122f, TorsoD: 0.09f, ArmR: 0.047f, LegR: 0.061f, EyeDrop: 0.045f, EyeHalf: 0.092f);
+
+    private static readonly Frame Adult = new(
+        HipY: 0.47f, WaistY: 0.585f, ChestY: 0.69f, NeckY: 0.775f, HeadC: new(0, 1.02f, 0.012f), HeadR: 0.25f,
+        Shoulder: new(0.142f, 0.742f, 0), Elbow: new(0.202f, 0.606f, -0.006f), Wrist: new(0.24f, 0.476f, 0.008f),
+        LegTop: new(0.072f, 0.465f, 0), Knee: new(0.075f, 0.262f, 0.008f), Ankle: new(0.076f, 0.072f, 0),
+        TorsoW: 0.13f, TorsoD: 0.095f, ArmR: 0.049f, LegR: 0.064f, EyeDrop: 0.035f, EyeHalf: 0.085f);
+
+    private static Vector3 Side(Vector3 v, float side) => v with { X = v.X * side };
+
     private static Color Shade(Color c, float f) => MeshBuilder.Scale(c, f);
 
-    private static void BuildHumanoid(CharacterRig rig, CharacterStyle s)
+    /// <summary>Rotation that turns +Y onto <paramref name="dir"/>.</summary>
+    private static Quaternion AlignY(Vector3 dir)
     {
-        rig.Scale = 1.08f * s.Height;
-        rig.BodyStretch = 1.45f;
-        rig.HeadStretch = 1.12f;
-        var skin = s.Skin;
+        dir = Vector3.Normalize(dir);
+        var axis = Vector3.Cross(Vector3.UnitY, dir);
+        float angle = MathF.Acos(Math.Clamp(Vector3.Dot(Vector3.UnitY, dir), -1f, 1f));
+        return axis.LengthSquared() < 1e-10f ? Quaternion.Identity : Quaternion.CreateFromAxisAngle(Vector3.Normalize(axis), angle);
+    }
 
-        // Legs (pivot at the hip)
-        foreach (var (part, x) in new[] { (rig.LegL, -CharacterRig.HipX), (rig.LegR, CharacterRig.HipX) })
+    private static Quaternion Pitch(float radians) => Quaternion.CreateFromAxisAngle(Vector3.UnitX, radians);
+
+    private static void BuildHumanoid(CharacterRig rig, SdfModel m, CharacterStyle s)
+    {
+        var f = s.Build == BodyBuild.Adult ? Adult : Kid;
+        rig.Scale = s.Height;
+        m.WeightBlend = 0.04f;
+
+        var sk = rig.Skeleton;
+        sk.Add("root", -1, Vector3.Zero);
+        sk.Add("hips", HumanBones.Root, new(0, f.HipY, 0));
+        sk.Add("spine", HumanBones.Hips, new(0, f.WaistY, 0));
+        sk.Add("head", HumanBones.Spine, new(0, f.NeckY, 0));
+        foreach (var (side, name) in new[] { (1f, "L"), (-1f, "R") })
         {
-            part.Pivot = new Vector3(x, CharacterRig.HipY, 0);
-            var b = new MeshBuilder();
-            var legColor = s.Skirt || s.Shorts ? skin : s.Bottom;
-            b.Lathe(Vector3.Zero, new[]
-            {
-                new Vector2(0, -0.27f), new Vector2(0.052f, -0.27f), new Vector2(0.057f, -0.12f),
-                new Vector2(0.064f, -0.02f), new Vector2(0.05f, 0.03f), new Vector2(0, 0.04f)
-            }, 10, i => s.Shorts && i >= 3 ? s.Bottom : (s.Skirt && i <= 1 ? Shade(s.Accent, 0.95f) : legColor));
-            b.Ellipsoid(new Vector3(0, -0.272f, 0.028f), new Vector3(0.068f, 0.05f, 0.1f),
-                k => k <= 2 ? Shade(s.Shoes, 0.7f) : s.Shoes, 12, 6);
-            part.Geometry = b;
+            int upper = sk.Add("upperArm." + name, HumanBones.Spine, Side(f.Shoulder, side));
+            int fore = sk.Add("foreArm." + name, upper, Side(f.Elbow, side));
+            sk.Add("hand." + name, fore, Side(f.Wrist, side));
+        }
+        foreach (var (side, name) in new[] { (1f, "L"), (-1f, "R") })
+        {
+            int thigh = sk.Add("thigh." + name, HumanBones.Hips, Side(f.LegTop, side));
+            int shin = sk.Add("shin." + name, thigh, Side(f.Knee, side));
+            sk.Add("foot." + name, shin, Side(f.Ankle, side));
+        }
+        sk.Add("hair", HumanBones.Head, f.HeadC + new Vector3(0, 0.02f, -0.12f));
+        sk.Add("bag", HumanBones.Spine, new(0, f.ChestY + 0.05f, -0.1f));
+        sk.Add("skirt", HumanBones.Hips, new(0, f.HipY + 0.04f, 0));
+
+        var skin = s.Skin;
+        var hair = s.HairColor;
+        var H = f.HeadC;
+        float R = f.HeadR;
+        const SurfaceMaterial Cloth = SurfaceMaterial.Cloth, Hair = SurfaceMaterial.Hair, Skin = SurfaceMaterial.Skin;
+
+        // 1. The hair's base: a cap snug on the skull with the face carved out of it (a cut only carves what came
+        // before it). The locks laid over it later give the hair its shape.
+        m.Ellipsoid(H + new Vector3(0, 0.02f, -0.02f), new Vector3(R * 1.04f, R * 1.0f, R * 1.04f), hair, HumanBones.Head, 0f, Hair);
+        if (s.Hair == HairCut.Swept)
+            m.Ellipsoid(H + new Vector3(0, -R * 0.2f, R * 0.62f), new Vector3(R * 0.9f, R * 0.98f, R * 0.8f), hair, HumanBones.Head, 0.03f, op: SdfOp.Cut);
+        else
+            m.Ellipsoid(H + new Vector3(0, -R * 0.42f, R * 0.62f), new Vector3(R * 0.86f, R * 0.78f, R * 0.8f), hair, HumanBones.Head, 0.03f, op: SdfOp.Cut);
+        // The hair ends in a clean line that slopes from above the ears down to the nape (long hair adds its own fall later)
+        m.Box(H + new Vector3(0, -R * 1.25f, R * 0.15f), new Vector3(R * 1.6f, R * 0.62f, R * 1.6f), 0f, hair, HumanBones.Head, 0.02f,
+            rotation: Pitch(-0.42f), op: SdfOp.Cut);
+
+        // 2. Head: a round skull, fuller cheeks, small ears and a hint of a nose
+        m.Ellipsoid(H, new Vector3(R, R * 0.95f, R * 0.95f), skin, HumanBones.Head, 0.02f, Skin);
+        m.Ellipsoid(H + new Vector3(0, -R * 0.24f, R * 0.18f), new Vector3(R * 0.83f, R * 0.62f, R * 0.76f), skin, HumanBones.Head, 0.07f, Skin);
+        foreach (float side in new[] { 1f, -1f })
+            m.Ellipsoid(H + new Vector3(side * R * 0.97f, -R * 0.1f, -0.005f), new Vector3(0.03f, 0.048f, 0.034f), skin, HumanBones.Head, 0.02f, Skin);
+        float eyeY = H.Y - f.EyeDrop;
+        m.Ellipsoid(new Vector3(0, eyeY - 0.055f, H.Z + R * 0.93f), new Vector3(0.017f, 0.014f, 0.012f), skin, HumanBones.Head, 0.015f, Skin);
+
+        // 3. Hair over the head: bangs, and the cut's own shapes
+        BuildHair(m, s, f, eyeY);
+        BuildHat(m, s, f);
+        if (s.Mustache)
+        {
+            foreach (float side in new[] { 1f, -1f })
+                m.Ellipsoid(new Vector3(side * 0.045f, eyeY - 0.088f, H.Z + R * 0.9f), new Vector3(0.05f, 0.022f, 0.026f), hair, HumanBones.Head, 0.012f, Hair,
+                    Quaternion.CreateFromAxisAngle(Vector3.UnitZ, side * -0.28f));
+        }
+        if (s.BushyBrows)
+        {
+            foreach (float side in new[] { 1f, -1f })
+                m.Ellipsoid(new Vector3(side * f.EyeHalf, eyeY + 0.07f, H.Z + R * 0.86f), new Vector3(0.05f, 0.017f, 0.024f), hair, HumanBones.Head, 0.01f, Hair,
+                    Quaternion.CreateFromAxisAngle(Vector3.UnitZ, side * 0.12f));
         }
 
-        // Torso (pivot at the hips so breathing lifts the chest)
-        rig.Torso.Pivot = new Vector3(0, CharacterRig.TorsoPivotY, 0);
-        var t = new MeshBuilder();
-        t.Lathe(Vector3.Zero, new[]
-        {
-            new Vector2(0, -0.03f), new Vector2(0.12f, -0.03f), new Vector2(0.15f, 0.02f), new Vector2(0.158f, 0.1f),
-            new Vector2(0.152f, 0.19f), new Vector2(0.135f, 0.25f), new Vector2(0.1f, 0.3f), new Vector2(0.045f, 0.335f),
-            new Vector2(0, 0.34f)
-        }, 16, i => i <= 1 && !s.Skirt && !s.Coat ? s.Bottom : s.Top, 1f, 0.78f);
+        // 4. Neck and body
+        float neckBottom = f.ChestY + 0.02f, neckTop = f.NeckY + 0.07f;
+        m.Capsule(new Vector3(0, neckBottom, -0.005f), new Vector3(0, neckTop, 0.004f), 0.044f, 0.04f, skin, HumanBones.Head, 0.03f, Skin);
+        var top = s.Top;
+        var bottom = s.Bottom;
+        m.Ellipsoid(new Vector3(0, f.HipY + 0.005f, 0), new Vector3(f.TorsoW * 0.98f, 0.082f, f.TorsoD * 1.02f), s.Coat ? top : bottom, HumanBones.Hips, 0f, Cloth);
+        m.Ellipsoid(new Vector3(0, f.WaistY, 0.004f), new Vector3(f.TorsoW, (f.ChestY - f.HipY) * 0.62f, f.TorsoD), top, HumanBones.Spine, 0.05f, Cloth);
+        m.Ellipsoid(new Vector3(0, f.ChestY, 0), new Vector3(f.TorsoW * 1.08f, 0.075f, f.TorsoD), top, HumanBones.Spine, 0.05f, Cloth);
 
-        if (s.Stripes)
+        // Collar or scarf
+        m.Torus(new Vector3(0, f.ChestY + 0.055f, 0.004f), 0.07f, 0.028f, s.Accent, HumanBones.Spine, 0.012f, Cloth);
+        if (s.Scarf)
         {
-            var stripe = PixelCanvas.Light1(s.Top, 0.55f);
-            foreach (float y in new[] { 0.09f, 0.17f })
-                t.Lathe(Vector3.Zero, new[] { new Vector2(0.162f, y), new Vector2(0.16f, y + 0.035f) }, 16, stripe, 1f, 0.78f);
+            // A scarf rather than a collar: it hangs down in front a little
+            m.Capsule(new Vector3(0.03f, f.ChestY + 0.03f, f.TorsoD * 0.92f), new Vector3(0.045f, f.ChestY - 0.06f, f.TorsoD * 1.0f), 0.024f, 0.02f,
+                s.Accent, HumanBones.Spine, 0.01f, Cloth);
+        }
+
+        if (s.Coat)
+        {
+            // A long coat over the body: the upper part moves with the chest, the tails swing (skirt bone)
+            float hem = f.Knee.Y + 0.035f;
+            m.Capsule(new Vector3(0, f.HipY + 0.03f, 0), new Vector3(0, hem + 0.02f, -0.006f), f.TorsoD * 1.05f, f.TorsoW * 1.3f, top, HumanBones.Skirt, 0.04f, Cloth);
+            m.Box(new Vector3(0, hem - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), 0f, top, HumanBones.Skirt, 0f, op: SdfOp.Cut);
+            // The shirt shows down the open front
+            m.Paint(m.Box(new Vector3(0, f.ChestY - 0.02f, f.TorsoD + 0.05f), new Vector3(0.032f, 0.075f, 0.06f), 0.01f, s.Accent, HumanBones.Spine),
+                false, HumanBones.Spine);
         }
         if (s.Skirt)
         {
-            t.Lathe(Vector3.Zero, new[]
+            float hem = f.Knee.Y + 0.065f;
+            m.Capsule(new Vector3(0, f.HipY - 0.01f, 0), new Vector3(0, hem + 0.015f, -0.004f), f.TorsoD * 0.88f, f.TorsoW * 1.55f, bottom, HumanBones.Skirt, 0.03f, Cloth);
+            m.Box(new Vector3(0, hem - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), 0f, bottom, HumanBones.Skirt, 0f, op: SdfOp.Cut);
+        }
+        if (s.Bag is Color bag)
+        {
+            float bz = -f.TorsoD - 0.045f;
+            m.Box(new Vector3(0, f.ChestY - 0.035f, bz), new Vector3(0.1f, 0.1f, 0.055f), 0.045f, bag, HumanBones.Bag, 0.015f, SurfaceMaterial.Leather);
+            m.Box(new Vector3(0, f.ChestY + 0.035f, bz - 0.012f), new Vector3(0.096f, 0.04f, 0.055f), 0.03f, Shade(bag, 0.86f), HumanBones.Bag, 0.006f, SurfaceMaterial.Leather);
+            m.Box(new Vector3(0, f.ChestY + 0.0f, bz - 0.066f), new Vector3(0.022f, 0.016f, 0.008f), 0.006f, new Color(236, 230, 214, 255), HumanBones.Bag, 0f, SurfaceMaterial.Metal);
+            foreach (float side in new[] { 1f, -1f })
             {
-                new Vector2(0, -0.15f), new Vector2(0.235f, -0.15f), new Vector2(0.215f, -0.1f),
-                new Vector2(0.17f, 0.0f), new Vector2(0.15f, 0.05f), new Vector2(0, 0.05f)
-            }, 16, i => i <= 1 ? Shade(s.Bottom, 0.85f) : s.Bottom, 1f, 0.82f);
+                // Straps over the shoulders and down the front
+                var back = new Vector3(side * 0.07f, f.ChestY + 0.05f, -f.TorsoD * 0.85f);
+                var over = new Vector3(side * 0.078f, f.ChestY + 0.085f, 0.0f);
+                var front = new Vector3(side * 0.082f, f.ChestY - 0.075f, f.TorsoD * 0.98f);
+                m.Capsule(back, over, 0.017f, 0.017f, Shade(bag, 0.78f), HumanBones.Spine, 0.004f, SurfaceMaterial.Leather);
+                m.Capsule(over, front, 0.017f, 0.016f, Shade(bag, 0.78f), HumanBones.Spine, 0.004f, SurfaceMaterial.Leather);
+            }
         }
-        if (s.Coat)
+
+        // 5. Arms and hands
+        foreach (var (side, upperB, foreB, handB) in new[] { (1f, HumanBones.UpperArmL, HumanBones.ForeArmL, HumanBones.HandL), (-1f, HumanBones.UpperArmR, HumanBones.ForeArmR, HumanBones.HandR) })
         {
-            // Long lab coat with a lighter shirt showing down the front
-            t.Lathe(Vector3.Zero, new[]
+            var sh = Side(f.Shoulder, side);
+            var el = Side(f.Elbow, side);
+            var wr = Side(f.Wrist, side);
+            var sleeve = top;
+            m.Capsule(sh, el, f.ArmR, f.ArmR * 0.9f, sleeve, upperB, 0.035f, Cloth);
+            m.Capsule(el, wr, f.ArmR * 0.9f, f.ArmR * 0.76f, s.ShortSleeves ? skin : sleeve, foreB, 0.015f, s.ShortSleeves ? Skin : Cloth);
+            var along = Vector3.Normalize(wr - el);
+            var palm = wr + along * 0.044f;
+            m.Ellipsoid(palm, new Vector3(0.036f, 0.046f, 0.029f), skin, handB, 0.016f, Skin, AlignY(along));
+            m.Capsule(wr + along * 0.018f + new Vector3(-side * 0.012f, 0, 0.02f), wr + along * 0.045f + new Vector3(-side * 0.016f, 0, 0.038f),
+                0.014f, 0.012f, skin, handB, 0.01f, Skin);
+            if (s.ShortSleeves)
             {
-                new Vector2(0, -0.2f), new Vector2(0.19f, -0.2f), new Vector2(0.175f, -0.05f),
-                new Vector2(0.165f, 0.05f), new Vector2(0, 0.05f)
-            }, 16, s.Top, 1f, 0.84f);
-            t.Ellipsoid(new Vector3(0, 0.2f, 0.1f), new Vector3(0.05f, 0.1f, 0.03f), s.Accent, 10, 6);
-        }
-
-        // Scarf or collar
-        t.Torus(new Vector3(0, 0.315f, 0), 0.085f, 0.036f, s.Accent, 16, 8, 1f, 0.82f);
-
-        if (s.Bag.HasValue)
-        {
-            var bag = s.Bag.Value;
-            t.Ellipsoid(new Vector3(0, 0.15f, -0.125f), new Vector3(0.125f, 0.12f, 0.07f), bag, 14, 8);
-            t.Ellipsoid(new Vector3(0, 0.21f, -0.15f), new Vector3(0.115f, 0.06f, 0.045f), Shade(bag, 0.85f), 12, 6);
-            // Straps over the shoulders
-            foreach (float x in new[] { -0.085f, 0.085f })
-                t.Add(Matrix4x4.CreateRotationX(MathF.PI / 2f) * Matrix4x4.CreateRotationZ(MathF.PI / 2f) * Matrix4x4.CreateTranslation(x, 0.24f, -0.01f),
-                    p => p.Torus(Vector3.Zero, 0.105f, 0.016f, Shade(bag, 0.8f), 14, 6, 1f, 0.75f));
-        }
-        rig.Torso.Geometry = t;
-
-        // Arms (pivot at the shoulder, children of the torso)
-        foreach (var (part, x) in new[] { (rig.ArmL, -CharacterRig.ShoulderX), (rig.ArmR, CharacterRig.ShoulderX) })
-        {
-            part.Pivot = new Vector3(x, CharacterRig.ShoulderY, 0);
-            var b = new MeshBuilder();
-            b.Lathe(Vector3.Zero, new[]
-            {
-                new Vector2(0, -0.2f), new Vector2(0.041f, -0.2f), new Vector2(0.045f, -0.08f),
-                new Vector2(0.052f, 0f), new Vector2(0.035f, 0.035f), new Vector2(0, 0.04f)
-            }, 10, i => s.ShortSleeves && i <= 1 ? skin : s.Top);
-            b.Ellipsoid(new Vector3(0, -0.225f, 0), new Vector3(0.05f, 0.055f, 0.05f), skin, 10, 6);
-            part.Geometry = b;
-        }
-
-        // Head (pivot at the neck, child of the torso)
-        rig.Head.Pivot = new Vector3(0, CharacterRig.NeckY, 0);
-        BuildHead(rig, s);
-    }
-
-    private static void BuildHead(CharacterRig rig, CharacterStyle s)
-    {
-        const float R = CharacterRig.HeadRadius;
-        var H = CharacterRig.HeadCenter;
-        var head = new MeshBuilder();
-        head.Lathe(new Vector3(0, -0.03f, 0), new[] { new Vector2(0, -0.01f), new Vector2(0.045f, -0.01f), new Vector2(0.045f, 0.06f), new Vector2(0, 0.07f) }, 10, s.Skin);
-        head.Ellipsoid(H, new Vector3(R, R * 0.96f, R * 0.98f), Color.White, 22, 14);
-
-        // The front of the head is textured with the face; the rest is plain skin
-        var face = head.Extract(c => c.Z - H.Z > -0.06f && c.Y > -0.02f);
-        face.MapUVs(p => new Vector2(0.5f + (p.X - H.X) / (1.8f * R), 0.5f - (p.Y - H.Y) / (1.8f * R)));
-        var skinned = new MeshBuilder();
-        skinned.Append(head, Matrix4x4.Identity);
-        head = Recolor(skinned, c => c.R == 255 && c.G == 255 && c.B == 255 ? s.Skin : c);
-
-        var hair = s.HairColor;
-        var hairDark = Shade(hair, 0.82f);
-        switch (s.Hair)
-        {
-            case HairCut.Spiky:
-                head.Ellipsoid(H + new Vector3(0, 0.03f, -0.04f), new Vector3(R * 1.06f, R * 0.98f, R * 1.06f), hair, 20, 12);
-                foreach (var d in new[]
-                {
-                    new Vector3(0, 1, 0.2f), new Vector3(0.55f, 0.75f, -0.1f), new Vector3(-0.55f, 0.75f, -0.1f),
-                    new Vector3(0.35f, 0.55f, -0.75f), new Vector3(-0.35f, 0.55f, -0.75f), new Vector3(0, 0.3f, -1f),
-                    new Vector3(0.8f, 0.3f, 0.2f), new Vector3(-0.8f, 0.3f, 0.2f), new Vector3(0.2f, 0.7f, 0.65f),
-                    new Vector3(-0.25f, 0.65f, 0.6f)
-                })
-                {
-                    var dir = Vector3.Normalize(d);
-                    head.Add(AlignY(dir, H + new Vector3(0, 0.03f, -0.04f) + dir * R * 0.9f),
-                        p => p.Cone(Vector3.Zero, 0.085f, 0.15f, hair, 8));
-                }
-                break;
-
-            case HairCut.Swept:
-                head.Ellipsoid(H + new Vector3(0, 0.04f, -0.045f), new Vector3(R * 1.07f, R * 0.96f, R * 1.08f), hair, 20, 12);
-                head.Ellipsoid(H + new Vector3(0, 0.1f, -0.16f), new Vector3(R * 0.8f, R * 0.55f, R * 0.5f), hairDark, 16, 8);
-                break;
-
-            default:
-                head.Ellipsoid(H + new Vector3(0, 0.035f, -0.045f), new Vector3(R * 1.075f, R * 1f, R * 1.08f), hair, 20, 12);
-                // Bangs across the forehead
-                foreach (float x in new[] { -0.36f, 0f, 0.36f })
-                {
-                    var c = H + new Vector3(x * R, 0.6f * R, 0.8f * R);
-                    head.Ellipsoid(c, new Vector3(0.085f, 0.07f, 0.05f), x == 0 ? hair : hairDark, 10, 6);
-                }
-                if (s.Hair == HairCut.Long)
-                {
-                    head.Ellipsoid(H + new Vector3(0, -0.13f, -0.1f), new Vector3(0.25f, 0.27f, 0.15f), hairDark, 16, 10);
-                    foreach (float x in new[] { -0.23f, 0.23f })
-                        head.Ellipsoid(H + new Vector3(x, -0.1f, 0.03f), new Vector3(0.065f, 0.15f, 0.08f), hair, 10, 8);
-                }
-                break;
-        }
-
-        switch (s.Hat)
-        {
-            case Headwear.Beret:
-                head.Add(Matrix4x4.CreateRotationX(-0.22f) * Matrix4x4.CreateTranslation(H + new Vector3(0, R * 0.7f, -0.03f)), p =>
-                {
-                    p.Lathe(Vector3.Zero, new[]
-                    {
-                        new Vector2(0, -0.02f), new Vector2(0.27f, -0.02f), new Vector2(0.31f, 0.035f),
-                        new Vector2(0.29f, 0.085f), new Vector2(0.2f, 0.125f), new Vector2(0, 0.14f)
-                    }, 20, i => i <= 1 ? Shade(s.HatColor, 0.8f) : s.HatColor);
-                    p.Torus(new Vector3(0, -0.005f, 0), 0.262f, 0.028f, s.HatBand, 20, 6);
-                    p.Ellipsoid(new Vector3(0, 0.15f, 0), new Vector3(0.03f, 0.03f, 0.03f), Shade(s.HatColor, 0.85f), 8, 4);
-                });
-                break;
-            case Headwear.Cap:
-                head.Add(Matrix4x4.CreateRotationX(-0.12f) * Matrix4x4.CreateTranslation(H + new Vector3(0, R * 0.32f, -0.01f)), p =>
-                {
-                    p.Lathe(Vector3.Zero, new[]
-                    {
-                        new Vector2(0, -0.01f), new Vector2(0.29f, -0.01f), new Vector2(0.28f, 0.1f),
-                        new Vector2(0.21f, 0.18f), new Vector2(0, 0.21f)
-                    }, 20, s.HatColor);
-                    p.Ellipsoid(new Vector3(0, 0.0f, 0.24f), new Vector3(0.2f, 0.028f, 0.16f), s.HatBand, 14, 4);
-                    p.Ellipsoid(new Vector3(0, 0.215f, 0), new Vector3(0.035f, 0.02f, 0.035f), s.HatBand, 8, 4);
-                });
-                break;
-            case Headwear.NurseCap:
-                head.Add(Matrix4x4.CreateRotationX(-0.25f) * Matrix4x4.CreateTranslation(H + new Vector3(0, R * 0.95f, 0.02f)), p =>
-                {
-                    p.Ellipsoid(Vector3.Zero, new Vector3(0.16f, 0.065f, 0.09f), s.HatColor, 14, 6);
-                    p.Ellipsoid(new Vector3(0, 0.01f, 0.085f), new Vector3(0.05f, 0.03f, 0.012f), s.HatBand, 8, 4);
-                });
-                break;
-        }
-
-        rig.Head.Geometry = head;
-        rig.Head.FaceGeometry = face;
-        rig.FaceOpenArt = PaintFace(s, blink: false);
-        rig.FaceBlinkArt = PaintFace(s, blink: true);
-    }
-
-    /// <summary>Rotation that turns +Y onto <paramref name="dir"/>, then moves to <paramref name="at"/>.</summary>
-    private static Matrix4x4 AlignY(Vector3 dir, Vector3 at)
-    {
-        var axis = Vector3.Cross(Vector3.UnitY, dir);
-        float angle = MathF.Acos(Math.Clamp(Vector3.Dot(Vector3.UnitY, dir), -1f, 1f));
-        var rotation = axis.LengthSquared() < 1e-8f ? Matrix4x4.Identity : Matrix4x4.CreateFromAxisAngle(Vector3.Normalize(axis), angle);
-        return rotation * Matrix4x4.CreateTranslation(at);
-    }
-
-    private static MeshBuilder Recolor(MeshBuilder source, Func<Color, Color> map)
-    {
-        var copy = new MeshBuilder();
-        copy.AppendRecolored(source, map);
-        return copy;
-    }
-
-    /// <summary>32x32 pixel-art face mapped onto the front of the head (eyes open or closed).</summary>
-    public static PixelCanvas PaintFace(CharacterStyle s, bool blink)
-    {
-        var c = new PixelCanvas(32, 32);
-        c.Fill(s.Skin);
-        var eye = s.Eyes;
-        var iris = PixelCanvas.Light1(eye, 0.35f);
-        var lash = PixelCanvas.Mix(eye, new Color(20, 16, 30, 255), 0.5f);
-        var blush = PixelCanvas.Mix(s.Skin, new Color(250, 130, 140, 255), 0.45f);
-        var brow = PixelCanvas.Shadow(s.HairColor, 0.25f);
-
-        foreach (int ex in new[] { 8, 20 })
-        {
-            if (blink)
-            {
-                c.HLine(ex, 17, 4, lash);
-                c.Set(ex - 1, 16, lash);
-                c.Set(ex + 4, 16, lash);
+                // The sleeve ends two thirds of the way down the upper arm
+                var hemPoint = Vector3.Lerp(sh, el, 0.68f);
+                m.Paint(m.Capsule(hemPoint, wr + along * 0.1f, 0.075f, 0.075f, skin, upperB), true, upperB, foreB).Material = Skin;
             }
             else
             {
-                c.HLine(ex + 1, 13, 2, lash);
-                c.Rect(ex, 14, 4, 5, eye);
-                c.HLine(ex + 1, 19, 2, eye);
-                c.Rect(ex + 1, 16, 2, 3, iris);
-                c.Rect(ex + 1, 14, 2, 2, Color.White);
-                c.Set(ex - 1, 14, lash);
-                c.Set(ex + 4, 14, lash);
+                // A cuff where the sleeve meets the hand
+                m.Torus(wr - along * 0.006f, f.ArmR * 0.72f, 0.011f, Shade(sleeve, 1.08f), foreB, 0.008f, Cloth, AlignY(along));
             }
-            c.HLine(ex, 11, 4, brow);
         }
 
-        c.Rect(4, 20, 3, 2, blush);
-        c.Rect(25, 20, 3, 2, blush);
-        c.HLine(15, 22, 2, new Color(170, 80, 80, 255));
-
-        if (s.Mustache)
+        // 6. Legs and shoes (hard joins under a skirt or coat, so the legs don't pull the hem)
+        bool covered = s.Skirt || s.Coat;
+        var sole = s.Sole ?? Shade(s.Shoes, 0.62f);
+        foreach (var (side, thighB, shinB, footB) in new[] { (1f, HumanBones.ThighL, HumanBones.ShinL, HumanBones.FootL), (-1f, HumanBones.ThighR, HumanBones.ShinR, HumanBones.FootR) })
         {
-            var white = s.HairColor;
-            var grey = Shade(s.HairColor, 0.78f);
-            foreach (int ex in new[] { 7, 19 }) c.Rect(ex, 9, 6, 3, white);
-            c.Rect(10, 20, 12, 3, white);
-            c.Rect(9, 21, 2, 3, white);
-            c.Rect(21, 21, 2, 3, white);
-            c.HLine(11, 23, 10, grey);
+            var hip = Side(f.LegTop, side);
+            var knee = Side(f.Knee, side);
+            var ankle = Side(f.Ankle, side);
+            bool bare = s.Skirt || s.Shorts;
+            m.Capsule(hip + new Vector3(0, 0.03f, 0), knee, f.LegR, f.LegR * 0.84f, s.Skirt ? skin : bottom, thighB, covered ? 0f : 0.04f, s.Skirt ? Skin : Cloth);
+            m.Capsule(knee, ankle + new Vector3(0, 0.01f, 0), f.LegR * 0.84f, f.LegR * 0.7f, bare ? skin : bottom, shinB, 0.02f, bare ? Skin : Cloth);
+            if (s.Shorts)
+                m.Paint(m.Capsule(Vector3.Lerp(hip, knee, 0.72f), ankle, 0.09f, 0.09f, skin, thighB), true, thighB, shinB).Material = Skin;
+
+            var shoe = new Vector3(ankle.X, 0.044f, ankle.Z + 0.03f);
+            m.Box(shoe, new Vector3(0.05f, 0.044f, 0.086f), 0.04f, s.Shoes, footB, 0.02f, SurfaceMaterial.Leather);
+            m.Paint(m.Box(new Vector3(shoe.X, 0.008f, shoe.Z), new Vector3(0.07f, 0.018f, 0.12f), 0f, sole, footB), true, footB).Material = SurfaceMaterial.Plastic;
         }
-        return c;
+
+        // 7. Colour: a clean waistline, stripes across the shirt, rosy cheeks
+        if (!s.Coat)
+            m.Paint(m.Box(new Vector3(0, f.HipY - 0.1f, 0), new Vector3(0.3f, (f.WaistY - f.HipY) * 0.42f + 0.1f, 0.3f), 0f, bottom, HumanBones.Hips),
+                false, HumanBones.Hips, HumanBones.Spine, HumanBones.Skirt);
+        if (s.Stripes)
+        {
+            // Light stripes on a coloured shirt, coloured ones on a white shirt
+            var stripe = s.Top.R + s.Top.G + s.Top.B > 690 ? s.Accent : PixelCanvas.Light1(s.Top, 0.55f);
+            foreach (float y in new[] { f.ChestY - 0.045f, f.WaistY - 0.025f })
+                m.Paint(m.Box(new Vector3(0, y, 0), new Vector3(0.3f, 0.013f, 0.3f), 0f, stripe, HumanBones.Spine), false, HumanBones.Spine);
+        }
+        if (s.Blush)
+        {
+            var blush = PixelCanvas.Mix(skin, new Color(250, 120, 130, 255), 0.32f);
+            foreach (float side in new[] { 1f, -1f })
+                m.Paint(m.Ellipsoid(new Vector3(side * (f.EyeHalf + 0.035f), eyeY - 0.065f, H.Z + R * 0.75f), new Vector3(0.042f, 0.024f, 0.08f), blush, HumanBones.Head),
+                    false, HumanBones.Head);
+        }
+
+        // The face: the surface point between the eyes, found by walking in from the front
+        var anchor = SurfaceAlong(m, new Vector3(0, eyeY, H.Z + 1f), -Vector3.UnitZ);
+        var center = new Vector3(0, eyeY - 0.03f, anchor.Z);
+        rig.Face = new FaceLayout(anchor, f.EyeHalf, center, R * 0.82f);
+    }
+
+    /// <summary>
+    /// Sculpted hair: locks laid over the head, each a tapering tube that follows the skull along a great circle
+    /// from where it grows (the crown, or the hairline for swept hair) to its tip. Small blends leave grooves
+    /// between them, so the hair reads as locks and its sheen breaks along them. Directions are seen from the
+    /// head's centre (x to the character's left, y up, z forward).
+    /// </summary>
+    private static void BuildHair(SdfModel m, CharacterStyle s, Frame f, float eyeY)
+    {
+        var hair = s.HairColor;
+        var H = f.HeadC + new Vector3(0, 0.02f, -0.015f);
+        float R = f.HeadR;
+        const SurfaceMaterial Hair = SurfaceMaterial.Hair;
+        var crown = new Vector3(0f, 0.86f, -0.5f);
+
+        // Under a beret or a cap only the hair below its edge shows, so locks grow from there instead of the crown
+        bool hatted = s.Hat is Headwear.Beret or Headwear.Cap;
+        Vector3 Root(Vector3 to) => hatted ? Vector3.Normalize(new Vector3(to.X * 0.9f, 0.42f, to.Z == 0f ? -0.9f : MathF.Sign(to.Z) * 0.86f)) : crown;
+
+        void Lock(Vector3 from, Vector3 to, float r0, float r1, float lift = 0.012f, int bone = HumanBones.Head)
+        {
+            var a = Vector3.Normalize(from);
+            var b = Vector3.Normalize(to);
+            float omega = MathF.Acos(Math.Clamp(Vector3.Dot(a, b), -1f, 1f));
+            Vector3 Dir(float t) => omega < 1e-3f ? a : (MathF.Sin((1f - t) * omega) * a + MathF.Sin(t * omega) * b) / MathF.Sin(omega);
+            const int Segments = 6;
+            for (int i = 0; i < Segments; i++)
+            {
+                float t0 = i / (float)Segments, t1 = (i + 1) / (float)Segments;
+                // The tip lifts off the skull a little, so each lock ends in a point that stands proud
+                var p0 = H + Dir(t0) * (R * 0.98f + lift * t0 * t0);
+                var p1 = H + Dir(t1) * (R * 0.98f + lift * t1 * t1);
+                m.Capsule(p0, p1, r0 + (r1 - r0) * t0, r0 + (r1 - r0) * t1, hair, bone, 0.012f, Hair);
+            }
+        }
+
+        // Bangs over the forehead, pointed, ending just above the eyes (swept hair leaves the forehead bare)
+        if (s.Hair is HairCut.Short or HairCut.Long or HairCut.Spiky)
+        {
+            float fringe = (eyeY + 0.03f - H.Y) / R;
+            foreach (float x in new[] { -0.5f, -0.17f, 0.17f, 0.5f })
+            {
+                var tip = new Vector3(x, fringe + MathF.Abs(x) * 0.25f, 0.92f);
+                Lock(hatted ? new Vector3(x * 0.95f, 0.5f, 0.86f) : crown, tip, 0.075f, 0.026f, 0.03f);
+            }
+        }
+
+        switch (s.Hair)
+        {
+            case HairCut.Spiky:
+                // Tufts that stand up and sweep back, long enough to stand out of the outline at sprite size
+                (Vector3 Dir, float Len)[] spikes =
+                {
+                    (new(0f, 1f, 0.15f), 0.25f), (new(0.55f, 0.8f, 0.05f), 0.23f), (new(-0.55f, 0.8f, 0.05f), 0.23f),
+                    (new(0.35f, 0.7f, -0.6f), 0.23f), (new(-0.35f, 0.7f, -0.6f), 0.23f), (new(0f, 0.45f, -0.9f), 0.22f),
+                    (new(0.85f, 0.35f, -0.25f), 0.18f), (new(-0.85f, 0.35f, -0.25f), 0.18f), (new(0.3f, 0.75f, 0.55f), 0.19f),
+                    (new(-0.3f, 0.75f, 0.55f), 0.19f)
+                };
+                foreach (var (d, len) in spikes)
+                {
+                    var dir = Vector3.Normalize(d);
+                    var root = H + dir * R * 0.82f;
+                    m.Capsule(root, root + dir * len, 0.075f, 0.012f, hair, HumanBones.Head, 0.03f, Hair);
+                }
+                foreach (float side in new[] { 1f, -1f })
+                    Lock(crown, new Vector3(side * 0.95f, -0.05f, 0.3f), 0.07f, 0.03f, 0.02f);
+                break;
+
+            case HairCut.Swept:
+                // Combed straight back from the hairline over the crown, and back over the ears at the sides
+                foreach (float x in new[] { -0.42f, -0.14f, 0.14f, 0.42f })
+                    Lock(new Vector3(x, 0.62f, 0.78f), new Vector3(x * 0.85f, 0.05f, -1f), 0.075f, 0.05f, 0.02f);
+                Lock(new Vector3(0f, 0.7f, 0.7f), new Vector3(0f, 0.1f, -1f), 0.08f, 0.055f, 0.02f);
+                foreach (float side in new[] { 1f, -1f })
+                {
+                    Lock(new Vector3(side * 0.8f, 0.42f, 0.45f), new Vector3(side * 0.62f, -0.25f, -0.75f), 0.065f, 0.045f, 0.01f);
+                    Lock(new Vector3(side * 0.92f, 0.05f, 0.35f), new Vector3(side * 0.7f, -0.45f, -0.55f), 0.055f, 0.04f, 0.0f);
+                }
+                break;
+
+            default:
+                // Short or long: locks from the crown over the top, the sides and the back
+                if (!hatted)
+                    foreach (var to in new[] { new Vector3(0f, 0.72f, 0.7f), new Vector3(0.62f, 0.62f, 0.45f), new Vector3(-0.62f, 0.62f, 0.45f) })
+                        Lock(crown, to, 0.08f, 0.05f, 0.02f);
+                foreach (float side in new[] { 1f, -1f })
+                {
+                    foreach (var to in new[] { new Vector3(side * 0.95f, 0.02f, 0.35f), new Vector3(side * 0.9f, -0.3f, -0.25f), new Vector3(side * 0.5f, -0.55f, -0.7f) })
+                        Lock(Root(to), to, 0.075f, 0.04f, 0.02f);
+                }
+                Lock(Root(new Vector3(0f, -0.6f, -0.85f)), new Vector3(0f, -0.6f, -0.85f), 0.085f, 0.05f, 0.02f);
+                // Under a hat the locks fan out from its edge and would leave gaps at the back for the hat's band to show through
+                if (hatted)
+                    foreach (float side in new[] { 1f, -1f })
+                        Lock(Root(new Vector3(side * 0.25f, -0.6f, -0.8f)), new Vector3(side * 0.25f, -0.6f, -0.8f), 0.08f, 0.045f, 0.02f);
+
+                if (s.Hair == HairCut.Long)
+                {
+                    // A smooth mass behind, under the locks
+                    m.Ellipsoid(H + new Vector3(0, -R * 0.75f, -R * 0.5f), new Vector3(R * 0.98f, R * 1.0f, R * 0.5f), hair, HumanBones.Hair, 0.05f, Hair);
+                    // Hair falls down the back to the shoulders in locks that swing, with a lock framing each cheek
+                    foreach (float x in new[] { -0.55f, -0.18f, 0.18f, 0.55f })
+                    {
+                        var top = H + new Vector3(x * R, -R * 0.2f, -R * 0.82f + MathF.Abs(x) * R * 0.25f);
+                        var tip = H + new Vector3(x * R * 1.12f, -R * 1.65f, -R * 0.6f + MathF.Abs(x) * R * 0.2f);
+                        m.Capsule(top, tip, 0.1f, 0.05f, hair, HumanBones.Hair, 0.025f, Hair);
+                    }
+                    foreach (float side in new[] { 1f, -1f })
+                        m.Capsule(H + new Vector3(side * R * 0.9f, -R * 0.05f, R * 0.18f), H + new Vector3(side * R * 0.92f, -R * 1.05f, R * 0.12f),
+                            0.065f, 0.035f, hair, HumanBones.Head, 0.025f, Hair);
+                }
+                break;
+        }
+    }
+
+    private static void BuildHat(SdfModel m, CharacterStyle s, Frame f)
+    {
+        var H = f.HeadC;
+        float R = f.HeadR;
+        switch (s.Hat)
+        {
+            case Headwear.Beret:
+            {
+                // A soft, flat beret worn toward the back, with a white band and a little stalk on top
+                // It covers the crown of the hair entirely, so none shows through its top
+                var at = H + new Vector3(0, R * 0.84f, -0.035f);
+                var tilt = Pitch(-0.2f);
+                m.Ellipsoid(at, new Vector3(R * 1.14f, R * 0.44f, R * 1.08f), s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Cloth, tilt);
+                m.Torus(at + new Vector3(0, -R * 0.24f, 0.012f), R * 1.0f, 0.027f, s.HatBand, HumanBones.Head, 0f, SurfaceMaterial.Cloth, tilt);
+                m.Capsule(at + new Vector3(0, R * 0.38f, -0.012f), at + new Vector3(0, R * 0.52f, -0.03f), 0.022f, 0.016f, Shade(s.HatColor, 0.86f), HumanBones.Head, 0.012f, SurfaceMaterial.Cloth);
+                break;
+            }
+            case Headwear.Cap:
+            {
+                var at = H + new Vector3(0, R * 0.62f, -0.015f);
+                m.Cylinder(at, R * 1.08f, R * 0.6f, R * 0.5f, s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Cloth, Pitch(-0.12f));
+                // The peak comes out of the crown's front edge, over the bangs
+                m.Ellipsoid(H + new Vector3(0, R * 0.6f, R * 1.0f), new Vector3(R * 0.8f, 0.024f, R * 0.62f), s.HatBand, HumanBones.Head, 0f, SurfaceMaterial.Plastic, Pitch(0.2f));
+                m.Sphere(at + new Vector3(0, R * 0.62f, -0.03f), 0.02f, Shade(s.HatColor, 0.88f), HumanBones.Head, 0.01f, SurfaceMaterial.Cloth);
+                break;
+            }
+            case Headwear.NurseCap:
+            {
+                // A starched band standing on the hair at the top of the head (the hair is built first and stands
+                // about 0.3 off the head's centre there, so anything closer is buried), with a red cross on its front
+                var at = H + new Vector3(0, R * 1.2f, R * 0.5f);
+                var tilt = Pitch(-0.3f);
+                m.Box(at, new Vector3(R * 0.5f, 0.07f, 0.03f), 0.028f, s.HatColor, HumanBones.Head, 0.012f, SurfaceMaterial.Cloth, tilt);
+                var front = at + Vector3.Transform(new Vector3(0, 0.01f, 0.03f), tilt);
+                m.Paint(m.Box(front, new Vector3(0.013f, 0.036f, 0.02f), 0f, s.HatBand, HumanBones.Head, rotation: tilt));
+                m.Paint(m.Box(front, new Vector3(0.036f, 0.013f, 0.02f), 0f, s.HatBand, HumanBones.Head, rotation: tilt));
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Bends the normals on the front of the head toward the face's forward direction (a little upward), the way
+    /// cel-shaded characters are usually made: the face lights evenly instead of being split by the shade's edge.
+    /// </summary>
+    private static void SoftenFace(CharacterRig rig)
+    {
+        var mesh = rig.Mesh;
+        var forward = Vector3.Normalize(new Vector3(0, 0.75f, 0.66f));
+        var head = rig.Skeleton[HumanBones.Head].Joint;
+        var skin = rig.Style.Skin;
+        for (int v = 0; v < mesh.VertexCount; v++)
+        {
+            if (mesh.WeightOf(v, HumanBones.Head) < 0.9f || mesh.Positions[v].Y < head.Y + 0.04f) continue;
+            var c = mesh.Colors[v];
+            int dr = c.R - skin.R, dg = c.G - skin.G, db = c.B - skin.B;
+            if (dr * dr + dg * dg + db * db > 70 * 70) continue;
+            var n = mesh.Normals[v];
+            float t = Math.Clamp(n.Z * 1.6f + 0.2f, 0f, 1f) * 0.85f;
+            mesh.Normals[v] = Vector3.Normalize(Vector3.Lerp(n, forward, t));
+        }
+    }
+
+    /// <summary>
+    /// Bends the hair's normals toward those of the smooth mass it fills (a capsule from the middle of the head
+    /// down the fall of the hair), as cel-shaded hair is usually made: one clean shade edge and sheen across the
+    /// head instead of a blotch on every lock. The locks keep their shape in the silhouette and the outline.
+    /// </summary>
+    private static void SoftenHair(CharacterRig rig)
+    {
+        var mesh = rig.Mesh;
+        var f = rig.Style.Build == BodyBuild.Adult ? Adult : Kid;
+        var top = f.HeadC + new Vector3(0, 0.02f, -0.015f);
+        float lowest = top.Y;
+        for (int v = 0; v < mesh.VertexCount; v++)
+            if (mesh.Materials[v] == (byte)SurfaceMaterial.Hair) lowest = Math.Min(lowest, mesh.Positions[v].Y);
+        // Short hair ends round the head, which leaves a sphere; long hair hangs behind, which leaves a capsule
+        float drop = Math.Max(0f, top.Y - lowest - f.HeadR * 0.6f);
+        var axis = new Vector3(0, -drop, -drop * 0.25f);
+        float length2 = axis.LengthSquared();
+        for (int v = 0; v < mesh.VertexCount; v++)
+        {
+            if (mesh.Materials[v] != (byte)SurfaceMaterial.Hair) continue;
+            var p = mesh.Positions[v];
+            float t = length2 < 1e-6f ? 0f : Math.Clamp(Vector3.Dot(p - top, axis) / length2, 0f, 1f);
+            var away = p - (top + axis * t);
+            if (away.LengthSquared() < 1e-8f) continue;
+            mesh.Normals[v] = Vector3.Normalize(Vector3.Lerp(mesh.Normals[v], Vector3.Normalize(away), 0.7f));
+        }
+    }
+
+    /// <summary>Walks from <paramref name="from"/> along <paramref name="dir"/> to the model's surface (sphere tracing).</summary>
+    internal static Vector3 SurfaceAlong(SdfModel model, Vector3 from, Vector3 dir)
+    {
+        var p = from;
+        for (int i = 0; i < 256; i++)
+        {
+            float d = model.Distance(p);
+            if (d < 0.0005f) break;
+            p += dir * Math.Max(d * 0.9f, 0.0005f);
+        }
+        return p;
+    }
+
+    /// <summary>
+    /// The front of the head, where the battle face is drawn: skin triangles moving only with the head, inside
+    /// the face square, copied a hair's breadth out from the head and mapped onto the face texture.
+    /// </summary>
+    private static void ExtractFacePatch(CharacterRig rig)
+    {
+        var mesh = rig.Mesh;
+        var face = rig.Face;
+        var skin = rig.Style.Skin;
+        float half = face.TextureHalfSize;
+        var c = face.TextureCenter;
+
+        bool Usable(int v)
+        {
+            var p = mesh.Positions[v];
+            if (mesh.WeightOf(v, HumanBones.Head) < 0.97f) return false;
+            if (MathF.Abs(p.X - c.X) > half || MathF.Abs(p.Y - c.Y) > half || p.Z < c.Z - 0.2f) return false;
+            if (mesh.Normals[v].Z < 0.2f) return false;
+            var col = mesh.Colors[v];
+            // Skin, or the blush painted on it; never hair
+            int dr = col.R - skin.R, dg = col.G - skin.G, db = col.B - skin.B;
+            return dr * dr + dg * dg + db * db < 70 * 70;
+        }
+
+        var map = new Dictionary<int, int>();
+        var indices = new List<int>();
+        int Map(int v)
+        {
+            if (!map.TryGetValue(v, out int i))
+            {
+                i = map.Count;
+                map[v] = i;
+            }
+            return i;
+        }
+        for (int t = 0; t < mesh.Indices.Length; t += 3)
+        {
+            int a = mesh.Indices[t], b = mesh.Indices[t + 1], d = mesh.Indices[t + 2];
+            if (!Usable(a) || !Usable(b) || !Usable(d)) continue;
+            indices.Add(Map(a));
+            indices.Add(Map(b));
+            indices.Add(Map(d));
+        }
+
+        int n = map.Count;
+        var patch = new SdfMesh
+        {
+            Positions = new Vector3[n], Normals = new Vector3[n], Colors = new Color[n], Materials = new byte[n],
+            BoneIndices = new byte[n * 4], BoneWeights = new float[n * 4], Indices = indices.ToArray()
+        };
+        var uvs = new Vector2[n];
+        foreach (var (src, dst) in map)
+        {
+            var nrm = mesh.Normals[src];
+            patch.Positions[dst] = mesh.Positions[src] + nrm * 0.0025f;
+            patch.Normals[dst] = nrm;
+            patch.Colors[dst] = Color.White;
+            patch.Materials[dst] = (byte)SurfaceMaterial.Skin;
+            patch.BoneIndices[dst * 4] = HumanBones.Head;
+            patch.BoneWeights[dst * 4] = 1f;
+            var p = mesh.Positions[src];
+            uvs[dst] = new Vector2(0.5f + (p.X - c.X) / (2f * half), 0.5f - (p.Y - c.Y) / (2f * half));
+        }
+        rig.FacePatch = patch;
+        rig.FaceUVs = uvs;
     }
 
     // ------------------------------------------------------------------ props
 
-    private static void BuildBriefcase(CharacterRig rig)
+    private static void BuildBriefcase(CharacterRig rig, SdfModel m)
     {
         rig.Scale = 1f;
+        rig.Skeleton.Add("root", -1, Vector3.Zero);
         var leather = new Color(170, 112, 64, 255);
-        var b = new MeshBuilder();
-        b.Box(new Vector3(-0.26f, 0.02f, -0.1f), new Vector3(0.26f, 0.34f, 0.1f), leather, BoxFaces.All);
-        b.Box(new Vector3(-0.265f, 0.2f, -0.105f), new Vector3(0.265f, 0.225f, 0.105f), Shade(leather, 0.7f), BoxFaces.All);
-        b.Box(new Vector3(-0.27f, 0f, -0.11f), new Vector3(0.27f, 0.03f, 0.11f), Shade(leather, 0.8f), BoxFaces.All);
-        b.Add(Matrix4x4.CreateRotationX(MathF.PI / 2f) * Matrix4x4.CreateTranslation(0, 0.37f, 0),
-            p => p.Torus(Vector3.Zero, 0.075f, 0.022f, Shade(leather, 0.75f), 14, 6));
+        var gold = new Color(250, 210, 80, 255);
+        m.Box(new Vector3(0, 0.18f, 0), new Vector3(0.27f, 0.16f, 0.1f), 0.035f, leather, 0, 0f, SurfaceMaterial.Leather);
+        m.Torus(new Vector3(0, 0.375f, 0), 0.07f, 0.02f, Shade(leather, 0.75f), 0, 0.012f, SurfaceMaterial.Leather, Quaternion.CreateFromAxisAngle(Vector3.UnitX, MathF.PI / 2f));
         foreach (float x in new[] { -0.14f, 0.14f })
-            b.Box(new Vector3(x - 0.03f, 0.19f, 0.1f), new Vector3(x + 0.03f, 0.25f, 0.12f), new Color(250, 210, 80, 255), BoxFaces.All);
-        rig.Torso.Geometry = b;
+            m.Box(new Vector3(x, 0.235f, 0.1f), new Vector3(0.03f, 0.026f, 0.012f), 0.008f, gold, 0, 0.004f, SurfaceMaterial.Metal);
+        // The lid's seam and a darker base
+        m.Paint(m.Box(new Vector3(0, 0.215f, 0), new Vector3(0.4f, 0.008f, 0.2f), 0f, Shade(leather, 0.68f), 0));
+        m.Paint(m.Box(new Vector3(0, 0.0f, 0), new Vector3(0.4f, 0.03f, 0.2f), 0f, Shade(leather, 0.8f), 0));
     }
 
-    private static void BuildRift(CharacterRig rig)
+    private static void BuildRift(CharacterRig rig, SdfModel m)
     {
+        // A tear in the world: a dark core glowing red at its heart, ringed by two slowly turning bands of light
         rig.Scale = 1f;
-        rig.Torso.Pivot = new Vector3(0, 0.9f, 0);
-        rig.Head.Pivot = rig.Torso.Pivot;
-        rig.ArmL.Pivot = rig.Torso.Pivot;
-
-        var core = new MeshBuilder();
-        core.Ellipsoid(Vector3.Zero, new Vector3(0.3f, 0.46f, 0.3f), k => PixelCanvas.Mix(new Color(20, 8, 30, 255), new Color(110, 40, 150, 255), k / 12f), 16, 12);
-        core.Ellipsoid(new Vector3(0, 0, 0.12f), new Vector3(0.16f, 0.26f, 0.2f), new Color(200, 50, 80, 255), 12, 8);
-        rig.Torso.Geometry = core;
-
-        var ring = new MeshBuilder();
-        ring.Torus(Vector3.Zero, 0.46f, 0.04f, new Color(210, 60, 90, 255), 24, 6);
-        rig.Head.Geometry = ring;
-
-        var ring2 = new MeshBuilder();
-        ring2.Torus(Vector3.Zero, 0.56f, 0.028f, new Color(150, 90, 210, 255), 24, 6);
-        rig.ArmL.Geometry = ring2;
+        int root = rig.Skeleton.Add("root", -1, Vector3.Zero);
+        int core = rig.Skeleton.Add("core", root, new Vector3(0, 0.9f, 0));
+        int ringA = rig.Skeleton.Add("ringA", core, new Vector3(0, 0.9f, 0));
+        int ringB = rig.Skeleton.Add("ringB", core, new Vector3(0, 0.9f, 0));
+        var c = new Vector3(0, 0.9f, 0);
+        m.Ellipsoid(c, new Vector3(0.3f, 0.46f, 0.3f), new Color(30, 12, 44, 255), core, 0f, SurfaceMaterial.Default);
+        m.Ellipsoid(c + new Vector3(0, 0.12f, 0), new Vector3(0.22f, 0.3f, 0.22f), new Color(96, 36, 132, 255), core, 0.12f, SurfaceMaterial.Default);
+        m.Paint(m.Ellipsoid(c + new Vector3(0, 0, 0.2f), new Vector3(0.14f, 0.24f, 0.2f), new Color(220, 56, 90, 255), core), true).Material = SurfaceMaterial.Glow;
+        m.Torus(c, 0.46f, 0.035f, new Color(210, 60, 90, 255), ringA, 0f, SurfaceMaterial.Glow, Quaternion.CreateFromAxisAngle(Vector3.UnitX, 0.9f));
+        m.Torus(c, 0.56f, 0.026f, new Color(150, 90, 210, 255), ringB, 0f, SurfaceMaterial.Glow, Quaternion.CreateFromAxisAngle(Vector3.UnitZ, 1.1f));
     }
 }

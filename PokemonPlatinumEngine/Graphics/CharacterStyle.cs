@@ -6,6 +6,9 @@ internal enum Headwear { None, Beret, Cap, NurseCap }
 
 internal enum HairCut { Short, Spiky, Long, Swept }
 
+/// <summary>Body proportions: chibi children, and adults with a longer body and a slightly smaller head.</summary>
+internal enum BodyBuild { Kid, Adult }
+
 /// <summary>Outfit and colouring for one kind of character, shared by the 3D field models and the 2D trainer card art.</summary>
 internal sealed class CharacterStyle
 {
@@ -23,6 +26,17 @@ internal sealed class CharacterStyle
     public bool Skirt, Shorts, Mustache, Stripes, Coat, ShortSleeves;
     public Color? Bag;
 
+    public BodyBuild Build = BodyBuild.Kid;
+
+    /// <summary>Colour of the shoes' soles (darker shoe colour when left out).</summary>
+    public Color? Sole;
+
+    /// <summary>Heavy eyebrows sculpted on the face (the professor); long lashes; rosy cheeks.</summary>
+    public bool BushyBrows, Lashes, Blush;
+
+    /// <summary>The accent colour is a scarf that hangs down in front, not a collar.</summary>
+    public bool Scarf;
+
     /// <summary>Relative size: adults stand a little taller than the kids.</summary>
     public float Height = 1f;
 
@@ -33,20 +47,21 @@ internal sealed class CharacterStyle
             HairColor = new(70, 56, 78, 255),
             Hat = Headwear.Beret, HatColor = new(220, 56, 60, 255), HatBand = new(246, 246, 250, 255),
             Top = new(58, 78, 138, 255), Accent = new(236, 70, 70, 255),
-            Bottom = new(48, 50, 70, 255), Shoes = new(200, 70, 60, 255),
-            Bag = new(242, 196, 70, 255)
+            Bottom = new(48, 50, 70, 255), Shoes = new(200, 70, 60, 255), Sole = new(240, 236, 228, 255),
+            Bag = new(242, 196, 70, 255), Blush = true, Scarf = true
         },
         "RIVAL" => new CharacterStyle
         {
             HairColor = new(250, 212, 80, 255), Hair = HairCut.Spiky,
             Top = new(244, 132, 52, 255), Accent = new(72, 176, 104, 255), Stripes = true,
-            Bottom = new(58, 70, 108, 255), Shoes = new(236, 236, 240, 255), Eyes = new(96, 70, 40, 255)
+            Bottom = new(58, 70, 108, 255), Shoes = new(236, 236, 240, 255), Sole = new(150, 150, 166, 255), Eyes = new(96, 70, 40, 255),
+            Blush = true, Scarf = true
         },
         "ROWAN" => new CharacterStyle
         {
-            HairColor = new(236, 236, 242, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,
+            HairColor = new(190, 194, 210, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,
             Top = new(126, 92, 66, 255), Accent = new(236, 236, 242, 255),
-            Bottom = new(84, 66, 56, 255), Shoes = new(52, 42, 40, 255), Height = 1.12f
+            Bottom = new(84, 66, 56, 255), Shoes = new(52, 42, 40, 255), Height = 1.04f, Build = BodyBuild.Adult, BushyBrows = true
         },
         "NURSE" => new CharacterStyle
         {
@@ -54,56 +69,56 @@ internal sealed class CharacterStyle
             Hat = Headwear.NurseCap, HatColor = Color.White, HatBand = new(232, 72, 96, 255),
             Top = new(252, 252, 255, 255), Accent = new(248, 170, 200, 255),
             Bottom = new(248, 170, 200, 255), Skirt = true, Shoes = new(248, 248, 252, 255),
-            Eyes = new(70, 120, 200, 255), Height = 1.06f
+            Eyes = new(70, 120, 200, 255), Height = 1.0f, Build = BodyBuild.Adult, Lashes = true, Blush = true
         },
         "MOM" => new CharacterStyle
         {
             HairColor = new(176, 84, 60, 255), Hair = HairCut.Long,
             Top = new(246, 166, 120, 255), Accent = new(252, 244, 232, 255),
-            Bottom = new(120, 96, 176, 255), Skirt = true, Shoes = new(120, 70, 60, 255), Height = 1.08f
+            Bottom = new(120, 96, 176, 255), Skirt = true, Shoes = new(120, 70, 60, 255), Height = 1.0f, Build = BodyBuild.Adult, Lashes = true
         },
         "LADY" => new CharacterStyle
         {
             HairColor = new(244, 206, 104, 255), Hair = HairCut.Long,
             Top = new(118, 186, 132, 255), Accent = new(252, 248, 236, 255),
-            Bottom = new(96, 140, 110, 255), Skirt = true, Shoes = new(110, 76, 60, 255), Height = 1.08f
+            Bottom = new(96, 140, 110, 255), Skirt = true, Shoes = new(110, 76, 60, 255), Height = 1.0f, Build = BodyBuild.Adult, Lashes = true
         },
         "CLERK" => new CharacterStyle
         {
             HairColor = new(96, 64, 48, 255),
             Top = new(76, 132, 222, 255), Accent = new(246, 246, 250, 255), Stripes = true,
-            Bottom = new(56, 60, 80, 255), Height = 1.06f
+            Bottom = new(56, 60, 80, 255), Height = 0.98f, Build = BodyBuild.Adult
         },
         "YOUNGSTER" => new CharacterStyle
         {
             HairColor = new(84, 56, 44, 255),
             Hat = Headwear.Cap, HatColor = new(250, 200, 60, 255), HatBand = new(60, 110, 200, 255),
-            Top = new(250, 250, 252, 255), Accent = new(60, 110, 200, 255), ShortSleeves = true,
-            Bottom = new(64, 104, 190, 255), Shorts = true, Shoes = new(220, 72, 64, 255)
+            Top = new(250, 250, 252, 255), Accent = new(60, 110, 200, 255), ShortSleeves = true, Stripes = true,
+            Bottom = new(64, 104, 190, 255), Shorts = true, Shoes = new(220, 72, 64, 255), Sole = new(244, 240, 232, 255), Blush = true
         },
         "LASS" => new CharacterStyle
         {
             HairColor = new(96, 60, 52, 255), Hair = HairCut.Long,
             Top = new(236, 104, 132, 255), Accent = new(252, 240, 244, 255), ShortSleeves = true,
-            Bottom = new(72, 92, 168, 255), Skirt = true, Shoes = new(84, 56, 52, 255)
+            Bottom = new(72, 92, 168, 255), Skirt = true, Shoes = new(84, 56, 52, 255), Lashes = true, Blush = true
         },
         "CLOWN" => new CharacterStyle
         {
             HairColor = new(236, 72, 60, 255), Hair = HairCut.Spiky,
             Top = new(250, 214, 64, 255), Accent = new(236, 72, 60, 255), Stripes = true,
-            Bottom = new(70, 120, 220, 255), Shoes = new(236, 72, 60, 255), Height = 1.06f
+            Bottom = new(70, 120, 220, 255), Shoes = new(236, 72, 60, 255), Height = 1.0f, Build = BodyBuild.Adult
         },
         "LOOKER" => new CharacterStyle
         {
             HairColor = new(58, 46, 44, 255), Hair = HairCut.Swept, Coat = true,
             Top = new(196, 168, 118, 255), Accent = new(84, 70, 64, 255),
-            Bottom = new(70, 66, 74, 255), Shoes = new(52, 42, 40, 255), Height = 1.12f
+            Bottom = new(70, 66, 74, 255), Shoes = new(52, 42, 40, 255), Height = 1.04f, Build = BodyBuild.Adult
         },
         "GENTLEMAN" => new CharacterStyle
         {
             HairColor = new(150, 146, 156, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,
             Top = new(66, 70, 96, 255), Accent = new(246, 246, 250, 255),
-            Bottom = new(56, 58, 76, 255), Shoes = new(52, 42, 40, 255), Height = 1.1f
+            Bottom = new(56, 58, 76, 255), Shoes = new(52, 42, 40, 255), Height = 1.02f, Build = BodyBuild.Adult
         },
         _ => new CharacterStyle()
     };

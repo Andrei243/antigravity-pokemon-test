@@ -13,3 +13,6 @@ TestResults/
 # Local game saves
 savegame.json
 settings.json
+
+# Hand-made art that replaces generated art (plan 04: overrides/sprites, overrides/models)
+overrides/

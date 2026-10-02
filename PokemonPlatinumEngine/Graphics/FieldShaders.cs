@@ -29,6 +29,11 @@ internal sealed class FieldShaders
     public Shader Prepass { get; private set; }
     public Shader Character { get; private set; }
     public Shader Outline { get; private set; }
+
+    /// <summary>Characters skinned on the GPU (see <see cref="SkinnedModel"/>): lit, shadow-map depth and outline.</summary>
+    public Shader CharacterSkinned { get; private set; }
+    public Shader DepthSkinned { get; private set; }
+    public Shader OutlineSkinned { get; private set; }
     public Shader Water { get; private set; }
     public Shader SoftWater { get; private set; }
     public Shader Sprite { get; private set; }
@@ -38,8 +43,9 @@ internal sealed class FieldShaders
     public Shader Blur { get; private set; }
     public Shader Ssao { get; private set; }
 
-    private Shader[] FieldPrograms => new[] { World, Depth, Prepass, Character, Water, SoftWater, Sprite };
-    private Shader[] LitPrograms => new[] { World, Character, Water, SoftWater, Sprite };
+    private Shader[] FieldPrograms => new[] { World, Depth, Prepass, Character, CharacterSkinned, Water, SoftWater, Sprite };
+    private Shader[] LitPrograms => new[] { World, Character, CharacterSkinned, Water, SoftWater, Sprite };
+    private Shader[] CharacterPrograms => new[] { Character, CharacterSkinned };
 
     // raylib's DrawMesh fills in mvp, matModel and matNormal for each mesh it draws
     private const string CommonVertex = @"#version 330
@@ -47,6 +53,7 @@ in vec3 vertexPosition;
 in vec2 vertexTexCoord;
 in vec3 vertexNormal;
 in vec4 vertexColor;
+in vec2 vertexTexCoord2;
 uniform mat4 mvp;
 uniform mat4 matModel;
 uniform mat4 matNormal;
@@ -57,6 +64,7 @@ out vec4 fragColor;
 out vec3 fragNormal;
 out vec3 fragWorld;
 out vec4 fragLight;
+out vec2 fragMaterial;
 
 // The same vertex must land on exactly the same depth in every program: foliage is drawn twice (depth, then colour)
 invariant gl_Position;
@@ -104,6 +112,7 @@ void main()
     vec3 n = normalize((matNormal * vec4(vertexNormal, 0.0)).xyz);
     fragTexCoord = vertexTexCoord;
     fragColor = vec4(vertexColor.rgb, 1.0);
+    fragMaterial = vertexTexCoord2;
     fragNormal = n;
     fragWorld = world + sway;
     // Offsetting along the normal before projecting into light space avoids shadow acne
@@ -138,6 +147,88 @@ out vec4 finalColor;
 void main()
 {
     finalColor = vec4(fragColor.rgb, 1.0);
+}";
+
+    // Skinning on the GPU: each bone is three rows of an affine matrix (model space to model space), up to
+    // four bones per vertex. texcoord2.x carries the surface material.
+    private static readonly string SkinningFunctions = @"
+in vec3 vertexPosition;
+in vec2 vertexTexCoord;
+in vec3 vertexNormal;
+in vec4 vertexColor;
+in vec2 vertexTexCoord2;
+in vec4 vertexBoneIndices;
+in vec4 vertexBoneWeights;
+uniform vec4 bones[" + (SkinnedModel.MaxBones * 3) + @"];
+
+void Skin(out vec3 p, out vec3 n)
+{
+    vec4 v = vec4(vertexPosition, 1.0);
+    p = vec3(0.0);
+    n = vec3(0.0);
+    for (int i = 0; i < 4; i++)
+    {
+        float w = vertexBoneWeights[i];
+        if (w <= 0.0) continue;
+        int b = int(vertexBoneIndices[i] + 0.5) * 3;
+        vec4 r0 = bones[b], r1 = bones[b + 1], r2 = bones[b + 2];
+        p += w * vec3(dot(r0, v), dot(r1, v), dot(r2, v));
+        n += w * vec3(dot(r0.xyz, vertexNormal), dot(r1.xyz, vertexNormal), dot(r2.xyz, vertexNormal));
+    }
+}";
+
+    private static readonly string SkinnedVertex = @"#version 330
+" + SkinningFunctions + @"
+uniform mat4 mvp;
+uniform mat4 matModel;
+uniform mat4 matNormal;
+uniform mat4 lightVP;
+out vec2 fragTexCoord;
+out vec4 fragColor;
+out vec3 fragNormal;
+out vec3 fragWorld;
+out vec4 fragLight;
+out vec2 fragMaterial;
+
+void main()
+{
+    vec3 p, n;
+    Skin(p, n);
+    vec3 world = (matModel * vec4(p, 1.0)).xyz;
+    vec3 wn = normalize((matNormal * vec4(n, 0.0)).xyz);
+    fragTexCoord = vertexTexCoord;
+    fragColor = vec4(vertexColor.rgb, 1.0);
+    fragMaterial = vertexTexCoord2;
+    fragNormal = wn;
+    fragWorld = world;
+    fragLight = lightVP * vec4(world + wn * 0.035, 1.0);
+    gl_Position = mvp * vec4(p, 1.0);
+}";
+
+    // The outline of a skinned model is the model itself pushed out along its normals, drawn with its front faces
+    // culled, in the surface colour mixed toward ink
+    private static readonly string SkinnedOutlineVertex = @"#version 330
+" + SkinningFunctions + @"
+uniform mat4 mvp;
+uniform float outlineWidth;
+out vec4 fragColor;
+
+void main()
+{
+    vec3 p, n;
+    Skin(p, n);
+    fragColor = vertexColor;
+    gl_Position = mvp * vec4(p + normalize(n) * outlineWidth, 1.0);
+}";
+
+    private const string SkinnedOutlineFragment = @"#version 330
+in vec4 fragColor;
+uniform vec3 inkColor;
+uniform float inkAmount;
+out vec4 finalColor;
+void main()
+{
+    finalColor = vec4(mix(fragColor.rgb, inkColor, inkAmount), 1.0);
 }";
 
     // Percentage-closer filtering over a Poisson disc, rotated per pixel so the few taps blend into a soft
@@ -297,13 +388,18 @@ void main()
 }";
 
     // Characters and Pokémon: two-tone cel shading with a soft terminator, plus a rim light so they stand out.
-    // shadowStrength 0 skips the shadow map (for models rendered outside a scene, e.g. sprite bakes).
-    private const string CharacterFragment = @"#version 330
+    // shadowStrength 0 skips the shadow map (for models rendered outside a scene, e.g. sprite bakes). Each
+    // surface material (SurfaceMaterials) sets how soft the terminator is, a crisp highlight band, light of its
+    // own and the tint of its shade; material 0 is the plain look.
+    private static readonly string CharacterFragment = @"#version 330
 in vec2 fragTexCoord;
 in vec4 fragColor;
 in vec3 fragNormal;
 in vec3 fragWorld;
 in vec4 fragLight;
+in vec2 fragMaterial;
+uniform vec4 materialLight[" + SurfaceMaterials.Count + @"];
+uniform vec4 materialShade[" + SurfaceMaterials.Count + @"];
 uniform sampler2D texture0;
 uniform vec4 colDiffuse;
 uniform vec3 sunDir;
@@ -320,15 +416,26 @@ void main()
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
     vec3 albedo = texel.rgb * colDiffuse.rgb * fragColor.rgb;
+    int m = clamp(int(fragMaterial.x + 0.5), 0, " + (SurfaceMaterials.Count - 1) + @");
+    vec4 ml = materialLight[m];   // terminator width, highlight strength, highlight sharpness, own light
+    vec4 ms = materialShade[m];   // shade tint, rim
     vec3 n = normalize(fragNormal);
     float ndl = dot(n, sunDir);
-    float lit = smoothstep(0.0, 0.12, ndl);
+    float lit = smoothstep(0.0, ml.x, ndl);
     if (shadowStrength > 0.0) lit *= mix(1.0, Shadow(fragLight), shadowStrength);
-    vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
-    vec3 color = albedo * (ambient * 1.08 + sunColor * lit * CloudLight(fragWorld));
+    vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5) * mix(ms.rgb, vec3(1.0), lit);
+    vec3 sun = sunColor * lit * CloudLight(fragWorld);
+    vec3 color = albedo * (ambient * 1.08 + sun);
     vec3 v = normalize(viewPos - fragWorld);
+    if (ml.y > 0.0)
+    {
+        // A toon highlight: one crisp band where the half vector meets the normal
+        float spec = pow(max(dot(n, normalize(sunDir + v)), 0.0), ml.z);
+        color += sun * smoothstep(0.42, 0.5, spec) * ml.y;
+    }
     float rim = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 3.0);
-    color += (albedo * 0.6 + vec3(0.1)) * rim * rimStrength;
+    color += (albedo * 0.6 + vec3(0.1)) * rim * rimStrength * ms.a;
+    color = mix(color, albedo * 1.15, ml.w);
     color = ApplyFog(color, fragWorld);
     finalColor = vec4(mix(color, flash.rgb, flash.a), 1.0);
 }";
@@ -664,6 +771,9 @@ void main()
         Prepass = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
         Character = Raylib.LoadShaderFromMemory(CommonVertex, CharacterFragment);
         Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
+        CharacterSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, CharacterFragment);
+        DepthSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, DepthFragment);
+        OutlineSkinned = Raylib.LoadShaderFromMemory(SkinnedOutlineVertex, SkinnedOutlineFragment);
         Water = Raylib.LoadShaderFromMemory(CommonVertex, WaterFragment);
         SoftWater = Raylib.LoadShaderFromMemory(CommonVertex, SoftWaterFragment);
         Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
@@ -673,10 +783,17 @@ void main()
         Blur = Raylib.LoadShaderFromMemory(PostVertex, BlurFragment);
         Ssao = Raylib.LoadShaderFromMemory(PostVertex, SsaoFragment);
 
-        foreach (var shader in new[] { World, Character, Water, SoftWater })
+        foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
             Set(shader, "shadowMap", ShadowMapSlot);
         }
+        foreach (var shader in CharacterPrograms)
+        {
+            SetV(shader, "materialLight", SurfaceMaterials.LightTable);
+            SetV(shader, "materialShade", SurfaceMaterials.ShadeTable);
+        }
+        Set(OutlineSkinned, "inkColor", new Vector3(34 / 255f, 26 / 255f, 40 / 255f));
+        Set(OutlineSkinned, "inkAmount", ArtLook.OutlineInkAmount);
         SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
         SetFlash(default, 0f);
         SetGlow(0f, 0f, Vector3.Zero);
@@ -688,7 +805,7 @@ void main()
     public void Unload()
     {
         if (!Loaded) return;
-        foreach (var shader in new[] { World, Depth, Prepass, Character, Outline, Water, SoftWater, Sprite, Light, Post, Down, Blur, Ssao })
+        foreach (var shader in new[] { World, Depth, Prepass, Character, Outline, CharacterSkinned, DepthSkinned, OutlineSkinned, Water, SoftWater, Sprite, Light, Post, Down, Blur, Ssao })
         {
             Raylib.UnloadShader(shader);
         }
@@ -708,8 +825,11 @@ void main()
     /// <summary>How strongly characters receive scene shadows, and how bright their rim light is.</summary>
     public void SetCharacterStyle(float shadowStrength, float rimStrength)
     {
-        Set(Character, "shadowStrength", shadowStrength);
-        Set(Character, "rimStrength", rimStrength);
+        foreach (var shader in CharacterPrograms)
+        {
+            Set(shader, "shadowStrength", shadowStrength);
+            Set(shader, "rimStrength", rimStrength);
+        }
     }
 
     /// <summary>Per-frame lighting values shared by the scene shaders, once the sun's shadow map is rendered.</summary>
@@ -783,13 +903,13 @@ void main()
     /// <summary>How much drifting cloud shade dims the sunlight (0 for none).</summary>
     public void SetCloudShade(float amount)
     {
-        foreach (var shader in new[] { World, Character, Sprite, Water }) Set(shader, "cloudShade", amount);
+        foreach (var shader in new[] { World, Character, CharacterSkinned, Sprite, Water }) Set(shader, "cloudShade", amount);
     }
 
     /// <summary>Shadow filtering: taps from the quality preset, softness as the disc radius in shadow-map texels.</summary>
     public void SetShadowQuality(int taps, float softness)
     {
-        foreach (var shader in new[] { World, Character, Water, SoftWater })
+        foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
             Set(shader, "shadowTaps", Math.Clamp(taps, 5, 16));
             Set(shader, "shadowSoftness", softness);
@@ -859,8 +979,14 @@ void main()
     public void SetWorldRamp(float ramp) => Set(World, "worldRamp", ramp);
 
     /// <summary>Blends characters toward a flat colour (hit flashes, the dark silhouette of a wild Pokémon).</summary>
-    public void SetFlash(Color color, float amount) =>
-        Set(Character, "flash", new Vector4(color.R / 255f, color.G / 255f, color.B / 255f, amount));
+    public void SetFlash(Color color, float amount)
+    {
+        foreach (var shader in CharacterPrograms)
+            Set(shader, "flash", new Vector4(color.R / 255f, color.G / 255f, color.B / 255f, amount));
+    }
+
+    /// <summary>Outline width of skinned models, in model units before the model's own scale.</summary>
+    public void SetOutlineWidth(float width) => Set(OutlineSkinned, "outlineWidth", width);
 
     private static void Set(Shader shader, string name, float value)
     {
@@ -890,6 +1016,12 @@ void main()
     {
         int loc = Raylib.GetShaderLocation(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Vec4);
+    }
+
+    private static void SetV(Shader shader, string name, Vector4[] values)
+    {
+        int loc = Raylib.GetShaderLocation(shader, name);
+        if (loc >= 0) Raylib.SetShaderValueV(shader, loc, values, ShaderUniformDataType.Vec4, values.Length);
     }
 
     private static void SetMatrix(Shader shader, string name, Matrix4x4 value)

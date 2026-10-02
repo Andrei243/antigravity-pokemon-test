@@ -235,7 +235,7 @@ public sealed class BattleRenderer
 
     private void DrawTrainer(string type, Vector3 spot, float yaw, float scale, float exit, float direction, float time, CharacterPass pass)
     {
-        var rig = CharacterModels.Get(type, context.Shaders.Character);
+        var rig = CharacterModels.Get(type, context.Shaders);
         var pose = new CharacterPose { Time = time, Blink = time % 3.7f < 0.12f };
         var feet = spot + new Vector3(0, PlatformTop, 0);
         if (exit >= 0f)
@@ -248,7 +248,7 @@ public sealed class BattleRenderer
             pose.Running = true;
         }
         var root = Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet);
-        CharacterRenderer.Draw(context, rig, pose, root, pass, trueProportions: true);
+        CharacterRenderer.Draw(context, rig, pose, root, pass);
     }
 
     // ------------------------------------------------------------------ Pokémon

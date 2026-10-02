@@ -240,7 +240,14 @@ public sealed class WorldRenderer
             if (npc.IsPCTerminal) continue;
             float seed = (npc.Name.GetHashCode() & 0xFFFF) / 65536f;
             var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
-            actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders.Character),
+            if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
+            {
+                // A trainer who has just spotted the player starts, under the "!"
+                pose.Emote = Emote.Surprised;
+                pose.EmoteTime = TrainerApproach.ExclaimTime - npc.ExclamationTimer;
+                pose.Blink = false;
+            }
+            actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders),
                 new Vector3(npc.DrawX + 0.5f, 0, npc.DrawY + 0.5f), Player.YawOf(npc.Facing), pose));
         }
 
@@ -255,7 +262,7 @@ public sealed class WorldRenderer
             Time = time,
             Blink = IsBlinking(time, 0.37f)
         };
-        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders.Character), new Vector3(px, lift, pz), player.Yaw, playerPose));
+        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders), new Vector3(px, lift, pz), player.Yaw, playerPose));
     }
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;

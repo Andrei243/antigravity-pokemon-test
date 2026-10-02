@@ -127,6 +127,9 @@ public class GameEngine
         ItemDatabase.Initialize();
         MapDatabase.Initialize();
 
+        // Every character the maps use, sculpted and meshed in the background while the title screen plays
+        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Select(n => n.NpcType).Append("PLAYER"));
+
         ApplySettings(window: false);
 
         // Menu sprites are rendered from the 3D Pokémon models once, up front. Species without a model of their own

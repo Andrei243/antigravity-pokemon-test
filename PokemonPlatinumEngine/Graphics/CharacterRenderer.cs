@@ -6,36 +6,39 @@ namespace PokemonPlatinumEngine.Graphics;
 /// <summary>Which pass a character is being drawn in.</summary>
 internal enum CharacterPass { Depth, Color, Outline }
 
-/// <summary>Draws a posed <see cref="CharacterRig"/> with the shared character materials.</summary>
+/// <summary>Draws a posed <see cref="CharacterRig"/>: the skinned body, its face, its outline and its shadow.</summary>
 internal static class CharacterRenderer
 {
-    private static readonly Matrix4x4[] PartMatrices = new Matrix4x4[6];
-
     /// <param name="root">Places the feet and turns the model (System.Numerics row-vector convention).</param>
-    /// <param name="trueProportions">Skip the field's vertical stretch (shadow pass, and the level battle camera).</param>
-    public static void Draw(RenderContext context, CharacterRig rig, CharacterPose pose, Matrix4x4 root, CharacterPass pass, bool trueProportions)
+    /// <param name="drawFace">
+    /// Lay the smooth face over the head (3D characters in battle); sprite bakes leave it off and stamp a pixel
+    /// face instead.
+    /// </param>
+    public static void Draw(RenderContext context, CharacterRig rig, CharacterPose pose, Matrix4x4 root, CharacterPass pass, bool drawFace = true)
     {
-        rig.PartTransforms(pose, root, PartMatrices, trueProportions);
-        int i = 0;
-        foreach (var part in rig.Parts)
+        if (!rig.Uploaded || rig.Body == null) return;
+        rig.Animate(pose);
+        var model = Matrix4x4.CreateScale(rig.Scale) * root;
+        switch (pass)
         {
-            // raylib expects column-vector matrices; System.Numerics builds row-vector ones
-            var m = Matrix4x4.Transpose(PartMatrices[i++]);
-            if (!part.Uploaded) continue;
-            switch (pass)
-            {
-                case CharacterPass.Depth:
-                    Raylib.DrawMesh(part.Body, context.Depth, m);
-                    if (part.HasFace) Raylib.DrawMesh(part.Face, context.Depth, m);
-                    break;
-                case CharacterPass.Color:
-                    Raylib.DrawMesh(part.Body, context.Toon, m);
-                    if (part.HasFace) Raylib.DrawMesh(part.Face, pose.Blink ? rig.FaceBlink : rig.FaceOpen, m);
-                    break;
-                case CharacterPass.Outline:
-                    Raylib.DrawMesh(part.Outline, context.Outline, m);
-                    break;
-            }
+            case CharacterPass.Depth:
+                rig.Body.Draw(context.DepthSkinned, rig.Skin, model);
+                break;
+            case CharacterPass.Color:
+                rig.Body.Draw(context.ToonSkinned, rig.Skin, model);
+                if (drawFace && rig.FaceModel != null && rig.FaceMaterials.Length > 0)
+                    rig.FaceModel.Draw(rig.FaceMaterial(CharacterAnimation.ExpressionOf(pose), pose.Blink), rig.Skin, model);
+                break;
+            case CharacterPass.Outline:
+                // A shell round the body, showing only its inside: a rim round the silhouette
+                if (rig.Outline == null) break;
+                context.Shaders.SetOutlineWidth(0f);
+                Rlgl.DrawRenderBatchActive();
+                Rlgl.EnableBackfaceCulling();
+                Rlgl.SetCullFace(0);
+                rig.Outline.Draw(context.OutlineSkinned, rig.Skin, model);
+                Rlgl.SetCullFace(1);
+                break;
         }
     }
 }
