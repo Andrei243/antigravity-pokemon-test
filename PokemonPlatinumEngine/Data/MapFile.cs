@@ -24,6 +24,12 @@ public sealed class MapFile
     /// <summary>How the town's houses are built; left out for the default, <see cref="TownArchitecture.Timber"/>.</summary>
     public TownArchitecture? Architecture { get; set; }
 
+    /// <summary>The stage its battles are fought on; left out to let the map decide (see <see cref="Map.ArenaAt"/>).</summary>
+    public BattleArena? BattleArena { get; set; }
+
+    /// <summary>For a gym or a room of the League: the type its stage is themed on.</summary>
+    public PokemonType? ArenaType { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -118,7 +124,9 @@ public sealed class MapFile
             BgmTrack = BgmTrack,
             Interior = Interior,
             Trees = Trees,
-            Architecture = Architecture ?? TownArchitecture.Timber
+            Architecture = Architecture ?? TownArchitecture.Timber,
+            Arena = BattleArena,
+            ArenaType = ArenaType
         };
 
         CheckRows(Ground, "ground");
@@ -232,6 +240,8 @@ public sealed class MapFile
             Interior = map.Interior,
             Trees = map.Trees,
             Architecture = map.Architecture == TownArchitecture.Timber ? null : map.Architecture,
+            BattleArena = map.Arena,
+            ArenaType = map.ArenaType,
             Width = map.Width,
             Height = map.Height
         };

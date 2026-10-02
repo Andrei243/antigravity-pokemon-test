@@ -25,6 +25,8 @@ An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Tr
   "interior": "None",            // None (outdoors), House, PokemonCenter, PokeMart, Lab
   "trees": "Round",              // Round or Pine
   "architecture": "City",        // optional: how the town's houses are built (Timber when left out, Plaster, City, Clapboard)
+  "battleArena": "Forest",       // optional: the stage its battles are fought on (see below)
+  "arenaType": "Rock",           // optional: for a Gym or League arena, the type its hall is themed on
   "width": 36, "height": 22,
   "ground": [ "TTTT…", … ],      // one string per row, one character per tile (below)
   "solid":  [ "####…", … ],      // '#' blocks movement, '.' is open; furniture is already marked
@@ -54,6 +56,8 @@ Tile codes (`TileCodes`):
 | `^` | Snow | `c` | CaveFloor |
 
 The ground layer and the solid grid are separate because they don't always agree: doors sit in solid walls but are open, signposts are solid, and furniture props make the floor under them solid.
+
+**Battle arenas** (plan 04 · G8): outdoors, the ground under the player picks the stage a battle is fought on: water (surfing), sand, snow and cave floor tiles give the `Water`, `Sand`, `Snow` and `Cave` stages, and anything else the map's own `battleArena`, or `Grass` (the meadow, with the map's `trees` behind it and a lake if the map has one). Rooms are `Indoors` unless they name another. `Forest` is for maps deep in the trees; `Gym` and `League` are halls themed on `arenaType` (a `League` room without one is the Champion's); a gym or League map keeps its hall whatever the floor.
 
 **Buildings** are not listed: a block of roof (`r`, `b`, `g`), wall and door tiles is one building, its bottom row the front wall (doors, and signposts set into it as name plates). What kind it is follows from where its door leads: a map whose name ends in `PokemonCenter` or `PokeMart`, or `RowanLab`; anything else is a house, built in the map's `architecture`. Where that isn't enough (a school, an office, a building with no door yet), `buildings` names the kind for the building that covers the given tile: `School`, `Office`, `TvStation`, `Terminal`, `Apartments`, or any of the others. The roof tile's colour is the roof's colour for houses.
 

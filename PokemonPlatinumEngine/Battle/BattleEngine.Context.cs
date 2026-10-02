@@ -68,7 +68,8 @@ public partial class BattleEngine
         }
 
         p.StatStages[stat] = next;
-        Announce($"{target.Name}'s {BattleText.StatName(stat)} {BattleText.StageChange(next - current)}");
+        Announce($"{target.Name}'s {BattleText.StatName(stat)} {BattleText.StageChange(next - current)}",
+            () => Anim.StatChange(target.Side, target.Slot, next > current));
         return true;
     }
 
@@ -107,7 +108,7 @@ public partial class BattleEngine
         p.Status = status;
         if (status == StatusCondition.Sleep) p.SleepTurns = rng.Next(1, 5);
         if (status == StatusCondition.Toxic) p.ToxicCounter = 0;
-        Announce(BattleText.Inflicted(target.Name, status));
+        Announce(BattleText.Inflicted(target.Name, status), () => Anim.StatusGiven(target.Side, target.Slot, status));
         CheckConditionHooks(target, source);
         return true;
     }
@@ -119,6 +120,7 @@ public partial class BattleEngine
             var p = target.Pokemon;
             if (p == null || p.IsFainted) return;
             p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + amount);
+            Anim.Heal(target.Side, target.Slot);
             AudioManager.PlaySound("heal");
         });
     }

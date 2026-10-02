@@ -57,7 +57,6 @@ public partial class BattleEngine : IBattleContext
     public Battler MenuBattler => PlayerSlots[Math.Clamp(menuSlot, 0, PlayerSlots.Count - 1)];
 
     public BattleHUD HUD { get; } = new();
-    public BattleVFX VFX { get; } = new();
 
     /// <summary>What the battle looks like: send-outs, attacks, hits, faints and the HP bars as they drain.</summary>
     public BattleAnimator Anim { get; } = new();
@@ -215,8 +214,6 @@ public partial class BattleEngine : IBattleContext
 
     public void Update(float dt)
     {
-        VFX.Update(dt);
-
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
 
@@ -355,7 +352,7 @@ public partial class BattleEngine : IBattleContext
         }
     }
 
-    /// <summary>Draws the HUD, menus and move effects over the battle field (see <see cref="Graphics.BattleRenderer"/>).</summary>
+    /// <summary>Draws the HUD and menus over the battle field (see <see cref="Graphics.BattleRenderer"/>, which draws the move effects).</summary>
     public void Draw(int screenWidth, int screenHeight)
     {
         HUD.Draw(
@@ -363,7 +360,6 @@ public partial class BattleEngine : IBattleContext
             screenHeight,
             this,
             currentMessage,
-            VFX,
             Anim,
             PlayerInventory);
     }

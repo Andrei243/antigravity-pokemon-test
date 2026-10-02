@@ -14,8 +14,8 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>The battle interface: HP boxes, the command buttons, the move menu, and the panels for switching and the bag.</summary>
 internal static partial class ModernUi
 {
-    /// <summary>Draws the HP boxes, the move effects and whichever panel the battle menu is showing.</summary>
-    public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleVFX vfx, BattleAnimator anim)
+    /// <summary>Draws the HP boxes and whichever panel the battle menu is showing.</summary>
+    public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
     {
         var active = battle.PlayerPokemon;
         var party = battle.PlayerParty;
@@ -49,8 +49,6 @@ internal static partial class ModernUi
             // The team's cards cover the player's box while switching
             if (playerSlide >= 0f && hud.MenuState != BattleMenuState.SwitchPokemon) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
         }
-
-        vfx.Draw();
 
         switch (hud.MenuState)
         {

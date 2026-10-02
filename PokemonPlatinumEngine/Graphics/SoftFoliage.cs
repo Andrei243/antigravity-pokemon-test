@@ -100,11 +100,11 @@ internal static class SoftFoliage
     }
 
     /// <summary>A boulder: a squat rounded mass with a smaller one against it, shaded from a dark foot to a pale top.</summary>
-    public static void Rock(MeshBuilder b, float cx, float cz, float size, int seed)
+    public static void Rock(MeshBuilder b, float cx, float cz, float size, int seed, Color? footColor = null, Color? bodyColor = null, Color? topColor = null)
     {
-        var foot = Rgb(98, 96, 112);
-        var body = Rgb(146, 142, 148);
-        var top = Rgb(196, 192, 190);
+        var foot = footColor ?? Rgb(98, 96, 112);
+        var body = bodyColor ?? Rgb(146, 142, 148);
+        var top = topColor ?? Rgb(196, 192, 190);
         Color Tone(int ring, int rings) => Lerp(ring < rings / 2 ? foot : body, ring < rings / 2 ? body : top, ring < rings / 2 ? ring / (rings / 2f) : (ring - rings / 2) / (rings / 2f));
 
         float sx = 0.9f + Rand(seed, 1, 41) * 0.3f, sz = 0.8f + Rand(seed, 2, 41) * 0.25f;
@@ -114,10 +114,10 @@ internal static class SoftFoliage
     }
 
     /// <summary>A tuft of curved grass blades, dark at the root and light at the tips, swaying in the wind.</summary>
-    public static void Tuft(MeshBuilder b, float cx, float cz, float width, float height, int seed)
+    public static void Tuft(MeshBuilder b, float cx, float cz, float width, float height, int seed, Color? rootColor = null, Color? tipColor = null)
     {
-        var root = Rgb(78, 150, 74);
-        var tip = Rgb(160, 214, 112);
+        var root = rootColor ?? Rgb(78, 150, 74);
+        var tip = tipColor ?? Rgb(160, 214, 112);
         var normal = Vector3.Normalize(new Vector3(0, 0.9f, 0.44f));
         int blades = 7;
         for (int i = 0; i < blades; i++)

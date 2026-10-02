@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -193,7 +192,12 @@ public partial class BattleEngine
         void PlayAttack()
         {
             Anim.Attack(user.Side, user.Slot, move.Category);
-            if (!damaging) return;
+            if (!damaging)
+            {
+                // A status move plays its effect on each target (on itself for moves like Swords Dance)
+                foreach (var hit in hits) Anim.Cue(MoveCue(user, hit.Target, move));
+                return;
+            }
 
             bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
             foreach (var hit in hits)
@@ -225,18 +229,8 @@ public partial class BattleEngine
                 }
             }
 
-            var first = hits.FirstOrDefault(h => !h.Missed) ?? hits[0];
-            Vector2 src = BattleHUD.Center(user.Side, user.Slot);
-            Vector2 dst = BattleHUD.Center(first.Target.Side, first.Target.Slot);
-            VfxType vfxType = move.Type switch
-            {
-                PokemonType.Fire => VfxType.Ember,
-                PokemonType.Water => VfxType.WaterGun,
-                PokemonType.Grass => VfxType.RazorLeaf,
-                PokemonType.Electric => VfxType.Thunderbolt,
-                _ => VfxType.TackleBump
-            };
-            VFX.TriggerVfx(vfxType, src, dst, 0.4f);
+            // The move's effect flies to each target and lands with the damage
+            foreach (var hit in hits) Anim.Cue(MoveCue(user, hit.Target, move, hit));
 
             // Apply damage: each target flinches and its HP bar drains
             After(HitDelay, () =>
@@ -244,7 +238,8 @@ public partial class BattleEngine
                 foreach (var hit in hits.Where(h => h.Landed && h.Dealt > 0))
                 {
                     hit.Target.Pokemon!.CurrentHP -= hit.Dealt;
-                    Anim.Hit(hit.Target.Side, hit.Target.Slot);
+                    bool strong = hit.Damage.IsCritical || hit.Damage.IsSuperEffective;
+                    Anim.Hit(hit.Target.Side, hit.Target.Slot, strong ? 1.8f : 1f);
                 }
                 if (hits.Any(h => h.Landed && h.Damage.IsSuperEffective)) AudioManager.PlaySound("hit_super");
                 else if (hits.Any(h => h.Landed)) AudioManager.PlaySound("hit_normal");
@@ -257,6 +252,23 @@ public partial class BattleEngine
             else ApplyStatusMove(user, move, hits, onComplete);
         }, onShow: PlayAttack);
     }
+
+    /// <summary>The effect a move plays on one target: what kind of move it is and, for a damaging move, how it landed.</summary>
+    private static EffectCue MoveCue(Battler user, Battler target, Move move, MoveHit? hit = null) => new()
+    {
+        Kind = CueKind.Move,
+        Move = move.Name,
+        Type = move.Type,
+        Category = move.Category,
+        FromSide = user.Side,
+        FromSlot = user.Slot,
+        ToSide = target.Side,
+        ToSlot = target.Slot,
+        Missed = hit?.Missed ?? false,
+        Blocked = hit != null && (hit.Immune || hit.Absorbed),
+        Critical = hit is { Landed: true } && hit.Damage.IsCritical,
+        SuperEffective = hit is { Landed: true } && hit.Damage.IsSuperEffective
+    };
 
     private bool AccuracyCheck(Battler user, Battler target, Move move)
     {

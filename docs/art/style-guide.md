@@ -209,6 +209,53 @@ Character and Pokémon surfaces carry a material (G6, G7), which the character s
 - Scenery takes a soft cel band (`BattleRamp` 0.85).
 - Sky (`SkyPainter`): zenith `78,146,226`, middle `140,194,244` at 22 % height, hazy horizon `224,238,250` at 46 %; soft cumulus with a white crown and a cool `196,212,236` underside, drifting slowly.
 
+### Arenas (G8)
+
+The stage depends on where the battle starts (`ArenaSpec`, `BattleArenas`): outdoors the ground under the player picks it, and a map can name its own (data-files.md). Every arena keeps the same layout (platforms, camera) and the smooth style: vertex gradients and soft textures, modelled foliage and rock, no texture noise.
+
+| Arena | Ground and platforms | Around the field | Light (`ArtLook.ArenaRig`) | In the air (`ArenaFx`) |
+|---|---|---|---|---|
+| Grass (routes, towns) | meadow, grass tops on dirt rims | the map's trees, hills; a lake if the map has one | the time of day's battle rig | fireflies at night |
+| Forest | darker meadow with leaf litter, mossy tops | five rows of trees, trees closing in at both sides, bushes, ferns, fallen logs, mushrooms | battle rig × 0.8 sun, green shade and haze (fog +15 %), vignette +0.16; after dark only a dark green haze, so the Pokémon stay clear | slanting light shafts and pollen by day, fireflies at night |
+| Cave | warm grey-brown rock floor, flat stone tops | rock walls all round (lumpy masses, dark at the foot, lit on top), stalagmites, boulders, blue and violet crystals that glow | fixed: torch-warm key from the upper left `0.58,0.45,0.31`, cool blue shade, dark haze (55 %), vignette 0.42 | dim warm dust |
+| Water | open water to the horizon | the platforms are rocky islets with sandy tops and foam rings; islands and sea stacks far off | the time of day's battle rig | sun glints on the water |
+| Snow | white-blue snowfield, packed-snow tops | pines laden with snow, drifts, capped rocks, white mountains | the battle rig with a paler overcast sky, light bounced up off the ground (ground ambient × 1.3), saturation × 0.88, contrast 1.0 | falling snow |
+| Sand | rippled sand, sandstone tops | dunes, banded mesas, dry shrubs, bleached rocks | the battle rig, hotter and hazier: warm sun, warm fog, more bloom | sand blowing across |
+| Indoors | floorboards, round rugs | panelled walls with daylit windows, bookshelves, potted plants | the room's light of the time of day | dust in the light |
+| Gym (per type) | polished tiles in the type's tones, the type's emblem between the platforms, raised drums ringed with light | walls with banners in the type's colour, columns with lamps, the type's props (boulders, planters, pools, candles, girders, ice crystals, tesla coils, braziers, training posts) | fixed: neutral key, ambient leaning 16 % toward the type, bloom 0.32 | the type's matter (embers, bubbles, leaves, sparks, snow, wisps, motes) |
+| League (Aaron, Bertha, Flint, Lucian; the Champion) | as a gym, darker and grander; the Champion's room white and gold | as a gym | as a gym, ambient × 0.78, bloom 0.45, vignette 0.38 | as a gym, more of it |
+
+Walls, rock faces and rooms take shadows but cast none, so they never darken the platforms. Lamps, crystals and glowing rims are added light (the stage's light pass).
+
+### Camera (G8)
+
+`BattleCamera` directs the shots from the battle's state alone; the overview is the framing above (9° pitch, 24° field of view).
+
+- **Intro**: the sweep in from the side (0.55 rad round and 35 % further out, easing into the overview over 1.8 s).
+- **Send-out**: a closer shot of the platform a Pokémon is thrown onto, until it has come out (3.6 × its height in frame).
+- **The foe's shots stand in front of the player's platform** (2.5 units or more): a foe too big to frame from there gets a wider lens (up to 40°) rather than a camera among the player's trainer and Pokémon.
+- **A move**: the attacker as it winds up (3 × its height in frame; the player's Pokémon over its left shoulder with the foe beyond, the foe from the front), then a **cut** to the target 0.24 s in, just before the impact (3 × its height; two targets are framed together), back to the overview by 0.95 s. A status move on the user stays on the user.
+- **Critical hit**: a cut punch-in to 2.1 × the target's height at the impact, for 0.4 s.
+- **Thrown ball**: over to the trainer running in; from behind them, turning to where the ball is going and zooming in (to 15° at the narrowest, so the arc stays in frame) as it flies; a cut to the ball opening over the foe; then close on the ball on the platform (2 units in frame) while it wobbles and clicks.
+- **Faint**: toward the fainting Pokémon.
+- Shots ease into each other (time constant 0.18 s); only attacker-to-target and the critical punch-in cut, and any move that would carry the camera across the player's platform (from behind it to in front of it, or back) or within 3 units of it, where the trainer or the player's Pokémon would loom up in front of the lens. While the player chooses a command the camera is always on the overview. Hits shake it (more for critical and super-effective ones; Earthquake and Hyper Beam add their own).
+
+### Move effects (G8)
+
+- **One kit** (`BattleFx`): streams of particles from the user to the target, beams, forked bolts, bursts thrown from the impact, shockwaves (rings growing on the ground or facing the camera), auras (rings and motes rising round the user), rain from above, a contact flash, slashes, orbs, waves, glints and screen flashes. Every effect is a function of its cue's age and seed: nothing is simulated.
+- **Shapes** come from one atlas (`FxTextures`, 128-px cells): glows, sparks, rings and beams are light, added on top so they bloom; flames, drops, leaves, shards, rocks, feathers, petals, hearts, notes and letters are matter, alpha-blended and back to front. All are white or grey and take their type's colour.
+- **A template per type and category** (`MoveFx`): a physical move lands with a flash of contact and a burst of its type (flames, drops, sparks, leaves, shards, rocks, feathers, bubbles, wisps, petals, stars); a special move sends something across (Fire a stream of flames, Water a stream of drops, Electric a bolt, Grass spinning leaves, Ice and Dragon and Steel a beam, Fighting and Normal an orb of power, Poison sludge in an arc, Ground an eruption under the target, Flying gusts, Psychic rings, Bug a swarm, Rock thrown rocks, Ghost a shadow orb, Dark rings, Fairy sparkles); a status move wraps the user in an aura of its colour, or sends waves at the foe. 146 moves have effects of their own (Thunder's bolt from the sky, Flamethrower, Surf's wave, Hyper Beam, Swords Dance, the fangs of Bite, claws and slashes, Earthquake's shockwaves, sound waves for Growl, hearts for Charm, powders, weather).
+- **Colours by type**: Fire `255,128,36`, Water `64,146,255`, Electric `255,222,50`, Grass `96,196,72`, Ice `140,218,255`, Fighting `236,110,50`, Poison `172,78,210`, Ground `206,164,92`, Flying `176,206,255`, Psychic `255,92,176`, Bug `168,204,40`, Rock `184,158,110`, Ghost `132,92,210`, Dragon `112,96,250`, Dark `110,80,120`, Steel `196,208,228`, Fairy `255,150,214`, Normal `250,246,226`; each with a light colour for cores and sparks and a dark one for matter in shade.
+- **Timing**: the impact lands 0.35 s in, with the damage; effects end by 1.3 s. A miss flies wide and past and lands nothing; a move that does nothing ends in a puff of smoke; a critical hit lands bigger with a white flash and a ring; a super-effective hit lands bigger with a second ring and a harder shake.
+- **Screen flashes** at most 0.5 strong and under half a second (Thunder, Hyper Beam, Fire Blast, Blizzard, critical hits, Explosion); Sunny Day's warm glow is softer and longer.
+- **Marks on a Pokémon**: a stat rising sends warm streaks up round it, a stat falling cool streaks down; a heal is green motes and rings rising; a new status shows as flames (burn), purple bubbles (poison), crackling bolts (paralysis), drifting Z's (sleep) or a burst of ice (freeze).
+
+### Poké Ball (G8)
+
+- **A 3D model** (`BattleBall`): two hollow halves sculpted with the SDF kit, hinged at the back, with a dark band round the seam and a white button in a dark ring at the front, glossy (`Plastic`), outlined like the Pokémon. Kinds by colour: Poké Ball red over white; Great Ball blue with red patches either side; Ultra Ball black with a yellow H; Master Ball purple with two pink domes and a white M; Premier Ball white with a red band; the others in their own colours with a stripe or spots.
+- **Thrown by the trainer**, overarm (the `Throw` emote lets go 0.3 s in). At a send-out the trainer throws it onto the platform and steps aside; it opens in a white burst and the Pokémon grows out of the light. Later send-outs come in from the trainer's side of the field.
+- **A capture**: the player runs in at the left of their platform and throws; the ball spins end over end along a high arc, pops open over the foe and draws it in with red light, shuts, drops onto the platform with a bounce, wobbles once per successful shake check with a pause after each, and then clicks shut with three stars (it stays on the platform) or bursts open in white light as the Pokémon breaks out.
+
 ### Light, shadow and grading (day)
 
 | Setting | Value |
@@ -349,7 +396,7 @@ The order follows the games' opening: a notice, a short film, the legendary Pok�
 
 ## Areas (targets)
 
-Implemented so far: Twinleaf, Sandgem, Jubilife, Routes 201–202, Lake Verity, Pallet (Kanto's stand-in) and the grass and lakeside battle stages. Later sessions extend these families; each new area gets a line here.
+Implemented so far: Twinleaf, Sandgem, Jubilife, Routes 201–202, Lake Verity, Pallet (Kanto's stand-in), and every battle arena (G8: grass and lakeside, forest, cave, water, snow, sand, indoors, a hall per gym type and the League's rooms). Later sessions extend these families; each new area gets a line here.
 
 | Area family | Ground and foliage | Mood |
 |---|---|---|
@@ -386,16 +433,16 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G7
+## Known gaps after G8
 
 - Ponds and lakes are still rectangles in the map data, however round their corners are drawn; their shapes come with the maps of plan 01. Cliffs taller than a ledge need height in the maps too.
-- Sand, dirt, snow and cave floors are drawn but no map uses them yet; snow and caves need their own light rigs when their areas are built.
+- Sand, dirt, snow and cave floors are drawn but no map uses them yet; their battle arenas are ready (G8), but the field still needs light rigs of its own for snow and caves when their areas are built.
 - The towns are still the hand-made stand-ins: the building kit is ready for plan 01's real layouts, which will bring each town's own mix of buildings (the styles per town here cover Twinleaf, Sandgem, Jubilife and Pallet). Gyms, gates and the League have no style yet.
 - Houses have one storey and one roof shape per kind; a second storey and a cross gable would give the bigger houses their look. Doors are painted shut and do not open (G9).
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
-- The 23 species the story shows so far have version 2 models; every other species shares the generic stand-in until plan 03 · D5 builds them with the same kit and body plans. The serpent, fish and floating plans have only sample models so far. Moves have no effects of their own yet (beams, particles, the colour of their type) and the camera doesn't follow them: G8.
-- Characters have mitten hands and no fingers; trainers don't yet throw their Poké Ball in battle (G8). Of the emotes only the trainer's start is played in the game so far; scripts (plan 02) will call the others. The trainer card still shows the old 16×24 portrait (G10).
+- The 23 species the story shows so far have version 2 models; every other species shares the generic stand-in until plan 03 · D5 builds them with the same kit and body plans. The serpent, fish and floating plans have only sample models so far.
+- Characters have mitten hands and no fingers. Of the emotes only the trainer's start and the battle throw are played in the game so far; scripts (plan 02) will call the others. The trainer card still shows the old 16×24 portrait (G10).
 - The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5). The new-game introduction (Professor Rowan) is still to come (G10, plan 02).

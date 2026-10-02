@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|flow|menus|look|title|terrain|buildings|times|sheets|pokemon] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|look|title|terrain|buildings|times|sheets|pokemon] [before dir]
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -59,6 +59,18 @@ void Frames(int n)
     {
         engine.Update(1f / 60f);
         engine.Draw();
+    }
+}
+
+// Advances the game by some seconds, drawing only every sixth frame: the battle's effects and camera are functions
+// of time, so the frames in between only cost time under software rendering
+void Skip(double seconds)
+{
+    int n = Math.Max(1, (int)Math.Round(seconds * 60.0));
+    for (int i = 0; i < n; i++)
+    {
+        engine.Update(1f / 60f);
+        if (i % 6 == 5 || i == n - 1) engine.Draw();
     }
 }
 
@@ -193,14 +205,15 @@ BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string m
     return b;
 }
 
-// Waits out the camera sweep and sends the player's Pokémon out, ending on the main battle menu
+// Waits out the camera sweep and sends the player's Pokémon out, ending on the main battle menu once the camera
+// has eased back to the overview
 void ToMainMenu(BattleEngine b)
 {
-    Frames(130);
+    Skip(130 / 60.0);
     Confirm(b);
-    Frames(50);
+    Skip(50 / 60.0);
     Confirm(b);
-    Frames(2);
+    Skip(0.8);
 }
 
 // ---------------------------------------------------------------- overworld
@@ -373,33 +386,33 @@ if (Run("battle"))
     // Wild battle: camera sweep, send-out, attack, hit, faint
     var b = StartBattle("Shinx", 5);
     Frames(1); Shot("40_wild_intro_start");
-    Frames(50); Shot("41_wild_intro_mid");
-    Frames(80); Shot("42_wild_appeared");
-    Confirm(b); Frames(10); Shot("43_go_sendout");
-    Frames(60); Confirm(b); Frames(2); Shot("44_main_menu");
+    Skip(50 / 60.0); Shot("41_wild_intro_mid");
+    Skip(80 / 60.0); Shot("42_wild_appeared");
+    Confirm(b); Skip(10 / 60.0); Shot("43_go_sendout");
+    Skip(60 / 60.0); Confirm(b); Skip(2 / 60.0); Shot("44_main_menu");
     b.HUD.MenuState = BattleMenuState.Moves; Frames(1); Shot("44b_moves");
     b.HUD.MenuState = BattleMenuState.Main;
 
     // Whoever is faster attacks first: lunge, then the hit lands and the HP bar drains
     b.SelectMove(0);
     Console.WriteLine("  msg: " + b.CurrentMessage);
-    Frames(8); Shot("45_attack_lunge");
-    Frames(14); Shot("46_attack_hit");
-    Frames(30); Shot("47_hp_drain");
+    Skip(8 / 60.0); Shot("45_attack_lunge");
+    Skip(14 / 60.0); Shot("46_attack_hit");
+    Skip(30 / 60.0); Shot("47_hp_drain");
     for (int guard = 0; guard < 12 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++)
     {
         Confirm(b);
-        Frames(30);
+        Skip(30 / 60.0);
     }
     Shot("49_after_turn");
 
     // Knock the foe out
     b.EnemyPokemon.CurrentHP = 1;
     b.SelectMove(0);
-    Frames(40);
-    for (int guard = 0; guard < 6 && !b.CurrentMessage.Contains("fainted"); guard++) { Confirm(b); Frames(20); }
-    Frames(18); Shot("50_faint_mid");
-    Frames(40); Shot("50b_faint_done");
+    Skip(40 / 60.0);
+    for (int guard = 0; guard < 6 && !b.CurrentMessage.Contains("fainted"); guard++) { Confirm(b); Skip(20 / 60.0); }
+    Skip(18 / 60.0); Shot("50_faint_mid");
+    Skip(40 / 60.0); Shot("50b_faint_done");
 
     // Capture with a Master Ball (always caught) and a Poké Ball on a healthy foe (usually breaks free)
     foreach (var (ball, tag) in new[] { ("Master Ball", "caught"), ("Poké Ball", "free") })
@@ -409,11 +422,13 @@ if (Run("battle"))
         var use = new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get(ball), User = b.PlayerSlots[0], Actor = b.PlayerPokemon };
         typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!.Invoke(b, new object[] { new List<BattleAction> { use } });
         Confirm(b);
-        Frames(24); Shot($"51_{tag}_ball_flight");
-        Frames(30); Shot($"52_{tag}_ball_open");
-        Frames(40); Shot($"53_{tag}_ball_ground");
-        Frames(30); Shot($"54_{tag}_ball_wobble");
-        Frames(120); Shot($"55_{tag}_result");
+        // The player runs in and throws (0.6 s), the ball flies (0.8 s), opens (0.55 s), drops (0.3 s), then wobbles
+        Skip(0.45); Shot($"50c_{tag}_ball_throw");
+        Skip(0.55); Shot($"51_{tag}_ball_flight");
+        Skip(0.6); Shot($"52_{tag}_ball_open");
+        Skip(0.55); Shot($"53_{tag}_ball_ground");
+        Skip(0.3); Shot($"54_{tag}_ball_wobble");
+        Skip(2.6); Shot($"55_{tag}_result");
         Console.WriteLine("  msg: " + b.CurrentMessage);
     }
 
@@ -421,11 +436,11 @@ if (Run("battle"))
     var trainer = MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer).TrainerData!;
     b = StartBattle("", 0, trainer);
     Frames(1); Shot("60_trainer_intro_start");
-    Frames(130); Shot("61_trainer_wants");
-    Confirm(b); Frames(14); Shot("62_trainer_sendout");
-    Frames(60); Shot("63_trainer_gone");
-    Confirm(b); Frames(14); Shot("64_player_sendout");
-    Frames(60); Confirm(b); Frames(2); Shot("65_trainer_main");
+    Skip(130 / 60.0); Shot("61_trainer_wants");
+    Confirm(b); Skip(14 / 60.0); Shot("62_trainer_sendout");
+    Skip(60 / 60.0); Shot("63_trainer_gone");
+    Confirm(b); Skip(14 / 60.0); Shot("64_player_sendout");
+    Skip(60 / 60.0); Confirm(b); Skip(2 / 60.0); Shot("65_trainer_main");
 
     // Forest styles and a range of sizes
     int k = 0;
@@ -472,29 +487,29 @@ if (Run("doubles"))
     twins.Party.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 6));
     twins.Party.Add(new Pokemon(PokemonDatabase.Get("Gible")!, 6));
     var d = StartDouble(new[] { twins }, Array.Empty<Pokemon>());
-    Frames(130); Shot("90_double_intro");
-    Confirm(d); Frames(70); Shot("91_double_foes_out");
-    Confirm(d); Frames(70); Shot("92_double_mine_out");
-    for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(d); Frames(20); }
-    Frames(2); Shot("93_double_main_first");
-    d.SelectMainMenuOption(0); Frames(2); Shot("94_double_moves");
+    Skip(130 / 60.0); Shot("90_double_intro");
+    Confirm(d); Skip(70 / 60.0); Shot("91_double_foes_out");
+    Confirm(d); Skip(70 / 60.0); Shot("92_double_mine_out");
+    for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(d); Skip(20 / 60.0); }
+    Skip(2 / 60.0); Shot("93_double_main_first");
+    d.SelectMainMenuOption(0); Skip(2 / 60.0); Shot("94_double_moves");
     int single = d.PlayerPokemon.Moves.FindIndex(m => m.Target == MoveTarget.Selected && m.Category != MoveCategory.Status);
     d.HUD.MoveMenuIndex = Math.Max(0, single);
-    d.SelectMove(Math.Max(0, single)); Frames(2); Shot("95_double_target");
-    d.HUD.TargetMenuIndex = 1; Frames(2); Shot("95b_double_target_right");
-    d.SelectTarget(1); Frames(2); Shot("96_double_main_second");
+    d.SelectMove(Math.Max(0, single)); Skip(2 / 60.0); Shot("95_double_target");
+    d.HUD.TargetMenuIndex = 1; Skip(2 / 60.0); Shot("95b_double_target_right");
+    d.SelectTarget(1); Skip(2 / 60.0); Shot("96_double_main_second");
     d.SelectMove(0);
     if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0);
-    Frames(8); Shot("97_double_attack");
-    for (int guard = 0; guard < 20 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Frames(25); }
-    Shot("98_double_after_turn");
+    Skip(8 / 60.0); Shot("97_double_attack");
+    for (int guard = 0; guard < 20 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Skip(25 / 60.0); }
+    Skip(0.8); Shot("98_double_after_turn");
 
     // A fainted Pokémon of the player's has to be replaced
     d.PlayerSlots[1].Pokemon!.CurrentHP = 1;
     d.PlayerSlots[1].Pokemon!.Status = StatusCondition.Burn;
     d.SelectMove(0); if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0);
     if (d.HUD.MenuState == BattleMenuState.Main) { d.SelectMove(0); if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0); }
-    for (int guard = 0; guard < 25 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Frames(25); }
+    for (int guard = 0; guard < 25 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Skip(25 / 60.0); }
     Shot("99_double_replace");
 
     // Two trainers together, and two wild Pokémon
@@ -504,11 +519,182 @@ if (Run("doubles"))
     c.Party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
     party.HealAll();
     d = StartDouble(new[] { a, c }, Array.Empty<Pokemon>());
-    Frames(130); Shot("9a_two_trainers");
+    Skip(130 / 60.0); Shot("9a_two_trainers");
     d = StartDouble(Array.Empty<Trainer>(), new[] { new Pokemon(PokemonDatabase.Get("Bidoof")!, 4), new Pokemon(PokemonDatabase.Get("Gible")!, 4) });
-    Frames(130); Shot("9b_wild_pair");
-    Confirm(d); Frames(70); Confirm(d); Frames(2); Shot("9c_wild_pair_main");
+    Skip(130 / 60.0); Shot("9b_wild_pair");
+    Confirm(d); Skip(70 / 60.0); Confirm(d); Skip(2 / 60.0); Shot("9c_wild_pair_main");
     Timing("double battle");
+}
+
+
+// ---------------------------------------------------------------- scripted demo battle (plan 04 · G8)
+
+if (Run("demo"))
+{
+    var renderer = (BattleRenderer)Get("battleRenderer");
+    // Barry's Torterra is far stronger than the lead, so the show can go on: it takes every move without fainting,
+    // and plays harmless moves itself (one attack, to show the foe's side of a move)
+    var demoParty = new Party();
+    var lead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3));
+    demoParty.Add(lead);
+    var rival = new Trainer { Name = "Barry", TrainerClass = "Rival" };
+    var torterra = new Pokemon(PokemonDatabase.Get("Torterra")!, 90, new Random(4));
+    rival.Party.Add(torterra);
+
+    Set("currentMap", MapDatabase.Get("Route201"));
+    renderer.SetArena(BattleArena.Grass);
+    var b = new BattleEngine(new BattleSetup
+    {
+        PlayerParty = demoParty, Inventory = inventory, Pokedex = pokedex, Trainers = new List<Trainer> { rival }, Random = new Random(11)
+    });
+    Set("battle", b);
+    Set("currentState", GameState.Battle);
+
+    // The opening: the sweep in, both trainers on their platforms, then each throws out their Pokémon
+    Skip(0.05); Shot("d01_intro_sweep");
+    Skip(1.0); Shot("d02_intro_trainers");
+    Skip(1.0);
+    Confirm(b);
+    Skip(0.1); Shot("d03_foe_throw");
+    Skip(0.22); Shot("d04_foe_ball_open");
+    Skip(0.45); Shot("d05_foe_out");
+    Skip(0.6);
+    Confirm(b);
+    Skip(0.1); Shot("d06_player_throw");
+    Skip(0.25); Shot("d07_player_ball_open");
+    Skip(0.5); Shot("d08_player_out");
+    for (int guard = 0; guard < 6 && b.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(b); Skip(0.3); }
+    Skip(0.6); Shot("d09_menu_overview");
+
+    // Moves of every kind, through the real battle flow: the attacker's shot as it winds up, the cut to the
+    // target as the effect arrives, the impact, and what follows. Both sides are healed between turns.
+    int turn = 0;
+    void Use(string move, string tag)
+    {
+        // Let the last turn's effects finish first
+        Skip(1.0);
+        lead.Moves.Clear();
+        lead.Moves.Add(new Move(MoveDatabase.Get(move)!));
+        torterra.Moves.Clear();
+        torterra.Moves.Add(new Move(MoveDatabase.Get(turn++ switch { 0 => "Razor Leaf", 1 => "Withdraw", _ => "Splash" })!));
+        lead.CurrentHP = lead.MaxHP;
+        b.EnemyPokemon.CurrentHP = b.EnemyPokemon.MaxHP;
+        lead.ResetStatStages();
+        b.EnemyPokemon.ResetStatStages();
+        // The lead always moves first, so each move's shots come before the foe's
+        b.EnemyPokemon.StatStages[StatType.Speed] = -6;
+        b.SelectMove(0);
+        Console.WriteLine("  msg: " + b.CurrentMessage);
+        Skip(0.12); Shot($"{tag}_a_windup");
+        Skip(0.16); Shot($"{tag}_b_cut");
+        Skip(0.12); Shot($"{tag}_c_impact");
+        Skip(0.3); Shot($"{tag}_d_after");
+        for (int guard = 0; guard < 12 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++)
+        {
+            Confirm(b);
+            if (turn <= 2 && b.CurrentMessage.StartsWith("Foe") && b.CurrentMessage.Contains(" used "))
+            {
+                // The foe's attack, and its status move on itself
+                Skip(0.12); Shot($"{tag}_e_foe_windup");
+                Skip(0.36); Shot($"{tag}_f_foe_impact");
+            }
+            Skip(0.35);
+        }
+    }
+    Use("Flamethrower", "d10_flamethrower");
+    Use("Thunderbolt", "d11_thunderbolt");
+    Use("Surf", "d12_surf");
+    Use("Ice Beam", "d13_ice_beam");
+    Use("Shadow Ball", "d14_shadow_ball");
+    Use("Razor Leaf", "d15_razor_leaf");
+    Use("Close Combat", "d16_close_combat");
+    Use("Earthquake", "d17_earthquake");
+    Use("Swords Dance", "d18_swords_dance");
+    Use("Charm", "d19_charm");
+    Use("Psychic", "d20_psychic");
+    Use("Dragon Pulse", "d21_dragon_pulse");
+
+    // A critical hit punches in (cued by hand, so the dice don't decide, with the messages it would show)
+    var message = typeof(BattleEngine).GetField("currentMessage", Private)!;
+    b.HUD.MenuState = BattleMenuState.Message;
+    message.SetValue(b, $"{lead.DisplayName} used Slash!");
+    b.Anim.Attack(BattleSide.Player, 0, MoveCategory.Physical);
+    b.Anim.Cue(new EffectCue { Move = "Slash", Type = PokemonType.Normal, Category = MoveCategory.Physical, FromSide = BattleSide.Player, ToSide = BattleSide.Enemy, Critical = true });
+    Skip(0.36); b.Anim.Hit(BattleSide.Enemy, 0, 1.8f);
+    Skip(0.12); Shot("d22_critical_punch_in");
+    message.SetValue(b, "A critical hit!");
+    Skip(0.3); Shot("d23_critical_after");
+    b.HUD.MenuState = BattleMenuState.Main;
+    Skip(1.0);
+
+    // The foe faints
+    lead.Moves.Clear();
+    lead.Moves.Add(new Move(MoveDatabase.Get("Flare Blitz")!));
+    b.EnemyPokemon.CurrentHP = 1;
+    b.SelectMove(0);
+    for (int guard = 0; guard < 6 && !b.CurrentMessage.Contains("fainted"); guard++) { Confirm(b); Skip(0.3); }
+    Skip(0.5); Shot("d24_faint");
+    Skip(0.5); Shot("d25_faint_sink");
+
+    // A wild Pokémon, a thrown Poké Ball: the run-in, the throw, the flight, the red light, the wobbles, the click
+    Set("currentMap", MapDatabase.Get("Route201"));
+    renderer.SetArena(BattleArena.Grass);
+    var wild = new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1, Status = StatusCondition.Sleep };
+    inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
+    var c = new BattleEngine(party, wild, inventory, pokedex, null, new List<Pokemon>());
+    Set("battle", c);
+    Skip(2.2); Confirm(c); Skip(1.2); Confirm(c); Skip(0.6);
+    var use = new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get("Poké Ball"), User = c.PlayerSlots[0], Actor = c.PlayerPokemon };
+    typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!.Invoke(c, new object[] { new List<BattleAction> { use } });
+    Confirm(c);
+    Skip(0.2); Shot("d30_ball_run_in");
+    Skip(0.25); Shot("d31_ball_throw");
+    Skip(0.45); Shot("d32_ball_flight");
+    Skip(0.65); Shot("d33_ball_open_red_light");
+    Skip(0.55); Shot("d34_ball_drop");
+    Skip(0.35); Shot("d35_ball_wobble");
+    Skip(2.0); Shot("d36_ball_click");
+    Skip(0.8); Shot("d37_gotcha");
+    Console.WriteLine("  msg: " + c.CurrentMessage);
+}
+
+// ---------------------------------------------------------------- arenas (plan 04 · G8)
+
+if (Run("arenas"))
+{
+    var renderer = (BattleRenderer)Get("battleRenderer");
+    void Arena(string name, BattleArena kind, PokemonType? theme = null, TreeStyle trees = TreeStyle.Round, bool lakeside = false, TimeOfDay time = TimeOfDay.Day)
+    {
+        if (!Wanted(name)) return;
+        engine.Settings.TimeOfDay = time;
+        engine.ApplySettings(window: false);
+        Set("currentMap", MapDatabase.Get("Route201"));
+        renderer.SetArena(kind, theme, trees, lakeside);
+        var b = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Shinx")!, 5, new Random(2)), inventory, pokedex);
+        Set("battle", b);
+        Set("currentState", GameState.Battle);
+        Skip(2.2); Confirm(b); Skip(1.2); Confirm(b); Skip(0.8);
+        Shot(name);
+    }
+    Arena("a01_grass", BattleArena.Grass);
+    Arena("a02_grass_pines_lake", BattleArena.Grass, null, TreeStyle.Pine, true);
+    Arena("a03_forest", BattleArena.Forest);
+    Arena("a04_forest_night", BattleArena.Forest, time: TimeOfDay.Night);
+    Arena("a05_cave", BattleArena.Cave);
+    Arena("a06_water", BattleArena.Water);
+    Arena("a07_water_twilight", BattleArena.Water, time: TimeOfDay.Twilight);
+    Arena("a08_snow", BattleArena.Snow);
+    Arena("a09_sand", BattleArena.Sand);
+    Arena("a10_indoors", BattleArena.Indoors);
+    Arena("a11_indoors_night", BattleArena.Indoors, time: TimeOfDay.Night);
+    int g = 20;
+    foreach (var type in new[] { PokemonType.Rock, PokemonType.Grass, PokemonType.Fighting, PokemonType.Water, PokemonType.Ghost, PokemonType.Steel, PokemonType.Ice, PokemonType.Electric })
+        Arena($"a{g++}_gym_{type.ToString().ToLowerInvariant()}", BattleArena.Gym, type);
+    int l = 30;
+    foreach (var type in new PokemonType?[] { PokemonType.Bug, PokemonType.Ground, PokemonType.Fire, PokemonType.Psychic, null })
+        Arena($"a{l++}_league_{type?.ToString().ToLowerInvariant() ?? "champion"}", BattleArena.League, type);
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
+    engine.ApplySettings(window: false);
 }
 
 // ---------------------------------------------------------------- the real encounter flow

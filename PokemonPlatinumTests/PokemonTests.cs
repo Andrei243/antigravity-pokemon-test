@@ -489,7 +489,7 @@ public class PokemonTests
         battle.SelectBagItem(0);
         Assert.Equal("Lucas used one Poké Ball!", battle.CurrentMessage);
         battle.ConfirmMessage();
-        Tick(battle, BattleVFX.BallThrowTime(4) + 0.5f);
+        Tick(battle, BattleAnimator.BallThrowTime(4) + 0.5f);
 
         Assert.Equal("Gotcha! Starly was caught!", battle.CurrentMessage);
         Assert.Contains(foe, party.Members);
