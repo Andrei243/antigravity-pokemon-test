@@ -5,85 +5,141 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-/// <summary>How a batch of static geometry is shaded.</summary>
-internal enum MeshPass { Opaque, Ground, Water, SoftWater, Glow, Light }
+/// <summary>
+/// How a batch of static geometry is shaded. <see cref="Light"/> and <see cref="HomeLight"/> are the pools and
+/// halos added on top after dark: the first for lights that burn all night, the second for the windows of homes.
+/// </summary>
+internal enum MeshPass { Opaque, Ground, Water, SoftWater, Light, HomeLight }
+
+/// <summary>A rectangle of ground, x and z in tiles: what the camera can see, or where shadows can reach it from.</summary>
+internal readonly record struct GroundRect(float MinX, float MinZ, float MaxX, float MaxZ)
+{
+    public bool Touches(Vector3 min, Vector3 max) => max.X >= MinX && min.X <= MaxX && max.Z >= MinZ && min.Z <= MaxZ;
+}
 
 /// <summary>Collects static geometry into one mesh per texture and pass, which keeps draw calls low.</summary>
 internal sealed class MeshBatches
 {
-    private readonly Dictionary<(uint, MeshPass), (Texture2D Tex, MeshBuilder Builder)> map = new();
+    private readonly Dictionary<(uint, MeshPass, int), (Texture2D Tex, MeshBuilder Builder)> map = new();
+
+    /// <summary>
+    /// While this is not 0, geometry goes into a mesh of its own for that chunk of the map, and a chunk is only
+    /// drawn when it is in view. For what there is a great deal of across a map: its trees.
+    /// </summary>
+    public int Chunk { get; set; }
+
+    /// <summary>The chunk a tile belongs to: squares of eight tiles.</summary>
+    public static int ChunkOf(int tileX, int tileY) => 1 + ((tileX + 64) >> 3) + ((tileY + 64) >> 3) * 256;
 
     public MeshBuilder For(Texture2D tex, MeshPass pass = MeshPass.Opaque)
     {
-        if (!map.TryGetValue((tex.Id, pass), out var entry))
+        if (!map.TryGetValue((tex.Id, pass, Chunk), out var entry))
         {
             entry = (tex, new MeshBuilder());
-            map[(tex.Id, pass)] = entry;
+            map[(tex.Id, pass, Chunk)] = entry;
         }
         return entry.Builder;
     }
 
-    public IEnumerable<(Texture2D Tex, MeshPass Pass, MeshBuilder Builder)> All
+    /// <summary>Adds geometry that was built before its texture existed (an art sheet is uploaded last).</summary>
+    public void Attach(Texture2D tex, MeshPass pass, MeshBuilder builder)
     {
-        get { foreach (var (key, e) in map) yield return (e.Tex, key.Item2, e.Builder); }
+        if (builder.VertexCount > 0) For(tex, pass).Append(builder, Matrix4x4.Identity);
+    }
+
+    public IEnumerable<(Texture2D Tex, MeshPass Pass, bool Chunked, MeshBuilder Builder)> All
+    {
+        get { foreach (var (key, e) in map) yield return (e.Tex, key.Item2, key.Item3 != 0, e.Builder); }
     }
 }
 
 /// <summary>
-/// Uploaded static scenery: each batch drawn with the lit scene shader (or the water shader), and the opaque
-/// batches drawn again into the shadow map. Glazed batches (windows, glass doors) glow after dark.
+/// Uploaded static scenery: each batch drawn with the lit scene shader (or a water shader), and the opaque
+/// batches drawn again into the shadow map. Texels marked as lit glass glow after dark (see
+/// <see cref="FieldShaders.SetGlow"/>), and the light batches are added on top.
 /// </summary>
 internal sealed class SceneMeshes
 {
-    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, bool Glows);
+    /// <param name="Bounds">Set for a chunk of the map, which is skipped when out of view; null for what is always drawn.</param>
+    /// <param name="Prepass">Set for foliage, which lays down its depth before it is shaded (see <see cref="Draw"/>).</param>
+    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, (Vector3 Min, Vector3 Max)? Bounds, Material? Prepass);
     private readonly List<Part> parts = new();
-    private readonly List<(Mesh Mesh, Material Material)> lights = new();
-    private FieldShaders shaders = null!;
+    private readonly List<(Mesh Mesh, Material Material, bool Home)> lights = new();
 
     public static SceneMeshes Upload(MeshBatches batches, FieldShaders shaders)
     {
-        var result = new SceneMeshes { shaders = shaders };
-        foreach (var (tex, pass, builder) in batches.All)
+        var result = new SceneMeshes();
+        foreach (var (tex, pass, chunked, builder) in batches.All)
         {
             if (builder.VertexCount == 0) continue;
-            if (pass == MeshPass.Light)
+            if (pass is MeshPass.Light or MeshPass.HomeLight)
             {
-                // Light pools are unlit and added on top of the scene, so they use raylib's default shader
-                var glowing = Raylib.LoadMaterialDefault();
-                Raylib.SetMaterialTexture(ref glowing, MaterialMapIndex.Albedo, tex);
-                result.lights.Add((builder.Upload(), glowing));
+                // Lights are unlit and added on top of the scene
+                result.lights.Add((builder.Upload(), RenderContext.MaterialFor(shaders.Light, tex), pass == MeshPass.HomeLight));
                 continue;
             }
             var shader = pass == MeshPass.Water ? shaders.Water : pass == MeshPass.SoftWater ? shaders.SoftWater : shaders.World;
             var main = RenderContext.MaterialFor(shader, tex);
-            Material? depth = pass is MeshPass.Opaque or MeshPass.Glow ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
-            result.parts.Add(new Part(builder.Upload(), main, depth, pass == MeshPass.Glow));
+            Material? depth = pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
+            // Chunks are the map's trees: many layers of leaves over each other, so they get a depth pre-pass
+            Material? prepass = chunked && pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Prepass, tex) : null;
+            result.parts.Add(new Part(builder.Upload(), main, depth, chunked ? builder.Bounds() : null, prepass));
         }
         return result;
     }
 
-    /// <param name="glow">How brightly windows and glass doors are lit from inside (0 by day).</param>
-    public void Draw(float glow = 0f)
+    private static bool Hidden(Part part, GroundRect? within) =>
+        within.HasValue && part.Bounds is { } b && !within.Value.Touches(b.Min, b.Max);
+
+    /// <summary>
+    /// Draws the scenery. Foliage goes first, as depth alone: a forest is many cut-out layers over each other,
+    /// and shading every layer costs a couple of milliseconds. With the depth laid down (and not written again),
+    /// only the leaves that end up visible are shaded, and the ground beneath them is skipped too.
+    /// </summary>
+    /// <param name="view">The ground the camera can see; chunks of the map outside it are skipped. Null draws everything.</param>
+    public void Draw(GroundRect? view = null)
     {
+        bool foliage = false;
         foreach (var part in parts)
         {
-            if (part.Glows) shaders.SetGlow(glow);
+            if (!part.Prepass.HasValue || Hidden(part, view)) continue;
+            if (!foliage)
+            {
+                Rlgl.DrawRenderBatchActive();
+                Rlgl.ColorMask(false, false, false, false);
+                foliage = true;
+            }
+            Raylib.DrawMesh(part.Mesh, part.Prepass.Value, Matrix4x4.Identity);
+        }
+        if (foliage) Rlgl.ColorMask(true, true, true, true);
+
+        foreach (var part in parts)
+        {
+            if (Hidden(part, view)) continue;
+            if (part.Prepass.HasValue) Rlgl.DisableDepthMask();
             Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
-            if (part.Glows) shaders.SetGlow(0f);
+            if (part.Prepass.HasValue) Rlgl.EnableDepthMask();
         }
     }
 
-    /// <summary>Adds the warm light that lit windows and doors throw on the ground, scaled by <paramref name="glow"/>.</summary>
-    public unsafe void DrawLights(float glow)
+    /// <summary>
+    /// Adds the light that lamps, doors and windows throw, each kind at its own strength (0 to 1) and all of it
+    /// tinted by <paramref name="tint"/>.
+    /// </summary>
+    public unsafe void DrawLights(float publicLevel, float homeLevel, Vector3 tint)
     {
-        if (glow <= 0.01f || lights.Count == 0) return;
-        byte level = (byte)(255 * Math.Clamp(glow, 0f, 1f));
+        if (lights.Count == 0 || (publicLevel <= 0.01f && homeLevel <= 0.01f)) return;
         Rlgl.DrawRenderBatchActive();
         Rlgl.SetBlendMode(BlendMode.Additive);
         Rlgl.DisableDepthMask();
-        foreach (var (mesh, material) in lights)
+        foreach (var (mesh, material, home) in lights)
         {
-            material.Maps[(int)MaterialMapIndex.Albedo].Color = new Color(level, level, level, level);
+            float level = Math.Clamp(home ? homeLevel : publicLevel, 0f, 1f);
+            if (level <= 0.01f) continue;
+            // Additive blending multiplies by alpha, so the level goes there alone
+            material.Maps[(int)MaterialMapIndex.Albedo].Color = new Color(
+                (int)(255 * Math.Clamp(tint.X, 0f, 1f)), (int)(255 * Math.Clamp(tint.Y, 0f, 1f)),
+                (int)(255 * Math.Clamp(tint.Z, 0f, 1f)), (int)(255 * level));
             Raylib.DrawMesh(mesh, material, Matrix4x4.Identity);
         }
         Rlgl.DrawRenderBatchActive();
@@ -92,11 +148,12 @@ internal sealed class SceneMeshes
     }
 
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>
-    public void DrawDepth()
+    /// <param name="casters">The ground whose shadows can reach the view; chunks outside it are skipped. Null draws everything.</param>
+    public void DrawDepth(GroundRect? casters = null)
     {
         foreach (var part in parts)
         {
-            if (part.Depth.HasValue) Raylib.DrawMesh(part.Mesh, part.Depth.Value, Matrix4x4.Identity);
+            if (part.Depth.HasValue && !Hidden(part, casters)) Raylib.DrawMesh(part.Mesh, part.Depth.Value, Matrix4x4.Identity);
         }
     }
 }
@@ -166,25 +223,16 @@ internal static class TreeModels
 
         // The crown hangs low over a short trunk, so trees cut off by the top of the screen still read as foliage
         var tint = PixelCanvas.Mix(new Color(96, 176, 104, 255), new Color(118, 192, 108, 255), Rand(seedX, seedY, 4));
-        PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx, 1.45f * s, cz), 0.74f * s, 0.86f * s, tint, 0.25f);
-        PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx - 0.22f * scale, 2.05f * s, cz + 0.06f * scale), 0.5f * s, 0.58f * s, PixelCanvas.Light1(tint, 0.08f), 0.4f);
-        PropModels.LeafBall(tex => batches.For(tex), new Vector3(cx + 0.26f * scale, 1.85f * s, cz - 0.1f * scale), 0.46f * s, 0.52f * s, tint, 0.35f);
+        LeafBall(batches, new Vector3(cx, 1.45f * s, cz), 0.74f * s, 0.86f * s, tint, 0.25f);
+        LeafBall(batches, new Vector3(cx - 0.22f * scale, 2.05f * s, cz + 0.06f * scale), 0.5f * s, 0.58f * s, PixelCanvas.Light1(tint, 0.08f), 0.4f);
+        LeafBall(batches, new Vector3(cx + 0.26f * scale, 1.85f * s, cz - 0.1f * scale), 0.46f * s, 0.52f * s, tint, 0.35f);
     }
 
-    /// <summary>
-    /// A boulder with a smaller stone beside it. Heights are stretched by <paramref name="vs"/> like everything
-    /// upright in the field; in water it sits lower, as if standing on the bed.
-    /// </summary>
-    public static void Rock(MeshBatches batches, float cx, float cz, float vs, int seedX, int seedY, bool inWater)
+    /// <summary>A round clump of leaves: a solid core plus a cut-out shell for a leafy outline.</summary>
+    private static void LeafBall(MeshBatches batches, Vector3 center, float radius, float height, Color tint, float sway)
     {
-        var b = batches.For(SceneTextures.Rock);
-        float s = 0.86f + Rand(seedX, seedY, 6) * 0.28f;
-        float sink = inWater ? 0.1f : 0.04f;
-        b.Ellipsoid(new Vector3(cx, (0.2f - sink) * s * vs, cz), new Vector3(0.4f * s, 0.3f * s * vs, 0.33f * s), Color.White, 10, 6);
-
-        float side = Rand(seedX, seedY, 7) < 0.5f ? -1f : 1f;
-        float r = 0.17f + Rand(seedX, seedY, 8) * 0.06f;
-        b.Ellipsoid(new Vector3(cx + side * 0.36f * s, (r * 0.7f - sink) * vs, cz + 0.16f), new Vector3(r, r * 0.8f * vs, r * 0.9f), new Color(232, 232, 232, 255), 8, 5);
+        Icosphere.Add(batches.For(SceneTextures.Leaves), center, new Vector3(radius, height, radius) * 0.9f, MeshBuilder.Scale(tint, 0.8f), 0, 1.4f, sway);
+        Icosphere.Add(batches.For(SceneTextures.LeafShell), center, new Vector3(radius, height, radius) * 1.08f, tint, 1, 1.4f, sway);
     }
 
     /// <summary>

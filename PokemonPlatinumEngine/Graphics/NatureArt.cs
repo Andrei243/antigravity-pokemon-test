@@ -4,7 +4,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// The pixel art of the field's plants and rocks (style guide, "Grass, flowers, trees, ledges and rocks"): every
+/// The pixel art of the field's plants and ledges (style guide, "Grass, flowers, trees, ledges and rocks"): every
 /// texture is drawn from placed shapes in a few flat shades, with no random per-texel variation. Trees are grey
 /// (tinted per tree); the rest carry their own colours. No GPU calls, so the art can be tested.
 /// </summary>
@@ -175,7 +175,7 @@ internal static class NatureArt
         return c;
     }
 
-    // ------------------------------------------------------------------ ledges and rocks
+    // ------------------------------------------------------------------ ledges
 
     /// <summary>
     /// A ledge's face: 32x12. A bright edge, a grass lip that hangs in scallops, dirt with a broken strata line,
@@ -203,40 +203,6 @@ internal static class NatureArt
                     : y == 7 && x % 16 is < 5 or > 8 ? strata
                     : dirt;
                 c.SetRaw(x, y, col);
-            }
-        }
-        return c;
-    }
-
-    /// <summary>
-    /// A boulder's skin: 64x32, U wraps round it, V runs from the base (row 0) to the top. Three flat shades in
-    /// ragged bands, lightest on top, with two crack lines.
-    /// </summary>
-    public static PixelCanvas Rock()
-    {
-        const int w = 64, h = 32;
-        var c = new PixelCanvas(w, h);
-        var dark = Rgb(104, 100, 112);
-        var mid = Rgb(150, 146, 150);
-        var light = Rgb(196, 192, 190);
-        var crack = Rgb(74, 70, 86);
-        int[] step = { 0, 0, 1, 1, 2, 2, 1, 0, -1, -1, 0, 1, 2, 1, 0, 0 };
-        for (int y = 0; y < h; y++)
-            for (int x = 0; x < w; x++)
-            {
-                int low = 9 + step[x % 16], high = 21 + step[(x + 5) % 16];
-                c.SetRaw(x, y, y < low ? dark : y < high ? mid : light);
-            }
-        // Cracks run down from the top band in short straight runs
-        foreach (int x0 in new[] { 10, 41 })
-        {
-            int x = x0;
-            for (int y = 27; y >= 12; y--)
-            {
-                c.SetRaw(x, y, crack);
-                if (y % 4 != 0) continue;
-                x += x0 == 10 ? 1 : -1;
-                c.SetRaw(x, y, crack);
             }
         }
         return c;

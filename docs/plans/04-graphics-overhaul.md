@@ -130,6 +130,20 @@ Field, in pixel art on the 32-texel grid: sand, dirt, snow and cave ground for `
 A modular building kit in pixel art with a style per town: planks and plaster with one-texel bevels, framed windows with glass, doors with steps, roof tiles with ridges, overhangs and gutters, chimneys, foundations. Props: fences, signs, lamps, mailboxes, benches, flower boxes. Interiors with warm light, wood and tile floors, rugs and furniture. No per-texel noise anywhere.
 **Done when** every existing building and interior is rebuilt.
 
+**Outcome (2026-10-02).**
+- **The kit**: buildings, props and furniture are boxes and upright cards whose every visible face is painted at its exact size, 32 texels per tile, into one sheet of art per map (`ArtSheet`, `KitBuilder`). The painters are plain code without GPU calls (`BuildingArt`, `OutdoorProps`, `PropModels`, `GroundBaker`, with `Pix` for bevels, outlines and a 5×7 sign alphabet), so tests build every map's kit and check that no face has specks or gradients. The old noisy textures and flat-coloured boxes are gone.
+- **Buildings**: each front wall is one painted façade composed bay by bay from the map (door, name plate, windows), in the wall material of its style: planks, clapboard, plaster, brick or panel over a stone base. Pitched roofs now run their ridge east–west, so the tiled south slope faces the camera; Centers, Marts and the lab have hip roofs and an entrance block with their sign (our own ball roundel, `MART`, `LAB`); city blocks have two or three storeys, a flat roof behind a parapet and equipment on top.
+- **A style per town**: maps say how their houses are built (`architecture`: Timber for Twinleaf, Plaster for Sandgem, City for Jubilife, Clapboard for Pallet) and can name what a building is where its door doesn't tell (`buildings`). Jubilife's school, Pokétch Company, TV station, Global Terminal and flats were log cabins before; each now has its own look.
+- **Lights after dark** are marked texel by texel in the art instead of being guessed from colour. Street lamps, wall lanterns, shops and signs come on at twilight and burn all night; the windows of homes are lit in the evening and dark late at night, except in about one house in three. Lamps throw a pool of light and wear a halo.
+- **Street furniture**, placed through the map files: fenced front gardens with a mailbox at the gate, lamp posts along the roads, planters at public doors, benches, and a shore railing in Pallet. Fences are real posts and rails that join up tile by tile; the rest, and now boulders and signposts too, are outlined pixel sprites that cast real shadows.
+- **Rooms**: painted walls (crown moulding, wallpaper, chair rail, panelled wainscot, skirting), clean plank and tile floors, and every piece of furniture rebuilt with painted faces. Rooms follow the clock: daylight on the floor by day, orange glass at twilight, dark blue glass and warmer, dimmer light at night.
+- **Upright things stand upright** (a change to the field's look, decided here): the steep camera made everything tall lean outward by up to 20° at the sides of the screen, which sheared sprites and made lamp posts look as if they were falling over. Outdoors the vertex shader now takes that lean out; walls and sprites are undistorted rectangles and the ground keeps its perspective. Rooms keep true perspective.
+- **Performance**: a forest in view cost over 2 ms, because every layer of leaves was shaded. Trees are now kept in chunks of eight tiles, only those near the view are drawn, and they lay down their depth before they are shaded. Jubilife went from 8.1 ms (over budget before this session) to 6.7 ms.
+- **Harness**: `buildings [before dir]` renders every building from the street by day, at twilight and at night, and every room, with close-ups and boards; `SHOTS_FILTER=text` saves only matching shots.
+- **Frame time on High**: Twinleaf 6.4 ms, Jubilife 6.7 ms, rooms 4.2 ms, the reference battle 7.5 ms.
+- **For plan 01 · M4**: a new kind of building is a `BuildingKind`, a line in `BuildingArt.StyleOf` and, if it needs one, a sign; a new town style is an `Architecture` value and its line there. Gyms, gates and the League have no style yet.
+- **Not done here**: second storeys and cross gables for the bigger houses; doors that open (G9); lamps you can see inside rooms.
+
 ### G6 · SDF kit and characters
 `SdfModel` with meshing and caching, and the material data deferred from G2 (per-surface ramp, specular and emission, carried as material ids on the models). Rebuild the player and every NPC type: better proportions, hands and shoes, sculpted hair, clothing detail, expressive faces (eyes with highlights, blinking, a few mouth shapes and expressions). Skinned skeletons with walk, run, idle and emote animations with follow-through (hair and bag bounce). The models serve both layers: 3D trainers in battle, and the source of the field sprites (re-bake, with more walk frames and legible faces at sprite size; hand-drawn overrides where a bake falls short).
 **Done when** the lineup, sprite sheet and walk-cycle shots pass review.
@@ -171,7 +185,7 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 - [x] Extra: 4K rendering, full-screen fix, opening and title screen (2026-10-01)
 - [x] G3 UI kit and core screens (2026-10-01: kit components and motion, start menu with quit, battle switch and bag panels, summary, location sign, notices)
 - [x] G4 Terrain and nature (2026-10-02: pixel-art water, tall grass that parts, clean tree art, ledges, boulders, four new ground kinds, lakeside battles)
-- [ ] G5 Buildings, props and interiors
+- [x] G5 Buildings, props and interiors (2026-10-02: painted façades and roofs in a style per town, lights after dark, street furniture, rebuilt rooms that follow the clock, upright things straightened, forests drawn depth-first)
 - [ ] G6 SDF kit and characters
 - [ ] G7 Pokémon models, version 2
 - [ ] G8 Battle presentation

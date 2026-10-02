@@ -38,7 +38,7 @@ internal readonly record struct SkyColors(Color Zenith, Color Middle, Color Hori
         PixelCanvas.Mix(a.CloudTint, b.CloudTint, t), a.Stars + (b.Stars - a.Stars) * t);
 }
 
-/// <summary>Everything that changes with the time of day: light, fog, background, grading, window glow and sky.</summary>
+/// <summary>Everything that changes with the time of day: light, fog, background, grading, the lights after dark and the sky.</summary>
 internal readonly record struct LightRig(
     SceneLighting Light,
     Color Background,
@@ -47,17 +47,29 @@ internal readonly record struct LightRig(
     float FogNear,
     float FogFar,
     PostSettings Post,
-    float WindowGlow,
+    float LampGlow,           // lights that burn all night: street lamps, shops, signs (in rooms: daylight through the windows)
     float Rim,
     SkyColors Sky,
-    float CloudShade = 0f)
+    float CloudShade = 0f,
+    float HomeGlow = 0f)      // the windows of homes (in rooms: how far the glass has turned to the sky's colour)
 {
+    /// <summary>What lit glass turns into: lamplight outdoors, the sky seen through a window indoors.</summary>
+    public Vector3 GlowColor { get; init; } = ArtLook.Lamplight;
+
+    /// <summary>Tint of the light thrown on the ground (pools under lamps, patches under windows).</summary>
+    public Vector3 LightTint { get; init; } = Vector3.One;
+
     public static LightRig Lerp(LightRig a, LightRig b, float t) => new(
         SceneLighting.Lerp(a.Light, b.Light, t), PixelCanvas.Mix(a.Background, b.Background, t),
         Vector3.Lerp(a.FogColor, b.FogColor, t), a.FogAmount + (b.FogAmount - a.FogAmount) * t,
         a.FogNear + (b.FogNear - a.FogNear) * t, a.FogFar + (b.FogFar - a.FogFar) * t,
-        PostSettings.Lerp(a.Post, b.Post, t), a.WindowGlow + (b.WindowGlow - a.WindowGlow) * t,
-        a.Rim + (b.Rim - a.Rim) * t, SkyColors.Lerp(a.Sky, b.Sky, t), a.CloudShade + (b.CloudShade - a.CloudShade) * t);
+        PostSettings.Lerp(a.Post, b.Post, t), a.LampGlow + (b.LampGlow - a.LampGlow) * t,
+        a.Rim + (b.Rim - a.Rim) * t, SkyColors.Lerp(a.Sky, b.Sky, t), a.CloudShade + (b.CloudShade - a.CloudShade) * t,
+        a.HomeGlow + (b.HomeGlow - a.HomeGlow) * t)
+    {
+        GlowColor = Vector3.Lerp(a.GlowColor, b.GlowColor, t),
+        LightTint = Vector3.Lerp(a.LightTint, b.LightTint, t)
+    };
 }
 
 /// <summary>
@@ -106,7 +118,16 @@ internal static class ArtLook
         return rigFor(GameClock.ForHour((int)hour));
     }
 
-    public static LightRig FieldRig(float hour, bool indoors) => indoors ? Indoors : AtHour(hour, FieldRigFor);
+    /// <summary>
+    /// How far the field straightens upright things on screen (see <see cref="FieldShaders.SetUpright"/>): without
+    /// it, everything tall leans outward by up to 20° toward the sides of the screen.
+    /// </summary>
+    public const float FieldUpright = 1f;
+
+    /// <summary>Warm lamplight: what lit windows and street lamps glow with.</summary>
+    public static readonly Vector3 Lamplight = new(1f, 0.8f, 0.46f);
+
+    public static LightRig FieldRig(float hour, bool indoors) => AtHour(hour, indoors ? IndoorRigFor : FieldRigFor);
 
     public static LightRig BattleRig(float hour) => AtHour(hour, BattleRigFor);
 
@@ -136,27 +157,51 @@ internal static class ArtLook
             new SceneLighting(Dir(-0.72f, 0.42f, 0.5f), V(0.9f, 0.56f, 0.32f), V(0.5f, 0.44f, 0.62f), V(0.44f, 0.36f, 0.36f)),
             Rgb(40, 60, 62), V(0.9f, 0.62f, 0.52f), 0.28f, 42f, 70f,
             FieldDayPost with { BloomThreshold = 0.8f, BloomStrength = 0.55f, Saturation = 1.12f, ShadowTint = V(0.88f, 0.84f, 1.1f), HighlightTint = V(1.1f, 0.96f, 0.82f), Vignette = 0.3f },
-            0.45f, 0.35f, NoSky, CloudShade: 0.1f),
-        // Cool moonlight; warm windows glow and bloom
+            0.6f, 0.35f, NoSky, CloudShade: 0.1f, HomeGlow: 0.45f),
+        // Cool moonlight; street lamps and warm windows glow and bloom
         TimeOfDay.Night => new LightRig(
             new SceneLighting(Dir(-0.38f, 0.86f, 0.34f), V(0.27f, 0.31f, 0.44f), V(0.22f, 0.26f, 0.4f), V(0.14f, 0.15f, 0.21f)),
             Rgb(12, 26, 34), V(0.1f, 0.14f, 0.28f), 0.35f, 40f, 68f,
             FieldDayPost with { BloomThreshold = 0.55f, BloomStrength = 0.7f, Saturation = 0.8f, Contrast = 1.06f, ShadowTint = V(0.85f, 0.9f, 1.18f), HighlightTint = V(1.0f, 1.0f, 1.05f), Vignette = 0.4f },
-            1f, 0.5f, NoSky),
-        // Deeper night; fewer lights still on
+            1f, 0.5f, NoSky, HomeGlow: 1f),
+        // Deeper night: the lamps burn on, most homes have gone dark
         _ => new LightRig(
             new SceneLighting(Dir(-0.34f, 0.88f, 0.3f), V(0.2f, 0.24f, 0.36f), V(0.17f, 0.2f, 0.33f), V(0.11f, 0.12f, 0.17f)),
             Rgb(8, 18, 26), V(0.07f, 0.1f, 0.22f), 0.4f, 38f, 66f,
             FieldDayPost with { BloomThreshold = 0.55f, BloomStrength = 0.6f, Saturation = 0.72f, Contrast = 1.06f, ShadowTint = V(0.85f, 0.9f, 1.2f), HighlightTint = V(1.0f, 1.0f, 1.06f), Vignette = 0.45f },
-            0.6f, 0.5f, NoSky)
+            1f, 0.5f, NoSky)
     };
 
-    /// <summary>Rooms are lit by their own lamps, so they don't follow the clock; they get a gentler blur and less glow.</summary>
-    public static readonly LightRig Indoors = new(
-        new SceneLighting(Dir(-0.35f, 0.82f, 0.46f), V(0.46f, 0.42f, 0.36f), V(0.66f, 0.63f, 0.6f), V(0.52f, 0.47f, 0.42f)),
-        Color.Black, V(0f, 0f, 0f), 0f, 100f, 200f,
-        FieldDayPost with { TiltShift = 4f, Dof = 0.6f, FocusBand = 0.36f, BloomThreshold = 0.93f, BloomStrength = 0.22f },
-        0f, 0.3f, NoSky);
+    private static readonly PostSettings RoomPost =
+        FieldDayPost with { TiltShift = 4f, Dof = 0.6f, FocusBand = 0.36f, BloomThreshold = 0.93f, BloomStrength = 0.22f };
+
+    /// <summary>
+    /// Rooms get a gentler blur and less glow than the field, and follow the clock through their windows: by day
+    /// the sun throws patches of light on the floor (<see cref="LightRig.LampGlow"/>), at twilight the glass turns
+    /// orange, and at night it is dark blue and the room is lit, warmer and a little dimmer, by its lamps.
+    /// </summary>
+    public static LightRig IndoorRigFor(TimeOfDay time) => time switch
+    {
+        TimeOfDay.Morning => new LightRig(
+            new SceneLighting(Dir(-0.4f, 0.78f, 0.48f), V(0.44f, 0.42f, 0.38f), V(0.66f, 0.65f, 0.64f), V(0.5f, 0.47f, 0.44f)),
+            Color.Black, V(0f, 0f, 0f), 0f, 100f, 200f, RoomPost, 0.8f, 0.3f, NoSky)
+            { GlowColor = V(0.86f, 0.9f, 0.96f), LightTint = V(0.92f, 0.96f, 1f) },
+        TimeOfDay.Day => new LightRig(
+            new SceneLighting(Dir(-0.35f, 0.82f, 0.46f), V(0.46f, 0.42f, 0.36f), V(0.66f, 0.63f, 0.6f), V(0.52f, 0.47f, 0.42f)),
+            Color.Black, V(0f, 0f, 0f), 0f, 100f, 200f, RoomPost, 1f, 0.3f, NoSky)
+            { GlowColor = V(0.86f, 0.9f, 0.96f), LightTint = V(1f, 0.96f, 0.84f) },
+        TimeOfDay.Twilight => new LightRig(
+            new SceneLighting(Dir(-0.5f, 0.7f, 0.5f), V(0.5f, 0.41f, 0.31f), V(0.63f, 0.58f, 0.56f), V(0.5f, 0.44f, 0.4f)),
+            Color.Black, V(0f, 0f, 0f), 0f, 100f, 200f,
+            RoomPost with { Saturation = 1.08f, HighlightTint = V(1.08f, 0.99f, 0.9f) }, 0.75f, 0.3f, NoSky, HomeGlow: 0.85f)
+            { GlowColor = V(1f, 0.64f, 0.42f), LightTint = V(1f, 0.6f, 0.34f) },
+        _ => new LightRig(
+            new SceneLighting(Dir(-0.3f, 0.86f, 0.42f), V(0.5f, 0.41f, 0.28f), V(0.5f, 0.45f, 0.44f), V(0.4f, 0.34f, 0.3f)),
+            Color.Black, V(0f, 0f, 0f), 0f, 100f, 200f,
+            RoomPost with { BloomThreshold = 0.86f, BloomStrength = 0.3f, Saturation = 1.06f, ShadowTint = V(0.86f, 0.88f, 1.12f), HighlightTint = V(1.1f, 1f, 0.86f), Vignette = 0.4f },
+            0f, 0.3f, NoSky, HomeGlow: 1f)
+            { GlowColor = V(0.07f, 0.1f, 0.22f) }
+    };
 
     // ------------------------------------------------------------------ battles (3D)
 

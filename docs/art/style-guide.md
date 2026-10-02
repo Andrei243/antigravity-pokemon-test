@@ -18,7 +18,7 @@ The numbers in this guide live in `ArtLook` as one light rig per layer and time 
 
 ## Reference frames
 
-`dotnet run --project tools/ShotHarness -- <dir> look [before dir]` renders the reference frames by day (Twinleaf, dialogue, battle, move menu, party, Route 201, Player's house, Lake Verity, options). Given the folder of an earlier run, it also writes `compare_*.png` before/after boards. `times` renders Twinleaf, Sandgem and a battle at each time of day, then each quality preset. Graphics sessions start with a `look` run (the "before") and end with the boards.
+`dotnet run --project tools/ShotHarness -- <dir> look [before dir]` renders the reference frames by day (Twinleaf, dialogue, battle, move menu, party, Route 201, Player's house, Lake Verity, options). Given the folder of an earlier run, it also writes `compare_*.png` before/after boards. `times` renders Twinleaf, Sandgem and a battle at each time of day, then each quality preset; `terrain` renders water, grass, trees and ground kinds; `buildings` renders every building from the street by day and after dark, and every room. Graphics sessions start with a `look` run (the "before") and end with the boards.
 
 ## Rules for every layer
 
@@ -32,9 +32,10 @@ The numbers in this guide live in `ArtLook` as one light rig per layer and time 
 
 ### Pixel grid
 
-- **32 texels per world unit** (one tile) for everything: ground (`GroundBaker.ArtTile`), buildings and props (`SceneTextures`), character sprites (`CharacterSprites.TexelsPerUnit`). With the field camera that is about 3 layout units per texel, 6 real pixels at 4K.
+- **32 texels per world unit** (one tile) for everything: ground (`GroundBaker.ArtTile`), buildings and props (each face painted at its exact size into the map's `ArtSheet`), character sprites (`CharacterSprites.TexelsPerUnit`). With the field camera that is about 3 layout units per texel, 6 real pixels at 4K.
 - Point filtering everywhere; no mipmaps on pixel art.
 - Upright things (walls, sprites, signs) are stretched by `VS = 1 / cos(pitch)` so they read at true proportions from Platinum's steep camera (pitch 59.05°, FOV 16.18°).
+- **Upright things stand upright on screen.** Under that camera, perspective would make everything tall lean outward, by up to 20° at the sides of the screen, and shear its pixel art. Outdoors the vertex shader takes the lean out (`ArtLook.FieldUpright`, `FieldShaders.SetUpright`): every vertex is drawn straight above the point on the ground beneath it. A wall is then an undistorted rectangle, a sprite keeps square texels, and the ground keeps its perspective. Rooms keep true perspective, because their side walls are what makes them a doll's house.
 
 ### Ground
 
@@ -81,12 +82,54 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 - **Lawn tufts and flowers**: single upright cards facing the camera (crossed cards read as scribbles from the steep camera). Tufts are a small clump in the lawn's shades; flowers are a stem, two leaves and a five-texel blossom, mostly white, some red or yellow.
 - **Trees**: grey textures in four flat tones (118, 162, 206, 244) tinted per tree. Pine tiers are bands of scalloped needles with a toothed rim; round crowns are overlapping leaf clumps, each with a light crescent on the upper left and a dark one on the lower right. Bark is `116,80,54` with dark grooves `86,58,42` and a light line beside each. No per-texel random variation.
 - **Ledges**: a ridge 12 texels high: a bright edge `160,222,122`, a grass lip (`120,200,102`, scalloped) over a dirt face `178,138,90` with one broken strata line `146,108,72` and a dark base `116,84,60`.
-- **Rocks**: boulders in three flat shades (`196,192,190`, `150,146,150`, `104,100,112`) with a crack line `74,70,86`; in water they stand in a ring of foam.
+- **Rocks**: a boulder is a sprite like the other props: a big stone with a smaller one at its foot, in three flat shades (`196,192,190`, `150,146,150`, `104,100,112`) with a crack line `74,70,86` and an outline; every other one is mirrored. In water it stands a little lower, in a ring of foam.
 
-### Buildings and props
+### Buildings
 
-- Existing pixel-art textures at 32 texels per unit. G5 redraws them in the same rules: bevels and trims drawn as one-texel light and dark lines, two or three shades per material, no random per-texel variation.
-- Roofs keep Platinum's colours per town (Twinleaf: teal `52,166,138`).
+A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall face is painted as one piece (a façade, `BuildingArt`): the wall material, a base course, corner posts, then windows, doors, plaques and lanterns placed bay by bay (a bay is one tile, 32 texels). Nothing floats on a wall as a separate decal, so everything sits on the texel grid.
+
+- **Materials**: a flat base colour with one-texel light and dark lines, two or three shades, no per-texel variation.
+
+| Material | Base / light / dark | Drawn as |
+|---|---|---|
+| Planks | `214,170,118` / `232,194,146` / `150,106,74` | boards 8 texels tall: a light top line, a dark groove, butt joints staggered row by row; one board in five a shade darker |
+| Clapboard | `240,236,226` / `252,250,244` / `196,196,210` | boards 6 texels tall with a grey shadow line under each |
+| Plaster | `242,232,208` / `250,244,226` / `220,206,180` | flat, with a few short trowel marks three to five texels long |
+| Brick | `190,106,84` / `210,130,100` / `156,82,72`, mortar `226,206,184` | courses 4 texels tall, bricks 8 wide, half a brick out of step; whole bricks lighter or darker in a fixed pattern |
+| Panel | `214,222,232` / `234,240,246` / `150,162,184` | panels 32×18 with a dark joint and a light line beside it |
+| Base course | `158,152,150` / `190,186,182` / `104,100,112` | stone blocks 16×7 with a light top and a dark bottom line |
+| Timber posts and beams | `124,84,58` / `156,110,76` / `92,62,48` | four texels wide at the corners of plank walls |
+
+- **Roofs**: pitched roofs run their ridge east–west, so the south slope faces the camera almost square-on and its tiles show at full size. Tiles are 8×8 texels in rows half a tile out of step, each with a light upper-left edge, a darker lower right and a dark rounded bottom line; one tile in eleven is a shade lighter. The slope length is a whole number of rows. Eaves overhang 8 texels with a fascia 3 texels deep; gable ends have a pale bargeboard; a ridge cap runs along the top. Centers, Marts and the lab have hip roofs; city blocks have flat roofs behind a parapet, with equipment on top.
+- **Walls** under a pitched roof are 56 texels tall; the eave hides the top ten or so, and the 18 texels below the wall's top are painted two flat steps darker (30 % and 15 %) as the eave's shadow. A city block has a ground storey of 44 texels, upper storeys of 32 and a band of 18 along the top that carries its name.
+- **Windows**: a white frame 2 texels wide, glass in three flat blues (`170,218,246`, `122,190,236`, `88,156,220`) with one diagonal streak `232,246,255`, mullions 2 texels wide, a sill, and on houses shutters in the roof's colour and a flower box.
+- **Doors**: a house door is 22×39 with a pale frame, two rows of sunken panels, a small window and a brass knob, and a wall lantern beside it; public buildings have double glass doors 36×40 in a steel frame, the school a pair of wooden ones. A stone step stands in front of every door. A building the map gives no door (it can't be entered yet) still shows one in a middle bay: shut, its glass dark.
+- **Entrance block**: public buildings under a pitched roof (Center, Mart, lab, school) have a block around the door that stands 10 texels proud of the wall and rises to 74, above the eave. Its header, 24 texels tall in the building's accent colour, carries the sign: our own Poké Ball roundel on red for a Center, `MART` on blue, `LAB`, `SCHOOL`, in a 5×7 pixel alphabet of our own drawn at double size with a shadow. City blocks write their name on the band along their top instead.
+- **Roof colours** follow the map's roof tile and the building: teal `52,166,138`, red `214,82,66`, blue `70,118,214`; Center `238,104,58`, Mart `66,122,222`, lab `48,178,198`, the school's slate `92,110,156`. Each colour is its own tile texture, so its darks lean violet and its lights warm instead of being one grey texture tinted.
+- **Style per town** (`Map.Architecture`), until plan 01 brings the real towns:
+
+| Town | Houses |
+|---|---|
+| Twinleaf (Timber) | plank walls with timber posts, teal roofs, shutters and flower boxes, a stone chimney |
+| Sandgem (Plaster) | plaster walls over a stone base |
+| Jubilife (City) | brick and panel blocks of two and three storeys with flat roofs; the school keeps a pitched roof |
+| Pallet (Clapboard) | white clapboard, red roofs |
+
+- **Lights after dark** are marked in the art itself, texel by texel (their alpha), not found by colour. *Public* lights (street lamps, wall lanterns, Centers, Marts, signs) come on at twilight and stay on all night. *Home* lights (house windows) are on in the evening and off late at night, except in about one house in three. Lit glass keeps its pixel detail: each texel becomes lamplight `255,204,117` scaled by its own brightness.
+
+### Props
+
+- Small things standing outdoors (street lamps, mailboxes, planters, benches, signposts) are **sprites on upright cards**, drawn seen from a little above like the characters, with a one-texel outline in a darker shade of their own colour. They take the scene's light and cast real shadows.
+- **Fences** are real geometry: a post 4 texels square and 17 tall in the middle of every fenced tile, with two rails toward whichever neighbouring tiles are fenced too, so runs, corners and ends come out by themselves. Wood where the houses are timber, white where they are clapboard.
+- **Street lamps** are 78 texels tall: an iron post on a stepped foot with a four-sided lantern. After dark the lantern glows, a soft halo sits around it and a round pool of light lies at its foot.
+- Towns are furnished through the map data (`Fence`, `LampPost`, `Mailbox`, `Planter`, and `Bench`, which outdoors is a park bench): a fenced front garden with the mailbox at its gate, lamps beside the roads, planters either side of public doors, a bench where there is something to look at.
+
+### Rooms
+
+- A room is a doll's house: floor, a back wall 80 texels tall and two side walls, cut away at the front. The wall strip is crown moulding, wallpaper with a small repeating motif, a chair rail, panelled wainscot and a skirting board.
+- **Floors**: planks 8 texels wide in three wood tones (whole planks, never single texels) with dark grooves and staggered joints; or tiles 16 texels square in two close tones with a grout line and a light edge. Walls shade the floor beside them in two flat steps.
+- **Furniture** is built from boxes whose every visible face is painted: a light line where the top meets the front, a dark line at the foot, panels and drawers as sunken or raised bevels, handles and knobs of two texels or more. Plants and vases are sprites on cards.
+- **Rooms follow the clock**: by day the windows show sky and throw a soft patch of light across the floor, slanting the way the shadows fall; at twilight the glass and the patches turn orange; at night the glass is dark blue (`18,26,56`), the patches are gone and the room is lit warm and a little dimmer by its lamps (`ArtLook.IndoorRigFor`).
 
 ### Characters
 
@@ -155,11 +198,11 @@ The world follows the computer's clock, like the DS's real-time clock, with Plat
 |---|---|---|---|---|
 | Morning | 4–9 | pale gold sun, lower in the sky; soft blue shade | mist (fog 32 %), gentler contrast | `104,150,214` → peach `246,224,206` |
 | Day | 10–16 | golden sun, violet-blue shade | as in the tables above | `78,146,226` → `224,238,250` |
-| Twilight | 17–19 | low orange sun `0.90,0.56,0.32`, magenta-violet shade, long shadows | more bloom and saturation; windows start to glow (45 %) | `54,62,128` → orange `252,168,108`, pink clouds |
-| Night | 20–23 | cool moonlight `0.27,0.31,0.44` | saturation 0.80, vignette 0.40; windows and glass doors fully lit, warm light pools on the ground in front of them, bloom from the lit glass | `8,14,38` → `40,58,100`, stars, dark clouds |
-| Late night | 0–3 | dimmer moonlight | saturation 0.72, vignette 0.45; fewer lights (60 %) | `4,8,26` → `28,42,80`, stars |
+| Twilight | 17–19 | low orange sun `0.90,0.56,0.32`, magenta-violet shade, long shadows | more bloom and saturation; lamps come on (60 %) and windows start to glow (45 %), their pools still faint | `54,62,128` → orange `252,168,108`, pink clouds |
+| Night | 20–23 | cool moonlight `0.27,0.31,0.44` | saturation 0.80, vignette 0.40; street lamps, windows and glass doors fully lit, warm light pools on the ground under them, bloom from the lit glass | `8,14,38` → `40,58,100`, stars, dark clouds |
+| Late night | 0–3 | dimmer moonlight | saturation 0.72, vignette 0.45; the lamps, shops and signs burn on, but most homes have gone dark | `4,8,26` → `28,42,80`, stars |
 
-- Lit glass is found by colour: bluish texels of glazed textures (windows, glass doors, the Mart sign) turn to warm lamplight `255,204,117` by the rig's glow amount.
+- Lit glass is marked in the art, texel by texel (see *Buildings*, "Lights after dark"): it turns to warm lamplight `255,204,117`, scaled by the texel's own brightness, by the rig's amounts for public lights and for homes.
 - Night battles stay a little brighter than the night field and gain a stronger rim light (0.55), so Pokémon read clearly.
 - Light never drops to black: the darkest ambient is about 0.15, and nights lean blue, never grey.
 
@@ -273,7 +316,7 @@ The order follows the games' opening: a notice, a short film, the legendary Pok�
 
 ## Areas (targets)
 
-Implemented so far: Twinleaf, Sandgem, Routes 201–202, Lake Verity and the grass battle stage. Later sessions extend these families; each new area gets a line here.
+Implemented so far: Twinleaf, Sandgem, Jubilife, Routes 201–202, Lake Verity, Pallet (Kanto's stand-in) and the grass and lakeside battle stages. Later sessions extend these families; each new area gets a line here.
 
 | Area family | Ground and foliage | Mood |
 |---|---|---|
@@ -310,15 +353,15 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G4
+## Known gaps after G5
 
-- Building, prop and interior textures are still the older pixel art with light per-texel variation (G5).
 - Ponds and lakes are still rectangles in the map data, however round their corners are drawn; their shapes come with the maps of plan 01. Cliffs taller than a ledge need height in the maps too.
 - Sand, dirt, snow and cave floors are drawn but no map uses them yet; snow and caves need their own light rigs when their areas are built.
-- Boulders are lit as smooth 3D shapes, so their three shades blend more than the pixel-art rule intends; revisit with the prop kit in G5.
+- The towns are still the hand-made stand-ins: the building kit is ready for plan 01's real layouts, which will bring each town's own mix of buildings (the styles per town here cover Twinleaf, Sandgem, Jubilife and Pallet). Gyms, gates and the League have no style yet.
+- Houses have one storey and one roof shape per kind; a second storey and a cross gable would give the bigger houses their look. Doors are painted shut and do not open (G9).
+- Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
 - Materials (specular, emission per surface kind) wait for models that carry material ids: the SDF kit in G6 and G7.
-- Street lamps and other light sources besides windows come with the props in G5; rooms don't change with the hour yet.
 - The title keeps Giratina in shadow partly because the version 1 model does not hold up fully lit; revisit the lighting with the version 2 models (G7). The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5). The new-game introduction (Professor Rowan) is still to come (G10, plan 02).

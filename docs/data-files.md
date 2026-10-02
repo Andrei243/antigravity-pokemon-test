@@ -24,11 +24,13 @@ An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Tr
   "bgmTrack": "sinnoh/route201", // a song in Data/music (docs/music-format.md); houses and marts reuse their town's
   "interior": "None",            // None (outdoors), House, PokemonCenter, PokeMart, Lab
   "trees": "Round",              // Round or Pine
+  "architecture": "City",        // optional: how the town's houses are built (Timber when left out, Plaster, City, Clapboard)
   "width": 36, "height": 22,
   "ground": [ "TTTT…", … ],      // one string per row, one character per tile (below)
   "solid":  [ "####…", … ],      // '#' blocks movement, '.' is open; furniture is already marked
   "overhead": [ … ],             // optional, same codes, '-' for none
   "props": [ { "type": "Table", "x": 4, "y": 4, "width": 2, "depth": 1 } ],
+  "buildings": [ { "x": 31, "y": 3, "kind": "TvStation" } ],   // optional, see below
   "warps": [ { "sourceX": 14, "sourceY": 21, "targetMap": "TwinleafTown", "targetX": 11, "targetY": 1, "targetFacing": "Down" } ],
   "signboards": [ { "x": 13, "y": 11, "text": "Route 201\n…" } ],
   "npcs": [ … ],
@@ -48,8 +50,20 @@ Tile codes (`TileCodes`):
 | `v` | LedgeDown | `_` | Floor |
 | `T` | Tree | `S` | Signpost |
 | `t` | TreeTrunk | `P` | PC |
+| `,` | Sand | `;` | Dirt |
+| `^` | Snow | `c` | CaveFloor |
 
 The ground layer and the solid grid are separate because they don't always agree: doors sit in solid walls but are open, signposts are solid, and furniture props make the floor under them solid.
+
+**Buildings** are not listed: a block of roof (`r`, `b`, `g`), wall and door tiles is one building, its bottom row the front wall (doors, and signposts set into it as name plates). What kind it is follows from where its door leads: a map whose name ends in `PokemonCenter` or `PokeMart`, or `RowanLab`; anything else is a house, built in the map's `architecture`. Where that isn't enough (a school, an office, a building with no door yet), `buildings` names the kind for the building that covers the given tile: `School`, `Office`, `TvStation`, `Terminal`, `Apartments`, or any of the others. The roof tile's colour is the roof's colour for houses.
+
+**Props** are furniture in rooms and street furniture outdoors, each covering a rectangle of tiles (`width` × `depth`) that must be `#` in `solid` unless it is decoration:
+
+| Where | Types |
+| --- | --- |
+| Rooms, solid | `Table`, `Chair`, `Sofa`, `Bookshelf`, `Television`, `Plant`, `Fridge`, `KitchenCounter`, `Stove`, `Stairs`, `Counter`, `HealingMachine`, `Bench`, `StoreShelf`, `LabDesk`, `LabMachine` |
+| Rooms, decoration | `Rug` on the floor; `Window`, `Painting`, `Clock`, `WallEmblem` on the back wall (give them `y` 1) |
+| Outdoors, solid | `Boulder` (on land or in water), `Fence` (a run of tiles; fenced tiles that touch are joined, so a corner is two runs), `LampPost`, `Mailbox`, `Planter`, `Bench` (two tiles wide: a park bench) |
 
 An NPC has `name`, `npcType` (picks the character model), `x`, `y`, `facing` and optional `dialog` lines, plus whichever of `isHealingNurse`, `isPokeMartClerk`, `isPCTerminal`, `isStarterBriefcase` and `isTransportAttendant` (takes the player to the next region, see `RegionDatabase`) apply. Give it an `id` only when something else refers to it (trainers, the starter briefcase); the others get a fresh one each load. A trainer carries a `trainer` block:
 

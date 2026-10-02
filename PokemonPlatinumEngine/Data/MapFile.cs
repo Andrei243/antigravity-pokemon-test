@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
+using TownArchitecture = PokemonPlatinumEngine.Overworld.Architecture;
 
 namespace PokemonPlatinumEngine.Data;
 
@@ -19,6 +20,10 @@ public sealed class MapFile
     public string BgmTrack { get; set; } = "";
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
+
+    /// <summary>How the town's houses are built; left out for the default, <see cref="TownArchitecture.Timber"/>.</summary>
+    public TownArchitecture? Architecture { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -32,6 +37,13 @@ public sealed class MapFile
     public List<string>? Overhead { get; set; }
 
     public List<PropRecord> Props { get; set; } = new();
+
+    /// <summary>
+    /// Buildings whose kind can't be told from where their door leads: each names one tile of the building.
+    /// Left out when there are none.
+    /// </summary>
+    public List<BuildingRecord>? Buildings { get; set; }
+
     public List<Warp> Warps { get; set; } = new();
     public List<SignRecord> Signboards { get; set; } = new();
     public List<NpcRecord> Npcs { get; set; } = new();
@@ -44,6 +56,13 @@ public sealed class MapFile
         public int Y { get; set; }
         public int Width { get; set; } = 1;
         public int Depth { get; set; } = 1;
+    }
+
+    public sealed class BuildingRecord
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public BuildingKind Kind { get; set; }
     }
 
     public sealed class SignRecord
@@ -98,7 +117,8 @@ public sealed class MapFile
             DisplayName = DisplayName,
             BgmTrack = BgmTrack,
             Interior = Interior,
-            Trees = Trees
+            Trees = Trees,
+            Architecture = Architecture ?? TownArchitecture.Timber
         };
 
         CheckRows(Ground, "ground");
@@ -122,6 +142,13 @@ public sealed class MapFile
         // The solid grid already includes furniture, so props are listed without marking tiles again
         foreach (var p in Props)
             map.Props.Add(new Prop { Type = p.Type, X = p.X, Y = p.Y, Width = p.Width, Depth = p.Depth });
+
+        foreach (var b in Buildings ?? new())
+        {
+            if (!map.InBounds(b.X, b.Y))
+                throw new InvalidDataException($"Map {Name}: the {b.Kind} building at {b.X},{b.Y} is outside the map.");
+            map.BuildingKinds[(b.X, b.Y)] = b.Kind;
+        }
 
         foreach (var w in Warps)
             map.Warps.Add(new Warp { SourceX = w.SourceX, SourceY = w.SourceY, TargetMap = w.TargetMap, TargetX = w.TargetX, TargetY = w.TargetY, TargetFacing = w.TargetFacing });
@@ -204,6 +231,7 @@ public sealed class MapFile
             BgmTrack = map.BgmTrack,
             Interior = map.Interior,
             Trees = map.Trees,
+            Architecture = map.Architecture == TownArchitecture.Timber ? null : map.Architecture,
             Width = map.Width,
             Height = map.Height
         };
@@ -230,6 +258,8 @@ public sealed class MapFile
         if (anyOverhead) file.Overhead = overhead;
 
         file.Props = map.Props.Select(p => new PropRecord { Type = p.Type, X = p.X, Y = p.Y, Width = p.Width, Depth = p.Depth }).ToList();
+        if (map.BuildingKinds.Count > 0)
+            file.Buildings = map.BuildingKinds.Select(kv => new BuildingRecord { X = kv.Key.X, Y = kv.Key.Y, Kind = kv.Value }).ToList();
         file.Warps = map.Warps.ToList();
         file.Signboards = map.Signboards.Select(kv => new SignRecord { X = kv.Key.X, Y = kv.Key.Y, Text = kv.Value }).ToList();
         file.Npcs = map.NPCs.Select(ToRecord).ToList();

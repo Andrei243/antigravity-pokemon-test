@@ -144,7 +144,6 @@ public class TerrainTests
             ("leaves", NatureArt.Leaves(cutout: false), 3),
             ("leaf shell", NatureArt.Leaves(cutout: true), 3),
             ("bark", NatureArt.Bark(), 3),
-            ("rock", NatureArt.Rock(), 4),
             ("ledge", NatureArt.LedgeFace(), 6)
         };
         foreach (var (name, art, maxShades) in textures)

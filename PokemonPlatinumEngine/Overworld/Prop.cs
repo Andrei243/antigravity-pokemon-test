@@ -23,6 +23,12 @@ public enum PropType
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,
 
+    // Street furniture. A fence covers a run of tiles and joins up with the fences beside it; outdoors a Bench is a park bench
+    Fence,
+    LampPost,
+    Mailbox,
+    Planter,
+
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
     Window,

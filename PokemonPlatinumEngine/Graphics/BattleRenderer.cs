@@ -153,6 +153,8 @@ public sealed class BattleRenderer
         shaders.SetWorldRamp(ArtLook.BattleRamp);
         shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
         shaders.SetCloudShade(rig.CloudShade);
+        shaders.SetGlow(0f, 0f, Vector3.Zero);
+        shaders.SetUpright(0f, 0f);
 
         // 2. Sky, then the field
         var target = context.Target;

@@ -5,67 +5,137 @@ using PokemonPlatinumEngine.Overworld;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Pixel art for rooms at the field's 32 texels per tile: the floor (planks or tiles, with contact shading along
-/// the walls and daylight from the windows) and the wall strip. Outdoor ground is <see cref="PixelGround"/>. Also
-/// the shared tile lookup and hash noise for the field builders.
+/// Pixel art for rooms at the field's 32 texels per tile (style guide, "Rooms"): the floor (planks or tiles, with
+/// the walls' contact shade in two flat steps) and the walls (crown moulding, wallpaper, chair rail, panelled
+/// wainscot, skirting). Outdoor ground is <see cref="PixelGround"/>. Also the shared tile lookup and hash noise
+/// for the field builders. No GPU calls.
 /// </summary>
 internal static class GroundBaker
 {
     public const int ArtTile = 32;
 
+    private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
+
+    // ------------------------------------------------------------------ floors
+
+    private static readonly Color Plank = Rgb(210, 160, 108);
+    private static readonly Color PlankLight = Rgb(220, 172, 120);
+    private static readonly Color PlankDark = Rgb(198, 148, 98);
+    private static readonly Color PlankGroove = Rgb(156, 112, 76);
+
     /// <summary>Paints a room's floor into one texture laid over the 3D floor.</summary>
     public static PixelCanvas BakeInterior(Map map)
     {
-        var canvas = new PixelCanvas(map.Width * ArtTile, map.Height * ArtTile);
-        var room = new Room(map, canvas);
-        for (int ty = 0; ty < map.Height; ty++)
-            for (int tx = 0; tx < map.Width; tx++)
-                room.Paint(tx, ty);
-        room.Occlusion();
-        return canvas;
+        var c = new PixelCanvas(map.Width * ArtTile, map.Height * ArtTile);
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+                c.SetRaw(x, y, FloorTexel(map.Interior, x, y));
+
+        // The walls shade the floor beside them: two flat steps
+        int left = ArtTile, right = (map.Width - 1) * ArtTile, top = 2 * ArtTile, bottom = (map.Height - 1) * ArtTile;
+        foreach (var (from, depth, amount) in new[] { (0, 6, 0.22f), (6, 6, 0.11f) })
+        {
+            Pix.Shade(c, left, top + from, right - left, depth, amount);
+            Pix.Shade(c, left + from, top + 12, depth, bottom - top - 12, amount);
+            Pix.Shade(c, right - from - depth, top + 12, depth, bottom - top - 12, amount);
+        }
+
+        for (int tx = 0; tx < map.Width; tx++)
+            if (map.GetGroundTile(tx, map.Height - 1) == TileType.Door) ExitMat(c, tx * ArtTile, (map.Height - 1) * ArtTile, map.Interior);
+        return c;
     }
 
-    /// <summary>
-    /// One tile-wide strip of interior wall, three rows tall: crown moulding, wallpaper, chair rail,
-    /// wainscot and skirting board. It tiles horizontally along every wall of the room.
-    /// </summary>
-    public static PixelCanvas BakeWallStrip(InteriorStyle style)
+    private static Color FloorTexel(InteriorStyle style, int x, int y)
     {
-        const int w = ArtTile, h = ArtTile * 3;
-        var c = new PixelCanvas(w, h);
-        var (paper, pattern, wainscot, trim) = style switch
+        if (style == InteriorStyle.House)
         {
-            InteriorStyle.PokemonCenter => (new Color(250, 242, 240, 255), new Color(242, 214, 216, 255), new Color(232, 108, 116, 255), new Color(248, 248, 250, 255)),
-            InteriorStyle.PokeMart => (new Color(234, 242, 250, 255), new Color(214, 226, 242, 255), new Color(76, 128, 216, 255), new Color(248, 248, 250, 255)),
-            InteriorStyle.Lab => (new Color(238, 240, 244, 255), new Color(224, 228, 236, 255), new Color(150, 160, 186, 255), new Color(250, 250, 252, 255)),
-            _ => (new Color(246, 232, 200, 255), new Color(232, 212, 172, 255), new Color(170, 118, 78, 255), new Color(250, 244, 226, 255))
+            // Planks 8 wide running east-west, their joints staggered row by row; whole planks vary in tone
+            int row = y / 8, along = x + row * 23 % 56, plank = along / 56, j = along % 56;
+            if (y % 8 == 7 || j == 0) return PlankGroove;
+            uint pick = Hash(plank, row, 601) % 5;
+            var tone = pick == 0 ? PlankLight : pick == 1 ? PlankDark : Plank;
+            // A short line of grain on about one plank in three
+            int grain = 12 + (int)(Hash(plank, row, 602) % 24);
+            if (Hash(plank, row, 603) % 3 == 0 && y % 8 == 3 && j >= grain && j < grain + 7) return PixelCanvas.Shadow(tone, 0.1f);
+            return tone;
+        }
+
+        var (a, b) = style switch
+        {
+            InteriorStyle.PokemonCenter => (Rgb(250, 242, 232), Rgb(240, 214, 212)),
+            InteriorStyle.PokeMart => (Rgb(230, 238, 246), Rgb(206, 220, 236)),
+            _ => (Rgb(240, 242, 246), Rgb(222, 226, 234))
+        };
+        // Tiles 16 square in two close tones: a grout line on the right and at the foot, a light edge on the left and top
+        var tile = (x / 16 + y / 16) % 2 == 0 ? a : b;
+        int lx = x % 16, ly = y % 16;
+        return lx == 15 || ly == 15 ? PixelCanvas.Shadow(b, 0.15f) : lx == 0 || ly == 0 ? PixelCanvas.Light1(tile, 0.35f) : tile;
+    }
+
+    /// <summary>The mat at a room's door, with an arrow pointing out.</summary>
+    private static void ExitMat(PixelCanvas c, int ox, int oy, InteriorStyle style)
+    {
+        var mat = Tone.Of(style == InteriorStyle.PokeMart ? Rgb(80, 132, 220) : Rgb(212, 76, 76));
+        c.Rect(ox + 2, oy + 3, 28, 24, mat.Deep);
+        Pix.Raised(c, ox + 3, oy + 4, 26, 22, mat);
+        c.Rect(ox + 14, oy + 8, 4, 7, Color.White);
+        for (int i = 0; i < 5; i++) c.HLine(ox + 11 + i, oy + 15 + i, 10 - i * 2, Color.White);
+    }
+
+    // ------------------------------------------------------------------ walls
+
+    /// <summary>
+    /// Paints one wall of a room, the full height of the canvas (80 texels) and as wide as the wall: crown
+    /// moulding, wallpaper with a small motif, a chair rail, panelled wainscot and a skirting board.
+    /// </summary>
+    public static void PaintWall(PixelCanvas c, InteriorStyle style)
+    {
+        var (paper, motif, wainscot, trim, skirting) = style switch
+        {
+            InteriorStyle.PokemonCenter => (Rgb(250, 242, 240), Rgb(242, 214, 216), Tone.Of(232, 108, 116), Tone.Of(248, 248, 250), Tone.Of(150, 70, 84)),
+            InteriorStyle.PokeMart => (Rgb(234, 242, 250), Rgb(214, 226, 242), Tone.Of(76, 128, 216), Tone.Of(248, 248, 250), Tone.Of(52, 84, 150)),
+            InteriorStyle.Lab => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128)),
+            _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
         };
 
-        int wainscotTop = 62, railY = 58;
+        const int crown = 6, rail = 48, panels = 52, skirt = 74;
+        int w = c.Width, h = c.Height;
         for (int y = 0; y < h; y++)
             for (int x = 0; x < w; x++)
             {
                 Color col;
-                if (y < 5) col = y < 3 ? new Color(70, 64, 88, 255) : trim;
-                else if (y < railY)
+                if (y < crown) col = y == 0 ? trim.Light : y == crown - 1 ? trim.Dark : trim.Base;
+                else if (y < rail)
                 {
-                    // Wallpaper: soft vertical stripes with a small repeating motif
-                    col = (x / 4) % 2 == 0 ? paper : PixelCanvas.Mix(paper, pattern, 0.45f);
-                    int mx = (x + (y / 12 % 2) * 8) % 16, my = y % 12;
-                    if ((mx == 7 || mx == 8) && (my == 5 || my == 6)) col = pattern;
+                    // Wallpaper: a four-texel motif on a grid 16 by 14, every other row of them half a step along
+                    int row = (y - crown) / 14, my = (y - crown) % 14, mx = (x + row % 2 * 8) % 16;
+                    col = (mx is 7 or 8) && (my is 6 or 7) ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
                 }
-                else if (y < wainscotTop) col = y == railY ? PixelCanvas.Light1(trim, 0.2f) : trim;
-                else if (y < h - 6)
+                else if (y < panels) col = y == rail ? trim.Light : y == panels - 1 ? trim.Dark : trim.Base;
+                else if (y < skirt)
                 {
-                    col = wainscot;
-                    if (x % 16 == 0) col = PixelCanvas.Shadow(wainscot, 0.25f);
-                    else if (x % 16 == 1) col = PixelCanvas.Light1(wainscot, 0.25f);
+                    // Wainscot: a sunken panel in every 16 texels, between a joint and its light edge
+                    int px = x % 16, py = y - panels;
+                    col = px == 15 ? wainscot.Dark : px == 0 ? wainscot.Light
+                        : py == 0 ? PixelCanvas.Shadow(wainscot.Base, 0.18f)
+                        : px >= 3 && px <= 12 && py >= 3 && py <= 18
+                            ? (px == 3 || py == 3 ? wainscot.Dark : px == 12 || py == 18 ? wainscot.Light : wainscot.Base)
+                            : wainscot.Base;
                 }
-                else col = y < h - 5 ? PixelCanvas.Light1(new Color(110, 78, 56, 255), 0.3f) : new Color(110, 78, 56, 255);
-                c.Set(x, y, col);
+                else col = y == skirt ? skirting.Light : y == h - 1 ? skirting.Dark : skirting.Base;
+                c.SetRaw(x, y, col);
             }
-        return c;
     }
+
+    /// <summary>The dark top of a cut-away wall, with a paler line along its inner edge.</summary>
+    public static void PaintWallTop(PixelCanvas c)
+    {
+        var cap = Tone.Of(62, 56, 74);
+        c.Rect(0, 0, c.Width, c.Height, cap.Base);
+        Pix.Border(c, 0, 0, c.Width, c.Height, cap.Light);
+    }
+
+    // ------------------------------------------------------------------ shared lookups
 
     /// <summary>Tile type used for scenery outside the map: roads and water continue, everything else is forest.</summary>
     public static TileType? TypeAt(Map map, int x, int y)
@@ -80,124 +150,6 @@ internal static class GroundBaker
             TileType.Water => TileType.Water,
             _ => TileType.Tree
         };
-    }
-
-    private enum Kind { Void, Grass, Path, Water, Building, Floor }
-
-    private sealed class Room
-    {
-        private readonly Map map;
-        private readonly PixelCanvas c;
-
-        public Room(Map map, PixelCanvas canvas)
-        {
-            this.map = map;
-            c = canvas;
-        }
-
-        private static int OX(int tx) => tx * ArtTile;
-        private static int OY(int ty) => ty * ArtTile;
-
-        public void Paint(int tx, int ty)
-        {
-            var t = map.GetGroundTile(tx, ty);
-            PaintFloor(OX(tx), OY(ty), tx, ty);
-            if (t == TileType.Door) PaintExitMat(OX(tx), OY(ty));
-        }
-
-        /// <summary>Darkens the floor along the walls of a room.</summary>
-        public void Occlusion()
-        {
-            int left = OX(1), right = OX(map.Width - 1), top = OY(2), bottom = OY(map.Height - 1);
-            for (int d = 0; d < 10; d++)
-            {
-                var shade = new Color(20, 12, 10, (int)(80 * (1f - d / 10f)));
-                c.HLine(left, top + d, right - left, shade);
-                c.VLine(left + d, top, bottom - top, shade);
-                c.VLine(right - 1 - d, top, bottom - top, shade);
-            }
-
-            // Daylight falling through the back-wall windows onto the floor
-            foreach (var p in map.Props)
-            {
-                if (p.Type != PropType.Window) continue;
-                for (int y = 0; y < ArtTile * 2; y++)
-                {
-                    int skew = y / 3;
-                    var glow = new Color(255, 250, 220, (int)(46 * (1f - y / (ArtTile * 2f))));
-                    c.HLine(OX(p.X) + 4 - skew, top + y, p.Width * ArtTile - 8, glow);
-                }
-            }
-        }
-
-        private void PaintFloor(int ox, int oy, int tx, int ty)
-        {
-            switch (map.Interior)
-            {
-                case InteriorStyle.House:
-                    PaintPlanks(ox, oy, tx, ty);
-                    break;
-                case InteriorStyle.PokemonCenter:
-                    PaintTiles(ox, oy, tx, ty, new Color(250, 242, 232, 255), new Color(240, 214, 212, 255));
-                    break;
-                case InteriorStyle.PokeMart:
-                    PaintTiles(ox, oy, tx, ty, new Color(230, 238, 246, 255), new Color(206, 220, 236, 255));
-                    break;
-                default:
-                    PaintTiles(ox, oy, tx, ty, new Color(240, 242, 246, 255), new Color(222, 226, 234, 255));
-                    break;
-            }
-        }
-
-        private void PaintPlanks(int ox, int oy, int tx, int ty)
-        {
-            var wood = new Color(210, 160, 108, 255);
-            for (int row = 0; row < 4; row++)
-            {
-                int y0 = oy + row * 8;
-                int plankRow = ty * 4 + row;
-                int joint = (int)(Hash(plankRow, 0, 600) % 48);
-                for (int y = 0; y < 8; y++)
-                    for (int x = 0; x < ArtTile; x++)
-                    {
-                        int gx = tx * ArtTile + x;
-                        int plank = (gx + joint) / 48;
-                        float tone = 0.9f + GroundBaker.Rand01(plank, plankRow, 601) * 0.16f;
-                        float grain = MathF.Sin((gx + joint) * 0.35f + y * 1.7f + plank) * 0.035f;
-                        var col = MeshBuilder.Scale(wood, tone + grain);
-                        if (y == 7) col = MeshBuilder.Scale(wood, 0.62f);
-                        else if (y == 0) col = MeshBuilder.Scale(wood, tone * 1.08f);
-                        if ((gx + joint) % 48 == 0) col = MeshBuilder.Scale(wood, 0.66f);
-                        c.Set(ox + x, y0 + y, col);
-                    }
-            }
-        }
-
-        private void PaintTiles(int ox, int oy, int tx, int ty, Color a, Color b)
-        {
-            for (int y = 0; y < ArtTile; y++)
-                for (int x = 0; x < ArtTile; x++)
-                {
-                    int cellX = (tx * ArtTile + x) / 16, cellY = (ty * ArtTile + y) / 16;
-                    var col = (cellX + cellY) % 2 == 0 ? a : b;
-                    int lx = x % 16, ly = y % 16;
-                    if (lx == 15 || ly == 15) col = PixelCanvas.Shadow(b, 0.15f);
-                    else if (lx == 0 || ly == 0) col = PixelCanvas.Light1(col, 0.35f);
-                    else if (lx + ly < 7) col = PixelCanvas.Light1(col, 0.12f);
-                    c.Set(ox + x, oy + y, col);
-                }
-        }
-
-        private void PaintExitMat(int ox, int oy)
-        {
-            var mat = map.Interior == InteriorStyle.PokeMart ? new Color(80, 132, 220, 255) : new Color(212, 76, 76, 255);
-            c.Rect(ox + 2, oy + 3, 28, 24, PixelCanvas.Shadow(mat, 0.4f));
-            c.Rect(ox + 3, oy + 4, 26, 22, mat);
-            c.Rect(ox + 6, oy + 7, 20, 16, PixelCanvas.Light1(mat, 0.2f));
-            // Arrow pointing out of the room
-            for (int i = 0; i < 5; i++) c.HLine(ox + 16 - 5 + i, oy + 15 + i, 10 - i * 2, Color.White);
-            c.Rect(ox + 14, oy + 9, 4, 6, Color.White);
-        }
     }
 
     private static uint Hash(int x, int y, int salt)

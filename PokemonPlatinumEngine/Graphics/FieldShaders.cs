@@ -24,17 +24,21 @@ internal sealed class FieldShaders
 
     public Shader World { get; private set; }
     public Shader Depth { get; private set; }
+
+    /// <summary>Depth alone, like <see cref="Depth"/>, but for the scene camera: foliage is laid down with it before it is shaded.</summary>
+    public Shader Prepass { get; private set; }
     public Shader Character { get; private set; }
     public Shader Outline { get; private set; }
     public Shader Water { get; private set; }
     public Shader SoftWater { get; private set; }
     public Shader Sprite { get; private set; }
+    public Shader Light { get; private set; }
     public Shader Post { get; private set; }
     public Shader Down { get; private set; }
     public Shader Blur { get; private set; }
     public Shader Ssao { get; private set; }
 
-    private Shader[] FieldPrograms => new[] { World, Depth, Character, Water, SoftWater, Sprite };
+    private Shader[] FieldPrograms => new[] { World, Depth, Prepass, Character, Water, SoftWater, Sprite };
     private Shader[] LitPrograms => new[] { World, Character, Water, SoftWater, Sprite };
 
     // raylib's DrawMesh fills in mvp, matModel and matNormal for each mesh it draws
@@ -54,9 +58,18 @@ out vec3 fragNormal;
 out vec3 fragWorld;
 out vec4 fragLight;
 
+// The same vertex must land on exactly the same depth in every program: foliage is drawn twice (depth, then colour)
+invariant gl_Position;
+
 // Up to eight walkers (xyz = where their feet are, w = 1): grass leans away from them
 uniform vec4 walkers[8];
 uniform int walkerCount;
+
+// Under the field's steep camera, perspective makes tall things lean outward toward the sides of the screen.
+// upright (0..1) takes that lean out: a vertex is drawn above the point on the ground beneath it, so walls,
+// sprites and lamp posts stand straight and their pixel art isn't sheared. pitchSin is the sine of the camera's pitch.
+uniform float upright;
+uniform float pitchSin;
 
 // Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves). Only static scenery sways,
 // and scenery is drawn with an identity model matrix, so the world-space offset can be added in model space.
@@ -95,7 +108,17 @@ void main()
     fragWorld = world + sway;
     // Offsetting along the normal before projecting into light space avoids shadow acne
     fragLight = lightVP * vec4(fragWorld + n * 0.035, 1.0);
-    gl_Position = mvp * vec4(vertexPosition + sway, 1.0);
+    vec4 clip = mvp * vec4(vertexPosition + sway, 1.0);
+    if (upright > 0.0)
+    {
+        // Divide x by the depth of the point on the ground beneath the vertex instead of the vertex's own depth.
+        // That depth also becomes w, so textures are interpolated to match (a wall is then an undistorted
+        // rectangle on screen); y and depth keep their true projection.
+        float foot = clip.w + fragWorld.y * pitchSin * upright;
+        clip.yz *= foot / clip.w;
+        clip.w = foot;
+    }
+    gl_Position = clip;
 }";
 
     private const string OutlineVertex = @"#version 330
@@ -188,8 +211,10 @@ void main()
     gl_Position = mvp * vec4(vertexPosition, 1.0);
 }";
 
-    // Scenery. worldRamp blends smooth Lambert light toward a soft two-tone cel band (battle stages); glow lights
-    // up bluish glass (windows, glass doors) with warm lamplight after dark.
+    // Scenery. worldRamp blends smooth Lambert light toward a soft two-tone cel band (battle stages). Texels whose
+    // alpha is below 1 are glass lit from inside after dark: alpha 0.8 for lights that burn all night, 0.6 for the
+    // windows of homes (ArtSheet.PublicLight, HomeLight). Each turns into glowColor scaled by its own brightness,
+    // so lit panes keep their pixel detail.
     private const string WorldFragment = @"#version 330
 in vec2 fragTexCoord;
 in vec4 fragColor;
@@ -203,7 +228,9 @@ uniform vec3 sunColor;
 uniform vec3 skyAmbient;
 uniform vec3 groundAmbient;
 uniform float worldRamp;
-uniform float glow;
+uniform float glowPublic;
+uniform float glowHome;
+uniform vec3 glowColor;
 out vec4 finalColor;
 " + ShadowFunctions + FogFunctions + CloudFunctions + @"
 void main()
@@ -217,10 +244,11 @@ void main()
     vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
     float diffuse = mix(max(ndl, 0.0), smoothstep(0.0, 0.3, ndl) * 0.92 + max(ndl, 0.0) * 0.08, worldRamp);
     vec3 color = albedo * (ambient + sunColor * diffuse * shadow * CloudLight(fragWorld));
-    if (glow > 0.0)
+    if (texel.a < 0.95)
     {
-        float glass = smoothstep(0.04, 0.16, texel.b - texel.r) * glow;
-        color = mix(color, vec3(1.0, 0.8, 0.46) * (0.85 + 0.3 * texel.g), glass);
+        float amount = texel.a > 0.7 ? glowPublic : glowHome;
+        float tone = dot(texel.rgb, vec3(0.3, 0.5, 0.2));
+        color = mix(color, glowColor * (0.62 + 0.5 * tone), amount);
     }
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
 }";
@@ -241,6 +269,20 @@ void main()
     if (texel.a < 0.5) discard;
     vec3 color = texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78 * CloudLight(fragWorld));
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
+}";
+
+    // Light added on top of the scene after dark (pools on the ground, halos round lanterns): unlit, tinted by
+    // the material's colour. It shares the scenery's vertex shader so that halos stay on their straightened lamps.
+    private const string LightFragment = @"#version 330
+in vec2 fragTexCoord;
+in vec4 fragColor;
+uniform sampler2D texture0;
+uniform vec4 colDiffuse;
+out vec4 finalColor;
+void main()
+{
+    vec4 texel = texture(texture0, fragTexCoord);
+    finalColor = vec4(texel.rgb * fragColor.rgb * colDiffuse.rgb, texel.a * colDiffuse.a);
 }";
 
     // Shadow pass: only depth matters, but cut-out texels must not cast shadows
@@ -619,11 +661,13 @@ void main()
         if (Loaded) return;
         World = Raylib.LoadShaderFromMemory(CommonVertex, WorldFragment);
         Depth = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
+        Prepass = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
         Character = Raylib.LoadShaderFromMemory(CommonVertex, CharacterFragment);
         Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
         Water = Raylib.LoadShaderFromMemory(CommonVertex, WaterFragment);
         SoftWater = Raylib.LoadShaderFromMemory(CommonVertex, SoftWaterFragment);
         Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
+        Light = Raylib.LoadShaderFromMemory(CommonVertex, LightFragment);
         Post = Raylib.LoadShaderFromMemory(PostVertex, PostFragment);
         Down = Raylib.LoadShaderFromMemory(PostVertex, DownFragment);
         Blur = Raylib.LoadShaderFromMemory(PostVertex, BlurFragment);
@@ -635,7 +679,7 @@ void main()
         }
         SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
         SetFlash(default, 0f);
-        SetGlow(0f);
+        SetGlow(0f, 0f, Vector3.Zero);
         SetShadowQuality(16, 1.8f);
         SetFog(Vector3.One, 0f, 1000f, 2000f);
         Loaded = true;
@@ -644,7 +688,7 @@ void main()
     public void Unload()
     {
         if (!Loaded) return;
-        foreach (var shader in new[] { World, Depth, Character, Outline, Water, SoftWater, Sprite, Post, Down, Blur, Ssao })
+        foreach (var shader in new[] { World, Depth, Prepass, Character, Outline, Water, SoftWater, Sprite, Light, Post, Down, Blur, Ssao })
         {
             Raylib.UnloadShader(shader);
         }
@@ -713,9 +757,23 @@ void main()
         }
     }
 
-    /// <summary>Clears the scene-only effects (fog, cloud shade, flash, grass parting) before a model is rendered on its own.</summary>
+    /// <summary>
+    /// How far upright things are straightened on screen (0 = true perspective, 1 = no lean at all) under a
+    /// camera pitched by <paramref name="pitchDeg"/>. Only the field outdoors uses it; the shadow pass never does.
+    /// </summary>
+    public void SetUpright(float amount, float pitchDeg)
+    {
+        foreach (var shader in new[] { World, Prepass, Character, Water, SoftWater, Sprite, Light })
+        {
+            Set(shader, "upright", amount);
+            Set(shader, "pitchSin", MathF.Sin(pitchDeg * MathF.PI / 180f));
+        }
+    }
+
+    /// <summary>Clears the scene-only effects (fog, cloud shade, flash, grass parting, straightening) before a model is rendered on its own.</summary>
     public void SetStudio()
     {
+        SetUpright(0f, 0f);
         SetFog(Vector3.One, 0f, 1000f, 2000f);
         SetCloudShade(0f);
         SetFlash(default, 0f);
@@ -738,8 +796,17 @@ void main()
         }
     }
 
-    /// <summary>Warm light behind glass (windows, glass doors); set around the drawing of glazed scenery.</summary>
-    public void SetGlow(float amount) => Set(World, "glow", amount);
+    /// <summary>
+    /// How strongly glass marked in the art is lit from inside: lights that burn all night, the windows of homes,
+    /// and the colour they turn (lamplight outdoors; in rooms, the sky seen through the window). Each renderer
+    /// sets it every frame; battles pass zero.
+    /// </summary>
+    public void SetGlow(float publicAmount, float homeAmount, Vector3 color)
+    {
+        Set(World, "glowPublic", publicAmount);
+        Set(World, "glowHome", homeAmount);
+        Set(World, "glowColor", color);
+    }
 
     public void SetPost(Vector2 texel, PostSettings post, DepthRange depth, bool fxaa, float outlineWidth)
     {

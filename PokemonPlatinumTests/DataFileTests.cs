@@ -273,6 +273,24 @@ public class DataFileTests
     }
 
     [Fact]
+    public void TestEveryWarpLandsOnOpenGround()
+    {
+        MapDatabase.Initialize();
+        foreach (string name in MapDatabase.MapNames)
+        {
+            var map = MapDatabase.Get(name);
+            foreach (var warp in map.Warps)
+            {
+                // Furniture, fences and lamp posts must never stand where somebody arrives
+                Assert.Contains(warp.TargetMap, MapDatabase.MapNames);
+                var target = MapDatabase.Get(warp.TargetMap);
+                Assert.True(target.InBounds(warp.TargetX, warp.TargetY) && !target.IsSolid(warp.TargetX, warp.TargetY),
+                    $"{name}: the warp at {warp.SourceX},{warp.SourceY} lands on a blocked tile of {warp.TargetMap} ({warp.TargetX},{warp.TargetY})");
+            }
+        }
+    }
+
+    [Fact]
     public void TestMapsReloadWithFreshTrainers()
     {
         MapDatabase.Initialize();

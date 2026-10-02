@@ -5,8 +5,9 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Procedural textures for the 3D field at 32 texels per tile: tileable materials, foliage with cut-out
-/// edges, and decals for doors, windows, signs and furniture. All are point-filtered pixel art.
+/// The field's shared textures at 32 texels per tile: repeating plant, rock and roof-tile art (point-filtered
+/// pixel art drawn in <see cref="NatureArt"/> and <see cref="BuildingArt"/>), and the soft, filtered shapes that
+/// are added as light and shadow. Buildings and props are painted per map into an <see cref="ArtSheet"/> instead.
 /// </summary>
 internal static class SceneTextures
 {
@@ -21,21 +22,31 @@ internal static class SceneTextures
         return tex;
     }
 
-    private static Color Rgb(int r, int g, int b, int a = 255) => new(r, g, b, a);
-
-    private static uint Hash(int x, int y, int salt)
+    /// <summary>A soft shape drawn with bilinear filtering: the alpha of each texel comes from <paramref name="alpha"/> (u, v in 0..1).</summary>
+    private static Texture2D Soft(string key, Color color, Func<float, float, float> alpha)
     {
-        unchecked
-        {
-            uint h = (uint)(x * 374761393 + y * 668265263 + salt * 1442695041);
-            h = (h ^ (h >> 13)) * 1274126177u;
-            return h ^ (h >> 16);
-        }
+        if (Cache.TryGetValue(key, out var cached)) return cached;
+        const int s = 64;
+        var c = new PixelCanvas(s, s);
+        for (int y = 0; y < s; y++)
+            for (int x = 0; x < s; x++)
+                c.SetRaw(x, y, new Color(color.R, color.G, color.B, (byte)Math.Clamp((int)(alpha((x + 0.5f) / s, (y + 0.5f) / s) * 255f), 0, 255)));
+        var tex = c.ToTexture();
+        Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
+        Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
+        Cache[key] = tex;
+        return tex;
     }
 
-    private static float R(int x, int y, int salt) => (Hash(x, y, salt) & 0xFFFF) / 65536f;
+    private static float Smooth(float t)
+    {
+        t = Math.Clamp(t, 0f, 1f);
+        return t * t * (3f - 2f * t);
+    }
 
-    // ------------------------------------------------------------------ materials
+    private static float FromCenter(float u, float v) => MathF.Sqrt((u * 2f - 1f) * (u * 2f - 1f) + (v * 2f - 1f) * (v * 2f - 1f));
+
+    // ------------------------------------------------------------------ repeating art
 
     public static Texture2D White => Get("white", () =>
     {
@@ -44,107 +55,9 @@ internal static class SceneTextures
         return c;
     }, repeat: true);
 
-    /// <summary>Light grey shingles, tinted per roof through vertex colors. Rows run along the texture's U axis.</summary>
-    public static Texture2D Shingles => Get("shingles", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        for (int row = 0; row < 4; row++)
-        {
-            int y0 = row * 8;
-            int offset = row % 2 * 5;
-            for (int x = 0; x < 32; x++)
-            {
-                int shingle = (x + offset) / 10;
-                float tone = 214 + R(shingle, row, 3) * 30f;
-                for (int y = 0; y < 8; y++)
-                {
-                    float v = tone;
-                    if (y == 0) v += 26;
-                    else if (y == 1) v += 12;
-                    else if (y >= 6) v -= 34 + (y - 6) * 20;
-                    if ((x + offset) % 10 == 0 && y < 7) v -= 44;
-                    if ((x + offset) % 10 == 1 && y < 7) v += 10;
-                    v += (R(x, y0 + y, 4) - 0.5f) * 10f;
-                    int g = (int)Math.Clamp(v, 0, 255);
-                    c.Set(x, y0 + y, Rgb(g, g, g));
-                }
-            }
-        }
-        return c;
-    }, repeat: true);
-
-    /// <summary>Horizontal log siding for Sinnoh's wooden houses: rounded logs with grain and dark joints.</summary>
-    public static Texture2D WoodSiding => Get("wood", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        var wood = Rgb(190, 136, 90);
-        for (int log = 0; log < 4; log++)
-        {
-            int y0 = log * 8;
-            float logTone = 0.92f + R(log, 0, 5) * 0.14f;
-            for (int y = 0; y < 8; y++)
-            {
-                // Round profile: bright on the upper curve, darker below, a dark gap between logs
-                float shade = y switch { 0 => 1.18f, 1 => 1.1f, 2 => 1.02f, 3 => 0.97f, 4 => 0.92f, 5 => 0.84f, 6 => 0.7f, _ => 0.42f };
-                for (int x = 0; x < 32; x++)
-                {
-                    float grain = (R(x / 3, y0 + y, 6) - 0.5f) * 0.1f;
-                    if (y is > 0 and < 6 && R(x, y0 + y, 7) < 0.08f) grain -= 0.12f;
-                    c.Set(x, y0 + y, MeshBuilder.Scale(wood, shade * logTone + grain));
-                }
-            }
-            // A log end where two logs meet, staggered per row
-            int jx = (log * 13 + 6) % 32;
-            for (int y = 1; y < 7; y++)
-            {
-                c.Set(jx, y0 + y, MeshBuilder.Scale(wood, 0.55f));
-                c.Set((jx + 1) % 32, y0 + y, MeshBuilder.Scale(wood, 1.12f));
-            }
-        }
-        return c;
-    }, repeat: true);
-
-    public static Texture2D Plaster => Get("plaster", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        for (int y = 0; y < 32; y++)
-            for (int x = 0; x < 32; x++)
-            {
-                int v = 238 + (int)((R(x, y, 8) - 0.5f) * 10) + (int)((R(x / 4, y / 4, 9) - 0.5f) * 8);
-                c.Set(x, y, Rgb(v, v - 2, v - 8));
-            }
-        return c;
-    }, repeat: true);
-
-    public static Texture2D Stone => Get("stone", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        var mortar = Rgb(104, 100, 104);
-        c.Fill(mortar);
-        for (int row = 0; row < 4; row++)
-        {
-            int y0 = row * 8;
-            int x = row % 2 * 5;
-            int i = 0;
-            while (x < 32 + 12)
-            {
-                int w = 7 + (int)(R(i, row, 10) * 7);
-                float tone = 0.86f + R(i, row, 11) * 0.22f;
-                var stone = MeshBuilder.Scale(Rgb(172, 166, 160), tone);
-                for (int yy = 1; yy < 7; yy++)
-                    for (int xx = 1; xx < w; xx++)
-                    {
-                        var col = stone;
-                        if (yy == 1 || xx == 1) col = MeshBuilder.Scale(stone, 1.14f);
-                        else if (yy == 6 || xx == w - 1) col = MeshBuilder.Scale(stone, 0.8f);
-                        c.Set((x + xx) % 32, y0 + yy, col);
-                    }
-                x += w;
-                i++;
-            }
-        }
-        return c;
-    }, repeat: true);
+    /// <summary>Roof tiles in one colour (<see cref="BuildingArt.RoofTiles"/>): one repeating texture per colour.</summary>
+    public static Texture2D RoofTiles(Color color) =>
+        Get($"roof_{color.R}_{color.G}_{color.B}", () => BuildingArt.RoofTiles(color), repeat: true);
 
     // Plants and rocks: the art is drawn in NatureArt (grey for trees, tinted per tree)
     public static Texture2D Bark => Get("bark", NatureArt.Bark, repeat: true);
@@ -169,420 +82,52 @@ internal static class SceneTextures
 
     public static Texture2D LedgeFace => Get("ledge_face", NatureArt.LedgeFace, repeat: true);
 
-    public static Texture2D Rock => Get("rock", NatureArt.Rock, repeat: true);
-
     /// <summary>Battle meadow and platform tops are smooth, filtered textures (see <see cref="SoftTextures"/>).</summary>
     public static Texture2D Meadow => SoftTextures.Meadow;
 
     public static Texture2D PlatformTop => SoftTextures.PlatformTop;
 
-    // ------------------------------------------------------------------ decals
-
-    public static Texture2D DoorWood => Get("door_wood", () =>
-    {
-        var c = new PixelCanvas(32, 56);
-        var frame = Rgb(92, 62, 46);
-        var wood = Rgb(172, 112, 66);
-        c.Fill(frame);
-        c.Rect(3, 3, 26, 53, wood);
-        // Arched window in the upper half
-        c.Rect(8, 8, 16, 12, Rgb(146, 204, 244));
-        c.FlatEllipse(16, 8.5f, 8, 4.5f, Rgb(146, 204, 244));
-        c.VLine(16, 5, 15, frame);
-        c.HLine(8, 13, 16, frame);
-        c.Rect(10, 8, 3, 3, Rgb(226, 244, 255));
-        // Raised panels
-        foreach (int px in new[] { 7, 18 })
-        {
-            c.Rect(px, 25, 8, 26, MeshBuilder.Scale(wood, 0.84f));
-            c.HLine(px, 25, 8, MeshBuilder.Scale(wood, 1.18f));
-            c.VLine(px, 25, 26, MeshBuilder.Scale(wood, 1.12f));
-        }
-        c.Disc(24, 36, 1.6f, Rgb(250, 214, 80));
-        c.VLine(3, 3, 53, MeshBuilder.Scale(wood, 1.2f));
-        return c;
-    }, repeat: false);
-
-    /// <summary>Automatic sliding glass doors used by Pokémon Centers and Marts.</summary>
-    public static Texture2D DoorGlass => Get("door_glass", () =>
-    {
-        var c = new PixelCanvas(48, 56);
-        var frame = Rgb(200, 206, 218);
-        var glass = Rgb(112, 184, 236);
-        c.Fill(frame);
-        for (int y = 3; y < 56; y++)
-        {
-            var g = PixelCanvas.Mix(Rgb(150, 208, 246), glass, y / 56f);
-            c.HLine(3, y, 42, g);
-        }
-        c.VLine(23, 3, 53, frame);
-        c.VLine(24, 3, 53, PixelCanvas.Shadow(frame, 0.3f));
-        for (int i = 0; i < 12; i++)
-        {
-            c.Set(6 + i, 30 - i, Rgb(226, 244, 255));
-            c.Set(7 + i, 30 - i, Rgb(226, 244, 255));
-            c.Set(30 + i, 40 - i, Rgb(226, 244, 255));
-        }
-        c.HLine(3, 3, 42, PixelCanvas.Shadow(glass, 0.3f));
-        c.Rect(19, 27, 3, 6, Rgb(150, 156, 170));
-        c.Rect(26, 27, 3, 6, Rgb(150, 156, 170));
-        return c;
-    }, repeat: false);
-
-    public static Texture2D Window => Get("window", () =>
-    {
-        var c = new PixelCanvas(32, 24);
-        var glass = Rgb(136, 198, 244);
-        for (int y = 0; y < 24; y++) c.HLine(0, y, 32, PixelCanvas.Mix(Rgb(186, 226, 252), glass, y / 24f));
-        // Reflections, mullions and a pair of curtains
-        for (int i = 0; i < 8; i++) { c.Set(4 + i, 12 - i, Color.White); c.Set(5 + i, 12 - i, Color.White); }
-        c.VLine(15, 0, 24, Rgb(248, 248, 250));
-        c.VLine(16, 0, 24, Rgb(248, 248, 250));
-        c.HLine(0, 11, 32, Rgb(248, 248, 250));
-        var curtain = Rgb(244, 236, 214);
-        c.FlatPoly(curtain, 0, 0, 7, 0, 3, 24, 0, 24);
-        c.FlatPoly(curtain, 32, 0, 25, 0, 29, 24, 32, 24);
-        return c;
-    }, repeat: false);
-
-    public static Texture2D GableWindow => Get("gable_window", () =>
-    {
-        var c = new PixelCanvas(24, 24);
-        c.FlatEllipse(12, 12, 11.5f, 11.5f, Rgb(248, 248, 250));
-        c.FlatEllipse(12, 12, 8.5f, 8.5f, Rgb(140, 202, 246));
-        c.Rect(11, 3, 2, 18, Rgb(248, 248, 250));
-        c.Rect(3, 11, 18, 2, Rgb(248, 248, 250));
-        c.Rect(7, 7, 3, 3, Color.White);
-        c.OutlinePass(innerSeams: false);
-        return c;
-    }, repeat: false);
-
-    /// <summary>The Poké Ball emblem on the front of every Pokémon Center.</summary>
-    public static Texture2D CenterEmblem => Get("center_emblem", () =>
-    {
-        var c = new PixelCanvas(64, 64);
-        var red = Rgb(236, 64, 56);
-        var white = Rgb(250, 250, 252);
-        var dark = Rgb(44, 36, 52);
-        for (int y = 0; y < 64; y++)
-            for (int x = 0; x < 64; x++)
-            {
-                float u = (x + 0.5f - 32f) / 30f, v = (y + 0.5f - 32f) / 30f;
-                float d = u * u + v * v;
-                if (d > 1f) continue;
-                var col = y < 32 ? red : white;
-                float shade = 1f - (u + v) * 0.12f;
-                col = MeshBuilder.Scale(col, shade);
-                if (u < -0.3f && v < -0.25f && d > 0.4f && d < 0.72f && y < 32) col = PixelCanvas.Light1(red, 0.55f);
-                c.Set(x, y, col);
-            }
-        c.Rect(2, 29, 60, 7, dark);
-        c.Disc(32, 32, 13, dark);
-        c.Disc(32, 32, 9, white);
-        c.Disc(32, 32, 5, Rgb(226, 230, 238));
-        c.OutlinePass(innerSeams: false);
-        return c;
-    }, repeat: false);
-
-    public static Texture2D MartSign => Get("mart_sign", () =>
-    {
-        var c = new PixelCanvas(80, 32);
-        var blue = Rgb(60, 116, 222);
-        for (int y = 2; y < 30; y++) c.HLine(2, y, 76, PixelCanvas.Mix(PixelCanvas.Light1(blue, 0.25f), PixelCanvas.Shadow(blue, 0.2f), y / 30f));
-        string[][] glyphs =
-        {
-            new[] { "X...X", "XX.XX", "X.X.X", "X...X", "X...X", "X...X", "X...X" },
-            new[] { ".XXX.", "X...X", "X...X", "XXXXX", "X...X", "X...X", "X...X" },
-            new[] { "XXXX.", "X...X", "X...X", "XXXX.", "X.X..", "X..X.", "X...X" },
-            new[] { "XXXXX", "..X..", "..X..", "..X..", "..X..", "..X..", "..X.." }
-        };
-        for (int i = 0; i < glyphs.Length; i++)
-        {
-            // Letters at 2x so they stay readable
-            for (int gy = 0; gy < 7; gy++)
-                for (int gx = 0; gx < 5; gx++)
-                    if (glyphs[i][gy][gx] == 'X') c.Rect(12 + i * 15 + gx * 2, 9 + gy * 2, 2, 2, Color.White);
-        }
-        c.OutlinePass(innerSeams: false);
-        return c;
-    }, repeat: false);
-
-    public static Texture2D SignBoard => Get("sign_board", () =>
-    {
-        var c = new PixelCanvas(32, 20);
-        var wood = Rgb(204, 150, 94);
-        c.Fill(PixelCanvas.Shadow(wood, 0.45f));
-        c.Rect(2, 2, 28, 16, wood);
-        c.HLine(2, 2, 28, PixelCanvas.Light1(wood, 0.35f));
-        c.HLine(2, 17, 28, PixelCanvas.Shadow(wood, 0.25f));
-        for (int y = 6; y <= 13; y += 4) c.HLine(6, y, y == 13 ? 12 : 20, PixelCanvas.Shadow(wood, 0.5f));
-        return c;
-    }, repeat: false);
-
-    public static Texture2D Plaque => Get("plaque", () =>
-    {
-        var c = new PixelCanvas(24, 16);
-        var brass = Rgb(214, 172, 96);
-        c.Fill(Rgb(92, 66, 50));
-        c.Rect(2, 2, 20, 12, brass);
-        c.HLine(2, 2, 20, PixelCanvas.Light1(brass, 0.4f));
-        c.HLine(5, 7, 14, PixelCanvas.Shadow(brass, 0.45f));
-        c.HLine(5, 10, 9, PixelCanvas.Shadow(brass, 0.45f));
-        return c;
-    }, repeat: false);
-
-    public static Texture2D PcScreen => Get("pc_screen", () =>
-    {
-        var c = new PixelCanvas(24, 20);
-        c.Fill(Rgb(206, 210, 222));
-        for (int y = 2; y < 16; y++) c.HLine(2, y, 20, PixelCanvas.Mix(Rgb(96, 166, 236), Rgb(52, 110, 206), y / 16f));
-        c.HLine(4, 5, 8, Rgb(190, 230, 252));
-        c.HLine(4, 8, 12, Rgb(150, 206, 248));
-        c.HLine(4, 11, 10, Rgb(150, 206, 248));
-        c.Rect(19, 17, 2, 2, Rgb(90, 220, 120));
-        return c;
-    }, repeat: false);
-
-    /// <summary>Soft round shadow (alpha-blended, not cut out).</summary>
-    public static Texture2D ShadowBlob => Get("shadow_blob", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        for (int y = 0; y < 32; y++)
-            for (int x = 0; x < 32; x++)
-            {
-                float u = (x + 0.5f - 16f) / 16f, v = (y + 0.5f - 16f) / 16f;
-                float d = MathF.Sqrt(u * u + v * v);
-                if (d < 1f) c.Set(x, y, new Color(0, 0, 0, (int)(90 * Math.Clamp((1f - d) * 2.2f, 0f, 1f))));
-            }
-        return c;
-    }, repeat: false);
-
-    /// <summary>
-    /// Warm light spilling onto the ground from a lit window or door (drawn additively at night): brightest at
-    /// the wall (top edge, centre) and fading out in a half ellipse.
-    /// </summary>
-    public static Texture2D LightPool
-    {
-        get
-        {
-            if (Cache.TryGetValue("light_pool", out var cached)) return cached;
-            const int s = 64;
-            var c = new PixelCanvas(s, s);
-            for (int y = 0; y < s; y++)
-                for (int x = 0; x < s; x++)
-                {
-                    float u = (x + 0.5f) / s * 2f - 1f, v = (y + 0.5f) / s;
-                    float fall = Math.Clamp(1f - MathF.Sqrt(u * u + v * v), 0f, 1f);
-                    c.SetRaw(x, y, new Color(255, 184, 104, (int)(105 * fall * fall * (3f - 2f * fall))));
-                }
-            var tex = c.ToTexture();
-            Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
-            Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
-            Cache["light_pool"] = tex;
-            return tex;
-        }
-    }
-
-    /// <summary>A soft white dot that fades out evenly, for glows and drifting motes (drawn additively).</summary>
-    public static Texture2D SoftGlow
-    {
-        get
-        {
-            if (Cache.TryGetValue("soft_glow", out var cached)) return cached;
-            const int s = 64;
-            var c = new PixelCanvas(s, s);
-            for (int y = 0; y < s; y++)
-                for (int x = 0; x < s; x++)
-                {
-                    float u = (x + 0.5f) / s * 2f - 1f, v = (y + 0.5f) / s * 2f - 1f;
-                    float fall = Math.Clamp(1f - MathF.Sqrt(u * u + v * v), 0f, 1f);
-                    c.SetRaw(x, y, new Color(255, 255, 255, (int)(255 * fall * fall)));
-                }
-            var tex = c.ToTexture();
-            Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
-            Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
-            Cache["soft_glow"] = tex;
-            return tex;
-        }
-    }
-
     public static Texture2D Exclamation => Get("exclamation", () =>
     {
         var c = new PixelCanvas(16, 16);
         c.FlatEllipse(8, 8, 7, 7, Color.White);
-        var red = Rgb(226, 56, 56);
+        var red = new Color(226, 56, 56, 255);
         c.Rect(7, 3, 2, 6, red);
         c.Rect(7, 10, 2, 2, red);
         c.OutlinePass(innerSeams: false);
         return c;
     }, repeat: false);
 
-    /// <summary>Window box full of flowers for the houses.</summary>
-    public static Texture2D FlowerBox => Get("flower_box", () =>
-    {
-        var c = new PixelCanvas(32, 12);
-        c.Rect(0, 5, 32, 7, Rgb(150, 98, 60));
-        c.HLine(0, 5, 32, Rgb(188, 132, 86));
-        for (int i = 0; i < 9; i++)
-        {
-            int x = 2 + i * 3 + (int)(R(i, 0, 20) * 2);
-            var petal = i % 3 == 0 ? Rgb(238, 84, 110) : i % 3 == 1 ? Rgb(252, 252, 252) : Rgb(250, 208, 70);
-            c.Rect(x, 1 + (i % 2), 3, 3, petal);
-            c.Set(x + 1, 2 + (i % 2), Rgb(250, 200, 70));
-            c.Set(x + 1, 4 + (i % 2), Rgb(70, 150, 76));
-        }
-        return c;
-    }, repeat: false);
+    // ------------------------------------------------------------------ light and shadow
 
-    // ------------------------------------------------------------------ interior
+    /// <summary>Soft round shadow (alpha-blended, not cut out).</summary>
+    public static Texture2D ShadowBlob =>
+        Soft("shadow_blob", Color.Black, (u, v) => 90f / 255f * Math.Clamp((1f - FromCenter(u, v)) * 2.2f, 0f, 1f));
 
-    public static Texture2D Books => Get("books", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        var wood = Rgb(150, 100, 62);
-        c.Fill(wood);
-        Color[] spines = { Rgb(200, 60, 60), Rgb(60, 110, 200), Rgb(70, 160, 90), Rgb(230, 190, 70), Rgb(150, 90, 170), Rgb(236, 236, 230) };
-        for (int shelf = 0; shelf < 3; shelf++)
-        {
-            int y0 = 2 + shelf * 10;
-            c.HLine(0, y0 + 9, 32, MeshBuilder.Scale(wood, 0.7f));
-            int x = 1;
-            int i = 0;
-            while (x < 31)
-            {
-                int w = 2 + (int)(R(i, shelf, 21) * 3);
-                int h = 6 + (int)(R(i, shelf, 22) * 3);
-                var col = spines[(int)(R(i, shelf, 23) * spines.Length) % spines.Length];
-                c.Rect(x, y0 + 9 - h, Math.Min(w, 31 - x), h, col);
-                c.VLine(x, y0 + 9 - h, h, MeshBuilder.Scale(col, 1.2f));
-                c.HLine(x, y0 + 9 - h + 2, Math.Min(w, 31 - x), MeshBuilder.Scale(col, 0.75f));
-                x += w + (R(i, shelf, 24) < 0.2f ? 1 : 0);
-                i++;
-            }
-        }
-        return c;
-    }, repeat: true);
+    /// <summary>
+    /// Warm light spilling onto the ground from a lit window or door (added after dark): brightest at the wall
+    /// (top edge, centre) and fading out in a half ellipse.
+    /// </summary>
+    public static Texture2D LightPool => Soft("light_pool", new Color(255, 184, 104, 255),
+        (u, v) => 105f / 255f * Smooth(1f - MathF.Sqrt((u * 2f - 1f) * (u * 2f - 1f) + v * v)));
 
-    public static Texture2D Cabinet => Get("cabinet", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        var body = Rgb(236, 230, 214);
-        c.Fill(body);
-        c.Rect(2, 4, 13, 26, MeshBuilder.Scale(body, 0.94f));
-        c.Rect(17, 4, 13, 26, MeshBuilder.Scale(body, 0.94f));
-        c.HLine(2, 4, 13, MeshBuilder.Scale(body, 1.05f));
-        c.HLine(17, 4, 13, MeshBuilder.Scale(body, 1.05f));
-        c.Rect(12, 14, 2, 5, Rgb(150, 150, 160));
-        c.Rect(18, 14, 2, 5, Rgb(150, 150, 160));
-        c.HLine(0, 31, 32, MeshBuilder.Scale(body, 0.6f));
-        return c;
-    }, repeat: true);
+    /// <summary>
+    /// Lamplight fading out evenly from its middle (added after dark): the pool at a street lamp's foot and the
+    /// halo round its lantern.
+    /// </summary>
+    public static Texture2D LampGlow => Soft("lamp_glow", new Color(255, 190, 110, 255), (u, v) => 120f / 255f * Smooth(1f - FromCenter(u, v)));
 
-    public static Texture2D TvScreen => Get("tv_screen", () =>
-    {
-        var c = new PixelCanvas(32, 24);
-        c.Fill(Rgb(40, 40, 50));
-        for (int y = 2; y < 22; y++) c.HLine(2, y, 28, PixelCanvas.Mix(Rgb(120, 190, 250), Rgb(90, 180, 110), y / 22f));
-        // A tiny Pokémon-ish silhouette on screen
-        c.FlatEllipse(16, 13, 5, 4, Rgb(250, 214, 70));
-        c.Rect(12, 7, 2, 4, Rgb(250, 214, 70));
-        c.Rect(18, 7, 2, 4, Rgb(250, 214, 70));
-        c.Set(14, 12, Rgb(40, 40, 50));
-        c.Set(18, 12, Rgb(40, 40, 50));
-        return c;
-    }, repeat: false);
+    /// <summary>
+    /// Daylight through a window lying on a room's floor: soft at its edges and fading away from the wall (the
+    /// top of the texture).
+    /// </summary>
+    public static Texture2D WindowLight => Soft("window_light", new Color(255, 248, 226, 255), (u, v) =>
+        46f / 255f * Smooth(Math.Min(u, 1f - u) / 0.12f) * Smooth((1f - v) / 0.16f) * Smooth(v / 0.05f) * (1f - 0.45f * v));
 
-    public static Texture2D Console => Get("console", () =>
+    /// <summary>A soft white dot that fades out evenly, for glows and drifting motes (drawn additively).</summary>
+    public static Texture2D SoftGlow => Soft("soft_glow", Color.White, (u, v) =>
     {
-        var c = new PixelCanvas(32, 32);
-        c.Fill(Rgb(172, 178, 196));
-        c.Rect(3, 3, 26, 12, Rgb(40, 52, 70));
-        for (int i = 0; i < 5; i++) c.HLine(5, 5 + i * 2, 6 + (int)(R(i, 0, 25) * 14), Rgb(110, 230, 150));
-        Color[] lights = { Rgb(236, 70, 70), Rgb(250, 208, 70), Rgb(90, 220, 120), Rgb(90, 160, 240) };
-        for (int i = 0; i < 8; i++) c.Rect(4 + i * 3, 19, 2, 2, lights[i % lights.Length]);
-        c.Rect(4, 24, 24, 5, Rgb(140, 146, 166));
-        for (int i = 0; i < 6; i++) c.Rect(5 + i * 4, 25, 3, 3, Rgb(212, 216, 228));
-        return c;
-    }, repeat: true);
-
-    public static Texture2D Goods => Get("goods", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        c.Fill(Rgb(206, 214, 226));
-        Color[] goods = { Rgb(232, 80, 80), Rgb(80, 150, 232), Rgb(250, 206, 72), Rgb(120, 200, 110), Rgb(236, 236, 240), Rgb(170, 100, 200) };
-        for (int shelf = 0; shelf < 3; shelf++)
-        {
-            int y = 2 + shelf * 10;
-            c.HLine(0, y + 8, 32, Rgb(120, 132, 156));
-            c.HLine(0, y + 9, 32, Rgb(92, 102, 124));
-            for (int i = 0; i < 6; i++)
-            {
-                var g = goods[(i + shelf * 2) % goods.Length];
-                int h = 5 + (i + shelf) % 3;
-                c.Rect(1 + i * 5, y + 8 - h, 4, h, g);
-                c.HLine(1 + i * 5, y + 8 - h, 4, PixelCanvas.Light1(g, 0.4f));
-                c.VLine(4 + i * 5, y + 8 - h, h, PixelCanvas.Shadow(g, 0.3f));
-            }
-        }
-        return c;
-    }, repeat: true);
-
-    public static Texture2D Rug(bool pokeCenter) => Get(pokeCenter ? "rug_center" : "rug_house", () =>
-    {
-        const int s = 64;
-        var c = new PixelCanvas(s, s);
-        var main = pokeCenter ? Rgb(236, 120, 130) : Rgb(196, 76, 60);
-        var border = pokeCenter ? Rgb(250, 236, 238) : Rgb(236, 196, 110);
-        c.Fill(main);
-        c.Rect(3, 3, s - 6, 3, border);
-        c.Rect(3, s - 6, s - 6, 3, border);
-        c.Rect(3, 3, 3, s - 6, border);
-        c.Rect(s - 6, 3, 3, s - 6, border);
-        if (pokeCenter)
-        {
-            c.Disc(32, 32, 14, Rgb(250, 250, 252));
-            for (int y = 18; y < 32; y++)
-                for (int x = 18; x < 47; x++)
-                    if ((x - 31.5f) * (x - 31.5f) + (y - 31.5f) * (y - 31.5f) < 196f) c.Set(x, y, Rgb(226, 56, 60));
-            c.Rect(18, 30, 29, 4, Rgb(60, 50, 60));
-            c.Disc(32, 32, 5, Rgb(60, 50, 60));
-            c.Disc(32, 32, 3, Rgb(250, 250, 252));
-        }
-        else
-        {
-            // Diamond medallion and a dotted inner border
-            c.FlatPoly(border, 32, 12, 44, 32, 32, 52, 20, 32);
-            c.FlatPoly(main, 32, 18, 38, 32, 32, 46, 26, 32);
-            for (int x = 10; x < s - 10; x += 6) { c.Set(x, 9, border); c.Set(x, s - 10, border); }
-        }
-        return c;
-    }, repeat: false);
-
-    public static Texture2D Painting => Get("painting", () =>
-    {
-        var c = new PixelCanvas(32, 24);
-        c.Fill(Rgb(150, 110, 60));
-        for (int y = 3; y < 21; y++) c.HLine(3, y, 26, PixelCanvas.Mix(Rgb(150, 210, 250), Rgb(220, 240, 252), y / 21f));
-        c.FlatPoly(Rgb(110, 170, 120), 3, 18, 12, 9, 20, 16, 29, 11, 29, 21, 3, 21);
-        c.FlatPoly(Rgb(80, 140, 96), 3, 21, 3, 17, 10, 14, 18, 21);
-        c.Disc(23, 7, 2.5f, Rgb(250, 230, 120));
-        c.HLine(2, 2, 28, Rgb(190, 150, 90));
-        return c;
-    }, repeat: false);
-
-    public static Texture2D ClockFace => Get("clock", () =>
-    {
-        var c = new PixelCanvas(32, 32);
-        c.Disc(16, 16, 15, Rgb(120, 80, 52));
-        c.Disc(16, 16, 12.5f, Rgb(250, 248, 240));
-        for (int i = 0; i < 12; i++)
-        {
-            float a = i * MathF.Tau / 12f;
-            c.Set((int)(16 + MathF.Cos(a) * 10), (int)(16 + MathF.Sin(a) * 10), Rgb(60, 50, 50));
-        }
-        c.Line(16, 16, 16, 8, Rgb(40, 36, 40));
-        c.Line(16, 16, 21, 18, Rgb(40, 36, 40));
-        c.OutlinePass(innerSeams: false);
-        return c;
-    }, repeat: false);
+        float fall = Math.Clamp(1f - FromCenter(u, v), 0f, 1f);
+        return fall * fall;
+    });
 }

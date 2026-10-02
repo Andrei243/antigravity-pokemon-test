@@ -7,7 +7,14 @@ public enum BuildingKind
     House,
     PokemonCenter,
     PokeMart,
-    Lab
+    Lab,
+
+    // Named by the map (see Map.BuildingKinds): a door's destination doesn't say what these are
+    School,
+    Office,
+    TvStation,
+    Terminal,
+    Apartments
 }
 
 /// <summary>A building found on an outdoor map: the rectangle of roof/wall tiles and what sits on its front row.</summary>
@@ -114,6 +121,12 @@ public static class MapStructures
                         "RowanLab" => BuildingKind.Lab,
                         _ => kind
                     };
+                }
+
+                // What the map says outright wins over what the door suggests
+                foreach (var (tile, named) in map.BuildingKinds)
+                {
+                    if (tile.X >= x0 && tile.X <= x1 && tile.Y >= y0 && tile.Y <= y1) kind = named;
                 }
 
                 var info = new BuildingInfo { X0 = x0, Y0 = y0, X1 = x1, Y1 = y1, Kind = kind, RoofTile = roof };

@@ -16,6 +16,15 @@ public class Map
     /// <summary>True for maps with a sizeable body of water (not a garden pond): battles there have a lake behind them.</summary>
     public bool HasLake => groundLayer.Count(t => t == TileType.Water) >= 40;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
+
+    /// <summary>How the houses of this town are built.</summary>
+    public Architecture Architecture { get; set; } = Architecture.Timber;
+
+    /// <summary>
+    /// What kind of building covers a tile, where the map says so. Other buildings are told by where their door
+    /// leads (see <see cref="MapStructures.FindBuildings"/>).
+    /// </summary>
+    public Dictionary<(int X, int Y), BuildingKind> BuildingKinds { get; } = new();
     public int Width { get; }
     public int Height { get; }
 

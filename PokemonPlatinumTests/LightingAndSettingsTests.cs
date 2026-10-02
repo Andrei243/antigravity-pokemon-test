@@ -60,10 +60,17 @@ public class LightingAndSettingsTests
             Assert.True(Brightness(rigFor(TimeOfDay.Twilight)) < day);
         }
 
-        Assert.Equal(0f, ArtLook.FieldRigFor(TimeOfDay.Morning).WindowGlow);
-        Assert.Equal(0f, ArtLook.FieldRigFor(TimeOfDay.Day).WindowGlow);
-        Assert.True(ArtLook.FieldRigFor(TimeOfDay.Twilight).WindowGlow > 0f);
-        Assert.Equal(1f, ArtLook.FieldRigFor(TimeOfDay.Night).WindowGlow);
+        // Street lamps and shops come on at twilight and burn all night; the windows of homes go dark late at night
+        Assert.Equal(0f, ArtLook.FieldRigFor(TimeOfDay.Morning).LampGlow);
+        Assert.Equal(0f, ArtLook.FieldRigFor(TimeOfDay.Day).LampGlow);
+        Assert.Equal(0f, ArtLook.FieldRigFor(TimeOfDay.Day).HomeGlow);
+        Assert.True(ArtLook.FieldRigFor(TimeOfDay.Twilight).LampGlow > 0f);
+        Assert.True(ArtLook.FieldRigFor(TimeOfDay.Twilight).HomeGlow > 0f);
+        Assert.Equal(1f, ArtLook.FieldRigFor(TimeOfDay.Night).LampGlow);
+        Assert.Equal(1f, ArtLook.FieldRigFor(TimeOfDay.Night).HomeGlow);
+        Assert.Equal(1f, ArtLook.FieldRigFor(TimeOfDay.LateNight).LampGlow);
+        Assert.Equal(0f, ArtLook.FieldRigFor(TimeOfDay.LateNight).HomeGlow);
+        Assert.Equal(ArtLook.Lamplight, ArtLook.FieldRigFor(TimeOfDay.Night).GlowColor);
         Assert.True(ArtLook.BattleRigFor(TimeOfDay.Night).Sky.Stars > 0f);
         Assert.Equal(0f, ArtLook.BattleRigFor(TimeOfDay.Day).Sky.Stars);
     }
@@ -86,11 +93,34 @@ public class LightingAndSettingsTests
         }
 
         // Midnight wraps: just after 0:00 is still blending from night into late night
-        float midnight = ArtLook.FieldRig(0.1f, indoors: false).WindowGlow;
-        Assert.InRange(midnight, ArtLook.FieldRigFor(TimeOfDay.LateNight).WindowGlow, ArtLook.FieldRigFor(TimeOfDay.Night).WindowGlow);
+        float midnight = ArtLook.FieldRig(0.1f, indoors: false).HomeGlow;
+        Assert.InRange(midnight, 0.01f, 0.99f);
+    }
 
-        // Rooms are lit by their own lamps whatever the hour
-        Assert.Equal(ArtLook.FieldRig(13f, indoors: true), ArtLook.FieldRig(2f, indoors: true));
+    [Fact]
+    public void RoomsFollowTheClockThroughTheirWindows()
+    {
+        var day = ArtLook.FieldRig(13f, indoors: true);
+        var dusk = ArtLook.FieldRig(18.5f, indoors: true);
+        var night = ArtLook.FieldRig(2f, indoors: true);
+
+        // By day the sun throws light on the floor and the glass keeps its painted sky
+        Assert.Equal(1f, day.LampGlow);
+        Assert.Equal(0f, day.HomeGlow);
+
+        // At twilight the glass turns orange; at night it is dark blue and no daylight falls in
+        Assert.True(dusk.HomeGlow > 0.5f);
+        Assert.True(dusk.GlowColor.X > dusk.GlowColor.Z);
+        Assert.Equal(0f, night.LampGlow);
+        Assert.Equal(1f, night.HomeGlow);
+        Assert.True(night.GlowColor.Z > night.GlowColor.X);
+        Assert.True(night.GlowColor.Z < 0.4f);
+
+        // A room at night is lit by its lamps: dimmer and warmer than by day, but far brighter than the night outside
+        Assert.True(Brightness(night) < Brightness(day));
+        Assert.True(Brightness(night) > Brightness(ArtLook.FieldRig(2f, indoors: false)) * 1.5f);
+        Assert.True(night.Light.SunColor.X > night.Light.SunColor.Z * 1.5f);
+        Assert.Equal(ArtLook.FieldRig(22f, indoors: true), night);
     }
 
     [Fact]

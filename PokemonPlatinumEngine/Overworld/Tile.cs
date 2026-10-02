@@ -37,6 +37,19 @@ public enum TreeStyle
     Pine
 }
 
+/// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>
+public enum Architecture
+{
+    /// <summary>Plank walls with timber posts (Twinleaf).</summary>
+    Timber,
+    /// <summary>Plaster over a stone base (Sandgem).</summary>
+    Plaster,
+    /// <summary>Brick and panel blocks with flat roofs (Jubilife).</summary>
+    City,
+    /// <summary>White clapboard (Pallet).</summary>
+    Clapboard
+}
+
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>
 public enum InteriorStyle
 {

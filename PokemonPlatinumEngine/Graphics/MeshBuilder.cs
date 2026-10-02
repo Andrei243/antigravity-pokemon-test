@@ -338,6 +338,15 @@ internal sealed class MeshBuilder
         for (int i = 0; i < positions.Count; i++) uvs[i] = map(positions[i]);
     }
 
+    /// <summary>Scales every texture coordinate (texels to 0..1 once an atlas's size is known).</summary>
+    public void ScaleUVs(float su, float sv)
+    {
+        for (int i = 0; i < uvs.Count; i++) uvs[i] = new Vector2(uvs[i].X * su, uvs[i].Y * sv);
+    }
+
+    /// <summary>The texture coordinates added so far, one per vertex.</summary>
+    public IReadOnlyList<Vector2> TexCoords => uvs;
+
     /// <summary>Rewrites every vertex's normal and colour from its position, normal and colour.</summary>
     public void MapVertices(Func<Vector3, Vector3, Color, (Vector3 Normal, Color Color)> map)
     {

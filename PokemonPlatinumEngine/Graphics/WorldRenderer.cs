@@ -69,6 +69,10 @@ public sealed class WorldRenderer
         foreach (var actor in actors) walkerFeet.Add(actor.Feet);
         shaders.SetWalkers(walkerFeet);
 
+        // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
+        GroundRect? view = null, casters = null;
+        if (!scene.Indoors) (view, casters) = VisibleRects(camera.Target, light.SunDirection);
+
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
         var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
@@ -80,7 +84,7 @@ public sealed class WorldRenderer
         var lightView = Rlgl.GetMatrixModelview();
         var lightProjection = Rlgl.GetMatrixProjection();
         Rlgl.DisableBackfaceCulling();
-        scene.DrawDepth();
+        scene.DrawDepth(casters);
         DrawActors(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -91,6 +95,10 @@ public sealed class WorldRenderer
         shaders.SetWorldRamp(0f);
         shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
         shaders.SetCloudShade(rig.CloudShade);
+        // Outdoors, lamps and windows light up after dark; in a room only the window glass changes, to the sky's colour
+        shaders.SetGlow(scene.Indoors ? 0f : rig.LampGlow, rig.HomeGlow, rig.GlowColor);
+        // Rooms keep their perspective: their side walls are what makes them a doll's house
+        shaders.SetUpright(scene.Indoors ? 0f : ArtLook.FieldUpright, scene.PitchDeg);
 
         // 2. The scene itself, sampling the shadow map
         float near = scene.Indoors ? 1f : 10f, far = scene.Indoors ? 100f : 140f;
@@ -102,11 +110,14 @@ public sealed class WorldRenderer
         Rlgl.DisableBackfaceCulling();
         context.BindShadowMap();
 
-        scene.Draw(rig.WindowGlow);
-        scene.DrawLights(rig.WindowGlow);
+        scene.Draw(view);
+        // In a room the light on the floor is daylight; outdoors it is lamplight, which only shows once it is dark
+        // (squared, so pools stay faint while the lamps are coming on at twilight)
+        if (scene.Indoors) scene.DrawLights(rig.LampGlow, 0f, rig.LightTint);
+        else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
         DrawContactShadows(map, player != null, px, pz, lift);
         DrawActors(CharacterPass.Color);
-        DrawSpottedBubbles(scene, map);
+        DrawSpottedBubbles(scene, map, camera);
 
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -178,6 +189,24 @@ public sealed class WorldRenderer
         return (farOffset, nearOffset, halfWidth);
     }
 
+    /// <summary>
+    /// The ground the outdoor camera can see when it looks at <paramref name="target"/>, with room for what stands
+    /// just outside and still reaches in, and the wider ground from which a shadow can fall into that view.
+    /// </summary>
+    internal (GroundRect View, GroundRect Casters) VisibleRects(Vector3 target, Vector3 sunDirection)
+    {
+        const float tallest = 5f;
+        var (farOff, nearOff, halfW) = VisibleGround(target.Y);
+        // Things are a tile or two wide, and a tall tree south of the bottom edge still shows its top
+        var view = new GroundRect(target.X - halfW - 2f, target.Z + farOff - 2f, target.X + halfW + 2f, target.Z + nearOff + 4f);
+        // A shadow is as long as its caster is tall, times how low the sun is, and falls away from the sun
+        float reach = tallest / MathF.Max(0.25f, sunDirection.Y);
+        var casters = new GroundRect(
+            view.MinX - MathF.Max(0f, -sunDirection.X) * reach - 1f, view.MinZ - MathF.Max(0f, -sunDirection.Z) * reach - 1f,
+            view.MaxX + MathF.Max(0f, sunDirection.X) * reach + 1f, view.MaxZ + MathF.Max(0f, sunDirection.Z) * reach + 1f);
+        return (view, casters);
+    }
+
     // ------------------------------------------------------------------ characters
 
 
@@ -239,17 +268,33 @@ public sealed class WorldRenderer
     }
 
     /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>
-    private static void DrawSpottedBubbles(MapScene scene, Map map)
+    private static void DrawSpottedBubbles(MapScene scene, Map map, Camera3D camera)
     {
         var bubble = SceneTextures.Exclamation;
         foreach (var npc in map.NPCs)
         {
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
             {
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), npc.DrawX + 0.5f, npc.DrawY + 0.15f, 1.95f, 0.7f, 0.7f * scene.VS);
+                // Drawn without the scenery's shader, so it is moved by hand to stay over the straightened sprite
+                float cx = npc.DrawX + 0.5f, cz = npc.DrawY + 0.15f;
+                if (!scene.Indoors) cx = Straighten(camera, scene.PitchDeg, cx, 1.95f + 0.35f * scene.VS, cz);
+                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), cx, cz, 1.95f, 0.7f, 0.7f * scene.VS);
             }
         }
         Rlgl.DrawRenderBatchActive();
+    }
+
+    /// <summary>
+    /// Where something at height <paramref name="y"/> over (x, z) has to be drawn to appear straight above that
+    /// point, as the field's vertex shader does for scenery (<see cref="FieldShaders.SetUpright"/>).
+    /// </summary>
+    internal static float Straighten(Camera3D camera, float pitchDeg, float x, float y, float z)
+    {
+        var forward = Vector3.Normalize(camera.Target - camera.Position);
+        float footDepth = Vector3.Dot(new Vector3(x, 0, z) - camera.Position, forward);
+        float lift = y * MathF.Sin(pitchDeg * MathF.PI / 180f);
+        float k = (footDepth - lift) / (footDepth - lift + lift * ArtLook.FieldUpright);
+        return camera.Position.X + (x - camera.Position.X) * k;
     }
 
     /// <summary>An upright textured quad facing the camera's direction, centred on x and standing at y0.</summary>

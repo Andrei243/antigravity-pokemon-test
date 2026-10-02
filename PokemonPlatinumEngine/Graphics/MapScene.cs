@@ -48,14 +48,18 @@ internal sealed class MapScene
 
     // ------------------------------------------------------------------ drawing
 
-    /// <param name="glow">How brightly windows and glass doors are lit from inside.</param>
-    public void Draw(float glow) => meshes.Draw(glow);
+    /// <param name="view">The ground the camera can see, to skip the parts of the map outside it; null draws it all.</param>
+    public void Draw(GroundRect? view = null) => meshes.Draw(view);
 
-    /// <summary>Adds the light pools under lit windows and doors (after dark).</summary>
-    public void DrawLights(float glow) => meshes.DrawLights(glow);
+    /// <summary>
+    /// Adds the light thrown on the ground: pools under lamps and lit doors, pools under the windows of homes,
+    /// and in rooms the patches of daylight under the windows.
+    /// </summary>
+    public void DrawLights(float publicLevel, float homeLevel, Vector3 tint) => meshes.DrawLights(publicLevel, homeLevel, tint);
 
     /// <summary>Draws everything that casts shadows, for the shadow-map pass.</summary>
-    public void DrawDepth() => meshes.DrawDepth();
+    /// <param name="casters">The ground whose shadows can reach the view; null draws every caster.</param>
+    public void DrawDepth(GroundRect? casters = null) => meshes.DrawDepth(casters);
 
     // ------------------------------------------------------------------ building the scene
 
@@ -69,20 +73,37 @@ internal sealed class MapScene
         var ground = (map.IsIndoors ? GroundBaker.BakeInterior(map) : PixelGround.Bake(map, scene.Margin, buildings, out waterMask)).ToTexture();
         scene.AddGround(batches.For(ground, MeshPass.Ground), batches.For(SceneTextures.White, MeshPass.Ground));
 
+        // Buildings and props are painted face by face into one sheet of art for the map
+        var kit = new KitBuilder(new ArtSheet(), scene.VS);
         if (map.IsIndoors)
         {
-            scene.AddInterior(batches);
+            scene.AddInterior(batches, kit);
         }
         else
         {
             if (waterMask != null) scene.AddWater(batches.For(waterMask.ToTexture(), MeshPass.Water));
-            scene.AddRocks(batches);
             scene.AddTrees(batches);
             scene.AddTallGrass(batches.For(SceneTextures.TallGrass, MeshPass.Ground));
             scene.AddLawnDetail(batches);
             scene.AddLedges(batches);
-            scene.AddSigns(batches);
-            foreach (var b in buildings) scene.AddBuilding(b, batches);
+
+            var targets = new BuildingTargets
+            {
+                RoofTiles = color => batches.For(SceneTextures.RoofTiles(color)),
+                PublicLight = batches.For(SceneTextures.LightPool, MeshPass.Light),
+                HomeLight = batches.For(SceneTextures.LightPool, MeshPass.HomeLight)
+            };
+            foreach (var b in buildings) BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.Architecture), targets);
+            OutdoorProps.Add(kit, map, batches.For(SceneTextures.LampGlow, MeshPass.Light));
+        }
+
+        if (kit.Solid.VertexCount + kit.Flat.VertexCount > 0)
+        {
+            var art = kit.Sheet.ToCanvas().ToTexture();
+            Raylib.SetTextureWrap(art, TextureWrap.Clamp);
+            kit.Finish();
+            batches.Attach(art, MeshPass.Opaque, kit.Solid);
+            batches.Attach(art, MeshPass.Ground, kit.Flat);
         }
 
         scene.meshes = SceneMeshes.Upload(batches, shaders);
@@ -165,22 +186,13 @@ internal sealed class MapScene
         }
     }
 
-    /// <summary>Boulders: on land they sit on the ground, in water they stand in it with foam around them.</summary>
-    private void AddRocks(MeshBatches batches)
-    {
-        foreach (var prop in Map.Props)
-        {
-            if (prop.Type != PropType.Boulder) continue;
-            bool inWater = TypeAt(prop.X, prop.Y) == TileType.Water;
-            TreeModels.Rock(batches, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f, VS, prop.X, prop.Y, inWater);
-        }
-    }
-
     // ------------------------------------------------------------------ trees
 
     private void AddTrees(MeshBatches batches)
     {
-        for (int ty = -Margin; ty < Map.Height + Margin; ty++)
+        // From the south, nearest the camera, to the north: each row then hides the one behind it before that
+        // row is shaded, which in a forest saves most of the work
+        for (int ty = Map.Height + Margin - 1; ty >= -Margin; ty--)
         {
             for (int tx = -Margin; tx < Map.Width + Margin; tx++)
             {
@@ -192,13 +204,16 @@ internal sealed class MapScene
 
                 float cx = tx + 0.5f + (Rand(tx, ty, 1) - 0.5f) * 0.12f;
                 float cz = ty + 0.5f + (Rand(tx, ty, 2) - 0.5f) * 0.12f;
+                // Trees are most of a map's geometry, so they are kept in chunks and only those in view are drawn
+                batches.Chunk = MeshBatches.ChunkOf(tx, ty);
                 if (Map.Trees == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty);
                 else TreeModels.Round(batches, cx, cz, tx, ty);
             }
         }
+        batches.Chunk = 0;
     }
 
-    // ------------------------------------------------------------------ tall grass, lawns, ledges, signs
+    // ------------------------------------------------------------------ tall grass, lawns, ledges
 
     /// <summary>
     /// Two rows of clumps per tile, the second half a clump out of step with the first. The tops sway, and lean
@@ -304,283 +319,59 @@ internal sealed class MapScene
         }
     }
 
-    private void AddSigns(MeshBatches batches)
-    {
-        var wood = new Color(170, 118, 72, 255);
-        var white = batches.For(SceneTextures.White);
-        var boards = batches.For(SceneTextures.SignBoard);
-        for (int ty = 0; ty < Map.Height; ty++)
-        {
-            for (int tx = 0; tx < Map.Width; tx++)
-            {
-                if (Map.GetGroundTile(tx, ty) != TileType.Signpost || MapStructures.IsWallSign(Map, tx, ty)) continue;
-                float cx = tx + 0.5f, cz = ty + 0.5f;
-                float boardBottom = 0.26f * VS, boardTop = 0.62f * VS;
-                white.Box(new(cx - 0.06f, 0, cz - 0.06f), new(cx + 0.06f, boardBottom + 0.1f, cz + 0.06f), MeshBuilder.Scale(wood, 0.8f), BoxFaces.Sides);
-                white.Box(new(cx - 0.44f, boardBottom, cz - 0.05f), new(cx + 0.44f, boardTop, cz + 0.05f), wood, BoxFaces.Visible & ~BoxFaces.South);
-                boards.Decal(new(cx - 0.44f, boardBottom, cz + 0.05f), new(cx + 0.44f, boardBottom, cz + 0.05f),
-                    new(cx + 0.44f, boardTop, cz + 0.05f), new(cx - 0.44f, boardTop, cz + 0.05f), Color.White, South);
-            }
-        }
-    }
-
-    // ------------------------------------------------------------------ buildings
-
-    private static Color RoofColor(BuildingInfo b) => b.Kind switch
-    {
-        BuildingKind.PokemonCenter => new Color(238, 104, 58, 255),
-        BuildingKind.PokeMart => new Color(66, 122, 222, 255),
-        BuildingKind.Lab => new Color(48, 178, 198, 255),
-        _ => b.RoofTile switch
-        {
-            TileType.RoofRed => new Color(214, 82, 66, 255),
-            TileType.RoofBlue => new Color(70, 118, 214, 255),
-            _ => new Color(52, 166, 138, 255)
-        }
-    };
-
-    private void AddBuilding(BuildingInfo b, MeshBatches batches)
-    {
-        bool house = b.Kind == BuildingKind.House;
-        float wallH = (house ? 1.55f : 1.45f) * VS;
-        float xL = b.X0 + 0.04f, xR = b.X1 + 1 - 0.04f;
-
-        // The back wall sits a tile inside the footprint so the roof doesn't swallow the whole block
-        float zF = b.Y1 + 1f, zB = b.Y0 + 1f;
-        var roof = RoofColor(b);
-
-        // Walls: log siding for homes, plaster for public buildings (textures repeat per tile and per screen row)
-        batches.For(house ? SceneTextures.WoodSiding : SceneTextures.Plaster).Box(new(xL, 0, zB), new(xR, wallH, zF), Color.White, BoxFaces.Sides, 1f, VS);
-        batches.For(SceneTextures.Stone).Box(new(xL - 0.03f, 0, zB - 0.03f), new(xR + 0.03f, 0.16f * VS, zF + 0.03f), Color.White, BoxFaces.Visible, 1f, VS);
-
-        if (house) AddGableRoof(batches, xL, xR, zF, zB, wallH, roof);
-        else AddHipRoof(batches, b, xL, xR, zF, zB, wallH, roof);
-
-        AddFrontDetails(batches, b, zF, wallH);
-    }
-
-    /// <summary>Front-facing gable like Twinleaf's houses: the ridge runs north-south and the gable faces the camera.</summary>
-    private void AddGableRoof(MeshBatches batches, float xL, float xR, float zF, float zB, float wallH, Color roof)
-    {
-        var shingles = batches.For(SceneTextures.Shingles);
-        var white = batches.For(SceneTextures.White);
-        var wood = batches.For(SceneTextures.WoodSiding);
-
-        float ov = 0.3f, ovF = 0.34f, ovB = 0.2f, t = 0.12f;
-        float xm = (xL + xR) / 2f;
-        float eaveY = wallH - 0.12f;
-        float ridgeY = wallH + 0.85f * VS;
-        float zFront = zF + ovF, zBack = zB - ovB;
-        float slope = MathF.Sqrt((xm - xL + ov) * (xm - xL + ov) + (ridgeY - eaveY) * (ridgeY - eaveY));
-        var leftN = Vector3.Normalize(new Vector3(-(ridgeY - eaveY), xm - xL + ov, 0));
-        var rightN = leftN with { X = -leftN.X };
-
-        // Two slopes with shingle rows parallel to the ridge, and a slab edge showing the roof's thickness
-        shingles.Quad(new(xL - ov, eaveY, zFront), new(xL - ov, eaveY, zBack), new(xm, ridgeY, zBack), new(xm, ridgeY, zFront),
-            new(zFront, slope), new(zBack, slope), new(zBack, 0), new(zFront, 0), roof, leftN);
-        shingles.Quad(new(xR + ov, eaveY, zBack), new(xR + ov, eaveY, zFront), new(xm, ridgeY, zFront), new(xm, ridgeY, zBack),
-            new(zBack, slope), new(zFront, slope), new(zFront, 0), new(zBack, 0), roof, rightN);
-        white.Box(new(xm - 0.1f, ridgeY - 0.04f, zBack), new(xm + 0.1f, ridgeY + 0.06f, zFront), MeshBuilder.Scale(roof, 0.8f), BoxFaces.Visible);
-
-        // Gable triangle above the front wall, in the same siding
-        float gv = (ridgeY - wallH) / VS;
-        wood.Tri(new(xL, wallH, zF), new(xR, wallH, zF), new(xm, ridgeY - 0.1f, zF),
-            new(0, gv), new(xR - xL, gv), new((xR - xL) / 2f, 0), South, South, South, Color.White, Color.White, Color.White);
-        wood.Tri(new(xR, wallH, zB), new(xL, wallH, zB), new(xm, ridgeY - 0.1f, zB),
-            new(0, gv), new(xR - xL, gv), new((xR - xL) / 2f, 0), -South, -South, -South, Color.White, Color.White, Color.White);
-
-        // White bargeboards along the front edges of the roof, dark fascia under the side eaves
-        var trim = new Color(244, 240, 230, 255);
-        white.Quad(new(xL - ov, eaveY - t, zFront), new(xm, ridgeY - t, zFront), new(xm, ridgeY + 0.02f, zFront), new(xL - ov, eaveY + 0.02f, zFront),
-            default, default, default, default, trim, South);
-        white.Quad(new(xm, ridgeY - t, zFront), new(xR + ov, eaveY - t, zFront), new(xR + ov, eaveY + 0.02f, zFront), new(xm, ridgeY + 0.02f, zFront),
-            default, default, default, default, trim, South);
-        var fascia = PixelCanvas.Shadow(roof, 0.35f);
-        white.Quad(new(xL - ov, eaveY - t, zBack), new(xL - ov, eaveY - t, zFront), new(xL - ov, eaveY, zFront), new(xL - ov, eaveY, zBack),
-            default, default, default, default, fascia, -Vector3.UnitX);
-        white.Quad(new(xR + ov, eaveY - t, zFront), new(xR + ov, eaveY - t, zBack), new(xR + ov, eaveY, zBack), new(xR + ov, eaveY, zFront),
-            default, default, default, default, fascia, Vector3.UnitX);
-
-        // Round window in the gable and a stone chimney on the left slope
-        float gw = 0.46f, gy = wallH + 0.3f * VS;
-        batches.For(SceneTextures.GableWindow, MeshPass.Glow).Decal(new(xm - gw / 2, gy - gw * VS / 2, zF + 0.02f), new(xm + gw / 2, gy - gw * VS / 2, zF + 0.02f),
-            new(xm + gw / 2, gy + gw * VS / 2, zF + 0.02f), new(xm - gw / 2, gy + gw * VS / 2, zF + 0.02f), Color.White, South);
-
-        float chX = xL + 0.55f, chZ = zBack + 0.6f;
-        var stone = batches.For(SceneTextures.Stone);
-        stone.Box(new(chX, eaveY, chZ), new(chX + 0.44f, ridgeY + 0.1f * VS, chZ + 0.44f), Color.White, BoxFaces.Sides, 1f, VS);
-        white.Box(new(chX - 0.05f, ridgeY + 0.1f * VS, chZ - 0.05f), new(chX + 0.49f, ridgeY + 0.17f * VS, chZ + 0.49f), new Color(96, 92, 96, 255), BoxFaces.Visible);
-    }
-
-    /// <summary>Hip roof for Pokémon Centers, Marts and the lab: four slopes meeting at a short ridge.</summary>
-    private void AddHipRoof(MeshBatches batches, BuildingInfo b, float xL, float xR, float zF, float zB, float wallH, Color roof)
-    {
-        var shingles = batches.For(SceneTextures.Shingles);
-        var white = batches.For(SceneTextures.White);
-
-        float ov = 0.28f, t = 0.16f;
-        float eaveY = wallH - 0.1f;
-        float ridgeY = wallH + 0.62f * VS;
-        float x0 = xL - ov, x1 = xR + ov, z0 = zB - ov, z1 = zF + ov;
-        float zm = (z0 + z1) / 2f;
-        float inset = Math.Min((x1 - x0) / 2f - 0.05f, (z1 - z0) / 2f);
-        float rx0 = x0 + inset, rx1 = x1 - inset;
-
-        Vector3 N(Vector3 a, Vector3 bb, Vector3 d, Vector3 outward)
-        {
-            var n = MeshBuilder.Normal(a, bb, d);
-            return Vector3.Dot(n, outward) < 0 ? -n : n;
-        }
-
-        var fa = new Vector3(x0, eaveY, z1); var fb = new Vector3(x1, eaveY, z1); var fc = new Vector3(rx1, ridgeY, zm); var fd = new Vector3(rx0, ridgeY, zm);
-        shingles.Quad(fa, fb, fc, fd, new(x0, z1), new(x1, z1), new(rx1, zm), new(rx0, zm), roof, N(fa, fb, fd, new(0, 1, 1)));
-        var ba = new Vector3(x1, eaveY, z0); var bb2 = new Vector3(x0, eaveY, z0); var bc = new Vector3(rx0, ridgeY, zm); var bd = new Vector3(rx1, ridgeY, zm);
-        shingles.Quad(ba, bb2, bc, bd, new(x1, z0), new(x0, z0), new(rx0, zm), new(rx1, zm), roof, N(ba, bb2, bd, new(0, 1, -1)));
-        shingles.Tri(new(x0, eaveY, z0), new(x0, eaveY, z1), new(rx0, ridgeY, zm), new(z0, x0), new(z1, x0), new(zm, rx0), roof, new Vector3(-1, 1, 0));
-        shingles.Tri(new(x1, eaveY, z1), new(x1, eaveY, z0), new(rx1, ridgeY, zm), new(z1, x1), new(z0, x1), new(zm, rx1), roof, new Vector3(1, 1, 0));
-        white.Box(new(rx0, ridgeY - 0.04f, zm - 0.08f), new(rx1, ridgeY + 0.05f, zm + 0.08f), MeshBuilder.Scale(roof, 0.8f), BoxFaces.Visible);
-
-        // Eave fascia all round
-        var fascia = PixelCanvas.Shadow(roof, 0.35f);
-        white.Quad(new(x0, eaveY - t, z1), new(x1, eaveY - t, z1), new(x1, eaveY, z1), new(x0, eaveY, z1), default, default, default, default, fascia, South);
-        white.Quad(new(x0, eaveY - t, z0), new(x0, eaveY - t, z1), new(x0, eaveY, z1), new(x0, eaveY, z0), default, default, default, default, fascia, -Vector3.UnitX);
-        white.Quad(new(x1, eaveY - t, z1), new(x1, eaveY - t, z0), new(x1, eaveY, z0), new(x1, eaveY, z1), default, default, default, default, fascia, Vector3.UnitX);
-
-        // Coloured band under the eaves (red for Centers, blue for Marts) like Platinum's buildings
-        if (b.Kind != BuildingKind.Lab)
-        {
-            var band = PixelCanvas.Shadow(roof, 0.1f);
-            float by0 = wallH - 0.3f * VS;
-            white.Quad(new(xL - 0.01f, by0, zF + 0.01f), new(xR + 0.01f, by0, zF + 0.01f), new(xR + 0.01f, eaveY - t, zF + 0.01f), new(xL - 0.01f, eaveY - t, zF + 0.01f),
-                default, default, default, default, band, South);
-        }
-    }
-
-    /// <summary>A patch of ground lit through a window or door after dark: brightest at the wall, fading to the south.</summary>
-    private static void AddLightPool(MeshBatches batches, float cx, float zWall, float width, float depth)
-    {
-        const float y = 0.03f;
-        batches.For(SceneTextures.LightPool, MeshPass.Light).Quad(
-            new(cx - width / 2, y, zWall + depth), new(cx + width / 2, y, zWall + depth), new(cx + width / 2, y, zWall), new(cx - width / 2, y, zWall),
-            new(0, 1), new(1, 1), new(1, 0), new(0, 0), Color.White, Up);
-    }
-
-    private void AddFrontDetails(MeshBatches batches, BuildingInfo b, float zF, float wallH)
-    {
-        bool house = b.Kind == BuildingKind.House;
-        var white = batches.For(SceneTextures.White);
-        var frame = new Color(248, 246, 240, 255);
-        var stoneStep = new Color(176, 170, 164, 255);
-
-        foreach (var (x, _) in b.Doors)
-        {
-            float cx = x + 0.5f;
-            float w = house ? 0.66f : 0.98f, h = (house ? 1.08f : 1.05f) * VS;
-            var decal = batches.For(house ? SceneTextures.DoorWood : SceneTextures.DoorGlass, MeshPass.Glow);
-            decal.Decal(new(cx - w / 2, 0, zF + 0.012f), new(cx + w / 2, 0, zF + 0.012f), new(cx + w / 2, h, zF + 0.012f), new(cx - w / 2, h, zF + 0.012f), Color.White, South);
-            AddLightPool(batches, cx, zF, w * 3.2f, 2.8f);
-            // Door frame and a stone step in front
-            white.Box(new(cx - w / 2 - 0.07f, 0, zF), new(cx - w / 2, h + 0.06f, zF + 0.06f), frame, BoxFaces.Visible);
-            white.Box(new(cx + w / 2, 0, zF), new(cx + w / 2 + 0.07f, h + 0.06f, zF + 0.06f), frame, BoxFaces.Visible);
-            white.Box(new(cx - w / 2 - 0.07f, h, zF), new(cx + w / 2 + 0.07f, h + 0.08f, zF + 0.08f), frame, BoxFaces.Visible);
-            white.Box(new(cx - w / 2 - 0.12f, 0, zF), new(cx + w / 2 + 0.12f, 0.06f, zF + 0.22f), stoneStep, BoxFaces.Visible);
-        }
-
-        foreach (var x in b.Plaques)
-        {
-            float cx = x + 0.5f, w = 0.6f, h = 0.4f * VS, y0 = 0.62f * VS;
-            batches.For(SceneTextures.Plaque).Decal(new(cx - w / 2, y0, zF + 0.015f), new(cx + w / 2, y0, zF + 0.015f),
-                new(cx + w / 2, y0 + h, zF + 0.015f), new(cx - w / 2, y0 + h, zF + 0.015f), Color.White, South);
-        }
-
-        for (int x = b.X0; x <= b.X1; x++)
-        {
-            bool nearDoor = b.Doors.Exists(d => Math.Abs(d.X - x) <= 1);
-            if (nearDoor || b.Plaques.Contains(x)) continue;
-            float cx = x + 0.5f, w = 0.66f, h = 0.5f * VS, y0 = 0.55f * VS;
-            batches.For(SceneTextures.Window, MeshPass.Glow).Decal(new(cx - w / 2, y0, zF + 0.01f), new(cx + w / 2, y0, zF + 0.01f),
-                new(cx + w / 2, y0 + h, zF + 0.01f), new(cx - w / 2, y0 + h, zF + 0.01f), Color.White, South);
-            AddLightPool(batches, cx, zF, 2.2f, 2.2f);
-            // Frame and sill stand proud of the wall
-            white.Box(new(cx - w / 2 - 0.05f, y0 + h, zF), new(cx + w / 2 + 0.05f, y0 + h + 0.05f * VS, zF + 0.05f), frame, BoxFaces.Visible);
-            white.Box(new(cx - w / 2 - 0.05f, y0 - 0.04f * VS, zF), new(cx - w / 2, y0 + h, zF + 0.05f), frame, BoxFaces.Visible);
-            white.Box(new(cx + w / 2, y0 - 0.04f * VS, zF), new(cx + w / 2 + 0.05f, y0 + h, zF + 0.05f), frame, BoxFaces.Visible);
-            white.Box(new(cx - w / 2 - 0.08f, y0 - 0.06f * VS, zF), new(cx + w / 2 + 0.08f, y0, zF + 0.12f), frame, BoxFaces.Visible);
-            if (house)
-            {
-                // Window box full of flowers under each window
-                float fy0 = y0 - 0.24f * VS, fy1 = y0 - 0.06f * VS;
-                white.Box(new(cx - w / 2, fy0, zF), new(cx + w / 2, fy1, zF + 0.16f), new Color(150, 98, 60, 255), BoxFaces.Top | BoxFaces.West | BoxFaces.East);
-                batches.For(SceneTextures.FlowerBox).Decal(new(cx - w / 2, fy0, zF + 0.161f), new(cx + w / 2, fy0, zF + 0.161f),
-                    new(cx + w / 2, fy1 + 0.1f * VS, zF + 0.161f), new(cx - w / 2, fy1 + 0.1f * VS, zF + 0.161f), Color.White, South);
-            }
-        }
-
-        // Emblems stand on the roof edge above the main door
-        if (b.Doors.Count > 0 && !house)
-        {
-            float cx = b.Doors[0].X + 0.5f;
-            if (b.Kind == BuildingKind.PokemonCenter)
-            {
-                float w = 1.25f, h = w * VS, y0 = wallH - 0.25f * VS;
-                batches.For(SceneTextures.CenterEmblem).Decal(new(cx - w / 2, y0, zF + 0.34f), new(cx + w / 2, y0, zF + 0.34f),
-                    new(cx + w / 2, y0 + h, zF + 0.34f), new(cx - w / 2, y0 + h, zF + 0.34f), Color.White, South);
-            }
-            else if (b.Kind == BuildingKind.PokeMart)
-            {
-                float w = 2.0f, h = 0.8f * VS, y0 = wallH - 0.1f * VS;
-                batches.For(SceneTextures.MartSign, MeshPass.Glow).Decal(new(cx - w / 2, y0, zF + 0.34f), new(cx + w / 2, y0, zF + 0.34f),
-                    new(cx + w / 2, y0 + h, zF + 0.34f), new(cx - w / 2, y0 + h, zF + 0.34f), Color.White, South);
-            }
-        }
-    }
-
     // ------------------------------------------------------------------ interiors
 
     /// <summary>
-    /// A room seen like a doll's house: tall back and side walls with wallpaper and wainscot, a low cut-away
-    /// front wall with a gap for the door, and 3D furniture.
+    /// A room seen like a doll's house: a back wall and two side walls painted for this room, cut away at the
+    /// front with a gap for the door, furniture, and a patch of daylight on the floor under each window.
     /// </summary>
-    private void AddInterior(MeshBatches batches)
+    private void AddInterior(MeshBatches batches, KitBuilder kit)
     {
+        const int T = GroundBaker.ArtTile, wallH = PropModels.WallHeight, cap = 16;
         int w = Map.Width, h = Map.Height;
-        var white = batches.For(SceneTextures.White);
-        var wallTex = GroundBaker.BakeWallStrip(Map.Interior).ToTexture();
-        Raylib.SetTextureWrap(wallTex, TextureWrap.Repeat);
-        var walls = batches.For(wallTex);
+        int left = T, right = (w - 1) * T, back = 2 * T, front = (h - 1) * T;
+        var style = Map.Interior;
+        kit.Origin = Vector3.Zero;
 
-        float wallH = 2.5f * VS;
-        float left = 1f, right = w - 1f, back = 2f, front = h - 1f;
-        var cap = new Color(62, 56, 74, 255);
+        var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style));
+        var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style));
+        kit.Quad(kit.At(left, 0, back), kit.At(right, 0, back), kit.At(right, wallH, back), kit.At(left, wallH, back), backWall, KitBuilder.FrontNormal);
+        kit.Quad(kit.At(left, 0, front), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, front), sideWall, Vector3.UnitX);
+        kit.Quad(kit.At(right, 0, back), kit.At(right, 0, front), kit.At(right, wallH, front), kit.At(right, wallH, back), sideWall, -Vector3.UnitX);
 
-        walls.Quad(new(left, 0, back), new(right, 0, back), new(right, wallH, back), new(left, wallH, back),
-            new(0, 1), new(right - left, 1), new(right - left, 0), new(0, 0), Color.White, South);
-        walls.Quad(new(left, 0, front), new(left, 0, back), new(left, wallH, back), new(left, wallH, front),
-            new(0, 1), new(front - back, 1), new(front - back, 0), new(0, 0), MeshBuilder.Scale(Color.White, 0.92f), Vector3.UnitX);
-        walls.Quad(new(right, 0, back), new(right, 0, front), new(right, wallH, front), new(right, wallH, back),
-            new(0, 1), new(front - back, 1), new(front - back, 0), new(0, 0), MeshBuilder.Scale(Color.White, 0.92f), -Vector3.UnitX);
+        // The dark tops of the cut-away walls frame the room
+        Art Top(int tw, int td) => kit.Face($"wall.top.{tw}x{td}", tw, td, GroundBaker.PaintWallTop);
+        kit.Box(left - cap, right + cap, back - cap, back, wallH - 1, wallH, top: Top(right - left + 2 * cap, cap));
+        kit.Box(left - cap, left, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
+        kit.Box(right, right + cap, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
 
-        // Dark wall tops frame the room
-        white.Box(new(left - 0.5f, wallH, back - 0.5f), new(right + 0.5f, wallH + 0.04f, back), cap, BoxFaces.Top);
-        white.Box(new(left - 0.5f, wallH, back), new(left, wallH + 0.04f, front + 0.5f), cap, BoxFaces.Top);
-        white.Box(new(right, wallH, back), new(right + 0.5f, wallH + 0.04f, front + 0.5f), cap, BoxFaces.Top);
-
-        // Low front wall, cut away so the camera can see in, with a gap for the door
-        float stub = 0.32f;
+        // The front wall is cut down to a low kerb so the camera can see in, with a gap for the door
         for (int tx = 1; tx < w - 1; tx++)
         {
             if (Map.GetGroundTile(tx, h - 1) == TileType.Door) continue;
-            white.Box(new(tx, 0, front), new(tx + 1, stub, front + 0.5f), cap, BoxFaces.Top | BoxFaces.South | BoxFaces.North);
+            int end = tx;
+            while (end + 1 < w - 1 && Map.GetGroundTile(end + 1, h - 1) != TileType.Door) end++;
+            int run = (end - tx + 1) * T;
+            kit.Box(tx * T, tx * T + run, front, front + cap, 0, 8, Top(run, cap), kit.Face($"wall.kerb.{run}", run, 8, GroundBaker.PaintWallTop));
+            tx = end;
         }
 
+        var daylight = batches.For(SceneTextures.WindowLight, MeshPass.Light);
         foreach (var prop in Map.Props)
         {
-            PropModels.Build(prop, Map, VS, tex => batches.For(tex));
+            PropModels.Build(kit, prop, Map);
+            if (prop.Type != PropType.Window) continue;
+
+            // Light from the window falls across the floor, slanting the way the room's shadows do
+            const float y = 0.012f, reach = 2.3f, slant = 0.8f;
+            float x0 = prop.X + 0.2f, x1 = prop.X + prop.Width - 0.2f, z0 = 2.02f;
+            daylight.Quad(new(x0 + slant, y, z0 + reach), new(x1 + slant, y, z0 + reach), new(x1, y, z0), new(x0, y, z0),
+                new(0, 1), new(1, 1), new(1, 0), new(0, 0), Color.White, Up);
         }
         for (int ty = 2; ty < h - 1; ty++)
             for (int tx = 1; tx < w - 1; tx++)
-                if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(tx, ty, VS, tex => batches.For(tex));
+                if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(kit, tx, ty);
 
-        RoomCenter = new Vector3(w / 2f, 0.6f * VS, (back + front) / 2f + 0.2f);
+        RoomCenter = new Vector3(w / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
     }
 }
