@@ -133,10 +133,17 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 
 ### Characters
 
-- Built as 3D rigs (`CharacterModels`) and **baked to sprites** (`CharacterSprites`): 40×58 texels, orthographic, seen from 24° above, studio light from the upper left, then a one-texel outline tinted from the neighbouring colour (`PixelCanvas.OutlinePass`).
-- Frames: 4 facings × idle + 4 walk frames (+4 run frames). Drawn as upright cards lit by the scene (sky × 0.62 + sun × 0.78), casting real shadows, with a soft contact blob under the feet.
-- Proportions: chibi, about 1.2 tiles tall, head about 40 % of the height, big eyes; the player reads at about 130 px tall on screen.
-- G6 improves the source rigs (SDF kit); the sprites improve with them. Hand-drawn sprite overrides may replace any baked frame.
+- **Sculpted with the SDF kit** (G6): each character is one smooth body of signed-distance shapes (`SdfModel`: ellipsoids, round cones, round boxes, tori, cylinders) joined with smooth unions, carved with cuts and coloured with paint, meshed by surface nets into a single skinned mesh (`SdfMesher`, cells of 1/112 unit, 34,000 to 42,000 vertices) and cached on disk (`SdfCache`). The same model is the 3D trainer in battle and the source of the field sprites (`CharacterModels`).
+- **Proportions**: chibi. Children (the player, the rival, youngsters, lasses) are about 1.2 units tall with a head of radius 0.27, nearly half their height; adults have a longer body and a slightly smaller head (radius 0.25), then `CharacterStyle.Height` sizes each type. The player reads at about 130 px tall on screen.
+- **Parts**: mitten hands with a thumb; shoes with a sole in their own colour (white under red or blue shoes); sleeves ending in a cuff, or short sleeves at two thirds of the upper arm; a collar or a scarf; stripes painted across the shirt (light on a coloured shirt, the accent colour on a white one); skirts and coat tails on a bone of their own so they swing; the player's backpack with straps and a buckle. Colour edges are painted crisp (waistline, sleeves, soles), never blended.
+- **Hair is sculpted in locks**: tapering tubes laid along the skull from the crown (from the hairline, for swept hair) to pointed tips, over a snug cap, with small blends so grooves show between them; bangs end just above the eyes; long hair falls over a smooth mass behind and swings; spiky hair stands in tufts. Under a beret or cap the locks start below its edge, so no hair shows through the hat, and they lie close enough at the back that the hat's band doesn't show between them. A hat sits on the hair, never in it: the nurse's cap stands on top of the hair, and a cap's peak comes out of the crown's front edge with the bangs below it. White hair is a shaded grey-white (`190,194,210`), never pure white.
+- **Faces in battle**: a smooth texture (128 px, anti-aliased, cut out round the features) laid over the front of the head: dark rim, an iris lighter toward the bottom, a pupil, two white highlights (upper left, lower right), a heavier upper lid, lash flicks for long lashes, brows only where the bangs leave the brow bare, a small mouth (under the moustache, if any). Blush is painted on the cheeks of the model itself. Expressions: neutral, happy, surprised, sad, angry, each also with the eyes shut for blinking.
+- **Pixel faces on sprites**: a smooth face shrunk to sprite size turns to mush, so each baked frame gets a face stamped where the point between the eyes lands: eyes two texels wide and three tall (lash row, then a white highlight on the upper left beside the iris, then iris), three texels apart; a mouth of one to three texels two rows below; one eye in profile, none from behind. A blink is a two-texel line.
+- **Light on faces**: the normals of the front of the head are bent mostly upward (toward `0, 0.75, 0.66`), so a face lights evenly under any light from above and the edge of the shade never splits it, in profile too.
+- **Light on hair**: the hair's normals are bent most of the way (70 %) toward those of the smooth mass it fills: a sphere round the head, stretched into a capsule down the back for long hair. The shade's edge and the sheen then run cleanly across the head instead of breaking into a blotch on every lock; the locks still show in the silhouette, the outline and the grooves between them.
+- **Animation** (`CharacterAnimation`, 19 bones): idle breathing with the arms lowered from the sculpted A-pose; walk and run cycles in which the hips drop as the legs spread, so a foot stays on the ground, with arms swinging against the legs (the run leans forward with the elbows bent); the ledge hop; emotes (wave, surprised, nod, cheer). Hair, bag and skirt swing a beat behind the body. Raised hands stay beside the big head, never behind it ("\o/", not straight up).
+- **Sprites** (`CharacterSprites`): 40×58 texels, orthographic, seen from 24° above, studio light from the upper left, the pixel face stamped on, then a one-texel outline tinted from the neighbouring colour (`PixelCanvas.OutlinePass`). Frames for each of the four facings: 2 idle breaths, 8 walk, 8 run, 3 hop and 6 per emote; blinking and expressions are frames of their own. Drawn as upright cards lit by the scene (sky × 0.62 + sun × 0.78), casting real shadows, with a soft contact blob under the feet. A trainer who spots the player starts (the surprised emote) under the "!".
+- **Hand-drawn overrides**: a 40×58 PNG at `overrides/sprites/<TYPE>/<facing>_<strip>_<frame>[_blink][_<expression>].png` next to the game (for example `PLAYER/down_walk_3.png`) replaces that baked frame.
 
 ### Light, shadow and grading (day)
 
@@ -162,12 +169,27 @@ The camera target and every sprite snap to the texel grid (1/32 unit), so pixel 
 
 ### Models
 
-- Pokémon and trainers are real 3D models on the platforms (no pixelation), lit and shadowed with the stage.
+- Pokémon and trainers are real 3D models on the platforms (no pixelation), lit and shadowed with the stage. Trainers are the SDF characters of the field, skinned on the GPU, with their smooth faces.
 - Size rule: a Pokémon covers the part of the screen its 128-px sprite frame would, i.e. the frame spans the platform's width ÷ 158 px (opponent) or ÷ 150 px (player).
 - Shading: two-tone cel ramp with a soft terminator (`smoothstep(0, 0.12, N·L)`), hemisphere ambient × 1.08, rim light 0.30.
-- Outlines: inverted hulls about half a sprite pixel thick (`WorldPerPixel × 0.55`), colour = surface mixed 50 % toward `40,30,56`.
+- Outlines: inverted hulls about half a sprite pixel thick (`WorldPerPixel × 0.55`), colour = surface mixed 50 % toward `40,30,56`. A character's hull is an offset shell of its SDF (the surface 0.009 units further out, meshed on its own and skinned with the body, drawn with front faces culled), so creases and hat brims never show spots of ink.
 - Flashes (send-out, hit, recall, the dark silhouette of a wild Pokémon before the camera settles) are colour blends in the shader, not extra sprites.
-- G7 replaces the primitive-built models with the SDF kit; the menu sprites are re-baked from those models.
+- G7 replaces the primitive-built Pokémon with the SDF kit; the menu sprites are re-baked from those models.
+
+### Materials
+
+Character surfaces carry a material (G6; Pokémon from G7), which the character shader lights differently. Highlights are one crisp band where the half vector meets the normal (`smoothstep(0.42, 0.5, …)`), never a smooth gradient.
+
+| Material | Terminator (`smoothstep(0, w, N·L)`) | Highlight band (strength, sharpness) | Own light | Shade |
+|---|---|---|---|---|
+| Default | 0.12 | none | none | as lit (Pokémon until G7) |
+| Skin | 0.22 | none | none | warm: sky light × `1.10, 0.96, 0.94` where unlit |
+| Cloth | 0.16 | none | none | rim × 0.9 |
+| Hair | 0.10 | 0.14, 10 (a soft sheen) | none | |
+| Leather (shoes, bags) | 0.08 | 0.40, 36 | none | |
+| Plastic (soles, brims, buttons) | 0.10 | 0.35, 48 | none | |
+| Metal (buckles, clasps) | 0.06 | 0.60, 64 | none | slightly cool |
+| Glow (the Rift) | 0.12 | none | 0.85 | rim × 0.5 |
 
 ### Stage
 
@@ -353,7 +375,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G5
+## Known gaps after G6
 
 - Ponds and lakes are still rectangles in the map data, however round their corners are drawn; their shapes come with the maps of plan 01. Cliffs taller than a ledge need height in the maps too.
 - Sand, dirt, snow and cave floors are drawn but no map uses them yet; snow and caves need their own light rigs when their areas are built.
@@ -362,6 +384,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
-- Materials (specular, emission per surface kind) wait for models that carry material ids: the SDF kit in G6 and G7.
+- Pokémon are still the primitive-built version 1 models with the default material; G7 rebuilds them with the SDF kit, materials and skeletons.
+- Characters have mitten hands and no fingers; trainers don't yet throw their Poké Ball in battle (G8). Of the emotes only the trainer's start is played in the game so far; scripts (plan 02) will call the others. The trainer card still shows the old 16×24 portrait (G10).
 - The title keeps Giratina in shadow partly because the version 1 model does not hold up fully lit; revisit the lighting with the version 2 models (G7). The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5). The new-game introduction (Professor Rowan) is still to come (G10, plan 02).

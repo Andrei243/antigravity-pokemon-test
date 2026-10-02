@@ -22,6 +22,11 @@ public sealed class RenderContext
     internal Material Outline { get; private set; }
     internal Material Depth { get; private set; }
 
+    /// <summary>Skinned characters (<see cref="SkinnedModel"/>): lit, outline and shadow-map depth.</summary>
+    internal Material ToonSkinned { get; private set; }
+    internal Material OutlineSkinned { get; private set; }
+    internal Material DepthSkinned { get; private set; }
+
     /// <summary>What the current graphics preset turns on.</summary>
     public QualityProfile Quality { get; private set; } = QualityProfile.For(GraphicsQuality.High);
 
@@ -69,6 +74,9 @@ public sealed class RenderContext
             Toon = MaterialFor(Shaders.Character, SceneTextures.White);
             Outline = MaterialFor(Shaders.Outline, SceneTextures.White);
             Depth = MaterialFor(Shaders.Depth, SceneTextures.White);
+            ToonSkinned = MaterialFor(Shaders.CharacterSkinned, SceneTextures.White);
+            OutlineSkinned = MaterialFor(Shaders.OutlineSkinned, SceneTextures.White);
+            DepthSkinned = MaterialFor(Shaders.DepthSkinned, SceneTextures.White);
             Loaded = true;
         }
         if (targetsLoaded) return;

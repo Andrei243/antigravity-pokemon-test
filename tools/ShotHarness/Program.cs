@@ -148,6 +148,26 @@ Map BuildLineup()
     return m;
 }
 
+// The same characters inside the field's focus band, around the player at (10, 7)
+Map BuildFocusLineup()
+{
+    var m = new Map(22, 14) { Name = "LineupFocus", DisplayName = "Lineup" };
+    for (int x = 0; x < 22; x++) { m.SetGroundTile(x, 0, TileType.Tree, true); m.SetGroundTile(x, 13, TileType.Tree, true); }
+    for (int y = 0; y < 14; y++) { m.SetGroundTile(0, y, TileType.Tree, true); m.SetGroundTile(21, y, TileType.Tree, true); }
+    for (int x = 1; x < 21; x++) m.SetGroundTile(x, 9, TileType.Path);
+    string[] front = { "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman", "StarterBriefcase", "Rift" };
+    for (int i = 0, x = 3; i < front.Length; i++, x++)
+    {
+        if (x == 10) x++;   // the player's place
+        m.NPCs.Add(new NPC { Name = front[i] + "_f", NpcType = front[i], GridX = x, GridY = 7, Facing = Direction.Down });
+    }
+    string[] turned = { "Player", "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman" };
+    Direction[] dirs = { Direction.Left, Direction.Up, Direction.Right };
+    for (int i = 0; i < turned.Length; i++)
+        m.NPCs.Add(new NPC { Name = turned[i] + "_t", NpcType = turned[i], GridX = 4 + i, GridY = 9, Facing = dirs[i % 3] });
+    return m;
+}
+
 var party = (Party)Get("playerParty");
 party.Add(new Pokemon(PokemonDatabase.Get("Chimchar")!, 7));
 party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
@@ -267,6 +287,83 @@ if (Run("lineup"))
         ShotCrop("35_player_" + d, 870, 420, 180, 200, 4);
     }
     ((Player)Get("player")).SetPosition(9, 9, Direction.Down);
+    SetPlayerAnim(0f, 0f);
+
+    // Every character in focus: a row facing the camera with the player in the middle, and a row turned away
+    Set("currentMap", BuildFocusLineup());
+    ((Player)Get("player")).SetPosition(10, 7, Direction.Down);
+    Frames(2);
+    Shot("36_lineup_focus");
+    ShotCrop("36b_lineup_focus_front", 300, 440, 1320, 175, 2);
+    ShotCrop("36c_lineup_focus_turned", 300, 615, 1320, 185, 2);
+
+    // Look-dev: the 3D models as battles show them (front, three-quarter, side, back), and the field's sprites
+    var asm = typeof(GameEngine).Assembly;
+    var context = Get("renderContext");
+    var poseType = asm.GetType("PokemonPlatinumEngine.Graphics.CharacterPose")!;
+    var exprType = asm.GetType("PokemonPlatinumEngine.Graphics.Expression")!;
+    var animType = asm.GetType("PokemonPlatinumEngine.Graphics.SpriteAnim")!;
+    var turntable = asm.GetType("PokemonPlatinumEngine.Graphics.CharacterStudio")!.GetMethod("Turntable", BindingFlags.Static | BindingFlags.Public)!;
+    var sheet = asm.GetType("PokemonPlatinumEngine.Graphics.CharacterSprites")!.GetMethod("Sheet", BindingFlags.Static | BindingFlags.NonPublic)!;
+    object Pose(string expression = "Neutral", bool blink = false)
+    {
+        object pose = Activator.CreateInstance(poseType)!;
+        poseType.GetField("Time")!.SetValue(pose, 0.4f);
+        poseType.GetField("Blink")!.SetValue(pose, blink);
+        poseType.GetField("Expression")!.SetValue(pose, Enum.Parse(exprType, expression));
+        return pose;
+    }
+    string[] everyone = { "Player", "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman", "StarterBriefcase", "Rift" };
+    foreach (var type in everyone)
+    {
+        if (!Wanted("37_turntable_" + type.ToLowerInvariant())) continue;
+        var img = (Image)turntable.Invoke(null, new object[] { context, type, new[] { 0f, 0.65f, MathF.PI / 2f, MathF.PI }, 300, 420, Pose(), 1.7f, 0.7f })!;
+        Save(img, "37_turntable_" + type.ToLowerInvariant());
+    }
+
+    // Sprite sheets: each facing a row (down, right, up, left), each frame of the strip a column, at 4x
+    Image Strip(string type, string anim, int frames, bool blink = false, string expression = "Neutral")
+    {
+        var rows = Raylib.GenImageColor(40 * frames * 4, 58 * 4 * 4, new Color(206, 218, 232, 255));
+        for (int facing = 0; facing < 4; facing++)
+        {
+            var row = (Image)sheet.Invoke(null, new object[] { context, type, facing, Enum.Parse(animType, anim), frames, 4, blink, Enum.Parse(exprType, expression) })!;
+            Raylib.ImageDraw(ref rows, row, new Rectangle(0, 0, row.Width, row.Height), new Rectangle(0, facing * 58 * 4, row.Width, row.Height), Color.White);
+            Raylib.UnloadImage(row);
+        }
+        return rows;
+    }
+    foreach (var (type, anim, frames) in new[]
+    {
+        ("Player", "Walk", 8), ("Player", "Run", 8), ("Player", "Idle", 2), ("Player", "Hop", 3), ("Player", "Wave", 6), ("Player", "Surprised", 6),
+        ("Player", "Cheer", 6), ("Player", "Nod", 6), ("Rival", "Walk", 8), ("Lass", "Walk", 8), ("Rowan", "Walk", 8), ("Nurse", "Idle", 2)
+    })
+    {
+        string name = $"38_sheet_{type.ToLowerInvariant()}_{anim.ToLowerInvariant()}";
+        if (Wanted(name)) Save(Strip(type, anim, frames), name);
+    }
+
+    // Faces: every expression in 3D (front view) and as pixel faces on the standing sprite, eyes open and shut
+    foreach (var type in new[] { "Player", "Lass", "Rowan" })
+    {
+        string name = "39_faces_" + type.ToLowerInvariant();
+        if (!Wanted(name)) continue;
+        var faces = Raylib.GenImageColor(6 * 240, 340 + 58 * 4, new Color(206, 218, 232, 255));
+        int col = 0;
+        foreach (var (expression, blink) in new[] { ("Neutral", false), ("Neutral", true), ("Happy", false), ("Surprised", false), ("Sad", false), ("Angry", false) })
+        {
+            // A close-up of the head (the adults' heads sit a little higher)
+            float headY = type == "Player" || type == "Lass" ? 0.86f : 0.97f;
+            var view = (Image)turntable.Invoke(null, new object[] { context, type, new[] { 0f }, 240, 340, Pose(expression, blink), 0.75f, headY })!;
+            Raylib.ImageDraw(ref faces, view, new Rectangle(0, 0, 240, 340), new Rectangle(col * 240, 0, 240, 340), Color.White);
+            Raylib.UnloadImage(view);
+            var sprite = (Image)sheet.Invoke(null, new object[] { context, type, 0, Enum.Parse(animType, "Idle"), 1, 4, blink, Enum.Parse(exprType, expression) })!;
+            Raylib.ImageDraw(ref faces, sprite, new Rectangle(0, 0, sprite.Width, sprite.Height), new Rectangle(col * 240 + 40, 340, sprite.Width, sprite.Height), Color.White);
+            Raylib.UnloadImage(sprite);
+            col++;
+        }
+        Save(faces, name);
+    }
 }
 
 // ---------------------------------------------------------------- battles
