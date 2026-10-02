@@ -75,6 +75,13 @@ public partial class BattleEngine : IBattleContext
     private readonly List<Pokemon>? pcBoxStorage;
     private Action? currentMessageCallback = null;
 
+    /// <summary>
+    /// The player's Pokémon that gained a level in this battle. They are the ones that may evolve once it is over,
+    /// as in the games: nothing changes species while the battle is on.
+    /// </summary>
+    public IReadOnlyList<Pokemon> LeveledUp => leveledUpPokemon;
+    private readonly List<Pokemon> leveledUpPokemon = new();
+
     public BattleResult Result { get; private set; } = BattleResult.None;
     public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && turnEventQueue.Count == 0;
 

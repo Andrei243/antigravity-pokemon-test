@@ -81,7 +81,9 @@ internal static class PokemonSprites
     }
 
     /// <summary>Renders one frame of a Pokémon into <paramref name="target"/>. Call outside any other texture mode.</summary>
-    public static void Render(RenderContext context, PokeModel model, SpriteView view, PokePose pose, RenderTexture2D target, bool hullOutline = true)
+    /// <param name="flash">Blends the body toward a flat colour by this much (the white of an evolving Pokémon).</param>
+    public static void Render(RenderContext context, PokeModel model, SpriteView view, PokePose pose, RenderTexture2D target, bool hullOutline = true,
+        (Color Color, float Amount)? flash = null)
     {
         context.EnsureLoaded();
         int size = target.Texture.Width;
@@ -96,10 +98,12 @@ internal static class PokemonSprites
         shaders.SetLighting(Matrix4x4.Identity, Light, framing.Camera.Position, 1f);
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 0.32f);
         shaders.SetStudio();
+        if (flash is { } f) shaders.SetFlash(f.Color, f.Amount);
 
         var turn = Matrix4x4.CreateRotationY(framing.Yaw);
         Rlgl.DisableBackfaceCulling();
         PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Color);
+        if (flash != null) shaders.SetFlash(default, 0f);
         if (hullOutline) PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Outline);
         Rlgl.EnableBackfaceCulling();
 

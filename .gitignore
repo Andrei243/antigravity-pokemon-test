@@ -16,3 +16,6 @@ settings.json
 
 # Hand-made art that replaces generated art (plan 04: overrides/sprites, overrides/models)
 overrides/
+
+# The data importer's hand corrections are part of the repository
+!tools/DataImporter/Overrides/

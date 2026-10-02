@@ -29,11 +29,14 @@ public class EvolutionData
     public PokemonType? Type { get; set; }
     /// <summary>The species that must be in the party, or traded for.</summary>
     public string? Species { get; set; }
-    /// <summary>Where it must level up (<c>Mt. Coronet</c>, <c>Moss Rock</c>).</summary>
+    /// <summary>The place a map must have for it to level up there (<c>Magnetic Field</c>, <c>Moss Rock</c>, <c>Ice Rock</c>).</summary>
     public string? Location { get; set; }
-    /// <summary>Beauty or affection needed.</summary>
+    /// <summary>Beauty or affection needed, or how many: steps, uses of a move, foes knocked out, items in the bag.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Value { get; set; }
+    /// <summary>High friendship is needed on top of the method's own condition (Eevee into Sylveon).</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool NeedsFriendship { get; set; }
     /// <summary>Plain words for <see cref="EvolutionMethod.Other"/> and anything else the fields can't hold.</summary>
     public string? Note { get; set; }
 }
@@ -91,7 +94,7 @@ public class PokemonSpecies
     /// <summary>Its hidden ability from Generation 5 on; Platinum has none, so new Pokémon never get it yet.</summary>
     public string? HiddenAbility { get; set; }
 
-    /// <summary>The evolution the engine runs on level-up: a plain level with no other condition.</summary>
+    /// <summary>Its evolution at a plain level with no other condition, if it has one.</summary>
     [JsonIgnore]
     public EvolutionData? LevelEvolution => Evolutions?.FirstOrDefault(e => e.Method == EvolutionMethod.Level && e.Level > 0);
 
@@ -114,6 +117,22 @@ public class Pokemon
 
     /// <summary>The item it holds (null = nothing).</summary>
     public ItemData? HeldItem { get; set; }
+
+    /// <summary>How much it likes its trainer, 0 to 255 (see <see cref="FriendshipRules"/>); starts at the species' base value.</summary>
+    public int Friendship { get; set; }
+
+    /// <summary>Contest condition, 0 to 255, raised by Poffins; Feebas evolves on it.</summary>
+    public int Beauty { get; set; }
+
+    /// <summary>A random number fixed for life, as in the games; Wurmple's evolution is read from it.</summary>
+    public uint Personality { get; set; }
+
+    /// <summary>The ball it was caught in (null for one that wasn't caught). A Luxury Ball makes friendship grow faster.</summary>
+    public string? Ball { get; set; }
+
+    /// <summary>What it has done toward an evolution that counts something: steps walked, uses of a move, foes knocked out
+    /// (the keys are <see cref="Evolution"/>'s).</summary>
+    public Dictionary<string, int> EvolutionProgress { get; } = new();
 
     // Stats
     public int CurrentHP { get; set; }
@@ -185,6 +204,8 @@ public class Pokemon
         IvSpAttack = rng.Next(32);
         IvSpDefense = rng.Next(32);
         IvSpeed = rng.Next(32);
+        Personality = RollPersonality(rng);
+        Friendship = species.BaseFriendship;
 
         CurrentExp = GetExpForLevel(Level, Species.GrowthRate);
         RecalculateStats();
@@ -204,6 +225,8 @@ public class Pokemon
         Nature = nature;
         IsShiny = isShiny;
         AbilityName = AbilityDatabase.ForSpecies(species).FirstOrDefault();
+        Personality = RollPersonality(Random.Shared);
+        Friendship = species.BaseFriendship;
 
         CurrentExp = GetExpForLevel(Level, Species.GrowthRate);
         RecalculateStats();
@@ -220,11 +243,30 @@ public class Pokemon
         return rng.Next(8) < species.GenderRatio ? Gender.Female : Gender.Male;
     }
 
+    private static uint RollPersonality(Random rng) => ((uint)rng.Next(1 << 16) << 16) | (uint)rng.Next(1 << 16);
+
+    public bool Knows(string moveName) => Moves.Any(m => m.Name.Equals(moveName, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>Learns a move if one of its four places is free; false when it is full or knows the move already.</summary>
+    public bool TryLearn(string moveName)
+    {
+        if (Moves.Count >= 4 || Knows(moveName)) return false;
+        Moves.Add(MoveDatabase.Create(moveName));
+        return true;
+    }
+
+    /// <summary>Forgets the move in a place and learns another there.</summary>
+    public void ReplaceMove(int index, string moveName)
+    {
+        if (index >= 0 && index < Moves.Count) Moves[index] = MoveDatabase.Create(moveName);
+    }
+
     public void CalculateStats() => RecalculateStats();
 
     public void RecalculateStats()
     {
-        MaxHP = CalculateHP(Species.BaseHP, IvHP, EvHP, Level);
+        // Shedinja's one hit point is a rule of its own, not the formula's
+        MaxHP = Species.BaseHP == 1 ? 1 : CalculateHP(Species.BaseHP, IvHP, EvHP, Level);
         Attack = CalculateOtherStat(Species.BaseAttack, IvAttack, EvAttack, Level, GetNatureMultiplier(Nature, StatType.Attack));
         Defense = CalculateOtherStat(Species.BaseDefense, IvDefense, EvDefense, Level, GetNatureMultiplier(Nature, StatType.Defense));
         SpAttack = CalculateOtherStat(Species.BaseSpAttack, IvSpAttack, EvSpAttack, Level, GetNatureMultiplier(Nature, StatType.SpAttack));
@@ -392,11 +434,13 @@ public class Pokemon
         return (int)Math.Max(1, Math.Floor(baseVal * stageMult));
     }
 
-    public bool GainExp(int expGained, out List<string> newMovesLearned, out bool evolved, out string oldName)
+    /// <summary>
+    /// Adds EXP and levels up as far as it reaches; true if the level rose. Evolution is not part of it: the games
+    /// evolve once the battle (or the item's use) is over, so ask <see cref="Evolution.Find"/> then.
+    /// </summary>
+    public bool GainExp(int expGained, out List<string> newMovesLearned)
     {
         newMovesLearned = new List<string>();
-        evolved = false;
-        oldName = Species.Name;
         if (Level >= 100) return false;
 
         CurrentExp += expGained;
@@ -406,6 +450,7 @@ public class Pokemon
         {
             Level++;
             leveledUp = true;
+            FriendshipRules.Apply(this, FriendshipEvent.LevelUp);
             int oldMaxHP = MaxHP;
             RecalculateStats();
             CurrentHP += (MaxHP - oldMaxHP); // Keep HP difference
@@ -424,29 +469,28 @@ public class Pokemon
                     newMovesLearned.Add(m.MoveName);
                 }
             }
-
-            // Check for evolution
-            if (Species.LevelEvolution is { } evolution && Level >= evolution.Level)
-            {
-                var nextSpecies = PokemonDatabase.Get(evolution.TargetSpecies);
-                if (nextSpecies != null)
-                {
-                    oldName = Species.Name;
-                    int abilitySlot = Math.Max(0, AbilityDatabase.ForSpecies(Species).ToList().IndexOf(AbilityName ?? ""));
-                    Species = nextSpecies;
-                    var abilities = AbilityDatabase.ForSpecies(Species);
-                    if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
-                    if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName)
-                    {
-                        Nickname = Species.Name;
-                    }
-                    RecalculateStats();
-                    evolved = true;
-                }
-            }
         }
 
         return leveledUp;
+    }
+
+    /// <summary>
+    /// Becomes another species: the ability keeps its slot, a Pokémon without a nickname takes the new name, and
+    /// the hit points it gains are added to the ones it has (a fainted one stays down).
+    /// </summary>
+    public void EvolveInto(PokemonSpecies next)
+    {
+        string oldName = Species.Name;
+        int abilitySlot = Math.Max(0, AbilityDatabase.ForSpecies(Species).ToList().IndexOf(AbilityName ?? ""));
+        int oldMaxHP = MaxHP;
+
+        Species = next;
+        var abilities = AbilityDatabase.ForSpecies(Species);
+        if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
+        if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName) Nickname = Species.Name;
+
+        RecalculateStats();
+        if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMaxHP, 1, MaxHP);
     }
 
     public void HealFull()

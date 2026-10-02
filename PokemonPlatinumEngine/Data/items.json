@@ -6336,6 +6336,17 @@
     "description": ""
   },
   {
+    "id": 2136,
+    "name": "Meltan Candy",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 20,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": ""
+  },
+  {
     "id": 2161,
     "name": "Rusted Sword",
     "pocket": "Items",
@@ -7002,6 +7013,17 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": ""
+  },
+  {
+    "id": 2938,
+    "name": "Gimmighoul Coin",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 800,
     "canUseInBattle": false,
     "canUseInOverworld": false,
     "description": ""

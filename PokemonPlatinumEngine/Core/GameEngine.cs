@@ -28,6 +28,7 @@ public enum GameState
     PCStorage,
     Options,
     Title,
+    Evolution,
     Transition
 }
 
@@ -68,8 +69,18 @@ public class GameEngine
     private readonly ShopScreen shopScreen = new();
     private readonly PCScreen pcScreen = new();
     private readonly OptionsScreen optionsScreen = new();
+    private readonly EvolutionScreen evolutionScreen = new();
     private readonly LocationSign locationSign = new();
     private readonly Toast toast = new();
+
+    // Evolutions waiting to be played one after the other, and the screen the game goes back to after the last
+    private readonly Queue<EvolutionRequest> pendingEvolutions = new();
+    private GameState evolutionReturnState = GameState.Overworld;
+
+    // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
+    private int friendshipSteps;
+    private readonly SpinTracker spin = new();
+    private readonly Random fieldRandom = new();
 
     // The opening and title menu, the save it offers to continue, and where the options screen returns to
     private TitleScreen titleScreen = new(null);
@@ -157,6 +168,8 @@ public class GameEngine
         pcBoxStorage.Clear();
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         story.Clear();
+        pendingEvolutions.Clear();
+        friendshipSteps = 0;
         playerMoney = 3000;
         badgesMask = 0;
         playTime = 0f;
@@ -384,8 +397,13 @@ public class GameEngine
                 if (!partyScreen.IsActive) currentState = GameState.Overworld;
                 break;
             case GameState.BagMenu:
-                bagScreen.Update(playerInventory, playerParty, ShowNotification);
-                if (!bagScreen.IsActive) currentState = GameState.Overworld;
+                bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
+                if (bagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
+                else if (!bagScreen.IsActive) currentState = GameState.Overworld;
+                break;
+            case GameState.Evolution:
+                evolutionScreen.Update(dt);
+                if (!evolutionScreen.IsActive) FinishEvolution();
                 break;
             case GameState.PokedexMenu:
                 pokedexScreen.Update();
@@ -464,14 +482,132 @@ public class GameEngine
         }
 
         // Overworld Player Movement
-        player.Update(dt, currentMap, StartWildBattle, HandleWarp, CheckTrainerSight);
-        if (trainerApproach != null) return;
+        player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+        if (trainerApproach != null || currentState != GameState.Overworld) return;
+
+        // Turning a full circle is how one Pokémon evolves
+        if (spin.Update(player.Facing, dt) && PlayEvolutions(FindEvolutions(playerParty.Members, EvolutionTrigger.Spin, cancellable: false), GameState.Overworld))
+            return;
 
         // Interaction (Z / Space)
         if (!player.IsMoving && InputManager.IsActionPressed(GameAction.Confirm))
         {
             TryInteract();
         }
+    }
+
+    /// <summary>
+    /// After each step: the party walks along (Platinum raises friendship every 128 steps, and the Pokémon at
+    /// the head of the party counts its steps for the evolutions that ask for a long walk), then trainers look.
+    /// </summary>
+    private bool OnStep()
+    {
+        if (++friendshipSteps >= FriendshipRules.WalkCycleSteps)
+        {
+            friendshipSteps = 0;
+            foreach (var p in playerParty.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
+        }
+        if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
+        return CheckTrainerSight();
+    }
+
+    // ---------------------------------------------------------------- evolution
+
+    /// <summary>
+    /// What the evolution rules need to know about this moment: the team, the bag, the hour and the place.
+    /// There is no weather in the field yet, so it never rains.
+    /// </summary>
+    private EvolutionContext EvolutionContextNow() => new()
+    {
+        Party = playerParty,
+        Bag = playerInventory,
+        IsNight = GameClock.IsNight,
+        Sites = currentMap.EvolutionSites
+    };
+
+    /// <summary>The evolutions a trigger sets off among these Pokémon right now.</summary>
+    private List<EvolutionRequest> FindEvolutions(IEnumerable<Pokemon> candidates, EvolutionTrigger trigger, bool cancellable, PokemonSpecies? tradedFor = null)
+    {
+        var context = EvolutionContextNow();
+        context.TradedFor = tradedFor;
+        var found = new List<EvolutionRequest>();
+        foreach (var p in candidates)
+        {
+            if (playerParty.Members.Contains(p) && Evolution.Find(p, trigger, context) is { } evolution)
+                found.Add(new EvolutionRequest(p, evolution, cancellable));
+        }
+        return found;
+    }
+
+    /// <summary>
+    /// Fades into the evolution scene and plays these one after the other, then fades to <paramref name="returnTo"/>.
+    /// False (and nothing happens) when there are none.
+    /// </summary>
+    private bool PlayEvolutions(IReadOnlyCollection<EvolutionRequest> requests, GameState returnTo)
+    {
+        if (requests.Count == 0) return false;
+        foreach (var request in requests) pendingEvolutions.Enqueue(request);
+        evolutionReturnState = returnTo;
+        StartTransition(GameState.Evolution, () => BeginNextEvolution());
+        return true;
+    }
+
+    private bool BeginNextEvolution()
+    {
+        while (pendingEvolutions.Count > 0)
+        {
+            var request = pendingEvolutions.Dequeue();
+            var context = EvolutionContextNow();
+            var evolution = request.Evolution;
+
+            // An earlier evolution in the queue may have changed things (the party, the bag): look again
+            if (request.Cancellable)
+            {
+                if (Evolution.Find(request.Pokemon, EvolutionTrigger.LevelUp, context) is not { } still) continue;
+                evolution = still;
+            }
+            evolutionScreen.Begin(request.Pokemon, evolution, context, request.Cancellable);
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>The scene has ended: the new species goes into the Pokédex, then the next evolution or the way back.</summary>
+    private void FinishEvolution()
+    {
+        if (evolutionScreen.Outcome is { } outcome)
+        {
+            playerPokedex.RegisterCaught(outcome.Into.DexNumber);
+            if (outcome.Shed != null) playerPokedex.RegisterCaught(outcome.Shed.Species.DexNumber);
+        }
+        if (BeginNextEvolution()) return;
+
+        if (evolutionReturnState == GameState.Overworld) StartTransition(GameState.Overworld, () => PlayAreaMusic(currentMap));
+        else StartTransition(evolutionReturnState);
+    }
+
+    /// <summary>
+    /// A Pokémon arrives by trade: the one call a trade needs to make here, whether it is with a friend over the
+    /// internet (plan 07) or with a character in the game. It takes the place of the Pokémon given for it
+    /// (<paramref name="given"/>; null when nothing left the team), starts over at its species' base friendship,
+    /// goes into the Pokédex, and evolves there and then if trading is what it was waiting for, which can't be
+    /// stopped. Saving and what the other side receives are the caller's.
+    /// </summary>
+    public void ReceiveTradedPokemon(Pokemon received, Pokemon? given = null)
+    {
+        int place = given != null ? playerParty.Members.IndexOf(given) : -1;
+        if (place >= 0) playerParty.Members[place] = received;
+        else
+        {
+            if (given != null) pcBoxStorage.Remove(given);
+            if (!playerParty.Add(received)) pcBoxStorage.Add(received);
+        }
+
+        received.Friendship = received.Species.BaseFriendship;
+        playerPokedex.RegisterCaught(received.Species.DexNumber);
+
+        var returnTo = currentState == GameState.Transition ? stateAfterTransition : currentState;
+        PlayEvolutions(FindEvolutions(new[] { received }, EvolutionTrigger.Trade, cancellable: false, given?.Species), returnTo);
     }
 
     /// <summary>After each step: a trainer looking this way notices the player and comes over to battle.</summary>
@@ -729,6 +865,12 @@ public class GameEngine
     private void EndBattle()
     {
         bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
+
+        // Pokémon that gained a level evolve now that the battle is over, before the field comes back
+        if (!isDefeat && battle != null &&
+            PlayEvolutions(FindEvolutions(battle.LeveledUp, EvolutionTrigger.LevelUp, cancellable: true), GameState.Overworld))
+            return;
+
         StartTransition(GameState.Overworld, () =>
         {
             if (isDefeat)
@@ -808,6 +950,10 @@ public class GameEngine
         {
             titleScreen.Render(renderContext, world, titleScene);
         }
+        else if (scene == GameState.Evolution)
+        {
+            evolutionScreen.Render(renderContext);
+        }
 
         // Render scene to native 1920x1080 Full HD buffer
         Raylib.BeginTextureMode(virtualScreen);
@@ -833,7 +979,10 @@ public class GameEngine
                 partyScreen.Draw(VirtualWidth, VirtualHeight, playerParty);
                 break;
             case GameState.BagMenu:
-                bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory);
+                bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
+                break;
+            case GameState.Evolution:
+                evolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PokedexMenu:
                 pokedexScreen.Draw(VirtualWidth, VirtualHeight, playerPokedex);
@@ -864,6 +1013,8 @@ public class GameEngine
             case GameState.Transition:
                 if (showBattle) DrawBattle();
                 else if (showWorld) world.DrawToScreen(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.BagMenu) bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
                 break;
         }
 

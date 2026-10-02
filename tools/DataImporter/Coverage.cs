@@ -75,11 +75,36 @@ public static class Coverage
         Line("## Evolutions");
         Line();
         var evolutions = species.SelectMany(s => s.Evolutions ?? new()).ToList();
-        Line($"{evolutions.Count} evolutions. The engine runs the {evolutions.Count(e => e.Method == EvolutionMethod.Level)} that happen at a level " +
-             "with no other condition; the rest are data for plan 06 · R10:");
+        Line($"{evolutions.Count} evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); " +
+             "some can't be met in the game until something else is built:");
         Line();
-        foreach (var group in evolutions.Where(e => e.Method != EvolutionMethod.Level).GroupBy(e => e.Method).OrderByDescending(g => g.Count()))
-            Line($"- {group.Key}: {group.Count()}");
+        Line("| Method | Evolutions | Set off by | Waits for |");
+        Line("| --- | --- | --- | --- |");
+        foreach (var group in evolutions.GroupBy(e => e.Method).OrderByDescending(g => g.Count()).ThenBy(g => g.Key.ToString()))
+        {
+            string trigger = Evolution.TriggerOf(group.Key) switch
+            {
+                EvolutionTrigger.LevelUp => "a level-up",
+                EvolutionTrigger.UseItem => "an item used on it",
+                EvolutionTrigger.Trade => "a trade",
+                EvolutionTrigger.Spin => "the player spinning",
+                _ => group.Key == EvolutionMethod.LevelShedinja ? "Nincada evolving" : "nothing yet"
+            };
+            Line($"| {group.Key} | {group.Count()} | {trigger} | {WaitsFor(group.Key)} |");
+        }
         return sb.ToString();
     }
+
+    /// <summary>What has to exist before an evolution method can be met in play (empty: it already can).</summary>
+    private static string WaitsFor(EvolutionMethod method) => method switch
+    {
+        EvolutionMethod.Trade or EvolutionMethod.TradeHoldingItem or EvolutionMethod.TradeWithSpecies
+            => "trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today",
+        EvolutionMethod.Beauty => "Poffins (plan 06 · R14)",
+        EvolutionMethod.LevelAtLocation => "maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01)",
+        EvolutionMethod.LevelInRain => "weather in the field (plan 01)",
+        EvolutionMethod.LevelWithItemsInBag => "a way to collect the items (plan 03 · D12)",
+        EvolutionMethod.Other => "a rule of its own",
+        _ => ""
+    };
 }

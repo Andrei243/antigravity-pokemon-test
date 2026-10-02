@@ -1,0 +1,11 @@
+// Hand corrections to species.json: a name maps to the fields to change.
+{
+  // Solgaleo in Sun and Sword, Lunala in Moon and Shield. This game has no versions, so the hour decides:
+  // the sun's by day, the moon's at night (docs/mechanics/rulings.md)
+  "Cosmoem": {
+    "evolutions": [
+      { "method": "LevelDay", "targetSpecies": "Solgaleo", "level": 53 },
+      { "method": "LevelNight", "targetSpecies": "Lunala", "level": 53 }
+    ]
+  }
+}

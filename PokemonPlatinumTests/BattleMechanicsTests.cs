@@ -405,8 +405,8 @@ public class BattleMechanicsTests
     public void TestAbilitiesFollowTheSpeciesWhenItEvolves()
     {
         var shinx = Mon("Shinx", 14, "Intimidate");
-        shinx.GainExp(shinx.ExpForNextLevel - shinx.CurrentExp, out _, out bool evolved, out _);
-        Assert.True(evolved);
+        shinx.GainExp(shinx.ExpForNextLevel - shinx.CurrentExp, out _);
+        Evolution.Evolve(shinx, Evolution.Find(shinx, EvolutionTrigger.LevelUp, new EvolutionContext())!, new EvolutionContext());
         Assert.Equal("Luxio", shinx.Species.Name);
         Assert.Equal("Intimidate", shinx.AbilityName);
     }

@@ -82,6 +82,6 @@ Rain, wind, snow, waterfalls, the sea, cave drips; positional sounds (panned by 
 - [ ] A2 Music director and sound map — area, battle, victory and fanfare rules done; still to do: trainer eye music, bike and surf, the low-HP alarm, a sound map file
 - [ ] A3 Sound effects
 - [ ] A4 Cries
-- [ ] A5 Core music — 19 tracks done (see above); still to do: new-game introduction, Poké Mart, rival theme and battle, trainer eye themes, bike, surf, evolution, the badge, TM and key-item fanfares
+- [ ] A5 Core music — 19 tracks done (see above); still to do: new-game introduction, Poké Mart, rival theme and battle, trainer eye themes, bike, surf, evolution, the badge, TM and key-item fanfares. The evolution scene exists since 2026-10-02 (`UI/EvolutionScreen.cs`): it plays over whatever music is on and uses the catch fanfare for its congratulations, so the evolution theme starts in `EvolutionScreen.Begin` and its own fanfare replaces `FanfarePokemon` there
 - [ ] A6 Region music
 - [ ] A7 Ambience and polish

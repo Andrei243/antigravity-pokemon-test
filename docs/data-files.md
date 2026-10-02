@@ -13,7 +13,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per map; the file name must match its `name`. |
 | `music/<folder>/<name>.mml` | `MusicLibrary` | Songs in a small text format, one folder per region plus `common`; see `docs/music-format.md`. |
 
-An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Trade`, `LevelKnowsMove`, `LevelAtLocation` and so on; see `EvolutionMethod`), `targetSpecies`, and whichever of `level`, `item`, `move`, `type`, `species`, `location`, `value` and `note` that method uses. The engine runs `Level` evolutions; the rest are data for plan 06 · R10.
+An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Trade`, `LevelKnowsMove`, `LevelAtLocation` and so on; see `EvolutionMethod`), `targetSpecies`, and whichever of `level`, `item`, `move`, `type`, `species`, `location`, `value` (beauty, or a count of steps, move uses, knock-outs or items), `needsFriendship` and `note` that method uses. A species' evolutions are tried in the order they are listed and the first whose condition holds happens. `Models/Evolution.cs` runs every method; `docs/mechanics/evolution.md` explains each one.
 
 ## Maps
 
@@ -27,6 +27,7 @@ An evolution has a `method` (`Level` when left out, `Friendship`, `UseItem`, `Tr
   "architecture": "City",        // optional: how the town's houses are built (Timber when left out, Plaster, City, Clapboard)
   "battleArena": "Forest",       // optional: the stage its battles are fought on (see below)
   "arenaType": "Rock",           // optional: for a Gym or League arena, the type its hall is themed on
+  "evolutionSites": [ "Moss Rock" ], // optional: places some Pokémon evolve at when they level up here (Moss Rock, Ice Rock, Magnetic Field)
   "width": 36, "height": 22,
   "ground": [ "TTTT…", … ],      // one string per row, one character per tile (below)
   "solid":  [ "####…", … ],      // '#' blocks movement, '.' is open; furniture is already marked

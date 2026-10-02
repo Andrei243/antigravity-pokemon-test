@@ -7,14 +7,36 @@ using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
 public class BagScreen
 {
+    private const float ChoiceAppearTime = 0.35f;
+
     public ItemPocket CurrentPocket { get; set; } = ItemPocket.Items;
     public int SelectedIndex { get; set; } = 0;
     public bool IsActive { get; set; } = false;
+
+    // An item that goes to one Pokémon of the player's choosing waits here while they pick
+    private ItemData? choosingFor;
+    private float choiceAge;
+    private EvolutionRequest? request;
+
+    /// <summary>The Pokémon the cursor is on while an item waits for its target.</summary>
+    public int TargetIndex { get; private set; }
+
+    /// <summary>The item waiting for the player to pick a Pokémon (null: the bag itself is showing).</summary>
+    public ItemData? ChoosingFor => choosingFor;
+
+    /// <summary>Hands over the evolution an item has just set off, once.</summary>
+    public EvolutionRequest? TakeEvolution()
+    {
+        var taken = request;
+        request = null;
+        return taken;
+    }
 
     private readonly ItemPocket[] pockets =
     {
@@ -31,16 +53,31 @@ public class BagScreen
         IsActive = true;
         SelectedIndex = 0;
         CurrentPocket = ItemPocket.Items;
+        choosingFor = null;
     }
 
     public void Close()
     {
         IsActive = false;
+        choosingFor = null;
     }
 
-    public void Update(Inventory inventory, Party party, Action<string> onNotification)
+    /// <param name="context">What evolutions need to know (the hour, the map); just the party and the bag when left out.</param>
+    public void Update(Inventory inventory, Party party, Action<string> onNotification, EvolutionContext? context = null, float dt = 1f / 60f)
     {
         if (!IsActive) return;
+
+        if (choosingFor != null)
+        {
+            choiceAge += dt;
+            int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+            int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+            if (dx != 0 || dy != 0) MoveTarget(dx, dy, party.Count);
+            else if (InputManager.IsActionPressed(GameAction.Cancel)) CancelTarget();
+            else if (InputManager.IsActionPressed(GameAction.Confirm))
+                UseOnTarget(inventory, party, onNotification, context ?? new EvolutionContext { Party = party, Bag = inventory });
+            return;
+        }
 
         var items = inventory.GetPocketItems(CurrentPocket);
 
@@ -89,10 +126,92 @@ public class BagScreen
         }
     }
 
+    // ---------------------------------------------------------------- items used on a Pokémon of the player's choosing
+
+    /// <summary>Items the player aims at one Pokémon: Rare Candies, what evolves a Pokémon, and anything given to hold.</summary>
+    public static bool NeedsTarget(ItemData item) =>
+        item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item) || IsGivenToHold(item);
+
+    private static bool IsGivenToHold(ItemData item) =>
+        PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.IsHoldable(item) || Evolution.IsHeldForEvolution(item);
+
+    public void BeginTargetChoice(ItemData item)
+    {
+        choosingFor = item;
+        TargetIndex = 0;
+        choiceAge = 0f;
+        AudioManager.PlaySound("select");
+    }
+
+    public void MoveTarget(int dx, int dy, int count)
+    {
+        int next = UiNav.Grid(TargetIndex, count, 2, dx, dy);
+        if (next == TargetIndex) return;
+        TargetIndex = next;
+        AudioManager.PlaySound("cursor");
+    }
+
+    public void CancelTarget()
+    {
+        choosingFor = null;
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>
+    /// Uses the waiting item on the Pokémon under the cursor. An evolution it sets off is left for
+    /// <see cref="TakeEvolution"/>: one from a Rare Candy's level can be stopped, one from a stone can't.
+    /// </summary>
+    public void UseOnTarget(Inventory inventory, Party party, Action<string> onNotification, EvolutionContext context)
+    {
+        if (choosingFor == null || TargetIndex >= party.Count) return;
+        var item = choosingFor;
+        var target = party.Members[TargetIndex];
+
+        if (item.EffectType == ItemEffectType.LevelUp)
+        {
+            if (target.Level >= 100)
+            {
+                onNotification("It won't have any effect.");
+                return;
+            }
+            // A Rare Candy also brings a fainted Pokémon round, with the hit points the level gave it
+            bool wasFainted = target.IsFainted;
+            target.GainExp(target.ExpForNextLevel - target.CurrentExp, out _);
+            if (wasFainted) target.Revive(target.CurrentHP);
+            inventory.RemoveItem(item, 1);
+            AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
+            onNotification($"{target.DisplayName} grew to Lv. {target.Level}!");
+            context.Item = null;
+            if (Evolution.Find(target, EvolutionTrigger.LevelUp, context) is { } grown)
+                request = new EvolutionRequest(target, grown, Cancellable: true);
+        }
+        else if (Evolution.IsUsedToEvolve(item))
+        {
+            context.Item = item;
+            var evolution = Evolution.Find(target, EvolutionTrigger.UseItem, context);
+            if (evolution == null)
+            {
+                onNotification("It won't have any effect.");
+                return;
+            }
+            inventory.RemoveItem(item, 1);
+            request = new EvolutionRequest(target, evolution, Cancellable: false);
+        }
+        else
+        {
+            GiveToHold(item, inventory, target, onNotification);
+        }
+        choosingFor = null;
+    }
+
     private void UseItem(ItemStack stack, Inventory inventory, Party party, Action<string> onNotification)
     {
         var item = stack.Data;
-        if (item.EffectType == ItemEffectType.HealHP)
+        if (NeedsTarget(item))
+        {
+            if (party.Count > 0) BeginTargetChoice(item);
+        }
+        else if (item.EffectType == ItemEffectType.HealHP)
         {
             var lead = party.FirstUsable;
             if (lead != null && lead.CurrentHP < lead.MaxHP)
@@ -137,48 +256,46 @@ public class BagScreen
                 onNotification("It won't have any effect.");
             }
         }
-        else if (item.EffectType == ItemEffectType.LevelUp)
-        {
-            var lead = party.FirstUsable;
-            if (lead != null && lead.Level < 100)
-            {
-                lead.GainExp(lead.ExpForNextLevel - lead.CurrentExp, out var moves, out bool evolved, out string oldName);
-                inventory.RemoveItem(item, 1);
-                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
-                onNotification($"{lead.DisplayName} grew to Lv. {lead.Level}!");
-            }
-        }
-        else if (PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.IsHoldable(item))
-        {
-            GiveToHold(item, inventory, party, onNotification);
-        }
         else
         {
             onNotification($"You used the {item.Name}!");
         }
     }
 
-    /// <summary>Gives a holdable item to the lead Pokémon; whatever it held goes back in the bag.</summary>
-    public static void GiveToHold(ItemData item, Inventory inventory, Party party, Action<string> onNotification)
+    /// <summary>Gives an item to a Pokémon to hold; whatever it held goes back in the bag.</summary>
+    public static void GiveToHold(ItemData item, Inventory inventory, Pokemon holder, Action<string> onNotification)
     {
-        var lead = party.FirstUsable ?? party.Members.FirstOrDefault();
-        if (lead == null) return;
-
         inventory.RemoveItem(item, 1);
-        var previous = lead.HeldItem;
-        lead.HeldItem = item;
+        var previous = holder.HeldItem;
+        holder.HeldItem = item;
         AudioManager.PlaySound("select");
         if (previous != null)
         {
             inventory.AddItem(previous, 1);
-            onNotification($"{lead.DisplayName} swapped its {previous.Name} for the {item.Name}.");
+            onNotification($"{holder.DisplayName} swapped its {previous.Name} for the {item.Name}.");
         }
-        else onNotification($"{lead.DisplayName} was given the {item.Name} to hold.");
+        else onNotification($"{holder.DisplayName} was given the {item.Name} to hold.");
     }
 
-    public void Draw(int screenWidth, int screenHeight, Inventory inventory)
+    public void Draw(int screenWidth, int screenHeight, Inventory inventory, Party party, EvolutionContext? context = null)
     {
         if (!IsActive) return;
+
+        if (choosingFor != null)
+        {
+            // An item that evolves Pokémon says who it would work on, as the games do
+            var item = choosingFor;
+            var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
+            probe.Item = item;
+            bool evolves = Evolution.IsUsedToEvolve(item);
+            string prompt = item.EffectType == ItemEffectType.LevelUp || evolves
+                ? $"Use the {item.Name} on which Pokémon?"
+                : $"Give the {item.Name} to which Pokémon?";
+            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt,
+                p => evolves ? Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null : null,
+                Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f));
+            return;
+        }
 
         Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Palette.UiBackground);
 

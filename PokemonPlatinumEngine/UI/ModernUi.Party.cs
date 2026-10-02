@@ -31,6 +31,35 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(swapping.HasValue ? "Move to where?" : "Choose a Pokémon.", prompt.X + 52, prompt.Y + prompt.Height / 2f, 40, Ink, UiWeight.ExtraBold);
     }
 
+    /// <summary>
+    /// The team as the target of an item from the bag. <paramref name="able"/> says whether the item would do
+    /// anything for a Pokémon (null: nothing to say), shown as ABLE or NOT ABLE on its card, as in the games.
+    /// </summary>
+    public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, bool?> able, float appear = 1f)
+    {
+        Backdrop(sw, sh);
+        ScreenTitle("POKÉMON");
+        Hints(sw - 64, 44, ("Z", "Use"), ("Esc", "Back"));
+
+        for (int i = 0; i < Party.MaxSize; i++)
+        {
+            float rise = (1f - UiMotion.EaseOut(appear * 1.6f - i * 0.12f)) * 40f;
+            var r = new Rectangle(64 + (i % 2) * 912, 132 + (i / 2) * 256 + rise, 880, 232);
+            if (i >= party.Count)
+            {
+                EmptySlot(r, 34);
+                continue;
+            }
+            var p = party.Members[i];
+            PartyCard(r, p, i == selected, false, lead: false);
+            if (able(p) is { } can) Tag(r.X + 264, r.Y + 183, can ? "ABLE" : "NOT ABLE", can ? Green : Muted);
+        }
+
+        var box = new Rectangle(64, 920, 1792, 112);
+        Panel(box, 30);
+        UiFonts.DrawCentered(prompt, box.X + 52, box.Y + box.Height / 2f, 40, Ink, UiWeight.ExtraBold);
+    }
+
     private static void PartyCard(Rectangle r, Pokemon p, bool selected, bool swapping, bool lead)
     {
         Card(r, 34, selected || swapping, swapping ? Gold : Selection);

@@ -30,6 +30,9 @@ public sealed class MapFile
     /// <summary>For a gym or a room of the League: the type its stage is themed on.</summary>
     public PokemonType? ArenaType { get; set; }
 
+    /// <summary>Places some Pokémon evolve at (see <see cref="Map.EvolutionSites"/>); left out when there are none.</summary>
+    public List<string>? EvolutionSites { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -126,7 +129,8 @@ public sealed class MapFile
             Trees = Trees,
             Architecture = Architecture ?? TownArchitecture.Timber,
             Arena = BattleArena,
-            ArenaType = ArenaType
+            ArenaType = ArenaType,
+            EvolutionSites = EvolutionSites?.ToList() ?? new()
         };
 
         CheckRows(Ground, "ground");
@@ -242,6 +246,7 @@ public sealed class MapFile
             Architecture = map.Architecture == TownArchitecture.Timber ? null : map.Architecture,
             BattleArena = map.Arena,
             ArenaType = map.ArenaType,
+            EvolutionSites = map.EvolutionSites.Count > 0 ? map.EvolutionSites.ToList() : null,
             Width = map.Width,
             Height = map.Height
         };

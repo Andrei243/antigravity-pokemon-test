@@ -53,6 +53,17 @@ public class SavedPokemonData
     /// <summary>Null in saves from before abilities: the species' first ability is used.</summary>
     public string? Ability { get; set; }
     public string? HeldItem { get; set; }
+
+    /// <summary>Null in saves from before friendship: the species' base friendship is used.</summary>
+    public int? Friendship { get; set; }
+    public int Beauty { get; set; }
+
+    /// <summary>Null in saves from before personality values: a new one is rolled.</summary>
+    public uint? Personality { get; set; }
+    public string? Ball { get; set; }
+
+    /// <summary>Steps, move uses and knock-outs counted toward an evolution; left out when there are none.</summary>
+    public Dictionary<string, int>? EvolutionProgress { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -75,7 +86,12 @@ public class SavedPokemonData
             IvSpeed = p.IvSpeed,
             CurrentExp = p.CurrentExp,
             Ability = p.AbilityName,
-            HeldItem = p.HeldItem?.Name
+            HeldItem = p.HeldItem?.Name,
+            Friendship = p.Friendship,
+            Beauty = p.Beauty,
+            Personality = p.Personality,
+            Ball = p.Ball,
+            EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null
         };
 
         foreach (var m in p.Moves)
@@ -100,9 +116,14 @@ public class SavedPokemonData
             IvSpDefense = IvSpDefense,
             IvSpeed = IvSpeed,
             CurrentExp = CurrentExp,
-            HeldItem = HeldItem != null ? ItemDatabase.Get(HeldItem) : null
+            HeldItem = HeldItem != null ? ItemDatabase.Get(HeldItem) : null,
+            Beauty = Beauty,
+            Ball = Ball
         };
         if (Ability != null) p.AbilityName = Ability;
+        if (Friendship is { } friendship) p.Friendship = friendship;
+        if (Personality is { } personality) p.Personality = personality;
+        foreach (var (key, count) in EvolutionProgress ?? new()) p.EvolutionProgress[key] = count;
         p.RecalculateStats();
         p.CurrentHP = Math.Clamp(CurrentHP, 0, p.MaxHP);
         if (p.CurrentHP <= 0)

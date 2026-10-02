@@ -248,7 +248,16 @@ public sealed class Importer
         foreach (var s in list.Where(s => s.DexNumber <= LastPlatinumSpecies))
         {
             var later = LaterEvolutionsOf(s.DexNumber).Where(e => PokemonDexOf(e.TargetSpecies) > LastPlatinumSpecies).ToList();
-            if (later.Count > 0) s.Evolutions = (s.Evolutions ?? new()).Concat(later).ToList();
+            if (later.Count == 0) continue;
+            var evolutions = s.Evolutions ?? new();
+
+            // The first evolution whose condition holds is the one that happens, so one that asks for friendship
+            // and something more (Sylveon) goes before the ones that ask for friendship alone (Espeon, Umbreon)
+            int friendship = evolutions.FindIndex(e => e.Method is EvolutionMethod.Friendship or EvolutionMethod.FriendshipDay or EvolutionMethod.FriendshipNight);
+            if (friendship >= 0) evolutions.InsertRange(friendship, later.Where(e => e.NeedsFriendship));
+            else evolutions.AddRange(later.Where(e => e.NeedsFriendship));
+            evolutions.AddRange(later.Where(e => !e.NeedsFriendship));
+            s.Evolutions = evolutions;
         }
         foreach (var s in list)
         {
@@ -352,7 +361,7 @@ public sealed class Importer
                 break;
             case "LEVEL_MALE": evo.Method = EvolutionMethod.LevelMale; evo.Level = level; break;
             case "LEVEL_FEMALE": evo.Method = EvolutionMethod.LevelFemale; evo.Level = level; break;
-            case "LEVEL_MAGNETIC_FIELD": evo.Method = EvolutionMethod.LevelAtLocation; evo.Location = "Mt. Coronet"; break;
+            case "LEVEL_MAGNETIC_FIELD": evo.Method = EvolutionMethod.LevelAtLocation; evo.Location = "Magnetic Field"; break;
             case "LEVEL_MOSS_ROCK": evo.Method = EvolutionMethod.LevelAtLocation; evo.Location = "Moss Rock"; break;
             case "LEVEL_ICE_ROCK": evo.Method = EvolutionMethod.LevelAtLocation; evo.Location = "Ice Rock"; break;
             default: throw new InvalidDataException($"Unknown evolution method {method}");
@@ -456,7 +465,11 @@ public sealed class Importer
 
     private Dictionary<int, List<CsvRow>>? levelUp;
 
-    /// <summary>A species' evolutions from PokeAPI (the default entry of each), leaving out regional-form ones.</summary>
+    /// <summary>
+    /// A species' evolutions from PokeAPI (the default entry of each), leaving out regional-form ones. Rows that
+    /// differ only in the form they lead to (Dudunsparce's two or three segments, Hisuian Decidueye's later level)
+    /// are one evolution here.
+    /// </summary>
     private List<EvolutionData> LaterEvolutionsOf(int dex)
     {
         var targets = api.Species.Values.Where(r => r.IntOrNull("evolves_from_species_id") == dex && r.Int("id") <= lastSpecies)
@@ -465,12 +478,20 @@ public sealed class Importer
             .Where(r => targets.Contains(r.Int("evolved_species_id")) && r.Bool("is_default"))
             .Where(r => (r.IntOrNull("required_pokemon_form_id") ?? 0) < FirstAlternateForm)
             .OrderBy(r => r.Int("evolved_species_id")).ThenBy(r => r.Int("id"))
-            .Select(LaterEvolution)
-            .DistinctBy(e => JsonSerializer.Serialize(e))
+            .Select(r => LaterEvolution(r, dex))
+            .DistinctBy(e => (e.Method, e.TargetSpecies, e.Item, e.Move, e.Type, e.Species, e.Location))
             .ToList();
     }
 
-    private EvolutionData LaterEvolution(CsvRow r)
+    private string ItemNamed(string identifier) => api.ItemName(api.Items.Values.First(i => i["identifier"] == identifier).Int("id"));
+
+    /// <summary>
+    /// One PokeAPI row as an evolution of this game. Where the original leans on something this game lacks, the
+    /// method is the stand-in docs/mechanics/rulings.md settles on: playing next to another player (Finizen) and
+    /// levelling up inside a battle (Tandemaus) are plain levels, steps taken in the Let's Go mode are steps at
+    /// the head of the party, and Legends: Arceus's agile and strong style moves are plain uses of the move.
+    /// </summary>
+    private EvolutionData LaterEvolution(CsvRow r, int fromDex)
     {
         var evo = new EvolutionData
         {
@@ -482,6 +503,13 @@ public sealed class Importer
         string time = r["time_of_day"];
         var notes = new List<string>();
 
+        void AfterMoveUses()
+        {
+            evo.Method = EvolutionMethod.LevelAfterMoveUses;
+            evo.Move = api.MoveName(r.Int("used_move_id"));
+            evo.Value = r.IntOrNull("minimum_move_count") ?? 1;
+        }
+
         switch (r.Int("evolution_trigger_id"))
         {
             case 1: // level up
@@ -489,8 +517,7 @@ public sealed class Importer
                 {
                     evo.Method = EvolutionMethod.LevelKnowsMoveType;
                     evo.Type = api.Type(moveType);
-                    if (r.IntOrNull("minimum_happiness") != null) notes.Add("with high friendship");
-                    if (r.IntOrNull("minimum_affection") != null) notes.Add("with high affection");
+                    evo.NeedsFriendship = r.IntOrNull("minimum_happiness") != null || r.IntOrNull("minimum_affection") != null;
                 }
                 else if (r.IntOrNull("minimum_happiness") != null)
                     evo.Method = time == "day" ? EvolutionMethod.FriendshipDay : time == "night" ? EvolutionMethod.FriendshipNight : EvolutionMethod.Friendship;
@@ -513,15 +540,9 @@ public sealed class Importer
                 else if (time is "day" or "night") evo.Method = time == "day" ? EvolutionMethod.LevelDay : EvolutionMethod.LevelNight;
                 else if (time != "") { evo.Method = EvolutionMethod.Other; notes.Add($"level up at {time}"); }
 
-                if (r.Bool("needs_multiplayer")) { evo.Method = EvolutionMethod.Other; notes.Add("after walking with it in the Let's Go mode"); }
-                if (r.IntOrNull("minimum_steps") is { } steps) { evo.Method = EvolutionMethod.Other; notes.Add($"after walking {steps} steps with it"); }
-                if (r.IntOrNull("used_move_id") is { } used)
-                {
-                    evo.Method = EvolutionMethod.Other;
-                    notes.Add($"after using {api.MoveName(used)} {r.IntOrNull("minimum_move_count") ?? 1} times");
-                }
+                if (r.IntOrNull("minimum_steps") is { } steps) { evo.Method = EvolutionMethod.LevelAfterSteps; evo.Value = steps; }
+                if (r.IntOrNull("used_move_id") != null) AfterMoveUses();
                 if (r.IntOrNull("minimum_damage_taken") is { } damage) { evo.Method = EvolutionMethod.Other; notes.Add($"after losing {damage} HP from recoil without fainting"); }
-                if (r["condition_expression"] != "") notes.Add($"only for some Pokémon ({r["percentage_chance"]}% of them)");
                 break;
             case 2:
                 if (held != null) { evo.Method = EvolutionMethod.TradeHoldingItem; evo.Item = held; }
@@ -530,10 +551,36 @@ public sealed class Importer
                 break;
             case 3:
                 evo.Method = r.IntOrNull("gender_id") switch { 1 => EvolutionMethod.UseItemFemale, 2 => EvolutionMethod.UseItemMale, _ => EvolutionMethod.UseItem };
+                // Ursaring's Peat Block works under a full moon: at night here
+                if (time is "night" or "full-moon") evo.Method = EvolutionMethod.UseItemNight;
                 evo.Item = item;
                 break;
             case 4:
                 evo.Method = EvolutionMethod.LevelShedinja;
+                break;
+            case 5: // spinning round while it holds a sweet; which way and for how long only picks Alcremie's form
+                evo.Method = EvolutionMethod.SpinHoldingItem;
+                evo.Item = held;
+                break;
+            case 10: // levelling up in a battle: a plain level
+                break;
+            case 11 or 12 or 14 when r.IntOrNull("used_move_id") != null: // a move used some number of times
+                AfterMoveUses();
+                break;
+            case 15: // three of its own kind knocked out
+                evo.Method = EvolutionMethod.LevelAfterDefeating;
+                evo.Species = api.SpeciesName(fromDex);
+                evo.Value = 3;
+                break;
+            case 16:
+                evo.Method = EvolutionMethod.LevelWithItemsInBag;
+                evo.Item = ItemNamed("gimmighoul-coin");
+                evo.Value = 999;
+                break;
+            case 17: // Pokémon GO's 400 candies, the only way there has ever been
+                evo.Method = EvolutionMethod.LevelWithItemsInBag;
+                evo.Item = ItemNamed("meltan-candy");
+                evo.Value = 400;
                 break;
             default:
                 evo.Method = EvolutionMethod.Other;

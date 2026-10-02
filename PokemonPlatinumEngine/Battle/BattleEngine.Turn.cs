@@ -198,6 +198,7 @@ public partial class BattleEngine
                     AudioManager.PlayMusic(MusicRole.VictoryWild);
                     Pokedex.RegisterCaught(foe.Species.DexNumber);
                     foe.ResetStatStages();
+                    foe.Ball = item.Name;
 
                     if (!PlayerParty.IsFull)
                     {
@@ -325,11 +326,28 @@ public partial class BattleEngine
         down.Pokemon!.Status = StatusCondition.Faint;
         down.Pokemon.CurrentHP = 0;
         down.ClearVolatile();
+        NoteFaint(down);
         QueueMessage($"{down.Name} fainted!", () =>
         {
             if (down.IsPlayerSide) ResolveFaints(next);
             else AwardExp(down, () => ResolveFaints(next));
         }, onShow: () => PlayFaint(down));
+    }
+
+    /// <summary>
+    /// What a faint leaves behind outside the battle: the player's Pokémon likes its trainer a little less (a lot
+    /// less against a foe thirty levels above it), and a foe going down counts for the Pokémon that were facing
+    /// it, for the evolutions that count knock-outs.
+    /// </summary>
+    private void NoteFaint(Battler down)
+    {
+        if (down.IsPlayerSide)
+        {
+            int strongest = EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.Level).DefaultIfEmpty(0).Max();
+            FriendshipRules.Apply(down.Pokemon!, strongest - down.Pokemon!.Level >= 30 ? FriendshipEvent.FaintToStronger : FriendshipEvent.Faint);
+            return;
+        }
+        foreach (var mine in PlayerSlots.Where(b => b.IsActive)) Evolution.CountDefeat(mine.Pokemon!, down.Pokemon!.Species);
     }
 
     /// <summary>The fainting cry and slide off the platform, started as the "fainted!" message appears.</summary>
@@ -408,22 +426,19 @@ public partial class BattleEngine
             }
             QueueMessage($"{p.DisplayName} gained {each} EXP. Points!", () =>
             {
-                bool leveledUp = p.GainExp(each, out var moves, out bool evolved, out string oldName);
+                bool leveledUp = p.GainExp(each, out var moves);
                 if (!leveledUp)
                 {
                     Give(i + 1);
                     return;
                 }
 
+                // Evolution waits for the battle to end (see LeveledUp)
+                if (!leveledUpPokemon.Contains(p)) leveledUpPokemon.Add(p);
                 AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
                 QueueMessage($"{p.DisplayName} grew to Lv. {p.Level}!", () =>
                 {
                     var learnMsgs = moves.Select(m => $"{p.DisplayName} learned {m}!").ToList();
-                    if (evolved)
-                    {
-                        learnMsgs.Add($"What? {oldName} is evolving!");
-                        learnMsgs.Add($"Congratulations! Your {oldName} evolved into {p.Species.Name}!");
-                    }
                     QueueMessageSequence(learnMsgs, () => Give(i + 1));
                 });
             });

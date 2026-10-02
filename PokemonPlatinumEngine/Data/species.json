@@ -5182,9 +5182,10 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelAfterMoveUses",
         "targetSpecies": "Annihilape",
-        "note": "use move"
+        "move": "Rage Fist",
+        "value": 20
       }
     ],
     "abilities": [
@@ -7539,7 +7540,7 @@
       {
         "method": "LevelAtLocation",
         "targetSpecies": "Magnezone",
-        "location": "Mt. Coronet"
+        "location": "Magnetic Field"
       }
     ],
     "abilities": [
@@ -12406,7 +12407,7 @@
     "weight": 6.5,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Eevee is an Evolution Pokémon, Normal-type, first found in Kanto. It stands 0.3 m tall and weighs 6.5 kg. It can evolve into Leafeon, Glaceon, Jolteon, Vaporeon, Flareon, Espeon, Umbreon or Sylveon.",
+    "dexEntry": "Eevee is an Evolution Pokémon, Normal-type, first found in Kanto. It stands 0.3 m tall and weighs 6.5 kg. It can evolve into Leafeon, Glaceon, Jolteon, Vaporeon, Flareon, Sylveon, Espeon or Umbreon.",
     "learnset": [
       {
         "level": 1,
@@ -12480,18 +12481,18 @@
         "item": "Fire Stone"
       },
       {
+        "method": "LevelKnowsMoveType",
+        "targetSpecies": "Sylveon",
+        "type": "Fairy",
+        "needsFriendship": true
+      },
+      {
         "method": "FriendshipDay",
         "targetSpecies": "Espeon"
       },
       {
         "method": "FriendshipNight",
         "targetSpecies": "Umbreon"
-      },
-      {
-        "method": "LevelKnowsMoveType",
-        "targetSpecies": "Sylveon",
-        "type": "Fairy",
-        "note": "with high friendship"
       }
     ],
     "abilities": [
@@ -19522,14 +19523,7 @@
       {
         "method": "LevelKnowsMove",
         "targetSpecies": "Dudunsparce",
-        "move": "Hyper Drill",
-        "note": "only for some Pokémon (99% of them)"
-      },
-      {
-        "method": "LevelKnowsMove",
-        "targetSpecies": "Dudunsparce",
-        "move": "Hyper Drill",
-        "note": "only for some Pokémon (1% of them)"
+        "move": "Hyper Drill"
       }
     ],
     "abilities": [
@@ -20633,7 +20627,7 @@
     ],
     "evolutions": [
       {
-        "method": "UseItem",
+        "method": "UseItemNight",
         "targetSpecies": "Ursaluna",
         "item": "Peat Block"
       }
@@ -22296,9 +22290,10 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelAfterMoveUses",
         "targetSpecies": "Wyrdeer",
-        "note": "agile style move"
+        "move": "Psyshield Bash",
+        "value": 20
       }
     ],
     "abilities": [
@@ -28227,7 +28222,7 @@
       {
         "method": "LevelAtLocation",
         "targetSpecies": "Probopass",
-        "location": "Mt. Coronet"
+        "location": "Magnetic Field"
       }
     ],
     "abilities": [
@@ -59452,9 +59447,10 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelAfterDefeating",
         "targetSpecies": "Kingambit",
-        "note": "three defeated bisharp"
+        "species": "Bisharp",
+        "value": 3
       }
     ],
     "abilities": [
@@ -69311,10 +69307,6 @@
       {
         "targetSpecies": "Decidueye",
         "level": 34
-      },
-      {
-        "targetSpecies": "Decidueye",
-        "level": 36
       }
     ],
     "abilities": [
@@ -75676,10 +75668,12 @@
     ],
     "evolutions": [
       {
+        "method": "LevelDay",
         "targetSpecies": "Solgaleo",
         "level": 53
       },
       {
+        "method": "LevelNight",
         "targetSpecies": "Lunala",
         "level": 53
       }
@@ -77471,9 +77465,10 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelWithItemsInBag",
         "targetSpecies": "Melmetal",
-        "note": "meltan candies"
+        "item": "Meltan Candy",
+        "value": 400
       }
     ],
     "abilities": [
@@ -83049,9 +83044,39 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "SpinHoldingItem",
         "targetSpecies": "Alcremie",
-        "note": "spin"
+        "item": "Strawberry Sweet"
+      },
+      {
+        "method": "SpinHoldingItem",
+        "targetSpecies": "Alcremie",
+        "item": "Berry Sweet"
+      },
+      {
+        "method": "SpinHoldingItem",
+        "targetSpecies": "Alcremie",
+        "item": "Love Sweet"
+      },
+      {
+        "method": "SpinHoldingItem",
+        "targetSpecies": "Alcremie",
+        "item": "Star Sweet"
+      },
+      {
+        "method": "SpinHoldingItem",
+        "targetSpecies": "Alcremie",
+        "item": "Clover Sweet"
+      },
+      {
+        "method": "SpinHoldingItem",
+        "targetSpecies": "Alcremie",
+        "item": "Flower Sweet"
+      },
+      {
+        "method": "SpinHoldingItem",
+        "targetSpecies": "Alcremie",
+        "item": "Ribbon Sweet"
       }
     ],
     "abilities": [
@@ -88259,9 +88284,9 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelAfterSteps",
         "targetSpecies": "Pawmot",
-        "note": "after walking 1000 steps with it"
+        "value": 1000
       }
     ],
     "abilities": [
@@ -88474,10 +88499,8 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
         "targetSpecies": "Maushold",
-        "level": 25,
-        "note": "in battle level up"
+        "level": 25
       }
     ],
     "abilities": [
@@ -90679,9 +90702,9 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelAfterSteps",
         "targetSpecies": "Brambleghast",
-        "note": "after walking 1000 steps with it"
+        "value": 1000
       }
     ],
     "abilities": [
@@ -91368,9 +91391,9 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelAfterSteps",
         "targetSpecies": "Rabsca",
-        "note": "after walking 1000 steps with it"
+        "value": 1000
       }
     ],
     "abilities": [
@@ -92357,10 +92380,8 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
         "targetSpecies": "Palafin",
-        "level": 38,
-        "note": "after walking with it in the Let's Go mode"
+        "level": 38
       }
     ],
     "abilities": [
@@ -95908,9 +95929,10 @@
     ],
     "evolutions": [
       {
-        "method": "Other",
+        "method": "LevelWithItemsInBag",
         "targetSpecies": "Gholdengo",
-        "note": "gimmighoul coins"
+        "item": "Gimmighoul Coin",
+        "value": 999
       }
     ],
     "abilities": [

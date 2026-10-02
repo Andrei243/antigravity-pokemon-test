@@ -36,11 +36,12 @@ PokeAPI's data is © Paul Hallett and PokéAPI contributors, used under its BSD 
   - `Partial`: the move still hits, or its stat change, status or healing still happens, and the rest waits for its code (multi-hit, two-turn moves, weather).
   - `None`: the move does nothing until its effect is written ("But nothing happened!"), because hitting without the rule would be wrong (fixed damage, Fake Out, OHKO moves, Protect).
   Moves from Generation 5 on share a Platinum move's verdict when PokeAPI gives them the same effect; otherwise only the effects listed in `MoveEffects.FullLaterEffects` (checked by hand) run in full. PokeAPI has no effect data yet for most Generation 9 moves, so they hit but their extras wait.
+- **Evolutions.** Platinum's species keep Platinum's methods; later ones come from PokeAPI's `pokemon_evolution.csv`, each trigger mapped onto an `EvolutionMethod` the engine runs (`LaterEvolution` in `Importer.cs`). Where the original needs something this game lacks, the method is the stand-in `docs/mechanics/rulings.md` settles on. Rows that differ only in the form they lead to become one evolution, and an evolution that asks for friendship and something more is listed before the ones that ask for friendship alone, because the first that holds is the one that happens.
 - **Left out for now**: Z-Moves, Max Moves, regional and other forms (and the evolutions that start from a regional form), Mega Stones, Z-Crystals, TRs and items from later games that don't matter in battle; TM, tutor and egg learnsets. Plan 03 · D11 and plan 06 bring them in.
 
 ## Overrides
 
-`Overrides/<file>.json` holds hand corrections, applied last: a name maps to the fields to change (`null` removes one), and a name the import doesn't produce adds a whole entry (the game's own Running Shoes and Distortion Orb). Comments are allowed.
+`Overrides/<file>.json` holds hand corrections, applied last: a name maps to the fields to change (`null` removes one), and a name the import doesn't produce adds a whole entry (the game's own Running Shoes and Distortion Orb). Comments are allowed. `species.json` there gives Cosmoem its two evolutions by time of day, since this game has no versions to choose between Solgaleo and Lunala.
 
 ## When an effect gets its code
 

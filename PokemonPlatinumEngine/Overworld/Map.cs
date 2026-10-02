@@ -24,6 +24,12 @@ public class Map
     public PokemonType? ArenaType { get; set; }
 
     /// <summary>
+    /// The special places this map has that some Pokémon evolve at when they level up there: "Moss Rock",
+    /// "Ice Rock", "Magnetic Field" (the names the evolutions in species.json use).
+    /// </summary>
+    public List<string> EvolutionSites { get; set; } = new();
+
+    /// <summary>
     /// The stage for a battle that starts with the player on (<paramref name="x"/>, <paramref name="y"/>):
     /// rooms are indoors unless the map names its stage; outdoors water, sand, snow and cave floors under the
     /// player win over the map's own stage, which is grass if it names none.

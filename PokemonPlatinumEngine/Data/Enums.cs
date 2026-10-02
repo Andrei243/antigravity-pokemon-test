@@ -194,7 +194,10 @@ public enum MoveEffectSupport
     None
 }
 
-/// <summary>How a species evolves. The engine runs <see cref="Level"/>; the rest are data for plan 06 · R10.</summary>
+/// <summary>
+/// How a species evolves. <c>Models/Evolution.cs</c> decides when each one happens; docs/mechanics/evolution.md
+/// lists them with the games they come from and what this game does where the original needs something it lacks.
+/// </summary>
 public enum EvolutionMethod
 {
     Level,
@@ -222,8 +225,10 @@ public enum EvolutionMethod
     LevelKnowsMoveType,
     LevelWithSpeciesInParty,
     LevelWithTypeInParty,
+    /// <summary>On a map that has the place named in <c>location</c> (Moss Rock, Ice Rock, Magnetic Field).</summary>
     LevelAtLocation,
     LevelInRain,
+    /// <summary>Inkay: the console held upside down. Here it is a plain level (see the rulings).</summary>
     LevelUpsideDown,
     Beauty,
     Affection,
@@ -233,6 +238,18 @@ public enum EvolutionMethod
     Trade,
     TradeHoldingItem,
     TradeWithSpecies,
-    /// <summary>Anything else (spinning, critical hits in one battle, collected coins); <c>note</c> says what.</summary>
-    Other
+    /// <summary>Anything the engine has no rule for; <c>note</c> says what. Nothing in the data uses it now.</summary>
+    Other,
+    /// <summary>Ursaring's Peat Block under a full moon: an item that only works at night.</summary>
+    UseItemNight,
+    /// <summary>Level up after walking <c>value</c> steps at the head of the party (Pawmo, Bramblin, Rellor).</summary>
+    LevelAfterSteps,
+    /// <summary>Level up after using <c>move</c> <c>value</c> times in battle (Primeape's Rage Fist, Stantler's Psyshield Bash).</summary>
+    LevelAfterMoveUses,
+    /// <summary>Level up after knocking out <c>value</c> Pokémon of <c>species</c> (Bisharp).</summary>
+    LevelAfterDefeating,
+    /// <summary>Level up with <c>value</c> of <c>item</c> in the bag, which are used up (Gimmighoul's coins, Meltan's candies).</summary>
+    LevelWithItemsInBag,
+    /// <summary>The player turns a full circle while it holds <c>item</c> (Milcery and its sweets).</summary>
+    SpinHoldingItem
 }

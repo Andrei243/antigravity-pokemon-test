@@ -149,13 +149,18 @@ public class PokemonTests
 
         // Give enough EXP to level up to 18 (Turtwig evolution level)
         int expNeeded = turtwig.ExpForNextLevel - turtwig.CurrentExp + 10;
-        bool leveledUp = turtwig.GainExp(expNeeded, out var newMoves, out bool evolved, out string oldName);
+        bool leveledUp = turtwig.GainExp(expNeeded, out var newMoves);
 
+        // The level comes first; it is still a Turtwig until the battle (or the Rare Candy) is over
         Assert.True(leveledUp);
         Assert.Equal(18, turtwig.Level);
-        Assert.True(evolved);
+        Assert.Equal("Turtwig", turtwig.Species.Name);
+
+        var evolution = Evolution.Find(turtwig, EvolutionTrigger.LevelUp, new EvolutionContext());
+        Assert.NotNull(evolution);
+        var outcome = Evolution.Evolve(turtwig, evolution!, new EvolutionContext());
         Assert.Equal("Grotle", turtwig.Species.Name);
-        Assert.Equal("Turtwig", oldName);
+        Assert.Equal("Turtwig", outcome.From.Name);
     }
 
     [Fact]
@@ -564,18 +569,16 @@ public class PokemonTests
     }
 
     [Fact]
-    public void TestOnlyPlainLevelEvolutionsHappenOnLevelUp()
+    public void TestALevelAloneEvolvesOnlyTheSpeciesThatAskForNothingMore()
     {
-        // Riolu evolves by friendship in the daytime, which the engine doesn't track yet: it stays a Riolu
+        // Riolu evolves by friendship in the daytime: a new level doesn't do it for a Riolu fresh from the wild
         var riolu = new Pokemon(PokemonDatabase.Get("Riolu")!, 30, new Random(1));
-        riolu.GainExp(riolu.ExpForNextLevel - riolu.CurrentExp, out _, out bool evolved, out _);
-        Assert.False(evolved);
-        Assert.Equal("Riolu", riolu.Species.Name);
+        riolu.GainExp(riolu.ExpForNextLevel - riolu.CurrentExp, out _);
+        Assert.Null(Evolution.Find(riolu, EvolutionTrigger.LevelUp, new EvolutionContext()));
 
         var starly = new Pokemon(PokemonDatabase.Get("Starly")!, 13, new Random(1));
-        starly.GainExp(starly.ExpForNextLevel - starly.CurrentExp, out _, out evolved, out _);
-        Assert.True(evolved);
-        Assert.Equal("Staravia", starly.Species.Name);
+        starly.GainExp(starly.ExpForNextLevel - starly.CurrentExp, out _);
+        Assert.Equal("Staravia", Evolution.Find(starly, EvolutionTrigger.LevelUp, new EvolutionContext())!.TargetSpecies);
     }
 
     [Fact]

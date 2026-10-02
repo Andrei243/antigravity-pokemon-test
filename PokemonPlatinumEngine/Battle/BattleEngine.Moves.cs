@@ -176,6 +176,7 @@ public partial class BattleEngine
         int pp = 1 + targets.Where(t => t.Side != user.Side).Sum(t => BattleEffects.Of(t).Sum(e => e.ExtraPpUsed));
         move.CurrentPP = Math.Max(0, move.CurrentPP - pp);
         if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move)) user.ChoiceLock = move;
+        if (user.IsPlayerSide) Evolution.CountMoveUse(user.Pokemon!, move.Name);
 
         if (targets.Count == 0)
         {
