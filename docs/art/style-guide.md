@@ -172,24 +172,35 @@ The camera target and every sprite snap to the texel grid (1/32 unit), so pixel 
 - Pokémon and trainers are real 3D models on the platforms (no pixelation), lit and shadowed with the stage. Trainers are the SDF characters of the field, skinned on the GPU, with their smooth faces.
 - Size rule: a Pokémon covers the part of the screen its 128-px sprite frame would, i.e. the frame spans the platform's width ÷ 158 px (opponent) or ÷ 150 px (player).
 - Shading: two-tone cel ramp with a soft terminator (`smoothstep(0, 0.12, N·L)`), hemisphere ambient × 1.08, rim light 0.30.
-- Outlines: inverted hulls about half a sprite pixel thick (`WorldPerPixel × 0.55`), colour = surface mixed 50 % toward `40,30,56`. A character's hull is an offset shell of its SDF (the surface 0.009 units further out, meshed on its own and skinned with the body, drawn with front faces culled), so creases and hat brims never show spots of ink.
+- Outlines: offset shells of the SDF (the surface pushed out, meshed on its own and skinned with the body, drawn with front faces culled), so creases, brims and gaps between limbs never show spots of ink; colour = surface mixed toward `34,26,40`. A character's shell is 0.009 units out; a Pokémon's is half a pixel of its 128-px sprite frame (`WorldPerPixel × 0.55`).
 - Flashes (send-out, hit, recall, the dark silhouette of a wild Pokémon before the camera settles) are colour blends in the shader, not extra sprites.
-- G7 replaces the primitive-built Pokémon with the SDF kit; the menu sprites are re-baked from those models.
+
+### Pokémon (version 2, G7)
+
+- **One smooth body** sculpted with the SDF kit (`PokeBuilder` on `SdfModel`): ellipsoids, round cones, flattened spikes, rings and boxes joined with small smooth blends (2.5 cm for body parts, 1–1.5 cm for spikes and claws, sharp for a jaw's lip), meshed at 128 cells across the model's largest dimension (17,000–47,000 vertices) and cached on disk. Colour regions that shouldn't change the shape (masks, bands, a flame's heart) are paint with a soft edge 1.4 cm wide, or they follow the mesh's vertices in steps.
+- **Materials**: fur and feathers matt (`Fur`), smooth hides with a small sheen (`Scales`), shells, claws, beaks, teeth and horns hard and glossy (`Shell`), gold and steel `Metal`, leaves `Leaf`, flames `Glow`.
+- **Body plans** set the skeleton and how the clips move it: biped, quadruped, bird, serpent, fish, floating. Every plan has a root at the feet and a body bone at the middle of the torso; legs hang from the root so they stay planted while the body breathes above them; head, jaw, arms, wings, tail, ears, leaves, flames and fins have bones of their own; a serpent is a chain of segments.
+- **Eyes and markings are decals**, never sculpted: each is a 96-px square of an atlas laid over the triangles under it (projected along its normal, lifted a hair off the surface) and cut out where it is empty. The eye or marking fills the middle half of its square, so coarse triangles never clip it. Eyes come in four states, each painted with anti-aliased shapes: **open** (a dark oval whose lower part is the iris, lighter toward the bottom, with a big glint upper left and a small one lower right; or a white eye ringed in ink with a pupil looking a little inward), **shut** (a gentle curve, for blinks and fainting), **squeezed** (a chevron pointing to the nose, when hit) and **fierce** (a lid pressed toward the inner corner, painted in the colour of the skin round the eye, while attacking). Markings are dots, rings, four-pointed stars and bars.
+- **Clips** (`PokemonAnimation`), layered over the idle loop: *idle* (breathing, head sway, tail swish, ear flicks every few seconds, wings flapping when airborne, flames flickering); *physical* (drawn back, then a strike forward with the jaw open, arms swung through and a lunge across the field); *special* (rears up gathering power with arms and wings spread, then thrusts toward the target with a cry, without moving from its place); *status* (a hop and a nod); *hit* (recoil, squash, limbs flung out); *faint* (the legs give way, then a biped topples onto its front, a quadruped sinks onto its belly with its legs splayed, a flier drops onto its side; then it sinks into the platform); *entry* (lands with a squash out of the ball, then stands tall with a cry). A physical strike and a special move's release peak when the damage lands, 0.35 s into a 0.65 s move.
 
 ### Materials
 
-Character surfaces carry a material (G6; Pokémon from G7), which the character shader lights differently. Highlights are one crisp band where the half vector meets the normal (`smoothstep(0.42, 0.5, …)`), never a smooth gradient.
+Character and Pokémon surfaces carry a material (G6, G7), which the character shader lights differently. Highlights are one crisp band where the half vector meets the normal (`smoothstep(0.42, 0.5, …)`), never a smooth gradient.
 
 | Material | Terminator (`smoothstep(0, w, N·L)`) | Highlight band (strength, sharpness) | Own light | Shade |
 |---|---|---|---|---|
-| Default | 0.12 | none | none | as lit (Pokémon until G7) |
+| Default | 0.12 | none | none | as lit (models without materials) |
 | Skin | 0.22 | none | none | warm: sky light × `1.10, 0.96, 0.94` where unlit |
 | Cloth | 0.16 | none | none | rim × 0.9 |
 | Hair | 0.10 | 0.14, 10 (a soft sheen) | none | |
 | Leather (shoes, bags) | 0.08 | 0.40, 36 | none | |
 | Plastic (soles, brims, buttons) | 0.10 | 0.35, 48 | none | |
 | Metal (buckles, clasps) | 0.06 | 0.60, 64 | none | slightly cool |
-| Glow (the Rift) | 0.12 | none | 0.85 | rim × 0.5 |
+| Glow (the Rift, flames) | 0.12 | none | 0.85 | rim × 0.5 |
+| Fur and feathers | 0.20 | none | none | a touch warm, rim × 1.15 |
+| Scales and smooth hide | 0.12 | 0.12, 26 | none | |
+| Shell (shells, claws, beaks, teeth, horns) | 0.08 | 0.36, 30 | none | rim × 0.9 |
+| Leaf | 0.22 | 0.06, 8 | none | green bounce `0.94, 1.06, 0.94`, rim × 1.25 |
 
 ### Stage
 
@@ -308,7 +319,7 @@ One Pokémon on three panels: on the left its number, level, the 128-px sprite a
 
 ### Pokémon in menus
 
-- Always **2D pixel sprites** baked from the models (`PokemonSprites`): 48-px icons and 128-px front/back sprites with a one-texel outline.
+- Always **2D pixel sprites** baked from the models (`PokemonSprites`): 48-px icons and 128-px front/back sprites with a one-texel outline, the eyes and markings baked in with them.
 - Shown at whole-number scales only (party icons at 4×), point-filtered.
 - Icons hop like the main games: the selected one 3 sprite-pixels every 0.16 s, the others 1 sprite-pixel every 0.4 s; fainted ones stay still.
 
@@ -375,7 +386,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G6
+## Known gaps after G7
 
 - Ponds and lakes are still rectangles in the map data, however round their corners are drawn; their shapes come with the maps of plan 01. Cliffs taller than a ledge need height in the maps too.
 - Sand, dirt, snow and cave floors are drawn but no map uses them yet; snow and caves need their own light rigs when their areas are built.
@@ -384,7 +395,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).
-- Pokémon are still the primitive-built version 1 models with the default material; G7 rebuilds them with the SDF kit, materials and skeletons.
+- The 23 species the story shows so far have version 2 models; every other species shares the generic stand-in until plan 03 · D5 builds them with the same kit and body plans. The serpent, fish and floating plans have only sample models so far. Moves have no effects of their own yet (beams, particles, the colour of their type) and the camera doesn't follow them: G8.
 - Characters have mitten hands and no fingers; trainers don't yet throw their Poké Ball in battle (G8). Of the emotes only the trainer's start is played in the game so far; scripts (plan 02) will call the others. The trainer card still shows the old 16×24 portrait (G10).
-- The title keeps Giratina in shadow partly because the version 1 model does not hold up fully lit; revisit the lighting with the version 2 models (G7). The title music is a placeholder melody until plan 05.
+- The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5). The new-game introduction (Professor Rowan) is still to come (G10, plan 02).

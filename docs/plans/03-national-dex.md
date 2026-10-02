@@ -57,6 +57,7 @@ Move effects, abilities, held items, evolution methods, forms and breeding are n
 
 ### D5 · Procedural models for everyone (after plan 04 · G7)
 The model generator, built on plan 04's SDF modelling kit, from shape, colour, height, types and feature tags; lazy baking with the disk cache; a harness contact sheet showing every species (extend the `sheets` mode with paging). **Done when** all 1025 species (after D11) have a distinct model and start-up time doesn't grow.
+*Ready from plan 04 · G7:* `PokeBuilder` (shapes, paint, eye and marking decals, bones for each body part), the six body plans with their animation clips, and `PokemonModels.Sample(plan)` for the serpent, fish and floating plans that no hand-built species uses yet. Meshing one model takes about a second the first time, so the generator must mesh lazily and keep the start-up preload to the species the story shows.
 
 ### D6–D9 · Hand-built Sinnoh models (with plan 04's SDF modelling kit)
 Platinum's 210 Sinnoh species in four batches of about 50, in the order they appear in the story: the Route 201–204 species first, the legendaries last. Check each batch on the harness contact sheet and in battle.

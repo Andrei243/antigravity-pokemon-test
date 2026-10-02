@@ -192,7 +192,7 @@ public partial class BattleEngine
         // a moment later. The follow-up messages come once the player dismisses it.
         void PlayAttack()
         {
-            Anim.Attack(user.Side, user.Slot);
+            Anim.Attack(user.Side, user.Slot, move.Category);
             if (!damaging) return;
 
             bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);

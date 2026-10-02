@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Overworld;
 
@@ -267,6 +268,7 @@ public sealed class BattleRenderer
         public float Lunge;           // 0..1 toward the opponent
         public float Shake;           // -1..1 sideways jolt after a hit
         public float Sink;            // 0..1 of its height sunk below the platform while fainting
+        public float Faint;           // 0..1 of the faint clip
         public float Flash;
         public Color FlashColor;
         public float Silhouette;      // 0..1 dark silhouette of a wild Pokémon before the camera settles
@@ -292,9 +294,9 @@ public sealed class BattleRenderer
             a.SendOut = p;
         }
 
-        // Attack: lunge toward the opponent and back
+        // A physical move lunges toward the opponent and back, in step with the clip's strike
         p = BattleAnimator.Progress(v.AttackAge, BattleAnimator.AttackTime);
-        if (p >= 0f) a.Lunge = MathF.Sin(p * MathF.PI);
+        if (p >= 0f && v.AttackCategory == MoveCategory.Physical) a.Lunge = PokemonAnimation.Bump(p, 0.28f, 0.5f, 0.85f);
 
         // Hit: flicker and shake
         p = BattleAnimator.Progress(v.HitAge, BattleAnimator.HitTime);
@@ -304,11 +306,13 @@ public sealed class BattleRenderer
             a.Shake = MathF.Sin(p * 48f) * (1f - p);
         }
 
-        // Faint: sink into the platform, which hides the model as it goes
+        // Faint: the clip collapses it, then it sinks into the platform, which hides it as it goes
         if (fainting && v.FaintDelay <= 0f)
         {
             p = Math.Clamp(v.FaintAge / BattleAnimator.FaintTime, 0f, 1f);
-            a.Sink = p * p;
+            a.Faint = Math.Min(1f, p / 0.62f);
+            float sink = Math.Clamp((p - 0.6f) / 0.4f, 0f, 1f);
+            a.Sink = sink * sink;
         }
 
         // Recall or capture: shrink away into a red beam of light
@@ -348,8 +352,6 @@ public sealed class BattleRenderer
         }
     }
 
-    private static readonly Matrix4x4[] BoneMatrices = new Matrix4x4[64];
-
     /// <summary>
     /// The Pokémon as a 3D model standing on its platform, lit and shadowed with the scene. It is sized
     /// so it covers the same part of the screen as the sprite would.
@@ -361,7 +363,6 @@ public sealed class BattleRenderer
         if (!a.Visible) return;
 
         var model = PokemonModels.Get(v.Shown.Species.Name);
-        PokemonSprites.EnsureSceneOutline(model);
         var view = isPlayer ? SpriteView.Back : SpriteView.Front;
         var framing = PokemonSprites.Framing(model, view, PokemonSprites.Size);
         var spot = Spot(isPlayer ? BattleSide.Player : BattleSide.Enemy, slot, anim.Slots);
@@ -379,32 +380,24 @@ public sealed class BattleRenderer
         var root = Matrix4x4.CreateScale(scale * a.Grow) * Matrix4x4.CreateRotationY(framing.Yaw) * Matrix4x4.CreateTranslation(feet);
 
         float phase = (isPlayer ? 0.37f : 0f) + slot * 0.53f;
+        float sendOut = BattleAnimator.Progress(v.SendOutAge, BattleAnimator.SendOutTime);
         var pose = new PokePose
         {
             Time = anim.Time + phase,
             Blink = (anim.Time + phase * 3f) % 3.3f < 0.12f ? 1f : 0f,
             Attack = Math.Max(0f, BattleAnimator.Progress(v.AttackAge, BattleAnimator.AttackTime)),
-            Hurt = Math.Max(0f, BattleAnimator.Progress(v.HitAge, BattleAnimator.HitTime))
+            Kind = v.AttackCategory,
+            Hurt = Math.Max(0f, BattleAnimator.Progress(v.HitAge, BattleAnimator.HitTime)),
+            Faint = a.Faint,
+            Entry = Math.Max(0f, sendOut)
         };
-        model.BoneTransforms(pose, BoneMatrices);
 
         if (pass == CharacterPass.Color)
         {
             if (a.Flash > 0f) context.Shaders.SetFlash(a.FlashColor, Math.Clamp(a.Flash, 0f, 1f) * 0.85f);
             else if (a.Silhouette > 0f) context.Shaders.SetFlash(SilhouetteColor, a.Silhouette * 0.92f);
         }
-        for (int i = 0; i < model.Bones.Count; i++)
-        {
-            var bone = model.Bones[i];
-            if (!bone.Uploaded) continue;
-            var m = Matrix4x4.Transpose(BoneMatrices[i] * root);
-            switch (pass)
-            {
-                case CharacterPass.Depth: Raylib.DrawMesh(bone.Mesh, context.Depth, m); break;
-                case CharacterPass.Color: Raylib.DrawMesh(bone.Mesh, context.Toon, m); break;
-                case CharacterPass.Outline: if (bone.SceneOutlineUploaded) Raylib.DrawMesh(bone.SceneOutline, context.Outline, m); break;
-            }
-        }
+        PokemonRenderer.Draw(context, model, pose, root, pass);
         if (pass == CharacterPass.Color) context.Shaders.SetFlash(default, 0f);
     }
 

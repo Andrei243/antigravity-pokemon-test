@@ -18,7 +18,7 @@ internal enum SdfOp { Add, Cut, Paint }
 /// Surface kinds that the character shader lights differently (style guide, "Materials"): how soft the light's
 /// edge is, how much shine and how much light of its own. The table is <see cref="SurfaceMaterials"/>.
 /// </summary>
-internal enum SurfaceMaterial : byte { Default = 0, Skin, Cloth, Hair, Leather, Plastic, Metal, Glow }
+internal enum SurfaceMaterial : byte { Default = 0, Skin, Cloth, Hair, Leather, Plastic, Metal, Glow, Fur, Scales, Shell, Leaf }
 
 /// <summary>One shape of an <see cref="SdfModel"/>, in model space.</summary>
 internal sealed class SdfPrimitive
@@ -41,8 +41,17 @@ internal sealed class SdfPrimitive
 
     public float Rounding;
 
-    /// <summary>Orientation of the shape (not used by round cones, whose ends say it all).</summary>
+    /// <summary>
+    /// Orientation of the shape. A round cone's ends say where it lies; its rotation only matters together with
+    /// <see cref="Stretch"/>, as the frame the stretch is measured in.
+    /// </summary>
     public Quaternion Rotation = Quaternion.Identity;
+
+    /// <summary>
+    /// Scales the shape along its own axes (after <see cref="Rotation"/>): a spike flattened into a blade, an oval
+    /// ring. A round cone keeps its ends where they are and only its girth changes.
+    /// </summary>
+    public Vector3 Stretch = Vector3.One;
 
     /// <summary>Smooth-union or smooth-cut radius (0 joins with a crease).</summary>
     public float Blend;
@@ -70,18 +79,26 @@ internal sealed class SdfPrimitive
     private Vector3 ba;
     private float l2, rr, a2, il2;
 
+    // Stretched shapes are measured in their own scaled frame, and the distance scaled back by the smallest stretch
+    // (which never overstates it)
+    private bool stretched;
+    private float minStretch = 1f;
+
     internal void Prepare()
     {
         Inverse = Quaternion.Inverse(Quaternion.Normalize(Rotation));
+        stretched = Stretch != Vector3.One;
+        minStretch = Math.Min(Stretch.X, Math.Min(Stretch.Y, Stretch.Z));
+        float grow = Math.Max(1f, Math.Max(Stretch.X, Math.Max(Stretch.Y, Stretch.Z)));
         if (Shape == SdfShape.RoundCone)
         {
-            ba = B - A;
+            ba = stretched ? Vector3.Transform(B - A, Inverse) / Stretch : B - A;
             l2 = Math.Max(1e-8f, ba.LengthSquared());
             rr = Size.X - Size.Y;
             a2 = l2 - rr * rr;
             il2 = 1f / l2;
-            BoundsMin = Vector3.Min(A - new Vector3(Size.X), B - new Vector3(Size.Y));
-            BoundsMax = Vector3.Max(A + new Vector3(Size.X), B + new Vector3(Size.Y));
+            BoundsMin = Vector3.Min(A - new Vector3(Size.X * grow), B - new Vector3(Size.Y * grow));
+            BoundsMax = Vector3.Max(A + new Vector3(Size.X * grow), B + new Vector3(Size.Y * grow));
         }
         else
         {
@@ -94,7 +111,7 @@ internal sealed class SdfPrimitive
                 SdfShape.Torus => Size.X + Size.Y,
                 SdfShape.Cylinder => MathF.Sqrt(Size.X * Size.X + Size.Y * Size.Y),
                 _ => Size.Length()
-            };
+            } * grow;
             BoundsMin = A - new Vector3(reach);
             BoundsMax = A + new Vector3(reach);
         }
@@ -106,12 +123,19 @@ internal sealed class SdfPrimitive
         switch (Shape)
         {
             case SdfShape.RoundCone:
-                return RoundCone(p);
-            case SdfShape.Sphere:
+                return stretched ? RoundCone(Vector3.Transform(p - A, Inverse) / Stretch) * minStretch : RoundCone(p - A);
+            case SdfShape.Sphere when !stretched:
                 return (p - A).Length() - Size.X;
         }
 
         var q = Vector3.Transform(p - A, Inverse);
+        if (stretched) return Local(q / Stretch) * minStretch;
+        return Local(q);
+    }
+
+    /// <summary>Distance to the shape centred at the origin of its own frame (no stretch).</summary>
+    private float Local(Vector3 q)
+    {
         switch (Shape)
         {
             case SdfShape.Ellipsoid:
@@ -143,14 +167,18 @@ internal sealed class SdfPrimitive
                 float outside = MathF.Sqrt(Math.Max(dx, 0f) * Math.Max(dx, 0f) + Math.Max(dy, 0f) * Math.Max(dy, 0f));
                 return Math.Min(Math.Max(dx, dy), 0f) + outside - r;
             }
+            case SdfShape.Sphere:
+                return q.Length() - Size.X;
         }
         return float.MaxValue;
     }
 
-    /// <summary>Exact distance to a cone with round ends (Inigo Quilez), radius Size.X at A and Size.Y at B.</summary>
-    private float RoundCone(Vector3 p)
+    /// <summary>
+    /// Exact distance to a cone with round ends (Inigo Quilez), radius Size.X at its first end and Size.Y at its
+    /// second; <paramref name="pa"/> is the point relative to the first end.
+    /// </summary>
+    private float RoundCone(Vector3 pa)
     {
-        var pa = p - A;
         float y = Vector3.Dot(pa, ba);
         float z = y - l2;
         float x2 = (pa * l2 - ba * y).LengthSquared();
@@ -173,6 +201,8 @@ internal sealed class SdfPrimitive
     {
         sb.Append((int)Shape).Append(',').Append((int)Op).Append(',');
         foreach (var v in new[] { A, B, Size }) sb.Append(v.X.ToString("R")).Append(',').Append(v.Y.ToString("R")).Append(',').Append(v.Z.ToString("R")).Append(',');
+        if (Stretch != Vector3.One)
+            sb.Append('s').Append(Stretch.X.ToString("R")).Append(',').Append(Stretch.Y.ToString("R")).Append(',').Append(Stretch.Z.ToString("R")).Append(',');
         sb.Append(Rounding.ToString("R")).Append(',').Append(Rotation.X.ToString("R")).Append(',').Append(Rotation.Y.ToString("R")).Append(',')
             .Append(Rotation.Z.ToString("R")).Append(',').Append(Rotation.W.ToString("R")).Append(',').Append(Blend.ToString("R")).Append(',')
             .Append(Color.R).Append(',').Append(Color.G).Append(',').Append(Color.B).Append(',').Append((int)Material).Append(',')

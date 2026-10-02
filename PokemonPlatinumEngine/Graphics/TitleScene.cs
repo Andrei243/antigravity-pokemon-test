@@ -12,7 +12,6 @@ namespace PokemonPlatinumEngine.Graphics;
 internal sealed class TitleScene
 {
     private const float Near = 0.5f, Far = 120f, FovY = 32f;
-    private static readonly Matrix4x4[] Bones = new Matrix4x4[64];
 
     private static readonly SceneLighting Light = new(Vector3.Normalize(new Vector3(-0.5f, 0.6f, 0.62f)),
         new Vector3(0.66f, 0.56f, 0.6f), new Vector3(0.3f, 0.24f, 0.46f), new Vector3(0.36f, 0.14f, 0.2f));
@@ -36,7 +35,6 @@ internal sealed class TitleScene
         context.EnsureLoaded();
         var shaders = context.Shaders;
         var model = PokemonModels.Get("Giratina");
-        PokemonSprites.EnsureSceneOutline(model);
         EnsureStone();
 
         // Giratina is sized so its sprite frame is 4.6 units tall, and seen from slightly below
@@ -74,29 +72,20 @@ internal sealed class TitleScene
         }
 
         var pose = new PokePose { Time = time, Blink = time % 4.3f < 0.12f ? 1f : 0f };
-        model.BoneTransforms(pose, Bones);
         var root = Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(framing.Yaw + 0.12f * MathF.Sin(time * 0.3f)) *
             Matrix4x4.CreateTranslation(0, 0.25f * MathF.Sin(time * 0.7f), 0);
 
         shaders.SetFlash(Silhouette, 1f - Lit * reveal);
-        foreach (var (bone, i) in Indexed(model))
-            Raylib.DrawMesh(bone.Mesh, context.Toon, Matrix4x4.Transpose(Bones[i] * root));
+        PokemonRenderer.Draw(context, model, pose, root, CharacterPass.Color);
         shaders.SetFlash(default, 0f);
 
         Rlgl.EnableBackfaceCulling();
-        foreach (var (bone, i) in Indexed(model))
-            if (bone.SceneOutlineUploaded) Raylib.DrawMesh(bone.SceneOutline, context.Outline, Matrix4x4.Transpose(Bones[i] * root));
+        PokemonRenderer.Draw(context, model, pose, root, CharacterPass.Outline);
 
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
         Rlgl.SetClipPlanes(0.01, 1000.0);
         context.PreparePost(Post, new DepthRange(Near, Far, FovY, (float)context.Width / context.Height), aoRadius: 0.5f);
-    }
-
-    private static System.Collections.Generic.IEnumerable<(PokeBone Bone, int Index)> Indexed(PokeModel model)
-    {
-        for (int i = 0; i < model.Bones.Count; i++)
-            if (model.Bones[i].Uploaded) yield return (model.Bones[i], i);
     }
 
     /// <summary>The void: near-black violet deepening to a dull crimson below, with slow glows behind Giratina.</summary>

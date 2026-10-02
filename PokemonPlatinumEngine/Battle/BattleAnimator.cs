@@ -1,4 +1,5 @@
 using System;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle;
@@ -16,6 +17,10 @@ public sealed class CombatantView
 
     public float SendOutAge { get; internal set; } = -1f;
     public float AttackAge { get; internal set; } = -1f;
+
+    /// <summary>The kind of move being used, which decides how the attack looks (a strike, a cast or a hop).</summary>
+    public MoveCategory AttackCategory { get; internal set; } = MoveCategory.Physical;
+
     public float HitAge { get; internal set; } = -1f;
     public float FaintAge { get; internal set; } = -1f;
     public float RecallAge { get; internal set; } = -1f;
@@ -35,10 +40,11 @@ public sealed class CombatantView
 /// </summary>
 public sealed class BattleAnimator
 {
-    public const float SendOutTime = 0.6f;
-    public const float AttackTime = 0.45f;
+    public const float SendOutTime = 0.8f;
+    // A physical strike and a special move's release peak about when the damage lands (the engine's hit delay)
+    public const float AttackTime = 0.65f;
     public const float HitTime = 0.55f;
-    public const float FaintTime = 0.7f;
+    public const float FaintTime = 1.0f;
     public const float RecallTime = 0.45f;
     public const float CaptureTime = 0.45f;
     public const float TrainerExitTime = 0.9f;
@@ -91,7 +97,12 @@ public sealed class BattleAnimator
         if (side == BattleSide.Enemy && EnemyTrainer != null && EnemyTrainerExit < 0f) EnemyTrainerExit = 0f;
     }
 
-    public void Attack(BattleSide side, int slot = 0) => this[side, slot].AttackAge = 0f;
+    public void Attack(BattleSide side, int slot = 0, MoveCategory category = MoveCategory.Physical)
+    {
+        var v = this[side, slot];
+        v.AttackAge = 0f;
+        v.AttackCategory = category;
+    }
 
     public void Hit(BattleSide side, int slot = 0)
     {
