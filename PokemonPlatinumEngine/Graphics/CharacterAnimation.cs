@@ -21,8 +21,12 @@ internal static class CharacterAnimation
         Emote.Surprised => 0.9f,
         Emote.Nod => 1.0f,
         Emote.Cheer => 1.4f,
+        Emote.Throw => 0.75f,
         _ => 0f
     };
+
+    /// <summary>When a throw lets go of the ball, seconds into the emote.</summary>
+    public const float ThrowRelease = 0.3f;
 
     /// <summary>The face an emote pulls, unless the pose asks for another.</summary>
     public static Expression ExpressionOf(CharacterPose p)
@@ -232,6 +236,25 @@ internal static class CharacterAnimation
                 pose.Turn(HumanBones.Head, 0.28f * MathF.Max(0f, MathF.Sin(t * Tau * 2f)));
                 pose.Turn(HumanBones.Hair, 0.1f * MathF.Max(0f, MathF.Sin(t * Tau * 2f - 0.8f)));
                 break;
+            case Emote.Throw:
+            {
+                // Overarm: the right arm swings back and up, comes over the top as the body turns into the throw,
+                // lets go at ThrowRelease and follows through low across the body
+                float back = Smooth(0f, 0.18f, t) * (1f - Smooth(0.18f, ThrowRelease, t));
+                float over = Smooth(0.16f, ThrowRelease, t) * (1f - Smooth(ThrowRelease + 0.05f, 0.62f, t));
+                float through = Smooth(ThrowRelease, 0.45f, t);
+                pose.Rotation[HumanBones.UpperArmR] = Quaternion.Identity;
+                pose.Turn(HumanBones.UpperArmR, 1.25f * back - 2.5f * over - 0.9f * through * (1f - over), 0f, -0.55f * back - 0.25f * over);
+                pose.Rotation[HumanBones.ForeArmR] = Quaternion.Identity;
+                pose.Turn(HumanBones.ForeArmR, -1.3f * back - 0.25f * over - 0.3f * through);
+                pose.Turn(HumanBones.UpperArmL, -0.5f * back + 0.3f * through, 0f, 0.35f * back);
+                pose.Turn(HumanBones.Spine, -0.12f * back + 0.22f * over + 0.12f * through, -0.4f * back + 0.3f * over);
+                pose.Turn(HumanBones.Head, 0.08f * back - 0.1f * over, 0.25f * back - 0.15f * over);
+                pose.Turn(HumanBones.ThighR, 0.25f * back - 0.15f * through);
+                pose.Turn(HumanBones.ThighL, -0.3f * over);
+                pose.Turn(HumanBones.Hair, 0.2f * back - 0.25f * over);
+                break;
+            }
             case Emote.Cheer:
             {
                 // Both arms up, bouncing on the spot

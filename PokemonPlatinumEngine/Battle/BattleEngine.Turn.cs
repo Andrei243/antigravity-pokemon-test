@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Core;
@@ -161,7 +160,7 @@ public partial class BattleEngine
             var p = user.Pokemon!;
             p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + item.EffectValue);
             AudioManager.PlaySound("heal");
-            QueueMessage($"Used a {item.Name}! {p.DisplayName}'s HP was restored!", onComplete);
+            QueueMessage($"Used a {item.Name}! {p.DisplayName}'s HP was restored!", onComplete, onShow: () => Anim.Heal(user.Side, user.Slot));
         }
         else
         {
@@ -178,20 +177,19 @@ public partial class BattleEngine
             AudioManager.PlaySound("ball_throw");
             var catchRes = CatchCalculator.AttemptCatch(foe, item);
 
-            // The ball opens over the foe, which vanishes into it; the result shows once the ball settles.
-            // A foe that breaks free bursts out with the ball and is back on its platform before the message.
-            VFX.TriggerPokeballThrow(item.Name, new Vector2(200, 720), BattleHUD.Center(BattleSide.Enemy, target.Slot),
-                BattleHUD.Feet(BattleSide.Enemy, target.Slot), catchRes.Shakes);
-            Anim.Capture(BattleVFX.BallFlightTime, target.Slot);
+            // The trainer throws, the ball opens over the foe, which vanishes into it; the result shows once the
+            // ball settles. A foe that breaks free bursts out with the ball and is back on its platform before the
+            // message.
+            Anim.ThrowBall(item.Name, target.Slot, catchRes.Shakes);
 
             if (catchRes.IsCaught)
             {
-                messageWaitTimer = BattleVFX.BallThrowTime(catchRes.Shakes) + 0.1f;
+                messageWaitTimer = BattleAnimator.BallThrowTime(catchRes.Shakes) + 0.1f;
             }
             else
             {
-                After(BattleVFX.BallSettleTime(catchRes.Shakes), () => Anim.BreakFree(target.Slot));
-                messageWaitTimer = BattleVFX.BallSettleTime(catchRes.Shakes) + BattleAnimator.SendOutTime + 0.1f;
+                After(BattleAnimator.BallSettleTime(catchRes.Shakes), () => Anim.BreakFree(target.Slot));
+                messageWaitTimer = BattleAnimator.BallSettleTime(catchRes.Shakes) + BattleAnimator.SendOutTime + 0.1f;
             }
             turnEventQueue.Enqueue(() =>
             {

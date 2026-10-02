@@ -37,6 +37,25 @@ public enum TreeStyle
     Pine
 }
 
+/// <summary>
+/// The stage a battle is fought on (plan 04 · G8). Outdoors the ground under the player picks it (water, sand,
+/// snow, a cave floor); a map can name its own (a forest, a gym, the League's rooms).
+/// </summary>
+public enum BattleArena
+{
+    Grass,
+    Forest,
+    Cave,
+    Water,
+    Snow,
+    Sand,
+    Indoors,
+    /// <summary>A gym hall, themed on its leader's type.</summary>
+    Gym,
+    /// <summary>A room of the Pokémon League: an Elite Four member's type, or the Champion's room.</summary>
+    League
+}
+
 /// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>
 public enum Architecture
 {

@@ -14,7 +14,7 @@ internal enum RigKind { Humanoid, Briefcase, Rift }
 internal enum Expression { Neutral, Happy, Surprised, Sad, Angry }
 
 /// <summary>Short animations played over the idle or the walk.</summary>
-internal enum Emote { None, Wave, Surprised, Nod, Cheer }
+internal enum Emote { None, Wave, Surprised, Nod, Cheer, Throw }
 
 /// <summary>Animation inputs for one frame of a character.</summary>
 internal struct CharacterPose

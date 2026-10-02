@@ -7,12 +7,13 @@ namespace PokemonPlatinumEngine.Graphics;
 /// <summary>
 /// Battle sky: a three-stop gradient that pales toward a hazy horizon, soft cumulus clouds with lit tops and
 /// cool, flat undersides drifting across it, and twinkling stars after dark. Colours come from the time of day.
+/// Under a roof (caves, rooms, halls) only the gradient is drawn, behind the walls.
 /// </summary>
 internal static class SkyPainter
 {
     private static Texture2D? cloud;
 
-    public static void Draw(float time, int width, int height, SkyColors sky)
+    public static void Draw(float time, int width, int height, SkyColors sky, bool clouds = true)
     {
         Raylib.ClearBackground(sky.Horizon);
         int mid = (int)(height * 0.22f), low = (int)(height * 0.46f);
@@ -31,13 +32,14 @@ internal static class SkyPainter
             }
         }
 
+        if (!clouds) return;
         var tex = Cloud;
-        (float X, float Y, float W, float Speed)[] clouds =
+        (float X, float Y, float W, float Speed)[] drift =
         {
             (0.06f, 0.012f, 620f, 10f), (0.4f, 0.0f, 780f, 7f), (0.74f, 0.03f, 520f, 13f),
             (0.26f, 0.05f, 360f, 16f), (0.92f, 0.055f, 330f, 18f), (0.58f, 0.065f, 300f, 20f)
         };
-        foreach (var (cx, cy, cw, speed) in clouds)
+        foreach (var (cx, cy, cw, speed) in drift)
         {
             float w = cw * unit, h = w * tex.Height / tex.Width;
             float span = width + w * 2f;

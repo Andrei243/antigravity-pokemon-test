@@ -218,6 +218,7 @@ public class CharacterAnimationTests
     [InlineData("Surprised")]
     [InlineData("Nod")]
     [InlineData("Cheer")]
+    [InlineData("Throw")]
     public void EmotesStartAndEndInTheStandingPose(string name)
     {
         var emote = Enum.Parse<Emote>(name);

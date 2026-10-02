@@ -17,6 +17,34 @@ public class Map
     public bool HasLake => groundLayer.Count(t => t == TileType.Water) >= 40;
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
 
+    /// <summary>The stage this map's battles are fought on; null lets the map decide (a room, or the ground under the player).</summary>
+    public BattleArena? Arena { get; set; }
+
+    /// <summary>For a gym or the League: the type the stage is themed on (in the League, null is the Champion's room).</summary>
+    public PokemonType? ArenaType { get; set; }
+
+    /// <summary>
+    /// The stage for a battle that starts with the player on (<paramref name="x"/>, <paramref name="y"/>):
+    /// rooms are indoors unless the map names its stage; outdoors water, sand, snow and cave floors under the
+    /// player win over the map's own stage, which is grass if it names none.
+    /// </summary>
+    public BattleArena ArenaAt(int x, int y)
+    {
+        if (IsIndoors) return Arena ?? BattleArena.Indoors;
+        if (Arena is BattleArena.Gym or BattleArena.League) return Arena.Value;
+        if (InBounds(x, y))
+        {
+            switch (GetGroundTile(x, y))
+            {
+                case TileType.Water: return BattleArena.Water;
+                case TileType.Sand: return BattleArena.Sand;
+                case TileType.Snow: return BattleArena.Snow;
+                case TileType.CaveFloor: return BattleArena.Cave;
+            }
+        }
+        return Arena ?? BattleArena.Grass;
+    }
+
     /// <summary>How the houses of this town are built.</summary>
     public Architecture Architecture { get; set; } = Architecture.Timber;
 

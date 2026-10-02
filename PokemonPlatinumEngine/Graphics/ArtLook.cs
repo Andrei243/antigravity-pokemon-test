@@ -211,6 +211,151 @@ internal static class ArtLook
     private static LightRig Battle(SceneLighting light, SkyColors sky, float fog, float rim, PostSettings post) =>
         new(light, sky.Horizon, Of(sky.Horizon), fog, 40f, 140f, post, 0f, rim, sky, sky.Stars > 0f ? 0f : 0.16f);
 
+    // ------------------------------------------------------------------ arenas (plan 04 · G8)
+
+    /// <summary>
+    /// The light of a battle's arena: grass and water stages take the time of day's battle rig; forest, snow and
+    /// sand grade it their own way; caves and halls have fixed rigs that ignore the clock, and rooms follow it
+    /// through their windows.
+    /// </summary>
+    public static LightRig ArenaRig(ArenaSpec spec, float hour) => spec.Kind switch
+    {
+        Overworld.BattleArena.Forest => ForestGrade(BattleRig(hour)),
+        Overworld.BattleArena.Snow => SnowGrade(BattleRig(hour)),
+        Overworld.BattleArena.Sand => SandGrade(BattleRig(hour)),
+        Overworld.BattleArena.Cave => CaveRig,
+        Overworld.BattleArena.Indoors => AtHour(hour, RoomBattleRigFor),
+        Overworld.BattleArena.Gym or Overworld.BattleArena.League => HallRig(spec.Theme, spec.Kind == Overworld.BattleArena.League),
+        _ => BattleRig(hour)
+    };
+
+    /// <summary>
+    /// Under the trees: less sun, green shade and haze, a stronger vignette. After dark only the green haze is
+    /// added, so the Pokémon still read clearly (night battles stay brighter than the night field).
+    /// </summary>
+    public static LightRig ForestGrade(LightRig r)
+    {
+        bool night = r.Sky.Stars > 0f;
+        return r with
+        {
+            Light = night ? r.Light : r.Light with
+            {
+                SunColor = r.Light.SunColor * 0.8f,
+                SkyAmbient = r.Light.SkyAmbient * V(0.84f, 0.96f, 0.82f),
+                GroundAmbient = r.Light.GroundAmbient * V(0.86f, 1.0f, 0.84f)
+            },
+            FogColor = Vector3.Lerp(r.FogColor, night ? V(0.12f, 0.2f, 0.16f) : V(0.4f, 0.56f, 0.44f), 0.55f),
+            FogAmount = r.FogAmount + (night ? 0.05f : 0.15f),
+            FogNear = 22f,
+            FogFar = 90f,
+            CloudShade = r.CloudShade + 0.12f,
+            Post = r.Post with
+            {
+                Vignette = r.Post.Vignette + (night ? 0.06f : 0.16f),
+                Saturation = r.Post.Saturation * 0.97f,
+                ShadowTint = r.Post.ShadowTint * V(0.95f, 1.02f, 0.96f)
+            }
+        };
+    }
+
+    private static readonly SkyColors Overcast = new(Rgb(150, 176, 214), Rgb(196, 212, 234), Rgb(232, 238, 246), Rgb(244, 246, 250), 0f);
+
+    /// <summary>On snow: a paler, cooler sky, light bounced up off the ground, softer contrast.</summary>
+    public static LightRig SnowGrade(LightRig r)
+    {
+        bool night = r.Sky.Stars > 0f;
+        var sky = SkyColors.Lerp(r.Sky, Overcast, night ? 0.15f : 0.6f);
+        return r with
+        {
+            Light = r.Light with
+            {
+                SunColor = r.Light.SunColor * V(0.86f, 0.92f, 1.0f),
+                SkyAmbient = r.Light.SkyAmbient * V(1.0f, 1.05f, 1.12f),
+                GroundAmbient = r.Light.GroundAmbient * V(1.25f, 1.3f, 1.42f)
+            },
+            Sky = sky,
+            Background = sky.Horizon,
+            FogColor = night ? r.FogColor : Vector3.Lerp(r.FogColor, V(0.88f, 0.91f, 0.96f), 0.7f),
+            FogAmount = r.FogAmount + 0.15f,
+            Post = r.Post with
+            {
+                Saturation = r.Post.Saturation * 0.88f,
+                Contrast = 1.0f,
+                BloomThreshold = Math.Max(r.Post.BloomThreshold, 0.92f),
+                ShadowTint = r.Post.ShadowTint * V(0.97f, 0.99f, 1.05f)
+            }
+        };
+    }
+
+    private static readonly SkyColors Haze = new(Rgb(120, 164, 214), Rgb(196, 206, 214), Rgb(240, 226, 196), Rgb(252, 244, 228), 0f);
+
+    /// <summary>In the desert: a hot, hazy light, warm fog and a little more glow.</summary>
+    public static LightRig SandGrade(LightRig r)
+    {
+        bool night = r.Sky.Stars > 0f;
+        var sky = SkyColors.Lerp(r.Sky, Haze, night ? 0.15f : 0.5f);
+        return r with
+        {
+            Light = r.Light with
+            {
+                SunColor = r.Light.SunColor * V(1.12f, 1.04f, 0.92f),
+                GroundAmbient = r.Light.GroundAmbient * V(1.15f, 1.08f, 0.95f)
+            },
+            Sky = sky,
+            Background = sky.Horizon,
+            FogColor = night ? r.FogColor : Vector3.Lerp(r.FogColor, V(0.94f, 0.86f, 0.72f), 0.6f),
+            FogAmount = r.FogAmount + 0.12f,
+            Post = r.Post with
+            {
+                BloomStrength = r.Post.BloomStrength + 0.08f,
+                HighlightTint = r.Post.HighlightTint * V(1.03f, 1.0f, 0.95f),
+                Saturation = r.Post.Saturation * 1.03f
+            }
+        };
+    }
+
+    /// <summary>A cave ignores the clock: a warm, torch-like key from the upper left, cool blue shade, dark haze.</summary>
+    public static readonly LightRig CaveRig = new(
+        new SceneLighting(Dir(-0.5f, 0.75f, 0.45f), V(0.58f, 0.45f, 0.31f), V(0.26f, 0.3f, 0.4f), V(0.23f, 0.2f, 0.18f)),
+        Rgb(20, 16, 18), V(0.1f, 0.09f, 0.11f), 0.55f, 18f, 75f,
+        BattleDayPost with
+        {
+            BloomThreshold = 0.62f, BloomStrength = 0.45f, Saturation = 0.95f, Contrast = 1.08f,
+            ShadowTint = V(0.84f, 0.9f, 1.14f), HighlightTint = V(1.08f, 1.0f, 0.88f), Vignette = 0.42f
+        },
+        1f, 0.5f, new SkyColors(Rgb(16, 13, 16), Rgb(24, 20, 22), Rgb(36, 30, 32), Rgb(40, 36, 40), 0f));
+
+    /// <summary>A room in battle: the indoor light of the time of day, graded like the battles.</summary>
+    public static LightRig RoomBattleRigFor(TimeOfDay time)
+    {
+        var room = IndoorRigFor(time);
+        var walls = new SkyColors(Rgb(190, 176, 156), Rgb(214, 202, 182), Rgb(232, 222, 202), Color.White, 0f);
+        return new LightRig(room.Light, walls.Horizon, V(0.82f, 0.76f, 0.68f), 0.12f, 30f, 120f,
+            BattleDayPost with { HighlightTint = V(1.05f, 1.01f, 0.94f), Vignette = 0.18f },
+            0.5f + 0.5f * room.LampGlow, 0.35f, walls) { GlowColor = room.GlowColor };
+    }
+
+    /// <summary>A gym hall or a League room: a fixed key light, ambient tinted by the type, its lamps lit.</summary>
+    public static LightRig HallRig(Data.PokemonType? theme, bool league)
+    {
+        var (_, _, wall, _, accent, _) = BattleArenas.HallColors(theme, league);
+        var tint = Of(accent);
+        float dim = league ? 0.78f : 1f;
+        var light = new SceneLighting(Dir(-0.45f, 0.85f, 0.42f), V(0.5f, 0.47f, 0.42f) * (league ? 1.05f : 1f),
+            Vector3.Lerp(V(0.52f, 0.54f, 0.62f), tint, 0.16f) * dim, Vector3.Lerp(V(0.46f, 0.44f, 0.42f), tint, 0.1f) * dim);
+        var w = Of(wall);
+        var sky = new SkyColors(Fade(wall, 0.45f), Fade(wall, 0.6f), Fade(wall, 0.8f), Color.White, 0f);
+        return new LightRig(light, sky.Horizon, w * 0.6f, league ? 0.35f : 0.22f, 30f, 110f,
+            BattleDayPost with
+            {
+                BloomThreshold = league ? 0.7f : 0.8f, BloomStrength = league ? 0.45f : 0.32f,
+                Vignette = league ? 0.38f : 0.2f, Saturation = 1.05f
+            },
+            1f, league ? 0.55f : 0.4f, sky);
+    }
+
+    private static Color Fade(Color c, float f) => new((int)(c.R * f), (int)(c.G * f), (int)(c.B * f), 255);
+
     public static LightRig BattleRigFor(TimeOfDay time) => time switch
     {
         TimeOfDay.Morning => Battle(

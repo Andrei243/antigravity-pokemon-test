@@ -132,6 +132,8 @@ public class GameEngine
         // The Pokémon models too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel).ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
+        // And the balls the battles throw
+        BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
 
         ApplySettings(window: false);
 
@@ -695,7 +697,7 @@ public class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
-            battleRenderer.SetArena(currentMap);
+            battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         });
     }
 
@@ -719,7 +721,7 @@ public class GameEngine
                 Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = new List<Trainer> { trainer }
             });
-            battleRenderer.SetArena(currentMap);
+            battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainer = trainerNpc;
         });
     }
