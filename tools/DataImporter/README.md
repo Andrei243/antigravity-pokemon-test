@@ -25,7 +25,7 @@ The run is deterministic: the same sources and overrides give the same files, so
 | Descriptions of moves, abilities and items | PokeAPI's short effect texts (written by PokeAPI's contributors, not taken from the games) |
 | Pokédex entries | generated from the data in our own words |
 
-Both repositories are pinned to a commit in `Sources.cs`. To update, move a pin, run the importer and read the diff.
+Both repositories are pinned to a commit in `Sources.cs`. To update, move a pin, run the importer and read the diff. `tools/MapImporter` reads the same commit of the decompilation, so move the pin for both and run both.
 
 PokeAPI's data is © Paul Hallett and PokéAPI contributors, used under its BSD 3-Clause licence (<https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md>). Pokémon and Pokémon character names are trademarks of Nintendo.
 

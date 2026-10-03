@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PokemonPlatinumEngine\PokemonPlatinumEngine.csproj" />
+    <!-- The map importer's readers are tested on small hand-built files; the tests never need the decompilation -->
+    <ProjectReference Include="..\tools\MapImporter\MapImporter.csproj" />
   </ItemGroup>
 
 </Project>

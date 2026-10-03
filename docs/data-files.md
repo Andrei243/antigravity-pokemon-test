@@ -88,3 +88,87 @@ An NPC has `name`, `npcType` (picks the character model), `x`, `y`, `facing` and
 The trainer's `id` is what the save file records once they are beaten, so don't change it for a trainer who is already in the game. Party Pokémon are rolled fresh (gender, nature, moves for their level) every time the maps load.
 
 `MapFile.FromMap` turns a `Map` back into a file, and `DataFileTests` checks that every map file loads and writes back out unchanged, so a generated file must use the same layout `GameDataFiles.Serialize` writes.
+
+## World files
+
+The imported Sinnoh (plan 01) is stored differently from the hand-made maps above: as **chunks** of 32 by 32 tiles, **matrices** that lay chunks out in a grid, and **areas** that say what a part of a grid is and what stands on it. `tools/MapImporter` writes all three from the Platinum decompilation into `tools/MapImporter/out/world/`; the records are in `Data/WorldFiles.cs`. The game doesn't load them yet: plan 01 · M2 moves them under `PokemonPlatinumEngine/Data/` and replaces the hand-made maps area by area.
+
+Lengths are in tiles and heights too (one tile is 16 of the original's units). x runs east and z south; a chunk's own coordinates start at its north-west corner.
+
+### `chunks/NNN.json`
+
+```json
+{
+  "id": 0,
+  "behaviours": [ "0000…", … ],
+  "solid": [ "####…", … ],
+  "cover": [ "TTTT…", … ],
+  "heights": [
+    { "x": 0, "z": 0, "width": 32, "depth": 27, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 27, "width": 8, "depth": 5, "height": 0.5, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "props": [
+    { "model": 22, "name": "t1_h01", "x": 21, "y": 1, "z": 10.5, "boxX": 19, "boxZ": 9.125, "width": 4.1875, "depth": 2.75, "height": 4.4375 }
+  ]
+}
+```
+
+(From chunk 0, Twinleaf Town: its ground is one tile up, its pond half a tile, and `t1_h01` is one of its two small houses.)
+
+- `behaviours`: 32 rows of 64 characters, two hexadecimal digits per tile: what the tile does, a `TileBehavior` value. `docs/tile-behaviours.md` lists them.
+- `solid`: 32 rows of 32 characters: `#` blocked, `.` open.
+- `cover`: 32 rows of 32 characters: what the tile looks like, one code of the table below.
+- `heights`: rectangles of ground ("plates"). The ground is `height` at the rectangle's north-west corner and rises by `slopeX` per tile eastward and `slopeZ` per tile southward. Where plates overlap, as under a bridge, a walker stays on the one nearest their own height (`WorldChunkFile.HeightAt`). A step of 1.25 tiles or more up or down can't be walked.
+- `props`: what stands on the chunk. `model` and `name` are the original's id and short name for it (`pc` is a Pokémon Center, `fs` a Mart, `t1_h01` a Twinleaf house), which is how plan 01 · M4 chooses what to build; `x`, `y`, `z` is its origin, and `boxX`, `boxZ`, `width`, `depth`, `height` the space it takes.
+
+| Code | `TerrainCover` | |
+| --- | --- | --- |
+| `.` | `Grass` | Lawn |
+| `*` | `Flowers` | |
+| `w` | `TallGrass` | |
+| `:` | `Path` | Bare earth, a sandy track, gravel |
+| `=` | `Paving` | The made ground of towns and cities |
+| `,` | `Sand` | |
+| `r` | `Rock` | Bare rock underfoot |
+| `c` | `CaveFloor` | |
+| `^` | `Snow` | |
+| `i` | `Ice` | |
+| `m` | `Marsh` | |
+| `~` | `Water` | |
+| `b` | `Bridge` | Planks |
+| `s` | `Steps` | |
+| `T` | `Tree` | |
+| `C` | `Cliff` | A rock face |
+| `R` | `Boulder` | A rock standing on the ground or in water |
+| `F` | `Fence` | A fence, a railing, a lamp, a low wall |
+| `B` | `Building` | Under a prop as large as a building |
+| `?` | `Unknown` | The importer couldn't tell; its report says why |
+
+### `matrices/NNN.json`
+
+```json
+{
+  "id": 0,
+  "width": 30,
+  "height": 30,
+  "chunks": [ "  -   -  52 174 …", … ],
+  "areas": [ " 0  0 12  0 …", … ],
+  "areaKeys": [ "everywhere", "jubilife_city", … ],
+  "altitudes": [ " 0  0  2  0 …", … ]
+}
+```
+
+One string per row of the grid, cells separated by spaces. `chunks` holds chunk ids (`-` for none), `areas` an index into `areaKeys` for the area each chunk belongs to, `altitudes` how high the chunk sits in half tiles. Matrix 0 is the overworld. A matrix without `areas` belongs whole to the area that names it; one without `altitudes` sits at zero. The same chunk can fill many cells: the overworld's 468 filled cells use 176 different chunks.
+
+### `areas/<key>.json`
+
+One area: a town, a route, a cave floor, a room. `key` is its name in lower case (`twinleaf_town`), `index` the original's number for it, `name` what a player reads on arriving, `matrix` the grid it lies on. `kind` is `Town`, `Outdoors`, `Cave`, `Indoors`, `PokemonCenter` or `Underground`; `sign` the style of the arrival sign; `weather`, `camera` and `battleBackground` name the original's settings; `dayMusic` and `nightMusic` the roles of its music; `encounters` its table of wild Pokémon (left out when it has none); `bike`, `running`, `escapeRope` and `fly` what is allowed there.
+
+Then what stands on it, in tiles of its matrix (on the overworld: tiles of the whole region):
+
+- `warps`: `{ "x", "z", "to", "toWarp" }`: the tile leads to the warp numbered `toWarp` (counting from 0) of the area `to`. Six lifts lead to `dynamic`: a script decides where.
+- `objects`: people and things: `id`, `looks`, `movement`, `x`, `z`, `facing` (0 north, 1 south, 2 west, 3 east), `rangeX` and `rangeZ` (how far they wander), `trainer` (how a trainer watches for the player), `hiddenBy` (the flag that hides them) and `script`.
+- `signs`: `{ "x", "z", "type", "script" }`: something read or found by facing the tile.
+- `triggers`: `{ "x", "z", "width", "depth", "script", "variable", "value" }`: a rectangle that starts a script while a story variable has a value.
+
+Scripts are numbers into the area's script file in the decompilation; plan 02 writes ours. No dialogue is imported.

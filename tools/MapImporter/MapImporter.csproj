@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Development tool: reads Sinnoh's map layouts (not its models or textures) from the Platinum decompilation. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+    <!-- The pinned commit of the decompilation and the sparse checkout, shared with the data importer -->
+    <Compile Include="../DataImporter/Sources.cs" Link="Sources.cs" />
+  </ItemGroup>
+
+</Project>

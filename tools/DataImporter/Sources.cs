@@ -3,9 +3,10 @@ using System.Diagnostics;
 namespace DataImporter;
 
 /// <summary>
-/// Where the importer reads from. By default it checks out pinned commits of both repositories (only the folders it
-/// needs) into <c>tools/DataImporter/.cache</c>, so every run reads the same data. Move a pin forward to pick up
-/// fixes upstream, then run the importer and review the diff of the data files.
+/// Where the importers read from. By default each checks out pinned commits of the repositories it needs (only the
+/// folders it reads) into its own <c>.cache</c> folder, so every run reads the same data. Move a pin forward to pick
+/// up fixes upstream, then run the importers and review the diff of the data files. <c>tools/MapImporter</c> compiles
+/// this file too, so both read the same commit of the decompilation.
 /// </summary>
 public static class Sources
 {
@@ -17,12 +18,13 @@ public static class Sources
     public const string PokeApiCommit = "bc92d3b6029ef1abe9e7ad424c400b338f3c11fe";
     public static readonly string[] PokeApiFolders = { "/data/v2/csv/" };
 
-    /// <summary>A sparse checkout of the pinned commit, made once and reused.</summary>
+    /// <summary>A sparse checkout of the pinned commit, made once and reused until the commit or the folders change.</summary>
     public static string Checkout(string cache, string name, string repo, string commit, string[] folders)
     {
         string dir = Path.Combine(cache, name);
         string stamp = Path.Combine(dir, ".importer-commit");
-        if (File.Exists(stamp) && File.ReadAllText(stamp).Trim() == commit) return dir;
+        string wanted = string.Join('\n', folders.Prepend(commit));
+        if (File.Exists(stamp) && File.ReadAllText(stamp).ReplaceLineEndings("\n").Trim() == wanted) return dir;
 
         if (!Directory.Exists(Path.Combine(dir, ".git")))
         {
@@ -32,7 +34,7 @@ public static class Sources
         Git(dir, new[] { "sparse-checkout", "set", "--no-cone" }.Concat(folders).ToArray());
         Git(dir, "fetch", "--depth", "1", "origin", commit);
         Git(dir, "checkout", "--detach", commit);
-        File.WriteAllText(stamp, commit);
+        File.WriteAllText(stamp, wanted);
         return dir;
     }
 
