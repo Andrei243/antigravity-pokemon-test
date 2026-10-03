@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using PokemonPlatinumEngine.Overworld;
+using TownArchitecture = PokemonPlatinumEngine.Overworld.Architecture;
 
 namespace PokemonPlatinumEngine.Data;
 
@@ -279,10 +280,133 @@ public sealed class WorldAreaFile
     public bool EscapeRope { get; set; }
     public bool Fly { get; set; }
 
+    /// <summary>
+    /// The wild Pokémon of the area's grass, one per slot of the original's table; the slots are met 20, 20, 10,
+    /// 10, 10, 10, 5, 5, 4, 4, 1 and 1 times in a hundred (<see cref="LandSlotWeights"/>). Left out when it has none.
+    /// </summary>
+    public List<AreaEncounter>? Land { get; set; }
+
+    public static readonly int[] LandSlotWeights = { 20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1 };
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();
     public List<AreaTrigger> Triggers { get; set; } = new();
+}
+
+/// <summary>One slot of an area's table of wild Pokémon.</summary>
+[JsonConverter(typeof(OneLine<AreaEncounter>))]
+public sealed class AreaEncounter
+{
+    public string Species { get; set; } = "";
+    public int Level { get; set; }
+}
+
+/// <summary>
+/// The list of what is built so far of an imported region (<c>world/&lt;region&gt;/world.json</c>, written by
+/// hand): the maps the game makes from its matrices, and the areas that are open to walk in. Every other area
+/// whose chunks are present is scenery. <c>tools/MapImporter --data</c> reads this file to know which chunks,
+/// matrices and areas to write beside it.
+/// </summary>
+public sealed class WorldIndexFile
+{
+    public string Region { get; set; } = "";
+    public List<WorldMapEntry> Maps { get; set; } = new();
+    public List<string> Areas { get; set; } = new();
+}
+
+/// <summary>One map the game makes from a matrix: the overworld, or a place that is a matrix of its own.</summary>
+public sealed class WorldMapEntry
+{
+    /// <summary>The map's name in the game: what warps and saves refer to.</summary>
+    public string Name { get; set; } = "";
+    public int Matrix { get; set; }
+
+    /// <summary>For a matrix that doesn't say which area each chunk belongs to: the area it all is.</summary>
+    public string? Area { get; set; }
+
+    /// <summary>The kind of tree that fills its forests where an area doesn't say.</summary>
+    public TreeStyle Trees { get; set; } = TreeStyle.Pine;
+}
+
+/// <summary>
+/// What the game adds to an imported area (<c>overlays/&lt;key&gt;.json</c>, written by hand): our music, the look of
+/// its houses and trees, where its doors lead, and which of the original's people stand there and what they say
+/// in our own words. A re-import never touches these files. An area without one is silent scenery.
+/// </summary>
+public sealed class WorldOverlayFile
+{
+    public string Area { get; set; } = "";
+    public string? BgmTrack { get; set; }
+    public TreeStyle? Trees { get; set; }
+    public TownArchitecture? Architecture { get; set; }
+
+    /// <summary>The colour of its houses' roofs.</summary>
+    public TileType? Roof { get; set; }
+
+    public BattleArena? BattleArena { get; set; }
+    public List<string>? EvolutionSites { get; set; }
+
+    /// <summary>Where the area's warps lead among the hand-made maps, by the warp's number in the area file.</summary>
+    public List<OverlayDoor>? Doors { get; set; }
+
+    /// <summary>Warps (by number) with nothing behind them yet: their doors stay shut.</summary>
+    public List<int>? Locked { get; set; }
+
+    /// <summary>Ways out the original doesn't have: onto a neighbouring map that isn't imported yet.</summary>
+    public List<OverlayExit>? Exits { get; set; }
+
+    /// <summary>
+    /// Which of the original's people and things appear, by their id in the area file, and who they are here.
+    /// Anyone not listed stays away until the story brings them.
+    /// </summary>
+    public Dictionary<string, OverlayPerson>? People { get; set; }
+
+    /// <summary>What the area's signposts and mailboxes say, by their id in the area file.</summary>
+    public Dictionary<string, string>? Signs { get; set; }
+
+    /// <summary>People of our own, placed in tiles of the area's matrix.</summary>
+    public List<MapFile.NpcRecord>? Npcs { get; set; }
+
+    /// <summary>Street furniture of our own, placed in tiles of the area's matrix.</summary>
+    public List<MapFile.PropRecord>? Props { get; set; }
+}
+
+/// <summary>Where one of an area's warps leads: a tile of a hand-made map.</summary>
+[JsonConverter(typeof(OneLine<OverlayDoor>))]
+public sealed class OverlayDoor
+{
+    public int Warp { get; set; }
+    public string Map { get; set; } = "";
+    public int X { get; set; }
+    public int Y { get; set; }
+    public Direction Facing { get; set; } = Direction.Up;
+}
+
+/// <summary>A tile of an imported area that leads onto a hand-made map.</summary>
+[JsonConverter(typeof(OneLine<OverlayExit>))]
+public sealed class OverlayExit
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public string Map { get; set; } = "";
+    public int ToX { get; set; }
+    public int ToY { get; set; }
+    public Direction Facing { get; set; } = Direction.Up;
+}
+
+/// <summary>Who one of the original's people is in our game. They stand where the area file puts them.</summary>
+public sealed class OverlayPerson
+{
+    /// <summary>Only for people other data refers to (a trainer's id is their trainer record's).</summary>
+    public string? Id { get; set; }
+    public string Name { get; set; } = "";
+
+    /// <summary>Which of our characters plays them; left out to go by the original's looks.</summary>
+    public string? NpcType { get; set; }
+    public List<string>? Dialog { get; set; }
+    public bool? IsStarterBriefcase { get; set; }
+    public MapFile.TrainerRecord? Trainer { get; set; }
 }
 
 /// <summary>A tile that leads elsewhere: to the warp numbered <see cref="ToWarp"/> of the area <see cref="To"/>.</summary>
@@ -351,7 +475,8 @@ public sealed class OneLine<T> : JsonConverter<T> where T : class, new()
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        NumberHandling = JsonNumberHandling.AllowReadingFromString
+        NumberHandling = JsonNumberHandling.AllowReadingFromString,
+        Converters = { new JsonStringEnumConverter() }
     };
 
     public override T Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options)

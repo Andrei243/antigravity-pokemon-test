@@ -5,8 +5,32 @@ using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Overworld;
 
+/// <summary>
+/// A named part of a large map: a town or a route of the imported world. It has the name, the music, the wild
+/// Pokémon and the look that a small map has for the whole of itself.
+/// </summary>
+public sealed class MapArea
+{
+    /// <summary>The area's key in the world files: <c>twinleaf_town</c>.</summary>
+    public string Key { get; init; } = "";
+    public string DisplayName { get; set; } = "";
+    public string BgmTrack { get; set; } = "";
+
+    /// <summary>False for an area that is drawn as scenery but not yet built: nobody can walk into it.</summary>
+    public bool Open { get; set; }
+
+    public TreeStyle? Trees { get; set; }
+    public Architecture? Architecture { get; set; }
+    public BattleArena? Arena { get; set; }
+    public List<string> EvolutionSites { get; } = new();
+    public List<WildEncounterEntry> WildEncounters { get; } = new();
+}
+
 public class Map
 {
+    /// <summary>Tiles along each side of a chunk of a streamed map.</summary>
+    public const int ChunkTiles = 32;
+
     public string Name { get; set; } = "Twinleaf Town";
     public string DisplayName { get; set; } = "Twinleaf Town";
     public string BgmTrack { get; set; } = "";
@@ -15,7 +39,87 @@ public class Map
 
     /// <summary>True for maps with a sizeable body of water (not a garden pond): battles there have a lake behind them.</summary>
     public bool HasLake => groundLayer.Count(t => t == TileType.Water) >= 40;
+
+    /// <summary>
+    /// Whether a battle that starts at a tile has a lake behind it. A small map is judged as a whole; on a map of
+    /// the imported world only the water within sight counts, and a pond is anything smaller than 64 tiles.
+    /// </summary>
+    public bool HasLakeNear(int x, int y)
+    {
+        if (!IsStreamed) return HasLake;
+        const int reach = 14;
+        int water = 0;
+        for (int ty = Math.Max(0, y - reach); ty <= Math.Min(Height - 1, y + reach); ty++)
+            for (int tx = Math.Max(0, x - reach); tx <= Math.Min(Width - 1, x + reach); tx++)
+                if (groundLayer[ty * Width + tx] == TileType.Water) water++;
+        return water >= 64;
+    }
+
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
+
+    // ------------------------------------------------------------------ areas of a large map
+
+    private MapArea?[]? areaGrid;
+    private readonly List<MapArea> areas = new();
+
+    /// <summary>See <see cref="MapStructures.BuildingsOf"/>.</summary>
+    internal List<BuildingInfo>? BuildingCache;
+
+    /// <summary>
+    /// True for a map of the imported world: it is too large to draw whole, so it is drawn a chunk at a time,
+    /// and its name, music and wild Pokémon change from area to area.
+    /// </summary>
+    public bool IsStreamed => areaGrid != null;
+
+    public int ChunkColumns => (Width + ChunkTiles - 1) / ChunkTiles;
+    public int ChunkRows => (Height + ChunkTiles - 1) / ChunkTiles;
+
+    public IReadOnlyList<MapArea> Areas => areas;
+
+    /// <summary>Says which area a chunk belongs to (and makes this a streamed map).</summary>
+    public void SetArea(int chunkX, int chunkY, MapArea area)
+    {
+        areaGrid ??= new MapArea?[ChunkColumns * ChunkRows];
+        if (chunkX < 0 || chunkY < 0 || chunkX >= ChunkColumns || chunkY >= ChunkRows) return;
+        areaGrid[chunkY * ChunkColumns + chunkX] = area;
+        if (!areas.Contains(area)) areas.Add(area);
+    }
+
+    /// <summary>The area a tile lies in; null on a small map, which is one place.</summary>
+    public MapArea? AreaAt(int x, int y)
+    {
+        if (areaGrid == null || !InBounds(x, y)) return null;
+        return areaGrid[y / ChunkTiles * ChunkColumns + x / ChunkTiles];
+    }
+
+    public MapArea? FindArea(string key) => areas.FirstOrDefault(a => string.Equals(a.Key, key, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>The tiles an area's chunks span, or null if the map has no such area.</summary>
+    public (int X, int Y, int Width, int Height)? AreaBounds(string key)
+    {
+        if (areaGrid == null || FindArea(key) is not { } area) return null;
+        int x0 = int.MaxValue, y0 = int.MaxValue, x1 = -1, y1 = -1;
+        for (int cy = 0; cy < ChunkRows; cy++)
+            for (int cx = 0; cx < ChunkColumns; cx++)
+            {
+                if (areaGrid[cy * ChunkColumns + cx] != area) continue;
+                x0 = Math.Min(x0, cx); x1 = Math.Max(x1, cx);
+                y0 = Math.Min(y0, cy); y1 = Math.Max(y1, cy);
+            }
+        if (x1 < 0) return null;
+        return (x0 * ChunkTiles, y0 * ChunkTiles, (x1 - x0 + 1) * ChunkTiles, (y1 - y0 + 1) * ChunkTiles);
+    }
+
+    /// <summary>The name of the place a tile is in: its area's, or the map's own.</summary>
+    public string DisplayNameAt(int x, int y) => AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName;
+
+    public string BgmTrackAt(int x, int y) => AreaAt(x, y)?.BgmTrack is { Length: > 0 } track ? track : BgmTrack;
+
+    public TreeStyle TreesAt(int x, int y) => AreaAt(x, y)?.Trees ?? Trees;
+
+    public Architecture ArchitectureAt(int x, int y) => AreaAt(x, y)?.Architecture ?? Architecture;
+
+    public IReadOnlyList<string> EvolutionSitesAt(int x, int y) => AreaAt(x, y) is { } area ? area.EvolutionSites : EvolutionSites;
 
     /// <summary>The stage this map's battles are fought on; null lets the map decide (a room, or the ground under the player).</summary>
     public BattleArena? Arena { get; set; }
@@ -37,7 +141,8 @@ public class Map
     public BattleArena ArenaAt(int x, int y)
     {
         if (IsIndoors) return Arena ?? BattleArena.Indoors;
-        if (Arena is BattleArena.Gym or BattleArena.League) return Arena.Value;
+        var named = AreaAt(x, y)?.Arena ?? Arena;
+        if (named is BattleArena.Gym or BattleArena.League) return named.Value;
         if (InBounds(x, y))
         {
             switch (GetGroundTile(x, y))
@@ -48,7 +153,7 @@ public class Map
                 case TileType.CaveFloor: return BattleArena.Cave;
             }
         }
-        return Arena ?? BattleArena.Grass;
+        return named ?? BattleArena.Grass;
     }
 
     /// <summary>How the houses of this town are built.</summary>
@@ -176,20 +281,25 @@ public class Map
         return NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y);
     }
 
-    public WildEncounterEntry? RollWildEncounter()
+    public WildEncounterEntry? RollWildEncounter() => Roll(WildEncounters);
+
+    /// <summary>A wild Pokémon for a step onto a tile: from its area's table on a large map, the map's own otherwise.</summary>
+    public WildEncounterEntry? RollWildEncounter(int x, int y) => Roll(AreaAt(x, y)?.WildEncounters ?? WildEncounters);
+
+    private WildEncounterEntry? Roll(List<WildEncounterEntry> table)
     {
-        if (WildEncounters.Count == 0) return null;
+        if (table.Count == 0) return null;
         if (rng.Next(100) < 18)
         {
-            int totalWeight = WildEncounters.Sum(e => e.Weight);
+            int totalWeight = table.Sum(e => e.Weight);
             int roll = rng.Next(totalWeight);
             int curr = 0;
-            foreach (var e in WildEncounters)
+            foreach (var e in table)
             {
                 curr += e.Weight;
                 if (roll < curr) return e;
             }
-            return WildEncounters.First();
+            return table.First();
         }
         return null;
     }

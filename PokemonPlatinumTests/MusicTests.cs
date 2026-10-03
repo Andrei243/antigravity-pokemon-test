@@ -45,10 +45,19 @@ public class MusicTests
     public void TestEveryMapPlaysASongThatExists()
     {
         MapDatabase.Initialize();
+        foreach (var (place, track) in Themes())
+            Assert.True(MusicLibrary.Exists(track), $"{place} plays '{track}', which is not in Data/music");
+    }
+
+    /// <summary>Every place with a theme of its own: each small map, and each open area of a map of the imported world.</summary>
+    private static IEnumerable<(string Place, string Track)> Themes()
+    {
         foreach (var name in MapDatabase.MapNames)
         {
-            string track = MapDatabase.Get(name).BgmTrack;
-            Assert.True(MusicLibrary.Exists(track), $"{name} plays '{track}', which is not in Data/music");
+            var map = MapDatabase.Get(name);
+            if (!map.IsStreamed) yield return (name, map.BgmTrack);
+            else
+                foreach (var area in map.Areas.Where(a => a.Open)) yield return ($"{name}/{area.Key}", area.BgmTrack);
         }
     }
 
@@ -56,7 +65,7 @@ public class MusicTests
     public void TestAreaThemesLoopAndFanfaresPlayOnce()
     {
         MapDatabase.Initialize();
-        foreach (var id in MapDatabase.MapNames.Select(n => MapDatabase.Get(n).BgmTrack).Distinct())
+        foreach (var id in Themes().Select(t => t.Track).Distinct())
         {
             var song = MusicLibrary.Get(id)!;
             Assert.True(song.Loops, $"{id} should loop");

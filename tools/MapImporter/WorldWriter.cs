@@ -131,6 +131,7 @@ public sealed class WorldWriter
             Running = header.Running,
             EscapeRope = header.EscapeRope,
             Fly = header.Fly,
+            Land = Land(header),
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o => new AreaObject
             {
@@ -154,6 +155,31 @@ public sealed class WorldWriter
         };
     }
 
+    /// <summary>Problems met while writing: a species the game's data doesn't have, say.</summary>
+    public List<string> Problems { get; } = new();
+
+    private Dictionary<string, string>? speciesNames;
+
+    /// <summary>The game's name for a species constant: <c>SPECIES_MIME_JR</c> is "Mime Jr.".</summary>
+    private string? SpeciesName(string constant)
+    {
+        static string Plain(string text) => new(text.Replace("♀", "F").Replace("♂", "M").Where(char.IsLetterOrDigit).Select(char.ToUpperInvariant).ToArray());
+        speciesNames ??= PokemonDatabase.GetAll().GroupBy(s => Plain(s.Name)).ToDictionary(g => g.Key, g => g.First().Name);
+        return speciesNames.GetValueOrDefault(Plain(Trim(constant, "SPECIES_", "")));
+    }
+
+    private List<AreaEncounter>? Land(MapHeader header)
+    {
+        if (header.Encounters == null) return null;
+        var land = new List<AreaEncounter>();
+        foreach (var (species, level) in decomp.LandEncounters(header.Encounters))
+        {
+            if (SpeciesName(species) is { } name) land.Add(new AreaEncounter { Species = name, Level = level });
+            else Problems.Add($"{header.Key}: wild {species} is not a species the game knows");
+        }
+        return land.Count > 0 ? land : null;
+    }
+
     public static string KeyOf(string headerId) => Trim(headerId, "MAP_HEADER_", "").ToLowerInvariant();
 
     private static string Trim(string text, string prefix, string suffix)
@@ -166,6 +192,61 @@ public sealed class WorldWriter
     /// <summary><c>HEAVY_RAIN</c> becomes <c>HeavyRain</c>.</summary>
     public static string Pascal(string constant) => string.Concat(constant.Split('_', StringSplitOptions.RemoveEmptyEntries)
         .Select(word => char.ToUpperInvariant(word[0]) + word[1..].ToLowerInvariant()));
+
+    /// <summary>
+    /// Writes what the game needs of the world into its data folder, going by the index there (<c>world.json</c>):
+    /// the matrices of its maps, the areas that are open, and every chunk of those areas with the ring of chunks
+    /// round them, which are seen from inside. Files of an earlier run that are no longer needed are removed; the
+    /// index and the overlays, which are written by hand, are never touched.
+    /// </summary>
+    public int WriteGameData(string directory, Func<MapHeader, string> nameOf)
+    {
+        var index = System.Text.Json.JsonSerializer.Deserialize<WorldIndexFile>(File.ReadAllText(Path.Combine(directory, World.IndexFile)), GameDataFiles.Json)!;
+        var open = new HashSet<string>(index.Areas, StringComparer.OrdinalIgnoreCase);
+        var wanted = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        void Write<T>(string folder, string name, T value)
+        {
+            string path = Path.Combine(directory, folder, name + ".json");
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            File.WriteAllText(path, GameDataFiles.Serialize(value));
+            wanted.Add(Path.GetFullPath(path));
+        }
+
+        foreach (var entry in index.Maps)
+        {
+            var matrix = decomp.Matrix(entry.Matrix);
+            Write("matrices", entry.Matrix.ToString("000", CultureInfo.InvariantCulture), Matrix(matrix));
+
+            var chunks = new SortedSet<int>();
+            for (int y = 0; y < matrix.Height; y++)
+                for (int x = 0; x < matrix.Width; x++)
+                {
+                    string area = matrix.HeaderAt(x, y) is { } id ? KeyOf(id) : entry.Area ?? "";
+                    if (!open.Contains(area)) continue;
+                    for (int ny = Math.Max(0, y - 1); ny <= Math.Min(matrix.Height - 1, y + 1); ny++)
+                        for (int nx = Math.Max(0, x - 1); nx <= Math.Min(matrix.Width - 1, x + 1); nx++)
+                            if (matrix.LandAt(nx, ny) is var land and not MapImporter.Matrix.NoLand) chunks.Add(land);
+                }
+            foreach (int id in chunks) Write("chunks", id.ToString("000", CultureInfo.InvariantCulture), Chunk(id));
+        }
+
+        foreach (string key in index.Areas)
+        {
+            var header = decomp.Headers.Values.FirstOrDefault(h => string.Equals(h.Key, key, StringComparison.OrdinalIgnoreCase))
+                ?? throw new InvalidDataException($"{World.IndexFile} lists the area '{key}', which the decompilation doesn't have");
+            Write("areas", header.Key, Area(header, nameOf(header)));
+        }
+
+        foreach (string folder in new[] { "matrices", "chunks", "areas" })
+        {
+            string path = Path.Combine(directory, folder);
+            if (!Directory.Exists(path)) continue;
+            foreach (string file in Directory.GetFiles(path, "*.json"))
+                if (!wanted.Contains(Path.GetFullPath(file))) File.Delete(file);
+        }
+        return wanted.Count;
+    }
 
     /// <summary>Writes every matrix, chunk and area under <paramref name="directory"/> and returns how many files.</summary>
     public int WriteAll(string directory, Func<MapHeader, string> nameOf)

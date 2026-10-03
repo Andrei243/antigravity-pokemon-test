@@ -610,7 +610,7 @@ public class BattlePresentationTests
     public void OnlyGrassArenasGetTheLakeAndOnlyHallsATheme()
     {
         MapDatabase.Initialize();
-        var verity = MapDatabase.Get("LakeVerity");
+        var verity = Fixtures.Map("LakeVerity");
         Assert.True(ArenaSpec.For(verity, -1, -1).Lakeside);
         verity.Arena = BattleArena.Forest;
         verity.ArenaType = PokemonType.Grass;

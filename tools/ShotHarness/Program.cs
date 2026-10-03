@@ -1,7 +1,8 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|terrain|buildings|times|sheets|pokemon] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|terrain|buildings|world|times|sheets|pokemon] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> area <key>      one shot of an area of the imported world, by its key (twinleaf_town)
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -119,12 +120,65 @@ void ShotCrop(string name, int x, int y, int w, int h, int scale)
     Save(img, name);
 }
 
-void GoTo(string map, int x, int y, Direction facing)
+// The five hand-made maps of the first towns and routes gave way to the imported world (plan 01 · M2). The shots
+// that stood on them now stand at the same kind of place on the map of Sinnoh, or by the lake: each old spot has
+// its new one here, and an old map's name alone stands for a typical spot of the area that replaced it.
+var movedSpots = new Dictionary<(string, int, int), (string Map, int X, int Y)>
+{
+    [("TwinleafTown", 11, 8)] = ("Sinnoh", 112, 880), [("TwinleafTown", 6, 9)] = ("Sinnoh", 116, 886), [("TwinleafTown", 11, 1)] = ("Sinnoh", 112, 866),
+    [("TwinleafTown", 9, 14)] = ("Sinnoh", 111, 890), [("TwinleafTown", 17, 9)] = ("Sinnoh", 105, 876), [("TwinleafTown", 12, 7)] = ("Sinnoh", 116, 876),
+    [("TwinleafTown", 3, 3)] = ("Sinnoh", 103, 868), [("TwinleafTown", 11, 9)] = ("Sinnoh", 112, 881), [("TwinleafTown", 12, 10)] = ("Sinnoh", 112, 882),
+    [("Route201", 14, 10)] = ("Sinnoh", 112, 857), [("Route201", 24, 8)] = ("Sinnoh", 115, 854), [("Route201", 22, 11)] = ("Sinnoh", 110, 850),
+    [("Route201", 24, 9)] = ("Sinnoh", 166, 815), [("Route201", 24, 14)] = ("Sinnoh", 120, 854), [("Route201", 22, 15)] = ("Sinnoh", 120, 854),
+    [("Route201", 22, 10)] = ("Sinnoh", 110, 850), [("Route201", 32, 3)] = ("Sinnoh", 124, 850), [("Route201", 12, 10)] = ("Sinnoh", 130, 854),
+    [("SandgemTown", 14, 8)] = ("Sinnoh", 178, 845), [("SandgemTown", 8, 19)] = ("Sinnoh", 168, 844), [("SandgemTown", 6, 8)] = ("Sinnoh", 177, 843),
+    [("SandgemTown", 22, 8)] = ("Sinnoh", 187, 843), [("SandgemTown", 7, 19)] = ("Sinnoh", 168, 843), [("SandgemTown", 12, 10)] = ("Sinnoh", 178, 846),
+    [("LakeVerity", 14, 11)] = ("LakeVerity", 44, 46), [("LakeVerity", 14, 10)] = ("LakeVerity", 44, 46), [("LakeVerity", 24, 5)] = ("LakeVerity", 51, 40),
+    [("Route202", 14, 10)] = ("Sinnoh", 174, 815), [("Route202", 15, 2)] = ("Sinnoh", 174, 802)
+};
+var movedMaps = new Dictionary<string, (string Map, int X, int Y)>
+{
+    ["TwinleafTown"] = ("Sinnoh", 112, 880), ["Route201"] = ("Sinnoh", 115, 854), ["LakeVerity"] = ("LakeVerity", 44, 46),
+    ["SandgemTown"] = ("Sinnoh", 178, 845), ["Route202"] = ("Sinnoh", 174, 815)
+};
+
+(string Map, int X, int Y) Place(string map, int x, int y) =>
+    movedSpots.TryGetValue((map, x, y), out var spot) ? spot : movedMaps.TryGetValue(map, out var typical) ? typical : (map, x, y);
+
+// Puts the player on a tile of a map as it is today
+void At(string map, int x, int y, Direction facing)
 {
     Set("currentMap", MapDatabase.Get(map));
     ((Player)Get("player")).SetPosition(x, y, facing);
     Set("currentState", GameState.Overworld);
     Frames(2);
+}
+
+// Like At, for the shots written when the first towns were hand-made maps of their own
+void GoTo(string map, int x, int y, Direction facing)
+{
+    (map, x, y) = Place(map, x, y);
+    At(map, x, y, facing);
+}
+
+// The open tile of an area of the imported world nearest the middle of its open ground
+(Map Map, int X, int Y) AreaSpot(string key)
+{
+    foreach (var name in MapDatabase.MapNames)
+    {
+        var map = MapDatabase.Get(name);
+        if (map.AreaBounds(key) is not { } b) continue;
+        var area = map.FindArea(key);
+        var open = new List<(int X, int Y)>();
+        for (int y = b.Y; y < b.Y + b.Height; y++)
+            for (int x = b.X; x < b.X + b.Width; x++)
+                if (map.AreaAt(x, y) == area && map.IsWalkable(x, y)) open.Add((x, y));
+        if (open.Count == 0) throw new InvalidOperationException($"The area {key} has no open ground");
+        double cx = open.Average(t => t.X), cy = open.Average(t => t.Y);
+        var (sx, sy) = open.OrderBy(t => (t.X - cx) * (t.X - cx) + (t.Y - cy) * (t.Y - cy)).First();
+        return (map, sx, sy);
+    }
+    throw new ArgumentException($"No map has an area called {key}");
 }
 
 void SetPlayerAnim(float walk, float blend, bool running = false)
@@ -195,11 +249,14 @@ void Confirm(BattleEngine b)
 
 BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201")
 {
-    Set("currentMap", MapDatabase.Get(map));
+    // On the map of Sinnoh the stage depends on where the battle starts: the area's trees, water within sight
+    var (name, x, y) = Place(map, -1, -1);
+    Set("currentMap", MapDatabase.Get(name));
+    if (x >= 0) ((Player)Get("player")).SetPosition(x, y, Direction.Up);
     if (trainer != null && trainer.Party.Count == 0) trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
     var enemy = trainer?.Party.Members[0] ?? new Pokemon(PokemonDatabase.Get(foe)!, level);
     var b = new BattleEngine(party, enemy, inventory, pokedex, trainer);
-    ((BattleRenderer)Get("battleRenderer")).SetArena((Map)Get("currentMap"));
+    ((BattleRenderer)Get("battleRenderer")).SetArena((Map)Get("currentMap"), x, y);
     Set("battle", b);
     Set("currentState", GameState.Battle);
     return b;
@@ -253,7 +310,7 @@ if (Run("field"))
 
     // A trainer spotting the player
     GoTo("Route201", 24, 9, Direction.Up);
-    var tristan = MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer);
+    var tristan = MapDatabase.Get("Sinnoh").NPCs.First(n => n.IsTrainer);
     tristan.HasSpottedPlayer = true;
     tristan.ExclamationTimer = 5f;
     Frames(1); Shot("04d_route201_spotted");
@@ -266,6 +323,10 @@ if (Run("field"))
     Set("currentState", GameState.Dialogue);
     Frames(180); Shot("08_dialogue");
     Set("dialogue", new DialogueManager());
+
+    // With the folder of an earlier run as the third argument, before/after boards of the outdoor shots too
+    if (args.Length > 2)
+        Boards(args[2], new[] { "01_twinleaf", "02_twinleaf_house", "02b_twinleaf_north", "02c_twinleaf_pond", "04_route201", "04b_route201_grass", "04c_route201_ledge", "05_sandgem", "05b_sandgem_lab", "07_lake", "07b_route202", "07c_route202_north" });
 
     // Frame timing (no vsync in the hidden window)
     foreach (var m in new[] { "TwinleafTown", "Route201", "SandgemTown", "PokemonCenter" })
@@ -433,7 +494,7 @@ if (Run("battle"))
     }
 
     // Trainer battle: both trainers on their platforms, then they step aside as the Pokémon come out
-    var trainer = MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer).TrainerData!;
+    var trainer = MapDatabase.Get("Sinnoh").NPCs.First(n => n.IsTrainer).TrainerData!;
     b = StartBattle("", 0, trainer);
     Frames(1); Shot("60_trainer_intro_start");
     Skip(130 / 60.0); Shot("61_trainer_wants");
@@ -468,7 +529,7 @@ if (Run("doubles"))
 {
     BattleEngine StartDouble(Trainer[] trainers, Pokemon[] wild)
     {
-        Set("currentMap", MapDatabase.Get("Route201"));
+        Set("currentMap", MapDatabase.Get("Sinnoh"));
         var d = new BattleEngine(new BattleSetup
         {
             PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
@@ -541,7 +602,7 @@ if (Run("demo"))
     var torterra = new Pokemon(PokemonDatabase.Get("Torterra")!, 90, new Random(4));
     rival.Party.Add(torterra);
 
-    Set("currentMap", MapDatabase.Get("Route201"));
+    Set("currentMap", MapDatabase.Get("Sinnoh"));
     renderer.SetArena(BattleArena.Grass);
     var b = new BattleEngine(new BattleSetup
     {
@@ -637,7 +698,7 @@ if (Run("demo"))
     Skip(0.5); Shot("d25_faint_sink");
 
     // A wild Pokémon, a thrown Poké Ball: the run-in, the throw, the flight, the red light, the wobbles, the click
-    Set("currentMap", MapDatabase.Get("Route201"));
+    Set("currentMap", MapDatabase.Get("Sinnoh"));
     renderer.SetArena(BattleArena.Grass);
     var wild = new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1, Status = StatusCondition.Sleep };
     inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
@@ -668,7 +729,7 @@ if (Run("arenas"))
         if (!Wanted(name)) return;
         engine.Settings.TimeOfDay = time;
         engine.ApplySettings(window: false);
-        Set("currentMap", MapDatabase.Get("Route201"));
+        Set("currentMap", MapDatabase.Get("Sinnoh"));
         renderer.SetArena(kind, theme, trees, lakeside);
         var b = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Shinx")!, 5, new Random(2)), inventory, pokedex);
         Set("battle", b);
@@ -782,7 +843,7 @@ if (Run("menus"))
     mb.HUD.MenuState = BattleMenuState.Main;
 
     // A trainer battle, for the row of balls under the foe's box and a long message
-    var menuTrainer = MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer).TrainerData!;
+    var menuTrainer = MapDatabase.Get("Sinnoh").NPCs.First(n => n.IsTrainer).TrainerData!;
     mb = StartBattle("", 0, menuTrainer);
     Frames(131); Confirm(mb); Frames(74); Confirm(mb); Frames(74); Confirm(mb); Frames(2);
     Shot("25_trainer_hud");
@@ -1187,6 +1248,111 @@ if (Run("buildings"))
     if (args.Length > 2)
         Boards(args[2], streets.Select(s => s.Name).Concat(rooms.Select(r => r.Name))
             .Concat(new[] { "b20_twinleaf_night", "b21_sandgem_night", "b22_jubilife_night", "b23_house_night", "b24_twinleaf_late_night", "b25_jubilife_twilight", "b26_center_twilight" }).ToArray());
+}
+
+// ---------------------------------------------------------------- the imported world (plan 01 · M2)
+
+if (mode == "area")
+{
+    string key = args.Length > 2 ? args[2] : "twinleaf_town";
+    var (areaMap, ax, ay) = AreaSpot(key);
+    At(areaMap.Name, ax, ay, Direction.Down); Frames(2); Shot("area_" + key);
+    Console.WriteLine($"{key}: {areaMap.Name} ({ax}, {ay})");
+}
+
+if (Run("world"))
+{
+    // The first towns and routes as the imported world has them, with the places where one area runs into the next
+    (string Name, string Map, int X, int Y, Direction Facing)[] places =
+    {
+        ("w01_twinleaf", "Sinnoh", 112, 880, Direction.Down), ("w02_twinleaf_home", "Sinnoh", 116, 886, Direction.Up),
+        ("w03_twinleaf_pond", "Sinnoh", 111, 890, Direction.Down), ("w04_twinleaf_to_route201", "Sinnoh", 112, 864, Direction.Up),
+        ("w05_route201_briefcase", "Sinnoh", 110, 855, Direction.Right), ("w06_route201_grass", "Sinnoh", 127, 853, Direction.Right),
+        ("w07_route201_to_sandgem", "Sinnoh", 160, 845, Direction.Right), ("w08_sandgem", "Sinnoh", 178, 845, Direction.Up),
+        ("w09_sandgem_lab", "Sinnoh", 168, 844, Direction.Up), ("w10_sandgem_beach", "Sinnoh", 184, 858, Direction.Down),
+        ("w11_route219", "Sinnoh", 183, 868, Direction.Down), ("w12_sandgem_to_route202", "Sinnoh", 186, 832, Direction.Up),
+        ("w13_route202", "Sinnoh", 174, 815, Direction.Up), ("w14_route202_north", "Sinnoh", 174, 802, Direction.Up),
+        ("w15_lakefront", "Sinnoh", 81, 846, Direction.Up), ("w16_lake", "LakeVerity", 44, 46, Direction.Up),
+        ("w17_lake_east", "LakeVerity", 51, 40, Direction.Left)
+    };
+    foreach (var (name, map, x, y, facing) in places)
+    {
+        At(map, x, y, facing); Frames(2); Shot(name);
+        if (name is "w01_twinleaf" or "w08_sandgem") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+    }
+
+    engine.Settings.TimeOfDay = TimeOfDay.Night;
+    engine.ApplySettings(window: false);
+    At("Sinnoh", 112, 880, Direction.Down); Frames(2); Shot("w20_twinleaf_night");
+    At("Sinnoh", 178, 845, Direction.Up); Frames(2); Shot("w21_sandgem_night");
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
+    engine.ApplySettings(window: false);
+
+    if (args.Length > 2)
+        Boards(args[2], new[] { "w01_twinleaf", "w02_twinleaf_home", "w06_route201_grass", "w08_sandgem", "w09_sandgem_lab", "w13_route202", "w16_lake", "w20_twinleaf_night" });
+
+    // The walk the plan asks for: from the player's door in Twinleaf Town to the top of Route 202, tile by tile
+    // along the shortest way, every frame timed. A chunk that has to be waited for shows up as one long frame.
+    if (filter.Length == 0 || Environment.GetEnvironmentVariable("SHOTS_TIMING") == "1")
+    {
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        var path = WalkingPath(sinnoh, (116, 886), (174, 801));
+        var renderer = (WorldRenderer)Get("world");
+        At("Sinnoh", 116, 886, Direction.Up); Frames(30);
+        renderer.ResetStreamingStats();
+        double total = 0, worst = 0;
+        (int X, int Y) worstAt = default;
+        int frames = 0, mostChunks = 0;
+        var watch = new System.Diagnostics.Stopwatch();
+        foreach (var (x, y) in path)
+        {
+            ((Player)Get("player")).SetPosition(x, y, Direction.Up);
+            // Eight tiles a second, the pace of running, with each frame held to a sixtieth of a second as the
+            // screen's refresh holds it: the chunks ahead get the time to bake that they get in play
+            for (int f = 0; f < 8; f++)
+            {
+                watch.Restart();
+                engine.Update(1f / 60f);
+                engine.Draw();
+                double ms = watch.Elapsed.TotalMilliseconds;
+                total += ms; frames++;
+                if (ms > worst) { worst = ms; worstAt = (x, y); }
+                while (watch.Elapsed.TotalMilliseconds < 1000.0 / 60.0) Thread.Sleep(1);
+            }
+            mostChunks = Math.Max(mostChunks, renderer.LoadedChunks);
+        }
+        Console.WriteLine($"walk from Twinleaf Town to Route 202: {path.Count} tiles, {total / frames:F2} ms/frame, worst frame {worst:F1} ms at ({worstAt.X}, {worstAt.Y}), at most {mostChunks} chunks loaded");
+        Console.WriteLine($"  streaming: {renderer.Streaming}");
+    }
+
+    foreach (var (label, map, x, y) in new[] { ("twinleaf", "Sinnoh", 112, 881), ("route 201", "Sinnoh", 127, 853), ("sandgem", "Sinnoh", 178, 845), ("route 202", "Sinnoh", 174, 815), ("lake verity", "LakeVerity", 44, 46) })
+    {
+        At(map, x, y, Direction.Up);
+        Timing(label);
+    }
+}
+
+// The shortest way on foot between two tiles (ledges are walked round, as they must be going north)
+List<(int X, int Y)> WalkingPath(Map map, (int X, int Y) from, (int X, int Y) to)
+{
+    var came = new Dictionary<(int, int), (int, int)> { [from] = from };
+    var queue = new Queue<(int X, int Y)>();
+    queue.Enqueue(from);
+    while (queue.Count > 0 && !came.ContainsKey(to))
+    {
+        var (x, y) = queue.Dequeue();
+        foreach (var next in new[] { (x, y - 1), (x + 1, y), (x - 1, y), (x, y + 1) })
+        {
+            if (came.ContainsKey(next) || !(map.IsWalkable(next.Item1, next.Item2) || next == to)) continue;
+            came[next] = (x, y);
+            queue.Enqueue(next);
+        }
+    }
+    if (!came.ContainsKey(to)) throw new InvalidOperationException($"No way on foot from {from} to {to}");
+    var path = new List<(int X, int Y)>();
+    for (var at = to; at != from; at = came[at]) path.Add(at);
+    path.Reverse();
+    return path;
 }
 
 // ---------------------------------------------------------------- times of day

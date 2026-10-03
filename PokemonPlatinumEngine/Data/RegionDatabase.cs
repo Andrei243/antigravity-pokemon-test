@@ -97,8 +97,9 @@ public static class RegionDatabase
         new()
         {
             Id = Sinnoh, Name = "Sinnoh", Generation = 4,
-            Start = new MapSpot("TwinleafTown", 11, 8),
-            Maps = new[] { "TwinleafTown", "Route201", "LakeVerity", "SandgemTown", "Route202", "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
+            // In front of the player's house in Twinleaf Town, on the overworld map made from the imported world
+            Start = new MapSpot("Sinnoh", 116, 886),
+            Maps = new[] { "Sinnoh", "LakeVerity", "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifeCity", "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany" }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

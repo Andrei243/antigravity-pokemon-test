@@ -56,6 +56,15 @@ public static class MapStructures
         return IsRoof(t) || t == TileType.Wall || t == TileType.Door || IsWallSign(map, x, y);
     }
 
+    /// <summary>
+    /// The buildings of a map as it was when first asked: found once and kept, which matters for the map of the
+    /// whole world. Use <see cref="FindBuildings"/> after changing a map's tiles.
+    /// </summary>
+    public static IReadOnlyList<BuildingInfo> BuildingsOf(Map map)
+    {
+        lock (map) return map.BuildingCache ??= FindBuildings(map);
+    }
+
     public static List<BuildingInfo> FindBuildings(Map map)
     {
         var result = new List<BuildingInfo>();

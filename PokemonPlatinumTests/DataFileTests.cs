@@ -248,17 +248,17 @@ public class DataFileTests
     {
         MapDatabase.Initialize();
         var names = MapDatabase.MapNames.ToList();
-        Assert.Equal(17, names.Count); // 15 in Sinnoh, 2 in Kanto
-        Assert.Contains("TwinleafTown", names);
+        Assert.Equal(14, names.Count); // 10 hand-made and 2 from the imported world in Sinnoh, 2 in Kanto
+        Assert.Contains("Sinnoh", names);
         Assert.Contains("PlayerHouse", names);
 
-        var route201 = MapDatabase.Get("Route201");
-        Assert.Equal(("Route 201", 36, 22), (route201.DisplayName, route201.Width, route201.Height));
-        Assert.Equal(TileType.TallGrass, route201.GetGroundTile(3, 3));
-        Assert.Equal(TileType.LedgeDown, route201.GetGroundTile(18, 12));
-        Assert.Equal(3, route201.WildEncounters.Count);
+        var city = MapDatabase.Get("JubilifeCity");
+        Assert.Equal(("Jubilife City", 40, 34), (city.DisplayName, city.Width, city.Height));
+        Assert.False(city.IsStreamed);
+        Assert.Null(city.AreaAt(5, 5));
+        Assert.Equal("Jubilife City", city.DisplayNameAt(5, 5));
 
-        var tristan = route201.NPCs.Single(n => n.Id == "trainer_tristan");
+        var tristan = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
         Assert.True(tristan.IsTrainer);
         Assert.Equal("Starly", tristan.TrainerData!.Party.Members.Single().Species.Name);
         Assert.Equal(4, tristan.TrainerData.Party.Members[0].Level);
@@ -294,9 +294,9 @@ public class DataFileTests
     public void TestMapsReloadWithFreshTrainers()
     {
         MapDatabase.Initialize();
-        var first = MapDatabase.Get("Route201").NPCs.Single(n => n.Id == "trainer_tristan");
+        var first = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
         MapDatabase.Initialize();
-        var second = MapDatabase.Get("Route201").NPCs.Single(n => n.Id == "trainer_tristan");
+        var second = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
         Assert.NotSame(first, second);
         Assert.NotSame(first.TrainerData!.Party, second.TrainerData!.Party);
     }

@@ -4,7 +4,7 @@ using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Overworld;
 
-public enum TileType
+public enum TileType : byte
 {
     Grass,
     FlowerGrass,

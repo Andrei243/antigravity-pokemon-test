@@ -123,7 +123,7 @@ public class Player
                     AudioManager.PlaySound("grass");
 
                     // Roll for wild encounter
-                    var wild = interrupted ? null : map.RollWildEncounter();
+                    var wild = interrupted ? null : map.RollWildEncounter(GridX, GridY);
                     if (wild != null)
                     {
                         onWildEncounter(wild);

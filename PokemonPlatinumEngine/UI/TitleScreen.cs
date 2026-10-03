@@ -26,9 +26,10 @@ public sealed class TitleScreen
 
     internal static readonly (string Map, Vector2 From, Vector2 To, float Hour)[] Segments =
     {
-        ("TwinleafTown", new Vector2(11.5f, 14.5f), new Vector2(11.5f, 7f), 7f),
-        ("Route201", new Vector2(9f, 10f), new Vector2(21f, 9f), 13.5f),
-        ("SandgemTown", new Vector2(9f, 9.5f), new Vector2(19f, 9.5f), 20.5f)
+        // Up Twinleaf Town's road at dawn, east along Route 201 at midday, through Sandgem Town in the evening
+        ("Sinnoh", new Vector2(112f, 888f), new Vector2(112f, 876f), 7f),
+        ("Sinnoh", new Vector2(120f, 853f), new Vector2(142f, 851f), 13.5f),
+        ("Sinnoh", new Vector2(166f, 846f), new Vector2(184f, 846f), 20.5f)
     };
 
     private readonly SaveData? save;
@@ -393,7 +394,8 @@ public sealed class TitleScreen
     {
         float x = r.X + 48;
         UiFonts.DrawCentered("CONTINUE", x, r.Y + 58, 44, ModernUi.Ink, UiWeight.Black);
-        string where = MapDatabase.Get(save.CurrentMapName).DisplayName;
+        var place = save.Place();
+        string where = MapDatabase.Get(place.Map).DisplayNameAt(place.X, place.Y);
         float ww = UiFonts.Measure(where, 28, UiWeight.ExtraBold);
         UiFonts.DrawCentered(where, r.X + r.Width - 48 - ww, r.Y + 60, 28, ModernUi.Muted, UiWeight.ExtraBold);
         UiShapes.Fill(new Rectangle(x, r.Y + 100, r.Width - 96, 3), 1.5f, ModernUi.Rule);

@@ -71,15 +71,15 @@ public class TerrainTests
     public void MapsWithoutWaterHaveNoWaterMask()
     {
         MapDatabase.Initialize();
-        Assert.Null(Bake(MapDatabase.Get("Route201")).Water);
-        Assert.NotNull(Bake(MapDatabase.Get("TwinleafTown")).Water);
+        Assert.Null(Bake(Fixtures.Map("Route201")).Water);
+        Assert.NotNull(Bake(Fixtures.Map("TwinleafTown")).Water);
     }
 
     [Fact]
     public void TheLakesMaskHoldsTheShoreDistanceAndLeavesTheNorthBankDry()
     {
         MapDatabase.Initialize();
-        var map = MapDatabase.Get("LakeVerity");
+        var map = Fixtures.Map("LakeVerity");
         var (_, mask) = Bake(map);
         Assert.NotNull(mask);
         int margin = MapScene.OutdoorMargin;
@@ -104,7 +104,7 @@ public class TerrainTests
     public void BouldersInWaterStandOnADryPatchAndBlockTheWay()
     {
         MapDatabase.Initialize();
-        var map = MapDatabase.Get("LakeVerity");
+        var map = Fixtures.Map("LakeVerity");
         var boulders = map.Props.Where(p => p.Type == PropType.Boulder).ToList();
         Assert.NotEmpty(boulders);
 
@@ -128,9 +128,17 @@ public class TerrainTests
     public void OnlyMapsWithALakeGetALakesideBattle()
     {
         MapDatabase.Initialize();
-        Assert.True(MapDatabase.Get("LakeVerity").HasLake);
-        Assert.False(MapDatabase.Get("TwinleafTown").HasLake);   // a garden pond
-        Assert.False(MapDatabase.Get("Route201").HasLake);
+        Assert.True(Fixtures.Map("LakeVerity").HasLake);
+        Assert.False(Fixtures.Map("TwinleafTown").HasLake);   // a garden pond
+        Assert.False(Fixtures.Map("Route201").HasLake);
+
+        // On the map of Sinnoh a place is judged by the water within sight of it
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        Assert.True(sinnoh.IsStreamed);
+        Assert.False(sinnoh.HasLakeNear(111, 890));   // beside Twinleaf Town's pond
+        Assert.False(sinnoh.HasLakeNear(130, 853));   // on Route 201
+        Assert.True(sinnoh.HasLakeNear(183, 876));    // where Route 219's beach meets the sea
+        Assert.True(MapDatabase.Get("LakeVerity").HasLakeNear(44, 46));
     }
 
     // ------------------------------------------------------------------ plants and rocks

@@ -350,17 +350,17 @@
     {
       "sourceX": 19,
       "sourceY": 33,
-      "targetMap": "Route202",
-      "targetX": 14,
-      "targetY": 1,
+      "targetMap": "Sinnoh",
+      "targetX": 173,
+      "targetY": 801,
       "targetFacing": "Down"
     },
     {
       "sourceX": 20,
       "sourceY": 33,
-      "targetMap": "Route202",
-      "targetX": 15,
-      "targetY": 1,
+      "targetMap": "Sinnoh",
+      "targetX": 174,
+      "targetY": 801,
       "targetFacing": "Down"
     },
     {

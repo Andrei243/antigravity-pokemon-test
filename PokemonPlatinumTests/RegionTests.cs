@@ -159,10 +159,10 @@ public class RegionTests
     [Fact]
     public void TestSavesFromBeforeRegionsLoadInSinnohWithNoStoryDone()
     {
-        // An older save has no StoryFlags and a Sinnoh map
+        // An older save has no StoryFlags and stands on one of Sinnoh's old hand-made maps
         var loaded = JsonSerializer.Deserialize<SaveData>("{\"CurrentMapName\":\"SandgemTown\"}")!;
 
         Assert.Empty(loaded.StoryFlags);
-        Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(loaded.CurrentMapName)!.Id);
+        Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(loaded.Place().Map)!.Id);
     }
 }

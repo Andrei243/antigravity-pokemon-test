@@ -1,0 +1,69 @@
+{
+  "area": "route_202",
+  "bgmTrack": "sinnoh/route202",
+  "trees": "Round",
+  // Jubilife City is still the hand-made map: the route's north end leads onto it (plan 01 · M5 imports the city)
+  "exits": [
+    { "x": 170, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
+    { "x": 171, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
+    { "x": 172, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
+    { "x": 173, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
+    { "x": 174, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" },
+    { "x": 175, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" },
+    { "x": 176, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" },
+    { "x": 177, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" }
+  ],
+  "people": {
+    "youngster_tristan": {
+      "name": "Tristan",
+      "trainer": {
+        "id": "trainer_tristan",
+        "name": "Tristan",
+        "trainerClass": "Youngster",
+        "party": [ { "species": "Starly", "level": 4 } ],
+        "prizeMoney": 160,
+        "dialogueBefore": "Youngster Tristan: Our eyes met! That means we have to battle!",
+        "dialogueAfter": "Youngster Tristan: Aww, my Starly fought hard! You're really tough!",
+        "sightRange": 3
+      }
+    },
+    "lass_natalie": {
+      "name": "Natalie",
+      "trainer": {
+        "id": "trainer_natalie",
+        "name": "Natalie",
+        "trainerClass": "Lass",
+        "party": [ { "species": "Shinx", "level": 6 } ],
+        "prizeMoney": 240,
+        "dialogueBefore": "Lass Natalie: My cute Shinx is fully charged! Prepare for a shock!",
+        "dialogueAfter": "Lass Natalie: Wow, you're strong! Jubilife City is just up the road.",
+        "sightRange": 3
+      }
+    },
+    "youngster_logan": {
+      "name": "Logan",
+      "trainer": {
+        "id": "trainer_logan",
+        "name": "Logan",
+        "trainerClass": "Youngster",
+        "party": [ { "species": "Bidoof", "level": 6 }, { "species": "Starly", "level": 7 } ],
+        "prizeMoney": 280,
+        "dialogueBefore": "Youngster Logan: I've caught two Pokémon already! Let's see your team!",
+        "dialogueAfter": "Youngster Logan: No way! You've got an amazing team balance!",
+        "sightRange": 3
+      }
+    },
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "Trainers on this route challenge you the moment they see you.",
+        "If your Pokémon are tired, turn back and rest them in Sandgem Town."
+      ]
+    }
+  },
+  "signs": {
+    "arrow_signpost_sandgem_town": "Route 202\nSouth: Sandgem Town",
+    "arrow_signpost_jubilife_city": "Route 202\nNorth: Jubilife City",
+    "trainer_tips_signpost": "Trainer Tips\nA trainer who sees you will want a battle. Pick your path with care if your Pokémon are hurt."
+  }
+}

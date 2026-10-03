@@ -14,7 +14,7 @@ public sealed partial class DecompMaps
     /// <summary>What the importer needs of the decompilation: the sparse checkout fetches only these.</summary>
     public static readonly string[] Folders =
     {
-        "/res/field/matrices/", "/res/field/maps/data/", "/res/field/events/", "/res/field/area_data/",
+        "/res/field/matrices/", "/res/field/maps/data/", "/res/field/events/", "/res/field/area_data/", "/res/field/encounters/",
         "/res/field/props/models/", "/res/text/location_names.json", "/include/data/map_headers.h",
         "/generated/map_headers.txt", "/include/constants/field/map_tile_behaviors.h"
     };
@@ -95,6 +95,22 @@ public sealed partial class DecompMaps
             events[name] = e = File.Exists(path) ? AreaEvents.Parse(File.ReadAllText(path)) : new AreaEvents();
         }
         return e;
+    }
+
+    /// <summary>
+    /// The wild Pokémon of an area's grass, slot by slot, by the name its header gives the table
+    /// (<c>encounters_route_201</c>); empty when the area has no grass encounters.
+    /// </summary>
+    public List<(string Species, int Level)> LandEncounters(string name)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        var slots = new List<(string, int)>();
+        if (!File.Exists(path)) return slots;
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        if (!doc.RootElement.TryGetProperty("land_rate", out var rate) || rate.GetInt32() == 0) return slots;
+        foreach (var slot in doc.RootElement.GetProperty("land_encounters").EnumerateArray())
+            slots.Add((slot.GetProperty("species").GetString() ?? "", slot.GetProperty("level").GetInt32()));
+        return slots;
     }
 
     /// <summary>Name and bounding box of a prop's model; null for an id without a file.</summary>

@@ -322,6 +322,15 @@ public sealed class PixelCanvas
             }
     }
 
+    /// <summary>A copy of the rectangle at (x, y), texel for texel.</summary>
+    public PixelCanvas Crop(int x, int y, int width, int height)
+    {
+        var result = new PixelCanvas(width, height);
+        for (int row = 0; row < height; row++)
+            Array.Copy(pixels, (y + row) * Width + x, result.pixels, row * width, width);
+        return result;
+    }
+
     /// <summary>Copies another canvas onto this one at (dx, dy), skipping transparent pixels.</summary>
     public void Blit(PixelCanvas src, int dx, int dy)
     {

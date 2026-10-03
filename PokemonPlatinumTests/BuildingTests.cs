@@ -47,21 +47,21 @@ public class BuildingTests
             PublicLight = built.PublicLight,
             HomeLight = built.HomeLight
         };
-        foreach (var b in MapStructures.FindBuildings(map)) BuildingModels.Add(built.Kit, b, BuildingArt.StyleOf(b, map.Architecture), targets);
+        foreach (var b in MapStructures.FindBuildings(map)) BuildingModels.Add(built.Kit, b, BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)), targets);
         OutdoorProps.Add(built.Kit, map, built.PublicLight);
         return built;
     }
 
     private static BuildingInfo Building(string map, int x, int y) =>
-        MapStructures.FindBuildings(MapDatabase.Get(map)).Single(b => x >= b.X0 && x <= b.X1 && y >= b.Y0 && y <= b.Y1);
+        MapStructures.FindBuildings(Fixtures.Any(map)).Single(b => x >= b.X0 && x <= b.X1 && y >= b.Y0 && y <= b.Y1);
 
     private static BuildingStyle Style(string map, int x, int y) =>
-        BuildingArt.StyleOf(Building(map, x, y), MapDatabase.Get(map).Architecture);
+        BuildingArt.StyleOf(Building(map, x, y), Fixtures.Any(map).ArchitectureAt(x, y));
 
     private static PixelCanvas Front(string map, int x, int y)
     {
         var b = Building(map, x, y);
-        var s = BuildingArt.StyleOf(b, MapDatabase.Get(map).Architecture);
+        var s = BuildingArt.StyleOf(b, Fixtures.Any(map).ArchitectureAt(x, y));
         var c = new PixelCanvas(BuildingArt.FrontWidth(b), s.WallHeight);
         BuildingArt.PaintFront(c, b, s);
         return c;
@@ -205,7 +205,7 @@ public class BuildingTests
         MapDatabase.Initialize();
         var city = MapDatabase.Get("JubilifeCity");
         Assert.Equal(Architecture.City, city.Architecture);
-        Assert.Equal(Architecture.Timber, MapDatabase.Get("TwinleafTown").Architecture);
+        Assert.Equal(Architecture.Timber, MapDatabase.Get("Sinnoh").ArchitectureAt(112, 880));   // Twinleaf Town
 
         var kinds = MapStructures.FindBuildings(city).Select(b => b.Kind).OrderBy(k => k).ToList();
         Assert.Equal(new[]
@@ -303,7 +303,7 @@ public class BuildingTests
     public void LitDoorsWindowsAndLampsThrowLightOnTheGround()
     {
         MapDatabase.Initialize();
-        var twinleaf = Build(MapDatabase.Get("TwinleafTown"));
+        var twinleaf = Build(Fixtures.Map("TwinleafTown"));
         // Two lamps (a pool and a halo each), two front doors with their lanterns, and four house windows
         Assert.Equal((2 * 2 + 2 + 4) * 6, twinleaf.PublicLight.VertexCount + twinleaf.HomeLight.VertexCount);
         // The lamps and lanterns burn all night whatever the houses do
@@ -342,7 +342,7 @@ public class BuildingTests
     public void AHouseIsWallsARoofInItsOwnColourAndAChimney()
     {
         MapDatabase.Initialize();
-        var built = Build(MapDatabase.Get("TwinleafTown"));
+        var built = Build(Fixtures.Map("TwinleafTown"));
 
         // Both houses share one teal roof texture: two slopes each
         Assert.Equal(new[] { "52,166,138" }, built.Roofs.Keys.ToArray());
@@ -442,7 +442,7 @@ public class BuildingTests
     public void StreetFurnitureBlocksTheWay(string mapName, int lampsAtLeast)
     {
         MapDatabase.Initialize();
-        var map = MapDatabase.Get(mapName);
+        var map = Fixtures.Any(mapName);
         var street = map.Props.Where(p => p.Type is PropType.Fence or PropType.LampPost or PropType.Mailbox or PropType.Planter or PropType.Bench).ToList();
         Assert.True(street.Count(p => p.Type == PropType.LampPost) >= lampsAtLeast);
 
@@ -491,7 +491,7 @@ public class BuildingTests
     public void FencesJoinUpAndLeaveTheGardenGateOpen()
     {
         MapDatabase.Initialize();
-        var twinleaf = MapDatabase.Get("TwinleafTown");
+        var twinleaf = Fixtures.Map("TwinleafTown");
         var fenced = new HashSet<(int, int)>();
         foreach (var f in twinleaf.Props.Where(p => p.Type == PropType.Fence))
             for (int y = f.Y; y < f.Y + f.Depth; y++)

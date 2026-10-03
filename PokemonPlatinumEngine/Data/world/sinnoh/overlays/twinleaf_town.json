@@ -1,0 +1,60 @@
+{
+  "area": "twinleaf_town",
+  "bgmTrack": "sinnoh/twinleaf",
+  "trees": "Pine",
+  "architecture": "Timber",
+  "roof": "RoofGreen",
+  "doors": [
+    { "warp": 0, "map": "RivalHouse", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The two neighbours' houses have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 3 ],
+  "people": {
+    "pokemon_breeder_f": {
+      "name": "Neighbour",
+      "dialog": [
+        "You can save your adventure whenever you like from the Start Menu.",
+        "Press Enter or Tab to open it. Your Pokémon, your Bag and your Pokédex are in there too."
+      ]
+    },
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "The snow never quite leaves Twinleaf, even in summer.",
+        "It's why the pond is so cold. I wouldn't swim in it!"
+      ]
+    },
+    "guitarist": {
+      "name": "Guitarist",
+      "dialog": [
+        "Route 201 is straight up this road.",
+        "Wild Pokémon jump out of the tall grass there. Don't walk in without a Pokémon of your own!"
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Twinleaf Town\nFresh and free! The town where journeys begin.",
+    "mailbox_player": "Lucas's mailbox.\nThere's nothing in it.",
+    "mailbox_rival": "Barry's mailbox.\nIt's stuffed with letters nobody has opened."
+  },
+  "npcs": [
+    {
+      "name": "Barry",
+      "npcType": "Rival",
+      "x": 109,
+      "y": 880,
+      "facing": "Right",
+      "dialog": [
+        "Barry: Hey, Lucas! You're finally ready!",
+        "Barry: Professor Rowan is on Route 201, just north of town, and he's brought his briefcase!",
+        "Barry: Come on! Up the road, and no dawdling!"
+      ]
+    }
+  ],
+  "props": [
+    { "type": "LampPost", "x": 109, "y": 876, "width": 1, "depth": 1 },
+    { "type": "LampPost", "x": 114, "y": 880, "width": 1, "depth": 1 },
+    { "type": "Bench", "x": 120, "y": 880, "width": 2, "depth": 1 }
+  ]
+}

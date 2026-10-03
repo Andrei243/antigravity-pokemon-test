@@ -1,0 +1,45 @@
+{
+  "key": "sandgem_town",
+  "index": 418,
+  "name": "Sandgem Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "City",
+  "dayMusic": "TOWN02_D",
+  "nightMusic": "TOWN02_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 187, "z": 842, "to": "sandgem_town_mart", "toWarp": 0 },
+    { "x": 177, "z": 842, "to": "sandgem_town_pokecenter_1f", "toWarp": 0 },
+    { "x": 168, "z": 842, "to": "sandgem_town_pokemon_research_lab", "toWarp": 0 },
+    { "x": 176, "z": 854, "to": "sandgem_town_counterpart_house_1f", "toWarp": 0 },
+    { "x": 167, "z": 854, "to": "sandgem_town_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "wander_around", "x": 187, "z": 855, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "4" },
+    { "id": "pokemon_breeder_m", "looks": "pokemon_breeder_m", "movement": "look_around", "x": 171, "z": 854, "facing": 1, "rangeX": 2, "rangeZ": 0, "script": "5" },
+    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "look_south_and_west", "x": 183, "z": 852, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "rival", "looks": "barry", "movement": "look_south", "x": 168, "z": 842, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_RIVAL", "script": "0" },
+    { "id": "sandgem_counterpart", "looks": "var_0", "movement": "look_west", "x": 168, "z": 845, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_COUNTERPART", "script": "10300" },
+    { "id": "signboard_pokemon_research_lab", "looks": "signboard", "movement": "none", "x": 165, "z": 843, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "signboard_counterpart_house", "looks": "signboard", "movement": "none", "x": 174, "z": 854, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "10" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 182, "z": 854, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "8" },
+    { "id": "arrow_signpost_route_219", "looks": "arrow_signpost", "movement": "none", "x": 179, "z": 866, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_219", "script": "65535" },
+    { "id": "arrow_signpost_route_202", "looks": "arrow_signpost", "movement": "none", "x": 183, "z": 825, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_202", "script": "65535" },
+    { "id": "arrow_signpost_route_201", "looks": "arrow_signpost", "movement": "none", "x": 151, "z": 843, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_201", "script": "65535" },
+    { "id": "school_kid_m", "looks": "school_kid_m", "movement": "look_west", "x": 153, "z": 847, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_201", "script": "65535" },
+    { "id": "signboard_pokemon_center", "looks": "signboard", "movement": "none", "x": 180, "z": 842, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "12" },
+    { "id": "signboard_poke_mart", "looks": "signboard", "movement": "none", "x": 185, "z": 842, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "prof_rowan", "looks": "prof_rowan", "movement": "look_south", "x": 168, "z": 842, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_PROF_ROWAN", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 164, "z": 842, "width": 1, "depth": 6, "script": "2", "variable": "VAR_SANDGEM_TOWN_STATE", "value": "0" }
+  ]
+}

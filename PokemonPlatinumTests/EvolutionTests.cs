@@ -1085,7 +1085,7 @@ public class EvolutionTests
     public void TestMapsCanNameTheirEvolutionSites()
     {
         // No map has one yet (Eterna Forest, Route 217 and Mt. Coronet come with plan 01), but the files can say so
-        var file = MapFile.FromMap(MapDatabase.Get("Route201"));
+        var file = MapFile.FromMap(Fixtures.Map("Route201"));
         Assert.Null(file.EvolutionSites);
         file.EvolutionSites = new List<string> { "Moss Rock" };
         var map = file.ToMap();
@@ -1094,6 +1094,9 @@ public class EvolutionTests
 
         string[] known = { "Moss Rock", "Ice Rock", "Magnetic Field" };
         foreach (var name in MapDatabase.MapNames)
-            Assert.All(MapDatabase.Get(name).EvolutionSites, site => Assert.Contains(site, known));
+        {
+            var places = MapDatabase.Get(name);
+            Assert.All(places.EvolutionSites.Concat(places.Areas.SelectMany(a => a.EvolutionSites)), site => Assert.Contains(site, known));
+        }
     }
 }

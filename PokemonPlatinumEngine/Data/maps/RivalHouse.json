@@ -132,9 +132,9 @@
     {
       "sourceX": 5,
       "sourceY": 8,
-      "targetMap": "TwinleafTown",
-      "targetX": 17,
-      "targetY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 105,
+      "targetY": 876,
       "targetFacing": "Down"
     }
   ],

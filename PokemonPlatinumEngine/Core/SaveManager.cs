@@ -10,14 +10,39 @@ namespace PokemonPlatinumEngine.Core;
 
 public class SaveData
 {
+    /// <summary>The <see cref="WorldVersion"/> of saves made today: Sinnoh's overworld is one map made from the imported world.</summary>
+    public const int ImportedWorld = 1;
+
     public string PlayerName { get; set; } = "Lucas";
     public int Money { get; set; } = 3000;
     public float PlayTimeSeconds { get; set; } = 0;
     public int Badges { get; set; } = 0;
-    public string CurrentMapName { get; set; } = "TwinleafTown";
-    public int PlayerGridX { get; set; } = 11;
-    public int PlayerGridY { get; set; } = 8;
+    public string CurrentMapName { get; set; } = "Sinnoh";
+    public int PlayerGridX { get; set; } = 116;
+    public int PlayerGridY { get; set; } = 886;
     public Direction PlayerFacing { get; set; } = Direction.Down;
+
+    /// <summary>
+    /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
+    /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
+    /// </summary>
+    public int WorldVersion { get; set; }
+
+    // Where a save made on one of the old hand-made maps wakes up in the imported world
+    private static readonly Dictionary<string, MapSpot> OldMaps = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["TwinleafTown"] = new MapSpot("Sinnoh", 116, 886),
+        ["Route201"] = new MapSpot("Sinnoh", 112, 858),
+        ["LakeVerity"] = new MapSpot("LakeVerity", 46, 53, Direction.Up),
+        ["SandgemTown"] = new MapSpot("Sinnoh", 177, 843),
+        ["Route202"] = new MapSpot("Sinnoh", 170, 829)
+    };
+
+    /// <summary>Where the save's player stands on today's maps.</summary>
+    public MapSpot Place() =>
+        WorldVersion < ImportedWorld && OldMaps.TryGetValue(CurrentMapName, out var moved)
+            ? moved
+            : new MapSpot(CurrentMapName, PlayerGridX, PlayerGridY, PlayerFacing);
 
     public List<SavedPokemonData> Party { get; set; } = new();
     public List<SavedPokemonData> BoxStorage { get; set; } = new();

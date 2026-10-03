@@ -35,7 +35,7 @@ public class StyleGuideTests
     public void TheFieldGroundIsCleanPixelArt(string mapName)
     {
         MapDatabase.Initialize();
-        var map = MapDatabase.Get(mapName);
+        var map = Fixtures.Any(mapName);
         var ground = PixelGround.Bake(map, MapScene.OutdoorMargin, MapStructures.FindBuildings(map));
 
         int isolated = 0, total = 0;

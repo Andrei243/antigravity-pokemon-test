@@ -1,0 +1,50 @@
+{
+  "key": "route_202",
+  "index": 343,
+  "name": "Route 202",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_A_D",
+  "nightMusic": "ROAD_A_N",
+  "encounters": "route_202",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Shinx", "level": 3 },
+    { "species": "Bidoof", "level": 3 },
+    { "species": "Starly", "level": 4 },
+    { "species": "Kricketot", "level": 3 },
+    { "species": "Shinx", "level": 4 },
+    { "species": "Bidoof", "level": 3 },
+    { "species": "Starly", "level": 4 },
+    { "species": "Bidoof", "level": 4 },
+    { "species": "Starly", "level": 2 },
+    { "species": "Bidoof", "level": 2 },
+    { "species": "Starly", "level": 2 },
+    { "species": "Bidoof", "level": 2 }
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "youngster_tristan", "looks": "youngster", "movement": "look_south", "x": 166, "z": 813, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "script": "TRAINER_YOUNGSTER_TRISTAN" },
+    { "id": "lass_natalie", "looks": "lass", "movement": "look_south", "x": 181, "z": 818, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "script": "TRAINER_LASS_NATALIE" },
+    { "id": "youngster_logan", "looks": "youngster", "movement": "look_south", "x": 185, "z": 804, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "script": "TRAINER_YOUNGSTER_LOGAN" },
+    { "id": "counterpart", "looks": "var_0", "movement": "look_east", "x": 174, "z": 827, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_202_COUNTERPART", "script": "7" },
+    { "id": "arrow_signpost_sandgem_town", "looks": "arrow_signpost", "movement": "none", "x": 183, "z": 825, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "arrow_signpost_jubilife_city", "looks": "arrow_signpost", "movement": "none", "x": 176, "z": 804, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "trainer_tips_signpost", "looks": "trainer_tips_signpost", "movement": "none", "x": 174, "z": 816, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_west_and_east", "x": 169, "z": 808, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "2" },
+    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 162, "z": 806, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_202_POTION", "script": "7000" }
+  ],
+  "signs": [
+    { "x": 168, "z": 795, "type": 2, "script": "8161" }
+  ],
+  "triggers": [
+    { "x": 180, "z": 825, "width": 1, "depth": 5, "script": "6", "variable": "VAR_ROUTE_202_STATE", "value": "0" }
+  ]
+}

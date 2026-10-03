@@ -1,0 +1,156 @@
+{
+  "name": "LakeVerity",
+  "displayName": "Lake Verity",
+  "bgmTrack": "sinnoh/lake",
+  "interior": "None",
+  "trees": "Pine",
+  "width": 28,
+  "height": 22,
+  "ground": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "T..........................T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T.~~~~~~~~~~~~~~~~~~~~~....T",
+    "T:::::::::::::::::::::::::::",
+    "T::::::::::::::::::::S::::::",
+    "T..........................T",
+    "T..........................T",
+    "T...wwwwwwwwwwwwwwwww......T",
+    "T...wwwwwwwwwwwwwwwww......T",
+    "T...wwwwwwwwwwwwwwwww......T",
+    "T...wwwwwwwwwwwwwwwww......T",
+    "T...wwwwwwwwwwwwwwwww......T",
+    "T...wwwwwwwwwwwwwwwww......T",
+    "T..........................T",
+    "T..........................T",
+    "TTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "solid": [
+    "############################",
+    "#..........................#",
+    "#.#####################....#",
+    "#.#####################....#",
+    "#.#####################..#.#",
+    "#.#####################....#",
+    "#.#####################....#",
+    "#.#####################....#",
+    "#.#####################....#",
+    "#...........................",
+    "#....................#......",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "#..........................#",
+    "############################"
+  ],
+  "props": [
+    {
+      "type": "Boulder",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 16,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 25,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 27,
+      "sourceY": 9,
+      "targetMap": "Route201",
+      "targetX": 1,
+      "targetY": 9,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 27,
+      "sourceY": 10,
+      "targetMap": "Route201",
+      "targetX": 1,
+      "targetY": 10,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 21,
+      "y": 10,
+      "text": "Lake Verity\nAccording to legend, a legendary Pokémon of emotion rests in this deep lake."
+    }
+  ],
+  "npcs": [
+    {
+      "name": "Prof. Rowan",
+      "npcType": "Rowan",
+      "x": 12,
+      "y": 9,
+      "facing": "Down",
+      "dialog": [
+        "Prof. Rowan: Hmm... The energy radiating from this lake is fascinating...",
+        "Prof. Rowan: Oh, young trainer! I left my research briefcase by the shore.",
+        "Prof. Rowan: Inside are three Poké Balls containing rare Sinnoh Pokémon.",
+        "Prof. Rowan: Go ahead and examine the briefcase to choose your partner!"
+      ]
+    },
+    {
+      "id": "starter_briefcase",
+      "name": "Professor's Briefcase",
+      "npcType": "StarterBriefcase",
+      "x": 13,
+      "y": 9,
+      "facing": "Down",
+      "isStarterBriefcase": true
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Bidoof",
+      "minLevel": 3,
+      "maxLevel": 5,
+      "weight": 40
+    },
+    {
+      "speciesName": "Starly",
+      "minLevel": 3,
+      "maxLevel": 5,
+      "weight": 40
+    },
+    {
+      "speciesName": "Shinx",
+      "minLevel": 4,
+      "maxLevel": 5,
+      "weight": 20
+    }
+  ]
+}

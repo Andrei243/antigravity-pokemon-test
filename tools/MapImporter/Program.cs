@@ -5,6 +5,7 @@
 //   dotnet run --project tools/MapImporter -- --out <dir>       write somewhere other than tools/MapImporter/out
 //   dotnet run --project tools/MapImporter -- --decomp <dir>    read an existing pokeplatinum checkout
 //   dotnet run --project tools/MapImporter -- --quick           the mosaics and reports only: no per-chunk or per-area pictures, no world files
+//   dotnet run --project tools/MapImporter -- --data            only rewrite the game's own world files (PokemonPlatinumEngine/Data/world/sinnoh)
 
 using System.Diagnostics;
 using System.Globalization;
@@ -24,11 +25,22 @@ if (decompDir == null)
     decompDir = Sources.Checkout(Path.Combine(repo, "tools", "MapImporter", ".cache"), "pokeplatinum", Sources.DecompRepo, Sources.DecompCommit, DecompMaps.Folders);
 }
 
-MapDatabase.Initialize();   // the hand-made maps, to compare with
 var decomp = new DecompMaps(decompDir);
 var world = new WorldWriter(decomp);
 var byBehaviour = new Renders(decomp);
 var byCover = new Renders(decomp) { CoverOf = world.CoverOf };
+
+if (args.Contains("--data"))
+{
+    // The game's data folder in the source tree: what is written there is checked in
+    string data = Arg("--data-dir") ?? Path.Combine(repo, "PokemonPlatinumEngine", "Data", World.Folder, "sinnoh");
+    int written = world.WriteGameData(data, byCover.Name);
+    foreach (string problem in world.Problems) Console.WriteLine("  " + problem);
+    Console.WriteLine($"Wrote {written} world files to {data} ({clock.Elapsed.TotalSeconds:F1} s)");
+    return world.Problems.Count == 0 ? 0 : 1;
+}
+
+MapDatabase.Initialize();   // the game's maps as they are built today, to compare with
 var report = new Report(decomp, world, byCover);
 Console.WriteLine($"Read {decomp.Headers.Count} areas, {decomp.MatrixCount} matrices and {decomp.LandCount} chunks ({clock.Elapsed.TotalSeconds:F1} s)");
 
@@ -39,11 +51,11 @@ byCover.World(overworld, new Renders.Options { Scale = 4 }).Save(Path.Combine(ou
 byBehaviour.World(overworld, new Renders.Options { Scale = 4 }).Save(Path.Combine(outDir, "sinnoh_behaviours.png"));
 byCover.Heights(overworld, 2).Save(Path.Combine(outDir, "sinnoh_heights.png"));
 
-(string Imported, string HandMade)[] comparisons =
-{
-    ("twinleaf_town", "TwinleafTown"), ("route_201", "Route201"), ("sandgem_town", "SandgemTown"),
-    ("lake_verity", "LakeVerity"), ("route_202", "Route202"), ("jubilife_city", "JubilifeCity")
-};
+// The hand-made maps the import hasn't replaced yet, each beside the area it stands in for. Twinleaf Town,
+// Route 201, Lake Verity, Sandgem Town and Route 202 were replaced in plan 01 · M2.
+var comparisons = new (string Imported, string HandMade)[] { ("jubilife_city", "JubilifeCity") }
+    .Where(c => MapDatabase.MapNames.Contains(c.HandMade))
+    .ToArray();
 foreach (var (imported, handMade) in comparisons)
 {
     var header = decomp.Headers.Values.First(h => h.Key == imported);

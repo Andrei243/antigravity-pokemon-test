@@ -201,6 +201,8 @@ public class TitleScreenTests
             {
                 Assert.InRange(point.X, 0f, map.Width);
                 Assert.InRange(point.Y, 0f, map.Height);
+                // On the map of the region a shot must look at a place that is built, not at the forest beyond
+                if (map.IsStreamed) Assert.True(map.AreaAt((int)point.X, (int)point.Y)?.Open, $"the shot at {point} looks at nothing built");
             }
             Assert.InRange(hour, 0f, 24f);
         }

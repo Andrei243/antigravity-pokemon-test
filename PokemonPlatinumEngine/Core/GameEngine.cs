@@ -45,6 +45,9 @@ public class GameEngine
     private GameState stateAfterTransition = GameState.Overworld;
 
     private Map currentMap = null!;
+
+    /// <summary>The area of the overworld the player was last in; null on a small map, which is one place.</summary>
+    private MapArea? currentArea;
     private Player player = null!;
     private readonly RenderContext renderContext = new(VirtualWidth, VirtualHeight);
     private readonly WorldRenderer world;
@@ -198,7 +201,7 @@ public class GameEngine
         gameStarted = true;
         trainersLookOnArrival = true;
         startMenu.PlayerName = playerName;
-        PlayAreaMusic(currentMap);
+        PlayAreaMusic(currentMap, player.GridX, player.GridY);
         AnnounceLocation();
 
         stateBeforeTransition = GameState.Overworld;
@@ -247,9 +250,10 @@ public class GameEngine
 
     private void ApplySaveData(SaveData save)
     {
-        currentMap = MapDatabase.Get(save.CurrentMapName);
-        player = new Player(save.PlayerGridX, save.PlayerGridY);
-        player.Facing = save.PlayerFacing;
+        var place = save.Place();
+        currentMap = MapDatabase.Get(place.Map);
+        player = new Player(place.X, place.Y);
+        player.Facing = place.Facing;
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -305,6 +309,7 @@ public class GameEngine
             PlayerGridX = player.GridX,
             PlayerGridY = player.GridY,
             PlayerFacing = player.Facing,
+            WorldVersion = SaveData.ImportedWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             BoxStorage = pcBoxStorage.Select(SavedPokemonData.FromPokemon).ToList(),
             Inventory = playerInventory.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
@@ -508,7 +513,22 @@ public class GameEngine
             foreach (var p in playerParty.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
+        EnterArea();
         return CheckTrainerSight();
+    }
+
+    /// <summary>
+    /// On the overworld a town runs into its routes with no door between them: stepping over the border brings
+    /// up the new place's name and its music, as arriving through a door does.
+    /// </summary>
+    private void EnterArea()
+    {
+        var area = currentMap.AreaAt(player.GridX, player.GridY);
+        if (area == currentArea) return;
+        currentArea = area;
+        if (area == null) return;
+        PlayAreaMusic(currentMap, player.GridX, player.GridY);
+        if (!string.IsNullOrEmpty(area.DisplayName)) locationSign.Show(area.DisplayName);
     }
 
     // ---------------------------------------------------------------- evolution
@@ -522,7 +542,7 @@ public class GameEngine
         Party = playerParty,
         Bag = playerInventory,
         IsNight = GameClock.IsNight,
-        Sites = currentMap.EvolutionSites
+        Sites = currentMap.EvolutionSitesAt(player.GridX, player.GridY)
     };
 
     /// <summary>The evolutions a trigger sets off among these Pokémon right now.</summary>
@@ -582,7 +602,7 @@ public class GameEngine
         }
         if (BeginNextEvolution()) return;
 
-        if (evolutionReturnState == GameState.Overworld) StartTransition(GameState.Overworld, () => PlayAreaMusic(currentMap));
+        if (evolutionReturnState == GameState.Overworld) StartTransition(GameState.Overworld, () => PlayAreaMusic(currentMap, player.GridX, player.GridY));
         else StartTransition(evolutionReturnState);
     }
 
@@ -732,7 +752,7 @@ public class GameEngine
     private void HandleWarp(Warp warp)
     {
         // The music fades with the screen, so a building with its own theme starts as the door opens on it
-        PlayAreaMusic(MapDatabase.Get(warp.TargetMap));
+        PlayAreaMusic(MapDatabase.Get(warp.TargetMap), warp.TargetX, warp.TargetY);
         StartTransition(GameState.Overworld, () =>
         {
             currentMap = MapDatabase.Get(warp.TargetMap);
@@ -745,7 +765,7 @@ public class GameEngine
     private void TravelTo(Region region)
     {
         var spot = region.ArrivalSpot!;
-        PlayAreaMusic(MapDatabase.Get(spot.Map));
+        PlayAreaMusic(MapDatabase.Get(spot.Map), spot.X, spot.Y);
         StartTransition(GameState.Overworld, () =>
         {
             currentMap = MapDatabase.Get(spot.Map);
@@ -756,13 +776,15 @@ public class GameEngine
     }
 
     /// <summary>
-    /// Plays a map's theme (its night arrangement at night) with its region's versions of the shared themes.
-    /// A map that names no theme keeps whatever is playing; the same theme carries on without a restart.
+    /// Plays the theme of a place on a map (its night arrangement at night) with its region's versions of the
+    /// shared themes. A place that names no theme keeps whatever is playing; the same theme carries on without a
+    /// restart.
     /// </summary>
-    private static void PlayAreaMusic(Map map)
+    private static void PlayAreaMusic(Map map, int x, int y)
     {
         AudioManager.Region = RegionDatabase.RegionOfMap(map.Name)?.Id;
-        if (!string.IsNullOrEmpty(map.BgmTrack)) AudioManager.PlayMusic(map.BgmTrack);
+        string track = map.BgmTrackAt(x, y);
+        if (!string.IsNullOrEmpty(track)) AudioManager.PlayMusic(track);
     }
 
     /// <summary>
@@ -771,8 +793,9 @@ public class GameEngine
     /// </summary>
     private void AnnounceLocation()
     {
+        currentArea = currentMap.AreaAt(player.GridX, player.GridY);
         if (currentMap.IsIndoors) locationSign.Hide();
-        else locationSign.Show(currentMap.DisplayName);
+        else locationSign.Show(currentMap.DisplayNameAt(player.GridX, player.GridY));
     }
 
     private void HandleStartMenuChoice(StartMenuChoice choice)
@@ -884,7 +907,7 @@ public class GameEngine
                     ? $"Lucas whited out and paid ¥{penalty}... Restored at home!" 
                     : "Lucas whited out... Restored at home!");
             }
-            PlayAreaMusic(currentMap);
+            PlayAreaMusic(currentMap, player.GridX, player.GridY);
         });
     }
 

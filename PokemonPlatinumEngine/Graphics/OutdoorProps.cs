@@ -30,8 +30,10 @@ internal static class OutdoorProps
     public const int LampHeight = 78;
 
     /// <param name="lamplight">Where the lamps' pools and halos go: drawn additively after dark.</param>
-    public static void Add(KitBuilder kit, Map map, MeshBuilder lamplight)
+    /// <param name="window">The tiles whose props are wanted: a chunk of a streamed map; null for the whole map.</param>
+    public static void Add(KitBuilder kit, Map map, MeshBuilder lamplight, TileWindow? window = null)
     {
+        var within = window ?? new TileWindow(0, 0, map.Width, map.Height);
         var fenced = new HashSet<(int, int)>();
         foreach (var prop in map.Props)
         {
@@ -40,10 +42,12 @@ internal static class OutdoorProps
                 for (int x = prop.X; x < prop.X + prop.Width; x++)
                     fenced.Add((x, y));
         }
-        foreach (var (x, y) in fenced) Fence(kit, map, fenced, x, y);
+        foreach (var (x, y) in fenced)
+            if (within.Contains(x, y)) Fence(kit, map, fenced, x, y);
 
         foreach (var prop in map.Props)
         {
+            if (!within.Contains(prop.X, prop.Y)) continue;
             kit.Origin = new Vector3(prop.X, 0, prop.Y);
             switch (prop.Type)
             {
@@ -72,8 +76,8 @@ internal static class OutdoorProps
             }
         }
 
-        for (int ty = 0; ty < map.Height; ty++)
-            for (int tx = 0; tx < map.Width; tx++)
+        for (int ty = within.Y; ty < within.Bottom; ty++)
+            for (int tx = within.X; tx < within.Right; tx++)
             {
                 if (map.GetGroundTile(tx, ty) != TileType.Signpost || MapStructures.IsWallSign(map, tx, ty)) continue;
                 kit.Origin = new Vector3(tx, 0, ty);
@@ -90,7 +94,7 @@ internal static class OutdoorProps
     private static void Fence(KitBuilder kit, Map map, HashSet<(int, int)> fenced, int x, int y)
     {
         kit.Origin = new Vector3(x, 0, y);
-        bool white = map.Architecture == Architecture.Clapboard;
+        bool white = map.ArchitectureAt(x, y) == Architecture.Clapboard;
         var tone = white ? FenceWhite : FenceWood;
         string name = white ? "fence.white" : "fence.wood";
 

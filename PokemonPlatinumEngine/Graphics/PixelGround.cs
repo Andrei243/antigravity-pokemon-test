@@ -64,12 +64,27 @@ internal static class PixelGround
     /// Null when the map has no water. Otherwise a canvas the size of the ground: alpha marks the water's surface,
     /// red is the distance to the shore in texels times <see cref="MaskScale"/>.
     /// </param>
-    public static PixelCanvas Bake(Map map, int margin, IReadOnlyList<BuildingInfo> buildings, out PixelCanvas? waterMask)
+    public static PixelCanvas Bake(Map map, int margin, IReadOnlyList<BuildingInfo> buildings, out PixelCanvas? waterMask) =>
+        Bake(map, new TileWindow(-margin, -margin, map.Width + margin * 2, map.Height + margin * 2), pad: 0, worldSeeds: false, out waterMask);
+
+    /// <summary>How many tiles round a chunk are baked with it and cut off again: the reach of the furthest thing that
+    /// shapes a texel, which is the shore distance the water mask counts up to (63 texels).</summary>
+    public const int ChunkPad = 2;
+
+    /// <summary>
+    /// Bakes the ground under a rectangle of a map's tiles. For a chunk of a streamed map, <paramref name="pad"/>
+    /// tiles round it are baked too and cut off, and the noise and the scattered details are seeded by the map's
+    /// own tile coordinates (<paramref name="worldSeeds"/>), so the chunk meets its neighbours without a seam.
+    /// </summary>
+    public static PixelCanvas Bake(Map map, TileWindow window, int pad, bool worldSeeds, out PixelCanvas? waterMask)
     {
-        int tw = map.Width + margin * 2, th = map.Height + margin * 2;
+        int tw = window.Width + pad * 2, th = window.Height + pad * 2;
         int w = tw * T, h = th * T;
-        TileType? TypeAt(int tx, int ty) => GroundBaker.TypeAt(map, tx - margin, ty - margin);
-        bool IsBuilding(int tx, int ty) => MapStructures.IsBuildingTile(map, tx - margin, ty - margin);
+        // The map tile under the canvas's first tile
+        int originX = window.X - pad, originY = window.Y - pad;
+        int seedX = worldSeeds ? originX : 0, seedY = worldSeeds ? originY : 0;
+        TileType? TypeAt(int tx, int ty) => GroundBaker.TypeAt(map, tx + originX, ty + originY);
+        bool IsBuilding(int tx, int ty) => MapStructures.IsBuildingTile(map, tx + originX, ty + originY);
         bool IsPath(int tx, int ty)
         {
             var t = TypeAt(tx, ty);
@@ -94,9 +109,9 @@ internal static class PixelGround
         {
             var type = Kinds[k].Type;
             bool used = false;
-            for (int ty = 0; ty < map.Height && !used; ty++)
-                for (int tx = 0; tx < map.Width && !used; tx++)
-                    used = map.GetGroundTile(tx, ty) == type;
+            for (int ty = 0; ty < th && !used; ty++)
+                for (int tx = 0; tx < tw && !used; tx++)
+                    used = TypeAt(tx, ty) == type;
             if (used) kindMasks[k] = Mask(tw, th, (x, y) => TypeAt(x, y) == type, blur: 5);
         }
 
@@ -108,7 +123,7 @@ internal static class PixelGround
             for (int x = 0; x < w; x++)
             {
                 int i = y * w + x;
-                float gx = x / (float)T, gy = y / (float)T;
+                float gx = x / (float)T + seedX, gy = y / (float)T + seedY;
 
                 // Lawn: flat base with clean-edged lighter patches
                 var col = SoftCanvas.Fbm(gx / 3.5f, gy / 3.5f, 11) > 0.6f ? GrassLight : Grass;
@@ -143,7 +158,7 @@ internal static class PixelGround
                 float wm = water[i];
                 if (wm > 0.3f && wm < 0.5f)
                 {
-                    bool inMap = map.InBounds((int)gx - margin, (int)gy - margin);
+                    bool inMap = map.InBounds(x / T + originX, y / T + originY);
                     col = inMap && !sandy ? Stone : Sand;
                 }
                 c.SetRaw(x, y, col);
@@ -155,19 +170,32 @@ internal static class PixelGround
             {
                 var t = TypeAt(tx, ty);
                 int ox = tx * T, oy = ty * T;
-                if (IsPath(tx, ty)) Pebbles(c, path, w, ox, oy, tx, ty);
-                else if (t == TileType.FlowerGrass) Flowers(c, ox, oy, tx, ty);
-                else if (t is TileType.Grass or TileType.Tree or TileType.TreeTrunk or TileType.LedgeDown && !IsBuilding(tx, ty)) Tufts(c, path, water, w, ox, oy, tx, ty);
+                // What is scattered on a tile is chosen by the tile's seed, not by where it lies on this canvas
+                int sx = tx + seedX, sy = ty + seedY;
+                if (IsPath(tx, ty)) Pebbles(c, path, w, ox, oy, sx, sy);
+                else if (t == TileType.FlowerGrass) Flowers(c, ox, oy, sx, sy);
+                else if (t is TileType.Grass or TileType.Tree or TileType.TreeTrunk or TileType.LedgeDown && !IsBuilding(tx, ty)) Tufts(c, path, water, w, ox, oy, sx, sy);
                 else
                 {
                     for (int k = 0; k < Kinds.Length; k++)
-                        if (t == Kinds[k].Type && kindMasks[k] != null) KindMarks(c, Kinds[k], kindMasks[k], w, ox, oy, tx, ty);
+                        if (t == Kinds[k].Type && kindMasks[k] != null) KindMarks(c, Kinds[k], kindMasks[k], w, ox, oy, sx, sy);
                 }
-                ShoreStones(c, water, w, ox, oy, tx, ty);
+                ShoreStones(c, water, w, ox, oy, sx, sy);
             }
 
-        waterMask = PaintWater(c, map, margin, water, w, h);
-        return c;
+        waterMask = PaintWater(c, map, originX, originY, water, w, h);
+        if (pad == 0) return c;
+
+        // Only the window is kept; a chunk whose only water was in the border has none
+        int cut = pad * T, keepW = window.Width * T, keepH = window.Height * T;
+        var kept = waterMask?.Crop(cut, cut, keepW, keepH);
+        bool wet = false;
+        if (kept != null)
+            for (int y = 0; y < keepH && !wet; y++)
+                for (int x = 0; x < keepW && !wet; x++)
+                    wet = kept.Get(x, y).A > 0;
+        waterMask = wet ? kept : null;
+        return c.Crop(cut, cut, keepW, keepH);
     }
 
     // ------------------------------------------------------------------ water
@@ -176,7 +204,7 @@ internal static class PixelGround
     /// Paints the shore's rim, the bank under north shores and the bed, and returns the mask of the water's
     /// surface with each texel's distance from the shore (null if there is no water).
     /// </summary>
-    private static PixelCanvas? PaintWater(PixelCanvas c, Map map, int margin, float[] water, int w, int h)
+    private static PixelCanvas? PaintWater(PixelCanvas c, Map map, int originX, int originY, float[] water, int w, int h)
     {
         var surface = new bool[w * h];
         bool any = false;
@@ -213,7 +241,7 @@ internal static class PixelGround
         foreach (var prop in map.Props)
         {
             if (prop.Type != PropType.Boulder) continue;
-            int cx = (int)((prop.X + margin + prop.Width / 2f) * T), cy = (int)((prop.Y + margin + prop.Depth / 2f) * T);
+            int cx = (int)((prop.X - originX + prop.Width / 2f) * T), cy = (int)((prop.Y - originY + prop.Depth / 2f) * T);
             if (cx < 0 || cy < 0 || cx >= w || cy >= h || !surface[cy * w + cx]) continue;
             for (int y = cy - RockFootprint; y <= cy + RockFootprint; y++)
                 for (int x = cx - RockFootprint; x <= cx + RockFootprint; x++)

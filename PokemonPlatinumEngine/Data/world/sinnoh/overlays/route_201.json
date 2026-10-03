@@ -1,0 +1,54 @@
+{
+  "area": "route_201",
+  "bgmTrack": "sinnoh/route201",
+  "trees": "Round",
+  "people": {
+    // In Platinum the Professor hands out the first Pokémon here, from his briefcase, not at the lake
+    "prof_rowan": {
+      "name": "Prof. Rowan",
+      "dialog": [
+        "Prof. Rowan: Hm! You were about to walk into the tall grass without a Pokémon of your own?",
+        "Prof. Rowan: My briefcase is on the path, just over there. There are three Poké Balls inside.",
+        "Prof. Rowan: Go on. Choose the Pokémon that will be your partner."
+      ]
+    },
+    "briefcase": {
+      "id": "starter_briefcase",
+      "name": "Professor's Briefcase",
+      "isStarterBriefcase": true
+    },
+    "pokemon_breeder_m": {
+      "name": "Breeder",
+      "dialog": [
+        "Pokémon grow stronger every time they battle.",
+        "Walk through the tall grass and you'll never be short of wild ones to battle."
+      ]
+    },
+    "cashier_m": {
+      "name": "Mart Clerk",
+      "dialog": [
+        "I work at the Poké Mart in Sandgem Town, at the east end of this road.",
+        "Come by when your Pokémon need Potions!"
+      ]
+    },
+    "school_kid_m": {
+      "name": "Schoolboy",
+      "dialog": [
+        "You can jump down a ledge, but you can't climb back up one.",
+        "It's the quick way back toward Twinleaf Town."
+      ]
+    },
+    "lass": {
+      "name": "Lass",
+      "dialog": [
+        "Sandgem Town is where this road ends.",
+        "The Professor's lab is the big building on your left as you come in."
+      ]
+    }
+  },
+  "signs": {
+    "arrow_signpost_twinleaf_town": "Route 201\nSouth: Twinleaf Town",
+    "arrow_signpost_sandgem_town": "Route 201\nEast: Sandgem Town",
+    "trainer_tips_signpost": "Trainer Tips\nWild Pokémon live in tall grass. Weaken one in battle, then throw a Poké Ball to catch it."
+  }
+}

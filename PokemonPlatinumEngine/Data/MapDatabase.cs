@@ -5,11 +5,16 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Data;
 
-/// <summary>Every map, read from the files in <c>Data/maps</c> (one <see cref="MapFile"/> per map).</summary>
+/// <summary>
+/// Every map: the hand-made ones, read from the files in <c>Data/maps</c> (one <see cref="MapFile"/> per map), and
+/// the maps of the imported world, made from <c>Data/world</c> (see <see cref="World"/>).
+/// </summary>
 public static partial class MapDatabase
 {
     public const string Folder = "maps";
-    public const string StartMap = "TwinleafTown";
+
+    /// <summary>The map of Sinnoh's overworld; also what an unknown map name falls back to.</summary>
+    public const string StartMap = "Sinnoh";
 
     // Replaced as a whole on reload, so a reader never sees a half-loaded set
     private static volatile Dictionary<string, Map>? maps;
@@ -34,8 +39,18 @@ public static partial class MapDatabase
                 throw new InvalidDataException($"Map file {path} names its map '{file.Name}'; the file must be called {file.Name}.json.");
             loaded[file.Name] = file.ToMap();
         }
+
+        foreach (var world in World.LoadAll())
+        {
+            foreach (var map in world.BuildMaps())
+            {
+                if (loaded.ContainsKey(map.Name))
+                    throw new InvalidDataException($"The world of {world.Index.Region} makes a map called {map.Name}, and so does {folder}.");
+                loaded[map.Name] = map;
+            }
+        }
         if (!loaded.ContainsKey(StartMap))
-            throw new InvalidDataException($"Map folder {folder} has no {StartMap}.json.");
+            throw new InvalidDataException($"No map is called {StartMap}: the world of Sinnoh is missing from {GameDataFiles.PathOf(World.Folder)}.");
 
         maps = loaded;
         return loaded;

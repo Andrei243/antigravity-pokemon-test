@@ -1,0 +1,19 @@
+{
+  // What is built of Sinnoh so far. "maps" are the maps the game makes from the imported matrices; "areas" are
+  // the areas that are open to walk in. After adding an area, run tools/MapImporter with --data and write its
+  // overlay (overlays/<key>.json).
+  "region": "Sinnoh",
+  "maps": [
+    { "name": "Sinnoh", "matrix": 0, "trees": "Pine" },
+    { "name": "LakeVerity", "matrix": 102, "area": "lake_verity", "trees": "Pine" }
+  ],
+  "areas": [
+    "twinleaf_town",
+    "route_201",
+    "verity_lakefront",
+    "lake_verity",
+    "sandgem_town",
+    "route_202",
+    "route_219"
+  ]
+}

@@ -169,7 +169,7 @@ public sealed class MapFile
             map.Signboards[(s.X, s.Y)] = s.Text;
 
         foreach (var n in Npcs)
-            map.NPCs.Add(BuildNpc(n));
+            map.NPCs.Add(BuildNpc(n, Name));
 
         foreach (var e in WildEncounters)
             map.WildEncounters.Add(new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight });
@@ -177,7 +177,8 @@ public sealed class MapFile
         return map;
     }
 
-    private NPC BuildNpc(NpcRecord n)
+    /// <summary>A fresh person from their record: a trainer's Pokémon are rolled anew each time.</summary>
+    internal static NPC BuildNpc(NpcRecord n, string mapName)
     {
         var npc = new NPC
         {
@@ -201,7 +202,7 @@ public sealed class MapFile
             foreach (var member in t.Party)
             {
                 var species = PokemonDatabase.Get(member.Species)
-                    ?? throw new InvalidDataException($"Map {Name}: trainer {t.Id} has unknown species '{member.Species}'.");
+                    ?? throw new InvalidDataException($"Map {mapName}: trainer {t.Id} has unknown species '{member.Species}'.");
                 party.Add(new Pokemon(species, member.Level));
             }
 

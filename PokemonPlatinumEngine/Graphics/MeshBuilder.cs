@@ -366,7 +366,18 @@ internal sealed class MeshBuilder
         return copy;
     }
 
-    public unsafe Mesh Upload()
+    public Mesh Upload()
+    {
+        var mesh = Pack();
+        Raylib.UploadMesh(ref mesh, false);
+        return mesh;
+    }
+
+    /// <summary>
+    /// The mesh in the form the GPU takes, but not yet on it: memory is allocated and filled, nothing more, so
+    /// this part can run on any thread. <c>Raylib.UploadMesh</c> finishes it on the thread that owns the window.
+    /// </summary>
+    public unsafe Mesh Pack()
     {
         var mesh = new Mesh(positions.Count, positions.Count / 3);
         mesh.AllocVertices();
@@ -385,8 +396,6 @@ internal sealed class MeshBuilder
             n[i] = normals[i];
             col[i] = colors[i];
         }
-
-        Raylib.UploadMesh(ref mesh, false);
         return mesh;
     }
 }

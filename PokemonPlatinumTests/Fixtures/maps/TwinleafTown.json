@@ -1,0 +1,232 @@
+{
+  "name": "TwinleafTown",
+  "displayName": "Twinleaf Town",
+  "bgmTrack": "sinnoh/twinleaf",
+  "interior": "None",
+  "trees": "Pine",
+  "width": 24,
+  "height": 20,
+  "ground": [
+    "TTTTTTTTTTT::TTTTTTTTTTT",
+    "T..........::..........T",
+    "T..........::..........T",
+    "T..........::..........T",
+    "T...ggggg..::..ggggg...T",
+    "T...ggggg..::..ggggg...T",
+    "T...ggggg..::..ggggg...T",
+    "T...#SD##..::..##D##...T",
+    "T...*****..::..*****...T",
+    "T..........::..........T",
+    "T..::::::::::::::::::..T",
+    "T..:::::::S::::::::::..T",
+    "T..........::..........T",
+    "T..........::..........T",
+    "T..~~~~~...::..........T",
+    "T..~~~~~...::..........T",
+    "T..~~~~~...::..........T",
+    "T..~~~~~...::..........T",
+    "T..........::..........T",
+    "TTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "solid": [
+    "###########..###########",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "#...#####......#####...#",
+    "#...#####......#####...#",
+    "#...#####......#####...#",
+    "#...##.##......##.##...#",
+    "#..#.....#....#.....#..#",
+    "#..###.####...###.###..#",
+    "#......................#",
+    "#.........#............#",
+    "#............#.........#",
+    "#.......##.............#",
+    "#..#####...............#",
+    "#..#####...........#...#",
+    "#..#####...............#",
+    "#..#####...............#",
+    "#......................#",
+    "########################"
+  ],
+  "props": [
+    {
+      "type": "Boulder",
+      "x": 6,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 19,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Fence",
+      "x": 4,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Mailbox",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 8,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 14,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Fence",
+      "x": 15,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Mailbox",
+      "x": 18,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 19,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 20,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LampPost",
+      "x": 10,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LampPost",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 8,
+      "y": 13,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 7,
+      "targetMap": "PlayerHouse",
+      "targetX": 4,
+      "targetY": 6,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 17,
+      "sourceY": 7,
+      "targetMap": "RivalHouse",
+      "targetX": 5,
+      "targetY": 7,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 0,
+      "targetMap": "Route201",
+      "targetX": 14,
+      "targetY": 20,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 0,
+      "targetMap": "Route201",
+      "targetX": 15,
+      "targetY": 20,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 11,
+      "text": "Twinleaf Town\nFresh and free! The town where journeys begin."
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "text": "Lucas's House"
+    }
+  ],
+  "npcs": [
+    {
+      "name": "Barry",
+      "npcType": "Rival",
+      "x": 12,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Barry: Hey, Lucas! You're finally ready!",
+        "Barry: Professor Rowan is waiting at Lake Verity just past Route 201 to the north-west!",
+        "Barry: Let's hurry to Lake Verity right now! Walk north up the road to exit the town!"
+      ]
+    },
+    {
+      "name": "Town Lass",
+      "npcType": "Lass",
+      "x": 14,
+      "y": 12,
+      "facing": "Left",
+      "dialog": [
+        "Technology is incredible! You can save your adventure anytime from the Start Menu!",
+        "If you press Enter or Tab, you can check your Pokémon, Bag, and Pokédex."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

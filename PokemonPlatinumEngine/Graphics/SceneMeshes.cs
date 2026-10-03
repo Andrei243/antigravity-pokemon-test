@@ -11,6 +11,14 @@ namespace PokemonPlatinumEngine.Graphics;
 /// </summary>
 internal enum MeshPass { Opaque, Ground, Water, SoftWater, Light, HomeLight }
 
+/// <summary>A rectangle of a map's tiles: a chunk of a streamed map, or the part of a map a scene covers.</summary>
+internal readonly record struct TileWindow(int X, int Y, int Width, int Height)
+{
+    public int Right => X + Width;
+    public int Bottom => Y + Height;
+    public bool Contains(int x, int y) => x >= X && y >= Y && x < Right && y < Bottom;
+}
+
 /// <summary>A rectangle of ground, x and z in tiles: what the camera can see, or where shadows can reach it from.</summary>
 internal readonly record struct GroundRect(float MinX, float MinZ, float MaxX, float MaxZ)
 {
@@ -72,20 +80,27 @@ internal sealed class SceneMeshes
         foreach (var (tex, pass, chunked, builder) in batches.All)
         {
             if (builder.VertexCount == 0) continue;
-            if (pass is MeshPass.Light or MeshPass.HomeLight)
-            {
-                // Lights are unlit and added on top of the scene
-                result.lights.Add((builder.Upload(), RenderContext.MaterialFor(shaders.Light, tex), pass == MeshPass.HomeLight));
-                continue;
-            }
-            var shader = pass == MeshPass.Water ? shaders.Water : pass == MeshPass.SoftWater ? shaders.SoftWater : shaders.World;
-            var main = RenderContext.MaterialFor(shader, tex);
-            Material? depth = pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
-            // Chunks are the map's trees: many layers of leaves over each other, so they get a depth pre-pass
-            Material? prepass = chunked && pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Prepass, tex) : null;
-            result.parts.Add(new Part(builder.Upload(), main, depth, chunked ? builder.Bounds() : null, prepass));
+            result.Add(builder.Upload(), tex, pass, chunked ? builder.Bounds() : null, shaders);
         }
         return result;
+    }
+
+    /// <summary>Adds a mesh that is already on the GPU, to be drawn with a texture in a pass.</summary>
+    /// <param name="bounds">Set for one of the map's chunks of trees, which is skipped when out of view and gets a depth pre-pass.</param>
+    public void Add(Mesh mesh, Texture2D tex, MeshPass pass, (Vector3 Min, Vector3 Max)? bounds, FieldShaders shaders)
+    {
+        if (pass is MeshPass.Light or MeshPass.HomeLight)
+        {
+            // Lights are unlit and added on top of the scene
+            lights.Add((mesh, RenderContext.MaterialFor(shaders.Light, tex), pass == MeshPass.HomeLight));
+            return;
+        }
+        var shader = pass == MeshPass.Water ? shaders.Water : pass == MeshPass.SoftWater ? shaders.SoftWater : shaders.World;
+        var main = RenderContext.MaterialFor(shader, tex);
+        Material? depth = pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
+        // Chunks are the map's trees: many layers of leaves over each other, so they get a depth pre-pass
+        Material? prepass = bounds != null && pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Prepass, tex) : null;
+        parts.Add(new Part(mesh, main, depth, bounds, prepass));
     }
 
     private static bool Hidden(Part part, GroundRect? within) =>
@@ -155,6 +170,33 @@ internal sealed class SceneMeshes
         {
             if (part.Depth.HasValue && !Hidden(part, casters)) Raylib.DrawMesh(part.Mesh, part.Depth.Value, Matrix4x4.Identity);
         }
+    }
+
+    /// <summary>
+    /// Frees the meshes when a chunk of the world is left behind. The materials' shaders and textures are shared
+    /// or belong to the scene, so only each material's own table of maps is freed: unloading a material whole
+    /// would take the shader with it.
+    /// </summary>
+    public unsafe void Unload()
+    {
+        static void Free(Material? material)
+        {
+            if (material is { } m && m.Maps != null) Raylib.MemFree(m.Maps);
+        }
+        foreach (var part in parts)
+        {
+            Raylib.UnloadMesh(part.Mesh);
+            Free(part.Main);
+            Free(part.Depth);
+            Free(part.Prepass);
+        }
+        foreach (var (mesh, material, _) in lights)
+        {
+            Raylib.UnloadMesh(mesh);
+            Free(material);
+        }
+        parts.Clear();
+        lights.Clear();
     }
 }
 

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PokemonPlatinumEngine": {
+      "commandName": "Project",
+      "commandLineArgs": "--region Sinnoh"
+    }
+  }
+}

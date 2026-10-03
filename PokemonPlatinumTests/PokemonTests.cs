@@ -18,7 +18,8 @@ public class PokemonTests
     {
         MapDatabase.Initialize();
 
-        var twinleaf = MapStructures.FindBuildings(MapDatabase.Get("TwinleafTown"));
+        // A hand-made map says what its buildings are with roof, wall, door and sign tiles
+        var twinleaf = MapStructures.FindBuildings(Fixtures.Map("TwinleafTown"));
         Assert.Equal(2, twinleaf.Count);
         var home = twinleaf.Single(b => b.X0 == 4);
         Assert.Equal((4, 4, 8, 7), (home.X0, home.Y0, home.X1, home.Y1));
@@ -27,7 +28,7 @@ public class PokemonTests
         Assert.Equal(new[] { (6, (string?)"PlayerHouse") }, home.Doors);
         Assert.Equal(new[] { 5 }, home.Plaques);
 
-        var sandgem = MapStructures.FindBuildings(MapDatabase.Get("SandgemTown"));
+        var sandgem = MapStructures.FindBuildings(Fixtures.Map("SandgemTown"));
         Assert.Equal(3, sandgem.Count);
         Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokemonCenter && (b.X0, b.Y0, b.X1, b.Y1) == (4, 3, 8, 6));
         Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokeMart && (b.X0, b.Y0, b.X1, b.Y1) == (20, 3, 24, 6));
@@ -42,15 +43,17 @@ public class PokemonTests
     {
         MapDatabase.Initialize();
 
-        var route = MapDatabase.Get("Route202");
-        var north = route.GetWarpAt(14, 0);
+        // The city is still a hand-made map: the top of Route 202, on the map of Sinnoh, leads onto it and back
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        Assert.Equal("route_202", sinnoh.AreaAt(173, 800)!.Key);
+        var north = sinnoh.GetWarpAt(173, 800);
         Assert.NotNull(north);
         Assert.Equal("JubilifeCity", north!.TargetMap);
 
         var city = MapDatabase.Get("JubilifeCity");
         var south = city.GetWarpAt(north.TargetX, north.TargetY + 1);
         Assert.NotNull(south);
-        Assert.Equal(("Route202", 14, 1), (south!.TargetMap, south.TargetX, south.TargetY));
+        Assert.Equal(("Sinnoh", 173, 801), (south!.TargetMap, south.TargetX, south.TargetY));
 
         // Jubilife has its own Center and Mart, recognised as such in the field
         var buildings = MapStructures.FindBuildings(city);
@@ -251,6 +254,9 @@ public class PokemonTests
             {
                 foreach (var (x, target) in building.Doors)
                 {
+                    // On the map of the imported world a house whose rooms aren't built yet keeps its door shut
+                    // (WorldTests checks each is listed as locked); an open door always leads inside
+                    if (map.IsStreamed && target == null && map.IsSolid(x, building.Y1)) continue;
                     Assert.False(target == null, $"{name}: the door at ({x},{building.Y1}) doesn't lead anywhere");
                     Assert.Contains(target, MapDatabase.MapNames);
                 }
@@ -300,21 +306,23 @@ public class PokemonTests
         Assert.Equal(ids.Count, ids.Distinct().Count());
 
         Assert.Empty(MapDatabase.DefeatedTrainerIds());
-        MapDatabase.Get("Route201").NPCs.First(n => n.IsTrainer).HasBattled = true;
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        sinnoh.NPCs.Single(n => n.Id == "trainer_tristan").HasBattled = true;
         var save = new PokemonPlatinumEngine.Core.SaveData { DefeatedTrainers = MapDatabase.DefeatedTrainerIds() };
         Assert.Equal(new[] { "trainer_tristan" }, save.DefeatedTrainers);
         string json = System.Text.Json.JsonSerializer.Serialize(save);
 
         // The game starts again with everyone waiting, then the save is loaded
         MapDatabase.Initialize();
-        var route = MapDatabase.Get("Route201");
-        Assert.NotNull(TrainerApproach.FindSpotter(route, 24, 9));
+        // Tristan looks south down Route 202 from (166, 813)
+        var route = MapDatabase.Get("Sinnoh");
+        Assert.NotNull(TrainerApproach.FindSpotter(route, 166, 815));
 
         var loaded = System.Text.Json.JsonSerializer.Deserialize<PokemonPlatinumEngine.Core.SaveData>(json)!;
         MapDatabase.RestoreDefeatedTrainers(loaded.DefeatedTrainers);
-        Assert.True(route.NPCs.First(n => n.IsTrainer).HasBattled);
-        Assert.Null(TrainerApproach.FindSpotter(route, 24, 9));
-        Assert.All(MapDatabase.Get("Route202").NPCs.Where(n => n.IsTrainer), n => Assert.False(n.HasBattled));
+        Assert.True(route.NPCs.Single(n => n.Id == "trainer_tristan").HasBattled);
+        Assert.Null(TrainerApproach.FindSpotter(route, 166, 815));
+        Assert.All(route.NPCs.Where(n => n.IsTrainer && n.Id != "trainer_tristan"), n => Assert.False(n.HasBattled));
 
         // A save from before trainers were recorded still loads: nobody has been beaten
         Assert.Empty(System.Text.Json.JsonSerializer.Deserialize<PokemonPlatinumEngine.Core.SaveData>("{}")!.DefeatedTrainers);

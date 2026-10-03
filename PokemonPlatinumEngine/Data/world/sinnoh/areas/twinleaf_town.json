@@ -1,0 +1,41 @@
+{
+  "key": "twinleaf_town",
+  "index": 411,
+  "name": "Twinleaf Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "City",
+  "dayMusic": "TOWN01_D",
+  "nightMusic": "TOWN01_N",
+  "encounters": "twinleaf_town",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 105, "z": 875, "to": "twinleaf_town_rival_house_1f", "toWarp": 0 },
+    { "x": 116, "z": 885, "to": "twinleaf_town_player_house_1f", "toWarp": 0 },
+    { "x": 116, "z": 875, "to": "twinleaf_town_northeast_house", "toWarp": 0 },
+    { "x": 106, "z": 885, "to": "twinleaf_town_southwest_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "wander_around", "x": 119, "z": 878, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "6" },
+    { "id": "collector", "looks": "collector", "movement": "look_around", "x": 108, "z": 889, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "5" },
+    { "id": "rival", "looks": "barry", "movement": "look_south", "x": 105, "z": 875, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TWINLEAF_TOWN_RIVAL", "script": "0" },
+    { "id": "guitarist", "looks": "guitarist", "movement": "look_north_west_and_east", "x": 108, "z": 869, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 112, "z": 878, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "mailbox_player", "looks": "mailbox", "movement": "none", "x": 114, "z": 885, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "8" },
+    { "id": "mailbox_rival", "looks": "mailbox", "movement": "none", "x": 109, "z": 875, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 109, "z": 856, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_201", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 107, "z": 893, "type": 2, "script": "8201" }
+  ],
+  "triggers": [
+    { "x": 108, "z": 867, "width": 8, "depth": 1, "script": "4", "variable": "VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE", "value": "1" },
+    { "x": 105, "z": 876, "width": 1, "depth": 1, "script": "2", "variable": "VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE", "value": "0" }
+  ]
+}

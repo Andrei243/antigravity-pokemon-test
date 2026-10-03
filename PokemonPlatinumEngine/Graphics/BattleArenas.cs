@@ -14,8 +14,8 @@ internal readonly record struct ArenaSpec(BattleArena Kind, PokemonType? Theme =
     public static ArenaSpec For(Map map, int x, int y)
     {
         var kind = map.ArenaAt(x, y);
-        return new ArenaSpec(kind, kind is BattleArena.Gym or BattleArena.League ? map.ArenaType : null, map.Trees,
-            kind == BattleArena.Grass && map.HasLake);
+        return new ArenaSpec(kind, kind is BattleArena.Gym or BattleArena.League ? map.ArenaType : null, map.TreesAt(x, y),
+            kind == BattleArena.Grass && map.HasLakeNear(x, y));
     }
 
     /// <summary>Under the open sky, lit by the time of day.</summary>

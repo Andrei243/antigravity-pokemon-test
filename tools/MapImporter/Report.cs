@@ -199,8 +199,13 @@ public sealed class Report
         foreach (var (cover, count) in overworldCover.OrderByDescending(kv => kv.Value))
             text.Append(CultureInfo.InvariantCulture, $"| {cover} | {N(count)} | {100.0 * count / total:F1}% |\n");
 
-        text.Append("\n## Compared with the hand-made maps\n\n| Area | Tiles (imported, hand-made) | Tall grass | Ledges | Water | Buildings | Warps | People | Signs |\n|---|---|---|---|---|---|---|---|---|\n");
-        foreach (var (imported, handMade) in comparisons) text.Append(Compare(imported, handMade));
+        text.Append(OpenAreas());
+
+        if (comparisons.Any())
+        {
+            text.Append("\n## Compared with the hand-made maps that are left\n\n| Area | Tiles (imported, hand-made) | Tall grass | Ledges | Water | Buildings | Warps | People | Signs |\n|---|---|---|---|---|---|---|---|---|\n");
+            foreach (var (imported, handMade) in comparisons) text.Append(Compare(imported, handMade));
+        }
 
         var unknown = textures.Where(kv => { Cover.OfTexture(kv.Key, out bool known); return !known; }).ToList();
         text.Append(CultureInfo.InvariantCulture, $"\n## Textures\n\n{textures.Count} texture names lie over tiles; {textures.Count - unknown.Count} are sorted into a kind of ground by `Cover.cs`. Those still to sort, on the overworld first:\n\n| Texture | Open tiles | Blocked tiles | Chunks | Overworld |\n|---|---:|---:|---:|---|\n");
@@ -221,6 +226,32 @@ public sealed class Report
 
         text.Append(CultureInfo.InvariantCulture, $"\n## Problems\n\n{(Problems.Count == 0 ? "None." : string.Join("\n", Problems.Select(p => "- " + p)))}\n");
         return text.ToString().ReplaceLineEndings("\n");
+    }
+
+    /// <summary>
+    /// The areas the game has open (its <c>world.json</c>), with how much of what the original has in each is in
+    /// the game: people appear once an overlay says who they are, a warp once its other side exists.
+    /// </summary>
+    private static string OpenAreas()
+    {
+        var text = new StringBuilder("\n## Open in the game\n\n| Area | Map | People (in the game, in the original) | Warps | Signs | Wild Pokémon | Doors still locked |\n|---|---|---|---|---|---|---|\n");
+        foreach (var world in World.LoadAll())
+        {
+            foreach (string key in world.Index.Areas)
+            {
+                if (world.Area(key) is not { } area || world.MapOf(key) is not { } entry) continue;
+                var map = MapDatabase.Get(entry.Name);
+                bool Here(int x, int y) => string.Equals(map.AreaAt(x, y)?.Key, key, StringComparison.OrdinalIgnoreCase);
+
+                // Signposts and mailboxes are objects in the original; here they are signs
+                int signs = map.Signboards.Keys.Count(at => Here(at.X, at.Y));
+                int originalSigns = area.Objects.Count(o => o.Looks.Contains("sign", StringComparison.Ordinal) || o.Looks == "mailbox");
+                var species = area.Land?.Select(l => l.Species).Distinct().ToList() ?? new();
+                text.Append(CultureInfo.InvariantCulture,
+                    $"| {area.Name} (`{key}`) | {entry.Name} | {map.NPCs.Count(n => Here(n.GridX, n.GridY))}, {area.Objects.Count - originalSigns} | {map.Warps.Count(w => Here(w.SourceX, w.SourceY))}, {area.Warps.Count} | {signs}, {originalSigns + area.Signs.Count} | {(species.Count > 0 ? string.Join(", ", species) : "")} | {world.Overlay(key)?.Locked?.Count ?? 0} |\n");
+            }
+        }
+        return text.ToString();
     }
 
     private string Compare(string importedKey, string handMadeName)

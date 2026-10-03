@@ -11,11 +11,33 @@ namespace PokemonPlatinumEngine.Graphics;
 /// </summary>
 internal static class SceneTextures
 {
-    private static readonly Dictionary<string, Texture2D> Cache = new();
+    // Read from the threads that prepare chunks of the world, written only by the thread that owns the window
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, Texture2D> Cache = new();
+    private static int ownerThread;
+
+    /// <summary>
+    /// Makes every texture the field's scenery can ask for, on the thread that owns the window. After this the
+    /// chunks of the world can be prepared on other threads: they only look textures up.
+    /// </summary>
+    public static void Warm()
+    {
+        ownerThread = Environment.CurrentManagedThreadId;
+        _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace;
+        _ = LightPool; _ = LampGlow; _ = WindowLight;
+    }
+
+    // A texture is made by OpenGL, which belongs to one thread. Asking for a new one from another is a mistake
+    // in the code that prepares scenes: whatever it needs must be warmed first.
+    private static void MustOwn(string key)
+    {
+        if (ownerThread != 0 && Environment.CurrentManagedThreadId != ownerThread)
+            throw new InvalidOperationException($"The texture '{key}' was first asked for off the main thread; warm it before preparing scenes in the background.");
+    }
 
     private static Texture2D Get(string key, Func<PixelCanvas> build, bool repeat)
     {
         if (Cache.TryGetValue(key, out var tex)) return tex;
+        MustOwn(key);
         tex = build().ToTexture();
         Raylib.SetTextureWrap(tex, repeat ? TextureWrap.Repeat : TextureWrap.Clamp);
         Cache[key] = tex;
@@ -26,6 +48,7 @@ internal static class SceneTextures
     private static Texture2D Soft(string key, Color color, Func<float, float, float> alpha)
     {
         if (Cache.TryGetValue(key, out var cached)) return cached;
+        MustOwn(key);
         const int s = 64;
         var c = new PixelCanvas(s, s);
         for (int y = 0; y < s; y++)

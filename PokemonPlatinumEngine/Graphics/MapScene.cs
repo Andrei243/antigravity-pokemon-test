@@ -7,9 +7,15 @@ using PokemonPlatinumEngine.Overworld;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// The 3D model of one map, built once and cached: textured ground, water lying in it, trees, tall grass,
-/// buildings, and for interiors a furnished room. One world unit is one tile; +Y is up and +Z is south,
-/// so the field camera looks north like the DS games.
+/// The 3D model of one map, or of one chunk of a map of the imported world: textured ground, water lying in it,
+/// trees, tall grass, buildings, and for interiors a furnished room. One world unit is one tile; +Y is up and +Z
+/// is south, so the field camera looks north like the DS games. A chunk's geometry is in the map's own
+/// coordinates, so the chunks of a map are simply drawn together.
+/// <para>
+/// Building is split in two. <see cref="Prepare"/> bakes the art and lays out the meshes without touching the
+/// GPU, so chunks can be prepared on other threads while the game runs; <see cref="Finish"/> uploads the
+/// result on the thread that owns the window.
+/// </para>
 /// </summary>
 internal sealed class MapScene
 {
@@ -28,6 +34,9 @@ internal sealed class MapScene
     private const float WaterLevel = 0.004f;
 
     public Map Map { get; }
+
+    /// <summary>The chunk of a streamed map this scene is; null for the scene of a whole map.</summary>
+    public TileWindow? Chunk { get; }
     public bool Indoors => Map.IsIndoors;
     public float PitchDeg { get; }
 
@@ -36,14 +45,46 @@ internal sealed class MapScene
     public int Margin { get; }
     public Vector3 RoomCenter { get; private set; }
 
-    private SceneMeshes meshes = null!;
+    /// <summary>The ground this scene can show something on: its tiles and what leans in from just outside them.</summary>
+    public GroundRect Bounds => new(ground.X - 3, ground.Y - 3, ground.Right + 3, ground.Bottom + 5);
 
-    private MapScene(Map map)
+    // The tiles the ground mesh covers; the tiles whose grass, ledges, props and buildings are this scene's; and
+    // the tiles whose trees are
+    private readonly TileWindow ground, content, forest;
+
+    private SceneMeshes meshes = null!;
+    private readonly List<Texture2D> ownTextures = new();
+
+    private MapScene(Map map, TileWindow? chunk)
     {
         Map = map;
-        PitchDeg = map.IsIndoors ? IndoorPitchDeg : OutdoorPitchDeg;
-        VS = 1f / MathF.Cos(PitchDeg * MathF.PI / 180f);
-        Margin = map.IsIndoors ? 0 : OutdoorMargin;
+        Chunk = chunk;
+        PitchDeg = PitchOf(map);
+        VS = VerticalScaleOf(map);
+        Margin = map.IsIndoors || chunk != null ? 0 : OutdoorMargin;
+        if (chunk is { } c)
+        {
+            ground = content = forest = c;
+        }
+        else
+        {
+            ground = new TileWindow(-Margin, -Margin, map.Width + Margin * 2, map.Height + Margin * 2);
+            content = new TileWindow(0, 0, map.Width, map.Height);
+            // The camera never shows more than a few tiles past the map (more to the south, where tall trees
+            // poke up into view), so the forest beyond that is left out
+            forest = map.IsIndoors ? content : new TileWindow(-5, -5, map.Width + 10, map.Height + 5 + Margin);
+        }
+    }
+
+    public static float PitchOf(Map map) => map.IsIndoors ? IndoorPitchDeg : OutdoorPitchDeg;
+
+    public static float VerticalScaleOf(Map map) => 1f / MathF.Cos(PitchOf(map) * MathF.PI / 180f);
+
+    /// <summary>The chunk of a streamed map at a column and row of its grid, cut off at the map's edge.</summary>
+    public static TileWindow ChunkWindow(Map map, int chunkX, int chunkY)
+    {
+        int x = chunkX * Map.ChunkTiles, y = chunkY * Map.ChunkTiles;
+        return new TileWindow(x, y, Math.Min(Map.ChunkTiles, map.Width - x), Math.Min(Map.ChunkTiles, map.Height - y));
     }
 
     // ------------------------------------------------------------------ drawing
@@ -63,25 +104,74 @@ internal sealed class MapScene
 
     // ------------------------------------------------------------------ building the scene
 
-    public static MapScene Build(Map map, FieldShaders shaders)
+    /// <summary>The whole of a map, built in one go.</summary>
+    public static MapScene Build(Map map, FieldShaders shaders) => Finish(Prepare(map), shaders);
+
+    /// <summary>
+    /// A scene that is baked, laid out and packed for the GPU but not yet on it: the art of its own as images,
+    /// every mesh in native memory. What is left is the uploading itself.
+    /// </summary>
+    public sealed class Prepared
     {
-        var scene = new MapScene(map);
+        public required MapScene Scene { get; init; }
+
+        /// <summary>The art baked for this scene (its ground, its water mask, its sheet of buildings and props), each with the meshes drawn with it.</summary>
+        internal List<(Image Image, bool Clamp, List<(Mesh Mesh, MeshPass Pass)> Meshes)> Own { get; } = new();
+
+        /// <summary>The meshes drawn with the field's shared textures.</summary>
+        internal List<(Texture2D Tex, MeshPass Pass, Mesh Mesh, (Vector3 Min, Vector3 Max)? Bounds)> Shared { get; } = new();
+
+        /// <summary>Uploads in all: a texture or a mesh each.</summary>
+        public int Steps => Own.Sum(o => 1 + o.Meshes.Count) + Shared.Count;
+    }
+
+    /// <summary>The buildings a scene of a map (or of one chunk of it) draws: those whose north-west corner is in it.</summary>
+    public static IEnumerable<BuildingInfo> BuildingsIn(Map map, TileWindow? chunk)
+    {
+        foreach (var b in MapStructures.BuildingsOf(map))
+            if (chunk == null || chunk.Value.Contains(b.X0, b.Y0)) yield return b;
+    }
+
+    /// <summary>
+    /// Makes sure the shared textures a scene will look up exist, which only the thread that owns the window can
+    /// do. Call it there before <see cref="Prepare"/> runs anywhere else.
+    /// </summary>
+    public static void Warm(Map map, TileWindow? chunk)
+    {
+        SceneTextures.Warm();
+        if (map.IsIndoors) return;
+        foreach (var b in BuildingsIn(map, chunk))
+            _ = SceneTextures.RoofTiles(BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)).RoofColor);
+    }
+
+    /// <summary>
+    /// Bakes and lays out a map, or one chunk of a streamed map, without touching the GPU (the shared textures
+    /// it looks up must exist: see <see cref="Warm"/>).
+    /// </summary>
+    public static Prepared Prepare(Map map, TileWindow? chunk = null)
+    {
+        var scene = new MapScene(map, chunk);
         var batches = new MeshBatches();
-        var buildings = MapStructures.FindBuildings(map);
 
         PixelCanvas? waterMask = null;
-        var ground = (map.IsIndoors ? GroundBaker.BakeInterior(map) : PixelGround.Bake(map, scene.Margin, buildings, out waterMask)).ToTexture();
-        scene.AddGround(batches.For(ground, MeshPass.Ground), batches.For(SceneTextures.White, MeshPass.Ground));
+        PixelCanvas ground;
+        if (map.IsIndoors) ground = GroundBaker.BakeInterior(map);
+        else if (chunk is { } window) ground = PixelGround.Bake(map, window, PixelGround.ChunkPad, worldSeeds: true, out waterMask);
+        else ground = PixelGround.Bake(map, scene.Margin, MapStructures.BuildingsOf(map), out waterMask);
 
-        // Buildings and props are painted face by face into one sheet of art for the map
+        // Buildings and props are painted face by face into one sheet of art for the scene
+        var prepared = new Prepared { Scene = scene };
         var kit = new KitBuilder(new ArtSheet(), scene.VS);
+        MeshBuilder groundMesh = new(), waterMesh = new();
+        scene.AddGround(groundMesh, batches.For(SceneTextures.White, MeshPass.Ground));
+
         if (map.IsIndoors)
         {
             scene.AddInterior(batches, kit);
         }
         else
         {
-            if (waterMask != null) scene.AddWater(batches.For(waterMask.ToTexture(), MeshPass.Water));
+            if (waterMask != null) scene.AddWater(waterMesh);
             scene.AddTrees(batches);
             scene.AddTallGrass(batches.For(SceneTextures.TallGrass, MeshPass.Ground));
             scene.AddLawnDetail(batches);
@@ -93,21 +183,93 @@ internal sealed class MapScene
                 PublicLight = batches.For(SceneTextures.LightPool, MeshPass.Light),
                 HomeLight = batches.For(SceneTextures.LightPool, MeshPass.HomeLight)
             };
-            foreach (var b in buildings) BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.Architecture), targets);
-            OutdoorProps.Add(kit, map, batches.For(SceneTextures.LampGlow, MeshPass.Light));
+            foreach (var b in BuildingsIn(map, chunk))
+                BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)), targets);
+            OutdoorProps.Add(kit, map, batches.For(SceneTextures.LampGlow, MeshPass.Light), chunk);
         }
 
+        // Everything is packed here, so the thread that owns the window is left with the uploads alone
+        static List<(Mesh, MeshPass)> Packed(params (MeshBuilder Builder, MeshPass Pass)[] meshes)
+        {
+            var packed = new List<(Mesh, MeshPass)>();
+            foreach (var (builder, pass) in meshes)
+                if (builder.VertexCount > 0) packed.Add((builder.Pack(), pass));
+            return packed;
+        }
+
+        prepared.Own.Add((ground.ToImage(), false, Packed((groundMesh, MeshPass.Ground))));
+        if (waterMask != null && waterMesh.VertexCount > 0)
+            prepared.Own.Add((waterMask.ToImage(), false, Packed((waterMesh, MeshPass.Water))));
         if (kit.Solid.VertexCount + kit.Flat.VertexCount > 0)
         {
-            var art = kit.Sheet.ToCanvas().ToTexture();
-            Raylib.SetTextureWrap(art, TextureWrap.Clamp);
+            var art = kit.Sheet.ToCanvas().ToImage();
             kit.Finish();
-            batches.Attach(art, MeshPass.Opaque, kit.Solid);
-            batches.Attach(art, MeshPass.Ground, kit.Flat);
+            prepared.Own.Add((art, true, Packed((kit.Solid, MeshPass.Opaque), (kit.Flat, MeshPass.Ground))));
+        }
+        foreach (var (tex, pass, chunked, builder) in batches.All)
+            if (builder.VertexCount > 0) prepared.Shared.Add((tex, pass, builder.Pack(), chunked ? builder.Bounds() : null));
+        return prepared;
+    }
+
+    /// <summary>
+    /// The uploads a prepared scene needs, one texture or one mesh to a step, in the order they must run. They
+    /// must run on the thread that owns the window; the scene can be drawn once the last has.
+    /// </summary>
+    public static Queue<Action> Uploads(Prepared prepared, FieldShaders shaders)
+    {
+        var scene = prepared.Scene;
+        scene.meshes = new SceneMeshes();
+        var steps = new Queue<Action>();
+
+        foreach (var (image, clamp, meshes) in prepared.Own)
+        {
+            // The steps that upload the meshes use the texture the step before them makes
+            Texture2D texture = default;
+            steps.Enqueue(() =>
+            {
+                texture = Raylib.LoadTextureFromImage(image);
+                Raylib.UnloadImage(image);
+                Raylib.SetTextureFilter(texture, TextureFilter.Point);
+                if (clamp) Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
+                scene.ownTextures.Add(texture);
+            });
+            foreach (var (packed, pass) in meshes)
+                steps.Enqueue(() => scene.meshes.Add(OnGpu(packed), texture, pass, null, shaders));
         }
 
-        scene.meshes = SceneMeshes.Upload(batches, shaders);
-        return scene;
+        foreach (var (tex, pass, packed, bounds) in prepared.Shared)
+            steps.Enqueue(() => scene.meshes.Add(OnGpu(packed), tex, pass, bounds, shaders));
+        return steps;
+    }
+
+    /// <summary>
+    /// Uploads a packed mesh and lets go of its copy in main memory: the GPU has it now, and a streamed world
+    /// would otherwise keep every chunk's geometry twice.
+    /// </summary>
+    private static unsafe Mesh OnGpu(Mesh mesh)
+    {
+        Raylib.UploadMesh(ref mesh, false);
+        Raylib.MemFree(mesh.Vertices); mesh.Vertices = null;
+        Raylib.MemFree(mesh.TexCoords); mesh.TexCoords = null;
+        Raylib.MemFree(mesh.Normals); mesh.Normals = null;
+        Raylib.MemFree(mesh.Colors); mesh.Colors = null;
+        return mesh;
+    }
+
+    /// <summary>Uploads a prepared scene in one go. Must run on the thread that owns the window.</summary>
+    public static MapScene Finish(Prepared prepared, FieldShaders shaders)
+    {
+        var steps = Uploads(prepared, shaders);
+        while (steps.Count > 0) steps.Dequeue()();
+        return prepared.Scene;
+    }
+
+    /// <summary>Frees the scene's meshes and the textures baked for it, when its chunk of the world is left behind.</summary>
+    public void Unload()
+    {
+        meshes.Unload();
+        foreach (var texture in ownTextures) Raylib.UnloadTexture(texture);
+        ownTextures.Clear();
     }
 
     private TileType? TypeAt(int x, int y) => GroundBaker.TypeAt(Map, x, y);
@@ -121,23 +283,24 @@ internal sealed class MapScene
 
     private void AddGround(MeshBuilder b, MeshBuilder flat)
     {
-        int tilesW = Map.Width + Margin * 2, tilesH = Map.Height + Margin * 2;
-        for (int ty = -Margin; ty < Map.Height + Margin; ty++)
+        float tilesW = ground.Width, tilesH = ground.Height;
+        for (int ty = ground.Y; ty < ground.Bottom; ty++)
         {
-            for (int tx = -Margin; tx < Map.Width + Margin; tx++)
+            for (int tx = ground.X; tx < ground.Right; tx++)
             {
                 var t = TypeAt(tx, ty);
                 if (t == null) continue;
                 if (Map.IsIndoors && !IsInteriorFloor(tx, ty, t.Value)) continue;
 
-                float u0 = (tx + Margin) / (float)tilesW, u1 = (tx + Margin + 1) / (float)tilesW;
-                float v0 = (ty + Margin) / (float)tilesH, v1 = (ty + Margin + 1) / (float)tilesH;
+                float u0 = (tx - ground.X) / tilesW, u1 = (tx - ground.X + 1) / tilesW;
+                float v0 = (ty - ground.Y) / tilesH, v1 = (ty - ground.Y + 1) / tilesH;
                 b.Quad(new(tx, 0, ty + 1), new(tx + 1, 0, ty + 1), new(tx + 1, 0, ty), new(tx, 0, ty),
                     new(u0, v1), new(u1, v1), new(u1, v0), new(u0, v0), Color.White, Up);
             }
         }
 
-        if (!Map.IsIndoors)
+        // A chunk has its neighbours all round it; a whole map ends, and needs something beyond its edge
+        if (!Map.IsIndoors && Chunk == null)
         {
             // Far skirt so nothing past the forest margin ever shows the clear color
             var skirt = new Color(56, 134, 88, 255);
@@ -164,7 +327,7 @@ internal sealed class MapScene
     /// </summary>
     private void AddWater(MeshBuilder water)
     {
-        int tilesW = Map.Width + Margin * 2, tilesH = Map.Height + Margin * 2;
+        float tilesW = ground.Width, tilesH = ground.Height;
         bool NearWater(int x, int y)
         {
             for (int dy = -1; dy <= 1; dy++)
@@ -173,13 +336,13 @@ internal sealed class MapScene
             return false;
         }
 
-        for (int ty = -Margin; ty < Map.Height + Margin; ty++)
+        for (int ty = ground.Y; ty < ground.Bottom; ty++)
         {
-            for (int tx = -Margin; tx < Map.Width + Margin; tx++)
+            for (int tx = ground.X; tx < ground.Right; tx++)
             {
                 if (!NearWater(tx, ty)) continue;
-                float u0 = (tx + Margin) / (float)tilesW, u1 = (tx + Margin + 1) / (float)tilesW;
-                float v0 = (ty + Margin) / (float)tilesH, v1 = (ty + Margin + 1) / (float)tilesH;
+                float u0 = (tx - ground.X) / tilesW, u1 = (tx - ground.X + 1) / tilesW;
+                float v0 = (ty - ground.Y) / tilesH, v1 = (ty - ground.Y + 1) / tilesH;
                 water.Quad(new(tx, WaterLevel, ty + 1), new(tx + 1, WaterLevel, ty + 1), new(tx + 1, WaterLevel, ty), new(tx, WaterLevel, ty),
                     new(u0, v1), new(u1, v1), new(u1, v0), new(u0, v0), Color.White, Up);
             }
@@ -192,25 +355,33 @@ internal sealed class MapScene
     {
         // From the south, nearest the camera, to the north: each row then hides the one behind it before that
         // row is shaded, which in a forest saves most of the work
-        for (int ty = Map.Height + Margin - 1; ty >= -Margin; ty--)
+        for (int ty = forest.Bottom - 1; ty >= forest.Y; ty--)
         {
-            for (int tx = -Margin; tx < Map.Width + Margin; tx++)
+            for (int tx = forest.X; tx < forest.Right; tx++)
             {
                 if (TypeAt(tx, ty) is not (TileType.Tree or TileType.TreeTrunk)) continue;
-
-                // The camera never shows more than a few tiles past the map (more to the south, where
-                // tall trees poke up into view), so skip the forest beyond that
-                if (tx < -5 || tx >= Map.Width + 5 || ty < -5) continue;
 
                 float cx = tx + 0.5f + (Rand(tx, ty, 1) - 0.5f) * 0.12f;
                 float cz = ty + 0.5f + (Rand(tx, ty, 2) - 0.5f) * 0.12f;
                 // Trees are most of a map's geometry, so they are kept in chunks and only those in view are drawn
                 batches.Chunk = MeshBatches.ChunkOf(tx, ty);
-                if (Map.Trees == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty);
+                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty);
                 else TreeModels.Round(batches, cx, cz, tx, ty);
             }
         }
         batches.Chunk = 0;
+    }
+
+    /// <summary>
+    /// The kind of tree on a tile. Where two areas of the world meet, each tree takes the kind of a tile a few
+    /// steps off in a direction of its own, so one forest thins into the other instead of ending on a ruled line.
+    /// </summary>
+    private TreeStyle StyleOfTree(int tx, int ty)
+    {
+        if (!Map.IsStreamed) return Map.Trees;
+        const float reach = 9f;
+        int jx = (int)MathF.Round((Rand(tx, ty, 7) - 0.5f) * reach), jy = (int)MathF.Round((Rand(tx, ty, 8) - 0.5f) * reach);
+        return Map.TreesAt(Math.Clamp(tx + jx, 0, Map.Width - 1), Math.Clamp(ty + jy, 0, Map.Height - 1));
     }
 
     // ------------------------------------------------------------------ tall grass, lawns, ledges
@@ -224,9 +395,9 @@ internal sealed class MapScene
         float h = 0.5f * VS;
         var normal = Vector3.Normalize(new Vector3(0, 0.7f, 0.7f));
         var top = MeshBuilder.Sway(Color.White, 1f);
-        for (int ty = 0; ty < Map.Height; ty++)
+        for (int ty = content.Y; ty < content.Bottom; ty++)
         {
-            for (int tx = 0; tx < Map.Width; tx++)
+            for (int tx = content.X; tx < content.Right; tx++)
             {
                 if (Map.GetGroundTile(tx, ty) != TileType.TallGrass) continue;
                 for (int row = 0; row < 2; row++)
@@ -254,9 +425,9 @@ internal sealed class MapScene
         var tufts = batches.For(SceneTextures.LawnTuft, MeshPass.Ground);
         var flowers = batches.For(SceneTextures.Flowers, MeshPass.Ground);
         const float texel = 1f / GroundBaker.ArtTile;
-        for (int ty = 0; ty < Map.Height; ty++)
+        for (int ty = content.Y; ty < content.Bottom; ty++)
         {
-            for (int tx = 0; tx < Map.Width; tx++)
+            for (int tx = content.X; tx < content.Right; tx++)
             {
                 var t = Map.GetGroundTile(tx, ty);
                 if (t == TileType.FlowerGrass)
@@ -290,9 +461,9 @@ internal sealed class MapScene
         var dirt = new Color(146, 108, 72, 255);
         var flat = batches.For(SceneTextures.White);
         var face = batches.For(SceneTextures.LedgeFace);
-        for (int ty = 0; ty < Map.Height; ty++)
+        for (int ty = content.Y; ty < content.Bottom; ty++)
         {
-            for (int tx = 0; tx < Map.Width; tx++)
+            for (int tx = content.X; tx < content.Right; tx++)
             {
                 if (Map.GetGroundTile(tx, ty) != TileType.LedgeDown) continue;
                 bool left = Map.InBounds(tx - 1, ty) && Map.GetGroundTile(tx - 1, ty) == TileType.LedgeDown;

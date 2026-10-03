@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Overworld;
@@ -11,6 +12,11 @@ namespace PokemonPlatinumEngine.Graphics;
 /// Renders the HD-2D field with Pokémon Platinum's camera: pixel-art terrain, buildings and rooms in 3D, and
 /// characters as baked pixel sprites, lit by the time of day's light rig. Each frame renders a shadow map from the
 /// sun (or moon), then the scene into the scene target, which is composited with depth of field, bloom and grading.
+/// <para>
+/// A small map is one scene, built when first seen and kept. A map of the imported world is streamed: the block
+/// of chunks round the camera is kept ready, each chunk baked on another thread as it comes within reach and
+/// uploaded here, and chunks left behind are freed.
+/// </para>
 /// </summary>
 public sealed class WorldRenderer
 {
@@ -38,6 +44,173 @@ public sealed class WorldRenderer
         return scene;
     }
 
+    // ------------------------------------------------------------------ streamed maps
+
+    /// <summary>How many chunks to each side of the camera's are kept ready: 1 makes the block of three by three.</summary>
+    public const int ChunkReach = 1;
+
+    /// <summary>
+    /// A chunk is freed once the camera is further than this many tiles from it. Half a chunk more than the
+    /// block needs, so walking back and forth across a border doesn't free and bake the same chunks over and over.
+    /// </summary>
+    public const int ChunkKeepTiles = Map.ChunkTiles + Map.ChunkTiles / 4;
+
+    /// <summary>The time a frame may spend uploading chunks that aren't in view yet, in milliseconds.</summary>
+    public const double UploadBudgetMs = 2.5;
+
+    /// <summary>Chunks of maps other than the one in view are kept (the town outside a house) until there are this many in all.</summary>
+    private const int ChunkBudget = 24;
+
+    // A chunk is baking on another thread (Pending), then being uploaded a step at a time (Uploading), then
+    // ready to draw (Scene)
+    private sealed class ChunkSlot
+    {
+        public Task<MapScene.Prepared>? Pending;
+        public Queue<Action>? Uploading;
+        public MapScene? Arriving;
+        public MapScene? Scene;
+    }
+
+    private readonly Dictionary<(Map Map, int X, int Y), ChunkSlot> chunks = new();
+    private readonly List<MapScene> drawn = new();
+
+    /// <summary>What streaming has cost so far, for the harness: a chunk that isn't ready in time shows up as a wait.</summary>
+    public sealed class StreamingStats
+    {
+        /// <summary>Chunks that became ready to draw.</summary>
+        public int Chunks { get; internal set; }
+        public double TotalUploadMs { get; internal set; }
+
+        /// <summary>The most any one frame spent uploading.</summary>
+        public double WorstFrameMs { get; internal set; }
+
+        /// <summary>Times a frame had to stop for a chunk that came into view before it was ready.</summary>
+        public int Waits { get; internal set; }
+        public double WorstWaitMs { get; internal set; }
+
+        public override string ToString() =>
+            $"{Chunks} chunks made ready ({(Chunks > 0 ? TotalUploadMs / Chunks : 0):F1} ms of uploads each, at most {WorstFrameMs:F1} ms in a frame), {Waits} waited for (worst {WorstWaitMs:F1} ms)";
+    }
+
+    public StreamingStats Streaming { get; private set; } = new();
+
+    public void ResetStreamingStats() => Streaming = new StreamingStats();
+
+    private readonly System.Diagnostics.Stopwatch streamClock = new();
+
+    /// <summary>How many chunks of streamed maps are on the GPU now.</summary>
+    public int LoadedChunks
+    {
+        get
+        {
+            int count = 0;
+            foreach (var slot in chunks.Values)
+                if (slot.Scene != null) count++;
+            return count;
+        }
+    }
+
+    /// <summary>The chunks a camera over a tile needs: the block round its own, cut off at the map's edge.</summary>
+    internal static IEnumerable<(int X, int Y)> ChunksAround(Map map, float focusX, float focusZ, int reach)
+    {
+        int cx = Math.Clamp((int)MathF.Floor(focusX / Map.ChunkTiles), 0, map.ChunkColumns - 1);
+        int cy = Math.Clamp((int)MathF.Floor(focusZ / Map.ChunkTiles), 0, map.ChunkRows - 1);
+        for (int y = Math.Max(0, cy - reach); y <= Math.Min(map.ChunkRows - 1, cy + reach); y++)
+            for (int x = Math.Max(0, cx - reach); x <= Math.Min(map.ChunkColumns - 1, cx + reach); x++)
+                yield return (x, y);
+    }
+
+    /// <summary>The scenes to draw for a map this frame: its one scene, or the chunks ready round the camera.</summary>
+    private List<MapScene> ScenesFor(Map map, float focusX, float focusZ, GroundRect? view)
+    {
+        drawn.Clear();
+        if (!map.IsStreamed)
+        {
+            drawn.Add(GetScene(map));
+            return drawn;
+        }
+
+        // Whatever of the block isn't there yet starts baking on another thread
+        foreach (var (x, y) in ChunksAround(map, focusX, focusZ, ChunkReach))
+        {
+            if (chunks.ContainsKey((map, x, y))) continue;
+            var window = MapScene.ChunkWindow(map, x, y);
+            MapScene.Warm(map, window);
+            chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => MapScene.Prepare(map, window)) };
+        }
+
+        // What the camera sees must be there now: on arriving somewhere this waits for the bake and uploads it
+        // whole, behind the fade. The rest is uploaded a few steps a frame, as far as the frame's budget goes,
+        // and is ready well before the player can walk into sight of it.
+        streamClock.Restart();
+        foreach (var (key, slot) in chunks)
+        {
+            if (key.Map != map || slot.Scene != null) continue;
+            var window = MapScene.ChunkWindow(map, key.X, key.Y);
+            bool seen = view == null || view.Value.Touches(new Vector3(window.X - 3, 0, window.Y - 3), new Vector3(window.Right + 3, 0, window.Bottom + 5));
+
+            if (slot.Pending != null)
+            {
+                if (!slot.Pending.IsCompleted)
+                {
+                    if (!seen) continue;
+                    double before = streamClock.Elapsed.TotalMilliseconds;
+                    slot.Pending.Wait();
+                    Streaming.Waits++;
+                    Streaming.WorstWaitMs = Math.Max(Streaming.WorstWaitMs, streamClock.Elapsed.TotalMilliseconds - before);
+                }
+                var prepared = slot.Pending.GetAwaiter().GetResult();
+                slot.Pending = null;
+                slot.Arriving = prepared.Scene;
+                slot.Uploading = MapScene.Uploads(prepared, shaders);
+            }
+
+            while (slot.Uploading!.Count > 0 && (seen || streamClock.Elapsed.TotalMilliseconds < UploadBudgetMs))
+                slot.Uploading.Dequeue()();
+            if (slot.Uploading.Count > 0) continue;
+
+            slot.Scene = slot.Arriving;
+            slot.Arriving = null;
+            slot.Uploading = null;
+            Streaming.Chunks++;
+        }
+        double spent = streamClock.Elapsed.TotalMilliseconds;
+        Streaming.TotalUploadMs += spent;
+        Streaming.WorstFrameMs = Math.Max(Streaming.WorstFrameMs, spent);
+
+        Evict(map, focusX, focusZ);
+        foreach (var (key, slot) in chunks)
+            if (key.Map == map && slot.Scene != null) drawn.Add(slot.Scene);
+        return drawn;
+    }
+
+    private readonly List<(Map Map, int X, int Y)> leaving = new();
+
+    private void Evict(Map map, float focusX, float focusZ)
+    {
+        leaving.Clear();
+        foreach (var (key, slot) in chunks)
+        {
+            // A chunk still baking or half uploaded is left to finish and goes on a later frame
+            if (slot.Scene == null) continue;
+            bool far;
+            if (key.Map == map)
+            {
+                var window = MapScene.ChunkWindow(map, key.X, key.Y);
+                float dx = MathF.Max(0f, MathF.Max(window.X - focusX, focusX - window.Right));
+                float dz = MathF.Max(0f, MathF.Max(window.Y - focusZ, focusZ - window.Bottom));
+                far = MathF.Max(dx, dz) > ChunkKeepTiles;
+            }
+            else far = chunks.Count - leaving.Count > ChunkBudget;
+            if (far) leaving.Add(key);
+        }
+        foreach (var key in leaving)
+        {
+            chunks[key].Scene?.Unload();
+            chunks.Remove(key);
+        }
+    }
+
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
     public void Render(Map map, Player player) =>
         RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, GameClock.Hour);
@@ -51,17 +224,28 @@ public sealed class WorldRenderer
     private void RenderScene(Map map, Player? player, float px, float pz, float hour)
     {
         context.EnsureLoaded();
-        var scene = GetScene(map);
-        lastWasIndoors = scene.Indoors;
-        var rig = ArtLook.FieldRig(hour, scene.Indoors);
+        bool indoors = map.IsIndoors;
+        float pitchDeg = MapScene.PitchOf(map), vs = MapScene.VerticalScaleOf(map);
+        lastWasIndoors = indoors;
+        var rig = ArtLook.FieldRig(hour, indoors);
         var light = rig.Light;
 
         float time = (float)Raylib.GetTime();
         float lift = player != null ? player.HopHeight / Player.TileSize : 0f;
-        var camera = BuildCamera(scene, px, pz);
+        // A room is one scene and the camera looks at its middle; outdoors the camera follows the player
+        var room = indoors ? GetScene(map) : null;
+        var camera = BuildCamera(map, room, px, pz);
+
+        // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
+        GroundRect? view = null, casters = null;
+        if (!indoors) (view, casters) = VisibleRects(camera.Target, light.SunDirection);
+        var scenes = ScenesFor(map, camera.Target.X, camera.Target.Z, view);
+
         shaders.SetTime(time);
+        // On a map of the whole region only the people near the view are drawn
+        sight = map.IsStreamed ? view : null;
         GatherActors(map, player, px, pz, lift, time);
-        VerticalScale = scene.VS;
+        VerticalScale = vs;
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
 
         // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
@@ -69,13 +253,9 @@ public sealed class WorldRenderer
         foreach (var actor in actors) walkerFeet.Add(actor.Feet);
         shaders.SetWalkers(walkerFeet);
 
-        // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
-        GroundRect? view = null, casters = null;
-        if (!scene.Indoors) (view, casters) = VisibleRects(camera.Target, light.SunDirection);
-
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
-        var focus = scene.Indoors ? scene.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
-        var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, scene.Indoors ? 18f : 40f);
+        var focus = room != null ? room.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
+        var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, indoors ? 18f : 40f);
 
         Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
@@ -84,7 +264,8 @@ public sealed class WorldRenderer
         var lightView = Rlgl.GetMatrixModelview();
         var lightProjection = Rlgl.GetMatrixProjection();
         Rlgl.DisableBackfaceCulling();
-        scene.DrawDepth(casters);
+        foreach (var scene in scenes)
+            if (Reaches(scene, casters)) scene.DrawDepth(casters);
         DrawActors(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -96,12 +277,12 @@ public sealed class WorldRenderer
         shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar);
         shaders.SetCloudShade(rig.CloudShade);
         // Outdoors, lamps and windows light up after dark; in a room only the window glass changes, to the sky's colour
-        shaders.SetGlow(scene.Indoors ? 0f : rig.LampGlow, rig.HomeGlow, rig.GlowColor);
+        shaders.SetGlow(indoors ? 0f : rig.LampGlow, rig.HomeGlow, rig.GlowColor);
         // Rooms keep their perspective: their side walls are what makes them a doll's house
-        shaders.SetUpright(scene.Indoors ? 0f : ArtLook.FieldUpright, scene.PitchDeg);
+        shaders.SetUpright(indoors ? 0f : ArtLook.FieldUpright, pitchDeg);
 
         // 2. The scene itself, sampling the shadow map
-        float near = scene.Indoors ? 1f : 10f, far = scene.Indoors ? 100f : 140f;
+        float near = indoors ? 1f : 10f, far = indoors ? 100f : 140f;
         Raylib.BeginTextureMode(context.Target);
         Raylib.ClearBackground(rig.Background);
         Rlgl.SetClipPlanes(near, far);
@@ -110,14 +291,19 @@ public sealed class WorldRenderer
         Rlgl.DisableBackfaceCulling();
         context.BindShadowMap();
 
-        scene.Draw(view);
+        foreach (var scene in scenes)
+            if (Reaches(scene, view)) scene.Draw(view);
         // In a room the light on the floor is daylight; outdoors it is lamplight, which only shows once it is dark
         // (squared, so pools stay faint while the lamps are coming on at twilight)
-        if (scene.Indoors) scene.DrawLights(rig.LampGlow, 0f, rig.LightTint);
-        else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
+        foreach (var scene in scenes)
+        {
+            if (!Reaches(scene, view)) continue;
+            if (indoors) scene.DrawLights(rig.LampGlow, 0f, rig.LightTint);
+            else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
+        }
         DrawContactShadows(map, player != null, px, pz, lift);
         DrawActors(CharacterPass.Color);
-        DrawSpottedBubbles(scene, map, camera);
+        DrawSpottedBubbles(map, camera, indoors, pitchDeg, vs);
 
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -134,26 +320,34 @@ public sealed class WorldRenderer
 
     // ------------------------------------------------------------------ camera
 
-    private Camera3D BuildCamera(MapScene scene, float px, float pz)
+    /// <summary>Whether a scene has anything on a rectangle of ground: a chunk outside it is skipped whole.</summary>
+    private static bool Reaches(MapScene scene, GroundRect? rect)
     {
-        float pitch = scene.PitchDeg * MathF.PI / 180f;
+        if (rect == null || scene.Chunk == null) return true;
+        var bounds = scene.Bounds;
+        return rect.Value.Touches(new Vector3(bounds.MinX, 0, bounds.MinZ), new Vector3(bounds.MaxX, 0, bounds.MaxZ));
+    }
+
+    /// <param name="room">The scene of an indoor map, whose middle the camera looks at; null outdoors.</param>
+    private Camera3D BuildCamera(Map map, MapScene? room, float px, float pz)
+    {
+        float pitch = MapScene.PitchOf(map) * MathF.PI / 180f;
         var dir = new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch));
 
-        if (scene.Indoors)
+        if (room != null)
         {
             // Deeper rooms pull the camera back a little so the whole room stays in frame
-            var roomTarget = scene.RoomCenter;
-            float distance = MapScene.IndoorDistance * Math.Max(1f, (scene.Map.Height - 1) / 8f);
+            var roomTarget = room.RoomCenter;
+            float distance = MapScene.IndoorDistance * Math.Max(1f, (map.Height - 1) / 8f);
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
                 MapScene.IndoorFovYDeg, CameraProjection.Perspective);
         }
 
         // Aim at the player's middle so they sit near the centre of the screen, then keep the view
         // inside the map plus a few tiles of the surrounding forest
-        var t = new Vector3(px, 0.6f * scene.VS, pz);
+        var t = new Vector3(px, 0.6f * MapScene.VerticalScaleOf(map), pz);
         var (farOff, nearOff, halfW) = VisibleGround(t.Y);
         const float overscan = 4f;
-        var map = scene.Map;
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
         t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
 
@@ -232,12 +426,18 @@ public sealed class WorldRenderer
     /// <summary>The current scene's vertical stretch, for HD-2D sprites.</summary>
     private float VerticalScale = 1f;
 
+    /// <summary>On a streamed map, the ground people are drawn on this frame; null where everyone is drawn.</summary>
+    private GroundRect? sight;
+
+    private bool InSight(NPC npc) =>
+        sight is not { } s || (npc.DrawX >= s.MinX - 2f && npc.DrawX <= s.MaxX + 2f && npc.DrawY >= s.MinZ - 2f && npc.DrawY <= s.MaxZ + 2f);
+
     private void GatherActors(Map map, Player? player, float px, float pz, float lift, float time)
     {
         actors.Clear();
         foreach (var npc in map.NPCs)
         {
-            if (npc.IsPCTerminal) continue;
+            if (npc.IsPCTerminal || !InSight(npc)) continue;
             float seed = (npc.Name.GetHashCode() & 0xFFFF) / 65536f;
             var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
@@ -275,7 +475,7 @@ public sealed class WorldRenderer
     }
 
     /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>
-    private static void DrawSpottedBubbles(MapScene scene, Map map, Camera3D camera)
+    private static void DrawSpottedBubbles(Map map, Camera3D camera, bool indoors, float pitchDeg, float vs)
     {
         var bubble = SceneTextures.Exclamation;
         foreach (var npc in map.NPCs)
@@ -284,8 +484,8 @@ public sealed class WorldRenderer
             {
                 // Drawn without the scenery's shader, so it is moved by hand to stay over the straightened sprite
                 float cx = npc.DrawX + 0.5f, cz = npc.DrawY + 0.15f;
-                if (!scene.Indoors) cx = Straighten(camera, scene.PitchDeg, cx, 1.95f + 0.35f * scene.VS, cz);
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), cx, cz, 1.95f, 0.7f, 0.7f * scene.VS);
+                if (!indoors) cx = Straighten(camera, pitchDeg, cx, 1.95f + 0.35f * vs, cz);
+                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), cx, cz, 1.95f, 0.7f, 0.7f * vs);
             }
         }
         Rlgl.DrawRenderBatchActive();
@@ -328,7 +528,7 @@ public sealed class WorldRenderer
     /// A faint dark patch right under each character's feet. The shadow map casts their real shadow; this keeps
     /// them grounded when the sun is high or they are standing in shade.
     /// </summary>
-    private static void DrawContactShadows(Map map, bool withPlayer, float px, float pz, float lift)
+    private void DrawContactShadows(Map map, bool withPlayer, float px, float pz, float lift)
     {
         var tex = SceneTextures.ShadowBlob;
         Rlgl.DisableDepthMask();
@@ -349,7 +549,7 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            if (!npc.IsPCTerminal) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, 1f);
+            if (!npc.IsPCTerminal && InSight(npc)) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, 1f);
         }
         if (withPlayer) Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 

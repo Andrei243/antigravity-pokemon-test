@@ -1,0 +1,53 @@
+{
+  "area": "sandgem_town",
+  "bgmTrack": "sinnoh/sandgem",
+  "trees": "Round",
+  "architecture": "Plaster",
+  "roof": "RoofRed",
+  "doors": [
+    { "warp": 0, "map": "PokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 1, "map": "PokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 2, "map": "RowanLab", "x": 5, "y": 8, "facing": "Up" }
+  ],
+  // The two houses have no rooms yet (plan 01 · M11)
+  "locked": [ 3, 4 ],
+  "people": {
+    "sandgem_counterpart": {
+      "name": "Dawn",
+      "npcType": "Lass",
+      "dialog": [
+        "Dawn: Hi, Lucas! Welcome to Sandgem Town!",
+        "Dawn: The Professor's lab is the big building right behind me.",
+        "Dawn: The Pokémon Center and the Poké Mart are just along the road to the east."
+      ]
+    },
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "Follow the sand south and you come to the sea.",
+        "You'd need a Pokémon that can swim to go any further, though."
+      ]
+    },
+    "pokemon_breeder_m": {
+      "name": "Breeder",
+      "dialog": [
+        "The Pokémon Center heals your whole team, and it never costs a thing.",
+        "Look for the red roof."
+      ]
+    },
+    "pokemon_breeder_f": {
+      "name": "Woman",
+      "dialog": [
+        "The Professor studies how Pokémon evolve.",
+        "People bring him Pokémon from all over Sinnoh."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Sandgem Town\nTown of Sand and Sparkle!\nNorth: Route 202 | West: Route 201",
+    "signboard_pokemon_research_lab": "Pokémon Research Lab",
+    "signboard_counterpart_house": "Dawn's House",
+    "signboard_pokemon_center": "Pokémon Center\nRest your tired Pokémon here.",
+    "signboard_poke_mart": "Poké Mart\nEverything a trainer needs."
+  }
+}

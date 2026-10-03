@@ -113,9 +113,9 @@
     {
       "sourceX": 5,
       "sourceY": 9,
-      "targetMap": "SandgemTown",
-      "targetX": 7,
-      "targetY": 18,
+      "targetMap": "Sinnoh",
+      "targetX": 168,
+      "targetY": 843,
       "targetFacing": "Down"
     }
   ],

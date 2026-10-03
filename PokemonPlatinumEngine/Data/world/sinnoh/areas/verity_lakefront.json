@@ -1,0 +1,32 @@
+{
+  "key": "verity_lakefront",
+  "index": 334,
+  "name": "Verity Lakefront",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_A_D",
+  "nightMusic": "ROAD_A_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 81, "z": 843, "to": "lake_verity_low_water", "toWarp": 1 },
+    { "x": 80, "z": 843, "to": "lake_verity_low_water", "toWarp": 0 },
+    { "x": 80, "z": 843, "to": "lake_verity", "toWarp": 1 },
+    { "x": 81, "z": 843, "to": "lake_verity", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "trainer_tips_signpost", "looks": "trainer_tips_signpost", "movement": "none", "x": 79, "z": 846, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [
+    { "x": 86, "z": 849, "type": 2, "script": "8160" }
+  ],
+  "triggers": [
+    { "x": 80, "z": 844, "width": 2, "depth": 1, "script": "3", "variable": "VAR_VERITY_LAKEFRONT_STATE", "value": "0" }
+  ]
+}
