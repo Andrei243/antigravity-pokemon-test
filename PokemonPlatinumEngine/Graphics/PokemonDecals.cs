@@ -166,6 +166,7 @@ internal static class PokemonDecals
         Vector2 P(float x, float y) => center + new Vector2(x * size * k.X, -y * size * k.Y);
         Vector2 R(float rx, float ry) => new(rx * size * k.X, ry * size * k.Y);
         float line = Math.Max(2f, 0.17f * size * k.Y);
+        if (d.Closed && state != EyeState.Squeeze) state = EyeState.Shut;
 
         switch (state)
         {
@@ -259,6 +260,39 @@ internal static class PokemonDecals
             case MarkShape.Bar:
                 AaPaint.Line(c, center - new Vector2(rx - ry, 0), center + new Vector2(rx - ry, 0), ry * 2f, d.Color);
                 break;
+            case MarkShape.Star5:
+            {
+                // Five points, the first straight up: a triangle out from each side of a pentagon (the painter fills
+                // convex shapes only); the triangles reach a little into the pentagon so no seam shows between them
+                var outer = new Vector2[5];
+                var inner = new Vector2[5];
+                var under = new Vector2[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    float a = -MathF.PI / 2f + i * MathF.Tau / 5f, between = a + MathF.PI / 5f;
+                    outer[i] = center + new Vector2(MathF.Cos(a) * rx, MathF.Sin(a) * ry);
+                    var toInner = new Vector2(MathF.Cos(between) * rx, MathF.Sin(between) * ry) * 0.42f;
+                    inner[i] = center + toInner;
+                    under[i] = center + toInner * 0.8f;
+                }
+                AaPaint.Polygon(c, inner, d.Color);
+                for (int i = 0; i < 5; i++) AaPaint.Polygon(c, new[] { under[(i + 4) % 5], outer[i], under[i] }, d.Color);
+                break;
+            }
+            case MarkShape.Wave:
+            {
+                // A wavy line across the square, a wave and a half long
+                float w = Math.Max(2f, ry * 0.4f);
+                var prev = center + new Vector2(-rx + w * 0.5f, 0);
+                for (int i = 1; i <= 24; i++)
+                {
+                    float t = i / 24f;
+                    var p = center + new Vector2(-rx + w * 0.5f + (2f * rx - w) * t, -MathF.Sin(t * MathF.PI * 3f) * (ry - w * 0.5f));
+                    AaPaint.Line(c, prev, p, w, d.Color);
+                    prev = p;
+                }
+                break;
+            }
         }
     }
 

@@ -51,7 +51,7 @@ internal struct PokePose
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>).</summary>
 internal enum EyeState { Open, Shut, Squeeze, Fierce }
 
-internal enum MarkShape { Disc, Ring, Star, Bar }
+internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave }
 
 /// <summary>
 /// A texture laid onto the surface (plan 04 · G7): an eye or a marking, projected onto the mesh along its normal.
@@ -79,6 +79,9 @@ internal sealed class PokeDecal
     public Color? Iris;
     public bool Sclera;
     public Color? Pupil;
+
+    /// <summary>Eyes that are always shut (Abra's), squeezed tighter by a hit.</summary>
+    public bool Closed;
 
     // Markings
     public MarkShape Shape;
@@ -239,6 +242,24 @@ internal sealed class PokeBuilder
     public SdfPrimitive Limb(int bone, Vector3 a, Vector3 b, float ra, float rb, Color color, SurfaceMaterial? mat = null, float blend = 0.02f) =>
         sdf.Capsule(a, b, ra, rb, color, bone, blend, mat ?? Coat);
 
+    /// <summary>
+    /// A tube through <paramref name="points"/> (antennae, whiskers, curls, coiled tails): a limb from each point to
+    /// the next, its radius going from <paramref name="ra"/> at the first point to <paramref name="rb"/> at the last.
+    /// </summary>
+    public void Tube(int bone, Vector3[] points, float ra, float rb, Color color, SurfaceMaterial? mat = null, float blend = 0.008f)
+    {
+        float length = 0f;
+        for (int i = 1; i < points.Length; i++) length += Vector3.Distance(points[i - 1], points[i]);
+        float run = 0f;
+        for (int i = 1; i < points.Length; i++)
+        {
+            float step = Vector3.Distance(points[i - 1], points[i]);
+            float r0 = ra + (rb - ra) * run / length, r1 = ra + (rb - ra) * (run + step) / length;
+            Limb(bone, points[i - 1], points[i], r0, r1, color, mat, blend);
+            run += step;
+        }
+    }
+
     /// <summary>A cone from a round base to a rounded point (horns, claws, beaks, spikes); squash flattens it into a blade.</summary>
     public SdfPrimitive Spike(int bone, Vector3 baseCenter, Vector3 tip, float radius, Color color, float squash = 1f, SurfaceMaterial? mat = null, float blend = 0.012f)
     {
@@ -261,6 +282,17 @@ internal sealed class PokeBuilder
 
     public SdfPrimitive Box(int bone, Vector3 center, Vector3 half, float rounding, Color color, Vector3 rotationDeg = default, SurfaceMaterial? mat = null, float blend = 0f) =>
         sdf.Box(center, half, rounding, color, bone, blend, mat ?? Coat, Rot(rotationDeg));
+
+    /// <summary>
+    /// Carves an ellipsoid out of every shape added so far (a gaping mouth, the scallops of a bat's wing). Shapes
+    /// added after it are whole.
+    /// </summary>
+    public SdfPrimitive Cut(int bone, Vector3 center, Vector3 radii, Vector3 rotationDeg = default, float blend = 0.006f) =>
+        sdf.Ellipsoid(center, radii, Color.White, bone, blend, Coat, Rot(rotationDeg), SdfOp.Cut);
+
+    /// <summary>Carves a box out of every shape added so far (a straight edge); <paramref name="rotation"/> turns it.</summary>
+    public SdfPrimitive CutBox(int bone, Vector3 center, Vector3 half, Quaternion rotation, float blend = 0f) =>
+        sdf.Box(center, half, 0f, Color.White, bone, blend, Coat, rotation, SdfOp.Cut);
 
     /// <summary>
     /// Recolours the surface of <paramref name="bone"/> inside an ellipsoid without changing its shape (masks, bands,
@@ -286,16 +318,16 @@ internal sealed class PokeBuilder
     /// <summary>
     /// A cartoon eye painted on the surface at <paramref name="at"/>, looking along <paramref name="facing"/>:
     /// a dark eye with a coloured iris and white glints, or a white eye with a dark pupil (<paramref name="sclera"/>).
-    /// <paramref name="size"/> is half the eye's height.
+    /// <paramref name="size"/> is half the eye's height; <paramref name="closed"/> eyes are always shut.
     /// </summary>
-    public void Eye(int bone, Vector3 at, Vector3 facing, float size, Color? iris = null, bool sclera = false, Color? pupil = null) =>
+    public void Eye(int bone, Vector3 at, Vector3 facing, float size, Color? iris = null, bool sclera = false, Color? pupil = null, bool closed = false) =>
         m.Decals.Add(new PokeDecal
         {
             Bone = bone, Center = at, Normal = Vector3.Normalize(facing), Half = new Vector2(size * 1.6f, size * 1.8f), IsEye = true,
-            Size = size, Iris = iris, Sclera = sclera, Pupil = pupil
+            Size = size, Iris = iris, Sclera = sclera, Pupil = pupil, Closed = closed
         });
 
-    /// <summary>A marking painted on the surface: a dot, ring, star or bar with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
+    /// <summary>A marking painted on the surface (a dot, ring, star, bar or wavy line) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
     public void Mark(int bone, Vector3 at, Vector3 facing, float rx, float ry, Color color, MarkShape shape = MarkShape.Disc, float rollDeg = 0f) =>
         m.Decals.Add(new PokeDecal
         {
@@ -375,7 +407,7 @@ internal sealed class PokeBuilder
 }
 
 /// <summary>The species models, built and meshed on demand (in the background when preloaded) and kept.</summary>
-internal static class PokemonModels
+internal static partial class PokemonModels
 {
     /// <summary>Grid cells across a model's largest dimension when it is meshed.</summary>
     public const float CellsAcross = 128f;
@@ -467,7 +499,7 @@ internal static class PokemonModels
             sb.Append('|').Append(b.Model.Plan).Append('|').Append(b.Model.Fill.ToString("R")).Append('|').Append(b.Model.Hovers);
             foreach (var d in b.Model.Decals)
                 sb.Append('|').Append(d.Bone).Append(d.Center).Append(d.Normal).Append(d.Half).Append(d.Roll).Append(d.IsEye).Append(d.Size)
-                    .Append(d.Iris?.R).Append(d.Iris?.G).Append(d.Iris?.B).Append(d.Sclera).Append(d.Pupil?.R).Append(d.Shape).Append(d.Color.R).Append(d.Color.G).Append(d.Color.B);
+                    .Append(d.Iris?.R).Append(d.Iris?.G).Append(d.Iris?.B).Append(d.Sclera).Append(d.Closed ? "closed" : "").Append(d.Pupil?.R).Append(d.Shape).Append(d.Color.R).Append(d.Color.G).Append(d.Color.B);
             text = "sculpt|" + sb;
         }
         var hash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
@@ -482,10 +514,29 @@ internal static class PokemonModels
     {
         "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
         "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario",
-        "Gible", "Gabite", "Garchomp", "Giratina", "Buneary"
+        "Gible", "Gabite", "Garchomp", "Giratina", "Buneary",
+        // Plan 03 · D6, batch 1: the Sinnoh Pokédex from Kricketot to Lopunny
+        "Kricketot", "Kricketune", "Abra", "Kadabra", "Alakazam", "Magikarp", "Gyarados", "Budew", "Roselia", "Roserade",
+        "Zubat", "Golbat", "Crobat", "Geodude", "Graveler", "Golem", "Onix", "Steelix",
+        "Cranidos", "Rampardos", "Shieldon", "Bastiodon", "Machop", "Machoke", "Machamp", "Psyduck", "Golduck",
+        "Burmy", "Wormadam", "Mothim", "Wurmple", "Silcoon", "Beautifly", "Cascoon", "Dustox",
+        "Combee", "Vespiquen", "Pachirisu", "Buizel", "Floatzel", "Cherubi", "Cherrim", "Shellos", "Gastrodon",
+        "Heracross", "Aipom", "Ambipom", "Drifloon", "Drifblim", "Lopunny"
     };
 
     public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>
+    /// The species start-up meshes and keeps, with their menu sprites (the hand-built models of plan 04 · G7 and
+    /// G10): the title's Giratina, the introduction's Buneary, the starters and the Pokémon of the first routes.
+    /// Every other model, the later hand-built batches included, is made when a scene asks for it, as the generated
+    /// ones are; keeping them all would cost a few megabytes each for the whole game.
+    /// </summary>
+    public static readonly string[] Preloaded =
+    {
+        "Giratina", "Buneary", "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
+        "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario", "Gible", "Gabite", "Garchomp"
+    };
 
     /// <summary>
     /// Forgets a species' model so it is built again when next asked for, freeing its memory and its GPU buffers
@@ -566,6 +617,57 @@ internal static class PokemonModels
         "GARCHOMP" => Garchomp(true),
         "GIRATINA" => Giratina(),
         "BUNEARY" => Buneary(),
+        // Plan 03 · D6: the Sinnoh Pokédex's first batch (PokemonModels.Sinnoh1.cs)
+        "KRICKETOT" => Kricketot(),
+        "KRICKETUNE" => Kricketune(),
+        "ABRA" => Abra(),
+        "KADABRA" => Kadabra(),
+        "ALAKAZAM" => Alakazam(),
+        "MAGIKARP" => Magikarp(),
+        "GYARADOS" => Gyarados(),
+        "BUDEW" => Budew(),
+        "ROSELIA" => Roselia(),
+        "ROSERADE" => Roserade(),
+        "ZUBAT" => Zubat(),
+        "GOLBAT" => Golbat(),
+        "CROBAT" => Crobat(),
+        "GEODUDE" => Geodude(),
+        "GRAVELER" => Graveler(),
+        "GOLEM" => Golem(),
+        "ONIX" => Onix(),
+        "STEELIX" => Steelix(),
+        "CRANIDOS" => HeadButter(false),
+        "RAMPARDOS" => HeadButter(true),
+        "SHIELDON" => Shieldon(),
+        "BASTIODON" => Bastiodon(),
+        "MACHOP" => Machop(),
+        "MACHOKE" => Machoke(),
+        "MACHAMP" => Machamp(),
+        "PSYDUCK" => Psyduck(),
+        "GOLDUCK" => Golduck(),
+        "BURMY" => Burmy(),
+        "WORMADAM" => Wormadam(),
+        "MOTHIM" => Mothim(),
+        "WURMPLE" => Wurmple(),
+        "SILCOON" => Cocoon(false),
+        "BEAUTIFLY" => Beautifly(),
+        "CASCOON" => Cocoon(true),
+        "DUSTOX" => Dustox(),
+        "COMBEE" => Combee(),
+        "VESPIQUEN" => Vespiquen(),
+        "PACHIRISU" => Pachirisu(),
+        "BUIZEL" => Buizel(),
+        "FLOATZEL" => Floatzel(),
+        "CHERUBI" => Cherubi(),
+        "CHERRIM" => Cherrim(),
+        "SHELLOS" => SeaSlug(false),
+        "GASTRODON" => SeaSlug(true),
+        "HERACROSS" => Heracross(),
+        "AIPOM" => Aipom(),
+        "AMBIPOM" => Ambipom(),
+        "DRIFLOON" => Drifloon(),
+        "DRIFBLIM" => Drifblim(),
+        "LOPUNNY" => Lopunny(),
         // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
         _ => PokemonGenerator.Build(species) ?? Generic(species)
     };

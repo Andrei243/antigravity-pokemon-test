@@ -2457,8 +2457,25 @@ if (Run("pokemon"))
     Image Studio(string species, string clip, float[] times, float[] yaws, int w, int h, float zoom = 1.5f, float lookY = 0.5f, bool blink = false) =>
         (Image)studio.Invoke(null, new object[] { context, species, clip, times, yaws, w, h, zoom, lookY, blink })!;
 
+    // Species named after the mode (pokemon Kricketot Kricketune …): only their turntables, one under another on a
+    // board, for a quick look at models being sculpted
+    var named = mode == "pokemon" ? args.Skip(2).ToArray() : Array.Empty<string>();
+    if (named.Length > 0)
+    {
+        const int Box = 300;
+        var board = Raylib.GenImageColor(4 * Box, named.Length * Box, backdrop);
+        for (int i = 0; i < named.Length; i++)
+        {
+            var row = Studio(named[i], "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, Box, Box);
+            Raylib.ImageDraw(ref board, row, new Rectangle(0, 0, row.Width, row.Height), new Rectangle(0, i * Box, row.Width, row.Height), Color.White);
+            Raylib.UnloadImage(row);
+            Raylib.ImageDrawText(ref board, named[i], 6, i * Box + 6, 20, new Color(30, 30, 40, 255));
+        }
+        Save(board, "91_turntables");
+    }
+
     // Turntables: front, three-quarter, side and back, for every model and each body plan's sample
-    foreach (var species in handBuilt.Append("Generic").Concat(new[] { "sample Serpent", "sample Fish", "sample Floating" }))
+    foreach (var species in named.Length > 0 ? Array.Empty<string>() : handBuilt.Append("Generic").Concat(new[] { "sample Serpent", "sample Fish", "sample Floating" }))
     {
         string name = "91_turntable_" + species.Replace("sample ", "sample_").ToLowerInvariant();
         if (Wanted(name)) Save(Studio(species, "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, 300, 300), name);
@@ -2475,7 +2492,7 @@ if (Run("pokemon"))
         ("faint", new[] { 0.15f, 0.35f, 0.55f, 0.75f, 1f }),
         ("entry", new[] { 0.3f, 0.4f, 0.55f, 0.72f, 0.9f })
     };
-    foreach (var species in new[] { "Riolu", "Chimchar", "Shinx", "Turtwig", "Starly", "Garchomp", "Giratina", "sample Serpent", "sample Fish", "sample Floating" })
+    foreach (var species in named.Length > 0 ? Array.Empty<string>() : new[] { "Riolu", "Chimchar", "Shinx", "Turtwig", "Starly", "Garchomp", "Giratina", "sample Serpent", "sample Fish", "sample Floating" })
     {
         string name = "92_clips_" + species.Replace("sample ", "").ToLowerInvariant();
         if (!Wanted(name)) continue;
@@ -2490,9 +2507,17 @@ if (Run("pokemon"))
         Save(board, name);
     }
 
-    // Generated models (plan 03 · D5): one species of each body kind, turned round
-    foreach (var species in new[] { "Rattata", "Charmander", "Machop", "Oddish", "Pidgey", "Zubat", "Butterfree", "Ekans", "Caterpie", "Krabby", "Magikarp",
-                 "Voltorb", "Grimer", "Diglett", "Magneton", "Metapod", "Tentacool", "Octillery" })
+    // Generated models (plan 03 · D5): the first species of each body kind, in Pokédex order, that isn't hand-built,
+    // turned round
+    var genomeOf = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonGenomes")!.GetMethod("For", BindingFlags.Static | BindingFlags.Public)!;
+    var firstOfKind = new Dictionary<string, string>();
+    foreach (var sp in named.Length > 0 ? Array.Empty<string>() : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name))
+    {
+        if (handBuilt.Contains(sp, StringComparer.OrdinalIgnoreCase) || genomeOf.Invoke(null, new object[] { sp }) is not { } genome) continue;
+        string kind = genome.GetType().GetField("Kind")!.GetValue(genome)!.ToString()!;
+        firstOfKind.TryAdd(kind, sp);
+    }
+    foreach (var species in firstOfKind.Values)
     {
         string name = "91_turntable_gen_" + species.ToLowerInvariant();
         if (Wanted(name)) Save(Studio(species, "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, 300, 300), name);
@@ -2500,7 +2525,7 @@ if (Run("pokemon"))
 
     // A model brought in from a glTF file: Riolu's own model written out, dropped into overrides/models and read back,
     // turned round and playing the clips the file carries
-    if (Wanted("imported"))
+    if (named.Length == 0 && Wanted("imported"))
     {
         object Call(string type, string method, params object[] a) =>
             asm.GetType("PokemonPlatinumEngine.Graphics." + type)!.GetMethod(method, BindingFlags.Static | BindingFlags.Public)!.Invoke(null, a)!;
@@ -2530,7 +2555,7 @@ if (Run("pokemon"))
     }
 
     // Eyes up close: open, blinking, squeezed by a hit, fierce in an attack
-    foreach (var (species, lookY) in new[] { ("Piplup", 0.74f), ("Riolu", 0.66f), ("Turtwig", 0.6f), ("Luxray", 0.7f), ("Starly", 0.78f), ("Gible", 0.68f), ("Chimchar", 0.75f), ("Garchomp", 0.84f) })
+    foreach (var (species, lookY) in named.Length > 0 ? Array.Empty<(string, float)>() : new[] { ("Piplup", 0.74f), ("Riolu", 0.66f), ("Turtwig", 0.6f), ("Luxray", 0.7f), ("Starly", 0.78f), ("Gible", 0.68f), ("Chimchar", 0.75f), ("Garchomp", 0.84f) })
     {
         string name = "93_eyes_" + species.ToLowerInvariant();
         if (!Wanted(name)) continue;
@@ -2584,12 +2609,35 @@ if (mode == "dex")
     }
 }
 
+// ---------------------------------------------------------------- species in battle (plan 03 · D6)
+
+// versus <mine> <foe> [<mine> <foe> ...]: a wild battle for each pair, the first species leading the player's party
+// and the second met in the wild, shot at the main menu (95_versus_<mine>_<foe>). Not part of "all"
+if (mode == "versus")
+{
+    var names = args.Skip(2).ToArray();
+    for (int i = 0; i + 1 < names.Length; i += 2)
+    {
+        var mine = new Pokemon(PokemonDatabase.Get(names[i])!, 20);
+        party.Members.Insert(0, mine);
+        var vb = StartBattle(names[i + 1], 20);
+        ToMainMenu(vb);
+        Shot($"95_versus_{names[i].ToLowerInvariant()}_{names[i + 1].ToLowerInvariant()}");
+        party.Members.Remove(mine);
+        Set("currentState", GameState.Overworld);
+    }
+}
+
 // ---------------------------------------------------------------- contact sheets
 
 if (Run("sheets"))
 {
     // Every species: front sprite, back sprite and menu icon, as baked from the 3D models
     var species = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).Where(PixelArtGenerator.HasOwnModel).ToArray();
+    // Only the preloaded ones are baked at start-up: ask for the rest and wait for them
+    var spriteType = typeof(GameEngine).Assembly.GetType("PokemonPlatinumEngine.Graphics.PokemonSprites")!;
+    foreach (var sp in species.Take(24)) spriteType.GetMethod("Request")!.Invoke(null, new object[] { sp });
+    spriteType.GetMethod("Flush")!.Invoke(null, new[] { Get("renderContext") });
     var sheet = Raylib.LoadRenderTexture(1920, 1080);
     Raylib.BeginTextureMode(sheet);
     Raylib.ClearBackground(new Color(200, 220, 240, 255));

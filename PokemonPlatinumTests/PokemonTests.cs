@@ -592,13 +592,19 @@ public class PokemonTests
     [Fact]
     public void TestEverySpeciesHasA3DModel()
     {
-        // The species the story shows so far have hand-built models; the rest use the generic stand-in until the
-        // model generator (plan 03 · D5). This list may only grow.
+        // The species the story shows so far have hand-built models (plan 04 · G7 and plan 03 · D6); the rest are
+        // generated (plan 03 · D5). This list may only grow.
         string[] handBuilt =
         {
             "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
             "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario",
-            "Gible", "Gabite", "Garchomp", "Giratina"
+            "Gible", "Gabite", "Garchomp", "Giratina", "Buneary",
+            // Plan 03 · D6, the Sinnoh Pokédex's first batch
+            "Kricketot", "Kricketune", "Abra", "Kadabra", "Alakazam", "Magikarp", "Gyarados", "Budew", "Roselia", "Roserade",
+            "Zubat", "Golbat", "Crobat", "Geodude", "Graveler", "Golem", "Onix", "Steelix", "Cranidos", "Rampardos",
+            "Shieldon", "Bastiodon", "Machop", "Machoke", "Machamp", "Psyduck", "Golduck", "Burmy", "Wormadam", "Mothim",
+            "Wurmple", "Silcoon", "Beautifly", "Cascoon", "Dustox", "Combee", "Vespiquen", "Pachirisu", "Buizel", "Floatzel",
+            "Cherubi", "Cherrim", "Shellos", "Gastrodon", "Heracross", "Aipom", "Ambipom", "Drifloon", "Drifblim", "Lopunny"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
