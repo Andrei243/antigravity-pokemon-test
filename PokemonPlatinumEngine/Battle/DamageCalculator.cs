@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -23,12 +24,13 @@ public static class DamageCalculator
     }
 
     /// <summary>Damage between two Pokémon outside a battle's field (no partner, one target).</summary>
-    public static DamageResult CalculateDamage(Pokemon attacker, Pokemon defender, Move move, Random? rng = null) =>
+    public static DamageResult CalculateDamage(Pokemon attacker, Pokemon defender, Move move, Random? rng = null, Ruleset? rules = null) =>
         Calculate(new Battler(BattleSide.Player, 0) { Pokemon = attacker }, new Battler(BattleSide.Enemy, 0) { Pokemon = defender },
-            move, rng ?? Core.Dice.Shared, spread: false);
+            move, rng ?? Core.Dice.Shared, spread: false, rules: rules);
 
     /// <summary>How well a move's type hits the target (0, ¼, ½, 1, 2 or 4), counting Scrappy.</summary>
-    public static float Effectiveness(Battler attacker, Battler defender, Move move)
+    /// <param name="rules">The rules whose type chart is used; left out, those of the game in progress.</param>
+    public static float Effectiveness(Battler attacker, Battler defender, Move move, Ruleset? rules = null)
     {
         var species = defender.Pokemon!.Species;
         PokemonType primary = species.PrimaryType;
@@ -45,13 +47,15 @@ public static class DamageCalculator
                 secondary = null;
             }
         }
-        return TypeChart.GetEffectiveness(move.Type, primary, secondary);
+        return TypeChart.GetEffectiveness(move.Type, primary, secondary, rules);
     }
 
     /// <param name="spread">The move hits more than one Pokémon this time, so each takes 3/4.</param>
     /// <param name="powerOverride">A typeless physical hit of this power, which can't be critical (confusion, Struggle).</param>
-    public static DamageResult Calculate(Battler attacker, Battler defender, Move move, Random rng, bool spread, int? powerOverride = null)
+    /// <param name="rules">The rules the battle is fought by; left out, those of the game in progress.</param>
+    public static DamageResult Calculate(Battler attacker, Battler defender, Move move, Random rng, bool spread, int? powerOverride = null, Ruleset? rules = null)
     {
+        rules ??= Ruleset.Current;
         var result = new DamageResult { TypeMultiplier = 1f };
         int power = powerOverride ?? move.Power;
         if ((move.Category == MoveCategory.Status && !powerOverride.HasValue) || power <= 0) return result;
@@ -62,15 +66,14 @@ public static class DamageCalculator
         bool breaksAbility = attackerEffects.Any(e => e.IgnoresTargetAbility);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaksAbility).ToList();
 
-        result.TypeMultiplier = powerOverride.HasValue ? 1f : Effectiveness(attacker, defender, move);
+        result.TypeMultiplier = powerOverride.HasValue ? 1f : Effectiveness(attacker, defender, move, rules);
         if (result.TypeMultiplier == 0f) return result;
 
-        // Critical hit: Generation 4's stages are 1/16, 1/8, 1/4, 1/3, 1/2
+        // Critical hit: one in the rules' odds for the stage (Platinum's are 1/16, 1/8, 1/4, 1/3, 1/2)
         if (!powerOverride.HasValue && !defenderEffects.Any(e => e.PreventsCriticalHits))
         {
             int stage = move.Data.CritStage + attackerEffects.Sum(e => e.CritStageBonus);
-            int[] odds = { 16, 8, 4, 3, 2 };
-            result.IsCritical = rng.Next(odds[Math.Clamp(stage, 0, 4)]) == 0;
+            result.IsCritical = rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
         }
 
         // Base power, then the attacking and defending stats
@@ -105,10 +108,10 @@ public static class DamageCalculator
         if (spread) damage = damage * 3 / 4;
         damage += 2;
 
-        if (result.IsCritical) damage = (int)(damage * attackerEffects.Aggregate(2f, (m, e) => Math.Max(m, e.CriticalMultiplier)));
+        if (result.IsCritical) damage = (int)(damage * rules.CriticalMultiplier * attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
 
-        // Random factor 85–100%
-        damage = damage * rng.Next(85, 101) / 100;
+        // Random factor 85–100%, in sixteen steps
+        damage = damage * (85 + rng.Roll(RollKind.Damage, 16)) / 100;
 
         // Same-type attack bonus
         if (!powerOverride.HasValue && attacker.HasType(move.Type))

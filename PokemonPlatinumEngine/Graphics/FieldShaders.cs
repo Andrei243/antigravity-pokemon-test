@@ -243,9 +243,9 @@ void main()
 }";
 
     // How much of the sun reaches a point. Where the shadow map can compare for itself (HARDWARE_PCF, see
-    // Gl.CompareDepth) each tap is the card's own comparison of the four texels round it, filtered: four taps at
-    // the corners of a square make an even edge about four texels wide, and the low preset takes one. That is
-    // fewer and cheaper lookups than the other way, and it has no grain.
+    // Gl.CompareDepth) each tap is the card's own comparison of the four texels round it, filtered: one tap on
+    // the low preset, four in a square on the medium, nine on the high, for an edge two, three or four texels
+    // soft. That is cheaper than the other way, and it has no grain.
     // The other way, for a machine where the comparison can't be switched on: percentage-closer filtering over a
     // Poisson disc, rotated per pixel so the few taps blend into a soft penumbra instead of banding. The centre
     // and four outer taps go first: where they agree the pixel is fully lit or fully shadowed and the rest are
@@ -818,7 +818,7 @@ void main()
     /// Whether the shadow map compares for itself (see <see cref="Gl.CompareDepth"/>): the programs that read it
     /// are compiled for one way or the other, and <see cref="ShadowMap"/> sets its texture up to match.
     /// </summary>
-    public static bool HardwareShadows => Gl.Available && !RenderContext.Experiment.Contains("oldshadow"); // TEMP-G11
+    public static bool HardwareShadows => Gl.Available;
 
     /// <summary>A program that reads the shadow map, compiled for the way this machine filters it.</summary>
     private static string Shadowed(string fragment) =>
@@ -974,19 +974,17 @@ void main()
     /// <summary>How much drifting cloud shade dims the sunlight (0 for none).</summary>
     public void SetCloudShade(float amount)
     {
-        if (RenderContext.Experiment.Contains("nocloud")) amount = 0f; // TEMP-G11
         foreach (var shader in new[] { World, Character, CharacterSkinned, Sprite, Water }) Set(shader, "cloudShade", amount);
     }
 
     /// <summary>
-    /// Shadow filtering: the taps of the quality preset (1 or 4 of the card's own filtered comparisons) and how
-    /// soft the edge is, in shadow-map texels. Without the card's comparison, the same presets take 5 or 9 taps
-    /// of the rotated disc.
+    /// Shadow filtering: the taps of the quality preset (1, 4 or 9 of the card's own filtered comparisons).
+    /// Without the card's comparison, the same presets take 5 or 9 taps of a rotated disc
+    /// <paramref name="softness"/> texels of the shadow map in radius.
     /// </summary>
     public void SetShadowQuality(int taps, float softness)
     {
         int count = HardwareShadows ? Math.Clamp(taps, 1, 9) : taps < 4 ? 5 : 9;
-        if (RenderContext.Experiment.Contains("taps9")) count = 9; // TEMP-G11
         foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
             Set(shader, "shadowTaps", count);

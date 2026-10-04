@@ -127,14 +127,51 @@ public class TitleScreenTests
     }
 
     [Fact]
-    public void NewGameStartsStraightAwayWhenNothingIsSaved()
+    public void NewGameAsksOnlyForTheRulesWhenNothingIsSaved()
     {
         var title = AtMenu(null);
         title.PressConfirm();
-        Assert.Equal(TitlePhase.Leaving, title.Phase);
+        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
+        Assert.Equal(RulesPreset.Platinum, title.Rules);
 
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Leaving, title.Phase);
         Run(title, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal(TitleChoice.NewGame, title.TakeChoice());
+        Assert.Equal(RulesPreset.Platinum, title.Rules);
+    }
+
+    [Fact]
+    public void TheRulesAreChosenBeforeANewGameAndPlatinumsAreOffered()
+    {
+        var title = AtMenu(null);
+        title.PressConfirm();
+
+        // Any direction flips the answer; each has its own words, and both say it is for good
+        Assert.Contains("Platinum", TitleScreen.RulesBlurb(title.Rules));
+        title.Move(1);
+        Assert.Equal(RulesPreset.Modern, title.Rules);
+        Assert.Contains("newest", TitleScreen.RulesBlurb(title.Rules));
+        Assert.All(new[] { RulesPreset.Platinum, RulesPreset.Modern }, r => Assert.Contains("can't be changed", TitleScreen.RulesBlurb(r)));
+        title.Move(-1);
+        Assert.Equal(RulesPreset.Platinum, title.Rules);
+
+        // B goes back to the menu without starting anything, and the question starts over at Platinum's
+        title.Move(1);
+        title.PressCancel();
+        Assert.Equal(TitlePhase.Menu, title.Phase);
+        Assert.Equal(TitleChoice.None, title.TakeChoice());
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
+        Assert.Equal(RulesPreset.Platinum, title.Rules);
+
+        // The modern rules, chosen: the new game is handed over with them
+        title.Move(1);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.Leaving, title.Phase);
+        Run(title, TitleScreen.LeaveTime + 0.05f);
+        Assert.Equal(TitleChoice.NewGame, title.TakeChoice());
+        Assert.Equal(RulesPreset.Modern, title.Rules);
     }
 
     [Fact]
@@ -153,10 +190,12 @@ public class TitleScreenTests
         title.PressCancel();
         Assert.Equal(TitlePhase.Menu, title.Phase);
 
-        // "Yes" starts the new game
+        // "Yes" goes on to the rules, and those to the new game
         title.PressConfirm();
         title.Move(1);
         Assert.True(title.ConfirmYes);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.ChooseRules, title.Phase);
         title.PressConfirm();
         Assert.Equal(TitlePhase.Leaving, title.Phase);
         Run(title, TitleScreen.LeaveTime + 0.05f);

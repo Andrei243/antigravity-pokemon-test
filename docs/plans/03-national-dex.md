@@ -90,6 +90,8 @@ Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search
 
 ### D11 · Generations 5–9
 Import species 494–1025 with their forms (regional, Mega, Gigantamax), abilities and learnsets as data, and add the Fairy type (decision 2).
+*From plan 06 · R1 (2026-10-04):* the Mega Stones are in `items.json` with the form each brings out (`megaStone.form`: `Venusaur-Mega`, `Charizard-Mega-X`, in Pokémon Showdown's spelling, which is PokeAPI's form identifier with capitals), so the forms imported here should answer to those names. A game can be played by the modern rules (`Data/Ruleset.cs`): moves already carry their newest values beside Platinum's (`modern`), and species need the same for the types and base stats later games changed (Clefairy's Fairy type, the stat raises of Generations 6 and 7), swapped in by `Ruleset.Use` as the moves' are.
+
 *Progress (with D1):* species 494–1025 (default forms), their abilities, learnsets and evolutions, the later moves and the Fairy type's matchups are in. Still to do: forms, and the evolutions that start from a regional form (Perrserker, Sirfetch'd, Obstagoon and the like). The effects of their moves and abilities come from plan 06 · R24–R27; until those are done, plan 06's coverage report lists what is still approximated.
 
 ### D12 · Every species obtainable

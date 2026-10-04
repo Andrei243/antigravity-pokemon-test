@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -31,7 +32,7 @@ public partial class BattleEngine
         {
             a.Speed = EffectiveSpeed(a.User!);
             a.QuickClaw = a.Type == ActionType.Fight && BattleEffects.Of(a.User!).Any(e => e.MovesFirstInBracket(rng));
-            a.Tiebreak = rng.Next();
+            a.Tiebreak = rng.RollAny(RollKind.SpeedTie);
         }
         actions = actions
             .OrderByDescending(a => a.Priority)
@@ -50,7 +51,7 @@ public partial class BattleEngine
         var p = b.Pokemon!;
         var effects = BattleEffects.Of(b).ToList();
         float speed = p.Speed * DamageCalculator.StageMultiplier(p.StatStages.GetValueOrDefault(StatType.Speed));
-        if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.IgnoresParalysisSlowdown)) speed *= 0.25f;
+        if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.IgnoresParalysisSlowdown)) speed *= Rules.ParalysisSpeed;
         speed *= effects.Aggregate(1f, (m, e) => m * e.SpeedMultiplier(b));
         return Math.Max(1, (int)speed);
     }
@@ -244,7 +245,7 @@ public partial class BattleEngine
             switch (p.Status)
             {
                 case StatusCondition.Burn:
-                    LoseHp(b, Math.Max(1, p.MaxHP / 8), $"{b.Name} is hurt by its burn!");
+                    LoseHp(b, Math.Max(1, p.MaxHP / Rules.BurnDamageDivisor), $"{b.Name} is hurt by its burn!");
                     break;
                 case StatusCondition.Poison:
                     LoseHp(b, Math.Max(1, p.MaxHP / 8), $"{b.Name} is hurt by poison!");
@@ -468,7 +469,7 @@ public partial class BattleEngine
             var aims = move.Target == MoveTarget.Selected ? targets.Select(t => (Battler?)t).ToList() : new List<Battler?> { null };
             foreach (var aim in aims)
             {
-                float score = ScoreMove(foe, move, aim, targets, ally) * (0.85f + 0.3f * (float)rng.NextDouble());
+                float score = ScoreMove(foe, move, aim, targets, ally) * (0.85f + 0.3f * (float)rng.RollFraction(RollKind.AiChoice));
                 if (score > bestScore)
                 {
                     bestScore = score;
@@ -500,7 +501,7 @@ public partial class BattleEngine
             return 5f;
         }
 
-        float Hit(Battler t) => move.Power * DamageCalculator.Effectiveness(user, t, move) * (user.HasType(move.Type) ? 1.5f : 1f);
+        float Hit(Battler t) => move.Power * DamageCalculator.Effectiveness(user, t, move, Rules) * (user.HasType(move.Type) ? 1.5f : 1f);
 
         float score;
         switch (move.Target)

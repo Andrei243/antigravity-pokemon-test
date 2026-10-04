@@ -24,6 +24,9 @@
     <ProjectReference Include="..\PokemonPlatinumEngine\PokemonPlatinumEngine.csproj" />
     <!-- The map importer's readers are tested on small hand-built files; the tests never need the decompilation -->
     <ProjectReference Include="..\tools\MapImporter\MapImporter.csproj" />
+    <!-- The data importer's coverage report is checked against the data and the engine, and its reader of
+         Pokémon Showdown's tables on small texts written in the tests -->
+    <ProjectReference Include="..\tools\DataImporter\DataImporter.csproj" />
   </ItemGroup>
 
 </Project>

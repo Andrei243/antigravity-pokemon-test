@@ -135,8 +135,8 @@ public class LightingAndSettingsTests
         Assert.True(medium.SceneScale < high.SceneScale && low.SceneScale < medium.SceneScale);
         Assert.True(medium.Fxaa && medium.AmbientOcclusion);
         Assert.False(low.AmbientOcclusion || low.DepthOfField);
-        // One filtered lookup of the shadow map on the low preset, four on the others; a smaller map on the low one
-        Assert.Equal((1, 4, 4), (low.ShadowTaps, medium.ShadowTaps, high.ShadowTaps));
+        // One filtered lookup of the shadow map on the low preset, four on the medium, nine on the high; a smaller map on the low one
+        Assert.Equal((1, 4, 9), (low.ShadowTaps, medium.ShadowTaps, high.ShadowTaps));
         Assert.True(low.ShadowMapSize < medium.ShadowMapSize && medium.ShadowMapSize == high.ShadowMapSize);
     }
 

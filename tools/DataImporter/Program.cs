@@ -29,30 +29,54 @@ if (pokeApiDir == null)
     pokeApiDir = Path.Combine(Sources.Checkout(cache, "pokeapi", Sources.PokeApiRepo, Sources.PokeApiCommit, Sources.PokeApiFolders), "data", "v2", "csv");
 }
 
+string showdownDir = Arg("--showdown") ?? FetchShowdown();
+
 var importer = new Importer(new Decomp(decompDir), new PokeApi(pokeApiDir), lastSpecies);
+var showdown = new Showdown(showdownDir);
 string overrides = Path.Combine(repo, "tools", "DataImporter", "Overrides");
 
 Console.WriteLine("Moves…");
-var moves = Overrides.Apply(importer.Moves(), Path.Combine(overrides, "moves.json")).OrderBy(m => m.Id).ToList();
+var imported = importer.Moves();
+importer.AddLaterMechanics(imported, showdown);
+var moves = Overrides.Apply(imported, Path.Combine(overrides, "moves.json")).OrderBy(m => m.Id).ToList();
 Console.WriteLine("Abilities…");
 var abilities = Overrides.Apply(importer.Abilities(), Path.Combine(overrides, "abilities.json")).OrderBy(a => a.Id).ToList();
 Console.WriteLine("Species…");
 var species = Overrides.Apply(importer.Species(), Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
 Console.WriteLine("Items…");
 var evolutionItems = species.SelectMany(s => s.Evolutions ?? new()).Select(e => e.Item).OfType<string>().ToHashSet();
-var items = Overrides.Apply(importer.Items(evolutionItems, moves), Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
+var importedItems = importer.Items(evolutionItems, moves);
+importer.AddLaterMechanics(importedItems, showdown);
+var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
 
 Check(species, moves, abilities, items);
 
-Write(PokemonDatabase.FileName, species);
-Write(MoveDatabase.FileName, moves);
-Write(AbilityDatabase.FileName, abilities);
-Write(ItemDatabase.FileName, items);
-File.WriteAllText(Path.Combine(repo, "docs", "mechanics", "coverage.md"), Coverage.Report(species, moves, abilities, items));
-Console.WriteLine($"Wrote {species.Count} species, {moves.Count} moves, {abilities.Count} abilities and {items.Count} items to {outDir}");
+Write(Path.Combine(outDir, PokemonDatabase.FileName), GameDataFiles.Serialize(species));
+Write(Path.Combine(outDir, MoveDatabase.FileName), GameDataFiles.Serialize(moves));
+Write(Path.Combine(outDir, AbilityDatabase.FileName), GameDataFiles.Serialize(abilities));
+Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items));
+Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items));
+Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities and {items.Count} items in {outDir}");
 return 0;
 
-void Write<T>(string file, T value) => File.WriteAllText(Path.Combine(outDir, file), PokemonPlatinumEngine.Data.GameDataFiles.Serialize(value));
+string FetchShowdown()
+{
+    Console.WriteLine("Fetching Pokémon Showdown's move and item tables…");
+    return Sources.Download(cache, "showdown", Sources.ShowdownRaw, Sources.ShowdownCommit, Sources.ShowdownFiles);
+}
+
+// A file is only written when what it says has changed: one that is the same but for its line endings (git checks
+// the data files out with the machine's own) is left alone, so a run that changes nothing touches nothing.
+void Write(string path, string text)
+{
+    if (File.Exists(path) && File.ReadAllText(path).ReplaceLineEndings("\n") == text.ReplaceLineEndings("\n"))
+    {
+        Console.WriteLine($"  unchanged  {Path.GetFileName(path)}");
+        return;
+    }
+    File.WriteAllText(path, text);
+    Console.WriteLine($"  wrote      {Path.GetFileName(path)}");
+}
 
 string? Arg(string name)
 {

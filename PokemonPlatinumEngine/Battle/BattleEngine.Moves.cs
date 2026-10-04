@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -54,7 +55,7 @@ public partial class BattleEngine
 
         void Paralysis()
         {
-            if (p.Status == StatusCondition.Paralyze && rng.Next(100) < 25)
+            if (p.Status == StatusCondition.Paralyze && rng.Roll(RollKind.FullParalysis, 100) < 25)
             {
                 QueueMessage($"{user.Name} is paralyzed! It can't move!", () => then(false));
                 return;
@@ -76,13 +77,14 @@ public partial class BattleEngine
             }
             QueueMessage($"{user.Name} is confused!", () =>
             {
-                if (rng.Next(2) == 0)
+                // It hurts itself one time in the rules' odds (the die's last face)
+                if (rng.Roll(RollKind.ConfusionSelfHit, Rules.ConfusionSelfHitOdds) < Rules.ConfusionSelfHitOdds - 1)
                 {
                     Paralysis();
                     return;
                 }
                 // A typeless 40-power hit on itself
-                var self = DamageCalculator.Calculate(user, user, move, rng, spread: false, powerOverride: 40);
+                var self = DamageCalculator.Calculate(user, user, move, rng, spread: false, powerOverride: 40, rules: Rules);
                 int dealt = Math.Min(p.CurrentHP, self.Damage);
                 QueueMessage("It hurt itself in its confusion!", () => then(false), onShow: () => After(HitDelay, () =>
                 {
@@ -123,7 +125,7 @@ public partial class BattleEngine
                 return;
 
             case StatusCondition.Freeze:
-                if (move.Data.ThawsUser || rng.Next(100) < 20)
+                if (move.Data.ThawsUser || rng.Roll(RollKind.Thaw, 100) < 20)
                 {
                     p.Status = StatusCondition.None;
                     QueueMessage($"{user.Name} thawed out!", Flinch);
@@ -159,12 +161,12 @@ public partial class BattleEngine
             case MoveTarget.AllOthers:
                 return AllBattlers.Where(b => b.IsActive && b != user).ToList();
             case MoveTarget.RandomFoe:
-                return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Next(foes.Count)] };
+                return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Roll(RollKind.Target, foes.Count)] };
             default:
                 if (chosen != null && chosen.IsActive && chosen != user) return new List<Battler> { chosen };
                 // The chosen foe is gone: the move goes to the other one (an ally that fainted leaves nothing to hit)
                 if (chosen != null && chosen.Side == user.Side) return new List<Battler>();
-                return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Next(foes.Count)] };
+                return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Roll(RollKind.Target, foes.Count)] };
         }
     }
 
@@ -210,7 +212,7 @@ public partial class BattleEngine
                     continue;
                 }
 
-                float effectiveness = move.Data == StruggleData ? 1f : DamageCalculator.Effectiveness(user, t, move);
+                float effectiveness = move.Data == StruggleData ? 1f : DamageCalculator.Effectiveness(user, t, move, Rules);
                 var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
                 hit.Notes.AddRange(Capture(() => hit.Absorbed = guards.Any(e => e.AbsorbsMove(this, t, user, move, effectiveness))));
                 if (hit.Absorbed) continue;
@@ -221,7 +223,7 @@ public partial class BattleEngine
                 }
 
                 hit.Damage = DamageCalculator.Calculate(user, t, move, rng, spread: targets.Count > 1,
-                    powerOverride: move.Data == StruggleData ? move.Power : null);
+                    powerOverride: move.Data == StruggleData ? move.Power : null, rules: Rules);
                 hit.Dealt = Math.Min(t.Pokemon!.CurrentHP, hit.Damage.Damage);
                 if (hit.Dealt >= t.Pokemon.CurrentHP)
                 {
@@ -283,7 +285,7 @@ public partial class BattleEngine
         float chance = move.Accuracy * DamageCalculator.AccuracyStageMultiplier(accStage - evaStage);
         chance *= userEffects.Aggregate(1f, (m, e) => m * e.AccuracyMultiplier(user, move));
         chance *= targetEffects.Aggregate(1f, (m, e) => m * e.EvasionMultiplier(target));
-        return rng.Next(100) < chance;
+        return rng.Roll(RollKind.Accuracy, 100) < chance;
     }
 
     /// <summary>What each target makes of a damaging move, its side effects, then what the attacker gets out of it.</summary>
@@ -408,11 +410,11 @@ public partial class BattleEngine
                     continue;
                 }
                 var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
-                if (guards.Any(e => e.AbsorbsMove(this, t, user, move, DamageCalculator.Effectiveness(user, t, move)))) continue;
+                if (guards.Any(e => e.AbsorbsMove(this, t, user, move, DamageCalculator.Effectiveness(user, t, move, Rules)))) continue;
 
                 // Thunder Wave is the one status move here that types can be immune to
                 if (move.Type == PokemonType.Electric && data.InflictStatus == StatusCondition.Paralyze &&
-                    DamageCalculator.Effectiveness(user, t, move) == 0f)
+                    DamageCalculator.Effectiveness(user, t, move, Rules) == 0f)
                 {
                     Announce($"It doesn't affect {t.Name}...");
                     continue;
@@ -442,7 +444,7 @@ public partial class BattleEngine
         RunAnnouncements(onComplete);
     }
 
-    private bool Roll(int percent) => percent >= 100 || (percent > 0 && rng.Next(100) < percent);
+    private bool Roll(int percent) => percent >= 100 || (percent > 0 && rng.Roll(RollKind.SideEffect, 100) < percent);
 
     /// <summary>Confuses for 1–4 turns unless already confused or protected (Own Tempo).</summary>
     private bool Confuse(Battler target, Battler? source, bool announceFailure)
@@ -459,7 +461,7 @@ public partial class BattleEngine
             if (announceFailure) Announce($"{target.Name}'s {target.Pokemon!.Ability?.Name} prevents confusion!");
             return false;
         }
-        target.ConfusionTurns = rng.Next(2, 6);
+        target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
         Announce($"{target.Name} became confused!");
         CheckConditionHooks(target, source);
         return true;

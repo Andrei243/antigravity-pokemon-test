@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -55,8 +56,8 @@ internal sealed class ContactStatus(int chancePercent, params StatusCondition[] 
     public override void AfterHit(IBattleContext ctx, Battler self, Battler attacker, Move move, int damage, bool critical)
     {
         if (!move.Data.MakesContact || !attacker.IsActive || attacker.Pokemon!.Status != StatusCondition.None) return;
-        if (ctx.Random.Next(100) >= chancePercent) return;
-        ctx.TryInflictStatus(attacker, statuses[ctx.Random.Next(statuses.Length)], self);
+        if (ctx.Random.Roll(RollKind.AbilityChance, 100) >= chancePercent) return;
+        ctx.TryInflictStatus(attacker, statuses[ctx.Random.Roll(RollKind.AbilityPick, statuses.Length)], self);
     }
 }
 
@@ -276,7 +277,7 @@ internal sealed class ShedSkin : BattleEffect
 {
     public override void AtEndOfTurn(IBattleContext ctx, Battler self)
     {
-        if (self.Pokemon!.Status != StatusCondition.None && ctx.Random.Next(100) < 30)
+        if (self.Pokemon!.Status != StatusCondition.None && ctx.Random.Roll(RollKind.AbilityChance, 100) < 30)
             ctx.CureStatus(self, $"{self.Name}'s Shed Skin cured its {BattleText.StatusName(self.Pokemon.Status)}!");
     }
 }
@@ -330,5 +331,5 @@ internal sealed class MagicGuard : BattleEffect
 
 internal sealed class Sniper : BattleEffect
 {
-    public override float CriticalMultiplier => 3f;
+    public override float CriticalBoost => 1.5f;
 }

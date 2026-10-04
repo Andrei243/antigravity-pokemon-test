@@ -166,16 +166,25 @@ public static class TypeChart
         { (PokemonType.Steel, PokemonType.Fairy), 2.0f }
     };
 
-    public static float GetEffectiveness(PokemonType attackType, PokemonType defenderType1, PokemonType? defenderType2 = null)
+    /// <param name="rules">The rules whose chart this is; left out, those of the game in progress.</param>
+    public static float GetEffectiveness(PokemonType attackType, PokemonType defenderType1, PokemonType? defenderType2 = null, Ruleset? rules = null)
     {
-        float mult1 = Multipliers.TryGetValue((attackType, defenderType1), out float m1) ? m1 : 1.0f;
+        rules ??= Ruleset.Current;
+        float mult1 = Against(attackType, defenderType1, rules);
         float mult2 = 1.0f;
 
         if (defenderType2.HasValue && defenderType2.Value != defenderType1)
         {
-            mult2 = Multipliers.TryGetValue((attackType, defenderType2.Value), out float m2) ? m2 : 1.0f;
+            mult2 = Against(attackType, defenderType2.Value, rules);
         }
 
         return mult1 * mult2;
+    }
+
+    private static float Against(PokemonType attack, PokemonType defender, Ruleset rules)
+    {
+        // Generation 6 took Steel's resistance to Ghost and Dark away
+        if (!rules.SteelResistsGhostAndDark && defender == PokemonType.Steel && attack is PokemonType.Ghost or PokemonType.Dark) return 1.0f;
+        return Multipliers.TryGetValue((attack, defender), out float m) ? m : 1.0f;
     }
 }

@@ -63,6 +63,9 @@ public partial class BattleEngine : IBattleContext
 
     public Random Random => rng;
 
+    /// <summary>The rules this battle is fought by: those of the game in progress unless the setup gave its own.</summary>
+    public Ruleset Rules { get; }
+
     private readonly Queue<Action> turnEventQueue = new();
     private string currentMessage = "";
     private float messageWaitTimer = 0f;
@@ -115,6 +118,7 @@ public partial class BattleEngine : IBattleContext
         pcBoxStorage = setup.PcStorage;
         Trainers = setup.Trainers;
         rng = setup.Random ?? Core.Dice.New();
+        Rules = setup.Rules ?? Ruleset.Current;
 
         // A double battle needs two Pokémon able to fight on each side
         bool canDouble = setup.PlayerParty.Members.Count(p => !p.IsFainted) >= 2 &&

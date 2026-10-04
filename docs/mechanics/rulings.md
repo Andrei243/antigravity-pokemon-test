@@ -1,6 +1,68 @@
 # Rulings
 
-Choices made where the games disagree with each other, or where a rule leans on something this game doesn't have. Plan 06 · R1 confirms the general ones (whose rules are the baseline, when the later mechanics appear); until then this file holds the rulings taken along the way. Each says what was chosen and why, so it can be changed in one place.
+Choices made where the games disagree with each other, or where a rule leans on something this game doesn't have. Each says what was chosen and why, so it can be changed in one place. The general ones come first; the rest are in the order they were taken.
+
+## The general rulings (plan 06 · R1, confirmed by the user on 2026-10-04)
+
+1. **Whose rules: Platinum's, or the modern ones, chosen once.** A new game asks on the title screen, after NEW GAME: *Platinum rules* (offered first) or *Modern rules*. The answer is kept in the save (`SaveData.Rules`) and nothing in the game changes it afterwards: there is no option for it. Under Platinum's rules everything Platinum has works as in Platinum. Under the modern rules the same things follow the newest games. Either way, whatever came after Platinum follows the game that introduced it, in its latest form.
+   - Every difference lives in `Data/Ruleset.cs`. Code that runs a rule which differs between the generations asks the battle's `Rules` (or `Ruleset.Current` outside a battle) for the number; it never carries a constant of its own. The table below is the list.
+   - A move's own numbers follow the rules too: `moves.json` holds Platinum's values, and `modern` beside them where the newest games differ (107 of Platinum's moves). `Ruleset.Use` swaps them in as a game begins or loads.
+2. **When Mega Evolution, Z-Moves, Dynamax and Terastallization appear: during Sinnoh's story, if they can be balanced there; otherwise after the Hall of Fame.** See "The later mechanics in the story" below for what balanced has to mean and when it is checked.
+3. **How they live together: one of each.** Each mechanic once per trainer per battle, and a Pokémon can use only one of them in a battle. A Pokémon holding a Mega Stone or a Z-Crystal can't Terastallize; a Mega or Primal Pokémon can't Dynamax.
+4. **Where Dynamax works: anywhere**, once the Dynamax Band is in hand.
+5. **"Every item": all of them, some only as collectables.** Every item of the main games is in the data with its name, description, pocket and price. Items of systems this game has get their real effect. The rest (curry and sandwich ingredients, TM materials, other regions' story keys: about 700) exist without a function, and the coverage report lists them.
+6. **"Every move": 847 ordinary moves, 35 Z-Moves, 19 Max Moves and 33 G-Max Moves**, each with its exact effect. The games number 919 because each of the eighteen type Z-Moves has a physical and a special id; here each is one move. The 18 Shadow moves of the GameCube games are left out.
+7. **Online play** is no longer out of scope: plan 07 builds it. A battle between two players is fought by one set of rules that both agree to before it starts (plan 07 · O6 decides how the room offers it).
+8. **The Game Corner has slot machines**, as in the Platinum the decompilation is built from.
+
+### What the two sets of rules say
+
+In the `Ruleset` today, because the engine already runs these rules:
+
+| Rule | Platinum | Modern |
+| --- | --- | --- |
+| A critical hit | × 2 | × 1.5 |
+| Chance of one, by stage | 1 in 16, 8, 4, 3, 2 | 1 in 24, 8, 2, then always |
+| Sniper | half as much again: × 3 | half as much again: × 2.25 |
+| A burn takes, each turn | 1/8 of HP | 1/16 of HP |
+| Paralysis cuts Speed to | a quarter | a half |
+| Electric types | can be paralysed | can't |
+| A sleep has | four lengths | three |
+| A confused Pokémon hurts itself | 1 time in 2 | 1 time in 3 |
+| Steel resists Ghost and Dark | yes | no |
+| A move's power, accuracy, PP, priority, type | Platinum's (Tackle 35 and 95%) | the newest games' (Tackle 40 and 100%) |
+
+Known differences that join the `Ruleset` in the session that writes their rule, never as a constant beside it:
+
+| Rule | Platinum | Modern | Session |
+| --- | --- | --- | --- |
+| Weather an ability starts | lasts the battle | five turns | R3, R7 |
+| Grass types and powder moves, Ghost types and trapping, Poison types and Toxic's aim | no special case | immune, free to leave, never misses | R3 |
+| EXP | by the foe's level alone, shared among those who fought | scaled by the difference in level; the whole party gets some | R10 |
+| Catching | Platinum's formula | critical captures, the later status bonuses | R9, R13 |
+| TMs | used up | kept | R11 |
+| Poison in the field | hurts every four steps, down to 1 HP | none | R13 |
+| Species' types and base stats | Platinum's (Clefairy is Normal) | the newest games' (Fairy; the stat raises of Generations 6 and 7) | plan 03 · D11, then R19 |
+| Abilities that were reworked (Sturdy and the like) | as in Platinum | as in the newest games | R7, R27 |
+
+Where today's engine already differs from Platinum's own code, found while writing R1's test vectors against the decompilation (for R2 and R3 to put right; the default rules must not change under the graphics session's comparison shots, so R1 left them):
+
+- A sleep is drawn as 1 to 4 and counted down before it is checked, so it lasts 0 to 3 turns. R3 takes the original's number from its battle scripts.
+- The catch formula works in floating point with a fourth root; the original works in whole numbers with two integer square roots.
+- Abilities' and items' multipliers are multiplied together as fractions and applied once; the original applies each in its own place (to the power, to the stat, to the damage) and rounds down each time.
+- EXP is base × level / 7 with the trainer bonus and nothing else (no Lucky Egg, traded or international bonuses).
+
+What matches, and is held by `BattleScenarioTests`: the base damage formula and its order (stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, + 2, the critical multiplier, the roll in sixteen steps of 85 to 100 hundredths, then × 1.5 for the user's own type, then the target's types), stat stages, and what a critical hit ignores.
+
+### The later mechanics in the story
+
+The user's ruling is conditional: in Sinnoh's story if that can be balanced, otherwise after the Hall of Fame. Nothing of the four exists yet, so balance can't be measured today. What R1 records is what "balanced" has to mean, so R20–R23 and the story's chapters build toward it and R30 measures it:
+
+- **Each arrives late, one at a time, with a boss who uses it first.** A leader or commander shows the mechanic against the player and it is handed over after that battle, as the games that introduced them did. A proposal for plan 02 to confirm chapter by chapter: Mega Evolution with Maylene's Lucario (fourth badge, S8); Z-Moves at Celestic Town's ruins, with Cynthia's grandmother (S9); Dynamax with the Distortion World (S12); Terastallization at the Pokémon League's door (S14).
+- **From then on every boss has it too.** Gym Leaders after that point, Team Galactic's commanders and Cyrus, the rival, the Elite Four and Cynthia use what the player has by then, on the Pokémon it suits (Candice's Abomasnow, Lucian's Gallade, Cynthia's Garchomp have Mega forms of their own).
+- **Ordinary trainers stay Platinum's.** The cost is that the player outguns them more than in Platinum. If playtests show routes turning trivial, the lever is the player's side, not theirs: the stones and crystals the story hands out stay few, and "one of each" can be tightened to "one in total" outside boss battles.
+- **The check.** Each of R20–R23 ends with its mechanic fought through the story's boss teams by the AI on both sides, with and without it (the fuzzing harness of plan 06, "Verification"). A mechanic that can't be made fair to both sides moves to after the Hall of Fame, which is the ruling's own fallback and needs no new decision.
+- The switches the plan foresaw (each mechanic can be turned off in the options) stay, whichever way this falls.
 
 ## Evolution (2026-10-02)
 

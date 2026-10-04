@@ -1,4 +1,5 @@
 using System;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -51,7 +52,7 @@ public static class CatchCalculator
         int shakes = 0;
         for (int i = 0; i < 4; i++)
         {
-            int check = rng.Next(65536);
+            int check = rng.Roll(RollKind.CatchShake, 65536);
             if (check < bInt)
             {
                 shakes++;

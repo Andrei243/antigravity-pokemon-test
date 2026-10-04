@@ -21,10 +21,24 @@ Counted on 2026-10-01 from the decompilation and from PokeAPI's data:
 
 - `Battle/BattleEngine.cs` (about 1,000 lines) holds the rules, the message queue and the timing in one class. It runs single battles: damage (Generation 4's formula with critical hits, STAB, the type chart and the burn penalty), accuracy, stat stages, simple status and stat moves driven by fields of `MoveData`, burn and poison damage at the end of the turn, switching, running, catching (`CatchCalculator`), a flat EXP formula, level-ups and level evolution.
 - Since the battle-system branch: Generation 4 status rules, about 70 abilities, about 50 held items and berries, and double battles (see R9 below). There are no EV gains, friendship, weather, protection, multi-turn moves, hazards, tag battles, or trainer AI beyond "strongest move".
-- Data: 45 moves, 18 items in 5 bag pockets, 23 species.
+- Data (since plan 03 · D1 and R1): every species, 934 moves, 313 abilities and 771 items in `Data/*.json`; `docs/mechanics/coverage.md` says how much of each the engine runs.
+- Since R1: a game is played by Platinum's rules or the modern ones (`Data/Ruleset.cs`), chosen when it begins; battles can roll with their own generator (`Battle/Sim/BattleRandom.cs`) and have rolls fixed by kind for tests.
 - Field: walking and running, one-way ledges, one encounter table per map, trainers that spot the player, healing, a shop, PC storage.
 
-## Decisions to confirm in R1
+## Decisions
+
+**Confirmed by the user in R1 (2026-10-04).** `docs/mechanics/rulings.md` has them in full, with the table of what the two sets of rules say; the text below is what was proposed.
+
+1. *Whose rules:* Platinum's by default, **and the modern rules as a choice made when a new game begins**, kept in the save and never changed afterwards. This is more than the proposal, which left the modern preset for later: R1 built the choice (title screen), the `Ruleset` with both presets, and the rules the engine already ran onto it.
+2. *When the later mechanics appear:* **during Sinnoh's story if they can be balanced there, otherwise after the Hall of Fame** (not the proposal, which was the Hall of Fame outright). The rulings say what balanced has to mean; R20–R23 each end with the check, and plan 02's chapters S8, S9, S12 and S14 have the beats where they would arrive.
+3. *How they live together:* one of each, as proposed.
+4. *Where Dynamax works:* anywhere, as proposed.
+5. *"All items":* everything, some as collectables, as proposed.
+6. *"All moves":* as proposed. Counted properly there are 847 ordinary moves, 35 Z-Moves, 19 Max Moves and 33 G-Max Moves: the games' 919 numbers each type's Z-Move twice.
+7. *Online play:* superseded by plan 07.
+8. *The Game Corner:* slot machines.
+
+**As proposed (2026-10-01):**
 
 1. **Whose rules.** *Recommended:* Platinum's rules are the baseline, so the story plays exactly like Platinum. Anything that didn't exist in Platinum follows the game that introduced it, in its latest form. All differences between generations live in one `Ruleset` object, so a "Modern rules" preset (1.5× critical hits, 5-turn weather from abilities, reusable TMs, party-wide Exp. Share and so on) can be offered later as an option.
 2. **When the later mechanics appear.** *Recommended:* after the Hall of Fame, like the National Pokédex: four short post-game quests give the Key Stone, the Z-Ring, the Dynamax Band and the Tera Orb, and post-game opponents (League rematches, the Battle Frontier, special trainers) use them. The story itself stays free of them. Each can be switched off in the options.
@@ -116,6 +130,18 @@ Each session ends with its tests green, the coverage report updated and the sess
 
 ### Foundations
 - **R1 · Catalogue and rulings** (needs plan 03 · D1, done 2026-10-01: `tools/DataImporter` already brings in move metadata and flags, abilities and Platinum's items, flags each move's effect as fully run, partly run or not run, and writes a first `docs/mechanics/coverage.md`). Extend the importer (move metadata and flags, per-generation values, abilities, Platinum's 446 items, the Z, Max and Mega data). Build the coverage report. Confirm the decisions above and write `docs/mechanics/rulings.md`. Add the seeded random generator and the first scenario tests.
+
+  **Outcome (2026-10-04).**
+  - **Decisions**: all eight confirmed (above). Two went beyond the proposals and added work here: the modern rules as a choice at the start of a game, and the later mechanics in the story if balance allows.
+  - **The rules of a game** (`Data/Ruleset.cs`): two presets, `Platinum` and `Modern`, holding every number that differs between the generations among the rules the engine runs today (critical hits and their odds, a burn's damage, paralysis, sleep, confusion, Steel's resistances, the moves' own values). A battle is fought by `BattleSetup.Rules`, or by `Ruleset.Current`, the rules of the game in progress. The title screen asks "Which rules?" after NEW GAME (`TitlePhase.ChooseRules`), the save keeps the answer (`SaveData.Rules`; older saves are Platinum's), a modern save says so on its Continue panel, and no option changes it. **Every later session reads the `Ruleset` for a rule that differs and adds the difference there**; the rulings list the ones known to come.
+  - **A battle's own random numbers** (`Battle/Sim/BattleRandom.cs`, the first file of the new core): Platinum's generator (`BattleSystem_RandNext`), so a seed replays the same on every machine; its state is one number. Rolls are asked for by kind (`rng.Roll(RollKind.Critical, 16)`), and a `BattleRandom` can have a kind fixed (`Force`), which is how scenario tests pin "no critical hit, the strongest roll". Today's engine asks for its rolls by kind too, drawing exactly what it drew before (a test holds that), and the game's own battles still roll with `Dice` until R2: switching them now would have changed every seeded battle picture under the graphics session's comparison.
+  - **Scenario tests** (`PokemonPlatinumTests/Scenario.cs`, `BattleScenarioTests`, `RulesetTests`, `BattleRandomTests`): Pokémon with known stats, a battle with its own rolls and rules, one rule to a test, the expected numbers worked out in a comment from the decompilation's `BattleSystem_CalcMoveDamage`, `CalcDamageVariance`, `CalcCriticalMulti` and `ApplyTypeChart`. The first ones cover the damage formula and its order, stat stages, critical hits, the burn penalty, accuracy, side effects, paralysis, a seed replaying a battle, and each rule of the two presets.
+  - **The importer**: Platinum's moves carry the newest games' values where they differ (`modern`, 107 moves); Platinum's item table is whole (the hold effect's number, Fling, Natural Gift, Pluck, what can be tossed or registered, how the bag and the battle use each item and with what parameters); and a third source, Pokémon Showdown at a pinned commit (`Showdown.cs`; MIT, see THIRD-PARTY-NOTICES.md), gives each damaging move its power as a Z-Move and as a Max Move, each status move its Z-Power bonus, the 35 Z-Moves, 19 Max Moves and 33 G-Max Moves as moves of a kind of their own, and the 89 Mega Stones and 35 Z-Crystals with whose they are. It now leaves a file alone when nothing in it changed.
+  - **The coverage report** (`docs/mechanics/coverage.md`) is the catalogue: every move, ability and item with how much of it runs, Platinum's items judged job by job (what using it does, what holding it does). `CoverageTests` fails when the report is not the one the data and the engine give today (so a session that writes effects has to regenerate it), and when a number falls under its floor: 231 of Platinum's 467 moves fully run and 96 partly, 70 of 123 abilities, 71 of 445 items working and 42 partly, 52 of 158 hold effects.
+  - **Counts corrected**: Platinum has 445 items (the decompilation's 446th file is "no item"); the moves are 847 + 35 + 19 + 33 = 934 (decision 6).
+  - **Found on the way, for R2 and R3** (listed in the rulings): a sleep lasts a turn less than drawn, the catch formula isn't the original's integer one, abilities' and items' multipliers aren't applied in the original's places, EXP has none of its bonuses. R1 left them, because the default rules had to stay exactly as they were.
+  - **Not done here**: the forms themselves (Mega, Gigantamax: stats, types, abilities) are species data and come with plan 03 · D11; move flags for Gravity and Heal Block come with R3, from the original's own lists; berries' growing data with R14; the items of later games beyond the stones and crystals with R28. The modern rules don't yet change species' types and stats (plan 03 holds `species.json`), EXP, catching or TMs: each joins with its session.
+  - **Tests**: 63 new in four classes (`BattleRandomTests`, `BattleScenarioTests`, `RulesetTests`, `CoverageTests`) and the title screen's question in `TitleScreenTests`; the whole suite passes. The harness's `title` mode shows the question in both answers and a modern save's Continue panel (`title_12`–`title_14`).
 - **R2 · The battle core.** `Battle/Sim`: state, action queue, event pipeline, log. Move today's behaviour onto it (single battles, damage, accuracy, critical hits, stat stages, switching, running, catching, EXP) with the exact Platinum formulas, and play the log through the existing presentation. **Done when** every current test passes on the new core and recorded battles replay identically from a seed.
 - **R3 · Status and the field.** All status conditions and temporary states; the five weathers; screens, hazards, Trick Room, Gravity, Tailwind; protection, Substitute, semi-invulnerable and multi-turn moves; forced switches, Pursuit, U-turn and Baton Pass; the end-of-turn order.
 
@@ -177,7 +203,7 @@ Each session ends with its tests green, the coverage report updated and the sess
 
 ## Status
 
-- [ ] R1 Catalogue and rulings
+- [x] R1 Catalogue and rulings (2026-10-04: the eight decisions confirmed; Platinum's or the modern rules chosen at a new game and kept in the save; `Ruleset`; a battle's own generator with rolls by kind; scenario tests with numbers from the original's formulas; the importer's modern move values, whole item table and Z, Max and Mega data; the coverage report as a catalogue held by tests)
 - [ ] R2 The battle core
 - [ ] R3 Status and the field
 - [ ] R4 Moves I: data-driven families
