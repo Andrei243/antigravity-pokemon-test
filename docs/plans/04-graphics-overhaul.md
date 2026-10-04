@@ -262,10 +262,66 @@ Bag, Pokédex (2D sprites, per the style guide), trainer card, shop, PC boxes, s
 ### G11 · Performance and final pass
 Profiling, instancing, levels of detail, caches, settings presets, and a last before/after review of every harness shot.
 
+**Decisions (2026-10-05).**
+1. *Measure first, and build what the measurements ask for.* The session's first work was a profiler, not instancing. `FrameProfiler` takes a frame apart pass by pass and waits for the graphics card after each (`glFinish`), so a pass is charged with the work it caused; the harness's `profile` mode runs it over the heavy scenes. What it showed is that a frame is spent filling 4K. The game's own side of a frame is 0.2 ms. An outdoor scene is 70 to 155 meshes and 80 to 400 thousand triangles, a battle a dozen meshes and 700 thousand, and a battle drawn without its Pokémon and trainers is 0.3 ms faster. Two thirds of a frame was work done once for every pixel: shading the scene, the post passes, the composite.
+2. *So instancing and levels of detail are not built.* Scenery is already one mesh per chunk and kind, forests are drawn depth-first (G5), and neither would save what can be measured: they would be code to keep for nothing. `profile` is how to ask again. When plan 01 opens a city that puts many more models in view, add it to the mode's scenes and read the meshes and triangles on its line.
+3. *Pixels were made cheaper; nothing is drawn smaller, later or not at all.* Every saving is the same picture for less work (the outcome lists them), so a frame is 1 to 1.5 ms shorter on High with no setting lowered.
+4. *The picture may change only for the better, and that is checked, not believed.* Two runs of the harness now draw the same pictures to the pixel: the game's chance comes from `Dice` and the picture's small motions keep `FrameClock`, and the harness sets both. Its `diff` mode lists the shots a change altered, `crop` enlarges a rectangle of one beside the same of another run, `contact` puts a whole run on sheets. The session's changes were run through `diff` against the commit before them.
+5. *One thing changed on purpose: shadows have no grain.* The shadow map is compared by the graphics card itself, which weighs the four texels round each lookup, at nine places one texel apart. Before, it was nine single texels on a disc turned differently in every pixel, which left a band of noise along each edge for the tilt-shift to smear. An edge is now an even ramp, and it costs less. Where the card can't be asked (no OpenGL library found by name) the old filter stands in.
+6. *Caches: the bake was made quicker instead of being kept.* A chunk's ground took 1.4 s to prepare, four fifths of it one box blur read a column at a time. Read a row at a time it gives the same numbers bit for bit, and a chunk is ready in 0.3 to 0.5 s. A cache of baked ground on disk was weighed against that and not built: it would have to be thrown away whenever a line of the ground's art changed, and the walk across Sinnoh waits for no chunk as it is. What is kept now is each uniform's location, which the driver was asked for every frame.
+7. *The presets are three steps again.* Medium and Low smoothed their scenes with FXAA in every window. In a window much smaller than the scene, scaling down had already done that, so the pass bought nothing and cost Medium half a millisecond: in a room it was no faster than High (4.22 ms against 4.16), and once High's frame had been shortened it was as slow as High outdoors too. FXAA now follows the window (`RenderContext.NeedsFxaa`): on only where the scene is shown at more than three quarters of its size. Shadow lookups are nine, four and one.
+8. *What the harness can't time is said.* Every figure includes the hidden window's own swap of its buffers: 1 ms at 1080p, 3 ms when the window is as large as a 4K display. A window on a display, with V-Sync, is timed by nothing here. The game's loop asks for 60 frames a second, so a frame has 16.7 ms and the 8 ms budget is a margin of half. Readings also move by two or three tenths of a millisecond between runs, because the harness shares the graphics card with the desktop: a change is judged by runs made back to back.
+
+**Outcome (2026-10-05).**
+- **Frame time** on High in the harness's 1080p window, in milliseconds a frame. "Before" is the last commit without the rendering changes (6837679); "after" is the mean of two runs, one before and one after that commit's own run in the same hour.
+
+  | Scene | Before | After |
+  |---|---|---|
+  | Twinleaf Town | 6.85 | 5.39 |
+  | Route 201 | 7.68 | 6.50 |
+  | Route 201, among the trees | 7.79 | 6.58 |
+  | Sandgem Town | 7.02 | 5.68 |
+  | Route 202 | 7.18 | 6.12 |
+  | Lake Verity | 7.07 | 6.00 |
+  | Jubilife City | 6.98 | 5.67 |
+  | A Pokémon Center | 4.16 | 3.61 |
+  | Twinleaf Town at night | 6.25 | 4.96 |
+  | Twinleaf Town in heavy rain | 6.58 | 5.25 |
+  | Twinleaf Town in fog | 6.74 | 5.38 |
+  | A battle at its menu | 7.90 | 6.73 |
+  | A trainer battle, the sweep over both trainers | 7.26 | 6.18 |
+  | Flamethrower: winding up, arriving, landing | 7.97, 8.15, 8.20 | 6.74, 6.92, 6.75 |
+  | Surf | 8.20, 8.82, 8.48 | 6.85, 7.47, 7.12 |
+  | Earthquake | 7.97, 8.27, 8.33 | 6.72, 6.80, 6.83 |
+  | Close Combat | 7.84, 8.13, 8.37 | 6.86, 6.73, 6.82 |
+  | A double battle, the sweep | 7.07 | 5.97 |
+  | A double battle at its menu | 7.99 | 7.00 |
+
+  Nothing is over the budget any more. Before, each of the four moves was over it at its height (8.1 to 8.8 ms; no mode had timed a move until this one) and the double battle's menu was at it. The heaviest moment measured, Surf's wave arriving, read 7.1 and 7.8 ms in the two runs.
+- **The other presets**, same window, before and after: Medium 5.73 → 4.47 in Twinleaf Town, 6.71 → 5.66 on Route 201, 4.22 → 3.22 in a room, 6.89 → 5.80 at a battle's menu; Low 4.16 → 3.90, 4.87 → 4.61, 3.23 → 3.00 and 5.17 → 4.81. Medium is 0.4 to 1.1 ms under High and Low 1 to 2 ms under it.
+- **In a 4K window** (`SHOTS_WINDOW=3840x2160`: the game full screen on a 4K display, FXAA on), High: towns and routes 8.7 to 10.4 ms before and 7.6 to 9.1 after, a room 6.8 and 6.3, battles 9.7 to 11.2 and 8.3 to 9.5. Three milliseconds of each is the hidden window's swap and 0.4 the FXAA. Medium after: 7.1 to 8.5; Low: 5.9 to 7.4.
+- **Where the milliseconds came from** (Twinleaf Town on High, the profiler waiting for the card after each pass):
+  - *The scene, 2.04 → 1.53 ms.* The shadow lookups of decision 5; and in every scene what stands on the ground is now shaded before the ground, so the ground under it isn't shaded for nothing.
+  - *The post passes, 1.66 → 1.04 ms.* The 4K picture is read once into a half-size copy, from which the wide blur and the glow both start; each read it for itself before, and the glow had a pass of its own to keep what is bright, which its first blur step now does. Ambient occlusion reads a half-size copy of the depth buffer instead of the 4K one at scattered places. No full-screen pass clears its target first.
+  - *The composite, 1.13 → 0.88 ms.* The tilt-shift's blur takes five lookups where its radius is under 2.5 texels, where five are as dense as the texels, and the disc of twelve beyond. (Five everywhere was tried and showed doubled lines toward the screen's edges.)
+  - *A battle's stage, 2.76 → 2.30 ms*, although it draws half as many triangles again: its depth is laid down before it is shaded, since from the trainer's shoulder everything stands behind something.
+  - *The game's side of a frame*: the walk across Sinnoh, which times that side alone, went from 1.13 to 0.86 ms a frame (uniform locations kept; baking on threads of lower priority).
+- **Streaming and start-up**: the engine takes 0.7 to 0.9 s to start. Arriving in a town not seen yet, with no fade to hide behind, took 2.0 s to its first frame and takes 0.7 to 0.85 s. Chunks in view are baked first. On the walk from Twinleaf Town to Route 202, 24 chunks are made ready and none is waited for, as before.
+- **The picture**: 598 shots of the harness compared with the commit before. 167 are the same to the pixel. 431 differ, in 0.5 % of their pixels at the median and under 1.2 % for nine in ten; the most is 5.7 % (Twinleaf Town on Low, whose shadows changed most). The 25 places of the `cities` mode, 189 shots: 1.6 % at the most. What differs is the edges of shadows and, faintly, ambient occlusion read from the smaller depth. The new draw order shows nowhere: no two surfaces lie in one plane and swap. For the last review every shot of a full run was looked through on its contact sheets (30 sheets, 599 shots): nothing is broken. That run was made in a copy holding only this session's changes; a last run on the tree itself, with the other sessions' work merged since, gave the same pictures to the pixel wherever the harness stood in the same state (the first 97 shots in order, 354 in all), and elsewhere differs only by where its clock and dice stand after their new Pokédex and title shots.
+- **Harness**: `profile` (the scenes above, each timed and then taken apart; `SHOTS_PRESETS`, `SHOTS_ONLY`, `SHOTS_WINDOW`), `diff`, `crop` and `contact`. It seeds the game's chance and counts its own clock, and its "free" Poké Ball breaks free by a forced roll rather than by luck.
+- **Found on the way**: people stood in different poses from run to run, because their animation's seed came from a string's hash, which .NET changes with every start; a catch's shakes, and damage worked out with no generator handed to it, rolled on generators of their own instead of the battle's, so a battle given a seed didn't replay; Medium's wasted FXAA (decision 7).
+- **Tests**: 11 new cases (`FrameTests`): the profiler's laps and its report, and nothing measured when it is off; dice that repeat when seeded; the frame clock; a person's seed the same every run; a mask blurred the fast way equal to the slow way's bit for bit; a mask of nothing being no mask; the noise that keeps its cell equal to the noise; a chunk without water baked without a water mask and equal to the middle of a wider bake. The presets' test has the lookups and the table of windows that get FXAA. 889 tests pass.
+- **Not done here, and why**:
+  - *Instancing, levels of detail, a cache of baked ground*: decisions 2 and 6.
+  - *The interface in batches.* It is drawn a shape at a time: 0.1 to 0.2 ms in the field, 0.85 at a battle's menu, 1.25 at a double battle's. Collecting a frame's shapes into one buffer would about halve that. No scene needs it to stay inside the budget, and it is a rework of `UiShapes`, which every screen stands on.
+  - *Cloud shade worked out per vertex* would save 0.2 ms, and show on a battle stage's large polygons.
+  - *The window on the display* (decision 8). If full screen at 4K ever feels short of smooth, Medium is the first thing to try: it gives up a quarter of the scene's sharpness and a little of the softness of a shadow's edge, and nothing else.
+  - *Scenes that don't exist yet.* The cities and the later regions join `profile` as plan 01 opens them.
+
 ## Risks
 
 - **Procedural limits**: some species will still look off; the override folder lets a hand-made model replace any of them.
-- **Cost of effects**: 2× supersampling plus ambient occlusion and bloom is heavy; measure each addition and keep presets for slower machines. After G2 on High: fields 5.7–6.9 ms, battles 6.3–7 ms per frame in the harness, against a budget of 8; little headroom is left, so new effects must pay for themselves or go to Medium/Low as well.
+- **Cost of effects**: 2× supersampling plus ambient occlusion and bloom is heavy; measure each addition and keep presets for slower machines. After G2 on High: fields 5.7–6.9 ms, battles 6.3–7 ms per frame in the harness, against a budget of 8; little headroom is left, so new effects must pay for themselves or go to Medium/Low as well. After G11: fields 5.0–6.6 ms, battles 6.0–7.5 ms with a move's effect at its height, and the harness's `profile` mode says what an addition costs and in which pass.
 - **Two techniques, one game**: the pixel field and the 3D battles could feel like two games. Keep palettes, light direction and the interface shared, and make the battle intro transition (G9) sell the change.
 - **Endless polish**: every session has a done-when and a user review; move on once it passes.
 - **raylib limits**: OpenGL 3.3 without compute shaders, so everything runs as vertex and fragment passes.
@@ -288,4 +344,6 @@ Profiling, instancing, levels of detail, caches, settings presets, and a last be
 - [x] G8 Battle presentation (2026-10-02: effect cues and a 3D effects kit with a template per type and 146 moves of their own, a camera director, a 3D Poké Ball thrown by the trainer, arenas for every environment, gym and League room; frame time measured on the real machine on 2026-10-03, see G8's outcome)
 - [x] G9 Life (2026-10-04: wind in gusts, footprints, dust, leaves, splashes, rain that lands, eleven kinds of weather in the air and in the light, doors that open, waterfalls, fountains and turbines that move, seven bubbles, an eased camera, five ways into a battle picked as Platinum picks them)
 - [x] G10 Remaining screens (2026-10-04: bag with Platinum's eight pockets and an action menu, shop with "how many?", Pokédex, Trainer Card, PC boxes, starter choice, saving, text speed, and the new-game introduction with Professor Rowan, a boy or a girl and a name; title screen and continue panel done early, 2026-10-01)
-- [ ] G11 Performance and final pass
+- [x] G11 Performance and final pass (2026-10-05: a frame profiler and the harness's `profile`, `diff`, `crop` and `contact` modes; runs that repeat to the pixel; shadows without grain; a frame 1 to 1.5 ms shorter on High with the same picture, and nothing over the budget; three real presets; chunks baked three to four times as fast; instancing and levels of detail measured and not needed)
+
+Every session of this plan is done. What the look still lacks is listed in the style guide's "Known gaps" with the plan that brings each.

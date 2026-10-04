@@ -452,7 +452,7 @@ void Confirm(BattleEngine b)
     Frames(1);
 }
 
-BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201")
+BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201", Random chance = null)
 {
     // On the map of Sinnoh the stage depends on where the battle starts: the area's trees, water within sight
     var (name, x, y) = Place(map, -1, -1);
@@ -460,7 +460,10 @@ BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string m
     if (x >= 0) ((Player)Get("player")).SetPosition(x, y, Direction.Up);
     if (trainer != null && trainer.Party.Count == 0) trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
     var enemy = trainer?.Party.Members[0] ?? new Pokemon(PokemonDatabase.Get(foe)!, level);
-    var b = new BattleEngine(party, enemy, inventory, pokedex, trainer);
+    // (A wild battle can be given its own chance, with the rolls a shot depends on fixed)
+    var b = chance == null
+        ? new BattleEngine(party, enemy, inventory, pokedex, trainer)
+        : new BattleEngine(new BattleSetup { PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { enemy }, Random = chance });
     ((BattleRenderer)Get("battleRenderer")).SetArena((Map)Get("currentMap"), x, y);
     Set("battle", b);
     Set("currentState", GameState.Battle);
@@ -680,10 +683,14 @@ if (Run("battle"))
     Skip(18 / 60.0); Shot("50_faint_mid");
     Skip(40 / 60.0); Shot("50b_faint_done");
 
-    // Capture with a Master Ball (always caught) and a Poké Ball on a healthy foe (usually breaks free)
+    // Capture with a Master Ball (always caught) and with a Poké Ball that shakes twice and breaks open: the
+    // harness's dice are seeded, so the shake checks are fixed here or the ball would do the same thing every run
+    // by accident
     foreach (var (ball, tag) in new[] { ("Master Ball", "caught"), ("Poké Ball", "free") })
     {
-        b = StartBattle("Starly", 4);
+        b = StartBattle("Starly", 4, chance: tag == "free"
+            ? new PokemonPlatinumEngine.Battle.Sim.BattleRandom(4).Force(PokemonPlatinumEngine.Battle.Sim.RollKind.CatchShake, 0, 0, 65535)
+            : null);
         ToMainMenu(b);
         var use = new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get(ball), User = b.PlayerSlots[0], Actor = b.PlayerPokemon };
         typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!.Invoke(b, new object[] { new List<BattleAction> { use } });
