@@ -24,6 +24,13 @@ public class SaveData
     /// <summary>The day the adventure began; null in saves from before it was recorded.</summary>
     public DateTime? Started { get; set; }
 
+    /// <summary>
+    /// Whose rules the adventure is played by, chosen as it began and never changed after. Saves from before the
+    /// choice existed are Platinum's.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter))]
+    public RulesPreset Rules { get; set; }
+
     public int Money { get; set; } = 3000;
     public float PlayTimeSeconds { get; set; } = 0;
     public int Badges { get; set; } = 0;

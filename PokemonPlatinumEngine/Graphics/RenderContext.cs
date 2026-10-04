@@ -168,8 +168,6 @@ public sealed class RenderContext
     }
 
     /// <summary>Binds the shadow map for sampling by the scene shaders.</summary>
-    // TEMP-G11 experiments
-    internal static readonly string Experiment = System.Environment.GetEnvironmentVariable("G11_X") ?? "";
 
     internal void BindShadowMap()
     {
@@ -194,13 +192,7 @@ public sealed class RenderContext
     {
         post = settings;
         depthRange = depth;
-        // TEMP-G11 experiments
-        if (Experiment.Contains("nodof")) post = post with { Dof = 0f };
-        if (Experiment.Contains("nobloom")) post = post with { BloomStrength = 0f };
-        if (Experiment.Contains("noao")) post = post with { AoStrength = 0f };
-        if (Experiment.Contains("notilt")) post = post with { TiltShift = 0f };
-        if (Experiment.Contains("nooutline")) post = post with { OutlineStrength = 0f };
-        if (Experiment.Contains("nograde")) post = post with { Saturation = 1f, Contrast = 1f, Vignette = 0f };
+
         if (!Quality.DepthOfField) post = post with { Dof = 0f };
         if (!Quality.AmbientOcclusion) post = post with { AoStrength = 0f };
         if (!targetsLoaded) return;

@@ -163,8 +163,10 @@ Dice.Seed(20261004);
 long tick = 0;
 FrameClock.Fixed = 0;
 
+var startClock = System.Diagnostics.Stopwatch.StartNew();
 var engine = new GameEngine();
 engine.Initialize();
+double startMs = startClock.Elapsed.TotalMilliseconds;
 
 // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
 engine.Settings.Muted = true;
@@ -1435,6 +1437,21 @@ if (Run("title"))
     saved.PressConfirm();
     Seconds(0.2f); Shot("title_11_confirm_new_game");
 
+    // "Yes" leads to the last question: whose rules. Platinum's are offered; the other answer has its own words
+    saved.Move(1);
+    saved.PressConfirm();
+    Seconds(0.2f); Shot("title_12_rules_platinum");
+    saved.Move(1);
+    Seconds(0.2f); Shot("title_13_rules_modern");
+
+    // A game played by the modern rules says so on its panel
+    save.Rules = RulesPreset.Modern;
+    var modern = NewTitle(save);
+    modern.PressConfirm();
+    Seconds(1.2f);
+    modern.PressConfirm();
+    Seconds(1f); Shot("title_14_continue_modern_rules");
+
     Set("currentState", GameState.Overworld);
 }
 
@@ -2188,78 +2205,6 @@ List<(int X, int Y)> WalkingPath(Map map, (int X, int Y) from, (int X, int Y) to
     return path;
 }
 
-// ---------------------------------------------------------------- what a pass costs (a bench for G11; temporary)
-
-if (mode == "bench")
-{
-    var finishLib = System.Runtime.InteropServices.NativeLibrary.Load("opengl32.dll");
-    var finishPtr = System.Runtime.InteropServices.NativeLibrary.GetExport(finishLib, "glFinish");
-    var glFinish = System.Runtime.InteropServices.Marshal.GetDelegateForFunctionPointer<Action>(finishPtr);
-    void Finish() { Rlgl.DrawRenderBatchActive(); glFinish(); }
-
-    var big = Raylib.LoadRenderTexture(3840, 2160);
-    var halfA = Raylib.LoadRenderTexture(960, 540);
-    var halfB = Raylib.LoadRenderTexture(960, 540);
-    var quarter = Raylib.LoadRenderTexture(480, 270);
-    Raylib.SetTextureFilter(big.Texture, TextureFilter.Bilinear);
-    Raylib.SetTextureFilter(halfA.Texture, TextureFilter.Bilinear);
-    Raylib.SetTextureFilter(halfB.Texture, TextureFilter.Bilinear);
-
-    void PassTo(RenderTexture2D dst, Texture2D src, bool clear)
-    {
-        Raylib.BeginTextureMode(dst);
-        if (clear) Raylib.ClearBackground(Color.Black);
-        Raylib.DrawTexturePro(src, new Rectangle(0, 0, src.Width, -src.Height), new Rectangle(0, 0, dst.Texture.Width, dst.Texture.Height), Vector2.Zero, 0f, Color.White);
-        Raylib.EndTextureMode();
-    }
-    void Bench(string label, Action body, int n = 400)
-    {
-        for (int i = 0; i < 20; i++) body();
-        Finish();
-        var sw = System.Diagnostics.Stopwatch.StartNew();
-        for (int i = 0; i < n; i++) body();
-        double cpu = sw.Elapsed.TotalMilliseconds / n;
-        Finish();
-        Console.WriteLine($"{label}: {sw.Elapsed.TotalMilliseconds / n * 1000:F0} us each ({cpu * 1000:F0} us before the card had finished)");
-    }
-    Bench("pass 960x540 -> 960x540, cleared", () => PassTo(halfB, halfA.Texture, true));
-    Bench("pass 960x540 -> 960x540, not cleared", () => PassTo(halfB, halfA.Texture, false));
-    Bench("pass 3840x2160 -> 960x540, cleared", () => PassTo(halfA, big.Texture, true));
-    Bench("pass 960x540 -> 480x270, cleared", () => PassTo(quarter, halfA.Texture, true));
-    Bench("pass 960x540 -> 3840x2160, cleared", () => PassTo(big, halfA.Texture, true), 100);
-    Bench("pass 960x540 -> 3840x2160, not cleared", () => PassTo(big, halfA.Texture, false), 100);
-    Bench("two passes ping-pong", () => { PassTo(halfB, halfA.Texture, true); PassTo(halfA, halfB.Texture, true); });
-    Bench("begin and end texture mode only", () => { Raylib.BeginTextureMode(halfB); Raylib.EndTextureMode(); });
-    // The interface's own pieces, drawn into the 4K screen as the game draws them
-    var screen = (RenderTexture2D)Get("virtualScreen");
-    void Ui(string label, Action draw, int count)
-    {
-        Bench($"{label} x{count}", () =>
-        {
-            Raylib.BeginTextureMode(screen);
-            Raylib.BeginMode2D(new Camera2D { Zoom = 2 });
-            for (int i = 0; i < count; i++) draw();
-            Raylib.EndMode2D();
-            Raylib.EndTextureMode();
-        }, 100);
-    }
-    int k = 0;
-    Ui("small panel 300x80", () => { k++; PokemonPlatinumEngine.UI.Kit.UiShapes.Fill(new Rectangle(100 + k % 7 * 200, 100 + k % 5 * 150, 300, 80), 20, new Color(240, 240, 250, 255)); }, 100);
-    Ui("large panel 1700x220", () => PokemonPlatinumEngine.UI.Kit.UiShapes.Fill(new Rectangle(100, 800, 1700, 220), 30, new Color(240, 240, 250, 255)), 20);
-    Ui("shadow 1700x220 blur 22", () => PokemonPlatinumEngine.UI.Kit.UiShapes.Shadow(new Rectangle(100, 800, 1700, 220), 30, 22, new Vector2(0, 8), new Color(14, 22, 46, 80)), 20);
-    Ui("circle r10", () => { k++; PokemonPlatinumEngine.UI.Kit.UiShapes.Circle(new Vector2(100 + k % 50 * 30, 500), 10, Color.Red); }, 100);
-    Ui("text 'Flamethrower' 36", () => { k++; PokemonPlatinumEngine.UI.Kit.UiFonts.Draw("Flamethrower", 100 + k % 5 * 300, 100 + k % 9 * 90, 36, Color.Black, PokemonPlatinumEngine.UI.Kit.UiWeight.Black); }, 100);
-    Ui("panel then text, alternating", () =>
-    {
-        k++;
-        PokemonPlatinumEngine.UI.Kit.UiShapes.Fill(new Rectangle(100 + k % 7 * 200, 100 + k % 5 * 150, 300, 80), 20, new Color(240, 240, 250, 255));
-        PokemonPlatinumEngine.UI.Kit.UiFonts.Draw("Flamethrower", 110 + k % 7 * 200, 120 + k % 5 * 150, 36, Color.Black, PokemonPlatinumEngine.UI.Kit.UiWeight.Black);
-    }, 50);
-    Ui("raylib rectangle 300x80", () => { k++; Raylib.DrawRectangle(100 + k % 7 * 200, 100 + k % 5 * 150, 300, 80, Color.Blue); }, 100);
-    Bench("finish alone", () => Finish());
-    Bench("pass with a finish after each", () => { PassTo(halfB, halfA.Texture, true); Finish(); });
-}
-
 // ---------------------------------------------------------------- where the time goes (plan 04 · G11)
 
 // Not part of `all`: the heaviest scenes of the game, each timed and then taken apart by the profiler. Run it by
@@ -2267,6 +2212,19 @@ if (mode == "bench")
 if (mode == "profile")
 {
     Console.WriteLine($"window {Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
+    Console.WriteLine($"start-up: {startMs:F0} ms to initialise the engine");
+    // Arriving somewhere new: its chunks baked and uploaded behind the fade
+    var fieldRenderer = (WorldRenderer)Get("world");
+    fieldRenderer.ResetStreamingStats();
+    var arrival = System.Diagnostics.Stopwatch.StartNew();
+    Set("currentMap", MapDatabase.Get("Sinnoh"));
+    ((Player)Get("player")).SetPosition(178, 845, Direction.Down);
+    Set("currentState", GameState.Overworld);
+    Frames(1);
+    double firstFrame = arrival.Elapsed.TotalMilliseconds;
+    Frames(1);
+    Console.WriteLine($"arriving in a town not seen yet: {firstFrame:F0} ms to its first frame, {arrival.Elapsed.TotalMilliseconds - firstFrame:F0} ms for the next");
+    Console.WriteLine($"  streaming: {fieldRenderer.Streaming}");
     var presets = (Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
     foreach (string preset in presets)
     {

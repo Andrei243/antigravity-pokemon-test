@@ -69,14 +69,22 @@ internal sealed class MeshBatches
 internal sealed class SceneMeshes
 {
     /// <param name="Bounds">Set for a chunk of the map, which is skipped when out of view; null for what is always drawn.</param>
-    /// <param name="Prepass">Set for foliage, which lays down its depth before it is shaded (see <see cref="Draw"/>).</param>
-    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, (Vector3 Min, Vector3 Max)? Bounds, Material? Prepass);
+    /// <param name="Prepass">Set for what lays down its depth before it is shaded (see <see cref="Draw"/>): foliage, and all of a battle's stage.</param>
+    /// <param name="Solid">Stands on the ground and hides it (<see cref="MeshPass.Opaque"/>), so it is drawn before the ground is.</param>
+    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, (Vector3 Min, Vector3 Max)? Bounds, Material? Prepass, bool Solid);
     private readonly List<Part> parts = new();
     private readonly List<(Mesh Mesh, Material Material, bool Home)> lights = new();
 
-    public static SceneMeshes Upload(MeshBatches batches, FieldShaders shaders)
+    /// <summary>
+    /// Lays the depth of everything solid down before any of it is shaded. For a scene looked at from low down,
+    /// where one thing stands behind another all the way to the horizon: a battle's stage.
+    /// </summary>
+    public bool PrepassEverything { get; init; }
+
+    /// <param name="prepassEverything">See <see cref="PrepassEverything"/>.</param>
+    public static SceneMeshes Upload(MeshBatches batches, FieldShaders shaders, bool prepassEverything = false)
     {
-        var result = new SceneMeshes();
+        var result = new SceneMeshes { PrepassEverything = prepassEverything };
         foreach (var (tex, pass, chunked, builder) in batches.All)
         {
             if (builder.VertexCount == 0) continue;
@@ -99,8 +107,9 @@ internal sealed class SceneMeshes
         var main = RenderContext.MaterialFor(shader, tex);
         Material? depth = pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Depth, tex) : null;
         // Chunks are the map's trees: many layers of leaves over each other, so they get a depth pre-pass
-        Material? prepass = bounds != null && pass == MeshPass.Opaque ? RenderContext.MaterialFor(shaders.Prepass, tex) : null;
-        parts.Add(new Part(mesh, main, depth, bounds, prepass));
+        bool early = PrepassEverything ? pass is MeshPass.Opaque or MeshPass.Ground : bounds != null && pass == MeshPass.Opaque;
+        Material? prepass = early ? RenderContext.MaterialFor(shaders.Prepass, tex) : null;
+        parts.Add(new Part(mesh, main, depth, bounds, prepass, pass == MeshPass.Opaque));
     }
 
     private static bool Hidden(Part part, GroundRect? within) =>
@@ -109,34 +118,40 @@ internal sealed class SceneMeshes
     /// <summary>
     /// Draws the scenery. Foliage goes first, as depth alone: a forest is many cut-out layers over each other,
     /// and shading every layer costs a couple of milliseconds. With the depth laid down (and not written again),
-    /// only the leaves that end up visible are shaded, and the ground beneath them is skipped too.
+    /// only the leaves that end up visible are shaded, and the ground beneath them is skipped too. Then what
+    /// stands on the ground (buildings, props, the trees themselves), and the ground last, so that none of it
+    /// is shaded where something stands on it.
     /// </summary>
     /// <param name="view">The ground the camera can see; chunks of the map outside it are skipped. Null draws everything.</param>
     public void Draw(GroundRect? view = null)
     {
-        bool foliage = false;
+        bool early = false;
         foreach (var part in parts)
         {
             if (!part.Prepass.HasValue || Hidden(part, view)) continue;
-            if (!foliage)
+            if (!early)
             {
                 Rlgl.DrawRenderBatchActive();
                 Rlgl.ColorMask(false, false, false, false);
-                foliage = true;
+                early = true;
             }
             Raylib.DrawMesh(part.Mesh, part.Prepass.Value, Matrix4x4.Identity);
             FrameProfiler.Count(part.Mesh.TriangleCount);
         }
-        if (foliage) Rlgl.ColorMask(true, true, true, true);
+        if (early) Rlgl.ColorMask(true, true, true, true);
 
         foreach (var part in parts)
-        {
-            if (Hidden(part, view)) continue;
-            if (part.Prepass.HasValue) Rlgl.DisableDepthMask();
-            Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
-            FrameProfiler.Count(part.Mesh.TriangleCount);
-            if (part.Prepass.HasValue) Rlgl.EnableDepthMask();
-        }
+            if (part.Solid && !Hidden(part, view)) Shade(part);
+        foreach (var part in parts)
+            if (!part.Solid && !Hidden(part, view)) Shade(part);
+    }
+
+    private static void Shade(Part part)
+    {
+        if (part.Prepass.HasValue) Rlgl.DisableDepthMask();
+        Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
+        FrameProfiler.Count(part.Mesh.TriangleCount);
+        if (part.Prepass.HasValue) Rlgl.EnableDepthMask();
     }
 
     /// <summary>

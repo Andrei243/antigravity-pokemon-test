@@ -26,8 +26,12 @@ public sealed class Importer
     /// sessions on those mechanics.</summary>
     private static readonly HashSet<int> LaterItemCategories = new()
     {
-        1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15, 16, 17, 18, 19, 26, 27, 28, 29, 30, 33, 34, 39, 42, 45, 50
+        1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15, 16, 17, 18, 19, 26, 27, 28, 29, 30, 33, 34, 39, 42, 45, 50,
+        MegaStones, ZCrystals
     };
+
+    /// <summary>PokeAPI's categories for the Mega Stones and the Z-Crystals (R1: brought in with whose they are).</summary>
+    private const int MegaStones = 44, ZCrystals = 46;
 
     private readonly Decomp decomp;
     private readonly PokeApi api;
@@ -90,6 +94,7 @@ public sealed class Importer
                 | (gen4Flags.Contains("MOVE_FLAG_TRIGGERS_KINGS_ROCK") ? MoveFlags.KingsRock : 0)
                 | LaterFlags(flags.GetValueOrDefault(id));
             MoveEffects.Gen4(m, effect, chance);
+            m.Modern = ModernValues(m, row);
             moves.Add(m);
         }
 
@@ -161,6 +166,144 @@ public sealed class Importer
             moves.Add(m);
         }
         return moves;
+    }
+
+    /// <summary>
+    /// What the newest games give one of Platinum's moves where that differs from Platinum's own values (PokeAPI's
+    /// <c>moves.csv</c> holds the current ones): the values a game played by the modern rules uses. Null when
+    /// nothing differs. The target is left as Platinum has it: the two sources describe it in different terms.
+    /// </summary>
+    private MoveValues? ModernValues(MoveData platinum, CsvRow row)
+    {
+        int power = row.IntOrNull("power") ?? 0, accuracy = row.IntOrNull("accuracy") ?? 0;
+        var category = row.Int("damage_class_id") switch { 1 => MoveCategory.Status, 2 => MoveCategory.Physical, _ => MoveCategory.Special };
+        var v = new MoveValues
+        {
+            Power = power != platinum.Power ? power : null,
+            Accuracy = accuracy != platinum.Accuracy ? accuracy : null,
+            MaxPP = row.IntOrNull("pp") is { } pp && pp != platinum.MaxPP ? pp : null,
+            Priority = row.Int("priority") != platinum.Priority ? row.Int("priority") : null,
+            Type = api.Type(row.Int("type_id")) != platinum.Type ? api.Type(row.Int("type_id")) : null,
+            Category = category != platinum.Category ? category : null
+        };
+        bool differs = v.Power != null || v.Accuracy != null || v.MaxPP != null || v.Priority != null || v.Type != null || v.Category != null;
+        return differs ? v : null;
+    }
+
+    // ================================================================== the later mechanics' moves
+
+    private static readonly Dictionary<string, StatType> ShowdownStats = new()
+    {
+        ["atk"] = StatType.Attack, ["def"] = StatType.Defense, ["spa"] = StatType.SpAttack, ["spd"] = StatType.SpDefense,
+        ["spe"] = StatType.Speed, ["accuracy"] = StatType.Accuracy, ["evasion"] = StatType.Evasion
+    };
+
+    /// <summary>The first id given to G-Max Moves, which have no number of their own in the games' move list.</summary>
+    public const int FirstGMaxMoveId = 2001;
+
+    /// <summary>
+    /// Adds what Z-Moves and Dynamax need (plan 06 · R21–R22) from Pokémon Showdown's move table: each damaging
+    /// move's power as a Z-Move and as a Max Move, what Z-Power adds to each status move, and the Z-Moves, Max
+    /// Moves and G-Max Moves themselves, which do nothing until those sessions write them.
+    /// </summary>
+    public void AddLaterMechanics(List<MoveData> moves, Showdown showdown)
+    {
+        var standard = showdown.Moves.Where(e => !e.Has("isZ") && !e.Has("isMax") && e.Number("num") is > 0)
+            .GroupBy(e => e.Number("num")!.Value).ToDictionary(g => g.Key, g => g.First());
+
+        foreach (var m in moves)
+        {
+            if (!standard.TryGetValue(m.Id, out var e)) continue;
+            string? z = e.Fields.GetValueOrDefault("zMove"), max = e.Fields.GetValueOrDefault("maxMove");
+            if (e.Text("category") == "Status")
+            {
+                m.ZBonus = ZBonusOf(z, m.Name);
+                continue;
+            }
+            if (m.Name == "Struggle") continue;
+            int power = e.Number("basePower") ?? 0;
+            m.ZPower = Showdown.Inner(z, "basePower") ?? ZPowerOf(power, e.Fields.GetValueOrDefault("multihit")?.StartsWith('[') == true);
+            m.MaxPower = Showdown.Inner(max, "basePower") ?? MaxPowerOf(power, e.Text("type")!);
+        }
+
+        // A type's Z-Crystal is the one that names no move of its own
+        var typeCrystals = showdown.Items.Where(i => i.Is("zMove", "true")).Select(i => i.Id).ToHashSet();
+        int gmax = FirstGMaxMoveId;
+        foreach (var e in showdown.Moves.Where(e => e.Has("isZ") || e.Has("isMax")).OrderBy(e => e.Name, StringComparer.Ordinal))
+        {
+            bool isZ = e.Has("isZ"), isGMax = e.Text("isMax") != null;
+            bool ofOneSpecies = isZ && !typeCrystals.Contains(e.Text("isZ")!);
+            var type = Enum.Parse<PokemonType>(e.Text("type")!);
+            int power = e.Number("basePower") ?? 0;
+            var m = new MoveData
+            {
+                Id = isGMax ? gmax++ : e.Number("num")!.Value,
+                Name = e.Name,
+                Generation = isZ ? 7 : 8,
+                Type = type,
+                Category = Enum.Parse<MoveCategory>(e.Text("category")!),
+                // 1 and 10 stand for "takes its power from the move it is made from"
+                Power = power is 1 or 10 ? 0 : power,
+                Accuracy = 0,
+                MaxPP = e.Number("pp") ?? 1,
+                Priority = e.Number("priority") ?? 0,
+                Target = isZ || e.Text("target") is "normal" or "adjacentFoe" ? MoveTarget.Selected : MoveTarget.User,
+                Kind = isZ ? MoveKind.ZMove : isGMax ? MoveKind.GMaxMove : MoveKind.MaxMove,
+                GigantamaxOf = e.Text("isMax"),
+                Effect = isZ ? "ZMove" : isGMax ? "GMaxMove" : "MaxMove",
+                Support = MoveEffectSupport.None,
+                Description = ofOneSpecies ? "A Z-Move one species makes out of its own move with its Z-Crystal."
+                    : isZ ? $"The {type}-type Z-Move. Its power comes from the move it is made out of."
+                    : isGMax ? $"The {type}-type Max Move of Gigantamax {e.Text("isMax")}."
+                    : e.Text("category") == "Status" ? "What every status move becomes under Dynamax: it protects the user."
+                    : $"The {type}-type Max Move. Its power comes from the move it is made out of."
+            };
+            moves.Add(m);
+        }
+    }
+
+    /// <summary>Showdown's rule for a move without a Z power of its own (<c>sim/dex-moves.ts</c>).</summary>
+    public static int ZPowerOf(int basePower, bool hitsSeveralTimes)
+    {
+        if (hitsSeveralTimes) basePower *= 3;
+        return basePower switch
+        {
+            0 => 100, >= 140 => 200, >= 130 => 195, >= 120 => 190, >= 110 => 185, >= 100 => 180,
+            >= 90 => 175, >= 80 => 160, >= 70 => 140, >= 60 => 120, _ => 100
+        };
+    }
+
+    /// <summary>Showdown's rule for a move without a Max power of its own: Fighting and Poison moves get less.</summary>
+    public static int MaxPowerOf(int basePower, string type)
+    {
+        if (basePower == 0) return 100;
+        bool low = type is "Fighting" or "Poison";
+        return basePower switch
+        {
+            >= 150 => low ? 100 : 150, >= 110 => low ? 95 : 140, >= 75 => low ? 90 : 130, >= 65 => low ? 85 : 120,
+            >= 55 => low ? 80 : 110, >= 45 => low ? 75 : 100, _ => low ? 70 : 90
+        };
+    }
+
+    private static ZBonus? ZBonusOf(string? zMove, string move)
+    {
+        if (zMove == null) return null;
+        if (Showdown.InnerText(zMove, "effect") is { } effect)
+        {
+            return new ZBonus
+            {
+                Effect = effect switch
+                {
+                    "clearnegativeboost" => "ClearNegativeBoost", "heal" => "Heal", "healreplacement" => "HealReplacement",
+                    "crit2" => "Crit2", "redirect" => "Redirect", "curse" => "Curse",
+                    _ => throw new InvalidDataException($"Unknown Z-Power effect {effect} on {move}")
+                }
+            };
+        }
+        var boosts = Showdown.InnerTable(zMove, "boost");
+        if (boosts.Count == 0) return null;
+        if (boosts.Any(b => b.Value != boosts[0].Value)) throw new InvalidDataException($"{move}'s Z-Power raises its stats by different amounts");
+        return new ZBonus { Stats = boosts.Select(b => ShowdownStats[b.Key]).ToArray(), Stages = boosts[0].Value };
     }
 
     /// <summary>Z-Moves named after one species' Z-Crystal (the generic ones have "--physical" ids).</summary>
@@ -638,6 +781,7 @@ public sealed class Importer
             item.Description = item.TeachesMove is { } move ? MachineText(move, moves.FirstOrDefault(m => m.Name == move)?.Description)
                 : apiId != null ? api.Prose("item_prose", "item_id", apiId.Value) : "";
             if (names.Add(item.Name)) items.Add(item);
+            else Console.Error.WriteLine($"  Platinum has two items called {item.Name}: {itemConstants[index]} is left out");
         }
 
         // Later generations' items that matter in battle, healing, catching or evolving
@@ -655,6 +799,8 @@ public sealed class Importer
                 2 => ItemPocket.Medicine, 3 => ItemPocket.PokeBalls, 4 => ItemPocket.TMsAndHMs, 5 => ItemPocket.Berries,
                 6 => ItemPocket.Mail, 7 => ItemPocket.BattleItems, 8 => ItemPocket.KeyItems, _ => ItemPocket.Items
             };
+            // A Z-Crystal is held, so it is an ordinary item here (the games keep the ones in the bag apart)
+            if (row.Int("category_id") == ZCrystals) pocket = ItemPocket.Items;
             items.Add(new ItemData
             {
                 Id = 1000 + id,
@@ -740,11 +886,95 @@ public sealed class Importer
         }
 
         string hold = d.GetProperty("holdEffect").GetString()!;
-        if (hold != "HOLD_EFFECT_NONE") item.HoldEffect = Names.Pascal(hold, "HOLD_EFFECT_");
+        if (hold != "HOLD_EFFECT_NONE")
+        {
+            item.HoldEffect = Names.Pascal(hold, "HOLD_EFFECT_");
+            item.HoldParam = d.GetProperty("effectParam").GetInt32();
+        }
         if (d.TryGetProperty("teachesMove", out var teaches) && teaches.GetString() is { } move)
             item.TeachesMove = api.MoveName(moveConstants.IndexOf(move));
+
+        // The rest of the table, for plan 06 · R8 and R11: numbers and the decompilation's own names, never its text
+        string? Named(string key, string prefix) =>
+            d.GetProperty(key).GetString() is { } value && !value.EndsWith("_NONE") ? Names.Pascal(value, prefix) : null;
+        item.FlingPower = d.GetProperty("flingPower").GetInt32();
+        item.FlingEffect = Named("flingEffect", "FLING_EFFECT_");
+        item.PluckEffect = Named("pluckEffect", "PLUCK_EFFECT_");
+        item.NaturalGiftPower = d.GetProperty("naturalGiftPower").GetInt32();
+        if (d.GetProperty("naturalGiftType").GetString() is { } giftType) item.NaturalGiftType = Gen4Type(giftType);
+        item.CantBeTossed = d.GetProperty("preventToss").GetBoolean();
+        item.CanBeRegistered = d.GetProperty("canRegister").GetBoolean();
+        item.FieldUse = Named("fieldUseFunc", "ITEM_USE_FUNC_");
+        item.BattleUse = Named("battleUseCategory", "BATTLE_USE_CATEGORY_");
+        if (p.ValueKind == JsonValueKind.Object)
+        {
+            var use = new Dictionary<string, int>();
+            foreach (var param in p.EnumerateObject())
+            {
+                if (param.Value.ValueKind == JsonValueKind.True) use[param.Name] = 1;
+                else if (param.Value.ValueKind == JsonValueKind.Number && param.Value.GetInt32() != 0) use[param.Name] = param.Value.GetInt32();
+            }
+            if (use.Count > 0) item.Use = use;
+        }
         return item;
     }
+
+    /// <summary>
+    /// Gives the Mega Stones and Z-Crystals their owners from Pokémon Showdown's item table (plan 06 · R20–R21):
+    /// the species and form a stone brings out, the type a crystal is for, or the one species' move it turns
+    /// into a Z-Move of its own. A stone or crystal PokeAPI doesn't have yet is added from Showdown alone.
+    /// </summary>
+    public void AddLaterMechanics(List<ItemData> items, Showdown showdown)
+    {
+        var byName = items.ToDictionary(i => i.Name, StringComparer.OrdinalIgnoreCase);
+        foreach (var e in showdown.Items.Where(e => e.Has("megaStone") || e.Has("zMove")).OrderBy(e => e.Number("num") ?? 0))
+        {
+            // Past games' fakes and the Create-A-Pokémon project's items are not the main games'
+            if (e.Text("isNonstandard") == "CAP") continue;
+            if (!byName.TryGetValue(e.Name, out var item))
+            {
+                item = new ItemData
+                {
+                    Id = ShowdownOnlyItemBase + (e.Number("num") ?? throw new InvalidDataException($"{e.Name} has no number")),
+                    Name = e.Name,
+                    Pocket = ItemPocket.Items,
+                    EffectType = ItemEffectType.None,
+                    Price = 0,
+                    CanUseInBattle = false,
+                    CanUseInOverworld = false,
+                    Description = ""
+                };
+                items.Add(item);
+                byName[item.Name] = item;
+            }
+
+            if (Showdown.Pairs(e.Fields.GetValueOrDefault("megaStone")) is { Count: > 0 } stone)
+            {
+                // A few stones are for one form of a species (Floette's Eternal Flower): the species is the
+                // longest start of the name that is one
+                string holder = stone[0].Key, owner = holder;
+                while (PokemonDexOf(owner) == 0 && owner.Contains('-')) owner = owner[..owner.LastIndexOf('-')];
+                if (PokemonDexOf(owner) == 0) throw new InvalidDataException($"{e.Name} is for {holder}, which is no species");
+                item.MegaStone = new MegaStone { Species = owner, Form = stone[0].Value, HeldByForm = owner == holder ? null : holder };
+                if (item.Description == "") item.Description = $"Held by {holder}, it lets it Mega Evolve in battle.";
+            }
+            else if (e.Is("zMove", "true"))
+            {
+                var type = Enum.Parse<PokemonType>(e.Text("zMoveType")!);
+                item.ZCrystal = new ZCrystal { Type = type };
+                if (item.Description == "") item.Description = $"Held, it turns a {type}-type move into a Z-Move.";
+            }
+            else if (e.Text("zMove") is { } zMove)
+            {
+                var users = Showdown.List(e.Fields.GetValueOrDefault("itemUser"));
+                item.ZCrystal = new ZCrystal { Move = zMove, From = e.Text("zMoveFrom"), Users = users };
+                if (item.Description == "") item.Description = $"Held by {string.Join(" or ", users)}, it turns {e.Text("zMoveFrom")} into a Z-Move.";
+            }
+        }
+    }
+
+    /// <summary>Ids of items only Pokémon Showdown has start here (plus its own number for the item).</summary>
+    public const int ShowdownOnlyItemBase = 5000;
 
     private string ItemName(string constant)
     {

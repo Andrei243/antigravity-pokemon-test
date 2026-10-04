@@ -18,6 +18,36 @@ public static class Sources
     public const string PokeApiCommit = "bc92d3b6029ef1abe9e7ad424c400b338f3c11fe";
     public static readonly string[] PokeApiFolders = { "/data/v2/csv/" };
 
+    /// <summary>
+    /// Pokémon Showdown (MIT), for what PokeAPI lacks: Z-Move and Max Move power, the Z-Moves and Max Moves
+    /// themselves, and whose each Mega Stone and Z-Crystal is. Three files, fetched one by one.
+    /// </summary>
+    public const string ShowdownRaw = "https://raw.githubusercontent.com/smogon/pokemon-showdown";
+    public const string ShowdownCommit = "9fb3a5b99f1a0bea17f495c5cc1bfe04fdd19c3e";
+    public static readonly string[] ShowdownFiles = { "data/moves.ts", "data/items.ts", "LICENSE" };
+
+    /// <summary>The named files of a pinned commit, downloaded once and reused until the commit or the list changes.</summary>
+    public static string Download(string cache, string name, string rawBase, string commit, string[] files)
+    {
+        string dir = Path.Combine(cache, name);
+        string stamp = Path.Combine(dir, ".importer-commit");
+        string wanted = string.Join('\n', files.Prepend(commit));
+        if (File.Exists(stamp) && File.ReadAllText(stamp).ReplaceLineEndings("\n").Trim() == wanted
+            && files.All(f => File.Exists(Path.Combine(dir, f)))) return dir;
+
+        using var http = new HttpClient();
+        foreach (string file in files)
+        {
+            string url = $"{rawBase}/{commit}/{file}";
+            Console.WriteLine($"  {url}");
+            string target = Path.Combine(dir, file);
+            Directory.CreateDirectory(Path.GetDirectoryName(target)!);
+            File.WriteAllBytes(target, http.GetByteArrayAsync(url).GetAwaiter().GetResult());
+        }
+        File.WriteAllText(stamp, wanted);
+        return dir;
+    }
+
     /// <summary>A sparse checkout of the pinned commit, made once and reused until the commit or the folders change.</summary>
     public static string Checkout(string cache, string name, string repo, string commit, string[] folders)
     {

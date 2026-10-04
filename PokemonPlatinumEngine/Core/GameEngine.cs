@@ -113,6 +113,9 @@ public class GameEngine
 
     private static string playerName => PlayerIdentity.Name;
 
+    /// <summary>The rules picked on the title screen, held while the introduction plays.</summary>
+    private RulesPreset newGameRules;
+
     /// <summary>
     /// The region a new game starts in; null for the first region in the chain (Kanto). Set from the command line
     /// (--region Sinnoh) to test a later region without playing through the ones before it.
@@ -170,13 +173,17 @@ public class GameEngine
         AudioManager.PlayMusic(MusicRole.Title);
     }
 
-    /// <summary>Leaves the title screen into a fresh game.</summary>
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
     public void StartNewGame() => StartNewGame(null, PlayerLook.Boy);
 
-    /// <summary>Starts a new game as the character and under the name chosen in the introduction.</summary>
-    public void StartNewGame(string? name, PlayerLook look)
+    /// <summary>
+    /// Starts a new game as the character and under the name chosen in the introduction, played by the rules chosen
+    /// on the title screen. The rules stay with the adventure: nothing in the game changes them afterwards.
+    /// </summary>
+    public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum)
     {
+        // Before any Pokémon is made: the moves they learn take their values from the rules
+        Ruleset.Use(rules);
         playerParty.Clear();
         playerInventory.Clear();
         playerPokedex.Clear();
@@ -267,6 +274,9 @@ public class GameEngine
 
     private void ApplySaveData(SaveData save)
     {
+        // The rules the adventure began under, before any of its Pokémon are made
+        Ruleset.Use(save.Rules);
+
         var place = save.Place();
         currentMap = MapDatabase.Get(place.Map);
         player = new Player(place.X, place.Y);
@@ -332,6 +342,7 @@ public class GameEngine
             Look = PlayerIdentity.Look,
             TrainerId = trainerId,
             Started = adventureStarted,
+            Rules = Ruleset.Current.Preset,
             CurrentMapName = currentMap.Name,
             PlayerGridX = player.GridX,
             PlayerGridY = player.GridY,
@@ -400,7 +411,8 @@ public class GameEngine
                         ContinueGame();
                         break;
                     case TitleChoice.NewGame:
-                        // The professor's welcome comes first; the game begins when it ends
+                        // The professor's welcome comes first; the game begins when it ends, by the rules just chosen
+                        newGameRules = titleScreen.Rules;
                         currentState = GameState.Intro;
                         introScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
                         break;
@@ -419,7 +431,7 @@ public class GameEngine
                 if (introScreen.Phase == IntroPhase.Done)
                 {
                     introScreen.Close();
-                    StartNewGame(introScreen.Name, introScreen.Look);
+                    StartNewGame(introScreen.Name, introScreen.Look, newGameRules);
                 }
                 break;
             case GameState.Overworld:

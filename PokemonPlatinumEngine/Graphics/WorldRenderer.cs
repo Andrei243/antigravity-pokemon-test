@@ -130,25 +130,28 @@ public sealed class WorldRenderer
             return drawn;
         }
 
-        // Whatever of the block isn't there yet starts baking on another thread
-        foreach (var (x, y) in ChunksAround(map, focusX, focusZ, ChunkReach))
-        {
-            if (chunks.ContainsKey((map, x, y))) continue;
-            var window = MapScene.ChunkWindow(map, x, y);
-            MapScene.Warm(map, window);
-            chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => MapScene.Prepare(map, window)) };
-        }
+        // Whatever of the block isn't there yet starts baking on other threads: first the chunks the camera
+        // sees, which the frame will wait for, then the rest
+        for (int pass = 0; pass < 2; pass++)
+            foreach (var (x, y) in ChunksAround(map, focusX, focusZ, ChunkReach))
+            {
+                if (chunks.ContainsKey((map, x, y))) continue;
+                var window = MapScene.ChunkWindow(map, x, y);
+                if (pass == 0 && view != null && !InView(window, view.Value)) continue;
+                MapScene.Warm(map, window);
+                chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
+            }
 
         // What the camera sees must be there now: on arriving somewhere this waits for the bake and uploads it
         // whole, behind the fade. The rest is uploaded a few steps a frame, as far as the frame's budget goes,
         // and is ready well before the player can walk into sight of it.
         streamClock.Restart();
+
         foreach (var (key, slot) in chunks)
         {
             if (key.Map != map || slot.Scene != null) continue;
             var window = MapScene.ChunkWindow(map, key.X, key.Y);
-            // (Its own tiles and a little round them: the wider reach a scene is drawn within would rush chunks that are not in view yet)
-            bool seen = view == null || view.Value.Touches(new Vector3(window.X - 3, 0, window.Y - 3), new Vector3(window.Right + 3, 0, window.Bottom + 5));
+            bool seen = view == null || InView(window, view.Value);
 
             if (slot.Pending != null)
             {
@@ -183,6 +186,32 @@ public sealed class WorldRenderer
         foreach (var (key, slot) in chunks)
             if (key.Map == map && slot.Scene != null) drawn.Add(slot.Scene);
         return drawn;
+    }
+
+    /// <summary>
+    /// Whether a chunk is in the camera's view: its own tiles and a little round them (the wider reach a scene is
+    /// drawn within would rush chunks that are not in view yet).
+    /// </summary>
+    private static bool InView(TileWindow window, GroundRect view) =>
+        view.Touches(new Vector3(window.X - 3, 0, window.Y - 3), new Vector3(window.Right + 3, 0, window.Bottom + 5));
+
+    /// <summary>
+    /// Bakes a chunk on a worker thread, which gives way while it does: the thread that draws, and the graphics
+    /// driver's own, must not wait for a core behind nine chunks baking at once.
+    /// </summary>
+    private static MapScene.Prepared Bake(Map map, TileWindow window)
+    {
+        var thread = System.Threading.Thread.CurrentThread;
+        var priority = thread.Priority;
+        thread.Priority = System.Threading.ThreadPriority.BelowNormal;
+        try
+        {
+            return MapScene.Prepare(map, window);
+        }
+        finally
+        {
+            thread.Priority = priority;
+        }
     }
 
     private readonly List<(Map Map, int X, int Y)> leaving = new();

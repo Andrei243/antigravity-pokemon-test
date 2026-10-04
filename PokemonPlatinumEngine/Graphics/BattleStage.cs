@@ -57,6 +57,7 @@ internal sealed class BattleStage
     {
         var batches = new MeshBatches();
         BattleArenas.Build(batches, spec);
-        return new BattleStage(SceneMeshes.Upload(batches, shaders), spec);
+        // Seen from the trainer's shoulder, the stage is one thing behind another all the way to the horizon
+        return new BattleStage(SceneMeshes.Upload(batches, shaders, prepassEverything: true), spec);
     }
 }

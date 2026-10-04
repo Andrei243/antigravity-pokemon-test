@@ -77,6 +77,8 @@ After the trade, Platinum's rules apply: traded Pokémon gain 1.5× EXP; trade e
 
 Per Pokémon: `Id` (GUID), `OriginalTrainerName`, `OriginalTrainerId`, `EVs`, `HeldItem`, `Ability`, `Friendship`, `MetLocation`, `MetLevel`, `Ball`, `IsTraded` (derived from OT). Per player: `TrainerId`, `SecretId`, online key reference, link-battle record. IVs move to the real 0–31 range if they are still 0–15. Several of these the battle rework and the story plan need anyway (held items, abilities, friendship).
 
+*Ready from plan 06 · R1 (2026-10-04), for asks 2 and 3 below and for the rule sets:* `Battle/Sim/BattleRandom.cs` is the one seedable source (Platinum's own generator; its whole state is one number, so a resynchronised battle carries on), handed to a battle through `BattleSetup.Random`; presentation draws its own numbers already. The game's own battles still roll with `System.Random` until R2. A game is played by Platinum's rules or the modern ones (`Data/Ruleset.cs`, kept in the save), and a battle is given its rules (`BattleSetup.Rules`): two players whose saves differ need one set for the room, so add it to the room's rule sets in O6 (Flat 50 under Platinum's rules is the natural default), and count it into the data version.
+
 ### Needs from the battle rework (ask now, cheap if done during the rework)
 
 1. **Rules separate from presentation**: a `BattleRules` (or similar) class with no raylib, `InputManager` or `AudioManager` calls, that takes both sides' choices and produces a list of events. `BattleEngine`'s HUD, VFX, animator and music stay on the client and play those events.

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -90,6 +91,7 @@ public partial class BattleEngine
             StatusCondition.Burn => target.HasType(PokemonType.Fire),
             StatusCondition.Freeze => target.HasType(PokemonType.Ice),
             StatusCondition.Poison or StatusCondition.Toxic => target.HasType(PokemonType.Poison) || target.HasType(PokemonType.Steel),
+            StatusCondition.Paralyze => Rules.ElectricTypesCantBeParalyzed && target.HasType(PokemonType.Electric),
             _ => false
         };
         if (typeImmune)
@@ -106,7 +108,7 @@ public partial class BattleEngine
         }
 
         p.Status = status;
-        if (status == StatusCondition.Sleep) p.SleepTurns = rng.Next(1, 5);
+        if (status == StatusCondition.Sleep) p.SleepTurns = 1 + rng.Roll(RollKind.SleepTurns, Rules.SleepLengths);
         if (status == StatusCondition.Toxic) p.ToxicCounter = 0;
         Announce(BattleText.Inflicted(target.Name, status), () => Anim.StatusGiven(target.Side, target.Slot, status));
         CheckConditionHooks(target, source);

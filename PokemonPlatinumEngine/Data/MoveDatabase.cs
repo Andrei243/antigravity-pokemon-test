@@ -34,6 +34,15 @@ public static class MoveDatabase
 
     public static IEnumerable<MoveData> GetAll() => Moves.Values;
 
+    /// <summary>
+    /// Gives every move the values these rules say: Platinum's own, or the newest games' where they differ
+    /// (<see cref="MoveData.Modern"/>). Called through <see cref="Ruleset.Use"/> as a game begins or is loaded.
+    /// </summary>
+    internal static void UseRules(Ruleset rules)
+    {
+        foreach (var move in Moves.Values) move.UseRules(rules);
+    }
+
     public static Move Create(string name)
     {
         return new Move(Get(name));

@@ -92,8 +92,8 @@ public abstract class BattleEffect
     /// <summary>The holder may move first among moves of the same priority (Quick Claw).</summary>
     public virtual bool MovesFirstInBracket(Random random) => false;
 
-    /// <summary>Critical hits do this many times the damage instead of 2 (Sniper).</summary>
-    public virtual float CriticalMultiplier => 2f;
+    /// <summary>Critical hits do this many times their usual damage (Sniper: half as much again).</summary>
+    public virtual float CriticalBoost => 1f;
 
     /// <summary>Normal and Fighting moves hit Ghost types (Scrappy).</summary>
     public virtual bool HitsGhosts => false;

@@ -33,8 +33,14 @@ public sealed class BattleSetup
     /// </summary>
     public List<Trainer> Trainers { get; init; } = new();
 
-    /// <summary>Random numbers for every roll in the battle (fixed seeds make tests repeatable).</summary>
+    /// <summary>
+    /// Random numbers for every roll in the battle (fixed seeds make tests repeatable). A
+    /// <see cref="Sim.BattleRandom"/> also lets a test fix the rolls of one kind.
+    /// </summary>
     public Random? Random { get; init; }
+
+    /// <summary>The rules the battle is fought by; left out, those of the game in progress.</summary>
+    public Data.Ruleset? Rules { get; init; }
 
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }

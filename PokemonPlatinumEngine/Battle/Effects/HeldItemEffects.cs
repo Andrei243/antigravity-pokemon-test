@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -173,7 +174,7 @@ internal sealed class EvasionItem(float factor) : BattleEffect
 
 internal sealed class QuickClaw : BattleEffect
 {
-    public override bool MovesFirstInBracket(Random random) => random.Next(100) < 20;
+    public override bool MovesFirstInBracket(Random random) => random.Roll(RollKind.QuickClaw, 100) < 20;
 }
 
 /// <summary>King's Rock, Razor Fang: a 10% chance of flinching on damaging moves that don't already flinch.</summary>
@@ -184,7 +185,7 @@ internal sealed class FlinchItem : BattleEffect
         if (move.Data.FlinchChancePercent > 0) return;
         foreach (var (target, damage) in hits)
         {
-            if (damage > 0 && target.IsActive && !target.MovedThisTurn && ctx.Random.Next(100) < 10) target.Flinched = true;
+            if (damage > 0 && target.IsActive && !target.MovedThisTurn && ctx.Random.Roll(RollKind.ItemChance, 100) < 10) target.Flinched = true;
         }
     }
 }
@@ -205,7 +206,7 @@ internal sealed class FocusBand : BattleEffect
 {
     public override bool EnduresHit(IBattleContext ctx, Battler self, int damage)
     {
-        if (damage < self.Pokemon!.CurrentHP || ctx.Random.Next(100) >= 10) return false;
+        if (damage < self.Pokemon!.CurrentHP || ctx.Random.Roll(RollKind.ItemChance, 100) >= 10) return false;
         ctx.Announce($"{self.Name} hung on using its Focus Band!");
         return true;
     }

@@ -99,12 +99,13 @@ public class DataFileTests
     [Fact]
     public void TestMovesLoadFromFile()
     {
-        // Platinum's 467 moves (Struggle included) and the later ones, without Z-Moves and Max Moves
+        // Platinum's 467 moves (Struggle included) and the later ones; the Z-Moves and Max Moves are in the data
+        // too, as moves of a kind of their own that nothing learns (CoverageTests counts them)
         var all = MoveDatabase.GetAll().ToList();
-        Assert.Equal(847, all.Count);
+        Assert.Equal(847, all.Count(m => m.Kind == MoveKind.Standard));
         Assert.Equal(467, all.Count(m => m.Id <= 467));
         Assert.Equal(all.Count, all.Select(m => m.Id).Distinct().Count());
-        Assert.DoesNotContain(all, m => m.Name is "Breakneck Blitz" or "Max Strike" or "Catastropika");
+        Assert.DoesNotContain(all, m => m.Kind == MoveKind.Standard && m.Name is "Breakneck Blitz" or "Max Strike" or "Catastropika");
 
         // Platinum's values: Tackle was 35 power and 95% accurate in Generation 4
         var tackle = MoveDatabase.Get("Tackle");

@@ -231,6 +231,12 @@ internal static partial class ModernUi
         UiFonts.Draw(save.CaughtSpecies.Count.ToString(), x + 540, r.Y + 146, 40, Ink, UiWeight.Black);
 
         Label($"BADGES  {TitleScreen.CountBadges(save.Badges)} / 8", x, r.Y + 216);
+        // An adventure played by the modern rules says so; Platinum's rules are the game's own and need no word
+        if (save.Rules == RulesPreset.Modern)
+        {
+            const string rules = "MODERN RULES";
+            UiFonts.Draw(rules, r.X + r.Width - 48 - UiFonts.Measure(rules, 20, UiWeight.Black), r.Y + 216, 20, Green, UiWeight.Black);
+        }
         for (int b = 0; b < 8; b++)
             Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (save.Badges & (1 << b)) != 0);
 

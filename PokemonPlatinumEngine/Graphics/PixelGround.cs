@@ -128,7 +128,7 @@ internal static class PixelGround
         var walls = Mask(tw, th, IsBuilding, blur: 6);
 
         // Only the kinds this map uses get a mask
-        var kindMasks = new float[Kinds.Length][];
+        var kindMasks = new float[]?[Kinds.Length];
         for (int k = 0; k < Kinds.Length; k++)
         {
             var type = Kinds[k].Type;
@@ -142,6 +142,12 @@ internal static class PixelGround
         var c = new PixelCanvas(w, h);
         bool Inside(float[] m, int x, int y) => x >= 0 && y >= 0 && x < w && y < h && m[y * w + x] >= 0.5f;
         bool Edge(float[] m, int x, int y) => !Inside(m, x - 1, y) || !Inside(m, x + 1, y) || !Inside(m, x, y - 1) || !Inside(m, x, y + 1);
+        // (A mask is null where none of its tiles is in the window: most chunks have no water, or no tall grass, or no building)
+
+        // The noise of the lawn and of each kind of ground, each keeping the cell it is in from texel to texel
+        var lawn = new FbmRun(11);
+        var patches = new FbmRun[Kinds.Length];
+        for (int k = 0; k < Kinds.Length; k++) patches[k] = new FbmRun(Kinds[k].Salt);
 
         for (int y = 0; y < h; y++)
             for (int x = 0; x < w; x++)
@@ -150,12 +156,12 @@ internal static class PixelGround
                 float gx = x / (float)T + seedX, gy = y / (float)T + seedY;
 
                 // Lawn: flat base with clean-edged lighter patches
-                var col = SoftCanvas.Fbm(gx / 3.5f, gy / 3.5f, 11) > 0.6f ? GrassLight : Grass;
-                if (forest[i] >= 0.5f) col = Forest;
-                if (tall[i] >= 0.5f) col = TallGround;
+                var col = lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
+                if (forest != null && forest[i] >= 0.5f) col = Forest;
+                if (tall != null && tall[i] >= 0.5f) col = TallGround;
 
                 // Stepped contact shade along walls
-                float wall = walls[i];
+                float wall = walls != null ? walls[i] : 0f;
                 if (wall > 0.02f && wall < 0.5f) col = PixelCanvas.Mix(col, new Color(30, 70, 50, 255), wall > 0.2f ? 0.28f : 0.14f);
 
                 bool sandy = false;
@@ -166,10 +172,10 @@ internal static class PixelGround
                     if (Kinds[k].Type == TileType.Sand && mask[i] > 0.25f) sandy = true;
                     if (mask[i] < 0.5f) continue;
                     col = Edge(mask, x, y) ? Kinds[k].Rim
-                        : SoftCanvas.Fbm(gx / 3f, gy / 3f, Kinds[k].Salt) > 0.58f ? Kinds[k].Patch : Kinds[k].Base;
+                        : patches[k].At(gx / 3f, gy / 3f) > 0.58f ? Kinds[k].Patch : Kinds[k].Base;
                 }
 
-                if (path[i] >= 0.5f)
+                if (path != null && path[i] >= 0.5f)
                 {
                     // Rounded path with a one-texel rim, a light inner line on the lit (north/west) side and flat shade patches
                     col = Path;
@@ -179,7 +185,7 @@ internal static class PixelGround
                 }
 
                 // A band of stones (or sand, on beaches and past the map's edge) around water
-                float wm = water[i];
+                float wm = water != null ? water[i] : 0f;
                 if (wm > 0.3f && wm < 0.5f)
                 {
                     bool inMap = map.InBounds(x / T + originX, y / T + originY);
@@ -196,19 +202,20 @@ internal static class PixelGround
                 int ox = tx * T, oy = ty * T;
                 // What is scattered on a tile is chosen by the tile's seed, not by where it lies on this canvas
                 int sx = tx + seedX, sy = ty + seedY;
-                if (IsPath(tx, ty)) Pebbles(c, path, w, ox, oy, sx, sy);
+                if (IsPath(tx, ty)) Pebbles(c, path!, w, ox, oy, sx, sy);
                 else if (t == TileType.FlowerGrass) Flowers(c, ox, oy, sx, sy);
                 else if (t is TileType.Grass or TileType.Tree or TileType.TreeTrunk or TileType.LedgeDown or TileType.LedgeLeft or TileType.LedgeRight
                     && !IsBuilding(tx, ty)) Tufts(c, path, water, w, ox, oy, sx, sy);
                 else
                 {
                     for (int k = 0; k < Kinds.Length; k++)
-                        if (t == Kinds[k].Type && kindMasks[k] != null) KindMarks(c, Kinds[k], kindMasks[k], w, ox, oy, sx, sy);
+                        if (t == Kinds[k].Type && kindMasks[k] is { } marks) KindMarks(c, Kinds[k], marks, w, ox, oy, sx, sy);
                 }
                 ShoreStones(c, water, w, ox, oy, sx, sy);
             }
 
-        waterMask = PaintWater(c, map, originX, originY, water, w, h);
+        // (Without water there is only the canvas's own outermost texel to paint, which a chunk's border cuts off)
+        waterMask = water != null || pad == 0 ? PaintWater(c, map, originX, originY, water ?? new float[w * h], w, h) : null;
 
         // Decks and stairs are built things: whole tiles with straight edges, laid over whatever the masks rounded
         for (int ty = 0; ty < th; ty++)
@@ -504,14 +511,14 @@ internal static class PixelGround
     // ------------------------------------------------------------------ placed details
 
     /// <summary>Two or three little "v" tufts per tile on a jittered grid, dark with a light tip.</summary>
-    private static void Tufts(PixelCanvas c, float[] path, float[] water, int w, int ox, int oy, int tx, int ty)
+    private static void Tufts(PixelCanvas c, float[]? path, float[]? water, int w, int ox, int oy, int tx, int ty)
     {
         int count = 2 + (SoftCanvas.Rand(tx, ty, 21) < 0.4f ? 1 : 0);
         for (int k = 0; k < count; k++)
         {
             int x = ox + 4 + (int)(SoftCanvas.Rand(tx, ty, 22 + k) * (T - 10));
             int y = oy + 6 + (int)(SoftCanvas.Rand(tx, ty, 26 + k) * (T - 10));
-            if (path[y * w + x] > 0.3f || water[y * w + x] > 0.1f) continue;
+            if ((path != null && path[y * w + x] > 0.3f) || (water != null && water[y * w + x] > 0.1f)) continue;
             // Left and right blades leaning out, a taller middle blade
             c.SetRaw(x - 2, y - 1, Tuft); c.SetRaw(x - 1, y, Tuft); c.SetRaw(x - 2, y - 2, TuftTip);
             c.SetRaw(x, y, Tuft); c.SetRaw(x, y - 1, Tuft); c.SetRaw(x, y - 2, Tuft); c.SetRaw(x, y - 3, TuftTip);
@@ -552,8 +559,9 @@ internal static class PixelGround
     }
 
     /// <summary>A row of rounded stones where the pond's stone band meets the water.</summary>
-    private static void ShoreStones(PixelCanvas c, float[] water, int w, int ox, int oy, int tx, int ty)
+    private static void ShoreStones(PixelCanvas c, float[]? water, int w, int ox, int oy, int tx, int ty)
     {
+        if (water == null) return;
         for (int k = 0; k < 6; k++)
         {
             int x = ox + k * 5 + 2, y = oy + (int)(SoftCanvas.Rand(tx, ty, 60 + k) * T);
@@ -627,21 +635,67 @@ internal static class PixelGround
         }
     }
 
+    // ------------------------------------------------------------------ noise
+
+    /// <summary>
+    /// One octave of <see cref="SoftCanvas.Noise"/> for texels visited one after another: a cell of the noise is
+    /// a hundred texels across, so the four values at its corners are kept until a texel leaves it instead of
+    /// being hashed again for each. The value is the same, bit for bit.
+    /// </summary>
+    internal struct NoiseRun(int salt)
+    {
+        private int cellX = int.MinValue, cellY = int.MinValue;
+        private float a, b, c, d;
+
+        public float At(float x, float y)
+        {
+            int x0 = (int)MathF.Floor(x), y0 = (int)MathF.Floor(y);
+            if (x0 != cellX || y0 != cellY)
+            {
+                cellX = x0;
+                cellY = y0;
+                a = SoftCanvas.Rand(x0, y0, salt);
+                b = SoftCanvas.Rand(x0 + 1, y0, salt);
+                c = SoftCanvas.Rand(x0, y0 + 1, salt);
+                d = SoftCanvas.Rand(x0 + 1, y0 + 1, salt);
+            }
+            float fx = x - x0, fy = y - y0;
+            fx = fx * fx * (3 - 2 * fx);
+            fy = fy * fy * (3 - 2 * fy);
+            return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+        }
+    }
+
+    /// <summary><see cref="SoftCanvas.Fbm"/> for texels visited one after another (see <see cref="NoiseRun"/>).</summary>
+    internal struct FbmRun(int salt)
+    {
+        private NoiseRun broad = new(salt), fine = new(salt + 1);
+
+        public float At(float x, float y) => broad.At(x, y) * 0.65f + fine.At(x * 2f, y * 2f) * 0.35f;
+    }
+
     // ------------------------------------------------------------------ masks
 
-    /// <summary>Tile flags upsampled to texels and blurred twice with a box of <paramref name="blur"/> texels.</summary>
-    internal static float[] Mask(int tw, int th, Func<int, int, bool> on, int blur)
+    /// <summary>
+    /// Tile flags upsampled to texels and blurred twice with a box of <paramref name="blur"/> texels; null when
+    /// no tile is flagged, which is a mask of nothing.
+    /// </summary>
+    internal static float[]? Mask(int tw, int th, Func<int, int, bool> on, int blur)
     {
         int w = tw * T, h = th * T;
-        var m = new float[w * h];
+        float[]? m = null;
         for (int ty = 0; ty < th; ty++)
             for (int tx = 0; tx < tw; tx++)
             {
                 if (!on(tx, ty)) continue;
+                m ??= new float[w * h];
                 for (int y = 0; y < T; y++)
                     Array.Fill(m, 1f, (ty * T + y) * w + tx * T, T);
             }
-        var tmp = new float[w * h];
+        if (m == null) return null;
+        // The blur's second buffer is kept from mask to mask: each is five megabytes for a chunk
+        var tmp = blurScratch;
+        if (tmp == null || tmp.Length < w * h) blurScratch = tmp = new float[w * h];
         for (int pass = 0; pass < 2; pass++)
         {
             BoxBlur(m, tmp, w, h, blur, horizontal: true);
@@ -650,19 +704,48 @@ internal static class PixelGround
         return m;
     }
 
+    [ThreadStatic] private static float[]? blurScratch;
+
+    /// <summary>
+    /// One pass of a box blur, along the rows or down the columns: each texel becomes the mean of the 2r+1 round
+    /// it on its line (the line's ends repeat past its edges), kept as a running sum. Down the columns the sums
+    /// of all of them are carried side by side, so that memory is read a row at a time: a chunk's masks are most
+    /// of what baking its ground costs, and a column at a time they cost five times as much.
+    /// </summary>
     private static void BoxBlur(float[] src, float[] dst, int w, int h, int r, bool horizontal)
     {
-        int lines = horizontal ? h : w, len = horizontal ? w : h;
         float inv = 1f / (r * 2 + 1);
-        for (int l = 0; l < lines; l++)
+        if (horizontal)
         {
-            int Idx(int k) => horizontal ? l * w + Math.Clamp(k, 0, len - 1) : Math.Clamp(k, 0, len - 1) * w + l;
-            float sum = 0f;
-            for (int k = -r; k <= r; k++) sum += src[Idx(k)];
-            for (int k = 0; k < len; k++)
+            int last = w - 1;
+            for (int y = 0; y < h; y++)
             {
-                dst[Idx(k)] = sum * inv;
-                sum += src[Idx(k + r + 1)] - src[Idx(k - r)];
+                int row = y * w;
+                float sum = 0f;
+                for (int k = -r; k <= r; k++) sum += src[row + Math.Clamp(k, 0, last)];
+                for (int k = 0; k < w; k++)
+                {
+                    dst[row + k] = sum * inv;
+                    sum += src[row + Math.Min(k + r + 1, last)] - src[row + Math.Max(k - r, 0)];
+                }
+            }
+            return;
+        }
+
+        var sums = new float[w];
+        int bottom = h - 1;
+        for (int k = -r; k <= r; k++)
+        {
+            int row = Math.Clamp(k, 0, bottom) * w;
+            for (int x = 0; x < w; x++) sums[x] += src[row + x];
+        }
+        for (int k = 0; k < h; k++)
+        {
+            int row = k * w, add = Math.Min(k + r + 1, bottom) * w, drop = Math.Max(k - r, 0) * w;
+            for (int x = 0; x < w; x++)
+            {
+                dst[row + x] = sums[x] * inv;
+                sums[x] += src[add + x] - src[drop + x];
             }
         }
     }

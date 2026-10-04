@@ -9,8 +9,11 @@ using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
-/// <summary>Where the opening is: the notice, the fly-over shots, Giratina's reveal, the idle title, then the menu.</summary>
-public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving }
+/// <summary>
+/// Where the opening is: the notice, the fly-over shots, Giratina's reveal, the idle title, then the menu and the
+/// two questions a new game asks (whether to leave a save behind, and whose rules to play by).
+/// </summary>
+public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, ChooseRules, Leaving }
 
 /// <summary>What the player picked on the title menu.</summary>
 public enum TitleChoice { None, Continue, NewGame, Options, Quit }
@@ -44,6 +47,12 @@ public sealed class TitleScreen
 
     /// <summary>In the "start a new game?" prompt: true while Yes is highlighted.</summary>
     public bool ConfirmYes { get; private set; }
+
+    /// <summary>
+    /// Whose rules the new game is played by: what is highlighted in the "which rules?" prompt, and the answer
+    /// once New Game has been handed over. It is asked here because it can never be changed afterwards.
+    /// </summary>
+    public RulesPreset Rules { get; private set; }
 
     public bool HasSave => save != null;
     public IReadOnlyList<TitleChoice> Entries => entries;
@@ -86,7 +95,7 @@ public sealed class TitleScreen
         phaseTime += dt;
         totalTime += dt;
         skipFlash = Math.Max(0f, skipFlash - dt);
-        bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.Leaving;
+        bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules or TitlePhase.Leaving;
         menuBlend = Math.Clamp(menuBlend + (menuUp ? dt : -dt) / 0.45f, 0f, 1f);
 
         switch (Phase)
@@ -122,34 +131,46 @@ public sealed class TitleScreen
                         ConfirmYes = false;
                         Enter(TitlePhase.ConfirmNewGame);
                         break;
-                    case TitleChoice.NewGame: Leave(TitleChoice.NewGame); break;
+                    case TitleChoice.NewGame: AskRules(); break;
                     case TitleChoice.Options: optionsRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
                 break;
             case TitlePhase.ConfirmNewGame:
                 AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
-                if (ConfirmYes) Leave(TitleChoice.NewGame);
+                if (ConfirmYes) AskRules();
                 else Enter(TitlePhase.Menu);
+                break;
+            case TitlePhase.ChooseRules:
+                AudioManager.PlaySound("select");
+                Leave(TitleChoice.NewGame);
                 break;
         }
     }
 
-    /// <summary>The B button: backs out of the prompt, then out of the menu.</summary>
+    /// <summary>The last question before a new game: whose rules. Platinum's are highlighted.</summary>
+    private void AskRules()
+    {
+        Rules = RulesPreset.Platinum;
+        Enter(TitlePhase.ChooseRules);
+    }
+
+    /// <summary>The B button: backs out of a prompt, then out of the menu.</summary>
     public void PressCancel()
     {
-        if (Phase == TitlePhase.ConfirmNewGame) Enter(TitlePhase.Menu);
+        if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ChooseRules) Enter(TitlePhase.Menu);
         else if (Phase == TitlePhase.Menu) Enter(TitlePhase.Idle);
         else return;
         AudioManager.PlaySound("cancel");
     }
 
-    /// <summary>Up/down in the menu; any direction flips Yes/No in the prompt.</summary>
+    /// <summary>Up/down in the menu; any direction flips the answer in a prompt.</summary>
     public void Move(int step)
     {
         if (step == 0) return;
         if (Phase == TitlePhase.Menu) SelectedIndex = ((SelectedIndex + step) % entries.Count + entries.Count) % entries.Count;
         else if (Phase == TitlePhase.ConfirmNewGame) ConfirmYes = !ConfirmYes;
+        else if (Phase == TitlePhase.ChooseRules) Rules = Rules == RulesPreset.Platinum ? RulesPreset.Modern : RulesPreset.Platinum;
         else return;
         AudioManager.PlaySound("cursor");
     }
@@ -257,6 +278,7 @@ public sealed class TitleScreen
         }
         if (menuBlend > 0.01f) DrawMenu(sw, ease);
         if (Phase == TitlePhase.ConfirmNewGame) DrawConfirm(sw, sh);
+        if (Phase == TitlePhase.ChooseRules) DrawRules(sw, sh);
 
         const string credit = "A fan-made project, not affiliated with Nintendo, Creatures or GAME FREAK.";
         float cw = UiFonts.Measure(credit, 20, UiWeight.Bold);
@@ -392,4 +414,13 @@ public sealed class TitleScreen
     private void DrawConfirm(int sw, int sh) =>
         ModernUi.Prompt(sw, sh, "Start a new game?", "Your saved game is kept until you save again in the new one.",
             new[] { ("NO, GO BACK", ModernUi.Blue), ("YES, NEW GAME", ModernUi.Red) }, ConfirmYes ? 1 : 0);
+
+    /// <summary>What the "which rules?" prompt says about the answer that is highlighted.</summary>
+    public static string RulesBlurb(RulesPreset rules) => rules == RulesPreset.Modern
+        ? "Battles use the newest games' numbers for critical hits, burns, paralysis and moves. This can't be changed later."
+        : "Battles play exactly as they do in Platinum, which the story is balanced for. This can't be changed later.";
+
+    private void DrawRules(int sw, int sh) =>
+        ModernUi.Prompt(sw, sh, "Which rules?", RulesBlurb(Rules),
+            new[] { ("PLATINUM RULES", ModernUi.Blue), ("MODERN RULES", ModernUi.Green) }, Rules == RulesPreset.Modern ? 1 : 0);
 }
