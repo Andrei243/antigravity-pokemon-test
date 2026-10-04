@@ -40,6 +40,9 @@ internal sealed class FieldShaders
     public Shader Light { get; private set; }
     public Shader Post { get; private set; }
     public Shader Down { get; private set; }
+
+    /// <summary>Copies a depth buffer into a small float target (see <see cref="RenderContext"/>).</summary>
+    public Shader DepthCopy { get; private set; }
     public Shader Blur { get; private set; }
     public Shader Ssao { get; private set; }
 
@@ -239,14 +242,44 @@ void main()
     finalColor = vec4(mix(fragColor.rgb, inkColor, inkAmount), 1.0);
 }";
 
-    // Percentage-closer filtering over a Poisson disc, rotated per pixel so the few taps blend into a soft
-    // penumbra instead of banding. The centre and four outer taps go first: where they agree the pixel is fully
-    // lit or fully shadowed and the rest are skipped, so only penumbras pay for all shadowTaps (5..16).
+    // How much of the sun reaches a point. Where the shadow map can compare for itself (HARDWARE_PCF, see
+    // Gl.CompareDepth) each tap is the card's own comparison of the four texels round it, filtered: four taps at
+    // the corners of a square make an even edge about four texels wide, and the low preset takes one. That is
+    // fewer and cheaper lookups than the other way, and it has no grain.
+    // The other way, for a machine where the comparison can't be switched on: percentage-closer filtering over a
+    // Poisson disc, rotated per pixel so the few taps blend into a soft penumbra instead of banding. The centre
+    // and four outer taps go first: where they agree the pixel is fully lit or fully shadowed and the rest are
+    // skipped, so only penumbras pay for all shadowTaps (5..16).
     private const string ShadowFunctions = @"
-uniform sampler2D shadowMap;
 uniform float shadowTexel;
 uniform float shadowSoftness;
 uniform int shadowTaps;
+
+#ifdef HARDWARE_PCF
+uniform sampler2DShadow shadowMap;
+
+// The taps stand exactly one texel apart: each one's ramp begins where its neighbour's ends, so together they
+// make one even ramp across an edge. Further apart, the ramps would leave steps between them.
+float Shadow(vec4 lightPos)
+{
+    vec3 p = lightPos.xyz / lightPos.w * 0.5 + 0.5;
+    if (p.x <= 0.0 || p.x >= 1.0 || p.y <= 0.0 || p.y >= 1.0 || p.z >= 1.0) return 1.0;
+    float depth = p.z - 0.0014;
+    if (shadowTaps < 4) return texture(shadowMap, vec3(p.xy, depth));
+    if (shadowTaps < 9)
+    {
+        float o = shadowTexel * 0.5;
+        return 0.25 * (texture(shadowMap, vec3(p.x - o, p.y - o, depth)) + texture(shadowMap, vec3(p.x + o, p.y - o, depth))
+                     + texture(shadowMap, vec3(p.x - o, p.y + o, depth)) + texture(shadowMap, vec3(p.x + o, p.y + o, depth)));
+    }
+    float lit = 0.0;
+    for (int j = -1; j <= 1; j++)
+        for (int i = -1; i <= 1; i++)
+            lit += texture(shadowMap, vec3(p.xy + vec2(i, j) * shadowTexel, depth));
+    return lit / 9.0;
+}
+#else
+uniform sampler2D shadowMap;
 
 const vec2 poisson[16] = vec2[](
     vec2(0.0, 0.0), vec2(-0.9420, -0.3991), vec2(0.9456, -0.7689), vec2(-0.9159, 0.4577),
@@ -256,7 +289,6 @@ const vec2 poisson[16] = vec2[](
 
 float Shadow(vec4 lightPos)
 {
-    if (shadowTaps == 0) return 1.0; // TEMP-G11
     vec3 p = lightPos.xyz / lightPos.w * 0.5 + 0.5;
     if (p.x <= 0.0 || p.x >= 1.0 || p.y <= 0.0 || p.y >= 1.0 || p.z >= 1.0) return 1.0;
     float a = 6.2831853 * fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
@@ -268,7 +300,8 @@ float Shadow(vec4 lightPos)
     for (int i = 5; i < shadowTaps; i++)
         lit += (p.z - 0.0014 > texture(shadowMap, p.xy + rot * poisson[i]).r) ? 0.0 : 1.0;
     return lit / float(shadowTaps);
-}";
+}
+#endif";
 
     // Aerial perspective: colour fades toward the fog colour with distance from the camera
     private const string FogFunctions = @"
@@ -597,10 +630,6 @@ uniform vec3 highlightTint;
 uniform float vignette;
 out vec4 finalColor;
 
-const vec2 taps[12] = vec2[](
-    vec2(-0.326, -0.406), vec2(-0.840, -0.074), vec2(-0.696, 0.457), vec2(-0.203, 0.621),
-    vec2(0.962, -0.195), vec2(0.473, -0.480), vec2(0.519, 0.767), vec2(0.185, -0.893),
-    vec2(0.507, 0.064), vec2(0.896, 0.412), vec2(-0.322, -0.933), vec2(-0.792, -0.598));
 
 const vec3 lumaWeights = vec3(0.299, 0.587, 0.114);
 
@@ -642,9 +671,10 @@ void main()
     float radius = edge * blurStrength;
     if (radius > 0.05)
     {
-        vec3 sum = color;
-        for (int i = 0; i < 12; i++) sum += texture(texture0, uv + taps[i] * radius * texel).rgb;
-        color = sum / 13.0;
+        // Four taps on the diagonals round the middle one; each is the card's own blend of four texels
+        vec2 o = texel * radius * 0.7;
+        color = (color + texture(texture0, uv + o).rgb + texture(texture0, uv - o).rgb
+            + texture(texture0, uv + vec2(o.x, -o.y)).rgb + texture(texture0, uv + vec2(-o.x, o.y)).rgb) * 0.2;
     }
     if (dof > 0.0) color = mix(color, texture(blurTex, uv).rgb, edge * dof);
     if (aoStrength > 0.0) color *= mix(1.0, texture(aoTex, uv).r, aoStrength);
@@ -673,13 +703,13 @@ void main()
     finalColor = vec4(clamp(color, 0.0, 1.0), 1.0);
 }";
 
-    // Half-resolution chains for bloom and depth of field: a 4-tap downsample (optionally keeping only what is
-    // brighter than a threshold), then separable 9-tap Gaussian blurs
+    // Half-resolution chains for bloom and depth of field: one 4-tap downsample of the scene, which both start
+    // from, then separable 9-tap Gaussian blurs. The glow's first blur keeps only what is brighter than a
+    // threshold (threshold 1 keeps everything).
     private const string DownFragment = @"#version 330
 in vec2 fragTexCoord;
 uniform sampler2D texture0;
 uniform vec2 texel;
-uniform float threshold;
 out vec4 finalColor;
 void main()
 {
@@ -687,27 +717,39 @@ void main()
            + texture(texture0, fragTexCoord + vec2(texel.x, -texel.y)).rgb
            + texture(texture0, fragTexCoord + vec2(-texel.x, texel.y)).rgb
            + texture(texture0, fragTexCoord + vec2(texel.x, texel.y)).rgb;
-    c *= 0.25;
-    if (threshold < 1.0)
-    {
-        float luma = max(c.r, max(c.g, c.b));
-        c *= smoothstep(threshold, threshold + 0.2, luma);
-    }
-    finalColor = vec4(c, 1.0);
+    finalColor = vec4(c * 0.25, 1.0);
+}";
+
+    private const string DepthCopyFragment = @"#version 330
+in vec2 fragTexCoord;
+uniform sampler2D texture0;
+out vec4 finalColor;
+void main()
+{
+    finalColor = vec4(texture(texture0, fragTexCoord).r, 0.0, 0.0, 1.0);
 }";
 
     private const string BlurFragment = @"#version 330
 in vec2 fragTexCoord;
 uniform sampler2D texture0;
 uniform vec2 direction;
+uniform float threshold;
 out vec4 finalColor;
+
+vec3 Bright(vec2 uv)
+{
+    vec3 c = texture(texture0, uv).rgb;
+    if (threshold >= 1.0) return c;
+    return c * smoothstep(threshold, threshold + 0.2, max(c.r, max(c.g, c.b)));
+}
+
 void main()
 {
-    vec3 c = texture(texture0, fragTexCoord).rgb * 0.2270270270;
-    c += texture(texture0, fragTexCoord + direction * 1.3846153846).rgb * 0.3162162162;
-    c += texture(texture0, fragTexCoord - direction * 1.3846153846).rgb * 0.3162162162;
-    c += texture(texture0, fragTexCoord + direction * 3.2307692308).rgb * 0.0702702703;
-    c += texture(texture0, fragTexCoord - direction * 3.2307692308).rgb * 0.0702702703;
+    vec3 c = Bright(fragTexCoord) * 0.2270270270;
+    c += Bright(fragTexCoord + direction * 1.3846153846) * 0.3162162162;
+    c += Bright(fragTexCoord - direction * 1.3846153846) * 0.3162162162;
+    c += Bright(fragTexCoord + direction * 3.2307692308) * 0.0702702703;
+    c += Bright(fragTexCoord - direction * 3.2307692308) * 0.0702702703;
     finalColor = vec4(c, 1.0);
 }";
 
@@ -772,23 +814,34 @@ void main()
 
     public bool Loaded { get; private set; }
 
+    /// <summary>
+    /// Whether the shadow map compares for itself (see <see cref="Gl.CompareDepth"/>): the programs that read it
+    /// are compiled for one way or the other, and <see cref="ShadowMap"/> sets its texture up to match.
+    /// </summary>
+    public static bool HardwareShadows => Gl.Available && !RenderContext.Experiment.Contains("oldshadow"); // TEMP-G11
+
+    /// <summary>A program that reads the shadow map, compiled for the way this machine filters it.</summary>
+    private static string Shadowed(string fragment) =>
+        HardwareShadows ? fragment.Replace("#version 330", "#version 330\n#define HARDWARE_PCF") : fragment;
+
     public void Load()
     {
         if (Loaded) return;
-        World = Raylib.LoadShaderFromMemory(CommonVertex, WorldFragment);
+        World = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(WorldFragment));
         Depth = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
         Prepass = Raylib.LoadShaderFromMemory(CommonVertex, DepthFragment);
-        Character = Raylib.LoadShaderFromMemory(CommonVertex, CharacterFragment);
+        Character = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(CharacterFragment));
         Outline = Raylib.LoadShaderFromMemory(OutlineVertex, OutlineFragment);
-        CharacterSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, CharacterFragment);
+        CharacterSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, Shadowed(CharacterFragment));
         DepthSkinned = Raylib.LoadShaderFromMemory(SkinnedVertex, DepthFragment);
         OutlineSkinned = Raylib.LoadShaderFromMemory(SkinnedOutlineVertex, SkinnedOutlineFragment);
-        Water = Raylib.LoadShaderFromMemory(CommonVertex, WaterFragment);
-        SoftWater = Raylib.LoadShaderFromMemory(CommonVertex, SoftWaterFragment);
+        Water = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(WaterFragment));
+        SoftWater = Raylib.LoadShaderFromMemory(CommonVertex, Shadowed(SoftWaterFragment));
         Sprite = Raylib.LoadShaderFromMemory(CommonVertex, SpriteFragment);
         Light = Raylib.LoadShaderFromMemory(CommonVertex, LightFragment);
         Post = Raylib.LoadShaderFromMemory(PostVertex, PostFragment);
         Down = Raylib.LoadShaderFromMemory(PostVertex, DownFragment);
+        DepthCopy = Raylib.LoadShaderFromMemory(PostVertex, DepthCopyFragment);
         Blur = Raylib.LoadShaderFromMemory(PostVertex, BlurFragment);
         Ssao = Raylib.LoadShaderFromMemory(PostVertex, SsaoFragment);
 
@@ -806,7 +859,7 @@ void main()
         SetCharacterStyle(shadowStrength: 1f, rimStrength: 0.45f);
         SetFlash(default, 0f);
         SetGlow(0f, 0f, Vector3.Zero);
-        SetShadowQuality(16, 1.8f);
+        SetShadowQuality(4, 1.8f);
         SetFog(Vector3.One, 0f, 1000f, 2000f);
         Loaded = true;
     }
@@ -814,7 +867,7 @@ void main()
     public void Unload()
     {
         if (!Loaded) return;
-        foreach (var shader in new[] { World, Depth, Prepass, Character, Outline, CharacterSkinned, DepthSkinned, OutlineSkinned, Water, SoftWater, Sprite, Light, Post, Down, Blur, Ssao })
+        foreach (var shader in new[] { World, Depth, Prepass, Character, Outline, CharacterSkinned, DepthSkinned, OutlineSkinned, Water, SoftWater, Sprite, Light, Post, Down, DepthCopy, Blur, Ssao })
         {
             Raylib.UnloadShader(shader);
         }
@@ -889,7 +942,7 @@ void main()
         for (int i = 0; i < count; i++) walkerBuffer[i] = new Vector4(feet[feet.Count - count + i], 1f);
         foreach (var shader in FieldPrograms)
         {
-            int location = Raylib.GetShaderLocation(shader, "walkers");
+            int location = Location(shader, "walkers");
             if (location >= 0 && count > 0) Raylib.SetShaderValueV(shader, location, walkerBuffer, ShaderUniformDataType.Vec4, count);
             Set(shader, "walkerCount", count);
         }
@@ -925,12 +978,18 @@ void main()
         foreach (var shader in new[] { World, Character, CharacterSkinned, Sprite, Water }) Set(shader, "cloudShade", amount);
     }
 
-    /// <summary>Shadow filtering: taps from the quality preset, softness as the disc radius in shadow-map texels.</summary>
+    /// <summary>
+    /// Shadow filtering: the taps of the quality preset (1 or 4 of the card's own filtered comparisons) and how
+    /// soft the edge is, in shadow-map texels. Without the card's comparison, the same presets take 5 or 9 taps
+    /// of the rotated disc.
+    /// </summary>
     public void SetShadowQuality(int taps, float softness)
     {
+        int count = HardwareShadows ? Math.Clamp(taps, 1, 9) : taps < 4 ? 5 : 9;
+        if (RenderContext.Experiment.Contains("taps9")) count = 9; // TEMP-G11
         foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
-            Set(shader, "shadowTaps", RenderContext.Experiment.Contains("noshadow") ? 0 : Math.Clamp(taps, 5, 16)); // TEMP-G11
+            Set(shader, "shadowTaps", count);
             Set(shader, "shadowSoftness", softness);
         }
     }
@@ -970,19 +1029,20 @@ void main()
     /// <summary>Binds the half-resolution buffers and the scene depth for the composite; call inside its shader mode.</summary>
     public void BindPostTextures(Texture2D blur, Texture2D bloom, Texture2D ao, Texture2D depth)
     {
-        Raylib.SetShaderValueTexture(Post, Raylib.GetShaderLocation(Post, "blurTex"), blur);
-        Raylib.SetShaderValueTexture(Post, Raylib.GetShaderLocation(Post, "bloomTex"), bloom);
-        Raylib.SetShaderValueTexture(Post, Raylib.GetShaderLocation(Post, "aoTex"), ao);
-        Raylib.SetShaderValueTexture(Post, Raylib.GetShaderLocation(Post, "depthTex"), depth);
+        Raylib.SetShaderValueTexture(Post, Location(Post, "blurTex"), blur);
+        Raylib.SetShaderValueTexture(Post, Location(Post, "bloomTex"), bloom);
+        Raylib.SetShaderValueTexture(Post, Location(Post, "aoTex"), ao);
+        Raylib.SetShaderValueTexture(Post, Location(Post, "depthTex"), depth);
     }
 
-    public void SetDown(Vector2 texel, float threshold)
+    public void SetDown(Vector2 texel) => Set(Down, "texel", texel);
+
+    /// <param name="threshold">Only what is brighter than this is blurred; 1 blurs everything.</param>
+    public void SetBlur(Vector2 direction, float threshold)
     {
-        Set(Down, "texel", texel);
-        Set(Down, "threshold", threshold);
+        Set(Blur, "direction", direction);
+        Set(Blur, "threshold", threshold);
     }
-
-    public void SetBlur(Vector2 direction) => Set(Blur, "direction", direction);
 
     public void SetSsao(Vector2 depthTexel, DepthRange depth, float radius)
     {
@@ -1007,45 +1067,59 @@ void main()
     /// <summary>Outline width of skinned models, in model units before the model's own scale.</summary>
     public void SetOutlineWidth(float width) => Set(OutlineSkinned, "outlineWidth", width);
 
+    // Where each uniform of each program is. Asking the driver is a round trip that waits for it, and the
+    // renderers set some two hundred uniforms a frame, so each is asked for once.
+    private static readonly Dictionary<(uint Program, string Name), int> Locations = new();
+
+    internal static int Location(Shader shader, string name)
+    {
+        if (!Locations.TryGetValue((shader.Id, name), out int location))
+        {
+            location = Raylib.GetShaderLocation(shader, name);
+            Locations[(shader.Id, name)] = location;
+        }
+        return location;
+    }
+
     private static void Set(Shader shader, string name, float value)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Float);
     }
 
     private static void Set(Shader shader, string name, int value)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Int);
     }
 
     private static void Set(Shader shader, string name, Vector2 value)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Vec2);
     }
 
     private static void Set(Shader shader, string name, Vector3 value)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Vec3);
     }
 
     private static void Set(Shader shader, string name, Vector4 value)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValue(shader, loc, value, ShaderUniformDataType.Vec4);
     }
 
     private static void SetV(Shader shader, string name, Vector4[] values)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValueV(shader, loc, values, ShaderUniformDataType.Vec4, values.Length);
     }
 
     private static void SetMatrix(Shader shader, string name, Matrix4x4 value)
     {
-        int loc = Raylib.GetShaderLocation(shader, name);
+        int loc = Location(shader, name);
         if (loc >= 0) Raylib.SetShaderValueMatrix(shader, loc, value);
     }
 }

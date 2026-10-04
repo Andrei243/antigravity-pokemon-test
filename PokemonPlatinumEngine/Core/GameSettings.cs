@@ -9,13 +9,14 @@ public enum GraphicsQuality { Low, Medium, High }
 
 /// <summary>What a graphics quality preset turns on.</summary>
 /// <param name="SceneScale">3D scene resolution in layout units: 2 renders the scene at 3840x2160, 1 at 1920x1080.</param>
+/// <param name="ShadowTaps">Filtered lookups of the shadow map to a pixel: 1 for an edge a texel soft, 4 for one four texels soft.</param>
 public readonly record struct QualityProfile(float SceneScale, bool AmbientOcclusion, bool Fxaa, int ShadowTaps, int ShadowMapSize, bool DepthOfField)
 {
     public static QualityProfile For(GraphicsQuality quality) => quality switch
     {
-        GraphicsQuality.Low => new QualityProfile(1f, false, true, 5, 1024, false),
-        GraphicsQuality.Medium => new QualityProfile(1.5f, true, true, 7, 2048, true),
-        _ => new QualityProfile(2f, true, true, 9, 2048, true)
+        GraphicsQuality.Low => new QualityProfile(1f, false, true, 1, 1024, false),
+        GraphicsQuality.Medium => new QualityProfile(1.5f, true, true, 4, 2048, true),
+        _ => new QualityProfile(2f, true, true, 4, 2048, true)
     };
 }
 

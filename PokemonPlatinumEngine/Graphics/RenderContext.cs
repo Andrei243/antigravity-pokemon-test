@@ -30,9 +30,10 @@ public sealed class RenderContext
     /// <summary>What the current graphics preset turns on.</summary>
     public QualityProfile Quality { get; private set; } = QualityProfile.For(GraphicsQuality.High);
 
-    // Ping-pong pairs: half-resolution blurred copy of the scene (depth of field) and its glow (bloom), and
-    // quarter-resolution ambient occlusion
-    private RenderTexture2D blurA, blurB, bloomA, bloomB, aoA, aoB;
+    // The scene at half resolution, which the blurred copy (depth of field) and the glow (bloom) are both made
+    // from; their ping-pong pairs; the depth buffer at half resolution, and quarter-resolution ambient occlusion
+    // made from that
+    private RenderTexture2D half, blurA, blurB, bloomA, bloomB, depthHalf, aoA, aoB;
     private PostSettings post;
     private DepthRange depthRange = new(1f, 100f, 30f, 16f / 9f);
     private GraphicsQuality? pendingQuality;
@@ -82,6 +83,8 @@ public sealed class RenderContext
         if (targetsLoaded) return;
 
         Target = LoadSceneTarget((int)(Width * Quality.SceneScale), (int)(Height * Quality.SceneScale));
+        half = HalfTarget();
+        depthHalf = LoadDepthCopy(Width / 2, Height / 2);
         blurA = HalfTarget();
         blurB = HalfTarget();
         bloomA = HalfTarget();
@@ -119,6 +122,30 @@ public sealed class RenderContext
         Rlgl.FramebufferComplete(rt.Id);
         Rlgl.DisableFramebuffer();
         Raylib.SetTextureFilter(rt.Texture, TextureFilter.Bilinear);
+        Raylib.SetTextureWrap(rt.Texture, TextureWrap.Clamp);
+        return rt;
+    }
+
+    /// <summary>
+    /// A target of one 32-bit float to a pixel, without a depth buffer of its own: the scene's depth is copied
+    /// into it small, because the occlusion pass reads depth at scattered places and the 4K buffer is slow to read so.
+    /// </summary>
+    private static unsafe RenderTexture2D LoadDepthCopy(int width, int height)
+    {
+        var rt = new RenderTexture2D { Id = Rlgl.LoadFramebuffer() };
+        Rlgl.EnableFramebuffer(rt.Id);
+        rt.Texture = new Texture2D
+        {
+            Id = Rlgl.LoadTexture(null, width, height, PixelFormat.UncompressedR32, 1),
+            Width = width,
+            Height = height,
+            Format = PixelFormat.UncompressedR32,
+            Mipmaps = 1
+        };
+        Rlgl.FramebufferAttach(rt.Id, rt.Texture.Id, FramebufferAttachType.ColorChannel0, FramebufferAttachTextureType.Texture2D, 0);
+        Rlgl.FramebufferComplete(rt.Id);
+        Rlgl.DisableFramebuffer();
+        Raylib.SetTextureFilter(rt.Texture, TextureFilter.Point);
         Raylib.SetTextureWrap(rt.Texture, TextureWrap.Clamp);
         return rt;
     }
@@ -178,47 +205,52 @@ public sealed class RenderContext
         if (!Quality.AmbientOcclusion) post = post with { AoStrength = 0f };
         if (!targetsLoaded) return;
 
-        if (post.Dof > 0f)
-        {
-            Pass(Target.Texture, blurA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), 1f));
-            BlurChain(blurA, blurB, 1.5f, rounds: 2);
-        }
+        // The 4K picture is read once, into its half-size copy; the wide blur and the glow both start from that
+        // (the glow keeps only what is bright as it takes its first step)
+        if (post.Dof > 0f || post.BloomStrength > 0f)
+            Pass(Target.Texture, half, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture)));
+        if (post.Dof > 0f) BlurChain(half.Texture, blurA, blurB, 1.5f, rounds: 2, threshold: 1f);
         FrameProfiler.Lap(FrameSection.Blur);
-        if (post.BloomStrength > 0f)
-        {
-            Pass(Target.Texture, bloomA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), post.BloomThreshold));
-            BlurChain(bloomA, bloomB, 1.2f, rounds: 2);
-        }
+        if (post.BloomStrength > 0f) BlurChain(half.Texture, bloomA, bloomB, 1.2f, rounds: 2, post.BloomThreshold);
         FrameProfiler.Lap(FrameSection.Bloom);
         if (post.AoStrength > 0f)
         {
-            Pass(Target.Depth, aoA, Shaders.Ssao, () => Shaders.SetSsao(Texel(Target.Depth), depth, aoRadius));
-            BlurChain(aoA, aoB, 0.6f, rounds: 1);
+            Pass(Target.Depth, depthHalf, Shaders.DepthCopy, () => { });
+            // (The pass steps three of its texels to either side to find the surface's slope: one texel of the copy)
+            Pass(depthHalf.Texture, aoA, Shaders.Ssao, () => Shaders.SetSsao(Texel(depthHalf.Texture) / 3f, depth, aoRadius));
+            BlurChain(aoA.Texture, aoA, aoB, 0.6f, rounds: 1, threshold: 1f);
         }
         FrameProfiler.Lap(FrameSection.Occlusion);
     }
 
     private static Vector2 Texel(Texture2D t) => new(1f / t.Width, 1f / t.Height);
 
-    /// <summary>Rounds of separable blur, each twice as wide as the last, ending back in <paramref name="a"/>.</summary>
-    private void BlurChain(RenderTexture2D a, RenderTexture2D b, float radius, int rounds)
+    /// <summary>
+    /// Rounds of separable blur of <paramref name="source"/>, each twice as wide as the last, ending in
+    /// <paramref name="a"/>. The first step keeps only what is brighter than <paramref name="threshold"/>
+    /// (1 keeps everything).
+    /// </summary>
+    private void BlurChain(Texture2D source, RenderTexture2D a, RenderTexture2D b, float radius, int rounds, float threshold)
     {
         var texel = Texel(a.Texture);
         float r = radius;
         for (int i = 0; i < rounds; i++, r *= 2.2f)
         {
             float rr = r;
-            Pass(a.Texture, b, Shaders.Blur, () => Shaders.SetBlur(new Vector2(texel.X * rr, 0)));
-            Pass(b.Texture, a, Shaders.Blur, () => Shaders.SetBlur(new Vector2(0, texel.Y * rr)));
+            bool first = i == 0;
+            Pass(first ? source : a.Texture, b, Shaders.Blur, () => Shaders.SetBlur(new Vector2(texel.X * rr, 0), first ? threshold : 1f));
+            Pass(b.Texture, a, Shaders.Blur, () => Shaders.SetBlur(new Vector2(0, texel.Y * rr), 1f));
         }
     }
 
-    /// <summary>Draws <paramref name="source"/> over all of <paramref name="destination"/> through a shader, keeping its orientation.</summary>
+    /// <summary>
+    /// Draws <paramref name="source"/> over all of <paramref name="destination"/> through a shader, keeping its
+    /// orientation. Nothing is cleared first: every pixel is written.
+    /// </summary>
     private static void Pass(Texture2D source, RenderTexture2D destination, Shader shader, System.Action setUniforms)
     {
         setUniforms();
         Raylib.BeginTextureMode(destination);
-        Raylib.ClearBackground(Color.Black);
         Raylib.BeginShaderMode(shader);
         Raylib.DrawTexturePro(source, new Rectangle(0, 0, source.Width, -source.Height),
             new Rectangle(0, 0, destination.Texture.Width, destination.Texture.Height), Vector2.Zero, 0f, Color.White);
@@ -246,7 +278,9 @@ public sealed class RenderContext
         Rlgl.UnloadFramebuffer(Target.Id);
         Rlgl.UnloadTexture(Target.Texture.Id);
         Rlgl.UnloadTexture(Target.Depth.Id);
-        foreach (var rt in new[] { blurA, blurB, bloomA, bloomB, aoA, aoB }) Raylib.UnloadRenderTexture(rt);
+        Rlgl.UnloadFramebuffer(depthHalf.Id);
+        Rlgl.UnloadTexture(depthHalf.Texture.Id);
+        foreach (var rt in new[] { half, blurA, blurB, bloomA, bloomB, aoA, aoB }) Raylib.UnloadRenderTexture(rt);
         Shadows.Unload();
         targetsLoaded = false;
     }

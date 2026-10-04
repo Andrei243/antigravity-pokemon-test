@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+
 using System.Text;
 using Raylib_cs;
 
@@ -76,7 +76,7 @@ public static class FrameProfiler
     {
         if (!Enabled) return;
         Rlgl.DrawRenderBatchActive();
-        Finish();
+        Gl.Finish();
         Add(section, clock.Elapsed.TotalMilliseconds);
     }
 
@@ -143,37 +143,6 @@ public static class FrameProfiler
         return text.ToString();
     }
 
-    // ------------------------------------------------------------------ waiting for the graphics card
-
-    private static unsafe delegate* unmanaged<void> finish;
-    private static bool looked;
-
-    /// <summary>Finds glFinish in whichever library has it here; where none does, laps measure the CPU's side only.</summary>
-    private static unsafe void Look()
-    {
-        if (looked) return;
-        looked = true;
-        foreach (string name in new[] { "opengl32.dll", "libGL.so.1", "/System/Library/Frameworks/OpenGL.framework/OpenGL" })
-        {
-            if (!NativeLibrary.TryLoad(name, out var library) || !NativeLibrary.TryGetExport(library, "glFinish", out var address)) continue;
-            finish = (delegate* unmanaged<void>)address;
-            break;
-        }
-    }
-
-    private static unsafe void Finish()
-    {
-        Look();
-        if (finish != null) finish();
-    }
-
-    /// <summary>Whether laps can wait for the graphics card on this machine.</summary>
-    public static unsafe bool WaitsForGpu
-    {
-        get
-        {
-            Look();
-            return finish != null;
-        }
-    }
+    /// <summary>Whether laps can wait for the graphics card on this machine; where they can't, they measure the CPU's side only.</summary>
+    public static bool WaitsForGpu => Gl.Available;
 }

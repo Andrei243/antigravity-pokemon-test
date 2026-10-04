@@ -37,6 +37,8 @@ internal sealed class ShadowMap
         Rlgl.FramebufferAttach(target.Id, target.Depth.Id, FramebufferAttachType.Depth, FramebufferAttachTextureType.Texture2D, 0);
         Rlgl.FramebufferComplete(target.Id);
         Rlgl.DisableFramebuffer();
+        // The card compares and filters for the shaders, where it can be asked to (they are compiled to match)
+        if (FieldShaders.HardwareShadows) Gl.CompareDepth(target.Depth.Id);
         loaded = true;
     }
 

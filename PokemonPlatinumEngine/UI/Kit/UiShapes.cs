@@ -134,6 +134,7 @@ void main()
         Rlgl.TexCoord2f(hx, -hy); Rlgl.Vertex2f(center.X + hx, center.Y - hy);
         Rlgl.End();
         Rlgl.DrawRenderBatchActive();
+        Graphics.FrameProfiler.Count(2);
     }
 
     private static void Box(Vector2 center, float hw, float hh, float radius, Color top, Color bottom, Color border, float borderWidth,

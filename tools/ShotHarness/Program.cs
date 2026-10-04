@@ -27,8 +27,42 @@ string outDir = Path.GetFullPath(args.Length > 0 ? args[0] : "shots");
 string mode = args.Length > 1 ? args[1] : "all";
 bool Run(string section) => mode == "all" || mode == section;
 
-Directory.CreateDirectory(outDir);
-Environment.CurrentDirectory = outDir;
+if (mode != "crop")
+{
+    Directory.CreateDirectory(outDir);
+    Environment.CurrentDirectory = outDir;
+}
+
+// ---------------------------------------------------------------- a closer look at a shot
+//
+//   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]
+//
+// Cuts a rectangle (in the shot's own pixels) out of a saved shot and enlarges it without smoothing, as
+// `crop_<shot>_<x>_<y>` in the first folder: for judging an edge or a texture pixel by pixel. The same shot of
+// the other folders is cut alike and put beside it, in the order the folders are given.
+if (mode == "crop")
+{
+    Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
+    if (args.Length < 8) { Console.WriteLine("usage: <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]"); return; }
+    string[] folders = new[] { args[0] }.Concat(args.Skip(8)).Select(f => Path.GetFullPath(f, startDir)).ToArray();
+    string shot = args[2];
+    int cx = int.Parse(args[3]), cy = int.Parse(args[4]), cw = int.Parse(args[5]), ch = int.Parse(args[6]);
+    int zoom = int.Parse(args[7]);
+    var sheet = Raylib.GenImageColor(folders.Length * (cw * zoom + 10) + 10, ch * zoom + 20, new Color(24, 26, 34, 255));
+    for (int i = 0; i < folders.Length; i++)
+    {
+        var img = Raylib.LoadImage(Path.Combine(folders[i], shot + ".png"));
+        Raylib.ImageCrop(ref img, new Rectangle(cx, cy, cw, ch));
+        Raylib.ImageResizeNN(ref img, cw * zoom, ch * zoom);
+        int x = 10 + i * (cw * zoom + 10);
+        Raylib.ImageDraw(ref sheet, img, new Rectangle(0, 0, cw * zoom, ch * zoom), new Rectangle(x, 10, cw * zoom, ch * zoom), Color.White);
+        Raylib.UnloadImage(img);
+    }
+    string cropPath = Path.Combine(folders[0], $"crop_{shot}_{cx}_{cy}.png");
+    Raylib.ExportImage(sheet, cropPath);
+    Console.WriteLine("wrote " + cropPath);
+    return;
+}
 
 // ---------------------------------------------------------------- comparing two runs
 //
@@ -43,7 +77,7 @@ if (mode == "diff")
     if (args.Length < 3) { Console.WriteLine("usage: <dir> diff <other dir>"); return; }
     string otherDir = Path.GetFullPath(args[2], startDir);
     static string NameOf(string path) => Path.GetFileNameWithoutExtension(path);
-    bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_");
+    bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_") && !name.StartsWith("crop_");
     var mine = Directory.GetFiles(outDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
     var theirs = Directory.GetFiles(otherDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
     foreach (string old in Directory.GetFiles(outDir, "diff_*.png")) File.Delete(old);
