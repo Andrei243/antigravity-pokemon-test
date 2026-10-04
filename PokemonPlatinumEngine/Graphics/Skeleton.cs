@@ -33,6 +33,12 @@ internal sealed class Skeleton
 
     public int Find(string name) => byName.TryGetValue(name, out int i) ? i : -1;
 
+    /// <summary>Moves the joints of every bone from <paramref name="first"/> on (a sculpt shifted after it was built).</summary>
+    public void Shift(Vector3 delta, int first = 0)
+    {
+        for (int b = first; b < bones.Count; b++) bones[b] = bones[b] with { Joint = bones[b].Joint + delta };
+    }
+
     /// <summary>
     /// Skinning matrices for <paramref name="pose"/> (System.Numerics row-vector convention): each maps a point
     /// of the sculpted model to where the bone has taken it.

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 
@@ -32,8 +34,6 @@ internal static class PokemonSprites
     public const int Size = 128;
     public const int IconSize = 48;
 
-    // Framings are worked out as models are built, which can happen on several threads at once
-    private static readonly ConcurrentDictionary<(string, SpriteView, int), SpriteFraming> Framings = new();
     private static readonly Dictionary<string, Texture2D> Baked = new(StringComparer.OrdinalIgnoreCase);
 
     // A soft studio light from the upper left, independent of the field's sun
@@ -43,7 +43,7 @@ internal static class PokemonSprites
     /// <summary>How a view of the model fills a sprite of <paramref name="size"/> pixels (no GPU calls).</summary>
     public static SpriteFraming Framing(PokeModel model, SpriteView view, int size)
     {
-        if (Framings.TryGetValue((model.Species, view, size), out var f)) return f;
+        if (model.Framings.TryGetValue((view, size), out var f)) return f;
 
         float yaw = view == SpriteView.Back ? 2.55f : -0.5f;
         float pitch = (view == SpriteView.Back ? 20f : 10f) * MathF.PI / 180f;
@@ -77,7 +77,7 @@ internal static class PokemonSprites
             FeetRow = view == SpriteView.Icon ? 0.5f + (centerV - minV) / frame : 1f - margin,
             WorldPerPixel = frame / size
         };
-        return Framings.GetOrAdd((model.Species, view, size), f);
+        return model.Framings.GetOrAdd((view, size), f);
     }
 
     /// <summary>Renders one frame of a Pokémon into <paramref name="target"/>. Call outside any other texture mode.</summary>
@@ -114,28 +114,159 @@ internal static class PokemonSprites
 
     // ------------------------------------------------------------------ static sprites for menus
 
-    /// <summary>Name under which the generic stand-in model is baked, for species without a sprite.</summary>
+    /// <summary>Name under which the generic stand-in model is baked, for species whose sprite isn't ready yet.</summary>
     public const string Fallback = "?";
 
-    /// <summary>Bakes the front, back and icon sprite of every species. Call once, outside any texture mode.</summary>
+    /// <summary>Raise when baking changes (lighting, framing, the outline pass, the mesher), so cached sprites are baked again.</summary>
+    public const int BakeVersion = 1;
+
+    /// <summary>
+    /// Where baked sprites are kept between runs (plan 03 · D5): three PNGs per species, named after it and a
+    /// signature of its model, so a sprite is only baked again after its model changes. A missing or unreadable file
+    /// just means baking again.
+    /// </summary>
+    public static string CacheFolder { get; set; } = Path.Combine(AppContext.BaseDirectory, "cache", "sprites");
+
+    public static bool CacheEnabled { get; set; } = true;
+
+    private static readonly Queue<string> Waiting = new();
+    private static readonly HashSet<string> Queued = new(StringComparer.OrdinalIgnoreCase);
+    private static RenderTexture2D bakeBig, bakeSmall;
+    private static bool targetsLoaded;
+
+    private static readonly SpriteView[] Views = { SpriteView.Front, SpriteView.Back, SpriteView.Icon };
+
+    /// <summary>
+    /// Makes the sprites of these species ready now (from the cache, or baked, waiting for their models), and the
+    /// stand-in's. Start-up uses it for the species the story shows first. Call outside any texture mode.
+    /// </summary>
     public static void BakeAll(RenderContext context, IEnumerable<string> species)
     {
-        var big = Raylib.LoadRenderTexture(Size, Size);
-        var small = Raylib.LoadRenderTexture(IconSize, IconSize);
         foreach (var name in new List<string>(species) { Fallback })
+            if (!Baked.ContainsKey(Key(name, SpriteView.Front)) && !TryLoad(name))
+                BakeAndKeep(context, name, PokemonModels.Get(name));
+    }
+
+    /// <summary>Asks for a species' sprites: they are loaded or baked over the next frames by <see cref="Service"/>.</summary>
+    public static void Request(string species)
+    {
+        if (species == Fallback || Baked.ContainsKey(Key(species, SpriteView.Front)) || !Queued.Add(species)) return;
+        Waiting.Enqueue(species);
+    }
+
+    /// <summary>Whether any sprite is still waiting to be loaded or baked.</summary>
+    public static bool Busy => Waiting.Count > 0;
+
+    /// <summary>
+    /// Loads or bakes the sprites asked for, within about <paramref name="budgetMs"/> a frame: from the cache when it
+    /// has them, else from the model once it is built (it is requested in the background meanwhile). Call once a
+    /// frame, outside any texture mode.
+    /// </summary>
+    public static void Service(RenderContext context, double budgetMs = 4.0)
+    {
+        if (Waiting.Count == 0) return;
+        var clock = System.Diagnostics.Stopwatch.StartNew();
+        int rounds = Waiting.Count;
+        for (int i = 0; i < rounds && clock.Elapsed.TotalMilliseconds < budgetMs; i++)
         {
-            var model = PokemonModels.Get(name);
-            Baked[Key(name, SpriteView.Front)] = Bake(context, model, SpriteView.Front, big, hull: true);
-            Baked[Key(name, SpriteView.Back)] = Bake(context, model, SpriteView.Back, big, hull: true);
-            Baked[Key(name, SpriteView.Icon)] = Bake(context, model, SpriteView.Icon, small, hull: false);
+            var name = Waiting.Dequeue();
+            if (Baked.ContainsKey(Key(name, SpriteView.Front)) || TryLoad(name))
+            {
+                Queued.Remove(name);
+                continue;
+            }
+            if (PokemonModels.TryGet(name, out var model))
+            {
+                BakeAndKeep(context, name, model);
+                Queued.Remove(name);
+                continue;
+            }
+            PokemonModels.Request(name);
+            Waiting.Enqueue(name);
         }
-        Raylib.UnloadRenderTexture(big);
-        Raylib.UnloadRenderTexture(small);
+    }
+
+    /// <summary>Waits until every sprite asked for is ready (the harness, before it draws sheets of them).</summary>
+    public static void Flush(RenderContext context)
+    {
+        while (Waiting.Count > 0)
+        {
+            var name = Waiting.Dequeue();
+            Queued.Remove(name);
+            if (!Baked.ContainsKey(Key(name, SpriteView.Front)) && !TryLoad(name)) BakeAndKeep(context, name, PokemonModels.Get(name));
+        }
     }
 
     private static string Key(string name, SpriteView view) => $"{name}|{view}";
 
-    private static Texture2D Bake(RenderContext context, PokeModel model, SpriteView view, RenderTexture2D target, bool hull)
+    private static string FileOf(string name, SpriteView view, string signature)
+    {
+        var safe = new System.Text.StringBuilder();
+        foreach (char c in name) safe.Append(char.IsLetterOrDigit(c) && c < 128 ? char.ToLowerInvariant(c) : '_');
+        return Path.Combine(CacheFolder, $"{safe}-{view.ToString().ToLowerInvariant()}-{signature}.png");
+    }
+
+    private static string SignatureOf(string name) => $"{PokemonModels.Signature(name)}{BakeVersion}";
+
+    /// <summary>Takes a species' sprites from the cache if all three are there.</summary>
+    private static bool TryLoad(string name)
+    {
+        if (!CacheEnabled) return false;
+        string signature = SignatureOf(name);
+        var files = Views.Select(v => FileOf(name, v, signature)).ToArray();
+        if (!files.All(File.Exists)) return false;
+        var textures = new List<Texture2D>();
+        foreach (var file in files)
+        {
+            var tex = Raylib.LoadTexture(file);
+            if (tex.Id == 0)
+            {
+                foreach (var t in textures) Raylib.UnloadTexture(t);
+                return false;
+            }
+            Raylib.SetTextureFilter(tex, TextureFilter.Point);
+            textures.Add(tex);
+        }
+        for (int i = 0; i < Views.Length; i++) Keep(name, Views[i], textures[i]);
+        return true;
+    }
+
+    /// <summary>Bakes a species' three sprites, keeps them and writes them to the cache.</summary>
+    private static void BakeAndKeep(RenderContext context, string name, PokeModel model)
+    {
+        if (!targetsLoaded)
+        {
+            bakeBig = Raylib.LoadRenderTexture(Size, Size);
+            bakeSmall = Raylib.LoadRenderTexture(IconSize, IconSize);
+            targetsLoaded = true;
+        }
+        string signature = SignatureOf(name);
+        foreach (var view in Views)
+        {
+            var canvas = Bake(context, model, view, view == SpriteView.Icon ? bakeSmall : bakeBig, hull: view != SpriteView.Icon);
+            Keep(name, view, canvas.ToTexture());
+            if (!CacheEnabled) continue;
+            try
+            {
+                Directory.CreateDirectory(CacheFolder);
+                string file = FileOf(name, view, signature);
+                // Older bakes of the same sprite are of no more use
+                string stem = Path.GetFileName(file)[..^(signature.Length + 4)];
+                foreach (var old in Directory.GetFiles(CacheFolder, stem + "*.png"))
+                    if (!old.Equals(file, StringComparison.Ordinal)) File.Delete(old);
+                File.WriteAllBytes(file, PngWriter.Encode(canvas));
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+        }
+    }
+
+    private static void Keep(string name, SpriteView view, Texture2D texture)
+    {
+        if (Baked.TryGetValue(Key(name, view), out var old)) Raylib.UnloadTexture(old);
+        Baked[Key(name, view)] = texture;
+    }
+
+    private static PixelCanvas Bake(RenderContext context, PokeModel model, SpriteView view, RenderTexture2D target, bool hull)
     {
         Render(context, model, view, new PokePose { Time = 0.35f }, target, hull);
         var image = Raylib.LoadImageFromTexture(target.Texture);
@@ -143,11 +274,25 @@ internal static class PokemonSprites
         var canvas = PixelCanvas.FromImage(image);
         Raylib.UnloadImage(image);
         canvas.OutlinePass(innerSeams: false);
-        return canvas.ToTexture();
+        return canvas;
     }
 
-    /// <summary>A baked sprite for the menus (null if it hasn't been baked).</summary>
-    public static Texture2D? GetBaked(string name, SpriteView view) =>
-        Baked.TryGetValue(Key(name, view), out var tex) ? tex : null;
+    /// <summary>
+    /// A species' sprite for the menus, or null while it isn't ready: asking for one that isn't starts loading or
+    /// baking it (see <see cref="Service"/>), and callers show the stand-in meanwhile.
+    /// </summary>
+    public static Texture2D? GetBaked(string name, SpriteView view)
+    {
+        if (Baked.TryGetValue(Key(name, view), out var tex)) return tex;
+        Request(name);
+        return null;
+    }
+
+    /// <summary>Forgets a species' sprites (and frees them), so they are made again when next asked for.</summary>
+    public static void Forget(string name)
+    {
+        foreach (var view in Views)
+            if (Baked.Remove(Key(name, view), out var tex)) Raylib.UnloadTexture(tex);
+    }
 }
 

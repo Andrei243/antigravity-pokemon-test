@@ -9,7 +9,7 @@
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
 - `Models/Pokedex.cs` keeps seen and caught national numbers; `UI/PokedexScreen.cs` shows them.
-- 23 species have a hand-built 3D model in `Graphics/PokemonModels.cs`; every other species uses `PokemonModels.Generic` until D5. Start-up bakes sprites only for the hand-built models and the generic one.
+- Every species has a 3D model (D5, 2026-10-04): 23 hand-built in `Graphics/PokemonModels.cs`, the rest generated from their data (`PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; menu sprites are baked the first time a menu asks for them and cached as PNGs.
 
 ## Decisions
 
@@ -19,7 +19,8 @@ Decisions 1 and 2 were taken in D1 (2026-10-01); the others are still to confirm
    - Species 1–493 and Generation 4 moves: Platinum's own data from the decompilation: `res/pokemon/<species>/data.json` (base stats, types, abilities, catch rate, EXP, growth rate, gender ratio, egg groups, EV yields, held items, body colour, learnsets by level, TM, tutor and egg) and `res/moves/<move>/` for moves. Find evolutions and Pokédex text in the same tree.
    - Species 494–1025 and later moves and abilities: PokeAPI's CSV files (<https://github.com/PokeAPI/pokeapi/tree/master/data/v2/csv>, BSD licence): `pokemon_species.csv`, `pokemon.csv`, `pokemon_stats.csv`, `pokemon_types.csv`, `pokemon_abilities.csv`, `pokemon_moves.csv` (learnsets by version group), `pokemon_evolution.csv`, `evolution_chains.csv`, `pokemon_forms.csv`, `pokemon_species_flavor_text.csv`, `pokemon_shapes.csv`, `pokemon_colors.csv`, `pokemon_dex_numbers.csv`, `moves.csv`, `move_meta.csv`, `abilities.csv`.
 2. **Type rules.** *Decided (D1):* the recommendation. keep Platinum's chart and typings for species 1–493 so the story plays exactly like Platinum, and add the Fairy type's matchups for the later species that need it. The alternative is modern data everywhere (Clefairy becomes Fairy, Steel stops resisting Ghost and Dark), which is consistent with later generations but changes Platinum's battles.
-3. **Models for 1025 species.** Both built with plan 04's SDF modelling kit: hand-built models for Platinum's 210 Sinnoh species (the ones seen in the story), and a **procedural model generator** for everyone else, driven by body shape (PokeAPI's 14 shapes: ball, squiggle, fish, arms, blob, upright, legs, quadruped, wings, tentacles, heads, humanoid, bug-wings, armor), body colour, height and types, plus a few feature tags (wings, tail, horns, fins, flame, leaves, shell). Popular species can be upgraded to hand-built models over time. All art stays our own; the decomp's sprite files are not used.
+3. **Models for 1025 species.** *Decided 2026-10-04 (D5), changing the plan below:* a **procedural model generator** gives every species without a hand-built model one of its own, and **model files** replace any species' model: a glTF file named after the species in `overrides/models` (ignored by git, so it never enters the repository) is drawn instead, with its textures, skeleton and clips. The user supplies the files for the species they want; the hand-built batches D6–D9 are on hold. The generator works from body shape (PokeAPI's 14 shapes, refined by the words of the species' category: "Mouse", "River Crab", "Cocoon"), body colour, height, types, egg groups and evolution stage. All art in the repository stays our own; the decomp's sprite files are not used.
+   *Originally:* hand-built models for Platinum's 210 Sinnoh species with the SDF kit, the generator for everyone else, popular species upgraded to hand-built models over time.
 4. **Where the non-Sinnoh species live.** Platinum's post-game tables (National Pokédex route additions, swarms, the Poké Radar, the Great Marsh and Trophy Garden dailies) cover many species 1–493. The rest need in-game sources, because trading and GBA migration don't exist here:
    - a Pal Park-style post-game area with habitats per region;
    - a new post-game zone for Generations 5–9 (for example Distortion World rifts or new Battle Zone routes) with biome-based tables;
@@ -59,7 +60,17 @@ Move effects, abilities, held items, evolution methods, forms and breeding are n
 The model generator, built on plan 04's SDF modelling kit, from shape, colour, height, types and feature tags; lazy baking with the disk cache; a harness contact sheet showing every species (extend the `sheets` mode with paging). **Done when** all 1025 species (after D11) have a distinct model and start-up time doesn't grow.
 *Ready from plan 04 · G7:* `PokeBuilder` (shapes, paint, eye and marking decals, bones for each body part), the six body plans with their animation clips, and `PokemonModels.Sample(plan)` for the serpent, fish and floating plans that no hand-built species uses yet. Meshing one model takes about a second the first time, so the generator must mesh lazily and keep the start-up preload to the species the story shows.
 
+**Outcome (2026-10-04).**
+- **The generator** (`PokemonGenome.cs`, `PokemonGenerator.cs` and `.Parts.cs`): a species' data becomes a *genome*, then a sculpt on `PokeBuilder`. The genome picks one of 18 body kinds (quadruped, upright, humanoid, legs, bird, bat, insect, serpent, crawler, arthropod, fish, ball, armed, blob, cluster, cocoon, jellyfish, tentacled) from the Pokédex shape and the category's words, each sculpted on one of the six body plans so the existing clips move it; a stance (long-legged, low, stocky); colours from the Pokédex colour and the types; and its parts: ears, mouth (muzzle, snout, beak, bill, jaw, trunk, mandibles), tail and its tip (flame, leaf, star), what grows on the head and the back (horns, antlers, crests, sprouts, flowers, flames, antennae, shells, bulbs, spikes, plates, manes), wings (feathered, skin, insect, butterfly), hands (paws, fists, claws, blades, pincers), patterns, ruffs, cheeks and a few bodies of their own (stars, candles, mounds, cones, bivalves, pumpkins, gears, bells, balloons, swords, trees). Choices that run through an evolutionary line (ears, tail, eyes, the shade of the colour) come from a seed of the family's first species, the rest from the species' own, so lines look related and every species differs; the random numbers are our own (SplitMix32), so a species' model never changes between runs or .NET versions. Small species fill less of their frame, by height. All 1025 sculpts are distinct (tested).
+- **Model files** (`GltfReader`, `ImportedModels`, `JpegDecoder`): a glTF 2.0 file named after a species in `overrides/models` (next to the game or in the folder it is started from) replaces its model: skinned meshes cut into pieces of at most 32 bones, PNG and JPEG textures (our own decoder: the raylib build reads only PNG), outlines from a shell pushed out along smoothed normals, and the file's own clips played for what their names say (`battlewait`, `attack01`, `damage`, `down`, `appear`…), with the body plan's motion for the rest. Draco and meshopt compression and WebP textures are refused with a message. [`docs/model-files.md`](../model-files.md) is the user's guide. `GltfWriter` writes any sculpted model out (mesh, eyes as a texture, skeleton, every clip baked), so a generated model can be refined in Blender and dropped back in (harness `export` mode).
+- **Lazy models and sprites**: models are requested in the background when a battle or an evolution is about to show them and waited for behind the fade (`PokemonModels.Request`, `TryGet`); models the next scene doesn't need are let go after a battle (`Trim`). Menu sprites are baked the first time a menu asks for them (`PokemonSprites.Request`, `Service` once a frame before the 3D passes; the stand-in shows meanwhile) and cached as PNGs in `cache/sprites`, named by a signature of the model (`PokemonModels.Signature`: the file's size and date, or a hash of the sculpt), so start-up bakes nothing it baked before. Start-up still preloads only the hand-built species.
+- **Harness**: `dex [species ...]` boards of every species' 3D model, sixty to a page; `sheets` run on its own pages through every species' menu sprites; `pokemon` adds a turntable of one generated species of each body kind and an imported model with its own clips (`91_turntable_imported_riolu`, `92_clips_imported_riolu`); `export [species ...]` writes models as `.glb` files.
+- **Tests**: 36 new (`PokemonGeneratorTests`, `PokemonImportTests`; 713 pass): every species sculpts, distinctly and the same every time; the genome follows the data; one species of each kind meshes into a sound model; the glTF round trip, palettes for big rigs, clips by name, refused compression, which surfaces are metal, file names, a broken file falling back, JPEG decoding, background requests and trimming, sprite signatures. `POKEMON_MODELS_ALL=1` meshes and checks all 1025 generated models (about a quarter of an hour the first time).
+- **Decided here**: model files replace hand-building (decision 3); the hand-built batches D6–D9 are on hold.
+- **Not done here**: forms (D11) have no models yet; a model file's morph targets, normal maps and texture animation are ignored; generated models look generic (the user found the generated Pikachu odd: the data only says "a yellow, Electric, four-legged mouse"), which model files are for.
+
 ### D6–D9 · Hand-built Sinnoh models (with plan 04's SDF modelling kit)
+*On hold since 2026-10-04 (decision 3): model files in `overrides/models` replace hand-building.*
 Platinum's 210 Sinnoh species in four batches of about 50, in the order they appear in the story: the Route 201–204 species first, the legendaries last. Check each batch on the harness contact sheet and in battle.
 
 ### D10 · Pokédex
@@ -78,7 +89,7 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 ## Risks
 
 - **Forms need models too**: 97 Mega forms, 34 Gigantamax forms and the regional forms are extra models; the generator in D5 must treat each form as a model of its own.
-- **Model quality at scale**: generated models will look generic. Hand-build the species players see most, and let feature tags carry the rest.
+- **Model quality at scale**: generated models look generic. Model files (decision 3) carry the species that matter; the generator is the fallback.
 - **Start-up time**: baking 1025 × 3 sprites at start-up would take minutes; bake lazily with a disk cache.
 
 ## Needs and gives
@@ -90,11 +101,11 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 
 - [x] D1 Data pipeline
 - D2–D4 moved to plan 06 (R4–R8, R10, R15)
-- [ ] D5 Procedural models for everyone
-- [ ] D6 Hand-built Sinnoh models, batch 1
-- [ ] D7 Hand-built Sinnoh models, batch 2
-- [ ] D8 Hand-built Sinnoh models, batch 3
-- [ ] D9 Hand-built Sinnoh models, batch 4
+- [x] D5 Procedural models for everyone (2026-10-04: generator for every species, model files from `overrides/models`, lazy models and cached menu sprites)
+- [ ] D6 Hand-built Sinnoh models, batch 1 (on hold: model files instead)
+- [ ] D7 Hand-built Sinnoh models, batch 2 (on hold)
+- [ ] D8 Hand-built Sinnoh models, batch 3 (on hold)
+- [ ] D9 Hand-built Sinnoh models, batch 4 (on hold)
 - [ ] D10 Pokédex
 - [ ] D11 Generations 5–9
 - [ ] D12 Every species obtainable
