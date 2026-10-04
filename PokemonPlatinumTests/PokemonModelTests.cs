@@ -19,6 +19,9 @@ public class PokemonModelTests
 
     public static IEnumerable<object[]> HandBuilt => PokemonModels.Species.Select(s => new object[] { s });
 
+    /// <summary>The hand-built species that don't have two eyes.</summary>
+    private static readonly Dictionary<string, int> EyesOf = new() { ["Zubat"] = 0, ["Combee"] = 6 };
+
     [Theory]
     [MemberData(nameof(HandBuilt))]
     public void EverySpeciesIsOneSmoothSkinnedBody(string species)
@@ -43,9 +46,10 @@ public class PokemonModelTests
             Assert.Equal(1f, sum, 3);
         }
 
-        // Feet on the ground
+        // Feet on the ground, or a flier floating a little above it as the generated ones do
         float bottom = mesh.Positions.Min(p => p.Y);
-        Assert.InRange(bottom, -0.04f, 0.04f);
+        if (m.Hovers && bottom > 0.04f) Assert.InRange(bottom, 0.06f * m.Height, 0.2f * m.Height);
+        else Assert.InRange(bottom, -0.04f, 0.04f);
 
         // Every bone moves some of the surface
         for (int b = 1; b < m.Skeleton.Count; b++)
@@ -54,8 +58,10 @@ public class PokemonModelTests
             Assert.True(moved > 20, $"{species}: bone {m.Skeleton[b].Name} carries only {moved} vertices");
         }
 
-        // Two eyes, each laid on the head over enough triangles to show it whole
-        Assert.Equal(2, m.Decals.Count(d => d.IsEye));
+        // Two eyes (Zubat has none, Combee a pair on each of its three faces), each laid on the head over enough
+        // triangles to show it whole
+        Assert.Equal(EyesOf.GetValueOrDefault(species, 2), m.Decals.Count(d => d.IsEye));
+        if (m.Decals.Count == 0) return;
         Assert.NotNull(m.DecalPatch);
         Assert.All(m.DecalUVs!, uv => Assert.True(uv.X >= 0f && uv.X <= 1f && uv.Y >= 0f && uv.Y <= 1f));
     }

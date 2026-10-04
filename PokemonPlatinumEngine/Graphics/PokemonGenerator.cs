@@ -25,7 +25,7 @@ internal sealed partial class PokemonSculptor
     private const int Body = PokeBuilder.Body;
 
     /// <summary>How far fliers float above the ground at rest, as a share of their height.</summary>
-    private const float HoverGap = 0.12f;
+    internal const float HoverGap = 0.12f;
 
     private readonly PokeGenome g;
     private readonly GenomeRandom rnd;

@@ -153,8 +153,8 @@ public class GameEngine
 
         // Every character the maps use, sculpted and meshed in the background while the title screen plays
         CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
-        // The Pokémon models too, meshed side by side; the menu sprites below wait for each one
-        var modelled = PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel).ToList();
+        // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
+        var modelled = PokemonModels.Preloaded.ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
         // And the balls the battles throw
         BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
