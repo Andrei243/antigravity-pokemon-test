@@ -437,7 +437,7 @@ The world follows the computer's clock, like the DS's real-time clock, with Plat
 
 The interface is always drawn at 4K; the presets change only the 3D scenes. FXAA is for a window that shows the scene at more than three quarters of its size: a smaller window smooths the scene by scaling it down, and FXAA would cost half a millisecond for nothing. Options are saved in `settings.json`.
 
-A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (plan 04): towns and routes 5.0 to 6.7 ms, rooms 3.7 ms, battles 6.0 to 7.3 ms with a move's effect at its height; Medium takes about 0.7 ms less and Low 1.5 to 2 ms less. One millisecond of each of those is the hidden window's own swap of its buffers. The harness's `profile` mode says where a frame goes; what was learned from it:
+A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (plan 04): towns and routes 5.0 to 6.6 ms, a room 3.6 ms, battles 6.0 to 7.5 ms with a move's effect at its height; Medium takes 0.4 to 1.1 ms less and Low 1 to 2 ms less. One millisecond of each of those is the hidden window's own swap of its buffers (three in a window as large as a 4K display, where FXAA adds 0.4 more), and readings move by two or three tenths between runs. The harness's `profile` mode says where a frame goes; what was learned from it:
 
 - A frame is spent filling 4K, not on geometry: a few hundred thousand triangles and a hundred or two meshes cost a tenth of what shading every pixel does. An effect is weighed by what it adds per pixel.
 - A 4K texture is slow to read at scattered places. What needs the picture or its depth small (the wide blur, the glow, ambient occlusion) reads a half-resolution copy made once a frame.
@@ -622,7 +622,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 
 ## Known gaps after G11
 
-- The interface is drawn a shape at a time: a tenth of a millisecond in the field, up to 1.2 ms for a double battle's menu. Drawing its shapes in batches would halve that; no scene needs it to stay inside the frame's budget. Battle models are drawn at one level of detail (their triangles are 0.3 ms of a frame), and scenery is batched per chunk rather than instanced, for the same reason: neither is where a frame goes.
+- The interface is drawn a shape at a time: one or two tenths of a millisecond in the field, 1.2 ms for a double battle's menu. Drawing its shapes in batches would halve that; no scene needs it to stay inside the frame's budget. Battle models are drawn at one level of detail (their triangles are 0.3 ms of a frame), and scenery is batched per chunk rather than instanced, for the same reason: neither is where a frame goes.
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
 - The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
 - Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Thirty-three models have plain stand-ins until their area is built (`docs/world-models.md` says which). Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
