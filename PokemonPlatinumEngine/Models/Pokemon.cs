@@ -55,11 +55,23 @@ public class StatSpread
 public class PokemonSpecies
 {
     public int DexNumber { get; set; }
+
+    /// <summary>Its number in Platinum's Sinnoh Pokédex (1–210); null for the species that Pokédex leaves out.</summary>
+    public int? SinnohNumber { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Category { get; set; } = "Pokémon"; // e.g. "Tiny Leaf Pokémon"
     /// <summary>The generation that introduced the species.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int Generation { get; set; }
+
+    /// <summary>
+    /// Legendary and mythical species (PokeAPI's flags). Mythical ones were only ever given out at events, so the
+    /// National Pokédex's diploma doesn't ask for them.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool Legendary { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool Mythical { get; set; }
     public PokemonType PrimaryType { get; set; }
     public PokemonType? SecondaryType { get; set; }
     public int BaseHP { get; set; }

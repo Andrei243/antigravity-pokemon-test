@@ -133,21 +133,7 @@ public class OptionsScreen
         for (int i = 0; i < Rows.Length; i++)
         {
             var (label, value, _) = Describe(settings, Rows[i]);
-            var r = new Rectangle(64, ModernUi.ContentTop + i * pitch, sw - 128, height);
-            bool selected = i == SelectedIndex;
-            ModernUi.Card(r, 30, selected);
-            UiFonts.DrawCentered(label, r.X + 52, r.Y + r.Height / 2f, 36, ModernUi.Ink, UiWeight.ExtraBold);
-
-            // The value sits in a pill between two arrows
-            var pill = new Rectangle(r.X + r.Width - 620, r.Y + 19, 480, r.Height - 38);
-            UiShapes.Fill(pill, pill.Height / 2f, selected ? ModernUi.Frame : new Color(214, 222, 236, 255));
-            float vw = UiFonts.Measure(value, 32, UiWeight.Black);
-            UiFonts.DrawCentered(value, pill.X + (pill.Width - vw) / 2f, pill.Y + pill.Height / 2f, 32,
-                selected ? Color.White : ModernUi.Ink, UiWeight.Black);
-            var arrow = selected ? ModernUi.Selection : new Color(170, 180, 200, 255);
-            float cy = r.Y + r.Height / 2f;
-            UiIcons.ArrowH(new Vector2(pill.X - 44, cy), 22, -1, arrow);
-            UiIcons.ArrowH(new Vector2(pill.X + pill.Width + 44, cy), 22, 1, arrow);
+            ModernUi.ValueRow(new Rectangle(64, ModernUi.ContentTop + i * pitch, sw - 128, height), label, value, i == SelectedIndex);
         }
 
         float top = ModernUi.ContentTop + Rows.Length * pitch + 6;

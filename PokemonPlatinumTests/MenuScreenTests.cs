@@ -499,22 +499,24 @@ public class MenuScreenTests
         var dex = new PokedexScreen();
         dex.Open(pokedex);
         Assert.Equal(0, dex.SelectedIndex);
-        Assert.True(dex.Species.Count >= 493);
-        Assert.Equal(Enumerable.Range(1, dex.Species.Count), dex.Species.Select(s => s.DexNumber));
+        // Platinum's own Sinnoh Pokédex, in its order
+        Assert.Equal(PokedexMode.Sinnoh, dex.Mode);
+        Assert.Equal(Enumerable.Range(1, 210), dex.Rows.Select(r => r.Number));
+        Assert.Equal("Turtwig", dex.Species[0].Name);
 
-        pokedex.RegisterSeen(396);
-        pokedex.RegisterCaught(387);
+        pokedex.RegisterSeen(396);   // Starly, No. 10 in Sinnoh
+        pokedex.RegisterCaught(390); // Chimchar, No. 4
         dex.Open(pokedex);
-        Assert.Equal(387, dex.Species[dex.SelectedIndex].DexNumber);
+        Assert.Equal("Chimchar", dex.Species[dex.SelectedIndex].Name);
         Assert.InRange(dex.SelectedIndex, dex.FirstRow, dex.FirstRow + PokedexScreen.VisibleRows - 1);
 
         dex.Move(1);
-        Assert.Equal(388, dex.Species[dex.SelectedIndex].DexNumber);
+        Assert.Equal(5, dex.Rows[dex.SelectedIndex].Number);
         dex.Move(PokedexScreen.Jump);
-        Assert.Equal(398, dex.Species[dex.SelectedIndex].DexNumber);
+        Assert.Equal(15, dex.Rows[dex.SelectedIndex].Number);
         dex.Move(-PokedexScreen.Jump);
         dex.Move(-1);
-        Assert.Equal(387, dex.Species[dex.SelectedIndex].DexNumber);
+        Assert.Equal("Chimchar", dex.Species[dex.SelectedIndex].Name);
         Assert.InRange(dex.SelectedIndex, dex.FirstRow, dex.FirstRow + PokedexScreen.VisibleRows - 1);
 
         // A step wraps round the ends; a jump stops at them
@@ -522,12 +524,154 @@ public class MenuScreenTests
         dex.Move(-PokedexScreen.Jump);
         Assert.Equal(0, dex.SelectedIndex);
         dex.Move(-1);
-        Assert.Equal(dex.Species.Count - 1, dex.SelectedIndex);
-        Assert.Equal(dex.Species.Count - PokedexScreen.VisibleRows, dex.FirstRow);
+        Assert.Equal(dex.Rows.Count - 1, dex.SelectedIndex);
+        Assert.Equal(dex.Rows.Count - PokedexScreen.VisibleRows, dex.FirstRow);
         dex.Move(PokedexScreen.Jump);
-        Assert.Equal(dex.Species.Count - 1, dex.SelectedIndex);
+        Assert.Equal(dex.Rows.Count - 1, dex.SelectedIndex);
         dex.Move(1);
         Assert.Equal((0, 0), (dex.SelectedIndex, dex.FirstRow));
+    }
+
+    [Fact]
+    public void APokedexEntryHasThreePagesAndStepsThroughTheSpeciesSeen()
+    {
+        var pokedex = new Pokedex();
+        foreach (int n in new[] { 387, 396, 399 }) pokedex.RegisterSeen(n);   // Turtwig, Starly, Bidoof
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+        Assert.Equal("Turtwig", dex.Selected!.Value.Species.Name);
+
+        // An unseen species has no entry to open
+        dex.Move(1);
+        dex.Confirm();
+        Assert.Equal(PokedexFocus.List, dex.Focus);
+        dex.Move(-1);
+
+        dex.Confirm();
+        Assert.Equal((PokedexFocus.Entry, PokedexPage.Info), (dex.Focus, dex.Page));
+        dex.Sideways(1);
+        Assert.Equal(PokedexPage.Area, dex.Page);
+        dex.Sideways(1);
+        Assert.Equal(PokedexPage.Size, dex.Page);
+        dex.Sideways(1);
+        Assert.Equal(PokedexPage.Info, dex.Page);
+        dex.Sideways(-1);
+        Assert.Equal(PokedexPage.Size, dex.Page);
+
+        // Up and down skip the species not seen, and wrap
+        dex.Move(1);
+        Assert.Equal("Starly", dex.Selected!.Value.Species.Name);
+        dex.Move(1);
+        Assert.Equal("Bidoof", dex.Selected!.Value.Species.Name);
+        dex.Move(1);
+        Assert.Equal("Turtwig", dex.Selected!.Value.Species.Name);
+        Assert.Equal(PokedexPage.Size, dex.Page);
+
+        // B goes back to the list, which shows the first page again
+        dex.Cancel();
+        Assert.Equal((PokedexFocus.List, PokedexPage.Info), (dex.Focus, dex.Page));
+        dex.Cancel();
+        Assert.False(dex.IsActive);
+    }
+
+    [Fact]
+    public void ThePokedexSearchFindsAndSortsAmongTheSpeciesSeen()
+    {
+        var pokedex = new Pokedex();
+        foreach (string name in new[] { "Turtwig", "Starly", "Staraptor", "Bidoof", "Shinx", "Kricketot" }) pokedex.RegisterCaught(PokemonDatabase.Get(name)!.DexNumber);
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+
+        dex.OpenSearch();
+        Assert.Equal(PokedexFocus.Search, dex.Focus);
+        // No choice of Pokédex until the National one is open
+        Assert.Equal(PokedexSearchRow.Order, dex.SearchRows[0]);
+        Assert.DoesNotContain(PokedexSearchButton.Diploma, dex.Buttons);
+
+        dex.Sideways(1);
+        Assert.Equal("A to Z", dex.ValueOf(PokedexSearchRow.Order));
+        dex.Move(1);   // Name
+        dex.Move(1);   // Type
+        Assert.Equal(PokedexSearchRow.Type1, dex.SearchRows[dex.SearchIndex]);
+        for (int i = 0; i <= Array.IndexOf(PokedexScreen.SearchTypes, PokemonType.Flying); i++) dex.Sideways(1);
+        Assert.Equal("Flying", dex.ValueOf(PokedexSearchRow.Type1));
+        dex.Sideways(-1);
+        dex.Sideways(1);
+        Assert.Equal(PokemonType.Flying, dex.Draft.Type1);
+
+        // The buttons: SEARCH runs it
+        while (dex.SearchRows[dex.SearchIndex] != PokedexSearchRow.Buttons) dex.Move(1);
+        dex.Confirm();
+        Assert.Equal(PokedexFocus.List, dex.Focus);
+        Assert.NotNull(dex.Results);
+        Assert.Equal(new[] { "Staraptor", "Starly" }, dex.Species.Select(s => s.Name));
+
+        // B goes back to the whole Pokédex, on the species chosen there
+        dex.Cancel();
+        Assert.Null(dex.Results);
+        Assert.Equal(210, dex.Rows.Count);
+        Assert.Equal("Staraptor", dex.Selected!.Value.Species.Name);
+        Assert.True(dex.IsActive);
+
+        // RESET clears the search; a plain search is the whole list
+        dex.OpenSearch();
+        while (dex.SearchRows[dex.SearchIndex] != PokedexSearchRow.Buttons) dex.Move(1);
+        dex.Sideways(1);
+        dex.Confirm();   // RESET
+        Assert.True(dex.Draft.IsPlain);
+        dex.Search();
+        Assert.Null(dex.Results);
+        Assert.Equal(210, dex.Rows.Count);
+    }
+
+    [Fact]
+    public void TheNationalPokedexIsChosenInTheSearchOnceItIsOpen()
+    {
+        var pokedex = new Pokedex();
+        pokedex.RegisterCaught(1);
+        pokedex.UnlockNational();
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+        dex.OpenSearch();
+        Assert.Equal(PokedexSearchRow.Mode, dex.SearchRows[0]);
+        Assert.Equal("Sinnoh", dex.ValueOf(PokedexSearchRow.Mode));
+        dex.Sideways(1);
+        Assert.Equal("National", dex.ValueOf(PokedexSearchRow.Mode));
+        dex.Search();
+        Assert.Equal((PokedexMode.National, 1025), (dex.Mode, dex.Rows.Count));
+        Assert.Equal("Bulbasaur", dex.Species[0].Name);
+
+        // The screen remembers the Pokédex it showed, but not one the player can no longer open
+        dex.Open(pokedex);
+        Assert.Equal(PokedexMode.National, dex.Mode);
+        dex.Open(new Pokedex());
+        Assert.Equal(PokedexMode.Sinnoh, dex.Mode);
+    }
+
+    [Fact]
+    public void ADiplomaIsShownOnceThePokedexIsCompleteAndAgainFromTheSearch()
+    {
+        var pokedex = new Pokedex();
+        foreach (var e in Pokedex.Entries(PokedexMode.Sinnoh)) pokedex.RegisterSeen(e.Species.DexNumber);
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+        Assert.Equal((PokedexFocus.Diploma, PokedexMode.Sinnoh), (dex.Focus, dex.ShownDiploma));
+        dex.Confirm();
+        Assert.Equal(PokedexFocus.List, dex.Focus);
+
+        // Given once
+        dex.Open(pokedex);
+        Assert.Equal(PokedexFocus.List, dex.Focus);
+
+        // Shown again from the search panel
+        dex.OpenSearch();
+        Assert.Contains(PokedexSearchButton.Diploma, dex.Buttons);
+        while (dex.SearchRows[dex.SearchIndex] != PokedexSearchRow.Buttons) dex.Move(1);
+        dex.Sideways(-1);   // from SEARCH round to DIPLOMA
+        dex.Confirm();
+        Assert.Equal(PokedexFocus.Diploma, dex.Focus);
+        dex.Cancel();
+        Assert.Equal(PokedexFocus.Search, dex.Focus);
     }
 
     // ------------------------------------------------------------------ the Trainer Card and saving

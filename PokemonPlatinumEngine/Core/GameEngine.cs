@@ -311,6 +311,8 @@ public class GameEngine
         playerPokedex.Clear();
         foreach (var seen in save.SeenSpecies) playerPokedex.RegisterSeen(seen);
         foreach (var caught in save.CaughtSpecies) playerPokedex.RegisterCaught(caught);
+        playerPokedex.Restore(save.NationalPokedex,
+            save.Diplomas.Select(d => Enum.TryParse<PokedexMode>(d, out var mode) ? mode : (PokedexMode?)null).OfType<PokedexMode>());
 
         MapDatabase.RestoreDefeatedTrainers(save.DefeatedTrainers);
         story.Restore(save.StoryFlags);
@@ -344,6 +346,8 @@ public class GameEngine
             Inventory = playerInventory.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
             SeenSpecies = playerPokedex.SeenSpecies.ToList(),
             CaughtSpecies = playerPokedex.CaughtSpecies.ToList(),
+            NationalPokedex = playerPokedex.NationalUnlocked,
+            Diplomas = playerPokedex.Diplomas.Order().Select(d => d.ToString()).ToList(),
             DefeatedTrainers = MapDatabase.DefeatedTrainerIds(),
             StoryFlags = story.Flags.ToList(),
             Money = playerMoney,
@@ -943,7 +947,7 @@ public class GameEngine
                 return;
             case StartMenuChoice.Pokedex:
                 currentState = GameState.PokedexMenu;
-                pokedexScreen.Open(playerPokedex);
+                pokedexScreen.Open(playerPokedex, world.Portrait(PlayerIdentity.Character));
                 break;
             case StartMenuChoice.Pokemon:
                 currentState = GameState.PartyMenu;

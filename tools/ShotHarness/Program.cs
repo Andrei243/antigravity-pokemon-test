@@ -1077,21 +1077,56 @@ if (Run("menus"))
     Frames(131); Confirm(mb); Frames(74); Confirm(mb); Frames(74); Confirm(mb); Frames(2);
     Shot("25_trainer_hud");
 
-    // The Pokédex with the whole National Pokédex in it, and a battle against a species from a later generation
+    // The Pokédex: the Sinnoh list and an entry's three pages, the search and its results, the National Pokédex
+    // and a diploma; then a battle against a species from a later generation
     var dexScreen = (PokedexScreen)Get("pokedexScreen");
     pokedex.RegisterCaught(387);
     pokedex.RegisterSeen(906);
     pokedex.RegisterSeen(396);
     pokedex.RegisterSeen(399);
+    foreach (string caught in new[] { "Onix", "Bidoof", "Shinx", "Psyduck", "Machop" }) pokedex.RegisterCaught(PokemonDatabase.Get(caught)!.DexNumber);
+    void Pick(string name) => dexScreen.SelectedIndex = dexScreen.Rows.ToList().FindIndex(r => r.Species.Name == name);
+    // Menu sprites are baked the first time a menu asks for them: bake the ones these shots show beforehand
+    var dexSprites = typeof(GameEngine).Assembly.GetType("PokemonPlatinumEngine.Graphics.PokemonSprites")!;
+    foreach (int seen in pokedex.SeenSpecies) dexSprites.GetMethod("Request")!.Invoke(null, new object[] { PokemonDatabase.GetByDex(seen)!.Name });
+    dexSprites.GetMethod("Flush")!.Invoke(null, new[] { Get("renderContext") });
+    void Page(PokedexPage page) { while (dexScreen.Page != page) dexScreen.Sideways(1); }
     Set("currentState", GameState.PokedexMenu);
-    dexScreen.Open(pokedex);
+    dexScreen.Open(pokedex, ((WorldRenderer)Get("world")).Portrait(PlayerIdentity.Character));
     Frames(30); Shot("26_pokedex_turtwig");
-    dexScreen.SelectedIndex = 395;
+    Pick("Starly");
     Frames(2); Shot("26c_pokedex_seen_only");
-    dexScreen.SelectedIndex = 400;
+    Pick("Bibarel");
     Frames(2); Shot("26d_pokedex_unseen");
-    dexScreen.SelectedIndex = 905;
+    Pick("Starly");
+    dexScreen.Confirm();
+    Page(PokedexPage.Area);
+    Frames(2); Shot("26e_pokedex_area_starly");
+    Pick("Psyduck");
+    Frames(2); Shot("26f_pokedex_area_psyduck");
+    Pick("Turtwig");
+    Frames(2); Shot("26g_pokedex_area_unknown");
+    Page(PokedexPage.Size);
+    Frames(2); Shot("26h_pokedex_size_turtwig");
+    Pick("Onix");
+    Frames(2); Shot("26i_pokedex_size_onix");
+    dexScreen.Cancel();
+    dexScreen.OpenSearch();
+    for (int i = 0; i < 2; i++) dexScreen.Sideways(1);   // the heaviest first
+    Frames(2); Shot("26j_pokedex_search");
+    dexScreen.Search();
+    Frames(2); Shot("26k_pokedex_results_heaviest");
+    dexScreen.Cancel();
+    pokedex.UnlockNational();
+    dexScreen.OpenSearch();
+    dexScreen.Sideways(1);
+    dexScreen.Search();
+    Pick("Sprigatito");
     Frames(2); Shot("26b_pokedex_later_generation");
+    var complete = new Pokedex();
+    foreach (var e in Pokedex.Entries(PokedexMode.Sinnoh)) complete.RegisterSeen(e.Species.DexNumber);
+    dexScreen.Open(complete);
+    Frames(20); Shot("26l_pokedex_diploma");
     dexScreen.Close();
     var later = StartBattle("Sprigatito", 5);
     ToMainMenu(later);

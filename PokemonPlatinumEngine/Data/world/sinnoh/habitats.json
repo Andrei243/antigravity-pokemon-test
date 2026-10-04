@@ -1,0 +1,4421 @@
+{
+  "map": [
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "        .....              ~~~",
+    "        ...T.         ...  ~.~",
+    "~~~~~~  ...T.         ...  ~~~",
+    "~.~~.~  ...~~         ...  ~~~",
+    "~ ~~ ~  ...       ........ ~~~",
+    "        ...       ..T..... ~~~",
+    "        .....     ....~... ~~~",
+    "        .....     ....~....~~~",
+    "        .....      TT..~...~~~",
+    "  ~~~             ~..~~~.T.~~~",
+    "  ~.~..............     ...~.~",
+    "  ~~~....TT...T....      ~~..~",
+    "    .....T...........~~~ ~T.~~",
+    "    .......     .....TT. ~T~~ ",
+    "    .T.....     .....TT. ~~~  ",
+    "    .T.....  ....TT.....~~~~  ",
+    "~ ~ ..........TT.... ....~~~  ",
+    ".T.~..........TT... .....~~~~ ",
+    ".T..TT..TT..~.............TT~ ",
+    "....TT...T.  ... .........TT~ ",
+    "....... ...  .....TT...~~~~~~ ",
+    ".....T.      .....TT.~~~      ",
+    "...T.......  ..~....~~~~      ",
+    "  ..~~~....                   ",
+    "    ~~~~...                   "
+  ],
+  "areas": [
+    {
+      "key": "canalave_city",
+      "name": "Canalave City",
+      "cells": "1,22 1,23",
+      "surf": [
+        "Tentacool",
+        "Shellos",
+        "Tentacruel",
+        "Gastrodon"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon",
+        "Staryu"
+      ]
+    },
+    {
+      "key": "eterna_city",
+      "name": "Eterna City",
+      "cells": "9,16 9,17 10,16",
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "pastoria_city",
+      "name": "Pastoria City",
+      "cells": "18,25 18,26 19,25 19,26",
+      "surf": [
+        "Tentacool",
+        "Shellos",
+        "Tentacruel",
+        "Wingull",
+        "Gastrodon"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery"
+      ]
+    },
+    {
+      "key": "sunyshore_city",
+      "name": "Sunyshore City",
+      "cells": "26,23 26,24 27,23 27,24",
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Tentacruel",
+        "Pelipper"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery",
+        "Staryu"
+      ]
+    },
+    {
+      "key": "pokemon_league",
+      "name": "Pokémon League",
+      "cells": "26,17 26,18",
+      "surf": [
+        "Wingull",
+        "Pelipper",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery",
+        "Luvdisc"
+      ]
+    },
+    {
+      "key": "oreburgh_mine_b1f",
+      "name": "Oreburgh Mine",
+      "cells": "9,24",
+      "morning": [
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ],
+      "day": [
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ],
+      "night": [
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "oreburgh_mine_b2f",
+      "name": "Oreburgh Mine",
+      "cells": "9,24",
+      "morning": [
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ],
+      "day": [
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ],
+      "night": [
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "valley_windworks_outside",
+      "name": "Valley Windworks",
+      "cells": "7,20",
+      "morning": [
+        "Shellos",
+        "Shinx",
+        "Buizel",
+        "Pachirisu"
+      ],
+      "day": [
+        "Shellos",
+        "Shinx",
+        "Buizel",
+        "Pachirisu"
+      ],
+      "night": [
+        "Shellos",
+        "Shinx",
+        "Buizel",
+        "Pachirisu"
+      ],
+      "surf": [
+        "Shellos",
+        "Tentacool",
+        "Gastrodon",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon",
+        "Shellder"
+      ]
+    },
+    {
+      "key": "eterna_forest",
+      "name": "Eterna Forest",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Buneary",
+        "Budew",
+        "Wurmple",
+        "Kricketot",
+        "Bidoof",
+        "Silcoon",
+        "Cascoon",
+        "Gastly",
+        "Beautifly",
+        "Dustox"
+      ],
+      "day": [
+        "Buneary",
+        "Budew",
+        "Wurmple",
+        "Bidoof",
+        "Silcoon",
+        "Cascoon",
+        "Gastly",
+        "Beautifly",
+        "Dustox"
+      ],
+      "night": [
+        "Buneary",
+        "Budew",
+        "Kricketot",
+        "Hoothoot",
+        "Bidoof",
+        "Silcoon",
+        "Cascoon",
+        "Gastly",
+        "Beautifly",
+        "Dustox"
+      ]
+    },
+    {
+      "key": "fuego_ironworks_outside",
+      "name": "Fuego Ironworks",
+      "cells": "5,18",
+      "morning": [
+        "Magmar",
+        "Magnemite",
+        "Floatzel",
+        "Gastrodon"
+      ],
+      "day": [
+        "Magmar",
+        "Magnemite",
+        "Floatzel",
+        "Gastrodon"
+      ],
+      "night": [
+        "Magmar",
+        "Magnemite",
+        "Gastrodon",
+        "Floatzel"
+      ],
+      "surf": [
+        "Tentacool",
+        "Shellos",
+        "Tentacruel",
+        "Gastrodon"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon",
+        "Shellder"
+      ]
+    },
+    {
+      "key": "mt_coronet_1f_south",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzor",
+        "Geodude",
+        "Meditite",
+        "Clefairy",
+        "Machop",
+        "Chingling",
+        "Nosepass",
+        "Zubat"
+      ],
+      "day": [
+        "Bronzor",
+        "Geodude",
+        "Meditite",
+        "Machop",
+        "Chingling",
+        "Nosepass",
+        "Zubat"
+      ],
+      "night": [
+        "Bronzor",
+        "Geodude",
+        "Zubat",
+        "Clefairy",
+        "Machop",
+        "Meditite",
+        "Chingling",
+        "Nosepass"
+      ],
+      "surf": [
+        "Zubat",
+        "Golbat"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "mt_coronet_2f",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Bronzong",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass"
+      ]
+    },
+    {
+      "key": "mt_coronet_3f",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Bronzong",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass"
+      ]
+    },
+    {
+      "key": "mt_coronet_outside_north",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Snover",
+        "Abomasnow",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Absol"
+      ],
+      "day": [
+        "Snover",
+        "Abomasnow",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Absol"
+      ],
+      "night": [
+        "Snover",
+        "Abomasnow",
+        "Golbat",
+        "Noctowl",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass",
+        "Absol"
+      ]
+    },
+    {
+      "key": "mt_coronet_outside_south",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Snover",
+        "Abomasnow",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Absol"
+      ],
+      "day": [
+        "Snover",
+        "Abomasnow",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Absol"
+      ],
+      "night": [
+        "Snover",
+        "Abomasnow",
+        "Golbat",
+        "Noctowl",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass",
+        "Absol"
+      ]
+    },
+    {
+      "key": "mt_coronet_4f_rooms_1_and_2",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Bronzong",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass"
+      ],
+      "surf": [
+        "Zubat",
+        "Golbat"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Dratini",
+        "Whiscash",
+        "Dragonair"
+      ]
+    },
+    {
+      "key": "mt_coronet_4f_room_3",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat",
+        "Chimecho"
+      ],
+      "day": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat",
+        "Chimecho"
+      ],
+      "night": [
+        "Bronzong",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "mt_coronet_5f",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat",
+        "Chimecho"
+      ],
+      "day": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat",
+        "Chimecho"
+      ],
+      "night": [
+        "Bronzong",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "mt_coronet_6f",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chimecho",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Bronzong",
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chimecho",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Bronzong",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chimecho",
+        "Nosepass"
+      ]
+    },
+    {
+      "key": "mt_coronet_1f_tunnel_room",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Graveler",
+        "Medicham",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Graveler",
+        "Medicham",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Medicham",
+        "Chingling",
+        "Nosepass"
+      ]
+    },
+    {
+      "key": "mt_coronet_1f_north_room_2",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzor",
+        "Graveler",
+        "Meditite",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Bronzor",
+        "Graveler",
+        "Meditite",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Bronzor",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Meditite",
+        "Chingling",
+        "Nosepass"
+      ]
+    },
+    {
+      "key": "mt_coronet_1f_north_room_1",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzor",
+        "Geodude",
+        "Meditite",
+        "Cleffa",
+        "Machop",
+        "Chingling",
+        "Nosepass",
+        "Zubat"
+      ],
+      "day": [
+        "Bronzor",
+        "Geodude",
+        "Meditite",
+        "Machop",
+        "Chingling",
+        "Nosepass",
+        "Zubat"
+      ],
+      "night": [
+        "Bronzor",
+        "Geodude",
+        "Zubat",
+        "Cleffa",
+        "Machop",
+        "Meditite",
+        "Chingling",
+        "Nosepass"
+      ]
+    },
+    {
+      "key": "mt_coronet_b1f",
+      "name": "Mt. Coronet",
+      "cells": "10,22 11,12 11,16 12,22 13,16",
+      "morning": [
+        "Bronzor",
+        "Graveler",
+        "Meditite",
+        "Clefairy",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "day": [
+        "Bronzor",
+        "Graveler",
+        "Meditite",
+        "Machoke",
+        "Chingling",
+        "Nosepass",
+        "Golbat"
+      ],
+      "night": [
+        "Bronzor",
+        "Graveler",
+        "Golbat",
+        "Clefairy",
+        "Machoke",
+        "Meditite",
+        "Chingling",
+        "Nosepass"
+      ],
+      "surf": [
+        "Zubat",
+        "Golbat"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_maniac_tunnel_room",
+      "name": "Solaceon Ruins",
+      "cells": "18,20 22,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_2_northeast_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_1_northwest_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_2",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_1_southeast_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_3",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_2_southeast_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_6_southeast_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_5_southwest_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_3_northwest_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_3_southwest_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_4",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_6",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_5",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_7",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_4_southeast_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_6_northwest_dead_end",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "victory_road_1f",
+      "name": "Victory Road",
+      "cells": "26,18 27,17",
+      "morning": [
+        "Graveler",
+        "Rhyhorn",
+        "Onix",
+        "Rhydon",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "day": [
+        "Graveler",
+        "Rhyhorn",
+        "Onix",
+        "Rhydon",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "night": [
+        "Graveler",
+        "Rhyhorn",
+        "Golbat",
+        "Onix",
+        "Rhydon",
+        "Steelix",
+        "Gabite"
+      ]
+    },
+    {
+      "key": "victory_road_2f",
+      "name": "Victory Road",
+      "cells": "26,18 27,17",
+      "morning": [
+        "Magneton",
+        "Steelix",
+        "Graveler",
+        "Golbat",
+        "Onix",
+        "Gabite"
+      ],
+      "day": [
+        "Magneton",
+        "Steelix",
+        "Graveler",
+        "Golbat",
+        "Onix",
+        "Gabite"
+      ],
+      "night": [
+        "Magneton",
+        "Steelix",
+        "Golbat",
+        "Graveler",
+        "Onix",
+        "Gabite"
+      ]
+    },
+    {
+      "key": "victory_road_b1f",
+      "name": "Victory Road",
+      "cells": "26,18 27,17",
+      "morning": [
+        "Floatzel",
+        "Azumarill",
+        "Graveler",
+        "Onix",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "day": [
+        "Floatzel",
+        "Azumarill",
+        "Graveler",
+        "Onix",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "night": [
+        "Floatzel",
+        "Azumarill",
+        "Golbat",
+        "Onix",
+        "Graveler",
+        "Steelix",
+        "Gabite"
+      ],
+      "surf": [
+        "Floatzel",
+        "Golbat"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp"
+      ],
+      "superRod": [
+        "Gyarados"
+      ]
+    },
+    {
+      "key": "victory_road_1f_room_2",
+      "name": "Victory Road",
+      "cells": "26,18 27,17",
+      "morning": [
+        "Floatzel",
+        "Azumarill",
+        "Graveler",
+        "Dewgong",
+        "Golbat",
+        "Gabite"
+      ],
+      "day": [
+        "Floatzel",
+        "Azumarill",
+        "Graveler",
+        "Dewgong",
+        "Golbat",
+        "Gabite"
+      ],
+      "night": [
+        "Floatzel",
+        "Azumarill",
+        "Golbat",
+        "Dewgong",
+        "Graveler",
+        "Gabite"
+      ],
+      "surf": [
+        "Floatzel",
+        "Dewgong",
+        "Lapras"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp"
+      ],
+      "superRod": [
+        "Gyarados"
+      ]
+    },
+    {
+      "key": "victory_road_1f_room_1",
+      "name": "Victory Road",
+      "cells": "26,18 27,17",
+      "morning": [
+        "Graveler",
+        "Floatzel",
+        "Onix",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "day": [
+        "Graveler",
+        "Floatzel",
+        "Onix",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "night": [
+        "Graveler",
+        "Floatzel",
+        "Golbat",
+        "Onix",
+        "Steelix",
+        "Gabite"
+      ]
+    },
+    {
+      "key": "victory_road_1f_room_3",
+      "name": "Victory Road",
+      "cells": "26,18 27,17",
+      "morning": [
+        "Graveler",
+        "Floatzel",
+        "Onix",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "day": [
+        "Graveler",
+        "Floatzel",
+        "Onix",
+        "Golbat",
+        "Steelix",
+        "Gabite"
+      ],
+      "night": [
+        "Graveler",
+        "Floatzel",
+        "Golbat",
+        "Onix",
+        "Steelix",
+        "Gabite"
+      ]
+    },
+    {
+      "key": "ravaged_path",
+      "name": "Ravaged Path",
+      "cells": "5,21 5,22",
+      "morning": [
+        "Zubat",
+        "Psyduck"
+      ],
+      "day": [
+        "Zubat",
+        "Psyduck"
+      ],
+      "night": [
+        "Zubat",
+        "Psyduck"
+      ],
+      "surf": [
+        "Psyduck",
+        "Zubat",
+        "Golduck",
+        "Golbat"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "oreburgh_gate_1f",
+      "name": "Oreburgh Gate",
+      "cells": "7,23 8,23",
+      "morning": [
+        "Zubat",
+        "Psyduck",
+        "Geodude"
+      ],
+      "day": [
+        "Zubat",
+        "Psyduck",
+        "Geodude"
+      ],
+      "night": [
+        "Zubat",
+        "Psyduck",
+        "Geodude"
+      ]
+    },
+    {
+      "key": "oreburgh_gate_b1f",
+      "name": "Oreburgh Gate",
+      "cells": "7,23 8,23",
+      "morning": [
+        "Zubat",
+        "Psyduck",
+        "Geodude",
+        "Golbat"
+      ],
+      "day": [
+        "Zubat",
+        "Psyduck",
+        "Geodude",
+        "Golbat"
+      ],
+      "night": [
+        "Zubat",
+        "Psyduck",
+        "Geodude",
+        "Golbat"
+      ],
+      "surf": [
+        "Psyduck",
+        "Zubat",
+        "Golduck",
+        "Golbat"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "stark_mountain_outside",
+      "name": "Stark Mountain",
+      "cells": "23,7",
+      "morning": [
+        "Camerupt",
+        "Rhydon",
+        "Fearow",
+        "Graveler",
+        "Weezing",
+        "Skarmory",
+        "Numel",
+        "Rhyhorn"
+      ],
+      "day": [
+        "Camerupt",
+        "Rhydon",
+        "Fearow",
+        "Graveler",
+        "Weezing",
+        "Skarmory",
+        "Numel",
+        "Rhyhorn"
+      ],
+      "night": [
+        "Camerupt",
+        "Rhydon",
+        "Golbat",
+        "Graveler",
+        "Fearow",
+        "Weezing",
+        "Skarmory",
+        "Numel",
+        "Rhyhorn"
+      ]
+    },
+    {
+      "key": "stark_mountain_room_1",
+      "name": "Stark Mountain",
+      "cells": "23,7",
+      "morning": [
+        "Magcargo",
+        "Rhydon",
+        "Golbat",
+        "Graveler",
+        "Weezing",
+        "Slugma",
+        "Rhyhorn"
+      ],
+      "day": [
+        "Magcargo",
+        "Rhydon",
+        "Golbat",
+        "Graveler",
+        "Weezing",
+        "Slugma",
+        "Rhyhorn"
+      ],
+      "night": [
+        "Magcargo",
+        "Rhydon",
+        "Golbat",
+        "Graveler",
+        "Weezing",
+        "Slugma",
+        "Rhyhorn"
+      ]
+    },
+    {
+      "key": "stark_mountain_room_2",
+      "name": "Stark Mountain",
+      "cells": "23,7",
+      "morning": [
+        "Magcargo",
+        "Golbat",
+        "Graveler",
+        "Rhydon",
+        "Weezing",
+        "Slugma",
+        "Koffing"
+      ],
+      "day": [
+        "Magcargo",
+        "Golbat",
+        "Graveler",
+        "Rhydon",
+        "Weezing",
+        "Slugma",
+        "Koffing"
+      ],
+      "night": [
+        "Magcargo",
+        "Golbat",
+        "Graveler",
+        "Rhydon",
+        "Weezing",
+        "Slugma",
+        "Koffing"
+      ]
+    },
+    {
+      "key": "sendoff_spring",
+      "name": "Sendoff Spring",
+      "cells": "23,22",
+      "morning": [
+        "Graveler",
+        "Bibarel",
+        "Staravia",
+        "Chingling",
+        "Dusclops"
+      ],
+      "day": [
+        "Graveler",
+        "Bibarel",
+        "Staravia",
+        "Chingling",
+        "Dusclops"
+      ],
+      "night": [
+        "Graveler",
+        "Bibarel",
+        "Dusclops",
+        "Golbat",
+        "Staravia",
+        "Chingling"
+      ],
+      "surf": [
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_1_room_1",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "day": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "night": [
+        "Gastly",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_1_room_2",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "day": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "night": [
+        "Gastly",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_1_room_3",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "day": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "night": [
+        "Gastly",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "snowpoint_temple_1f",
+      "name": "Snowpoint Temple",
+      "cells": "11,6",
+      "morning": [
+        "Golbat",
+        "Sneasel",
+        "Smoochum"
+      ],
+      "day": [
+        "Golbat",
+        "Sneasel",
+        "Smoochum"
+      ],
+      "night": [
+        "Golbat",
+        "Sneasel",
+        "Smoochum"
+      ]
+    },
+    {
+      "key": "snowpoint_temple_b1f",
+      "name": "Snowpoint Temple",
+      "cells": "11,6",
+      "morning": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "day": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "night": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ]
+    },
+    {
+      "key": "snowpoint_temple_b2f",
+      "name": "Snowpoint Temple",
+      "cells": "11,6",
+      "morning": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "day": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "night": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ]
+    },
+    {
+      "key": "snowpoint_temple_b3f",
+      "name": "Snowpoint Temple",
+      "cells": "11,6",
+      "morning": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "day": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "night": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ]
+    },
+    {
+      "key": "snowpoint_temple_b4f",
+      "name": "Snowpoint Temple",
+      "cells": "11,6",
+      "morning": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "day": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "night": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ]
+    },
+    {
+      "key": "snowpoint_temple_b5f",
+      "name": "Snowpoint Temple",
+      "cells": "11,6",
+      "morning": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "day": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ],
+      "night": [
+        "Golbat",
+        "Sneasel",
+        "Jynx"
+      ]
+    },
+    {
+      "key": "wayward_cave_1f",
+      "name": "Wayward Cave",
+      "cells": "9,18 9,19",
+      "morning": [
+        "Bronzor",
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ],
+      "day": [
+        "Bronzor",
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ],
+      "night": [
+        "Bronzor",
+        "Geodude",
+        "Zubat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "wayward_cave_b1f",
+      "name": "Wayward Cave",
+      "cells": "9,18 9,19",
+      "morning": [
+        "Bronzor",
+        "Geodude",
+        "Gible",
+        "Zubat",
+        "Onix"
+      ],
+      "day": [
+        "Bronzor",
+        "Geodude",
+        "Gible",
+        "Zubat",
+        "Onix"
+      ],
+      "night": [
+        "Bronzor",
+        "Geodude",
+        "Gible",
+        "Zubat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "ruin_maniac_cave_short",
+      "name": "Ruin Maniac Cave",
+      "cells": "22,20",
+      "morning": [
+        "Geodude",
+        "Hippopotas"
+      ],
+      "day": [
+        "Geodude",
+        "Hippopotas"
+      ],
+      "night": [
+        "Geodude",
+        "Hippopotas"
+      ]
+    },
+    {
+      "key": "trophy_garden",
+      "name": "Trophy Garden",
+      "cells": "14,24",
+      "morning": [
+        "Pichu",
+        "Roselia",
+        "Staravia",
+        "Kricketune",
+        "Pikachu"
+      ],
+      "day": [
+        "Pichu",
+        "Roselia",
+        "Staravia",
+        "Pikachu"
+      ],
+      "night": [
+        "Pichu",
+        "Roselia",
+        "Kricketune",
+        "Staravia",
+        "Pikachu"
+      ]
+    },
+    {
+      "key": "iron_island",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "surf": [
+        "Wingull",
+        "Tentacool",
+        "Pelipper",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon",
+        "Qwilfish"
+      ]
+    },
+    {
+      "key": "iron_island_1f",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "morning": [
+        "Geodude",
+        "Graveler",
+        "Zubat",
+        "Golbat",
+        "Onix"
+      ],
+      "day": [
+        "Geodude",
+        "Graveler",
+        "Zubat",
+        "Golbat",
+        "Onix"
+      ],
+      "night": [
+        "Geodude",
+        "Graveler",
+        "Zubat",
+        "Golbat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "iron_island_b1f_left_room",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "morning": [
+        "Graveler",
+        "Golbat",
+        "Onix"
+      ],
+      "day": [
+        "Graveler",
+        "Golbat",
+        "Onix"
+      ],
+      "night": [
+        "Graveler",
+        "Golbat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "iron_island_b1f_right_room",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "morning": [
+        "Graveler",
+        "Golbat",
+        "Onix"
+      ],
+      "day": [
+        "Graveler",
+        "Golbat",
+        "Onix"
+      ],
+      "night": [
+        "Graveler",
+        "Golbat",
+        "Onix"
+      ]
+    },
+    {
+      "key": "iron_island_b2f_right_room",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "morning": [
+        "Onix",
+        "Graveler",
+        "Golbat",
+        "Steelix"
+      ],
+      "day": [
+        "Onix",
+        "Graveler",
+        "Golbat",
+        "Steelix"
+      ],
+      "night": [
+        "Onix",
+        "Graveler",
+        "Golbat",
+        "Steelix"
+      ]
+    },
+    {
+      "key": "iron_island_b2f_left_room",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "morning": [
+        "Onix",
+        "Graveler",
+        "Golbat",
+        "Steelix"
+      ],
+      "day": [
+        "Onix",
+        "Graveler",
+        "Golbat",
+        "Steelix"
+      ],
+      "night": [
+        "Onix",
+        "Graveler",
+        "Golbat",
+        "Steelix"
+      ]
+    },
+    {
+      "key": "iron_island_b3f",
+      "name": "Iron Island",
+      "cells": "3,15",
+      "morning": [
+        "Steelix",
+        "Graveler",
+        "Golbat"
+      ],
+      "day": [
+        "Steelix",
+        "Graveler",
+        "Golbat"
+      ],
+      "night": [
+        "Steelix",
+        "Graveler",
+        "Golbat"
+      ]
+    },
+    {
+      "key": "old_chateau",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_dining_area",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_side_rooms",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_corridor",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_back_west_room",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_back_middle_west_room",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_back_middle_room",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_back_middle_east_room",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "old_chateau_back_east_room",
+      "name": "Old Chateau",
+      "cells": "6,18 8,16",
+      "morning": [
+        "Gastly"
+      ],
+      "day": [
+        "Gastly"
+      ],
+      "night": [
+        "Gastly"
+      ]
+    },
+    {
+      "key": "lake_verity_low_water",
+      "name": "Lake Verity",
+      "cells": "2,26",
+      "morning": [
+        "Starly",
+        "Bidoof"
+      ],
+      "day": [
+        "Starly",
+        "Bidoof"
+      ],
+      "night": [
+        "Starly",
+        "Bidoof"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "lake_verity",
+      "name": "Lake Verity",
+      "cells": "2,26",
+      "morning": [
+        "Starly",
+        "Bidoof"
+      ],
+      "day": [
+        "Starly",
+        "Bidoof"
+      ],
+      "night": [
+        "Starly",
+        "Bidoof"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "lake_valor",
+      "name": "Lake Valor",
+      "cells": "22,23",
+      "morning": [
+        "Staravia",
+        "Bibarel",
+        "Golduck",
+        "Psyduck"
+      ],
+      "day": [
+        "Staravia",
+        "Bibarel",
+        "Golduck",
+        "Psyduck"
+      ],
+      "night": [
+        "Staravia",
+        "Bibarel",
+        "Golduck",
+        "Psyduck"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "lake_acuity",
+      "name": "Lake Acuity",
+      "cells": "9,7",
+      "morning": [
+        "Snover",
+        "Bibarel",
+        "Golduck",
+        "Sneasel",
+        "Psyduck"
+      ],
+      "day": [
+        "Snover",
+        "Bibarel",
+        "Golduck",
+        "Sneasel",
+        "Psyduck"
+      ],
+      "night": [
+        "Snover",
+        "Bibarel",
+        "Snorunt",
+        "Golduck",
+        "Sneasel",
+        "Psyduck"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "valor_lakefront",
+      "name": "Valor Lakefront",
+      "cells": "21,23 21,24 22,23 22,24",
+      "morning": [
+        "Girafarig",
+        "Bibarel",
+        "Staravia",
+        "Kricketune",
+        "Houndour"
+      ],
+      "day": [
+        "Girafarig",
+        "Bibarel",
+        "Staravia",
+        "Houndour"
+      ],
+      "night": [
+        "Girafarig",
+        "Bibarel",
+        "Kricketune",
+        "Houndour",
+        "Staravia"
+      ]
+    },
+    {
+      "key": "acuity_lakefront",
+      "name": "Acuity Lakefront",
+      "cells": "9,6 9,7 10,6 10,7",
+      "morning": [
+        "Snover",
+        "Swinub",
+        "Sneasel"
+      ],
+      "day": [
+        "Snover",
+        "Swinub",
+        "Sneasel"
+      ],
+      "night": [
+        "Snover",
+        "Swinub",
+        "Snorunt",
+        "Sneasel"
+      ]
+    },
+    {
+      "key": "route_201",
+      "name": "Route 201",
+      "cells": "3,26 4,26",
+      "morning": [
+        "Starly",
+        "Bidoof",
+        "Kricketot"
+      ],
+      "day": [
+        "Starly",
+        "Bidoof"
+      ],
+      "night": [
+        "Starly",
+        "Bidoof",
+        "Kricketot"
+      ]
+    },
+    {
+      "key": "route_202",
+      "name": "Route 202",
+      "cells": "5,25",
+      "morning": [
+        "Shinx",
+        "Bidoof",
+        "Starly",
+        "Kricketot"
+      ],
+      "day": [
+        "Shinx",
+        "Bidoof",
+        "Starly"
+      ],
+      "night": [
+        "Shinx",
+        "Bidoof",
+        "Kricketot",
+        "Starly"
+      ]
+    },
+    {
+      "key": "route_203",
+      "name": "Route 203",
+      "cells": "6,23 7,23",
+      "morning": [
+        "Starly",
+        "Shinx",
+        "Kricketot",
+        "Bidoof",
+        "Abra"
+      ],
+      "day": [
+        "Starly",
+        "Shinx",
+        "Bidoof",
+        "Abra"
+      ],
+      "night": [
+        "Starly",
+        "Shinx",
+        "Kricketot",
+        "Zubat",
+        "Bidoof",
+        "Abra"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_204_south",
+      "name": "Route 204",
+      "cells": "5,22",
+      "morning": [
+        "Starly",
+        "Bidoof",
+        "Wurmple",
+        "Kricketot",
+        "Budew",
+        "Shinx"
+      ],
+      "day": [
+        "Starly",
+        "Bidoof",
+        "Wurmple",
+        "Budew",
+        "Shinx"
+      ],
+      "night": [
+        "Starly",
+        "Bidoof",
+        "Kricketot",
+        "Zubat",
+        "Budew",
+        "Shinx"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_204_north",
+      "name": "Route 204",
+      "cells": "5,21",
+      "morning": [
+        "Starly",
+        "Bidoof",
+        "Wurmple",
+        "Kricketot",
+        "Budew",
+        "Shinx"
+      ],
+      "day": [
+        "Starly",
+        "Bidoof",
+        "Wurmple",
+        "Budew",
+        "Shinx"
+      ],
+      "night": [
+        "Starly",
+        "Bidoof",
+        "Kricketot",
+        "Zubat",
+        "Budew",
+        "Shinx"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_205_south",
+      "name": "Route 205",
+      "cells": "6,18 6,19 6,20",
+      "morning": [
+        "Shellos",
+        "Buizel",
+        "Bidoof",
+        "Pachirisu"
+      ],
+      "day": [
+        "Shellos",
+        "Buizel",
+        "Bidoof",
+        "Pachirisu"
+      ],
+      "night": [
+        "Shellos",
+        "Buizel",
+        "Bidoof",
+        "Pachirisu"
+      ],
+      "surf": [
+        "Shellos",
+        "Tentacool",
+        "Gastrodon",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon",
+        "Shellder"
+      ]
+    },
+    {
+      "key": "route_205_north",
+      "name": "Route 205",
+      "cells": "8,16",
+      "morning": [
+        "Bidoof",
+        "Budew",
+        "Wurmple",
+        "Kricketot",
+        "Silcoon",
+        "Cascoon",
+        "Beautifly",
+        "Dustox"
+      ],
+      "day": [
+        "Bidoof",
+        "Budew",
+        "Wurmple",
+        "Silcoon",
+        "Cascoon",
+        "Beautifly",
+        "Dustox"
+      ],
+      "night": [
+        "Bidoof",
+        "Budew",
+        "Kricketot",
+        "Hoothoot",
+        "Silcoon",
+        "Cascoon",
+        "Beautifly",
+        "Dustox"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "route_206",
+      "name": "Route 206",
+      "cells": "9,18 9,19 9,20 9,21",
+      "morning": [
+        "Ponyta",
+        "Geodude",
+        "Gligar",
+        "Kricketune",
+        "Machop"
+      ],
+      "day": [
+        "Ponyta",
+        "Geodude",
+        "Gligar",
+        "Machop"
+      ],
+      "night": [
+        "Ponyta",
+        "Geodude",
+        "Kricketune",
+        "Zubat",
+        "Gligar",
+        "Machop"
+      ]
+    },
+    {
+      "key": "route_207",
+      "name": "Route 207",
+      "cells": "9,22 10,22",
+      "morning": [
+        "Machop",
+        "Geodude",
+        "Ponyta",
+        "Kricketot"
+      ],
+      "day": [
+        "Machop",
+        "Geodude",
+        "Ponyta"
+      ],
+      "night": [
+        "Machop",
+        "Geodude",
+        "Kricketot",
+        "Zubat",
+        "Ponyta"
+      ]
+    },
+    {
+      "key": "route_208",
+      "name": "Route 208",
+      "cells": "12,22 13,22",
+      "morning": [
+        "Budew",
+        "Bidoof",
+        "Ralts",
+        "Roselia",
+        "Bibarel"
+      ],
+      "day": [
+        "Budew",
+        "Bidoof",
+        "Ralts",
+        "Roselia",
+        "Bibarel"
+      ],
+      "night": [
+        "Budew",
+        "Bidoof",
+        "Zubat",
+        "Ralts",
+        "Roselia",
+        "Bibarel"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_209",
+      "name": "Route 209",
+      "cells": "16,22 17,21 17,22",
+      "morning": [
+        "Roselia",
+        "Bibarel",
+        "Staravia",
+        "Ralts",
+        "Chansey"
+      ],
+      "day": [
+        "Roselia",
+        "Bibarel",
+        "Staravia",
+        "Ralts",
+        "Chansey"
+      ],
+      "night": [
+        "Roselia",
+        "Bibarel",
+        "Zubat",
+        "Duskull",
+        "Staravia",
+        "Ralts",
+        "Chansey"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_209_lost_tower_1f",
+      "name": "Route 209",
+      "cells": "17,21",
+      "morning": [
+        "Gastly",
+        "Zubat"
+      ],
+      "day": [
+        "Gastly",
+        "Zubat"
+      ],
+      "night": [
+        "Gastly",
+        "Zubat",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "route_209_lost_tower_2f",
+      "name": "Route 209",
+      "cells": "17,21",
+      "morning": [
+        "Gastly",
+        "Zubat"
+      ],
+      "day": [
+        "Gastly",
+        "Zubat"
+      ],
+      "night": [
+        "Gastly",
+        "Zubat",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "route_209_lost_tower_3f",
+      "name": "Route 209",
+      "cells": "17,21",
+      "morning": [
+        "Gastly",
+        "Zubat",
+        "Golbat"
+      ],
+      "day": [
+        "Gastly",
+        "Zubat",
+        "Golbat"
+      ],
+      "night": [
+        "Gastly",
+        "Zubat",
+        "Duskull",
+        "Golbat"
+      ]
+    },
+    {
+      "key": "route_209_lost_tower_4f",
+      "name": "Route 209",
+      "cells": "17,21",
+      "morning": [
+        "Gastly",
+        "Zubat",
+        "Golbat"
+      ],
+      "day": [
+        "Gastly",
+        "Zubat",
+        "Golbat"
+      ],
+      "night": [
+        "Gastly",
+        "Zubat",
+        "Duskull",
+        "Golbat"
+      ]
+    },
+    {
+      "key": "route_209_lost_tower_5f",
+      "name": "Route 209",
+      "cells": "17,21",
+      "morning": [
+        "Gastly",
+        "Zubat",
+        "Golbat"
+      ],
+      "day": [
+        "Gastly",
+        "Zubat",
+        "Golbat"
+      ],
+      "night": [
+        "Gastly",
+        "Zubat",
+        "Duskull",
+        "Golbat"
+      ]
+    },
+    {
+      "key": "route_210_south",
+      "name": "Route 210",
+      "cells": "17,17 17,18 17,19",
+      "morning": [
+        "Staravia",
+        "Geodude",
+        "Scyther",
+        "Ponyta",
+        "Roselia",
+        "Chansey"
+      ],
+      "day": [
+        "Staravia",
+        "Geodude",
+        "Ponyta",
+        "Roselia",
+        "Scyther",
+        "Chansey"
+      ],
+      "night": [
+        "Staravia",
+        "Geodude",
+        "Noctowl",
+        "Hoothoot",
+        "Roselia",
+        "Ponyta",
+        "Scyther",
+        "Chansey"
+      ]
+    },
+    {
+      "key": "route_210_north",
+      "name": "Route 210",
+      "cells": "15,16 16,16 17,16",
+      "morning": [
+        "Swablu",
+        "Bibarel",
+        "Scyther",
+        "Meditite",
+        "Machop",
+        "Machoke"
+      ],
+      "day": [
+        "Swablu",
+        "Bibarel",
+        "Meditite",
+        "Machop",
+        "Scyther",
+        "Machoke"
+      ],
+      "night": [
+        "Swablu",
+        "Bibarel",
+        "Noctowl",
+        "Hoothoot",
+        "Meditite",
+        "Machop",
+        "Scyther",
+        "Machoke"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach",
+        "Whiscash"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "route_211_west",
+      "name": "Route 211",
+      "cells": "11,16",
+      "morning": [
+        "Meditite",
+        "Bidoof",
+        "Chingling",
+        "Machop",
+        "Bronzor"
+      ],
+      "day": [
+        "Meditite",
+        "Bidoof",
+        "Chingling",
+        "Machop",
+        "Bronzor"
+      ],
+      "night": [
+        "Meditite",
+        "Bidoof",
+        "Zubat",
+        "Hoothoot",
+        "Chingling",
+        "Machop",
+        "Bronzor"
+      ]
+    },
+    {
+      "key": "route_211_east",
+      "name": "Route 211",
+      "cells": "13,16",
+      "morning": [
+        "Meditite",
+        "Graveler",
+        "Chingling",
+        "Machoke",
+        "Bronzor"
+      ],
+      "day": [
+        "Meditite",
+        "Graveler",
+        "Chingling",
+        "Machoke",
+        "Bronzor"
+      ],
+      "night": [
+        "Meditite",
+        "Graveler",
+        "Zubat",
+        "Noctowl",
+        "Chingling",
+        "Machoke",
+        "Bronzor"
+      ]
+    },
+    {
+      "key": "route_212_north",
+      "name": "Route 212",
+      "cells": "14,23 14,24 14,25",
+      "morning": [
+        "Roselia",
+        "Marill",
+        "Staravia",
+        "Kirlia"
+      ],
+      "day": [
+        "Roselia",
+        "Marill",
+        "Staravia",
+        "Ralts",
+        "Kirlia"
+      ],
+      "night": [
+        "Roselia",
+        "Marill",
+        "Staravia",
+        "Kirlia"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_212_south",
+      "name": "Route 212",
+      "cells": "14,26 15,26 16,26 17,26",
+      "morning": [
+        "Shellos",
+        "Quagsire",
+        "Buizel",
+        "Croagunk"
+      ],
+      "day": [
+        "Shellos",
+        "Quagsire",
+        "Buizel",
+        "Croagunk"
+      ],
+      "night": [
+        "Shellos",
+        "Quagsire",
+        "Buizel",
+        "Croagunk"
+      ],
+      "surf": [
+        "Shellos",
+        "Tentacool",
+        "Gastrodon",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery"
+      ]
+    },
+    {
+      "key": "route_213",
+      "name": "Route 213",
+      "cells": "20,25 20,26 21,25 21,26 22,25 22,26",
+      "morning": [
+        "Shellos",
+        "Buizel",
+        "Chatot",
+        "Wingull"
+      ],
+      "day": [
+        "Shellos",
+        "Buizel",
+        "Chatot",
+        "Wingull"
+      ],
+      "night": [
+        "Shellos",
+        "Buizel",
+        "Wingull"
+      ],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Tentacruel",
+        "Shellos",
+        "Gastrodon"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery"
+      ]
+    },
+    {
+      "key": "route_214",
+      "name": "Route 214",
+      "cells": "22,20 22,21 22,22",
+      "morning": [
+        "Graveler",
+        "Geodude",
+        "Rhyhorn",
+        "Houndour"
+      ],
+      "day": [
+        "Graveler",
+        "Geodude",
+        "Rhyhorn",
+        "Houndour"
+      ],
+      "night": [
+        "Graveler",
+        "Geodude",
+        "Houndour",
+        "Zubat",
+        "Rhyhorn"
+      ],
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "route_215",
+      "name": "Route 215",
+      "cells": "18,18 19,18 20,18",
+      "morning": [
+        "Staravia",
+        "Marill",
+        "Scyther",
+        "Lickitung",
+        "Abra",
+        "Kadabra"
+      ],
+      "day": [
+        "Staravia",
+        "Marill",
+        "Lickitung",
+        "Abra",
+        "Scyther",
+        "Kadabra"
+      ],
+      "night": [
+        "Staravia",
+        "Marill",
+        "Lickitung",
+        "Abra",
+        "Scyther",
+        "Kadabra"
+      ]
+    },
+    {
+      "key": "route_216",
+      "name": "Route 216",
+      "cells": "9,12 10,12 11,12",
+      "morning": [
+        "Snover",
+        "Sneasel",
+        "Meditite",
+        "Graveler"
+      ],
+      "day": [
+        "Snover",
+        "Sneasel",
+        "Meditite",
+        "Graveler"
+      ],
+      "night": [
+        "Snover",
+        "Sneasel",
+        "Zubat",
+        "Snorunt",
+        "Meditite",
+        "Graveler"
+      ]
+    },
+    {
+      "key": "route_217",
+      "name": "Route 217",
+      "cells": "9,8 9,9 9,10 9,11",
+      "morning": [
+        "Snover",
+        "Swinub",
+        "Sneasel"
+      ],
+      "day": [
+        "Snover",
+        "Swinub",
+        "Sneasel"
+      ],
+      "night": [
+        "Snover",
+        "Swinub",
+        "Snorunt",
+        "Sneasel"
+      ]
+    },
+    {
+      "key": "route_218",
+      "name": "Route 218",
+      "cells": "2,23 3,23",
+      "morning": [
+        "Gastrodon",
+        "Floatzel",
+        "Chatot",
+        "Mr. Mime"
+      ],
+      "day": [
+        "Gastrodon",
+        "Floatzel",
+        "Chatot",
+        "Mr. Mime"
+      ],
+      "night": [
+        "Gastrodon",
+        "Floatzel",
+        "Mr. Mime"
+      ],
+      "surf": [
+        "Tentacool",
+        "Shellos",
+        "Tentacruel",
+        "Gastrodon"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon"
+      ]
+    },
+    {
+      "key": "route_219",
+      "name": "Route 219",
+      "cells": "5,27",
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Tentacruel",
+        "Pelipper"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon",
+        "Lumineon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon"
+      ]
+    },
+    {
+      "key": "route_221",
+      "name": "Route 221",
+      "cells": "7,28 8,28 9,28",
+      "morning": [
+        "Floatzel",
+        "Girafarig",
+        "Roselia",
+        "Sudowoodo"
+      ],
+      "day": [
+        "Floatzel",
+        "Girafarig",
+        "Roselia",
+        "Sudowoodo"
+      ],
+      "night": [
+        "Floatzel",
+        "Girafarig",
+        "Roselia",
+        "Sudowoodo"
+      ],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Tentacruel",
+        "Pelipper"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon",
+        "Lumineon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon"
+      ]
+    },
+    {
+      "key": "route_222",
+      "name": "Route 222",
+      "cells": "23,24 24,24 25,24",
+      "morning": [
+        "Electabuzz",
+        "Floatzel",
+        "Chatot",
+        "Wingull",
+        "Magnemite",
+        "Luxio",
+        "Pelipper",
+        "Magneton"
+      ],
+      "day": [
+        "Electabuzz",
+        "Floatzel",
+        "Chatot",
+        "Wingull",
+        "Magnemite",
+        "Luxio",
+        "Pelipper",
+        "Magneton"
+      ],
+      "night": [
+        "Electabuzz",
+        "Floatzel",
+        "Wingull",
+        "Magnemite",
+        "Luxio",
+        "Pelipper",
+        "Magneton"
+      ],
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Tentacruel",
+        "Pelipper"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery"
+      ]
+    },
+    {
+      "key": "route_224",
+      "name": "Route 224",
+      "cells": "27,16 27,17 28,15 28,16",
+      "morning": [
+        "Floatzel",
+        "Roselia",
+        "Bellsprout",
+        "Pelipper",
+        "Gastrodon",
+        "Gloom",
+        "Weepinbell",
+        "Beautifly",
+        "Dustox"
+      ],
+      "day": [
+        "Floatzel",
+        "Roselia",
+        "Bellsprout",
+        "Pelipper",
+        "Gastrodon",
+        "Gloom",
+        "Weepinbell",
+        "Beautifly",
+        "Dustox"
+      ],
+      "night": [
+        "Floatzel",
+        "Roselia",
+        "Oddish",
+        "Pelipper",
+        "Gastrodon",
+        "Gloom",
+        "Weepinbell",
+        "Beautifly",
+        "Dustox"
+      ],
+      "surf": [
+        "Pelipper",
+        "Tentacruel",
+        "Gastrodon"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Octillery",
+        "Luvdisc"
+      ]
+    },
+    {
+      "key": "route_225",
+      "name": "Route 225",
+      "cells": "19,10 19,11 19,12",
+      "morning": [
+        "Machoke",
+        "Graveler",
+        "Fearow",
+        "Raticate",
+        "Spearow",
+        "Rattata"
+      ],
+      "day": [
+        "Machoke",
+        "Graveler",
+        "Fearow",
+        "Raticate",
+        "Spearow",
+        "Rattata"
+      ],
+      "night": [
+        "Machoke",
+        "Graveler",
+        "Banette",
+        "Fearow",
+        "Raticate",
+        "Spearow",
+        "Rattata"
+      ],
+      "surf": [
+        "Golduck",
+        "Psyduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "route_227",
+      "name": "Route 227",
+      "cells": "23,8 23,9",
+      "morning": [
+        "Camerupt",
+        "Rhydon",
+        "Fearow",
+        "Graveler",
+        "Weezing",
+        "Skarmory",
+        "Numel",
+        "Rhyhorn"
+      ],
+      "day": [
+        "Camerupt",
+        "Rhydon",
+        "Fearow",
+        "Graveler",
+        "Weezing",
+        "Skarmory",
+        "Numel",
+        "Rhyhorn"
+      ],
+      "night": [
+        "Camerupt",
+        "Rhydon",
+        "Golbat",
+        "Graveler",
+        "Fearow",
+        "Weezing",
+        "Skarmory",
+        "Numel",
+        "Rhyhorn"
+      ],
+      "surf": [
+        "Poliwhirl",
+        "Poliwag"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "route_228",
+      "name": "Route 228",
+      "cells": "24,10 24,11 24,12",
+      "morning": [
+        "Dugtrio",
+        "Cacturne",
+        "Hippowdon",
+        "Rhydon",
+        "Diglett",
+        "Cacnea"
+      ],
+      "day": [
+        "Dugtrio",
+        "Cacturne",
+        "Hippowdon",
+        "Rhydon",
+        "Diglett",
+        "Cacnea"
+      ],
+      "night": [
+        "Dugtrio",
+        "Cacturne",
+        "Rhydon",
+        "Hippowdon",
+        "Diglett",
+        "Cacnea"
+      ],
+      "surf": [
+        "Poliwhirl",
+        "Poliwag"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach",
+        "Whiscash"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "route_229",
+      "name": "Route 229",
+      "cells": "24,13 25,13",
+      "morning": [
+        "Roselia",
+        "Ledian",
+        "Volbeat",
+        "Illumise",
+        "Pidgey",
+        "Beautifly",
+        "Dustox"
+      ],
+      "day": [
+        "Roselia",
+        "Pidgey",
+        "Volbeat",
+        "Illumise",
+        "Beautifly",
+        "Dustox"
+      ],
+      "night": [
+        "Roselia",
+        "Ariados",
+        "Volbeat",
+        "Illumise",
+        "Pidgey",
+        "Beautifly",
+        "Dustox"
+      ],
+      "surf": [
+        "Surskit",
+        "Masquerain"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "twinleaf_town",
+      "name": "Twinleaf Town",
+      "cells": "3,27",
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "celestic_town",
+      "name": "Celestic Town",
+      "cells": "14,16",
+      "surf": [
+        "Psyduck",
+        "Golduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Corphish",
+        "Crawdaunt",
+        "Seaking"
+      ]
+    },
+    {
+      "key": "resort_area",
+      "name": "Resort Area",
+      "cells": "25,14",
+      "surf": [
+        "Golduck",
+        "Psyduck"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp"
+      ],
+      "superRod": [
+        "Magikarp"
+      ]
+    },
+    {
+      "key": "route_220",
+      "name": "Route 220",
+      "cells": "5,28 6,28",
+      "surf": [
+        "Tentacool",
+        "Wingull",
+        "Tentacruel",
+        "Pelipper"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Finneon",
+        "Lumineon"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Lumineon",
+        "Chinchou"
+      ]
+    },
+    {
+      "key": "route_223",
+      "name": "Route 223",
+      "cells": "26,19 26,20 26,21 26,22",
+      "surf": [
+        "Tentacruel",
+        "Pelipper",
+        "Mantyke"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid",
+        "Octillery"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Wailmer",
+        "Octillery",
+        "Wailord"
+      ]
+    },
+    {
+      "key": "route_226",
+      "name": "Route 226",
+      "cells": "21,10 22,10 23,10",
+      "morning": [
+        "Machoke",
+        "Graveler",
+        "Fearow",
+        "Wingull",
+        "Raticate",
+        "Rattata"
+      ],
+      "day": [
+        "Machoke",
+        "Graveler",
+        "Fearow",
+        "Wingull",
+        "Raticate",
+        "Rattata"
+      ],
+      "night": [
+        "Machoke",
+        "Graveler",
+        "Banette",
+        "Wingull",
+        "Raticate",
+        "Rattata"
+      ],
+      "surf": [
+        "Wingull",
+        "Pelipper",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Horsea"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Seadra",
+        "Relicanth"
+      ]
+    },
+    {
+      "key": "route_230",
+      "name": "Route 230",
+      "cells": "21,13 22,13 23,13",
+      "morning": [
+        "Pelipper",
+        "Floatzel",
+        "Bellsprout",
+        "Roselia",
+        "Gloom",
+        "Weepinbell",
+        "Wingull"
+      ],
+      "day": [
+        "Pelipper",
+        "Floatzel",
+        "Bellsprout",
+        "Roselia",
+        "Gloom",
+        "Weepinbell",
+        "Wingull"
+      ],
+      "night": [
+        "Pelipper",
+        "Floatzel",
+        "Oddish",
+        "Roselia",
+        "Gloom",
+        "Weepinbell",
+        "Wingull"
+      ],
+      "surf": [
+        "Sealeo",
+        "Pelipper",
+        "Tentacruel"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Remoraid"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Wailmer",
+        "Octillery",
+        "Wailord"
+      ]
+    },
+    {
+      "key": "great_marsh_1",
+      "name": "Great Marsh",
+      "cells": "19,25",
+      "morning": [
+        "Wooper",
+        "Bibarel",
+        "Tropius",
+        "Quagsire",
+        "Yanma",
+        "Tangela"
+      ],
+      "day": [
+        "Wooper",
+        "Bibarel",
+        "Tropius",
+        "Quagsire",
+        "Yanma",
+        "Tangela"
+      ],
+      "night": [
+        "Wooper",
+        "Bibarel",
+        "Noctowl",
+        "Quagsire",
+        "Yanma",
+        "Tangela"
+      ],
+      "surf": [
+        "Wooper",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Carvanha",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "great_marsh_2",
+      "name": "Great Marsh",
+      "cells": "19,25",
+      "morning": [
+        "Wooper",
+        "Bibarel",
+        "Tropius",
+        "Quagsire",
+        "Yanma",
+        "Tangela"
+      ],
+      "day": [
+        "Wooper",
+        "Bibarel",
+        "Tropius",
+        "Quagsire",
+        "Yanma",
+        "Tangela"
+      ],
+      "night": [
+        "Wooper",
+        "Bibarel",
+        "Noctowl",
+        "Quagsire",
+        "Yanma",
+        "Tangela"
+      ],
+      "surf": [
+        "Wooper",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Carvanha",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "great_marsh_3",
+      "name": "Great Marsh",
+      "cells": "19,25",
+      "morning": [
+        "Wooper",
+        "Bibarel",
+        "Tangela",
+        "Quagsire",
+        "Yanma"
+      ],
+      "day": [
+        "Wooper",
+        "Bibarel",
+        "Tangela",
+        "Quagsire",
+        "Yanma"
+      ],
+      "night": [
+        "Wooper",
+        "Bibarel",
+        "Noctowl",
+        "Hoothoot",
+        "Tangela",
+        "Quagsire",
+        "Yanma"
+      ],
+      "surf": [
+        "Wooper",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Carvanha",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "great_marsh_4",
+      "name": "Great Marsh",
+      "cells": "19,25",
+      "morning": [
+        "Wooper",
+        "Bibarel",
+        "Tangela",
+        "Quagsire",
+        "Yanma"
+      ],
+      "day": [
+        "Wooper",
+        "Bibarel",
+        "Tangela",
+        "Quagsire",
+        "Yanma"
+      ],
+      "night": [
+        "Wooper",
+        "Bibarel",
+        "Noctowl",
+        "Hoothoot",
+        "Tangela",
+        "Quagsire",
+        "Yanma"
+      ],
+      "surf": [
+        "Wooper",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Carvanha",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "great_marsh_5",
+      "name": "Great Marsh",
+      "cells": "19,25",
+      "morning": [
+        "Wooper",
+        "Bibarel",
+        "Yanma",
+        "Quagsire",
+        "Tangela"
+      ],
+      "day": [
+        "Wooper",
+        "Bibarel",
+        "Yanma",
+        "Quagsire",
+        "Tangela"
+      ],
+      "night": [
+        "Wooper",
+        "Bibarel",
+        "Hoothoot",
+        "Yanma",
+        "Quagsire",
+        "Tangela"
+      ],
+      "surf": [
+        "Wooper",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Carvanha",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "great_marsh_6",
+      "name": "Great Marsh",
+      "cells": "19,25",
+      "morning": [
+        "Wooper",
+        "Bibarel",
+        "Yanma",
+        "Quagsire",
+        "Tangela"
+      ],
+      "day": [
+        "Wooper",
+        "Bibarel",
+        "Yanma",
+        "Quagsire",
+        "Tangela"
+      ],
+      "night": [
+        "Wooper",
+        "Bibarel",
+        "Hoothoot",
+        "Yanma",
+        "Quagsire",
+        "Tangela"
+      ],
+      "surf": [
+        "Wooper",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Barboach"
+      ],
+      "superRod": [
+        "Gyarados",
+        "Carvanha",
+        "Whiscash"
+      ]
+    },
+    {
+      "key": "ruin_maniac_cave_long",
+      "name": "Ruin Maniac Cave",
+      "cells": "22,20",
+      "morning": [
+        "Geodude",
+        "Hippopotas"
+      ],
+      "day": [
+        "Geodude",
+        "Hippopotas"
+      ],
+      "night": [
+        "Geodude",
+        "Hippopotas"
+      ]
+    },
+    {
+      "key": "maniac_tunnel",
+      "name": "Maniac Tunnel",
+      "cells": "18,20 22,20",
+      "morning": [
+        "Geodude",
+        "Hippopotas"
+      ],
+      "day": [
+        "Geodude",
+        "Hippopotas"
+      ],
+      "night": [
+        "Geodude",
+        "Hippopotas"
+      ]
+    },
+    {
+      "key": "solaceon_ruins_room_5_southeast_deadend",
+      "name": "Solaceon Ruins",
+      "cells": "18,20",
+      "morning": [
+        "Unown"
+      ],
+      "day": [
+        "Unown"
+      ],
+      "night": [
+        "Unown"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_1_room_4",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "day": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "night": [
+        "Gastly",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_1_room_5",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "day": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "night": [
+        "Gastly",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_1_room_6",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "day": [
+        "Gastly",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ],
+      "night": [
+        "Gastly",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_2_room_1",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_2_room_2",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_2_room_3",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_2_room_4",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_2_room_5",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_2_room_6",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzor",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Dusclops",
+        "Chimecho"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzor",
+        "Dusclops",
+        "Golbat",
+        "Chingling",
+        "Duskull",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_3_room_1",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzong",
+        "Dusclops",
+        "Golbat",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_3_room_2",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzong",
+        "Dusclops",
+        "Golbat",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_3_room_3",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzong",
+        "Dusclops",
+        "Golbat",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_3_room_4",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzong",
+        "Dusclops",
+        "Golbat",
+        "Chimecho"
+      ]
+    },
+    {
+      "key": "turnback_cave_pillar_3_room_5",
+      "name": "Turnback Cave",
+      "cells": "23,22",
+      "morning": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "day": [
+        "Haunter",
+        "Bronzong",
+        "Golbat",
+        "Chimecho",
+        "Dusclops"
+      ],
+      "night": [
+        "Haunter",
+        "Bronzong",
+        "Dusclops",
+        "Golbat",
+        "Chimecho"
+      ]
+    }
+  ]
+}

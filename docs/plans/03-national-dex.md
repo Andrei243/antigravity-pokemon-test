@@ -8,12 +8,12 @@
 - `Data/TypeChart.cs` is Generation 4's chart plus the Fairy type's matchups, which only later species and moves use.
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
-- `Models/Pokedex.cs` keeps seen and caught national numbers; `UI/PokedexScreen.cs` shows them.
+- The Pokédex (D10, 2026-10-04): Platinum's Sinnoh Pokédex of 210 species, and the National one after the Hall of Fame, each with its own numbers and counts; an entry's INFO, AREA and SIZE pages; Platinum's search; diplomas (`Models/Pokedex.cs`, `Models/PokedexSearch.cs`, `Data/Habitats.cs`, `UI/PokedexScreen.cs`).
 - Every species has a 3D model (D5, 2026-10-04): 24 hand-built in `Graphics/PokemonModels.cs` (Buneary joined them in plan 04 · G10, for the new-game introduction), the rest generated from their data (`PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up bakes sprites only for the hand-built models and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
 
 ## Decisions
 
-Decisions 1 and 2 were taken in D1 (2026-10-01); the others are still to confirm.
+Decisions 1 and 2 were taken in D1 (2026-10-01), 3 in D5 and 5 in D10 (2026-10-04); decision 4 is still to confirm.
 
 1. **Data sources.** *Decided:* as below, read by `tools/DataImporter` from pinned commits. Descriptions of moves, abilities and items use PokeAPI's own short effect texts; Pokédex entries are generated from the data, so no game text is used.
    - Species 1–493 and Generation 4 moves: Platinum's own data from the decompilation: `res/pokemon/<species>/data.json` (base stats, types, abilities, catch rate, EXP, growth rate, gender ratio, egg groups, EV yields, held items, body colour, learnsets by level, TM, tutor and egg) and `res/moves/<move>/` for moves. Find evolutions and Pokédex text in the same tree.
@@ -27,7 +27,7 @@ Decisions 1 and 2 were taken in D1 (2026-10-01); the others are still to confirm
    - gifts: other regions' starters from Professor Rowan or Oak after the National Pokédex;
    - event legendaries as post-game quests (Darkrai on Newmoon Island, Shaymin in Flower Paradise, Arceus at the Hall of Origin, and the like);
    - ~~trade evolutions by another method~~ *Decided 2026-10-02:* the game will have trading (online in plan 07, with characters in the game in plan 06 · R12), so trade evolutions stay trade evolutions. A Linking Cord used on the Pokémon also counts as a trade and already works; whether the game hands them out is still open.
-5. **When the National Pokédex unlocks.** Required: after the Hall of Fame, when Professor Rowan upgrades it. Platinum additionally requires seeing all 210 Sinnoh species; that can be an option.
+5. **When the National Pokédex unlocks.** *Decided 2026-10-04 (D10):* as in Platinum: after the Hall of Fame, once every species of the Sinnoh Pokédex has been seen. Professor Rowan's scene (plan 02, post-game) asks `Pokedex.CanUnlockNational` and calls `UnlockNational`.
 
 ## Architecture
 
@@ -79,6 +79,15 @@ Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search
 
 *Ready from plan 04 · G10 (2026-10-04):* the screen itself (`UI/PokedexScreen.cs`, `ModernUi.DrawPokedex`; style guide, "Menu screens"): the list with its seen and caught counts, and an entry in its three states (caught: everything; seen: sprite, name and types; unseen: a question mark). It lists national numbers and opens on the first species seen. Still to come here: Sinnoh's own numbers (`species.json` has none yet, so the importer has to bring them), the two modes and the unlock, the other pages (area, cry, size, forms), sorting and search.
 
+**Outcome (2026-10-04).**
+- **Data**: each species carries its number in Platinum's Sinnoh Pokédex (`sinnohNumber`, read by `tools/DataImporter` from the decompilation's `res/pokemon/sinnoh_pokedex.json`) and PokeAPI's `legendary` and `mythical` flags. `tools/MapImporter --data` writes `habitats.json` beside the world files: every area of Sinnoh with wild Pokémon, open or not, with its grass at each time of day, its water and each rod; where it is on the overworld (an outdoor area's own chunks, the entrances of caves and buildings found by following warps, Pastoria City for the Great Marsh); and a picture of the overworld, one character per chunk. 154 areas under 63 names.
+- **Rules** (`Models/Pokedex.cs`, `Models/PokedexSearch.cs`, `Data/Habitats.cs`, all GPU-free): the Sinnoh and National Pokédexes with their own numbers and counts; the National one opens after the Hall of Fame once all 210 are seen (decision 5); a diploma for the Sinnoh Pokédex (all 210 seen) and for the National one (every species but the 23 mythical caught); Platinum's search (six orders, nine letter groups, two types, fourteen shapes) among the species seen, by size among those caught. Saves keep the upgrade and the diplomas (`nationalPokedex`, `diplomas`).
+- **Screen** (`PokedexScreen`, `ModernUi.Pokedex.cs`; style guide, "Menu screens"): the list under the open Pokédex's name and counts; an entry's INFO, AREA (the map of Sinnoh with the species' places lit beside the list of how it is met there) and SIZE (the species beside the player as silhouettes on one line) pages; the search panel, where the National Pokédex is chosen once open, and its results; the diploma, shown the first time the Pokédex is opened once complete and again from the search.
+- **Harness**: `menus` shows the new states (`26e`–`26l`: two area pages and an unknown one, two size pages, the search, the results by weight, the National list and the diploma).
+- **Tests**: `PokedexTests` (the two Pokédexes and their counts, the upgrade, diplomas, the search, the habitats), four more screen tests in `MenuScreenTests`, and the Sinnoh numbers and the flags in `DataFileTests`.
+- **Decided here**: decision 5, as Platinum. The diploma is shown by the Pokédex itself until Jubilife City's Game Freak building exists, and the size page's player is 1.4 m tall (`docs/mechanics/rulings.md`, "Pokédex").
+- **Not done here**: the cry page (it needs plan 05 · A4's cries) and the forms page (D11's forms); the professor's scene that opens the National Pokédex (plan 02's post-game), so nothing in the game calls `UnlockNational` yet. Wild Pokémon still come from the morning table at every hour (`Map.RollWildEncounter`), while the area page shows the day's and the night's: rolling by the time of day is plan 06 · R13's.
+
 ### D11 · Generations 5–9
 Import species 494–1025 with their forms (regional, Mega, Gigantamax), abilities and learnsets as data, and add the Fairy type (decision 2).
 *Progress (with D1):* species 494–1025 (default forms), their abilities, learnsets and evolutions, the later moves and the Fairy type's matchups are in. Still to do: forms, and the evolutions that start from a regional form (Perrserker, Sirfetch'd, Obstagoon and the like). The effects of their moves and abilities come from plan 06 · R24–R27; until those are done, plan 06's coverage report lists what is still approximated.
@@ -109,7 +118,7 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 - [ ] D7 Hand-built Sinnoh models, batch 2 (on hold)
 - [ ] D8 Hand-built Sinnoh models, batch 3 (on hold)
 - [ ] D9 Hand-built Sinnoh models, batch 4 (on hold)
-- [ ] D10 Pokédex
+- [x] D10 Pokédex (2026-10-04: Sinnoh and National Pokédexes, the area and size pages, Platinum's search, diplomas)
 - [ ] D11 Generations 5–9
 - [ ] D12 Every species obtainable
 - [ ] D13 Balance and polish

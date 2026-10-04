@@ -139,6 +139,30 @@ public sealed partial class DecompMaps
         return slots;
     }
 
+    /// <summary>
+    /// Every species of an area's table of wild Pokémon, by the way they are met: the twelve grass slots, the two
+    /// that the day and the night put in place of slots 2 and 3, the water's slots and each rod's. Null when the area
+    /// has no table; a way with a rate of 0 is empty.
+    /// </summary>
+    public EncounterTable? Encounters(string name)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        if (!File.Exists(path)) return null;
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var table = doc.RootElement;
+        int Rate(string field) => table.TryGetProperty(field, out var r) ? r.GetInt32() : 0;
+        List<string> Slots(string list, string rate) => Rate(rate) == 0 || !table.TryGetProperty(list, out var slots)
+            ? new()
+            : slots.EnumerateArray().Select(s => s.GetProperty("species").GetString() ?? "").ToList();
+        List<string> Species(string list) => Rate("land_rate") == 0 || !table.TryGetProperty(list, out var names)
+            ? new()
+            : names.EnumerateArray().Select(s => s.GetString() ?? "").ToList();
+        return new EncounterTable(
+            Slots("land_encounters", "land_rate"), Species("day"), Species("night"),
+            Slots("surf_encounters", "surf_rate"),
+            Slots("old_rod_encounters", "old_rod_rate"), Slots("good_rod_encounters", "good_rod_rate"), Slots("super_rod_encounters", "super_rod_rate"));
+    }
+
     /// <summary>Name and bounding box of a prop's model; null for an id without a file.</summary>
     public ModelInfo? PropModel(int id)
     {
@@ -219,6 +243,20 @@ public sealed partial class DecompMaps
     /// <summary>The enum lists every value from 0 in order, so a name's position is its value.</summary>
     public static List<string> ParseBehaviourNames(string header) =>
         BehaviourLine().Matches(header).Select(m => m.Groups[1].Value).Where(n => n != "MAX").ToList();
+}
+
+/// <summary>An area's table of wild Pokémon as species constants, slot by slot (see <see cref="DecompMaps.Encounters"/>).</summary>
+public sealed record EncounterTable(
+    List<string> Land, List<string> Day, List<string> Night, List<string> Surf, List<string> OldRod, List<string> GoodRod, List<string> SuperRod)
+{
+    /// <summary>The grass at one of Platinum's times of day: the day and the night put their two species in slots 2 and 3.</summary>
+    public List<string> Grass(string time)
+    {
+        var slots = new List<string>(Land);
+        var swap = time switch { "day" => Day, "night" => Night, _ => new List<string>() };
+        for (int i = 0; i < swap.Count && 2 + i < slots.Count; i++) slots[2 + i] = swap[i];
+        return slots;
+    }
 }
 
 /// <summary>One area of the game: a town, a route, a cave floor, the inside of a house.</summary>

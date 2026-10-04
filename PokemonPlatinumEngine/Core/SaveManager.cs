@@ -69,6 +69,12 @@ public class SaveData
     public List<int> SeenSpecies { get; set; } = new();
     public List<int> CaughtSpecies { get; set; } = new();
 
+    /// <summary>Whether the Pokédex has been upgraded to the National Pokédex (false in older saves).</summary>
+    public bool NationalPokedex { get; set; }
+
+    /// <summary>The Pokédexes whose diploma the player has been given: "Sinnoh", "National".</summary>
+    public List<string> Diplomas { get; set; } = new();
+
     /// <summary>Ids of the trainers already beaten; they don't challenge again.</summary>
     public List<string> DefeatedTrainers { get; set; } = new();
 

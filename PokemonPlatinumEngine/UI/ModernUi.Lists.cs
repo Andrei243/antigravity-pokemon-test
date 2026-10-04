@@ -195,6 +195,24 @@ internal static partial class ModernUi
         UiIcons.ArrowH(new Vector2(pill.X + pill.Width + 44, c.Y), 24, 1, Selection);
     }
 
+    /// <summary>
+    /// A setting as a card: its name on the left and its value on a pill between two arrows on the right (the
+    /// options' rows, the Pokédex's search).
+    /// </summary>
+    public static void ValueRow(Rectangle r, string label, string value, bool selected, float pillWidth = 480)
+    {
+        Card(r, 30, selected);
+        UiFonts.DrawCentered(label, r.X + 52, r.Y + r.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        var pill = new Rectangle(r.X + r.Width - 140 - pillWidth, r.Y + 19, pillWidth, r.Height - 38);
+        UiShapes.Fill(pill, pill.Height / 2f, selected ? Frame : new Color(214, 222, 236, 255));
+        float vw = UiFonts.Measure(value, 32, UiWeight.Black);
+        UiFonts.DrawCentered(value, pill.X + (pill.Width - vw) / 2f, pill.Y + pill.Height / 2f, 32, selected ? Color.White : Ink, UiWeight.Black);
+        var arrow = selected ? Selection : new Color(170, 180, 200, 255);
+        float cy = r.Y + r.Height / 2f;
+        UiIcons.ArrowH(new Vector2(pill.X - 44, cy), 22, -1, arrow);
+        UiIcons.ArrowH(new Vector2(pill.X + pill.Width + 44, cy), 22, 1, arrow);
+    }
+
     /// <summary>A caption in capitals with its value under it; returns the x where the next one can go.</summary>
     public static float Field(string caption, string value, float x, float y, float size = 40, float gap = 56)
     {

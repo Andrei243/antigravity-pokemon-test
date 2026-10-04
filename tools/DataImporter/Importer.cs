@@ -264,6 +264,15 @@ public sealed class Importer
             if (s.HiddenAbility != null && s.Abilities.Contains(s.HiddenAbility)) s.HiddenAbility = null;
             s.DexEntry = DexEntry(s, list);
         }
+
+        // Platinum's regional numbers (its table's first entry is a placeholder, not number 0)
+        var sinnoh = decomp.SinnohPokedex();
+        for (int number = 1; number < sinnoh.Count; number++)
+        {
+            int dex = speciesConstants.IndexOf(sinnoh[number]);
+            if (dex < 1 || dex > list.Count) throw new InvalidDataException($"Sinnoh Pokédex entry {number} is {sinnoh[number]}, which isn't a species");
+            list[dex - 1].SinnohNumber = number;
+        }
         return list;
     }
 
@@ -415,6 +424,8 @@ public sealed class Importer
             Name = api.SpeciesName(dex),
             Category = genus.EndsWith(" Pokémon") ? genus[..^" Pokémon".Length] : genus,
             Generation = row.Int("generation_id"),
+            Legendary = row.Bool("is_legendary"),
+            Mythical = row.Bool("is_mythical"),
             Height = p.Int("height") / 10f,
             Weight = p.Int("weight") / 10f,
             Color = api.Color(row.Int("color_id")),

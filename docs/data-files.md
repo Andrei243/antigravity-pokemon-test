@@ -6,7 +6,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 
 | File | Read by | Contents |
 | --- | --- | --- |
-| `species.json` | `PokemonDatabase` | All 1025 species of the National Pokédex as `PokemonSpecies`: dex number, name, category, `generation`, types, base stats, `evYield`, catch rate, experience yield, growth rate, `genderRatio` (eighths that are female: 0 always male, 8 always female, -1 genderless), `eggGroups`, `hatchCycles`, `baseFriendship`, height, weight, `color` and `shape`, Pokédex text (generated from the data in our own words), learnset (`level`, `moveName`; level 0 means "when it evolves into this species"), `evolutions` and `abilities` (names from `abilities.json`, in the order a new Pokémon picks from), plus `hiddenAbility`, which new Pokémon don't get yet. `secondaryType`, `evolutions` and the other optional fields are left out when there is none. |
+| `species.json` | `PokemonDatabase` | All 1025 species of the National Pokédex as `PokemonSpecies`: dex number, `sinnohNumber` (its number in Platinum's Sinnoh Pokédex, 1–210, from the decompilation's `res/pokemon/sinnoh_pokedex.json`), name, category, `generation`, `legendary` and `mythical` (PokeAPI's flags; written only when true), types, base stats, `evYield`, catch rate, experience yield, growth rate, `genderRatio` (eighths that are female: 0 always male, 8 always female, -1 genderless), `eggGroups`, `hatchCycles`, `baseFriendship`, height, weight, `color` and `shape`, Pokédex text (generated from the data in our own words), learnset (`level`, `moveName`; level 0 means "when it evolves into this species"), `evolutions` and `abilities` (names from `abilities.json`, in the order a new Pokémon picks from), plus `hiddenAbility`, which new Pokémon don't get yet. `secondaryType`, `evolutions` and the other optional fields are left out when there is none. |
 | `moves.json` | `MoveDatabase` | A list of `MoveData`, with Platinum's values for moves 1–467. `priority` and the secondary-effect fields (`inflictStatus`, `statusChancePercent`, `targetStatChange`, `statStageAmount`, `statChangeTargetSelf`, `statChangeChancePercent`, `recoilPercent`, `drainPercent`, `critStage`) are left out when they are zero or none, and so are the battle details: `target` (`Selected`, `AllFoes`, `AllOthers`, `User`, `RandomFoe`, `UserSide`, `FoeSide`, `Field`, `Ally`, `UserOrAlly`, `UserAndAllies`, `Allies`, `AllPokemon`), `flags` (`Contact`, `Punch`, `Sound`, `Bite`, `Pulse`, `Ballistic`, `Powder`, `Dance`, `Protect`, `Reflectable`, `Snatch`, `Mirror`, `KingsRock`, comma-separated), `flinchChancePercent`, `confuseChancePercent`, `alsoChangesStats` (more stats changed like `targetStatChange`), `thawsUser` and `healPercent`. `effect` names whatever the fields can't say (`MultiHit`, `Protect`), with its `effectChance`, and `support` says how much of the move runs: `Partial` (it hits, the effect is missing) or `None` (it does nothing yet); the coverage report `docs/mechanics/coverage.md` lists them. An unknown move name gives Tackle. |
 | `abilities.json` | `AbilityDatabase` | Every ability: `id`, `name`, `generation` and `description`. What an ability does in battle is code, in `Data/AbilityEffectTable.cs`; one without an entry there shows up but does nothing yet. |
 | `items.json` | `ItemDatabase` | A list of `ItemData`. Platinum's items keep their Generation 4 ids; later items are 1000 plus their PokeAPI id, and items made for this game are 9000 and up. `effectValue` is HP restored (9999 for all of it), the share of HP a revive restores, or a ball's catch multiplier × 10; a `HealStatus` item with no `healsStatus` cures any status. `holdEffect` names what the item does when held (from the decompilation) and `teachesMove` the move of a TM or HM, whose `description` the importer writes from that move. What held items do in battle is in `Battle/Effects/HeldItemEffects.cs`, and `DataFileTests` checks that each of those exists here. |
@@ -111,6 +111,7 @@ What the game loads is in `PokemonPlatinumEngine/Data/world/sinnoh/`:
 | `world.json` | hand | Which matrices become maps and which areas are open |
 | `matrices/NNN.json`, `chunks/NNN.json`, `areas/<key>.json` | `dotnet run --project tools/MapImporter -- --data` | Only what `world.json` asks for: the matrices of its maps, the chunks of its open areas and of every chunk next to one (in view from its edge), and the open areas. A re-run reproduces the files exactly and removes those no longer needed; it never touches the two below. |
 | `overlays/<key>.json` | hand | What the import can't or mustn't bring for an open area: its music, where its doors lead, who its people are and what they say |
+| `habitats.json` | `dotnet run --project tools/MapImporter -- --data` | Where the region's wild Pokémon live, open areas or not, for the Pokédex's area page |
 
 So opening an area is: add its key to `world.json`, run the importer with `--data`, write its overlay. `WorldTests` then checks that every chunk in view has its file, that every entry of the overlay points at something that exists, and that the area can be walked into and out of.
 
@@ -276,3 +277,19 @@ Then what stands on it, in tiles of its matrix (on the overworld: tiles of the w
 - `triggers`: `{ "x", "z", "width", "depth", "script", "variable", "value" }`: a rectangle that starts a script while a story variable has a value.
 
 Scripts are numbers into the area's script file in the decompilation; plan 02 writes ours. No dialogue is imported.
+
+### `habitats.json`
+
+Where every wild Pokémon of the region lives, read by `Habitats` for the Pokédex's area page (plan 03 · D10). Unlike the area files it covers every area with wild Pokémon, open or not, since the Pokédex shows the whole region.
+
+```json
+{
+  "map": [ "                              ", "        .....              ~~~", "        ...T.         ...  ~.~" ],
+  "areas": [
+    { "key": "route_201", "name": "Route 201", "cells": "3,26 4,26",
+      "morning": [ "Starly", "Bidoof", "Kricketot" ], "day": [ "Starly", "Bidoof" ], "night": [ "Starly", "Bidoof", "Kricketot" ] }
+  ]
+}
+```
+
+`map` is the overworld's matrix as a picture: one string per row and one character per chunk, `~` where most of the chunk is water, `.` land, `T` a town or a city, a space where there is no chunk. Each area has its `key` and `name`, the chunks of the overworld it is shown on (`cells`, `"x,y"` each: an outdoor area's own, the chunks whose warps lead into a cave or a building, through any rooms between; the Great Marsh, which a script lets the player into, is shown at Pastoria City, and rooms reached only by scripted warps where the rest of the place is), and the species met there, each list left out when empty: in the grass or the cave in the `morning` (the table's own twelve slots), by `day` and at `night` (the two species each puts in slots 2 and 3), `surf`ing, and with the `oldRod`, `goodRod` and `superRod`. Swarms, the Poké Radar and the species a second game in the console calls up are not in it, as Platinum's Pokédex leaves them out.
