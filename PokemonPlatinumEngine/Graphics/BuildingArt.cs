@@ -4,16 +4,17 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-internal enum WallKind { Planks, Clapboard, Plaster, Brick, Panel }
+internal enum WallKind { Planks, Clapboard, Plaster, Brick, Panel, Boards, HalfTimber, Stone, OldStone, PaleStone, Log, Stucco, Metal, DarkPanel }
 
 internal enum RoofShape { Gable, Hip, Flat }
 
-internal enum WindowKind { Cottage, Shop, Sash, Ribbon }
+internal enum WindowKind { Cottage, Shop, Sash, Ribbon, Slit, Arched, None }
 
-internal enum SignKind { None, Center, Mart, Lab, School, Poketch, Tv, Globe }
+/// <summary>What a building's sign shows: one of the fixed ones, any name (<see cref="BuildingStyle.SignText"/>), or a mark.</summary>
+internal enum SignKind { None, Center, Mart, Lab, School, Poketch, Tv, Globe, Text, Galactic }
 
 [Flags]
-internal enum RoofGear { None = 0, Vents = 1, Mast = 2, Dish = 4, Globe = 8, Skylight = 16 }
+internal enum RoofGear { None = 0, Vents = 1, Mast = 2, Dish = 4, Globe = 8, Skylight = 16, Stack = 32, Spikes = 64, Solar = 128, Spire = 256 }
 
 /// <summary>How one building is put together: its wall material, roof, windows, door, sign and extras.</summary>
 internal sealed record BuildingStyle
@@ -24,7 +25,14 @@ internal sealed record BuildingStyle
     public int Storeys { get; init; } = 1;
     public WindowKind Window { get; init; } = WindowKind.Cottage;
     public bool GlassDoor { get; init; }
+
+    /// <summary>A sliding door of ribbed metal, two bays wide: works and warehouses.</summary>
+    public bool SlidingDoor { get; init; }
+
     public SignKind Sign { get; init; }
+
+    /// <summary>The name a <see cref="SignKind.Text"/> sign spells.</summary>
+    public string? SignText { get; init; }
 
     /// <summary>Width in texels of the entrance block that stands proud of the wall and carries the sign; 0 for none.</summary>
     public int Portal { get; init; }
@@ -42,11 +50,26 @@ internal sealed record BuildingStyle
     /// <summary>Somebody lives here: the windows go dark late at night (in most homes).</summary>
     public bool Home { get; init; }
 
+    /// <summary>A round window of coloured glass high in the front wall.</summary>
+    public bool RoseWindow { get; init; }
+
+    /// <summary>A band in the accent colour along the top of the walls.</summary>
+    public bool Band { get; init; }
+
+    /// <summary>A pitched roof steeper than a house's.</summary>
+    public bool Steep { get; init; }
+
+    /// <summary>Eaves twice as deep as a house's.</summary>
+    public bool DeepEaves { get; init; }
+
+    /// <summary>Storeys that step back on top of a flat roof, each smaller than the one below.</summary>
+    public int Tiers { get; init; }
+
     public bool Pitched => Roof != RoofShape.Flat;
 
     /// <summary>Height of the walls in texels.</summary>
     public int WallHeight => Pitched
-        ? BuildingArt.PitchedWall
+        ? BuildingArt.PitchedWall + (Storeys - 1) * BuildingArt.UpperStorey
         : BuildingArt.GroundStorey + (Storeys - 1) * BuildingArt.UpperStorey + BuildingArt.TopBand;
 }
 
@@ -56,7 +79,7 @@ internal sealed record BuildingStyle
 /// glass that lights up after dark is marked in its alpha (<see cref="ArtSheet.PublicLight"/>,
 /// <see cref="ArtSheet.HomeLight"/>). No GPU calls.
 /// </summary>
-internal static class BuildingArt
+internal static partial class BuildingArt
 {
     /// <summary>One tile of wall.</summary>
     public const int Bay = 32;
@@ -110,53 +133,6 @@ internal static class BuildingArt
     private static readonly Color LeafLight = Rgb(106, 196, 98);
     private static readonly Color Ink = Rgb(52, 44, 62);
 
-    // ------------------------------------------------------------------ styles
-
-    private static Color TileRoof(TileType roof) => roof switch
-    {
-        TileType.RoofRed => Rgb(214, 82, 66),
-        TileType.RoofBlue => Rgb(70, 118, 214),
-        _ => Rgb(52, 166, 138)
-    };
-
-    /// <summary>The style of a building: public buildings look the same in every town, houses follow the town.</summary>
-    public static BuildingStyle StyleOf(BuildingInfo b, Architecture town)
-    {
-        var roof = TileRoof(b.RoofTile);
-        var shop = new BuildingStyle { Wall = WallKind.Plaster, Roof = RoofShape.Hip, Window = WindowKind.Shop, GlassDoor = true, Portal = 52 };
-        var block = new BuildingStyle { Wall = WallKind.Panel, Roof = RoofShape.Flat, Storeys = 2, Window = WindowKind.Ribbon, GlassDoor = true };
-        return b.Kind switch
-        {
-            BuildingKind.PokemonCenter => shop with { RoofColor = Rgb(238, 104, 58), Sign = SignKind.Center, Accent = Rgb(226, 72, 62) },
-            BuildingKind.PokeMart => shop with { RoofColor = Rgb(66, 122, 222), Sign = SignKind.Mart, Accent = Rgb(58, 108, 214) },
-            BuildingKind.Lab => shop with { RoofColor = Rgb(48, 178, 198), Sign = SignKind.Lab, Accent = Rgb(36, 150, 172) },
-            BuildingKind.School => new BuildingStyle
-            {
-                Wall = WallKind.Brick, Roof = RoofShape.Gable, RoofColor = Rgb(92, 110, 156), Window = WindowKind.Sash,
-                Sign = SignKind.School, Portal = 84, Accent = Rgb(74, 96, 150), Chimney = true
-            },
-            BuildingKind.Office => block with { RoofColor = Rgb(170, 176, 190), Sign = SignKind.Poketch, Accent = Rgb(40, 150, 150), Gear = RoofGear.Vents | RoofGear.Skylight },
-            BuildingKind.TvStation => block with { RoofColor = Rgb(170, 176, 190), Storeys = 3, Sign = SignKind.Tv, Accent = Rgb(214, 72, 96), Gear = RoofGear.Vents | RoofGear.Mast | RoofGear.Dish },
-            BuildingKind.Terminal => block with { RoofColor = Rgb(170, 176, 190), Sign = SignKind.Globe, Accent = Rgb(70, 136, 232), Gear = RoofGear.Globe | RoofGear.Skylight },
-            BuildingKind.Apartments => new BuildingStyle
-            {
-                Wall = WallKind.Brick, Roof = RoofShape.Flat, RoofColor = Rgb(170, 176, 190), Storeys = 3, Window = WindowKind.Sash,
-                Balconies = true, Home = true, Accent = Rgb(74, 96, 150), Gear = RoofGear.Vents
-            },
-            _ => town switch
-            {
-                Architecture.City => new BuildingStyle
-                {
-                    Wall = WallKind.Brick, Roof = RoofShape.Flat, RoofColor = Rgb(170, 176, 190), Storeys = 2, Window = WindowKind.Sash,
-                    Home = true, Accent = roof, Gear = RoofGear.Vents
-                },
-                Architecture.Plaster => new BuildingStyle { Wall = WallKind.Plaster, RoofColor = roof, Accent = roof, Chimney = true, FlowerBoxes = true, Home = true },
-                Architecture.Clapboard => new BuildingStyle { Wall = WallKind.Clapboard, RoofColor = roof, Accent = roof, Chimney = true, Shutters = true, FlowerBoxes = true, Home = true },
-                _ => new BuildingStyle { Wall = WallKind.Planks, RoofColor = roof, Accent = roof, Chimney = true, Shutters = true, FlowerBoxes = true, Home = true }
-            }
-        };
-    }
-
     /// <summary>
     /// How this building's windows are lit after dark: shops and offices all night, homes only in the evening,
     /// except about one home in three where someone stays up.
@@ -178,12 +154,15 @@ internal static class BuildingArt
         for (int i = 0; i < b.Width; i++)
         {
             int x = b.X0 + i;
-            bays[i] = b.Doors.Exists(d => d.X == x) ? BayKind.Door
+            // Behind a porch's walls the front wall is blank: a closed porch has the doors in its own front
+            bays[i] = b.Porch.Contains(x) ? BayKind.Blank
+                : b.Doors.Exists(d => d.X == x) ? BayKind.Door
                 : b.Plaques.Contains(x) ? BayKind.Plaque
                 : b.Doors.Exists(d => Math.Abs(d.X - x) == 1) ? BayKind.Blank
                 : BayKind.Window;
         }
-        if (b.Doors.Count == 0)
+        // A wing has no entrance, and a gate house on a road east to west has its doors in its ends
+        if (b.Doors.Count == 0 && !b.Annex && b.SideDoors.Count == 0)
         {
             int entrance = ClosedEntrance(b);
             bays[entrance] = BayKind.Door;
@@ -219,11 +198,14 @@ internal static class BuildingArt
 
         Wall(c, s.Wall, 0, 0, w, h - BaseHeight, seed);
         Base(c, s, 0, h - BaseHeight, w);
-        if (s.Wall == WallKind.Planks)
+        if (s.Wall is WallKind.Planks or WallKind.Boards)
         {
             Post(c, 0, 0, h - BaseHeight);
             Post(c, w - 4, 0, h - BaseHeight);
         }
+
+        // Where the door goes when it is a sliding one: it takes the bay to its east as well
+        bool sliding = s.SlidingDoor && bays.Length >= 2;
 
         if (s.Pitched)
         {
@@ -232,6 +214,9 @@ internal static class BuildingArt
                 int cx = BayCenter(i);
                 switch (bays[i])
                 {
+                    case BayKind.Door when sliding:
+                        SlidingDoor(c, Math.Clamp(cx, 30, w - 30), h);
+                        break;
                     case BayKind.Door when s.Portal == 0:
                         Door(c, cx, h, s, DoorLight(b, i, light));
                         Lantern(c, cx + 13, h - 33);
@@ -244,7 +229,11 @@ internal static class BuildingArt
                         Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17, s, light);
                         break;
                 }
+                // Every storey above has a window in every bay
+                for (int k = 1; k < s.Storeys; k++)
+                    Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17 - k * UpperStorey, s with { FlowerBoxes = false }, light);
             }
+            if (s.RoseWindow) RoseWindow(c, w / 2, 30);
             EaveShade(c, 0, w);
             return;
         }
@@ -252,7 +241,8 @@ internal static class BuildingArt
         // A block of storeys under a flat roof: a cornice band with the sign, then a row of windows per storey
         int groundTop = h - GroundStorey;
         Cornice(c, s, 0, 0, w);
-        if (s.Sign != SignKind.None) Sign(c, s.Sign, w / 2, 2, TopBand - 4, s);
+        if (s.Sign != SignKind.None) Sign(c, s, w / 2, 2, TopBand - 4, w - 8);
+        if (s.Band) AccentBand(c, s, TopBand, w);
         for (int k = 1; k < s.Storeys; k++)
         {
             int top = groundTop - k * UpperStorey;
@@ -260,7 +250,7 @@ internal static class BuildingArt
             else
                 for (int i = 0; i < bays.Length; i++)
                 {
-                    Sash(c, BayCenter(i), top + 26, light);
+                    UpperWindow(c, BayCenter(i), top + 26, s, light);
                     if (s.Balconies) Balcony(c, BayCenter(i), top + 28);
                 }
             StoreyLine(c, s, top + UpperStorey - 2, w);
@@ -272,19 +262,44 @@ internal static class BuildingArt
             int cx = BayCenter(i);
             switch (bays[i])
             {
+                case BayKind.Door when sliding:
+                    SlidingDoor(c, Math.Clamp(cx, 30, w - 30), h);
+                    break;
                 case BayKind.Door:
                     Door(c, cx, h, s, DoorLight(b, i, light));
                     break;
                 case BayKind.Plaque:
                     Plaque(c, cx, h - 30);
                     break;
-                case BayKind.Window when s.Window == WindowKind.Sash:
-                    Sash(c, cx, h - 14, light);
-                    break;
                 case BayKind.Window:
-                    ShopWindow(c, cx, h - 13, light);
+                    GroundWindow(c, cx, h, s, light);
                     break;
             }
+        }
+    }
+
+    /// <summary>A window of an upper storey under a flat roof, standing on a sill at <paramref name="sillY"/>.</summary>
+    private static void UpperWindow(PixelCanvas c, int cx, int sillY, BuildingStyle s, byte light)
+    {
+        switch (s.Window)
+        {
+            case WindowKind.None: break;
+            case WindowKind.Slit: SlitWindow(c, cx, sillY - 2, light, teal: s.Wall == WallKind.DarkPanel); break;
+            case WindowKind.Arched: ArchedWindow(c, cx, sillY, light); break;
+            default: Sash(c, cx, sillY, light); break;
+        }
+    }
+
+    /// <summary>A window of the ground storey under a flat roof.</summary>
+    private static void GroundWindow(PixelCanvas c, int cx, int groundY, BuildingStyle s, byte light)
+    {
+        switch (s.Window)
+        {
+            case WindowKind.None: break;
+            case WindowKind.Slit: SlitWindow(c, cx, groundY - 16, light, teal: s.Wall == WallKind.DarkPanel); break;
+            case WindowKind.Arched: ArchedWindow(c, cx, groundY - 13, light); break;
+            case WindowKind.Sash: Sash(c, cx, groundY - 14, light); break;
+            default: ShopWindow(c, cx, groundY - 13, light); break;
         }
     }
 
@@ -296,7 +311,11 @@ internal static class BuildingArt
     /// Paints a side wall, <paramref name="wallHeight"/> texels tall at the bottom of the canvas; whatever is
     /// above that is the gable end under a pitched roof.
     /// </summary>
-    public static void PaintSide(PixelCanvas c, BuildingInfo b, BuildingStyle s, int wallHeight)
+    /// <param name="doorsAt">
+    /// Where the doors of this wall are, in texels along it from its left as it is seen from outside; empty for a
+    /// wall without any (every wall but a gate house's ends).
+    /// </param>
+    public static void PaintSide(PixelCanvas c, BuildingInfo b, BuildingStyle s, int wallHeight, IReadOnlyList<int>? doorsAt = null)
     {
         int w = c.Width, h = c.Height, gable = h - wallHeight;
         int seed = b.X0 * 7 + b.Y0 * 13 + 3;
@@ -304,36 +323,39 @@ internal static class BuildingArt
 
         Wall(c, s.Wall, 0, 0, w, h - BaseHeight, seed);
         Base(c, s, 0, h - BaseHeight, w);
-        if (s.Wall == WallKind.Planks)
+        if (s.Wall is WallKind.Planks or WallKind.Boards)
         {
             Post(c, 0, gable, wallHeight - BaseHeight);
             Post(c, w - 4, gable, wallHeight - BaseHeight);
         }
 
         int bays = Math.Max(1, w / Bay);
+        bool HasDoor(int cx) => doorsAt != null && doorsAt.Any(d => Math.Abs(d - cx) < Bay);
+        foreach (int at in doorsAt ?? Array.Empty<int>()) Door(c, Math.Clamp(at, 20, w - 20), h, s, ArtSheet.PublicLight);
+
         if (s.Pitched)
         {
-            Window(c, w / 2, h - 17, s with { Shutters = false, FlowerBoxes = false }, light);
+            var plain = s with { Shutters = false, FlowerBoxes = false };
+            for (int k = 0; k < s.Storeys; k++)
+                if (k > 0 || !HasDoor(w / 2)) Window(c, w / 2, h - 17 - k * UpperStorey, plain, light);
             if (gable >= 16) AtticWindow(c, w / 2 - 5, gable - 12, light);
             if (s.Roof == RoofShape.Hip) EaveShade(c, 0, w);
             return;
         }
 
-        Cornice(c, s, 0, 0, w);
+        Cornice(c, s with { Sign = SignKind.None }, 0, 0, w);
+        if (s.Band) AccentBand(c, s, TopBand, w);
         int groundTop = h - GroundStorey;
         for (int k = 1; k < s.Storeys; k++)
         {
             int top = groundTop - k * UpperStorey;
             if (s.Window == WindowKind.Ribbon) Ribbon(c, 6, top + 6, w - 12, 18, light);
             else
-                for (int i = 0; i < bays; i++) Sash(c, i * Bay + Bay / 2, top + 26, light);
+                for (int i = 0; i < bays; i++) UpperWindow(c, i * Bay + Bay / 2, top + 26, s, light);
             StoreyLine(c, s, top + UpperStorey - 2, w);
         }
         for (int i = 0; i < bays; i++)
-        {
-            if (s.Window == WindowKind.Sash) Sash(c, i * Bay + Bay / 2, h - 14, light);
-            else ShopWindow(c, i * Bay + Bay / 2, h - 13, light);
-        }
+            if (!HasDoor(i * Bay + Bay / 2)) GroundWindow(c, i * Bay + Bay / 2, h, s, light);
     }
 
     /// <summary>Paints the front of the entrance block: a header in the accent colour with the sign, and the door under it.</summary>
@@ -347,7 +369,7 @@ internal static class BuildingArt
         Pix.Raised(c, 0, 0, w, HeaderHeight, accent);
         c.HLine(1, HeaderHeight - 2, w - 2, accent.Dark);
         c.HLine(0, HeaderHeight, w, Plaster.Dark);
-        Sign(c, s.Sign, w / 2, 3, HeaderHeight - 7, s);
+        Sign(c, s, w / 2, 3, HeaderHeight - 7, w - 6);
 
         // Pilasters either side of the door
         Pix.Raised(c, 0, HeaderHeight + 1, 3, h - HeaderHeight - 1 - BaseHeight, Plaster);
@@ -375,14 +397,17 @@ internal static class BuildingArt
 
     private static void Wall(PixelCanvas c, WallKind kind, int x, int y, int w, int h, int seed)
     {
+        bool own = kind <= WallKind.Panel;
         for (int py = 0; py < h; py++)
         {
             // Rows are counted up from the foot of the wall, so courses meet at the corners whatever the height
             int up = h - 1 - py;
             for (int px = 0; px < w; px++)
-                c.SetRaw(x + px, y + py, WallTexel(kind, px, up, seed));
+                c.SetRaw(x + px, y + py, own ? WallTexel(kind, px, up, seed) : TownWallTexel(kind, px, up, seed));
         }
-        if (kind == WallKind.Plaster) TrowelMarks(c, x, y, w, h, seed);
+        if (kind == WallKind.Plaster) TrowelMarks(c, x, y, w, h, seed, Plaster);
+        if (kind == WallKind.Stucco) TrowelMarks(c, x, y, w, h, seed, Stucco);
+        if (kind == WallKind.HalfTimber) Braces(c, x, y, w, h);
     }
 
     private static Color WallTexel(WallKind kind, int x, int up, int seed)
@@ -423,7 +448,7 @@ internal static class BuildingArt
     }
 
     /// <summary>A few short marks where the trowel caught the plaster, on a coarse grid.</summary>
-    private static void TrowelMarks(PixelCanvas c, int x, int y, int w, int h, int seed)
+    private static void TrowelMarks(PixelCanvas c, int x, int y, int w, int h, int seed, Tone tone)
     {
         for (int cy = 0; cy * 12 + 8 < h; cy++)
             for (int cx = 0; cx * 16 + 12 < w; cx++)
@@ -433,14 +458,14 @@ internal static class BuildingArt
                 int len = 3 + (int)(GroundBaker.Rand01(cx + seed, cy, 302) * 3);
                 int mx = x + cx * 16 + 2 + (int)(GroundBaker.Rand01(cx + seed, cy, 303) * 8);
                 int my = y + cy * 12 + 2 + (int)(GroundBaker.Rand01(cx + seed, cy, 304) * 7);
-                c.HLine(mx, my, Math.Min(len, x + w - mx), pick < 0.2f ? Plaster.Light : Plaster.Dark);
+                c.HLine(mx, my, Math.Min(len, x + w - mx), pick < 0.2f ? tone.Light : tone.Dark);
             }
     }
 
     /// <summary>The base course: stone blocks under timber and plaster, a granite plinth under city blocks.</summary>
     private static void Base(PixelCanvas c, BuildingStyle s, int x, int y, int w)
     {
-        bool city = s.Wall is WallKind.Panel or WallKind.Brick;
+        bool city = s.Wall is WallKind.Panel or WallKind.Brick or WallKind.Stone or WallKind.OldStone or WallKind.PaleStone or WallKind.Metal or WallKind.DarkPanel;
         for (int bx = 0; bx < w; bx += 16)
         {
             var tone = city ? Granite : bx / 16 % 3 == 1 ? StoneAlt : Stone;
@@ -468,7 +493,16 @@ internal static class BuildingArt
     /// </summary>
     private static void Cornice(PixelCanvas c, BuildingStyle s, int x, int y, int w)
     {
-        var cap = s.Wall == WallKind.Brick ? Tone.Of(Mortar) : Panel;
+        var cap = s.Wall switch
+        {
+            WallKind.Brick => Tone.Of(Mortar),
+            WallKind.Stone or WallKind.OldStone => StoneAlt,
+            WallKind.PaleStone => PaleStone,
+            WallKind.Metal => Metal,
+            WallKind.DarkPanel => DarkPanel,
+            WallKind.Stucco or WallKind.Plaster => Stucco,
+            _ => Panel
+        };
         c.HLine(x, y, w, cap.Light);
         c.HLine(x, y + 1, w, cap.Base);
         Pix.Raised(c, x, y + 2, w, TopBand - 4, s.Sign != SignKind.None ? Tone.Of(s.Accent) : cap);
@@ -478,7 +512,17 @@ internal static class BuildingArt
 
     private static void StoreyLine(PixelCanvas c, BuildingStyle s, int y, int w)
     {
-        var tone = s.Wall == WallKind.Brick ? Tone.Of(Mortar) : Panel;
+        // Sheet metal runs on from storey to storey without a line
+        if (s.Wall == WallKind.Metal) return;
+        var tone = s.Wall switch
+        {
+            WallKind.Brick => Tone.Of(Mortar),
+            WallKind.Stone or WallKind.OldStone => StoneAlt,
+            WallKind.PaleStone => PaleStone,
+            WallKind.DarkPanel => DarkPanel,
+            WallKind.Stucco or WallKind.Plaster => Stucco,
+            _ => Panel
+        };
         c.HLine(0, y, w, tone.Light);
         c.HLine(0, y + 1, w, tone.Dark);
     }
@@ -533,8 +577,11 @@ internal static class BuildingArt
     /// <summary>A house window standing on a sill at <paramref name="sillY"/>: four panes, with shutters and a flower box where the style has them.</summary>
     private static void Window(PixelCanvas c, int cx, int sillY, BuildingStyle s, byte light)
     {
+        if (s.Window == WindowKind.None) return;
         if (s.Window == WindowKind.Shop) { ShopWindow(c, cx, sillY + 4, light); return; }
         if (s.Window == WindowKind.Sash) { Sash(c, cx, sillY + 3, light); return; }
+        if (s.Window == WindowKind.Arched) { ArchedWindow(c, cx, sillY + 3, light); return; }
+        if (s.Window == WindowKind.Slit) { SlitWindow(c, cx, sillY, light, teal: s.Wall == WallKind.DarkPanel); return; }
 
         int x0 = cx - 10, y0 = sillY - 22;
         if (s.Shutters)
@@ -661,7 +708,8 @@ internal static class BuildingArt
 
     private static void Door(PixelCanvas c, int cx, int groundY, BuildingStyle s, byte light)
     {
-        if (s.GlassDoor) GlassDoor(c, cx, groundY, light);
+        if (s.SlidingDoor) SlidingDoor(c, cx, groundY);
+        else if (s.GlassDoor) GlassDoor(c, cx, groundY, light);
         else if (s.Portal > 0) DoubleDoor(c, cx, groundY, light);
         else WoodDoor(c, cx, groundY, light);
     }
@@ -745,9 +793,14 @@ internal static class BuildingArt
 
     // ------------------------------------------------------------------ signs
 
-    /// <summary>A sign centred on <paramref name="cx"/> in a band <paramref name="bandHeight"/> texels tall starting at <paramref name="y"/>.</summary>
-    private static void Sign(PixelCanvas c, SignKind kind, int cx, int y, int bandHeight, BuildingStyle s)
+    /// <summary>
+    /// The style's sign centred on <paramref name="cx"/> in a band <paramref name="bandHeight"/> texels tall
+    /// starting at <paramref name="y"/>. A name is written at double size where the band is tall enough and
+    /// <paramref name="room"/> texels wide enough, else at single size, and left out if even that doesn't fit.
+    /// </summary>
+    private static void Sign(PixelCanvas c, BuildingStyle s, int cx, int y, int bandHeight, int room)
     {
+        var kind = s.Sign;
         string? text = kind switch
         {
             SignKind.Mart => "MART",
@@ -755,11 +808,14 @@ internal static class BuildingArt
             SignKind.School => "SCHOOL",
             SignKind.Poketch => "POKETCH",
             SignKind.Tv => "TV",
+            SignKind.Text => s.SignText,
             _ => null
         };
+        if (kind == SignKind.Text && text == null) return;
         if (text != null)
         {
-            int scale = bandHeight >= 14 ? 2 : 1;
+            int scale = bandHeight >= 14 && Pix.TextWidth(text, 2) <= room ? 2 : 1;
+            if (Pix.TextWidth(text, scale) > room) return;
             int tw = Pix.TextWidth(text, scale), tx = cx - tw / 2, ty = y + (bandHeight - Pix.TextHeight * scale) / 2;
             Pix.Text(c, tx + 1, ty + 1, text, PixelCanvas.Shadow(s.Accent, 0.45f), scale);
             Pix.Text(c, tx, ty, text, Color.White, scale);
@@ -777,6 +833,7 @@ internal static class BuildingArt
         int x0 = cx - size / 2, y0 = y + (bandHeight - size) / 2;
         if (kind == SignKind.Center) BallRoundel(c, x0, y0, size);
         else if (kind == SignKind.Globe) GlobeRoundel(c, x0, y0, size);
+        else if (kind == SignKind.Galactic) GalacticMark(c, cx, y0 + 2, size - 4, s.Accent);
     }
 
     /// <summary>Our own Poké Ball sign: red over white with a dark band and a button, in flat shades.</summary>
@@ -834,6 +891,9 @@ internal static class BuildingArt
     /// </summary>
     public static PixelCanvas RoofTiles(Color color)
     {
+        // Two roofs aren't tiled: snow lies on one, the other is sheet metal
+        if (color.Equals(SnowRoof)) return SnowSheet();
+        if (color.Equals(MetalRoof)) return MetalSheet();
         var tone = Tone.Of(color);
         var pale = Tone.Of(PixelCanvas.Light1(color, 0.14f));
         var c = new PixelCanvas(64, 64);
@@ -871,10 +931,10 @@ internal static class BuildingArt
             c.HLine(0, y, c.Width, y == 0 ? t.Light : y == c.Height - 1 ? t.Dark : t.Base);
     }
 
-    /// <summary>A flat roof seen from above: grey sheets a bay wide with a seam between them.</summary>
-    public static void PaintFlatRoof(PixelCanvas c)
+    /// <summary>A flat roof seen from above: sheets a bay wide with a seam between them, grey unless snow lies on it.</summary>
+    public static void PaintFlatRoof(PixelCanvas c, bool snow = false)
     {
-        var t = Tone.Of(170, 176, 190);
+        var t = snow ? Tone.Of(SnowRoof) : Tone.Of(170, 176, 190);
         for (int y = 0; y < c.Height; y++)
             for (int x = 0; x < c.Width; x++)
             {

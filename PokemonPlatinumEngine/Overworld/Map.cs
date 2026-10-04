@@ -20,6 +20,10 @@ public sealed class MapArea
     public bool Open { get; set; }
 
     public TreeStyle? Trees { get; set; }
+
+    /// <summary>Snow country: more of its open ground is snow than lawn, so snow lies on its trees too.</summary>
+    public bool Snowbound { get; set; }
+
     public Architecture? Architecture { get; set; }
     public BattleArena? Arena { get; set; }
     public List<string> EvolutionSites { get; } = new();
@@ -71,6 +75,12 @@ public class Map
 
     /// <summary>See <see cref="MapStructures.BuildingsOf"/>.</summary>
     internal List<BuildingInfo>? BuildingCache;
+
+    /// <summary>
+    /// The buildings of a map of the imported world, each standing in for one of the original's models
+    /// (<see cref="WorldMapBuilder"/>); null on a hand-made map, whose buildings are found from its tiles.
+    /// </summary>
+    public List<BuildingInfo>? PlacedBuildings { get; set; }
 
     /// <summary>
     /// True for a map of the imported world: it is too large to draw whole, so it is drawn a chunk at a time,

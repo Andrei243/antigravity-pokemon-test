@@ -147,6 +147,7 @@ public sealed class WorldRenderer
         {
             if (key.Map != map || slot.Scene != null) continue;
             var window = MapScene.ChunkWindow(map, key.X, key.Y);
+            // (Its own tiles and a little round them: the wider reach a scene is drawn within would rush chunks that are not in view yet)
             bool seen = view == null || view.Value.Touches(new Vector3(window.X - 3, 0, window.Y - 3), new Vector3(window.Right + 3, 0, window.Bottom + 5));
 
             if (slot.Pending != null)

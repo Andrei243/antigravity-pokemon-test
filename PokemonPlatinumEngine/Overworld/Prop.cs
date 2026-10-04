@@ -31,9 +31,34 @@ public enum PropType
 
     // Street furniture. A fence covers a run of tiles and joins up with the fences beside it; outdoors a Bench is a park bench
     Fence,
+    /// <summary>A low wall of stone: what a town of brick and stone has where a village has a fence. It joins up like one.</summary>
+    LowWall,
     LampPost,
     Mailbox,
     Planter,
+
+    // What stands in Sinnoh's towns besides buildings, placed by the models of the imported world (Data/WorldModels).
+    // Each covers the tiles of its model's box; the world's own data says which of them block the way.
+    Fountain,
+    /// <summary>A ship at its pier: lying north–south or east–west as its box is longer.</summary>
+    Boat,
+    WindTurbine,
+    Statue,
+    /// <summary>A broad-leaved tree standing alone, that wild Pokémon come to when it is slathered with honey.</summary>
+    HoneyTree,
+    Crates,
+    CoalHeap,
+    Hedge,
+    /// <summary>A stone pillar as tall as its model (<see cref="Prop.Height"/>).</summary>
+    Column,
+    Topiary,
+    /// <summary>A small pile of worked stones: the Hallowed Tower, a stone tablet.</summary>
+    Cairn,
+    Billboard,
+    /// <summary>A mass of rock as large as its box.</summary>
+    Outcrop,
+    /// <summary>A lattice mast as tall as its model.</summary>
+    Mast,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
@@ -51,6 +76,12 @@ public sealed class Prop
     public int Y { get; init; }
     public int Width { get; init; } = 1;
     public int Depth { get; init; } = 1;
+
+    /// <summary>For a prop placed by a model of the world: how tall the model stands, in tiles. 0 otherwise.</summary>
+    public float Height { get; init; }
+
+    /// <summary>For a prop placed by a model of the world: the model's short name, which picks among looks of one type.</summary>
+    public string Model { get; init; } = "";
 
     public bool IsSolid => Type < PropType.Rug;
 

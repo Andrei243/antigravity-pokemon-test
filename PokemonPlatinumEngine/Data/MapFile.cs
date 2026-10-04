@@ -344,7 +344,9 @@ public static class TileCodes
         (TileType.Ice, 'i'),
         (TileType.Planks, '='),
         (TileType.Stairs, 's'),
-        (TileType.Marsh, 'm')
+        (TileType.Marsh, 'm'),
+        (TileType.Paving, '+'),
+        (TileType.Walkway, 'H')
     };
 
     public static char CodeOf(TileType type)

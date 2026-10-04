@@ -18,6 +18,7 @@ public static class Cover
     {
         ("shadow|kage", null),                                   // shadows painted over the ground
         ("^puddle", null),                                       // the behaviour already says puddle
+        ("tree3|^bf_tree", TerrainCover.Broadleaf),              // the Battle Zone's forests
         ("tree|^plant\\d|^imped$", TerrainCover.Tree),           // trees, forest fill and the dark floor under it
         ("^wcliff$|^enccliff$", TerrainCover.Rock),              // rock that is walked on
         ("criff|cllif|cliff|peak", TerrainCover.Cliff),
@@ -30,11 +31,14 @@ public static class Cover
         ("snow|sonw", TerrainCover.Snow),
         ("_ice", TerrainCover.Ice),
         ("^numa_", TerrainCover.Marsh),
+        ("^a8_sora_[ah]$", TerrainCover.Walkway),                // the decks of Sunyshore's walkways
+        ("^a8_sora_", TerrainCover.Fence),                       // and their rails
         ("bridge", TerrainCover.Bridge),
         ("step|slope", TerrainCover.Steps),
         ("^nsand|^blueglay|^road|^hage$", TerrainCover.Path),
         ("_road|^c\\d+_r\\d|_cy\\d|_base|_g\\d$|_grand$|kado$", TerrainCover.Paving),
-        ("hanger|rale|stop$|lamp|light|^c\\d+_f_|^c\\d+_d_|_pol\\d|_hei_", TerrainCover.Fence)
+        ("^c\\d+_lamp|^c\\d+_light|^bf_light", TerrainCover.Lamp),      // the street lamps of the cities
+        ("hanger|rale|stop$|lamp|light|^c\\d+_f_|^c\\d+_d_|_pol\\d|_hei_|_gate|^c1_o02$", TerrainCover.Fence)
     }.Select(r => (new Regex(r.Item1, RegexOptions.Compiled), r.Item2)).ToArray();
 
     /// <summary>The kind of ground a texture name stands for; <paramref name="known"/> is false for a name no rule covers.</summary>
@@ -63,7 +67,8 @@ public static class Cover
         _ => null
     };
 
-    private static bool Stands(TerrainCover cover) => cover is TerrainCover.Tree or TerrainCover.Cliff or TerrainCover.Boulder or TerrainCover.Fence;
+    private static bool Stands(TerrainCover cover) =>
+        cover is TerrainCover.Tree or TerrainCover.Broadleaf or TerrainCover.Cliff or TerrainCover.Boulder or TerrainCover.Fence or TerrainCover.Lamp;
 
     /// <summary>The look of every tile of a chunk, row by row.</summary>
     public static TerrainCover[] Of(LandData land, Func<int, ModelInfo?> propModel)
@@ -78,10 +83,12 @@ public static class Cover
                 int i = z * LandData.Tiles + x;
                 bool solid = land.Solid(x, z);
                 if (solid && buildings[i]) { result[i] = TerrainCover.Building; continue; }
-                if (OfBehaviour((TileBehavior)land.Behaviour(x, z)) is { } fromBehaviour) { result[i] = fromBehaviour; continue; }
 
                 var ground = OfTexture(layers?.Ground[i], out _);
                 var above = OfTexture(layers?.Above[i], out _);
+                // A walkway's deck is a bridge by its behaviour; its own look is told by its texture
+                if (!solid && (ground == TerrainCover.Walkway || above == TerrainCover.Walkway)) { result[i] = TerrainCover.Walkway; continue; }
+                if (OfBehaviour((TileBehavior)land.Behaviour(x, z)) is { } fromBehaviour) { result[i] = fromBehaviour; continue; }
                 // A blocked tile shows what stands on it; an open one its ground, whatever hangs over it
                 TerrainCover? pick = solid
                     ? (above is { } a && Stands(a) ? a : ground ?? above)

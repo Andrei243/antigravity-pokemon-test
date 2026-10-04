@@ -310,7 +310,14 @@ public class MapImportTests
     [InlineData("numa_a2", TerrainCover.Marsh)]
     [InlineData("nbridge", TerrainCover.Bridge)]
     [InlineData("newstep", TerrainCover.Steps)]
-    [InlineData("c1_lamp02", TerrainCover.Fence)]
+    [InlineData("c1_lamp02", TerrainCover.Lamp)]
+    [InlineData("c5_light", TerrainCover.Lamp)]
+    [InlineData("dun_light", TerrainCover.Fence)]
+    [InlineData("a8_sora_a", TerrainCover.Walkway)]
+    [InlineData("a8_sora_f", TerrainCover.Fence)]
+    [InlineData("tree3_02", TerrainCover.Broadleaf)]
+    [InlineData("bf_tree01", TerrainCover.Broadleaf)]
+    [InlineData("t03_gate", TerrainCover.Fence)]
     [InlineData("area07_hei_h3", TerrainCover.Fence)]
     public void ATexturesNameSaysWhatTheGroundIs(string texture, TerrainCover expected)
     {
@@ -326,7 +333,7 @@ public class MapImportTests
         Assert.Null(Cover.OfTexture("puddle_b", out bool puddleKnown));
         Assert.True(puddleKnown);
 
-        Assert.Null(Cover.OfTexture("a8_sora_a", out bool known));
+        Assert.Null(Cover.OfTexture("dhole", out bool known));   // a cave's mouth: sorted when the first cave is built
         Assert.False(known);
         Assert.Null(Cover.OfTexture(null, out _));
     }

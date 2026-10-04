@@ -44,9 +44,9 @@ internal static class BuildingModels
         /// The pitch of a roof whose slope covers <paramref name="run"/> texels of ground from ridge to eave: the
         /// number of tile rows that makes it at least as steep as the kit's pitch.
         /// </summary>
-        public static Pitch For(float run, float vs)
+        public static Pitch For(float run, float vs, float pitchDeg = PitchDeg)
         {
-            int rows = (int)MathF.Ceiling(run / MathF.Cos(PitchDeg * MathF.PI / 180f) / 8f - 0.001f);
+            int rows = (int)MathF.Ceiling(run / MathF.Cos(pitchDeg * MathF.PI / 180f) / 8f - 0.001f);
             float rise = MathF.Sqrt(rows * 8f * rows * 8f - run * run);
             return new Pitch(run, rows, rise / run, rise / vs);
         }
@@ -63,63 +63,221 @@ internal static class BuildingModels
         int x0 = BuildingArt.Inset, x1 = b.Width * BuildingArt.Bay - BuildingArt.Inset;
         // The back wall stands a tile inside the footprint, so the roof doesn't swallow the whole block
         int zB = BuildingArt.Bay, zF = b.Depth * BuildingArt.Bay;
+
+        // A tower or a lighthouse is a ground stage like any flat-roofed building, with its stages standing on that
+        var whole = s;
+        bool stages = b.Kind is BuildingKind.Tower or BuildingKind.Lighthouse && !b.Annex;
+        if (stages) s = s with { Roof = RoofShape.Flat, Storeys = 1, Gear = RoofGear.None, Tiers = 0 };
+
         int h = s.WallHeight, depth = zF - zB;
+        int eave = s.DeepEaves ? Eave * 2 : Eave;
 
         float half = depth / 2f;
-        var pitch = Pitch.For(half + Eave, kit.VS);
-        float ridgeY = s.Roof == RoofShape.Gable ? h + pitch.Drop(half, kit.VS) : h - pitch.Drop(Eave, kit.VS) + pitch.RiseRows;
+        var pitch = Pitch.For(half + eave, kit.VS, s.Steep ? SteepDeg : PitchDeg);
+        float ridgeY = s.Roof == RoofShape.Gable ? h + pitch.Drop(half, kit.VS) : h - pitch.Drop(eave, kit.VS) + pitch.RiseRows;
         int gable = s.Roof == RoofShape.Gable ? (int)MathF.Ceiling(ridgeY - h) : 0;
 
-        // Walls: the front, and the two sides (the north wall is never seen)
+        // Walls: the front, and the two sides (the north wall is never seen). The ends of a gate house on a road
+        // that runs east and west have its doors, each where the road meets it
         var front = kit.Face(id + ".front", x1 - x0, h, c => BuildingArt.PaintFront(c, b, s));
-        var side = kit.Face(id + ".side", depth, h + gable, c => BuildingArt.PaintSide(c, b, s, h));
-        var sideWall = new Art(side.X, side.Y + gable, side.Width, h);
-        kit.Box(x0, x1, zB, zF, 0, h, south: front, west: sideWall, east: sideWall);
+        Art west, east;
+        if (b.SideDoors.Count > 0)
+        {
+            // Along the west wall from its north end; the east wall is seen the other way round
+            var along = b.SideDoors.Where(row => row > b.Y0).Select(row => (row - b.Y0 - 1) * BuildingArt.Bay + BuildingArt.Bay / 2).ToList();
+            west = kit.Face(id + ".west", depth, h + gable, c => BuildingArt.PaintSide(c, b, s, h, along));
+            east = kit.Face(id + ".east", depth, h + gable, c => BuildingArt.PaintSide(c, b, s, h, along.Select(d => depth - d).ToList()));
+        }
+        else west = east = kit.Face(id + ".side", depth, h + gable, c => BuildingArt.PaintSide(c, b, s, h));
+        kit.Box(x0, x1, zB, zF, 0, h, south: front,
+            west: new Art(west.X, west.Y + gable, west.Width, h), east: new Art(east.X, east.Y + gable, east.Width, h));
         if (gable > 0)
         {
             float apex = gable - (ridgeY - h);
-            kit.Tri(kit.At(x0, h, zB), kit.At(x0, h, zF), kit.At(x0, ridgeY, zB + half), side,
+            kit.Tri(kit.At(x0, h, zB), kit.At(x0, h, zF), kit.At(x0, ridgeY, zB + half), west,
                 new(0, gable), new(depth, gable), new(depth / 2f, apex), -Vector3.UnitX);
-            kit.Tri(kit.At(x1, h, zF), kit.At(x1, h, zB), kit.At(x1, ridgeY, zB + half), side,
+            kit.Tri(kit.At(x1, h, zF), kit.At(x1, h, zB), kit.At(x1, ridgeY, zB + half), east,
                 new(0, gable), new(depth, gable), new(depth / 2f, apex), Vector3.UnitX);
         }
 
         switch (s.Roof)
         {
-            case RoofShape.Gable: GableRoof(kit, s, targets, x0, x1, zB, zF, h, pitch); break;
-            case RoofShape.Hip: HipRoof(kit, s, targets, x0, x1, zB, zF, h, pitch); break;
+            case RoofShape.Gable: GableRoof(kit, s, targets, x0, x1, zB, zF, h, pitch, eave); break;
+            case RoofShape.Hip: HipRoof(kit, s, targets, x0, x1, zB, zF, h, pitch, eave); break;
             default: FlatRoof(kit, b, s, x0, x1, zB, zF, h); break;
         }
+        if (stages) Stages(kit, b, whole, targets, id, x0, x1, zB, zF, h);
+        else if (s.Tiers > 0) Tiers(kit, b, s, id, x0, x1, zB, zF, h);
 
         var bays = BuildingArt.BaysOf(b);
         byte windows = BuildingArt.WindowLight(b, s);
         var windowPools = windows == ArtSheet.HomeLight ? targets.HomeLight : targets.PublicLight;
+        // A porch the world's data builds out takes the place of the entrance block the style would add
+        bool porch = b.Porch.Count > 0;
+        if (porch) Porch(kit, b, s, targets, id, zF);
         for (int i = 0; i < bays.Length; i++)
         {
             float cx = i * BuildingArt.Bay + BuildingArt.Bay / 2f;
-            bool open = b.Doors.Exists(d => d.X == b.X0 + i);
+            bool open = b.Doors.Exists(d => d.X == b.X0 + i && d.Target != null);
             if (bays[i] == BuildingArt.BayKind.Door)
             {
-                bool portal = s.Portal > 0 && s.Pitched;
+                bool portal = s.Portal > 0 && s.Pitched && !porch && !s.SlidingDoor;
                 if (portal) Portal(kit, b, s, id, cx, zF);
                 float doorZ = zF + (portal ? BuildingArt.PortalDepth : 0);
-                float stepHalf = s.GlassDoor ? 21 : portal ? 23 : 14;
+                float stepHalf = s.SlidingDoor ? 28 : s.GlassDoor ? 21 : portal ? 23 : 14;
                 // In front of an entrance block the step is shallow, so it stays behind whoever stands at the door
                 kit.Block("step", BuildingArt.StepStone, cx - stepHalf, cx + stepHalf, doorZ, doorZ + (portal ? 4 : 7), 0, 3);
                 // The lantern by a house door burns all night; a shop's doors light the street while it is open
                 if (open) LightPool(kit, targets.PublicLight, cx, doorZ, s.GlassDoor ? 100 : 64, 84);
             }
-            else if (bays[i] == BuildingArt.BayKind.Window)
+            else if (bays[i] == BuildingArt.BayKind.Window && s.Window != WindowKind.None)
             {
                 LightPool(kit, windowPools, cx, zF, 70, 66);
             }
         }
     }
 
+    /// <summary>The pitch of the Foreign Building's roof.</summary>
+    private const float SteepDeg = 50f;
+
+    // ------------------------------------------------------------------ porches, tiers and towers
+
+    /// <summary>
+    /// The entrance the world's data builds out a tile in front of the wall. Closed: one block as wide as its
+    /// tiles, with the doors in its front. Open: a block on each side of the way in, up to where the canopy
+    /// hangs, and the canopy across them all; the door is in the wall behind.
+    /// </summary>
+    private static void Porch(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets, string id, int zF)
+    {
+        int bay = BuildingArt.Bay, inset = BuildingArt.Inset;
+        int ph = BuildingArt.PorchHeight(s), z0 = zF - 4, z1 = zF + bay - inset;
+        int Left(int tile) => (tile - b.X0) * bay + (tile == b.X0 ? inset : 0);
+        int Right(int tile) => (tile - b.X0 + 1) * bay - (tile == b.X1 ? inset : 0);
+        int px0 = Left(b.Porch[0]), px1 = Right(b.Porch[^1]);
+        var side = kit.Face($"{id}.porch.side", z1 - z0, ph, c => BuildingArt.PaintPortalSide(c, s));
+        var top = kit.Face($"{id}.porch.top", px1 - px0, z1 - z0, c => BuildingArt.PaintPortalTop(c, s));
+
+        if (!b.PorchIsOpen)
+        {
+            var front = kit.Face(id + ".porch", px1 - px0, ph, c => BuildingArt.PaintPorch(c, b, s, b.Porch[0]));
+            kit.Box(px0, px1, z0, z1, 0, ph, top, front, side, side);
+            foreach (var (x, target) in b.Doors)
+            {
+                float cx = (x - b.X0) * bay + bay / 2f;
+                kit.Block("step", BuildingArt.StepStone, cx - 21, cx + 21, z1, z1 + 4, 0, 3);
+                if (target != null) LightPool(kit, targets.PublicLight, cx, z1, s.GlassDoor ? 100 : 64, 84);
+            }
+            return;
+        }
+
+        // Each run of porch tiles is one side block
+        int under = BuildingArt.CanopyUnder(ph);
+        for (int i = 0; i < b.Porch.Count; i++)
+        {
+            int first = b.Porch[i];
+            while (i + 1 < b.Porch.Count && b.Porch[i + 1] == b.Porch[i] + 1) i++;
+            int fx0 = Left(first), fx1 = Right(b.Porch[i]);
+            var flank = kit.Face($"{id}.porch.flank{first}", fx1 - fx0, under, c => BuildingArt.PaintPorchFlank(c, s, first));
+            var flankSide = kit.Face($"{id}.porch.flankside", z1 - z0, under, c => BuildingArt.PaintPorchFlank(c, s, 3));
+            kit.Box(fx0, fx1, z0, z1, 0, under, south: flank, west: flankSide, east: flankSide);
+        }
+        var canopy = kit.Face(id + ".canopy", px1 - px0, ph - under, c => BuildingArt.PaintCanopy(c, s, sign: s.Pitched));
+        var canopySide = kit.Face(id + ".canopy.side", z1 - z0, ph - under, c => BuildingArt.PaintCanopy(c, s, sign: false));
+        kit.Box(px0, px1, z0, z1, under, ph, top, canopy, canopySide, canopySide);
+    }
+
+    /// <summary>One stage of a tower, or one tier stepping back on a flat roof: four walls and a top.</summary>
+    private static void Stage(KitBuilder kit, BuildingStyle s, string key, float x0, float x1, float z0, float z1, float y0, float y1, Color? band = null)
+    {
+        int w = (int)MathF.Round(x1 - x0), d = (int)MathF.Round(z1 - z0), h = (int)MathF.Round(y1 - y0);
+        var front = kit.Face($"{key}.front", w, h, c =>
+        {
+            BuildingArt.PaintTier(c, s, w, ArtSheet.PublicLight);
+            if (band is { } colour) BuildingArt.PaintTierBand(c, colour);
+        });
+        var side = kit.Face($"{key}.side", d, h, c =>
+        {
+            BuildingArt.PaintTier(c, s, d + 3, ArtSheet.PublicLight);
+            if (band is { } colour) BuildingArt.PaintTierBand(c, colour);
+        });
+        var top = kit.Face($"{key}.top", w, d, c => BuildingArt.PaintTierTop(c, s));
+        kit.Box(x0, x1, z0, z1, y0, y1, top, front, side, side);
+    }
+
+    /// <summary>Storeys stepping back on a flat roof, each a tile narrower each side than what it stands on.</summary>
+    private static void Tiers(KitBuilder kit, BuildingInfo b, BuildingStyle s, string id, int x0, int x1, int zB, int zF, int h)
+    {
+        const int rows = BuildingArt.UpperStorey + BuildingArt.TopBand;
+        float tx0 = x0, tx1 = x1, tz0 = zB, tz1 = zF, y = h - 5;
+        for (int tier = 0; tier < s.Tiers; tier++)
+        {
+            tx0 += 28; tx1 -= 28; tz0 += 10; tz1 -= 22;
+            if (tx1 - tx0 < 48 || tz1 - tz0 < 20) return;
+            Stage(kit, s, $"{id}.tier{tier}", tx0, tx1, tz0, tz1, y, y + rows);
+            y += rows;
+        }
+    }
+
+    /// <summary>
+    /// The stages of a tower or a lighthouse on its ground stage, as tall together as the model stands: each a
+    /// little narrower than the one below. A tower ends in a pointed cap of slate; a lighthouse in a gallery,
+    /// a lantern room whose glass burns all night, and a small red cap.
+    /// </summary>
+    private static void Stages(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets, string id, int x0, int x1, int zB, int zF, int h)
+    {
+        bool lighthouse = b.Kind == BuildingKind.Lighthouse;
+        int count = lighthouse ? 2 : 3;
+        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150, 300);
+        const int lantern = 24, capRows = 30;
+        int rows = Math.Max(30, (total - h - (lighthouse ? lantern + 6 : 0)) / count);
+
+        // The shaft stands in the middle of the ground stage, no wider than three tiles and a little deeper than half
+        float width = MathF.Min(x1 - x0 - 16, 96), depthOf = MathF.Min(zF - zB - 4, 64);
+        float cx = (x0 + x1) / 2f, cz = zB + (zF - zB) * 0.45f, y = h - 5;
+        for (int i = 0; i < count; i++)
+        {
+            Stage(kit, s, $"{id}.stage{i}", cx - width / 2, cx + width / 2, cz - depthOf / 2, cz + depthOf / 2, y, y + rows,
+                lighthouse && i == 0 ? s.Accent : null);
+            y += rows;
+            width = MathF.Max(40, width - 12);
+            depthOf = MathF.Max(24, depthOf - 8);
+        }
+        width += 12; depthOf += 8;   // the size of the last stage
+
+        if (lighthouse)
+        {
+            // The gallery, then the lantern room, set in from it
+            Stage(kit, s with { Window = WindowKind.None }, id + ".gallery", cx - width / 2 - 6, cx + width / 2 + 6, cz - depthOf / 2 - 4, cz + depthOf / 2 + 6, y, y + 6);
+            y += 6;
+            float lw = MathF.Max(24, width - 12), ld = MathF.Max(16, depthOf - 10);
+            var glass = kit.Face($"{id}.lantern.{(int)lw}", (int)lw, lantern, BuildingArt.PaintLantern);
+            var glassSide = kit.Face($"{id}.lantern.{(int)ld}", (int)ld, lantern, BuildingArt.PaintLantern);
+            kit.Box(cx - lw / 2, cx + lw / 2, cz - ld / 2, cz + ld / 2, y, y + lantern, south: glass, west: glassSide, east: glassSide);
+            y += lantern;
+            width = lw + 8; depthOf = ld + 8;
+        }
+
+        // The cap: four slopes to a point, in the roof's own tiles
+        var tiles = targets.RoofTiles(s.RoofColor);
+        float capHeight = lighthouse ? capRows * 0.6f : capRows;
+        float ex0 = cx - width / 2 - 3, ex1 = cx + width / 2 + 3, ez0 = cz - depthOf / 2 - 3, ez1 = cz + depthOf / 2 + 3;
+        var apex = kit.At(cx, y + capHeight, cz);
+        var white = Color.White;
+        void Slope(Vector3 a, Vector3 c, Vector3 normal)
+        {
+            float span = Vector3.Distance(a, c) * GroundBaker.ArtTile / 64f / 2f;
+            tiles.Tri(a, c, apex, new(-span, 0.6f), new(span, 0.6f), new(0, 0), normal, normal, normal, white, white, white);
+        }
+        Slope(kit.At(ex0, y, ez1), kit.At(ex1, y, ez1), Vector3.Normalize(new Vector3(0, 0.6f, 1)));
+        Slope(kit.At(ex1, y, ez0), kit.At(ex0, y, ez0), Vector3.Normalize(new Vector3(0, 0.6f, -1)));
+        Slope(kit.At(ex0, y, ez0), kit.At(ex0, y, ez1), Vector3.Normalize(new Vector3(-1, 0.6f, 0)));
+        Slope(kit.At(ex1, y, ez1), kit.At(ex1, y, ez0), Vector3.Normalize(new Vector3(1, 0.6f, 0)));
+    }
+
     // ------------------------------------------------------------------ roofs
 
     /// <summary>A gable roof with its ridge running east–west: the south slope faces the camera, tile rows level.</summary>
-    private static void GableRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p)
+    private static void GableRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p, int Eave)
     {
         var tiles = targets.RoofTiles(s.RoofColor);
         float vs = kit.VS, half = (zF - zB) / 2f, zMid = zB + half;
@@ -167,10 +325,21 @@ internal static class BuildingModels
         }
 
         if (s.Chimney) Chimney(kit, x0 + 20, zMid + 5, h, ridgeY);
+        if (s.Gear.HasFlag(RoofGear.Spire))
+            kit.Sprite(kit.Face("spire", 16, 44, BuildingArt.PaintSpire), cx, zMid + 1, ridgeY - 3);
+        if (s.Gear.HasFlag(RoofGear.Solar)) SolarPanel(kit, cx, eaveY, zF + Eave, ridgeY, zMid, southN);
+    }
+
+    /// <summary>A solar panel lying on a roof's south slope, a third of the way up it.</summary>
+    private static void SolarPanel(KitBuilder kit, float cx, float eaveY, float eaveZ, float ridgeY, float ridgeZ, Vector3 normal)
+    {
+        var art = kit.Face("solar", 38, 23, BuildingArt.PaintSolar);
+        Vector3 On(float x, float t) => kit.At(x, eaveY + (ridgeY - eaveY) * t + 0.8f, eaveZ + (ridgeZ - eaveZ) * t);
+        kit.Quad(On(cx - 19, 0.28f), On(cx + 19, 0.28f), On(cx + 19, 0.78f), On(cx - 19, 0.78f), art, normal);
     }
 
     /// <summary>A hip roof: four slopes of the same pitch meeting at a short ridge.</summary>
-    private static void HipRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p)
+    private static void HipRoof(KitBuilder kit, BuildingStyle s, BuildingTargets targets, int x0, int x1, int zB, int zF, int h, Pitch p, int Eave)
     {
         var tiles = targets.RoofTiles(s.RoofColor);
         float vs = kit.VS, zMid = (zB + zF) / 2f, cx = (x0 + x1) / 2f;
@@ -212,6 +381,8 @@ internal static class BuildingModels
         var front = kit.Face($"fascia.{Key(dark)}.{width}", width, Fascia, c => BuildingArt.PaintFascia(c, dark));
         var flank = kit.Face($"fascia.{Key(dark)}.{depth}", depth, Fascia, c => BuildingArt.PaintFascia(c, dark));
         kit.Box(rx0, rx1, rz0, rz1, eaveY - Fascia, eaveY, south: front, west: flank, east: flank);
+        if (s.Gear.HasFlag(RoofGear.Solar) && ex1 - ex0 >= 40)
+            SolarPanel(kit, cx, eaveY, rz1, ridgeY, zMid, Vector3.Normalize(new Vector3(0, p.Run, rise)));
     }
 
     private static void RidgeCap(KitBuilder kit, BuildingStyle s, float x0, float x1, float z, float y)
@@ -227,7 +398,8 @@ internal static class BuildingModels
     {
         const int wall = 3;
         int roofY = h - 5, w = x1 - x0, d = zF - zB;
-        var surface = kit.Face($"flatroof.{w - 2 * wall}x{d - 2 * wall}", w - 2 * wall, d - 2 * wall, BuildingArt.PaintFlatRoof);
+        bool snow = s.RoofColor.Equals(BuildingArt.SnowRoof);
+        var surface = kit.Face($"flatroof{(snow ? ".snow" : "")}.{w - 2 * wall}x{d - 2 * wall}", w - 2 * wall, d - 2 * wall, c => BuildingArt.PaintFlatRoof(c, snow));
         kit.Box(x0 + wall, x1 - wall, zB + wall, zF - wall, roofY - 1, roofY, top: surface);
 
         Art Cap(int cw, int cd) => kit.Face($"parapet.cap.{cw}x{cd}", cw, cd, c => BuildingArt.PaintParapet(c, cap: true));
@@ -258,6 +430,23 @@ internal static class BuildingModels
             kit.Sprite(kit.Face("dish", 22, 22, BuildingArt.PaintDish), x1 - 64, back + 16, roofY);
         if (s.Gear.HasFlag(RoofGear.Globe))
             kit.Sprite(kit.Face("globe", 30, 36, BuildingArt.PaintGlobe), (x0 + x1) / 2f, back + 12, roofY);
+        if (s.Gear.HasFlag(RoofGear.Stack))
+        {
+            // Two smokestacks toward the back, east of the middle
+            var stack = kit.Face("stack", 16, 84, BuildingArt.PaintStack);
+            var rim = kit.Face("stack.top", 16, 16, c => BuildingArt.PaintChimney(c, top: true));
+            foreach (float sx in new[] { x1 - 46f, x1 - 78f })
+                if (sx > x0 + 20) kit.Box(sx, sx + 16, back, back + 16, roofY, roofY + 84, rim, stack, stack, stack);
+        }
+        if (s.Gear.HasFlag(RoofGear.Spikes))
+        {
+            var spike = kit.Face("spike", 12, 30, BuildingArt.PaintSpike);
+            foreach (float sx in new[] { x0 + 10f, x1 - 10f })
+            {
+                kit.Sprite(spike, sx, zB + wall + 4, roofY);
+                kit.Sprite(spike, sx, zF - wall - 3, roofY);
+            }
+        }
     }
 
     // ------------------------------------------------------------------ parts

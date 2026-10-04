@@ -166,7 +166,6 @@ public class WorldTests
             BgmTrack = "sinnoh/twinleaf",
             Trees = TreeStyle.Pine,
             Architecture = Architecture.Plaster,
-            Roof = TileType.RoofBlue,
             Doors = new() { new OverlayDoor { Warp = 2, Map = "PlayerHouse", X = 4, Y = 6, Facing = Direction.Left } },
             Locked = new() { 0, 1 },
             Exits = new() { new OverlayExit { X = 170, Z = 800, Map = "JubilifeCity", ToX = 19, ToY = 32 } },
@@ -176,14 +175,14 @@ public class WorldTests
 
         string json = JsonSerializer.Serialize(overlay, GameDataFiles.Json);
         Assert.Contains("\"facing\":\"Left\"", json.Replace(" ", ""));
-        Assert.Contains("\"roof\":\"RoofBlue\"", json.Replace(" ", ""));
+        Assert.Contains("\"architecture\":\"Plaster\"", json.Replace(" ", ""));
 
         var read = JsonSerializer.Deserialize<WorldOverlayFile>(json, GameDataFiles.Json)!;
         Assert.Equal((2, "PlayerHouse", 4, 6, Direction.Left), (read.Doors![0].Warp, read.Doors[0].Map, read.Doors[0].X, read.Doors[0].Y, read.Doors[0].Facing));
         Assert.Equal(new[] { 0, 1 }, read.Locked);
         Assert.Equal(("JubilifeCity", 19, 32), (read.Exits![0].Map, read.Exits[0].ToX, read.Exits[0].ToY));
         Assert.Equal("Hello!", read.People!["lass"].Dialog![0]);
-        Assert.Equal((TreeStyle.Pine, Architecture.Plaster, TileType.RoofBlue), (read.Trees!.Value, read.Architecture!.Value, read.Roof!.Value));
+        Assert.Equal((TreeStyle.Pine, Architecture.Plaster), (read.Trees!.Value, read.Architecture!.Value));
 
         var index = JsonSerializer.Deserialize<WorldIndexFile>(
             "{ \"region\": \"Sinnoh\", \"maps\": [ { \"name\": \"Cave\", \"matrix\": 7, \"area\": \"a_cave\" } ], \"areas\": [ \"a_cave\" ] }", GameDataFiles.Json)!;
@@ -459,35 +458,57 @@ public class WorldTests
         var buildings = MapStructures.FindBuildings(map);
         List<BuildingInfo> In(string area) => buildings.Where(b => map.AreaAt(b.X0, b.Y0)!.Key == area).ToList();
 
-        // Twinleaf Town: four houses under green roofs, the player's and the rival's open
+        // Twinleaf Town: four houses built its way, the player's and the rival's open and a storey taller
         var twinleaf = In("twinleaf_town");
         Assert.Equal(4, twinleaf.Count);
-        Assert.All(twinleaf, b => Assert.Equal((BuildingKind.House, TileType.RoofGreen), (b.Kind, b.RoofTile)));
+        Assert.All(twinleaf, b => Assert.Equal((BuildingKind.House, (Architecture?)Architecture.Timber), (b.Kind, b.Town)));
+        Assert.Equal(new[] { "t1_h01", "t1_h01", "t1_s01", "t1_s02" }, twinleaf.Select(b => b.Model).OrderBy(m => m, StringComparer.Ordinal));
+        Assert.All(twinleaf, b => Assert.Equal(b.Model == "t1_h01" ? 0 : 2, b.Storeys));
         var home = twinleaf.Single(b => b.Doors.Any(d => d.Target == "PlayerHouse"));
         Assert.Equal((115, 882, 119, 885), (home.X0, home.Y0, home.X1, home.Y1));
         Assert.Equal(new[] { (116, (string?)"PlayerHouse") }, home.Doors);
         Assert.Contains(twinleaf, b => b.Doors.Any(d => d.Target == "RivalHouse"));
         Assert.Equal(2, twinleaf.Count(b => b.Doors.All(d => d.Target == null)));
 
-        // Sandgem Town: what a building is comes from the name of its model, not from where its door leads
+        // Sandgem Town: what a building is comes from the name of its model, not from where its door leads, and
+        // it stands on exactly the tiles its model blocks. The signs beside the Center and the Mart stand free.
         var sandgem = In("sandgem_town");
         Assert.Equal(5, sandgem.Count);
-        Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokemonCenter && (b.X0, b.Y0, b.X1, b.Y1) == (175, 839, 180, 842));
-        Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokeMart && (b.X0, b.Y0, b.X1, b.Y1) == (185, 840, 189, 842));
-        Assert.Contains(sandgem, b => b.Kind == BuildingKind.Lab && (b.X0, b.Y0, b.X1, b.Y1) == (166, 838, 173, 842));
+        Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokemonCenter && (b.X0, b.Y0, b.X1, b.Y1) == (175, 839, 179, 842));
+        Assert.Contains(sandgem, b => b.Kind == BuildingKind.PokeMart && (b.X0, b.Y0, b.X1, b.Y1) == (186, 840, 189, 842));
+        // The lab is eight tiles wide and four deep, with an entrance five tiles wide built out in front of it
+        var lab = sandgem.Single(b => b.Kind == BuildingKind.Lab);
+        Assert.Equal((166, 838, 173, 841), (lab.X0, lab.Y0, lab.X1, lab.Y1));
+        Assert.Equal(new[] { 166, 167, 168, 169, 170 }, lab.Porch);
+        Assert.False(lab.PorchIsOpen);
+        Assert.Equal(new[] { (168, (string?)"RowanLab") }, lab.Doors);
+        Assert.Equal(TileType.Door, map.GetGroundTile(168, 842));
+        Assert.Equal(TileType.Wall, map.GetGroundTile(170, 842));
+        Assert.False(map.IsSolid(171, 842));
         Assert.Equal(2, sandgem.Count(b => b.Kind == BuildingKind.House));
-        Assert.All(sandgem, b => Assert.Equal(TileType.RoofRed, b.RoofTile));
+        Assert.All(sandgem.Where(b => b.Kind == BuildingKind.House), b => Assert.Equal(Architecture.Plaster, b.Town));
+        Assert.Equal(TileType.Signpost, map.GetGroundTile(180, 842));
+        Assert.False(MapStructures.IsWallSign(map, 180, 842));
 
-        // A building has a front row of wall and doors under its roof, and nothing but roof behind it. (The part
-        // of Jubilife City in view is rougher: its blocks touch and are found as one. It is tidied when it opens.)
-        foreach (var b in buildings.Where(b => map.AreaAt(b.X0, b.Y0)!.Open))
+        // A building is a rectangle of roof with a front row of wall and doors, two tiles or more each way, and
+        // no two share a tile: Jubilife City's blocks, which touch, are each their own
+        var taken = new HashSet<(int, int)>();
+        foreach (var b in buildings)
         {
             Assert.True(b.Width >= 2 && b.Depth >= 2, $"the building at ({b.X0},{b.Y0}) is {b.Width} × {b.Depth}");
-            for (int y = b.Y0; y < b.Y1; y++)
+            for (int y = b.Y0; y <= b.Y1; y++)
                 for (int x = b.X0; x <= b.X1; x++)
-                    Assert.True(map.GetGroundTile(x, y) is not (TileType.Wall or TileType.Door) || !MapStructures.IsBuildingTile(map, x, y + 1),
-                        $"the building at ({b.X0},{b.Y0}) has a wall across its roof at ({x},{y})");
+                {
+                    Assert.True(taken.Add((x, y)), $"two buildings stand on ({x},{y})");
+                    var tile = map.GetGroundTile(x, y);
+                    Assert.True(y == b.Y1 ? tile is TileType.Wall or TileType.Door : tile is TileType.RoofRed or TileType.Door,
+                        $"the building at ({b.X0},{b.Y0}) has {tile} at ({x},{y})");
+                }
         }
+        var jubilife = In("jubilife_city");
+        Assert.True(jubilife.Count >= 4, $"{jubilife.Count} buildings of Jubilife City are in view");
+        Assert.All(jubilife, b => Assert.True(b.Model.StartsWith("c1_") || b.Model is "pc" or "fs", b.Model));
+        Assert.Contains(jubilife, b => b.Kind == BuildingKind.Apartments);
 
         // Each is drawn by exactly one chunk's scene
         int drawn = 0;
@@ -498,30 +519,6 @@ public class WorldTests
         Assert.Same(MapStructures.BuildingsOf(map), MapStructures.BuildingsOf(map));
     }
 
-    /// <summary>
-    /// The importer marks a building's tiles only in the chunk its model is placed in, and 35 of Sinnoh's 326
-    /// buildings (the gates between routes and cities, mostly) reach into the next chunk. None of them is in an
-    /// open area yet. When this fails, an area with such a building has been opened: mark its tiles on both
-    /// sides of the border in tools/MapImporter (Cover.BuildingTiles) before drawing it.
-    /// </summary>
-    [Fact]
-    public void NoBuildingOfAnOpenAreaReachesAcrossTheEdgeOfItsChunk()
-    {
-        foreach (var entry in Sinnoh.Index.Maps)
-        {
-            var matrix = Sinnoh.Matrix(entry.Matrix);
-            for (int cy = 0; cy < matrix.Height; cy++)
-                for (int cx = 0; cx < matrix.Width; cx++)
-                {
-                    string? key = matrix.AreaAt(cx, cy) ?? entry.Area;
-                    int id = matrix.ChunkAt(cx, cy);
-                    if (key == null || !Sinnoh.IsOpen(key) || id == WorldMatrixFile.NoChunk) continue;
-                    foreach (var prop in Sinnoh.Chunk(id)!.Props.Where(WorldMapBuilder.IsBuilding))
-                        Assert.True(prop.BoxX > -0.5f && prop.BoxZ > -0.5f && prop.BoxX + prop.Width < WorldChunkFile.Tiles + 0.5f && prop.BoxZ + prop.Depth < WorldChunkFile.Tiles + 0.5f,
-                            $"{key}: the building '{prop.Name}' of chunk {id:000} reaches across the chunk's edge");
-                }
-        }
-    }
 
     // ------------------------------------------------------------------ the rules of the translation
 
@@ -535,7 +532,8 @@ public class WorldTests
         Assert.Equal((TileType.TallGrass, false, null), Look(TerrainCover.TallGrass, TileBehavior.TallGrass));
         Assert.Equal((TileType.FlowerGrass, false, null), Look(TerrainCover.Flowers));
         Assert.Equal((TileType.Path, false, null), Look(TerrainCover.Path));
-        Assert.Equal((TileType.Path, false, null), Look(TerrainCover.Paving));
+        Assert.Equal((TileType.Paving, false, null), Look(TerrainCover.Paving));
+        Assert.Equal((TileType.Walkway, false, null), Look(TerrainCover.Walkway));
         Assert.Equal((TileType.Sand, false, null), Look(TerrainCover.Sand, TileBehavior.Sand));
 
         Assert.Equal((TileType.Planks, false, null), Look(TerrainCover.Bridge));
@@ -597,12 +595,14 @@ public class WorldTests
     [Fact]
     public void ABuildingIsToldByItsModelsName()
     {
-        Assert.Equal(BuildingKind.PokemonCenter, WorldMapBuilder.KindOf("pc"));
-        Assert.Equal(BuildingKind.PokeMart, WorldMapBuilder.KindOf("fs"));
-        Assert.Equal(BuildingKind.Lab, WorldMapBuilder.KindOf("t2_s01"));
-        Assert.Equal(BuildingKind.Apartments, WorldMapBuilder.KindOf("c1_b02c"));
-        Assert.Null(WorldMapBuilder.KindOf("t1_s01"));
+        Assert.Equal(BuildingKind.PokemonCenter, WorldModels.Of("pc")!.Kind);
+        Assert.Equal(BuildingKind.PokeMart, WorldModels.Of("fs")!.Kind);
+        Assert.Equal(BuildingKind.Lab, WorldModels.Of("t2_s01")!.Kind);
+        Assert.Equal(BuildingKind.Apartments, WorldModels.Of("c1_b02c")!.Kind);
+        Assert.Equal((BuildingKind.House, (Architecture?)Architecture.Timber), (WorldModels.Of("t1_s01")!.Kind, WorldModels.Of("t1_s01")!.Town));
+        Assert.Null(WorldModels.Of("a_model_nobody_made"));
 
+        // A model the catalogue doesn't know is a house if it is as large as one
         static ChunkProp Box(float width, float depth, float height) => new() { Width = width, Depth = depth, Height = height };
         Assert.True(WorldMapBuilder.IsBuilding(Box(5.76f, 3.88f, 5.67f)));    // a house
         Assert.False(WorldMapBuilder.IsBuilding(Box(1.25f, 0.13f, 1.81f)));   // its door

@@ -59,7 +59,8 @@ Tile codes (`TileCodes`):
 | `<` | LedgeLeft (hopped westward) | `>` | LedgeRight (hopped eastward) |
 | `R` | Rock | `i` | Ice |
 | `=` | Planks (a deck) | `s` | Stairs |
-| `m` | Marsh | | |
+| `m` | Marsh | `+` | Paving (a city's slabs) |
+| `H` | Walkway (a steel deck set with solar panels) | | |
 
 The ground layer and the solid grid are separate because they don't always agree: doors sit in solid walls but are open, signposts are solid, and furniture props make the floor under them solid.
 
@@ -67,7 +68,7 @@ A tile's type is what it looks like. What it *does* is its **tile behaviour** (`
 
 **Battle arenas** (plan 04 · G8): outdoors, the ground under the player picks the stage a battle is fought on: water (surfing), sand, snow and cave floor tiles give the `Water`, `Sand`, `Snow` and `Cave` stages, and anything else the map's own `battleArena`, or `Grass` (the meadow, with the map's `trees` behind it and a lake if the map has one). Rooms are `Indoors` unless they name another. `Forest` is for maps deep in the trees; `Gym` and `League` are halls themed on `arenaType` (a `League` room without one is the Champion's); a gym or League map keeps its hall whatever the floor.
 
-**Buildings** are not listed: a block of roof (`r`, `b`, `g`), wall and door tiles is one building, its bottom row the front wall (doors, and signposts set into it as name plates). What kind it is follows from where its door leads: a map whose name ends in `PokemonCenter` or `PokeMart`, or `RowanLab`; anything else is a house, built in the map's `architecture`. Where that isn't enough (a school, an office, a building with no door yet), `buildings` names the kind for the building that covers the given tile: `School`, `Office`, `TvStation`, `Terminal`, `Apartments`, or any of the others. The roof tile's colour is the roof's colour for houses.
+**Buildings** of a hand-made map are not listed: a block of roof (`r`, `b`, `g`), wall and door tiles is one building, its bottom row the front wall (doors, and signposts set into it as name plates). What kind it is follows from where its door leads: a map whose name ends in `PokemonCenter` or `PokeMart`, or `RowanLab`; anything else is a house, built in the map's `architecture` (one of the fifteen towns' ways of building in the style guide: `Timber`, `Plaster`, `City`, `Clapboard`, `Brick`, `Cottage`, `HalfTimber`, `Townhouse`, `Farm`, `Stone`, `Marsh`, `Harbour`, `Snow`, `Seaside`, `Resort`). Where that isn't enough (a school, an office, a building with no door yet), `buildings` names the kind for the building that covers the given tile: `School`, `Office`, `TvStation`, `Terminal`, `Apartments`, or any other `BuildingKind`. The roof tile's colour is the roof's colour for houses. (On a map of the imported world a building is placed by its model instead: see "From models to buildings" below.)
 
 **Props** are furniture in rooms and street furniture outdoors, each covering a rectangle of tiles (`width` × `depth`) that must be `#` in `solid` unless it is decoration:
 
@@ -75,7 +76,8 @@ A tile's type is what it looks like. What it *does* is its **tile behaviour** (`
 | --- | --- |
 | Rooms, solid | `Table`, `Chair`, `Sofa`, `Bookshelf`, `Television`, `Plant`, `Fridge`, `KitchenCounter`, `Stove`, `Stairs`, `Counter`, `HealingMachine`, `Bench`, `StoreShelf`, `LabDesk`, `LabMachine` |
 | Rooms, decoration | `Rug` on the floor; `Window`, `Painting`, `Clock`, `WallEmblem` on the back wall (give them `y` 1) |
-| Outdoors, solid | `Boulder` (on land or in water), `Fence` (a run of tiles; fenced tiles that touch are joined, so a corner is two runs), `LampPost`, `Mailbox`, `Planter`, `Bench` (two tiles wide: a park bench), and the obstacles field moves clear: `CutTree`, `CrackedRock`, `StrengthBoulder` (they only block until plan 02 · S2) |
+| Outdoors, solid | `Boulder` (on land or in water), `Fence` (a run of tiles; fenced tiles that touch are joined, so a corner is two runs; wood, white or iron railings as the town builds), `LowWall` (the same in stone), `LampPost`, `Mailbox`, `Planter`, `Bench` (two tiles wide: a park bench; one tile wide and two deep, it lies north and south), and the obstacles field moves clear: `CutTree`, `CrackedRock`, `StrengthBoulder` (they only block until plan 02 · S2) |
+| Outdoors, placed by the world's models | `Fountain`, `Boat`, `WindTurbine`, `Statue`, `HoneyTree`, `Crates`, `CoalHeap`, `Hedge`, `Column`, `Topiary`, `Cairn`, `Billboard`, `Outcrop`, `Mast`: each as large as its rectangle of tiles. A map file can place them too |
 
 An NPC has `name`, `npcType` (picks the character model), `x`, `y`, `facing` and optional `dialog` lines, plus whichever of `isHealingNurse`, `isPokeMartClerk`, `isPCTerminal`, `isStarterBriefcase` and `isTransportAttendant` (takes the player to the next region, see `RegionDatabase`) apply. Give it an `id` only when something else refers to it (trainers, the starter briefcase); the others get a fresh one each load. A trainer carries a `trainer` block:
 
@@ -134,8 +136,7 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
   "area": "twinleaf_town",
   "bgmTrack": "sinnoh/twinleaf",      // the area's music (docs/music-format.md)
   "trees": "Pine",                    // optional: Round or Pine
-  "architecture": "Timber",           // optional: how its houses are built (as in a map file)
-  "roof": "RoofGreen",                // optional: its houses' roofs (RoofRed when left out)
+  "architecture": "Timber",           // optional: how its fences and walls are built, where its houses don't say
   "battleArena": "Forest",            // optional, as in a map file
   "evolutionSites": [ "Moss Rock" ],  // optional, as in a map file
   "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" } ],
@@ -167,14 +168,25 @@ Every tile of a map of the world keeps the original's behaviour (`Map.BehaviourA
 | `River`, `Sea`, `Waterfall` | `Water`. Open water is not blocked: it is its behaviour that asks for Surf. A blocked tile of it is a rock standing in the water, and so is a `Boulder`-cover tile that stands in water at the water's level |
 | `Ice` | `Ice` |
 | `Grass`, `Flowers`, `TallGrass`, `Sand`, `CaveFloor`, `Snow`, `Rock`, `Marsh` | The tile of the same name |
-| `Path`, `Paving` | `Path` |
+| `Path` | `Path` |
+| `Paving` | `Paving`: the slabs of a city |
 | `Bridge`, `Steps` | `Planks`, `Stairs` |
+| `Walkway` | `Walkway`: a raised deck of steel and solar panels, walked like a bridge |
 | `Cliff` | `Rock`, solid: bare rock nobody walks on. The drop beside it comes from the heights |
 | `Boulder` | `Dirt` with a `Boulder` standing on it, solid |
 | `Fence` | `Grass` with a `Fence` on it, solid |
-| `Building` | Roof (the overlay's `roof`), with the front row of each block as wall and doors: a building, as in a map file. Its kind comes from the short name of the prop over it (`pc`, `fs`, `t2_s01`…: `WorldMapBuilder.KindOf`), else it is a house. |
-| `Tree`, or anything blocked the importer couldn't name | `Tree` |
-| Anything open it couldn't name | `Grass` |
+| `Lamp` | A `LampPost`, solid, on the ground of the tiles round it |
+| `Building` | Whatever the model standing there makes of it (below) |
+| `Tree`, `Broadleaf`, or anything blocked the importer couldn't name | `Tree`. An area with more broad-leaved trees than pines has round trees (`MapArea.Trees`) unless its overlay says otherwise |
+| Anything open it couldn't name | The ground of the tiles round it; lawn if they don't say |
+
+**From models to buildings.** What stands on a chunk is its `props`: the original's models by their short names. `Data/WorldModels.cs` is the catalogue that says what each is here (`docs/world-models.md` lists all 163 that stand outdoors), and `WorldMapBuilder.PlaceModels` puts it on the map:
+
+- A **building** takes the tiles the world blocks under its model's box, in whichever chunks they lie. Where boxes overlap, a tile is the smaller model's. The tiles are cut into rectangles, the largest first (`WorldMapBuilder.Rectangles`): each rectangle two tiles or more each way is a block of the building (roof tiles, with a row of wall along its front), the block with the way in being the main one and the others its wings. Thin pieces on the row before the main block's front, beside a way in, are its **porch**; other thin pieces become a `Fence` or, in a town of brick or stone, a `LowWall`.
+- Its **doors** are where the world has a `Door` tile or a warp: in the front wall, in the porch's front, or on open ground between a porch's two sides (the door is then in the wall behind). A gate house on a road that runs east and west has them in its ends (`BuildingInfo.SideDoors`).
+- Its **kind**, the **town** it is built like, its **storeys** (0 goes by the model's height) and the **name** over its door come from the catalogue; a Gym takes its leader's type from the area it stands in (`WorldModels.GymTheme`). A model the catalogue doesn't know is a house if it is as large as one. The result is the map's `PlacedBuildings`, which `MapStructures.BuildingsOf` returns as it returns the buildings found on a hand-made map.
+- A **prop** (a fountain, a ship, a wind turbine) covers the tiles whose middle lies in its model's box. The world's own data says which of them block the way; those show the ground of the tiles round them, and a ship's are water.
+- An area's fences and walls are built like the houses that stand in it, unless its overlay names an `architecture`.
 
 **Heights.** A tile's height is the plate under its middle, plus the altitude its matrix gives the chunk (in half tiles); stairs and ramps keep the plate's slope. Where two plates lie one over the other at a bridge, the lower is the ground and the upper the bridge's deck (`Map.DeckAt`), and whoever comes onto the tile stays on the one nearer their own height. Sinnoh's lowlands are at one tile (`WorldMapBuilder.GroundLevel`, which the field draws at zero) and its water half a tile lower. A step of 1.25 tiles or more can't be walked, which is what makes a cliff.
 
@@ -204,7 +216,7 @@ Every tile of a map of the world keeps the original's behaviour (`Map.BehaviourA
 - `solid`: 32 rows of 32 characters: `#` blocked, `.` open.
 - `cover`: 32 rows of 32 characters: what the tile looks like, one code of the table below.
 - `heights`: rectangles of ground ("plates"). The ground is `height` at the rectangle's north-west corner and rises by `slopeX` per tile eastward and `slopeZ` per tile southward. Where plates overlap, as under a bridge, a walker stays on the one nearest their own height (`WorldChunkFile.HeightAt`). A step of 1.25 tiles or more up or down can't be walked.
-- `props`: what stands on the chunk. `model` and `name` are the original's id and short name for it (`pc` is a Pokémon Center, `fs` a Mart, `t1_h01` a Twinleaf house), which is how plan 01 · M4 chooses what to build; `x`, `y`, `z` is its origin, and `boxX`, `boxZ`, `width`, `depth`, `height` the space it takes.
+- `props`: what stands on the chunk. `model` and `name` are the original's id and short name for it (`pc` is a Pokémon Center, `fs` a Mart, `t1_h01` a Twinleaf house), by which the game chooses what to build there ("From models to buildings" above); `x`, `y`, `z` is its origin, and `boxX`, `boxZ`, `width`, `depth`, `height` the space it takes.
 
 | Code | `TerrainCover` | |
 | --- | --- | --- |
@@ -225,7 +237,10 @@ Every tile of a map of the world keeps the original's behaviour (`Map.BehaviourA
 | `T` | `Tree` | |
 | `C` | `Cliff` | A rock face |
 | `R` | `Boulder` | A rock standing on the ground or in water |
-| `F` | `Fence` | A fence, a railing, a lamp, a low wall |
+| `F` | `Fence` | A fence, a railing, a low wall, a gate's arch |
+| `L` | `Lamp` | A street lamp |
+| `W` | `Walkway` | The deck of a raised walkway of steel and solar panels |
+| `O` | `Broadleaf` | A broad-leaved tree, where an area's forests are not pines |
 | `B` | `Building` | Under a prop as large as a building |
 | `?` | `Unknown` | The importer couldn't tell; its report says why |
 

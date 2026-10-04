@@ -66,10 +66,11 @@ Other ground kinds follow the lawn's recipe (flat base, clean-edged patches one 
 | Ice | `150,200,236` / `172,214,242` / `112,166,216` | glints: diagonal strokes `232,246,255`, three texels (blue enough to stay ice under the day light, like the snow) |
 | Marsh | `124,106,86` / `140,122,98` / `90,76,66` | wet patches: flat ovals `98,112,108`, five texels wide with a light texel |
 
-Two kinds are built things and keep straight edges, tile for tile, instead of the rounded masks:
+Three kinds are built things and keep straight edges, tile for tile, instead of the rounded masks:
 
 | Kind | Look |
 |---|---|
+| Paving (the ground of cities) | stone slabs 16 texels square, `204,206,214`, one in four a shade darker `194,198,208`, with a joint line `168,172,188` along each slab's east and south edge. Where paving meets other ground it ends in a kerb two texels wide, `150,154,172` with a light line `226,228,234` inside it |
 | Planks (bridge decks, boardwalks) | boards 8 texels wide laid across the way one walks, `178,134,92`, every third one a shade lighter `192,150,104`; a groove `126,90,62` between boards, a nail texel `96,70,52` at each end, and a dark rail line `104,74,54` along the deck's open sides |
 | Stairs | treads 8 texels deep in stone `184,178,170`: a light nose `214,210,204` on the edge that faces downhill and the riser's shade `122,116,124` under it, so a flight reads as steps whichever way it climbs |
 
@@ -106,6 +107,7 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 
 - **Tall grass**: two rows of clumps per tile, each clump five blades in four flat shades (`36,110,62`, `62,150,78`, `106,196,98`, tips `170,232,130`), 16 texels tall, the rows half a clump out of step. They sway at the top and lean away from anyone walking through.
 - **Lawn tufts and flowers**: single upright cards facing the camera (crossed cards read as scribbles from the steep camera). Tufts are a small clump in the lawn's shades; flowers are a stem, two leaves and a five-texel blossom, mostly white, some red or yellow.
+- **Trees in snow country** (an area with more snow than lawn: Snowpoint City, Routes 216 and 217, not Twinleaf Town with its few patches): every tier of a pine is white at its tip and keeps its green toward its rim.
 - **Trees**: grey textures in four flat tones (118, 162, 206, 244) tinted per tree. Pine tiers are bands of scalloped needles with a toothed rim; round crowns are overlapping leaf clumps, each with a light crescent on the upper left and a dark one on the lower right. Bark is `116,80,54` with dark grooves `86,58,42` and a light line beside each. No per-texel random variation.
 - **Ledges**: a ridge 12 texels high: a bright edge `160,222,122`, a grass lip (`120,200,102`, scalloped) over a dirt face `178,138,90` with one broken strata line `146,108,72` and a dark base `116,84,60`.
 - **Rocks**: a boulder is a sprite like the other props: a big stone with a smaller one at its foot, in three flat shades (`196,192,190`, `150,146,150`, `104,100,112`) with a crack line `74,70,86` and an outline; every other one is mirrored. In water it stands a little lower, in a ring of foam.
@@ -128,6 +130,13 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Panel | `214,222,232` / `234,240,246` / `150,162,184` | panels 32×18 with a dark joint and a light line beside it |
 | Base course | `158,152,150` / `190,186,182` / `104,100,112` | stone blocks 16×7 with a light top and a dark bottom line |
 | Timber posts and beams | `124,84,58` / `156,110,76` / `92,62,48` | four texels wide at the corners of plank walls |
+| Boards | `188,144,98` / `210,168,120` / `136,98,70` | the planks' darker boards all over: farmhouses |
+| Half-timber | plaster `240,230,206` between beams `110,78,58` / `140,102,74` / `82,58,48` | posts 3 texels wide every 16, a rail at window height, a brace across each end bay |
+| Stone | `176,172,170` / `198,194,190` / `124,120,130` | cut blocks 16×8, half a block out of step; one in five a shade darker `160,156,158` |
+| Log | `156,110,72` / `188,140,94` / `108,74,56` | logs 8 texels tall, a light line on top and a dark one under each, butt ends every 48 texels staggered row by row |
+| Stucco | `244,242,236` / `252,252,248` / `206,208,220` | white and flat, with the plaster's few trowel marks |
+| Sheet metal | `150,160,176` / `178,188,200` / `112,122,144` | upright ribs 4 texels wide (light, base, base, dark) and a seam every 32 |
+| Dark panel | `104,116,130` / `132,144,156` / `70,80,98` | the panel's joints on a dark ground: Team Galactic's buildings |
 
 - **Roofs**: pitched roofs run their ridge east–west, so the south slope faces the camera almost square-on and its tiles show at full size. Tiles are 8×8 texels in rows half a tile out of step, each with a light upper-left edge, a darker lower right and a dark rounded bottom line; one tile in eleven is a shade lighter. The slope length is a whole number of rows. Eaves overhang 8 texels with a fascia 3 texels deep; gable ends have a pale bargeboard; a ridge cap runs along the top. Centers, Marts and the lab have hip roofs; city blocks have flat roofs behind a parapet, with equipment on top.
 - **Walls** under a pitched roof are 56 texels tall; the eave hides the top ten or so, and the 18 texels below the wall's top are painted two flat steps darker (30 % and 15 %) as the eave's shadow. A city block has a ground storey of 44 texels, upper storeys of 32 and a band of 18 along the top that carries its name.
@@ -135,14 +144,54 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 - **Doors**: a house door is 22×39 with a pale frame, two rows of sunken panels, a small window and a brass knob, and a wall lantern beside it; public buildings have double glass doors 36×40 in a steel frame, the school a pair of wooden ones. A stone step stands in front of every door. A building the map gives no door (it can't be entered yet) still shows one in a middle bay: shut, its glass dark.
 - **Entrance block**: public buildings under a pitched roof (Center, Mart, lab, school) have a block around the door that stands 10 texels proud of the wall and rises to 74, above the eave. Its header, 24 texels tall in the building's accent colour, carries the sign: our own Poké Ball roundel on red for a Center, `MART` on blue, `LAB`, `SCHOOL`, in a 5×7 pixel alphabet of our own drawn at double size with a shadow. City blocks write their name on the band along their top instead.
 - **Roof colours** follow the map's roof tile and the building: teal `52,166,138`, red `214,82,66`, blue `70,118,214`; Center `238,104,58`, Mart `66,122,222`, lab `48,178,198`, the school's slate `92,110,156`. Each colour is its own tile texture, so its darks lean violet and its lights warm instead of being one grey texture tinted.
-- **Style per town** (`Map.Architecture`), until plan 01 brings the real towns:
+- **Storeys**: a house whose model stands 5.4 tiles tall or more has a second storey: 32 more texels of wall with its own row of windows, under the same roof. A block under a flat roof has one storey for its ground floor and one more for every 1.95 tiles its model stands above 3.8, up to six.
+- **Porches**: where the world's data builds the entrance out a tile in front of the wall, so does the building. A *closed* porch is an entrance block as wide as its tiles and 32 texels deep, with the door in its own front and the sign on its header; an *open* one is two side blocks with a canopy between them (its underside 52 texels up), and the door is in the wall behind, so whoever walks in is seen all the way to the door. Under a pitched roof either is 74 texels tall, like the entrance block; under a flat one it is one storey.
+- **Wings**: a model whose blocked tiles are more than one rectangle is built as its main block (the one with the way in) and plainer wings of one storey in the same walls, without doors or signs. Pieces one tile thin are a fence where the town builds in wood, a low stone wall elsewhere.
+- **Style per town** (the model's own, from `Data/WorldModels.cs`; `Map.Architecture` for a hand-made map):
 
-| Town | Houses |
-|---|---|
-| Twinleaf (Timber) | plank walls with timber posts, teal roofs, shutters and flower boxes, a stone chimney |
-| Sandgem (Plaster) | plaster walls over a stone base |
-| Jubilife (City) | brick and panel blocks of two and three storeys with flat roofs; the school keeps a pitched roof |
-| Pallet (Clapboard) | white clapboard, red roofs |
+| Town | Walls | Roof | With |
+|---|---|---|---|
+| Twinleaf (Timber) | planks with timber posts | gable, teal `52,166,138` | shutters, flower boxes, a stone chimney |
+| Sandgem (Plaster) | plaster over a stone base | gable, red `214,82,66` | flower boxes, a chimney |
+| Jubilife (City) | brick blocks of two to five storeys | flat, behind a parapet | sash windows, balconies, vents on the roof |
+| Pallet (Clapboard) | white clapboard | gable, red | shutters, flower boxes |
+| Oreburgh (Brick) | brick | gable, coal grey `92,94,108` | a chimney; its blocks of flats are brick under flat roofs |
+| Floaroma (Cottage) | white clapboard | gable, rose `226,112,140` | shutters and a flower box at every window |
+| Eterna, Celestic (HalfTimber) | half-timber | gable, moss `86,128,96` | a chimney |
+| Hearthome (Townhouse) | plaster | hip, plum `150,98,150` | shutters |
+| Solaceon (Farm) | boards | gable, straw `206,170,96` | a chimney |
+| Veilstone (Stone) | cut stone | gable, grey-blue `112,124,150` | |
+| Pastoria (Marsh) | planks | hip, reed green `116,156,84` | flower boxes |
+| Canalave (Harbour) | brick | gable, slate blue `84,104,140` | a chimney |
+| Snowpoint (Snow) | logs | gable, deep in snow | a chimney |
+| Sunyshore (Seaside) | stucco | hip, orange `240,150,70` | a solar panel on the south slope |
+| Lakeside, Battle Zone (Resort) | white clapboard | hip, turquoise `64,170,180` | shutters |
+
+- **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
+- **Kinds of building** (public buildings look the same in every town unless said):
+
+| Kind | Walls, roof | Marks it out |
+|---|---|---|
+| Pokémon Center, Mart, lab | plaster, hip roof (orange, blue, cyan) | the entrance block with its roundel or name |
+| Gym | plaster, hip roof in its leader's type: Rock `150,128,100`, Grass `92,170,96`, Ghost `124,98,170`, Fighting `204,96,72`, Water `72,140,214`, Steel `138,150,170`, Ice `126,200,220`, Electric `236,196,64` | an entrance block 84 wide in that colour, signed `GYM` |
+| Gate house | stone, hip roof green-grey `104,146,122` | an open porch where the road goes through north and south; a door in each end wall where it goes east and west |
+| Shop (flower shop, cycle shop, café, market, Game Corner, Day Care, Fan Club) | its town's house | an entrance block wide enough for its name, in the roof's colour |
+| Department store | panel block of five storeys | its name on the band along the top, ribbon windows |
+| Museum | cut stone under a flat roof, two storeys | `MUSEUM` on the band, arched windows |
+| Library | brick under a flat roof, three storeys | `LIBRARY` on the band |
+| Hotel, restaurant | the Resort's white boards, two storeys | an entrance block with its name |
+| Hall (Contest Hall, Pal Park, the Great Marsh's gate, the Battle Frontier's facilities) | plaster, hip roof: Contest magenta `214,92,150`, Pal Park green `96,168,104`, the Frontier's gold `214,170,72` | an entrance block 84 wide with its name |
+| Foreign Building (Chapel) | cut stone, two storeys, a steep slate roof `92,104,140` | a round rose window of coloured glass over the door, a small spire on the ridge |
+| Temple (Snowpoint) | weathered stone `150,150,160`, flat roofs under snow | two tiers: the wings a storey lower; arched openings between pilasters |
+| Shrine (Celestic) | timber | a heavy hip roof `120,74,66` with eaves twice as deep as a house's, no windows |
+| Tower (Lost Tower, Battle Tower) | cut stone | four tiers, each a little narrower than the one below, a slit window in each, under a pointed slate cap |
+| Lighthouse | white stucco with a red band `214,72,62` | three narrowing tiers, a gallery, and a lantern room whose glass burns all night |
+| Factory (the mine's works, the Windworks, the Ironworks) | sheet metal under a flat roof | no windows but a strip under the eave; a sliding door; vents, and a smokestack on the Ironworks |
+| Warehouse | sheet metal under a low gable in the same metal | a sliding door two bays wide |
+| Mansion | plaster, two storeys, hip roof slate `88,98,126` | arched windows, an entrance block |
+| Team Galactic's buildings | dark panel under a flat roof | slit windows `120,230,220`, a yellow band `232,204,76` along the top, spikes on the roof corners |
+| Pokémon League | pale stone `214,210,204`, flat roofs | three tiers stepping back, a crimson band `196,60,70`, arched windows, a grand open porch |
+
 
 - **Lights after dark** are marked in the art itself, texel by texel (their alpha), not found by colour. *Public* lights (street lamps, wall lanterns, Centers, Marts, signs) come on at twilight and stay on all night. *Home* lights (house windows) are on in the evening and off late at night, except in about one house in three. Lit glass keeps its pixel detail: each texel becomes lamplight `255,204,117` scaled by its own brightness.
 
@@ -151,7 +200,25 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 - Small things standing outdoors (street lamps, mailboxes, planters, benches, signposts) are **sprites on upright cards**, drawn seen from a little above like the characters, with a one-texel outline in a darker shade of their own colour. They take the scene's light and cast real shadows.
 - **Fences** are real geometry: a post 4 texels square and 17 tall in the middle of every fenced tile, with two rails toward whichever neighbouring tiles are fenced too, so runs, corners and ends come out by themselves. Wood where the houses are timber, white where they are clapboard.
 - **Street lamps** are 78 texels tall: an iron post on a stepped foot with a four-sided lantern. After dark the lantern glows, a soft halo sits around it and a round pool of light lies at its foot.
-- Towns are furnished through the map data (`Fence`, `LampPost`, `Mailbox`, `Planter`, and `Bench`, which outdoors is a park bench): a fenced front garden with the mailbox at its gate, lamps beside the roads, planters either side of public doors, a bench where there is something to look at.
+- Towns are furnished through the map data (`Fence`, `LampPost`, `Mailbox`, `Planter`, and `Bench`, which outdoors is a park bench): a fenced front garden with the mailbox at its gate, lamps beside the roads, planters either side of public doors, a bench where there is something to look at. In the imported world the lamps stand where the original's do, and the rest of what stands about comes from its models:
+
+| Prop | Look |
+|---|---|
+| Low wall | where a fence would be in a town of brick or stone: a wall 12 texels tall and 8 thick in cut stone with a pale cap, joining up tile to tile like a fence |
+| Fountain | a round basin of pale stone, 3 tiles across, its water in the pond's blues with two ripple rings, and a jet on a pedestal in the middle: a sprite of white and pale-blue streaks 40 texels tall |
+| Boat | a white hull with a blue band along the waterline, a planked deck, a cabin with a row of windows and a red funnel; it lies the way its model is longer |
+| Wind turbine | a white tower tapering from 10 texels to 6, as tall as its model, a nacelle, and three blades 44 texels long (a sprite; they turn in plan 04 · G9) |
+| Statue | a stepped plinth of cut stone carrying a weathered figure in green bronze `98,150,138` (ours: a long-necked creature rearing on its hind legs) |
+| Honey tree | a broad round crown in a warmer, yellower green than the forest's (`150,190,84`, `196,220,104`, `104,150,70`) on a thick trunk with an amber patch of honey `236,176,64` |
+| Crates | two wooden crates and one on top: boards `188,134,84` with dark frames |
+| Coal heap | a mound in three flat darks `74,72,84`, `54,52,66`, `104,102,112`, with two-texel glints |
+| Hedge | a clipped box of leaves in the planter's greens, as large as its model's tiles; white on top where its town lies under snow |
+| Column | a fluted shaft of pale stone on a square base, as tall as its model; broken ones end in a slanted break |
+| Topiary | a cone of clipped leaves on a short trunk |
+| Cairn | three worked stones one on another: the Hallowed Tower, a stone tablet |
+| Billboard | a board 44 texels wide on two posts, pale with three dark lines |
+| Outcrop | a mass of rock as large as its tiles, in the boulders' three shades with ledges every 10 texels |
+| Mast | a lattice mast as tall as its model, a red light on top that burns all night |
 
 ### Rooms
 
@@ -466,8 +533,8 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
 - The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
-- The towns are still the hand-made stand-ins: the building kit is ready for plan 01's real layouts, which will bring each town's own mix of buildings (the styles per town here cover Twinleaf, Sandgem, Jubilife and Pallet). Gyms, gates and the League have no style yet.
-- Houses have one storey and one roof shape per kind; a second storey and a cross gable would give the bigger houses their look. Doors are painted shut and do not open (G9).
+- Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Thirty-three models have plain stand-ins until their area is built (`docs/world-models.md` says which). Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
+- A cross gable would give the bigger houses their look. Doors are painted shut and do not open, the fountains' water and the turbines' blades stand still (G9).
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
 - The jump from the pixel field to the 3D battle needs its intro transition (G9).

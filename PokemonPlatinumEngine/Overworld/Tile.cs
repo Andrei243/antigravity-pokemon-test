@@ -42,7 +42,13 @@ public enum TileType : byte
     Planks,
     Stairs,
     /// <summary>Marsh mud.</summary>
-    Marsh
+    Marsh,
+
+    // The made ground of towns (plan 01 · M4)
+    /// <summary>Stone slabs: the streets and squares of cities.</summary>
+    Paving,
+    /// <summary>The deck of Sunyshore's raised walkways: steel, set with solar panels.</summary>
+    Walkway
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>
@@ -81,7 +87,31 @@ public enum Architecture
     /// <summary>Brick and panel blocks with flat roofs (Jubilife).</summary>
     City,
     /// <summary>White clapboard (Pallet).</summary>
-    Clapboard
+    Clapboard,
+
+    // The rest of Sinnoh (plan 01 · M4): each follows the models of its town
+    /// <summary>Brick under rust-brown roofs: a mining town (Oreburgh).</summary>
+    Brick,
+    /// <summary>White boards, rose roofs and flowers at every window (Floaroma).</summary>
+    Cottage,
+    /// <summary>Plaster between dark beams under steep moss-green roofs: old towns (Eterna, Celestic).</summary>
+    HalfTimber,
+    /// <summary>Warm plaster with shutters under hipped plum roofs (Hearthome).</summary>
+    Townhouse,
+    /// <summary>Dark boards under straw-coloured roofs: farmhouses (Solaceon).</summary>
+    Farm,
+    /// <summary>Cut stone under grey roofs (Veilstone).</summary>
+    Stone,
+    /// <summary>Boards under hipped reed-green roofs (Pastoria).</summary>
+    Marsh,
+    /// <summary>Brick under slate-blue roofs: a port (Canalave).</summary>
+    Harbour,
+    /// <summary>Logs under roofs deep in snow (Snowpoint).</summary>
+    Snow,
+    /// <summary>White walls under flat or orange roofs with solar panels (Sunyshore).</summary>
+    Seaside,
+    /// <summary>White boards under hipped turquoise roofs: the lakeside hotel and the Battle Zone's villas.</summary>
+    Resort
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

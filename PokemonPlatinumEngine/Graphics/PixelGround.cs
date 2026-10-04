@@ -61,7 +61,18 @@ internal static class PixelGround
         new(TileType.Marsh, new(124, 106, 86, 255), new(140, 122, 98, 255), new(90, 76, 66, 255), new(98, 112, 108, 255), 77)
     };
 
-    // Built ground, painted tile for tile with straight edges: bridge decks and stairs
+    // Built ground, painted tile for tile with straight edges: paving, bridge decks, walkways and stairs
+    private static readonly Color Paving = new(204, 206, 214, 255);
+    private static readonly Color PavingAlt = new(194, 198, 208, 255);
+    private static readonly Color PavingJoint = new(168, 172, 188, 255);
+    private static readonly Color Kerb = new(150, 154, 172, 255);
+    private static readonly Color KerbLight = new(226, 228, 234, 255);
+    private static readonly Color Deck = new(176, 184, 196, 255);
+    private static readonly Color DeckLight = new(206, 212, 222, 255);
+    private static readonly Color DeckDark = new(124, 132, 150, 255);
+    private static readonly Color Solar = new(52, 96, 170, 255);
+    private static readonly Color SolarLine = new(110, 160, 224, 255);
+    private static readonly Color SolarGlint = new(200, 228, 255, 255);
     private static readonly Color Plank = new(178, 134, 92, 255);
     private static readonly Color PlankLight = new(192, 150, 104, 255);
     private static readonly Color PlankGroove = new(126, 90, 62, 255);
@@ -223,6 +234,30 @@ internal static class PixelGround
                     var (slopeX, slopeZ) = map.SlopeAt(tx + originX, ty + originY);
                     PaintStairs(c, tx * T, ty * T, slopeX, slopeZ, Flight(-1, 0), Flight(1, 0), Flight(0, -1), Flight(0, 1));
                 }
+                else if (t == TileType.Walkway)
+                {
+                    bool Deck(int dx, int dy) => TypeAt(tx + dx, ty + dy) is TileType.Walkway or TileType.Planks or TileType.Stairs or TileType.Paving;
+                    PaintWalkway(c, tx * T, ty * T, Deck(-1, 0), Deck(1, 0), Deck(0, -1), Deck(0, 1));
+                }
+                else
+                {
+                    // Paving runs on under what stands in it (a signpost, a building's foot) and ends in a kerb
+                    // against any other ground
+                    bool Paved(int dx, int dy)
+                    {
+                        var n = TypeAt(tx + dx, ty + dy);
+                        return n is null or TileType.Paving or TileType.Stairs or TileType.Planks or TileType.Walkway or TileType.Signpost || IsBuilding(tx + dx, ty + dy);
+                    }
+                    bool paving = t == TileType.Paving;
+                    if (t == TileType.Signpost)
+                    {
+                        int beside = 0;
+                        foreach (var (dx, dy) in new[] { (1, 0), (-1, 0), (0, 1), (0, -1) })
+                            if (TypeAt(tx + dx, ty + dy) == TileType.Paving) beside++;
+                        paving = beside >= 2;
+                    }
+                    if (paving) PaintPaving(c, tx * T, ty * T, tx + seedX, ty + seedY, Paved(-1, 0), Paved(1, 0), Paved(0, -1), Paved(0, 1));
+                }
             }
         if (pad == 0) return c;
 
@@ -236,6 +271,54 @@ internal static class PixelGround
                     wet = kept.Get(x, y).A > 0;
         waterMask = wet ? kept : null;
         return c.Crop(cut, cut, keepW, keepH);
+    }
+
+    // ------------------------------------------------------------------ paving and walkways
+
+    /// <summary>
+    /// One tile of a city's paving: four slabs with a joint along each one's east and south edge, one slab in
+    /// four a shade darker (chosen by the slab's place in the world), and a kerb along every side where the
+    /// paving ends (<paramref name="west"/> and the rest say where it goes on).
+    /// </summary>
+    internal static void PaintPaving(PixelCanvas c, int ox, int oy, int seedX, int seedY, bool west, bool east, bool north, bool south)
+    {
+        const int slab = 16;
+        for (int y = 0; y < T; y++)
+            for (int x = 0; x < T; x++)
+            {
+                int sx = seedX * (T / slab) + x / slab, sy = seedY * (T / slab) + y / slab;
+                bool joint = x % slab == slab - 1 || y % slab == slab - 1;
+                c.SetRaw(ox + x, oy + y, joint ? PavingJoint : GroundBaker.Rand01(sx, sy, 191) < 0.25f ? PavingAlt : Paving);
+            }
+
+        if (!north) { c.Rect(ox, oy, T, 2, Kerb); c.HLine(ox, oy + 2, T, KerbLight); }
+        if (!south) { c.Rect(ox, oy + T - 2, T, 2, Kerb); c.HLine(ox, oy + T - 3, T, KerbLight); }
+        if (!west) { c.Rect(ox, oy, 2, T, Kerb); c.VLine(ox + 2, oy, T, KerbLight); }
+        if (!east) { c.Rect(ox + T - 2, oy, 2, T, Kerb); c.VLine(ox + T - 3, oy, T, KerbLight); }
+    }
+
+    /// <summary>
+    /// One tile of a raised walkway: a steel deck with a solar panel set into it, its cells eight texels square,
+    /// and a dark edge along the sides where the deck ends.
+    /// </summary>
+    internal static void PaintWalkway(PixelCanvas c, int ox, int oy, bool west, bool east, bool north, bool south)
+    {
+        c.Rect(ox, oy, T, T, Deck);
+        c.Rect(ox + 4, oy + 4, T - 8, T - 8, Solar);
+        for (int i = 4; i <= T - 4; i += 8)
+        {
+            c.VLine(ox + i, oy + 4, T - 8, SolarLine);
+            c.HLine(ox + 4, oy + i, T - 8, SolarLine);
+        }
+        // One glint across the panel's upper left cell
+        for (int i = 0; i < 4; i++) c.SetRaw(ox + 6 + i, oy + 10 - i, SolarGlint);
+        c.HLine(ox + 3, oy + 3, T - 6, DeckLight);
+        c.VLine(ox + 3, oy + 3, T - 6, DeckLight);
+
+        if (!north) c.HLine(ox, oy, T, DeckDark);
+        if (!south) c.Rect(ox, oy + T - 2, T, 2, DeckDark);
+        if (!west) c.VLine(ox, oy, T, DeckDark);
+        if (!east) c.VLine(ox + T - 1, oy, T, DeckDark);
     }
 
     // ------------------------------------------------------------------ water

@@ -3,7 +3,6 @@
   "bgmTrack": "sinnoh/twinleaf",
   "trees": "Pine",
   "architecture": "Timber",
-  "roof": "RoofGreen",
   "doors": [
     { "warp": 0, "map": "RivalHouse", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" }

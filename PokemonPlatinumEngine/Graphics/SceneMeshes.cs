@@ -209,7 +209,8 @@ internal static class TreeModels
 
     /// <summary>Sinnoh pine: four tiers of needled cones with serrated, cut-out rims.</summary>
     /// <param name="y0">The height of the ground the tree stands on.</param>
-    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f)
+    /// <param name="snow">Snow lies on it: each tier is white at its tip, fading into its green toward the rim.</param>
+    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f, bool snow = false)
     {
         if (soft)
         {
@@ -235,6 +236,8 @@ internal static class TreeModels
             // Lower tiers are a touch darker; everything sways a little, more toward the top
             var tierColor = MeshBuilder.Scale(tint, 0.86f + k * 0.06f);
             float sway = 0.12f + k * 0.08f;
+            // Under snow the tip of each tier is white, and its rim keeps its green
+            var tip = snow ? new Color(250, 252, 255, 255) : PixelCanvas.Light1(tierColor, 0.15f);
 
             for (int i = 0; i < segments; i++)
             {
@@ -248,7 +251,7 @@ internal static class TreeModels
                 var na = Vector3.Normalize(n0 + n1);
                 float u0 = i / (float)segments * 3f, u1 = (i + 1) / (float)segments * 3f;
                 b.Tri(apex, rim0, rim1, new((u0 + u1) / 2f, 0), new(u0, 1), new(u1, 1), na, n0, n1,
-                    MeshBuilder.Sway(PixelCanvas.Light1(tierColor, 0.15f), sway), MeshBuilder.Sway(tierColor, sway * 0.6f), MeshBuilder.Sway(tierColor, sway * 0.6f));
+                    MeshBuilder.Sway(tip, sway), MeshBuilder.Sway(tierColor, sway * 0.6f), MeshBuilder.Sway(tierColor, sway * 0.6f));
             }
         }
     }

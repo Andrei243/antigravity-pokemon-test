@@ -159,7 +159,7 @@ internal static class GroundBaker
     public static bool IsWaterAt(Map map, int x, int y)
     {
         var type = TypeAt(map, x, y);
-        return type == TileType.Water || (type == TileType.Planks && map.InBounds(x, y) && map.IsDeepWater(x, y));
+        return type == TileType.Water || (type is TileType.Planks or TileType.Walkway && map.InBounds(x, y) && map.IsDeepWater(x, y));
     }
 
     private static uint Hash(int x, int y, int salt)

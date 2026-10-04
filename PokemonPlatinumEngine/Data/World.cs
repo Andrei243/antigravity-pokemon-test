@@ -45,6 +45,12 @@ public sealed class World
         return worlds;
     }
 
+    /// <summary>
+    /// A world read from any folder that has the layout of <c>Data/world/&lt;region&gt;/</c>, with the index given
+    /// instead of read: how tools look at an import the game doesn't ship (the importer's whole output).
+    /// </summary>
+    public static World Open(string folder, WorldIndexFile index) => new(Path.GetFullPath(folder), index);
+
     private T? Optional<T>(string file) where T : class
     {
         string relative = Path.Combine(folder, file);
@@ -106,9 +112,10 @@ public sealed class World
 }
 
 /// <summary>
-/// Makes a playable <see cref="Map"/> of a matrix: tiles from each chunk's cover and behaviours, buildings from
-/// its props, and for the areas that are open their signposts, people, doors and wild Pokémon. The map's tiles
-/// are the matrix's own, so on the overworld a position is a position in the whole region.
+/// Makes a playable <see cref="Map"/> of a matrix: tiles from each chunk's cover and behaviours, buildings and
+/// what else stands about from its models (<see cref="WorldModels"/>), and for the areas that are open their
+/// signposts, people, doors and wild Pokémon. The map's tiles are the matrix's own, so on the overworld a
+/// position is a position in the whole region.
 /// </summary>
 public static class WorldMapBuilder
 {
@@ -134,6 +141,13 @@ public static class WorldMapBuilder
             }
 
         var areas = new Dictionary<string, MapArea>(StringComparer.OrdinalIgnoreCase);
+        var models = new List<Placed>();
+        // Tiles that a model stands on: they get their look from the model, not from the ground's cover
+        var under = new bool[map.Width * map.Height];
+        // Open tiles whose ground the import couldn't name: they take the ground round them
+        var vague = new List<(int X, int Z)>();
+        // How many of each area's trees are broad-leaved and how many are pines, and how much of its ground is snow or green
+        var trees = new Dictionary<MapArea, (int Broad, int Pine, int Snow, int Green)>();
         for (int cy = 0; cy < matrix.Height; cy++)
             for (int cx = 0; cx < matrix.Width; cx++)
             {
@@ -142,13 +156,49 @@ public static class WorldMapBuilder
                 map.SetArea(cx, cy, area);
 
                 int id = matrix.ChunkAt(cx, cy);
-                if (id != WorldMatrixFile.NoChunk && world.Chunk(id) is { } chunk)
-                    PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, world.Overlay(key));
+                if (id == WorldMatrixFile.NoChunk || world.Chunk(id) is not { } chunk) continue;
+                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague);
+                foreach (var prop in chunk.Props)
+                    models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, WorldModels.Of(prop.Name), area));
+
+                var count = trees.GetValueOrDefault(area);
+                foreach (string row in chunk.Cover)
+                    foreach (char code in row)
+                    {
+                        if (code == TerrainCoverCodes.CodeOf(TerrainCover.Broadleaf)) count.Broad++;
+                        else if (code == TerrainCoverCodes.CodeOf(TerrainCover.Tree)) count.Pine++;
+                        else if (code == TerrainCoverCodes.CodeOf(TerrainCover.Snow)) count.Snow++;
+                        else if (code == TerrainCoverCodes.CodeOf(TerrainCover.Grass) || code == TerrainCoverCodes.CodeOf(TerrainCover.TallGrass)) count.Green++;
+                    }
+                trees[area] = count;
             }
+        foreach (var (area, count) in trees)
+        {
+            if (count.Broad > count.Pine) area.Trees ??= TreeStyle.Round;
+            // Twinleaf Town has patches of snow and is not snow country; Snowpoint City is
+            area.Snowbound = count.Snow > count.Green;
+        }
+
+        // The tiles that lead somewhere, in every area whose file the game has: a building's way in
+        var entrances = new HashSet<(int X, int Z)>();
+        foreach (string key in areas.Keys)
+            foreach (var warp in world.Area(key)?.Warps ?? new()) entrances.Add((warp.X, warp.Z));
+
+        var parts = PlaceModels(world, entry.Matrix, map, models, under, entrances);
+        foreach (var (x, z) in vague) under[z * map.Width + x] = true;
+        foreach (var (x, z) in vague) map.SetGroundTile(x, z, GroundLike(map, x, z, under), map.IsSolid(x, z));
+
+        // A town's fences and walls are built like its houses, where its overlay doesn't say
+        foreach (var town in parts.Where(p => p.Of.Model?.Town != null && p.Of.Model.Kind is BuildingKind.House or BuildingKind.Apartments)
+                     .GroupBy(p => p.Of.Area))
+            town.Key.Architecture ??= town.GroupBy(p => p.Of.Model!.Town!.Value).OrderByDescending(g => g.Count()).ThenBy(g => g.Key).First().Key;
 
         RocksInWater(map);
         foreach (var (key, area) in areas)
             if (area.Open) PlaceEvents(world, map, key, area);
+
+        // Last, because a door knows where it leads only once the warps are in place
+        map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
         return map;
     }
 
@@ -259,8 +309,10 @@ public static class WorldMapBuilder
             TerrainCover.Grass => (TileType.Grass, solid, null),
             TerrainCover.Flowers => (TileType.FlowerGrass, solid, null),
             TerrainCover.TallGrass => (TileType.TallGrass, solid, null),
-            TerrainCover.Path or TerrainCover.Paving => (TileType.Path, solid, null),
+            TerrainCover.Path => (TileType.Path, solid, null),
+            TerrainCover.Paving => (TileType.Paving, solid, null),
             TerrainCover.Bridge => (TileType.Planks, solid, null),
+            TerrainCover.Walkway => (TileType.Walkway, solid, null),
             TerrainCover.Steps => (TileType.Stairs, solid, null),
             TerrainCover.Sand => (TileType.Sand, solid, null),
             TerrainCover.Rock => (TileType.Rock, solid, null),
@@ -273,8 +325,11 @@ public static class WorldMapBuilder
             TerrainCover.Cliff => (TileType.Rock, true, null),
             TerrainCover.Boulder => (TileType.Dirt, true, PropType.Boulder),
             TerrainCover.Fence => (TileType.Grass, true, PropType.Fence),
+            // A street lamp; the ground at its foot is whatever lies round it (PlaceModels)
+            TerrainCover.Lamp => (TileType.Path, true, PropType.LampPost),
             TerrainCover.Building => (TileType.Wall, true, null),
-            // Trees, and whatever blocks without saying what it is; open ground nobody named is lawn
+            // Trees of either kind (the area's style says which), and whatever blocks without saying what it is;
+            // open ground nobody named is lawn until its neighbours say otherwise
             _ => solid ? (TileType.Tree, true, null) : (TileType.Grass, false, null)
         };
     }
@@ -285,9 +340,10 @@ public static class WorldMapBuilder
         || FieldMovement.BikePlankRunsNorthSouth(behaviour) != null;
 
     /// <param name="altitude">How high the matrix sets the whole chunk, in tiles.</param>
-    private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, WorldOverlayFile? overlay)
+    /// <param name="under">Marks the tiles whose look is settled later, by the model that stands on them.</param>
+    /// <param name="vague">Gathers the open tiles of ground nobody named.</param>
+    private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, bool[] under, List<(int X, int Z)> vague)
     {
-        var building = new bool[T * T];
         for (int z = 0; z < T; z++)
             for (int x = 0; x < T; x++)
             {
@@ -296,19 +352,14 @@ public static class WorldMapBuilder
                 bool solid = chunk.SolidAt(x, z);
                 map.SetBehaviour(ox + x, oy + z, behaviour);
                 PlaceHeight(map, chunk, x, z, ox, oy, altitude, behaviour);
-                if (cover == TerrainCover.Building && solid)
-                {
-                    building[z * T + x] = true;
-                    continue;
-                }
 
                 var (type, blocks, prop) = Look(cover, behaviour, solid);
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
-                if (prop is { } standing) map.Props.Add(new Prop { Type = standing, X = ox + x, Y = oy + z });
+                if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
+                if (cover == TerrainCover.Unknown && !solid && type == TileType.Grass) vague.Add((ox + x, oy + z));
+                if (prop is { } standing && (blocks || !area.Open)) map.Props.Add(new Prop { Type = standing, X = ox + x, Y = oy + z });
             }
-
-        PlaceBuildings(map, chunk, building, ox, oy, overlay?.Roof ?? TileType.RoofRed);
     }
 
     /// <summary>
@@ -335,65 +386,255 @@ public static class WorldMapBuilder
         if (deck) map.SetDeck(ox + x, oy + z, altitude + upper!.HeightAt(mx, mz));
     }
 
-    /// <summary>A prop as large as a building, and not a sheet the size of the whole chunk (a lake's water).</summary>
+    // ---------------------------------------------------------------- models: buildings and what stands about
+
+    /// <summary>
+    /// A prop as large as a building, and not a sheet the size of the whole chunk (a lake's water): what a model
+    /// the catalogue doesn't know is taken for.
+    /// </summary>
     public static bool IsBuilding(ChunkProp prop) =>
         prop.Width >= 2.5f && prop.Depth >= 2f && prop.Height >= 1.25f && !(prop.Width > T - 1 && prop.Depth > T - 1);
 
-    /// <summary>What a building is, by the original's short name for its model; null for an ordinary house.</summary>
-    public static BuildingKind? KindOf(string propName) => propName switch
+    /// <summary>One of the original's models where it stands on the map: its box starts at (X, Z), in tiles.</summary>
+    private sealed record Placed(ChunkProp Prop, float X, float Z, WorldModel? Model, MapArea Area)
     {
-        "pc" => BuildingKind.PokemonCenter,
-        "fs" => BuildingKind.PokeMart,
-        "t2_s01" => BuildingKind.Lab,
-        "c1_school" => BuildingKind.School,
-        "c1_s01" => BuildingKind.Office,
-        "c1_s02" => BuildingKind.TvStation,
-        "c1_s03" => BuildingKind.Terminal,
-        _ when propName.StartsWith("c1_b", StringComparison.Ordinal) => BuildingKind.Apartments,
-        _ => null
-    };
+        public float X1 => X + Prop.Width;
+        public float Z1 => Z + Prop.Depth;
+
+        /// <summary>Whether a tile's middle lies in the box.</summary>
+        public bool Covers(int tx, int tz) => tx + 0.5f > X && tx + 0.5f < X1 && tz + 0.5f > Z && tz + 0.5f < Z1;
+
+        public bool IsBuilding => Model != null ? Model.Role == ModelRole.Building : WorldMapBuilder.IsBuilding(Prop);
+        public bool Stands => IsBuilding || Model?.Role == ModelRole.Scenery;
+    }
+
+    /// <summary>One block of a building: a rectangle of the tiles its model blocks, and for the main block its porch.</summary>
+    private sealed record Part(Placed Of, int X0, int Z0, int X1, int Z1, bool Annex)
+    {
+        /// <summary>The blocked tiles (their x) of an entrance on the row before the front wall.</summary>
+        public List<int> Porch { get; } = new();
+    }
+
+    /// <summary>Towns whose yards are fenced in wood; elsewhere what a model leaves standing about is a low wall.</summary>
+    private static bool FencesInWood(Architecture? town) =>
+        town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
+            or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber;
 
     /// <summary>
-    /// Each connected block of building tiles becomes roof with a row of wall along its front, which is how the
-    /// game's maps describe a building (<see cref="MapStructures.FindBuildings"/>); doors keep their place.
+    /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go
+    /// to the one further north, then west, then the wider, so the same tiles always give the same blocks.
     /// </summary>
-    private static void PlaceBuildings(Map map, WorldChunkFile chunk, bool[] building, int ox, int oy, TileType roof)
+    public static List<(int X0, int Z0, int X1, int Z1)> Rectangles(IEnumerable<(int X, int Z)> tiles)
     {
-        var seen = new bool[T * T];
-        for (int start = 0; start < building.Length; start++)
+        var left = new HashSet<(int X, int Z)>(tiles);
+        var result = new List<(int X0, int Z0, int X1, int Z1)>();
+        while (left.Count > 0)
         {
-            if (!building[start] || seen[start]) continue;
-
-            var tiles = new List<(int X, int Z)>();
-            var stack = new Stack<(int X, int Z)>();
-            stack.Push((start % T, start / T));
-            seen[start] = true;
-            int x0 = T, x1 = -1, z0 = T, z1 = -1;
-            while (stack.Count > 0)
+            (int X0, int Z0, int X1, int Z1) best = default;
+            int bestArea = 0;
+            foreach (var (x0, z0) in left)
             {
-                var (x, z) = stack.Pop();
-                tiles.Add((x, z));
-                x0 = Math.Min(x0, x); x1 = Math.Max(x1, x);
-                z0 = Math.Min(z0, z); z1 = Math.Max(z1, z);
-                foreach (var (nx, nz) in new[] { (x + 1, z), (x - 1, z), (x, z + 1), (x, z - 1) })
+                int reach = int.MaxValue;
+                for (int z = z0; left.Contains((x0, z)); z++)
                 {
-                    if (nx < 0 || nz < 0 || nx >= T || nz >= T || !building[nz * T + nx] || seen[nz * T + nx]) continue;
-                    seen[nz * T + nx] = true;
-                    stack.Push((nx, nz));
+                    int x = x0;
+                    while (x < reach && left.Contains((x + 1, z))) x++;
+                    reach = x;
+                    int area = (reach - x0 + 1) * (z - z0 + 1);
+                    bool better = area > bestArea
+                        || area == bestArea && (z0 < best.Z0 || z0 == best.Z0 && (x0 < best.X0 || x0 == best.X0 && reach > best.X1));
+                    if (!better) continue;
+                    best = (x0, z0, reach, z);
+                    bestArea = area;
                 }
             }
+            result.Add(best);
+            for (int z = best.Z0; z <= best.Z1; z++)
+                for (int x = best.X0; x <= best.X1; x++)
+                    left.Remove((x, z));
+        }
+        return result;
+    }
 
-            foreach (var (x, z) in tiles)
+    /// <summary>
+    /// The ground a tile under a model takes: that of the nearest tile round it which no model stands on, so a
+    /// lamp in a paved street stands on paving and a ship in the harbour on water.
+    /// </summary>
+    private static TileType GroundLike(Map map, int x, int z, bool[] under)
+    {
+        for (int reach = 1; reach <= 4; reach++)
+            foreach (var (dx, dz) in new[] { (0, reach), (-reach, 0), (reach, 0), (0, -reach), (-reach, reach), (reach, reach), (-reach, -reach), (reach, -reach) })
             {
-                var type = chunk.BehaviourAt(x, z) == TileBehavior.Door ? TileType.Door : z == z1 ? TileType.Wall : roof;
-                map.SetGroundTile(ox + x, oy + z, type, isSolid: true);
+                int nx = x + dx, nz = z + dz;
+                if (!map.InBounds(nx, nz) || under[nz * map.Width + nx]) continue;
+                switch (map.GetGroundTile(nx, nz))
+                {
+                    case TileType.Path or TileType.Paving or TileType.Sand or TileType.Snow or TileType.Dirt or TileType.Rock or TileType.Water
+                        or TileType.Planks or TileType.Ice or TileType.Marsh or TileType.CaveFloor:
+                        return map.GetGroundTile(nx, nz);
+                    case TileType.Grass or TileType.FlowerGrass or TileType.TallGrass or TileType.Tree:
+                        return TileType.Grass;
+                }
+            }
+        return TileType.Grass;
+    }
+
+    /// <summary>
+    /// Gives every model its place on the map. A building's model takes the tiles the world blocks under its
+    /// box, cut into rectangles: each rectangle two tiles or more each way is a block of the building (roof,
+    /// with a row of wall along its front, and its doors). Thin pieces on the row before the main block's
+    /// front, beside a way in, are its porch; any others are a fence or a low wall. Something that only stands
+    /// there becomes a prop over its box. Returns the buildings' blocks.
+    /// </summary>
+    private static List<Part> PlaceModels(World world, int matrixId, Map map, List<Placed> models, bool[] under, HashSet<(int X, int Z)> entrances)
+    {
+        bool Blocked(int x, int z) => world.ChunkAt(matrixId, x, z) is { } at && at.Chunk.SolidAt(at.X, at.Z);
+
+        // Every blocked tile under a model's box is that model's; where boxes overlap (a Pokémon Center inside
+        // the box of a museum's forecourt) it is the smaller model's
+        var owner = new Dictionary<(int X, int Z), Placed>();
+        foreach (var model in models.Where(m => m.Stands).OrderBy(m => m.Prop.Width * m.Prop.Depth))
+            for (int z = (int)MathF.Floor(model.Z); z <= (int)MathF.Floor(model.Z1); z++)
+                for (int x = (int)MathF.Floor(model.X); x <= (int)MathF.Floor(model.X1); x++)
+                    if (map.InBounds(x, z) && model.Covers(x, z) && Blocked(x, z) && !owner.ContainsKey((x, z))) owner[(x, z)] = model;
+
+        foreach (var (x, z) in owner.Keys) under[z * map.Width + x] = true;
+        // What the ground's cover guessed at such a tile (a boulder, a fence) gives way to the model
+        map.Props.RemoveAll(prop => prop.Type is PropType.Boulder or PropType.Fence && owner.ContainsKey((prop.X, prop.Y)));
+
+        bool WayIn(int x, int z) => map.BehaviourAt(x, z) == TileBehavior.Door || entrances.Contains((x, z));
+
+        var parts = new List<Part>();
+        var inPart = new HashSet<(int X, int Z)>();
+        var fenced = new List<(int X, int Z, bool Wood)>();
+        foreach (var group in owner.GroupBy(kv => kv.Value, ReferenceEqualityComparer.Instance).Select(g => ((Placed)g.Key!, g.Select(kv => kv.Key).ToList())))
+        {
+            var (model, tiles) = group;
+            if (!model.IsBuilding) continue;
+
+            var blocks = new List<(int X0, int Z0, int X1, int Z1)>();
+            var thin = new HashSet<(int X, int Z)>();
+            foreach (var r in Rectangles(tiles))
+            {
+                if (r.X1 > r.X0 && r.Z1 > r.Z0) { blocks.Add(r); continue; }
+                for (int z = r.Z0; z <= r.Z1; z++)
+                    for (int x = r.X0; x <= r.X1; x++)
+                        thin.Add((x, z));
+            }
+            if (blocks.Count == 0)
+            {
+                // Nothing two tiles each way (a house whose middle the world leaves open): the whole of it is one block
+                var (bx0, bz0, bx1, bz1) = (tiles.Min(t => t.X), tiles.Min(t => t.Z), tiles.Max(t => t.X), tiles.Max(t => t.Z));
+                if (bx1 == bx0 || bz1 == bz0) continue;
+                blocks.Add((bx0, bz0, bx1, bz1));
+                thin.Clear();
             }
 
-            float midX = (x0 + x1 + 1) / 2f, midZ = (z0 + z1 + 1) / 2f;
-            var prop = chunk.Props.FirstOrDefault(p => IsBuilding(p)
-                && midX >= p.BoxX && midX <= p.BoxX + p.Width && midZ >= p.BoxZ && midZ <= p.BoxZ + p.Depth);
-            if (prop != null && KindOf(prop.Name) is { } kind) map.BuildingKinds[(ox + x0, oy + z1)] = kind;
+            // The main block is the one with the way in (in its front row, or on the row before it), else the largest
+            bool Entered((int X0, int Z0, int X1, int Z1) r) =>
+                Enumerable.Range(r.X0, r.X1 - r.X0 + 1).Any(x => WayIn(x, r.Z1) || WayIn(x, r.Z1 + 1) && !blocks.Any(o => o != r && x >= o.X0 && x <= o.X1 && r.Z1 + 1 >= o.Z0 && r.Z1 + 1 <= o.Z1));
+            var main = blocks.Any(Entered) ? blocks.First(Entered) : blocks[0];
+            foreach (var r in blocks)
+            {
+                var part = new Part(model, r.X0, r.Z0, r.X1, r.Z1, Annex: r != main);
+                parts.Add(part);
+                for (int z = r.Z0; z <= r.Z1; z++)
+                    for (int x = r.X0; x <= r.X1; x++)
+                    {
+                        if (!map.InBounds(x, z)) continue;
+                        inPart.Add((x, z));
+                        var type = map.BehaviourAt(x, z) == TileBehavior.Door ? TileType.Door : z == r.Z1 ? TileType.Wall : TileType.RoofRed;
+                        map.SetGroundTile(x, z, type, isSolid: true);
+                    }
+                if (r != main) continue;
+
+                // Its porch: on the row before the front, the thin pieces that touch a way in, or hold one
+                int row = r.Z1 + 1;
+                bool OfPorch(int x) => x >= r.X0 && x <= r.X1 && (thin.Contains((x, row)) || WayIn(x, row));
+                for (int x = r.X0; x <= r.X1; x++)
+                {
+                    if (!WayIn(x, row)) continue;
+                    for (int dir = -1; dir <= 1; dir += 2)
+                        for (int px = x; OfPorch(px); px += dir)
+                            if (thin.Remove((px, row)))
+                            {
+                                part.Porch.Add(px);
+                                inPart.Add((px, row));
+                                map.SetGroundTile(px, row, map.BehaviourAt(px, row) == TileBehavior.Door ? TileType.Door : TileType.Wall, isSolid: true);
+                            }
+                }
+                part.Porch.Sort();
+            }
+            bool wood = FencesInWood(model.Model?.Town);
+            foreach (var (x, z) in thin) fenced.Add((x, z, wood));
         }
+
+        // Everything else a model stands on shows the ground round it; a ship lies in the water
+        for (int z = 0; z < map.Height; z++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                if (!under[z * map.Width + x] || inPart.Contains((x, z)) || map.GetGroundTile(x, z) == TileType.Door) continue;
+                bool afloat = owner.TryGetValue((x, z), out var on) && on.Model is { Role: ModelRole.Scenery, Prop: PropType.Boat };
+                map.SetGroundTile(x, z, afloat ? TileType.Water : GroundLike(map, x, z, under), isSolid: true);
+            }
+        foreach (var (x, z, wood) in fenced) map.Props.Add(new Prop { Type = wood ? PropType.Fence : PropType.LowWall, X = x, Y = z });
+
+        foreach (var model in models)
+        {
+            if (model.Model is not { Role: ModelRole.Scenery } scenery) continue;
+            // The tiles whose middle lies in the box; a thing smaller than a tile stands on the one under its middle
+            int x0 = (int)MathF.Floor(model.X - 0.5f) + 1, x1 = (int)MathF.Ceiling(model.X1 - 0.5f) - 1;
+            int z0 = (int)MathF.Floor(model.Z - 0.5f) + 1, z1 = (int)MathF.Ceiling(model.Z1 - 0.5f) - 1;
+            if (x1 < x0) x0 = x1 = (int)MathF.Floor((model.X + model.X1) / 2f);
+            if (z1 < z0) z0 = z1 = (int)MathF.Floor((model.Z + model.Z1) / 2f);
+            if (!map.InBounds(x0, z0)) continue;
+            map.Props.Add(new Prop
+            {
+                Type = scenery.Prop, X = x0, Y = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1,
+                Height = model.Prop.Height, Model = model.Prop.Name
+            });
+        }
+        return parts;
+    }
+
+    /// <summary>The building a block of a model is: what kind, how it is built, and where its doors are.</summary>
+    private static BuildingInfo ToBuilding(Map map, Part part, HashSet<(int X, int Z)> entrances)
+    {
+        var model = part.Of.Model;
+        var kind = model?.Kind ?? BuildingKind.House;
+        var info = new BuildingInfo
+        {
+            X0 = part.X0, Y0 = part.Z0, X1 = part.X1, Y1 = part.Z1,
+            Kind = kind, RoofTile = TileType.RoofRed,
+            Model = part.Of.Prop.Name,
+            Town = model?.Town,
+            Storeys = part.Annex ? 1 : model?.Storeys ?? 0,
+            Sign = part.Annex ? null : model?.Sign,
+            Theme = kind == BuildingKind.Gym ? WorldModels.GymTheme(part.Of.Area.Key) : null,
+            Annex = part.Annex,
+            Height = part.Annex ? 0f : part.Of.Prop.Height
+        };
+        if (part.Annex) return info;
+
+        info.Porch.AddRange(part.Porch);
+        int row = part.Z1 + 1;
+        for (int x = part.X0; x <= part.X1; x++)
+        {
+            // In the wall itself; or on the row before it: in the porch's front, or open ground between its sides
+            if (map.GetGroundTile(x, part.Z1) == TileType.Door) info.Doors.Add((x, map.GetWarpAt(x, part.Z1)?.TargetMap));
+            else if (map.InBounds(x, row) && (map.GetGroundTile(x, row) == TileType.Door && part.Porch.Contains(x)
+                         || entrances.Contains((x, row)) && !MapStructures.IsBuildingTile(map, x, row)))
+            {
+                info.Doors.Add((x, map.GetWarpAt(x, row)?.TargetMap));
+                if (!part.Porch.Contains(x)) info.PorchIsOpen = true;
+            }
+        }
+
+        // A gate house on a road that runs east and west is entered through its ends
+        for (int z = part.Z0; z <= part.Z1; z++)
+            if (entrances.Contains((part.X0 - 1, z)) || entrances.Contains((part.X1 + 1, z)) || map.BehaviourAt(part.X0, z) == TileBehavior.Door || map.BehaviourAt(part.X1, z) == TileBehavior.Door)
+                info.SideDoors.Add(z);
+        return info;
     }
 
     // ---------------------------------------------------------------- people, signs, doors

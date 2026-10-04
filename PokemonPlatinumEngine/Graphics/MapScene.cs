@@ -46,7 +46,15 @@ internal sealed class MapScene
     public Vector3 RoomCenter { get; private set; }
 
     /// <summary>The ground this scene can show something on: its tiles and what leans in from just outside them.</summary>
-    public GroundRect Bounds => new(ground.X - 3, ground.Y - 3, ground.Right + 3, ground.Bottom + 5);
+    public GroundRect Bounds => Reach(ground);
+
+    /// <summary>
+    /// The ground on which a view must fall for a scene of these tiles to be worth drawing. A building belongs
+    /// to the chunk its north-west corner is in and may reach ten tiles into the next one east or south; and a
+    /// tower stands so tall that it shows from eleven tiles of ground south of the view's bottom edge (four of
+    /// which the view already allows for).
+    /// </summary>
+    public static GroundRect Reach(TileWindow tiles) => new(tiles.X - 3, tiles.Y - 8, tiles.Right + 10, tiles.Bottom + 10);
 
     // The tiles the ground mesh covers; the tiles whose grass, ledges, props and buildings are this scene's; and
     // the tiles whose trees are
@@ -518,12 +526,13 @@ internal sealed class MapScene
                 float cz = ty + 0.5f + (Rand(tx, ty, 2) - 0.5f) * 0.12f;
                 // Trees are most of a map's geometry, so they are kept in chunks and only those in view are drawn
                 batches.Chunk = MeshBatches.ChunkOf(tx, ty);
-                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty, y0: Y(cx, cz));
+                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty, y0: Y(cx, cz), snow: Map.AreaAt(tx, ty)?.Snowbound == true);
                 else TreeModels.Round(batches, cx, cz, tx, ty, y0: Y(cx, cz));
             }
         }
         batches.Chunk = 0;
     }
+
 
     /// <summary>
     /// The kind of tree on a tile. Where two areas of the world meet, each tree takes the kind of a tile a few

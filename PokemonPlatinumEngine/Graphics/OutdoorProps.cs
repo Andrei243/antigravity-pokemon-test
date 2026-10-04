@@ -20,6 +20,8 @@ internal static class OutdoorProps
     private static readonly Tone DarkWood = Tone.Of(124, 84, 58, 156, 110, 76, 92, 62, 48);
     private static readonly Tone FenceWood = Tone.Of(176, 128, 84, 208, 162, 110, 130, 90, 62);
     private static readonly Tone FenceWhite = Tone.Of(240, 236, 226, 252, 250, 244, 196, 196, 210);
+    private static readonly Tone WallStone = Tone.Of(176, 172, 170, 198, 194, 190, 124, 120, 130);
+    private static readonly Tone WallCap = Tone.Of(214, 210, 204, 232, 230, 224, 160, 156, 162);
     private static readonly Tone Red = Tone.Of(214, 72, 62, 240, 120, 100, 160, 48, 56);
     private static readonly Color LampGlass = Rgb(252, 240, 190);
     private static readonly Color Leaf = Rgb(60, 146, 76);
@@ -34,16 +36,17 @@ internal static class OutdoorProps
     public static void Add(KitBuilder kit, Map map, MeshBuilder lamplight, TileWindow? window = null)
     {
         var within = window ?? new TileWindow(0, 0, map.Width, map.Height);
-        var fenced = new HashSet<(int, int)>();
+        // Fences and low walls join up with each other; a tile that is both is a wall
+        var fenced = new Dictionary<(int, int), bool>();
         foreach (var prop in map.Props)
         {
-            if (prop.Type != PropType.Fence) continue;
+            if (prop.Type is not (PropType.Fence or PropType.LowWall)) continue;
             for (int y = prop.Y; y < prop.Y + prop.Depth; y++)
                 for (int x = prop.X; x < prop.X + prop.Width; x++)
-                    fenced.Add((x, y));
+                    fenced[(x, y)] = prop.Type == PropType.LowWall || fenced.GetValueOrDefault((x, y));
         }
-        foreach (var (x, y) in fenced)
-            if (within.Contains(x, y)) Fence(kit, map, fenced, x, y);
+        foreach (var ((x, y), wall) in fenced)
+            if (within.Contains(x, y)) Fence(kit, map, fenced, x, y, wall);
 
         foreach (var prop in map.Props)
         {
@@ -60,6 +63,10 @@ internal static class OutdoorProps
                     break;
                 case PropType.Planter:
                     kit.Sprite(kit.Face("planter", 30, 28, PaintPlanter), 16, 18);
+                    break;
+                case PropType.Bench when prop.Depth > prop.Width:
+                    // Lying north and south: seen from its end
+                    kit.Sprite(kit.Face("bench.side", 24, 62, PaintBenchSide), 16, prop.Depth * 32 - 4);
                     break;
                 case PropType.Bench:
                     kit.Sprite(kit.Face("bench", 60, 32, PaintBench), prop.Width * 16, 14);
@@ -82,6 +89,9 @@ internal static class OutdoorProps
                     kit.Sprite(art, 16, 19, inWater ? -3 : 0);
                     break;
                 }
+                default:
+                    Landmarks.Add(kit, map, prop, lamplight);
+                    break;
             }
         }
 
@@ -96,24 +106,57 @@ internal static class OutdoorProps
 
     // ------------------------------------------------------------------ fences
 
+    /// <summary>How a town fences its yards: in wood, in white-painted wood, or with iron railings.</summary>
+    internal enum FenceKind { Wood, White, Iron }
+
+    internal static FenceKind FenceOf(Architecture town) => town switch
+    {
+        Architecture.Clapboard or Architecture.Cottage or Architecture.Resort => FenceKind.White,
+        Architecture.City or Architecture.Brick or Architecture.Stone or Architecture.Townhouse or Architecture.Harbour
+            or Architecture.Seaside or Architecture.Snow => FenceKind.Iron,
+        _ => FenceKind.Wood
+    };
+
     /// <summary>
     /// One tile of fence: a post in the middle and a pair of rails toward each neighbouring tile that is fenced
-    /// too, so runs, corners and ends all come from the same rule.
+    /// too, so runs, corners and ends all come from the same rule. A low wall is a pier with an arm toward each
+    /// such neighbour.
     /// </summary>
-    private static void Fence(KitBuilder kit, Map map, HashSet<(int, int)> fenced, int x, int y)
+    private static void Fence(KitBuilder kit, Map map, Dictionary<(int, int), bool> fenced, int x, int y, bool wall)
     {
         kit.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
-        bool white = map.ArchitectureAt(x, y) == Architecture.Clapboard;
-        var tone = white ? FenceWhite : FenceWood;
-        string name = white ? "fence.white" : "fence.wood";
-
-        kit.Block(name + ".post", tone, 14, 18, 14, 18, 0, 17);
-        foreach (int railY in new[] { 5, 11 })
+        if (wall)
         {
-            if (fenced.Contains((x + 1, y))) kit.Block(name + ".rail", tone, 18, 32, 15, 17, railY, railY + 2);
-            if (fenced.Contains((x - 1, y))) kit.Block(name + ".rail", tone, 0, 14, 15, 17, railY, railY + 2);
-            if (fenced.Contains((x, y + 1))) kit.Block(name + ".rail", tone, 15, 17, 18, 32, railY, railY + 2);
-            if (fenced.Contains((x, y - 1))) kit.Block(name + ".rail", tone, 15, 17, 0, 14, railY, railY + 2);
+            kit.Block("lowwall.pier", WallStone, 11, 21, 11, 21, 0, 12);
+            kit.Block("lowwall.cap", WallCap, 10, 22, 10, 22, 12, 14);
+            if (fenced.ContainsKey((x + 1, y))) { kit.Block("lowwall.arm", WallStone, 21, 32, 12, 20, 0, 10); kit.Block("lowwall.top", WallCap, 21, 32, 11, 21, 10, 12); }
+            if (fenced.ContainsKey((x - 1, y))) { kit.Block("lowwall.arm", WallStone, 0, 11, 12, 20, 0, 10); kit.Block("lowwall.top", WallCap, 0, 11, 11, 21, 10, 12); }
+            if (fenced.ContainsKey((x, y + 1))) { kit.Block("lowwall.arm", WallStone, 12, 20, 21, 32, 0, 10); kit.Block("lowwall.top", WallCap, 11, 21, 21, 32, 10, 12); }
+            if (fenced.ContainsKey((x, y - 1))) { kit.Block("lowwall.arm", WallStone, 12, 20, 0, 11, 0, 10); kit.Block("lowwall.top", WallCap, 11, 21, 0, 11, 10, 12); }
+            return;
+        }
+
+        var kind = FenceOf(map.ArchitectureAt(x, y));
+        var tone = kind switch { FenceKind.White => FenceWhite, FenceKind.Iron => Iron, _ => FenceWood };
+        string name = kind switch { FenceKind.White => "fence.white", FenceKind.Iron => "fence.iron", _ => "fence.wood" };
+        // Iron railings are slighter than a wooden fence, and a little taller
+        int half = kind == FenceKind.Iron ? 1 : 2, top = kind == FenceKind.Iron ? 20 : 17;
+        int[] rails = kind == FenceKind.Iron ? new[] { 4, 16 } : new[] { 5, 11 };
+
+        kit.Block(name + ".post", tone, 16 - half, 16 + half, 16 - half, 16 + half, 0, top);
+        foreach (int railY in rails)
+        {
+            if (fenced.ContainsKey((x + 1, y))) kit.Block(name + ".rail", tone, 16 + half, 32, 15, 17, railY, railY + 2);
+            if (fenced.ContainsKey((x - 1, y))) kit.Block(name + ".rail", tone, 0, 16 - half, 15, 17, railY, railY + 2);
+            if (fenced.ContainsKey((x, y + 1))) kit.Block(name + ".rail", tone, 15, 17, 16 + half, 32, railY, railY + 2);
+            if (fenced.ContainsKey((x, y - 1))) kit.Block(name + ".rail", tone, 15, 17, 0, 16 - half, railY, railY + 2);
+        }
+        if (kind != FenceKind.Iron) return;
+        // Bars between the rails, every eight texels along each run
+        foreach (int bar in new[] { 4, 12, 20, 28 })
+        {
+            if (bar > 16 ? fenced.ContainsKey((x + 1, y)) : fenced.ContainsKey((x - 1, y))) kit.Block(name + ".bar", tone, bar - 1, bar + 1, 15, 17, 6, 16);
+            if (bar > 16 ? fenced.ContainsKey((x, y + 1)) : fenced.ContainsKey((x, y - 1))) kit.Block(name + ".bar", tone, 15, 17, bar - 1, bar + 1, 6, 16);
         }
     }
 
@@ -264,6 +307,36 @@ internal static class OutdoorProps
             c.Rect(x, 23, 3, 7, Iron.Base);
             c.VLine(x, 23, 7, Iron.Light);
             c.HLine(x - 1, 30, 5, Iron.Dark);
+        }
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// A park bench lying north and south, seen from above its southern end, 24 by 62: the seat's slats running
+    /// away from the eye, the back along its west side, iron ends.
+    /// </summary>
+    public static void PaintBenchSide(PixelCanvas c)
+    {
+        // The back: a dark rail along the west side
+        c.Rect(2, 4, 4, 50, Wood.Dark);
+        c.VLine(2, 4, 50, Wood.Base);
+        // The seat: three slats lengthwise
+        foreach (int x in new[] { 7, 11, 15 })
+        {
+            c.Rect(x, 6, 3, 48, Wood.Light);
+            c.VLine(x + 2, 6, 48, Wood.Base);
+        }
+        c.VLine(18, 6, 48, Wood.Dark);
+        // Iron ends and legs
+        foreach (int y in new[] { 3, 52 })
+        {
+            c.Rect(2, y, 18, 3, Iron.Base);
+            c.HLine(2, y, 18, Iron.Light);
+        }
+        foreach (int x in new[] { 3, 16 })
+        {
+            c.Rect(x, 55, 3, 6, Iron.Base);
+            c.HLine(x - 1, 61, 5, Iron.Dark);
         }
         Pix.Outline(c);
     }

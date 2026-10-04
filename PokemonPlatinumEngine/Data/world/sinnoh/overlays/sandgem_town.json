@@ -3,7 +3,6 @@
   "bgmTrack": "sinnoh/sandgem",
   "trees": "Round",
   "architecture": "Plaster",
-  "roof": "RoofRed",
   "doors": [
     { "warp": 0, "map": "PokeMart", "x": 4, "y": 6, "facing": "Up" },
     { "warp": 1, "map": "PokemonCenter", "x": 5, "y": 7, "facing": "Up" },

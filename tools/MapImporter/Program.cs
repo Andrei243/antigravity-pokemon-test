@@ -98,6 +98,7 @@ if (!quick)
 }
 
 File.WriteAllText(Path.Combine(repo, "docs", "tile-behaviours.md"), report.TileBehaviours());
+File.WriteAllText(Path.Combine(repo, "docs", "world-models.md"), report.WorldModelsDoc());
 Directory.CreateDirectory(outDir);
 File.WriteAllText(Path.Combine(outDir, "report.md"), report.Run(comparisons));
 foreach (string problem in report.Problems.Take(20)) Console.WriteLine("  " + problem);

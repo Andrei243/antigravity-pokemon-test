@@ -41,10 +41,16 @@ public enum TerrainCover
     Cliff,
     /// <summary>A rock standing on the ground or in water.</summary>
     Boulder,
-    /// <summary>A fence, a railing, a lamp, a low wall.</summary>
+    /// <summary>A fence, a railing, a low wall.</summary>
     Fence,
     /// <summary>Under one of the chunk's props: a building, usually.</summary>
-    Building
+    Building,
+    /// <summary>A street lamp.</summary>
+    Lamp,
+    /// <summary>The deck of a raised walkway of steel and solar panels (Sunyshore).</summary>
+    Walkway,
+    /// <summary>A broad-leaved tree, where an area's forests are not Sinnoh's pines (the Battle Zone).</summary>
+    Broadleaf
 }
 
 /// <summary>The one-character codes of <see cref="TerrainCover"/> in chunk files.</summary>
@@ -56,7 +62,8 @@ public static class TerrainCoverCodes
         (TerrainCover.Path, ':'), (TerrainCover.Paving, '='), (TerrainCover.Sand, ','), (TerrainCover.Rock, 'r'),
         (TerrainCover.CaveFloor, 'c'), (TerrainCover.Snow, '^'), (TerrainCover.Ice, 'i'), (TerrainCover.Marsh, 'm'),
         (TerrainCover.Water, '~'), (TerrainCover.Bridge, 'b'), (TerrainCover.Steps, 's'), (TerrainCover.Tree, 'T'),
-        (TerrainCover.Cliff, 'C'), (TerrainCover.Boulder, 'R'), (TerrainCover.Fence, 'F'), (TerrainCover.Building, 'B')
+        (TerrainCover.Cliff, 'C'), (TerrainCover.Boulder, 'R'), (TerrainCover.Fence, 'F'), (TerrainCover.Building, 'B'),
+        (TerrainCover.Lamp, 'L'), (TerrainCover.Walkway, 'W'), (TerrainCover.Broadleaf, 'O')
     };
 
     public static char CodeOf(TerrainCover cover) => Table.First(e => e.Cover == cover).Code;
@@ -354,10 +361,8 @@ public sealed class WorldOverlayFile
     public string Area { get; set; } = "";
     public string? BgmTrack { get; set; }
     public TreeStyle? Trees { get; set; }
+    /// <summary>How its fences and walls are built, where no building says (a building follows its model).</summary>
     public TownArchitecture? Architecture { get; set; }
-
-    /// <summary>The colour of its houses' roofs.</summary>
-    public TileType? Roof { get; set; }
 
     public BattleArena? BattleArena { get; set; }
     public List<string>? EvolutionSites { get; set; }

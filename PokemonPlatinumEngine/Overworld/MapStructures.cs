@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Data;
 
 namespace PokemonPlatinumEngine.Overworld;
 
@@ -14,7 +15,35 @@ public enum BuildingKind
     Office,
     TvStation,
     Terminal,
-    Apartments
+    Apartments,
+
+    // Named by the model of the imported world (Data/WorldModels): what stands in Sinnoh's towns besides houses
+    Gym,
+    /// <summary>The house a road passes through between a route and a city.</summary>
+    Gate,
+    Museum,
+    Library,
+    /// <summary>A business with its name over the door: a flower shop, a café, a market, a department store.</summary>
+    Shop,
+    Hotel,
+    /// <summary>A large public hall: the Contest Hall, Pal Park, the Battle Frontier's facilities.</summary>
+    Hall,
+    /// <summary>Hearthome's Foreign Building: tall, steep-roofed, with a rose window.</summary>
+    Chapel,
+    /// <summary>Snowpoint's temple: old stone in two tiers.</summary>
+    Temple,
+    /// <summary>A small wooden shrine under a heavy roof (Celestic).</summary>
+    Shrine,
+    /// <summary>A tall stone tower (the Lost Tower, the Battle Tower).</summary>
+    Tower,
+    Lighthouse,
+    /// <summary>Works under sheet metal: the mine, the Windworks, the Ironworks.</summary>
+    Factory,
+    Warehouse,
+    Mansion,
+    /// <summary>Team Galactic's buildings: grey panels, slit windows, spikes on the roof.</summary>
+    Galactic,
+    League
 }
 
 /// <summary>A building found on an outdoor map: the rectangle of roof/wall tiles and what sits on its front row.</summary>
@@ -27,11 +56,47 @@ public sealed class BuildingInfo
     public BuildingKind Kind { get; init; }
     public TileType RoofTile { get; init; }
 
+    /// <summary>The original's short name for the model this building stands in for; empty on a hand-made map.</summary>
+    public string Model { get; init; } = "";
+
+    /// <summary>How it is built, for a building of the world, whose model says which town's it is; null follows the map.</summary>
+    public Architecture? Town { get; init; }
+
+    /// <summary>How many storeys it has; 0 leaves that to its style.</summary>
+    public int Storeys { get; init; }
+
+    /// <summary>The name over its door, where the model is a business; null for the kind's own sign.</summary>
+    public string? Sign { get; init; }
+
+    /// <summary>For a gym: its leader's type, which colours it.</summary>
+    public PokemonType? Theme { get; init; }
+
+    /// <summary>A wing of a larger structure beside its main block: drawn plain, without an entrance.</summary>
+    public bool Annex { get; init; }
+
+    /// <summary>How tall the original's model stands, in tiles; 0 when nothing says.</summary>
+    public float Height { get; init; }
+
     /// <summary>Doors on the front (bottom) row, with the map each one warps to (null for decorative doors).</summary>
     public List<(int X, string? Target)> Doors { get; } = new();
 
     /// <summary>Wall-mounted signs on the front row.</summary>
     public List<int> Plaques { get; } = new();
+
+    /// <summary>
+    /// The tiles (by their x) of an entrance built out a tile in front of the wall, on the row south of
+    /// <see cref="Y1"/>: the walls of a porch. Empty when the doors are in the front wall itself.
+    /// </summary>
+    public List<int> Porch { get; } = new();
+
+    /// <summary>
+    /// True when the way in is open ground between the porch's sides, with the door set back in the wall behind;
+    /// false when the door is in the porch's own front.
+    /// </summary>
+    public bool PorchIsOpen { get; set; }
+
+    /// <summary>The rows of the doors in the side walls: a gate house on a road that runs east and west.</summary>
+    public List<int> SideDoors { get; } = new();
 
     public int Width => X1 - X0 + 1;
     public int Depth => Y1 - Y0 + 1;
@@ -45,6 +110,8 @@ public static class MapStructures
     /// <summary>A signpost set into a wall row is a name plate on the building rather than a free-standing sign.</summary>
     public static bool IsWallSign(Map map, int x, int y)
     {
+        // On a map of the world a building is exactly its model's footprint, and a sign beside it stands on its own
+        if (map.PlacedBuildings != null) return false;
         if (!map.InBounds(x, y) || map.GetGroundTile(x, y) != TileType.Signpost) return false;
         return IsWallOrDoor(map, x - 1, y) || IsWallOrDoor(map, x + 1, y);
     }
@@ -69,6 +136,8 @@ public static class MapStructures
     {
         var result = new List<BuildingInfo>();
         if (map.IsIndoors) return result;
+        // A map of the world was given its buildings by the import's models (WorldMapBuilder)
+        if (map.PlacedBuildings != null) return new List<BuildingInfo>(map.PlacedBuildings);
 
         var seen = new bool[map.Width, map.Height];
         for (int sy = 0; sy < map.Height; sy++)
