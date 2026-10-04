@@ -1081,6 +1081,7 @@ public class GameEngine
 
     public void Draw()
     {
+        FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputIsNative = Raylib.GetScreenWidth() > VirtualWidth * RenderScale * 0.75f;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = currentState == GameState.Transition
@@ -1111,6 +1112,8 @@ public class GameEngine
         {
             introScreen.Render(renderContext);
         }
+        // (The field and the battle have told the profiler of their own passes; this takes whatever else was rendered)
+        FrameProfiler.Lap(FrameSection.Scene);
 
         // Render scene to native 1920x1080 Full HD buffer
         Raylib.BeginTextureMode(virtualScreen);
@@ -1183,6 +1186,7 @@ public class GameEngine
 
         Raylib.EndMode2D();
         Raylib.EndTextureMode();
+        FrameProfiler.Lap(FrameSection.Interface);
 
         // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)
         int screenW = Raylib.GetScreenWidth();
@@ -1200,8 +1204,11 @@ public class GameEngine
         Rectangle src = new(0, 0, virtualScreen.Texture.Width, -virtualScreen.Texture.Height);
         Rectangle dst = new(destX, destY, destW, destH);
         Raylib.DrawTexturePro(virtualScreen.Texture, src, dst, Vector2.Zero, 0f, Color.White);
+        FrameProfiler.Lap(FrameSection.Present);
 
         Raylib.EndDrawing();
+        FrameProfiler.Lap(FrameSection.Swap);
+        FrameProfiler.EndFrame();
     }
 
     /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>

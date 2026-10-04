@@ -89,7 +89,9 @@ public sealed class BattleRenderer
         float shake = (anim.ShakeAge >= 0f ? (1f - anim.ShakeAge / 0.4f) * anim.ShakeStrength : 0f) + fx.Shake;
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
 
+        FrameProfiler.Lap(FrameSection.Prepare);
         RenderStage(stage, anim, rig);
+        FrameProfiler.Lap(FrameSection.Scene);
         context.PreparePost(rig.Post, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
     }
 
@@ -178,6 +180,7 @@ public sealed class BattleRenderer
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
+        FrameProfiler.Lap(FrameSection.Shadows);
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);

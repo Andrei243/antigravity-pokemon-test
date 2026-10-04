@@ -256,6 +256,7 @@ const vec2 poisson[16] = vec2[](
 
 float Shadow(vec4 lightPos)
 {
+    if (shadowTaps == 0) return 1.0; // TEMP-G11
     vec3 p = lightPos.xyz / lightPos.w * 0.5 + 0.5;
     if (p.x <= 0.0 || p.x >= 1.0 || p.y <= 0.0 || p.y >= 1.0 || p.z >= 1.0) return 1.0;
     float a = 6.2831853 * fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
@@ -920,6 +921,7 @@ void main()
     /// <summary>How much drifting cloud shade dims the sunlight (0 for none).</summary>
     public void SetCloudShade(float amount)
     {
+        if (RenderContext.Experiment.Contains("nocloud")) amount = 0f; // TEMP-G11
         foreach (var shader in new[] { World, Character, CharacterSkinned, Sprite, Water }) Set(shader, "cloudShade", amount);
     }
 
@@ -928,7 +930,7 @@ void main()
     {
         foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
-            Set(shader, "shadowTaps", Math.Clamp(taps, 5, 16));
+            Set(shader, "shadowTaps", RenderContext.Experiment.Contains("noshadow") ? 0 : Math.Clamp(taps, 5, 16)); // TEMP-G11
             Set(shader, "shadowSoftness", softness);
         }
     }

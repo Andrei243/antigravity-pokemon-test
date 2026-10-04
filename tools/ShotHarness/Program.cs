@@ -30,7 +30,10 @@ Environment.CurrentDirectory = outDir;
 
 Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
 Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
-Raylib.InitWindow(1920, 1080, "shots");
+// SHOTS_WINDOW=3840x2160 makes the hidden window that size: the game then draws as it does full screen on a 4K
+// display (FXAA on the high preset, the screen shown one to one), which is what the timings should be read at
+var windowSize = (Environment.GetEnvironmentVariable("SHOTS_WINDOW") ?? "1920x1080").Split('x');
+Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
 
 var engine = new GameEngine();
 engine.Initialize();
@@ -197,6 +200,28 @@ void Timing(string label, int frames = 300)
     var sw = System.Diagnostics.Stopwatch.StartNew();
     Frames(frames);
     Console.WriteLine($"{label}: {sw.Elapsed.TotalMilliseconds / frames:F2} ms/frame");
+}
+
+// A scene's frame time, then the same frames with the profiler on: each pass's share of the frame, and the meshes
+// and triangles it draws. `frozen` draws one moment over and over (a move's effect at its height, a camera's
+// close-up), which the game's own clock would move on from.
+void Profile(string label, int frames = 240, bool frozen = false)
+{
+    // SHOTS_ONLY=battle,route measures only the scenes whose name has one of those words in it
+    var only = (Environment.GetEnvironmentVariable("SHOTS_ONLY") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
+    if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase))) return;
+    void One() { if (!frozen) engine.Update(1f / 60f); engine.Draw(); }
+    for (int i = 0; i < 20; i++) One();
+    var sw = System.Diagnostics.Stopwatch.StartNew();
+    for (int i = 0; i < frames; i++) One();
+    double plain = sw.Elapsed.TotalMilliseconds / frames;
+    FrameProfiler.Enabled = true;
+    for (int i = 0; i < 5; i++) One();
+    FrameProfiler.Reset();
+    for (int i = 0; i < frames / 2; i++) One();
+    FrameProfiler.Enabled = false;
+    Console.WriteLine($"{label}: {plain:F2} ms/frame");
+    Console.WriteLine($"    {FrameProfiler.Report()}");
 }
 
 // Test map with every character type in a row, for close-ups of the 3D models
@@ -2030,6 +2055,158 @@ List<(int X, int Y)> WalkingPath(Map map, (int X, int Y) from, (int X, int Y) to
     for (var at = to; at != from; at = came[at]) path.Add(at);
     path.Reverse();
     return path;
+}
+
+// ---------------------------------------------------------------- what a pass costs (a bench for G11; temporary)
+
+if (mode == "bench")
+{
+    var finishLib = System.Runtime.InteropServices.NativeLibrary.Load("opengl32.dll");
+    var finishPtr = System.Runtime.InteropServices.NativeLibrary.GetExport(finishLib, "glFinish");
+    var glFinish = System.Runtime.InteropServices.Marshal.GetDelegateForFunctionPointer<Action>(finishPtr);
+    void Finish() { Rlgl.DrawRenderBatchActive(); glFinish(); }
+
+    var big = Raylib.LoadRenderTexture(3840, 2160);
+    var halfA = Raylib.LoadRenderTexture(960, 540);
+    var halfB = Raylib.LoadRenderTexture(960, 540);
+    var quarter = Raylib.LoadRenderTexture(480, 270);
+    Raylib.SetTextureFilter(big.Texture, TextureFilter.Bilinear);
+    Raylib.SetTextureFilter(halfA.Texture, TextureFilter.Bilinear);
+    Raylib.SetTextureFilter(halfB.Texture, TextureFilter.Bilinear);
+
+    void PassTo(RenderTexture2D dst, Texture2D src, bool clear)
+    {
+        Raylib.BeginTextureMode(dst);
+        if (clear) Raylib.ClearBackground(Color.Black);
+        Raylib.DrawTexturePro(src, new Rectangle(0, 0, src.Width, -src.Height), new Rectangle(0, 0, dst.Texture.Width, dst.Texture.Height), Vector2.Zero, 0f, Color.White);
+        Raylib.EndTextureMode();
+    }
+    void Bench(string label, Action body, int n = 400)
+    {
+        for (int i = 0; i < 20; i++) body();
+        Finish();
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        for (int i = 0; i < n; i++) body();
+        double cpu = sw.Elapsed.TotalMilliseconds / n;
+        Finish();
+        Console.WriteLine($"{label}: {sw.Elapsed.TotalMilliseconds / n * 1000:F0} us each ({cpu * 1000:F0} us before the card had finished)");
+    }
+    Bench("pass 960x540 -> 960x540, cleared", () => PassTo(halfB, halfA.Texture, true));
+    Bench("pass 960x540 -> 960x540, not cleared", () => PassTo(halfB, halfA.Texture, false));
+    Bench("pass 3840x2160 -> 960x540, cleared", () => PassTo(halfA, big.Texture, true));
+    Bench("pass 960x540 -> 480x270, cleared", () => PassTo(quarter, halfA.Texture, true));
+    Bench("pass 960x540 -> 3840x2160, cleared", () => PassTo(big, halfA.Texture, true), 100);
+    Bench("pass 960x540 -> 3840x2160, not cleared", () => PassTo(big, halfA.Texture, false), 100);
+    Bench("two passes ping-pong", () => { PassTo(halfB, halfA.Texture, true); PassTo(halfA, halfB.Texture, true); });
+    Bench("begin and end texture mode only", () => { Raylib.BeginTextureMode(halfB); Raylib.EndTextureMode(); });
+    Bench("finish alone", () => Finish());
+    Bench("pass with a finish after each", () => { PassTo(halfB, halfA.Texture, true); Finish(); });
+}
+
+// ---------------------------------------------------------------- where the time goes (plan 04 · G11)
+
+// Not part of `all`: the heaviest scenes of the game, each timed and then taken apart by the profiler. Run it by
+// itself, with nothing else running, and with SHOTS_WINDOW=3840x2160 for the game as it is full screen.
+if (mode == "profile")
+{
+    Console.WriteLine($"window {Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
+    var presets = (Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
+    foreach (string preset in presets)
+    {
+        engine.Settings.Quality = Enum.Parse<GraphicsQuality>(preset);
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        Console.WriteLine($"--- {preset}");
+
+        At("Sinnoh", 112, 880, Direction.Down); Frames(40); Profile("twinleaf town");
+        At("Sinnoh", 115, 854, Direction.Up); Frames(40); Profile("route 201");
+        At("Sinnoh", 110, 850, Direction.Up); Frames(40); Profile("route 201, in the trees");
+        At("Sinnoh", 178, 845, Direction.Down); Frames(40); Profile("sandgem town");
+        At("Sinnoh", 174, 815, Direction.Up); Frames(40); Profile("route 202");
+        At("LakeVerity", 44, 46, Direction.Up); Frames(40); Profile("lake verity");
+        At("JubilifeCity", 20, 30, Direction.Up); Frames(40); Profile("jubilife city");
+        At("PokemonCenter", 5, 6, Direction.Up); Frames(40); Profile("pokemon center");
+
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        At("Sinnoh", 112, 880, Direction.Down); Frames(40); Profile("twinleaf town at night");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+
+        var town = MapDatabase.Get("Sinnoh").AreaAt(112, 880);
+        town.Weather = FieldWeather.HeavyRain;
+        At("Sinnoh", 112, 880, Direction.Down); Frames(40); Profile("twinleaf town in heavy rain");
+        town.Weather = FieldWeather.Fog;
+        Frames(40); Profile("twinleaf town in fog");
+        town.Weather = FieldWeather.Clear;
+
+        // A wild battle at its menu, then the scripted battle's heaviest moments, each held still
+        party.HealAll();
+        var wild = StartBattle("Shinx", 5);
+        ToMainMenu(wild);
+        Profile("battle, at the menu");
+
+        var show = new Party();
+        var lead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3));
+        show.Add(lead);
+        var rival = new Trainer { Name = "Barry", TrainerClass = "Rival" };
+        var torterra = new Pokemon(PokemonDatabase.Get("Torterra")!, 90, new Random(4));
+        rival.Party.Add(torterra);
+        Set("currentMap", MapDatabase.Get("Sinnoh"));
+        ((BattleRenderer)Get("battleRenderer")).SetArena(BattleArena.Grass);
+        var b = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = show, Inventory = inventory, Pokedex = pokedex, Trainers = new List<Trainer> { rival }, Random = new Random(11)
+        });
+        Set("battle", b);
+        Set("currentState", GameState.Battle);
+        Skip(1.0); Profile("trainer battle, both trainers in the sweep", 120, frozen: true);
+        Skip(1.05); b.ConfirmMessage(); Frames(1);
+        Skip(1.4); b.ConfirmMessage(); Frames(1);
+        Skip(0.85);
+        for (int guard = 0; guard < 6 && b.HUD.MenuState == BattleMenuState.Message; guard++) { b.ConfirmMessage(); Frames(1); Skip(0.3); }
+        Skip(0.6);
+        foreach (string move in new[] { "Flamethrower", "Surf", "Earthquake", "Close Combat" })
+        {
+            Skip(1.0);
+            lead.Moves.Clear();
+            lead.Moves.Add(new Move(MoveDatabase.Get(move)!));
+            torterra.Moves.Clear();
+            torterra.Moves.Add(new Move(MoveDatabase.Get("Splash")!));
+            lead.CurrentHP = lead.MaxHP;
+            b.EnemyPokemon.CurrentHP = b.EnemyPokemon.MaxHP;
+            b.EnemyPokemon.StatStages[StatType.Speed] = -6;
+            b.SelectMove(0);
+            Skip(0.12); Profile($"{move}, winding up", 120, frozen: true);
+            Skip(0.16); Profile($"{move}, arriving", 120, frozen: true);
+            Skip(0.12); Profile($"{move}, landing", 120, frozen: true);
+            for (int guard = 0; guard < 12 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++) { b.ConfirmMessage(); Frames(1); Skip(0.35); }
+        }
+
+        // Two trainers and four Pokémon
+        party.HealAll();
+        var one = new Trainer { Name = "Ana", TrainerClass = "Youngster" };
+        one.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 6));
+        var two = new Trainer { Name = "Cal", TrainerClass = "Lass" };
+        two.Party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
+        var d = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
+            Trainers = new List<Trainer> { one, two }, WildPokemon = new List<Pokemon>(), Random = new Random(5)
+        });
+        ((BattleRenderer)Get("battleRenderer")).SetArena((Map)Get("currentMap"));
+        Set("battle", d);
+        Set("currentState", GameState.Battle);
+        Skip(130 / 60.0); Profile("double battle, two trainers in the sweep", 120, frozen: true);
+        d.ConfirmMessage(); Frames(1); Skip(70 / 60.0);
+        d.ConfirmMessage(); Frames(1); Skip(70 / 60.0);
+        for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { d.ConfirmMessage(); Frames(1); Skip(20 / 60.0); }
+        Skip(0.8);
+        Profile("double battle, at the menu");
+        Set("currentState", GameState.Overworld);
+    }
+    engine.Settings.Quality = GraphicsQuality.High;
+    engine.ApplySettings(window: false);
 }
 
 // ---------------------------------------------------------------- times of day

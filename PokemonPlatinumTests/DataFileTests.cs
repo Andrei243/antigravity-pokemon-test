@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Xunit;
 using PokemonPlatinumEngine.Battle.Effects;
 using PokemonPlatinumEngine.Data;
@@ -224,6 +225,44 @@ public class DataFileTests
         // Later games' items, for battles and evolutions
         Assert.NotNull(ItemDatabase.Get("Assault Vest"));
         Assert.NotNull(ItemDatabase.Get("Auspicious Armor"));
+    }
+
+    [Fact]
+    public void TestEveryMachineIsDescribedByTheMoveItTeaches()
+    {
+        var all = ItemDatabase.GetAll().ToList();
+        var machines = all.Where(i => i.TeachesMove != null).ToList();
+        Assert.Equal(100, machines.Count); // Platinum's 92 TMs and 8 HMs
+
+        // Any move's name standing as words of its own; the longest first, so Flash Cannon isn't read as Flash
+        var names = MoveDatabase.GetAll().Select(m => m.Name).OrderByDescending(n => n.Length).Select(Regex.Escape);
+        var anyMove = new Regex(@"(?<![\p{L}\p{N}])(?:" + string.Join("|", names) + @")(?![\p{L}\p{N}])");
+        // "(Gen IV & III: Focus Punch Gen I: Mega Punch)", "(HS: Whirlpool DPP: Defog)": what a machine taught in other games
+        var otherGames = new Regex(@"\bGen [IVX]+\b|\b(?:HS|DPP)\b");
+
+        var problems = new List<string>();
+        foreach (var item in machines)
+        {
+            var move = MoveDatabase.Get(item.TeachesMove!);
+            Assert.Equal(item.TeachesMove, move.Name); // an unknown name would have given Tackle
+
+            // The move's own text may name another move (Earthquake reaches a Pokémon using Dig); the machine's may not
+            string own = move.Description.Length > 0 ? item.Description.Replace(move.Description, "") : item.Description;
+            var named = anyMove.Matches(own).Select(m => m.Value).Distinct().ToList();
+            if (named.Count != 1 || named[0] != move.Name)
+                problems.Add($"{item.Name} teaches {move.Name}, but its text names {(named.Count == 0 ? "no move" : string.Join(", ", named))}: {item.Description}");
+            if (otherGames.IsMatch(item.Description))
+                problems.Add($"{item.Name} tells of other games: {item.Description}");
+        }
+
+        // Nothing else passes for a machine
+        problems.AddRange(all.Where(i => i.TeachesMove == null && i.Description.Contains("Teaches "))
+            .Select(i => $"{i.Name} teaches no move, but its text says: {i.Description}"));
+        Assert.True(problems.Count == 0, string.Join("\n", problems));
+
+        // Platinum's moves, where later games put others: TM01 became Hone Claws and HM05 Waterfall in Generation 5
+        Assert.StartsWith("Teaches Focus Punch to a compatible Pokémon.", ItemDatabase.Get("TM01")!.Description);
+        Assert.StartsWith("Teaches Defog to a compatible Pokémon.", ItemDatabase.Get("HM05")!.Description);
     }
 
     [Fact]

@@ -229,6 +229,7 @@ internal static class CharacterSprites
         var at = new Vector3(WorldRenderer.SnapToTexel(feet.X), feet.Y, WorldRenderer.SnapToTexel(feet.Z));
         var m = Matrix4x4.CreateScale(FrameW, FrameH * vs, 1f) * Matrix4x4.CreateTranslation(at + new Vector3(0, -0.05f * vs, 0.02f));
         Raylib.DrawMesh(quad, pass == CharacterPass.Depth ? baked.Depth : baked.Color, Matrix4x4.Transpose(m));
+        FrameProfiler.Count(2);
     }
 
     /// <summary>
@@ -269,6 +270,7 @@ internal static class CharacterSprites
         var at = new Vector3(WorldRenderer.SnapToTexel(foot.X), foot.Y, WorldRenderer.SnapToTexel(foot.Z));
         var m = Matrix4x4.CreateScale(card.Width, card.Height * vs, 1f) * Matrix4x4.CreateTranslation(at);
         Raylib.DrawMesh(card.Wall ? wallQuad : quad, pass == CharacterPass.Depth ? card.Depth : card.Color, Matrix4x4.Transpose(m));
+        FrameProfiler.Count(2);
     }
 
     /// <summary>

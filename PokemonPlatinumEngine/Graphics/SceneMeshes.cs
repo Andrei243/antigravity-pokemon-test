@@ -125,6 +125,7 @@ internal sealed class SceneMeshes
                 foliage = true;
             }
             Raylib.DrawMesh(part.Mesh, part.Prepass.Value, Matrix4x4.Identity);
+            FrameProfiler.Count(part.Mesh.TriangleCount);
         }
         if (foliage) Rlgl.ColorMask(true, true, true, true);
 
@@ -133,6 +134,7 @@ internal sealed class SceneMeshes
             if (Hidden(part, view)) continue;
             if (part.Prepass.HasValue) Rlgl.DisableDepthMask();
             Raylib.DrawMesh(part.Mesh, part.Main, Matrix4x4.Identity);
+            FrameProfiler.Count(part.Mesh.TriangleCount);
             if (part.Prepass.HasValue) Rlgl.EnableDepthMask();
         }
     }
@@ -156,6 +158,7 @@ internal sealed class SceneMeshes
                 (int)(255 * Math.Clamp(tint.X, 0f, 1f)), (int)(255 * Math.Clamp(tint.Y, 0f, 1f)),
                 (int)(255 * Math.Clamp(tint.Z, 0f, 1f)), (int)(255 * level));
             Raylib.DrawMesh(mesh, material, Matrix4x4.Identity);
+            FrameProfiler.Count(mesh.TriangleCount);
         }
         Rlgl.DrawRenderBatchActive();
         Rlgl.SetBlendMode(BlendMode.Alpha);
@@ -168,7 +171,9 @@ internal sealed class SceneMeshes
     {
         foreach (var part in parts)
         {
-            if (part.Depth.HasValue && !Hidden(part, casters)) Raylib.DrawMesh(part.Mesh, part.Depth.Value, Matrix4x4.Identity);
+            if (!part.Depth.HasValue || Hidden(part, casters)) continue;
+            Raylib.DrawMesh(part.Mesh, part.Depth.Value, Matrix4x4.Identity);
+            FrameProfiler.Count(part.Mesh.TriangleCount);
         }
     }
 

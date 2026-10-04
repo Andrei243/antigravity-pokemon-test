@@ -621,11 +621,11 @@ public sealed class Importer
     // ================================================================== items
 
     /// <param name="evolutionItems">Items species evolve with, brought in whatever their category.</param>
-    public List<ItemData> Items(IReadOnlySet<string> evolutionItems)
+    /// <param name="moves">The game's moves, for the text of the TMs and HMs that teach them.</param>
+    public List<ItemData> Items(IReadOnlySet<string> evolutionItems, IReadOnlyList<MoveData> moves)
     {
         var items = new List<ItemData>();
         var names = new HashSet<string>();
-        var machineMoves = new Dictionary<string, string>();
 
         for (int index = 1; index < itemConstants.Count; index++)
         {
@@ -635,7 +635,8 @@ public sealed class Importer
             int? apiId = api.ItemByGen4Index(index);
             string name = apiId != null && api.HasItemName(apiId.Value) ? api.ItemName(apiId.Value) : Names.Clean(data.GetProperty("name").GetString()!);
             var item = PlatinumItem(index, name, data);
-            item.Description = apiId != null ? api.Prose("item_prose", "item_id", apiId.Value) : "";
+            item.Description = item.TeachesMove is { } move ? MachineText(move, moves.FirstOrDefault(m => m.Name == move)?.Description)
+                : apiId != null ? api.Prose("item_prose", "item_id", apiId.Value) : "";
             if (names.Add(item.Name)) items.Add(item);
         }
 
@@ -669,6 +670,14 @@ public sealed class Importer
         }
         return items;
     }
+
+    /// <summary>
+    /// What a TM or HM says of itself: the move Platinum's machine teaches, then that move's own text. PokeAPI's
+    /// text for a machine names the move a later generation gave it, with the earlier ones in brackets (TM01 is
+    /// Hone Claws there, HM05 Waterfall).
+    /// </summary>
+    private static string MachineText(string move, string? moveText) =>
+        $"Teaches {move} to a compatible Pokémon. {moveText}".TrimEnd();
 
     /// <summary>A Platinum item: pocket, price, what using it does (the parts the engine knows) and its hold effect.</summary>
     private ItemData PlatinumItem(int index, string name, JsonElement d)

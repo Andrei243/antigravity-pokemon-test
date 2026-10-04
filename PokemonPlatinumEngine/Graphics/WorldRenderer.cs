@@ -324,6 +324,7 @@ public sealed class WorldRenderer
         var focus = room != null ? room.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, indoors ? 18f : 40f);
 
+        FrameProfiler.Lap(FrameSection.Prepare);
         Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
         Rlgl.SetClipPlanes(1.0, 200.0);
@@ -337,6 +338,7 @@ public sealed class WorldRenderer
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
+        FrameProfiler.Lap(FrameSection.Shadows);
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
@@ -381,6 +383,7 @@ public sealed class WorldRenderer
 
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
+        FrameProfiler.Lap(FrameSection.Scene);
         context.PreparePost(rig.Post, new DepthRange(near, far, camera.FovY, (float)width / height), aoRadius: 0.45f);
     }
 
