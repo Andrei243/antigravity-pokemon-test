@@ -159,6 +159,7 @@ public sealed class BattleRenderer
         var shaders = context.Shaders;
         var light = rig.Light;
         shaders.SetTime(anim.Time);
+        shaders.SetWind(0f);
         shaders.SetWalkers(Array.Empty<Vector3>());
 
         // 1. Shadow map over the whole field

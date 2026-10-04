@@ -81,6 +81,35 @@ public class Player
     private float bumpCooldown = 0f;
 
     // Grass stepping effects
+    /// <summary>True when the step that just ended was a hop: over a ledge, or between the bank and a Pokémon's back.</summary>
+    public bool JustLanded { get; private set; }
+
+    /// <summary>True when the step that just ended took the player out onto the water.</summary>
+    public bool JustRodeOut { get; private set; }
+
+    /// <summary>The tile a step in progress is taking the player to; where they stand, between steps.</summary>
+    public (int X, int Y) Heading => IsMoving ? (targetGridX, targetGridY) : (GridX, GridY);
+
+    /// <summary>What shows in the bubble over the player's head, for how much longer, and for how long it has.</summary>
+    public EmoteBubble Bubble { get; private set; }
+    public float BubbleTimer { get; private set; }
+    public float BubbleAge { get; private set; }
+
+    public void ShowBubble(EmoteBubble bubble, float seconds = 0.9f)
+    {
+        Bubble = bubble;
+        BubbleTimer = seconds;
+        BubbleAge = 0f;
+    }
+
+    /// <summary>Runs the bubble's clock.</summary>
+    public void TickBubble(float dt)
+    {
+        if (BubbleTimer <= 0f) return;
+        BubbleTimer -= dt;
+        BubbleAge += dt;
+    }
+
     public bool InTallGrass { get; private set; }
     public float GrassRustleTimer { get; private set; }
 
@@ -100,6 +129,8 @@ public class Player
         PixelY = gy * TileSize;
         HopHeight = 0f;
         IsMoving = false;
+        JustLanded = false;
+        JustRodeOut = false;
         IsHoppingLedge = false;
         IsSliding = false;
         mounting = false;
@@ -269,6 +300,8 @@ public class Player
         PixelY = GridY * TileSize;
         HopHeight = 0f;
         IsMoving = false;
+        JustLanded = IsHoppingLedge;
+        JustRodeOut = mounting;
         IsHoppingLedge = false;
         mounting = false;
         moveProgress = 0f;

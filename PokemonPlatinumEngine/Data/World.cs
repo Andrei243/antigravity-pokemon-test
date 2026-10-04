@@ -246,6 +246,7 @@ public static class WorldMapBuilder
             DisplayName = file?.Name ?? "",
             BgmTrack = overlay?.BgmTrack ?? "",
             Open = file != null && world.IsOpen(key),
+            Weather = Weathers.Of(file?.Weather),
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
             Arena = overlay?.BattleArena

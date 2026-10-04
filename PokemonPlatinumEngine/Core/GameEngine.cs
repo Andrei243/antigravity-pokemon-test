@@ -114,7 +114,7 @@ public class GameEngine
 
     // Screen Transitions
     private float transitionTimer = 0f;
-    private float transitionDuration = 0.4f;
+    private TransitionKind transitionKind = TransitionKind.Fade;
     private bool isFadingOut = true;
     private Action? midTransitionCallback;
 
@@ -341,6 +341,17 @@ public class GameEngine
         // The location sign waits while a fade or another screen covers the field
         if (currentState is GameState.Overworld or GameState.Dialogue) locationSign.Update(dt);
 
+        // The field's small life runs on while a dialogue or a fade covers it: dust settles, a door finishes opening
+        if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
+        {
+            world.Life.Advance(dt);
+            // Rain and hail land round the player while they stand in it
+            world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
+                Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
+            player.TickBubble(dt);
+            foreach (var npc in currentMap.NPCs) npc.TickBubble(dt);
+        }
+
         // Global Mute Toggle (M)
         if (Raylib.IsKeyPressed(KeyboardKey.M))
         {
@@ -493,7 +504,15 @@ public class GameEngine
 
         // Overworld Player Movement
         player.Moves = FieldMovement.MovesOf(playerParty);
-        player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+        if (Steering is { } steer) player.Advance(dt, currentMap, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
+        else player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+
+        // A door that leads somewhere opens as the player steps up to it: the door's own tile, or the open way
+        // into a porch with the door in the wall behind
+        var (headX, headY) = player.Heading;
+        if (player.IsMoving && currentMap.GetWarpAt(headX, headY) != null && WorldRenderer.DoorPlace(currentMap, headX, headY) != null)
+            world.Life.OpenDoor(currentMap, headX, headY);
+
         if (trainerApproach != null || currentState != GameState.Overworld) return;
 
         // Turning a full circle is how one Pokémon evolves
@@ -520,6 +539,12 @@ public class GameEngine
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
         EnterArea();
+
+        // What the step leaves behind: a print, dust, leaves, a ring on the water, a splash where they rode out
+        // onto it, dust where they came down from a hop
+        if (player.JustRodeOut) world.Life.Splash(currentMap, player.GridX, player.GridY);
+        else world.Life.Footstep(currentMap, player.GridX, player.GridY, player.Facing, player.IsRunning, player.Mode);
+        if (player.JustLanded && player.Mode != TravelMode.Surfing) world.Life.Landing(currentMap, player.GridX, player.GridY);
         return CheckTrainerSight();
     }
 
@@ -548,6 +573,7 @@ public class GameEngine
         Party = playerParty,
         Bag = playerInventory,
         IsNight = GameClock.IsNight,
+        IsRaining = Weathers.IsRain(currentMap.WeatherAt(player.GridX, player.GridY)),
         Sites = currentMap.EvolutionSitesAt(player.GridX, player.GridY)
     };
 
@@ -778,8 +804,38 @@ public class GameEngine
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
             AnnounceLocation();
+
+            // Coming out of a building, the door stands open behind the player for a moment, then shuts
+            world.Life.Clear();
+            var (dx, dy) = FieldMovement.Delta(warp.TargetFacing);
+            int doorX = warp.TargetX - dx, doorY = warp.TargetY - dy;
+            if (!currentMap.IsIndoors && WorldRenderer.DoorPlace(currentMap, doorX, doorY) != null)
+                world.Life.LeaveDoor(currentMap, doorX, doorY);
         });
     }
+
+    /// <summary>
+    /// Walks the player in place of the keys while it is set: the way they are steered each frame (null stands
+    /// still) and whether they run. For the story's scripted walks and for the screenshot harness.
+    /// </summary>
+    public (Direction? Want, bool Run)? Steering { get; set; }
+
+    /// <summary>Puts a bubble over someone's head for a moment: a person of the map by name, or the player (null).</summary>
+    public void ShowEmote(string? npcName, EmoteBubble bubble, float seconds = 0.9f)
+    {
+        if (npcName == null) player.ShowBubble(bubble, seconds);
+        else currentMap.NPCs.FirstOrDefault(n => n.Name == npcName)?.ShowBubble(bubble, seconds);
+    }
+
+    /// <summary>Whether lightning is whitening the field at this moment (a thunderstorm where the player stands).</summary>
+    public bool LightningNow =>
+        gameStarted && WeatherFx.Lightning(currentMap.WeatherAt(player.GridX, player.GridY), world.Life.Now) > 0.6f;
+
+    /// <summary>Sends the field's camera to look at a tile, easing there over the given time; it stays until released.</summary>
+    public void PanCamera(int x, int y, float seconds) => world.PanCamera(x + 0.5f, y + 0.5f, seconds);
+
+    /// <summary>Brings the field's camera back to the player.</summary>
+    public void ReleaseCamera(float seconds) => world.ReleaseCamera(seconds);
 
     /// <summary>Crosses to another region, landing where arrivals from the previous region come in.</summary>
     private void TravelTo(Region region)
@@ -877,8 +933,11 @@ public class GameEngine
         {
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
-        });
+        }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
+
+    /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
+    private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
     private void StartTrainerBattle(NPC trainerNpc)
     {
@@ -902,7 +961,8 @@ public class GameEngine
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainer = trainerNpc;
-        });
+        }, SceneTransition.ForBattle(trainer: true, trainer.TrainerClass.Contains("Leader", StringComparison.OrdinalIgnoreCase),
+            trainer.Party.Members[0].Level, LeadLevel()));
     }
 
     private void EndBattle()
@@ -931,12 +991,13 @@ public class GameEngine
         });
     }
 
-    private void StartTransition(GameState nextState, Action? onMidpoint = null)
+    private void StartTransition(GameState nextState, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade)
     {
         stateBeforeTransition = currentState;
         stateAfterTransition = nextState;
         midTransitionCallback = onMidpoint;
         currentState = GameState.Transition;
+        transitionKind = kind;
         transitionTimer = 0f;
         isFadingOut = true;
     }
@@ -946,7 +1007,7 @@ public class GameEngine
         transitionTimer += dt;
         if (isFadingOut)
         {
-            if (transitionTimer >= transitionDuration)
+            if (transitionTimer >= SceneTransition.OutSeconds(transitionKind))
             {
                 isFadingOut = false;
                 transitionTimer = 0f;
@@ -956,7 +1017,7 @@ public class GameEngine
         }
         else
         {
-            if (transitionTimer >= transitionDuration)
+            if (transitionTimer >= SceneTransition.InSeconds(transitionKind))
             {
                 currentState = stateAfterTransition;
                 trainersLookOnArrival = currentState == GameState.Overworld;
@@ -1063,15 +1124,9 @@ public class GameEngine
 
         toast.Draw(VirtualWidth);
 
-        // Draw Fade overlay
+        // The scene closing, or the next one opening
         if (currentState == GameState.Transition)
-        {
-            float alpha = isFadingOut
-                ? Math.Clamp(transitionTimer / transitionDuration, 0f, 1f)
-                : Math.Clamp(1f - (transitionTimer / transitionDuration), 0f, 1f);
-
-            Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)(alpha * 255)));
-        }
+            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight);
 
         Raylib.EndMode2D();
         Raylib.EndTextureMode();

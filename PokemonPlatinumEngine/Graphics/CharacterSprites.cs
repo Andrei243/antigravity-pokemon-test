@@ -42,7 +42,7 @@ internal static class CharacterSprites
 
     private static readonly Dictionary<SpriteKey, Baked> Cache = new();
     private static RenderTexture2D target;
-    private static Mesh quad;
+    private static Mesh quad, wallQuad;
     private static bool loaded;
 
     private static readonly SceneLighting StudioLight = new(Vector3.Normalize(new Vector3(-0.5f, 0.75f, 0.6f)),
@@ -58,6 +58,12 @@ internal static class CharacterSprites
         b.Quad(new(-0.5f, 0, 0), new(0.5f, 0, 0), new(0.5f, 1, 0), new(-0.5f, 1, 0), new(0, 1), new(1, 1), new(1, 0), new(0, 0),
             Color.White, Vector3.UnitZ);
         quad = b.Upload();
+
+        // The same quad lit as a building's front wall is, for cards that are part of one (an open door)
+        var w = new MeshBuilder();
+        w.Quad(new(-0.5f, 0, 0), new(0.5f, 0, 0), new(0.5f, 1, 0), new(-0.5f, 1, 0), new(0, 1), new(1, 1), new(1, 0), new(0, 0),
+            Color.White, KitBuilder.FrontNormal);
+        wallQuad = w.Upload();
         loaded = true;
     }
 
@@ -228,16 +234,21 @@ internal static class CharacterSprites
     // ------------------------------------------------------------------ painted cards
 
     /// <summary>A sprite painted by hand that stands in the field the way a character's does: lit, shadowed, drawn upright.</summary>
-    internal sealed record Card(Texture2D Texture, Material Color, Material Depth, float Width, float Height);
+    internal sealed record Card(Texture2D Texture, Material Color, Material Depth, float Width, float Height, bool Wall = false);
 
-    /// <summary>Makes a card of a piece of pixel art, at the field's 32 texels to the tile.</summary>
-    public static Card MakeCard(RenderContext context, PixelCanvas art)
+    /// <summary>
+    /// Makes a card of a piece of pixel art, at the field's 32 texels to the tile. A card that is
+    /// <paramref name="partOfAWall"/> is shaded as the scenery is, so it matches the wall it lies on and its
+    /// marked glass lights up after dark; any other is shaded as the people are.
+    /// </summary>
+    public static Card MakeCard(RenderContext context, PixelCanvas art, bool partOfAWall = false)
     {
         EnsureLoaded();
         var tex = art.ToTexture();
         Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
-        return new Card(tex, RenderContext.MaterialFor(context.Shaders.Sprite, tex), RenderContext.MaterialFor(context.Shaders.Depth, tex),
-            art.Width / (float)TexelsPerUnit, art.Height / (float)TexelsPerUnit);
+        var shader = partOfAWall ? context.Shaders.World : context.Shaders.Sprite;
+        return new Card(tex, RenderContext.MaterialFor(shader, tex), RenderContext.MaterialFor(context.Shaders.Depth, tex),
+            art.Width / (float)TexelsPerUnit, art.Height / (float)TexelsPerUnit, partOfAWall);
     }
 
     /// <summary>Stands a card with the middle of its foot on a point of the ground.</summary>
@@ -246,7 +257,7 @@ internal static class CharacterSprites
         if (pass == CharacterPass.Outline) return;
         var at = new Vector3(WorldRenderer.SnapToTexel(foot.X), foot.Y, WorldRenderer.SnapToTexel(foot.Z));
         var m = Matrix4x4.CreateScale(card.Width, card.Height * vs, 1f) * Matrix4x4.CreateTranslation(at);
-        Raylib.DrawMesh(quad, pass == CharacterPass.Depth ? card.Depth : card.Color, Matrix4x4.Transpose(m));
+        Raylib.DrawMesh(card.Wall ? wallQuad : quad, pass == CharacterPass.Depth ? card.Depth : card.Color, Matrix4x4.Transpose(m));
     }
 
     /// <summary>

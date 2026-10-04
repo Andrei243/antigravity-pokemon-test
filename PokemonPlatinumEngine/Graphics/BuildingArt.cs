@@ -767,6 +767,53 @@ internal static partial class BuildingArt
         c.HLine(x0 + 2, y0 + 37, 32, Steel.Dark);
     }
 
+    // What shows through an open door: the dark of the room, a little lighter along the sill where daylight falls in
+    private static readonly Color Doorway = Rgb(40, 34, 48), DoorwaySill = Rgb(74, 62, 76);
+
+    private static void Room(PixelCanvas c, int x, int y, int w, int h, byte light)
+    {
+        for (int py = 0; py < h; py++)
+            for (int px = 0; px < w; px++)
+                c.SetRaw(x + px, y + py, Flag(py >= h - 4 ? DoorwaySill : Doorway, light));
+    }
+
+    /// <summary>
+    /// A door standing ajar (<paramref name="frame"/> 1) or open (2), exactly the size of the shut door it is
+    /// drawn over: glass doors slide apart in their steel frame, a wooden leaf (or a <paramref name="pair"/>)
+    /// swings in against its hinges. The room behind is marked like a window (<paramref name="light"/>), so
+    /// after dark it is the room's light that shows in the doorway.
+    /// </summary>
+    internal static PixelCanvas OpenDoor(bool glass, bool pair, int frame, byte light)
+    {
+        if (glass)
+        {
+            var g = new PixelCanvas(36, 40);
+            GlassDoor(g, 18, 40, light);
+            // The panes have slid a third of the way apart, then nearly all of it
+            int gap = frame == 1 ? 10 : 26, x = 18 - gap / 2;
+            Room(g, x, 7, gap, 30, light);
+            g.VLine(x - 1, 7, 30, Steel.Dark);
+            g.VLine(x + gap, 7, 30, Steel.Light);
+            return g;
+        }
+
+        int width = pair ? 40 : 22;
+        var c = new PixelCanvas(width, 39);
+        c.Rect(0, 0, width, 39, Frame);
+        c.VLine(width - 1, 0, 39, FrameShade);
+        Room(c, 2, 2, width - 4, 37, light);
+        // The leaf seen at a slant while it swings, and edge-on against its hinges once it is open
+        int leaf = frame == 1 ? 9 : 3;
+        Pix.Raised(c, 2, 2, leaf, 37, DoorWood);
+        Pix.Shade(c, 2, 2, leaf, 37, 0.22f);
+        if (pair)
+        {
+            Pix.Raised(c, width - 2 - leaf, 2, leaf, 37, DoorWood);
+            Pix.Shade(c, width - 2 - leaf, 2, leaf, 37, 0.22f);
+        }
+        return c;
+    }
+
     /// <summary>A brass name plate in a dark wooden frame, 16 by 11.</summary>
     private static void Plaque(PixelCanvas c, int cx, int y)
     {

@@ -20,6 +20,26 @@ public class NPC
     public Trainer? TrainerData { get; set; }
     public bool HasSpottedPlayer { get; set; } = false;
     public float ExclamationTimer { get; set; } = 0f;
+
+    /// <summary>What shows in the bubble over this person's head, for how much longer, and for how long it has.</summary>
+    public EmoteBubble Bubble { get; private set; }
+    public float BubbleTimer { get; private set; }
+    public float BubbleAge { get; private set; }
+
+    public void ShowBubble(EmoteBubble bubble, float seconds = 0.9f)
+    {
+        Bubble = bubble;
+        BubbleTimer = seconds;
+        BubbleAge = 0f;
+    }
+
+    /// <summary>Runs the bubble's clock.</summary>
+    public void TickBubble(float dt)
+    {
+        if (BubbleTimer <= 0f) return;
+        BubbleTimer -= dt;
+        BubbleAge += dt;
+    }
     public bool HasBattled { get; set; } = false;
 
     // Walking (a trainer stepping up to the player): the grid position is where the current step ends

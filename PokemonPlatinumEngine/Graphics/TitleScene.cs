@@ -46,6 +46,7 @@ internal sealed class TitleScene
             FovY, CameraProjection.Perspective);
 
         shaders.SetTime(time);
+        shaders.SetWind(0f);
         shaders.SetStudio();
         shaders.SetLighting(Matrix4x4.Identity, Light, camera.Position, 1f);
         shaders.SetCharacterStyle(shadowStrength: 0f, rimStrength: 1.3f * reveal);

@@ -24,6 +24,7 @@ internal sealed class ArtSheet
     public const byte HomeLight = 153;
 
     private readonly List<(string Key, Art Region, PixelCanvas Canvas)> faces = new();
+    private readonly List<(string Key, Art Region, PixelCanvas[] Frames, float Rate)> moving = new();
     private readonly Dictionary<string, Art> byKey = new();
     private int shelfY, shelfHeight, cursorX;
 
@@ -59,6 +60,33 @@ internal sealed class ArtSheet
         shelfHeight = Math.Max(shelfHeight, height + 2);
         faces.Add((key, art, canvas));
         byKey[key] = art;
+        return art;
+    }
+
+    /// <summary>The faces that move: each with all its frames (the first is what the sheet holds) and how many it shows a second.</summary>
+    public IReadOnlyList<(string Key, Art Region, PixelCanvas[] Frames, float Rate)> Moving => moving;
+
+    /// <summary>
+    /// A face that moves (a fountain's water, a turbine's blades): painted on first use in
+    /// <paramref name="frames"/> frames of the same size, <paramref name="rate"/> of them shown a second. The
+    /// sheet holds the first; whoever uploads the sheet redraws the face's rectangle with the others in turn.
+    /// </summary>
+    public Art PaintFrames(string key, int width, int height, int frames, float rate, Action<PixelCanvas, int> paint)
+    {
+        if (byKey.TryGetValue(key, out var found)) return found;
+        var canvases = new PixelCanvas[frames];
+        for (int f = 0; f < frames; f++)
+        {
+            canvases[f] = new PixelCanvas(width, height);
+            paint(canvases[f], f);
+        }
+        var art = Paint(key, width, height, c =>
+        {
+            for (int y = 0; y < height; y++)
+                for (int x = 0; x < width; x++)
+                    c.SetRaw(x, y, canvases[0].Get(x, y));
+        });
+        moving.Add((key, art, canvases, rate));
         return art;
     }
 

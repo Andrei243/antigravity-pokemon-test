@@ -241,6 +241,40 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 - **Sprites** (`CharacterSprites`): 40×58 texels, orthographic, seen from 24° above, studio light from the upper left, the pixel face stamped on, then a one-texel outline tinted from the neighbouring colour (`PixelCanvas.OutlinePass`). Frames for each of the four facings: 2 idle breaths, 8 walk, 8 run, 3 hop and 6 per emote; blinking and expressions are frames of their own. Drawn as upright cards lit by the scene (sky × 0.62 + sun × 0.78), casting real shadows, with a soft contact blob under the feet. A trainer who spots the player starts (the surprised emote) under the "!".
 - **Hand-drawn overrides**: a 40×58 PNG at `overrides/sprites/<TYPE>/<facing>_<strip>_<frame>[_blink][_<expression>].png` next to the game (for example `PLAYER/down_walk_3.png`) replaces that baked frame.
 
+### Life
+
+What moves in the field (G9). All of it is pixel art in motion: whole texels, a few frames, flat shades, and it fades in two or three steps of alpha, never smoothly. The one exception is mist (fog, and the haze of a sandstorm or a blizzard), which is soft like the depth-of-field blur it lies in.
+
+- **Wind**: everything that sways (grass, flowers, leaves) sways more as a gust passes. Gusts cross the map from the west, one about every twelve seconds, swelling the sway from three quarters of its usual size to a third more and leaning tips a little eastward. Weather raises it: a little in hail, half as much again in rain, more in heavy rain, and twice in a thunderstorm, heavy snow, a blizzard or a sandstorm.
+- **Footprints**: on the ground that keeps them in Platinum (its sand, and snow of every depth) each step leaves one shoe print, 6 by 11 texels, left and right alternately, in a darker shade of the ground (`196,170,118` on sand, `140,160,206` on snow). They stay three seconds, then fade in two steps over three more.
+- **Dust**: a run raises one puff behind each step, a little to the side of the foot that made it, and a hop lands in two: a round cloud in three frames (6, 10 and 12 texels across) over 0.36 s, in the colour of the ground it comes from (path `214,196,150`, sand `232,218,170`, dirt `170,134,98`, snow `214,226,244`, anything else `200,196,190`), rising three texels as it goes.
+- **Tall grass**: stepping in throws up four leaf bits (6 by 4 texels, lighter than the grass so they show against it: `168,226,112` and `110,196,92`, with a dark rim), two to each side: the inner pair fly up 18 texels, the outer pair lower and wider, each turning over at the top of its arc, and they are down again in 0.5 s.
+- **Water**: a swimmer leaves a ring on the water behind every stroke (three frames, 8 to 14 texels across, `210,236,255`, gone in 0.7 s); a puddle gives a small ring and two drops, water ankle deep a ring alone, and the water someone has just ridden out onto a wide ring and four drops that fly higher.
+- **Waterfalls** fall: the sheet's streaks move down four texels eight times a second.
+- **Fountains and turbines**: a fountain plays in four frames at six a second (the rings in its basin travel outward, the jet's top bobs a texel, drops fall away from it in an arc); a wind turbine's three blades turn in four frames of thirty degrees at six a second, one full turn in two seconds. Like the waterfall, they are redrawn in place, frame by frame, never slid.
+- **Weather** is in the air, on the ground and in the light. What falls is drawn over the scene in the picture's own pixels (3 px blocks at 1080p) and is blown the way the wind goes, eastward. Mist is a soft cloud texture in two layers that drift at different paces. Under any of them part of the sun is lost, and half of what level ground loses by it comes down from the whole sky instead, so shadows grow faint before the picture grows dark:
+
+| Weather | In the air | On the ground | Sun | Fog |
+|---|---|---|---|---|
+| Cloudy | nothing | | 0.45 | a little |
+| Rain | 220 slanting streaks of three blocks, `176,200,236` | 360 drops a second land in view: a fleck `236,242,255` on the ground, and on water one in three leaves a small ring | 0.3, colours a fifth duller | a little |
+| Heavy rain | 380 streaks of four blocks | 720 drops a second | 0.22, colours a fifth duller | some |
+| Thunderstorm | as heavy rain; lightning whitens the picture twice within a quarter of a second, once in every eight seconds at a moment of its own (three to thirteen seconds apart) | 720 drops a second | 0.2, colours a fifth duller | some |
+| Snow | 140 flakes of 3 and 6 px, white, swaying as they fall | | 0.6 | a little |
+| Heavy snow | 320 flakes of 3 to 9 px driven hard, each with a short tail; a thin white haze | | 0.35 | near and pale |
+| Blizzard | 460 such flakes driven nearly level; two layers of white haze | | 0.25 | near and pale |
+| Hail | 180 pellets of 6 px, `224,238,255`, falling fast and steep | 180 pellets a second land with a fleck | 0.4 | a little |
+| Fog | two layers of pale mist `232,236,244` | | 0.5 | hides what is ten tiles off |
+| Sandstorm | 240 streaks of sand `226,198,140` driven hard; two layers of sand haze | | 0.55 | near and sand-coloured |
+| Ash | 110 grey flakes of 3 and 6 px falling slowly | | 0.75 | a little |
+
+These are the kinds Platinum's map headers name. Five places (the south of Route 212, Route 213, Route 216, Acuity Lakefront and Snowpoint City) take theirs from a calendar in Platinum; until that calendar is imported with their areas they have the weather they have most days.
+
+- **Doors** open: as someone steps up to a door that leads somewhere, it opens in two frames over 0.2 s (a wooden door swings in against its frame; glass doors slide apart) on a dark room `40,34,48`, and it shuts again 0.4 s after someone has stepped out of it.
+- **Emote bubbles**: a white bubble 20 by 22 texels with a tail, over the head, popping up over three frames: `!` in red, `?` in blue, three dots, a note, a heart, `Zz`, a drop of sweat. It stays 0.9 s unless told otherwise.
+- **The camera** follows the player's height smoothly (stairs, bridges, a hop) and can be sent to look at another spot and back, easing in and out over the time it is given (for the story's scenes).
+- **Into battle**: the field flashes white twice in a quarter of a second, then closes. Which way depends, as in Platinum, on who is met and on whether their first Pokémon is of a higher level than the player's first: a pinwheel of eight dark blades for a wild Pokémon, and the picture breaking into shards from the middle outward for a stronger one; shutters from both sides for a trainer, crossed with shutters from above and below for a stronger one; diamonds growing from a grid for a Gym Leader. The battle opens through an iris for a wild Pokémon and through the same shape in reverse for the others. Closing takes 0.9 s and opening 0.5 s; the dark is `14,14,22`, never pure black. (Platinum also tells water and caves apart, and gives the Elite Four, Team Galactic and the legendary Pokémon effects of their own: those come with their places.)
+
 ### Light, shadow and grading (day)
 
 | Setting | Value |
@@ -529,15 +563,17 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G8
+## Known gaps after G9
 
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
 - The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
 - Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Thirty-three models have plain stand-ins until their area is built (`docs/world-models.md` says which). Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
-- A cross gable would give the bigger houses their look. Doors are painted shut and do not open, the fountains' water and the turbines' blades stand still (G9).
+- A cross gable would give the bigger houses their look.
+- A puddle has no look of its own yet (it is drawn as the ground round it), so nothing mirrors a walker; puddles and their reflections come with the first place that has them, Route 212 (plan 01 · M7). Only the player's steps leave prints, dust and leaves: other people don't walk about yet (plan 02).
+- The weather has its eleven looks, but the five places whose weather follows Platinum's calendar keep one weather until the calendar is imported with them (plan 01 · M7 and M8), and the moods Platinum gives some forests, caves and halls through the same setting are not built. Weather is silent until plan 05, and a battle doesn't yet begin in the field's weather (plan 06 · R3).
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
-- The jump from the pixel field to the 3D battle needs its intro transition (G9).
+- Of Platinum's ways into a battle, five are built (a wild Pokémon and a trainer, each also when stronger than the player's first, and a Gym Leader). It also tells water and caves apart and has effects of their own for the Elite Four, the Champion, Team Galactic and the legendary Pokémon: those come with their places.
 - The 23 species the story shows so far have version 2 models; every other species shares the generic stand-in until plan 03 · D5 builds them with the same kit and body plans. The serpent, fish and floating plans have only sample models so far.
 - Characters have mitten hands and no fingers. Of the emotes only the trainer's start and the battle throw are played in the game so far; scripts (plan 02) will call the others. The trainer card still shows the old 16×24 portrait (G10).
 - The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.

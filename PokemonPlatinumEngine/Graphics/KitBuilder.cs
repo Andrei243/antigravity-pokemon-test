@@ -46,6 +46,10 @@ internal sealed class KitBuilder
 
     public Art Face(string key, int width, int height, Action<PixelCanvas> paint) => Sheet.Paint(key, width, height, paint);
 
+    /// <summary>A face that moves, painted in frames of which <paramref name="rate"/> are shown a second (<see cref="ArtSheet.PaintFrames"/>).</summary>
+    public Art Frames(string key, int width, int height, int frames, float rate, Action<PixelCanvas, int> paint) =>
+        Sheet.PaintFrames(key, width, height, frames, rate, paint);
+
     /// <summary>A point given in texels from the origin: x east, y up (in screen rows), z south.</summary>
     public Vector3 At(float x, float y, float z) => Origin + new Vector3(x * Texel, y * Texel * VS, z * Texel);
 

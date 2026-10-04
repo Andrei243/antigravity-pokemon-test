@@ -79,13 +79,21 @@ uniform int walkerCount;
 uniform float upright;
 uniform float pitchSin;
 
+// How much harder than a breeze the wind blows: 0 on a calm day, 1 in a blizzard
+uniform float wind;
+
 // Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves). Only static scenery sways,
 // and scenery is drawn with an identity model matrix, so the world-space offset can be added in model space.
+// Gusts cross the map from the west, one about every twelve seconds: the sway swells as one passes and the
+// tips lean a little eastward.
 vec3 SwayOffset(vec3 p, float weight)
 {
     if (weight <= 0.0) return vec3(0.0);
     float t = time * 1.6 + p.x * 0.63 + p.z * 0.41;
-    return vec3(sin(t) * 0.07, 0.0, cos(t * 0.83) * 0.035) * weight;
+    float gust = 0.5 + 0.5 * sin(time * 0.52 - p.x * 0.11 - p.z * 0.045);
+    gust *= gust;
+    float strength = 0.75 + 0.6 * gust + wind * (0.6 + gust);
+    return vec3(sin(t) * 0.07 * strength + 0.05 * gust * (0.5 + wind), 0.0, cos(t * 0.83) * 0.035 * strength) * weight;
 }
 
 // Only what sways fully (grass and flowers, not leaves) parts: pushed outward and pressed down near a walker
@@ -820,6 +828,15 @@ void main()
             Set(shader, "time", time);
             Set(shader, "cloudTime", time);
         }
+    }
+
+    /// <summary>
+    /// How much harder than a breeze the wind blows (0 calm, 1 a blizzard). The programs are shared, so every
+    /// renderer sets it each frame: the battle has none.
+    /// </summary>
+    public void SetWind(float extra)
+    {
+        foreach (var shader in FieldPrograms) Set(shader, "wind", extra);
     }
 
     /// <summary>How strongly characters receive scene shadows, and how bright their rim light is.</summary>
