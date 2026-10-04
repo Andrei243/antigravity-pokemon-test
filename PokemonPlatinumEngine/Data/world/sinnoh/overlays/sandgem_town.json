@@ -12,12 +12,12 @@
   "locked": [ 3, 4 ],
   "people": {
     "sandgem_counterpart": {
-      "name": "Dawn",
-      "npcType": "Lass",
+      "name": "{assistant}",
+      "npcType": "Assistant",
       "dialog": [
-        "Dawn: Hi, Lucas! Welcome to Sandgem Town!",
-        "Dawn: The Professor's lab is the big building right behind me.",
-        "Dawn: The Pokémon Center and the Poké Mart are just along the road to the east."
+        "{assistant}: Hi, {player}! Welcome to Sandgem Town!",
+        "{assistant}: The Professor's lab is the big building right behind me.",
+        "{assistant}: The Pokémon Center and the Poké Mart are just along the road to the east."
       ]
     },
     "youngster": {

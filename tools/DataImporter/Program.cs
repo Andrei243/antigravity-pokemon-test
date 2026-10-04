@@ -40,7 +40,7 @@ Console.WriteLine("Species…");
 var species = Overrides.Apply(importer.Species(), Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
 Console.WriteLine("Items…");
 var evolutionItems = species.SelectMany(s => s.Evolutions ?? new()).Select(e => e.Item).OfType<string>().ToHashSet();
-var items = Overrides.Apply(importer.Items(evolutionItems), Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
+var items = Overrides.Apply(importer.Items(evolutionItems, moves), Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
 
 Check(species, moves, abilities, items);
 

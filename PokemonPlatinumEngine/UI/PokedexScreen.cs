@@ -1,56 +1,81 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using Raylib_cs;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>
+/// The Pokédex: every species in number order as a list, and the chosen one beside it with as much as the
+/// player has learned of it (nothing, what was seen, or everything once it has been caught). Its logic takes
+/// no input (<see cref="Move"/>), so tests and the harness drive it. Sinnoh's own numbering, sorting, search
+/// and the area view are plan 03 · D10's.
+/// </summary>
 public class PokedexScreen
 {
-    public int SelectedIndex { get; set; } = 0;
-    public bool IsActive { get; set; } = false;
+    private const float AppearTime = 0.3f;
+
+    /// <summary>How many species show at once, and how far left and right jump.</summary>
+    public const int VisibleRows = 8, Jump = 10;
 
     private readonly List<PokemonSpecies> allSpecies = new();
+    private float openAge;
 
-    public void Open()
+    public int SelectedIndex { get; set; }
+    public int FirstRow { get; private set; }
+    public bool IsActive { get; set; }
+
+    public IReadOnlyList<PokemonSpecies> Species => allSpecies;
+
+    /// <summary>Opens on the first species the player has seen, so the list doesn't begin with a page of dashes.</summary>
+    public void Open(Pokedex? pokedex = null)
     {
         IsActive = true;
-        SelectedIndex = 0;
+        openAge = 0f;
         allSpecies.Clear();
         allSpecies.AddRange(PokemonDatabase.GetAll().OrderBy(s => s.DexNumber));
+        int firstSeen = pokedex == null ? -1 : allSpecies.FindIndex(s => pokedex.IsSeen(s.DexNumber));
+        SelectedIndex = Math.Max(0, firstSeen);
+        FirstRow = 0;
+        Follow();
     }
 
-    public void Close()
+    public void Close() => IsActive = false;
+
+    /// <summary>
+    /// One step wraps from the last species to the first; a jump of ten stops at either end.
+    /// </summary>
+    public void Move(int step)
     {
-        IsActive = false;
+        if (step == 0 || allSpecies.Count == 0) return;
+        int next = Math.Abs(step) == 1
+            ? UiNav.Wrap(SelectedIndex, step, allSpecies.Count)
+            : Math.Clamp(SelectedIndex + step, 0, allSpecies.Count - 1);
+        if (next == SelectedIndex) return;
+        SelectedIndex = next;
+        Follow();
+        AudioManager.PlaySound("cursor");
     }
 
-    public void Update()
+    private void Follow()
+    {
+        SelectedIndex = Math.Clamp(SelectedIndex, 0, Math.Max(0, allSpecies.Count - 1));
+        FirstRow = UiNav.Window(FirstRow, SelectedIndex, allSpecies.Count, VisibleRows);
+    }
+
+    public void Update(float dt = 1f / 60f)
     {
         if (!IsActive) return;
+        openAge += dt;
 
-        if (InputManager.IsActionPressed(GameAction.Up))
-        {
-            if (allSpecies.Count > 0)
-            {
-                SelectedIndex = (SelectedIndex - 1 + allSpecies.Count) % allSpecies.Count;
-                AudioManager.PlaySound("cursor");
-            }
-        }
-        else if (InputManager.IsActionPressed(GameAction.Down))
-        {
-            if (allSpecies.Count > 0)
-            {
-                SelectedIndex = (SelectedIndex + 1) % allSpecies.Count;
-                AudioManager.PlaySound("cursor");
-            }
-        }
-        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm))
+        if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
+        else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
+        else if (InputManager.IsActionPressed(GameAction.Left)) Move(-Jump);
+        else if (InputManager.IsActionPressed(GameAction.Right)) Move(Jump);
+        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Menu))
         {
             Close();
             AudioManager.PlaySound("cancel");
@@ -60,99 +85,7 @@ public class PokedexScreen
     public void Draw(int screenWidth, int screenHeight, Pokedex pokedex)
     {
         if (!IsActive) return;
-
-        Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Palette.UiBackground);
-
-        // Header
-        int headerHeight = 64;
-        RenderHelper.DrawPlatinumPanel(24, 20, screenWidth - 48, headerHeight, Palette.UiPanelBg);
-        RenderHelper.DrawTextWithShadow("SINNOH POKÉDEX", 52, 34, 28, Palette.UiAccent);
-        RenderHelper.DrawTextWithShadow($"SEEN: {pokedex.SeenCount}    CAUGHT: {pokedex.CaughtCount}", screenWidth - 460, 36, 24, Palette.TextDark);
-
-        // Species List (Left)
-        int listWidth = 740;
-        int listHeight = screenHeight - 116;
-        RenderHelper.DrawPlatinumPanel(24, 96, listWidth, listHeight, Palette.UiPanelBg);
-
-        int maxVisible = 14;
-        int scrollOffset = Math.Max(0, Math.Min(SelectedIndex - maxVisible / 2, Math.Max(0, allSpecies.Count - maxVisible)));
-
-        for (int i = 0; i < maxVisible && (i + scrollOffset) < allSpecies.Count; i++)
-        {
-            int idx = i + scrollOffset;
-            var sp = allSpecies[idx];
-            int sy = 112 + i * 58;
-
-            bool isSelected = SelectedIndex == idx;
-            bool isSeen = pokedex.IsSeen(sp.DexNumber);
-            bool isCaught = pokedex.IsCaught(sp.DexNumber);
-
-            if (isSelected)
-            {
-                Raylib.DrawRectangle(38, sy, listWidth - 28, 50, Palette.UiAccent);
-            }
-
-            if (isCaught)
-            {
-                Raylib.DrawCircle(62, sy + 25, 10, Color.Red);
-                Raylib.DrawCircle(62, sy + 25, 5, Color.White);
-            }
-            else if (isSeen)
-            {
-                Raylib.DrawCircleLines(62, sy + 25, 10, Color.DarkGray);
-            }
-
-            string numStr = $"No.{sp.DexNumber:D3}";
-            string nameStr = isSeen ? sp.Name : "-----";
-            RenderHelper.DrawTextWithShadow($"{numStr}   {nameStr}", 88, sy + 12, 24, isSelected ? Color.White : Palette.TextDark);
-        }
-
-        // Details Panel (Right)
-        int detX = 24 + listWidth + 24;
-        int detWidth = screenWidth - detX - 24;
-        RenderHelper.DrawPlatinumPanel(detX, 96, detWidth, listHeight, Palette.UiPanelBg);
-
-        if (SelectedIndex < allSpecies.Count)
-        {
-            var sel = allSpecies[SelectedIndex];
-            bool isSeen = pokedex.IsSeen(sel.DexNumber);
-
-            if (isSeen)
-            {
-                // Pedestal panel for Pokemon Sprite
-                RenderHelper.DrawPlatinumPanel(detX + 36, 120, 300, 300, Palette.UiBackground);
-                var sprite = PixelArtGenerator.GetPokemonSprite(sel.Name, isBack: false);
-                float spriteScale = 3.0f;
-                float sx = detX + 36 + (300 - sprite.Width * spriteScale) / 2f;
-                float sy = 120 + (300 - sprite.Height * spriteScale) / 2f;
-                Raylib.DrawTextureEx(sprite, new Vector2(sx, sy), 0f, spriteScale, Color.White);
-
-                // Info to the right of sprite
-                int tx = detX + 368;
-                RenderHelper.DrawTextWithShadow($"No.{sel.DexNumber:D3}  {sel.Name}", tx, 134, 36, Palette.UiAccent);
-                RenderHelper.DrawTextWithShadow($"The {sel.Category} Pokémon", tx, 186, 24, Palette.TextDark);
-                RenderHelper.DrawTextWithShadow($"Height: {sel.Height:F1} m   |   Weight: {sel.Weight:F1} kg", tx, 226, 22, Palette.TextDark);
-
-                RenderHelper.DrawTypeBadge(tx, 276, sel.PrimaryType, 110, 34);
-                if (sel.SecondaryType.HasValue)
-                {
-                    RenderHelper.DrawTypeBadge(tx + 124, 276, sel.SecondaryType.Value, 110, 34);
-                }
-
-                // Dex Entry Box
-                RenderHelper.DrawPlatinumPanel(detX + 36, 450, detWidth - 72, 380, Palette.UiBackground);
-                RenderHelper.DrawTextWithShadow("POKÉDEX LORE & DATA", detX + 60, 474, 24, Palette.UiAccent);
-                RenderHelper.DrawWrappedText(sel.DexEntry, detX + 60, 520, detWidth - 120, 26, Palette.TextDark, 10);
-
-                RenderHelper.DrawTextWithShadow("Press Z / Space / X / Esc to close", detX + 36, 96 + listHeight - 48, 22, Color.Gray);
-            }
-            else
-            {
-                RenderHelper.DrawPlatinumPanel(detX + 36, 120, detWidth - 72, 400, Palette.UiBackground);
-                RenderHelper.DrawTextWithShadow("Pokémon not yet encountered.", detX + 70, 240, 32, Color.Gray);
-                RenderHelper.DrawTextWithShadow("Explore the tall grass, waterways, and battle trainers to register data.", detX + 70, 300, 24, Color.Gray);
-                RenderHelper.DrawTextWithShadow("Press Z / Space / X / Esc to close", detX + 36, 96 + listHeight - 48, 22, Color.Gray);
-            }
-        }
+        Follow();
+        ModernUi.DrawPokedex(screenWidth, screenHeight, this, pokedex, Math.Clamp(openAge / AppearTime, 0f, 1f));
     }
 }

@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.UI.Kit;
 
-public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit }
+public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key }
 
 /// <summary>
 /// Small vector icons built from <see cref="UiShapes"/>: the start menu's entries, gender marks and arrows.
@@ -65,6 +65,42 @@ internal static class UiIcons
                 UiShapes.Line(c + new Vector2(-0.6f, -0.6f) * s, c + new Vector2(0.6f, 0.6f) * s, 0.28f * s, ink);
                 UiShapes.Line(c + new Vector2(-0.6f, 0.6f) * s, c + new Vector2(0.6f, -0.6f) * s, 0.28f * s, ink);
                 break;
+
+            // The bag's pockets
+            case UiIcon.Pouch:
+                UiShapes.Circle(c + new Vector2(0, 0.2f) * s, 0.72f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.34f * s, c.Y - 0.94f * s, 0.68f * s, 0.6f * s), 0.14f * s, ink);
+                UiShapes.Line(c + new Vector2(-0.34f, -0.42f) * s, c + new Vector2(0.34f, -0.42f) * s, 0.13f * s, back);
+                break;
+            case UiIcon.Cross:
+                UiShapes.Fill(new Rectangle(c.X - 0.3f * s, c.Y - 0.86f * s, 0.6f * s, 1.72f * s), 0.14f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.86f * s, c.Y - 0.3f * s, 1.72f * s, 0.6f * s), 0.14f * s, ink);
+                break;
+            case UiIcon.Disc:
+                UiShapes.Circle(c, 0.92f * s, ink);
+                UiShapes.Circle(c, 0.36f * s, back);
+                UiShapes.Circle(c, 0.14f * s, ink);
+                break;
+            case UiIcon.Berry:
+                UiShapes.Circle(c + new Vector2(-0.04f, 0.22f) * s, 0.68f * s, ink);
+                UiShapes.Line(c + new Vector2(0.02f, -0.42f) * s, c + new Vector2(0.46f, -0.84f) * s, 0.3f * s, ink);
+                UiShapes.Circle(c + new Vector2(-0.26f, 0.04f) * s, 0.14f * s, back);
+                break;
+            case UiIcon.Letter:
+                UiShapes.Fill(new Rectangle(c.X - 0.92f * s, c.Y - 0.64f * s, 1.84f * s, 1.28f * s), 0.18f * s, ink);
+                UiShapes.Line(c + new Vector2(-0.68f, -0.4f) * s, c + new Vector2(0, 0.12f) * s, 0.14f * s, back);
+                UiShapes.Line(c + new Vector2(0.68f, -0.4f) * s, c + new Vector2(0, 0.12f) * s, 0.14f * s, back);
+                break;
+            case UiIcon.Boost:
+                UiShapes.Triangle(c + new Vector2(0, -0.86f) * s, c + new Vector2(-0.8f, 0.06f) * s, c + new Vector2(0.8f, 0.06f) * s, ink, 0.08f * s);
+                UiShapes.Fill(new Rectangle(c.X - 0.3f * s, c.Y - 0.06f * s, 0.6f * s, 0.94f * s), 0.12f * s, ink);
+                break;
+            case UiIcon.Key:
+                UiShapes.Ring(c + new Vector2(-0.44f, 0) * s, 0.5f * s, 0.22f * s, ink);
+                UiShapes.Line(c + new Vector2(0.04f, 0) * s, c + new Vector2(0.86f, 0) * s, 0.22f * s, ink);
+                UiShapes.Line(c + new Vector2(0.5f, 0) * s, c + new Vector2(0.5f, 0.36f) * s, 0.2f * s, ink);
+                UiShapes.Line(c + new Vector2(0.84f, 0) * s, c + new Vector2(0.84f, 0.3f) * s, 0.2f * s, ink);
+                break;
             default:
                 UiShapes.Ring(c + new Vector2(0, 0.08f) * s, 0.82f * s, 0.22f * s, ink);
                 UiShapes.Fill(new Rectangle(c.X - 0.34f * s, c.Y - 1.0f * s, 0.68f * s, 0.8f * s), 0f, back);
@@ -99,6 +135,11 @@ internal static class UiIcons
     public static void ArrowH(Vector2 c, float size, int direction, Color color) =>
         UiShapes.Triangle(c + new Vector2(0.55f * direction, 0) * size, c + new Vector2(-0.4f * direction, -0.75f) * size,
             c + new Vector2(-0.4f * direction, 0.75f) * size, color, size * 0.12f);
+
+    /// <summary>A small solid arrowhead pointing up.</summary>
+    public static void ArrowUp(Vector2 c, float size, Color color) =>
+        UiShapes.Triangle(c + new Vector2(0, -0.5f) * size, c + new Vector2(-0.7f, 0.4f) * size, c + new Vector2(0.7f, 0.4f) * size,
+            color, size * 0.12f);
 
     /// <summary>A small solid arrowhead pointing down.</summary>
     public static void ArrowDown(Vector2 c, float size, Color color) =>

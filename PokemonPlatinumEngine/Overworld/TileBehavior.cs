@@ -222,6 +222,10 @@ public static class TileBehaviors
     public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea
         or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater;
 
+    /// <summary>Ground that keeps the print of a shoe, as in Platinum: its sand, and snow of every depth.</summary>
+    public static bool KeepsFootprints(TileBehavior behaviour) => behaviour is TileBehavior.Sand or TileBehavior.ShallowSnow
+        or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow;
+
     /// <summary>
     /// What the game does with a behaviour today (plan 01 · M3), for <c>docs/tile-behaviours.md</c> and for the
     /// test that keeps the list honest: whether <see cref="FieldMovement"/> has a rule for it, whether it is
@@ -244,10 +248,10 @@ public static class TileBehaviors
         TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater
             => (BehaviourSupport.Ruled, "Crossed on its deck and surfed under, whichever level one is on."),
         TileBehavior.VeryTallGrass => (BehaviourSupport.Ruled, "Wild Pokémon, more often than in tall grass; no Bicycles."),
-        TileBehavior.ShallowSnow => (BehaviourSupport.Ruled, "No Bicycles."),
-        TileBehavior.DeepSnow => (BehaviourSupport.Ruled, "No running, no Bicycles; a walker sinks to the ankle."),
-        TileBehavior.DeeperSnow => (BehaviourSupport.Ruled, "Half a walk's pace, no Bicycles; a walker sinks to the shin."),
-        TileBehavior.DeepestSnow => (BehaviourSupport.Ruled, "A quarter of a walk's pace, no Bicycles; a walker sinks to the knee."),
+        TileBehavior.ShallowSnow => (BehaviourSupport.Ruled, "No Bicycles. Every step leaves a footprint."),
+        TileBehavior.DeepSnow => (BehaviourSupport.Ruled, "No running, no Bicycles; a walker sinks to the ankle and leaves footprints."),
+        TileBehavior.DeeperSnow => (BehaviourSupport.Ruled, "Half a walk's pace, no Bicycles; a walker sinks to the shin and leaves footprints."),
+        TileBehavior.DeepestSnow => (BehaviourSupport.Ruled, "A quarter of a walk's pace, no Bicycles; a walker sinks to the knee and leaves footprints."),
         TileBehavior.Mud or TileBehavior.MarshGrass
             => (BehaviourSupport.Ruled, "No running, no Bicycles. (Platinum's sinking in the marsh is not built.)"),
         TileBehavior.DeepMud or TileBehavior.DeepMarshGrass
@@ -274,9 +278,10 @@ public static class TileBehaviors
 
         TileBehavior.TallGrass or TileBehavior.CaveFloor or TileBehavior.OldChateauFloor or TileBehavior.BridgeOverCave
             => (BehaviourSupport.Plain, "Walked on; wild Pokémon from the area's land table."),
-        TileBehavior.Puddle or TileBehavior.StillPuddle or TileBehavior.ShallowWater
-            => (BehaviourSupport.Plain, "Walked through. (No splash or reflection yet.)"),
-        TileBehavior.Sand or TileBehavior.ShadedSnow => (BehaviourSupport.Plain, "Walked on. (No footprints yet.)"),
+        TileBehavior.Puddle => (BehaviourSupport.Plain, "Walked through with a splash: a ring and two drops. (It has no look of its own and mirrors nobody yet.)"),
+        TileBehavior.ShallowWater => (BehaviourSupport.Plain, "Walked through, leaving a ring on the water."),
+        TileBehavior.StillPuddle => (BehaviourSupport.Plain, "Walked through. (It has no look of its own and mirrors nobody yet.)"),
+        TileBehavior.Sand or TileBehavior.ShadedSnow => (BehaviourSupport.Plain, "Walked on; every step leaves a footprint that fades."),
         TileBehavior.Door => (BehaviourSupport.Plain, "A blocked tile until a warp opens it."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")

@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|terrain|buildings|world|times|sheets|pokemon] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|intro|terrain|buildings|lab|life|world|times|sheets|pokemon] [before dir]
 //   dotnet run --project tools/ShotHarness -- <output dir> area <key>      one shot of an area of the imported world, by its key (twinleaf_town)
 //   dotnet run --project tools/ShotHarness -- <output dir> cities [key ...]   the buildings of every town of Sinnoh, from the importer's last full run
 //   dotnet run --project tools/ShotHarness -- <output dir> dex [species ...]   boards of every species' 3D model, sixty to a page
@@ -32,7 +32,10 @@ Environment.CurrentDirectory = outDir;
 
 Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
 Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
-Raylib.InitWindow(1920, 1080, "shots");
+// SHOTS_WINDOW=3840x2160 makes the hidden window that size: the game then draws as it does full screen on a 4K
+// display (FXAA on the high preset, the screen shown one to one), which is what the timings should be read at
+var windowSize = (Environment.GetEnvironmentVariable("SHOTS_WINDOW") ?? "1920x1080").Split('x');
+Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
 
 var engine = new GameEngine();
 engine.Initialize();
@@ -199,6 +202,28 @@ void Timing(string label, int frames = 300)
     var sw = System.Diagnostics.Stopwatch.StartNew();
     Frames(frames);
     Console.WriteLine($"{label}: {sw.Elapsed.TotalMilliseconds / frames:F2} ms/frame");
+}
+
+// A scene's frame time, then the same frames with the profiler on: each pass's share of the frame, and the meshes
+// and triangles it draws. `frozen` draws one moment over and over (a move's effect at its height, a camera's
+// close-up), which the game's own clock would move on from.
+void Profile(string label, int frames = 240, bool frozen = false)
+{
+    // SHOTS_ONLY=battle,route measures only the scenes whose name has one of those words in it
+    var only = (Environment.GetEnvironmentVariable("SHOTS_ONLY") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
+    if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase))) return;
+    void One() { if (!frozen) engine.Update(1f / 60f); engine.Draw(); }
+    for (int i = 0; i < 20; i++) One();
+    var sw = System.Diagnostics.Stopwatch.StartNew();
+    for (int i = 0; i < frames; i++) One();
+    double plain = sw.Elapsed.TotalMilliseconds / frames;
+    FrameProfiler.Enabled = true;
+    for (int i = 0; i < 5; i++) One();
+    FrameProfiler.Reset();
+    for (int i = 0; i < frames / 2; i++) One();
+    FrameProfiler.Enabled = false;
+    Console.WriteLine($"{label}: {plain:F2} ms/frame");
+    Console.WriteLine($"    {FrameProfiler.Report()}");
 }
 
 // Test map with every character type in a row, for close-ups of the 3D models
@@ -390,7 +415,7 @@ if (Run("lineup"))
         poseType.GetField("Expression")!.SetValue(pose, Enum.Parse(exprType, expression));
         return pose;
     }
-    string[] everyone = { "Player", "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman", "StarterBriefcase", "Rift" };
+    string[] everyone = { "Player", "Dawn", "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman", "StarterBriefcase", "Rift" };
     foreach (var type in everyone)
     {
         if (!Wanted("37_turntable_" + type.ToLowerInvariant())) continue;
@@ -827,11 +852,84 @@ if (Run("menus"))
     partyScreen.Close();
 
     Set("currentState", GameState.StarterSelect);
-    ((StarterSelectScreen)Get("starterSelectScreen")).Open();
-    Frames(1); Shot("21_starter");
+    var starters = (StarterSelectScreen)Get("starterSelectScreen");
+    starters.Open();
+    Frames(8); Shot("21a_starter_opening");
+    starters.Move(1);
+    Frames(40); Shot("21_starter");
+    starters.Confirm();
+    Frames(30); Shot("21b_starter_asking");
+    starters.Cancel();
+    starters.Close();
+    foreach (var (item, count) in new[]
+             {
+                 ("Potion", 5), ("Super Potion", 2), ("Antidote", 3), ("Revive", 1), ("Rare Candy", 2), ("Fire Stone", 1), ("Poké Ball", 10),
+                 ("Great Ball", 3), ("Oran Berry", 4), ("Escape Rope", 2), ("Old Rod", 1), ("Town Map", 1), ("TM01", 1), ("Repel", 3)
+             })
+        if (ItemDatabase.Get(item) is { } data) inventory.AddItem(data, count);
     Set("currentState", GameState.BagMenu);
-    ((BagScreen)Get("bagScreen")).Open();
-    Frames(1); Shot("22_bag");
+    var bag = (BagScreen)Get("bagScreen");
+    bag.Open();
+    Frames(6); Shot("22a_bag_opening");
+    bag.MovePocket(1);
+    bag.MoveCursor(1, 4);
+    Frames(30); Shot("22_bag");
+    bag.Confirm(inventory, party, engine.ShowNotification);
+    Frames(4); Shot("22b_bag_actions");
+    bag.Confirm(inventory, party, engine.ShowNotification);
+    Frames(30); Shot("22c_bag_use_on");
+    bag.CancelTarget();
+    bag.MovePocket(2);
+    Frames(4); Shot("22d_bag_tm");
+    bag.MovePocket(4);
+    Frames(4); Shot("22e_bag_key_items");
+    bag.MovePocket(-7);
+    Frames(4); Shot("22f_bag_items");
+    bag.Close();
+
+    // The Trainer Card, opened as the start menu opens it (so it has the player's portrait), with two badges won
+    Set("currentState", GameState.Overworld);
+    Set("badgesMask", 0b11);
+    var handle = T.GetMethod("HandleStartMenuChoice", Private) ?? T.GetMethod("HandleStartMenu", Private);
+    handle!.Invoke(engine, new object[] { StartMenuChoice.Trainer });
+    Frames(40); Shot("28_trainer_card");
+    ((TrainerCardScreen)Get("trainerCardScreen")).Close();
+    Set("badgesMask", 0);
+
+    // Saving: the question over the field, and the moment after
+    Set("currentState", GameState.Overworld);
+    handle.Invoke(engine, new object[] { StartMenuChoice.Save });
+    var saving = (SaveScreen)Get("saveScreen");
+    Frames(30); Shot("31_save_asking");
+    saving.Confirm();
+    Frames(12); Shot("31b_saved");
+    Frames(120);
+    Console.WriteLine($"after saving: state {Get("currentState")}, a save was written: {File.Exists("savegame.json")}");
+    File.Delete("savegame.json");
+    Set("currentState", GameState.Overworld);
+    Set("currentState", GameState.Shop);
+    var shop = (ShopScreen)Get("shopScreen");
+    shop.Open("Sandgem Poké Mart");
+    Frames(30); shop.Move(0, 1, 3000); shop.Move(0, 1, 3000);
+    Frames(2); Shot("29_shop");
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    shop.Move(1, 0, 3000); shop.Move(1, 0, 3000);
+    Frames(30); Shot("29b_shop_how_many");
+    shop.Cancel();
+    shop.Close();
+    var boxed = (List<Pokemon>)Get("pcBoxStorage");
+    foreach (var name in new[] { "Starly", "Bidoof", "Shinx", "Budew", "Kricketot", "Staravia", "Luxio", "Riolu", "Gible", "Prinplup" })
+        boxed.Add(new Pokemon(PokemonDatabase.Get(name)!, 4 + boxed.Count * 3));
+    Set("currentState", GameState.PCStorage);
+    var pc = (PCScreen)Get("pcScreen");
+    pc.Open();
+    Frames(30); Shot("30_pc");
+    pc.Move(1, 0, party.Count); pc.Move(1, 0, party.Count); pc.Move(0, 1, party.Count);
+    Frames(4); Shot("30b_pc_in_the_box");
+    pc.Move(0, -1, party.Count); pc.Move(0, -1, party.Count);
+    Frames(4); Shot("30c_pc_box_name");
+    pc.Close();
+    boxed.Clear();
 
     // The battle's panels for switching and for the bag
     var mb = StartBattle("Shinx", 5);
@@ -855,18 +953,28 @@ if (Run("menus"))
     var dexScreen = (PokedexScreen)Get("pokedexScreen");
     pokedex.RegisterCaught(387);
     pokedex.RegisterSeen(906);
+    pokedex.RegisterSeen(396);
+    pokedex.RegisterSeen(399);
     Set("currentState", GameState.PokedexMenu);
-    dexScreen.Open();
-    dexScreen.SelectedIndex = 386;
-    Frames(1); Shot("26_pokedex_turtwig");
+    dexScreen.Open(pokedex);
+    Frames(30); Shot("26_pokedex_turtwig");
+    dexScreen.SelectedIndex = 395;
+    Frames(2); Shot("26c_pokedex_seen_only");
+    dexScreen.SelectedIndex = 400;
+    Frames(2); Shot("26d_pokedex_unseen");
     dexScreen.SelectedIndex = 905;
-    Frames(1); Shot("26b_pokedex_later_generation");
+    Frames(2); Shot("26b_pokedex_later_generation");
     dexScreen.Close();
     var later = StartBattle("Sprigatito", 5);
     ToMainMenu(later);
     Frames(2); Shot("27_battle_later_generation");
 
-    if (args.Length > 2) Boards(args[2], new[] { "09_startmenu", "20b_summary", "23_battle_switch", "24_battle_bag" });
+    if (args.Length > 2)
+        Boards(args[2], new[]
+        {
+            "09_startmenu", "20b_summary", "23_battle_switch", "24_battle_bag", "21_starter", "22_bag", "26_pokedex_turtwig",
+            "28_trainer_card", "29_shop", "30_pc"
+        });
 
     party.Members[1].Status = StatusCondition.None;
     party.HealAll();
@@ -1064,6 +1172,89 @@ if (Run("look"))
 
     if (args.Length > 2)
         Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
+}
+
+// ---------------------------------------------------------------- the new-game introduction (plan 04 · G10)
+
+// The professor's welcome step by step: fading in, each beat of his talk, the Pokémon coming out of its ball,
+// the choice of who to be, the name keyboard, the send-off. Run by itself (not as part of `all`) it also lets
+// the introduction end and shows the game it starts: the field, the Trainer Card and a battle as the girl.
+if (Run("intro"))
+{
+    var intro = (IntroScreen)Get("introScreen");
+    Set("currentState", GameState.Intro);
+    intro.Open();
+    // Presses the A button through whatever is being said until the introduction reaches a phase
+    void Until(IntroPhase phase, int limit = 2000)
+    {
+        for (int guard = 0; guard < limit && intro.Phase != phase; guard++)
+        {
+            if (intro.Talking && intro.LineComplete) intro.PressConfirm();
+            Frames(1);
+        }
+    }
+    // Waits for the line being written to be all there
+    void Line() { for (int guard = 0; guard < 600 && intro.Talking && !intro.LineComplete; guard++) Frames(1); Frames(2); }
+
+    Frames(36); Shot("i01_fading_in");
+    Until(IntroPhase.Greeting); Frames(40); Shot("i02_hello");
+    Line(); intro.PressConfirm(); Line(); intro.PressConfirm(); Line(); Shot("i03_professor_rowan");
+    Until(IntroPhase.World); Line(); Shot("i04_the_world");
+    Until(IntroPhase.BallOpens); Frames(32); Shot("i05_ball");
+    Frames(14); Shot("i06_flash");
+    Frames(14); Shot("i07_pokemon_appears");
+    Until(IntroPhase.Alongside); Frames(14); Shot("i08_pokemon_hops");
+    Line(); Frames(60); Shot("i09_alongside");
+    Timing("introduction");
+    Until(IntroPhase.BallCloses); Frames(14); Shot("i10_pokemon_returns");
+    Until(IntroPhase.AboutYou); Line(); Shot("i11_about_you");
+    Until(IntroPhase.ChooseLook); Frames(40); Shot("i12_boy_or_girl");
+    intro.Move(1, 0); Frames(40); Shot("i13_the_girl");
+    intro.PressConfirm(); Frames(30); Shot("i14_so_you_are_a_girl");
+    intro.PressConfirm();
+    Until(IntroPhase.AskName); Line(); Shot("i15_your_name");
+    Until(IntroPhase.EnterName); Frames(30); Shot("i16_keyboard");
+    // "Maya", through the keyboard's own cursor: M is the third key of the second row
+    intro.Move(0, 1); intro.Move(1, 0); intro.Move(1, 0); intro.PressConfirm();
+    foreach (char c in "aya") intro.Entry!.Type(c);
+    Frames(20); Shot("i17_keyboard_name");
+    ShotCrop("i17b_keyboard_native", 640, 180, 1200, 760, 2);
+    intro.PressStart(); Frames(4); Shot("i18_keyboard_ok");
+    intro.PressConfirm(); Frames(30); Shot("i19_so_you_are_maya");
+    intro.PressConfirm();
+    Until(IntroPhase.Farewell); Line(); Shot("i20_farewell");
+    Until(IntroPhase.SendOff); Frames(48); Shot("i21_send_off");
+    Frames(40); Shot("i22_shrinking");
+    Frames(30); Shot("i23_nearly_gone");
+
+    if (mode == "intro")
+    {
+        // Let it end: the game begins as Maya, the girl
+        for (int guard = 0; guard < 400 && (GameState)Get("currentState") == GameState.Intro; guard++) Frames(1);
+        Frames(60); Shot("i30_the_game_begins");
+        Frames(120);
+        var card = T.GetMethod("HandleStartMenuChoice", Private)!;
+        card.Invoke(engine, new object[] { StartMenuChoice.Trainer });
+        Frames(40); Shot("i31_her_trainer_card");
+        ((TrainerCardScreen)Get("trainerCardScreen")).Close();
+        Set("currentState", GameState.Overworld);
+        var her = StartBattle("Starly", 3);
+        Frames(150); Shot("i32_her_battle");
+        Set("currentState", GameState.Overworld);
+        // Sandgem's assistant is the one the player isn't: Lucas, with his own lines
+        Set("currentMap", MapDatabase.Get("Sinnoh"));
+        var helper = MapDatabase.Get("Sinnoh").NPCs.First(n => n.NpcType == "Assistant");
+        ((Player)Get("player")).SetPosition(helper.GridX, helper.GridY + 1, Direction.Up);
+        Frames(20);
+        ((DialogueManager)Get("dialogue")).ShowDialogue(helper.Name, helper.DialogLines);
+        Set("currentState", GameState.Dialogue);
+        Frames(90); Shot("i33_the_assistant");
+    }
+    else
+    {
+        intro.Close();
+        Set("currentState", GameState.Overworld);
+    }
 }
 
 // ---------------------------------------------------------------- title screen
@@ -1505,6 +1696,224 @@ Map BuildTerrainLab()
     return m;
 }
 
+// ---------------------------------------------------------------- life (plan 04 · G9)
+
+// What moves in the field: prints in sand and snow, dust behind a run and under a hop, leaves out of tall grass,
+// rings behind a swimmer, a door opening and shutting, the bubbles over heads, every weather, the camera sent
+// to look elsewhere, and the three ways into a battle caught as they close and open.
+if (Run("life"))
+{
+    var walker = (Player)Get("player");
+    var sinnoh = MapDatabase.Get("Sinnoh");
+    void Put(int x, int y, Direction facing, TravelMode travel = TravelMode.OnFoot)
+    {
+        Set("currentMap", sinnoh);
+        walker.SetPosition(x, y, facing);
+        walker.SetMode(travel);
+        Set("currentState", GameState.Overworld);
+        engine.Steering = (null, false);
+        Frames(3);
+    }
+    // Walks the player with the game's own steps, so each one leaves what a step leaves
+    void Walk(Direction way, int tiles, bool run = false)
+    {
+        int fromX = walker.GridX, fromY = walker.GridY;
+        engine.Steering = (way, run);
+        for (int guard = 0; guard < 900 && (Math.Abs(walker.GridX - fromX) + Math.Abs(walker.GridY - fromY) < tiles || walker.IsMoving); guard++) Frames(1);
+        engine.Steering = (null, false);
+    }
+    (int X, int Y) Nearest(int x, int y, Func<int, int, bool> wanted)
+    {
+        for (int reach = 0; reach < 24; reach++)
+            for (int dy = -reach; dy <= reach; dy++)
+                for (int dx = -reach; dx <= reach; dx++)
+                    if (Math.Max(Math.Abs(dx), Math.Abs(dy)) == reach && sinnoh.InBounds(x + dx, y + dy) && wanted(x + dx, y + dy)) return (x + dx, y + dy);
+        throw new InvalidOperationException($"Nothing of the kind near ({x}, {y})");
+    }
+
+    // Prints along Route 219's beach, and in the snow before the rival's door
+    var (sandX, sandY) = Nearest(184, 853, (x, y) => Enumerable.Range(0, 6).All(i => sinnoh.BehaviourAt(x + i, y) == TileBehavior.Sand && sinnoh.IsWalkable(x + i, y)));
+    Put(sandX, sandY, Direction.Right); Walk(Direction.Right, 5); Shot("l01_prints_in_sand");
+    ShotCrop("l01b_prints_native", 560, 380, 640, 360, 2);
+    var (snowX, snowY) = Nearest(105, 877, (x, y) => Enumerable.Range(0, 4).All(i => TileBehaviors.KeepsFootprints(sinnoh.BehaviourAt(x + i, y)) && sinnoh.BehaviourAt(x + i, y) != TileBehavior.Sand && sinnoh.IsWalkable(x + i, y)));
+    Put(snowX, snowY, Direction.Right); Walk(Direction.Right, 3); Shot("l02_prints_in_snow");
+
+    // Dust behind a run up Twinleaf's road, caught two frames after a step
+    Put(112, 884, Direction.Up); Walk(Direction.Up, 4, run: true); Frames(2); Shot("l03_dust_running");
+    ShotCrop("l03b_dust_native", 640, 400, 640, 360, 2);
+
+    // Leaves out of the tall grass of Route 201
+    var (grassX, grassY) = Nearest(110, 850, (x, y) => sinnoh.IsTallGrass(x, y) && sinnoh.IsTallGrass(x + 1, y) && sinnoh.IsTallGrass(x + 2, y));
+    Put(grassX, grassY, Direction.Right);
+    engine.Steering = (Direction.Right, false);
+    for (int guard = 0; guard < 60 && walker.GridX == grassX; guard++) Frames(1);
+    engine.Steering = (null, false);
+    Frames(5);
+    if ((GameState)Get("currentState") == GameState.Overworld) { Shot("l04_leaves_from_grass"); ShotCrop("l04b_leaves_native", 640, 380, 640, 360, 2); }
+    Set("currentState", GameState.Overworld);
+
+    // A hop over a ledge of Route 201 onto bare ground: the dust where it lands
+    Frames(40);
+    var (ledgeX, ledgeY) = Nearest(120, 852, (x, y) => sinnoh.GetGroundTile(x, y) == TileType.LedgeDown && sinnoh.IsWalkable(x, y - 1) && sinnoh.IsWalkable(x, y + 1) && !sinnoh.IsTallGrass(x, y + 1));
+    Put(ledgeX, ledgeY - 1, Direction.Down); Walk(Direction.Down, 2); Frames(2); Shot("l05_dust_under_a_hop");
+    ShotCrop("l05b_hop_native", 640, 380, 640, 360, 2);
+
+    // Rings behind a swimmer on Twinleaf's pond
+    var (pondX, pondY) = Nearest(111, 892, (x, y) => Enumerable.Range(0, 4).All(i => sinnoh.IsDeepWater(x + i, y) && !sinnoh.IsSolid(x + i, y)));
+    Put(pondX, pondY, Direction.Right, TravelMode.Surfing); Walk(Direction.Right, 3); Frames(4); Shot("l06_rings_behind_a_swimmer");
+    ShotCrop("l06b_rings_native", 560, 380, 640, 360, 2);
+    walker.SetMode(TravelMode.OnFoot);
+
+    // Riding out onto the pond from its bank: the splash where the Pokémon lands
+    var swimmer = ((Party)Get("playerParty")).Members[0];
+    var surf = new Move(MoveDatabase.Get("Surf")!);
+    swimmer.Moves.Add(surf);
+    var (bankX, bankY) = Nearest(111, 892, (x, y) => sinnoh.IsWalkable(x, y) && sinnoh.IsDeepWater(x + 1, y) && sinnoh.IsDeepWater(x + 2, y) && !sinnoh.IsSolid(x + 1, y));
+    Put(bankX, bankY, Direction.Right);
+    T.GetMethod("TryStartSurf", Private)!.Invoke(engine, null);
+    for (int guard = 0; guard < 120 && (walker.Mode != TravelMode.Surfing || walker.IsMoving); guard++) Frames(1);
+    Frames(5); Shot("l06c_splash_riding_out"); ShotCrop("l06d_splash_native", 640, 380, 640, 360, 2);
+    swimmer.Moves.Remove(surf);
+    walker.SetMode(TravelMode.OnFoot);
+
+    // A door: ajar as the step toward it begins, open as it ends, then from inside out again and shut behind
+    void ThroughDoor(string name, int warpX, int warpY)
+    {
+        Put(warpX, warpY + 2, Direction.Up); Walk(Direction.Up, 1);
+        engine.Steering = (Direction.Up, false);
+        Frames(3); ShotCrop($"{name}_1_ajar", 640, 240, 640, 360, 2);
+        Frames(6); ShotCrop($"{name}_2_open", 640, 240, 640, 360, 2);
+        for (int guard = 0; guard < 120 && ((Map)Get("currentMap")).Name == "Sinnoh"; guard++) Frames(1);
+        engine.Steering = (null, false);
+        Frames(40);
+        Console.WriteLine($"{name}: through the door into " + ((Map)Get("currentMap")).Name);
+        engine.Steering = (Direction.Down, false);
+        for (int guard = 0; guard < 400 && ((Map)Get("currentMap")).Name != "Sinnoh"; guard++) Frames(1);
+        engine.Steering = (null, false);
+        Frames(26); ShotCrop($"{name}_3_open_behind", 640, 240, 640, 360, 2);
+        Frames(60); ShotCrop($"{name}_4_shut_again", 640, 240, 640, 360, 2);
+    }
+    ThroughDoor("l07_house_door", 116, 885);
+    // The glass doors of Sandgem's Pokémon Center slide apart
+    var center = MapStructures.BuildingsOf(sinnoh).First(b => b.Kind == BuildingKind.PokemonCenter && !b.Annex
+        && b.Doors.Exists(d => sinnoh.GetWarpAt(d.X, b.Y1) != null || sinnoh.GetWarpAt(d.X, b.Y1 + 1) != null));
+    int centerDoor = center.Doors[0].X;
+    ThroughDoor("l08_center_door", centerDoor, sinnoh.GetWarpAt(centerDoor, center.Y1) != null ? center.Y1 : center.Y1 + 1);
+    // The player's door after dark: the room's light in the doorway
+    engine.Settings.TimeOfDay = TimeOfDay.Night;
+    engine.ApplySettings(window: false);
+    ThroughDoor("l09_house_door_at_night", 116, 885);
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
+    engine.ApplySettings(window: false);
+
+    // Every bubble, over a row of people and the player
+    Set("currentMap", BuildFocusLineup());
+    walker.SetPosition(10, 7, Direction.Down);
+    Frames(3);
+    var row = ((Map)Get("currentMap")).NPCs;
+    var bubbles = new[] { EmoteBubble.Exclaim, EmoteBubble.Question, EmoteBubble.Dots, EmoteBubble.Note, EmoteBubble.Heart, EmoteBubble.Sleep, EmoteBubble.Sweat };
+    for (int i = 0; i < bubbles.Length; i++) engine.ShowEmote(row[i].Name, bubbles[i], 5f);
+    engine.ShowEmote(null, EmoteBubble.Exclaim, 5f);
+    Frames(1); ShotCrop("l10_bubble_popping", 560, 240, 800, 360, 2);
+    Frames(12); Shot("l11_bubbles"); ShotCrop("l11b_bubbles_native", 420, 250, 1000, 300, 2);
+    engine.ShowEmote(null, EmoteBubble.None, 0f);
+
+    // Every weather over Twinleaf Town, and rain after dark
+    Put(112, 880, Direction.Down);
+    var town = sinnoh.AreaAt(112, 880)!;
+    foreach (var (name, kind) in new[]
+             {
+                 ("l12_rain", FieldWeather.Rain), ("l13_snow", FieldWeather.Snow), ("l14_heavy_snow", FieldWeather.HeavySnow),
+                 ("l15_fog", FieldWeather.Fog), ("l16_sandstorm", FieldWeather.Sandstorm), ("l17_ash", FieldWeather.Ash),
+                 ("l17b_cloudy", FieldWeather.Cloudy), ("l17c_heavy_rain", FieldWeather.HeavyRain), ("l17d_hail", FieldWeather.Hail),
+                 ("l17e_blizzard", FieldWeather.Blizzard)
+             })
+    {
+        town.Weather = kind;
+        Frames(20); Shot(name);
+    }
+    // A thunderstorm, caught in the first flash of its lightning (the harness's frames are a sixtieth of a second)
+    town.Weather = FieldWeather.Thunderstorm;
+    for (int guard = 0; guard < 720 && !engine.LightningNow; guard++) Frames(1);
+    Shot("l17f_thunderstorm_lightning");
+    Frames(30); Shot("l17g_thunderstorm");
+    town.Weather = FieldWeather.Rain;
+    engine.Settings.TimeOfDay = TimeOfDay.Night;
+    engine.ApplySettings(window: false);
+    Frames(4); Shot("l18_rain_at_night");
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
+    engine.ApplySettings(window: false);
+    // Rain on the pond, seen from its north bank: rings where it lands on water, flecks on the ground
+    var (shoreX, shoreY) = Nearest(111, 889, (x, y) => sinnoh.IsWalkable(x, y) && sinnoh.IsDeepWater(x, y + 1) && sinnoh.IsDeepWater(x, y + 2) && sinnoh.IsDeepWater(x + 1, y + 1));
+    Put(shoreX, shoreY, Direction.Down);
+    Frames(40); Shot("l19_rain_on_the_pond"); ShotCrop("l19b_rain_native", 640, 420, 640, 360, 2);
+    Put(112, 880, Direction.Down);
+    Timing("rain");
+    town.Weather = FieldWeather.HeavySnow;
+    Timing("heavy snow");
+    town.Weather = FieldWeather.Fog;
+    Timing("fog");
+    town.Weather = FieldWeather.Clear;
+
+    // The camera sent to look at the rival's house, half way and there, and back
+    Put(112, 880, Direction.Down);
+    engine.PanCamera(105, 876, 1f);
+    Frames(30); Shot("l20_camera_half_way");
+    Frames(40); Shot("l21_camera_there");
+    engine.ReleaseCamera(0.5f);
+    Frames(40);
+
+    // Into battle: each way of closing caught in its flash, half closed and nearly shut, and the opening on the battle
+    var start = T.GetMethod("StartTransition", Private)!;
+    foreach (var (name, kind) in new[]
+             {
+                 ("wild", TransitionKind.Wild), ("wild_strong", TransitionKind.WildStrong), ("trainer", TransitionKind.Trainer),
+                 ("trainer_strong", TransitionKind.TrainerStrong), ("leader", TransitionKind.Leader)
+             })
+    {
+        Put(112, 880, Direction.Down);
+        start.Invoke(engine, new object?[] { GameState.Overworld, null, kind });
+        Frames(2); Shot($"l30_{name}_1_flash");
+        Frames(36); Shot($"l30_{name}_2_closing");
+        Frames(10); Shot($"l30_{name}_3_nearly_shut");
+        Frames(18); Shot($"l30_{name}_4_opening");
+        Frames(40);
+    }
+    // And the real thing: a wild Pokémon in the grass, from the flash to the battle's first frame
+    Put(grassX, grassY, Direction.Right);
+    T.GetMethod("StartWildBattle", Private)!.Invoke(engine, new object[] { new WildEncounterEntry { SpeciesName = "Starly", MinLevel = 3, MaxLevel = 3, Weight = 1 } });
+    Frames(40); Shot("l31_into_battle_closing");
+    Frames(26); Shot("l32_into_battle_opening");
+    Frames(40); Shot("l33_battle_begins");
+    Set("currentState", GameState.Overworld);
+
+    // A waterfall of the terrain lab, twice an eighth of a second apart: the sheet has moved four texels down
+    Set("currentMap", BuildTerrainLab());
+    walker.SetPosition(20, 15, Direction.Up);
+    walker.SetMode(TravelMode.OnFoot);
+    Frames(4); ShotCrop("l40_waterfall_a", 760, 100, 640, 360, 2);
+    Frames(8); ShotCrop("l40_waterfall_b", 760, 100, 640, 360, 2);
+
+    // A fountain playing and a turbine turning, on a lawn made for them: their four frames, a sixth of a second apart
+    var yard = new Map(22, 14) { Name = "Yard", DisplayName = "Yard" };
+    for (int x = 0; x < 22; x++) { yard.SetGroundTile(x, 0, TileType.Tree, true); yard.SetGroundTile(x, 13, TileType.Tree, true); }
+    for (int y = 0; y < 14; y++) { yard.SetGroundTile(0, y, TileType.Tree, true); yard.SetGroundTile(21, y, TileType.Tree, true); }
+    yard.Props.Add(new Prop { Type = PropType.Fountain, X = 5, Y = 5, Width = 4, Depth = 3 });
+    yard.Props.Add(new Prop { Type = PropType.WindTurbine, X = 13, Y = 6, Width = 2, Depth = 2, Height = 5f });
+    Set("currentMap", yard);
+    walker.SetPosition(10, 8, Direction.Up);
+    Frames(5);
+    for (int frame = 0; frame < 4; frame++)
+    {
+        Shot($"l41_fountain_and_turbine_{frame}");
+        Frames(10);
+    }
+
+    Put(112, 880, Direction.Down);
+    engine.Steering = null;
+    Timing("twinleaf with life");
+}
+
 if (Run("lab"))
 {
     var lab = BuildTerrainLab();
@@ -1648,6 +2057,158 @@ List<(int X, int Y)> WalkingPath(Map map, (int X, int Y) from, (int X, int Y) to
     for (var at = to; at != from; at = came[at]) path.Add(at);
     path.Reverse();
     return path;
+}
+
+// ---------------------------------------------------------------- what a pass costs (a bench for G11; temporary)
+
+if (mode == "bench")
+{
+    var finishLib = System.Runtime.InteropServices.NativeLibrary.Load("opengl32.dll");
+    var finishPtr = System.Runtime.InteropServices.NativeLibrary.GetExport(finishLib, "glFinish");
+    var glFinish = System.Runtime.InteropServices.Marshal.GetDelegateForFunctionPointer<Action>(finishPtr);
+    void Finish() { Rlgl.DrawRenderBatchActive(); glFinish(); }
+
+    var big = Raylib.LoadRenderTexture(3840, 2160);
+    var halfA = Raylib.LoadRenderTexture(960, 540);
+    var halfB = Raylib.LoadRenderTexture(960, 540);
+    var quarter = Raylib.LoadRenderTexture(480, 270);
+    Raylib.SetTextureFilter(big.Texture, TextureFilter.Bilinear);
+    Raylib.SetTextureFilter(halfA.Texture, TextureFilter.Bilinear);
+    Raylib.SetTextureFilter(halfB.Texture, TextureFilter.Bilinear);
+
+    void PassTo(RenderTexture2D dst, Texture2D src, bool clear)
+    {
+        Raylib.BeginTextureMode(dst);
+        if (clear) Raylib.ClearBackground(Color.Black);
+        Raylib.DrawTexturePro(src, new Rectangle(0, 0, src.Width, -src.Height), new Rectangle(0, 0, dst.Texture.Width, dst.Texture.Height), Vector2.Zero, 0f, Color.White);
+        Raylib.EndTextureMode();
+    }
+    void Bench(string label, Action body, int n = 400)
+    {
+        for (int i = 0; i < 20; i++) body();
+        Finish();
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        for (int i = 0; i < n; i++) body();
+        double cpu = sw.Elapsed.TotalMilliseconds / n;
+        Finish();
+        Console.WriteLine($"{label}: {sw.Elapsed.TotalMilliseconds / n * 1000:F0} us each ({cpu * 1000:F0} us before the card had finished)");
+    }
+    Bench("pass 960x540 -> 960x540, cleared", () => PassTo(halfB, halfA.Texture, true));
+    Bench("pass 960x540 -> 960x540, not cleared", () => PassTo(halfB, halfA.Texture, false));
+    Bench("pass 3840x2160 -> 960x540, cleared", () => PassTo(halfA, big.Texture, true));
+    Bench("pass 960x540 -> 480x270, cleared", () => PassTo(quarter, halfA.Texture, true));
+    Bench("pass 960x540 -> 3840x2160, cleared", () => PassTo(big, halfA.Texture, true), 100);
+    Bench("pass 960x540 -> 3840x2160, not cleared", () => PassTo(big, halfA.Texture, false), 100);
+    Bench("two passes ping-pong", () => { PassTo(halfB, halfA.Texture, true); PassTo(halfA, halfB.Texture, true); });
+    Bench("begin and end texture mode only", () => { Raylib.BeginTextureMode(halfB); Raylib.EndTextureMode(); });
+    Bench("finish alone", () => Finish());
+    Bench("pass with a finish after each", () => { PassTo(halfB, halfA.Texture, true); Finish(); });
+}
+
+// ---------------------------------------------------------------- where the time goes (plan 04 · G11)
+
+// Not part of `all`: the heaviest scenes of the game, each timed and then taken apart by the profiler. Run it by
+// itself, with nothing else running, and with SHOTS_WINDOW=3840x2160 for the game as it is full screen.
+if (mode == "profile")
+{
+    Console.WriteLine($"window {Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
+    var presets = (Environment.GetEnvironmentVariable("SHOTS_PRESETS") ?? "High").Split(',');
+    foreach (string preset in presets)
+    {
+        engine.Settings.Quality = Enum.Parse<GraphicsQuality>(preset);
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        Console.WriteLine($"--- {preset}");
+
+        At("Sinnoh", 112, 880, Direction.Down); Frames(40); Profile("twinleaf town");
+        At("Sinnoh", 115, 854, Direction.Up); Frames(40); Profile("route 201");
+        At("Sinnoh", 110, 850, Direction.Up); Frames(40); Profile("route 201, in the trees");
+        At("Sinnoh", 178, 845, Direction.Down); Frames(40); Profile("sandgem town");
+        At("Sinnoh", 174, 815, Direction.Up); Frames(40); Profile("route 202");
+        At("LakeVerity", 44, 46, Direction.Up); Frames(40); Profile("lake verity");
+        At("JubilifeCity", 20, 30, Direction.Up); Frames(40); Profile("jubilife city");
+        At("PokemonCenter", 5, 6, Direction.Up); Frames(40); Profile("pokemon center");
+
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        At("Sinnoh", 112, 880, Direction.Down); Frames(40); Profile("twinleaf town at night");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+
+        var town = MapDatabase.Get("Sinnoh").AreaAt(112, 880);
+        town.Weather = FieldWeather.HeavyRain;
+        At("Sinnoh", 112, 880, Direction.Down); Frames(40); Profile("twinleaf town in heavy rain");
+        town.Weather = FieldWeather.Fog;
+        Frames(40); Profile("twinleaf town in fog");
+        town.Weather = FieldWeather.Clear;
+
+        // A wild battle at its menu, then the scripted battle's heaviest moments, each held still
+        party.HealAll();
+        var wild = StartBattle("Shinx", 5);
+        ToMainMenu(wild);
+        Profile("battle, at the menu");
+
+        var show = new Party();
+        var lead = new Pokemon(PokemonDatabase.Get("Infernape")!, 60, new Random(3));
+        show.Add(lead);
+        var rival = new Trainer { Name = "Barry", TrainerClass = "Rival" };
+        var torterra = new Pokemon(PokemonDatabase.Get("Torterra")!, 90, new Random(4));
+        rival.Party.Add(torterra);
+        Set("currentMap", MapDatabase.Get("Sinnoh"));
+        ((BattleRenderer)Get("battleRenderer")).SetArena(BattleArena.Grass);
+        var b = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = show, Inventory = inventory, Pokedex = pokedex, Trainers = new List<Trainer> { rival }, Random = new Random(11)
+        });
+        Set("battle", b);
+        Set("currentState", GameState.Battle);
+        Skip(1.0); Profile("trainer battle, both trainers in the sweep", 120, frozen: true);
+        Skip(1.05); b.ConfirmMessage(); Frames(1);
+        Skip(1.4); b.ConfirmMessage(); Frames(1);
+        Skip(0.85);
+        for (int guard = 0; guard < 6 && b.HUD.MenuState == BattleMenuState.Message; guard++) { b.ConfirmMessage(); Frames(1); Skip(0.3); }
+        Skip(0.6);
+        foreach (string move in new[] { "Flamethrower", "Surf", "Earthquake", "Close Combat" })
+        {
+            Skip(1.0);
+            lead.Moves.Clear();
+            lead.Moves.Add(new Move(MoveDatabase.Get(move)!));
+            torterra.Moves.Clear();
+            torterra.Moves.Add(new Move(MoveDatabase.Get("Splash")!));
+            lead.CurrentHP = lead.MaxHP;
+            b.EnemyPokemon.CurrentHP = b.EnemyPokemon.MaxHP;
+            b.EnemyPokemon.StatStages[StatType.Speed] = -6;
+            b.SelectMove(0);
+            Skip(0.12); Profile($"{move}, winding up", 120, frozen: true);
+            Skip(0.16); Profile($"{move}, arriving", 120, frozen: true);
+            Skip(0.12); Profile($"{move}, landing", 120, frozen: true);
+            for (int guard = 0; guard < 12 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; guard++) { b.ConfirmMessage(); Frames(1); Skip(0.35); }
+        }
+
+        // Two trainers and four Pokémon
+        party.HealAll();
+        var one = new Trainer { Name = "Ana", TrainerClass = "Youngster" };
+        one.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 6));
+        var two = new Trainer { Name = "Cal", TrainerClass = "Lass" };
+        two.Party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 6));
+        var d = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double,
+            Trainers = new List<Trainer> { one, two }, WildPokemon = new List<Pokemon>(), Random = new Random(5)
+        });
+        ((BattleRenderer)Get("battleRenderer")).SetArena((Map)Get("currentMap"));
+        Set("battle", d);
+        Set("currentState", GameState.Battle);
+        Skip(130 / 60.0); Profile("double battle, two trainers in the sweep", 120, frozen: true);
+        d.ConfirmMessage(); Frames(1); Skip(70 / 60.0);
+        d.ConfirmMessage(); Frames(1); Skip(70 / 60.0);
+        for (int guard = 0; guard < 6 && d.HUD.MenuState == BattleMenuState.Message; guard++) { d.ConfirmMessage(); Frames(1); Skip(20 / 60.0); }
+        Skip(0.8);
+        Profile("double battle, at the menu");
+        Set("currentState", GameState.Overworld);
+    }
+    engine.Settings.Quality = GraphicsQuality.High;
+    engine.ApplySettings(window: false);
 }
 
 // ---------------------------------------------------------------- times of day

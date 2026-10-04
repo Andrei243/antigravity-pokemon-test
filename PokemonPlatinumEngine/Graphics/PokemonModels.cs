@@ -482,7 +482,7 @@ internal static class PokemonModels
     {
         "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
         "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario",
-        "Gible", "Gabite", "Garchomp", "Giratina"
+        "Gible", "Gabite", "Garchomp", "Giratina", "Buneary"
     };
 
     public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
@@ -565,6 +565,7 @@ internal static class PokemonModels
         "GABITE" => Garchomp(false),
         "GARCHOMP" => Garchomp(true),
         "GIRATINA" => Giratina(),
+        "BUNEARY" => Buneary(),
         // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
         _ => PokemonGenerator.Build(species) ?? Generic(species)
     };
@@ -1152,6 +1153,52 @@ internal static class PokemonModels
         });
         PokeBuilder.Both(s => b.Eye(head, V(hr * 0.42f * s, hy + hr * 0.1f, 0.2f * s1 + hr * 0.82f), V(0.55f * s, 0.05f, 1f), 0.055f * s1,
             stage == 2 ? Rgb(250, 200, 50) : Rgb(250, 212, 60), pupil: stage == 2 ? Rgb(200, 40, 40) : null));
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Buneary (the Pokémon the professor shows in the introduction)
+
+    private static PokeBuilder Buneary()
+    {
+        var b = new PokeBuilder("Buneary", 0.6f, BodyPlan.Biped, V(0, 0.3f, 0)) { Coat = Fur };
+        var brown = Rgb(152, 106, 74);
+        var cream = Rgb(246, 228, 182);
+        var pink = Rgb(238, 150, 162);
+
+        // Big fluffy feet
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(0.08f * s, 0.2f, 0));
+            b.Limb(leg, V(0.08f * s, 0.2f, 0), V(0.09f * s, 0.07f, 0.02f), 0.06f, 0.055f, cream);
+            b.Ell(leg, V(0.095f * s, 0.045f, 0.065f), V(0.076f, 0.045f, 0.115f), cream);
+        });
+        b.Ell(Body, V(0, 0.335f, 0), V(0.15f, 0.15f, 0.132f), brown);
+        // The fluff it wears round its middle
+        b.Ell(Body, V(0, 0.235f, 0), V(0.2f, 0.105f, 0.18f), cream);
+        int tail = b.Tail(V(0, 0.25f, -0.13f));
+        b.Ell(tail, V(0, 0.26f, -0.175f), V(0.058f, 0.058f, 0.058f), cream);
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Arm(s, V(0.12f * s, 0.41f, 0.02f));
+            b.Limb(arm, V(0.12f * s, 0.41f, 0.02f), V(0.175f * s, 0.31f, 0.08f), 0.042f, 0.036f, brown);
+        });
+
+        int head = b.Head(V(0, 0.47f, 0));
+        float hy = 0.6f;
+        b.Ell(head, V(0, hy, 0.02f), V(0.2f, 0.175f, 0.175f), brown);
+        b.Mark(head, V(0, hy - 0.04f, 0.195f), V(0, 0.1f, 1f), 0.022f, 0.015f, pink);
+
+        // One ear stands tall with a cream tuft at its tip; the other is rolled up beside the head
+        int tall = b.Ear(head, 1f, V(0.1f, hy + 0.13f, 0));
+        b.Limb(tall, V(0.1f, hy + 0.11f, 0), V(0.13f, hy + 0.33f, -0.03f), 0.062f, 0.056f, brown);
+        b.Ell(tall, V(0.135f, hy + 0.39f, -0.035f), V(0.078f, 0.085f, 0.072f), cream);
+        int rolled = b.Ear(head, -1f, V(-0.1f, hy + 0.13f, 0));
+        b.Limb(rolled, V(-0.1f, hy + 0.11f, 0), V(-0.17f, hy + 0.19f, -0.02f), 0.06f, 0.06f, brown);
+        b.Ell(rolled, V(-0.205f, hy + 0.2f, -0.02f), V(0.088f, 0.088f, 0.08f), cream);
+
+        // Cream spots over the eyes
+        PokeBuilder.Both(s => b.Mark(head, V(0.082f * s, hy + 0.095f, 0.165f), V(0.35f * s, 0.4f, 1f), 0.026f, 0.017f, cream));
+        PokeBuilder.Both(s => b.Eye(head, V(0.082f * s, hy + 0.02f, 0.178f), V(0.4f * s, 0.05f, 1f), 0.045f, Rgb(96, 62, 50)));
         return b;
     }
 

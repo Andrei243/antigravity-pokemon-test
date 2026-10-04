@@ -179,6 +179,20 @@ void main()
     public static void Shadow(Rectangle r, float radius, float blur, Vector2 offset, Color color, float skew = 0f) =>
         Shape(new Rectangle(r.X + offset.X, r.Y + offset.Y, r.Width, r.Height), radius, color, color, skew: skew, softness: blur);
 
+    /// <summary>
+    /// A soft ellipse of light: the colour at its middle, fading to nothing at its rim. It is a circle that is
+    /// all edge, drawn flattened, so the fade is as even across its short side as along its long one.
+    /// </summary>
+    public static void Glow(Vector2 center, float rx, float ry, Color color)
+    {
+        if (rx <= 0f || ry <= 0f) return;
+        Rlgl.PushMatrix();
+        Rlgl.Translatef(center.X, center.Y, 0f);
+        Rlgl.Scalef(1f, ry / rx, 1f);
+        Box(Vector2.Zero, rx * 0.5f, rx * 0.5f, rx * 0.5f, color, color, default, 0f, 0f, rx, Vector2.UnitX);
+        Rlgl.PopMatrix();
+    }
+
     public static void Circle(Vector2 center, float r, Color color) =>
         Shape(new Rectangle(center.X - r, center.Y - r, r * 2, r * 2), r, color, color);
 

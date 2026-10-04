@@ -29,6 +29,8 @@ public enum GameState
     Options,
     Title,
     Evolution,
+    SaveMenu,
+    Intro,
     Transition
 }
 
@@ -72,6 +74,8 @@ public class GameEngine
     private readonly ShopScreen shopScreen = new();
     private readonly PCScreen pcScreen = new();
     private readonly OptionsScreen optionsScreen = new();
+    private readonly SaveScreen saveScreen = new();
+    private readonly IntroScreen introScreen = new();
     private readonly EvolutionScreen evolutionScreen = new();
     private readonly LocationSign locationSign = new();
     private readonly Toast toast = new();
@@ -103,8 +107,11 @@ public class GameEngine
     private int playerMoney = 3000;
     private int badgesMask = 0;
     private float playTime = 0f;
-    private readonly string playerName = "Lucas";
+    private int trainerId;
+    private DateTime? adventureStarted;
     private readonly StoryProgress story = new();
+
+    private static string playerName => PlayerIdentity.Name;
 
     /// <summary>
     /// The region a new game starts in; null for the first region in the chain (Kanto). Set from the command line
@@ -114,7 +121,7 @@ public class GameEngine
 
     // Screen Transitions
     private float transitionTimer = 0f;
-    private float transitionDuration = 0.4f;
+    private TransitionKind transitionKind = TransitionKind.Fade;
     private bool isFadingOut = true;
     private Action? midTransitionCallback;
 
@@ -142,7 +149,7 @@ public class GameEngine
         MapDatabase.Initialize();
 
         // Every character the maps use, sculpted and meshed in the background while the title screen plays
-        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Select(n => n.NpcType).Append("PLAYER"));
+        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
         // The Pokémon models too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonDatabase.GetAll().Select(s => s.Name).Where(PokemonModels.HasModel).ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
@@ -164,7 +171,11 @@ public class GameEngine
     }
 
     /// <summary>Leaves the title screen into a fresh game.</summary>
-    public void StartNewGame()
+    /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
+    public void StartNewGame() => StartNewGame(null, PlayerLook.Boy);
+
+    /// <summary>Starts a new game as the character and under the name chosen in the introduction.</summary>
+    public void StartNewGame(string? name, PlayerLook look)
     {
         playerParty.Clear();
         playerInventory.Clear();
@@ -177,6 +188,10 @@ public class GameEngine
         playerMoney = 3000;
         badgesMask = 0;
         playTime = 0f;
+        // As in the games, the Trainer Card's number is drawn when the adventure begins
+        PlayerIdentity.Set(name, look);
+        trainerId = fieldRandom.Next(0, 65536);
+        adventureStarted = DateTime.Now;
 
         InitializeNewGame();
         EnterGame();
@@ -219,6 +234,7 @@ public class GameEngine
         renderContext.SetQuality(Settings.Quality);
         GameClock.Fixed = Settings.TimeOfDay;
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
+        dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         if (window) WindowSettings.Apply(Settings);
     }
 
@@ -302,13 +318,20 @@ public class GameEngine
         playerMoney = save.Money;
         badgesMask = save.Badges;
         playTime = save.PlayTimeSeconds;
+        PlayerIdentity.Set(save.PlayerName, save.Look);
+        // A save from before the card had a number gets one now, and keeps it
+        trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
+        adventureStarted = save.Started;
     }
 
-    private void SaveCurrentGame()
-    {
-        var save = new SaveData
+    /// <summary>The game as it stands, as a save.</summary>
+    private SaveData BuildSave() =>
+        new()
         {
             PlayerName = playerName,
+            Look = PlayerIdentity.Look,
+            TrainerId = trainerId,
+            Started = adventureStarted,
             CurrentMapName = currentMap.Name,
             PlayerGridX = player.GridX,
             PlayerGridY = player.GridY,
@@ -327,7 +350,12 @@ public class GameEngine
             Badges = badgesMask,
             PlayTimeSeconds = playTime
         };
-        SaveManager.SaveGame(save);
+
+    /// <param name="quiet">True when a panel says the game was saved, so no notice is needed.</param>
+    private void SaveCurrentGame(bool quiet = false)
+    {
+        SaveManager.SaveGame(BuildSave());
+        if (quiet) return;
         ShowNotification("Game saved.");
         AudioManager.PlaySound("select");
     }
@@ -341,6 +369,17 @@ public class GameEngine
 
         // The location sign waits while a fade or another screen covers the field
         if (currentState is GameState.Overworld or GameState.Dialogue) locationSign.Update(dt);
+
+        // The field's small life runs on while a dialogue or a fade covers it: dust settles, a door finishes opening
+        if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
+        {
+            world.Life.Advance(dt);
+            // Rain and hail land round the player while they stand in it
+            world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
+                Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
+            player.TickBubble(dt);
+            foreach (var npc in currentMap.NPCs) npc.TickBubble(dt);
+        }
 
         // Global Mute Toggle (M)
         if (Raylib.IsKeyPressed(KeyboardKey.M))
@@ -361,7 +400,9 @@ public class GameEngine
                         ContinueGame();
                         break;
                     case TitleChoice.NewGame:
-                        StartNewGame();
+                        // The professor's welcome comes first; the game begins when it ends
+                        currentState = GameState.Intro;
+                        introScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
                         break;
                     case TitleChoice.Options:
                         optionsReturnState = GameState.Title;
@@ -371,6 +412,14 @@ public class GameEngine
                     case TitleChoice.Quit:
                         QuitRequested = true;
                         break;
+                }
+                break;
+            case GameState.Intro:
+                introScreen.Update(dt);
+                if (introScreen.Phase == IntroPhase.Done)
+                {
+                    introScreen.Close();
+                    StartNewGame(introScreen.Name, introScreen.Look);
                 }
                 break;
             case GameState.Overworld:
@@ -417,15 +466,25 @@ public class GameEngine
                 if (!evolutionScreen.IsActive) FinishEvolution();
                 break;
             case GameState.PokedexMenu:
-                pokedexScreen.Update();
+                pokedexScreen.Update(dt);
                 if (!pokedexScreen.IsActive) currentState = GameState.Overworld;
                 break;
             case GameState.TrainerCard:
-                trainerCardScreen.Update();
+                trainerCardScreen.Update(dt);
                 if (!trainerCardScreen.IsActive) currentState = GameState.Overworld;
                 break;
+            case GameState.SaveMenu:
+                saveScreen.Update(dt);
+                if (saveScreen.TakeRequest())
+                {
+                    SaveCurrentGame(quiet: true);
+                    saveScreen.MarkSaved();
+                }
+                // Back to the field once the panel has slid away
+                if (!saveScreen.Visible) currentState = GameState.Overworld;
+                break;
             case GameState.StarterSelect:
-                var chosen = starterSelectScreen.Update();
+                var chosen = starterSelectScreen.Update(dt);
                 if (chosen != null)
                 {
                     playerParty.Clear();
@@ -437,11 +496,11 @@ public class GameEngine
                 }
                 break;
             case GameState.Shop:
-                shopScreen.Update(playerInventory, ref playerMoney, ShowNotification);
+                shopScreen.Update(playerInventory, ref playerMoney, ShowNotification, dt);
                 if (!shopScreen.IsActive) currentState = GameState.Overworld;
                 break;
             case GameState.PCStorage:
-                pcScreen.Update(playerParty, pcBoxStorage, ShowNotification);
+                pcScreen.Update(playerParty, pcBoxStorage, ShowNotification, dt);
                 if (!pcScreen.IsActive) currentState = GameState.Overworld;
                 break;
             case GameState.Options:
@@ -494,7 +553,15 @@ public class GameEngine
 
         // Overworld Player Movement
         player.Moves = FieldMovement.MovesOf(playerParty);
-        player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+        if (Steering is { } steer) player.Advance(dt, currentMap, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
+        else player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+
+        // A door that leads somewhere opens as the player steps up to it: the door's own tile, or the open way
+        // into a porch with the door in the wall behind
+        var (headX, headY) = player.Heading;
+        if (player.IsMoving && currentMap.GetWarpAt(headX, headY) != null && WorldRenderer.DoorPlace(currentMap, headX, headY) != null)
+            world.Life.OpenDoor(currentMap, headX, headY);
+
         if (trainerApproach != null || currentState != GameState.Overworld) return;
 
         // Turning a full circle is how one Pokémon evolves
@@ -521,6 +588,12 @@ public class GameEngine
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
         EnterArea();
+
+        // What the step leaves behind: a print, dust, leaves, a ring on the water, a splash where they rode out
+        // onto it, dust where they came down from a hop
+        if (player.JustRodeOut) world.Life.Splash(currentMap, player.GridX, player.GridY);
+        else world.Life.Footstep(currentMap, player.GridX, player.GridY, player.Facing, player.IsRunning, player.Mode);
+        if (player.JustLanded && player.Mode != TravelMode.Surfing) world.Life.Landing(currentMap, player.GridX, player.GridY);
         return CheckTrainerSight();
     }
 
@@ -549,6 +622,7 @@ public class GameEngine
         Party = playerParty,
         Bag = playerInventory,
         IsNight = GameClock.IsNight,
+        IsRaining = Weathers.IsRain(currentMap.WeatherAt(player.GridX, player.GridY)),
         Sites = currentMap.EvolutionSitesAt(player.GridX, player.GridY)
     };
 
@@ -717,7 +791,7 @@ public class GameEngine
             if (npc.IsPokeMartClerk)
             {
                 currentState = GameState.Shop;
-                shopScreen.Open();
+                shopScreen.Open(currentMap.DisplayNameAt(player.GridX, player.GridY));
                 return;
             }
 
@@ -791,8 +865,38 @@ public class GameEngine
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
             AnnounceLocation();
+
+            // Coming out of a building, the door stands open behind the player for a moment, then shuts
+            world.Life.Clear();
+            var (dx, dy) = FieldMovement.Delta(warp.TargetFacing);
+            int doorX = warp.TargetX - dx, doorY = warp.TargetY - dy;
+            if (!currentMap.IsIndoors && WorldRenderer.DoorPlace(currentMap, doorX, doorY) != null)
+                world.Life.LeaveDoor(currentMap, doorX, doorY);
         });
     }
+
+    /// <summary>
+    /// Walks the player in place of the keys while it is set: the way they are steered each frame (null stands
+    /// still) and whether they run. For the story's scripted walks and for the screenshot harness.
+    /// </summary>
+    public (Direction? Want, bool Run)? Steering { get; set; }
+
+    /// <summary>Puts a bubble over someone's head for a moment: a person of the map by name, or the player (null).</summary>
+    public void ShowEmote(string? npcName, EmoteBubble bubble, float seconds = 0.9f)
+    {
+        if (npcName == null) player.ShowBubble(bubble, seconds);
+        else currentMap.NPCs.FirstOrDefault(n => n.Name == npcName)?.ShowBubble(bubble, seconds);
+    }
+
+    /// <summary>Whether lightning is whitening the field at this moment (a thunderstorm where the player stands).</summary>
+    public bool LightningNow =>
+        gameStarted && WeatherFx.Lightning(currentMap.WeatherAt(player.GridX, player.GridY), world.Life.Now) > 0.6f;
+
+    /// <summary>Sends the field's camera to look at a tile, easing there over the given time; it stays until released.</summary>
+    public void PanCamera(int x, int y, float seconds) => world.PanCamera(x + 0.5f, y + 0.5f, seconds);
+
+    /// <summary>Brings the field's camera back to the player.</summary>
+    public void ReleaseCamera(float seconds) => world.ReleaseCamera(seconds);
 
     /// <summary>Crosses to another region, landing where arrivals from the previous region come in.</summary>
     private void TravelTo(Region region)
@@ -839,7 +943,7 @@ public class GameEngine
                 return;
             case StartMenuChoice.Pokedex:
                 currentState = GameState.PokedexMenu;
-                pokedexScreen.Open();
+                pokedexScreen.Open(playerPokedex);
                 break;
             case StartMenuChoice.Pokemon:
                 currentState = GameState.PartyMenu;
@@ -851,7 +955,7 @@ public class GameEngine
                 break;
             case StartMenuChoice.Trainer:
                 currentState = GameState.TrainerCard;
-                trainerCardScreen.Open();
+                trainerCardScreen.Open(world.Portrait(PlayerIdentity.Character));
                 break;
             case StartMenuChoice.Options:
                 optionsReturnState = GameState.Overworld;
@@ -859,9 +963,10 @@ public class GameEngine
                 optionsScreen.Open();
                 break;
             case StartMenuChoice.Save:
-                SaveCurrentGame();
-                startMenu.Close();
-                return;
+                // The save as it will be, with the question under it
+                currentState = GameState.SaveMenu;
+                saveScreen.Open(BuildSave());
+                break;
             case StartMenuChoice.SaveAndQuit:
                 SaveCurrentGame();
                 QuitRequested = true;
@@ -892,8 +997,11 @@ public class GameEngine
             AwaitModels(shown);
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
-        });
+        }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
+
+    /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
+    private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
     private void StartTrainerBattle(NPC trainerNpc)
     {
@@ -919,7 +1027,8 @@ public class GameEngine
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainer = trainerNpc;
-        });
+        }, SceneTransition.ForBattle(trainer: true, trainer.TrainerClass.Contains("Leader", StringComparison.OrdinalIgnoreCase),
+            trainer.Party.Members[0].Level, LeadLevel()));
     }
 
     /// <summary>
@@ -960,19 +1069,20 @@ public class GameEngine
                 currentMap = MapDatabase.Get("PlayerHouse");
                 player.SetPosition(4, 5, Direction.Down);
                 ShowNotification(penalty > 0 
-                    ? $"Lucas whited out and paid ¥{penalty}... Restored at home!" 
-                    : "Lucas whited out... Restored at home!");
+                    ? $"{playerName} whited out and lost {penalty} in money. Restored at home!"
+                    : $"{playerName} whited out. Restored at home!");
             }
             PlayAreaMusic(currentMap, player.GridX, player.GridY);
         });
     }
 
-    private void StartTransition(GameState nextState, Action? onMidpoint = null)
+    private void StartTransition(GameState nextState, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade)
     {
         stateBeforeTransition = currentState;
         stateAfterTransition = nextState;
         midTransitionCallback = onMidpoint;
         currentState = GameState.Transition;
+        transitionKind = kind;
         transitionTimer = 0f;
         isFadingOut = true;
     }
@@ -982,7 +1092,7 @@ public class GameEngine
         transitionTimer += dt;
         if (isFadingOut)
         {
-            if (transitionTimer >= transitionDuration)
+            if (transitionTimer >= SceneTransition.OutSeconds(transitionKind))
             {
                 isFadingOut = false;
                 transitionTimer = 0f;
@@ -992,7 +1102,7 @@ public class GameEngine
         }
         else
         {
-            if (transitionTimer >= transitionDuration)
+            if (transitionTimer >= SceneTransition.InSeconds(transitionKind))
             {
                 currentState = stateAfterTransition;
                 trainersLookOnArrival = currentState == GameState.Overworld;
@@ -1007,12 +1117,13 @@ public class GameEngine
 
     public void Draw()
     {
+        FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputIsNative = Raylib.GetScreenWidth() > VirtualWidth * RenderScale * 0.75f;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = currentState == GameState.Transition
             ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)
             : currentState;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu;
         bool showBattle = scene == GameState.Battle && battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -1036,6 +1147,12 @@ public class GameEngine
         {
             evolutionScreen.Render(renderContext);
         }
+        else if (scene == GameState.Intro)
+        {
+            introScreen.Render(renderContext);
+        }
+        // (The field and the battle have told the profiler of their own passes; this takes whatever else was rendered)
+        FrameProfiler.Lap(FrameSection.Scene);
 
         // Render scene to native 1920x1080 Full HD buffer
         Raylib.BeginTextureMode(virtualScreen);
@@ -1070,21 +1187,21 @@ public class GameEngine
                 pokedexScreen.Draw(VirtualWidth, VirtualHeight, playerPokedex);
                 break;
             case GameState.TrainerCard:
-                var currSave = new SaveData
-                {
-                    PlayerName = playerName,
-                    Money = playerMoney,
-                    Badges = badgesMask,
-                    PlayTimeSeconds = playTime,
-                    CaughtSpecies = playerPokedex.CaughtSpecies.ToList()
-                };
-                trainerCardScreen.Draw(VirtualWidth, VirtualHeight, currSave);
+                trainerCardScreen.Draw(VirtualWidth, VirtualHeight, new TrainerCardInfo(playerName, trainerId, playerMoney,
+                    playerPokedex.SeenCount, playerPokedex.CaughtCount, playTime, badgesMask, adventureStarted));
+                break;
+            case GameState.SaveMenu:
+                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                saveScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Intro:
+                introScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.StarterSelect:
                 starterSelectScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Shop:
-                shopScreen.Draw(VirtualWidth, VirtualHeight, playerMoney);
+                shopScreen.Draw(VirtualWidth, VirtualHeight, playerMoney, playerInventory);
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);
@@ -1102,18 +1219,13 @@ public class GameEngine
 
         toast.Draw(VirtualWidth);
 
-        // Draw Fade overlay
+        // The scene closing, or the next one opening
         if (currentState == GameState.Transition)
-        {
-            float alpha = isFadingOut
-                ? Math.Clamp(transitionTimer / transitionDuration, 0f, 1f)
-                : Math.Clamp(1f - (transitionTimer / transitionDuration), 0f, 1f);
-
-            Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)(alpha * 255)));
-        }
+            SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight);
 
         Raylib.EndMode2D();
         Raylib.EndTextureMode();
+        FrameProfiler.Lap(FrameSection.Interface);
 
         // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)
         int screenW = Raylib.GetScreenWidth();
@@ -1131,8 +1243,11 @@ public class GameEngine
         Rectangle src = new(0, 0, virtualScreen.Texture.Width, -virtualScreen.Texture.Height);
         Rectangle dst = new(destX, destY, destW, destH);
         Raylib.DrawTexturePro(virtualScreen.Texture, src, dst, Vector2.Zero, 0f, Color.White);
+        FrameProfiler.Lap(FrameSection.Present);
 
         Raylib.EndDrawing();
+        FrameProfiler.Lap(FrameSection.Swap);
+        FrameProfiler.EndFrame();
     }
 
     /// <summary>The 3D battle field and Pokémon, then the HUD and menus on top.</summary>

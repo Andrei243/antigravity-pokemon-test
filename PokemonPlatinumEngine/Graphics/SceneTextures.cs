@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Raylib_cs;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
@@ -115,21 +116,57 @@ internal static class SceneTextures
     /// <summary>The sheet of a waterfall, repeating down it.</summary>
     public static Texture2D Waterfall => Get("waterfall", NatureArt.Waterfall, repeat: true);
 
+    private static Image[]? waterfallFrames;
+    private static int waterfallFrame;
+
+    /// <summary>
+    /// Lets the waterfalls fall: the sheet's art moves down four texels eight times a second, in whole texels,
+    /// by rewriting the one texture every waterfall shares. Call on the thread that owns the window.
+    /// </summary>
+    public static unsafe void AnimateWaterfall(double time)
+    {
+        if (!Cache.TryGetValue("waterfall", out var texture)) return;
+        int frame = (int)((long)(time * 8.0) % 8);
+        if (frame == waterfallFrame) return;
+        waterfallFrame = frame;
+        if (waterfallFrames == null)
+        {
+            var art = NatureArt.Waterfall();
+            waterfallFrames = new Image[8];
+            for (int f = 0; f < 8; f++)
+            {
+                var shifted = new PixelCanvas(art.Width, art.Height);
+                for (int y = 0; y < art.Height; y++)
+                    for (int x = 0; x < art.Width; x++)
+                        shifted.SetRaw(x, (y + f * 4) % art.Height, art.Get(x, y));
+                waterfallFrames[f] = shifted.ToImage();
+            }
+        }
+        Raylib.UpdateTexture(texture, waterfallFrames[frame].Data);
+    }
+
+    /// <summary>The cells of the field's small effects: prints, dust, leaves, drops, rings (<see cref="LifeArt.Atlas"/>).</summary>
+    public static Texture2D Life => Get("life", LifeArt.Atlas, repeat: false);
+
+    /// <summary>Mist, drawn large and smooth over the picture in drifting layers (<see cref="LifeArt.Haze"/>).</summary>
+    public static Texture2D Haze
+    {
+        get
+        {
+            if (Cache.TryGetValue("haze", out var cached)) return cached;
+            var tex = Get("haze", LifeArt.Haze, repeat: true);
+            Raylib.SetTextureFilter(tex, TextureFilter.Bilinear);
+            return tex;
+        }
+    }
+
+    /// <summary>The bubble over someone's head, by what it shows.</summary>
+    public static Texture2D Bubble(EmoteBubble kind) => Get("bubble_" + kind, () => LifeArt.Bubble(kind), repeat: false);
+
     /// <summary>Battle meadow and platform tops are smooth, filtered textures (see <see cref="SoftTextures"/>).</summary>
     public static Texture2D Meadow => SoftTextures.Meadow;
 
     public static Texture2D PlatformTop => SoftTextures.PlatformTop;
-
-    public static Texture2D Exclamation => Get("exclamation", () =>
-    {
-        var c = new PixelCanvas(16, 16);
-        c.FlatEllipse(8, 8, 7, 7, Color.White);
-        var red = new Color(226, 56, 56, 255);
-        c.Rect(7, 3, 2, 6, red);
-        c.Rect(7, 10, 2, 2, red);
-        c.OutlinePass(innerSeams: false);
-        return c;
-    }, repeat: false);
 
     // ------------------------------------------------------------------ light and shadow
 

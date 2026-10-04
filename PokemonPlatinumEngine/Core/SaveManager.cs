@@ -14,6 +14,16 @@ public class SaveData
     public const int ImportedWorld = 1;
 
     public string PlayerName { get; set; } = "Lucas";
+
+    /// <summary>Which of the two characters the player is. Saves from before the choice existed are the boy.</summary>
+    public PlayerLook Look { get; set; }
+
+    /// <summary>The number on the Trainer Card, drawn when the game began. 0 in older saves: one is drawn on loading.</summary>
+    public int TrainerId { get; set; }
+
+    /// <summary>The day the adventure began; null in saves from before it was recorded.</summary>
+    public DateTime? Started { get; set; }
+
     public int Money { get; set; } = 3000;
     public float PlayTimeSeconds { get; set; } = 0;
     public int Badges { get; set; } = 0;

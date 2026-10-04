@@ -2,6 +2,7 @@ using System;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
@@ -128,6 +129,59 @@ internal static class ArtLook
     public static readonly Vector3 Lamplight = new(1f, 0.8f, 0.46f);
 
     public static LightRig FieldRig(float hour, bool indoors) => AtHour(hour, indoors ? IndoorRigFor : FieldRigFor);
+
+    /// <summary>How much of the sun gets through a kind of weather (style guide, "Life").</summary>
+    public static float SunThrough(FieldWeather weather) => weather switch
+    {
+        FieldWeather.Clear => 1f,
+        FieldWeather.Cloudy => 0.45f,
+        FieldWeather.Rain => 0.3f,
+        FieldWeather.HeavyRain => 0.22f,
+        FieldWeather.Thunderstorm => 0.2f,
+        FieldWeather.Snow => 0.6f,
+        FieldWeather.HeavySnow => 0.35f,
+        FieldWeather.Blizzard => 0.25f,
+        FieldWeather.Hail => 0.4f,
+        FieldWeather.Fog => 0.5f,
+        FieldWeather.Sandstorm => 0.55f,
+        _ => 0.75f
+    };
+
+    /// <summary>
+    /// The field's light under a kind of weather (style guide, "Life"): part of the sun is lost and half of
+    /// what it would have laid on level ground comes down from the whole sky instead, so shadows grow faint
+    /// before the picture grows dark; fog thickens, and for fog, sandstorms and blizzards it comes near and
+    /// takes their colour.
+    /// </summary>
+    public static LightRig Weathered(LightRig rig, FieldWeather weather)
+    {
+        if (weather == FieldWeather.Clear) return rig;
+        float sun = SunThrough(weather);
+        float fog = weather switch
+        {
+            FieldWeather.Rain => 0.12f, FieldWeather.HeavyRain or FieldWeather.Thunderstorm => 0.2f,
+            FieldWeather.HeavySnow => 0.3f, FieldWeather.Blizzard => 0.4f, FieldWeather.Fog => 0.55f,
+            FieldWeather.Sandstorm => 0.35f, FieldWeather.Hail => 0.08f, _ => 0.05f
+        };
+        bool thick = weather is FieldWeather.Fog or FieldWeather.Sandstorm or FieldWeather.HeavySnow or FieldWeather.Blizzard;
+        var colour = weather == FieldWeather.Sandstorm ? V(0.86f, 0.74f, 0.52f) : V(0.9f, 0.92f, 0.95f);
+        // What level ground loses is the lost sun times how high the sun stands: a low sun had little to give it
+        var lost = rig.Light.SunColor * (1f - sun) * MathF.Max(0f, rig.Light.SunDirection.Y);
+        float scattered = (lost.X + lost.Y + lost.Z) / 3f * 0.5f;
+        // Light from an overcast sky is grey, a little to the blue; a sandstorm's is the sand's own colour
+        var sky = weather == FieldWeather.Sandstorm ? V(1.08f, 0.98f, 0.8f) : V(0.94f, 1f, 1.08f);
+        return rig with
+        {
+            Light = rig.Light with { SunColor = rig.Light.SunColor * sun, SkyAmbient = rig.Light.SkyAmbient + sky * scattered },
+            FogAmount = MathF.Min(0.9f, rig.FogAmount + fog),
+            FogNear = thick ? MathF.Min(rig.FogNear, 36f) : rig.FogNear,
+            FogFar = thick ? MathF.Min(rig.FogFar, 54f) : rig.FogFar,
+            FogColor = thick ? Vector3.Lerp(rig.FogColor, colour, 0.7f) : rig.FogColor,
+            // Under cloud nothing drifts across the ground, and rain takes some colour out of things
+            CloudShade = 0f,
+            Post = Weathers.IsRain(weather) ? rig.Post with { Saturation = rig.Post.Saturation * 0.8f } : rig.Post
+        };
+    }
 
     public static LightRig BattleRig(float hour) => AtHour(hour, BattleRigFor);
 

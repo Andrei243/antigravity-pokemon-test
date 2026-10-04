@@ -141,6 +141,9 @@ public sealed class RenderContext
     }
 
     /// <summary>Binds the shadow map for sampling by the scene shaders.</summary>
+    // TEMP-G11 experiments
+    internal static readonly string Experiment = System.Environment.GetEnvironmentVariable("G11_X") ?? "";
+
     internal void BindShadowMap()
     {
         Rlgl.ActiveTextureSlot(FieldShaders.ShadowMapSlot);
@@ -164,6 +167,13 @@ public sealed class RenderContext
     {
         post = settings;
         depthRange = depth;
+        // TEMP-G11 experiments
+        if (Experiment.Contains("nodof")) post = post with { Dof = 0f };
+        if (Experiment.Contains("nobloom")) post = post with { BloomStrength = 0f };
+        if (Experiment.Contains("noao")) post = post with { AoStrength = 0f };
+        if (Experiment.Contains("notilt")) post = post with { TiltShift = 0f };
+        if (Experiment.Contains("nooutline")) post = post with { OutlineStrength = 0f };
+        if (Experiment.Contains("nograde")) post = post with { Saturation = 1f, Contrast = 1f, Vignette = 0f };
         if (!Quality.DepthOfField) post = post with { Dof = 0f };
         if (!Quality.AmbientOcclusion) post = post with { AoStrength = 0f };
         if (!targetsLoaded) return;
@@ -173,16 +183,19 @@ public sealed class RenderContext
             Pass(Target.Texture, blurA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), 1f));
             BlurChain(blurA, blurB, 1.5f, rounds: 2);
         }
+        FrameProfiler.Lap(FrameSection.Blur);
         if (post.BloomStrength > 0f)
         {
             Pass(Target.Texture, bloomA, Shaders.Down, () => Shaders.SetDown(Texel(Target.Texture), post.BloomThreshold));
             BlurChain(bloomA, bloomB, 1.2f, rounds: 2);
         }
+        FrameProfiler.Lap(FrameSection.Bloom);
         if (post.AoStrength > 0f)
         {
             Pass(Target.Depth, aoA, Shaders.Ssao, () => Shaders.SetSsao(Texel(Target.Depth), depth, aoRadius));
             BlurChain(aoA, aoB, 0.6f, rounds: 1);
         }
+        FrameProfiler.Lap(FrameSection.Occlusion);
     }
 
     private static Vector2 Texel(Texture2D t) => new(1f / t.Width, 1f / t.Height);
@@ -224,6 +237,7 @@ public sealed class RenderContext
         var src = new Rectangle(0, 0, Target.Texture.Width, -Target.Texture.Height);
         Raylib.DrawTexturePro(Target.Texture, src, destination, Vector2.Zero, 0f, Color.White);
         Raylib.EndShaderMode();
+        FrameProfiler.Lap(FrameSection.Composite);
     }
 
     private void UnloadTargets()

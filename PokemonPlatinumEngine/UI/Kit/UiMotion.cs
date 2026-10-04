@@ -72,9 +72,26 @@ public sealed class UiReveal
     public float Shown => IsOpen ? UiMotion.EaseOut(amount) : 1f - UiMotion.EaseIn(1f - amount);
 }
 
-/// <summary>Cursor movement in menus laid out as a grid, filled row by row.</summary>
+/// <summary>Cursor movement in menus laid out as a grid, filled row by row, and in lists longer than their panel.</summary>
 public static class UiNav
 {
+    /// <summary>One step along a list that wraps from its last row to its first and back.</summary>
+    public static int Wrap(int index, int step, int count) => count <= 0 ? 0 : ((index + step) % count + count) % count;
+
+    /// <summary>
+    /// The first row a list shows, given the one it showed first before: the window moves only when the cursor
+    /// would come within <paramref name="lead"/> rows of its edge, so there is always context ahead of the
+    /// cursor where the list has any, and it never shows past either end.
+    /// </summary>
+    public static int Window(int first, int selected, int count, int visible, int lead = 2)
+    {
+        if (count <= visible) return 0;
+        lead = Math.Min(lead, (visible - 1) / 2);
+        if (selected < first + lead) first = selected - lead;
+        else if (selected > first + visible - 1 - lead) first = selected - (visible - 1 - lead);
+        return Math.Clamp(first, 0, count - visible);
+    }
+
     /// <summary>
     /// The slot reached from <paramref name="index"/> by one step. Rows and columns wrap round, skipping the
     /// empty slots of a last row that isn't full.

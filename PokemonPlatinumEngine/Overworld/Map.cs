@@ -21,6 +21,9 @@ public sealed class MapArea
 
     public TreeStyle? Trees { get; set; }
 
+    /// <summary>What falls or hangs in the air here.</summary>
+    public FieldWeather Weather { get; set; }
+
     /// <summary>Snow country: more of its open ground is snow than lawn, so snow lies on its trees too.</summary>
     public bool Snowbound { get; set; }
 
@@ -128,11 +131,18 @@ public class Map
     }
 
     /// <summary>The name of the place a tile is in: its area's, or the map's own.</summary>
-    public string DisplayNameAt(int x, int y) => AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName;
+    public string DisplayNameAt(int x, int y) =>
+        Core.PlayerIdentity.Fill(AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName);
 
     public string BgmTrackAt(int x, int y) => AreaAt(x, y)?.BgmTrack is { Length: > 0 } track ? track : BgmTrack;
 
     public TreeStyle TreesAt(int x, int y) => AreaAt(x, y)?.Trees ?? Trees;
+
+    /// <summary>The weather of a small map as a whole (a map of the world has it by area: <see cref="WeatherAt"/>).</summary>
+    public FieldWeather Weather { get; set; }
+
+    /// <summary>What falls or hangs in the air over a tile; rooms have no weather.</summary>
+    public FieldWeather WeatherAt(int x, int y) => IsIndoors ? FieldWeather.Clear : AreaAt(x, y)?.Weather ?? Weather;
 
     public Architecture ArchitectureAt(int x, int y) => AreaAt(x, y)?.Architecture ?? Architecture;
 

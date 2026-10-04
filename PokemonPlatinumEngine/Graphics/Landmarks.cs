@@ -46,7 +46,7 @@ internal static class Landmarks
             case PropType.Fountain:
             {
                 int size = Math.Min(w - 8, 112);
-                kit.Sprite(kit.Face($"fountain.{size}", size, size * 3 / 4 + 22, c => PaintFountain(c, size)), w / 2f, d - 10);
+                kit.Sprite(kit.Frames($"fountain.{size}", size, size * 3 / 4 + 22, MovingFrames, 6f, (c, frame) => PaintFountain(c, size, frame)), w / 2f, d - 10);
                 return true;
             }
             case PropType.Boat:
@@ -55,7 +55,7 @@ internal static class Landmarks
             case PropType.WindTurbine:
             {
                 int rows = Rows(kit, prop.Height, 110, 150);
-                kit.Sprite(kit.Face($"turbine.{rows}", 96, rows + 44, c => PaintTurbine(c, rows)), w / 2f, d / 2f + 6);
+                kit.Sprite(kit.Frames($"turbine.{rows}", 96, rows + 44, MovingFrames, 6f, (c, frame) => PaintTurbine(c, rows, frame)), w / 2f, d / 2f + 6);
                 return true;
             }
             case PropType.Statue:
@@ -278,7 +278,14 @@ internal static class Landmarks
     /// A fountain seen from a little above, <paramref name="size"/> across: a round basin of pale stone with
     /// water in the pond's blues, two ripple rings, and a jet on a pedestal in the middle.
     /// </summary>
-    public static void PaintFountain(PixelCanvas c, int size)
+    /// <summary>How many frames a fountain and a turbine move in (style guide, "Life").</summary>
+    public const int MovingFrames = 4;
+
+    /// <summary>
+    /// A fountain, <paramref name="frame"/> of four: the rings in its basin travel outward, the top of its jet
+    /// bobs a texel, and drops fall away from it to both sides.
+    /// </summary>
+    public static void PaintFountain(PixelCanvas c, int size, int frame = 0)
     {
         int w = c.Width, h = c.Height;
         float cx = w / 2f, ry = size * 0.3f, rx = size / 2f - 1, cy = h - ry - 12;
@@ -304,7 +311,9 @@ internal static class Landmarks
                 float inner = (x + 0.5f - cx) / (rx - 6), innerV = (y + 0.5f - cy) / (ry - 4);
                 float within = inner * inner + innerV * innerV;
                 if (within > 1f) { c.Set(x, y, v < -0.2f ? PaleStone.Light : PaleStone.Base); continue; }
-                bool ring = within > 0.26f && within < 0.34f || within > 0.6f && within < 0.68f;
+                // Three rings a third of the way apart, each a quarter of that further out with every frame
+                float phase = (within - 0.08f - 0.085f * frame) / 0.34f;
+                bool ring = within > 0.08f && within < 0.86f && phase - MathF.Floor(phase) < 0.24f;
                 c.Set(x, y, ring ? WaterLight : within > 0.86f && v < 0 ? WaterDark : Water);
             }
 
@@ -314,23 +323,31 @@ internal static class Landmarks
         c.VLine(px - 4, (int)cy - 10, 12, PaleStone.Light);
         c.VLine(px + 3, (int)cy - 10, 12, PaleStone.Dark);
         c.Rect(px - 6, (int)cy - 12, 12, 3, PaleStone.Light);
-        int jetTop = Math.Max(2, (int)cy - 44);
+        int jetTop = Math.Max(3, (int)cy - 44) + frame % 2;
         for (int y = jetTop; y < (int)cy - 12; y++)
         {
             int spread = y < jetTop + 8 ? 4 - (y - jetTop) / 3 : 1;
             c.Rect(px - spread, y, spread * 2, 1, WaterLight);
             c.Rect(px - 1, y, 2, 1, Color.White);
         }
-        c.Rect(px - 7, jetTop + 6, 3, 2, WaterLight);
-        c.Rect(px + 5, jetTop + 8, 3, 2, WaterLight);
+        // Two drops to each side, half a cycle apart, falling away from the jet's top
+        for (int drop = 0; drop < 2; drop++)
+        {
+            int fallen = (frame + drop * 2) % MovingFrames;
+            c.Rect(px - 7 - fallen, jetTop + 5 + fallen * 5, 3, 2, WaterLight);
+            c.Rect(px + 5 + fallen, jetTop + 7 + fallen * 5, 3, 2, WaterLight);
+        }
         Pix.Outline(c);
     }
 
-    /// <summary>A wind turbine: a white tower <paramref name="rows"/> tall narrowing to its top, a nacelle and three blades.</summary>
-    public static void PaintTurbine(PixelCanvas c, int rows)
+    /// <summary>
+    /// A wind turbine: a white tower <paramref name="rows"/> tall narrowing to its top, a nacelle and three
+    /// blades, turned thirty degrees with each of its four frames (the fourth step brings the next blade round).
+    /// </summary>
+    public static void PaintTurbine(PixelCanvas c, int rows, int frame = 0)
     {
         int w = c.Width, h = c.Height, mid = w / 2, hub = h - rows;
-        var white = Tone.Of(236, 238, 242, 252, 252, 255, 190, 196, 214);
+        var white = Tone.Of(214, 218, 228, 234, 236, 242, 170, 178, 200);
         for (int y = hub; y < h; y++)
         {
             int half = 3 + (y - hub) * 2 / rows;
@@ -341,20 +358,20 @@ internal static class Landmarks
         c.Rect(mid - 7, h - 4, 14, 4, Stone.Base);
         c.HLine(mid - 7, h - 4, 14, Stone.Light);
 
-        // Blades: one straight up, two down and out; each tapers from five texels to two
-        void Blade(float dx, float dy)
+        // Blades a third of a turn apart, the first straight up in the first frame; each tapers from five texels to two
+        void Blade(float degrees)
         {
-            for (int i = 4; i < 44; i++)
+            float angle = degrees * MathF.PI / 180f, dx = MathF.Sin(angle), dy = -MathF.Cos(angle);
+            for (int i = 4; i < 43; i++)
             {
                 int thick = i < 12 ? 5 : i < 30 ? 4 : 2;
-                int x = (int)MathF.Round(mid + dx * i - (dx == 0 ? thick / 2f : 0)), y = (int)MathF.Round(hub + dy * i - (dx == 0 ? 0 : thick / 2f));
-                c.Rect(x, y, dx == 0 ? thick : 2, dx == 0 ? 2 : thick, white.Base);
+                int x = (int)MathF.Round(mid + dx * i - thick / 2f), y = (int)MathF.Round(hub + dy * i - thick / 2f);
+                c.Rect(x, y, thick, thick, white.Base);
+                // Its upper edge catches the light
                 c.Set(x, y, white.Light);
             }
         }
-        Blade(0f, -1f);
-        Blade(-0.86f, 0.5f);
-        Blade(0.86f, 0.5f);
+        for (int blade = 0; blade < 3; blade++) Blade(frame * 30f + blade * 120f);
         Pix.Disc(c, mid - 5, hub - 5, 10, white.Dark);
         Pix.Disc(c, mid - 3, hub - 3, 6, white.Light);
         Pix.Outline(c);

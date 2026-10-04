@@ -1,102 +1,53 @@
 using System;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
-using PokemonPlatinumEngine.Graphics;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>What the Trainer Card shows of the player.</summary>
+public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int Seen, int Caught, float PlayTimeSeconds, int Badges, DateTime? Started);
+
+/// <summary>
+/// The Trainer Card: who the player is, what they have, how long they have played and the badges they have
+/// won, with their own field sprite as the portrait. The card's stars and its back are plan 06 · R12's.
+/// </summary>
 public class TrainerCardScreen
 {
-    public bool IsActive { get; set; } = false;
+    private const float AppearTime = 0.35f;
 
-    public void Open()
+    private float openAge;
+    private Texture2D? portrait;
+
+    public bool IsActive { get; set; }
+
+    /// <param name="portrait">The player's field sprite (baked outside any texture mode); none in tests.</param>
+    public void Open(Texture2D? portrait = null)
     {
         IsActive = true;
+        openAge = 0f;
+        this.portrait = portrait;
     }
 
-    public void Close()
-    {
-        IsActive = false;
-    }
+    public void Close() => IsActive = false;
 
-    public void Update()
+    /// <summary>A trainer's number as the card prints it: five digits.</summary>
+    public static string FormatId(int trainerId) => (((trainerId % 100000) + 100000) % 100000).ToString("D5");
+
+    public void Update(float dt = 1f / 60f)
     {
         if (!IsActive) return;
+        openAge += dt;
 
-        if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm))
+        if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Menu))
         {
             Close();
             AudioManager.PlaySound("cancel");
         }
     }
 
-    public void Draw(int screenWidth, int screenHeight, SaveData saveData)
+    public void Draw(int screenWidth, int screenHeight, TrainerCardInfo info)
     {
         if (!IsActive) return;
-
-        Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, new Color(30, 36, 48, 255));
-
-        int cardWidth = 1160;
-        int cardHeight = 720;
-        int cx = (screenWidth - cardWidth) / 2;
-        int cy = (screenHeight - cardHeight) / 2;
-
-        RenderHelper.DrawPlatinumPanel(cx, cy, cardWidth, cardHeight, Palette.UiBackground);
-
-        // Header Strip
-        Raylib.DrawRectangle(cx + 12, cy + 12, cardWidth - 24, 60, Palette.UiAccent);
-        RenderHelper.DrawTextWithShadow("TRAINER CARD", cx + 36, cy + 24, 30, Color.White);
-        RenderHelper.DrawTextWithShadow("IDNo. 24391", cx + cardWidth - 200, cy + 26, 24, Color.White);
-
-        // Player Info
-        int infoX = cx + 56;
-        int infoY = cy + 104;
-        RenderHelper.DrawTextWithShadow($"NAME: {saveData.PlayerName}", infoX, infoY, 28, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"MONEY: ${saveData.Money:N0}", infoX, infoY + 48, 26, Palette.TextDark);
-        RenderHelper.DrawTextWithShadow($"POKÉDEX: {saveData.CaughtSpecies.Count} CAUGHT", infoX, infoY + 96, 26, Palette.TextDark);
-
-        int mins = (int)(saveData.PlayTimeSeconds / 60);
-        int secs = (int)(saveData.PlayTimeSeconds % 60);
-        RenderHelper.DrawTextWithShadow($"TIME: {mins:D2}:{secs:D2}", infoX, infoY + 144, 26, Palette.TextDark);
-
-        // Lucas Character Sprite Preview on card
-        var playerTex = PixelArtGenerator.GetNpcSprite("PLAYER", Data.Direction.Down);
-        Raylib.DrawTextureEx(playerTex, new System.Numerics.Vector2(cx + cardWidth - 220, infoY - 10), 0f, 8f, Color.White);
-
-        // Sinnoh Badges Section
-        int badgeY = cy + 330;
-        int badgePanelHeight = 330;
-        RenderHelper.DrawPlatinumPanel(cx + 24, badgeY, cardWidth - 48, badgePanelHeight, Palette.UiPanelBg);
-        RenderHelper.DrawTextWithShadow("SINNOH GYM BADGES", cx + 48, badgeY + 24, 26, Palette.UiAccent);
-
-        string[] badgeNames = { "Coal", "Forest", "Cobble", "Fen", "Relic", "Mine", "Icicle", "Beacon" };
-        Color[] badgeColors = {
-            Color.Brown, Color.Green, Color.Orange, Color.Blue,
-            Color.Purple, Color.DarkGray, Color.SkyBlue, Color.Gold
-        };
-
-        int badgeSpacing = (cardWidth - 140) / 8;
-
-        for (int b = 0; b < 8; b++)
-        {
-            int bx = cx + 56 + b * badgeSpacing;
-            int by = badgeY + 96;
-            bool hasBadge = (saveData.Badges & (1 << b)) != 0;
-
-            if (hasBadge)
-            {
-                Raylib.DrawCircle(bx + 40, by + 40, 36, Color.Black);
-                Raylib.DrawCircle(bx + 40, by + 40, 32, badgeColors[b]);
-                Raylib.DrawCircle(bx + 40, by + 40, 12, Color.White);
-            }
-            else
-            {
-                Raylib.DrawCircleLines(bx + 40, by + 40, 34, Color.Gray);
-            }
-
-            RenderHelper.DrawTextWithShadow(badgeNames[b], bx + 16, by + 90, 20, hasBadge ? Palette.TextDark : Color.Gray);
-        }
-
-        RenderHelper.DrawTextWithShadow("Press Z, Space, or X to return", cx + cardWidth - 360, cy + cardHeight + 16, 20, Color.LightGray);
+        ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f));
     }
 }

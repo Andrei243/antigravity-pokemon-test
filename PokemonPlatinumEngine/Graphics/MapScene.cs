@@ -129,6 +129,9 @@ internal sealed class MapScene
         /// <summary>The meshes drawn with the field's shared textures.</summary>
         internal List<(Texture2D Tex, MeshPass Pass, Mesh Mesh, (Vector3 Min, Vector3 Max)? Bounds)> Shared { get; } = new();
 
+        /// <summary>The faces of the sheet of buildings and props that move, each with its frames as images.</summary>
+        internal List<(Art Region, Image[] Frames, float Rate)> Moving { get; } = new();
+
         /// <summary>Uploads in all: a texture or a mesh each.</summary>
         public int Steps => Own.Sum(o => 1 + o.Meshes.Count) + Shared.Count;
     }
@@ -213,6 +216,8 @@ internal sealed class MapScene
         if (kit.Solid.VertexCount + kit.Flat.VertexCount > 0)
         {
             var art = kit.Sheet.ToCanvas().ToImage();
+            foreach (var (_, region, frames, rate) in kit.Sheet.Moving)
+                prepared.Moving.Add((region, frames.Select(f => f.ToImage()).ToArray(), rate));
             kit.Finish();
             prepared.Own.Add((art, true, Packed((kit.Solid, MeshPass.Opaque), (kit.Flat, MeshPass.Ground))));
         }
@@ -240,8 +245,12 @@ internal sealed class MapScene
                 texture = Raylib.LoadTextureFromImage(image);
                 Raylib.UnloadImage(image);
                 Raylib.SetTextureFilter(texture, TextureFilter.Point);
-                if (clamp) Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
                 scene.ownTextures.Add(texture);
+                if (!clamp) return;
+                // The sheet of buildings and props: its moving faces will be redrawn into it frame by frame
+                Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
+                foreach (var (region, frames, rate) in prepared.Moving)
+                    scene.moving.Add(new MovingArt(texture, new Rectangle(region.X, region.Y, region.Width, region.Height), frames, rate));
             });
             foreach (var (packed, pass) in meshes)
                 steps.Enqueue(() => scene.meshes.Add(OnGpu(packed), texture, pass, null, shaders));
@@ -280,6 +289,35 @@ internal sealed class MapScene
         meshes.Unload();
         foreach (var texture in ownTextures) Raylib.UnloadTexture(texture);
         ownTextures.Clear();
+        foreach (var art in moving)
+            foreach (var frame in art.Frames) Raylib.UnloadImage(frame);
+        moving.Clear();
+    }
+
+    private sealed class MovingArt(Texture2D texture, Rectangle rect, Image[] frames, float rate)
+    {
+        public Texture2D Texture { get; } = texture;
+        public Rectangle Rect { get; } = rect;
+        public Image[] Frames { get; } = frames;
+        public float Rate { get; } = rate;
+        public int Shown { get; set; }
+    }
+
+    private readonly List<MovingArt> moving = new();
+
+    /// <summary>
+    /// Shows the frame each moving face of the scene's art has reached (a fountain's water, a turbine's blades)
+    /// by redrawing its rectangle of the sheet. Call on the thread that owns the window, before drawing.
+    /// </summary>
+    public unsafe void Animate(double time)
+    {
+        foreach (var art in moving)
+        {
+            int frame = (int)((long)(time * art.Rate) % art.Frames.Length);
+            if (frame == art.Shown) continue;
+            art.Shown = frame;
+            Raylib.UpdateTextureRec(art.Texture, art.Rect, art.Frames[frame].Data);
+        }
     }
 
     private TileType? TypeAt(int x, int y) => GroundBaker.TypeAt(Map, x, y);

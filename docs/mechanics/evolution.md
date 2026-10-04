@@ -62,7 +62,7 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 | `LevelDay` / `LevelNight` | The level, at that time | Tyrunt, Amaura, Rockruff, Fomantis, Yungoos, Greavard, Cosmoem | 6 | |
 | `LevelKnowsMoveType` (+ `needsFriendship`) | A move of that type, and friendship 220 | Eevee → Sylveon | 6 | |
 | `LevelWithTypeInParty` | The level, with that type elsewhere in the party | Pancham with a Dark type | 6 | |
-| `LevelInRain` | The level, while it rains in the field | Sliggoo | 6 | Weather in the field (plan 01) |
+| `LevelInRain` | The level, while it rains in the field (rain, heavy rain or a thunderstorm where the player stands) | Sliggoo | 6 | Done |
 | `LevelUpsideDown` | Originally: the console held upside down. Here: the level | Inkay | 6 | |
 | `Affection` | Originally Pokémon-Amie hearts; friendship from Generation 8 on. Here: friendship 220 | (none in the data: Sylveon's row is the newer one) | 6 | |
 | `LevelAfterSteps` | That many steps at the head of the party | Pawmo, Bramblin, Rellor (1000) | 9 | |

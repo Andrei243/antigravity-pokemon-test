@@ -3527,7 +3527,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Hone Claws to a compatible Pokémon. (Gen IV & III: Focus Punch Gen II: DynamicPunch Gen I: Mega Punch)",
+    "description": "Teaches Focus Punch to a compatible Pokémon. If the user takes damage before attacking, the attack is canceled.",
     "teachesMove": "Focus Punch"
   },
   {
@@ -3539,7 +3539,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Dragon Claw to a compatible Pokémon. (Gen II: Headbutt Gen I: Razor Wind)",
+    "description": "Teaches Dragon Claw to a compatible Pokémon. Inflicts regular damage with no additional effect.",
     "teachesMove": "Dragon Claw"
   },
   {
@@ -3551,7 +3551,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Psyshock to a compatible Pokémon. (Gen IV & III: Water Pulse Gen II: Curse Gen I: Swords Dance)",
+    "description": "Teaches Water Pulse to a compatible Pokémon. Has a chance to confuse the target.",
     "teachesMove": "Water Pulse"
   },
   {
@@ -3563,7 +3563,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Calm Mind to a compatible Pokémon. (Gen II: Rollout Gen I: Whirlwind)",
+    "description": "Teaches Calm Mind to a compatible Pokémon. Raises the user's Special Attack and Special Defense by one stage.",
     "teachesMove": "Calm Mind"
   },
   {
@@ -3575,7 +3575,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Roar to a compatible Pokémon. (Gen I: Mega Kick)",
+    "description": "Teaches Roar to a compatible Pokémon. Immediately ends wild battles. Forces trainers to switch Pokémon.",
     "teachesMove": "Roar"
   },
   {
@@ -3587,7 +3587,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Toxic to a compatible Pokémon.",
+    "description": "Teaches Toxic to a compatible Pokémon. Badly poisons the target, inflicting more damage every turn.",
     "teachesMove": "Toxic"
   },
   {
@@ -3599,7 +3599,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Hail to a compatible Pokémon. (Gen II: Zap Cannon Gen I: Horn Drill)",
+    "description": "Teaches Hail to a compatible Pokémon. Changes the weather to a hailstorm for five turns.",
     "teachesMove": "Hail"
   },
   {
@@ -3611,7 +3611,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Bulk Up to a compatible Pokémon. (Gen II: Rock Smash Gen I: Body Slam)",
+    "description": "Teaches Bulk Up to a compatible Pokémon. Raises the user's Attack and Defense by one stage.",
     "teachesMove": "Bulk Up"
   },
   {
@@ -3623,7 +3623,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Venoshock to a compatible Pokémon. (Gen IV & III: Bullet Seed Gen II: Psych Up Gen I: Take Down)",
+    "description": "Teaches Bullet Seed to a compatible Pokémon. Hits 2-5 times in one turn.",
     "teachesMove": "Bullet Seed"
   },
   {
@@ -3635,7 +3635,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Hidden Power to a compatible Pokémon. (Gen I: Double-Edge)",
+    "description": "Teaches Hidden Power to a compatible Pokémon. Power and type depend upon user's IVs. Power can range from 30 to 70.",
     "teachesMove": "Hidden Power"
   },
   {
@@ -3647,7 +3647,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Sunny Day to a compatible Pokémon. (Gen I: BubbleBeam)",
+    "description": "Teaches Sunny Day to a compatible Pokémon. Changes the weather to sunny for five turns.",
     "teachesMove": "Sunny Day"
   },
   {
@@ -3659,7 +3659,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Taunt to a compatible Pokémon. (Gen II: Sweet Scent Gen I: Water Gun)",
+    "description": "Teaches Taunt to a compatible Pokémon. For the next few turns, the target can only use damaging moves.",
     "teachesMove": "Taunt"
   },
   {
@@ -3671,7 +3671,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Ice Beam to a compatible Pokémon. (Gen II: Snore)",
+    "description": "Teaches Ice Beam to a compatible Pokémon. Has a chance to freeze the target.",
     "teachesMove": "Ice Beam"
   },
   {
@@ -3683,7 +3683,7 @@
     "price": 5500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Blizzard to a compatible Pokémon.",
+    "description": "Teaches Blizzard to a compatible Pokémon. Has a chance to freeze the target.",
     "teachesMove": "Blizzard"
   },
   {
@@ -3695,7 +3695,7 @@
     "price": 7500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Hyper Beam to a compatible Pokémon.",
+    "description": "Teaches Hyper Beam to a compatible Pokémon. User foregoes its next turn to recharge.",
     "teachesMove": "Hyper Beam"
   },
   {
@@ -3707,7 +3707,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Light Screen to a compatible Pokémon. (Gen II: Icy Wind Gen I: Pay Day)",
+    "description": "Teaches Light Screen to a compatible Pokémon. Reduces damage from special attacks by 50% for five turns.",
     "teachesMove": "Light Screen"
   },
   {
@@ -3719,7 +3719,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Protect to a compatible Pokémon. (Gen I: Submission)",
+    "description": "Teaches Protect to a compatible Pokémon. Prevents any moves from hitting the user this turn.",
     "teachesMove": "Protect"
   },
   {
@@ -3731,7 +3731,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Rain Dance to a compatible Pokémon. (Gen I: Counter)",
+    "description": "Teaches Rain Dance to a compatible Pokémon. Changes the weather to rain for five turns.",
     "teachesMove": "Rain Dance"
   },
   {
@@ -3743,7 +3743,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Telekinesis to a compatible Pokémon. (Gen IV & III & II: Giga Drain Gen I: Seismic Toss)",
+    "description": "Teaches Giga Drain to a compatible Pokémon. Drains half the damage inflicted to heal the user.",
     "teachesMove": "Giga Drain"
   },
   {
@@ -3755,7 +3755,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Safeguard to a compatible Pokémon. (Gen II: Endure Gen I: Rage)",
+    "description": "Teaches Safeguard to a compatible Pokémon. Protects the user's field from major status ailments and confusion for five turns.",
     "teachesMove": "Safeguard"
   },
   {
@@ -3767,7 +3767,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Frustration to a compatible Pokémon. (Gen I: Mega Drain)",
+    "description": "Teaches Frustration to a compatible Pokémon. Power increases as happiness decreases, up to a maximum of 102.",
     "teachesMove": "Frustration"
   },
   {
@@ -3779,7 +3779,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches SolarBeam to a compatible Pokémon.",
+    "description": "Teaches Solar Beam to a compatible Pokémon. Requires a turn to charge before attacking.",
     "teachesMove": "Solar Beam"
   },
   {
@@ -3791,7 +3791,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Smack Down to a compatible Pokémon. (Gen IV & III & II: Iron Tail Gen I: Dragon Rage)",
+    "description": "Teaches Iron Tail to a compatible Pokémon. Has a chance to lower the target's Defense by one stage.",
     "teachesMove": "Iron Tail"
   },
   {
@@ -3803,7 +3803,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Thunderbolt to a compatible Pokémon. (Gen II: DragonBreath)",
+    "description": "Teaches Thunderbolt to a compatible Pokémon. Has a chance to paralyze the target.",
     "teachesMove": "Thunderbolt"
   },
   {
@@ -3815,7 +3815,7 @@
     "price": 5500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Thunder to a compatible Pokémon.",
+    "description": "Teaches Thunder to a compatible Pokémon. Has a chance to paralyze the target.",
     "teachesMove": "Thunder"
   },
   {
@@ -3827,7 +3827,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Earthquake to a compatible Pokémon.",
+    "description": "Teaches Earthquake to a compatible Pokémon. Inflicts regular damage and can hit Dig users.",
     "teachesMove": "Earthquake"
   },
   {
@@ -3839,7 +3839,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Return to a compatible Pokémon. (Gen I: Fissure)",
+    "description": "Teaches Return to a compatible Pokémon. Power increases with happiness, up to a maximum of 102.",
     "teachesMove": "Return"
   },
   {
@@ -3851,7 +3851,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Dig to a compatible Pokémon.",
+    "description": "Teaches Dig to a compatible Pokémon. User digs underground, dodging all attacks, and hits next turn.",
     "teachesMove": "Dig"
   },
   {
@@ -3863,7 +3863,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Psychic to a compatible Pokémon.",
+    "description": "Teaches Psychic to a compatible Pokémon. Has a chance to lower the target's Special Defense by one stage.",
     "teachesMove": "Psychic"
   },
   {
@@ -3875,7 +3875,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Shadow Ball to a compatible Pokémon. (Gen I: Teleport)",
+    "description": "Teaches Shadow Ball to a compatible Pokémon. Has a chance to lower the target's Special Defense by one stage.",
     "teachesMove": "Shadow Ball"
   },
   {
@@ -3887,7 +3887,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Brick Break to a compatible Pokémon. (Gen II: Mud-Slap Gen I: Mimic)",
+    "description": "Teaches Brick Break to a compatible Pokémon. Destroys Reflect and Light Screen.",
     "teachesMove": "Brick Break"
   },
   {
@@ -3899,7 +3899,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Double Team to a compatible Pokémon.",
+    "description": "Teaches Double Team to a compatible Pokémon. Raises the user's evasion by one stage.",
     "teachesMove": "Double Team"
   },
   {
@@ -3911,7 +3911,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Reflect to a compatible Pokémon. (Gen II: Ice Punch)",
+    "description": "Teaches Reflect to a compatible Pokémon. Reduces damage from physical attacks by half.",
     "teachesMove": "Reflect"
   },
   {
@@ -3923,7 +3923,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Sludge Wave to a compatible Pokémon. (Gen IV & III: Shock Wave Gen II: Swagger Gen I: Bide)",
+    "description": "Teaches Shock Wave to a compatible Pokémon. Never misses.",
     "teachesMove": "Shock Wave"
   },
   {
@@ -3935,7 +3935,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Flamethrower to a compatible Pokémon. (Gen II: Sleep Talk Gen I: Metronome)",
+    "description": "Teaches Flamethrower to a compatible Pokémon. Has a chance to burn the target.",
     "teachesMove": "Flamethrower"
   },
   {
@@ -3947,7 +3947,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Sludge Bomb to a compatible Pokémon. (Gen I: Selfdestruct)",
+    "description": "Teaches Sludge Bomb to a compatible Pokémon. Has a chance to poison the target.",
     "teachesMove": "Sludge Bomb"
   },
   {
@@ -3959,7 +3959,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Sandstorm to a compatible Pokémon. (Gen I: Egg Bomb)",
+    "description": "Teaches Sandstorm to a compatible Pokémon. Changes the weather to a sandstorm for five turns.",
     "teachesMove": "Sandstorm"
   },
   {
@@ -3971,7 +3971,7 @@
     "price": 5500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Fire Blast to a compatible Pokémon.",
+    "description": "Teaches Fire Blast to a compatible Pokémon. Has a chance to burn the target.",
     "teachesMove": "Fire Blast"
   },
   {
@@ -3983,7 +3983,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Rock Tomb to a compatible Pokémon. (Gen II & I: Swift)",
+    "description": "Teaches Rock Tomb to a compatible Pokémon. Has a chance to lower the target's Speed by one stage.",
     "teachesMove": "Rock Tomb"
   },
   {
@@ -3995,7 +3995,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Aerial Ace to a compatible Pokémon. (Gen II: Defense Curl Gen I: Skull Bash)",
+    "description": "Teaches Aerial Ace to a compatible Pokémon. Never misses.",
     "teachesMove": "Aerial Ace"
   },
   {
@@ -4007,7 +4007,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Torment to a compatible Pokémon. (Gen II: ThunderPunch Gen I: Softboiled)",
+    "description": "Teaches Torment to a compatible Pokémon. Prevents the target from using the same move twice in a row.",
     "teachesMove": "Torment"
   },
   {
@@ -4019,7 +4019,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Facade to a compatible Pokémon. (Gen II & I: Dream Eater)",
+    "description": "Teaches Facade to a compatible Pokémon. Power doubles if user is burned, paralyzed, or poisoned.",
     "teachesMove": "Facade"
   },
   {
@@ -4031,7 +4031,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Flame Charge to a compatible Pokémon. (Gen IV & III: Secret Power Gen II: Detect Gen I: Sky Attack)",
+    "description": "Teaches Secret Power to a compatible Pokémon. Has a chance to inflict a status effect which depends upon the terrain.",
     "teachesMove": "Secret Power"
   },
   {
@@ -4043,7 +4043,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Rest to a compatible Pokémon.",
+    "description": "Teaches Rest to a compatible Pokémon. User sleeps for two turns, completely healing itself.",
     "teachesMove": "Rest"
   },
   {
@@ -4055,7 +4055,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Attract to a compatible Pokémon. (Gen I: Thunder Wave)",
+    "description": "Teaches Attract to a compatible Pokémon. Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.",
     "teachesMove": "Attract"
   },
   {
@@ -4067,7 +4067,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Thief to a compatible Pokémon. (Gen I: Psywave)",
+    "description": "Teaches Thief to a compatible Pokémon. Takes the target's item.",
     "teachesMove": "Thief"
   },
   {
@@ -4079,7 +4079,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Low Sweep to a compatible Pokémon. (Gen IV & III & II: Steel Wing Gen I: Explosion)",
+    "description": "Teaches Steel Wing to a compatible Pokémon. Has a chance to raise the user's Defense by one stage.",
     "teachesMove": "Steel Wing"
   },
   {
@@ -4091,7 +4091,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Round to a compatible Pokémon. (Gen IV & III: Skill Swap Gen II: Fire Punch Gen I: Rock Slide)",
+    "description": "Teaches Skill Swap to a compatible Pokémon. User and target swap abilities.",
     "teachesMove": "Skill Swap"
   },
   {
@@ -4103,7 +4103,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Echoed Voice to a compatible Pokémon. (Gen IV & III: Snatch Gen II: Fury Cutter Gen I: Tri Attack)",
+    "description": "Teaches Snatch to a compatible Pokémon. Steals the target's move, if it's self-targeted.",
     "teachesMove": "Snatch"
   },
   {
@@ -4115,7 +4115,7 @@
     "price": 5500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Overheat to a compatible Pokémon. (Gen II: Nightmare Gen I: Substitute)",
+    "description": "Teaches Overheat to a compatible Pokémon. Lowers the user's Special Attack by two stages after inflicting damage.",
     "teachesMove": "Overheat"
   },
   {
@@ -4127,7 +4127,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Ally Switch to a compatible Pokémon. (Gen IV: Roost)",
+    "description": "Teaches Roost to a compatible Pokémon. Heals the user by half its max HP.",
     "teachesMove": "Roost"
   },
   {
@@ -4139,7 +4139,7 @@
     "price": 5500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Focus Blast to a compatible Pokémon.",
+    "description": "Teaches Focus Blast to a compatible Pokémon. Has a chance to lower the target's Special Defense by one stage.",
     "teachesMove": "Focus Blast"
   },
   {
@@ -4151,7 +4151,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Energy Ball to a compatible Pokémon.",
+    "description": "Teaches Energy Ball to a compatible Pokémon. Has a chance to lower the target's Special Defense by one stage.",
     "teachesMove": "Energy Ball"
   },
   {
@@ -4163,7 +4163,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches False Swipe to a compatible Pokémon.",
+    "description": "Teaches False Swipe to a compatible Pokémon. Cannot lower the target's HP below 1.",
     "teachesMove": "False Swipe"
   },
   {
@@ -4175,7 +4175,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Scald to a compatible Pokémon. (Gen IV: Brine)",
+    "description": "Teaches Brine to a compatible Pokémon. Has double power against Pokémon that have less than half their max HP remaining.",
     "teachesMove": "Brine"
   },
   {
@@ -4187,7 +4187,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Fling to a compatible Pokémon.",
+    "description": "Teaches Fling to a compatible Pokémon. Throws held item at the target; power depends on the item.",
     "teachesMove": "Fling"
   },
   {
@@ -4199,7 +4199,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Charge Beam to a compatible Pokémon.",
+    "description": "Teaches Charge Beam to a compatible Pokémon. Has a chance to raise the user's Special Attack by one stage.",
     "teachesMove": "Charge Beam"
   },
   {
@@ -4211,7 +4211,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Sky Drop to a compatible Pokémon. (Gen IV: Endure)",
+    "description": "Teaches Endure to a compatible Pokémon. Prevents the user's HP from lowering below 1 this turn.",
     "teachesMove": "Endure"
   },
   {
@@ -4223,7 +4223,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Incinerate to a compatible Pokémon. (Gen IV: Dragon Pulse)",
+    "description": "Teaches Dragon Pulse to a compatible Pokémon. Inflicts regular damage with no additional effect.",
     "teachesMove": "Dragon Pulse"
   },
   {
@@ -4235,7 +4235,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Quash to a compatible Pokémon. (Gen IV: Drain Punch)",
+    "description": "Teaches Drain Punch to a compatible Pokémon. Drains half the damage inflicted to heal the user.",
     "teachesMove": "Drain Punch"
   },
   {
@@ -4247,7 +4247,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Will-O-Wisp to a compatible Pokémon.",
+    "description": "Teaches Will-O-Wisp to a compatible Pokémon. Burns the target.",
     "teachesMove": "Will-O-Wisp"
   },
   {
@@ -4259,7 +4259,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Acrobatics to a compatible Pokémon. (Gen IV: Silver Wind)",
+    "description": "Teaches Silver Wind to a compatible Pokémon. Has a chance to raise all of the user's stats by one stage.",
     "teachesMove": "Silver Wind"
   },
   {
@@ -4271,7 +4271,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Embargo to a compatible Pokémon.",
+    "description": "Teaches Embargo to a compatible Pokémon. Target cannot use held items.",
     "teachesMove": "Embargo"
   },
   {
@@ -4283,7 +4283,7 @@
     "price": 7500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Explosion to a compatible Pokémon.",
+    "description": "Teaches Explosion to a compatible Pokémon. User faints.",
     "teachesMove": "Explosion"
   },
   {
@@ -4295,7 +4295,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Shadow Claw to a compatible Pokémon.",
+    "description": "Teaches Shadow Claw to a compatible Pokémon. Has an increased chance for a critical hit.",
     "teachesMove": "Shadow Claw"
   },
   {
@@ -4307,7 +4307,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Payback to a compatible Pokémon.",
+    "description": "Teaches Payback to a compatible Pokémon. Power is doubled if the target has already moved this turn.",
     "teachesMove": "Payback"
   },
   {
@@ -4319,7 +4319,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Retaliate to a compatible Pokémon. (Gen IV: Recycle)",
+    "description": "Teaches Recycle to a compatible Pokémon. User recovers the item it last used up.",
     "teachesMove": "Recycle"
   },
   {
@@ -4331,7 +4331,7 @@
     "price": 7500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Giga Impact to a compatible Pokémon.",
+    "description": "Teaches Giga Impact to a compatible Pokémon. User foregoes its next turn to recharge.",
     "teachesMove": "Giga Impact"
   },
   {
@@ -4343,7 +4343,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Rock Polish to a compatible Pokémon.",
+    "description": "Teaches Rock Polish to a compatible Pokémon. Raises the user's Speed by two stages.",
     "teachesMove": "Rock Polish"
   },
   {
@@ -4355,7 +4355,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Flash to a compatible Pokémon.",
+    "description": "Teaches Flash to a compatible Pokémon. Lowers the target's accuracy by one stage.",
     "teachesMove": "Flash"
   },
   {
@@ -4367,7 +4367,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Stone Edge to a compatible Pokémon.",
+    "description": "Teaches Stone Edge to a compatible Pokémon. Has an increased chance for a critical hit.",
     "teachesMove": "Stone Edge"
   },
   {
@@ -4379,7 +4379,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Volt Switch to a compatible Pokémon. (Gen IV: Avalanche)",
+    "description": "Teaches Avalanche to a compatible Pokémon. Inflicts double damage if the user takes damage before attacking this turn.",
     "teachesMove": "Avalanche"
   },
   {
@@ -4391,7 +4391,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Thunder Wave to a compatible Pokémon.",
+    "description": "Teaches Thunder Wave to a compatible Pokémon. Paralyzes the target.",
     "teachesMove": "Thunder Wave"
   },
   {
@@ -4403,7 +4403,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Gyro Ball to a compatible Pokémon.",
+    "description": "Teaches Gyro Ball to a compatible Pokémon. Power raises when the user has lower Speed, up to a maximum of 150.",
     "teachesMove": "Gyro Ball"
   },
   {
@@ -4415,7 +4415,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Swords Dance to a compatible Pokémon.",
+    "description": "Teaches Swords Dance to a compatible Pokémon. Raises the user's Attack by two stages.",
     "teachesMove": "Swords Dance"
   },
   {
@@ -4427,7 +4427,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Struggle Bug to a compatible Pokémon. (Gen IV: Stealth Rock)",
+    "description": "Teaches Stealth Rock to a compatible Pokémon. Causes damage when opposing Pokémon switch in.",
     "teachesMove": "Stealth Rock"
   },
   {
@@ -4439,7 +4439,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Psych Up to a compatible Pokémon.",
+    "description": "Teaches Psych Up to a compatible Pokémon. Discards the user's stat changes and copies the target's.",
     "teachesMove": "Psych Up"
   },
   {
@@ -4451,7 +4451,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Bulldoze to a compatible Pokémon. (Gen IV: Captivate)",
+    "description": "Teaches Captivate to a compatible Pokémon. Lowers the target's Special Attack by two stages if it's the opposite gender.",
     "teachesMove": "Captivate"
   },
   {
@@ -4463,7 +4463,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Frost Breath to a compatible Pokémon. (Gen IV: Dark Pulse)",
+    "description": "Teaches Dark Pulse to a compatible Pokémon. Has a chance to make the target flinch.",
     "teachesMove": "Dark Pulse"
   },
   {
@@ -4475,7 +4475,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Rock Slide to a compatible Pokémon.",
+    "description": "Teaches Rock Slide to a compatible Pokémon. Has a chance to make the target flinch.",
     "teachesMove": "Rock Slide"
   },
   {
@@ -4487,7 +4487,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches X-Scissor to a compatible Pokémon.",
+    "description": "Teaches X-Scissor to a compatible Pokémon. Inflicts regular damage with no additional effect.",
     "teachesMove": "X-Scissor"
   },
   {
@@ -4499,7 +4499,7 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Dragon Tail to a compatible Pokémon. (Gen IV: Sleep Talk)",
+    "description": "Teaches Sleep Talk to a compatible Pokémon. Randomly uses one of the user's other three moves. Only works if the user is sleeping.",
     "teachesMove": "Sleep Talk"
   },
   {
@@ -4511,7 +4511,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Work Up to a compatible Pokémon. (Gen IV: Natural Gift)",
+    "description": "Teaches Natural Gift to a compatible Pokémon. Power and type depend on the held berry.",
     "teachesMove": "Natural Gift"
   },
   {
@@ -4523,7 +4523,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Poison Jab to a compatible Pokémon.",
+    "description": "Teaches Poison Jab to a compatible Pokémon. Has a chance to poison the target.",
     "teachesMove": "Poison Jab"
   },
   {
@@ -4535,7 +4535,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Dream Eater to a compatible Pokémon.",
+    "description": "Teaches Dream Eater to a compatible Pokémon. Only works on sleeping Pokémon. Drains half the damage inflicted to heal the user.",
     "teachesMove": "Dream Eater"
   },
   {
@@ -4547,7 +4547,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Grass Knot to a compatible Pokémon.",
+    "description": "Teaches Grass Knot to a compatible Pokémon. Inflicts more damage to heavier targets, with a maximum of 120 power.",
     "teachesMove": "Grass Knot"
   },
   {
@@ -4559,7 +4559,7 @@
     "price": 1500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Swagger to a compatible Pokémon.",
+    "description": "Teaches Swagger to a compatible Pokémon. Raises the target's Attack by two stages and confuses the target.",
     "teachesMove": "Swagger"
   },
   {
@@ -4571,7 +4571,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Pluck to a compatible Pokémon.",
+    "description": "Teaches Pluck to a compatible Pokémon. If target has a berry, inflicts double damage and uses the berry.",
     "teachesMove": "Pluck"
   },
   {
@@ -4583,7 +4583,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches U-turn to a compatible Pokémon.",
+    "description": "Teaches U-turn to a compatible Pokémon. User must switch out after attacking.",
     "teachesMove": "U-turn"
   },
   {
@@ -4595,7 +4595,7 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Substitute to a compatible Pokémon.",
+    "description": "Teaches Substitute to a compatible Pokémon. Transfers 1/4 of the user's max HP into a doll, protecting the user from further damage or status changes until it breaks.",
     "teachesMove": "Substitute"
   },
   {
@@ -4607,7 +4607,7 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Flash Cannon to a compatible Pokémon.",
+    "description": "Teaches Flash Cannon to a compatible Pokémon. Has a chance to lower the target's Special Defense by one stage.",
     "teachesMove": "Flash Cannon"
   },
   {
@@ -4619,7 +4619,7 @@
     "price": 5500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Trick Room to a compatible Pokémon.",
+    "description": "Teaches Trick Room to a compatible Pokémon. For five turns, slower Pokémon will act before faster Pokémon.",
     "teachesMove": "Trick Room"
   },
   {
@@ -4631,7 +4631,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Cut to a compatible Pokémon.",
+    "description": "Teaches Cut to a compatible Pokémon. Inflicts regular damage with no additional effect.",
     "teachesMove": "Cut"
   },
   {
@@ -4643,7 +4643,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Fly to a compatible Pokémon.",
+    "description": "Teaches Fly to a compatible Pokémon. User flies high into the air, dodging all attacks, and hits next turn.",
     "teachesMove": "Fly"
   },
   {
@@ -4655,7 +4655,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Surf to a compatible Pokémon.",
+    "description": "Teaches Surf to a compatible Pokémon. Inflicts regular damage and can hit Dive users.",
     "teachesMove": "Surf"
   },
   {
@@ -4667,7 +4667,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Strength to a compatible Pokémon.",
+    "description": "Teaches Strength to a compatible Pokémon. Inflicts regular damage with no additional effect.",
     "teachesMove": "Strength"
   },
   {
@@ -4679,7 +4679,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Waterfall to a compatible Pokémon. (HS: Whirlpool DPP: Defog Gen III & II & I: Flash)",
+    "description": "Teaches Defog to a compatible Pokémon. Lowers the target's evasion by one stage. Removes field effects from the enemy field.",
     "teachesMove": "Defog"
   },
   {
@@ -4691,7 +4691,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches Dive to a compatible Pokémon. (Gen IV & III: Rock Smash Gen II: Whirlpool)",
+    "description": "Teaches Rock Smash to a compatible Pokémon. Has a chance to lower the target's Defense by one stage.",
     "teachesMove": "Rock Smash"
   },
   {
@@ -4703,7 +4703,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches a move to a compatible Pokémon. (Gen IV & III & II: Waterfall)",
+    "description": "Teaches Waterfall to a compatible Pokémon. Has a chance to make the target flinch.",
     "teachesMove": "Waterfall"
   },
   {
@@ -4715,7 +4715,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Teaches a move to a compatible Pokémon. (Gen IV: Rock Climb Gen III: Dive)",
+    "description": "Teaches Rock Climb to a compatible Pokémon. Has a chance to confuse the target.",
     "teachesMove": "Rock Climb"
   },
   {

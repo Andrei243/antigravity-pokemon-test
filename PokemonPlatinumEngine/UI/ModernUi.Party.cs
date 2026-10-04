@@ -35,11 +35,12 @@ internal static partial class ModernUi
     /// The team as the target of an item from the bag. <paramref name="able"/> says whether the item would do
     /// anything for a Pokémon (null: nothing to say), shown as ABLE or NOT ABLE on its card, as in the games.
     /// </summary>
-    public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, bool?> able, float appear = 1f)
+    public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, bool?> able, float appear = 1f,
+        string action = "Use")
     {
         Backdrop(sw, sh);
         ScreenTitle("POKÉMON");
-        Hints(sw - 64, 44, ("Z", "Use"), ("Esc", "Back"));
+        Hints(sw - 64, 44, ("Z", action), ("Esc", "Back"));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {

@@ -212,6 +212,48 @@ public sealed class WorldRenderer
         }
     }
 
+    /// <summary>
+    /// What moves in the field besides the people in it: footprints, dust, leaves, rings on water, the door
+    /// someone is going through. The game tells it what happens and runs its clock.
+    /// </summary>
+    internal FieldLife Life { get; } = new();
+
+    // The weather of the scene last rendered and how bright a pale thing is in its light, for the layer drawn over the picture
+    private FieldWeather weather;
+    private float weatherLight = 1f;
+
+    // ------------------------------------------------------------------ the camera's own moves
+
+    // Where the camera has been sent to look instead of at the player, and how far it has got (0..1)
+    private Vector2? panTarget;
+    private float panAmount, panRate;
+    private float easedGround = float.NaN;
+    private double lastLifeTime;
+    private Map? easedMap;
+
+    /// <summary>
+    /// Sends the camera to look at a spot (in tiles) over <paramref name="seconds"/>, easing out of where it is
+    /// and into where it goes; it stays there until <see cref="ReleaseCamera"/>.
+    /// </summary>
+    public void PanCamera(float x, float z, float seconds)
+    {
+        panTarget = new Vector2(x, z);
+        panRate = 1f / MathF.Max(0.01f, seconds);
+    }
+
+    /// <summary>Brings the camera back to the player over <paramref name="seconds"/>.</summary>
+    public void ReleaseCamera(float seconds) => panRate = -1f / MathF.Max(0.01f, seconds);
+
+    /// <summary>How far along a pan the camera is, 0 to 1, eased at both ends.</summary>
+    public float PanEase => panAmount * panAmount * (3f - 2f * panAmount);
+
+    /// <summary>A character's field sprite facing the camera, for the interface to show large. Call outside any texture mode.</summary>
+    public Texture2D Portrait(string characterType)
+    {
+        context.EnsureLoaded();
+        return CharacterSprites.Portrait(context, characterType);
+    }
+
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
     public void Render(Map map, Player player) =>
         RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, GameClock.Hour);
@@ -228,8 +270,11 @@ public sealed class WorldRenderer
         bool indoors = map.IsIndoors;
         float pitchDeg = MapScene.PitchOf(map), vs = MapScene.VerticalScaleOf(map);
         lastWasIndoors = indoors;
-        var rig = ArtLook.FieldRig(hour, indoors);
+        // The weather where the player stands changes the light; the opening's fly-overs are always fair
+        weather = player != null ? map.WeatherAt(player.GridX, player.GridY) : FieldWeather.Clear;
+        var rig = ArtLook.Weathered(ArtLook.FieldRig(hour, indoors), weather);
         var light = rig.Light;
+        weatherLight = Brightness(rig);
 
         float time = (float)Raylib.GetTime();
         float lift = player != null ? player.HopHeight / Player.TileSize : 0f;
@@ -237,7 +282,23 @@ public sealed class WorldRenderer
         float groundY = player != null ? Relief.Under(map, px, pz, player.HeightOn(map)) : Relief.At(map, px, pz);
         // A room is one scene and the camera looks at its middle; outdoors the camera follows the player
         var room = indoors ? GetScene(map) : null;
-        var camera = BuildCamera(map, room, px, pz, groundY);
+
+        // The camera's own time: it rises and falls after the player smoothly (a jump of more than a tile and
+        // a half is an arrival somewhere else, and is taken at once), and goes where it is sent
+        float step = (float)Math.Clamp(Life.Now - lastLifeTime, 0.0, 0.1);
+        lastLifeTime = Life.Now;
+        if (map != easedMap || float.IsNaN(easedGround) || MathF.Abs(groundY - easedGround) > 1.5f) easedGround = groundY;
+        else easedGround += (groundY - easedGround) * MathF.Min(1f, step * 10f);
+        easedMap = map;
+        panAmount = Math.Clamp(panAmount + panRate * step, 0f, 1f);
+        if (panAmount <= 0f && panRate < 0f) panTarget = null;
+        float lookX = px, lookZ = pz;
+        if (panTarget is { } sent)
+        {
+            lookX += (sent.X - px) * PanEase;
+            lookZ += (sent.Y - pz) * PanEase;
+        }
+        var camera = BuildCamera(map, room, lookX, lookZ, easedGround);
 
         // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
         GroundRect? view = null, casters = null;
@@ -245,6 +306,9 @@ public sealed class WorldRenderer
         var scenes = ScenesFor(map, camera.Target.X, camera.Target.Z, view);
 
         shaders.SetTime(time);
+        shaders.SetWind(Weathers.Wind(weather));
+        if (!indoors) SceneTextures.AnimateWaterfall(Life.Now);
+        foreach (var scene in scenes) scene.Animate(Life.Now);
         // On a map of the whole region only the people near the view are drawn
         sight = map.IsStreamed ? view : null;
         VerticalScale = vs;
@@ -260,6 +324,7 @@ public sealed class WorldRenderer
         var focus = room != null ? room.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, indoors ? 18f : 40f);
 
+        FrameProfiler.Lap(FrameSection.Prepare);
         Raylib.BeginTextureMode(context.Shadows.Target);
         Raylib.ClearBackground(Color.White);
         Rlgl.SetClipPlanes(1.0, 200.0);
@@ -273,6 +338,7 @@ public sealed class WorldRenderer
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
+        FrameProfiler.Lap(FrameSection.Shadows);
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
@@ -305,8 +371,11 @@ public sealed class WorldRenderer
             else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
         }
         DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
+        DrawLife(map, camera, rig, upright: false);
+        DrawDoor(map);
         DrawActors(CharacterPass.Color);
-        DrawSpottedBubbles(map, camera, indoors, pitchDeg, vs);
+        DrawLife(map, camera, rig, upright: true);
+        DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
 
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -314,12 +383,50 @@ public sealed class WorldRenderer
 
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
+        FrameProfiler.Lap(FrameSection.Scene);
         context.PreparePost(rig.Post, new DepthRange(near, far, camera.FovY, (float)width / height), aoRadius: 0.45f);
     }
 
-    /// <summary>Composites the last rendered frame into the current target with tilt-shift blur and grading.</summary>
-    public void DrawToScreen(int destWidth, int destHeight) =>
+    /// <summary>
+    /// Composites the last rendered frame into the current target with tilt-shift blur and grading, and draws
+    /// the weather over it.
+    /// </summary>
+    public void DrawToScreen(int destWidth, int destHeight)
+    {
         context.Composite(new Rectangle(0, 0, destWidth, destHeight));
+        if (weather == FieldWeather.Clear) return;
+
+        // Mist takes the light of the scene it lies in; what falls catches a little more of it
+        hazeLayers.Clear();
+        WeatherFx.Haze(weather, Life.Now, hazeLayers);
+        foreach (var layer in hazeLayers)
+        {
+            var source = new Rectangle(-layer.OffsetX / layer.Scale, -layer.OffsetY / layer.Scale, destWidth / layer.Scale, destHeight / layer.Scale);
+            Raylib.DrawTexturePro(SceneTextures.Haze, source, new Rectangle(0, 0, destWidth, destHeight), Vector2.Zero, 0f, Dimmed(layer.Tint, weatherLight));
+        }
+
+        // Lightning whitens everything under it, the rain included
+        if (WeatherFx.Lightning(weather, Life.Now) is > 0f and var flash)
+            Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
+
+        weatherBlocks.Clear();
+        WeatherFx.Build(weather, Life.Now, destWidth, destHeight, weatherBlocks);
+        float falling = 0.55f + 0.45f * weatherLight;
+        foreach (var block in weatherBlocks)
+            Raylib.DrawRectangleRec(new Rectangle(block.X, block.Y, block.Width, block.Height), Dimmed(block.Color, falling));
+    }
+
+    private readonly List<WeatherBlock> weatherBlocks = new();
+    private readonly List<HazeLayer> hazeLayers = new();
+
+    /// <summary>What the scene's light makes of a pale thing drawn without the scenery's shader: the sun and the sky's share of it.</summary>
+    private static float Brightness(LightRig rig)
+    {
+        var lit = rig.Light.SunColor + rig.Light.SkyAmbient * 0.7f;
+        return Math.Clamp((lit.X + lit.Y + lit.Z) / 3f, 0.3f, 1f);
+    }
+
+    private static Color Dimmed(Color c, float light) => new((byte)(c.R * light), (byte)(c.G * light), (byte)(c.B * light), c.A);
 
     // ------------------------------------------------------------------ camera
 
@@ -487,7 +594,7 @@ public sealed class WorldRenderer
                 pose.Blink = false;
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
-            actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders),
+            actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
                 new Vector3(nx, Relief.At(map, nx, nz) - SinkAt(map, nx, nz), nz), Player.YawOf(npc.Facing), pose));
         }
 
@@ -506,7 +613,7 @@ public sealed class WorldRenderer
         float saddle = player.Saddle;
         float bob = player.Mount != null && MathF.Floor(time * 2.4f) % 2f == 0f ? Rows(1f) : 0f;
         float feet = groundY + lift + Rows(SurfMount.Seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle);
-        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
+        actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)
         {
@@ -526,22 +633,140 @@ public sealed class WorldRenderer
         if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);
     }
 
-    /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>
-    private static void DrawSpottedBubbles(Map map, Camera3D camera, bool indoors, float pitchDeg, float vs)
+    /// <summary>
+    /// The bubbles over people's heads: the "!" of a trainer who has spotted the player, and whatever anyone,
+    /// the player included, has been given to show (<see cref="NPC.ShowBubble"/>). A bubble pops up in three
+    /// frames: half size, four fifths, whole.
+    /// </summary>
+    private void DrawBubbles(Map map, Player? player, Camera3D camera, LightRig rig, bool indoors, float pitchDeg, float vs)
     {
-        var bubble = SceneTextures.Exclamation;
+        // A bubble is paper, not a lamp: after dark it dims some of the way with the scene, so it doesn't glow
+        var paper = Dimmed(Color.White, 0.35f + 0.65f * Brightness(rig));
+        Camera3D? straight = indoors ? null : camera;
+        void Bubble(EmoteBubble kind, float age, float x, float z, float ground)
+        {
+            var art = SceneTextures.Bubble(kind);
+            float size = age < 0.04f ? 0.5f : age < 0.08f ? 0.8f : 1f;
+            float w = LifeArt.BubbleWidth / 32f * size, h = LifeArt.BubbleHeight / 32f * size * vs;
+            DrawUpright(art, new Rectangle(0, 0, art.Width, art.Height), x + 0.5f, z + 0.15f, ground + 1.95f, w, h, paper, straight, pitchDeg);
+        }
+
         foreach (var npc in map.NPCs)
         {
+            float ground = Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f);
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
-            {
-                // Drawn without the scenery's shader, so it is moved by hand to stay over the straightened sprite
-                float cx = npc.DrawX + 0.5f, cz = npc.DrawY + 0.15f;
-                float y = Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f) + 1.95f;
-                if (!indoors) cx = Straighten(camera, pitchDeg, cx, y + 0.35f * vs, cz);
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), cx, cz, y, 0.7f, 0.7f * vs);
-            }
+                Bubble(EmoteBubble.Exclaim, TrainerApproach.ExclaimTime - npc.ExclamationTimer, npc.DrawX, npc.DrawY, ground);
+            else if (npc.BubbleTimer > 0f && npc.Bubble != EmoteBubble.None && InSight(npc))
+                Bubble(npc.Bubble, npc.BubbleAge, npc.DrawX, npc.DrawY, ground);
         }
+        if (player is { BubbleTimer: > 0f } && player.Bubble != EmoteBubble.None)
+            Bubble(player.Bubble, player.BubbleAge, player.PixelX / Player.TileSize, player.PixelY / Player.TileSize,
+                Relief.Under(map, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, player.HeightOn(map)));
         Rlgl.DrawRenderBatchActive();
+    }
+
+    // ------------------------------------------------------------------ life
+
+    private readonly List<LifeQuad> lifeFlat = new(), lifeUpright = new();
+
+    /// <summary>
+    /// Footprints and rings lying on the ground, or dust, leaves and drops standing up: cells of the life atlas
+    /// drawn without the scenery's shader, dimmed by hand as the light goes.
+    /// </summary>
+    private void DrawLife(Map map, Camera3D camera, LightRig rig, bool upright)
+    {
+        if (!upright)
+        {
+            lifeFlat.Clear();
+            lifeUpright.Clear();
+            Life.Quads(lifeFlat, lifeUpright);
+        }
+        var quads = upright ? lifeUpright : lifeFlat;
+        if (quads.Count == 0) return;
+
+        var atlas = SceneTextures.Life;
+        float pitchDeg = MapScene.PitchOf(map), vs = MapScene.VerticalScaleOf(map);
+        float lit = Brightness(rig);
+        const float cell = FieldLife.Cell;
+        Camera3D? straight = map.IsIndoors ? null : camera;
+        Rlgl.DisableDepthMask();
+        foreach (var q in quads)
+        {
+            // Water thrown up catches the sky: it dims only half as far as the ground does
+            bool wet = q.Cell >= FieldLife.Ring;
+            var tint = Dimmed(q.Tint, wet ? 0.5f + 0.5f * lit : lit);
+            var src = new Rectangle(q.Cell % FieldLife.Columns * cell, q.Cell / FieldLife.Columns * cell, cell, cell);
+            float cx = q.At.X;
+            if (upright)
+            {
+                DrawUpright(atlas, src, SnapToTexel(cx), q.At.Z, q.At.Y, q.Width, q.Height * vs, tint, straight, pitchDeg);
+                continue;
+            }
+
+            if (!map.IsIndoors && q.At.Y > 0.05f) cx = Straighten(camera, pitchDeg, cx, q.At.Y, q.At.Z);
+            float hw = q.Width / 2f, hd = q.Height / 2f;
+            float u0 = src.X / atlas.Width, u1 = (src.X + src.Width) / atlas.Width, v0 = src.Y / atlas.Height, v1 = (src.Y + src.Height) / atlas.Height;
+            // The cell's four corners, turned by quarter turns so a print points the way it was walked
+            (float U, float V)[] uv = { (u0, v1), (u1, v1), (u1, v0), (u0, v0) };
+            Rlgl.CheckRenderBatchLimit(4);
+            Rlgl.SetTexture(atlas.Id);
+            Rlgl.Begin(DrawMode.Quads);
+            Rlgl.Color4ub(tint.R, tint.G, tint.B, tint.A);
+            (float X, float Z)[] corner = { (cx - hw, q.At.Z + hd), (cx + hw, q.At.Z + hd), (cx + hw, q.At.Z - hd), (cx - hw, q.At.Z - hd) };
+            for (int i = 0; i < 4; i++)
+            {
+                var (u, v) = uv[(i + q.Turn) % 4];
+                Rlgl.TexCoord2f(u, v);
+                Rlgl.Vertex3f(corner[i].X, q.At.Y, corner[i].Z);
+            }
+            Rlgl.End();
+        }
+        Rlgl.SetTexture(0);
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
+    }
+
+    private readonly Dictionary<(bool Glass, bool Pair, byte Light, int Frame), CharacterSprites.Card> doorCards = new();
+
+    /// <summary>
+    /// The door someone is going through, standing ajar or open: a card of the open door's art over the shut
+    /// one painted on the wall, exactly where the building's art has it.
+    /// </summary>
+    private void DrawDoor(Map map)
+    {
+        if (Life.MovingDoor is not { } moving || moving.Map != map || map.IsIndoors) return;
+        int frame = Life.DoorFrame(map, moving.X, moving.Y);
+        if (frame == 0 || DoorPlace(map, moving.X, moving.Y) is not { } place) return;
+
+        var key = (place.Glass, place.Pair, place.Light, frame);
+        if (!doorCards.TryGetValue(key, out var card))
+            doorCards[key] = card = CharacterSprites.MakeCard(context, BuildingArt.OpenDoor(place.Glass, place.Pair, frame, place.Light), partOfAWall: true);
+        CharacterSprites.DrawCard(card, place.Foot, VerticalScale, CharacterPass.Color);
+    }
+
+    /// <summary>
+    /// Where the door of a warp's tile is painted, and how large: in the building's front wall, in the entrance
+    /// block that stands proud of it, or in a porch's front. Null if no building has a door there, or its door
+    /// is one that doesn't open by itself (a works' sliding door).
+    /// </summary>
+    internal static (Vector3 Foot, bool Glass, bool Pair, byte Light)? DoorPlace(Map map, int x, int y)
+    {
+        foreach (var b in MapStructures.BuildingsOf(map))
+        {
+            if (b.Annex || x < b.X0 || x > b.X1 || (y != b.Y1 && y != b.Y1 + 1) || !b.Doors.Exists(d => d.X == x)) continue;
+            var style = BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0));
+            if (style.SlidingDoor) return null;
+
+            // Texels south of the building's north edge: the wall's face, or the front of what stands before it
+            bool closedPorch = b.Porch.Contains(x);
+            bool portal = style.Portal > 0 && style.Pitched && b.Porch.Count == 0;
+            float z = b.Depth * BuildingArt.Bay + (closedPorch ? BuildingArt.Bay - BuildingArt.Inset : portal ? BuildingArt.PortalDepth : 0);
+            bool pair = !style.GlassDoor && (style.Portal > 0 || closedPorch);
+            float ground = Relief.At(map, b.X0 + b.Width / 2f, b.Y1 + 0.5f);
+            // A texel in front of the wall's art, so it wins over it
+            return (new Vector3(x + 0.5f, ground, b.Y0 + (z + 1f) / BuildingArt.Bay), style.GlassDoor, pair, BuildingArt.WindowLight(b, style));
+        }
+        return null;
     }
 
     /// <summary>
@@ -557,22 +782,35 @@ public sealed class WorldRenderer
         return camera.Position.X + (x - camera.Position.X) * k;
     }
 
-    /// <summary>An upright textured quad facing the camera's direction, centred on x and standing at y0.</summary>
-    private static void DrawUpright(Texture2D tex, Rectangle src, float cx, float cz, float y0, float w, float h)
+    /// <summary>
+    /// An upright textured quad facing the camera's direction, centred on x and standing at y0. Given the field's
+    /// camera, each corner is moved to where the scenery's shader would have put it (<see cref="Straighten"/>),
+    /// so the quad stands as straight on the screen as the sprites beside it.
+    /// </summary>
+    private static void DrawUpright(Texture2D tex, Rectangle src, float cx, float cz, float y0, float w, float h, Color tint,
+        Camera3D? straight = null, float pitchDeg = 0f)
     {
         float y1 = y0 + h;
         float x0 = cx - w / 2f, x1 = cx + w / 2f;
         float u0 = src.X / tex.Width, u1 = (src.X + src.Width) / tex.Width;
         float v0 = src.Y / tex.Height, v1 = (src.Y + src.Height) / tex.Height;
+        float bx0 = x0, bx1 = x1, tx0 = x0, tx1 = x1;
+        if (straight is { } camera)
+        {
+            bx0 = Straighten(camera, pitchDeg, x0, y0, cz);
+            bx1 = Straighten(camera, pitchDeg, x1, y0, cz);
+            tx0 = Straighten(camera, pitchDeg, x0, y1, cz);
+            tx1 = Straighten(camera, pitchDeg, x1, y1, cz);
+        }
 
         Rlgl.CheckRenderBatchLimit(4);
         Rlgl.SetTexture(tex.Id);
         Rlgl.Begin(DrawMode.Quads);
-        Rlgl.Color4ub(255, 255, 255, 255);
-        Rlgl.TexCoord2f(u0, v1); Rlgl.Vertex3f(x0, y0, cz);
-        Rlgl.TexCoord2f(u1, v1); Rlgl.Vertex3f(x1, y0, cz);
-        Rlgl.TexCoord2f(u1, v0); Rlgl.Vertex3f(x1, y1, cz);
-        Rlgl.TexCoord2f(u0, v0); Rlgl.Vertex3f(x0, y1, cz);
+        Rlgl.Color4ub(tint.R, tint.G, tint.B, tint.A);
+        Rlgl.TexCoord2f(u0, v1); Rlgl.Vertex3f(bx0, y0, cz);
+        Rlgl.TexCoord2f(u1, v1); Rlgl.Vertex3f(bx1, y0, cz);
+        Rlgl.TexCoord2f(u1, v0); Rlgl.Vertex3f(tx1, y1, cz);
+        Rlgl.TexCoord2f(u0, v0); Rlgl.Vertex3f(tx0, y1, cz);
         Rlgl.End();
         Rlgl.SetTexture(0);
     }

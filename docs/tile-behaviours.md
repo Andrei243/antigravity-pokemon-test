@@ -24,11 +24,11 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0x10` | `River` | Fresh water. | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon. | yes | yes | 1,583 | 8 | 18 places |
 | `0x13` | `Waterfall` | A waterfall: climbed with Waterfall; a surfer who enters from above is carried down. | **Rule.** Surfed up with Waterfall and down without; never sideways. |  | yes | 55 | 33 | Pokémon League, Mt. Coronet, Victory Road and 3 more |
 | `0x15` | `Sea` | The sea, and the still water of lakes and ponds. | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon. | yes | yes | 40,385 | 124 | 46 places |
-| `0x16` | `Puddle` | A puddle: walked through with a splash, and it mirrors the walker. | Walked through. (No splash or reflection yet.) |  |  | 913 | 0 | Pastoria City, Fullmoon Island, Lake Verity and 8 more |
-| `0x17` | `ShallowWater` | Water ankle deep: walked through, leaving ripples. | Walked through. (No splash or reflection yet.) |  |  | 378 | 0 | Sunyshore City, Route 213, Route 224 and 2 more |
-| `0x1D` | `StillPuddle` | A puddle that mirrors the walker without splashing. | Walked through. (No splash or reflection yet.) |  |  | 512 | 0 | Verity Cavern, Valor Cavern, Acuity Cavern |
+| `0x16` | `Puddle` | A puddle: walked through with a splash, and it mirrors the walker. | Walked through with a splash: a ring and two drops. (It has no look of its own and mirrors nobody yet.) |  |  | 913 | 0 | Pastoria City, Fullmoon Island, Lake Verity and 8 more |
+| `0x17` | `ShallowWater` | Water ankle deep: walked through, leaving ripples. | Walked through, leaving a ring on the water. |  |  | 378 | 0 | Sunyshore City, Route 213, Route 224 and 2 more |
+| `0x1D` | `StillPuddle` | A puddle that mirrors the walker without splashing. | Walked through. (It has no look of its own and mirrors nobody yet.) |  |  | 512 | 0 | Verity Cavern, Valor Cavern, Acuity Cavern |
 | `0x20` | `Ice` | Ice: a walker slides on until something stops them. | **Rule.** Whoever steps on it slides on until something stops them. |  |  | 835 | 12 | Snowpoint City, Snowpoint Temple |
-| `0x21` | `Sand` | Sand, which keeps footprints. | Walked on. (No footprints yet.) |  |  | 2,436 | 4 | Sunyshore City, unknown 250, Pal Park and 8 more |
+| `0x21` | `Sand` | Sand, which keeps footprints. | Walked on; every step leaves a footprint that fades. |  |  | 2,436 | 4 | Sunyshore City, unknown 250, Pal Park and 8 more |
 | `0x2C` | `ShinyFloor` | A polished floor that mirrors the walker. | Ground like any other: only the blocked flag and the height matter. |  |  | 444 | 0 | Pokémon League, Iron Ruins, Iceberg Ruins, Rock Peak Ruins |
 | `0x2D` | `NoExplorerKit` | Ground where the Explorer Kit can't be used. | Ground like any other: only the blocked flag and the height matter. |  |  | 2 | 0 | Eterna City, Veilstone City |
 | `0x30` | `BlockEast` | Open ground whose east side is closed: no stepping across that edge. | **Rule.** No step across its closed side, either way. |  |  | 25 | 20 | Jubilife TV, Global Terminal, Oreburgh City |
@@ -90,15 +90,15 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0x8E` | `Unknown8E` | Not understood yet. | *Not yet.* Not understood. |  |  | 2 | 2 | Snowpoint City, Pokémon Mansion, Route 212 and 5 more |
 | `0x8F` | `Unknown8F` | Not understood yet. | *Not yet.* Not understood. |  |  | 7 | 4 | T.G. Eterna Bldg, Eterna City, Sunyshore City and 7 more |
 | `0xA0` | `BerrySoil` | Soft soil where a Berry can be planted. | Ground like any other: only the blocked flag and the height matter. |  |  | 121 | 120 | 27 places |
-| `0xA1` | `DeepSnow` | Snow deep enough to slow a walker. | **Rule.** No running, no Bicycles; a walker sinks to the ankle. |  |  | 2,687 | 0 | Snowpoint City, Acuity Lakefront, Route 216, Route 217 |
-| `0xA2` | `DeeperSnow` | Deeper snow, slower still. | **Rule.** Half a walk's pace, no Bicycles; a walker sinks to the shin. |  |  | 703 | 0 | Snowpoint City, Acuity Lakefront, Route 216, Route 217 |
-| `0xA3` | `DeepestSnow` | The deepest snow: a walker wades. | **Rule.** A quarter of a walk's pace, no Bicycles; a walker sinks to the knee. |  |  | 171 | 0 | Snowpoint City, Acuity Lakefront, Route 217 |
+| `0xA1` | `DeepSnow` | Snow deep enough to slow a walker. | **Rule.** No running, no Bicycles; a walker sinks to the ankle and leaves footprints. |  |  | 2,687 | 0 | Snowpoint City, Acuity Lakefront, Route 216, Route 217 |
+| `0xA2` | `DeeperSnow` | Deeper snow, slower still. | **Rule.** Half a walk's pace, no Bicycles; a walker sinks to the shin and leaves footprints. |  |  | 703 | 0 | Snowpoint City, Acuity Lakefront, Route 216, Route 217 |
+| `0xA3` | `DeepestSnow` | The deepest snow: a walker wades. | **Rule.** A quarter of a walk's pace, no Bicycles; a walker sinks to the knee and leaves footprints. |  |  | 171 | 0 | Snowpoint City, Acuity Lakefront, Route 217 |
 | `0xA4` | `Mud` | Marsh mud. | **Rule.** No running, no Bicycles. (Platinum's sinking in the marsh is not built.) |  |  | 661 | 0 | Route 212, Great Marsh |
 | `0xA5` | `DeepMud` | Deep marsh mud, where a walker can get stuck. | **Rule.** Half a walk's pace, no Bicycles. (Getting stuck, as in Platinum, is not built.) |  |  | 542 | 0 | Route 212, Great Marsh |
 | `0xA6` | `MarshGrass` | Marsh mud with grass growing in it. | **Rule.** No running, no Bicycles. (Platinum's sinking in the marsh is not built.) | yes |  | 2,510 | 0 | Pastoria City, Great Marsh |
 | `0xA7` | `DeepMarshGrass` | Deep marsh mud with grass. | **Rule.** Half a walk's pace, no Bicycles. (Getting stuck, as in Platinum, is not built.) | yes |  | 584 | 0 | Great Marsh |
-| `0xA8` | `ShallowSnow` | A thin cover of snow that keeps footprints. | **Rule.** No Bicycles. |  |  | 1,443 | 7 | Snowpoint City, Mt. Coronet, Lake Acuity and 3 more |
-| `0xA9` | `ShadedSnow` | Thin snow in shade. | Walked on. (No footprints yet.) |  |  | 84 | 0 | Lake Verity, Twinleaf Town |
+| `0xA8` | `ShallowSnow` | A thin cover of snow that keeps footprints. | **Rule.** No Bicycles. Every step leaves a footprint. |  |  | 1,443 | 7 | Snowpoint City, Mt. Coronet, Lake Acuity and 3 more |
+| `0xA9` | `ShadedSnow` | Thin snow in shade. | Walked on; every step leaves a footprint that fades. |  |  | 84 | 0 | Lake Verity, Twinleaf Town |
 | `0xD7` | `BikeRampEast` | A ramp jumped eastward on a fast Bicycle. | *Not yet.* The jump from a ramp (plan 01 · M6). |  |  | 9 | 9 | Victory Road, Oreburgh Gate, Wayward Cave |
 | `0xD8` | `BikeRampWest` | A ramp jumped westward on a fast Bicycle. | *Not yet.* The jump from a ramp (plan 01 · M6). |  |  | 15 | 15 | Victory Road, Oreburgh Gate, Wayward Cave, Route 227 |
 | `0xD9` | `BikeSlopeTop` | The top of a muddy slope that only a fast Bicycle climbs. | **Rule.** Climbed only on a Bicycle in its fast gear. (The slide back down is not played.) |  |  | 17 | 0 | Wayward Cave, Route 207, Route 209 and 2 more |

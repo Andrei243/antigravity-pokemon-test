@@ -1,180 +1,177 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
-using Raylib_cs;
 using PokemonPlatinumEngine.Core;
-using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>Where the cursor is on the storage screen.</summary>
+public enum StorageZone { Party, BoxName, Box }
+
+/// <summary>
+/// The Pokémon Storage System: the party beside a box of thirty slots, and the Pokémon under the cursor. The A
+/// button puts a party Pokémon into storage or takes a stored one out. Stored Pokémon are one list for now,
+/// shown thirty to a box in the order they were put in; boxes with slots of their own, moving Pokémon between
+/// them, wallpapers and markings are plan 06 · R12's. Its logic takes no input (<see cref="Move"/>,
+/// <see cref="Confirm"/>), so tests and the harness drive it.
+/// </summary>
 public class PCScreen
 {
-    public int ModeIndex { get; set; } = 0; // 0 = Party, 1 = Box
-    public int PartyIndex { get; set; } = 0;
-    public int BoxIndex { get; set; } = 0;
-    public bool IsActive { get; set; } = false;
+    private const float AppearTime = 0.3f;
+
+    /// <summary>A box as Platinum has it: six across, five down, eighteen boxes.</summary>
+    public const int Columns = 6, Rows = 5, BoxSize = Columns * Rows, BoxCount = 18;
+
+    private float openAge;
+
+    public StorageZone Zone { get; set; }
+    public int PartyIndex { get; set; }
+
+    /// <summary>The slot of the box the cursor is on, counted row by row.</summary>
+    public int Cell { get; set; }
+    public int Box { get; set; }
+    public bool IsActive { get; set; }
 
     public void Open()
     {
         IsActive = true;
-        ModeIndex = 0;
+        Zone = StorageZone.Party;
         PartyIndex = 0;
-        BoxIndex = 0;
+        Cell = 0;
+        Box = 0;
+        openAge = 0f;
         AudioManager.PlaySound("select");
     }
 
-    public void Close()
+    public void Close() => IsActive = false;
+
+    /// <summary>The place in the list of stored Pokémon that the cursor's slot stands for.</summary>
+    public int StoredIndex => Box * BoxSize + Cell;
+
+    /// <summary>The Pokémon under the cursor, if there is one.</summary>
+    public Pokemon? Under(Party party, List<Pokemon> stored) => Zone switch
     {
-        IsActive = false;
+        StorageZone.Party => PartyIndex < party.Count ? party.Members[PartyIndex] : null,
+        StorageZone.Box => StoredIndex < stored.Count ? stored[StoredIndex] : null,
+        _ => null
+    };
+
+    /// <summary>
+    /// One step of the cursor. Up and down the party; sideways from the party into the box and from the box's
+    /// edge back to it; up from the box's top row (or down from its last) to its name, where left and right
+    /// change box.
+    /// </summary>
+    public void Move(int dx, int dy, int partyCount)
+    {
+        if (dx == 0 && dy == 0) return;
+        int col = Cell % Columns, row = Cell / Columns;
+        switch (Zone)
+        {
+            case StorageZone.Party:
+                if (dy != 0 && partyCount > 0) PartyIndex = UiNav.Wrap(Math.Min(PartyIndex, partyCount - 1), dy, partyCount);
+                else if (dx != 0)
+                {
+                    // Into the box at the row beside this party card, on the near side
+                    Zone = StorageZone.Box;
+                    Cell = Math.Min(PartyIndex, Rows - 1) * Columns + (dx > 0 ? 0 : Columns - 1);
+                }
+                break;
+            case StorageZone.BoxName:
+                if (dx != 0) Box = UiNav.Wrap(Box, dx, BoxCount);
+                else
+                {
+                    Zone = StorageZone.Box;
+                    Cell = (dy > 0 ? 0 : Rows - 1) * Columns + col;
+                }
+                break;
+            default:
+                if (dx != 0)
+                {
+                    col += Math.Sign(dx);
+                    if (col is < 0 or >= Columns)
+                    {
+                        if (partyCount == 0) col = UiNav.Wrap(col, 0, Columns);
+                        else
+                        {
+                            Zone = StorageZone.Party;
+                            PartyIndex = Math.Min(row, partyCount - 1);
+                            break;
+                        }
+                    }
+                    Cell = row * Columns + col;
+                }
+                else
+                {
+                    row += Math.Sign(dy);
+                    if (row is < 0 or >= Rows) Zone = StorageZone.BoxName;
+                    else Cell = row * Columns + col;
+                }
+                break;
+        }
+        AudioManager.PlaySound("cursor");
     }
 
-    public void Update(Party party, List<Pokemon> boxStorage, Action<string> onNotification)
+    /// <summary>The A button: a party Pokémon goes into storage (never the last one); a stored one joins the party if there is room.</summary>
+    public void Confirm(Party party, List<Pokemon> stored, Action<string> onNotification)
+    {
+        if (Zone == StorageZone.Party)
+        {
+            if (PartyIndex >= party.Count) return;
+            if (party.Count <= 1)
+            {
+                onNotification("That's your last Pokémon!");
+                return;
+            }
+            if (stored.Count >= BoxSize * BoxCount)
+            {
+                onNotification("The boxes are full.");
+                return;
+            }
+            var pokemon = party.Members[PartyIndex];
+            party.RemoveAt(PartyIndex);
+            stored.Add(pokemon);
+            PartyIndex = Math.Min(PartyIndex, party.Count - 1);
+            // The box it went into comes up, so it is seen to land
+            Box = (stored.Count - 1) / BoxSize;
+            AudioManager.PlaySound("select");
+            onNotification($"{pokemon.DisplayName} was put in Box {Box + 1}.");
+        }
+        else if (Zone == StorageZone.Box)
+        {
+            if (StoredIndex >= stored.Count) return;
+            if (party.IsFull)
+            {
+                onNotification("Your party is full.");
+                return;
+            }
+            var pokemon = stored[StoredIndex];
+            stored.RemoveAt(StoredIndex);
+            party.Add(pokemon);
+            AudioManager.PlaySound("select");
+            onNotification($"{pokemon.DisplayName} joined your party.");
+        }
+    }
+
+    public void Update(Party party, List<Pokemon> boxStorage, Action<string> onNotification, float dt = 1f / 60f)
     {
         if (!IsActive) return;
+        openAge += dt;
 
-        if (InputManager.IsActionPressed(GameAction.Left) || InputManager.IsActionPressed(GameAction.Right))
-        {
-            ModeIndex = 1 - ModeIndex;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Up))
-        {
-            if (ModeIndex == 0)
-            {
-                PartyIndex = (PartyIndex - 1 + party.Count) % Math.Max(1, party.Count);
-            }
-            else
-            {
-                if (boxStorage.Count > 0)
-                {
-                    BoxIndex = (BoxIndex - 1 + boxStorage.Count) % boxStorage.Count;
-                }
-            }
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Down))
-        {
-            if (ModeIndex == 0)
-            {
-                PartyIndex = (PartyIndex + 1) % Math.Max(1, party.Count);
-            }
-            else
-            {
-                if (boxStorage.Count > 0)
-                {
-                    BoxIndex = (BoxIndex + 1) % boxStorage.Count;
-                }
-            }
-            AudioManager.PlaySound("cursor");
-        }
+        int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+        int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+        if (dx != 0 || dy != 0) Move(dx, dy, party.Count);
         else if (InputManager.IsActionPressed(GameAction.Cancel))
         {
             Close();
             AudioManager.PlaySound("cancel");
         }
-        else if (InputManager.IsActionPressed(GameAction.Confirm))
-        {
-            if (ModeIndex == 0)
-            {
-                // Deposit
-                if (party.Count <= 1)
-                {
-                    onNotification("You can't deposit your last Pokémon!");
-                }
-                else if (PartyIndex < party.Count)
-                {
-                    var pkmn = party.Members[PartyIndex];
-                    party.RemoveAt(PartyIndex);
-                    boxStorage.Add(pkmn);
-                    PartyIndex = Math.Min(PartyIndex, party.Count - 1);
-                    AudioManager.PlaySound("select");
-                    onNotification($"Deposited {pkmn.DisplayName} into Box 1.");
-                }
-            }
-            else
-            {
-                // Withdraw
-                if (party.Count >= 6)
-                {
-                    onNotification("Your party is already full (6 Pokémon)!");
-                }
-                else if (boxStorage.Count > 0 && BoxIndex < boxStorage.Count)
-                {
-                    var pkmn = boxStorage[BoxIndex];
-                    boxStorage.RemoveAt(BoxIndex);
-                    party.Add(pkmn);
-                    BoxIndex = Math.Max(0, Math.Min(BoxIndex, boxStorage.Count - 1));
-                    AudioManager.PlaySound("select");
-                    onNotification($"Withdrew {pkmn.DisplayName} to your party.");
-                }
-            }
-        }
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, boxStorage, onNotification);
     }
 
     public void Draw(int screenWidth, int screenHeight, Party party, List<Pokemon> boxStorage)
     {
         if (!IsActive) return;
-
-        Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Palette.UiBackground);
-
-        // Header
-        RenderHelper.DrawPlatinumPanel(16, 16, screenWidth - 32, 44, Palette.UiPanelBg);
-        RenderHelper.DrawTextWithShadow("BEBE'S POKÉMON STORAGE SYSTEM", 32, 26, 20, Palette.UiAccent);
-        RenderHelper.DrawTextWithShadow("Left/Right: Switch Panel | Z: Deposit / Withdraw | X: Exit", screenWidth - 440, 28, 14, Palette.TextDark);
-
-        int colWidth = (screenWidth - 48) / 2;
-        int listHeight = screenHeight - 88;
-
-        // Party Column (Left)
-        Color partyColFill = ModeIndex == 0 ? Color.White : Palette.UiPanelBg;
-        RenderHelper.DrawPlatinumPanel(16, 70, colWidth, listHeight, partyColFill);
-        RenderHelper.DrawTextWithShadow($"YOUR PARTY ({party.Count}/6)", 32, 84, 18, Palette.UiAccent);
-
-        for (int i = 0; i < party.Count; i++)
-        {
-            var pkmn = party.Members[i];
-            int iy = 120 + i * 62;
-            bool isSel = ModeIndex == 0 && PartyIndex == i;
-
-            RenderHelper.DrawPlatinumPanel(26, iy, colWidth - 20, 54, isSel ? Palette.UiAccent : Palette.UiBackground);
-            var icon = PixelArtGenerator.GetPokemonIcon(pkmn.Species.Name);
-            Raylib.DrawTexture(icon, 34, iy + 6, Color.White);
-
-            RenderHelper.DrawTextWithShadow(pkmn.DisplayName, 88, iy + 8, 16, isSel ? Color.White : Palette.TextDark);
-            RenderHelper.DrawTextWithShadow($"Lv.{pkmn.Level}  HP:{pkmn.CurrentHP}/{pkmn.MaxHP}", 88, iy + 30, 14, isSel ? Color.White : Palette.TextDark);
-        }
-
-        // Box 1 Column (Right)
-        int boxX = 24 + colWidth;
-        Color boxColFill = ModeIndex == 1 ? Color.White : Palette.UiPanelBg;
-        RenderHelper.DrawPlatinumPanel(boxX, 70, colWidth, listHeight, boxColFill);
-        RenderHelper.DrawTextWithShadow($"STORAGE BOX 1 ({boxStorage.Count} Pokémon)", boxX + 16, 84, 18, Palette.UiAccent);
-
-        if (boxStorage.Count == 0)
-        {
-            RenderHelper.DrawTextWithShadow("Box is empty.", boxX + 32, 140, 16, Color.Gray);
-        }
-        else
-        {
-            int maxBoxVis = 6;
-            int offset = Math.Max(0, BoxIndex - maxBoxVis / 2);
-
-            for (int i = 0; i < maxBoxVis && (i + offset) < boxStorage.Count; i++)
-            {
-                int bIdx = i + offset;
-                var pkmn = boxStorage[bIdx];
-                int iy = 120 + i * 62;
-                bool isSel = ModeIndex == 1 && BoxIndex == bIdx;
-
-                RenderHelper.DrawPlatinumPanel(boxX + 12, iy, colWidth - 24, 54, isSel ? Palette.UiAccent : Palette.UiBackground);
-                var icon = PixelArtGenerator.GetPokemonIcon(pkmn.Species.Name);
-                Raylib.DrawTexture(icon, boxX + 20, iy + 6, Color.White);
-
-                RenderHelper.DrawTextWithShadow(pkmn.DisplayName, boxX + 74, iy + 8, 16, isSel ? Color.White : Palette.TextDark);
-                RenderHelper.DrawTextWithShadow($"Lv.{pkmn.Level}", boxX + 74, iy + 30, 14, isSel ? Color.White : Palette.TextDark);
-            }
-        }
+        ModernUi.DrawStorage(screenWidth, screenHeight, this, party, boxStorage, Math.Clamp(openAge / AppearTime, 0f, 1f));
     }
 }

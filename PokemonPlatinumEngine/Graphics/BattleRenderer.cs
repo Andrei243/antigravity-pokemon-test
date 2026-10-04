@@ -89,7 +89,9 @@ public sealed class BattleRenderer
         float shake = (anim.ShakeAge >= 0f ? (1f - anim.ShakeAge / 0.4f) * anim.ShakeStrength : 0f) + fx.Shake;
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
 
+        FrameProfiler.Lap(FrameSection.Prepare);
         RenderStage(stage, anim, rig);
+        FrameProfiler.Lap(FrameSection.Scene);
         context.PreparePost(rig.Post, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
     }
 
@@ -159,6 +161,7 @@ public sealed class BattleRenderer
         var shaders = context.Shaders;
         var light = rig.Light;
         shaders.SetTime(anim.Time);
+        shaders.SetWind(0f);
         shaders.SetWalkers(Array.Empty<Vector3>());
 
         // 1. Shadow map over the whole field
@@ -177,6 +180,7 @@ public sealed class BattleRenderer
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
+        FrameProfiler.Lap(FrameSection.Shadows);
 
         shaders.SetLighting(Raymath.MatrixMultiply(lightView, lightProjection), light, camera.Position, context.Shadows.Texel);
         shaders.SetCharacterStyle(shadowStrength: 1f, rimStrength: rig.Rim);
@@ -344,7 +348,7 @@ public sealed class BattleRenderer
             pose.WalkBlend = 1f;
             pose.Running = true;
         }
-        return new TrainerPlacement("PLAYER", Matrix4x4.CreateScale(PlayerTrainerScale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
+        return new TrainerPlacement(PlayerIdentity.Character, Matrix4x4.CreateScale(PlayerTrainerScale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
     }
 
     private void DrawTrainers(CharacterPass pass)

@@ -79,13 +79,21 @@ uniform int walkerCount;
 uniform float upright;
 uniform float pitchSin;
 
+// How much harder than a breeze the wind blows: 0 on a calm day, 1 in a blizzard
+uniform float wind;
+
 // Vertex alpha below 1 marks geometry that sways in the wind (grass tips, leaves). Only static scenery sways,
 // and scenery is drawn with an identity model matrix, so the world-space offset can be added in model space.
+// Gusts cross the map from the west, one about every twelve seconds: the sway swells as one passes and the
+// tips lean a little eastward.
 vec3 SwayOffset(vec3 p, float weight)
 {
     if (weight <= 0.0) return vec3(0.0);
     float t = time * 1.6 + p.x * 0.63 + p.z * 0.41;
-    return vec3(sin(t) * 0.07, 0.0, cos(t * 0.83) * 0.035) * weight;
+    float gust = 0.5 + 0.5 * sin(time * 0.52 - p.x * 0.11 - p.z * 0.045);
+    gust *= gust;
+    float strength = 0.75 + 0.6 * gust + wind * (0.6 + gust);
+    return vec3(sin(t) * 0.07 * strength + 0.05 * gust * (0.5 + wind), 0.0, cos(t * 0.83) * 0.035 * strength) * weight;
 }
 
 // Only what sways fully (grass and flowers, not leaves) parts: pushed outward and pressed down near a walker
@@ -248,6 +256,7 @@ const vec2 poisson[16] = vec2[](
 
 float Shadow(vec4 lightPos)
 {
+    if (shadowTaps == 0) return 1.0; // TEMP-G11
     vec3 p = lightPos.xyz / lightPos.w * 0.5 + 0.5;
     if (p.x <= 0.0 || p.x >= 1.0 || p.y <= 0.0 || p.y >= 1.0 || p.z >= 1.0) return 1.0;
     float a = 6.2831853 * fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
@@ -822,6 +831,15 @@ void main()
         }
     }
 
+    /// <summary>
+    /// How much harder than a breeze the wind blows (0 calm, 1 a blizzard). The programs are shared, so every
+    /// renderer sets it each frame: the battle has none.
+    /// </summary>
+    public void SetWind(float extra)
+    {
+        foreach (var shader in FieldPrograms) Set(shader, "wind", extra);
+    }
+
     /// <summary>How strongly characters receive scene shadows, and how bright their rim light is.</summary>
     public void SetCharacterStyle(float shadowStrength, float rimStrength)
     {
@@ -903,6 +921,7 @@ void main()
     /// <summary>How much drifting cloud shade dims the sunlight (0 for none).</summary>
     public void SetCloudShade(float amount)
     {
+        if (RenderContext.Experiment.Contains("nocloud")) amount = 0f; // TEMP-G11
         foreach (var shader in new[] { World, Character, CharacterSkinned, Sprite, Water }) Set(shader, "cloudShade", amount);
     }
 
@@ -911,7 +930,7 @@ void main()
     {
         foreach (var shader in new[] { World, Character, CharacterSkinned, Water, SoftWater })
         {
-            Set(shader, "shadowTaps", Math.Clamp(taps, 5, 16));
+            Set(shader, "shadowTaps", RenderContext.Experiment.Contains("noshadow") ? 0 : Math.Clamp(taps, 5, 16)); // TEMP-G11
             Set(shader, "shadowSoftness", softness);
         }
     }

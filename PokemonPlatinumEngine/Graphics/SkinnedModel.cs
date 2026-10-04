@@ -155,6 +155,7 @@ internal sealed class SkinnedModel
         }
         if (location >= 0) Raylib.SetShaderValueV(shader, location, rows, ShaderUniformDataType.Vec4, count * 3);
         Raylib.DrawMesh(Mesh, material, Matrix4x4.Transpose(model));
+        FrameProfiler.Count(Mesh.TriangleCount);
     }
 
     public void Unload() => Raylib.UnloadMesh(Mesh);

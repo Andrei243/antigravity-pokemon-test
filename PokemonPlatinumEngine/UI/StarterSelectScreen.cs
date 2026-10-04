@@ -1,136 +1,103 @@
 using System;
-using System.Numerics;
-using Raylib_cs;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
-using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>
+/// The choice of a partner from the professor's briefcase: Sinnoh's three as three cards, and a question
+/// before the choice is final. Its logic takes no input (<see cref="Move"/>, <see cref="Confirm"/>,
+/// <see cref="Cancel"/>), so tests and the harness drive it.
+/// </summary>
 public class StarterSelectScreen
 {
-    public int SelectedIndex { get; set; } = 0;
-    public bool IsActive { get; set; } = false;
-    public bool ConfirmingSelection { get; set; } = false;
+    private const float AppearTime = 0.45f;
 
-    private readonly string[] starters = { "Turtwig", "Chimchar", "Piplup" };
+    /// <summary>Sinnoh's three partners, in Pokédex order, and the level they are given at.</summary>
+    public static readonly string[] Starters = { "Turtwig", "Chimchar", "Piplup" };
+    public const int Level = 5;
+
+    private readonly UiReveal asking = new(0.18f, 0.1f);
+    private float openAge;
+
+    public int SelectedIndex { get; set; }
+    public bool IsActive { get; set; }
+
+    /// <summary>True while "Choose …?" is up; <see cref="AnswerYes"/> is where its cursor is (it opens on going back).</summary>
+    public bool ConfirmingSelection { get; set; }
+    public bool AnswerYes { get; private set; }
 
     public void Open()
     {
         IsActive = true;
         SelectedIndex = 0;
         ConfirmingSelection = false;
+        asking.Snap(false);
+        openAge = 0f;
         AudioManager.PlaySound("select");
     }
 
-    public void Close()
+    public void Close() => IsActive = false;
+
+    /// <summary>Left and right: between the three, or between the two answers while the question is up.</summary>
+    public void Move(int step)
     {
-        IsActive = false;
+        if (step == 0) return;
+        if (ConfirmingSelection) AnswerYes = step > 0;
+        else SelectedIndex = UiNav.Wrap(SelectedIndex, step, Starters.Length);
+        AudioManager.PlaySound("cursor");
     }
 
-    public Pokemon? Update()
+    /// <summary>The A button: asks first, then gives the Pokémon once the answer is yes.</summary>
+    public Pokemon? Confirm()
     {
-        if (!IsActive) return null;
-
-        if (ConfirmingSelection)
-        {
-            if (InputManager.IsActionPressed(GameAction.Confirm))
-            {
-                string chosenSpecies = starters[SelectedIndex];
-                var species = PokemonDatabase.Get(chosenSpecies)!;
-                var pokemon = new Pokemon(species, 5);
-                AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
-                Close();
-                return pokemon;
-            }
-            else if (InputManager.IsActionPressed(GameAction.Cancel))
-            {
-                ConfirmingSelection = false;
-                AudioManager.PlaySound("cancel");
-            }
-            return null;
-        }
-
-        if (InputManager.IsActionPressed(GameAction.Left))
-        {
-            SelectedIndex = (SelectedIndex - 1 + starters.Length) % starters.Length;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Right))
-        {
-            SelectedIndex = (SelectedIndex + 1) % starters.Length;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Confirm))
+        if (!ConfirmingSelection)
         {
             ConfirmingSelection = true;
+            AnswerYes = false;
+            asking.Open();
             AudioManager.PlaySound("select");
+            return null;
         }
+        if (!AnswerYes)
+        {
+            Cancel();
+            return null;
+        }
+        var pokemon = new Pokemon(PokemonDatabase.Get(Starters[SelectedIndex])!, Level);
+        AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
+        Close();
+        return pokemon;
+    }
 
+    /// <summary>The B button: takes the question away. The briefcase itself can't be left without choosing.</summary>
+    public void Cancel()
+    {
+        if (!ConfirmingSelection) return;
+        ConfirmingSelection = false;
+        asking.Close();
+        AudioManager.PlaySound("cancel");
+    }
+
+    public Pokemon? Update(float dt = 1f / 60f)
+    {
+        if (!IsActive) return null;
+        openAge += dt;
+        asking.Update(dt);
+
+        if (InputManager.IsActionPressed(GameAction.Left)) Move(-1);
+        else if (InputManager.IsActionPressed(GameAction.Right)) Move(1);
+        else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) return Confirm();
         return null;
     }
 
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!IsActive) return;
-
-        // Background Gradient
-        Raylib.DrawRectangleGradientV(0, 0, screenWidth, screenHeight, new Color(24, 48, 96, 255), new Color(60, 120, 190, 255));
-
-        // Header Title
-        RenderHelper.DrawPlatinumPanel(40, 24, screenWidth - 80, 68, Palette.UiPanelBg);
-        RenderHelper.DrawTextWithShadow("PROFESSOR ROWAN'S STARTER BRIEFCASE", 64, 40, 32, Palette.UiAccent);
-
-        // 3 Starter Pokeball Bases
-        int slotWidth = 460;
-        int slotHeight = 440;
-        int spacing = 60;
-        int totalW = 3 * slotWidth + 2 * spacing;
-        int startX = (screenWidth - totalW) / 2;
-        int startY = 120;
-
-        for (int i = 0; i < 3; i++)
-        {
-            int sx = startX + i * (slotWidth + spacing);
-            bool isSelected = SelectedIndex == i;
-
-            Color fill = isSelected ? Color.White : Palette.UiPanelBg;
-            RenderHelper.DrawPlatinumPanel(sx, startY, slotWidth, slotHeight, fill);
-
-            var sp = PokemonDatabase.Get(starters[i])!;
-
-            // Sprite preview
-            var sprite = PixelArtGenerator.GetPokemonSprite(sp.Name, isBack: false);
-            float bob = isSelected ? MathF.Sin((float)Raylib.GetTime() * 6f) * 10f : 0f;
-            float spriteScale = 2.5f;
-            float px = sx + (slotWidth - sprite.Width * spriteScale) / 2f;
-            float py = startY + 36 + bob;
-            Raylib.DrawTextureEx(sprite, new Vector2(px, py), 0f, spriteScale, Color.White);
-
-            // Name & Type
-            RenderHelper.DrawTextWithShadow(sp.Name, sx + (slotWidth - RenderHelper.MeasureText(sp.Name, 30)) / 2, startY + 330, 30, isSelected ? Palette.UiAccent : Palette.TextDark);
-            RenderHelper.DrawTypeBadge(sx + (slotWidth - 140) / 2, startY + 376, sp.PrimaryType, 140, 36);
-        }
-
-        // Details Panel (Bottom)
-        var current = PokemonDatabase.Get(starters[SelectedIndex])!;
-        int detY = startY + slotHeight + 36;
-        int detHeight = screenHeight - detY - 36;
-        RenderHelper.DrawPlatinumPanel(40, detY, screenWidth - 80, detHeight, Palette.UiPanelBg);
-
-        if (ConfirmingSelection)
-        {
-            RenderHelper.DrawTextWithShadow($"Do you choose {current.Name} as your partner Pokémon?", 68, detY + 32, 34, Palette.UiAccent);
-            RenderHelper.DrawTextWithShadow("Press Z / Space to Confirm   |   X / Esc to Change Selection", 68, detY + 96, 26, Palette.TextDark);
-        }
-        else
-        {
-            RenderHelper.DrawTextWithShadow($"No.{current.DexNumber:D3} {current.Name}  -  The {current.Category} Pokémon", 68, detY + 28, 30, Palette.UiAccent);
-            RenderHelper.DrawTextWithShadow(current.DexEntry, 68, detY + 76, 24, Palette.TextDark);
-            RenderHelper.DrawTextWithShadow($"Base Stats: HP {current.BaseHP}  |  Attack {current.BaseAttack}  |  Defense {current.BaseDefense}  |  Sp. Atk {current.BaseSpAttack}  |  Sp. Def {current.BaseSpDefense}  |  Speed {current.BaseSpeed}", 68, detY + 130, 22, Palette.TextDark);
-            RenderHelper.DrawTextWithShadow("Left / Right: Select Pokémon   |   Z / Space: Choose Partner", screenWidth - 720, detY + detHeight - 44, 22, Color.Gray);
-        }
+        ModernUi.DrawStarters(screenWidth, screenHeight, this, Math.Clamp(openAge / AppearTime, 0f, 1f), asking.Shown, asking.Visible);
     }
 }

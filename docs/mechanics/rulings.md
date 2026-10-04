@@ -33,7 +33,7 @@ The baseline is Platinum's own code (`Pokemon_GetEvolutionTargetSpecies`, `Evolu
 | Ursaring | Peat Block under a full moon | Peat Block at night | No phases of the moon |
 | Cosmoem | Solgaleo or Lunala by game version | Solgaleo by day, Lunala at night | No versions |
 | (affection) | Pokémon-Amie hearts | Friendship 220 | Generation 8 folded affection into friendship |
-| Sliggoo | Rain in the field | The same; battles' rain doesn't count | Waits for field weather |
+| Sliggoo | Rain in the field | The same; battles' rain doesn't count | Done: the field's weather where the player stands (plan 04 · G9) |
 
 **Trading**
 

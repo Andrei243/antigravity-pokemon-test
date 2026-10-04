@@ -19,6 +19,9 @@ public readonly record struct QualityProfile(float SceneScale, bool AmbientOcclu
     };
 }
 
+/// <summary>How fast written lines are typed out.</summary>
+public enum TextSpeed { Slow, Normal, Fast }
+
 /// <summary>Player options, kept in settings.json next to the save.</summary>
 public sealed class GameSettings
 {
@@ -32,6 +35,17 @@ public sealed class GameSettings
     public bool Fullscreen { get; set; }
     public bool VSync { get; set; } = true;
     public bool Muted { get; set; }
+
+    /// <summary>How fast what people say is written out.</summary>
+    public TextSpeed TextSpeed { get; set; } = TextSpeed.Normal;
+
+    /// <summary>Characters a second at a text speed (style guide, "Menu screens").</summary>
+    public static float CharactersPerSecond(TextSpeed speed) => speed switch
+    {
+        TextSpeed.Slow => 24f,
+        TextSpeed.Fast => 120f,
+        _ => 45f
+    };
 
     /// <summary>A fixed time of day, or null to follow the clock.</summary>
     public TimeOfDay? TimeOfDay { get; set; }
