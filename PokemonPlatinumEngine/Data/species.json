@@ -2206,6 +2206,7 @@
   },
   {
     "dexNumber": 25,
+    "sinnohNumber": 104,
     "name": "Pikachu",
     "category": "Mouse",
     "generation": 1,
@@ -2302,6 +2303,7 @@
   },
   {
     "dexNumber": 26,
+    "sinnohNumber": 105,
     "name": "Raichu",
     "category": "Mouse",
     "generation": 1,
@@ -3067,6 +3069,7 @@
   },
   {
     "dexNumber": 35,
+    "sinnohNumber": 100,
     "name": "Clefairy",
     "category": "Fairy",
     "generation": 1,
@@ -3179,6 +3182,7 @@
   },
   {
     "dexNumber": 36,
+    "sinnohNumber": 101,
     "name": "Clefable",
     "category": "Fairy",
     "generation": 1,
@@ -3539,6 +3543,7 @@
   },
   {
     "dexNumber": 41,
+    "sinnohNumber": 28,
     "name": "Zubat",
     "category": "Bat",
     "generation": 1,
@@ -3626,6 +3631,7 @@
   },
   {
     "dexNumber": 42,
+    "sinnohNumber": 29,
     "name": "Golbat",
     "category": "Bat",
     "generation": 1,
@@ -4786,6 +4792,7 @@
   },
   {
     "dexNumber": 54,
+    "sinnohNumber": 43,
     "name": "Psyduck",
     "category": "Duck",
     "generation": 1,
@@ -4882,6 +4889,7 @@
   },
   {
     "dexNumber": 55,
+    "sinnohNumber": 44,
     "name": "Golduck",
     "category": "Duck",
     "generation": 1,
@@ -5627,6 +5635,7 @@
   },
   {
     "dexNumber": 63,
+    "sinnohNumber": 20,
     "name": "Abra",
     "category": "Psi",
     "generation": 1,
@@ -5674,6 +5683,7 @@
   },
   {
     "dexNumber": 64,
+    "sinnohNumber": 21,
     "name": "Kadabra",
     "category": "Psi",
     "generation": 1,
@@ -5773,6 +5783,7 @@
   },
   {
     "dexNumber": 65,
+    "sinnohNumber": 22,
     "name": "Alakazam",
     "category": "Psi",
     "generation": 1,
@@ -5866,6 +5877,7 @@
   },
   {
     "dexNumber": 66,
+    "sinnohNumber": 40,
     "name": "Machop",
     "category": "Superpower",
     "generation": 1,
@@ -5961,6 +5973,7 @@
   },
   {
     "dexNumber": 67,
+    "sinnohNumber": 41,
     "name": "Machoke",
     "category": "Superpower",
     "generation": 1,
@@ -6060,6 +6073,7 @@
   },
   {
     "dexNumber": 68,
+    "sinnohNumber": 42,
     "name": "Machamp",
     "category": "Superpower",
     "generation": 1,
@@ -6425,6 +6439,7 @@
   },
   {
     "dexNumber": 72,
+    "sinnohNumber": 136,
     "name": "Tentacool",
     "category": "Jellyfish",
     "generation": 1,
@@ -6521,6 +6536,7 @@
   },
   {
     "dexNumber": 73,
+    "sinnohNumber": 137,
     "name": "Tentacruel",
     "category": "Jellyfish",
     "generation": 1,
@@ -6619,6 +6635,7 @@
   },
   {
     "dexNumber": 74,
+    "sinnohNumber": 31,
     "name": "Geodude",
     "category": "Rock",
     "generation": 1,
@@ -6715,6 +6732,7 @@
   },
   {
     "dexNumber": 75,
+    "sinnohNumber": 32,
     "name": "Graveler",
     "category": "Rock",
     "generation": 1,
@@ -6819,6 +6837,7 @@
   },
   {
     "dexNumber": 76,
+    "sinnohNumber": 33,
     "name": "Golem",
     "category": "Megaton",
     "generation": 1,
@@ -6917,6 +6936,7 @@
   },
   {
     "dexNumber": 77,
+    "sinnohNumber": 90,
     "name": "Ponyta",
     "category": "Fire Horse",
     "generation": 1,
@@ -7008,6 +7028,7 @@
   },
   {
     "dexNumber": 78,
+    "sinnohNumber": 91,
     "name": "Rapidash",
     "category": "Fire Horse",
     "generation": 1,
@@ -7330,6 +7351,7 @@
   },
   {
     "dexNumber": 81,
+    "sinnohNumber": 178,
     "name": "Magnemite",
     "category": "Magnet",
     "generation": 1,
@@ -7434,6 +7456,7 @@
   },
   {
     "dexNumber": 82,
+    "sinnohNumber": 179,
     "name": "Magneton",
     "category": "Magnet",
     "generation": 1,
@@ -8434,6 +8457,7 @@
   },
   {
     "dexNumber": 92,
+    "sinnohNumber": 69,
     "name": "Gastly",
     "category": "Gas",
     "generation": 1,
@@ -8532,6 +8556,7 @@
   },
   {
     "dexNumber": 93,
+    "sinnohNumber": 70,
     "name": "Haunter",
     "category": "Gas",
     "generation": 1,
@@ -8638,6 +8663,7 @@
   },
   {
     "dexNumber": 94,
+    "sinnohNumber": 71,
     "name": "Gengar",
     "category": "Shadow",
     "generation": 1,
@@ -8738,6 +8764,7 @@
   },
   {
     "dexNumber": 95,
+    "sinnohNumber": 34,
     "name": "Onix",
     "category": "Rock Snake",
     "generation": 1,
@@ -10054,6 +10081,7 @@
   },
   {
     "dexNumber": 108,
+    "sinnohNumber": 161,
     "name": "Lickitung",
     "category": "Licking",
     "generation": 1,
@@ -10344,6 +10372,7 @@
   },
   {
     "dexNumber": 111,
+    "sinnohNumber": 186,
     "name": "Rhyhorn",
     "category": "Spikes",
     "generation": 1,
@@ -10433,6 +10462,7 @@
   },
   {
     "dexNumber": 112,
+    "sinnohNumber": 187,
     "name": "Rhydon",
     "category": "Drill",
     "generation": 1,
@@ -10535,6 +10565,7 @@
   },
   {
     "dexNumber": 113,
+    "sinnohNumber": 97,
     "name": "Chansey",
     "category": "Egg",
     "generation": 1,
@@ -10634,6 +10665,7 @@
   },
   {
     "dexNumber": 114,
+    "sinnohNumber": 181,
     "name": "Tangela",
     "category": "Vine",
     "generation": 1,
@@ -11037,6 +11069,7 @@
   },
   {
     "dexNumber": 118,
+    "sinnohNumber": 78,
     "name": "Goldeen",
     "category": "Goldfish",
     "generation": 1,
@@ -11132,6 +11165,7 @@
   },
   {
     "dexNumber": 119,
+    "sinnohNumber": 79,
     "name": "Seaking",
     "category": "Goldfish",
     "generation": 1,
@@ -11387,6 +11421,7 @@
   },
   {
     "dexNumber": 122,
+    "sinnohNumber": 95,
     "name": "Mr. Mime",
     "category": "Barrier",
     "generation": 1,
@@ -11504,6 +11539,7 @@
   },
   {
     "dexNumber": 123,
+    "sinnohNumber": 195,
     "name": "Scyther",
     "category": "Mantis",
     "generation": 1,
@@ -11732,6 +11768,7 @@
   },
   {
     "dexNumber": 125,
+    "sinnohNumber": 198,
     "name": "Electabuzz",
     "category": "Electric",
     "generation": 1,
@@ -11827,6 +11864,7 @@
   },
   {
     "dexNumber": 126,
+    "sinnohNumber": 201,
     "name": "Magmar",
     "category": "Spitfire",
     "generation": 1,
@@ -12105,6 +12143,7 @@
   },
   {
     "dexNumber": 129,
+    "sinnohNumber": 23,
     "name": "Magikarp",
     "category": "Fish",
     "generation": 1,
@@ -12160,6 +12199,7 @@
   },
   {
     "dexNumber": 130,
+    "sinnohNumber": 24,
     "name": "Gyarados",
     "category": "Atrocious",
     "generation": 1,
@@ -12381,6 +12421,7 @@
   },
   {
     "dexNumber": 133,
+    "sinnohNumber": 163,
     "name": "Eevee",
     "category": "Evolution",
     "generation": 1,
@@ -12503,6 +12544,7 @@
   },
   {
     "dexNumber": 134,
+    "sinnohNumber": 164,
     "name": "Vaporeon",
     "category": "Bubble Jet",
     "generation": 1,
@@ -12595,6 +12637,7 @@
   },
   {
     "dexNumber": 135,
+    "sinnohNumber": 165,
     "name": "Jolteon",
     "category": "Lightning",
     "generation": 1,
@@ -12687,6 +12730,7 @@
   },
   {
     "dexNumber": 136,
+    "sinnohNumber": 166,
     "name": "Flareon",
     "category": "Flame",
     "generation": 1,
@@ -12779,6 +12823,7 @@
   },
   {
     "dexNumber": 137,
+    "sinnohNumber": 192,
     "name": "Porygon",
     "category": "Virtual",
     "generation": 1,
@@ -13381,6 +13426,7 @@
   },
   {
     "dexNumber": 143,
+    "sinnohNumber": 113,
     "name": "Snorlax",
     "category": "Sleeping",
     "generation": 1,
@@ -13477,6 +13523,7 @@
     "name": "Articuno",
     "category": "Freeze",
     "generation": 1,
+    "legendary": true,
     "primaryType": "Ice",
     "secondaryType": "Flying",
     "baseHP": 90,
@@ -13570,6 +13617,7 @@
     "name": "Zapdos",
     "category": "Electric",
     "generation": 1,
+    "legendary": true,
     "primaryType": "Electric",
     "secondaryType": "Flying",
     "baseHP": 90,
@@ -13663,6 +13711,7 @@
     "name": "Moltres",
     "category": "Flame",
     "generation": 1,
+    "legendary": true,
     "primaryType": "Fire",
     "secondaryType": "Flying",
     "baseHP": 90,
@@ -14068,6 +14117,7 @@
     "name": "Mewtwo",
     "category": "Genetic",
     "generation": 1,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 106,
     "baseAttack": 110,
@@ -14171,6 +14221,7 @@
     "name": "Mew",
     "category": "New Species",
     "generation": 1,
+    "mythical": true,
     "primaryType": "Psychic",
     "baseHP": 100,
     "baseAttack": 100,
@@ -15378,6 +15429,7 @@
   },
   {
     "dexNumber": 163,
+    "sinnohNumber": 106,
     "name": "Hoothoot",
     "category": "Owl",
     "generation": 2,
@@ -15482,6 +15534,7 @@
   },
   {
     "dexNumber": 164,
+    "sinnohNumber": 107,
     "name": "Noctowl",
     "category": "Owl",
     "generation": 2,
@@ -15988,6 +16041,7 @@
   },
   {
     "dexNumber": 169,
+    "sinnohNumber": 30,
     "name": "Crobat",
     "category": "Bat",
     "generation": 2,
@@ -16295,6 +16349,7 @@
   },
   {
     "dexNumber": 172,
+    "sinnohNumber": 103,
     "name": "Pichu",
     "category": "Tiny Mouse",
     "generation": 2,
@@ -16361,6 +16416,7 @@
   },
   {
     "dexNumber": 173,
+    "sinnohNumber": 99,
     "name": "Cleffa",
     "category": "Star Shape",
     "generation": 2,
@@ -16498,6 +16554,7 @@
   },
   {
     "dexNumber": 175,
+    "sinnohNumber": 173,
     "name": "Togepi",
     "category": "Spike Ball",
     "generation": 2,
@@ -16593,6 +16650,7 @@
   },
   {
     "dexNumber": 176,
+    "sinnohNumber": 174,
     "name": "Togetic",
     "category": "Happiness",
     "generation": 2,
@@ -17257,6 +17315,7 @@
   },
   {
     "dexNumber": 183,
+    "sinnohNumber": 125,
     "name": "Marill",
     "category": "Aqua Mouse",
     "generation": 2,
@@ -17345,6 +17404,7 @@
   },
   {
     "dexNumber": 184,
+    "sinnohNumber": 126,
     "name": "Azumarill",
     "category": "Aqua Rabbit",
     "generation": 2,
@@ -17439,6 +17499,7 @@
   },
   {
     "dexNumber": 185,
+    "sinnohNumber": 93,
     "name": "Sudowoodo",
     "category": "Imitation",
     "generation": 2,
@@ -17954,6 +18015,7 @@
   },
   {
     "dexNumber": 190,
+    "sinnohNumber": 63,
     "name": "Aipom",
     "category": "Long Tail",
     "generation": 2,
@@ -18243,6 +18305,7 @@
   },
   {
     "dexNumber": 193,
+    "sinnohNumber": 183,
     "name": "Yanma",
     "category": "Clear Wing",
     "generation": 2,
@@ -18352,6 +18415,7 @@
   },
   {
     "dexNumber": 194,
+    "sinnohNumber": 117,
     "name": "Wooper",
     "category": "Water Fish",
     "generation": 2,
@@ -18449,6 +18513,7 @@
   },
   {
     "dexNumber": 195,
+    "sinnohNumber": 118,
     "name": "Quagsire",
     "category": "Water Fish",
     "generation": 2,
@@ -18544,6 +18609,7 @@
   },
   {
     "dexNumber": 196,
+    "sinnohNumber": 167,
     "name": "Espeon",
     "category": "Sun",
     "generation": 2,
@@ -18636,6 +18702,7 @@
   },
   {
     "dexNumber": 197,
+    "sinnohNumber": 168,
     "name": "Umbreon",
     "category": "Moonlight",
     "generation": 2,
@@ -18728,6 +18795,7 @@
   },
   {
     "dexNumber": 198,
+    "sinnohNumber": 74,
     "name": "Murkrow",
     "category": "Darkness",
     "generation": 2,
@@ -18924,6 +18992,7 @@
   },
   {
     "dexNumber": 200,
+    "sinnohNumber": 72,
     "name": "Misdreavus",
     "category": "Screech",
     "generation": 2,
@@ -19018,6 +19087,7 @@
   },
   {
     "dexNumber": 201,
+    "sinnohNumber": 114,
     "name": "Unown",
     "category": "Symbol",
     "generation": 2,
@@ -19110,6 +19180,7 @@
   },
   {
     "dexNumber": 203,
+    "sinnohNumber": 121,
     "name": "Girafarig",
     "category": "Long Neck",
     "generation": 2,
@@ -19534,6 +19605,7 @@
   },
   {
     "dexNumber": 207,
+    "sinnohNumber": 153,
     "name": "Gligar",
     "category": "Fly Scorpion",
     "generation": 2,
@@ -19631,6 +19703,7 @@
   },
   {
     "dexNumber": 208,
+    "sinnohNumber": 35,
     "name": "Steelix",
     "category": "Iron Snake",
     "generation": 2,
@@ -20061,6 +20134,7 @@
   },
   {
     "dexNumber": 212,
+    "sinnohNumber": 196,
     "name": "Scizor",
     "category": "Pincer",
     "generation": 2,
@@ -20250,6 +20324,7 @@
   },
   {
     "dexNumber": 214,
+    "sinnohNumber": 62,
     "name": "Heracross",
     "category": "Single Horn",
     "generation": 2,
@@ -20344,6 +20419,7 @@
   },
   {
     "dexNumber": 215,
+    "sinnohNumber": 144,
     "name": "Sneasel",
     "category": "Sharp Claw",
     "generation": 2,
@@ -20833,6 +20909,7 @@
   },
   {
     "dexNumber": 220,
+    "sinnohNumber": 203,
     "name": "Swinub",
     "category": "Pig",
     "generation": 2,
@@ -20933,6 +21010,7 @@
   },
   {
     "dexNumber": 221,
+    "sinnohNumber": 204,
     "name": "Piloswine",
     "category": "Swine",
     "generation": 2,
@@ -21147,6 +21225,7 @@
   },
   {
     "dexNumber": 223,
+    "sinnohNumber": 132,
     "name": "Remoraid",
     "category": "Jet",
     "generation": 2,
@@ -21235,6 +21314,7 @@
   },
   {
     "dexNumber": 224,
+    "sinnohNumber": 133,
     "name": "Octillery",
     "category": "Jet",
     "generation": 2,
@@ -21385,6 +21465,7 @@
   },
   {
     "dexNumber": 226,
+    "sinnohNumber": 141,
     "name": "Mantine",
     "category": "Kite",
     "generation": 2,
@@ -21589,6 +21670,7 @@
   },
   {
     "dexNumber": 228,
+    "sinnohNumber": 176,
     "name": "Houndour",
     "category": "Dark",
     "generation": 2,
@@ -21689,6 +21771,7 @@
   },
   {
     "dexNumber": 229,
+    "sinnohNumber": 177,
     "name": "Houndoom",
     "category": "Dark",
     "generation": 2,
@@ -22095,6 +22178,7 @@
   },
   {
     "dexNumber": 233,
+    "sinnohNumber": 193,
     "name": "Porygon2",
     "category": "Virtual",
     "generation": 2,
@@ -22644,6 +22728,7 @@
   },
   {
     "dexNumber": 239,
+    "sinnohNumber": 197,
     "name": "Elekid",
     "category": "Electric",
     "generation": 2,
@@ -22734,6 +22819,7 @@
   },
   {
     "dexNumber": 240,
+    "sinnohNumber": 200,
     "name": "Magby",
     "category": "Live Coal",
     "generation": 2,
@@ -22913,6 +22999,7 @@
   },
   {
     "dexNumber": 242,
+    "sinnohNumber": 98,
     "name": "Blissey",
     "category": "Happiness",
     "generation": 2,
@@ -23009,6 +23096,7 @@
     "name": "Raikou",
     "category": "Thunder",
     "generation": 2,
+    "legendary": true,
     "primaryType": "Electric",
     "baseHP": 90,
     "baseAttack": 85,
@@ -23102,6 +23190,7 @@
     "name": "Entei",
     "category": "Volcano",
     "generation": 2,
+    "legendary": true,
     "primaryType": "Fire",
     "baseHP": 115,
     "baseAttack": 115,
@@ -23195,6 +23284,7 @@
     "name": "Suicune",
     "category": "Aurora",
     "generation": 2,
+    "legendary": true,
     "primaryType": "Water",
     "baseHP": 100,
     "baseAttack": 75,
@@ -23594,6 +23684,7 @@
     "name": "Lugia",
     "category": "Diving",
     "generation": 2,
+    "legendary": true,
     "primaryType": "Psychic",
     "secondaryType": "Flying",
     "baseHP": 106,
@@ -23690,6 +23781,7 @@
     "name": "Ho-Oh",
     "category": "Rainbow",
     "generation": 2,
+    "legendary": true,
     "primaryType": "Fire",
     "secondaryType": "Flying",
     "baseHP": 106,
@@ -23786,6 +23878,7 @@
     "name": "Celebi",
     "category": "Time Travel",
     "generation": 2,
+    "mythical": true,
     "primaryType": "Psychic",
     "secondaryType": "Grass",
     "baseHP": 100,
@@ -25162,6 +25255,7 @@
   },
   {
     "dexNumber": 265,
+    "sinnohNumber": 48,
     "name": "Wurmple",
     "category": "Worm",
     "generation": 3,
@@ -25226,6 +25320,7 @@
   },
   {
     "dexNumber": 266,
+    "sinnohNumber": 49,
     "name": "Silcoon",
     "category": "Cocoon",
     "generation": 3,
@@ -25275,6 +25370,7 @@
   },
   {
     "dexNumber": 267,
+    "sinnohNumber": 50,
     "name": "Beautifly",
     "category": "Butterfly",
     "generation": 3,
@@ -25356,6 +25452,7 @@
   },
   {
     "dexNumber": 268,
+    "sinnohNumber": 51,
     "name": "Cascoon",
     "category": "Cocoon",
     "generation": 3,
@@ -25405,6 +25502,7 @@
   },
   {
     "dexNumber": 269,
+    "sinnohNumber": 52,
     "name": "Dustox",
     "category": "Poison Moth",
     "generation": 3,
@@ -26113,6 +26211,7 @@
   },
   {
     "dexNumber": 278,
+    "sinnohNumber": 119,
     "name": "Wingull",
     "category": "Seagull",
     "generation": 3,
@@ -26205,6 +26304,7 @@
   },
   {
     "dexNumber": 279,
+    "sinnohNumber": 120,
     "name": "Pelipper",
     "category": "Water Bird",
     "generation": 3,
@@ -26311,6 +26411,7 @@
   },
   {
     "dexNumber": 280,
+    "sinnohNumber": 157,
     "name": "Ralts",
     "category": "Feeling",
     "generation": 3,
@@ -26407,6 +26508,7 @@
   },
   {
     "dexNumber": 281,
+    "sinnohNumber": 158,
     "name": "Kirlia",
     "category": "Emotion",
     "generation": 3,
@@ -26520,6 +26622,7 @@
   },
   {
     "dexNumber": 282,
+    "sinnohNumber": 159,
     "name": "Gardevoir",
     "category": "Embrace",
     "generation": 3,
@@ -28066,6 +28169,7 @@
   },
   {
     "dexNumber": 298,
+    "sinnohNumber": 124,
     "name": "Azurill",
     "category": "Polka Dot",
     "generation": 3,
@@ -28133,6 +28237,7 @@
   },
   {
     "dexNumber": 299,
+    "sinnohNumber": 155,
     "name": "Nosepass",
     "category": "Compass",
     "generation": 3,
@@ -28925,6 +29030,7 @@
   },
   {
     "dexNumber": 307,
+    "sinnohNumber": 86,
     "name": "Meditite",
     "category": "Meditate",
     "generation": 3,
@@ -29024,6 +29130,7 @@
   },
   {
     "dexNumber": 308,
+    "sinnohNumber": 87,
     "name": "Medicham",
     "category": "Meditate",
     "generation": 3,
@@ -29717,6 +29824,7 @@
   },
   {
     "dexNumber": 315,
+    "sinnohNumber": 26,
     "name": "Roselia",
     "category": "Thorn",
     "generation": 3,
@@ -31534,6 +31642,7 @@
   },
   {
     "dexNumber": 333,
+    "sinnohNumber": 171,
     "name": "Swablu",
     "category": "Cotton Bird",
     "generation": 3,
@@ -31630,6 +31739,7 @@
   },
   {
     "dexNumber": 334,
+    "sinnohNumber": 172,
     "name": "Altaria",
     "category": "Humming",
     "generation": 3,
@@ -32098,6 +32208,7 @@
   },
   {
     "dexNumber": 339,
+    "sinnohNumber": 80,
     "name": "Barboach",
     "category": "Whiskers",
     "generation": 3,
@@ -32198,6 +32309,7 @@
   },
   {
     "dexNumber": 340,
+    "sinnohNumber": 81,
     "name": "Whiscash",
     "category": "Whiskers",
     "generation": 3,
@@ -33093,6 +33205,7 @@
   },
   {
     "dexNumber": 349,
+    "sinnohNumber": 138,
     "name": "Feebas",
     "category": "Fish",
     "generation": 3,
@@ -33149,6 +33262,7 @@
   },
   {
     "dexNumber": 350,
+    "sinnohNumber": 139,
     "name": "Milotic",
     "category": "Tender",
     "generation": 3,
@@ -33618,6 +33732,7 @@
   },
   {
     "dexNumber": 355,
+    "sinnohNumber": 189,
     "name": "Duskull",
     "category": "Requiem",
     "generation": 3,
@@ -33712,6 +33827,7 @@
   },
   {
     "dexNumber": 356,
+    "sinnohNumber": 190,
     "name": "Dusclops",
     "category": "Beckon",
     "generation": 3,
@@ -33836,6 +33952,7 @@
   },
   {
     "dexNumber": 357,
+    "sinnohNumber": 185,
     "name": "Tropius",
     "category": "Fruit",
     "generation": 3,
@@ -33931,6 +34048,7 @@
   },
   {
     "dexNumber": 358,
+    "sinnohNumber": 83,
     "name": "Chimecho",
     "category": "Wind Chime",
     "generation": 3,
@@ -34019,6 +34137,7 @@
   },
   {
     "dexNumber": 359,
+    "sinnohNumber": 209,
     "name": "Absol",
     "category": "Disaster",
     "generation": 3,
@@ -34198,6 +34317,7 @@
   },
   {
     "dexNumber": 361,
+    "sinnohNumber": 206,
     "name": "Snorunt",
     "category": "Snow Hat",
     "generation": 3,
@@ -34295,6 +34415,7 @@
   },
   {
     "dexNumber": 362,
+    "sinnohNumber": 207,
     "name": "Glalie",
     "category": "Face",
     "generation": 3,
@@ -35670,6 +35791,7 @@
     "name": "Regirock",
     "category": "Rock Peak",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Rock",
     "baseHP": 80,
     "baseAttack": 100,
@@ -35758,6 +35880,7 @@
     "name": "Regice",
     "category": "Iceberg",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Ice",
     "baseHP": 80,
     "baseAttack": 50,
@@ -35846,6 +35969,7 @@
     "name": "Registeel",
     "category": "Iron",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Steel",
     "baseHP": 80,
     "baseAttack": 75,
@@ -35943,6 +36067,7 @@
     "name": "Latias",
     "category": "Eon",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Psychic",
     "baseHP": 80,
@@ -36039,6 +36164,7 @@
     "name": "Latios",
     "category": "Eon",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Psychic",
     "baseHP": 80,
@@ -36135,6 +36261,7 @@
     "name": "Kyogre",
     "category": "Sea Basin",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Water",
     "baseHP": 100,
     "baseAttack": 100,
@@ -36217,6 +36344,7 @@
     "name": "Groudon",
     "category": "Continent",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Ground",
     "baseHP": 100,
     "baseAttack": 150,
@@ -36299,6 +36427,7 @@
     "name": "Rayquaza",
     "category": "Sky High",
     "generation": 3,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Flying",
     "baseHP": 105,
@@ -36383,6 +36512,7 @@
     "name": "Jirachi",
     "category": "Wish",
     "generation": 3,
+    "mythical": true,
     "primaryType": "Steel",
     "secondaryType": "Psychic",
     "baseHP": 100,
@@ -36483,6 +36613,7 @@
     "name": "Deoxys",
     "category": "DNA",
     "generation": 3,
+    "mythical": true,
     "primaryType": "Psychic",
     "baseHP": 50,
     "baseAttack": 150,
@@ -36572,6 +36703,7 @@
   },
   {
     "dexNumber": 387,
+    "sinnohNumber": 1,
     "name": "Turtwig",
     "category": "Tiny Leaf",
     "generation": 4,
@@ -36663,6 +36795,7 @@
   },
   {
     "dexNumber": 388,
+    "sinnohNumber": 2,
     "name": "Grotle",
     "category": "Grove",
     "generation": 4,
@@ -36759,6 +36892,7 @@
   },
   {
     "dexNumber": 389,
+    "sinnohNumber": 3,
     "name": "Torterra",
     "category": "Continent",
     "generation": 4,
@@ -36866,6 +37000,7 @@
   },
   {
     "dexNumber": 390,
+    "sinnohNumber": 4,
     "name": "Chimchar",
     "category": "Chimp",
     "generation": 4,
@@ -36957,6 +37092,7 @@
   },
   {
     "dexNumber": 391,
+    "sinnohNumber": 5,
     "name": "Monferno",
     "category": "Playful",
     "generation": 4,
@@ -37058,6 +37194,7 @@
   },
   {
     "dexNumber": 392,
+    "sinnohNumber": 6,
     "name": "Infernape",
     "category": "Flame",
     "generation": 4,
@@ -37158,6 +37295,7 @@
   },
   {
     "dexNumber": 393,
+    "sinnohNumber": 7,
     "name": "Piplup",
     "category": "Penguin",
     "generation": 4,
@@ -37253,6 +37391,7 @@
   },
   {
     "dexNumber": 394,
+    "sinnohNumber": 8,
     "name": "Prinplup",
     "category": "Penguin",
     "generation": 4,
@@ -37356,6 +37495,7 @@
   },
   {
     "dexNumber": 395,
+    "sinnohNumber": 9,
     "name": "Empoleon",
     "category": "Emperor",
     "generation": 4,
@@ -37462,6 +37602,7 @@
   },
   {
     "dexNumber": 396,
+    "sinnohNumber": 10,
     "name": "Starly",
     "category": "Starling",
     "generation": 4,
@@ -37549,6 +37690,7 @@
   },
   {
     "dexNumber": 397,
+    "sinnohNumber": 11,
     "name": "Staravia",
     "category": "Starling",
     "generation": 4,
@@ -37640,6 +37782,7 @@
   },
   {
     "dexNumber": 398,
+    "sinnohNumber": 12,
     "name": "Staraptor",
     "category": "Predator",
     "generation": 4,
@@ -37733,6 +37876,7 @@
   },
   {
     "dexNumber": 399,
+    "sinnohNumber": 13,
     "name": "Bidoof",
     "category": "Plump Mouse",
     "generation": 4,
@@ -37825,6 +37969,7 @@
   },
   {
     "dexNumber": 400,
+    "sinnohNumber": 14,
     "name": "Bibarel",
     "category": "Beaver",
     "generation": 4,
@@ -37920,6 +38065,7 @@
   },
   {
     "dexNumber": 401,
+    "sinnohNumber": 15,
     "name": "Kricketot",
     "category": "Cricket",
     "generation": 4,
@@ -37974,6 +38120,7 @@
   },
   {
     "dexNumber": 402,
+    "sinnohNumber": 16,
     "name": "Kricketune",
     "category": "Cricket",
     "generation": 4,
@@ -38062,6 +38209,7 @@
   },
   {
     "dexNumber": 403,
+    "sinnohNumber": 17,
     "name": "Shinx",
     "category": "Flash",
     "generation": 4,
@@ -38149,6 +38297,7 @@
   },
   {
     "dexNumber": 404,
+    "sinnohNumber": 18,
     "name": "Luxio",
     "category": "Spark",
     "generation": 4,
@@ -38240,6 +38389,7 @@
   },
   {
     "dexNumber": 405,
+    "sinnohNumber": 19,
     "name": "Luxray",
     "category": "Gleam Eyes",
     "generation": 4,
@@ -38329,6 +38479,7 @@
   },
   {
     "dexNumber": 406,
+    "sinnohNumber": 25,
     "name": "Budew",
     "category": "Bud",
     "generation": 4,
@@ -38397,6 +38548,7 @@
   },
   {
     "dexNumber": 407,
+    "sinnohNumber": 27,
     "name": "Roserade",
     "category": "Bouquet",
     "generation": 4,
@@ -38456,6 +38608,7 @@
   },
   {
     "dexNumber": 408,
+    "sinnohNumber": 36,
     "name": "Cranidos",
     "category": "Head Butt",
     "generation": 4,
@@ -38542,6 +38695,7 @@
   },
   {
     "dexNumber": 409,
+    "sinnohNumber": 37,
     "name": "Rampardos",
     "category": "Head Butt",
     "generation": 4,
@@ -38626,6 +38780,7 @@
   },
   {
     "dexNumber": 410,
+    "sinnohNumber": 38,
     "name": "Shieldon",
     "category": "Shield",
     "generation": 4,
@@ -38713,6 +38868,7 @@
   },
   {
     "dexNumber": 411,
+    "sinnohNumber": 39,
     "name": "Bastiodon",
     "category": "Shield",
     "generation": 4,
@@ -38806,6 +38962,7 @@
   },
   {
     "dexNumber": 412,
+    "sinnohNumber": 45,
     "name": "Burmy",
     "category": "Bagworm",
     "generation": 4,
@@ -38870,6 +39027,7 @@
   },
   {
     "dexNumber": 413,
+    "sinnohNumber": 46,
     "name": "Wormadam",
     "category": "Bagworm",
     "generation": 4,
@@ -38959,6 +39117,7 @@
   },
   {
     "dexNumber": 414,
+    "sinnohNumber": 47,
     "name": "Mothim",
     "category": "Moth",
     "generation": 4,
@@ -39049,6 +39208,7 @@
   },
   {
     "dexNumber": 415,
+    "sinnohNumber": 53,
     "name": "Combee",
     "category": "Tiny Bee",
     "generation": 4,
@@ -39105,6 +39265,7 @@
   },
   {
     "dexNumber": 416,
+    "sinnohNumber": 54,
     "name": "Vespiquen",
     "category": "Beehive",
     "generation": 4,
@@ -39207,6 +39368,7 @@
   },
   {
     "dexNumber": 417,
+    "sinnohNumber": 55,
     "name": "Pachirisu",
     "category": "EleSquirrel",
     "generation": 4,
@@ -39289,6 +39451,7 @@
   },
   {
     "dexNumber": 418,
+    "sinnohNumber": 56,
     "name": "Buizel",
     "category": "Sea Weasel",
     "generation": 4,
@@ -39376,6 +39539,7 @@
   },
   {
     "dexNumber": 419,
+    "sinnohNumber": 57,
     "name": "Floatzel",
     "category": "Sea Weasel",
     "generation": 4,
@@ -39469,6 +39633,7 @@
   },
   {
     "dexNumber": 420,
+    "sinnohNumber": 58,
     "name": "Cherubi",
     "category": "Cherry",
     "generation": 4,
@@ -39551,6 +39716,7 @@
   },
   {
     "dexNumber": 421,
+    "sinnohNumber": 59,
     "name": "Cherrim",
     "category": "Blossom",
     "generation": 4,
@@ -39635,6 +39801,7 @@
   },
   {
     "dexNumber": 422,
+    "sinnohNumber": 60,
     "name": "Shellos",
     "category": "Sea Slug",
     "generation": 4,
@@ -39719,6 +39886,7 @@
   },
   {
     "dexNumber": 423,
+    "sinnohNumber": 61,
     "name": "Gastrodon",
     "category": "Sea Slug",
     "generation": 4,
@@ -39810,6 +39978,7 @@
   },
   {
     "dexNumber": 424,
+    "sinnohNumber": 64,
     "name": "Ambipom",
     "category": "Long Tail",
     "generation": 4,
@@ -39911,6 +40080,7 @@
   },
   {
     "dexNumber": 425,
+    "sinnohNumber": 65,
     "name": "Drifloon",
     "category": "Balloon",
     "generation": 4,
@@ -40007,6 +40177,7 @@
   },
   {
     "dexNumber": 426,
+    "sinnohNumber": 66,
     "name": "Drifblim",
     "category": "Blimp",
     "generation": 4,
@@ -40105,6 +40276,7 @@
   },
   {
     "dexNumber": 427,
+    "sinnohNumber": 67,
     "name": "Buneary",
     "category": "Rabbit",
     "generation": 4,
@@ -40204,6 +40376,7 @@
   },
   {
     "dexNumber": 428,
+    "sinnohNumber": 68,
     "name": "Lopunny",
     "category": "Rabbit",
     "generation": 4,
@@ -40306,6 +40479,7 @@
   },
   {
     "dexNumber": 429,
+    "sinnohNumber": 73,
     "name": "Mismagius",
     "category": "Magical",
     "generation": 4,
@@ -40366,6 +40540,7 @@
   },
   {
     "dexNumber": 430,
+    "sinnohNumber": 75,
     "name": "Honchkrow",
     "category": "Big Boss",
     "generation": 4,
@@ -40436,6 +40611,7 @@
   },
   {
     "dexNumber": 431,
+    "sinnohNumber": 76,
     "name": "Glameow",
     "category": "Catty",
     "generation": 4,
@@ -40527,6 +40703,7 @@
   },
   {
     "dexNumber": 432,
+    "sinnohNumber": 77,
     "name": "Purugly",
     "category": "Tiger Cat",
     "generation": 4,
@@ -40624,6 +40801,7 @@
   },
   {
     "dexNumber": 433,
+    "sinnohNumber": 82,
     "name": "Chingling",
     "category": "Bell",
     "generation": 4,
@@ -40689,6 +40867,7 @@
   },
   {
     "dexNumber": 434,
+    "sinnohNumber": 84,
     "name": "Stunky",
     "category": "Skunk",
     "generation": 4,
@@ -40781,6 +40960,7 @@
   },
   {
     "dexNumber": 435,
+    "sinnohNumber": 85,
     "name": "Skuntank",
     "category": "Skunk",
     "generation": 4,
@@ -40875,6 +41055,7 @@
   },
   {
     "dexNumber": 436,
+    "sinnohNumber": 88,
     "name": "Bronzor",
     "category": "Bronze",
     "generation": 4,
@@ -40971,6 +41152,7 @@
   },
   {
     "dexNumber": 437,
+    "sinnohNumber": 89,
     "name": "Bronzong",
     "category": "Bronze Bell",
     "generation": 4,
@@ -41082,6 +41264,7 @@
   },
   {
     "dexNumber": 438,
+    "sinnohNumber": 92,
     "name": "Bonsly",
     "category": "Bonsai",
     "generation": 4,
@@ -41178,6 +41361,7 @@
   },
   {
     "dexNumber": 439,
+    "sinnohNumber": 94,
     "name": "Mime Jr.",
     "category": "Mime",
     "generation": 4,
@@ -41294,6 +41478,7 @@
   },
   {
     "dexNumber": 440,
+    "sinnohNumber": 96,
     "name": "Happiny",
     "category": "Playhouse",
     "generation": 4,
@@ -41358,6 +41543,7 @@
   },
   {
     "dexNumber": 441,
+    "sinnohNumber": 102,
     "name": "Chatot",
     "category": "Music Note",
     "generation": 4,
@@ -41444,6 +41630,7 @@
   },
   {
     "dexNumber": 442,
+    "sinnohNumber": 108,
     "name": "Spiritomb",
     "category": "Forbidden",
     "generation": 4,
@@ -41534,6 +41721,7 @@
   },
   {
     "dexNumber": 443,
+    "sinnohNumber": 109,
     "name": "Gible",
     "category": "Land Shark",
     "generation": 4,
@@ -41618,6 +41806,7 @@
   },
   {
     "dexNumber": 444,
+    "sinnohNumber": 110,
     "name": "Gabite",
     "category": "Cave",
     "generation": 4,
@@ -41706,6 +41895,7 @@
   },
   {
     "dexNumber": 445,
+    "sinnohNumber": 111,
     "name": "Garchomp",
     "category": "Mach",
     "generation": 4,
@@ -41804,6 +41994,7 @@
   },
   {
     "dexNumber": 446,
+    "sinnohNumber": 112,
     "name": "Munchlax",
     "category": "Big Eater",
     "generation": 4,
@@ -41907,6 +42098,7 @@
   },
   {
     "dexNumber": 447,
+    "sinnohNumber": 115,
     "name": "Riolu",
     "category": "Emanation",
     "generation": 4,
@@ -41986,6 +42178,7 @@
   },
   {
     "dexNumber": 448,
+    "sinnohNumber": 116,
     "name": "Lucario",
     "category": "Aura",
     "generation": 4,
@@ -42090,6 +42283,7 @@
   },
   {
     "dexNumber": 449,
+    "sinnohNumber": 122,
     "name": "Hippopotas",
     "category": "Hippo",
     "generation": 4,
@@ -42172,6 +42366,7 @@
   },
   {
     "dexNumber": 450,
+    "sinnohNumber": 123,
     "name": "Hippowdon",
     "category": "Heavyweight",
     "generation": 4,
@@ -42268,6 +42463,7 @@
   },
   {
     "dexNumber": 451,
+    "sinnohNumber": 127,
     "name": "Skorupi",
     "category": "Scorpion",
     "generation": 4,
@@ -42361,6 +42557,7 @@
   },
   {
     "dexNumber": 452,
+    "sinnohNumber": 128,
     "name": "Drapion",
     "category": "Ogre Scorpion",
     "generation": 4,
@@ -42464,6 +42661,7 @@
   },
   {
     "dexNumber": 453,
+    "sinnohNumber": 129,
     "name": "Croagunk",
     "category": "Toxic Mouth",
     "generation": 4,
@@ -42564,6 +42762,7 @@
   },
   {
     "dexNumber": 454,
+    "sinnohNumber": 130,
     "name": "Toxicroak",
     "category": "Toxic Mouth",
     "generation": 4,
@@ -42666,6 +42865,7 @@
   },
   {
     "dexNumber": 455,
+    "sinnohNumber": 131,
     "name": "Carnivine",
     "category": "Bug Catcher",
     "generation": 4,
@@ -42753,6 +42953,7 @@
   },
   {
     "dexNumber": 456,
+    "sinnohNumber": 134,
     "name": "Finneon",
     "category": "Wing Fish",
     "generation": 4,
@@ -42848,6 +43049,7 @@
   },
   {
     "dexNumber": 457,
+    "sinnohNumber": 135,
     "name": "Lumineon",
     "category": "Neon",
     "generation": 4,
@@ -42945,6 +43147,7 @@
   },
   {
     "dexNumber": 458,
+    "sinnohNumber": 140,
     "name": "Mantyke",
     "category": "Kite",
     "generation": 4,
@@ -43042,6 +43245,7 @@
   },
   {
     "dexNumber": 459,
+    "sinnohNumber": 142,
     "name": "Snover",
     "category": "Frost Tree",
     "generation": 4,
@@ -43134,6 +43338,7 @@
   },
   {
     "dexNumber": 460,
+    "sinnohNumber": 143,
     "name": "Abomasnow",
     "category": "Frost Tree",
     "generation": 4,
@@ -43233,6 +43438,7 @@
   },
   {
     "dexNumber": 461,
+    "sinnohNumber": 145,
     "name": "Weavile",
     "category": "Sharp Claw",
     "generation": 4,
@@ -43339,6 +43545,7 @@
   },
   {
     "dexNumber": 462,
+    "sinnohNumber": 180,
     "name": "Magnezone",
     "category": "Magnet Area",
     "generation": 4,
@@ -43453,6 +43660,7 @@
   },
   {
     "dexNumber": 463,
+    "sinnohNumber": 162,
     "name": "Lickilicky",
     "category": "Licking",
     "generation": 4,
@@ -43550,6 +43758,7 @@
   },
   {
     "dexNumber": 464,
+    "sinnohNumber": 188,
     "name": "Rhyperior",
     "category": "Drill",
     "generation": 4,
@@ -43653,6 +43862,7 @@
   },
   {
     "dexNumber": 465,
+    "sinnohNumber": 182,
     "name": "Tangrowth",
     "category": "Vine",
     "generation": 4,
@@ -43762,6 +43972,7 @@
   },
   {
     "dexNumber": 466,
+    "sinnohNumber": 199,
     "name": "Electivire",
     "category": "Thunderbolt",
     "generation": 4,
@@ -43862,6 +44073,7 @@
   },
   {
     "dexNumber": 467,
+    "sinnohNumber": 202,
     "name": "Magmortar",
     "category": "Blast",
     "generation": 4,
@@ -43962,6 +44174,7 @@
   },
   {
     "dexNumber": 468,
+    "sinnohNumber": 175,
     "name": "Togekiss",
     "category": "Jubilee",
     "generation": 4,
@@ -44018,6 +44231,7 @@
   },
   {
     "dexNumber": 469,
+    "sinnohNumber": 184,
     "name": "Yanmega",
     "category": "Ogre Darner",
     "generation": 4,
@@ -44136,6 +44350,7 @@
   },
   {
     "dexNumber": 470,
+    "sinnohNumber": 169,
     "name": "Leafeon",
     "category": "Verdant",
     "generation": 4,
@@ -44228,6 +44443,7 @@
   },
   {
     "dexNumber": 471,
+    "sinnohNumber": 170,
     "name": "Glaceon",
     "category": "Fresh Snow",
     "generation": 4,
@@ -44320,6 +44536,7 @@
   },
   {
     "dexNumber": 472,
+    "sinnohNumber": 154,
     "name": "Gliscor",
     "category": "Fang Scorpion",
     "generation": 4,
@@ -44434,6 +44651,7 @@
   },
   {
     "dexNumber": 473,
+    "sinnohNumber": 205,
     "name": "Mamoswine",
     "category": "Twin Tusk",
     "generation": 4,
@@ -44544,6 +44762,7 @@
   },
   {
     "dexNumber": 474,
+    "sinnohNumber": 194,
     "name": "Porygon-Z",
     "category": "Virtual",
     "generation": 4,
@@ -44649,6 +44868,7 @@
   },
   {
     "dexNumber": 475,
+    "sinnohNumber": 160,
     "name": "Gallade",
     "category": "Blade",
     "generation": 4,
@@ -44759,6 +44979,7 @@
   },
   {
     "dexNumber": 476,
+    "sinnohNumber": 156,
     "name": "Probopass",
     "category": "Compass",
     "generation": 4,
@@ -44874,6 +45095,7 @@
   },
   {
     "dexNumber": 477,
+    "sinnohNumber": 191,
     "name": "Dusknoir",
     "category": "Gripper",
     "generation": 4,
@@ -44991,6 +45213,7 @@
   },
   {
     "dexNumber": 478,
+    "sinnohNumber": 208,
     "name": "Froslass",
     "category": "Snow Land",
     "generation": 4,
@@ -45089,6 +45312,7 @@
   },
   {
     "dexNumber": 479,
+    "sinnohNumber": 152,
     "name": "Rotom",
     "category": "Plasma",
     "generation": 4,
@@ -45174,9 +45398,11 @@
   },
   {
     "dexNumber": 480,
+    "sinnohNumber": 146,
     "name": "Uxie",
     "category": "Knowledge",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 75,
     "baseAttack": 75,
@@ -45258,9 +45484,11 @@
   },
   {
     "dexNumber": 481,
+    "sinnohNumber": 147,
     "name": "Mesprit",
     "category": "Emotion",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 80,
     "baseAttack": 105,
@@ -45343,9 +45571,11 @@
   },
   {
     "dexNumber": 482,
+    "sinnohNumber": 148,
     "name": "Azelf",
     "category": "Willpower",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 75,
     "baseAttack": 125,
@@ -45427,9 +45657,11 @@
   },
   {
     "dexNumber": 483,
+    "sinnohNumber": 149,
     "name": "Dialga",
     "category": "Temporal",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Steel",
     "secondaryType": "Dragon",
     "baseHP": 100,
@@ -45507,9 +45739,11 @@
   },
   {
     "dexNumber": 484,
+    "sinnohNumber": 150,
     "name": "Palkia",
     "category": "Spatial",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Water",
     "secondaryType": "Dragon",
     "baseHP": 90,
@@ -45590,6 +45824,7 @@
     "name": "Heatran",
     "category": "Lava Dome",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Fire",
     "secondaryType": "Steel",
     "baseHP": 91,
@@ -45679,6 +45914,7 @@
     "name": "Regigigas",
     "category": "Colossal",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Normal",
     "baseHP": 110,
     "baseAttack": 160,
@@ -45754,9 +45990,11 @@
   },
   {
     "dexNumber": 487,
+    "sinnohNumber": 210,
     "name": "Giratina",
     "category": "Renegade",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Ghost",
     "secondaryType": "Dragon",
     "baseHP": 150,
@@ -45837,6 +46075,7 @@
     "name": "Cresselia",
     "category": "Lunar",
     "generation": 4,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 120,
     "baseAttack": 70,
@@ -45920,6 +46159,7 @@
     "name": "Phione",
     "category": "Sea Drifter",
     "generation": 4,
+    "mythical": true,
     "primaryType": "Water",
     "baseHP": 80,
     "baseAttack": 80,
@@ -45997,9 +46237,11 @@
   },
   {
     "dexNumber": 490,
+    "sinnohNumber": 151,
     "name": "Manaphy",
     "category": "Seafaring",
     "generation": 4,
+    "mythical": true,
     "primaryType": "Water",
     "baseHP": 100,
     "baseAttack": 100,
@@ -46088,6 +46330,7 @@
     "name": "Darkrai",
     "category": "Pitch-Black",
     "generation": 4,
+    "mythical": true,
     "primaryType": "Dark",
     "baseHP": 70,
     "baseAttack": 90,
@@ -46171,6 +46414,7 @@
     "name": "Shaymin",
     "category": "Gratitude",
     "generation": 4,
+    "mythical": true,
     "primaryType": "Grass",
     "baseHP": 100,
     "baseAttack": 100,
@@ -46254,6 +46498,7 @@
     "name": "Arceus",
     "category": "Alpha",
     "generation": 4,
+    "mythical": true,
     "primaryType": "Normal",
     "baseHP": 120,
     "baseAttack": 120,
@@ -46344,6 +46589,7 @@
     "name": "Victini",
     "category": "Victory",
     "generation": 5,
+    "mythical": true,
     "primaryType": "Psychic",
     "secondaryType": "Fire",
     "baseHP": 100,
@@ -60720,6 +60966,7 @@
     "name": "Cobalion",
     "category": "Iron Will",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Steel",
     "secondaryType": "Fighting",
     "baseHP": 91,
@@ -60812,6 +61059,7 @@
     "name": "Terrakion",
     "category": "Cavern",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Rock",
     "secondaryType": "Fighting",
     "baseHP": 91,
@@ -60904,6 +61152,7 @@
     "name": "Virizion",
     "category": "Grassland",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Grass",
     "secondaryType": "Fighting",
     "baseHP": 91,
@@ -60996,6 +61245,7 @@
     "name": "Tornadus",
     "category": "Cyclone",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Flying",
     "baseHP": 79,
     "baseAttack": 115,
@@ -61100,6 +61350,7 @@
     "name": "Thundurus",
     "category": "Bolt Strike",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Electric",
     "secondaryType": "Flying",
     "baseHP": 79,
@@ -61205,6 +61456,7 @@
     "name": "Reshiram",
     "category": "Vast White",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Fire",
     "baseHP": 100,
@@ -61300,6 +61552,7 @@
     "name": "Zekrom",
     "category": "Deep Black",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Electric",
     "baseHP": 100,
@@ -61395,6 +61648,7 @@
     "name": "Landorus",
     "category": "Abundance",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Ground",
     "secondaryType": "Flying",
     "baseHP": 89,
@@ -61500,6 +61754,7 @@
     "name": "Kyurem",
     "category": "Boundary",
     "generation": 5,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Ice",
     "baseHP": 125,
@@ -61597,6 +61852,7 @@
     "name": "Keldeo",
     "category": "Colt",
     "generation": 5,
+    "mythical": true,
     "primaryType": "Water",
     "secondaryType": "Fighting",
     "baseHP": 91,
@@ -61693,6 +61949,7 @@
     "name": "Meloetta",
     "category": "Melody",
     "generation": 5,
+    "mythical": true,
     "primaryType": "Normal",
     "secondaryType": "Psychic",
     "baseHP": 100,
@@ -61791,6 +62048,7 @@
     "name": "Genesect",
     "category": "Paleozoic",
     "generation": 5,
+    "mythical": true,
     "primaryType": "Bug",
     "secondaryType": "Steel",
     "baseHP": 71,
@@ -68480,6 +68738,7 @@
     "name": "Xerneas",
     "category": "Life",
     "generation": 6,
+    "legendary": true,
     "primaryType": "Fairy",
     "baseHP": 126,
     "baseAttack": 131,
@@ -68590,6 +68849,7 @@
     "name": "Yveltal",
     "category": "Destruction",
     "generation": 6,
+    "legendary": true,
     "primaryType": "Dark",
     "secondaryType": "Flying",
     "baseHP": 126,
@@ -68701,6 +68961,7 @@
     "name": "Zygarde",
     "category": "Order",
     "generation": 6,
+    "legendary": true,
     "primaryType": "Dragon",
     "secondaryType": "Ground",
     "baseHP": 108,
@@ -68808,6 +69069,7 @@
     "name": "Diancie",
     "category": "Jewel",
     "generation": 6,
+    "mythical": true,
     "primaryType": "Rock",
     "secondaryType": "Fairy",
     "baseHP": 50,
@@ -68905,6 +69167,7 @@
     "name": "Hoopa",
     "category": "Mischief",
     "generation": 6,
+    "mythical": true,
     "primaryType": "Psychic",
     "secondaryType": "Ghost",
     "baseHP": 80,
@@ -69013,6 +69276,7 @@
     "name": "Volcanion",
     "category": "Steam",
     "generation": 6,
+    "mythical": true,
     "primaryType": "Fire",
     "secondaryType": "Water",
     "baseHP": 80,
@@ -73884,6 +74148,7 @@
     "name": "Type: Null",
     "category": "Synthetic",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Normal",
     "baseHP": 95,
     "baseAttack": 95,
@@ -73976,6 +74241,7 @@
     "name": "Silvally",
     "category": "Synthetic",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Normal",
     "baseHP": 95,
     "baseAttack": 95,
@@ -75160,6 +75426,7 @@
     "name": "Tapu Koko",
     "category": "Land Spirit",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Electric",
     "secondaryType": "Fairy",
     "baseHP": 70,
@@ -75265,6 +75532,7 @@
     "name": "Tapu Lele",
     "category": "Land Spirit",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Psychic",
     "secondaryType": "Fairy",
     "baseHP": 70,
@@ -75370,6 +75638,7 @@
     "name": "Tapu Bulu",
     "category": "Land Spirit",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Grass",
     "secondaryType": "Fairy",
     "baseHP": 70,
@@ -75475,6 +75744,7 @@
     "name": "Tapu Fini",
     "category": "Land Spirit",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Water",
     "secondaryType": "Fairy",
     "baseHP": 70,
@@ -75584,6 +75854,7 @@
     "name": "Cosmog",
     "category": "Nebula",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 43,
     "baseAttack": 29,
@@ -75632,6 +75903,7 @@
     "name": "Cosmoem",
     "category": "Protostar",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 43,
     "baseAttack": 29,
@@ -75687,6 +75959,7 @@
     "name": "Solgaleo",
     "category": "Sunne",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Psychic",
     "secondaryType": "Steel",
     "baseHP": 137,
@@ -75790,6 +76063,7 @@
     "name": "Lunala",
     "category": "Moone",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Psychic",
     "secondaryType": "Ghost",
     "baseHP": 137,
@@ -76592,6 +76866,7 @@
     "name": "Necrozma",
     "category": "Prism",
     "generation": 7,
+    "legendary": true,
     "primaryType": "Psychic",
     "baseHP": 97,
     "baseAttack": 107,
@@ -76691,6 +76966,7 @@
     "name": "Magearna",
     "category": "Artificial",
     "generation": 7,
+    "mythical": true,
     "primaryType": "Steel",
     "secondaryType": "Fairy",
     "baseHP": 80,
@@ -76794,6 +77070,7 @@
     "name": "Marshadow",
     "category": "Gloomdweller",
     "generation": 7,
+    "mythical": true,
     "primaryType": "Fighting",
     "secondaryType": "Ghost",
     "baseHP": 90,
@@ -77304,6 +77581,7 @@
     "name": "Zeraora",
     "category": "Thunderclap",
     "generation": 7,
+    "mythical": true,
     "primaryType": "Electric",
     "baseHP": 88,
     "baseAttack": 112,
@@ -77410,6 +77688,7 @@
     "name": "Meltan",
     "category": "Hex Nut",
     "generation": 7,
+    "mythical": true,
     "primaryType": "Steel",
     "baseHP": 46,
     "baseAttack": 65,
@@ -77480,6 +77759,7 @@
     "name": "Melmetal",
     "category": "Hex Nut",
     "generation": 7,
+    "mythical": true,
     "primaryType": "Steel",
     "baseHP": 135,
     "baseAttack": 143,
@@ -84810,6 +85090,7 @@
     "name": "Zacian",
     "category": "Warrior",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Fairy",
     "baseHP": 92,
     "baseAttack": 120,
@@ -84900,6 +85181,7 @@
     "name": "Zamazenta",
     "category": "Warrior",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Fighting",
     "baseHP": 92,
     "baseAttack": 120,
@@ -84986,6 +85268,7 @@
     "name": "Eternatus",
     "category": "Gigantic",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Poison",
     "secondaryType": "Dragon",
     "baseHP": 140,
@@ -85081,6 +85364,7 @@
     "name": "Kubfu",
     "category": "Wushu",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Fighting",
     "baseHP": 60,
     "baseAttack": 90,
@@ -85188,6 +85472,7 @@
     "name": "Urshifu",
     "category": "Wushu",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Fighting",
     "secondaryType": "Dark",
     "baseHP": 100,
@@ -85292,6 +85577,7 @@
     "name": "Zarude",
     "category": "Rogue Monkey",
     "generation": 8,
+    "mythical": true,
     "primaryType": "Dark",
     "secondaryType": "Grass",
     "baseHP": 105,
@@ -85395,6 +85681,7 @@
     "name": "Regieleki",
     "category": "Electron",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Electric",
     "baseHP": 80,
     "baseAttack": 100,
@@ -85490,6 +85777,7 @@
     "name": "Regidrago",
     "category": "Dragon Orb",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Dragon",
     "baseHP": 200,
     "baseAttack": 100,
@@ -85577,6 +85865,7 @@
     "name": "Glastrier",
     "category": "Wild Horse",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Ice",
     "baseHP": 100,
     "baseAttack": 145,
@@ -85668,6 +85957,7 @@
     "name": "Spectrier",
     "category": "Swift Horse",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Ghost",
     "baseHP": 100,
     "baseAttack": 65,
@@ -85759,6 +86049,7 @@
     "name": "Calyrex",
     "category": "King",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Psychic",
     "secondaryType": "Grass",
     "baseHP": 100,
@@ -86476,6 +86767,7 @@
     "name": "Enamorus",
     "category": "Love-Hate",
     "generation": 8,
+    "legendary": true,
     "primaryType": "Fairy",
     "secondaryType": "Flying",
     "baseHP": 74,
@@ -96028,6 +96320,7 @@
     "name": "Wo-Chien",
     "category": "Ruinous",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Dark",
     "secondaryType": "Grass",
     "baseHP": 85,
@@ -96139,6 +96432,7 @@
     "name": "Chien-Pao",
     "category": "Ruinous",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Dark",
     "secondaryType": "Ice",
     "baseHP": 80,
@@ -96250,6 +96544,7 @@
     "name": "Ting-Lu",
     "category": "Ruinous",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Dark",
     "secondaryType": "Ground",
     "baseHP": 155,
@@ -96357,6 +96652,7 @@
     "name": "Chi-Yu",
     "category": "Ruinous",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Dark",
     "secondaryType": "Fire",
     "baseHP": 55,
@@ -96674,6 +96970,7 @@
     "name": "Koraidon",
     "category": "Paradox",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Fighting",
     "secondaryType": "Dragon",
     "baseHP": 100,
@@ -96773,6 +97070,7 @@
     "name": "Miraidon",
     "category": "Paradox",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Electric",
     "secondaryType": "Dragon",
     "baseHP": 100,
@@ -97367,6 +97665,7 @@
     "name": "Okidogi",
     "category": "Retainer",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Poison",
     "secondaryType": "Fighting",
     "baseHP": 88,
@@ -97451,6 +97750,7 @@
     "name": "Munkidori",
     "category": "Retainer",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Poison",
     "secondaryType": "Psychic",
     "baseHP": 88,
@@ -97539,6 +97839,7 @@
     "name": "Fezandipiti",
     "category": "Retainer",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Poison",
     "secondaryType": "Fairy",
     "baseHP": 88,
@@ -97631,6 +97932,7 @@
     "name": "Ogerpon",
     "category": "Mask",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Grass",
     "baseHP": 80,
     "baseAttack": 120,
@@ -98336,6 +98638,7 @@
     "name": "Terapagos",
     "category": "Tera",
     "generation": 9,
+    "legendary": true,
     "primaryType": "Normal",
     "baseHP": 90,
     "baseAttack": 65,
@@ -98419,6 +98722,7 @@
     "name": "Pecharunt",
     "category": "Subjugation",
     "generation": 9,
+    "mythical": true,
     "primaryType": "Poison",
     "secondaryType": "Ghost",
     "baseHP": 88,

@@ -22,6 +22,13 @@ public sealed class Decomp
         File.ReadAllLines(Path.Combine(root, "generated", list + ".txt")).Select(l => l.Trim()).Where(l => l.Length > 0).ToList();
 
     public JsonElement Species(string constant) => Read("res", "pokemon", Folder(constant, "SPECIES_"), "data.json");
+
+    /// <summary>
+    /// Platinum's Sinnoh Pokédex in order: index i is the species with regional number i. Index 0 holds a species
+    /// the regional Pokédex never shows (Arceus), as the original's table does.
+    /// </summary>
+    public List<string> SinnohPokedex() =>
+        Read("res", "pokemon", "sinnoh_pokedex.json").EnumerateArray().Select(e => e.GetString()!).ToList();
     public JsonElement Move(string constant) => Read("res", "moves", Folder(constant, "MOVE_"), "data.json");
 
     public JsonElement? Item(string constant)

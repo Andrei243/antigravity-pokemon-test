@@ -325,6 +325,50 @@ public sealed class AreaEncounter
 }
 
 /// <summary>
+/// Where a region's wild Pokémon live, for the Pokédex's area page (<c>world/&lt;region&gt;/habitats.json</c>,
+/// written by <c>tools/MapImporter</c>): every area with wild Pokémon, open or not, and a coarse picture of the
+/// overworld to show them on, one character per chunk.
+/// </summary>
+public sealed class WorldHabitatsFile
+{
+    public const string FileName = "habitats.json";
+
+    /// <summary>
+    /// The overworld's matrix, one row per string and one character per chunk: <c>~</c> mostly water, <c>.</c>
+    /// land, <c>T</c> a town or a city, and a space where there is no chunk.
+    /// </summary>
+    public List<string> Map { get; set; } = new();
+
+    public List<HabitatArea> Areas { get; set; } = new();
+}
+
+/// <summary>
+/// One area's wild Pokémon by the way they are met: in its grass or cave at each of Platinum's times of day, on its
+/// water and with each rod. Swarms, the Poké Radar and the species a second game in the console calls up are left
+/// out, as the original's Pokédex leaves them out of its area page.
+/// </summary>
+public sealed class HabitatArea
+{
+    public string Key { get; set; } = "";
+    public string Name { get; set; } = "";
+
+    /// <summary>
+    /// The chunks of the overworld the area is shown on, <c>"x,y"</c> each, separated by spaces: an outdoor area's
+    /// own, or the entrances that lead into a cave or a building. Empty for a place no warp reaches (an island
+    /// reached by boat).
+    /// </summary>
+    public string Cells { get; set; } = "";
+
+    public List<string>? Morning { get; set; }
+    public List<string>? Day { get; set; }
+    public List<string>? Night { get; set; }
+    public List<string>? Surf { get; set; }
+    public List<string>? OldRod { get; set; }
+    public List<string>? GoodRod { get; set; }
+    public List<string>? SuperRod { get; set; }
+}
+
+/// <summary>
 /// The list of what is built so far of an imported region (<c>world/&lt;region&gt;/world.json</c>, written by
 /// hand): the maps the game makes from its matrices, and the areas that are open to walk in. Every other area
 /// whose chunks are present is scenery. <c>tools/MapImporter --data</c> reads this file to know which chunks,

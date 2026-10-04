@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.UI.Kit;
 
-public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key }
+public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size }
 
 /// <summary>
 /// Small vector icons built from <see cref="UiShapes"/>: the start menu's entries, gender marks and arrows.
@@ -100,6 +100,19 @@ internal static class UiIcons
                 UiShapes.Line(c + new Vector2(0.04f, 0) * s, c + new Vector2(0.86f, 0) * s, 0.22f * s, ink);
                 UiShapes.Line(c + new Vector2(0.5f, 0) * s, c + new Vector2(0.5f, 0.36f) * s, 0.2f * s, ink);
                 UiShapes.Line(c + new Vector2(0.84f, 0) * s, c + new Vector2(0.84f, 0.3f) * s, 0.2f * s, ink);
+                break;
+            case UiIcon.Pin:
+                // A map pin: a round head with a hole, tapering to a point
+                UiShapes.Triangle(c + new Vector2(-0.52f, -0.18f) * s, c + new Vector2(0.52f, -0.18f) * s, c + new Vector2(0, 0.98f) * s, ink, 0.06f * s);
+                UiShapes.Circle(c + new Vector2(0, -0.3f) * s, 0.6f * s, ink);
+                UiShapes.Circle(c + new Vector2(0, -0.3f) * s, 0.24f * s, back);
+                break;
+            case UiIcon.Size:
+                // Two figures side by side, one tall and one short
+                UiShapes.Circle(c + new Vector2(-0.42f, -0.62f) * s, 0.26f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.72f * s, c.Y - 0.3f * s, 0.6f * s, 1.22f * s), 0.24f * s, ink);
+                UiShapes.Circle(c + new Vector2(0.46f, 0.08f) * s, 0.22f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X + 0.2f * s, c.Y + 0.34f * s, 0.52f * s, 0.58f * s), 0.2f * s, ink);
                 break;
             default:
                 UiShapes.Ring(c + new Vector2(0, 0.08f) * s, 0.82f * s, 0.22f * s, ink);

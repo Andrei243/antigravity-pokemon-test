@@ -67,6 +67,32 @@ public class DataFileTests
     }
 
     [Fact]
+    public void TestTheSinnohPokedexIsPlatinums()
+    {
+        // 210 regional numbers without gaps, all of them species of Platinum's own time
+        var sinnoh = PokemonDatabase.GetAll().Where(s => s.SinnohNumber != null).ToList();
+        Assert.Equal(Enumerable.Range(1, 210), sinnoh.Select(s => s.SinnohNumber!.Value).Order());
+        Assert.All(sinnoh, s => Assert.InRange(s.DexNumber, 1, 493));
+        Assert.Equal(1, PokemonDatabase.Get("Turtwig")!.SinnohNumber);
+        Assert.Equal(4, PokemonDatabase.Get("Chimchar")!.SinnohNumber);
+        Assert.Equal(7, PokemonDatabase.Get("Piplup")!.SinnohNumber);
+        Assert.Equal(210, PokemonDatabase.Get("Giratina")!.SinnohNumber);
+        // Species that came back in Platinum's Pokédex keep their place in it; the mythical ones have none
+        Assert.Equal(PokemonDatabase.Get("Absol")!.SinnohNumber, 209);
+        Assert.Null(PokemonDatabase.Get("Arceus")!.SinnohNumber);
+        Assert.Null(PokemonDatabase.Get("Bulbasaur")!.SinnohNumber);
+
+        // Legendary and mythical species
+        var all = PokemonDatabase.GetAll().ToList();
+        Assert.Equal(23, all.Count(s => s.Mythical));
+        Assert.True(PokemonDatabase.Get("Arceus")!.Mythical);
+        Assert.True(PokemonDatabase.Get("Mew")!.Mythical);
+        Assert.True(PokemonDatabase.Get("Giratina")!.Legendary);
+        Assert.False(PokemonDatabase.Get("Giratina")!.Mythical);
+        Assert.DoesNotContain(all, s => s.Legendary && s.Mythical);
+    }
+
+    [Fact]
     public void TestEvolutionsKeepTheirMethods()
     {
         var eevee = PokemonDatabase.Get("Eevee")!;
