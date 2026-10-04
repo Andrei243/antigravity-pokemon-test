@@ -31,7 +31,7 @@ The rules and numbers are in [`docs/art/style-guide.md`](../art/style-guide.md),
 
 - Procedural generation stays the backbone: it scales to 1025 species and every town.
 - Free-licensed assets are welcome where they beat code: OFL fonts (Google Fonts), CC0 textures and skies (Poly Haven, ambientCG), CC0 props and nature pieces (Kenney, Quaternius, KayKit) through a glTF import path. Record each one in `docs/art/CREDITS.md`, and get the user's OK before downloading.
-- An override folder, `overrides/models/` next to the game (ignored by git): a glTF model named after a species, character or building replaces the procedural one, so hand-made Blender models can be dropped in at any time.
+- An override folder, `overrides/models/` next to the game (ignored by git): a glTF model named after a species, character or building replaces the procedural one, so hand-made Blender models can be dropped in at any time. *Built for species in plan 03 · D5 (2026-10-04), see [`docs/model-files.md`](../model-files.md); characters and buildings don't read it yet.*
 - No assets taken from the Pokémon games, and no fan rips.
 
 ## Architecture

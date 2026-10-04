@@ -158,8 +158,9 @@ public class GameEngine
 
         ApplySettings(window: false);
 
-        // Menu sprites are rendered from the 3D Pokémon models once, up front. Species without a model of their own
-        // all share the generic stand-in, baked once as PokemonSprites.Fallback.
+        // The menu sprites of the species the story shows first are made up front (read from the sprite cache once
+        // they have been baked); every other species' are made the first time a menu asks for them, showing the
+        // stand-in (PokemonSprites.Fallback) for a frame or two meanwhile.
         renderContext.EnsureLoaded();
         PokemonSprites.BakeAll(renderContext, modelled);
 
@@ -646,9 +647,21 @@ public class GameEngine
     private bool PlayEvolutions(IReadOnlyCollection<EvolutionRequest> requests, GameState returnTo)
     {
         if (requests.Count == 0) return false;
-        foreach (var request in requests) pendingEvolutions.Enqueue(request);
+        // The scene shows each Pokémon before and after: their models are built while the screen fades out
+        var shown = new List<string>();
+        foreach (var request in requests)
+        {
+            pendingEvolutions.Enqueue(request);
+            shown.Add(request.Pokemon.Species.Name);
+            shown.Add(request.Evolution.TargetSpecies);
+        }
+        foreach (var name in shown) PokemonModels.Request(name);
         evolutionReturnState = returnTo;
-        StartTransition(GameState.Evolution, () => BeginNextEvolution());
+        StartTransition(GameState.Evolution, () =>
+        {
+            AwaitModels(shown);
+            BeginNextEvolution();
+        });
         return true;
     }
 
@@ -978,8 +991,10 @@ public class GameEngine
 
         // The battle theme cuts in as the screen starts to flash, before the battle itself appears
         AudioManager.PlayMusic(MusicRole.BattleWild, immediate: true);
+        var shown = PrepareModels(new[] { wildPkmn });
         StartTransition(GameState.Battle, () =>
         {
+            AwaitModels(shown);
             battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
@@ -997,8 +1012,10 @@ public class GameEngine
         }
 
         AudioManager.PlayMusic(MusicDirector.BattleRole(new[] { trainer.TrainerClass }), immediate: true);
+        var shown = PrepareModels(trainer.Party.Members);
         StartTransition(GameState.Battle, () =>
         {
+            AwaitModels(shown);
             battle = new BattleEngine(new BattleSetup
             {
                 PlayerParty = playerParty,
@@ -1014,6 +1031,23 @@ public class GameEngine
             trainer.Party.Members[0].Level, LeadLevel()));
     }
 
+    /// <summary>
+    /// Starts building the models a battle will show (the foes and the whole team, who may be sent out), so they are
+    /// ready by the time the screen has faded out; returns their species.
+    /// </summary>
+    private List<string> PrepareModels(IEnumerable<Pokemon> foes)
+    {
+        var species = foes.Concat(playerParty.Members).Select(p => p.Species.Name).Distinct().ToList();
+        foreach (var name in species) PokemonModels.Request(name);
+        return species;
+    }
+
+    /// <summary>Waits for models still being built, while the screen is black between scenes.</summary>
+    private static void AwaitModels(IEnumerable<string> species)
+    {
+        foreach (var name in species) PokemonModels.Get(name);
+    }
+
     private void EndBattle()
     {
         bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
@@ -1025,6 +1059,8 @@ public class GameEngine
 
         StartTransition(GameState.Overworld, () =>
         {
+            // The foes' models are no longer needed; the team's stay for the next battle
+            PokemonModels.Trim(playerParty.Members.Select(p => p.Species.Name));
             if (isDefeat)
             {
                 playerParty.HealAll();
@@ -1090,6 +1126,9 @@ public class GameEngine
         bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu;
         bool showBattle = scene == GameState.Battle && battle != null;
         bool showTitle = scene == GameState.Title;
+
+        // Menu sprites asked for since the last frame are loaded or baked first, offscreen like the 3D scenes
+        PokemonSprites.Service(renderContext);
 
         // The 3D scenes render into their own targets first (texture modes can't nest)
         if (showWorld)

@@ -29,7 +29,7 @@ internal static class PokemonAnimation
         pose.Reset();
         // A fainting Pokémon stops breathing and swaying as it goes down
         float down = p.Faint > 0f ? Smooth(0f, 0.7f, p.Faint) : 0f;
-        Idle(m, p.Time * m.Tempo, 1f - down, pose);
+        if (!m.OwnIdle) Idle(m, p.Time * m.Tempo, 1f - down, pose);
         if (p.Entry > 0f && p.Entry < 1f) Entry(m, p.Entry, pose);
         if (p.Attack > 0f && p.Attack < 1f)
         {
