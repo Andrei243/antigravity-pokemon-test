@@ -131,7 +131,8 @@ public class Map
     }
 
     /// <summary>The name of the place a tile is in: its area's, or the map's own.</summary>
-    public string DisplayNameAt(int x, int y) => AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName;
+    public string DisplayNameAt(int x, int y) =>
+        Core.PlayerIdentity.Fill(AreaAt(x, y)?.DisplayName is { Length: > 0 } name ? name : DisplayName);
 
     public string BgmTrackAt(int x, int y) => AreaAt(x, y)?.BgmTrack is { Length: > 0 } track ? track : BgmTrack;
 

@@ -157,7 +157,7 @@
       "y": 4,
       "facing": "Left",
       "dialog": [
-        "Barry: Lucas! What took you so long? I've already learned everything here!",
+        "Barry: {player}! What took you so long? I've already learned everything here!",
         "Barry: Next stop is Oreburgh City and its Gym. I'm getting my first Badge before you!",
         "Barry: Don't fall behind, or I'll fine you 10 million!"
       ]

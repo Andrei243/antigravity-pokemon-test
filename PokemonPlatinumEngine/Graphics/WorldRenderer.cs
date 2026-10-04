@@ -247,6 +247,13 @@ public sealed class WorldRenderer
     /// <summary>How far along a pan the camera is, 0 to 1, eased at both ends.</summary>
     public float PanEase => panAmount * panAmount * (3f - 2f * panAmount);
 
+    /// <summary>A character's field sprite facing the camera, for the interface to show large. Call outside any texture mode.</summary>
+    public Texture2D Portrait(string characterType)
+    {
+        context.EnsureLoaded();
+        return CharacterSprites.Portrait(context, characterType);
+    }
+
     /// <summary>Renders the map and its characters into the offscreen target. Call outside any other texture mode.</summary>
     public void Render(Map map, Player player) =>
         RenderScene(map, player, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f, GameClock.Hour);
@@ -584,7 +591,7 @@ public sealed class WorldRenderer
                 pose.Blink = false;
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
-            actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders),
+            actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
                 new Vector3(nx, Relief.At(map, nx, nz) - SinkAt(map, nx, nz), nz), Player.YawOf(npc.Facing), pose));
         }
 
@@ -603,7 +610,7 @@ public sealed class WorldRenderer
         float saddle = player.Saddle;
         float bob = player.Mount != null && MathF.Floor(time * 2.4f) % 2f == 0f ? Rows(1f) : 0f;
         float feet = groundY + lift + Rows(SurfMount.Seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle);
-        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
+        actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)
         {

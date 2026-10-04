@@ -177,7 +177,7 @@ public class LightingAndSettingsTests
     public void OptionsCycleThroughTheirValues()
     {
         var s = new GameSettings();
-        const int quality = 0, windowSize = 1, fullscreen = 2, timeOfDay = 4;
+        const OptionRow quality = OptionRow.Quality, windowSize = OptionRow.WindowSize, fullscreen = OptionRow.Fullscreen, timeOfDay = OptionRow.TimeOfDay;
 
         OptionsScreen.Change(s, quality, 1);
         Assert.Equal(GraphicsQuality.Low, s.Quality);

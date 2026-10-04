@@ -128,7 +128,7 @@
       "y": 2,
       "facing": "Down",
       "dialog": [
-        "Prof. Rowan: Ah, Lucas! Welcome to my research facility.",
+        "Prof. Rowan: Ah, {player}! Welcome to my research facility.",
         "Prof. Rowan: The bond between trainers and Pokémon is truly limitless.",
         "Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!"
       ]

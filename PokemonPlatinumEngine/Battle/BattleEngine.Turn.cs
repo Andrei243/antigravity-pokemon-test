@@ -172,7 +172,7 @@ public partial class BattleEngine
     {
         var target = EnemySlots.First(b => b.IsActive);
         var foe = target.Pokemon!;
-        QueueMessage($"Lucas used one {item.Name}!", () =>
+        QueueMessage($"{PlayerIdentity.Name} used one {item.Name}!", () =>
         {
             AudioManager.PlaySound("ball_throw");
             var catchRes = CatchCalculator.AttemptCatch(foe, item);
@@ -364,9 +364,9 @@ public partial class BattleEngine
     {
         if (SideDefeated(PlayerSlots))
         {
-            QueueMessage("Lucas is out of usable Pokémon!", () =>
+            QueueMessage($"{PlayerIdentity.Name} is out of usable Pokémon!", () =>
             {
-                QueueMessage("Lucas whited out...", () => Result = BattleResult.PlayerDefeat);
+                QueueMessage($"{PlayerIdentity.Name} whited out...", () => Result = BattleResult.PlayerDefeat);
             });
             return;
         }
@@ -380,7 +380,7 @@ public partial class BattleEngine
                 int prize = Trainers.Sum(t => t.PrizeMoney);
                 QueueMessage($"Player defeated {beaten}!", () =>
                 {
-                    QueueMessage($"Lucas received ${prize} for winning!", () => Result = BattleResult.PlayerVictory);
+                    QueueMessage($"{PlayerIdentity.Name} received ${prize} for winning!", () => Result = BattleResult.PlayerVictory);
                 });
             }
             else

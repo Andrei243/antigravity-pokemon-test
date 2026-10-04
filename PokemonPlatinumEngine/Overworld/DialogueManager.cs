@@ -12,9 +12,11 @@ public class DialogueManager
     private string currentLine = "";
     private string currentSpeaker = "";
     private int charIndex = 0;
-    private float charTimer = 0f;
-    private const float CharSpeed = 0.02f;
+    private float charProgress = 0f;
     private Action? onCompleteCallback;
+
+    /// <summary>How fast lines are written out, in characters a second: the options' text speed.</summary>
+    public float CharactersPerSecond { get; set; } = GameSettings.CharactersPerSecond(TextSpeed.Normal);
 
     public bool IsActive => currentLine.Length > 0 || lineQueue.Count > 0;
     public bool IsCurrentLineComplete => charIndex >= currentLine.Length;
@@ -24,7 +26,8 @@ public class DialogueManager
 
     public void ShowDialogue(string speaker, IEnumerable<string> lines, Action? onComplete = null)
     {
-        currentSpeaker = speaker;
+        // Written lines name the player and the professor's assistant with {player} and {assistant}
+        currentSpeaker = PlayerIdentity.Fill(speaker);
         lineQueue.Clear();
         foreach (var l in lines) lineQueue.Enqueue(l);
         onCompleteCallback = onComplete;
@@ -40,13 +43,13 @@ public class DialogueManager
     {
         if (lineQueue.Count > 0)
         {
-            currentLine = lineQueue.Dequeue();
+            currentLine = PlayerIdentity.Fill(lineQueue.Dequeue());
 
             // The speaker's name is on the tag above the box, so a line written as "Barry: Hey!" drops the prefix
             string prefix = currentSpeaker + ": ";
             if (currentSpeaker.Length > 0 && currentLine.StartsWith(prefix, StringComparison.Ordinal)) currentLine = currentLine[prefix.Length..];
             charIndex = 0;
-            charTimer = 0f;
+            charProgress = 0f;
             AudioManager.PlaySound("select");
         }
         else
@@ -65,13 +68,7 @@ public class DialogueManager
 
         if (!IsCurrentLineComplete)
         {
-            charTimer += dt;
-            if (charTimer >= CharSpeed)
-            {
-                charTimer = 0f;
-                charIndex = Math.Min(charIndex + 1, currentLine.Length);
-            }
-
+            Type(dt);
             if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Cancel))
             {
                 charIndex = currentLine.Length;
@@ -84,6 +81,29 @@ public class DialogueManager
                 AdvanceLine();
             }
         }
+    }
+
+    /// <summary>Writes out as much of the line as the time allows, at the same pace whatever the frame rate.</summary>
+    public void Type(float dt)
+    {
+        if (IsCurrentLineComplete) return;
+        charProgress += dt * CharactersPerSecond;
+        int whole = (int)charProgress;
+        charProgress -= whole;
+        charIndex = Math.Min(charIndex + whole, currentLine.Length);
+    }
+
+    /// <summary>How much of the line shows so far, and who is speaking.</summary>
+    public string VisibleText => currentLine[..charIndex];
+    public string Speaker => currentSpeaker;
+
+    /// <summary>Shows the whole line at once (the A button while it is being written).</summary>
+    public void FinishLine() => charIndex = currentLine.Length;
+
+    /// <summary>Goes on to the next line, or ends the talk after the last (the A button once a line is complete).</summary>
+    public void Advance()
+    {
+        if (IsActive && IsCurrentLineComplete) AdvanceLine();
     }
 
     public void Draw(int screenWidth, int screenHeight)

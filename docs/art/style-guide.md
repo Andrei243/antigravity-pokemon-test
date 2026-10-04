@@ -462,7 +462,7 @@ The interface is always drawn at 4K; the presets change only the 3D scenes. A fr
 
 ### Shapes and components
 
-- Everything is drawn by `UiShapes` (signed-distance rounded rectangles anti-aliased over one real pixel, vertical gradients, borders, slanted sides and blurred shadows; rings, round-ended lines and triangles for icons and arrows). No raylib rounded rectangles, triangles or lines in the kit: their edges are jagged.
+- Everything is drawn by `UiShapes` (signed-distance rounded rectangles anti-aliased over one real pixel, vertical gradients, borders, slanted sides and blurred shadows; rings, round-ended lines and triangles for icons and arrows; `Glow`, a soft ellipse of light that fades from its middle to nothing at its rim). No raylib rounded rectangles, triangles or lines in the kit: their edges are jagged.
 - The components live in `ModernUi` (`Panel`, `Card`, `Button`, `HpBar`, `Bar`, `ExpBar`, `TypePill`, `StatusPill`, `Tag`, `Portrait`, `Hints`, `Prompt`, `Badge`, `Dim`); a screen composes these and adds no drawing of its own beyond text.
 - Panels: radius 22–34, 4 px Frame border, shadow blur 22 at offset (0, 8).
 - Cards (anything that can be chosen: party slots, option rows, title entries): a panel whose selected state is a 6 px Selection border and a glow; gold instead while a Pokémon is being moved. An empty slot is a faint white outline.
@@ -493,6 +493,47 @@ The interface is always drawn at 4K; the presets change only the 3D scenes. A fr
 ### Summary
 
 One Pokémon on three panels: on the left its number, level, the 128-px sprite at 3× on a pale disc, name, category, type pills, nature and experience (points, to next level, bar); top right the six stats, each with its value and a bar whose length and colour follow the species' base stat (red under 50, amber under 80, green under 110, teal above; HP shows current / max in the HP colours); bottom right the moves as rows with type pill, name, category, power, accuracy and PP. Up and down step through the team.
+
+### Menu screens (G10)
+
+Every full-screen menu is the same frame: the backdrop, its title at the top left, key hints at the top right, and its content between rows 132 and 1032 with 64 margins and 32 gutters. Its parts rise or slide into place over 0.25–0.45 s when it opens.
+
+Shared parts (`ModernUi`, in `ModernUi.Lists.cs`):
+
+- **List rows** (`ListRow`): 84 tall and 8 apart, radius 26, on a panel. What the row is about sits at its left on a pale disc (an item's icon at 3×, a Pokémon's at 1×), its name in Black 34, and one value right-aligned (a count "×5", a price). The chosen row is a Selection-coloured pill with white text, as in the start menu; the others have no fill. A row that can't be chosen now is Muted.
+- **Scrolling** (`UiNav.Window`, `ScrollBar`): a list shows whole rows only. The cursor keeps two rows of context ahead of it where there are any, and wraps from the last row to the first. A thin bar at the panel's right edge (Rule-coloured track, Frame-coloured thumb) shows where the window is, and only when there is more than fits.
+- **Tabs** (`Tabs`): pills in a row across the screen under the title, each with its sign on a chip in its own colour and its name in Black 22. The chosen tab is filled with its colour, its chip white. Left and right change tab and wrap round.
+- **Detail panel**: the thing chosen, large, on a pale disc (an item's icon at 6×, a Pokémon's sprite at 3×), its name in Black 44–56, tags, a rule, and its text in Bold 30 on 42 leading.
+- **Money** (`Money`): our own mark, a P crossed by two bars, before the number in Black. Amounts on panels and in lists use it, never "$" or "¥".
+- **Stepper** (`Stepper`): a number on a Frame-coloured pill between two arrows; left and right change it by one, up and down by ten, and it wraps between the least and the most.
+- **Keyboard** (`Keyboard`, its cursor and rules in `NameEntry`): keys as small cards, 96 by 84 and 10 apart, in four rows of ten: the alphabet with a full stop, a hyphen, an apostrophe and a space, then the digits. The chosen key is a Selection-coloured pill. A fifth row has three wide keys: upper or lower case, delete, and OK. The keys turn to lower case by themselves after a name's first capital; the B button deletes, the Start button jumps to OK, and the cursor waits on OK once the name is full. Names are entered with the cursor and never typed, because the game's own keys are letters.
+
+The screens:
+
+- **Bag** (`BagScreen`): eight tabs, Platinum's pockets in its order (Items, Medicine, Poké Balls, TMs & HMs, Berries, Mail, Battle Items, Key Items), each in a colour of its own (gold, pink, red, violet, green, sky blue, orange, purple) and each remembering its own cursor. Under them the pocket's list on the left (eight rows) and the chosen item on the right: icon, name, its pocket as a tag, how many are in the bag, and its text; a TM or HM is described by its move, with the move's type, category, power, accuracy and PP under it. The A button opens what can be done with the item on a small panel at the foot of the detail panel (USE, GIVE, CANCEL, one row each, like the start menu's rows). Using or giving goes on to the party cards, which say ABLE or NOT ABLE for something used.
+- **Item icons** (`PixelArtGenerator.ItemIcon`): 20 by 20 pixel art, shown at 3× in rows and 6× on the detail disc. A kind has a shape: the ball itself, a spray bottle for medicine (its colour says which), a crystal for a Revive, a wrapped sweet for a Rare Candy, a flat disc in its move's type colour for a TM (a pale rim for an HM), a berry, an envelope, a key, a tonic bottle, a cut gem in its own colour for an evolution stone, a pouch for anything else.
+- **Shop** (`ShopScreen`): the stock on the left (nine rows, each with its price; a price the player can't pay is Red), the player's money on a card at the top right, the chosen item under it with how many are already in the bag. Buying asks how many on a panel over the dimmed screen: the item, a stepper from 1 to as many as the money buys (99 at most), and the total.
+- **Pokédex** (`PokedexScreen`): the list on the left under SEEN and CAUGHT counts; a row has the number, the name (dashes until it has been seen), the menu icon, and a small ball for a species that has been caught. Left and right jump ten. On the right, a species that has been caught shows everything: its sprite at 3× on a disc, number, name, category, types, height, weight and its entry. One only seen shows its sprite, name and types, with question marks for the rest. One not yet seen is a question mark on the disc.
+- **Trainer Card** (`TrainerCardScreen`): one wide card that rises into place. A Blue band across its top carries TRAINER CARD and the ID number; under it the name, money, Pokédex, time played and the day the adventure began on the left, the player's own field sprite at 6× on a pale plate on the right, and along the bottom the eight badges at radius 44 with their names.
+- **PC boxes** (`PCScreen`): three columns. The party as six compact cards on the left; the box in the middle, 6 by 5 slots under its name between two arrows, each Pokémon as its menu icon at 2×; on the right the Pokémon under the cursor (sprite at 2×, name, level, types, HP, moves). The cursor moves from the party into the box and back, and up from the box's top row to its name, where left and right change box.
+- **Starter choice** (`StarterSelectScreen`): the three partners as three cards side by side, each with its sprite at 3× on a disc, name, category and type; the chosen one hops. A panel under them has the chosen one's entry. Choosing asks first ("Choose Turtwig?"), with going back as the first answer.
+- **Saving** (`SaveScreen`): over the dimmed field, the save as it will be (the same summary the title's CONTINUE card shows: place, player, time played, Pokédex, badges, party) with the question under it. SAVE is the first answer and the one highlighted, since nothing is lost by saving. Afterwards the panel says so for a moment and goes.
+- **Options** (`OptionsScreen`): one card per setting, 98 tall on a pitch of 110, with its value on a pill between two arrows; a panel under them, filling what is left of the screen, explains the chosen one. The first row is the text speed (slow, normal, fast: 24, 45 and 120 characters a second, whatever the frame rate).
+
+### The new-game introduction (`IntroScreen`)
+
+The games' opening talk, in our own words and with our own pictures: Professor Rowan in front of a soft backdrop, speaking in the dialogue panel.
+
+1. Black, then the backdrop fades up: deep teal to night blue with slow drifting discs of light, and Rowan (his 3D model, as battles show a trainer, breathing and blinking) in the middle.
+2. He welcomes the player and explains the world. Then he steps aside, a Poké Ball (the 3D one of the battles) comes up and opens in white light, and a Pokémon grows out of the light, hops and stands beside him: Buneary, as in Platinum (the 3D model, as in battle).
+3. **Who are you?** Two cards, a boy and a girl (the two player characters as 3D models); the chosen one stands a little forward and waves. Choosing asks whether that is right ("So you're a girl?").
+4. **Your name?** The name-entry screen: the character's field sprite at 6×, the name so far as large letters on a row of seven slots, and the keyboard. Seven letters at most, as in Platinum; an empty name takes the default (Lucas or Dawn).
+5. He repeats the name and asks whether it is right. In both of his questions YES comes first and going back second: nothing is lost either way, and yes is what is nearly always meant.
+6. The send-off: the picture closes to black round the player's own field sprite, which shrinks away in whole steps on a small pool of light (`UiShapes.Glow`), and the field fades in.
+
+Any line can be hurried with the A button; nothing can be skipped, because each step sets something.
+
+Whoever the player isn't is the professor's assistant, with the other default name. Written lines and place names never name the player outright: they say `{player}` and `{assistant}`, which `PlayerIdentity.Fill` replaces when they are shown.
 
 ### Pokémon in menus
 
@@ -563,7 +604,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) will let hand-made glTF models, and later hand-drawn sprites, replace procedural ones.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G9
+## Known gaps after G10
 
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
 - The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
@@ -572,9 +613,11 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - A puddle has no look of its own yet (it is drawn as the ground round it), so nothing mirrors a walker; puddles and their reflections come with the first place that has them, Route 212 (plan 01 · M7). Only the player's steps leave prints, dust and leaves: other people don't walk about yet (plan 02).
 - The weather has its eleven looks, but the five places whose weather follows Platinum's calendar keep one weather until the calendar is imported with them (plan 01 · M7 and M8), and the moods Platinum gives some forests, caves and halls through the same setting are not built. Weather is silent until plan 05, and a battle doesn't yet begin in the field's weather (plan 06 · R3).
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
-- Bag, Pokédex, trainer card, shop, PC and the starter choice keep their old layouts with the new font (G10).
+- The menu screens show what the rules behind them can do so far. The bag uses medicine and evolution items and gives things to hold; tossing, registering and what every other item does come with plan 06 · R11, as do each shop's own stock and selling. The PC shows the stored Pokémon thirty to a box in the order they were stored; slots of their own, moving, box names and wallpapers come with R12. The Pokédex lists national numbers; Sinnoh's numbering, its other pages (area, cry, size, forms) and search come with plan 03 · D10. The options have no volume settings until plan 05.
+- Money inside a sentence (a battle's prize) is still written with "$": the mark of the panels is drawn, not typed, so the text renderer has to learn to place it.
+- The introduction names only the player. Naming the rival, its last question in Platinum, comes with the story (plan 02 · S4), which has the same name entry to ask with.
 - Of Platinum's ways into a battle, five are built (a wild Pokémon and a trainer, each also when stronger than the player's first, and a Gym Leader). It also tells water and caves apart and has effects of their own for the Elite Four, the Champion, Team Galactic and the legendary Pokémon: those come with their places.
-- The 23 species the story shows so far have version 2 models; every other species shares the generic stand-in until plan 03 · D5 builds them with the same kit and body plans. The serpent, fish and floating plans have only sample models so far.
-- Characters have mitten hands and no fingers. Of the emotes only the trainer's start and the battle throw are played in the game so far; scripts (plan 02) will call the others. The trainer card still shows the old 16×24 portrait (G10).
+- The 24 species the story shows so far have version 2 models; every other species shares the generic stand-in until plan 03 · D5 builds them with the same kit and body plans. The serpent, fish and floating plans have only sample models so far.
+- Characters have mitten hands and no fingers. Of the emotes only the trainer's start and the battle throw are played in the game so far; scripts (plan 02) will call the others.
 - The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.
-- The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5). The new-game introduction (Professor Rowan) is still to come (G10, plan 02).
+- The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5).

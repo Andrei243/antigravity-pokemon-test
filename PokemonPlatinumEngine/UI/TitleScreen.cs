@@ -383,45 +383,9 @@ public sealed class TitleScreen
                 TitleChoice.Options => "OPTIONS",
                 _ => "QUIT"
             };
-            if (entries[i] == TitleChoice.Continue) DrawContinue(r, save!);
+            if (entries[i] == TitleChoice.Continue) ModernUi.SaveSummary(r, save!, "CONTINUE");
             else UiFonts.DrawCentered(label, r.X + 48, r.Y + r.Height / 2f, 40, ModernUi.Ink, UiWeight.Black);
             y += h + gap;
-        }
-    }
-
-    /// <summary>The saved game at a glance: who and where, time played, badges won, Pokédex and the party.</summary>
-    private static void DrawContinue(Rectangle r, SaveData save)
-    {
-        float x = r.X + 48;
-        UiFonts.DrawCentered("CONTINUE", x, r.Y + 58, 44, ModernUi.Ink, UiWeight.Black);
-        var place = save.Place();
-        string where = MapDatabase.Get(place.Map).DisplayNameAt(place.X, place.Y);
-        float ww = UiFonts.Measure(where, 28, UiWeight.ExtraBold);
-        UiFonts.DrawCentered(where, r.X + r.Width - 48 - ww, r.Y + 60, 28, ModernUi.Muted, UiWeight.ExtraBold);
-        UiShapes.Fill(new Rectangle(x, r.Y + 100, r.Width - 96, 3), 1.5f, ModernUi.Rule);
-
-        static void Label(string text, float lx, float ly) => ModernUi.Label(text, lx, ly);
-
-        Label("PLAYER", x, r.Y + 122);
-        UiFonts.Draw(save.PlayerName, x, r.Y + 146, 40, ModernUi.Ink, UiWeight.Black);
-
-        Label("TIME PLAYED", x + 280, r.Y + 122);
-        UiFonts.Draw(FormatPlayTime(save.PlayTimeSeconds), x + 280, r.Y + 146, 40, ModernUi.Ink, UiWeight.Black);
-
-        Label("POKÉDEX", x + 540, r.Y + 122);
-        UiFonts.Draw(save.CaughtSpecies.Count.ToString(), x + 540, r.Y + 146, 40, ModernUi.Ink, UiWeight.Black);
-
-        Label($"BADGES  {CountBadges(save.Badges)} / 8", x, r.Y + 216);
-        for (int b = 0; b < 8; b++)
-            ModernUi.Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (save.Badges & (1 << b)) != 0);
-
-        // The party as 2D sprites, like the main games' save panel
-        Label("PARTY", x, r.Y + 340);
-        for (int i = 0; i < save.Party.Count && i < 6; i++)
-        {
-            var icon = PixelArtGenerator.GetPokemonIcon(save.Party[i].SpeciesName);
-            Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
-                new Rectangle(x + 96 + i * 100, r.Y + 346, icon.Width * 2, icon.Height * 2), Vector2.Zero, 0f, Color.White);
         }
     }
 

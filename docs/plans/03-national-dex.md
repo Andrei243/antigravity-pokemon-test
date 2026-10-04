@@ -9,7 +9,7 @@
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
 - `Models/Pokedex.cs` keeps seen and caught national numbers; `UI/PokedexScreen.cs` shows them.
-- 23 species have a hand-built 3D model in `Graphics/PokemonModels.cs`; every other species uses `PokemonModels.Generic` until D5. Start-up bakes sprites only for the hand-built models and the generic one.
+- 24 species have a hand-built 3D model in `Graphics/PokemonModels.cs` (Buneary joined them in plan 04 · G10, for the new-game introduction); every other species uses `PokemonModels.Generic` until D5. Start-up bakes sprites only for the hand-built models and the generic one.
 
 ## Decisions
 
@@ -64,6 +64,8 @@ Platinum's 210 Sinnoh species in four batches of about 50, in the order they app
 
 ### D10 · Pokédex
 Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search, the area view, seen and caught counters, the completion reward (a diploma).
+
+*Ready from plan 04 · G10 (2026-10-04):* the screen itself (`UI/PokedexScreen.cs`, `ModernUi.DrawPokedex`; style guide, "Menu screens"): the list with its seen and caught counts, and an entry in its three states (caught: everything; seen: sprite, name and types; unseen: a question mark). It lists national numbers and opens on the first species seen. Still to come here: Sinnoh's own numbers (`species.json` has none yet, so the importer has to bring them), the two modes and the unlock, the other pages (area, cry, size, forms), sorting and search.
 
 ### D11 · Generations 5–9
 Import species 494–1025 with their forms (regional, Mega, Gigantamax), abilities and learnsets as data, and add the Fairy type (decision 2).

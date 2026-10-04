@@ -11,16 +11,54 @@ using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>What can be done with the item under the cursor.</summary>
+public enum BagAction { Use, Give, Cancel }
+
+/// <summary>
+/// The bag: Platinum's eight pockets as tabs, the pocket's items as a list and the chosen item beside it. The A
+/// button opens what can be done with an item (USE, GIVE, CANCEL); using or giving goes on to the party to
+/// pick a Pokémon. Its logic takes no input (<see cref="MovePocket"/>, <see cref="MoveCursor"/>,
+/// <see cref="Confirm"/>, <see cref="Cancel"/>), so tests and the harness drive it.
+/// </summary>
 public class BagScreen
 {
-    private const float ChoiceAppearTime = 0.35f;
+    private const float AppearTime = 0.3f, ChoiceAppearTime = 0.35f;
+
+    /// <summary>How many rows of a pocket show at once.</summary>
+    public const int VisibleRows = 8;
+
+    /// <summary>Platinum's pockets, in its order.</summary>
+    public static readonly ItemPocket[] Pockets =
+    {
+        ItemPocket.Items, ItemPocket.Medicine, ItemPocket.PokeBalls, ItemPocket.TMsAndHMs,
+        ItemPocket.Berries, ItemPocket.Mail, ItemPocket.BattleItems, ItemPocket.KeyItems
+    };
+
+    // Each pocket remembers where its cursor was, as in the games
+    private readonly int[] cursors = new int[Pockets.Length], firsts = new int[Pockets.Length];
+    private float openAge;
 
     public ItemPocket CurrentPocket { get; set; } = ItemPocket.Items;
-    public int SelectedIndex { get; set; } = 0;
     public bool IsActive { get; set; } = false;
+
+    private int PocketIndex => Math.Max(0, Array.IndexOf(Pockets, CurrentPocket));
+
+    public int SelectedIndex
+    {
+        get => cursors[PocketIndex];
+        set => cursors[PocketIndex] = value;
+    }
+
+    /// <summary>The first row of the pocket's list that shows: it follows the cursor (<see cref="UiNav.Window"/>).</summary>
+    public int FirstRow => firsts[PocketIndex];
+
+    /// <summary>What can be done with the chosen item, while its menu is up (null otherwise), and the cursor in it.</summary>
+    public IReadOnlyList<BagAction>? Actions { get; private set; }
+    public int ActionIndex { get; private set; }
 
     // An item that goes to one Pokémon of the player's choosing waits here while they pick
     private ItemData? choosingFor;
+    private bool giving;
     private float choiceAge;
     private EvolutionRequest? request;
 
@@ -30,6 +68,9 @@ public class BagScreen
     /// <summary>The item waiting for the player to pick a Pokémon (null: the bag itself is showing).</summary>
     public ItemData? ChoosingFor => choosingFor;
 
+    /// <summary>Whether the waiting item is to be given to hold rather than used.</summary>
+    public bool Giving => giving;
+
     /// <summary>Hands over the evolution an item has just set off, once.</summary>
     public EvolutionRequest? TakeEvolution()
     {
@@ -38,40 +79,140 @@ public class BagScreen
         return taken;
     }
 
-    private readonly ItemPocket[] pockets =
-    {
-        ItemPocket.Items,
-        ItemPocket.Medicine,
-        ItemPocket.PokeBalls,
-        ItemPocket.TMsAndHMs,
-        ItemPocket.Berries,
-        ItemPocket.KeyItems
-    };
-
     public void Open()
     {
         IsActive = true;
-        SelectedIndex = 0;
         CurrentPocket = ItemPocket.Items;
+        Array.Clear(cursors);
+        Array.Clear(firsts);
+        Actions = null;
         choosingFor = null;
+        openAge = 0f;
     }
 
     public void Close()
     {
         IsActive = false;
+        Actions = null;
         choosingFor = null;
+    }
+
+    // ---------------------------------------------------------------- moving about
+
+    /// <summary>To the next or the previous pocket, wrapping round; each keeps its own cursor.</summary>
+    public void MovePocket(int step)
+    {
+        if (step == 0 || Actions != null) return;
+        CurrentPocket = Pockets[UiNav.Wrap(PocketIndex, step, Pockets.Length)];
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>Up or down the pocket's list (or the item's actions while they are up), wrapping round.</summary>
+    public void MoveCursor(int step, int count)
+    {
+        if (step == 0) return;
+        if (Actions != null)
+        {
+            ActionIndex = UiNav.Wrap(ActionIndex, step, Actions.Count);
+            AudioManager.PlaySound("cursor");
+            return;
+        }
+        if (count <= 0) return;
+        SelectedIndex = UiNav.Wrap(Math.Min(SelectedIndex, count - 1), step, count);
+        Follow(count);
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>Keeps the cursor inside the pocket and the list's window on the cursor.</summary>
+    internal void Follow(int count)
+    {
+        SelectedIndex = Math.Clamp(SelectedIndex, 0, Math.Max(0, count - 1));
+        firsts[PocketIndex] = UiNav.Window(firsts[PocketIndex], SelectedIndex, count, VisibleRows);
+    }
+
+    // ---------------------------------------------------------------- what an item can do
+
+    /// <summary>Items used on one Pokémon: medicine, Rare Candies and what evolves a Pokémon.</summary>
+    public static bool CanUse(ItemData item) =>
+        FieldItems.IsMedicine(item) || item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item);
+
+    /// <summary>As in Platinum, a Pokémon can hold anything but a Key Item or a TM.</summary>
+    public static bool CanGive(ItemData item) => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs);
+
+    /// <summary>Items the player aims at one Pokémon, to use or to give.</summary>
+    public static bool NeedsTarget(ItemData item) => CanUse(item) || CanGive(item);
+
+    /// <summary>What the A button offers for an item, CANCEL last.</summary>
+    public static List<BagAction> ActionsFor(ItemData item)
+    {
+        var actions = new List<BagAction>();
+        if (CanUse(item)) actions.Add(BagAction.Use);
+        if (CanGive(item)) actions.Add(BagAction.Give);
+        actions.Add(BagAction.Cancel);
+        return actions;
+    }
+
+    /// <summary>
+    /// The A button: on an item, opens what can be done with it; on one of those, does it. Using and giving
+    /// both go on to the party to pick a Pokémon.
+    /// </summary>
+    public void Confirm(Inventory inventory, Party party, Action<string> onNotification)
+    {
+        var items = inventory.GetPocketItems(CurrentPocket);
+        if (items.Count == 0) return;
+        Follow(items.Count);
+        var item = items[SelectedIndex].Data;
+
+        if (Actions == null)
+        {
+            var actions = ActionsFor(item);
+            if (actions.Count == 1)
+            {
+                onNotification("It can't be used here.");
+                AudioManager.PlaySound("cancel");
+                return;
+            }
+            Actions = actions;
+            ActionIndex = 0;
+            AudioManager.PlaySound("select");
+            return;
+        }
+
+        var action = Actions[Math.Clamp(ActionIndex, 0, Actions.Count - 1)];
+        Actions = null;
+        if (action == BagAction.Cancel)
+        {
+            AudioManager.PlaySound("cancel");
+            return;
+        }
+        if (party.Count == 0)
+        {
+            onNotification("There is no Pokémon to give it to.");
+            return;
+        }
+        BeginTargetChoice(item, give: action == BagAction.Give);
+    }
+
+    /// <summary>The B button: out of the item's actions, then out of the bag.</summary>
+    public void Cancel()
+    {
+        if (Actions != null) Actions = null;
+        else Close();
+        AudioManager.PlaySound("cancel");
     }
 
     /// <param name="context">What evolutions need to know (the hour, the map); just the party and the bag when left out.</param>
     public void Update(Inventory inventory, Party party, Action<string> onNotification, EvolutionContext? context = null, float dt = 1f / 60f)
     {
         if (!IsActive) return;
+        openAge += dt;
+
+        int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+        int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
 
         if (choosingFor != null)
         {
             choiceAge += dt;
-            int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
-            int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
             if (dx != 0 || dy != 0) MoveTarget(dx, dy, party.Count);
             else if (InputManager.IsActionPressed(GameAction.Cancel)) CancelTarget();
             else if (InputManager.IsActionPressed(GameAction.Confirm))
@@ -79,65 +220,21 @@ public class BagScreen
             return;
         }
 
-        var items = inventory.GetPocketItems(CurrentPocket);
-
-        if (InputManager.IsActionPressed(GameAction.Left))
-        {
-            int pIdx = Array.IndexOf(pockets, CurrentPocket);
-            CurrentPocket = pockets[(pIdx - 1 + pockets.Length) % pockets.Length];
-            SelectedIndex = 0;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Right))
-        {
-            int pIdx = Array.IndexOf(pockets, CurrentPocket);
-            CurrentPocket = pockets[(pIdx + 1) % pockets.Length];
-            SelectedIndex = 0;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Up))
-        {
-            if (items.Count > 0)
-            {
-                SelectedIndex = (SelectedIndex - 1 + items.Count) % items.Count;
-                AudioManager.PlaySound("cursor");
-            }
-        }
-        else if (InputManager.IsActionPressed(GameAction.Down))
-        {
-            if (items.Count > 0)
-            {
-                SelectedIndex = (SelectedIndex + 1) % items.Count;
-                AudioManager.PlaySound("cursor");
-            }
-        }
-        else if (InputManager.IsActionPressed(GameAction.Cancel))
-        {
-            Close();
-            AudioManager.PlaySound("cancel");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Confirm))
-        {
-            if (items.Count > 0 && SelectedIndex < items.Count)
-            {
-                var itemStack = items[SelectedIndex];
-                UseItem(itemStack, inventory, party, onNotification);
-            }
-        }
+        if (dx != 0) MovePocket(dx);
+        else if (dy != 0) MoveCursor(dy, inventory.GetPocketItems(CurrentPocket).Count);
+        else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(inventory, party, onNotification);
     }
 
     // ---------------------------------------------------------------- items used on a Pokémon of the player's choosing
 
-    /// <summary>Items the player aims at one Pokémon: Rare Candies, what evolves a Pokémon, and anything given to hold.</summary>
-    public static bool NeedsTarget(ItemData item) =>
-        item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item) || IsGivenToHold(item);
+    /// <summary>Goes on to the party with an item: to use it if it can be used, to give it otherwise.</summary>
+    public void BeginTargetChoice(ItemData item) => BeginTargetChoice(item, give: !CanUse(item));
 
-    private static bool IsGivenToHold(ItemData item) =>
-        PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.IsHoldable(item) || Evolution.IsHeldForEvolution(item);
-
-    public void BeginTargetChoice(ItemData item)
+    public void BeginTargetChoice(ItemData item, bool give)
     {
         choosingFor = item;
+        giving = give;
         TargetIndex = 0;
         choiceAge = 0f;
         AudioManager.PlaySound("select");
@@ -158,8 +255,9 @@ public class BagScreen
     }
 
     /// <summary>
-    /// Uses the waiting item on the Pokémon under the cursor. An evolution it sets off is left for
-    /// <see cref="TakeEvolution"/>: one from a Rare Candy's level can be stopped, one from a stone can't.
+    /// Uses the waiting item on the Pokémon under the cursor, or gives it to hold. An evolution it sets off is
+    /// left for <see cref="TakeEvolution"/>: one from a Rare Candy's level can be stopped, one from a stone can't.
+    /// Something that would have no effect stays in the bag and the choice stays open.
     /// </summary>
     public void UseOnTarget(Inventory inventory, Party party, Action<string> onNotification, EvolutionContext context)
     {
@@ -167,7 +265,11 @@ public class BagScreen
         var item = choosingFor;
         var target = party.Members[TargetIndex];
 
-        if (item.EffectType == ItemEffectType.LevelUp)
+        if (giving)
+        {
+            GiveToHold(item, inventory, target, onNotification);
+        }
+        else if (item.EffectType == ItemEffectType.LevelUp)
         {
             if (target.Level >= 100)
             {
@@ -197,69 +299,24 @@ public class BagScreen
             inventory.RemoveItem(item, 1);
             request = new EvolutionRequest(target, evolution, Cancellable: false);
         }
+        else if (FieldItems.IsMedicine(item))
+        {
+            if (FieldItems.Use(item, target) is not { } done)
+            {
+                onNotification("It won't have any effect.");
+                return;
+            }
+            inventory.RemoveItem(item, 1);
+            AudioManager.PlaySound("heal");
+            onNotification(done);
+            // While there is more of it, the party stays up for the next Pokémon, as in the games
+            if (inventory.GetQuantity(item) > 0) return;
+        }
         else
         {
             GiveToHold(item, inventory, target, onNotification);
         }
         choosingFor = null;
-    }
-
-    private void UseItem(ItemStack stack, Inventory inventory, Party party, Action<string> onNotification)
-    {
-        var item = stack.Data;
-        if (NeedsTarget(item))
-        {
-            if (party.Count > 0) BeginTargetChoice(item);
-        }
-        else if (item.EffectType == ItemEffectType.HealHP)
-        {
-            var lead = party.FirstUsable;
-            if (lead != null && lead.CurrentHP < lead.MaxHP)
-            {
-                lead.CurrentHP = Math.Min(lead.MaxHP, lead.CurrentHP + item.EffectValue);
-                inventory.RemoveItem(item, 1);
-                AudioManager.PlaySound("heal");
-                onNotification($"{item.Name} restored {lead.DisplayName}'s HP!");
-            }
-            else
-            {
-                onNotification("It won't have any effect.");
-            }
-        }
-        else if (item.EffectType == ItemEffectType.Revive)
-        {
-            var fainted = party.Members.FirstOrDefault(p => p.IsFainted);
-            if (fainted != null)
-            {
-                fainted.Revive(fainted.MaxHP / 2);
-                inventory.RemoveItem(item, 1);
-                AudioManager.PlaySound("heal");
-                onNotification($"{item.Name} revived {fainted.DisplayName}!");
-            }
-            else
-            {
-                onNotification("It won't have any effect.");
-            }
-        }
-        else if (item.EffectType == ItemEffectType.FullRestore)
-        {
-            var lead = party.FirstUsable;
-            if (lead != null && (lead.CurrentHP < lead.MaxHP || lead.Status != StatusCondition.None))
-            {
-                lead.HealFull();
-                inventory.RemoveItem(item, 1);
-                AudioManager.PlaySound("heal");
-                onNotification($"{item.Name} restored {lead.DisplayName}'s HP and condition!");
-            }
-            else
-            {
-                onNotification("It won't have any effect.");
-            }
-        }
-        else
-        {
-            onNotification($"You used the {item.Name}!");
-        }
     }
 
     /// <summary>Gives an item to a Pokémon to hold; whatever it held goes back in the bag.</summary>
@@ -277,101 +334,35 @@ public class BagScreen
         else onNotification($"{holder.DisplayName} was given the {item.Name} to hold.");
     }
 
+    /// <summary>Whether the waiting item would do anything for a Pokémon: ABLE or NOT ABLE on its card (null: nothing to say).</summary>
+    public bool? WouldWorkOn(Pokemon p, EvolutionContext probe)
+    {
+        if (choosingFor is not { } item || giving) return null;
+        if (item.EffectType == ItemEffectType.LevelUp) return p.Level < 100;
+        if (Evolution.IsUsedToEvolve(item))
+        {
+            probe.Item = item;
+            return Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null;
+        }
+        return FieldItems.IsMedicine(item) ? FieldItems.WouldHelp(item, p) : null;
+    }
+
     public void Draw(int screenWidth, int screenHeight, Inventory inventory, Party party, EvolutionContext? context = null)
     {
         if (!IsActive) return;
 
         if (choosingFor != null)
         {
-            // An item that evolves Pokémon says who it would work on, as the games do
+            // An item used on a Pokémon says who it would work on, as the games do
             var item = choosingFor;
             var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
-            probe.Item = item;
-            bool evolves = Evolution.IsUsedToEvolve(item);
-            string prompt = item.EffectType == ItemEffectType.LevelUp || evolves
-                ? $"Use the {item.Name} on which Pokémon?"
-                : $"Give the {item.Name} to which Pokémon?";
-            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt,
-                p => evolves ? Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null : null,
-                Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f));
+            string prompt = giving ? $"Give the {item.Name} to which Pokémon?" : $"Use the {item.Name} on which Pokémon?";
+            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt, p => WouldWorkOn(p, probe),
+                Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), giving ? "Give" : "Use");
             return;
         }
 
-        Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Palette.UiBackground);
-
-        // Header / Pocket Tabs
-        int headerHeight = 64;
-        RenderHelper.DrawPlatinumPanel(24, 20, screenWidth - 48, headerHeight, Palette.UiPanelBg);
-        int tabWidth = (screenWidth - 56) / pockets.Length;
-
-        for (int i = 0; i < pockets.Length; i++)
-        {
-            var p = pockets[i];
-            int tx = 28 + i * tabWidth;
-            bool isCurrent = p == CurrentPocket;
-
-            if (isCurrent)
-            {
-                Raylib.DrawRectangle(tx, 26, tabWidth - 6, headerHeight - 12, Palette.UiAccent);
-                RenderHelper.DrawTextWithShadow(p.ToString().ToUpperInvariant(), tx + 16, 38, 22, Color.White);
-            }
-            else
-            {
-                RenderHelper.DrawTextWithShadow(p.ToString().ToUpperInvariant(), tx + 16, 38, 22, Palette.TextDark);
-            }
-        }
-
-        // Items List Panel (Left)
-        int listWidth = 840;
-        int listHeight = screenHeight - 116;
-        RenderHelper.DrawPlatinumPanel(24, 96, listWidth, listHeight, Palette.UiPanelBg);
-
-        var items = inventory.GetPocketItems(CurrentPocket);
-        if (items.Count == 0)
-        {
-            RenderHelper.DrawTextWithShadow("No items in this pocket.", 60, 140, 24, Color.Gray);
-        }
-        else
-        {
-            int maxVisible = 14;
-            int scrollOffset = Math.Max(0, Math.Min(SelectedIndex - maxVisible / 2, Math.Max(0, items.Count - maxVisible)));
-
-            for (int i = 0; i < maxVisible && (i + scrollOffset) < items.Count; i++)
-            {
-                int itemIdx = i + scrollOffset;
-                var it = items[itemIdx];
-                int iy = 112 + i * 58;
-                bool isSelected = SelectedIndex == itemIdx;
-
-                if (isSelected)
-                {
-                    Raylib.DrawRectangle(38, iy, listWidth - 28, 50, Palette.UiAccent);
-                    RenderHelper.DrawTextWithShadow(it.Name, 60, iy + 12, 24, Color.White);
-                    RenderHelper.DrawTextWithShadow($"x{it.Quantity}", listWidth - 90, iy + 12, 24, Color.White);
-                }
-                else
-                {
-                    RenderHelper.DrawTextWithShadow(it.Name, 52, iy + 12, 24, Palette.TextDark);
-                    RenderHelper.DrawTextWithShadow($"x{it.Quantity}", listWidth - 96, iy + 12, 24, Palette.TextDark);
-                }
-            }
-        }
-
-        // Details Panel (Right)
-        int descX = 24 + listWidth + 24;
-        int descWidth = screenWidth - descX - 24;
-        RenderHelper.DrawPlatinumPanel(descX, 96, descWidth, listHeight, Palette.UiPanelBg);
-
-        if (items.Count > 0 && SelectedIndex < items.Count)
-        {
-            var selItem = items[SelectedIndex].Data;
-            RenderHelper.DrawTextWithShadow(selItem.Name, descX + 36, 128, 36, Palette.UiAccent);
-            RenderHelper.DrawTextWithShadow($"Category: {selItem.Pocket}", descX + 36, 178, 22, Palette.TextDark);
-
-            RenderHelper.DrawPlatinumPanel(descX + 32, 224, descWidth - 64, 420, Palette.UiBackground);
-            RenderHelper.DrawTextWithShadow(selItem.Description, descX + 54, 256, 26, Palette.TextDark);
-
-            RenderHelper.DrawTextWithShadow("Press Z / Space to Use   |   X / Esc: Back", descX + 36, 96 + listHeight - 48, 22, Color.Gray);
-        }
+        Follow(inventory.GetPocketItems(CurrentPocket).Count);
+        ModernUi.DrawBag(screenWidth, screenHeight, this, inventory, Math.Clamp(openAge / AppearTime, 0f, 1f));
     }
 }

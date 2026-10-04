@@ -6,15 +6,17 @@ using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
+/// <summary>The settings the options screen offers, in the order of its rows.</summary>
+public enum OptionRow { TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay, Sound }
+
 /// <summary>
-/// The options screen: graphics quality, window size, full screen, V-Sync, time of day and sound. Changes apply
-/// at once; the caller saves the settings when the screen reports a change.
+/// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day and sound.
+/// Changes apply at once; the caller saves the settings when the screen reports a change. The volumes of music
+/// and effects come with the mixer's buses (plan 05).
 /// </summary>
 public class OptionsScreen
 {
-    private enum Row { Quality, WindowSize, Fullscreen, VSync, TimeOfDay, Sound }
-
-    private static readonly Row[] Rows = Enum.GetValues<Row>();
+    private static readonly OptionRow[] Rows = Enum.GetValues<OptionRow>();
 
     public bool IsActive { get; private set; }
     public int SelectedIndex { get; set; }
@@ -60,35 +62,36 @@ public class OptionsScreen
     }
 
     /// <summary>Moves one setting to its next or previous value, wrapping round.</summary>
-    internal static void Change(GameSettings s, int rowIndex, int step) => Change(s, Rows[rowIndex], step);
-
-    private static void Change(GameSettings s, Row row, int step)
+    public static void Change(GameSettings s, OptionRow row, int step)
     {
         switch (row)
         {
-            case Row.Quality:
+            case OptionRow.TextSpeed:
+                s.TextSpeed = (TextSpeed)Wrap((int)s.TextSpeed + step, 3);
+                break;
+            case OptionRow.Quality:
                 s.Quality = (GraphicsQuality)Wrap((int)s.Quality + step, 3);
                 break;
-            case Row.WindowSize:
+            case OptionRow.WindowSize:
                 var sizes = GameSettings.WindowSizes;
                 int current = Array.FindIndex(sizes, z => z.Width == s.WindowWidth && z.Height == s.WindowHeight);
                 var next = sizes[Wrap((current < 0 ? 2 : current) + step, sizes.Length)];
                 s.WindowWidth = next.Width;
                 s.WindowHeight = next.Height;
                 break;
-            case Row.Fullscreen:
+            case OptionRow.Fullscreen:
                 s.Fullscreen = !s.Fullscreen;
                 break;
-            case Row.VSync:
+            case OptionRow.VSync:
                 s.VSync = !s.VSync;
                 break;
-            case Row.TimeOfDay:
+            case OptionRow.TimeOfDay:
                 // Clock, then the five fixed times in the order of the day
                 int index = s.TimeOfDay.HasValue ? (int)s.TimeOfDay.Value + 1 : 0;
                 index = Wrap(index + step, 6);
                 s.TimeOfDay = index == 0 ? null : (TimeOfDay)(index - 1);
                 break;
-            case Row.Sound:
+            case OptionRow.Sound:
                 s.Muted = !s.Muted;
                 break;
         }
@@ -96,18 +99,19 @@ public class OptionsScreen
 
     private static int Wrap(int value, int count) => ((value % count) + count) % count;
 
-    private static (string Label, string Value, string Help) Describe(GameSettings s, Row row) => row switch
+    private static (string Label, string Value, string Help) Describe(GameSettings s, OptionRow row) => row switch
     {
-        Row.Quality => ("Graphics quality", s.Quality.ToString(), s.Quality switch
+        OptionRow.TextSpeed => ("Text speed", s.TextSpeed.ToString(), "How fast what people say is written out. The A button always finishes a line at once."),
+        OptionRow.Quality => ("Graphics quality", s.Quality.ToString(), s.Quality switch
         {
             GraphicsQuality.High => "Sharpest picture: the 3D scenes render at 4K (3840 × 2160) with soft shadows and ambient occlusion.",
             GraphicsQuality.Medium => "3D scenes render at 2880 × 1620 with anti-aliasing; keeps soft shadows and ambient occlusion.",
             _ => "Fastest: 3D scenes render at 1920 × 1080 with simple shadows, no ambient occlusion or depth of field."
         }),
-        Row.WindowSize => ("Window size", $"{s.WindowWidth} × {s.WindowHeight}", "Size of the game window when it isn't full screen."),
-        Row.Fullscreen => ("Full screen", s.Fullscreen ? "On" : "Off", "Fills the whole display (also F11)."),
-        Row.VSync => ("V-Sync", s.VSync ? "On" : "Off", "Matches the display's refresh rate to avoid tearing."),
-        Row.TimeOfDay => ("Time of day", s.TimeOfDay switch
+        OptionRow.WindowSize => ("Window size", $"{s.WindowWidth} × {s.WindowHeight}", "Size of the game window when it isn't full screen."),
+        OptionRow.Fullscreen => ("Full screen", s.Fullscreen ? "On" : "Off", "Fills the whole display (also F11)."),
+        OptionRow.VSync => ("V-Sync", s.VSync ? "On" : "Off", "Matches the display's refresh rate to avoid tearing."),
+        OptionRow.TimeOfDay => ("Time of day", s.TimeOfDay switch
         {
             null => "Clock",
             TimeOfDay.LateNight => "Late night",
@@ -125,16 +129,17 @@ public class OptionsScreen
         ModernUi.ScreenTitle("OPTIONS");
         ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
 
+        const float pitch = 110, height = 98;
         for (int i = 0; i < Rows.Length; i++)
         {
             var (label, value, _) = Describe(settings, Rows[i]);
-            var r = new Rectangle(64, 136 + i * 124, sw - 128, 108);
+            var r = new Rectangle(64, ModernUi.ContentTop + i * pitch, sw - 128, height);
             bool selected = i == SelectedIndex;
             ModernUi.Card(r, 30, selected);
-            UiFonts.DrawCentered(label, r.X + 52, r.Y + r.Height / 2f, 38, ModernUi.Ink, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(label, r.X + 52, r.Y + r.Height / 2f, 36, ModernUi.Ink, UiWeight.ExtraBold);
 
             // The value sits in a pill between two arrows
-            var pill = new Rectangle(r.X + r.Width - 620, r.Y + 22, 480, r.Height - 44);
+            var pill = new Rectangle(r.X + r.Width - 620, r.Y + 19, 480, r.Height - 38);
             UiShapes.Fill(pill, pill.Height / 2f, selected ? ModernUi.Frame : new Color(214, 222, 236, 255));
             float vw = UiFonts.Measure(value, 32, UiWeight.Black);
             UiFonts.DrawCentered(value, pill.X + (pill.Width - vw) / 2f, pill.Y + pill.Height / 2f, 32,
@@ -145,8 +150,9 @@ public class OptionsScreen
             UiIcons.ArrowH(new Vector2(pill.X + pill.Width + 44, cy), 22, 1, arrow);
         }
 
-        var help = new Rectangle(64, 136 + Rows.Length * 124 + 12, sw - 128, 104);
+        float top = ModernUi.ContentTop + Rows.Length * pitch + 6;
+        var help = new Rectangle(64, top, sw - 128, ModernUi.ContentBottom - top);
         ModernUi.Panel(help, 30);
-        ModernUi.DrawWrapped(Describe(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + 32, help.Width - 104, 30, ModernUi.Ink, 40);
+        ModernUi.DrawWrapped(Describe(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);
     }
 }

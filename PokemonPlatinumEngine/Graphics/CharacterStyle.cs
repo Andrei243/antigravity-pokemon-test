@@ -50,6 +50,16 @@ internal sealed class CharacterStyle
             Bottom = new(48, 50, 70, 255), Shoes = new(200, 70, 60, 255), Sole = new(240, 236, 228, 255),
             Bag = new(242, 196, 70, 255), Blush = true, Scarf = true
         },
+        // The girl the player can be instead (and the professor's assistant when they aren't): our own take on
+        // Platinum's winter clothes, a white knitted hat, a long pink coat, a white scarf and pink boots
+        "DAWN" => new CharacterStyle
+        {
+            HairColor = new(54, 62, 104, 255), Hair = HairCut.Long,
+            Hat = Headwear.Beret, HatColor = new(248, 248, 252, 255), HatBand = new(238, 124, 156, 255),
+            Top = new(226, 84, 118, 255), Accent = new(248, 248, 252, 255), Coat = true,
+            Bottom = new(226, 84, 118, 255), Skirt = true, Shoes = new(238, 124, 156, 255), Sole = new(244, 240, 236, 255),
+            Bag = new(250, 246, 236, 255), Eyes = new(70, 86, 140, 255), Lashes = true, Blush = true, Scarf = true
+        },
         "RIVAL" => new CharacterStyle
         {
             HairColor = new(250, 212, 80, 255), Hair = HairCut.Spiky,

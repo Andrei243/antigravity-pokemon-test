@@ -345,7 +345,7 @@ public sealed class BattleRenderer
             pose.WalkBlend = 1f;
             pose.Running = true;
         }
-        return new TrainerPlacement("PLAYER", Matrix4x4.CreateScale(PlayerTrainerScale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
+        return new TrainerPlacement(PlayerIdentity.Character, Matrix4x4.CreateScale(PlayerTrainerScale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
     }
 
     private void DrawTrainers(CharacterPass pass)

@@ -147,7 +147,7 @@
       "y": 4,
       "facing": "Down",
       "dialog": [
-        "Barry's Mom: Oh, Lucas! Barry just dashed out the door again.",
+        "Barry's Mom: Oh, {player}! Barry just dashed out the door again.",
         "Barry's Mom: He said he'd fine you 10 million if you're late! That boy never slows down...",
         "Barry's Mom: Take care out there, and keep an eye on him for me!"
       ]

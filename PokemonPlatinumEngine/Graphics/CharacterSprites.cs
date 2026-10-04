@@ -231,6 +231,17 @@ internal static class CharacterSprites
         Raylib.DrawMesh(quad, pass == CharacterPass.Depth ? baked.Depth : baked.Color, Matrix4x4.Transpose(m));
     }
 
+    /// <summary>
+    /// A character's field sprite standing still and facing the camera, for the interface to show large (the
+    /// Trainer Card, the name entry). Bakes it if it isn't baked yet, so call outside any texture mode.
+    /// </summary>
+    public static Texture2D Portrait(RenderContext context, string npcType)
+    {
+        EnsureLoaded();
+        var rig = CharacterModels.Get(npcType, context.Shaders);
+        return Bake(context, new SpriteKey(rig, 0, SpriteAnim.Idle, 0, false, Expression.Neutral)).Texture;
+    }
+
     // ------------------------------------------------------------------ painted cards
 
     /// <summary>A sprite painted by hand that stands in the field the way a character's does: lit, shadowed, drawn upright.</summary>

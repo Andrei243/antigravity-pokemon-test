@@ -1,7 +1,7 @@
 // Screenshot harness: runs the game in a hidden 1920x1080 window, drives it into known states and saves PNGs of
 // the virtual screen, so graphics changes can be checked without playing.
 //
-//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|terrain|buildings|lab|life|world|times|sheets|pokemon] [before dir]
+//   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|intro|terrain|buildings|lab|life|world|times|sheets|pokemon] [before dir]
 //   dotnet run --project tools/ShotHarness -- <output dir> area <key>      one shot of an area of the imported world, by its key (twinleaf_town)
 //   dotnet run --project tools/ShotHarness -- <output dir> cities [key ...]   the buildings of every town of Sinnoh, from the importer's last full run
 //
@@ -388,7 +388,7 @@ if (Run("lineup"))
         poseType.GetField("Expression")!.SetValue(pose, Enum.Parse(exprType, expression));
         return pose;
     }
-    string[] everyone = { "Player", "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman", "StarterBriefcase", "Rift" };
+    string[] everyone = { "Player", "Dawn", "Rival", "Rowan", "Nurse", "Mom", "Lady", "Clerk", "Youngster", "Lass", "Clown", "Looker", "Gentleman", "StarterBriefcase", "Rift" };
     foreach (var type in everyone)
     {
         if (!Wanted("37_turntable_" + type.ToLowerInvariant())) continue;
@@ -825,11 +825,84 @@ if (Run("menus"))
     partyScreen.Close();
 
     Set("currentState", GameState.StarterSelect);
-    ((StarterSelectScreen)Get("starterSelectScreen")).Open();
-    Frames(1); Shot("21_starter");
+    var starters = (StarterSelectScreen)Get("starterSelectScreen");
+    starters.Open();
+    Frames(8); Shot("21a_starter_opening");
+    starters.Move(1);
+    Frames(40); Shot("21_starter");
+    starters.Confirm();
+    Frames(30); Shot("21b_starter_asking");
+    starters.Cancel();
+    starters.Close();
+    foreach (var (item, count) in new[]
+             {
+                 ("Potion", 5), ("Super Potion", 2), ("Antidote", 3), ("Revive", 1), ("Rare Candy", 2), ("Fire Stone", 1), ("Poké Ball", 10),
+                 ("Great Ball", 3), ("Oran Berry", 4), ("Escape Rope", 2), ("Old Rod", 1), ("Town Map", 1), ("TM01", 1), ("Repel", 3)
+             })
+        if (ItemDatabase.Get(item) is { } data) inventory.AddItem(data, count);
     Set("currentState", GameState.BagMenu);
-    ((BagScreen)Get("bagScreen")).Open();
-    Frames(1); Shot("22_bag");
+    var bag = (BagScreen)Get("bagScreen");
+    bag.Open();
+    Frames(6); Shot("22a_bag_opening");
+    bag.MovePocket(1);
+    bag.MoveCursor(1, 4);
+    Frames(30); Shot("22_bag");
+    bag.Confirm(inventory, party, engine.ShowNotification);
+    Frames(4); Shot("22b_bag_actions");
+    bag.Confirm(inventory, party, engine.ShowNotification);
+    Frames(30); Shot("22c_bag_use_on");
+    bag.CancelTarget();
+    bag.MovePocket(2);
+    Frames(4); Shot("22d_bag_tm");
+    bag.MovePocket(4);
+    Frames(4); Shot("22e_bag_key_items");
+    bag.MovePocket(-7);
+    Frames(4); Shot("22f_bag_items");
+    bag.Close();
+
+    // The Trainer Card, opened as the start menu opens it (so it has the player's portrait), with two badges won
+    Set("currentState", GameState.Overworld);
+    Set("badgesMask", 0b11);
+    var handle = T.GetMethod("HandleStartMenuChoice", Private) ?? T.GetMethod("HandleStartMenu", Private);
+    handle!.Invoke(engine, new object[] { StartMenuChoice.Trainer });
+    Frames(40); Shot("28_trainer_card");
+    ((TrainerCardScreen)Get("trainerCardScreen")).Close();
+    Set("badgesMask", 0);
+
+    // Saving: the question over the field, and the moment after
+    Set("currentState", GameState.Overworld);
+    handle.Invoke(engine, new object[] { StartMenuChoice.Save });
+    var saving = (SaveScreen)Get("saveScreen");
+    Frames(30); Shot("31_save_asking");
+    saving.Confirm();
+    Frames(12); Shot("31b_saved");
+    Frames(120);
+    Console.WriteLine($"after saving: state {Get("currentState")}, a save was written: {File.Exists("savegame.json")}");
+    File.Delete("savegame.json");
+    Set("currentState", GameState.Overworld);
+    Set("currentState", GameState.Shop);
+    var shop = (ShopScreen)Get("shopScreen");
+    shop.Open("Sandgem Poké Mart");
+    Frames(30); shop.Move(0, 1, 3000); shop.Move(0, 1, 3000);
+    Frames(2); Shot("29_shop");
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    shop.Move(1, 0, 3000); shop.Move(1, 0, 3000);
+    Frames(30); Shot("29b_shop_how_many");
+    shop.Cancel();
+    shop.Close();
+    var boxed = (List<Pokemon>)Get("pcBoxStorage");
+    foreach (var name in new[] { "Starly", "Bidoof", "Shinx", "Budew", "Kricketot", "Staravia", "Luxio", "Riolu", "Gible", "Prinplup" })
+        boxed.Add(new Pokemon(PokemonDatabase.Get(name)!, 4 + boxed.Count * 3));
+    Set("currentState", GameState.PCStorage);
+    var pc = (PCScreen)Get("pcScreen");
+    pc.Open();
+    Frames(30); Shot("30_pc");
+    pc.Move(1, 0, party.Count); pc.Move(1, 0, party.Count); pc.Move(0, 1, party.Count);
+    Frames(4); Shot("30b_pc_in_the_box");
+    pc.Move(0, -1, party.Count); pc.Move(0, -1, party.Count);
+    Frames(4); Shot("30c_pc_box_name");
+    pc.Close();
+    boxed.Clear();
 
     // The battle's panels for switching and for the bag
     var mb = StartBattle("Shinx", 5);
@@ -853,18 +926,28 @@ if (Run("menus"))
     var dexScreen = (PokedexScreen)Get("pokedexScreen");
     pokedex.RegisterCaught(387);
     pokedex.RegisterSeen(906);
+    pokedex.RegisterSeen(396);
+    pokedex.RegisterSeen(399);
     Set("currentState", GameState.PokedexMenu);
-    dexScreen.Open();
-    dexScreen.SelectedIndex = 386;
-    Frames(1); Shot("26_pokedex_turtwig");
+    dexScreen.Open(pokedex);
+    Frames(30); Shot("26_pokedex_turtwig");
+    dexScreen.SelectedIndex = 395;
+    Frames(2); Shot("26c_pokedex_seen_only");
+    dexScreen.SelectedIndex = 400;
+    Frames(2); Shot("26d_pokedex_unseen");
     dexScreen.SelectedIndex = 905;
-    Frames(1); Shot("26b_pokedex_later_generation");
+    Frames(2); Shot("26b_pokedex_later_generation");
     dexScreen.Close();
     var later = StartBattle("Sprigatito", 5);
     ToMainMenu(later);
     Frames(2); Shot("27_battle_later_generation");
 
-    if (args.Length > 2) Boards(args[2], new[] { "09_startmenu", "20b_summary", "23_battle_switch", "24_battle_bag" });
+    if (args.Length > 2)
+        Boards(args[2], new[]
+        {
+            "09_startmenu", "20b_summary", "23_battle_switch", "24_battle_bag", "21_starter", "22_bag", "26_pokedex_turtwig",
+            "28_trainer_card", "29_shop", "30_pc"
+        });
 
     party.Members[1].Status = StatusCondition.None;
     party.HealAll();
@@ -1062,6 +1145,89 @@ if (Run("look"))
 
     if (args.Length > 2)
         Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
+}
+
+// ---------------------------------------------------------------- the new-game introduction (plan 04 · G10)
+
+// The professor's welcome step by step: fading in, each beat of his talk, the Pokémon coming out of its ball,
+// the choice of who to be, the name keyboard, the send-off. Run by itself (not as part of `all`) it also lets
+// the introduction end and shows the game it starts: the field, the Trainer Card and a battle as the girl.
+if (Run("intro"))
+{
+    var intro = (IntroScreen)Get("introScreen");
+    Set("currentState", GameState.Intro);
+    intro.Open();
+    // Presses the A button through whatever is being said until the introduction reaches a phase
+    void Until(IntroPhase phase, int limit = 2000)
+    {
+        for (int guard = 0; guard < limit && intro.Phase != phase; guard++)
+        {
+            if (intro.Talking && intro.LineComplete) intro.PressConfirm();
+            Frames(1);
+        }
+    }
+    // Waits for the line being written to be all there
+    void Line() { for (int guard = 0; guard < 600 && intro.Talking && !intro.LineComplete; guard++) Frames(1); Frames(2); }
+
+    Frames(36); Shot("i01_fading_in");
+    Until(IntroPhase.Greeting); Frames(40); Shot("i02_hello");
+    Line(); intro.PressConfirm(); Line(); intro.PressConfirm(); Line(); Shot("i03_professor_rowan");
+    Until(IntroPhase.World); Line(); Shot("i04_the_world");
+    Until(IntroPhase.BallOpens); Frames(32); Shot("i05_ball");
+    Frames(14); Shot("i06_flash");
+    Frames(14); Shot("i07_pokemon_appears");
+    Until(IntroPhase.Alongside); Frames(14); Shot("i08_pokemon_hops");
+    Line(); Frames(60); Shot("i09_alongside");
+    Timing("introduction");
+    Until(IntroPhase.BallCloses); Frames(14); Shot("i10_pokemon_returns");
+    Until(IntroPhase.AboutYou); Line(); Shot("i11_about_you");
+    Until(IntroPhase.ChooseLook); Frames(40); Shot("i12_boy_or_girl");
+    intro.Move(1, 0); Frames(40); Shot("i13_the_girl");
+    intro.PressConfirm(); Frames(30); Shot("i14_so_you_are_a_girl");
+    intro.PressConfirm();
+    Until(IntroPhase.AskName); Line(); Shot("i15_your_name");
+    Until(IntroPhase.EnterName); Frames(30); Shot("i16_keyboard");
+    // "Maya", through the keyboard's own cursor: M is the third key of the second row
+    intro.Move(0, 1); intro.Move(1, 0); intro.Move(1, 0); intro.PressConfirm();
+    foreach (char c in "aya") intro.Entry!.Type(c);
+    Frames(20); Shot("i17_keyboard_name");
+    ShotCrop("i17b_keyboard_native", 640, 180, 1200, 760, 2);
+    intro.PressStart(); Frames(4); Shot("i18_keyboard_ok");
+    intro.PressConfirm(); Frames(30); Shot("i19_so_you_are_maya");
+    intro.PressConfirm();
+    Until(IntroPhase.Farewell); Line(); Shot("i20_farewell");
+    Until(IntroPhase.SendOff); Frames(48); Shot("i21_send_off");
+    Frames(40); Shot("i22_shrinking");
+    Frames(30); Shot("i23_nearly_gone");
+
+    if (mode == "intro")
+    {
+        // Let it end: the game begins as Maya, the girl
+        for (int guard = 0; guard < 400 && (GameState)Get("currentState") == GameState.Intro; guard++) Frames(1);
+        Frames(60); Shot("i30_the_game_begins");
+        Frames(120);
+        var card = T.GetMethod("HandleStartMenuChoice", Private)!;
+        card.Invoke(engine, new object[] { StartMenuChoice.Trainer });
+        Frames(40); Shot("i31_her_trainer_card");
+        ((TrainerCardScreen)Get("trainerCardScreen")).Close();
+        Set("currentState", GameState.Overworld);
+        var her = StartBattle("Starly", 3);
+        Frames(150); Shot("i32_her_battle");
+        Set("currentState", GameState.Overworld);
+        // Sandgem's assistant is the one the player isn't: Lucas, with his own lines
+        Set("currentMap", MapDatabase.Get("Sinnoh"));
+        var helper = MapDatabase.Get("Sinnoh").NPCs.First(n => n.NpcType == "Assistant");
+        ((Player)Get("player")).SetPosition(helper.GridX, helper.GridY + 1, Direction.Up);
+        Frames(20);
+        ((DialogueManager)Get("dialogue")).ShowDialogue(helper.Name, helper.DialogLines);
+        Set("currentState", GameState.Dialogue);
+        Frames(90); Shot("i33_the_assistant");
+    }
+    else
+    {
+        intro.Close();
+        Set("currentState", GameState.Overworld);
+    }
 }
 
 // ---------------------------------------------------------------- title screen

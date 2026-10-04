@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
+using PokemonPlatinumEngine.Core;
+
 namespace PokemonPlatinumEngine.Battle;
 
 public enum BattleSide { Player, Enemy }
@@ -188,7 +190,7 @@ public sealed class BattleAnimator
     public CombatantView Enemy => views[1, 0];
 
     /// <summary>Character type standing on each platform before the Pokémon are sent out (null = none).</summary>
-    public string? PlayerTrainer { get; internal set; } = "PLAYER";
+    public string? PlayerTrainer { get; internal set; } = PlayerIdentity.Character;
     public string? EnemyTrainer { get; internal set; }
 
     /// <summary>A second opposing trainer standing beside the first (two trainers battling together).</summary>

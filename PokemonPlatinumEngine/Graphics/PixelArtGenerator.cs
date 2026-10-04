@@ -39,13 +39,11 @@ public static class PixelArtGenerator
     public static Texture2D GetPokemonIcon(string name) =>
         PokemonSprites.GetBaked(name, SpriteView.Icon) ?? PokemonSprites.GetBaked(PokemonSprites.Fallback, SpriteView.Icon) ?? SceneTextures.White;
 
-    /// <summary>2D pixel-art figure of a character (the Trainer Card portrait); the field uses the 3D models.</summary>
-    public static Texture2D GetNpcSprite(string npcType, Direction dir) =>
-        Cached($"npc_{npcType}_{(int)dir}", () => CharacterArt.DrawFrame(npcType, dir, 0).ToTexture());
-
     /// <summary>
     /// 40x40 icon of an item (20x20 art at 2x), like the bag icons of the main games: the ball itself for Poké
-    /// Balls, a spray bottle for medicine (its colour says which), a star for a Revive, a pouch for anything else.
+    /// Balls, a spray bottle for medicine (its colour says which), a crystal for a Revive, a disc in its move's
+    /// type colour for a TM, a berry, an envelope, a key, a tonic bottle for battle items, a gem for an
+    /// evolution stone, and a pouch for anything else.
     /// </summary>
     public static Texture2D GetItemIcon(ItemData item) => item.Pocket == ItemPocket.PokeBalls
         ? GetBallTexture(item.Name)
@@ -56,7 +54,16 @@ public static class PixelArtGenerator
     {
         var c = new PixelCanvas(20, 20);
         var white = new Color(244, 244, 248, 255);
-        if (item.EffectType == ItemEffectType.Revive)
+        if (item.EffectType == ItemEffectType.LevelUp)
+        {
+            // A sweet in its wrapper
+            var wrap = new Color(96, 150, 236, 255);
+            c.Ball(10, 10, 5.5f, 5f, wrap);
+            c.Poly(wrap, 4, 10, 1, 6, 1, 14);
+            c.Poly(wrap, 16, 10, 19, 6, 19, 14);
+            c.Line(8, 7, 12, 13, white);
+        }
+        else if (item.EffectType == ItemEffectType.Revive)
         {
             // A four-pointed crystal
             var gold = new Color(250, 204, 70, 255);
@@ -85,13 +92,110 @@ public static class PixelArtGenerator
         }
         else
         {
-            var cloth = new Color(196, 150, 96, 255);
-            c.Ball(10, 12, 7, 6.5f, cloth);
-            c.Box(8, 3, 4, 4, cloth);
-            c.Rect(7, 7, 6, 1, new Color(120, 84, 52, 255));
+            switch (item.Pocket)
+            {
+                case ItemPocket.TMsAndHMs:
+                {
+                    // A disc in the colour of the move's type; an HM's has a pale rim
+                    var move = string.IsNullOrEmpty(item.TeachesMove) ? null : MoveDatabase.Get(item.TeachesMove);
+                    var color = move != null ? Palette.GetTypeColor(move.Type.ToString()) : new Color(150, 150, 170, 255);
+                    if (item.Name.StartsWith("HM", StringComparison.Ordinal)) c.Disc(10, 10, 9f, white);
+                    // Flat, with a groove: a disc, not a ball
+                    c.Disc(10, 10, 8f, color);
+                    c.Disc(10, 10, 5.6f, PixelCanvas.Mix(color, Color.Black, 0.2f));
+                    c.Disc(10, 10, 4.6f, color);
+                    c.Disc(10, 10, 2.6f, white);
+                    c.Disc(10, 10, 1.1f, new Color(70, 70, 90, 255));
+                    c.Line(5, 7, 7, 5, PixelCanvas.Mix(color, Color.White, 0.55f));
+                    break;
+                }
+                case ItemPocket.Berries:
+                {
+                    c.Ball(10, 12, 6.5f, 6f, FromName(item.Name, BerryColors));
+                    c.Poly(new Color(92, 176, 84, 255), 9, 7, 12, 2, 16, 4, 12, 8);
+                    c.Rect(9, 5, 1, 2, new Color(96, 70, 44, 255));
+                    break;
+                }
+                case ItemPocket.Mail:
+                {
+                    c.Box(2, 5, 16, 11, new Color(248, 244, 232, 255));
+                    var fold = new Color(196, 188, 170, 255);
+                    c.Line(2, 5, 9, 11, fold);
+                    c.Line(17, 5, 10, 11, fold);
+                    c.Disc(10, 11, 1.8f, FromName(item.Name, BerryColors));
+                    break;
+                }
+                case ItemPocket.KeyItems:
+                {
+                    var gold = new Color(244, 196, 70, 255);
+                    c.Ball(6, 10, 4.6f, 4.6f, gold);
+                    c.Disc(6, 10, 1.5f, new Color(150, 110, 40, 255));
+                    c.Box(10, 9, 8, 3, gold);
+                    c.Rect(13, 12, 2, 3, gold);
+                    c.Rect(16, 12, 2, 2, gold);
+                    break;
+                }
+                case ItemPocket.BattleItems:
+                {
+                    // A tonic bottle with an arrow up its label
+                    c.Box(6, 7, 9, 11, new Color(238, 134, 60, 255));
+                    c.Box(8, 3, 5, 4, new Color(190, 196, 210, 255));
+                    c.Rect(10, 12, 1, 4, white);
+                    c.Rect(9, 12, 3, 1, white);
+                    c.Rect(8, 13, 5, 1, white);
+                    c.Dot(10, 11, white);
+                    break;
+                }
+                default:
+                {
+                    if (item.Name.EndsWith("Stone", StringComparison.Ordinal) && Evolution.IsUsedToEvolve(item))
+                    {
+                        // A cut gem in the stone's own colour
+                        var gem = item.Name.Split(' ')[0] switch
+                        {
+                            "Fire" => new Color(236, 96, 60, 255),
+                            "Water" => new Color(80, 140, 236, 255),
+                            "Thunder" => new Color(246, 206, 70, 255),
+                            "Leaf" => new Color(96, 190, 96, 255),
+                            "Moon" => new Color(130, 120, 170, 255),
+                            "Sun" => new Color(246, 150, 60, 255),
+                            "Shiny" => new Color(240, 232, 180, 255),
+                            "Dusk" => new Color(96, 76, 128, 255),
+                            "Dawn" => new Color(90, 200, 190, 255),
+                            "Ice" => new Color(150, 220, 240, 255),
+                            _ => new Color(190, 160, 220, 255)
+                        };
+                        c.Poly(gem, 10, 2, 17, 8, 13, 18, 7, 18, 3, 8);
+                        c.Line(6, 8, 14, 8, PixelCanvas.Mix(gem, Color.White, 0.5f));
+                        c.Line(8, 5, 6, 8, PixelCanvas.Mix(gem, Color.White, 0.5f));
+                    }
+                    else
+                    {
+                        var cloth = new Color(196, 150, 96, 255);
+                        c.Ball(10, 12, 7, 6.5f, cloth);
+                        c.Box(8, 3, 4, 4, cloth);
+                        c.Rect(7, 7, 6, 1, new Color(120, 84, 52, 255));
+                    }
+                    break;
+                }
+            }
         }
         c.OutlinePass(innerSeams: false);
         return c;
+    }
+
+    private static readonly Color[] BerryColors =
+    {
+        new(232, 84, 84, 255), new(80, 130, 220, 255), new(246, 196, 70, 255), new(236, 130, 170, 255),
+        new(110, 190, 100, 255), new(150, 100, 190, 255), new(240, 150, 70, 255)
+    };
+
+    /// <summary>One of a few colours, always the same one for a name.</summary>
+    private static Color FromName(string name, Color[] colors)
+    {
+        int sum = 0;
+        foreach (char ch in name) sum += ch;
+        return colors[sum % colors.Length];
     }
 
     /// <summary>40x40 ball (20x20 art at 2x).</summary>

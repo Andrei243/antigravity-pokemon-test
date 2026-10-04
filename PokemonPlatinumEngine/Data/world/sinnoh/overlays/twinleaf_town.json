@@ -34,7 +34,7 @@
   },
   "signs": {
     "map_signpost": "Twinleaf Town\nFresh and free! The town where journeys begin.",
-    "mailbox_player": "Lucas's mailbox.\nThere's nothing in it.",
+    "mailbox_player": "{player}'s mailbox.\nThere's nothing in it.",
     "mailbox_rival": "Barry's mailbox.\nIt's stuffed with letters nobody has opened."
   },
   "npcs": [
@@ -45,7 +45,7 @@
       "y": 880,
       "facing": "Right",
       "dialog": [
-        "Barry: Hey, Lucas! You're finally ready!",
+        "Barry: Hey, {player}! You're finally ready!",
         "Barry: Professor Rowan is on Route 201, just north of town, and he's brought his briefcase!",
         "Barry: Come on! Up the road, and no dawdling!"
       ]
