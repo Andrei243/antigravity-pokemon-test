@@ -135,6 +135,19 @@ public class LightingAndSettingsTests
         Assert.True(medium.SceneScale < high.SceneScale && low.SceneScale < medium.SceneScale);
         Assert.True(medium.Fxaa && medium.AmbientOcclusion);
         Assert.False(low.AmbientOcclusion || low.DepthOfField);
+        // Edges are smoothed by FXAA only where the window doesn't shrink the scene enough to smooth them itself
+        (int Window, bool Low, bool Medium, bool High)[] windows =
+        {
+            (1280, false, false, false), (1600, true, false, false), (1920, true, false, false),
+            (2560, true, true, false), (2880, true, true, false), (2881, true, true, true), (3840, true, true, true)
+        };
+        foreach (var (window, lowNeeds, mediumNeeds, highNeeds) in windows)
+        {
+            Assert.Equal(lowNeeds, PokemonPlatinumEngine.Graphics.RenderContext.NeedsFxaa(low, (int)(1920 * low.SceneScale), window));
+            Assert.Equal(mediumNeeds, PokemonPlatinumEngine.Graphics.RenderContext.NeedsFxaa(medium, (int)(1920 * medium.SceneScale), window));
+            Assert.Equal(highNeeds, PokemonPlatinumEngine.Graphics.RenderContext.NeedsFxaa(high, (int)(1920 * high.SceneScale), window));
+        }
+
         // One filtered lookup of the shadow map on the low preset, four on the medium, nine on the high; a smaller map on the low one
         Assert.Equal((1, 4, 9), (low.ShadowTaps, medium.ShadowTaps, high.ShadowTaps));
         Assert.True(low.ShadowMapSize < medium.ShadowMapSize && medium.ShadowMapSize == high.ShadowMapSize);

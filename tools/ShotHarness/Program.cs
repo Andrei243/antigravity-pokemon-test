@@ -6,8 +6,13 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> cities [key ...]   the buildings of every town of Sinnoh, from the importer's last full run
 //   dotnet run --project tools/ShotHarness -- <output dir> dex [--back] [species ...]   boards of every species' 3D model, sixty to a page (--back: from behind)
 //   dotnet run --project tools/ShotHarness -- <output dir> export [species ...]   species' models as .glb files, to edit and drop into overrides/models
+//   dotnet run --project tools/ShotHarness -- <output dir> profile            where a frame goes: the heavy scenes timed, then taken apart pass by pass
+//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel
+//   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
+//   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]   a rectangle of a shot, enlarged
 //
-// It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
+// Two runs draw the same pictures (the game's chance is seeded and its clock counted in frames), so `diff` shows
+// exactly what a change did. It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
 // the game from loading or writing savegame.json there.
 
@@ -31,6 +36,48 @@ if (mode != "crop")
 {
     Directory.CreateDirectory(outDir);
     Environment.CurrentDirectory = outDir;
+}
+
+// ---------------------------------------------------------------- every shot at a glance
+//
+//   dotnet run --project tools/ShotHarness -- <dir> contact [name prefix]
+//
+// Puts the shots of a folder on sheets of twenty, four to a row with each one's name under it
+// (`contact_01`, `contact_02`, ...): for looking through a whole run when nothing in particular is being looked
+// for. A prefix keeps only the shots whose names begin with it.
+if (mode == "contact")
+{
+    Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
+    // (Only for the default font the names are written in)
+    Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
+    Raylib.InitWindow(320, 200, "contact");
+    string prefix = args.Length > 2 ? args[2] : "";
+    var names = Directory.GetFiles(outDir, "*.png").Select(Path.GetFileNameWithoutExtension)
+        .Where(n => !n.StartsWith("compare_") && !n.StartsWith("diff_") && !n.StartsWith("crop_") && !n.StartsWith("contact_") && n.StartsWith(prefix))
+        .OrderBy(n => n, StringComparer.Ordinal).ToList();
+    foreach (string old in Directory.GetFiles(outDir, "contact_*.png")) File.Delete(old);
+    const int columns = 4, rows = 5, thumbW = 480, thumbH = 270, label = 22, gap = 6;
+    for (int first = 0, sheetNumber = 1; first < names.Count; first += columns * rows, sheetNumber++)
+    {
+        var sheet = Raylib.GenImageColor(columns * (thumbW + gap) + gap, rows * (thumbH + label + gap) + gap, new Color(24, 26, 34, 255));
+        for (int i = 0; i < columns * rows && first + i < names.Count; i++)
+        {
+            var img = Raylib.LoadImage(Path.Combine(outDir, names[first + i] + ".png"));
+            // A crop keeps its shape: it is fitted into the cell, not stretched over it
+            float fit = Math.Min((float)thumbW / img.Width, (float)thumbH / img.Height);
+            int w = Math.Max(1, (int)(img.Width * fit)), h = Math.Max(1, (int)(img.Height * fit));
+            Raylib.ImageResize(ref img, w, h);
+            int x = gap + i % columns * (thumbW + gap), y = gap + i / columns * (thumbH + label + gap);
+            Raylib.ImageDraw(ref sheet, img, new Rectangle(0, 0, w, h), new Rectangle(x + (thumbW - w) / 2, y + (thumbH - h) / 2, w, h), Color.White);
+            Raylib.ImageDrawText(ref sheet, names[first + i], x + 2, y + thumbH + 2, 20, Color.White);
+            Raylib.UnloadImage(img);
+        }
+        Raylib.ExportImage(sheet, Path.Combine(outDir, $"contact_{sheetNumber:00}.png"));
+        Raylib.UnloadImage(sheet);
+        Console.WriteLine($"contact_{sheetNumber:00}: {names[first]} to {names[Math.Min(names.Count, first + columns * rows) - 1]}");
+    }
+    Raylib.CloseWindow();
+    return;
 }
 
 // ---------------------------------------------------------------- a closer look at a shot
@@ -77,7 +124,7 @@ if (mode == "diff")
     if (args.Length < 3) { Console.WriteLine("usage: <dir> diff <other dir>"); return; }
     string otherDir = Path.GetFullPath(args[2], startDir);
     static string NameOf(string path) => Path.GetFileNameWithoutExtension(path);
-    bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_") && !name.StartsWith("crop_");
+    bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_") && !name.StartsWith("crop_") && !name.StartsWith("contact_");
     var mine = Directory.GetFiles(outDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
     var theirs = Directory.GetFiles(otherDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
     foreach (string old in Directory.GetFiles(outDir, "diff_*.png")) File.Delete(old);

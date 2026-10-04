@@ -1130,7 +1130,7 @@ public class GameEngine
     public void Draw()
     {
         FrameProfiler.LapCpu(FrameSection.Update);
-        renderContext.OutputIsNative = Raylib.GetScreenWidth() > VirtualWidth * RenderScale * 0.75f;
+        renderContext.OutputWidth = Raylib.GetScreenWidth();
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = currentState == GameState.Transition
             ? (isFadingOut ? stateBeforeTransition : stateAfterTransition)

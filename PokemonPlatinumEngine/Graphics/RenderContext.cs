@@ -39,11 +39,17 @@ public sealed class RenderContext
     private GraphicsQuality? pendingQuality;
     private bool targetsLoaded;
 
+    /// <summary>The width of the window the screen is shown in, in pixels: what decides whether edges need smoothing.</summary>
+    public int OutputWidth { get; set; } = 1920;
+
     /// <summary>
-    /// True when the window shows the 4K screen at (close to) full size. A smaller window scales the screen
-    /// down, which already smooths edges, so a full-resolution scene then skips FXAA.
+    /// Whether the composite must smooth edges itself (FXAA). A window that shows the scene at three quarters
+    /// of its size or less already smooths it by scaling it down, and FXAA would cost half a millisecond for
+    /// nothing: the 4K scene of the high preset needs it only in a window wider than 2880, the medium preset's
+    /// only in one wider than 2160, the low preset's in all but the smallest.
     /// </summary>
-    public bool OutputIsNative { get; set; }
+    public static bool NeedsFxaa(QualityProfile quality, int sceneWidth, int windowWidth) =>
+        quality.Fxaa && sceneWidth * 3 < windowWidth * 4;
 
     public bool Loaded { get; private set; }
 
@@ -254,7 +260,7 @@ public sealed class RenderContext
     public void Composite(Rectangle destination)
     {
         if (!targetsLoaded) return;
-        bool fxaa = Quality.Fxaa && (OutputIsNative || Quality.SceneScale < 2f);
+        bool fxaa = NeedsFxaa(Quality, Target.Texture.Width, OutputWidth);
         Shaders.SetPost(Texel(Target.Texture), post, depthRange, fxaa, Quality.SceneScale);
         Raylib.BeginShaderMode(Shaders.Post);
         Shaders.BindPostTextures(blurA.Texture, bloomA.Texture, aoA.Texture, Target.Depth);

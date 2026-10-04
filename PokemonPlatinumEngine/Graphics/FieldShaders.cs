@@ -631,6 +631,11 @@ uniform float vignette;
 out vec4 finalColor;
 
 
+const vec2 taps[12] = vec2[](
+    vec2(-0.326, -0.406), vec2(-0.840, -0.074), vec2(-0.696, 0.457), vec2(-0.203, 0.621),
+    vec2(0.962, -0.195), vec2(0.473, -0.480), vec2(0.519, 0.767), vec2(0.185, -0.893),
+    vec2(0.507, 0.064), vec2(0.896, 0.412), vec2(-0.322, -0.933), vec2(-0.792, -0.598));
+
 const vec3 lumaWeights = vec3(0.299, 0.587, 0.114);
 
 // FXAA in the spirit of Timothy Lottes' console version: blend along the local edge direction
@@ -671,10 +676,21 @@ void main()
     float radius = edge * blurStrength;
     if (radius > 0.05)
     {
-        // Four taps on the diagonals round the middle one; each is the card's own blend of four texels
-        vec2 o = texel * radius * 0.7;
-        color = (color + texture(texture0, uv + o).rgb + texture(texture0, uv - o).rgb
-            + texture(texture0, uv + vec2(o.x, -o.y)).rgb + texture(texture0, uv + vec2(-o.x, o.y)).rgb) * 0.2;
+        if (radius < 2.5)
+        {
+            // Close in, four taps on the diagonals round the middle one lie as close as the texels themselves
+            // (each is the card's own blend of four), and are as wide a blur as the disc is at this radius
+            vec2 o = texel * radius * 0.64;
+            color = (color + texture(texture0, uv + o).rgb + texture(texture0, uv - o).rgb
+                + texture(texture0, uv + vec2(o.x, -o.y)).rgb + texture(texture0, uv + vec2(-o.x, o.y)).rgb) * 0.2;
+        }
+        else
+        {
+            // Further out so few would show as doubled edges: the whole disc
+            vec3 sum = color;
+            for (int i = 0; i < 12; i++) sum += texture(texture0, uv + taps[i] * radius * texel).rgb;
+            color = sum / 13.0;
+        }
     }
     if (dof > 0.0) color = mix(color, texture(blurTex, uv).rgb, edge * dof);
     if (aoStrength > 0.0) color *= mix(1.0, texture(aoTex, uv).r, aoStrength);

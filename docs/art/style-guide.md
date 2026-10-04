@@ -283,11 +283,11 @@ These are the kinds Platinum's map headers name. Five places (the south of Route
 | Sun colour | 0.66, 0.55, 0.40 (golden) |
 | Sky / ground ambient | 0.50, 0.55, 0.74 / 0.46, 0.44, 0.40 |
 | Diffuse | smooth Lambert (the pixel art carries the shading) |
-| Shadows | soft: Poisson-disc filter 1.8 shadow-map texels wide, rotated per pixel; 9 taps on High, with a 5-tap early-out where a pixel is fully lit or fully shaded |
+| Shadows | soft and without grain: nine lookups of the shadow map on High, one texel apart, each the graphics card's own filtered comparison of the four texels round it, so that an edge is one even ramp four texels wide (about a dozen pixels at 4K). Four lookups on Medium, one on Low. Lookups further apart than a texel leave steps in the edge. On a machine where the card can't be asked to compare, a Poisson disc 1.8 texels in radius, rotated per pixel, stands in |
 | Cloud shade | 20 % dimmer sunlight in broad patches that drift slowly across the map |
 | Fog | toward `0.72, 0.82, 0.92`, 18 % at the far edge (starts 44 units from the camera, full at 72) |
-| Ambient occlusion | screen-space, quarter resolution, radius 0.45 units, strength 0.4: grounds walls, props and sprites |
-| Tilt-shift | 12-tap blur radius 6 texels, plus 95 % mix toward a wide blur outside a ±30 % focus band |
+| Ambient occlusion | screen-space, quarter resolution, read from a half-resolution copy of the depth buffer, radius 0.45 units, strength 0.4: grounds walls, props and sprites |
+| Tilt-shift | a blur growing to 6 texels in radius (a disc of 12 taps; within 2.5 texels five taps are as dense as the texels and do), plus 95 % mix toward a wide blur outside a ±30 % focus band |
 | Bloom | threshold 0.86, strength 0.38 |
 | Grade | saturation 1.10, contrast 1.08, shadows × (0.88, 0.92, 1.10), highlights × (1.07, 1.00, 0.90) |
 | Vignette | 0.26 |
@@ -430,11 +430,17 @@ The world follows the computer's clock, like the DS's real-time clock, with Plat
 
 | Preset | 3D scene resolution | Anti-aliasing | Shadow taps | Shadow map | Ambient occlusion | Wide depth of field |
 |---|---|---|---|---|---|---|
-| High (default) | 3840×2160 | FXAA when the window shows the screen about 1:1 (wider than 2880); otherwise the downscale to the window does it | 9 | 2048 | yes | yes |
-| Medium | 2880×1620 | FXAA | 7 | 2048 | yes | yes |
-| Low | 1920×1080 | FXAA | 5 | 1024 | no | no |
+| High (default) | 3840×2160 | FXAA in a window wider than 2880; in a smaller one the downscale to the window does it | 9 | 2048 | yes | yes |
+| Medium | 2880×1620 | FXAA in a window wider than 2160 | 4 | 2048 | yes | yes |
+| Low | 1920×1080 | FXAA in a window wider than 1440 | 1 | 1024 | no | no |
 
-The interface is always drawn at 4K; the presets change only the 3D scenes. A frame must stay under 8 ms on High (in the harness after the move to 4K: field 6.7 ms, battle 7.6 ms, title 3.9 ms). Options are saved in `settings.json`.
+The interface is always drawn at 4K; the presets change only the 3D scenes. FXAA is for a window that shows the scene at more than three quarters of its size: a smaller window smooths the scene by scaling it down, and FXAA would cost half a millisecond for nothing. Options are saved in `settings.json`.
+
+A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (plan 04): towns and routes 5.0 to 6.7 ms, rooms 3.7 ms, battles 6.0 to 7.3 ms with a move's effect at its height; Medium takes about 0.7 ms less and Low 1.5 to 2 ms less. One millisecond of each of those is the hidden window's own swap of its buffers. The harness's `profile` mode says where a frame goes; what was learned from it:
+
+- A frame is spent filling 4K, not on geometry: a few hundred thousand triangles and a hundred or two meshes cost a tenth of what shading every pixel does. An effect is weighed by what it adds per pixel.
+- A 4K texture is slow to read at scattered places. What needs the picture or its depth small (the wide blur, the glow, ambient occlusion) reads a half-resolution copy made once a frame.
+- A scene seen from low down (a battle's stage) lays its depth down before it is shaded, so each pixel is shaded once.
 
 ## Interface (vector)
 
@@ -606,8 +612,9 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 - An `overrides/models/` folder (ignored by git) lets glTF models replace any species' model (plan 03 · D5, [`docs/model-files.md`](../model-files.md)); `overrides/sprites/` does the same for character sprite frames. What is put there stays on the machine it is put on and is not part of the game's assets.
 - Nothing taken from the Pokémon games and no fan rips.
 
-## Known gaps after G10
+## Known gaps after G11
 
+- The interface is drawn a shape at a time: a tenth of a millisecond in the field, up to 1.2 ms for a double battle's menu. Drawing its shapes in batches would halve that; no scene needs it to stay inside the frame's budget. Battle models are drawn at one level of detail (their triangles are 0.3 ms of a frame), and scenery is batched per chunk rather than instanced, for the same reason: neither is where a frame goes.
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
 - The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
 - Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Thirty-three models have plain stand-ins until their area is built (`docs/world-models.md` says which). Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
