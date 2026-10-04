@@ -113,6 +113,8 @@ public sealed class WorldWriter
     public WorldAreaFile Area(MapHeader header, string name)
     {
         var events = decomp.Events(header.Events);
+        var land = Land(header, out int? landRate);
+        var water = Water(header, out int? waterRate);
         return new WorldAreaFile
         {
             Key = header.Key,
@@ -131,7 +133,10 @@ public sealed class WorldWriter
             Running = header.Running,
             EscapeRope = header.EscapeRope,
             Fly = header.Fly,
-            Land = Land(header),
+            Land = land,
+            LandRate = land == null ? null : landRate,
+            Water = water,
+            WaterRate = water == null ? null : waterRate,
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o => new AreaObject
             {
@@ -168,16 +173,32 @@ public sealed class WorldWriter
         return speciesNames.GetValueOrDefault(Plain(Trim(constant, "SPECIES_", "")));
     }
 
-    private List<AreaEncounter>? Land(MapHeader header)
+    private List<AreaEncounter>? Land(MapHeader header, out int? rate)
     {
+        rate = null;
         if (header.Encounters == null) return null;
         var land = new List<AreaEncounter>();
-        foreach (var (species, level) in decomp.LandEncounters(header.Encounters))
+        foreach (var (species, level) in decomp.LandEncounters(header.Encounters, out int landRate))
         {
+            rate = landRate;
             if (SpeciesName(species) is { } name) land.Add(new AreaEncounter { Species = name, Level = level });
             else Problems.Add($"{header.Key}: wild {species} is not a species the game knows");
         }
         return land.Count > 0 ? land : null;
+    }
+
+    private List<AreaEncounter>? Water(MapHeader header, out int? rate)
+    {
+        rate = null;
+        if (header.Encounters == null) return null;
+        var water = new List<AreaEncounter>();
+        foreach (var (species, min, max) in decomp.WaterEncounters(header.Encounters, out int waterRate))
+        {
+            rate = waterRate;
+            if (SpeciesName(species) is { } name) water.Add(new AreaEncounter { Species = name, Level = min, MaxLevel = max > min ? max : null });
+            else Problems.Add($"{header.Key}: wild {species} in the water is not a species the game knows");
+        }
+        return water.Count > 0 ? water : null;
     }
 
     public static string KeyOf(string headerId) => Trim(headerId, "MAP_HEADER_", "").ToLowerInvariant();

@@ -60,8 +60,34 @@ Other ground kinds follow the lawn's recipe (flat base, clean-edged patches one 
 |---|---|---|
 | Sand | `238,224,172` / `246,236,196` / `206,188,138` | short ripple arcs `214,196,140` |
 | Dirt | `176,136,96` / `194,156,112` / `138,102,70` | clods: 2×2 `146,108,74` with a light texel |
-| Snow | `204,218,240` / `220,230,246` / `168,186,222` | drift lines `184,200,232`, three texels long (kept well below white: sunlit snow still blooms under the towns' day light, so snow areas need their own light rig) |
+| Snow | `186,204,232` / `196,212,238` / `150,172,214` | drift lines `168,188,224`, three texels long (kept well below white, so the patches of it in Twinleaf Town stay snow under the day light instead of blooming to a blank; the snow routes still need a light rig of their own) |
 | Cave floor | `112,100,104` / `130,118,120` / `74,66,80` | cracks `82,72,84`, pebbles `150,140,140` |
+| Rock | `158,152,150` / `176,170,166` / `112,106,116` | cracks: bent lines `104,100,112` three to five texels long, each with a light chip `208,204,200` beside it |
+| Ice | `150,200,236` / `172,214,242` / `112,166,216` | glints: diagonal strokes `232,246,255`, three texels (blue enough to stay ice under the day light, like the snow) |
+| Marsh | `124,106,86` / `140,122,98` / `90,76,66` | wet patches: flat ovals `98,112,108`, five texels wide with a light texel |
+
+Two kinds are built things and keep straight edges, tile for tile, instead of the rounded masks:
+
+| Kind | Look |
+|---|---|
+| Planks (bridge decks, boardwalks) | boards 8 texels wide laid across the way one walks, `178,134,92`, every third one a shade lighter `192,150,104`; a groove `126,90,62` between boards, a nail texel `96,70,52` at each end, and a dark rail line `104,74,54` along the deck's open sides |
+| Stairs | treads 8 texels deep in stone `184,178,170`: a light nose `214,210,204` on the edge that faces downhill and the riser's shade `122,116,124` under it, so a flight reads as steps whichever way it climbs |
+
+### Relief
+
+Height comes from the map (plan 01 · M3) and is drawn true to scale: one tile up is one world unit, which the camera shows about half a tile tall.
+
+- **The lowlands stay flat.** A map's ground level is drawn at zero, exactly as a map without heights is.
+- **Small steps are slopes.** Where neighbouring tiles differ by less than three quarters of a tile, the lower one rises to meet the higher across its own width (`Relief`): a kerb or a beach is a gentle bank, never a sliver of wall.
+- **Water lies level with its banks.** Sinnoh's water is half a tile under the ground around it; the game says that with the painted bank (see Water) and draws the surface level with the shore (at the whole tile above the water's own height), so a pond is a flat sheet of pixel art and a river runs level under its bridges.
+- **A waterfall** is a sheet of falling water down the slope between two levels: streaks of light `150,206,246` and of foam `236,246,255` on mid-blue `76,146,214`, each with a dark line `46,104,186` beside it, and clumps of foam where the water goes over the edge and where it lands. It doesn't move yet.
+- **A step of three quarters of a tile or more is a face**: a wall from the lower ground up to the higher, drawn where it faces south, east or west (a face that looks north is never seen). Its art keeps square texels on screen, so it has 32 texel columns and about 16 rows to the tile:
+  - under lawn, flowers, tall grass, paths and sand: an **earth bank**, the ledge's face carried down: bright edge `160,222,122`, scalloped grass lip `120,200,102`, then dirt `178,138,90` with a broken strata line `146,108,72` every six rows
+  - under rock, snow, ice and cave floors: a **rock face** in the boulder's shades: a light top edge `196,192,190`, then beds of `150,146,150` of uneven thickness, each lit along its top `176,170,166` with a longer glint or two, shaded `104,100,112` where it overhangs the next, and cracked `74,70,86` in one or two places part of the way down. Long beds and few cracks: strata, never a wall of blocks
+- **Everything stands on the ground it is on**: trees, grass, props, buildings and people are lifted with their tile, and the camera follows the player's height.
+- **Faces cast shadows; flat ground does not**, as before. Ambient occlusion darkens the foot of a face.
+- **Ledges** face south, west or east. The side ones are the same ridge turned: the grass lip runs along the top of the drop and the dirt face shows as a narrow strip, since the camera sees it edge on.
+
 
 ### Water
 
@@ -83,6 +109,9 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 - **Trees**: grey textures in four flat tones (118, 162, 206, 244) tinted per tree. Pine tiers are bands of scalloped needles with a toothed rim; round crowns are overlapping leaf clumps, each with a light crescent on the upper left and a dark one on the lower right. Bark is `116,80,54` with dark grooves `86,58,42` and a light line beside each. No per-texel random variation.
 - **Ledges**: a ridge 12 texels high: a bright edge `160,222,122`, a grass lip (`120,200,102`, scalloped) over a dirt face `178,138,90` with one broken strata line `146,108,72` and a dark base `116,84,60`.
 - **Rocks**: a boulder is a sprite like the other props: a big stone with a smaller one at its foot, in three flat shades (`196,192,190`, `150,146,150`, `104,100,112`) with a crack line `74,70,86` and an outline; every other one is mirrored. In water it stands a little lower, in a ring of foam.
+- **Obstacles** (what Cut, Rock Smash and Strength clear) are sprites that can be told from the scenery and from each other at a glance: a **small tree** with a thin trunk and a round crown in the tall grass's greens; a **cracked rock** in browns (`204,168,126`, `168,128,92`, `122,90,70`) split right across by cracks `78,56,50`; a **round boulder**, smooth and grey (`214,210,204`, `164,160,162`, `112,108,122`) with one glint and one dimple.
+- **The swimmer**: whichever Pokémon knows Surf is shown as one round blue swimmer (`86,128,206`, back `138,180,240`, underside `58,88,160`), 48 by 26, seen from the front (two eyes), the back (a tail fin) or the side (the head leading). The rider stands on its back, twelve rows up, and the two bob a texel together.
+- **Sinking**: in deep snow and in marsh mud a walker's sprite is lowered by a few rows (4, 7 and 10 for the three depths of snow; 2 and 6 for mud and deep mud) and the ground hides the feet.
 
 ### Buildings
 
@@ -435,8 +464,8 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 
 ## Known gaps after G8
 
-- Ponds and lakes are still rectangles in the map data, however round their corners are drawn; their shapes come with the maps of plan 01. Cliffs taller than a ledge need height in the maps too.
-- Sand, dirt, snow and cave floors are drawn but no map uses them yet; their battle arenas are ready (G8), but the field still needs light rigs of its own for snow and caves when their areas are built.
+- Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
+- The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
 - The towns are still the hand-made stand-ins: the building kit is ready for plan 01's real layouts, which will bring each town's own mix of buildings (the styles per town here cover Twinleaf, Sandgem, Jubilife and Pallet). Gyms, gates and the League have no style yet.
 - Houses have one storey and one roof shape per kind; a second storey and a cross gable would give the bigger houses their look. Doors are painted shut and do not open (G9).
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.

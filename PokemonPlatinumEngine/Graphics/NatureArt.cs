@@ -207,4 +207,136 @@ internal static class NatureArt
         }
         return c;
     }
+
+    // ------------------------------------------------------------------ faces between levels
+
+    /// <summary>Rows at the top of a face's art that are drawn once (the edge and what hangs from it); the rest repeats downward.</summary>
+    public const int FaceCap = 16;
+
+    /// <summary>Rows of a face's art that repeat down a tall face.</summary>
+    public const int FaceBody = 48;
+
+    /// <summary>
+    /// The face of an earth bank under grass: the ledge's face carried down. A bright edge, a scalloped grass
+    /// lip, then dirt with a broken strata line every six rows. 32 by <see cref="FaceCap"/> + <see cref="FaceBody"/>.
+    /// </summary>
+    public static PixelCanvas BankFace()
+    {
+        var c = new PixelCanvas(32, FaceCap + FaceBody);
+        var edge = Rgb(160, 222, 122);
+        var lip = Rgb(120, 200, 102);
+        var lipShade = Rgb(70, 150, 82);
+        var dirt = Rgb(178, 138, 90);
+        var strata = Rgb(146, 108, 72);
+        for (int x = 0; x < 32; x++)
+        {
+            int hang = x % 8 is 1 or 2 or 5 ? 4 : 3;
+            for (int y = 0; y < c.Height; y++)
+            {
+                // Each strata line is broken in a different place, in a pattern that comes round with the body
+                int course = y / 6 % 8, along = (x + course * 6) % 16;
+                Color col = y == 0 ? edge
+                    : y < hang ? lip
+                    : y == hang ? lipShade
+                    : y % 6 == 3 && along is < 6 or > 9 ? strata
+                    : dirt;
+                c.SetRaw(x, y, col);
+            }
+        }
+        return c;
+    }
+
+    /// <summary>How many tiles of a face one width of the rock art covers: wide enough that its slabs don't repeat tile by tile.</summary>
+    public const int RockFaceTiles = 2;
+
+    /// <summary>
+    /// A rock face in the boulder's shades: a light top edge, then beds of rock of uneven thickness lying one on
+    /// the other. Each bed is lit along its top, with a few longer glints where it bulges, and overhangs the next
+    /// in a band of shade whose darkest line is broken; a bed has one or two cracks, each running only part of
+    /// the way down it. Long beds and few cracks: strata, not a wall of blocks.
+    /// </summary>
+    public static PixelCanvas RockFace()
+    {
+        const int w = 32 * RockFaceTiles;
+        var c = new PixelCanvas(w, FaceCap + FaceBody);
+        var top = Rgb(196, 192, 190);
+        var lit = Rgb(176, 170, 166);
+        var rock = Rgb(150, 146, 150);
+        var deep = Rgb(104, 100, 112);
+        var crack = Rgb(74, 70, 86);
+
+        // Each bed: its height, where its cracks are, and where a glint lies on its upper part (start, length)
+        (int Height, int[] Cracks, (int At, int Length)[] Glints)[] beds =
+        {
+            // The cap, 16 rows
+            (6, new[] { 41 }, new[] { (8, 9), (50, 6) }),
+            (10, new[] { 14, 55 }, new[] { (24, 11) }),
+            // The body, 48 rows, which repeats down a tall face
+            (9, new[] { 30 }, new[] { (4, 8), (44, 10) }),
+            (12, new[] { 9, 47 }, new[] { (18, 12), (56, 5) }),
+            (8, new[] { 24, 61 }, new[] { (34, 9) }),
+            (10, new[] { 5 }, new[] { (14, 10), (40, 12) }),
+            (9, new[] { 19, 52 }, new[] { (28, 8), (58, 4) })
+        };
+
+        int y0 = 0;
+        for (int k = 0; k < beds.Length; k++)
+        {
+            var (height, cracks, glints) = beds[k];
+            for (int row = 0; row < height; row++)
+                for (int x = 0; x < w; x++)
+                {
+                    // The shade under the bed above ends in a dark line that is there for a stretch and gone for a stretch
+                    bool underLine = row == height - 1 && (x + k * 13) % 21 < 13;
+                    Color col = y0 + row == 0 ? top
+                        : row == 0 ? lit
+                        : underLine ? crack
+                        : row >= height - 2 ? deep
+                        : rock;
+
+                    // A glint two rows under the bed's top; a crack from a third of the way down, leaning a texel
+                    foreach (var (at, length) in glints)
+                        if (row == 2 && x >= at && x < at + length) col = lit;
+                    foreach (int at in cracks)
+                    {
+                        if (row < height / 3) continue;
+                        int cx = at + (row >= height * 2 / 3 ? 1 : 0);
+                        if (x == cx) col = crack;
+                        else if (x == cx - 1 && row < height - 2) col = deep;
+                    }
+                    c.SetRaw(x, y0 + row, col);
+                }
+            y0 += height;
+        }
+        return c;
+    }
+
+    // ------------------------------------------------------------------ falling water
+
+    /// <summary>
+    /// A waterfall's sheet, 32 by 32 and repeating: streaks of light and of foam running the way the water
+    /// falls, each a different length and broken at a different height, with a dark line down one side.
+    /// </summary>
+    public static PixelCanvas Waterfall()
+    {
+        var c = new PixelCanvas(32, 32);
+        var water = Rgb(76, 146, 214);
+        var light = Rgb(150, 206, 246);
+        var foam = Rgb(236, 246, 255);
+        var dark = Rgb(46, 104, 186);
+        c.Fill(water);
+        (int X, int Start, int Length, bool Foam)[] streaks =
+        {
+            (2, 3, 14, false), (6, 20, 9, true), (9, 8, 18, false), (13, 28, 12, false), (16, 1, 10, true),
+            (20, 14, 15, false), (24, 25, 11, true), (27, 6, 13, false), (30, 18, 9, false)
+        };
+        foreach (var (x, start, length, white) in streaks)
+            for (int i = 0; i < length; i++)
+            {
+                int y = (start + i) % 32;
+                c.SetRaw(x, y, white ? foam : light);
+                c.SetRaw((x + 31) % 32, y, dark);
+            }
+        return c;
+    }
 }

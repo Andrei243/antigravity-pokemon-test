@@ -29,6 +29,7 @@
     { "species": "Starly", "level": 2 },
     { "species": "Bidoof", "level": 2 }
   ],
+  "landRate": 30,
   "warps": [],
   "objects": [
     { "id": "youngster_tristan", "looks": "youngster", "movement": "look_south", "x": 166, "z": 813, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "script": "TRAINER_YOUNGSTER_TRISTAN" },

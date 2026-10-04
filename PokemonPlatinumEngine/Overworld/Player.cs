@@ -16,7 +16,7 @@ public class Player
     public float PixelX { get; private set; }
     public float PixelY { get; private set; }
 
-    /// <summary>Height of the ledge-hop arc above the ground, in pixels (0 when on the ground).</summary>
+    /// <summary>Height of a hop's arc above the ground, in pixels (0 when on the ground).</summary>
     public float HopHeight { get; private set; }
 
     /// <summary>Walk cycle for the 3D model: advances one unit every two steps.</summary>
@@ -28,15 +28,53 @@ public class Player
     /// <summary>Facing as an angle about the vertical axis (0 = toward the camera), eased when turning.</summary>
     public float Yaw { get; private set; }
 
-    /// <summary>Progress through the current ledge hop (0 when not hopping).</summary>
+    /// <summary>Progress through the current hop (0 when not hopping).</summary>
     public float HopProgress => IsHoppingLedge ? moveProgress : 0f;
 
     public bool IsMoving { get; private set; }
     public bool IsRunning { get; private set; }
+
+    /// <summary>In the air: over a ledge, or between the shore and the Pokémon that carries the player on water.</summary>
     public bool IsHoppingLedge { get; private set; }
+
+    /// <summary>Carried by ice or a moving floor: moving without walking, whatever is pressed.</summary>
+    public bool IsSliding { get; private set; }
+
+    /// <summary>How the player is getting about: on foot, on a Pokémon's back across water, or by Bicycle.</summary>
+    public TravelMode Mode { get; private set; }
+
+    /// <summary>What the party's Pokémon let the player do in the field (<see cref="FieldMovement.MovesOf"/>); the game keeps it up to date.</summary>
+    public FieldMoves Moves { get; set; }
+
+    /// <summary>The Bicycle's fast gear, which is what gets up a muddy slope. Only matters while cycling.</summary>
+    public bool FastGear { get; set; }
+
+    /// <summary>Counts the steps since the last wild battle or map change, for the odds of the next (<see cref="EncounterSteps"/>).</summary>
+    public EncounterSteps Encounters { get; } = new();
+
     private float moveProgress = 0f;
     private int targetGridX = 0;
     private int targetGridY = 0;
+
+    // The step being taken: how much of it passes each second, how fast the legs go, the heights it goes
+    // between, how high it arcs, which way it goes and how the player travels once it ends
+    private float stepRate = 4.5f;
+    private float stride = 4.5f;
+    private float fromHeight, toHeight;
+    private float hopArc;
+    private Direction movingDir = Direction.Down;
+    private TravelMode modeAfter;
+    private StepKind stepKind;
+    private bool mounting;
+
+    // The height underfoot; unknown after being put somewhere, until the next update looks at the map
+    private float height = float.NaN;
+
+    // False from being put somewhere until the next update has looked at where that is
+    private bool settled;
+
+    // Where ice or a moving floor takes the player next, once the step onto it has ended
+    private Direction? carried;
 
     // Walking into something plays one thud per step-length, not one per frame
     private const float BumpInterval = 0.4f;
@@ -63,10 +101,52 @@ public class Player
         HopHeight = 0f;
         IsMoving = false;
         IsHoppingLedge = false;
+        IsSliding = false;
+        mounting = false;
+        carried = null;
         moveProgress = 0f;
+        height = float.NaN;
+        settled = false;
         Yaw = YawOf(facing);
         WalkBlend = 0f;
+        Encounters.Reset();
     }
+
+    /// <summary>Puts the player on foot, on the water or on the Bicycle outright: a loaded save, a test, the harness.</summary>
+    public void SetMode(TravelMode mode) => Mode = mode;
+
+    /// <summary>The height of the ground (or deck, or water) under the player on a map, in tiles; eased from tile to tile while moving.</summary>
+    public float HeightOn(Map map) => float.IsNaN(height) ? map.HeightAt(GridX, GridY) : height;
+
+    /// <summary>
+    /// Says which level the player stands on where a tile has two: after <see cref="SetPosition"/> the player is
+    /// on the ground, and a save made on a bridge puts them back on its deck with this.
+    /// </summary>
+    public void SetHeight(float standing) => height = standing;
+
+    /// <summary>
+    /// Where the Pokémon the player rides on water is, in tiles, or null on land: under the player while
+    /// surfing, and waiting on its tile of water while the player hops onto it or off it.
+    /// </summary>
+    public (float X, float Y)? Mount
+    {
+        get
+        {
+            if (mounting) return (targetGridX, targetGridY);
+            if (IsMoving && stepKind == StepKind.Land) return (GridX, GridY);
+            return Mode == TravelMode.Surfing ? (PixelX / TileSize, PixelY / TileSize) : null;
+        }
+    }
+
+    /// <summary>
+    /// How far onto the Pokémon's back the player is: 1 while surfing, rising from 0 through the hop onto it
+    /// and falling back to 0 through the hop off it.
+    /// </summary>
+    public float Saddle =>
+        mounting ? moveProgress
+        : Mode != TravelMode.Surfing ? 0f
+        : IsMoving && stepKind == StepKind.Land ? 1f - moveProgress
+        : 1f;
 
     /// <summary>Model yaw for a facing direction; the model faces +Z (toward the camera) at 0.</summary>
     public static float YawOf(Direction facing) => facing switch
@@ -77,63 +157,51 @@ public class Player
         _ => 0f
     };
 
+    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves);
+
+    /// <summary>One frame of the player's movement, steered by the keys held.</summary>
+    public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
+    {
+        Vector2 dir = InputManager.GetMovementVector();
+        Direction? want = null;
+        if (dir != Vector2.Zero)
+        {
+            want = Math.Abs(dir.X) > Math.Abs(dir.Y)
+                ? (dir.X > 0 ? Direction.Right : Direction.Left)
+                : (dir.Y > 0 ? Direction.Down : Direction.Up);
+        }
+        Advance(dt, map, want, InputManager.IsActionDown(GameAction.Run), onWildEncounter, onWarpTrigger, onArrive);
+    }
+
+    /// <summary>
+    /// One frame of the player's movement with the steering given rather than read from the keys, which is how
+    /// tests and the harness walk the player: a direction held turns the player to face it and then steps.
+    /// </summary>
     /// <param name="onArrive">
     /// Called when a step ends on a new tile. True means something there takes over (a trainer catching the
     /// player's eye), so no wild Pokémon appears on that step.
     /// </param>
-    public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
+    public void Advance(float dt, Map map, Direction? want, bool run, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
 
+        if (!settled)
+        {
+            // Just put here: stand on this map's ground unless told which level, and on foot unless this is water to float on
+            settled = true;
+            if (float.IsNaN(height)) height = map.HeightAt(GridX, GridY);
+            if (Mode == TravelMode.Surfing && !map.IsDeepWater(GridX, GridY)) Mode = TravelMode.OnFoot;
+        }
+
         if (IsMoving)
         {
-            float speed = IsRunning ? 8.0f : 4.5f;
-            moveProgress += speed * dt;
-            WalkCycle += speed * dt * 0.5f;
+            moveProgress += stepRate * dt;
+            if (!IsSliding) WalkCycle += stride * dt * 0.5f;
 
             if (moveProgress >= 1f)
             {
-                // Finished moving to target tile
-                GridX = targetGridX;
-                GridY = targetGridY;
-                PixelX = GridX * TileSize;
-                PixelY = GridY * TileSize;
-                HopHeight = 0f;
-                IsMoving = false;
-                IsHoppingLedge = false;
-                moveProgress = 0f;
-
-                // Check warp
-                var warp = map.GetWarpAt(GridX, GridY);
-                if (warp != null)
-                {
-                    onWarpTrigger(warp);
-                    return;
-                }
-
-                // A trainer's challenge comes before any wild Pokémon in the grass
-                bool interrupted = onArrive != null && onArrive();
-
-                // Check tall grass step & encounter
-                if (map.IsTallGrass(GridX, GridY))
-                {
-                    InTallGrass = true;
-                    GrassRustleTimer = 0.2f;
-                    AudioManager.PlaySound("grass");
-
-                    // Roll for wild encounter
-                    var wild = interrupted ? null : map.RollWildEncounter(GridX, GridY);
-                    if (wild != null)
-                    {
-                        onWildEncounter(wild);
-                        return;
-                    }
-                }
-                else
-                {
-                    InTallGrass = false;
-                }
+                if (Arrive(map, onWildEncounter, onWarpTrigger, onArrive)) return;
             }
             else
             {
@@ -145,29 +213,28 @@ public class Player
 
                 PixelX = startX + (endX - startX) * moveProgress;
                 PixelY = startY + (endY - startY) * moveProgress;
+                height = fromHeight + (toHeight - fromHeight) * moveProgress;
 
-                // Ledge hop arc (height above the ground, in the same pixel units)
-                HopHeight = IsHoppingLedge ? MathF.Sin(moveProgress * MathF.PI) * 16f : 0f;
+                // The arc of a hop (height above the ground, in the same pixel units)
+                HopHeight = MathF.Sin(moveProgress * MathF.PI) * hopArc;
             }
+        }
+        else if (carried is { } onward)
+        {
+            // Ice and moving floors: the next step takes itself, and ends the slide if something is in the way
+            carried = null;
+            var step = FieldMovement.Step(map, GridX, GridY, onward, WalkerOn(map) with { Running = false });
+            if (step.Moves) Begin(map, step, onward, sliding: true);
+            else IsSliding = false;
         }
         else
         {
-            // Idle state: check movement input
-            IsRunning = InputManager.IsActionDown(GameAction.Run);
-            Vector2 dir = InputManager.GetMovementVector();
+            // Idle state: follow the steering
+            IsSliding = false;
+            IsRunning = Mode == TravelMode.OnFoot && run;
 
-            if (dir != Vector2.Zero)
+            if (want is { } desiredDir)
             {
-                Direction desiredDir = Facing;
-                if (Math.Abs(dir.X) > Math.Abs(dir.Y))
-                {
-                    desiredDir = dir.X > 0 ? Direction.Right : Direction.Left;
-                }
-                else
-                {
-                    desiredDir = dir.Y > 0 ? Direction.Down : Direction.Up;
-                }
-
                 if (Facing != desiredDir)
                 {
                     Facing = desiredDir;
@@ -190,7 +257,62 @@ public class Player
             }
         }
 
-        Settle(dt, IsMoving || walkingInPlace);
+        Settle(dt, (IsMoving && !IsSliding && Mode == TravelMode.OnFoot) || walkingInPlace);
+    }
+
+    /// <summary>Ends a step on its tile. True if something there took over: a warp, or a wild Pokémon.</summary>
+    private bool Arrive(Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive)
+    {
+        GridX = targetGridX;
+        GridY = targetGridY;
+        PixelX = GridX * TileSize;
+        PixelY = GridY * TileSize;
+        HopHeight = 0f;
+        IsMoving = false;
+        IsHoppingLedge = false;
+        mounting = false;
+        moveProgress = 0f;
+        height = toHeight;
+        Mode = modeAfter;
+
+        var warp = map.GetWarpAt(GridX, GridY);
+        if (warp != null)
+        {
+            IsSliding = false;
+            onWarpTrigger(warp);
+            return true;
+        }
+
+        // A trainer's challenge comes before any wild Pokémon in the grass
+        bool interrupted = onArrive != null && onArrive();
+
+        var underfoot = map.BehaviourAt(GridX, GridY);
+        carried = interrupted ? null : FieldMovement.Carries(underfoot, movingDir);
+        IsSliding = carried != null;
+
+        InTallGrass = map.IsTallGrass(GridX, GridY);
+        if (InTallGrass)
+        {
+            GrassRustleTimer = 0.2f;
+            AudioManager.PlaySound("grass");
+        }
+
+        // Pokémon live in grass, in caves and in water; the water's are met only by someone surfing on it
+        bool onWater = Mode == TravelMode.Surfing;
+        if (!interrupted && TileBehaviors.HasEncounters(underfoot) && onWater == TileBehaviors.IsSurfable(underfoot))
+        {
+            bool thick = underfoot == TileBehavior.VeryTallGrass || Mode == TravelMode.Cycling;
+            var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick);
+            if (wild != null)
+            {
+                Encounters.Reset();
+                carried = null;
+                IsSliding = false;
+                onWildEncounter(wild);
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>Keeps the player in place while something else plays out: the legs settle and the body turns to face.</summary>
@@ -214,61 +336,64 @@ public class Player
         }
     }
 
+    /// <summary>Takes a step in a direction if the field's rules allow one (<see cref="FieldMovement.Step"/>); a thud if not.</summary>
     private void TryStep(Direction dir, Map map)
     {
-        int dx = 0, dy = 0;
-        switch (dir)
+        var step = FieldMovement.Step(map, GridX, GridY, dir, WalkerOn(map));
+        if (step.Moves)
         {
-            case Direction.Up: dy = -1; break;
-            case Direction.Down: dy = 1; break;
-            case Direction.Left: dx = -1; break;
-            case Direction.Right: dx = 1; break;
-        }
-
-        int nx = GridX + dx;
-        int ny = GridY + dy;
-
-        // Check bounds
-        if (!map.InBounds(nx, ny))
-        {
-            // Check if there is an edge warp trigger here
-            var edgeWarp = map.GetWarpAt(GridX, GridY);
-            if (edgeWarp != null)
-            {
-                return;
-            }
-            Bump();
+            Begin(map, step, dir);
             return;
         }
 
-        // Check Ledge jump (only jumping Down over LedgeDown)
-        if (dir == Direction.Down && map.IsLedge(nx, ny))
-        {
-            int landY = ny + 1;
-            if (map.InBounds(nx, landY) && map.IsWalkable(nx, landY, isLedgeLanding: true))
-            {
-                targetGridX = nx;
-                targetGridY = landY;
-                IsMoving = true;
-                IsHoppingLedge = true;
-                moveProgress = 0f;
-                AudioManager.PlaySound("select");
-                return;
-            }
-        }
+        // At the map's edge a warp underfoot is what happens next, not a thud
+        if (step.Obstacle == Obstacle.MapEdge && map.GetWarpAt(GridX, GridY) != null) return;
+        Bump();
+    }
 
-        // Check standard solid collision
-        if (map.IsWalkable(nx, ny))
-        {
-            targetGridX = nx;
-            targetGridY = ny;
-            IsMoving = true;
-            moveProgress = 0f;
-        }
-        else
-        {
-            Bump();
-        }
+    private void Begin(Map map, FieldStep step, Direction dir, bool sliding = false)
+    {
+        int tiles = Math.Max(1, Math.Abs(step.X - GridX) + Math.Abs(step.Y - GridY));
+        float speed = FieldMovement.TilesPerSecond(sliding ? Pace.Fast : step.Pace);
+
+        targetGridX = step.X;
+        targetGridY = step.Y;
+        fromHeight = HeightOn(map);
+        toHeight = step.Height;
+        modeAfter = step.Mode;
+        movingDir = dir;
+        stepKind = step.Kind;
+        // A hop over a ledge takes as long as a step; a climb takes as long as the tiles it covers
+        stepRate = step.Kind == StepKind.Climb ? speed / tiles : speed;
+        stride = speed;
+        hopArc = step.Kind switch { StepKind.Hop => 16f, StepKind.Land => 9f, _ => 0f };
+        IsHoppingLedge = hopArc > 0f;
+        IsSliding = sliding;
+        IsMoving = true;
+        moveProgress = 0f;
+        if (IsHoppingLedge) AudioManager.PlaySound("select");
+    }
+
+    /// <summary>
+    /// Sets out onto the water the player faces, on the back of a Pokémon that knows Surf: a hop from the shore
+    /// onto it. False if there is no water there to surf on, or the player is busy.
+    /// </summary>
+    public bool StartSurf(Map map)
+    {
+        if (IsMoving || carried != null || !FieldMovement.CanStartSurf(map, GridX, GridY, Facing, WalkerOn(map))) return false;
+        var (dx, dy) = FieldMovement.Delta(Facing);
+        int nx = GridX + dx, ny = GridY + dy;
+        Begin(map, new FieldStep(StepKind.Land, nx, ny, map.HeightAt(nx, ny), Pace.Walk, TravelMode.Surfing, Obstacle.None), Facing);
+        mounting = true;
+        return true;
+    }
+
+    /// <summary>Gets on or off the Bicycle. False while on the water or in the middle of a step.</summary>
+    public bool SetCycling(bool cycling)
+    {
+        if (IsMoving || Mode == TravelMode.Surfing) return false;
+        Mode = cycling ? TravelMode.Cycling : TravelMode.OnFoot;
+        return true;
     }
 
     private void Bump()

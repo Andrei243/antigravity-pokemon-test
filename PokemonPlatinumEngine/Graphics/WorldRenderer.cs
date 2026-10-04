@@ -232,20 +232,22 @@ public sealed class WorldRenderer
 
         float time = (float)Raylib.GetTime();
         float lift = player != null ? player.HopHeight / Player.TileSize : 0f;
+        // The ground under the view's middle: the deck or the hillside the player is on (zero on flat maps)
+        float groundY = player != null ? Relief.Under(map, px, pz, player.HeightOn(map)) : Relief.At(map, px, pz);
         // A room is one scene and the camera looks at its middle; outdoors the camera follows the player
         var room = indoors ? GetScene(map) : null;
-        var camera = BuildCamera(map, room, px, pz);
+        var camera = BuildCamera(map, room, px, pz, groundY);
 
         // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
         GroundRect? view = null, casters = null;
-        if (!indoors) (view, casters) = VisibleRects(camera.Target, light.SunDirection);
+        if (!indoors) (view, casters) = VisibleRects(map, camera.Target, groundY, light.SunDirection);
         var scenes = ScenesFor(map, camera.Target.X, camera.Target.Z, view);
 
         shaders.SetTime(time);
         // On a map of the whole region only the people near the view are drawn
         sight = map.IsStreamed ? view : null;
-        GatherActors(map, player, px, pz, lift, time);
         VerticalScale = vs;
+        GatherActors(map, player, px, pz, groundY, lift, time);
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
 
         // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
@@ -254,7 +256,7 @@ public sealed class WorldRenderer
         shaders.SetWalkers(walkerFeet);
 
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
-        var focus = room != null ? room.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, 0, camera.Target.Z - 2f);
+        var focus = room != null ? room.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, indoors ? 18f : 40f);
 
         Raylib.BeginTextureMode(context.Shadows.Target);
@@ -301,7 +303,7 @@ public sealed class WorldRenderer
             if (indoors) scene.DrawLights(rig.LampGlow, 0f, rig.LightTint);
             else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
         }
-        DrawContactShadows(map, player != null, px, pz, lift);
+        DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
         DrawActors(CharacterPass.Color);
         DrawSpottedBubbles(map, camera, indoors, pitchDeg, vs);
 
@@ -329,7 +331,8 @@ public sealed class WorldRenderer
     }
 
     /// <param name="room">The scene of an indoor map, whose middle the camera looks at; null outdoors.</param>
-    private Camera3D BuildCamera(Map map, MapScene? room, float px, float pz)
+    /// <param name="groundY">The drawn height of the ground the camera follows.</param>
+    private Camera3D BuildCamera(Map map, MapScene? room, float px, float pz, float groundY = 0f)
     {
         float pitch = MapScene.PitchOf(map) * MathF.PI / 180f;
         var dir = new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch));
@@ -345,8 +348,8 @@ public sealed class WorldRenderer
 
         // Aim at the player's middle so they sit near the centre of the screen, then keep the view
         // inside the map plus a few tiles of the surrounding forest
-        var t = new Vector3(px, 0.6f * MapScene.VerticalScaleOf(map), pz);
-        var (farOff, nearOff, halfW) = VisibleGround(t.Y);
+        var t = new Vector3(px, groundY + 0.6f * MapScene.VerticalScaleOf(map), pz);
+        var (farOff, nearOff, halfW) = VisibleGround(t.Y - groundY);
         const float overscan = 4f;
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
         t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
@@ -387,12 +390,24 @@ public sealed class WorldRenderer
     /// The ground the outdoor camera can see when it looks at <paramref name="target"/>, with room for what stands
     /// just outside and still reaches in, and the wider ground from which a shadow can fall into that view.
     /// </summary>
-    internal (GroundRect View, GroundRect Casters) VisibleRects(Vector3 target, Vector3 sunDirection)
+    internal (GroundRect View, GroundRect Casters) VisibleRects(Vector3 target, Vector3 sunDirection) => VisibleRects(null, target, 0f, sunDirection);
+
+    /// <param name="map">The map, where its relief matters: higher ground south of the view rises into it, lower ground north of it too.</param>
+    /// <param name="groundY">The drawn height of the ground the camera looks at.</param>
+    internal (GroundRect View, GroundRect Casters) VisibleRects(Map? map, Vector3 target, float groundY, Vector3 sunDirection)
     {
         const float tallest = 5f;
-        var (farOff, nearOff, halfW) = VisibleGround(target.Y);
+        var (farOff, nearOff, halfW) = VisibleGround(target.Y - groundY);
         // Things are a tile or two wide, and a tall tree south of the bottom edge still shows its top
         var view = new GroundRect(target.X - halfW - 2f, target.Z + farOff - 2f, target.X + halfW + 2f, target.Z + nearOff + 4f);
+        if (map is { HasRelief: true })
+        {
+            // A tile of height shows as far up the screen as six tenths of a tile of ground (the camera's pitch)
+            const int look = 10;
+            float perTile = 1f / MathF.Tan(MapScene.OutdoorPitchDeg * MathF.PI / 180f);
+            var (low, high) = Relief.Range(map, (int)view.MinX, (int)view.MinZ - look, (int)view.MaxX + 1, (int)view.MaxZ + look);
+            view = view with { MinZ = view.MinZ - MathF.Max(0f, groundY - low) * perTile, MaxZ = view.MaxZ + MathF.Max(0f, high - groundY) * perTile };
+        }
         // A shadow is as long as its caster is tall, times how low the sun is, and falls away from the sun
         float reach = tallest / MathF.Max(0.25f, sunDirection.Y);
         var casters = new GroundRect(
@@ -432,9 +447,32 @@ public sealed class WorldRenderer
     private bool InSight(NPC npc) =>
         sight is not { } s || (npc.DrawX >= s.MinX - 2f && npc.DrawX <= s.MaxX + 2f && npc.DrawY >= s.MinZ - 2f && npc.DrawY <= s.MaxZ + 2f);
 
-    private void GatherActors(Map map, Player? player, float px, float pz, float lift, float time)
+    /// <summary>
+    /// How many rows of their sprite someone sinks into the ground they stand in: deep snow and marsh mud take
+    /// them to the shin or the knee. The ground hides what is under it.
+    /// </summary>
+    internal static int SinkRows(TileBehavior underfoot) => underfoot switch
+    {
+        TileBehavior.DeepSnow => 4,
+        TileBehavior.DeeperSnow => 7,
+        TileBehavior.DeepestSnow => 10,
+        TileBehavior.Mud or TileBehavior.MarshGrass => 2,
+        TileBehavior.DeepMud or TileBehavior.DeepMarshGrass => 6,
+        _ => 0
+    };
+
+    // A row of a sprite, as a height in the scene
+    private float Rows(float rows) => rows / CharacterSprites.TexelsPerUnit * VerticalScale;
+
+    private float SinkAt(Map map, float x, float z) => Rows(SinkRows(map.BehaviourAt((int)MathF.Floor(x), (int)MathF.Floor(z))));
+
+    // The Pokémon the player rides on water, when there is one to draw
+    private (Vector3 At, float Yaw)? mount;
+
+    private void GatherActors(Map map, Player? player, float px, float pz, float groundY, float lift, float time)
     {
         actors.Clear();
+        mount = null;
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
@@ -447,8 +485,9 @@ public sealed class WorldRenderer
                 pose.EmoteTime = TrainerApproach.ExclaimTime - npc.ExclamationTimer;
                 pose.Blink = false;
             }
+            float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
             actors.Add(new Actor(CharacterModels.Get(npc.NpcType, shaders),
-                new Vector3(npc.DrawX + 0.5f, 0, npc.DrawY + 0.5f), Player.YawOf(npc.Facing), pose));
+                new Vector3(nx, Relief.At(map, nx, nz) - SinkAt(map, nx, nz), nz), Player.YawOf(npc.Facing), pose));
         }
 
         if (player == null) return;
@@ -462,7 +501,18 @@ public sealed class WorldRenderer
             Time = time,
             Blink = IsBlinking(time, 0.37f)
         };
-        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders), new Vector3(px, lift, pz), player.Yaw, playerPose));
+        // On the water the player sits on a Pokémon's back, and the two bob together, a texel up and a texel down
+        float saddle = player.Saddle;
+        float bob = player.Mount != null && MathF.Floor(time * 2.4f) % 2f == 0f ? Rows(1f) : 0f;
+        float feet = groundY + lift + Rows(SurfMount.Seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle);
+        actors.Add(new Actor(CharacterModels.Get("PLAYER", shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
+
+        if (player.Mount is { } ridden)
+        {
+            float mx = ridden.X + 0.5f, mz = ridden.Y + 0.5f;
+            // A little nearer the camera than its rider, so its back covers the rider's shoes
+            mount = (new Vector3(mx, Relief.At(map, mx, mz) + bob - Rows(2f), mz + 0.06f), player.Yaw);
+        }
     }
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
@@ -472,6 +522,7 @@ public sealed class WorldRenderer
     {
         foreach (var actor in actors)
             CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
+        if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);
     }
 
     /// <summary>"!" bubble over trainers who have spotted the player, just above the head.</summary>
@@ -484,8 +535,9 @@ public sealed class WorldRenderer
             {
                 // Drawn without the scenery's shader, so it is moved by hand to stay over the straightened sprite
                 float cx = npc.DrawX + 0.5f, cz = npc.DrawY + 0.15f;
-                if (!indoors) cx = Straighten(camera, pitchDeg, cx, 1.95f + 0.35f * vs, cz);
-                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), cx, cz, 1.95f, 0.7f, 0.7f * vs);
+                float y = Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f) + 1.95f;
+                if (!indoors) cx = Straighten(camera, pitchDeg, cx, y + 0.35f * vs, cz);
+                DrawUpright(bubble, new Rectangle(0, 0, bubble.Width, bubble.Height), cx, cz, y, 0.7f, 0.7f * vs);
             }
         }
         Rlgl.DrawRenderBatchActive();
@@ -528,14 +580,17 @@ public sealed class WorldRenderer
     /// A faint dark patch right under each character's feet. The shadow map casts their real shadow; this keeps
     /// them grounded when the sun is high or they are standing in shade.
     /// </summary>
-    private void DrawContactShadows(Map map, bool withPlayer, float px, float pz, float lift)
+    private void DrawContactShadows(Map map, Camera3D camera, bool withPlayer, float px, float pz, float playerGround, float lift)
     {
         var tex = SceneTextures.ShadowBlob;
+        float pitchDeg = MapScene.PitchOf(map);
         Rlgl.DisableDepthMask();
 
-        void Blob(float cx, float cz, float scale)
+        void Blob(float cx, float cz, float ground, float scale)
         {
-            float rx = 0.3f * scale, rz = 0.2f * scale, y = 0.015f;
+            float rx = 0.3f * scale, rz = 0.2f * scale, y = ground + 0.015f;
+            // Drawn without the scenery's shader: on raised ground it is moved by hand to lie where that ground is drawn
+            if (!map.IsIndoors && ground != 0f) cx = Straighten(camera, pitchDeg, cx, y, cz);
             Rlgl.CheckRenderBatchLimit(4);
             Rlgl.SetTexture(tex.Id);
             Rlgl.Begin(DrawMode.Quads);
@@ -549,9 +604,9 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            if (!npc.IsPCTerminal && InSight(npc)) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, 1f);
+            if (!npc.IsPCTerminal && InSight(npc)) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f), 1f);
         }
-        if (withPlayer) Blob(px, pz + 0.02f, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
+        if (withPlayer) Blob(px, pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 
         Rlgl.SetTexture(0);
         Rlgl.DrawRenderBatchActive();

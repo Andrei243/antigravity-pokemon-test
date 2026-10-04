@@ -48,7 +48,7 @@ internal static class OutdoorProps
         foreach (var prop in map.Props)
         {
             if (!within.Contains(prop.X, prop.Y)) continue;
-            kit.Origin = new Vector3(prop.X, 0, prop.Y);
+            kit.Origin = new Vector3(prop.X, Relief.At(map, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f), prop.Y);
             switch (prop.Type)
             {
                 case PropType.LampPost:
@@ -63,6 +63,15 @@ internal static class OutdoorProps
                     break;
                 case PropType.Bench:
                     kit.Sprite(kit.Face("bench", 60, 32, PaintBench), prop.Width * 16, 14);
+                    break;
+                case PropType.CutTree:
+                    kit.Sprite(kit.Face("cut_tree", 26, 40, PaintCutTree), 16, 20);
+                    break;
+                case PropType.CrackedRock:
+                    kit.Sprite(kit.Face("cracked_rock", 30, 26, PaintCrackedRock), 16, 19);
+                    break;
+                case PropType.StrengthBoulder:
+                    kit.Sprite(kit.Face("strength_boulder", 30, 30, PaintStrengthBoulder), 16, 20);
                     break;
                 case PropType.Boulder:
                 {
@@ -80,7 +89,7 @@ internal static class OutdoorProps
             for (int tx = within.X; tx < within.Right; tx++)
             {
                 if (map.GetGroundTile(tx, ty) != TileType.Signpost || MapStructures.IsWallSign(map, tx, ty)) continue;
-                kit.Origin = new Vector3(tx, 0, ty);
+                kit.Origin = new Vector3(tx, Relief.At(map, tx + 0.5f, ty + 0.5f), ty);
                 kit.Sprite(kit.Face("signpost", 30, 30, PaintSignpost), 16, 16);
             }
     }
@@ -93,7 +102,7 @@ internal static class OutdoorProps
     /// </summary>
     private static void Fence(KitBuilder kit, Map map, HashSet<(int, int)> fenced, int x, int y)
     {
-        kit.Origin = new Vector3(x, 0, y);
+        kit.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
         bool white = map.ArchitectureAt(x, y) == Architecture.Clapboard;
         var tone = white ? FenceWhite : FenceWood;
         string name = white ? "fence.white" : "fence.wood";
@@ -292,6 +301,102 @@ internal static class OutdoorProps
             if (y is 9 or 13) c.Set(x0 - 1, y, crack);
         }
         if (mirrored) c.MirrorHorizontal();
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The small tree that Cut removes, 26 by 40: a thin trunk and a round crown in the tall grass's greens, so
+    /// it reads as a sapling beside the forest's trees.
+    /// </summary>
+    public static void PaintCutTree(PixelCanvas c)
+    {
+        var bark = Rgb(116, 80, 54);
+        var barkDark = Rgb(86, 58, 42);
+        var deep = Rgb(36, 110, 62);
+        var leaf = Rgb(62, 150, 78);
+        var light = Rgb(106, 196, 98);
+        var tip = Rgb(170, 232, 130);
+
+        c.Rect(11, 24, 4, 15, bark);
+        c.VLine(14, 24, 15, barkDark);
+        c.HLine(9, 38, 8, barkDark);
+
+        // The crown: three clumps, each lit from the upper left
+        void Clump(float cx, float cy, float rx, float ry)
+        {
+            for (int y = (int)(cy - ry); y <= (int)(cy + ry); y++)
+                for (int x = (int)(cx - rx); x <= (int)(cx + rx); x++)
+                {
+                    float u = (x + 0.5f - cx) / rx, v = (y + 0.5f - cy) / ry;
+                    if (u * u + v * v > 1f) continue;
+                    c.Set(x, y, u + v < -0.7f ? light : u + v > 0.55f ? deep : leaf);
+                }
+        }
+        Clump(13f, 16f, 11f, 10f);
+        Clump(8f, 11f, 6f, 6f);
+        Clump(17f, 9f, 7f, 7f);
+        c.HLine(5, 7, 3, tip);
+        c.HLine(14, 3, 4, tip);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The rock that Rock Smash breaks, 30 by 26: brown where the boulders are grey, and split by cracks that
+    /// run right across it.
+    /// </summary>
+    public static void PaintCrackedRock(PixelCanvas c)
+    {
+        var light = Rgb(204, 168, 126);
+        var mid = Rgb(168, 128, 92);
+        var dark = Rgb(122, 90, 70);
+        var crack = Rgb(78, 56, 50);
+        for (int y = 2; y <= 23; y++)
+            for (int x = 1; x <= 28; x++)
+            {
+                float u = (x + 0.5f - 15f) / 14f, v = (y + 0.5f - 14f) / 12f;
+                if (u * u + v * v > 1f || y > 23) continue;
+                c.Set(x, y, u + v * 1.2f < -0.4f ? light : u + v * 0.8f > 0.5f || v > 0.6f ? dark : mid);
+            }
+
+        // Two cracks from the top that meet, and one branching off toward the foot
+        int x0 = 11;
+        for (int y = 3; y <= 13; y++)
+        {
+            if (y is 6 or 10) x0++;
+            c.Set(x0, y, crack);
+        }
+        int x1 = 20;
+        for (int y = 4; y <= 13; y++)
+        {
+            if (y is 7 or 9 or 12) x1--;
+            c.Set(x1, y, crack);
+        }
+        for (int y = 13; y <= 21; y++) c.Set(15 + (y - 13) / 3, y, crack);
+        c.HLine(7, 16, 4, crack);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The boulder that Strength pushes, 30 by 30: one round stone, smooth where the others are broken, with a
+    /// ring of highlight on its upper left and a single dimple.
+    /// </summary>
+    public static void PaintStrengthBoulder(PixelCanvas c)
+    {
+        var light = Rgb(214, 210, 204);
+        var mid = Rgb(164, 160, 162);
+        var dark = Rgb(112, 108, 122);
+        for (int y = 1; y <= 28; y++)
+            for (int x = 1; x <= 28; x++)
+            {
+                float u = (x + 0.5f - 15f) / 14f, v = (y + 0.5f - 15f) / 14f;
+                float d = u * u + v * v;
+                if (d > 1f) continue;
+                c.Set(x, y, u + v < -0.75f ? light : u + v > 0.5f || d > 0.86f && u + v > -0.2f ? dark : mid);
+            }
+        // The dimple, and the glint that makes it round
+        c.Rect(17, 16, 3, 2, dark);
+        c.HLine(17, 18, 3, light);
+        c.Rect(8, 7, 3, 2, Rgb(244, 242, 238));
         Pix.Outline(c);
     }
 

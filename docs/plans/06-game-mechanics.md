@@ -134,7 +134,7 @@ Each session ends with its tests green, the coverage report updated and the sess
 ### Platinum's systems
 - **R11 · The bag, items and shops.** The eight pockets, every Platinum item's effect, TMs, HMs and tutors, mail, the shops and their stock, hidden items.
 - **R12 · Storage and trainer tools.** PC boxes, the Hall of Fame records, the Trainer Card, the Journal, in-game trades, the Vs. Seeker and rematches.
-- **R13 · Wild encounters.** Everything in the "Wild encounters" row above, on top of plan 01's tables.
+- **R13 · Wild encounters.** Everything in the "Wild encounters" row above, on top of plan 01's tables. *Ready from plan 01 · M2–M3:* each open area's base land table and its water table with Platinum's rates, and the odds of a step meeting something (`EncounterSteps` in `Overworld/Map.cs`: the grace steps after a battle, four attempts in ten, then the rate). Still to come here: the slots the time of day swaps in, the lead Pokémon's ability, Repels, and the rest of the row.
 - **R14 · Time.** Daily and weekly events, berries, Poffins and condition, the lottery, the Pokétch and its apps.
 - **R15 · Breeding.**
 - **R16 · Side activities I.** The Underground, fossils, Amity Square, the Game Corner, the Villa.

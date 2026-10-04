@@ -27,7 +27,22 @@ public enum TileType : byte
     Sand,
     Dirt,
     Snow,
-    CaveFloor
+    CaveFloor,
+
+    // Terrain features (plan 01 · M3). A tile's type is what it looks like; what it does is its TileBehavior,
+    // which on a hand-made map follows from the type (Map.BehaviourAt)
+    /// <summary>A ledge hopped over westward.</summary>
+    LedgeLeft,
+    /// <summary>A ledge hopped over eastward.</summary>
+    LedgeRight,
+    /// <summary>Bare rock underfoot: the tops of cliffs and crags.</summary>
+    Rock,
+    Ice,
+    /// <summary>The deck of a bridge or a boardwalk.</summary>
+    Planks,
+    Stairs,
+    /// <summary>Marsh mud.</summary>
+    Marsh
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>

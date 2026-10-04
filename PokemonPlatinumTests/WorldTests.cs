@@ -29,8 +29,9 @@ public class WorldTests
     private static readonly (int X, int Y)[] Steps = { (0, -1), (1, 0), (-1, 0), (0, 1) };
 
     /// <summary>
-    /// Every tile the player can get to from a tile on foot: ledges are hopped southward and never climbed, and a
-    /// warp is the end of the way, since stepping on it leaves the map.
+    /// Every tile the player can get to from a tile on foot by the field's own rules (ledges hopped the way they
+    /// face, never climbed; water and cliffs in the way). A warp is the end of the way, since stepping on it
+    /// leaves the map.
     /// </summary>
     private static HashSet<(int X, int Y)> Reach(Map map, int startX, int startY)
     {
@@ -41,17 +42,10 @@ public class WorldTests
         {
             var (x, y) = queue.Dequeue();
             if ((x, y) != (startX, startY) && map.GetWarpAt(x, y) != null) continue;
-            foreach (var (dx, dy) in Steps)
+            foreach (var dir in new[] { Direction.Up, Direction.Right, Direction.Left, Direction.Down })
             {
-                int nx = x + dx, ny = y + dy;
-                if (map.IsLedge(nx, ny))
-                {
-                    if (dy != 1) continue;
-                    ny++;
-                    if (!map.IsWalkable(nx, ny, isLedgeLanding: true)) continue;
-                }
-                else if (!map.IsWalkable(nx, ny)) continue;
-                if (seen.Add((nx, ny))) queue.Enqueue((nx, ny));
+                var step = FieldMovement.Step(map, x, y, dir, new Walker(Height: map.HeightAt(x, y)));
+                if (step.Moves && seen.Add((step.X, step.Y))) queue.Enqueue((step.X, step.Y));
             }
         }
         return seen;
@@ -450,11 +444,12 @@ public class WorldTests
         Assert.NotNull(grass);
 
         var met = new HashSet<string>();
+        var steps = new EncounterSteps();
         for (int i = 0; i < 4000; i++)
-            if (map.RollWildEncounter(grass!.Value.X, grass.Value.Y) is { } wild) met.Add(wild.SpeciesName);
+            if (map.RollWildEncounter(grass!.Value.X, grass.Value.Y, steps) is { } wild) met.Add(wild.SpeciesName);
         Assert.NotEmpty(met);
         Assert.Subset(route201.WildEncounters.Select(e => e.SpeciesName).ToHashSet(), met);
-        Assert.Null(map.RollWildEncounter(177, 843));   // nothing jumps out in town
+        Assert.Null(map.RollWildEncounter(177, 843, new EncounterSteps()));   // nothing jumps out in town
     }
 
     [Fact]
@@ -540,17 +535,28 @@ public class WorldTests
         Assert.Equal((TileType.TallGrass, false, null), Look(TerrainCover.TallGrass, TileBehavior.TallGrass));
         Assert.Equal((TileType.FlowerGrass, false, null), Look(TerrainCover.Flowers));
         Assert.Equal((TileType.Path, false, null), Look(TerrainCover.Path));
-        Assert.Equal((TileType.Path, false, null), Look(TerrainCover.Bridge));
+        Assert.Equal((TileType.Path, false, null), Look(TerrainCover.Paving));
         Assert.Equal((TileType.Sand, false, null), Look(TerrainCover.Sand, TileBehavior.Sand));
 
-        // A ledge is hopped whatever the data says of walking onto it; water waits for Surf; a door for its warp
+        Assert.Equal((TileType.Planks, false, null), Look(TerrainCover.Bridge));
+        Assert.Equal((TileType.Stairs, false, null), Look(TerrainCover.Steps));
+        Assert.Equal((TileType.Rock, false, null), Look(TerrainCover.Rock));
+        Assert.Equal((TileType.Ice, false, null), Look(TerrainCover.Snow, TileBehavior.Ice));
+
+        // A ledge is hopped whatever the data says of walking onto it, each way it can face; a door waits for its warp
         Assert.Equal((TileType.LedgeDown, false, null), Look(TerrainCover.Grass, TileBehavior.LedgeSouth, solid: true));
-        Assert.Equal((TileType.Water, true, null), Look(TerrainCover.Water, TileBehavior.Sea));
-        Assert.Equal((TileType.Water, true, PropType.Boulder), Look(TerrainCover.Boulder, TileBehavior.Sea, solid: true));
+        Assert.Equal((TileType.LedgeLeft, false, null), Look(TerrainCover.Grass, TileBehavior.LedgeWest, solid: true));
+        Assert.Equal((TileType.LedgeRight, false, null), Look(TerrainCover.Grass, TileBehavior.LedgeEast, solid: true));
         Assert.Equal((TileType.Door, true, null), Look(TerrainCover.Building, TileBehavior.Door));
 
-        // What stands on a tile blocks it and is drawn standing: rock faces as boulders until there are cliffs
-        Assert.Equal((TileType.Dirt, true, PropType.Boulder), Look(TerrainCover.Cliff));
+        // Open water is open: it is its behaviour that asks for Surf. A blocked tile of it is a rock in the water
+        Assert.Equal((TileType.Water, false, null), Look(TerrainCover.Water, TileBehavior.Sea));
+        Assert.Equal((TileType.Water, false, null), Look(TerrainCover.Water, TileBehavior.River));
+        Assert.Equal((TileType.Water, true, PropType.Boulder), Look(TerrainCover.Boulder, TileBehavior.Sea, solid: true));
+
+        // A rock face is bare rock nobody walks on; a boulder, a fence and a tree stand on their tiles
+        Assert.Equal((TileType.Rock, true, null), Look(TerrainCover.Cliff));
+        Assert.Equal((TileType.Dirt, true, PropType.Boulder), Look(TerrainCover.Boulder, solid: true));
         Assert.Equal((TileType.Grass, true, PropType.Fence), Look(TerrainCover.Fence, solid: true));
         Assert.Equal((TileType.Tree, true, null), Look(TerrainCover.Tree, solid: true));
 

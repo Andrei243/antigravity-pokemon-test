@@ -23,7 +23,14 @@ public sealed class MapArea
     public Architecture? Architecture { get; set; }
     public BattleArena? Arena { get; set; }
     public List<string> EvolutionSites { get; } = new();
+
+    /// <summary>The wild Pokémon of the area's grass and caves, and Platinum's rate for them (see <see cref="EncounterSteps"/>).</summary>
     public List<WildEncounterEntry> WildEncounters { get; } = new();
+    public int LandRate { get; set; }
+
+    /// <summary>The wild Pokémon met surfing on the area's water, and the rate for them.</summary>
+    public List<WildEncounterEntry> WaterEncounters { get; } = new();
+    public int WaterRate { get; set; }
 }
 
 public class Map
@@ -171,6 +178,127 @@ public class Map
     private readonly TileType?[] overheadLayer;
     private readonly bool[] solidGrid;
 
+    // ------------------------------------------------------------------ what each tile does, and how high it lies
+
+    // A tile that has no behaviour of its own takes the one its type implies
+    private const TileBehavior Implied = (TileBehavior)0xFF;
+    private TileBehavior[]? behaviours;
+    private float[]? heights, slopesX, slopesZ, decks;
+
+    /// <summary>
+    /// What a tile does: one of Platinum's tile behaviours. A map of the world carries the original's value for
+    /// every tile; on a hand-made map a tile does what its type implies (tall grass, water, a ledge, ice) unless
+    /// <see cref="SetBehaviour"/> has said otherwise. <see cref="FieldMovement"/> holds the rules.
+    /// </summary>
+    public TileBehavior BehaviourAt(int x, int y)
+    {
+        if (!InBounds(x, y)) return TileBehavior.None;
+        int i = y * Width + x;
+        if (behaviours != null && behaviours[i] != Implied) return behaviours[i];
+        return groundLayer[i] switch
+        {
+            TileType.TallGrass => TileBehavior.TallGrass,
+            TileType.Water => TileBehavior.Sea,
+            TileType.LedgeDown => TileBehavior.LedgeSouth,
+            TileType.LedgeLeft => TileBehavior.LedgeWest,
+            TileType.LedgeRight => TileBehavior.LedgeEast,
+            TileType.Door => TileBehavior.Door,
+            TileType.Sand => TileBehavior.Sand,
+            TileType.CaveFloor => TileBehavior.CaveFloor,
+            TileType.Snow => TileBehavior.ShallowSnow,
+            TileType.Ice => TileBehavior.Ice,
+            TileType.Marsh => TileBehavior.Mud,
+            _ => TileBehavior.None
+        };
+    }
+
+    public void SetBehaviour(int x, int y, TileBehavior behaviour)
+    {
+        if (!InBounds(x, y)) return;
+        if (behaviours == null)
+        {
+            behaviours = new TileBehavior[Width * Height];
+            Array.Fill(behaviours, Implied);
+        }
+        behaviours[y * Width + x] = behaviour;
+    }
+
+    /// <summary>True once any tile has been given a height: the map has relief to draw and to walk.</summary>
+    public bool HasRelief => heights != null;
+
+    /// <summary>
+    /// The height of the map's lowlands, which the field draws at zero (Sinnoh's is one tile, in the original's
+    /// numbers). Heights are walked as the map gives them; only the drawing is measured from here.
+    /// </summary>
+    public float GroundLevel { get; set; }
+
+    /// <summary>A tile's rise per tile eastward and southward: zero on flat ground, something on stairs and ramps.</summary>
+    public (float X, float Z) SlopeAt(int x, int y)
+    {
+        if (slopesX == null || !InBounds(x, y)) return (0f, 0f);
+        return (slopesX[y * Width + x], slopesZ![y * Width + x]);
+    }
+
+    /// <summary>The height of the ground at the middle of a tile, in tiles (0 on a map without relief).</summary>
+    public float HeightAt(int x, int y) => heights != null && InBounds(x, y) ? heights[y * Width + x] : 0f;
+
+    /// <summary>
+    /// The height of the ground at any point of a tile: flat, or on stairs and ramps the plane through the tile's
+    /// middle that rises by its slopes per tile eastward and southward.
+    /// </summary>
+    public float HeightAt(int x, int y, float fx, float fz)
+    {
+        if (heights == null || !InBounds(x, y)) return 0f;
+        int i = y * Width + x;
+        float h = heights[i];
+        if (slopesX != null) h += (fx - 0.5f) * slopesX[i] + (fz - 0.5f) * slopesZ![i];
+        return h;
+    }
+
+    /// <summary>Sets a tile's ground: its height at the tile's middle and, for stairs and ramps, its rise per tile eastward and southward.</summary>
+    public void SetHeight(int x, int y, float height, float slopeX = 0f, float slopeZ = 0f)
+    {
+        if (!InBounds(x, y)) return;
+        heights ??= new float[Width * Height];
+        int i = y * Width + x;
+        heights[i] = height;
+        if (slopeX == 0f && slopeZ == 0f && slopesX == null) return;
+        slopesX ??= new float[Width * Height];
+        slopesZ ??= new float[Width * Height];
+        slopesX[i] = slopeX;
+        slopesZ[i] = slopeZ;
+    }
+
+    /// <summary>The height of a bridge's deck over a tile, or null where there is none. The ground runs on underneath.</summary>
+    public float? DeckAt(int x, int y)
+    {
+        if (decks == null || !InBounds(x, y)) return null;
+        float deck = decks[y * Width + x];
+        return float.IsNaN(deck) ? null : deck;
+    }
+
+    public void SetDeck(int x, int y, float height)
+    {
+        if (!InBounds(x, y)) return;
+        if (decks == null)
+        {
+            decks = new float[Width * Height];
+            Array.Fill(decks, float.NaN);
+        }
+        decks[y * Width + x] = height;
+    }
+
+    /// <summary>
+    /// What someone coming from a height stands on at a tile: the deck of a bridge or the ground under it,
+    /// whichever is nearer to where they were, as Platinum chooses between overlapping plates.
+    /// </summary>
+    public (float Height, bool OnDeck) SurfaceAt(int x, int y, float from)
+    {
+        float ground = HeightAt(x, y);
+        if (DeckAt(x, y) is { } deck && MathF.Abs(deck - from) < MathF.Abs(ground - from)) return (deck, true);
+        return (ground, false);
+    }
+
     public List<NPC> NPCs { get; } = new();
     public List<Prop> Props { get; } = new();
     public List<Warp> Warps { get; } = new();
@@ -240,7 +368,12 @@ public class Map
         }
     }
 
-    public bool IsWalkable(int x, int y, bool isLedgeLanding = false)
+    /// <summary>
+    /// Whether someone on foot can stand on a tile: it isn't blocked, nobody is on it, and it is neither a ledge
+    /// nor water deep enough to need Surf. Whether a step onto it can be taken from a given place and height is
+    /// <see cref="FieldMovement.Step"/>'s to say.
+    /// </summary>
+    public bool IsWalkable(int x, int y)
     {
         if (!InBounds(x, y)) return false;
         int idx = y * Width + x;
@@ -249,22 +382,20 @@ public class Map
 
         if (NPCs.Any(n => n.GridX == x && n.GridY == y)) return false;
 
-        if (groundLayer[idx] == TileType.LedgeDown && !isLedgeLanding) return false;
+        var behaviour = BehaviourAt(x, y);
+        if (FieldMovement.LedgeDirection(behaviour) != null) return false;
+        if (TileBehaviors.IsSurfable(behaviour) && DeckAt(x, y) == null) return false;
 
         return true;
     }
 
-    public bool IsLedge(int x, int y)
-    {
-        if (!InBounds(x, y)) return false;
-        return groundLayer[y * Width + x] == TileType.LedgeDown;
-    }
+    /// <summary>A ledge that is hopped over, whichever way it faces.</summary>
+    public bool IsLedge(int x, int y) => FieldMovement.LedgeDirection(BehaviourAt(x, y)) != null;
 
-    public bool IsTallGrass(int x, int y)
-    {
-        if (!InBounds(x, y)) return false;
-        return groundLayer[y * Width + x] == TileType.TallGrass;
-    }
+    public bool IsTallGrass(int x, int y) => BehaviourAt(x, y) is TileBehavior.TallGrass or TileBehavior.VeryTallGrass;
+
+    /// <summary>Water deep enough to need Surf.</summary>
+    public bool IsDeepWater(int x, int y) => TileBehaviors.IsSurfable(BehaviourAt(x, y));
 
     public Warp? GetWarpAt(int x, int y)
     {
@@ -281,26 +412,65 @@ public class Map
         return NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y);
     }
 
-    public WildEncounterEntry? RollWildEncounter() => Roll(WildEncounters);
+    /// <summary>Platinum's rate for a small map's own wild Pokémon (see <see cref="EncounterSteps"/>).</summary>
+    public int EncounterRate { get; set; } = 30;
 
-    /// <summary>A wild Pokémon for a step onto a tile: from its area's table on a large map, the map's own otherwise.</summary>
-    public WildEncounterEntry? RollWildEncounter(int x, int y) => Roll(AreaAt(x, y)?.WildEncounters ?? WildEncounters);
-
-    private WildEncounterEntry? Roll(List<WildEncounterEntry> table)
+    /// <summary>
+    /// The wild Pokémon that live at a tile, on its land or in its water, with the place's rate for them: its
+    /// area's on a map of the world, the map's own otherwise (a small map has no water table).
+    /// </summary>
+    public (IReadOnlyList<WildEncounterEntry> Table, int Rate) WildAt(int x, int y, bool water = false)
     {
-        if (table.Count == 0) return null;
-        if (rng.Next(100) < 18)
+        if (AreaAt(x, y) is { } area) return water ? (area.WaterEncounters, area.WaterRate) : (area.WildEncounters, area.LandRate);
+        return water ? (Array.Empty<WildEncounterEntry>(), 0) : (WildEncounters, EncounterRate);
+    }
+
+    /// <summary>
+    /// A wild Pokémon for a step onto a tile, or null: Platinum's odds for the step (<see cref="EncounterSteps.Meets"/>)
+    /// at the place's rate, then one of the place's table by weight.
+    /// </summary>
+    /// <param name="thick">In grass taller than the walker, or on a Bicycle: more attempts get through.</param>
+    public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false)
+    {
+        var (table, rate) = WildAt(x, y, water);
+        if (table.Count == 0 || !steps.Meets(rate, thick, rng)) return null;
+
+        int roll = rng.Next(table.Sum(e => e.Weight));
+        foreach (var e in table)
         {
-            int totalWeight = table.Sum(e => e.Weight);
-            int roll = rng.Next(totalWeight);
-            int curr = 0;
-            foreach (var e in table)
-            {
-                curr += e.Weight;
-                if (roll < curr) return e;
-            }
-            return table.First();
+            roll -= e.Weight;
+            if (roll < 0) return e;
         }
-        return null;
+        return table[0];
+    }
+}
+
+/// <summary>
+/// Platinum's odds that a step onto ground where Pokémon live meets one (<c>ShouldGetRandomEncounter</c> in the
+/// decompilation). It keeps count of the attempts since the last battle or map change, because the first few of
+/// them almost always fail.
+/// </summary>
+public sealed class EncounterSteps
+{
+    private int attempts;
+
+    /// <summary>A wild battle has ended, or the map has changed: the next steps are nearly safe again.</summary>
+    public void Reset() => attempts = 0;
+
+    /// <summary>
+    /// Whether this step meets a Pokémon. For the first steps after a reset (eight, less one for every ten of
+    /// the place's rate) nineteen attempts in twenty fail outright. After that an attempt gets through four
+    /// times in ten (seven in ten where <paramref name="thick"/>), and one that gets through succeeds as often
+    /// as the place's <paramref name="rate"/> out of a hundred.
+    /// </summary>
+    public bool Meets(int rate, bool thick, Random rng)
+    {
+        if (rate <= 0) return false;
+        if (attempts < 8 - Math.Min(8, rate / 10))
+        {
+            attempts++;
+            if (rng.Next(100) >= 5) return false;
+        }
+        return rng.Next(100) < (thick ? 70 : 40) && rng.Next(100) < rate;
     }
 }

@@ -55,9 +55,10 @@ internal static class BuildingModels
         public float Drop(float texels, float vs) => texels * Tan / vs;
     }
 
-    public static void Add(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets)
+    /// <param name="baseY">The height of the ground the building stands on.</param>
+    public static void Add(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets, float baseY = 0f)
     {
-        kit.Origin = new Vector3(b.X0, 0, b.Y0);
+        kit.Origin = new Vector3(b.X0, baseY, b.Y0);
         string id = $"b{b.X0}_{b.Y0}";
         int x0 = BuildingArt.Inset, x1 = b.Width * BuildingArt.Bay - BuildingArt.Inset;
         // The back wall stands a tile inside the footprint, so the roof doesn't swallow the whole block

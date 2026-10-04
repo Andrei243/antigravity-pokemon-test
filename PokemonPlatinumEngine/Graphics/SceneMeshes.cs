@@ -208,7 +208,8 @@ internal static class TreeModels
     private static float Rand(int x, int y, int salt) => GroundBaker.Rand01(x, y, salt);
 
     /// <summary>Sinnoh pine: four tiers of needled cones with serrated, cut-out rims.</summary>
-    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false)
+    /// <param name="y0">The height of the ground the tree stands on.</param>
+    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f)
     {
         if (soft)
         {
@@ -216,7 +217,7 @@ internal static class TreeModels
             return;
         }
         float s = (0.92f + Rand(seedX, seedY, 3) * 0.16f) * scale;
-        batches.For(SceneTextures.Bark).Cylinder(new(cx, 0, cz), 0.12f * scale, 0.08f * scale, 1.1f * s, 7, Color.White, cap: false);
+        batches.For(SceneTextures.Bark).Cylinder(new(cx, y0, cz), 0.12f * scale, 0.08f * scale, 1.1f * s, 7, Color.White, cap: false);
 
         var tint = PixelCanvas.Mix(new Color(104, 178, 118, 255), new Color(126, 196, 128, 255), Rand(seedX, seedY, 4));
         var b = batches.For(SceneTextures.Needles);
@@ -230,7 +231,7 @@ internal static class TreeModels
         {
             var (baseY, apexY, radius) = tiers[k];
             float h = (apexY - baseY) * s, r = radius * s;
-            var apex = new Vector3(cx, apexY * s, cz);
+            var apex = new Vector3(cx, y0 + apexY * s, cz);
             // Lower tiers are a touch darker; everything sways a little, more toward the top
             var tierColor = MeshBuilder.Scale(tint, 0.86f + k * 0.06f);
             float sway = 0.12f + k * 0.08f;
@@ -240,8 +241,8 @@ internal static class TreeModels
                 float a0 = spin + i * MathF.Tau / segments, a1 = spin + (i + 1) * MathF.Tau / segments;
                 var d0 = new Vector3(MathF.Cos(a0), 0, MathF.Sin(a0));
                 var d1 = new Vector3(MathF.Cos(a1), 0, MathF.Sin(a1));
-                var rim0 = new Vector3(cx, baseY * s, cz) + d0 * r;
-                var rim1 = new Vector3(cx, baseY * s, cz) + d1 * r;
+                var rim0 = new Vector3(cx, y0 + baseY * s, cz) + d0 * r;
+                var rim1 = new Vector3(cx, y0 + baseY * s, cz) + d1 * r;
                 var n0 = Vector3.Normalize(d0 * h + Up * r);
                 var n1 = Vector3.Normalize(d1 * h + Up * r);
                 var na = Vector3.Normalize(n0 + n1);
@@ -253,7 +254,8 @@ internal static class TreeModels
     }
 
     /// <summary>Round broadleaf tree: a few leafy clumps on a short trunk.</summary>
-    public static void Round(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false)
+    /// <param name="y0">The height of the ground the tree stands on.</param>
+    public static void Round(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f)
     {
         if (soft)
         {
@@ -261,13 +263,13 @@ internal static class TreeModels
             return;
         }
         float s = (0.92f + Rand(seedX, seedY, 3) * 0.16f) * scale;
-        batches.For(SceneTextures.Bark).Cylinder(new(cx, 0, cz), 0.14f * scale, 0.1f * scale, 0.9f * s, 7, Color.White, cap: false);
+        batches.For(SceneTextures.Bark).Cylinder(new(cx, y0, cz), 0.14f * scale, 0.1f * scale, 0.9f * s, 7, Color.White, cap: false);
 
         // The crown hangs low over a short trunk, so trees cut off by the top of the screen still read as foliage
         var tint = PixelCanvas.Mix(new Color(96, 176, 104, 255), new Color(118, 192, 108, 255), Rand(seedX, seedY, 4));
-        LeafBall(batches, new Vector3(cx, 1.45f * s, cz), 0.74f * s, 0.86f * s, tint, 0.25f);
-        LeafBall(batches, new Vector3(cx - 0.22f * scale, 2.05f * s, cz + 0.06f * scale), 0.5f * s, 0.58f * s, PixelCanvas.Light1(tint, 0.08f), 0.4f);
-        LeafBall(batches, new Vector3(cx + 0.26f * scale, 1.85f * s, cz - 0.1f * scale), 0.46f * s, 0.52f * s, tint, 0.35f);
+        LeafBall(batches, new Vector3(cx, y0 + 1.45f * s, cz), 0.74f * s, 0.86f * s, tint, 0.25f);
+        LeafBall(batches, new Vector3(cx - 0.22f * scale, y0 + 2.05f * s, cz + 0.06f * scale), 0.5f * s, 0.58f * s, PixelCanvas.Light1(tint, 0.08f), 0.4f);
+        LeafBall(batches, new Vector3(cx + 0.26f * scale, y0 + 1.85f * s, cz - 0.1f * scale), 0.46f * s, 0.52f * s, tint, 0.35f);
     }
 
     /// <summary>A round clump of leaves: a solid core plus a cut-out shell for a leafy outline.</summary>
@@ -281,10 +283,11 @@ internal static class TreeModels
     /// An upright card facing the camera (which always looks north), swaying at the top: a grass tuft or a flower.
     /// <paramref name="x"/> is its left edge; <paramref name="u0"/> and <paramref name="u1"/> pick a frame of the texture.
     /// </summary>
-    public static void Card(MeshBuilder b, float x, float z, float w, float h, float u0, float u1)
+    /// <param name="y0">The height of the ground it stands on.</param>
+    public static void Card(MeshBuilder b, float x, float z, float w, float h, float u0, float u1, float y0 = 0f)
     {
         var normal = Vector3.Normalize(new Vector3(0, 0.8f, 0.6f));
-        b.Quad(new(x, 0, z), new(x + w, 0, z), new(x + w, h, z), new(x, h, z), new(u0, 1), new(u1, 1), new(u1, 0), new(u0, 0),
+        b.Quad(new(x, y0, z), new(x + w, y0, z), new(x + w, y0 + h, z), new(x, y0 + h, z), new(u0, 1), new(u1, 1), new(u1, 0), new(u0, 0),
             Color.White, MeshBuilder.Sway(Color.White, 1f), normal);
     }
 }

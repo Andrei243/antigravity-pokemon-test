@@ -22,6 +22,15 @@ public class SaveData
     public int PlayerGridY { get; set; } = 886;
     public Direction PlayerFacing { get; set; } = Direction.Down;
 
+    /// <summary>How the player was getting about: a save made while surfing loads out on the water.</summary>
+    public PokemonPlatinumEngine.Overworld.TravelMode Travel { get; set; }
+
+    /// <summary>
+    /// The height the player stood at, which says which level they were on where a tile has two (a bridge and
+    /// the water under it). Null in older saves: the player stands on the ground.
+    /// </summary>
+    public float? PlayerHeight { get; set; }
+
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.

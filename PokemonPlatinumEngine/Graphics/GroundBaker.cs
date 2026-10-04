@@ -152,6 +152,16 @@ internal static class GroundBaker
         };
     }
 
+    /// <summary>
+    /// Whether water lies at a tile: open water, or the water a bridge's deck crosses, which runs on under the
+    /// boards (the deck is drawn over it, and the river's shore is not broken by the bridge).
+    /// </summary>
+    public static bool IsWaterAt(Map map, int x, int y)
+    {
+        var type = TypeAt(map, x, y);
+        return type == TileType.Water || (type == TileType.Planks && map.InBounds(x, y) && map.IsDeepWater(x, y));
+    }
+
     private static uint Hash(int x, int y, int salt)
     {
         unchecked

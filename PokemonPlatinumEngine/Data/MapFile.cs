@@ -337,7 +337,14 @@ public static class TileCodes
         (TileType.Sand, ','),
         (TileType.Dirt, ';'),
         (TileType.Snow, '^'),
-        (TileType.CaveFloor, 'c')
+        (TileType.CaveFloor, 'c'),
+        (TileType.LedgeLeft, '<'),
+        (TileType.LedgeRight, '>'),
+        (TileType.Rock, 'R'),
+        (TileType.Ice, 'i'),
+        (TileType.Planks, '='),
+        (TileType.Stairs, 's'),
+        (TileType.Marsh, 'm')
     };
 
     public static char CodeOf(TileType type)

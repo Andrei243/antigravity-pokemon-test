@@ -114,15 +114,24 @@ public static class WorldMapBuilder
 {
     private const int T = WorldChunkFile.Tiles;
 
+    /// <summary>The height of Sinnoh's lowlands in the original's data, in tiles: its sea lies half a tile lower.</summary>
+    public const float GroundLevel = 1f;
+
     public static Map Build(World world, WorldMapEntry entry)
     {
         var matrix = world.Matrix(entry.Matrix);
-        var map = new Map(matrix.Width * T, matrix.Height * T) { Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees };
+        var map = new Map(matrix.Width * T, matrix.Height * T)
+        {
+            Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel
+        };
 
-        // Until a chunk says otherwise the world is forest nobody can enter
+        // Until a chunk says otherwise the world is forest nobody can enter, on Sinnoh's usual ground level
         for (int y = 0; y < map.Height; y++)
             for (int x = 0; x < map.Width; x++)
+            {
                 map.SetGroundTile(x, y, TileType.Tree, isSolid: true);
+                map.SetHeight(x, y, GroundLevel);
+            }
 
         var areas = new Dictionary<string, MapArea>(StringComparer.OrdinalIgnoreCase);
         for (int cy = 0; cy < matrix.Height; cy++)
@@ -134,12 +143,47 @@ public static class WorldMapBuilder
 
                 int id = matrix.ChunkAt(cx, cy);
                 if (id != WorldMatrixFile.NoChunk && world.Chunk(id) is { } chunk)
-                    PlaceChunk(map, chunk, cx * T, cy * T, area, world.Overlay(key));
+                    PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, world.Overlay(key));
             }
 
+        RocksInWater(map);
         foreach (var (key, area) in areas)
             if (area.Open) PlaceEvents(world, map, key, area);
         return map;
+    }
+
+    /// <summary>
+    /// A rock standing in the sea is a blocked tile whose behaviour says nothing of water, so by itself it would
+    /// be a boulder on a square of dirt. Wherever such a boulder touches water (or another that does), the tile
+    /// is water too: the sea runs round the rock, and the rock keeps its tile blocked.
+    /// </summary>
+    private static void RocksInWater(Map map)
+    {
+        var rocks = new HashSet<(int X, int Y)>();
+        foreach (var prop in map.Props)
+            if (prop.Type == PropType.Boulder && map.GetGroundTile(prop.X, prop.Y) == TileType.Dirt) rocks.Add((prop.X, prop.Y));
+
+        // Standing in the water, not on the bank above it
+        bool AtLevel(int ax, int ay, int bx, int by) => MathF.Abs(map.HeightAt(ax, ay) - map.HeightAt(bx, by)) < 0.26f;
+
+        var wet = new Queue<(int X, int Y)>();
+        foreach (var (x, y) in rocks)
+            foreach (var (dx, dy) in new[] { (1, 0), (-1, 0), (0, 1), (0, -1) })
+                if (map.InBounds(x + dx, y + dy) && map.GetGroundTile(x + dx, y + dy) == TileType.Water && AtLevel(x, y, x + dx, y + dy))
+                {
+                    wet.Enqueue((x, y));
+                    break;
+                }
+
+        while (wet.Count > 0)
+        {
+            var (x, y) = wet.Dequeue();
+            if (!rocks.Remove((x, y))) continue;
+            map.SetGroundTile(x, y, TileType.Water, isSolid: true);
+            map.SetBehaviour(x, y, TileBehavior.Sea);
+            foreach (var (dx, dy) in new[] { (1, 0), (-1, 0), (0, 1), (0, -1) })
+                if (rocks.Contains((x + dx, y + dy)) && AtLevel(x, y, x + dx, y + dy)) wet.Enqueue((x + dx, y + dy));
+        }
     }
 
     private static MapArea AreaOf(World world, string key)
@@ -158,29 +202,33 @@ public static class WorldMapBuilder
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
 
-        if (file?.Land != null)
+        static void Fill(List<WildEncounterEntry> table, List<AreaEncounter>? slots, int[] weights)
         {
-            for (int slot = 0; slot < file.Land.Count; slot++)
+            for (int slot = 0; slot < (slots?.Count ?? 0); slot++)
             {
-                var wild = file.Land[slot];
-                area.WildEncounters.Add(new WildEncounterEntry
+                var wild = slots![slot];
+                table.Add(new WildEncounterEntry
                 {
                     SpeciesName = wild.Species,
                     MinLevel = wild.Level,
-                    MaxLevel = wild.Level,
-                    Weight = slot < WorldAreaFile.LandSlotWeights.Length ? WorldAreaFile.LandSlotWeights[slot] : 1
+                    MaxLevel = wild.MaxLevel ?? wild.Level,
+                    Weight = slot < weights.Length ? weights[slot] : 1
                 });
             }
         }
+        Fill(area.WildEncounters, file?.Land, WorldAreaFile.LandSlotWeights);
+        Fill(area.WaterEncounters, file?.Water, WorldAreaFile.WaterSlotWeights);
+        area.LandRate = file?.LandRate ?? 0;
+        area.WaterRate = file?.WaterRate ?? 0;
         return area;
     }
 
     // ---------------------------------------------------------------- tiles
 
     /// <summary>
-    /// The tile the game draws and walks for a tile of the world: its type, whether it blocks, and what stands on
-    /// it. A ledge keeps its jump; water blocks until there is Surf; rock faces and sea rocks are boulders until
-    /// cliffs are built (plan 01 · M3).
+    /// What the game draws for a tile of the world: its type, whether it blocks, and what stands on it. What the
+    /// tile does stays its behaviour (<see cref="Map.BehaviourAt"/>): a ledge is hopped, open water waits for
+    /// Surf without being blocked, and a door is shut until a warp opens it.
     /// </summary>
     public static (TileType Type, bool Solid, PropType? Prop) Look(TerrainCover cover, TileBehavior behaviour, bool solid)
     {
@@ -188,10 +236,22 @@ public static class WorldMapBuilder
         {
             case TileBehavior.LedgeSouth:
                 return (TileType.LedgeDown, false, null);
+            case TileBehavior.LedgeWest:
+                return (TileType.LedgeLeft, false, null);
+            case TileBehavior.LedgeEast:
+                return (TileType.LedgeRight, false, null);
+            // The corner piece at the south end of a ledge that faces west or east: the same ridge, and a wall
+            case TileBehavior.LedgeCornerSouthWest:
+                return (TileType.LedgeLeft, true, null);
+            case TileBehavior.LedgeCornerSouthEast:
+                return (TileType.LedgeRight, true, null);
             case TileBehavior.Door:
                 return (TileType.Door, true, null);   // opened when a warp is put on it
             case TileBehavior.River or TileBehavior.Sea or TileBehavior.Waterfall:
-                return (TileType.Water, true, cover == TerrainCover.Boulder ? PropType.Boulder : null);
+                // A blocked tile of water is a rock standing in it
+                return (TileType.Water, solid, solid && cover == TerrainCover.Boulder ? PropType.Boulder : null);
+            case TileBehavior.Ice:
+                return (TileType.Ice, solid, null);
         }
 
         return cover switch
@@ -199,13 +259,19 @@ public static class WorldMapBuilder
             TerrainCover.Grass => (TileType.Grass, solid, null),
             TerrainCover.Flowers => (TileType.FlowerGrass, solid, null),
             TerrainCover.TallGrass => (TileType.TallGrass, solid, null),
-            TerrainCover.Path or TerrainCover.Paving or TerrainCover.Bridge or TerrainCover.Steps => (TileType.Path, solid, null),
+            TerrainCover.Path or TerrainCover.Paving => (TileType.Path, solid, null),
+            TerrainCover.Bridge => (TileType.Planks, solid, null),
+            TerrainCover.Steps => (TileType.Stairs, solid, null),
             TerrainCover.Sand => (TileType.Sand, solid, null),
-            TerrainCover.Rock or TerrainCover.Marsh => (TileType.Dirt, solid, null),
+            TerrainCover.Rock => (TileType.Rock, solid, null),
+            TerrainCover.Marsh => (TileType.Marsh, solid, null),
             TerrainCover.CaveFloor => (TileType.CaveFloor, solid, null),
-            TerrainCover.Snow or TerrainCover.Ice => (TileType.Snow, solid, null),
+            TerrainCover.Snow => (TileType.Snow, solid, null),
+            TerrainCover.Ice => (TileType.Ice, solid, null),
             TerrainCover.Water => (TileType.Water, solid, null),
-            TerrainCover.Cliff or TerrainCover.Boulder => (TileType.Dirt, true, PropType.Boulder),
+            // A rock face is bare rock nobody walks on; the drop beside it comes from the heights
+            TerrainCover.Cliff => (TileType.Rock, true, null),
+            TerrainCover.Boulder => (TileType.Dirt, true, PropType.Boulder),
             TerrainCover.Fence => (TileType.Grass, true, PropType.Fence),
             TerrainCover.Building => (TileType.Wall, true, null),
             // Trees, and whatever blocks without saying what it is; open ground nobody named is lawn
@@ -213,27 +279,60 @@ public static class WorldMapBuilder
         };
     }
 
-    private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, MapArea area, WorldOverlayFile? overlay)
+    /// <summary>Behaviours whose plates lie one over the other: the deck of a bridge, and the ground or water under it.</summary>
+    private static bool HasDeck(TileBehavior behaviour) => behaviour is TileBehavior.Bridge or TileBehavior.BridgeEnd
+        or TileBehavior.BridgeOverCave or TileBehavior.BridgeOverWater or TileBehavior.BridgeOverSnow
+        || FieldMovement.BikePlankRunsNorthSouth(behaviour) != null;
+
+    /// <param name="altitude">How high the matrix sets the whole chunk, in tiles.</param>
+    private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, WorldOverlayFile? overlay)
     {
         var building = new bool[T * T];
         for (int z = 0; z < T; z++)
             for (int x = 0; x < T; x++)
             {
                 var cover = chunk.CoverAt(x, z);
+                var behaviour = chunk.BehaviourAt(x, z);
                 bool solid = chunk.SolidAt(x, z);
+                map.SetBehaviour(ox + x, oy + z, behaviour);
+                PlaceHeight(map, chunk, x, z, ox, oy, altitude, behaviour);
                 if (cover == TerrainCover.Building && solid)
                 {
                     building[z * T + x] = true;
                     continue;
                 }
 
-                var (type, blocks, prop) = Look(cover, chunk.BehaviourAt(x, z), solid);
+                var (type, blocks, prop) = Look(cover, behaviour, solid);
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
                 if (prop is { } standing) map.Props.Add(new Prop { Type = standing, X = ox + x, Y = oy + z });
             }
 
         PlaceBuildings(map, chunk, building, ox, oy, overlay?.Roof ?? TileType.RoofRed);
+    }
+
+    /// <summary>
+    /// A tile's ground from the chunk's plates: the plate under its middle gives its height and slope. Where two
+    /// lie one over the other at a bridge, the lower is the ground and the upper the deck.
+    /// </summary>
+    private static void PlaceHeight(Map map, WorldChunkFile chunk, int x, int z, int ox, int oy, float altitude, TileBehavior behaviour)
+    {
+        float mx = x + 0.5f, mz = z + 0.5f;
+        HeightPlate? ground = null, upper = null;
+        foreach (var plate in chunk.Heights)
+        {
+            if (!plate.Contains(mx, mz)) continue;
+            float h = plate.HeightAt(mx, mz);
+            if (ground == null || h < ground.HeightAt(mx, mz)) ground = plate;
+            if (upper == null || h > upper.HeightAt(mx, mz)) upper = plate;
+        }
+        if (ground == null) return;
+
+        // Where plates overlap without a bridge the walker's own is the upper one (a terrace over a hidden floor)
+        bool deck = HasDeck(behaviour) && upper != ground && upper!.HeightAt(mx, mz) - ground.HeightAt(mx, mz) >= 0.75f;
+        var stand = deck ? ground : upper!;
+        map.SetHeight(ox + x, oy + z, altitude + stand.HeightAt(mx, mz), stand.SlopeX, stand.SlopeZ);
+        if (deck) map.SetDeck(ox + x, oy + z, altitude + upper!.HeightAt(mx, mz));
     }
 
     /// <summary>A prop as large as a building, and not a sheet the size of the whole chunk (a lake's water).</summary>
@@ -318,6 +417,15 @@ public static class WorldMapBuilder
 
     private static bool IsSignpost(string looks) => looks is "map_signpost" or "arrow_signpost" or "signboard" or "trainer_tips_signpost";
 
+    /// <summary>The obstacle an object of the original is, by the name of its looks: what Cut, Rock Smash and Strength clear.</summary>
+    public static PropType? ObstacleFor(string looks) => looks switch
+    {
+        "cut_tree" => PropType.CutTree,
+        "rock_smash" => PropType.CrackedRock,
+        "strength_boulder" => PropType.StrengthBoulder,
+        _ => null
+    };
+
     private static Direction FacingOf(int facing) => facing switch
     {
         0 => Direction.Up,
@@ -346,6 +454,11 @@ public static class WorldMapBuilder
             {
                 map.AddProp(PropType.Mailbox, o.X, o.Z);
                 map.Signboards[(o.X, o.Z)] = overlay?.Signs?.GetValueOrDefault(o.Id) ?? "A mailbox.";
+                continue;
+            }
+            if (ObstacleFor(o.Looks) is { } obstacle)
+            {
+                map.AddProp(obstacle, o.X, o.Z);
                 continue;
             }
 

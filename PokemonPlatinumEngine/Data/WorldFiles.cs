@@ -286,7 +286,19 @@ public sealed class WorldAreaFile
     /// </summary>
     public List<AreaEncounter>? Land { get; set; }
 
+    /// <summary>Platinum's rate for the land table: see <c>EncounterSteps</c>. Left out with the table.</summary>
+    public int? LandRate { get; set; }
+
     public static readonly int[] LandSlotWeights = { 20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1 };
+
+    /// <summary>
+    /// The wild Pokémon met surfing on the area's water: five slots, met 60, 30, 5, 4 and 1 times in a hundred
+    /// (<see cref="WaterSlotWeights"/>), each with a range of levels. Left out when it has none.
+    /// </summary>
+    public List<AreaEncounter>? Water { get; set; }
+    public int? WaterRate { get; set; }
+
+    public static readonly int[] WaterSlotWeights = { 60, 30, 5, 4, 1 };
 
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
@@ -300,6 +312,9 @@ public sealed class AreaEncounter
 {
     public string Species { get; set; } = "";
     public int Level { get; set; }
+
+    /// <summary>For a slot with a range of levels (water), its top; <see cref="Level"/> is then its bottom.</summary>
+    public int? MaxLevel { get; set; }
 }
 
 /// <summary>

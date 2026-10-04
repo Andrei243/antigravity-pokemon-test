@@ -54,9 +54,22 @@ internal static class PixelGround
     {
         new(TileType.Sand, new(238, 224, 172, 255), new(246, 236, 196, 255), new(206, 188, 138, 255), new(214, 196, 140, 255), 71),
         new(TileType.Dirt, new(176, 136, 96, 255), new(194, 156, 112, 255), new(138, 102, 70, 255), new(146, 108, 74, 255), 72),
-        new(TileType.Snow, new(204, 218, 240, 255), new(220, 230, 246, 255), new(168, 186, 222, 255), new(184, 200, 232, 255), 73),
-        new(TileType.CaveFloor, new(112, 100, 104, 255), new(130, 118, 120, 255), new(74, 66, 80, 255), new(82, 72, 84, 255), 74)
+        new(TileType.Snow, new(186, 204, 232, 255), new(196, 212, 238, 255), new(150, 172, 214, 255), new(168, 188, 224, 255), 73),
+        new(TileType.CaveFloor, new(112, 100, 104, 255), new(130, 118, 120, 255), new(74, 66, 80, 255), new(82, 72, 84, 255), 74),
+        new(TileType.Rock, new(158, 152, 150, 255), new(176, 170, 166, 255), new(112, 106, 116, 255), new(104, 100, 112, 255), 75),
+        new(TileType.Ice, new(150, 200, 236, 255), new(172, 214, 242, 255), new(112, 166, 216, 255), new(232, 246, 255, 255), 76),
+        new(TileType.Marsh, new(124, 106, 86, 255), new(140, 122, 98, 255), new(90, 76, 66, 255), new(98, 112, 108, 255), 77)
     };
+
+    // Built ground, painted tile for tile with straight edges: bridge decks and stairs
+    private static readonly Color Plank = new(178, 134, 92, 255);
+    private static readonly Color PlankLight = new(192, 150, 104, 255);
+    private static readonly Color PlankGroove = new(126, 90, 62, 255);
+    private static readonly Color PlankNail = new(96, 70, 52, 255);
+    private static readonly Color PlankRail = new(104, 74, 54, 255);
+    private static readonly Color Tread = new(184, 178, 170, 255);
+    private static readonly Color TreadNose = new(214, 210, 204, 255);
+    private static readonly Color TreadShade = new(122, 116, 124, 255);
 
     public static PixelCanvas Bake(Map map, int margin, IReadOnlyList<BuildingInfo> buildings) => Bake(map, margin, buildings, out _);
 
@@ -98,7 +111,7 @@ internal static class PixelGround
         }
 
         var path = Mask(tw, th, IsPath, blur: 5);
-        var water = Mask(tw, th, (x, y) => TypeAt(x, y) == TileType.Water, blur: 8);
+        var water = Mask(tw, th, (x, y) => GroundBaker.IsWaterAt(map, x + originX, y + originY), blur: 8);
         var forest = Mask(tw, th, (x, y) => TypeAt(x, y) is TileType.Tree or TileType.TreeTrunk, blur: 10);
         var tall = Mask(tw, th, (x, y) => TypeAt(x, y) == TileType.TallGrass, blur: 3);
         var walls = Mask(tw, th, IsBuilding, blur: 6);
@@ -174,7 +187,8 @@ internal static class PixelGround
                 int sx = tx + seedX, sy = ty + seedY;
                 if (IsPath(tx, ty)) Pebbles(c, path, w, ox, oy, sx, sy);
                 else if (t == TileType.FlowerGrass) Flowers(c, ox, oy, sx, sy);
-                else if (t is TileType.Grass or TileType.Tree or TileType.TreeTrunk or TileType.LedgeDown && !IsBuilding(tx, ty)) Tufts(c, path, water, w, ox, oy, sx, sy);
+                else if (t is TileType.Grass or TileType.Tree or TileType.TreeTrunk or TileType.LedgeDown or TileType.LedgeLeft or TileType.LedgeRight
+                    && !IsBuilding(tx, ty)) Tufts(c, path, water, w, ox, oy, sx, sy);
                 else
                 {
                     for (int k = 0; k < Kinds.Length; k++)
@@ -184,6 +198,32 @@ internal static class PixelGround
             }
 
         waterMask = PaintWater(c, map, originX, originY, water, w, h);
+
+        // Decks and stairs are built things: whole tiles with straight edges, laid over whatever the masks rounded
+        for (int ty = 0; ty < th; ty++)
+            for (int tx = 0; tx < tw; tx++)
+            {
+                var t = TypeAt(tx, ty);
+                if (t == TileType.Planks)
+                {
+                    bool Deck(int dx, int dy) => TypeAt(tx + dx, ty + dy) == TileType.Planks;
+                    // A deck runs the way it is longer through this tile; its boards lie across that
+                    int Run(int dx, int dy)
+                    {
+                        int n = 0;
+                        while (n < 64 && TypeAt(tx + dx * (n + 1), ty + dy * (n + 1)) == TileType.Planks) n++;
+                        return n;
+                    }
+                    bool runsEastWest = Run(-1, 0) + Run(1, 0) > Run(0, -1) + Run(0, 1);
+                    PaintPlanks(c, tx * T, ty * T, tx + seedX, ty + seedY, runsEastWest, Deck(-1, 0), Deck(1, 0), Deck(0, -1), Deck(0, 1));
+                }
+                else if (t == TileType.Stairs)
+                {
+                    bool Flight(int dx, int dy) => TypeAt(tx + dx, ty + dy) == TileType.Stairs;
+                    var (slopeX, slopeZ) = map.SlopeAt(tx + originX, ty + originY);
+                    PaintStairs(c, tx * T, ty * T, slopeX, slopeZ, Flight(-1, 0), Flight(1, 0), Flight(0, -1), Flight(0, 1));
+                }
+            }
         if (pad == 0) return c;
 
         // Only the window is kept; a chunk whose only water was in the border has none
@@ -313,6 +353,71 @@ internal static class PixelGround
         return result;
     }
 
+    // ------------------------------------------------------------------ decks and stairs
+
+    /// <summary>
+    /// One tile of a deck: boards eight texels wide laid across the way one walks (so north to south on a deck
+    /// that runs east to west), every third a shade lighter, with a nail at each end and a rail line along the
+    /// deck's long sides where they are open.
+    /// </summary>
+    internal static void PaintPlanks(PixelCanvas c, int ox, int oy, int seedX, int seedY, bool runsEastWest, bool west, bool east, bool north, bool south)
+    {
+        for (int y = 0; y < T; y++)
+            for (int x = 0; x < T; x++)
+            {
+                // Along a board, and across the boards (counted from the map's corner, so boards carry on from tile to tile)
+                int along = runsEastWest ? y : x, across = runsEastWest ? seedX * T + x : seedY * T + y;
+                int board = Math.DivRem(across, 8, out int inBoard);
+                if (inBoard < 0) { inBoard += 8; board--; }
+                Color col = inBoard == 7 ? PlankGroove
+                    : (along is 2 or 3 || along == T - 4 || along == T - 3) && inBoard == 3 ? PlankNail
+                    : ((board % 3) + 3) % 3 == 0 ? PlankLight : Plank;
+                c.SetRaw(ox + x, oy + y, col);
+            }
+
+        if (runsEastWest)
+        {
+            if (!north) for (int x = 0; x < T; x++) c.SetRaw(ox + x, oy, PlankRail);
+            if (!south) for (int x = 0; x < T; x++) c.SetRaw(ox + x, oy + T - 1, PlankRail);
+        }
+        else
+        {
+            if (!west) for (int y = 0; y < T; y++) c.SetRaw(ox, oy + y, PlankRail);
+            if (!east) for (int y = 0; y < T; y++) c.SetRaw(ox + T - 1, oy + y, PlankRail);
+        }
+    }
+
+    /// <summary>
+    /// One tile of stairs: treads eight texels deep across the way the flight climbs, each with a light nose on
+    /// the edge that faces downhill and the riser's shade beyond it. A flight with no slope of its own (a few
+    /// steps drawn on flat ground) is taken to climb northward.
+    /// </summary>
+    internal static void PaintStairs(PixelCanvas c, int ox, int oy, float slopeX, float slopeZ, bool west, bool east, bool north, bool south)
+    {
+        bool climbsNorthSouth = MathF.Abs(slopeZ) >= MathF.Abs(slopeX);
+        // Whether the downhill edge of each tread is the one with the larger coordinate (south, or east)
+        bool noseLast = climbsNorthSouth ? slopeZ <= 0f : slopeX < 0f;
+        for (int y = 0; y < T; y++)
+            for (int x = 0; x < T; x++)
+            {
+                int inTread = (climbsNorthSouth ? y : x) % 8;
+                if (!noseLast) inTread = 7 - inTread;
+                c.SetRaw(ox + x, oy + y, inTread == 7 ? TreadShade : inTread == 6 ? TreadNose : Tread);
+            }
+
+        // A dark line down each open side of the flight
+        if (climbsNorthSouth)
+        {
+            if (!west) for (int y = 0; y < T; y++) c.SetRaw(ox, oy + y, TreadShade);
+            if (!east) for (int y = 0; y < T; y++) c.SetRaw(ox + T - 1, oy + y, TreadShade);
+        }
+        else
+        {
+            if (!north) for (int x = 0; x < T; x++) c.SetRaw(ox + x, oy, TreadShade);
+            if (!south) for (int x = 0; x < T; x++) c.SetRaw(ox + x, oy + T - 1, TreadShade);
+        }
+    }
+
     // ------------------------------------------------------------------ placed details
 
     /// <summary>Two or three little "v" tufts per tile on a jittered grid, dark with a light tip.</summary>
@@ -376,7 +481,7 @@ internal static class PixelGround
         }
     }
 
-    /// <summary>The marks of sand (ripple arcs), dirt (clods), snow (drift lines) and cave floors (cracks and pebbles).</summary>
+    /// <summary>The marks of sand (ripple arcs), dirt (clods), snow (drift lines), rock (cracks), ice (glints), marsh (wet patches) and cave floors (cracks and pebbles).</summary>
     private static void KindMarks(PixelCanvas c, Kind kind, float[] mask, int w, int ox, int oy, int tx, int ty)
     {
         for (int k = 0; k < 2; k++)
@@ -402,6 +507,25 @@ internal static class PixelGround
                 case TileType.Snow:
                     for (int d = 0; d < 3; d++) c.SetRaw(x + d, y, kind.Mark);
                     c.SetRaw(x + 3, y + 1, kind.Mark); c.SetRaw(x + 4, y + 1, kind.Mark);
+                    break;
+                case TileType.Rock:
+                    // A crack: a bent line with a light chip beside it
+                    c.SetRaw(x, y, kind.Mark); c.SetRaw(x + 1, y + 1, kind.Mark); c.SetRaw(x + 2, y + 1, kind.Mark);
+                    c.SetRaw(x + 3, y + 2, kind.Mark);
+                    if (k == 0) c.SetRaw(x + 4, y + 3, kind.Mark);
+                    c.SetRaw(x + 2, y, new Color(208, 204, 200, 255));
+                    break;
+                case TileType.Ice:
+                    // A glint: a short diagonal stroke
+                    c.SetRaw(x + 2, y, kind.Mark); c.SetRaw(x + 1, y + 1, kind.Mark); c.SetRaw(x, y + 2, kind.Mark);
+                    if (k == 1) { c.SetRaw(x + 5, y, kind.Mark); c.SetRaw(x + 4, y + 1, kind.Mark); }
+                    break;
+                case TileType.Marsh:
+                    // A wet patch: a flat oval with one light texel
+                    for (int d = 1; d <= 3; d++) c.SetRaw(x + d, y, kind.Mark);
+                    for (int d = 0; d <= 4; d++) c.SetRaw(x + d, y + 1, kind.Mark);
+                    for (int d = 1; d <= 3; d++) c.SetRaw(x + d, y + 2, kind.Mark);
+                    c.SetRaw(x + 1, y + 1, new Color(150, 168, 164, 255));
                     break;
                 default:
                     if (k == 0)

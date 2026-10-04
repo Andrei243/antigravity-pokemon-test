@@ -29,6 +29,15 @@
     { "species": "Starly", "level": 4 },
     { "species": "Bidoof", "level": 4 }
   ],
+  "landRate": 30,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
   "warps": [
     { "x": 32, "z": 32, "to": "verity_cavern", "toWarp": 0 },
     { "x": 46, "z": 54, "to": "verity_lakefront", "toWarp": 2 },

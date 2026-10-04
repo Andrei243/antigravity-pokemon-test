@@ -23,6 +23,7 @@ internal static class SceneTextures
     {
         ownerThread = Environment.CurrentManagedThreadId;
         _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace;
+        _ = BankFace; _ = RockFace; _ = Waterfall;
         _ = LightPool; _ = LampGlow; _ = WindowLight;
     }
 
@@ -104,6 +105,15 @@ internal static class SceneTextures
     public static Texture2D Flowers => Get("flowers", NatureArt.Flowers, repeat: false);
 
     public static Texture2D LedgeFace => Get("ledge_face", NatureArt.LedgeFace, repeat: true);
+
+    /// <summary>The face of a step in the ground under grass (style guide, "Relief"): its top rows once, the rest repeating downward.</summary>
+    public static Texture2D BankFace => Get("bank_face", NatureArt.BankFace, repeat: true);
+
+    /// <summary>The face of a step in the ground under rock, snow or a cave's floor.</summary>
+    public static Texture2D RockFace => Get("rock_face", NatureArt.RockFace, repeat: true);
+
+    /// <summary>The sheet of a waterfall, repeating down it.</summary>
+    public static Texture2D Waterfall => Get("waterfall", NatureArt.Waterfall, repeat: true);
 
     /// <summary>Battle meadow and platform tops are smooth, filtered textures (see <see cref="SoftTextures"/>).</summary>
     public static Texture2D Meadow => SoftTextures.Meadow;

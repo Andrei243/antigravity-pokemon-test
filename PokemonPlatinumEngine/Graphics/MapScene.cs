@@ -171,7 +171,8 @@ internal sealed class MapScene
         }
         else
         {
-            if (waterMask != null) scene.AddWater(waterMesh);
+            if (waterMask != null) scene.AddWater(waterMesh, batches);
+            scene.AddFaces(batches);
             scene.AddTrees(batches);
             scene.AddTallGrass(batches.For(SceneTextures.TallGrass, MeshPass.Ground));
             scene.AddLawnDetail(batches);
@@ -183,8 +184,9 @@ internal sealed class MapScene
                 PublicLight = batches.For(SceneTextures.LightPool, MeshPass.Light),
                 HomeLight = batches.For(SceneTextures.LightPool, MeshPass.HomeLight)
             };
+            // A building stands on the ground at the foot of its front wall
             foreach (var b in BuildingsIn(map, chunk))
-                BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)), targets);
+                BuildingModels.Add(kit, b, BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)), targets, Relief.At(map, b.X0 + b.Width / 2f, b.Y1 + 0.5f));
             OutdoorProps.Add(kit, map, batches.For(SceneTextures.LampGlow, MeshPass.Light), chunk);
         }
 
@@ -294,8 +296,31 @@ internal sealed class MapScene
 
                 float u0 = (tx - ground.X) / tilesW, u1 = (tx - ground.X + 1) / tilesW;
                 float v0 = (ty - ground.Y) / tilesH, v1 = (ty - ground.Y + 1) / tilesH;
-                b.Quad(new(tx, 0, ty + 1), new(tx + 1, 0, ty + 1), new(tx + 1, 0, ty), new(tx, 0, ty),
-                    new(u0, v1), new(u1, v1), new(u1, v0), new(u0, v0), Color.White, Up);
+                if (!Map.HasRelief)
+                {
+                    b.Quad(new(tx, 0, ty + 1), new(tx + 1, 0, ty + 1), new(tx + 1, 0, ty), new(tx, 0, ty),
+                        new(u0, v1), new(u1, v1), new(u1, v0), new(u0, v0), Color.White, Up);
+                    continue;
+                }
+
+                // With relief each tile lies at its own corners' heights: flat, a slope, or a bank up to a higher neighbour
+                var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
+                if (Relief.Deck(Map, tx, ty) is { } deck)
+                {
+                    // A bridge: its boards at the deck's height. Water runs on under it (the water's own mesh
+                    // draws that); over dry ground the ground under it is drawn in shade. A boardwalk lies a
+                    // hair above the water it rests on.
+                    if (!Map.IsDeepWater(tx, ty) && deck - MathF.Max(MathF.Max(nw, ne), MathF.Max(sw, se)) > 0.3f)
+                        flat.Quad(new(tx, sw, ty + 1), new(tx + 1, se, ty + 1), new(tx + 1, ne, ty), new(tx, nw, ty), default, default, default, default, new Color(70, 96, 78, 255), Up);
+                    nw = ne = sw = se = deck + WaterLevel * 3f;
+                }
+
+                // Stairs and ramps catch the light as slopes, though less than they would in life, so every flight
+                // keeps its treads readable; a bank that only meets its neighbour is lit as flat ground
+                var (slopeX, slopeZ) = Map.SlopeAt(tx, ty);
+                var normal = slopeX == 0f && slopeZ == 0f ? Up : Vector3.Normalize(new Vector3(-slopeX, 2f, -slopeZ));
+                b.Quad(new(tx, sw, ty + 1), new(tx + 1, se, ty + 1), new(tx + 1, ne, ty), new(tx, nw, ty),
+                    new(u0, v1), new(u1, v1), new(u1, v0), new(u0, v0), Color.White, normal);
             }
         }
 
@@ -314,6 +339,102 @@ internal sealed class MapScene
         }
     }
 
+    // ------------------------------------------------------------------ relief
+
+    /// <summary>The drawn height of the ground at a point of the map (0 on a map without relief).</summary>
+    private float Y(float x, float z) => Relief.At(Map, x, z);
+
+    private static bool IsRocky(TileType type) => type is TileType.Rock or TileType.Snow or TileType.Ice or TileType.CaveFloor;
+
+    /// <summary>
+    /// The faces between levels (style guide, "Relief"): wherever a tile stands higher than its neighbour to the
+    /// south, east or west by more than a slope takes up, a wall from the lower ground to the higher, in earth
+    /// under grass and in rock under rock. They cast shadows; the flat ground does not.
+    /// </summary>
+    private void AddFaces(MeshBatches batches)
+    {
+        if (!Map.HasRelief) return;
+        var earth = batches.For(SceneTextures.BankFace);
+        var rock = batches.For(SceneTextures.RockFace);
+        var beams = batches.For(SceneTextures.White);
+        var beam = new Color(104, 74, 54, 255);
+
+        for (int ty = ground.Y; ty < ground.Bottom; ty++)
+            for (int tx = ground.X; tx < ground.Right; tx++)
+            {
+                if (!Map.InBounds(tx, ty)) continue;
+                var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
+                var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : earth;
+
+                // Each edge against the matching edge of the tile beyond it; a face that would look north is never seen
+                float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
+                if (Map.InBounds(tx, ty + 1))
+                {
+                    var s = Relief.Corners(Map, tx, ty + 1);
+                    Face(face, new(tx, 0, ty + 1), sw, s.NW, new(tx + 1, 0, ty + 1), se, s.NE, South, tx, wide);
+                }
+                if (Map.InBounds(tx + 1, ty))
+                {
+                    var e = Relief.Corners(Map, tx + 1, ty);
+                    Face(face, new(tx + 1, 0, ty + 1), se, e.SW, new(tx + 1, 0, ty), ne, e.NW, Vector3.UnitX, ty, wide);
+                }
+                if (Map.InBounds(tx - 1, ty))
+                {
+                    var w = Relief.Corners(Map, tx - 1, ty);
+                    Face(face, new(tx, 0, ty), nw, w.NE, new(tx, 0, ty + 1), sw, w.SE, -Vector3.UnitX, ty, wide);
+                }
+
+                // A bridge's deck has a beam along each side that is open
+                if (Relief.Deck(Map, tx, ty) is { } deck)
+                {
+                    const float depth = 0.22f;
+                    void Beam(Vector3 a, Vector3 c, Vector3 normal) =>
+                        beams.Quad(a with { Y = deck - depth }, c with { Y = deck - depth }, c with { Y = deck }, a with { Y = deck }, default, default, default, default, beam, normal);
+                    if (Relief.Deck(Map, tx, ty + 1) == null) Beam(new(tx, 0, ty + 1), new(tx + 1, 0, ty + 1), South);
+                    if (Relief.Deck(Map, tx + 1, ty) == null) Beam(new(tx + 1, 0, ty + 1), new(tx + 1, 0, ty), Vector3.UnitX);
+                    if (Relief.Deck(Map, tx - 1, ty) == null) Beam(new(tx, 0, ty), new(tx, 0, ty + 1), -Vector3.UnitX);
+                }
+            }
+    }
+
+    /// <summary>
+    /// One face along a tile's edge from <paramref name="a"/> to <paramref name="b"/> (their heights are filled
+    /// in here): from the lower ground beyond the edge up to this tile's own, wherever this tile is the higher.
+    /// </summary>
+    /// <param name="along">Where the edge starts along the face, in tiles, and <paramref name="wide"/> how many tiles one width of its art covers.</param>
+    private void Face(MeshBuilder mesh, Vector3 a, float topA, float bottomA, Vector3 b, float topB, float bottomB, Vector3 normal, float along, float wide)
+    {
+        const float least = 0.02f;
+        if (topA - bottomA < least && topB - bottomB < least) return;
+        bottomA = MathF.Min(bottomA, topA);
+        bottomB = MathF.Min(bottomB, topB);
+
+        // The art keeps square texels on screen: 32 columns to the tile and, seen from this steep, about 16 rows
+        float rows = GroundBaker.ArtTile / VS, sheet = NatureArt.FaceCap + NatureArt.FaceBody;
+        float u0 = along / wide, u1 = (along + 1f) / wide;
+        void Piece(float fromA, float toA, float fromB, float toB, float v0A, float v1A, float v0B, float v1B) =>
+            mesh.Quad(a with { Y = toA }, b with { Y = toB }, b with { Y = fromB }, a with { Y = fromA },
+                new(u0, v1A / sheet), new(u1, v1B / sheet), new(u1, v0B / sheet), new(u0, v0A / sheet), Color.White, normal);
+
+        bool level = MathF.Abs(topA - topB) < least && MathF.Abs(bottomA - bottomB) < least;
+        float height = topA - bottomA;
+        if (!level || height * rows <= sheet)
+        {
+            // One piece: the art from its top down as far as the face goes
+            Piece(topA, bottomA, topB, bottomB, 0f, (topA - bottomA) * rows, 0f, (topB - bottomB) * rows);
+            return;
+        }
+
+        // A tall face: the cap once, then the body as often as it takes
+        float capHeight = NatureArt.FaceCap / rows, bodyHeight = NatureArt.FaceBody / rows;
+        Piece(topA, topA - capHeight, topB, topB - capHeight, 0f, NatureArt.FaceCap, 0f, NatureArt.FaceCap);
+        for (float y = topA - capHeight; y > bottomA + 0.0001f; y -= bodyHeight)
+        {
+            float to = MathF.Max(bottomA, y - bodyHeight), v1 = NatureArt.FaceCap + (y - to) * rows;
+            Piece(y, to, y, to, NatureArt.FaceCap, v1, NatureArt.FaceCap, v1);
+        }
+    }
+
     private bool IsInteriorFloor(int tx, int ty, TileType t)
     {
         if (ty < 2) return false;
@@ -325,14 +446,17 @@ internal sealed class MapScene
     /// The water's surface lies just above the ground over every water tile and its neighbours; the water shader
     /// keeps only the texels the mask marks as water, so the shore is as round as the baked ground's.
     /// </summary>
-    private void AddWater(MeshBuilder water)
+    private void AddWater(MeshBuilder water, MeshBatches batches)
     {
+        var falls = batches.For(SceneTextures.Waterfall, MeshPass.Ground);
+        var spray = batches.For(SceneTextures.White, MeshPass.Ground);
+        var foam = new Color(236, 246, 255, 255);
         float tilesW = ground.Width, tilesH = ground.Height;
         bool NearWater(int x, int y)
         {
             for (int dy = -1; dy <= 1; dy++)
                 for (int dx = -1; dx <= 1; dx++)
-                    if (TypeAt(x + dx, y + dy) == TileType.Water) return true;
+                    if (GroundBaker.IsWaterAt(Map, x + dx, y + dy)) return true;
             return false;
         }
 
@@ -343,7 +467,36 @@ internal sealed class MapScene
                 if (!NearWater(tx, ty)) continue;
                 float u0 = (tx - ground.X) / tilesW, u1 = (tx - ground.X + 1) / tilesW;
                 float v0 = (ty - ground.Y) / tilesH, v1 = (ty - ground.Y + 1) / tilesH;
-                water.Quad(new(tx, WaterLevel, ty + 1), new(tx + 1, WaterLevel, ty + 1), new(tx + 1, WaterLevel, ty), new(tx, WaterLevel, ty),
+                // The surface follows the ground it lies on (level with its banks: see Relief)
+                var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
+                if (Map.InBounds(tx, ty) && Map.BehaviourAt(tx, ty) == TileBehavior.Waterfall)
+                {
+                    // Falling water: a sheet of streaks down the slope, with a line of foam where it goes over the
+                    // edge and a wider one where it lands
+                    const float lift = WaterLevel * 2f;
+                    falls.Quad(new(tx, sw + lift, ty + 1), new(tx + 1, se + lift, ty + 1), new(tx + 1, ne + lift, ty), new(tx, nw + lift, ty),
+                        new(tx, ty + 1), new(tx + 1, ty + 1), new(tx + 1, ty), new(tx, ty), Color.White, Up);
+                    // Foam in clumps six texels wide with gaps between, the gaps at different places in each row of it
+                    void Foam(float z0, float z1, int phase)
+                    {
+                        float Yat(float x, float z) => Relief.At(Map, x, Math.Clamp(z, ty + 0.001f, ty + 0.999f)) + lift * 1.5f;
+                        for (int clump = 0; clump < 4; clump++)
+                        {
+                            if ((clump + tx + phase) % 4 == 3) continue;
+                            float x0 = tx + clump * 0.25f + (phase % 2) * (2f / 32f), x1 = MathF.Min(tx + 1f, x0 + 6f / 32f);
+                            spray.Quad(new(x0, Yat(x0, z1), z1), new(x1, Yat(x1 - 0.001f, z1), z1), new(x1, Yat(x1 - 0.001f, z0), z0), new(x0, Yat(x0, z0), z0),
+                                default, default, default, default, foam, Up);
+                        }
+                    }
+                    if (Map.BehaviourAt(tx, ty - 1) != TileBehavior.Waterfall) Foam(ty, ty + 2f / 32f, 0);
+                    if (Map.BehaviourAt(tx, ty + 1) != TileBehavior.Waterfall)
+                    {
+                        Foam(ty + 1 - 6f / 32f, ty + 1 - 3f / 32f, 1);
+                        Foam(ty + 1 - 3f / 32f, ty + 1, 2);
+                    }
+                    continue;
+                }
+                water.Quad(new(tx, sw + WaterLevel, ty + 1), new(tx + 1, se + WaterLevel, ty + 1), new(tx + 1, ne + WaterLevel, ty), new(tx, nw + WaterLevel, ty),
                     new(u0, v1), new(u1, v1), new(u1, v0), new(u0, v0), Color.White, Up);
             }
         }
@@ -365,8 +518,8 @@ internal sealed class MapScene
                 float cz = ty + 0.5f + (Rand(tx, ty, 2) - 0.5f) * 0.12f;
                 // Trees are most of a map's geometry, so they are kept in chunks and only those in view are drawn
                 batches.Chunk = MeshBatches.ChunkOf(tx, ty);
-                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty);
-                else TreeModels.Round(batches, cx, cz, tx, ty);
+                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty, y0: Y(cx, cz));
+                else TreeModels.Round(batches, cx, cz, tx, ty, y0: Y(cx, cz));
             }
         }
         batches.Chunk = 0;
@@ -410,7 +563,8 @@ internal sealed class MapScene
                         float x0 = tx - row * 0.25f + u0, x1 = x0 + 0.25f;
                         // Every other clump stands a little further back, which breaks the rows up
                         float cz = z + ((piece / 2 + row + tx) % 2 == 0 ? 0f : 0.16f);
-                        b.Quad(new(x0, 0, cz), new(x1, 0, cz), new(x1, h, cz), new(x0, h, cz),
+                        float y0 = Y(tx + 0.5f, cz);
+                        b.Quad(new(x0, y0, cz), new(x1, y0, cz), new(x1, y0 + h, cz), new(x0, y0 + h, cz),
                             new(u0, 1), new(u1, 1), new(u1, 0), new(u0, 0), Color.White, top, normal);
                     }
                 }
@@ -438,13 +592,14 @@ internal sealed class MapScene
                         float z = ty + 0.25f + Rand(tx, ty, 70 + i) * 0.6f;
                         float pick = Rand(tx, ty, 75 + i);
                         int kind = pick < 0.6f ? 0 : pick < 0.82f ? 1 : 2;
-                        TreeModels.Card(flowers, x, z, 0.5f, 0.5f * VS, kind / 3f, (kind + 1) / 3f);
+                        TreeModels.Card(flowers, x, z, 0.5f, 0.5f * VS, kind / 3f, (kind + 1) / 3f, Y(tx + 0.5f, z));
                     }
                 }
                 else if (t == TileType.Grass && Rand(tx, ty, 80) < 0.35f)
                 {
                     float x = tx + (int)(Rand(tx, ty, 81) * 16) * texel;
-                    TreeModels.Card(tufts, x, ty + 0.2f + Rand(tx, ty, 82) * 0.6f, 0.5f, 0.375f * VS, 0f, 1f);
+                    float z = ty + 0.2f + Rand(tx, ty, 82) * 0.6f;
+                    TreeModels.Card(tufts, x, z, 0.5f, 0.375f * VS, 0f, 1f, Y(tx + 0.5f, z));
                 }
             }
         }
@@ -465,29 +620,75 @@ internal sealed class MapScene
         {
             for (int tx = content.X; tx < content.Right; tx++)
             {
-                if (Map.GetGroundTile(tx, ty) != TileType.LedgeDown) continue;
+                var type = Map.GetGroundTile(tx, ty);
+                if (type is TileType.LedgeLeft or TileType.LedgeRight)
+                {
+                    AddSideLedge(flat, face, tx, ty, type, h, lawn, dirt);
+                    continue;
+                }
+                if (type != TileType.LedgeDown) continue;
                 bool left = Map.InBounds(tx - 1, ty) && Map.GetGroundTile(tx - 1, ty) == TileType.LedgeDown;
                 bool right = Map.InBounds(tx + 1, ty) && Map.GetGroundTile(tx + 1, ty) == TileType.LedgeDown;
                 float x0 = tx + (left ? 0f : 0.125f), x1 = tx + 1 - (right ? 0f : 0.125f);
                 float zBack = ty + 0.12f, zTop = ty + 0.36f, zFront = ty + 0.62f;
+                float g = Y(tx + 0.5f, ty + 0.5f), top = g + h;
 
-                flat.Quad(new(x0, 0, zBack), new(x1, 0, zBack), new(x1, h, zTop), new(x0, h, zTop), default, default, default, default,
+                flat.Quad(new(x0, g, zBack), new(x1, g, zBack), new(x1, top, zTop), new(x0, top, zTop), default, default, default, default,
                     lawn, Vector3.Normalize(new Vector3(0, 1, -0.7f)));
-                flat.Quad(new(x0, h, zFront), new(x1, h, zFront), new(x1, h, zTop), new(x0, h, zTop), default, default, default, default, lawn, Up);
-                face.Quad(new(x0, 0, zFront), new(x1, 0, zFront), new(x1, h, zFront), new(x0, h, zFront),
+                flat.Quad(new(x0, top, zFront), new(x1, top, zFront), new(x1, top, zTop), new(x0, top, zTop), default, default, default, default, lawn, Up);
+                face.Quad(new(x0, g, zFront), new(x1, g, zFront), new(x1, top, zFront), new(x0, top, zFront),
                     new(x0, 1), new(x1, 1), new(x1, 0), new(x0, 0), Color.White, South);
                 if (!left)
                 {
-                    flat.Tri(new(x0, 0, zBack), new(x0, h, zTop), new(x0, 0, zTop), default, default, default, dirt, -Vector3.UnitX);
-                    flat.Quad(new(x0, 0, zFront), new(x0, 0, zTop), new(x0, h, zTop), new(x0, h, zFront), default, default, default, default, dirt, -Vector3.UnitX);
+                    flat.Tri(new(x0, g, zBack), new(x0, top, zTop), new(x0, g, zTop), default, default, default, dirt, -Vector3.UnitX);
+                    flat.Quad(new(x0, g, zFront), new(x0, g, zTop), new(x0, top, zTop), new(x0, top, zFront), default, default, default, default, dirt, -Vector3.UnitX);
                 }
                 if (!right)
                 {
-                    flat.Tri(new(x1, 0, zBack), new(x1, h, zTop), new(x1, 0, zTop), default, default, default, dirt, Vector3.UnitX);
-                    flat.Quad(new(x1, 0, zTop), new(x1, 0, zFront), new(x1, h, zFront), new(x1, h, zTop), default, default, default, default, dirt, Vector3.UnitX);
+                    flat.Tri(new(x1, g, zBack), new(x1, top, zTop), new(x1, g, zTop), default, default, default, dirt, Vector3.UnitX);
+                    flat.Quad(new(x1, g, zTop), new(x1, g, zFront), new(x1, top, zFront), new(x1, top, zTop), default, default, default, default, dirt, Vector3.UnitX);
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// A ledge that is hopped westward or eastward: the same ridge turned to run north and south. The lawn rises
+    /// from the side one comes from to a flat top, then drops in a face toward the side one lands on. The
+    /// camera sees that face edge on, so what shows is the top, its grass lip, and the ridge's end where the run stops.
+    /// </summary>
+    private void AddSideLedge(MeshBuilder flat, MeshBuilder face, int tx, int ty, TileType type, float h, Color lawn, Color dirt)
+    {
+        bool north = Map.InBounds(tx, ty - 1) && Map.GetGroundTile(tx, ty - 1) == type;
+        bool south = Map.InBounds(tx, ty + 1) && Map.GetGroundTile(tx, ty + 1) == type;
+        float z0 = ty + (north ? 0f : 0.125f), z1 = ty + 1 - (south ? 0f : 0.125f);
+        float g = Y(tx + 0.5f, ty + 0.5f), top = g + h;
+
+        // Measured from the side one comes from: a westward ledge is come at from the east
+        bool westward = type == TileType.LedgeLeft;
+        float X(float fromBack) => westward ? tx + 1 - fromBack : tx + fromBack;
+        float xBack = X(0.12f), xTop = X(0.36f), xFront = X(0.62f);
+        var outward = westward ? -Vector3.UnitX : Vector3.UnitX;
+        var slope = Vector3.Normalize(new Vector3(westward ? 0.7f : -0.7f, 1, 0));
+        var lip = new Color(160, 222, 122, 255);
+
+        flat.Quad(new(xBack, g, z1), new(xTop, top, z1), new(xTop, top, z0), new(xBack, g, z0), default, default, default, default, lawn, slope);
+        flat.Quad(new(xTop, top, z1), new(xFront, top, z1), new(xFront, top, z0), new(xTop, top, z0), default, default, default, default, lawn, Up);
+        // The bright edge along the top of the drop: a strip two texels wide
+        float edge = westward ? xFront + 2f / 32f : xFront - 2f / 32f;
+        flat.Quad(new(edge, top + 0.001f, z1), new(xFront, top + 0.001f, z1), new(xFront, top + 0.001f, z0), new(edge, top + 0.001f, z0),
+            default, default, default, default, lip, Up);
+        face.Quad(new(xFront, g, z1), new(xFront, g, z0), new(xFront, top, z0), new(xFront, top, z1),
+            new(z1, 1), new(z0, 1), new(z0, 0), new(z1, 0), Color.White, outward);
+
+        // The ridge's end, where the run stops: its profile in dirt (the south end is the one the camera sees)
+        void End(float z, Vector3 normal)
+        {
+            flat.Tri(new(xBack, g, z), new(xTop, top, z), new(xTop, g, z), default, default, default, dirt, normal);
+            flat.Quad(new(xTop, g, z), new(xFront, g, z), new(xFront, top, z), new(xTop, top, z), default, default, default, default, dirt, normal);
+        }
+        if (!south) End(z1, South);
+        if (!north) End(z0, -South);
     }
 
     // ------------------------------------------------------------------ interiors

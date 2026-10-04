@@ -225,6 +225,30 @@ internal static class CharacterSprites
         Raylib.DrawMesh(quad, pass == CharacterPass.Depth ? baked.Depth : baked.Color, Matrix4x4.Transpose(m));
     }
 
+    // ------------------------------------------------------------------ painted cards
+
+    /// <summary>A sprite painted by hand that stands in the field the way a character's does: lit, shadowed, drawn upright.</summary>
+    internal sealed record Card(Texture2D Texture, Material Color, Material Depth, float Width, float Height);
+
+    /// <summary>Makes a card of a piece of pixel art, at the field's 32 texels to the tile.</summary>
+    public static Card MakeCard(RenderContext context, PixelCanvas art)
+    {
+        EnsureLoaded();
+        var tex = art.ToTexture();
+        Raylib.SetTextureWrap(tex, TextureWrap.Clamp);
+        return new Card(tex, RenderContext.MaterialFor(context.Shaders.Sprite, tex), RenderContext.MaterialFor(context.Shaders.Depth, tex),
+            art.Width / (float)TexelsPerUnit, art.Height / (float)TexelsPerUnit);
+    }
+
+    /// <summary>Stands a card with the middle of its foot on a point of the ground.</summary>
+    public static void DrawCard(Card card, Vector3 foot, float vs, CharacterPass pass)
+    {
+        if (pass == CharacterPass.Outline) return;
+        var at = new Vector3(WorldRenderer.SnapToTexel(foot.X), foot.Y, WorldRenderer.SnapToTexel(foot.Z));
+        var m = Matrix4x4.CreateScale(card.Width, card.Height * vs, 1f) * Matrix4x4.CreateTranslation(at);
+        Raylib.DrawMesh(quad, pass == CharacterPass.Depth ? card.Depth : card.Color, Matrix4x4.Transpose(m));
+    }
+
     /// <summary>
     /// Every frame of a strip for one facing, side by side, enlarged without filtering (for the harness's sprite
     /// sheets). Bakes what isn't baked yet; call outside any texture mode.

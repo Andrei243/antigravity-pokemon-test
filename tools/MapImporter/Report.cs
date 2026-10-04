@@ -129,7 +129,7 @@ public sealed class Report
 
             Every tile of the imported world carries two things from Platinum's own map data: a **behaviour** (a number from 0 to 255 saying what the tile does) and a **blocked** flag. This page lists every behaviour Sinnoh's maps use, with the name the game gives it (`TileBehavior` in `Overworld/TileBehavior.cs`), what it means, and where it occurs.
 
-            `tools/MapImporter` writes this page: the counts come from all 666 chunks of the decompilation, the meanings from `TileBehaviors.Meaning`. To change a meaning, change it there and run the importer.
+            `tools/MapImporter` writes this page: the counts come from all 666 chunks of the decompilation, the meanings from `TileBehaviors.Meaning` and what the game does with each from `TileBehaviors.InGame`. To change either, change it there and run the importer.
 
             ## How a tile is read
 
@@ -140,8 +140,8 @@ public sealed class Report
 
             ## The values Sinnoh uses
 
-            | Value | Name | What it is | Wild Pokémon | Surfable | Tiles | Blocked | Where |
-            |---|---|---|---|---|---:|---:|---|
+            | Value | Name | What it is | In the game | Wild Pokémon | Surfable | Tiles | Blocked | Where |
+            |---|---|---|---|---|---|---:|---:|---|
 
             """);
 
@@ -150,22 +150,34 @@ public sealed class Report
             if (tiles[b] == 0) continue;
             var behaviour = (TileBehavior)b;
             string name = TileBehaviors.IsKnown((byte)b) ? behaviour.ToString() : "(unnamed)";
-            text.Append(CultureInfo.InvariantCulture, $"| `0x{b:X2}` | `{name}` | {TileBehaviors.Meaning(behaviour)} | {(TileBehaviors.HasEncounters(behaviour) ? "yes" : "")} | {(TileBehaviors.IsSurfable(behaviour) ? "yes" : "")} | {N(tiles[b])} | {N(blocked[b])} | {(b == 0 ? "everywhere" : Where(b))} |\n");
+            var (support, note) = TileBehaviors.InGame(behaviour);
+            string inGame = support switch { BehaviourSupport.Ruled => "**Rule.** " + note, BehaviourSupport.Waiting => "*Not yet.* " + note, _ => note };
+            text.Append(CultureInfo.InvariantCulture, $"| `0x{b:X2}` | `{name}` | {TileBehaviors.Meaning(behaviour)} | {inGame} | {(TileBehaviors.HasEncounters(behaviour) ? "yes" : "")} | {(TileBehaviors.IsSurfable(behaviour) ? "yes" : "")} | {N(tiles[b])} | {N(blocked[b])} | {(b == 0 ? "everywhere" : Where(b))} |\n");
         }
 
         int used = tiles.Count(t => t > 0);
+        var supports = Enumerable.Range(0, 256).Where(b => tiles[b] > 0).Select(b => TileBehaviors.InGame((TileBehavior)b).Support).ToList();
         text.Append(CultureInfo.InvariantCulture, $"""
 
             {used} values are in use, on {N(tiles.Sum())} tiles; {N(blocked.Sum())} of those tiles are blocked.
 
+            ## What the game does with them
+
+            The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: {supports.Count(s => s == BehaviourSupport.Ruled)} of the behaviours have a rule there, {supports.Count(s => s == BehaviourSupport.Plain)} are ground like any other as far as a step goes, and {supports.Count(s => s == BehaviourSupport.Waiting)} wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
+
+            - **A step** onto a tile is refused if the tile is blocked, if someone stands on it, or if its ground is 1.25 tiles or more above or below; otherwise the behaviours of the tile left and the tile entered decide.
+            - **Pace** is Platinum's five speeds. A walk is 4.5 tiles a second and a run 8; surfing goes at a run; the Bicycle at a run in its low gear and half as fast again in its high one.
+            - **Wild Pokémon** are met by Platinum's own odds (`EncounterSteps`): after the first few steps, four attempts in ten get through (seven in grass taller than the walker or on a Bicycle), and then the area's rate decides.
+            - **Simpler than the original**, on purpose and until the places that need more are built: marsh mud only slows; a muddy slope refuses a climb instead of letting one slide back; Surf, Waterfall and Rock Climb ask only that a party Pokémon knows the move (the badges come with the story, plan 02).
+
             ## What the list shows
 
-            - **Ledges** exist in three directions only: south (by far the most common), east and west. No map has a ledge jumped northward.
+            - **Ledges** exist in three directions only: south (by far the most common), east and west. No map has a ledge jumped northward. `LedgeCornerSouthEast` and `LedgeCornerSouthWest` are the blocked corner pieces where a side ledge ends at its south; the decompilation has no name for them, and they were worked out from Verity Lakefront, where one closes the ledge beside the lake's entrance.
             - **Water** is three behaviours: `Sea` (which also covers lakes and ponds), `River` and `Waterfall`. A few water tiles are blocked: rocks standing in the sea.
             - **Wild Pokémon** appear on tall grass, very tall grass, cave floors, the Old Chateau's floors, marsh grass and water. `MountainFloor` has none of its own.
             - **Doors** are always blocked: a walker bumps into the door and the warp there takes them inside. The mats and openings (`Exit…`, `Entrance…`, `Stairs…`) are open tiles that take their warp when walked off in the right direction.
             - **Bridges** tell a walker which level they are on; the ground's height comes from the plates.
-            - **Not understood yet**: `Unknown3C` to `Unknown3F`, `Unknown60`, `Unknown88`, `Unknown8E` and `Unknown8F`, {N(new[] { 0x3C, 0x3D, 0x3E, 0x3F, 0x60, 0x88, 0x8E, 0x8F }.Sum(b => tiles[b]))} tiles in all. The decompilation has no name for them either. Work out each from the place it occurs when that place is built.
+            - **Not understood yet**: `Unknown3C`, `Unknown3D`, `Unknown60`, `Unknown88`, `Unknown8E` and `Unknown8F`, {N(new[] { 0x3C, 0x3D, 0x60, 0x88, 0x8E, 0x8F }.Sum(b => tiles[b]))} tiles in all. The decompilation has no name for them either. Work out each from the place it occurs when that place is built.
 
             ## Sources
 

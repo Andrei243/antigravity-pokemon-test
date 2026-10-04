@@ -254,6 +254,9 @@ public class GameEngine
         currentMap = MapDatabase.Get(place.Map);
         player = new Player(place.X, place.Y);
         player.Facing = place.Facing;
+        // A save made out on the water wakes up there, still on its Pokémon's back; one made on a bridge, on its deck
+        player.SetMode(save.Travel);
+        if (save.PlayerHeight is { } standing) player.SetHeight(standing);
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -309,6 +312,8 @@ public class GameEngine
             PlayerGridX = player.GridX,
             PlayerGridY = player.GridY,
             PlayerFacing = player.Facing,
+            Travel = player.Mode,
+            PlayerHeight = player.HeightOn(currentMap),
             WorldVersion = SaveData.ImportedWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             BoxStorage = pcBoxStorage.Select(SavedPokemonData.FromPokemon).ToList(),
@@ -487,6 +492,7 @@ public class GameEngine
         }
 
         // Overworld Player Movement
+        player.Moves = FieldMovement.MovesOf(playerParty);
         player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
         if (trainerApproach != null || currentState != GameState.Overworld) return;
 
@@ -746,7 +752,21 @@ public class GameEngine
         {
             dialogue.ShowDialogue("Sign", sign);
             currentState = GameState.Dialogue;
+            return;
         }
+
+        TryStartSurf();
+    }
+
+    /// <summary>
+    /// At the edge of deep water with a Pokémon that knows Surf, the confirm button sends it out and the player
+    /// rides off on it. (Platinum also asks for the Fen Badge; badges come with the story, plan 02.)
+    /// </summary>
+    private void TryStartSurf()
+    {
+        if (!player.Moves.HasFlag(FieldMoves.Surf) || !player.StartSurf(currentMap)) return;
+        var carrier = playerParty.Members.First(p => p.Moves.Any(m => m.Name == "Surf"));
+        ShowNotification($"{carrier.Nickname} used Surf!");
     }
 
     private void HandleWarp(Warp warp)

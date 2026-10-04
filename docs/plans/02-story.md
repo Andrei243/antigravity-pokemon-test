@@ -77,6 +77,8 @@ Wild levels and every other trainer's team come from the decomp (`res/field/enco
 ### S2 · Field moves, obstacles and key items
 Party-menu field moves, the badge checks, obstacle objects (cut tree, cracked rock, boulder, fog, darkness), Surf, Waterfall and Rock Climb hooked to plan 01's movement states, the Bicycle, fishing rods, a Key Items pocket, the Pokétch (clock and party apps first). Tests for each gate: blocked without the move or badge, open with both.
 
+*Ready from plan 01 · M3:* the movement states and their rules (`Overworld/FieldMovement.cs`): surfing with its start from the shore and its landing, waterfalls up and down, rock faces, the Bicycle's pace and where it can't go. Today each asks only that a party Pokémon knows the move (`FieldMovement.MovesOf`): the badge checks go there. Surf starts on the confirm button at the water's edge with no question asked; the party-menu way of using a move, and the yes-or-no, are this session's. The three obstacles are props that are drawn and block (`CutTree`, `CrackedRock`, `StrengthBoulder`, placed from the import); making them give way means removing the prop and rebuilding the chunk's scene. The Bicycle has rules but no item, no sprite and no key.
+
 ### S3 · Moved to plan 06
 Double and tag battles, trainer AI, scripted wild battles, whiteout money, the EXP Share, the move-learning prompt and cancelling evolution are now [plan 06](06-game-mechanics.md) · R9 and R10. S5's tag battle in Jubilife needs R9 first. The number S3 stays unused so the chapters keep theirs.
 

@@ -33,8 +33,8 @@ public enum TileBehavior : byte
     LedgeSouth = 0x3B,
     Unknown3C = 0x3C,
     Unknown3D = 0x3D,
-    Unknown3E = 0x3E,
-    Unknown3F = 0x3F,
+    LedgeCornerSouthEast = 0x3E,
+    LedgeCornerSouthWest = 0x3F,
     SlideEast = 0x40,
     SlideWest = 0x41,
     SlideNorth = 0x42,
@@ -133,10 +133,10 @@ public static class TileBehaviors
         [TileBehavior.LedgeEast] = "A ledge hopped over eastward; a wall from every other side.",
         [TileBehavior.LedgeWest] = "A ledge hopped over westward.",
         [TileBehavior.LedgeSouth] = "A ledge hopped over southward, the common kind.",
-        [TileBehavior.Unknown3C] = "Not understood yet.",
-        [TileBehavior.Unknown3D] = "Not understood yet.",
-        [TileBehavior.Unknown3E] = "Not understood yet.",
-        [TileBehavior.Unknown3F] = "Not understood yet.",
+        [TileBehavior.Unknown3C] = "Not understood yet; by its place in the list, a ledge's north-east corner.",
+        [TileBehavior.Unknown3D] = "Not understood yet; by its place in the list, a ledge's north-west corner.",
+        [TileBehavior.LedgeCornerSouthEast] = "The corner where a ledge hopped eastward ends at its south: a wall from every side.",
+        [TileBehavior.LedgeCornerSouthWest] = "The corner where a ledge hopped westward ends at its south: a wall from every side.",
         [TileBehavior.SlideEast] = "A floor that carries the walker east.",
         [TileBehavior.SlideWest] = "A floor that carries the walker west.",
         [TileBehavior.SlideNorth] = "A floor that carries the walker north.",
@@ -221,4 +221,75 @@ public static class TileBehaviors
     /// <summary>Water a Pokémon can carry its trainer across, including what runs under some bridges.</summary>
     public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea
         or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater;
+
+    /// <summary>
+    /// What the game does with a behaviour today (plan 01 · M3), for <c>docs/tile-behaviours.md</c> and for the
+    /// test that keeps the list honest: whether <see cref="FieldMovement"/> has a rule for it, whether it is
+    /// ground like any other as far as a step goes, or whether it waits for the place that needs it.
+    /// </summary>
+    public static (BehaviourSupport Support, string Note) InGame(TileBehavior b) => b switch
+    {
+        TileBehavior.LedgeSouth or TileBehavior.LedgeEast or TileBehavior.LedgeWest
+            => (BehaviourSupport.Ruled, "Hopped the way it faces, two tiles on; a wall from every other side."),
+        TileBehavior.BlockEast or TileBehavior.BlockWest or TileBehavior.BlockNorthAndSouth or TileBehavior.BlockEastAndWest
+            => (BehaviourSupport.Ruled, "No step across its closed side, either way."),
+        TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
+            => (BehaviourSupport.Ruled, "Climbed to its far end by a party that knows Rock Climb."),
+        TileBehavior.Waterfall => (BehaviourSupport.Ruled, "Surfed up with Waterfall and down without; never sideways."),
+        TileBehavior.Ice => (BehaviourSupport.Ruled, "Whoever steps on it slides on until something stops them."),
+        TileBehavior.SlideEast or TileBehavior.SlideWest or TileBehavior.SlideNorth or TileBehavior.SlideSouth
+            => (BehaviourSupport.Ruled, "Carries whoever steps on it along."),
+        TileBehavior.River or TileBehavior.Sea
+            => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon."),
+        TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater
+            => (BehaviourSupport.Ruled, "Crossed on its deck and surfed under, whichever level one is on."),
+        TileBehavior.VeryTallGrass => (BehaviourSupport.Ruled, "Wild Pokémon, more often than in tall grass; no Bicycles."),
+        TileBehavior.ShallowSnow => (BehaviourSupport.Ruled, "No Bicycles."),
+        TileBehavior.DeepSnow => (BehaviourSupport.Ruled, "No running, no Bicycles; a walker sinks to the ankle."),
+        TileBehavior.DeeperSnow => (BehaviourSupport.Ruled, "Half a walk's pace, no Bicycles; a walker sinks to the shin."),
+        TileBehavior.DeepestSnow => (BehaviourSupport.Ruled, "A quarter of a walk's pace, no Bicycles; a walker sinks to the knee."),
+        TileBehavior.Mud or TileBehavior.MarshGrass
+            => (BehaviourSupport.Ruled, "No running, no Bicycles. (Platinum's sinking in the marsh is not built.)"),
+        TileBehavior.DeepMud or TileBehavior.DeepMarshGrass
+            => (BehaviourSupport.Ruled, "Half a walk's pace, no Bicycles. (Getting stuck, as in Platinum, is not built.)"),
+        TileBehavior.BikeSlopeTop or TileBehavior.BikeSlopeBottom
+            => (BehaviourSupport.Ruled, "Climbed only on a Bicycle in its fast gear. (The slide back down is not played.)"),
+        TileBehavior.BikeBridgeNorthSouth or TileBehavior.BikeBridgeNorthSouthOverSand or TileBehavior.BikeBridgeEastWest
+            or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.BikeBridgeEastWestOverSand
+            => (BehaviourSupport.Ruled, "Ridden along on a Bicycle, never across, and never walked."),
+
+        TileBehavior.LongLedgeNorth or TileBehavior.LongLedgeSouth or TileBehavior.LongLedgeWest or TileBehavior.LongLedgeEast
+            => (BehaviourSupport.Waiting, "The Distortion World's double jumps (plan 01 · M8)."),
+        TileBehavior.BikeRampEast or TileBehavior.BikeRampWest => (BehaviourSupport.Waiting, "The jump from a ramp (plan 01 · M6)."),
+        TileBehavior.PastoriaGymHigh or TileBehavior.PastoriaGymMiddle or TileBehavior.PastoriaGymLow or TileBehavior.MovingFloor
+            => (BehaviourSupport.Waiting, "Floors whose height the game moves (plan 01 · M9)."),
+        TileBehavior.StairsEast or TileBehavior.StairsWest or TileBehavior.EntranceEast or TileBehavior.EntranceWest
+            or TileBehavior.EntranceNorth or TileBehavior.EntranceSouth or TileBehavior.ExitEast or TileBehavior.ExitWest
+            or TileBehavior.ExitNorth or TileBehavior.ExitSouth
+            => (BehaviourSupport.Waiting, "Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11)."),
+        TileBehavior.WarpPanel or TileBehavior.EscalatorFacingBack or TileBehavior.Escalator
+            => (BehaviourSupport.Waiting, "Comes with the buildings that have them (plan 01 · M11)."),
+        TileBehavior.Unknown3C or TileBehavior.Unknown3D or TileBehavior.Unknown60 or TileBehavior.Unknown88 or TileBehavior.Unknown8E
+            or TileBehavior.Unknown8F => (BehaviourSupport.Waiting, "Not understood."),
+
+        TileBehavior.TallGrass or TileBehavior.CaveFloor or TileBehavior.OldChateauFloor or TileBehavior.BridgeOverCave
+            => (BehaviourSupport.Plain, "Walked on; wild Pokémon from the area's land table."),
+        TileBehavior.Puddle or TileBehavior.StillPuddle or TileBehavior.ShallowWater
+            => (BehaviourSupport.Plain, "Walked through. (No splash or reflection yet.)"),
+        TileBehavior.Sand or TileBehavior.ShadedSnow => (BehaviourSupport.Plain, "Walked on. (No footprints yet.)"),
+        TileBehavior.Door => (BehaviourSupport.Plain, "A blocked tile until a warp opens it."),
+        TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
+        _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")
+    };
+}
+
+/// <summary>How far the game's rules for a tile behaviour go.</summary>
+public enum BehaviourSupport
+{
+    /// <summary>Nothing special happens to a step onto or off it.</summary>
+    Plain,
+    /// <summary><see cref="FieldMovement"/> has a rule for it.</summary>
+    Ruled,
+    /// <summary>It needs a rule that isn't written yet.</summary>
+    Waiting
 }

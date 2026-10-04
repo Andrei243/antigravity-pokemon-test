@@ -101,15 +101,41 @@ public sealed partial class DecompMaps
     /// The wild Pokémon of an area's grass, slot by slot, by the name its header gives the table
     /// (<c>encounters_route_201</c>); empty when the area has no grass encounters.
     /// </summary>
-    public List<(string Species, int Level)> LandEncounters(string name)
+    public List<(string Species, int Level)> LandEncounters(string name) => LandEncounters(name, out _);
+
+    /// <param name="rate">The table's rate: how often a step in the grass can meet one, out of a hundred (0 with no table).</param>
+    public List<(string Species, int Level)> LandEncounters(string name, out int rate)
     {
         string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
         var slots = new List<(string, int)>();
+        rate = 0;
         if (!File.Exists(path)) return slots;
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
-        if (!doc.RootElement.TryGetProperty("land_rate", out var rate) || rate.GetInt32() == 0) return slots;
+        if (!doc.RootElement.TryGetProperty("land_rate", out var landRate) || landRate.GetInt32() == 0) return slots;
+        rate = landRate.GetInt32();
         foreach (var slot in doc.RootElement.GetProperty("land_encounters").EnumerateArray())
             slots.Add((slot.GetProperty("species").GetString() ?? "", slot.GetProperty("level").GetInt32()));
+        return slots;
+    }
+
+    /// <summary>
+    /// The wild Pokémon met surfing on an area's water, slot by slot with each slot's range of levels, and the
+    /// table's rate; empty when nothing lives in its water.
+    /// </summary>
+    public List<(string Species, int MinLevel, int MaxLevel)> WaterEncounters(string name, out int rate)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        var slots = new List<(string, int, int)>();
+        rate = 0;
+        if (!File.Exists(path)) return slots;
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        if (!doc.RootElement.TryGetProperty("surf_rate", out var surfRate) || surfRate.GetInt32() == 0) return slots;
+        rate = surfRate.GetInt32();
+        foreach (var slot in doc.RootElement.GetProperty("surf_encounters").EnumerateArray())
+        {
+            int a = slot.GetProperty("level_min").GetInt32(), b = slot.GetProperty("level_max").GetInt32();
+            slots.Add((slot.GetProperty("species").GetString() ?? "", Math.Min(a, b), Math.Max(a, b)));
+        }
         return slots;
     }
 

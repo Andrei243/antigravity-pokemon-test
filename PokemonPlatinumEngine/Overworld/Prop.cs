@@ -23,6 +23,12 @@ public enum PropType
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,
 
+    // Obstacles a field move clears (plan 02 · S2 makes them give way; until then they only stand in the way):
+    // a small tree for Cut, a cracked rock for Rock Smash, a round boulder for Strength
+    CutTree,
+    CrackedRock,
+    StrengthBoulder,
+
     // Street furniture. A fence covers a run of tiles and joins up with the fences beside it; outdoors a Bench is a park bench
     Fence,
     LampPost,

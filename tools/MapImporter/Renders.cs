@@ -50,7 +50,7 @@ public sealed class Renders
         ("SAND", Rgb.Of(234, 216, 152), b => b == 0x21),
         ("SHINY FLOOR", Rgb.Of(206, 222, 238), b => b == 0x2C),
         ("RAILING", Rgb.Of(150, 128, 98), b => b is >= 0x30 and <= 0x37 or 0x49 or 0x4A),
-        ("LEDGE", Rgb.Of(228, 150, 58), b => b is >= 0x38 and <= 0x3B or >= 0x5A and <= 0x5D),
+        ("LEDGE", Rgb.Of(228, 150, 58), b => b is >= 0x38 and <= 0x3B or 0x3E or 0x3F or >= 0x5A and <= 0x5D),
         ("SLIDE", Rgb.Of(150, 222, 232), b => b is >= 0x40 and <= 0x43),
         ("ROCK CLIMB", Rgb.Of(128, 96, 72), b => b is 0x4B or 0x4C),
         ("GYM FLOOR", Rgb.Of(120, 200, 190), b => b is >= 0x56 and <= 0x59),

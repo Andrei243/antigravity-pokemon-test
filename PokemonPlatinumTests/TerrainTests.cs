@@ -189,8 +189,11 @@ public class TerrainTests
     [Theory]
     [InlineData(TileType.Sand, 238, 224, 172, 246, 236, 196)]
     [InlineData(TileType.Dirt, 176, 136, 96, 194, 156, 112)]
-    [InlineData(TileType.Snow, 204, 218, 240, 220, 230, 246)]
+    [InlineData(TileType.Snow, 186, 204, 232, 196, 212, 238)]
     [InlineData(TileType.CaveFloor, 112, 100, 104, 130, 118, 120)]
+    [InlineData(TileType.Rock, 158, 152, 150, 176, 170, 166)]
+    [InlineData(TileType.Ice, 150, 200, 236, 172, 214, 242)]
+    [InlineData(TileType.Marsh, 124, 106, 86, 140, 122, 98)]
     public void EachGroundKindIsItsBaseAndPatchColoursWithCleanMarks(TileType kind, int r, int g, int b, int pr, int pg, int pb)
     {
         var map = new Map(12, 10) { Name = "Sample" + kind };
