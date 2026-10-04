@@ -201,6 +201,97 @@ public sealed class WorldWriter
         return water.Count > 0 ? water : null;
     }
 
+    /// <summary>
+    /// Where every wild Pokémon of the region lives, for the Pokédex's area page: each area with a table of wild
+    /// Pokémon, with the species of its grass at each time of day, of its water and of each rod, and the overworld
+    /// chunks it is shown on; and the overworld's look, one character per chunk.
+    /// </summary>
+    public WorldHabitatsFile Habitats(Func<MapHeader, string> nameOf)
+    {
+        var overworld = decomp.Matrix(0);
+        var file = new WorldHabitatsFile();
+        var outdoors = new HashSet<string>(overworld.Headers ?? Array.Empty<string>());
+
+        // The overworld's look: water where most of a chunk is, the towns' own chunks, land elsewhere
+        for (int y = 0; y < overworld.Height; y++)
+        {
+            var row = new StringBuilder(overworld.Width);
+            for (int x = 0; x < overworld.Width; x++)
+            {
+                int land = overworld.LandAt(x, y);
+                if (land == MapImporter.Matrix.NoLand) row.Append(' ');
+                else if (overworld.HeaderAt(x, y) is { } id && decomp.Headers.TryGetValue(id, out var h) && h.MapType == "TOWN_CITY") row.Append('T');
+                else row.Append(CoverOf(land).Count(c => c == TerrainCover.Water) * 2 > LandData.Tiles * LandData.Tiles ? '~' : '.');
+            }
+            file.Map.Add(row.ToString());
+        }
+
+        // Where each area is shown: an outdoor area on its own chunks, a cave or a building on the chunks whose warps
+        // lead into it (through any rooms between), so every floor of a cave lights up its entrances
+        var cells = new Dictionary<string, SortedSet<(int X, int Y)>>();
+        SortedSet<(int X, int Y)> CellsOf(string id) => cells.TryGetValue(id, out var set) ? set : cells[id] = new SortedSet<(int X, int Y)>();
+        for (int y = 0; y < overworld.Height; y++)
+            for (int x = 0; x < overworld.Width; x++)
+                if (overworld.HeaderAt(x, y) is { } id) CellsOf(id).Add((x, y));
+        var queue = new Queue<(string Id, (int, int) Cell)>();
+        foreach (string id in outdoors)
+            if (decomp.Headers.TryGetValue(id, out var h))
+                foreach (var warp in decomp.Events(h.Events).Warps)
+                    queue.Enqueue((warp.DestHeaderId, (warp.X / LandData.Tiles, warp.Z / LandData.Tiles)));
+        while (queue.Count > 0)
+        {
+            var (id, cell) = queue.Dequeue();
+            if (outdoors.Contains(id) || id == DecompMaps.DynamicHeader || !decomp.Headers.TryGetValue(id, out var h)) continue;
+            if (!CellsOf(id).Add(cell)) continue;
+            foreach (var warp in decomp.Events(h.Events).Warps) queue.Enqueue((warp.DestHeaderId, cell));
+        }
+
+        // Places a script takes the player into rather than a warp: Turnback Cave's inner rooms are shown where the
+        // rest of the cave is (any area of the same name), and the Great Marsh, entered from a gate in Pastoria City
+        // once the fee is paid, where the city is
+        foreach (var header in decomp.Headers.Values)
+        {
+            if (CellsOf(header.Id).Count > 0) continue;
+            string name = nameOf(header);
+            var same = decomp.Headers.Values.Where(h => h.Id != header.Id && nameOf(h) == name).SelectMany(h => CellsOf(h.Id)).ToList();
+            var cellsOf = same.Count > 0 ? same : name == "Great Marsh"
+                ? decomp.Headers.Values.Where(h => h.Key == "pastoria_city").SelectMany(h => CellsOf(h.Id)).ToList()
+                : new();
+            foreach (var cell in cellsOf) CellsOf(header.Id).Add(cell);
+        }
+
+        foreach (var header in decomp.Headers.Values.OrderBy(h => h.Index))
+        {
+            if (header.Encounters == null || decomp.Encounters(header.Encounters) is not { } table) continue;
+            List<string>? Species(IEnumerable<string> slots, string way)
+            {
+                var names = new List<string>();
+                foreach (string constant in slots.Where(s => s is not ("" or "SPECIES_NONE")).Distinct())
+                {
+                    if (SpeciesName(constant) is { } name) names.Add(name);
+                    else Problems.Add($"{header.Key}: {constant} ({way}) is not a species the game knows");
+                }
+                return names.Count > 0 ? names : null;
+            }
+            var area = new HabitatArea
+            {
+                Key = header.Key,
+                Name = nameOf(header),
+                Cells = string.Join(' ', CellsOf(header.Id).Select(c => $"{c.X},{c.Y}")),
+                Morning = Species(table.Grass("morning"), "morning"),
+                Day = Species(table.Grass("day"), "day"),
+                Night = Species(table.Grass("night"), "night"),
+                Surf = Species(table.Surf, "surfing"),
+                OldRod = Species(table.OldRod, "Old Rod"),
+                GoodRod = Species(table.GoodRod, "Good Rod"),
+                SuperRod = Species(table.SuperRod, "Super Rod")
+            };
+            if ((area.Morning ?? area.Day ?? area.Night ?? area.Surf ?? area.OldRod ?? area.GoodRod ?? area.SuperRod) is null) continue;
+            file.Areas.Add(area);
+        }
+        return file;
+    }
+
     public static string KeyOf(string headerId) => Trim(headerId, "MAP_HEADER_", "").ToLowerInvariant();
 
     private static string Trim(string text, string prefix, string suffix)
@@ -259,6 +350,9 @@ public sealed class WorldWriter
             Write("areas", header.Key, Area(header, nameOf(header)));
         }
 
+        // The whole region's wild Pokémon, open or not, for the Pokédex
+        File.WriteAllText(Path.Combine(directory, WorldHabitatsFile.FileName), GameDataFiles.Serialize(Habitats(nameOf)));
+
         foreach (string folder in new[] { "matrices", "chunks", "areas" })
         {
             string path = Path.Combine(directory, folder);
@@ -284,6 +378,7 @@ public sealed class WorldWriter
         for (int id = 0; id < decomp.MatrixCount; id++) Write("matrices", id.ToString("000", CultureInfo.InvariantCulture), Matrix(decomp.Matrix(id)));
         for (int id = 0; id < decomp.LandCount; id++) Write("chunks", id.ToString("000", CultureInfo.InvariantCulture), Chunk(id));
         foreach (var header in decomp.Headers.Values.OrderBy(h => h.Index)) Write("areas", header.Key, Area(header, nameOf(header)));
-        return files;
+        File.WriteAllText(Path.Combine(directory, WorldHabitatsFile.FileName), GameDataFiles.Serialize(Habitats(nameOf)));
+        return files + 1;
     }
 }

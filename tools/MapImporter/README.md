@@ -18,7 +18,7 @@ A full run takes about twelve seconds. It needs `git` on the path the first time
 
 ## The game's own world files
 
-All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/world/sinnoh/world.json`, written by hand, lists the maps and the areas that are open. `--data` reads it and writes, beside it, the matrices of those maps, the chunks of the open areas and of every chunk next to one (they are in view from the edge), and the open areas' own files, each with its land encounters. It deletes generated files that are no longer asked for and never touches `world.json` or `overlays/`. It takes a third of a second, writes the same bytes every time, and ends with an error if an open area's wild Pokémon name a species the game doesn't have. To open an area: add its key to `world.json`, run `--data`, write `overlays/<key>.json`, run the tests.
+All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/world/sinnoh/world.json`, written by hand, lists the maps and the areas that are open. `--data` reads it and writes, beside it, the matrices of those maps, the chunks of the open areas and of every chunk next to one (they are in view from the edge), and the open areas' own files, each with its land encounters, and `habitats.json`, where every wild Pokémon of the region lives (every area's grass by time of day, water and rods, and where each area is on the overworld) for the Pokédex's area page. It deletes generated files that are no longer asked for and never touches `world.json` or `overlays/`. It takes a third of a second, writes the same bytes every time, and ends with an error if an open area's wild Pokémon name a species the game doesn't have. To open an area: add its key to `world.json`, run `--data`, write `overlays/<key>.json`, run the tests.
 
 ## What it writes
 
@@ -30,7 +30,7 @@ All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/w
 | `compare/<area>.png` | An imported area next to the hand-made map that still stands in for it (Jubilife City, until it opens) |
 | `areas/<key>.png` | Every area close up, eight pixels per tile, with its events |
 | `chunks/NNN.png` | Every chunk by behaviour, with the footprints of its props |
-| `world/matrices`, `world/chunks`, `world/areas` | The world files |
+| `world/matrices`, `world/chunks`, `world/areas`, `world/habitats.json` | The world files |
 | `report.md` | Counts; for each open area, how many of the original's people, warps and signs are in the game; the comparison in numbers; every texture name with the ground it was sorted into; every prop model; problems |
 
 It also rewrites `docs/tile-behaviours.md` in the repository.
