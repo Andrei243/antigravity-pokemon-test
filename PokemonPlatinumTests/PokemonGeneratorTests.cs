@@ -130,7 +130,7 @@ public class PokemonGeneratorTests
         Assert.Empty(problems);
     }
 
-    /// <summary>What is wrong with a meshed model: weights, its place on the ground, empty bones, decals off the surface.</summary>
+    /// <summary>What is wrong with a meshed model: weights, its place on the ground, loose pieces, empty bones, decals off the surface.</summary>
     private static List<string> Problems(PokeModel m)
     {
         var found = new List<string>();
@@ -156,6 +156,11 @@ public class PokemonGeneratorTests
         float bottom = mesh.Positions.Min(p => p.Y);
         if (m.Hovers ? bottom < 0.06f * m.Height || bottom > 0.2f * m.Height : MathF.Abs(bottom) > 0.04f)
             found.Add($"{species}: its lowest point is at {bottom:F3} ({(m.Hovers ? "hovering" : "standing")})");
+
+        // In one piece: a part that doesn't reach the body floats beside it (specks of a few cells, where a thin
+        // claw or horn tip breaks up in the mesh, are left alone)
+        var pieces = Pieces(mesh).Where(n => n > 40).ToList();
+        if (pieces.Count > 1) found.Add($"{species}: in {pieces.Count} pieces of {string.Join(", ", pieces)} vertices");
 
         // Every bone moves some of the surface
         for (int b = 1; b < m.Skeleton.Count; b++)
@@ -187,5 +192,26 @@ public class PokemonGeneratorTests
         m.Animate(new PokePose { Time = 0.7f, Attack = 0.48f, Kind = MoveCategory.Physical });
         if (m.Skin.Any(skin => Vector3.Transform(Vector3.Zero, skin).Length() > 4f * m.Height + 1f)) found.Add($"{species}: a physical move flings a bone away");
         return found;
+    }
+
+    /// <summary>The number of vertices in each of the mesh's separate pieces, largest first.</summary>
+    private static List<int> Pieces(SdfMesh mesh)
+    {
+        var parent = Enumerable.Range(0, mesh.VertexCount).ToArray();
+        int Find(int v)
+        {
+            while (parent[v] != v) v = parent[v] = parent[parent[v]];
+            return v;
+        }
+        for (int t = 0; t < mesh.Indices.Length; t += 3)
+        {
+            int a = Find(mesh.Indices[t]);
+            for (int k = 1; k < 3; k++)
+            {
+                int r = Find(mesh.Indices[t + k]);
+                if (r != a) parent[r] = a;
+            }
+        }
+        return Enumerable.Range(0, mesh.VertexCount).GroupBy(Find).Select(p => p.Count()).OrderByDescending(n => n).ToList();
     }
 }

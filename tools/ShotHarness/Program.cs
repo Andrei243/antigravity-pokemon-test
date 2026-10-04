@@ -4,7 +4,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|intro|terrain|buildings|lab|life|world|times|sheets|pokemon] [before dir]
 //   dotnet run --project tools/ShotHarness -- <output dir> area <key>      one shot of an area of the imported world, by its key (twinleaf_town)
 //   dotnet run --project tools/ShotHarness -- <output dir> cities [key ...]   the buildings of every town of Sinnoh, from the importer's last full run
-//   dotnet run --project tools/ShotHarness -- <output dir> dex [species ...]   boards of every species' 3D model, sixty to a page
+//   dotnet run --project tools/ShotHarness -- <output dir> dex [--back] [species ...]   boards of every species' 3D model, sixty to a page (--back: from behind)
 //   dotnet run --project tools/ShotHarness -- <output dir> export [species ...]   species' models as .glb files, to edit and drop into overrides/models
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
@@ -2510,19 +2510,21 @@ if (mode == "dex")
     var context = Get("renderContext");
     var studio = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonStudio")!.GetMethod("Strip", BindingFlags.Static | BindingFlags.Public)!;
     var release = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonModels")!.GetMethod("Release", BindingFlags.Static | BindingFlags.Public)!;
-    var named = args.Skip(2).ToArray();
+    // --back: from behind, as the player's own Pokémon is seen in battle
+    bool back = args.Skip(2).Contains("--back");
+    var named = args.Skip(2).Where(a => a != "--back").ToArray();
     var list = named.Length > 0 ? named : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
     const int Cols = 10, Rows = 6, Box = 192;
     var watch = System.Diagnostics.Stopwatch.StartNew();
     for (int page = 0; page * Cols * Rows < list.Length; page++)
     {
-        string name = $"94_dex_{page + 1:00}";
+        string name = back ? $"94_dex_back_{page + 1:00}" : $"94_dex_{page + 1:00}";
         if (!Wanted(name)) continue;
         var board = Raylib.GenImageColor(Cols * Box, Rows * Box, new Color(206, 218, 232, 255));
         for (int i = 0; i < Cols * Rows && page * Cols * Rows + i < list.Length; i++)
         {
             string species = list[page * Cols * Rows + i];
-            var view = (Image)studio.Invoke(null, new object[] { context, species, "idle", new[] { 0.4f }, new[] { -0.55f }, Box, Box, 1.3f, 0.5f, false })!;
+            var view = (Image)studio.Invoke(null, new object[] { context, species, "idle", new[] { 0.4f }, new[] { back ? 2.6f : -0.55f }, Box, Box, 1.3f, 0.5f, false })!;
             int x = i % Cols * Box, y = i / Cols * Box;
             Raylib.ImageDraw(ref board, view, new Rectangle(0, 0, Box, Box), new Rectangle(x, y, Box, Box), Color.White);
             Raylib.UnloadImage(view);

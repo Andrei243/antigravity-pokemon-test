@@ -98,5 +98,6 @@ markings as a texture, the skeleton and every clip of the body plan. Refine one 
 ## Checking a model
 
 `dotnet run --project tools/ShotHarness -- <out dir> dex <species ...>` renders the species' models as the game sees
-them, and `sheets` the menu sprites of every species. Menu sprites are cached in `cache/sprites` next to the game,
+them (add `--back` to see them from behind, as your own Pokémon is seen in battle), and `sheets` the menu sprites of
+every species. Menu sprites are cached in `cache/sprites` next to the game,
 named after a signature of the model (its file's size and date), so a changed file is baked again.
