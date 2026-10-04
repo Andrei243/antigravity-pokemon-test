@@ -312,6 +312,9 @@ internal sealed class SdfModel
 
     // ------------------------------------------------------------------ evaluation
 
+    /// <summary>Call after changing shapes already added (moving them), so they are prepared again.</summary>
+    public void Changed() => prepared = false;
+
     public void Prepare()
     {
         if (prepared) return;

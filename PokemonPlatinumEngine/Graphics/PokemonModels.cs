@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Numerics;
 using System.Threading.Tasks;
 using PokemonPlatinumEngine.Data;
@@ -121,6 +122,15 @@ internal sealed class PokeModel
     /// <summary>Height of the model's top at rest, which clips scale their moves by.</summary>
     public float Height = 1f;
 
+    /// <summary>How each view frames the model (see <see cref="PokemonSprites.Framing"/>), worked out once; models are built on several threads.</summary>
+    internal readonly ConcurrentDictionary<(SpriteView, int), SpriteFraming> Framings = new();
+
+    /// <summary>Set for a model imported from a glTF file (its pieces, bones and clips); null for a sculpted one.</summary>
+    public ImportedRig? Imported;
+
+    /// <summary>The model plays an idle clip of its own, so the body plan's idle motion stays out of it.</summary>
+    public bool OwnIdle;
+
     /// <summary>The triangles under the decals, with texture coordinates into the decal atlas.</summary>
     public SdfMesh? DecalPatch;
     public Vector2[]? DecalUVs;
@@ -146,6 +156,11 @@ internal sealed class PokeModel
     /// <summary>Poses the skeleton; the skinning matrices are in <see cref="Skin"/>.</summary>
     public void Animate(PokePose pose)
     {
+        if (Imported != null)
+        {
+            ImportedModels.Animate(this, pose);
+            return;
+        }
         PokemonAnimation.Apply(this, pose, Pose);
         Skeleton.Evaluate(Pose, Skin);
     }
@@ -287,6 +302,56 @@ internal sealed class PokeBuilder
             Bone = bone, Center = at, Normal = Vector3.Normalize(facing), Half = new Vector2(rx, ry) * 2f, Roll = rollDeg * Deg, Shape = shape, Color = color
         });
 
+    // ------------------------------------------------------------------ placing the whole sculpt
+
+    /// <summary>
+    /// Moves everything up or down so the lowest point of the surface is <paramref name="gap"/> times the model's
+    /// height above the ground: 0 stands it on its feet, more lifts a flier off its platform. The root stays at the
+    /// origin. Used by the generated models, whose parts are placed by proportion rather than by hand.
+    /// </summary>
+    public void Ground(float gap = 0f)
+    {
+        float low = float.MaxValue, high = float.MinValue;
+        foreach (var s in sdf.Shapes)
+        {
+            if (s.Op != SdfOp.Add) continue;
+            float reach = Reach(s);
+            low = Math.Min(low, (s.Shape == SdfShape.RoundCone ? Math.Min(s.A.Y - s.Size.X, s.B.Y - s.Size.Y) : s.A.Y - reach));
+            high = Math.Max(high, (s.Shape == SdfShape.RoundCone ? Math.Max(s.A.Y + s.Size.X, s.B.Y + s.Size.Y) : s.A.Y + reach));
+        }
+        if (low == float.MaxValue) return;
+        var d = new Vector3(0, gap * (high - low) - low, 0);
+        if (MathF.Abs(d.Y) < 1e-6f) return;
+        foreach (var s in sdf.Shapes)
+        {
+            s.A += d;
+            s.B += d;
+        }
+        sdf.Changed();
+        m.Skeleton.Shift(d, first: 1);
+        foreach (var decal in m.Decals) decal.Center += d;
+    }
+
+    /// <summary>How far a shape reaches up or down from its centre (exact for ellipsoids and spheres, a safe bound otherwise).</summary>
+    private static float Reach(SdfPrimitive s)
+    {
+        var up = Vector3.Transform(Vector3.UnitY, Quaternion.Inverse(Quaternion.Normalize(s.Rotation)));
+        switch (s.Shape)
+        {
+            case SdfShape.Sphere:
+                return s.Size.X * Math.Max(s.Stretch.X, Math.Max(s.Stretch.Y, s.Stretch.Z));
+            case SdfShape.Ellipsoid:
+                return (up * s.Size * s.Stretch).Length();
+        }
+        var half = s.Shape switch
+        {
+            SdfShape.Cylinder => new Vector3(s.Size.X, s.Size.Y, s.Size.X),
+            SdfShape.Torus => new Vector3(s.Size.X + s.Size.Y, s.Size.Y, s.Size.X + s.Size.Y),
+            _ => s.Size
+        } * s.Stretch;
+        return MathF.Abs(up.X) * half.X + MathF.Abs(up.Y) * half.Y + MathF.Abs(up.Z) * half.Z;
+    }
+
     // ------------------------------------------------------------------ helpers
 
     private static Quaternion Rot(Vector3 deg) => Quaternion.CreateFromYawPitchRoll(deg.Y * Deg, deg.X * Deg, deg.Z * Deg);
@@ -334,15 +399,83 @@ internal static class PokemonModels
     /// <summary>The model for a species (built now if it isn't ready; waits for a background build under way).</summary>
     public static PokeModel Get(string species) => Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s))).Value;
 
-    /// <summary>Starts building these species' models in the background.</summary>
+    /// <summary>Species preloaded at start-up, which <see cref="Trim"/> never lets go of.</summary>
+    private static readonly ConcurrentDictionary<string, bool> Pinned = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>Starts building these species' models in the background, and keeps them.</summary>
     public static void Preload(IEnumerable<string> species)
     {
         foreach (var name in species)
         {
-            var lazy = Models.GetOrAdd(name, s => new Lazy<PokeModel>(() => Build(s)));
-            Task.Run(() => lazy.Value);
+            Pinned[name] = true;
+            Request(name);
         }
     }
+
+    /// <summary>
+    /// Starts building a species' model in the background unless it is built or on its way (plan 03 · D5: models
+    /// are made when first needed, ahead of the battle or scene that shows them).
+    /// </summary>
+    public static void Request(string species)
+    {
+        var lazy = Models.GetOrAdd(species, s => new Lazy<PokeModel>(() => Build(s)));
+        if (!lazy.IsValueCreated) Task.Run(() => lazy.Value);
+    }
+
+    /// <summary>The model if it is built, without waiting for it.</summary>
+    public static bool TryGet(string species, out PokeModel model)
+    {
+        if (Models.TryGetValue(species, out var lazy) && lazy.IsValueCreated)
+        {
+            model = lazy.Value;
+            return true;
+        }
+        model = null!;
+        return false;
+    }
+
+    /// <summary>
+    /// Lets go of every model but these and the preloaded ones (main thread: it frees GPU buffers). The game calls it
+    /// between scenes, so a long game doesn't keep every species it has met in memory.
+    /// </summary>
+    public static void Trim(IEnumerable<string> keep)
+    {
+        var wanted = new HashSet<string>(keep, StringComparer.OrdinalIgnoreCase);
+        foreach (var name in Models.Keys)
+            if (!wanted.Contains(name) && !Pinned.ContainsKey(name) && name != PokemonSprites.Fallback) Release(name);
+    }
+
+    private static readonly ConcurrentDictionary<string, string> Signatures = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// A short text that changes whenever the species' model would come out differently: the model file's size and
+    /// date, or a hash of the sculpt. Caches of what is made from a model (the menu sprites) are keyed by it.
+    /// </summary>
+    public static string Signature(string species) => Signatures.GetOrAdd(species, s =>
+    {
+        string text;
+        if (ModelOverrides.Find(s) is { } file)
+        {
+            var info = new FileInfo(file);
+            var options = new FileInfo(System.IO.Path.ChangeExtension(file, ".json"));
+            text = $"file|{ImportedModels.Version}|{info.FullName}|{info.Length}|{info.LastWriteTimeUtc.Ticks}|{(options.Exists ? options.LastWriteTimeUtc.Ticks : 0)}";
+        }
+        else
+        {
+            var b = Create(s);
+            var sb = new System.Text.StringBuilder(b.Sdf.Describe());
+            sb.Append('|').Append(b.Model.Plan).Append('|').Append(b.Model.Fill.ToString("R")).Append('|').Append(b.Model.Hovers);
+            foreach (var d in b.Model.Decals)
+                sb.Append('|').Append(d.Bone).Append(d.Center).Append(d.Normal).Append(d.Half).Append(d.Roll).Append(d.IsEye).Append(d.Size)
+                    .Append(d.Iris?.R).Append(d.Iris?.G).Append(d.Iris?.B).Append(d.Sclera).Append(d.Pupil?.R).Append(d.Shape).Append(d.Color.R).Append(d.Color.G).Append(d.Color.B);
+            text = "sculpt|" + sb;
+        }
+        var hash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
+        return Convert.ToHexString(hash, 0, 8).ToLowerInvariant();
+    });
+
+    /// <summary>Forgets signatures (after model files were added or removed).</summary>
+    public static void ForgetSignatures() => Signatures.Clear();
 
     /// <summary>Every species that has a hand-built model (anything else uses a generic shape).</summary>
     public static readonly string[] Species =
@@ -354,8 +487,44 @@ internal static class PokemonModels
 
     public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
 
-    /// <summary>Builds and meshes a species' model (no GPU calls).</summary>
-    internal static PokeModel Build(string species) => Finish(Create(species));
+    /// <summary>
+    /// Forgets a species' model so it is built again when next asked for, freeing its memory and its GPU buffers
+    /// (so call it on the main thread). For tools that go through many species, like the harness's Pokédex boards.
+    /// </summary>
+    public static void Release(string species)
+    {
+        if (Models.TryRemove(species, out var lazy) && lazy.IsValueCreated) PokemonRenderer.Unload(lazy.Value);
+    }
+
+    /// <summary>
+    /// Builds and meshes a species' model (no GPU calls): from a model file in <c>overrides/models</c> if there is one
+    /// for it (<see cref="ModelOverrides"/>), else hand-built or generated.
+    /// </summary>
+    internal static PokeModel Build(string species)
+    {
+        if (ModelOverrides.Find(species) is { } file)
+        {
+            try
+            {
+                return ImportedModels.Load(file, species);
+            }
+            catch (Exception e) when (e is IOException or InvalidDataException or NotSupportedException or System.Text.Json.JsonException or FormatException
+                                          or ArgumentException or IndexOutOfRangeException or KeyNotFoundException or InvalidOperationException)
+            {
+                ImportedModels.Report($"{System.IO.Path.GetFileName(file)} couldn't be used for {species}: {e.Message}");
+            }
+        }
+        try
+        {
+            return Finish(Create(species));
+        }
+        catch (Exception e) when (species != PokemonSprites.Fallback)
+        {
+            // A sculpt the kit can't mesh mustn't stop the game: the species shows the stand-in instead
+            ImportedModels.Report($"{species}'s model couldn't be built ({e.Message}); it shows the stand-in");
+            return Finish(Generic(species));
+        }
+    }
 
     /// <summary>A model for each body plan, including the ones no hand-built species uses yet (for tests and the harness).</summary>
     internal static PokeModel Sample(BodyPlan plan) => plan switch
@@ -397,7 +566,8 @@ internal static class PokemonModels
         "GARCHOMP" => Garchomp(true),
         "GIRATINA" => Giratina(),
         "BUNEARY" => Buneary(),
-        _ => Generic(species)
+        // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
+        _ => PokemonGenerator.Build(species) ?? Generic(species)
     };
 
     /// <summary>Meshes the sculpted model, its outline shell and its decals.</summary>
@@ -546,7 +716,7 @@ internal static class PokemonModels
     // ------------------------------------------------------------------ fire starters
 
     /// <summary>A flame that flickers on its own bone: orange, lighter toward its heart, lit from within.</summary>
-    private static void Flame(PokeBuilder b, int bone, Vector3 at, float s)
+    internal static void Flame(PokeBuilder b, int bone, Vector3 at, float s)
     {
         var red = Rgb(242, 88, 44);
         b.Ell(bone, at + V(0, 0.1f * s, 0), V(0.1f * s, 0.17f * s, 0.1f * s), red, mat: Glow, blend: 0.03f * s);
@@ -917,7 +1087,7 @@ internal static class PokemonModels
     // ------------------------------------------------------------------ Shinx line
 
     /// <summary>A four-pointed star of flattened spikes (the tip of the Shinx line's tails).</summary>
-    private static void StarTip(PokeBuilder b, int bone, Vector3 at, float r, Color color)
+    internal static void StarTip(PokeBuilder b, int bone, Vector3 at, float r, Color color)
     {
         foreach (var d in new[] { V(1, 0, 0), V(-1, 0, 0), V(0, 1, 0), V(0, -1, 0) })
             b.Spike(bone, at, at + d * r, r * 0.45f, color, 0.5f, blend: r * 0.12f);

@@ -32,7 +32,7 @@ public static class PixelArtGenerator
         return PokemonSprites.GetBaked(name, view) ?? PokemonSprites.GetBaked(PokemonSprites.Fallback, view) ?? SceneTextures.White;
     }
 
-    /// <summary>Whether the species has a hand-built model; the others share the generic stand-in for now.</summary>
+    /// <summary>Whether the species has a hand-built model; the others have generated ones (plan 03 · D5).</summary>
     public static bool HasOwnModel(string species) => PokemonModels.HasModel(species);
 
     /// <summary>48x48 menu icon rendered from the Pokémon's 3D model.</summary>

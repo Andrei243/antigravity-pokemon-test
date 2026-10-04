@@ -4,6 +4,8 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> [all|field|lineup|battle|doubles|demo|arenas|flow|menus|evolution|look|title|intro|terrain|buildings|lab|life|world|times|sheets|pokemon] [before dir]
 //   dotnet run --project tools/ShotHarness -- <output dir> area <key>      one shot of an area of the imported world, by its key (twinleaf_town)
 //   dotnet run --project tools/ShotHarness -- <output dir> cities [key ...]   the buildings of every town of Sinnoh, from the importer's last full run
+//   dotnet run --project tools/ShotHarness -- <output dir> dex [species ...]   boards of every species' 3D model, sixty to a page
+//   dotnet run --project tools/ShotHarness -- <output dir> export [species ...]   species' models as .glb files, to edit and drop into overrides/models
 //
 // It reaches into GameEngine's private fields by reflection (currentMap, player, currentState, battle, ...), so
 // renaming those fields means updating this file. The output directory becomes the working directory, which keeps
@@ -2286,6 +2288,45 @@ if (Run("pokemon"))
         Save(board, name);
     }
 
+    // Generated models (plan 03 · D5): one species of each body kind, turned round
+    foreach (var species in new[] { "Rattata", "Charmander", "Machop", "Oddish", "Pidgey", "Zubat", "Butterfree", "Ekans", "Caterpie", "Krabby", "Magikarp",
+                 "Voltorb", "Grimer", "Diglett", "Magneton", "Metapod", "Tentacool", "Octillery" })
+    {
+        string name = "91_turntable_gen_" + species.ToLowerInvariant();
+        if (Wanted(name)) Save(Studio(species, "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, 300, 300), name);
+    }
+
+    // A model brought in from a glTF file: Riolu's own model written out, dropped into overrides/models and read back,
+    // turned round and playing the clips the file carries
+    if (Wanted("imported"))
+    {
+        object Call(string type, string method, params object[] a) =>
+            asm.GetType("PokemonPlatinumEngine.Graphics." + type)!.GetMethod(method, BindingFlags.Static | BindingFlags.Public)!.Invoke(null, a)!;
+        string folder = Path.Combine(outDir, "overrides", "models");
+        Directory.CreateDirectory(folder);
+        string file = Path.Combine(folder, "Riolu.glb");
+        Call("GltfWriter", "Save", Call("PokemonModels", "Get", "Riolu"), file);
+        void Swap()
+        {
+            Call("ModelOverrides", "Refresh");
+            Call("PokemonModels", "ForgetSignatures");
+            Call("PokemonModels", "Release", "Riolu");
+        }
+        Swap();
+        Save(Studio("Riolu", "idle", new[] { 0.4f }, new[] { -0.5f, 0.35f, MathF.PI / 2f, MathF.PI }, 300, 300), "91_turntable_imported_riolu");
+        const int Box = 200;
+        var board = Raylib.GenImageColor(5 * Box, clips.Length * Box, backdrop);
+        for (int r = 0; r < clips.Length; r++)
+        {
+            var row = Studio("Riolu", clips[r].Clip, clips[r].Times, new[] { -0.6f }, Box, Box, 1.7f, 0.42f);
+            Raylib.ImageDraw(ref board, row, new Rectangle(0, 0, row.Width, row.Height), new Rectangle(0, r * Box, row.Width, row.Height), Color.White);
+            Raylib.UnloadImage(row);
+        }
+        Save(board, "92_clips_imported_riolu");
+        File.Delete(file);
+        Swap();
+    }
+
     // Eyes up close: open, blinking, squeezed by a hit, fierce in an attack
     foreach (var (species, lookY) in new[] { ("Piplup", 0.74f), ("Riolu", 0.66f), ("Turtwig", 0.6f), ("Luxray", 0.7f), ("Starly", 0.78f), ("Gible", 0.68f), ("Chimchar", 0.75f), ("Garchomp", 0.84f) })
     {
@@ -2301,6 +2342,41 @@ if (Run("pokemon"))
             Raylib.UnloadImage(frames[i]);
         }
         Save(board, name);
+    }
+}
+
+// ---------------------------------------------------------------- every species' model (plan 03 · D5)
+
+// Boards of sixty models each in Pokédex order, seen from three-quarters in front, or only the species named after
+// the mode. Not part of "all": the first run meshes every species (cached afterwards in cache/models)
+if (mode == "dex")
+{
+    var asm = typeof(GameEngine).Assembly;
+    var context = Get("renderContext");
+    var studio = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonStudio")!.GetMethod("Strip", BindingFlags.Static | BindingFlags.Public)!;
+    var release = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonModels")!.GetMethod("Release", BindingFlags.Static | BindingFlags.Public)!;
+    var named = args.Skip(2).ToArray();
+    var list = named.Length > 0 ? named : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
+    const int Cols = 10, Rows = 6, Box = 192;
+    var watch = System.Diagnostics.Stopwatch.StartNew();
+    for (int page = 0; page * Cols * Rows < list.Length; page++)
+    {
+        string name = $"94_dex_{page + 1:00}";
+        if (!Wanted(name)) continue;
+        var board = Raylib.GenImageColor(Cols * Box, Rows * Box, new Color(206, 218, 232, 255));
+        for (int i = 0; i < Cols * Rows && page * Cols * Rows + i < list.Length; i++)
+        {
+            string species = list[page * Cols * Rows + i];
+            var view = (Image)studio.Invoke(null, new object[] { context, species, "idle", new[] { 0.4f }, new[] { -0.55f }, Box, Box, 1.3f, 0.5f, false })!;
+            int x = i % Cols * Box, y = i / Cols * Box;
+            Raylib.ImageDraw(ref board, view, new Rectangle(0, 0, Box, Box), new Rectangle(x, y, Box, Box), Color.White);
+            Raylib.UnloadImage(view);
+            string label = PokemonDatabase.Get(species) is { } data ? $"{data.DexNumber} {species}" : species;
+            Raylib.ImageDrawText(ref board, label, x + 4, y + Box - 16, 10, new Color(30, 30, 40, 255));
+            release.Invoke(null, new object[] { species });
+        }
+        Save(board, name);
+        Console.WriteLine($"  {Math.Min(list.Length, (page + 1) * Cols * Rows)} of {list.Length} species in {watch.Elapsed.TotalSeconds:F0} s");
     }
 }
 
@@ -2326,6 +2402,66 @@ if (Run("sheets"))
     Raylib.ImageFlipVertical(ref img);
     Save(img, "90_pokemon_sheet");
     Raylib.UnloadRenderTexture(sheet);
+
+    // On its own, the mode goes on through every species in Pokédex order, sixty to a page: the front sprite with the
+    // icon beside it (plan 03 · D5). The first run bakes them all (and meshes their models), later runs read the cache
+    if (mode == "sheets")
+    {
+        var asm = typeof(GameEngine).Assembly;
+        var sprites = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonSprites")!;
+        var models = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonModels")!;
+        var context = Get("renderContext");
+        var everyone = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).ToArray();
+        const int Cols = 12, Rows = 5, W = 160, H = 216;
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        for (int page = 0; page * Cols * Rows < everyone.Length; page++)
+        {
+            string name = $"90_pokemon_sheet_{page + 1:00}";
+            if (!Wanted(name)) continue;
+            var onPage = everyone.Skip(page * Cols * Rows).Take(Cols * Rows).ToArray();
+            foreach (var sp in onPage) sprites.GetMethod("Request")!.Invoke(null, new object[] { sp.Name });
+            sprites.GetMethod("Flush")!.Invoke(null, new[] { context });
+            var target = Raylib.LoadRenderTexture(Cols * W, Rows * H);
+            Raylib.BeginTextureMode(target);
+            Raylib.ClearBackground(new Color(200, 220, 240, 255));
+            for (int i = 0; i < onPage.Length; i++)
+            {
+                int x = i % Cols * W, y = i / Cols * H;
+                Raylib.DrawTextureEx(PixelArtGenerator.GetPokemonSprite(onPage[i].Name, false), new Vector2(x + 4, y + 4), 0, 1f, Color.White);
+                Raylib.DrawTextureEx(PixelArtGenerator.GetPokemonIcon(onPage[i].Name), new Vector2(x + 108, y + 140), 0, 1f, Color.White);
+                Raylib.DrawText($"{onPage[i].DexNumber} {onPage[i].Name}", x + 4, y + 192, 10, Color.Black);
+            }
+            Raylib.EndTextureMode();
+            var pageImage = Raylib.LoadImageFromTexture(target.Texture);
+            Raylib.ImageFlipVertical(ref pageImage);
+            Save(pageImage, name);
+            Raylib.UnloadRenderTexture(target);
+            foreach (var sp in onPage) models.GetMethod("Release")!.Invoke(null, new object[] { sp.Name });
+            Console.WriteLine($"  {page * Cols * Rows + onPage.Length} of {everyone.Length} species in {watch.Elapsed.TotalSeconds:F0} s");
+        }
+    }
+}
+
+// ---------------------------------------------------------------- model files
+
+// Writes species' models as .glb files into <out dir>/models, to refine in a 3D editor and drop into overrides/models
+// (the hand-built ones when no species are named)
+if (mode == "export")
+{
+    var asm = typeof(GameEngine).Assembly;
+    var models = asm.GetType("PokemonPlatinumEngine.Graphics.PokemonModels")!;
+    var writer = asm.GetType("PokemonPlatinumEngine.Graphics.GltfWriter")!;
+    var named = args.Skip(2).ToArray();
+    var list = named.Length > 0 ? named : (string[])models.GetField("Species", BindingFlags.Static | BindingFlags.Public)!.GetValue(null)!;
+    string folder = Path.Combine(outDir, "models");
+    Directory.CreateDirectory(folder);
+    foreach (var species in list)
+    {
+        var model = models.GetMethod("Get")!.Invoke(null, new object[] { species })!;
+        string file = Path.Combine(folder, species + ".glb");
+        writer.GetMethod("Save")!.Invoke(null, new[] { model, file });
+        Console.WriteLine($"wrote models/{species}.glb ({new FileInfo(file).Length / 1024} KB)");
+    }
 }
 
 engine.Close();
