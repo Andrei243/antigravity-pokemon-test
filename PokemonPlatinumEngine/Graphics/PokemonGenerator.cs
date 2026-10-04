@@ -482,6 +482,8 @@ internal sealed partial class PokemonSculptor
                 var c = joint + V(s * 0.22f * k, 0.12f * k - pair * 0.06f, -0.05f - pair * 0.04f);
                 var radii = butterfly ? V(0.26f, 0.022f, 0.2f) * k : V(0.24f, 0.022f, 0.1f) * k;
                 b.Ell(wing, c, radii, wingColor, V(-6f, 20f * s * (pair == 0 ? 1f : -0.5f), -s * (pair == 0 ? 30f : 8f)), blend: 0.012f);
+                // The wing's root just outside the thorax: a vein from inside it out to the wing's middle holds them together
+                b.Limb(wing, Vector3.Lerp(joint, thorax.C, 0.4f), c, 0.018f * k, 0.008f * k, PixelCanvas.Shadow(wingColor, 0.3f), blend: 0.008f);
                 if (butterfly && pair == 0)
                 {
                     var n = Vector3.Normalize(Vector3.Transform(Vector3.UnitY, Quaternion.CreateFromYawPitchRoll(20f * s * (pair == 0 ? 1f : -0.5f) * MathF.PI / 180f,
@@ -535,8 +537,13 @@ internal sealed partial class PokemonSculptor
             float ra = r0 * (1f - 0.05f * i), rb = r0 * (1f - 0.05f * (i + 1));
             if (rocks)
             {
-                b.Ell(bone, points[i], V(ra, ra, ra) * 1.25f, g.Main, blend: 0.01f);
-                b.Ell(bone, Vector3.Lerp(points[i], points[i + 1], 0.5f), V(rb, rb, rb) * 1.1f, PixelCanvas.Shadow(g.Main, 0.06f), blend: 0.01f);
+                // Boulders strung close enough to touch, however long the segment and thin the body
+                int beads = Math.Max(2, (int)MathF.Ceiling(Vector3.Distance(points[i], points[i + 1]) / (0.9f * (ra + rb))));
+                for (int k = 0; k < beads; k++)
+                {
+                    float t = k / (float)beads, rr = (ra + (rb - ra) * t) * (k % 2 == 0 ? 1.25f : 1.1f);
+                    b.Ell(bone, Vector3.Lerp(points[i], points[i + 1], t), V(rr, rr, rr), k % 2 == 0 ? g.Main : PixelCanvas.Shadow(g.Main, 0.06f), blend: 0.01f);
+                }
             }
             else b.Limb(bone, points[i], points[i + 1], ra, rb, g.Main);
             if (g.Pattern is PatternKind.Spots or PatternKind.Stripes or PatternKind.Mask)
@@ -833,7 +840,9 @@ internal sealed partial class PokemonSculptor
                 body = new Shape(Body, body.C + V(0, r * 0.15f, 0), V(r, r * 1.08f, r * 0.98f));
                 break;
             case Special.Bell:
+                // A dome that flares into a skirt, which carries the rim
                 b.Ell(Body, body.C + V(0, r * 0.2f, 0), V(r * 0.8f, r * 0.85f, r * 0.8f), g.Main, mat: SurfaceMaterial.Metal);
+                b.Ell(Body, body.C + V(0, -r * 0.3f, 0), V(r * 0.86f, r * 0.36f, r * 0.86f), g.Main, mat: SurfaceMaterial.Metal, blend: 0.04f);
                 b.Torus(Body, body.C + V(0, -r * 0.5f, 0), r * 0.82f, r * 0.2f, PixelCanvas.Shadow(g.Main, 0.1f), mat: SurfaceMaterial.Metal);
                 body = new Shape(Body, body.C + V(0, r * 0.2f, 0), V(r * 0.8f, r * 0.85f, r * 0.8f));
                 break;
@@ -988,8 +997,9 @@ internal sealed partial class PokemonSculptor
             var earth = Rgb(156, 112, 76);
             b.Ell(Body, V(0, r * 0.3f, 0), V(r * 2.3f, r * 0.55f, r * 1.7f), earth, mat: SurfaceMaterial.Scales);
         }
+        // Close enough to merge where they meet
         var spots = n == 2
-            ? new[] { V(-r * 0.95f, r * 1.0f, 0), V(r * 0.98f, r * 1.2f, 0.03f) }
+            ? new[] { V(-r * 0.84f, r * 1.0f, 0), V(r * 0.86f, r * 1.15f, 0.03f) }
             : new[] { V(0, r * 2.05f, -0.03f), V(-r * 1.08f, r * 1.0f, 0.03f), V(r * 1.08f, r * 1.05f, 0.02f) };
         if (mound) spots = n == 2 ? new[] { V(-r * 0.8f, r * 1.3f, 0), V(r * 0.85f, r * 1.4f, 0.02f) } : new[] { V(0, r * 1.7f, -0.05f), V(-r * 1.15f, r * 1.25f, 0.05f), V(r * 1.15f, r * 1.3f, 0.04f) };
         Shape first = default;

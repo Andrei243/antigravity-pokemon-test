@@ -324,14 +324,18 @@ internal sealed partial class PokemonSculptor
                 var top = p + V(0, r.Y * 0.38f, 0);
                 b.Limb(bone, p - V(0, 0.02f, 0), top, 0.022f, 0.018f, Rgb(118, 82, 50), SurfaceMaterial.Shell);
                 int leaves = b.Part("sprout", bone, top, PokeRole.Leaf);
-                PokeBuilder.Both(s => b.Ell(leaves, top + V(0.09f * s, 0.035f, 0), V(0.1f, 0.028f, 0.06f), Leaf, V(0, 0, -28f * s), SurfaceMaterial.Leaf, 0.012f));
+                // Two leaves rising from a bud on the stem's tip, their inner ends in it
+                b.Ell(leaves, top, V(0.026f, 0.024f, 0.026f), Leaf, mat: SurfaceMaterial.Leaf, blend: 0.01f);
+                PokeBuilder.Both(s => b.Ell(leaves, top + V(0.085f * s, 0.035f, 0), V(0.1f, 0.028f, 0.06f), Leaf, V(0, 0, 28f * s), SurfaceMaterial.Leaf, 0.012f));
                 break;
             }
             case TopKind.Flower:
             {
                 var (p, _) = h.At(0f, 1.25f);
-                var at = p + V(0, 0.02f, 0);
+                var at = p - V(0, 0.005f, 0);
                 int flower = b.Part("flower", bone, at, PokeRole.Leaf);
+                // Sitting on the head, held to it by a green calyx under the petals
+                b.Ell(flower, p - V(0, 0.01f, 0), V(0.04f, 0.035f, 0.04f), Leaf, mat: SurfaceMaterial.Leaf, blend: 0.012f);
                 var petal = g.Primary == PokemonType.Grass ? (g.Secondary is { } t ? PokemonGenomes.TypeColors(t).A : Rgb(244, 140, 170)) : Accent;
                 for (int i = 0; i < 5; i++)
                 {
@@ -420,8 +424,8 @@ internal sealed partial class PokemonSculptor
                     continue;
                 case TailKind.Thin:
                 {
-                    var mid = root + V(side.X, 0.05f, -0.15f) * size;
-                    end = mid + V(side.X * 1.5f, 0.13f, -0.07f) * size;
+                    var mid = root + V(spread * 0.12f, 0.05f, -0.15f) * size;
+                    end = mid + V(spread * 0.18f, 0.13f, -0.07f) * size;
                     b.Limb(tail, root, mid, 0.028f * size, 0.023f * size, g.Main, blend: 0.012f);
                     b.Limb(tail, mid, end, 0.023f * size, 0.019f * size, g.Main, blend: 0.01f);
                     dir = Vector3.Normalize(end - mid);
@@ -430,10 +434,12 @@ internal sealed partial class PokemonSculptor
                 }
                 case TailKind.Bushy:
                 {
-                    // A plume that leans back from the rump and curls up at its pale tip
-                    var c = root + V(side.X * 2f, 0.03f, -0.15f) * size;
+                    // A plume that leans back from the rump and curls up at its pale tip, on a stem that joins it to the
+                    // body (the plume alone stops short of the rump); several fan out from one root
+                    var c = root + V(spread * 0.07f, 0.03f, -0.15f) * size;
+                    b.Limb(tail, root, c, 0.045f * size, 0.055f * size, g.Main, blend: 0.02f);
                     b.Ell(tail, c, V(0.068f, 0.1f, 0.085f) * size, g.Main, V(-64f, spread * 20f, -spread * 25f), blend: 0.03f);
-                    var tip = c + V(side.X * 0.8f, 0.07f, -0.07f) * size;
+                    var tip = c + V(spread * 0.05f, 0.07f, -0.07f) * size;
                     b.Ell(tail, tip, V(0.055f, 0.07f, 0.06f) * size, g.Main, V(-20f, 0, 0), blend: 0.03f);
                     b.PaintEll(tail, tip + V(0, 0.04f, 0.01f) * size, V(0.06f, 0.05f, 0.06f) * size, g.Tips ? g.Dark : Pale);
                     continue;
@@ -476,7 +482,9 @@ internal sealed partial class PokemonSculptor
                     continue;
                 }
                 case TailKind.Curl:
-                    b.Torus(tail, root + V(0, 0.03f, -0.04f) * size, 0.035f * size, 0.013f * size, g.Main, V(0, 90f, 0), blend: 0.008f);
+                    // A loop standing up behind the rump, on a stub that joins it to the body
+                    b.Ell(tail, root, V(0.028f, 0.028f, 0.03f) * size, g.Main, blend: 0.01f);
+                    b.Torus(tail, root + V(0, 0.025f, -0.03f) * size, 0.035f * size, 0.013f * size, g.Main, V(0, 0, 90f), blend: 0.008f);
                     continue;
                 case TailKind.Wisp:
                 {
@@ -681,8 +689,12 @@ internal sealed partial class PokemonSculptor
                 case WingKind.Insect:
                 case WingKind.Butterfly:
                     for (int k = 0; k < 2; k++)
-                        b.Ell(wing, joint + V(s * 0.13f, 0.1f - 0.12f * k, -0.04f) * size, V(0.14f, 0.075f, 0.022f) * size, Rgb(228, 240, 248),
-                            V(0, 20f * s, (k == 0 ? -30f : 15f) * s), blend: 0.012f);
+                    {
+                        var c = joint + V(s * 0.13f, 0.1f - 0.12f * k, -0.04f) * size;
+                        b.Ell(wing, c, V(0.14f, 0.075f, 0.022f) * size, Rgb(228, 240, 248), V(0, 20f * s, (k == 0 ? -30f : 15f) * s), blend: 0.012f);
+                        // A vein from inside the back holds the wing to it
+                        b.Limb(wing, V(joint.X * 0.5f, joint.Y, joint.Z), c, 0.014f * size, 0.007f * size, Rgb(176, 192, 206), blend: 0.006f);
+                    }
                     break;
                 default:
                     b.Ell(wing, joint + V(s * 0.08f, 0.1f, -0.06f) * size, V(0.05f, 0.16f, 0.11f) * size, PixelCanvas.Shadow(g.Main, 0.1f), V(-20f, 0, -35f * s), blend: 0.015f);
@@ -856,8 +868,8 @@ internal sealed partial class PokemonSculptor
             }
         }
 
-        // Rocky bodies are lumpy; icy ones carry crystals
-        if (g.Rocky && g.Kind is not (BodyKind.Serpent or BodyKind.Crawler))
+        // Rocky bodies are lumpy (but a crescent's lumps could land in its bite); icy ones carry crystals
+        if (g.Rocky && g.Kind is not (BodyKind.Serpent or BodyKind.Crawler) && g.Special != Special.Crescent)
             for (int i = 0; i < 4; i++)
             {
                 var (p, n) = body.At(rnd.Range(-2.8f, 2.8f), rnd.Range(0.1f, 0.9f));
