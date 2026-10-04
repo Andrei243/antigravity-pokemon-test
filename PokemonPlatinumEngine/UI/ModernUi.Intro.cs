@@ -178,7 +178,7 @@ internal static partial class ModernUi
         const float slotW = 96, slotH = 116, slotGap = 14;
         float slotsWidth = entry.MaxLength * slotW + (entry.MaxLength - 1) * slotGap;
         float sx = board.X + (board.Width - slotsWidth) / 2f, sy = board.Y + 64;
-        bool blink = (int)(Raylib.GetTime() * 2.5) % 2 == 0;
+        bool blink = (int)(FrameClock.Now * 2.5) % 2 == 0;
         for (int i = 0; i < entry.MaxLength; i++)
         {
             var slot = new Rectangle(sx + i * (slotW + slotGap), sy, slotW, slotH);

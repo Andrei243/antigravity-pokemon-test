@@ -144,7 +144,7 @@ internal static partial class ModernUi
     public static int Hop(bool selected, bool still = false)
     {
         if (still) return 0;
-        float t = (float)Raylib.GetTime();
+        float t = (float)FrameClock.Now;
         return selected ? ((int)(t / 0.16f) % 2) * 3 : (int)(t / 0.4f) % 2;
     }
 

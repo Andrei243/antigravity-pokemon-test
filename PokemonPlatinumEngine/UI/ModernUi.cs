@@ -203,7 +203,7 @@ internal static partial class ModernUi
         UiShapes.Circle(c, radius * 0.27f, Rule);
         UiShapes.Circle(c, radius * 0.18f, new Color(226, 234, 246, 255));
         var icon = PixelArtGenerator.GetPokemonIcon(p.Species.Name);
-        float t = (float)Raylib.GetTime();
+        float t = (float)FrameClock.Now;
         int hop = p.IsFainted ? 0 : selected ? ((int)(t / 0.16f) % 2) * 3 * scale : ((int)(t / 0.4f) % 2) * scale;
         Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
             new Rectangle(MathF.Round(c.X - icon.Width * scale / 2f), MathF.Round(c.Y - icon.Height * scale / 2f - 1.5f * scale - hop), icon.Width * scale, icon.Height * scale),
@@ -249,7 +249,7 @@ internal static partial class ModernUi
     /// <summary>The bobbing red arrow that says a message is waiting for the A button.</summary>
     public static void AdvanceArrow(float x, float y)
     {
-        float bob = MathF.Sin((float)Raylib.GetTime() * 6f) * 3f;
+        float bob = MathF.Sin((float)FrameClock.Now * 6f) * 3f;
         UiIcons.ArrowDown(new Vector2(x + 14, y + 10 + bob), 18, Red);
     }
 

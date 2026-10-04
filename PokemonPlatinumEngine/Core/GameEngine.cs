@@ -87,7 +87,7 @@ public class GameEngine
     // Steps since friendship last grew from walking, and the player's turns on the spot (one Pokémon evolves on a spin)
     private int friendshipSteps;
     private readonly SpinTracker spin = new();
-    private readonly Random fieldRandom = new();
+    private readonly Random fieldRandom = Dice.New();
 
     // The opening and title menu, the save it offers to continue, and where the options screen returns to
     private TitleScreen titleScreen = new(null);
@@ -970,7 +970,7 @@ public class GameEngine
     private void StartWildBattle(WildEncounterEntry entry)
     {
         var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
-        Random rng = new();
+        Random rng = fieldRandom;
         int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
         var wildPkmn = new Pokemon(wildSpecies, lvl);
 

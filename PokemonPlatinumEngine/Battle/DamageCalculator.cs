@@ -10,8 +10,6 @@ namespace PokemonPlatinumEngine.Battle;
 /// <summary>Generation 4's damage formula, with abilities and held items joining in through <see cref="BattleEffect"/>.</summary>
 public static class DamageCalculator
 {
-    private static readonly Random sharedRng = new();
-
     public struct DamageResult
     {
         public int Damage;
@@ -27,7 +25,7 @@ public static class DamageCalculator
     /// <summary>Damage between two Pokémon outside a battle's field (no partner, one target).</summary>
     public static DamageResult CalculateDamage(Pokemon attacker, Pokemon defender, Move move, Random? rng = null) =>
         Calculate(new Battler(BattleSide.Player, 0) { Pokemon = attacker }, new Battler(BattleSide.Enemy, 0) { Pokemon = defender },
-            move, rng ?? sharedRng, spread: false);
+            move, rng ?? Core.Dice.Shared, spread: false);
 
     /// <summary>How well a move's type hits the target (0, ¼, ½, 1, 2 or 4), counting Scrappy.</summary>
     public static float Effectiveness(Battler attacker, Battler defender, Move move)

@@ -189,7 +189,7 @@ public class Pokemon
 
     public Pokemon(PokemonSpecies species, int level, Random? rng = null)
     {
-        rng ??= new Random();
+        rng ??= Core.Dice.New();
         Species = species;
         Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
@@ -225,7 +225,7 @@ public class Pokemon
         Nature = nature;
         IsShiny = isShiny;
         AbilityName = AbilityDatabase.ForSpecies(species).FirstOrDefault();
-        Personality = RollPersonality(Random.Shared);
+        Personality = RollPersonality(Core.Dice.Shared);
         Friendship = species.BaseFriendship;
 
         CurrentExp = GetExpForLevel(Level, Species.GrowthRate);

@@ -28,12 +28,104 @@ bool Run(string section) => mode == "all" || mode == section;
 Directory.CreateDirectory(outDir);
 Environment.CurrentDirectory = outDir;
 
+// ---------------------------------------------------------------- comparing two runs
+//
+//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>
+//
+// Compares the shots two runs saved under the same names, pixel by pixel, without starting the game. The harness
+// seeds the game's chance and counts its own clock, so two runs of the same code draw the same pictures and any
+// shot listed here was changed by the code. It prints the shots that differ, the most changed first, and writes a
+// board for each (`diff_<name>`: the other run's shot, this one's, and their difference made eight times stronger).
+if (mode == "diff")
+{
+    if (args.Length < 3) { Console.WriteLine("usage: <dir> diff <other dir>"); return; }
+    string otherDir = Path.GetFullPath(args[2], startDir);
+    static string NameOf(string path) => Path.GetFileNameWithoutExtension(path);
+    bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_");
+    var mine = Directory.GetFiles(outDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
+    var theirs = Directory.GetFiles(otherDir, "*.png").Select(NameOf).Where(Compared).ToHashSet();
+    foreach (string old in Directory.GetFiles(outDir, "diff_*.png")) File.Delete(old);
+
+    const int tolerance = 6;
+    var changed = new List<(string Name, double Share, double Mean, int Max)>();
+    int same = 0;
+    foreach (string name in mine.Intersect(theirs).OrderBy(n => n, StringComparer.Ordinal))
+    {
+        var a = Raylib.LoadImage(Path.Combine(otherDir, name + ".png"));
+        var b = Raylib.LoadImage(Path.Combine(outDir, name + ".png"));
+        Raylib.ImageFormat(ref a, PixelFormat.UncompressedR8G8B8A8);
+        Raylib.ImageFormat(ref b, PixelFormat.UncompressedR8G8B8A8);
+        if (a.Width != b.Width || a.Height != b.Height)
+        {
+            changed.Add((name, 1.0, 255.0, 255));
+            Raylib.UnloadImage(a); Raylib.UnloadImage(b);
+            continue;
+        }
+        long over = 0, sum = 0;
+        int max = 0, count = a.Width * a.Height;
+        var delta = Raylib.GenImageColor(a.Width, a.Height, Color.Black);
+        Raylib.ImageFormat(ref delta, PixelFormat.UncompressedR8G8B8A8);
+        unsafe
+        {
+            byte* pa = (byte*)a.Data, pb = (byte*)b.Data, pd = (byte*)delta.Data;
+            for (int i = 0; i < count; i++)
+            {
+                int worst = 0;
+                for (int c = 0; c < 3; c++)
+                {
+                    int d = Math.Abs(pa[i * 4 + c] - pb[i * 4 + c]);
+                    sum += d;
+                    if (d > worst) worst = d;
+                    pd[i * 4 + c] = (byte)Math.Min(255, d * 8);
+                }
+                if (worst > tolerance) over++;
+                if (worst > max) max = worst;
+            }
+        }
+        if (over == 0) same++;
+        else
+        {
+            changed.Add((name, (double)over / count, sum / (count * 3.0), max));
+            var board = Raylib.GenImageColor(960 * 3 + 40, 540 + 76, new Color(24, 26, 34, 255));
+            int col = 0;
+            foreach (var (img, label) in new[] { (a, "OTHER"), (b, "THIS"), (delta, "DIFFERENCE x8") })
+            {
+                var small = Raylib.ImageCopy(img);
+                Raylib.ImageResize(ref small, 960, 540);
+                int x = 10 + col * 970;
+                Raylib.ImageDraw(ref board, small, new Rectangle(0, 0, 960, 540), new Rectangle(x, 66, 960, 540), Color.White);
+                Raylib.ImageDrawText(ref board, label, x + 4, 18, 40, Color.White);
+                Raylib.UnloadImage(small);
+                col++;
+            }
+            Raylib.ExportImage(board, Path.Combine(outDir, "diff_" + name + ".png"));
+            Raylib.UnloadImage(board);
+        }
+        Raylib.UnloadImage(delta); Raylib.UnloadImage(a); Raylib.UnloadImage(b);
+    }
+
+    foreach (var c in changed.OrderByDescending(c => c.Share))
+        Console.WriteLine($"{c.Name}: {c.Share * 100:F2}% of its pixels differ (mean {c.Mean:F2}, most {c.Max})");
+    Console.WriteLine($"{same + changed.Count} shots compared: {same} the same, {changed.Count} differ.");
+    var onlyMine = mine.Except(theirs).OrderBy(n => n, StringComparer.Ordinal).ToList();
+    var onlyTheirs = theirs.Except(mine).OrderBy(n => n, StringComparer.Ordinal).ToList();
+    if (onlyMine.Count > 0) Console.WriteLine($"only here ({onlyMine.Count}): {string.Join(", ", onlyMine)}");
+    if (onlyTheirs.Count > 0) Console.WriteLine($"only in the other ({onlyTheirs.Count}): {string.Join(", ", onlyTheirs)}");
+    return;
+}
+
 Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
 Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
 // SHOTS_WINDOW=3840x2160 makes the hidden window that size: the game then draws as it does full screen on a 4K
 // display (FXAA on the high preset, the screen shown one to one), which is what the timings should be read at
 var windowSize = (Environment.GetEnvironmentVariable("SHOTS_WINDOW") ?? "1920x1080").Split('x');
 Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
+
+// Two runs draw the same pictures: the game's chance is seeded, and the clock its small motions keep time by is
+// the harness's own count of frames
+Dice.Seed(20261004);
+long tick = 0;
+FrameClock.Fixed = 0;
 
 var engine = new GameEngine();
 engine.Initialize();
@@ -62,6 +154,7 @@ void Frames(int n)
 {
     for (int i = 0; i < n; i++)
     {
+        FrameClock.Fixed = ++tick / 60.0;
         engine.Update(1f / 60f);
         engine.Draw();
     }
@@ -74,6 +167,7 @@ void Skip(double seconds)
     int n = Math.Max(1, (int)Math.Round(seconds * 60.0));
     for (int i = 0; i < n; i++)
     {
+        FrameClock.Fixed = ++tick / 60.0;
         engine.Update(1f / 60f);
         if (i % 6 == 5 || i == n - 1) engine.Draw();
     }
@@ -210,7 +304,7 @@ void Profile(string label, int frames = 240, bool frozen = false)
     // SHOTS_ONLY=battle,route measures only the scenes whose name has one of those words in it
     var only = (Environment.GetEnvironmentVariable("SHOTS_ONLY") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
     if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase))) return;
-    void One() { if (!frozen) engine.Update(1f / 60f); engine.Draw(); }
+    void One() { if (!frozen) { FrameClock.Fixed = ++tick / 60.0; engine.Update(1f / 60f); } engine.Draw(); }
     for (int i = 0; i < 20; i++) One();
     var sw = System.Diagnostics.Stopwatch.StartNew();
     for (int i = 0; i < frames; i++) One();
@@ -2014,6 +2108,7 @@ if (Run("world"))
             for (int f = 0; f < 8; f++)
             {
                 watch.Restart();
+                FrameClock.Fixed = ++tick / 60.0;
                 engine.Update(1f / 60f);
                 engine.Draw();
                 double ms = watch.Elapsed.TotalMilliseconds;
@@ -2099,6 +2194,32 @@ if (mode == "bench")
     Bench("pass 960x540 -> 3840x2160, not cleared", () => PassTo(big, halfA.Texture, false), 100);
     Bench("two passes ping-pong", () => { PassTo(halfB, halfA.Texture, true); PassTo(halfA, halfB.Texture, true); });
     Bench("begin and end texture mode only", () => { Raylib.BeginTextureMode(halfB); Raylib.EndTextureMode(); });
+    // The interface's own pieces, drawn into the 4K screen as the game draws them
+    var screen = (RenderTexture2D)Get("virtualScreen");
+    void Ui(string label, Action draw, int count)
+    {
+        Bench($"{label} x{count}", () =>
+        {
+            Raylib.BeginTextureMode(screen);
+            Raylib.BeginMode2D(new Camera2D { Zoom = 2 });
+            for (int i = 0; i < count; i++) draw();
+            Raylib.EndMode2D();
+            Raylib.EndTextureMode();
+        }, 100);
+    }
+    int k = 0;
+    Ui("small panel 300x80", () => { k++; PokemonPlatinumEngine.UI.Kit.UiShapes.Fill(new Rectangle(100 + k % 7 * 200, 100 + k % 5 * 150, 300, 80), 20, new Color(240, 240, 250, 255)); }, 100);
+    Ui("large panel 1700x220", () => PokemonPlatinumEngine.UI.Kit.UiShapes.Fill(new Rectangle(100, 800, 1700, 220), 30, new Color(240, 240, 250, 255)), 20);
+    Ui("shadow 1700x220 blur 22", () => PokemonPlatinumEngine.UI.Kit.UiShapes.Shadow(new Rectangle(100, 800, 1700, 220), 30, 22, new Vector2(0, 8), new Color(14, 22, 46, 80)), 20);
+    Ui("circle r10", () => { k++; PokemonPlatinumEngine.UI.Kit.UiShapes.Circle(new Vector2(100 + k % 50 * 30, 500), 10, Color.Red); }, 100);
+    Ui("text 'Flamethrower' 36", () => { k++; PokemonPlatinumEngine.UI.Kit.UiFonts.Draw("Flamethrower", 100 + k % 5 * 300, 100 + k % 9 * 90, 36, Color.Black, PokemonPlatinumEngine.UI.Kit.UiWeight.Black); }, 100);
+    Ui("panel then text, alternating", () =>
+    {
+        k++;
+        PokemonPlatinumEngine.UI.Kit.UiShapes.Fill(new Rectangle(100 + k % 7 * 200, 100 + k % 5 * 150, 300, 80), 20, new Color(240, 240, 250, 255));
+        PokemonPlatinumEngine.UI.Kit.UiFonts.Draw("Flamethrower", 110 + k % 7 * 200, 120 + k % 5 * 150, 36, Color.Black, PokemonPlatinumEngine.UI.Kit.UiWeight.Black);
+    }, 50);
+    Ui("raylib rectangle 300x80", () => { k++; Raylib.DrawRectangle(100 + k % 7 * 200, 100 + k % 5 * 150, 300, 80, Color.Blue); }, 100);
     Bench("finish alone", () => Finish());
     Bench("pass with a finish after each", () => { PassTo(halfB, halfA.Texture, true); Finish(); });
 }

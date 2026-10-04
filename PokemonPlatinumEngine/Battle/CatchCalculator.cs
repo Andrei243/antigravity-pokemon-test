@@ -6,16 +6,16 @@ namespace PokemonPlatinumEngine.Battle;
 
 public static class CatchCalculator
 {
-    private static readonly Random rng = new();
-
     public struct CatchResult
     {
         public bool IsCaught;
         public int Shakes; // 0, 1, 2, 3, or 4 (4 = caught)
     }
 
-    public static CatchResult AttemptCatch(Pokemon wildPokemon, ItemData ball)
+    /// <param name="rng">The battle's own generator; left out, the rolls are the game's shared chance.</param>
+    public static CatchResult AttemptCatch(Pokemon wildPokemon, ItemData ball, Random? rng = null)
     {
+        rng ??= Core.Dice.Shared;
         // Master Ball always catches
         if (ball.EffectValue >= 9999)
         {

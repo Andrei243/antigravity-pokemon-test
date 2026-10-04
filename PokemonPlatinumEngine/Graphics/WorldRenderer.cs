@@ -276,7 +276,7 @@ public sealed class WorldRenderer
         var light = rig.Light;
         weatherLight = Brightness(rig);
 
-        float time = (float)Raylib.GetTime();
+        float time = (float)FrameClock.Now;
         float lift = player != null ? player.HopHeight / Player.TileSize : 0f;
         // The ground under the view's middle: the deck or the hillside the player is on (zero on flat maps)
         float groundY = player != null ? Relief.Under(map, px, pz, player.HeightOn(map)) : Relief.At(map, px, pz);
@@ -584,7 +584,7 @@ public sealed class WorldRenderer
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
-            float seed = (npc.Name.GetHashCode() & 0xFFFF) / 65536f;
+            float seed = SeedOf(npc.Name);
             var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
             {
@@ -624,6 +624,17 @@ public sealed class WorldRenderer
     }
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
+
+    /// <summary>
+    /// A number from 0 to 1 that is a name's own, the same every run (a string's hash code changes from run to
+    /// run): it sets each person's breathing and blinking apart from the next one's.
+    /// </summary>
+    internal static float SeedOf(string name)
+    {
+        uint hash = 2166136261;
+        foreach (char c in name) hash = (hash ^ c) * 16777619;
+        return (hash & 0xFFFF) / 65536f;
+    }
 
     /// <summary>Each character is a pixel-art sprite baked from its 3D model, standing upright like the walls.</summary>
     private void DrawActors(CharacterPass pass)

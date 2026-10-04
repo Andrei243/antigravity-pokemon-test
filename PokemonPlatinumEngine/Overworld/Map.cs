@@ -325,7 +325,7 @@ public class Map
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public Dictionary<(int X, int Y), string> Signboards { get; } = new();
 
-    private readonly Random rng = new();
+    private readonly Random rng = Core.Dice.New();
 
     public Map(int width, int height)
     {

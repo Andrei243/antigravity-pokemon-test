@@ -175,7 +175,7 @@ public partial class BattleEngine
         QueueMessage($"{PlayerIdentity.Name} used one {item.Name}!", () =>
         {
             AudioManager.PlaySound("ball_throw");
-            var catchRes = CatchCalculator.AttemptCatch(foe, item);
+            var catchRes = CatchCalculator.AttemptCatch(foe, item, rng);
 
             // The trainer throws, the ball opens over the foe, which vanishes into it; the result shows once the
             // ball settles. A foe that breaks free bursts out with the ball and is back on its platform before the

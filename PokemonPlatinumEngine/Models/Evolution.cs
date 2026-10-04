@@ -229,7 +229,7 @@ public static class Evolution
         if (species == null || ball == null || context.Party == null || context.Party.IsFull) return null;
         if (context.Bag == null || context.Bag.GetQuantity(ball) < 1) return null;
 
-        var shell = new Pokemon(species, p.Level, Pokemon.RollGender(species, Random.Shared), p.Nature, p.IsShiny)
+        var shell = new Pokemon(species, p.Level, Pokemon.RollGender(species, Core.Dice.Shared), p.Nature, p.IsShiny)
         {
             IvHP = p.IvHP, IvAttack = p.IvAttack, IvDefense = p.IvDefense,
             IvSpAttack = p.IvSpAttack, IvSpDefense = p.IvSpDefense, IvSpeed = p.IvSpeed,

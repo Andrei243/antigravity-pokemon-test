@@ -114,7 +114,7 @@ public partial class BattleEngine : IBattleContext
         Pokedex = setup.Pokedex;
         pcBoxStorage = setup.PcStorage;
         Trainers = setup.Trainers;
-        rng = setup.Random ?? new Random();
+        rng = setup.Random ?? Core.Dice.New();
 
         // A double battle needs two Pokémon able to fight on each side
         bool canDouble = setup.PlayerParty.Members.Count(p => !p.IsFainted) >= 2 &&
