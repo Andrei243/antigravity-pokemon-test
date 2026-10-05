@@ -80,8 +80,8 @@ public class BattleMechanicsTests
     [Fact]
     public void TestAMoveWhoseEffectIsMissingDoesNothing()
     {
-        // Seismic Toss's fixed damage isn't written yet: it neither hits for made-up damage nor crashes
-        var mine = Mon("Riolu", 20, null, M("Seismic Toss"));
+        // Fling's throw of its item isn't written yet (plan 06 · R5): it neither hits for made-up damage nor crashes
+        var mine = Mon("Riolu", 20, null, M("Fling"));
         var foe = Mon("Bidoof", 20, null, Idle);
         var battle = Wild(mine, foe);
         int hp = foe.CurrentHP;
@@ -103,7 +103,7 @@ public class BattleMechanicsTests
     {
         // The foe knows a move that does nothing yet and one that works: it uses the one that works
         var mine = Mon("Bidoof", 20, null, Idle);
-        var foe = Mon("Riolu", 20, null, M("Seismic Toss"), M("Quick Attack"));
+        var foe = Mon("Riolu", 20, null, M("Fling"), M("Quick Attack"));
         var battle = Wild(mine, foe);
         int hp = mine.CurrentHP;
         var said = UseMove(battle);

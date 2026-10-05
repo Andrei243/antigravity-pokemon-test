@@ -44,7 +44,8 @@ public sealed partial class BattleCore
         var data = move.Data;
         if (v.Disabled == data) return $"{mine.Name}'s {move.Name} is disabled!";
         if (v.Tormented && v.LastMove == data) return $"{mine.Name} can't use the same move twice in a row under the torment!";
-        if (v.TauntTurns > 0 && move.Power == 0) return $"{mine.Name} can't use {move.Name} after the taunt!";
+        // The original keeps back the moves of power 0 in its table: the status moves (a move of variable power is 1 there)
+        if (v.TauntTurns > 0 && move.Category == MoveCategory.Status) return $"{mine.Name} can't use {move.Name} after the taunt!";
         if (IsSealed(mine, data)) return $"{mine.Name} can't use the sealed {move.Name}!";
         if (Field.Gravity && FailsUnderGravity(data)) return $"{mine.Name} can't use {move.Name} because of gravity!";
         if (v.HealBlockTurns > 0 && IsHealingMove(data)) return $"{mine.Name} can't use {move.Name} while it is kept from healing!";

@@ -43,8 +43,11 @@ In the `Ruleset` today, because the engine already runs these rules:
 | A binding move (Wrap, Fire Spin) hurts for | 2 to 5 turns, 5 with a Grip Claw, a sixteenth of HP each | 4 or 5 turns, 7 with a Grip Claw, an eighth each |
 | Protect, Detect or Endure again at once | half as likely each time, down to an eighth | a third as likely each time, down to 1 in 729 |
 | Minimize raises evasion by | one stage | two |
+| A move of two to five hits lands | 2 or 3 on half the draws, then any of the four (3/8, 3/8, 1/8, 1/8) | 2, 3, 4 or 5 at 35%, 35%, 15%, 15% |
+| Explosion and Self-Destruct | against half the target's Defense | against the whole of it |
+| Hidden Power's power | 30 to 70 by the IVs | 60 |
 
-The modern column's numbers for the rules R3 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
+The modern column's numbers for the rules R3 and R4 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
 
 Known differences that join the `Ruleset` in the session that writes their rule, never as a constant beside it:
 
@@ -89,9 +92,30 @@ Our own choices in R3, where the original leaves room or this game is built diff
 - **Text**: every line a battle says about these is our own wording.
 - **Not shown yet**: a Substitute has no doll (the Pokémon stays as it is; the lines say what the Substitute took), and the weather over a battle is told in its lines but not drawn. A Pokémon that flew up or dug down is taken off its platform, its HP box left in place. The battle's drawing of both is for plan 04's follow-up, with the hooks R6 gives it.
 
+R4 (2026-10-05) wrote the families of moves whose rule is a formula or a condition on the battle's numbers, from their script commands (`battle_script.c`), their effect scripts and the original's tables (the weights, the HP bar's pixels, Trump Card's powers, the order of the types). Where that changed what the default rules already did, it is again what Platinum does:
+
+- **A move of several hits** draws its count as the original does (two or three on half the draws, then any of the four; Skill Link makes it five), tells each hit's critical hit as it lands and the type's effect once after the last, runs its side effect for each hit, and stops when the target is down or its user has been put to sleep. Triple Kick alone rolls each kick, and a kick that misses ends them with no miss told.
+- **A status move is told by its category**, never by a power of 0: the original's table gives every move of variable power (Counter, Seismic Toss, Return, Hidden Power…) the power 1, which the importer writes as 0. So a Taunt lets Counter and Seismic Toss through, and Sucker Punch works against a Pokémon about to use them, as in Platinum; before R4 both read the 0.
+- **A power worked out as nothing** (Return at no friendship, Frustration at full) falls back on the table's 1, as `BattleSystem_CalcMoveDamage` does, so the move still deals its 2.
+- **Explosion and Self-Destruct** halve the target's Defense inside the damage formula (not the finished damage), are stopped by Damp anywhere on the field (Mold Breaker ignores it) with their user's HP untouched, spend their user before the hit is worked out and, with a Protect in the way, for nothing.
+- **Beat Up** is one hit for each member of the party that stands with no condition (the user always), worked out from base stats and the level alone, with a roll and a critical hit of its own each, and no type at all: a Ghost takes it.
+- **The one-hit knockouts** go by a roll of 100 under the accuracy plus the levels' difference, never against a higher level ("is unaffected"), never through Sturdy, and are sure after Lock-On or with No Guard. The damage is the whole of the HP, so Endure and a Focus Sash hold against them.
+- **Pay Day** counts five times the user's level a use, for the player's side only, and the coins are picked up with the winnings, at most 65,535.
+
+Our own choices in R4, where the original leaves room or this game is built differently:
+
+- **Fury Cutter's count** resets only when its user is unlocked from the move (a miss, a flinch, paralysis, a Protect, a switch), which is where the original's code resets it; using another move in between doesn't.
+- **Tri Attack's die** has three faces: 0 burns, 1 freezes, 2 paralyses. The order of the original's three subscripts wasn't checked, which only a forced roll could tell apart.
+- **Acupressure** raises the user's own stat until R9 gives a double battle an ally to choose; an ally behind a Substitute would be refused.
+- **Stockpile at three** says "But it failed!" where the original says nothing; **Spit Up** tells that the stockpiled effect wore off after its hits, and the Defense and Sp. Def it raised go back with it.
+- **Beat Up's lines** name each member's attack, with "Foe" before an opponent's.
+- **Judgment** takes the type of the plate held; Arceus itself stays Normal until Multitype gives it the plate's form (R7), so a plated Judgment has no bonus for the user's own type yet.
+- **Explosion's user** goes down after the Pokémon it took with it.
+- **Text**: every line is our own wording again.
+
 Still different, each waiting for the session whose rule it is:
 
-- The moves whose effect touches these rules but is its own family wait for R4 and R5 with the rest of that family: Magic Coat and Snatch, Follow Me and the abilities that draw moves to them, Fake Out, Sucker Punch, Counter and Mirror Coat, Rollout and Fury Cutter (Defense Curl's doubling is remembered for it), Transform, Mimic and Sketch.
+- The moves whose effect touches these rules but is its own family wait for R5 with the rest of that family: Magic Coat and Snatch, Follow Me and the abilities that draw moves to them, Transform, Mimic and Sketch.
 - An ability's or an item's bonus is still applied in the finished damage where the original has it in the move's power or a stat (Thick Fat, and Dry Skin's weakness to Fire since R3): R7 and R8 give each its place.
 - Obedience, Truant and the Quick Claw's own line are not in the turn yet (R7, R8, R10).
 - The opponents choose "what looks best" (`TrainerAi`), with a little chance and some sense of when a condition or a screen would still do something. R9 writes Platinum's own AI.

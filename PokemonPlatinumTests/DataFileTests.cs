@@ -196,7 +196,7 @@ public class DataFileTests
         Assert.True(MoveDatabase.GetAll().Count(m => m.Support == MoveEffectSupport.Full) >= 547);
         Assert.True(AbilityDatabase.GetAll().Count(a => a.IsImplemented) >= 94);
 
-        Assert.Equal(("MultiHit", MoveEffectSupport.Partial), (MoveDatabase.Get("Fury Attack").Effect, MoveDatabase.Get("Fury Attack").Support));
+        Assert.Equal(("MultiHit", MoveEffectSupport.Full), (MoveDatabase.Get("Fury Attack").Effect, MoveDatabase.Get("Fury Attack").Support));
         Assert.Equal(("Protect", MoveEffectSupport.Full), (MoveDatabase.Get("Protect").Effect, MoveDatabase.Get("Protect").Support));
         Assert.Equal(("Protect", MoveEffectSupport.Full), (MoveDatabase.Get("Detect").Effect, MoveDatabase.Get("Detect").Support));
         // A move of a fixed amount or a power of its own carries none in its data; the engine's code for its effect is what runs it

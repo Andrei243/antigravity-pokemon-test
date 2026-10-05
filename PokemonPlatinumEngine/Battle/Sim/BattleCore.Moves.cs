@@ -278,7 +278,7 @@ public sealed partial class BattleCore
             return Lost(user);
         }
 
-        if (v.TauntTurns > 0 && move.Power == 0)
+        if (v.TauntTurns > 0 && move.Category == MoveCategory.Status)
         {
             Say($"{user.Name} can't use {move.Name} after the taunt!");
             Unlock(user);
@@ -635,17 +635,7 @@ public sealed partial class BattleCore
 
         // The move's effect flies to each target and lands with the damage
         foreach (var hit in use.Hits) use.Line.With(Shown(user, hit.Target, move, hit));
-        foreach (var hit in use.Hits.Where(h => h.Touched && h.Dealt > 0))
-        {
-            var t = hit.Target;
-            t.Pokemon!.CurrentHP -= hit.Dealt;
-            t.Volatile.LastHitBy = user.Place;
-            if (t.IsPlayerSide) Evolution.CountDamageTaken(t.Pokemon, hit.Dealt);
-            if (user.IsPlayerSide && hit.Damage.IsCritical) Evolution.CountCriticalHit(user.Pokemon!);
-            if (t.Volatile.BideTurns > 0) t.Volatile.BideDamage += hit.Dealt;
-            use.Line.AtImpact(new Struck(t.Place, t.Pokemon.CurrentHP, hit.Damage.IsCritical || hit.Damage.IsSuperEffective));
-        }
-        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.Damage.IsSuperEffective)));
+        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.SuperEffective)));
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
 
         AfterStrike(use);
@@ -726,6 +716,8 @@ public sealed partial class BattleCore
         t.Turn.Took(user.Place, move.Category, endured ? dealt : damage);
         p.CurrentHP -= dealt;
         t.Volatile.LastHitBy = user.Place;
+        if (t.IsPlayerSide) Evolution.CountDamageTaken(p, dealt);
+        if (user.IsPlayerSide && critical) Evolution.CountCriticalHit(user.Pokemon!);
         if (t.Volatile.BideTurns > 0) t.Volatile.BideDamage += dealt;
         use.Line.AtImpact(new Struck(t.Place, p.CurrentHP, critical || result.IsSuperEffective));
         hit.Dealt += dealt;

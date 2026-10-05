@@ -109,6 +109,9 @@ public static class DamageCalculator
         rules ??= Ruleset.Current;
         var result = new DamageResult { TypeMultiplier = 1f };
         int power = powerOverride ?? basePower ?? move.Power;
+        // A power worked out as nothing falls back on the move's own (BattleSystem_CalcMoveDamage), which the
+        // original's table gives as 1 for every move of variable power: Return at no friendship still deals its 2
+        if (power == 0 && basePower.HasValue) power = 1;
         // Struggle has no type either, but it is a move like any other and can be a critical hit
         typeless |= powerOverride.HasValue || move.Data == BattleCore.StruggleData;
         if ((move.Category == MoveCategory.Status && !powerOverride.HasValue) || power <= 0) return result;

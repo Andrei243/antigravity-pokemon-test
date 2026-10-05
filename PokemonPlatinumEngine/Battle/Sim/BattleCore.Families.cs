@@ -110,7 +110,7 @@ public sealed partial class BattleCore
             },
             BasePower = (b, use, t) => (int)use.Scratch!
         },
-        ["RandomPowerMaybeHeal"] = new() { Does = (b, use) => b.Present(use) },
+        ["RandomPowerMaybeHeal"] = new() { Does = (b, use) => b.Present(use), BasePower = (b, use, t) => (int)use.Scratch! },
         ["Judgement"] = new()
         {
             // The type of the plate its user holds (the plates' hold effects are named for it)
@@ -271,7 +271,7 @@ public sealed partial class BattleCore
     /// <summary>Low Kick and Grass Knot by the target's weight in tenths of a kilogram (<c>sWeightToPower</c>).</summary>
     internal static int WeightPower(Pokemon p)
     {
-        int weight = (int)Math.Round(p.Species.Weight * 10f);
+        int weight = (int)Math.Round(p.Weight * 10f);
         return weight <= 100 ? 20 : weight <= 250 ? 40 : weight <= 500 ? 60 : weight <= 1000 ? 80 : weight <= 2000 ? 100 : 120;
     }
 
@@ -307,7 +307,10 @@ public sealed partial class BattleCore
     /// <summary>One member's part of a Beat Up: its base Attack and level against the target's base Defense, a critical hit and the roll, nothing else.</summary>
     private int BeatUpHit(MoveUse use, Pokemon member, Battler target)
     {
-        int damage = member.Species.BaseAttack * use.Data.Power * (member.Level * 2 / 5 + 2) / Math.Max(1, target.Pokemon!.Species.BaseDefense) / 50 + 2;
+        // The base stats of the form each is in, as Pokemon.CalculateStats reads them
+        int baseAttack = member.FormData?.BaseStats?.Attack ?? member.Species.BaseAttack;
+        int baseDefense = target.Pokemon!.FormData?.BaseStats?.Defense ?? target.Pokemon.Species.BaseDefense;
+        int damage = baseAttack * use.Data.Power * (member.Level * 2 / 5 + 2) / Math.Max(1, baseDefense) / 50 + 2;
         if (DamageCalculator.RollsCritical(use.User, target, use.Move, rng, Rules))
         {
             damage = Formulas.Scale(damage, Rules.CriticalMultiplier * BattleEffects.Of(use.User).Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
@@ -430,7 +433,9 @@ public sealed partial class BattleCore
         if (pending == null || pending.Choice.Kind != ChoiceKind.Fight || pending.Move == null) return Fails();
         var chosen = pending.Move;
         if (t.Volatile.Encored is { } encored && t.Pokemon!.Moves.FirstOrDefault(m => m.Data == encored) is { } instead) chosen = instead;
-        return chosen.Power > 0 || chosen.Data == StruggleData || Fails();
+        // The original asks for a power above 0 in the move's table, which every move but a status move has
+        // (a move of variable power is 1 there, 0 in our data)
+        return chosen.Category != MoveCategory.Status || Fails();
     }
 
     /// <summary>Present: a gift of 40, 80 or 120 power, or a quarter of the target's HP given back (<c>BtlCmd_Present</c>).</summary>
