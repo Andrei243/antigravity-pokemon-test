@@ -193,14 +193,16 @@ public class DataFileTests
         }
 
         // How much runs may only grow (docs/mechanics/coverage.md has the details)
-        Assert.True(MoveDatabase.GetAll().Count(m => m.Support == MoveEffectSupport.Full) >= 466);
-        Assert.True(AbilityDatabase.GetAll().Count(a => a.IsImplemented) >= 93);
+        Assert.True(MoveDatabase.GetAll().Count(m => m.Support == MoveEffectSupport.Full) >= 547);
+        Assert.True(AbilityDatabase.GetAll().Count(a => a.IsImplemented) >= 94);
 
         Assert.Equal(("MultiHit", MoveEffectSupport.Partial), (MoveDatabase.Get("Fury Attack").Effect, MoveDatabase.Get("Fury Attack").Support));
         Assert.Equal(("Protect", MoveEffectSupport.Full), (MoveDatabase.Get("Protect").Effect, MoveDatabase.Get("Protect").Support));
         Assert.Equal(("Protect", MoveEffectSupport.Full), (MoveDatabase.Get("Detect").Effect, MoveDatabase.Get("Detect").Support));
-        Assert.Equal((0, MoveEffectSupport.None), (MoveDatabase.Get("Seismic Toss").Power, MoveDatabase.Get("Seismic Toss").Support));
-        Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Fake Out").Support); // would always hit without its first-turn rule
+        // A move of a fixed amount or a power of its own carries none in its data; the engine's code for its effect is what runs it
+        Assert.Equal((0, "LevelDamageFlat", MoveEffectSupport.Full), (MoveDatabase.Get("Seismic Toss").Power, MoveDatabase.Get("Seismic Toss").Effect, MoveDatabase.Get("Seismic Toss").Support));
+        Assert.Equal(MoveEffectSupport.Full, MoveDatabase.Get("Fake Out").Support);
+        Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Metronome").Support);
         Assert.Equal((50, "HealHalfMoreInSun"), (MoveDatabase.Get("Synthesis").HealPercent, MoveDatabase.Get("Synthesis").Effect));
     }
 
