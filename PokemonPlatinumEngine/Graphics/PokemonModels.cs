@@ -51,7 +51,7 @@ internal struct PokePose
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>).</summary>
 internal enum EyeState { Open, Shut, Squeeze, Fierce }
 
-internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave }
+internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave, Zigzag, Triangle }
 
 /// <summary>
 /// A texture laid onto the surface (plan 04 · G7): an eye or a marking, projected onto the mesh along its normal.
@@ -82,6 +82,12 @@ internal sealed class PokeDecal
 
     /// <summary>Eyes that are always shut (Abra's), squeezed tighter by a hit.</summary>
     public bool Closed;
+
+    /// <summary>The colour of an eye with a <see cref="Sclera"/> round its pupil (white when null): Gengar's red, Mismagius's yellow.</summary>
+    public Color? White;
+
+    /// <summary>Eyes that always glare, the lid pressed down as the fierce state's is (the Gastly line, Honchkrow).</summary>
+    public bool Glare;
 
     // Markings
     public MarkShape Shape;
@@ -318,16 +324,18 @@ internal sealed class PokeBuilder
     /// <summary>
     /// A cartoon eye painted on the surface at <paramref name="at"/>, looking along <paramref name="facing"/>:
     /// a dark eye with a coloured iris and white glints, or a white eye with a dark pupil (<paramref name="sclera"/>).
-    /// <paramref name="size"/> is half the eye's height; <paramref name="closed"/> eyes are always shut.
+    /// <paramref name="size"/> is half the eye's height; <paramref name="closed"/> eyes are always shut and
+    /// <paramref name="glare"/> ones always fierce; a sclera is white unless another colour is given.
     /// </summary>
-    public void Eye(int bone, Vector3 at, Vector3 facing, float size, Color? iris = null, bool sclera = false, Color? pupil = null, bool closed = false) =>
+    public void Eye(int bone, Vector3 at, Vector3 facing, float size, Color? iris = null, bool sclera = false, Color? pupil = null, bool closed = false,
+        Color? white = null, bool glare = false) =>
         m.Decals.Add(new PokeDecal
         {
             Bone = bone, Center = at, Normal = Vector3.Normalize(facing), Half = new Vector2(size * 1.6f, size * 1.8f), IsEye = true,
-            Size = size, Iris = iris, Sclera = sclera, Pupil = pupil, Closed = closed
+            Size = size, Iris = iris, Sclera = sclera || white != null, Pupil = pupil, Closed = closed, White = white, Glare = glare
         });
 
-    /// <summary>A marking painted on the surface (a dot, ring, star, bar or wavy line) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
+    /// <summary>A marking painted on the surface (a dot, ring, star, bar, wavy line, zigzag or triangle) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
     public void Mark(int bone, Vector3 at, Vector3 facing, float rx, float ry, Color color, MarkShape shape = MarkShape.Disc, float rollDeg = 0f) =>
         m.Decals.Add(new PokeDecal
         {
@@ -499,7 +507,7 @@ internal static partial class PokemonModels
             sb.Append('|').Append(b.Model.Plan).Append('|').Append(b.Model.Fill.ToString("R")).Append('|').Append(b.Model.Hovers);
             foreach (var d in b.Model.Decals)
                 sb.Append('|').Append(d.Bone).Append(d.Center).Append(d.Normal).Append(d.Half).Append(d.Roll).Append(d.IsEye).Append(d.Size)
-                    .Append(d.Iris?.R).Append(d.Iris?.G).Append(d.Iris?.B).Append(d.Sclera).Append(d.Closed ? "closed" : "").Append(d.Pupil?.R).Append(d.Shape).Append(d.Color.R).Append(d.Color.G).Append(d.Color.B);
+                    .Append(d.Iris?.R).Append(d.Iris?.G).Append(d.Iris?.B).Append(d.Sclera).Append(d.Closed ? "closed" : "").Append(d.White is { } w ? $"white{w.R},{w.G},{w.B}" : "").Append(d.Glare ? "glare" : "").Append(d.Pupil?.R).Append(d.Shape).Append(d.Color.R).Append(d.Color.G).Append(d.Color.B);
             text = "sculpt|" + sb;
         }
         var hash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
@@ -521,7 +529,13 @@ internal static partial class PokemonModels
         "Cranidos", "Rampardos", "Shieldon", "Bastiodon", "Machop", "Machoke", "Machamp", "Psyduck", "Golduck",
         "Burmy", "Wormadam", "Mothim", "Wurmple", "Silcoon", "Beautifly", "Cascoon", "Dustox",
         "Combee", "Vespiquen", "Pachirisu", "Buizel", "Floatzel", "Cherubi", "Cherrim", "Shellos", "Gastrodon",
-        "Heracross", "Aipom", "Ambipom", "Drifloon", "Drifblim", "Lopunny"
+        "Heracross", "Aipom", "Ambipom", "Drifloon", "Drifblim", "Lopunny",
+        // Plan 03 · D7, batch 2: the Sinnoh Pokédex from Gastly to Hippowdon
+        "Gastly", "Haunter", "Gengar", "Misdreavus", "Mismagius", "Murkrow", "Honchkrow", "Glameow", "Purugly",
+        "Goldeen", "Seaking", "Barboach", "Whiscash", "Chingling", "Chimecho", "Stunky", "Skuntank", "Meditite", "Medicham",
+        "Bronzor", "Bronzong", "Ponyta", "Rapidash", "Bonsly", "Sudowoodo", "Mime Jr.", "Mr. Mime", "Happiny", "Chansey", "Blissey",
+        "Cleffa", "Clefairy", "Clefable", "Chatot", "Pichu", "Pikachu", "Raichu", "Hoothoot", "Noctowl", "Spiritomb",
+        "Munchlax", "Snorlax", "Unown", "Wooper", "Quagsire", "Wingull", "Pelipper", "Girafarig", "Hippopotas", "Hippowdon"
     };
 
     public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
@@ -668,6 +682,57 @@ internal static partial class PokemonModels
         "DRIFLOON" => Drifloon(),
         "DRIFBLIM" => Drifblim(),
         "LOPUNNY" => Lopunny(),
+        // Plan 03 · D7: the second batch (PokemonModels.Sinnoh2.cs)
+        "GASTLY" => Gastly(),
+        "HAUNTER" => Haunter(),
+        "GENGAR" => Gengar(),
+        "MISDREAVUS" => Misdreavus(),
+        "MISMAGIUS" => Mismagius(),
+        "MURKROW" => Murkrow(),
+        "HONCHKROW" => Honchkrow(),
+        "GLAMEOW" => Glameow(),
+        "PURUGLY" => Purugly(),
+        "GOLDEEN" => Goldeen(),
+        "SEAKING" => Seaking(),
+        "BARBOACH" => Barboach(),
+        "WHISCASH" => Whiscash(),
+        "CHINGLING" => Chingling(),
+        "CHIMECHO" => Chimecho(),
+        "STUNKY" => Skunk(false),
+        "SKUNTANK" => Skunk(true),
+        "MEDITITE" => Meditite(),
+        "MEDICHAM" => Medicham(),
+        "BRONZOR" => Bronzor(),
+        "BRONZONG" => Bronzong(),
+        "PONYTA" => Horse(false),
+        "RAPIDASH" => Horse(true),
+        "BONSLY" => Bonsly(),
+        "SUDOWOODO" => Sudowoodo(),
+        "MIME JR." => MimeJr(),
+        "MR. MIME" => MrMime(),
+        "HAPPINY" => Happiny(),
+        "CHANSEY" => Chansey(),
+        "BLISSEY" => Blissey(),
+        "CLEFFA" => Cleffa(),
+        "CLEFAIRY" => Fairy(false),
+        "CLEFABLE" => Fairy(true),
+        "CHATOT" => Chatot(),
+        "PICHU" => Pichu(),
+        "PIKACHU" => Pikachu(),
+        "RAICHU" => Raichu(),
+        "HOOTHOOT" => Hoothoot(),
+        "NOCTOWL" => Noctowl(),
+        "SPIRITOMB" => Spiritomb(),
+        "MUNCHLAX" => Munchlax(),
+        "SNORLAX" => Snorlax(),
+        "UNOWN" => Unown(),
+        "WOOPER" => Wooper(),
+        "QUAGSIRE" => Quagsire(),
+        "WINGULL" => Wingull(),
+        "PELIPPER" => Pelipper(),
+        "GIRAFARIG" => Girafarig(),
+        "HIPPOPOTAS" => Hippopotas(),
+        "HIPPOWDON" => Hippowdon(),
         // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
         _ => PokemonGenerator.Build(species) ?? Generic(species)
     };
