@@ -49,6 +49,13 @@ public static class InputManager
         };
     }
 
+    /// <summary>-1, 0 or 1 from two opposite actions: pressed this frame, or (<paramref name="held"/>) down now.</summary>
+    public static int Axis(GameAction negative, GameAction positive, bool held = false)
+    {
+        bool Is(GameAction action) => held ? IsActionDown(action) : IsActionPressed(action);
+        return (Is(positive) ? 1 : 0) - (Is(negative) ? 1 : 0);
+    }
+
     public static Vector2 GetMovementVector()
     {
         Vector2 v = Vector2.Zero;

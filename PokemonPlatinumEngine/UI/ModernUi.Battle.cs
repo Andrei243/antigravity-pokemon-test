@@ -111,11 +111,7 @@ internal static partial class ModernUi
     private static void TargetMenu(BattleHUD hud, BattleEngine battle)
     {
         var choices = battle.TargetChoices;
-        var places = new[]
-        {
-            battle.EnemySlots.ElementAtOrDefault(1), battle.EnemySlots[0],
-            battle.PlayerSlots[0], battle.PlayerSlots.ElementAtOrDefault(1)
-        };
+        var places = battle.TargetLayout;
         for (int i = 0; i < 4; i++)
         {
             var r = new Rectangle(48 + (i % 2) * 556, 836 + (i / 2) * 104, 536, 96);

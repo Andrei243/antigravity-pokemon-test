@@ -575,6 +575,47 @@ public class MenuScreenTests
     }
 
     [Fact]
+    public void AKeyHeldInThePokedexRunsToTheEndAndStopsThere()
+    {
+        var pokedex = new Pokedex();
+        foreach (int n in new[] { 387, 396, 399 }) pokedex.RegisterSeen(n);   // Turtwig, Starly, Bidoof
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+        int last = dex.Rows.Count - 1;
+
+        // A held key's steps go on a species at a time and stop at the last, where a press wraps round
+        for (int i = 0; i < 3; i++) dex.Move(1, held: true);
+        Assert.Equal(3, dex.SelectedIndex);
+        for (int i = 0; i < dex.Rows.Count; i++) dex.Move(1, held: true);
+        Assert.Equal(last, dex.SelectedIndex);
+        Assert.InRange(dex.SelectedIndex, dex.FirstRow, dex.FirstRow + PokedexScreen.VisibleRows - 1);
+        dex.Move(1);
+        Assert.Equal(0, dex.SelectedIndex);
+        dex.Move(-1, held: true);
+        Assert.Equal(0, dex.SelectedIndex);
+
+        // Left and right held go ten at a time, and stop at the ends as they always did
+        dex.Sideways(1, held: true);
+        dex.Sideways(1, held: true);
+        Assert.Equal(2 * PokedexScreen.Jump, dex.SelectedIndex);
+        for (int i = 0; i < dex.Rows.Count; i++) dex.Sideways(-1, held: true);
+        Assert.Equal(0, dex.SelectedIndex);
+
+        // In an entry a held key stops at the last species seen, where a press goes round to the first
+        dex.Confirm();
+        Assert.Equal(PokedexFocus.Entry, dex.Focus);
+        dex.Move(1, held: true);
+        Assert.Equal("Starly", dex.Selected!.Value.Species.Name);
+        dex.Move(1, held: true);
+        dex.Move(1, held: true);
+        Assert.Equal("Bidoof", dex.Selected!.Value.Species.Name);
+        dex.Move(1);
+        Assert.Equal("Turtwig", dex.Selected!.Value.Species.Name);
+        dex.Move(-1, held: true);
+        Assert.Equal("Turtwig", dex.Selected!.Value.Species.Name);
+    }
+
+    [Fact]
     public void ThePokedexSearchFindsAndSortsAmongTheSpeciesSeen()
     {
         var pokedex = new Pokedex();

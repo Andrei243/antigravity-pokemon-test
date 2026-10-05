@@ -103,6 +103,71 @@ public class UiKitTests
         Assert.Equal(3, screen.SelectedIndex);
     }
 
+    // ------------------------------------------------------------------ a key held down
+
+    /// <summary>Presses a key and keeps it down for a time; returns every step it gave.</summary>
+    private static int Hold(HeldKey key, float seconds, float frame)
+    {
+        int steps = key.Advance(frame, 1, 1);
+        for (float t = frame; t <= seconds; t += frame) steps += key.Advance(frame, 0, 1);
+        return steps;
+    }
+
+    [Fact]
+    public void AHeldKeyStepsOnceWaitsThenRepeatsAndSpeedsUp()
+    {
+        // The press is a step by itself; nothing follows until the pause is over
+        var key = new HeldKey();
+        Assert.Equal(1, key.Advance(Step, 1, 1));
+        Assert.False(key.Repeating);
+        Assert.Equal(1, Hold(new HeldKey(), HeldKey.Delay - 0.03f, Step));
+
+        // Then a step every Interval: by 0.7 s the press and the repeats at 0.32, 0.40, 0.48, 0.56 and 0.64,
+        // however long a frame is
+        foreach (float frame in new[] { 1f / 30f, 1f / 60f, 1f / 144f })
+        {
+            key = new HeldKey();
+            Assert.Equal(6, Hold(key, 0.7f, frame));
+            Assert.True(key.Repeating);
+        }
+
+        // The tenth repeat is at 1.04 s; from there one comes every FastInterval, so 25 more by 2.06 s
+        Assert.Equal(1 + HeldKey.SlowSteps, Hold(new HeldKey(), 1.06f, Step));
+        foreach (float frame in new[] { 1f / 60f, 1f / 144f })
+            Assert.Equal(1 + HeldKey.SlowSteps + 25, Hold(new HeldKey(), 2.06f, frame));
+
+        // The other way gives the same steps with the other sign
+        key = new HeldKey();
+        int back = key.Advance(Step, -1, -1);
+        for (float t = Step; t <= 0.7f; t += Step) back += key.Advance(Step, 0, -1);
+        Assert.Equal(-6, back);
+    }
+
+    [Fact]
+    public void AHeldKeyStopsWhenLetGoAndOnlyRepeatsAPressOfItsOwn()
+    {
+        // A key still down from the screen before was never pressed here
+        var key = new HeldKey();
+        Assert.Equal(0, Enumerable.Range(0, 120).Sum(_ => key.Advance(Step, 0, 1)));
+
+        // Letting go stops it, and so does holding both ways at once (which reads as neither)
+        Hold(key, 0.7f, Step);
+        Assert.Equal(0, key.Advance(Step, 0, 0));
+        Assert.False(key.Repeating);
+        Assert.Equal(0, Enumerable.Range(0, 120).Sum(_ => key.Advance(Step, 0, 1)));
+
+        // A press the other way takes over at once, and waits its own pause
+        Hold(key, 0.7f, Step);
+        Assert.Equal(-1, key.Advance(Step, -1, -1));
+        Assert.False(key.Repeating);
+        Assert.Equal(0, key.Advance(HeldKey.Delay - 0.25f, 0, -1));
+
+        // A frame that hangs counts as a tenth of a second: the list doesn't run on by itself
+        key = new HeldKey();
+        key.Advance(Step, 1, 1);
+        Assert.Equal(0, key.Advance(5f, 0, 1));
+    }
+
     // ------------------------------------------------------------------ start menu
 
     private static StartMenu OpenMenu()

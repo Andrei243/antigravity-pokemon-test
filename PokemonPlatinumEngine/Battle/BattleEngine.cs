@@ -462,7 +462,7 @@ public partial class BattleEngine
 
         if (waitingForMessageConfirm)
         {
-            if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Cancel) || Raylib_cs.Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.Enter))
+            if (ConfirmPressed || InputManager.IsActionPressed(GameAction.Cancel))
             {
                 ConfirmMessage();
             }

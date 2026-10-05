@@ -26,11 +26,15 @@ public enum PokedexSearchButton { Search, Reset, Diploma }
 /// one beside it in three pages: what is known of it, where it lives and how big it is. The Start button opens the
 /// search, which can also switch to the National Pokédex once it is open. A diploma is shown the first time the
 /// Pokédex is opened after it is complete. Its logic takes no input (<see cref="Move"/>, <see cref="Confirm"/>,
-/// <see cref="Cancel"/>, <see cref="Sideways"/>, <see cref="OpenSearch"/>), so tests and the harness drive it.
+/// <see cref="Cancel"/>, <see cref="Sideways"/>, <see cref="OpenSearch"/>), so tests and the harness drive it. A key
+/// kept down runs on through the list and the entries (<see cref="HeldKey"/>).
 /// </summary>
 public class PokedexScreen
 {
     private const float AppearTime = 0.3f;
+
+    /// <summary>The least time between two of the cursor's ticks while a key is held: the tick itself lasts 0.04 s.</summary>
+    private const float TickGap = 0.07f;
 
     /// <summary>How many species show at once, and how far left and right jump.</summary>
     public const int VisibleRows = 8, Jump = 10;
@@ -43,6 +47,8 @@ public class PokedexScreen
     private Pokedex pokedex = new();
     private float openAge;
     private PokedexFocus beforeDiploma;
+    private readonly HeldKey upDown = new(), leftRight = new();
+    private float sinceTick = TickGap;
 
     public int SelectedIndex { get; set; }
     public int FirstRow { get; private set; }
@@ -82,6 +88,8 @@ public class PokedexScreen
     {
         IsActive = true;
         openAge = 0f;
+        upDown.Release();
+        leftRight.Release();
         this.pokedex = pokedex ?? new Pokedex();
         Portrait = portrait;
         if (!this.pokedex.Modes.Contains(Mode)) Mode = PokedexMode.Sinnoh;
@@ -112,8 +120,10 @@ public class PokedexScreen
     /// <summary>
     /// In the list, one step wraps from the last species to the first and a jump of ten stops at either end. In an
     /// entry, a step goes to the previous or next species the player has seen. In the search panel it changes row.
+    /// A step that comes from a key kept down (<paramref name="held"/>) stops at either end instead of wrapping,
+    /// so holding a key brings the cursor to the end of the list and leaves it there.
     /// </summary>
-    public void Move(int step)
+    public void Move(int step, bool held = false)
     {
         if (step == 0) return;
         switch (Focus)
@@ -121,13 +131,13 @@ public class PokedexScreen
             case PokedexFocus.List:
             {
                 if (rows.Count == 0) return;
-                int next = Math.Abs(step) == 1
+                int next = Math.Abs(step) == 1 && !held
                     ? UiNav.Wrap(SelectedIndex, step, rows.Count)
                     : Math.Clamp(SelectedIndex + step, 0, rows.Count - 1);
                 if (next == SelectedIndex) return;
                 SelectedIndex = next;
                 Follow();
-                AudioManager.PlaySound("cursor");
+                Tick(held);
                 break;
             }
             case PokedexFocus.Entry:
@@ -135,13 +145,15 @@ public class PokedexScreen
                 int i = SelectedIndex;
                 for (int n = 0; n < rows.Count; n++)
                 {
+                    int beyond = i + Math.Sign(step);
+                    if (held && (beyond < 0 || beyond >= rows.Count)) break;
                     i = UiNav.Wrap(i, Math.Sign(step), rows.Count);
                     if (!pokedex.IsSeen(rows[i].Species.DexNumber)) continue;
                     if (i != SelectedIndex)
                     {
                         SelectedIndex = i;
                         Follow();
-                        AudioManager.PlaySound("cursor");
+                        Tick(held);
                     }
                     break;
                 }
@@ -156,13 +168,13 @@ public class PokedexScreen
     }
 
     /// <summary>Left and right: a jump of ten in the list, a page in an entry, a value or a button in the search panel.</summary>
-    public void Sideways(int step)
+    public void Sideways(int step, bool held = false)
     {
         if (step == 0) return;
         switch (Focus)
         {
             case PokedexFocus.List:
-                Move(step * Jump);
+                Move(step * Jump, held);
                 break;
             case PokedexFocus.Entry:
                 Page = Pages[UiNav.Wrap(Array.IndexOf(Pages, Page), Math.Sign(step), Pages.Length)];
@@ -173,6 +185,14 @@ public class PokedexScreen
                 AudioManager.PlaySound("cursor");
                 break;
         }
+    }
+
+    /// <summary>The cursor's tick. A key held down takes steps faster than the tick lasts, so not every one of those sounds.</summary>
+    private void Tick(bool held)
+    {
+        if (held && sinceTick < TickGap) return;
+        sinceTick = 0f;
+        AudioManager.PlaySound("cursor");
     }
 
     private void Follow()
@@ -373,12 +393,20 @@ public class PokedexScreen
     {
         if (!IsActive) return;
         openAge += dt;
+        sinceTick += dt;
 
-        if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
-        else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
-        else if (InputManager.IsActionPressed(GameAction.Left)) Sideways(-1);
-        else if (InputManager.IsActionPressed(GameAction.Right)) Sideways(1);
-        else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
+        // A key kept down runs through the list (a species at a time, or ten) and through the entries; in the
+        // search panel, and for an entry's pages, only a press counts
+        bool scrolls = Focus is PokedexFocus.List or PokedexFocus.Entry;
+        int dy = upDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down),
+            scrolls ? InputManager.Axis(GameAction.Up, GameAction.Down, held: true) : 0);
+        int dx = leftRight.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right),
+            Focus == PokedexFocus.List ? InputManager.Axis(GameAction.Left, GameAction.Right, held: true) : 0);
+        for (int i = 0; i < Math.Abs(dy); i++) Move(Math.Sign(dy), upDown.Repeating);
+        for (int i = 0; i < Math.Abs(dx); i++) Sideways(Math.Sign(dx), leftRight.Repeating);
+
+        // A button pressed while the list runs on still counts: it acts on the species the cursor has come to
+        if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
         else if (InputManager.IsActionPressed(GameAction.Menu))
         {
             if (Focus == PokedexFocus.Search) Search();

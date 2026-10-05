@@ -722,4 +722,110 @@ public class BattleMechanicsTests
         Assert.Contains("Turtwig used Struggle!", said);
         Assert.Contains("Turtwig is hit with recoil!", said);
     }
+
+    // ---------------------------------------------------------------- the menus' cursors
+
+    [Fact]
+    public void TestTheCommandCursorFollowsTheButtonsAsTheyAreDrawn()
+    {
+        // FIGHT (0) is tall on the left; BAG (1), POKÉMON (2) and RUN (3) are stacked beside it
+        var battle = Wild(Mon("Turtwig", 20, null, M("Tackle")), Mon("Bidoof", 20, null, Idle));
+        Assert.Equal((BattleMenuState.Main, 0), (battle.HUD.MenuState, battle.HUD.MainMenuIndex));
+
+        // Down goes through the four in order and round again, and up comes back the same way
+        foreach (int expected in new[] { 1, 2, 3, 0 })
+        {
+            battle.MoveCursor(0, 1);
+            Assert.Equal(expected, battle.HUD.MainMenuIndex);
+        }
+        foreach (int expected in new[] { 3, 2, 1, 0 })
+        {
+            battle.MoveCursor(0, -1);
+            Assert.Equal(expected, battle.HUD.MainMenuIndex);
+        }
+
+        // Sideways from any row of the stack is FIGHT, whichever way
+        for (int row = 1; row <= 3; row++)
+        {
+            foreach (int dx in new[] { -1, 1 })
+            {
+                battle.HUD.MainMenuIndex = row;
+                battle.MoveCursor(dx, 0);
+                Assert.Equal(0, battle.HUD.MainMenuIndex);
+
+                // And sideways from FIGHT is the row that was left
+                battle.MoveCursor(dx, 0);
+                Assert.Equal(row, battle.HUD.MainMenuIndex);
+            }
+        }
+
+        // A row left by going round is remembered too: down from RUN is FIGHT, and sideways is RUN again
+        battle.HUD.MainMenuIndex = 3;
+        battle.MoveCursor(0, 1);
+        Assert.Equal(0, battle.HUD.MainMenuIndex);
+        battle.MoveCursor(1, 0);
+        Assert.Equal(3, battle.HUD.MainMenuIndex);
+    }
+
+    [Fact]
+    public void TestTheMoveCursorSkipsEmptyPlacesAndWaitsOnTheMoveChosenLast()
+    {
+        var battle = Wild(Mon("Turtwig", 20, null, M("Tackle"), M("Withdraw"), Idle), Mon("Bidoof", 20, null, Idle));
+        battle.SelectMainMenuOption(0);
+        Assert.Equal((BattleMenuState.Moves, 0), (battle.HUD.MenuState, battle.HUD.MoveMenuIndex));
+
+        // Three moves, two to a row: there is nothing under the second and nothing beside the third
+        var steps = new (int Dx, int Dy, int Expected)[] { (1, 0, 1), (0, 1, 1), (-1, 0, 0), (0, 1, 2), (1, 0, 2), (0, -1, 0) };
+        foreach (var (dx, dy, expected) in steps)
+        {
+            battle.MoveCursor(dx, dy);
+            Assert.Equal(expected, battle.HUD.MoveMenuIndex);
+        }
+
+        // The menu opens again on the move chosen last
+        battle.SelectMove(2);
+        Settle(battle);
+        Assert.Equal(BattleMenuState.Main, battle.HUD.MenuState);
+        battle.SelectMainMenuOption(0);
+        Assert.Equal(2, battle.HUD.MoveMenuIndex);
+    }
+
+    [Fact]
+    public void TestTheTargetCursorMovesOverTheCardsAsTheyLie()
+    {
+        var (battle, _) = Doubles(new[] { Mon("Turtwig", 20, null, M("Tackle")), Mon("Piplup", 20, null, M("Pound")) },
+            new[] { Mon("Bidoof", 18, null, Idle), Mon("Starly", 18, null, Idle) });
+
+        // The cards: the foes on top, Starly on the left and Bidoof on the right; Turtwig and Piplup under them
+        Battler starly = battle.EnemySlots[1], bidoof = battle.EnemySlots[0], turtwig = battle.PlayerSlots[0], piplup = battle.PlayerSlots[1];
+        Assert.Equal(new[] { starly, bidoof, turtwig, piplup }, battle.TargetLayout.ToArray());
+        Battler Aimed() => battle.TargetChoices[battle.HUD.TargetMenuIndex];
+        void Step(int dx, int dy, Battler expected)
+        {
+            battle.MoveCursor(dx, dy);
+            Assert.Same(expected, Aimed());
+        }
+
+        // Turtwig, on the left, can aim anywhere but at itself
+        battle.SelectMove(0);
+        Assert.Equal(BattleMenuState.SelectTarget, battle.HUD.MenuState);
+        Assert.Same(starly, Aimed());
+        Step(1, 0, bidoof);
+        Step(0, 1, piplup);
+        Step(-1, 0, piplup);   // beside Piplup is Turtwig itself
+        Step(0, -1, bidoof);
+        Step(-1, 0, starly);
+        Step(0, 1, piplup);    // under Starly is Turtwig itself: the card beside it
+
+        // Piplup, on the right, sees the same cards from the other side
+        battle.SelectTarget(battle.TargetChoices.ToList().IndexOf(bidoof));
+        Assert.Equal("Piplup", battle.PlayerPokemon.DisplayName);
+        battle.SelectMove(0);
+        Assert.Same(starly, Aimed());
+        Step(0, 1, turtwig);
+        Step(1, 0, turtwig);
+        Step(0, -1, starly);
+        Step(1, 0, bidoof);
+        Step(0, 1, turtwig);
+    }
 }
