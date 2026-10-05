@@ -62,6 +62,10 @@ public partial class GameEngine
     private TrainerApproach? trainerApproach;
     private NPC? battleTrainer;
 
+    // How the player was travelling when the field's music was last chosen, and whether a trainer's eye theme is on
+    private TravelMode musicTravel = TravelMode.OnFoot;
+    private bool eyeThemePlaying;
+
     // Set on arriving somewhere without walking (through a door, from a save, after a battle): trainers look once
     private bool trainersLookOnArrival = true;
 
@@ -472,6 +476,8 @@ public partial class GameEngine
                 if (battle != null)
                 {
                     battle.Update(dt);
+                    // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
+                    AudioManager.LowHp = battle.Result == BattleResult.None && battle.PlayerInDanger;
                     if (battle.IsBattleOver)
                     {
                         if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle && battle.OpponentTrainer != null)
@@ -657,6 +663,8 @@ public partial class GameEngine
             foreach (var p in playerParty.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
+        // Riding out onto the water or back onto land, or getting on or off the bicycle, changes the music
+        if (player.Mode != musicTravel) PlayFieldMusic();
         bool entered = EnterArea();
 
         // What the step leaves behind: a print, dust, leaves, a ring on the water, a splash where they rode out
@@ -679,7 +687,7 @@ public partial class GameEngine
         if (area == currentArea) return false;
         currentArea = area;
         if (area == null) return false;
-        PlayAreaMusic(currentMap, player.GridX, player.GridY);
+        PlayFieldMusic();
         if (!string.IsNullOrEmpty(area.DisplayName)) locationSign.Show(area.DisplayName);
         return StartEnterScript();
     }
@@ -807,6 +815,11 @@ public partial class GameEngine
 
         trainerApproach = new TrainerApproach(trainer, player);
         AudioManager.PlaySound("exclaim");
+
+        // Their eye theme, by their class, plays while they walk up and talk, until the battle theme cuts in
+        AudioManager.Region = RegionDatabase.RegionOfMap(currentMap.Name)?.Id;
+        AudioManager.PlayMusic(MusicDirector.EyeRole(trainer.TrainerData?.TrainerClass), immediate: true);
+        eyeThemePlaying = true;
         return true;
     }
 
@@ -929,12 +942,27 @@ public partial class GameEngine
     }
 
     /// <summary>
+    /// The field's music now: the surf theme while the player rides a Pokémon over the water, the bicycle's while
+    /// they cycle (Platinum keeps those across towns and routes), and otherwise the theme of the place they stand in.
+    /// </summary>
+    private void PlayFieldMusic()
+    {
+        eyeThemePlaying = false;
+        musicTravel = player.Mode;
+        AudioManager.Region = RegionDatabase.RegionOfMap(currentMap.Name)?.Id;
+        var ride = player.Mode switch { TravelMode.Surfing => MusicRole.Surf, TravelMode.Cycling => MusicRole.Bicycle, _ => (MusicRole?)null };
+        if (ride != null && MusicDirector.Resolve(ride.Value, AudioManager.Region, MusicLibrary.Exists) != null) AudioManager.PlayMusic(ride.Value);
+        else PlayAreaMusic(currentMap, player.GridX, player.GridY);
+    }
+
+    /// <summary>
     /// Plays the theme of a place on a map (its night arrangement at night) with its region's versions of the
     /// shared themes. A place that names no theme keeps whatever is playing; the same theme carries on without a
     /// restart.
     /// </summary>
     private static void PlayAreaMusic(Map map, int x, int y)
     {
+        AudioManager.LowHp = false;
         AudioManager.Region = RegionDatabase.RegionOfMap(map.Name)?.Id;
         string track = map.BgmTrackAt(x, y);
         if (!string.IsNullOrEmpty(track)) AudioManager.PlayMusic(track);
@@ -1014,6 +1042,7 @@ public partial class GameEngine
         playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
 
         // The battle theme cuts in as the screen starts to flash, before the battle itself appears
+        eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicRole.BattleWild, immediate: true);
         var shown = PrepareModels(new[] { wildPkmn });
         StartTransition(GameState.Battle, () =>
@@ -1102,6 +1131,7 @@ public partial class GameEngine
             trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
         }
 
+        eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(new[] { trainer.TrainerClass }), immediate: true);
         var shown = PrepareModels(trainer.Party.Members);
         StartTransition(GameState.Battle, () =>
@@ -1193,7 +1223,7 @@ public partial class GameEngine
                     ? $"{playerName} whited out and lost {penalty} in money. Restored at home!"
                     : $"{playerName} whited out. Restored at home!");
             }
-            PlayAreaMusic(currentMap, player.GridX, player.GridY);
+            PlayFieldMusic();
         });
     }
 

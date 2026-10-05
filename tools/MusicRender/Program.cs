@@ -44,11 +44,12 @@ string outDir = args[0];
 bool night = args.Contains("--night");
 bool stems = args.Contains("--stems");
 bool spectrograms = args.Contains("--spectrogram");
+bool lowHp = args.Contains("--lowhp");
 int passes = 2;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
     filters.Add(args[i]);
 }
@@ -99,7 +100,7 @@ var songs = MusicLibrary.All
 bool problems = false;
 foreach (var song in songs)
 {
-    var mixer = new AudioMixer { Volume = 0.8f };
+    var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp };
     double seconds;
     if (song.Loops)
     {
@@ -144,7 +145,7 @@ foreach (var song in songs)
         sum += s * s;
     }
     double rms = Math.Sqrt(sum / samples.Length);
-    string name = song.Id.Replace('/', '_') + (night ? "_night" : "");
+    string name = song.Id.Replace('/', '_') + (night ? "_night" : "") + (lowHp ? "_lowhp" : "");
     WriteWav(Path.Combine(outDir, name + ".wav"), samples);
     if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, 8192f);
 

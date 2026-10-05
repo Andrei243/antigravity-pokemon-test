@@ -185,6 +185,9 @@ public sealed class BattleAnimator
 
     private readonly CombatantView[,] views = { { new(), new() }, { new(), new() } };
 
+    /// <summary>The share of its HP at which a Pokémon is in the red: the bar's colour and the music's low-HP arrangement.</summary>
+    public const float LowHpRatio = 0.2f;
+
     /// <summary>Pokémon per side: 1 in a single battle, 2 in a double.</summary>
     public int Slots { get; internal set; } = 1;
 

@@ -687,4 +687,31 @@ public class BattlePresentationTests
             Assert.All(fx.Quads, q => Assert.True(q.Depth, $"{spec}: ambient particles sit in the scene, behind what stands in front of them"));
         }
     }
+
+    // ------------------------------------------------------------------ the low-HP music (plan 05 · A2)
+
+    [Fact]
+    public void ThePlayerIsInDangerWhileTheBarShowsRed()
+    {
+        var battle = Battle("Piplup", 12, "Bidoof", 8);
+        Tick(battle, 4f);
+        var piplup = battle.Anim.Player.Shown!;
+        Assert.False(battle.PlayerInDanger);
+
+        // The bar drains toward the new HP; the music turns as it reaches the red, not before
+        piplup.CurrentHP = (int)(piplup.MaxHP * BattleAnimator.LowHpRatio) - 1;
+        Assert.False(battle.PlayerInDanger);
+        Tick(battle, 3f);
+        Assert.True(battle.PlayerInDanger);
+
+        // Healed, the bar fills and the danger passes
+        piplup.CurrentHP = piplup.MaxHP;
+        Tick(battle, 3f);
+        Assert.False(battle.PlayerInDanger);
+
+        // Fainted is not in danger: there is nothing left to save
+        piplup.CurrentHP = 0;
+        Tick(battle, 3f);
+        Assert.False(battle.PlayerInDanger);
+    }
 }

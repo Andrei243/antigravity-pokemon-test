@@ -14,17 +14,21 @@ The game's music is original, written for this game in the style of the DS sound
 
 At night (`TimeOfDay.Night` and `LateNight`) area themes play their night arrangement: each track may name a softer `night=` instrument, the tempo drops by the song's `nighttempo`, drums are quieter and the reverb a little wetter. The arrangement is chosen when the song starts, as Platinum does on entering an area.
 
+A battle theme has a **low-HP arrangement** as well, switched on and off in the middle of the song while a Pokémon of the player's is in the red (its bar's colour, `BattleAnimator.LowHpRatio`): the song keeps its place, the next notes start on the tracks' `lowhp=` instruments, tracks marked `only=lowhp` join in (an alarm figure of two pips a beat) and tracks marked `unless=lowhp` fall silent (a pad), and the tempo rises by the song's `lowhptempo`. That is Black and White's way, chosen over Platinum's looping beep (2026-10-05): the music itself turns agitated. `AudioManager.LowHp` sets it; the engine sets it every frame of a battle from `BattleEngine.PlayerInDanger` and clears it when the battle is decided, so the victory theme plays calm.
+
+**Which theme plays when** (`MusicDirector`, plan 05 · A2): a place's own theme by day or by night; the surf theme while the player rides over the water and the bicycle's while they cycle, kept across towns and routes (`GameEngine.PlayFieldMusic`); a trainer's eye theme by their class from the moment they spot the player until the battle theme cuts in (and the place's own again if their script brings no battle); the battle theme by the most important opponent and its victory theme after; fanfares that pause the music. What a trainer class brings is `Data/audio/sound-map.json` (`Data/SoundMap.cs`): its eye theme, following the original's table (`src/field_bgm.c`) by our names for the classes, and a battle theme of its own for the few that have one (Gym Leader, Rival, Team Galactic, the Elite Four, the Champion). A class not listed gets the boy's eye theme and the trainer battle theme.
+
 ## Folders and roles
 
 ```
 Data/music/
-  common/      title, pokecenter, battle_wild, battle_trainer, battle_gym, victory_wild, victory_trainer,
-               fanfare_heal, fanfare_item, fanfare_levelup, fanfare_pokemon
+  common/      title, pokecenter, surf, bicycle, eye_boy, eye_girl, battle_wild, battle_trainer, battle_gym,
+               victory_wild, victory_trainer, fanfare_heal, fanfare_item, fanfare_levelup, fanfare_pokemon
   kanto/       pallet, battle_wild
   sinnoh/      twinleaf, route201, route202 (Routes 202–204), sandgem, jubilife, lake, lab
 ```
 
-A region gets its own version of a shared theme by adding a file with the role's name to its folder (`johto/battle_wild.mml`). Role file names are in `MusicDirector.FileName`. `MusicTests` checks that every map's song exists, that every role resolves in every region, and that every song renders without clipping.
+A region gets its own version of a shared theme by adding a file with the role's name to its folder (`johto/battle_wild.mml`). Role file names are in `MusicDirector.FileName`, and a role without a file falls back to a more general one (`MusicDirector.Fallback`): every eye theme to `eye_boy` (the lady's and the rich one's through `eye_girl`), the Galactic, rival and gym battles to `battle_trainer`, the Elite Four's and the Champion's to `battle_gym`, a legendary's to `battle_wild`. The thirteen other eye themes, the Galactic, Elite Four, Champion and legendary battles and their victories are files still to write (A5, A6). `MusicTests` checks that every map's song exists, that every role resolves in every region, and that every song renders without clipping.
 
 ## The format
 
@@ -37,6 +41,7 @@ tempo 88            # quarter notes per minute
 meter 4/4           # for the bar checks; 6/8 and 3/4 work too
 reverb 0.32         # how much reverb returns to the mix
 nighttempo 0.93     # the night arrangement plays this much slower
+lowhptempo 1.08     # a battle theme: the low-HP arrangement plays this much faster
 
 track melody flute night=ocarina vol=0.85 pan=0 rev=0.35
   r1 | r1 | L o5 a4. g8 f4 c4 | d4 e8 f8 g2 |
@@ -45,7 +50,7 @@ track drums kit vol=0.5
   r1 | r1 | L [ b4 r4 b4 r4 | ]16
 ```
 
-Track options: `night=<instrument>`, `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send).
+Track options: `night=<instrument>`, `lowhp=<instrument>` (a battle theme in the red), `only=lowhp` or `unless=lowhp` (a track of one arrangement alone), `vol` (0–1), `pan` (−1 left to 1 right), `rev` (reverb send).
 
 | Write | Means |
 | --- | --- |
@@ -82,11 +87,11 @@ Bass instruments (`bass`, `synthbass`, `tuba`, `contrabass`, `timpani`) sound an
 Claude can't listen, so songs are checked by numbers and the user listens.
 
 ```bash
-dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--night] [--stems] [--passes N]
+dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--night] [--lowhp] [--stems] [--passes N] [--spectrogram]
 dotnet run --project tools/MusicRender -- --calibrate
 ```
 
-`MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note. `--stems` adds each track's level, for balancing the mix. `--spectrogram` also writes a picture of each song: time left to right, 0 to 8 kHz bottom to top, black through blue, magenta and orange to white over 80 dB, which the Read tool can look at (a quiet intro, the beat, the loop's seam and a part that is too loud all show).
+`MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note. `--night` and `--lowhp` render the arrangements. `--stems` adds each track's level, for balancing the mix. `--spectrogram` also writes a picture of each song: time left to right, 0 to 8 kHz bottom to top, black through blue, magenta and orange to white over 80 dB, which the Read tool can look at (a quiet intro, the beat, the loop's seam and a part that is too loud all show).
 
 ```bash
 dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]

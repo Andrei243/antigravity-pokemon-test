@@ -318,3 +318,16 @@ Where every wild Pokémon of the region lives, read by `Habitats` for the Pokéd
 ```
 
 `map` is the overworld's matrix as a picture: one string per row and one character per chunk, `~` where most of the chunk is water, `.` land, `T` a town or a city, a space where there is no chunk. Each area has its `key` and `name`, the chunks of the overworld it is shown on (`cells`, `"x,y"` each: an outdoor area's own, the chunks whose warps lead into a cave or a building, through any rooms between; the Great Marsh, which a script lets the player into, is shown at Pastoria City, and rooms reached only by scripted warps where the rest of the place is), and the species met there, each list left out when empty: in the grass or the cave in the `morning` (the table's own twelve slots), by `day` and at `night` (the two species each puts in slots 2 and 3), `surf`ing, and with the `oldRod`, `goodRod` and `superRod`. Swarms, the Poké Radar and the species a second game in the console calls up are not in it, as Platinum's Pokédex leaves them out.
+
+## Sound map
+
+`Data/audio/sound-map.json` is what music a trainer class brings (`Data/SoundMap.cs`; `docs/music-format.md` has the roles):
+
+```json
+{
+  "eyeThemes": { "Youngster": "boy", "Lass": "girl", "Hiker": "mountain", "Galactic Grunt": "galactic" },
+  "battleThemes": { "Gym Leader": "gym", "Rival": "rival", "Galactic Grunt": "galactic", "Champion": "champion" }
+}
+```
+
+`eyeThemes` is the original's table of eye themes (`src/field_bgm.c`), by our names for the classes, one entry where the original has one for each gender; its values are the short names of `MusicDirector.EyeThemes` (`boy`, `girl`, `kid`, `lady`, `rich`, `mountain`, `fighter`, `sport`, `fun`, `mystery`, `sailor`, `galactic`, `ace`, `eliteFour`, `champion`). `battleThemes` names the few classes whose battle has a theme of its own (`MusicDirector.BattleThemes`: `gym`, `rival`, `galactic`, `galacticBoss`, `eliteFour`, `champion`). A class in neither gets `eye_boy` and the trainer battle theme. `MusicTests` holds every trainer class the maps use to an entry.
