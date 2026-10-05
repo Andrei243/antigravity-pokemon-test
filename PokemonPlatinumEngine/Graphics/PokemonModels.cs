@@ -51,7 +51,7 @@ internal struct PokePose
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>).</summary>
 internal enum EyeState { Open, Shut, Squeeze, Fierce }
 
-internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave, Zigzag, Triangle }
+internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave, Zigzag, Triangle, Diamond }
 
 /// <summary>
 /// A texture laid onto the surface (plan 04 · G7): an eye or a marking, projected onto the mesh along its normal.
@@ -335,7 +335,7 @@ internal sealed class PokeBuilder
             Size = size, Iris = iris, Sclera = sclera || white != null, Pupil = pupil, Closed = closed, White = white, Glare = glare
         });
 
-    /// <summary>A marking painted on the surface (a dot, ring, star, bar, wavy line, zigzag or triangle) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
+    /// <summary>A marking painted on the surface (a dot, ring, star, bar, wavy line, zigzag, triangle or diamond) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
     public void Mark(int bone, Vector3 at, Vector3 facing, float rx, float ry, Color color, MarkShape shape = MarkShape.Disc, float rollDeg = 0f) =>
         m.Decals.Add(new PokeDecal
         {
@@ -535,7 +535,13 @@ internal static partial class PokemonModels
         "Goldeen", "Seaking", "Barboach", "Whiscash", "Chingling", "Chimecho", "Stunky", "Skuntank", "Meditite", "Medicham",
         "Bronzor", "Bronzong", "Ponyta", "Rapidash", "Bonsly", "Sudowoodo", "Mime Jr.", "Mr. Mime", "Happiny", "Chansey", "Blissey",
         "Cleffa", "Clefairy", "Clefable", "Chatot", "Pichu", "Pikachu", "Raichu", "Hoothoot", "Noctowl", "Spiritomb",
-        "Munchlax", "Snorlax", "Unown", "Wooper", "Quagsire", "Wingull", "Pelipper", "Girafarig", "Hippopotas", "Hippowdon"
+        "Munchlax", "Snorlax", "Unown", "Wooper", "Quagsire", "Wingull", "Pelipper", "Girafarig", "Hippopotas", "Hippowdon",
+        // Plan 03 · D8, batch 3: the Sinnoh Pokédex from Azurill to Magnezone, but for its legendaries
+        "Azurill", "Marill", "Azumarill", "Skorupi", "Drapion", "Croagunk", "Toxicroak", "Carnivine", "Remoraid", "Octillery",
+        "Finneon", "Lumineon", "Tentacool", "Tentacruel", "Feebas", "Milotic", "Mantyke", "Mantine", "Snover", "Abomasnow",
+        "Sneasel", "Weavile", "Rotom", "Gligar", "Gliscor", "Nosepass", "Probopass", "Ralts", "Kirlia", "Gardevoir", "Gallade",
+        "Lickitung", "Lickilicky", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Leafeon", "Glaceon",
+        "Swablu", "Altaria", "Togepi", "Togetic", "Togekiss", "Houndour", "Houndoom", "Magnemite", "Magneton", "Magnezone"
     };
 
     public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
@@ -733,6 +739,58 @@ internal static partial class PokemonModels
         "GIRAFARIG" => Girafarig(),
         "HIPPOPOTAS" => Hippopotas(),
         "HIPPOWDON" => Hippowdon(),
+        // Plan 03 · D8: the third batch (PokemonModels.Sinnoh3.cs)
+        "AZURILL" => Azurill(),
+        "MARILL" => Marill(),
+        "AZUMARILL" => Azumarill(),
+        "SKORUPI" => Skorupi(),
+        "DRAPION" => Drapion(),
+        "CROAGUNK" => Croagunk(),
+        "TOXICROAK" => Toxicroak(),
+        "CARNIVINE" => Carnivine(),
+        "REMORAID" => Remoraid(),
+        "OCTILLERY" => Octillery(),
+        "FINNEON" => Finneon(),
+        "LUMINEON" => Lumineon(),
+        "TENTACOOL" => Tentacool(),
+        "TENTACRUEL" => Tentacruel(),
+        "FEEBAS" => Feebas(),
+        "MILOTIC" => Milotic(),
+        "MANTYKE" => Mantyke(),
+        "MANTINE" => Mantine(),
+        "SNOVER" => Snover(),
+        "ABOMASNOW" => Abomasnow(),
+        "SNEASEL" => Sneasel(),
+        "WEAVILE" => Weavile(),
+        "ROTOM" => Rotom(),
+        "GLIGAR" => Gligar(),
+        "GLISCOR" => Gliscor(),
+        "NOSEPASS" => Nosepass(),
+        "PROBOPASS" => Probopass(),
+        "RALTS" => Ralts(),
+        "KIRLIA" => Kirlia(),
+        "GARDEVOIR" => Gardevoir(),
+        "GALLADE" => Gallade(),
+        "LICKITUNG" => Lickitung(),
+        "LICKILICKY" => Lickilicky(),
+        "EEVEE" => Eevee(),
+        "VAPOREON" => Vaporeon(),
+        "JOLTEON" => Jolteon(),
+        "FLAREON" => Flareon(),
+        "ESPEON" => Espeon(),
+        "UMBREON" => Umbreon(),
+        "LEAFEON" => Leafeon(),
+        "GLACEON" => Glaceon(),
+        "SWABLU" => Swablu(),
+        "ALTARIA" => Altaria(),
+        "TOGEPI" => Togepi(),
+        "TOGETIC" => Togetic(),
+        "TOGEKISS" => Togekiss(),
+        "HOUNDOUR" => Houndour(),
+        "HOUNDOOM" => Houndoom(),
+        "MAGNEMITE" => Magnemite(),
+        "MAGNETON" => Magneton(),
+        "MAGNEZONE" => Magnezone(),
         // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
         _ => PokemonGenerator.Build(species) ?? Generic(species)
     };

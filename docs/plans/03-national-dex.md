@@ -9,7 +9,7 @@
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
 - The Pokédex (D10, 2026-10-04): Platinum's Sinnoh Pokédex of 210 species, and the National one after the Hall of Fame, each with its own numbers and counts; an entry's INFO, AREA and SIZE pages; Platinum's search; diplomas (`Models/Pokedex.cs`, `Models/PokedexSearch.cs`, `Data/Habitats.cs`, `UI/PokedexScreen.cs`).
-- Every species has a 3D model: 124 hand-built (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; and D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon), the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
+- Every species has a 3D model: 175 hand-built (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon; and D8's 51 in `PokemonModels.Sinnoh3.cs`, from Azurill to Magnezone but for the legendaries), the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
 
 ## Decisions
 
@@ -92,6 +92,13 @@ Platinum's 210 Sinnoh species in four batches of about 50, in the order they app
 - **Tests**: the hand-built list grew to 124; Unown has one eye.
 - **Not done here**: forms (Unown is its A; the other letters and signs come with D11) and the differences between male and female (Pikachu's tail, Hippopotas's colours).
 
+**D8 outcome (2026-10-05).**
+- **51 species** hand-built in `Graphics/PokemonModels.Sinnoh3.cs`: the Sinnoh Pokédex from Azurill (124) to Magnezone (180) but for Uxie, Mesprit, Azelf, Dialga, Palkia and Manaphy (146–151). The plan puts the legendaries in the last batch, so D9 has them with the rest, Tangela (181) to Absol (209). The batch runs one past fifty so the Magnemite line stays together. 175 species are now hand-built. As before, each is our own sculpt after the design, reviewed on its turntable from four sides, on boards of the whole batch from the front and from behind, and twelve of them in battle.
+- **Kit**: diamonds among the markings (Glaceon's back). In the batch's file: pointed blades flat to whichever side they face (swept-back fins, pointed leaves and crests: a spike's own squash can only flatten one way), points on an ellipsoid's surface to put decals on, lightning bolts flat to the front (Rotom's arms), scorpions' pincers, horseshoe magnets and screws, and the bodies that Eevee's evolutions and the two hounds share.
+- **Loose parts**: the generator's soundness check (one piece, every bone carrying some surface, standing on the ground or hovering) found parts of seven of the batch floating free: Magneton's three bodies, tail segments, fins and Lickilicky's feet. They reach their bodies now; Probopass's little noses float apart by design. The same check finds loose parts in some earlier hand-built models (from plan 04 and D6–D7), left for a pass of their own.
+- **Tests**: the hand-built list grew to 175. Ralts (eyes under its hair) and Nosepass (eyes shut in a black band) have no eye decals, Kirlia (one eye under its hair) and Magnemite one, Magneton and Magnezone three. The generator's samples of each body kind are now the first species of that kind that isn't hand-built: Magneton, Tentacool and Octillery had been samples, and since D6 Machoke, Zubat and Magikarp, so the hand-built models were being checked instead of the generator.
+- **Not done here**: Rotom's appliance forms (D11); differences between male and female.
+
 ### D10 · Pokédex
 Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search, the area view, seen and caught counters, the completion reward (a diploma).
 
@@ -136,8 +143,8 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 - [x] D5 Procedural models for everyone (2026-10-04: generator for every species, model files from `overrides/models`, lazy models and cached menu sprites)
 - [x] D6 Hand-built Sinnoh models, batch 1 (2026-10-04: the Sinnoh Pokédex from Kricketot to Lopunny, 50 species)
 - [x] D7 Hand-built Sinnoh models, batch 2 (2026-10-04: the Sinnoh Pokédex from Gastly to Hippowdon, 50 species)
-- [ ] D8 Hand-built Sinnoh models, batch 3 (from Azurill, Sinnoh 124)
-- [ ] D9 Hand-built Sinnoh models, batch 4
+- [x] D8 Hand-built Sinnoh models, batch 3 (2026-10-05: the Sinnoh Pokédex from Azurill to Magnezone but for its legendaries, 51 species)
+- [ ] D9 Hand-built Sinnoh models, batch 4 (Tangela to Absol, Sinnoh 181–209, and the legendaries Uxie, Mesprit, Azelf, Dialga, Palkia and Manaphy)
 - [x] D10 Pokédex (2026-10-04: Sinnoh and National Pokédexes, the area and size pages, Platinum's search, diplomas)
 - [ ] D11 Generations 5–9
 - [ ] D12 Every species obtainable

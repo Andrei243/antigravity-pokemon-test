@@ -280,6 +280,10 @@ internal static class PokemonDecals
                 for (int i = 0; i < 5; i++) AaPaint.Polygon(c, new[] { under[(i + 4) % 5], outer[i], under[i] }, d.Color);
                 break;
             }
+            case MarkShape.Diamond:
+                // Four points, upright, like the facets of ice
+                AaPaint.Polygon(c, new[] { center + new Vector2(0, -ry), center + new Vector2(rx, 0), center + new Vector2(0, ry), center + new Vector2(-rx, 0) }, d.Color);
+                break;
             case MarkShape.Triangle:
                 // Pointing down from a flat top, like an arrowhead of feathers; the roll turns it
                 AaPaint.Polygon(c, new[] { center + new Vector2(-rx, -ry), center + new Vector2(rx, -ry), center + new Vector2(0, ry) }, d.Color);
