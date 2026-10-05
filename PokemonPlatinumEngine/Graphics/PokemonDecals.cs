@@ -167,6 +167,7 @@ internal static class PokemonDecals
         Vector2 R(float rx, float ry) => new(rx * size * k.X, ry * size * k.Y);
         float line = Math.Max(2f, 0.17f * size * k.Y);
         if (d.Closed && state != EyeState.Squeeze) state = EyeState.Shut;
+        if (d.Glare && state == EyeState.Open) state = EyeState.Fierce;
 
         switch (state)
         {
@@ -190,7 +191,7 @@ internal static class PokemonDecals
             // A white eye ringed in ink with a dark pupil looking a little inward
             var white = R(0.78f, 1f);
             AaPaint.Ellipse(c, P(0, 0), white.X + line * 0.6f, white.Y + line * 0.6f, Ink);
-            AaPaint.Ellipse(c, P(0, 0), white.X, white.Y, new Color(250, 250, 252, 255));
+            AaPaint.Ellipse(c, P(0, 0), white.X, white.Y, d.White ?? new Color(250, 250, 252, 255));
             var pupilAt = new Vector2(0.14f * inward, -0.08f);
             var pr = R(0.44f, 0.6f);
             AaPaint.Ellipse(c, P(pupilAt.X, pupilAt.Y), pr.X, pr.Y, d.Pupil ?? DarkEye);
@@ -277,6 +278,20 @@ internal static class PokemonDecals
                 }
                 AaPaint.Polygon(c, inner, d.Color);
                 for (int i = 0; i < 5; i++) AaPaint.Polygon(c, new[] { under[(i + 4) % 5], outer[i], under[i] }, d.Color);
+                break;
+            }
+            case MarkShape.Triangle:
+                // Pointing down from a flat top, like an arrowhead of feathers; the roll turns it
+                AaPaint.Polygon(c, new[] { center + new Vector2(-rx, -ry), center + new Vector2(rx, -ry), center + new Vector2(0, ry) }, d.Color);
+                break;
+            case MarkShape.Zigzag:
+            {
+                // A W across the square: down, up, down, up in straight strokes, the joints rounded by the pen
+                float w = Math.Max(2f, ry * 0.4f);
+                float x0 = -rx + w * 0.5f, x1 = rx - w * 0.5f, top = -(ry - w * 0.5f), low = ry - w * 0.5f;
+                var corners = new Vector2[5];
+                for (int i = 0; i < 5; i++) corners[i] = center + new Vector2(x0 + (x1 - x0) * i / 4f, i % 2 == 0 ? top : low);
+                for (int i = 0; i < 4; i++) AaPaint.Line(c, corners[i], corners[i + 1], w, d.Color);
                 break;
             }
             case MarkShape.Wave:

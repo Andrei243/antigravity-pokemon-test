@@ -9,7 +9,7 @@
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
 - The Pokédex (D10, 2026-10-04): Platinum's Sinnoh Pokédex of 210 species, and the National one after the Hall of Fame, each with its own numbers and counts; an entry's INFO, AREA and SIZE pages; Platinum's search; diplomas (`Models/Pokedex.cs`, `Models/PokedexSearch.cs`, `Data/Habitats.cs`, `UI/PokedexScreen.cs`).
-- Every species has a 3D model: 74 hand-built (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction, and D6's 50 in `PokemonModels.Sinnoh1.cs`: the Sinnoh Pokédex from Kricketot to Lopunny), the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
+- Every species has a 3D model: 124 hand-built (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; and D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon), the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
 
 ## Decisions
 
@@ -84,6 +84,14 @@ Platinum's 210 Sinnoh species in four batches of about 50, in the order they app
 - **Tests**: the hand-built list grew to 74 and may only grow; every hand-built model meshes into one skinned body with its eyes (none for Zubat, a pair on each of Combee's three faces) and every decal covered, standing on the ground or hovering as the generated fliers do.
 - **Not done here**: forms. Burmy and Wormadam wear the Plant Cloak, Shellos and Gastrodon are the West Sea's and Cherrim is closed against the clouds; their other forms come with D11. Differences between male and female (Combee's red mark) are not modelled.
 
+**D7 outcome (2026-10-04).**
+- **50 species** hand-built in `Graphics/PokemonModels.Sinnoh2.cs`: the Sinnoh Pokédex from Gastly (69) to Hippowdon (123), leaving out the Gible and Riolu lines, which were hand-built already. Every species of the Sinnoh Pokédex up to 123 is now hand-built, 124 in all. As in D6, each is our own sculpt after the design, reviewed on its turntable from four sides, on boards of the whole batch from the front and from behind, and twelve of them in battle.
+- **Kit**: eyes that always glare (the Gastly line, Honchkrow, Purugly, Skuntank, Noctowl, Spiritomb) and whites of another colour (Hoothoot's red, Spiritomb's lime); zigzags and triangles among the markings (Barboach's and Spiritomb's mouths, Noctowl's arrowheads). In the batch's file: smooth curves through points for whiskers and long tails, bushy striped tails, lightning bolts, mouse ears, curls wound flat into a spiral, flames, foliage, feathery gills, rows of claws and a toothless grin.
+- **Faces on a body that is its own head**: a decal only takes the triangles that mostly follow its bone, so where the head is part of the body (Happiny's line, Sudowoodo's trunk) the eyes and marks are on the body bone.
+- **Start-up is unchanged**: none of the batch is preloaded.
+- **Tests**: the hand-built list grew to 124; Unown has one eye.
+- **Not done here**: forms (Unown is its A; the other letters and signs come with D11) and the differences between male and female (Pikachu's tail, Hippopotas's colours).
+
 ### D10 · Pokédex
 Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search, the area view, seen and caught counters, the completion reward (a diploma).
 
@@ -127,8 +135,8 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 - D2–D4 moved to plan 06 (R4–R8, R10, R15)
 - [x] D5 Procedural models for everyone (2026-10-04: generator for every species, model files from `overrides/models`, lazy models and cached menu sprites)
 - [x] D6 Hand-built Sinnoh models, batch 1 (2026-10-04: the Sinnoh Pokédex from Kricketot to Lopunny, 50 species)
-- [ ] D7 Hand-built Sinnoh models, batch 2 (from Gastly, Sinnoh 69)
-- [ ] D8 Hand-built Sinnoh models, batch 3
+- [x] D7 Hand-built Sinnoh models, batch 2 (2026-10-04: the Sinnoh Pokédex from Gastly to Hippowdon, 50 species)
+- [ ] D8 Hand-built Sinnoh models, batch 3 (from Azurill, Sinnoh 124)
 - [ ] D9 Hand-built Sinnoh models, batch 4
 - [x] D10 Pokédex (2026-10-04: Sinnoh and National Pokédexes, the area and size pages, Platinum's search, diplomas)
 - [ ] D11 Generations 5–9
