@@ -342,6 +342,46 @@ internal static partial class PokemonModels
 
     private static PokeBuilder MukAlola() => SludgeBuild(true, true);
 
+    // ------------------------------------------------------------------ The Hisuian Voltorb line, Alolan Exeggutor
+
+    /// <summary>Voltorb's Hisuian form: an apricorn, orange over grained wood, its eyes in a raised frame like a latch and a hole in its top.</summary>
+    private static PokeBuilder VoltorbHisui()
+    {
+        var b = new PokeBuilder("Voltorb-Hisui", 0.5f, BodyPlan.Floating, V(0, 0.25f, 0)) { Coat = Shell };
+        var orange = Rgb(226, 114, 48);
+        var wood = Rgb(214, 174, 126);
+        var (c, r) = TwoToneBall(b, 0.25f, orange, wood);
+        Grain(b, c, r, 0.03f, 0.2f, 3, PixelCanvas.Mix(wood, Rgb(120, 80, 40), 0.25f));
+        var front = On(c, r, 0, 0.27f);
+        b.Torus(Body, front + V(0, 0, -0.008f), 0.085f, 0.022f, orange, V(90f, 0, 0), 1.45f, 0.72f);
+        b.Mark(Body, c + V(0, r.Y, 0), V(0, 1f, 0), 0.016f, 0.016f, Rgb(70, 40, 30));
+        PokeBuilder.Both(s => b.Eye(Body, On(c, r, 0.045f * s, 0.27f), V(0.2f * s, 0.1f, 1f), 0.028f, sclera: true, pupil: Black));
+        return b;
+    }
+
+    /// <summary>Electrode's Hisuian form: grained wood over orange, heavy brows and a grimace with one fang.</summary>
+    private static PokeBuilder ElectrodeHisui()
+    {
+        var b = new PokeBuilder("Electrode-Hisui", 0.66f, BodyPlan.Floating, V(0, 0.3f, 0)) { Coat = Shell };
+        var wood = Rgb(228, 200, 152);
+        var (c, r) = TwoToneBall(b, 0.3f, wood, Rgb(214, 92, 42));
+        Grain(b, c, r, 0.34f, 0.56f, 3, PixelCanvas.Mix(wood, Rgb(120, 80, 40), 0.22f));
+        PokeBuilder.Both(s => b.Ell(Body, On(c, r, 0.09f * s, 0.47f) + V(0, 0, -0.012f), V(0.065f, 0.016f, 0.024f), Rgb(170, 132, 90), V(-35f, 0, -22f * s), Shell, 0.01f));
+        var mouth = On(c, r, 0, 0.17f);
+        Grin(b, Body, mouth, V(0.11f, 0.03f, 0.045f), Rgb(120, 30, 30));
+        b.Spike(Body, mouth + V(0.03f, 0.024f, -0.012f), mouth + V(0.028f, -0.004f, 0.0f), 0.012f, White, mat: Shell, blend: 0.004f);
+        PokeBuilder.Both(s => b.Eye(Body, On(c, r, 0.09f * s, 0.41f), V(0.3f * s, 0.15f, 1f), 0.036f, sclera: true, pupil: Black, glare: true));
+        return b;
+    }
+
+    private static PokeBuilder ExeggutorAlola() => ExeggutorBuild(true);
+
+    // ------------------------------------------------------------------ Alolan Marowak, Galarian Weezing
+
+    private static PokeBuilder MarowakAlola() => SkullBuild(true, true);
+
+    private static PokeBuilder WeezingGalar() => WeezingBuild(true);
+
     // ------------------------------------------------------------------ Galarian Mr. Mime
 
     private static PokeBuilder MrMimeGalar()
@@ -398,6 +438,71 @@ internal static partial class PokemonModels
         b.Ell(head, V(0, 0.95f, 0.0f), V(0.06f, 0.035f, 0.06f), navy);
         return b;
     }
+
+    // ------------------------------------------------------------------ Paldean Tauros
+
+    private static PokeBuilder TaurosCombat() => TaurosBuild("Tauros-Paldea-Combat-Breed", 1);
+
+    private static PokeBuilder TaurosBlaze() => TaurosBuild("Tauros-Paldea-Blaze-Breed", 2);
+
+    private static PokeBuilder TaurosAqua() => TaurosBuild("Tauros-Paldea-Aqua-Breed", 3);
+
+    // ------------------------------------------------------------------ The Galarian legendary birds
+
+    private static PokeBuilder ArticunoGalar() => ArticunoBuild(true);
+
+    private static PokeBuilder ZapdosGalar()
+    {
+        // A great running bird: long black legs on feet with yellow talons, a body of orange feathers bristling with
+        // black, wings of spikes half spread, a long beak and a spiky crest
+        var b = new PokeBuilder("Zapdos-Galar", 1f, BodyPlan.Biped, V(0, 0.66f, 0)) { Coat = Fur };
+        var orange = Rgb(232, 98, 52);
+        var black = Rgb(42, 36, 40);
+        var yellow = Rgb(246, 196, 40);
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(0.09f * s, 0.58f, -0.02f));
+            var knee = V(0.12f * s, 0.38f, 0.08f);
+            var ankle = V(0.11f * s, 0.11f, -0.04f);
+            b.Limb(leg, V(0.09f * s, 0.6f, -0.02f), knee, 0.07f, 0.045f, black);
+            b.Limb(leg, knee, ankle, 0.04f, 0.032f, black);
+            foreach (var (dx, dz) in new[] { (-0.5f, 1f), (0f, 1.15f), (0.5f, 1f), (0f, -0.6f) })
+            {
+                var toe = ankle + V(dx * 0.05f * s, -0.075f, dz * 0.1f);
+                b.Limb(leg, ankle, toe, 0.022f, 0.018f, black);
+                b.Spike(leg, toe, toe + Vector3.Normalize(toe - ankle) * 0.04f + V(0, -0.018f, 0), 0.016f, yellow, mat: Shell, blend: 0.004f);
+            }
+        });
+        var c = V(0, 0.68f, 0);
+        var r = V(0.15f, 0.14f, 0.17f);
+        b.Ell(Body, c, r, orange, V(-15f, 0, 0));
+        foreach (var dir in new[] { V(0.8f, -0.4f, 0.4f), V(-0.8f, -0.4f, 0.4f), V(0, -0.6f, 0.9f), V(0.5f, 0.3f, -0.8f), V(-0.5f, 0.3f, -0.8f) })
+        {
+            var n = Vector3.Normalize(dir);
+            var at = Out(c, r, V(-15f, 0, 0), n);
+            Blade(b, Body, at - n * 0.03f, at + n * 0.12f, 0.036f, black, Vector3.Cross(n, V(0, 1f, 0)) + V(0, 0, 0.01f), 0.35f);
+        }
+        PokeBuilder.Both(s => SpreadWing(b, s, V(0.12f * s, 0.74f, 0.02f), V(0.26f * s, 0.8f, -0.06f), 6, 70f, -25f, 0.32f, 0.05f, orange, black, 0.55f, pointed: true, tipFrom: 0));
+        int tail = b.Tail(V(0, 0.64f, -0.15f));
+        foreach (float a in new[] { -30f, 0f, 30f })
+            Blade(b, tail, V(0, 0.64f, -0.15f), V(MathF.Sin(a * Degree) * 0.16f, 0.6f, -0.42f), 0.045f, a == 0f ? black : orange, V(0, 1f, 0), 0.3f);
+        int head = b.Head(V(0, 0.8f, 0.1f));
+        var hc = V(0, 0.96f, 0.17f);
+        var hr = V(0.065f, 0.06f, 0.075f);
+        b.Limb(head, V(0, 0.76f, 0.1f), hc, 0.065f, 0.05f, orange);
+        b.Ell(head, hc, hr, orange);
+        b.Spike(head, hc + V(0, -0.005f, 0.06f), hc + V(0, 0.02f, 0.3f), 0.022f, black, 0.8f, Shell);
+        foreach (var (x, h, z) in new[] { (0f, 0.14f, -0.08f), (-0.04f, 0.11f, -0.1f), (0.04f, 0.11f, -0.1f), (-0.06f, 0.06f, -0.12f), (0.06f, 0.06f, -0.12f) })
+            Blade(b, head, hc + V(x * 0.5f, 0.04f, 0.02f), hc + V(x * 2f, 0.04f + h, z), 0.026f, x == 0f ? black : orange, V(1f, 0, 0.3f), 0.4f);
+        PokeBuilder.Both(s =>
+        {
+            var look = V(0.6f * s, 0.1f, 0.8f);
+            b.Eye(head, Out(hc, hr, default, look), look, 0.017f, yellow, glare: true);
+        });
+        return b;
+    }
+
+    private static PokeBuilder MoltresGalar() => MoltresBuild(true);
 
     // ------------------------------------------------------------------ Paldean Wooper
 

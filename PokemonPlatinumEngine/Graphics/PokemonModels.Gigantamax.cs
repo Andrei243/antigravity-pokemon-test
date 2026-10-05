@@ -390,6 +390,10 @@ internal static partial class PokemonModels
         return b;
     }
 
+    // ------------------------------------------------------------------ Gigantamax Lapras
+
+    private static PokeBuilder LaprasGmax() => LaprasBuild(true);
+
     // ------------------------------------------------------------------ Gigantamax Eevee
 
     private static PokeBuilder EeveeGmax()
