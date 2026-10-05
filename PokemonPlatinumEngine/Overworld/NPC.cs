@@ -63,6 +63,17 @@ public class NPC
     /// <summary>Takes the player to the next region (a ferry sailor, say) once this region's story is finished.</summary>
     public bool IsTransportAttendant { get; set; } = false;
 
+    // ---- Items on the ground (plan 02)
+
+    /// <summary>The <see cref="NpcType"/> of an item lying on the ground in its ball: it is drawn as the ball, and picked up by speaking to it.</summary>
+    public const string ItemBallType = "ItemBall";
+
+    /// <summary>For an item ball: the item in it, by name, and how many.</summary>
+    public string? Item { get; set; }
+    public int ItemCount { get; set; } = 1;
+
+    public bool IsItemBall => NpcType == ItemBallType;
+
     // ---- The story (plan 02 · S1)
 
     /// <summary>What scripts call them: their id in the area's file or in the map's. Null for someone no script names.</summary>

@@ -41,6 +41,8 @@ public sealed class ScriptRunner
     private Action? afterBusy;
     private BattleOutcome lastOutcome;
     private string lastItem = "";
+    private (string Item, int Count)? ownItem;
+    private string? ownFlag;
 
     public ScriptRunner(ScriptLibrary library, IScriptHost host)
     {
@@ -67,8 +69,12 @@ public sealed class ScriptRunner
     /// </summary>
     /// <param name="subject">Whoever it belongs to, if anyone.</param>
     /// <param name="own">The lines <c>sayown</c> says: a person's, a signboard's.</param>
-    public void Start(Script start, NPC? subject = null, IReadOnlyList<string>? own = null)
+    /// <param name="item">The item <c>find own</c> gives; left out, what the subject holds (an item ball's).</param>
+    /// <param name="flag">The flag <c>setflag own</c> sets; left out, the one that hides the subject.</param>
+    public void Start(Script start, NPC? subject = null, IReadOnlyList<string>? own = null, (string Item, int Count)? item = null, string? flag = null)
     {
+        ownItem = item ?? (subject is { Item: { } held } ? ((string, int)?)(held, Math.Max(1, subject.ItemCount)) : null);
+        ownFlag = flag ?? subject?.HiddenBy;
         calls.Clear();
         script = start;
         at = 0;
@@ -227,10 +233,10 @@ public sealed class ScriptRunner
                 break;
 
             case Op.SetFlag:
-                story.Set(i.Name);
+                story.Set(i.Own ? OwnFlag(i) : i.Name);
                 break;
             case Op.ClearFlag:
-                story.Unset(i.Name);
+                story.Unset(i.Own ? OwnFlag(i) : i.Name);
                 break;
             case Op.SetVar:
                 story.SetVar(i.Name, i.Number);
@@ -240,22 +246,25 @@ public sealed class ScriptRunner
                 break;
 
             case Op.Give:
+            case Op.Find:
             {
-                var item = ItemOf(i);
-                host.Bag.AddItem(item, i.Number);
+                // Handed over or picked up: the same fanfare and the same putting away, in other words
+                var (item, count) = Given(i);
+                host.Bag.AddItem(item, count);
                 lastItem = item.Name;
                 host.Fanfare(MusicRole.FanfareItem);
-                host.Say(null, new[]
-                {
-                    i.Number == 1 ? $"{{player}} received the {item.Name}!" : $"{{player}} received {i.Number} × {item.Name}!",
-                    $"{{player}} put {(i.Number == 1 ? "it" : "them")} away in the {PocketName(item.Pocket)} pocket."
-                });
+                string verb = i.Op == Op.Find ? "found" : "received";
+                var lines = new List<string> { count == 1 ? $"{{player}} {verb} the {item.Name}!" : $"{{player}} {verb} {count} × {item.Name}!" };
+                // A TM or an HM says what it holds
+                if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add($"{item.Name} holds the move {item.TeachesMove}.");
+                lines.Add($"{{player}} put {(count == 1 ? "it" : "them")} away in the {PocketName(item.Pocket)} pocket.");
+                host.Say(null, lines);
                 break;
             }
             case Op.AddItem:
             {
-                var item = ItemOf(i);
-                host.Bag.AddItem(item, i.Number);
+                var (item, count) = Given(i);
+                host.Bag.AddItem(item, count);
                 lastItem = item.Name;
                 break;
             }
@@ -402,6 +411,18 @@ public sealed class ScriptRunner
         new($"{script?.File ?? "?"}.txt({at.Line}): {what}.");
 
     private ItemData ItemOf(Instruction i) => ItemDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no item '{i.Name}'");
+
+    /// <summary>The item a line gives and how many: the one it names, or the script's own.</summary>
+    private (ItemData Item, int Count) Given(Instruction i)
+    {
+        if (!i.Own) return (ItemOf(i), i.Number);
+        var (name, count) = ownItem ?? throw Wrong(i, "this script has no item of its own: no item ball and no hidden item started it");
+        return (ItemDatabase.Get(name) ?? throw Wrong(i, $"there is no item '{name}'"), count);
+    }
+
+    /// <summary>The flag that is the script's own: the one that hides whoever it belongs to, or marks a hidden item found.</summary>
+    private string OwnFlag(Instruction i) =>
+        ownFlag ?? throw Wrong(i, "this script has no flag of its own: nothing hides whoever it belongs to");
 
     /// <summary>Who a line means: null for the player.</summary>
     private NPC? Person(string who, Instruction at) => who switch

@@ -16,8 +16,16 @@ public sealed partial class DecompMaps
     {
         "/res/field/matrices/", "/res/field/maps/data/", "/res/field/events/", "/res/field/area_data/", "/res/field/encounters/",
         "/res/field/props/models/", "/res/text/location_names.json", "/include/data/map_headers.h",
-        "/generated/map_headers.txt", "/include/constants/field/map_tile_behaviors.h"
+        "/generated/map_headers.txt", "/include/constants/field/map_tile_behaviors.h",
+        // What lies on the ground and what is hidden in it: which item, and how many
+        "/generated/items.txt", "/generated/vars_flags.txt", "/res/field/scripts/scripts_visible_items.s", "/include/data/field/hidden_items.h"
     };
+
+    /// <summary>The script of the first item ball; the nth ball's is this plus n.</summary>
+    public const int FirstVisibleItemScript = 7000;
+
+    /// <summary>The script of the first hidden item; the nth's is this plus n.</summary>
+    public const int FirstHiddenItemScript = 8000;
 
     /// <summary>The destination of a warp whose target a script sets while the game runs: the lifts.</summary>
     public const string DynamicHeader = "MAP_HEADER_DYNAMIC";
@@ -42,6 +50,15 @@ public sealed partial class DecompMaps
     /// <summary>Prop model files in id order, without their extension.</summary>
     public IReadOnlyList<string> PropModelFiles { get; }
 
+    /// <summary>Item constants in id order (<c>ITEM_NONE</c> is 0).</summary>
+    public IReadOnlyList<string> ItemIds { get; }
+
+    /// <summary>What lies in each item ball, by the ball's number: the item's constant and how many.</summary>
+    public IReadOnlyList<(string Item, int Count)> VisibleItems { get; }
+
+    /// <summary>The hidden items, by number: a hidden item's script is 8000 plus its number.</summary>
+    public IReadOnlyDictionary<int, HiddenItemEntry> HiddenItems { get; }
+
     public int MatrixCount { get; }
     public int LandCount { get; }
 
@@ -59,7 +76,20 @@ public sealed partial class DecompMaps
         PropModelFiles = Lines("res", "field", "props", "models", "map_prop_models.order").Select(Path.GetFileNameWithoutExtension).ToList()!;
         MatrixCount = Lines("res", "field", "matrices", "map_matrices.order").Count;
         LandCount = Lines("res", "field", "maps", "data", "map_data.order").Count;
+        ItemIds = Lines("generated", "items.txt");
+        VisibleItems = ParseVisibleItems(File.ReadAllText(Path.Combine(root, "res", "field", "scripts", "scripts_visible_items.s")));
+        HiddenItems = ParseHiddenItems(File.ReadAllText(Path.Combine(root, "include", "data", "field", "hidden_items.h")),
+            File.ReadAllText(Path.Combine(root, "generated", "vars_flags.txt")));
     }
+
+    /// <summary>What lies in the item ball that runs a script, or null for a script that is no item ball's.</summary>
+    public (string Item, int Count)? VisibleItem(string script) =>
+        int.TryParse(script, out int id) && id >= FirstVisibleItemScript && id - FirstVisibleItemScript < VisibleItems.Count
+            && VisibleItems[id - FirstVisibleItemScript] is { Item.Length: > 0 } found ? found : null;
+
+    /// <summary>The hidden item a sign's script stands for, or null for any other sign.</summary>
+    public HiddenItemEntry? HiddenItem(string script) =>
+        int.TryParse(script, out int id) && id >= FirstHiddenItemScript ? HiddenItems.GetValueOrDefault(id - FirstHiddenItemScript) : null;
 
     private List<string> Lines(params string[] parts) =>
         File.ReadAllLines(Path.Combine(new[] { root }.Concat(parts).ToArray())).Select(l => l.Trim()).Where(l => l.Length > 0).ToList();
@@ -237,6 +267,66 @@ public sealed partial class DecompMaps
         return names;
     }
 
+    /// <summary>
+    /// What lies in each item ball (<c>scripts_visible_items.s</c>). The file lists its scripts in order, the nth
+    /// being script 7000 + n, and each sets the item and how many of it before going on to the part they share.
+    /// A script that sets no item comes back empty, so the numbers stay the file's.
+    /// </summary>
+    public static List<(string Item, int Count)> ParseVisibleItems(string source)
+    {
+        var order = new List<string>();
+        var items = new Dictionary<string, string>();
+        var counts = new Dictionary<string, int>();
+        string? label = null;
+        foreach (string raw in source.Split('\n'))
+        {
+            string line = raw.Trim();
+            if (line.StartsWith("ScriptEntry ", StringComparison.Ordinal)) order.Add(line["ScriptEntry ".Length..].Trim());
+            else if (line.EndsWith(':')) label = line[..^1];
+            else if (label != null && line.StartsWith("SetVar VAR_0x8008,", StringComparison.Ordinal)) items[label] = line[(line.IndexOf(',') + 1)..].Trim();
+            else if (label != null && line.StartsWith("SetVar VAR_0x8009,", StringComparison.Ordinal) && int.TryParse(line[(line.IndexOf(',') + 1)..].Trim(), out int count)) counts[label] = count;
+        }
+        return order.Select(name => items.TryGetValue(name, out string? item) && item.StartsWith("ITEM_", StringComparison.Ordinal)
+            ? (item, counts.GetValueOrDefault(name, 1)) : ("", 0)).ToList();
+    }
+
+    [GeneratedRegex(@"HIDDEN_ITEM_ENTRY\(\s*(ITEM_\w+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(FLAG_\w+)\s*\)")]
+    private static partial Regex HiddenItemLine();
+
+    /// <summary>
+    /// The hidden items (<c>hidden_items.h</c>): one entry each, with the item, how many, how far off the Dowsing
+    /// Machine notices it and the flag set once it is found. A hidden item's number is its flag's place among the
+    /// hidden items' flags (<c>vars_flags.txt</c>: the first is <c>HIDDEN_ITEM_FLAGS_START</c>, and each line
+    /// after it is the next), which is what its script counts from 8000 by. The flags have gaps the table does
+    /// not have, so an entry's place in the table is not its number.
+    /// </summary>
+    public static Dictionary<int, HiddenItemEntry> ParseHiddenItems(string header, string flags)
+    {
+        var numbers = new Dictionary<string, int>();
+        int next = -1;
+        foreach (string raw in flags.Split('\n'))
+        {
+            string line = raw.Trim();
+            if (next < 0)
+            {
+                if (!line.EndsWith("= HIDDEN_ITEM_FLAGS_START", StringComparison.Ordinal)) continue;
+                numbers[line[..line.IndexOf(' ')]] = 0;
+                next = 1;
+            }
+            else if (line.StartsWith("HIDDEN_ITEM_FLAGS_END", StringComparison.Ordinal)) break;
+            else if (line.Length > 0 && !line.Contains('=')) numbers[line] = next++;
+        }
+
+        var items = new Dictionary<int, HiddenItemEntry>();
+        foreach (Match m in HiddenItemLine().Matches(header))
+        {
+            var entry = new HiddenItemEntry(m.Groups[1].Value, int.Parse(m.Groups[2].Value), int.Parse(m.Groups[3].Value), m.Groups[4].Value);
+            if (!numbers.TryGetValue(entry.Flag, out int number)) throw new InvalidDataException($"The hidden item's flag {entry.Flag} is not among the hidden items' flags");
+            items[number] = entry;
+        }
+        return items;
+    }
+
     [GeneratedRegex(@"^\s*TILE_BEHAVIOR_(\w+?)\s*(=\s*0)?,", RegexOptions.Multiline)]
     private static partial Regex BehaviourLine();
 
@@ -244,6 +334,9 @@ public sealed partial class DecompMaps
     public static List<string> ParseBehaviourNames(string header) =>
         BehaviourLine().Matches(header).Select(m => m.Groups[1].Value).Where(n => n != "MAX").ToList();
 }
+
+/// <summary>An item hidden in the ground: its constant, how many, the Dowsing Machine's range for it and the flag of its finding.</summary>
+public sealed record HiddenItemEntry(string Item, int Count, int Range, string Flag);
 
 /// <summary>An area's table of wild Pokémon as species constants, slot by slot (see <see cref="DecompMaps.Encounters"/>).</summary>
 public sealed record EncounterTable(

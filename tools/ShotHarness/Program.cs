@@ -3015,6 +3015,59 @@ if (Run("story"))
     ReadOn();
     team.Members.RemoveAt(0);
     (tristan.GridX, tristan.GridY) = (tx, ty);
+
+    // ---- items on the ground: the ball lying there, the finding, the ground afterwards; and one nobody can see
+    // (A tile beside a place from which the player can look at it, and the way they then face. From the side
+    // first: a ball right behind the player's own head can't be seen, as in the original)
+    (int X, int Y, Direction Facing)? BesideOrNot(Map map, int x, int y)
+    {
+        foreach (var (dx, dy, facing) in new[] { (-1, 0, Direction.Right), (1, 0, Direction.Left), (0, -1, Direction.Down), (0, 1, Direction.Up) })
+            if (map.IsWalkable(x + dx, y + dy)) return (x + dx, y + dy, facing);
+        return null;
+    }
+    (int X, int Y, Direction Facing) Beside(Map map, int x, int y) =>
+        BesideOrNot(map, x, y) ?? throw new InvalidOperationException($"Nobody can stand beside {x},{y} of {map.Name}");
+
+    var potion = sinnoh.FindPerson("item_potion", "route_202")!;
+    var stand = Beside(sinnoh, potion.GridX, potion.GridY);
+    At("Sinnoh", stand.X, stand.Y, stand.Facing);
+    Frames(6); Shot("st26_item_on_the_ground");
+    ShotCrop("st26b_item_ball_close", 760, 390, 400, 300, 4);
+    int potionsBefore = bag.GetQuantity(ItemDatabase.Get("Potion")!);
+    Talk(); Whole(); Shot("st27_item_found");
+    ReadOn();
+    Frames(6); Shot("st28_item_gone");
+    Console.WriteLine($"item: potions {potionsBefore} then {bag.GetQuantity(ItemDatabase.Get("Potion")!)}, its flag {story.Has(potion.HiddenBy!)}, ball still on the map {sinnoh.NPCs.Contains(potion)}, script running {engine.ScriptRunning}");
+    // Nothing is there to pick up a second time
+    Talk(); Frames(4);
+    Console.WriteLine($"item again: potions {bag.GetQuantity(ItemDatabase.Get("Potion")!)}, text on screen {Box().IsActive}");
+
+    // The Rare Candy of Floaroma Meadow, and a TM in Oreburgh Gate's cellar, which says what it holds
+    var meadow = MapDatabase.Get("FloaromaMeadow");
+    var candy = meadow.NPCs.First(n => n.Item == "Rare Candy");
+    stand = Beside(meadow, candy.GridX, candy.GridY);
+    At("FloaromaMeadow", stand.X, stand.Y, stand.Facing);
+    Frames(6); Shot("st29_rare_candy_in_the_meadow");
+    Talk(); Whole(); Shot("st30_rare_candy_found");
+    ReadOn();
+    var cellar = MapDatabase.Get("OreburghGateB1F");
+    var disc = cellar.NPCs.First(n => n.Item != null && n.Item.StartsWith("TM"));
+    stand = Beside(cellar, disc.GridX, disc.GridY);
+    At("OreburghGateB1F", stand.X, stand.Y, stand.Facing);
+    Frames(6); Shot("st31_item_in_a_cave");
+    Talk(); Whole(); Next(); Whole(); Shot("st32_tm_says_what_it_holds");
+    ReadOn();
+
+    // Hidden in the ground: nothing shows, and looking at the place finds it once. (The first one that can be
+    // walked up to: Twinleaf Town's Odd Keystone lies out in the pond, for whoever surfs.)
+    var (spot, secret) = sinnoh.HiddenItems.First(h => BesideOrNot(sinnoh, h.Key.X, h.Key.Y) != null);
+    stand = Beside(sinnoh, spot.X, spot.Y);
+    At("Sinnoh", stand.X, stand.Y, stand.Facing);
+    Frames(6); Shot("st33_hidden_item_shows_nothing");
+    Talk(); Whole(); Shot("st34_hidden_item_found");
+    ReadOn();
+    Talk(); Frames(4);
+    Console.WriteLine($"hidden: {secret.Item} at {spot.X},{spot.Y}: in the bag {bag.GetQuantity(ItemDatabase.Get(secret.Item)!)}, its flag {story.Has(secret.Flag)}, found again {Box().IsActive}");
 }
 
 // ---------------------------------------------------------------- model files

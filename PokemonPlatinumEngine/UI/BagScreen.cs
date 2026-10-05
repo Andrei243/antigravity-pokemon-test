@@ -18,7 +18,8 @@ public enum BagAction { Use, Give, Cancel }
 /// The bag: Platinum's eight pockets as tabs, the pocket's items as a list and the chosen item beside it. The A
 /// button opens what can be done with an item (USE, GIVE, CANCEL); using or giving goes on to the party to
 /// pick a Pokémon. Its logic takes no input (<see cref="MovePocket"/>, <see cref="MoveCursor"/>,
-/// <see cref="Confirm"/>, <see cref="Cancel"/>), so tests and the harness drive it.
+/// <see cref="Confirm"/>, <see cref="Cancel"/>), so tests and the harness drive it. Up or down kept down runs on
+/// through a pocket's list (<see cref="HeldKey"/>).
 /// </summary>
 public class BagScreen
 {
@@ -36,6 +37,8 @@ public class BagScreen
 
     // Each pocket remembers where its cursor was, as in the games
     private readonly int[] cursors = new int[Pockets.Length], firsts = new int[Pockets.Length];
+    private readonly HeldKey upDown = new();
+    private readonly CursorTick tick = new();
     private float openAge;
 
     public ItemPocket CurrentPocket { get; set; } = ItemPocket.Items;
@@ -88,6 +91,7 @@ public class BagScreen
         Actions = null;
         choosingFor = null;
         openAge = 0f;
+        upDown.Release();
     }
 
     public void Close()
@@ -107,8 +111,11 @@ public class BagScreen
         AudioManager.PlaySound("cursor");
     }
 
-    /// <summary>Up or down the pocket's list (or the item's actions while they are up), wrapping round.</summary>
-    public void MoveCursor(int step, int count)
+    /// <summary>
+    /// Up or down the pocket's list (or the item's actions while they are up), wrapping round. In the list a step
+    /// that comes from a key kept down (<paramref name="held"/>) stops at either end instead.
+    /// </summary>
+    public void MoveCursor(int step, int count, bool held = false)
     {
         if (step == 0) return;
         if (Actions != null)
@@ -118,9 +125,12 @@ public class BagScreen
             return;
         }
         if (count <= 0) return;
-        SelectedIndex = UiNav.Wrap(Math.Min(SelectedIndex, count - 1), step, count);
+        int from = Math.Min(SelectedIndex, count - 1);
+        int next = held ? Math.Clamp(from + step, 0, count - 1) : UiNav.Wrap(from, step, count);
+        if (held && next == from) return;
+        SelectedIndex = next;
         Follow(count);
-        AudioManager.PlaySound("cursor");
+        if (tick.Sounds(held)) AudioManager.PlaySound("cursor");
     }
 
     /// <summary>Keeps the cursor inside the pocket and the list's window on the cursor.</summary>
@@ -206,9 +216,13 @@ public class BagScreen
     {
         if (!IsActive) return;
         openAge += dt;
+        tick.Update(dt);
 
-        int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
-        int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+        // Up or down kept down runs on through a pocket's list; an item's actions and the party take presses only
+        bool list = choosingFor == null && Actions == null;
+        int dx = InputManager.Axis(GameAction.Left, GameAction.Right);
+        int dy = upDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down),
+            list ? InputManager.Axis(GameAction.Up, GameAction.Down, held: true) : 0);
 
         if (choosingFor != null)
         {
@@ -221,8 +235,14 @@ public class BagScreen
         }
 
         if (dx != 0) MovePocket(dx);
-        else if (dy != 0) MoveCursor(dy, inventory.GetPocketItems(CurrentPocket).Count);
-        else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
+        else if (dy != 0)
+        {
+            int count = inventory.GetPocketItems(CurrentPocket).Count;
+            for (int i = 0; i < Math.Abs(dy); i++) MoveCursor(Math.Sign(dy), count, upDown.Repeating);
+        }
+
+        // A button pressed while the list runs on still counts: it acts on the item the cursor has come to
+        if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(inventory, party, onNotification);
     }
 

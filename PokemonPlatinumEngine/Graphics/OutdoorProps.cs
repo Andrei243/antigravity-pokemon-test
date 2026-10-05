@@ -368,6 +368,41 @@ internal static class OutdoorProps
         Pix.Outline(c);
     }
 
+    /// <summary>The card an item's ball is painted on, and the ball's width on it (style guide, "Props").</summary>
+    public const int ItemBallCard = 20, ItemBallSize = 18;
+
+    /// <summary>
+    /// An item lying on the ground: a Poké Ball 18 texels across on a card of 20 by 20. Red above with a lighter
+    /// crescent on the upper left and a darker edge on the right, white below with its lower right in shade, a
+    /// band two texels high across the middle and on it a white button in a ring of the band's colour.
+    /// </summary>
+    public static void PaintItemBall(PixelCanvas c)
+    {
+        var red = Rgb(218, 62, 58);
+        var redLight = Rgb(244, 120, 104);
+        var redDark = Rgb(170, 42, 56);
+        var white = Rgb(240, 240, 236);
+        var whiteShade = Rgb(198, 200, 214);
+        var band = Rgb(58, 52, 72);
+
+        const float middle = ItemBallCard / 2f, radius = ItemBallSize / 2f;
+        for (int y = 0; y < ItemBallCard; y++)
+            for (int x = 0; x < ItemBallCard; x++)
+            {
+                float u = (x + 0.5f - middle) / radius, v = (y + 0.5f - middle) / radius;
+                if (u * u + v * v > 1f) continue;
+                // The band is the two rows either side of the middle
+                if (y == ItemBallCard / 2 - 1 || y == ItemBallCard / 2) c.Set(x, y, band);
+                else if (v < 0f) c.Set(x, y, u + v * 1.1f < -0.72f ? redLight : u > 0.55f ? redDark : red);
+                else c.Set(x, y, u + v > 0.62f ? whiteShade : white);
+            }
+
+        // The button: a ring of the band's colour, six texels across, round a white middle of four
+        Pix.Disc(c, ItemBallCard / 2 - 3, ItemBallCard / 2 - 3, 6, band);
+        Pix.Disc(c, ItemBallCard / 2 - 2, ItemBallCard / 2 - 2, 4, white);
+        Pix.Outline(c);
+    }
+
     /// <summary>
     /// A boulder with a smaller stone at its foot, 36 by 30: three flat shades, lightest on the upper left, with a
     /// crack running down from the top.

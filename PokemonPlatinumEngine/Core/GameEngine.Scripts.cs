@@ -64,7 +64,10 @@ public partial class GameEngine
     /// or where the player stands) and among the common ones second. False, with nothing started, when there is
     /// no such script.
     /// </summary>
-    public bool StartScript(string name, NPC? subject = null, IReadOnlyList<string>? own = null, string? file = null)
+    /// <param name="item">The item the script's <c>find own</c> gives, when it isn't the subject's (a hidden item).</param>
+    /// <param name="flag">The flag its <c>setflag own</c> sets, when it isn't the one that hides the subject.</param>
+    public bool StartScript(string name, NPC? subject = null, IReadOnlyList<string>? own = null, string? file = null,
+        (string Item, int Count)? item = null, string? flag = null)
     {
         file ??= subject?.ScriptFile ?? currentMap.ScriptFileAt(subject?.GridX ?? player.GridX, subject?.GridY ?? player.GridY);
         if (scripts.Find(name, file) is not { } script)
@@ -72,7 +75,7 @@ public partial class GameEngine
             Console.Error.WriteLine($"No script '{name}' for {file}.");
             return false;
         }
-        runner.Start(script, subject, own);
+        runner.Start(script, subject, own, item, flag);
         return true;
     }
 

@@ -33,9 +33,6 @@ public class PokedexScreen
 {
     private const float AppearTime = 0.3f;
 
-    /// <summary>The least time between two of the cursor's ticks while a key is held: the tick itself lasts 0.04 s.</summary>
-    private const float TickGap = 0.07f;
-
     /// <summary>How many species show at once, and how far left and right jump.</summary>
     public const int VisibleRows = 8, Jump = 10;
 
@@ -48,7 +45,7 @@ public class PokedexScreen
     private float openAge;
     private PokedexFocus beforeDiploma;
     private readonly HeldKey upDown = new(), leftRight = new();
-    private float sinceTick = TickGap;
+    private readonly CursorTick tick = new();
 
     public int SelectedIndex { get; set; }
     public int FirstRow { get; private set; }
@@ -190,9 +187,7 @@ public class PokedexScreen
     /// <summary>The cursor's tick. A key held down takes steps faster than the tick lasts, so not every one of those sounds.</summary>
     private void Tick(bool held)
     {
-        if (held && sinceTick < TickGap) return;
-        sinceTick = 0f;
-        AudioManager.PlaySound("cursor");
+        if (tick.Sounds(held)) AudioManager.PlaySound("cursor");
     }
 
     private void Follow()
@@ -393,7 +388,7 @@ public class PokedexScreen
     {
         if (!IsActive) return;
         openAge += dt;
-        sinceTick += dt;
+        tick.Update(dt);
 
         // A key kept down runs through the list (a species at a time, or ten) and through the entries; in the
         // search panel, and for an entry's pages, only a press counts

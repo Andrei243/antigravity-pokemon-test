@@ -40,10 +40,10 @@
     { "id": "arrow_signpost_jubilife_city", "looks": "arrow_signpost", "movement": "none", "x": 176, "z": 804, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" },
     { "id": "trainer_tips_signpost", "looks": "trainer_tips_signpost", "movement": "none", "x": 174, "z": 816, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
     { "id": "youngster", "looks": "youngster", "movement": "wander_west_and_east", "x": 169, "z": 808, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "2" },
-    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 162, "z": 806, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_202_POTION", "script": "7000" }
+    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 162, "z": 806, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_202_POTION", "item": "Potion", "script": "7000" }
   ],
   "signs": [
-    { "x": 168, "z": 795, "type": 2, "script": "8161" }
+    { "x": 168, "z": 795, "type": 2, "script": "8161", "item": "Stardust", "flag": "FLAG_OBTAINED_HIDDEN_JUBILIFE_CITY_STARDUST", "range": 2 }
   ],
   "triggers": [
     { "x": 180, "z": 825, "width": 1, "depth": 5, "script": "6", "variable": "VAR_ROUTE_202_STATE", "value": "0" }

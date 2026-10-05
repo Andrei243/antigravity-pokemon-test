@@ -10,8 +10,8 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>
 /// A Poké Mart's counter: the stock as a list with prices, the player's money, the chosen item beside it, and
 /// "how many?" before anything is bought. Its logic takes no input (<see cref="Move"/>, <see cref="Confirm"/>,
-/// <see cref="Cancel"/>), so tests and the harness drive it. What a shop stocks and selling to it are
-/// plan 06 · R11's.
+/// <see cref="Cancel"/>), so tests and the harness drive it. Up or down kept down runs on through the stock
+/// (<see cref="HeldKey"/>). What a shop stocks and selling to it are plan 06 · R11's.
 /// </summary>
 public class ShopScreen
 {
@@ -22,6 +22,8 @@ public class ShopScreen
 
     private readonly List<ItemData> stock = new();
     private readonly UiReveal asking = new(0.18f, 0.1f);
+    private readonly HeldKey upDown = new();
+    private readonly CursorTick tick = new();
     private float openAge;
 
     public int SelectedIndex { get; set; }
@@ -47,6 +49,7 @@ public class ShopScreen
         ChoosingQuantity = false;
         asking.Snap(false);
         openAge = 0f;
+        upDown.Release();
         Name = string.IsNullOrWhiteSpace(name) ? "POKÉ MART" : name.ToUpperInvariant();
         stock.Clear();
         foreach (string item in new[] { "Poké Ball", "Great Ball", "Potion", "Super Potion", "Antidote", "Revive" })
@@ -66,9 +69,10 @@ public class ShopScreen
 
     /// <summary>
     /// Up and down the stock; while "how many?" is up, left and right change the number by one and up and down
-    /// by ten, wrapping between one and the most the money buys.
+    /// by ten, wrapping between one and the most the money buys. In the stock a step that comes from a key kept
+    /// down (<paramref name="held"/>) stops at either end instead of wrapping.
     /// </summary>
-    public void Move(int dx, int dy, int money)
+    public void Move(int dx, int dy, int money, bool held = false)
     {
         if (dx == 0 && dy == 0) return;
         if (ChoosingQuantity)
@@ -83,9 +87,11 @@ public class ShopScreen
             return;
         }
         if (dy == 0 || stock.Count == 0) return;
-        SelectedIndex = UiNav.Wrap(SelectedIndex, dy, stock.Count);
+        int row = held ? Math.Clamp(SelectedIndex + dy, 0, stock.Count - 1) : UiNav.Wrap(SelectedIndex, dy, stock.Count);
+        if (held && row == SelectedIndex) return;
+        SelectedIndex = row;
         FirstRow = UiNav.Window(FirstRow, SelectedIndex, stock.Count, VisibleRows);
-        AudioManager.PlaySound("cursor");
+        if (tick.Sounds(held)) AudioManager.PlaySound("cursor");
     }
 
     /// <summary>
@@ -138,11 +144,17 @@ public class ShopScreen
         if (!IsActive) return;
         openAge += dt;
         asking.Update(dt);
+        tick.Update(dt);
 
-        int dx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
-        int dy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
-        if (dx != 0 || dy != 0) Move(dx, dy, playerMoney);
-        else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
+        // Up or down kept down runs on through the stock; "how many?" takes presses only
+        int dx = InputManager.Axis(GameAction.Left, GameAction.Right);
+        int dy = upDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down),
+            ChoosingQuantity ? 0 : InputManager.Axis(GameAction.Up, GameAction.Down, held: true));
+        // More than one step in a frame only ever comes from a key held in the stock
+        for (int i = 0; i < Math.Max(Math.Abs(dx), Math.Abs(dy)); i++) Move(dx, Math.Sign(dy), playerMoney, upDown.Repeating);
+
+        // A button pressed while the list runs on still counts: it acts on the item the cursor has come to
+        if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Confirm)) playerMoney -= Confirm(playerInventory, playerMoney, onNotification);
     }
 

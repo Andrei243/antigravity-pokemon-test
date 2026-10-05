@@ -547,6 +547,8 @@ public class StoryTests
                 yield return ($"the sign at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
             foreach (var trigger in map.Triggers)
                 yield return ($"the trigger at {trigger.X},{trigger.Y} of {map.Name}", trigger.Script, trigger.ScriptFile ?? map.Name, map, null);
+            foreach (var (at, hidden) in map.HiddenItems)
+                yield return ($"the hidden {hidden.Item} at {at.X},{at.Y} of {map.Name}", FieldScripts.HiddenItem, map.ScriptFileAt(at.X, at.Y), map, null);
         }
     }
 
@@ -620,7 +622,8 @@ public class StoryTests
     /// Plays a script on every way through it: each question answered each way, each battle won and lost. Whoever
     /// the script belongs to and the map are put back as they were between one way and the next.
     /// </summary>
-    private static List<(HeadlessScriptHost Host, ScriptRunner Runner)> EveryWayThrough(Script script, Map? map, NPC? subject, IReadOnlyList<string>? own = null, Action<HeadlessScriptHost>? before = null)
+    private static List<(HeadlessScriptHost Host, ScriptRunner Runner)> EveryWayThrough(Script script, Map? map, NPC? subject, IReadOnlyList<string>? own = null,
+        Action<HeadlessScriptHost>? before = null, (string Item, int Count)? item = null, string? flag = null)
     {
         var ways = new List<(HeadlessScriptHost, ScriptRunner)>();
         var toTry = new Stack<List<int>>();
@@ -650,7 +653,7 @@ public class StoryTests
             before?.Invoke(host);
 
             var runner = new ScriptRunner(Scripts, host);
-            runner.Start(script, subject, own);
+            runner.Start(script, subject, own, item, flag);
             runner.RunToEnd();
             ways.Add((host, runner));
 
@@ -696,10 +699,170 @@ public class StoryTests
 
         foreach (var script in Scripts.All.Where(s => s.File == ScriptLibrary.Common && s.FullName != ScriptLibrary.NewGame))
         {
-            var ways = EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." });
+            // An item's two scripts are started by a ball and by a place in the ground; every other by a person
+            var ways = script.FullName switch
+            {
+                FieldScripts.ItemBall => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.ItemBallType, Name = "Potion", Item = "Potion", HiddenBy = "FLAG_OBTAINED_TEST_POTION" }),
+                FieldScripts.HiddenItem => EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"),
+                _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
+            };
             Assert.NotEmpty(ways);
             Assert.All(ways, way => Assert.Empty(way.Host.Problems));
         }
+    }
+
+    // ---- items on the ground
+
+    private static IEnumerable<(Map Map, NPC Ball)> ItemBalls() =>
+        OwnMaps.Value.Values.SelectMany(map => map.Everyone.Where(n => n.IsItemBall).Select(ball => (map, ball)));
+
+    [Fact]
+    public void ItemsLieOnTheGroundWhereTheOriginalHasThem()
+    {
+        var balls = ItemBalls().ToList();
+        // Thirty-seven in the areas open after plan 01 · M5; more with every area opened
+        Assert.True(balls.Count >= 37, $"only {balls.Count} items lie on the ground");
+        foreach (var (map, ball) in balls)
+        {
+            string where = $"the {ball.Item} at {ball.GridX},{ball.GridY} of {map.Name}";
+            Assert.True(ItemDatabase.Get(ball.Item!) != null, $"{where} is no item");
+            Assert.True(ball.ItemCount >= 1);
+            Assert.False(string.IsNullOrEmpty(ball.HiddenBy), $"{where} has no flag to keep it gone");
+            Assert.Equal(FieldScripts.ItemBall, FieldScripts.For(ball));
+            Assert.True(map.AreaAt(ball.GridX, ball.GridY)?.Open != false, $"{where} lies outside the open areas");
+        }
+        // Each ball has a flag of its own: picking one up takes no other away
+        Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1).Select(g => g.Key));
+
+        // What the user asked to see, where Platinum has it: the Potion beside Route 202's grass and the Poké Ball of Route 203
+        var overworld = OwnMaps.Value["Sinnoh"];
+        Assert.Equal("Potion", overworld.FindPerson("item_potion", "route_202")!.Item);
+        Assert.Contains(balls, b => b.Ball.Item == "Poké Ball" && b.Ball.ScriptFile == "route_203");
+        Assert.Contains(balls, b => b.Ball.Item == "Rare Candy");
+    }
+
+    [Fact]
+    public void AnItemPickedUpIsThePlayersAndItsBallIsGoneForGood()
+    {
+        foreach (var (map, ball) in ItemBalls().ToList())
+        {
+            var host = new HeadlessScriptHost { Map = map };
+            map.ApplyPresence(host.Story.Has);
+            Assert.Contains(ball, map.NPCs);
+            Assert.False(map.IsWalkable(ball.GridX, ball.GridY));
+
+            var runner = new ScriptRunner(Scripts, host);
+            runner.Start(Scripts.Find(FieldScripts.For(ball)!, ball.ScriptFile)!, ball);
+            runner.RunToEnd();
+
+            Assert.Equal(ball.ItemCount, host.Bag.GetQuantity(ItemDatabase.Get(ball.Item!)!));
+            Assert.True(host.Story.Has(ball.HiddenBy!));
+            Assert.Contains($"fanfare {MusicRole.FanfareItem}", host.Log);
+            Assert.StartsWith($"{host.PlayerName} found ", host.Transcript[0].Text);
+
+            // The flag is what takes it off the map: nothing stands there any more, now or after a save is loaded
+            map.ApplyPresence(host.Story.Has);
+            Assert.DoesNotContain(ball, map.NPCs);
+            Assert.Null(map.GetNpcAt(ball.GridX, ball.GridY));
+            var loaded = new StoryState();
+            loaded.Restore(host.Story.Snapshot());
+            Assert.False(ball.IsPresent(loaded.Has));
+
+            map.ApplyPresence(_ => false);
+        }
+    }
+
+    [Fact]
+    public void WhatIsHiddenInTheGroundIsFoundOnceByLookingAtIt()
+    {
+        var hidden = OwnMaps.Value.Values.SelectMany(map => map.HiddenItems.Select(h => (Map: map, At: h.Key, Item: h.Value))).ToList();
+        Assert.True(hidden.Count >= 20, $"only {hidden.Count} hidden items");
+        Assert.Empty(hidden.GroupBy(h => h.Item.Flag).Where(g => g.Count() > 1).Select(g => g.Key));
+
+        foreach (var (map, at, item) in hidden)
+        {
+            Assert.True(map.InBounds(at.X, at.Y));
+            Assert.True(ItemDatabase.Get(item.Item) != null, $"the hidden '{item.Item}' of {map.Name} is no item");
+            Assert.StartsWith("FLAG_OBTAINED_HIDDEN_", item.Flag);
+
+            var host = new HeadlessScriptHost { Map = map };
+            Assert.Same(item, FieldScripts.HiddenAt(map, at.X, at.Y, host.Story));
+            var runner = new ScriptRunner(Scripts, host);
+            runner.Start(Scripts.Find(FieldScripts.HiddenItem)!, item: (item.Item, item.Count), flag: item.Flag);
+            runner.RunToEnd();
+
+            Assert.Equal(item.Count, host.Bag.GetQuantity(ItemDatabase.Get(item.Item)!));
+            Assert.Null(FieldScripts.HiddenAt(map, at.X, at.Y, host.Story));
+        }
+        // Nothing is hidden where nothing is
+        Assert.Null(FieldScripts.HiddenAt(OwnMaps.Value["Sinnoh"], 0, 0, new StoryState()));
+    }
+
+    [Fact]
+    public void AMapFileCanLayItemsOutAndRefusesOnesThatWouldComeBack()
+    {
+        MapFile Laid(Action<MapFile> change)
+        {
+            var file = new MapFile
+            {
+                Name = "Test", DisplayName = "Test", Width = 4, Height = 3,
+                Ground = new List<string> { "....", "....", "...." },
+                Solid = new List<string> { "....", "....", "...." },
+                Npcs = new List<MapFile.NpcRecord>
+                {
+                    new() { Name = "Rare Candy", NpcType = NPC.ItemBallType, X = 1, Y = 1, HiddenBy = "FLAG_OBTAINED_TEST_RARE_CANDY", Item = "Rare Candy" },
+                    new() { Name = "Poké Ball", NpcType = NPC.ItemBallType, X = 2, Y = 1, HiddenBy = "FLAG_OBTAINED_TEST_POKE_BALL", Item = "Poké Ball", Count = 5 }
+                },
+                HiddenItems = new List<MapFile.HiddenItemRecord>
+                {
+                    new() { X = 3, Y = 2, Item = "Nugget", Flag = "FLAG_OBTAINED_HIDDEN_TEST_NUGGET" },
+                    new() { X = 0, Y = 0, Item = "Stardust", Count = 2, Flag = "FLAG_OBTAINED_HIDDEN_TEST_STARDUST" }
+                }
+            };
+            change(file);
+            return file;
+        }
+
+        var file = Laid(_ => { });
+        var map = file.ToMap();
+        Assert.Equal(("Rare Candy", 1, true), (map.NPCs[0].Item, map.NPCs[0].ItemCount, map.NPCs[0].IsItemBall));
+        Assert.Equal(5, map.NPCs[1].ItemCount);
+        Assert.Equal(new HiddenItem("Stardust", 2, "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"), map.HiddenItems[(0, 0)]);
+        Assert.Equal(GameDataFiles.Serialize(file), GameDataFiles.Serialize(MapFile.FromMap(map)));
+
+        // An item that nothing would keep gone, an item that isn't one, an item on someone who is no ball
+        Assert.Contains("come back", Assert.Throws<InvalidDataException>(() => Laid(f => f.Npcs[0].HiddenBy = null).ToMap()).Message);
+        Assert.Contains("no item", Assert.Throws<InvalidDataException>(() => Laid(f => f.Npcs[0].Item = "Rare Sweet").ToMap()).Message);
+        Assert.Contains("no item ball", Assert.Throws<InvalidDataException>(() => Laid(f => f.Npcs[0].NpcType = "Lass").ToMap()).Message);
+        Assert.Contains("again and again", Assert.Throws<InvalidDataException>(() => Laid(f => f.HiddenItems![0].Flag = "").ToMap()).Message);
+        Assert.Contains("no item", Assert.Throws<InvalidDataException>(() => Laid(f => f.HiddenItems![0].Item = "Gold Lump").ToMap()).Message);
+    }
+
+    [Fact]
+    public void AnItemsBallIsPaintedAsTheStyleGuideHasIt()
+    {
+        var art = new PokemonPlatinumEngine.Graphics.PixelCanvas(PokemonPlatinumEngine.Graphics.OutdoorProps.ItemBallCard, PokemonPlatinumEngine.Graphics.OutdoorProps.ItemBallCard);
+        PokemonPlatinumEngine.Graphics.OutdoorProps.PaintItemBall(art);
+        (int R, int G, int B) At(int x, int y) => (art.Get(x, y).R, art.Get(x, y).G, art.Get(x, y).B);
+
+        // Red above, white below, the band between with its white button, and the lit and the shaded sides
+        Assert.Equal((218, 62, 58), At(10, 4));
+        Assert.Equal((240, 240, 236), At(8, 15));
+        Assert.Equal((58, 52, 72), At(3, 9));
+        Assert.Equal((58, 52, 72), At(16, 10));
+        Assert.Equal((240, 240, 236), At(9, 9));
+        Assert.Equal((244, 120, 104), At(5, 4));
+        Assert.Equal((170, 42, 56), At(16, 7));
+        Assert.Equal((198, 200, 214), At(15, 14));
+
+        // Eighteen texels across and as many high, with the outline's texel all round and nothing in the corners
+        int Opaque(Func<int, bool> line) => Enumerable.Range(0, 20).Count(line);
+        Assert.Equal(20, Opaque(x => art.IsOpaque(x, 9)));
+        Assert.Equal(20, Opaque(y => art.IsOpaque(9, y)));
+        Assert.False(art.IsOpaque(0, 0) || art.IsOpaque(19, 0) || art.IsOpaque(0, 19) || art.IsOpaque(19, 19));
+        // The outline is a darker shade of what it touches, never the fill itself
+        Assert.NotEqual((218, 62, 58), At(10, 0));
+        Assert.True(art.IsOpaque(10, 0) && art.IsOpaque(10, 19));
     }
 
     [Fact]

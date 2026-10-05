@@ -51,9 +51,9 @@
     { "id": "signboard", "looks": "signboard", "movement": "none", "x": 170, "z": 706, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
     { "id": "youngster_south", "looks": "youngster", "movement": "wander_west_and_east", "x": 173, "z": 706, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "0" },
     { "id": "cut_tree", "looks": "cut_tree", "movement": "none", "x": 181, "z": 678, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10000" },
-    { "id": "item_tm09", "looks": "pokeball", "movement": "none", "x": 162, "z": 682, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_204_NORTH_TM09", "script": "7014" },
+    { "id": "item_tm09", "looks": "pokeball", "movement": "none", "x": 162, "z": 682, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_204_NORTH_TM09", "item": "TM09", "script": "7014" },
     { "id": "ace_trainer_f", "looks": "ace_trainer_f", "movement": "look_west", "x": 191, "z": 676, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
-    { "id": "item_awakening", "looks": "pokeball", "movement": "none", "x": 180, "z": 695, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_204_NORTH_AWAKENING", "script": "7254" }
+    { "id": "item_awakening", "looks": "pokeball", "movement": "none", "x": 180, "z": 695, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_204_NORTH_AWAKENING", "item": "Awakening", "script": "7254" }
   ],
   "signs": [],
   "triggers": []

@@ -82,7 +82,7 @@ public sealed class ScriptLibrary
 
     /// <summary>The flags any script sets or clears.</summary>
     public IReadOnlySet<string> FlagsWritten => All.SelectMany(s => s.Everything())
-        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag).Select(i => i.Name).ToHashSet(StringComparer.Ordinal);
+        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag && !i.Own).Select(i => i.Name).ToHashSet(StringComparer.Ordinal);
 
     /// <summary>The flags any script asks about.</summary>
     public IReadOnlySet<string> FlagsRead => All.SelectMany(s => s.Everything())
@@ -129,7 +129,7 @@ public sealed class ScriptLibrary
                     case Op.Call when Find(i.Name, script.File) == null:
                         Wrong(i, $"script {script.Name} calls '{i.Name}', which doesn't exist");
                         break;
-                    case Op.Give or Op.AddItem or Op.Take when ItemDatabase.Get(i.Name) == null:
+                    case Op.Give or Op.Find or Op.AddItem or Op.Take when !i.Own && ItemDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no item '{i.Name}'");
                         break;
                     case Op.GivePokemon or Op.WildBattle when PokemonDatabase.Get(i.Name) == null:

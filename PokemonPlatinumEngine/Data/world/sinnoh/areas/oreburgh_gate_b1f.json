@@ -53,12 +53,12 @@
     { "id": "rock_smash_6", "looks": "rock_smash", "movement": "none", "x": 47, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10001" },
     { "id": "rock_smash_7", "looks": "rock_smash", "movement": "none", "x": 53, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_9", "script": "10001" },
     { "id": "rock_smash_8", "looks": "rock_smash", "movement": "none", "x": 55, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_10", "script": "10001" },
-    { "id": "item_tm01", "looks": "pokeball", "movement": "none", "x": 8, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_TM01", "script": "7003" },
-    { "id": "item_earth_plate", "looks": "pokeball", "movement": "none", "x": 7, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_EARTH_PLATE", "script": "7006" },
-    { "id": "item_tm31", "looks": "pokeball", "movement": "none", "x": 23, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_TM31", "script": "7004" },
-    { "id": "item_tm70", "looks": "pokeball", "movement": "none", "x": 57, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_TM70", "script": "7005" },
+    { "id": "item_tm01", "looks": "pokeball", "movement": "none", "x": 8, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_TM01", "item": "TM01", "script": "7003" },
+    { "id": "item_earth_plate", "looks": "pokeball", "movement": "none", "x": 7, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_EARTH_PLATE", "item": "Earth Plate", "script": "7006" },
+    { "id": "item_tm31", "looks": "pokeball", "movement": "none", "x": 23, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_TM31", "item": "TM31", "script": "7004" },
+    { "id": "item_tm70", "looks": "pokeball", "movement": "none", "x": 57, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_TM70", "item": "TM70", "script": "7005" },
     { "id": "cyclist_f", "looks": "cyclist_f", "movement": "wander_around", "x": 37, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "1" },
-    { "id": "item_big_pearl", "looks": "pokeball", "movement": "none", "x": 41, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_BIG_PEARL", "script": "7169" }
+    { "id": "item_big_pearl", "looks": "pokeball", "movement": "none", "x": 41, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_OREBURGH_GATE_B1F_BIG_PEARL", "item": "Big Pearl", "script": "7169" }
   ],
   "signs": [],
   "triggers": []

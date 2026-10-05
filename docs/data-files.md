@@ -42,6 +42,7 @@ A form (`PokemonForm`, plan 03 · D11) has a `name`, the species' and the form's
   "signboards": [ { "x": 19, "y": 1, "text": "Route 204\n…" } ],   // "script": a script it runs instead of only being read
   "npcs": [ … ],
   "triggers": [ { "x": 4, "y": 9, "width": 3, "depth": 1, "script": "RivalStopsYou", "variable": "VAR_TOWN_STATE", "value": 0 } ],   // optional, see below
+  "hiddenItems": [ { "x": 7, "y": 2, "item": "Nugget", "flag": "FLAG_OBTAINED_HIDDEN_SOMEWHERE_NUGGET" } ],   // optional, see below
   "wildEncounters": [ { "speciesName": "Bidoof", "minLevel": 2, "maxLevel": 4, "weight": 45 } ]
 }
 ```
@@ -90,6 +91,8 @@ Who the player is isn't known when a map is written: the name and the look are c
 An NPC has `name`, `npcType` (picks the character model), `x`, `y`, `facing` and optional `dialog` lines, plus whichever of `isHealingNurse`, `isPokeMartClerk`, `isPCTerminal`, `isStarterBriefcase` and `isTransportAttendant` (takes the player to the next region, see `RegionDatabase`) apply. Give it an `id` only when something else refers to it (trainers, the starter briefcase, a script that names the person); the others get a fresh one each load.
 
 What a person does when spoken to is a script (`docs/scripts.md`). Left to themselves they run the common one for what they are: the nurse's for `isHealingNurse`, the clerk's, the PC's, the briefcase's, the attendant's, a trainer's, or plain talk for someone with `dialog`. `script` names one of their own instead, looked for in the map's script file first (`scripts/<map name>.txt`) and among the common ones second: Mom heals with `"script": "Healer"`, which says her `dialog` rather than the nurse's lines. `hiddenBy` names a story flag that takes the person off the map while it is set, and `shownBy` one they wait for; whoever is off the map is neither drawn nor in the way. A signboard may carry a `script` too (its `text` is then what the script's `sayown` says), and `triggers` are rectangles of tiles that start a script when the player steps into them: every time, or only while the story `variable` has the `value`.
+
+**Items on the ground.** An item to pick up is a person of the map whose `npcType` is `ItemBall`, with the `item` it holds (a name from `items.json`), a `count` when it is more than one, and a `hiddenBy` flag of its own: picking it up sets that flag, which is what takes the ball off the map and keeps it off in every game saved afterwards. A file whose ball has no flag, or an item that isn't one, doesn't load. `hiddenItems` are items nobody can see, found by looking at their tile: the tile, the `item`, a `count` when more than one, and the `flag` set once it has been found. In the imported world nothing of this is written by hand: the balls and the hidden items of an open area are there by themselves, from its area file.
 
 A trainer carries a `trainer` block:
 
@@ -294,8 +297,8 @@ One area: a town, a route, a cave floor, a room. `key` is its name in lower case
 Then what stands on it, in tiles of its matrix (on the overworld: tiles of the whole region):
 
 - `warps`: `{ "x", "z", "to", "toWarp" }`: the tile leads to the warp numbered `toWarp` (counting from 0) of the area `to`. Six lifts lead to `dynamic`: a script decides where.
-- `objects`: people and things: `id`, `looks`, `movement`, `x`, `z`, `facing` (0 north, 1 south, 2 west, 3 east), `rangeX` and `rangeZ` (how far they wander), `trainer` (how a trainer watches for the player) and `sight` (how many tiles ahead they see: the first number the original keeps for the object; 0 for one who battles only when spoken to), `hiddenBy` (the flag that hides them) and `script`.
-- `signs`: `{ "x", "z", "type", "script" }`: something read or found by facing the tile.
+- `objects`: people and things: `id`, `looks`, `movement`, `x`, `z`, `facing` (0 north, 1 south, 2 west, 3 east), `rangeX` and `rangeZ` (how far they wander), `trainer` (how a trainer watches for the player) and `sight` (how many tiles ahead they see: the first number the original keeps for the object; 0 for one who battles only when spoken to), `hiddenBy` (the flag that hides them) and `script`. An object that is an item in its ball (`looks` "pokeball" and a script from 7000 on) also has the `item` it holds, by the game's own name for it, and a `count` when it is more than one: the game lays it there without the overlay saying anything.
+- `signs`: `{ "x", "z", "type", "script" }`: something read or found by facing the tile. Type 2 is a hidden item, which also has its `item`, a `count` when more than one, the `flag` set once it is found and the `range` the original's Dowsing Machine notices it from.
 - `triggers`: `{ "x", "z", "width", "depth", "script", "variable", "value" }`: a rectangle that starts a script while a story variable has a value.
 
 Scripts are numbers into the area's script file in the decompilation; plan 02 writes ours (`docs/scripts.md`) and the overlay says which of the area's people, signs and triggers run them. No dialogue is imported.

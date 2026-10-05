@@ -168,6 +168,28 @@ public class UiKitTests
         Assert.Equal(0, key.Advance(5f, 0, 1));
     }
 
+    [Fact]
+    public void TheCursorsTickSoundsForEveryPressButNotForEveryHeldStep()
+    {
+        // Presses sound however close together they come
+        var tick = new CursorTick();
+        Assert.True(tick.Sounds(held: false));
+        Assert.True(tick.Sounds(held: false));
+
+        // A held key's steps sound only once the last tick is a Gap old: at the fast rate, every other one
+        Assert.False(tick.Sounds(held: true));
+        int sounded = 0;
+        for (int step = 0; step < 10; step++)
+        {
+            tick.Update(HeldKey.FastInterval);
+            if (tick.Sounds(held: true)) sounded++;
+        }
+        Assert.Equal(5, sounded);
+
+        // At the slow rate every step is far enough from the last
+        Assert.True(HeldKey.Interval >= CursorTick.Gap);
+    }
+
     // ------------------------------------------------------------------ start menu
 
     private static StartMenu OpenMenu()

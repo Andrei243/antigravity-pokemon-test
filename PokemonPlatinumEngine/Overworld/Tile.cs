@@ -164,6 +164,13 @@ public class Warp
 }
 
 /// <summary>
+/// An item nobody can see, found by looking at its tile (plan 02): the item, how many, and the story flag set once
+/// it has been found, after which nothing is there. <see cref="Range"/> is from how many tiles away the original's
+/// Dowsing Machine notices it.
+/// </summary>
+public sealed record HiddenItem(string Item, int Count, string Flag, int Range = 0);
+
+/// <summary>
 /// Tiles that start a script when the player steps onto one of them (plan 02 · S1): a rectangle, the script, and
 /// the state of the story it waits for. As in the original, a trigger goes by a variable: it fires only while the
 /// variable has the value, and the script it starts moves the variable on so that it doesn't fire again.

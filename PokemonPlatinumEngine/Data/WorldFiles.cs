@@ -539,6 +539,10 @@ public sealed class AreaObject
     /// <summary>The flag that hides the object while set; left out when it is always there.</summary>
     public string? HiddenBy { get; set; }
 
+    /// <summary>For an item lying in its ball: the item, by the game's name for it, and how many when more than one.</summary>
+    public string? Item { get; set; }
+    public int? Count { get; set; }
+
     public string Script { get; set; } = "";
 }
 
@@ -546,10 +550,22 @@ public sealed class AreaObject
 [JsonConverter(typeof(OneLine<AreaSign>))]
 public sealed class AreaSign
 {
+    /// <summary>The <see cref="Type"/> of a sign that is an item nobody can see.</summary>
+    public const int HiddenItem = 2;
+
     public int X { get; set; }
     public int Z { get; set; }
     public int Type { get; set; }
     public string Script { get; set; } = "";
+
+    /// <summary>
+    /// For a hidden item: the item by the game's name for it, how many when more than one, the flag set once it
+    /// has been found, and from how many tiles away the original's Dowsing Machine notices it.
+    /// </summary>
+    public string? Item { get; set; }
+    public int? Count { get; set; }
+    public string? Flag { get; set; }
+    public int? Range { get; set; }
 }
 
 /// <summary>A rectangle that starts a script when stepped on while a story variable has a value.</summary>

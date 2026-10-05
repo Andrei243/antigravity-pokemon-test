@@ -404,6 +404,7 @@ public sealed class WorldRenderer
         foreach (var scene in scenes)
             if (Reaches(scene, casters)) scene.DrawDepth(casters);
         DrawActors(CharacterPass.Depth);
+        DrawItemBalls(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
@@ -442,6 +443,7 @@ public sealed class WorldRenderer
         DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
+        DrawItemBalls(CharacterPass.Color);
         DrawActors(CharacterPass.Color);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
@@ -684,9 +686,17 @@ public sealed class WorldRenderer
     {
         actors.Clear();
         mount = null;
+        itemBalls.Clear();
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
+            if (npc.IsItemBall)
+            {
+                // An item in its ball is a card, not a person
+                float bx = npc.DrawX + 0.5f, bz = npc.DrawY + 0.5f;
+                itemBalls.Add(new Vector3(bx, Relief.At(map, bx, bz), bz));
+                continue;
+            }
             float seed = SeedOf(npc.Name);
             var pose = new CharacterPose { Walk = npc.WalkCycle, WalkBlend = npc.WalkBlend, Time = time + seed * 10f, Blink = IsBlinking(time, seed) };
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
@@ -740,6 +750,23 @@ public sealed class WorldRenderer
     }
 
     /// <summary>Each character is a pixel-art sprite baked from its 3D model, standing upright like the walls.</summary>
+    // Items lying on the ground in view, and the one card every one of them is drawn with
+    private readonly List<Vector3> itemBalls = new();
+    private CharacterSprites.Card? itemBallCard;
+
+    /// <summary>The balls of the items on the ground: the same small card at each, lit and casting like the people.</summary>
+    private void DrawItemBalls(CharacterPass pass)
+    {
+        if (itemBalls.Count == 0) return;
+        if (itemBallCard is not { } card)
+        {
+            var art = new PixelCanvas(OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard);
+            OutdoorProps.PaintItemBall(art);
+            itemBallCard = card = CharacterSprites.MakeCard(context, art);
+        }
+        foreach (var at in itemBalls) CharacterSprites.DrawCard(card, at, VerticalScale, pass);
+    }
+
     private void DrawActors(CharacterPass pass)
     {
         foreach (var actor in actors)
@@ -957,7 +984,9 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            if (!npc.IsPCTerminal && InSight(npc)) Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f), 1f);
+            // (An item's ball has a smaller patch under it than a person)
+            if (!npc.IsPCTerminal && InSight(npc))
+                Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f), npc.IsItemBall ? 0.6f : 1f);
         }
         if (withPlayer) Blob(px, pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 

@@ -14,8 +14,8 @@ public enum Op
     If, Goto, Call, Return, End,
     // What the story remembers
     SetFlag, ClearFlag, SetVar, AddVar,
-    // What the player is given and what is taken back
-    Give, AddItem, Take, GivePokemon, GiveBadge, GiveMoney, TakeMoney, Heal,
+    // What the player is given, finds and has taken back
+    Give, Find, AddItem, Take, GivePokemon, GiveBadge, GiveMoney, TakeMoney, Heal,
     // Battles
     Battle, WildBattle,
     // People and the field
@@ -92,6 +92,12 @@ public sealed class Instruction
 
     /// <summary>A word that changes how the line is carried out: a walk at a run, a battle that may be lost, a fade to black.</summary>
     public bool Option { get; init; }
+
+    /// <summary>
+    /// The line means what the script was started with rather than something it names: the item of the ball or
+    /// of the hidden spot (<c>find own</c>), the flag that keeps it gone (<c>setflag own</c>).
+    /// </summary>
+    public bool Own { get; init; }
 
     public EmoteBubble Bubble { get; init; }
     public CameraMove Camera { get; init; }

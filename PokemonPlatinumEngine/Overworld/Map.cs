@@ -408,6 +408,9 @@ public class Map
     /// <summary>Signboards that run a script of their own instead of only being read, by their tile.</summary>
     public Dictionary<(int X, int Y), string> SignScripts { get; } = new();
 
+    /// <summary>Items hidden in the ground, by their tile (plan 02).</summary>
+    public Dictionary<(int X, int Y), HiddenItem> HiddenItems { get; } = new();
+
     /// <summary>The file a place's scripts are written in: its area's key on a map of the world, the map's name otherwise.</summary>
     public string ScriptFileAt(int x, int y) => InBounds(x, y) && AreaAt(x, y) is { Key.Length: > 0 } area ? area.Key : Name;
 

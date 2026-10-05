@@ -70,10 +70,10 @@
     { "id": "rock_smash_25", "looks": "rock_smash", "movement": "none", "x": 11, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_25", "script": "10001" },
     { "id": "rock_smash_26", "looks": "rock_smash", "movement": "none", "x": 12, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_26", "script": "10001" },
     { "id": "rock_smash_27", "looks": "rock_smash", "movement": "none", "x": 13, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_27", "script": "10001" },
-    { "id": "item_tm39", "looks": "pokeball", "movement": "none", "x": 7, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_TM39", "script": "7011" },
-    { "id": "item_luck_incense", "looks": "pokeball", "movement": "none", "x": 17, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_LUCK_INCENSE", "script": "7012" },
-    { "id": "item_tm03", "looks": "pokeball", "movement": "none", "x": 28, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_TM03", "script": "7013" },
-    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 22, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_POTION", "script": "7251" }
+    { "id": "item_tm39", "looks": "pokeball", "movement": "none", "x": 7, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_TM39", "item": "TM39", "script": "7011" },
+    { "id": "item_luck_incense", "looks": "pokeball", "movement": "none", "x": 17, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_LUCK_INCENSE", "item": "Luck Incense", "script": "7012" },
+    { "id": "item_tm03", "looks": "pokeball", "movement": "none", "x": 28, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_TM03", "item": "TM03", "script": "7013" },
+    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 22, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RAVAGED_PATH_POTION", "item": "Potion", "script": "7251" }
   ],
   "signs": [],
   "triggers": []

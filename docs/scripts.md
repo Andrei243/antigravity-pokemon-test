@@ -25,6 +25,9 @@ that exists, every script to something that starts it, and plays each to its end
   overlay's person); otherwise the common one for what they are (`FieldScripts.For`): `Nurse`, `Clerk`, `PC`,
   `Briefcase`, `Attendant`, `Trainer`, or `Talk` for someone who only has lines. A trainer who spots the player
   walks up and then runs the same script.
+- **Picking an item up.** An item lying in its ball is someone of the map (`npcType` "ItemBall") and runs
+  `ItemBall` when spoken to; something hidden in the ground runs `HiddenItem` when the player looks at its tile
+  and it hasn't been found. Both are two lines long: `setflag own`, `find own`.
 - **Reading a signboard.** `Sign`, or the script the sign names (`"script"` on a map file's signboard,
   `signScripts` in an overlay).
 - **Stepping onto a trigger.** A rectangle of tiles with a script and, usually, a story variable and the value it
@@ -120,13 +123,16 @@ What an `if` can ask:
 | Command | |
 |---|---|
 | `setflag FLAG_X`, `clearflag FLAG_X` | Flags are named `FLAG_` and capitals, after the original's where it has one. |
+| `setflag own`, `clearflag own` | The script's own flag: the one that hides whoever it belongs to (an item's ball), or that says a hidden item has been found. Setting it is what makes the ball gone for good. |
 | `setvar VAR_X 2`, `addvar VAR_X 1` | Variables likewise (`VAR_`). One never set is 0. |
 
 ### Giving and taking
 
 | Command | |
 |---|---|
-| `give "Potion" [3]` | Into the bag, with the item fanfare and the two lines that say so. |
+| `give "Potion" [3]` | Into the bag, with the item fanfare and the lines that say so ("received", and where it was put; a TM or an HM also says the move it holds). |
+| `find "Potion" [3]` | The same for something picked up: "found". |
+| `give own`, `find own`, `additem own` | The script's own item and how many: what lies in the ball, or in the ground, that started it. |
 | `additem "Potion" [3]` | Into the bag without a word. |
 | `take "Coupon 1" [3]` | Out of the bag: all of them or none. `RESULT` is 1 if they were taken. |
 | `givepokemon "Starly" 4` | Onto the team, or to the PC when the team is full. `RESULT` is 1 or 2. The words and the fanfare are the script's. |

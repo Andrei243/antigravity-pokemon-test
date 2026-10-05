@@ -155,7 +155,7 @@ public partial class GameEngine
         LoadScripts();
 
         // Every character the maps use (those a flag hides for now too), sculpted and meshed in the background while the title screen plays
-        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
+        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => !n.IsItemBall).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
         // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonModels.Preloaded.ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
@@ -850,6 +850,10 @@ public partial class GameEngine
             string read = currentMap.SignScripts.GetValueOrDefault((targetX, targetY)) ?? FieldScripts.Sign;
             if (StartScript(read, own: new[] { sign }, file: currentMap.ScriptFileAt(targetX, targetY))) return;
         }
+
+        // Something hidden where the player is looking: it is found, once
+        if (FieldScripts.HiddenAt(currentMap, targetX, targetY, story) is { } hidden
+            && StartScript(FieldScripts.HiddenItem, file: currentMap.ScriptFileAt(targetX, targetY), item: (hidden.Item, hidden.Count), flag: hidden.Flag)) return;
 
         TryStartSurf();
     }

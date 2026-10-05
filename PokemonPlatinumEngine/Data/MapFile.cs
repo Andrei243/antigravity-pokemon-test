@@ -59,6 +59,9 @@ public sealed class MapFile
 
     /// <summary>Tiles that start a script when stepped on; left out when there are none.</summary>
     public List<TriggerRecord>? Triggers { get; set; }
+
+    /// <summary>Items nobody can see, found by looking at their tile; left out when there are none.</summary>
+    public List<HiddenItemRecord>? HiddenItems { get; set; }
     public List<WildEncounterEntry> WildEncounters { get; set; } = new();
 
     public sealed class PropRecord
@@ -85,6 +88,16 @@ public sealed class MapFile
 
         /// <summary>A script the sign runs instead of only being read (its text is what <c>sayown</c> says); left out for a plain sign.</summary>
         public string? Script { get; set; }
+    }
+
+    /// <summary>An item hidden in the ground: the tile, the item, how many (one when left out) and the story flag of its finding.</summary>
+    public sealed class HiddenItemRecord
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public string Item { get; set; } = string.Empty;
+        public int? Count { get; set; }
+        public string Flag { get; set; } = string.Empty;
     }
 
     /// <summary>A rectangle of tiles that starts a script when the player steps into it.</summary>
@@ -125,6 +138,13 @@ public sealed class MapFile
 
         /// <summary>A story flag they wait for: they are on the map only while it is set.</summary>
         public string? ShownBy { get; set; }
+
+        /// <summary>
+        /// For an item lying in its ball (<c>npcType</c> "ItemBall"): the item and how many (one when left out).
+        /// <see cref="HiddenBy"/> is then the flag set as it is picked up, which is what keeps it gone.
+        /// </summary>
+        public string? Item { get; set; }
+        public int? Count { get; set; }
         public TrainerRecord? Trainer { get; set; }
     }
 
@@ -209,6 +229,13 @@ public sealed class MapFile
         foreach (var t in Triggers ?? new())
             map.Triggers.Add(new StepTrigger { X = t.X, Y = t.Y, Width = t.Width, Depth = t.Depth, Script = t.Script, Variable = t.Variable, Value = t.Value ?? 0 });
 
+        foreach (var h in HiddenItems ?? new())
+        {
+            if (ItemDatabase.Get(h.Item) == null) throw new InvalidDataException($"Map {Name}: the hidden item at {h.X},{h.Y} is '{h.Item}', which is no item.");
+            if (h.Flag.Length == 0) throw new InvalidDataException($"Map {Name}: the hidden {h.Item} at {h.X},{h.Y} has no flag, so it would be found again and again.");
+            map.HiddenItems[(h.X, h.Y)] = new HiddenItem(h.Item, h.Count ?? 1, h.Flag);
+        }
+
         foreach (var n in Npcs)
             map.NPCs.Add(BuildNpc(n, Name));
 
@@ -237,9 +264,17 @@ public sealed class MapFile
             Key = n.Id,
             Script = n.Script,
             HiddenBy = n.HiddenBy,
-            ShownBy = n.ShownBy
+            ShownBy = n.ShownBy,
+            Item = n.Item,
+            ItemCount = n.Count ?? 1
         };
         if (n.Id != null) npc.Id = n.Id;
+        if (npc.IsItemBall || npc.Item != null)
+        {
+            if (!npc.IsItemBall) throw new InvalidDataException($"Map {mapName}: {n.Name} holds an item and is no item ball (npcType \"{NPC.ItemBallType}\").");
+            if (npc.Item == null || ItemDatabase.Get(npc.Item) == null) throw new InvalidDataException($"Map {mapName}: the item ball at {n.X},{n.Y} holds '{npc.Item}', which is no item.");
+            if (string.IsNullOrEmpty(npc.HiddenBy)) throw new InvalidDataException($"Map {mapName}: the {npc.Item} at {n.X},{n.Y} has no hiddenBy flag, so it would come back.");
+        }
 
         if (n.Trainer is { } t)
         {
@@ -340,6 +375,11 @@ public sealed class MapFile
                 X = t.X, Y = t.Y, Width = t.Width, Depth = t.Depth, Script = t.Script,
                 Variable = t.Variable, Value = t.Variable != null ? t.Value : null
             }).ToList();
+        if (map.HiddenItems.Count > 0)
+            file.HiddenItems = map.HiddenItems.Select(kv => new HiddenItemRecord
+            {
+                X = kv.Key.X, Y = kv.Key.Y, Item = kv.Value.Item, Count = kv.Value.Count > 1 ? kv.Value.Count : null, Flag = kv.Value.Flag
+            }).ToList();
         file.WildEncounters = map.WildEncounters.ToList();
         return file;
     }
@@ -361,6 +401,8 @@ public sealed class MapFile
         Script = npc.Script,
         HiddenBy = npc.HiddenBy,
         ShownBy = npc.ShownBy,
+        Item = npc.Item,
+        Count = npc.Item != null && npc.ItemCount > 1 ? npc.ItemCount : null,
         Trainer = npc.IsTrainer && npc.TrainerData is { } t ? new TrainerRecord
         {
             Id = t.Id,

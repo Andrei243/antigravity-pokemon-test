@@ -110,6 +110,44 @@ public sealed class WorldWriter
         return file;
     }
 
+    private Dictionary<int, string>? itemNames;
+
+    /// <summary>The game's name for an item constant, by its number: <c>ITEM_PARLYZ_HEAL</c> is "Paralyze Heal".</summary>
+    private string? ItemName(string constant)
+    {
+        itemNames ??= ItemDatabase.GetAll().GroupBy(i => i.Id).ToDictionary(g => g.Key, g => g.First().Name);
+        int id = -1;
+        for (int i = 0; i < decomp.ItemIds.Count && id < 0; i++)
+            if (decomp.ItemIds[i] == constant) id = i;
+        return id >= 0 ? itemNames.GetValueOrDefault(id) : null;
+    }
+
+    /// <summary>An item ball's item by the game's name, or null (with the problem noted) when the game has no such item.</summary>
+    private (string Item, int Count)? Lying(MapHeader header, AreaEvents.ObjectEvent o)
+    {
+        if (decomp.VisibleItem(o.Script) is not { } found) return null;
+        if (ItemName(found.Item) is { } name) return (name, found.Count);
+        string problem = $"{header.Key}: the item ball {o.Id} holds {found.Item}, which is not an item the game knows";
+        if (!Problems.Contains(problem)) Problems.Add(problem);
+        return null;
+    }
+
+    private AreaSign Sign(MapHeader header, AreaEvents.BgEvent s)
+    {
+        var sign = new AreaSign { X = s.X, Z = s.Z, Type = s.Type, Script = s.Script };
+        if (s.Type != AreaSign.HiddenItem || decomp.HiddenItem(s.Script) is not { } hidden) return sign;
+        if (ItemName(hidden.Item) is not { } name)
+        {
+            Problems.Add($"{header.Key}: the hidden item at {s.X},{s.Z} is {hidden.Item}, which is not an item the game knows");
+            return sign;
+        }
+        sign.Item = name;
+        sign.Count = hidden.Count > 1 ? hidden.Count : null;
+        sign.Flag = hidden.Flag;
+        sign.Range = hidden.Range;
+        return sign;
+    }
+
     public WorldAreaFile Area(MapHeader header, string name)
     {
         var events = decomp.Events(header.Events);
@@ -152,9 +190,11 @@ public sealed class WorldWriter
                 // A trainer the data gives no range sees nobody coming: they battle when spoken to
                 Sight = o.TrainerType is "TRAINER_TYPE_NONE" or "" || !o.Script.StartsWith("TRAINER_", StringComparison.Ordinal) ? null : o.Data.Count == 0 ? 0 : o.Data[0],
                 HiddenBy = o.HiddenFlag is "0" or "" ? null : o.HiddenFlag,
+                Item = Lying(header, o)?.Item,
+                Count = Lying(header, o) is { Count: > 1 } several ? several.Count : null,
                 Script = o.Script
             }).ToList(),
-            Signs = events.Signs.Select(s => new AreaSign { X = s.X, Z = s.Z, Type = s.Type, Script = s.Script }).ToList(),
+            Signs = events.Signs.Select(s => Sign(header, s)).ToList(),
             Triggers = events.Triggers.Select(t => new AreaTrigger
             {
                 X = t.X, Z = t.Z, Width = Math.Max(1, t.Width), Depth = Math.Max(1, t.Length), Script = t.Script, Variable = t.Var, Value = t.Value

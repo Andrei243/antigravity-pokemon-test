@@ -137,19 +137,30 @@ public static class ScriptParser
                 return new Instruction { Op = Op.End, Line = line };
 
             case "setflag":
-                return new Instruction { Op = Op.SetFlag, Line = line, Name = r.Flag() };
             case "clearflag":
-                return new Instruction { Op = Op.ClearFlag, Line = line, Name = r.Flag() };
+            {
+                var op = word == "setflag" ? Op.SetFlag : Op.ClearFlag;
+                if (!r.PeekIs("own")) return new Instruction { Op = op, Line = line, Name = r.Flag() };
+                r.Next();
+                return new Instruction { Op = op, Line = line, Own = true };
+            }
             case "setvar":
                 return new Instruction { Op = Op.SetVar, Line = line, Name = r.Variable(writable: true), Number = r.Int("a value") };
             case "addvar":
                 return new Instruction { Op = Op.AddVar, Line = line, Name = r.Variable(writable: true), Number = r.Int("an amount") };
 
             case "give":
+            case "find":
             case "additem":
             case "take":
             {
-                var op = word == "give" ? Op.Give : word == "additem" ? Op.AddItem : Op.Take;
+                var op = word == "give" ? Op.Give : word == "find" ? Op.Find : word == "additem" ? Op.AddItem : Op.Take;
+                // The script's own item: what lies in the ball, or in the ground, that started it
+                if (op != Op.Take && r.PeekIs("own"))
+                {
+                    r.Next();
+                    return new Instruction { Op = op, Line = line, Own = true };
+                }
                 string item = r.Text("an item's name");
                 int count = r.More ? r.Int("how many") : 1;
                 if (count < 1) throw r.Error("an item is given or taken one at a time at least");

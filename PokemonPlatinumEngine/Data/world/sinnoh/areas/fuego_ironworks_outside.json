@@ -51,8 +51,8 @@
     { "id": "signboard", "looks": "signboard", "movement": "none", "x": 172, "z": 588, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" }
   ],
   "signs": [
-    { "x": 179, "z": 594, "type": 2, "script": "8156" },
-    { "x": 177, "z": 578, "type": 2, "script": "8155" }
+    { "x": 179, "z": 594, "type": 2, "script": "8156", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_FUEGO_IRONWORKS_OUTSIDE_ULTRA_BALL", "range": 2 },
+    { "x": 177, "z": 578, "type": 2, "script": "8155", "item": "Big Mushroom", "flag": "FLAG_OBTAINED_HIDDEN_FUEGO_IRONWORKS_OUTSIDE_BIG_MUSHROOM", "range": 2 }
   ],
   "triggers": []
 }

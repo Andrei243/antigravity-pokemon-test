@@ -1026,6 +1026,23 @@ public static class WorldMapBuilder
                 map.AddProp(obstacle, o.X, o.Z);
                 continue;
             }
+            // An item in its ball lies where the original has it, and stays gone by the original's own flag
+            if (o.Item != null && o.HiddenBy != null)
+            {
+                map.NPCs.Add(new NPC
+                {
+                    Name = o.Item,
+                    NpcType = NPC.ItemBallType,
+                    GridX = o.X,
+                    GridY = o.Z,
+                    Item = o.Item,
+                    ItemCount = o.Count ?? 1,
+                    HiddenBy = o.HiddenBy,
+                    Key = o.Id,
+                    ScriptFile = key
+                });
+                continue;
+            }
 
             // People appear only once the game says who they are
             if (overlay?.People == null || !overlay.People.TryGetValue(o.Id, out var person)) continue;
@@ -1059,6 +1076,11 @@ public static class WorldMapBuilder
             npc.ScriptFile = key;
             map.NPCs.Add(npc);
         }
+
+        // What is hidden in the ground, found by looking at its tile
+        foreach (var s in file.Signs)
+            if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null && map.InBounds(s.X, s.Z))
+                map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
 
         // The original's triggers that have a script of ours: its tiles, its variable and its value
         foreach (var bound in overlay?.Triggers ?? new())

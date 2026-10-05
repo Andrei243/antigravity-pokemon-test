@@ -40,7 +40,7 @@
     { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 109, "z": 856, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_201", "script": "65535" }
   ],
   "signs": [
-    { "x": 107, "z": 893, "type": 2, "script": "8201" }
+    { "x": 107, "z": 893, "type": 2, "script": "8201", "item": "Odd Keystone", "flag": "FLAG_OBTAINED_HIDDEN_TWINLEAF_TOWN_ODD_KEYSTONE", "range": 2 }
   ],
   "triggers": [
     { "x": 108, "z": 867, "width": 8, "depth": 1, "script": "4", "variable": "VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE", "value": "1" },

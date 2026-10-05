@@ -7,6 +7,7 @@
 - *Since S1 (2026-10-05):* the story has its state and its scripts. `Story/StoryState.cs` holds flags, variables, beaten trainers, taken items, badges and the starters, and is saved; scripts are text files in `Data/scripts/` ([`docs/scripts.md`](../scripts.md) is the language's reference), run over the field by `Story/ScriptRunner.cs`, with a question box, scripted walks, bubbles, fades, the camera, battles and the screens that exist. What a nurse, a clerk, a PC, the briefcase, a trainer and a signboard do is written in `common.txt`; people can be hidden by flags; tiles can start scripts. No chapter of the story is written yet: `common.NewGame` sets nothing, and the only scripts of a place are Jubilife's three quiz clowns.
 - `Core/GameEngine.cs` switches between overworld, dialogue, battle and menu states. NPCs (`Overworld/NPC.cs`) have lines of their own or a script, and can be trainers (line of sight, "!" and a battle), a nurse, a clerk, a PC or the starter briefcase.
 - A fresh game already has a Turtwig, and the Running Shoes are always on.
+- *Since 2026-10-05, after S1:* items lie on the ground. The 37 item balls and 21 hidden items of the open areas are where Platinum has them, with what Platinum puts in them (the Potion by Route 202's grass, a Poké Ball on Route 203, TMs in Oreburgh Gate's cellar, a Rare Candy in Floaroma Meadow), and every area opened later brings its own.
 - There are no cutscenes, key items, field moves or rival yet.
 - Battles (`Battle/BattleEngine.cs`): single and double battles with physical/special damage, simple status and stat moves, catching, EXP, level-ups and evolution, switching, a small bag. Presentation (`BattleAnimator`, `BattleRenderer`) is driven by `QueueMessage(text, onComplete, onShow)`: `onShow` starts the animation a message describes. Abilities, held items and Gen 4 status rules are partly in (see plan 06 · R7–R9); no weather or tag battles.
 
@@ -103,7 +104,14 @@ Wild levels and every other trainer's team come from the decomp (`res/field/enco
 12. **Old saves**: a save with no `StoryVersion` is taken to have chosen the starter it has (grown or not), or Turtwig, which every game was given.
 
 **Left for later, on purpose.**
-- Item balls and hidden items: the state is there (`TakenItems`, `if taken "..."`), but nothing is placed on the ground, because a ball needs its sprite and its common script (S2, with the obstacles, or S4 with the first one).
+- Item balls and hidden items: the state is there (`TakenItems`, `if taken "..."`), but nothing is placed on the ground, because a ball needs its sprite and its common script (S2, with the obstacles, or S4 with the first one). **Done on 2026-10-05, at the user's request, ahead of S2** (below).
+
+**Items on the ground (2026-10-05, after S1).**
+- **Where they come from**: the map importer reads what each item ball's script sets (`scripts_visible_items.s`) and the table of hidden items (`hidden_items.h`), and writes the item and the number into the area's file beside the object or the sign. A hidden item's number is its flag's place in the original's list of flags, which has gaps the table lacks: reading the table by position gave an Oreburgh City with no Heart Scale.
+- **In the game**: an item ball is someone of the map (`NPC.IsItemBall`, drawn as a Poké Ball 18 texels across; style guide, "Props"), in the way like a person. Speaking to it runs `common.ItemBall`: its own flag is set, which takes the ball off the map for good, and what was in it is found (`find own`: the item fanfare, "found the Potion!", where it was put, and for a TM the move it holds). A hidden item is `Map.HiddenItems`: looking at its tile runs `common.HiddenItem` once.
+- **No list of its own in the save**: a ball is gone because its flag is set, as in the original (`FLAG_OBTAINED_ROUTE_202_POTION`), so `TakenItems` stays for whatever a later chapter gives no flag to.
+- **Decisions**: every ball looks the same whatever is in it, as in Platinum; a hidden item is found by looking at its tile, never by standing on it; the bag is never full, so nothing is left lying. The Works Key's ball in Floaroma Meadow is no item ball (its script is the meadow's own) and waits for S6.
+- **Not yet**: the Dowsing Machine (the ranges are imported; the Pokétch is S2's), and berries' soft soil.
 - A wild battle a script starts can be run from until plan 06 · R9 gives battles a "can't flee".
 - The rival's name and `{rival}` in lines (S4, see below).
 - People don't wander: the area files keep each object's `movement` (`wander_around`, `look_south`…) and nothing reads it yet. It belongs with the first chapter that has a town full of people (S4), not with the scripts.

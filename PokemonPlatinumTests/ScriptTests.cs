@@ -111,6 +111,9 @@ public class ScriptTests
           setvar VAR_A 3
           addvar VAR_A -1
           give "Potion" 2
+          find "Potion"
+          find own
+          setflag own
           additem "Potion"
           take "Potion"
           givepokemon "Starly" 4
@@ -519,6 +522,56 @@ public class ScriptTests
             "Ana received the Potion!", "Ana put it away in the Medicine pocket.",
             "Ana received 5 × Poké Ball!", "Ana put them away in the Poké Balls pocket."
         }, Said(host));
+    }
+
+    [Fact]
+    public void AnItemFoundIsToldInOtherWordsAndATmSaysWhatItHolds()
+    {
+        var host = Run("""
+            script S
+              find "Rare Candy"
+              find "Poké Ball" 3
+              find "TM70"
+            """, h => h.PlayerName = "Ana");
+
+        Assert.Equal(new[]
+        {
+            "Ana found the Rare Candy!", "Ana put it away in the Medicine pocket.",
+            "Ana found 3 × Poké Ball!", "Ana put them away in the Poké Balls pocket.",
+            "Ana found the TM70!", "TM70 holds the move Flash.", "Ana put it away in the TMs & HMs pocket."
+        }, Said(host));
+        Assert.Equal(3, host.Log.Count(l => l == $"fanfare {MusicRole.FanfareItem}"));
+        Assert.Equal(3, host.Bag.GetQuantity(ItemDatabase.Get("Poké Ball")!));
+    }
+
+    [Fact]
+    public void AScriptsOwnItemAndFlagAreWhatItWasStartedWith()
+    {
+        // A ball's: what the ball holds, and the flag that hides it
+        var ball = new NPC { NpcType = NPC.ItemBallType, Name = "Great Ball", Item = "Great Ball", ItemCount = 2, HiddenBy = "FLAG_OBTAINED_TEST_GREAT_BALL" };
+        var library = ScriptLibrary.FromSources(("test", "script S\n setflag own\n find own\nscript Undo\n clearflag own\n additem own"));
+        var host = new HeadlessScriptHost();
+        var runner = new ScriptRunner(library, host);
+        runner.Start(library.Find("test.S")!, ball);
+        runner.RunToEnd();
+
+        Assert.True(host.Story.Has("FLAG_OBTAINED_TEST_GREAT_BALL"));
+        Assert.Equal(2, host.Bag.GetQuantity(ItemDatabase.Get("Great Ball")!));
+        Assert.Equal($"{host.PlayerName} found 2 × Great Ball!", host.Transcript[0].Text);
+
+        // Given outright: a hidden item has nobody, only an item and a flag
+        runner.Start(library.Find("test.Undo")!, item: ("Stardust", 1), flag: "FLAG_OBTAINED_TEST_GREAT_BALL");
+        runner.RunToEnd();
+        Assert.False(host.Story.Has("FLAG_OBTAINED_TEST_GREAT_BALL"));
+        Assert.Equal(1, host.Bag.GetQuantity(ItemDatabase.Get("Stardust")!));
+
+        // A script nothing of the kind started has neither, and says so
+        runner.Start(library.Find("test.S")!, Trainer());
+        Assert.Contains("no flag of its own", Assert.Throws<ScriptException>(() => runner.RunToEnd()).Message);
+        var finding = ScriptLibrary.FromSources(("test", "script S\n find own"));
+        var alone = new ScriptRunner(finding, new HeadlessScriptHost());
+        alone.Start(finding.All.Single());
+        Assert.Equal("test.txt(2): this script has no item of its own: no item ball and no hidden item started it.", Assert.Throws<ScriptException>(() => alone.RunToEnd()).Message);
     }
 
     [Fact]

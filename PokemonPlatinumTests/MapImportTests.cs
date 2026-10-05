@@ -475,6 +475,111 @@ public class MapImportTests
     }
 
     [Fact]
+    public void AnItemBallsScriptSaysWhatLiesInIt()
+    {
+        // The file lists its scripts in order (the nth is script 7000 + n), and each sets the item and how many
+        var items = DecompMaps.ParseVisibleItems("""
+            #include "macros/scrcmd.inc"
+
+                ScriptEntry VisibleItems_Route202_Potion
+                ScriptEntry VisibleItems_Route203_PokeBall
+                ScriptEntry VisibleItems_Somewhere_Nothing
+                ScriptEntry VisibleItems_Somewhere_ThreeNuggets
+                ScriptEntryEnd
+
+            VisibleItems_Route202_Potion:
+                SetVar VAR_0x8008, ITEM_POTION
+                SetVar VAR_0x8009, 1
+                GoTo VisibleItems_TryGiveItem
+                End
+
+            VisibleItems_Somewhere_ThreeNuggets:
+                SetVar VAR_0x8008, ITEM_NUGGET
+                SetVar VAR_0x8009, 3
+                GoTo VisibleItems_TryGiveItem
+                End
+
+            VisibleItems_Route203_PokeBall:
+                SetVar VAR_0x8008, ITEM_POKE_BALL
+                SetVar VAR_0x8009, 1
+                GoTo VisibleItems_TryGiveItem
+                End
+
+            VisibleItems_Somewhere_Nothing:
+                End
+
+            VisibleItems_TryGiveItem:
+                SetVar VAR_0x8004, VAR_0x8008
+                SetVar VAR_0x8005, VAR_0x8009
+                End
+            """);
+
+        Assert.Equal(new[] { ("ITEM_POTION", 1), ("ITEM_POKE_BALL", 1), ("", 0), ("ITEM_NUGGET", 3) }, items);
+    }
+
+    [Fact]
+    public void AHiddenItemsNumberIsItsFlagsPlaceAmongTheFlags()
+    {
+        // The flags have a gap the table lacks: the third entry is the hidden item numbered 3, not 2
+        const string flags = """
+            FLAG_UNUSED_0x02D9
+            HIDDEN_ITEM_FLAGS_START
+            FLAG_OBTAINED_HIDDEN_VALLEY_WINDWORKS_OUTSIDE_MAX_ELIXIR = HIDDEN_ITEM_FLAGS_START
+            FLAG_OBTAINED_HIDDEN_ETERNA_FOREST_INSECT_PLATE
+            FLAG_UNUSED_0x03BF
+            FLAG_OBTAINED_HIDDEN_SOMEWHERE_STARDUST
+            HIDDEN_ITEM_FLAGS_END = FLAG_OBTAINED_HIDDEN_SOMEWHERE_STARDUST
+            FLAG_SOMETHING_ELSE
+            """;
+        var hidden = DecompMaps.ParseHiddenItems("""
+            #define HIDDEN_ITEM_ENTRY(item_in, qty_in, range_in, script_in)                                                    \
+                {                                                                                                              \
+                    .item = item_in, .qty = qty_in, .range = range_in, .pad = 0, .script = script_in - HIDDEN_ITEM_FLAGS_START \
+                }
+
+            const HiddenItem gHiddenItems[] = {
+                HIDDEN_ITEM_ENTRY(ITEM_MAX_ELIXIR,   1, 2, FLAG_OBTAINED_HIDDEN_VALLEY_WINDWORKS_OUTSIDE_MAX_ELIXIR),
+                HIDDEN_ITEM_ENTRY(ITEM_INSECT_PLATE, 1, 0, FLAG_OBTAINED_HIDDEN_ETERNA_FOREST_INSECT_PLATE),
+                HIDDEN_ITEM_ENTRY(ITEM_STARDUST, 3, 2, FLAG_OBTAINED_HIDDEN_SOMEWHERE_STARDUST),
+            };
+            """, flags);
+
+        Assert.Equal(new[] { 0, 1, 3 }, hidden.Keys.Order());
+        Assert.Equal(new HiddenItemEntry("ITEM_MAX_ELIXIR", 1, 2, "FLAG_OBTAINED_HIDDEN_VALLEY_WINDWORKS_OUTSIDE_MAX_ELIXIR"), hidden[0]);
+        Assert.Equal(("ITEM_INSECT_PLATE", 0), (hidden[1].Item, hidden[1].Range));
+        Assert.Equal(3, hidden[3].Count);
+        // A flag the list lacks is a table that has moved on without it
+        Assert.Throws<InvalidDataException>(() => DecompMaps.ParseHiddenItems("HIDDEN_ITEM_ENTRY(ITEM_NUGGET, 1, 2, FLAG_OBTAINED_HIDDEN_NOWHERE_NUGGET),", flags));
+    }
+
+    [Fact]
+    public void TheWorldsFilesSayWhatEachBallAndEachHiddenPlaceHolds()
+    {
+        // The areas the game ships: every ball's script is an item ball's and has its item, every hidden item its flag
+        var world = World.LoadAll().Single(w => w.Index.Region == "Sinnoh");
+        int balls = 0, hidden = 0;
+        foreach (string key in world.Index.Areas)
+        {
+            var area = world.Area(key)!;
+            foreach (var o in area.Objects.Where(o => int.TryParse(o.Script, out int script) && script >= DecompMaps.FirstVisibleItemScript && script < DecompMaps.FirstHiddenItemScript))
+            {
+                balls++;
+                Assert.True(o.Item != null && ItemDatabase.Get(o.Item) != null, $"{key}: the ball {o.Id} holds '{o.Item}'");
+                Assert.Equal("pokeball", o.Looks);
+                Assert.StartsWith("FLAG_", o.HiddenBy);
+            }
+            Assert.All(area.Objects.Where(o => o.Item == null), o => Assert.Null(o.Count));
+            foreach (var s in area.Signs.Where(s => s.Type == AreaSign.HiddenItem))
+            {
+                hidden++;
+                Assert.True(s.Item != null && ItemDatabase.Get(s.Item) != null, $"{key}: the hidden item at {s.X},{s.Z} is '{s.Item}'");
+                Assert.StartsWith("FLAG_OBTAINED_HIDDEN_", s.Flag);
+            }
+        }
+        Assert.True(balls >= 37 && hidden >= 20, $"{balls} balls and {hidden} hidden items");
+    }
+
+    [Fact]
     public void BehaviourNamesAreNumberedByTheirPlaceInTheList()
     {
         var names = DecompMaps.ParseBehaviourNames("""

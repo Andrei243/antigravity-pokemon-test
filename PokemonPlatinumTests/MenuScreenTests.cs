@@ -167,6 +167,33 @@ public class MenuScreenTests
     }
 
     [Fact]
+    public void AKeyHeldInTheBagRunsToTheEndOfThePocketAndStopsThere()
+    {
+        var bag = new BagScreen();
+        bag.Open();
+
+        // A held key's steps go down an item at a time, the list following, and stop at the last
+        for (int i = 0; i < 5; i++) bag.MoveCursor(1, 12, held: true);
+        Assert.Equal(5, bag.SelectedIndex);
+        for (int i = 0; i < 20; i++) bag.MoveCursor(1, 12, held: true);
+        Assert.Equal((11, 4), (bag.SelectedIndex, bag.FirstRow));
+        // ...where a press goes round to the first
+        bag.MoveCursor(1, 12);
+        Assert.Equal((0, 0), (bag.SelectedIndex, bag.FirstRow));
+        bag.MoveCursor(-1, 12, held: true);
+        Assert.Equal(0, bag.SelectedIndex);
+
+        // An item's actions are three rows: they go round whatever the key
+        var inventory = new Inventory();
+        inventory.AddItem(Item("Potion"), 1);
+        bag.CurrentPocket = Item("Potion").Pocket;
+        bag.Confirm(inventory, PartyOf(Mon("Turtwig", 5)), _ => { });
+        Assert.NotNull(bag.Actions);
+        bag.MoveCursor(-1, 1, held: true);
+        Assert.Equal(bag.Actions!.Count - 1, bag.ActionIndex);
+    }
+
+    [Fact]
     public void WhatCanBeDoneWithAnItemFollowsWhatItIs()
     {
         Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Potion")));
@@ -488,6 +515,17 @@ public class MenuScreenTests
         shop.Move(1, 0, 0);
         Assert.Equal(0, shop.SelectedIndex);
         Assert.Equal(shop.Stock[0], shop.Selected);
+
+        // A key held down runs to the end of the stock and stops there, where a press goes round
+        int last = shop.Stock.Count - 1;
+        shop.Move(0, -1, 0, held: true);
+        Assert.Equal(0, shop.SelectedIndex);
+        shop.Move(0, 1, 0, held: true);
+        Assert.Equal(1, shop.SelectedIndex);
+        for (int i = 0; i < shop.Stock.Count + 3; i++) shop.Move(0, 1, 0, held: true);
+        Assert.Equal(last, shop.SelectedIndex);
+        shop.Move(0, 1, 0);
+        Assert.Equal(0, shop.SelectedIndex);
     }
 
     // ------------------------------------------------------------------ the Pokédex

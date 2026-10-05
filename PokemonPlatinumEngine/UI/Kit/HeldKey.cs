@@ -65,3 +65,25 @@ public sealed class HeldKey
         return steps * direction;
     }
 }
+
+/// <summary>
+/// The cursor's tick in a list a held key runs through. A press always sounds; a held key takes steps as often as
+/// the tick lasts (0.04 s), so of those one sounds at most every <see cref="Gap"/>. It only says whether to
+/// sound: the screen plays it.
+/// </summary>
+public sealed class CursorTick
+{
+    public const float Gap = 0.07f;
+
+    private float since = Gap;
+
+    public void Update(float dt) => since += dt;
+
+    /// <summary>Whether this step sounds; <paramref name="held"/> says it came from a key kept down.</summary>
+    public bool Sounds(bool held)
+    {
+        if (held && since < Gap) return false;
+        since = 0f;
+        return true;
+    }
+}

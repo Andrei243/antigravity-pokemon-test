@@ -22,6 +22,21 @@ script Sign
   end
 
 
+# An item lying on the ground in its ball. Its own flag is the one that hides the ball, so it is gone for good,
+# and what was in it is the player's.
+script ItemBall
+  setflag own
+  find own
+  end
+
+
+# An item nobody can see, found by looking at the place where it lies. Its own flag says it has been found.
+script HiddenItem
+  setflag own
+  find own
+  end
+
+
 # The nurse of a Pokémon Center.
 script Nurse
   say "Good day! You've come to a Pokémon Center."

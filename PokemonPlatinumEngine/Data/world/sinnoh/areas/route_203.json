@@ -52,11 +52,11 @@
     { "id": "arrow_signpost_oreburgh_city", "looks": "arrow_signpost", "movement": "none", "x": 244, "z": 747, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
     { "id": "trainer_tips_signpost_east", "looks": "trainer_tips_signpost", "movement": "none", "x": 238, "z": 752, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" },
     { "id": "trainer_tips_signpost_west", "looks": "trainer_tips_signpost", "movement": "none", "x": 217, "z": 750, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
-    { "id": "item_repel", "looks": "pokeball", "movement": "none", "x": 222, "z": 745, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_REPEL", "script": "7001" },
-    { "id": "item_poke_ball", "looks": "pokeball", "movement": "none", "x": 211, "z": 750, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_POKE_BALL", "script": "7002" },
+    { "id": "item_repel", "looks": "pokeball", "movement": "none", "x": 222, "z": 745, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_REPEL", "item": "Repel", "script": "7001" },
+    { "id": "item_poke_ball", "looks": "pokeball", "movement": "none", "x": 211, "z": 750, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_POKE_BALL", "item": "Poké Ball", "script": "7002" },
     { "id": "lass", "looks": "lass", "movement": "wander_around", "x": 206, "z": 757, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "1" },
     { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 187, "z": 756, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_JUBILIFE_CITY", "script": "65535" },
-    { "id": "item_x_defense", "looks": "pokeball", "movement": "none", "x": 231, "z": 754, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_X_DEFENSE", "script": "7255" }
+    { "id": "item_x_defense", "looks": "pokeball", "movement": "none", "x": 231, "z": 754, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_X_DEFENSE", "item": "X Defense", "script": "7255" }
   ],
   "signs": [],
   "triggers": [

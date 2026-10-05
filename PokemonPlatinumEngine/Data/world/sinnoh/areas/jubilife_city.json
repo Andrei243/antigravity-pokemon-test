@@ -63,10 +63,10 @@
     { "id": "kid_with_nds_2", "looks": "kid_with_nds", "movement": "none", "x": 182, "z": 782, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "21" },
     { "id": "collector", "looks": "collector", "movement": "look_north", "x": 173, "z": 753, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_JUBILIFE_CITY_COLLECTOR", "script": "0" },
     { "id": "looker", "looks": "looker", "movement": "look_south", "x": 186, "z": 756, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_JUBILIFE_CITY_LOOKER", "script": "5" },
-    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 142, "z": 766, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_JUBILIFE_CITY_POTION", "script": "7257" }
+    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 142, "z": 766, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_JUBILIFE_CITY_POTION", "item": "Potion", "script": "7257" }
   ],
   "signs": [
-    { "x": 168, "z": 795, "type": 2, "script": "8161" }
+    { "x": 168, "z": 795, "type": 2, "script": "8161", "item": "Stardust", "flag": "FLAG_OBTAINED_HIDDEN_JUBILIFE_CITY_STARDUST", "range": 2 }
   ],
   "triggers": [
     { "x": 173, "z": 796, "width": 4, "depth": 1, "script": "2", "variable": "VAR_JUBILIFE_CITY_STATE", "value": "0" },
