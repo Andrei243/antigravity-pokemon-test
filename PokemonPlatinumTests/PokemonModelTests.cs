@@ -27,7 +27,8 @@ public class PokemonModelTests
     private static readonly Dictionary<string, int> EyesOf = new Dictionary<string, int>
     {
         ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1, ["Nosepass"] = 0, ["Ralts"] = 0, ["Kirlia"] = 1, ["Magnemite"] = 1, ["Magneton"] = 3,
-        ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0, ["Gengar-Mega"] = 3
+        ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0, ["Gengar-Mega"] = 3,
+        ["Dugtrio"] = 6, ["Dugtrio-Alola"] = 6, ["Doduo"] = 4, ["Dodrio"] = 6
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>

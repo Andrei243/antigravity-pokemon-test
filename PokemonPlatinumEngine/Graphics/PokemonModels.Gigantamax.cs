@@ -213,6 +213,57 @@ internal static partial class PokemonModels
         return b;
     }
 
+    // ------------------------------------------------------------------ Gigantamax Meowth
+
+    private static PokeBuilder MeowthGmax()
+    {
+        var b = new PokeBuilder("Meowth-Gmax", 0.95f, BodyPlan.Biped, V(0, 0.62f, 0)) { Coat = Fur };
+        var brown = Rgb(170, 116, 78);
+        var cream = Rgb(248, 236, 198);
+        var paw = Rgb(150, 96, 62);
+
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(0.05f * s, 0.14f, 0));
+            b.Limb(leg, V(0.05f * s, 0.15f, 0), V(0.065f * s, 0.045f, 0.015f), 0.042f, 0.032f, cream);
+            b.Ell(leg, V(0.068f * s, 0.027f, 0.042f), V(0.043f, 0.027f, 0.062f), paw);
+        });
+        // Its body stretched up immeasurably tall, pale in front and brown behind, ringed by clouds below its head
+        b.Limb(Body, V(0, 0.15f, -0.01f), V(0, 1.18f, 0), 0.09f, 0.07f, brown);
+        b.PaintEll(Body, V(0, 0.66f, 0.07f), V(0.08f, 0.58f, 0.06f), cream);
+        MaxClouds(b, Body, V(0, 1.08f, 0), 0.062f, 0.17f, 0.1f, 1.6f);
+        int tail = b.Tail(V(0, 0.2f, -0.08f));
+        CurledTail(b, tail, V(0, 0.2f, -0.08f), Vector3.Normalize(V(0.4f, 0.1f, -1f)), 0.2f, 0.022f, brown, 0.05f);
+        // Arms raised high on either side of its head
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Arm(s, V(0.06f * s, 1.12f, 0.01f));
+            var elbow = V(0.16f * s, 1.19f, 0.03f);
+            var hand = V(0.17f * s, 1.39f, 0.04f);
+            b.Limb(arm, V(0.05f * s, 1.12f, 0.01f), elbow, 0.032f, 0.028f, brown);
+            b.Limb(arm, elbow, hand, 0.028f, 0.026f, brown);
+            b.Ell(arm, hand + V(0, 0.012f, 0), V(0.038f, 0.034f, 0.034f), paw);
+        });
+        int head = b.Head(V(0, 1.2f, 0.01f));
+        var c = V(0, 1.31f, 0.02f);
+        var r = V(0.12f, 0.1f, 0.095f);
+        PokeBuilder.Both(s =>
+        {
+            int e = b.Ear(head, s, V(0.07f * s, 1.37f, 0));
+            CatEar(b, e, V(0.07f * s, 1.36f, 0), V(0.125f * s, 1.49f, -0.02f), 0.05f, Rgb(54, 46, 52), Rgb(124, 74, 52));
+        });
+        b.Ell(head, c, r, brown);
+        PokeBuilder.Both(s => b.Ell(head, V(0.06f * s, 1.275f, 0.04f), V(0.066f, 0.052f, 0.06f), brown, blend: 0.03f));
+        // The coin on its brow shines with Gigantamax energy
+        Coin(b, head, On(c, r, 0, 1.385f), 44f, 0.04f, 0.05f, Rgb(255, 222, 96), Rgb(230, 160, 50), 0, Glow);
+        var mouth = On(c, r, 0, 1.255f);
+        Grin(b, head, mouth, V(0.032f, 0.022f, 0.024f), Rgb(150, 58, 72));
+        PokeBuilder.Both(s => b.Spike(head, mouth + V(0.015f * s, 0.016f, -0.003f), mouth + V(0.014f * s, 0.0f, 0.003f), 0.006f, White, mat: Shell, blend: 0.003f));
+        Whiskers(b, head, V(0.085f, 1.27f, 0.075f), 0.15f, Rgb(244, 244, 242), 0.009f);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.045f * s, 1.32f), V(0.4f * s, 0.05f, 1f), 0.032f, sclera: true, white: Rgb(250, 226, 96), pupil: Black, glare: true));
+        return b;
+    }
+
     // ------------------------------------------------------------------ Gigantamax Machamp
 
     private static PokeBuilder MachampGmax()
@@ -308,6 +359,34 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Spike(head, V(0.2f * s, 0.7f, -0.04f), V(0.36f * s, 0.98f, -0.1f), 0.1f, purple, 0.55f));
         PokeBuilder.Both(s => b.Eye(Body, V(0.12f * s, 0.68f, 0.22f), V(0.4f * s, 0.3f, 1f), 0.04f, pupil: Rgb(140, 30, 40), white: Rgb(250, 214, 64), glare: true));
         MaxClouds(b, head, V(0.06f, 0.76f, 0.0f), 0.045f, 0.18f, 0.32f, 1.1f, 2f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Kingler
+
+    private static PokeBuilder KinglerGmax()
+    {
+        // Its great claw has grown bigger than all the rest of it, crystals like teeth along its grip, and foam
+        // bubbles up round it
+        const float Size = 0.21f;
+        var b = CrabBuild("Kingler-Gmax", 0.95f, 0.07f, Size, 5, Rgb(214, 100, 56), Rgb(240, 234, 226));
+        int arm = b.Model.Skeleton.Find("armR");
+        var d = Vector3.Normalize(V(0.15f, 1f, 0.35f));
+        var w = Vector3.Normalize(V(-1f, 0, 0) - d * Vector3.Dot(V(-1f, 0, 0), d));
+        var face = Vector3.Normalize(Vector3.Cross(d, w));
+        var hand = V(0.22f, 0.24f, 0.08f) + d * Size * 0.8f;
+        var root = hand + d * Size * 0.55f;
+        foreach (var (along, from) in new[] { (0.28f, -0.12f), (0.42f, -0.18f), (0.56f, -0.2f), (0.7f, -0.15f), (0.84f, -0.08f) })
+        {
+            var at = root + d * Size * along + w * Size * (from - 0.04f);
+            b.Spike(arm, at, at + (w * 0.16f + d * 0.03f) * Size, Size * 0.065f, Rgb(244, 244, 236), mat: Shell, blend: 0.004f);
+        }
+        var foam = Rgb(242, 246, 252);
+        foreach (var (at, size) in new[] { (hand + face * Size * 0.36f + d * Size * 0.1f, 0.05f), (hand - face * Size * 0.34f - d * Size * 0.15f, 0.042f), (hand - w * Size * 0.5f + d * Size * 0.2f, 0.036f), (hand + face * Size * 0.3f - d * Size * 0.45f, 0.03f) })
+            b.Ell(arm, at, V(size, size, size), foam, mat: Shell, blend: 0.02f);
+        foreach (var (x, z, size) in new[] { (-0.12f, 0.08f, 0.035f), (-0.05f, 0.11f, 0.03f), (0.06f, 0.11f, 0.03f), (0.13f, 0.05f, 0.035f) })
+            b.Ell(Body, V(x, 0.2f, z), V(size, size, size), foam, mat: Shell, blend: 0.02f);
+        MaxClouds(b, Body, V(0, 0.24f, -0.08f), 0.04f, 0.14f, 0.12f, 1.1f, 0.5f);
         return b;
     }
 
