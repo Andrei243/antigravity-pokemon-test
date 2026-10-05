@@ -23,7 +23,7 @@ public class PokemonModelTests
     private static readonly Dictionary<string, int> EyesOf = new()
     {
         ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1, ["Nosepass"] = 0, ["Ralts"] = 0, ["Kirlia"] = 1, ["Magnemite"] = 1, ["Magneton"] = 3,
-        ["Magnezone"] = 3
+        ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0
     };
 
     [Theory]
