@@ -122,6 +122,25 @@ public sealed class Ruleset
     /// <summary>Hidden Power's power: 0 for what the IVs make it (30 to 70), or the one number the newest games give it.</summary>
     public int HiddenPowerPower { get; private init; }
 
+    // ---- The unique effects (plan 06 · R5)
+
+    /// <summary>
+    /// Chatter's chance of confusing, in hundredths. Platinum's went by the loudness of the cry recorded through
+    /// the microphone (nothing, 10 or 30): this game has no microphone and takes the loudest. The newest games
+    /// confuse every time.
+    /// </summary>
+    public int ChatterConfusionChance { get; private init; } = 30;
+
+    /// <summary>Knock Off is half as strong again against a target holding an item it can knock off (Generation 6 on).</summary>
+    public bool KnockOffStrongerOnItem { get; private init; }
+
+    /// <summary>
+    /// The opponents' Pokémon can take or swap the player's items with Thief, Covet, Trick and Switcheroo. In
+    /// Platinum they can't outside the Battle Frontier and link battles (<c>BtlCmd_TryStealItem</c>); from
+    /// Generation 5 on they can.
+    /// </summary>
+    public bool FoesCanTakeItems { get; private init; }
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -155,7 +174,10 @@ public sealed class Ruleset
         PoisonTypesNeverMissToxic = true,
         MultiHitByHundredths = true,
         ExplosionHalvesDefense = false,
-        HiddenPowerPower = 60
+        HiddenPowerPower = 60,
+        ChatterConfusionChance = 100,
+        KnockOffStrongerOnItem = true,
+        FoesCanTakeItems = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

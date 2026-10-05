@@ -239,6 +239,9 @@ public abstract class BattleEffect
 
     /// <summary>The holder's moves of two to five hits always hit five times (Skill Link).</summary>
     public virtual bool AlwaysHitsFiveTimes => false;
+
+    /// <summary>The holder's item can't be taken, swapped, knocked off or eaten by another Pokémon (Sticky Hold).</summary>
+    public virtual bool KeepsItem => false;
 }
 
 /// <summary>Finds the effects in play for a Pokémon on the field.</summary>

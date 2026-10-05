@@ -85,6 +85,9 @@ public sealed record Fainted(Place Place) : BattleEvent;
 public sealed record Vanished(Place Place) : BattleEvent;
 public sealed record Reappeared(Place Place) : BattleEvent;
 
+/// <summary>A Pokémon has taken another's shape (Transform): the screen shows it as the rules now have it.</summary>
+public sealed record Reshaped(Place Place) : BattleEvent;
+
 /// <summary>A Substitute is put up in a place, or is gone from it.</summary>
 public sealed record SubstituteChanged(Place Place, bool Up) : BattleEvent;
 

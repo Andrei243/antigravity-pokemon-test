@@ -214,9 +214,12 @@ public sealed partial class BattleCore
         Say(message).With(new StatusChanged(target.Place, StatusCondition.None));
     }
 
+    /// <summary>Uses up the held item, remembering it for Recycle (the original's <c>recycleItem</c>).</summary>
     public void ConsumeItem(Battler holder)
     {
-        if (holder.Pokemon != null) holder.Pokemon.HeldItem = null;
+        if (holder.Pokemon?.HeldItem is not { } item) return;
+        holder.Volatile.ConsumedItem = item;
+        holder.Pokemon.HeldItem = null;
     }
 
     /// <summary>

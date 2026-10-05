@@ -249,14 +249,14 @@ public class BattleFamilyTests
     [Fact]
     public void PunishmentGrowsWithTheTargetsBoostsAndTrumpCardWithItsLastPp()
     {
-        // Punishment: 60 + 20 a stage raised, up to 200: three stages are 120 (135 × 120 × 22 / 105 / 50 = 67, + 2 = 69);
-        // none, 60 (33, + 2 = 35)
+        // Punishment: 60 + 20 a stage raised, up to 200: three stages are 120, against a Defense one stage up (157):
+        // 135 × 120 × 22 / 157 / 50 = 45, + 2 = 47; none, 60 (135 × 60 × 22 / 105 / 50 = 33, + 2 = 35)
         var blastoise = Mon("Blastoise", 50);
         var core = Wild(Mon("Machamp", 50, "Punishment"), blastoise);
         blastoise.StatStages[StatType.Attack] = 2;
         blastoise.StatStages[StatType.Defense] = 1;
         Turn(core);
-        Assert.Equal(139 - 69, blastoise.CurrentHP);
+        Assert.Equal(139 - 47, blastoise.CurrentHP);
         Turn(Wild(Mon("Machamp", 50, "Punishment"), blastoise = Mon("Blastoise", 50)));
         Assert.Equal(139 - 35, blastoise.CurrentHP);
 
@@ -322,25 +322,27 @@ public class BattleFamilyTests
     public void JudgmentTakesTheTypeOfThePlate()
     {
         // 125 × 100 × 22 / 105 / 50 = 52, + 2 = 54; with a Flame Plate it is Fire, twice as strong against Grass
+        // (Arceus stays Normal here: the plate's change of its type is Multitype's, not the move's); with no plate
+        // it is Normal, with Arceus's own type's bonus: 81
         var venusaur = Mon("Venusaur", 50);
         var said = Turn(Wild(With(Mon("Arceus", 50, "Judgment"), item: "Flame Plate"), venusaur));
         Assert.Contains("It's super effective!", said);
         Assert.Equal(140 - 108, venusaur.CurrentHP);
         Turn(Wild(Mon("Arceus", 50, "Judgment"), venusaur = Mon("Venusaur", 50)));
-        Assert.Equal(140 - 54, venusaur.CurrentHP);
+        Assert.Equal(140 - 81, venusaur.CurrentHP);
     }
 
     [Fact]
     public void BrinePaybackAssuranceAndRevengeDoubleInTheirMoment()
     {
-        // Brine, 65 power: 90 × 65 × 22 / 90 / 50 = 28, + 2 = 30, × 15 / 10 = 45; at half the target's HP or less, 130: 57, + 2 = 59, 88
-        var machamp = Mon("Machamp", 50);
-        Turn(Wild(Mon("Blastoise", 50, "Brine"), machamp));
-        Assert.Equal(150 - 45, machamp.CurrentHP);
-        machamp.CurrentHP = 75;
-        Turn(Wild(Mon("Blastoise", 50, "Brine"), machamp));
-        Assert.Equal(Math.Max(0, 75 - 88), machamp.CurrentHP);
-        Assert.True(machamp.IsFainted);
+        // Brine, 65 power, from Pikachu on Snorlax: 55 × 65 × 22 / 115 / 50 = 13, + 2 = 15; at half the target's HP
+        // or less it is 130: 27, + 2 = 29
+        var snorlax = Mon("Snorlax", 50);
+        Turn(Wild(Mon("Pikachu", 50, "Brine"), snorlax));
+        Assert.Equal(220 - 15, snorlax.CurrentHP);
+        snorlax.CurrentHP = 110;
+        Turn(Wild(Mon("Pikachu", 50, "Brine"), snorlax));
+        Assert.Equal(110 - 29, snorlax.CurrentHP);
 
         // Payback, 50: 115 × 50 × 22 / 105 / 50 = 24, + 2 = 26 before the target's action, 100 power after it: 48, + 2 = 50.
         // Blastoise is the faster; Trick Room's priority puts it after Snorlax instead
@@ -354,8 +356,7 @@ public class BattleFamilyTests
         Turn(Wild(Mon("Snorlax", 50, "Assurance"), blastoise = Mon("Blastoise", 50)));
         Assert.Equal(139 - 26, blastoise.CurrentHP);
         blastoise = Mon("Blastoise", 50, "Double-Edge");
-        var snorlax = Mon("Snorlax", 50, "Assurance");
-        Turn(Wild(snorlax, blastoise));
+        Turn(Wild(Mon("Snorlax", 50, "Assurance"), blastoise));
         // 88 × 120 × 22 / 70 / 50 = 66, + 2 = 68 to Snorlax, 22 back; then 50
         Assert.Equal(139 - 22 - 50, blastoise.CurrentHP);
 
@@ -465,10 +466,11 @@ public class BattleFamilyTests
         Turn(Wild(Mon("Machamp", 50, "False Swipe"), blastoise));
         Assert.Equal(1, blastoise.CurrentHP);
 
+        // Blastoise moves after Alakazam, so a freeze would be rolled against at once: that roll is held too
         StatusCondition After(int pick, int chance = 19)
         {
             var target = Mon("Blastoise", 50);
-            Turn(Wild(Mon("Alakazam", 50, "Tri Attack"), target, Calm().Force(RollKind.SideEffect, chance).Force(RollKind.Pick, pick)));
+            Turn(Wild(Mon("Alakazam", 50, "Tri Attack"), target, Calm().Force(RollKind.SideEffect, chance).Force(RollKind.Pick, pick).Force(RollKind.Thaw, 1)));
             return target.Status;
         }
         Assert.Equal(StatusCondition.Burn, After(0));
@@ -506,13 +508,12 @@ public class BattleFamilyTests
     [Fact]
     public void FocusPunchNeedsItsUserUnhurt()
     {
-        // The focus is told first in the turn; the punch (150 power: 115 × 150 × 22 / 105 / 50 = 72, + 2 = 74) lands
-        // unless anything hurt its user meanwhile
+        // The focus is told first in the turn; the punch lands unless anything hurt its user meanwhile. A Growl
+        // doesn't, though it leaves the Attack a stage down (76): 76 × 150 × 22 / 105 / 50 = 47, + 2 = 49
         var blastoise = Mon("Blastoise", 50, "Growl");
         var said = Turn(Wild(Mon("Snorlax", 50, "Focus Punch"), blastoise));
-        Assert.Equal("Snorlax is tightening its focus!", said[0]);
-        InOrder(said, "Foe Blastoise used Growl!", "Snorlax used Focus Punch!");
-        Assert.Equal(139 - 74, blastoise.CurrentHP);
+        InOrder(said, "Go! Snorlax!", "Snorlax is tightening its focus!", "Foe Blastoise used Growl!", "Snorlax used Focus Punch!");
+        Assert.Equal(139 - 49, blastoise.CurrentHP);
 
         blastoise = Mon("Blastoise", 50, "Tackle");
         said = Turn(Wild(Mon("Snorlax", 50, "Focus Punch"), blastoise));
@@ -592,10 +593,10 @@ public class BattleFamilyTests
         Turn(core, 0);
         Assert.Equal((2, 2), (snorlax.StatStages[StatType.Defense], snorlax.StatStages[StatType.SpDefense]));
 
-        // Spit Up at two: 200 power with no roll off it (70 × 200 × 22 / 110 / 50 = 56, + 2 = 58), and the stockpile is gone
+        // Spit Up at two: 200 power with no roll off it (70 × 200 × 22 / 110 / 50 = 56, + 2 = 58, × 15 / 10 = 87), and the stockpile is gone
         var said = Turn(core, 1);
         InOrder(said, "Snorlax used Spit Up!", "Snorlax's stockpiled effect wore off!");
-        Assert.Equal(139 - 58, blastoise.CurrentHP);
+        Assert.Equal(139 - 87, blastoise.CurrentHP);
         Assert.Equal((0, 0), (snorlax.StatStages[StatType.Defense], snorlax.StatStages[StatType.SpDefense]));
         Assert.Contains("But it failed to spit up a thing!", Turn(core, 1));
 

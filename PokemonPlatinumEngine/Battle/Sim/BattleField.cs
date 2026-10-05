@@ -11,6 +11,9 @@ public sealed class SideState
 {
     public int ReflectTurns, LightScreenTurns, MistTurns, SafeguardTurns, TailwindTurns, LuckyChantTurns;
 
+    /// <summary>Follow Me: the foes' moves aimed at one Pokémon of this side go to whoever stands here instead, this turn.</summary>
+    public Place? FollowMe { get; internal set; }
+
     /// <summary>Layers of Spikes (up to three) and of Toxic Spikes (up to two), and whether Stealth Rock floats there.</summary>
     public int Spikes, ToxicSpikes;
     public bool StealthRock;

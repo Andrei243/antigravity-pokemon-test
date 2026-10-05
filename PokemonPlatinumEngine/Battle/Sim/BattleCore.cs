@@ -354,6 +354,8 @@ public sealed partial class BattleCore : IBattleContext
             b.TookCriticalHit = false;
             b.Turn = new TurnFlags();
         }
+        Field.Side(BattleSide.Player).FollowMe = null;
+        Field.Side(BattleSide.Enemy).FollowMe = null;
 
         // Every place draws a number for the turn; a Quick Claw works on one in five of them
         for (int i = 0; i < speedRolls.Length; i++) speedRolls[i] = rng.Roll(RollKind.Speed, 65536);
@@ -413,6 +415,12 @@ public sealed partial class BattleCore : IBattleContext
 
     /// <summary>The actions of the turn still to come, in order.</summary>
     private List<Act> waiting = new();
+
+    /// <summary>The last move anyone got to use (the original's <c>movePrev</c>): what Copycat copies. Null after a move that never got going.</summary>
+    private MoveData? lastMoveShown;
+
+    /// <summary>Items knocked off their holders, lost for the battle and given back at its end (the original's <c>knockedOffItemsMask</c>).</summary>
+    private readonly Dictionary<Pokemon, ItemData> knockedOff = new();
 
     /// <summary>Something changed who is faster in the middle of a turn: what is still to come is put in order again.</summary>
     private bool orderChanged;
@@ -668,6 +676,7 @@ public sealed partial class BattleCore : IBattleContext
         LetGoOf(down);
         ComeBack(down);
         if (down.HasSubstitute) Emit(new SubstituteChanged(down.Place, Up: false));
+        Revert(down);
         down.ClearVolatile();
         NoteFaint(down);
         Say($"{down.Name} fainted!").With(new Fainted(down.Place));
@@ -729,6 +738,11 @@ public sealed partial class BattleCore : IBattleContext
 
     private void End(BattleResult result)
     {
+        // Whatever a move changed for the battle is put back (the original's party data was never touched), and
+        // a knocked-off item is in its holder's hands again
+        foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
+        foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
+        knockedOff.Clear();
         Result = result;
         Emit(new Ended(result));
     }

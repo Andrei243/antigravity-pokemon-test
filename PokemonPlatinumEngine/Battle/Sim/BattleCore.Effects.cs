@@ -597,7 +597,7 @@ public sealed partial class BattleCore
                 // Soundproof against Roar, and the like
                 if (BattleEffects.Of(t, includeAbility: !breaks).ToList().Any(e => e.AbsorbsMove(this, t, use.User, use.Move, 1f))) continue;
             }
-            effect(t);
+            if (effect(t)) RememberHit(t, use.User, use.Move);
         }
     }
 

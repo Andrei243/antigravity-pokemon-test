@@ -20,6 +20,7 @@ using System.Numerics;
 using System.Reflection;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -2667,6 +2668,41 @@ if (mode == "conditions")
     Skip(1.6);
     Shot("96_flight_back");
     party.Members.Remove(flyer);
+    Set("currentState", GameState.Overworld);
+
+    // A move of several hits (plan 06 · R4): the hits land one after another and the count is told after the last
+    // (96_hits_landing, 96_hits_told). The count is fixed at five, on a foe that can take them
+    var pecker = new Pokemon(PokemonDatabase.Get("Staravia")!, 30);
+    pecker.Moves.Clear();
+    pecker.Moves.Add(new Move(MoveDatabase.Get("Fury Attack")));
+    party.Members.Insert(0, pecker);
+    cb = StartBattle("Bidoof", 30, chance: new BattleRandom(7).Force(RollKind.HitCount, 2, 3));
+    ToMainMenu(cb);
+    cb.SelectMove(0);
+    ReadTo("Staravia used Fury Attack!");
+    Shot("96_hits_landing");
+    for (int i = 0; i < 40 && !cb.CurrentMessage.StartsWith("Hit "); i++)
+    {
+        Confirm(cb);
+        Skip(0.3);
+    }
+    Skip(0.6);
+    Shot("96_hits_told");
+    party.Members.Remove(pecker);
+    Set("currentState", GameState.Overworld);
+
+    // Transform (plan 06 · R5): Ditto takes the foe's shape on the field as it does in the rules (96_transformed)
+    var ditto = new Pokemon(PokemonDatabase.Get("Ditto")!, 30);
+    ditto.Moves.Clear();
+    ditto.Moves.Add(new Move(MoveDatabase.Get("Transform")));
+    party.Members.Insert(0, ditto);
+    cb = StartBattle("Bidoof", 12);
+    ToMainMenu(cb);
+    cb.SelectMove(0);
+    ReadTo("Ditto transformed into Foe Bidoof!");
+    Skip(1.0);
+    Shot("96_transformed");
+    party.Members.Remove(ditto);
     Set("currentState", GameState.Overworld);
 }
 

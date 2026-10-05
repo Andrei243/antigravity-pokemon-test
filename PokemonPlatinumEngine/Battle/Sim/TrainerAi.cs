@@ -120,6 +120,8 @@ public sealed class TrainerAi : IBattleController
             case "HitThreeTimes": return 60f;
             case "Psywave": return 70f;
             case "SpitUp": return 100f * user.Volatile.Stockpile;
+            case "Fling": return user.Volatile.EmbargoTurns > 0 ? 0f : p.HeldItem?.FlingPower ?? 0f;
+            case "NaturalGift": return user.Volatile.EmbargoTurns > 0 ? 0f : p.HeldItem?.NaturalGiftPower ?? 0f;
             // It never blows itself up on purpose, until R9's trainers know when to
             case "HalveDefense": return 0f;
             case "Counter" or "MirrorCoat" or "MetalBurst": return 40f;
@@ -223,6 +225,28 @@ public sealed class TrainerAi : IBattleController
                 return target != null && target.Pokemon!.StatStages.GetValueOrDefault(StatType.SpAttack) > -2 && me.Gender != Gender.Genderless
                     && target.Pokemon.Gender != Gender.Genderless && me.Gender != target.Pokemon.Gender ? 25f : 0f;
             case "FaintAndAtkSpAtkDown2": return 0f;
+
+            // ---- The moves of their own (plan 06 · R5)
+            case "CallRandomMove" or "UseLastUsedMove": return 25f;
+            case "CopyMove": return v.MirrorMove != null ? 35f : 0f;
+            case "UseRandomLearnedMoveSleep": return me.Status == StatusCondition.Sleep ? 50f : 0f;
+            case "UseRandomAllyMove": return user.Roster != null && user.Roster.Members.Any(p => p != me) ? 30f : 0f;
+            case "UseMoveFirst": return target != null && battle.EffectiveSpeed(user) > battle.EffectiveSpeed(target) ? 35f : 0f;
+            case "CopyMoveForBattle" or "LearnMovePermanent": return tv?.LastMove != null ? 20f : 0f;
+            case "ApplyMagicCoat" or "StealStatusMove": return 15f;
+            case "SwitchHeldItems": return battle.Rules.FoesCanTakeItems && (me.HeldItem != null || target?.Pokemon!.HeldItem != null) ? 20f : 0f;
+            case "Recycle": return me.HeldItem == null && v.ConsumedItem != null ? 30f : 0f;
+            case "Conversion": return v.Types == null ? 20f : 0f;
+            case "Conversion2": return v.Conversion2Move != null ? 25f : 0f;
+            case "Transform": return !v.Transformed ? 30f : 0f;
+            case "CopyAbility" or "SwitchAbilities": return 15f;
+            case "SetAbilityToInsomnia": return target != null && target.Pokemon!.AbilityName != "Insomnia" ? 15f : 0f;
+            case "SwapAtkDef": return !v.PowerTrick && me.Defense > me.Attack ? 35f : 0f;
+            case "SwapAtkSpAtkStatChanges" or "SwapDefSpDefStatChanges" or "SwapStatChanges":
+                return target != null && target.Pokemon!.StatStages.Values.Sum() > me.StatStages.Values.Sum() ? 30f : 0f;
+            case "MakeGlobalTarget": return battle.IsDouble ? 20f : 0f;
+            case "BoostAllyPowerBy50Percent": return battle.IsDouble ? 25f : 0f;
+            case "DecreaseLastMovePp": return tv?.LastMove != null ? 15f : 0f;
             default: return null;
         }
     }

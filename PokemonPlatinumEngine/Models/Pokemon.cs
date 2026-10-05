@@ -290,7 +290,7 @@ public class PokemonSpecies
 
 public class Pokemon
 {
-    public PokemonSpecies Species { get; private set; }
+    public PokemonSpecies Species { get; internal set; }
     public string Nickname { get; set; }
     public int Level { get; private set; }
     public Gender Gender { get; set; }
@@ -323,11 +323,11 @@ public class Pokemon
     // Stats
     public int CurrentHP { get; set; }
     public int MaxHP { get; private set; }
-    public int Attack { get; private set; }
-    public int Defense { get; private set; }
-    public int SpAttack { get; private set; }
-    public int SpDefense { get; private set; }
-    public int Speed { get; private set; }
+    public int Attack { get; internal set; }
+    public int Defense { get; internal set; }
+    public int SpAttack { get; internal set; }
+    public int SpDefense { get; internal set; }
+    public int Speed { get; internal set; }
 
     // IVs (0 - 31)
     public int IvHP { get; set; }
@@ -377,7 +377,7 @@ public class Pokemon
     /// <see cref="PokemonSpecies.Forms"/>. Its types, base stats, abilities, size and moves follow it; change it
     /// with <see cref="ChangeForm"/>.
     /// </summary>
-    public string? Form { get; private set; }
+    public string? Form { get; internal set; }
 
     /// <summary>What its form has of its own; null in its species' own form.</summary>
     public PokemonForm? FormData => Species.Form(Form);

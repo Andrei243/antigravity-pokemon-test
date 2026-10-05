@@ -42,6 +42,7 @@ public static class AbilityEffectTable
         Add("Run Away", new FlagEffect { Escapes = true });
         Add("Scrappy", new Scrappy());
         Add("Skill Link", new FlagEffect { FiveHits = true });
+        Add("Sticky Hold", new FlagEffect { KeepsHeldItem = true });
 
         // On entry
         Add("Intimidate", new Intimidate());

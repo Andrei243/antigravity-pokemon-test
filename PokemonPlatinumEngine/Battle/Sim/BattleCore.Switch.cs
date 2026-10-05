@@ -69,11 +69,52 @@ public sealed partial class BattleCore
             ? new Baton(place.Volatile.Passed(), new Dictionary<StatType, int>(place.Pokemon!.StatStages), place.ConfusionTurns)
             : null;
         ComeBack(place);
+        Revert(place);
         place.ClearVolatile();
         place.Pokemon!.ResetStatStages();
         place.Pokemon.ToxicCounter = 0;
         return baton;
     }
+
+    /// <summary>
+    /// Puts back what a move changed for the battle (plan 06 · R5), as the original does by rebuilding a Pokémon's
+    /// battle data from its party data whenever it comes in: its species and shape (Transform), its stats (Power
+    /// Trick, Transform), its ability (Role Play, Skill Swap, Worry Seed, Transform) and its moves (Mimic,
+    /// Transform). Sketch is for good and is left alone; a knocked-off item comes back only with the battle's end.
+    /// </summary>
+    private static void Revert(Battler place)
+    {
+        if (place.Volatile.Original is not { } o || place.Pokemon is not { } p) return;
+        if (o.Species != null)
+        {
+            p.Species = o.Species;
+            p.Form = o.Form;
+        }
+        if (o.NicknameGiven) p.Nickname = o.Nickname!;
+        if (o.StatsKept)
+        {
+            p.Attack = o.Attack;
+            p.Defense = o.Defense;
+            p.SpAttack = o.SpAttack;
+            p.SpDefense = o.SpDefense;
+            p.Speed = o.Speed;
+        }
+        if (o.AbilityKept) p.AbilityName = o.AbilityName;
+        if (o.Moves != null)
+        {
+            p.Moves.Clear();
+            foreach (var (data, pp) in o.Moves) p.Moves.Add(new Move(data, pp));
+        }
+        else if (o.MoveSlots != null)
+        {
+            foreach (var (slot, (data, pp)) in o.MoveSlots)
+                if (slot < p.Moves.Count) p.Moves[slot] = new Move(data, pp);
+        }
+        place.Volatile.Original = null;
+    }
+
+    /// <summary>What a move is about to change for the battle is kept the first time, so <see cref="Revert"/> can put it back.</summary>
+    private static Original Keep(Battler place) => place.Volatile.Original ??= new Original();
 
     private void TakeUp(Battler place, Baton baton)
     {

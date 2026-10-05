@@ -18,14 +18,17 @@ public class PokemonModelTests
 
     public PokemonModelTests(ITestOutputHelper output) => this.output = output;
 
-    public static IEnumerable<object[]> HandBuilt => PokemonModels.Species.Select(s => new object[] { s });
+    /// <summary>Every hand-built model: the species, and the forms with models of their own.</summary>
+    private static IEnumerable<string> AllHandBuilt => PokemonModels.Species.Concat(PokemonModels.Forms);
 
-    /// <summary>The hand-built species that don't have two eyes.</summary>
-    private static readonly Dictionary<string, int> EyesOf = new()
+    public static IEnumerable<object[]> HandBuilt => AllHandBuilt.Select(s => new object[] { s });
+
+    /// <summary>The hand-built species and forms that don't have two eyes (every Unown has one).</summary>
+    private static readonly Dictionary<string, int> EyesOf = new Dictionary<string, int>
     {
         ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1, ["Nosepass"] = 0, ["Ralts"] = 0, ["Kirlia"] = 1, ["Magnemite"] = 1, ["Magneton"] = 3,
         ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0
-    };
+    }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
     /// The hand-built species whose parts float apart by design, and how many pieces they are in: Haunter's two hands,
@@ -93,7 +96,7 @@ public class PokemonModelTests
     public void EachDecalCoversItsWholeSquare()
     {
         // The middle of every eye and marking lies on triangles of the patch: none falls off its surface
-        foreach (var species in PokemonModels.Species)
+        foreach (var species in AllHandBuilt)
         {
             var m = PokemonModels.Get(species);
             var patch = m.DecalPatch!;
