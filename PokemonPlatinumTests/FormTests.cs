@@ -191,6 +191,26 @@ public class FormTests
     }
 
     [Fact]
+    public void PlatinumsOwnFormsOfItsSinnohSpeciesAreHandBuilt()
+    {
+        // Rotom's appliances, Giratina's Origin Forme, the sandy and trash cloaks, the East Sea, Cherrim in the sun and
+        // every letter and sign of the Unown but A, which is the species itself
+        Assert.Equal(40, PokemonModels.Forms.Length);
+        Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
+        foreach (var form in PokemonModels.Forms)
+        {
+            var owner = PokemonDatabase.SpeciesOfForm(form);
+            Assert.True(owner?.SinnohNumber != null, form);
+            Assert.Equal(form, owner!.Form(form)!.Name);
+            Assert.True(PokemonModels.HasModel(form), form);
+            Assert.NotEqual(PokemonModels.Signature(owner.Name), PokemonModels.Signature(form));
+        }
+        Assert.All(PokemonDatabase.Get("Unown")!.Forms!, f => Assert.True(PokemonModels.HasModel(f.Name), f.Name));
+        // The three cloaks are three sculpts
+        Assert.Equal(3, new[] { "Wormadam", "Wormadam-Sandy", "Wormadam-Trash" }.Select(PokemonModels.Signature).Distinct().Count());
+    }
+
+    [Fact]
     public void EachFormIsShownByAModelOfItsOwnOrItsHandBuiltSpecies()
     {
         // A generated form is sculpted from its own data, in its own colour, as one of its species' family
@@ -210,9 +230,13 @@ public class FormTests
         Assert.Equal(PokemonType.Ghost, PokemonGenomes.For("Rotom-Wash")!.Secondary);
 
         // A form of a hand-built species shows its species' sculpt until it has one of its own
-        Assert.False(PokemonModels.HasModel("Rotom-Heat"));
-        Assert.Equal(PokemonModels.Signature("Rotom"), PokemonModels.Signature("Rotom-Heat"));
+        Assert.False(PokemonModels.HasModel("Garchomp-Mega"));
         Assert.Equal(PokemonModels.Signature("Garchomp"), PokemonModels.Signature("Garchomp-Mega"));
+        Assert.Equal(PokemonModels.Signature("Mothim"), PokemonModels.Signature("Mothim-Sandy"));
+
+        // Platinum's own forms of its Sinnoh species are hand-built, each a sculpt of its own (below)
+        Assert.True(PokemonModels.HasModel("Rotom-Heat"));
+        Assert.NotEqual(PokemonModels.Signature("Rotom"), PokemonModels.Signature("Rotom-Heat"));
 
         // Every form has a genome that sculpts
         foreach (var form in PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()))

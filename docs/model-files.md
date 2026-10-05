@@ -2,7 +2,7 @@
 
 Any species' 3D model can be replaced by a model file you supply (plan 03 · D5). The game uses it everywhere the
 species appears: in battle, in the evolution scene, on the title screen and in the menu sprites, which are baked from
-it. Species without a file keep their hand-built model (210 species, the whole Sinnoh Pokédex) or their generated one (everyone else).
+it. Species without a file keep their hand-built model (210 species, the whole Sinnoh Pokédex, and Platinum's 40 forms of them) or their generated one (everyone else).
 
 ## Where the files go
 
@@ -29,7 +29,7 @@ Case, spaces and punctuation don't matter; ♀ and ♂ can be written f and m. A
 its model whether that model is generated or hand-built.
 
 A form (plan 03 · D11) is found by its own name, the species' and the form's as `species.json` spells them:
-`Charizard-Mega-X.glb`, `meowth-galar.glb`, `Rotom-Wash.glb`. A form without a file of its own is generated from
+`Charizard-Mega-X.glb`, `meowth-galar.glb`, `Rotom-Wash.glb`. A form without a file of its own keeps its hand-built model if it has one, is generated from
 its own data, or shows its species' hand-built sculpt if the species has one; it never takes its species' file.
 
 ## What can be read
