@@ -51,7 +51,7 @@ internal struct PokePose
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>).</summary>
 internal enum EyeState { Open, Shut, Squeeze, Fierce }
 
-internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave, Zigzag, Triangle, Diamond }
+internal enum MarkShape { Disc, Ring, Star, Bar, Star5, Wave, Zigzag, Triangle, Diamond, Smile }
 
 /// <summary>
 /// A texture laid onto the surface (plan 04 · G7): an eye or a marking, projected onto the mesh along its normal.
@@ -335,7 +335,7 @@ internal sealed class PokeBuilder
             Size = size, Iris = iris, Sclera = sclera || white != null, Pupil = pupil, Closed = closed, White = white, Glare = glare
         });
 
-    /// <summary>A marking painted on the surface (a dot, ring, star, bar, wavy line, zigzag, triangle or diamond) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
+    /// <summary>A marking painted on the surface (a dot, ring, star, bar, wavy line, zigzag, triangle, diamond or smile) with radii <paramref name="rx"/> and <paramref name="ry"/>.</summary>
     public void Mark(int bone, Vector3 at, Vector3 facing, float rx, float ry, Color color, MarkShape shape = MarkShape.Disc, float rollDeg = 0f) =>
         m.Decals.Add(new PokeDecal
         {
@@ -557,7 +557,12 @@ internal static partial class PokemonModels
         "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Mankey", "Primeape",
         "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Bellsprout", "Weepinbell", "Victreebel",
         "Slowpoke", "Slowbro", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster",
-        "Drowzee", "Hypno", "Krabby", "Kingler"
+        "Drowzee", "Hypno", "Krabby", "Kingler",
+        // Kanto's third batch, Voltorb to Mew
+        "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Koffing", "Weezing",
+        "Kangaskhan", "Horsea", "Seadra", "Staryu", "Starmie", "Jynx", "Pinsir", "Tauros", "Lapras", "Ditto",
+        "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair",
+        "Dragonite", "Mewtwo", "Mew"
     };
 
     /// <summary>
@@ -577,15 +582,17 @@ internal static partial class PokemonModels
         "Rattata-Alola", "Raticate-Alola", "Raichu-Alola", "Sandshrew-Alola", "Sandslash-Alola", "Vulpix-Alola", "Ninetales-Alola",
         "Diglett-Alola", "Dugtrio-Alola", "Meowth-Alola", "Meowth-Galar", "Persian-Alola", "Growlithe-Hisui", "Arcanine-Hisui",
         "Geodude-Alola", "Graveler-Alola", "Golem-Alola", "Ponyta-Galar", "Rapidash-Galar", "Slowpoke-Galar", "Slowbro-Galar",
-        "Farfetch'd-Galar", "Grimer-Alola", "Muk-Alola", "Mr. Mime-Galar",
-        "Wooper-Paldea", "Sneasel-Hisui", "Dialga-Origin", "Palkia-Origin",
+        "Farfetch'd-Galar", "Grimer-Alola", "Muk-Alola", "Voltorb-Hisui", "Electrode-Hisui", "Exeggutor-Alola", "Marowak-Alola",
+        "Weezing-Galar", "Mr. Mime-Galar", "Tauros-Paldea-Combat-Breed", "Tauros-Paldea-Blaze-Breed", "Tauros-Paldea-Aqua-Breed",
+        "Articuno-Galar", "Zapdos-Galar", "Moltres-Galar", "Wooper-Paldea", "Sneasel-Hisui", "Dialga-Origin", "Palkia-Origin",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
-        "Gyarados-Mega", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Houndoom-Mega", "Gardevoir-Mega", "Medicham-Mega",
+        "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
+        "Mewtwo-Mega-Y", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Houndoom-Mega", "Gardevoir-Mega", "Medicham-Mega",
         "Altaria-Mega", "Chimecho-Mega", "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Staraptor-Mega", "Lopunny-Mega",
         "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
-        "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Eevee-Gmax", "Snorlax-Gmax",
+        "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
         "Pikachu-Cosplay", "Pichu-Spiky-Eared"
@@ -954,6 +961,40 @@ internal static partial class PokemonModels
         "HYPNO" => Hypno(),
         "KRABBY" => Krabby(),
         "KINGLER" => Kingler(),
+        // Kanto's third batch (PokemonModels.Kanto3.cs)
+        "VOLTORB" => Voltorb(),
+        "ELECTRODE" => Electrode(),
+        "EXEGGCUTE" => Exeggcute(),
+        "EXEGGUTOR" => Exeggutor(),
+        "CUBONE" => Cubone(),
+        "MAROWAK" => Marowak(),
+        "HITMONLEE" => Hitmonlee(),
+        "HITMONCHAN" => Hitmonchan(),
+        "KOFFING" => Koffing(),
+        "WEEZING" => Weezing(),
+        "KANGASKHAN" => Kangaskhan(),
+        "HORSEA" => Horsea(),
+        "SEADRA" => Seadra(),
+        "STARYU" => Staryu(),
+        "STARMIE" => Starmie(),
+        "JYNX" => Jynx(),
+        "PINSIR" => Pinsir(),
+        "TAUROS" => Tauros(),
+        "LAPRAS" => Lapras(),
+        "DITTO" => Ditto(),
+        "OMANYTE" => Omanyte(),
+        "OMASTAR" => Omastar(),
+        "KABUTO" => Kabuto(),
+        "KABUTOPS" => Kabutops(),
+        "AERODACTYL" => Aerodactyl(),
+        "ARTICUNO" => Articuno(),
+        "ZAPDOS" => Zapdos(),
+        "MOLTRES" => Moltres(),
+        "DRATINI" => Dratini(),
+        "DRAGONAIR" => Dragonair(),
+        "DRAGONITE" => Dragonite(),
+        "MEWTWO" => Mewtwo(),
+        "MEW" => Mew(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -994,7 +1035,18 @@ internal static partial class PokemonModels
         "FARFETCH'D-GALAR" => FarfetchdGalar(),
         "GRIMER-ALOLA" => GrimerAlola(),
         "MUK-ALOLA" => MukAlola(),
+        "VOLTORB-HISUI" => VoltorbHisui(),
+        "ELECTRODE-HISUI" => ElectrodeHisui(),
+        "EXEGGUTOR-ALOLA" => ExeggutorAlola(),
+        "MAROWAK-ALOLA" => MarowakAlola(),
+        "WEEZING-GALAR" => WeezingGalar(),
         "MR. MIME-GALAR" => MrMimeGalar(),
+        "TAUROS-PALDEA-COMBAT-BREED" => TaurosCombat(),
+        "TAUROS-PALDEA-BLAZE-BREED" => TaurosBlaze(),
+        "TAUROS-PALDEA-AQUA-BREED" => TaurosAqua(),
+        "ARTICUNO-GALAR" => ArticunoGalar(),
+        "ZAPDOS-GALAR" => ZapdosGalar(),
+        "MOLTRES-GALAR" => MoltresGalar(),
         "WOOPER-PALDEA" => WooperPaldea(),
         "SNEASEL-HISUI" => SneaselHisui(),
         "DIALGA-ORIGIN" => DialgaOrigin(),
@@ -1013,7 +1065,14 @@ internal static partial class PokemonModels
         "VICTREEBEL-MEGA" => VictreebelMega(),
         "SLOWBRO-MEGA" => SlowbroMega(),
         "GENGAR-MEGA" => GengarMega(),
+        "KANGASKHAN-MEGA" => KangaskhanMega(),
+        "STARMIE-MEGA" => StarmieMega(),
+        "PINSIR-MEGA" => PinsirMega(),
         "GYARADOS-MEGA" => GyaradosMega(),
+        "AERODACTYL-MEGA" => AerodactylMega(),
+        "DRAGONITE-MEGA" => DragoniteMega(),
+        "MEWTWO-MEGA-X" => MewtwoMegaX(),
+        "MEWTWO-MEGA-Y" => MewtwoMegaY(),
         "STEELIX-MEGA" => SteelixMega(),
         "SCIZOR-MEGA" => ScizorMega(),
         "HERACROSS-MEGA" => HeracrossMega(),
@@ -1044,6 +1103,7 @@ internal static partial class PokemonModels
         "MACHAMP-GMAX" => MachampGmax(),
         "GENGAR-GMAX" => GengarGmax(),
         "KINGLER-GMAX" => KinglerGmax(),
+        "LAPRAS-GMAX" => LaprasGmax(),
         "EEVEE-GMAX" => EeveeGmax(),
         "SNORLAX-GMAX" => SnorlaxGmax(),
         "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),

@@ -200,7 +200,7 @@ public class FormTests
         // the forms of the Kanto species hand-built since among them. The few that look just like their species show
         // its sculpt.
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter" };
-        Assert.Equal(129, PokemonModels.Forms.Length);
+        Assert.Equal(148, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {

@@ -557,6 +557,40 @@ internal static partial class PokemonModels
         return b;
     }
 
+    // ------------------------------------------------------------------ Mega Kangaskhan
+
+    private static PokeBuilder KangaskhanMega() => KangaskhanBuild(true);
+
+    // ------------------------------------------------------------------ Mega Starmie
+
+    private static PokeBuilder StarmieMega()
+    {
+        // Its front star has stretched into a figure standing on two long points, two more held out for arms and one
+        // for a head; the second star still turns behind it, and the jewel is at its breast
+        var b = new PokeBuilder("Starmie-Mega", 0.95f, BodyPlan.Biped, V(0, 0.62f, 0)) { Coat = Shell };
+        var purple = Rgb(122, 110, 186);
+        var c = V(0, 0.64f, 0);
+        b.Ell(Body, c, V(0.14f, 0.17f, 0.09f), purple);
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, c + V(0.07f * s, -0.1f, 0));
+            var knee = V(0.13f * s, 0.24f, 0.02f);
+            b.Spike(leg, c + V(0.06f * s, -0.06f, 0), knee + (knee - c) * 0.15f, 0.11f, purple, 0.45f, Shell);
+            b.Spike(leg, knee + V(0, 0.06f, 0), V(0.2f * s, 0f, 0.05f), 0.06f, purple, 0.5f, Shell);
+            int arm = b.Arm(s, c + V(0.12f * s, 0.06f, 0));
+            b.Spike(arm, c + V(0.08f * s, 0.06f, 0), s < 0 ? V(-0.4f, 0.86f, 0.04f) : V(0.44f, 0.62f, 0.06f), 0.1f, purple, 0.42f, Shell);
+        });
+        int head = b.Head(c + V(0, 0.14f, 0));
+        b.Spike(head, c + V(0, 0.1f, 0), c + V(0.02f, 0.4f, 0), 0.1f, purple, 0.42f, Shell);
+        StarPoints(b, Body, c + V(0, 0.02f, -0.06f), 0.34f, 0.1f, 36f, 0.42f, PixelCanvas.Mix(purple, Rgb(60, 50, 110), 0.25f));
+        StarCore(b, Body, c + V(0, 0.04f, 0.085f), 0.068f, 8, 22.5f, Rgb(240, 206, 96), Rgb(204, 36, 64));
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Mega Pinsir
+
+    private static PokeBuilder PinsirMega() => PinsirBuild(true);
+
     // ------------------------------------------------------------------ Mega Gyarados
 
     private static PokeBuilder GyaradosMega()
@@ -628,6 +662,20 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Eye(head, V(0.105f * s, hy + 0.045f, 0.26f), V(0.75f * s, 0.25f, 0.6f), 0.034f, Rgb(214, 54, 54), glare: true));
         return b;
     }
+
+    // ------------------------------------------------------------------ Mega Aerodactyl
+
+    private static PokeBuilder AerodactylMega() => AerodactylBuild(true);
+
+    // ------------------------------------------------------------------ Mega Dragonite
+
+    private static PokeBuilder DragoniteMega() => DragoniteBuild(true);
+
+    // ------------------------------------------------------------------ Mega Mewtwo X and Y
+
+    private static PokeBuilder MewtwoMegaX() => MewtwoBuild(1);
+
+    private static PokeBuilder MewtwoMegaY() => MewtwoBuild(2);
 
     // ------------------------------------------------------------------ Mega Steelix
 
