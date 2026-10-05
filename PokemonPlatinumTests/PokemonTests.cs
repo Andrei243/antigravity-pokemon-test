@@ -667,7 +667,12 @@ public class PokemonTests
             "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Mankey", "Primeape",
             "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Bellsprout", "Weepinbell", "Victreebel",
             "Slowpoke", "Slowbro", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster",
-            "Drowzee", "Hypno", "Krabby", "Kingler"
+            "Drowzee", "Hypno", "Krabby", "Kingler",
+            // Kanto's third batch, Voltorb to Mew
+            "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Koffing", "Weezing",
+            "Kangaskhan", "Horsea", "Seadra", "Staryu", "Starmie", "Jynx", "Pinsir", "Tauros", "Lapras", "Ditto",
+            "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair",
+            "Dragonite", "Mewtwo", "Mew"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
@@ -681,6 +686,15 @@ public class PokemonTests
         var sinnoh = PokemonDatabase.GetAll().Where(s => s.SinnohNumber != null).Select(s => s.Name).ToList();
         Assert.Equal(210, sinnoh.Count);
         Assert.All(sinnoh, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
+    }
+
+    [Fact]
+    public void EverySpeciesOfKantoIsHandBuilt()
+    {
+        // Plan 03, decision 3: the 105 Kanto species outside the Sinnoh Pokédex, in three batches, and the 46 inside it
+        var kanto = PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 1 and <= 151).Select(s => s.Name).ToList();
+        Assert.Equal(151, kanto.Count);
+        Assert.All(kanto, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
     }
 
     private static void Tick(BattleEngine battle, float seconds)

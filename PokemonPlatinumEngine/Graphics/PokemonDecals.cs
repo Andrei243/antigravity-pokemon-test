@@ -312,6 +312,15 @@ internal static class PokemonDecals
                 }
                 break;
             }
+            case MarkShape.Smile:
+            {
+                // A shallow arc across the square, its ends turned up: the bottom of an ellipse, centred on the square
+                float w = Math.Max(2f, ry * 0.45f);
+                float arx = (rx - w * 0.5f) / MathF.Cos(MathF.PI * 0.15f), ary = (2f * ry - w) / (1f - MathF.Sin(MathF.PI * 0.15f));
+                var at = center - new Vector2(0, ary * (1f + MathF.Sin(MathF.PI * 0.15f)) * 0.5f);
+                AaPaint.Arc(c, at, arx, ary, MathF.PI * 0.15f, MathF.PI * 0.85f, w, d.Color);
+                break;
+            }
         }
     }
 
