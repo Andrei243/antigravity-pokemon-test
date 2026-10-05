@@ -91,15 +91,15 @@ public class PokemonGeneratorTests
         Assert.Equal(G("Vulpix").Ears, G("Ninetales").Ears);
     }
 
-    /// <summary>One species of every body kind.</summary>
-    public static IEnumerable<object[]> OneOfEachKind => new[]
+    /// <summary>
+    /// One generated species of every body kind: the first in the National Pokédex that isn't hand-built, so the
+    /// samples move on as the hand-built batches take species over.
+    /// </summary>
+    public static IEnumerable<object[]> OneOfEachKind => Enum.GetValues<BodyKind>().Select(kind => new object[]
     {
-        ("Rattata", BodyKind.Quadruped), ("Charmander", BodyKind.Upright), ("Machoke", BodyKind.Humanoid), ("Oddish", BodyKind.Legs),
-        ("Pidgey", BodyKind.Bird), ("Zubat", BodyKind.Bat), ("Butterfree", BodyKind.Insect), ("Ekans", BodyKind.Serpent),
-        ("Caterpie", BodyKind.Crawler), ("Krabby", BodyKind.Arthropod), ("Magikarp", BodyKind.Fish), ("Voltorb", BodyKind.Ball),
-        ("Grimer", BodyKind.Armed), ("Diglett", BodyKind.Blob), ("Magneton", BodyKind.Cluster), ("Metapod", BodyKind.Cocoon),
-        ("Tentacool", BodyKind.Jelly), ("Octillery", BodyKind.Tentacled)
-    }.Select(x => new object[] { x.Item1, x.Item2.ToString() });
+        PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).First(n => !PokemonModels.HasModel(n) && PokemonGenomes.For(n)?.Kind == kind),
+        kind.ToString()
+    });
 
     [Theory]
     [MemberData(nameof(OneOfEachKind))]

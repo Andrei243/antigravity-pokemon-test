@@ -20,7 +20,11 @@ public class PokemonModelTests
     public static IEnumerable<object[]> HandBuilt => PokemonModels.Species.Select(s => new object[] { s });
 
     /// <summary>The hand-built species that don't have two eyes.</summary>
-    private static readonly Dictionary<string, int> EyesOf = new() { ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1 };
+    private static readonly Dictionary<string, int> EyesOf = new()
+    {
+        ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1, ["Nosepass"] = 0, ["Ralts"] = 0, ["Kirlia"] = 1, ["Magnemite"] = 1, ["Magneton"] = 3,
+        ["Magnezone"] = 3
+    };
 
     [Theory]
     [MemberData(nameof(HandBuilt))]
