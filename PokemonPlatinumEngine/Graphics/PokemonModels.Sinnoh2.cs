@@ -1273,9 +1273,9 @@ internal static partial class PokemonModels
         b.PaintEll(bone, tip - d * dipped * 0.45f, V(r * 1.4f, d.Length() * dipped * 0.6f, r * 1.4f), tipColor, Euler(d));
     }
 
-    private static PokeBuilder Pichu()
+    private static PokeBuilder Pichu(bool spikyEared = false)
     {
-        var b = new PokeBuilder("Pichu", 0.5f, BodyPlan.Biped, V(0, 0.2f, 0)) { Coat = Fur };
+        var b = new PokeBuilder(spikyEared ? "Pichu-Spiky-Eared" : "Pichu", 0.5f, BodyPlan.Biped, V(0, 0.2f, 0)) { Coat = Fur };
         var yellow = Rgb(250, 220, 72);
         var black = Rgb(40, 34, 36);
 
@@ -1310,12 +1310,14 @@ internal static partial class PokemonModels
         b.Mark(head, V(0, 0.335f, 0.124f), V(0, 0, 1f), 0.008f, 0.006f, black);
         b.Mark(head, V(0, 0.31f, 0.12f), V(0, -0.2f, 1f), 0.018f, 0.007f, Rgb(80, 30, 30), MarkShape.Wave);
         PokeBuilder.Both(s => b.Eye(head, V(0.055f * s, 0.365f, 0.112f), V(0.4f * s, 0.05f, 1f), 0.03f));
+        if (spikyEared) SpikyEar(b);
         return b;
     }
 
-    private static PokeBuilder Pikachu()
+    /// <param name="form">One of Pikachu's caps or costumes (PokemonModels.Pikachu.cs), or none for Pikachu itself.</param>
+    private static PokeBuilder Pikachu(string? form = null)
     {
-        var b = new PokeBuilder("Pikachu", 0.56f, BodyPlan.Biped, V(0, 0.18f, 0)) { Coat = Fur };
+        var b = new PokeBuilder(form ?? "Pikachu", 0.56f, BodyPlan.Biped, V(0, 0.18f, 0)) { Coat = Fur };
         var yellow = Rgb(250, 212, 52);
         var brown = Rgb(150, 92, 44);
         var black = Rgb(40, 30, 30);
@@ -1352,9 +1354,10 @@ internal static partial class PokemonModels
             MouseEar(b, ear, V(0.07f * s, 0.46f, -0.01f), V(0.16f * s, 0.73f, -0.05f), 0.05f, yellow, black);
         });
         PokeBuilder.Both(s => b.Mark(head, V(0.105f * s, 0.35f, 0.085f), V(0.75f * s, -0.05f, 0.65f), 0.032f, 0.032f, red));
-        b.Mark(head, V(0, 0.38f, 0.138f), V(0, 0, 1f), 0.009f, 0.006f, black);
+        b.Mark(head, V(0, 0.38f, 0.138f), V(0, 0, 1f), 0.011f, 0.008f, black);
         b.Mark(head, V(0, 0.355f, 0.132f), V(0, -0.2f, 1f), 0.024f, 0.008f, Rgb(90, 36, 30), MarkShape.Wave);
         PokeBuilder.Both(s => b.Eye(head, V(0.058f * s, 0.4f, 0.118f), V(0.4f * s, 0.05f, 1f), 0.032f));
+        if (form != null) DressPikachu(b, form, head, tail);
         return b;
     }
 
