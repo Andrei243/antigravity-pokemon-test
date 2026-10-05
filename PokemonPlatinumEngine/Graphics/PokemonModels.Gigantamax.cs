@@ -1,0 +1,281 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Raylib_cs;
+
+namespace PokemonPlatinumEngine.Graphics;
+
+// The Gigantamax forms of species of Platinum's Sinnoh Pokédex, hand-built like the species (after plan 03 · D11).
+// Each is our own sculpt after the design, and each carries the red clouds of Gigantamax energy over it.
+internal static partial class PokemonModels
+{
+    private static readonly Color MaxRed = Rgb(214, 44, 86);
+
+    /// <summary>
+    /// The red clouds of Gigantamax energy: puffs strung on a wisp that rises from <paramref name="from"/> in a spiral
+    /// <paramref name="turns"/> times round, <paramref name="spread"/> wide at the top, so they hang together.
+    /// </summary>
+    private static void MaxClouds(PokeBuilder b, int bone, Vector3 from, float puff, float spread, float rise, float turns, float phase = 0f)
+    {
+        const int Steps = 24;
+        var path = new Vector3[Steps + 1];
+        for (int i = 0; i <= Steps; i++)
+        {
+            float t = i / (float)Steps, a = phase + t * MathF.Tau * turns;
+            path[i] = from + V(MathF.Cos(a) * spread * t, rise * t, MathF.Sin(a) * spread * t);
+        }
+        b.Tube(bone, path, puff * 0.45f, puff * 0.4f, MaxRed, Glow, 0f);
+        for (int i = 1; i <= Steps; i += 2)
+        {
+            float size = puff * (1f + 0.35f * MathF.Sin(i * 1.7f));
+            b.Ell(bone, path[i], V(size, size * 0.85f, size), MaxRed, mat: Glow, blend: 0.025f);
+        }
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Pikachu
+
+    private static PokeBuilder PikachuGmax()
+    {
+        var b = new PokeBuilder("Pikachu-Gmax", 0.9f, BodyPlan.Biped, V(0, 0.3f, 0)) { Coat = Fur };
+        var yellow = Rgb(250, 212, 52);
+        var brown = Rgb(150, 92, 44);
+        var black = Rgb(40, 30, 30);
+        var spark = Rgb(255, 248, 190);
+
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(0.12f * s, 0.1f, 0.04f));
+            b.Ell(leg, V(0.13f * s, 0.04f, 0.1f), V(0.07f, 0.04f, 0.09f), yellow);
+        });
+        // A round, heavy body with its head sunk into it, brown stripes across the back
+        b.Ell(Body, V(0, 0.3f, 0), V(0.28f, 0.28f, 0.25f), yellow);
+        foreach (float y in new[] { 0.42f, 0.33f })
+            b.PaintEll(Body, V(0, y, -0.2f), V(0.18f, 0.018f, 0.1f), brown, soft: 0.012f);
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Arm(s, V(0.2f * s, 0.36f, 0.14f));
+            b.Ell(arm, V(0.18f * s, 0.32f, 0.22f), V(0.05f, 0.05f, 0.05f), yellow);
+        });
+        // A great tail of lightning rising high behind it, glowing
+        int tail = b.Tail(V(0, 0.3f, -0.2f));
+        Lightning(b, tail, new[] { V(0.02f, 0.3f, -0.22f), V(0.1f, 0.5f, -0.3f), V(0.02f, 0.56f, -0.3f), V(0.14f, 0.82f, -0.36f), V(0.04f, 0.88f, -0.36f), V(0.18f, 1.26f, -0.42f) },
+            new[] { 0.04f, 0.045f, 0.055f, 0.06f, 0.09f }, 0.022f, spark, V(1f, 0, 0), mat: Glow);
+
+        int head = b.Head(V(0, 0.46f, 0.04f));
+        b.Ell(head, V(0, 0.54f, 0.08f), V(0.17f, 0.13f, 0.15f), yellow);
+        PokeBuilder.Both(s =>
+        {
+            int ear = b.Ear(head, s, V(0.08f * s, 0.62f, 0.04f));
+            MouseEar(b, ear, V(0.08f * s, 0.61f, 0.04f), V(0.2f * s, 0.84f, 0.0f), 0.055f, yellow, black);
+        });
+        PokeBuilder.Both(s => b.Mark(head, V(0.115f * s, 0.51f, 0.17f), V(0.75f * s, -0.05f, 0.65f), 0.035f, 0.035f, Rgb(232, 52, 52)));
+        b.Mark(head, V(0, 0.54f, 0.228f), V(0, 0, 1f), 0.012f, 0.009f, black);
+        b.Mark(head, V(0, 0.515f, 0.224f), V(0, -0.2f, 1f), 0.028f, 0.009f, Rgb(90, 36, 30), MarkShape.Wave);
+        PokeBuilder.Both(s => b.Eye(head, V(0.062f * s, 0.565f, 0.208f), V(0.4f * s, 0.05f, 1f), 0.032f, closed: true));
+        MaxClouds(b, head, V(-0.08f, 0.66f, 0.04f), 0.045f, 0.2f, 0.36f, 1.1f, 1f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Machamp
+
+    private static PokeBuilder MachampGmax()
+    {
+        var b = new PokeBuilder("Machamp-Gmax", 0.95f, BodyPlan.Biped, V(0, 0.56f, 0)) { Coat = Fur };
+        var gray = Rgb(86, 84, 100);
+        var pale = Rgb(178, 182, 198);
+        var black = Rgb(32, 30, 38);
+        var lava = Rgb(250, 150, 40);
+        var crack = Rgb(80, 30, 20);
+
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(0.11f * s, 0.4f, 0));
+            b.Limb(leg, V(0.11f * s, 0.4f, 0), V(0.16f * s, 0.2f, 0.04f), 0.09f, 0.07f, black);
+            b.Limb(leg, V(0.16f * s, 0.2f, 0.04f), V(0.15f * s, 0.05f, 0.0f), 0.065f, 0.055f, black);
+            b.Ell(leg, V(0.15f * s, 0.03f, 0.05f), V(0.065f, 0.03f, 0.095f), pale);
+        });
+        // Dark muscle, a pale chest, a black belt with a gold buckle and a ring of red cloud round its waist
+        b.Ell(Body, V(0, 0.56f, 0), V(0.19f, 0.22f, 0.15f), gray);
+        PokeBuilder.Both(s => b.Ell(Body, V(0.075f * s, 0.66f, 0.07f), V(0.095f, 0.075f, 0.075f), gray));
+        b.PaintEll(Body, V(0, 0.5f, 0.1f), V(0.12f, 0.06f, 0.06f), pale);
+        b.PaintEll(Body, V(0, 0.4f, 0), V(0.2f, 0.08f, 0.16f), black);
+        Belt(b, V(0, 0.46f, 0), 0.185f, 0.145f);
+        for (int i = 0; i < 12; i++)
+        {
+            float a = i * MathF.Tau / 12f;
+            b.Ell(Body, V(MathF.Sin(a) * 0.21f, 0.47f + 0.015f * MathF.Sin(a * 3f), MathF.Cos(a) * 0.17f), V(0.045f, 0.035f, 0.045f), MaxRed, mat: Glow, blend: 0.015f);
+        }
+        // Four arms ending in fists of molten rock, cracked and glowing
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Arm(s, V(0.18f * s, 0.72f, 0));
+            b.Ell(arm, V(0.2f * s, 0.74f, 0), V(0.1f, 0.09f, 0.09f), gray);
+            b.Limb(arm, V(0.22f * s, 0.74f, 0.0f), V(0.36f * s, 0.8f, 0.02f), 0.075f, 0.065f, gray);
+            b.Limb(arm, V(0.36f * s, 0.8f, 0.02f), V(0.38f * s, 0.94f, 0.05f), 0.07f, 0.075f, lava, Glow);
+            b.Ell(arm, V(0.38f * s, 1.0f, 0.06f), V(0.09f, 0.085f, 0.085f), lava, mat: Glow);
+            b.Mark(arm, V(0.38f * s, 1.0f, 0.145f), V(0.2f * s, 0, 1f), 0.045f, 0.007f, crack, MarkShape.Bar, 35f);
+            b.Mark(arm, V(0.385f * s, 0.99f, 0.146f), V(0.2f * s, 0, 1f), 0.03f, 0.006f, crack, MarkShape.Bar, -50f);
+            int lower = b.Part(s < 0 ? "lowArmL" : "lowArmR", Body, V(0.17f * s, 0.6f, 0.02f), PokeRole.Arm, s + 1.4f, s);
+            b.Limb(lower, V(0.17f * s, 0.6f, 0.02f), V(0.3f * s, 0.48f, 0.06f), 0.065f, 0.058f, gray);
+            b.Limb(lower, V(0.3f * s, 0.48f, 0.06f), V(0.36f * s, 0.36f, 0.12f), 0.06f, 0.065f, lava, Glow);
+            b.Ell(lower, V(0.38f * s, 0.3f, 0.14f), V(0.08f, 0.075f, 0.075f), lava, mat: Glow);
+            b.Mark(lower, V(0.38f * s, 0.3f, 0.215f), V(0.2f * s, 0, 1f), 0.04f, 0.007f, crack, MarkShape.Bar, -30f);
+            b.Mark(lower, V(0.385f * s, 0.29f, 0.216f), V(0.2f * s, 0, 1f), 0.026f, 0.006f, crack, MarkShape.Bar, 55f);
+        });
+
+        int head = b.Head(V(0, 0.77f, 0));
+        b.Ell(head, V(0, 0.87f, 0.0f), V(0.11f, 0.11f, 0.11f), gray);
+        b.Ell(head, V(0, 0.82f, 0.08f), V(0.08f, 0.055f, 0.06f), black);
+        foreach (float x in new[] { -0.04f, 0f, 0.04f })
+            b.Ell(head, V(x, 0.97f, -0.01f), V(0.018f, 0.06f, 0.08f), black, V(-20f, 0, 0), Shell, 0.012f);
+        PokeBuilder.Both(s => b.Eye(head, V(0.048f * s, 0.89f, 0.1f), V(0.4f * s, 0.05f, 1f), 0.024f, sclera: true, white: Rgb(250, 220, 70), pupil: Rgb(250, 220, 70), glare: true));
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Gengar
+
+    private static PokeBuilder GengarGmax()
+    {
+        var b = new PokeBuilder("Gengar-Gmax", 0.95f, BodyPlan.Biped, V(0, 0.4f, 0)) { Coat = Fur };
+        var purple = Rgb(104, 72, 164);
+        var magenta = Rgb(214, 56, 140);
+        var deep = Rgb(140, 28, 84);
+        var tongue = Rgb(232, 90, 160);
+
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(0.24f * s, 0.12f, 0.04f));
+            b.Ell(leg, V(0.26f * s, 0.05f, 0.1f), V(0.09f, 0.05f, 0.11f), purple);
+            Digits(b, leg, V(0.26f * s, 0.04f, 0.2f), V(0, 0, 1f), V(0.6f, 0, 0), 0.04f, 0.025f, purple);
+        });
+        // A mountain of a body, spiked along its back, nearly all of its front one gaping mouth: a portal of
+        // reds deepening to black, a long tongue rolling out of it
+        b.Ell(Body, V(0, 0.4f, 0), V(0.38f, 0.42f, 0.3f), purple);
+        b.CutBox(Body, V(0, -0.3f, 0), V(0.8f, 0.3f, 0.8f), Quaternion.Identity);
+        for (int i = -3; i <= 3; i++)
+            b.Spike(Body, V(0.1f * i, 0.66f - 0.04f * Math.Abs(i), -0.18f), V(0.15f * i, 0.78f - 0.06f * Math.Abs(i), -0.38f), 0.08f, purple, 0.55f);
+        PokeBuilder.Both(s =>
+        {
+            b.Spike(Body, V(0.3f * s, 0.3f, -0.1f), V(0.5f * s, 0.2f, -0.18f), 0.07f, purple, 0.5f);
+            b.Spike(Body, V(0.32f * s, 0.12f, -0.02f), V(0.5f * s, 0.04f, 0.0f), 0.06f, purple, 0.5f);
+        });
+        b.Cut(Body, V(0, 0.34f, 0.3f), V(0.27f, 0.27f, 0.13f), blend: 0.012f);
+        b.PaintEll(Body, V(0, 0.34f, 0.24f), V(0.29f, 0.29f, 0.12f), magenta);
+        b.PaintEll(Body, V(0, 0.33f, 0.15f), V(0.19f, 0.19f, 0.1f), deep);
+        b.PaintEll(Body, V(0, 0.32f, 0.08f), V(0.09f, 0.09f, 0.08f), Rgb(30, 10, 30));
+        b.Box(Body, V(0, 0.585f, 0.27f), V(0.17f, 0.018f, 0.03f), 0.006f, White, V(-10f, 0, 0), blend: 0.004f);
+        int jaw = b.Jaw(Body, V(0, 0.12f, 0.2f));
+        b.Tube(jaw, Smooth(3, V(0.02f, 0.12f, 0.22f), V(0.12f, 0.1f, 0.36f), V(0.3f, 0.08f, 0.42f), V(0.44f, 0.12f, 0.34f), V(0.48f, 0.2f, 0.22f)), 0.07f, 0.05f, tongue, blend: 0f);
+        // Ears like horns and small fierce eyes high on its head
+        int head = b.Head(V(0, 0.66f, 0));
+        PokeBuilder.Both(s => b.Spike(head, V(0.2f * s, 0.7f, -0.04f), V(0.36f * s, 0.98f, -0.1f), 0.1f, purple, 0.55f));
+        PokeBuilder.Both(s => b.Eye(Body, V(0.12f * s, 0.68f, 0.22f), V(0.4f * s, 0.3f, 1f), 0.04f, pupil: Rgb(140, 30, 40), white: Rgb(250, 214, 64), glare: true));
+        MaxClouds(b, head, V(0.06f, 0.76f, 0.0f), 0.045f, 0.18f, 0.32f, 1.1f, 2f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Eevee
+
+    private static PokeBuilder EeveeGmax()
+    {
+        var b = new PokeBuilder("Eevee-Gmax", 0.85f, BodyPlan.Quadruped, V(0, 0.2f, -0.02f)) { Coat = Fur };
+        var brown = Rgb(198, 132, 72);
+        var cream = Rgb(246, 228, 184);
+        var dark = Rgb(112, 72, 42);
+
+        foreach (var (z, front) in new[] { (0.08f, true), (-0.1f, false) })
+            PokeBuilder.Both(s =>
+            {
+                int leg = b.Leg(s, V(0.06f * s, 0.13f, z), front);
+                b.Limb(leg, V(0.06f * s, 0.13f, z), V(0.065f * s, 0.02f, z + 0.01f), 0.03f, 0.026f, brown);
+                b.Ell(leg, V(0.065f * s, 0.018f, z + 0.025f), V(0.028f, 0.018f, 0.034f), brown);
+            });
+        b.Ell(Body, V(0, 0.2f, -0.02f), V(0.09f, 0.085f, 0.14f), brown);
+        // An enormous ruff of cream fur that all but swallows it
+        foreach (var (at, size) in new[]
+        {
+            (V(0, 0.24f, 0.12f), 0.14f), (V(0.15f, 0.26f, 0.06f), 0.12f), (V(-0.15f, 0.26f, 0.06f), 0.12f), (V(0.12f, 0.15f, 0.12f), 0.1f),
+            (V(-0.12f, 0.15f, 0.12f), 0.1f), (V(0.17f, 0.34f, -0.02f), 0.1f), (V(-0.17f, 0.34f, -0.02f), 0.1f), (V(0, 0.36f, -0.04f), 0.11f)
+        })
+            b.Ell(Body, at, V(size, size * 0.9f, size * 0.85f), cream, blend: 0.03f);
+        int tail = b.Tail(V(0, 0.24f, -0.14f));
+        b.Ell(tail, V(0, 0.38f, -0.24f), V(0.1f, 0.18f, 0.1f), brown, V(-25f, 0, 0));
+        b.PaintEll(tail, V(0, 0.52f, -0.31f), V(0.1f, 0.07f, 0.1f), cream);
+
+        int head = b.Head(V(0, 0.36f, 0.1f));
+        var c = V(0, 0.44f, 0.12f);
+        var r = V(0.11f, 0.1f, 0.1f);
+        b.Ell(head, c, r, brown);
+        b.Ell(head, V(0, 0.41f, 0.2f), V(0.045f, 0.035f, 0.035f), brown);
+        PokeBuilder.Both(s =>
+        {
+            int ear = b.Ear(head, s, V(0.06f * s, 0.52f, 0.09f));
+            MouseEar(b, ear, V(0.06f * s, 0.52f, 0.09f), V(0.19f * s, 0.76f, 0.04f), 0.06f, brown, dark, 0.25f);
+        });
+        b.Mark(head, V(0, 0.42f, 0.233f), V(0, 0.2f, 1f), 0.01f, 0.008f, dark);
+        b.Mark(head, V(0, 0.395f, 0.226f), V(0, -0.3f, 1f), 0.018f, 0.007f, dark, MarkShape.Wave);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.05f * s, 0.45f), V(0.4f * s, 0.05f, 1f), 0.032f, Rgb(110, 60, 40)));
+        MaxClouds(b, head, V(0.08f, 0.58f, 0.06f), 0.03f, 0.12f, 0.26f, 1.2f, 0.5f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Snorlax
+
+    private static PokeBuilder SnorlaxGmax()
+    {
+        var b = new PokeBuilder("Snorlax-Gmax", 1f, BodyPlan.Biped, V(0, 0.28f, 0)) { Coat = Fur };
+        var blue = Rgb(40, 104, 132);
+        var cream = Rgb(240, 228, 198);
+        var pad = Rgb(150, 116, 86);
+        var grass = Rgb(118, 176, 82);
+        var bush = Rgb(62, 128, 66);
+        var path = Rgb(222, 206, 160);
+        var bark = Rgb(110, 76, 50);
+        var leaves = Rgb(44, 96, 62);
+
+        // Asleep on its back, its feet up at one end, soles to the world
+        PokeBuilder.Both(s =>
+        {
+            int leg = b.Leg(s, V(-0.3f, 0.22f, 0.12f * s));
+            b.Limb(leg, V(-0.3f, 0.22f, 0.12f * s), V(-0.42f, 0.28f, 0.14f * s), 0.09f, 0.085f, blue);
+            b.Ell(leg, V(-0.47f, 0.3f, 0.15f * s), V(0.06f, 0.1f, 0.09f), blue);
+            b.PaintEll(leg, V(-0.52f, 0.3f, 0.15f * s), V(0.03f, 0.09f, 0.08f), cream);
+            b.Mark(leg, V(-0.525f, 0.29f, 0.15f * s), V(-1f, 0, 0.1f * s), 0.045f, 0.05f, pad);
+        });
+        // A great long body, and on its belly a hill of grass with a path over it, bushes, and a tree in fruit
+        b.Ell(Body, V(0, 0.26f, 0), V(0.44f, 0.24f, 0.3f), blue);
+        b.CutBox(Body, V(0, -0.3f, 0), V(0.8f, 0.3f, 0.8f), Quaternion.Identity);
+        b.Ell(Body, V(-0.02f, 0.44f, 0.02f), V(0.34f, 0.1f, 0.24f), grass, mat: Leaf);
+        b.PaintEll(Body, V(0.05f, 0.52f, 0.0f), V(0.3f, 0.06f, 0.035f), path, V(0, 30f, 0));
+        foreach (var (at, size) in new[] { (V(-0.22f, 0.5f, 0.12f), 0.06f), (V(-0.12f, 0.53f, -0.14f), 0.07f), (V(0.18f, 0.49f, -0.12f), 0.06f), (V(0.2f, 0.47f, 0.16f), 0.05f), (V(-0.28f, 0.46f, -0.06f), 0.05f) })
+            b.Ell(Body, at, V(size, size * 0.8f, size), bush, mat: Leaf, blend: 0.02f);
+        b.Limb(Body, V(0.0f, 0.5f, -0.04f), V(0.02f, 0.78f, -0.06f), 0.04f, 0.03f, bark);
+        b.Ell(Body, V(0.02f, 0.86f, -0.06f), V(0.15f, 0.11f, 0.13f), leaves, mat: Leaf);
+        foreach (var dir in new[] { V(-0.8f, 0.2f, 0.5f), V(0.7f, 0.1f, 0.6f), V(0.2f, 0.6f, 0.7f), V(-0.3f, -0.3f, 0.9f), V(0.9f, -0.2f, -0.2f) })
+        {
+            var n = Vector3.Normalize(dir);
+            b.Ell(Body, V(0.02f, 0.86f, -0.06f) + n * V(0.15f, 0.11f, 0.13f), V(0.022f, 0.022f, 0.022f), Rgb(214, 56, 60), mat: Shell, blend: 0.006f);
+        }
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Arm(s, V(0.24f, 0.32f, 0.2f * s));
+            b.Limb(arm, V(0.24f, 0.32f, 0.2f * s), V(0.14f, 0.4f, 0.27f * s), 0.07f, 0.06f, blue);
+            Claws(b, arm, V(0.1f, 0.43f, 0.28f * s), V(0, 0, 0.03f), V(-1f, 0.4f, 0), 0.035f, 0.014f);
+        });
+
+        // Its head at the other end, eyes shut, small ears
+        int head = b.Head(V(0.34f, 0.3f, 0.06f));
+        b.Ell(head, V(0.44f, 0.3f, 0.1f), V(0.16f, 0.15f, 0.15f), blue);
+        b.PaintEll(head, V(0.48f, 0.28f, 0.2f), V(0.12f, 0.1f, 0.08f), cream);
+        PokeBuilder.Both(s =>
+        {
+            int ear = b.Ear(head, s, V(0.44f + 0.09f * s, 0.42f, 0.06f));
+            b.Spike(ear, V(0.44f + 0.09f * s, 0.41f, 0.06f), V(0.46f + 0.13f * s, 0.5f, 0.05f), 0.045f, blue, 0.6f);
+        });
+        PokeBuilder.Both(s => b.Eye(head, V(0.44f + 0.05f * s, 0.32f, 0.24f), V(0.3f * s, 0.05f, 1f), 0.024f, closed: true));
+        b.Mark(head, V(0.45f, 0.26f, 0.24f), V(0.1f, -0.15f, 1f), 0.035f, 0.01f, Rgb(70, 50, 50), MarkShape.Wave);
+        MaxClouds(b, Body, V(0.06f, 0.95f, -0.08f), 0.035f, 0.14f, 0.24f, 1.1f, 0.3f);
+        return b;
+    }
+}

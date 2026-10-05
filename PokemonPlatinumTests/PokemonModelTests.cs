@@ -23,20 +23,21 @@ public class PokemonModelTests
 
     public static IEnumerable<object[]> HandBuilt => AllHandBuilt.Select(s => new object[] { s });
 
-    /// <summary>The hand-built species and forms that don't have two eyes (every Unown has one).</summary>
+    /// <summary>The hand-built species and forms that don't have two eyes (every Unown has one, Mega Gengar three).</summary>
     private static readonly Dictionary<string, int> EyesOf = new Dictionary<string, int>
     {
         ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1, ["Nosepass"] = 0, ["Ralts"] = 0, ["Kirlia"] = 1, ["Magnemite"] = 1, ["Magneton"] = 3,
-        ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0
+        ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0, ["Gengar-Mega"] = 3
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
-    /// The hand-built species whose parts float apart by design, and how many pieces they are in: Haunter's two hands,
-    /// Probopass's two little noses, Porygon-Z's head, arms and tail round its body.
+    /// The hand-built species and forms whose parts float apart by design, and how many pieces they are in: Haunter's
+    /// two hands, Probopass's two little noses, Porygon-Z's head, arms and tail round its body, the five spoons hovering
+    /// over Mega Alakazam's head.
     /// </summary>
     private static readonly Dictionary<string, int> PiecesOf = new()
     {
-        ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5
+        ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5, ["Alakazam-Mega"] = 6
     };
 
     [Theory]

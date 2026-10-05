@@ -191,23 +191,32 @@ public class FormTests
     }
 
     [Fact]
-    public void PlatinumsOwnFormsOfItsSinnohSpeciesAreHandBuilt()
+    public void EveryFormOfAHandBuiltSpeciesIsHandBuilt()
     {
-        // Rotom's appliances, Giratina's Origin Forme, the sandy and trash cloaks, the East Sea, Cherrim in the sun and
-        // every letter and sign of the Unown but A, which is the species itself
-        Assert.Equal(40, PokemonModels.Forms.Length);
+        // Platinum's own forms of its Sinnoh species (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East
+        // Sea, Cherrim in the sun, every letter and sign of the Unown but A, which is the species itself) and the later
+        // games' (the regional forms, Dialga's and Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps
+        // and costumes, the spiky-eared Pichu) each have a sculpt of their own. The few that look just like their
+        // species show its sculpt.
+        var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter" };
+        Assert.Equal(97, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {
             var owner = PokemonDatabase.SpeciesOfForm(form);
             Assert.True(owner?.SinnohNumber != null, form);
             Assert.Equal(form, owner!.Form(form)!.Name);
-            Assert.True(PokemonModels.HasModel(form), form);
-            Assert.NotEqual(PokemonModels.Signature(owner.Name), PokemonModels.Signature(form));
         }
-        Assert.All(PokemonDatabase.Get("Unown")!.Forms!, f => Assert.True(PokemonModels.HasModel(f.Name), f.Name));
-        // The three cloaks are three sculpts
-        Assert.Equal(3, new[] { "Wormadam", "Wormadam-Sandy", "Wormadam-Trash" }.Select(PokemonModels.Signature).Distinct().Count());
+        foreach (var species in PokemonModels.Species)
+            foreach (var form in PokemonDatabase.Get(species)!.Forms ?? new())
+            {
+                bool same = sameLook.Contains(form.Name);
+                Assert.True(PokemonModels.HasModel(form.Name) != same, form.Name);
+                Assert.True(PokemonModels.Signature(species) == PokemonModels.Signature(form.Name) == same, form.Name);
+            }
+        // No two hand-built sculpts are the same: the cloaks, Mega Raichu X and Y, a Mega and its Z form
+        var all = PokemonModels.Species.Concat(PokemonModels.Forms).ToList();
+        Assert.Equal(all.Count, all.Select(PokemonModels.Signature).Distinct().Count());
     }
 
     [Fact]
@@ -229,14 +238,16 @@ public class FormTests
         Assert.Equal(PokemonType.Normal, PokemonGenomes.For("Clefairy")!.Primary);
         Assert.Equal(PokemonType.Ghost, PokemonGenomes.For("Rotom-Wash")!.Secondary);
 
-        // A form of a hand-built species shows its species' sculpt until it has one of its own
-        Assert.False(PokemonModels.HasModel("Garchomp-Mega"));
-        Assert.Equal(PokemonModels.Signature("Garchomp"), PokemonModels.Signature("Garchomp-Mega"));
+        // A form that looks just like its hand-built species shows its species' sculpt
+        Assert.False(PokemonModels.HasModel("Mothim-Sandy"));
         Assert.Equal(PokemonModels.Signature("Mothim"), PokemonModels.Signature("Mothim-Sandy"));
+        Assert.Equal(PokemonModels.Signature("Pikachu"), PokemonModels.Signature("Pikachu-Starter"));
 
-        // Platinum's own forms of its Sinnoh species are hand-built, each a sculpt of its own (below)
+        // Every other form of a hand-built species is hand-built, a sculpt of its own (above)
         Assert.True(PokemonModels.HasModel("Rotom-Heat"));
         Assert.NotEqual(PokemonModels.Signature("Rotom"), PokemonModels.Signature("Rotom-Heat"));
+        Assert.True(PokemonModels.HasModel("Garchomp-Mega"));
+        Assert.NotEqual(PokemonModels.Signature("Garchomp"), PokemonModels.Signature("Garchomp-Mega"));
 
         // Every form has a genome that sculpts
         foreach (var form in PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()))

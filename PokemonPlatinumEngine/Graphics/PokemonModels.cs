@@ -550,9 +550,11 @@ internal static partial class PokemonModels
     };
 
     /// <summary>
-    /// Forms with a hand-built model of their own: the forms Platinum itself gives species of its Sinnoh Pokédex
-    /// (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters).
-    /// A hand-built species' other forms show its model until they have theirs.
+    /// Forms with a hand-built model of their own: every form of a species of the Sinnoh Pokédex, Platinum's own
+    /// (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters) and
+    /// the later games' (the regional forms, Dialga's and Palkia's Origin Formes, the Megas, the Gigantamax forms,
+    /// Pikachu's caps and costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks,
+    /// the partner Pikachu and Eevee) show its model.
     /// </summary>
     public static readonly string[] Forms =
     {
@@ -560,8 +562,21 @@ internal static partial class PokemonModels
         "Burmy-Sandy", "Burmy-Trash", "Wormadam-Sandy", "Wormadam-Trash", "Shellos-East", "Gastrodon-East", "Cherrim-Sunshine",
         "Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K",
         "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U",
-        "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question"
+        "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question",
+        "Raichu-Alola", "Geodude-Alola", "Graveler-Alola", "Golem-Alola", "Ponyta-Galar", "Rapidash-Galar", "Mr. Mime-Galar",
+        "Wooper-Paldea", "Sneasel-Hisui", "Dialga-Origin", "Palkia-Origin",
+        "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Gengar-Mega", "Gyarados-Mega", "Steelix-Mega",
+        "Scizor-Mega", "Heracross-Mega", "Houndoom-Mega", "Gardevoir-Mega", "Medicham-Mega", "Altaria-Mega", "Chimecho-Mega",
+        "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Staraptor-Mega", "Lopunny-Mega", "Garchomp-Mega", "Garchomp-Mega-Z",
+        "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega",
+        "Pikachu-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Eevee-Gmax", "Snorlax-Gmax",
+        "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
+        "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
+        "Pikachu-Cosplay", "Pichu-Spiky-Eared"
     };
+
+    /// <summary>Pikachu's caps and costumes among <see cref="Forms"/>, in capitals as the sculptor is asked for them.</summary>
+    private static readonly HashSet<string> PikachuForms = Forms.Where(f => f.StartsWith("Pikachu-") && f != "Pikachu-Gmax").Select(f => f.ToUpperInvariant()).ToHashSet();
 
     /// <summary>Whether a species or one of its forms has a hand-built model (anything else is generated).</summary>
     public static bool HasModel(string species) =>
@@ -864,6 +879,53 @@ internal static partial class PokemonModels
         "GASTRODON-EAST" => SeaSlug(true, east: true),
         "CHERRIM-SUNSHINE" => CherrimSunshine(),
         var unown when unown.StartsWith("UNOWN-") && UnownGlyphs.ContainsKey(unown[6..]) => Unown(unown[6..]),
+        // The later games' regional forms of Sinnoh species and Dialga's and Palkia's Origin Formes (PokemonModels.Regional.cs)
+        "RAICHU-ALOLA" => RaichuAlola(),
+        "GEODUDE-ALOLA" => GeodudeAlola(),
+        "GRAVELER-ALOLA" => GravelerAlola(),
+        "GOLEM-ALOLA" => GolemAlola(),
+        "PONYTA-GALAR" => HorseGalar(false),
+        "RAPIDASH-GALAR" => HorseGalar(true),
+        "MR. MIME-GALAR" => MrMimeGalar(),
+        "WOOPER-PALDEA" => WooperPaldea(),
+        "SNEASEL-HISUI" => SneaselHisui(),
+        "DIALGA-ORIGIN" => DialgaOrigin(),
+        "PALKIA-ORIGIN" => PalkiaOrigin(),
+        // The Mega Evolutions of Sinnoh species (PokemonModels.Megas.cs)
+        "RAICHU-MEGA-X" => RaichuMegaX(),
+        "RAICHU-MEGA-Y" => RaichuMegaY(),
+        "CLEFABLE-MEGA" => ClefableMega(),
+        "ALAKAZAM-MEGA" => AlakazamMega(),
+        "GENGAR-MEGA" => GengarMega(),
+        "GYARADOS-MEGA" => GyaradosMega(),
+        "STEELIX-MEGA" => SteelixMega(),
+        "SCIZOR-MEGA" => ScizorMega(),
+        "HERACROSS-MEGA" => HeracrossMega(),
+        "HOUNDOOM-MEGA" => HoundoomMega(),
+        "GARDEVOIR-MEGA" => GardevoirMega(),
+        "MEDICHAM-MEGA" => MedichamMega(),
+        "ALTARIA-MEGA" => AltariaMega(),
+        "CHIMECHO-MEGA" => ChimechoMega(),
+        "ABSOL-MEGA" => AbsolMega(),
+        "ABSOL-MEGA-Z" => AbsolMegaZ(),
+        "GLALIE-MEGA" => GlalieMega(),
+        "STARAPTOR-MEGA" => StaraptorMega(),
+        "LOPUNNY-MEGA" => LopunnyMega(),
+        "GARCHOMP-MEGA" => GarchompMega(),
+        "GARCHOMP-MEGA-Z" => GarchompMegaZ(),
+        "LUCARIO-MEGA" => LucarioMega(),
+        "LUCARIO-MEGA-Z" => LucarioMegaZ(),
+        "ABOMASNOW-MEGA" => AbomasnowMega(),
+        "GALLADE-MEGA" => GalladeMega(),
+        "FROSLASS-MEGA" => FroslassMega(),
+        // Gigantamax (PokemonModels.Gigantamax.cs), and Pikachu's caps and costumes and the spiky-eared Pichu (PokemonModels.Pikachu.cs)
+        "PIKACHU-GMAX" => PikachuGmax(),
+        "MACHAMP-GMAX" => MachampGmax(),
+        "GENGAR-GMAX" => GengarGmax(),
+        "EEVEE-GMAX" => EeveeGmax(),
+        "SNORLAX-GMAX" => SnorlaxGmax(),
+        "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),
+        var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)
         _ when PokemonDatabase.SpeciesOfForm(species) is { } owner && HasModel(owner.Name) => Create(owner.Name),
         // Every other species and form is generated from its data (plan 03 · D5); a name that is neither gets the stand-in
