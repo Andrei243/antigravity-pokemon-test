@@ -6,11 +6,18 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The regional forms of species of Platinum's Sinnoh Pokédex, and Dialga's and Palkia's Origin Formes, hand-built like
-// the species (after plan 03 · D11): Alolan Raichu and the Alolan Geodude line, Galarian Ponyta, Rapidash and
-// Mr. Mime, Paldean Wooper and Hisuian Sneasel. Each is our own sculpt after the design.
+// The regional forms of the hand-built species, and Dialga's and Palkia's Origin Formes, hand-built like the species
+// (after plan 03 · D11), in National Pokédex order: the Alolan Rattata line, Alolan Raichu, the Alolan Sandshrew and
+// Vulpix lines, the Alolan Geodude line, Galarian Ponyta, Rapidash and Mr. Mime, Paldean Wooper and Hisuian Sneasel.
+// Each is our own sculpt after the design.
 internal static partial class PokemonModels
 {
+    // ------------------------------------------------------------------ The Alolan Rattata line
+
+    private static PokeBuilder RattataAlola() => RattataBuild(true);
+
+    private static PokeBuilder RaticateAlola() => RaticateBuild(true);
+
     // ------------------------------------------------------------------ Alolan Raichu
 
     private static PokeBuilder RaichuAlola()
@@ -65,6 +72,18 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Eye(head, V(0.05f * s, 0.55f, 0.1f), V(0.4f * s, 0.05f, 1f), 0.027f, Rgb(64, 150, 230)));
         return Lift(b);
     }
+
+    // ------------------------------------------------------------------ The Alolan Sandshrew line
+
+    private static PokeBuilder SandshrewAlola() => SandshrewBuild(true);
+
+    private static PokeBuilder SandslashAlola() => SandslashBuild(true);
+
+    // ------------------------------------------------------------------ The Alolan Vulpix line
+
+    private static PokeBuilder VulpixAlola() => VulpixBuild(true);
+
+    private static PokeBuilder NinetalesAlola() => NinetalesBuild(true);
 
     // ------------------------------------------------------------------ the Alolan Geodude line
 

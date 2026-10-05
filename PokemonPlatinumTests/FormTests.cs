@@ -193,18 +193,19 @@ public class FormTests
     [Fact]
     public void EveryFormOfAHandBuiltSpeciesIsHandBuilt()
     {
-        // Platinum's own forms of its Sinnoh species (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East
-        // Sea, Cherrim in the sun, every letter and sign of the Unown but A, which is the species itself) and the later
-        // games' (the regional forms, Dialga's and Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps
-        // and costumes, the spiky-eared Pichu) each have a sculpt of their own. The few that look just like their
-        // species show its sculpt.
+        // Every form of a hand-built species has a sculpt of its own: Platinum's own forms of its Sinnoh species
+        // (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, every letter and
+        // sign of the Unown but A, which is the species itself) and the later games' (the regional forms, Dialga's and
+        // Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps and costumes, the spiky-eared Pichu),
+        // the forms of the Kanto species hand-built since among them. The few that look just like their species show
+        // its sculpt.
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter" };
-        Assert.Equal(97, PokemonModels.Forms.Length);
+        Assert.Equal(113, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {
             var owner = PokemonDatabase.SpeciesOfForm(form);
-            Assert.True(owner?.SinnohNumber != null, form);
+            Assert.True(owner != null && PokemonModels.Species.Contains(owner.Name), form);
             Assert.Equal(form, owner!.Form(form)!.Name);
         }
         foreach (var species in PokemonModels.Species)

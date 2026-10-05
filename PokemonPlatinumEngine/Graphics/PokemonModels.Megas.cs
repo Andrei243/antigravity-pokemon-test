@@ -6,10 +6,176 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The Mega Evolutions of species of Platinum's Sinnoh Pokédex, hand-built like the species (after plan 03 · D11). Each
-// is our own sculpt after the design: the species' build, changed as its Mega Evolution changes it.
+// The Mega Evolutions of the hand-built species (after plan 03 · D11), in National Pokédex order. Each is our own
+// sculpt after the design: the species' build, changed as its Mega Evolution changes it.
 internal static partial class PokemonModels
 {
+    // ------------------------------------------------------------------ Mega Venusaur
+
+    private static PokeBuilder VenusaurMega()
+    {
+        var b = new PokeBuilder("Venusaur-Mega", 0.95f, BodyPlan.Quadruped, V(0, 0.38f, -0.04f)) { Coat = Scales };
+        var teal = Rgb(98, 172, 174);
+        var spot = Rgb(52, 108, 112);
+        var dark = Rgb(44, 112, 68);
+        var pink = Rgb(242, 136, 150);
+        int head = VenusaurBody(b, teal, spot);
+        PokeBuilder.Both(s => Patches(b, Body, spot, (V(0.24f * s, 0.5f, -0.12f), 0.05f), (V(0.33f * s, 0.32f, -0.06f), 0.045f)));
+        // Dark leaves hang from its hips and over its shoulders
+        PokeBuilder.Both(s =>
+        {
+            foreach (var (at, dir) in new[] { (V(0.23f * s, 0.47f, -0.2f), V(0.45f * s, -0.9f, -0.35f)), (V(0.25f * s, 0.48f, 0.1f), V(0.5f * s, -0.9f, 0.2f)) })
+                PalmLeaf(b, Body, at, at + dir * 0.13f + V(0.05f * s, 0.03f, 0), at + dir * 0.3f, 0.1f, dark, V(s, 0.4f, 0), 4);
+        });
+        // A flower blooms on its brow
+        var brow = V(0, 0.6f, 0.5f);
+        for (int i = 0; i < 5; i++)
+        {
+            float a = i * MathF.Tau / 5f;
+            var o = V(MathF.Sin(a), 0, MathF.Cos(a));
+            Frond(b, head, brow + o * 0.01f, brow + o * 0.08f + V(0, 0.02f, 0), 0.04f, pink, V(0, 1f, 0.3f), 0.32f, Leaf, 0.008f);
+        }
+        b.Ell(head, brow + V(0, 0.02f, 0), V(0.03f, 0.022f, 0.03f), Rgb(246, 206, 72), mat: Leaf, blend: 0.008f);
+        // The flower on its back has grown huge: a taller trunk, wider petals, more leaves under them
+        Blossom(b, V(0, 0.6f, -0.08f), 1.2f, pink, Rgb(70, 150, 86), Rgb(98, 84, 58), Rgb(246, 206, 72), 5, 8);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Mega Charizard X and Y
+
+    private static PokeBuilder CharizardMegaX()
+    {
+        var b = new PokeBuilder("Charizard-Mega-X", 0.95f, BodyPlan.Biped, V(0, 0.52f, 0)) { Coat = Scales };
+        var black = Rgb(56, 58, 72);
+        var blue = Rgb(70, 140, 246);
+        var pale = Rgb(206, 238, 255);
+        // Black wings lined in deep blue, made first for their carving
+        PokeBuilder.Both(s => CharizardWing(b, s, Rgb(50, 82, 130), black, 1.05f));
+        var (head, tip) = CharizardBody(b, black, Rgb(104, 192, 238), Rgb(226, 42, 52), horn: 1.35f);
+        // Its horns tipped in blue, two spikes jutting from each shoulder, blue fire streaming from its jaws and tail
+        PokeBuilder.Both(s =>
+        {
+            b.PaintEll(head, V(0.077f * s, 1.065f, -0.165f), V(0.03f, 0.03f, 0.04f), blue);
+            b.Spike(Body, V(0.12f * s, 0.7f, -0.05f), V(0.2f * s, 0.86f, -0.12f), 0.042f, black);
+            b.Spike(Body, V(0.14f * s, 0.66f, -0.06f), V(0.26f * s, 0.74f, -0.12f), 0.032f, black);
+            b.PaintEll(Body, V(0.195f * s, 0.85f, -0.115f), V(0.025f, 0.03f, 0.025f), blue);
+            FlameTongue(b, head, V(0.055f * s, 0.9f, 0.21f), V(0.11f * s, 0.99f, 0.02f), 0.026f, blue, pale);
+        });
+        int flame = b.Part("flame", b.Model.Skeleton.Find("tail"), tip, PokeRole.Flame);
+        FlameTongue(b, flame, tip - V(0, 0.04f, 0), tip + V(0.04f, 0.3f, -0.04f), 0.08f, blue, pale);
+        return b;
+    }
+
+    private static PokeBuilder CharizardMegaY()
+    {
+        var b = new PokeBuilder("Charizard-Mega-Y", 0.95f, BodyPlan.Biped, V(0, 0.52f, 0)) { Coat = Scales };
+        var orange = Rgb(242, 146, 72);
+        var teal = Rgb(46, 140, 160);
+        // Wider wings with four points along their edges, and small wings grown on its wrists
+        PokeBuilder.Both(s =>
+        {
+            int wing = b.Wing(s, V(0.1f * s, 0.68f, -0.12f));
+            var wrist = V(0.48f * s, 1.08f, -0.2f);
+            DragonWing(b, wing, V(0.1f * s, 0.68f, -0.12f), wrist,
+                new[] { V(0.86f * s, 0.98f, -0.22f), V(0.86f * s, 0.72f, -0.21f), V(0.7f * s, 0.52f, -0.19f), V(0.44f * s, 0.46f, -0.16f) },
+                V(0.11f * s, 0.54f, -0.12f), teal, orange, 0.028f);
+            b.Spike(wing, wrist, wrist + V(0.02f * s, 0.08f, 0), 0.022f, orange);
+        });
+        var (head, tip) = CharizardBody(b, orange, Rgb(250, 228, 162), Rgb(40, 120, 140), horn: 1.1f);
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Model.Skeleton.Find(s < 0 ? "armL" : "armR");
+            Blade(b, arm, V(0.21f * s, 0.58f, 0.09f), V(0.38f * s, 0.7f, -0.02f), 0.065f, orange, V(0, 0, 1f), 0.3f);
+            Blade(b, arm, V(0.22f * s, 0.56f, 0.09f), V(0.4f * s, 0.56f, 0.0f), 0.05f, orange, V(0, 0, 1f), 0.3f);
+            b.PaintEll(arm, V(0.32f * s, 0.65f, 0.03f), V(0.05f, 0.04f, 0.05f), teal);
+        });
+        // A long horn swept back from the crown of its head, a fringe of dark spikes under its tail
+        b.Spike(head, V(0, 1.01f, 0.04f), V(0, 1.14f, -0.34f), 0.036f, orange);
+        var tail = b.Model.Skeleton.Find("tail");
+        foreach (var (at, to) in new[] { (V(0.03f, 0.2f, -0.34f), V(0.03f, 0.1f, -0.38f)), (V(0.08f, 0.17f, -0.42f), V(0.08f, 0.07f, -0.46f)) })
+            b.Spike(tail, at, to, 0.03f, Rgb(118, 70, 52));
+        int flame = b.Part("flame", tail, tip, PokeRole.Flame);
+        Flame(b, flame, tip, 0.9f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Mega Blastoise
+
+    private static PokeBuilder BlastoiseMega()
+    {
+        var b = new PokeBuilder("Blastoise-Mega", 0.95f, BodyPlan.Biped, V(0, 0.46f, 0)) { Coat = Scales };
+        var blue = Rgb(100, 146, 214);
+        var steel = Rgb(222, 224, 230);
+        BlastoiseBody(b, blue, Rgb(238, 222, 164), Rgb(160, 130, 90));
+        // A heavier shell carrying one great cannon over its head, and a cannon grown along each forearm
+        b.Ell(Body, V(0, 0.52f, -0.1f), V(0.27f, 0.3f, 0.18f), Rgb(128, 94, 70), mat: Shell);
+        b.Torus(Body, V(0, 0.49f, -0.01f), 0.245f, 0.038f, Rgb(242, 242, 238), V(90f, 0, 0), sz: 1.2f, mat: Shell, blend: 0.012f);
+        b.Ell(Body, V(0, 0.8f, -0.2f), V(0.11f, 0.08f, 0.12f), steel, mat: Metal, blend: 0.03f);
+        Cannon(b, Body, V(0, 0.86f, -0.28f), V(0, 0.92f, 0.3f), 0.085f, steel);
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Model.Skeleton.Find(s < 0 ? "armL" : "armR");
+            Cannon(b, arm, V(0.27f * s, 0.54f, 0.04f), V(0.35f * s, 0.46f, 0.24f), 0.05f, steel);
+        });
+        int tail = b.Tail(V(0, 0.28f, -0.14f));
+        b.Spike(tail, V(0, 0.26f, -0.16f), V(0, 0.18f, -0.32f), 0.05f, blue);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Mega Beedrill
+
+    private static PokeBuilder BeedrillMega() => BeedrillBuild(true);
+
+    // ------------------------------------------------------------------ Mega Pidgeot
+
+    private static PokeBuilder PidgeotMega()
+    {
+        var b = new PokeBuilder("Pidgeot-Mega", 0.92f, BodyPlan.Bird, V(0, 0.37f, 0)) { Coat = Fur }.Hover();
+        var cream = Rgb(246, 228, 176);
+        var gray = Rgb(176, 176, 186);
+        var blue = Rgb(66, 150, 220);
+        var pink = Rgb(236, 92, 120);
+        var gold = Rgb(250, 206, 90);
+        BirdLegs(b, 0.09f, 0.2f, 0.03f, 0.026f, Rgb(232, 158, 150));
+        b.Ell(Body, V(0, 0.37f, 0), V(0.2f, 0.21f, 0.24f), cream);
+        // Long tail feathers trailing pink streamers, and silver wings tipped in blue
+        int tail = b.Tail(V(0, 0.35f, -0.2f));
+        TailFan(b, tail, V(0, 0.35f, -0.19f), 5, 60f, 0.34f, 0.055f, gray, blue, 0.35f);
+        b.Tube(tail, Smooth(4, V(0, 0.35f, -0.2f), V(0.04f, 0.26f, -0.42f), V(0.12f, 0.16f, -0.56f), V(0.08f, 0.07f, -0.68f)), 0.02f, 0.01f, pink, Fur, 0f);
+        PokeBuilder.Both(s =>
+        {
+            int wing = b.Wing(s, V(0.16f * s, 0.48f, 0.02f));
+            var root = V(0.16f * s, 0.48f, 0.02f);
+            foreach (var (to, w) in new[] { (V(0.58f * s, 0.78f, -0.12f), 0.08f), (V(0.62f * s, 0.56f, -0.16f), 0.075f), (V(0.52f * s, 0.36f, -0.2f), 0.07f) })
+            {
+                Frond(b, wing, root, to, w, gray, V(0, 0.2f, 1f), 0.24f, Fur, 0.012f);
+                b.PaintEll(wing, root + (to - root) * 0.86f, V(w * 1.2f, 0.07f, w * 1.2f), blue, Euler(to - root));
+            }
+            b.PaintEll(wing, root + V(0.08f * s, 0.06f, 0), V(0.08f, 0.06f, 0.08f), Rgb(232, 120, 80));
+        });
+        int head = b.Head(V(0, 0.56f, 0.1f));
+        var c = V(0, 0.65f, 0.12f);
+        var r = V(0.12f, 0.11f, 0.125f);
+        b.Ell(head, c, r, cream);
+        b.Spike(head, c + V(0, -0.01f, r.Z * 0.9f), c + V(0, -0.05f, r.Z * 0.9f + 0.11f), 0.038f, Rgb(214, 166, 170), 0.8f, Shell);
+        // Its crest has grown into long plumes, gold with blue tips, and a pink streamer flowing far behind
+        int plume = b.Part("plume", head, c + V(0, r.Y * 0.8f, 0), PokeRole.Ear);
+        var crown = c + V(0, r.Y * 0.85f, 0.02f);
+        foreach (var (x, lift, reach) in new[] { (-0.05f, 0.18f, 0.5f), (-0.02f, 0.26f, 0.6f), (0.02f, 0.26f, 0.6f), (0.05f, 0.18f, 0.5f) })
+        {
+            var path = Smooth(3, crown + V(x, 0, 0.04f), crown + V(x * 1.6f, lift, -reach * 0.25f), crown + V(x * 2.4f, lift * 0.9f, -reach * 0.65f), crown + V(x * 3f, lift * 0.4f, -reach));
+            b.Tube(plume, path, 0.028f, 0.014f, gold, Fur, 0f);
+            b.PaintEll(plume, path[^1], V(0.05f, 0.05f, 0.12f), blue);
+        }
+        b.Tube(plume, Smooth(4, crown + V(0, 0.02f, 0.02f), crown + V(0, 0.36f, -0.2f), crown + V(0.04f, 0.3f, -0.56f), crown + V(0.02f, 0.06f, -0.8f)), 0.016f, 0.01f, pink, Fur, 0f);
+        PokeBuilder.Both(s =>
+        {
+            b.PaintEll(head, c + V(0.08f * s, 0.005f, -0.01f), V(0.036f, 0.024f, 0.07f), Rgb(40, 34, 32), V(0, 30f * s, -10f * s));
+            b.Eye(head, On(c, r, 0.06f * s, c.Y + 0.012f), V(0.6f * s, 0.05f, 1f), 0.03f, glare: true);
+        });
+        return b;
+    }
+
     // ------------------------------------------------------------------ Mega Raichu X and Y
 
     /// <summary>
