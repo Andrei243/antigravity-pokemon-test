@@ -42,7 +42,9 @@ var moves = Overrides.Apply(imported, Path.Combine(overrides, "moves.json")).Ord
 Console.WriteLine("Abilities…");
 var abilities = Overrides.Apply(importer.Abilities(), Path.Combine(overrides, "abilities.json")).OrderBy(a => a.Id).ToList();
 Console.WriteLine("Species…");
-var species = Overrides.Apply(importer.Species(), Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
+var importedSpecies = importer.Species();
+importer.AddFormColors(importedSpecies, showdown);
+var species = Overrides.Apply(importedSpecies, Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
 Console.WriteLine("Items…");
 var evolutionItems = species.SelectMany(s => s.Evolutions ?? new()).Select(e => e.Item).OfType<string>().ToHashSet();
 var importedItems = importer.Items(evolutionItems, moves);
@@ -61,7 +63,7 @@ return 0;
 
 string FetchShowdown()
 {
-    Console.WriteLine("Fetching Pokémon Showdown's move and item tables…");
+    Console.WriteLine("Fetching Pokémon Showdown's move, item and species tables…");
     return Sources.Download(cache, "showdown", Sources.ShowdownRaw, Sources.ShowdownCommit, Sources.ShowdownFiles);
 }
 
@@ -128,8 +130,27 @@ static void Check(List<PokemonSpecies> species, List<MoveData> moves, List<Abili
         }
         if (s.Abilities.Count == 0) problems.Add($"{s.Name} has no ability");
         if (s.Learnset.Count == 0) problems.Add($"{s.Name} learns no moves");
+
+        // Plan 03 · D11: a form's moves and abilities, and the forms evolutions start from and lead to
+        foreach (var f in s.Forms ?? new())
+        {
+            problems.AddRange((f.Learnset ?? new()).Where(l => !moveNames.Contains(l.MoveName)).Select(l => $"{f.Name} learns unknown move {l.MoveName}"));
+            problems.AddRange((f.Abilities ?? new()).Append(f.HiddenAbility).OfType<string>().Where(a => !abilityNames.Contains(a)).Select(a => $"{f.Name} has unknown ability {a}"));
+            if (f.Types is { Count: 0 or > 2 }) problems.Add($"{f.Name} has {f.Types.Count} types");
+        }
+        foreach (var e in s.Evolutions ?? new())
+        {
+            if (e.FromForm != null && s.Form(e.FromForm) == null) problems.Add($"{s.Name} evolves from unknown form {e.FromForm}");
+            if (e.TargetForm != null && species.FirstOrDefault(x => x.Name == e.TargetSpecies)?.Form(e.TargetForm) == null)
+                problems.Add($"{s.Name} evolves into unknown form {e.TargetForm}");
+        }
     }
+    Unique("form name", species.SelectMany(s => (s.Forms ?? new()).Select(f => f.Name)).Concat(speciesNames));
     problems.AddRange(items.Where(i => i.TeachesMove != null && !moveNames.Contains(i.TeachesMove)).Select(i => $"{i.Name} teaches unknown move {i.TeachesMove}"));
+    problems.AddRange(items.Where(i => i.MegaStone is { } m && species.FirstOrDefault(x => x.Name == m.Species)?.Form(m.Form) == null)
+        .Select(i => $"{i.Name} brings out unknown form {i.MegaStone!.Form}"));
+    problems.AddRange(items.Where(i => i.MegaStone?.HeldByForm is { } held && species.FirstOrDefault(x => x.Name == i.MegaStone.Species)?.Form(held) == null)
+        .Select(i => $"{i.Name} is held by unknown form {i.MegaStone!.HeldByForm}"));
 
     if (problems.Count > 0)
     {

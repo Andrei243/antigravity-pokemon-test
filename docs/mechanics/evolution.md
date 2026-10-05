@@ -6,7 +6,7 @@ Sources: Platinum's own code for everything up to Generation 4 (pret/pokeplatinu
 
 ## How it works
 
-Four things set an evolution off (`EvolutionTrigger`). Each method answers to exactly one of them.
+Five things set an evolution off (`EvolutionTrigger`). Each method answers to exactly one of them.
 
 | Trigger | When the game asks | Can B stop it? |
 | --- | --- | --- |
@@ -14,8 +14,9 @@ Four things set an evolution off (`EvolutionTrigger`). Each method answers to ex
 | `UseItem` | An item used on a Pokémon from the bag (the bag shows ABLE or NOT ABLE on each Pokémon). | No |
 | `Trade` | A Pokémon has just arrived by trade (`GameEngine.ReceiveTradedPokemon`). | No |
 | `Spin` | The player turns a full circle in the field (`SpinTracker`). | No |
+| `BattleEnd` | A battle is over, for every Pokémon in the party, with the level-ups and on the same terms (not after a battle that was lost). | Yes |
 
-`Evolution.Find(pokemon, trigger, context)` returns the evolution that happens now, or null. As in Platinum, a species' evolutions are tried in the order they are listed and the first whose condition holds wins. `EvolutionContext` carries what the rules can't read off the Pokémon: the party, the bag, whether it is night, whether it rains, the special places of the map, the item used, the species traded for.
+`Evolution.Find(pokemon, trigger, context)` returns the evolution that happens now, or null. As in Platinum, a species' evolutions are tried in the order they are listed and the first whose condition holds wins. `EvolutionContext` carries what the rules can't read off the Pokémon: the party, the bag, whether it is night or dusk, whether it rains, the special places of the map, the item used, the species traded for, the region.
 
 `Evolution.Evolve(pokemon, evolution, context)` carries it out: it uses up what the method uses up, changes the species, leaves Shedinja behind for Nincada, and returns the moves the new species offers.
 
@@ -34,6 +35,7 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 - Hit points gained are added to the current ones; a fainted Pokémon stays fainted.
 - The item is used up for "trade holding", "level up holding" and "spin holding" methods. The coins and candies of `LevelWithItemsInBag` leave the bag.
 - What was counted toward the evolution (steps, uses of a move, knock-outs) is cleared.
+- **Its form**: it becomes the new species' own form, or the form the evolution names (an Alolan Meowth becomes an Alolan Persian, a sandy Burmy a sandy Wormadam), or its females' form where the new species' females are a form of their own (a female White-Striped Basculin becomes the female Basculegion). `Evolution.ModelAfter` names the model the scene shows for it.
 - **Moves**: the new species' moves for the level the Pokémon is at (Platinum), and its "evolution moves" (level 0 in the learnsets of Generation 7 on). With a free place the move is learned; with four moves the scene asks which to forget, or to keep all four.
 - **Shedinja**: when Nincada becomes Ninjask with a free place in the party and a Poké Ball in the bag, a Shedinja joins with the same level, nature, IVs, EVs and moves, and one Poké Ball is used up. Shedinja always has 1 HP.
 
@@ -60,6 +62,7 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 | `LevelWithSpeciesInParty` | That species elsewhere in the party | Mantyke with Remoraid | 4 | |
 | `LevelAtLocation` | The map has the place: `Moss Rock`, `Ice Rock`, `Magnetic Field` | Eevee → Leafeon / Glaceon, Magneton, Nosepass | 4 | Eterna Forest, Route 217, Mt. Coronet (plan 01) |
 | `LevelDay` / `LevelNight` | The level, at that time | Tyrunt, Amaura, Rockruff, Fomantis, Yungoos, Greavard, Cosmoem | 6 | |
+| `LevelDusk` | The level, at dusk: Platinum's evening, 17:00 to 19:59 | Own Tempo Rockruff into Dusk Form Lycanroc | 7 | |
 | `LevelKnowsMoveType` (+ `needsFriendship`) | A move of that type, and friendship 220 | Eevee → Sylveon | 6 | |
 | `LevelWithTypeInParty` | The level, with that type elsewhere in the party | Pancham with a Dark type | 6 | |
 | `LevelInRain` | The level, while it rains in the field (rain, heavy rain or a thunderstorm where the player stands) | Sliggoo | 6 | Done |
@@ -69,6 +72,16 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 | `LevelAfterMoveUses` | The move used that many times in battle | Primeape (Rage Fist ×20), Stantler (Psyshield Bash ×20) | 8 (Legends: Arceus) | |
 | `LevelAfterDefeating` | That many of the species knocked out while it was on the field | Bisharp (3 Bisharp) | 9 | |
 | `LevelWithItemsInBag` | That many of the item in the bag (they are used up) | Gimmighoul (999 Gimmighoul Coins), Meltan (400 Meltan Candies) | 9, GO | A way to collect them (plan 03 · D12) |
+| `LevelAfterDamage` | 49 HP lost to moves without fainting since, then a level-up on a map with the `Stone Arch` | Galarian Yamask into Runerigus (the original: walking under the Dusty Bowl's stone arch) | 8 | A map with a Stone Arch (plan 03 · D12) |
+| `LevelAfterRecoil` | 294 HP lost to its own moves' recoil without fainting since | White-Striped Basculin into Basculegion | 8 (Legends: Arceus) | |
+
+### When a battle ends
+
+| Method | Needs | Examples | First seen |
+| --- | --- | --- | --- |
+| `CriticalHits` | Three critical hits landed in the battle just over | Galarian Farfetch'd into Sirfetch'd | 8 |
+
+What these count is kept in `Pokemon.EvolutionProgress` like the steps and the uses of a move: the battle counts the critical hits a player's Pokémon lands (`CountCriticalHit`, started again as each battle begins), the HP moves take from it (`CountDamageTaken`) and the HP its own recoil costs it (`CountRecoil`); a faint clears the last two (`CountFaint`), because the original asks for them without fainting.
 
 ### With an item used on it
 
@@ -111,17 +124,16 @@ A **Linking Cord** used on a Pokémon counts as a trade (Legends: Arceus). It is
 
 Gains are one higher for a Pokémon caught in a Luxury Ball and ×1.5 for one holding a Soothe Bell. Items with their own friendship numbers (vitamins, herbs, EV berries) go through `FriendshipRules.Change`; the bonus for being where the Pokémon was met waits for met locations (plan 07 · O2). A traded Pokémon starts over at its species' base friendship.
 
-## Not in the data yet: regional forms
+## Forms
 
-The importer leaves out evolutions that start from a regional form, because forms don't exist yet (plan 03 · D11). When they do, most use methods above (Galarian Meowth at level 28, Galarian Linoone at level 35 at night, Hisuian Sneasel holding a Razor Claw by day, Hisuian Qwilfish knowing or using Barb Barrage, Galarian Slowpoke with a Galarica Cuff or Wreath, Paldean Wooper at level 20, Alolan forms by region). Three need rules of their own:
+A Pokémon can be in one of its species' forms (`Pokemon.Form`; plan 03 · D11). An evolution can start from a form (`fromForm`), lead into one (`targetForm`) and happen only in one region (`region`, checked against `EvolutionContext.Region`); `Evolution.Find` takes the evolutions that fit the form the Pokémon is in:
 
-| Species | Original rule | Planned here |
-| --- | --- | --- |
-| Galarian Farfetch'd → Sirfetch'd | Three critical hits in one battle | The same, counted by the battle (a new trigger at the battle's end) |
-| Galarian Yamask → Runerigus | Take 49 or more damage, then walk under a stone arch | Level up at a named place after taking the damage |
-| White-Striped Basculin → Basculegion | Lose 294 HP to recoil without fainting | A counter like the move-use one, then level up |
+- An evolution that starts from a form is for that form alone: Galarian Meowth becomes Perrserker at level 28, Alolan Vulpix Alolan Ninetales with an Ice Stone, Hisuian Sneasel Sneasler holding a Razor Claw by day, Galarian Linoone Obstagoon at night, Paldean Wooper Clodsire, a sandy Burmy a sandy Wormadam.
+- A regional form evolves by nothing else: Galarian Meowth never becomes Persian, and a Galarian Yamask never becomes Cofagrigus.
+- Any other form also evolves by its species' own evolutions into species its form has none into: a male Burmy in a sandy cloak still becomes Mothim. An Own Tempo Rockruff, whose own evolution is into Lycanroc, waits for dusk.
+- An evolution into another region's form happens in that region only, and is listed first: Pikachu becomes an Alolan Raichu in Alola and a Raichu anywhere else, Koffing a Galarian Weezing in Galar. None of those regions is in the game yet, so for now they become the species' own forms.
 
-Also tied to forms rather than to the method: which Alcremie, Lycanroc, Toxtricity, Urshifu, Maushold or Dudunsparce comes out. Each of those is one evolution here.
+Which Alcremie, Toxtricity, Urshifu, Maushold or Dudunsparce comes out, where the games pick by chance, nature or a choice, is one evolution here, into the species' own form. Lycanroc's three forms are three evolutions, by the hour.
 
 Mega Evolution, Primal Reversion, Gigantamax and form changes are not evolutions; plan 06 · R19–R23 and R29 cover them.
 
@@ -133,5 +145,5 @@ Still to come with trading itself: the original trainer and the 1.5× EXP and ob
 
 ## Checking it
 
-- `PokemonPlatinumTests/EvolutionTests.cs`: every method, the Everstone, Shedinja, friendship, the scene, the bag, saves, and a test that every evolution in the data has a rule.
+- `PokemonPlatinumTests/EvolutionTests.cs`: every method, the Everstone, Shedinja, friendship, the scene, the bag, saves, forms and regions, what battles count, and a test that every evolution in the data has a rule.
 - `dotnet run --project tools/ShotHarness -- <out dir> evolution`: the scene from notice to congratulations, the move choice, a stopped evolution, the bag's choice of Pokémon, and a stone and a trade played through the game's own states (`e*`).

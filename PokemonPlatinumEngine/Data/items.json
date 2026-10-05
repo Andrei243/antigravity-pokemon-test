@@ -9264,6 +9264,28 @@
     "description": ""
   },
   {
+    "id": 2633,
+    "name": "Galarica Cuff",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 3000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": ""
+  },
+  {
+    "id": 2643,
+    "name": "Galarica Wreath",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 3000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": ""
+  },
+  {
     "id": 2657,
     "name": "Ability Patch",
     "pocket": "Medicine",

@@ -15,7 +15,9 @@ public enum EvolutionTrigger
     /// <summary>It has just arrived by trade.</summary>
     Trade,
     /// <summary>The player turned a full circle in the field.</summary>
-    Spin
+    Spin,
+    /// <summary>A battle is over (one that wasn't lost), for what the battle itself counted: Sirfetch'd's critical hits.</summary>
+    BattleEnd
 }
 
 /// <summary>What the rules need to know besides the Pokémon itself. Whoever asks fills in what it knows.</summary>
@@ -28,6 +30,9 @@ public sealed class EvolutionContext
     /// <summary>Night as Platinum's evolutions count it: 20:00 to 03:59 (<c>GameClock.IsNight</c>).</summary>
     public bool IsNight { get; set; }
 
+    /// <summary>Dusk: Platinum's evening, 17:00 to 19:59 (<c>TimeOfDay.Twilight</c>). It is also day for the rules.</summary>
+    public bool IsDusk { get; set; }
+
     /// <summary>It is raining in the field.</summary>
     public bool IsRaining { get; set; }
 
@@ -39,6 +44,12 @@ public sealed class EvolutionContext
 
     /// <summary>The species given away for it, for <see cref="EvolutionTrigger.Trade"/> (null if nothing was).</summary>
     public PokemonSpecies? TradedFor { get; set; }
+
+    /// <summary>
+    /// The region the player is in (<c>RegionDatabase</c>'s name), for the evolutions into a regional form that
+    /// happen only there (Pikachu into Alolan Raichu in Alola).
+    /// </summary>
+    public string? Region { get; set; }
 }
 
 /// <summary>What an evolution did.</summary>
@@ -77,6 +88,9 @@ public static class Evolution
     public const string StepsKey = "Steps";
     public static string MoveKey(string move) => "Move:" + move;
     public static string DefeatKey(string species) => "Defeated:" + species;
+    public const string CriticalHitsKey = "CriticalHits";
+    public const string DamageKey = "Damage";
+    public const string RecoilKey = "Recoil";
 
     /// <summary>The trigger a method waits for; null for one that never fires by itself.</summary>
     public static EvolutionTrigger? TriggerOf(EvolutionMethod method) => method switch
@@ -85,6 +99,7 @@ public static class Evolution
             => EvolutionTrigger.UseItem,
         EvolutionMethod.Trade or EvolutionMethod.TradeHoldingItem or EvolutionMethod.TradeWithSpecies => EvolutionTrigger.Trade,
         EvolutionMethod.SpinHoldingItem => EvolutionTrigger.Spin,
+        EvolutionMethod.CriticalHits => EvolutionTrigger.BattleEnd,
         // Shedinja is what Nincada leaves behind, not something it turns into
         EvolutionMethod.LevelShedinja or EvolutionMethod.Other => null,
         _ => EvolutionTrigger.LevelUp
@@ -107,7 +122,22 @@ public static class Evolution
             return null;
 
         return p.Species.Evolutions.FirstOrDefault(e =>
-            TriggerOf(e.Method) == trigger && Meets(p, e, context, cord) && PokemonDatabase.Get(e.TargetSpecies) != null);
+            TriggerOf(e.Method) == trigger && FitsForm(p, e) && (e.Region == null || e.Region == context.Region)
+            && Meets(p, e, context, cord) && PokemonDatabase.Get(e.TargetSpecies) != null);
+    }
+
+    /// <summary>
+    /// Whether an evolution is one for the form the Pokémon is in (plan 03 · D11). A form with evolutions of its own
+    /// evolves by those; a regional form by nothing else (Galarian Meowth never becomes Persian); any other form also
+    /// by its species' own evolutions into species its form has none into (a male Burmy in a sandy cloak still
+    /// becomes Mothim).
+    /// </summary>
+    private static bool FitsForm(Pokemon p, EvolutionData e)
+    {
+        if (e.FromForm != null) return string.Equals(e.FromForm, p.Form, StringComparison.OrdinalIgnoreCase);
+        if (p.Form == null) return true;
+        if (p.FormData?.Kind == FormKind.Regional) return false;
+        return !p.Species.Evolutions!.Any(x => x.TargetSpecies == e.TargetSpecies && string.Equals(x.FromForm, p.Form, StringComparison.OrdinalIgnoreCase));
     }
 
     private static bool Meets(Pokemon p, EvolutionData e, EvolutionContext context, bool cord)
@@ -136,6 +166,7 @@ public static class Evolution
 
             case EvolutionMethod.LevelDay: return !context.IsNight;
             case EvolutionMethod.LevelNight: return context.IsNight;
+            case EvolutionMethod.LevelDusk: return context.IsDusk;
             case EvolutionMethod.LevelMale: return p.Gender == Gender.Male;
             case EvolutionMethod.LevelFemale: return p.Gender == Gender.Female;
 
@@ -155,7 +186,7 @@ public static class Evolution
 
             case EvolutionMethod.LevelWithSpeciesInParty: return others.Any(m => m.Species.Name == e.Species);
             case EvolutionMethod.LevelWithTypeInParty:
-                return others.Any(m => m.Species.PrimaryType == e.Type || m.Species.SecondaryType == e.Type);
+                return e.Type is { } type && others.Any(m => m.HasType(type));
 
             case EvolutionMethod.LevelAtLocation: return e.Location != null && context.Sites.Contains(e.Location);
             case EvolutionMethod.LevelInRain: return context.IsRaining;
@@ -164,6 +195,10 @@ public static class Evolution
             case EvolutionMethod.LevelAfterSteps: return Progress(p, StepsKey) >= e.Value;
             case EvolutionMethod.LevelAfterMoveUses: return e.Move != null && Progress(p, MoveKey(e.Move)) >= e.Value;
             case EvolutionMethod.LevelAfterDefeating: return e.Species != null && Progress(p, DefeatKey(e.Species)) >= e.Value;
+            case EvolutionMethod.CriticalHits: return Progress(p, CriticalHitsKey) >= e.Value;
+            case EvolutionMethod.LevelAfterDamage:
+                return Progress(p, DamageKey) >= e.Value && (e.Location == null || context.Sites.Contains(e.Location));
+            case EvolutionMethod.LevelAfterRecoil: return Progress(p, RecoilKey) >= e.Value;
             case EvolutionMethod.LevelWithItemsInBag:
                 return e.Item != null && ItemDatabase.Get(e.Item) is { } needed && context.Bag?.GetQuantity(needed) >= e.Value;
 
@@ -182,6 +217,10 @@ public static class Evolution
             default: return false;
         }
     }
+
+    /// <summary>The name the Pokémon's model goes by once it has evolved: its new form's, or its new species'.</summary>
+    public static string ModelAfter(Pokemon p, EvolutionData e) =>
+        e.TargetForm ?? (PokemonDatabase.Get(e.TargetSpecies) is { } into ? Pokemon.FormOfGender(into, p.Gender) : null) ?? e.TargetSpecies;
 
     /// <summary>
     /// Carries an evolution out: uses up what the method uses up, changes the species, leaves Shedinja behind
@@ -212,6 +251,7 @@ public static class Evolution
         var shed = e.Method == EvolutionMethod.LevelNinjask ? Shed(p, from, context) : null;
 
         p.EvolveInto(into);
+        if (e.TargetForm != null) p.ChangeForm(e.TargetForm);
         p.EvolutionProgress.Clear();
 
         return new EvolutionOutcome { From = from, Into = into, Shed = shed, NewMoves = MovesOnEvolving(p) };
@@ -255,7 +295,7 @@ public static class Evolution
     /// its evolution moves (level 0 in the learnsets of later games), leaving out what it already knows.
     /// </summary>
     public static List<string> MovesOnEvolving(Pokemon p) =>
-        p.Species.Learnset.Where(m => m.Level == 0 || m.Level == p.Level)
+        p.Learnset.Where(m => m.Level == 0 || m.Level == p.Level)
             .Select(m => m.MoveName).Distinct().Where(m => !p.Knows(m)).ToList();
 
     // ---------------------------------------------------------------- items
@@ -291,13 +331,36 @@ public static class Evolution
     public static void CountDefeat(Pokemon p, PokemonSpecies foe) =>
         Count(p, EvolutionMethod.LevelAfterDefeating, e => e.Species == foe.Name ? DefeatKey(foe.Name) : null);
 
-    /// <summary>Only what one of the species' evolutions asks for is counted, and no further than it asks.</summary>
-    private static void Count(Pokemon p, EvolutionMethod method, Func<EvolutionData, string?> keyOf)
+    /// <summary>A critical hit it landed. Only the battle under way counts (<see cref="BeginBattle"/>).</summary>
+    public static void CountCriticalHit(Pokemon p) => Count(p, EvolutionMethod.CriticalHits, _ => CriticalHitsKey);
+
+    /// <summary>HP a move's hit took from it, counted until it faints (<see cref="CountFaint"/>).</summary>
+    public static void CountDamageTaken(Pokemon p, int hp) => Count(p, EvolutionMethod.LevelAfterDamage, _ => DamageKey, hp);
+
+    /// <summary>HP its own move's recoil took from it, counted until it faints.</summary>
+    public static void CountRecoil(Pokemon p, int hp) => Count(p, EvolutionMethod.LevelAfterRecoil, _ => RecoilKey, hp);
+
+    /// <summary>A battle begins with it in the party: what is counted one battle at a time starts again.</summary>
+    public static void BeginBattle(Pokemon p) => p.EvolutionProgress.Remove(CriticalHitsKey);
+
+    /// <summary>It fainted: the damage and the recoil it was to take without fainting count for nothing.</summary>
+    public static void CountFaint(Pokemon p)
     {
+        p.EvolutionProgress.Remove(DamageKey);
+        p.EvolutionProgress.Remove(RecoilKey);
+    }
+
+    /// <summary>
+    /// Only what one of the evolutions of its species and form asks for is counted, and no further than it asks
+    /// (a Farfetch'd of Kanto counts no critical hits).
+    /// </summary>
+    private static void Count(Pokemon p, EvolutionMethod method, Func<EvolutionData, string?> keyOf, int amount = 1)
+    {
+        if (amount <= 0) return;
         foreach (var e in p.Species.Evolutions ?? Enumerable.Empty<EvolutionData>())
         {
-            if (e.Method != method || keyOf(e) is not { } key) continue;
-            p.EvolutionProgress[key] = Math.Min(e.Value, Progress(p, key) + 1);
+            if (e.Method != method || !FitsForm(p, e) || keyOf(e) is not { } key) continue;
+            p.EvolutionProgress[key] = Math.Min(e.Value, Progress(p, key) + amount);
             return;
         }
     }

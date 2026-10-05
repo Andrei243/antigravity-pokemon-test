@@ -638,8 +638,10 @@ public class GameEngine
         Party = playerParty,
         Bag = playerInventory,
         IsNight = GameClock.IsNight,
+        IsDusk = GameClock.Now == TimeOfDay.Twilight,
         IsRaining = Weathers.IsRain(currentMap.WeatherAt(player.GridX, player.GridY)),
-        Sites = currentMap.EvolutionSitesAt(player.GridX, player.GridY)
+        Sites = currentMap.EvolutionSitesAt(player.GridX, player.GridY),
+        Region = RegionDatabase.RegionOfMap(currentMap.Name)?.Name
     };
 
     /// <summary>The evolutions a trigger sets off among these Pokémon right now.</summary>
@@ -668,8 +670,8 @@ public class GameEngine
         foreach (var request in requests)
         {
             pendingEvolutions.Enqueue(request);
-            shown.Add(request.Pokemon.Species.Name);
-            shown.Add(request.Evolution.TargetSpecies);
+            shown.Add(request.Pokemon.ModelName);
+            shown.Add(Evolution.ModelAfter(request.Pokemon, request.Evolution));
         }
         foreach (var name in shown) PokemonModels.Request(name);
         evolutionReturnState = returnTo;
@@ -692,7 +694,8 @@ public class GameEngine
             // An earlier evolution in the queue may have changed things (the party, the bag): look again
             if (request.Cancellable)
             {
-                if (Evolution.Find(request.Pokemon, EvolutionTrigger.LevelUp, context) is not { } still) continue;
+                var trigger = Evolution.TriggerOf(evolution.Method) ?? EvolutionTrigger.LevelUp;
+                if (Evolution.Find(request.Pokemon, trigger, context) is not { } still) continue;
                 evolution = still;
             }
             evolutionScreen.Begin(request.Pokemon, evolution, context, request.Cancellable);
@@ -1076,7 +1079,7 @@ public class GameEngine
     /// </summary>
     private List<string> PrepareModels(IEnumerable<Pokemon> foes)
     {
-        var species = foes.Concat(playerParty.Members).Select(p => p.Species.Name).Distinct().ToList();
+        var species = foes.Concat(playerParty.Members).Select(p => p.ModelName).Distinct().ToList();
         foreach (var name in species) PokemonModels.Request(name);
         return species;
     }
@@ -1091,15 +1094,19 @@ public class GameEngine
     {
         bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
 
-        // Pokémon that gained a level evolve now that the battle is over, before the field comes back
-        if (!isDefeat && battle != null &&
-            PlayEvolutions(FindEvolutions(battle.LeveledUp, EvolutionTrigger.LevelUp, cancellable: true), GameState.Overworld))
-            return;
+        // Pokémon that gained a level evolve now that the battle is over, before the field comes back, and so do
+        // those waiting for the battle's end (Sirfetch'd's critical hits)
+        if (!isDefeat && battle != null)
+        {
+            var evolutions = FindEvolutions(battle.LeveledUp, EvolutionTrigger.LevelUp, cancellable: true);
+            evolutions.AddRange(FindEvolutions(playerParty.Members.Where(p => evolutions.All(r => r.Pokemon != p)), EvolutionTrigger.BattleEnd, cancellable: true));
+            if (PlayEvolutions(evolutions, GameState.Overworld)) return;
+        }
 
         StartTransition(GameState.Overworld, () =>
         {
             // The foes' models are no longer needed; the team's stay for the next battle
-            PokemonModels.Trim(playerParty.Members.Select(p => p.Species.Name));
+            PokemonModels.Trim(playerParty.Members.Select(p => p.ModelName));
             if (isDefeat)
             {
                 playerParty.HealAll();
