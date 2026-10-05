@@ -5,6 +5,7 @@ using System.Numerics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using Xunit.Abstractions;
+using static PokemonPlatinumTests.MeshPieces;
 
 namespace PokemonPlatinumTests;
 
@@ -159,7 +160,7 @@ public class PokemonGeneratorTests
 
         // In one piece: a part that doesn't reach the body floats beside it (specks of a few cells, where a thin
         // claw or horn tip breaks up in the mesh, are left alone)
-        var pieces = Pieces(mesh).Where(n => n > 40).ToList();
+        var pieces = Pieces(mesh).Where(n => n > Speck).ToList();
         if (pieces.Count > 1) found.Add($"{species}: in {pieces.Count} pieces of {string.Join(", ", pieces)} vertices");
 
         // Every bone moves some of the surface
@@ -192,26 +193,5 @@ public class PokemonGeneratorTests
         m.Animate(new PokePose { Time = 0.7f, Attack = 0.48f, Kind = MoveCategory.Physical });
         if (m.Skin.Any(skin => Vector3.Transform(Vector3.Zero, skin).Length() > 4f * m.Height + 1f)) found.Add($"{species}: a physical move flings a bone away");
         return found;
-    }
-
-    /// <summary>The number of vertices in each of the mesh's separate pieces, largest first.</summary>
-    private static List<int> Pieces(SdfMesh mesh)
-    {
-        var parent = Enumerable.Range(0, mesh.VertexCount).ToArray();
-        int Find(int v)
-        {
-            while (parent[v] != v) v = parent[v] = parent[parent[v]];
-            return v;
-        }
-        for (int t = 0; t < mesh.Indices.Length; t += 3)
-        {
-            int a = Find(mesh.Indices[t]);
-            for (int k = 1; k < 3; k++)
-            {
-                int r = Find(mesh.Indices[t + k]);
-                if (r != a) parent[r] = a;
-            }
-        }
-        return Enumerable.Range(0, mesh.VertexCount).GroupBy(Find).Select(p => p.Count()).OrderByDescending(n => n).ToList();
     }
 }

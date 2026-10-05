@@ -933,6 +933,8 @@ internal static partial class PokemonModels
 
         int leaves = b.Part("leaves", head, V(0, 0.82f, 0.22f), PokeRole.Leaf);
         b.Limb(head, V(0, 0.74f, 0.22f), V(0, 0.86f, 0.22f), 0.03f, 0.025f, Rgb(116, 78, 46), Shell);
+        // The twig's tip, on the leaves' bone, reaches up to where the two leaves meet
+        b.Limb(leaves, V(0, 0.84f, 0.22f), V(0, 0.92f, 0.22f), 0.025f, 0.02f, Rgb(116, 78, 46), Shell);
         PokeBuilder.Both(s => b.Ell(leaves, V(0.11f * s, 0.9f, 0.22f), V(0.13f, 0.035f, 0.08f), Rgb(92, 196, 78), V(0, 0, -30f * s), Leaf, 0.015f));
         return b;
     }
@@ -1565,6 +1567,8 @@ internal static partial class PokemonModels
         b.Spike(Body, V(0, 0.66f, 0.15f), V(0, 0.68f, 0.26f), 0.035f, Claw, mat: Shell);
         b.PaintEll(Body, V(0, 0.455f, 0), V(0.19f, 0.075f, 0.16f), black);
         int tail = b.Tail(V(0, 0.44f, -0.12f));
+        // The tail's root runs from the small of its back into the tail
+        b.Limb(tail, V(0, 0.48f, -0.07f), V(0, 0.44f, -0.17f), 0.035f, 0.045f, blue);
         b.Ell(tail, V(0, 0.4f, -0.24f), V(0.05f, 0.08f, 0.12f), blue, V(-30f, 0, 0));
         PokeBuilder.Both(s =>
         {
@@ -1707,6 +1711,8 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int wing = b.Wing(s, V(0.2f * s, 0.62f, 0.05f));
+            // The wing's root, sunk into the shoulder, holds its three struts
+            b.Ell(wing, V(0.19f * s, 0.6f, -0.03f), V(0.06f, 0.05f, 0.08f), black);
             for (int i = 0; i < 3; i++)
             {
                 float a = 30f + i * 26f;
