@@ -86,6 +86,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The player's Pokémon that gained a level, in the order they did.</summary>
     public IReadOnlyList<Pokemon> LeveledUp => leveledUp;
 
+    /// <summary>What Pay Day has scattered for the player so far; picked up with the winnings.</summary>
+    public int PayDayMoney { get; private set; }
+
     private readonly Random rng;
     private readonly string playerName;
     private readonly IBattleController?[] controllers = new IBattleController?[2];
@@ -312,7 +315,7 @@ public sealed partial class BattleCore : IBattleContext
                 var said = Say($"{group.Key.FullTitle} sent out {JoinNames(group.Select(b => b.Pokemon!.DisplayName))}!");
                 foreach (var b in group)
                 {
-                    OnEntered(b);
+                    OnEntered(b, opening: true);
                     said.With(new Entered(b.Place, b.Pokemon!, FromBall: true));
                 }
             }
@@ -321,7 +324,7 @@ public sealed partial class BattleCore : IBattleContext
         {
             foreach (var b in foes)
             {
-                OnEntered(b);
+                OnEntered(b, opening: true);
                 Emit(new Entered(b.Place, b.Pokemon!, FromBall: false));
             }
             Say(foes.Count > 1
@@ -332,7 +335,7 @@ public sealed partial class BattleCore : IBattleContext
         var go = Say($"Go! {JoinNames(mine.Select(b => b.Pokemon!.DisplayName))}!");
         foreach (var b in mine)
         {
-            OnEntered(b);
+            OnEntered(b, opening: true);
             go.With(new Entered(b.Place, b.Pokemon!, FromBall: true));
         }
 
@@ -354,6 +357,11 @@ public sealed partial class BattleCore : IBattleContext
         // Every place draws a number for the turn; a Quick Claw works on one in five of them
         for (int i = 0; i < speedRolls.Length; i++) speedRolls[i] = rng.Roll(RollKind.Speed, 65536);
         waiting = Order(choices.Select(ToAct).ToList());
+
+        // Whoever chose Focus Punch tightens its focus first (BattleControllerPlayer_CheckPreMoveActions)
+        foreach (var act in waiting.Where(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "HitLastWhiffIfHit" && a.User.IsActive && a.User.Pokemon!.Status != StatusCondition.Sleep))
+            Say($"{act.User.Name} is tightening its focus!");
+
         while (waiting.Count > 0)
         {
             var act = waiting[0];
@@ -378,6 +386,7 @@ public sealed partial class BattleCore : IBattleContext
                     ExecuteItemUse(act.User, act.Item!);
                     break;
             }
+            act.User.Turn.Acted = true;
             if (Result == BattleResult.None) ResolveFaints();
 
             // Trick Room turns the rest of the turn round
@@ -441,7 +450,7 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The places in the order the original numbers them: the player's first, the foe's first, then the second of each.</summary>
     private IEnumerable<Battler> InTurnOrderOfPlaces() => AllBattlers.OrderBy(Number);
 
-    private static int Number(Battler b) => b.Slot * 2 + (b.Side == BattleSide.Enemy ? 1 : 0);
+    private static int Number(Battler b) => b.Place.Number;
 
     /// <summary>
     /// The order of a turn, as the original works it out: running first; then items and switches, in the order
@@ -621,13 +630,14 @@ public sealed partial class BattleCore : IBattleContext
     /// Every Pokémon down to 0 HP faints (with EXP for the player's), then the battle ends if a side has nobody
     /// left. One brought down by a foe's move (<paramref name="by"/>) may take that foe with it (Destiny Bond,
     /// which is told first and faints the foe first) or leave the move without PP (Grudge), as the original's
-    /// <c>subscript_faint_check_destiny_bond</c> has it.
+    /// <c>subscript_faint_check_destiny_bond</c> has it. <paramref name="last"/> goes down after everyone else
+    /// (the user of Explosion, after its targets).
     /// </summary>
-    private void ResolveFaints(MoveUse? by = null)
+    private void ResolveFaints(MoveUse? by = null, Battler? last = null)
     {
         while (Result == BattleResult.None)
         {
-            var down = NextFallen();
+            var down = NextFallen(last);
             if (down == null) break;
 
             if (by != null && by.User.Side != down.Side && by.User.IsActive && by.Hits.Any(h => h.Target == down && h.Touched))
@@ -664,8 +674,11 @@ public sealed partial class BattleCore : IBattleContext
     }
 
     /// <summary>The next Pokémon at 0 HP that hasn't been told so yet: the fastest first, as the original faints them.</summary>
-    private Battler? NextFallen() =>
-        speedOrder.Concat(InTurnOrderOfPlaces()).FirstOrDefault(b => b.Pokemon != null && b.Pokemon.CurrentHP <= 0 && b.Pokemon.Status != StatusCondition.Faint);
+    private Battler? NextFallen(Battler? last = null)
+    {
+        static bool Down(Battler b) => b.Pokemon != null && b.Pokemon.CurrentHP <= 0 && b.Pokemon.Status != StatusCondition.Faint;
+        return speedOrder.Concat(InTurnOrderOfPlaces()).FirstOrDefault(b => b != last && Down(b)) ?? (last != null && Down(last) ? last : null);
+    }
 
     /// <summary>
     /// What a faint leaves behind outside the battle: the player's Pokémon likes its trainer a little less (a lot
@@ -707,6 +720,8 @@ public sealed partial class BattleCore : IBattleContext
         {
             Say($"Player defeated the wild {JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName))}!");
         }
+        // What Pay Day scattered, up to the original's most
+        if (PayDayMoney > 0) Say($"{playerName} picked up ${Math.Min(PayDayMoney, 65535)}!");
         End(BattleResult.PlayerVictory);
     }
 

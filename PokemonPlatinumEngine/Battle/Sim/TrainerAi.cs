@@ -68,7 +68,7 @@ public sealed class TrainerAi : IBattleController
         if (data.Effect == "RecoverDamageSleep" && foes.All(t => t.Pokemon!.Status != StatusCondition.Sleep)) return 0f;
         if (data.Effect == "DamageWhileAsleep" && user.Pokemon!.Status != StatusCondition.Sleep) return 0f;
 
-        float Hit(Battler t) => move.Power * DamageCalculator.Effectiveness(user, t, move, battle.Rules) * (user.HasType(move.Type) ? 1.5f : 1f);
+        float Hit(Battler t) => PowerGuess(battle, user, move, t) * DamageCalculator.Effectiveness(user, t, move, battle.Rules) * (user.HasType(move.Type) ? 1.5f : 1f);
 
         float score;
         switch (move.Target)
@@ -83,6 +83,58 @@ public sealed class TrainerAi : IBattleController
                 break;
         }
         return score * (data.Accuracy > 0 ? data.Accuracy / 100f : 1f);
+    }
+
+    /// <summary>
+    /// The power a chooser counts a damaging move at when its data says none or not enough: the families whose
+    /// power the rules work out from the battle's numbers (plan 06 · R4), roughly as they will.
+    /// </summary>
+    private static float PowerGuess(BattleCore battle, Battler user, Move move, Battler t)
+    {
+        var p = user.Pokemon!;
+        var q = t.Pokemon!;
+        int power = move.Power;
+        switch (move.Data.Effect)
+        {
+            case "20DamageFlat": return 20f;
+            case "40DamageFlat": return 40f;
+            case "LevelDamageFlat" or "RandomDamage1To150Level": return p.Level;
+            case "HalveHp": return q.CurrentHP / 2f;
+            case "SetHpEqualToUser": return Math.Max(0, q.CurrentHP - p.CurrentHP);
+            case "OneHitKo": return p.Level >= q.Level ? 150f : 0f;
+            case "IncreasePowerWithLessHp": return BattleCore.FlailPower(p);
+            case "IncreasePowerWithMoreHp": return 1 + 120 * q.CurrentHP / q.MaxHP;
+            case "DecreasePowerWithLessUserHp": return Math.Max(1, power * p.CurrentHP / p.MaxHP);
+            case "IncreasePowerWithWeight": return BattleCore.WeightPower(q);
+            case "PowerBasedOnLowSpeed": return Math.Min(150, 1 + 25 * battle.EffectiveSpeed(t) / Math.Max(1, battle.EffectiveSpeed(user)));
+            case "PowerBasedOnFriendship": return p.Friendship * 10 / 25;
+            case "PowerBasedOnLowFriendship": return (255 - p.Friendship) * 10 / 25;
+            case "IncreasePowerWithMoreStatUp": return Math.Min(200, 60 + 20 * q.StatStages.Values.Where(s => s > 0).Sum());
+            case "HigherPowerWhenLowPp": return move.CurrentPP <= 1 ? 200f : move.CurrentPP == 2 ? 80f : 50f;
+            case "RandomPowerBasedOnIvs" or "RandomPowerMaybeHeal": return 50f;
+            case "DoublePowerWhenBelowHalf": return q.CurrentHP <= q.MaxHP / 2 ? power * 2 : power;
+            case "DoublePowerEachTurn": return Math.Min(160, power << user.Volatile.FuryCutterCount);
+            case "DoublePowerEachTurnLockInto": return power * 2;
+            case "MultiHit" or "BeatUp": return power * 3;
+            case "HitTwice" or "PoisonMultiHit": return power * 2;
+            case "HitThreeTimes": return 60f;
+            case "Psywave": return 70f;
+            case "SpitUp": return 100f * user.Volatile.Stockpile;
+            // It never blows itself up on purpose, until R9's trainers know when to
+            case "HalveDefense": return 0f;
+            case "Counter" or "MirrorCoat" or "MetalBurst": return 40f;
+            case "HitLastWhiffIfHit": return power / 2f;
+            case "HitFirstIfTargetAttacking": return power * 0.7f;
+            case "AlwaysFlinchFirstTurnOnly": return battle.Turn == user.Volatile.FirstTurn ? power * 1.5f : 0f;
+            case "FailIfNotUsedAllOtherMoves":
+            {
+                var moves = p.Moves;
+                int mine = moves.IndexOf(move);
+                int others = Enumerable.Range(0, moves.Count).Count(i => i != mine && (user.Volatile.UsedMoveSlots & (1 << i)) != 0);
+                return moves.Count >= 2 && others >= moves.Count - 1 ? power : 0f;
+            }
+            default: return power;
+        }
     }
 
     /// <summary>
@@ -161,6 +213,16 @@ public sealed class TrainerAi : IBattleController
             case "ResetStatChanges": return target != null && target.Pokemon!.StatStages.Values.Sum() >= 2 ? 35f : 0f;
             case "RemoveHazardsScreensEvaDown": return theirs.Reflect || theirs.LightScreen || field.Weather == BattleWeather.Fog ? 30f : 8f;
             case "Bide": return healthy ? 20f : 0f;
+            case "MaxAtkLoseHalfMaxHp": return healthy && me.StatStages.GetValueOrDefault(StatType.Attack) < 6 ? 45f : 0f;
+            case "Stockpile": return v.Stockpile < 3 ? 25f : 0f;
+            case "Swallow": return v.Stockpile > 0 && !healthy ? 35f * v.Stockpile : 0f;
+            case "AverageHp": return target != null && me.CurrentHP < target.Pokemon!.CurrentHP ? 40f : 0f;
+            case "RandomStatUp2": return 20f;
+            case "CopyStatChanges": return target != null && target.Pokemon!.StatStages.Values.Sum() >= 2 ? 30f : 0f;
+            case "SpAtkDown2OppositeGender":
+                return target != null && target.Pokemon!.StatStages.GetValueOrDefault(StatType.SpAttack) > -2 && me.Gender != Gender.Genderless
+                    && target.Pokemon.Gender != Gender.Genderless && me.Gender != target.Pokemon.Gender ? 25f : 0f;
+            case "FaintAndAtkSpAtkDown2": return 0f;
             default: return null;
         }
     }

@@ -100,12 +100,15 @@ public static class DamageCalculator
     /// <param name="pastScreens">The hit takes no notice of Reflect and Light Screen (Brick Break breaks them first).</param>
     /// <param name="noCrit">The hit can't be critical (one worked out ahead, like Future Sight's).</param>
     /// <param name="typeless">The move's type counts for nothing: no bonus for the user's own type, no matchup, no weather.</param>
+    /// <param name="basePower">A power worked out for this hit in place of the move's own (Flail, Gyro Ball).</param>
+    /// <param name="noVariance">The hit takes the formula's whole number, with no roll off it (Spit Up).</param>
     public static DamageResult Calculate(Battler attacker, Battler defender, Move move, Random rng, bool spread, int? powerOverride = null,
-        Ruleset? rules = null, int powerTenths = 10, int critBonus = 0, bool pastScreens = false, bool noCrit = false, bool typeless = false)
+        Ruleset? rules = null, int powerTenths = 10, int critBonus = 0, bool pastScreens = false, bool noCrit = false, bool typeless = false,
+        int? basePower = null, bool noVariance = false)
     {
         rules ??= Ruleset.Current;
         var result = new DamageResult { TypeMultiplier = 1f };
-        int power = powerOverride ?? move.Power;
+        int power = powerOverride ?? basePower ?? move.Power;
         // Struggle has no type either, but it is a move like any other and can be a critical hit
         typeless |= powerOverride.HasValue || move.Data == BattleCore.StruggleData;
         if ((move.Category == MoveCategory.Status && !powerOverride.HasValue) || power <= 0) return result;
@@ -121,14 +124,7 @@ public static class DamageCalculator
         result.TypeMultiplier = typeless ? 1f : Effectiveness(attacker, defender, move, rules);
         if (result.TypeMultiplier == 0f) return result;
 
-        // Critical hit: one in the rules' odds for the stage (Platinum's are 1/16, 1/8, 1/4, 1/3, 1/2). Focus
-        // Energy is worth two stages; a Lucky Chant over the target's side stops it
-        if (!powerOverride.HasValue && !noCrit)
-        {
-            int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + (attacker.Volatile.FocusEnergy ? 2 : 0);
-            bool rolled = rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
-            result.IsCritical = rolled && !defenderEffects.Any(e => e.PreventsCriticalHits) && field?.Side(defender.Side).LuckyChant != true;
-        }
+        if (!powerOverride.HasValue && !noCrit) result.IsCritical = RollsCritical(attacker, defender, move, rng, rules, critBonus);
 
         // The power: the move's own doubling, a Charge behind an Electric move, then each bonus in turn
         power = power * powerTenths / 10;
@@ -146,8 +142,9 @@ public static class DamageCalculator
         int defense = physical ? defPokemon.Defense : defPokemon.SpDefense;
         foreach (var e in attackerEffects) attack = Formulas.Scale(attack, e.AttackMultiplier(attacker, move));
         foreach (var e in defenderEffects) defense = Formulas.Scale(defense, e.DefenseMultiplier(defender, move));
-        // A sandstorm hardens Rock types against special moves
+        // A sandstorm hardens Rock types against special moves; Explosion finds half a Defense
         if (!physical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 15 / 10;
+        if (rules.ExplosionHalvesDefense && move.Data.Effect == "HalveDefense") defense /= 2;
 
         int attackStage = atkPokemon.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
         int defenseStage = defPokemon.StatStages.GetValueOrDefault(physical ? StatType.Defense : StatType.SpDefense);
@@ -178,7 +175,7 @@ public static class DamageCalculator
         if (result.IsCritical) damage = Formulas.Scale(damage, rules.CriticalMultiplier * attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
         foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageBeforeTheRoll(attacker, move));
 
-        damage = Formulas.Variance(damage, rng.Roll(RollKind.Damage, 16));
+        if (!noVariance) damage = Formulas.Variance(damage, rng.Roll(RollKind.Damage, 16));
 
         if (!typeless)
         {
@@ -200,6 +197,21 @@ public static class DamageCalculator
 
         result.Damage = Math.Max(1, damage);
         return result;
+    }
+
+    /// <summary>
+    /// Whether a hit is critical: one in the rules' odds for the stage (Platinum's are 1/16, 1/8, 1/4, 1/3, 1/2),
+    /// which the move, its effect, the user's ability and item raise, and Focus Energy by two; Battle Armor and a
+    /// Lucky Chant over the target's side stop it. The roll is made whatever stops it.
+    /// </summary>
+    public static bool RollsCritical(Battler attacker, Battler defender, Move move, Random rng, Ruleset rules, int critBonus = 0)
+    {
+        var attackerEffects = BattleEffects.Of(attacker).ToList();
+        bool breaks = attackerEffects.Any(e => e.IgnoresTargetAbility);
+        var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
+        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + (attacker.Volatile.FocusEnergy ? 2 : 0);
+        bool rolled = rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
+        return rolled && !defenderEffects.Any(e => e.PreventsCriticalHits) && defender.Field?.Side(defender.Side).LuckyChant != true;
     }
 
     /// <summary>What a stat stage multiplies a stat by, as a fraction (the battle itself uses <see cref="Formulas.Staged"/>).</summary>

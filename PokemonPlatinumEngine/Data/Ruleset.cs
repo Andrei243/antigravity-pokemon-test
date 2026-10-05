@@ -105,6 +105,17 @@ public sealed class Ruleset
     /// <summary>Toxic never misses when a Poison type uses it (from Generation 6).</summary>
     public bool PoisonTypesNeverMissToxic { get; private init; }
 
+    // ---- The move families (plan 06 · R4)
+
+    /// <summary>A move of two to five hits draws its count out of a hundred (35, 35, 15 and 15 for 2 to 5) instead of Platinum's two draws of four.</summary>
+    public bool MultiHitByHundredths { get; private init; }
+
+    /// <summary>Explosion and Self-Destruct halve the target's Defense (until Generation 5).</summary>
+    public bool ExplosionHalvesDefense { get; private init; } = true;
+
+    /// <summary>Hidden Power's power: 0 for what the IVs make it (30 to 70), or the one number the newest games give it.</summary>
+    public int HiddenPowerPower { get; private init; }
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -134,7 +145,10 @@ public sealed class Ruleset
         MinimizeStages = 2,
         GrassTypesIgnorePowder = true,
         GhostTypesCantBeTrapped = true,
-        PoisonTypesNeverMissToxic = true
+        PoisonTypesNeverMissToxic = true,
+        MultiHitByHundredths = true,
+        ExplosionHalvesDefense = false,
+        HiddenPowerPower = 60
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

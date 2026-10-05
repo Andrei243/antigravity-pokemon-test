@@ -83,7 +83,7 @@ public sealed class Battler
     /// Nothing to choose this turn: it must recharge, is in a rampage or an uproar, or is in the middle of a move
     /// that takes two turns (the original's <c>Battler_CanPickCommand</c>).
     /// </summary>
-    public bool IsHeldToItsMove => Volatile.Recharging || Volatile.RampageTurns > 0 || Volatile.UproarTurns > 0 || Volatile.Charging;
+    public bool IsHeldToItsMove => Volatile.Recharging || Volatile.RampageTurns > 0 || Volatile.UproarTurns > 0 || Volatile.Charging || Volatile.RolloutTurns > 0;
 
     /// <summary>The ability in force: none while Gastro Acid has suppressed it.</summary>
     public Ability? Ability => Volatile.AbilitySuppressed ? null : Pokemon?.Ability;
@@ -207,6 +207,15 @@ internal sealed class Volatiles
     public int BideTurns;
     public int BideDamage;
 
+    /// <summary>Rollout or Ice Ball: uses left of the five it is held to.</summary>
+    public int RolloutTurns;
+
+    /// <summary>Fury Cutter: uses in a row so far (up to 5), until something stops its user.</summary>
+    public int FuryCutterCount;
+
+    /// <summary>Stockpiles held (up to 3), and how many stages of Defense and Sp. Def they raised, which Spit Up and Swallow take back.</summary>
+    public int Stockpile, StockpileDef, StockpileSpDef;
+
     // ---- What it remembers
 
     /// <summary>The last move it got to use (Disable, Encore and Torment go by it).</summary>
@@ -215,8 +224,11 @@ internal sealed class Volatiles
     /// <summary>Whoever hit it last (Bide strikes back there).</summary>
     public Place? LastHitBy;
 
-    /// <summary>The turn it came in on.</summary>
-    public int EnteredOnTurn;
+    /// <summary>The turn it came in on, and the first turn it gets to act in (Fake Out works on that one alone).</summary>
+    public int EnteredOnTurn, FirstTurn;
+
+    /// <summary>Which of its moves it has used, by position (a bit each), for Last Resort.</summary>
+    public int UsedMoveSlots;
 
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
@@ -256,5 +268,47 @@ internal sealed class TurnFlags
     /// <summary>The hit just taken went into its Substitute: side effects don't reach it.</summary>
     public bool SubstituteHit;
 
-    public TurnFlags Copy() => (TurnFlags)MemberwiseClone();
+    /// <summary>Its action for the turn is done (Payback is twice as strong against it then).</summary>
+    public bool Acted;
+
+    /// <summary>It has lost HP this turn, to anything (Assurance).</summary>
+    public bool TookDamage;
+
+    /// <summary>
+    /// What moves took from it this turn, by the place they came from (the original's turn flags): what Counter,
+    /// Mirror Coat, Metal Burst and Revenge give back. A hit into its Substitute isn't counted.
+    /// </summary>
+    public int[] PhysicalFrom = new int[4], SpecialFrom = new int[4];
+    public Place? LastPhysicalFrom, LastSpecialFrom, LastHitFrom;
+    public int LastDamage;
+
+    /// <summary>The last physical and special hit it took this turn, whoever from (Focus Punch loses its focus on either).</summary>
+    public int PhysicalTaken, SpecialTaken;
+
+    public void Took(Place from, MoveCategory category, int damage)
+    {
+        TookDamage = true;
+        LastDamage = damage;
+        LastHitFrom = from;
+        if (category == MoveCategory.Physical)
+        {
+            PhysicalFrom[from.Number] = damage;
+            LastPhysicalFrom = from;
+            PhysicalTaken = damage;
+        }
+        else if (category == MoveCategory.Special)
+        {
+            SpecialFrom[from.Number] = damage;
+            LastSpecialFrom = from;
+            SpecialTaken = damage;
+        }
+    }
+
+    public TurnFlags Copy()
+    {
+        var copy = (TurnFlags)MemberwiseClone();
+        copy.PhysicalFrom = (int[])PhysicalFrom.Clone();
+        copy.SpecialFrom = (int[])SpecialFrom.Clone();
+        return copy;
+    }
 }

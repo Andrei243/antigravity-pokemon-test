@@ -236,6 +236,9 @@ public abstract class BattleEffect
 
     /// <summary>What draining moves, Leech Seed, Ingrain and Aqua Ring give the holder, in hundredths of the usual (Big Root: 130).</summary>
     public virtual int DrainHundredths => 100;
+
+    /// <summary>The holder's moves of two to five hits always hit five times (Skill Link).</summary>
+    public virtual bool AlwaysHitsFiveTimes => false;
 }
 
 /// <summary>Finds the effects in play for a Pokémon on the field.</summary>

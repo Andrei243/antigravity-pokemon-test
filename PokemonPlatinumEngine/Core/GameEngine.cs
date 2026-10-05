@@ -460,6 +460,7 @@ public class GameEngine
                         {
                             playerMoney += battle.OpponentTrainer.PrizeMoney;
                         }
+                        if (battle.Result == BattleResult.PlayerVictory) playerMoney += battle.PayDayMoney;
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch
                         battleTrainer?.FinishBattle(battle.Result == BattleResult.PlayerVictory);

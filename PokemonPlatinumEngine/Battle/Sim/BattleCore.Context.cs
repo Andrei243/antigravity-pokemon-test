@@ -199,6 +199,7 @@ public sealed partial class BattleCore
         if (!direct && BattleEffects.Of(target).Any(e => e.PreventsIndirectDamage)) return;
         var p = target.Pokemon!;
         p.CurrentHP = Math.Max(0, p.CurrentHP - amount);
+        target.Turn.TookDamage = true;
         Say(message).With(new HpChanged(target.Place, p.CurrentHP, Healed: false));
         CheckConditionHooks(target, null);
     }

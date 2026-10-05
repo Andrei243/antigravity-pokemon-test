@@ -5,7 +5,11 @@ using PokemonPlatinumEngine.Models;
 namespace PokemonPlatinumEngine.Battle.Sim;
 
 /// <summary>A place on the field: a side and one of its slots.</summary>
-public readonly record struct Place(BattleSide Side, int Slot);
+public readonly record struct Place(BattleSide Side, int Slot)
+{
+    /// <summary>The place's number as the original counts them: the player's first, the foe's first, then the second of each.</summary>
+    public int Number => Slot * 2 + (Side == BattleSide.Enemy ? 1 : 0);
+}
 
 /// <summary>
 /// One thing a battle's log says happened (plan 06 · R2). The core works a whole turn out at once and writes what

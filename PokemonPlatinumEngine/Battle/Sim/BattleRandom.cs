@@ -55,7 +55,13 @@ public enum RollKind
     /// <summary>Out of 256: Roar and Whirlwind against a foe of a higher level.</summary>
     Whirlwind,
     /// <summary>The spread a trainer's choice of move is given.</summary>
-    AiChoice
+    AiChoice,
+    /// <summary>How many times a move of two to five hits does (two draws of 4 in Platinum: the first picks 2 or 3 below 2, the second any; one of 100 by the modern rules).</summary>
+    HitCount,
+    /// <summary>A power or an amount of damage that chance decides: Psywave (of 11), Magnitude (of 100), Present (of 256).</summary>
+    Power,
+    /// <summary>Which of several things a move picks: Tri Attack's condition (a burn, a freeze, paralysis), Acupressure's stat.</summary>
+    Pick
 }
 
 /// <summary>

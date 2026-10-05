@@ -33,14 +33,30 @@ public sealed partial class BattleCore
         public required Battler Target;
         public bool Missed, Protected, OutOfReach, Immune, Absorbed, Endured, EnduredByMove;
 
-        /// <summary>The Substitute took it, and whether that was the end of the Substitute.</summary>
-        public bool IntoSubstitute, BrokeSubstitute;
-        public DamageCalculator.DamageResult Damage;
+        /// <summary>The move failed for this target (nothing to give back, nothing to take): "But it failed!".</summary>
+        public bool Failed;
 
-        /// <summary>HP taken: from the Pokémon, or from its Substitute.</summary>
-        public int Dealt;
+        /// <summary>What is said in place of "the attack missed" (a one-hit knockout against a higher level, Sturdy).</summary>
+        public string? FailLine;
+
+        /// <summary>The last hit went into the Substitute, and whether a hit was the end of the Substitute.</summary>
+        public bool IntoSubstitute, BrokeSubstitute;
+
+        /// <summary>The last hit's damage; <see cref="Critical"/> and the two type flags hold for any of several hits.</summary>
+        public DamageCalculator.DamageResult Damage;
+        public bool Critical, SuperEffective, NotVeryEffective, LastCritical, OneHitKo;
+
+        /// <summary>HP taken by all its hits (from the Pokémon or its Substitute), and by the last one.</summary>
+        public int Dealt, LastDealt;
+
+        /// <summary>Hits that landed; a later one that missed ended them (Triple Kick).</summary>
+        public int Strikes;
+        public bool Disrupted;
+
+        /// <summary>Its lines about the type were said with one of its hits.</summary>
+        public bool MessagesTold;
         public List<BattleEvent> Notes = new();
-        public bool Landed => !Missed && !Protected && !OutOfReach && !Immune && !Absorbed;
+        public bool Landed => !Missed && !Protected && !OutOfReach && !Immune && !Absorbed && !Failed;
 
         /// <summary>It landed on the Pokémon itself: what a side effect needs.</summary>
         public bool Touched => Landed && !IntoSubstitute;
@@ -74,6 +90,18 @@ public sealed partial class BattleCore
 
         /// <summary>The move its user got to use before this one (Protect is less sure after another Protect).</summary>
         public MoveData? MoveBefore;
+
+        /// <summary>How many hits the move makes on each target, and which of them is being made.</summary>
+        public int StrikeCount = 1, HitNumber = 1;
+
+        /// <summary>What an effect worked out for the use and reads back (a power, a party).</summary>
+        public object? Scratch;
+
+        /// <summary>A hit worked out by an effect of its own was critical.</summary>
+        public bool StrikeCritical;
+
+        /// <summary>A line said once the hits are told, before what the user gets out of them (Spit Up's stockpile is gone).</summary>
+        public string? AfterLine;
     }
 
     private IEnumerable<BattleRequest> ExecuteMove(Act act)
@@ -119,6 +147,8 @@ public sealed partial class BattleCore
         }
         if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move)) user.ChoiceLock = move;
         v.LastMove = move.Data == StruggleData ? null : move.Data;
+        int slot = user.Pokemon!.Moves.IndexOf(move);
+        if (slot >= 0 && move.Data.Effect != "FailIfNotUsedAllOtherMoves") v.UsedMoveSlots |= 1 << slot;
 
         // A move that takes a turn to get ready spends it now
         if (use.Effect.Charge is { } charge && !use.Strikes && !SkipsTheCharge(use, charge))
@@ -157,7 +187,7 @@ public sealed partial class BattleCore
             if (!ownLines) use.Line.With(new Lunged(user.Place, move.Category));
             use.Effect.Use(this, use);
         }
-        else if (move.Category != MoveCategory.Status && move.Power > 0 && (move.Data.Support != MoveEffectSupport.None || use.Effect != Plain))
+        else if (move.Category != MoveCategory.Status && (move.Power > 0 || use.Effect.Damaging) && (move.Data.Support != MoveEffectSupport.None || use.Effect != Plain))
         {
             Strike(use);
         }
@@ -288,6 +318,7 @@ public sealed partial class BattleCore
                 {
                     var self = DamageCalculator.Calculate(user, user, move, rng, spread: false, powerOverride: 40, rules: Rules);
                     p.CurrentHP -= Math.Min(p.CurrentHP, self.Damage);
+                    user.Turn.TookDamage = true;
                     Say("It hurt itself in its confusion!")
                         .AtImpact(new Struck(user.Place, p.CurrentHP, Hard: false)).AtImpact(new HitSounded(false));
                     Unlock(user);
@@ -358,6 +389,8 @@ public sealed partial class BattleCore
         var v = b.Volatile;
         v.Charging = false;
         v.BideTurns = 0;
+        v.RolloutTurns = 0;
+        v.FuryCutterCount = 0;
         ComeBack(b);
         if (!b.IsHeldToItsMove) v.LockedMove = null;
     }
@@ -440,8 +473,8 @@ public sealed partial class BattleCore
         move.Name, move.Type, move.Category, user.Place, target.Place,
         Missed: hit != null && (hit.Missed || hit.OutOfReach),
         Blocked: hit != null && (hit.Immune || hit.Absorbed || hit.Protected),
-        Critical: hit is { Landed: true } && hit.Damage.IsCritical,
-        SuperEffective: hit is { Landed: true } && hit.Damage.IsSuperEffective);
+        Critical: hit is { Landed: true } && hit.Critical,
+        SuperEffective: hit is { Landed: true } && hit.SuperEffective);
 
     // ---------------------------------------------------------------- getting there
 
@@ -455,6 +488,24 @@ public sealed partial class BattleCore
     {
         var user = use.User;
         if (target == user) return true;
+
+        if (use.Effect.Decides != null)
+        {
+            // A one-hit knockout decides for itself whether it lands; Protect and a target out of reach still stand in its way
+            if (target.Turn.Protecting && use.Data.Flags.HasFlag(MoveFlags.Protect) && use.Effect.StoppedByProtect(user))
+            {
+                hit.Protected = true;
+                Unlock(user);
+                return false;
+            }
+            if (target.IsElsewhere && !use.Effect.FollowsTo(target.Volatile.Elsewhere))
+            {
+                hit.OutOfReach = true;
+                return false;
+            }
+            return use.Effect.Decides(this, use, target, hit);
+        }
+
         bool missed = !Hits(use, target);
 
         if (target.Turn.Protecting && use.Data.Flags.HasFlag(MoveFlags.Protect) && use.Effect.StoppedByProtect(user))
@@ -535,8 +586,16 @@ public sealed partial class BattleCore
 
         // Its effect may have made another move of it by now (Weather Ball takes its type from the sky)
         var move = use.Move;
-        use.Line.With(new Lunged(user.Place, move.Category));
+        if (!use.Line.Shows.OfType<Lunged>().Any()) use.Line.With(new Lunged(user.Place, move.Category));
 
+        // Explosion and its kind cost their user everything before the hit, whatever comes of it
+        if (effect.SelfKo)
+        {
+            user.Pokemon!.CurrentHP = 0;
+            use.Line.With(new HpChanged(user.Place, 0, Healed: false));
+        }
+
+        use.StrikeCount = Math.Max(1, effect.Strikes?.Invoke(this, use) ?? 1);
         bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         foreach (var t in use.Targets)
         {
@@ -545,7 +604,7 @@ public sealed partial class BattleCore
             if (!Reaches(use, t, hit)) continue;
             effect.OnReach(this, use, t);
 
-            float effectiveness = use.Data == StruggleData ? 1f : DamageCalculator.Effectiveness(user, t, move, Rules);
+            float effectiveness = use.Data == StruggleData || effect.HitsAnything ? 1f : DamageCalculator.Effectiveness(user, t, move, Rules);
             var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
             hit.Notes.AddRange(Capture(() => hit.Absorbed = guards.Any(e => e.AbsorbsMove(this, t, user, move, effectiveness))));
             if (hit.Absorbed) continue;
@@ -555,44 +614,215 @@ public sealed partial class BattleCore
                 continue;
             }
 
-            hit.Damage = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1, rules: Rules,
-                powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens);
-            int damage = hit.Damage.Damage;
-
-            // A Substitute takes the hit in the Pokémon's place
-            if (t.HasSubstitute && t != user)
+            for (int n = 1; n <= use.StrikeCount; n++)
             {
-                hit.IntoSubstitute = true;
-                hit.Dealt = Math.Min(t.Volatile.SubstituteHp, damage);
-                t.Volatile.SubstituteHp -= hit.Dealt;
-                hit.BrokeSubstitute = t.Volatile.SubstituteHp == 0;
-                t.Turn.SubstituteHit = true;
-                continue;
-            }
-
-            hit.Dealt = Math.Min(t.Pokemon!.CurrentHP, damage);
-            if (hit.Dealt >= t.Pokemon.CurrentHP)
-            {
-                if (t.Turn.Enduring) hit.Endured = hit.EnduredByMove = true;
-                else hit.Notes.AddRange(Capture(() => hit.Endured = guards.Any(e => e.EnduresHit(this, t, hit.Dealt))));
-                if (hit.Endured) hit.Dealt = t.Pokemon.CurrentHP - 1;
+                use.HitNumber = n;
+                if (n > 1)
+                {
+                    // The hits stop once the target is down or their user has been put to sleep (Effect Spore); Triple Kick rolls each kick
+                    if (!t.IsActive || user.Pokemon!.Status == StatusCondition.Sleep) break;
+                    if (effect.EachHitRollsAccuracy && !Hits(use, t))
+                    {
+                        hit.Disrupted = true;
+                        break;
+                    }
+                }
+                if (effect.StrikeLine?.Invoke(this, use) is { } line) Say(line);
+                if (!StrikeOnce(use, hit, userBreaks)) break;
+                if (use.StrikeCount > 1) AfterOneOfSeveral(use, hit, n == use.StrikeCount);
             }
         }
 
         // The move's effect flies to each target and lands with the damage
         foreach (var hit in use.Hits) use.Line.With(Shown(user, hit.Target, move, hit));
-        foreach (var hit in use.Hits.Where(h => h.Touched && h.Dealt > 0))
-        {
-            var t = hit.Target;
-            t.Pokemon!.CurrentHP -= hit.Dealt;
-            t.Volatile.LastHitBy = user.Place;
-            if (t.Volatile.BideTurns > 0) t.Volatile.BideDamage += hit.Dealt;
-            use.Line.AtImpact(new Struck(t.Place, t.Pokemon.CurrentHP, hit.Damage.IsCritical || hit.Damage.IsSuperEffective));
-        }
-        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.Damage.IsSuperEffective)));
+        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.SuperEffective)));
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
 
         AfterStrike(use);
+    }
+
+    /// <summary>
+    /// One hit on one target: the damage (the formula's, or an amount of the move's own), where it goes (the
+    /// Substitute, or the Pokémon), what holds it off, and what the target records of it. False when the move
+    /// fails for this target.
+    /// </summary>
+    private bool StrikeOnce(MoveUse use, MoveHit hit, bool userBreaks)
+    {
+        var user = use.User;
+        var t = hit.Target;
+        var move = use.Move;
+        var effect = use.Effect;
+
+        DamageCalculator.DamageResult result;
+        if (effect.Deals != null)
+        {
+            int? amount = effect.Deals(this, use, t);
+            if (amount == null)
+            {
+                hit.Failed = true;
+                return false;
+            }
+            result = new DamageCalculator.DamageResult { Damage = Math.Max(1, amount.Value), TypeMultiplier = 1f };
+        }
+        else
+        {
+            result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1, rules: Rules,
+                powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens,
+                basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance);
+        }
+        bool critical = result.IsCritical || use.StrikeCritical;
+        use.StrikeCritical = false;
+        hit.Damage = result;
+        hit.LastCritical = critical;
+        hit.Critical |= critical;
+        hit.SuperEffective |= result.IsSuperEffective;
+        hit.NotVeryEffective |= result.IsNotVeryEffective;
+        int damage = result.Damage;
+
+        // A Substitute takes the hit in the Pokémon's place
+        if (t.HasSubstitute && t != user)
+        {
+            int taken = Math.Min(t.Volatile.SubstituteHp, damage);
+            t.Volatile.SubstituteHp -= taken;
+            hit.IntoSubstitute = true;
+            hit.BrokeSubstitute = t.Volatile.SubstituteHp == 0;
+            hit.Dealt += taken;
+            hit.LastDealt = taken;
+            hit.Strikes++;
+            t.Turn.SubstituteHit = true;
+            return true;
+        }
+        hit.IntoSubstitute = false;
+
+        var p = t.Pokemon!;
+        if (hit.OneHitKo) damage = p.MaxHP;
+        // False Swipe leaves one
+        if (effect.LeavesOneHp && damage >= p.CurrentHP) damage = p.CurrentHP - 1;
+        int dealt = Math.Min(p.CurrentHP, damage);
+        bool endured = false;
+        if (dealt >= p.CurrentHP)
+        {
+            if (t.Turn.Enduring) hit.Endured = hit.EnduredByMove = endured = true;
+            else
+            {
+                var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
+                hit.Notes.AddRange(Capture(() => endured = guards.Any(e => e.EnduresHit(this, t, dealt))));
+                if (endured) hit.Endured = true;
+            }
+            if (endured) dealt = p.CurrentHP - 1;
+        }
+
+        // What the target took this turn, for Counter, Mirror Coat, Metal Burst, Revenge, Assurance and Focus Punch
+        t.Turn.Took(user.Place, move.Category, endured ? dealt : damage);
+        p.CurrentHP -= dealt;
+        t.Volatile.LastHitBy = user.Place;
+        if (t.Volatile.BideTurns > 0) t.Volatile.BideDamage += dealt;
+        use.Line.AtImpact(new Struck(t.Place, p.CurrentHP, critical || result.IsSuperEffective));
+        hit.Dealt += dealt;
+        hit.LastDealt = dealt;
+        hit.Strikes++;
+        return true;
+    }
+
+    /// <summary>
+    /// After one hit of a move that hits several times (the original's <c>AfterMoveMessage</c> for each): what the
+    /// Substitute took, a critical hit, the type's effect on the last hit only, then the hit's own side effects.
+    /// </summary>
+    private void AfterOneOfSeveral(MoveUse use, MoveHit hit, bool lastPlanned)
+    {
+        var t = hit.Target;
+        log.AddRange(hit.Notes);
+        hit.Notes.Clear();
+        if (hit.IntoSubstitute) SubstituteLines(hit);
+        if (hit.LastCritical) Say(use.Hits.Count > 1 ? $"A critical hit on {t.Name}!" : "A critical hit!");
+        if (lastPlanned || !t.IsActive || use.User.Pokemon!.Status == StatusCondition.Sleep)
+        {
+            EffectivenessLine(use, hit);
+            hit.MessagesTold = true;
+        }
+        if (hit.LastCritical && hit.Touched) t.TookCriticalHit = true;
+        TargetEffects(use, hit);
+    }
+
+    /// <summary>"The substitute took damage", and that it is gone when a hit was the end of it.</summary>
+    private void SubstituteLines(MoveHit hit)
+    {
+        var t = hit.Target;
+        var took = Say($"The substitute took damage for {t.Name}!");
+        if (!hit.BrokeSubstitute || t.HasSubstitute) return;
+        took.With(new SubstituteChanged(t.Place, Up: false));
+        Say($"{t.Name}'s substitute faded!");
+        hit.BrokeSubstitute = false;
+    }
+
+    /// <summary>What the type made of the hit (<c>subscript_move_followup_message</c>): a one-hit knockout says so instead.</summary>
+    private void EffectivenessLine(MoveUse use, MoveHit hit)
+    {
+        var t = hit.Target;
+        bool several = use.Hits.Count > 1;
+        if (hit.OneHitKo && !hit.Endured) Say("It's a one-hit KO!");
+        else if (hit.SuperEffective) Say(several ? $"It's super effective on {t.Name}!" : "It's super effective!");
+        else if (hit.NotVeryEffective) Say(several ? $"It's not very effective on {t.Name}..." : "It's not very effective...");
+    }
+
+    /// <summary>
+    /// What a hit does to its target beyond the damage: the move's side effects, what it does of its own, Rage,
+    /// the target's ability and items, a thaw.
+    /// </summary>
+    private void TargetEffects(MoveUse use, MoveHit hit)
+    {
+        var user = use.User;
+        var t = hit.Target;
+        var move = use.Move;
+        var data = move.Data;
+        int dealt = hit.LastDealt;
+        var userEffects = BattleEffects.Of(user).ToList();
+        bool userBreaks = userEffects.Any(e => e.IgnoresTargetAbility);
+        int chanceMult = userEffects.Select(e => e.SideEffectChanceMultiplier).DefaultIfEmpty(1).Max();
+        bool standing = t.Pokemon!.CurrentHP > 0;
+
+        // Side effects on the target: it has to be standing, hit itself and not behind Shield Dust
+        bool shielded = BattleEffects.Of(t, includeAbility: !userBreaks).Any(e => e.BlocksSideEffects);
+        if (standing && hit.Touched && !shielded && t != user)
+        {
+            if (data.InflictStatus != StatusCondition.None && Chance(data.StatusChancePercent * chanceMult))
+                TryInflictStatus(t, data.InflictStatus, user, false, By.SideEffect);
+            if (data.TargetStatChange is { } stat && !data.StatChangeTargetSelf && Chance(data.StatChangeChancePercent * chanceMult))
+            {
+                ChangeStat(t, stat, data.StatStageAmount, user, false, By.SideEffect);
+                foreach (var also in data.AlsoChangesStats ?? []) ChangeStat(t, also, data.StatStageAmount, user, false, By.SideEffect);
+            }
+            if (data.ConfuseChancePercent > 0 && Chance(data.ConfuseChancePercent * chanceMult)) Confuse(t, user, false, By.SideEffect);
+            if (data.FlinchChancePercent > 0 && !t.MovedThisTurn && Chance(data.FlinchChancePercent * chanceMult) &&
+                !BattleEffects.Of(t).Any(e => e.BlocksFlinch))
+                t.Flinched = true;
+        }
+
+        // What the move does of its own to whoever it hit
+        use.Effect.OnHit(this, use, hit);
+
+        // A Pokémon in a rage grows angrier with every hit it takes
+        if (standing && hit.Touched && dealt > 0 && t != user && t.Volatile.Rage && t.Pokemon.StatStages.GetValueOrDefault(StatType.Attack) < 6)
+        {
+            int stage = t.Pokemon.StatStages.GetValueOrDefault(StatType.Attack) + 1;
+            t.Pokemon.StatStages[StatType.Attack] = stage;
+            Say($"{t.Name}'s rage is building!").With(new StageChanged(t.Place, StatType.Attack, stage, Rose: true));
+        }
+
+        // The target's ability reacts to the hit (Static, Rough Skin), and berries check its HP
+        if (hit.Touched && dealt > 0)
+        {
+            foreach (var e in BattleEffects.Of(t, includeAbility: !userBreaks).ToList())
+                e.AfterHit(this, t, user, move, dealt, hit.LastCritical);
+            CheckConditionHooks(t, user);
+        }
+
+        // A Fire move thaws a frozen target
+        if (t.Pokemon.CurrentHP > 0 && hit.Touched && dealt > 0 && t != user && move.Type == PokemonType.Fire && t.Pokemon.Status == StatusCondition.Freeze)
+        {
+            t.Pokemon.Status = StatusCondition.None;
+            Say($"{t.Name} thawed out!").With(new StatusChanged(t.Place, StatusCondition.None));
+        }
     }
 
     /// <summary>
@@ -606,7 +836,6 @@ public sealed partial class BattleCore
         var data = move.Data;
         bool several = use.Hits.Count > 1;
         var userEffects = BattleEffects.Of(user).ToList();
-        bool userBreaks = userEffects.Any(e => e.IgnoresTargetAbility);
         int chanceMult = userEffects.Select(e => e.SideEffectChanceMultiplier).DefaultIfEmpty(1).Max();
 
         foreach (var hit in use.Hits)
@@ -620,7 +849,14 @@ public sealed partial class BattleCore
             }
             if (hit.Missed || hit.OutOfReach)
             {
-                Say(several || IsDouble ? $"{t.Name} avoided the attack!" : $"{user.Name}'s attack missed!");
+                Say(hit.FailLine ?? (several || IsDouble ? $"{t.Name} avoided the attack!" : $"{user.Name}'s attack missed!"));
+                Unlock(user);
+                use.Effect.OnMiss(this, use, hit);
+                continue;
+            }
+            if (hit.Failed)
+            {
+                Say("But it failed!");
                 Unlock(user);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
@@ -636,67 +872,24 @@ public sealed partial class BattleCore
                 continue;
             }
 
-            if (hit.IntoSubstitute)
+            if (use.StrikeCount > 1)
             {
-                var took = Say($"The substitute took damage for {t.Name}!");
-                if (hit.BrokeSubstitute)
-                {
-                    took.With(new SubstituteChanged(t.Place, Up: false));
-                    Say($"{t.Name}'s substitute faded!");
-                }
+                // Each hit told its own; the type's effect waits for the last, and then comes the count
+                if (!hit.MessagesTold) EffectivenessLine(use, hit);
+                if (!use.Effect.NoHitCount) Say($"Hit {hit.Strikes} time{(hit.Strikes == 1 ? "" : "s")}!");
+                continue;
             }
-            if (hit.Damage.IsCritical) Say(several ? $"A critical hit on {t.Name}!" : "A critical hit!");
-            if (hit.Damage.IsSuperEffective) Say(several ? $"It's super effective on {t.Name}!" : "It's super effective!");
-            if (hit.Damage.IsNotVeryEffective) Say(several ? $"It's not very effective on {t.Name}..." : "It's not very effective...");
+
+            if (hit.IntoSubstitute) SubstituteLines(hit);
+            if (hit.LastCritical) Say(several ? $"A critical hit on {t.Name}!" : "A critical hit!");
             if (hit.EnduredByMove) Say($"{t.Name} endured the hit!");
             else if (hit.Endured) log.AddRange(hit.Notes);
-            if (hit.Damage.IsCritical && hit.Touched) t.TookCriticalHit = true;
-
-            bool standing = t.Pokemon!.CurrentHP > 0;
-
-            // Side effects on the target: it has to be standing, hit itself and not behind Shield Dust
-            bool shielded = BattleEffects.Of(t, includeAbility: !userBreaks).Any(e => e.BlocksSideEffects);
-            if (standing && hit.Touched && !shielded && t != user)
-            {
-                if (data.InflictStatus != StatusCondition.None && Chance(data.StatusChancePercent * chanceMult))
-                    TryInflictStatus(t, data.InflictStatus, user, false, By.SideEffect);
-                if (data.TargetStatChange is { } stat && !data.StatChangeTargetSelf && Chance(data.StatChangeChancePercent * chanceMult))
-                {
-                    ChangeStat(t, stat, data.StatStageAmount, user, false, By.SideEffect);
-                    foreach (var also in data.AlsoChangesStats ?? []) ChangeStat(t, also, data.StatStageAmount, user, false, By.SideEffect);
-                }
-                if (data.ConfuseChancePercent > 0 && Chance(data.ConfuseChancePercent * chanceMult)) Confuse(t, user, false, By.SideEffect);
-                if (data.FlinchChancePercent > 0 && !t.MovedThisTurn && Chance(data.FlinchChancePercent * chanceMult) &&
-                    !BattleEffects.Of(t).Any(e => e.BlocksFlinch))
-                    t.Flinched = true;
-            }
-
-            // What the move does of its own to whoever it hit
-            use.Effect.OnHit(this, use, hit);
-
-            // A Pokémon in a rage grows angrier with every hit it takes
-            if (standing && hit.Touched && hit.Dealt > 0 && t != user && t.Volatile.Rage && t.Pokemon.StatStages.GetValueOrDefault(StatType.Attack) < 6)
-            {
-                int stage = t.Pokemon.StatStages.GetValueOrDefault(StatType.Attack) + 1;
-                t.Pokemon.StatStages[StatType.Attack] = stage;
-                Say($"{t.Name}'s rage is building!").With(new StageChanged(t.Place, StatType.Attack, stage, Rose: true));
-            }
-
-            // The target's ability reacts to the hit (Static, Rough Skin), and berries check its HP
-            if (hit.Touched && hit.Dealt > 0)
-            {
-                foreach (var e in BattleEffects.Of(t, includeAbility: !userBreaks).ToList())
-                    e.AfterHit(this, t, user, move, hit.Dealt, hit.Damage.IsCritical);
-                CheckConditionHooks(t, user);
-            }
-
-            // A Fire move thaws a frozen target
-            if (t.Pokemon.CurrentHP > 0 && hit.Touched && hit.Dealt > 0 && t != user && move.Type == PokemonType.Fire && t.Pokemon.Status == StatusCondition.Freeze)
-            {
-                t.Pokemon.Status = StatusCondition.None;
-                Say($"{t.Name} thawed out!").With(new StatusChanged(t.Place, StatusCondition.None));
-            }
+            EffectivenessLine(use, hit);
+            if (hit.LastCritical && hit.Touched) t.TookCriticalHit = true;
+            TargetEffects(use, hit);
         }
+
+        if (use.AfterLine != null) Say(use.AfterLine);
 
         var landed = use.Hits.Where(h => h.Landed).Select(h => (h.Target, h.Dealt)).ToList();
         int total = use.DamageDealt;
@@ -730,8 +923,8 @@ public sealed partial class BattleCore
             if (user.IsActive) use.Effect.AfterHits(this, use);
         }
 
-        // Now whoever the move knocked out goes down
-        ResolveFaints(use);
+        // Now whoever the move knocked out goes down; the user of Explosion after its targets
+        ResolveFaints(use, use.Effect.SelfKo ? user : null);
         if (Result != BattleResult.None) return;
 
         if (user.IsActive && landed.Count > 0) foreach (var e in userEffects) e.AfterAttacking(this, user, move, landed);

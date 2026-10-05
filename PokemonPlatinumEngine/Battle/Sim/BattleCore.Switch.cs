@@ -19,12 +19,14 @@ public sealed partial class BattleCore
         OnEntered(place);
     }
 
-    private void OnEntered(Battler place)
+    /// <param name="opening">It is one of the first out, so the battle's first turn is its first: afterwards a Pokémon's first turn is the one after it came in.</param>
+    private void OnEntered(Battler place, bool opening = false)
     {
         place.ClearVolatile();
         place.Pokemon!.ResetStatStages();
         place.Pokemon.ToxicCounter = 0;
         place.Volatile.EnteredOnTurn = Turn;
+        place.Volatile.FirstTurn = opening ? Turn : Turn + 1;
         place.FoughtAgainst.Clear();
         foreach (var foe in EnemySlots.Where(b => b.IsActive))
             foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
@@ -77,6 +79,7 @@ public sealed partial class BattleCore
     {
         place.Volatile = baton.State;
         place.Volatile.EnteredOnTurn = Turn;
+        place.Volatile.FirstTurn = Turn + 1;
         place.ConfusionTurns = baton.ConfusionTurns;
         foreach (var (stat, stage) in baton.Stages) place.Pokemon!.StatStages[stat] = stage;
         if (place.HasSubstitute) Emit(new SubstituteChanged(place.Place, Up: true));

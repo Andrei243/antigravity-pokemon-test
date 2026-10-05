@@ -39,6 +39,45 @@ public sealed partial class BattleCore
         /// <summary>The move's power against one target, in tenths of what its data says (20: double).</summary>
         public Func<BattleCore, MoveUse, Battler, int>? Power { get; init; }
 
+        /// <summary>The move's power worked out afresh for this hit, in place of its data's (Flail, Gyro Ball, Rollout).</summary>
+        public Func<BattleCore, MoveUse, Battler, int>? BasePower { get; init; }
+
+        /// <summary>
+        /// A fixed amount of damage in place of the formula's (Seismic Toss, Counter): no bonus for the type, no
+        /// critical hit, no screen, only an immunity in its way. Null when the move fails for this target.
+        /// </summary>
+        public Func<BattleCore, MoveUse, Battler, int?>? Deals { get; init; }
+
+        /// <summary>How many times the move hits, drawn once a use (two to five, Triple Kick's three, Beat Up's party).</summary>
+        public Func<BattleCore, MoveUse, int>? Strikes { get; init; }
+
+        /// <summary>Each hit after the first rolls its own accuracy, and a miss ends them (Triple Kick).</summary>
+        public bool EachHitRollsAccuracy { get; init; }
+
+        /// <summary>A line before each hit (Beat Up names whose it is).</summary>
+        public Func<BattleCore, MoveUse, string?>? StrikeLine { get; init; }
+
+        /// <summary>Several hits with no count told after them (Beat Up).</summary>
+        public bool NoHitCount { get; init; }
+
+        /// <summary>No type is immune to it (Beat Up).</summary>
+        public bool HitsAnything { get; init; }
+
+        /// <summary>Decides for itself whether it gets there, in place of the accuracy roll (a one-hit knockout); Protect and a target out of reach still stand in its way.</summary>
+        public Func<BattleCore, MoveUse, Battler, MoveHit, bool>? Decides { get; init; }
+
+        /// <summary>The hit takes the formula's whole number, with no roll off it (Spit Up).</summary>
+        public bool NoVariance { get; init; }
+
+        /// <summary>Its user's HP goes to nothing before the hit, whatever comes of it (Explosion).</summary>
+        public bool SelfKo { get; init; }
+
+        /// <summary>It always leaves its target at least 1 HP (False Swipe).</summary>
+        public bool LeavesOneHp { get; init; }
+
+        /// <summary>It hurts, whatever its data's power says: by a power or an amount of its own.</summary>
+        public bool Damaging => Deals != null || BasePower != null;
+
         public int CritBonus { get; init; }
         public bool PastScreens { get; init; }
 

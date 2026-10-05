@@ -81,6 +81,9 @@ public partial class BattleEngine
     /// </summary>
     public IReadOnlyList<Pokemon> LeveledUp => leveledUpPokemon;
 
+    /// <summary>What Pay Day scattered for the player, picked up with a win.</summary>
+    public int PayDayMoney => core.PayDayMoney;
+
     public BattleResult Result { get; private set; } = BattleResult.None;
     public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && steps.Count == 0;
 

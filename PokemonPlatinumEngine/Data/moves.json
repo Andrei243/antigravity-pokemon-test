@@ -40,7 +40,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -56,7 +55,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -86,7 +84,6 @@
     "description": "Scatters money on the ground worth five times the user's level.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "IncreasePrizeMoney",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -178,7 +175,6 @@
     "description": "Causes a one-hit KO.",
     "flags": "Contact, Protect, Mirror",
     "effect": "OneHitKo",
-    "support": "None",
     "zPower": 180,
     "maxPower": 130
   },
@@ -381,7 +377,6 @@
     "description": "Hits twice in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitTwice",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 80
   },
@@ -495,7 +490,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -511,7 +505,6 @@
     "description": "Causes a one-hit KO.",
     "flags": "Contact, Protect, Mirror",
     "effect": "OneHitKo",
-    "support": "None",
     "zPower": 180,
     "maxPower": 130
   },
@@ -669,7 +662,6 @@
     "statusChancePercent": 20,
     "flags": "Protect, Mirror",
     "effect": "PoisonMultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -685,7 +677,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -826,7 +817,6 @@
     "description": "Inflicts 20 points of damage.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "20DamageFlat",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -1131,7 +1121,6 @@
     "description": "Inflicts more damage to heavier targets, with a maximum of 120 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithWeight",
-    "support": "None",
     "zPower": 160,
     "maxPower": 100
   },
@@ -1148,7 +1137,6 @@
     "description": "Inflicts twice the damage the user received from the last physical hit it took.",
     "flags": "Contact",
     "effect": "Counter",
-    "support": "None",
     "zPower": 100,
     "maxPower": 75
   },
@@ -1164,7 +1152,6 @@
     "description": "Inflicts damage equal to the user's level.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "LevelDamageFlat",
-    "support": "None",
     "zPower": 100,
     "maxPower": 75
   },
@@ -1399,7 +1386,6 @@
     "description": "Inflicts 40 points of damage.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "40DamageFlat",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -1542,7 +1528,6 @@
     "description": "Causes a one-hit KO.",
     "flags": "Protect, Mirror",
     "effect": "OneHitKo",
-    "support": "None",
     "zPower": 180,
     "maxPower": 130
   },
@@ -1740,7 +1725,6 @@
     "description": "Inflicts damage equal to the user's level.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "LevelDamageFlat",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2120,7 +2104,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HalveDefense",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -2307,7 +2290,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 120
   },
@@ -2481,7 +2463,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -2643,7 +2624,6 @@
     "description": "Inflicts damage between 50% and 150% of the user's level.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RandomDamage1To150Level",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -2724,7 +2704,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HalveDefense",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -2740,7 +2719,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2756,7 +2734,6 @@
     "description": "Hits twice in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HitTwice",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 130
   },
@@ -2871,7 +2848,6 @@
     "flags": "Protect, Mirror",
     "effect": "TriAttack",
     "effectChance": 20,
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -2887,7 +2863,6 @@
     "description": "Inflicts damage equal to half the target's HP.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HalveHp",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2934,8 +2909,7 @@
     "maxPP": 1,
     "description": "User takes 1/4 its max HP in recoil.",
     "flags": "Contact, Protect, KingsRock",
-    "effect": "Struggle",
-    "support": "Partial"
+    "effect": "Struggle"
   },
   {
     "id": 166,
@@ -2972,7 +2946,6 @@
     "description": "Hits three times, increasing power by 100% with each successful hit.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitThreeTimes",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 80
   },
@@ -3116,7 +3089,6 @@
     "description": "Inflicts more damage when the user has less HP remaining, with a maximum of 200 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithLessHp",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -3185,7 +3157,6 @@
     "description": "Inflicts more damage when the user has less HP remaining, with a maximum of 200 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithLessHp",
-    "support": "None",
     "zPower": 160,
     "maxPower": 100
   },
@@ -3331,7 +3302,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "MaxAtkLoseHalfMaxHp",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3523,7 +3493,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -3661,7 +3630,6 @@
     "description": "Power doubles every turn this move is used in succession after the first, resetting after five turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurnLockInto",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -3677,7 +3645,6 @@
     "description": "Cannot lower the target's HP below 1.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "LeaveWith1Hp",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -3751,7 +3718,6 @@
     "description": "Power doubles every turn this move is used in succession after the first, maxing out after five turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurn",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -3856,7 +3822,6 @@
     "description": "Power increases with happiness, up to a maximum of 102.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnFriendship",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -3872,7 +3837,6 @@
     "description": "Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP.",
     "flags": "Protect, Mirror",
     "effect": "RandomPowerMaybeHeal",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -3888,7 +3852,6 @@
     "description": "Power increases as happiness decreases, up to a maximum of 102.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnLowFriendship",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -3924,7 +3887,6 @@
     "description": "Sets the user's and targets's HP to the average of their current HP.",
     "flags": "Protect, Mirror",
     "effect": "AverageHp",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -3962,7 +3924,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Psywave",
-    "support": "None",
     "zPower": 140,
     "maxPower": 140
   },
@@ -4220,7 +4181,6 @@
     "description": "Power and type depend upon user's IVs. Power can range from 30 to 70.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RandomPowerBasedOnIvs",
-    "support": "None",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -4326,7 +4286,6 @@
     "priority": -5,
     "description": "Inflicts twice the damage the user received from the last special hit it took.",
     "effect": "MirrorCoat",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -4342,7 +4301,6 @@
     "description": "Discards the user's stat changes and copies the target's.",
     "flags": "Snatch",
     "effect": "CopyStatChanges",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -4473,7 +4431,6 @@
     "description": "Hits once for every conscious Pokémon the trainer has.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BeatUp",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -4494,7 +4451,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "AlwaysFlinchFirstTurnOnly",
     "effectChance": 100,
-    "support": "None",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -4533,7 +4489,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Stockpile",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -4550,7 +4505,6 @@
     "description": "Power is 100 times the amount of energy Stockpiled.",
     "flags": "Protect, KingsRock",
     "effect": "SpitUp",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -4567,7 +4521,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Swallow",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4688,7 +4641,6 @@
     "description": "Lowers the target's Attack and Special Attack by two stages. User faints.",
     "flags": "Protect, Mirror",
     "effect": "FaintAndAtkSpAtkDown2",
-    "support": "None",
     "zBonus": {
       "effect": "HealReplacement"
     }
@@ -4721,7 +4673,6 @@
     "description": "If the user takes damage before attacking, the attack is canceled.",
     "flags": "Contact, Punch, Protect",
     "effect": "HitLastWhiffIfHit",
-    "support": "None",
     "zPower": 200,
     "maxPower": 100
   },
@@ -5003,7 +4954,6 @@
     "description": "Inflicts double damage if the user takes damage before attacking this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfHit",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 80
   },
@@ -5072,7 +5022,6 @@
     "description": "Lowers the target's HP to equal the user's.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "SetHpEqualToUser",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5089,7 +5038,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DecreasePowerWithLessUserHp",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5229,7 +5177,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 70
   },
@@ -5403,7 +5350,6 @@
     "description": "Power doubles every turn this move is used in succession after the first, resetting after five turns.",
     "flags": "Contact, Ballistic, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurnLockInto",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -5819,7 +5765,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "DecreasePowerWithLessUserHp",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5916,7 +5861,6 @@
     "description": "Causes a one-hit KO.",
     "flags": "Protect, Mirror",
     "effect": "OneHitKo",
-    "support": "None",
     "zPower": 180,
     "maxPower": 130
   },
@@ -5953,7 +5897,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -5986,7 +5929,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -6304,7 +6246,6 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -6483,7 +6424,6 @@
     "description": "Power raises when the user has lower Speed, up to a maximum of 150.",
     "flags": "Contact, Ballistic, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnLowSpeed",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6512,7 +6452,6 @@
     "description": "Has double power against Pokémon that have less than half their max HP remaining.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoublePowerWhenBelowHalf",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 120
   },
@@ -6599,7 +6538,6 @@
     "target": "UserOrAlly",
     "flags": "Snatch",
     "effect": "RandomStatUp2",
-    "support": "None",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -6616,7 +6554,6 @@
     "description": "Strikes back at the last Pokémon to hit the user this turn with 1.5× the damage.",
     "flags": "Mirror",
     "effect": "MetalBurst",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -6668,7 +6605,6 @@
     "description": "Power is doubled if the target has already moved this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfMovingSecond",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100
   },
@@ -6684,7 +6620,6 @@
     "description": "Power is doubled if the target has already received damage this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfTargetHit",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -6760,7 +6695,6 @@
     "description": "Power increases when this move has less PP, up to a maximum of 200.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HigherPowerWhenLowPp",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6796,7 +6730,6 @@
     "description": "Power increases against targets with more HP remaining, up to a maximum of 121 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreHp",
-    "support": "None",
     "zPower": 190,
     "maxPower": 140
   },
@@ -6949,7 +6882,6 @@
     "description": "Power increases against targets with more raised stats, up to a maximum of 200.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreStatUp",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6965,7 +6897,6 @@
     "description": "Can only be used after all of the user's other moves have been used.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "FailIfNotUsedAllOtherMoves",
-    "support": "None",
     "zPower": 200,
     "maxPower": 140,
     "modern": {
@@ -7005,7 +6936,6 @@
     "description": "Only works if the target is about to use a damaging move.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitFirstIfTargetAttacking",
-    "support": "None",
     "zPower": 140,
     "maxPower": 120,
     "modern": {
@@ -7515,7 +7445,6 @@
     "description": "Inflicts double damage if the user takes damage before attacking this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfHit",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -7949,7 +7878,6 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SpAtkDown2OppositeGender",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -7988,7 +7916,6 @@
     "description": "Inflicts more damage to heavier targets, with a maximum of 120 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithWeight",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -8023,7 +7950,6 @@
     "description": "If the user is holding a appropriate plate or drive, the damage inflicted will match it.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Judgement",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -8176,7 +8102,6 @@
     "description": "Hits twice in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitTwice",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -8236,7 +8161,6 @@
     "description": "Power increases against targets with more HP remaining, up to a maximum of 121 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreHp",
-    "support": "None",
     "zPower": 190,
     "maxPower": 140
   },
@@ -9730,7 +9654,6 @@
     "description": "If the user is holding a appropriate plate or drive, the damage inflicted will match it.",
     "flags": "Protect, Mirror",
     "effect": "Judgement",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -10935,7 +10858,6 @@
     "description": "Cannot lower the target's HP below 1.",
     "flags": "Contact, Protect, Mirror",
     "effect": "LeaveWith1Hp",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -12387,7 +12309,6 @@
     "description": "Inflicts damage equal to half the target's HP.",
     "flags": "Protect, Mirror",
     "effect": "HalveHp",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -12403,7 +12324,6 @@
     "description": "If the user is holding a appropriate plate or drive, the damage inflicted will match it.",
     "flags": "Contact, Protect, Mirror",
     "effect": "Judgement",
-    "support": "Partial",
     "zPower": 185,
     "maxPower": 95
   },
@@ -14013,7 +13933,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "DecreasePowerWithLessUserHp",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },

@@ -41,6 +41,7 @@ public static class AbilityEffectTable
         Add("Unaware", new FlagEffect { Unaware = true });
         Add("Run Away", new FlagEffect { Escapes = true });
         Add("Scrappy", new Scrappy());
+        Add("Skill Link", new FlagEffect { FiveHits = true });
 
         // On entry
         Add("Intimidate", new Intimidate());
