@@ -5,6 +5,9 @@ namespace PokemonPlatinumEngine.Audio;
 /// <summary>One note of a track, in ticks (<see cref="Song.TicksPerWhole"/> to a whole note).</summary>
 public readonly record struct NoteEvent(int Tick, int Length, int Gate, int Key, float Velocity);
 
+/// <summary>Which arrangements a track belongs to.</summary>
+public enum TrackWhen { Always, LowHp, NotLowHp }
+
 public sealed class SongTrack
 {
     public required string Name { get; init; }
@@ -12,6 +15,12 @@ public sealed class SongTrack
 
     /// <summary>The instrument the night arrangement uses instead; the same one when null.</summary>
     public Instrument? NightInstrument { get; init; }
+
+    /// <summary>The instrument the low-HP arrangement uses instead (over the night one); the same one when null.</summary>
+    public Instrument? LowHpInstrument { get; init; }
+
+    /// <summary>When the track plays: always, only in the low-HP arrangement (an alarm figure), or only out of it.</summary>
+    public TrackWhen When { get; init; } = TrackWhen.Always;
 
     public float Volume { get; init; } = 0.8f;
     public float Pan { get; init; }
@@ -43,6 +52,9 @@ public sealed class Song
     /// <summary>The night arrangement plays this much slower or faster.</summary>
     public double NightTempo { get; init; } = 0.95;
 
+    /// <summary>The low-HP arrangement of a battle theme plays this much faster (Black and White's way: the music itself turns agitated).</summary>
+    public double LowHpTempo { get; init; } = 1.0;
+
     public int TicksPerBar { get; init; } = TicksPerWhole;
 
     /// <summary>Tick the song jumps back to when it reaches the end; -1 to play once.</summary>
@@ -57,7 +69,7 @@ public sealed class Song
 
     public bool Loops => LoopTick >= 0;
 
-    public double SecondsPerTick(bool night) => 60.0 / ((night ? Tempo * NightTempo : Tempo) * TicksPerQuarter);
+    public double SecondsPerTick(bool night, bool lowHp = false) => 60.0 / (Tempo * (night ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * TicksPerQuarter);
 
     /// <summary>Length of one pass through the song, in seconds.</summary>
     public double Duration(bool night = false) => EndTick * SecondsPerTick(night);

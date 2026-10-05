@@ -130,6 +130,16 @@ public static class AudioManager
         if (song != null) mixer.PlayFanfare(song);
     }
 
+    /// <summary>
+    /// Whether the music plays its low-HP arrangement: set by the battle while the player's Pokémon is in the red,
+    /// the way Black and White turn the battle theme agitated instead of sounding an alarm.
+    /// </summary>
+    public static bool LowHp
+    {
+        get => mixer.LowHp;
+        set => mixer.LowHp = value;
+    }
+
     /// <summary>Fades the music out.</summary>
     public static void StopMusic()
     {

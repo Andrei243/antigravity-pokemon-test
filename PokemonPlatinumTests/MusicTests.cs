@@ -293,4 +293,150 @@ public class MusicTests
         Assert.Equal(new[] { Drum.Kick, Drum.Snare, Drum.HiHat, Drum.Kick, Drum.Crash, Drum.Clap, Drum.Shaker },
             song.Tracks[1].Notes.Select(n => (Drum)n.Key));
     }
+
+    // ------------------------------------------------------------------ plan 05 · A2: the switching rules
+
+    [Fact]
+    public void TestLowHpArrangementSwitchesMidSongAndKeepsItsPlace()
+    {
+        var song = Mml.Parse("test", """
+            tempo 120
+            lowhptempo 1.5
+            track lead flute lowhp=sawlead
+              L [ c4 d4 e4 f4 | ]4
+            track pad strings unless=lowhp
+              L [ (c e g)1 | ]4
+            track alarm pulse only=lowhp
+              L [ c8 r8 c8 r8 c8 r8 c8 r8 | ]4
+            """);
+        Assert.Equal(1.5, song.LowHpTempo);
+        Assert.Same(InstrumentBank.Get("sawlead"), song.Tracks[0].LowHpInstrument);
+        Assert.Equal(new[] { TrackWhen.Always, TrackWhen.NotLowHp, TrackWhen.LowHp }, song.Tracks.Select(t => t.When));
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "track a flute only=night\n  c1 |\n"));
+
+        var player = new SongPlayer();
+        var buffer = new float[2048];
+        void Run(double seconds)
+        {
+            for (int done = 0; done < seconds * Synthesizer.SampleRate; done += 1024) player.Render(buffer, 1f);
+        }
+
+        // Switched on in the middle: the song keeps its place and goes on half as fast again
+        player.Start(song, atNight: false);
+        Run(1.0);
+        double at = player.Position;
+        Assert.InRange(at, 0.95, 1.05);
+        player.Agitated = true;
+        Assert.Equal(at, player.Position, 6);
+        Run(1.0);
+        Assert.InRange(player.Position - at, 1.45, 1.55);
+        player.Agitated = false;
+        Run(1.0);
+        Assert.InRange(player.Position - at, 2.45, 2.55);
+    }
+
+    [Fact]
+    public void TestTheArrangementsTracksPlayOnlyInTheirArrangement()
+    {
+        static double Loudness(string track, bool agitated)
+        {
+            var song = Mml.Parse("test", "tempo 120\n" + track + "\n  L c4 e4 g4 >c4 |\n");
+            var player = new SongPlayer { Agitated = agitated };
+            player.Start(song, atNight: false);
+            var buffer = new float[Synthesizer.SampleRate * 2];
+            player.Render(buffer, 1f);
+            return buffer.Sum(x => Math.Abs(x));
+        }
+
+        Assert.Equal(0, Loudness("track alarm pulse only=lowhp", agitated: false));
+        Assert.True(Loudness("track alarm pulse only=lowhp", agitated: true) > 1);
+        Assert.True(Loudness("track pad strings unless=lowhp", agitated: false) > 1);
+        Assert.Equal(0, Loudness("track pad strings unless=lowhp", agitated: true));
+        Assert.True(Loudness("track lead flute", agitated: true) > 1);
+    }
+
+    [Fact]
+    public void TestEveryBattleThemeHasALowHpArrangement()
+    {
+        foreach (var role in new[] { MusicRole.BattleWild, MusicRole.BattleTrainer, MusicRole.BattleGymLeader })
+        {
+            foreach (var region in RegionDatabase.All.Select(r => r.Id))
+            {
+                var song = MusicLibrary.Get(MusicDirector.Resolve(role, region, MusicLibrary.Exists)!)!;
+                Assert.True(song.LowHpTempo > 1.0, $"{song.Id} plays no faster in the red");
+                Assert.Contains(song.Tracks, t => t.When == TrackWhen.LowHp);
+                Assert.Contains(song.Tracks, t => t.LowHpInstrument != null);
+            }
+        }
+    }
+
+    [Fact]
+    public void TestTheMixerPassesLowHpToTheMusicAndKeepsItAcrossSongs()
+    {
+        var mixer = new AudioMixer();
+        var player = (SongPlayer)typeof(AudioMixer).GetField("music", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.GetValue(mixer)!;
+        mixer.Play(MusicLibrary.Get("common/battle_wild")!, night: false, immediate: true);
+        Assert.False(player.Agitated);
+        mixer.LowHp = true;
+        Assert.True(player.Agitated);
+        mixer.Play(MusicLibrary.Get("common/battle_trainer")!, night: false, immediate: true);
+        Assert.True(mixer.LowHp);
+        mixer.LowHp = false;
+        Assert.False(player.Agitated);
+    }
+
+    [Fact]
+    public void TestEyeThemesFollowTheSoundMap()
+    {
+        Assert.Equal(MusicRole.EyeBoy, MusicDirector.EyeRole("Youngster"));
+        Assert.Equal(MusicRole.EyeGirl, MusicDirector.EyeRole("Lass"));
+        Assert.Equal(MusicRole.EyeMountain, MusicDirector.EyeRole("Hiker"));
+        Assert.Equal(MusicRole.EyeGalactic, MusicDirector.EyeRole("Galactic Grunt"));
+        Assert.Equal(MusicRole.EyeChampion, MusicDirector.EyeRole("Champion"));
+        Assert.Equal(MusicRole.EyeBoy, MusicDirector.EyeRole("Nobody"));
+        Assert.Equal(MusicRole.EyeBoy, MusicDirector.EyeRole(null));
+
+        // Every value the map gives is a theme the director knows, and every eye theme resolves to a song
+        foreach (var (cls, theme) in SoundMap.EyeThemes) Assert.True(MusicDirector.EyeThemes.ContainsKey(theme), $"{cls}: '{theme}'");
+        foreach (var (cls, theme) in SoundMap.BattleThemes) Assert.True(MusicDirector.BattleThemes.ContainsKey(theme), $"{cls}: '{theme}'");
+        foreach (var role in Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Eye")))
+            Assert.NotNull(MusicDirector.Resolve(role, null, MusicLibrary.Exists));
+        Assert.Equal("common/eye_girl", MusicDirector.Resolve(MusicRole.EyeLady, null, MusicLibrary.Exists));
+        Assert.Equal("common/eye_boy", MusicDirector.Resolve(MusicRole.EyeChampion, null, MusicLibrary.Exists));
+
+        // Every trainer class the game's maps use is in the map
+        MapDatabase.Initialize();
+        var classes = MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone)
+            .Select(n => n.TrainerData?.TrainerClass).Where(c => c != null && c != "Rival").Distinct().ToList();
+        Assert.NotEmpty(classes);
+        foreach (var cls in classes) Assert.True(SoundMap.EyeThemes.ContainsKey(cls!), $"the sound map has no eye theme for '{cls}'");
+    }
+
+    [Fact]
+    public void TestBattleThemesFollowTheSoundMapAndTheMostImportantOpponent()
+    {
+        Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRole(new[] { "Galactic Grunt" }));
+        Assert.Equal(MusicRole.BattleChampion, MusicDirector.BattleRole(new[] { "Youngster", "Champion" }));
+        Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRole(new[] { "Galactic Grunt", "Gym Leader" }));
+        Assert.Equal(MusicRole.BattleTrainer, MusicDirector.BattleRole(new[] { "Nobody" }));
+
+        // Roles without a song of their own fall back to the nearest that has one
+        Assert.Equal("common/battle_trainer", MusicDirector.Resolve(MusicRole.BattleGalacticBoss, null, MusicLibrary.Exists));
+        Assert.Equal("common/battle_gym", MusicDirector.Resolve(MusicRole.BattleChampion, null, MusicLibrary.Exists));
+        Assert.Equal("common/battle_wild", MusicDirector.Resolve(MusicRole.BattleLegendary, null, MusicLibrary.Exists));
+        Assert.Equal(MusicRole.VictoryGymLeader, MusicDirector.VictoryRole(MusicRole.BattleChampion));
+        Assert.Equal(MusicRole.VictoryTrainer, MusicDirector.VictoryRole(MusicRole.BattleGalactic));
+        Assert.Equal(MusicRole.VictoryWild, MusicDirector.VictoryRole(MusicRole.BattleLegendary));
+    }
+
+    [Fact]
+    public void TestRidingThemesExistAndLoop()
+    {
+        foreach (var role in new[] { MusicRole.Surf, MusicRole.Bicycle, MusicRole.EyeBoy, MusicRole.EyeGirl })
+        {
+            var song = MusicLibrary.Get(MusicDirector.Resolve(role, null, MusicLibrary.Exists)!)!;
+            Assert.True(song.Loops, $"{song.Id} should loop");
+            Assert.True(song.LoopDuration() >= 8, $"{song.Id} loops after only {song.LoopDuration():0.0} s");
+        }
+    }
 }

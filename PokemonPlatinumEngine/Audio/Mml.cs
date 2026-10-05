@@ -25,7 +25,7 @@ public static class Mml
     public static Song Parse(string id, string text)
     {
         string title = id;
-        double tempo = 120, nightTempo = 0.95;
+        double tempo = 120, nightTempo = 0.95, lowHpTempo = 1.0;
         int beatsPerBar = 4, beatUnit = 4;
         float reverb = 0.3f;
         var trackHeaders = new List<(string Header, StringBuilder Body, int Line)>();
@@ -56,6 +56,7 @@ public static class Mml
                 case "title": title = rest; break;
                 case "tempo": tempo = ParseDouble(rest, id, n); break;
                 case "nighttempo": nightTempo = ParseDouble(rest, id, n); break;
+                case "lowhptempo": lowHpTempo = ParseDouble(rest, id, n); break;
                 case "reverb": reverb = (float)ParseDouble(rest, id, n); break;
                 case "meter":
                 {
@@ -95,7 +96,7 @@ public static class Mml
 
         var song = new Song
         {
-            Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, TicksPerBar = ticksPerBar,
+            Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, LowHpTempo = lowHpTempo, TicksPerBar = ticksPerBar,
             LoopTick = loopTick, EndTick = endTick, Reverb = reverb
         };
         foreach (var t in tracks) song.Tracks.Add(t.Track);
@@ -109,7 +110,8 @@ public static class Mml
         var parts = header.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (parts.Length < 2) throw Error(id, line - 1, "a track needs a name and an instrument");
         var inst = InstrumentBank.Get(parts[1]) ?? throw Error(id, line - 1, $"unknown instrument '{parts[1]}'");
-        Instrument? night = null;
+        Instrument? night = null, lowHp = null;
+        var when = TrackWhen.Always;
         float vol = 0.8f, pan = 0f, rev = 0.3f;
         for (int i = 2; i < parts.Length; i++)
         {
@@ -118,13 +120,16 @@ public static class Mml
             switch (kv[0])
             {
                 case "night": night = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
+                case "lowhp": lowHp = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
+                case "only": when = kv[1] == "lowhp" ? TrackWhen.LowHp : throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (only lowhp)"); break;
+                case "unless": when = kv[1] == "lowhp" ? TrackWhen.NotLowHp : throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (only lowhp)"); break;
                 case "vol": vol = (float)ParseDouble(kv[1], id, line - 1); break;
                 case "pan": pan = (float)ParseDouble(kv[1], id, line - 1); break;
                 case "rev": rev = (float)ParseDouble(kv[1], id, line - 1); break;
                 default: throw Error(id, line - 1, $"unknown track option '{kv[0]}'");
             }
         }
-        return new SongTrack { Name = parts[0], Instrument = inst, NightInstrument = night, Volume = vol, Pan = pan, ReverbSend = rev };
+        return new SongTrack { Name = parts[0], Instrument = inst, NightInstrument = night, LowHpInstrument = lowHp, When = when, Volume = vol, Pan = pan, ReverbSend = rev };
     }
 
     /// <summary>Writes out <c>[ … ]n</c> repeats, innermost first.</summary>

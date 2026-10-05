@@ -80,7 +80,7 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ bars
 
     public static Color HpColor(float ratio) =>
-        ratio > 0.5f ? new Color(70, 214, 110, 255) : ratio > 0.2f ? new Color(246, 196, 50, 255) : new Color(240, 72, 64, 255);
+        ratio > 0.5f ? new Color(70, 214, 110, 255) : ratio > Battle.BattleAnimator.LowHpRatio ? new Color(246, 196, 50, 255) : new Color(240, 72, 64, 255);
 
     public static void HpBar(float x, float y, float w, float h, float ratio)
     {

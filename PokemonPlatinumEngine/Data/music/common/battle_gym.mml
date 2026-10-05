@@ -3,9 +3,10 @@
 title Battle! Gym Leader
 tempo 176
 meter 4/4
+lowhptempo 1.08
 reverb 0.22
 
-track lead trumpet vol=0.88 pan=0 rev=0.22
+track lead trumpet lowhp=sawlead vol=0.88 pan=0 rev=0.22
   r1 | r1 | o5 d8 r8 d8 r8 f8 r8 e8 e-8 | d2 a2 |
   L >d4 <a8 >d8 f4 e8 d8 | d4. <b-8 f4 b-4 | >c4 <g8 >c8 e4 d8 c8 | c+2 e2 |
   f4 e8 d8 <a4 >d4 | f4. d8 <b-4 >d4 | g4 f8 d8 <b-4 g4 | a4 >c+4 e4 g4 |
@@ -16,7 +17,7 @@ track lead trumpet vol=0.88 pan=0 rev=0.22
   d4 <a8 >d8 f4 e8 d8 | d4. <b-8 f4 b-4 | >c4 <g8 >c8 e4 d8 c8 | c+2 e2 |
   f4 e8 d8 <a4 >d4 | f4. d8 <b-4 >d4 | g4 f8 d8 <b-4 g4 | a4 >c+4 e4 g4 |
 
-track horn horn vol=0.45 pan=-0.3 rev=0.25
+track horn horn unless=lowhp vol=0.45 pan=-0.3 rev=0.25
   r1 | r1 | r1 | r1 |
   L o4 (d f)1 | (d b-)1 | (e >c)1 | (c+ a)1 |
   (d f)1 | (d b-)1 | (g b-)1 | (c+ a)1 |
@@ -77,3 +78,7 @@ track drums kit vol=0.52 rev=0.12
 track hats kit vol=0.5 pan=0.15 rev=0.1
   r1 | r1 | r1 | r1 | L v65 [ h8 v45 o8 v65 h8 v45 h8 v65 h8 v45 o8 v65 h8 v45 h8 v65 | ]32
 
+
+# Low HP: the alarm figure Black and White lay over the battle theme, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]32
