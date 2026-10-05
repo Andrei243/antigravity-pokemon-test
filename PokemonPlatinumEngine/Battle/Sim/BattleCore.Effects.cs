@@ -175,7 +175,7 @@ public sealed partial class BattleCore
                     BattleWeather.Hail => PokemonType.Ice,
                     _ => use.Move.Type
                 };
-                if (type != use.Move.Type) use.Move = new Move(use.Data.OfType(type), use.Move.CurrentPP);
+                Retype(use, type);
                 return true;
             },
             Power = (b, use, t) => b.Field.WeatherInEffect != BattleWeather.None ? 20 : 10

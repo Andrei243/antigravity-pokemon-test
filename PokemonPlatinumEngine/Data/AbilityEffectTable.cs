@@ -6,9 +6,11 @@ using PokemonPlatinumEngine.Battle.Sim;
 namespace PokemonPlatinumEngine.Data;
 
 /// <summary>
-/// What each implemented ability does in battle, by name (Generation 4 rules). <see cref="AbilityDatabase"/> pairs
-/// these with the abilities in <c>abilities.json</c>; an ability missing here shows up but does nothing yet. Kept
-/// apart from the database so tools can ask which abilities run without loading the data files.
+/// What each ability does in battle, by name (Platinum's rules; plan 06 · R7 completed the 123). <see cref="AbilityDatabase"/>
+/// pairs these with the abilities in <c>abilities.json</c>; an ability missing here shows up but does nothing yet.
+/// Kept apart from the database so tools can ask which abilities run without loading the data files. A bonus inside
+/// the damage formula is applied by <c>DamageCalculator</c> by the ability's name, in the original's place; an
+/// ability that works only in the field (Pickup, Stench…) has a bare entry here and its code in the field, by name.
 /// </summary>
 public static class AbilityEffectTable
 {
@@ -16,19 +18,12 @@ public static class AbilityEffectTable
 
     static AbilityEffectTable()
     {
-        // Power in a pinch and other attack boosts
-        Add("Overgrow", new PinchTypeBoost(PokemonType.Grass));
-        Add("Blaze", new PinchTypeBoost(PokemonType.Fire));
-        Add("Torrent", new PinchTypeBoost(PokemonType.Water));
-        Add("Swarm", new PinchTypeBoost(PokemonType.Bug));
-        Add("Huge Power", new AttackBoost(2f));
-        Add("Pure Power", new AttackBoost(2f));
+        // In the damage formula, by name: a power or a stat in the original's own place
+        foreach (var name in new[] { "Overgrow", "Blaze", "Torrent", "Swarm", "Huge Power", "Pure Power", "Technician", "Iron Fist", "Reckless", "Rivalry",
+                     "Thick Fat", "Heatproof", "Marvel Scale", "Plus", "Minus" })
+            Add(name, new FlagEffect());
         Add("Hustle", new Hustle());
         Add("Guts", new Guts());
-        Add("Technician", new TechnicianEffect());
-        Add("Iron Fist", new IronFist());
-        Add("Reckless", new Reckless());
-        Add("Rivalry", new Rivalry());
         Add("Adaptability", new FlagEffect { Adaptability = true });
         Add("Tinted Lens", new TintedLens());
         Add("Sniper", new Sniper());
@@ -37,16 +32,28 @@ public static class AbilityEffectTable
         Add("No Guard", new NoGuard());
         Add("Serene Grace", new FlagEffect { SideEffectMultiplier = 2 });
         Add("Rock Head", new FlagEffect { NoRecoil = true });
-        Add("Mold Breaker", new FlagEffect { BreakAbilities = true });
+        Add("Mold Breaker", new FlagEffect { BreakAbilities = true, EntryLine = "{0} breaks the mold!" });
         Add("Unaware", new FlagEffect { Unaware = true });
         Add("Run Away", new FlagEffect { Escapes = true });
         Add("Scrappy", new Scrappy());
         Add("Skill Link", new FlagEffect { FiveHits = true });
         Add("Sticky Hold", new FlagEffect { KeepsHeldItem = true });
+        Add("Normalize", new FlagEffect { Normalizes = true });
+        Add("Klutz", new FlagEffect { Klutz = true });
+        Add("Stall", new FlagEffect { Stalls = true });
+        Add("Truant", new FlagEffect { Loafs = true });
+        Add("Slow Start", new SlowStart());
+        Add("Unburden", new Unburden());
+        Add("Gluttony", new FlagEffect { EatsEarly = true });
 
         // On entry
         Add("Intimidate", new Intimidate());
         Add("Download", new Download());
+        Add("Trace", new Trace());
+        Add("Anticipation", new Anticipation());
+        Add("Forewarn", new Forewarn());
+        Add("Frisk", new Frisk());
+        Add("Pressure", new FlagEffect { PpPressure = 1, EntryLine = "{0} is exerting its Pressure!" });
 
         // Defensive
         Add("Levitate", new Levitate());
@@ -56,25 +63,29 @@ public static class AbilityEffectTable
         Add("Motor Drive", new MotorDrive());
         Add("Wonder Guard", new WonderGuard());
         Add("Soundproof", new Soundproof());
-        Add("Thick Fat", new DamageShield((m, _) => m.Type is PokemonType.Fire or PokemonType.Ice, 0.5f));
-        Add("Heatproof", new DamageShield((m, _) => m.Type == PokemonType.Fire, 0.5f));
         Add("Filter", new DamageShield((_, e) => e > 1f, 0.75f));
         Add("Solid Rock", new DamageShield((_, e) => e > 1f, 0.75f));
-        Add("Marvel Scale", new MarvelScale());
         Add("Battle Armor", new FlagEffect { NoCrits = true });
         Add("Shell Armor", new FlagEffect { NoCrits = true });
         Add("Shield Dust", new ShieldDust());
         Add("Liquid Ooze", new LiquidOoze());
         Add("Magic Guard", new MagicGuard());
         Add("Tangled Feet", new TangledFeet());
-        Add("Pressure", new FlagEffect { PpPressure = 1 });
+        Add("Lightning Rod", new FlagEffect { Draws = PokemonType.Electric });
+        Add("Storm Drain", new FlagEffect { Draws = PokemonType.Water });
+        // Read by name where they matter: Sturdy against a one-hit knockout, Damp against Explosion and Aftermath
+        Add("Sturdy", new FlagEffect());
+        Add("Damp", new FlagEffect());
 
-        // Contact punishers
+        // Answering a hit
         Add("Static", new ContactStatus(30, StatusCondition.Paralyze));
         Add("Flame Body", new ContactStatus(30, StatusCondition.Burn));
         Add("Poison Point", new ContactStatus(30, StatusCondition.Poison));
         Add("Effect Spore", new ContactStatus(30, StatusCondition.Poison, StatusCondition.Paralyze, StatusCondition.Sleep));
         Add("Rough Skin", new RoughSkin());
+        Add("Color Change", new ColorChange());
+        Add("Aftermath", new Aftermath());
+        Add("Cute Charm", new CuteCharm());
 
         // Status and stat protection
         Add("Immunity", new StatusImmunity(StatusCondition.Poison, StatusCondition.Toxic));
@@ -91,6 +102,7 @@ public static class AbilityEffectTable
         Add("Keen Eye", new StatGuard(StatType.Accuracy));
         Add("Simple", new SimpleEffect());
         Add("Early Bird", new FlagEffect { SleepRate = 2 });
+        Add("Poison Heal", new FlagEffect { PoisonHeals = true });
 
         // Over time and reactions
         Add("Speed Boost", new SpeedBoost());
@@ -119,6 +131,11 @@ public static class AbilityEffectTable
         Add("Hydration", new Hydration());
         Add("Leaf Guard", new LeafGuard());
 
+        // Shapes (plan 06 · R7)
+        Add("Forecast", new Forecast());
+        Add("Flower Gift", new FlowerGift());
+        Add("Multitype", new Multitype());
+
         // Holding a foe on the field, and holding one's own ground
         Add("Shadow Tag", new Trapper("Shadow Tag"));
         Add("Arena Trap", new Trapper("Arena Trap"));
@@ -127,6 +144,9 @@ public static class AbilityEffectTable
         Add("Oblivious", new FlagEffect { NoRomance = true });
         // Read by the end of a turn itself, for every sleeper across the field
         Add("Bad Dreams", new FlagEffect());
+
+        // In the field alone (plan 06 · R7): the wild Pokémon met, and what the party picks up after a battle, go by these names
+        foreach (var name in new[] { "Stench", "Illuminate", "Pickup", "Honey Gather" }) Add(name, new FlagEffect());
     }
 
     private static void Add(string name, BattleEffect effect) => Effects[name] = effect;

@@ -7,22 +7,11 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle.Effects;
 
-// What each ability does in battle, following Generation 4 (Platinum). AbilityDatabase pairs them with names and
-// descriptions. Small building blocks first, then the abilities that need their own code.
-
-/// <summary>A move of one type gets 1.5× power while the user is at a third of its HP or less (Overgrow, Blaze, Torrent, Swarm).</summary>
-internal sealed class PinchTypeBoost(PokemonType type) : BattleEffect
-{
-    public override float PowerMultiplier(Battler self, Battler target, Move move) =>
-        move.Type == type && self.Pokemon!.CurrentHP * 3 <= self.Pokemon.MaxHP ? 1.5f : 1f;
-}
-
-/// <summary>A stat multiplier on the attacking side, optionally only for one category or while it has a status.</summary>
-internal sealed class AttackBoost(float factor, MoveCategory? category = MoveCategory.Physical, bool needsStatus = false) : BattleEffect
-{
-    public override float AttackMultiplier(Battler self, Move move) =>
-        (category == null || move.Category == category) && (!needsStatus || self.Pokemon!.Status != StatusCondition.None) ? factor : 1f;
-}
+// What each ability does in battle, following Platinum (plan 06 · R7 completed the 123). AbilityDatabase pairs them
+// with names and descriptions. Small building blocks first, then the abilities that need their own code. An ability
+// whose whole effect is a bonus inside the damage formula (Technician, Guts, Thick Fat, Overgrow…) has no code here:
+// DamageCalculator applies each by name in the original's own place and order. An ability that works only in the
+// field (Pickup, Stench…) is a bare FlagEffect, so it counts as run; its field code goes by its name.
 
 /// <summary>Can't be given one or more major status conditions (Immunity, Insomnia, Limber, Water Veil...).</summary>
 internal sealed class StatusImmunity(params StatusCondition[] blocked) : BattleEffect
@@ -43,7 +32,7 @@ internal sealed class AbsorbType(PokemonType type, string abilityName) : BattleE
     }
 }
 
-/// <summary>Takes less damage from some moves (Thick Fat, Heatproof, Filter, Solid Rock).</summary>
+/// <summary>Takes less from a super-effective hit, once the types have had their say (Filter, Solid Rock).</summary>
 internal sealed class DamageShield(Func<Move, float, bool> applies, float factor) : BattleEffect
 {
     public override float IncomingDamageMultiplier(Battler self, Battler attacker, Move move, float effectiveness) =>
@@ -67,12 +56,17 @@ internal sealed class StatGuard(StatType? only = null) : BattleEffect
     public override bool BlocksStatDrop(Battler self, StatType stat) => only == null || only == stat;
 }
 
-/// <summary>An ability with no effect beyond a flag the engine reads.</summary>
+/// <summary>An ability with no effect beyond a flag the engine reads, and perhaps a line on entering.</summary>
 internal sealed class FlagEffect : BattleEffect
 {
     public bool NoCrits, NoRecoil, NoConfusion, NoFlinch, BreakAbilities, Unaware, Adaptability, Escapes, Anchored, NoRomance, FiveHits, KeepsHeldItem;
+    public bool Loafs, Stalls, EatsEarly, PoisonHeals, Normalizes, Klutz, SlowStart, Unburden;
     public int CritBonus, SideEffectMultiplier = 1, PpPressure, SleepRate = 1;
     public float Accuracy = 1f;
+    public PokemonType? Draws;
+
+    /// <summary>Said as the holder comes in ("{0} breaks the mold!").</summary>
+    public string? EntryLine;
 
     public override bool PreventsCriticalHits => NoCrits;
     public override bool PreventsRecoil => NoRecoil;
@@ -91,6 +85,20 @@ internal sealed class FlagEffect : BattleEffect
     public override int ExtraPpUsed => PpPressure;
     public override int SleepCountdownRate => SleepRate;
     public override float AccuracyMultiplier(Battler self, Move move) => Accuracy;
+    public override bool LoafsEveryOtherTurn => Loafs;
+    public override bool MovesLast => Stalls;
+    public override bool EatsBerriesEarly => EatsEarly;
+    public override bool HealsWithPoison => PoisonHeals;
+    public override bool NormalizesMoves => Normalizes;
+    public override bool IgnoresHeldItem => Klutz;
+    public override bool StartsSlow => SlowStart;
+    public override bool SpeedsUpUnburdened => Unburden;
+    public override bool DrawsMovesOf(PokemonType type) => Draws == type;
+
+    public override void OnEntry(IBattleContext ctx, Battler self)
+    {
+        if (EntryLine != null) ctx.Announce(string.Format(EntryLine, self.Name));
+    }
 }
 
 // ---------------------------------------------------------------- abilities with their own code
@@ -116,6 +124,148 @@ internal sealed class Download : BattleEffect
         int def = foes.Sum(f => f.Pokemon!.GetEffectiveStat(StatType.Defense));
         int spDef = foes.Sum(f => f.Pokemon!.GetEffectiveStat(StatType.SpDefense));
         ctx.ChangeStat(self, def < spDef ? StatType.Attack : StatType.SpAttack, 1, self);
+    }
+}
+
+/// <summary>
+/// Trace (<c>SWITCH_IN_CHECK_STATE_TRACE</c>): the holder takes a foe's ability as it comes in, drawn between two
+/// foes that have one it can take, never Forecast, Trace or Multitype; the ability taken acts on entry as its own
+/// would, and is given back when the holder leaves.
+/// </summary>
+internal sealed class Trace : BattleEffect
+{
+    /// <summary>The foes whose ability the holder could take (<c>ChooseTraceTarget</c>).</summary>
+    internal static List<Battler> Candidates(IBattleContext ctx, Battler self) =>
+        ctx.ActiveFoes(self).Where(f => f.Pokemon!.AbilityName is { } a && a is not ("Forecast" or "Trace" or "Multitype")).ToList();
+
+    public override void OnEntry(IBattleContext ctx, Battler self)
+    {
+        if (self.Pokemon!.HeldItem?.Name == "Griseous Orb") return;
+        var foes = Candidates(ctx, self);
+        if (foes.Count == 0) return;
+        var foe = foes.Count == 1 ? foes[0] : foes[ctx.Random.Roll(RollKind.AbilityPick, foes.Count)];
+        var p = self.Pokemon;
+        var o = self.Volatile.Original ??= new Original();
+        if (!o.AbilityKept)
+        {
+            o.AbilityKept = true;
+            o.AbilityName = p.AbilityName;
+        }
+        p.AbilityName = foe.Pokemon!.AbilityName;
+        ctx.Announce($"{self.Name} traced {foe.Name}'s {p.AbilityName}!");
+        // The ability taken acts on entry in its own phase of the same check, as the original's flags let it
+    }
+}
+
+/// <summary>Anticipation (<c>SWITCH_IN_CHECK_STATE_ANTICIPATION</c>): the holder shudders at a foe's move that would be super effective, or a one-hit knockout from a foe of its level or more; a few fixed-damage moves don't count.</summary>
+internal sealed class Anticipation : BattleEffect
+{
+    private static readonly HashSet<string> Overlooked = new() { "40DamageFlat", "LevelDamageFlat", "RandomDamage1To150Level", "Counter", "MirrorCoat", "MetalBurst" };
+
+    public override void OnEntry(IBattleContext ctx, Battler self)
+    {
+        foreach (var foe in ctx.ActiveFoes(self))
+        {
+            foreach (var move in foe.Pokemon!.Moves)
+            {
+                if (Overlooked.Contains(move.Data.Effect ?? "")) continue;
+                bool ohko = move.Data.Effect == "OneHitKo" && self.Pokemon!.Level <= foe.Pokemon.Level;
+                if (ohko || DamageCalculator.Effectiveness(foe, self, move, ctx.Rules) > 1f)
+                {
+                    ctx.Announce($"{self.Name} shuddered!");
+                    return;
+                }
+            }
+        }
+    }
+}
+
+/// <summary>
+/// Forewarn (<c>SWITCH_IN_CHECK_STATE_FOREWARN</c>): the holder is told the foes' strongest move. A move of variable
+/// power counts as 80, a counter as 120 and a one-hit knockout as 150; a tie is a coin; with no damaging move among
+/// them, any move of a foe.
+/// </summary>
+internal sealed class Forewarn : BattleEffect
+{
+    public override void OnEntry(IBattleContext ctx, Battler self)
+    {
+        var foes = ctx.ActiveFoes(self).ToList();
+        if (foes.Count == 0) return;
+        Move? strongest = null;
+        int best = 0;
+        foreach (var foe in foes)
+        {
+            foreach (var move in foe.Pokemon!.Moves)
+            {
+                int power = move.Power;
+                if (power == 0 && move.Category != MoveCategory.Status)
+                    power = move.Data.Effect switch { "OneHitKo" => 150, "Counter" or "MirrorCoat" or "MetalBurst" => 120, _ => 80 };
+                if (power > best || (power == best && power > 0 && ctx.Random.Roll(RollKind.AbilityPick, 2) == 1))
+                {
+                    best = power;
+                    strongest = move;
+                }
+            }
+        }
+        if (strongest == null)
+        {
+            var foe = foes[ctx.Random.Roll(RollKind.AbilityPick, foes.Count)];
+            var moves = foe.Pokemon!.Moves;
+            if (moves.Count == 0) return;
+            strongest = moves[ctx.Random.Roll(RollKind.AbilityPick, moves.Count)];
+        }
+        ctx.Announce($"{self.Name}'s Forewarn alerted it to {strongest.Name}!");
+    }
+}
+
+/// <summary>Frisk (<c>SWITCH_IN_CHECK_STATE_FRISK</c>): the holder names a foe's item as it comes in, one of two at a coin.</summary>
+internal sealed class Frisk : BattleEffect
+{
+    public override void OnEntry(IBattleContext ctx, Battler self)
+    {
+        var holders = ctx.ActiveFoes(self).Where(f => f.Pokemon!.HeldItem != null).ToList();
+        if (holders.Count == 0) return;
+        var foe = holders.Count == 1 ? holders[0] : holders[ctx.Random.Roll(RollKind.AbilityPick, 2)];
+        ctx.Announce($"{self.Name} frisked {foe.Name} and found its {foe.Pokemon!.HeldItem!.Name}!");
+    }
+}
+
+/// <summary>Slow Start: the holder's Attack and Speed are halved for its first five turns, which the battle counts (<see cref="BattleEffect.StartsSlow"/>).</summary>
+internal sealed class SlowStart : BattleEffect
+{
+    public override bool StartsSlow => true;
+    public override void OnEntry(IBattleContext ctx, Battler self) => ctx.Announce($"{self.Name} can't get going yet!");
+}
+
+/// <summary>Color Change (<c>BattleSystem_TriggerAbilityOnHit</c>): the holder becomes the type of the damaging move that hit it, while it stands and isn't that type already; not Struggle.</summary>
+internal sealed class ColorChange : BattleEffect
+{
+    public override void AfterHit(IBattleContext ctx, Battler self, Battler attacker, Move move, int damage, bool critical)
+    {
+        if (!self.IsActive || damage <= 0 || move.Category == MoveCategory.Status || move.Data == BattleCore.StruggleData || self.HasType(move.Type)) return;
+        self.Volatile.Types = new List<PokemonType> { move.Type };
+        ctx.Announce($"{self.Name} transformed into the {move.Type} type!");
+    }
+}
+
+/// <summary>Aftermath: whoever knocks the holder out with a contact move loses a quarter of its HP, unless anyone on the field has Damp or it has Magic Guard.</summary>
+internal sealed class Aftermath : BattleEffect
+{
+    public override void AfterHit(IBattleContext ctx, Battler self, Battler attacker, Move move, int damage, bool critical)
+    {
+        if (self.Pokemon!.CurrentHP > 0 || !move.Data.MakesContact || !attacker.IsActive || attacker == self || ctx.AnyoneHas("Damp")) return;
+        ctx.LoseHp(attacker, Formulas.Divide(attacker.Pokemon!.MaxHP, 4), $"{attacker.Name} is hurt by {self.Name}'s Aftermath!");
+    }
+}
+
+/// <summary>Cute Charm: three times in ten a contact move's user falls in love with the holder, if the genders allow.</summary>
+internal sealed class CuteCharm : BattleEffect
+{
+    public override void AfterHit(IBattleContext ctx, Battler self, Battler attacker, Move move, int damage, bool critical)
+    {
+        if (!move.Data.MakesContact || !attacker.IsActive || !self.IsActive || attacker == self || attacker.Volatile.InLoveWith != null) return;
+        if (ctx.Random.Roll(RollKind.AbilityChance, 100) >= 30) return;
+        ctx.Infatuate(attacker, self);
     }
 }
 
@@ -179,45 +329,15 @@ internal sealed class Soundproof : BattleEffect
     }
 }
 
+/// <summary>Guts: a burn doesn't halve its attacks; the Attack bonus is in the damage formula by name.</summary>
 internal sealed class Guts : BattleEffect
 {
     public override bool IgnoresBurnPenalty => true;
-    public override float AttackMultiplier(Battler self, Move move) =>
-        move.Category == MoveCategory.Physical && self.Pokemon!.Status != StatusCondition.None ? 1.5f : 1f;
 }
 
-internal sealed class TechnicianEffect : BattleEffect
-{
-    public override float PowerMultiplier(Battler self, Battler target, Move move) => move.Power <= 60 ? 1.5f : 1f;
-}
-
-internal sealed class IronFist : BattleEffect
-{
-    public override float PowerMultiplier(Battler self, Battler target, Move move) =>
-        (move.Data.Flags & MoveFlags.Punch) != 0 ? 1.2f : 1f;
-}
-
-internal sealed class Reckless : BattleEffect
-{
-    // Moves that hurt their user: by recoil, or by crashing when they miss
-    public override float PowerMultiplier(Battler self, Battler target, Move move) =>
-        move.Data.RecoilPercent > 0 || move.Data.Effect == "CrashOnMiss" ? 1.2f : 1f;
-}
-
-internal sealed class Rivalry : BattleEffect
-{
-    public override float PowerMultiplier(Battler self, Battler target, Move move)
-    {
-        var a = self.Pokemon!.Gender;
-        var b = target.Pokemon!.Gender;
-        if (a == Gender.Genderless || b == Gender.Genderless) return 1f;
-        return a == b ? 1.25f : 0.75f;
-    }
-}
-
+/// <summary>Hustle: physical moves hit less often; the Attack bonus is in the damage formula by name.</summary>
 internal sealed class Hustle : BattleEffect
 {
-    public override float AttackMultiplier(Battler self, Move move) => move.Category == MoveCategory.Physical ? 1.5f : 1f;
     public override float AccuracyMultiplier(Battler self, Move move) => move.Category == MoveCategory.Physical ? 0.8f : 1f;
 }
 
@@ -227,16 +347,10 @@ internal sealed class TintedLens : BattleEffect
         effectiveness > 0f && effectiveness < 1f ? 2f : 1f;
 }
 
-internal sealed class MarvelScale : BattleEffect
-{
-    public override float DefenseMultiplier(Battler self, Move move) =>
-        move.Category == MoveCategory.Physical && self.Pokemon!.Status != StatusCondition.None ? 1.5f : 1f;
-}
-
+/// <summary>Quick Feet: half as fast again with a condition, and paralysis doesn't slow it; both in the turn order by name.</summary>
 internal sealed class QuickFeet : BattleEffect
 {
     public override bool IgnoresParalysisSlowdown => true;
-    public override float SpeedMultiplier(Battler self) => self.Pokemon!.Status != StatusCondition.None ? 1.5f : 1f;
 }
 
 internal sealed class TangledFeet : BattleEffect
@@ -244,6 +358,7 @@ internal sealed class TangledFeet : BattleEffect
     public override float EvasionMultiplier(Battler self) => self.IsConfused ? 0.5f : 1f;
 }
 
+/// <summary>Simple: stat changes on the holder count double, in the formula by name and here for the rest.</summary>
 internal sealed class SimpleEffect : BattleEffect
 {
     public override int ScaleStatChange(int amount) => amount * 2;
@@ -342,6 +457,77 @@ internal sealed class Sniper : BattleEffect
     public override float CriticalBoost => 1.5f;
 }
 
+/// <summary>Unburden: once the item it came in with is gone, its Speed doubles (<see cref="BattleEffect.SpeedsUpUnburdened"/>).</summary>
+internal sealed class Unburden : BattleEffect
+{
+    public override bool SpeedsUpUnburdened => true;
+}
+
+// ---------------------------------------------------------------- shapes (plan 06 · R7)
+
+/// <summary>Forecast (<c>BattleSystem_TriggerFormChange</c>): Castform takes the weather's shape and type, and its own back when the sky clears or is ignored.</summary>
+internal sealed class Forecast : BattleEffect
+{
+    public override string? ChangeShape(IBattleContext ctx, Battler self)
+    {
+        var p = self.Pokemon!;
+        if (p.Species.Name != "Castform") return null;
+        string? wanted = ctx.Field.WeatherInEffect switch
+        {
+            BattleWeather.Sun => "Castform-Sunny",
+            BattleWeather.Rain => "Castform-Rainy",
+            BattleWeather.Hail => "Castform-Snowy",
+            _ => null
+        };
+        return Shapes.Take(self, wanted);
+    }
+}
+
+/// <summary>Flower Gift: Cherrim blooms in the sun; the Attack and Sp. Def it gives its side are in the damage formula by name.</summary>
+internal sealed class FlowerGift : BattleEffect
+{
+    public override string? ChangeShape(IBattleContext ctx, Battler self)
+    {
+        var p = self.Pokemon!;
+        if (p.Species.Name != "Cherrim") return null;
+        return Shapes.Take(self, ctx.Field.WeatherInEffect == BattleWeather.Sun ? "Cherrim-Sunshine" : null);
+    }
+}
+
+/// <summary>Multitype: Arceus is the type of the plate it holds, for good (the original sets its party form from the item).</summary>
+internal sealed class Multitype : BattleEffect
+{
+    public override string? ChangeShape(IBattleContext ctx, Battler self)
+    {
+        var p = self.Pokemon!;
+        if (p.Species.Name != "Arceus") return null;
+        string? wanted = null;
+        if (p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus") && p.Species.Form("Arceus-" + hold["Arceus".Length..]) != null)
+            wanted = "Arceus-" + hold["Arceus".Length..];
+        if ((p.Form ?? null) == wanted) return null;
+        p.ChangeForm(wanted);
+        return $"{self.Name} transformed!";
+    }
+}
+
+/// <summary>A shape taken for the battle alone: kept the first time so it is given back when the Pokémon leaves (<c>Volatiles.Original</c>).</summary>
+internal static class Shapes
+{
+    public static string? Take(Battler self, string? form)
+    {
+        var p = self.Pokemon!;
+        if (p.Form == form) return null;
+        var o = self.Volatile.Original ??= new Original();
+        if (o.Species == null)
+        {
+            o.Species = p.Species;
+            o.Form = p.Form;
+        }
+        p.ChangeForm(form);
+        return $"{self.Name} transformed!";
+    }
+}
+
 // ---------------------------------------------------------------- the weather (plan 06 · R3)
 
 /// <summary>
@@ -390,16 +576,13 @@ internal sealed class WeatherHealer(BattleWeather weather, string name) : Battle
     }
 }
 
-/// <summary>Water moves heal it by a quarter and rain by an eighth each turn; Fire moves hurt it a quarter more and the sun takes an eighth each turn.</summary>
+/// <summary>Water moves heal it by a quarter and rain by an eighth each turn; the sun takes an eighth each turn. Fire hurting it a quarter more is in the damage formula by name.</summary>
 internal sealed class DrySkin : BattleEffect
 {
     private readonly AbsorbType water = new(PokemonType.Water, "Dry Skin");
 
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness) =>
         water.AbsorbsMove(ctx, self, attacker, move, effectiveness);
-
-    public override float IncomingDamageMultiplier(Battler self, Battler attacker, Move move, float effectiveness) =>
-        move.Type == PokemonType.Fire ? 1.25f : 1f;
 
     public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
     {
@@ -411,12 +594,9 @@ internal sealed class DrySkin : BattleEffect
     }
 }
 
-/// <summary>In the sun its special moves are half as strong again, and it loses an eighth of its HP each turn.</summary>
+/// <summary>In the sun it loses an eighth of its HP each turn; its special moves being half as strong again is in the damage formula by name.</summary>
 internal sealed class SolarPower : BattleEffect
 {
-    public override float AttackMultiplier(Battler self, Move move) =>
-        move.Category == MoveCategory.Special && self.Field?.WeatherInEffect == BattleWeather.Sun ? 1.5f : 1f;
-
     public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
     {
         if (over == BattleWeather.Sun)

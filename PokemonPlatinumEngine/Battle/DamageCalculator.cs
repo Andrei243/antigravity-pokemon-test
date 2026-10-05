@@ -128,36 +128,75 @@ public static class DamageCalculator
 
         if (!powerOverride.HasValue && !noCrit) result.IsCritical = RollsCritical(attacker, defender, move, rng, rules, critBonus);
 
-        // The power: the move's own doubling, a Charge behind an Electric move, then each bonus in turn
-        power = power * powerTenths / 10;
-        if (attacker.Volatile.ChargeTurns > 0 && move.Type == PokemonType.Electric && !typeless) power *= 2;
-        foreach (var e in attackerEffects) power = Formulas.Scale(power, e.PowerMultiplier(attacker, defender, move));
-        if (!typeless && field != null)
-        {
-            if (move.Type == PokemonType.Electric && field.MudSport()) power /= 2;
-            if (move.Type == PokemonType.Fire && field.WaterSport()) power /= 2;
-        }
-        power = Math.Max(1, power);
-
+        // The power and the stats, each ability's and item's bonus in the original's own place and order
+        // (BattleSystem_CalcMoveDamage), every step rounded down. Abilities go by name; the defender's count for
+        // nothing against Mold Breaker. Items keep their hooks, called at their slot (plan 06 · R8 places each).
+        string? mine = attacker.Ability?.Name;
+        string? theirs = breaksAbility ? null : defender.Ability?.Name;
+        var myItem = BattleEffects.ItemOf(attacker);
+        var theirItem = BattleEffects.ItemOf(defender);
         bool physical = powerOverride.HasValue || move.Category == MoveCategory.Physical;
+        bool typed = !typeless;
+        var type = move.Type;
         int attack = physical ? atkPokemon.Attack : atkPokemon.SpAttack;
         int defense = physical ? defPokemon.Defense : defPokemon.SpDefense;
-        foreach (var e in attackerEffects) attack = Formulas.Scale(attack, e.AttackMultiplier(attacker, move));
-        foreach (var e in defenderEffects) defense = Formulas.Scale(defense, e.DefenseMultiplier(defender, move));
-        // A sandstorm hardens Rock types against special moves; Explosion finds half a Defense
-        if (!physical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 15 / 10;
-        if (rules.ExplosionHalvesDefense && move.Data.Effect == "HalveDefense") defense /= 2;
 
+        // The move's own multiplier (Pursuit, a Helping Hand; Reckless sets it from the move's script), a Charge, Technician
+        power = power * powerTenths / 10;
+        if (mine == "Reckless" && (move.Data.RecoilPercent > 0 || move.Data.Effect == "CrashOnMiss")) power = power * 12 / 10;
+        if (attacker.Volatile.ChargeTurns > 0 && type == PokemonType.Electric && typed) power *= 2;
+        if (mine == "Technician" && move.Data != BattleCore.StruggleData && power <= 60) power = power * 15 / 10;
+        if (physical && mine is "Huge Power" or "Pure Power") attack *= 2;
+        if (physical && mine == "Slow Start" && field != null && field.Turn() - attacker.Volatile.SlowStartTurn < 5) attack /= 2;
+        // The items: a type's boost, a Choice Band, a Soul Dew and the rest, in the original's block
+        if (myItem != null) power = Formulas.Scale(power, myItem.PowerMultiplier(attacker, defender, move));
+        if (myItem != null) attack = Formulas.Scale(attack, myItem.AttackMultiplier(attacker, move));
+        if (theirItem != null) defense = Formulas.Scale(defense, theirItem.DefenseMultiplier(defender, move));
+        if (typed && theirs == "Thick Fat" && type is PokemonType.Fire or PokemonType.Ice) power /= 2;
+        if (physical && mine == "Hustle") attack = attack * 150 / 100;
+        if (physical && mine == "Guts" && atkPokemon.Status != StatusCondition.None) attack = attack * 150 / 100;
+        if (physical && theirs == "Marvel Scale" && defPokemon.Status != StatusCondition.None) defense = defense * 150 / 100;
+        if (!physical && ((mine == "Plus" && SideHas(attacker, "Minus")) || (mine == "Minus" && SideHas(attacker, "Plus")))) attack = attack * 150 / 100;
+        if (typed && field != null)
+        {
+            if (type == PokemonType.Electric && field.MudSport()) power /= 2;
+            if (type == PokemonType.Fire && field.WaterSport()) power /= 2;
+        }
+        if (typed && atkPokemon.CurrentHP * 3 <= atkPokemon.MaxHP && mine switch
+            {
+                "Overgrow" => type == PokemonType.Grass, "Blaze" => type == PokemonType.Fire, "Torrent" => type == PokemonType.Water, "Swarm" => type == PokemonType.Bug, _ => false
+            })
+            power = power * 150 / 100;
+        if (typed && type == PokemonType.Fire && theirs == "Heatproof") power /= 2;
+        if (typed && type == PokemonType.Fire && theirs == "Dry Skin") power = power * 125 / 100;
+
+        // The stages: Simple doubles its holder's, Unaware ignores the other's, a critical hit the ones that would help the target
         int attackStage = atkPokemon.StatStages.GetValueOrDefault(physical ? StatType.Attack : StatType.SpAttack);
         int defenseStage = defPokemon.StatStages.GetValueOrDefault(physical ? StatType.Defense : StatType.SpDefense);
-        if (defenderEffects.Any(e => e.IgnoresOthersStatStages)) attackStage = 0;
-        if (attackerEffects.Any(e => e.IgnoresOthersStatStages)) defenseStage = 0;
+        if (!rules.SimpleDoublesChanges)
+        {
+            if (mine == "Simple") attackStage = Math.Clamp(attackStage * 2, -6, 6);
+            if (theirs == "Simple") defenseStage = Math.Clamp(defenseStage * 2, -6, 6);
+        }
+        if (theirs == "Unaware") attackStage = 0;
+        if (mine == "Unaware") defenseStage = 0;
         if (result.IsCritical)
         {
-            // A critical hit ignores the attacker's drops and the defender's boosts
             attackStage = Math.Max(0, attackStage);
             defenseStage = Math.Min(0, defenseStage);
         }
+
+        if (typed && mine == "Rivalry" && atkPokemon.Gender != Gender.Genderless && defPokemon.Gender != Gender.Genderless)
+            power = atkPokemon.Gender == defPokemon.Gender ? power * 125 / 100 : power * 75 / 100;
+        if (mine == "Iron Fist" && (move.Data.Flags & MoveFlags.Punch) != 0) power = power * 12 / 10;
+        if (!physical && mine == "Solar Power" && weather == BattleWeather.Sun) attack = attack * 15 / 10;
+        // A sandstorm hardens Rock types against special moves; Flower Gift's sun for a side's Attack and Sp. Def; Explosion finds half a Defense
+        if (!physical && weather == BattleWeather.Sandstorm && defender.HasType(PokemonType.Rock)) defense = defense * 15 / 10;
+        if (physical && weather == BattleWeather.Sun && SideHas(attacker, "Flower Gift")) attack = attack * 15 / 10;
+        if (!physical && weather == BattleWeather.Sun && !breaksAbility && SideHas(defender, "Flower Gift")) defense = defense * 15 / 10;
+        if (rules.ExplosionHalvesDefense && move.Data.Effect == "HalveDefense") defense /= 2;
+        power = Math.Max(1, power);
+
         attack = Math.Max(1, Formulas.Staged(attack, attackStage));
         defense = Math.Max(1, Formulas.Staged(defense, defenseStage));
 
@@ -201,6 +240,10 @@ public static class DamageCalculator
         result.Damage = Math.Max(1, damage);
         return result;
     }
+
+    /// <summary>Anyone standing on a battler's side, itself included, has this ability in force (Plus and Minus, Flower Gift: the original's <c>COUNT_ALIVE_BATTLERS_OUR_SIDE</c>).</summary>
+    private static bool SideHas(Battler b, string ability) =>
+        b.Field != null && b.Field.Battlers().Any(o => o.Side == b.Side && o.IsActive && o.Ability?.Name == ability);
 
     /// <summary>
     /// Whether a hit is critical: one in the rules' odds for the stage (Platinum's are 1/16, 1/8, 1/4, 1/3, 1/2),

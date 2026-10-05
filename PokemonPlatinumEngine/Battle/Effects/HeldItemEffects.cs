@@ -307,7 +307,9 @@ internal sealed class PinchStatBerry(StatType stat) : BattleEffect
     public override void OnConditionChanged(IBattleContext ctx, Battler self, Battler? cause)
     {
         var p = self.Pokemon!;
-        if (p.IsFainted || p.CurrentHP * 4 > p.MaxHP || p.StatStages.GetValueOrDefault(stat) >= 6) return;
+        // Eaten at a quarter of its HP, or at half with Gluttony (the item's parameter halved)
+        int at = self.Ability?.Effect is { EatsBerriesEarly: true } ? 2 : 4;
+        if (p.IsFainted || p.CurrentHP > p.MaxHP / at || p.StatStages.GetValueOrDefault(stat) >= 6) return;
         string berry = p.HeldItem!.Name;
         ctx.ConsumeItem(self);
         ctx.Announce($"{self.Name} ate its {berry}!");

@@ -177,6 +177,10 @@ public sealed partial class BattleCore
         var v = user.Volatile;
         var move = use.Move;
 
+        // Normalize: every move its user makes is Normal, Hidden Power and Weather Ball included (the original
+        // reads the ability wherever it reads a move's type; Retype keeps those moves' own types from winning)
+        if (Has(user, "Normalize") && move.Type != PokemonType.Normal) use.Move = move = new Move(move.Data.OfType(PokemonType.Normal), move.CurrentPP);
+
         // A move that takes a turn to get ready spends it now
         if (use.Effect.Charge is { } charge && !use.Strikes && !SkipsTheCharge(use, charge))
         {
@@ -206,6 +210,13 @@ public sealed partial class BattleCore
             Say("But there was no target...");
             Unlock(user);
             return false;
+        }
+
+        // Lightning Rod or Storm Drain drew it away from where it was aimed (subscript_lightning_rod_redirected)
+        foreach (var t in use.Targets.Where(t => t.Turn.DrewTheMove))
+        {
+            t.Turn.DrewTheMove = false;
+            Say($"{t.Name}'s {t.Ability?.Name} took the attack!");
         }
 
         // Whoever it is aimed at can send it back with Mirror Move (the original's moveCopied)
@@ -348,6 +359,14 @@ public sealed partial class BattleCore
                 Say($"{user.Name} is frozen solid!");
                 return false;
             }
+        }
+
+        // Truant loafs every other turn, from the one after its first (Battler_CheckTruant)
+        if (Has(user, "Truant") && (Turn & 1) != v.TruantParity)
+        {
+            Say($"{user.Name} is loafing around!");
+            Unlock(user);
+            return false;
         }
 
         if (v.Recharging)
@@ -556,17 +575,30 @@ public sealed partial class BattleCore
                 return speedOrder.Concat(AllBattlers).Distinct().Where(b => b.IsActive && b != user).ToList();
             case MoveTarget.RandomFoe:
                 if (Centre() is { } drawnTo) return new List<Battler> { drawnTo };
-                return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Roll(RollKind.Target, foes.Count)] };
+                return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
             default:
                 // Follow Me on the other side draws every move aimed at one Pokémon to its user, while that one stands
                 if (Centre() is { } centre) return new List<Battler> { centre };
-                if (chosen != null && chosen.IsActive && chosen != user) return new List<Battler> { chosen };
+                if (chosen != null && chosen.IsActive && chosen != user) return Drawn(chosen);
                 // The chosen foe is gone: the move goes to the other one (an ally that fainted leaves nothing to hit)
                 if (chosen != null && chosen.Side == user.Side) return new List<Battler>();
-                return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Roll(RollKind.Target, foes.Count)] };
+                return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
         }
 
         Battler? Centre() => Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
+
+        // Lightning Rod and Storm Drain (BattleSystem_CheckRedirectionAbilities): an Electric or a Water move aimed
+        // at one Pokémon goes to the fastest holder that isn't its user, unless it is on its turn of getting ready
+        // or its user has Normalize or Mold Breaker. Nothing is said when it was aimed at the holder already.
+        List<Battler> Drawn(Battler target)
+        {
+            if (Has(user, "Normalize") || Has(user, "Mold Breaker") || move.Type is not (PokemonType.Electric or PokemonType.Water)) return new List<Battler> { target };
+            if (EffectOf(move.Data).Charge != null && !user.Volatile.Charging) return new List<Battler> { target };
+            var holder = BySpeed().FirstOrDefault(b => b.IsActive && b != user && b.Ability?.Effect?.DrawsMovesOf(move.Type) == true);
+            if (holder == null || holder == target) return new List<Battler> { target };
+            holder.Turn.DrewTheMove = true;
+            return new List<Battler> { holder };
+        }
     }
 
     /// <summary>The effect a move plays on one target: what kind of move it is and, for a damaging move, how it landed.</summary>
@@ -649,8 +681,16 @@ public sealed partial class BattleCore
         bool breaks = userEffects.Any(e => e.IgnoresTargetAbility);
         var targetEffects = BattleEffects.Of(target, includeAbility: !breaks).ToList();
 
-        int accuracy = targetEffects.Any(e => e.IgnoresOthersStatStages) ? 0 : user.Pokemon!.StatStages.GetValueOrDefault(StatType.Accuracy);
-        int evasion = userEffects.Any(e => e.IgnoresOthersStatStages) ? 0 : target.Pokemon!.StatStages.GetValueOrDefault(StatType.Evasion);
+        int accuracy = user.Pokemon!.StatStages.GetValueOrDefault(StatType.Accuracy);
+        int evasion = target.Pokemon!.StatStages.GetValueOrDefault(StatType.Evasion);
+        // Under Platinum's rules Simple's stages count double; Unaware takes no notice of the other's
+        if (!Rules.SimpleDoublesChanges)
+        {
+            if (Has(user, "Simple")) accuracy *= 2;
+            if (!breaks && Has(target, "Simple")) evasion *= 2;
+        }
+        if (targetEffects.Any(e => e.IgnoresOthersStatStages)) accuracy = 0;
+        if (userEffects.Any(e => e.IgnoresOthersStatStages)) evasion = 0;
         // A target that has been identified can't hide behind raised evasion
         if ((target.Volatile.Identified || target.Volatile.MiracleEye) && evasion > 0) evasion = 0;
         int rate = Formulas.HitRate(use.Effect.AccuracyUnder(weather, move.Accuracy), accuracy, evasion);
@@ -669,9 +709,18 @@ public sealed partial class BattleCore
         return rng.Roll(RollKind.Accuracy, 100) < rate;
     }
 
-    /// <summary>The held item's effect, unless an Embargo has put it out of use.</summary>
-    private static BattleEffect? ItemOf(Battler b) =>
-        b.Volatile.EmbargoTurns > 0 ? null : HeldItemEffects.For(b.Pokemon?.HeldItem);
+    /// <summary>The held item's effect, unless an Embargo or Klutz has put it out of use.</summary>
+    private static BattleEffect? ItemOf(Battler b) => BattleEffects.ItemOf(b);
+
+    /// <summary>
+    /// A move takes the type its own rule gives it (Hidden Power, Judgment, Weather Ball, Natural Gift), unless its
+    /// user has Normalize, whose Normal wins over every one of them.
+    /// </summary>
+    private static void Retype(MoveUse use, PokemonType type)
+    {
+        if (Has(use.User, "Normalize") || type == use.Move.Type) return;
+        use.Move = new Move(use.Data.OfType(type), use.Move.CurrentPP);
+    }
 
     // ---------------------------------------------------------------- a damaging move
 
@@ -1125,6 +1174,8 @@ public sealed partial class BattleCore
     private void CheckConditionHooks(Battler b, Battler? cause)
     {
         if (b.Pokemon == null || b.Pokemon.IsFainted) return;
+        // Unburden is armed again by an item in its hands (the original's RecoverStatusByAbility, after every move)
+        if (b.Pokemon.HeldItem != null) b.Volatile.CanUnburden = true;
         foreach (var e in BattleEffects.Of(b).ToList()) e.OnConditionChanged(this, b, cause);
     }
 }

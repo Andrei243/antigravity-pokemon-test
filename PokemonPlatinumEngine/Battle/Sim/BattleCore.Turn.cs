@@ -181,14 +181,18 @@ public sealed partial class BattleCore
 
             if (b.IsActive)
             {
+                // Poison Heal (subscript_poison_damage): an eighth back instead, unless it is at full HP
+                bool poisonHeals = p.Status is StatusCondition.Poison or StatusCondition.Toxic && !guarded && Has(b, "Poison Heal");
                 switch (p.Status)
                 {
                     case StatusCondition.Poison:
-                        LoseHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} is hurt by poison!");
+                        if (poisonHeals) PoisonHeal(b);
+                        else LoseHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} is hurt by poison!");
                         break;
                     case StatusCondition.Toxic:
                         p.ToxicCounter = Math.Min(15, p.ToxicCounter + 1);
-                        LoseHp(b, Formulas.Divide(p.MaxHP, 16) * p.ToxicCounter, $"{b.Name} is hurt by poison!");
+                        if (poisonHeals) PoisonHeal(b);
+                        else LoseHp(b, Formulas.Divide(p.MaxHP, 16) * p.ToxicCounter, $"{b.Name} is hurt by poison!");
                         break;
                     case StatusCondition.Burn:
                         LoseHp(b, Formulas.Divide(p.MaxHP, Rules.BurnDamageDivisor), $"{b.Name} is hurt by its burn!");
@@ -373,6 +377,12 @@ public sealed partial class BattleCore
     }
 
     // ---------------------------------------------------------------- between turns
+
+    private void PoisonHeal(Battler b)
+    {
+        var p = b.Pokemon!;
+        if (p.CurrentHP < p.MaxHP) RestoreHp(b, Formulas.Divide(p.MaxHP, 8), $"{b.Name} restored HP using its Poison Heal!");
+    }
 
     /// <summary><c>BattleSystem_SetupNextTurn</c>: a sleeper is in the middle of nothing.</summary>
     private void SetUpNextTurn()

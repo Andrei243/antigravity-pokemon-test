@@ -141,6 +141,14 @@ public sealed class Ruleset
     /// </summary>
     public bool FoesCanTakeItems { get; private init; }
 
+    // ---- Abilities (plan 06 · R7)
+
+    /// <summary>
+    /// Simple doubles each change to the holder's stat stages (Generation 5 on). In Platinum the stages change as
+    /// anyone's do and count double wherever they are read: the damage formula, the accuracy check, the turn order.
+    /// </summary>
+    public bool SimpleDoublesChanges { get; private init; }
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -177,7 +185,8 @@ public sealed class Ruleset
         HiddenPowerPower = 60,
         ChatterConfusionChance = 100,
         KnockOffStrongerOnItem = true,
-        FoesCanTakeItems = true
+        FoesCanTakeItems = true,
+        SimpleDoublesChanges = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

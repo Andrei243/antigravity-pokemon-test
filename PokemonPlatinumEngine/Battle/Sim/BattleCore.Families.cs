@@ -108,8 +108,7 @@ public sealed partial class BattleCore
                 use.Scratch = b.Rules.HiddenPowerPower > 0 ? b.Rules.HiddenPowerPower : powerBits * 40 / 63 + 30;
                 int id = typeBits * 15 / 63 + 1;
                 if (id >= 9) id++;
-                var type = PlatinumTypeOrder[id];
-                if (type != use.Move.Type) use.Move = new Move(use.Data.OfType(type), use.Move.CurrentPP);
+                Retype(use, PlatinumTypeOrder[id]);
                 return true;
             },
             BasePower = (b, use, t) => (int)use.Scratch!
@@ -120,9 +119,8 @@ public sealed partial class BattleCore
             // The type of the plate its user holds (the plates' hold effects are named for it)
             Start = (b, use) =>
             {
-                string? hold = use.User.Volatile.EmbargoTurns > 0 ? null : use.User.Pokemon!.HeldItem?.HoldEffect;
-                if (hold != null && hold.StartsWith("Arceus") && Enum.TryParse(hold["Arceus".Length..], out PokemonType type) && type != use.Move.Type)
-                    use.Move = new Move(use.Data.OfType(type), use.Move.CurrentPP);
+                string? hold = BattleEffects.ItemInHand(use.User)?.HoldEffect;
+                if (hold != null && hold.StartsWith("Arceus") && Enum.TryParse(hold["Arceus".Length..], out PokemonType type)) Retype(use, type);
                 return true;
             }
         },

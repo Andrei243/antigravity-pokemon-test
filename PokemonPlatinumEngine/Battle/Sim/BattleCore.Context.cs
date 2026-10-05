@@ -50,7 +50,8 @@ public sealed partial class BattleCore
             }
         }
 
-        foreach (var e in BattleEffects.Of(target)) amount = e.ScaleStatChange(amount);
+        // By the modern rules Simple doubles the change itself; under Platinum's its stages count double where they are read
+        if (Rules.SimpleDoublesChanges) foreach (var e in BattleEffects.Of(target)) amount = e.ScaleStatChange(amount);
         int current = p.StatStages.GetValueOrDefault(stat);
         int next = Math.Clamp(current + amount, -6, 6);
         if (next == current)
@@ -220,6 +221,30 @@ public sealed partial class BattleCore
         if (holder.Pokemon?.HeldItem is not { } item) return;
         holder.Volatile.ConsumedItem = item;
         holder.Pokemon.HeldItem = null;
+    }
+
+    public bool AnyoneHas(string ability) => AllBattlers.Any(b => b.IsActive && b.Ability?.Name == ability);
+
+    public IEnumerable<Battler> Everyone => BySpeed().Where(b => b.IsActive);
+
+    /// <summary>
+    /// An ability's infatuation (Cute Charm; <c>subscript_infatuate</c> as an ability's side effect): Oblivious
+    /// says so, the wrong gender or a love already there goes unsaid, and the ability is named when it works.
+    /// </summary>
+    bool IBattleContext.Infatuate(Battler target, Battler with)
+    {
+        if (!target.IsActive || !with.IsActive) return false;
+        if (target.Ability is { Effect.BlocksInfatuation: true } oblivious)
+        {
+            Say($"{target.Name}'s {oblivious.Name} prevents romance!");
+            return false;
+        }
+        var mine = with.Pokemon!.Gender;
+        var theirs = target.Pokemon!.Gender;
+        if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || target.Volatile.InLoveWith != null) return false;
+        target.Volatile.InLoveWith = with.Place;
+        Say($"{with.Name}'s {with.Ability?.Name} infatuated {target.Name}!");
+        return true;
     }
 
     /// <summary>

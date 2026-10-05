@@ -268,6 +268,23 @@ internal sealed class Volatiles
     /// <summary>The held item it used up or threw, which Recycle brings back.</summary>
     public ItemData? ConsumedItem;
 
+    // ---- Abilities (plan 06 · R7)
+
+    /// <summary>Unburden: it came in holding an item, so losing it doubles its Speed (the original's <c>canUnburden</c>).</summary>
+    public bool CanUnburden;
+
+    /// <summary>The turn Slow Start counts its five from (the original's <c>slowStartTurnNumber</c>): its first turn, or the one after a Transform.</summary>
+    public int SlowStartTurn;
+
+    /// <summary>Slow Start has run its five turns and said so (the original's <c>slowStartFinished</c>).</summary>
+    public bool SlowStartEnded;
+
+    /// <summary>Truant acts on the turns of this parity and loafs on the others (the original's <c>truant</c> bit).</summary>
+    public int TruantParity;
+
+    /// <summary>What has acted on entry since it came in (the original's <c>*Announced</c> flags, cleared by a Transform): each ability acts once per stay on the field.</summary>
+    public EntryCheck Announced;
+
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
     /// <summary>What Baton Pass hands on to the Pokémon that takes its place (the original's two <c>BATON_PASSED</c> masks).</summary>
@@ -290,6 +307,27 @@ internal sealed class Volatiles
         HealBlockTurns = HealBlockTurns,
         MagnetRiseTurns = MagnetRiseTurns
     };
+}
+
+/// <summary>The checks a Pokémon has been through since it came in (<c>BattleSystem_TriggerEffectOnSwitch</c>'s phases), so each acts once.</summary>
+[System.Flags]
+internal enum EntryCheck
+{
+    None = 0,
+    Trace = 1,
+    WeatherAbility = 2,
+    Intimidate = 4,
+    Download = 8,
+    Anticipation = 16,
+    Forewarn = 32,
+    Frisk = 64,
+    SlowStart = 128,
+    MoldBreaker = 256,
+    Pressure = 512,
+    /// <summary>An ability of a later generation that acts on entry.</summary>
+    Other = 1024,
+    /// <summary>Its held item's say on entry, and the conditions it can't keep.</summary>
+    Item = 2048
 }
 
 /// <summary>
@@ -331,6 +369,9 @@ internal sealed class TurnFlags
 
     /// <summary>Its ally's Helping Hand makes its move half as strong again.</summary>
     public bool HelpingHand;
+
+    /// <summary>Its Lightning Rod or Storm Drain drew the move coming at it, which is told as the move arrives.</summary>
+    public bool DrewTheMove;
 
     /// <summary>Roost: its Flying type doesn't count until the turn ends.</summary>
     public bool Roosting;

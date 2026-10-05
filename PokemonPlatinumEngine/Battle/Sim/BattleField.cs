@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
@@ -80,6 +81,12 @@ public sealed class FieldState
 
     /// <summary>How many Pokémon of a side stand on the field and can fight.</summary>
     internal Func<BattleSide, int> Standing = _ => 1;
+
+    /// <summary>The turn being played, counted from 0 (Slow Start counts its five turns from the holder's first).</summary>
+    internal Func<int> Turn = () => 0;
+
+    /// <summary>Every place on the field with its Pokémon (Plus and Minus, Flower Gift ask after the holder's side).</summary>
+    internal Func<IEnumerable<Battler>> Battlers = () => Array.Empty<Battler>();
 
     /// <summary>The weather as it bears on the battle: none while Cloud Nine or Air Lock is out.</summary>
     public BattleWeather WeatherInEffect => WeatherIgnored() ? BattleWeather.None : Weather;

@@ -61,7 +61,9 @@ public enum RollKind
     /// <summary>A power or an amount of damage that chance decides: Psywave (of 11), Magnitude (of 100), Present (of 256).</summary>
     Power,
     /// <summary>Which of several things a move picks: Tri Attack's condition (a burn, a freeze, paralysis), Acupressure's stat.</summary>
-    Pick
+    Pick,
+    /// <summary>After a battle won: out of 10, a Pokémon with Pickup finds something on a 0, then out of 100 which; out of 100, Honey Gather finds honey below its level's chance.</summary>
+    Pickup
 }
 
 /// <summary>

@@ -1125,9 +1125,26 @@ public class GameEngine
     /// </summary>
     private List<string> PrepareModels(IEnumerable<Pokemon> foes)
     {
-        var species = foes.Concat(playerParty.Members).Select(p => p.ModelName).Distinct().ToList();
+        var all = foes.Concat(playerParty.Members).ToList();
+        var species = all.Select(p => p.ModelName).Concat(all.SelectMany(BattleShapesOf)).Distinct().ToList();
         foreach (var name in species) PokemonModels.Request(name);
         return species;
+    }
+
+    /// <summary>The shapes a Pokémon may take in the battle itself (plan 06 · R7): Castform's weather, Cherrim's sun, Arceus's plate. Their models are asked for with its own.</summary>
+    private static IEnumerable<string> BattleShapesOf(Pokemon p)
+    {
+        switch (p.Species.Name)
+        {
+            case "Castform" when p.AbilityName == "Forecast":
+                return new[] { "Castform-Sunny", "Castform-Rainy", "Castform-Snowy" };
+            case "Cherrim" when p.AbilityName == "Flower Gift":
+                return new[] { "Cherrim-Sunshine" };
+            case "Arceus" when p.AbilityName == "Multitype" && p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus") && p.Species.Form("Arceus-" + hold["Arceus".Length..]) != null:
+                return new[] { "Arceus-" + hold["Arceus".Length..] };
+            default:
+                return Array.Empty<string>();
+        }
     }
 
     /// <summary>Waits for models still being built, while the screen is black between scenes.</summary>

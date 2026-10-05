@@ -130,6 +130,8 @@ public sealed partial class BattleCore : IBattleContext
         Field.MudSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.MudSport);
         Field.WaterSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.WaterSport);
         Field.Standing = side => SlotsOf(side).Count(b => b.IsActive);
+        Field.Turn = () => Turn;
+        Field.Battlers = () => AllBattlers;
 
         // The first Pokémon in: the first ones able to fight
         var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(slots).ToList();
@@ -341,7 +343,7 @@ public sealed partial class BattleCore : IBattleContext
         }
 
         OpenUnderTheSky();
-        RunEntryEffects(AllBattlers.Where(b => b.IsActive).ToList());
+        SwitchInChecks();
     }
 
     /// <summary>A turn: everyone acts in order, the end of the turn runs, fainted Pokémon are replaced.</summary>
@@ -391,6 +393,9 @@ public sealed partial class BattleCore : IBattleContext
             }
             act.User.Turn.Acted = true;
             if (Result == BattleResult.None) ResolveFaints();
+            // What acts on entry is looked for again after every action (an ability gained by a Transform, a
+            // shape the weather changed), as the original runs its switch-in check after every move
+            if (Result == BattleResult.None) SwitchInChecks();
 
             // Trick Room turns the rest of the turn round
             if (orderChanged)
@@ -409,6 +414,8 @@ public sealed partial class BattleCore : IBattleContext
         if (Result != BattleResult.None) yield break;
         Turn++;
         SetUpNextTurn();
+        // The original's switch-in check opens every turn: Slow Start's five turns end here, and a shape follows the weather
+        SwitchInChecks();
     }
 
     private bool ranThisTurn;
@@ -507,10 +514,16 @@ public sealed partial class BattleCore : IBattleContext
         return IsSlower(first.User, second.User);
     }
 
-    /// <summary>By Speed alone: the slower goes after, or the faster while Trick Room is up; a coin between equals.</summary>
+    /// <summary>
+    /// By Speed alone, once a Quick Claw has had its say: whoever has Stall goes after (both: the faster goes
+    /// after, Trick Room or not); then the slower goes after, or the faster while Trick Room is up; a coin between equals.
+    /// </summary>
     private bool IsSlower(Battler first, Battler second)
     {
         int speedA = EffectiveSpeed(first), speedB = EffectiveSpeed(second);
+        bool stallA = Has(first, "Stall"), stallB = Has(second, "Stall");
+        if (stallA && stallB) return speedA != speedB ? speedA > speedB : rng.Roll(RollKind.SpeedTie, 2) == 1;
+        if (stallA != stallB) return stallA;
         if (speedA != speedB) return Field.TrickRoom ? speedA > speedB : speedA < speedB;
         return rng.Roll(RollKind.SpeedTie, 2) == 1;
     }
@@ -536,16 +549,24 @@ public sealed partial class BattleCore : IBattleContext
     }
 
     /// <summary>
-    /// Speed as the turn order sees it: the stat by its stage, then what abilities and items do to it, then
-    /// paralysis, then a tailwind.
+    /// Speed as the turn order sees it (<c>BattleSystem_CompareBattlerSpeed</c>, in its order): the stat by its
+    /// stage (doubled for Simple under Platinum's rules), what its ability makes of the weather, its item, Quick
+    /// Feet with a condition or else paralysis, Slow Start's first five turns, Unburden once its item is gone,
+    /// then a tailwind.
     /// </summary>
     public int EffectiveSpeed(Battler b)
     {
         var p = b.Pokemon!;
-        var effects = BattleEffects.Of(b).ToList();
-        int speed = Formulas.Staged(p.Speed, p.StatStages.GetValueOrDefault(StatType.Speed));
-        foreach (var e in effects) speed = Formulas.Scale(speed, e.SpeedMultiplier(b));
-        if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.IgnoresParalysisSlowdown)) speed /= Rules.ParalysisSpeedDivisor;
+        string? ability = b.Ability?.Name;
+        int stage = p.StatStages.GetValueOrDefault(StatType.Speed);
+        if (ability == "Simple" && !Rules.SimpleDoublesChanges) stage = Math.Clamp(stage * 2, -6, 6);
+        int speed = Formulas.Staged(p.Speed, stage);
+        if (b.Ability?.Effect is { } own) speed = Formulas.Scale(speed, own.SpeedMultiplier(b));
+        if (BattleEffects.ItemOf(b) is { } item) speed = Formulas.Scale(speed, item.SpeedMultiplier(b));
+        if (ability == "Quick Feet" && p.Status != StatusCondition.None) speed = speed * 15 / 10;
+        else if (p.Status == StatusCondition.Paralyze) speed /= Rules.ParalysisSpeedDivisor;
+        if (ability == "Slow Start" && Turn - b.Volatile.SlowStartTurn < 5) speed /= 2;
+        if (ability == "Unburden" && b.Volatile.CanUnburden && p.HeldItem == null) speed *= 2;
         if (Field.Side(b.Side).Tailwind) speed *= 2;
         return Math.Max(1, speed);
     }
@@ -743,8 +764,63 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
+        if (result == BattleResult.PlayerVictory) PickUp();
         Result = result;
         Emit(new Ended(result));
+    }
+
+    /// <summary>What Pickup finds, from the commonest up: the table slides up a row every ten levels (the original's <c>sCommonPickupItems</c>).</summary>
+    private static readonly string[] PickupCommon =
+    {
+        "Potion", "Antidote", "Super Potion", "Great Ball", "Repel", "Escape Rope", "Full Heal", "Hyper Potion", "Ultra Ball",
+        "Revive", "Rare Candy", "Dusk Stone", "Shiny Stone", "Dawn Stone", "Full Restore", "Max Revive", "PP Up", "Max Elixir"
+    };
+
+    /// <summary>The two rare finds of each row (<c>sRarePickupItems</c>).</summary>
+    private static readonly string[] PickupRare =
+    {
+        "Hyper Potion", "Nugget", "King's Rock", "Full Restore", "Ether", "White Herb", "TM44", "Elixir", "TM01", "Leftovers", "TM26"
+    };
+
+    /// <summary>The draw of 100 each common find's share ends at (<c>sCommonPickupRate</c>): 30%, then 10% each down to 4%, 4%, and 1% for each rare find.</summary>
+    private static readonly int[] PickupRates = { 30, 40, 50, 60, 70, 80, 90, 94, 98 };
+
+    /// <summary>Honey Gather's chance in a hundred, by ten levels (<c>sHoneyGatherRate</c>).</summary>
+    private static readonly int[] HoneyGatherRates = { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 };
+
+    /// <summary>
+    /// <c>BtlCmd_GenerateEndOfBattleItem</c>, at the end of a battle won: each of the player's Pokémon with Pickup
+    /// and no item has one chance in ten of finding one, drawn by its level, and each with Honey Gather and no item
+    /// its level's chance of finding Honey. Nothing is said of it.
+    /// </summary>
+    private void PickUp()
+    {
+        foreach (var p in PlayerParty.Members)
+        {
+            if (p.HeldItem != null) continue;
+            if (p.AbilityName == "Pickup" && rng.Roll(RollKind.Pickup, 10) == 0)
+            {
+                int draw = rng.Roll(RollKind.Pickup, 100);
+                int row = Math.Min((p.Level - 1) / 10, PickupRates.Length);
+                for (int j = 0; j < PickupRates.Length; j++)
+                {
+                    if (PickupRates[j] > draw)
+                    {
+                        p.HeldItem = ItemDatabase.Get(PickupCommon[row + j]);
+                        break;
+                    }
+                    if (draw >= 98)
+                    {
+                        p.HeldItem = ItemDatabase.Get(PickupRare[row + (99 - draw)]);
+                        break;
+                    }
+                }
+            }
+            else if (p.AbilityName == "Honey Gather" && rng.Roll(RollKind.Pickup, 100) < HoneyGatherRates[Math.Min((Math.Max(1, p.Level) - 1) / 10, 9)])
+            {
+                p.HeldItem = ItemDatabase.Get("Honey");
+            }
+        }
     }
 
     /// <summary>

@@ -25,11 +25,25 @@ public sealed partial class BattleCore
         place.ClearVolatile();
         place.Pokemon!.ResetStatStages();
         place.Pokemon.ToxicCounter = 0;
-        place.Volatile.EnteredOnTurn = Turn;
-        place.Volatile.FirstTurn = opening ? Turn : Turn + 1;
+        CountFrom(place, opening);
         place.FoughtAgainst.Clear();
         foreach (var foe in EnemySlots.Where(b => b.IsActive))
             foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
+    }
+
+    /// <summary>
+    /// The turns a Pokémon's time on the field counts from (the original's <c>fakeOutTurnNumber</c>,
+    /// <c>slowStartTurnNumber</c> and <c>truant</c>, set as it comes in): Fake Out works on its first turn alone,
+    /// Slow Start counts five from it and Truant acts on it; and whether it came in holding an item, for Unburden.
+    /// </summary>
+    private void CountFrom(Battler place, bool opening = false)
+    {
+        var v = place.Volatile;
+        v.EnteredOnTurn = Turn;
+        v.FirstTurn = opening ? Turn : Turn + 1;
+        v.SlowStartTurn = v.FirstTurn;
+        v.TruantParity = v.FirstTurn & 1;
+        v.CanUnburden = place.Pokemon?.HeldItem != null;
     }
 
     /// <summary>
@@ -119,22 +133,96 @@ public sealed partial class BattleCore
     private void TakeUp(Battler place, Baton baton)
     {
         place.Volatile = baton.State;
-        place.Volatile.EnteredOnTurn = Turn;
-        place.Volatile.FirstTurn = Turn + 1;
+        CountFrom(place);
         place.ConfusionTurns = baton.ConfusionTurns;
         foreach (var (stat, stage) in baton.Stages) place.Pokemon!.StatStages[stat] = stage;
         if (place.HasSubstitute) Emit(new SubstituteChanged(place.Place, Up: true));
     }
 
-    /// <summary>Abilities that act on entry (Intimidate, Drizzle), fastest first.</summary>
-    private void RunEntryEffects(List<Battler> entered)
+    /// <summary>The phases of the original's switch-in check, in its order, and the abilities each is for.</summary>
+    private static readonly (EntryCheck Flag, string[] Abilities)[] EntryPhases =
     {
-        foreach (var b in BySpeed().Where(entered.Contains))
+        (EntryCheck.Trace, new[] { "Trace" }),
+        (EntryCheck.WeatherAbility, new[] { "Drizzle", "Sand Stream", "Drought", "Snow Warning" }),
+        (EntryCheck.Intimidate, new[] { "Intimidate" }),
+        (EntryCheck.Download, new[] { "Download" }),
+        (EntryCheck.Anticipation, new[] { "Anticipation" }),
+        (EntryCheck.Forewarn, new[] { "Forewarn" }),
+        (EntryCheck.Frisk, new[] { "Frisk" }),
+        (EntryCheck.SlowStart, new[] { "Slow Start" }),
+        (EntryCheck.MoldBreaker, new[] { "Mold Breaker" }),
+        (EntryCheck.Pressure, new[] { "Pressure" })
+    };
+
+    /// <summary>
+    /// <c>BattleSystem_TriggerEffectOnSwitch</c>: what acts on entry, phase by phase (Trace, the weather
+    /// abilities, Intimidate, Download, Anticipation, Forewarn, Frisk, Slow Start, Mold Breaker, Pressure, the
+    /// shape the weather or an item gives, the held item), over everyone from the fastest, each once per stay on
+    /// the field (<see cref="Volatiles.Announced"/>). The original runs it as the Pokémon come in, after every
+    /// move and at the start of every turn, so an ability gained by a Transform acts then, and Slow Start's five
+    /// turns end at a turn's start.
+    /// </summary>
+    private void SwitchInChecks()
+    {
+        if (Result != BattleResult.None) return;
+        var order = BySpeed();
+        foreach (var (flag, abilities) in EntryPhases)
+        {
+            foreach (var b in order)
+            {
+                if (!b.IsActive || b.Ability is not { } ability || !abilities.Contains(ability.Name)) continue;
+                var v = b.Volatile;
+                if (flag == EntryCheck.SlowStart)
+                {
+                    // Said once as it comes in; and once more in the turn its five turns are up
+                    if ((v.Announced & flag) == 0 && Turn <= v.SlowStartTurn)
+                    {
+                        v.Announced |= flag;
+                        ability.Effect?.OnEntry(this, b);
+                    }
+                    if (!v.SlowStartEnded && Turn - v.SlowStartTurn == 5)
+                    {
+                        v.SlowStartEnded = true;
+                        Say($"{b.Name} finally got going!");
+                    }
+                    continue;
+                }
+                if ((v.Announced & flag) != 0) continue;
+                // Trace waits for a foe it can take an ability from
+                if (flag == EntryCheck.Trace && (b.Pokemon!.HeldItem?.Name == "Griseous Orb" || Trace.Candidates(this, b).Count == 0)) continue;
+                v.Announced |= flag;
+                ability.Effect?.OnEntry(this, b);
+                if (Result != BattleResult.None) return;
+            }
+        }
+
+        CheckShapes(order);
+
+        foreach (var b in order)
         {
             if (!b.IsActive) continue;
-            foreach (var e in BattleEffects.Of(b)) e.OnEntry(this, b);
-            CheckConditionHooks(b, null);
+            var v = b.Volatile;
+            // An ability of a later generation that acts on entry has no phase of its own and goes here
+            if ((v.Announced & EntryCheck.Other) == 0 && b.Ability is { } ability && !EntryPhases.Any(p => p.Abilities.Contains(ability.Name)))
+            {
+                v.Announced |= EntryCheck.Other;
+                ability.Effect?.OnEntry(this, b);
+            }
+            if ((v.Announced & EntryCheck.Item) == 0)
+            {
+                v.Announced |= EntryCheck.Item;
+                BattleEffects.ItemOf(b)?.OnEntry(this, b);
+                CheckConditionHooks(b, null);
+            }
+            if (Result != BattleResult.None) return;
         }
+    }
+
+    /// <summary><c>BattleSystem_TriggerFormChange</c>: Castform, Cherrim and Arceus take the shape the weather or their item gives them, fastest first.</summary>
+    private void CheckShapes(IEnumerable<Battler> order)
+    {
+        foreach (var b in order)
+            if (b.IsActive && b.Ability?.Effect?.ChangeShape(this, b) is { } line) Say(line).With(new Reshaped(b.Place));
     }
 
     private void ExecuteSwitch(Battler place, int partyIndex)
@@ -168,7 +256,7 @@ public sealed partial class BattleCore
         Hazards(place);
         if (place.IsActive) beforeEntryEffects?.Invoke();
         ResolveFaints();
-        if (Result == BattleResult.None) RunEntryEffects(new List<Battler> { place });
+        SwitchInChecks();
     }
 
     // ---------------------------------------------------------------- Pursuit
@@ -390,7 +478,7 @@ public sealed partial class BattleCore
             foreach (var place in speedOrder.Where(entered.Contains)) Hazards(place);
             ResolveFaints();
             if (Result != BattleResult.None) yield break;
-            RunEntryEffects(entered);
+            SwitchInChecks();
             ResolveFaints();
         }
     }

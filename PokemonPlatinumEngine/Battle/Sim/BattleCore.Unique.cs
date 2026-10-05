@@ -423,7 +423,7 @@ public sealed partial class BattleCore
         var user = use.User;
         var p = user.Pokemon!;
         if (p.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb") return Fails();
-        var item = user.Volatile.EmbargoTurns > 0 ? null : p.HeldItem;
+        var item = BattleEffects.ItemInHand(user);
         if (item == null || item.FlingPower == 0) return Fails();
         use.Scratch = item;
         Say($"{user.Name} flung its {item.Name}!");
@@ -594,10 +594,10 @@ public sealed partial class BattleCore
     {
         var user = use.User;
         var p = user.Pokemon!;
-        var berry = user.Volatile.EmbargoTurns > 0 ? null : p.HeldItem;
+        var berry = BattleEffects.ItemInHand(user);
         if (berry == null || berry.NaturalGiftPower == 0 || berry.NaturalGiftType is not { } type) return Fails();
         use.Scratch = berry.NaturalGiftPower;
-        if (type != use.Move.Type) use.Move = new Move(use.Data.OfType(type), use.Move.CurrentPP);
+        Retype(use, type);
         user.Volatile.ConsumedItem = berry;
         p.HeldItem = null;
         return true;
@@ -718,6 +718,12 @@ public sealed partial class BattleCore
         v.DisableTurns = 0;
         v.UsedMoveSlots = 0;
         user.ChoiceLock = null;
+        // The ability it took on acts as if it had just come in (BtlCmd_Transform clears the announced flags),
+        // Slow Start counts its five turns from the next, and Truant acts this turn
+        v.Announced = EntryCheck.None;
+        v.SlowStartTurn = Turn + 1;
+        v.SlowStartEnded = false;
+        v.TruantParity = Turn & 1;
         Say($"{user.Name} transformed into {t.Name}!").With(new Reshaped(user.Place));
         return true;
     }

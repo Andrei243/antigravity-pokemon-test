@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -47,6 +48,18 @@ public interface IBattleContext
     /// of its own. Returns false, saying nothing, when that weather is already there to stay.
     /// </summary>
     bool SetWeather(BattleWeather weather, int turns, string line);
+
+    /// <summary>Someone on the field, still standing, has this ability in force (Damp against Aftermath).</summary>
+    bool AnyoneHas(string ability);
+
+    /// <summary>Makes <paramref name="target"/> fall in love with <paramref name="with"/>, by Attract's own rules (Cute Charm). Returns false when it couldn't.</summary>
+    bool Infatuate(Battler target, Battler with);
+
+    /// <summary>Everyone standing on the field, the fastest first.</summary>
+    IEnumerable<Battler> Everyone { get; }
+
+    /// <summary>The turn being played, counted from 0.</summary>
+    int Turn { get; }
 }
 
 /// <summary>
@@ -242,6 +255,38 @@ public abstract class BattleEffect
 
     /// <summary>The holder's item can't be taken, swapped, knocked off or eaten by another Pokémon (Sticky Hold).</summary>
     public virtual bool KeepsItem => false;
+
+    // ---- Abilities (plan 06 · R7)
+
+    /// <summary>A single-target move of this type aimed at anyone else comes to the holder instead (Lightning Rod, Storm Drain).</summary>
+    public virtual bool DrawsMovesOf(PokemonType type) => false;
+
+    /// <summary>The holder loafs around every other turn (Truant).</summary>
+    public virtual bool LoafsEveryOtherTurn => false;
+
+    /// <summary>The holder moves after everyone else of its priority (Stall).</summary>
+    public virtual bool MovesLast => false;
+
+    /// <summary>The holder eats a pinch berry at half its HP instead of a quarter (Gluttony).</summary>
+    public virtual bool EatsBerriesEarly => false;
+
+    /// <summary>Poison heals the holder an eighth a turn instead of hurting it (Poison Heal).</summary>
+    public virtual bool HealsWithPoison => false;
+
+    /// <summary>Every move the holder uses is Normal (Normalize).</summary>
+    public virtual bool NormalizesMoves => false;
+
+    /// <summary>The holder's held item does nothing, and it can't throw it or make a gift of it (Klutz).</summary>
+    public virtual bool IgnoresHeldItem => false;
+
+    /// <summary>The holder's Attack and Speed are halved for its first five turns (Slow Start).</summary>
+    public virtual bool StartsSlow => false;
+
+    /// <summary>The holder's Speed doubles once it has lost the item it came in with (Unburden).</summary>
+    public virtual bool SpeedsUpUnburdened => false;
+
+    /// <summary>The holder takes the shape the weather or its item gives it, on entry and when the weather changes (Forecast, Flower Gift, Multitype). Returns the line to say, or null when nothing changed.</summary>
+    public virtual string? ChangeShape(IBattleContext ctx, Battler self) => null;
 }
 
 /// <summary>Finds the effects in play for a Pokémon on the field.</summary>
@@ -250,10 +295,24 @@ public static class BattleEffects
     /// <summary>Its ability's effect (unless ignored, as by Mold Breaker) and its held item's.</summary>
     public static IEnumerable<BattleEffect> Of(Battler battler, bool includeAbility = true)
     {
-        var p = battler.Pokemon;
-        if (p == null) yield break;
+        if (battler.Pokemon == null) yield break;
         // Gastro Acid takes the ability away and Embargo the item, for as long as each lasts
         if (includeAbility && battler.Ability?.Effect is { } ability) yield return ability;
-        if (battler.Volatile.EmbargoTurns == 0 && HeldItemEffects.For(p.HeldItem) is { } item) yield return item;
+        if (ItemOf(battler) is { } item) yield return item;
+    }
+
+    /// <summary>The held item's effect alone: none under an Embargo or with Klutz (the original's <c>Battler_HeldItem</c> says it holds nothing).</summary>
+    public static BattleEffect? ItemOf(Battler battler) =>
+        battler.Pokemon == null || battler.Volatile.EmbargoTurns > 0 || battler.Ability?.Effect is { IgnoresHeldItem: true } ? null : HeldItemEffects.For(battler.Pokemon.HeldItem);
+
+    /// <summary>The item in the holder's hands as far as a move can use it: none under an Embargo or with Klutz.</summary>
+    public static ItemData? ItemInHand(Battler battler) =>
+        battler.Pokemon == null || battler.Volatile.EmbargoTurns > 0 || battler.Ability?.Effect is { IgnoresHeldItem: true } ? null : battler.Pokemon.HeldItem;
+
+    /// <summary>Whether the battler's ability in force is this one; a defender's is not, against an attacker that breaks abilities.</summary>
+    public static bool Has(Battler battler, string ability, Battler? against = null)
+    {
+        if (battler.Ability?.Name != ability) return false;
+        return against == null || battler == against || !Of(against).Any(e => e.IgnoresTargetAbility);
     }
 }
