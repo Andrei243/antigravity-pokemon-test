@@ -72,6 +72,9 @@ public sealed partial class BattleCore
         public required Move Move;
         public required MoveEffect Effect;
         public MoveData Data => Move.Data;
+
+        /// <summary>The move's data as the Pokémon knows it, before Normalize made it Normal: what Mirror Move copies and Magic Coat sends back.</summary>
+        public MoveData? Own;
         public List<Battler> Targets = new();
 
         /// <summary>The line "X used Y!", which the move's effects are shown with.</summary>
@@ -179,7 +182,8 @@ public sealed partial class BattleCore
 
         // Normalize: every move its user makes is Normal, Hidden Power and Weather Ball included (the original
         // reads the ability wherever it reads a move's type; Retype keeps those moves' own types from winning)
-        if (Has(user, "Normalize") && move.Type != PokemonType.Normal) use.Move = move = new Move(move.Data.OfType(PokemonType.Normal), move.CurrentPP);
+        use.Own ??= move.Data;
+        use.Move = move = Normalized(user, move);
 
         // A move that takes a turn to get ready spends it now
         if (use.Effect.Charge is { } charge && !use.Strikes && !SkipsTheCharge(use, charge))
@@ -221,11 +225,9 @@ public sealed partial class BattleCore
 
         // Whoever it is aimed at can send it back with Mirror Move (the original's moveCopied)
         if (move.Data.Flags.HasFlag(MoveFlags.Mirror))
-            foreach (var t in use.Targets.Where(t => t != user)) t.Volatile.MirrorMove = move.Data;
+            foreach (var t in use.Targets.Where(t => t != user)) t.Volatile.MirrorMove = use.Own;
 
-        // Its ally's Helping Hand makes it half as strong again
-        if (user.Turn.HelpingHand) use.Boost = use.Boost * 15 / 10;
-
+        // (An ally's Helping Hand is a step of the damage formula's own: DamageCalculator reads the turn's flag)
         foreach (var t in use.Targets) t.Turn.SubstituteHit = false;
         if (BouncedOrSnatched(use)) return true;
 
@@ -275,7 +277,7 @@ public sealed partial class BattleCore
     private bool BouncedOrSnatched(MoveUse use)
     {
         var user = use.User;
-        var data = use.Data;
+        var data = use.Own ?? use.Data;
         if (data.Flags.HasFlag(MoveFlags.Reflectable) && use.Targets.FirstOrDefault(t => t != user && t.IsActive && t.Turn.MagicCoat) is { } coat)
         {
             coat.Turn.MagicCoat = false;
@@ -361,8 +363,8 @@ public sealed partial class BattleCore
             }
         }
 
-        // Truant loafs every other turn, from the one after its first (Battler_CheckTruant)
-        if (Has(user, "Truant") && (Turn & 1) != v.TruantParity)
+        // Truant loafs every other turn, from the one after its first
+        if (Loafs(user))
         {
             Say($"{user.Name} is loafing around!");
             Unlock(user);
@@ -480,6 +482,9 @@ public sealed partial class BattleCore
 
     private static bool Has(Battler b, string ability) => b.Ability?.Name == ability;
 
+    /// <summary><c>Battler_CheckTruant</c>: a Pokémon with Truant is loafing this turn. It then doesn't move, tighten its focus or pursue.</summary>
+    private bool Loafs(Battler b) => Has(b, "Truant") && (Turn & 1) != b.Volatile.TruantParity;
+
     /// <summary>Snore and Sleep Talk are for a sleeping Pokémon to use.</summary>
     private static bool UsableAsleep(MoveData move) => move.Effect is "DamageWhileAsleep" or "UseRandomLearnedMoveSleep";
 
@@ -539,7 +544,7 @@ public sealed partial class BattleCore
         var said = Say(string.Format(charge.Line, user.Name));
         said.With(new Lunged(user.Place, MoveCategory.Status));
         user.Volatile.Charging = true;
-        user.Volatile.LockedMove = use.Data;
+        user.Volatile.LockedMove = use.Own ?? use.Data;
         if (charge.Where != Elsewhere.No)
         {
             user.Volatile.Elsewhere = charge.Where;
@@ -711,6 +716,10 @@ public sealed partial class BattleCore
 
     /// <summary>The held item's effect, unless an Embargo or Klutz has put it out of use.</summary>
     private static BattleEffect? ItemOf(Battler b) => BattleEffects.ItemOf(b);
+
+    /// <summary>The move as its user makes it: Normal, whatever it was, for a user with Normalize (a copy; the Pokémon's own move is left as it is).</summary>
+    private static Move Normalized(Battler user, Move move) =>
+        Has(user, "Normalize") && move.Type != PokemonType.Normal ? new Move(move.Data.OfType(PokemonType.Normal), move.CurrentPP) : move;
 
     /// <summary>
     /// A move takes the type its own rule gives it (Hidden Power, Judgment, Weather Ball, Natural Gift), unless its

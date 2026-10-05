@@ -23,7 +23,7 @@ internal static class CoreScenario
     public static readonly Place Mine2 = new(BattleSide.Player, 1), Foe2 = new(BattleSide.Enemy, 1);
 
     /// <summary>A double battle against a trainer, both sides answered for from outside.</summary>
-    public static BattleCore Doubles(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null)
+    public static BattleCore Doubles(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null, BattleWeather sky = BattleWeather.None)
     {
         var party = new Party();
         foreach (var p in mine) party.Add(p);
@@ -32,7 +32,7 @@ internal static class CoreScenario
         var core = new BattleCore(new CoreSetup
         {
             PlayerParty = party, Trainers = new List<Trainer> { trainer }, Format = BattleFormat.Double, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Platinum,
-            PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+            Conditions = new BattleConditions { Weather = sky }, PlayerController = null, EnemyController = null, PlayerName = "Lucas"
         });
         core.Start();
         return core;

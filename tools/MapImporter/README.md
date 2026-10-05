@@ -27,7 +27,7 @@ All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/w
 | `sinnoh.png` | The overworld, four pixels per tile, coloured by what each tile looks like, with area names, people, warps and a key |
 | `sinnoh_behaviours.png` | The same, coloured by what each tile does |
 | `sinnoh_heights.png` | The overworld shaded by height |
-| `compare/<area>.png` | An imported area next to the hand-made map that still stands in for it (Jubilife City, until it opens) |
+| `compare/<area>.png` | An imported area next to the hand-made map that still stands in for it (none today: Jubilife City, the last, opened in plan 01 · M5) |
 | `areas/<key>.png` | Every area close up, eight pixels per tile, with its events |
 | `chunks/NNN.png` | Every chunk by behaviour, with the footprints of its props |
 | `world/matrices`, `world/chunks`, `world/areas`, `world/habitats.json` | The world files |
@@ -41,7 +41,7 @@ It also rewrites `docs/tile-behaviours.md` in the repository.
 | --- | --- | --- |
 | The grids of chunks, the area of each chunk, altitudes | `res/field/matrices/map_matrix_NNN.json` | all of it |
 | Areas: name, music, weather, camera, flags | `include/data/map_headers.h`, `res/text/location_names.json` | all of it, under our own names |
-| People, warps, signs, triggers | `res/field/events/events_<area>.json` | positions, looks, movement, script numbers; no script text |
+| People, warps, signs, triggers | `res/field/events/events_<area>.json` | positions, looks, movement, script numbers, how far a trainer sees; no script text |
 | What a model is called and how large it is | `res/field/props/models/*.nsbmd` (the name and the bounding box only) | `docs/world-models.md`: every model that stands outdoors, with its size, where it stands and what the game puts in its place (`Data/WorldModels.cs`). A model the catalogue doesn't know is listed under Problems |
 | Wild Pokémon on land and on water | `res/field/encounters/encounters_<area>.json` | the twelve base land slots (species and level), the five water slots (species and a range of levels) and each table's rate |
 | Tile behaviours and the blocked flag | `res/field/maps/data/map_data_NNN.bin`, first section | all of it |
@@ -59,8 +59,9 @@ The layouts of the binary files were confirmed against the game's own loaders in
 
 1. A blocked tile under the box of a prop as large as a building is `Building`.
 2. A behaviour that shows (water, tall grass, sand, snow, ice, marsh, cave floor, bridges) decides.
-3. Otherwise the texture drawn there does. `TerrainModel` sorts each chunk's polygons into those lying on the walking surface (the ground) and those above it (a tree's crown, a rock), and a short list of name patterns turns a texture name into a `TerrainCover`: `ngrass` is lawn, `nsand` a path, `tree01` and `conttree_b` trees, `criff` a rock face. A blocked tile shows what stands on it, an open tile its ground.
-4. A name no pattern knows leaves the tile `Unknown`. `report.md` lists those names with their tile counts, the overworld's first.
+3. Flowers that stand over lawn are flowers: Floaroma Meadow is a lawn with a sheet of flowers over every tile of it, and the lawn is only the ground they grow in.
+4. Otherwise the texture drawn there does. `TerrainModel` sorts each chunk's polygons into those lying on the walking surface (the ground) and those above it (a tree's crown, a rock), and a short list of name patterns turns a texture name into a `TerrainCover`: `ngrass` is lawn, `nsand` a path, `tree01` and `conttree_b` trees, `criff` a rock face, `dhole` the dark in the mouth of a cave. A blocked tile shows what stands on it, an open tile its ground.
+5. A name no pattern knows leaves the tile `Unknown`. `report.md` lists those names with their tile counts, the overworld's first.
 
 On the overworld 99.5% of tiles are sorted. When a session builds an area whose textures are still in the list, add their patterns to `Cover.Rules`, run the importer and look at the area's picture.
 

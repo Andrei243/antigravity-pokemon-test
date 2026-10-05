@@ -1,0 +1,61 @@
+{
+  "area": "floaroma_town",
+  // Until plan 05 writes Floaroma's own theme (the original's TOWN03)
+  "bgmTrack": "sinnoh/sandgem",
+  "trees": "Round",
+  "architecture": "Cottage",
+  "doors": [
+    { "warp": 0, "map": "FloaromaPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 1, "map": "FloaromaPokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+  ],
+  // The flower shop and the two houses have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 3, 4 ],
+  "people": {
+    "pokemon_breeder_f": {
+      "name": "Woman",
+      "dialog": [
+        "Welcome to Floaroma Town! Flowers, flowers, and then more flowers!",
+        "You ought to plant a few yourself. There's nothing like it."
+      ]
+    },
+    "school_kid_m": {
+      "name": "Schoolboy",
+      "dialog": [
+        "Berries aren't only pretty. Pokémon eat them.",
+        "Give one to a Pokémon to hold and it eats it in battle, right when it needs it."
+      ]
+    },
+    "beauty": {
+      "name": "Beauty",
+      "dialog": [
+        "I do love it here. The air itself seems to lift you up.",
+        "You've come to rest your heart a little too, haven't you?"
+      ]
+    },
+    "lass_west": {
+      "name": "Lass",
+      "dialog": [
+        "With flowers on every side I can't stay in a bad mood, however hard I try."
+      ]
+    },
+    "lass_east": {
+      "name": "Lass",
+      "dialog": [
+        "Do you know the Gracidea flower? It has grown here for longer than anyone remembers.",
+        "People give a bunch of them when they want to say thank you."
+      ]
+    },
+    "camper": {
+      "name": "Camper",
+      "dialog": [
+        "I followed a sweet smell all the way here. Honey, that's what it is!",
+        "...What am I, a Pokémon? Mmm. Honey."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Floaroma Town\nBright with colour, sweet with scent.",
+    "signboard_flower_shop": "Pick a Peck of Colours\nFlower Shop",
+    "signboard_floaroma_meadow": "Floaroma Meadow\nThis way to the flowers, and the honey."
+  }
+}

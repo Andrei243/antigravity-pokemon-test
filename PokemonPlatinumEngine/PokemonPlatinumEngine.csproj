@@ -13,6 +13,7 @@
     <None Include="Assets\**\*" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\**\*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Data\**\*.mml" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\scripts\**\*.txt" CopyToOutputDirectory="PreserveNewest" />
     <InternalsVisibleTo Include="PokemonPlatinumTests" />
   </ItemGroup>
 

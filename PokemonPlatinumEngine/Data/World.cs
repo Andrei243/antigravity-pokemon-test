@@ -127,16 +127,24 @@ public static class WorldMapBuilder
     public static Map Build(World world, WorldMapEntry entry)
     {
         var matrix = world.Matrix(entry.Matrix);
+        bool cave = entry.Setting == MapSetting.Cave;
         var map = new Map(matrix.Width * T, matrix.Height * T)
         {
-            Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel
+            Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting
         };
+        // A place that is a matrix of its own is looked at with its own camera, and may be dark
+        if (entry.Area != null && world.Area(entry.Area) is { } own)
+        {
+            map.Camera = CameraOf(own.Camera);
+            map.IsDark = own.Weather == "DarkFlash";
+        }
 
-        // Until a chunk says otherwise the world is forest nobody can enter, on Sinnoh's usual ground level
+        // Until a chunk says otherwise the world is forest nobody can enter, on Sinnoh's usual ground level; a
+        // cave is rock
         for (int y = 0; y < map.Height; y++)
             for (int x = 0; x < map.Width; x++)
             {
-                map.SetGroundTile(x, y, TileType.Tree, isSolid: true);
+                map.SetGroundTile(x, y, cave ? TileType.CaveWall : TileType.Tree, isSolid: true);
                 map.SetHeight(x, y, GroundLevel);
             }
 
@@ -184,9 +192,23 @@ public static class WorldMapBuilder
         foreach (string key in areas.Keys)
             foreach (var warp in world.Area(key)?.Warps ?? new()) entrances.Add((warp.X, warp.Z));
 
-        var parts = PlaceModels(world, entry.Matrix, map, models, under, entrances);
-        foreach (var (x, z) in vague) under[z * map.Width + x] = true;
-        foreach (var (x, z) in vague) map.SetGroundTile(x, z, GroundLike(map, x, z, under), map.IsSolid(x, z));
+        // What a tile of unnamed ground will be isn't known yet, so nothing takes its own ground from one
+        var unnamed = new bool[map.Width * map.Height];
+        foreach (var (x, z) in vague) unnamed[z * map.Width + x] = true;
+
+        var parts = PlaceModels(world, entry.Matrix, map, models, under, unnamed, entrances);
+        if (cave)
+        {
+            CaveRock(map, vague, entrances);
+        }
+        else
+        {
+            foreach (var (x, z) in vague) under[z * map.Width + x] = true;
+            foreach (var (x, z) in vague) map.SetGroundTile(x, z, GroundLike(map, x, z, under), map.IsSolid(x, z));
+            StreetLamps(map, under);
+            // The mouth of a cave is no rock: it stays at the level of the ground, a dark hollow under the rock round it
+            RaiseRock(map, (x, z) => map.GetGroundTile(x, z) == TileType.Rock && map.IsSolid(x, z));
+        }
 
         // A town's fences and walls are built like its houses, where its overlay doesn't say
         foreach (var town in parts.Where(p => p.Of.Model?.Town != null && p.Of.Model.Kind is BuildingKind.House or BuildingKind.Apartments)
@@ -200,6 +222,143 @@ public static class WorldMapBuilder
         // Last, because a door knows where it leads only once the warps are in place
         map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
         return map;
+    }
+
+    /// <summary>The field's camera for one of the original's camera names; anything this game has no own camera for is the default.</summary>
+    public static FieldCamera CameraOf(string? name) => name switch
+    {
+        "Cave" => FieldCamera.Cave,
+        "ZoomedIn" => FieldCamera.ZoomedIn,
+        _ => FieldCamera.Default
+    };
+
+    /// <summary>How far a cave's rock stands above the floor before it (seen from the south), in tiles.</summary>
+    public const float CaveWallRise = 2f;
+
+    /// <summary>
+    /// How far the rock stands up right in front of a floor (the row south of it): low, so that it hides no more
+    /// than the feet of whoever walks there (at the cave camera's 63° a rise of this much covers under four
+    /// tenths of a tile behind it). It is the least that is still a step with a face: anything lower the field
+    /// would join to the floor with a slope (<c>Relief.WeldLimit</c>), and the floor would rise to meet the rock.
+    /// </summary>
+    public const float CaveLipRise = 0.75f;
+
+    /// <summary>
+    /// Finishes a cave's rock (plan 01 · M5; style guide, "Caves"). Open ground the import couldn't name is floor
+    /// where it can be reached from one of the cave's ways in, and whatever can't be reached is rock: the space
+    /// beyond the walls, which the original leaves open and empty. Then every tile of rock is raised above the
+    /// floor nearest to it: <see cref="CaveWallRise"/>, or only <see cref="CaveLipRise"/> where floor lies
+    /// right behind it, so a wall is tall where its face shows and low where it would hide the way.
+    /// </summary>
+    private static void CaveRock(Map map, List<(int X, int Z)> vague, HashSet<(int X, int Z)> entrances)
+    {
+        int w = map.Width, h = map.Height;
+        bool IsRock(int x, int z) => map.GetGroundTile(x, z) == TileType.CaveWall;
+
+        // What can be reached from the cave's ways in, over anything that isn't blocked (water is ridden, a ledge
+        // hopped, a cracked rock smashed: none of them is a blocked tile)
+        var reached = new bool[w * h];
+        var open = new Queue<(int X, int Z)>();
+        void Reach(int x, int z)
+        {
+            if (!map.InBounds(x, z) || reached[z * w + x] || map.IsSolid(x, z)) return;
+            reached[z * w + x] = true;
+            open.Enqueue((x, z));
+        }
+        foreach (var (x, z) in entrances)
+        {
+            // A way in may itself be a blocked tile (a door): the cave starts beside it
+            Reach(x, z);
+            Reach(x + 1, z); Reach(x - 1, z); Reach(x, z + 1); Reach(x, z - 1);
+        }
+        while (open.Count > 0)
+        {
+            var (x, z) = open.Dequeue();
+            Reach(x + 1, z); Reach(x - 1, z); Reach(x, z + 1); Reach(x, z - 1);
+        }
+        foreach (var (x, z) in vague)
+            if (reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveFloor, isSolid: false);
+        // The rest is rock: the space past the walls, and any pocket of floor the walls close in
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+                if (!map.IsSolid(x, z) && !reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveWall, isSolid: true);
+        RaiseRock(map, IsRock);
+    }
+
+    /// <summary>
+    /// Stands rock up above the ground (style guide, "Caves" and "Rock outdoors"): each tile of rock on the
+    /// height of the nearest ground that isn't rock, plus <see cref="CaveWallRise"/>, or only
+    /// <see cref="CaveLipRise"/> where open ground lies right behind it. A cave's walls are such rock, and so are
+    /// the mountainsides of the open country: the world's own heights say nothing of rock nobody walks on, which
+    /// by them would lie as flat as the road beside it.
+    /// </summary>
+    private static void RaiseRock(Map map, Func<int, int, bool> IsRock)
+    {
+        int w = map.Width, h = map.Height;
+
+        // Each tile of rock stands on the height of the nearest ground that isn't rock
+        var near = new float[w * h];
+        var seen = new bool[w * h];
+        var front = new Queue<(int X, int Z)>();
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+            {
+                if (IsRock(x, z)) continue;
+                // Water is drawn level with its banks (Relief), so rock beside it stands on the bank's height
+                near[z * w + x] = map.IsDeepWater(x, z) ? MathF.Ceiling(map.HeightAt(x, z) - 0.01f) : map.HeightAt(x, z);
+                seen[z * w + x] = true;
+                front.Enqueue((x, z));
+            }
+        if (front.Count == 0) return;
+        while (front.Count > 0)
+        {
+            var (x, z) = front.Dequeue();
+            foreach (var (dx, dz) in new[] { (0, 1), (1, 0), (-1, 0), (0, -1) })
+            {
+                int nx = x + dx, nz = z + dz;
+                if (!map.InBounds(nx, nz) || seen[nz * w + nx]) continue;
+                seen[nz * w + nx] = true;
+                near[nz * w + nx] = near[z * w + x];
+                front.Enqueue((nx, nz));
+            }
+        }
+
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+            {
+                if (!IsRock(x, z)) continue;
+                bool floorBehind = map.InBounds(x, z - 1) && !IsRock(x, z - 1);
+                map.SetHeight(x, z, near[z * w + x] + (floorBehind ? CaveLipRise : CaveWallRise));
+            }
+    }
+
+    /// <summary>
+    /// A city's street lamps. The import knows a lamp by its texture, and Jubilife's stand on a texture it takes
+    /// for a fence: one tile of "fence" by itself, with no fence beside it, in a paved street. Such a tile is a
+    /// lamp standing on the paving round it; a post alone in a meadow stays a post.
+    /// </summary>
+    private static void StreetLamps(Map map, bool[] under)
+    {
+        var fenced = new HashSet<(int X, int Y)>();
+        foreach (var prop in map.Props)
+            if (prop.Type is PropType.Fence or PropType.LowWall) fenced.Add((prop.X, prop.Y));
+
+        var lamps = new List<Prop>();
+        foreach (var prop in map.Props)
+        {
+            if (prop.Type != PropType.Fence || prop.Width != 1 || prop.Depth != 1) continue;
+            var (x, y) = (prop.X, prop.Y);
+            if (fenced.Contains((x + 1, y)) || fenced.Contains((x - 1, y)) || fenced.Contains((x, y + 1)) || fenced.Contains((x, y - 1))) continue;
+            under[y * map.Width + x] = true;
+            if (GroundLike(map, x, y, under) != TileType.Paving) continue;
+            lamps.Add(prop);
+        }
+        foreach (var post in lamps)
+        {
+            map.Props.Remove(post);
+            map.Props.Add(new Prop { Type = PropType.LampPost, X = post.X, Y = post.Y });
+            map.SetGroundTile(post.X, post.Y, TileType.Paving, isSolid: true);
+        }
     }
 
     /// <summary>
@@ -320,6 +479,8 @@ public static class WorldMapBuilder
             TerrainCover.Rock => (TileType.Rock, solid, null),
             TerrainCover.Marsh => (TileType.Marsh, solid, null),
             TerrainCover.CaveFloor => (TileType.CaveFloor, solid, null),
+            // The dark of a cave's mouth: the hole in the rock where it blocks, the way in where it is open
+            TerrainCover.CaveMouth => (TileType.CaveMouth, solid, null),
             TerrainCover.Snow => (TileType.Snow, solid, null),
             TerrainCover.Ice => (TileType.Ice, solid, null),
             TerrainCover.Water => (TileType.Water, solid, null),
@@ -335,6 +496,21 @@ public static class WorldMapBuilder
             _ => solid ? (TileType.Tree, true, null) : (TileType.Grass, false, null)
         };
     }
+
+    /// <summary>
+    /// What a tile is in a cave: whatever blocks the way without being water or something built is the cave's own
+    /// rock (what the open country takes for a tree, a fence, a rock face), and a rock that stands on the floor
+    /// stands on the cave's floor.
+    /// </summary>
+    public static (TileType Type, PropType? Prop) InACave(TileType type, bool solid, PropType? prop) => type switch
+    {
+        TileType.Tree or TileType.Rock when solid => (TileType.CaveWall, null),
+        TileType.Grass when solid => (TileType.CaveWall, null),
+        // Seen from inside, a way out is the floor that leads to it and the rock round it
+        TileType.CaveMouth => (solid ? TileType.CaveWall : TileType.CaveFloor, null),
+        TileType.Dirt when prop == PropType.Boulder => (TileType.CaveFloor, prop),
+        _ => (type, prop)
+    };
 
     /// <summary>Behaviours whose plates lie one over the other: the deck of a bridge, and the ground or water under it.</summary>
     private static bool HasDeck(TileBehavior behaviour) => behaviour is TileBehavior.Bridge or TileBehavior.BridgeEnd
@@ -356,6 +532,7 @@ public static class WorldMapBuilder
                 PlaceHeight(map, chunk, x, z, ox, oy, altitude, behaviour);
 
                 var (type, blocks, prop) = Look(cover, behaviour, solid);
+                if (map.IsCave) (type, prop) = InACave(type, blocks, prop);
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
                 if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
@@ -462,22 +639,29 @@ public static class WorldMapBuilder
     /// The ground a tile under a model takes: that of the nearest tile round it which no model stands on, so a
     /// lamp in a paved street stands on paving and a ship in the harbour on water.
     /// </summary>
-    private static TileType GroundLike(Map map, int x, int z, bool[] under)
+    private static TileType GroundLike(Map map, int x, int z, bool[] under, bool[]? unnamed = null)
     {
         for (int reach = 1; reach <= 4; reach++)
+        {
+            // Made or bare ground at this distance wins over lawn at the same distance: a heap of coal between
+            // a paved yard and a row of trees lies on the paving
+            bool lawn = false;
             foreach (var (dx, dz) in new[] { (0, reach), (-reach, 0), (reach, 0), (0, -reach), (-reach, reach), (reach, reach), (-reach, -reach), (reach, -reach) })
             {
                 int nx = x + dx, nz = z + dz;
-                if (!map.InBounds(nx, nz) || under[nz * map.Width + nx]) continue;
+                if (!map.InBounds(nx, nz) || under[nz * map.Width + nx] || unnamed?[nz * map.Width + nx] == true) continue;
                 switch (map.GetGroundTile(nx, nz))
                 {
                     case TileType.Path or TileType.Paving or TileType.Sand or TileType.Snow or TileType.Dirt or TileType.Rock or TileType.Water
                         or TileType.Planks or TileType.Ice or TileType.Marsh or TileType.CaveFloor:
                         return map.GetGroundTile(nx, nz);
                     case TileType.Grass or TileType.FlowerGrass or TileType.TallGrass or TileType.Tree:
-                        return TileType.Grass;
+                        lawn = true;
+                        break;
                 }
             }
+            if (lawn) return TileType.Grass;
+        }
         return TileType.Grass;
     }
 
@@ -488,7 +672,7 @@ public static class WorldMapBuilder
     /// front, beside a way in, are its porch; any others are a fence or a low wall. Something that only stands
     /// there becomes a prop over its box. Returns the buildings' blocks.
     /// </summary>
-    private static List<Part> PlaceModels(World world, int matrixId, Map map, List<Placed> models, bool[] under, HashSet<(int X, int Z)> entrances)
+    private static List<Part> PlaceModels(World world, int matrixId, Map map, List<Placed> models, bool[] under, bool[] unnamed, HashSet<(int X, int Z)> entrances)
     {
         bool Blocked(int x, int z) => world.ChunkAt(matrixId, x, z) is { } at && at.Chunk.SolidAt(at.X, at.Z);
 
@@ -509,6 +693,7 @@ public static class WorldMapBuilder
         var parts = new List<Part>();
         var inPart = new HashSet<(int X, int Z)>();
         var fenced = new List<(int X, int Z, bool Wood)>();
+        var conveyed = new List<(int X, int Z)>();
         foreach (var group in owner.GroupBy(kv => kv.Value, ReferenceEqualityComparer.Instance).Select(g => ((Placed)g.Key!, g.Select(kv => kv.Key).ToList())))
         {
             var (model, tiles) = group;
@@ -567,6 +752,12 @@ public static class WorldMapBuilder
                 }
                 part.Porch.Sort();
             }
+            // A yard's thin pieces carry its conveyors; anyone else's are a fence or a low wall
+            if (model.Model?.Thin == PropType.Conveyor)
+            {
+                conveyed.AddRange(thin);
+                continue;
+            }
             bool wood = FencesInWood(model.Model?.Town);
             foreach (var (x, z) in thin) fenced.Add((x, z, wood));
         }
@@ -577,9 +768,10 @@ public static class WorldMapBuilder
             {
                 if (!under[z * map.Width + x] || inPart.Contains((x, z)) || map.GetGroundTile(x, z) == TileType.Door) continue;
                 bool afloat = owner.TryGetValue((x, z), out var on) && on.Model is { Role: ModelRole.Scenery, Prop: PropType.Boat };
-                map.SetGroundTile(x, z, afloat ? TileType.Water : GroundLike(map, x, z, under), isSolid: true);
+                map.SetGroundTile(x, z, afloat ? TileType.Water : GroundLike(map, x, z, under, unnamed), isSolid: true);
             }
         foreach (var (x, z, wood) in fenced) map.Props.Add(new Prop { Type = wood ? PropType.Fence : PropType.LowWall, X = x, Y = z });
+        map.Props.AddRange(Conveyors(conveyed, (x, z) => !map.InBounds(x, z) || Blocked(x, z)));
 
         foreach (var model in models)
         {
@@ -597,6 +789,126 @@ public static class WorldMapBuilder
             });
         }
         return parts;
+    }
+
+    /// <summary>How far a conveyor reaches from a gantry, in tiles, toward what feeds it or what it fills.</summary>
+    public const int ConveyorReach = 8;
+
+    /// <summary>
+    /// Lays a yard's conveyors from the thin pieces its model blocks (plan 01 · M5; style guide, "The mine").
+    /// A straight run of three pieces or more carries a belt along itself. Two pieces that face each other
+    /// across one open tile are the legs of a gantry, and the belt passes between them, across the pair: it
+    /// runs on either way over the open ground until something blocked takes it up (a shed, a heap of coal, a
+    /// run that carries it on), if that is within <see cref="ConveyorReach"/>. Whatever is left is a pier
+    /// standing alone. Returns the belts (<see cref="PropType.Conveyor"/>, one tile wide and as long as they
+    /// run) and what carries them (<see cref="PropType.Gantry"/>).
+    /// </summary>
+    public static List<Prop> Conveyors(IEnumerable<(int X, int Z)> thin, Func<int, int, bool> blocked)
+    {
+        var pieces = new HashSet<(int X, int Z)>(thin);
+        var props = new List<Prop>();
+        if (pieces.Count == 0) return props;
+
+        int Run(int x, int z, int dx, int dz)
+        {
+            int n = 1;
+            for (int i = 1; pieces.Contains((x + dx * i, z + dz * i)); i++) n++;
+            for (int i = 1; pieces.Contains((x - dx * i, z - dz * i)); i++) n++;
+            return n;
+        }
+
+        // Gantries first: a pair east and west of an open tile (the commoner), then north and south of one
+        var legs = new HashSet<(int X, int Z)>();
+        var through = new List<(int X, int Z, bool NorthSouth)>();
+        var ordered = pieces.OrderBy(p => p.Z).ThenBy(p => p.X).ToList();
+        foreach (var (x, z) in ordered)
+            if (pieces.Contains((x + 2, z)) && !blocked(x + 1, z))
+            {
+                legs.Add((x, z));
+                legs.Add((x + 2, z));
+                through.Add((x + 1, z, true));
+            }
+        foreach (var (x, z) in ordered)
+            if (!legs.Contains((x, z)) && pieces.Contains((x, z + 2)) && !legs.Contains((x, z + 2)) && !blocked(x, z + 1))
+            {
+                legs.Add((x, z));
+                legs.Add((x, z + 2));
+                through.Add((x, z + 1, false));
+            }
+
+        // The belts, tile by tile: true where one runs north and south. Of what is left, a straight run of three
+        // or more carries one along itself
+        var belt = new Dictionary<(int X, int Z), bool>();
+        var carriers = new HashSet<(int X, int Z)>();
+        pieces.ExceptWith(legs);
+        foreach (var (x, z) in pieces)
+        {
+            int ns = Run(x, z, 0, 1), ew = Run(x, z, 1, 0);
+            if (Math.Max(ns, ew) < 3) continue;
+            carriers.Add((x, z));
+            belt[(x, z)] = ns >= ew;
+        }
+
+        // One gantry for each row of such pairs, and the belt through it, as far as it finds something to meet
+        foreach (var group in through.GroupBy(t => (t.NorthSouth, Line: t.NorthSouth ? t.X : t.Z)))
+        {
+            bool ns = group.Key.NorthSouth;
+            var along = group.Select(t => ns ? t.Z : t.X).OrderBy(v => v).ToList();
+            for (int i = 0; i < along.Count;)
+            {
+                int j = i;
+                while (j + 1 < along.Count && along[j + 1] == along[j] + 1) j++;
+                int from = along[i], to = along[j], line = group.Key.Line;
+                props.Add(ns
+                    ? new Prop { Type = PropType.Gantry, X = line - 1, Y = from, Width = 3, Depth = to - from + 1 }
+                    : new Prop { Type = PropType.Gantry, X = from, Y = line - 1, Width = to - from + 1, Depth = 3 });
+                for (int v = from; v <= to; v++) belt[ns ? (line, v) : (v, line)] = ns;
+
+                foreach (int step in new[] { -1, 1 })
+                {
+                    var reach = new List<(int X, int Z)>();
+                    bool met = false;
+                    for (int n = 1; n <= ConveyorReach + 1; n++)
+                    {
+                        int v = (step < 0 ? from : to) + step * n;
+                        var tile = ns ? (line, v) : (v, line);
+                        if (blocked(tile.Item1, tile.Item2) || belt.ContainsKey(tile)) { met = true; break; }
+                        reach.Add(tile);
+                    }
+                    if (met && reach.Count <= ConveyorReach)
+                        foreach (var tile in reach) belt[tile] = ns;
+                }
+                i = j + 1;
+            }
+        }
+
+        foreach (var (x, z) in pieces.Where(p => !carriers.Contains(p)).OrderBy(p => p.Z).ThenBy(p => p.X))
+            props.Add(new Prop { Type = PropType.Gantry, X = x, Y = z });
+
+        // The belts as runs
+        foreach (var column in belt.Where(b => b.Value).GroupBy(b => b.Key.X).OrderBy(g => g.Key))
+        {
+            var rows = column.Select(b => b.Key.Z).OrderBy(v => v).ToList();
+            for (int i = 0; i < rows.Count;)
+            {
+                int j = i;
+                while (j + 1 < rows.Count && rows[j + 1] == rows[j] + 1) j++;
+                props.Add(new Prop { Type = PropType.Conveyor, X = column.Key, Y = rows[i], Width = 1, Depth = rows[j] - rows[i] + 1 });
+                i = j + 1;
+            }
+        }
+        foreach (var row in belt.Where(b => !b.Value).GroupBy(b => b.Key.Z).OrderBy(g => g.Key))
+        {
+            var columns = row.Select(b => b.Key.X).OrderBy(v => v).ToList();
+            for (int i = 0; i < columns.Count;)
+            {
+                int j = i;
+                while (j + 1 < columns.Count && columns[j + 1] == columns[j] + 1) j++;
+                props.Add(new Prop { Type = PropType.Conveyor, X = columns[i], Y = row.Key, Width = columns[j] - columns[i] + 1, Depth = 1 });
+                i = j + 1;
+            }
+        }
+        return props;
     }
 
     /// <summary>The building a block of a model is: what kind, how it is built, and where its doors are.</summary>
@@ -648,17 +960,21 @@ public static class WorldMapBuilder
         "prof_rowan" => "Rowan",
         "mom" => "Mom",
         "nurse" or "pokecenter_nurse" => "Nurse",
-        "var_0" or "lass" or "school_kid_f" or "twin" or "picnicker" or "little_girl" => "Lass",
-        "youngster" or "school_kid_m" or "guitarist" or "bug_catcher" or "camper" or "little_boy" => "Youngster",
-        "pokemon_breeder_f" or "beauty" or "lady" or "aroma_lady" or "parasol_lady" or "socialite" or "middle_aged_woman" or "old_woman" => "Lady",
-        "collector" or "gentleman" or "old_man" or "rich_boy" or "scientist_m" or "middle_aged_man" => "Gentleman",
+        "var_0" or "lass" or "school_kid_f" or "twin" or "picnicker" or "little_girl" or "battle_girl" or "ace_trainer_f" or "cyclist_f" => "Lass",
+        "youngster" or "school_kid_m" or "guitarist" or "bug_catcher" or "camper" or "little_boy" or "kid_with_nds" or "cyclist_m"
+            or "ace_trainer_m" => "Youngster",
+        "pokemon_breeder_f" or "beauty" or "lady" or "aroma_lady" or "parasol_lady" or "socialite" or "middle_aged_woman" or "old_woman"
+            or "pokefan_f" => "Lady",
+        "collector" or "gentleman" or "old_man" or "rich_boy" or "scientist_m" or "middle_aged_man" or "expert_m" or "hiker" or "worker"
+            or "pokefan_m" => "Gentleman",
         "cashier_m" or "cashier_f" or "clerk" or "waiter" => "Clerk",
         "clown" => "Clown",
+        "looker" => "Looker",
         "briefcase" => "StarterBriefcase",
         _ => "Trainer"
     };
 
-    private static bool IsSignpost(string looks) => looks is "map_signpost" or "arrow_signpost" or "signboard" or "trainer_tips_signpost";
+    private static bool IsSignpost(string looks) => looks is "map_signpost" or "arrow_signpost" or "signboard" or "trainer_tips_signpost" or "gym_signpost";
 
     /// <summary>The obstacle an object of the original is, by the name of its looks: what Cut, Rock Smash and Strength clear.</summary>
     public static PropType? ObstacleFor(string looks) => looks switch
@@ -686,17 +1002,23 @@ public static class WorldMapBuilder
         {
             // A copy of a neighbouring area's object, there so it shows across the border: the neighbour places it
             if (o.HiddenBy != null && o.HiddenBy.StartsWith("MAP_HEADER_", StringComparison.Ordinal)) continue;
+            // The two halves of a route list each other's people and signs without saying so: whoever stands on
+            // the other half, where that half has the same thing on the same tile, is the other half's to place
+            if (map.InBounds(o.X, o.Z) && map.AreaAt(o.X, o.Z) is { Open: true } there && there != area
+                && world.Area(there.Key)?.Objects.Any(twin => twin.X == o.X && twin.Z == o.Z && twin.Looks == o.Looks) == true) continue;
 
             if (IsSignpost(o.Looks) && o.HiddenBy == null)
             {
                 map.SetGroundTile(o.X, o.Z, TileType.Signpost, isSolid: true);
                 map.Signboards[(o.X, o.Z)] = overlay?.Signs?.GetValueOrDefault(o.Id) ?? area.DisplayName;
+                if (overlay?.SignScripts?.GetValueOrDefault(o.Id) is { Length: > 0 } read) map.SignScripts[(o.X, o.Z)] = read;
                 continue;
             }
             if (o.Looks == "mailbox")
             {
                 map.AddProp(PropType.Mailbox, o.X, o.Z);
                 map.Signboards[(o.X, o.Z)] = overlay?.Signs?.GetValueOrDefault(o.Id) ?? "A mailbox.";
+                if (overlay?.SignScripts?.GetValueOrDefault(o.Id) is { Length: > 0 } opened) map.SignScripts[(o.X, o.Z)] = opened;
                 continue;
             }
             if (ObstacleFor(o.Looks) is { } obstacle)
@@ -707,7 +1029,7 @@ public static class WorldMapBuilder
 
             // People appear only once the game says who they are
             if (overlay?.People == null || !overlay.People.TryGetValue(o.Id, out var person)) continue;
-            map.NPCs.Add(MapFile.BuildNpc(new MapFile.NpcRecord
+            var npc = MapFile.BuildNpc(new MapFile.NpcRecord
             {
                 Id = person.Id ?? person.Trainer?.Id,
                 Name = person.Name,
@@ -717,11 +1039,41 @@ public static class WorldMapBuilder
                 Facing = FacingOf(o.Facing),
                 Dialog = person.Dialog,
                 IsStarterBriefcase = person.IsStarterBriefcase,
+                Script = person.Script,
+                // The flag that hides them is the original's own unless the overlay says otherwise
+                HiddenBy = person.HiddenBy is { } hiddenBy ? (hiddenBy.Length > 0 ? hiddenBy : null) : o.HiddenBy,
+                ShownBy = person.ShownBy,
                 Trainer = person.Trainer
-            }, map.Name));
+            }, map.Name);
+            // Scripts call them by their id in the area's file, and look their own scripts up in the area's
+            npc.Key = o.Id;
+            npc.ScriptFile = key;
+            // How far a trainer sees is the original's own number
+            if (npc.TrainerData != null && o.Sight is { } sight) npc.TrainerData.SightRange = sight;
+            map.NPCs.Add(npc);
         }
 
-        foreach (var npc in overlay?.Npcs ?? new()) map.NPCs.Add(MapFile.BuildNpc(npc, map.Name));
+        foreach (var record in overlay?.Npcs ?? new())
+        {
+            var npc = MapFile.BuildNpc(record, map.Name);
+            npc.ScriptFile = key;
+            map.NPCs.Add(npc);
+        }
+
+        // The original's triggers that have a script of ours: its tiles, its variable and its value
+        foreach (var bound in overlay?.Triggers ?? new())
+        {
+            if (bound.Trigger < 0 || bound.Trigger >= file.Triggers.Count)
+                throw new InvalidDataException($"The overlay of {key} gives a script to trigger {bound.Trigger}, and the area has {file.Triggers.Count}.");
+            var t = file.Triggers[bound.Trigger];
+            if (!int.TryParse(t.Value, out int value))
+                throw new InvalidDataException($"Trigger {bound.Trigger} of {key} waits for the value '{t.Value}', which is no number.");
+            map.Triggers.Add(new StepTrigger
+            {
+                X = t.X, Y = t.Z, Width = t.Width, Depth = t.Depth, Script = bound.Script, ScriptFile = key,
+                Variable = t.Variable.Length > 0 ? t.Variable : null, Value = value
+            });
+        }
         foreach (var prop in overlay?.Props ?? new()) map.AddProp(prop.Type, prop.X, prop.Y, prop.Width, prop.Depth);
 
         for (int i = 0; i < file.Warps.Count; i++)
@@ -750,6 +1102,11 @@ public static class WorldMapBuilder
 
         foreach (var exit in overlay?.Exits ?? new())
             map.Warps.Add(new Warp { SourceX = exit.X, SourceY = exit.Z, TargetMap = exit.Map, TargetX = exit.ToX, TargetY = exit.ToY, TargetFacing = exit.Facing });
+
+        // A way in that leads nowhere yet (a cave's mouth, a gate house, a hall without a door) is closed: one
+        // can't walk into an opening and stand in the wall. A door is shut by itself.
+        foreach (var from in file.Warps)
+            if (map.GetWarpAt(from.X, from.Z) == null && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
 
     /// <summary>

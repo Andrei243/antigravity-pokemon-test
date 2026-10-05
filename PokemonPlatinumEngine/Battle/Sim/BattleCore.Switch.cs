@@ -218,11 +218,18 @@ public sealed partial class BattleCore
         }
     }
 
-    /// <summary><c>BattleSystem_TriggerFormChange</c>: Castform, Cherrim and Arceus take the shape the weather or their item gives them, fastest first.</summary>
+    /// <summary>
+    /// <c>BattleSystem_TriggerFormChange</c>: Castform (with Forecast), Cherrim (whatever its ability) and Arceus
+    /// (with Multitype) take the shape the weather or their item gives them, fastest first.
+    /// </summary>
     private void CheckShapes(IEnumerable<Battler> order)
     {
         foreach (var b in order)
-            if (b.IsActive && b.Ability?.Effect?.ChangeShape(this, b) is { } line) Say(line).With(new Reshaped(b.Place));
+        {
+            if (!b.IsActive) continue;
+            string? line = b.Pokemon!.Species.Name == "Cherrim" ? Shapes.Cherrim(this, b) : b.Ability?.Effect?.ChangeShape(this, b);
+            if (line != null) Say(line).With(new Reshaped(b.Place));
+        }
     }
 
     private void ExecuteSwitch(Battler place, int partyIndex)
@@ -274,7 +281,7 @@ public sealed partial class BattleCore
             if (Result != BattleResult.None || !leaving.IsActive) break;
             var foe = act.User;
             if (act.Choice.Kind != ChoiceKind.Fight || foe.Side == leaving.Side || !foe.IsActive || foe.Pokemon != act.Actor) continue;
-            if (foe.Pokemon!.Status is StatusCondition.Sleep or StatusCondition.Freeze) continue;
+            if (foe.Pokemon!.Status is StatusCondition.Sleep or StatusCondition.Freeze || Loafs(foe)) continue;
 
             var move = act.Move!;
             if (foe.Volatile.Encored != null && foe.Pokemon.Moves.FirstOrDefault(m => m.Data == foe.Volatile.Encored) is { } encored) move = encored;
@@ -287,7 +294,7 @@ public sealed partial class BattleCore
             foe.Volatile.LastMove = move.Data;
             if (BattleEffects.Of(foe).Any(e => e.LocksMoveChoice)) foe.ChoiceLock = move;
 
-            var use = new MoveUse { User = foe, Move = move, Effect = EffectOf(move.Data), Boost = 20 };
+            var use = new MoveUse { User = foe, Move = Normalized(foe, move), Own = move.Data, Effect = EffectOf(move.Data), Boost = 20 };
             use.Targets.Add(leaving);
             use.Line = Say($"{foe.Name} used {move.Name}!");
             leaving.Turn.SubstituteHit = false;

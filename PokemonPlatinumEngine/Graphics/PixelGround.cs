@@ -58,7 +58,11 @@ internal static class PixelGround
         new(TileType.CaveFloor, new(112, 100, 104, 255), new(130, 118, 120, 255), new(74, 66, 80, 255), new(82, 72, 84, 255), 74),
         new(TileType.Rock, new(158, 152, 150, 255), new(176, 170, 166, 255), new(112, 106, 116, 255), new(104, 100, 112, 255), 75),
         new(TileType.Ice, new(150, 200, 236, 255), new(172, 214, 242, 255), new(112, 166, 216, 255), new(232, 246, 255, 255), 76),
-        new(TileType.Marsh, new(124, 106, 86, 255), new(140, 122, 98, 255), new(90, 76, 66, 255), new(98, 112, 108, 255), 77)
+        new(TileType.Marsh, new(124, 106, 86, 255), new(140, 122, 98, 255), new(90, 76, 66, 255), new(98, 112, 108, 255), 77),
+        // The top of a cave's wall: the dark of rock nobody stands on
+        new(TileType.CaveWall, new(66, 58, 70, 255), new(78, 70, 80, 255), new(44, 38, 52, 255), new(52, 46, 60, 255), 78),
+        // The dark inside the mouth of a cave, seen from the open country
+        new(TileType.CaveMouth, new(24, 20, 30, 255), new(30, 26, 38, 255), new(12, 10, 18, 255), new(18, 16, 26, 255), 79)
     };
 
     // Built ground, painted tile for tile with straight edges: paving, bridge decks, walkways and stairs
@@ -107,7 +111,13 @@ internal static class PixelGround
         // The map tile under the canvas's first tile
         int originX = window.X - pad, originY = window.Y - pad;
         int seedX = worldSeeds ? originX : 0, seedY = worldSeeds ? originY : 0;
-        TileType? TypeAt(int tx, int ty) => GroundBaker.TypeAt(map, tx + originX, ty + originY);
+        // In a cave a ledge is a ridge of rock on the cave's floor, not of lawn
+        bool cave = map.IsCave;
+        TileType? TypeAt(int tx, int ty)
+        {
+            var type = GroundBaker.TypeAt(map, tx + originX, ty + originY);
+            return cave && type is TileType.LedgeDown or TileType.LedgeLeft or TileType.LedgeRight ? TileType.CaveFloor : type;
+        }
         bool IsBuilding(int tx, int ty) => MapStructures.IsBuildingTile(map, tx + originX, ty + originY);
         bool IsPath(int tx, int ty)
         {
@@ -127,6 +137,22 @@ internal static class PixelGround
         var tall = Mask(tw, th, (x, y) => TypeAt(x, y) == TileType.TallGrass, blur: 3);
         var walls = Mask(tw, th, IsBuilding, blur: 6);
 
+        // A signpost stands on the ground of the tiles beside it: on rock among rock, on sand on a beach. (Two
+        // neighbours of one kind decide, as for a path and for paving.)
+        TileType? GroundAt(int tx, int ty)
+        {
+            var t = TypeAt(tx, ty);
+            if (t != TileType.Signpost) return t;
+            TileType? n0 = TypeAt(tx + 1, ty), n1 = TypeAt(tx - 1, ty), n2 = TypeAt(tx, ty + 1), n3 = TypeAt(tx, ty - 1);
+            foreach (var n in new[] { n0, n1, n2, n3 })
+            {
+                if (n is null or TileType.Signpost) continue;
+                int same = (n0 == n ? 1 : 0) + (n1 == n ? 1 : 0) + (n2 == n ? 1 : 0) + (n3 == n ? 1 : 0);
+                if (same >= 2) return n;
+            }
+            return t;
+        }
+
         // Only the kinds this map uses get a mask
         var kindMasks = new float[]?[Kinds.Length];
         for (int k = 0; k < Kinds.Length; k++)
@@ -136,7 +162,7 @@ internal static class PixelGround
             for (int ty = 0; ty < th && !used; ty++)
                 for (int tx = 0; tx < tw && !used; tx++)
                     used = TypeAt(tx, ty) == type;
-            if (used) kindMasks[k] = Mask(tw, th, (x, y) => TypeAt(x, y) == type, blur: 5);
+            if (used) kindMasks[k] = Mask(tw, th, (x, y) => GroundAt(x, y) == type, blur: 5);
         }
 
         var c = new PixelCanvas(w, h);

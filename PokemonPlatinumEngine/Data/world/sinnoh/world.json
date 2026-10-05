@@ -1,11 +1,18 @@
 {
   // What is built of Sinnoh so far. "maps" are the maps the game makes from the imported matrices; "areas" are
   // the areas that are open to walk in. After adding an area, run tools/MapImporter with --data and write its
-  // overlay (overlays/<key>.json).
+  // overlay (overlays/<key>.json). A map whose "setting" is "Cave" is rock wherever nothing else is said: its
+  // walls stand up from the floor, and no sky lights it.
   "region": "Sinnoh",
   "maps": [
     { "name": "Sinnoh", "matrix": 0, "trees": "Pine" },
-    { "name": "LakeVerity", "matrix": 102, "area": "lake_verity", "trees": "Pine" }
+    { "name": "LakeVerity", "matrix": 102, "area": "lake_verity", "trees": "Pine" },
+    { "name": "OreburghGate1F", "matrix": 3, "area": "oreburgh_gate_1f", "setting": "Cave" },
+    { "name": "OreburghGateB1F", "matrix": 4, "area": "oreburgh_gate_b1f", "setting": "Cave" },
+    { "name": "OreburghMineB1F", "matrix": 5, "area": "oreburgh_mine_b1f", "setting": "Cave" },
+    { "name": "OreburghMineB2F", "matrix": 6, "area": "oreburgh_mine_b2f", "setting": "Cave" },
+    { "name": "RavagedPath", "matrix": 51, "area": "ravaged_path", "setting": "Cave" },
+    { "name": "FloaromaMeadow", "matrix": 52, "area": "floaroma_meadow", "trees": "Round" }
   ],
   "areas": [
     "twinleaf_town",
@@ -14,6 +21,21 @@
     "lake_verity",
     "sandgem_town",
     "route_202",
-    "route_219"
+    "route_219",
+    "jubilife_city",
+    "route_203",
+    "oreburgh_gate_1f",
+    "oreburgh_gate_b1f",
+    "oreburgh_city",
+    "oreburgh_mine_b1f",
+    "oreburgh_mine_b2f",
+    "route_204_south",
+    "ravaged_path",
+    "route_204_north",
+    "floaroma_town",
+    "floaroma_meadow",
+    "route_205_south",
+    "valley_windworks_outside",
+    "fuego_ironworks_outside"
   ]
 }

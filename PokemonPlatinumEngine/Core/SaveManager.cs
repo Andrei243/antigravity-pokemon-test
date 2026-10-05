@@ -10,8 +10,14 @@ namespace PokemonPlatinumEngine.Core;
 
 public class SaveData
 {
-    /// <summary>The <see cref="WorldVersion"/> of saves made today: Sinnoh's overworld is one map made from the imported world.</summary>
+    /// <summary>The <see cref="WorldVersion"/> from which Sinnoh's overworld is one map made from the imported world (plan 01 · M2).</summary>
     public const int ImportedWorld = 1;
+
+    /// <summary>The <see cref="WorldVersion"/> from which Jubilife City is part of that map and no longer one of its own (plan 01 · M5).</summary>
+    public const int ImportedJubilife = 2;
+
+    /// <summary>The <see cref="WorldVersion"/> of saves made today.</summary>
+    public const int CurrentWorld = ImportedJubilife;
 
     public string PlayerName { get; set; } = "Lucas";
 
@@ -54,20 +60,23 @@ public class SaveData
     /// </summary>
     public int WorldVersion { get; set; }
 
-    // Where a save made on one of the old hand-made maps wakes up in the imported world
-    private static readonly Dictionary<string, MapSpot> OldMaps = new(StringComparer.OrdinalIgnoreCase)
+    // Where a save made on one of the old hand-made maps wakes up in the imported world, and the version from
+    // which that map is gone: a name can come back as a map of the world (the lake), so the version decides
+    private static readonly Dictionary<string, (int Until, MapSpot Spot)> OldMaps = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["TwinleafTown"] = new MapSpot("Sinnoh", 116, 886),
-        ["Route201"] = new MapSpot("Sinnoh", 112, 858),
-        ["LakeVerity"] = new MapSpot("LakeVerity", 46, 53, Direction.Up),
-        ["SandgemTown"] = new MapSpot("Sinnoh", 177, 843),
-        ["Route202"] = new MapSpot("Sinnoh", 170, 829)
+        ["TwinleafTown"] = (ImportedWorld, new MapSpot("Sinnoh", 116, 886)),
+        ["Route201"] = (ImportedWorld, new MapSpot("Sinnoh", 112, 858)),
+        ["LakeVerity"] = (ImportedWorld, new MapSpot("LakeVerity", 46, 53, Direction.Up)),
+        ["SandgemTown"] = (ImportedWorld, new MapSpot("Sinnoh", 177, 843)),
+        ["Route202"] = (ImportedWorld, new MapSpot("Sinnoh", 170, 829)),
+        // Outside the door of Jubilife's Pokémon Center
+        ["JubilifeCity"] = (ImportedJubilife, new MapSpot("Sinnoh", 180, 777))
     };
 
     /// <summary>Where the save's player stands on today's maps.</summary>
     public MapSpot Place() =>
-        WorldVersion < ImportedWorld && OldMaps.TryGetValue(CurrentMapName, out var moved)
-            ? moved
+        OldMaps.TryGetValue(CurrentMapName, out var moved) && WorldVersion < moved.Until
+            ? moved.Spot
             : new MapSpot(CurrentMapName, PlayerGridX, PlayerGridY, PlayerFacing);
 
     public List<SavedPokemonData> Party { get; set; } = new();
@@ -85,8 +94,28 @@ public class SaveData
     /// <summary>Ids of the trainers already beaten; they don't challenge again.</summary>
     public List<string> DefeatedTrainers { get; set; } = new();
 
-    /// <summary>Story flags set so far, including each region's Hall of Fame (see StoryProgress).</summary>
+    /// <summary>Story flags set so far, including each region's Hall of Fame (see <see cref="Story.StoryState"/>).</summary>
     public List<string> StoryFlags { get; set; } = new();
+
+    // ---- The rest of what the story remembers (plan 02 · S1). A save from before it has none of these, and
+    // StoryVersion 0 says so: Story.StoryMigration brings such a save up to date as it is loaded.
+
+    /// <summary>How much of the story the save knows about: <see cref="Story.StoryState.CurrentVersion"/> when it was written.</summary>
+    public int StoryVersion { get; set; }
+
+    /// <summary>The story's variables that aren't nought, by name.</summary>
+    public Dictionary<string, int> StoryVariables { get; set; } = new();
+
+    /// <summary>The items picked up off the ground and the hidden ones found, by their ids.</summary>
+    public List<string> TakenItems { get; set; } = new();
+
+    /// <summary>The species taken from the professor's briefcase, and the one the rival took; null until then.</summary>
+    public string? PlayerStarter { get; set; }
+    public string? RivalStarter { get; set; }
+
+    /// <summary>The story as the save has it.</summary>
+    public Story.StorySnapshot ToStory() =>
+        new(StoryFlags, StoryVariables, DefeatedTrainers, TakenItems, Badges, PlayerStarter, RivalStarter);
 }
 
 public class SavedPokemonData

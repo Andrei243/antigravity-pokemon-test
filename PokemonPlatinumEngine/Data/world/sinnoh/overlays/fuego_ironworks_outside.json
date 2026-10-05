@@ -1,0 +1,11 @@
+{
+  "area": "fuego_ironworks_outside",
+  // Until plan 05 writes the theme of Route 205 (the original's ROAD_C)
+  "bgmTrack": "sinnoh/route201",
+  "trees": "Pine",
+  // The ironworks have no room yet (plan 01 · M11)
+  "locked": [ 0, 1, 2 ],
+  "signs": {
+    "signboard": "Fuego Ironworks\nWhere the furnaces never go out."
+  }
+}

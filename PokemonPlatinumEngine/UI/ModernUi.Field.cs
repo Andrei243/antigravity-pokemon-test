@@ -26,6 +26,34 @@ internal static partial class ModernUi
     }
 
     /// <summary>
+    /// The answers to a question asked in the field (style guide, "Questions in the field"): a panel that slides in
+    /// from the right and stands on the right end of the text box, a row to an answer, the one under the cursor a
+    /// filled pill as in the start menu.
+    /// </summary>
+    public static void DrawChoices(int sw, int sh, IReadOnlyList<string> options, int selected, float shown)
+    {
+        const float row = 72, pad = 16, size = 34;
+        float widest = 0f;
+        foreach (string option in options) widest = Math.Max(widest, UiFonts.Measure(option, size, UiWeight.Black));
+        float width = Math.Max(260, widest + 116);
+        float height = pad * 2 + options.Count * row;
+        // Its right edge is the text box's (96 from the screen's), and it stands 22 above it
+        var panel = new Rectangle(sw - 96 - width + (1f - shown) * (width + 140), sh - 262 - 22 - height, width, height);
+        Panel(panel, 32);
+
+        for (int i = 0; i < options.Count; i++)
+        {
+            var r = new Rectangle(panel.X + 14, panel.Y + pad + i * row + 4, width - 28, row - 8);
+            if (i == selected)
+            {
+                UiShapes.Shadow(r, r.Height / 2f, 18, new Vector2(0, 5), Selection with { A = 120 });
+                UiShapes.Shape(r, r.Height / 2f, Lighter(Selection, 0.14f), Darker(Selection, 0.06f), Darker(Selection, 0.3f), 3);
+            }
+            UiFonts.DrawCentered(options[i], r.X + 36, r.Y + r.Height / 2f, size, i == selected ? Color.White : Ink, UiWeight.Black);
+        }
+    }
+
+    /// <summary>
     /// The start menu: a panel on the right that slides in, one row per entry with its icon on a coloured chip.
     /// The selected row is a filled pill; the last entry (leaving the game) sits under a rule.
     /// </summary>

@@ -78,6 +78,22 @@ public class Map
 
     public TreeStyle Trees { get; set; } = TreeStyle.Round;
 
+    /// <summary>
+    /// What the map is where nothing else is said (plan 01 · M5): open country, or the inside of a cave, whose
+    /// rock stands up as walls and which no sky lights and no weather reaches.
+    /// </summary>
+    public MapSetting Setting { get; set; } = MapSetting.Outdoors;
+    public bool IsCave => Setting == MapSetting.Cave;
+
+    /// <summary>The camera the field is looked at with here, as the area's header in the original names it.</summary>
+    public FieldCamera Camera { get; set; } = FieldCamera.Default;
+
+    /// <summary>
+    /// A place with no light of its own: nothing shows but a circle round the player until a Pokémon lights it
+    /// with Flash (the original's <c>DarkFlash</c> weather, which only Wayward Cave has).
+    /// </summary>
+    public bool IsDark { get; set; }
+
     // ------------------------------------------------------------------ areas of a large map
 
     private MapArea?[]? areaGrid;
@@ -148,8 +164,13 @@ public class Map
     /// <summary>The weather of a small map as a whole (a map of the world has it by area: <see cref="WeatherAt"/>).</summary>
     public FieldWeather Weather { get; set; }
 
-    /// <summary>What falls or hangs in the air over a tile; rooms have no weather.</summary>
-    public FieldWeather WeatherAt(int x, int y) => IsIndoors ? FieldWeather.Clear : AreaAt(x, y)?.Weather ?? Weather;
+    /// <summary>What falls or hangs in the air over a tile; rooms have no weather, and in a cave only fog hangs.</summary>
+    public FieldWeather WeatherAt(int x, int y)
+    {
+        if (IsIndoors) return FieldWeather.Clear;
+        var weather = AreaAt(x, y)?.Weather ?? Weather;
+        return IsCave && weather != FieldWeather.Fog ? FieldWeather.Clear : weather;
+    }
 
     public Architecture ArchitectureAt(int x, int y) => AreaAt(x, y)?.Architecture ?? Architecture;
 
@@ -327,6 +348,69 @@ public class Map
     }
 
     public List<NPC> NPCs { get; } = new();
+
+    /// <summary>
+    /// People the story keeps off the map for now: a flag hides them, or a script sent them away (plan 02 · S1).
+    /// They are neither seen nor in the way, so whatever asks <see cref="NPCs"/> goes on as if they weren't there.
+    /// </summary>
+    public List<NPC> Absent { get; } = new();
+
+    /// <summary>Everyone the map has, on it or off it.</summary>
+    public IEnumerable<NPC> Everyone => NPCs.Concat(Absent);
+
+    private int peopleCounted;
+
+    /// <summary>Puts everyone where the story has them, on the map or off it, each back in their own place in the list.</summary>
+    public void ApplyPresence(Func<string, bool> flagSet)
+    {
+        var everyone = Everyone.ToList();
+        foreach (var npc in everyone)
+            if (npc.Order < 0) npc.Order = peopleCounted++;
+        // Nothing to do is the usual case, and then the lists are left alone
+        if (NPCs.All(n => n.IsPresent(flagSet)) && Absent.All(n => !n.IsPresent(flagSet))) return;
+
+        everyone.Sort((a, b) => a.Order.CompareTo(b.Order));
+        NPCs.Clear();
+        Absent.Clear();
+        foreach (var npc in everyone) (npc.IsPresent(flagSet) ? NPCs : Absent).Add(npc);
+    }
+
+    /// <summary>Forgets who a script showed or hid by itself: from here on the flags decide again.</summary>
+    public void ForgetForced()
+    {
+        foreach (var npc in Everyone) npc.Forced = null;
+    }
+
+    /// <summary>
+    /// Someone of the map by what scripts call them (<see cref="NPC.Key"/>) or, failing that, by their name, on
+    /// the map or off it. A map of the world has a "clown_1" in more than one town, so a script's names mean the
+    /// people of its own place: with <paramref name="place"/> (an area's key) given, nobody of another area is
+    /// found, whatever they are called.
+    /// </summary>
+    public NPC? FindPerson(string name, string? place = null)
+    {
+        NPC? byName = null;
+        foreach (var npc in Everyone)
+        {
+            if (place != null && npc.ScriptFile != null && !string.Equals(npc.ScriptFile, place, StringComparison.OrdinalIgnoreCase)) continue;
+            if (string.Equals(npc.Key, name, StringComparison.OrdinalIgnoreCase)) return npc;
+            if (byName == null && string.Equals(npc.Name, name, StringComparison.OrdinalIgnoreCase)) byName = npc;
+        }
+        return byName;
+    }
+
+    /// <summary>Tiles that start a script when stepped on (plan 02 · S1).</summary>
+    public List<StepTrigger> Triggers { get; } = new();
+
+    /// <summary>The triggers that cover a tile, in the order the map has them.</summary>
+    public IEnumerable<StepTrigger> TriggersAt(int x, int y) => Triggers.Where(t => t.Covers(x, y));
+
+    /// <summary>Signboards that run a script of their own instead of only being read, by their tile.</summary>
+    public Dictionary<(int X, int Y), string> SignScripts { get; } = new();
+
+    /// <summary>The file a place's scripts are written in: its area's key on a map of the world, the map's name otherwise.</summary>
+    public string ScriptFileAt(int x, int y) => InBounds(x, y) && AreaAt(x, y) is { Key.Length: > 0 } area ? area.Key : Name;
+
     public List<Prop> Props { get; } = new();
     public List<Warp> Warps { get; } = new();
     public List<WildEncounterEntry> WildEncounters { get; } = new();
@@ -454,21 +538,17 @@ public class Map
 
     /// <summary>
     /// A wild Pokémon for a step onto a tile, or null: Platinum's odds for the step (<see cref="EncounterSteps.Meets"/>)
-    /// at the place's rate, then one of the place's table by weight.
+    /// at the place's rate, then one of the place's table by weight, with its level decided. The ability of the
+    /// Pokémon at the head of the party has its say in each (<see cref="WildEncounterRules"/>).
     /// </summary>
     /// <param name="thick">In grass taller than the walker, or on a Bicycle: more attempts get through.</param>
-    public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false)
+    /// <param name="lead">The Pokémon at the head of the party; left out, nothing shapes the meeting.</param>
+    public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false, WildLead? lead = null)
     {
         var (table, rate) = WildAt(x, y, water);
+        rate = WildEncounterRules.Rate(rate, lead, WeatherAt(x, y));
         if (table.Count == 0 || !steps.Meets(rate, thick, rng)) return null;
-
-        int roll = rng.Next(table.Sum(e => e.Weight));
-        foreach (var e in table)
-        {
-            roll -= e.Weight;
-            if (roll < 0) return e;
-        }
-        return table[0];
+        return WildEncounterRules.Meet(table, water, lead, rng);
     }
 }
 

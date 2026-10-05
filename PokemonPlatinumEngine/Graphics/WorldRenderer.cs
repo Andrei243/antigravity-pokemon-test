@@ -273,6 +273,28 @@ public sealed class WorldRenderer
     /// <summary>Brings the camera back to the player over <paramref name="seconds"/>.</summary>
     public void ReleaseCamera(float seconds) => panRate = -1f / MathF.Max(0.01f, seconds);
 
+    // A shake: how long it has left, how long it was given and how far it throws the picture
+    private float shakeLeft, shakeLength = 1f, shakeReach;
+
+    /// <summary>
+    /// Shakes the picture up and down for a time, dying away: the ground trembling in a story scene. It moves in
+    /// whole texels, thirty times a second, like everything else in the field.
+    /// </summary>
+    public void ShakeCamera(float seconds, float tiles = 0.19f)
+    {
+        shakeLeft = shakeLength = MathF.Max(0.01f, seconds);
+        shakeReach = tiles;
+    }
+
+    /// <summary>How far the shake throws the camera this frame, in tiles; nought when nothing shakes.</summary>
+    private float Shake(float step)
+    {
+        if (shakeLeft <= 0f) return 0f;
+        shakeLeft = MathF.Max(0f, shakeLeft - step);
+        int beat = (int)(Life.Now * 30.0);
+        return SnapToTexel(((beat & 1) == 0 ? 1f : -1f) * shakeReach * (shakeLeft / shakeLength));
+    }
+
     /// <summary>How far along a pan the camera is, 0 to 1, eased at both ends.</summary>
     public float PanEase => panAmount * panAmount * (3f - 2f * panAmount);
 
@@ -301,7 +323,7 @@ public sealed class WorldRenderer
         lastWasIndoors = indoors;
         // The weather where the player stands changes the light; the opening's fly-overs are always fair
         weather = player != null ? map.WeatherAt(player.GridX, player.GridY) : FieldWeather.Clear;
-        var rig = ArtLook.Weathered(ArtLook.FieldRig(hour, indoors), weather);
+        var rig = ArtLook.Weathered(ArtLook.FieldRig(hour, map), weather);
         var light = rig.Light;
         weatherLight = Brightness(rig);
 
@@ -328,6 +350,24 @@ public sealed class WorldRenderer
             lookZ += (sent.Y - pz) * PanEase;
         }
         var camera = BuildCamera(map, room, lookX, lookZ, easedGround);
+        if (Shake(step) is var jolt && jolt != 0f)
+        {
+            camera.Position.Z += jolt;
+            camera.Target.Z += jolt;
+        }
+
+        // In a cave nobody has lit, where the player stands on the picture and how large a tile is there
+        dark = player != null && Darkness.Covers(map, player.Moves);
+        if (dark)
+        {
+            var feet = new Vector3(px, groundY, pz);
+            var at = Raylib.GetWorldToScreenEx(feet, camera, 1920, 1080);
+            var east = Raylib.GetWorldToScreenEx(feet + Vector3.UnitX, camera, 1920, 1080);
+            var south = Raylib.GetWorldToScreenEx(feet + Vector3.UnitZ, camera, 1920, 1080);
+            // Round the player's middle, not their feet
+            darkAt = new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
+            darkTile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
+        }
 
         // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
         GroundRect? view = null, casters = null;
@@ -423,6 +463,37 @@ public sealed class WorldRenderer
     public void DrawToScreen(int destWidth, int destHeight)
     {
         context.Composite(new Rectangle(0, 0, destWidth, destHeight));
+        DrawWeather(destWidth, destHeight);
+        if (dark) DrawDarkness(destWidth, destHeight);
+    }
+
+    private bool dark;
+    private Vector2 darkAt, darkTile;
+
+    /// <summary>
+    /// The dark of an unlit cave (style guide, "Caves"): the picture falls to the dark's colour everywhere but in
+    /// a circle of the floor round the player, which lies on the ground and so is wider than it is tall.
+    /// </summary>
+    private void DrawDarkness(int destWidth, int destHeight)
+    {
+        float cx = darkAt.X * destWidth, cy = darkAt.Y * destHeight;
+        float halfW = Darkness.Reach * darkTile.X * destWidth, halfH = Darkness.Reach * darkTile.Y * destHeight;
+        var texture = SceneTextures.Darkness;
+        var lit = new Rectangle(MathF.Round(cx - halfW), MathF.Round(cy - halfH), MathF.Round(halfW * 2f), MathF.Round(halfH * 2f));
+        Raylib.DrawTexturePro(texture, new Rectangle(0, 0, texture.Width, texture.Height), lit, Vector2.Zero, 0f, Color.White);
+
+        // Past the circle's square there is only the dark
+        var colour = new Color(Darkness.Colour.R, Darkness.Colour.G, Darkness.Colour.B, (byte)255);
+        float right = lit.X + lit.Width, bottom = lit.Y + lit.Height;
+        if (lit.Y > 0) Raylib.DrawRectangleRec(new Rectangle(0, 0, destWidth, lit.Y), colour);
+        if (bottom < destHeight) Raylib.DrawRectangleRec(new Rectangle(0, bottom, destWidth, destHeight - bottom), colour);
+        float top = MathF.Max(0, lit.Y), height = MathF.Min(destHeight, bottom) - top;
+        if (lit.X > 0 && height > 0) Raylib.DrawRectangleRec(new Rectangle(0, top, lit.X, height), colour);
+        if (right < destWidth && height > 0) Raylib.DrawRectangleRec(new Rectangle(right, top, destWidth - right, height), colour);
+    }
+
+    private void DrawWeather(int destWidth, int destHeight)
+    {
         if (weather == FieldWeather.Clear) return;
 
         // Mist takes the light of the scene it lies in; what falls catches a little more of it
@@ -486,8 +557,10 @@ public sealed class WorldRenderer
         // Aim at the player's middle so they sit near the centre of the screen, then keep the view
         // inside the map plus a few tiles of the surrounding forest
         var t = new Vector3(px, groundY + 0.6f * MapScene.VerticalScaleOf(map), pz);
-        var (farOff, nearOff, halfW) = VisibleGround(t.Y - groundY);
-        const float overscan = 4f;
+        var lens = MapScene.ViewOf(map);
+        var (farOff, nearOff, halfW) = VisibleGround(t.Y - groundY, lens);
+        // A cave ends at its rock: the view stays inside it. The open country shows a few tiles of forest past its edge
+        float overscan = map.IsCave ? 0f : 4f;
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
         t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
 
@@ -495,7 +568,7 @@ public sealed class WorldRenderer
         t.X = SnapToTexel(t.X);
         t.Z = SnapToTexel(t.Z);
 
-        return new Camera3D(t + dir * MapScene.OutdoorDistance, t, Vector3.UnitY, MapScene.OutdoorFovYDeg, CameraProjection.Perspective);
+        return new Camera3D(t + dir * lens.Distance, t, Vector3.UnitY, lens.FovYDeg, CameraProjection.Perspective);
     }
 
     internal static float SnapToTexel(float v) => MathF.Round(v * CharacterSprites.TexelsPerUnit) / CharacterSprites.TexelsPerUnit;
@@ -507,11 +580,11 @@ public sealed class WorldRenderer
     /// Where the top and bottom screen edges meet the ground (as Z offsets from the target) and the
     /// half-width of the view at the far edge, for the outdoor perspective camera.
     /// </summary>
-    private (float FarOffset, float NearOffset, float HalfWidth) VisibleGround(float targetHeight)
+    private (float FarOffset, float NearOffset, float HalfWidth) VisibleGround(float targetHeight, FieldView lens)
     {
-        float pitch = MapScene.OutdoorPitchDeg * MathF.PI / 180f;
-        float half = MapScene.OutdoorFovYDeg / 2f * MathF.PI / 180f;
-        float d = MapScene.OutdoorDistance;
+        float pitch = lens.PitchDeg * MathF.PI / 180f;
+        float half = lens.FovYDeg / 2f * MathF.PI / 180f;
+        float d = lens.Distance;
         float camHeight = targetHeight + d * MathF.Sin(pitch);
         float camBack = d * MathF.Cos(pitch);
 
@@ -534,14 +607,15 @@ public sealed class WorldRenderer
     internal (GroundRect View, GroundRect Casters) VisibleRects(Map? map, Vector3 target, float groundY, Vector3 sunDirection)
     {
         const float tallest = 5f;
-        var (farOff, nearOff, halfW) = VisibleGround(target.Y - groundY);
+        var lens = map != null ? MapScene.ViewOf(map) : FieldView.Outdoor;
+        var (farOff, nearOff, halfW) = VisibleGround(target.Y - groundY, lens);
         // Things are a tile or two wide, and a tall tree south of the bottom edge still shows its top
         var view = new GroundRect(target.X - halfW - 2f, target.Z + farOff - 2f, target.X + halfW + 2f, target.Z + nearOff + 4f);
         if (map is { HasRelief: true })
         {
             // A tile of height shows as far up the screen as six tenths of a tile of ground (the camera's pitch)
             const int look = 10;
-            float perTile = 1f / MathF.Tan(MapScene.OutdoorPitchDeg * MathF.PI / 180f);
+            float perTile = 1f / MathF.Tan(lens.PitchDeg * MathF.PI / 180f);
             var (low, high) = Relief.Range(map, (int)view.MinX, (int)view.MinZ - look, (int)view.MaxX + 1, (int)view.MaxZ + look);
             view = view with { MinZ = view.MinZ - MathF.Max(0f, groundY - low) * perTile, MaxZ = view.MaxZ + MathF.Max(0f, high - groundY) * perTile };
         }

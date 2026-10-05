@@ -242,7 +242,8 @@ public class WorldModelTests
         Assert.Equal(new[] { 5, 6, 8, 9 }, market.Porch);
         Assert.True(market.PorchIsOpen);
         Assert.Equal(new[] { 7 }, market.Doors.Select(d => d.X));
-        Assert.False(map.IsSolid(7, 18));
+        // Nothing lies behind the door in this little world, so the way in is closed like a door that is locked
+        Assert.True(map.IsSolid(7, 18));
         Assert.Equal(new[] { BuildingArt.BayKind.Window, BuildingArt.BayKind.Blank, BuildingArt.BayKind.Blank, BuildingArt.BayKind.Door, BuildingArt.BayKind.Blank, BuildingArt.BayKind.Blank },
             BuildingArt.BaysOf(market));
 
@@ -511,6 +512,61 @@ public class WorldModelTests
         Assert.True(TopOf(PropType.WindTurbine, 8.3f) > 8f);
         Assert.True(TopOf(PropType.Mast, 10.3f) > TopOf(PropType.Mast, 6f) + 2f);
         Assert.True(TopOf(PropType.Column, 6.6f) > TopOf(PropType.Column, 4.1f) + 1.5f);
+    }
+
+    [Fact]
+    public void AConveyorIsABeltOnPiersWithGantriesToCarryItOverTheOpen()
+    {
+        // A belt eight tiles long, north to south: on piers where the tiles under it are blocked (its first
+        // three), a span over the open ones; a gantry over the span; a belt east to west; a pier alone
+        var map = new Map(16, 16) { Name = "Yard" };
+        for (int y = 2; y <= 4; y++) map.SetSolid(5, y, true);
+        map.Props.Add(new Prop { Type = PropType.Conveyor, X = 5, Y = 2, Width = 1, Depth = 8 });
+        map.Props.Add(new Prop { Type = PropType.Gantry, X = 4, Y = 6, Width = 3, Depth = 2 });
+        map.Props.Add(new Prop { Type = PropType.Conveyor, X = 8, Y = 12, Width = 5, Depth = 1 });
+        map.Props.Add(new Prop { Type = PropType.Gantry, X = 9, Y = 11, Width = 2, Depth = 3 });
+        map.Props.Add(new Prop { Type = PropType.Gantry, X = 2, Y = 12 });
+        map.Props.Add(new Prop { Type = PropType.Drums, X = 13, Y = 3, Width = 2, Depth = 2 });
+
+        var kit = new KitBuilder(new ArtSheet(), OutdoorVS);
+        OutdoorProps.Add(kit, map, new MeshBuilder());
+        AssertClean(kit.Sheet, "the mine's conveyors");
+        Assert.Contains(kit.Sheet.Faces, face => face.Key == "drums");
+
+        // The belt lies above whoever walks under it (a character's sprite is 58 rows tall), and nothing reaches higher
+        Assert.True(Landmarks.BeltUnder >= CharacterSprites.SpriteH);
+        var (min, max) = kit.Solid.Bounds();
+        Assert.Equal(Landmarks.BeltTop * KitBuilder.Texel * OutdoorVS, max.Y, 3);
+        Assert.Equal(0f, min.Y, 3);
+
+        // Both belts move, four texels a frame, and come round after the four frames; nothing else does
+        var moving = kit.Sheet.Moving;
+        Assert.Equal(new[] { "conveyor.belt.ew", "conveyor.belt.ns" }, moving.Select(m => m.Key).OrderBy(k => k));
+        foreach (var (key, region, frames, rate) in moving)
+        {
+            Assert.Equal(Landmarks.MovingFrames, frames.Length);
+            Assert.Equal((region.Width, region.Height), (frames[0].Width, frames[0].Height));
+            bool northSouth = key.EndsWith(".ns");
+            Assert.Equal(northSouth ? (20, 32) : (32, 20), (region.Width, region.Height));
+            for (int y = 0; y < region.Height; y++)
+                for (int x = 0; x < region.Width; x++)
+                {
+                    // Each frame is the one before, moved four texels along the belt (which repeats every sixteen)
+                    int fromX = northSouth ? x : (x + 4) % 16 + x / 16 * 16, fromY = northSouth ? (y + 4) % 16 + y / 16 * 16 : y;
+                    Assert.Equal(frames[1].Get(fromX, fromY), frames[0].Get(x, y));
+                    Assert.Equal(255, frames[2].Get(x, y).A);
+                }
+            Assert.Contains(Enumerable.Range(0, region.Width * region.Height), i => !frames[0].Get(i % region.Width, i / region.Width).Equals(frames[1].Get(i % region.Width, i / region.Width)));
+        }
+
+        // A pier is a lattice: the ground shows between its posts
+        var pier = new PixelCanvas(16, Landmarks.BeltUnder);
+        Landmarks.PaintPier(pier);
+        int open = 0, steel = 0;
+        for (int y = 0; y < pier.Height; y++)
+            for (int x = 0; x < pier.Width; x++)
+                if (pier.Get(x, y).A == 0) open++; else steel++;
+        Assert.True(open > pier.Width * pier.Height / 3, $"a pier is {steel} texels of steel to {open} of air");
     }
 
     [Fact]

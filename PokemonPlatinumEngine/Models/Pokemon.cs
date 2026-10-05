@@ -401,15 +401,20 @@ public class Pokemon
     public string ModelName => Form ?? Species.Name;
     public bool IsFainted => CurrentHP <= 0 || Status == StatusCondition.Faint;
 
-    public Pokemon(PokemonSpecies species, int level, Random? rng = null)
+    /// <param name="gender">The gender it must have (a wild Pokémon met with Cute Charm at the head of the party); left out, by its species' ratio.</param>
+    /// <param name="nature">The nature it must have (Synchronize); left out, any.</param>
+    public Pokemon(PokemonSpecies species, int level, Random? rng = null, Gender? gender = null, Nature? nature = null)
     {
         rng ??= Core.Dice.New();
         Species = species;
         Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
-        Gender = RollGender(species, rng);
+        // Both are drawn whether or not they are given, so the rest of the Pokémon is the same either way
+        var drawnGender = RollGender(species, rng);
+        var drawnNature = (Nature)rng.Next(Enum.GetValues<Nature>().Length);
+        Gender = gender ?? drawnGender;
         Form = FormOfGender();
-        Nature = (Nature)rng.Next(Enum.GetValues<Nature>().Length);
+        Nature = nature ?? drawnNature;
         IsShiny = rng.Next(8192) == 0;
         // One of its form's abilities, each as likely
         AbilityName = Abilities.Count == 0 ? null : Abilities[rng.Next(Abilities.Count)];

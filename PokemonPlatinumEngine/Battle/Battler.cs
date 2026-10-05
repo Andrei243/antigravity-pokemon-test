@@ -119,15 +119,31 @@ public sealed class Battler
         Turn = other.Turn.Copy();
     }
 
+    /// <summary>
+    /// Arceus with Multitype is the type of the plate it holds, and Normal with none, whatever else would say:
+    /// the original reads its type from the item every time it asks (<c>BattleMon_Get</c>), so a Ditto in its
+    /// shape goes by what Ditto holds.
+    /// </summary>
+    private PokemonType? PlateType
+    {
+        get
+        {
+            if (Pokemon is not { AbilityName: "Multitype" } p || p.Species.Name != "Arceus") return null;
+            return p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus") && System.Enum.TryParse(hold["Arceus".Length..], out PokemonType type)
+                ? type : PokemonType.Normal;
+        }
+    }
+
     /// <summary>The types the Pokémon has right now: its own, unless a move changed them for the battle (Conversion, Transform).</summary>
     public bool HasType(PokemonType type) =>
-        Volatile.Types != null ? Volatile.Types.Contains(type) : Pokemon != null && Pokemon.HasType(type);
+        PlateType is { } plate ? type == plate : Volatile.Types != null ? Volatile.Types.Contains(type) : Pokemon != null && Pokemon.HasType(type);
 
     /// <summary>Its types right now, one or two, the first its own first.</summary>
     public IReadOnlyList<PokemonType> Types
     {
         get
         {
+            if (PlateType is { } plate) return new[] { plate };
             if (Volatile.Types != null) return Volatile.Types;
             if (Pokemon == null) return System.Array.Empty<PokemonType>();
             return Pokemon.SecondaryType is { } second && second != Pokemon.PrimaryType

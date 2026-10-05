@@ -507,7 +507,8 @@ public sealed partial class BattleCore
         q.HeldItem = null;
         t.Volatile.ConsumedItem = berry;
         Say($"{user.Name} stole and ate {t.Name}'s {berry.Name}!");
-        if (user.IsActive) EatBerry(user, berry, berry.PluckEffect);
+        // With Klutz or under an Embargo the berry is gone all the same and does nothing for whoever ate it
+        if (user.IsActive && !Has(user, "Klutz") && user.Volatile.EmbargoTurns == 0) EatBerry(user, berry, berry.PluckEffect);
     }
 
     /// <summary>

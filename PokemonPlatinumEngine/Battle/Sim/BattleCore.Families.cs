@@ -151,7 +151,7 @@ public sealed partial class BattleCore
                 if (v.RolloutTurns == 0)
                 {
                     v.RolloutTurns = 5;
-                    v.LockedMove = use.Data;
+                    v.LockedMove = use.Own ?? use.Data;
                 }
                 v.RolloutTurns--;
                 int power = use.Data.Power << (5 - v.RolloutTurns - 1);

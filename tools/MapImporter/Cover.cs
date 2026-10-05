@@ -16,6 +16,7 @@ public static class Cover
     // First match wins. A null cover means the texture says nothing about the ground (a shadow, a decal).
     private static readonly (Regex Pattern, TerrainCover? Cover)[] Rules = new (string, TerrainCover?)[]
     {
+        ("^dhole", TerrainCover.CaveMouth),                      // the dark in the mouth of a cave ("dungeon hole")
         ("shadow|kage", null),                                   // shadows painted over the ground
         ("^puddle", null),                                       // the behaviour already says puddle
         ("tree3|^bf_tree", TerrainCover.Broadleaf),              // the Battle Zone's forests
@@ -88,7 +89,12 @@ public static class Cover
                 var above = OfTexture(layers?.Above[i], out _);
                 // A walkway's deck is a bridge by its behaviour; its own look is told by its texture
                 if (!solid && (ground == TerrainCover.Walkway || above == TerrainCover.Walkway)) { result[i] = TerrainCover.Walkway; continue; }
+                // The mouth of a cave is its dark, whether the tile is the hole in the rock or the way in
+                if (ground == TerrainCover.CaveMouth || above == TerrainCover.CaveMouth) { result[i] = TerrainCover.CaveMouth; continue; }
                 if (OfBehaviour((TileBehavior)land.Behaviour(x, z)) is { } fromBehaviour) { result[i] = fromBehaviour; continue; }
+                // Flowers stand over the lawn they grow in (Floaroma Meadow is a lawn with a sheet of flowers
+                // over every tile of it): the lawn is the ground, the flowers are what is seen
+                if (!solid && above == TerrainCover.Flowers && (ground == null || ground == TerrainCover.Grass)) { result[i] = TerrainCover.Flowers; continue; }
                 // A blocked tile shows what stands on it; an open one its ground, whatever hangs over it
                 TerrainCover? pick = solid
                     ? (above is { } a && Stands(a) ? a : ground ?? above)

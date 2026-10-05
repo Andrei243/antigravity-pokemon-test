@@ -203,7 +203,7 @@ public class BuildingTests
     public void JubilifeIsACityOfNamedBuildings()
     {
         MapDatabase.Initialize();
-        var city = MapDatabase.Get("JubilifeCity");
+        var city = Fixtures.Map("JubilifeCity");
         Assert.Equal(Architecture.City, city.Architecture);
         Assert.Equal(Architecture.Timber, MapDatabase.Get("Sinnoh").ArchitectureAt(112, 880));   // Twinleaf Town
 
@@ -310,7 +310,7 @@ public class BuildingTests
         Assert.True(twinleaf.PublicLight.VertexCount >= (2 * 2 + 2) * 6);
 
         // The television station's door is shut: no light spills from it, only from its windows
-        var jubilife = MapDatabase.Get("JubilifeCity");
+        var jubilife = Fixtures.Map("JubilifeCity");
         int lamps = jubilife.Props.Count(p => p.Type == PropType.LampPost);
         int openDoors = MapStructures.FindBuildings(jubilife).Sum(b => b.Doors.Count);
         int windows = MapStructures.FindBuildings(jubilife).Sum(b => BuildingArt.BaysOf(b).Count(k => k == BuildingArt.BayKind.Window));

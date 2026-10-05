@@ -364,7 +364,7 @@ public sealed partial class BattleCore : IBattleContext
         waiting = Order(choices.Select(ToAct).ToList());
 
         // Whoever chose Focus Punch tightens its focus first (BattleControllerPlayer_CheckPreMoveActions)
-        foreach (var act in waiting.Where(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "HitLastWhiffIfHit" && a.User.IsActive && a.User.Pokemon!.Status != StatusCondition.Sleep))
+        foreach (var act in waiting.Where(a => a.Choice.Kind == ChoiceKind.Fight && a.Move?.Data.Effect == "HitLastWhiffIfHit" && a.User.IsActive && a.User.Pokemon!.Status != StatusCondition.Sleep && !Loafs(a.User)))
             Say($"{act.User.Name} is tightening its focus!");
 
         while (waiting.Count > 0)

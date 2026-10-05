@@ -250,7 +250,7 @@ public sealed partial class BattleCore
                 var v = use.User.Volatile;
                 v.Recharging = true;
                 v.RechargeTurn = b.Turn;
-                v.LockedMove = use.Data;
+                v.LockedMove = use.Own ?? use.Data;
             }
         },
         ["ContinueAndConfuseSelf"] = new()
@@ -260,7 +260,7 @@ public sealed partial class BattleCore
                 var v = use.User.Volatile;
                 if (v.RampageTurns > 0) return;
                 v.RampageTurns = 2 + b.rng.Roll(RollKind.Duration, 2);
-                v.LockedMove = use.Data;
+                v.LockedMove = use.Own ?? use.Data;
             }
         },
         ["Uproar"] = new()
@@ -270,7 +270,7 @@ public sealed partial class BattleCore
                 var v = use.User.Volatile;
                 if (v.UproarTurns > 0) return;
                 v.UproarTurns = b.Lasting(b.Rules.UproarTurns);
-                v.LockedMove = use.Data;
+                v.LockedMove = use.Own ?? use.Data;
                 b.Say($"{use.User.Name} caused an uproar!");
             }
         },
@@ -364,7 +364,8 @@ public sealed partial class BattleCore
         {
             Does = (b, use) => b.OnEach(use, t =>
             {
-                if (t.HasSubstitute || t.Volatile.EmbargoTurns > 0) return b.Fails();
+                // subscript_embargo_start: not on Arceus, nor on the holder of Giratina's orb
+                if (t.HasSubstitute || t.Volatile.EmbargoTurns > 0 || t.Pokemon!.AbilityName == "Multitype" || t.Pokemon.HeldItem?.Name == "Griseous Orb") return b.Fails();
                 t.Volatile.EmbargoTurns = 5;
                 b.Say($"{t.Name} can't use items anymore!");
                 return true;
@@ -852,6 +853,8 @@ public sealed partial class BattleCore
         place.DoomMove = use.Data;
         place.DoomFrom = user.Place;
         place.DoomDamage = DamageCalculator.Calculate(user, t, use.Move, rng, spread: false, rules: Rules, noCrit: true, typeless: true).Damage;
+        // An ally's Helping Hand counts twice here: once in the formula, and once more on what it gives (the original's own doing)
+        if (user.Turn.HelpingHand) place.DoomDamage = place.DoomDamage * 15 / 10;
         Say(use.Data.Name == "Doom Desire" ? $"{user.Name} chose Doom Desire as its destiny!" : $"{user.Name} foresaw an attack!");
     }
 
@@ -918,7 +921,7 @@ public sealed partial class BattleCore
         if (!v.Charging)
         {
             v.Charging = true;
-            v.LockedMove = use.Data;
+            v.LockedMove = use.Own ?? use.Data;
             v.BideTurns = 2;
             v.BideDamage = 0;
             use.Line.With(Shown(user, user, use.Move, null));

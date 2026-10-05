@@ -52,7 +52,8 @@ byBehaviour.World(overworld, new Renders.Options { Scale = 4 }).Save(Path.Combin
 byCover.Heights(overworld, 2).Save(Path.Combine(outDir, "sinnoh_heights.png"));
 
 // The hand-made maps the import hasn't replaced yet, each beside the area it stands in for. Twinleaf Town,
-// Route 201, Lake Verity, Sandgem Town and Route 202 were replaced in plan 01 · M2.
+// Route 201, Lake Verity, Sandgem Town and Route 202 were replaced in plan 01 · M2 and Jubilife City in M5, so
+// there is none today.
 var comparisons = new (string Imported, string HandMade)[] { ("jubilife_city", "JubilifeCity") }
     .Where(c => MapDatabase.MapNames.Contains(c.HandMade))
     .ToArray();

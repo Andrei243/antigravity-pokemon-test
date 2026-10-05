@@ -1,0 +1,65 @@
+{
+  "key": "route_203",
+  "index": 344,
+  "name": "Route 203",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_B_D",
+  "nightMusic": "ROAD_B_N",
+  "encounters": "route_203",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Starly", "level": 4 },
+    { "species": "Shinx", "level": 4 },
+    { "species": "Starly", "level": 5 },
+    { "species": "Kricketot", "level": 4 },
+    { "species": "Bidoof", "level": 5 },
+    { "species": "Abra", "level": 4 },
+    { "species": "Abra", "level": 5 },
+    { "species": "Shinx", "level": 5 },
+    { "species": "Starly", "level": 6 },
+    { "species": "Bidoof", "level": 6 },
+    { "species": "Starly", "level": 7 },
+    { "species": "Bidoof", "level": 7 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "warps": [
+    { "x": 246, "z": 749, "to": "oreburgh_gate_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "youngster_sebastian", "looks": "youngster", "movement": "look_west", "x": 234, "z": 757, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_YOUNGSTER_SEBASTIAN" },
+    { "id": "youngster_michael", "looks": "youngster", "movement": "look_west", "x": 204, "z": 750, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_MICHAEL" },
+    { "id": "lass_kaitlin", "looks": "lass", "movement": "wander_around", "x": 243, "z": 757, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_LASS_KAITLIN" },
+    { "id": "youngster_dallas", "looks": "youngster", "movement": "look_south", "x": 222, "z": 756, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_DALLAS" },
+    { "id": "lass_madeline", "looks": "lass", "movement": "look_south", "x": 240, "z": 748, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_MADELINE" },
+    { "id": "rival", "looks": "barry", "movement": "look_west", "x": 201, "z": 757, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_203_RIVAL", "script": "0" },
+    { "id": "arrow_signpost_jubilife_city", "looks": "arrow_signpost", "movement": "none", "x": 200, "z": 756, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "arrow_signpost_oreburgh_city", "looks": "arrow_signpost", "movement": "none", "x": 244, "z": 747, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "trainer_tips_signpost_east", "looks": "trainer_tips_signpost", "movement": "none", "x": 238, "z": 752, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "trainer_tips_signpost_west", "looks": "trainer_tips_signpost", "movement": "none", "x": 217, "z": 750, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "item_repel", "looks": "pokeball", "movement": "none", "x": 222, "z": 745, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_REPEL", "script": "7001" },
+    { "id": "item_poke_ball", "looks": "pokeball", "movement": "none", "x": 211, "z": 750, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_POKE_BALL", "script": "7002" },
+    { "id": "lass", "looks": "lass", "movement": "wander_around", "x": 206, "z": 757, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "1" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 187, "z": 756, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_JUBILIFE_CITY", "script": "65535" },
+    { "id": "item_x_defense", "looks": "pokeball", "movement": "none", "x": 231, "z": 754, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "unk_003", "hiddenBy": "FLAG_OBTAINED_ROUTE_203_X_DEFENSE", "script": "7255" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 196, "z": 757, "width": 1, "depth": 4, "script": "6", "variable": "VAR_ROUTE_203_RIVAL_STATE", "value": "0" }
+  ]
+}

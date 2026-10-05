@@ -59,12 +59,14 @@ public class WorldTests
     [Fact]
     public void TheIndexSaysWhatIsBuilt()
     {
-        Assert.Equal(new[] { "Sinnoh", "LakeVerity" }, Sinnoh.Index.Maps.Select(m => m.Name));
+        Assert.Equal(new[] { "Sinnoh", "LakeVerity", "OreburghGate1F", "OreburghGateB1F", "OreburghMineB1F", "OreburghMineB2F", "RavagedPath", "FloaromaMeadow" },
+            Sinnoh.Index.Maps.Select(m => m.Name));
         Assert.Equal(0, Sinnoh.Index.Maps[0].Matrix);
         Assert.Null(Sinnoh.Index.Maps[0].Area);   // the overworld's matrix names the area of each chunk itself
         Assert.Equal(Sinnoh.Index.Areas.Count, Sinnoh.Index.Areas.Distinct(StringComparer.OrdinalIgnoreCase).Count());
         Assert.True(Sinnoh.IsOpen("ROUTE_201"));
-        Assert.False(Sinnoh.IsOpen("jubilife_city"));
+        Assert.True(Sinnoh.IsOpen("jubilife_city"));
+        Assert.False(Sinnoh.IsOpen("eterna_city"));
 
         foreach (string key in Sinnoh.Index.Areas)
         {
@@ -127,7 +129,7 @@ public class WorldTests
             foreach (string person in overlay.People?.Keys ?? Enumerable.Empty<string>())
                 Assert.True(ids.Contains(person), $"{key}: the overlay gives lines to '{person}', and nobody in the area is called that");
             foreach (var (id, person) in overlay.People ?? new())
-                Assert.True(person.Dialog?.Count > 0 || person.Trainer != null || person.IsStarterBriefcase == true, $"{key}: {id} has nothing to say");
+                Assert.True(person.Dialog?.Count > 0 || person.Trainer != null || person.IsStarterBriefcase == true || person.Script != null, $"{key}: {id} has nothing to say");
 
             foreach (string sign in overlay.Signs?.Keys ?? Enumerable.Empty<string>())
             {
@@ -260,10 +262,13 @@ public class WorldTests
         var map = Overworld;
         var out_ = Reach(map, 116, 886);
 
-        // Up Route 201, through Sandgem Town and Route 202 to the edge of Jubilife City, with no map change on the way
+        // Up Route 201, through Sandgem Town and Route 202 into Jubilife City, and on east along Route 203 and
+        // north up Route 204 to the mouths of their caves, with no map change on the way
         Assert.Contains((174, 801), out_);
-        Assert.Equal("JubilifeCity", map.GetWarpAt(174, 800)?.TargetMap);
-        foreach (string area in new[] { "twinleaf_town", "route_201", "verity_lakefront", "sandgem_town", "route_202", "route_219" })
+        Assert.Null(map.GetWarpAt(174, 800));
+        Assert.Contains((246, 749), out_);   // Oreburgh Gate
+        Assert.Contains((171, 705), out_);   // the Ravaged Path
+        foreach (string area in new[] { "twinleaf_town", "route_201", "verity_lakefront", "sandgem_town", "route_202", "route_219", "jubilife_city", "route_203", "route_204_south" })
             Assert.True(out_.Any(t => map.AreaAt(t.X, t.Y)!.Key == area), $"{area} can't be walked to from Twinleaf Town");
 
         // And home again from where Jubilife City puts the player down
@@ -289,12 +294,12 @@ public class WorldTests
             Assert.True(closed == 0, $"{map.Name}: {closed} tiles outside the open areas can be walked on");
         }
 
-        // The part of Jubilife City in view from Route 202 is such scenery: it has its buildings, and no way in
-        var jubilife = Overworld.AreaAt(174, 790)!;
-        Assert.Equal("jubilife_city", jubilife.Key);
-        Assert.False(jubilife.Open);
-        Assert.Contains(MapStructures.FindBuildings(Overworld), b => Overworld.AreaAt(b.X0, b.Y0) == jubilife);
-        Assert.DoesNotContain(Overworld.NPCs, n => Overworld.AreaAt(n.GridX, n.GridY) == jubilife);
+        // Route 218, in view from Jubilife City's west end, is such scenery: it has its gate house, and no way in
+        var beyond = Overworld.AreaAt(120, 758)!;
+        Assert.Equal("route_218", beyond.Key);
+        Assert.False(beyond.Open);
+        Assert.Contains(MapStructures.FindBuildings(Overworld), b => Overworld.AreaAt(b.X0, b.Y0) == beyond);
+        Assert.DoesNotContain(Overworld.NPCs, n => Overworld.AreaAt(n.GridX, n.GridY) == beyond);
     }
 
     [Theory]
@@ -359,15 +364,14 @@ public class WorldTests
     [Fact]
     public void PeopleStandOnOpenGroundWhereTheyCanBeTalkedTo()
     {
-        var reached = new Dictionary<Map, HashSet<(int X, int Y)>>
-        {
-            [Overworld] = Reach(Overworld, 116, 886),
-            [Lake] = Reach(Lake, Overworld.GetWarpAt(80, 843)!.TargetX, Overworld.GetWarpAt(80, 843)!.TargetY)
-        };
+        // The whole game from its start, through every warp, by someone who can surf and clear what is in the way
+        var reached = WorldWalk.From(MapNamed, RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!);
+        Assert.All(BuiltMaps.Value.Values, built => Assert.True(reached.ContainsKey(built), $"{built.Name} can't be reached from Twinleaf Town"));
 
         int people = 0;
-        foreach (var (map, reach) in reached)
+        foreach (var map in BuiltMaps.Value.Values)
         {
+            var reach = reached[map];
             foreach (var npc in map.NPCs)
             {
                 people++;
@@ -377,7 +381,7 @@ public class WorldTests
                 Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null, $"{who} stands on a warp");
                 Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY));
                 Assert.True(CanStandBeside(reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
-                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase, $"{who} has nothing to say");
+                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null, $"{who} has nothing to say");
             }
 
             // Signs and mailboxes can be read from a tile beside them
@@ -389,8 +393,9 @@ public class WorldTests
                 Assert.True(CanStandBeside(reach, x, y), $"{map.Name}: the sign at ({x},{y}) can't be walked up to");
             }
 
-            // Lamps, benches, boulders and fences block the way
-            foreach (var prop in map.Props.Where(p => p.IsSolid))
+            // Lamps, benches, boulders and fences block the way. What a model of the world put there blocks
+            // where the world says: a turbine's blades turn over grass one can walk through
+            foreach (var prop in map.Props.Where(p => p.IsSolid && p.Model.Length == 0))
                 for (int y = prop.Y; y < prop.Y + prop.Depth; y++)
                     for (int x = prop.X; x < prop.X + prop.Width; x++)
                         Assert.True(map.IsSolid(x, y), $"{map.Name}: the {prop.Type} at ({x},{y}) can be walked through");
@@ -404,10 +409,9 @@ public class WorldTests
         Assert.Equal("route_201", Overworld.AreaAt(briefcase.GridX, briefcase.GridY)!.Key);
 
         // Route 202's trainers
-        var trainers = Overworld.NPCs.Where(n => n.IsTrainer).ToList();
+        var trainers = Overworld.NPCs.Where(n => n.IsTrainer && Overworld.AreaAt(n.GridX, n.GridY)!.Key == "route_202").ToList();
         Assert.Equal(new[] { "Logan", "Natalie", "Tristan" }, trainers.Select(t => t.Name).OrderBy(n => n));
-        Assert.All(trainers, t => Assert.Equal("route_202", Overworld.AreaAt(t.GridX, t.GridY)!.Key));
-        Assert.All(trainers, t => Assert.True(t.TrainerData!.Party.Count > 0));
+        Assert.All(BuiltMaps.Value.Values.SelectMany(m => m.NPCs).Where(n => n.IsTrainer), t => Assert.True(t.TrainerData!.Party.Count > 0));
     }
 
     [Fact]

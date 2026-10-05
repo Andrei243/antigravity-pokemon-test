@@ -157,7 +157,12 @@ internal sealed class Trace : BattleEffect
     }
 }
 
-/// <summary>Anticipation (<c>SWITCH_IN_CHECK_STATE_ANTICIPATION</c>): the holder shudders at a foe's move that would be super effective, or a one-hit knockout from a foe of its level or more; a few fixed-damage moves don't count.</summary>
+/// <summary>
+/// Anticipation (<c>SWITCH_IN_CHECK_STATE_ANTICIPATION</c>): the holder shudders at a foe's damaging move that
+/// would be super effective, or a one-hit knockout from a foe of its level or more, unless the move wouldn't
+/// touch it at all; a few fixed-damage moves and the counters don't count (<c>sMovesCannotTriggerAnticipation</c>).
+/// A move goes by the type its data gives it (Hidden Power is Normal), or by Normal for a foe with Normalize.
+/// </summary>
 internal sealed class Anticipation : BattleEffect
 {
     private static readonly HashSet<string> Overlooked = new() { "40DamageFlat", "LevelDamageFlat", "RandomDamage1To150Level", "Counter", "MirrorCoat", "MetalBurst" };
@@ -166,11 +171,15 @@ internal sealed class Anticipation : BattleEffect
     {
         foreach (var foe in ctx.ActiveFoes(self))
         {
+            bool normalizes = foe.Ability?.Effect is { NormalizesMoves: true };
             foreach (var move in foe.Pokemon!.Moves)
             {
-                if (Overlooked.Contains(move.Data.Effect ?? "")) continue;
+                if (move.Category == MoveCategory.Status || Overlooked.Contains(move.Data.Effect ?? "")) continue;
+                var typed = normalizes && move.Data.Type != PokemonType.Normal ? new Move(move.Data.OfType(PokemonType.Normal)) : new Move(move.Data);
+                float effectiveness = DamageCalculator.Effectiveness(foe, self, typed, ctx.Rules);
+                if (effectiveness == 0f) continue;
                 bool ohko = move.Data.Effect == "OneHitKo" && self.Pokemon!.Level <= foe.Pokemon.Level;
-                if (ohko || DamageCalculator.Effectiveness(foe, self, move, ctx.Rules) > 1f)
+                if (ohko || effectiveness > 1f)
                 {
                     ctx.Announce($"{self.Name} shuddered!");
                     return;
@@ -465,7 +474,7 @@ internal sealed class Unburden : BattleEffect
 
 // ---------------------------------------------------------------- shapes (plan 06 · R7)
 
-/// <summary>Forecast (<c>BattleSystem_TriggerFormChange</c>): Castform takes the weather's shape and type, and its own back when the sky clears or is ignored.</summary>
+/// <summary>Forecast (<c>BattleSystem_TriggerFormChange</c>): Castform takes the weather's shape and type in the sun, the rain and the hail, and its own back under any other sky or one that is ignored.</summary>
 internal sealed class Forecast : BattleEffect
 {
     public override string? ChangeShape(IBattleContext ctx, Battler self)
@@ -483,18 +492,10 @@ internal sealed class Forecast : BattleEffect
     }
 }
 
-/// <summary>Flower Gift: Cherrim blooms in the sun; the Attack and Sp. Def it gives its side are in the damage formula by name.</summary>
-internal sealed class FlowerGift : BattleEffect
-{
-    public override string? ChangeShape(IBattleContext ctx, Battler self)
-    {
-        var p = self.Pokemon!;
-        if (p.Species.Name != "Cherrim") return null;
-        return Shapes.Take(self, ctx.Field.WeatherInEffect == BattleWeather.Sun ? "Cherrim-Sunshine" : null);
-    }
-}
-
-/// <summary>Multitype: Arceus is the type of the plate it holds, for good (the original sets its party form from the item).</summary>
+/// <summary>
+/// Multitype: Arceus is the type of the plate it holds, whatever is done to the plate's use (the original reads
+/// the item itself). Its shape stays after the battle, as the original keeps a held plate's form in the party.
+/// </summary>
 internal sealed class Multitype : BattleEffect
 {
     public override string? ChangeShape(IBattleContext ctx, Battler self)
@@ -504,13 +505,18 @@ internal sealed class Multitype : BattleEffect
         string? wanted = null;
         if (p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus") && p.Species.Form("Arceus-" + hold["Arceus".Length..]) != null)
             wanted = "Arceus-" + hold["Arceus".Length..];
-        if ((p.Form ?? null) == wanted) return null;
-        p.ChangeForm(wanted);
+        if (p.Form == wanted) return null;
+        // The shapes differ in type alone, so nothing is worked out again (a Ditto in Arceus's shape keeps its own HP)
+        p.Form = wanted;
         return $"{self.Name} transformed!";
     }
 }
 
-/// <summary>A shape taken for the battle alone: kept the first time so it is given back when the Pokémon leaves (<c>Volatiles.Original</c>).</summary>
+/// <summary>
+/// The shapes the weather gives (<c>BattleSystem_TriggerFormChange</c>). They differ from the species' own in
+/// type and look alone, so the form is set and nothing is worked out again; a shape taken for the battle is kept
+/// the first time (<c>Volatiles.Original</c>) and given back when the Pokémon leaves.
+/// </summary>
 internal static class Shapes
 {
     public static string? Take(Battler self, string? form)
@@ -523,9 +529,16 @@ internal static class Shapes
             o.Species = p.Species;
             o.Form = p.Form;
         }
-        p.ChangeForm(form);
+        p.Form = form;
         return $"{self.Name} transformed!";
     }
+
+    /// <summary>
+    /// Cherrim blooms in the sun and closes under any other sky. The original asks only the species, not the
+    /// ability: a Cherrim whose Flower Gift was taken or suppressed still changes with the weather.
+    /// </summary>
+    public static string? Cherrim(IBattleContext ctx, Battler self) =>
+        Take(self, ctx.Field.WeatherInEffect == BattleWeather.Sun ? "Cherrim-Sunshine" : null);
 }
 
 // ---------------------------------------------------------------- the weather (plan 06 · R3)

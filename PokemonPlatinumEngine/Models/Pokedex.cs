@@ -75,7 +75,7 @@ public class Pokedex
     /// every species of the Sinnoh Pokédex has been seen. The story's post-game asks this and calls
     /// <see cref="UnlockNational"/> (plan 02).
     /// </summary>
-    public bool CanUnlockNational(StoryProgress story) =>
+    public bool CanUnlockNational(Story.StoryState story) =>
         !NationalUnlocked && story.IsRegionComplete("Sinnoh") && IsComplete(PokedexMode.Sinnoh);
 
     public void UnlockNational() => NationalUnlocked = true;

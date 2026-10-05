@@ -125,14 +125,15 @@ internal static class OutdoorProps
     private static void Fence(KitBuilder kit, Map map, Dictionary<(int, int), bool> fenced, int x, int y, bool wall)
     {
         kit.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
+        bool east = Joins(fenced, x, y, 1, 0), west = Joins(fenced, x, y, -1, 0), south = Joins(fenced, x, y, 0, 1), north = Joins(fenced, x, y, 0, -1);
         if (wall)
         {
             kit.Block("lowwall.pier", WallStone, 11, 21, 11, 21, 0, 12);
             kit.Block("lowwall.cap", WallCap, 10, 22, 10, 22, 12, 14);
-            if (fenced.ContainsKey((x + 1, y))) { kit.Block("lowwall.arm", WallStone, 21, 32, 12, 20, 0, 10); kit.Block("lowwall.top", WallCap, 21, 32, 11, 21, 10, 12); }
-            if (fenced.ContainsKey((x - 1, y))) { kit.Block("lowwall.arm", WallStone, 0, 11, 12, 20, 0, 10); kit.Block("lowwall.top", WallCap, 0, 11, 11, 21, 10, 12); }
-            if (fenced.ContainsKey((x, y + 1))) { kit.Block("lowwall.arm", WallStone, 12, 20, 21, 32, 0, 10); kit.Block("lowwall.top", WallCap, 11, 21, 21, 32, 10, 12); }
-            if (fenced.ContainsKey((x, y - 1))) { kit.Block("lowwall.arm", WallStone, 12, 20, 0, 11, 0, 10); kit.Block("lowwall.top", WallCap, 11, 21, 0, 11, 10, 12); }
+            if (east) { kit.Block("lowwall.arm", WallStone, 21, 32, 12, 20, 0, 10); kit.Block("lowwall.top", WallCap, 21, 32, 11, 21, 10, 12); }
+            if (west) { kit.Block("lowwall.arm", WallStone, 0, 11, 12, 20, 0, 10); kit.Block("lowwall.top", WallCap, 0, 11, 11, 21, 10, 12); }
+            if (south) { kit.Block("lowwall.arm", WallStone, 12, 20, 21, 32, 0, 10); kit.Block("lowwall.top", WallCap, 11, 21, 21, 32, 10, 12); }
+            if (north) { kit.Block("lowwall.arm", WallStone, 12, 20, 0, 11, 0, 10); kit.Block("lowwall.top", WallCap, 11, 21, 0, 11, 10, 12); }
             return;
         }
 
@@ -146,18 +147,44 @@ internal static class OutdoorProps
         kit.Block(name + ".post", tone, 16 - half, 16 + half, 16 - half, 16 + half, 0, top);
         foreach (int railY in rails)
         {
-            if (fenced.ContainsKey((x + 1, y))) kit.Block(name + ".rail", tone, 16 + half, 32, 15, 17, railY, railY + 2);
-            if (fenced.ContainsKey((x - 1, y))) kit.Block(name + ".rail", tone, 0, 16 - half, 15, 17, railY, railY + 2);
-            if (fenced.ContainsKey((x, y + 1))) kit.Block(name + ".rail", tone, 15, 17, 16 + half, 32, railY, railY + 2);
-            if (fenced.ContainsKey((x, y - 1))) kit.Block(name + ".rail", tone, 15, 17, 0, 16 - half, railY, railY + 2);
+            if (east) kit.Block(name + ".rail", tone, 16 + half, 32, 15, 17, railY, railY + 2);
+            if (west) kit.Block(name + ".rail", tone, 0, 16 - half, 15, 17, railY, railY + 2);
+            if (south) kit.Block(name + ".rail", tone, 15, 17, 16 + half, 32, railY, railY + 2);
+            if (north) kit.Block(name + ".rail", tone, 15, 17, 0, 16 - half, railY, railY + 2);
         }
         if (kind != FenceKind.Iron) return;
         // Bars between the rails, every eight texels along each run
         foreach (int bar in new[] { 4, 12, 20, 28 })
         {
-            if (bar > 16 ? fenced.ContainsKey((x + 1, y)) : fenced.ContainsKey((x - 1, y))) kit.Block(name + ".bar", tone, bar - 1, bar + 1, 15, 17, 6, 16);
-            if (bar > 16 ? fenced.ContainsKey((x, y + 1)) : fenced.ContainsKey((x, y - 1))) kit.Block(name + ".bar", tone, 15, 17, bar - 1, bar + 1, 6, 16);
+            if (bar > 16 ? east : west) kit.Block(name + ".bar", tone, bar - 1, bar + 1, 15, 17, 6, 16);
+            if (bar > 16 ? south : north) kit.Block(name + ".bar", tone, 15, 17, bar - 1, bar + 1, 6, 16);
         }
+    }
+
+    /// <summary>
+    /// Whether a fenced tile's rails run on to its fenced neighbour. Where the world fences a band two tiles
+    /// thick (the edge of Jubilife City's terrace), the two rows run side by side along the band and are not
+    /// tied to each other at every tile: rails across a square of four fenced tiles are left out, unless the
+    /// band is the longer that way.
+    /// </summary>
+    internal static bool Joins(Dictionary<(int, int), bool> fenced, int x, int y, int dx, int dy)
+    {
+        if (!fenced.ContainsKey((x + dx, y + dy))) return false;
+        // The side step across the way the rail would run: is there a second row beside this one?
+        int sx = dy != 0 ? 1 : 0, sy = dx != 0 ? 1 : 0;
+        bool square = fenced.ContainsKey((x + sx, y + sy)) && fenced.ContainsKey((x + dx + sx, y + dy + sy))
+            || fenced.ContainsKey((x - sx, y - sy)) && fenced.ContainsKey((x + dx - sx, y + dy - sy));
+        if (!square) return true;
+
+        int Run(int ax, int ay)
+        {
+            int n = 1;
+            for (int i = 1; fenced.ContainsKey((x + ax * i, y + ay * i)); i++) n++;
+            for (int i = 1; fenced.ContainsKey((x - ax * i, y - ay * i)); i++) n++;
+            return n;
+        }
+        // The band runs the way its fenced tiles go on longest
+        return Run(Math.Abs(dx), Math.Abs(dy)) > Run(sx, sy);
     }
 
     // ------------------------------------------------------------------ light

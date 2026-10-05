@@ -137,7 +137,8 @@
         "Mom: ...There! All your Pokémon are fully healed and ready for adventure!",
         "Mom: Don't forget your Running Shoes! Hold B, X or Shift to run anywhere!"
       ],
-      "isHealingNurse": true
+      "isHealingNurse": true,
+      "script": "Healer"
     }
   ],
   "wildEncounters": []

@@ -50,7 +50,9 @@ public enum TerrainCover
     /// <summary>The deck of a raised walkway of steel and solar panels (Sunyshore).</summary>
     Walkway,
     /// <summary>A broad-leaved tree, where an area's forests are not Sinnoh's pines (the Battle Zone).</summary>
-    Broadleaf
+    Broadleaf,
+    /// <summary>The dark in the mouth of a cave: blocked where it is the hole in the rock, open where it is the way in.</summary>
+    CaveMouth
 }
 
 /// <summary>The one-character codes of <see cref="TerrainCover"/> in chunk files.</summary>
@@ -63,7 +65,7 @@ public static class TerrainCoverCodes
         (TerrainCover.CaveFloor, 'c'), (TerrainCover.Snow, '^'), (TerrainCover.Ice, 'i'), (TerrainCover.Marsh, 'm'),
         (TerrainCover.Water, '~'), (TerrainCover.Bridge, 'b'), (TerrainCover.Steps, 's'), (TerrainCover.Tree, 'T'),
         (TerrainCover.Cliff, 'C'), (TerrainCover.Boulder, 'R'), (TerrainCover.Fence, 'F'), (TerrainCover.Building, 'B'),
-        (TerrainCover.Lamp, 'L'), (TerrainCover.Walkway, 'W'), (TerrainCover.Broadleaf, 'O')
+        (TerrainCover.Lamp, 'L'), (TerrainCover.Walkway, 'W'), (TerrainCover.Broadleaf, 'O'), (TerrainCover.CaveMouth, 'M')
     };
 
     public static char CodeOf(TerrainCover cover) => Table.First(e => e.Cover == cover).Code;
@@ -393,6 +395,9 @@ public sealed class WorldMapEntry
 
     /// <summary>The kind of tree that fills its forests where an area doesn't say.</summary>
     public TreeStyle Trees { get; set; } = TreeStyle.Pine;
+
+    /// <summary>What the map is when nothing else is said: open country under the sky, or the inside of a cave.</summary>
+    public MapSetting Setting { get; set; } = MapSetting.Outdoors;
 }
 
 /// <summary>
@@ -429,6 +434,15 @@ public sealed class WorldOverlayFile
     /// <summary>What the area's signposts and mailboxes say, by their id in the area file.</summary>
     public Dictionary<string, string>? Signs { get; set; }
 
+    /// <summary>Signposts that run a script of the area's file instead of only being read, by their id in the area file.</summary>
+    public Dictionary<string, string>? SignScripts { get; set; }
+
+    /// <summary>
+    /// Which of the area's triggers start a script, by the trigger's number in the area file. The tiles, the
+    /// variable and its value are the original's; the script is ours. A trigger not listed does nothing.
+    /// </summary>
+    public List<OverlayTrigger>? Triggers { get; set; }
+
     /// <summary>People of our own, placed in tiles of the area's matrix.</summary>
     public List<MapFile.NpcRecord>? Npcs { get; set; }
 
@@ -445,6 +459,14 @@ public sealed class OverlayDoor
     public int X { get; set; }
     public int Y { get; set; }
     public Direction Facing { get; set; } = Direction.Up;
+}
+
+/// <summary>One of an area's triggers given its script: the name of one in the area's script file, or a common one.</summary>
+[JsonConverter(typeof(OneLine<OverlayTrigger>))]
+public sealed class OverlayTrigger
+{
+    public int Trigger { get; set; }
+    public string Script { get; set; } = "";
 }
 
 /// <summary>A tile of an imported area that leads onto a hand-made map.</summary>
@@ -470,6 +492,18 @@ public sealed class OverlayPerson
     public string? NpcType { get; set; }
     public List<string>? Dialog { get; set; }
     public bool? IsStarterBriefcase { get; set; }
+
+    /// <summary>The script talking to them runs: one of the area's script file, or a common one. Left out, they do what they are.</summary>
+    public string? Script { get; set; }
+
+    /// <summary>
+    /// A story flag that takes them off the map while it is set. Left out, it is the one the area file gives the
+    /// object (the original's own); <c>""</c> for someone who stays whatever that flag says.
+    /// </summary>
+    public string? HiddenBy { get; set; }
+
+    /// <summary>A story flag they wait for: they are on the map only while it is set.</summary>
+    public string? ShownBy { get; set; }
     public MapFile.TrainerRecord? Trainer { get; set; }
 }
 
@@ -498,6 +532,9 @@ public sealed class AreaObject
 
     /// <summary>For a trainer: how they watch for the player; left out for everyone else.</summary>
     public string? Trainer { get; set; }
+
+    /// <summary>For a trainer: how many tiles ahead they see the player.</summary>
+    public int? Sight { get; set; }
 
     /// <summary>The flag that hides the object while set; left out when it is always there.</summary>
     public string? HiddenBy { get; set; }

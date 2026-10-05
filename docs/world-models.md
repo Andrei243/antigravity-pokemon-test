@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-163 stand outdoors and are listed here (the rest are furniture, for plan 01 · M11).
+167 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -18,6 +18,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | Model | What it is | In the game | Stand-in until | Size in tiles (w × d × h) | Uses | Where |
 |---|---|---|---|---|---:|---|
 | `board_d` | a billboard | a prop: Billboard |  | 1.5 × 0.4 × 2.5 | 1 | Route 215 |
+| `box02` | crates in the mine | a prop: Crates |  | 1.9 × 1.9 × 1.5 | 7 | Oreburgh Mine |
 | `c06_s01` | the Great Marsh's gate and lookout | a building: Hall, built as in Marsh, 2 storeys, signed MARSH |  | 6.4 × 7.6 × 6.1 | 2 | Great Marsh, Pastoria City |
 | `c06_s02` | a boat at its pier | a prop: Boat | M7 | 8.5 × 5.6 × 2.4 | 5 | Fight Area, Pastoria City |
 | `c09_s02` | the ferry between Snowpoint City and the Fight Area | a prop: Boat |  | 9.4 × 5.2 × 2.6 | 2 | Fight Area, Snowpoint City |
@@ -50,7 +51,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c3_o02` | the mine's sorting shed | a building: Factory, 1 storeys |  | 8.1 × 5.0 × 5.2 | 1 | Oreburgh City |
 | `c3_s01` | the Oreburgh Mining Museum | a building: Museum, built as in Brick, signed MUSEUM |  | 13.6 × 13.0 × 5.9 | 1 | Oreburgh City |
 | `c3_s02` | the mine's winding tower | a building: Factory, signed MINE |  | 7.3 × 3.5 × 7.9 | 1 | Oreburgh City |
-| `c3_s03` | the mine's yard: sheds and conveyors | a building: Factory, 1 storeys | M5 | 19.4 × 27.4 × 10.7 | 1 | Oreburgh City |
+| `c3_s03` | the mine's yard: the pit head, and conveyors on their gantries | a building: Factory, 1 storeys |  | 19.4 × 27.4 × 10.7 | 1 | Oreburgh City |
 | `c4_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.8 | 17 | Celestic Town, Eterna City, Hearthome City and 6 more |
 | `c4_h01a` | a house of Eterna City or Celestic Town | a building: House, built as in HalfTimber |  | 4.8 × 2.9 × 4.9 | 8 | Celestic Town, Eterna City, Route 210 |
 | `c4_o01` | a clipped hedge | a prop: Hedge |  | 2.0 × 1.3 × 1.5 | 12 | Eterna City |
@@ -85,7 +86,9 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c9_o02b` | something low under the snow | a prop: Hedge | M8 | 2.1 × 2.6 × 1.8 | 2 | Snowpoint City |
 | `c9_o03` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Snowpoint City |
 | `c9_s01` | Snowpoint Temple | a building: Temple |  | 11.0 × 8.0 × 5.9 | 1 | Snowpoint City |
+| `can01` | steel drums in the mine | a prop: Drums |  | 1.8 × 1.9 × 1.2 | 4 | Oreburgh Mine |
 | `cy_slope` | a ramp for the Bicycle | nothing of its own: the ground under it draws it | M6 | 1.0 × 2.0 × 2.0 | 14 | Route 207, Route 209, Route 210, Route 228 |
+| `d01_o1` | the mine's loading machine, with a conveyor down either side of the coal face | a building: Factory, 1 storeys |  | 21.0 × 9.4 × 4.6 | 1 | Oreburgh Mine |
 | `d11_o01a` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
 | `d11_o01b` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
 | `d11_o02a` | a flower bed of Amity Square | a prop: Hedge | M6 | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
@@ -138,6 +141,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `l2_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.9 | 7 | Route 213, Valor Lakefront |
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
+| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 4 | Lake Verity |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |
 | `pc` | a Pokémon Center | a building: PokemonCenter |  | 5.2 × 3.6 × 3.9 | 16 | Canalave City, Celestic Town, Eterna City and 13 more |
 | `pc_01` | Snowpoint's Pokémon Center, under snow | a building: PokemonCenter, built as in Snow |  | 5.4 × 3.6 × 3.9 | 1 | Snowpoint City |
@@ -161,8 +165,8 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `t2_h01` | a house of Sandgem Town | a building: House, built as in Plaster |  | 4.2 × 2.8 × 4.5 | 2 | Route 221, Sandgem Town |
 | `t2_s01` | Professor Rowan's lab | a building: Lab |  | 8.5 × 5.2 × 4.7 | 1 | Sandgem Town |
 | `t2_s02` | the assistant's house | a building: House, built as in Plaster, 2 storeys |  | 5.5 × 3.6 × 5.7 | 1 | Sandgem Town |
-| `t3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.8 | 10 | Fight Area, Floaroma Town, Resort Area and 2 more |
-| `t3_h01` | a house of Floaroma Town | a building: House, built as in Cottage |  | 4.5 × 2.8 × 5.6 | 3 | Floaroma Town, Route 205 |
+| `t3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.8 | 11 | Fight Area, Floaroma Meadow, Floaroma Town and 3 more |
+| `t3_h01` | a house of Floaroma Town | a building: House, built as in Cottage |  | 4.5 × 2.8 × 5.6 | 4 | Floaroma Meadow, Floaroma Town, Route 205 |
 | `t3_s01` | Floaroma's flower shop | a building: Shop, built as in Cottage, signed FLOWERS |  | 5.5 × 4.0 × 4.8 | 1 | Floaroma Town |
 | `t4_h01` | a house of Solaceon Town | a building: House, built as in Farm |  | 4.9 × 3.1 × 4.8 | 4 | Solaceon Town |
 | `t4_s01` | the Pokémon Day Care, with its fenced yard | a building: Shop, built as in Farm, signed DAY CARE |  | 12.2 × 23.7 × 5.3 | 1 | Solaceon Town |
@@ -175,7 +179,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `t7_s01` | the Ribbon Syndicate | a building: Hall, built as in Resort, 2 storeys, signed RIBBONS | M10 | 9.8 × 5.9 × 6.4 | 1 | Resort Area |
 | `t7_s02` | the Villa | a building: House, built as in Resort |  | 7.7 × 4.0 × 3.4 | 1 | Resort Area |
 | `t7_s03` | a pavilion in the Resort Area | a building: House, built as in Resort | M10 | 4.5 × 4.3 × 3.4 | 2 | Resort Area |
-| `treeeff` | a honey tree | a prop: HoneyTree |  | 2.2 × 2.1 × 2.6 | 20 | Eterna Forest, Fuego Ironworks, Route 205 and 14 more |
+| `treeeff` | a honey tree | a prop: HoneyTree |  | 2.2 × 2.1 × 2.6 | 21 | Eterna Forest, Floaroma Meadow, Fuego Ironworks and 15 more |
 | `wfall11_14` | a waterfall | nothing of its own: the ground under it draws it |  | 11.0 × 0.8 × 14.6 | 1 | Pokémon League |
 | `wfall16_5` | a waterfall | nothing of its own: the ground under it draws it |  | 16.0 × 0.8 × 5.6 | 1 | Pokémon League |
 | `wfall3_4` | a waterfall | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 4.6 | 3 | Route 210 |
@@ -183,5 +187,5 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 
 ## In numbers
 
-- 87 models are buildings, of 26 kinds; 52 are props; 13 are doors.
-- 33 have a stand-in for now: 14 until M10, 1 until M5, 4 until M6, 7 until M7, 7 until M8.
+- 88 models are buildings, of 26 kinds; 54 are props; 13 are doors.
+- 32 have a stand-in for now: 14 until M10, 4 until M6, 7 until M7, 7 until M8.

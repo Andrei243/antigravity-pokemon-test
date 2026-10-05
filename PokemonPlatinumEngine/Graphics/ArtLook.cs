@@ -130,6 +130,26 @@ internal static class ArtLook
 
     public static LightRig FieldRig(float hour, bool indoors) => AtHour(hour, indoors ? IndoorRigFor : FieldRigFor);
 
+    /// <summary>The field's light on a map: a room's by the clock through its windows, a cave's own, the sky's by the hour.</summary>
+    public static LightRig FieldRig(float hour, Overworld.Map map) => map.IsCave && !map.IsIndoors ? CaveFieldRig : FieldRig(hour, map.IsIndoors);
+
+    /// <summary>
+    /// The field inside a cave (style guide, "Caves"): it ignores the clock. A low warm key from the upper left,
+    /// cool shade from above and a dim bounce from the floor; no fog, no cloud shade, no lamps; a strong vignette.
+    /// The background is what the rock's tops fall to, so the picture ends in rock.
+    /// </summary>
+    public static readonly LightRig CaveFieldRig = new(
+        // The key falls from nearly overhead, a little from the south-west: a wall's shadow stays on the lip
+        // before it and never crosses a passage
+        new SceneLighting(Dir(-0.18f, 0.92f, 0.35f), V(0.6f, 0.52f, 0.42f), V(0.44f, 0.47f, 0.58f), V(0.36f, 0.33f, 0.32f)),
+        Rgb(24, 20, 26), V(0.09f, 0.08f, 0.1f), 0f, 60f, 120f,
+        FieldDayPost with
+        {
+            BloomThreshold = 0.9f, BloomStrength = 0.2f, Saturation = 0.96f, Contrast = 1.06f,
+            ShadowTint = V(0.86f, 0.9f, 1.12f), HighlightTint = V(1.06f, 1.0f, 0.9f), Vignette = 0.4f
+        },
+        0f, 0.3f, NoSky);
+
     /// <summary>How much of the sun gets through a kind of weather (style guide, "Life").</summary>
     public static float SunThrough(FieldWeather weather) => weather switch
     {

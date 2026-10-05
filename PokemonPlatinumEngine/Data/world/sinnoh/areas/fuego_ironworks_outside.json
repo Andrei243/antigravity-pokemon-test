@@ -1,0 +1,58 @@
+{
+  "key": "fuego_ironworks_outside",
+  "index": 204,
+  "name": "Fuego Ironworks",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_C_D",
+  "nightMusic": "ROAD_C_N",
+  "encounters": "fuego_ironworks_outside",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Magmar", "level": 28 },
+    { "species": "Magnemite", "level": 29 },
+    { "species": "Magmar", "level": 29 },
+    { "species": "Floatzel", "level": 29 },
+    { "species": "Floatzel", "level": 30 },
+    { "species": "Gastrodon", "level": 30 },
+    { "species": "Magnemite", "level": 28 },
+    { "species": "Magnemite", "level": 30 },
+    { "species": "Floatzel", "level": 31 },
+    { "species": "Gastrodon", "level": 31 },
+    { "species": "Floatzel", "level": 31 },
+    { "species": "Gastrodon", "level": 31 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Shellos", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Gastrodon", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "warps": [
+    { "x": 169, "z": 587, "to": "fuego_ironworks_building", "toWarp": 0 },
+    { "x": 168, "z": 587, "to": "fuego_ironworks_building", "toWarp": 0 },
+    { "x": 170, "z": 587, "to": "fuego_ironworks_building", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 168, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 169, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 170, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 171, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "signboard", "looks": "signboard", "movement": "none", "x": 172, "z": 588, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [
+    { "x": 179, "z": 594, "type": 2, "script": "8156" },
+    { "x": 177, "z": 578, "type": 2, "script": "8155" }
+  ],
+  "triggers": []
+}

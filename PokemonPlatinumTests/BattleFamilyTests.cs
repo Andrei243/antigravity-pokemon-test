@@ -321,15 +321,19 @@ public class BattleFamilyTests
     [Fact]
     public void JudgmentTakesTheTypeOfThePlate()
     {
-        // 125 × 100 × 22 / 105 / 50 = 52, + 2 = 54; with a Flame Plate it is Fire, twice as strong against Grass
-        // (Arceus stays Normal here: the plate's change of its type is Multitype's, not the move's); with no plate
-        // it is Normal, with Arceus's own type's bonus: 81
-        var venusaur = Mon("Venusaur", 50);
-        var said = Turn(Wild(With(Mon("Arceus", 50, "Judgment"), item: "Flame Plate"), venusaur));
+        // Against a Venusaur of level 100 (270 HP, 205 Sp. Def): 125 × 100 × 22 / 205 / 50 = 26, + 2 = 28. With a
+        // Flame Plate the move is Fire and so is Arceus (Multitype, plan 06 · R7): its own type's bonus makes 42,
+        // twice as strong against Grass, 84. With no plate both are Normal: 42. Without Multitype the plate still
+        // makes the move Fire, but not Arceus: 28 × 2 = 56
+        var venusaur = Mon("Venusaur", 100);
+        var arceus = With(Mon("Arceus", 50, "Judgment"), item: "Flame Plate");
+        var said = Turn(Wild(arceus, venusaur));
         Assert.Contains("It's super effective!", said);
-        Assert.Equal(140 - 108, venusaur.CurrentHP);
-        Turn(Wild(Mon("Arceus", 50, "Judgment"), venusaur = Mon("Venusaur", 50)));
-        Assert.Equal(140 - 81, venusaur.CurrentHP);
+        Assert.Equal(270 - 84, venusaur.CurrentHP);
+        Turn(Wild(Mon("Arceus", 50, "Judgment"), venusaur = Mon("Venusaur", 100)));
+        Assert.Equal(270 - 42, venusaur.CurrentHP);
+        Turn(Wild(With(Mon("Arceus", 50, "Judgment"), ability: "Pressure", item: "Flame Plate"), venusaur = Mon("Venusaur", 100)));
+        Assert.Equal(270 - 56, venusaur.CurrentHP);
     }
 
     [Fact]

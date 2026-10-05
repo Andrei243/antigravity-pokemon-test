@@ -1,0 +1,85 @@
+# What every place shares: the scripts the field starts for what a person or a thing is.
+# docs/scripts.md describes the language. The lines are our own.
+
+
+# What every game starts with. It is run with no screen, for a new game and for a save from before the story
+# was kept, so it may set flags and variables and do nothing else. A chapter that hides someone until their
+# scene comes sets the flag that hides them here.
+script NewGame
+  end
+
+
+# Someone with lines to say.
+script Talk
+  sayown
+  end
+
+
+# A signboard: its text, under the word "Sign".
+script Sign
+  speaker "Sign"
+  sayown
+  end
+
+
+# The nurse of a Pokémon Center.
+script Nurse
+  say "Good day! You've come to a Pokémon Center."
+  ask "Your Pokémon look as if they could do with a rest. Shall I see to them?"
+  if no goto Goodbye
+  say "Leave them with me. It won't take a moment."
+  heal
+  fanfare heal
+  say "There we are! Every one of them is fit and well again."
+label Goodbye
+  say "Take care out there, and come back whenever you need us!"
+  end
+
+
+# Someone at home who looks after the team without being asked: what they have to say, and it is done.
+script Healer
+  sayown
+  heal
+  fanfare heal
+  end
+
+
+# The clerk of a Poké Mart: their greeting, the counter, a word on the way out.
+script Clerk
+  sayown
+  shop
+  say "Thank you! Do come again."
+  end
+
+
+# A PC.
+script PC
+  text "{player} switched the PC on."
+  pc
+  end
+
+
+# Professor Rowan's briefcase, with the three Pokémon in it.
+script Briefcase
+  starter
+  end
+
+
+# Whoever takes travellers on to the next region. Where no way leads on from here, they only talk.
+script Attendant
+  travel
+  if result == 0 sayown
+  end
+
+
+# A trainer: the challenge and the battle. Spoken to again once beaten, they say what they have left to say.
+# A battle lost ends the script, as the player wakes up elsewhere.
+script Trainer
+  if defeated self goto Beaten
+  trainerline before
+  battle self
+  end
+label Beaten
+  trainerline after
+  if result == 0 sayown
+  end

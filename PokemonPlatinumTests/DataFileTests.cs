@@ -322,20 +322,20 @@ public class DataFileTests
     {
         MapDatabase.Initialize();
         var names = MapDatabase.MapNames.ToList();
-        Assert.Equal(14, names.Count); // 10 hand-made and 2 from the imported world in Sinnoh, 2 in Kanto
+        Assert.Equal(23, names.Count); // 13 rooms and 8 maps of the imported world in Sinnoh, 2 hand-made maps in Kanto
         Assert.Contains("Sinnoh", names);
         Assert.Contains("PlayerHouse", names);
 
-        var city = MapDatabase.Get("JubilifeCity");
-        Assert.Equal(("Jubilife City", 40, 34), (city.DisplayName, city.Width, city.Height));
-        Assert.False(city.IsStreamed);
-        Assert.Null(city.AreaAt(5, 5));
-        Assert.Equal("Jubilife City", city.DisplayNameAt(5, 5));
+        var town = MapDatabase.Get("PalletTown");
+        Assert.Equal(("Pallet Town", 20, 21), (town.DisplayName, town.Width, town.Height));
+        Assert.False(town.IsStreamed);
+        Assert.Null(town.AreaAt(5, 5));
+        Assert.Equal("Pallet Town", town.DisplayNameAt(5, 5));
 
         var tristan = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
         Assert.True(tristan.IsTrainer);
         Assert.Equal("Starly", tristan.TrainerData!.Party.Members.Single().Species.Name);
-        Assert.Equal(4, tristan.TrainerData.Party.Members[0].Level);
+        Assert.Equal(5, tristan.TrainerData.Party.Members[0].Level);
         Assert.NotEmpty(tristan.TrainerData.Party.Members[0].Moves);
 
         // Furniture blocks the tiles under it, decoration doesn't

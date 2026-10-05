@@ -1,0 +1,72 @@
+# Jubilife City. docs/scripts.md describes the language; the lines are our own, on the original's beats.
+#
+# The city's own scenes (the first arrival, Looker, the president announcing the Pokétch campaign, Team Galactic
+# by the north gate) are plan 02 · S5's. What is here already is the campaign's three clowns, who each ask one
+# question and give a coupon for the right answer.
+#
+# For S5: in the original the first two clowns turn up once the president has announced the campaign (the flag
+# FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2, which their objects already carry), and the third tells the player to
+# stay around until then (VAR_POKETCH_CAMPAIGN_STATE below 2). Both come with his scene.
+
+
+script Clown1
+  if flag FLAG_RECEIVED_COUPON_1 goto Done
+  say "Ta-da! Welcome to the Pokétch campaign! Here's my question..."
+  ask "When a Pokémon wins a battle, does it grow stronger for it?"
+  if no goto Wrong
+  sound "levelup"
+  say "Yes! Exactly right!"
+  say "Every battle won is experience earned, and experience is what a Pokémon grows on."
+  say "And a right answer earns you this!"
+  setflag FLAG_RECEIVED_COUPON_1
+  give "Coupon 1"
+  end
+label Wrong
+  sound "bump"
+  say "Bzzt! Not this time. Think of what a battle leaves a Pokémon with, and come and try again!"
+  end
+label Done
+  say "Battle, win, grow stronger. It's the same for every Pokémon there is!"
+  end
+
+
+script Clown2
+  if flag FLAG_RECEIVED_COUPON_2 goto Done
+  say "Pokétch campaign quiz time! Pokémon have types, like Fire or Water..."
+  ask "...but do their moves have types as well?"
+  if no goto Wrong
+  sound "levelup"
+  say "Yes, they do! Right you are!"
+  say "And a move of the same type as the Pokémon that uses it hits harder than it otherwise would."
+  say "Here you go: one coupon, fairly won!"
+  setflag FLAG_RECEIVED_COUPON_2
+  give "Coupon 2"
+  end
+label Wrong
+  sound "bump"
+  say "Ooh, sorry! Have a look at any of your Pokémon's moves, then come and tell me again."
+  end
+label Done
+  say "A Fire-type move from a Fire-type Pokémon: now that's a move with something behind it!"
+  end
+
+
+script Clown3
+  if flag FLAG_RECEIVED_COUPON_3 goto Done
+  say "Last question of the Pokétch campaign! Ready?"
+  ask "Can a Pokémon carry an item of its own?"
+  if no goto Wrong
+  sound "levelup"
+  say "Correct! It can!"
+  say "One item to a Pokémon, mind. Give it something useful and it will use it by itself in battle."
+  say "And this one is yours!"
+  setflag FLAG_RECEIVED_COUPON_3
+  give "Coupon 3"
+  end
+label Wrong
+  sound "bump"
+  say "Not so! Open your team and look at what a Pokémon can be given. Then come back to me!"
+  end
+label Done
+  say "One Pokémon, one item. Choose it well!"
+  end

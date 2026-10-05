@@ -72,7 +72,9 @@ public partial class BattleEngine
     /// <summary>Answers what the rules asked, and shows what they made of it.</summary>
     private void Submit(IReadOnlyList<BattleChoice> answer)
     {
-        SyncToCore();
+        // While lines are still being shown the screen is behind the rules, and what it holds must never be
+        // copied over theirs (a choice made early by a tool would otherwise undo a turn's worth of state)
+        if (!playingTheLog) SyncToCore();
         core.Submit(answer);
         Play(core.TakeLog());
         Pump();

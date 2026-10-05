@@ -97,9 +97,9 @@
     {
       "sourceX": 5,
       "sourceY": 8,
-      "targetMap": "JubilifeCity",
-      "targetX": 25,
-      "targetY": 27,
+      "targetMap": "Sinnoh",
+      "targetX": 180,
+      "targetY": 777,
       "targetFacing": "Down"
     }
   ],
@@ -111,12 +111,6 @@
       "x": 5,
       "y": 2,
       "facing": "Down",
-      "dialog": [
-        "Nurse Joy: Hello, and welcome to the Pokémon Center!",
-        "Nurse Joy: We restore your tired Pokémon to full health!",
-        "Nurse Joy: ...Thank you for waiting. Your Pokémon are fully healed!",
-        "Nurse Joy: We hope to see you again!"
-      ],
       "isHealingNurse": true
     },
     {

@@ -332,11 +332,13 @@ public class BattleMechanicsTests
     }
 
     [Fact]
-    public void TestSimpleDoublesStatChanges()
+    public void TestSimpleCountsStatChangesDouble()
     {
+        // In Platinum the stage changes as anyone's does, and counts double where it is read (BattleAbilityTests
+        // has the numbers); from Generation 5 the change itself is doubled
         var battle = Wild(Mon("Piplup", 30, null, M("Growl")), Mon("Bidoof", 30, "Simple", Idle));
-        Assert.Contains("Foe Bidoof's Attack harshly fell!", UseMove(battle));
-        Assert.Equal(-2, battle.EnemyPokemon.StatStages[StatType.Attack]);
+        Assert.Contains("Foe Bidoof's Attack fell!", UseMove(battle));
+        Assert.Equal(-1, battle.EnemyPokemon.StatStages[StatType.Attack]);
     }
 
     [Fact]
@@ -396,10 +398,14 @@ public class BattleMechanicsTests
             Assert.All(abilities, a => Assert.NotNull(AbilityDatabase.Get(a)));
         }
 
-        // Shown but not working yet (redirection, form changes...): listed so they don't get forgotten
+        // Every ability of Platinum's has its code since plan 06 · R7; those shown but not working yet are the
+        // later generations' (plan 06 · R16 on)
+        var records = GameDataFiles.Load<List<AbilityDatabase.AbilityRecord>>(AbilityDatabase.FileName);
+        var platinums = records.Where(r => r.Generation <= 4).Select(r => r.Name).ToList();
+        Assert.Equal(123, platinums.Count);
         var pending = AbilityDatabase.GetAll().Where(a => !a.IsImplemented).Select(a => a.Name).ToList();
-        Assert.Contains("Lightning Rod", pending);
-        Assert.DoesNotContain("Intimidate", pending);
+        Assert.Empty(platinums.Intersect(pending));
+        Assert.Contains("Sheer Force", pending);
     }
 
     [Fact]

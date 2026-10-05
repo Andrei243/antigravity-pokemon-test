@@ -111,14 +111,18 @@ public static class DamageCalculator
         // A power worked out as nothing falls back on the move's own (BattleSystem_CalcMoveDamage), which the
         // original's table gives as 1 for every move of variable power: Return at no friendship still deals its 2
         if (power == 0 && basePower.HasValue) power = 1;
+        // A hit of a power of its own (confusion's) is worked out as Struggle's, whatever move was chosen, with
+        // no weather and no screens to it (the original's CALC_SELF_HIT)
+        bool selfHit = powerOverride.HasValue;
+        if (selfHit) move = new Move(BattleCore.StruggleData);
         // Struggle has no type either, but it is a move like any other and can be a critical hit
-        typeless |= powerOverride.HasValue || move.Data == BattleCore.StruggleData;
-        if ((move.Category == MoveCategory.Status && !powerOverride.HasValue) || power <= 0) return result;
+        typeless |= selfHit || move.Data == BattleCore.StruggleData;
+        if (move.Category == MoveCategory.Status || power <= 0) return result;
 
         var atkPokemon = attacker.Pokemon!;
         var defPokemon = defender.Pokemon!;
         var field = defender.Field;
-        var weather = field?.WeatherInEffect ?? BattleWeather.None;
+        var weather = selfHit ? BattleWeather.None : field?.WeatherInEffect ?? BattleWeather.None;
         var attackerEffects = BattleEffects.Of(attacker).ToList();
         bool breaksAbility = attackerEffects.Any(e => e.IgnoresTargetAbility);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaksAbility).ToList();
@@ -135,16 +139,18 @@ public static class DamageCalculator
         string? theirs = breaksAbility ? null : defender.Ability?.Name;
         var myItem = BattleEffects.ItemOf(attacker);
         var theirItem = BattleEffects.ItemOf(defender);
-        bool physical = powerOverride.HasValue || move.Category == MoveCategory.Physical;
+        bool physical = move.Category == MoveCategory.Physical;
         bool typed = !typeless;
         var type = move.Type;
         int attack = physical ? atkPokemon.Attack : atkPokemon.SpAttack;
         int defense = physical ? defPokemon.Defense : defPokemon.SpDefense;
 
-        // The move's own multiplier (Pursuit, a Helping Hand; Reckless sets it from the move's script), a Charge, Technician
+        // The move's own multiplier (Pursuit's doubling; Reckless sets it from the move's script), a Charge, an
+        // ally's Helping Hand, Technician
         power = power * powerTenths / 10;
         if (mine == "Reckless" && (move.Data.RecoilPercent > 0 || move.Data.Effect == "CrashOnMiss")) power = power * 12 / 10;
         if (attacker.Volatile.ChargeTurns > 0 && type == PokemonType.Electric && typed) power *= 2;
+        if (attacker.Turn.HelpingHand) power = power * 15 / 10;
         if (mine == "Technician" && move.Data != BattleCore.StruggleData && power <= 60) power = power * 15 / 10;
         if (physical && mine is "Huge Power" or "Pure Power") attack *= 2;
         if (physical && mine == "Slow Start" && field != null && field.Turn() - attacker.Volatile.SlowStartTurn < 5) attack /= 2;
@@ -186,7 +192,8 @@ public static class DamageCalculator
             defenseStage = Math.Min(0, defenseStage);
         }
 
-        if (typed && mine == "Rivalry" && atkPokemon.Gender != Gender.Genderless && defPokemon.Gender != Gender.Genderless)
+        // Rivalry asks nothing of the move: it makes even a confused holder's hit on itself a quarter stronger
+        if (mine == "Rivalry" && atkPokemon.Gender != Gender.Genderless && defPokemon.Gender != Gender.Genderless)
             power = atkPokemon.Gender == defPokemon.Gender ? power * 125 / 100 : power * 75 / 100;
         if (mine == "Iron Fist" && (move.Data.Flags & MoveFlags.Punch) != 0) power = power * 12 / 10;
         if (!physical && mine == "Solar Power" && weather == BattleWeather.Sun) attack = attack * 15 / 10;
@@ -205,7 +212,7 @@ public static class DamageCalculator
         // Reflect against physical moves and Light Screen against special ones, unless the hit is critical; two
         // Pokémon behind one screen share it
         var side = field?.Side(defender.Side);
-        bool screened = side != null && !result.IsCritical && !pastScreens && !powerOverride.HasValue && (physical ? side.Reflect : side.LightScreen);
+        bool screened = side != null && !result.IsCritical && !pastScreens && !selfHit && (physical ? side.Reflect : side.LightScreen);
         bool shared = screened && field!.Standing(defender.Side) >= 2;
 
         int damage = Formulas.BaseDamage(atkPokemon.Level, power, attack, defense, burned, spread, screened, shared,
@@ -214,7 +221,8 @@ public static class DamageCalculator
             flashFire: attacker.FlashFire && move.Type == PokemonType.Fire && !typeless);
 
         if (result.IsCritical) damage = Formulas.Scale(damage, rules.CriticalMultiplier * attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
-        foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageBeforeTheRoll(attacker, move));
+        // A Life Orb's and a Metronome's bonus are for a move that was used (BattleScript_CalcMoveDamage), not for a hit on oneself
+        if (!selfHit) foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageBeforeTheRoll(attacker, move));
         if (damageTenths != 10) damage = damage * damageTenths / 10;
 
         if (!noVariance) damage = Formulas.Variance(damage, rng.Roll(RollKind.Damage, 16));

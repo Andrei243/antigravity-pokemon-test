@@ -208,6 +208,32 @@ internal static class NatureArt
         return c;
     }
 
+    /// <summary>
+    /// A ledge's face in a cave: 32x12, in the rock face's shades. A light edge, a bed lit along its top, a
+    /// broken line of shade under it, and a dark base.
+    /// </summary>
+    public static PixelCanvas RockLedgeFace()
+    {
+        var c = new PixelCanvas(32, 12);
+        var edge = Rgb(196, 192, 190);
+        var lit = Rgb(176, 170, 166);
+        var bed = Rgb(150, 146, 150);
+        var shade = Rgb(104, 100, 112);
+        var dark = Rgb(74, 70, 86);
+        for (int x = 0; x < 32; x++)
+            for (int y = 0; y < 12; y++)
+            {
+                Color col = y == 0 ? edge
+                    : y is 1 or 2 ? lit
+                    : y >= 10 ? dark
+                    : y == 6 && x % 16 is < 6 or > 9 ? shade
+                    : y == 7 && x % 16 is < 6 or > 9 ? lit
+                    : bed;
+                c.SetRaw(x, y, col);
+            }
+        return c;
+    }
+
     // ------------------------------------------------------------------ faces between levels
 
     /// <summary>Rows at the top of a face's art that are drawn once (the edge and what hangs from it); the rest repeats downward.</summary>

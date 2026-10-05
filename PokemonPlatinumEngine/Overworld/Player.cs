@@ -52,6 +52,9 @@ public class Player
     /// <summary>Counts the steps since the last wild battle or map change, for the odds of the next (<see cref="EncounterSteps"/>).</summary>
     public EncounterSteps Encounters { get; } = new();
 
+    /// <summary>The Pokémon at the head of the party, whose ability shapes the wild Pokémon met (<see cref="WildEncounterRules"/>); the game keeps it up to date.</summary>
+    public WildLead? Lead { get; set; }
+
     private float moveProgress = 0f;
     private int targetGridX = 0;
     private int targetGridY = 0;
@@ -212,7 +215,9 @@ public class Player
     /// Called when a step ends on a new tile. True means something there takes over (a trainer catching the
     /// player's eye), so no wild Pokémon appears on that step.
     /// </param>
-    public void Advance(float dt, Map map, Direction? want, bool run, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)
+    /// <param name="onWildEncounter">Null for a walk nothing may interrupt (a script's): no wild Pokémon appears.</param>
+    /// <param name="onWarpTrigger">Null for a walk that takes no door: stepping onto one only stands on it.</param>
+    public void Advance(float dt, Map map, Direction? want, bool run, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive = null)
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
@@ -292,7 +297,7 @@ public class Player
     }
 
     /// <summary>Ends a step on its tile. True if something there took over: a warp, or a wild Pokémon.</summary>
-    private bool Arrive(Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive)
+    private bool Arrive(Map map, Action<WildEncounterEntry>? onWildEncounter, Action<Warp>? onWarpTrigger, Func<bool>? onArrive)
     {
         GridX = targetGridX;
         GridY = targetGridY;
@@ -309,7 +314,7 @@ public class Player
         Mode = modeAfter;
 
         var warp = map.GetWarpAt(GridX, GridY);
-        if (warp != null)
+        if (warp != null && onWarpTrigger != null)
         {
             IsSliding = false;
             onWarpTrigger(warp);
@@ -332,10 +337,10 @@ public class Player
 
         // Pokémon live in grass, in caves and in water; the water's are met only by someone surfing on it
         bool onWater = Mode == TravelMode.Surfing;
-        if (!interrupted && TileBehaviors.HasEncounters(underfoot) && onWater == TileBehaviors.IsSurfable(underfoot))
+        if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && onWater == TileBehaviors.IsSurfable(underfoot))
         {
             bool thick = underfoot == TileBehavior.VeryTallGrass || Mode == TravelMode.Cycling;
-            var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick);
+            var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick, Lead);
             if (wild != null)
             {
                 Encounters.Reset();

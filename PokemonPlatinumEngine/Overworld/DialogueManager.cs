@@ -18,8 +18,17 @@ public class DialogueManager
     /// <summary>How fast lines are written out, in characters a second: the options' text speed.</summary>
     public float CharactersPerSecond { get; set; } = GameSettings.CharactersPerSecond(TextSpeed.Normal);
 
+    // A question stays on the box, fully written, until it has its answer
+    private bool question;
+
     public bool IsActive => currentLine.Length > 0 || lineQueue.Count > 0;
     public bool IsCurrentLineComplete => charIndex >= currentLine.Length;
+
+    /// <summary>True once a question is written out and waits for its answer: the box stays as it is.</summary>
+    public bool AwaitingAnswer => question && IsActive && IsCurrentLineComplete;
+
+    /// <summary>True while the line shown is a question, written out or not.</summary>
+    public bool IsQuestion => question && IsActive;
 
     /// <summary>The whole line being typed out, without the speaker's name.</summary>
     public string CurrentLine => currentLine;
@@ -28,6 +37,7 @@ public class DialogueManager
     {
         // Written lines name the player and the professor's assistant with {player} and {assistant}
         currentSpeaker = PlayerIdentity.Fill(speaker);
+        question = false;
         lineQueue.Clear();
         foreach (var l in lines) lineQueue.Enqueue(l);
         onCompleteCallback = onComplete;
@@ -37,6 +47,26 @@ public class DialogueManager
     public void ShowDialogue(string speaker, string singleLine, Action? onComplete = null)
     {
         ShowDialogue(speaker, new[] { singleLine }, onComplete);
+    }
+
+    /// <summary>
+    /// Shows a line that is a question: it is written out like any other and then stays, with no arrow to go on,
+    /// until <see cref="Close"/>. Whoever asked shows the answers beside it and closes the box on the one picked.
+    /// </summary>
+    public void ShowQuestion(string speaker, string line)
+    {
+        ShowDialogue(speaker, new[] { line });
+        question = true;
+    }
+
+    /// <summary>Takes the box away at once, whatever was on it. Nothing is called.</summary>
+    public void Close()
+    {
+        question = false;
+        lineQueue.Clear();
+        currentLine = "";
+        currentSpeaker = "";
+        onCompleteCallback = null;
     }
 
     private void AdvanceLine()
@@ -74,7 +104,7 @@ public class DialogueManager
                 charIndex = currentLine.Length;
             }
         }
-        else
+        else if (!question)
         {
             if (InputManager.IsActionPressed(GameAction.Confirm))
             {
@@ -103,12 +133,12 @@ public class DialogueManager
     /// <summary>Goes on to the next line, or ends the talk after the last (the A button once a line is complete).</summary>
     public void Advance()
     {
-        if (IsActive && IsCurrentLineComplete) AdvanceLine();
+        if (IsActive && IsCurrentLineComplete && !question) AdvanceLine();
     }
 
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!IsActive) return;
-        UI.ModernUi.DrawDialogue(screenWidth, screenHeight, currentSpeaker, currentLine[..charIndex], IsCurrentLineComplete);
+        UI.ModernUi.DrawDialogue(screenWidth, screenHeight, currentSpeaker, currentLine[..charIndex], IsCurrentLineComplete && !question);
     }
 }

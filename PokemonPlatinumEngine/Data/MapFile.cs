@@ -56,6 +56,9 @@ public sealed class MapFile
     public List<Warp> Warps { get; set; } = new();
     public List<SignRecord> Signboards { get; set; } = new();
     public List<NpcRecord> Npcs { get; set; } = new();
+
+    /// <summary>Tiles that start a script when stepped on; left out when there are none.</summary>
+    public List<TriggerRecord>? Triggers { get; set; }
     public List<WildEncounterEntry> WildEncounters { get; set; } = new();
 
     public sealed class PropRecord
@@ -79,6 +82,23 @@ public sealed class MapFile
         public int X { get; set; }
         public int Y { get; set; }
         public string Text { get; set; } = string.Empty;
+
+        /// <summary>A script the sign runs instead of only being read (its text is what <c>sayown</c> says); left out for a plain sign.</summary>
+        public string? Script { get; set; }
+    }
+
+    /// <summary>A rectangle of tiles that starts a script when the player steps into it.</summary>
+    public sealed class TriggerRecord
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Width { get; set; } = 1;
+        public int Depth { get; set; } = 1;
+        public string Script { get; set; } = string.Empty;
+
+        /// <summary>The story variable it goes by, and the value it fires at; left out, it fires every time.</summary>
+        public string? Variable { get; set; }
+        public int? Value { get; set; }
     }
 
     public sealed class NpcRecord
@@ -96,6 +116,15 @@ public sealed class MapFile
         public bool? IsPokeMartClerk { get; set; }
         public bool? IsPCTerminal { get; set; }
         public bool? IsTransportAttendant { get; set; }
+
+        /// <summary>The script talking to them runs, where it isn't the common one for what they are (docs/scripts.md).</summary>
+        public string? Script { get; set; }
+
+        /// <summary>A story flag that takes them off the map while it is set.</summary>
+        public string? HiddenBy { get; set; }
+
+        /// <summary>A story flag they wait for: they are on the map only while it is set.</summary>
+        public string? ShownBy { get; set; }
         public TrainerRecord? Trainer { get; set; }
     }
 
@@ -109,12 +138,18 @@ public sealed class MapFile
         public string DialogueBefore { get; set; } = string.Empty;
         public string DialogueAfter { get; set; } = string.Empty;
         public int SightRange { get; set; } = 3;
+
+        /// <summary>Two Pokémon at a time, when the player has two that can fight (twins, couples).</summary>
+        public bool? DoubleBattle { get; set; }
     }
 
     public sealed class PartyMember
     {
         public string Species { get; set; } = string.Empty;
         public int Level { get; set; }
+
+        /// <summary>The moves it knows, where the trainer chose them; left out, it knows what its level taught it.</summary>
+        public List<string>? Moves { get; set; }
     }
 
     /// <summary>Builds a fresh, playable map: new NPC state and newly rolled trainer Pokémon each time.</summary>
@@ -166,7 +201,13 @@ public sealed class MapFile
             map.Warps.Add(new Warp { SourceX = w.SourceX, SourceY = w.SourceY, TargetMap = w.TargetMap, TargetX = w.TargetX, TargetY = w.TargetY, TargetFacing = w.TargetFacing });
 
         foreach (var s in Signboards)
+        {
             map.Signboards[(s.X, s.Y)] = s.Text;
+            if (!string.IsNullOrEmpty(s.Script)) map.SignScripts[(s.X, s.Y)] = s.Script;
+        }
+
+        foreach (var t in Triggers ?? new())
+            map.Triggers.Add(new StepTrigger { X = t.X, Y = t.Y, Width = t.Width, Depth = t.Depth, Script = t.Script, Variable = t.Variable, Value = t.Value ?? 0 });
 
         foreach (var n in Npcs)
             map.NPCs.Add(BuildNpc(n, Name));
@@ -192,7 +233,11 @@ public sealed class MapFile
             IsHealingNurse = n.IsHealingNurse ?? false,
             IsPokeMartClerk = n.IsPokeMartClerk ?? false,
             IsPCTerminal = n.IsPCTerminal ?? false,
-            IsTransportAttendant = n.IsTransportAttendant ?? false
+            IsTransportAttendant = n.IsTransportAttendant ?? false,
+            Key = n.Id,
+            Script = n.Script,
+            HiddenBy = n.HiddenBy,
+            ShownBy = n.ShownBy
         };
         if (n.Id != null) npc.Id = n.Id;
 
@@ -203,7 +248,15 @@ public sealed class MapFile
             {
                 var species = PokemonDatabase.Get(member.Species)
                     ?? throw new InvalidDataException($"Map {mapName}: trainer {t.Id} has unknown species '{member.Species}'.");
-                party.Add(new Pokemon(species, member.Level));
+                var pokemon = new Pokemon(species, member.Level);
+                if (member.Moves is { Count: > 0 } chosen)
+                {
+                    pokemon.Moves.Clear();
+                    foreach (string name in chosen)
+                        pokemon.Moves.Add(new Move(MoveDatabase.Get(name)
+                            ?? throw new InvalidDataException($"Map {mapName}: trainer {t.Id}'s {member.Species} has the unknown move '{name}'.")));
+                }
+                party.Add(pokemon);
             }
 
             npc.IsTrainer = true;
@@ -216,7 +269,8 @@ public sealed class MapFile
                 PrizeMoney = t.PrizeMoney,
                 DialogueBefore = t.DialogueBefore,
                 DialogueAfter = t.DialogueAfter,
-                SightRange = t.SightRange
+                SightRange = t.SightRange,
+                DoubleBattle = t.DoubleBattle ?? false
             };
         }
 
@@ -277,8 +331,15 @@ public sealed class MapFile
         if (map.BuildingKinds.Count > 0)
             file.Buildings = map.BuildingKinds.Select(kv => new BuildingRecord { X = kv.Key.X, Y = kv.Key.Y, Kind = kv.Value }).ToList();
         file.Warps = map.Warps.ToList();
-        file.Signboards = map.Signboards.Select(kv => new SignRecord { X = kv.Key.X, Y = kv.Key.Y, Text = kv.Value }).ToList();
-        file.Npcs = map.NPCs.Select(ToRecord).ToList();
+        file.Signboards = map.Signboards.Select(kv => new SignRecord { X = kv.Key.X, Y = kv.Key.Y, Text = kv.Value, Script = map.SignScripts.GetValueOrDefault(kv.Key) }).ToList();
+        // Everyone the map has, whether or not the story has them on it just now
+        file.Npcs = map.Everyone.OrderBy(n => n.Order < 0 ? int.MaxValue : n.Order).Select(ToRecord).ToList();
+        if (map.Triggers.Count > 0)
+            file.Triggers = map.Triggers.Select(t => new TriggerRecord
+            {
+                X = t.X, Y = t.Y, Width = t.Width, Depth = t.Depth, Script = t.Script,
+                Variable = t.Variable, Value = t.Variable != null ? t.Value : null
+            }).ToList();
         file.WildEncounters = map.WildEncounters.ToList();
         return file;
     }
@@ -297,18 +358,30 @@ public sealed class MapFile
         IsPokeMartClerk = npc.IsPokeMartClerk ? true : null,
         IsPCTerminal = npc.IsPCTerminal ? true : null,
         IsTransportAttendant = npc.IsTransportAttendant ? true : null,
+        Script = npc.Script,
+        HiddenBy = npc.HiddenBy,
+        ShownBy = npc.ShownBy,
         Trainer = npc.IsTrainer && npc.TrainerData is { } t ? new TrainerRecord
         {
             Id = t.Id,
             Name = t.Name,
             TrainerClass = t.TrainerClass,
-            Party = t.Party.Members.Select(p => new PartyMember { Species = p.Species.Name, Level = p.Level }).ToList(),
+            Party = t.Party.Members.Select(p => new PartyMember { Species = p.Species.Name, Level = p.Level, Moves = ChosenMoves(p) }).ToList(),
             PrizeMoney = t.PrizeMoney,
             DialogueBefore = t.DialogueBefore,
             DialogueAfter = t.DialogueAfter,
-            SightRange = t.SightRange
+            SightRange = t.SightRange,
+            DoubleBattle = t.DoubleBattle ? true : null
         } : null
     };
+
+    /// <summary>A trainer's Pokémon's moves, where they are not simply what its level taught it.</summary>
+    private static List<string>? ChosenMoves(Pokemon pokemon)
+    {
+        var known = pokemon.Moves.Select(m => m.Name).ToList();
+        var taught = new Pokemon(pokemon.Species, pokemon.Level).Moves.Select(m => m.Name);
+        return known.SequenceEqual(taught) ? null : known;
+    }
 }
 
 /// <summary>The one-character codes for tiles in map files.</summary>
@@ -346,7 +419,9 @@ public static class TileCodes
         (TileType.Stairs, 's'),
         (TileType.Marsh, 'm'),
         (TileType.Paving, '+'),
-        (TileType.Walkway, 'H')
+        (TileType.Walkway, 'H'),
+        (TileType.CaveWall, 'X'),
+        (TileType.CaveMouth, 'M')
     };
 
     public static char CodeOf(TileType type)

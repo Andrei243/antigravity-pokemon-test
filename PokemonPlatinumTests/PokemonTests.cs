@@ -39,42 +39,40 @@ public class PokemonTests
     }
 
     [Fact]
-    public void TestRoute202LeadsToJubilifeCity()
+    public void TestRoute202RunsOnIntoJubilifeCity()
     {
         MapDatabase.Initialize();
 
-        // The city is still a hand-made map: the top of Route 202, on the map of Sinnoh, leads onto it and back
+        // The city is part of the map of Sinnoh (plan 01 · M5): the road goes on into it, with no warp on the way
         var sinnoh = MapDatabase.Get("Sinnoh");
         Assert.Equal("route_202", sinnoh.AreaAt(173, 800)!.Key);
-        var north = sinnoh.GetWarpAt(173, 800);
-        Assert.NotNull(north);
-        Assert.Equal("JubilifeCity", north!.TargetMap);
+        Assert.Null(sinnoh.GetWarpAt(173, 800));
+        Assert.Equal("jubilife_city", sinnoh.AreaAt(174, 796)!.Key);
+        Assert.True(sinnoh.IsWalkable(173, 800) && sinnoh.IsWalkable(174, 796));
+        Assert.DoesNotContain("JubilifeCity", MapDatabase.MapNames);
 
-        var city = MapDatabase.Get("JubilifeCity");
-        var south = city.GetWarpAt(north.TargetX, north.TargetY + 1);
-        Assert.NotNull(south);
-        Assert.Equal(("Sinnoh", 173, 801), (south!.TargetMap, south.TargetX, south.TargetY));
+        // Jubilife has its own Center and Mart, recognised as such in the field, and its two landmarks with rooms
+        var buildings = MapStructures.BuildingsOf(sinnoh);
+        Assert.Contains(buildings, b => b.Kind == BuildingKind.PokemonCenter && b.Doors.Contains((180, "JubilifePokemonCenter")));
+        Assert.Contains(buildings, b => b.Kind == BuildingKind.PokeMart && b.Doors.Contains((179, "JubilifePokeMart")));
+        Assert.Contains(buildings, b => b.Kind == BuildingKind.School && b.Doors.Contains((168, "TrainersSchool")));
+        Assert.Contains(buildings, b => b.Kind == BuildingKind.Office && b.Doors.Contains((141, "PoketchCompany")) && b.Doors.Contains((145, "PoketchCompany")));
 
-        // Jubilife has its own Center and Mart, recognised as such in the field
-        var buildings = MapStructures.FindBuildings(city);
-        Assert.Contains(buildings, b => b.Kind == BuildingKind.PokemonCenter && b.Doors.Contains((25, "JubilifePokemonCenter")));
-        Assert.Contains(buildings, b => b.Kind == BuildingKind.PokeMart && b.Doors.Contains((32, "JubilifePokeMart")));
-        Assert.Contains(buildings, b => b.Doors.Contains((7, "TrainersSchool")));
-        Assert.Contains(buildings, b => b.Doors.Contains((26, "PoketchCompany")));
-
-        // Leaving the Center puts you back in Jubilife, not Sandgem
-        var exit = MapDatabase.Get("JubilifePokemonCenter").Warps.Single();
-        Assert.Equal(("JubilifeCity", 25, 27), (exit.TargetMap, exit.TargetX, exit.TargetY));
+        // Leaving a room puts you down outside its own door, in the city
+        foreach (var (room, doorX, doorY) in new[] { ("JubilifePokemonCenter", 180, 776), ("JubilifePokeMart", 179, 766), ("TrainersSchool", 168, 776), ("PoketchCompany", 141, 751) })
+        {
+            Assert.Equal(room, sinnoh.GetWarpAt(doorX, doorY)?.TargetMap);
+            var exit = MapDatabase.Get(room).Warps.Single();
+            Assert.Equal(("Sinnoh", doorX, doorY + 1), (exit.TargetMap, exit.TargetX, exit.TargetY));
+            Assert.True(sinnoh.IsWalkable(exit.TargetX, exit.TargetY), $"{room} lets out onto a tile nobody can stand on");
+        }
         Assert.Contains(MapDatabase.Get("JubilifePokeMart").NPCs, n => n.IsPokeMartClerk && n.DialogLines[0].Contains("Jubilife"));
 
-        // The routes beyond aren't built yet: every road out of the city is closed off short of the edge
-        foreach (var (x, y) in new[] { (19, 0), (20, 0), (0, 16), (0, 17), (39, 16), (39, 17) })
-        {
-            Assert.Null(city.GetWarpAt(x, y));
-        }
-        Assert.False(city.IsWalkable(19, 1) || city.IsWalkable(20, 1), "the road to Route 204 should be closed");
-        Assert.False(city.IsWalkable(1, 16) || city.IsWalkable(1, 17), "the gate to Route 218 should be closed");
-        Assert.False(city.IsWalkable(38, 16) || city.IsWalkable(38, 17), "the road to Route 203 should be closed");
+        // The roads out are open: east to Route 203 and north to Route 204. The gate to Route 218 is shut.
+        Assert.True(sinnoh.IsWalkable(190, 758) && sinnoh.AreaAt(193, 758)!.Key == "route_203" && sinnoh.IsWalkable(193, 758));
+        Assert.True(sinnoh.IsWalkable(175, 737) && sinnoh.AreaAt(175, 735)!.Key == "route_204_south" && sinnoh.IsWalkable(175, 735));
+        Assert.Null(sinnoh.GetWarpAt(128, 758));
+        Assert.False(sinnoh.IsWalkable(128, 758) || sinnoh.IsWalkable(128, 759), "the gate to Route 218 should be closed");
     }
 
     [Fact]
@@ -202,6 +200,9 @@ public class PokemonTests
         var map = MapDatabase.Get(mapName);
         Assert.Equal(mapName, map.Name);
         Assert.NotEmpty(map.Warps);
+        // A map of the imported world is many places, and not every one leads to every other: a cave lies between
+        // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
+        if (map.IsStreamed) return;
 
         // Every tile another map warps the player onto in this map
         var arrivals = MapDatabase.MapNames
@@ -242,6 +243,23 @@ public class PokemonTests
     }
 
     public static IEnumerable<object[]> AllMaps => MapDatabase.MapNames.Select(n => new object[] { n }).ToList();
+
+    [Fact]
+    public void TestEveryWarpCanBeReachedFromWhereTheGameStarts()
+    {
+        MapDatabase.Initialize();
+        var reached = WorldWalk.FromEveryStart(MapDatabase.Get);
+
+        foreach (string name in MapDatabase.MapNames)
+        {
+            var map = MapDatabase.Get(name);
+            // Johto and the regions after it have no maps yet; every map there is must be one the game can come to
+            Assert.True(reached.TryGetValue(map, out var tiles), $"{name} can't be reached from where its region starts");
+            foreach (var warp in map.Warps)
+                Assert.True(tiles!.Contains((warp.SourceX, warp.SourceY)),
+                    $"{name}: the warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) can't be reached from where the game starts");
+        }
+    }
 
     [Fact]
     public void TestEveryDoorOnAHouseLeadsInside()
@@ -291,8 +309,17 @@ public class PokemonTests
         Assert.NotEmpty(trainers);
         Assert.All(trainers, t => Assert.True(t.TrainerData!.Party.Count > 0, $"{t.Name} has no Pokémon"));
 
+        // Platinum's own teams: Logan's Burmy knows nothing but Tackle
         var logan = trainers.Single(t => t.Name == "Logan").TrainerData!;
-        Assert.Equal(new[] { "Bidoof", "Starly" }, logan.Party.Members.Select(p => p.Species.Name));
+        Assert.Equal(new[] { "Burmy" }, logan.Party.Members.Select(p => p.Species.Name));
+        Assert.Equal(5, logan.Party.Members[0].Level);
+        Assert.Equal(new[] { "Tackle" }, logan.Party.Members[0].Moves.Select(m => m.Name));
+        Assert.Equal(80, logan.PrizeMoney);
+
+        // The twins of Route 204 are two people and one trainer, who battles two Pokémon at a time
+        var twins = trainers.Where(t => t.TrainerData!.Id == "trainer_liv_and_liz").ToList();
+        Assert.Equal(new[] { "Liv", "Liz" }, twins.Select(t => t.Name).OrderBy(n => n));
+        Assert.All(twins, t => Assert.True(t.TrainerData!.DoubleBattle));
     }
 
     [Fact]
@@ -300,10 +327,11 @@ public class PokemonTests
     {
         MapDatabase.Initialize();
 
-        // The save names trainers by id, so each needs one of their own
-        var ids = MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Where(n => n.IsTrainer).Select(n => n.TrainerData!.Id).ToList();
-        Assert.DoesNotContain("", ids);
-        Assert.Equal(ids.Count, ids.Distinct().Count());
+        // The save names trainers by id, so each needs one of their own; two people share one only where they
+        // battle together as one trainer
+        var known = MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).NPCs).Where(n => n.IsTrainer).Select(n => n.TrainerData!).ToList();
+        Assert.DoesNotContain("", known.Select(t => t.Id));
+        Assert.All(known.GroupBy(t => t.Id).Where(g => g.Count() > 1), pair => Assert.All(pair, t => Assert.True(t.DoubleBattle, $"{t.Id} is the id of two trainers")));
 
         Assert.Empty(MapDatabase.DefeatedTrainerIds());
         var sinnoh = MapDatabase.Get("Sinnoh");

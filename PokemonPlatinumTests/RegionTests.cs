@@ -101,7 +101,7 @@ public class RegionTests
     [Fact]
     public void TestTheWayOnOpensOnlyAfterTheRegionsHallOfFame()
     {
-        var progress = new StoryProgress();
+        var progress = new PokemonPlatinumEngine.Story.StoryState();
         var kantoToJohto = RegionDatabase.LinkFrom(RegionDatabase.Kanto)!;
 
         Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(kantoToJohto, progress));
@@ -117,7 +117,7 @@ public class RegionTests
     [Fact]
     public void TestFinishingTheRegionBeforeABuiltRegionLetsThePlayerTravel()
     {
-        var progress = new StoryProgress();
+        var progress = new PokemonPlatinumEngine.Story.StoryState();
         var hoennToSinnoh = RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!;
 
         Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(hoennToSinnoh, progress));
@@ -145,12 +145,12 @@ public class RegionTests
     [Fact]
     public void TestStoryFlagsSurviveTheSaveFile()
     {
-        var progress = new StoryProgress();
+        var progress = new PokemonPlatinumEngine.Story.StoryState();
         progress.CompleteRegion(RegionDatabase.Kanto);
         var save = new SaveData { StoryFlags = progress.Flags.ToList() };
 
         var loaded = JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(save))!;
-        var restored = new StoryProgress();
+        var restored = new PokemonPlatinumEngine.Story.StoryState();
         restored.Restore(loaded.StoryFlags);
 
         Assert.True(restored.IsRegionComplete(RegionDatabase.Kanto));

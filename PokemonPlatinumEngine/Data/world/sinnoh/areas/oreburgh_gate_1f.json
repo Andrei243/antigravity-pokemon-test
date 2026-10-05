@@ -1,0 +1,55 @@
+{
+  "key": "oreburgh_gate_1f",
+  "index": 258,
+  "name": "Oreburgh Gate",
+  "matrix": 3,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave1",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "oreburgh_gate_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 5 },
+    { "species": "Psyduck", "level": 5 },
+    { "species": "Zubat", "level": 6 },
+    { "species": "Psyduck", "level": 6 },
+    { "species": "Geodude", "level": 5 },
+    { "species": "Zubat", "level": 5 },
+    { "species": "Psyduck", "level": 7 },
+    { "species": "Geodude", "level": 7 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 8 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 4, "z": 22, "to": "route_203", "toWarp": 0 },
+    { "x": 27, "z": 22, "to": "oreburgh_city", "toWarp": 10 },
+    { "x": 20, "z": 5, "to": "oreburgh_gate_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "picnicker_diana", "looks": "picnicker", "movement": "look_south", "x": 24, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_DIANA" },
+    { "id": "camper_curtis", "looks": "camper", "movement": "look_north", "x": 17, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_CAMPER_CURTIS" },
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 19, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 14, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 12, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 11, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "rock_smash_5", "looks": "rock_smash", "movement": "none", "x": 11, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10001" },
+    { "id": "rock_smash_6", "looks": "rock_smash", "movement": "none", "x": 13, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10001" },
+    { "id": "rock_smash_7", "looks": "rock_smash", "movement": "none", "x": 15, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_7", "script": "10001" },
+    { "id": "rock_smash_8", "looks": "rock_smash", "movement": "none", "x": 25, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10001" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 7, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 7, "z": 22, "width": 1, "depth": 1, "script": "3", "variable": "VAR_OREBURGH_GATE_1F_HIKER_STATE", "value": "1" }
+  ]
+}

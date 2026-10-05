@@ -55,7 +55,8 @@ public class CoverageTests
         AtLeast(467, n.PlatinumMovesFully + n.PlatinumMovesPartly, "Platinum's moves that at least hit");
         AtLeast(119, n.LaterMovesFully, "later moves fully run");
         AtLeast(291, n.LaterMovesFully + n.LaterMovesPartly, "later moves that at least hit");
-        AtLeast(95, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
+        // All 123 since plan 06 · R7
+        AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(0, n.LaterAbilitiesRun, "later abilities with an effect");
         AtLeast(91, n.PlatinumItemsFully, "Platinum's items that work");
         AtLeast(126, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");

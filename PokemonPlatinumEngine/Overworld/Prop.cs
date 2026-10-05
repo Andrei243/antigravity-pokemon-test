@@ -59,6 +59,18 @@ public enum PropType
     Outcrop,
     /// <summary>A lattice mast as tall as its model.</summary>
     Mast,
+    /// <summary>Steel drums standing together: what a mine keeps its oil in.</summary>
+    Drums,
+    /// <summary>
+    /// A raised conveyor belt, a tile wide, running north and south (deeper than wide) or east and west: on a
+    /// steel pier wherever the tile under it is blocked, and a span one walks beneath wherever it is open.
+    /// </summary>
+    Conveyor,
+    /// <summary>
+    /// What carries a conveyor over the open ground: two steel legs with a beam across (three tiles one way,
+    /// the middle one open), or a single pier when it covers one tile.
+    /// </summary>
+    Gantry,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
@@ -83,7 +95,8 @@ public sealed class Prop
     /// <summary>For a prop placed by a model of the world: the model's short name, which picks among looks of one type.</summary>
     public string Model { get; init; } = "";
 
-    public bool IsSolid => Type < PropType.Rug;
+    /// <summary>Whether it blocks every tile it covers. A conveyor and its gantry stand over open ground: the world says which of their tiles block.</summary>
+    public bool IsSolid => Type < PropType.Rug && Type is not (PropType.Conveyor or PropType.Gantry);
 
     /// <summary>Reception and shop counters: you can talk to whoever stands behind them.</summary>
     public bool IsCounter => Type is PropType.Counter or PropType.LabDesk;

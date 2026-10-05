@@ -28,6 +28,8 @@ internal static class Landmarks
     private static readonly Color Water = Rgb(74, 144, 222), WaterLight = Rgb(150, 206, 246), WaterDark = Rgb(46, 104, 186);
     private static readonly Color Snow = Rgb(226, 234, 246), SnowShade = Rgb(188, 202, 230);
     private static readonly Color Glass = Rgb(170, 218, 246);
+    private static readonly Tone Steel = Tone.Of(118, 128, 150, 160, 170, 190, 78, 86, 110);
+    private static readonly Color Belt = Rgb(58, 56, 68), BeltJoint = Rgb(40, 38, 50), CoalLump = Rgb(30, 30, 40), CoalGlint = Rgb(120, 120, 136);
 
     /// <summary>Rows of art in a tile of real height: how tall something that stands <c>h</c> tiles is drawn.</summary>
     private static int Rows(KitBuilder kit, float tiles, int least, int most) =>
@@ -111,6 +113,15 @@ internal static class Landmarks
                 kit.Sprite(kit.Face($"mast.{rows}", 30, rows, c => PaintLatticeMast(c)), w / 2f, d / 2f + 6);
                 return true;
             }
+            case PropType.Drums:
+                kit.Sprite(kit.Face("drums", 42, 40, PaintDrums), w / 2f, d / 2f + 8);
+                return true;
+            case PropType.Conveyor:
+                Conveyor(kit, map, prop);
+                return true;
+            case PropType.Gantry:
+                Gantry(kit, prop);
+                return true;
         }
         return false;
     }
@@ -193,6 +204,167 @@ internal static class Landmarks
                     c.SetRaw(x + 1 + px, 6 + py, new Color(Glass.R, Glass.G, Glass.B, ArtSheet.PublicLight));
         }
         c.Rect(0, c.Height - 4, c.Width, 2, HullBand.Base);
+    }
+
+    // ------------------------------------------------------------------ the mine's conveyors
+
+    /// <summary>The rows from the ground to the underside of a conveyor's deck: clear of whoever walks beneath.</summary>
+    public const int BeltUnder = 62;
+
+    /// <summary>The rows from the ground to the belt itself.</summary>
+    public const int BeltTop = 68;
+
+    /// <summary>
+    /// A conveyor, tile by tile along its run: a steel deck twenty texels wide with the belt moving on it, and
+    /// under each tile that is blocked a lattice pier down to the ground. Over open tiles it is a span.
+    /// </summary>
+    private static void Conveyor(KitBuilder kit, Map map, Prop prop)
+    {
+        bool northSouth = prop.Depth >= prop.Width;
+        int tiles = northSouth ? prop.Depth : prop.Width;
+        var belt = kit.Frames(northSouth ? "conveyor.belt.ns" : "conveyor.belt.ew", northSouth ? 20 : 32, northSouth ? 32 : 20, MovingFrames, 6f,
+            (c, frame) => PaintBelt(c, northSouth, frame));
+        var beam = kit.Face("conveyor.beam.32", 32, BeltTop - BeltUnder, PaintBeam);
+        var end = kit.Face("conveyor.beam.20", 20, BeltTop - BeltUnder, PaintBeam);
+        var pier = kit.Face("conveyor.pier", 16, BeltUnder, PaintPier);
+        for (int i = 0; i < tiles; i++)
+        {
+            int at = i * 32;
+            bool first = i == 0, last = i == tiles - 1;
+            if (northSouth)
+            {
+                kit.Box(6, 26, at, at + 32, BeltUnder, BeltTop, belt, last ? end : null, beam, beam, first ? end : null);
+                if (map.InBounds(prop.X, prop.Y + i) && map.IsSolid(prop.X, prop.Y + i)) kit.Box(8, 24, at + 8, at + 24, 0, BeltUnder, null, pier, pier, pier);
+            }
+            else
+            {
+                kit.Box(at, at + 32, 6, 26, BeltUnder, BeltTop, belt, beam, first ? end : null, last ? end : null);
+                if (map.InBounds(prop.X + i, prop.Y) && map.IsSolid(prop.X + i, prop.Y)) kit.Box(at + 8, at + 24, 8, 24, 0, BeltUnder, null, pier, pier, pier);
+            }
+        }
+    }
+
+    /// <summary>
+    /// What carries a conveyor over open ground: a row of frames, each two lattice legs with a beam across
+    /// under the belt. A prop one tile each way is a pier standing alone, with a steel cap.
+    /// </summary>
+    private static void Gantry(KitBuilder kit, Prop prop)
+    {
+        var pier = kit.Face("conveyor.pier", 16, BeltUnder, PaintPier);
+        if (prop.Width == 1 && prop.Depth == 1)
+        {
+            kit.Box(8, 24, 8, 24, 0, BeltUnder, null, pier, pier, pier);
+            kit.Block("conveyor.cap", Steel, 6, 26, 6, 26, BeltUnder, BeltTop);
+            return;
+        }
+
+        // Legs east and west of the way through (three tiles wide), or north and south of it (three deep)
+        bool across = prop.Width == 3;
+        int frames = across ? prop.Depth : prop.Width;
+        var beam = kit.Face("conveyor.cross.80", 80, 8, PaintBeam);
+        var beamEnd = kit.Face("conveyor.cross.8", 8, 8, PaintBeam);
+        for (int i = 0; i < frames; i++)
+        {
+            int at = i * 32;
+            if (across)
+            {
+                kit.Box(8, 24, at + 8, at + 24, 0, BeltUnder, null, pier, pier, pier);
+                kit.Box(72, 88, at + 8, at + 24, 0, BeltUnder, null, pier, pier, pier);
+                kit.Box(8, 88, at + 12, at + 20, BeltUnder - 8, BeltUnder, beam, beam, beamEnd, beamEnd);
+            }
+            else
+            {
+                kit.Box(at + 8, at + 24, 8, 24, 0, BeltUnder, null, pier, pier, pier);
+                kit.Box(at + 8, at + 24, 72, 88, 0, BeltUnder, null, pier, pier, pier);
+                kit.Box(at + 12, at + 20, 8, 88, BeltUnder - 8, BeltUnder, null, beamEnd, beam, beam);
+            }
+        }
+    }
+
+    /// <summary>
+    /// A conveyor's belt from above, running along the canvas's longer side: steel edges, dark rubber with a
+    /// joint every sixteen texels and a lump of coal riding between the joints, all moving four texels a frame.
+    /// </summary>
+    public static void PaintBelt(PixelCanvas c, bool northSouth, int frame = 0)
+    {
+        int across = northSouth ? c.Width : c.Height, along = northSouth ? c.Height : c.Width;
+        void Set(int a, int b, Color col) => c.SetRaw(northSouth ? b : a, northSouth ? a : b, col);
+        for (int a = 0; a < along; a++)
+        {
+            int moved = ((a - frame * 4) % 16 + 16) % 16;
+            for (int b = 0; b < across; b++)
+            {
+                bool edge = b < 3 || b >= across - 3;
+                Set(a, b, edge ? (b == 0 || b == across - 1 ? Steel.Dark : b == 1 || b == across - 2 ? Steel.Light : Steel.Base) : moved == 0 ? BeltJoint : Belt);
+            }
+            // The coal: a lump five texels long between each pair of joints
+            if (moved is >= 6 and <= 10)
+            {
+                int width = moved is 6 or 10 ? 4 : 6, from = across / 2 - width / 2;
+                for (int b = from; b < from + width; b++) Set(a, b, CoalLump);
+                if (moved == 7) Set(a, from + 1, CoalGlint);
+            }
+        }
+    }
+
+    /// <summary>A steel beam from the side: light along its top, dark along its foot, a rivet every eight texels.</summary>
+    public static void PaintBeam(PixelCanvas c)
+    {
+        Pix.Raised(c, 0, 0, c.Width, c.Height, Steel);
+        if (c.Height >= 5)
+            for (int x = 3; x < c.Width - 1; x += 8) c.SetRaw(x, c.Height / 2, Steel.Dark);
+    }
+
+    /// <summary>
+    /// A lattice pier, sixteen texels wide: two steel posts with braces crossing between them every sixteen rows.
+    /// What lies between is cut out, so the ground shows through.
+    /// </summary>
+    public static void PaintPier(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        for (int y = 0; y < h; y++)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                c.SetRaw(x, y, x == 0 ? Steel.Light : x == 2 ? Steel.Dark : Steel.Base);
+                c.SetRaw(w - 1 - x, y, x == 0 ? Steel.Dark : x == 2 ? Steel.Light : Steel.Base);
+            }
+            // Braces: a rung every sixteen rows and a diagonal either way between rungs
+            int row = (h - 1 - y) % 16;
+            if (row == 0 || y == 0)
+                for (int x = 3; x < w - 3; x++) c.SetRaw(x, y, Steel.Base);
+            else
+            {
+                int d = 3 + row * (w - 7) / 15;
+                c.SetRaw(d, y, Steel.Dark);
+                c.SetRaw(w - 1 - d, y, Steel.Dark);
+            }
+        }
+    }
+
+    /// <summary>Three steel drums, two before and one behind, 42 by 40: blue, rust and blue, each with two bands.</summary>
+    public static void PaintDrums(PixelCanvas c)
+    {
+        var blue = Tone.Of(78, 112, 168, 122, 156, 206, 52, 76, 126);
+        var rust = Tone.Of(170, 96, 64, 206, 134, 96, 122, 66, 52);
+        void Drum(int x, int y, Tone tone)
+        {
+            const int w = 18, h = 22;
+            // The lid, seen from a little above, then the side with a band under the lid and one above the foot
+            c.Rect(x + 2, y, w - 4, 6, tone.Light);
+            c.Rect(x, y + 2, w, 3, tone.Light);
+            c.Rect(x, y + 5, w, h - 5, tone.Base);
+            c.Rect(x, y + 5, 2, h - 5, tone.Light);
+            c.Rect(x + w - 3, y + 5, 3, h - 5, tone.Dark);
+            c.HLine(x, y + 9, w, tone.Dark);
+            c.HLine(x, y + h - 5, w, tone.Dark);
+            c.HLine(x + 1, y + h - 1, w - 2, tone.Dark);
+            c.Rect(x + 6, y + 2, 3, 2, tone.Dark);
+        }
+        Drum(12, 1, blue);
+        Drum(1, 17, rust);
+        Drum(22, 17, blue);
+        Pix.Outline(c);
     }
 
     /// <summary>A column on a square base, as tall as its model; a fallen one lies along its tiles.</summary>

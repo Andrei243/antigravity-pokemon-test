@@ -223,7 +223,7 @@ public partial class BattleEngine
 
     private T BetweenTurns<T>(Func<T> change)
     {
-        SyncToCore();
+        if (!playingTheLog) SyncToCore();
         T result = change();
         Enqueue(core.TakeLog());
         SyncFromCore();

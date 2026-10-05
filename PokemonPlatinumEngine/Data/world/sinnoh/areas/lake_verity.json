@@ -44,10 +44,10 @@
     { "x": 47, "z": 54, "to": "verity_lakefront", "toWarp": 3 }
   ],
   "objects": [
-    { "id": "galactic_grunt_1", "looks": "grunt_m", "movement": "look_east", "x": 43, "z": 49, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_1" },
-    { "id": "galactic_grunt_3", "looks": "grunt_m", "movement": "look_east", "x": 48, "z": 43, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_3" },
-    { "id": "galactic_grunt_2", "looks": "grunt_f", "movement": "look_west", "x": 50, "z": 49, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_2" },
-    { "id": "galactic_grunt_4", "looks": "grunt_f", "movement": "look_west", "x": 53, "z": 43, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_4" },
+    { "id": "galactic_grunt_1", "looks": "grunt_m", "movement": "look_east", "x": 43, "z": 49, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_1" },
+    { "id": "galactic_grunt_3", "looks": "grunt_m", "movement": "look_east", "x": 48, "z": 43, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_3" },
+    { "id": "galactic_grunt_2", "looks": "grunt_f", "movement": "look_west", "x": 50, "z": 49, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_2" },
+    { "id": "galactic_grunt_4", "looks": "grunt_f", "movement": "look_west", "x": 53, "z": 43, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC", "script": "TRAINER_GALACTIC_GRUNT_LAKE_VERITY_4" },
     { "id": "item_tm38", "looks": "pokeball", "movement": "none", "x": 25, "z": 54, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_LAKE_VERITY_TM38", "script": "7239" },
     { "id": "prof_rowan", "looks": "prof_rowan", "movement": "look_east", "x": 53, "z": 39, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_PROF_ROWAN", "script": "3" },
     { "id": "counterpart", "looks": "var_0", "movement": "look_east", "x": 54, "z": 38, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_COUNTERPART", "script": "4" },

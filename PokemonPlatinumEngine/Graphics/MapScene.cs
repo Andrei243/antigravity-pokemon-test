@@ -6,6 +6,12 @@ using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
+/// <summary>A field camera: how steeply it looks down, how wide its view is from top to bottom, and how far away it stands (in tiles).</summary>
+internal readonly record struct FieldView(float PitchDeg, float FovYDeg, float Distance)
+{
+    public static readonly FieldView Outdoor = new(MapScene.OutdoorPitchDeg, MapScene.OutdoorFovYDeg, MapScene.OutdoorDistance);
+}
+
 /// <summary>
 /// The 3D model of one map, or of one chunk of a map of the imported world: textured ground, water lying in it,
 /// trees, tall grass, buildings, and for interiors a furnished room. One world unit is one tile; +Y is up and +Z
@@ -24,6 +30,17 @@ internal sealed class MapScene
     public const float OutdoorPitchDeg = 59.05f;
     public const float OutdoorFovYDeg = 16.18f;
     public const float OutdoorDistance = 666.922f / 16f;
+
+    // Its other field cameras (sCameraTypes, the same file). CAMERA_TYPE_CAVE is 574.6 units away, pitched
+    // 63.26° with a 9.50° half FOV: nearer and steeper, so a cave's walls hide less of its floor.
+    // CAMERA_TYPE_ZOOMED_IN (Floaroma Meadow, Eterna Forest, Amity Square) is 515.5 units away, pitched
+    // 54.66° with a 10.46° half FOV: nearer and lower. All three show the same twelve tiles from top to bottom.
+    public const float CavePitchDeg = 63.26f;
+    public const float CaveFovYDeg = 19.0f;
+    public const float CaveDistance = 574.578f / 16f;
+    public const float ZoomedPitchDeg = 54.66f;
+    public const float ZoomedFovYDeg = 20.92f;
+    public const float ZoomedDistance = 515.456f / 16f;
 
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
@@ -84,7 +101,19 @@ internal sealed class MapScene
         }
     }
 
-    public static float PitchOf(Map map) => map.IsIndoors ? IndoorPitchDeg : OutdoorPitchDeg;
+    /// <summary>How the field is looked at on a map: a room's own camera, or the one the place's header names.</summary>
+    public static FieldView ViewOf(Map map)
+    {
+        if (map.IsIndoors) return new FieldView(IndoorPitchDeg, IndoorFovYDeg, IndoorDistance);
+        return map.Camera switch
+        {
+            FieldCamera.Cave => new FieldView(CavePitchDeg, CaveFovYDeg, CaveDistance),
+            FieldCamera.ZoomedIn => new FieldView(ZoomedPitchDeg, ZoomedFovYDeg, ZoomedDistance),
+            _ => FieldView.Outdoor
+        };
+    }
+
+    public static float PitchOf(Map map) => ViewOf(map).PitchDeg;
 
     public static float VerticalScaleOf(Map map) => 1f / MathF.Cos(PitchOf(map) * MathF.PI / 180f);
 
@@ -390,7 +419,7 @@ internal sealed class MapScene
     /// <summary>The drawn height of the ground at a point of the map (0 on a map without relief).</summary>
     private float Y(float x, float z) => Relief.At(Map, x, z);
 
-    private static bool IsRocky(TileType type) => type is TileType.Rock or TileType.Snow or TileType.Ice or TileType.CaveFloor;
+    private static bool IsRocky(TileType type) => type is TileType.Rock or TileType.Snow or TileType.Ice or TileType.CaveFloor or TileType.CaveWall or TileType.CaveMouth;
 
     /// <summary>
     /// The faces between levels (style guide, "Relief"): wherever a tile stands higher than its neighbour to the
@@ -659,10 +688,11 @@ internal sealed class MapScene
     private void AddLedges(MeshBatches batches)
     {
         float h = 0.375f * VS;
-        var lawn = new Color(104, 190, 98, 255);
-        var dirt = new Color(146, 108, 72, 255);
+        // In a cave the ridge is the floor's own rock (style guide, "Caves")
+        var lawn = Map.IsCave ? new Color(130, 118, 120, 255) : new Color(104, 190, 98, 255);
+        var dirt = Map.IsCave ? new Color(82, 72, 84, 255) : new Color(146, 108, 72, 255);
         var flat = batches.For(SceneTextures.White);
-        var face = batches.For(SceneTextures.LedgeFace);
+        var face = batches.For(Map.IsCave ? SceneTextures.RockLedgeFace : SceneTextures.LedgeFace);
         for (int ty = content.Y; ty < content.Bottom; ty++)
         {
             for (int tx = content.X; tx < content.Right; tx++)

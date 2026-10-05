@@ -90,9 +90,20 @@ public class ReliefTests
         Assert.True(Relief.Has(sinnoh));
         Assert.Equal(WorldMapBuilder.GroundLevel, sinnoh.GroundLevel);
         Assert.Equal(1f, sinnoh.HeightAt(116, 886));
+        // ...but for the rock nobody walks on (Route 219's sea cliffs), which stands above it (plan 01 · M5)
+        int rock = 0;
         for (int y = 832; y < 896; y++)
             for (int x = 96; x < 192; x++)
-                Assert.Equal((0f, 0f, 0f, 0f), Relief.Corners(sinnoh, x, y));
+            {
+                var corners = Relief.Corners(sinnoh, x, y);
+                if (sinnoh.GetGroundTile(x, y) == TileType.Rock && sinnoh.IsSolid(x, y))
+                {
+                    rock++;
+                    Assert.True(corners.NW >= WorldMapBuilder.CaveLipRise, $"the rock at ({x},{y}) lies as flat as the ground");
+                }
+                else Assert.True(corners == (0f, 0f, 0f, 0f), $"the ground at ({x},{y}) is drawn at {corners}");
+            }
+        Assert.True(rock > 50, $"only {rock} tiles of rock stand up by Route 219's sea");
         Assert.Contains(Enumerable.Range(864, 32).SelectMany(y => Enumerable.Range(160, 32).Select(x => sinnoh.HeightAt(x, y))), h => h < 1f);
         // ...while Jubilife City, in view to the north as scenery, has a part a tile higher with steps up to it
         Assert.True(Relief.Range(sinnoh, 128, 768, 191, 799).Max >= 1f);

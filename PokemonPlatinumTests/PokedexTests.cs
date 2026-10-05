@@ -42,7 +42,7 @@ public class PokedexTests
     public void TheNationalPokedexOpensAfterTheHallOfFameOnceEverySinnohSpeciesIsSeen()
     {
         var dex = new Pokedex();
-        var story = new StoryProgress();
+        var story = new PokemonPlatinumEngine.Story.StoryState();
         Assert.Equal(new[] { PokedexMode.Sinnoh }, dex.Modes);
         Assert.False(dex.CanUnlockNational(story));
 

@@ -29,7 +29,9 @@ public enum FieldMoves
     None = 0,
     Surf = 1,
     Waterfall = 2,
-    RockClimb = 4
+    RockClimb = 4,
+    /// <summary>Lights a dark cave (<see cref="Darkness"/>).</summary>
+    Flash = 8
 }
 
 public enum StepKind
@@ -313,6 +315,7 @@ public static class FieldMovement
                     "Surf" => FieldMoves.Surf,
                     "Waterfall" => FieldMoves.Waterfall,
                     "Rock Climb" => FieldMoves.RockClimb,
+                    "Flash" => FieldMoves.Flash,
                     _ => FieldMoves.None
                 };
             }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumEngine.Data;
 
@@ -99,8 +100,15 @@ public static class RegionDatabase
             Id = Sinnoh, Name = "Sinnoh", Generation = 4,
             // In front of the player's house in Twinleaf Town, on the overworld map made from the imported world
             Start = new MapSpot("Sinnoh", 116, 886),
-            Maps = new[] { "Sinnoh", "LakeVerity", "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
-                "JubilifeCity", "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany" }
+            Maps = new[]
+            {
+                // The imported world: the overworld, and the places that are matrices of their own
+                "Sinnoh", "LakeVerity", "OreburghGate1F", "OreburghGateB1F", "OreburghMineB1F", "OreburghMineB2F", "RavagedPath", "FloaromaMeadow",
+                // Rooms, still made by hand (plan 01 · M11)
+                "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
+                "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",
+                "OreburghPokemonCenter", "OreburghPokeMart", "FloaromaPokemonCenter", "FloaromaPokeMart"
+            }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
@@ -143,7 +151,7 @@ public static class RegionDatabase
         links.FirstOrDefault(l => string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>Whether the player may take a link now, given what they have done.</summary>
-    public static TravelCheck CheckTravel(RegionLink link, StoryProgress progress)
+    public static TravelCheck CheckTravel(RegionLink link, StoryState progress)
     {
         var from = Get(link.From)!;
         if (!progress.Has(from.StoryCompleteFlag)) return TravelCheck.StoryUnfinished;
@@ -175,37 +183,4 @@ public static class RegionDatabase
             }
         };
     }
-}
-
-/// <summary>
-/// What the player has done in the story, as a set of named flags. Each region's story ends with its
-/// <see cref="Region.StoryCompleteFlag"/>, which opens the way to the next region.
-/// </summary>
-public sealed class StoryProgress
-{
-    private readonly HashSet<string> flags = new(StringComparer.OrdinalIgnoreCase);
-
-    public IReadOnlyCollection<string> Flags => flags;
-
-    public bool Has(string flag) => flags.Contains(flag);
-
-    public void Set(string flag) => flags.Add(flag);
-
-    public void Clear() => flags.Clear();
-
-    public void Restore(IEnumerable<string> saved)
-    {
-        flags.Clear();
-        foreach (var f in saved) flags.Add(f);
-    }
-
-    public bool IsRegionComplete(string regionId) => Get(regionId) is { } r && Has(r.StoryCompleteFlag);
-
-    /// <summary>Marks a region's story as finished.</summary>
-    public void CompleteRegion(string regionId)
-    {
-        if (Get(regionId) is { } r) Set(r.StoryCompleteFlag);
-    }
-
-    private static Region? Get(string id) => RegionDatabase.Get(id);
 }

@@ -379,6 +379,9 @@ public sealed class AreaEvents
         public string HiddenFlag { get; set; } = "";
         public string Script { get; set; } = "";
         public int InitialDir { get; set; }
+
+        /// <summary>What the object keeps for its script: for a trainer, first, how many tiles ahead they see.</summary>
+        public List<int> Data { get; set; } = new();
         public int MovementRangeX { get; set; }
         public int MovementRangeZ { get; set; }
         public int X { get; set; }

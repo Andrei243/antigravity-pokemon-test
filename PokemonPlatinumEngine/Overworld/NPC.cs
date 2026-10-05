@@ -63,6 +63,36 @@ public class NPC
     /// <summary>Takes the player to the next region (a ferry sailor, say) once this region's story is finished.</summary>
     public bool IsTransportAttendant { get; set; } = false;
 
+    // ---- The story (plan 02 · S1)
+
+    /// <summary>What scripts call them: their id in the area's file or in the map's. Null for someone no script names.</summary>
+    public string? Key { get; set; }
+
+    /// <summary>
+    /// The script that talking to them runs; null to go by what they are (a nurse, a trainer, someone with lines
+    /// to say: <see cref="Story.FieldScripts.For"/>).
+    /// </summary>
+    public string? Script { get; set; }
+
+    /// <summary>Where a script's bare name is looked for first: their area's key. Null on a hand-made map, whose name it is.</summary>
+    public string? ScriptFile { get; set; }
+
+    /// <summary>A flag that takes them off the map while it is set, as the original's objects have.</summary>
+    public string? HiddenBy { get; set; }
+
+    /// <summary>A flag they wait for: they are on the map only while it is set.</summary>
+    public string? ShownBy { get; set; }
+
+    /// <summary>Set when a script showed or hid them itself: it holds, whatever the flags say, until the map is come to again.</summary>
+    public bool? Forced { get; set; }
+
+    /// <summary>The order they were put on the map in, kept so that coming back puts them where they were in the list.</summary>
+    internal int Order { get; set; } = -1;
+
+    /// <summary>Whether they are on the map, given which flags are set.</summary>
+    public bool IsPresent(Func<string, bool> flagSet) =>
+        Forced ?? ((HiddenBy == null || !flagSet(HiddenBy)) && (ShownBy == null || flagSet(ShownBy)));
+
     /// <summary>Remembers where the trainer was standing, before they walk up to the player.</summary>
     public void LeavePost() => post ??= (GridX, GridY, Facing);
 

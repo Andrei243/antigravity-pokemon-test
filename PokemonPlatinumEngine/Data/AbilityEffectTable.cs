@@ -131,9 +131,10 @@ public static class AbilityEffectTable
         Add("Hydration", new Hydration());
         Add("Leaf Guard", new LeafGuard());
 
-        // Shapes (plan 06 · R7)
+        // Shapes (plan 06 · R7). Flower Gift's bonus is in the damage formula by name, and Cherrim's bloom goes by
+        // its species, not its ability (BattleCore.CheckShapes)
         Add("Forecast", new Forecast());
-        Add("Flower Gift", new FlowerGift());
+        Add("Flower Gift", new FlagEffect());
         Add("Multitype", new Multitype());
 
         // Holding a foe on the field, and holding one's own ground

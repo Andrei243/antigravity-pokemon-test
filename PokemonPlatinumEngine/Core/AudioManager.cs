@@ -47,6 +47,12 @@ public static class AudioManager
         }
     }
 
+    /// <summary>The sounds <see cref="PlaySound"/> knows, by name: what a script's <c>sound</c> may ask for.</summary>
+    public static readonly string[] SoundNames =
+    {
+        "select", "cursor", "cancel", "bump", "grass", "exclaim", "hit_normal", "hit_super", "faint", "ball_throw", "ball_shake", "levelup", "heal"
+    };
+
     private static void GenerateSoundEffects()
     {
         RegisterSynthSound("select", 880f, 0.08f, WaveType.Square);

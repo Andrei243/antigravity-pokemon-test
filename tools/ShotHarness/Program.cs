@@ -26,6 +26,7 @@ using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
 
 string startDir = Environment.CurrentDirectory;
@@ -318,12 +319,17 @@ var movedSpots = new Dictionary<(string, int, int), (string Map, int X, int Y)>
     [("SandgemTown", 14, 8)] = ("Sinnoh", 178, 845), [("SandgemTown", 8, 19)] = ("Sinnoh", 168, 844), [("SandgemTown", 6, 8)] = ("Sinnoh", 177, 843),
     [("SandgemTown", 22, 8)] = ("Sinnoh", 187, 843), [("SandgemTown", 7, 19)] = ("Sinnoh", 168, 843), [("SandgemTown", 12, 10)] = ("Sinnoh", 178, 846),
     [("LakeVerity", 14, 11)] = ("LakeVerity", 44, 46), [("LakeVerity", 14, 10)] = ("LakeVerity", 44, 46), [("LakeVerity", 24, 5)] = ("LakeVerity", 51, 40),
-    [("Route202", 14, 10)] = ("Sinnoh", 174, 815), [("Route202", 15, 2)] = ("Sinnoh", 174, 802)
+    [("Route202", 14, 10)] = ("Sinnoh", 174, 815), [("Route202", 15, 2)] = ("Sinnoh", 174, 802),
+    // Jubilife City was a hand-made map until its area was opened (plan 01 · M5)
+    [("JubilifeCity", 20, 30)] = ("Sinnoh", 175, 792), [("JubilifeCity", 19, 18)] = ("Sinnoh", 175, 760), [("JubilifeCity", 19, 17)] = ("Sinnoh", 175, 760),
+    [("JubilifeCity", 7, 9)] = ("Sinnoh", 168, 779), [("JubilifeCity", 30, 10)] = ("Sinnoh", 153, 755), [("JubilifeCity", 30, 9)] = ("Sinnoh", 153, 755),
+    [("JubilifeCity", 28, 29)] = ("Sinnoh", 180, 779), [("JubilifeCity", 28, 28)] = ("Sinnoh", 180, 779),
+    [("JubilifeCity", 9, 29)] = ("Sinnoh", 149, 781), [("JubilifeCity", 9, 28)] = ("Sinnoh", 149, 781)
 };
 var movedMaps = new Dictionary<string, (string Map, int X, int Y)>
 {
     ["TwinleafTown"] = ("Sinnoh", 112, 880), ["Route201"] = ("Sinnoh", 115, 854), ["LakeVerity"] = ("LakeVerity", 44, 46),
-    ["SandgemTown"] = ("Sinnoh", 178, 845), ["Route202"] = ("Sinnoh", 174, 815)
+    ["SandgemTown"] = ("Sinnoh", 178, 845), ["Route202"] = ("Sinnoh", 174, 815), ["JubilifeCity"] = ("Sinnoh", 175, 760)
 };
 
 (string Map, int X, int Y) Place(string map, int x, int y) =>
@@ -489,6 +495,12 @@ void ToMainMenu(BattleEngine b)
     Skip(50 / 60.0);
     Confirm(b);
     Skip(0.8);
+    // What acts as the Pokémon come in has lines of its own (Intimidate, Pressure): read on until the menu is really open
+    for (int i = 0; i < 12 && b.HUD.MenuState == BattleMenuState.Message && !b.IsBattleOver; i++)
+    {
+        Confirm(b);
+        Skip(0.8);
+    }
 }
 
 // ---------------------------------------------------------------- overworld
@@ -1081,12 +1093,12 @@ if (Run("menus"))
 
     // The Trainer Card, opened as the start menu opens it (so it has the player's portrait), with two badges won
     Set("currentState", GameState.Overworld);
-    Set("badgesMask", 0b11);
+    ((StoryState)Get("story")).SetBadges(0b11);
     var handle = T.GetMethod("HandleStartMenuChoice", Private) ?? T.GetMethod("HandleStartMenu", Private);
     handle!.Invoke(engine, new object[] { StartMenuChoice.Trainer });
     Frames(40); Shot("28_trainer_card");
     ((TrainerCardScreen)Get("trainerCardScreen")).Close();
-    Set("badgesMask", 0);
+    ((StoryState)Get("story")).SetBadges(0);
 
     // Saving: the question over the field, and the moment after
     Set("currentState", GameState.Overworld);
@@ -2037,7 +2049,7 @@ if (Run("life"))
     }
     ThroughDoor("l07_house_door", 116, 885);
     // The glass doors of Sandgem's Pokémon Center slide apart
-    var center = MapStructures.BuildingsOf(sinnoh).First(b => b.Kind == BuildingKind.PokemonCenter && !b.Annex
+    var center = MapStructures.BuildingsOf(sinnoh).First(b => b.Kind == BuildingKind.PokemonCenter && !b.Annex && sinnoh.AreaAt(b.X0, b.Y0)?.Key == "sandgem_town"
         && b.Doors.Exists(d => sinnoh.GetWarpAt(d.X, b.Y1) != null || sinnoh.GetWarpAt(d.X, b.Y1 + 1) != null));
     int centerDoor = center.Doors[0].X;
     ThroughDoor("l08_center_door", centerDoor, sinnoh.GetWarpAt(centerDoor, center.Y1) != null ? center.Y1 : center.Y1 + 1);
@@ -2219,7 +2231,24 @@ if (Run("world"))
         ("w11_route219", "Sinnoh", 183, 868, Direction.Down), ("w12_sandgem_to_route202", "Sinnoh", 186, 832, Direction.Up),
         ("w13_route202", "Sinnoh", 174, 815, Direction.Up), ("w14_route202_north", "Sinnoh", 174, 802, Direction.Up),
         ("w15_lakefront", "Sinnoh", 81, 846, Direction.Up), ("w16_lake", "LakeVerity", 44, 46, Direction.Up),
-        ("w17_lake_east", "LakeVerity", 51, 40, Direction.Left)
+        ("w17_lake_east", "LakeVerity", 51, 40, Direction.Left),
+        // The south-west (plan 01 · M5): Jubilife City, the way east to Oreburgh and its mine, the way north to Floaroma
+        ("w30_jubilife_south", "Sinnoh", 175, 792, Direction.Up), ("w31_jubilife_crossroads", "Sinnoh", 175, 760, Direction.Up),
+        ("w32_jubilife_tv", "Sinnoh", 164, 757, Direction.Up), ("w33_jubilife_poketch", "Sinnoh", 143, 757, Direction.Up),
+        ("w34_jubilife_school", "Sinnoh", 172, 779, Direction.Up), ("w35_jubilife_terminal", "Sinnoh", 150, 781, Direction.Up),
+        ("w36_jubilife_north", "Sinnoh", 174, 742, Direction.Up), ("w37_route203_west", "Sinnoh", 202, 757, Direction.Right),
+        ("w38_route203_east", "Sinnoh", 240, 752, Direction.Right), ("w39_oreburgh_gate", "OreburghGate1F", 8, 22, Direction.Right),
+        ("w40_oreburgh_gate_rocks", "OreburghGate1F", 16, 6, Direction.Right), ("w41_oreburgh_gate_b1f", "OreburghGateB1F", 46, 6, Direction.Left),
+        ("w42_oreburgh_west", "Sinnoh", 264, 750, Direction.Right), ("w43_oreburgh_gym", "Sinnoh", 282, 759, Direction.Up),
+        ("w44_oreburgh_center", "Sinnoh", 303, 759, Direction.Up), ("w45_oreburgh_yard", "Sinnoh", 302, 782, Direction.Down),
+        ("w46_oreburgh_mine_mouth", "Sinnoh", 302, 791, Direction.Down), ("w47_mine_b1f", "OreburghMineB1F", 12, 5, Direction.Down),
+        ("w48_mine_b2f", "OreburghMineB2F", 15, 16, Direction.Down), ("w49_mine_b2f_machine", "OreburghMineB2F", 14, 28, Direction.Up),
+        ("w50_route204_south", "Sinnoh", 172, 722, Direction.Up), ("w51_ravaged_path", "RavagedPath", 19, 47, Direction.Up),
+        ("w52_ravaged_path_water", "RavagedPath", 6, 26, Direction.Right), ("w53_route204_north", "Sinnoh", 178, 690, Direction.Up),
+        ("w54_floaroma", "Sinnoh", 178, 661, Direction.Up), ("w55_floaroma_shop", "Sinnoh", 180, 654, Direction.Up),
+        ("w56_meadow", "FloaromaMeadow", 30, 30, Direction.Up), ("w57_meadow_house", "FloaromaMeadow", 39, 47, Direction.Up),
+        ("w58_route205", "Sinnoh", 210, 632, Direction.Up), ("w59_route205_north", "Sinnoh", 208, 600, Direction.Up),
+        ("w60_windworks", "Sinnoh", 243, 657, Direction.Up), ("w61_fuego", "Sinnoh", 169, 590, Direction.Up)
     };
     foreach (var (name, map, x, y, facing) in places)
     {
@@ -2231,20 +2260,52 @@ if (Run("world"))
     engine.ApplySettings(window: false);
     At("Sinnoh", 112, 880, Direction.Down); Frames(2); Shot("w20_twinleaf_night");
     At("Sinnoh", 178, 845, Direction.Up); Frames(2); Shot("w21_sandgem_night");
+    At("Sinnoh", 175, 760, Direction.Up); Frames(2); Shot("w70_jubilife_night");
+    At("Sinnoh", 282, 759, Direction.Up); Frames(2); Shot("w71_oreburgh_night");
+    At("Sinnoh", 302, 782, Direction.Down); Frames(2); Shot("w72_oreburgh_yard_night");
+    At("Sinnoh", 178, 661, Direction.Up); Frames(2); Shot("w73_floaroma_night");
+    // A cave's light ignores the clock: the same picture as by day
+    At("OreburghGate1F", 8, 22, Direction.Right); Frames(2); Shot("w74_oreburgh_gate_night");
     engine.Settings.TimeOfDay = TimeOfDay.Day;
     engine.ApplySettings(window: false);
 
-    if (args.Length > 2)
-        Boards(args[2], new[] { "w01_twinleaf", "w02_twinleaf_home", "w06_route201_grass", "w08_sandgem", "w09_sandgem_lab", "w13_route202", "w16_lake", "w20_twinleaf_night" });
+    // A cave nobody has lit. None of the south-west's is dark (the original's one is Wayward Cave), so Oreburgh
+    // Gate is made dark for the picture: the circle round the player, and the cave lit by a Pokémon that knows Flash
+    {
+        var gate = MapDatabase.Get("OreburghGate1F");
+        gate.IsDark = true;
+        At("OreburghGate1F", 16, 22, Direction.Right); Frames(2); Shot("w80_dark_cave");
+        At("OreburghGate1F", 8, 22, Direction.Left); Frames(2); Shot("w81_dark_cave_at_the_mouth");
+        var torch = ((Party)Get("playerParty")).Members[0];
+        var known = torch.Moves.ToList();
+        torch.Moves.Clear();
+        torch.Moves.Add(new Move(MoveDatabase.Get("Flash")!));
+        At("OreburghGate1F", 16, 22, Direction.Right); Frames(2); Shot("w82_dark_cave_with_flash");
+        torch.Moves.Clear();
+        torch.Moves.AddRange(known);
+        gate.IsDark = false;
+        Frames(2);
+    }
 
-    // The walk the plan asks for: from the player's door in Twinleaf Town to the top of Route 202, tile by tile
-    // along the shortest way, every frame timed. A chunk that has to be waited for shows up as one long frame.
+    if (args.Length > 2)
+        Boards(args[2], new[] { "w01_twinleaf", "w02_twinleaf_home", "w06_route201_grass", "w08_sandgem", "w09_sandgem_lab", "w13_route202", "w14_route202_north", "w16_lake", "w20_twinleaf_night" });
+
+    // The walks the plan asks for, tile by tile along the shortest way, every frame timed: from the player's door in
+    // Twinleaf Town to the top of Route 202 (M2), and on through Jubilife City and along Route 203 to the mouth of
+    // Oreburgh Gate (M5). A chunk that has to be waited for shows up as one long frame.
     if (filter.Length == 0 || Environment.GetEnvironmentVariable("SHOTS_TIMING") == "1")
     {
+        TimedWalk("Twinleaf Town to Route 202", (116, 886), (174, 801));
+        TimedWalk("Route 202 through Jubilife City to Oreburgh Gate", (174, 801), (245, 749));
+        TimedWalk("Jubilife City up Route 204 to the Ravaged Path", (175, 760), (171, 706));
+    }
+
+    void TimedWalk(string label, (int X, int Y) from, (int X, int Y) to)
+    {
         var sinnoh = MapDatabase.Get("Sinnoh");
-        var path = WalkingPath(sinnoh, (116, 886), (174, 801));
+        var path = WalkingPath(sinnoh, from, to);
         var renderer = (WorldRenderer)Get("world");
-        At("Sinnoh", 116, 886, Direction.Up); Frames(30);
+        At("Sinnoh", from.X, from.Y, Direction.Up); Frames(30);
         renderer.ResetStreamingStats();
         double total = 0, worst = 0;
         (int X, int Y) worstAt = default;
@@ -2268,11 +2329,18 @@ if (Run("world"))
             }
             mostChunks = Math.Max(mostChunks, renderer.LoadedChunks);
         }
-        Console.WriteLine($"walk from Twinleaf Town to Route 202: {path.Count} tiles, {total / frames:F2} ms/frame, worst frame {worst:F1} ms at ({worstAt.X}, {worstAt.Y}), at most {mostChunks} chunks loaded");
+        Console.WriteLine($"walk from {label}: {path.Count} tiles, {total / frames:F2} ms/frame, worst frame {worst:F1} ms at ({worstAt.X}, {worstAt.Y}), at most {mostChunks} chunks loaded");
         Console.WriteLine($"  streaming: {renderer.Streaming}");
     }
 
-    foreach (var (label, map, x, y) in new[] { ("twinleaf", "Sinnoh", 112, 881), ("route 201", "Sinnoh", 127, 853), ("sandgem", "Sinnoh", 178, 845), ("route 202", "Sinnoh", 174, 815), ("lake verity", "LakeVerity", 44, 46) })
+    foreach (var (label, map, x, y) in new[]
+             {
+                 ("twinleaf", "Sinnoh", 112, 881), ("route 201", "Sinnoh", 127, 853), ("sandgem", "Sinnoh", 178, 845), ("route 202", "Sinnoh", 174, 815), ("lake verity", "LakeVerity", 44, 46),
+                 ("jubilife crossroads", "Sinnoh", 175, 760), ("jubilife school", "Sinnoh", 172, 779), ("route 203", "Sinnoh", 220, 755), ("oreburgh gate", "OreburghGate1F", 16, 22),
+                 ("oreburgh city", "Sinnoh", 282, 759), ("oreburgh's mine yard", "Sinnoh", 302, 782), ("oreburgh mine", "OreburghMineB2F", 15, 16), ("route 204", "Sinnoh", 172, 722),
+                 ("ravaged path", "RavagedPath", 19, 47), ("floaroma town", "Sinnoh", 178, 661), ("floaroma meadow", "FloaromaMeadow", 30, 30), ("route 205", "Sinnoh", 210, 632),
+                 ("valley windworks", "Sinnoh", 243, 657)
+             })
     {
         At(map, x, y, Direction.Up);
         Timing(label);
@@ -2336,7 +2404,9 @@ if (mode == "profile")
         At("Sinnoh", 178, 845, Direction.Down); Frames(40); Profile("sandgem town");
         At("Sinnoh", 174, 815, Direction.Up); Frames(40); Profile("route 202");
         At("LakeVerity", 44, 46, Direction.Up); Frames(40); Profile("lake verity");
-        At("JubilifeCity", 20, 30, Direction.Up); Frames(40); Profile("jubilife city");
+        At("Sinnoh", 175, 792, Direction.Up); Frames(40); Profile("jubilife city");
+        At("Sinnoh", 302, 784, Direction.Down); Frames(40); Profile("oreburgh's mine yard");
+        At("OreburghGate1F", 16, 22, Direction.Right); Frames(40); Profile("oreburgh gate");
         At("PokemonCenter", 5, 6, Direction.Up); Frames(40); Profile("pokemon center");
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -2770,6 +2840,181 @@ if (Run("sheets"))
             Console.WriteLine($"  {page * Cols * Rows + onPage.Length} of {everyone.Length} species in {watch.Elapsed.TotalSeconds:F0} s");
         }
     }
+}
+
+// ---------------------------------------------------------------- the story's scripts
+
+// Scripts at work in the field (plan 02 · S1): the nurse's question and its answers, a clerk, a PC, a signboard, a
+// clown's quiz and its coupon, a scene written here (bubbles, walks, the camera sent away, someone gone, text
+// over a black screen), and a trainer who sees the player, challenges, is beaten and has a last word.
+if (Run("story"))
+{
+    engine.StartNewGame();
+    Set("currentState", GameState.Overworld);
+    ((LocationSign)Get("locationSign")).Hide();
+    var story = (StoryState)Get("story");
+    var team = (Party)Get("playerParty");
+    var bag = (Inventory)Get("playerInventory");
+    var interact = T.GetMethod("TryInteract", Private)!;
+
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    // Runs frames until something holds; says so when it never does
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Frames(1);
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    // The line being written is shown whole
+    void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+    // The A button on a line that is written out
+    void Next() { Box().Advance(); Frames(2); }
+    // Reads a talk to its end, line by line
+    void ReadOn(int most = 12)
+    {
+        for (int i = 0; i < most && Box().IsActive && !Box().IsQuestion; i++) { Whole(); Next(); }
+    }
+    void Talk() { interact.Invoke(engine, null); Frames(3); }
+
+    // ---- the nurse: a welcome, a question with its answers, the team made well
+    At("PokemonCenter", 5, 4, Direction.Up);
+    team.Members[0].CurrentHP = 1;
+    Talk();
+    Whole(); Shot("st01_nurse_greets");
+    Next();
+    Whole(); Until(() => engine.Choice.IsOpen, "the nurse's answers"); Frames(20); Shot("st02_nurse_asks");
+    engine.Choice.Move(1); Frames(4); Shot("st03_nurse_no");
+    engine.Choice.Move(-1); engine.Choice.Confirm(); Frames(20);
+    Whole(); Shot("st04_nurse_takes_them");
+    Next();
+    Whole(); Shot("st05_nurse_done");
+    ReadOn();
+    Console.WriteLine($"nurse: healed {team.Members[0].CurrentHP == team.Members[0].MaxHP}, script running {engine.ScriptRunning}, state {State()}");
+
+    // Asked again and answered no, nothing is healed
+    team.Members[0].CurrentHP = 1;
+    Talk(); Whole(); Next(); Whole();
+    Until(() => engine.Choice.IsOpen, "the nurse's answers again");
+    engine.Choice.Back(); Frames(20);
+    ReadOn();
+    Console.WriteLine($"nurse, told no: healed {team.Members[0].CurrentHP == team.Members[0].MaxHP}, script running {engine.ScriptRunning}");
+    team.HealAll();
+
+    // ---- the PC in the corner: a line, then the boxes
+    var center = MapDatabase.Get("PokemonCenter");
+    var terminal = center.NPCs.First(n => n.IsPCTerminal);
+    At("PokemonCenter", terminal.GridX, terminal.GridY + 1, Direction.Up);
+    Talk(); Whole(); Shot("st06_pc_switched_on");
+    Next(); Frames(20);
+    Console.WriteLine($"pc: state {State()}");
+    ((PCScreen)Get("pcScreen")).Close(); Frames(6);
+    Console.WriteLine($"pc closed: script running {engine.ScriptRunning}, state {State()}");
+
+    // ---- a clerk: the greeting, the counter, a word on the way out
+    var mart = MapDatabase.Get("PokeMart");
+    var clerk = mart.NPCs.First(n => n.IsPokeMartClerk);
+    // (The clerk stands behind the counter: the player speaks across it, from two tiles away)
+    int reach = mart.IsCounter(clerk.GridX, clerk.GridY + 1) ? 2 : 1;
+    At("PokeMart", clerk.GridX, clerk.GridY + reach, Direction.Up);
+    Talk(); Whole(); Shot("st07_clerk_greets");
+    Next(); Frames(30); Shot("st08_clerk_counter");
+    ((ShopScreen)Get("shopScreen")).Close(); Frames(6);
+    Whole(); Shot("st09_clerk_goodbye");
+    ReadOn();
+    Console.WriteLine($"clerk: script running {engine.ScriptRunning}, state {State()}");
+
+    // ---- a signboard
+    At("Sinnoh", 176, 745, Direction.Up);
+    Talk(); Whole(); Shot("st10_sign");
+    ReadOn();
+
+    // ---- a clown of the Pokétch campaign: the question, the right answer, the coupon
+    var sinnoh = MapDatabase.Get("Sinnoh");
+    var clown = sinnoh.FindPerson("clown_1", "jubilife_city")!;
+    At("Sinnoh", clown.GridX, clown.GridY + 1, Direction.Up);
+    Talk(); Whole(); Next();
+    Whole(); Until(() => engine.Choice.IsOpen, "the clown's answers"); Frames(20); Shot("st11_clown_asks");
+    engine.Choice.Confirm(); Frames(20);
+    Whole(); Shot("st12_clown_right");
+    Next(); Whole(); Next(); Whole(); Next();
+    Whole(); Shot("st13_clown_coupon");
+    ReadOn();
+    Console.WriteLine($"clown: coupons {bag.GetQuantity(ItemDatabase.Get("Coupon 1")!)}, flag {story.Has("FLAG_RECEIVED_COUPON_1")}, script running {engine.ScriptRunning}");
+    // Spoken to again, the clown has no second coupon
+    Talk(); Whole(); Shot("st14_clown_afterwards");
+    ReadOn();
+    Console.WriteLine($"clown again: coupons {bag.GetQuantity(ItemDatabase.Get("Coupon 1")!)}, questions open {engine.Choice.IsOpen}");
+
+    // ---- a scene written for the picture: bubbles, a walk, the camera sent away, someone gone, text over black
+    var breeder = sinnoh.FindPerson("pokemon_breeder_f", "twinleaf_town")!;
+    var (bx, by) = (breeder.GridX, breeder.GridY);
+    // (On the open ground west of her: the player five tiles off, and they walk up to one another)
+    for (int x = bx - 5; x < bx; x++)
+        if (!sinnoh.IsWalkable(x, by)) Console.WriteLine($"  !! the scene's ground is blocked at {x},{by}");
+    At("Sinnoh", bx - 5, by, Direction.Right);
+    var me = (Player)Get("player");
+    var view = (WorldRenderer)Get("world");
+    // (Written as a script of her town, so that its names mean her town's people)
+    var scene = ScriptParser.Parse("twinleaf_town", $"""
+        script Scene
+          emote player exclaim 0.7
+          face pokemon_breeder_f player
+          emote pokemon_breeder_f question 0.7
+          move pokemon_breeder_f left 2
+          walk player right 2
+          face player pokemon_breeder_f
+          camera pan {bx - 9} {by - 6} 0.6
+          wait 0.5
+          camera release 0.5
+          hide pokemon_breeder_f
+          wait 0.6
+          show pokemon_breeder_f
+          fade out 0.3
+          text "The afternoon went by, and nobody was any the wiser."
+          fade in 0.3
+          camera shake 0.5
+          wait 0.5
+        """)[0];
+    engine.StartScript(scene);
+    Until(() => me.BubbleTimer > 0f, "the player's bubble"); Frames(10); Shot("st15_scene_bubble");
+    Until(() => breeder.BubbleTimer > 0f, "the other's bubble"); Frames(10); Shot("st16_scene_bubble_other");
+    Until(() => me.IsMoving, "the walk"); Frames(14); Shot("st17_scene_walking");
+    Until(() => view.PanEase > 0.97f, "the camera away"); Frames(4); Shot("st18_scene_camera_away");
+    Until(() => !sinnoh.NPCs.Contains(breeder), "someone gone"); Frames(4); Shot("st19_scene_someone_gone");
+    Until(() => Box().IsActive, "text over black"); Whole(); Shot("st20_scene_text_over_black");
+    Next();
+    Until(() => !engine.ScriptRunning, "the scene's end");
+    Frames(30); Shot("st21_scene_over");
+    Console.WriteLine($"scene: player at {me.GridX - bx},{me.GridY - by} of where she stood (-3,0 is right), she at {breeder.GridX - bx},{breeder.GridY - by} (-2,0 is right), back on the map {sinnoh.NPCs.Contains(breeder)}");
+    breeder.GridX = bx; breeder.GridY = by;
+
+    // ---- a trainer: seen, challenged, beaten, and a last word
+    var tristan = sinnoh.FindPerson("youngster_tristan", "route_202")!;
+    var (tx, ty) = (tristan.GridX, tristan.GridY);
+    team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Empoleon")!, 50));
+    At("Sinnoh", tx, ty + 3, Direction.Up);
+    Set("trainersLookOnArrival", true);
+    Until(() => Box().IsActive, "the trainer's challenge");
+    Whole(); Shot("st22_trainer_challenges");
+    Next();
+    Until(() => State() == GameState.Battle, "the battle");
+    var fight = (BattleEngine)Get("battle");
+    ToMainMenu(fight);
+    Shot("st23_trainer_battle");
+    for (int guard = 0; guard < 80 && !fight.IsBattleOver; guard++)
+    {
+        if (fight.HUD.MenuState == BattleMenuState.Main) { fight.EnemyPokemon.CurrentHP = 1; fight.SelectMove(0); }
+        else Confirm(fight);
+        Skip(0.5);
+    }
+    Until(() => State() == GameState.Overworld, "the field again", 1200);
+    Frames(20);
+    Console.WriteLine($"trainer: beaten {tristan.HasBattled}, the story knows {story.HasDefeated(tristan.TrainerData!.Id)}, script running {engine.ScriptRunning}, state {State()}");
+    Shot("st24_trainer_beaten");
+    Talk(); Whole(); Shot("st25_trainer_last_word");
+    ReadOn();
+    team.Members.RemoveAt(0);
+    (tristan.GridX, tristan.GridY) = (tx, ty);
 }
 
 // ---------------------------------------------------------------- model files

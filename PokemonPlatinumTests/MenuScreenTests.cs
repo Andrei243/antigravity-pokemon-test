@@ -1037,7 +1037,7 @@ public class MenuScreenTests
 
         // The assistant stands in Sandgem Town, and is drawn as whichever character the player isn't
         var sinnoh = MapDatabase.Get("Sinnoh");
-        var assistant = Assert.Single(sinnoh.NPCs, n => n.NpcType == "Assistant");
+        var assistant = Assert.Single(sinnoh.NPCs, n => n.NpcType == "Assistant" && sinnoh.AreaAt(n.GridX, n.GridY)?.Key == "sandgem_town");
         Assert.Equal("{assistant}", assistant.Name);
         Assert.Contains(assistant.DialogLines, line => line.Contains("{player}"));
 

@@ -1,0 +1,130 @@
+{
+  "area": "jubilife_city",
+  "bgmTrack": "sinnoh/jubilife",
+  "trees": "Round",
+  "architecture": "City",
+  "doors": [
+    { "warp": 2, "map": "JubilifePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 6, "map": "JubilifePokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 7, "map": "TrainersSchool", "x": 6, "y": 9, "facing": "Up" },
+    // The Pokétch Company has two doors onto the street and one hall behind them
+    { "warp": 8, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 5, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" }
+  ],
+  // The condominiums, the Global Terminal, Jubilife TV and the two houses have no rooms yet (plan 01 · M11); two
+  // houses the original never used; the gate to Route 218 (plan 01 · M7)
+  "locked": [ 0, 1, 3, 4, 9, 10, 11, 12, 13 ],
+  "people": {
+    // Story people the hand-made city had: they keep their lines until plan 02 · S5 gives them their scenes
+    "counterpart": {
+      "name": "{assistant}",
+      "npcType": "Assistant",
+      "dialog": [
+        "{assistant}: {player}! You made it through Route 202. Welcome to Jubilife City!",
+        "{assistant}: It's the biggest city in Sinnoh. There's even a TV station!",
+        "{assistant}: Barry ran on ahead to the Trainers' School. It's up the main street, on the left.",
+        "{assistant}: Have a look inside! The lessons there are a big help when you're starting out."
+      ]
+    },
+    "looker": {
+      "name": "Looker",
+      "dialog": [
+        "???: ...! You did not see me. I am simply a man admiring the street.",
+        "Looker: Very well. You may call me Looker. My work is... the international kind.",
+        "Looker: A certain group is up to something in Sinnoh. I am here to find out what.",
+        "Looker: If you notice anyone suspicious, you will remember my face, yes? Farewell!"
+      ]
+    },
+    // The campaign's three clowns ask their questions and give their coupons (scripts/jubilife_city.txt)
+    "clown_1": { "name": "Clown", "script": "Clown1" },
+    "clown_2": { "name": "Clown", "script": "Clown2" },
+    "clown_3": { "name": "Clown", "script": "Clown3" },
+
+    "ace_trainer_f": {
+      "name": "Trainer",
+      "dialog": [
+        "That's the Pokétch Company. It makes the watch half the trainers in Sinnoh wear.",
+        "They say the president invented the thing himself."
+      ]
+    },
+    "ace_trainer_m_1": {
+      "name": "Trainer",
+      "dialog": [
+        "You walked here from Twinleaf Town? It's a quiet place, that. I like it.",
+        "Jubilife must be a bit of a shock after it. Give it a day and you'll know every street."
+      ]
+    },
+    "ace_trainer_m_2": {
+      "name": "Trainer",
+      "dialog": [
+        "Have you been to the TV station yet? It's the tall building at the top of the square.",
+        "Go even if you've been. Anybody can end up on the screen there!"
+      ]
+    },
+    "ace_trainer_m_3": {
+      "name": "Trainer",
+      "dialog": [
+        "Through here is the Global Terminal, where trainers trade with the whole world.",
+        "They only let you in once you've won a Gym Badge, though."
+      ]
+    },
+    "school_kid_m_1": {
+      "name": "Schoolboy",
+      "dialog": [
+        "One, two, three... six Poké Balls on the belt, and that's all it holds.",
+        "Six Pokémon is the most you can carry. Any more go to a PC box."
+      ]
+    },
+    "school_kid_m_2": {
+      "name": "Schoolboy",
+      "dialog": [
+        "The more you walk with your Pokémon, the more they come to like you.",
+        "Mine wouldn't even look at me the day I caught it!"
+      ]
+    },
+    "twin": {
+      "name": "Girl",
+      "dialog": [
+        "Did you see me on TV? They asked me questions and everything!"
+      ]
+    },
+    "expert_m_1": {
+      "name": "Old Man",
+      "dialog": [
+        "New to Pokémon, are you? Then the Trainers' School is the place: the long building behind me.",
+        "And if you think you know it all already, go in anyway. There's always one more thing to learn."
+      ]
+    },
+    "expert_m_2": {
+      "name": "Old Man",
+      "dialog": [
+        "This city stands on ground that was cut out of a mountainside.",
+        "The people of Oreburgh did the cutting, and their Pokémon with them. We haven't forgotten."
+      ]
+    },
+    "kid_with_nds_1": {
+      "name": "Boy",
+      "dialog": [
+        "I'm trading Pokémon with my friend!"
+      ]
+    },
+    "kid_with_nds_2": {
+      "name": "Boy",
+      "dialog": [
+        "I gave my Pokémon an item to hold before I traded it.",
+        "That way my friend gets two presents at once!"
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost_1": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet.",
+    "map_signpost_2": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet.",
+    "map_signpost_3": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet.",
+    "map_signpost_4": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet.",
+    "signboard_jubilife_condominiums": "Jubilife Condominiums",
+    "signboard_poketch_company": "Pokétch Company\nWe make the Pokétch, the Pokémon Watch every trainer needs.",
+    "signboard_jubilife_tv": "Jubilife TV\nSinnoh's own broadcast station.",
+    "signboard_trainers_school": "Trainers' School\nEvery new trainer is welcome to learn the basics here, free of charge!",
+    "signboard_global_terminal": "Global Terminal\nTrade with trainers far away."
+  }
+}

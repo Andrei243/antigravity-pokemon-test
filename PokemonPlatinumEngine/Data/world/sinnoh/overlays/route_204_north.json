@@ -1,0 +1,80 @@
+{
+  "area": "route_204_north",
+  // Until plan 05 writes the theme of Routes 203 and 204 (the original's ROAD_B)
+  "bgmTrack": "sinnoh/route202",
+  "trees": "Round",
+  "people": {
+    "youngster_north": {
+      "name": "Boy",
+      "dialog": [
+        "Do you raise Pokémon of different types?",
+        "A team that's all one type goes down together the moment it meets the type it's weak to."
+      ]
+    },
+    // In Platinum she gives away the TM for Captivate; the gift is plan 02's (S5)
+    "ace_trainer_f": {
+      "name": "Trainer",
+      "dialog": [
+        "I teach at the Trainers' School, so here's today's lesson.",
+        "Some moves care whether a Pokémon is male or female. Captivate only works on the opposite gender!"
+      ]
+    },
+    "aroma_lady_taylor": {
+      "name": "Taylor",
+      "trainer": {
+        "id": "trainer_taylor",
+        "name": "Taylor",
+        "trainerClass": "Aroma Lady",
+        "party": [ { "species": "Budew", "level": 9 }, { "species": "Cherubi", "level": 11 } ],
+        "prizeMoney": 352,
+        "dialogueBefore": "Aroma Lady Taylor: The scent of the flowers brought you this way too? Let's see what sort of trainer you are.",
+        "dialogueAfter": "Aroma Lady Taylor: A strong one, it turns out. Follow the scent north and you'll come to Floaroma Town."
+      }
+    },
+    "bug_catcher_brandon": {
+      "name": "Brandon",
+      "trainer": {
+        "id": "trainer_brandon",
+        "name": "Brandon",
+        "trainerClass": "Bug Catcher",
+        "party": [
+          { "species": "Wurmple", "level": 10, "moves": [ "Tackle", "String Shot", "Poison Sting" ] },
+          { "species": "Kricketot", "level": 11, "moves": [ "Bide" ] }
+        ],
+        "prizeMoney": 176,
+        "dialogueBefore": "Bug Catcher Brandon: Hey, hey! Come and look at my Bug Pokémon!",
+        "dialogueAfter": "Bug Catcher Brandon: They grow up fast, they poison, they paralyse, and they're cute. Bugs are the best, honest!"
+      }
+    },
+    // The twins battle together, two Pokémon at a time; either of them starts it
+    "twin_liv": {
+      "name": "Liv",
+      "trainer": {
+        "id": "trainer_liv_and_liz",
+        "name": "Liv & Liz",
+        "trainerClass": "Twins",
+        "party": [ { "species": "Pachirisu", "level": 11 }, { "species": "Pachirisu", "level": 11 } ],
+        "prizeMoney": 352,
+        "doubleBattle": true,
+        "dialogueBefore": "Liv: We can beat this one in a single turn. Can't we, Liz?",
+        "dialogueAfter": "Liv: ...This trainer is going to tell everybody about it, Liz."
+      }
+    },
+    "twin_liz": {
+      "name": "Liz",
+      "trainer": {
+        "id": "trainer_liv_and_liz",
+        "name": "Liv & Liz",
+        "trainerClass": "Twins",
+        "party": [ { "species": "Pachirisu", "level": 11 }, { "species": "Pachirisu", "level": 11 } ],
+        "prizeMoney": 352,
+        "doubleBattle": true,
+        "dialogueBefore": "Liz: We're the best in our whole class!",
+        "dialogueAfter": "Liz: ...This trainer looks much too pleased about it, Liv."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": "Route 204\nNorth: Floaroma Town"
+  }
+}

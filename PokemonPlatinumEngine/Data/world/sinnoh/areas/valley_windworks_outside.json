@@ -1,0 +1,59 @@
+{
+  "key": "valley_windworks_outside",
+  "index": 200,
+  "name": "Valley Windworks",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_C_D",
+  "nightMusic": "ROAD_C_N",
+  "encounters": "valley_windworks_outside",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Shellos", "level": 9 },
+    { "species": "Shinx", "level": 10 },
+    { "species": "Buizel", "level": 9 },
+    { "species": "Shellos", "level": 10 },
+    { "species": "Buizel", "level": 10 },
+    { "species": "Shellos", "level": 11 },
+    { "species": "Pachirisu", "level": 9 },
+    { "species": "Pachirisu", "level": 11 },
+    { "species": "Buizel", "level": 11 },
+    { "species": "Shellos", "level": 12 },
+    { "species": "Buizel", "level": 11 },
+    { "species": "Shellos", "level": 12 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Shellos", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Gastrodon", "level": 20, "maxLevel": 40 },
+    { "species": "Gastrodon", "level": 20, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "warps": [
+    { "x": 243, "z": 654, "to": "valley_windworks_building", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "grunt_m", "looks": "grunt_m", "movement": "look_south", "x": 243, "z": 655, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_GRUNT_M", "script": "3" },
+    { "id": "signboard", "looks": "signboard", "movement": "none", "x": 240, "z": 659, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 215, "z": 659, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_205_SOUTH", "script": "65535" },
+    { "id": "item_tm24", "looks": "pokeball", "movement": "none", "x": 242, "z": 644, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_VALLEY_WINDWORKS_OUTSIDE_TM24", "script": "7015" },
+    { "id": "drifloon", "looks": "drifloon", "movement": "none", "x": 241, "z": 660, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON", "script": "6" },
+    { "id": "item_potion", "looks": "pokeball", "movement": "none", "x": 246, "z": 660, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_VALLEY_WINDWORKS_OUTSIDE_POTION", "script": "7252" },
+    { "id": "looker", "looks": "looker", "movement": "look_north", "x": 242, "z": 659, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER", "script": "0" },
+    { "id": "item_electirizer", "looks": "pokeball", "movement": "none", "x": 232, "z": 649, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_VALLEY_WINDWORKS_OUTSIDE_ELECTIRIZER", "script": "7318" }
+  ],
+  "signs": [
+    { "x": 236, "z": 651, "type": 2, "script": "8000" },
+    { "x": 243, "z": 654, "type": 0, "script": "4" }
+  ],
+  "triggers": []
+}

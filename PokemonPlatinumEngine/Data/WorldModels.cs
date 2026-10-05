@@ -38,6 +38,12 @@ public sealed record WorldModel(string Name, ModelRole Role)
     public PropType Prop { get; init; }
 
     /// <summary>
+    /// For a building whose thin pieces are not a fence or a low wall: what they are. The mine's yard has
+    /// <see cref="PropType.Conveyor"/> here, and <see cref="WorldMapBuilder.Conveyors"/> lays its belts.
+    /// </summary>
+    public PropType? Thin { get; init; }
+
+    /// <summary>
     /// The session of plan 01 that builds its area and gives it a look of its own; until then it has a plain
     /// stand-in of the right size. Null for a model that has its look.
     /// </summary>
@@ -49,7 +55,7 @@ public sealed record WorldModel(string Name, ModelRole Role)
 
 /// <summary>
 /// The catalogue of the models that stand outdoors in Sinnoh (plan 01 · M4): 163 of the original's 360, the rest
-/// being furniture. <c>tools/MapImporter</c> lists them with their sizes and places in <c>docs/world-models.md</c>
+/// being furniture; and of those that stand in the caves that are open (plan 01 · M5 on). <c>tools/MapImporter</c> lists them with their sizes and places in <c>docs/world-models.md</c>
 /// and reports any that this table doesn't know.
 /// </summary>
 public static class WorldModels
@@ -57,8 +63,9 @@ public static class WorldModels
     private static WorldModel House(string name, Architecture town, string what, int storeys = 0) =>
         new(name, ModelRole.Building) { Kind = BuildingKind.House, Town = town, Storeys = storeys, What = what };
 
-    private static WorldModel Built(string name, BuildingKind kind, string what, Architecture? town = null, int storeys = 0, string? sign = null, string? until = null) =>
-        new(name, ModelRole.Building) { Kind = kind, Town = town, Storeys = storeys, Sign = sign, StandInUntil = until, What = what };
+    private static WorldModel Built(string name, BuildingKind kind, string what, Architecture? town = null, int storeys = 0, string? sign = null, string? until = null,
+        PropType? thin = null) =>
+        new(name, ModelRole.Building) { Kind = kind, Town = town, Storeys = storeys, Sign = sign, StandInUntil = until, Thin = thin, What = what };
 
     private static WorldModel Thing(string name, PropType prop, string what, string? until = null) =>
         new(name, ModelRole.Scenery) { Prop = prop, StandInUntil = until, What = what };
@@ -132,10 +139,14 @@ public static class WorldModels
         House("c3_h01b", Architecture.Brick, "a house of Oreburgh City"),
         Built("c3_s01", BuildingKind.Museum, "the Oreburgh Mining Museum", Architecture.Brick, sign: "MUSEUM"),
         Built("c3_s02", BuildingKind.Factory, "the mine's winding tower", sign: "MINE"),
-        Built("c3_s03", BuildingKind.Factory, "the mine's yard: sheds and conveyors", storeys: 1, until: "M5"),
+        Built("c3_s03", BuildingKind.Factory, "the mine's yard: the pit head, and conveyors on their gantries", storeys: 1, thin: PropType.Conveyor),
         Built("c3_o02", BuildingKind.Factory, "the mine's sorting shed", storeys: 1),
         Thing("c3_o01a", PropType.CoalHeap, "a heap of coal"),
         Thing("c3_o01b", PropType.CoalHeap, "a heap of coal"),
+        // Inside the mine
+        Built("d01_o1", BuildingKind.Factory, "the mine's loading machine, with a conveyor down either side of the coal face", storeys: 1, thin: PropType.Conveyor),
+        Thing("can01", PropType.Drums, "steel drums in the mine"),
+        Thing("box02", PropType.Crates, "crates in the mine"),
 
         // ---------------------------------------------------------------- Eterna City
         House("c4_h01a", Architecture.HalfTimber, "a house of Eterna City or Celestic Town"),

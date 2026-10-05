@@ -2,17 +2,6 @@
   "area": "route_202",
   "bgmTrack": "sinnoh/route202",
   "trees": "Round",
-  // Jubilife City is still the hand-made map: the route's north end leads onto it (plan 01 · M5 imports the city)
-  "exits": [
-    { "x": 170, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
-    { "x": 171, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
-    { "x": 172, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
-    { "x": 173, "z": 800, "map": "JubilifeCity", "toX": 19, "toY": 32, "facing": "Up" },
-    { "x": 174, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" },
-    { "x": 175, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" },
-    { "x": 176, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" },
-    { "x": 177, "z": 800, "map": "JubilifeCity", "toX": 20, "toY": 32, "facing": "Up" }
-  ],
   "people": {
     "youngster_tristan": {
       "name": "Tristan",
@@ -20,11 +9,10 @@
         "id": "trainer_tristan",
         "name": "Tristan",
         "trainerClass": "Youngster",
-        "party": [ { "species": "Starly", "level": 4 } ],
-        "prizeMoney": 160,
+        "party": [ { "species": "Starly", "level": 5 } ],
+        "prizeMoney": 80,
         "dialogueBefore": "Youngster Tristan: Our eyes met! That means we have to battle!",
-        "dialogueAfter": "Youngster Tristan: Aww, my Starly fought hard! You're really tough!",
-        "sightRange": 3
+        "dialogueAfter": "Youngster Tristan: Aww, my Starly fought hard! You're really tough!"
       }
     },
     "lass_natalie": {
@@ -33,11 +21,10 @@
         "id": "trainer_natalie",
         "name": "Natalie",
         "trainerClass": "Lass",
-        "party": [ { "species": "Shinx", "level": 6 } ],
-        "prizeMoney": 240,
-        "dialogueBefore": "Lass Natalie: My cute Shinx is fully charged! Prepare for a shock!",
-        "dialogueAfter": "Lass Natalie: Wow, you're strong! Jubilife City is just up the road.",
-        "sightRange": 3
+        "party": [ { "species": "Bidoof", "level": 5 } ],
+        "prizeMoney": 80,
+        "dialogueBefore": "Lass Natalie: I spy a trainer! That means a battle, please!",
+        "dialogueAfter": "Lass Natalie: Wow, you're strong! Jubilife City is just up the road."
       }
     },
     "youngster_logan": {
@@ -46,11 +33,10 @@
         "id": "trainer_logan",
         "name": "Logan",
         "trainerClass": "Youngster",
-        "party": [ { "species": "Bidoof", "level": 6 }, { "species": "Starly", "level": 7 } ],
-        "prizeMoney": 280,
-        "dialogueBefore": "Youngster Logan: I've caught two Pokémon already! Let's see your team!",
-        "dialogueAfter": "Youngster Logan: No way! You've got an amazing team balance!",
-        "sightRange": 3
+        "party": [ { "species": "Burmy", "level": 5, "moves": [ "Tackle" ] } ],
+        "prizeMoney": 80,
+        "dialogueBefore": "Youngster Logan: A battle! Come on! I warn you, though, I'm going to win!",
+        "dialogueAfter": "Youngster Logan: You beat me? That was fun all the same. I'm going to battle everybody!"
       }
     },
     "youngster": {

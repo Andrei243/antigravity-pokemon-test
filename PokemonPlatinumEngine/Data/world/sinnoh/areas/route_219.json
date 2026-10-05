@@ -25,8 +25,8 @@
   "waterRate": 10,
   "warps": [],
   "objects": [
-    { "id": "tuber_trenton", "looks": "tuber_m", "movement": "walk_back_and_forth", "x": 171, "z": 887, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "normal", "script": "TRAINER_TUBER_TRENTON" },
-    { "id": "tuber_mariel", "looks": "tuber_f", "movement": "look_west", "x": 176, "z": 887, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "script": "TRAINER_TUBER_MARIEL" },
+    { "id": "tuber_trenton", "looks": "tuber_m", "movement": "walk_back_and_forth", "x": 171, "z": 887, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TUBER_TRENTON" },
+    { "id": "tuber_mariel", "looks": "tuber_f", "movement": "look_west", "x": 176, "z": 887, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TUBER_MARIEL" },
     { "id": "arrow_signpost_sandgem_beach", "looks": "arrow_signpost", "movement": "none", "x": 179, "z": 866, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
     { "id": "item_antidote", "looks": "pokeball", "movement": "none", "x": 169, "z": 877, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_219_ANTIDOTE", "script": "7124" }
   ],

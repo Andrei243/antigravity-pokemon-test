@@ -148,7 +148,8 @@ internal static class GroundBaker
         {
             TileType.Path => TileType.Path,
             TileType.Water => TileType.Water,
-            _ => TileType.Tree
+            // Past its edge a cave is rock, as the open country is forest
+            _ => map.IsCave ? TileType.CaveWall : TileType.Tree
         };
     }
 

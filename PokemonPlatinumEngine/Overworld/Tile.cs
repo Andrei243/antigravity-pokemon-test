@@ -48,7 +48,36 @@ public enum TileType : byte
     /// <summary>Stone slabs: the streets and squares of cities.</summary>
     Paving,
     /// <summary>The deck of Sunyshore's raised walkways: steel, set with solar panels.</summary>
-    Walkway
+    Walkway,
+
+    // Caves (plan 01 · M5)
+    /// <summary>The rock a cave is cut into: nobody walks on it, and it stands up from the floor as the cave's wall.</summary>
+    CaveWall,
+    /// <summary>The dark inside the mouth of a cave, as the open country shows it: a hollow at the foot of the rock.</summary>
+    CaveMouth
+}
+
+/// <summary>What a map of the imported world is where nothing else is said (plan 01 · M5).</summary>
+public enum MapSetting
+{
+    /// <summary>Open country under the sky: forest where no chunk says otherwise, lit by the time of day.</summary>
+    Outdoors,
+    /// <summary>The inside of a cave: rock where no chunk says otherwise, walls standing up from the floor, a light of its own.</summary>
+    Cave
+}
+
+/// <summary>
+/// The field's cameras, as Platinum's map headers name them (<c>sCameraTypes</c> in the original's
+/// <c>src/overlay005/field_camera.c</c>): how far away, how steeply and how widely the field is looked at.
+/// </summary>
+public enum FieldCamera
+{
+    /// <summary>666.9 units away, pitched 59.05°, 16.18° of view: the overworld.</summary>
+    Default,
+    /// <summary>574.6 units away, pitched 63.26°, 19.0° of view: caves.</summary>
+    Cave,
+    /// <summary>515.5 units away, pitched 54.66°, 20.92° of view: Floaroma Meadow, Eterna Forest, Amity Square.</summary>
+    ZoomedIn
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>
@@ -134,10 +163,48 @@ public class Warp
     public Direction TargetFacing { get; set; } = Direction.Down;
 }
 
+/// <summary>
+/// Tiles that start a script when the player steps onto one of them (plan 02 · S1): a rectangle, the script, and
+/// the state of the story it waits for. As in the original, a trigger goes by a variable: it fires only while the
+/// variable has the value, and the script it starts moves the variable on so that it doesn't fire again.
+/// </summary>
+public sealed class StepTrigger
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Width { get; set; } = 1;
+    public int Depth { get; set; } = 1;
+
+    /// <summary>The script's name, looked for in <see cref="ScriptFile"/> first and among the common ones second.</summary>
+    public string Script { get; set; } = string.Empty;
+
+    /// <summary>The file of the place the trigger belongs to; null on a hand-made map, whose name it is.</summary>
+    public string? ScriptFile { get; set; }
+
+    /// <summary>The variable it goes by; null for a trigger that fires every time.</summary>
+    public string? Variable { get; set; }
+    public int Value { get; set; }
+
+    public bool Covers(int x, int y) => x >= X && x < X + Width && y >= Y && y < Y + Depth;
+}
+
+/// <summary>
+/// A row of a place's table of wild Pokémon: a species, its levels and how often it comes up. What a step has met
+/// (<see cref="Map.RollWildEncounter"/>) is a row of its own with the level decided, and the gender and nature
+/// the lead's ability chose for it, if it chose any (<see cref="WildEncounterRules"/>).
+/// </summary>
 public class WildEncounterEntry
 {
     public string SpeciesName { get; set; } = "Bidoof";
     public int MinLevel { get; set; } = 2;
     public int MaxLevel { get; set; } = 4;
     public int Weight { get; set; } = 10;
+
+    /// <summary>The gender Cute Charm chose for the Pokémon met; never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public Gender? Gender { get; set; }
+
+    /// <summary>The nature Synchronize chose for the Pokémon met; never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public Nature? Nature { get; set; }
 }

@@ -1,0 +1,30 @@
+{
+  "area": "oreburgh_gate_b1f",
+  // Until plan 05 writes the cave theme (the original's D_05)
+  "bgmTrack": "sinnoh/lake",
+  "people": {
+    "cyclist_f": {
+      "name": "Cyclist",
+      "dialog": [
+        "See the humps in the floor down here?",
+        "Take them fast on a Bicycle and you fly. Nothing feels better!"
+      ]
+    },
+    "veteran_grant": {
+      "name": "Grant",
+      "trainer": {
+        "id": "trainer_grant",
+        "name": "Grant",
+        "trainerClass": "Veteran",
+        "party": [
+          { "species": "Riolu", "level": 34, "moves": [ "Force Palm", "Quick Attack", "Counter", "Screech" ] },
+          { "species": "Staraptor", "level": 34, "moves": [ "Aerial Ace", "Take Down", "Quick Attack", "Growl" ] },
+          { "species": "Graveler", "level": 34, "moves": [ "Earthquake", "Rock Slide", "Rock Polish", "Defense Curl" ] }
+        ],
+        "prizeMoney": 2720,
+        "dialogueBefore": "Veteran Grant: A veteran, yes. An old man, no! Don't you go easy on me!",
+        "dialogueAfter": "Veteran Grant: Hah! So young, and already this good. I'll stay young at heart and try again."
+      }
+    }
+  }
+}

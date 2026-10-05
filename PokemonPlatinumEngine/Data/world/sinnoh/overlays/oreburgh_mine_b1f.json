@@ -1,0 +1,21 @@
+{
+  "area": "oreburgh_mine_b1f",
+  // Until plan 05 writes the mine's theme (the original's D_04)
+  "bgmTrack": "sinnoh/lake",
+  "people": {
+    "worker": {
+      "name": "Worker",
+      "dialog": [
+        "Everybody who works down here brings a Pokémon along.",
+        "So don't be surprised if one of the lads fancies a battle on his break. Hahaha!"
+      ]
+    },
+    "twin": {
+      "name": "Girl",
+      "dialog": [
+        "I saw some rocks in the dark, and then the rocks got up and walked off!",
+        "They were Pokémon all along. They only look like rocks!"
+      ]
+    }
+  }
+}

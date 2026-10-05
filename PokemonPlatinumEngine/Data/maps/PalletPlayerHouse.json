@@ -108,7 +108,8 @@
         "Mom: Back already? Have a rest, your Pokémon look tired.",
         "Mom: There, all better! Off you go, and say hello to Johto for me one day."
       ],
-      "isHealingNurse": true
+      "isHealingNurse": true,
+      "script": "Healer"
     }
   ],
   "wildEncounters": []

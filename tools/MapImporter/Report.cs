@@ -35,7 +35,7 @@ public sealed class Report
     private readonly Dictionary<TerrainCover, long> overworldCover = new();
     private readonly Dictionary<int, int> propUse = new();
 
-    // The models that stand outdoors, by name: how often, and in which areas
+    // The models that stand outdoors or in a cave the game has opened, by name: how often, and in which areas
     private readonly SortedDictionary<string, (int Uses, SortedSet<string> Areas, ModelInfo Info)> outdoors = new(StringComparer.Ordinal);
     public List<string> Problems { get; } = new();
 
@@ -72,6 +72,8 @@ public sealed class Report
         }
 
         var overworld = decomp.Matrix(0).Land.Where(l => l != Matrix.NoLand).ToHashSet();
+        // The places the game has opened that are not outdoors (its caves): what stands in them needs a look too
+        var built = World.LoadAll().SelectMany(w => w.Index.Areas).ToHashSet(StringComparer.OrdinalIgnoreCase);
         for (int id = 0; id < decomp.LandCount; id++)
         {
             var land = decomp.Land(id);
@@ -101,7 +103,7 @@ public sealed class Report
                 }
             foreach (var prop in land.Props) propUse[prop.ModelId] = propUse.GetValueOrDefault(prop.ModelId) + 1;
 
-            var open = AreasOf(id).Where(a => a.MapType is "TOWN_CITY" or "OUTDOORS").ToList();
+            var open = AreasOf(id).Where(a => a.MapType is "TOWN_CITY" or "OUTDOORS" || built.Contains(a.Key)).ToList();
             if (open.Count == 0) continue;
             foreach (var prop in land.Props)
             {
@@ -170,7 +172,7 @@ public sealed class Report
             The original places models on its maps: a model's id and where it stands. The importer keeps each model's
             short name and the box it takes up, never its shape or its art, and the game puts something of its own in
             its place by that name. `Data/WorldModels.cs` is the catalogue: of the {propUse.Count} models Sinnoh's maps use,
-            {outdoors.Count} stand outdoors and are listed here (the rest are furniture, for plan 01 · M11).
+            {outdoors.Count} stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
             - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
               a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its

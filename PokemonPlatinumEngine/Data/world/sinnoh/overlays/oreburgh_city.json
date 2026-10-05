@@ -1,0 +1,106 @@
+{
+  "area": "oreburgh_city",
+  // Until plan 05 writes Oreburgh's own theme (the original's CITY03)
+  "bgmTrack": "sinnoh/jubilife",
+  "trees": "Pine",
+  "architecture": "Brick",
+  "doors": [
+    { "warp": 1, "map": "OreburghPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 2, "map": "OreburghPokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The Gym (plan 01 · M9); the museum and the seven houses have no rooms yet (plan 01 · M11)
+  "locked": [ 0, 3, 4, 5, 6, 7, 8, 9 ],
+  "people": {
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "Hey there, trainer! First time in Oreburgh City?",
+        "The Gym is straight down this road: the big building with the Poké Ball over its door.",
+        "You'll want its Badge. Everybody round here does."
+      ]
+    },
+    "guitarist": {
+      "name": "Guitarist",
+      "dialog": [
+        "A Fossil is a letter from long, long ago, posted in rock.",
+        "The miners dig them up with the coal now and then."
+      ]
+    },
+    "school_kid_f": {
+      "name": "Schoolgirl",
+      "dialog": [
+        "A TM is used up the moment a Pokémon learns its move. An HM can be used again and again.",
+        "So which Pokémon gets which move? I change my mind every day."
+      ]
+    },
+    "camper": {
+      "name": "Camper",
+      "dialog": [
+        "When I run with my Running Shoes on, I feel like the whole street is watching.",
+        "...It probably is. People who look your way sometimes want a battle."
+      ]
+    },
+    "battle_girl_1": {
+      "name": "Girl",
+      "dialog": [
+        "Roark, the Gym Leader, is as often down the mine as in his Gym.",
+        "If the Gym is quiet, you know where to look."
+      ]
+    },
+    "battle_girl_2": {
+      "name": "Girl",
+      "dialog": [
+        "When I feel fit and strong I can't stop smiling.",
+        "And when I'm smiling I feel fit and strong. It works both ways!"
+      ]
+    },
+    "hiker": {
+      "name": "Hiker",
+      "dialog": [
+        "East of here a mountain stands over everything: Mt. Coronet.",
+        "It cuts Sinnoh in two, right down the middle."
+      ]
+    },
+    "pokefan_f": {
+      "name": "Woman",
+      "dialog": [
+        "The whole city is proud of its mine.",
+        "The galleries run out under the sea these days. Under the sea! Imagine it."
+      ]
+    },
+    "worker_1": {
+      "name": "Worker",
+      "dialog": [
+        "These vents let the hot air out of the mine and the fresh air in.",
+        "Every time I look down one I want to shout hello."
+      ]
+    },
+    "worker_2": {
+      "name": "Worker",
+      "dialog": [
+        "That grey heap is slag: the dirt that's left once the coal is sorted out of it."
+      ]
+    },
+    "worker_3": {
+      "name": "Worker",
+      "dialog": [
+        "It's hard work, this. No two ways about it.",
+        "But with a Pokémon working beside you the day goes twice as fast."
+      ]
+    },
+    "worker_4": {
+      "name": "Worker",
+      "dialog": [
+        "Our Gym Leader is young, but he's the mine's safety supervisor as well.",
+        "Knows his rocks, that one, in battle and out of it."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost_west": "Oreburgh City\nThe city of energy, built on coal.",
+    "map_signpost_east": "Oreburgh City\nThe city of energy, built on coal.",
+    "gym_signpost": "Oreburgh City Pokémon Gym\nLeader: Roark\nThe rock-solid leader!",
+    "signboard_oreburgh_mining_museum": "Oreburgh Mining Museum\nCoal, and the people who dig it.",
+    "signboard_oreburgh_mine": "Oreburgh Mine\nMind the Pokémon at work!"
+  }
+}

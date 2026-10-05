@@ -1,0 +1,19 @@
+{
+  "area": "floaroma_meadow",
+  // Until plan 05 writes Floaroma's own theme (the original's TOWN03)
+  "bgmTrack": "sinnoh/sandgem",
+  "trees": "Round",
+  "architecture": "Cottage",
+  // The honey seller's house has no room yet (plan 01 · M11)
+  "locked": [ 2 ],
+  "people": {
+    // In Platinum he sells Honey once Team Galactic has been driven off; the sale is plan 02's (S5)
+    "pokefan_m": {
+      "name": "Honey Man",
+      "dialog": [
+        "The bees of this meadow make the sweetest honey in Sinnoh.",
+        "Spread some on a tree with a sweet smell of its own, and wait. Pokémon can't keep away from it."
+      ]
+    }
+  }
+}

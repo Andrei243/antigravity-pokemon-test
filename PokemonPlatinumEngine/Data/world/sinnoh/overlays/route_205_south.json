@@ -1,0 +1,118 @@
+{
+  "area": "route_205_south",
+  // Until plan 05 writes the theme of Route 205 (the original's ROAD_C)
+  "bgmTrack": "sinnoh/route201",
+  "trees": "Pine",
+  // Eterna Forest (plan 01 · M6); the house on the route has no room yet (plan 01 · M11)
+  "locked": [ 0, 1, 2 ],
+  "people": {
+    "bug_catcher": {
+      "name": "Bug Catcher",
+      "dialog": [
+        "Eterna Forest is full of Poison Pokémon, and I haven't bought a single Antidote.",
+        "Do I go on? Do I go back? ...I've been standing here an hour."
+      ]
+    },
+    "camper_jacob": {
+      "name": "Jacob",
+      "trainer": {
+        "id": "trainer_jacob",
+        "name": "Jacob",
+        "trainerClass": "Camper",
+        "party": [ { "species": "Ponyta", "level": 14, "moves": [ "Ember", "Tackle" ] } ],
+        "prizeMoney": 224,
+        "dialogueBefore": "Camper Jacob: I'm heading into Eterna Forest. How about a battle before I go?",
+        "dialogueAfter": "Camper Jacob: They say the Pokémon in the forest are tougher than this. I'd better get ready."
+      }
+    },
+    "hiker_daniel": {
+      "name": "Daniel",
+      "trainer": {
+        "id": "trainer_daniel",
+        "name": "Daniel",
+        "trainerClass": "Hiker",
+        "party": [ { "species": "Geodude", "level": 10 }, { "species": "Geodude", "level": 11 }, { "species": "Geodude", "level": 12 } ],
+        "prizeMoney": 384,
+        "dialogueBefore": "Hiker Daniel: Not a mountain in sight, and here I am in my boots. Gahaha! Come on, then!",
+        "dialogueAfter": "Hiker Daniel: Now that cleared the head! You find the same Pokémon in the oddest places, you know."
+      }
+    },
+    "aroma_lady_elizabeth": {
+      "name": "Elizabeth",
+      "trainer": {
+        "id": "trainer_elizabeth",
+        "name": "Elizabeth",
+        "trainerClass": "Aroma Lady",
+        "party": [ { "species": "Roselia", "level": 14, "moves": [ "Growth", "Mega Drain" ] } ],
+        "prizeMoney": 448,
+        "dialogueBefore": "Aroma Lady Elizabeth: I adore a Pokémon with a sweet scent. Here, come and smell this one!",
+        "dialogueAfter": "Aroma Lady Elizabeth: Plant enough Berries and you can live in sweet scents all year round."
+      }
+    },
+    "camper_zackary": {
+      "name": "Zackary",
+      "trainer": {
+        "id": "trainer_zackary",
+        "name": "Zackary",
+        "trainerClass": "Camper",
+        "party": [ { "species": "Aipom", "level": 14 } ],
+        "prizeMoney": 224,
+        "dialogueBefore": "Camper Zackary: It's a long road from Floaroma to Eterna City. A battle will shorten it!",
+        "dialogueAfter": "Camper Zackary: Camping out with your Pokémon. Have you any idea how good that is?"
+      }
+    },
+    "picnicker_siena": {
+      "name": "Siena",
+      "trainer": {
+        "id": "trainer_siena",
+        "name": "Siena",
+        "trainerClass": "Picnicker",
+        "party": [ { "species": "Bidoof", "level": 12 }, { "species": "Pachirisu", "level": 12 } ],
+        "prizeMoney": 192,
+        "dialogueBefore": "Picnicker Siena: I wonder which Pokémon live round here. Shall we find out?",
+        "dialogueAfter": "Picnicker Siena: I know lots about Pokémon! Some are male, some are female, and some are neither."
+      }
+    },
+    "hiker_nicholas": {
+      "name": "Nicholas",
+      "trainer": {
+        "id": "trainer_nicholas",
+        "name": "Nicholas",
+        "trainerClass": "Hiker",
+        "party": [ { "species": "Onix", "level": 14 } ],
+        "prizeMoney": 448,
+        "dialogueBefore": "Hiker Nicholas: I've lost my way. Here, of all places...",
+        "dialogueAfter": "Hiker Nicholas: I spent so long lost in the mountains that I turned into a hiker."
+      }
+    },
+    "battle_girl_kelsey": {
+      "name": "Kelsey",
+      "trainer": {
+        "id": "trainer_kelsey",
+        "name": "Kelsey",
+        "trainerClass": "Battle Girl",
+        "party": [ { "species": "Machop", "level": 15 } ],
+        "prizeMoney": 240,
+        "dialogueBefore": "Battle Girl Kelsey: Hi-yah! I'm not holding anything back!",
+        "dialogueAfter": "Battle Girl Kelsey: Hi-yah! You showed me how far I have to go. Thank you!"
+      }
+    },
+    "picnicker_karina": {
+      "name": "Karina",
+      "trainer": {
+        "id": "trainer_karina",
+        "name": "Karina",
+        "trainerClass": "Picnicker",
+        "party": [ { "species": "Piplup", "level": 14, "moves": [ "Bubble", "Peck" ] } ],
+        "prizeMoney": 224,
+        "dialogueBefore": "Picnicker Karina: Hmm, I don't know. Shall I play with you for a bit?",
+        "dialogueAfter": "Picnicker Karina: Stand quite still and listen. Can you hear the Pokémon calling?"
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_floaroma_town": "Route 205\nWest: Floaroma Town",
+    "arrow_signpost_eterna_forest": "Route 205\nNorth: Eterna Forest",
+    "trainer_tips_signpost": "Trainer Tips\nWhatever you pick up goes into the right pocket of your Bag by itself."
+  }
+}

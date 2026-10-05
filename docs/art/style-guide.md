@@ -89,6 +89,29 @@ Height comes from the map (plan 01 · M3) and is drawn true to scale: one tile u
 - **Faces cast shadows; flat ground does not**, as before. Ambient occlusion darkens the foot of a face.
 - **Ledges** face south, west or east. The side ones are the same ridge turned: the grass lip runs along the top of the drop and the dirt face shows as a narrow strip, since the camera sees it edge on.
 
+### Caves
+
+A cave (plan 01 · M5) is the field with rock where the open country has forest: the same pixel grid, the same sprites, the same relief, and no sky.
+
+- **Rock is whatever the cave doesn't open.** Every tile that blocks the way without being water or something built is the cave's rock, and so is the space beyond the walls that nobody can reach. Its top is dark rock: base `66,58,70`, lighter patches `78,70,80`, a rim of `44,38,52` where it meets the floor, cracks `52,46,60`.
+- **Walls stand up from the floor, by the rules of relief.** Rock behind a floor (to its north) or beside it stands two tiles above it and shows the rock face of "Relief" where it looks south, east or west. Rock right in front of a floor (the row south of it) is a lip of three quarters of a tile: the least that is still a step with a face (anything lower would be joined to the floor by a slope, and the floor would rise to meet the rock), and low enough to hide no more than the feet of whoever walks behind it. The rock behind the lip stands the full two tiles, which hides the lip and ends at the floor's edge. A wall one tile thick between two passages is a lip too.
+- **Whatever can't be come to is rock**: the floor is what can be reached from the cave's ways in. The space past the walls, and any pocket of floor the walls close in, is rock like the rest.
+- **The floor** is the cave-floor ground of "Ground" (`112,100,104`); rocks standing on it stand on it, not on a square of earth.
+- **The camera is the original's for caves**: nearer and steeper than the overworld's (63.26° against 59.05°, with a wider lens), so walls hide less. The view stops at the cave's own edge and never shows what lies past its rock.
+- **The light ignores the clock** (`ArtLook.CaveFieldRig`): a warm key from nearly overhead and a little to the south-west `0.60,0.52,0.42` (so a wall's shadow stays on the lip before it and never lies across a passage), cool blue shade from above `0.44,0.47,0.58` and a dim bounce from the floor `0.36,0.33,0.32`, so the floor reads at about three quarters of its daylight value and the walls' faces a little brighter than their tops. The space past the rock is `24,20,26`, the colour the walls' tops fall to. A strong vignette (0.40) closes the picture in; no fog, no cloud shade, no lamps.
+- **No weather comes in**, except fog, which some caves are full of.
+- **A dark cave** (the original's one: Wayward Cave) shows a circle of the floor round the player and nothing else (`Darkness`): the picture falls to `8,6,12` outside a radius of 2.2 tiles, soft over the next 1.2. The circle lies on the ground, so on screen it is wider than it is tall, and it is the one soft edge in the field besides mist. With a Pokémon in the party that knows Flash the cave is lit like any other.
+- **Machines in a mine** are the mine's own (see "The mine", under Props); what the world blocks under their models carries them.
+- **Don't**: light a cave with the time of day, grow lawn or trees in one, or stand a wall taller than the lip in front of a floor.
+
+### Rock outdoors
+
+The world's own heights are for whoever walks: a mountainside nobody can set foot on has none, and by them would lie as flat as the road beside it. So rock that blocks the way follows the rule of a cave's rock (plan 01 · M5).
+
+- **Rock nobody walks on stands up**: two tiles above the nearest ground that isn't such rock, or a lip of three quarters of a tile where open ground lies right behind it (to its north). It shows the rock face of "Relief" to the south, east and west, and its top is the rock ground of "Ground". Rock that is walked on (a mountain path, Oreburgh's approach) stays at its own height.
+- **The mouth of a cave** is a dark hollow at the level of the ground, in the rock that stands round it: `24,20,30` with patches of `30,26,38`, a rim of `12,10,18`. It lies where the original paints its own dark (the importer knows the texture by name): behind the tile that is the way in (Oreburgh Gate, entered from the side), or round it, in which case the way in is as dark as the rest and still walked on (the Ravaged Path, entered northward: a slot in the foot of a rock face).
+- **Don't** raise rock one walks on, grow a tree in a cave's mouth, or leave a mountain as a grey floor.
+
 
 ### Water
 
@@ -198,8 +221,8 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 ### Props
 
 - Small things standing outdoors (street lamps, mailboxes, planters, benches, signposts) are **sprites on upright cards**, drawn seen from a little above like the characters, with a one-texel outline in a darker shade of their own colour. They take the scene's light and cast real shadows.
-- **Fences** are real geometry: a post 4 texels square and 17 tall in the middle of every fenced tile, with two rails toward whichever neighbouring tiles are fenced too, so runs, corners and ends come out by themselves. Wood where the houses are timber, white where they are clapboard.
-- **Street lamps** are 78 texels tall: an iron post on a stepped foot with a four-sided lantern. After dark the lantern glows, a soft halo sits around it and a round pool of light lies at its foot.
+- **Fences** are real geometry: a post 4 texels square and 17 tall in the middle of every fenced tile, with two rails toward whichever neighbouring tiles are fenced too, so runs, corners and ends come out by themselves. Wood where the houses are timber, white where they are clapboard. Where the world fences a band two tiles thick (the edge of Jubilife City's terrace), the two rows run side by side along the band and are not tied to each other tile after tile: a railing, not a ladder.
+- **Street lamps** are 78 texels tall: an iron post on a stepped foot with a four-sided lantern. After dark the lantern glows, a soft halo sits around it and a round pool of light lies at its foot. A lamp stands on the ground round it, never on a square of its own: a single tile of "fence" by itself in a paved street is one of Jubilife City's lamps, which the import can't tell from a post.
 - Towns are furnished through the map data (`Fence`, `LampPost`, `Mailbox`, `Planter`, and `Bench`, which outdoors is a park bench): a fenced front garden with the mailbox at its gate, lamps beside the roads, planters either side of public doors, a bench where there is something to look at. In the imported world the lamps stand where the original's do, and the rest of what stands about comes from its models:
 
 | Prop | Look |
@@ -219,6 +242,15 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Billboard | a board 44 texels wide on two posts, pale with three dark lines |
 | Outcrop | a mass of rock as large as its tiles, in the boulders' three shades with ledges every 10 texels |
 | Mast | a lattice mast as tall as its model, a red light on top that burns all night |
+| Drums | three steel drums, two before and one behind: blue `78,112,168`, rust `170,96,64` and blue, each with a lid seen from above and two dark bands |
+
+**The mine** (Oreburgh's yard and the mine under it; plan 01 · M5). The model of the yard blocks thin pieces of ground between its sheds, and those carry its conveyors (`WorldMapBuilder.Conveyors`):
+
+- **A conveyor** is a steel deck 20 texels wide, its top 68 rows above the ground and its underside 62, clear of whoever walks beneath (a character is 58). The belt on it is dark rubber `58,56,68` between steel edges, with a joint `40,38,50` every 16 texels and a lump of coal `30,30,40` between each pair of joints; belt and coal move four texels a frame, in the four frames of everything that moves in place.
+- **A straight run of three blocked pieces or more** carries a belt along itself, on a **pier** under each tile: a lattice 16 texels square, two steel posts with a rung every 16 rows and braces crossing between, the air between them cut out.
+- **Two pieces facing each other across one open tile** are a **gantry**: two piers and a beam across under the belt. The belt passes between them, across the pair, and runs on over the open ground either way until something blocked takes it up (a shed, a heap of coal, a run that carries it on), if that is within eight tiles. One walks under it.
+- **A piece by itself** is a pier with a steel cap.
+- Steel is `118,128,150`, lit `160,170,190`, shaded `78,86,110`. The sheds are the factory kind of building (ribbed metal).
 
 ### Rooms
 
@@ -492,6 +524,8 @@ A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (p
 - **Leaving the game**: QUIT GAME asks "Quit the game?" with KEEP PLAYING (highlighted), SAVE AND QUIT and QUIT. The title menu has a QUIT entry too, with no question because nothing can be lost there.
 - **Location sign** (`LocationSign`): on arriving outdoors (entering a town or route, stepping out of a building) a slanted plate with the place's name drops in at the top left, holds 2.4 s and lifts away. Its colour bar says what kind of place it is: green for routes, blue for lakes, gold for towns and cities. Rooms have no sign.
 - **Notices** (`Toast`): one line in white on a dark pill at the top centre ("Game saved."), 2.6 s; a notice that replaces another does not slide in again.
+- **Questions in the field** (`ChoiceBox`, `ModernUi.DrawChoices`; plan 02 · S1): a question is a line of the text box like any other, written out at the text speed, with no arrow to go on once it is whole. Its answers then slide in from the right on a panel of their own that stands on the right end of the text box (its right edge the box's, 22 above it): a row 72 high to an answer in 34 Black, the panel as wide as its longest answer and no narrower than 260, the answer under the cursor a Selection-coloured pill with white text as in the start menu. "Yes" is first and under the cursor when it opens; the cancel button answers "No", or picks the last entry of a longer menu, which is where a way out goes. A menu holds six answers at most. The panel slides away as the answer is given and the box goes on.
+- **Story scenes** (plan 02 · S1): a script has the field to itself, and the interface shows nothing of that but its text. Its fade is plain black over the field and under the text box, so a line can be read on a black screen; it takes 0.4 s unless the scene says otherwise. People a scene sends walking keep the trainers' walking pace (4.5 tiles a second, 8 in a hurry) and come to rest in an eighth of a second. A shake of the camera moves the picture up and down by whole texels thirty times a second, six texels at its start and dying away over its length (half a second unless said).
 
 ### Battle panels
 

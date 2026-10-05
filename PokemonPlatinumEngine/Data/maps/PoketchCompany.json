@@ -104,9 +104,9 @@
     {
       "sourceX": 5,
       "sourceY": 8,
-      "targetMap": "JubilifeCity",
-      "targetX": 26,
-      "targetY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 141,
+      "targetY": 752,
       "targetFacing": "Down"
     }
   ],

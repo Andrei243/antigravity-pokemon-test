@@ -149,6 +149,8 @@ public sealed class WorldWriter
                 RangeX = o.MovementRangeX,
                 RangeZ = o.MovementRangeZ,
                 Trainer = o.TrainerType is "TRAINER_TYPE_NONE" or "" ? null : Trim(o.TrainerType, "TRAINER_TYPE_", "").ToLowerInvariant(),
+                // A trainer the data gives no range sees nobody coming: they battle when spoken to
+                Sight = o.TrainerType is "TRAINER_TYPE_NONE" or "" || !o.Script.StartsWith("TRAINER_", StringComparison.Ordinal) ? null : o.Data.Count == 0 ? 0 : o.Data[0],
                 HiddenBy = o.HiddenFlag is "0" or "" ? null : o.HiddenFlag,
                 Script = o.Script
             }).ToList(),

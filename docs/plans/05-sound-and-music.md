@@ -62,6 +62,18 @@ Original compositions for the roles heard first: title screen, new-game introduc
 ### A6 · Region music
 Alongside plan 01 and 02's chapters: the towns and cities (day and night), the other route families (including the snowy routes), caves and dungeons (the mine, Eterna Forest, Mt. Coronet, the lakes, the Galactic buildings, the ruins, the Great Marsh, Victory Road), the gym and gym-leader battle, Team Galactic and Cyrus, the legendaries (the lake guardians, Dialga and Palkia, Giratina), Spear Pillar and the Distortion World, the Elite Four, the Champion, the Hall of Fame, the credits, and the post-game areas.
 
+**Waiting for a theme of their own** (2026-10-05, plan 01 · M5): the south-west is open, and its areas play the nearest of the seven Sinnoh themes there are. Each overlay (`Data/world/sinnoh/overlays/<key>.json`) names the role it waits for in a comment beside its `bgmTrack`, and the area's file gives the original's role by day and by night:
+
+| The original's role | Areas | Plays for now |
+|---|---|---|
+| `ROAD_B` | Routes 203 and 204 | `sinnoh/route202` |
+| `ROAD_C` | Route 205 (south), Valley Windworks, Fuego Ironworks | `sinnoh/route201` |
+| `ROAD_A` | Route 219, Verity Lakefront (and Routes 201 and 202, which have theirs) | `sinnoh/route201` |
+| `CITY03` | Oreburgh City (and its Mart) | `sinnoh/jubilife` |
+| `TOWN03` | Floaroma Town (and its Mart), Floaroma Meadow | `sinnoh/sandgem` |
+| `D_05` | Oreburgh Gate, the Ravaged Path | `sinnoh/lake` |
+| `D_04` | Oreburgh Mine | `sinnoh/lake` |
+
 ### A7 · Ambience and polish
 Rain, wind, snow, waterfalls, the sea, cave drips; positional sounds (panned by screen position); the handheld mode; a mixing pass with loudness targets per bus; the audio part of the options screen.
 

@@ -23,7 +23,7 @@ internal static class SceneTextures
     public static void Warm()
     {
         ownerThread = Environment.CurrentManagedThreadId;
-        _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace;
+        _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace; _ = RockLedgeFace;
         _ = BankFace; _ = RockFace; _ = Waterfall;
         _ = LightPool; _ = LampGlow; _ = WindowLight;
     }
@@ -106,6 +106,7 @@ internal static class SceneTextures
     public static Texture2D Flowers => Get("flowers", NatureArt.Flowers, repeat: false);
 
     public static Texture2D LedgeFace => Get("ledge_face", NatureArt.LedgeFace, repeat: true);
+    public static Texture2D RockLedgeFace => Get("rock_ledge_face", NatureArt.RockLedgeFace, repeat: true);
 
     /// <summary>The face of a step in the ground under grass (style guide, "Relief"): its top rows once, the rest repeating downward.</summary>
     public static Texture2D BankFace => Get("bank_face", NatureArt.BankFace, repeat: true);
@@ -159,6 +160,15 @@ internal static class SceneTextures
             return tex;
         }
     }
+
+    /// <summary>
+    /// The dark of an unlit cave round the player (<see cref="Overworld.Darkness"/>): clear in the middle, the
+    /// dark's own colour past the circle's edge, smooth between. Its edge is <see cref="Overworld.Darkness.Reach"/>
+    /// tiles from its middle.
+    /// </summary>
+    public static Texture2D Darkness => Soft("darkness",
+        new Color(Overworld.Darkness.Colour.R, Overworld.Darkness.Colour.G, Overworld.Darkness.Colour.B, (byte)255),
+        (u, v) => Overworld.Darkness.At(MathF.Sqrt((u - 0.5f) * (u - 0.5f) + (v - 0.5f) * (v - 0.5f)) * 2f * Overworld.Darkness.Reach));
 
     /// <summary>The bubble over someone's head, by what it shows.</summary>
     public static Texture2D Bubble(EmoteBubble kind) => Get("bubble_" + kind, () => LifeArt.Bubble(kind), repeat: false);
