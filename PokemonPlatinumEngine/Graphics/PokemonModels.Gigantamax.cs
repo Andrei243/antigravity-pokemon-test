@@ -6,8 +6,8 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The Gigantamax forms of species of Platinum's Sinnoh Pokédex, hand-built like the species (after plan 03 · D11).
-// Each is our own sculpt after the design, and each carries the red clouds of Gigantamax energy over it.
+// The Gigantamax forms of the hand-built species (after plan 03 · D11), in National Pokédex order. Each is our own
+// sculpt after the design, and each carries the red clouds of Gigantamax energy over it.
 internal static partial class PokemonModels
 {
     private static readonly Color MaxRed = Rgb(214, 44, 86);
@@ -31,6 +31,142 @@ internal static partial class PokemonModels
             float size = puff * (1f + 0.35f * MathF.Sin(i * 1.7f));
             b.Ell(bone, path[i], V(size, size * 0.85f, size), MaxRed, mat: Glow, blend: 0.025f);
         }
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Venusaur
+
+    private static PokeBuilder VenusaurGmax()
+    {
+        var b = new PokeBuilder("Venusaur-Gmax", 0.95f, BodyPlan.Quadruped, V(0, 0.38f, -0.04f)) { Coat = Scales };
+        var teal = Rgb(88, 162, 168);
+        var maroon = Rgb(150, 42, 72);
+        var rim = Rgb(236, 128, 156);
+        var vine = Rgb(52, 112, 66);
+        VenusaurBody(b, teal, Rgb(50, 104, 110), 1.6f);
+        // Its flower has grown over all of it: a dome of great dark red petals edged in pink, hanging nearly to the
+        // ground, the face peering out under the front; leaves under its rim and two long vines whipping out
+        b.Limb(Body, V(0, 0.52f, -0.08f), V(0, 0.68f, -0.08f), 0.14f, 0.12f, Rgb(98, 84, 58), Shell);
+        int flower = b.Part("flower", Body, V(0, 0.68f, -0.08f), PokeRole.Leaf);
+        var center = V(0, 1.02f, -0.08f);
+        b.Limb(flower, V(0, 0.68f, -0.08f), center - V(0, 0.04f, 0), 0.11f, 0.08f, Rgb(98, 84, 58), Shell);
+        for (int i = 0; i < 7; i++)
+        {
+            float a = i * MathF.Tau / 7f + MathF.PI / 7f;
+            var dir = V(MathF.Sin(a), 0, MathF.Cos(a));
+            float front = MathF.Max(0f, dir.Z);
+            var p0 = center + dir * 0.06f;
+            var p1 = center + dir * 0.42f + V(0, -0.04f, 0);
+            var p2 = V(0, 0.74f + 0.06f * front, -0.08f) + dir * 0.72f;
+            var p3 = V(0, 0.42f + 0.2f * front * front, -0.08f) + dir * 0.82f;
+            Frond(b, flower, p0, p1, 0.24f, maroon, V(0, 1f, 0) + dir * 0.2f, 0.12f, Leaf, 0.03f);
+            Frond(b, flower, Vector3.Lerp(p0, p1, 0.8f), p2, 0.28f, maroon, dir + V(0, 1f, 0), 0.1f, Leaf, 0.03f);
+            Frond(b, flower, Vector3.Lerp(p1, p2, 0.75f), p3, 0.26f, maroon, dir + V(0, 0.3f, 0), 0.11f, Leaf, 0.03f);
+            b.PaintEll(flower, Vector3.Lerp(p2, p3, 0.85f), V(0.3f, 0.1f, 0.3f), rim);
+            PalmLeaf(b, flower, V(0, 0.66f, -0.08f) + dir * 0.1f, V(0, 0.62f, -0.08f) + dir * 0.4f, V(0, 0.44f, -0.08f) + dir * 0.62f, 0.12f, Rgb(64, 140, 80), V(0, 1f, 0), 5);
+        }
+        // A pink heart to the flower at the dome's top, the red clouds of Gigantamax energy pouring up from it
+        b.Ell(flower, center + V(0, 0.02f, 0), V(0.12f, 0.05f, 0.12f), rim, mat: Leaf, blend: 0.02f);
+        MaxClouds(b, flower, center + V(0, 0.04f, 0), 0.085f, 0.3f, 0.42f, 1.1f, 0.5f);
+        // Two vines: one curling up beside its face, one trailing out behind
+        int whip = b.Part("vine", Body, V(-0.3f, 0.5f, 0.1f), PokeRole.Tail, 0.6f);
+        b.Tube(whip, Smooth(4, V(-0.3f, 0.5f, 0.1f), V(-0.62f, 0.42f, 0.36f), V(-0.86f, 0.62f, 0.42f), V(-0.88f, 0.86f, 0.26f), V(-0.76f, 0.9f, 0.2f)), 0.035f, 0.02f, vine, Leaf, 0f);
+        int tail = b.Tail(V(0.26f, 0.4f, -0.34f));
+        b.Tube(tail, Smooth(4, V(0.26f, 0.4f, -0.34f), V(0.56f, 0.24f, -0.64f), V(0.9f, 0.1f, -0.7f), V(1.1f, 0.06f, -0.5f)), 0.035f, 0.018f, vine, Leaf, 0f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Charizard
+
+    private static PokeBuilder CharizardGmax()
+    {
+        var b = new PokeBuilder("Charizard-Gmax", 0.95f, BodyPlan.Biped, V(0, 0.52f, 0)) { Coat = Scales };
+        var orange = Rgb(242, 140, 64);
+        var fire = Rgb(244, 102, 40);
+        var heart = Rgb(255, 226, 110);
+        var gold = Rgb(250, 206, 64);
+        // A heavier build, the pale belly marked with golden diamonds
+        var (head, tip) = CharizardBody(b, orange, Rgb(250, 230, 176), Rgb(40, 120, 140), 1.25f, 1.2f);
+        foreach (var (x, y) in new[] { (-0.07f, 0.4f), (0.0f, 0.36f), (0.07f, 0.4f), (-0.035f, 0.46f), (0.035f, 0.46f), (0f, 0.53f) })
+            b.Mark(Body, On(V(0, 0.52f, 0.0125f), V(0.225f, 0.24f, 0.1875f), x, y), V(x * 2f, 0, 1f), 0.024f, 0.03f, gold, MarkShape.Diamond);
+        // Its wings are fire: tongues of flame fanned from its shoulders
+        PokeBuilder.Both(s =>
+        {
+            int wing = b.Wing(s, V(0.12f * s, 0.7f, -0.12f));
+            var shoulder = V(0.12f * s, 0.7f, -0.13f);
+            FlameTongue(b, wing, shoulder, V(0.36f * s, 0.88f, -0.17f), 0.085f, fire, heart);
+            foreach (var (x, y, r) in new[] { (0.34f, 1.12f, 0.06f), (0.54f, 1.08f, 0.068f), (0.7f, 0.94f, 0.07f), (0.74f, 0.74f, 0.066f), (0.64f, 0.56f, 0.058f) })
+            {
+                var tip = V(x * s, y, -0.2f);
+                FlameTongue(b, wing, Vector3.Lerp(shoulder, tip, 0.3f), tip, r, fire, heart);
+            }
+        });
+        // A crown of fire round its horns, red clouds of Gigantamax energy at its claws, and a great flame on its tail
+        foreach (var (x, z, h) in new[] { (-0.07f, -0.02f, 0.16f), (0.07f, -0.02f, 0.16f), (0f, 0.01f, 0.2f), (-0.04f, -0.08f, 0.14f), (0.04f, -0.08f, 0.14f) })
+            FlameTongue(b, head, V(x, 0.99f, z), V(x * 1.6f, 0.99f + h, z - 0.08f), 0.03f, fire, heart);
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Model.Skeleton.Find(s < 0 ? "armL" : "armR");
+            MaxClouds(b, arm, V(0.32f * s, 0.5f, 0.17f), 0.026f, 0.05f, 0.08f, 0.8f, s);
+        });
+        int flame = b.Part("flame", b.Model.Skeleton.Find("tail"), tip, PokeRole.Flame);
+        Flame(b, flame, tip, 1.25f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Blastoise
+
+    private static PokeBuilder BlastoiseGmax()
+    {
+        var b = new PokeBuilder("Blastoise-Gmax", 0.95f, BodyPlan.Biped, V(0, 0.46f, 0)) { Coat = Scales };
+        var blue = Rgb(62, 146, 196);
+        var hull = Rgb(72, 40, 56);
+        var deck = Rgb(118, 56, 80);
+        var trim = Rgb(236, 128, 160);
+        var gun = Rgb(70, 72, 84);
+        BlastoiseBody(b, blue, Rgb(228, 222, 196), Rgb(150, 140, 120));
+        // White marks down its legs and arms
+        PokeBuilder.Both(s =>
+        {
+            b.Mark(b.Model.Skeleton.Find(s < 0 ? "legL" : "legR"), V(0.21f * s, 0.12f, 0.1f), V(0.4f * s, 0, 1f), 0.02f, 0.026f, White, MarkShape.Triangle);
+            b.Mark(b.Model.Skeleton.Find(s < 0 ? "armL" : "armR"), V(0.3f * s, 0.5f, 0.15f), V(0.4f * s, 0, 1f), 0.018f, 0.022f, White, MarkShape.Triangle);
+        });
+        // Its shell has become a warship: a dark hull over its back edged in pink, cannons bristling from its deck
+        b.Box(Body, V(0, 0.62f, -0.16f), V(0.28f, 0.2f, 0.26f), 0.1f, hull, V(-12f, 0, 0), Shell, 0.03f);
+        b.Box(Body, V(0, 0.82f, -0.2f), V(0.2f, 0.07f, 0.18f), 0.05f, deck, V(-12f, 0, 0), Shell, 0.02f);
+        b.Box(Body, V(0, 0.44f, -0.2f), V(0.3f, 0.022f, 0.28f), 0.02f, trim, V(-12f, 0, 0), Shell, 0.01f);
+        foreach (var (at, to) in new[]
+        {
+            (V(-0.1f, 0.88f, -0.12f), V(-0.12f, 0.98f, 0.12f)), (V(0.1f, 0.88f, -0.12f), V(0.12f, 0.98f, 0.12f)),
+            (V(-0.14f, 0.86f, -0.3f), V(-0.32f, 1.0f, -0.36f)), (V(0.14f, 0.86f, -0.3f), V(0.32f, 1.0f, -0.36f)),
+            (V(-0.22f, 0.74f, -0.06f), V(-0.4f, 0.8f, 0.06f)), (V(0.22f, 0.74f, -0.06f), V(0.4f, 0.8f, 0.06f)),
+            (V(0f, 0.9f, -0.26f), V(0f, 1.08f, -0.2f))
+        })
+            Cannon(b, Body, at, to, 0.036f, gun);
+        MaxClouds(b, Body, V(0.04f, 1.04f, -0.24f), 0.07f, 0.22f, 0.32f, 1.1f, 0.4f);
+        int tail = b.Tail(V(0, 0.28f, -0.14f));
+        b.Spike(tail, V(0, 0.26f, -0.16f), V(0, 0.18f, -0.34f), 0.05f, blue);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Gigantamax Butterfree
+
+    private static PokeBuilder ButterfreeGmax()
+    {
+        var b = new PokeBuilder("Butterfree-Gmax", 0.95f, BodyPlan.Bird, V(0, 0.42f, 0)) { Coat = Fur }.Hover();
+        var mint = Rgb(204, 244, 224);
+        var pink = Rgb(242, 150, 182);
+        // Its wings have grown huge and shine: pale green rimmed in pink, dotted with white scales
+        PokeBuilder.Both(s =>
+        {
+            int w = b.Wing(s, V(0.04f * s, 0.46f, -0.03f));
+            FlatWing(b, w, V(0.34f * s, 0.66f, -0.035f), 0.34f, 0.22f, 26f * s, mint, pink, 0.03f);
+            FlatWing(b, w, V(0.22f * s, 0.3f, -0.04f), 0.2f, 0.14f, -44f * s, mint, pink, 0.026f);
+            foreach (var (x, y) in new[] { (0.3f, 0.7f), (0.44f, 0.76f), (0.42f, 0.6f), (0.2f, 0.58f), (0.2f, 0.28f), (0.28f, 0.2f) })
+                b.Mark(w, V(x * s, y, -0.02f), V(0, 0, 1f), 0.026f, 0.026f, White);
+        });
+        int head = ButterfreeBody(b, Rgb(86, 78, 142));
+        MaxClouds(b, head, V(0, 0.62f, 0.0f), 0.026f, 0.06f, 0.1f, 0.9f, 0.6f);
+        return Lift(b);
     }
 
     // ------------------------------------------------------------------ Gigantamax Pikachu

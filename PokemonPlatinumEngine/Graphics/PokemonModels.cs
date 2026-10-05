@@ -546,15 +546,21 @@ internal static partial class PokemonModels
         "Uxie", "Mesprit", "Azelf", "Dialga", "Palkia", "Manaphy", "Tangela", "Tangrowth", "Yanma", "Yanmega",
         "Tropius", "Rhyhorn", "Rhydon", "Rhyperior", "Duskull", "Dusclops", "Dusknoir", "Porygon", "Porygon2", "Porygon-Z",
         "Scyther", "Scizor", "Elekid", "Electabuzz", "Electivire", "Magby", "Magmar", "Magmortar", "Swinub", "Piloswine",
-        "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol"
+        "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol",
+        // Popular species from outside the Sinnoh Pokédex (plan 03, decision 3): Kanto's first, Bulbasaur to Vileplume
+        "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
+        "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill",
+        "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok",
+        "Sandshrew", "Sandslash", "Nidoran♀", "Nidorina", "Nidoqueen", "Nidoran♂", "Nidorino", "Nidoking",
+        "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Oddish", "Gloom", "Vileplume"
     };
 
     /// <summary>
-    /// Forms with a hand-built model of their own: every form of a species of the Sinnoh Pokédex, Platinum's own
-    /// (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters) and
-    /// the later games' (the regional forms, Dialga's and Palkia's Origin Formes, the Megas, the Gigantamax forms,
-    /// Pikachu's caps and costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks,
-    /// the partner Pikachu and Eevee) show its model.
+    /// Forms with a hand-built model of their own: every form of a hand-built species, Platinum's own (Rotom's
+    /// appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters) and the later
+    /// games' (the regional forms, Dialga's and Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps
+    /// and costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner
+    /// Pikachu and Eevee) show its model.
     /// </summary>
     public static readonly string[] Forms =
     {
@@ -563,12 +569,15 @@ internal static partial class PokemonModels
         "Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K",
         "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U",
         "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question",
-        "Raichu-Alola", "Geodude-Alola", "Graveler-Alola", "Golem-Alola", "Ponyta-Galar", "Rapidash-Galar", "Mr. Mime-Galar",
+        "Rattata-Alola", "Raticate-Alola", "Raichu-Alola", "Sandshrew-Alola", "Sandslash-Alola", "Vulpix-Alola", "Ninetales-Alola",
+        "Geodude-Alola", "Graveler-Alola", "Golem-Alola", "Ponyta-Galar", "Rapidash-Galar", "Mr. Mime-Galar",
         "Wooper-Paldea", "Sneasel-Hisui", "Dialga-Origin", "Palkia-Origin",
+        "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Gengar-Mega", "Gyarados-Mega", "Steelix-Mega",
         "Scizor-Mega", "Heracross-Mega", "Houndoom-Mega", "Gardevoir-Mega", "Medicham-Mega", "Altaria-Mega", "Chimecho-Mega",
         "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Staraptor-Mega", "Lopunny-Mega", "Garchomp-Mega", "Garchomp-Mega-Z",
         "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega",
+        "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Eevee-Gmax", "Snorlax-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
@@ -864,6 +873,46 @@ internal static partial class PokemonModels
         "DIALGA" => Dialga(),
         "PALKIA" => Palkia(),
         "MANAPHY" => Manaphy(),
+        // Popular species from outside the Sinnoh Pokédex: Kanto's first (PokemonModels.Kanto1.cs)
+        "BULBASAUR" => Bulbasaur(),
+        "IVYSAUR" => Ivysaur(),
+        "VENUSAUR" => Venusaur(),
+        "CHARMANDER" => Charmander(),
+        "CHARMELEON" => Charmeleon(),
+        "CHARIZARD" => Charizard(),
+        "SQUIRTLE" => Squirtle(),
+        "WARTORTLE" => Wartortle(),
+        "BLASTOISE" => Blastoise(),
+        "CATERPIE" => Caterpie(),
+        "METAPOD" => Metapod(),
+        "BUTTERFREE" => Butterfree(),
+        "WEEDLE" => Weedle(),
+        "KAKUNA" => Kakuna(),
+        "BEEDRILL" => Beedrill(),
+        "PIDGEY" => Pidgey(),
+        "PIDGEOTTO" => Pidgeotto(),
+        "PIDGEOT" => Pidgeot(),
+        "SPEAROW" => Spearow(),
+        "FEAROW" => Fearow(),
+        "SANDSHREW" => Sandshrew(),
+        "SANDSLASH" => Sandslash(),
+        "NIDORAN♀" => NidoranF(),
+        "NIDORINA" => Nidorina(),
+        "NIDOQUEEN" => Nidoqueen(),
+        "NIDORAN♂" => NidoranM(),
+        "NIDORINO" => Nidorino(),
+        "NIDOKING" => Nidoking(),
+        "VULPIX" => Vulpix(),
+        "NINETALES" => Ninetales(),
+        "JIGGLYPUFF" => Jigglypuff(),
+        "WIGGLYTUFF" => Wigglytuff(),
+        "ODDISH" => Oddish(),
+        "GLOOM" => Gloom(),
+        "VILEPLUME" => Vileplume(),
+        "RATTATA" => Rattata(),
+        "RATICATE" => Raticate(),
+        "EKANS" => Ekans(),
+        "ARBOK" => Arbok(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -879,8 +928,14 @@ internal static partial class PokemonModels
         "GASTRODON-EAST" => SeaSlug(true, east: true),
         "CHERRIM-SUNSHINE" => CherrimSunshine(),
         var unown when unown.StartsWith("UNOWN-") && UnownGlyphs.ContainsKey(unown[6..]) => Unown(unown[6..]),
-        // The later games' regional forms of Sinnoh species and Dialga's and Palkia's Origin Formes (PokemonModels.Regional.cs)
+        // The later games' regional forms and Dialga's and Palkia's Origin Formes (PokemonModels.Regional.cs)
+        "RATTATA-ALOLA" => RattataAlola(),
+        "RATICATE-ALOLA" => RaticateAlola(),
         "RAICHU-ALOLA" => RaichuAlola(),
+        "SANDSHREW-ALOLA" => SandshrewAlola(),
+        "SANDSLASH-ALOLA" => SandslashAlola(),
+        "VULPIX-ALOLA" => VulpixAlola(),
+        "NINETALES-ALOLA" => NinetalesAlola(),
         "GEODUDE-ALOLA" => GeodudeAlola(),
         "GRAVELER-ALOLA" => GravelerAlola(),
         "GOLEM-ALOLA" => GolemAlola(),
@@ -891,7 +946,13 @@ internal static partial class PokemonModels
         "SNEASEL-HISUI" => SneaselHisui(),
         "DIALGA-ORIGIN" => DialgaOrigin(),
         "PALKIA-ORIGIN" => PalkiaOrigin(),
-        // The Mega Evolutions of Sinnoh species (PokemonModels.Megas.cs)
+        // The Mega Evolutions (PokemonModels.Megas.cs)
+        "VENUSAUR-MEGA" => VenusaurMega(),
+        "CHARIZARD-MEGA-X" => CharizardMegaX(),
+        "CHARIZARD-MEGA-Y" => CharizardMegaY(),
+        "BLASTOISE-MEGA" => BlastoiseMega(),
+        "BEEDRILL-MEGA" => BeedrillMega(),
+        "PIDGEOT-MEGA" => PidgeotMega(),
         "RAICHU-MEGA-X" => RaichuMegaX(),
         "RAICHU-MEGA-Y" => RaichuMegaY(),
         "CLEFABLE-MEGA" => ClefableMega(),
@@ -919,6 +980,10 @@ internal static partial class PokemonModels
         "GALLADE-MEGA" => GalladeMega(),
         "FROSLASS-MEGA" => FroslassMega(),
         // Gigantamax (PokemonModels.Gigantamax.cs), and Pikachu's caps and costumes and the spiky-eared Pichu (PokemonModels.Pikachu.cs)
+        "VENUSAUR-GMAX" => VenusaurGmax(),
+        "CHARIZARD-GMAX" => CharizardGmax(),
+        "BLASTOISE-GMAX" => BlastoiseGmax(),
+        "BUTTERFREE-GMAX" => ButterfreeGmax(),
         "PIKACHU-GMAX" => PikachuGmax(),
         "MACHAMP-GMAX" => MachampGmax(),
         "GENGAR-GMAX" => GengarGmax(),

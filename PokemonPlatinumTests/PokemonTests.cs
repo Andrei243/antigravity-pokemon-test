@@ -598,8 +598,9 @@ public class PokemonTests
     [Fact]
     public void TestEverySpeciesHasA3DModel()
     {
-        // The species of the Sinnoh Pokédex have hand-built models (plan 04 · G7 and plan 03 · D6–D9); the rest are
-        // generated (plan 03 · D5). This list may only grow.
+        // The species of the Sinnoh Pokédex have hand-built models (plan 04 · G7 and plan 03 · D6–D9), and so, one batch
+        // at a time, do the popular ones from outside it (plan 03, decision 3); the rest are generated (plan 03 · D5).
+        // This list may only grow.
         string[] handBuilt =
         {
             "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
@@ -628,7 +629,12 @@ public class PokemonTests
             "Uxie", "Mesprit", "Azelf", "Dialga", "Palkia", "Manaphy", "Tangela", "Tangrowth", "Yanma", "Yanmega",
             "Tropius", "Rhyhorn", "Rhydon", "Rhyperior", "Duskull", "Dusclops", "Dusknoir", "Porygon", "Porygon2", "Porygon-Z",
             "Scyther", "Scizor", "Elekid", "Electabuzz", "Electivire", "Magby", "Magmar", "Magmortar", "Swinub", "Piloswine",
-            "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol"
+            "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol",
+            // Popular species from outside the Sinnoh Pokédex (plan 03, decision 3): Kanto's first, Bulbasaur to Vileplume
+            "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
+            "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata",
+            "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Sandshrew", "Sandslash", "Nidoran♀", "Nidorina", "Nidoqueen",
+            "Nidoran♂", "Nidorino", "Nidoking", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Oddish", "Gloom", "Vileplume"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
