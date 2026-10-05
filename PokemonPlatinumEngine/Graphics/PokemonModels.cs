@@ -549,7 +549,24 @@ internal static partial class PokemonModels
         "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol"
     };
 
-    public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
+    /// <summary>
+    /// Forms with a hand-built model of their own: the forms Platinum itself gives species of its Sinnoh Pokédex
+    /// (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters).
+    /// A hand-built species' other forms show its model until they have theirs.
+    /// </summary>
+    public static readonly string[] Forms =
+    {
+        "Rotom-Heat", "Rotom-Wash", "Rotom-Frost", "Rotom-Fan", "Rotom-Mow", "Giratina-Origin",
+        "Burmy-Sandy", "Burmy-Trash", "Wormadam-Sandy", "Wormadam-Trash", "Shellos-East", "Gastrodon-East", "Cherrim-Sunshine",
+        "Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K",
+        "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U",
+        "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question"
+    };
+
+    /// <summary>Whether a species or one of its forms has a hand-built model (anything else is generated).</summary>
+    public static bool HasModel(string species) =>
+        Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase)) ||
+        Array.Exists(Forms, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>
     /// The species start-up meshes and keeps, with their menu sprites (the hand-built models of plan 04 · G7 and
@@ -832,6 +849,21 @@ internal static partial class PokemonModels
         "DIALGA" => Dialga(),
         "PALKIA" => Palkia(),
         "MANAPHY" => Manaphy(),
+        // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
+        "ROTOM-HEAT" => RotomHeat(),
+        "ROTOM-WASH" => RotomWash(),
+        "ROTOM-FROST" => RotomFrost(),
+        "ROTOM-FAN" => RotomFan(),
+        "ROTOM-MOW" => RotomMow(),
+        "GIRATINA-ORIGIN" => GiratinaOrigin(),
+        "BURMY-SANDY" => Burmy(Cloak.Sandy),
+        "BURMY-TRASH" => Burmy(Cloak.Trash),
+        "WORMADAM-SANDY" => Wormadam(Cloak.Sandy),
+        "WORMADAM-TRASH" => Wormadam(Cloak.Trash),
+        "SHELLOS-EAST" => SeaSlug(false, east: true),
+        "GASTRODON-EAST" => SeaSlug(true, east: true),
+        "CHERRIM-SUNSHINE" => CherrimSunshine(),
+        var unown when unown.StartsWith("UNOWN-") && UnownGlyphs.ContainsKey(unown[6..]) => Unown(unown[6..]),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)
         _ when PokemonDatabase.SpeciesOfForm(species) is { } owner && HasModel(owner.Name) => Create(owner.Name),
         // Every other species and form is generated from its data (plan 03 · D5); a name that is neither gets the stand-in

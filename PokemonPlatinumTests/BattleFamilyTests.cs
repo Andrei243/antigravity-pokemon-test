@@ -339,7 +339,7 @@ public class BattleFamilyTests
         Assert.Equal(150 - 45, machamp.CurrentHP);
         machamp.CurrentHP = 75;
         Turn(Wild(Mon("Blastoise", 50, "Brine"), machamp));
-        Assert.Equal(75 - 88, Math.Max(75 - 88, machamp.CurrentHP - machamp.CurrentHP), 0);
+        Assert.Equal(0, machamp.CurrentHP);
         Assert.True(machamp.IsFainted);
 
         // Payback, 50: 115 × 50 × 22 / 105 / 50 = 24, + 2 = 26 before the target's action, 100 power after it: 48, + 2 = 50.
