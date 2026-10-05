@@ -45,14 +45,27 @@ Known differences that join the `Ruleset` in the session that writes their rule,
 | Species' types and base stats | Platinum's (Clefairy is Normal) | the newest games' (Fairy; the stat raises of Generations 6 and 7) | plan 03 · D11, then R19 |
 | Abilities that were reworked (Sturdy and the like) | as in Platinum | as in the newest games | R7, R27 |
 
-Where today's engine already differs from Platinum's own code, found while writing R1's test vectors against the decompilation (for R2 and R3 to put right; the default rules must not change under the graphics session's comparison shots, so R1 left them):
+### Where the engine stands against Platinum's own code
+
+R1 found places where the engine differed from the decompilation and left them, because the default rules were not to change under the graphics session's comparison shots. R2 (2026-10-05) rewrote the battle's arithmetic from the original's functions. These are the only changes the default rules have had since R1, and each is what Platinum does:
+
+- **Catching** is the original's: whole numbers, two whole square roots (`BattleScript_CalcCatchShakes`), four rolls against the result, and each ball's own strength (Net, Dive, Nest, Repeat, Timer, Dusk and Quick Balls work; the battle is told whether it is night, on water or in a cave and which species have been caught). A Master Ball and a ball that can't fail make no rolls.
+- **EXP** is the original's (`BtlCmd_CalcExpGain`): base × level / 7, shared among the Pokémon that fought and still stand; with an Exp. Share in the party half goes to those who fought and half to the holders; a Lucky Egg and a trainer's Pokémon each add half, one after the other, rounded down each time. The bonus for a traded Pokémon joins with trading (R12, plan 07 · O5).
+- **Bonuses are whole-number steps**: an ability's or an item's bonus is applied by itself, in hundredths, and rounded down before the next, in one of the formula's places (to the move's power, to the stat, before the roll, to the finished damage). A Life Orb's comes before the roll, as in the original. Which place each of the others stands in has not been checked one by one: Thick Fat, for one, halves the finished damage where the original halves the move's power. R7 and R8 give each its place.
+- **Running** follows the original (`Battler_CanEscape`): a Pokémon no slower than the foe always gets away; a slower one by its Speed × 128 / the foe's Speed + 30 for each earlier try, kept in one byte, against a roll of 256. Before R2 running always worked. Smoke Ball and Run Away always get away.
+- **The turn's order** is the original's (`BattleSystem_CompareBattlerSpeed`): running first, then items and switches in the order of the places, then moves by priority, Quick Claw, Speed and a coin. Every place draws a number each turn, and a Quick Claw works when its holder's leaves nothing over five.
+- **Accuracy** is the original's table of stages, then the user's ability, the target's ability, the target's item and the user's item, each rounded down in turn.
+- **Struggle** has no type and can be a critical hit (before R2 it couldn't).
+
+Still different, each waiting for the session whose rule it is:
 
 - A sleep is drawn as 1 to 4 and counted down before it is checked, so it lasts 0 to 3 turns. R3 takes the original's number from its battle scripts.
-- The catch formula works in floating point with a fourth root; the original works in whole numbers with two integer square roots.
-- Abilities' and items' multipliers are multiplied together as fractions and applied once; the original applies each in its own place (to the power, to the stat, to the damage) and rounds down each time.
-- EXP is base × level / 7 with the trainer bonus and nothing else (no Lucky Egg, traded or international bonuses).
+- A target knocked out by a move goes down before the attacker's recoil is told. That is the order the engine has always had; R3 and R4 check it, with everything else that follows a hit, against the effect scripts.
+- The opponents choose "what looks best" (`TrainerAi`), with a little chance. R9 writes Platinum's own AI.
 
-What matches, and is held by `BattleScenarioTests`: the base damage formula and its order (stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, + 2, the critical multiplier, the roll in sixteen steps of 85 to 100 hundredths, then × 1.5 for the user's own type, then the target's types), stat stages, and what a critical hit ignores.
+What matches, and is held by `FormulaTests`, `BattleScenarioTests` and `BattleCoreTests`: the damage formula and its order (stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, + 2, the critical multiplier, a Life Orb, the roll taking 0 to 15 hundredths off, then × 1.5 for the user's own type, then each of the target's types, and never less than 1 for a hit that lands), stat stages, what a critical hit ignores, and everything in the list above.
+
+**A battle's chance is Platinum's too.** Every battle rolls on Platinum's own generator (`Battle/Sim/BattleRandom.cs`), so a seed and the choices made are the whole battle: `BattleCore.Record` is that pair and `Replay` plays it again to the same log. Our own choice, where the original has nothing to follow: the seed of a battle in the game is drawn from the game's dice as the battle begins.
 
 ### The later mechanics in the story
 

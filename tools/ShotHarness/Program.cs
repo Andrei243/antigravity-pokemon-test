@@ -692,8 +692,7 @@ if (Run("battle"))
             ? new PokemonPlatinumEngine.Battle.Sim.BattleRandom(4).Force(PokemonPlatinumEngine.Battle.Sim.RollKind.CatchShake, 0, 0, 65535)
             : null);
         ToMainMenu(b);
-        var use = new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get(ball), User = b.PlayerSlots[0], Actor = b.PlayerPokemon };
-        typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!.Invoke(b, new object[] { new List<BattleAction> { use } });
+        b.UseItem(ItemDatabase.Get(ball)!);
         Confirm(b);
         // The player runs in and throws (0.6 s), the ball flies (0.8 s), opens (0.55 s), drops (0.3 s), then wobbles
         Skip(0.45); Shot($"50c_{tag}_ball_throw");
@@ -917,8 +916,7 @@ if (Run("demo"))
     var c = new BattleEngine(party, wild, inventory, pokedex, null, new List<Pokemon>());
     Set("battle", c);
     Skip(2.2); Confirm(c); Skip(1.2); Confirm(c); Skip(0.6);
-    var use = new BattleAction { Type = ActionType.UseItem, IsPlayer = true, Item = ItemDatabase.Get("Poké Ball"), User = c.PlayerSlots[0], Actor = c.PlayerPokemon };
-    typeof(BattleEngine).GetMethod("ExecuteTurn", Private)!.Invoke(c, new object[] { new List<BattleAction> { use } });
+    c.UseItem(ItemDatabase.Get("Poké Ball")!);
     Confirm(c);
     Skip(0.2); Shot("d30_ball_run_in");
     Skip(0.25); Shot("d31_ball_throw");

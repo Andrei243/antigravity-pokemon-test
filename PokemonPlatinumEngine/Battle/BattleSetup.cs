@@ -42,6 +42,12 @@ public sealed class BattleSetup
     /// <summary>The rules the battle is fought by; left out, those of the game in progress.</summary>
     public Data.Ruleset? Rules { get; init; }
 
+    /// <summary>
+    /// What the rules ask of the world outside the battle (water or a cave underfoot, night, which species the
+    /// player has caught); left out, a battle on land by day, with the Pokédex answering for what was caught.
+    /// </summary>
+    public Sim.BattleConditions? Conditions { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 }

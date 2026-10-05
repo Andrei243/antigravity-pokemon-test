@@ -144,7 +144,7 @@ public class Pokemon
 
     /// <summary>What it has done toward an evolution that counts something: steps walked, uses of a move, foes knocked out
     /// (the keys are <see cref="Evolution"/>'s).</summary>
-    public Dictionary<string, int> EvolutionProgress { get; } = new();
+    public Dictionary<string, int> EvolutionProgress { get; private set; } = new();
 
     // Stats
     public int CurrentHP { get; set; }
@@ -175,7 +175,7 @@ public class Pokemon
     public StatusCondition Status { get; set; } = StatusCondition.None;
     public int SleepTurns { get; set; } = 0;
     public int ToxicCounter { get; set; } = 0;
-    public Dictionary<StatType, int> StatStages { get; } = new();
+    public Dictionary<StatType, int> StatStages { get; private set; } = new();
 
     // Progression
     public int CurrentExp { get; set; }
@@ -194,7 +194,7 @@ public class Pokemon
         }
     }
 
-    public List<Move> Moves { get; } = new();
+    public List<Move> Moves { get; private set; } = new();
 
     public string DisplayName => string.IsNullOrWhiteSpace(Nickname) ? Species.Name : Nickname;
     public bool IsFainted => CurrentHP <= 0 || Status == StatusCondition.Faint;
@@ -525,6 +525,79 @@ public class Pokemon
         SleepTurns = 0;
         ToxicCounter = 0;
         ResetStatStages();
+    }
+
+    /// <summary>
+    /// A copy that shares nothing that can change: its moves, stat stages and counters are its own. A battle's
+    /// rules work on copies (<see cref="Battle.Sim.BattleCore"/>), and what they did reaches the Pokémon itself as
+    /// the battle is shown.
+    /// </summary>
+    public Pokemon Clone()
+    {
+        var copy = (Pokemon)MemberwiseClone();
+        copy.Moves = Moves.Select(m => new Move(m.Data, m.CurrentPP)).ToList();
+        copy.StatStages = new Dictionary<StatType, int>(StatStages);
+        copy.EvolutionProgress = new Dictionary<string, int>(EvolutionProgress);
+        return copy;
+    }
+
+    /// <summary>
+    /// Takes on everything of another Pokémon that can change, so that the two are the same again. A move it
+    /// already has in the same place stays the same object (only its PP is taken), so whoever holds on to one of
+    /// its moves still holds the right one. <c>PokemonTests</c> holds this to every property the class has.
+    /// </summary>
+    public void CopyStateFrom(Pokemon other)
+    {
+        Species = other.Species;
+        Nickname = other.Nickname;
+        Level = other.Level;
+        Gender = other.Gender;
+        Nature = other.Nature;
+        IsShiny = other.IsShiny;
+        AbilityName = other.AbilityName;
+        HeldItem = other.HeldItem;
+        Friendship = other.Friendship;
+        Beauty = other.Beauty;
+        Personality = other.Personality;
+        Ball = other.Ball;
+
+        CurrentHP = other.CurrentHP;
+        MaxHP = other.MaxHP;
+        Attack = other.Attack;
+        Defense = other.Defense;
+        SpAttack = other.SpAttack;
+        SpDefense = other.SpDefense;
+        Speed = other.Speed;
+        IvHP = other.IvHP;
+        IvAttack = other.IvAttack;
+        IvDefense = other.IvDefense;
+        IvSpAttack = other.IvSpAttack;
+        IvSpDefense = other.IvSpDefense;
+        IvSpeed = other.IvSpeed;
+        EvHP = other.EvHP;
+        EvAttack = other.EvAttack;
+        EvDefense = other.EvDefense;
+        EvSpAttack = other.EvSpAttack;
+        EvSpDefense = other.EvSpDefense;
+        EvSpeed = other.EvSpeed;
+
+        Status = other.Status;
+        SleepTurns = other.SleepTurns;
+        ToxicCounter = other.ToxicCounter;
+        CurrentExp = other.CurrentExp;
+
+        StatStages.Clear();
+        foreach (var (stat, stage) in other.StatStages) StatStages[stat] = stage;
+        EvolutionProgress.Clear();
+        foreach (var (key, count) in other.EvolutionProgress) EvolutionProgress[key] = count;
+
+        for (int i = 0; i < other.Moves.Count; i++)
+        {
+            if (i < Moves.Count && Moves[i].Data == other.Moves[i].Data) Moves[i].CurrentPP = other.Moves[i].CurrentPP;
+            else if (i < Moves.Count) Moves[i] = new Move(other.Moves[i].Data, other.Moves[i].CurrentPP);
+            else Moves.Add(new Move(other.Moves[i].Data, other.Moves[i].CurrentPP));
+        }
+        if (Moves.Count > other.Moves.Count) Moves.RemoveRange(other.Moves.Count, Moves.Count - other.Moves.Count);
     }
 }
 

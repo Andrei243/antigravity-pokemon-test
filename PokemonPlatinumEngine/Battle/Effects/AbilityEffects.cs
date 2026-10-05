@@ -70,7 +70,7 @@ internal sealed class StatGuard(StatType? only = null) : BattleEffect
 /// <summary>An ability with no effect beyond a flag the engine reads.</summary>
 internal sealed class FlagEffect : BattleEffect
 {
-    public bool NoCrits, NoRecoil, NoConfusion, NoFlinch, BreakAbilities, Unaware, Adaptability;
+    public bool NoCrits, NoRecoil, NoConfusion, NoFlinch, BreakAbilities, Unaware, Adaptability, Escapes;
     public int CritBonus, SideEffectMultiplier = 1, PpPressure, SleepRate = 1;
     public float Accuracy = 1f;
 
@@ -79,6 +79,7 @@ internal sealed class FlagEffect : BattleEffect
     public override bool BlocksConfusion => NoConfusion;
     public override bool BlocksFlinch => NoFlinch;
     public override bool IgnoresTargetAbility => BreakAbilities;
+    public override bool AlwaysEscapes => Escapes;
     public override bool IgnoresOthersStatStages => Unaware;
     public override float? StabOverride => Adaptability ? 2f : null;
     public override int CritStageBonus => CritBonus;

@@ -182,11 +182,12 @@ public class RulesetTests
             battle.PlayerSlots[0].ConfusionTurns = 3;
             return Turn(battle).Contains("It hurt itself in its confusion!");
         }
-        // The die's last face is the one that hurts
-        Assert.False(HurtItself(Ruleset.Platinum, 0));
-        Assert.True(HurtItself(Ruleset.Platinum, 1));
+        // The die's first face is the one that hurts
+        Assert.True(HurtItself(Ruleset.Platinum, 0));
+        Assert.False(HurtItself(Ruleset.Platinum, 1));
+        Assert.True(HurtItself(Ruleset.Modern, 0));
         Assert.False(HurtItself(Ruleset.Modern, 1));
-        Assert.True(HurtItself(Ruleset.Modern, 2));
+        Assert.False(HurtItself(Ruleset.Modern, 2));
     }
 
     [Fact]

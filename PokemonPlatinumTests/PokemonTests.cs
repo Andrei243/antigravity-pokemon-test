@@ -335,7 +335,13 @@ public class PokemonTests
     {
         var party = new Party();
         party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
-        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Starly")!, 3), new Inventory(), new Pokedex());
+        // Getting away from something faster is a roll (FormulaTests has its numbers); here it comes out well
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = new Inventory(), Pokedex = new Pokedex(),
+            WildPokemon = { new Pokemon(PokemonDatabase.Get("Starly")!, 3) },
+            Random = new PokemonPlatinumEngine.Battle.Sim.BattleRandom(1).Force(PokemonPlatinumEngine.Battle.Sim.RollKind.Escape, 0)
+        });
         SkipMessages(battle);
         Assert.Equal(BattleMenuState.Main, battle.HUD.MenuState);
 

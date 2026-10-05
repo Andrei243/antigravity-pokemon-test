@@ -31,6 +31,9 @@ public sealed class Battler
 
     public bool IsPlayerSide => Side == BattleSide.Player;
 
+    /// <summary>Where it stands, as the battle's log names places.</summary>
+    public Sim.Place Place => new(Side, Slot);
+
     /// <summary>A Pokémon is standing here and can still fight.</summary>
     public bool IsActive => Pokemon != null && !Pokemon.IsFainted;
 
@@ -67,6 +70,22 @@ public sealed class Battler
         FlashFire = false;
         MovedThisTurn = false;
         TookCriticalHit = false;
+    }
+
+    /// <summary>
+    /// Takes on another battler's passing conditions. The two stand for the same place with different copies of
+    /// the Pokémon (the battle's own and the one on screen), so a Choice item's lock is found again by the move's
+    /// position.
+    /// </summary>
+    internal void CopyVolatileFrom(Battler other)
+    {
+        ConfusionTurns = other.ConfusionTurns;
+        Flinched = other.Flinched;
+        FlashFire = other.FlashFire;
+        MovedThisTurn = other.MovedThisTurn;
+        TookCriticalHit = other.TookCriticalHit;
+        int locked = other.ChoiceLock == null || other.Pokemon == null ? -1 : other.Pokemon.Moves.IndexOf(other.ChoiceLock);
+        ChoiceLock = locked >= 0 && Pokemon != null && locked < Pokemon.Moves.Count ? Pokemon.Moves[locked] : null;
     }
 
     /// <summary>The types the Pokémon has right now.</summary>

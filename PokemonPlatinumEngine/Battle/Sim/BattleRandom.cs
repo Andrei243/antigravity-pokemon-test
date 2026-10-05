@@ -12,26 +12,28 @@ public enum RollKind
     Other,
     /// <summary>Whether a hit is critical, out of the stage's odds: 0 is a critical hit.</summary>
     Critical,
-    /// <summary>The spread of damage in sixteen steps: 0 is the weakest hit (85%), 15 the strongest (100%).</summary>
+    /// <summary>What a hit loses to chance, in sixteen steps: 0 is the strongest hit (all of it), 15 the weakest (85%).</summary>
     Damage,
     /// <summary>Out of 100: the move hits when the roll is below its chance.</summary>
     Accuracy,
     /// <summary>Out of 100: a move's side effect happens when the roll is below its chance.</summary>
     SideEffect,
-    /// <summary>Out of 100: a paralysed Pokémon can't move when the roll is below 25.</summary>
+    /// <summary>Out of 4: a paralysed Pokémon can't move on a 0.</summary>
     FullParalysis,
-    /// <summary>Out of 100: a frozen Pokémon thaws when the roll is below 20.</summary>
+    /// <summary>Out of 5: a frozen Pokémon thaws on a 0.</summary>
     Thaw,
-    /// <summary>Out of the rules' odds: a confused Pokémon hurts itself on the last face.</summary>
+    /// <summary>Out of the rules' odds: a confused Pokémon hurts itself on a 0.</summary>
     ConfusionSelfHit,
     /// <summary>How long a sleep lasts, from the shortest (0) up.</summary>
     SleepTurns,
     /// <summary>How long confusion lasts, from the shortest (0) up.</summary>
     ConfusionTurns,
-    /// <summary>Who goes first among Pokémon of equal Speed: the lower roll.</summary>
+    /// <summary>The number each place on the field draws at the start of a turn, out of 65,536: a Quick Claw works on one in five of them.</summary>
+    Speed,
+    /// <summary>The coin between two Pokémon of equal Speed: on a 1 the second goes first.</summary>
     SpeedTie,
-    /// <summary>Out of 100: a Quick Claw works when the roll is below 20.</summary>
-    QuickClaw,
+    /// <summary>Out of 256: a Pokémon slower than the foe gets away when the roll is below its escape number.</summary>
+    Escape,
     /// <summary>Which foe a move that picks its own target goes for.</summary>
     Target,
     /// <summary>Out of 65,536: the ball holds through a shake when the roll is below the shake rate.</summary>
@@ -53,7 +55,7 @@ public enum RollKind
 /// whole state is one number (<see cref="State"/>), which is what a saved or resumed battle keeps.
 /// <para>
 /// It is a <see cref="Random"/>, so everything that takes one can be handed it (<see cref="BattleSetup.Random"/>).
-/// The game's own battles still roll with <see cref="Core.Dice"/> until plan 06 · R2 moves them onto the new core.
+/// A battle that is given no generator makes one of these, seeded from <see cref="Core.Dice"/>.
 /// </para>
 /// </summary>
 public sealed class BattleRandom : Random
@@ -108,7 +110,7 @@ public sealed class BattleRandom : Random
     /// <summary>
     /// Fixes the rolls of a kind: they come out as these values in turn, and the last one for every roll after
     /// it. A value past the die's last face counts as its last face. For tests: "no critical hits and the
-    /// strongest hit" is <c>Force(RollKind.Critical, 1).Force(RollKind.Damage, 15)</c>.
+    /// strongest hit" is <c>Force(RollKind.Critical, 1).Force(RollKind.Damage, 0)</c>.
     /// </summary>
     public BattleRandom Force(RollKind kind, params int[] values)
     {
@@ -176,9 +178,8 @@ public sealed class BattleRandom : Random
 }
 
 /// <summary>
-/// Rolls by kind on any generator. A <see cref="BattleRandom"/> can have them forced; any other
-/// <see cref="Random"/> draws exactly what it drew before the rolls had names, so a battle seeded through
-/// <see cref="Core.Dice"/> plays out as it always did.
+/// Rolls by kind on any generator, so a battle can be handed a plain <see cref="Random"/> too. Only a
+/// <see cref="BattleRandom"/> can have a kind of roll fixed, and only it replays the same everywhere.
 /// </summary>
 public static class Rolls
 {

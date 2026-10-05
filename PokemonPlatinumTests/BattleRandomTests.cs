@@ -99,8 +99,8 @@ public class BattleRandomTests
     [Fact]
     public void RollsByKindDrawWhatTheUnnamedRollsDrew()
     {
-        // The battles the game makes still roll with a System.Random. Giving the rolls their kinds must not
-        // change a single number of theirs, or every seeded battle (the harness's pictures) would play out anew.
+        // A battle can still be handed a plain System.Random (older tests do): a roll by kind then draws exactly
+        // what the same call without a kind would.
         var named = new Random(31337);
         var plain = new Random(31337);
         for (int i = 0; i < 500; i++)

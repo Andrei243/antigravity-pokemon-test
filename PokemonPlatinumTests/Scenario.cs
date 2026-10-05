@@ -36,7 +36,7 @@ internal static class Scenario
     /// hit of the range, and every move that can miss hitting. A test fixes or frees what it is about.
     /// </summary>
     public static BattleRandom Steady(uint seed = 1) =>
-        new BattleRandom(seed).Force(RollKind.Critical, 1).Force(RollKind.Damage, 15).Force(RollKind.Accuracy, 0);
+        new BattleRandom(seed).Force(RollKind.Critical, 1).Force(RollKind.Damage, 0).Force(RollKind.Accuracy, 0);
 
     /// <summary>A wild battle between two Pokémon, played up to the first choice of a move.</summary>
     public static BattleEngine Battle(Pokemon mine, Pokemon foe, BattleRandom? rolls = null, Ruleset? rules = null)

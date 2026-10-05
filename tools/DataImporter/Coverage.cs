@@ -70,8 +70,13 @@ public static class Coverage
         "hpRestored", "healSleep", "healPoison", "healBurn", "healFreeze", "healParalysis", "healConfusion", "revive", "levelUp"
     };
 
-    // Balls that catch like their Platinum selves: the rest have a condition or an aftermath not written yet
-    private static readonly HashSet<string> PlainBalls = new() { "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Premier Ball", "Cherish Ball" };
+    // Balls that catch as they do in Platinum. The rest have an aftermath not written yet (a Luxury Ball's
+    // friendship, a Heal Ball's cure) or belong to a place of their own (the Great Marsh, Pal Park)
+    private static readonly HashSet<string> PlainBalls = new()
+    {
+        "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Premier Ball", "Cherish Ball",
+        "Net Ball", "Dive Ball", "Nest Ball", "Repeat Ball", "Timer Ball", "Dusk Ball", "Quick Ball"
+    };
 
     /// <summary>
     /// How much of an item the engine runs, judged on its two jobs: what using it does (from the bag and in
@@ -208,8 +213,8 @@ public static class Coverage
             Line($"- {group.Key}: {string.Join(", ", group.Select(i => i.Name))}");
         Line();
         Line("What using an item does runs for the effect types the bag and battle know (`HealHP`, `HealStatus`, `Revive`, `FullRestore`, `LevelUp`, " +
-             "`CatchPokemon`) and for the items species evolve with; in battle only HP is restored so far. Balls with a condition (Net, Dusk, Timer and " +
-             "the like) catch like a Poké Ball for now.");
+             "`CatchPokemon`) and for the items species evolve with; in battle only HP is restored so far. Balls catch by Platinum's own formula, " +
+             "the ones with a condition (Net, Dusk, Timer and the like) included.");
         Line();
 
         Line("## The later mechanics' data");

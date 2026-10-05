@@ -13,7 +13,7 @@ namespace PokemonPlatinumTests;
 /// depends on fixed. The numbers are worked out by hand from Platinum's own code (the decompilation's
 /// <c>BattleSystem_CalcMoveDamage</c>, <c>CalcDamageVariance</c>, <c>CalcCriticalMulti</c> and
 /// <c>ApplyTypeChart</c>): the stat times the power times (2 × level / 5 + 2), over the defending stat, over 50,
-/// plus 2; then the critical multiplier; then the roll, 85 to 100 hundredths; then × 15 / 10 for a move of the
+/// plus 2; then the critical multiplier; then the roll, 100 hundredths down to 85; then × 15 / 10 for a move of the
 /// user's own type and × 20 / 10 or × 5 / 10 for each type of the target. Every division rounds down.
 /// </summary>
 public class BattleScenarioTests
@@ -34,10 +34,10 @@ public class BattleScenarioTests
         Assert.Equal(105, blastoise.Defense);
         Assert.Equal(47, Damage(machamp, blastoise, "Strength"));
         // The weakest roll: 47 × 85 / 100 = 39
-        Assert.Equal(39, Damage(machamp, blastoise, "Strength", Steady().Force(RollKind.Damage, 0)));
+        Assert.Equal(39, Damage(machamp, blastoise, "Strength", Steady().Force(RollKind.Damage, 15)));
         // And every step between is one of sixteen
         var spread = Enumerable.Range(0, 16).Select(roll => Damage(machamp, blastoise, "Strength", Steady().Force(RollKind.Damage, roll))).ToList();
-        Assert.Equal(Enumerable.Range(0, 16).Select(roll => 47 * (85 + roll) / 100), spread);
+        Assert.Equal(Enumerable.Range(0, 16).Select(roll => 47 * (100 - roll) / 100), spread);
     }
 
     [Fact]
@@ -50,7 +50,7 @@ public class BattleScenarioTests
         Assert.Equal(93, empoleon.Defense);
         Assert.Equal(194, Damage(garchomp, empoleon, "Earthquake"));
         // The weakest roll comes before the bonuses: 65 × 85 / 100 = 55; × 15 / 10 = 82; × 2 = 164
-        Assert.Equal(164, Damage(garchomp, empoleon, "Earthquake", Steady().Force(RollKind.Damage, 0)));
+        Assert.Equal(164, Damage(garchomp, empoleon, "Earthquake", Steady().Force(RollKind.Damage, 15)));
     }
 
     [Fact]
@@ -159,8 +159,10 @@ public class BattleScenarioTests
             mine.Status = StatusCondition.Paralyze;
             return Turn(Battle(mine, Mon("Bidoof", 20), Steady().Force(RollKind.FullParalysis, roll)));
         }
-        Assert.Contains("Bidoof is paralyzed! It can't move!", With(24));
-        Assert.Contains("Bidoof used Tackle!", With(25));
+        // The die has four faces, and the first is the one that holds it
+        Assert.Contains("Bidoof is paralyzed! It can't move!", With(0));
+        Assert.Contains("Bidoof used Tackle!", With(1));
+        Assert.Contains("Bidoof used Tackle!", With(3));
     }
 
     [Fact]

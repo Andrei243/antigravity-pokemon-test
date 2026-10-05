@@ -1,10 +1,14 @@
 using System;
 using PokemonPlatinumEngine.Battle.Sim;
-using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle;
 
+/// <summary>
+/// A thrown ball, by Platinum's own arithmetic (<see cref="Formulas.CatchRate"/>, <see cref="Formulas.ShakeRate"/>;
+/// the decompilation's <c>BattleScript_CalcCatchShakes</c>): a catch rate from the species, the ball, the foe's HP
+/// and its condition, then four rolls against a shake rate worked out from it. The ball holds if all four do.
+/// </summary>
 public static class CatchCalculator
 {
     public struct CatchResult
@@ -13,60 +17,28 @@ public static class CatchCalculator
         public int Shakes; // 0, 1, 2, 3, or 4 (4 = caught)
     }
 
+    /// <summary>A ball thrown on a battle's first turn, by day and on land: for callers with no battle round them.</summary>
     /// <param name="rng">The battle's own generator; left out, the rolls are the game's shared chance.</param>
     public static CatchResult AttemptCatch(Pokemon wildPokemon, ItemData ball, Random? rng = null)
     {
-        rng ??= Core.Dice.Shared;
-        // Master Ball always catches
-        if (ball.EffectValue >= 9999)
-        {
-            return new CatchResult { IsCaught = true, Shakes = 4 };
-        }
+        int shakes = Shakes(wildPokemon, ball, rng ?? Core.Dice.Shared, turn: 0, new BattleConditions());
+        return new CatchResult { IsCaught = shakes == 4, Shakes = shakes };
+    }
 
-        float ballMultiplier = ball.EffectValue / 10.0f; // e.g. 1.0 for Poke Ball, 1.5 for Great, 2.0 for Ultra
-        float statusMultiplier = wildPokemon.Status switch
-        {
-            StatusCondition.Sleep or StatusCondition.Freeze => 2.0f,
-            StatusCondition.Poison or StatusCondition.Toxic or StatusCondition.Burn or StatusCondition.Paralyze => 1.5f,
-            _ => 1.0f
-        };
+    /// <summary>How many times the ball shakes: 4 means it held.</summary>
+    /// <param name="turn">Turns of the battle already played (the Timer and Quick Balls count them).</param>
+    public static int Shakes(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions)
+    {
+        // A Master Ball holds whatever the rolls would have said
+        if (ball.EffectValue >= 9999) return 4;
 
-        // Gen 4 Catch Rate Formula:
-        // a = ((3 * MaxHP - 2 * CurrentHP) * CatchRate * BallBonus) / (3 * MaxHP) * StatusBonus
-        float maxHP = wildPokemon.MaxHP;
-        float curHP = wildPokemon.CurrentHP;
-        float catchRate = wildPokemon.Species.CatchRate;
+        int rate = Formulas.CatchRate(wild.Species.CatchRate, Formulas.BallTenths(ball.Name, wild, turn, conditions),
+            wild.MaxHP, wild.CurrentHP, wild.Status);
+        if (rate >= 255) return 4;
 
-        float a = ((3.0f * maxHP - 2.0f * curHP) * catchRate * ballMultiplier) / (3.0f * maxHP) * statusMultiplier;
-        a = Math.Clamp(a, 1.0f, 255.0f);
-
-        if (a >= 255.0f)
-        {
-            return new CatchResult { IsCaught = true, Shakes = 4 };
-        }
-
-        // Shake probability b = 65536 * (a / 255)^(1/4)
-        double b = 65536.0 * Math.Pow(a / 255.0, 0.25);
-        int bInt = (int)Math.Clamp(b, 0, 65535);
-
+        int holds = Formulas.ShakeRate(rate);
         int shakes = 0;
-        for (int i = 0; i < 4; i++)
-        {
-            int check = rng.Roll(RollKind.CatchShake, 65536);
-            if (check < bInt)
-            {
-                shakes++;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        return new CatchResult
-        {
-            IsCaught = shakes == 4,
-            Shakes = shakes
-        };
+        while (shakes < 4 && rng.Roll(RollKind.CatchShake, 65536) < holds) shakes++;
+        return shakes;
     }
 }

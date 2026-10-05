@@ -1,26 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle;
 
-// The player's choices: one action per Pokémon on the field, then the turn runs. Every choice is a method that
-// takes no input, so tests and the screenshot harness can drive battles; HandleMenuInput maps keys onto them.
+// The player's choices: one for each of their Pokémon on the field, then the rules play the turn. Every choice is
+// a method that takes no input, so tests and the screenshot harness can drive battles; HandleMenuInput maps keys
+// onto them. What a menu refuses (no PP, a Pokémon already out) it refuses here, before the rules are asked.
 public partial class BattleEngine
 {
     /// <summary>The items offered by the battle's BAG menu, in slot order.</summary>
     public static IReadOnlyList<string> BagItems { get; } = new[] { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
 
     private int menuSlot;
-    private readonly Dictionary<int, BattleAction> choices = new();
+    private readonly Dictionary<int, BattleChoice> choices = new();
     private Move? targetingMove;
     private List<Battler> targetChoices = new();
 
-    /// <summary>A fainted Pokémon is being replaced (the switch menu can't be closed); runs once it is.</summary>
-    private Action? afterReplacement;
+    /// <summary>A fainted Pokémon is being replaced (the switch menu can't be closed).</summary>
+    private bool replacing;
 
     /// <summary>The move whose target is being chosen.</summary>
     public Move? TargetingMove => targetingMove;
@@ -29,29 +31,28 @@ public partial class BattleEngine
     public IReadOnlyList<Battler> TargetChoices => targetChoices;
 
     /// <summary>The switch menu is open because a fainted Pokémon has to be replaced.</summary>
-    public bool IsChoosingReplacement => afterReplacement != null;
+    public bool IsChoosingReplacement => replacing;
 
     /// <summary>Opens the menus for the first of the player's Pokémon that can act.</summary>
-    private void StartTurn()
+    private void BeginChoosing()
     {
-        if (Result != BattleResult.None) return;
-
         choices.Clear();
         targetingMove = null;
-        foreach (var foe in EnemySlots.Where(b => b.IsActive))
-            foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
-
         menuSlot = PlayerSlots.FirstOrDefault(b => b.IsActive)?.Slot ?? 0;
         HUD.MenuState = BattleMenuState.Main;
     }
 
-    /// <summary>Stores the action for the Pokémon whose menu is open and moves on to the next one, or starts the turn.</summary>
-    private void Commit(BattleAction action)
+    /// <summary>Stores the choice for the Pokémon whose menu is open and moves on to the next one, or hands the turn to the rules.</summary>
+    private void Commit(BattleChoice choice)
     {
-        action.User = MenuBattler;
-        action.Actor = MenuBattler.Pokemon;
-        action.IsPlayer = true;
-        choices[menuSlot] = action;
+        choices[menuSlot] = choice;
+
+        // Running is for the whole side: nobody else is asked
+        if (choice.Kind == ChoiceKind.Run)
+        {
+            foreach (var other in PlayerSlots.Where(b => b.IsActive && !choices.ContainsKey(b.Slot)))
+                choices[other.Slot] = BattleChoice.Run(other.Place);
+        }
 
         var next = PlayerSlots.FirstOrDefault(b => b.Slot > menuSlot && b.IsActive && !choices.ContainsKey(b.Slot));
         if (next != null)
@@ -62,7 +63,16 @@ public partial class BattleEngine
             return;
         }
 
-        ExecuteTurn(PlayerSlots.Where(b => choices.ContainsKey(b.Slot)).Select(b => choices[b.Slot]).ToList());
+        Submit(PlayerSlots.Where(b => choices.ContainsKey(b.Slot)).Select(b => choices[b.Slot]).ToList());
+    }
+
+    /// <summary>Answers what the rules asked, and shows what they made of it.</summary>
+    private void Submit(IReadOnlyList<BattleChoice> answer)
+    {
+        SyncToCore();
+        core.Submit(answer);
+        Play(core.TakeLog());
+        Pump();
     }
 
     /// <summary>Goes back to the previous Pokémon's choice (double battles); returns false when there is none.</summary>
@@ -72,7 +82,7 @@ public partial class BattleEngine
         if (previous == null) return false;
 
         // An item set aside for that Pokémon goes back in the bag
-        if (choices[previous.Slot] is { Type: ActionType.UseItem, Item: { } item }) PlayerInventory.AddItem(item, 1);
+        if (choices[previous.Slot] is { Kind: ChoiceKind.Item, Item: { } item } && ItemDatabase.Get(item) is { } data) PlayerInventory.AddItem(data, 1);
         choices.Remove(previous.Slot);
         menuSlot = previous.Slot;
         HUD.MenuState = BattleMenuState.Main;
@@ -85,11 +95,12 @@ public partial class BattleEngine
         switch (index)
         {
             case 0:
-                if (UsableMoves(MenuBattler).Count == 0)
+                if (BattleCore.UsableMoves(MenuBattler).Count == 0)
                 {
                     // Nothing left to use: it struggles
-                    QueueMessage($"{MenuBattler.Name} has no moves left!", () => Commit(new BattleAction { Type = ActionType.Fight, Move = new Move(StruggleData) }));
-                    AdvanceEventQueue();
+                    var place = MenuBattler.Place;
+                    QueueMessage($"{MenuBattler.Name} has no moves left!", () => Commit(BattleChoice.Fight(place, -1)));
+                    Pump();
                     return;
                 }
                 HUD.MenuState = BattleMenuState.Moves;
@@ -109,14 +120,6 @@ public partial class BattleEngine
         }
     }
 
-    /// <summary>The moves a Pokémon can pick: any with PP left, or only its locked move while a Choice item holds it.</summary>
-    private static List<Move> UsableMoves(Battler b)
-    {
-        var moves = b.Pokemon!.Moves.Where(m => m.CurrentPP > 0).ToList();
-        if (b.ChoiceLock != null && moves.Contains(b.ChoiceLock)) return new List<Move> { b.ChoiceLock };
-        return moves;
-    }
-
     /// <summary>Uses the move in the given slot, as chosen from the FIGHT menu.</summary>
     public void SelectMove(int index)
     {
@@ -126,16 +129,12 @@ public partial class BattleEngine
         var move = user.Pokemon.Moves[index];
         if (move.CurrentPP <= 0)
         {
-            AudioManager.PlaySound("cancel");
-            QueueMessage("There's no PP left for this move!", () => HUD.MenuState = BattleMenuState.Moves);
-            AdvanceEventQueue();
+            Refuse("There's no PP left for this move!", BattleMenuState.Moves);
             return;
         }
         if (user.ChoiceLock != null && user.ChoiceLock != move && user.ChoiceLock.CurrentPP > 0)
         {
-            AudioManager.PlaySound("cancel");
-            QueueMessage($"{user.Name} can only use {user.ChoiceLock.Name}!", () => HUD.MenuState = BattleMenuState.Moves);
-            AdvanceEventQueue();
+            Refuse($"{user.Name} can only use {user.ChoiceLock.Name}!", BattleMenuState.Moves);
             return;
         }
 
@@ -155,17 +154,17 @@ public partial class BattleEngine
             }
         }
 
-        Commit(new BattleAction { Type = ActionType.Fight, Move = move });
+        Commit(BattleChoice.Fight(user.Place, index));
     }
 
     /// <summary>Aims the move being chosen at <see cref="TargetChoices"/>[index].</summary>
     public void SelectTarget(int index)
     {
         if (targetingMove == null || index < 0 || index >= targetChoices.Count) return;
-        var move = targetingMove;
+        int move = MenuBattler.Pokemon!.Moves.IndexOf(targetingMove);
         targetingMove = null;
         AudioManager.PlaySound("select");
-        Commit(new BattleAction { Type = ActionType.Fight, Move = move, Target = targetChoices[index] });
+        Commit(BattleChoice.Fight(MenuBattler.Place, move, targetChoices[index].Place));
     }
 
     /// <summary>Sends in the party's Pokémon at <paramref name="partyIndex"/>: a switch for this turn, or a fainted Pokémon's replacement.</summary>
@@ -177,32 +176,24 @@ public partial class BattleEngine
         string? refusal = null;
         if (PlayerSlots.Any(b => b.Pokemon == chosen && !chosen.IsFainted)) refusal = $"{chosen.DisplayName} is already in battle!";
         else if (chosen.IsFainted) refusal = $"{chosen.DisplayName} has no energy left to battle!";
-        else if (choices.Values.Any(a => a.Type == ActionType.Switch && a.SwitchToIndex == partyIndex)) refusal = $"{chosen.DisplayName} is already going in!";
+        else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = $"{chosen.DisplayName} is already going in!";
 
         if (refusal != null)
         {
-            AudioManager.PlaySound("cancel");
-            QueueMessage(refusal, () => HUD.MenuState = BattleMenuState.SwitchPokemon);
-            AdvanceEventQueue();
+            Refuse(refusal, BattleMenuState.SwitchPokemon);
             return;
         }
 
         AudioManager.PlaySound("select");
-        if (afterReplacement != null)
+        var place = MenuBattler.Place;
+        if (replacing)
         {
-            var then = afterReplacement;
-            afterReplacement = null;
-            var place = MenuBattler;
-            QueueMessage($"Go! {chosen.DisplayName}!", () => then(), onShow: () =>
-            {
-                SendIn(place, chosen);
-                Anim.SendOut(BattleSide.Player, chosen, place.Slot);
-            });
-            AdvanceEventQueue();
+            replacing = false;
+            Submit(new[] { BattleChoice.Switch(place, partyIndex) });
             return;
         }
 
-        Commit(new BattleAction { Type = ActionType.Switch, SwitchToIndex = partyIndex });
+        Commit(BattleChoice.Switch(place, partyIndex));
     }
 
     /// <summary>Uses the item in the given slot, as chosen from the BAG menu.</summary>
@@ -222,30 +213,38 @@ public partial class BattleEngine
 
         if (refusal != null)
         {
-            AudioManager.PlaySound("cancel");
-            QueueMessage(refusal, () => HUD.MenuState = BattleMenuState.SelectBagItem);
-            AdvanceEventQueue();
+            Refuse(refusal, BattleMenuState.SelectBagItem);
             return;
         }
 
         PlayerInventory.RemoveItem(itemData, 1);
         AudioManager.PlaySound("select");
-        Commit(new BattleAction { Type = ActionType.UseItem, Item = itemData });
+        Commit(BattleChoice.UseItem(MenuBattler.Place, itemData.Name));
     }
+
+    /// <summary>
+    /// Uses an item for the Pokémon whose menu is open without going through the bag, which offers only a few and
+    /// counts them: for tools that stage a battle (the harness throwing a ball of each kind).
+    /// </summary>
+    public void UseItem(ItemData item) => Commit(BattleChoice.UseItem(MenuBattler.Place, item.Name));
 
     private void AttemptRun()
     {
         if (IsTrainerBattle)
         {
             QueueMessage("No! There's no running from a Trainer battle!", () => HUD.MenuState = BattleMenuState.Main);
+            Pump();
+            return;
         }
-        else
-        {
-            QueueMessage("Got away safely!", () => Result = BattleResult.PlayerRan);
-        }
+        Commit(BattleChoice.Run(MenuBattler.Place));
+    }
 
-        // Show the message right away; queued messages otherwise wait for the next turn
-        AdvanceEventQueue();
+    /// <summary>Says why a choice can't be made and goes back to the menu it was made in.</summary>
+    private void Refuse(string why, BattleMenuState backTo)
+    {
+        AudioManager.PlaySound("cancel");
+        QueueMessage(why, () => HUD.MenuState = backTo);
+        Pump();
     }
 
     private void HandleMenuInput()
@@ -310,7 +309,7 @@ public partial class BattleEngine
             case BattleMenuState.SwitchPokemon:
                 if (cancel)
                 {
-                    if (afterReplacement == null)
+                    if (!replacing)
                     {
                         AudioManager.PlaySound("cancel");
                         HUD.MenuState = BattleMenuState.Main;

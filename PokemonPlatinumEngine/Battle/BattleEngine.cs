@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -18,19 +19,24 @@ public enum BattleResult
 }
 
 /// <summary>
-/// The rules of a battle, single or double. Each place on the field is a <see cref="Battler"/>; the player picks
-/// an action for each of theirs, the AI for the others, and the turn plays out as a queue of messages:
-/// <c>QueueMessage(text, onComplete, onShow)</c>, where <c>onShow</c> starts what the message describes and
-/// <c>onComplete</c> carries on once the player dismisses it. Abilities and held items join in through
-/// <see cref="BattleEffect"/> hooks. Split over BattleEngine.*.cs: menus, the turn, moves, and the context the
-/// effects use.
+/// A battle as the game shows it, single or double. The rules are not here: they are <see cref="BattleCore"/>,
+/// which works on copies of the Pokémon and writes down what happened. This class is the face the game, the tests
+/// and the screenshot harness use: it turns the menus' choices into <see cref="BattleChoice"/>s, hands them to
+/// the core, and plays the core's log back as a queue of messages. Each line starts what it describes as it
+/// appears (<see cref="BattleAnimator"/>, the sounds), and the game's own Pokémon change with it: a hit's damage
+/// when the hit lands, a level when its line is reached.
+/// <para>
+/// So the Pokémon the screen and the party hold are behind the core while a turn is being shown, and the same as
+/// the core's whenever a menu is open (<see cref="BattleMirror"/>). Split over BattleEngine.*.cs: this file is
+/// the playback, .Menus.cs the choices.
+/// </para>
 /// </summary>
-public partial class BattleEngine : IBattleContext
+public partial class BattleEngine
 {
     public Party PlayerParty { get; }
     public Inventory PlayerInventory { get; }
     public Pokedex Pokedex { get; }
-    public BattleFormat Format { get; }
+    public BattleFormat Format => core.Format;
 
     /// <summary>The opposing trainers (none in a wild battle).</summary>
     public IReadOnlyList<Trainer> Trainers { get; }
@@ -42,7 +48,7 @@ public partial class BattleEngine : IBattleContext
     public bool IsTrainerBattle => Trainers.Count > 0;
     public bool IsDouble => Format == BattleFormat.Double;
 
-    /// <summary>The places on each side: one each in a single battle, two in a double.</summary>
+    /// <summary>The places on each side as the screen has them: one each in a single battle, two in a double.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
     public IReadOnlyList<Battler> EnemySlots { get; }
     public IEnumerable<Battler> AllBattlers => PlayerSlots.Concat(EnemySlots);
@@ -61,12 +67,35 @@ public partial class BattleEngine : IBattleContext
     /// <summary>What the battle looks like: send-outs, attacks, hits, faints and the HP bars as they drain.</summary>
     public BattleAnimator Anim { get; } = new();
 
-    public Random Random => rng;
+    /// <summary>The rules' side of the battle: its own Pokémon, its requests, its log.</summary>
+    public BattleCore Core => core;
+
+    public Random Random => core.Random;
 
     /// <summary>The rules this battle is fought by: those of the game in progress unless the setup gave its own.</summary>
-    public Ruleset Rules { get; }
+    public Ruleset Rules => core.Rules;
 
-    private readonly Queue<Action> turnEventQueue = new();
+    /// <summary>
+    /// The player's Pokémon that gained a level in this battle. They are the ones that may evolve once it is over,
+    /// as in the games: nothing changes species while the battle is on.
+    /// </summary>
+    public IReadOnlyList<Pokemon> LeveledUp => leveledUpPokemon;
+
+    public BattleResult Result { get; private set; } = BattleResult.None;
+    public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && steps.Count == 0;
+
+    private readonly BattleCore core;
+    private readonly BattleMirror mirror = new();
+    private readonly List<Pokemon>? pcBoxStorage;
+    private readonly List<Pokemon> leveledUpPokemon = new();
+
+    // What is still to be shown: lines that wait to be read, and things that happen between them
+    private abstract record Step;
+    private sealed record Line(string Text, Action? OnShow) : Step;
+    private sealed record Happening(Action Do) : Step;
+    private readonly Queue<Step> steps = new();
+    private bool playingTheLog;
+
     private string currentMessage = "";
     private float messageWaitTimer = 0f;
     private bool waitingForMessageConfirm = false;
@@ -74,21 +103,6 @@ public partial class BattleEngine : IBattleContext
     // Effects that land a moment after the message that started them, like a hit after the attacker's lunge
     private const float HitDelay = 0.35f;
     private readonly List<(float Delay, Action Effect)> pendingEffects = new();
-
-    private readonly List<Pokemon>? pcBoxStorage;
-    private Action? currentMessageCallback = null;
-
-    /// <summary>
-    /// The player's Pokémon that gained a level in this battle. They are the ones that may evolve once it is over,
-    /// as in the games: nothing changes species while the battle is on.
-    /// </summary>
-    public IReadOnlyList<Pokemon> LeveledUp => leveledUpPokemon;
-    private readonly List<Pokemon> leveledUpPokemon = new();
-
-    public BattleResult Result { get; private set; } = BattleResult.None;
-    public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && turnEventQueue.Count == 0;
-
-    private readonly Random rng;
 
     public BattleEngine(
         Party playerParty,
@@ -117,110 +131,290 @@ public partial class BattleEngine : IBattleContext
         Pokedex = setup.Pokedex;
         pcBoxStorage = setup.PcStorage;
         Trainers = setup.Trainers;
-        rng = setup.Random ?? Core.Dice.New();
-        Rules = setup.Rules ?? Ruleset.Current;
 
-        // A double battle needs two Pokémon able to fight on each side
-        bool canDouble = setup.PlayerParty.Members.Count(p => !p.IsFainted) >= 2 &&
-            (setup.Trainers.Count == 0 ? setup.WildPokemon.Count >= 2
-                : setup.Trainers.Count >= 2 || setup.Trainers[0].Party.Members.Count(p => !p.IsFainted) >= 2);
-        Format = setup.Format == BattleFormat.Double && canDouble ? BattleFormat.Double : BattleFormat.Single;
-        int slots = IsDouble ? 2 : 1;
-        Anim.Slots = slots;
-
-        PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i) { Roster = PlayerParty }).ToList();
-        EnemySlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Enemy, i)).ToList();
-
-        // The first Pokémon in: the first ones able to fight
-        var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(slots).ToList();
-        if (leads.Count == 0) leads.Add(PlayerParty.Members.First());
-        for (int i = 0; i < leads.Count; i++) PlayerSlots[i].Pokemon = leads[i];
-
-        for (int i = 0; i < slots; i++)
+        // The rules get copies of every Pokémon; the game's own are what the screen shows
+        var trainers = setup.Trainers.Select(mirror.Copy).ToList();
+        core = new BattleCore(new CoreSetup
         {
-            var place = EnemySlots[i];
-            if (IsTrainerBattle)
-            {
-                var trainer = Trainers[Math.Min(i, Trainers.Count - 1)];
-                place.Trainer = trainer;
-                place.Roster = trainer.Party;
-                place.Pokemon = i == 0 && setup.FirstTrainerPokemon != null
-                    ? setup.FirstTrainerPokemon
-                    : NextFromRoster(place, exclude: EnemySlots.Take(i).Select(b => b.Pokemon));
-            }
-            else if (i < setup.WildPokemon.Count)
-            {
-                place.Pokemon = setup.WildPokemon[i];
-            }
-        }
+            PlayerParty = mirror.Copy(setup.PlayerParty),
+            WildPokemon = setup.WildPokemon.Select(mirror.Copy).ToList(),
+            Trainers = trainers,
+            FirstTrainerPokemon = setup.FirstTrainerPokemon == null ? null : mirror.Copy(setup.FirstTrainerPokemon),
+            Format = setup.Format,
+            Random = setup.Random,
+            Rules = setup.Rules,
+            Conditions = setup.Conditions ?? new BattleConditions { HasCaught = species => Pokedex.IsCaught(species.DexNumber) },
+            PlayerName = PlayerIdentity.Name
+        });
 
-        foreach (var foe in EnemySlots.Where(b => b.Pokemon != null)) Pokedex.RegisterSeen(foe.Pokemon!.Species.DexNumber);
-        foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) b.Pokemon!.ResetStatStages();
+        Anim.Slots = core.PlayerSlots.Count;
+        PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();
+        EnemySlots = core.EnemySlots.Select(OnScreen).ToList();
 
-        PlayIntro();
-        AdvanceEventQueue();
+        core.Start();
+        Play(core.TakeLog());
+        Pump();
     }
 
-    /// <summary>The trainer's opening lines and the send-outs, then the abilities that act on entry.</summary>
-    private void PlayIntro()
+    /// <summary>The screen's own battler for one of the core's places, holding the game's own Pokémon.</summary>
+    private Battler OnScreen(Battler place) => new(place.Side, place.Slot)
     {
-        var foes = EnemySlots.Where(b => b.Pokemon != null).ToList();
-        var mine = PlayerSlots.Where(b => b.Pokemon != null).ToList();
+        Pokemon = place.Pokemon == null ? null : mirror.Shown(place.Pokemon),
+        Roster = place.IsPlayerSide ? PlayerParty : IsTrainerBattle ? Trainers[Math.Min(place.Slot, Trainers.Count - 1)].Party : null,
+        Trainer = place.IsPlayerSide || !IsTrainerBattle ? null : Trainers[Math.Min(place.Slot, Trainers.Count - 1)]
+    };
 
-        void SendOutMine() => QueueMessage($"Go! {JoinNames(mine.Select(b => b.Pokemon!.DisplayName))}!", () =>
-        {
-            foreach (var b in mine) OnEntered(b);
-            RunEntryEffects(AllBattlers.Where(b => b.IsActive).ToList(), StartTurn);
-        }, onShow: () => { foreach (var b in mine) Anim.SendOut(BattleSide.Player, b.Pokemon!, b.Slot); });
+    private IReadOnlyList<Battler> SlotsOf(BattleSide side) => side == BattleSide.Player ? PlayerSlots : EnemySlots;
 
-        if (IsTrainerBattle)
+    private Battler At(Place place) => SlotsOf(place.Side)[place.Slot];
+
+    // ---------------------------------------------------------------- the game's Pokémon and the rules' copies
+
+    /// <summary>Tells the rules of anything that changed a Pokémon or a place outside the battle since they last looked.</summary>
+    private void SyncToCore()
+    {
+        mirror.Adopt();
+        foreach (var place in AllBattlers) core.At(place.Place).CopyVolatileFrom(place);
+    }
+
+    /// <summary>Brings what the screen holds up to the rules, once there is nothing left to show.</summary>
+    private void SyncFromCore()
+    {
+        mirror.Publish();
+        foreach (var place in AllBattlers)
         {
-            Anim.EnemyTrainer = Trainers[0].TrainerClass;
-            if (Trainers.Count > 1) Anim.EnemyTrainer2 = Trainers[1].TrainerClass;
-            string who = Trainers.Count > 1 ? $"{Trainers[0].FullTitle} and {Trainers[1].FullTitle} would like" : $"{Trainers[0].FullTitle} wants";
-            QueueMessage($"{who} to battle!", () =>
+            var theirs = core.At(place.Place);
+            place.Pokemon = theirs.Pokemon == null ? null : mirror.Shown(theirs.Pokemon);
+            place.CopyVolatileFrom(theirs);
+        }
+    }
+
+    /// <summary>Speed after stages, paralysis and abilities or items.</summary>
+    public int EffectiveSpeed(Battler b) => BattleCore.SpeedOf(b, Rules);
+
+    /// <summary>
+    /// Gives a Pokémon on the field a status condition by the battle's rules, outside any turn (a scripted scene,
+    /// a test). What is said about it is shown with the next thing the battle shows.
+    /// </summary>
+    public bool TryInflictStatus(Battler target, StatusCondition status, Battler? source, bool announceFailure = false) =>
+        BetweenTurns(() => core.TryInflictStatus(core.At(target.Place), status, source == null ? null : core.At(source.Place), announceFailure));
+
+    /// <summary>Raises or lowers a stat stage by the battle's rules, outside any turn.</summary>
+    public bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false) =>
+        BetweenTurns(() => core.ChangeStat(core.At(target.Place), stat, amount, source == null ? null : core.At(source.Place), announceFailure));
+
+    private T BetweenTurns<T>(Func<T> change)
+    {
+        SyncToCore();
+        T result = change();
+        Enqueue(core.TakeLog());
+        SyncFromCore();
+        return result;
+    }
+
+    // ---------------------------------------------------------------- playing the log
+
+    /// <summary>Queues what the rules wrote down, to be shown line by line.</summary>
+    private void Play(List<BattleEvent> events)
+    {
+        Enqueue(events);
+        playingTheLog = true;
+        HUD.MenuState = BattleMenuState.Message;
+    }
+
+    private void Enqueue(List<BattleEvent> events)
+    {
+        foreach (var happening in events)
+        {
+            if (happening is Said said)
             {
-                // Each trainer announces their own Pokémon
-                var byTrainer = foes.GroupBy(b => b.Trainer!).ToList();
-                void Announce(int i)
+                steps.Enqueue(new Line(said.Text, () =>
                 {
-                    if (i == byTrainer.Count)
-                    {
-                        SendOutMine();
-                        return;
-                    }
-                    var group = byTrainer[i].ToList();
-                    QueueMessage($"{group[0].Trainer!.FullTitle} sent out {JoinNames(group.Select(b => b.Pokemon!.DisplayName))}!", () => Announce(i + 1),
-                        onShow: () =>
-                        {
-                            foreach (var b in group)
-                            {
-                                OnEntered(b);
-                                Anim.SendOut(BattleSide.Enemy, b.Pokemon!, b.Slot);
-                            }
-                        });
-                }
-                Announce(0);
-            });
-        }
-        else
-        {
-            foreach (var b in foes)
-            {
-                OnEntered(b);
-                Anim.Appear(BattleSide.Enemy, b.Pokemon!, b.Slot);
+                    foreach (var shown in said.Shows) Show(shown);
+                    foreach (var landing in said.OnImpact) After(HitDelay, () => Show(landing));
+                }));
             }
-            string text = foes.Count > 1
-                ? $"Wild {JoinNames(foes.Select(b => b.Pokemon!.DisplayName))} appeared!"
-                : $"A wild {foes[0].Pokemon!.DisplayName} appeared!";
-            QueueMessage(text, SendOutMine);
+            else steps.Enqueue(new Happening(() => Show(happening)));
         }
     }
 
-    private static string JoinNames(IEnumerable<string> names)
+    /// <summary>A line of the screen's own (a menu's refusal), with what follows once it has been read.</summary>
+    private void QueueMessage(string msg, Action? onComplete = null)
     {
-        var list = names.ToList();
-        return list.Count <= 1 ? list.FirstOrDefault() ?? "" : string.Join(", ", list.Take(list.Count - 1)) + " and " + list[^1];
+        steps.Enqueue(new Line(msg, null));
+        if (onComplete != null) steps.Enqueue(new Happening(onComplete));
+    }
+
+    /// <summary>Shows what is queued until a line waits to be read or an animation holds the queue.</summary>
+    private void Pump()
+    {
+        while (!waitingForMessageConfirm && messageWaitTimer <= 0f)
+        {
+            if (steps.Count == 0)
+            {
+                if (!playingTheLog) return;
+                playingTheLog = false;
+                LogPlayed();
+                continue;
+            }
+
+            switch (steps.Dequeue())
+            {
+                case Line line:
+                    currentMessage = line.Text;
+                    waitingForMessageConfirm = true;
+                    HUD.MenuState = BattleMenuState.Message;
+                    line.OnShow?.Invoke();
+                    break;
+                case Happening happening:
+                    happening.Do();
+                    break;
+            }
+        }
+    }
+
+    /// <summary>Everything the rules worked out has been shown: the screen's Pokémon are the rules' again, and the next menu opens.</summary>
+    private void LogPlayed()
+    {
+        SyncFromCore();
+        switch (core.Request)
+        {
+            case ActionRequest:
+                BeginChoosing();
+                break;
+            case ReplacementRequest replacement:
+                replacing = true;
+                menuSlot = replacement.Place.Slot;
+                HUD.SwitchMenuIndex = 0;
+                HUD.MenuState = BattleMenuState.SwitchPokemon;
+                break;
+        }
+    }
+
+    /// <summary>One thing the log says happened, as the screen shows it.</summary>
+    private void Show(BattleEvent happening)
+    {
+        switch (happening)
+        {
+            case TrainersStand trainers:
+                Anim.EnemyTrainer = trainers.First;
+                if (trainers.Second != null) Anim.EnemyTrainer2 = trainers.Second;
+                break;
+            case Seen seen:
+                Pokedex.RegisterSeen(seen.Species.DexNumber);
+                break;
+            case Entered entered:
+            {
+                var pokemon = mirror.Shown(entered.Pokemon);
+                At(entered.Place).Pokemon = pokemon;
+                if (entered.FromBall) Anim.SendOut(entered.Place.Side, pokemon, entered.Place.Slot);
+                else Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
+                break;
+            }
+            case Recalled recalled:
+                Anim.Recall(recalled.Place.Side, recalled.Place.Slot);
+                break;
+            case Left:
+                AudioManager.PlaySound("select");
+                break;
+            case Lunged lunged:
+                Anim.Attack(lunged.Place.Side, lunged.Place.Slot, lunged.Category);
+                break;
+            case MoveShown move:
+                Anim.Cue(new EffectCue
+                {
+                    Kind = CueKind.Move,
+                    Move = move.Move,
+                    Type = move.Type,
+                    Category = move.Category,
+                    FromSide = move.From.Side,
+                    FromSlot = move.From.Slot,
+                    ToSide = move.To.Side,
+                    ToSlot = move.To.Slot,
+                    Missed = move.Missed,
+                    Blocked = move.Blocked,
+                    Critical = move.Critical,
+                    SuperEffective = move.SuperEffective
+                });
+                break;
+            case Struck struck:
+                if (At(struck.Place).Pokemon is { } hit) hit.CurrentHP = struck.Hp;
+                Anim.Hit(struck.Place.Side, struck.Place.Slot, struck.Hard ? 1.8f : 1f);
+                break;
+            case HitSounded sound:
+                AudioManager.PlaySound(sound.SuperEffective ? "hit_super" : "hit_normal");
+                break;
+            case HpChanged change:
+                if (At(change.Place).Pokemon is { } changed) changed.CurrentHP = change.Hp;
+                if (change.Healed)
+                {
+                    Anim.Heal(change.Place.Side, change.Place.Slot);
+                    AudioManager.PlaySound("heal");
+                }
+                else
+                {
+                    Anim.Hit(change.Place.Side, change.Place.Slot);
+                    AudioManager.PlaySound("hit_normal");
+                }
+                break;
+            case StageChanged stage:
+                if (At(stage.Place).Pokemon is { } staged) staged.StatStages[stage.Stat] = stage.Stage;
+                Anim.StatChange(stage.Place.Side, stage.Place.Slot, stage.Rose);
+                break;
+            case StatusChanged status:
+                if (At(status.Place).Pokemon is { } afflicted) afflicted.Status = status.Status;
+                if (status.Status != StatusCondition.None) Anim.StatusGiven(status.Place.Side, status.Place.Slot, status.Status);
+                break;
+            case Fainted fainted:
+                if (At(fainted.Place).Pokemon is { } down)
+                {
+                    down.Status = StatusCondition.Faint;
+                    down.CurrentHP = 0;
+                }
+                AudioManager.PlaySound("faint");
+                Anim.Faint(fainted.Place.Side, 0.15f, fainted.Place.Slot);
+                break;
+            case ExpGained exp:
+                mirror.Shown(exp.Pokemon).GainExp(exp.Amount, out _);
+                break;
+            case LevelRose level:
+            {
+                var grown = mirror.Shown(level.Pokemon);
+                if (!leveledUpPokemon.Contains(grown)) leveledUpPokemon.Add(grown);
+                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
+                break;
+            }
+            case BallThrown ball:
+                // The trainer throws, the ball opens over the foe, which vanishes into it; what comes next waits for
+                // the ball to settle. A foe that breaks free bursts out with the ball and is back on its platform
+                // before the line about it.
+                AudioManager.PlaySound("ball_throw");
+                Anim.ThrowBall(ball.Ball, ball.Slot, ball.Shakes);
+                if (ball.Shakes >= 4) messageWaitTimer = BattleAnimator.BallThrowTime(ball.Shakes) + 0.1f;
+                else
+                {
+                    After(BattleAnimator.BallSettleTime(ball.Shakes), () => Anim.BreakFree(ball.Slot));
+                    messageWaitTimer = BattleAnimator.BallSettleTime(ball.Shakes) + BattleAnimator.SendOutTime + 0.1f;
+                }
+                break;
+            case Caught caught:
+            {
+                var mine = mirror.Shown(caught.Pokemon);
+                AudioManager.PlayMusic(MusicRole.VictoryWild);
+                Pokedex.RegisterCaught(mine.Species.DexNumber);
+                mine.ResetStatStages();
+                mine.Ball = caught.Ball;
+                if (caught.ToBox) pcBoxStorage?.Add(mine);
+                else PlayerParty.Add(mine);
+                break;
+            }
+            case Won:
+                AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));
+                break;
+            case Ended ended:
+                Result = ended.Result;
+                break;
+        }
     }
 
     public void Update(float dt)
@@ -237,30 +431,22 @@ public partial class BattleEngine : IBattleContext
             return;
         }
 
+        // A timed animation (the Poké Ball throw) holds the queue until it ends
         if (messageWaitTimer > 0f)
         {
             messageWaitTimer -= dt;
-            if (messageWaitTimer <= 0f)
-            {
-                AdvanceEventQueue();
-            }
+            if (messageWaitTimer <= 0f) Pump();
             return;
         }
 
         if (HUD.MenuState == BattleMenuState.Message)
         {
-            if (turnEventQueue.Count > 0)
-            {
-                AdvanceEventQueue();
-            }
+            Pump();
             return;
         }
 
-        // Handle Menu Navigation
         HandleMenuInput();
     }
-
-    private IReadOnlyList<Battler> SlotsOf(BattleSide side) => side == BattleSide.Player ? PlayerSlots : EnemySlots;
 
     /// <summary>The message currently on screen.</summary>
     public string CurrentMessage => currentMessage;
@@ -268,63 +454,16 @@ public partial class BattleEngine : IBattleContext
     /// <summary>A message is on screen waiting to be dismissed.</summary>
     public bool IsWaitingForConfirm => waitingForMessageConfirm;
 
-    /// <summary>Dismisses the message on screen and carries on with whatever it was waiting to trigger.</summary>
+    /// <summary>Dismisses the message on screen and goes on to what follows it.</summary>
     public void ConfirmMessage()
     {
         if (!waitingForMessageConfirm) return;
 
-        // Anything the message started lands now, so the battle logic never runs ahead of it
+        // Anything the message started lands now, so what is shown never runs ahead of it
         FlushPendingEffects();
 
         waitingForMessageConfirm = false;
-        var cb = currentMessageCallback;
-        currentMessageCallback = null;
-        cb?.Invoke();
-
-        // A timed animation (the Poké Ball throw) holds the queue; Update releases it when the animation ends
-        if (messageWaitTimer > 0f) return;
-
-        if (turnEventQueue.Count > 0)
-        {
-            AdvanceEventQueue();
-        }
-    }
-
-    private void QueueMessageSequence(List<string> msgs, Action? onComplete)
-    {
-        if (msgs == null || msgs.Count == 0)
-        {
-            onComplete?.Invoke();
-            return;
-        }
-
-        void QueueNext(int index)
-        {
-            if (index < msgs.Count - 1)
-            {
-                QueueMessage(msgs[index], () => QueueNext(index + 1));
-            }
-            else
-            {
-                QueueMessage(msgs[index], onComplete);
-            }
-        }
-
-        QueueNext(0);
-    }
-
-    /// <param name="onComplete">Runs once the player dismisses the message.</param>
-    /// <param name="onShow">Runs as the message appears (starts the animation the message describes).</param>
-    private void QueueMessage(string msg, Action? onComplete = null, Action? onShow = null)
-    {
-        turnEventQueue.Enqueue(() =>
-        {
-            currentMessage = msg;
-            waitingForMessageConfirm = true;
-            HUD.MenuState = BattleMenuState.Message;
-            currentMessageCallback = onComplete;
-            onShow?.Invoke();
-        });
+        Pump();
     }
 
     private void After(float delay, Action effect) => pendingEffects.Add((delay, effect));
@@ -351,15 +490,6 @@ public partial class BattleEngine : IBattleContext
             var effect = pendingEffects[0].Effect;
             pendingEffects.RemoveAt(0);
             effect();
-        }
-    }
-
-    private void AdvanceEventQueue()
-    {
-        if (turnEventQueue.Count > 0)
-        {
-            var next = turnEventQueue.Dequeue();
-            next.Invoke();
         }
     }
 

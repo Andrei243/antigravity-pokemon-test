@@ -11,8 +11,8 @@ public interface IBattleContext
     Random Random { get; }
     BattleFormat Format { get; }
 
-    /// <summary>Shows a message once the current step finishes; <paramref name="onShow"/> runs as it appears (HP changes, animations).</summary>
-    void Announce(string text, Action? onShow = null);
+    /// <summary>Says a line, after what has been said so far.</summary>
+    void Announce(string text);
 
     /// <summary>Raises or lowers a stat stage, with the usual messages. Returns false if nothing changed.</summary>
     bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false);
@@ -59,7 +59,10 @@ public abstract class BattleEffect
     /// <summary>Multiplies the attacking stat (Huge Power, Guts, Choice Band).</summary>
     public virtual float AttackMultiplier(Battler self, Move move) => 1f;
 
-    /// <summary>Multiplies the final damage (Life Orb, Expert Belt, Tinted Lens).</summary>
+    /// <summary>Multiplies the damage after the critical multiplier and before chance and the types (Life Orb).</summary>
+    public virtual float DamageBeforeTheRoll(Battler self, Move move) => 1f;
+
+    /// <summary>Multiplies the final damage, once it is known how well the type did (Expert Belt, Tinted Lens).</summary>
     public virtual float DamageMultiplier(Battler self, Battler target, Move move, float effectiveness) => 1f;
 
     /// <summary>The bonus for using a move of its own type (Adaptability raises it to 2).</summary>
@@ -89,8 +92,14 @@ public abstract class BattleEffect
     /// <summary>The holder ignores the other Pokémon's stat stages when they matter to it (Unaware).</summary>
     public virtual bool IgnoresOthersStatStages => false;
 
-    /// <summary>The holder may move first among moves of the same priority (Quick Claw).</summary>
-    public virtual bool MovesFirstInBracket(Random random) => false;
+    /// <summary>
+    /// The holder moves first among moves of the same priority this turn (Quick Claw). <paramref name="roll"/> is
+    /// the number its place drew for the turn, 0 to 65,535, as the original draws one for every place.
+    /// </summary>
+    public virtual bool MovesFirstInBracket(int roll) => false;
+
+    /// <summary>The holder always gets away from a wild Pokémon (Run Away, a Smoke Ball).</summary>
+    public virtual bool AlwaysEscapes => false;
 
     /// <summary>Critical hits do this many times their usual damage (Sniper: half as much again).</summary>
     public virtual float CriticalBoost => 1f;

@@ -77,7 +77,7 @@ After the trade, Platinum's rules apply: traded Pokémon gain 1.5× EXP; trade e
 
 Per Pokémon: `Id` (GUID), `OriginalTrainerName`, `OriginalTrainerId`, `EVs`, `HeldItem`, `Ability`, `Friendship`, `MetLocation`, `MetLevel`, `Ball`, `IsTraded` (derived from OT). Per player: `TrainerId`, `SecretId`, online key reference, link-battle record. IVs move to the real 0–31 range if they are still 0–15. Several of these the battle rework and the story plan need anyway (held items, abilities, friendship).
 
-*Ready from plan 06 · R1 (2026-10-04), for asks 2 and 3 below and for the rule sets:* `Battle/Sim/BattleRandom.cs` is the one seedable source (Platinum's own generator; its whole state is one number, so a resynchronised battle carries on), handed to a battle through `BattleSetup.Random`; presentation draws its own numbers already. The game's own battles still roll with `System.Random` until R2. A game is played by Platinum's rules or the modern ones (`Data/Ruleset.cs`, kept in the save), and a battle is given its rules (`BattleSetup.Rules`): two players whose saves differ need one set for the room, so add it to the room's rule sets in O6 (Flat 50 under Platinum's rules is the natural default), and count it into the data version.
+*Ready from plan 06 · R1 (2026-10-04), for asks 2 and 3 below and for the rule sets:* `Battle/Sim/BattleRandom.cs` is the one seedable source (Platinum's own generator; its whole state is one number, so a resynchronised battle carries on), handed to a battle through `BattleSetup.Random`; presentation draws its own numbers already. The game's own battles roll with it since R2. A game is played by Platinum's rules or the modern ones (`Data/Ruleset.cs`, kept in the save), and a battle is given its rules (`BattleSetup.Rules`): two players whose saves differ need one set for the room, so add it to the room's rule sets in O6 (Flat 50 under Platinum's rules is the natural default), and count it into the data version.
 
 ### Needs from the battle rework (ask now, cheap if done during the rework)
 
@@ -87,6 +87,14 @@ Per Pokémon: `Id` (GUID), `OriginalTrainerName`, `OriginalTrainerId`, `EVs`, `H
 4. **Battle state that can be serialised** (both parties, field effects, turn counter), so a reconnecting player can be resynced.
 
 If the rework already gives (1)–(3), session O3 shrinks to wiring.
+
+*Given by plan 06 · R2 (2026-10-05):* asks 1 to 3, and the replay.
+- **1.** The rules are `Battle/Sim/BattleCore`: no raylib, input or audio. It is asked (`Request`) and answered (`Submit` of `BattleChoice`s: a move by position and its target, a switch, an item by name, running) and writes a log of events (`BattleLog.cs`), which `BattleEngine` plays through the HUD, the animator and the sounds on the client. A server runs the core alone and sends each turn's `TakeLog()`.
+- **2.** `IBattleController` chooses for a side from inside the core, with the battle's own numbers (the opponents' `TrainerAi`). A local or a remote player is *not* one: their choices come in from outside through `Submit`, which is what keeps a battle a seed and a list of answers. For a link battle neither side has a controller (`CoreSetup.EnemyController = null`), and the core asks for both.
+- **3.** `BattleRandom` is the one source, and the game's own battles use it too now.
+- **The replay** is `BattleRecord` (the seed and every answer; plain data, it goes out as JSON and comes back the same battle) with `BattleCore.Record` and `Replay`; `BattleCoreTests.ARecordedBattleReplaysTheSame` is the "same seed + choices → same events" test O3 names.
+- **4 is half given.** A battle's state is plain objects with no screen attached, and a battle can be brought back anywhere by replaying its record, which is enough to resynchronise a reconnecting player as long as the server keeps the record. Nothing writes the state itself out; if O6 wants that (a long battle resumed without replaying it), it is a writer for `Battler` and the parties, with `BattleRandom.Resume` for the dice.
+- **Still O3's**: the events name Pokémon by reference (`Entered.Pokemon`, `ExpGained.Pokemon`), which a wire format has to turn into a side and a party position; a player sees the foe's log through the same events, so nothing hidden (the other side's choice before the turn is played) is in them, but that is worth a test of its own; the menus of `BattleEngine` assume the enemy side is chosen for; and a trainer's side sends its next Pokémon in the order of its party where a player would be asked.
 
 ### Risks
 

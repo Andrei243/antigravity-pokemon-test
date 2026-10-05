@@ -1011,10 +1011,31 @@ public class GameEngine
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
-            battle = new BattleEngine(playerParty, wildPkmn, playerInventory, playerPokedex, null, pcBoxStorage);
+            battle = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = playerParty,
+                Inventory = playerInventory,
+                Pokedex = playerPokedex,
+                PcStorage = pcBoxStorage,
+                WildPokemon = new List<Pokemon> { wildPkmn },
+                Conditions = BattleConditionsHere()
+            });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
+
+    /// <summary>What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do.</summary>
+    private Battle.Sim.BattleConditions BattleConditionsHere() => new()
+    {
+        Terrain = currentMap.ArenaAt(player.GridX, player.GridY) switch
+        {
+            BattleArena.Water => Battle.Sim.BattleTerrain.Water,
+            BattleArena.Cave => Battle.Sim.BattleTerrain.Cave,
+            _ => Battle.Sim.BattleTerrain.Land
+        },
+        Night = GameClock.IsNight,
+        HasCaught = species => playerPokedex.IsCaught(species.DexNumber)
+    };
 
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
@@ -1039,7 +1060,8 @@ public class GameEngine
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
                 Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
-                Trainers = new List<Trainer> { trainer }
+                Trainers = new List<Trainer> { trainer },
+                Conditions = BattleConditionsHere()
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainer = trainerNpc;

@@ -38,6 +38,7 @@ public static class AbilityEffectTable
         Add("Rock Head", new FlagEffect { NoRecoil = true });
         Add("Mold Breaker", new FlagEffect { BreakAbilities = true });
         Add("Unaware", new FlagEffect { Unaware = true });
+        Add("Run Away", new FlagEffect { Escapes = true });
         Add("Scrappy", new Scrappy());
 
         // On entry

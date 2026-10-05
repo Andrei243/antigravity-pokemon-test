@@ -33,8 +33,11 @@ public sealed class Ruleset
     /// <summary>A burn takes one part in this many of the Pokémon's HP at the end of each turn.</summary>
     public int BurnDamageDivisor { get; private init; } = 8;
 
+    /// <summary>Paralysis divides Speed by this.</summary>
+    public int ParalysisSpeedDivisor { get; private init; } = 4;
+
     /// <summary>What paralysis multiplies Speed by.</summary>
-    public float ParalysisSpeed { get; private init; } = 0.25f;
+    public float ParalysisSpeed => 1f / ParalysisSpeedDivisor;
 
     /// <summary>Electric types can't be paralysed (from Generation 6).</summary>
     public bool ElectricTypesCantBeParalyzed { get; private init; }
@@ -63,7 +66,7 @@ public sealed class Ruleset
         CriticalOdds = new[] { 24, 8, 2, 1, 1 },
         CriticalMultiplier = 1.5f,
         BurnDamageDivisor = 16,
-        ParalysisSpeed = 0.5f,
+        ParalysisSpeedDivisor = 2,
         ElectricTypesCantBeParalyzed = true,
         SleepLengths = 3,
         ConfusionSelfHitOdds = 3,

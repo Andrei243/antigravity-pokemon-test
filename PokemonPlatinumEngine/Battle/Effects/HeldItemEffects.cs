@@ -85,7 +85,15 @@ public static class HeldItemEffects
         ["Salac Berry"] = new PinchStatBerry(StatType.Speed),
         ["Petaya Berry"] = new PinchStatBerry(StatType.SpAttack),
         ["Apicot Berry"] = new PinchStatBerry(StatType.SpDefense),
+
+        // What the battle's own rules read off the holder: EXP and getting away
+        ["Exp. Share"] = new ReadByTheRules(),
+        ["Lucky Egg"] = new ReadByTheRules(),
+        ["Smoke Ball"] = new ReadByTheRules { Escapes = true },
     };
+
+    /// <summary>Hold effects the battle's own rules ask for by name (the EXP a foe leaves), as <c>items.json</c> names them.</summary>
+    public const string ExpShare = "ExpShare", ExpUp = "ExpUp";
 
     /// <summary>The battle effect of a held item, or null if it does nothing while held.</summary>
     public static BattleEffect? For(ItemData? item) => item != null && Effects.TryGetValue(item.Name, out var e) ? e : null;
@@ -129,7 +137,8 @@ internal sealed class ShellBell : BattleEffect
 
 internal sealed class LifeOrb : BattleEffect
 {
-    public override float DamageMultiplier(Battler self, Battler target, Move move, float effectiveness) => 1.3f;
+    // Before the roll and the types, where the original puts it
+    public override float DamageBeforeTheRoll(Battler self, Move move) => 1.3f;
 
     public override void AfterAttacking(IBattleContext ctx, Battler self, Move move, IReadOnlyList<(Battler Target, int Damage)> hits)
     {
@@ -172,9 +181,17 @@ internal sealed class EvasionItem(float factor) : BattleEffect
     public override float EvasionMultiplier(Battler self) => factor;
 }
 
+/// <summary>An item with no hook of its own: a rule of the battle asks whether it is held (Exp. Share, Lucky Egg).</summary>
+internal sealed class ReadByTheRules : BattleEffect
+{
+    public bool Escapes;
+    public override bool AlwaysEscapes => Escapes;
+}
+
 internal sealed class QuickClaw : BattleEffect
 {
-    public override bool MovesFirstInBracket(Random random) => random.Roll(RollKind.QuickClaw, 100) < 20;
+    // One turn in five, as the original has it: the turn's number for the place leaves nothing over 5
+    public override bool MovesFirstInBracket(int roll) => roll % 5 == 0;
 }
 
 /// <summary>King's Rock, Razor Fang: a 10% chance of flinching on damaging moves that don't already flinch.</summary>
