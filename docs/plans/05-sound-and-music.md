@@ -5,11 +5,12 @@
 ## Where we are
 
 Since 2026-10-01 (the "better music" session):
-- **Music engine** (`Audio/`): our own synthesiser (40 voices, band-limited wavetables with brightness envelopes, FM, vibrato, unison, synthesised drum kit, reverb) at the DS's 32,768 Hz, fed to a raylib audio stream from its audio thread. `MusicMixer` fades between areas, keeps the same theme running, cuts in for battles, and pauses the music under fanfares.
+- **Music engine** (`Audio/`): our own synthesiser (40 voices, band-limited wavetables with brightness envelopes, FM, vibrato, unison, synthesised drum kit, reverb) at the DS's 32,768 Hz, fed to a raylib audio stream from its audio thread. `AudioMixer` fades between areas, keeps the same theme running, cuts in for battles, pauses the music under fanfares, plays the sound effects over it (eight at once, panned) and dips it under a cry.
+- **Buses and volumes** (2026-10-05, A1): the mixer has a bus with its own volume for the music, the fanfares, the sound effects, the cries and the ambience (`AudioBus`); the options screen sets the music's and the effects' (`GameSettings.MusicVolume`, `SoundVolume`, 0 to 100 in steps of 10), and the fanfares follow the music's, the cries and the ambience the effects', until A7 gives them settings of their own. The sound effects are `Audio/SoundBank`: synthesised in code on first use, at the synthesiser's rate, with rounded ends; `AudioManager.PlaySound(name, pan)` hands them to the mixer, and raylib's own `Sound`s are gone.
 - **Songs** are text files in a small MML format under `Data/music/<region>/` and `Data/music/common/` (`docs/music-format.md`): 19 original tracks. Kanto: Pallet Town, a Kanto wild battle. Sinnoh: Twinleaf, Route 201, Routes 202–204, Sandgem, Jubilife, the lakes, Rowan's lab. Shared: title, Pokémon Center, wild, trainer and gym leader battles, wild and trainer victories, and the heal, item, level-up and new-Pokémon fanfares. Area themes have night arrangements (softer instruments, slower, quieter drums).
 - **Director**: maps name their theme (`bgmTrack`); battles pick the wild, trainer, rival or gym theme from the opponent; roles look in the region's folder before `common`. Healing, level-ups (battle and Rare Candy) and receiving a starter play fanfares.
-- **Checks**: `tools/MusicRender` renders WAVs and reports levels, clipping and clashing notes; `MusicTests` covers the director, the mixer and the parser, and renders every song.
-- Still from before: about a dozen synthesised sound effects played through raylib `Sound`s; no cries, ambience or volume settings.
+- **Checks**: `tools/MusicRender` renders WAVs and reports levels, clipping and clashing notes, draws a spectrogram of each song with `--spectrogram`, and with `--sounds` renders every sound effect with its spectrogram and a click check; `MusicTests` covers the director, the mixer and the parser, and renders every song; `SoundTests` renders every sound and holds the buses to their jobs (a sound over the music, each bus's volume on its own, a cry's dip, a full bank, panning, mute).
+- Still from before: the thirteen sound effects are the old simple ones (A3 designs the full set); no cries or ambience.
 
 **Decision (2026-10-01)**: the music is synthesised by our own code from MML text rather than MIDI through MeltySynth and a SoundFont, so the game keeps generating all of its audio in code with no downloaded assets. The override folder and a SoundFont remain possible later if the built-in instruments fall short.
 
@@ -90,7 +91,7 @@ Rain, wind, snow, waterfalls, the sea, cave drips; positional sounds (panned by 
 
 ## Status
 
-- [ ] A1 Audio engine — music part done (synth, mixer, stream, fades, render tool); still to do: sound effects through the mixer, buses and volume options
+- [x] A1 Audio engine — done 2026-10-05: synth, mixer, stream, fades, render tool (2026-10-01); sound effects through the mixer, buses, the options' volumes, the render tool's sounds mode and spectrograms, and the tests (2026-10-05). Decided against MeltySynth and a SoundFont (decision of 2026-10-01, above), so the "instrument bank" of the architecture is `Audio/Instrument`.
 - [ ] A2 Music director and sound map — area, battle, victory and fanfare rules done; still to do: trainer eye music, bike and surf, the low-HP alarm, a sound map file
 - [ ] A3 Sound effects
 - [ ] A4 Cries

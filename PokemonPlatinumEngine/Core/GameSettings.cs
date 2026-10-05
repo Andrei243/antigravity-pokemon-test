@@ -37,6 +37,15 @@ public sealed class GameSettings
     public bool VSync { get; set; } = true;
     public bool Muted { get; set; }
 
+    /// <summary>How loud the music and the fanfares play, 0 to 100.</summary>
+    public int MusicVolume { get; set; } = 100;
+
+    /// <summary>How loud the sound effects (and the cries) play, 0 to 100.</summary>
+    public int SoundVolume { get; set; } = 100;
+
+    /// <summary>The options move a volume by this much.</summary>
+    public const int VolumeStep = 10;
+
     /// <summary>How fast what people say is written out.</summary>
     public TextSpeed TextSpeed { get; set; } = TextSpeed.Normal;
 

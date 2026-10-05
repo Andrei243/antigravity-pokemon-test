@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using PokemonPlatinumEngine.Audio;
@@ -8,17 +7,16 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Core;
 
 /// <summary>
-/// Sound effects (short synthesised samples played through raylib) and music (songs from <c>Data/music</c>
-/// rendered by <see cref="MusicMixer"/> into an audio stream that raylib's audio thread pulls from).
-/// Everything here is a no-op until <see cref="Initialize"/> has opened the audio device, so the game's logic and
-/// tests can call it freely.
+/// Everything the game hears: music (songs from <c>Data/music</c>), fanfares and sound effects (<see cref="SoundBank"/>),
+/// mixed by one <see cref="AudioMixer"/> into an audio stream that raylib's audio thread pulls from. The options'
+/// volumes set the mixer's buses (<see cref="SetVolumes"/>). Everything here is a no-op until <see cref="Initialize"/>
+/// has opened the audio device, so the game's logic and tests can call it freely.
 /// </summary>
 public static class AudioManager
 {
-    private static readonly Dictionary<string, Sound> SoundEffects = new(StringComparer.OrdinalIgnoreCase);
-    private static readonly MusicMixer music = new();
+    private static readonly AudioMixer mixer = new();
     private static bool isInitialized = false;
-    private static AudioStream musicStream;
+    private static AudioStream stream;
     private static bool isMuted = false;
     public static bool IsMuted => isMuted;
 
@@ -26,7 +24,10 @@ public static class AudioManager
     public static string? Region { get; set; }
 
     /// <summary>The song playing now, or about to once the last one has faded.</summary>
-    public static string? CurrentMusic => music.CurrentId;
+    public static string? CurrentMusic => mixer.CurrentId;
+
+    /// <summary>The sounds <see cref="PlaySound"/> knows, by name: what a script's <c>sound</c> may ask for.</summary>
+    public static string[] SoundNames => SoundBank.Names;
 
     public static void Initialize()
     {
@@ -37,155 +38,13 @@ public static class AudioManager
             if (Raylib.IsAudioDeviceReady())
             {
                 isInitialized = true;
-                GenerateSoundEffects();
-                StartMusicStream();
+                SoundBank.Preload();
+                StartStream();
             }
         }
         catch
         {
             // Fallback gracefully
-        }
-    }
-
-    /// <summary>The sounds <see cref="PlaySound"/> knows, by name: what a script's <c>sound</c> may ask for.</summary>
-    public static readonly string[] SoundNames =
-    {
-        "select", "cursor", "cancel", "bump", "grass", "exclaim", "hit_normal", "hit_super", "faint", "ball_throw", "ball_shake", "levelup", "heal"
-    };
-
-    private static void GenerateSoundEffects()
-    {
-        RegisterSynthSound("select", 880f, 0.08f, WaveType.Square);
-        RegisterSynthSound("cursor", 440f, 0.04f, WaveType.Square);
-        RegisterSynthSound("cancel", 220f, 0.10f, WaveType.Triangle);
-        RegisterSamples("bump", SynthesizeBump());
-        RegisterSynthSound("grass", 600f, 0.06f, WaveType.Noise);
-        RegisterSynthSound("exclaim", 1318.5f, 0.18f, WaveType.Square);
-        RegisterSynthSound("hit_normal", 240f, 0.12f, WaveType.Noise);
-        RegisterSynthSound("hit_super", 380f, 0.20f, WaveType.Square);
-        RegisterSynthSound("faint", 150f, 0.50f, WaveType.Sawtooth);
-        RegisterSynthSound("ball_throw", 700f, 0.15f, WaveType.Sine);
-        RegisterSynthSound("ball_shake", 400f, 0.10f, WaveType.Triangle);
-        RegisterSynthSound("levelup", 1046.5f, 0.35f, WaveType.Sine);
-        RegisterSynthSound("heal", 659.25f, 0.40f, WaveType.Sine);
-    }
-
-    private enum WaveType { Sine, Square, Triangle, Sawtooth, Noise }
-
-    private const uint SampleRate = 22050;
-
-    private static void RegisterSynthSound(string name, float baseFreq, float durationSec, WaveType type)
-    {
-        int totalSamples = (int)(SampleRate * durationSec);
-        var samples = new float[totalSamples];
-        Random rng = new(42);
-
-        for (int i = 0; i < totalSamples; i++)
-        {
-            float t = (float)i / SampleRate;
-            float progress = (float)i / totalSamples;
-            float envelope = 1.0f - progress;
-            float sample = 0f;
-
-            float freq = baseFreq;
-            if (name == "select") freq += progress * 400f;
-            if (name == "faint") freq -= progress * 80f;
-
-            switch (type)
-            {
-                case WaveType.Sine:
-                    sample = MathF.Sin(2f * MathF.PI * freq * t);
-                    break;
-                case WaveType.Square:
-                    sample = MathF.Sin(2f * MathF.PI * freq * t) >= 0 ? 0.7f : -0.7f;
-                    break;
-                case WaveType.Triangle:
-                    sample = (MathF.Abs((t * freq % 1f) - 0.5f) * 4f) - 1f;
-                    break;
-                case WaveType.Sawtooth:
-                    sample = ((t * freq % 1f) * 2f) - 1f;
-                    break;
-                case WaveType.Noise:
-                    sample = (float)(rng.NextDouble() * 2.0 - 1.0);
-                    break;
-            }
-
-            samples[i] = sample * envelope * (12000f / 32767f);
-        }
-
-        RegisterSamples(name, samples);
-    }
-
-    /// <summary>
-    /// A soft, low "thud" for walking into something: a sine body whose pitch drops quickly, with a
-    /// little low-passed noise for the impact and a short fade-in so it doesn't click.
-    /// </summary>
-    private static float[] SynthesizeBump()
-    {
-        const float duration = 0.14f;
-        var samples = new float[(int)(SampleRate * duration)];
-        var rng = new Random(7);
-        float phase = 0f, noise = 0f;
-
-        for (int i = 0; i < samples.Length; i++)
-        {
-            float t = (float)i / SampleRate;
-            float freq = 105f + 150f * MathF.Exp(-t * 30f);
-            phase += MathF.Tau * freq / SampleRate;
-
-            // Second harmonic keeps the thud audible on small speakers
-            float body = (MathF.Sin(phase) + 0.35f * MathF.Sin(phase * 2f)) * MathF.Exp(-t * 26f);
-            noise += ((float)rng.NextDouble() * 2f - 1f - noise) * 0.11f;
-            float impact = noise * MathF.Exp(-t * 70f) * 1.4f;
-            float attack = Math.Min(1f, t / 0.004f);
-
-            samples[i] = (body * 0.7f + impact) * attack * 0.42f;
-        }
-        return samples;
-    }
-
-    /// <summary>Loads mono samples in [-1, 1] as a sound effect, replacing any earlier sound of that name.</summary>
-    private static unsafe void RegisterSamples(string name, float[] samples)
-    {
-        try
-        {
-            int byteCount = samples.Length * sizeof(short);
-            IntPtr unmanagedMem = Marshal.AllocHGlobal(byteCount);
-            short* ptr = (short*)unmanagedMem.ToPointer();
-            for (int i = 0; i < samples.Length; i++)
-            {
-                ptr[i] = (short)(Math.Clamp(samples[i], -1f, 1f) * 32767f);
-            }
-
-            Wave wave = new()
-            {
-                SampleCount = (uint)samples.Length,
-                SampleRate = SampleRate,
-                SampleSize = 16,
-                Channels = 1,
-                Data = (void*)unmanagedMem
-            };
-
-            Sound snd = Raylib.LoadSoundFromWave(wave);
-            Marshal.FreeHGlobal(unmanagedMem);
-            if (SoundEffects.TryGetValue(name, out var oldSnd))
-            {
-                Raylib.UnloadSound(oldSnd);
-            }
-            SoundEffects[name] = snd;
-        }
-        catch
-        {
-            // Fallback gracefully
-        }
-    }
-
-    public static void PlaySound(string soundName)
-    {
-        if (isMuted || !isInitialized) return;
-        if (SoundEffects.TryGetValue(soundName, out var snd))
-        {
-            Raylib.PlaySound(snd);
         }
     }
 
@@ -193,33 +52,46 @@ public static class AudioManager
     /// The audio thread asks for samples about every 30 ms; the mixer renders them on that thread, so the music
     /// keeps going while the game thread is busy loading a map.
     /// </summary>
-    private static unsafe void StartMusicStream()
+    private static unsafe void StartStream()
     {
         try
         {
             Raylib.SetAudioStreamBufferSizeDefault(1024);
-            musicStream = Raylib.LoadAudioStream((uint)Synthesizer.SampleRate, 32, 2);
-            Raylib.SetAudioStreamCallback(musicStream, &FillMusicStream);
-            Raylib.PlayAudioStream(musicStream);
+            stream = Raylib.LoadAudioStream((uint)Synthesizer.SampleRate, 32, 2);
+            Raylib.SetAudioStreamCallback(stream, &FillStream);
+            Raylib.PlayAudioStream(stream);
         }
         catch
         {
-            // Fallback gracefully: the game runs without music
+            // Fallback gracefully: the game runs without sound
         }
     }
 
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
-    private static unsafe void FillMusicStream(void* buffer, uint frames)
+    private static unsafe void FillStream(void* buffer, uint frames)
     {
         var output = new Span<float>(buffer, (int)frames * 2);
         try
         {
-            music.Render(output);
+            mixer.Render(output);
         }
         catch
         {
             output.Clear();
         }
+    }
+
+    /// <summary>Plays a sound effect by name, over the music. <paramref name="pan"/> is -1 for the left, 1 for the right.</summary>
+    public static void PlaySound(string soundName, float pan = 0f)
+    {
+        if (isMuted || !isInitialized) return;
+        var sound = SoundBank.Get(soundName);
+        if (sound == null)
+        {
+            Console.WriteLine($"WARNING: AUDIO: no sound '{soundName}'");
+            return;
+        }
+        mixer.PlaySound(sound, AudioBus.Sound, 1f, pan);
     }
 
     /// <summary>
@@ -235,7 +107,7 @@ public static class AudioManager
             return;
         }
         if (!isInitialized) return;
-        music.Play(song, MusicDirector.IsNightArrangement(GameClock.Now), immediate);
+        mixer.Play(song, MusicDirector.IsNightArrangement(GameClock.Now), immediate);
     }
 
     /// <summary>
@@ -255,31 +127,39 @@ public static class AudioManager
         if (!isInitialized) return;
         string? id = MusicDirector.Resolve(role, Region, MusicLibrary.Exists);
         var song = id == null ? null : MusicLibrary.Get(id);
-        if (song != null) music.PlayFanfare(song);
+        if (song != null) mixer.PlayFanfare(song);
     }
 
     /// <summary>Fades the music out.</summary>
     public static void StopMusic()
     {
-        if (isInitialized) music.Stop();
+        if (isInitialized) mixer.Stop();
+    }
+
+    /// <summary>
+    /// The options' volumes, 0 to 1: the music's bus carries the music and the fanfares, the sound's the effects,
+    /// the cries and the ambience.
+    /// </summary>
+    public static void SetVolumes(float music, float sound)
+    {
+        mixer.SetVolume(AudioBus.Music, music);
+        mixer.SetVolume(AudioBus.Fanfare, music);
+        mixer.SetVolume(AudioBus.Sound, sound);
+        mixer.SetVolume(AudioBus.Cry, sound);
+        mixer.SetVolume(AudioBus.Ambience, sound);
     }
 
     public static void ToggleMute()
     {
         isMuted = !isMuted;
-        music.Muted = isMuted;
+        mixer.Muted = isMuted;
     }
 
     public static void Close()
     {
         if (!isInitialized) return;
-        foreach (var kvp in SoundEffects)
-        {
-            Raylib.UnloadSound(kvp.Value);
-        }
-        SoundEffects.Clear();
-        Raylib.StopAudioStream(musicStream);
-        Raylib.UnloadAudioStream(musicStream);
+        Raylib.StopAudioStream(stream);
+        Raylib.UnloadAudioStream(stream);
         Raylib.CloseAudioDevice();
         isInitialized = false;
     }

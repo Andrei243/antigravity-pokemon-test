@@ -249,6 +249,7 @@ public partial class GameEngine
         renderContext.SetQuality(Settings.Quality);
         GameClock.Fixed = Settings.TimeOfDay;
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
+        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f);
         dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         if (window) WindowSettings.Apply(Settings);
     }

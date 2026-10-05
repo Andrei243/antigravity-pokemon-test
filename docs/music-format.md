@@ -7,9 +7,10 @@ The game's music is original, written for this game in the style of the DS sound
 - **`Audio/Synthesizer`**: up to 40 voices at the DS's 32,768 Hz output rate. Each voice is a band-limited wavetable that crossfades from a bright spectrum to a mellow one, with optional FM, breath noise, vibrato, a glide into the note, detuned unison and an ADSR envelope; the drum kit is synthesised separately. A Freeverb-style reverb is shared by all voices.
 - **`Audio/Instrument`**: the instrument bank. Gains are balanced so every instrument plays a middle-C phrase at about the same loudness (`MusicRender --calibrate` prints the levels).
 - **`Audio/SongPlayer`**: plays one song, starting notes on a 1 ms grid, wrapping at the loop point, and applying the night arrangement.
-- **`Audio/MusicMixer`**: what the game hears. A new song fades the old one out first (or cuts in, for battles); the same song carries on without restarting; a fanfare pauses the music, plays once and lets the music come back where it stopped. It ends with a 30 Hz high-pass and a soft limiter.
+- **`Audio/AudioMixer`**: what the game hears, on five buses (`AudioBus`: music, fanfares, sound effects, cries, ambience), each with its own volume. A new song fades the old one out first (or cuts in, for battles); the same song carries on without restarting; a fanfare pauses the music, plays once and lets the music come back where it stopped; sound effects play over the music, up to eight at once (a further one takes the place of the one nearest its end), panned; the music dips to 45% under anything on the cry bus and comes back once it is over. It ends with a 30 Hz high-pass and a soft limiter.
+- **`Audio/SoundBank`**: the sound effects, synthesised in code the first time each is asked for (oscillators, noise, filters, envelopes, pitch sweeps), brought to their peak level and given rounded ends so they never click. `SoundBank.Names` is the list a script's `sound` may name.
 - **`Audio/MusicDirector`**: decides what plays, with no audio device. Maps name their theme in `bgmTrack`. Roles (title, battles, victories, fanfares) look in the current region's folder first, then `common`, then a more general role (`battle_gym` falls back to `battle_trainer`).
-- **`Core/AudioManager`**: opens a raylib audio stream whose callback runs the mixer on raylib's audio thread, so music keeps playing while the game thread loads a map. `PlayMusic(id)`, `PlayMusic(role)`, `PlayFanfare(role)`, `Region`.
+- **`Core/AudioManager`**: opens a raylib audio stream whose callback runs the mixer on raylib's audio thread, so music keeps playing while the game thread loads a map. `PlayMusic(id)`, `PlayMusic(role)`, `PlayFanfare(role)`, `PlaySound(name, pan)`, `Region`. The options' two volumes (music and sound effects, 0 to 100) reach the buses through `SetVolumes`: the music's covers the fanfares, the effects' the cries and the ambience, until those have settings of their own (plan 05 · A7).
 
 At night (`TimeOfDay.Night` and `LateNight`) area themes play their night arrangement: each track may name a softer `night=` instrument, the tempo drops by the song's `nighttempo`, drums are quieter and the reverb a little wetter. The arrangement is chosen when the song starts, as Platinum does on entering an area.
 
@@ -85,4 +86,10 @@ dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--n
 dotnet run --project tools/MusicRender -- --calibrate
 ```
 
-`MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note. `--stems` adds each track's level, for balancing the mix. `ffmpeg -i song.wav -lavfi showspectrumpic=s=1400x600:fscale=log spec.png` draws a spectrogram.
+`MusicRender` writes a WAV per song (the intro, the loop twice and a fade) and prints its length, loop length, peak and RMS level, CPU cost, and any **clashes**: two parts a minor second or minor ninth apart on a beat, which is usually a wrong note. `--stems` adds each track's level, for balancing the mix. `--spectrogram` also writes a picture of each song: time left to right, 0 to 8 kHz bottom to top, black through blue, magenta and orange to white over 80 dB, which the Read tool can look at (a quiet intro, the beat, the loop's seam and a part that is too loud all show).
+
+```bash
+dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
+```
+
+`--sounds` renders every sound effect (or the ones named) through the mixer as the game plays it, a WAV and a spectrogram each (`sound_<name>`), and prints its length, peak and RMS level, the frequency with the most energy, its first and last sample (a sound that doesn't start and stop at nothing clicks, and the tool exits with 2) and its DC offset. `SoundTests` holds the same for every sound of the bank, and that the buses mix as they should.

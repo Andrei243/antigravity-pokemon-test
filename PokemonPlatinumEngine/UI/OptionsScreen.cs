@@ -7,12 +7,12 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>The settings the options screen offers, in the order of its rows.</summary>
-public enum OptionRow { TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay, Sound }
+public enum OptionRow { TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay, Sound, MusicVolume, SoundVolume }
 
 /// <summary>
-/// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day and sound.
-/// Changes apply at once; the caller saves the settings when the screen reports a change. The volumes of music
-/// and effects come with the mixer's buses (plan 05).
+/// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, sound on or
+/// off, and the volumes of the music and the sound effects (the mixer's buses). Changes apply at once; the caller
+/// saves the settings when the screen reports a change.
 /// </summary>
 public class OptionsScreen
 {
@@ -94,6 +94,12 @@ public class OptionsScreen
             case OptionRow.Sound:
                 s.Muted = !s.Muted;
                 break;
+            case OptionRow.MusicVolume:
+                s.MusicVolume = Math.Clamp(s.MusicVolume + step * GameSettings.VolumeStep, 0, 100);
+                break;
+            case OptionRow.SoundVolume:
+                s.SoundVolume = Math.Clamp(s.SoundVolume + step * GameSettings.VolumeStep, 0, 100);
+                break;
         }
     }
 
@@ -119,7 +125,9 @@ public class OptionsScreen
         }, s.TimeOfDay.HasValue
             ? "The world stays at this time of day."
             : "Follows your computer's clock, like the original: morning from 4, day from 10, twilight from 17, night from 20."),
-        _ => ("Sound", s.Muted ? "Off" : "On", "Music and sound effects (also the M key).")
+        OptionRow.Sound => ("Sound", s.Muted ? "Off" : "On", "Music and sound effects (also the M key)."),
+        OptionRow.MusicVolume => ("Music", $"{s.MusicVolume}%", "How loud the music and the fanfares play."),
+        _ => ("Sound effects", $"{s.SoundVolume}%", "How loud the sound effects and the cries play.")
     };
 
     public void Draw(int sw, int sh, GameSettings settings)
@@ -129,7 +137,7 @@ public class OptionsScreen
         ModernUi.ScreenTitle("OPTIONS");
         ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
 
-        const float pitch = 110, height = 98;
+        const float pitch = 86, height = 78;
         for (int i = 0; i < Rows.Length; i++)
         {
             var (label, value, _) = Describe(settings, Rows[i]);
