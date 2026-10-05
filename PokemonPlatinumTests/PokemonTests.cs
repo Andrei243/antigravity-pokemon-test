@@ -634,7 +634,12 @@ public class PokemonTests
             "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
             "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata",
             "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Sandshrew", "Sandslash", "Nidoran♀", "Nidorina", "Nidoqueen",
-            "Nidoran♂", "Nidorino", "Nidoking", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Oddish", "Gloom", "Vileplume"
+            "Nidoran♂", "Nidorino", "Nidoking", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Oddish", "Gloom", "Vileplume",
+            // Kanto's second batch, Paras to Kingler
+            "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Mankey", "Primeape",
+            "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Bellsprout", "Weepinbell", "Victreebel",
+            "Slowpoke", "Slowbro", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster",
+            "Drowzee", "Hypno", "Krabby", "Kingler"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));

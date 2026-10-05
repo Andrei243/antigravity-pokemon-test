@@ -7,9 +7,10 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 // The regional forms of the hand-built species, and Dialga's and Palkia's Origin Formes, hand-built like the species
-// (after plan 03 · D11), in National Pokédex order: the Alolan Rattata line, Alolan Raichu, the Alolan Sandshrew and
-// Vulpix lines, the Alolan Geodude line, Galarian Ponyta, Rapidash and Mr. Mime, Paldean Wooper and Hisuian Sneasel.
-// Each is our own sculpt after the design.
+// (after plan 03 · D11), in National Pokédex order: the Alolan Rattata line, Alolan Raichu, the Alolan Sandshrew,
+// Vulpix and Diglett lines, Alolan and Galarian Meowth, Alolan Persian, the Hisuian Growlithe line, the Alolan Geodude
+// line, Galarian Ponyta and Rapidash, the Galarian Slowpoke line, Galarian Farfetch'd, the Alolan Grimer line, Galarian
+// Mr. Mime, Paldean Wooper and Hisuian Sneasel. Each is our own sculpt after the design.
 internal static partial class PokemonModels
 {
     // ------------------------------------------------------------------ The Alolan Rattata line
@@ -84,6 +85,26 @@ internal static partial class PokemonModels
     private static PokeBuilder VulpixAlola() => VulpixBuild(true);
 
     private static PokeBuilder NinetalesAlola() => NinetalesBuild(true);
+
+    // ------------------------------------------------------------------ The Alolan Diglett line
+
+    private static PokeBuilder DiglettAlola() => DiglettBuild(true);
+
+    private static PokeBuilder DugtrioAlola() => DugtrioBuild(true);
+
+    // ------------------------------------------------------------------ The Alolan and Galarian Meowth, Alolan Persian
+
+    private static PokeBuilder MeowthAlola() => MeowthBuild(true, false);
+
+    private static PokeBuilder MeowthGalar() => MeowthBuild(false, true);
+
+    private static PokeBuilder PersianAlola() => PersianBuild(true);
+
+    // ------------------------------------------------------------------ The Hisuian Growlithe line
+
+    private static PokeBuilder GrowlitheHisui() => GrowlitheBuild(true);
+
+    private static PokeBuilder ArcanineHisui() => ArcanineBuild(true);
 
     // ------------------------------------------------------------------ the Alolan Geodude line
 
@@ -306,6 +327,20 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Eye(head, V(0.05f * s, 0.82f, 0.37f * k), V(0.8f * s, 0.1f, 0.6f), 0.022f, Rgb(140, 100, 210)));
         return b;
     }
+
+    // ------------------------------------------------------------------ The Galarian Slowpoke line, Galarian Farfetch'd
+
+    private static PokeBuilder SlowpokeGalar() => SlowpokeBuild(true);
+
+    private static PokeBuilder SlowbroGalar() => SlowbroBuild(true);
+
+    private static PokeBuilder FarfetchdGalar() => FarfetchdBuild(true);
+
+    // ------------------------------------------------------------------ The Alolan Grimer line
+
+    private static PokeBuilder GrimerAlola() => SludgeBuild(false, true);
+
+    private static PokeBuilder MukAlola() => SludgeBuild(true, true);
 
     // ------------------------------------------------------------------ Galarian Mr. Mime
 

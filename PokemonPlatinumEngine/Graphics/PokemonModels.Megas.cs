@@ -409,6 +409,103 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
+    // ------------------------------------------------------------------ Mega Victreebel
+
+    private static PokeBuilder VictreebelMega()
+    {
+        var b = new PokeBuilder("Victreebel-Mega", 0.9f, BodyPlan.Floating, V(0, 0.3f, 0)) { Coat = Leaf };
+        var yellow = Rgb(238, 228, 88);
+        var spot = Rgb(170, 186, 70);
+        var vine = Rgb(140, 92, 56);
+        var leaf = Rgb(112, 178, 86);
+        var autumn = Rgb(236, 118, 58);
+        var lip = Rgb(232, 172, 160);
+        // Its pitcher has swollen into a great round gourd, spotted
+        var c = V(0, 0.29f, 0);
+        var r = V(0.3f, 0.28f, 0.28f);
+        b.Ell(Body, c, r, yellow);
+        foreach (var d in new[] { V(0.5f, 0.3f, 0.8f), V(-0.6f, 0.1f, 0.75f), V(0.1f, -0.2f, 1f), V(-0.2f, 0.55f, 0.8f), V(0.85f, -0.1f, 0.4f), V(-0.85f, -0.25f, 0.3f), V(0.6f, 0.4f, -0.6f), V(-0.5f, 0.2f, -0.8f), V(0.2f, -0.3f, -0.9f) })
+            b.PaintEll(Body, Out(c, r, default, d), V(0.03f, 0.026f, 0.03f), spot);
+        // Vines trailing down over it from its neck, with leaves at their ends
+        PokeBuilder.Both(s =>
+        {
+            var path = new[] { V(0.05f * s, 0.57f, 0.04f) }.Concat(new[] { V(0.15f, 0.95f, 0.3f), V(0.55f, 0.65f, 0.5f), V(0.8f, 0.25f, 0.55f), V(0.85f, -0.05f, 0.55f) }
+                .Select(d => Out(c, r, default, V(d.X * s, d.Y, d.Z)))).ToArray();
+            b.Tube(Body, Smooth(3, path), 0.015f, 0.013f, vine, blend: 0f);
+            Frond(b, Body, path[^1], path[^1] + V(0.06f * s, -0.09f, 0.1f), 0.045f, leaf, V(s, 0, 1f), 0.2f, Leaf);
+        });
+        // On top, its old head, bound round with its own vine, under a crown of leaves turning to autumn
+        int head = b.Head(V(0, 0.54f, 0));
+        var hc = V(0, 0.65f, 0.02f);
+        var hr = V(0.085f, 0.095f, 0.085f);
+        b.Limb(head, V(0, 0.52f, 0), hc, 0.07f, 0.07f, yellow);
+        b.Ell(head, hc, hr, yellow);
+        foreach (float y in new[] { 0.56f, 0.6f, 0.64f })
+            b.Torus(head, V(0, y, 0.01f), 0.073f, 0.013f, vine, V(8f, 0, 0), mat: Leaf);
+        for (int i = 0; i < 9; i++)
+        {
+            float a = (i - 4) * 20f * Degree;
+            var dir = Vector3.Normalize(V(MathF.Sin(a) * 1.3f, MathF.Cos(a), -0.3f + 0.12f * (i % 2)));
+            var root = hc + V(0, 0.06f, -0.02f);
+            PointedLeaf(b, head, root, root + dir * 0.3f, 0.07f, leaf, V(0, 0.4f, 1f));
+            b.PaintEll(head, root + dir * 0.25f, V(0.085f, 0.1f, 0.05f), autumn, Euler(dir));
+        }
+        BellMouth(b, head, Out(hc, hr, default, V(0, -0.1f, 1f)), V(0, -0.1f, 1f), 0.034f, lip, Rgb(110, 48, 62));
+        PokeBuilder.Both(s => b.Eye(head, Out(hc, hr, default, V(0.5f * s, 0.4f, 0.75f)), V(0.5f * s, 0.4f, 0.75f), 0.02f, sclera: true, pupil: Black));
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Mega Slowbro
+
+    private static PokeBuilder SlowbroMega()
+    {
+        var b = new PokeBuilder("Slowbro-Mega", 0.9f, BodyPlan.Floating, V(0, 0.45f, 0)) { Coat = Shell }.Hover();
+        var pink = Rgb(240, 160, 184);
+        var cream = Rgb(246, 232, 204);
+        var shell = Rgb(178, 198, 212);
+        var band = Rgb(138, 158, 178);
+        var spike = Rgb(104, 108, 120);
+        // The Shellder has swallowed it whole: a great shell narrowing to a point, banded round, bristling with spikes
+        var c = V(0, 0.47f, 0);
+        var r = V(0.21f, 0.27f, 0.2f);
+        b.Ell(Body, c, r, shell);
+        b.Spike(Body, c + V(0, -0.1f, 0), V(0, 0.06f, -0.01f), 0.17f, shell);
+        foreach (var (y, ring) in new[] { (0.64f, 0.17f), (0.53f, 0.205f), (0.41f, 0.2f), (0.29f, 0.165f), (0.18f, 0.1f) })
+            b.PaintTorus(Body, V(0, y, 0), ring, 0.016f, band, V(8f, 0, 6f));
+        for (int i = 0; i < 10; i++)
+        {
+            float a = i * MathF.Tau / 10f + (i % 2) * 0.3f, y = i % 2 == 0 ? 0.47f : 0.3f;
+            var outward = V(MathF.Sin(a), 0, MathF.Cos(a));
+            var root = Out(c, r, default, outward + V(0, (y - c.Y) * 3f, 0)) - outward * 0.01f;
+            b.Spike(Body, root, root + (outward + V(0, -0.35f, 0)) * 0.09f, 0.03f, spike, mat: Shell);
+        }
+        // Its rim, set with teeth, round the head that looks out of the top
+        b.Torus(Body, V(0, 0.71f, 0), 0.16f, 0.035f, shell, mat: Shell);
+        for (int i = 0; i < 8; i++)
+        {
+            float a = i * MathF.Tau / 8f;
+            var rim = V(MathF.Sin(a) * 0.17f, 0.73f, MathF.Cos(a) * 0.17f);
+            b.Spike(Body, rim, rim + V(MathF.Sin(a) * 0.02f, 0.06f, MathF.Cos(a) * 0.02f), 0.018f, White, mat: Shell, blend: 0.004f);
+        }
+        int head = b.Head(V(0, 0.7f, 0));
+        SlowHead(b, head, V(0, 0.8f, 0.04f), 0.75f, pink, null, cream);
+        // Its arms out of holes in the shell's sides, each ringed with a flange of shell
+        PokeBuilder.Both(s =>
+        {
+            int arm = b.Arm(s, V(0.18f * s, 0.55f, 0.04f));
+            var hand = V(0.31f * s, 0.5f, 0.1f);
+            b.Limb(arm, V(0.16f * s, 0.55f, 0.04f), hand, 0.042f, 0.036f, pink);
+            b.Torus(arm, V(0.2f * s, 0.546f, 0.052f), 0.05f, 0.017f, shell, V(0, 0, 90f + 10f * s), mat: Shell);
+            foreach (float t in new[] { -1f, 0f, 1f })
+                b.Spike(arm, hand + V(0.02f * s, 0.012f * t, 0.012f), hand + V(0.046f * s, 0.016f * t, 0.024f), 0.009f, White, mat: Shell, blend: 0.004f);
+        });
+        // Its tail hanging out of the point below
+        int tail = b.Tail(V(0, 0.1f, 0));
+        b.Tube(tail, Smooth(2, V(0, 0.12f, -0.01f), V(0, 0.03f, 0.01f), V(0.03f, -0.04f, 0.05f)), 0.034f, 0.028f, pink, blend: 0f);
+        b.PaintEll(tail, V(0.03f, -0.04f, 0.05f), V(0.04f, 0.04f, 0.04f), Rgb(250, 226, 232));
+        return Lift(b);
+    }
+
     // ------------------------------------------------------------------ Mega Gengar
 
     private static PokeBuilder GengarMega()
