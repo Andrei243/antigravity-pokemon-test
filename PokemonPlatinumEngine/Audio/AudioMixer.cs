@@ -56,6 +56,16 @@ public sealed class AudioMixer
 
     public bool Muted { get; set; }
 
+    /// <summary>
+    /// The music's low-HP arrangement (a battle theme turning agitated while the player's Pokémon is in the red).
+    /// It holds across songs: the game sets it every frame of a battle and clears it when the battle ends.
+    /// </summary>
+    public bool LowHp
+    {
+        get { lock (gate) return music.Agitated; }
+        set { lock (gate) music.Agitated = value; }
+    }
+
     /// <summary>A bus's volume, 0 to 1: what the options set.</summary>
     public float VolumeOf(AudioBus bus)
     {

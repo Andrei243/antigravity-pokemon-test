@@ -3,9 +3,10 @@
 title Battle! Wild Pokémon (Kanto)
 tempo 168
 meter 4/4
+lowhptempo 1.08
 reverb 0.18
 
-track lead square vol=0.95 pan=0.05 rev=0.2
+track lead square lowhp=sawlead vol=0.95 pan=0.05 rev=0.2
   o4 g8 g8 g8 g8 a-8 a-8 a-8 a-8 | a8 a8 a8 a8 b-8 b8 >c8 d8 | L g8 b-8 >d8 g4 f8 d4 | e-4. d8 <b-4 g4 |
   f8 a8 >c8 f4 e-8 c4 | f+2 d4 <a4 | g8 b-8 >d8 g4 a8 b-4 | g4. f8 e-4 <b-4 |
   >c8 e-8 g8 c4 d8 e-4 | d2 c4 <a4 | g4. b-8 >e-4 g4 | f4. e-8 c4 <a4 |
@@ -23,7 +24,7 @@ track saw sawlead vol=0.4 pan=-0.15 rev=0.15
   g1 | d4 <b-4 g4 >d4 | e-2 g2 | f2 a4 f4 |
   g4 d4 c4 <a4 | f+4 a4 >d4 f+4 |
 
-track brass brass vol=0.5 pan=-0.3 rev=0.2
+track brass brass unless=lowhp vol=0.5 pan=-0.3 rev=0.2
   r1 | r1 | L o3 (b- >d g)8 r8 r8 (b- >d g)8 r8 (b- >d g)8 r4 | (b- >e- g)8 r8 r8 (b- >e- g)8 r8 (b- >e- g)8 r4 |
   (a >c f)8 r8 r8 (a >c f)8 r8 (a >c f)8 r4 | (a >d f+)8 r8 r8 (a >d f+)8 r8 (a >d f+)8 r4 | (b- >d g)8 r8 r8 (b- >d g)8 r8 (b- >d g)8 r4 | (b- >e- g)8 r8 r8 (b- >e- g)8 r8 (b- >e- g)8 r4 |
   o4 (c e- g)8 r8 r8 (c e- g)8 r8 (c e- g)8 r4 | (c d f+)8 r8 r8 (c d f+)8 r8 (c d f+)8 r4 | o3 (b- >e- g)8 r8 r8 (b- >e- g)8 r8 (b- >e- g)8 r4 | (a >c f)8 r8 r8 (a >c f)8 r8 (a >c f)8 r4 |
@@ -56,3 +57,7 @@ track drums kit vol=0.52 rev=0.1
 track hats kit vol=0.5 pan=0.15 rev=0.1
   r1 | r1 | L v65 [ h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 | ]24
 
+
+# Low HP: the alarm figure Black and White lay over the battle theme, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]24

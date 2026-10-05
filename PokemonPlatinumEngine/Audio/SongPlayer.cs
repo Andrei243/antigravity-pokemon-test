@@ -15,12 +15,29 @@ public sealed class SongPlayer
     private readonly float[] block = new float[Block * 2];
     private Song? song;
     private bool night;
+    private bool agitated;
     private double tick;
     private double ticksPerSample;
     private int[] next = Array.Empty<int>();
 
     public Song? Song => song;
     public bool Night => night;
+
+    /// <summary>
+    /// The low-HP arrangement, switched on and off in the middle of the song: the notes already sounding ring on,
+    /// the next ones start on the arrangement's instruments, its own tracks join in or fall silent, and the tempo
+    /// changes from here, so the song keeps its place.
+    /// </summary>
+    public bool Agitated
+    {
+        get => agitated;
+        set
+        {
+            if (agitated == value) return;
+            agitated = value;
+            if (song != null) ticksPerSample = 1.0 / (song.SecondsPerTick(night, agitated) * Synthesizer.SampleRate);
+        }
+    }
 
     /// <summary>True while notes are still being started (a one-shot song that has reached its end is not).</summary>
     public bool Playing { get; private set; }
@@ -31,7 +48,7 @@ public sealed class SongPlayer
     /// <summary>How many times the song has wrapped round to its loop point.</summary>
     public int Loops { get; private set; }
 
-    /// <summary>The position in seconds from the song's start (wrapping with the loop).</summary>
+    /// <summary>The position in the song, in seconds at its own tempo (the low-HP arrangement plays it faster but keeps its place).</summary>
     public double Position => song == null ? 0 : tick * song.SecondsPerTick(night);
 
     public void Start(Song s, bool atNight)
@@ -40,7 +57,7 @@ public sealed class SongPlayer
         night = atNight;
         tick = 0;
         Loops = 0;
-        ticksPerSample = 1.0 / (s.SecondsPerTick(atNight) * Synthesizer.SampleRate);
+        ticksPerSample = 1.0 / (s.SecondsPerTick(atNight, agitated) * Synthesizer.SampleRate);
         next = new int[s.Tracks.Count];
         synth.AllNotesOff(immediate: true);
         synth.ReverbLevel = s.Reverb + (atNight ? 0.08f : 0f);
@@ -89,11 +106,13 @@ public sealed class SongPlayer
             {
                 var track = s.Tracks[t];
                 var notes = track.Notes;
+                bool plays = track.When switch { TrackWhen.LowHp => agitated, TrackWhen.NotLowHp => !agitated, _ => true };
                 while (next[t] < notes.Count && notes[next[t]].Tick < end && notes[next[t]].Tick < s.EndTick)
                 {
                     var note = notes[next[t]++];
-                    if (note.Tick < tick) continue;
-                    var inst = night ? track.NightInstrument ?? track.Instrument : track.Instrument;
+                    if (note.Tick < tick || !plays) continue;
+                    var inst = agitated && track.LowHpInstrument != null ? track.LowHpInstrument
+                        : night ? track.NightInstrument ?? track.Instrument : track.Instrument;
                     float vol = track.Volume * (night && track.IsDrums ? 0.6f : 1f);
                     synth.NoteOn(inst, note.Key, note.Velocity, (int)(note.Gate * samplesPerTick), track.Pan, vol, track.ReverbSend);
                 }

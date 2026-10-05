@@ -177,6 +177,8 @@ public partial class GameEngine
         // (Answers already given slide away by themselves; only a question left open is taken off the screen)
         if (choice.IsOpen) choice.Dismiss();
         pendingAnswers = null;
+        // A trainer's eye theme that no battle cut in on (their script had no battle) gives way to the place's own
+        if (eyeThemePlaying && currentState is GameState.Overworld or GameState.Dialogue) PlayFieldMusic();
     }
 
     /// <summary>
@@ -435,7 +437,7 @@ public partial class GameEngine
 
         public void Music(string? song)
         {
-            if (song == null) PlayAreaMusic(game.currentMap, game.player.GridX, game.player.GridY);
+            if (song == null) game.PlayFieldMusic();
             else if (song.Length == 0) AudioManager.StopMusic();
             else AudioManager.PlayMusic(song);
         }

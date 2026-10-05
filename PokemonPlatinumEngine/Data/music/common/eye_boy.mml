@@ -1,0 +1,21 @@
+# A boy trainer's eyes meet the player's: a brisk, cheeky little march that loops until the battle cuts in.
+# Platinum's role SEQ_EYE_BOY (Youngster, Bug Catcher, Camper, School Kid…). Original composition for this game.
+title Eyes Meet! Boy
+tempo 150
+meter 4/4
+reverb 0.22
+
+track lead trumpet vol=0.8 pan=0 rev=0.22
+  L o5 g8 g8 r8 g8 a8 b8 r4 | >d4 c8 <b8 a4 g4 | e8 e8 r8 e8 f+8 g8 r4 | a4 b8 a8 g2 |
+  g8 g8 r8 g8 a8 b8 r4 | >d4 e8 d8 c4 <b4 | a8 a8 r8 a8 b8 >c8 r4 | d4 <b8 g8 g2 |
+
+track answer pulse vol=0.4 pan=0.3 rev=0.2
+  L o4 r2 b8 >d8 r4 | r2 d8 e8 r4 | r2 e8 g8 r4 | r2 d8 e8 r4 |
+  r2 b8 >d8 r4 | r2 e8 g8 r4 | r2 f+8 a8 r4 | r2 d8 g8 r4 |
+
+track bass synthbass vol=0.7 rev=0.05
+  L o4 g8 r8 g8 r8 d8 r8 d8 r8 | g8 r8 g8 r8 d8 r8 d8 r8 | c8 r8 c8 r8 g8 r8 g8 r8 | d8 r8 d8 r8 g8 r8 d8 r8 |
+  g8 r8 g8 r8 d8 r8 d8 r8 | c8 r8 c8 r8 g8 r8 g8 r8 | d8 r8 d8 r8 a8 r8 a8 r8 | d8 r8 d8 r8 g8 r8 g8 r8 |
+
+track drums kit vol=0.58 rev=0.1
+  v100 L [ b8 h8 s8 h8 b8 h8 s8 h8 | b8 h8 s8 h8 b8 b8 s8 s8 | ]4

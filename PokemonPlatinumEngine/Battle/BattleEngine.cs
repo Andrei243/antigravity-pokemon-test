@@ -90,6 +90,25 @@ public partial class BattleEngine
     public BattleResult Result { get; private set; } = BattleResult.None;
     public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && steps.Count == 0;
 
+    /// <summary>
+    /// True while a Pokémon of the player's on the field is in the red as its bar shows it
+    /// (<see cref="BattleAnimator.LowHpRatio"/>): when the battle theme turns agitated, as Black and White's does.
+    /// </summary>
+    public bool PlayerInDanger
+    {
+        get
+        {
+            for (int slot = 0; slot < Anim.Slots; slot++)
+            {
+                var view = Anim[BattleSide.Player, slot];
+                var shown = view.Shown;
+                if (shown == null || !view.Present || shown.MaxHP <= 0) continue;
+                if (view.DisplayedHp > 0f && view.DisplayedHp <= shown.MaxHP * BattleAnimator.LowHpRatio) return true;
+            }
+            return false;
+        }
+    }
+
     private readonly BattleCore core;
     private readonly BattleMirror mirror = new();
     private readonly List<Pokemon>? pcBoxStorage;
