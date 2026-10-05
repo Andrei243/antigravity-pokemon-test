@@ -541,7 +541,12 @@ internal static partial class PokemonModels
         "Finneon", "Lumineon", "Tentacool", "Tentacruel", "Feebas", "Milotic", "Mantyke", "Mantine", "Snover", "Abomasnow",
         "Sneasel", "Weavile", "Rotom", "Gligar", "Gliscor", "Nosepass", "Probopass", "Ralts", "Kirlia", "Gardevoir", "Gallade",
         "Lickitung", "Lickilicky", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Leafeon", "Glaceon",
-        "Swablu", "Altaria", "Togepi", "Togetic", "Togekiss", "Houndour", "Houndoom", "Magnemite", "Magneton", "Magnezone"
+        "Swablu", "Altaria", "Togepi", "Togetic", "Togekiss", "Houndour", "Houndoom", "Magnemite", "Magneton", "Magnezone",
+        // Plan 03 · D9, batch 4: the rest of the Sinnoh Pokédex, its legendaries and Tangela to Absol
+        "Uxie", "Mesprit", "Azelf", "Dialga", "Palkia", "Manaphy", "Tangela", "Tangrowth", "Yanma", "Yanmega",
+        "Tropius", "Rhyhorn", "Rhydon", "Rhyperior", "Duskull", "Dusclops", "Dusknoir", "Porygon", "Porygon2", "Porygon-Z",
+        "Scyther", "Scizor", "Elekid", "Electabuzz", "Electivire", "Magby", "Magmar", "Magmortar", "Swinub", "Piloswine",
+        "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol"
     };
 
     public static bool HasModel(string species) => Array.Exists(Species, s => s.Equals(species, StringComparison.OrdinalIgnoreCase));
@@ -791,6 +796,42 @@ internal static partial class PokemonModels
         "MAGNEMITE" => Magnemite(),
         "MAGNETON" => Magneton(),
         "MAGNEZONE" => Magnezone(),
+        // Plan 03 · D9: the last batch (PokemonModels.Sinnoh4.cs)
+        "TANGELA" => Tangela(),
+        "TANGROWTH" => Tangrowth(),
+        "YANMA" => Yanma(),
+        "YANMEGA" => Yanmega(),
+        "TROPIUS" => Tropius(),
+        "RHYHORN" => Rhyhorn(),
+        "RHYDON" => Rhydon(),
+        "RHYPERIOR" => Rhyperior(),
+        "DUSKULL" => Duskull(),
+        "DUSCLOPS" => Dusclops(),
+        "DUSKNOIR" => Dusknoir(),
+        "PORYGON" => Porygon(),
+        "PORYGON2" => Porygon2(),
+        "PORYGON-Z" => PorygonZ(),
+        "SCYTHER" => Scyther(),
+        "SCIZOR" => Scizor(),
+        "ELEKID" => Elekid(),
+        "ELECTABUZZ" => Electabuzz(),
+        "ELECTIVIRE" => Electivire(),
+        "MAGBY" => Magby(),
+        "MAGMAR" => Magmar(),
+        "MAGMORTAR" => Magmortar(),
+        "SWINUB" => Swinub(),
+        "PILOSWINE" => Piloswine(),
+        "MAMOSWINE" => Mamoswine(),
+        "SNORUNT" => Snorunt(),
+        "GLALIE" => Glalie(),
+        "FROSLASS" => Froslass(),
+        "ABSOL" => Absol(),
+        "UXIE" => Uxie(),
+        "MESPRIT" => Mesprit(),
+        "AZELF" => Azelf(),
+        "DIALGA" => Dialga(),
+        "PALKIA" => Palkia(),
+        "MANAPHY" => Manaphy(),
         // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
         _ => PokemonGenerator.Build(species) ?? Generic(species)
     };

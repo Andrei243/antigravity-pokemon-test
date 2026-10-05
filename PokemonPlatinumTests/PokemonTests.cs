@@ -598,7 +598,7 @@ public class PokemonTests
     [Fact]
     public void TestEverySpeciesHasA3DModel()
     {
-        // The species the story shows so far have hand-built models (plan 04 · G7 and plan 03 · D6); the rest are
+        // The species of the Sinnoh Pokédex have hand-built models (plan 04 · G7 and plan 03 · D6–D9); the rest are
         // generated (plan 03 · D5). This list may only grow.
         string[] handBuilt =
         {
@@ -623,11 +623,25 @@ public class PokemonTests
             "Sneasel", "Weavile", "Rotom", "Gligar", "Gliscor", "Nosepass", "Probopass", "Ralts", "Kirlia", "Gardevoir",
             "Gallade", "Lickitung", "Lickilicky", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Espeon", "Umbreon", "Leafeon",
             "Glaceon", "Swablu", "Altaria", "Togepi", "Togetic", "Togekiss", "Houndour", "Houndoom", "Magnemite", "Magneton",
-            "Magnezone"
+            "Magnezone",
+            // Plan 03 · D9, the last batch
+            "Uxie", "Mesprit", "Azelf", "Dialga", "Palkia", "Manaphy", "Tangela", "Tangrowth", "Yanma", "Yanmega",
+            "Tropius", "Rhyhorn", "Rhydon", "Rhyperior", "Duskull", "Dusclops", "Dusknoir", "Porygon", "Porygon2", "Porygon-Z",
+            "Scyther", "Scizor", "Elekid", "Electabuzz", "Electivire", "Magby", "Magmar", "Magmortar", "Swinub", "Piloswine",
+            "Mamoswine", "Snorunt", "Glalie", "Froslass", "Absol"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
         Assert.All(PokemonPlatinumEngine.Graphics.PokemonModels.Species, n => Assert.NotNull(PokemonDatabase.Get(n)));
+    }
+
+    [Fact]
+    public void EverySpeciesOfTheSinnohPokedexIsHandBuilt()
+    {
+        // Plan 03 · D6–D9: Platinum's 210 Sinnoh species all have hand-built models; the generator is for the rest
+        var sinnoh = PokemonDatabase.GetAll().Where(s => s.SinnohNumber != null).Select(s => s.Name).ToList();
+        Assert.Equal(210, sinnoh.Count);
+        Assert.All(sinnoh, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
     }
 
     private static void Tick(BattleEngine battle, float seconds)
