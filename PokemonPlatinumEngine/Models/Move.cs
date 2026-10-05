@@ -125,6 +125,15 @@ public class MoveData
         Take(rules.ModernMoveValues ? Modern : null);
     }
 
+    /// <summary>The move with another type for one use (Weather Ball under a sky, Hidden Power), leaving this one as it is.</summary>
+    public MoveData OfType(PokemonType type)
+    {
+        if (type == Type) return this;
+        var copy = (MoveData)MemberwiseClone();
+        copy.Type = type;
+        return copy;
+    }
+
     private MoveValues Values() =>
         new() { Power = Power, Accuracy = Accuracy, MaxPP = MaxPP, Priority = Priority, Type = Type, Category = Category };
 

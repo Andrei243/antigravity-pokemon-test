@@ -76,6 +76,16 @@ public sealed record StageChanged(Place Place, StatType Stat, int Stage, bool Ro
 public sealed record StatusChanged(Place Place, StatusCondition Status) : BattleEvent;
 
 public sealed record Fainted(Place Place) : BattleEvent;
+
+/// <summary>A Pokémon goes where it can't be seen (into the air, under the ground), and comes back.</summary>
+public sealed record Vanished(Place Place) : BattleEvent;
+public sealed record Reappeared(Place Place) : BattleEvent;
+
+/// <summary>A Substitute is put up in a place, or is gone from it.</summary>
+public sealed record SubstituteChanged(Place Place, bool Up) : BattleEvent;
+
+/// <summary>The weather over the battle is now this (none: it cleared).</summary>
+public sealed record WeatherChanged(BattleWeather Weather) : BattleEvent;
 public sealed record ExpGained(Pokemon Pokemon, int Amount) : BattleEvent;
 public sealed record LevelRose(Pokemon Pokemon, int Level) : BattleEvent;
 

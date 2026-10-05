@@ -595,7 +595,7 @@ public sealed class BattleRenderer
     {
         var a = new Appearance { Grow = 1f, FlashColor = Color.White, Visible = true };
         bool fainting = v.FaintAge >= 0f, recalling = v.RecallAge >= 0f, capturing = v.CaptureAge >= 0f;
-        if (v.Shown == null || (!v.Present && !fainting && !recalling && !capturing))
+        if (v.Shown == null || v.Away || (!v.Present && !fainting && !recalling && !capturing))
         {
             a.Visible = false;
             return a;

@@ -90,6 +90,18 @@ public static class HeldItemEffects
         ["Exp. Share"] = new ReadByTheRules(),
         ["Lucky Egg"] = new ReadByTheRules(),
         ["Smoke Ball"] = new ReadByTheRules { Escapes = true },
+
+        // The field (plan 06 · R3): longer screens and weather, binding, charging, leaving, draining, weight
+        ["Light Clay"] = new Lengthens("Screens"),
+        ["Damp Rock"] = new Lengthens("Rain"),
+        ["Heat Rock"] = new Lengthens("Sun"),
+        ["Smooth Rock"] = new Lengthens("Sandstorm"),
+        ["Icy Rock"] = new Lengthens("Hail"),
+        ["Grip Claw"] = new ReadByTheRules { Grips = true },
+        ["Power Herb"] = new ReadByTheRules { ChargesAtOnce = true },
+        ["Shed Shell"] = new ReadByTheRules { Slips = true },
+        ["Big Root"] = new ReadByTheRules { Drains = 130 },
+        ["Iron Ball"] = new IronBall(),
     };
 
     /// <summary>Hold effects the battle's own rules ask for by name (the EXP a foe leaves), as <c>items.json</c> names them.</summary>
@@ -184,8 +196,26 @@ internal sealed class EvasionItem(float factor) : BattleEffect
 /// <summary>An item with no hook of its own: a rule of the battle asks whether it is held (Exp. Share, Lucky Egg).</summary>
 internal sealed class ReadByTheRules : BattleEffect
 {
-    public bool Escapes;
+    public bool Escapes, Grips, ChargesAtOnce, Slips;
+    public int Drains = 100;
     public override bool AlwaysEscapes => Escapes;
+    public override bool BindsToTheEnd => Grips;
+    public override bool SkipsChargeTurn => ChargesAtOnce;
+    public override bool SlipsAway => Slips;
+    public override int DrainHundredths => Drains;
+}
+
+/// <summary>Light Clay and the four weather rocks: three more turns of what their holder puts up.</summary>
+internal sealed class Lengthens(string what) : BattleEffect
+{
+    public override int ExtraTurns(string of) => of == what ? 3 : 0;
+}
+
+/// <summary>Halves its holder's Speed and keeps it on the ground, whatever its type or ability.</summary>
+internal sealed class IronBall : BattleEffect
+{
+    public override bool GroundsHolder => true;
+    public override float SpeedMultiplier(Battler self) => 0.5f;
 }
 
 internal sealed class QuickClaw : BattleEffect
@@ -231,7 +261,8 @@ internal sealed class FocusBand : BattleEffect
 
 internal sealed class StatusOrb(StatusCondition status) : BattleEffect
 {
-    public override void AtEndOfTurn(IBattleContext ctx, Battler self)
+    // After everything else of its turn end, as the original has it: the orb's harm starts the turn after
+    public override void AfterTheTurn(IBattleContext ctx, Battler self)
     {
         if (self.Pokemon!.Status == StatusCondition.None) ctx.TryInflictStatus(self, status, null);
     }

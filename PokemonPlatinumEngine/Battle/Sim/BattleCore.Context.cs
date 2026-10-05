@@ -7,26 +7,45 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
 
-// What abilities, held items and moves change a battle through (IBattleContext): HP, stat stages, conditions. Each
-// change is made at once and written into the log with the line that tells of it.
+/// <summary>
+/// How a condition or a stat change comes to a Pokémon (the original's side-effect types): it decides what can
+/// stop it. A move's own effect can be stopped by a Substitute and says so when it fails; a side effect of a hit
+/// fails quietly; an ability's goes past a Substitute.
+/// </summary>
+internal enum By { Other, Move, SideEffect, Ability }
+
+// What abilities, held items and moves change a battle through (IBattleContext): HP, stat stages, conditions, the
+// weather. Each change is made at once and written into the log with the line that tells of it.
 public sealed partial class BattleCore
 {
     public void Announce(string text) => Say(text);
 
     public IEnumerable<Battler> ActiveFoes(Battler battler) => SlotsOf(Other(battler.Side)).Where(b => b.IsActive);
 
-    public bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false)
+    public bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure = false) =>
+        ChangeStat(target, stat, amount, source, announceFailure, By.Ability);
+
+    /// <summary>
+    /// <c>BtlCmd_ChangeStatStage</c>. A stat lowered by someone else is stopped, in this order, by a Mist over the
+    /// target's side, by its ability (Clear Body, Keen Eye for accuracy), and by a Substitute.
+    /// </summary>
+    internal bool ChangeStat(Battler target, StatType stat, int amount, Battler? source, bool announceFailure, By how)
     {
         if (!target.IsActive || amount == 0) return false;
         var p = target.Pokemon!;
+        bool byAnother = source != null && source != target;
 
-        // Lowered by someone else: abilities like Clear Body stop it
-        if (amount < 0 && source != null && source != target)
+        if (amount < 0 && byAnother)
         {
-            bool breaks = BattleEffects.Of(source).Any(e => e.IgnoresTargetAbility);
-            if (!breaks && p.Ability?.Effect is { } guard && guard.BlocksStatDrop(target, stat))
+            if (Field.Side(target.Side).Mist)
             {
-                if (announceFailure) Say($"{target.Name}'s {p.Ability.Name} prevents its {BattleText.StatName(stat)} from being lowered!");
+                if (announceFailure) Say($"{target.Name} is protected by the mist!");
+                return false;
+            }
+            bool breaks = BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
+            if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatDrop(target, stat))
+            {
+                if (announceFailure) Say($"{target.Name}'s {target.Ability.Name} prevents its {BattleText.StatName(stat)} from being lowered!");
                 return false;
             }
         }
@@ -40,16 +59,32 @@ public sealed partial class BattleCore
             return false;
         }
 
+        if (amount < 0 && byAnother && target.HasSubstitute)
+        {
+            if (announceFailure) Say("But it failed!");
+            return false;
+        }
+
         p.StatStages[stat] = next;
         Say($"{target.Name}'s {BattleText.StatName(stat)} {BattleText.StageChange(next - current)}")
             .With(new StageChanged(target.Place, stat, next, next > current));
         return true;
     }
 
-    public bool TryInflictStatus(Battler target, StatusCondition status, Battler? source, bool announceFailure = false)
+    public bool TryInflictStatus(Battler target, StatusCondition status, Battler? source, bool announceFailure = false) =>
+        TryInflictStatus(target, status, source, announceFailure, By.Ability);
+
+    /// <summary>
+    /// Gives a major status condition (the original's <c>subscript_poison</c>, <c>_burn</c>, <c>_paralyze</c>,
+    /// <c>_freeze</c>, <c>_fall_asleep</c>). Stopped by a condition it already has, its types, its ability, the
+    /// sun (a freeze), an uproar (sleep), and, when it comes from another Pokémon, by a Substitute and by a
+    /// Safeguard over its side.
+    /// </summary>
+    internal bool TryInflictStatus(Battler target, StatusCondition status, Battler? source, bool announceFailure, By how)
     {
         if (!target.IsActive) return false;
         var p = target.Pokemon!;
+        bool byAnother = source != null && source != target;
 
         if (p.Status != StatusCondition.None)
         {
@@ -72,17 +107,77 @@ public sealed partial class BattleCore
             return false;
         }
 
-        bool breaks = source != null && source != target && BattleEffects.Of(source).Any(e => e.IgnoresTargetAbility);
-        if (!breaks && p.Ability?.Effect is { } guard && guard.BlocksStatus(target, status))
+        // Nothing freezes under a strong sun
+        if (status == StatusCondition.Freeze && Field.WeatherInEffect == BattleWeather.Sun)
         {
-            if (announceFailure) Say($"{target.Name}'s {p.Ability.Name} prevents {BattleText.StatusName(status)}!");
+            if (announceFailure) Say("But it failed!");
+            return false;
+        }
+
+        bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
+        if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatus(target, status))
+        {
+            if (announceFailure) Say($"{target.Name}'s {target.Ability.Name} prevents {BattleText.StatusName(status)}!");
+            return false;
+        }
+
+        if (status == StatusCondition.Sleep && UproarIsOn && !Has(target, "Soundproof"))
+        {
+            if (announceFailure) Say($"But the uproar kept {target.Name} awake!");
+            return false;
+        }
+
+        if (byAnother && how != By.Ability && target.HasSubstitute)
+        {
+            if (announceFailure) Say("But it failed!");
+            return false;
+        }
+
+        if (byAnother && Field.Side(target.Side).Safeguard)
+        {
+            if (announceFailure) Say($"{target.Name} is protected by Safeguard!");
             return false;
         }
 
         p.Status = status;
-        if (status == StatusCondition.Sleep) p.SleepTurns = 1 + rng.Roll(RollKind.SleepTurns, Rules.SleepLengths);
+        if (status == StatusCondition.Sleep) p.SleepTurns = Rules.SleepCounterBase + rng.Roll(RollKind.SleepTurns, Rules.SleepLengths);
         if (status == StatusCondition.Toxic) p.ToxicCounter = 0;
         Say(BattleText.Inflicted(target.Name, status)).With(new StatusChanged(target.Place, status));
+
+        // A Pokémon put to sleep or frozen in the middle of a move comes out of it
+        if (status is StatusCondition.Sleep or StatusCondition.Freeze) Unlock(target);
+        CheckConditionHooks(target, source);
+        return true;
+    }
+
+    /// <summary>Confuses (<c>subscript_confuse</c>) unless already confused, kept clear by Own Tempo, behind a Substitute or under a Safeguard.</summary>
+    internal bool Confuse(Battler target, Battler? source, bool announceFailure, By how)
+    {
+        if (!target.IsActive) return false;
+        bool byAnother = source != null && source != target;
+        if (target.IsConfused)
+        {
+            if (announceFailure) Say($"{target.Name} is already confused!");
+            return false;
+        }
+        bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
+        if (BattleEffects.Of(target, includeAbility: !breaks).Any(e => e.BlocksConfusion))
+        {
+            if (announceFailure) Say($"{target.Name}'s {target.Ability?.Name} prevents confusion!");
+            return false;
+        }
+        if (byAnother && how != By.Ability && target.HasSubstitute)
+        {
+            if (announceFailure) Say("But it failed!");
+            return false;
+        }
+        if (byAnother && Field.Side(target.Side).Safeguard)
+        {
+            if (announceFailure) Say($"{target.Name} is protected by Safeguard!");
+            return false;
+        }
+        target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
+        Say($"{target.Name} became confused!");
         CheckConditionHooks(target, source);
         return true;
     }
@@ -97,7 +192,7 @@ public sealed partial class BattleCore
 
     public void LoseHp(Battler target, int amount, string message) => LoseHp(target, amount, message, direct: false);
 
-    /// <param name="direct">Damage Magic Guard doesn't stop (Struggle's recoil).</param>
+    /// <param name="direct">Damage Magic Guard doesn't stop (Struggle's recoil, a Curse's price).</param>
     private void LoseHp(Battler target, int amount, string message, bool direct)
     {
         if (!target.IsActive) return;
@@ -114,11 +209,26 @@ public sealed partial class BattleCore
         p.Status = StatusCondition.None;
         p.SleepTurns = 0;
         p.ToxicCounter = 0;
+        target.Volatile.Nightmare = false;
         Say(message).With(new StatusChanged(target.Place, StatusCondition.None));
     }
 
     public void ConsumeItem(Battler holder)
     {
         if (holder.Pokemon != null) holder.Pokemon.HeldItem = null;
+    }
+
+    /// <summary>
+    /// Changes the weather. A move's weather has its turns; an ability's has none under Platinum's rules (it
+    /// lasts), and there the same weather already lasting is left alone and said nothing of.
+    /// </summary>
+    public bool SetWeather(BattleWeather weather, int turns, string line)
+    {
+        if (Field.Weather == weather && (turns > 0 || Field.WeatherLasts)) return false;
+        Field.Weather = weather;
+        Field.WeatherTurns = turns;
+        Field.WeatherLasts = turns == 0 && weather != BattleWeather.None;
+        Say(line).With(new WeatherChanged(weather));
+        return true;
     }
 }

@@ -57,6 +57,54 @@ public sealed class Ruleset
     /// </summary>
     public bool ModernMoveValues { get; private init; }
 
+    // ---- Conditions and the field (plan 06 · R3). A count is of turn ends still to come unless it says otherwise.
+
+    /// <summary>
+    /// A sleep's counter starts at this plus one of <see cref="SleepLengths"/>. It drops by one each time the
+    /// sleeper's turn comes, and the turn it reaches nothing the Pokémon wakes and moves.
+    /// </summary>
+    public int SleepCounterBase => 2;
+
+    /// <summary>Weather brought by an ability (Drizzle, Sand Stream…) lasts this many turns; 0 is for as long as the battle.</summary>
+    public int AbilityWeatherTurns { get; private init; }
+
+    /// <summary>How long a Taunt lasts, from the shortest to the longest (each as likely).</summary>
+    public (int Min, int Max) TauntTurns { get; private init; } = (3, 5);
+
+    /// <summary>Encore's and Disable's counters: each lasts one turn end more than it says.</summary>
+    public (int Min, int Max) EncoreTurns { get; private init; } = (3, 7);
+    public (int Min, int Max) DisableTurns { get; private init; } = (3, 6);
+
+    public int TailwindTurns { get; private init; } = 3;
+    public (int Min, int Max) UproarTurns { get; private init; } = (3, 6);
+
+    /// <summary>A binding move (Wrap, Fire Spin) holds for this many turn ends, the last of them the one that frees.</summary>
+    public (int Min, int Max) BindTurns { get; private init; } = (3, 6);
+
+    /// <summary>The same count when the binder holds a Grip Claw.</summary>
+    public int GripClawBindTurns { get; private init; } = 6;
+
+    /// <summary>Each turn end it takes one part in this many of the bound Pokémon's HP.</summary>
+    public int BindDamageDivisor { get; private init; } = 16;
+
+    /// <summary>
+    /// Protect, Detect and Endure work when a number drawn from 65,536 is no greater than this, by how many times
+    /// in a row they have worked already (the last entry for every time after).
+    /// </summary>
+    public IReadOnlyList<int> ProtectRates { get; private init; } = new[] { 0xFFFF, 0x7FFF, 0x3FFF, 0x1FFF };
+
+    /// <summary>Stages of evasion Minimize gives.</summary>
+    public int MinimizeStages { get; private init; } = 1;
+
+    /// <summary>Powder and spore moves do nothing to Grass types (from Generation 6).</summary>
+    public bool GrassTypesIgnorePowder { get; private init; }
+
+    /// <summary>Ghost types can always switch out and run (from Generation 6).</summary>
+    public bool GhostTypesCantBeTrapped { get; private init; }
+
+    /// <summary>Toxic never misses when a Poison type uses it (from Generation 6).</summary>
+    public bool PoisonTypesNeverMissToxic { get; private init; }
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -71,7 +119,22 @@ public sealed class Ruleset
         SleepLengths = 3,
         ConfusionSelfHitOdds = 3,
         SteelResistsGhostAndDark = false,
-        ModernMoveValues = true
+        ModernMoveValues = true,
+        AbilityWeatherTurns = 5,
+        TauntTurns = (3, 3),
+        EncoreTurns = (2, 2),
+        DisableTurns = (4, 4),
+        TailwindTurns = 4,
+        UproarTurns = (3, 3),
+        BindTurns = (5, 6),
+        GripClawBindTurns = 8,
+        BindDamageDivisor = 8,
+        // A third as likely each time, down to 1 in 729
+        ProtectRates = new[] { 0xFFFF, 21845, 7281, 2427, 809, 269, 89 },
+        MinimizeStages = 2,
+        GrassTypesIgnorePowder = true,
+        GhostTypesCantBeTrapped = true,
+        PoisonTypesNeverMissToxic = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

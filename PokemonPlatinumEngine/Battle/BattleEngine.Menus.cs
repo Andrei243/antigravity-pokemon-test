@@ -17,6 +17,7 @@ public partial class BattleEngine
     public static IReadOnlyList<string> BagItems { get; } = new[] { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
 
     private int menuSlot;
+    private List<int> asked = new();
     private readonly Dictionary<int, BattleChoice> choices = new();
     private Move? targetingMove;
     private List<Battler> targetChoices = new();
@@ -38,7 +39,9 @@ public partial class BattleEngine
     {
         choices.Clear();
         targetingMove = null;
-        menuSlot = PlayerSlots.FirstOrDefault(b => b.IsActive)?.Slot ?? 0;
+        // Only the Pokémon the rules ask about: one in the middle of a move has nothing to choose
+        asked = core.Request is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
+        menuSlot = asked.Count > 0 ? asked[0] : 0;
         HUD.MenuState = BattleMenuState.Main;
     }
 
@@ -50,11 +53,11 @@ public partial class BattleEngine
         // Running is for the whole side: nobody else is asked
         if (choice.Kind == ChoiceKind.Run)
         {
-            foreach (var other in PlayerSlots.Where(b => b.IsActive && !choices.ContainsKey(b.Slot)))
+            foreach (var other in PlayerSlots.Where(b => asked.Contains(b.Slot) && !choices.ContainsKey(b.Slot)))
                 choices[other.Slot] = BattleChoice.Run(other.Place);
         }
 
-        var next = PlayerSlots.FirstOrDefault(b => b.Slot > menuSlot && b.IsActive && !choices.ContainsKey(b.Slot));
+        var next = PlayerSlots.FirstOrDefault(b => b.Slot > menuSlot && asked.Contains(b.Slot) && !choices.ContainsKey(b.Slot));
         if (next != null)
         {
             menuSlot = next.Slot;
@@ -95,7 +98,7 @@ public partial class BattleEngine
         switch (index)
         {
             case 0:
-                if (BattleCore.UsableMoves(MenuBattler).Count == 0)
+                if (core.UsableMoves(InCore(MenuBattler)).Count == 0)
                 {
                     // Nothing left to use: it struggles
                     var place = MenuBattler.Place;
@@ -127,14 +130,12 @@ public partial class BattleEngine
         if (index < 0 || index >= user.Pokemon!.Moves.Count) return;
 
         var move = user.Pokemon.Moves[index];
-        if (move.CurrentPP <= 0)
+
+        // The rules say what can't be picked, and why: no PP, a Choice item, a Taunt, an Encore, a Disable…
+        var mine = InCore(user);
+        if (core.WhyNotMove(mine, mine.Pokemon!.Moves[index]) is { } refusal)
         {
-            Refuse("There's no PP left for this move!", BattleMenuState.Moves);
-            return;
-        }
-        if (user.ChoiceLock != null && user.ChoiceLock != move && user.ChoiceLock.CurrentPP > 0)
-        {
-            Refuse($"{user.Name} can only use {user.ChoiceLock.Name}!", BattleMenuState.Moves);
+            Refuse(refusal, BattleMenuState.Moves);
             return;
         }
 
@@ -178,6 +179,13 @@ public partial class BattleEngine
         else if (chosen.IsFainted) refusal = $"{chosen.DisplayName} has no energy left to battle!";
         else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = $"{chosen.DisplayName} is already going in!";
 
+        // Something may be holding the Pokémon on the field (a fainted one's place is free to fill)
+        if (refusal == null && !replacing)
+        {
+            InCore(MenuBattler);
+            refusal = core.WhyNot(BattleChoice.Switch(MenuBattler.Place, partyIndex));
+        }
+
         if (refusal != null)
         {
             Refuse(refusal, BattleMenuState.SwitchPokemon);
@@ -210,6 +218,11 @@ public partial class BattleEngine
         else if (itemData.Pocket == ItemPocket.PokeBalls && IsTrainerBattle) refusal = "The Trainer blocked the Ball! Don't be a thief!";
         else if (itemData.Pocket == ItemPocket.PokeBalls && EnemySlots.Count(b => b.IsActive) > 1) refusal = "There are two Pokémon out! The Ball can't be aimed!";
         else if (itemData.EffectType == ItemEffectType.HealHP && PlayerPokemon.CurrentHP >= PlayerPokemon.MaxHP) refusal = "It won't have any effect!";
+        else
+        {
+            InCore(MenuBattler);
+            refusal = core.WhyNot(BattleChoice.UseItem(MenuBattler.Place, itemData.Name));
+        }
 
         if (refusal != null)
         {
@@ -234,6 +247,14 @@ public partial class BattleEngine
         {
             QueueMessage("No! There's no running from a Trainer battle!", () => HUD.MenuState = BattleMenuState.Main);
             Pump();
+            return;
+        }
+
+        // Held on the field: the try isn't made, and the turn isn't spent
+        InCore(MenuBattler);
+        if (core.WhyNot(BattleChoice.Run(MenuBattler.Place)) is { } held)
+        {
+            Refuse(held, BattleMenuState.Main);
             return;
         }
         Commit(BattleChoice.Run(MenuBattler.Place));

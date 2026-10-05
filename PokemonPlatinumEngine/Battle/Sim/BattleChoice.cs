@@ -22,7 +22,13 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// <summary>The item used, by name.</summary>
     public string? Item { get; init; }
 
+    /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
+    public const int HeldMove = -2;
+
     public static BattleChoice Fight(Place who, int move, Place? target = null) => new(who, ChoiceKind.Fight) { Move = move, Target = target };
+
+    /// <summary>What the core makes for a Pokémon that has nothing to choose: it goes on with the move it is held to.</summary>
+    public static BattleChoice GoOn(Place who) => new(who, ChoiceKind.Fight) { Move = HeldMove };
     public static BattleChoice Switch(Place who, int partyIndex) => new(who, ChoiceKind.Switch) { SwitchTo = partyIndex };
     public static BattleChoice UseItem(Place who, string item) => new(who, ChoiceKind.Item) { Item = item };
     public static BattleChoice Run(Place who) => new(who, ChoiceKind.Run);

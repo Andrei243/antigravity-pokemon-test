@@ -54,11 +54,35 @@ public static class Formulas
     /// (2 × level / 5 + 2), over the defending stat, over 50; halved by a burn, cut to three quarters when the
     /// move hits more than one Pokémon; plus 2.
     /// </summary>
-    public static int BaseDamage(int level, int power, int attack, int defense, bool burned, bool spread)
+    public static int BaseDamage(int level, int power, int attack, int defense, bool burned, bool spread) =>
+        BaseDamage(level, power, attack, defense, burned, spread, screened: false, sharedScreen: false, BattleWeather.None, PokemonType.Normal,
+            dimmedBeam: false, flashFire: false);
+
+    /// <summary>
+    /// The same with the field in it, each in the original's place: after a burn's halving a screen halves the
+    /// hit (two thirds when two Pokémon stand behind it); after the cut for hitting several, rain halves Fire and
+    /// adds half to Water and the sun does the opposite; Solar Beam is halved under any sky but a clear or a
+    /// sunny one; Flash Fire adds half to a Fire move; and only then the 2.
+    /// </summary>
+    public static int BaseDamage(int level, int power, int attack, int defense, bool burned, bool spread, bool screened, bool sharedScreen,
+        BattleWeather weather, PokemonType moveType, bool dimmedBeam, bool flashFire)
     {
         int damage = attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50;
         if (burned) damage /= 2;
+        if (screened) damage = sharedScreen ? damage * 2 / 3 : damage / 2;
         if (spread) damage = damage * 3 / 4;
+        if (weather == BattleWeather.Rain)
+        {
+            if (moveType == PokemonType.Fire) damage /= 2;
+            else if (moveType == PokemonType.Water) damage = damage * 15 / 10;
+        }
+        if (dimmedBeam) damage /= 2;
+        if (weather == BattleWeather.Sun)
+        {
+            if (moveType == PokemonType.Fire) damage = damage * 15 / 10;
+            else if (moveType == PokemonType.Water) damage /= 2;
+        }
+        if (flashFire) damage = damage * 15 / 10;
         return damage + 2;
     }
 
@@ -175,4 +199,10 @@ public sealed class BattleConditions
 
     /// <summary>Whether the player has caught one of a species before (the Repeat Ball).</summary>
     public Func<PokemonSpecies, bool> HasCaught { get; init; } = _ => false;
+
+    /// <summary>The weather of the place: a battle fought under it opens with it, and it stays.</summary>
+    public BattleWeather Weather { get; init; }
+
+    /// <summary>The place bends the order of things: the battle opens with five turns of Trick Room.</summary>
+    public bool TrickRoom { get; init; }
 }

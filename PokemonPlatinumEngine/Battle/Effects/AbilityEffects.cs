@@ -70,7 +70,7 @@ internal sealed class StatGuard(StatType? only = null) : BattleEffect
 /// <summary>An ability with no effect beyond a flag the engine reads.</summary>
 internal sealed class FlagEffect : BattleEffect
 {
-    public bool NoCrits, NoRecoil, NoConfusion, NoFlinch, BreakAbilities, Unaware, Adaptability, Escapes;
+    public bool NoCrits, NoRecoil, NoConfusion, NoFlinch, BreakAbilities, Unaware, Adaptability, Escapes, Anchored, NoRomance;
     public int CritBonus, SideEffectMultiplier = 1, PpPressure, SleepRate = 1;
     public float Accuracy = 1f;
 
@@ -80,6 +80,8 @@ internal sealed class FlagEffect : BattleEffect
     public override bool BlocksFlinch => NoFlinch;
     public override bool IgnoresTargetAbility => BreakAbilities;
     public override bool AlwaysEscapes => Escapes;
+    public override bool HoldsItsGround => Anchored;
+    public override bool BlocksInfatuation => NoRomance;
     public override bool IgnoresOthersStatStages => Unaware;
     public override float? StabOverride => Adaptability ? 2f : null;
     public override int CritStageBonus => CritBonus;
@@ -120,9 +122,13 @@ internal sealed class Levitate : BattleEffect
     public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness)
     {
         if (move.Type != PokemonType.Ground || move.Category == MoveCategory.Status) return false;
+        // Gravity, its own roots or an Iron Ball bring it down
+        if (DamageCalculator.IsHeldDown(self)) return false;
         ctx.Announce($"{self.Name} makes Ground moves miss with Levitate!");
         return true;
     }
+
+    public override bool Levitates => true;
 }
 
 internal sealed class FlashFire : BattleEffect
@@ -138,9 +144,6 @@ internal sealed class FlashFire : BattleEffect
         else ctx.Announce($"{self.Name}'s Flash Fire made {move.Name} useless!");
         return true;
     }
-
-    public override float PowerMultiplier(Battler self, Battler target, Move move) =>
-        self.FlashFire && move.Type == PokemonType.Fire ? 1.5f : 1f;
 }
 
 internal sealed class MotorDrive : BattleEffect
@@ -194,7 +197,9 @@ internal sealed class IronFist : BattleEffect
 
 internal sealed class Reckless : BattleEffect
 {
-    public override float PowerMultiplier(Battler self, Battler target, Move move) => move.Data.RecoilPercent > 0 ? 1.2f : 1f;
+    // Moves that hurt their user: by recoil, or by crashing when they miss
+    public override float PowerMultiplier(Battler self, Battler target, Move move) =>
+        move.Data.RecoilPercent > 0 || move.Data.Effect == "CrashOnMiss" ? 1.2f : 1f;
 }
 
 internal sealed class Rivalry : BattleEffect
@@ -333,4 +338,117 @@ internal sealed class MagicGuard : BattleEffect
 internal sealed class Sniper : BattleEffect
 {
     public override float CriticalBoost => 1.5f;
+}
+
+// ---------------------------------------------------------------- the weather (plan 06 · R3)
+
+/// <summary>
+/// Drizzle, Drought, Sand Stream, Snow Warning: the weather comes in with the holder. Under Platinum's rules it
+/// has no end of its own; under the modern ones it lasts as a move's does, longer with the weather's rock.
+/// </summary>
+internal sealed class WeatherBringer(BattleWeather weather, string rock, string line) : BattleEffect
+{
+    public override void OnEntry(IBattleContext ctx, Battler self)
+    {
+        int turns = ctx.Rules.AbilityWeatherTurns;
+        if (turns > 0) turns += BattleEffects.Of(self).Sum(e => e.ExtraTurns(rock));
+        ctx.SetWeather(weather, turns, string.Format(line, self.Name));
+    }
+}
+
+/// <summary>Cloud Nine, Air Lock: while the holder is out the weather is there and does nothing.</summary>
+internal sealed class WeatherBlind : BattleEffect
+{
+    public override bool IgnoresWeather => true;
+}
+
+/// <summary>Swift Swim, Chlorophyll: twice the Speed in their weather.</summary>
+internal sealed class WeatherSpeed(BattleWeather weather) : BattleEffect
+{
+    public override float SpeedMultiplier(Battler self) => self.Field?.WeatherInEffect == weather ? 2f : 1f;
+}
+
+/// <summary>Sand Veil, Snow Cloak: harder to hit in their weather, and not hurt by it.</summary>
+internal sealed class WeatherCloak(BattleWeather weather) : BattleEffect
+{
+    public override float EvasionMultiplier(Battler self) => self.Field?.WeatherInEffect == weather ? 0.8f : 1f;
+    public override bool ShelteredFrom(BattleWeather from) => from == weather;
+}
+
+/// <summary>Rain Dish, Ice Body: a sixteenth of its HP back at each turn's end in their weather (and hail doesn't hurt Ice Body).</summary>
+internal sealed class WeatherHealer(BattleWeather weather, string name) : BattleEffect
+{
+    public override bool ShelteredFrom(BattleWeather from) => from == weather;
+
+    public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
+    {
+        var p = self.Pokemon!;
+        if (over != weather || p.CurrentHP >= p.MaxHP || self.Volatile.HealBlockTurns > 0) return;
+        ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name}'s {name} restored a little HP!");
+    }
+}
+
+/// <summary>Water moves heal it by a quarter and rain by an eighth each turn; Fire moves hurt it a quarter more and the sun takes an eighth each turn.</summary>
+internal sealed class DrySkin : BattleEffect
+{
+    private readonly AbsorbType water = new(PokemonType.Water, "Dry Skin");
+
+    public override bool AbsorbsMove(IBattleContext ctx, Battler self, Battler attacker, Move move, float effectiveness) =>
+        water.AbsorbsMove(ctx, self, attacker, move, effectiveness);
+
+    public override float IncomingDamageMultiplier(Battler self, Battler attacker, Move move, float effectiveness) =>
+        move.Type == PokemonType.Fire ? 1.25f : 1f;
+
+    public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
+    {
+        var p = self.Pokemon!;
+        if (over == BattleWeather.Rain && p.CurrentHP < p.MaxHP && self.Volatile.HealBlockTurns == 0)
+            ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s Dry Skin took in the rain!");
+        else if (over == BattleWeather.Sun)
+            ctx.LoseHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s Dry Skin suffers in the sun!");
+    }
+}
+
+/// <summary>In the sun its special moves are half as strong again, and it loses an eighth of its HP each turn.</summary>
+internal sealed class SolarPower : BattleEffect
+{
+    public override float AttackMultiplier(Battler self, Move move) =>
+        move.Category == MoveCategory.Special && self.Field?.WeatherInEffect == BattleWeather.Sun ? 1.5f : 1f;
+
+    public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
+    {
+        if (over == BattleWeather.Sun)
+            ctx.LoseHp(self, Formulas.Divide(self.Pokemon!.MaxHP, 8), $"{self.Name} is hurt by its Solar Power!");
+    }
+}
+
+/// <summary>Rain washes its status condition away at each turn's end.</summary>
+internal sealed class Hydration : BattleEffect
+{
+    public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
+    {
+        var status = self.Pokemon!.Status;
+        if (over == BattleWeather.Rain && status is not (StatusCondition.None or StatusCondition.Faint))
+            ctx.CureStatus(self, $"{self.Name}'s Hydration cured its {BattleText.StatusName(status)}!");
+    }
+}
+
+/// <summary>No status condition takes hold of it in the sun.</summary>
+internal sealed class LeafGuard : BattleEffect
+{
+    public override bool BlocksStatus(Battler self, StatusCondition status) => self.Field?.WeatherInEffect == BattleWeather.Sun;
+}
+
+/// <summary>
+/// Shadow Tag (anyone but another with Shadow Tag), Arena Trap (anyone on the ground), Magnet Pull (Steel types):
+/// a foe can't be switched out or run while the holder is on the field.
+/// </summary>
+internal sealed class Trapper(string ability) : BattleEffect
+{
+    public override bool Traps(Battler self, Battler foe, bool foeOnTheGround) => ability switch
+    {
+        "Shadow Tag" => foe.Ability?.Name != "Shadow Tag",
+        "Arena Trap" => foeOnTheGround,
+        _ => foe.HasType(PokemonType.Steel)
+    };
 }

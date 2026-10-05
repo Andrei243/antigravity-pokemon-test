@@ -18,6 +18,9 @@ public sealed class CombatantView
     /// <summary>On the platform (fainted, recalled or captured Pokémon are not).</summary>
     public bool Present { get; internal set; }
 
+    /// <summary>Still in the battle but out of sight for now: up in the air or under the ground, in the middle of a move.</summary>
+    public bool Away { get; internal set; }
+
     /// <summary>Seconds since the send-out began: the ball flies onto the platform, opens, and the Pokémon grows out of it.</summary>
     public float SendOutAge { get; internal set; } = -1f;
     public float AttackAge { get; internal set; } = -1f;
@@ -378,6 +381,7 @@ public sealed class BattleAnimator
     private static void Reset(CombatantView v, Pokemon pokemon)
     {
         v.Shown = pokemon;
+        v.Away = false;
         v.SendOutAge = v.AttackAge = v.HitAge = v.FaintAge = v.RecallAge = v.CaptureAge = -1f;
         v.FaintDelay = v.CaptureDelay = 0f;
         v.DisplayedHp = pokemon.CurrentHP;

@@ -44,6 +44,16 @@ public enum RollKind
     AbilityPick,
     /// <summary>Out of 100: a held item's chance (King's Rock, Focus Band).</summary>
     ItemChance,
+    /// <summary>Out of 2: a Pokémon in love can't bring itself to move on a 0.</summary>
+    Infatuation,
+    /// <summary>Out of 65,536: Protect, Detect and Endure work when the number is no greater than the rules' rate.</summary>
+    Protect,
+    /// <summary>How long something lasts that the rules give a range for (a taunt, an encore, a binding), from the shortest (0) up.</summary>
+    Duration,
+    /// <summary>Which of the party a forced switch drags out.</summary>
+    DraggedOut,
+    /// <summary>Out of 256: Roar and Whirlwind against a foe of a higher level.</summary>
+    Whirlwind,
     /// <summary>The spread a trainer's choice of move is given.</summary>
     AiChoice
 }

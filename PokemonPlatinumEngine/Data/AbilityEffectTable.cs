@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 
 namespace PokemonPlatinumEngine.Data;
 
@@ -97,6 +98,33 @@ public static class AbilityEffectTable
         Add("Anger Point", new AngerPoint());
         Add("Steadfast", new Steadfast());
         Add("Synchronize", new Synchronize());
+
+        // The weather (plan 06 · R3)
+        Add("Drizzle", new WeatherBringer(BattleWeather.Rain, "Rain", "{0}'s Drizzle brought the rain!"));
+        Add("Drought", new WeatherBringer(BattleWeather.Sun, "Sun", "{0}'s Drought turned the sunlight harsh!"));
+        Add("Sand Stream", new WeatherBringer(BattleWeather.Sandstorm, "Sandstorm", "{0}'s Sand Stream whipped up a sandstorm!"));
+        Add("Snow Warning", new WeatherBringer(BattleWeather.Hail, "Hail", "{0}'s Snow Warning whipped up a hailstorm!"));
+        Add("Cloud Nine", new WeatherBlind());
+        Add("Air Lock", new WeatherBlind());
+        Add("Swift Swim", new WeatherSpeed(BattleWeather.Rain));
+        Add("Chlorophyll", new WeatherSpeed(BattleWeather.Sun));
+        Add("Sand Veil", new WeatherCloak(BattleWeather.Sandstorm));
+        Add("Snow Cloak", new WeatherCloak(BattleWeather.Hail));
+        Add("Rain Dish", new WeatherHealer(BattleWeather.Rain, "Rain Dish"));
+        Add("Ice Body", new WeatherHealer(BattleWeather.Hail, "Ice Body"));
+        Add("Dry Skin", new DrySkin());
+        Add("Solar Power", new SolarPower());
+        Add("Hydration", new Hydration());
+        Add("Leaf Guard", new LeafGuard());
+
+        // Holding a foe on the field, and holding one's own ground
+        Add("Shadow Tag", new Trapper("Shadow Tag"));
+        Add("Arena Trap", new Trapper("Arena Trap"));
+        Add("Magnet Pull", new Trapper("Magnet Pull"));
+        Add("Suction Cups", new FlagEffect { Anchored = true });
+        Add("Oblivious", new FlagEffect { NoRomance = true });
+        // Read by the end of a turn itself, for every sleeper across the field
+        Add("Bad Dreams", new FlagEffect());
     }
 
     private static void Add(string name, BattleEffect effect) => Effects[name] = effect;

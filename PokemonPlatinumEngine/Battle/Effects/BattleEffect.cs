@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -34,6 +35,18 @@ public interface IBattleContext
 
     /// <summary>The foes standing across from <paramref name="battler"/> that can still fight.</summary>
     IEnumerable<Battler> ActiveFoes(Battler battler);
+
+    /// <summary>The weather and the rest of the field.</summary>
+    FieldState Field { get; }
+
+    /// <summary>The rules the battle is fought by.</summary>
+    Ruleset Rules { get; }
+
+    /// <summary>
+    /// Changes the weather and says <paramref name="line"/>. <paramref name="turns"/> of 0 is weather with no end
+    /// of its own. Returns false, saying nothing, when that weather is already there to stay.
+    /// </summary>
+    bool SetWeather(BattleWeather weather, int turns, string line);
 }
 
 /// <summary>
@@ -179,6 +192,50 @@ public abstract class BattleEffect
 
     /// <summary>End of each turn (Leftovers, Speed Boost, Shed Skin).</summary>
     public virtual void AtEndOfTurn(IBattleContext ctx, Battler self) { }
+
+    /// <summary>The last thing of the holder's turn end, after its conditions have run (a Flame Orb, a Toxic Orb).</summary>
+    public virtual void AfterTheTurn(IBattleContext ctx, Battler self) { }
+
+    // ---- The field (plan 06 · R3)
+
+    /// <summary>The weather does nothing while the holder is on the field (Cloud Nine, Air Lock).</summary>
+    public virtual bool IgnoresWeather => false;
+
+    /// <summary>The weather, as it passes over the holder at a turn's end, after it has said it goes on (Rain Dish, Ice Body, Dry Skin, Solar Power, Hydration).</summary>
+    public virtual void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather weather) { }
+
+    /// <summary>A sandstorm or hail doesn't hurt the holder (Sand Veil, Snow Cloak, Ice Body, Magic Guard).</summary>
+    public virtual bool ShelteredFrom(BattleWeather weather) => false;
+
+    /// <summary>Turns the holder adds to what it starts: "Screens" (Light Clay), "Rain", "Sun", "Sandstorm", "Hail" (the weather rocks).</summary>
+    public virtual int ExtraTurns(string of) => 0;
+
+    /// <summary>A binding move the holder uses holds for as long as it can (Grip Claw).</summary>
+    public virtual bool BindsToTheEnd => false;
+
+    /// <summary>The holder is on the ground whatever its type or ability (Iron Ball).</summary>
+    public virtual bool GroundsHolder => false;
+
+    /// <summary>The holder floats: Ground moves, Spikes and Arena Trap don't reach it (Levitate).</summary>
+    public virtual bool Levitates => false;
+
+    /// <summary>A foe can't switch out or run while the holder is on the field (Shadow Tag, Arena Trap, Magnet Pull).</summary>
+    public virtual bool Traps(Battler self, Battler foe, bool foeOnTheGround) => false;
+
+    /// <summary>The holder can always be switched out (Shed Shell).</summary>
+    public virtual bool SlipsAway => false;
+
+    /// <summary>Roar and Whirlwind can't move the holder (Suction Cups).</summary>
+    public virtual bool HoldsItsGround => false;
+
+    /// <summary>The holder can't fall in love (Oblivious).</summary>
+    public virtual bool BlocksInfatuation => false;
+
+    /// <summary>A move that charges for a turn strikes at once, and the item is used up (Power Herb).</summary>
+    public virtual bool SkipsChargeTurn => false;
+
+    /// <summary>What draining moves, Leech Seed, Ingrain and Aqua Ring give the holder, in hundredths of the usual (Big Root: 130).</summary>
+    public virtual int DrainHundredths => 100;
 }
 
 /// <summary>Finds the effects in play for a Pokémon on the field.</summary>
@@ -189,7 +246,8 @@ public static class BattleEffects
     {
         var p = battler.Pokemon;
         if (p == null) yield break;
-        if (includeAbility && p.Ability?.Effect is { } ability) yield return ability;
-        if (HeldItemEffects.For(p.HeldItem) is { } item) yield return item;
+        // Gastro Acid takes the ability away and Embargo the item, for as long as each lasts
+        if (includeAbility && battler.Ability?.Effect is { } ability) yield return ability;
+        if (battler.Volatile.EmbargoTurns == 0 && HeldItemEffects.For(p.HeldItem) is { } item) yield return item;
     }
 }

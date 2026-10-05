@@ -186,11 +186,26 @@ public partial class BattleEngine
             var theirs = core.At(place.Place);
             place.Pokemon = theirs.Pokemon == null ? null : mirror.Shown(theirs.Pokemon);
             place.CopyVolatileFrom(theirs);
+            Anim[place.Side, place.Slot].Away = theirs.IsActive && theirs.IsElsewhere;
         }
+        Weather = core.Field.Weather;
     }
 
-    /// <summary>Speed after stages, paralysis and abilities or items.</summary>
-    public int EffectiveSpeed(Battler b) => BattleCore.SpeedOf(b, Rules);
+    /// <summary>
+    /// The rules' own battler for one of the screen's. While a menu is open the rules are first told of anything
+    /// that changed outside the battle; while a turn is being shown they are ahead of the screen and are left alone.
+    /// </summary>
+    private Battler InCore(Battler b)
+    {
+        if (!playingTheLog) SyncToCore();
+        return core.At(b.Place);
+    }
+
+    /// <summary>Speed as the turn order sees it: after stages, paralysis, abilities, items, the weather and a tailwind.</summary>
+    public int EffectiveSpeed(Battler b) => core.EffectiveSpeed(InCore(b));
+
+    /// <summary>The weather over the battle, as far as the screen has been told of it.</summary>
+    public BattleWeather Weather { get; private set; }
 
     /// <summary>
     /// Gives a Pokémon on the field a status condition by the battle's rules, outside any turn (a scripted scene,
@@ -364,6 +379,15 @@ public partial class BattleEngine
             case StatusChanged status:
                 if (At(status.Place).Pokemon is { } afflicted) afflicted.Status = status.Status;
                 if (status.Status != StatusCondition.None) Anim.StatusGiven(status.Place.Side, status.Place.Slot, status.Status);
+                break;
+            case Vanished gone:
+                Anim[gone.Place.Side, gone.Place.Slot].Away = true;
+                break;
+            case Reappeared back:
+                Anim[back.Place.Side, back.Place.Slot].Away = false;
+                break;
+            case WeatherChanged weather:
+                Weather = weather.Weather;
                 break;
             case Fainted fainted:
                 if (At(fainted.Place).Pokemon is { } down)

@@ -49,8 +49,10 @@ public sealed class CoreSetup
 /// them when each change is seen (<see cref="BattleEngine"/> does). Abilities and held items join in through
 /// <see cref="BattleEffect"/>'s hooks, with the core as their <see cref="IBattleContext"/>.
 /// </para>
-/// Split over BattleCore.*.cs: this file is a battle's course, .Moves.cs a move from the checks before it to what
-/// follows it, .Context.cs the changes of HP, stats and conditions that everything goes through.
+/// Split over BattleCore.*.cs: this file is a battle's course and who goes first; .Choices.cs what may be chosen;
+/// .Moves.cs a move from the checks before it to what follows it; .Effects.cs what each move does of its own;
+/// .Switch.cs coming and going; .Turn.cs the end of a turn; .Context.cs the changes of HP, stats and conditions
+/// that everything goes through.
 /// </summary>
 public sealed partial class BattleCore : IBattleContext
 {
@@ -69,6 +71,9 @@ public sealed partial class BattleCore : IBattleContext
     public IReadOnlyList<Battler> PlayerSlots { get; }
     public IReadOnlyList<Battler> EnemySlots { get; }
     public IEnumerable<Battler> AllBattlers => PlayerSlots.Concat(EnemySlots);
+
+    /// <summary>The weather, the rooms and what each side has up or underfoot (plan 06 · R3).</summary>
+    public FieldState Field { get; } = new();
 
     public BattleResult Result { get; private set; } = BattleResult.None;
 
@@ -115,8 +120,12 @@ public sealed partial class BattleCore : IBattleContext
         Format = setup.Format == BattleFormat.Double && canDouble ? BattleFormat.Double : BattleFormat.Single;
         int slots = IsDouble ? 2 : 1;
 
-        PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i) { Roster = PlayerParty }).ToList();
-        EnemySlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Enemy, i)).ToList();
+        PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i) { Roster = PlayerParty, Field = Field }).ToList();
+        EnemySlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Enemy, i) { Field = Field }).ToList();
+        Field.WeatherIgnored = () => AllBattlers.Any(b => b.IsActive && BattleEffects.Of(b).Any(e => e.IgnoresWeather));
+        Field.MudSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.MudSport);
+        Field.WaterSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.WaterSport);
+        Field.Standing = side => SlotsOf(side).Count(b => b.IsActive);
 
         // The first Pokémon in: the first ones able to fight
         var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(slots).ToList();
@@ -167,6 +176,8 @@ public sealed partial class BattleCore : IBattleContext
                 var missing = asked.Places.Where(p => choices.Count(c => c.Who == p) != 1).ToList();
                 if (missing.Count > 0 || choices.Count != asked.Places.Count)
                     throw new ArgumentException($"One choice is wanted for each of: {string.Join(", ", asked.Places)}");
+                foreach (var choice in choices)
+                    if (WhyNot(choice) is { } refusal) throw new ArgumentException(refusal);
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(choices[0].SwitchTo))
@@ -249,6 +260,10 @@ public sealed partial class BattleCore : IBattleContext
         return list.Count <= 1 ? list.FirstOrDefault() ?? "" : string.Join(", ", list.Take(list.Count - 1)) + " and " + list[^1];
     }
 
+    /// <summary>"your team" for the player's side and "the foe's team" for the other, as the field's lines say it.</summary>
+    private static string TeamOf(BattleSide side, bool capital = false) =>
+        side == BattleSide.Player ? (capital ? "Your team" : "your team") : (capital ? "The foe's team" : "the foe's team");
+
     // ---------------------------------------------------------------- the course of a battle
 
     private IEnumerable<BattleRequest> Course()
@@ -260,21 +275,25 @@ public sealed partial class BattleCore : IBattleContext
             foreach (var foe in EnemySlots.Where(b => b.IsActive))
                 foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
 
+            // A Pokémon in the middle of a move, or that has to recharge, has nothing to choose
             var choices = new List<BattleChoice>();
-            var asked = InTurnOrderOfPlaces().Where(b => b.IsActive && controllers[(int)b.Side] == null).Select(b => b.Place).ToList();
+            var free = InTurnOrderOfPlaces().Where(b => b.IsActive && !b.IsHeldToItsMove).ToList();
+            var asked = free.Where(b => controllers[(int)b.Side] == null).Select(b => b.Place).ToList();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
                 choices.AddRange(answer);
             }
-            foreach (var b in InTurnOrderOfPlaces().Where(b => b.IsActive && controllers[(int)b.Side] != null))
+            foreach (var b in free.Where(b => controllers[(int)b.Side] != null))
                 choices.Add(controllers[(int)b.Side]!.ChooseAction(this, b));
+            foreach (var b in InTurnOrderOfPlaces().Where(b => b.IsActive && b.IsHeldToItsMove))
+                choices.Add(BattleChoice.GoOn(b.Place));
 
             foreach (var request in PlayTurn(choices)) yield return request;
         }
     }
 
-    /// <summary>The trainer's opening lines and the send-outs, then the abilities that act on entry.</summary>
+    /// <summary>The trainer's opening lines and the send-outs, then the weather of the place and the abilities that act on entry.</summary>
     private void Intro()
     {
         var foes = EnemySlots.Where(b => b.Pokemon != null).ToList();
@@ -316,10 +335,12 @@ public sealed partial class BattleCore : IBattleContext
             OnEntered(b);
             go.With(new Entered(b.Place, b.Pokemon!, FromBall: true));
         }
+
+        OpenUnderTheSky();
         RunEntryEffects(AllBattlers.Where(b => b.IsActive).ToList());
     }
 
-    /// <summary>A turn: everyone acts in order, the end-of-turn effects run, fainted Pokémon are replaced.</summary>
+    /// <summary>A turn: everyone acts in order, the end of the turn runs, fainted Pokémon are replaced.</summary>
     private IEnumerable<BattleRequest> PlayTurn(List<BattleChoice> choices)
     {
         foreach (var b in AllBattlers)
@@ -327,11 +348,18 @@ public sealed partial class BattleCore : IBattleContext
             b.MovedThisTurn = false;
             b.Flinched = false;
             b.TookCriticalHit = false;
+            b.Turn = new TurnFlags();
         }
 
-        foreach (var act in Order(choices.Select(ToAct).ToList()))
+        // Every place draws a number for the turn; a Quick Claw works on one in five of them
+        for (int i = 0; i < speedRolls.Length; i++) speedRolls[i] = rng.Roll(RollKind.Speed, 65536);
+        waiting = Order(choices.Select(ToAct).ToList());
+        while (waiting.Count > 0)
         {
+            var act = waiting[0];
+            waiting.RemoveAt(0);
             if (Result != BattleResult.None) yield break;
+            speedOrder = BySpeed();
             // A Pokémon that fainted (or was switched out by its own trainer) loses its action
             if (act.User.Pokemon != act.Actor || !act.User.IsActive) continue;
 
@@ -341,7 +369,7 @@ public sealed partial class BattleCore : IBattleContext
                     if (!ranThisTurn) TryRun(act.User);
                     break;
                 case ChoiceKind.Fight:
-                    ExecuteMove(act.User, act.Move!, act.Target);
+                    foreach (var request in ExecuteMove(act)) yield return request;
                     break;
                 case ChoiceKind.Switch:
                     ExecuteSwitch(act.User, act.Choice.SwitchTo);
@@ -351,19 +379,33 @@ public sealed partial class BattleCore : IBattleContext
                     break;
             }
             if (Result == BattleResult.None) ResolveFaints();
+
+            // Trick Room turns the rest of the turn round
+            if (orderChanged)
+            {
+                orderChanged = false;
+                waiting = Order(waiting);
+            }
         }
         ranThisTurn = false;
         if (Result != BattleResult.None) yield break;
 
         EndOfTurn();
-        ResolveFaints();
         if (Result != BattleResult.None) yield break;
 
         foreach (var request in ReplaceFainted()) yield return request;
+        if (Result != BattleResult.None) yield break;
         Turn++;
+        SetUpNextTurn();
     }
 
     private bool ranThisTurn;
+
+    /// <summary>The actions of the turn still to come, in order.</summary>
+    private List<Act> waiting = new();
+
+    /// <summary>Something changed who is faster in the middle of a turn: what is still to come is put in order again.</summary>
+    private bool orderChanged;
 
     // ---------------------------------------------------------------- who goes first
 
@@ -386,8 +428,7 @@ public sealed partial class BattleCore : IBattleContext
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:
-                var moves = user.Pokemon!.Moves;
-                act.Move = choice.Move >= 0 && choice.Move < moves.Count ? moves[choice.Move] : new Move(StruggleData);
+                act.Move = MoveFor(user, choice.Move);
                 if (choice.Target is { } target) act.Target = At(target);
                 break;
             case ChoiceKind.Item:
@@ -408,11 +449,8 @@ public sealed partial class BattleCore : IBattleContext
     /// </summary>
     private List<Act> Order(List<Act> acts)
     {
-        // Every place draws a number for the turn; a Quick Claw works on one in five of them
-        var rolls = new int[4];
-        for (int i = 0; i < rolls.Length; i++) rolls[i] = rng.Roll(RollKind.Speed, 65536);
         foreach (var act in acts)
-            act.QuickClaw = BattleEffects.Of(act.User).Any(e => e.MovesFirstInBracket(rolls[Number(act.User)]));
+            act.QuickClaw = BattleEffects.Of(act.User).Any(e => e.MovesFirstInBracket(speedRolls[Number(act.User)]));
 
         var byPlace = acts.OrderBy(a => Number(a.User)).ToList();
         var runner = byPlace.FirstOrDefault(a => a.Choice.Kind == ChoiceKind.Run && a.User.IsPlayerSide);
@@ -431,6 +469,11 @@ public sealed partial class BattleCore : IBattleContext
         return order;
     }
 
+    private readonly int[] speedRolls = new int[4];
+
+    /// <summary>Everyone from the fastest to the slowest, as last worked out (before each action and at the turn's end).</summary>
+    private List<Battler> speedOrder = new();
+
     /// <summary><c>BattleSystem_CompareBattlerSpeed</c>: whether the first of two actions of a kind should come second.</summary>
     private bool GoesAfter(Act first, Act second)
     {
@@ -443,120 +486,50 @@ public sealed partial class BattleCore : IBattleContext
         if (priorityA != priorityB) return priorityA < priorityB;
 
         if (first.QuickClaw != second.QuickClaw) return second.QuickClaw;
-        int speedA = EffectiveSpeed(first.User), speedB = EffectiveSpeed(second.User);
-        if (speedA != speedB) return speedA < speedB;
+        return IsSlower(first.User, second.User);
+    }
+
+    /// <summary>By Speed alone: the slower goes after, or the faster while Trick Room is up; a coin between equals.</summary>
+    private bool IsSlower(Battler first, Battler second)
+    {
+        int speedA = EffectiveSpeed(first), speedB = EffectiveSpeed(second);
+        if (speedA != speedB) return Field.TrickRoom ? speedA > speedB : speedA < speedB;
         return rng.Roll(RollKind.SpeedTie, 2) == 1;
     }
 
     /// <summary>
-    /// Speed as the turn order sees it: the stat by its stage, then what abilities and items do to it, then
-    /// paralysis.
+    /// Everyone on the field from the fastest to the slowest (<c>BattleSystem_SortMonSpeedOrder</c>): the order
+    /// the end of a turn, the weather and what acts on entry go in. A Pokémon that can't fight is behind those
+    /// that can.
     /// </summary>
-    public int EffectiveSpeed(Battler b) => SpeedOf(b, Rules);
+    private List<Battler> BySpeed()
+    {
+        var order = InTurnOrderOfPlaces().Where(b => b.Pokemon != null).ToList();
+        for (int i = 0; i < order.Count - 1; i++)
+        {
+            for (int j = i + 1; j < order.Count; j++)
+            {
+                bool downA = !order[i].IsActive, downB = !order[j].IsActive;
+                bool swap = downA != downB ? downA : !downA && IsSlower(order[i], order[j]);
+                if (swap) (order[i], order[j]) = (order[j], order[i]);
+            }
+        }
+        return order;
+    }
 
-    public static int SpeedOf(Battler b, Ruleset rules)
+    /// <summary>
+    /// Speed as the turn order sees it: the stat by its stage, then what abilities and items do to it, then
+    /// paralysis, then a tailwind.
+    /// </summary>
+    public int EffectiveSpeed(Battler b)
     {
         var p = b.Pokemon!;
         var effects = BattleEffects.Of(b).ToList();
         int speed = Formulas.Staged(p.Speed, p.StatStages.GetValueOrDefault(StatType.Speed));
         foreach (var e in effects) speed = Formulas.Scale(speed, e.SpeedMultiplier(b));
-        if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.IgnoresParalysisSlowdown)) speed /= rules.ParalysisSpeedDivisor;
+        if (p.Status == StatusCondition.Paralyze && !effects.Any(e => e.IgnoresParalysisSlowdown)) speed /= Rules.ParalysisSpeedDivisor;
+        if (Field.Side(b.Side).Tailwind) speed *= 2;
         return Math.Max(1, speed);
-    }
-
-    // ---------------------------------------------------------------- entering and leaving the field
-
-    /// <summary>Puts a Pokémon in a place on the field.</summary>
-    private void SendIn(Battler place, Pokemon pokemon)
-    {
-        place.Pokemon = pokemon;
-        OnEntered(place);
-    }
-
-    private void OnEntered(Battler place)
-    {
-        place.ClearVolatile();
-        place.Pokemon!.ResetStatStages();
-        place.Pokemon.ToxicCounter = 0;
-        place.FoughtAgainst.Clear();
-        foreach (var foe in EnemySlots.Where(b => b.IsActive))
-            foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
-    }
-
-    private void Withdraw(Battler place)
-    {
-        foreach (var e in BattleEffects.Of(place)) e.OnWithdraw(place);
-        place.ClearVolatile();
-        place.Pokemon!.ResetStatStages();
-        place.Pokemon.ToxicCounter = 0;
-    }
-
-    /// <summary>Abilities that act on entry (Intimidate), fastest first.</summary>
-    private void RunEntryEffects(List<Battler> entered)
-    {
-        foreach (var b in entered.Where(b => b.IsActive).OrderByDescending(EffectiveSpeed).ToList())
-        {
-            foreach (var e in BattleEffects.Of(b)) e.OnEntry(this, b);
-            CheckConditionHooks(b, null);
-        }
-    }
-
-    private void ExecuteSwitch(Battler place, int partyIndex)
-    {
-        if (!CanSendIn(partyIndex)) return;
-        var outgoing = place.Pokemon!;
-        var incoming = PlayerParty.Members[partyIndex];
-        Say($"Come back, {outgoing.DisplayName}!").With(new Recalled(place.Place));
-        Withdraw(place);
-        Emit(new Left(place.Place));
-        SendIn(place, incoming);
-        Say($"Go! {incoming.DisplayName}!").With(new Entered(place.Place, incoming, FromBall: true));
-        RunEntryEffects(new List<Battler> { place });
-    }
-
-    /// <summary>Fills the places of fainted Pokémon from the bench: trainers send theirs, the player picks.</summary>
-    private IEnumerable<BattleRequest> ReplaceFainted()
-    {
-        var entered = new List<Battler>();
-
-        // The foes first
-        foreach (var place in EnemySlots.Where(b => !b.IsActive && b.Roster != null))
-        {
-            var next = NextFromRoster(place, EnemySlots.Select(b => b.Pokemon));
-            if (next == null) continue;
-            entered.Add(place);
-            SendIn(place, next);
-            Say($"{place.Trainer!.FullTitle} sent out {next.DisplayName}!")
-                .With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true));
-        }
-
-        // Then each empty place of the player's, while there is anyone left to send
-        foreach (var place in PlayerSlots.Where(b => !b.IsActive))
-        {
-            if (!Enumerable.Range(0, PlayerParty.Count).Any(CanSendIn)) break;
-            int index;
-            if (controllers[(int)BattleSide.Player] is { } controller) index = controller.ChooseReplacement(this, place);
-            else
-            {
-                yield return new ReplacementRequest(place.Place);
-                index = answer[0].SwitchTo;
-            }
-            if (!CanSendIn(index)) continue;
-
-            var chosen = PlayerParty.Members[index];
-            entered.Add(place);
-            SendIn(place, chosen);
-            Say($"Go! {chosen.DisplayName}!").With(new Entered(place.Place, chosen, FromBall: true));
-        }
-
-        RunEntryEffects(entered);
-    }
-
-    /// <summary>The next Pokémon of a place's roster that can fight and isn't already out.</summary>
-    private static Pokemon? NextFromRoster(Battler place, IEnumerable<Pokemon?> exclude)
-    {
-        var used = exclude.Where(p => p != null).ToHashSet();
-        return place.Roster?.Members.FirstOrDefault(p => !p.IsFainted && !used.Contains(p));
     }
 
     // ---------------------------------------------------------------- items and running
@@ -581,6 +554,13 @@ public sealed partial class BattleCore : IBattleContext
         if (target == null) return;
         var foe = target.Pokemon!;
         Say($"{playerName} used one {ball.Name}!");
+
+        // A Pokémon that isn't there to be hit can't be caught either
+        if (target.IsElsewhere)
+        {
+            Say("The Pokémon couldn't be reached!");
+            return;
+        }
 
         int shakes = CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions);
         Emit(new BallThrown(ball.Name, target.Slot, shakes));
@@ -635,54 +615,57 @@ public sealed partial class BattleCore : IBattleContext
         End(BattleResult.PlayerRan);
     }
 
-    // ---------------------------------------------------------------- the end of the turn
-
-    /// <summary>Leftovers, poison and burns, Speed Boost and the like, fastest Pokémon first.</summary>
-    private void EndOfTurn()
-    {
-        foreach (var b in AllBattlers.Where(b => b.IsActive).OrderByDescending(EffectiveSpeed).ToList())
-        {
-            if (!b.IsActive) continue;
-            var p = b.Pokemon!;
-            HeldItemEffects.For(p.HeldItem)?.AtEndOfTurn(this, b);
-
-            switch (p.Status)
-            {
-                case StatusCondition.Burn:
-                    LoseHp(b, Math.Max(1, p.MaxHP / Rules.BurnDamageDivisor), $"{b.Name} is hurt by its burn!");
-                    break;
-                case StatusCondition.Poison:
-                    LoseHp(b, Math.Max(1, p.MaxHP / 8), $"{b.Name} is hurt by poison!");
-                    break;
-                case StatusCondition.Toxic:
-                    p.ToxicCounter = Math.Min(15, p.ToxicCounter + 1);
-                    LoseHp(b, Math.Max(1, p.MaxHP * p.ToxicCounter / 16), $"{b.Name} is hurt by poison!");
-                    break;
-            }
-
-            if (b.IsActive) p.Ability?.Effect?.AtEndOfTurn(this, b);
-        }
-    }
-
     // ---------------------------------------------------------------- fainting, EXP and the end of the battle
 
-    /// <summary>Every Pokémon down to 0 HP faints (with EXP for the player's), then the battle ends if a side has nobody left.</summary>
-    private void ResolveFaints()
+    /// <summary>
+    /// Every Pokémon down to 0 HP faints (with EXP for the player's), then the battle ends if a side has nobody
+    /// left. One brought down by a foe's move (<paramref name="by"/>) may take that foe with it (Destiny Bond,
+    /// which is told first and faints the foe first) or leave the move without PP (Grudge), as the original's
+    /// <c>subscript_faint_check_destiny_bond</c> has it.
+    /// </summary>
+    private void ResolveFaints(MoveUse? by = null)
     {
         while (Result == BattleResult.None)
         {
-            var down = AllBattlers.FirstOrDefault(b => b.Pokemon != null && b.Pokemon.CurrentHP <= 0 && b.Pokemon.Status != StatusCondition.Faint);
+            var down = NextFallen();
             if (down == null) break;
 
-            down.Pokemon!.Status = StatusCondition.Faint;
-            down.Pokemon.CurrentHP = 0;
-            down.ClearVolatile();
-            NoteFaint(down);
-            Say($"{down.Name} fainted!").With(new Fainted(down.Place));
-            if (!down.IsPlayerSide) AwardExp(down);
+            if (by != null && by.User.Side != down.Side && by.User.IsActive && by.Hits.Any(h => h.Target == down && h.Touched))
+            {
+                var foe = by.User;
+                if (down.Volatile.DestinyBond)
+                {
+                    foe.Pokemon!.CurrentHP = 0;
+                    Say($"{down.Name} took {foe.Name} down with it!").With(new HpChanged(foe.Place, 0, Healed: false));
+                    Faint(foe);
+                }
+                else if (down.Volatile.Grudge && by.Data != StruggleData && foe.Pokemon!.Moves.Contains(by.Move))
+                {
+                    by.Move.CurrentPP = 0;
+                    Say($"{foe.Name}'s {by.Move.Name} lost all its PP to the grudge!");
+                }
+            }
+            Faint(down);
         }
         if (Result == BattleResult.None) CheckBattleEnd();
     }
+
+    private void Faint(Battler down)
+    {
+        down.Pokemon!.Status = StatusCondition.Faint;
+        down.Pokemon.CurrentHP = 0;
+        LetGoOf(down);
+        ComeBack(down);
+        if (down.HasSubstitute) Emit(new SubstituteChanged(down.Place, Up: false));
+        down.ClearVolatile();
+        NoteFaint(down);
+        Say($"{down.Name} fainted!").With(new Fainted(down.Place));
+        if (!down.IsPlayerSide) AwardExp(down);
+    }
+
+    /// <summary>The next Pokémon at 0 HP that hasn't been told so yet: the fastest first, as the original faints them.</summary>
+    private Battler? NextFallen() =>
+        speedOrder.Concat(InTurnOrderOfPlaces()).FirstOrDefault(b => b.Pokemon != null && b.Pokemon.CurrentHP <= 0 && b.Pokemon.Status != StatusCondition.Faint);
 
     /// <summary>
     /// What a faint leaves behind outside the battle: the player's Pokémon likes its trainer a little less (a lot
