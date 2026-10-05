@@ -28,6 +28,10 @@ A file is found by the species' name or its National Pokédex number:
 Case, spaces and punctuation don't matter; ♀ and ♂ can be written f and m. A file named after a species replaces
 its model whether that model is generated or hand-built.
 
+A form (plan 03 · D11) is found by its own name, the species' and the form's as `species.json` spells them:
+`Charizard-Mega-X.glb`, `meowth-galar.glb`, `Rotom-Wash.glb`. A form without a file of its own is generated from
+its own data, or shows its species' hand-built sculpt if the species has one; it never takes its species' file.
+
 ## What can be read
 
 glTF 2.0 files, binary (`.glb`) or text (`.gltf` with its `.bin` and textures in files beside it, or embedded):

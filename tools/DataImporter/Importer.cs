@@ -14,8 +14,8 @@ public sealed class Importer
     public const int LastPlatinumSpecies = 493;
     public const int LastPlatinumMove = 467;
 
-    /// <summary>Later evolutions of Platinum species that start from a regional form (Galarian Meowth and the like),
-    /// which this game doesn't have yet.</summary>
+    /// <summary>PokeAPI's ids of the forms other than a species' own (10001 on). The evolutions that start from one
+    /// (Galarian Meowth into Perrserker) are added with the forms, by <see cref="AddFormEvolutions"/>.</summary>
     private const int FirstAlternateForm = 10000;
 
     /// <summary>Learnsets for later species come from the newest of these games that has one (PokeAPI version groups).</summary>
@@ -414,6 +414,12 @@ public sealed class Importer
             s.DexEntry = DexEntry(s, list);
         }
 
+        // Plan 03 · D11: the newest games' values beside Platinum's, every form, and the evolutions that start from
+        // a form or lead to one (after the Pokédex text, which tells of the species' own evolutions)
+        AddModernValues(list);
+        AddForms(list);
+        AddFormEvolutions(list);
+
         // Platinum's regional numbers (its table's first entry is a placeholder, not number 0)
         var sinnoh = decomp.SinnohPokedex();
         for (int number = 1; number < sinnoh.Count; number++)
@@ -649,7 +655,8 @@ public sealed class Importer
     /// One PokeAPI row as an evolution of this game. Where the original leans on something this game lacks, the
     /// method is the stand-in docs/mechanics/rulings.md settles on: playing next to another player (Finizen) and
     /// levelling up inside a battle (Tandemaus) are plain levels, steps taken in the Let's Go mode are steps at
-    /// the head of the party, and Legends: Arceus's agile and strong style moves are plain uses of the move.
+    /// the head of the party, Legends: Arceus's agile and strong style moves are plain uses of the move, and
+    /// walking under the Dusty Bowl's stone arch (Galarian Yamask) is levelling up where a map has a Stone Arch.
     /// </summary>
     private EvolutionData LaterEvolution(CsvRow r, int fromDex)
     {
@@ -698,11 +705,12 @@ public sealed class Importer
                     evo.Method = rel > 0 ? EvolutionMethod.LevelAttackHigher : rel < 0 ? EvolutionMethod.LevelDefenseHigher : EvolutionMethod.LevelAttackEqual;
                 else if (r.IntOrNull("gender_id") is { } gender) evo.Method = gender == 1 ? EvolutionMethod.LevelFemale : EvolutionMethod.LevelMale;
                 else if (time is "day" or "night") evo.Method = time == "day" ? EvolutionMethod.LevelDay : EvolutionMethod.LevelNight;
+                else if (time == "dusk") evo.Method = EvolutionMethod.LevelDusk;
                 else if (time != "") { evo.Method = EvolutionMethod.Other; notes.Add($"level up at {time}"); }
 
                 if (r.IntOrNull("minimum_steps") is { } steps) { evo.Method = EvolutionMethod.LevelAfterSteps; evo.Value = steps; }
                 if (r.IntOrNull("used_move_id") != null) AfterMoveUses();
-                if (r.IntOrNull("minimum_damage_taken") is { } damage) { evo.Method = EvolutionMethod.Other; notes.Add($"after losing {damage} HP from recoil without fainting"); }
+                if (r.IntOrNull("minimum_damage_taken") is { } damage) { evo.Method = EvolutionMethod.LevelAfterRecoil; evo.Value = damage; }
                 break;
             case 2:
                 if (held != null) { evo.Method = EvolutionMethod.TradeHoldingItem; evo.Item = held; }
@@ -717,6 +725,19 @@ public sealed class Importer
                 break;
             case 4:
                 evo.Method = EvolutionMethod.LevelShedinja;
+                break;
+            case 8: // three critical hits in one battle
+                evo.Method = EvolutionMethod.CriticalHits;
+                evo.Value = 3;
+                break;
+            case 9: // HP lost to moves without fainting, then the stone arch
+                evo.Method = EvolutionMethod.LevelAfterDamage;
+                evo.Value = r.IntOrNull("minimum_damage_taken") ?? 49;
+                evo.Location = "Stone Arch";
+                break;
+            case 13: // HP lost to its own recoil without fainting; the gender only picks Basculegion's form
+                evo.Method = EvolutionMethod.LevelAfterRecoil;
+                evo.Value = r.IntOrNull("minimum_damage_taken") ?? 294;
                 break;
             case 5: // spinning round while it holds a sweet; which way and for how long only picks Alcremie's form
                 evo.Method = EvolutionMethod.SpinHoldingItem;
@@ -751,6 +772,256 @@ public sealed class Importer
         }
         if (notes.Count > 0) evo.Note = string.Join(", ", notes);
         return evo;
+    }
+
+    // ================================================================== forms (plan 03 · D11)
+
+    /// <summary>The prefixes of PokeAPI's identifiers for the forms of other regions (a Pikachu's cap aside).</summary>
+    private static readonly string[] RegionalForms = { "alola", "galar", "hisui", "paldea" };
+
+    /// <summary>Platinum's forms with data of their own in the decompilation: PokeAPI's identifier, and the folders it is in.</summary>
+    private static readonly Dictionary<string, (string Species, string Form)> PlatinumForms = new()
+    {
+        ["deoxys-attack"] = ("deoxys", "attack"), ["deoxys-defense"] = ("deoxys", "defense"), ["deoxys-speed"] = ("deoxys", "speed"),
+        ["wormadam-sandy"] = ("wormadam", "sandy"), ["wormadam-trash"] = ("wormadam", "trash"),
+        ["giratina-origin"] = ("giratina", "origin"), ["shaymin-sky"] = ("shaymin", "sky"),
+        ["rotom-heat"] = ("rotom", "heat"), ["rotom-wash"] = ("rotom", "wash"), ["rotom-frost"] = ("rotom", "frost"),
+        ["rotom-fan"] = ("rotom", "fan"), ["rotom-mow"] = ("rotom", "mow")
+    };
+
+    /// <summary>What a species or a form is, in the fields a form may differ in.</summary>
+    private sealed record Look(List<PokemonType> Types, StatSpread BaseStats, List<string> Abilities, string? HiddenAbility, float Height, float Weight,
+        int BaseExp, StatSpread? EvYield, int? CatchRate, List<LearnableMove> Learnset);
+
+    /// <summary>A PokeAPI entry (<c>pokemon.csv</c>) as a form sees it, with the newest games' values.</summary>
+    private Look PokeApiLook(CsvRow p)
+    {
+        int pid = p.Int("id");
+        var stats = Stats(pid);
+        var abilities = AbilitiesOf(pid).ToList();
+        return new Look(TypesOf(pid), Spread6(stats, s => s.Base), abilities.Where(a => !a.Hidden).Select(a => a.Name).Distinct().ToList(),
+            abilities.Where(a => a.Hidden).Select(a => a.Name).FirstOrDefault(), p.Int("height") / 10f, p.Int("weight") / 10f,
+            p.IntOrNull("base_experience") ?? 0, Spread(stats[1].Effort, stats[2].Effort, stats[3].Effort, stats[4].Effort, stats[5].Effort, stats[6].Effort),
+            null, LaterLearnset(pid));
+    }
+
+    /// <summary>Platinum's own data for a species or a form (the decompilation's <c>data.json</c>), size aside.</summary>
+    private Look PlatinumLook(JsonElement d, float height, float weight)
+    {
+        var types = d.GetProperty("types").EnumerateArray().Select(t => Gen4Type(t.GetString()!)).Distinct().ToList();
+        var b = d.GetProperty("base_stats");
+        var ev = d.GetProperty("ev_yields");
+        int Stat(JsonElement e, string name) => e.GetProperty(name).GetInt32();
+        return new Look(types,
+            new StatSpread { HP = Stat(b, "hp"), Attack = Stat(b, "attack"), Defense = Stat(b, "defense"), SpAttack = Stat(b, "special_attack"), SpDefense = Stat(b, "special_defense"), Speed = Stat(b, "speed") },
+            d.GetProperty("abilities").EnumerateArray().Select(a => a.GetString()!).Where(a => a != "ABILITY_NONE")
+                .Select(a => api.AbilityName(abilityConstants.IndexOf(a))).Distinct().ToList(),
+            null, height, weight, d.GetProperty("base_exp_reward").GetInt32(),
+            Spread(Stat(ev, "hp"), Stat(ev, "attack"), Stat(ev, "defense"), Stat(ev, "special_attack"), Stat(ev, "special_defense"), Stat(ev, "speed")),
+            d.GetProperty("catch_rate").GetInt32(),
+            d.GetProperty("learnset").GetProperty("by_level").EnumerateArray()
+                .Select(e => new LearnableMove { Level = e[0].GetInt32(), MoveName = api.MoveName(moveConstants.IndexOf(e[1].GetString()!)) }).ToList());
+    }
+
+    private List<PokemonType> TypesOf(int pokemonId) =>
+        api.Table("pokemon_types").Where(r => r.Int("pokemon_id") == pokemonId).OrderBy(r => r.Int("slot")).Select(r => api.Type(r.Int("type_id"))).ToList();
+
+    private static StatSpread Spread6(Dictionary<int, (int Base, int Effort)> stats, Func<(int Base, int Effort), int> pick) => new()
+    {
+        HP = pick(stats[1]), Attack = pick(stats[2]), Defense = pick(stats[3]), SpAttack = pick(stats[4]), SpDefense = pick(stats[5]), Speed = pick(stats[6])
+    };
+
+    private static bool Same(StatSpread? a, StatSpread? b) =>
+        a?.HP == b?.HP && a?.Attack == b?.Attack && a?.Defense == b?.Defense && a?.SpAttack == b?.SpAttack && a?.SpDefense == b?.SpDefense && a?.Speed == b?.Speed;
+
+    private static bool Same(List<LearnableMove> a, List<LearnableMove> b) =>
+        a.Select(m => (m.Level, m.MoveName)).SequenceEqual(b.Select(m => (m.Level, m.MoveName)));
+
+    /// <summary>What the newest games changed of a set of values: null when nothing.</summary>
+    private static SpeciesValues? Changes(Look platinum, Look modern)
+    {
+        var values = new SpeciesValues
+        {
+            Types = modern.Types.SequenceEqual(platinum.Types) ? null : modern.Types,
+            BaseStats = Same(modern.BaseStats, platinum.BaseStats) ? null : modern.BaseStats
+        };
+        return values.Types == null && values.BaseStats == null ? null : values;
+    }
+
+    /// <summary>The newest games' types and base stats of Platinum's species, where they differ from Platinum's own.</summary>
+    private void AddModernValues(List<PokemonSpecies> list)
+    {
+        foreach (var s in list.Where(s => s.DexNumber <= LastPlatinumSpecies))
+        {
+            var platinum = new Look(s.SecondaryType is { } t ? new() { s.PrimaryType, t } : new() { s.PrimaryType },
+                new StatSpread { HP = s.BaseHP, Attack = s.BaseAttack, Defense = s.BaseDefense, SpAttack = s.BaseSpAttack, SpDefense = s.BaseSpDefense, Speed = s.BaseSpeed },
+                s.Abilities, s.HiddenAbility, s.Height, s.Weight, s.BaseExpYield, s.EvYield, s.CatchRate, s.Learnset);
+            s.Modern = Changes(platinum, PokeApiLook(api.DefaultPokemon[s.DexNumber]));
+        }
+    }
+
+    /// <summary>
+    /// Each species' forms: every other entry PokeAPI has for it (its <c>pokemon_forms.csv</c>), totems aside, with
+    /// only what differs from the species written down. A form's name is the species' and PokeAPI's form identifier
+    /// in capitals, as Pokémon Showdown spells them and the Mega Stones already name them (<c>Charizard-Mega-X</c>,
+    /// <c>Rotom-Heat</c>, <c>Meowth-Galar</c>). A form is compared with its species in the same source: Platinum's own
+    /// forms (Deoxys, Wormadam, Giratina, Shaymin and Rotom) with the decompilation's species, keeping the newest
+    /// games' changes beside them, and every other form with PokeAPI's, so that a Mega or a regional form of a
+    /// Platinum species follows the rules the game is played by wherever it is the species' own.
+    /// </summary>
+    private void AddForms(List<PokemonSpecies> list)
+    {
+        var pokemon = api.Table("pokemon").ToDictionary(r => r.Int("id"));
+        var formTypes = api.Table("pokemon_form_types").GroupBy(r => r.Int("pokemon_form_id"))
+            .ToDictionary(g => g.Key, g => g.OrderBy(r => r.Int("slot")).Select(r => r.Int("type_id")).ToList());
+        var formsOf = api.Table("pokemon_forms").GroupBy(f => pokemon[f.Int("pokemon_id")].Int("species_id")).ToDictionary(g => g.Key, g => g.OrderBy(f => f.Int("order")).ToList());
+
+        foreach (var s in list)
+        {
+            var main = api.DefaultPokemon[s.DexNumber];
+            var mainLook = PokeApiLook(main);
+            var platinumData = s.DexNumber <= LastPlatinumSpecies ? decomp.Species(speciesConstants[s.DexNumber]) : (JsonElement?)null;
+            var forms = new List<PokemonForm>();
+            foreach (var f in formsOf.GetValueOrDefault(s.DexNumber) ?? new())
+            {
+                var p = pokemon[f.Int("pokemon_id")];
+                bool ownEntry = !p.Bool("is_default");
+                if (!ownEntry && f.Bool("is_default")) continue; // the species itself
+                if (p["identifier"].Contains("-totem")) continue; // Alola's trial bosses, not a form anyone can have
+                string suffix = FormSuffix(f, api.Species[s.DexNumber]["identifier"]);
+
+                var form = new PokemonForm
+                {
+                    Name = s.Name + "-" + string.Join("-", suffix.Split('-').Select(w => char.ToUpperInvariant(w[0]) + w[1..])),
+                    Kind = f.Bool("is_mega") || suffix.StartsWith("mega") ? FormKind.Mega
+                        : suffix == "primal" ? FormKind.Primal
+                        : suffix == "gmax" || suffix.EndsWith("-gmax") ? FormKind.Gigantamax
+                        : f.Bool("is_battle_only") ? FormKind.Battle
+                        : RegionalForms.Any(r => suffix == r || suffix.StartsWith(r + "-")) && !suffix.EndsWith("-cap") ? FormKind.Regional
+                        : ownEntry ? FormKind.Alternate : FormKind.Look
+                };
+
+                // The types a form has of its own (Arceus's plates) are listed for the form rather than its entry
+                List<PokemonType>? ownTypes = null;
+                if (formTypes.TryGetValue(f.Int("id"), out var typeIds))
+                {
+                    try { ownTypes = typeIds.Select(api.Type).ToList(); }
+                    catch (ArgumentException) { continue; } // the ??? type, which this game hasn't got
+                }
+
+                if (PlatinumForms.TryGetValue(p["identifier"], out var folders) && platinumData is { } data)
+                {
+                    var platinum = PlatinumLook(decomp.SpeciesForm(folders.Species, folders.Form), p.Int("height") / 10f, p.Int("weight") / 10f);
+                    Differences(form, platinum, PlatinumLook(data, s.Height, s.Weight));
+                    form.Modern = Changes(platinum, PokeApiLook(p));
+                }
+                else if (ownEntry) Differences(form, PokeApiLook(p), mainLook);
+                if (ownTypes != null && !ownTypes.SequenceEqual(mainLook.Types)) form.Types = ownTypes;
+                // A form held only in battle keeps the moves it had before
+                if (form.Kind is FormKind.Mega or FormKind.Primal or FormKind.Gigantamax or FormKind.Battle) form.Learnset = null;
+                // An entry of its own with nothing in it that the species hasn't (Pikachu's caps) is only a look
+                if (form.Kind == FormKind.Alternate && form is { Types: null, BaseStats: null, Abilities: null, HiddenAbility: null, Height: null,
+                        Weight: null, BaseExpYield: null, EvYield: null, CatchRate: null, Learnset: null, Modern: null })
+                    form.Kind = FormKind.Look;
+                forms.Add(form);
+            }
+            s.Forms = forms.Count > 0 ? forms.DistinctBy(f => f.Name).ToList() : null;
+        }
+    }
+
+    /// <summary>
+    /// What a form's name adds to its species' name: PokeAPI's identifier for it without the species' (Mega-X of
+    /// <c>charizard-mega-x</c>), which tells apart forms that PokeAPI gives the same form identifier
+    /// (Tatsugiri's three Megas are all <c>mega</c>).
+    /// </summary>
+    private static string FormSuffix(CsvRow form, string speciesIdentifier) =>
+        form["identifier"].StartsWith(speciesIdentifier + "-") ? form["identifier"][(speciesIdentifier.Length + 1)..] : form["form_identifier"];
+
+    /// <summary>Writes down what a form has that its species (in the same source) hasn't.</summary>
+    private static void Differences(PokemonForm form, Look look, Look species)
+    {
+        if (!look.Types.SequenceEqual(species.Types)) form.Types = look.Types;
+        if (!Same(look.BaseStats, species.BaseStats)) form.BaseStats = look.BaseStats;
+        // None listed is PokeAPI not knowing them yet (the Megas of Legends: Z-A): the species' stand in
+        if (look.Abilities.Count > 0 && !look.Abilities.SequenceEqual(species.Abilities)) form.Abilities = look.Abilities;
+        if (look.HiddenAbility != null && look.HiddenAbility != species.HiddenAbility && !look.Abilities.Contains(look.HiddenAbility))
+            form.HiddenAbility = look.HiddenAbility;
+        if (look.Height != species.Height) form.Height = look.Height;
+        if (look.Weight != species.Weight) form.Weight = look.Weight;
+        if (look.BaseExp != species.BaseExp && look.BaseExp > 0) form.BaseExpYield = look.BaseExp;
+        if (!Same(look.EvYield, species.EvYield)) form.EvYield = look.EvYield;
+        if (look.CatchRate != null && look.CatchRate != species.CatchRate) form.CatchRate = look.CatchRate;
+        if (look.Learnset.Count > 0 && !Same(look.Learnset, species.Learnset)) form.Learnset = look.Learnset;
+    }
+
+    /// <summary>
+    /// The evolutions that start from a form or lead to one: from a regional form (Galarian Meowth into Perrserker,
+    /// Alolan Vulpix into Alolan Ninetales), from one look to the same look (Burmy's sandy cloak makes a sandy
+    /// Wormadam), into a form by the hour (Lycanroc's Midnight Form), and into a regional form only in its region
+    /// (Pikachu into Alolan Raichu in Alola), which goes before the species' other evolutions. An evolution into
+    /// another form by the same method as one into the species' own (Dudunsparce's three segments, Toxtricity's Low
+    /// Key, which the games pick by chance or nature) stays the one into the species' own form.
+    /// </summary>
+    private void AddFormEvolutions(List<PokemonSpecies> list)
+    {
+        var bySpecies = list.ToDictionary(s => s.DexNumber);
+        var forms = api.Table("pokemon_forms").ToDictionary(f => f.Int("id"));
+        var pokemon = api.Table("pokemon").ToDictionary(r => r.Int("id"));
+        var regions = api.Table("regions").ToDictionary(r => r.Int("id"), r => Names.Title(r["identifier"]));
+
+        // A form row's name in the species' forms, or null for the species' own
+        string? FormName(int? id)
+        {
+            if (id is not { } formId || !forms.TryGetValue(formId, out var f)) return null;
+            var p = pokemon[f.Int("pokemon_id")];
+            if (p.Bool("is_default") && f.Bool("is_default")) return null;
+            var species = bySpecies.GetValueOrDefault(p.Int("species_id"));
+            string suffix = FormSuffix(f, api.Species[p.Int("species_id")]["identifier"]);
+            return species?.Forms?.FirstOrDefault(x => x.Name.Equals(species.Name + "-" + suffix, StringComparison.OrdinalIgnoreCase))?.Name;
+        }
+
+        foreach (var r in api.Table("pokemon_evolution").Where(r => r.Bool("is_default")).OrderBy(r => r.Int("evolved_species_id")).ThenBy(r => r.Int("id")))
+        {
+            int target = r.Int("evolved_species_id");
+            if (target > lastSpecies || api.Species[target].IntOrNull("evolves_from_species_id") is not { } from || !bySpecies.TryGetValue(from, out var s)) continue;
+            string? fromForm = FormName(r.IntOrNull("required_pokemon_form_id"));
+            string? toForm = FormName(r.IntOrNull("evolved_pokemon_form_id"));
+            string? region = r.IntOrNull("region_id") is { } regionId ? regions[regionId] : null;
+            if (fromForm == null && toForm == null && region == null) continue;
+
+            var evo = LaterEvolution(r, from);
+            evo.FromForm = fromForm;
+            evo.TargetForm = toForm;
+            evo.Region = region;
+            var evolutions = s.Evolutions ??= new();
+
+            // The same evolution into the species' own form: the form is its by the same condition, or by chance
+            var same = evolutions.FirstOrDefault(e => e.TargetSpecies == evo.TargetSpecies && e.Method == evo.Method && e.Item == evo.Item && e.Move == evo.Move
+                && e.Type == evo.Type && e.Species == evo.Species && e.Location == evo.Location && e.Level == evo.Level && e.FromForm == evo.FromForm && e.Region == evo.Region);
+            if (same != null)
+            {
+                // A form of its own condition (Lycanroc's by the hour, Urshifu's by the scroll) was there already,
+                // into the species' own form; one only by chance or nature was merged with the species' own
+                if (same.TargetForm == null && toForm != null && LaterEvolutionsOf(from).Count(e => e.TargetSpecies == evo.TargetSpecies) > 1)
+                    same.TargetForm = toForm;
+                continue;
+            }
+            if (region != null) evolutions.Insert(0, evo);
+            else evolutions.Add(evo);
+        }
+    }
+
+    /// <summary>
+    /// Gives each form the Pokédex colour Pokémon Showdown has for it where that isn't its species' (Mega Charizard X
+    /// is black, Alolan Vulpix white): PokeAPI has one colour to a species, and generated models are painted by it.
+    /// </summary>
+    public void AddFormColors(List<PokemonSpecies> list, Showdown showdown)
+    {
+        var colors = showdown.Species.Where(e => e.Text("color") != null).DistinctBy(e => e.Name.ToLowerInvariant())
+            .ToDictionary(e => e.Name, e => e.Text("color")!, StringComparer.OrdinalIgnoreCase);
+        foreach (var species in list)
+            foreach (var form in species.Forms ?? new())
+                if (colors.TryGetValue(form.Name, out var color) && color != species.Color) form.Color = color;
     }
 
     /// <summary>

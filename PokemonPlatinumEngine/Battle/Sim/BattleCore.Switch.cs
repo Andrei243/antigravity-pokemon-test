@@ -197,10 +197,10 @@ public sealed partial class BattleCore
         if (side.StealthRock && b.IsActive)
         {
             // By how the Rock type does against its types, with nothing else counted: 1/8 at an even matchup
-            var species = b.Pokemon!.Species;
-            float matchup = TypeChart.GetEffectiveness(PokemonType.Rock, species.PrimaryType, species.SecondaryType, Rules);
+            var mon = b.Pokemon!;
+            float matchup = TypeChart.GetEffectiveness(PokemonType.Rock, mon.PrimaryType, mon.SecondaryType, Rules);
             int divisor = matchup switch { >= 4f => 2, >= 2f => 4, >= 1f => 8, >= 0.5f => 16, > 0f => 32, _ => 0 };
-            if (divisor > 0) LoseHp(b, Formulas.Divide(b.Pokemon.MaxHP, divisor), $"Pointed stones dug into {b.Name}!");
+            if (divisor > 0) LoseHp(b, Formulas.Divide(mon.MaxHP, divisor), $"Pointed stones dug into {b.Name}!");
         }
     }
 

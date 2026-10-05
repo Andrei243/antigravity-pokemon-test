@@ -32,7 +32,7 @@ public static class CatchCalculator
         // A Master Ball holds whatever the rolls would have said
         if (ball.EffectValue >= 9999) return 4;
 
-        int rate = Formulas.CatchRate(wild.Species.CatchRate, Formulas.BallTenths(ball.Name, wild, turn, conditions),
+        int rate = Formulas.CatchRate(wild.CatchRate, Formulas.BallTenths(ball.Name, wild, turn, conditions),
             wild.MaxHP, wild.CurrentHP, wild.Status);
         if (rate >= 255) return 4;
 

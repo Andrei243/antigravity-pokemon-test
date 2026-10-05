@@ -156,7 +156,7 @@ public class Map
 
     /// <summary>
     /// The special places this map has that some Pokémon evolve at when they level up there: "Moss Rock",
-    /// "Ice Rock", "Magnetic Field" (the names the evolutions in species.json use).
+    /// "Ice Rock", "Magnetic Field", "Stone Arch" (the names the evolutions in species.json use).
     /// </summary>
     public List<string> EvolutionSites { get; set; } = new();
 

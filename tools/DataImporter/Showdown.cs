@@ -3,10 +3,11 @@ using System.Text.RegularExpressions;
 namespace DataImporter;
 
 /// <summary>
-/// Pokémon Showdown's move and item tables (<c>data/moves.ts</c>, <c>data/items.ts</c>), read for what PokeAPI
-/// doesn't have: the power a move has as a Z-Move and as a Max Move, what Z-Power adds to a status move, the
-/// Z-Moves, Max Moves and G-Max Moves themselves, and which Mega Stone and Z-Crystal belongs to whom. Only those
-/// numbers and names are read; the functions in the files (how each effect works) are not. Showdown is
+/// Pokémon Showdown's move, item and species tables (<c>data/moves.ts</c>, <c>data/items.ts</c>,
+/// <c>data/pokedex.ts</c>), read for what PokeAPI doesn't have: the power a move has as a Z-Move and as a Max Move,
+/// what Z-Power adds to a status move, the Z-Moves, Max Moves and G-Max Moves themselves, which Mega Stone and
+/// Z-Crystal belongs to whom, and the colour of each form. Only those numbers and names are read; the functions in
+/// the files (how each effect works) are not. Showdown is
 /// MIT-licensed: see the importer's README and THIRD-PARTY-NOTICES.md.
 /// <para>
 /// The files are TypeScript, one entry to a block: <c>\tid: {</c> … <c>\t},</c> with one field to a line at two
@@ -28,12 +29,17 @@ public sealed partial class Showdown
     public IReadOnlyList<Entry> Moves { get; }
     public IReadOnlyList<Entry> Items { get; }
 
+    /// <summary>Species and forms, each form an entry of its own named as the forms here are (<c>Charizard-Mega-X</c>).</summary>
+    public IReadOnlyList<Entry> Species { get; }
+
     public Showdown(string folder)
     {
         string moves = Path.Combine(folder, "data", "moves.ts"), items = Path.Combine(folder, "data", "items.ts");
-        if (!File.Exists(moves) || !File.Exists(items)) throw new DirectoryNotFoundException($"No Pokémon Showdown data in {folder}");
+        string species = Path.Combine(folder, "data", "pokedex.ts");
+        if (!File.Exists(moves) || !File.Exists(items) || !File.Exists(species)) throw new DirectoryNotFoundException($"No Pokémon Showdown data in {folder}");
         Moves = Read(moves);
         Items = Read(items);
+        Species = Read(species);
     }
 
     public static List<Entry> Read(string path) => Parse(File.ReadAllLines(path));

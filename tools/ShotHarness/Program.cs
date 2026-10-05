@@ -452,6 +452,15 @@ void Confirm(BattleEngine b)
     Frames(1);
 }
 
+// A Pokémon of a species, or of a species' form by the form's name (Meowth-Galar, Charizard-Mega-X)
+Pokemon Meet(string name, int level)
+{
+    if (PokemonDatabase.Get(name) is { } species) return new Pokemon(species, level);
+    var p = new Pokemon(PokemonDatabase.SpeciesOfForm(name) ?? throw new ArgumentException($"No species or form is called {name}"), level);
+    p.ChangeForm(name);
+    return p;
+}
+
 BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201", Random chance = null)
 {
     // On the map of Sinnoh the stage depends on where the battle starts: the area's trees, water within sight
@@ -459,7 +468,7 @@ BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string m
     Set("currentMap", MapDatabase.Get(name));
     if (x >= 0) ((Player)Get("player")).SetPosition(x, y, Direction.Up);
     if (trainer != null && trainer.Party.Count == 0) trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
-    var enemy = trainer?.Party.Members[0] ?? new Pokemon(PokemonDatabase.Get(foe)!, level);
+    var enemy = trainer?.Party.Members[0] ?? Meet(foe, level);
     // (A wild battle can be given its own chance, with the rolls a shot depends on fixed)
     var b = chance == null
         ? new BattleEngine(party, enemy, inventory, pokedex, trainer)
@@ -2609,14 +2618,14 @@ if (mode == "dex")
 
 // ---------------------------------------------------------------- species in battle (plan 03 · D6)
 
-// versus <mine> <foe> [<mine> <foe> ...]: a wild battle for each pair, the first species leading the player's party
-// and the second met in the wild, shot at the main menu (95_versus_<mine>_<foe>). Not part of "all"
+// versus <mine> <foe> [<mine> <foe> ...]: a wild battle for each pair, the first species (or form) leading the player's
+// party and the second met in the wild, shot at the main menu (95_versus_<mine>_<foe>). Not part of "all"
 if (mode == "versus")
 {
     var names = args.Skip(2).ToArray();
     for (int i = 0; i + 1 < names.Length; i += 2)
     {
-        var mine = new Pokemon(PokemonDatabase.Get(names[i])!, 20);
+        var mine = Meet(names[i], 20);
         party.Members.Insert(0, mine);
         var vb = StartBattle(names[i + 1], 20);
         ToMainMenu(vb);

@@ -54,7 +54,7 @@ Known differences that join the `Ruleset` in the session that writes their rule,
 | Catching | Platinum's formula | critical captures, the later status bonuses | R9, R13 |
 | TMs | used up | kept | R11 |
 | Poison in the field | hurts every four steps, down to 1 HP | none | R13 |
-| Species' types and base stats | Platinum's (Clefairy is Normal) | the newest games' (Fairy; the stat raises of Generations 6 and 7) | plan 03 · D11, then R19 |
+| Species' types and base stats | Platinum's (Clefairy is Normal) | the newest games' (Fairy; the stat raises of Generations 6 and 7) | plan 03 · D11 (done: `Ruleset.ModernSpeciesValues`), then R19 |
 | Abilities that were reworked (Sturdy and the like) | as in Platinum | as in the newest games | R7, R27 |
 
 ### Where the engine stands against Platinum's own code
@@ -142,11 +142,22 @@ The baseline is Platinum's own code (`Pokemon_GetEvolutionTargetSpecies`, `Evolu
 | Cosmoem | Solgaleo or Lunala by game version | Solgaleo by day, Lunala at night | No versions |
 | (affection) | Pokémon-Amie hearts | Friendship 220 | Generation 8 folded affection into friendship |
 | Sliggoo | Rain in the field | The same; battles' rain doesn't count | Done: the field's weather where the player stands (plan 04 · G9) |
+| Own Tempo Rockruff | Level 25 at dusk, 17:00 to 17:59 | Level 25 in Platinum's evening, 17:00 to 19:59 | Platinum's clock has no dusk of its own; its evening is the nearest of its five times of day |
+| Galarian Farfetch'd | Three critical hits in one battle | The same, evolving as the battle ends (not after one that was lost); B can stop it, as it can a level-up | Evolutions wait for the battle's end here anyway |
+| Galarian Yamask | 49 HP lost to moves without fainting, then walking under the Dusty Bowl's stone arch | The same damage, counted across battles until it faints, then a level-up on a map with the Stone Arch | No such arch in Sinnoh yet: plan 03 · D12's zone for the later generations can have one, named so in its map |
+| White-Striped Basculin | 294 HP lost to its own recoil without fainting, then (Legends: Arceus) a level | The same, counted across battles until it faints | |
 
 **Trading**
 
 - Trade evolutions stay trade evolutions: the game will have trading, online (plan 07) and with characters in the game (decided 2026-10-02). This replaces the idea in plan 03, decision 4, of swapping them for another method.
 - A Linking Cord used on a Pokémon counts as a trade, as in Legends: Arceus. It needs the held item where the trade does, and a Shelmet in the party for Karrablast (and the other way round). Whether the game hands Linking Cords out is still open; nothing does yet.
+
+**Forms** (plan 03 · D11)
+
+- Platinum's own forms (Rotom's appliances, Giratina's Origin Forme, Shaymin's Sky Forme, Deoxys's formes, Wormadam's cloaks) have the decompilation's values; where the newest games changed them (Rotom's appliances took a second type in Generation 5) those are their modern values, which a game played by the modern rules uses. Forms that came later have their newest game's values.
+- A form evolves by its own evolutions; a regional form by nothing else, and any other form also by its species' evolutions into species its form has none into (a sandy Burmy that is male still becomes Mothim).
+- An evolution into another region's form (Pikachu into an Alolan Raichu) happens only in that region, as in Sun and Moon. None of those regions is built yet, so in the game they become the species' own forms.
+- A female of a species whose females are a form of their own (Meowstic, Indeedee, Oinkologne, Basculegion, Pyroar, Frillish, Jellicent) is in that form from the moment she is met or evolves.
 
 **Not taken from later games**
 

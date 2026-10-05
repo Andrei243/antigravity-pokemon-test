@@ -92,6 +92,9 @@ public class SaveData
 public class SavedPokemonData
 {
     public string SpeciesName { get; set; } = "Turtwig";
+
+    /// <summary>The form it is in (plan 03 · D11); null for its species' own, and in saves from before forms.</summary>
+    public string? Form { get; set; }
     public string Nickname { get; set; } = "Turtwig";
     public int Level { get; set; } = 5;
     public Gender Gender { get; set; } = Gender.Male;
@@ -128,6 +131,7 @@ public class SavedPokemonData
         var saved = new SavedPokemonData
         {
             SpeciesName = p.Species.Name,
+            Form = p.Form,
             Nickname = p.Nickname,
             Level = p.Level,
             Gender = p.Gender,
@@ -177,6 +181,7 @@ public class SavedPokemonData
             Beauty = Beauty,
             Ball = Ball
         };
+        if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;
         if (Friendship is { } friendship) p.Friendship = friendship;
         if (Personality is { } personality) p.Personality = personality;

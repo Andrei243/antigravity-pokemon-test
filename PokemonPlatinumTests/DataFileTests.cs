@@ -107,9 +107,9 @@ public class DataFileTests
         Assert.Equal(("Mantine", "Remoraid"), (PokemonDatabase.Get("Mantyke")!.Evolutions!.Single().TargetSpecies, PokemonDatabase.Get("Mantyke")!.Evolutions!.Single().Species));
         Assert.Equal("Ancient Power", PokemonDatabase.Get("Piloswine")!.Evolutions!.Single(e => e.TargetSpecies == "Mamoswine").Move);
 
-        // Platinum species that gained an evolution later, but not the ones that start from a regional form
+        // Platinum species that gained an evolution later, and the ones that start from a regional form, which say so
         Assert.Contains(PokemonDatabase.Get("Scyther")!.Evolutions!, e => e.TargetSpecies == "Kleavor");
-        Assert.DoesNotContain(PokemonDatabase.Get("Meowth")!.Evolutions!, e => e.TargetSpecies == "Perrserker");
+        Assert.Equal("Meowth-Galar", PokemonDatabase.Get("Meowth")!.Evolutions!.Single(e => e.TargetSpecies == "Perrserker").FromForm);
 
         // Every evolution goes somewhere that exists, with items and moves that exist
         foreach (var s in PokemonDatabase.GetAll())

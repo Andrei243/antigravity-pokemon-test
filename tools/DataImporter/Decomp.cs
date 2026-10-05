@@ -23,6 +23,9 @@ public sealed class Decomp
 
     public JsonElement Species(string constant) => Read("res", "pokemon", Folder(constant, "SPECIES_"), "data.json");
 
+    /// <summary>A form's own data, for the forms Platinum keeps it for (Deoxys, Wormadam, Giratina, Shaymin, Rotom).</summary>
+    public JsonElement SpeciesForm(string species, string form) => Read("res", "pokemon", species, "forms", form, "data.json");
+
     /// <summary>
     /// Platinum's Sinnoh Pokédex in order: index i is the species with regional number i. Index 0 holds a species
     /// the regional Pokédex never shows (Arceus), as the original's table does.

@@ -147,7 +147,7 @@ public sealed class BattleRenderer
                 var shown = slot < anim.Slots ? anim[s, slot].Shown : null;
                 if (shown != null)
                 {
-                    var model = PokemonModels.Get(shown.Species.Name);
+                    var model = PokemonModels.Get(shown.ModelName);
                     height = model.Height * ModelScale(model, isPlayer, anim);
                 }
                 places.Set(s, slot, feet, height);
@@ -245,10 +245,10 @@ public sealed class BattleRenderer
         {
             var foe = anim[BattleSide.Enemy, slot];
             if (foe.Present && foe.Shown != null && Appear(anim, foe, false).Visible)
-                Blob(Spot(BattleSide.Enemy, slot, anim.Slots), BattleStage.EnemyPlatformRadius * 0.62f * fit * PokemonModels.Get(foe.Shown.Species.Name).Fill);
+                Blob(Spot(BattleSide.Enemy, slot, anim.Slots), BattleStage.EnemyPlatformRadius * 0.62f * fit * PokemonModels.Get(foe.Shown.ModelName).Fill);
             var mine = anim[BattleSide.Player, slot];
             if (mine.Present && mine.Shown != null && Appear(anim, mine, true).Visible)
-                Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.Species.Name).Fill);
+                Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.ModelName).Fill);
         }
 
         Rlgl.SetTexture(0);
@@ -666,7 +666,7 @@ public sealed class BattleRenderer
         var a = Appear(anim, v, isPlayer);
         if (!a.Visible) return;
 
-        var model = PokemonModels.Get(v.Shown.Species.Name);
+        var model = PokemonModels.Get(v.Shown.ModelName);
         var view = isPlayer ? SpriteView.Back : SpriteView.Front;
         var framing = PokemonSprites.Framing(model, view, PokemonSprites.Size);
         var spot = Spot(isPlayer ? BattleSide.Player : BattleSide.Enemy, slot, anim.Slots);

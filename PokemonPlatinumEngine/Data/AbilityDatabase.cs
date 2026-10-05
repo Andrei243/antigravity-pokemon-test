@@ -64,11 +64,4 @@ public static class AbilityDatabase
     {
         return species.Abilities;
     }
-
-    /// <summary>Picks one of the species' abilities at random, as for a newly met Pokémon.</summary>
-    public static string? PickFor(PokemonSpecies species, Random rng)
-    {
-        var list = ForSpecies(species);
-        return list.Count == 0 ? null : list[rng.Next(list.Count)];
-    }
 }

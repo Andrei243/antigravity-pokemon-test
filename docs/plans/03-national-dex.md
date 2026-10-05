@@ -126,6 +126,15 @@ Import species 494–1025 with their forms (regional, Mega, Gigantamax), abiliti
 
 *Progress (with D1):* species 494–1025 (default forms), their abilities, learnsets and evolutions, the later moves and the Fairy type's matchups are in. Still to do: forms, and the evolutions that start from a regional form (Perrserker, Sirfetch'd, Obstagoon and the like). The effects of their moves and abilities come from plan 06 · R24–R27; until those are done, plan 06's coverage report lists what is still approximated.
 
+**Outcome (2026-10-05).**
+- **Forms**: 541 forms of 241 species in `species.json` (`forms`; `PokemonForm`, `FormKind`): 97 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 held in battle only, 85 others with values of their own (Rotom's appliances, the Origin Formes, Deoxys's formes) and 243 that only look different (Unown's letters, Burmy's cloaks, Arceus's plates, which change only its type). Each is named as Pokémon Showdown names it, so every Mega Stone's `form` is one of them, and holds only what it doesn't share with its species. Platinum's twelve forms with data of their own take the decompilation's values; the rest come from PokeAPI, and each form's colour from Showdown's `data/pokedex.ts` (a third file from the pinned commit). Alola's totems and the `???` type's form are left out.
+- **Modern values** (decision 2, plan 06 · R1): 61 species and Rotom's five appliances carry the newest games' types and base stats (`modern`: Clefairy's Fairy type, the stat raises of Generations 6 and 7), which `Ruleset.Use` swaps in for a game played by the modern rules (`Ruleset.ModernSpeciesValues`); `Under(rules)` asks without changing anything.
+- **A Pokémon in a form** (`Pokemon.Form`, `ChangeForm`, saved as `form`): its types, stats, abilities, learnset, size, catch rate and EXP yield are its form's, and the battle, the party, the PC and the evolution scene read them through the Pokémon. A female of a species whose females are a form of their own (Meowstic, Indeedee, Oinkologne, Basculegion, Pyroar, Frillish, Jellicent) is in it from the start.
+- **Form evolutions**: 581 evolutions in all, 97 more than before. An evolution can start from a form (Galarian Meowth into Perrserker, a sandy Burmy into a sandy Wormadam), lead into one (Alolan Persian, Midnight Lycanroc) or happen in one region (Pikachu into an Alolan Raichu in Alola); a regional form evolves only by its own. Four needed rules of their own (docs/mechanics/evolution.md and rulings.md): Galarian Farfetch'd into Sirfetch'd after three critical hits in one battle, by a new trigger at the battle's end; Galarian Yamask into Runerigus after 49 HP lost to moves without fainting, on a map with the Stone Arch; White-Striped Basculin into Basculegion after 294 HP of its own recoil; Own Tempo Rockruff into Dusk Lycanroc at dusk, Platinum's evening. The battle counts the critical hits, the damage and the recoil with one call each (`Evolution.CountCriticalHit`, `CountDamageTaken`, `CountRecoil`), and a faint clears the last two.
+- **Models**: every form is a model of its own (the risk below): `PokemonGenomes.For` takes a form's name and sculpts it from the form's data and colour as one of its species' family (Mega Charizard X black and part Dragon, Alolan Vulpix white). The 101 forms of hand-built species show their species' sculpt until they are sculpted; a model file named after a form replaces either. Boards of forms are made with the harness's `dex` mode, which takes form names.
+- **Tests**: `FormTests` (the data, Platinum's forms, the modern values, a Pokémon in a form, female forms, saving, the models) and six more in `EvolutionTests` (regional forms, looks, regions, dusk, the counted evolutions, and a battle counting them).
+- **Not done here**: hand-built sculpts for the 101 forms of hand-built species (Rotom's appliances, Giratina's Origin Forme, Burmy's cloaks, Shellos's East Sea, Cherrim in the sun, 26 Megas, the regional forms of Raichu, the Geodude line, Ponyta, Rapidash, Mr. Mime, Wooper and Sneasel); the Pokédex's forms page (D10); changing form (Rotom's appliances, the Griseous Orb, the Gracidea, Mega Evolution, Primal Reversion, Dynamax: plan 06 · R19–R23 and R29); a way to meet any form, and a map with the Stone Arch (D12).
+
 ### D12 · Every species obtainable
 Encounter tables for Platinum's post-game, the Pal Park-style area, the new zone for later generations, gifts, legendary quests, the trade-evolution replacement. A completeness test fails for any species with no way to get it.
 
@@ -134,7 +143,7 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 
 ## Risks
 
-- **Forms need models too**: 97 Mega forms, 34 Gigantamax forms and the regional forms are extra models; the generator in D5 must treat each form as a model of its own.
+- **Forms need models too**: 97 Mega forms, 34 Gigantamax forms and the regional forms are extra models; the generator in D5 must treat each form as a model of its own. (Done in D11: each form is generated from its own data, or shows its hand-built species' sculpt.)
 - **Model quality at scale**: generated models look generic. Hand-built models (D6–D9) carry the Sinnoh Pokédex and model files (decision 3) any species the user wants; the generator is the fallback.
 - **Start-up time**: baking 1025 × 3 sprites at start-up would take minutes; bake lazily with a disk cache.
 
@@ -153,6 +162,6 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 - [x] D8 Hand-built Sinnoh models, batch 3 (2026-10-05: the Sinnoh Pokédex from Azurill to Magnezone but for its legendaries, 51 species)
 - [x] D9 Hand-built Sinnoh models, batch 4 (2026-10-05: the legendaries Uxie, Mesprit, Azelf, Dialga, Palkia and Manaphy, and Tangela to Absol, 35 species; the whole Sinnoh Pokédex is now hand-built)
 - [x] D10 Pokédex (2026-10-04: Sinnoh and National Pokédexes, the area and size pages, Platinum's search, diplomas)
-- [ ] D11 Generations 5–9
+- [x] D11 Generations 5–9 (2026-10-05: species 494–1025 with D1; then 541 forms, the evolutions that start from or lead to them, the newest games' species values for the modern rules, and a model for every form)
 - [ ] D12 Every species obtainable
 - [ ] D13 Balance and polish

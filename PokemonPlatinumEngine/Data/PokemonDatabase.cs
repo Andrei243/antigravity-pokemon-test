@@ -11,6 +11,7 @@ public static class PokemonDatabase
 
     private static readonly Dictionary<string, PokemonSpecies> SpeciesByName = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<int, PokemonSpecies> SpeciesByDex = new();
+    private static readonly Dictionary<string, PokemonSpecies> SpeciesByForm = new(StringComparer.OrdinalIgnoreCase);
 
     public static void Initialize() { }
 
@@ -26,6 +27,7 @@ public static class PokemonDatabase
     {
         SpeciesByName[species.Name] = species;
         SpeciesByDex[species.DexNumber] = species;
+        foreach (var form in species.Forms ?? new()) SpeciesByForm[form.Name] = species;
     }
 
     public static PokemonSpecies? Get(string name)
@@ -41,4 +43,20 @@ public static class PokemonDatabase
     }
 
     public static IEnumerable<PokemonSpecies> GetAll() => SpeciesByName.Values;
+
+    /// <summary>The species a form belongs to, by the form's name (<c>Rotom-Heat</c>); null if no species has it.</summary>
+    public static PokemonSpecies? SpeciesOfForm(string formName)
+    {
+        SpeciesByForm.TryGetValue(formName, out var species);
+        return species;
+    }
+
+    /// <summary>
+    /// Gives every species and form the values these rules say (<see cref="PokemonSpecies.Modern"/>). Called
+    /// through <see cref="Ruleset.Use"/> as a game begins or is loaded.
+    /// </summary>
+    internal static void UseRules(Ruleset rules)
+    {
+        foreach (var species in SpeciesByName.Values) species.UseRules(rules);
+    }
 }
