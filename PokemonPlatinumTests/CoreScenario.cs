@@ -52,7 +52,7 @@ internal static class CoreScenario
 
     /// <summary>A wild battle on the rules alone, both sides answered for from outside.</summary>
     public static BattleCore Wild(Pokemon mine, Pokemon foe, BattleRandom? rolls = null, Ruleset? rules = null,
-        BattleWeather sky = BattleWeather.None, params Pokemon[] bench)
+        BattleWeather sky = BattleWeather.None, BattleTerrain ground = BattleTerrain.Plain, params Pokemon[] bench)
     {
         var party = new Party();
         party.Add(mine);
@@ -60,7 +60,7 @@ internal static class CoreScenario
         var core = new BattleCore(new CoreSetup
         {
             PlayerParty = party, WildPokemon = new List<Pokemon> { foe }, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Platinum,
-            Conditions = new BattleConditions { Weather = sky }, PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+            Conditions = new BattleConditions { Weather = sky, Terrain = ground }, PlayerController = null, EnemyController = null, PlayerName = "Lucas"
         });
         core.Start();
         return core;

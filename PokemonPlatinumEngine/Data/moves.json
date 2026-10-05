@@ -4714,8 +4714,7 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Uses a move which depends upon the terrain.",
-    "effect": "NaturePower",
-    "support": "None"
+    "effect": "NaturePower"
   },
   {
     "id": 268,
@@ -5126,7 +5125,6 @@
     "flags": "Protect, Mirror",
     "effect": "SecretPower",
     "effectChance": 30,
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -5173,7 +5171,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Camouflage",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Evasion"

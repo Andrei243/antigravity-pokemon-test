@@ -96,8 +96,38 @@ public sealed partial class BattleCore
         ["MakeGlobalTarget"] = new() { Does = (b, use) => b.FollowMe(use) },
         ["BoostAllyPowerBy50Percent"] = new() { Does = (b, use) => b.HelpingHand(use) },
         ["DecreaseLastMovePp"] = new() { Does = (b, use) => b.OnEach(use, t => b.Spite(use, t)) },
-        ["Chatter"] = new() { Hit = (b, use, hit) => b.Chatter(use, hit) }
+        ["Chatter"] = new() { Hit = (b, use, hit) => b.Chatter(use, hit) },
+
+        // ---- The battlefield (plan 06 · R6)
+        ["Camouflage"] = new() { Does = (b, use) => b.Camouflage(use) },
+        ["NaturePower"] = new() { Does = (b, use) => b.NaturePower(use) },
+        ["SecretPower"] = new() { Hit = (b, use, hit) => b.SecretPower(use, hit) }
     };
+
+    /// <summary>
+    /// The original's tables of the ground (<c>include/data/terrain</c>): what Camouflage turns its user into,
+    /// what Nature Power becomes and what Secret Power does, on each. Anything past the list is "special".
+    /// </summary>
+    private static readonly Dictionary<BattleTerrain, (PokemonType Type, string Move, string Effect)> Terrains = new()
+    {
+        [BattleTerrain.Plain] = (PokemonType.Ground, "Earthquake", "AccuracyDown"),
+        [BattleTerrain.Sand] = (PokemonType.Ground, "Earthquake", "AccuracyDown"),
+        [BattleTerrain.Grass] = (PokemonType.Grass, "Seed Bomb", "Sleep"),
+        [BattleTerrain.Puddle] = (PokemonType.Grass, "Seed Bomb", "Sleep"),
+        [BattleTerrain.Mountain] = (PokemonType.Rock, "Rock Slide", "Flinch"),
+        [BattleTerrain.Cave] = (PokemonType.Rock, "Rock Slide", "Flinch"),
+        [BattleTerrain.Snow] = (PokemonType.Ice, "Blizzard", "Freeze"),
+        [BattleTerrain.Water] = (PokemonType.Water, "Hydro Pump", "AttackDown"),
+        [BattleTerrain.Ice] = (PokemonType.Ice, "Ice Beam", "Freeze"),
+        [BattleTerrain.Building] = (PokemonType.Normal, "Tri Attack", "Paralyze"),
+        [BattleTerrain.GreatMarsh] = (PokemonType.Ground, "Mud Bomb", "SpeedDown"),
+        [BattleTerrain.Bridge] = (PokemonType.Flying, "Air Slash", "EvasionDown"),
+        [BattleTerrain.Special] = (PokemonType.Normal, "Tri Attack", "Paralyze")
+    };
+
+    /// <summary>What the ground this battle is fought on comes to in the tables.</summary>
+    private (PokemonType Type, string Move, string Effect) Ground =>
+        Terrains.TryGetValue(Conditions.Terrain, out var ground) ? ground : Terrains[BattleTerrain.Special];
 
     /// <summary>Whether Metronome, Assist or Copycat may call a move (<c>Move_CanBeMetronomed</c>): not one of the list, nor one Gravity or Heal Block would stop.</summary>
     private bool CanBeCalled(Battler user, MoveData data) =>
@@ -843,5 +873,62 @@ public sealed partial class BattleCore
         if (user.Pokemon!.Species.Name != "Chatot" || user.Volatile.Transformed) return;
         if (rng.Roll(RollKind.SideEffect, 100) > Rules.ChatterConfusionChance) return;
         Confuse(t, user, false, By.SideEffect);
+    }
+
+    // ---------------------------------------------------------------- the battlefield (plan 06 · R6)
+
+    /// <summary><c>BtlCmd_TryCamouflage</c>: the user becomes the type of the ground; not Arceus, and not when it is that type already.</summary>
+    private void Camouflage(MoveUse use)
+    {
+        var user = use.User;
+        use.Line.With(Shown(user, user, use.Move, null));
+        var type = Ground.Type;
+        if (user.Pokemon!.AbilityName == "Multitype" || user.HasType(type))
+        {
+            Fails();
+            return;
+        }
+        user.Volatile.Types = new List<PokemonType> { type };
+        Say($"{user.Name} transformed into the {type} type!");
+    }
+
+    /// <summary><c>BtlCmd_GetTerrainMove</c>: Nature Power becomes the ground's move and uses it.</summary>
+    private void NaturePower(MoveUse use)
+    {
+        var user = use.User;
+        use.Line.With(Shown(user, user, use.Move, null));
+        var move = MoveDatabase.Get(Ground.Move);
+        Say($"{use.Move.Name} turned into {move.Name}!");
+        CallMove(use, move, null);
+    }
+
+    /// <summary>
+    /// <c>BtlCmd_GetTerrainSecondaryEffect</c>: Secret Power's side effect is the ground's (a stat lowered, a
+    /// condition, a flinch), by the move's own chance, on a target it touched that isn't shielded from side effects.
+    /// </summary>
+    private void SecretPower(MoveUse use, MoveHit hit)
+    {
+        var user = use.User;
+        var t = hit.Target;
+        if (!hit.Touched || !t.IsActive || t == user) return;
+        var userEffects = BattleEffects.Of(user).ToList();
+        bool breaks = userEffects.Any(e => e.IgnoresTargetAbility);
+        if (BattleEffects.Of(t, includeAbility: !breaks).Any(e => e.BlocksSideEffects)) return;
+        int chance = (use.Data.EffectChance > 0 ? use.Data.EffectChance : 30) * userEffects.Select(e => e.SideEffectChanceMultiplier).DefaultIfEmpty(1).Max();
+        if (!Chance(chance)) return;
+
+        switch (Ground.Effect)
+        {
+            case "AccuracyDown": ChangeStat(t, StatType.Accuracy, -1, user, false, By.SideEffect); break;
+            case "AttackDown": ChangeStat(t, StatType.Attack, -1, user, false, By.SideEffect); break;
+            case "SpeedDown": ChangeStat(t, StatType.Speed, -1, user, false, By.SideEffect); break;
+            case "EvasionDown": ChangeStat(t, StatType.Evasion, -1, user, false, By.SideEffect); break;
+            case "Sleep": TryInflictStatus(t, StatusCondition.Sleep, user, false, By.SideEffect); break;
+            case "Freeze": TryInflictStatus(t, StatusCondition.Freeze, user, false, By.SideEffect); break;
+            case "Paralyze": TryInflictStatus(t, StatusCondition.Paralyze, user, false, By.SideEffect); break;
+            case "Flinch":
+                if (!t.MovedThisTurn && !BattleEffects.Of(t).Any(e => e.BlocksFlinch)) t.Flinched = true;
+                break;
+        }
     }
 }

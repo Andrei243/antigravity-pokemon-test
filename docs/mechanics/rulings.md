@@ -138,6 +138,16 @@ Our own choices in R5, where the original leaves room or this game is built diff
 - **A plucked or thrown berry's disliked flavour** (which confuses in the original) and Micle's accuracy wait for the berries' own session (R8), as does a Custap Berry or Quick Claw that went off this turn keeping its holder's item.
 - **Text**: every line is our own wording again.
 
+R6 (2026-10-05) wrote the three moves of the battlefield from the original's tables of the ground (`include/data/terrain`) and the way it picks a battle's ground from the field (`CalcTerrain`):
+
+- **The ground** is the tile underfoot first (ice; tall grass; sand; snow of any depth; the marsh's mud; a cave floor; water that can be surfed), then the area's battle background (a route is plain, a forest grass, a town a building, a mountain route a mountain, a cave a cave), and the League's rooms, the Distortion World and the Battle Frontier are one "special" ground. A puddle and a bridge are in the tables but nothing in Platinum picks them, and nothing does here.
+- **Camouflage** fails for Arceus and for a Pokémon already of the ground's type; **Nature Power** says what it turned into and uses that move as one called by another; **Secret Power**'s effect is the ground's, three times in ten, held off by Shield Dust and a Substitute like any side effect.
+
+Our own choices in R6:
+
+- **A hand-made map with no battle background** goes by its stage: the hand-made Jubilife City is open land where the original's city is a building, until the city is imported with its header.
+- **Secret Power's flinch** asks, as every flinch here does, that the target hasn't moved yet this turn.
+
 Still different, each waiting for the session whose rule it is:
 
 - The abilities that draw moves to them (Lightning Rod, Storm Drain) and what a copied or swapped ability announces on arriving (Trace, Intimidate) are R7's.

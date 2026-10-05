@@ -187,7 +187,14 @@ public static class Formulas
 }
 
 /// <summary>Where a battle is fought, as far as a rule asks (the Dive and Dusk Balls today).</summary>
-public enum BattleTerrain { Land, Water, Cave }
+/// <summary>
+/// The ground a battle is fought on, in the original's terms (<c>enum BattleTerrain</c>): what the Dive and
+/// Dusk Balls, Camouflage, Nature Power and Secret Power go by. The game picks it from the tile under the player
+/// and the area's battle background (<c>GameEngine.TerrainAt</c>). <see cref="Special"/> stands for the
+/// League's rooms, the Distortion World and the Battle Frontier, which the original lists one by one; a puddle
+/// and a bridge are in its tables but nothing in Platinum picks them.
+/// </summary>
+public enum BattleTerrain { Plain, Sand, Grass, Puddle, Mountain, Cave, Snow, Water, Ice, Building, GreatMarsh, Bridge, Special }
 
 /// <summary>What a battle's rules need to know of the world outside it.</summary>
 public sealed class BattleConditions

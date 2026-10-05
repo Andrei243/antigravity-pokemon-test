@@ -1031,16 +1031,61 @@ public class GameEngine
     /// <summary>What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the weather of the place comes into the battle with it.</summary>
     private Battle.Sim.BattleConditions BattleConditionsHere() => new()
     {
-        Terrain = currentMap.ArenaAt(player.GridX, player.GridY) switch
-        {
-            BattleArena.Water => Battle.Sim.BattleTerrain.Water,
-            BattleArena.Cave => Battle.Sim.BattleTerrain.Cave,
-            _ => Battle.Sim.BattleTerrain.Land
-        },
+        Terrain = TerrainAt(currentMap, player.GridX, player.GridY),
         Night = GameClock.IsNight,
         HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY))
     };
+
+    /// <summary>
+    /// The ground a battle here is fought on, as the original picks it (<c>CalcTerrain</c>, <c>sTerrainForBackground</c>):
+    /// the tile under the player first (ice, tall grass, sand, snow, the marsh's mud, a cave floor, water), then the
+    /// area's battle background, and the map's stage where it has none. The Dive and Dusk Balls, Camouflage,
+    /// Nature Power and Secret Power go by it.
+    /// </summary>
+    internal static Battle.Sim.BattleTerrain TerrainAt(Map map, int x, int y)
+    {
+        var b = map.BehaviourAt(x, y);
+        switch (b)
+        {
+            case TileBehavior.Ice: return Battle.Sim.BattleTerrain.Ice;
+            case TileBehavior.TallGrass or TileBehavior.VeryTallGrass: return Battle.Sim.BattleTerrain.Grass;
+            case TileBehavior.Sand: return Battle.Sim.BattleTerrain.Sand;
+            case TileBehavior.ShallowSnow or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow:
+                return Battle.Sim.BattleTerrain.Snow;
+            case TileBehavior.Mud or TileBehavior.DeepMud or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass:
+                return Battle.Sim.BattleTerrain.GreatMarsh;
+            case TileBehavior.CaveFloor: return Battle.Sim.BattleTerrain.Cave;
+        }
+        if (TileBehaviors.IsSurfable(b)) return Battle.Sim.BattleTerrain.Water;
+
+        switch (map.AreaAt(x, y)?.BattleBackground)
+        {
+            case "Plain": return Battle.Sim.BattleTerrain.Plain;
+            case "Water": return Battle.Sim.BattleTerrain.Water;
+            case "City": return Battle.Sim.BattleTerrain.Building;
+            case "Forest": return Battle.Sim.BattleTerrain.Grass;
+            case "Mountain": return Battle.Sim.BattleTerrain.Mountain;
+            case "Snow": return Battle.Sim.BattleTerrain.Snow;
+            case "Indoors1" or "Indoors2" or "Indoors3": return Battle.Sim.BattleTerrain.Building;
+            case "Cave1" or "Cave2" or "Cave3": return Battle.Sim.BattleTerrain.Cave;
+            case null or "": break;
+            // The League's rooms, the Distortion World and the Battle Frontier
+            default: return Battle.Sim.BattleTerrain.Special;
+        }
+
+        return map.ArenaAt(x, y) switch
+        {
+            BattleArena.Forest => Battle.Sim.BattleTerrain.Grass,
+            BattleArena.Cave => Battle.Sim.BattleTerrain.Cave,
+            BattleArena.Water => Battle.Sim.BattleTerrain.Water,
+            BattleArena.Snow => Battle.Sim.BattleTerrain.Snow,
+            BattleArena.Sand => Battle.Sim.BattleTerrain.Sand,
+            BattleArena.Indoors or BattleArena.Gym => Battle.Sim.BattleTerrain.Building,
+            BattleArena.League => Battle.Sim.BattleTerrain.Special,
+            _ => Battle.Sim.BattleTerrain.Plain
+        };
+    }
 
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;

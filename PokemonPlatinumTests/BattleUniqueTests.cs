@@ -5,6 +5,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 using static PokemonPlatinumTests.CoreScenario;
 using static PokemonPlatinumTests.Scenario;
 
@@ -442,6 +443,87 @@ public class BattleUniqueTests
 
         // Nothing used yet
         Assert.Contains("But it failed!", Turn(Wild(Mon("Machamp", 50, "Spite"), Mon("Snorlax", 50, "Tackle"))));
+    }
+
+    // ================================================================== the battlefield (plan 06 · R6)
+
+    [Fact]
+    public void CamouflageTakesTheTypeOfTheGround()
+    {
+        // The original's table: open land is Ground, water Water, a building Normal; a type it has already fails
+        var core = Wild(Mon("Snorlax", 50, "Camouflage"), Mon("Blastoise", 50));
+        Assert.Contains("Snorlax transformed into the Ground type!", Turn(core));
+        Assert.True(core.At(Mine).HasType(PokemonType.Ground));
+        Assert.False(core.At(Mine).HasType(PokemonType.Normal));
+        core = Wild(Mon("Snorlax", 50, "Camouflage"), Mon("Blastoise", 50), ground: BattleTerrain.Water);
+        Assert.Contains("Snorlax transformed into the Water type!", Turn(core));
+        Assert.Contains("But it failed!", Turn(Wild(Mon("Snorlax", 50, "Camouflage"), Mon("Blastoise", 50), ground: BattleTerrain.Building)));
+    }
+
+    [Fact]
+    public void NaturePowerBecomesTheGroundsMove()
+    {
+        // Earthquake on open land (115 × 100 × 22 / 105 / 50 = 48, + 2 = 50), Seed Bomb in the grass (80 power, twice against
+        // Water: 115 × 80 × 22 / 105 / 50 = 38, + 2 = 40, × 2 = 80), Hydro Pump on water
+        var blastoise = Mon("Blastoise", 50);
+        var said = Turn(Wild(Mon("Snorlax", 50, "Nature Power"), blastoise));
+        InOrder(said, "Snorlax used Nature Power!", "Nature Power turned into Earthquake!", "Snorlax used Earthquake!");
+        Assert.Equal(139 - 50, blastoise.CurrentHP);
+        blastoise = Mon("Blastoise", 50);
+        Assert.Contains("Nature Power turned into Seed Bomb!", Turn(Wild(Mon("Snorlax", 50, "Nature Power"), blastoise, ground: BattleTerrain.Grass)));
+        Assert.Equal(139 - 80, blastoise.CurrentHP);
+        Assert.Contains("Nature Power turned into Hydro Pump!", Turn(Wild(Mon("Snorlax", 50, "Nature Power"), Mon("Blastoise", 50), ground: BattleTerrain.Water)));
+    }
+
+    [Fact]
+    public void SecretPowersSideEffectIsTheGrounds()
+    {
+        // Secret Power, 70 power: 135 × 70 × 22 / 105 / 50 = 39, + 2 = 41; three times in ten its side effect is the ground's
+        (int Damage, List<string> Said, Pokemon Target, BattleCore Core) Use(BattleTerrain ground, int roll = 29)
+        {
+            var blastoise = Mon("Blastoise", 50);
+            var core = Wild(Mon("Machamp", 50, "Secret Power"), blastoise, Calm().Force(RollKind.SideEffect, roll).Force(RollKind.Thaw, 1), ground: ground);
+            var said = Turn(core);
+            return (139 - blastoise.CurrentHP, said, blastoise, core);
+        }
+        var plain = Use(BattleTerrain.Plain);
+        Assert.Equal(41, plain.Damage);
+        Assert.Contains("Foe Blastoise's accuracy fell!", plain.Said);
+        Assert.Equal(StatusCondition.Sleep, Use(BattleTerrain.Grass).Target.Status);
+        Assert.Equal(StatusCondition.Freeze, Use(BattleTerrain.Snow).Target.Status);
+        Assert.Equal(StatusCondition.Paralyze, Use(BattleTerrain.Building).Target.Status);
+        Assert.Equal(-1, Use(BattleTerrain.Water).Target.StatStages[StatType.Attack]);
+        Assert.Equal(-1, Use(BattleTerrain.GreatMarsh).Target.StatStages[StatType.Speed]);
+        Assert.Equal(-1, Use(BattleTerrain.Bridge).Target.StatStages[StatType.Evasion]);
+
+        // In a cave the target flinches, if it is still to move: Machamp is the slower, so Blastoise has moved
+        Assert.DoesNotContain("Foe Blastoise flinched!", Use(BattleTerrain.Cave).Said);
+
+        // Past the chance, nothing
+        var missed = Use(BattleTerrain.Plain, roll: 30);
+        Assert.Equal(0, missed.Target.StatStages.GetValueOrDefault(StatType.Accuracy));
+    }
+
+    [Fact]
+    public void TheGroundIsPickedFromTheTileAndTheArea()
+    {
+        // As the original's CalcTerrain: what is underfoot first, then the area's battle background, then the map's stage
+        var lake = Fixtures.Map("LakeVerity");
+        var water = Tile(lake, TileType.Water);
+        Assert.Equal(BattleTerrain.Water, PokemonPlatinumEngine.Core.GameEngine.TerrainAt(lake, water.X, water.Y));
+        var route = Fixtures.Map("Route201");
+        var grass = Tile(route, TileType.TallGrass);
+        Assert.Equal(BattleTerrain.Grass, PokemonPlatinumEngine.Core.GameEngine.TerrainAt(route, grass.X, grass.Y));
+        var lawn = Tile(route, TileType.Grass);
+        Assert.Equal(BattleTerrain.Plain, PokemonPlatinumEngine.Core.GameEngine.TerrainAt(route, lawn.X, lawn.Y));
+
+        static (int X, int Y) Tile(PokemonPlatinumEngine.Overworld.Map map, TileType type)
+        {
+            for (int y = 0; y < map.Height; y++)
+                for (int x = 0; x < map.Width; x++)
+                    if (map.GetGroundTile(x, y) == type) return (x, y);
+            throw new Xunit.Sdk.XunitException($"no {type} tile on {map.Name}");
+        }
     }
 
     [Fact]

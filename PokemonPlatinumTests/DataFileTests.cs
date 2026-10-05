@@ -202,7 +202,9 @@ public class DataFileTests
         // A move of a fixed amount or a power of its own carries none in its data; the engine's code for its effect is what runs it
         Assert.Equal((0, "LevelDamageFlat", MoveEffectSupport.Full), (MoveDatabase.Get("Seismic Toss").Power, MoveDatabase.Get("Seismic Toss").Effect, MoveDatabase.Get("Seismic Toss").Support));
         Assert.Equal(MoveEffectSupport.Full, MoveDatabase.Get("Fake Out").Support);
-        Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Nature Power").Support); // the battlefield's moves are plan 06 · R6's
+        // Every one of Platinum's 467 moves runs in full since plan 06 · R6; what is still to write is among the later games' moves
+        Assert.All(MoveDatabase.GetAll().Where(m => m.Id <= 467), m => Assert.Equal(MoveEffectSupport.Full, m.Support));
+        Assert.Contains(MoveDatabase.GetAll(), m => m.Id > 467 && m.Support == MoveEffectSupport.None);
         Assert.Equal((50, "HealHalfMoreInSun"), (MoveDatabase.Get("Synthesis").HealPercent, MoveDatabase.Get("Synthesis").Effect));
     }
 

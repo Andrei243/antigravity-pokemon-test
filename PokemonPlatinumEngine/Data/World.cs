@@ -249,7 +249,8 @@ public static class WorldMapBuilder
             Weather = Weathers.Of(file?.Weather),
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
-            Arena = overlay?.BattleArena
+            Arena = overlay?.BattleArena,
+            BattleBackground = file?.BattleBackground ?? ""
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
 

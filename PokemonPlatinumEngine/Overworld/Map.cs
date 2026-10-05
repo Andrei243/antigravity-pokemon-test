@@ -29,6 +29,13 @@ public sealed class MapArea
 
     public Architecture? Architecture { get; set; }
     public BattleArena? Arena { get; set; }
+
+    /// <summary>
+    /// The original's battle background for the area (<c>Plain</c>, <c>Forest</c>, <c>City</c>, <c>Mountain</c>,
+    /// <c>Snow</c>, <c>Cave1</c>…), which with the tile underfoot picks the ground a battle is fought on
+    /// (plan 06 · R6: Camouflage, Nature Power, Secret Power). Empty where the world files give none.
+    /// </summary>
+    public string BattleBackground { get; set; } = "";
     public List<string> EvolutionSites { get; } = new();
 
     /// <summary>The wild Pokémon of the area's grass and caves, and Platinum's rate for them (see <see cref="EncounterSteps"/>).</summary>
