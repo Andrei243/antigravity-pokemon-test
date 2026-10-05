@@ -75,6 +75,8 @@ public sealed partial class BattleCore
     public bool TryInflictStatus(Battler target, StatusCondition status, Battler? source, bool announceFailure = false) =>
         TryInflictStatus(target, status, source, announceFailure, By.Ability);
 
+    bool IBattleContext.Confuse(Battler target, string? line) => Confuse(target, null, false, By.Other, line);
+
     /// <summary>
     /// Gives a major status condition (the original's <c>subscript_poison</c>, <c>_burn</c>, <c>_paralyze</c>,
     /// <c>_freeze</c>, <c>_fall_asleep</c>). Stopped by a condition it already has, its types, its ability, the
@@ -244,6 +246,7 @@ public sealed partial class BattleCore
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || target.Volatile.InLoveWith != null) return false;
         target.Volatile.InLoveWith = with.Place;
         Say($"{with.Name}'s {with.Ability?.Name} infatuated {target.Name}!");
+        Reciprocate(target, with);
         return true;
     }
 

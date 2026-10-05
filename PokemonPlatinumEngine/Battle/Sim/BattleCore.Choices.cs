@@ -80,10 +80,7 @@ public sealed partial class BattleCore
                 return IsTrainerBattle ? null : TrapOn(b, forRunning: true);
 
             case ChoiceKind.Item:
-                var item = ItemDatabase.Get(choice.Item ?? "");
-                if (item == null) return $"There is no item called {choice.Item}.";
-                if (item.Pocket != ItemPocket.PokeBalls && b.Volatile.EmbargoTurns > 0) return $"Items can't be used on {b.Name} now!";
-                return null;
+                return WhyNotItem(b, choice);
         }
         return null;
     }

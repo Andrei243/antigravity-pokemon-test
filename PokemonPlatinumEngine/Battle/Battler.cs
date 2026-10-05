@@ -289,6 +289,20 @@ internal sealed class Volatiles
     /// <summary>Unburden: it came in holding an item, so losing it doubles its Speed (the original's <c>canUnburden</c>).</summary>
     public bool CanUnburden;
 
+    /// <summary>A Micle Berry was eaten: the next move's accuracy is a fifth more, once (the original's <c>micleBerry</c>).</summary>
+    public bool MicleBerry;
+
+    /// <summary>
+    /// Its Quick Claw or Custap Berry went off this turn and the move it moved first with hasn't begun (the
+    /// original's <c>quickClaw</c> and <c>custapBerry</c> flags): until then an Embargo, Knock Off, Trick and
+    /// Switcheroo fail against it, so the item that went off is still there to be eaten.
+    /// </summary>
+    public bool ItemWentOff;
+
+    /// <summary>A Metronome's count of the same move used in a row, up to 10 (the original's <c>metronomeTurns</c>), and which move it counts.</summary>
+    public int MetronomeCount;
+    public MoveData? MetronomeMove;
+
     /// <summary>The turn Slow Start counts its five from (the original's <c>slowStartTurnNumber</c>): its first turn, or the one after a Transform.</summary>
     public int SlowStartTurn;
 

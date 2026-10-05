@@ -163,8 +163,10 @@ public sealed partial class BattleCore
                 else RestoreHp(b, Formulas.Divide(p.MaxHP, 16) * drain / 100, string.Format(line, b.Name));
             }
 
-            // Its ability, then its item (Speed Boost, Shed Skin; Leftovers, Black Sludge)
+            // Its ability, then its item twice over, as the original has it: a berry it is time for
+            // (BattleSystem_TriggerHeldItem), then Leftovers or Black Sludge (BattleSystem_TriggerLeftovers)
             b.Ability?.Effect?.AtEndOfTurn(this, b);
+            if (b.IsActive) ItemOf(b)?.OnConditionChanged(this, b, null);
             if (b.IsActive) ItemOf(b)?.AtEndOfTurn(this, b);
 
             // Leech Seed: an eighth of its HP goes to whoever stands where the seeder stood

@@ -196,6 +196,8 @@ public sealed partial class BattleCore
             }
         }
 
+        // An Amulet Coin or Luck Incense on the field doubles the prize (SWITCH_IN_CHECK_STATE_AMULET_COIN)
+        CheckAmuletCoin();
         CheckShapes(order);
 
         foreach (var b in order)

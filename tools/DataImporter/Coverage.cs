@@ -1,5 +1,6 @@
 using System.Text;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI;
@@ -79,14 +80,20 @@ public static class Coverage
     };
 
     /// <summary>
-    /// How much of an item the engine runs, judged on its two jobs: what using it does (from the bag and in
-    /// battle) and what holding it does. Fling, Natural Gift and Pluck are counted with those moves, not here.
+    /// How much of an item the engine runs, judged on its jobs: what using it does from the bag, what using it
+    /// does in a battle, and what holding it does. Fling, Natural Gift and Pluck are counted with those moves, not here.
     /// </summary>
     public static Works Of(ItemData item)
     {
         var jobs = new List<Works>();
         if (item.Pocket == ItemPocket.PokeBalls) jobs.Add(PlainBalls.Contains(item.Name) ? Works.Fully : Works.Partly);
-        else if (item.FieldUse != null || item.BattleUse != null) jobs.Add(UseOf(item));
+        else
+        {
+            if (item.FieldUse != null) jobs.Add(FieldUseOf(item));
+            // The battle's bag knows every medicine and battle item of Platinum's (plan 06 · R8)
+            if (item.BattleUse != null || (item.CanUseInBattle && item.Pocket == ItemPocket.BattleItems))
+                jobs.Add(BattleCore.CanUseInBattle(item) ? Works.Fully : Works.NotYet);
+        }
         if (item.HoldEffect != null) jobs.Add(HeldItemEffects.IsHoldable(item) || Evolution.IsHeldForEvolution(item) ? Works.Fully : Works.NotYet);
 
         if (jobs.Count == 0) return Works.NothingToRun;
@@ -94,13 +101,11 @@ public static class Coverage
         return jobs.All(j => j == Works.NotYet) ? Works.NotYet : Works.Partly;
     }
 
-    private static Works UseOf(ItemData item)
+    /// <summary>What using it from the bag outside a battle does: the medicine rule runs the parameters above; the rest is plan 06 · R11.</summary>
+    private static Works FieldUseOf(ItemData item)
     {
         if (!BagScreen.CanUse(item)) return Works.NotYet;
-        // In battle only HP is restored so far; outside it the medicine rule runs the parameters above
-        bool allRun = item.Use == null || item.Use.Keys.All(MedicineRuns.Contains);
-        bool battleRuns = item.BattleUse == null || item.EffectType == ItemEffectType.HealHP;
-        return allRun && battleRuns ? Works.Fully : Works.Partly;
+        return item.Use == null || item.Use.Keys.All(MedicineRuns.Contains) ? Works.Fully : Works.Partly;
     }
 
     private static string Word(Works works) => works switch
@@ -219,9 +224,10 @@ public static class Coverage
         foreach (var group in held.Where(i => !HeldItemEffects.IsHoldable(i)).GroupBy(i => i.HoldEffect).OrderBy(g => g.Key))
             Line($"- {group.Key}: {string.Join(", ", group.Select(i => i.Name))}");
         Line();
-        Line("What using an item does runs for the effect types the bag and battle know (`HealHP`, `HealStatus`, `Revive`, `FullRestore`, `LevelUp`, " +
-             "`CatchPokemon`) and for the items species evolve with; in battle only HP is restored so far. Balls catch by Platinum's own formula, " +
-             "the ones with a condition (Net, Dusk, Timer and the like) included.");
+        Line("Outside a battle, using an item runs for the effect types the bag knows (`HealHP`, `HealStatus`, `Revive`, `FullRestore`, `LevelUp`) " +
+             "and for the items species evolve with. In a battle every medicine and battle item of Platinum's runs (`BattleCore.CanUseInBattle`): HP, " +
+             "a condition, confusion, infatuation, a revival, PP, the X items, Dire Hit, Guard Spec., and a Poké Doll's or Fluffy Tail's escape. " +
+             "Balls catch by Platinum's own formula, the ones with a condition (Net, Dusk, Timer and the like) included.");
         Line();
 
         Line("## The later mechanics' data");

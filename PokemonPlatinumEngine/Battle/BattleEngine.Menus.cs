@@ -241,7 +241,6 @@ public partial class BattleEngine
         if (PlayerInventory.GetQuantity(itemData) <= 0) refusal = $"You don't have any {itemName}s left!";
         else if (itemData.Pocket == ItemPocket.PokeBalls && IsTrainerBattle) refusal = "The Trainer blocked the Ball! Don't be a thief!";
         else if (itemData.Pocket == ItemPocket.PokeBalls && EnemySlots.Count(b => b.IsActive) > 1) refusal = "There are two Pokémon out! The Ball can't be aimed!";
-        else if (itemData.EffectType == ItemEffectType.HealHP && PlayerPokemon.CurrentHP >= PlayerPokemon.MaxHP) refusal = "It won't have any effect!";
         else
         {
             InCore(MenuBattler);

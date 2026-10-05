@@ -16,13 +16,15 @@ namespace PokemonPlatinumEngine.Battle;
 /// <item>the attacking and the defending stat, each with its holder's bonuses and then its stage;</item>
 /// <item>stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, a screen's, three quarters for a
 /// move that hits several, the weather's part, + 2;</item>
-/// <item>the critical multiplier, then what the user's item adds before chance (a Life Orb);</item>
+/// <item>the critical multiplier, then what the user's item adds before chance (a Life Orb, a Metronome);</item>
 /// <item>the roll: all of it down to 85 hundredths;</item>
 /// <item>half as much again for a move of the user's own type, then each of the target's types;</item>
 /// <item>what the target's and the user's ability and item make of how well the type did (Filter, an Expert Belt).</item>
 /// </list>
-/// Every step rounds down. Abilities and held items join in through <see cref="BattleEffect"/>, an ability's
-/// bonus before an item's where both touch the same number. The field is read from the target's
+/// Every step rounds down. An ability's bonus is a line by the ability's name and a held item's a line by its hold
+/// effect (<see cref="ItemData.HoldEffect"/>, the original's <c>Battler_HeldItemEffect</c>), each in the
+/// original's own place (plan 06 · R7 and R8); what is left of <see cref="BattleEffect"/> here is the hooks
+/// abilities still answer (Filter, Tinted Lens, Adaptability, Sniper). The field is read from the target's
 /// <see cref="Battler.Field"/>: a battler that stands on none (a test's two Pokémon) is hit as on a bare one.
 /// </summary>
 public static class DamageCalculator
@@ -133,12 +135,14 @@ public static class DamageCalculator
         if (!powerOverride.HasValue && !noCrit) result.IsCritical = RollsCritical(attacker, defender, move, rng, rules, critBonus);
 
         // The power and the stats, each ability's and item's bonus in the original's own place and order
-        // (BattleSystem_CalcMoveDamage), every step rounded down. Abilities go by name; the defender's count for
-        // nothing against Mold Breaker. Items keep their hooks, called at their slot (plan 06 · R8 places each).
+        // (BattleSystem_CalcMoveDamage), every step rounded down. Abilities go by name, items by their hold effect
+        // (none under an Embargo or with Klutz); the defender's ability counts for nothing against Mold Breaker.
         string? mine = attacker.Ability?.Name;
         string? theirs = breaksAbility ? null : defender.Ability?.Name;
-        var myItem = BattleEffects.ItemOf(attacker);
-        var theirItem = BattleEffects.ItemOf(defender);
+        string? myHold = BattleEffects.HoldEffectOf(attacker);
+        string? theirHold = BattleEffects.HoldEffectOf(defender);
+        int myParam = BattleEffects.HoldParamOf(attacker);
+        string mySpecies = atkPokemon.Species.Name, theirSpecies = defPokemon.Species.Name;
         bool physical = move.Category == MoveCategory.Physical;
         bool typed = !typeless;
         var type = move.Type;
@@ -154,10 +158,24 @@ public static class DamageCalculator
         if (mine == "Technician" && move.Data != BattleCore.StruggleData && power <= 60) power = power * 15 / 10;
         if (physical && mine is "Huge Power" or "Pure Power") attack *= 2;
         if (physical && mine == "Slow Start" && field != null && field.Turn() - attacker.Volatile.SlowStartTurn < 5) attack /= 2;
-        // The items: a type's boost, a Choice Band, a Soul Dew and the rest, in the original's block
-        if (myItem != null) power = Formulas.Scale(power, myItem.PowerMultiplier(attacker, defender, move));
-        if (myItem != null) attack = Formulas.Scale(attack, myItem.AttackMultiplier(attacker, move));
-        if (theirItem != null) defense = Formulas.Scale(defense, theirItem.DefenseMultiplier(defender, move));
+        // The items, in the original's block: a type's boost (the plates with it), a Choice Band or Specs, a
+        // Soul Dew on either side, the items of one species (a transformed Pokémon counts as what it became, as the
+        // original reads the species in battle), the orbs of the three, a Muscle Band or Wise Glasses
+        if (typed && myHold != null && HeldItemEffects.TypeBoostedBy(myHold) == type) power = power * (100 + myParam) / 100;
+        if (physical && myHold == "ChoiceAtk") attack = attack * 150 / 100;
+        if (!physical && myHold == "ChoiceSpatk") attack = attack * 150 / 100;
+        if (!physical && myHold == "LatiSpecial" && mySpecies is "Latios" or "Latias") attack = attack * 150 / 100;
+        if (!physical && theirHold == "LatiSpecial" && theirSpecies is "Latios" or "Latias") defense = defense * 150 / 100;
+        if (!physical && myHold == "ClamperlSpatk" && mySpecies == "Clamperl") attack *= 2;
+        if (!physical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") defense *= 2;
+        if (myHold == "PikaSpatkUp" && mySpecies == "Pikachu") power *= 2;
+        if (physical && theirHold == "DittoDefUp" && theirSpecies == "Ditto") defense *= 2;
+        if (physical && myHold == "CuboneAtkUp" && mySpecies is "Cubone" or "Marowak") attack *= 2;
+        if (typed && myHold == "DialgaBoost" && mySpecies == "Dialga" && type is PokemonType.Dragon or PokemonType.Steel) power = power * (100 + myParam) / 100;
+        if (typed && myHold == "PalkiaBoost" && mySpecies == "Palkia" && type is PokemonType.Dragon or PokemonType.Water) power = power * (100 + myParam) / 100;
+        if (typed && myHold == "GiratinaBoost" && mySpecies == "Giratina" && !attacker.Volatile.Transformed && type is PokemonType.Dragon or PokemonType.Ghost) power = power * (100 + myParam) / 100;
+        if (physical && myHold == "PowerUpPhys") power = power * (100 + myParam) / 100;
+        if (!physical && myHold == "PowerUpSpec") power = power * (100 + myParam) / 100;
         if (typed && theirs == "Thick Fat" && type is PokemonType.Fire or PokemonType.Ice) power /= 2;
         if (physical && mine == "Hustle") attack = attack * 150 / 100;
         if (physical && mine == "Guts" && atkPokemon.Status != StatusCondition.None) attack = attack * 150 / 100;
@@ -222,7 +240,11 @@ public static class DamageCalculator
 
         if (result.IsCritical) damage = Formulas.Scale(damage, rules.CriticalMultiplier * attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
         // A Life Orb's and a Metronome's bonus are for a move that was used (BattleScript_CalcMoveDamage), not for a hit on oneself
-        if (!selfHit) foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageBeforeTheRoll(attacker, move));
+        if (!selfHit)
+        {
+            if (myHold == "HpDrainOnAtk") damage = damage * (100 + myParam) / 100;
+            if (myHold == "BoostRepeated") damage = damage * (10 + attacker.Volatile.MetronomeCount) / 10;
+        }
         if (damageTenths != 10) damage = damage * damageTenths / 10;
 
         if (!noVariance) damage = Formulas.Variance(damage, rng.Roll(RollKind.Damage, 16));
@@ -241,7 +263,9 @@ public static class DamageCalculator
             foreach (var (_, against) in Matchups(attacker, defender, move, rules))
                 damage = Formulas.Divide(damage * (int)MathF.Round(against * 10f), 10);
 
+            // Filter and Solid Rock, then an Expert Belt on a super-effective hit, then Tinted Lens (BattleSystem_ApplyTypeChart)
             foreach (var e in defenderEffects) damage = Formulas.Scale(damage, e.IncomingDamageMultiplier(defender, attacker, move, result.TypeMultiplier));
+            if (result.IsSuperEffective && myHold == "PowerUpSe") damage = damage * (100 + myParam) / 100;
             foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageMultiplier(attacker, defender, move, result.TypeMultiplier));
         }
 
@@ -255,18 +279,30 @@ public static class DamageCalculator
 
     /// <summary>
     /// Whether a hit is critical: one in the rules' odds for the stage (Platinum's are 1/16, 1/8, 1/4, 1/3, 1/2),
-    /// which the move, its effect, the user's ability and item raise, and Focus Energy by two; Battle Armor and a
-    /// Lucky Chant over the target's side stop it. The roll is made whatever stops it.
+    /// which the move, its effect, the user's ability and item raise (<see cref="ItemCritStages"/>), and Focus
+    /// Energy by two; Battle Armor and a Lucky Chant over the target's side stop it. The roll is made whatever stops it.
     /// </summary>
     public static bool RollsCritical(Battler attacker, Battler defender, Move move, Random rng, Ruleset rules, int critBonus = 0)
     {
         var attackerEffects = BattleEffects.Of(attacker).ToList();
         bool breaks = attackerEffects.Any(e => e.IgnoresTargetAbility);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
-        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + (attacker.Volatile.FocusEnergy ? 2 : 0);
+        int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0);
         bool rolled = rng.Roll(RollKind.Critical, rules.CriticalOdds[Math.Clamp(stage, 0, 4)]) == 0;
         return rolled && !defenderEffects.Any(e => e.PreventsCriticalHits) && defender.Field?.Side(defender.Side).LuckyChant != true;
     }
+
+    /// <summary>
+    /// The stages a held item adds to the chance of a critical hit (<c>BattleSystem_CalcCriticalMulti</c>): a Scope
+    /// Lens or Razor Claw one, a Lucky Punch two for Chansey, a Leek two for Farfetch'd.
+    /// </summary>
+    public static int ItemCritStages(Battler attacker) => BattleEffects.HoldEffectOf(attacker) switch
+    {
+        "CritrateUp" => 1,
+        "ChanseyCritrateUp" when attacker.Pokemon!.Species.Name == "Chansey" => 2,
+        "FarfetchdCritrateUp" when attacker.Pokemon!.Species.Name == "Farfetch'd" => 2,
+        _ => 0
+    };
 
     /// <summary>What a stat stage multiplies a stat by, as a fraction (the battle itself uses <see cref="Formulas.Staged"/>).</summary>
     public static float StageMultiplier(int stage)

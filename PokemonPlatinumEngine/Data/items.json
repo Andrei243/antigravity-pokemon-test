@@ -343,7 +343,7 @@
     "name": "Hyper Potion",
     "pocket": "Medicine",
     "effectType": "HealHP",
-    "effectValue": -56,
+    "effectValue": 200,
     "price": 1200,
     "canUseInBattle": true,
     "canUseInOverworld": true,
@@ -352,7 +352,7 @@
     "fieldUse": "Healing",
     "battleUse": "Healing",
     "use": {
-      "hpRestored": -56
+      "hpRestored": 200
     }
   },
   {
@@ -523,7 +523,7 @@
     "name": "Energy Root",
     "pocket": "Medicine",
     "effectType": "HealHP",
-    "effectValue": -56,
+    "effectValue": 200,
     "price": 800,
     "canUseInBattle": true,
     "canUseInOverworld": true,
@@ -532,7 +532,7 @@
     "fieldUse": "Healing",
     "battleUse": "Healing",
     "use": {
-      "hpRestored": -56,
+      "hpRestored": 200,
       "friendshipLow": -10,
       "friendshipMed": -10,
       "friendshipHigh": -15

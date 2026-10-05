@@ -8,12 +8,13 @@ namespace PokemonPlatinumEngine.Overworld;
 
 /// <summary>
 /// The Pokémon at the head of the party, as far as the wild Pokémon care (the original's
-/// <c>WildEncounters_FieldParams</c>): its ability works in the field whether it can fight or not.
+/// <c>WildEncounters_FieldParams</c>): its ability works in the field whether it can fight or not, and so does
+/// what it holds (<paramref name="HoldEffect"/>: a Cleanse Tag's <c>EncountersDown</c>).
 /// </summary>
-public readonly record struct WildLead(string? Ability, int Level, Nature Nature, Gender Gender)
+public readonly record struct WildLead(string? Ability, int Level, Nature Nature, Gender Gender, string? HoldEffect = null)
 {
     public static WildLead? Of(Party party) =>
-        party.Members.Count == 0 ? null : new WildLead(party.Members[0].AbilityName, party.Members[0].Level, party.Members[0].Nature, party.Members[0].Gender);
+        party.Members.Count == 0 ? null : new WildLead(party.Members[0].AbilityName, party.Members[0].Level, party.Members[0].Nature, party.Members[0].Gender, party.Members[0].HeldItem?.HoldEffect);
 }
 
 /// <summary>
@@ -27,7 +28,8 @@ public static class WildEncounterRules
     /// <summary>
     /// <c>ModifyEncounterRateWithFieldParams</c>: twice the place's rate with Arena Trap, No Guard or Illuminate;
     /// half with White Smoke, Quick Feet or Stench, with Sand Veil in a sandstorm and with Snow Cloak in the snow;
-    /// never over a hundred.
+    /// never over a hundred. Then <c>ModifyEncounterRateWithHeldItem</c>: two thirds of that with a Cleanse Tag or
+    /// a Pure Incense in the lead's hands (plan 06 · R8).
     /// </summary>
     public static int Rate(int rate, WildLead? lead, FieldWeather weather)
     {
@@ -43,7 +45,9 @@ public static class WildEncounterRules
                 rate /= 2;
                 break;
         }
-        return Math.Min(rate, 100);
+        rate = Math.Min(rate, 100);
+        if (first.HoldEffect == PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.EncountersDown) rate = rate * 2 / 3;
+        return rate;
     }
 
     /// <summary>

@@ -474,10 +474,7 @@ public partial class GameEngine
                     battle.Update(dt);
                     if (battle.IsBattleOver)
                     {
-                        if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle && battle.OpponentTrainer != null)
-                        {
-                            playerMoney += battle.OpponentTrainer.PrizeMoney;
-                        }
+                        if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle) playerMoney += battle.PrizeMoney;
                         if (battle.Result == BattleResult.PlayerVictory) playerMoney += battle.PayDayMoney;
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch

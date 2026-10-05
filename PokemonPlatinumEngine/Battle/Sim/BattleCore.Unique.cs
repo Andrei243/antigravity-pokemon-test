@@ -357,12 +357,15 @@ public sealed partial class BattleCore
         Say($"{user.Name} stole {t.Name}'s {item.Name}!");
     }
 
-    /// <summary><c>BtlCmd_TryKnockOff</c>: the target's item is gone for the rest of the battle (and back in its hands afterwards).</summary>
+    /// <summary>
+    /// <c>BtlCmd_TryKnockOff</c>: the target's item is gone for the rest of the battle (and back in its hands
+    /// afterwards). Not an item that went off this turn and whose holder hasn't moved yet (<c>subscript_knock_off</c>).
+    /// </summary>
     private void KnockOff(MoveUse use, MoveHit hit)
     {
         var user = use.User;
         var t = hit.Target;
-        if (!hit.Touched || !CanKnockOff(t)) return;
+        if (!hit.Touched || !CanKnockOff(t) || t.Volatile.ItemWentOff) return;
         if (KeptByStickyHold(user, t, use.Move)) return;
 
         var q = t.Pokemon!;
@@ -375,14 +378,15 @@ public sealed partial class BattleCore
     /// <summary>
     /// Trick and Switcheroo (<c>BtlCmd_TrySwapItems</c>): the two items change hands, for good. Not through a
     /// Substitute, not by the opponents' Pokémon under Platinum's rules, not with mail, a knocked-off item,
-    /// Arceus's plate or Giratina's orb, and not when neither holds anything; Sticky Hold keeps its holder's.
+    /// Arceus's plate or Giratina's orb, not an item that went off this turn before its holder moved, and not
+    /// when neither holds anything; Sticky Hold keeps its holder's.
     /// </summary>
     private bool Trick(MoveUse use, Battler t)
     {
         var user = use.User;
         var p = user.Pokemon!;
         var q = t.Pokemon!;
-        if (t.HasSubstitute) return Fails();
+        if (t.HasSubstitute || t.Volatile.ItemWentOff) return Fails();
         if (p.AbilityName == "Multitype" || q.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb" || q.HeldItem?.Name == "Griseous Orb") return Fails();
         if (!user.IsPlayerSide && !Rules.FoesCanTakeItems) return Fails();
         if (knockedOff.ContainsKey(p) || knockedOff.ContainsKey(q)) return Fails();
@@ -513,8 +517,8 @@ public sealed partial class BattleCore
 
     /// <summary>
     /// What a berry gives the Pokémon that eats it out of turn (Pluck, Bug Bite, a thrown berry), by the item
-    /// table's effect for that (<c>BattleSystem_PluckBerry</c>): HP, a cure, PP, a stat. A disliked flavour's
-    /// confusion and Micle's accuracy are left out until the berries' own session (R8).
+    /// table's effect for that (<c>BattleSystem_PluckBerry</c>): HP, a cure, PP, a stat, the focus, a Micle
+    /// Berry's accuracy; a flavour its nature dislikes confuses it.
     /// </summary>
     private void EatBerry(Battler eater, ItemData berry, string effect)
     {
@@ -543,7 +547,19 @@ public sealed partial class BattleCore
         {
             case "HpRestore": Heal(param); break;
             case "HpPctRestore": Heal(Formulas.Divide(p.MaxHP * param, 100)); break;
-            case "HpRestoreSpicy" or "HpRestoreDry" or "HpRestoreSweet" or "HpRestoreBitter" or "HpRestoreSour": Heal(Formulas.Divide(p.MaxHP, Math.Max(1, param))); break;
+            case "HpRestoreSpicy" or "HpRestoreDry" or "HpRestoreSweet" or "HpRestoreBitter" or "HpRestoreSour":
+                Heal(Formulas.Divide(p.MaxHP, Math.Max(1, param)));
+                // A flavour its nature dislikes confuses it (subscript_held_item_dislike_flavor)
+                if (HeldItemEffects.FlavorOf(effect) is { } flavor && HeldItemEffects.DislikedBy(p.Nature) == flavor)
+                {
+                    Say($"For {eater.Name}, the {berry.Name} was too {flavor.ToString().ToLowerInvariant()}!");
+                    Confuse(eater, null, false, By.Other);
+                }
+                break;
+            case "TempAccUp":
+                eater.Volatile.MicleBerry = true;
+                Say($"{eater.Name} boosted the accuracy of its next move using its {berry.Name}!");
+                break;
             case "PrzRestore": Cure(StatusCondition.Paralyze); break;
             case "SlpRestore": Cure(StatusCondition.Sleep); break;
             case "PsnRestore": Cure(StatusCondition.Poison, StatusCondition.Toxic); break;

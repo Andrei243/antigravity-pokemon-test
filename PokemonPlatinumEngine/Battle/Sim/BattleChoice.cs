@@ -30,7 +30,9 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// <summary>What the core makes for a Pokémon that has nothing to choose: it goes on with the move it is held to.</summary>
     public static BattleChoice GoOn(Place who) => new(who, ChoiceKind.Fight) { Move = HeldMove };
     public static BattleChoice Switch(Place who, int partyIndex) => new(who, ChoiceKind.Switch) { SwitchTo = partyIndex };
-    public static BattleChoice UseItem(Place who, string item) => new(who, ChoiceKind.Item) { Item = item };
+    /// <summary>An item from the bag: on the Pokémon of this place, or on the party member at <paramref name="onPartyMember"/> (a Revive on the bench), for the move at <paramref name="onMove"/> (an Ether).</summary>
+    public static BattleChoice UseItem(Place who, string item, int onPartyMember = -1, int onMove = -1) =>
+        new(who, ChoiceKind.Item) { Item = item, SwitchTo = onPartyMember, Move = onMove };
     public static BattleChoice Run(Place who) => new(who, ChoiceKind.Run);
 }
 

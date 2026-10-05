@@ -364,8 +364,8 @@ public sealed partial class BattleCore
         {
             Does = (b, use) => b.OnEach(use, t =>
             {
-                // subscript_embargo_start: not on Arceus, nor on the holder of Giratina's orb
-                if (t.HasSubstitute || t.Volatile.EmbargoTurns > 0 || t.Pokemon!.AbilityName == "Multitype" || t.Pokemon.HeldItem?.Name == "Griseous Orb") return b.Fails();
+                // subscript_embargo_start: not on Arceus, nor on the holder of Giratina's orb, nor on one whose Quick Claw or Custap Berry went off this turn and hasn't moved yet
+                if (t.HasSubstitute || t.Volatile.EmbargoTurns > 0 || t.Volatile.ItemWentOff || t.Pokemon!.AbilityName == "Multitype" || t.Pokemon.HeldItem?.Name == "Griseous Orb") return b.Fails();
                 t.Volatile.EmbargoTurns = 5;
                 b.Say($"{t.Name} can't use items anymore!");
                 return true;
@@ -1030,6 +1030,7 @@ public sealed partial class BattleCore
         if (mine == theirs || mine == Gender.Genderless || theirs == Gender.Genderless || t.Volatile.InLoveWith != null) return Fails();
         t.Volatile.InLoveWith = user.Place;
         Say($"{t.Name} fell in love!");
+        Reciprocate(t, user);
         return true;
     }
 

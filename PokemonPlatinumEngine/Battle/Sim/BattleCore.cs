@@ -355,6 +355,7 @@ public sealed partial class BattleCore : IBattleContext
             b.Flinched = false;
             b.TookCriticalHit = false;
             b.Turn = new TurnFlags();
+            b.Volatile.ItemWentOff = false;
         }
         Field.Side(BattleSide.Player).FollowMe = null;
         Field.Side(BattleSide.Enemy).FollowMe = null;
@@ -388,11 +389,12 @@ public sealed partial class BattleCore : IBattleContext
                     ExecuteSwitch(act.User, act.Choice.SwitchTo);
                     break;
                 case ChoiceKind.Item:
-                    ExecuteItemUse(act.User, act.Item!);
+                    ExecuteItemUse(act.User, act);
                     break;
             }
             act.User.Turn.Acted = true;
             if (Result == BattleResult.None) ResolveFaints();
+            if (Result == BattleResult.None) ItemsAfterTheAction();
             // What acts on entry is looked for again after every action (an ability gained by a Transform, a
             // shape the weather changed), as the original runs its switch-in check after every move
             if (Result == BattleResult.None) SwitchInChecks();
@@ -443,7 +445,8 @@ public sealed partial class BattleCore : IBattleContext
         public Move? Move;
         public Battler? Target;
         public ItemData? Item;
-        public bool QuickClaw;
+        /// <summary>Its item makes it move first among moves of its priority this turn (a Quick Claw, a Custap Berry), or last (a Lagging Tail).</summary>
+        public bool MovesFirst, Lags;
     }
 
     private Act ToAct(BattleChoice choice)
@@ -470,12 +473,12 @@ public sealed partial class BattleCore : IBattleContext
 
     /// <summary>
     /// The order of a turn, as the original works it out: running first; then items and switches, in the order
-    /// of the places; then the moves, by priority, Quick Claw and Speed, with a coin for Pokémon of equal Speed.
+    /// of the places; then the moves, by priority, a Quick Claw or Custap Berry, a Lagging Tail, Stall and Speed,
+    /// with a coin for Pokémon of equal Speed.
     /// </summary>
     private List<Act> Order(List<Act> acts)
     {
-        foreach (var act in acts)
-            act.QuickClaw = BattleEffects.Of(act.User).Any(e => e.MovesFirstInBracket(speedRolls[Number(act.User)]));
+        foreach (var act in acts) ItemsInTheOrder(act);
 
         var byPlace = acts.OrderBy(a => Number(a.User)).ToList();
         var runner = byPlace.FirstOrDefault(a => a.Choice.Kind == ChoiceKind.Run && a.User.IsPlayerSide);
@@ -510,8 +513,21 @@ public sealed partial class BattleCore : IBattleContext
         int priorityA = first.Move?.Priority ?? 0, priorityB = second.Move?.Priority ?? 0;
         if (priorityA != priorityB) return priorityA < priorityB;
 
-        if (first.QuickClaw != second.QuickClaw) return second.QuickClaw;
+        // A Quick Claw or a Custap Berry that went off (two: by Speed alone, Trick Room or not), then a Lagging
+        // Tail or Full Incense (two: the faster goes after), then Stall and Speed
+        if (first.MovesFirst && second.MovesFirst) return ByPlainSpeed(first.User, second.User, fasterGoesAfter: false);
+        if (first.MovesFirst != second.MovesFirst) return second.MovesFirst;
+        if (first.Lags && second.Lags) return ByPlainSpeed(first.User, second.User, fasterGoesAfter: true);
+        if (first.Lags != second.Lags) return first.Lags;
         return IsSlower(first.User, second.User);
+    }
+
+    /// <summary>By Speed alone, Trick Room or not (how the original settles two Quick Claws or two Lagging Tails), a coin between equals.</summary>
+    private bool ByPlainSpeed(Battler first, Battler second, bool fasterGoesAfter)
+    {
+        int speedA = EffectiveSpeed(first), speedB = EffectiveSpeed(second);
+        if (speedA != speedB) return fasterGoesAfter ? speedA > speedB : speedA < speedB;
+        return rng.Roll(RollKind.SpeedTie, 2) == 1;
     }
 
     /// <summary>
@@ -550,9 +566,10 @@ public sealed partial class BattleCore : IBattleContext
 
     /// <summary>
     /// Speed as the turn order sees it (<c>BattleSystem_CompareBattlerSpeed</c>, in its order): the stat by its
-    /// stage (doubled for Simple under Platinum's rules), what its ability makes of the weather, its item, Quick
-    /// Feet with a condition or else paralysis, Slow Start's first five turns, Unburden once its item is gone,
-    /// then a tailwind.
+    /// stage (doubled for Simple under Platinum's rules), what its ability makes of the weather, its items (a Macho
+    /// Brace, an Iron Ball or a Power item halves it, read from the item itself so that neither an Embargo nor
+    /// Klutz undoes it; a Choice Scarf adds half; a Quick Powder doubles a Ditto's), Quick Feet with a condition or
+    /// else paralysis, Slow Start's first five turns, Unburden once its item is gone, then a tailwind.
     /// </summary>
     public int EffectiveSpeed(Battler b)
     {
@@ -562,7 +579,10 @@ public sealed partial class BattleCore : IBattleContext
         if (ability == "Simple" && !Rules.SimpleDoublesChanges) stage = Math.Clamp(stage * 2, -6, 6);
         int speed = Formulas.Staged(p.Speed, stage);
         if (b.Ability?.Effect is { } own) speed = Formulas.Scale(speed, own.SpeedMultiplier(b));
-        if (BattleEffects.ItemOf(b) is { } item) speed = Formulas.Scale(speed, item.SpeedMultiplier(b));
+        if (p.HeldItem?.HoldEffect is { } raw && HeldItemEffects.HalvesSpeed(raw)) speed /= 2;
+        string? hold = BattleEffects.HoldEffectOf(b);
+        if (hold == "ChoiceSpeed") speed = speed * 15 / 10;
+        if (hold == "DittoSpeedUp" && p.Species.Name == "Ditto") speed *= 2;
         if (ability == "Quick Feet" && p.Status != StatusCondition.None) speed = speed * 15 / 10;
         else if (p.Status == StatusCondition.Paralyze) speed /= Rules.ParalysisSpeedDivisor;
         if (ability == "Slow Start" && Turn - b.Volatile.SlowStartTurn < 5) speed /= 2;
@@ -571,21 +591,7 @@ public sealed partial class BattleCore : IBattleContext
         return Math.Max(1, speed);
     }
 
-    // ---------------------------------------------------------------- items and running
-
-    private void ExecuteItemUse(Battler user, ItemData item)
-    {
-        if (item.Pocket == ItemPocket.PokeBalls)
-        {
-            ThrowBall(item);
-        }
-        else if (item.EffectType == ItemEffectType.HealHP)
-        {
-            var p = user.Pokemon!;
-            p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + item.EffectValue);
-            Say($"Used a {item.Name}! {p.DisplayName}'s HP was restored!").With(new HpChanged(user.Place, p.CurrentHP, Healed: true));
-        }
-    }
+    // ---------------------------------------------------------------- balls and running (the rest of the bag is in BattleCore.Items.cs)
 
     private void ThrowBall(ItemData ball)
     {
@@ -746,7 +752,7 @@ public sealed partial class BattleCore : IBattleContext
         if (IsTrainerBattle)
         {
             Say($"Player defeated {string.Join(" and ", Trainers.Select(t => t.FullTitle))}!");
-            Say($"{playerName} received ${Trainers.Sum(t => t.PrizeMoney)} for winning!");
+            Say($"{playerName} received ${PrizeMoney} for winning!");
         }
         else
         {

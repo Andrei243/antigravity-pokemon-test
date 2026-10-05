@@ -34,6 +34,9 @@ public interface IBattleContext
     /// <summary>Uses up the held item (berries, Focus Sash).</summary>
     void ConsumeItem(Battler holder);
 
+    /// <summary>Confuses the Pokémon as an item's or an ability's own doing (a berry's disliked flavour): not through a Substitute; Own Tempo keeps it clear. Returns false when it couldn't.</summary>
+    bool Confuse(Battler target, string? line);
+
     /// <summary>The foes standing across from <paramref name="battler"/> that can still fight.</summary>
     IEnumerable<Battler> ActiveFoes(Battler battler);
 
@@ -77,18 +80,10 @@ public abstract class BattleEffect
     /// <summary>The holder is about to be withdrawn (Natural Cure).</summary>
     public virtual void OnWithdraw(Battler self) { }
 
-    // ---- Attacking (the holder is the attacker)
+    // ---- Attacking (the holder is the attacker). A bonus to the power, a stat or the damage before the roll is
+    // a line of DamageCalculator.Calculate by the ability's or the hold effect's name, in the original's own place.
 
-    /// <summary>Multiplies a move's base power (Technician, Blaze, type-boosting items).</summary>
-    public virtual float PowerMultiplier(Battler self, Battler target, Move move) => 1f;
-
-    /// <summary>Multiplies the attacking stat (Huge Power, Guts, Choice Band).</summary>
-    public virtual float AttackMultiplier(Battler self, Move move) => 1f;
-
-    /// <summary>Multiplies the damage after the critical multiplier and before chance and the types (Life Orb).</summary>
-    public virtual float DamageBeforeTheRoll(Battler self, Move move) => 1f;
-
-    /// <summary>Multiplies the final damage, once it is known how well the type did (Expert Belt, Tinted Lens).</summary>
+    /// <summary>Multiplies the final damage, once it is known how well the type did (Tinted Lens).</summary>
     public virtual float DamageMultiplier(Battler self, Battler target, Move move, float effectiveness) => 1f;
 
     /// <summary>The bonus for using a move of its own type (Adaptability raises it to 2).</summary>
@@ -118,12 +113,6 @@ public abstract class BattleEffect
     /// <summary>The holder ignores the other Pokémon's stat stages when they matter to it (Unaware).</summary>
     public virtual bool IgnoresOthersStatStages => false;
 
-    /// <summary>
-    /// The holder moves first among moves of the same priority this turn (Quick Claw). <paramref name="roll"/> is
-    /// the number its place drew for the turn, 0 to 65,535, as the original draws one for every place.
-    /// </summary>
-    public virtual bool MovesFirstInBracket(int roll) => false;
-
     /// <summary>The holder always gets away from a wild Pokémon (Run Away, a Smoke Ball).</summary>
     public virtual bool AlwaysEscapes => false;
 
@@ -149,9 +138,6 @@ public abstract class BattleEffect
 
     /// <summary>Multiplies damage the holder takes (Filter, Thick Fat, Heatproof).</summary>
     public virtual float IncomingDamageMultiplier(Battler self, Battler attacker, Move move, float effectiveness) => 1f;
-
-    /// <summary>Multiplies the holder's defending stat (Marvel Scale).</summary>
-    public virtual float DefenseMultiplier(Battler self, Move move) => 1f;
 
     /// <summary>Multiplies the accuracy of moves aimed at the holder (Bright Powder, Sand Veil in a sandstorm).</summary>
     public virtual float EvasionMultiplier(Battler self) => 1f;
@@ -308,6 +294,12 @@ public static class BattleEffects
     /// <summary>The item in the holder's hands as far as a move can use it: none under an Embargo or with Klutz.</summary>
     public static ItemData? ItemInHand(Battler battler) =>
         battler.Pokemon == null || battler.Volatile.EmbargoTurns > 0 || battler.Ability?.Effect is { IgnoresHeldItem: true } ? null : battler.Pokemon.HeldItem;
+
+    /// <summary>The hold effect in force (the original's <c>Battler_HeldItemEffect</c>): what a line of the formula or the core asks by name. Null with no item, under an Embargo or with Klutz.</summary>
+    public static string? HoldEffectOf(Battler battler) => ItemInHand(battler)?.HoldEffect;
+
+    /// <summary>The number that goes with the hold effect in force (<c>Battler_HeldItemPower</c>); 0 with none.</summary>
+    public static int HoldParamOf(Battler battler) => ItemInHand(battler)?.HoldParam ?? 0;
 
     /// <summary>Whether the battler's ability in force is this one; a defender's is not, against an attacker that breaks abilities.</summary>
     public static bool Has(Battler battler, string ability, Battler? against = null)

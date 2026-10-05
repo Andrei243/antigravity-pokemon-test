@@ -84,6 +84,9 @@ public partial class BattleEngine
     /// <summary>What Pay Day scattered for the player, picked up with a win.</summary>
     public int PayDayMoney => core.PayDayMoney;
 
+    /// <summary>What a trainer battle won pays: the trainers' prize money, doubled by an Amulet Coin or a Luck Incense on the field (plan 06 · R8).</summary>
+    public int PrizeMoney => core.PrizeMoney;
+
     public BattleResult Result { get; private set; } = BattleResult.None;
     public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && steps.Count == 0;
 

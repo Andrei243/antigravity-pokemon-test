@@ -58,9 +58,9 @@ public class CoverageTests
         // All 123 since plan 06 · R7
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(0, n.LaterAbilitiesRun, "later abilities with an effect");
-        AtLeast(91, n.PlatinumItemsFully, "Platinum's items that work");
-        AtLeast(126, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
-        AtLeast(65, n.HoldEffectsRun, "hold effects run");
+        AtLeast(168, n.PlatinumItemsFully, "Platinum's items that work");
+        AtLeast(225, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
+        AtLeast(158, n.HoldEffectsRun, "hold effects run");
         AtLeast(0, n.SpecialMovesRun, "Z-Moves and Max Moves run");
 
         Assert.True(fallen.Count == 0, "The coverage report got worse:\n" + string.Join("\n", fallen));
@@ -237,9 +237,15 @@ public class CoverageTests
         // What works is judged job by job
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Net Ball")!));       // catches by its own condition
         Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Luxury Ball")!));   // catches, without the friendship after
-        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Full Restore")!));  // in battle only HP is restored
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Full Restore")!));   // from the bag and in battle (plan 06 · R8)
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("X Attack")!));       // in battle, which is all it is for
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Poké Doll")!));
+        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Occa Berry")!));    // held; eaten from the bag is R11's
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Macho Brace")!));    // its Speed in battle (the EVs it doubles are R10's)
+        Assert.Equal(200, ItemDatabase.Get("Hyper Potion")!.EffectValue);            // the table's signed byte read right
+        Assert.Equal(200, ItemDatabase.Get("Hyper Potion")!.Use!["hpRestored"]);
         Assert.Equal(Works.NotYet, Coverage.Of(ItemDatabase.Get("TM01")!));
-        Assert.Equal(Works.NotYet, Coverage.Of(ItemDatabase.Get("Ether")!));
+        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Ether")!));        // in battle; the bag's PP is R11's
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Leftovers")!));
         Assert.Equal(Works.NothingToRun, Coverage.Of(ItemDatabase.Get("Nugget")!));
     }

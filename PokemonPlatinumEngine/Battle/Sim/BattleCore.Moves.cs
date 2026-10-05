@@ -129,6 +129,7 @@ public sealed partial class BattleCore
         }
 
         user.MovedThisTurn = true;
+        ItemLetItMoveFirst(act);
         if (!CanMove(user, move))
         {
             v.LastMove = null;
@@ -158,6 +159,7 @@ public sealed partial class BattleCore
         }
         if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move)) user.ChoiceLock = move;
         v.LastMove = move.Data == StruggleData ? null : move.Data;
+        CountForMetronome(user, move);
         int slot = user.Pokemon!.Moves.IndexOf(move);
         if (slot >= 0 && move.Data.Effect != "FailIfNotUsedAllOtherMoves") v.UsedMoveSlots |= 1 << slot;
 
@@ -701,14 +703,22 @@ public sealed partial class BattleCore
         int rate = Formulas.HitRate(use.Effect.AccuracyUnder(weather, move.Accuracy), accuracy, evasion);
 
         var userAbility = user.Ability?.Effect;
-        var userItem = ItemOf(user);
         var targetAbility = breaks ? null : target.Ability?.Effect;
-        var targetItem = ItemOf(target);
         if (userAbility != null) rate = Formulas.Scale(rate, userAbility.AccuracyMultiplier(user, move));
         if (targetAbility != null) rate = Formulas.Scale(rate, targetAbility.EvasionMultiplier(target));
         if (weather == BattleWeather.Fog) rate = rate * 6 / 10;
-        if (targetItem != null) rate = Formulas.Scale(rate, targetItem.EvasionMultiplier(target));
-        if (userItem != null) rate = Formulas.Scale(rate, userItem.AccuracyMultiplier(user, move));
+        // The items, by hold effect (BattleControllerPlayer_CheckMoveHit): the target's Bright Powder or Lax
+        // Incense, the user's Wide Lens, its Zoom Lens against a target that has moved, and a Micle Berry eaten,
+        // which is good for one move
+        string? theirHold = BattleEffects.HoldEffectOf(target), myHold = BattleEffects.HoldEffectOf(user);
+        if (theirHold == "AccReduce") rate = rate * (100 - BattleEffects.HoldParamOf(target)) / 100;
+        if (myHold == "AccuracyUp") rate = rate * (100 + BattleEffects.HoldParamOf(user)) / 100;
+        if (myHold == "AccuracyUpSlower" && target.MovedThisTurn) rate = rate * (100 + BattleEffects.HoldParamOf(user)) / 100;
+        if (user.Volatile.MicleBerry)
+        {
+            user.Volatile.MicleBerry = false;
+            rate = rate * 120 / 100;
+        }
         if (Field.Gravity) rate = rate * 10 / 6;
 
         return rng.Roll(RollKind.Accuracy, 100) < rate;
@@ -855,6 +865,16 @@ public sealed partial class BattleCore
         hit.IntoSubstitute = false;
 
         var p = t.Pokemon!;
+        // A berry against the move's type halves the hit as it lands, and is eaten (subscript_type_resist_berry)
+        if (!hit.OneHitKo && effect.Deals == null && WeakenedByBerry(t, move, result, out var berry))
+        {
+            damage = Formulas.Divide(damage, 2);
+            hit.Notes.AddRange(Capture(() =>
+            {
+                Say($"The {berry.Name} weakened {move.Name}'s power!");
+                ConsumeItem(t);
+            }));
+        }
         if (hit.OneHitKo) damage = p.MaxHP;
         // False Swipe leaves one
         if (effect.LeavesOneHp && damage >= p.CurrentHP) damage = p.CurrentHP - 1;
@@ -971,12 +991,14 @@ public sealed partial class BattleCore
             Say($"{t.Name}'s rage is building!").With(new StageChanged(t.Place, StatType.Attack, stage, Rose: true));
         }
 
-        // The target's ability reacts to the hit (Static, Rough Skin), and berries check its HP
+        // The target's ability reacts to the hit (Static, Rough Skin), berries check its HP, and then the items
+        // that answer a hit (a Sticky Barb, a Jaboca or Rowap Berry, an Enigma Berry), in the original's order
         if (hit.Touched && dealt > 0)
         {
             foreach (var e in BattleEffects.Of(t, includeAbility: !userBreaks).ToList())
                 e.AfterHit(this, t, user, move, dealt, hit.LastCritical);
             CheckConditionHooks(t, user);
+            ItemsOnHit(use, hit);
         }
 
         // A Fire move thaws a frozen target
@@ -1055,6 +1077,7 @@ public sealed partial class BattleCore
 
         var landed = use.Hits.Where(h => h.Landed).Select(h => (h.Target, h.Dealt)).ToList();
         int total = use.DamageDealt;
+        if (landed.Count == 0) MetronomeMissed(user);
 
         if (user.IsActive && landed.Count > 0)
         {

@@ -1146,7 +1146,10 @@ public sealed class Importer
 
         string[] statusKeys = { "healSleep", "healPoison", "healBurn", "healFreeze", "healParalysis", "healConfusion" };
         int statusCount = statusKeys.Count(Has);
+        // The table keeps the HP as a signed byte: all, half and a quarter of it are -1, -2 and -3, and anything
+        // else below zero is an amount past 127 (a Hyper Potion's and an Energy Root's 200)
         int hp = Num("hpRestored");
+        if (hp < -3) hp += 256;
         if (item.Pocket == ItemPocket.PokeBalls)
         {
             item.EffectType = ItemEffectType.CatchPokemon;
@@ -1200,7 +1203,8 @@ public sealed class Importer
             foreach (var param in p.EnumerateObject())
             {
                 if (param.Value.ValueKind == JsonValueKind.True) use[param.Name] = 1;
-                else if (param.Value.ValueKind == JsonValueKind.Number && param.Value.GetInt32() != 0) use[param.Name] = param.Value.GetInt32();
+                else if (param.Value.ValueKind == JsonValueKind.Number && param.Value.GetInt32() != 0)
+                    use[param.Name] = param.Name == "hpRestored" ? hp : param.Value.GetInt32();
             }
             if (use.Count > 0) item.Use = use;
         }
