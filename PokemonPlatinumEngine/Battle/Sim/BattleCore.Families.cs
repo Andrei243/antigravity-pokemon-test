@@ -29,6 +29,9 @@ public sealed partial class BattleCore
         PokemonType.Grass, PokemonType.Electric, PokemonType.Psychic, PokemonType.Ice, PokemonType.Dragon, PokemonType.Dark
     };
 
+    /// <summary>Trump Card by the PP it has left once used (<c>sCurrentPPScaledPower</c>).</summary>
+    private static readonly int[] TrumpCardPower = { 200, 80, 60, 50, 40 };
+
     private static readonly Dictionary<string, MoveEffect> FamilyEffects = new()
     {
         // ---- several hits (BtlCmd_SetMultiHit, BattleControllerPlayer_LoopMultiHit)
@@ -274,9 +277,6 @@ public sealed partial class BattleCore
         int weight = (int)Math.Round(p.Weight * 10f);
         return weight <= 100 ? 20 : weight <= 250 ? 40 : weight <= 500 ? 60 : weight <= 1000 ? 80 : weight <= 2000 ? 100 : 120;
     }
-
-    /// <summary>Trump Card by the PP it has left once used (<c>sCurrentPPScaledPower</c>).</summary>
-    private static readonly int[] TrumpCardPower = { 200, 80, 60, 50, 40 };
 
     // ---------------------------------------------------------------- several hits
 

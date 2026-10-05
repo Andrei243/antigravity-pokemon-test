@@ -332,6 +332,40 @@ public class BattleFamilyTests
         Assert.Equal(140 - 81, venusaur.CurrentHP);
     }
 
+    [Fact]
+    public void BrinePaybackAssuranceAndRevengeDoubleInTheirMoment()
+    {
+        // Brine, 65 power, from Pikachu on Snorlax: 55 × 65 × 22 / 115 / 50 = 13, + 2 = 15; at half the target's HP
+        // or less it is 130: 27, + 2 = 29
+        var snorlax = Mon("Snorlax", 50);
+        Turn(Wild(Mon("Pikachu", 50, "Brine"), snorlax));
+        Assert.Equal(220 - 15, snorlax.CurrentHP);
+        snorlax.CurrentHP = 110;
+        Turn(Wild(Mon("Pikachu", 50, "Brine"), snorlax));
+        Assert.Equal(110 - 29, snorlax.CurrentHP);
+
+        // Payback, 50: 115 × 50 × 22 / 105 / 50 = 24, + 2 = 26 before the target's action, 100 power after it: 48, + 2 = 50.
+        // Blastoise is the faster; Trick Room's priority puts it after Snorlax instead
+        var blastoise = Mon("Blastoise", 50);
+        Turn(Wild(Mon("Snorlax", 50, "Payback"), blastoise));
+        Assert.Equal(139 - 50, blastoise.CurrentHP);
+        Turn(Wild(Mon("Snorlax", 50, "Payback"), blastoise = Mon("Blastoise", 50, "Trick Room")));
+        Assert.Equal(139 - 26, blastoise.CurrentHP);
+
+        // Assurance, 50: twice once the target has lost HP this turn, to anything (Double-Edge's recoil)
+        Turn(Wild(Mon("Snorlax", 50, "Assurance"), blastoise = Mon("Blastoise", 50)));
+        Assert.Equal(139 - 26, blastoise.CurrentHP);
+        blastoise = Mon("Blastoise", 50, "Double-Edge");
+        Turn(Wild(Mon("Snorlax", 50, "Assurance"), blastoise));
+        // 88 × 120 × 22 / 70 / 50 = 66, + 2 = 68 to Snorlax, 22 back; then 50
+        Assert.Equal(139 - 22 - 50, blastoise.CurrentHP);
+
+        // Revenge, 60: 115 × 60 × 22 / 105 / 50 = 28, + 2 = 30; twice against whoever hurt the user this turn: 57, + 2 = 59
+        Turn(Wild(Mon("Snorlax", 50, "Revenge"), blastoise = Mon("Blastoise", 50)));
+        Assert.Equal(139 - 30, blastoise.CurrentHP);
+        Turn(Wild(Mon("Snorlax", 50, "Revenge"), blastoise = Mon("Blastoise", 50, "Tackle")));
+        Assert.Equal(139 - 59, blastoise.CurrentHP);
+    }
 
     [Fact]
     public void FuryCutterDoublesWithEachUseUntilItsUserIsStopped()
