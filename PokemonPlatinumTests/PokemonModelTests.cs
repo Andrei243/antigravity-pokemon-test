@@ -7,6 +7,7 @@ using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using Raylib_cs;
 using Xunit.Abstractions;
+using static PokemonPlatinumTests.MeshPieces;
 
 namespace PokemonPlatinumTests;
 
@@ -24,6 +25,15 @@ public class PokemonModelTests
     {
         ["Zubat"] = 0, ["Combee"] = 6, ["Unown"] = 1, ["Nosepass"] = 0, ["Ralts"] = 0, ["Kirlia"] = 1, ["Magnemite"] = 1, ["Magneton"] = 3,
         ["Magnezone"] = 3, ["Yanmega"] = 0, ["Duskull"] = 1, ["Dusclops"] = 1, ["Dusknoir"] = 1, ["Piloswine"] = 0
+    };
+
+    /// <summary>
+    /// The hand-built species whose parts float apart by design, and how many pieces they are in: Haunter's two hands,
+    /// Probopass's two little noses, Porygon-Z's head, arms and tail round its body.
+    /// </summary>
+    private static readonly Dictionary<string, int> PiecesOf = new()
+    {
+        ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5
     };
 
     [Theory]
@@ -68,6 +78,15 @@ public class PokemonModelTests
         if (m.Decals.Count == 0) return;
         Assert.NotNull(m.DecalPatch);
         Assert.All(m.DecalUVs!, uv => Assert.True(uv.X >= 0f && uv.X <= 1f && uv.Y >= 0f && uv.Y <= 1f));
+    }
+
+    [Theory]
+    [MemberData(nameof(HandBuilt))]
+    public void EverySpeciesIsInOnePiece(string species)
+    {
+        // A part that doesn't reach the body floats beside it, as feet under a body or a spoon's bowl past its handle did
+        var pieces = Pieces(PokemonModels.Get(species).Mesh).Where(n => n > Speck).ToList();
+        Assert.True(pieces.Count == PiecesOf.GetValueOrDefault(species, 1), $"{species} is in {pieces.Count} pieces of {string.Join(", ", pieces)} vertices");
     }
 
     [Fact]

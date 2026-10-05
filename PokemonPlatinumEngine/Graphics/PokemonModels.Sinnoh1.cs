@@ -152,12 +152,12 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Abra line
 
-    /// <summary>A silver spoon held at <paramref name="grip"/>, its bowl at <paramref name="bowl"/>.</summary>
+    /// <summary>A silver spoon held at <paramref name="grip"/>, its bowl at <paramref name="bowl"/>, the handle running into the bowl.</summary>
     private static void Spoon(PokeBuilder b, int bone, Vector3 grip, Vector3 bowl, float size)
     {
         var silver = Rgb(214, 216, 226);
         var along = Vector3.Normalize(bowl - grip);
-        b.Limb(bone, grip - along * size * 0.6f, bowl - along * size * 0.9f, size * 0.12f, size * 0.1f, silver, Metal, 0.004f);
+        b.Limb(bone, grip - along * size * 0.6f, bowl - along * size * 0.3f, size * 0.12f, size * 0.1f, silver, Metal, 0.004f);
         b.Ell(bone, bowl, V(size * 0.42f, size * 0.42f, size * 0.17f), silver, Euler(along), Metal, 0.006f);
     }
 
@@ -549,6 +549,7 @@ internal static partial class PokemonModels
 
         int head = b.Head(V(0, 0.36f, 0));
         b.Ell(head, V(0, 0.44f, 0.01f), V(0.1f, 0.085f, 0.085f), green);
+        b.Ell(head, V(0, 0.355f, 0.005f), V(0.045f, 0.03f, 0.04f), green);
         // A crown of three thorny leaves
         b.Spike(head, V(0, 0.5f, -0.01f), V(0, 0.67f, -0.05f), 0.048f, dark, 0.45f);
         PokeBuilder.Both(s => b.Spike(head, V(0.05f * s, 0.48f, 0), V(0.18f * s, 0.59f, -0.03f), 0.042f, dark, 0.45f));
@@ -594,6 +595,7 @@ internal static partial class PokemonModels
 
         int head = b.Head(V(0, 0.62f, 0));
         b.Ell(head, V(0, 0.7f, 0.01f), V(0.085f, 0.08f, 0.08f), green);
+        b.Ell(head, V(0, 0.61f, 0.005f), V(0.035f, 0.035f, 0.035f), green);
         // A dark mask over the eyes, and the white petals of its hair swept back
         b.PaintEll(head, V(0, 0.71f, 0.05f), V(0.1f, 0.033f, 0.07f), mask);
         b.Ell(head, V(0, 0.77f, -0.02f), V(0.09f, 0.05f, 0.08f), white, mat: Leaf);
@@ -1655,6 +1657,7 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int w = b.Wing(s, V(0.06f * s, 0.66f, -0.06f));
+            b.Ell(w, V(0.05f * s, 0.65f, -0.055f), V(0.03f, 0.035f, 0.025f), dark);
             Petal(b, w, V(0.06f * s, 0.67f, -0.07f), V(0.27f * s, 0.8f, -0.12f), 0.07f, Rgb(236, 240, 248), Shell, 0.01f);
             Petal(b, w, V(0.06f * s, 0.63f, -0.07f), V(0.22f * s, 0.6f, -0.12f), 0.05f, Rgb(236, 240, 248), Shell, 0.01f);
         });
@@ -1857,6 +1860,7 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int leg = b.Leg(s, V(0.05f * s, 0.06f, 0.02f));
+            b.Limb(leg, V(0.05f * s, 0.04f, 0.035f), V(0.04f * s, 0.1f, 0.04f), 0.02f, 0.022f, pink);
             b.Ell(leg, V(0.055f * s, 0.025f, 0.04f), V(0.035f, 0.025f, 0.045f), pink);
         });
         // A bud closed against the clouds: four purple petals wrapped round, the pink face peeking out below

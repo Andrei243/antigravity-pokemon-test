@@ -106,6 +106,10 @@ Platinum's 210 Sinnoh species in four batches of about 50, in the order they app
 - **Tests**: the hand-built list grew to 210, and a test holds that every species with a Sinnoh number is hand-built. Yanmega (its eyes are its head) and Piloswine (eyes under its fur) have no eye decals, the Duskull line one.
 - **Not done here**: forms; differences between male and female; the loose parts in earlier hand-built models (plan 04, D6 and D7) that the same check finds.
 
+**Loose parts of the earlier batches (2026-10-05).**
+- **Fifteen models** of plan 04, D6 and D7 were in more than one piece: Turtwig's leaves above their twig, Lucario's tail, Giratina's wings, the bowls of Kadabra's and Alakazam's spoons (`Spoon` ended the handle short of the bowl), Roselia's, Roserade's and Medicham's heads above their bodies, Vespiquen's wings, the side fins of Goldeen, Seaking and Whiscash, and the feet of Cherrim, Bonsly and Happiny under their bodies. Each part reaches its body now: the spoons' handles run into their bowls, the fins are moved in to overlap the body, and the other parts gain a short root, neck, ankle, leg or twig's tip on their own bone. Their turntables were compared before and after; the models look as they did but for the gaps.
+- **Tests**: every hand-built model is in one piece (`PokemonModelTests.EverySpeciesIsInOnePiece`), but for those whose parts float apart by design: Haunter's hands, Probopass's noses, and Porygon-Z's head, arms and tail (3, 3 and 5 pieces). Pieces of 40 vertices or fewer are specks, as in the generator's check; the two checks share `MeshPieces`.
+
 ### D10 · Pokédex
 Sinnoh and National modes, the unlock after the Hall of Fame, sorting and search, the area view, seen and caught counters, the completion reward (a diploma).
 

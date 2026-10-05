@@ -384,7 +384,7 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int side = b.Part(s < 0 ? "finL" : "finR", Body, V(0.08f * s, 0.38f, 0.06f), PokeRole.Fin, s, s);
-            RimmedFin(b, side, V(0.13f * s, 0.34f, 0.0f), V(0.014f, 0.07f, 0.1f), V(20f, 20f * s, 0), white, orange, 0.018f);
+            RimmedFin(b, side, V(0.115f * s, 0.34f, 0.0f), V(0.014f, 0.07f, 0.1f), V(20f, 20f * s, 0), white, orange, 0.018f);
         });
 
         int head = b.Head(V(0, 0.44f, 0.12f));
@@ -424,8 +424,8 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int side = b.Part(s < 0 ? "finL" : "finR", Body, V(0.1f * s, 0.36f, 0.06f), PokeRole.Fin, s, s);
-            b.Ell(side, V(0.17f * s, 0.32f, -0.02f), V(0.016f, 0.09f, 0.13f), white, V(20f, 20f * s, 0), blend: 0.01f);
-            b.PaintEll(side, V(0.18f * s, 0.29f, -0.06f), V(0.025f, 0.02f, 0.02f), black);
+            b.Ell(side, V(0.145f * s, 0.32f, -0.02f), V(0.016f, 0.09f, 0.13f), white, V(20f, 20f * s, 0), blend: 0.01f);
+            b.PaintEll(side, V(0.155f * s, 0.29f, -0.06f), V(0.025f, 0.02f, 0.02f), black);
         });
 
         int head = b.Head(V(0, 0.45f, 0.15f));
@@ -502,7 +502,7 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int side = b.Part(s < 0 ? "finL" : "finR", Body, V(0.15f * s, 0.24f, 0.06f), PokeRole.Fin, s, s);
-            b.Ell(side, V(0.2f * s, 0.2f, 0.04f), V(0.05f, 0.025f, 0.06f), light, V(0, 0, 20f * s), blend: 0.01f);
+            b.Ell(side, V(0.18f * s, 0.22f, 0.04f), V(0.05f, 0.025f, 0.06f), light, V(0, 0, 20f * s), blend: 0.01f);
         });
 
         int head = b.Head(V(0, 0.34f, 0.14f));
@@ -718,6 +718,7 @@ internal static partial class PokemonModels
 
         int head = b.Head(V(0, 0.64f, 0));
         b.Ell(head, V(0, 0.71f, 0.02f), V(0.075f, 0.08f, 0.075f), white);
+        b.Ell(head, V(0, 0.62f, 0.005f), V(0.03f, 0.035f, 0.03f), white);
         // A pink headdress rising into a bulb
         b.Ell(head, V(0, 0.77f, -0.01f), V(0.085f, 0.065f, 0.085f), pink);
         b.Tube(head, new[] { V(0, 0.8f, -0.02f), V(0.01f, 0.9f, -0.02f), V(0.03f, 0.98f, -0.02f) }, 0.03f, 0.022f, pink);
@@ -851,6 +852,7 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int leg = b.Leg(s, V(0.07f * s, 0.1f, 0.02f));
+            b.Ell(leg, V(0.075f * s, 0.095f, 0.03f), V(0.035f, 0.03f, 0.035f), rim);
             b.Ell(leg, V(0.08f * s, 0.04f, 0.04f), V(0.05f, 0.04f, 0.06f), rim);
         });
         // A little tree in its pot: a tapering trunk with yellow spots, the pot's rim, three round crowns of leaves
@@ -1007,6 +1009,7 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             int leg = b.Leg(s, V(0.07f * s, 0.1f, 0.02f));
+            b.Ell(leg, V(0.075f * s, 0.11f, 0.03f), V(0.035f, 0.035f, 0.035f), deep);
             b.Ell(leg, V(0.075f * s, 0.06f, 0.04f), V(0.045f, 0.045f, 0.055f), deep);
         });
         // An egg of a body in a white skirt, holding the round white stone it thinks is an egg
