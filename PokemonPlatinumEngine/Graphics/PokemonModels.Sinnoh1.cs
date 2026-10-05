@@ -1341,19 +1341,31 @@ internal static partial class PokemonModels
         }
     }
 
-    private static PokeBuilder Burmy()
+    /// <param name="cloak">What it has wrapped round itself: leaves, or (as a form of its own) sand or rubbish.</param>
+    private static PokeBuilder Burmy(Cloak cloak = Cloak.Plant)
     {
-        var b = new PokeBuilder("Burmy", 0.46f, BodyPlan.Floating, V(0, 0.3f, 0)) { Coat = Leaf }.Hover();
+        var b = new PokeBuilder(cloak == Cloak.Plant ? "Burmy" : "Burmy-" + cloak, 0.46f, BodyPlan.Floating, V(0, 0.3f, 0))
+            { Coat = cloak == Cloak.Plant ? Leaf : Fur }.Hover();
         var green = Rgb(150, 210, 70);
         var dark = Rgb(96, 170, 60);
         var gray = Rgb(98, 100, 112);
 
-        // A bell of leaves it has wrapped round itself, two twigs poking out below
-        b.Ell(Body, V(0, 0.3f, 0), V(0.15f, 0.19f, 0.13f), green);
-        LeafCloak(b, Body, V(0, 0.3f, 0), V(0.15f, 0.19f, 0.13f), green, dark, 4, 8, 0.1f);
-        b.Limb(Body, V(-0.12f, 0.06f, 0.0f), V(0.04f, 0.16f, 0.02f), 0.014f, 0.012f, Rgb(176, 120, 70), Shell);
-        b.Limb(Body, V(0.12f, 0.06f, -0.02f), V(-0.04f, 0.16f, 0.0f), 0.014f, 0.012f, Rgb(176, 120, 70), Shell);
+        if (cloak == Cloak.Plant)
+        {
+            // A bell of leaves it has wrapped round itself, two twigs poking out below
+            b.Ell(Body, V(0, 0.3f, 0), V(0.15f, 0.19f, 0.13f), green);
+            LeafCloak(b, Body, V(0, 0.3f, 0), V(0.15f, 0.19f, 0.13f), green, dark, 4, 8, 0.1f);
+            b.Limb(Body, V(-0.12f, 0.06f, 0.0f), V(0.04f, 0.16f, 0.02f), 0.014f, 0.012f, Rgb(176, 120, 70), Shell);
+            b.Limb(Body, V(0.12f, 0.06f, -0.02f), V(-0.04f, 0.16f, 0.0f), 0.014f, 0.012f, Rgb(176, 120, 70), Shell);
+        }
+        else BurmyCloak(b, cloak);
+        BurmyHood(b, gray);
+        return Lift(b);
+    }
 
+    /// <summary>Burmy's head, peeking out of the top of its cloak under the spiral shell of its hood.</summary>
+    private static void BurmyHood(PokeBuilder b, Color gray)
+    {
         int head = b.Head(V(0, 0.44f, 0.02f));
         b.Ell(head, V(0, 0.47f, 0.06f), V(0.085f, 0.07f, 0.075f), gray, mat: Shell);
         // The spiral shell of its hood
@@ -1361,35 +1373,49 @@ internal static partial class PokemonModels
             b.Ell(head, V(0, 0.54f + i * 0.05f, 0.03f - i * 0.006f), V(0.07f - i * 0.013f, 0.032f, 0.07f - i * 0.013f), PixelCanvas.Mix(gray, White, 0.12f * (i % 2)), mat: Shell, blend: 0.012f);
         b.Spike(head, V(0, 0.7f, 0.01f), V(0, 0.76f, 0.0f), 0.02f, gray, mat: Shell);
         PokeBuilder.Both(s => b.Eye(head, V(0.038f * s, 0.475f, 0.128f), V(0.35f * s, 0, 1f), 0.022f, Rgb(250, 220, 60)));
-        return Lift(b);
     }
 
-    private static PokeBuilder Wormadam()
+    /// <param name="cloak">The gown it grew from the cloak it evolved in: leaves, or (as a form of its own) sand or rubbish.</param>
+    private static PokeBuilder Wormadam(Cloak cloak = Cloak.Plant)
     {
-        var b = new PokeBuilder("Wormadam", 0.58f, BodyPlan.Floating, V(0, 0.28f, 0)) { Coat = Leaf }.Hover();
+        var b = new PokeBuilder(cloak == Cloak.Plant ? "Wormadam" : "Wormadam-" + cloak, 0.58f, BodyPlan.Floating, V(0, 0.28f, 0))
+            { Coat = cloak == Cloak.Plant ? Leaf : Fur }.Hover();
         var green = Rgb(132, 204, 70);
         var dark = Rgb(48, 150, 90);
         var gray = Rgb(98, 100, 112);
 
-        // A gown of leaves with white flowers on it, a ragged hem
-        b.Ell(Body, V(0, 0.28f, 0), V(0.17f, 0.18f, 0.14f), green);
-        b.Ell(Body, V(0, 0.42f, 0.01f), V(0.1f, 0.07f, 0.08f), green);
-        LeafCloak(b, Body, V(0, 0.24f, 0), V(0.17f, 0.14f, 0.14f), green, Rgb(110, 186, 60), 2, 9, 0.11f);
-        foreach (var (x, y) in new[] { (-0.07f, 0.34f), (0.07f, 0.34f), (0f, 0.24f) })
+        if (cloak == Cloak.Plant)
         {
-            var at = V(x, y, 0.135f);
-            b.Mark(Body, at, V(x * 3f, 0, 1f), 0.05f, 0.05f, White, MarkShape.Star5);
-            b.Mark(Body, at + V(0, 0, 0.002f), V(x * 3f, 0, 1f), 0.016f, 0.016f, Rgb(250, 220, 80));
+            // A gown of leaves with white flowers on it, a ragged hem
+            b.Ell(Body, V(0, 0.28f, 0), V(0.17f, 0.18f, 0.14f), green);
+            b.Ell(Body, V(0, 0.42f, 0.01f), V(0.1f, 0.07f, 0.08f), green);
+            LeafCloak(b, Body, V(0, 0.24f, 0), V(0.17f, 0.14f, 0.14f), green, Rgb(110, 186, 60), 2, 9, 0.11f);
+            foreach (var (x, y) in new[] { (-0.07f, 0.34f), (0.07f, 0.34f), (0f, 0.24f) })
+            {
+                var at = V(x, y, 0.135f);
+                b.Mark(Body, at, V(x * 3f, 0, 1f), 0.05f, 0.05f, White, MarkShape.Star5);
+                b.Mark(Body, at + V(0, 0, 0.002f), V(x * 3f, 0, 1f), 0.016f, 0.016f, Rgb(250, 220, 80));
+            }
+            // A broad leaf hat
+            WormadamHead(b, gray, head => PokeBuilder.Both(s => Petal(b, head, V(0.03f * s, 0.57f, 0.0f), V(0.3f * s, 0.6f, -0.05f), 0.08f, dark, Leaf, 0.015f)));
         }
+        else
+        {
+            WormadamGown(b, cloak);
+            WormadamHead(b, gray, null);
+        }
+        return Lift(b);
+    }
 
+    /// <summary>Wormadam's head on top of its gown, with whatever it wears (<paramref name="hat"/>) and the horn tied in a knot.</summary>
+    private static void WormadamHead(PokeBuilder b, Color gray, Action<int>? hat)
+    {
         int head = b.Head(V(0, 0.46f, 0.02f));
         b.Ell(head, V(0, 0.52f, 0.04f), V(0.08f, 0.065f, 0.07f), gray, mat: Shell);
-        // A broad leaf hat, and a horn on top tied in a knot
-        PokeBuilder.Both(s => Petal(b, head, V(0.03f * s, 0.57f, 0.0f), V(0.3f * s, 0.6f, -0.05f), 0.08f, dark, Leaf, 0.015f));
+        hat?.Invoke(head);
         b.Tube(head, new[] { V(0, 0.57f, 0.03f), V(0, 0.68f, 0.02f), V(0.02f, 0.74f, 0.01f), V(0, 0.79f, 0.0f), V(0, 0.86f, -0.01f) }, 0.024f, 0.012f, gray, Shell);
         b.Torus(head, V(0.0f, 0.73f, 0.015f), 0.025f, 0.01f, gray, V(90f, 0, 0), mat: Shell);
         PokeBuilder.Both(s => b.Eye(head, V(0.036f * s, 0.52f, 0.105f), V(0.35f * s, 0, 1f), 0.02f, Rgb(250, 220, 60)));
-        return Lift(b);
     }
 
     /// <summary>A flat wing in the plane facing forward: a thin oval of <paramref name="fill"/> rimmed in <paramref name="rim"/>, its long axis turned by <paramref name="roll"/> degrees.</summary>
@@ -1881,12 +1907,13 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Shellos line
 
-    private static PokeBuilder SeaSlug(bool grown)
+    /// <param name="east">The East Sea's colours and crest (a form of its own) instead of the West Sea's.</param>
+    private static PokeBuilder SeaSlug(bool grown, bool east = false)
     {
-        var b = new PokeBuilder(grown ? "Gastrodon" : "Shellos", grown ? 0.72f : 0.5f, BodyPlan.Serpent, V(0, 0.08f, -0.2f)) { Coat = Scales };
-        var pink = Rgb(242, 140, 176);
-        var foot = grown ? Rgb(244, 160, 186) : Rgb(244, 240, 236);
-        var back = grown ? Rgb(150, 98, 70) : Rgb(244, 140, 176);
+        var b = new PokeBuilder((grown ? "Gastrodon" : "Shellos") + (east ? "-East" : ""), grown ? 0.72f : 0.5f, BodyPlan.Serpent, V(0, 0.08f, -0.2f)) { Coat = Scales };
+        var pink = east ? (grown ? Rgb(110, 200, 236) : Rgb(80, 186, 222)) : Rgb(242, 140, 176);
+        var foot = east ? (grown ? Rgb(66, 182, 220) : Rgb(150, 182, 84)) : grown ? Rgb(244, 160, 186) : Rgb(244, 240, 236);
+        var back = east ? (grown ? Rgb(54, 150, 74) : Rgb(64, 176, 214)) : grown ? Rgb(150, 98, 70) : Rgb(244, 140, 176);
         var yellow = Rgb(250, 222, 90);
         float k = grown ? 1.3f : 1f;
 
@@ -1900,7 +1927,8 @@ internal static partial class PokemonModels
             b.Ell(seg, path[i], V(r * 1.1f, r, r * 1.2f), foot);
             b.Ell(seg, path[i] + V(0, r * 0.5f, 0), V(r * 1.04f, r * 0.78f, r * 1.14f), back);
             b.PaintEll(seg, path[i] + V(0, r * 0.15f, 0), V(r * 1.2f, r * 0.08f, r * 1.3f), yellow);
-            if (!grown) b.Spike(seg, path[i] + V(0, r * 1.05f, 0), path[i] + V(0, r * 1.45f, -r * 0.3f), r * 0.28f, pink, 0.5f);
+            if (east && !grown) EastRidge(b, seg, path[i], r, back, yellow);
+            else if (!grown) b.Spike(seg, path[i] + V(0, r * 1.05f, 0), path[i] + V(0, r * 1.45f, -r * 0.3f), r * 0.28f, pink, 0.5f);
             else PokeBuilder.Both(s => b.PaintEll(seg, path[i] + V(r * 0.45f * s, r * 1.2f, 0), V(r * 0.26f, r * 0.2f, r * 0.24f), pink));
             parent = seg;
         }
@@ -1910,9 +1938,10 @@ internal static partial class PokemonModels
         int head = b.Head(path[^1], parent);
         float hy = 0.28f * k;
         b.Ell(head, V(0, hy, 0.12f * k), V(0.085f * k, 0.1f * k, 0.085f * k), grown ? back : pink);
-        b.PaintEll(head, V(0, hy - 0.045f * k, 0.17f * k), V(0.075f * k, 0.075f * k, 0.07f * k), grown ? pink : foot);
+        b.PaintEll(head, V(0, hy - 0.045f * k, 0.17f * k), V(0.075f * k, 0.075f * k, 0.07f * k), grown ? pink : east ? Rgb(150, 220, 240) : foot);
         b.PaintEll(head, V(0, hy - 0.035f * k, 0.12f * k), V(0.1f * k, 0.012f, 0.1f * k), yellow);
-        if (grown)
+        if (east) EastCrest(b, head, hy, k, grown, back);
+        else if (grown)
         {
             // Two broad brown lobes rising from the head
             PokeBuilder.Both(s =>
