@@ -29,7 +29,7 @@ public class EvolutionData
     public PokemonType? Type { get; set; }
     /// <summary>The species that must be in the party, or traded for.</summary>
     public string? Species { get; set; }
-    /// <summary>The place a map must have for it to level up there (<c>Magnetic Field</c>, <c>Moss Rock</c>, <c>Ice Rock</c>).</summary>
+    /// <summary>The place a map must have for it to level up there (<c>Magnetic Field</c>, <c>Moss Rock</c>, <c>Ice Rock</c>, <c>Stone Arch</c>).</summary>
     public string? Location { get; set; }
     /// <summary>Beauty or affection needed, or how many: steps, uses of a move, foes knocked out, items in the bag.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -39,9 +39,21 @@ public class EvolutionData
     public bool NeedsFriendship { get; set; }
     /// <summary>Plain words for <see cref="EvolutionMethod.Other"/> and anything else the fields can't hold.</summary>
     public string? Note { get; set; }
+
+    /// <summary>
+    /// The form it must be in (Galarian Meowth into Perrserker, Alolan Vulpix into Alolan Ninetales); null for the
+    /// species' own form. A Pokémon in a form that has evolutions of its own evolves only by those.
+    /// </summary>
+    public string? FromForm { get; set; }
+
+    /// <summary>The form it becomes (Burmy's sandy cloak makes a sandy Wormadam); null for the species' own.</summary>
+    public string? TargetForm { get; set; }
+
+    /// <summary>The region it has to evolve in, for regional forms that are born that way (Pikachu into Alolan Raichu in Alola).</summary>
+    public string? Region { get; set; }
 }
 
-/// <summary>Points a species gives in each stat when it is defeated.</summary>
+/// <summary>One number for each stat: the points a species gives when it is defeated, or a form's base stats.</summary>
 public class StatSpread
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int HP { get; set; }
@@ -50,6 +62,72 @@ public class StatSpread
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int SpAttack { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int SpDefense { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int Speed { get; set; }
+}
+
+/// <summary>The values that differ between the rules a game is played by (plan 06 · R1): types and base stats.</summary>
+public class SpeciesValues
+{
+    /// <summary>One type or two.</summary>
+    public List<PokemonType>? Types { get; set; }
+    public StatSpread? BaseStats { get; set; }
+}
+
+/// <summary>
+/// One of a species' forms (plan 03 · D11): what kind it is and whatever it doesn't share with its species. A null
+/// value is the species' own.
+/// </summary>
+public class PokemonForm
+{
+    /// <summary>The species' name and the form's, as Pokémon Showdown spells them: <c>Rotom-Heat</c>, <c>Charizard-Mega-X</c>, <c>Meowth-Galar</c>.</summary>
+    public string Name { get; set; } = string.Empty;
+    public FormKind Kind { get; set; }
+
+    /// <summary>One type or two.</summary>
+    public List<PokemonType>? Types { get; set; }
+    public StatSpread? BaseStats { get; set; }
+    public List<string>? Abilities { get; set; }
+    public string? HiddenAbility { get; set; }
+    public float? Height { get; set; }
+    public float? Weight { get; set; }
+    public int? BaseExpYield { get; set; }
+    public StatSpread? EvYield { get; set; }
+    public int? CatchRate { get; set; }
+    public List<LearnableMove>? Learnset { get; set; }
+
+    /// <summary>Its Pokédex colour where it isn't its species' (Mega Charizard X is black, Alolan Vulpix white): what a generated model is painted.</summary>
+    public string? Color { get; set; }
+
+    /// <summary>
+    /// The newest games' types and base stats where they differ from Platinum's (Rotom's appliances took a second
+    /// type in Generation 5). <see cref="Ruleset.Use"/> swaps them in, as it does a species' own.
+    /// </summary>
+    public SpeciesValues? Modern { get; set; }
+
+    // Platinum's values, kept from the first time the rules replaced them
+    private SpeciesValues? platinum;
+
+    /// <summary>The form as these rules have it, leaving this one as it is (for tests and tools).</summary>
+    public PokemonForm Under(Ruleset rules)
+    {
+        if (Modern == null) return this;
+        var copy = (PokemonForm)MemberwiseClone();
+        copy.platinum = platinum ?? new SpeciesValues { Types = Types, BaseStats = BaseStats };
+        copy.Take(rules.ModernSpeciesValues ? Modern : null);
+        return copy;
+    }
+
+    internal void UseRules(Ruleset rules)
+    {
+        if (Modern == null) return;
+        platinum ??= new SpeciesValues { Types = Types, BaseStats = BaseStats };
+        Take(rules.ModernSpeciesValues ? Modern : null);
+    }
+
+    private void Take(SpeciesValues? values)
+    {
+        Types = values?.Types ?? platinum!.Types;
+        BaseStats = values?.BaseStats ?? platinum!.BaseStats;
+    }
 }
 
 public class PokemonSpecies
@@ -106,12 +184,108 @@ public class PokemonSpecies
     /// <summary>Its hidden ability from Generation 5 on; Platinum has none, so new Pokémon never get it yet.</summary>
     public string? HiddenAbility { get; set; }
 
+    /// <summary>
+    /// Its forms other than its own (plan 03 · D11): its Megas, regional forms, Rotom's appliances, Unown's letters.
+    /// Null when it has none.
+    /// </summary>
+    public List<PokemonForm>? Forms { get; set; }
+
+    /// <summary>
+    /// The newest games' types and base stats where they differ from Platinum's (Clefairy has been a Fairy type
+    /// since Generation 6, and Pikachu's Defense rose then). Null when nothing differs, and for every species after
+    /// Platinum. The values above are the ones in force: <see cref="Ruleset.Use"/> swaps these in for a game played
+    /// by the modern rules, as it does the moves'.
+    /// </summary>
+    public SpeciesValues? Modern { get; set; }
+
     /// <summary>Its evolution at a plain level with no other condition, if it has one.</summary>
     [JsonIgnore]
     public EvolutionData? LevelEvolution => Evolutions?.FirstOrDefault(e => e.Method == EvolutionMethod.Level && e.Level > 0);
 
     [JsonIgnore]
     public bool IsGenderless => GenderRatio < 0;
+
+    /// <summary>One of its forms by name, in any case; null for a name it has no form of.</summary>
+    public PokemonForm? Form(string? name) =>
+        name == null ? null : Forms?.Find(f => f.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>
+    /// The species as one of its forms is, under the form's name: what the form has of its own in place of the
+    /// species' values (for the model generator, which reads a species).
+    /// </summary>
+    public PokemonSpecies AsForm(PokemonForm form)
+    {
+        var copy = (PokemonSpecies)MemberwiseClone();
+        copy.Name = form.Name;
+        if (form.Types is { Count: > 0 } types)
+        {
+            copy.PrimaryType = types[0];
+            copy.SecondaryType = types.Count > 1 ? types[1] : null;
+        }
+        if (form.BaseStats is { } b)
+        {
+            copy.BaseHP = b.HP;
+            copy.BaseAttack = b.Attack;
+            copy.BaseDefense = b.Defense;
+            copy.BaseSpAttack = b.SpAttack;
+            copy.BaseSpDefense = b.SpDefense;
+            copy.BaseSpeed = b.Speed;
+        }
+        copy.Abilities = form.Abilities ?? Abilities;
+        copy.HiddenAbility = form.HiddenAbility ?? HiddenAbility;
+        copy.Height = form.Height ?? Height;
+        copy.Weight = form.Weight ?? Weight;
+        copy.BaseExpYield = form.BaseExpYield ?? BaseExpYield;
+        copy.EvYield = form.EvYield ?? EvYield;
+        copy.CatchRate = form.CatchRate ?? CatchRate;
+        copy.Learnset = form.Learnset ?? Learnset;
+        copy.Color = form.Color ?? Color;
+        copy.Forms = null;
+        return copy;
+    }
+
+    // Platinum's values, kept from the first time the rules replaced them
+    private SpeciesValues? platinum;
+
+    /// <summary>The species as these rules have it, leaving this one as it is: for tests and tools, which never change the rules of the game in progress.</summary>
+    public PokemonSpecies Under(Ruleset rules)
+    {
+        var copy = (PokemonSpecies)MemberwiseClone();
+        copy.Forms = Forms?.Select(f => f.Under(rules)).ToList();
+        if (Modern == null) return copy;
+        copy.platinum = platinum ?? Values();
+        copy.Take(rules.ModernSpeciesValues ? Modern : null);
+        return copy;
+    }
+
+    /// <summary>Gives the species and its forms the values these rules say, in place, so every Pokémon of it follows.</summary>
+    internal void UseRules(Ruleset rules)
+    {
+        foreach (var form in Forms ?? new()) form.UseRules(rules);
+        if (Modern == null) return;
+        platinum ??= Values();
+        Take(rules.ModernSpeciesValues ? Modern : null);
+    }
+
+    private SpeciesValues Values() => new()
+    {
+        Types = SecondaryType is { } second ? new() { PrimaryType, second } : new() { PrimaryType },
+        BaseStats = new StatSpread { HP = BaseHP, Attack = BaseAttack, Defense = BaseDefense, SpAttack = BaseSpAttack, SpDefense = BaseSpDefense, Speed = BaseSpeed }
+    };
+
+    private void Take(SpeciesValues? values)
+    {
+        var types = values?.Types ?? platinum!.Types!;
+        PrimaryType = types[0];
+        SecondaryType = types.Count > 1 ? types[1] : null;
+        var stats = values?.BaseStats ?? platinum!.BaseStats!;
+        BaseHP = stats.HP;
+        BaseAttack = stats.Attack;
+        BaseDefense = stats.Defense;
+        BaseSpAttack = stats.SpAttack;
+        BaseSpDefense = stats.SpDefense;
+        BaseSpeed = stats.Speed;
+    }
 }
 
 public class Pokemon
@@ -197,6 +371,34 @@ public class Pokemon
     public List<Move> Moves { get; private set; } = new();
 
     public string DisplayName => string.IsNullOrWhiteSpace(Nickname) ? Species.Name : Nickname;
+
+    /// <summary>
+    /// The form it is in (plan 03 · D11): null for its species' own, else the name of one of
+    /// <see cref="PokemonSpecies.Forms"/>. Its types, base stats, abilities, size and moves follow it; change it
+    /// with <see cref="ChangeForm"/>.
+    /// </summary>
+    public string? Form { get; private set; }
+
+    /// <summary>What its form has of its own; null in its species' own form.</summary>
+    public PokemonForm? FormData => Species.Form(Form);
+
+    public PokemonType PrimaryType => FormData?.Types is { Count: > 0 } types ? types[0] : Species.PrimaryType;
+    public PokemonType? SecondaryType => FormData?.Types is { Count: > 0 } types ? (types.Count > 1 ? types[1] : null) : Species.SecondaryType;
+    public bool HasType(PokemonType type) => PrimaryType == type || SecondaryType == type;
+
+    /// <summary>The abilities its form can have, in the order the game picks from.</summary>
+    public IReadOnlyList<string> Abilities => FormData?.Abilities ?? Species.Abilities;
+
+    /// <summary>The moves its form learns by level.</summary>
+    public IReadOnlyList<LearnableMove> Learnset => FormData?.Learnset ?? Species.Learnset;
+
+    public float Height => FormData?.Height ?? Species.Height;
+    public float Weight => FormData?.Weight ?? Species.Weight;
+    public int BaseExpYield => FormData?.BaseExpYield ?? Species.BaseExpYield;
+    public int CatchRate => FormData?.CatchRate ?? Species.CatchRate;
+
+    /// <summary>The name its model and sprites are asked for by: its form's, or its species'.</summary>
+    public string ModelName => Form ?? Species.Name;
     public bool IsFainted => CurrentHP <= 0 || Status == StatusCondition.Faint;
 
     public Pokemon(PokemonSpecies species, int level, Random? rng = null)
@@ -206,9 +408,11 @@ public class Pokemon
         Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
         Gender = RollGender(species, rng);
+        Form = FormOfGender();
         Nature = (Nature)rng.Next(Enum.GetValues<Nature>().Length);
         IsShiny = rng.Next(8192) == 0;
-        AbilityName = AbilityDatabase.PickFor(species, rng);
+        // One of its form's abilities, each as likely
+        AbilityName = Abilities.Count == 0 ? null : Abilities[rng.Next(Abilities.Count)];
 
         IvHP = rng.Next(32);
         IvAttack = rng.Next(32);
@@ -234,9 +438,10 @@ public class Pokemon
         Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
         Gender = gender;
+        Form = FormOfGender();
         Nature = nature;
         IsShiny = isShiny;
-        AbilityName = AbilityDatabase.ForSpecies(species).FirstOrDefault();
+        AbilityName = Abilities.FirstOrDefault();
         Personality = RollPersonality(Core.Dice.Shared);
         Friendship = species.BaseFriendship;
 
@@ -277,13 +482,16 @@ public class Pokemon
 
     public void RecalculateStats()
     {
+        // A form with base stats of its own (Rotom's appliances, a Mega) is reckoned from them
+        var form = FormData?.BaseStats;
+        int baseHP = form?.HP ?? Species.BaseHP;
         // Shedinja's one hit point is a rule of its own, not the formula's
-        MaxHP = Species.BaseHP == 1 ? 1 : CalculateHP(Species.BaseHP, IvHP, EvHP, Level);
-        Attack = CalculateOtherStat(Species.BaseAttack, IvAttack, EvAttack, Level, GetNatureMultiplier(Nature, StatType.Attack));
-        Defense = CalculateOtherStat(Species.BaseDefense, IvDefense, EvDefense, Level, GetNatureMultiplier(Nature, StatType.Defense));
-        SpAttack = CalculateOtherStat(Species.BaseSpAttack, IvSpAttack, EvSpAttack, Level, GetNatureMultiplier(Nature, StatType.SpAttack));
-        SpDefense = CalculateOtherStat(Species.BaseSpDefense, IvSpDefense, EvSpDefense, Level, GetNatureMultiplier(Nature, StatType.SpDefense));
-        Speed = CalculateOtherStat(Species.BaseSpeed, IvSpeed, EvSpeed, Level, GetNatureMultiplier(Nature, StatType.Speed));
+        MaxHP = baseHP == 1 ? 1 : CalculateHP(baseHP, IvHP, EvHP, Level);
+        Attack = CalculateOtherStat(form?.Attack ?? Species.BaseAttack, IvAttack, EvAttack, Level, GetNatureMultiplier(Nature, StatType.Attack));
+        Defense = CalculateOtherStat(form?.Defense ?? Species.BaseDefense, IvDefense, EvDefense, Level, GetNatureMultiplier(Nature, StatType.Defense));
+        SpAttack = CalculateOtherStat(form?.SpAttack ?? Species.BaseSpAttack, IvSpAttack, EvSpAttack, Level, GetNatureMultiplier(Nature, StatType.SpAttack));
+        SpDefense = CalculateOtherStat(form?.SpDefense ?? Species.BaseSpDefense, IvSpDefense, EvSpDefense, Level, GetNatureMultiplier(Nature, StatType.SpDefense));
+        Speed = CalculateOtherStat(form?.Speed ?? Species.BaseSpeed, IvSpeed, EvSpeed, Level, GetNatureMultiplier(Nature, StatType.Speed));
     }
 
     private static int CalculateHP(int baseStat, int iv, int ev, int level)
@@ -382,7 +590,7 @@ public class Pokemon
     {
         Moves.Clear();
         // The last four it would have learned by now, each move once
-        var availableMoves = Species.Learnset
+        var availableMoves = Learnset
             .Where(m => m.Level <= Level)
             .OrderByDescending(m => m.Level)
             .DistinctBy(m => m.MoveName)
@@ -468,7 +676,7 @@ public class Pokemon
             CurrentHP += (MaxHP - oldMaxHP); // Keep HP difference
 
             // Check for new moves
-            var movesToLearn = Species.Learnset.Where(m => m.Level == Level);
+            var movesToLearn = Learnset.Where(m => m.Level == Level);
             foreach (var m in movesToLearn)
             {
                 if (Moves.Count < 4)
@@ -493,16 +701,55 @@ public class Pokemon
     public void EvolveInto(PokemonSpecies next)
     {
         string oldName = Species.Name;
-        int abilitySlot = Math.Max(0, AbilityDatabase.ForSpecies(Species).ToList().IndexOf(AbilityName ?? ""));
+        int abilitySlot = Math.Max(0, Abilities.ToList().IndexOf(AbilityName ?? ""));
         int oldMaxHP = MaxHP;
 
+        // It becomes the new species' own form (or its females'); Evolution.Evolve gives it another one where the evolution says so
         Species = next;
-        var abilities = AbilityDatabase.ForSpecies(Species);
+        Form = FormOfGender();
+        var abilities = Abilities;
         if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
         if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName) Nickname = Species.Name;
 
         RecalculateStats();
         if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMaxHP, 1, MaxHP);
+    }
+
+    /// <summary>
+    /// Takes another of its species' forms (null for the species' own): its ability keeps its slot in the form's
+    /// list, and its hit points change with its maximum (a fainted one stays down). Whatever makes it change
+    /// (Rotom's appliances, the Griseous Orb, Mega Evolution) is plan 06's; a name the species has no form of is
+    /// refused.
+    /// </summary>
+    public void ChangeForm(string? form)
+    {
+        if (form != null && Species.Form(form) == null) throw new ArgumentException($"{Species.Name} has no form {form}", nameof(form));
+        int abilitySlot = Math.Max(0, Abilities.ToList().IndexOf(AbilityName ?? ""));
+        int oldMaxHP = MaxHP;
+
+        Form = Species.Form(form)?.Name;
+        var abilities = Abilities;
+        if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
+
+        RecalculateStats();
+        if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMaxHP, 1, MaxHP);
+    }
+
+    private string? FormOfGender() => FormOfGender(Species, Gender);
+
+    /// <summary>
+    /// The form a gender puts a Pokémon of this species in: a female of a species whose females are a form of their
+    /// own (Meowstic and Indeedee with their own abilities, Basculegion, Pyroar's mane) is in it from the start, and
+    /// anyone else in none.
+    /// </summary>
+    public static string? FormOfGender(PokemonSpecies species, Gender gender) =>
+        gender == Gender.Female ? species.Form(species.Name + "-Female")?.Name : null;
+
+    /// <summary>Puts it in a form as it is saved, leaving its ability as the save has it.</summary>
+    internal void RestoreForm(string? form)
+    {
+        Form = Species.Form(form)?.Name;
+        RecalculateStats();
     }
 
     public void HealFull()
@@ -549,6 +796,7 @@ public class Pokemon
     public void CopyStateFrom(Pokemon other)
     {
         Species = other.Species;
+        Form = other.Form;
         Nickname = other.Nickname;
         Level = other.Level;
         Gender = other.Gender;

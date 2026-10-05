@@ -194,6 +194,22 @@ public enum MoveEffectSupport
     None
 }
 
+/// <summary>What sets one of a species' forms apart from it (plan 03 · D11).</summary>
+public enum FormKind
+{
+    /// <summary>Its looks, with the species' data or only other types (Arceus's plates): Unown's letters, Burmy's cloaks, Shellos's coasts.</summary>
+    Look,
+    /// <summary>Data of its own, kept outside battle: Rotom's appliances, Giratina's Origin Forme, Deoxys's and Shaymin's formes.</summary>
+    Alternate,
+    /// <summary>Another region's form, with its own types, stats, abilities and moves: Alolan, Galarian, Hisuian and Paldean.</summary>
+    Regional,
+    /// <summary>Taken during a battle and lost after it: Castform's weathers, Cherrim in the sun, Darmanitan's Zen Mode.</summary>
+    Battle,
+    Mega,
+    Primal,
+    Gigantamax
+}
+
 /// <summary>
 /// How a species evolves. <c>Models/Evolution.cs</c> decides when each one happens; docs/mechanics/evolution.md
 /// lists them with the games they come from and what this game does where the original needs something it lacks.
@@ -251,5 +267,19 @@ public enum EvolutionMethod
     /// <summary>Level up with <c>value</c> of <c>item</c> in the bag, which are used up (Gimmighoul's coins, Meltan's candies).</summary>
     LevelWithItemsInBag,
     /// <summary>The player turns a full circle while it holds <c>item</c> (Milcery and its sweets).</summary>
-    SpinHoldingItem
+    SpinHoldingItem,
+    /// <summary>The level, at dusk: Platinum's evening, 17:00 to 19:59 (Own Tempo Rockruff into Dusk Form Lycanroc).</summary>
+    LevelDusk,
+    /// <summary>
+    /// <c>value</c> critical hits landed in one battle, and the battle is over (Galarian Farfetch'd into Sirfetch'd):
+    /// it evolves as the battle ends, without a level.
+    /// </summary>
+    CriticalHits,
+    /// <summary>
+    /// Level up where a map has the place named in <c>location</c> (the Stone Arch) after losing <c>value</c> HP to
+    /// moves without fainting since (Galarian Yamask into Runerigus).
+    /// </summary>
+    LevelAfterDamage,
+    /// <summary>Level up after losing <c>value</c> HP to its own moves' recoil without fainting since (White-Striped Basculin into Basculegion).</summary>
+    LevelAfterRecoil
 }

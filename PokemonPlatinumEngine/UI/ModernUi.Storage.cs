@@ -47,7 +47,7 @@ internal static partial class ModernUi
             Card(r, 26, selected);
             var c = new Vector2(r.X + 70, r.Y + r.Height / 2f);
             UiShapes.Circle(c, 50, Disc);
-            PixelArt(PixelArtGenerator.GetPokemonIcon(p.Species.Name), c + new Vector2(0, -3), 2, Hop(selected, p.IsFainted) * 2,
+            PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), c + new Vector2(0, -3), 2, Hop(selected, p.IsFainted) * 2,
                 p.IsFainted ? new Color(170, 170, 190, 255) : Color.White);
             UiFonts.DrawCentered(p.DisplayName, r.X + 136, r.Y + 42, 32, Ink, UiWeight.Black);
             Level(r.X + r.Width - 28, r.Y + 42, p.Level, 30);
@@ -87,7 +87,7 @@ internal static partial class ModernUi
             UiShapes.Shape(r, 24, SlotTop, SlotBottom, selected ? Selection : Rule, selected ? 6f : 3f);
             if (firstStored + i >= stored.Count) continue;
             var p = stored[firstStored + i];
-            PixelArt(PixelArtGenerator.GetPokemonIcon(p.Species.Name), new Vector2(r.X + cell / 2f, r.Y + cell / 2f - 2), 2, Hop(selected) * 2);
+            PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), new Vector2(r.X + cell / 2f, r.Y + cell / 2f - 2), 2, Hop(selected) * 2);
         }
 
         // ---- The Pokémon under the cursor
@@ -102,7 +102,7 @@ internal static partial class ModernUi
 
         var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 40 + 150);
         BallDisc(disc, 150);
-        PixelArt(PixelArtGenerator.GetPokemonSprite(shown.Species.Name, isBack: false), disc, 2);
+        PixelArt(PixelArtGenerator.GetPokemonSprite(shown.ModelName, isBack: false), disc, 2);
         float x = detail.X + 36, y = detail.Y + 376;
         NameWithGender(shown, x, y, 40);
         Level(detail.X + detail.Width - 36, y, shown.Level, 34);

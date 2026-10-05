@@ -162,6 +162,13 @@ public static class Coverage
              $"{standard.Count(m => m.Support == MoveEffectSupport.Partial)} | {standard.Count(m => m.Support == MoveEffectSupport.None)} | " +
              $"{abilities.Count} | {abilities.Count(a => implementedAbilities.Contains(a.Name))} |");
         Line();
+        var forms = species.SelectMany(s => s.Forms ?? new()).ToList();
+        int Forms(FormKind kind) => forms.Count(f => f.Kind == kind);
+        Line($"**Forms** (plan 03 · D11): {forms.Count}, of {species.Count(s => s.Forms != null)} species: {Forms(FormKind.Mega)} Mega, {Forms(FormKind.Primal)} Primal, " +
+             $"{Forms(FormKind.Gigantamax)} Gigantamax, {Forms(FormKind.Regional)} regional, {Forms(FormKind.Battle)} for battle only, {Forms(FormKind.Alternate)} others " +
+             $"with values of their own and {Forms(FormKind.Look)} that only look different. {species.Count(s => s.Modern != null)} species and " +
+             $"{forms.Count(f => f.Modern != null)} forms have other types or base stats in the newest games.");
+        Line();
 
         Line("## Move effects still to write");
         Line();
@@ -227,7 +234,7 @@ public static class Coverage
         Line($"- **Max Moves**: {n.MaxMoves}, and {n.GMaxMoves} G-Max Moves for {moves.Where(m => m.GigantamaxOf != null).Select(m => m.GigantamaxOf).Distinct().Count()} Gigantamax forms. " +
              $"{standard.Count(m => m.MaxPower > 0)} moves have a Max Move power.");
         Line($"- **Mega Stones**: {n.MegaStones}, for {items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Form).Distinct().Count()} forms of " +
-             $"{items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Species).Distinct().Count()} species. The forms themselves (stats, types, abilities) come with plan 03 · D11.");
+             $"{items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Species).Distinct().Count()} species, each a form in `species.json`; Mega Evolving in battle is plan 06's.");
         Line($"- **Z-Crystals**: {n.ZCrystals} ({items.Count(i => i.ZCrystal?.Type != null)} for a type, {items.Count(i => i.ZCrystal?.Move != null)} for one species' move).");
         Line($"- **Modern values**: {standard.Count(m => m.Modern != null)} of Platinum's moves have other values in the newest games, which a game played by the modern rules uses.");
         Line();
@@ -248,6 +255,7 @@ public static class Coverage
                 EvolutionTrigger.UseItem => "an item used on it",
                 EvolutionTrigger.Trade => "a trade",
                 EvolutionTrigger.Spin => "the player spinning",
+                EvolutionTrigger.BattleEnd => "the end of a battle",
                 _ => group.Key == EvolutionMethod.LevelShedinja ? "Nincada evolving" : "nothing yet"
             };
             Line($"| {group.Key} | {group.Count()} | {trigger} | {WaitsFor(group.Key)} |");
@@ -264,6 +272,7 @@ public static class Coverage
         EvolutionMethod.LevelAtLocation => "maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01)",
         EvolutionMethod.LevelInRain => "weather in the field (plan 01)",
         EvolutionMethod.LevelWithItemsInBag => "a way to collect the items (plan 03 · D12)",
+        EvolutionMethod.LevelAfterDamage => "a map with a Stone Arch (plan 03 · D12)",
         EvolutionMethod.Other => "a rule of its own",
         _ => ""
     };

@@ -87,8 +87,9 @@ public sealed class EvolutionScreen
         this.evolution = evolution;
         this.context = context;
         Cancellable = cancellable;
-        fromSpecies = pokemon.Species.Name;
-        toSpecies = evolution.TargetSpecies;
+        // The models shown: the forms it is in and goes into, where it has one (plan 03 · D11)
+        fromSpecies = pokemon.ModelName;
+        toSpecies = Evolution.ModelAfter(pokemon, evolution);
         oldName = pokemon.DisplayName;
         Outcome = null;
         MoveToLearn = null;

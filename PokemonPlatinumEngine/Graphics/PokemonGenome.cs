@@ -171,16 +171,23 @@ internal static class PokemonGenomes
     private static readonly object Gate = new();
     private static Dictionary<string, string>? preEvolution;
 
-    /// <summary>The genome of a species (null for a name that isn't one).</summary>
+    /// <summary>
+    /// The genome of a species or of one of its forms (plan 03 · D11: a Mega, a regional form, Rotom's appliances),
+    /// null for a name that is neither. A form is the species with the form's types, stats, size and colour in their place,
+    /// of the species' family; both by Platinum's rules, whatever rules the game is played by, so a model never
+    /// changes with them.
+    /// </summary>
     public static PokeGenome? For(string species)
     {
         lock (Gate)
         {
             if (Cache.TryGetValue(species, out var g)) return g;
         }
-        var data = PokemonDatabase.Get(species);
-        if (data == null) return null;
-        var made = Make(data);
+        PokeGenome? made = null;
+        if (PokemonDatabase.Get(species) is { } data) made = Make(data.Under(Ruleset.Platinum), data);
+        else if (PokemonDatabase.SpeciesOfForm(species) is { } owner && owner.Under(Ruleset.Platinum) is var platinum && platinum.Form(species) is { } form)
+            made = Make(platinum.AsForm(form), owner);
+        if (made == null) return null;
         lock (Gate) Cache[species] = made;
         return made;
     }
@@ -275,10 +282,11 @@ internal static class PokemonGenomes
 
     // ------------------------------------------------------------------ the genome
 
-    private static PokeGenome Make(PokemonSpecies s)
+    /// <param name="family">The species whose line it belongs to: itself, or the species of a form.</param>
+    private static PokeGenome Make(PokemonSpecies s, PokemonSpecies family)
     {
         var w = new Words(s);
-        var (root, steps) = Family(s);
+        var (root, steps) = Family(family);
         var fr = new GenomeRandom(GenomeRandom.Hash(root.DexNumber, 0xFA11u));
         var r = new GenomeRandom(GenomeRandom.Hash(s.DexNumber, 0x5EEDu));
         var types = new List<PokemonType> { s.PrimaryType };

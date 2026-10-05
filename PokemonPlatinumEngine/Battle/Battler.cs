@@ -121,7 +121,7 @@ public sealed class Battler
 
     /// <summary>The types the Pokémon has right now.</summary>
     public bool HasType(PokemonType type) =>
-        Pokemon != null && (Pokemon.Species.PrimaryType == type || Pokemon.Species.SecondaryType == type);
+        Pokemon != null && Pokemon.HasType(type);
 
     public override string ToString() => $"{Side} {Slot}: {Pokemon?.DisplayName ?? "empty"}";
 }

@@ -1021,6 +1021,182 @@ public class EvolutionTests
         Assert.Equal(0, bag.GetQuantity(Item("Metal Coat")));
     }
 
+    // ---------------------------------------------------------------- forms (plan 03 · D11)
+
+    private static Pokemon InForm(string species, int level, string form, Gender gender = Gender.Male)
+    {
+        var p = Mon(species, level, gender);
+        p.ChangeForm(form);
+        return p;
+    }
+
+    [Fact]
+    public void TestARegionalFormEvolvesOnlyByItsOwnEvolutions()
+    {
+        Assert.Equal("Persian", LevelUp(Mon("Meowth", 28)));
+        var galar = InForm("Meowth", 28, "Meowth-Galar");
+        Assert.Equal("Perrserker", LevelUp(galar));
+        Evolution.Evolve(galar, Evolution.Find(galar, EvolutionTrigger.LevelUp, Day)!, Day);
+        Assert.Equal(("Perrserker", (string?)null), (galar.Species.Name, galar.Form));
+
+        // Alolan Meowth waits for friendship instead, and becomes an Alolan Persian
+        var alola = InForm("Meowth", 28, "Meowth-Alola");
+        Assert.Null(LevelUp(alola));
+        alola.Friendship = FriendshipRules.EvolveAt;
+        Evolution.Evolve(alola, Evolution.Find(alola, EvolutionTrigger.LevelUp, Day)!, Day);
+        Assert.Equal(("Persian", "Persian-Alola", PokemonType.Dark), (alola.Species.Name, alola.Form, alola.PrimaryType));
+
+        // Alolan Vulpix wants an Ice Stone, the other a Fire Stone
+        Assert.Null(Use("Ice Stone", Mon("Vulpix", 10)));
+        Assert.Null(Use("Fire Stone", InForm("Vulpix", 10, "Vulpix-Alola")));
+        Assert.Equal("Ninetales", Use("Ice Stone", InForm("Vulpix", 10, "Vulpix-Alola")));
+
+        // Hisuian Sneasel takes its Razor Claw by day, into a species of its own
+        var hisui = InForm("Sneasel", 30, "Sneasel-Hisui");
+        hisui.HeldItem = Item("Razor Claw");
+        Assert.Equal("Sneasler", LevelUp(hisui));
+        Assert.Null(LevelUp(hisui, Night));
+        // A Galarian Linoone becomes Obstagoon at night, and a Linoone of Hoenn never does
+        Assert.Equal("Obstagoon", LevelUp(InForm("Linoone", 35, "Linoone-Galar"), Night));
+        Assert.Null(LevelUp(Mon("Linoone", 35), Night));
+    }
+
+    [Fact]
+    public void TestALookCarriesOverAndOtherFormsKeepTheirSpeciesEvolutions()
+    {
+        // A female Burmy in a sandy cloak becomes a sandy Wormadam, part Ground type
+        var sandy = InForm("Burmy", 20, "Burmy-Sandy", Gender.Female);
+        var evolution = Evolution.Find(sandy, EvolutionTrigger.LevelUp, Day)!;
+        Assert.Equal("Wormadam-Sandy", evolution.TargetForm);
+        Assert.Equal("Wormadam-Sandy", Evolution.ModelAfter(sandy, evolution));
+        Evolution.Evolve(sandy, evolution, Day);
+        Assert.Equal(("Wormadam", "Wormadam-Sandy", (PokemonType?)PokemonType.Ground), (sandy.Species.Name, sandy.Form, sandy.SecondaryType));
+
+        // A male one still becomes Mothim, which has no cloaks; a plant-cloaked female a plain Wormadam
+        Assert.Equal("Mothim", LevelUp(InForm("Burmy", 20, "Burmy-Sandy")));
+        var plant = Mon("Burmy", 20, Gender.Female);
+        Evolution.Evolve(plant, Evolution.Find(plant, EvolutionTrigger.LevelUp, Day)!, Day);
+        Assert.Equal(("Wormadam", (string?)null), (plant.Species.Name, plant.Form));
+    }
+
+    [Fact]
+    public void TestAnEvolutionIntoARegionalFormHappensOnlyInItsRegion()
+    {
+        var context = new EvolutionContext { Item = Item("Thunder Stone"), Region = "Sinnoh" };
+        var pikachu = Mon("Pikachu", 20);
+        Assert.Null(Evolution.Find(pikachu, EvolutionTrigger.UseItem, context)!.TargetForm);
+        context.Region = "Alola";
+        var alolan = Evolution.Find(pikachu, EvolutionTrigger.UseItem, context)!;
+        Assert.Equal("Raichu-Alola", alolan.TargetForm);
+        Evolution.Evolve(pikachu, alolan, context);
+        Assert.Equal(("Raichu", "Raichu-Alola", (PokemonType?)PokemonType.Psychic), (pikachu.Species.Name, pikachu.Form, pikachu.SecondaryType));
+
+        // Koffing becomes a Galarian Weezing in Galar, and a Weezing anywhere else
+        Assert.Null(Evolution.Find(Mon("Koffing", 35), EvolutionTrigger.LevelUp, Day)!.TargetForm);
+        Assert.Equal("Weezing-Galar", Evolution.Find(Mon("Koffing", 35), EvolutionTrigger.LevelUp, new EvolutionContext { Region = "Galar" })!.TargetForm);
+    }
+
+    [Fact]
+    public void TestOwnTempoRockruffEvolvesAtDusk()
+    {
+        var dusk = new EvolutionContext { IsDusk = true };
+        // The ordinary Rockruff is a Midday Lycanroc by day, dusk included, and a Midnight one at night
+        Assert.Null(Evolution.Find(Mon("Rockruff", 25), EvolutionTrigger.LevelUp, dusk)!.TargetForm);
+        Assert.Equal("Lycanroc-Midnight", Evolution.Find(Mon("Rockruff", 25), EvolutionTrigger.LevelUp, Night)!.TargetForm);
+
+        // One with Own Tempo evolves at dusk alone, into the Dusk Form
+        var ownTempo = InForm("Rockruff", 25, "Rockruff-Own-Tempo");
+        Assert.Null(LevelUp(ownTempo));
+        Assert.Null(LevelUp(ownTempo, Night));
+        Evolution.Evolve(ownTempo, Evolution.Find(ownTempo, EvolutionTrigger.LevelUp, dusk)!, dusk);
+        Assert.Equal(("Lycanroc", "Lycanroc-Dusk"), (ownTempo.Species.Name, ownTempo.Form));
+    }
+
+    [Fact]
+    public void TestSirfetchdRunerigusAndBasculegionWaitForWhatTheyCount()
+    {
+        // Three critical hits in one battle, and the battle over: not a level-up
+        var farfetchd = InForm("Farfetch'd", 30, "Farfetch'd-Galar");
+        Evolution.CountCriticalHit(farfetchd);
+        Evolution.CountCriticalHit(farfetchd);
+        Assert.Null(Evolution.Find(farfetchd, EvolutionTrigger.BattleEnd, Day));
+        Evolution.CountCriticalHit(farfetchd);
+        Assert.Null(LevelUp(farfetchd));
+        Assert.Equal("Sirfetch'd", Evolution.Find(farfetchd, EvolutionTrigger.BattleEnd, Day)?.TargetSpecies);
+        Assert.Equal(EvolutionTrigger.BattleEnd, Evolution.TriggerOf(EvolutionMethod.CriticalHits));
+        // The next battle counts from nothing; a Farfetch'd of Kanto counts nothing at all
+        Evolution.BeginBattle(farfetchd);
+        Assert.Null(Evolution.Find(farfetchd, EvolutionTrigger.BattleEnd, Day));
+        var kanto = Mon("Farfetch'd", 30);
+        Evolution.CountCriticalHit(kanto);
+        Assert.Empty(kanto.EvolutionProgress);
+
+        // 49 HP lost to moves, then a level-up where the Stone Arch is
+        var arch = new EvolutionContext { Sites = new[] { "Stone Arch" } };
+        var yamask = InForm("Yamask", 30, "Yamask-Galar");
+        Evolution.CountDamageTaken(yamask, 30);
+        Evolution.CountDamageTaken(yamask, 18);
+        Assert.Null(LevelUp(yamask, arch));
+        Evolution.CountDamageTaken(yamask, 20);
+        Assert.Equal(49, Evolution.Progress(yamask, Evolution.DamageKey));
+        Assert.Null(LevelUp(yamask));
+        Assert.Equal("Runerigus", LevelUp(yamask, arch));
+        // Fainting loses it
+        Evolution.CountFaint(yamask);
+        Assert.Null(LevelUp(yamask, arch));
+        // A Yamask of Unova becomes Cofagrigus as ever, and a Galarian one never does
+        Assert.Equal("Cofagrigus", LevelUp(Mon("Yamask", 34)));
+        Assert.Null(LevelUp(InForm("Yamask", 34, "Yamask-Galar")));
+
+        // 294 HP lost to its own recoil; a female becomes the female Basculegion
+        var basculin = InForm("Basculin", 30, "Basculin-White-Striped", Gender.Female);
+        Evolution.CountRecoil(basculin, 293);
+        Assert.Null(LevelUp(basculin));
+        Evolution.CountRecoil(basculin, 1);
+        var evolution = Evolution.Find(basculin, EvolutionTrigger.LevelUp, Day)!;
+        Assert.Equal("Basculegion-Female", Evolution.ModelAfter(basculin, evolution));
+        Evolution.Evolve(basculin, evolution, Day);
+        Assert.Equal(("Basculegion", "Basculegion-Female"), (basculin.Species.Name, basculin.Form));
+        Assert.Empty(basculin.EvolutionProgress);
+        // A Red-Striped Basculin counts nothing
+        var red = Mon("Basculin", 30);
+        Evolution.CountRecoil(red, 300);
+        Assert.Empty(red.EvolutionProgress);
+    }
+
+    [Fact]
+    public void TestABattleCountsCriticalHitsDamageAndRecoil()
+    {
+        // Galarian Farfetch'd lands a critical hit each turn here, on a foe that can take three
+        var farfetchd = Scenario.Mon("Farfetch'd", 50, "Tackle");
+        farfetchd.ChangeForm("Farfetch'd-Galar");
+        var battle = Scenario.Battle(farfetchd, Scenario.Mon("Blissey", 100),
+            Scenario.Steady().Force(PokemonPlatinumEngine.Battle.Sim.RollKind.Critical, 0));
+        for (int i = 0; i < 3; i++) Scenario.Turn(battle);
+        Assert.False(battle.IsBattleOver);
+        Assert.Equal(3, Evolution.Progress(farfetchd, Evolution.CriticalHitsKey));
+        // The next battle starts the count again
+        Scenario.Battle(farfetchd, Scenario.Mon("Blissey", 100));
+        Assert.Equal(0, Evolution.Progress(farfetchd, Evolution.CriticalHitsKey));
+
+        // White-Striped Basculin pays for Double-Edge in recoil
+        var basculin = Scenario.Mon("Basculin", 50, "Double-Edge");
+        basculin.ChangeForm("Basculin-White-Striped");
+        Scenario.Turn(Scenario.Battle(basculin, Scenario.Mon("Blissey", 100)));
+        Assert.True(basculin.CurrentHP < basculin.MaxHP);
+        Assert.Equal(basculin.MaxHP - basculin.CurrentHP, Evolution.Progress(basculin, Evolution.RecoilKey));
+
+        // Galarian Yamask counts the hits it takes, until it faints
+        var yamask = Scenario.Mon("Yamask", 50);
+        yamask.ChangeForm("Yamask-Galar");
+        Scenario.Turn(Scenario.Battle(yamask, Scenario.Mon("Rattata", 30, "Bite")));
+        Assert.True(yamask.CurrentHP < yamask.MaxHP);
+        Assert.Equal(yamask.MaxHP - yamask.CurrentHP, Evolution.Progress(yamask, Evolution.DamageKey));
+        Scenario.Turn(Scenario.Battle(yamask, Scenario.Mon("Tyranitar", 100, "Crunch")));
+        Assert.True(yamask.IsFainted);
+        Assert.Equal(0, Evolution.Progress(yamask, Evolution.DamageKey));
+    }
+
     // ---------------------------------------------------------------- saves and data
 
     [Fact]
@@ -1046,7 +1222,7 @@ public class EvolutionTests
     [Fact]
     public void TestEveryEvolutionInTheDataHasARule()
     {
-        string[] sites = { "Moss Rock", "Ice Rock", "Magnetic Field" };
+        string[] sites = { "Moss Rock", "Ice Rock", "Magnetic Field", "Stone Arch" };
         foreach (var s in PokemonDatabase.GetAll())
         {
             foreach (var e in s.Evolutions ?? new())
@@ -1058,14 +1234,19 @@ public class EvolutionTests
                 // The fields its method reads are there
                 switch (e.Method)
                 {
-                    case EvolutionMethod.Level or EvolutionMethod.LevelDay or EvolutionMethod.LevelNight or EvolutionMethod.LevelMale or EvolutionMethod.LevelFemale:
+                    case EvolutionMethod.Level or EvolutionMethod.LevelDay or EvolutionMethod.LevelNight or EvolutionMethod.LevelDusk
+                        or EvolutionMethod.LevelMale or EvolutionMethod.LevelFemale:
                         Assert.True(e.Level > 0, what);
                         break;
                     case EvolutionMethod.LevelAtLocation:
                         Assert.Contains(e.Location, sites);
                         break;
+                    case EvolutionMethod.LevelAfterDamage:
+                        Assert.Contains(e.Location, sites);
+                        Assert.True(e.Value > 0, what);
+                        break;
                     case EvolutionMethod.LevelAfterSteps or EvolutionMethod.LevelAfterMoveUses or EvolutionMethod.LevelAfterDefeating
-                        or EvolutionMethod.LevelWithItemsInBag or EvolutionMethod.Beauty:
+                        or EvolutionMethod.LevelWithItemsInBag or EvolutionMethod.Beauty or EvolutionMethod.CriticalHits or EvolutionMethod.LevelAfterRecoil:
                         Assert.True(e.Value > 0, what);
                         break;
                 }
@@ -1076,9 +1257,11 @@ public class EvolutionTests
             }
         }
 
-        // No species has two evolutions that would always happen together: the first would hide the second
+        // No species has two evolutions that would always happen together: the first would hide the second. A form's
+        // own and a region's own are apart from the rest (Alolan Diglett and Diglett both evolve at level 26)
         foreach (var s in PokemonDatabase.GetAll().Where(s => s.Evolutions != null))
-            Assert.True(s.Evolutions!.Count(e => e.Method == EvolutionMethod.Level) <= 1, s.Name);
+            foreach (var same in s.Evolutions!.GroupBy(e => (e.FromForm, e.Region)))
+                Assert.True(same.Count(e => e.Method == EvolutionMethod.Level) <= 1, s.Name);
     }
 
     [Fact]
@@ -1092,7 +1275,7 @@ public class EvolutionTests
         Assert.Equal(new[] { "Moss Rock" }, map.EvolutionSites);
         Assert.Equal(new[] { "Moss Rock" }, MapFile.FromMap(map).EvolutionSites);
 
-        string[] known = { "Moss Rock", "Ice Rock", "Magnetic Field" };
+        string[] known = { "Moss Rock", "Ice Rock", "Magnetic Field", "Stone Arch" };
         foreach (var name in MapDatabase.MapNames)
         {
             var places = MapDatabase.Get(name);

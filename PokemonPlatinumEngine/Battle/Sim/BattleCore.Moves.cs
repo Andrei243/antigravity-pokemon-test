@@ -635,7 +635,17 @@ public sealed partial class BattleCore
 
         // The move's effect flies to each target and lands with the damage
         foreach (var hit in use.Hits) use.Line.With(Shown(user, hit.Target, move, hit));
-        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.SuperEffective)));
+        foreach (var hit in use.Hits.Where(h => h.Touched && h.Dealt > 0))
+        {
+            var t = hit.Target;
+            t.Pokemon!.CurrentHP -= hit.Dealt;
+            t.Volatile.LastHitBy = user.Place;
+            if (t.IsPlayerSide) Evolution.CountDamageTaken(t.Pokemon, hit.Dealt);
+            if (user.IsPlayerSide && hit.Damage.IsCritical) Evolution.CountCriticalHit(user.Pokemon!);
+            if (t.Volatile.BideTurns > 0) t.Volatile.BideDamage += hit.Dealt;
+            use.Line.AtImpact(new Struck(t.Place, t.Pokemon.CurrentHP, hit.Damage.IsCritical || hit.Damage.IsSuperEffective));
+        }
+        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.Damage.IsSuperEffective)));
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
 
         AfterStrike(use);
@@ -908,9 +918,11 @@ public sealed partial class BattleCore
             }
 
             // Recoil
+            int beforeRecoil = user.Pokemon!.CurrentHP;
             if (data == StruggleData) LoseHp(user, Formulas.Divide(user.Pokemon!.MaxHP, 4), $"{user.Name} is hit with recoil!", direct: true);
             else if (data.RecoilPercent > 0 && total > 0 && !userEffects.Any(e => e.PreventsRecoil))
                 LoseHp(user, RecoilFor(total, data.RecoilPercent), $"{user.Name} is hit with recoil!");
+            if (user.IsPlayerSide) Evolution.CountRecoil(user.Pokemon!, beforeRecoil - user.Pokemon!.CurrentHP);
 
             // Changes to the user's own stats (Close Combat)
             if (user.IsActive && data.TargetStatChange is { } selfStat && data.StatChangeTargetSelf &&

@@ -124,6 +124,7 @@ public sealed partial class BattleCore : IBattleContext
         int slots = IsDouble ? 2 : 1;
 
         PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i) { Roster = PlayerParty, Field = Field }).ToList();
+        foreach (var p in PlayerParty.Members) Evolution.BeginBattle(p);
         EnemySlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Enemy, i) { Field = Field }).ToList();
         Field.WeatherIgnored = () => AllBattlers.Any(b => b.IsActive && BattleEffects.Of(b).Any(e => e.IgnoresWeather));
         Field.MudSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.MudSport);
@@ -682,8 +683,8 @@ public sealed partial class BattleCore : IBattleContext
 
     /// <summary>
     /// What a faint leaves behind outside the battle: the player's Pokémon likes its trainer a little less (a lot
-    /// less against a foe thirty levels above it), and a foe going down counts for the Pokémon that were facing
-    /// it, for the evolutions that count knock-outs.
+    /// less against a foe thirty levels above it) and loses what it had taken toward an evolution without fainting,
+    /// and a foe going down counts for the Pokémon that were facing it, for the evolutions that count knock-outs.
     /// </summary>
     private void NoteFaint(Battler down)
     {
@@ -691,6 +692,7 @@ public sealed partial class BattleCore : IBattleContext
         {
             int strongest = EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.Level).DefaultIfEmpty(0).Max();
             FriendshipRules.Apply(down.Pokemon!, strongest - down.Pokemon!.Level >= 30 ? FriendshipEvent.FaintToStronger : FriendshipEvent.Faint);
+            Evolution.CountFaint(down.Pokemon!);
             return;
         }
         foreach (var mine in PlayerSlots.Where(b => b.IsActive)) Evolution.CountDefeat(mine.Pokemon!, down.Pokemon!.Species);
@@ -744,7 +746,7 @@ public sealed partial class BattleCore : IBattleContext
         var holders = standing.Where(p => p.HeldItem?.HoldEffect == HeldItemEffects.ExpShare).ToList();
         if (fought.Count == 0 && holders.Count == 0) return;
 
-        var (share, shared) = Formulas.ExpShares(foe.Species.BaseExpYield, foe.Level, fought.Count, holders.Count);
+        var (share, shared) = Formulas.ExpShares(foe.BaseExpYield, foe.Level, fought.Count, holders.Count);
         foreach (var p in standing)
         {
             if (p.Level >= 100) continue;

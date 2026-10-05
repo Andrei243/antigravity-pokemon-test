@@ -149,8 +149,8 @@ internal static partial class ModernUi
 
     public static IEnumerable<PokemonType> TypesOf(Pokemon p)
     {
-        yield return p.Species.PrimaryType;
-        if (p.Species.SecondaryType.HasValue) yield return p.Species.SecondaryType.Value;
+        yield return p.PrimaryType;
+        if (p.SecondaryType.HasValue) yield return p.SecondaryType.Value;
     }
 
     /// <summary>Draws the type pills side by side; returns the x after the last one.</summary>
@@ -202,7 +202,7 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(c.X - radius, c.Y - 3, radius * 2, 6), 3, Rule);
         UiShapes.Circle(c, radius * 0.27f, Rule);
         UiShapes.Circle(c, radius * 0.18f, new Color(226, 234, 246, 255));
-        var icon = PixelArtGenerator.GetPokemonIcon(p.Species.Name);
+        var icon = PixelArtGenerator.GetPokemonIcon(p.ModelName);
         float t = (float)FrameClock.Now;
         int hop = p.IsFainted ? 0 : selected ? ((int)(t / 0.16f) % 2) * 3 * scale : ((int)(t / 0.4f) % 2) * scale;
         Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),

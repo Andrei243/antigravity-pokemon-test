@@ -72,11 +72,11 @@ public static class DamageCalculator
     /// <summary>Each of the target's types with what the move's type does against it, the immunities that don't hold left out.</summary>
     private static IEnumerable<(PokemonType Type, float Multiplier)> Matchups(Battler attacker, Battler defender, Move move, Ruleset rules)
     {
-        var species = defender.Pokemon!.Species;
+        var target = defender.Pokemon!;
         bool seesGhosts = defender.Volatile.Identified || BattleEffects.Of(attacker).Any(e => e.HitsGhosts);
-        var types = species.SecondaryType is { } second && second != species.PrimaryType
-            ? new[] { species.PrimaryType, second }
-            : new[] { species.PrimaryType };
+        var types = target.SecondaryType is { } second && second != target.PrimaryType
+            ? new[] { target.PrimaryType, second }
+            : new[] { target.PrimaryType };
 
         foreach (var type in types)
         {

@@ -117,7 +117,7 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(c.X - 204, c.Y - 4, 408, 8), 4, Rule);
         UiShapes.Circle(c, 56, Rule);
         UiShapes.Circle(c, 38, new Color(226, 234, 246, 255));
-        var sprite = PixelArtGenerator.GetPokemonSprite(p.Species.Name, isBack: false);
+        var sprite = PixelArtGenerator.GetPokemonSprite(p.ModelName, isBack: false);
         const int scale = 3;
         Raylib.DrawTexturePro(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height),
             new Rectangle(MathF.Round(c.X - sprite.Width * scale / 2f), MathF.Round(c.Y - sprite.Height * scale / 2f), sprite.Width * scale, sprite.Height * scale),

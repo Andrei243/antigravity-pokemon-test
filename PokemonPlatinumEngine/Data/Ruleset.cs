@@ -57,6 +57,12 @@ public sealed class Ruleset
     /// </summary>
     public bool ModernMoveValues { get; private init; }
 
+    /// <summary>
+    /// Species and their forms have the types and base stats of the newest games (Clefairy is a Fairy type, Pikachu's
+    /// Defense is 40) instead of Platinum's: <see cref="Models.PokemonSpecies.Modern"/>.
+    /// </summary>
+    public bool ModernSpeciesValues { get; private init; }
+
     // ---- Conditions and the field (plan 06 · R3). A count is of turn ends still to come unless it says otherwise.
 
     /// <summary>
@@ -131,6 +137,7 @@ public sealed class Ruleset
         ConfusionSelfHitOdds = 3,
         SteelResistsGhostAndDark = false,
         ModernMoveValues = true,
+        ModernSpeciesValues = true,
         AbilityWeatherTurns = 5,
         TauntTurns = (3, 3),
         EncoreTurns = (2, 2),
@@ -155,7 +162,7 @@ public sealed class Ruleset
 
     /// <summary>
     /// The rules of the game in progress: what a battle uses when it isn't handed rules of its own, and what the
-    /// moves' values follow. Static, like <see cref="Core.PlayerIdentity"/>, and for the same reason tests must
+    /// moves' and the species' values follow. Static, like <see cref="Core.PlayerIdentity"/>, and for the same reason tests must
     /// not change it (they run side by side): a test of the modern rules hands them to its battle
     /// (<see cref="Battle.BattleSetup.Rules"/>) and asks a move for its values under them
     /// (<see cref="Models.MoveData.Under"/>).
@@ -170,5 +177,6 @@ public sealed class Ruleset
     {
         Current = Of(preset);
         MoveDatabase.UseRules(Current);
+        PokemonDatabase.UseRules(Current);
     }
 }

@@ -832,7 +832,9 @@ internal static partial class PokemonModels
         "DIALGA" => Dialga(),
         "PALKIA" => Palkia(),
         "MANAPHY" => Manaphy(),
-        // Every other species is generated from its data (plan 03 · D5); a name that isn't a species gets the stand-in
+        // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)
+        _ when PokemonDatabase.SpeciesOfForm(species) is { } owner && HasModel(owner.Name) => Create(owner.Name),
+        // Every other species and form is generated from its data (plan 03 · D5); a name that is neither gets the stand-in
         _ => PokemonGenerator.Build(species) ?? Generic(species)
     };
 

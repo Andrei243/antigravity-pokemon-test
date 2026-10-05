@@ -183,7 +183,7 @@ public static class Formulas
         _ => 10
     };
 
-    private static bool HasType(Pokemon p, PokemonType type) => p.Species.PrimaryType == type || p.Species.SecondaryType == type;
+    private static bool HasType(Pokemon p, PokemonType type) => p.HasType(type);
 }
 
 /// <summary>Where a battle is fought, as far as a rule asks (the Dive and Dusk Balls today).</summary>
