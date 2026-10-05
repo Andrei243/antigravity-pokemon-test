@@ -11,9 +11,9 @@ namespace PokemonPlatinumTests;
 [Collection("MapDatabase")]
 public class MusicTests
 {
-    private static float[] Render(Action<MusicMixer> start, double seconds)
+    private static float[] Render(Action<AudioMixer> start, double seconds)
     {
-        var mixer = new MusicMixer();
+        var mixer = new AudioMixer();
         start(mixer);
         var buffer = new float[(int)(seconds * Synthesizer.SampleRate) * 2];
         for (int done = 0; done < buffer.Length; done += 2048)
@@ -178,7 +178,7 @@ public class MusicTests
     {
         var twinleaf = MusicLibrary.Get("sinnoh/twinleaf")!;
         var route = MusicLibrary.Get("sinnoh/route201")!;
-        var mixer = new MusicMixer();
+        var mixer = new AudioMixer();
         var buffer = new float[2048];
         void Run(double seconds)
         {
@@ -201,8 +201,8 @@ public class MusicTests
     {
         var twinleaf = MusicLibrary.Get("sinnoh/twinleaf")!;
         var heal = MusicLibrary.Get("common/fanfare_heal")!;
-        var mixer = new MusicMixer();
-        var player = (SongPlayer)typeof(MusicMixer).GetField("music", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.GetValue(mixer)!;
+        var mixer = new AudioMixer();
+        var player = (SongPlayer)typeof(AudioMixer).GetField("music", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)!.GetValue(mixer)!;
         var buffer = new float[2048];
         void Run(double seconds)
         {

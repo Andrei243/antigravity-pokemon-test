@@ -162,7 +162,7 @@ public class LightingAndSettingsTests
             var saved = new GameSettings
             {
                 Quality = GraphicsQuality.Medium, WindowWidth = 1600, WindowHeight = 900, Fullscreen = true,
-                VSync = false, Muted = true, TimeOfDay = TimeOfDay.Twilight
+                VSync = false, Muted = true, MusicVolume = 30, SoundVolume = 70, TimeOfDay = TimeOfDay.Twilight
             };
             saved.Save(path);
             var loaded = GameSettings.Load(path);
@@ -172,6 +172,7 @@ public class LightingAndSettingsTests
             Assert.True(loaded.Fullscreen);
             Assert.False(loaded.VSync);
             Assert.True(loaded.Muted);
+            Assert.Equal((30, 70), (loaded.MusicVolume, loaded.SoundVolume));
             Assert.Equal(TimeOfDay.Twilight, loaded.TimeOfDay);
 
             // A damaged file falls back to the defaults instead of stopping the game
