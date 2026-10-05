@@ -119,9 +119,22 @@ public sealed class Battler
         Turn = other.Turn.Copy();
     }
 
-    /// <summary>The types the Pokémon has right now.</summary>
+    /// <summary>The types the Pokémon has right now: its own, unless a move changed them for the battle (Conversion, Transform).</summary>
     public bool HasType(PokemonType type) =>
-        Pokemon != null && Pokemon.HasType(type);
+        Volatile.Types != null ? Volatile.Types.Contains(type) : Pokemon != null && Pokemon.HasType(type);
+
+    /// <summary>Its types right now, one or two, the first its own first.</summary>
+    public IReadOnlyList<PokemonType> Types
+    {
+        get
+        {
+            if (Volatile.Types != null) return Volatile.Types;
+            if (Pokemon == null) return System.Array.Empty<PokemonType>();
+            return Pokemon.SecondaryType is { } second && second != Pokemon.PrimaryType
+                ? new[] { Pokemon.PrimaryType, second }
+                : new[] { Pokemon.PrimaryType };
+        }
+    }
 
     public override string ToString() => $"{Side} {Slot}: {Pokemon?.DisplayName ?? "empty"}";
 }
@@ -230,6 +243,31 @@ internal sealed class Volatiles
     /// <summary>Which of its moves it has used, by position (a bit each), for Last Resort.</summary>
     public int UsedMoveSlots;
 
+    /// <summary>The last move aimed at it that Mirror Move can copy (the original's <c>moveCopied</c>).</summary>
+    public MoveData? MirrorMove;
+
+    /// <summary>The last move that hit it, with its type and whose it was, for Conversion 2 (the original's <c>conversion2Move</c>).</summary>
+    public MoveData? Conversion2Move;
+    public PokemonType Conversion2Type;
+    public Place? Conversion2By;
+
+    // ---- What a move changed for the battle (plan 06 · R5)
+
+    /// <summary>Its types for the rest of its time on the field (Conversion, Conversion 2, Transform); null for its own.</summary>
+    public List<PokemonType>? Types;
+
+    /// <summary>It has taken a target's shape with Transform.</summary>
+    public bool Transformed;
+
+    /// <summary>Its Attack and Defense are swapped (Power Trick); using it again swaps them back.</summary>
+    public bool PowerTrick;
+
+    /// <summary>What the Pokémon was before a move changed it for the battle; put back when it leaves. Null while nothing has.</summary>
+    public Original? Original;
+
+    /// <summary>The held item it used up or threw, which Recycle brings back.</summary>
+    public ItemData? ConsumedItem;
+
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
     /// <summary>What Baton Pass hands on to the Pokémon that takes its place (the original's two <c>BATON_PASSED</c> masks).</summary>
@@ -254,10 +292,45 @@ internal sealed class Volatiles
     };
 }
 
+/// <summary>
+/// What a Pokémon was before a move changed it for the battle (plan 06 · R5): the original keeps a Pokémon's party
+/// data apart from its battle data and rebuilds the latter when it comes in again, so everything a Transform, a
+/// Mimic, Role Play, Skill Swap, Worry Seed or Power Trick changed is put back when it leaves the field or the
+/// battle ends. Each part is kept the first time a move changes it, and only then.
+/// </summary>
+internal sealed class Original
+{
+    public PokemonSpecies? Species;
+    public string? Form;
+    public bool NicknameGiven;
+    public string? Nickname;
+
+    public bool StatsKept;
+    public int Attack, Defense, SpAttack, SpDefense, Speed;
+
+    public bool AbilityKept;
+    public string? AbilityName;
+
+    /// <summary>The whole move list, with each move's PP (Transform).</summary>
+    public List<(MoveData Data, int Pp)>? Moves;
+
+    /// <summary>One slot's move and PP, for each slot Mimic filled.</summary>
+    public Dictionary<int, (MoveData Data, int Pp)>? MoveSlots;
+}
+
 /// <summary>What is true of a Pokémon for the turn being played and no longer.</summary>
 internal sealed class TurnFlags
 {
     public bool Protecting, Enduring;
+
+    /// <summary>Magic Coat is up: a status move that can be reflected bounces back to whoever used it.</summary>
+    public bool MagicCoat;
+
+    /// <summary>Snatch is waiting: the next move that can be snatched is taken and used on itself.</summary>
+    public bool Snatching;
+
+    /// <summary>Its ally's Helping Hand makes its move half as strong again.</summary>
+    public bool HelpingHand;
 
     /// <summary>Roost: its Flying type doesn't count until the turn ends.</summary>
     public bool Roosting;

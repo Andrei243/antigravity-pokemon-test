@@ -37,7 +37,7 @@ public sealed partial class BattleCore
     /// Why a move can't be picked, in the original's order of reasons: disabled, the same move twice under a
     /// Torment, a taunt, sealed, Gravity, kept from healing, an Encore, a Choice item, no PP. Null when it can.
     /// </summary>
-    public string? WhyNotMove(Battler b, Move move)
+    public string? WhyNotMove(Battler b, Move move, bool ignorePp = false)
     {
         var mine = At(b.Place);
         var v = mine.Volatile;
@@ -53,7 +53,7 @@ public sealed partial class BattleCore
             return $"{mine.Name} can only use {v.Encored.Name} after the encore!";
         if (mine.ChoiceLock != null && mine.ChoiceLock != move && mine.Pokemon!.Moves.Contains(mine.ChoiceLock) && BattleEffects.Of(mine).Any(e => e.LocksMoveChoice))
             return $"{mine.Name} can only use {mine.ChoiceLock.Name}!";
-        if (move.CurrentPP <= 0) return "There's no PP left for this move!";
+        if (!ignorePp && move.CurrentPP <= 0) return "There's no PP left for this move!";
         return null;
     }
 

@@ -46,8 +46,11 @@ In the `Ruleset` today, because the engine already runs these rules:
 | A move of two to five hits lands | 2 or 3 on half the draws, then any of the four (3/8, 3/8, 1/8, 1/8) | 2, 3, 4 or 5 at 35%, 35%, 15%, 15% |
 | Explosion and Self-Destruct | against half the target's Defense | against the whole of it |
 | Hidden Power's power | 30 to 70 by the IVs | 60 |
+| Chatter confuses | 3 times in 10 at most, by the cry recorded (no microphone here: taken as the loudest) | always |
+| Knock Off against a held item | its own 20 power | half as strong again |
+| The opponents' Thief, Covet, Trick and Switcheroo | fail outside the Battle Frontier | work |
 
-The modern column's numbers for the rules R3 and R4 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
+The modern column's numbers for the rules R3 to R5 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
 
 Known differences that join the `Ruleset` in the session that writes their rule, never as a constant beside it:
 
@@ -113,9 +116,31 @@ Our own choices in R4, where the original leaves room or this game is built diff
 - **Explosion's user** goes down after the Pokémon it took with it.
 - **Text**: every line is our own wording again.
 
+R5 (2026-10-05) wrote the moves of their own from their commands (`battle_script.c`), their effect scripts and subscripts, the lists they go by (`sCannotMetronomeMoves` and its like) and the controller's bouncing and snatching of a move. Where that changed what the default rules already did, it is again what Platinum does:
+
+- **A move called by another** (Metronome, Sleep Talk, Assist, Copycat, Me First, Mirror Move) costs no PP and is told with its own line, and the move chosen is what Encore, Disable, Mimic and Copycat go by afterwards: a Copycat after a Metronome fails, as the original's `movePrev` holds the caller.
+- **What a move changes for the battle alone** (a Transform, a Mimic, a copied or swapped ability, Power Trick's swap) is undone when the Pokémon leaves the field, and a knocked-off item is back in its holder's hands when the battle ends; what Thief, Covet, Trick and Switcheroo move is moved for good, and Sketch is for good.
+- **The opponents' Pokémon can't take the player's items**: Thief, Covet, Trick and Switcheroo fail for them outside the Battle Frontier and link battles (`BtlCmd_TryStealItem`, `BtlCmd_TrySwapItems`); by the modern rules they work.
+- **Sticky Hold** keeps its holder's item against all four and against Knock Off, Pluck and Bug Bite, with a line, unless the user's ability breaks through; Arceus's plate and Giratina's orb can't be taken, swapped, thrown or knocked off, and mail can't change hands.
+- **Magic Coat and Snatch** fail for the last Pokémon to act in a turn; the fastest snatcher gets a snatched move and uses it on itself; a bounced move goes back at whoever used it, with no second "used" line.
+- **Follow Me** draws every move of the other side aimed at one Pokémon, whoever it was aimed at; Helping Hand needs an ally that is still to act and nobody helping already.
+- **Chatter** confuses on a roll of 100 at or under its chance, so 31 times in 100 at the loudest.
+- **A thrown or plucked berry** does what the item table says for it, to whoever eats it: HP, a cure, PP, a stat.
+
+Our own choices in R5, where the original leaves room or this game is built differently:
+
+- **Chatter's chance** is the loudest recording's, 30: this game has no microphone. The original gives a Chatot with no recording nothing.
+- **A transformed Pokémon keeps its name** in every line while it wears another's shape (a Ditto with no nickname is "Ditto" still); the original shows the party's nickname throughout for the same reason.
+- **Recycle's memory** of an item used up or thrown goes with the Pokémon and is lost when it leaves the field; the original keeps it by place, so a replacement could find what its predecessor used.
+- **Power Trick isn't passed by Baton Pass** (the original passes its flag, with the stats of the one that comes in unswapped).
+- **Mirror Move** copies the last move aimed at its user; in a double battle the original draws among the last of each attacker.
+- **Helping Hand in a single battle** says there is no target, where the original says it failed.
+- **A plucked or thrown berry's disliked flavour** (which confuses in the original) and Micle's accuracy wait for the berries' own session (R8), as does a Custap Berry or Quick Claw that went off this turn keeping its holder's item.
+- **Text**: every line is our own wording again.
+
 Still different, each waiting for the session whose rule it is:
 
-- The moves whose effect touches these rules but is its own family wait for R5 with the rest of that family: Magic Coat and Snatch, Follow Me and the abilities that draw moves to them, Transform, Mimic and Sketch.
+- The abilities that draw moves to them (Lightning Rod, Storm Drain) and what a copied or swapped ability announces on arriving (Trace, Intimidate) are R7's.
 - An ability's or an item's bonus is still applied in the finished damage where the original has it in the move's power or a stat (Thick Fat, and Dry Skin's weakness to Fire since R3): R7 and R8 give each its place.
 - Obedience, Truant and the Quick Claw's own line are not in the turn yet (R7, R8, R10).
 - The opponents choose "what looks best" (`TrainerAi`), with a little chance and some sense of when a condition or a screen would still do something. R9 writes Platinum's own AI.

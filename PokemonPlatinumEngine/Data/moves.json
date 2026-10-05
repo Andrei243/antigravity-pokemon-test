@@ -1740,7 +1740,6 @@
     "description": "Copies the target's last used move.",
     "flags": "Protect",
     "effect": "CopyMoveForBattle",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -2069,8 +2068,7 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "Randomly selects and uses any move in the game.",
-    "effect": "CallRandomMove",
-    "support": "None"
+    "effect": "CallRandomMove"
   },
   {
     "id": 119,
@@ -2083,7 +2081,6 @@
     "maxPP": 20,
     "description": "Uses the target's last used move.",
     "effect": "CopyMove",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -2533,7 +2530,6 @@
     "maxPP": 10,
     "description": "User becomes a copy of the target until it leaves battle.",
     "effect": "Transform",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -2823,7 +2819,6 @@
     "description": "User's type changes to the type of one of its moves at random.",
     "target": "User",
     "effect": "Conversion",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -2922,7 +2917,6 @@
     "maxPP": 1,
     "description": "Permanently becomes the target's last used move.",
     "effect": "LearnMovePermanent",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack",
@@ -2961,7 +2955,6 @@
     "description": "Takes the target's item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StealHeldItem",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -3104,7 +3097,6 @@
     "description": "Changes the user's type to a random type either resistant or immune to the last move used against it.",
     "target": "User",
     "effect": "Conversion2",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3172,7 +3164,6 @@
     "description": "Lowers the PP of the target's last used move by 4.",
     "flags": "Protect, Mirror",
     "effect": "DecreaseLastMovePp",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3788,7 +3779,6 @@
     "maxPP": 10,
     "description": "Randomly uses one of the user's other three moves. Only works if the user is sleeping.",
     "effect": "UseRandomLearnedMoveSleep",
-    "support": "None",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -4707,7 +4697,6 @@
     "description": "Redirects the target's single-target effects to the user for this turn.",
     "target": "User",
     "effect": "MakeGlobalTarget",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -4784,7 +4773,6 @@
     "description": "Ally's next move inflicts half more damage.",
     "target": "Ally",
     "effect": "BoostAllyPowerBy50Percent",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4801,7 +4789,6 @@
     "description": "User and target swap items.",
     "flags": "Protect, Mirror",
     "effect": "SwitchHeldItems",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4820,7 +4807,6 @@
     "maxPP": 10,
     "description": "Copies the target's ability.",
     "effect": "CopyAbility",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4857,8 +4843,7 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Randomly selects and uses one of the trainer's other Pokémon's moves.",
-    "effect": "UseRandomAllyMove",
-    "support": "None"
+    "effect": "UseRandomAllyMove"
   },
   {
     "id": 275,
@@ -4913,7 +4898,6 @@
     "priority": 4,
     "description": "Reflects back the first effect move used on the user this turn.",
     "effect": "ApplyMagicCoat",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4933,7 +4917,6 @@
     "description": "User recovers the item it last used up.",
     "target": "User",
     "effect": "Recycle",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -5003,7 +4986,6 @@
     "description": "Target drops its held item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "RemoveHeldItem",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 120,
     "modern": {
@@ -5053,7 +5035,6 @@
     "description": "User and target swap abilities.",
     "flags": "Protect, Mirror",
     "effect": "SwitchAbilities",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -5125,7 +5106,6 @@
     "priority": 4,
     "description": "Steals the target's move, if it's self-targeted.",
     "effect": "StealStatusMove",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6115,7 +6095,6 @@
     "description": "Takes the target's item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StealHeldItem",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -6467,7 +6446,6 @@
     "description": "Power and type depend on the held berry.",
     "flags": "Protect, Mirror",
     "effect": "NaturalGift",
-    "support": "None",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6501,7 +6479,6 @@
     "description": "If target has a berry, inflicts double damage and uses the berry.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "EatBerry",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -6657,7 +6634,6 @@
     "description": "Throws held item at the target; power depends on the item.",
     "flags": "Protect, Mirror",
     "effect": "Fling",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -6745,7 +6721,6 @@
     "description": "User swaps Attack and Defense.",
     "target": "User",
     "effect": "SwapAtkDef",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -6803,7 +6778,6 @@
     "description": "Uses the target's move against it before it attacks, with power increased by half.",
     "flags": "Protect",
     "effect": "UseMoveFirst",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6822,7 +6796,6 @@
     "maxPP": 20,
     "description": "Uses the target's last used move.",
     "effect": "UseLastUsedMove",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -6842,7 +6815,6 @@
     "description": "User swaps Attack and Special Attack changes with the target.",
     "flags": "Protect, Mirror",
     "effect": "SwapAtkSpAtkStatChanges",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6862,7 +6834,6 @@
     "description": "User swaps Defense and Special Defense changes with the target.",
     "flags": "Protect, Mirror",
     "effect": "SwapDefSpDefStatChanges",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6915,7 +6886,6 @@
     "description": "Changes the target's ability to Insomnia.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SetAbilityToInsomnia",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6973,7 +6943,6 @@
     "description": "User and target swap stat changes.",
     "flags": "Protect, Mirror",
     "effect": "SwapStatChanges",
-    "support": "None",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -7374,7 +7343,6 @@
     "description": "User and target swap items.",
     "flags": "Protect, Mirror",
     "effect": "SwitchHeldItems",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -7931,7 +7899,6 @@
     "description": "Has a higher chance to confuse the target when the recorded sound is louder.",
     "flags": "Sound, Protect",
     "effect": "Chatter",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 120,
     "modern": {
@@ -7965,7 +7932,6 @@
     "description": "If target has a berry, inflicts double damage and uses the berry.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "EatBerry",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -8433,7 +8399,6 @@
     "target": "User",
     "flags": "Powder",
     "effect": "MakeGlobalTarget",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -13770,8 +13735,7 @@
     "target": "AllOthers",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "RemoveHeldItem",
-    "effectChance": 100,
-    "support": "None"
+    "effectChance": 100
   },
   {
     "id": 811,

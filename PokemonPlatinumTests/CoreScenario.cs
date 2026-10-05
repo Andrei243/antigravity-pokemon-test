@@ -19,6 +19,34 @@ internal static class CoreScenario
 {
     public static readonly Place Mine = new(BattleSide.Player, 0), Foe = new(BattleSide.Enemy, 0);
 
+    /// <summary>The second places of a double battle.</summary>
+    public static readonly Place Mine2 = new(BattleSide.Player, 1), Foe2 = new(BattleSide.Enemy, 1);
+
+    /// <summary>A double battle against a trainer, both sides answered for from outside.</summary>
+    public static BattleCore Doubles(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null)
+    {
+        var party = new Party();
+        foreach (var p in mine) party.Add(p);
+        var trainer = new Trainer { Id = "ace", Name = "Vera", TrainerClass = "Ace Trainer", PrizeMoney = 100, DoubleBattle = true };
+        foreach (var p in theirs) trainer.Party.Add(p);
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = party, Trainers = new List<Trainer> { trainer }, Format = BattleFormat.Double, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Platinum,
+            PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+        });
+        core.Start();
+        return core;
+    }
+
+    /// <summary>A turn of a double battle: each place that is asked uses the move given for it, at the target given (null: whoever the rules pick).</summary>
+    public static List<string> DoubleTurn(BattleCore core, params (Place Who, int Move, Place? At)[] actions)
+    {
+        var asked = Assert.IsType<ActionRequest>(core.Request).Places;
+        var choices = actions.Where(a => asked.Contains(a.Who)).Select(a => BattleChoice.Fight(a.Who, a.Move, a.At)).ToList();
+        core.Submit(choices);
+        return Lines(core.TakeLog());
+    }
+
     /// <summary>Nothing left to chance, side effects included: a test frees or fixes what it is about.</summary>
     public static BattleRandom Calm() => Steady().Force(RollKind.SideEffect, 99);
 

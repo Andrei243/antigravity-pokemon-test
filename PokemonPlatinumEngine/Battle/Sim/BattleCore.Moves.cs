@@ -102,6 +102,12 @@ public sealed partial class BattleCore
 
         /// <summary>A line said once the hits are told, before what the user gets out of them (Spit Up's stockpile is gone).</summary>
         public string? AfterLine;
+
+        /// <summary>It is used by way of another move (Metronome, Sleep Talk…), bounced back by Magic Coat or snatched: no PP, and no record as the move chosen.</summary>
+        public bool Called;
+
+        /// <summary>What the damage is multiplied by before the roll, in tenths (Me First: 15).</summary>
+        public int DamageTenths = 10;
     }
 
     private IEnumerable<BattleRequest> ExecuteMove(Act act)
@@ -123,6 +129,7 @@ public sealed partial class BattleCore
         if (!CanMove(user, move))
         {
             v.LastMove = null;
+            lastMoveShown = null;
             yield break;
         }
         // A rage lasts only as long as Rage is what it uses
@@ -139,6 +146,7 @@ public sealed partial class BattleCore
                 Say($"{user.Name} used {move.Name}!");
                 Say("But there was no PP left for the move!");
                 v.LastMove = null;
+                lastMoveShown = null;
                 yield break;
             }
             int pp = 1 + use.Targets.Where(t => t.Side != user.Side).Sum(t => BattleEffects.Of(t).Sum(e => e.ExtraPpUsed));
@@ -150,16 +158,36 @@ public sealed partial class BattleCore
         int slot = user.Pokemon!.Moves.IndexOf(move);
         if (slot >= 0 && move.Data.Effect != "FailIfNotUsedAllOtherMoves") v.UsedMoveSlots |= 1 << slot;
 
+        // What Copycat copies next is the move chosen, even one that went on to call another (the original's
+        // UpdateMoveBuffers, once the move is done)
+        bool wentOn = Perform(use, goesOn);
+        lastMoveShown = move.Data;
+        if (!wentOn) yield break;
+        foreach (var request in Leave(use)) yield return request;
+    }
+
+    /// <summary>
+    /// The move from its turn to get ready, or "X used Y!", to what follows its hits. A move called by another
+    /// (Metronome), bounced back by Magic Coat or snatched goes through here too. False when it ended before
+    /// anything happened: a turn spent charging, or no target left.
+    /// </summary>
+    private bool Perform(MoveUse use, bool goesOn = false)
+    {
+        var user = use.User;
+        var v = user.Volatile;
+        var move = use.Move;
+
         // A move that takes a turn to get ready spends it now
         if (use.Effect.Charge is { } charge && !use.Strikes && !SkipsTheCharge(use, charge))
         {
             BeginCharge(use, charge);
-            yield break;
+            return false;
         }
 
-        // A move that goes on by itself may tell its later turns in its own words (Bide)
+        // A move that goes on by itself may tell its later turns in its own words (Bide); a bounced or snatched
+        // move was told with the line that took it
         bool ownLines = goesOn && use.Effect.OwnLinesAfterFirst;
-        use.Line = ownLines ? new Said("") : Say($"{user.Name} used {move.Name}!");
+        use.Line ??= ownLines ? new Said("") : Say($"{user.Name} used {move.Name}!");
 
         // The second turn of a move that takes two: it is back where it can be seen, and hit
         if (use.Strikes && use.Effect.Charge != null)
@@ -177,10 +205,19 @@ public sealed partial class BattleCore
         {
             Say("But there was no target...");
             Unlock(user);
-            yield break;
+            return false;
         }
 
+        // Whoever it is aimed at can send it back with Mirror Move (the original's moveCopied)
+        if (move.Data.Flags.HasFlag(MoveFlags.Mirror))
+            foreach (var t in use.Targets.Where(t => t != user)) t.Volatile.MirrorMove = move.Data;
+
+        // Its ally's Helping Hand makes it half as strong again
+        if (user.Turn.HelpingHand) use.Boost = use.Boost * 15 / 10;
+
         foreach (var t in use.Targets) t.Turn.SubstituteHit = false;
+        if (BouncedOrSnatched(use)) return true;
+
         if (use.Effect.Does != null)
         {
             // A move that is more than a hit, or no hit at all
@@ -202,8 +239,67 @@ public sealed partial class BattleCore
             }
             else ByItsFields(use);
         }
+        return true;
+    }
 
-        foreach (var request in Leave(use)) yield return request;
+    /// <summary>
+    /// A move used by way of another (Metronome, Mirror Move, Sleep Talk, Assist, Copycat, Me First; the original's
+    /// <c>GoToMoveScript</c>): it costs no PP, has its own "used" line, and goes where the calling move was aimed,
+    /// or at a foe when it wasn't. What takes its user off the field (a called U-turn) is left to the calling
+    /// move's end.
+    /// </summary>
+    private void CallMove(MoveUse outer, MoveData data, Battler? target, int damageTenths = 10)
+    {
+        var user = outer.User;
+        var inner = new MoveUse { User = user, Move = new Move(data), Effect = EffectOf(data), MoveBefore = outer.MoveBefore, Called = true, DamageTenths = damageTenths };
+        inner.Targets = ResolveTargets(user, inner.Move, target);
+        if (Perform(inner)) outer.Leaves = inner.Leaves;
+    }
+
+    /// <summary>
+    /// Magic Coat sends a status move that can be reflected back at whoever used it, and Snatch takes one its
+    /// user would have used on itself, the fastest snatcher first (<c>BattleControllerPlayer_MoveStolen</c>). The
+    /// move then runs as the other's, under the line that took it, and the one it was taken from has had its turn.
+    /// </summary>
+    private bool BouncedOrSnatched(MoveUse use)
+    {
+        var user = use.User;
+        var data = use.Data;
+        if (data.Flags.HasFlag(MoveFlags.Reflectable) && use.Targets.FirstOrDefault(t => t != user && t.IsActive && t.Turn.MagicCoat) is { } coat)
+        {
+            coat.Turn.MagicCoat = false;
+            UseAs(coat, data, user, Say($"{user.Name}'s {use.Move.Name} was bounced back by Magic Coat!"));
+            return true;
+        }
+        if (data.Flags.HasFlag(MoveFlags.Snatch) && speedOrder.Concat(AllBattlers).Distinct().FirstOrDefault(b => b != user && b.IsActive && b.Turn.Snatching) is { } snatcher)
+        {
+            snatcher.Turn.Snatching = false;
+            UseAs(snatcher, data, snatcher, Say($"{snatcher.Name} snatched {user.Name}'s move!"));
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>Runs a move as another Pokémon's, aimed where it is told, under a line already said in place of "X used Y!".</summary>
+    private void UseAs(Battler asUser, MoveData data, Battler target, Said line)
+    {
+        var inner = new MoveUse { User = asUser, Move = new Move(data), Effect = EffectOf(data), MoveBefore = asUser.Volatile.LastMove, Called = true, Line = line };
+        inner.Targets = ResolveTargets(asUser, inner.Move, target);
+        Perform(inner);
+    }
+
+    /// <summary>
+    /// A move landed on a Pokémon from across the field: what Conversion 2 answers to (the original's
+    /// <c>conversion2Move</c>, kept in <c>UpdateFlagsWhenHit</c> for a move that succeeded and wasn't aimed at
+    /// its user's own side).
+    /// </summary>
+    private static void RememberHit(Battler target, Battler user, Move move)
+    {
+        if (target == user || target.Side == user.Side) return;
+        var v = target.Volatile;
+        v.Conversion2Move = move.Data;
+        v.Conversion2Type = move.Type;
+        v.Conversion2By = user.Place;
     }
 
     // ---------------------------------------------------------------- what can stop a move
@@ -459,13 +555,18 @@ public sealed partial class BattleCore
             case MoveTarget.AllOthers:
                 return speedOrder.Concat(AllBattlers).Distinct().Where(b => b.IsActive && b != user).ToList();
             case MoveTarget.RandomFoe:
+                if (Centre() is { } drawnTo) return new List<Battler> { drawnTo };
                 return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Roll(RollKind.Target, foes.Count)] };
             default:
+                // Follow Me on the other side draws every move aimed at one Pokémon to its user, while that one stands
+                if (Centre() is { } centre) return new List<Battler> { centre };
                 if (chosen != null && chosen.IsActive && chosen != user) return new List<Battler> { chosen };
                 // The chosen foe is gone: the move goes to the other one (an ally that fainted leaves nothing to hit)
                 if (chosen != null && chosen.Side == user.Side) return new List<Battler>();
                 return foes.Count == 0 ? foes : new List<Battler> { foes[rng.Roll(RollKind.Target, foes.Count)] };
         }
+
+        Battler? Centre() => Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
     }
 
     /// <summary>The effect a move plays on one target: what kind of move it is and, for a damaging move, how it landed.</summary>
@@ -631,6 +732,7 @@ public sealed partial class BattleCore
                 if (!StrikeOnce(use, hit, userBreaks)) break;
                 if (use.StrikeCount > 1) AfterOneOfSeveral(use, hit, n == use.StrikeCount);
             }
+            if (hit.Landed) RememberHit(t, user, move);
         }
 
         // The move's effect flies to each target and lands with the damage
@@ -668,7 +770,7 @@ public sealed partial class BattleCore
         {
             result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1, rules: Rules,
                 powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens,
-                basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance);
+                basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance, damageTenths: use.DamageTenths);
         }
         bool critical = result.IsCritical || use.StrikeCritical;
         use.StrikeCritical = false;

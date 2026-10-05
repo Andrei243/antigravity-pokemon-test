@@ -389,6 +389,17 @@ public partial class BattleEngine
             case Reappeared back:
                 Anim[back.Place.Side, back.Place.Slot].Away = false;
                 break;
+            case Reshaped reshaped:
+            {
+                // Transform: the screen's Pokémon takes the rules' shape as the line appears, ahead of the next sync
+                if (core.At(reshaped.Place).Pokemon is { } theirs && At(reshaped.Place).Pokemon is { } shown)
+                {
+                    shown.Species = theirs.Species;
+                    shown.Form = theirs.Form;
+                    shown.Nickname = theirs.Nickname;
+                }
+                break;
+            }
             case WeatherChanged weather:
                 Weather = weather.Weather;
                 break;

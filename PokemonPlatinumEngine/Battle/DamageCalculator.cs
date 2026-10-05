@@ -72,11 +72,9 @@ public static class DamageCalculator
     /// <summary>Each of the target's types with what the move's type does against it, the immunities that don't hold left out.</summary>
     private static IEnumerable<(PokemonType Type, float Multiplier)> Matchups(Battler attacker, Battler defender, Move move, Ruleset rules)
     {
-        var target = defender.Pokemon!;
         bool seesGhosts = defender.Volatile.Identified || BattleEffects.Of(attacker).Any(e => e.HitsGhosts);
-        var types = target.SecondaryType is { } second && second != target.PrimaryType
-            ? new[] { target.PrimaryType, second }
-            : new[] { target.PrimaryType };
+        // The types it has right now: a Conversion or a Transform may have changed them for the battle
+        var types = defender.Types;
 
         foreach (var type in types)
         {
@@ -102,9 +100,10 @@ public static class DamageCalculator
     /// <param name="typeless">The move's type counts for nothing: no bonus for the user's own type, no matchup, no weather.</param>
     /// <param name="basePower">A power worked out for this hit in place of the move's own (Flail, Gyro Ball).</param>
     /// <param name="noVariance">The hit takes the formula's whole number, with no roll off it (Spit Up).</param>
+    /// <param name="damageTenths">What the damage is multiplied by before the roll, in tenths (Me First: 15), where the original has a Life Orb's.</param>
     public static DamageResult Calculate(Battler attacker, Battler defender, Move move, Random rng, bool spread, int? powerOverride = null,
         Ruleset? rules = null, int powerTenths = 10, int critBonus = 0, bool pastScreens = false, bool noCrit = false, bool typeless = false,
-        int? basePower = null, bool noVariance = false)
+        int? basePower = null, bool noVariance = false, int damageTenths = 10)
     {
         rules ??= Ruleset.Current;
         var result = new DamageResult { TypeMultiplier = 1f };
@@ -177,6 +176,7 @@ public static class DamageCalculator
 
         if (result.IsCritical) damage = Formulas.Scale(damage, rules.CriticalMultiplier * attackerEffects.Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
         foreach (var e in attackerEffects) damage = Formulas.Scale(damage, e.DamageBeforeTheRoll(attacker, move));
+        if (damageTenths != 10) damage = damage * damageTenths / 10;
 
         if (!noVariance) damage = Formulas.Variance(damage, rng.Roll(RollKind.Damage, 16));
 

@@ -2690,6 +2690,20 @@ if (mode == "conditions")
     Shot("96_hits_told");
     party.Members.Remove(pecker);
     Set("currentState", GameState.Overworld);
+
+    // Transform (plan 06 · R5): Ditto takes the foe's shape on the field as it does in the rules (96_transformed)
+    var ditto = new Pokemon(PokemonDatabase.Get("Ditto")!, 30);
+    ditto.Moves.Clear();
+    ditto.Moves.Add(new Move(MoveDatabase.Get("Transform")));
+    party.Members.Insert(0, ditto);
+    cb = StartBattle("Bidoof", 12);
+    ToMainMenu(cb);
+    cb.SelectMove(0);
+    ReadTo("Ditto transformed into Foe Bidoof!");
+    Skip(1.0);
+    Shot("96_transformed");
+    party.Members.Remove(ditto);
+    Set("currentState", GameState.Overworld);
 }
 
 // ---------------------------------------------------------------- contact sheets
