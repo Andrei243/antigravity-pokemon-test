@@ -639,10 +639,10 @@ public sealed partial class BattleCore : IBattleContext
                     Say($"{down.Name} took {foe.Name} down with it!").With(new HpChanged(foe.Place, 0, Healed: false));
                     Faint(foe);
                 }
-                else if (down.Volatile.Grudge && by.Data != StruggleData && foe.Pokemon!.Moves.Contains(by.Move))
+                else if (down.Volatile.Grudge && by.Data != StruggleData && foe.Pokemon!.Moves.FirstOrDefault(m => m.Name == by.Move.Name) is { } used)
                 {
-                    by.Move.CurrentPP = 0;
-                    Say($"{foe.Name}'s {by.Move.Name} lost all its PP to the grudge!");
+                    used.CurrentPP = 0;
+                    Say($"{foe.Name}'s {used.Name} lost all its PP to the grudge!");
                 }
             }
             Faint(down);

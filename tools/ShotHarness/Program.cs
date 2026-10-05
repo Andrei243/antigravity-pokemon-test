@@ -2626,6 +2626,41 @@ if (mode == "versus")
     }
 }
 
+// ---------------------------------------------------------------- conditions and the field (plan 06 · R3)
+
+// conditions: what a battle's passing states look like. A Pokémon that has flown up is off its platform while its
+// HP box stays (96_flight_away), and is back as it strikes (96_flight_strike, 96_flight_back). Not part of "all"
+if (mode == "conditions")
+{
+    var flyer = new Pokemon(PokemonDatabase.Get("Staravia")!, 30);
+    flyer.Moves.Clear();
+    flyer.Moves.Add(new Move(MoveDatabase.Get("Fly")));
+    party.Members.Insert(0, flyer);
+    var cb = StartBattle("Bidoof", 12);
+    ToMainMenu(cb);
+    cb.SelectMove(0);
+
+    // Reads on to a line and lets what it starts play for a moment
+    void ReadTo(string line)
+    {
+        for (int i = 0; i < 40 && cb.CurrentMessage != line; i++)
+        {
+            Confirm(cb);
+            Skip(0.3);
+        }
+        Skip(0.6);
+    }
+
+    ReadTo("Staravia flew up high!");
+    Shot("96_flight_away");
+    ReadTo("Staravia used Fly!");
+    Shot("96_flight_strike");
+    Skip(1.6);
+    Shot("96_flight_back");
+    party.Members.Remove(flyer);
+    Set("currentState", GameState.Overworld);
+}
+
 // ---------------------------------------------------------------- contact sheets
 
 if (Run("sheets"))

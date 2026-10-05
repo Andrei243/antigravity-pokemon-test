@@ -51,15 +51,15 @@ public class CoverageTests
 
         // The floors of 2026-10-05 (plan 06 · R2). A session that writes rules raises them to what the report
         // then says; nothing ever lowers one.
-        AtLeast(231, n.PlatinumMovesFully, "Platinum's moves fully run");
-        AtLeast(327, n.PlatinumMovesFully + n.PlatinumMovesPartly, "Platinum's moves that at least hit");
-        AtLeast(102, n.LaterMovesFully, "later moves fully run");
+        AtLeast(354, n.PlatinumMovesFully, "Platinum's moves fully run");
+        AtLeast(396, n.PlatinumMovesFully + n.PlatinumMovesPartly, "Platinum's moves that at least hit");
+        AtLeast(112, n.LaterMovesFully, "later moves fully run");
         AtLeast(288, n.LaterMovesFully + n.LaterMovesPartly, "later moves that at least hit");
-        AtLeast(71, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
+        AtLeast(93, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(0, n.LaterAbilitiesRun, "later abilities with an effect");
-        AtLeast(81, n.PlatinumItemsFully, "Platinum's items that work");
-        AtLeast(116, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
-        AtLeast(55, n.HoldEffectsRun, "hold effects run");
+        AtLeast(91, n.PlatinumItemsFully, "Platinum's items that work");
+        AtLeast(126, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
+        AtLeast(65, n.HoldEffectsRun, "hold effects run");
         AtLeast(0, n.SpecialMovesRun, "Z-Moves and Max Moves run");
 
         Assert.True(fallen.Count == 0, "The coverage report got worse:\n" + string.Join("\n", fallen));

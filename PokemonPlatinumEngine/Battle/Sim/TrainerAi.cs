@@ -17,7 +17,7 @@ public sealed class TrainerAi : IBattleController
 
     public BattleChoice ChooseAction(BattleCore battle, Battler mine)
     {
-        var moves = BattleCore.UsableMoves(mine);
+        var moves = battle.UsableMoves(mine);
         if (moves.Count == 0) return BattleChoice.Fight(mine.Place, -1);
 
         var foes = battle.ActiveFoes(mine).ToList();
@@ -49,6 +49,7 @@ public sealed class TrainerAi : IBattleController
         if (move.Category == MoveCategory.Status)
         {
             var target = aim ?? foes.FirstOrDefault();
+            if (data.Effect != null && OfItsOwn(battle, user, data, target) is { } worth) return worth;
             if (data.HealPercent > 0) return user.Pokemon!.CurrentHP * 2 < user.Pokemon.MaxHP ? 90f : 0f;
             if (data.InflictStatus != StatusCondition.None)
                 return target != null && target.Pokemon!.Status == StatusCondition.None ? 55f : 0f;
@@ -62,6 +63,10 @@ public sealed class TrainerAi : IBattleController
             }
             return 5f;
         }
+
+        // Nothing to gain from a dream nobody is having, or from snoring while awake
+        if (data.Effect == "RecoverDamageSleep" && foes.All(t => t.Pokemon!.Status != StatusCondition.Sleep)) return 0f;
+        if (data.Effect == "DamageWhileAsleep" && user.Pokemon!.Status != StatusCondition.Sleep) return 0f;
 
         float Hit(Battler t) => move.Power * DamageCalculator.Effectiveness(user, t, move, battle.Rules) * (user.HasType(move.Type) ? 1.5f : 1f);
 
@@ -78,5 +83,85 @@ public sealed class TrainerAi : IBattleController
                 break;
         }
         return score * (data.Accuracy > 0 ? data.Accuracy / 100f : 1f);
+    }
+
+    /// <summary>
+    /// What a status move with an effect of its own is worth right now: something while it would still do what it
+    /// is for, nothing once it wouldn't. Null for an effect it has no opinion on.
+    /// </summary>
+    private static float? OfItsOwn(BattleCore battle, Battler user, MoveData data, Battler? target)
+    {
+        var field = battle.Field;
+        var mine = field.Side(user.Side);
+        var theirs = field.Side(user.Side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player);
+        var me = user.Pokemon!;
+        var v = user.Volatile;
+        var tv = target?.Volatile;
+        bool healthy = me.CurrentHP * 2 > me.MaxHP;
+        bool foeHasBench = target?.Roster != null && target.Roster.Members.Count(p => !p.IsFainted) > 1;
+
+        switch (data.Effect)
+        {
+            case "Protect" or "SurviveWith1Hp": return v.ProtectChain == 0 ? 14f : 0f;
+            case "SetSubstitute": return !user.HasSubstitute && healthy ? 30f : 0f;
+            case "WeatherRain": return field.Weather != BattleWeather.Rain ? 30f : 0f;
+            case "WeatherSun": return field.Weather != BattleWeather.Sun ? 30f : 0f;
+            case "WeatherSandstorm": return field.Weather != BattleWeather.Sandstorm ? 30f : 0f;
+            case "WeatherHail": return field.Weather != BattleWeather.Hail ? 30f : 0f;
+            case "SetReflect": return !mine.Reflect ? 35f : 0f;
+            case "SetLightScreen": return !mine.LightScreen ? 35f : 0f;
+            case "PreventStatus": return !mine.Safeguard ? 15f : 0f;
+            case "PreventStatReduction": return !mine.Mist ? 10f : 0f;
+            case "PreventCrits": return !mine.LuckyChant ? 10f : 0f;
+            case "DoubleSpeed3Turns": return !mine.Tailwind ? 25f : 0f;
+            case "TrickRoom": return !field.TrickRoom && target != null && battle.EffectiveSpeed(user) < battle.EffectiveSpeed(target) ? 35f : 0f;
+            case "Gravity": return !field.Gravity ? 8f : 0f;
+            case "SetSpikes": return theirs.Spikes < 3 && foeHasBench ? 28f : 0f;
+            case "ToxicSpikes": return theirs.ToxicSpikes < 2 && foeHasBench ? 26f : 0f;
+            case "StealthRock": return !theirs.StealthRock && foeHasBench ? 32f : 0f;
+            case "HealIn3Turns": return field.At(user.Place).WishTurns == 0 && !healthy ? 40f : 0f;
+            case "HealHalfMoreInSun" or "HealHalfRemoveFlyingType": return healthy ? 0f : 90f;
+            case "Rest": return me.CurrentHP * 3 < me.MaxHP ? 80f : 0f;
+            case "FaintAndFullHealNextMon" or "FaintFullRestoreNextMon": return 0f;
+            case "PassStatsAndStatus": return me.StatStages.Values.Sum() >= 2 ? 30f : 0f;
+            case "FleeFromWildBattle" or "DoNothing": return 0f;
+            case "ForceSwitch": return target != null && target.Pokemon!.StatStages.Values.Sum() >= 2 ? 40f : 0f;
+            case "Infatuate": return tv is { InLoveWith: null } ? 25f : 0f;
+            case "StatusLeechSeed": return tv is { SeededBy: null } && !target!.HasType(PokemonType.Grass) && !target.HasSubstitute ? 40f : 0f;
+            case "StatusNightmare": return tv is { Nightmare: false } && target!.Pokemon!.Status == StatusCondition.Sleep ? 45f : 0f;
+            case "Curse":
+                return user.HasType(PokemonType.Ghost)
+                    ? (tv is { Cursed: false } && healthy ? 35f : 0f)
+                    : (me.StatStages.GetValueOrDefault(StatType.Attack) < 2 ? 30f : 0f);
+            case "AllFaint3Turns": return v.PerishCount < 0 && tv is { PerishCount: < 0 } ? 12f : 0f;
+            case "Taunt": return tv is { TauntTurns: 0 } ? 22f : 0f;
+            case "Torment": return tv is { Tormented: false } ? 15f : 0f;
+            case "Encore": return tv is { Encored: null, LastMove: not null } ? 25f : 0f;
+            case "Disable": return tv is { Disabled: null, LastMove: not null } ? 22f : 0f;
+            case "StatusSleepNextTurn": return tv is { YawnTurns: 0 } && target!.Pokemon!.Status == StatusCondition.None ? 40f : 0f;
+            case "PreventHealing": return tv is { HealBlockTurns: 0 } ? 12f : 0f;
+            case "PreventItemUse": return tv is { EmbargoTurns: 0 } ? 10f : 0f;
+            case "PreventEscape": return tv is { TrappedBy: null } && foeHasBench ? 15f : 0f;
+            case "NextAttackAlwaysHits": return tv is { LockOnTurns: 0 } ? 12f : 0f;
+            case "Foresight": return tv is { Identified: false } && target!.HasType(PokemonType.Ghost) ? 20f : 0f;
+            case "IgnoreEvationRemoveDarkImmune": return tv is { MiracleEye: false } && target!.HasType(PokemonType.Dark) ? 20f : 0f;
+            case "SupressAbility": return tv is { AbilitySuppressed: false } ? 15f : 0f;
+            case "TransferStatus": return me.Status != StatusCondition.None && target?.Pokemon!.Status == StatusCondition.None ? 50f : 0f;
+            case "CritUp2": return !v.FocusEnergy ? 20f : 0f;
+            case "GroundTrapUserContinuousHeal": return !v.Ingrained ? 22f : 0f;
+            case "RestoreHpEveryTurn": return !v.AquaRing ? 22f : 0f;
+            case "GiveGroundImmunity": return v.MagnetRiseTurns == 0 ? 12f : 0f;
+            case "KoMonThatDefeatedUser": return me.CurrentHP * 4 < me.MaxHP ? 35f : 0f;
+            case "RemoveAllPpOnDefeat": return me.CurrentHP * 4 < me.MaxHP && !v.Grudge ? 15f : 0f;
+            case "MakeSharedMovesUnuseable": return !v.Imprisoning ? 10f : 0f;
+            case "HalveElectricDamage": return !v.MudSport ? 6f : 0f;
+            case "HalveFireDamage": return !v.WaterSport ? 6f : 0f;
+            case "HealStatus": return me.Status is StatusCondition.Poison or StatusCondition.Toxic or StatusCondition.Burn or StatusCondition.Paralyze ? 50f : 0f;
+            case "CurePartyStatus": return user.Roster != null && user.Roster.Members.Any(p => !p.IsFainted && p.Status != StatusCondition.None) ? 45f : 0f;
+            case "ResetStatChanges": return target != null && target.Pokemon!.StatStages.Values.Sum() >= 2 ? 35f : 0f;
+            case "RemoveHazardsScreensEvaDown": return theirs.Reflect || theirs.LightScreen || field.Weather == BattleWeather.Fog ? 30f : 8f;
+            case "Bide": return healthy ? 20f : 0f;
+            default: return null;
+        }
     }
 }

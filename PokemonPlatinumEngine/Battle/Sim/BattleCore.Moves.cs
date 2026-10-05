@@ -97,6 +97,8 @@ public sealed partial class BattleCore
             v.LastMove = null;
             yield break;
         }
+        // A rage lasts only as long as Rage is what it uses
+        if (move.Data.Effect != "RaiseAtkWhenHit") v.Rage = false;
 
         var use = new MoveUse { User = user, Move = move, Effect = EffectOf(move.Data), Strikes = v.Charging, MoveBefore = v.LastMove };
         use.Targets = ResolveTargets(user, move, target);
@@ -125,7 +127,22 @@ public sealed partial class BattleCore
             yield break;
         }
 
-        use.Line = Say($"{user.Name} used {move.Name}!");
+        // A move that goes on by itself may tell its later turns in its own words (Bide)
+        bool ownLines = goesOn && use.Effect.OwnLinesAfterFirst;
+        use.Line = ownLines ? new Said("") : Say($"{user.Name} used {move.Name}!");
+
+        // The second turn of a move that takes two: it is back where it can be seen, and hit
+        if (use.Strikes && use.Effect.Charge != null)
+        {
+            v.Charging = false;
+            if (user.IsElsewhere)
+            {
+                v.Elsewhere = Elsewhere.No;
+                use.Line.With(new Reappeared(user.Place));
+            }
+            if (!user.IsHeldToItsMove) v.LockedMove = null;
+        }
+
         if (use.Targets.Count == 0)
         {
             Say("But there was no target...");
@@ -134,22 +151,26 @@ public sealed partial class BattleCore
         }
 
         foreach (var t in use.Targets) t.Turn.SubstituteHit = false;
-        bool damaging = move.Category != MoveCategory.Status && move.Power > 0 && (move.Data.Support != MoveEffectSupport.None || use.Effect != Plain);
-        if (damaging) Strike(use);
-        else if (move.Data.Support == MoveEffectSupport.None && use.Effect == Plain)
+        if (use.Effect.Does != null)
         {
-            // A move whose effect isn't in the engine yet does nothing rather than a made-up something
-            use.Line.With(Shown(user, user, move, null));
-            Say("But nothing happened!");
+            // A move that is more than a hit, or no hit at all
+            if (!ownLines) use.Line.With(new Lunged(user.Place, move.Category));
+            use.Effect.Use(this, use);
         }
-        else use.Effect.Use(this, use);
-
-        // Back from wherever the first turn took it
-        if (use.Strikes && use.Effect.Charge != null)
+        else if (move.Category != MoveCategory.Status && move.Power > 0 && (move.Data.Support != MoveEffectSupport.None || use.Effect != Plain))
         {
-            v.Charging = false;
-            ComeBack(user);
-            if (!user.IsHeldToItsMove) v.LockedMove = null;
+            Strike(use);
+        }
+        else
+        {
+            use.Line.With(new Lunged(user.Place, move.Category));
+            if (move.Data.Support == MoveEffectSupport.None && use.Effect == Plain)
+            {
+                // A move whose effect isn't in the engine yet does nothing rather than a made-up something
+                use.Line.With(Shown(user, user, move, null));
+                Say("But nothing happened!");
+            }
+            else ByItsFields(use);
         }
 
         foreach (var request in Leave(use)) yield return request;
@@ -179,10 +200,11 @@ public sealed partial class BattleCore
             {
                 p.SleepTurns = Math.Max(0, p.SleepTurns - effects.Select(e => e.SleepCountdownRate).DefaultIfEmpty(1).Max());
                 if (p.SleepTurns == 0) WakeUp(user, "{0} woke up!");
-                else if (!UsableAsleep(move.Data))
+                else
                 {
+                    // Snore and Sleep Talk are told the same way, and then go on
                     Say($"{user.Name} is fast asleep.");
-                    return false;
+                    if (!UsableAsleep(move.Data)) return false;
                 }
             }
         }
@@ -468,6 +490,8 @@ public sealed partial class BattleCore
         var user = use.User;
         var move = use.Move;
         if (move.Accuracy <= 0 || !use.Effect.RollsAccuracy) return true;
+        // From Generation 6 a Poison type's Toxic can't miss
+        if (Rules.PoisonTypesNeverMissToxic && move.Category == MoveCategory.Status && move.Data.InflictStatus == StatusCondition.Toxic && user.HasType(PokemonType.Poison)) return true;
         var weather = Field.WeatherInEffect;
         var userEffects = BattleEffects.Of(user).ToList();
         bool breaks = userEffects.Any(e => e.IgnoresTargetAbility);
@@ -502,7 +526,6 @@ public sealed partial class BattleCore
     private void Strike(MoveUse use)
     {
         var user = use.User;
-        var move = use.Move;
         var effect = use.Effect;
         if (!effect.Begins(this, use))
         {
@@ -510,8 +533,9 @@ public sealed partial class BattleCore
             return;
         }
 
+        // Its effect may have made another move of it by now (Weather Ball takes its type from the sky)
+        var move = use.Move;
         use.Line.With(new Lunged(user.Place, move.Category));
-        effect.BeforeHits(this, use);
 
         bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
         foreach (var t in use.Targets)
@@ -519,6 +543,7 @@ public sealed partial class BattleCore
             var hit = new MoveHit { Target = t };
             use.Hits.Add(hit);
             if (!Reaches(use, t, hit)) continue;
+            effect.OnReach(this, use, t);
 
             float effectiveness = use.Data == StruggleData ? 1f : DamageCalculator.Effectiveness(user, t, move, Rules);
             var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
@@ -782,7 +807,13 @@ public sealed partial class BattleCore
     private bool Arrives(MoveUse use, Battler target)
     {
         var hit = new MoveHit { Target = target };
-        if (Reaches(use, target, hit)) return true;
+        if (Reaches(use, target, hit))
+        {
+            // From Generation 6 powders and spores do nothing to a Grass type
+            if (!Rules.GrassTypesIgnorePowder || !use.Data.Flags.HasFlag(MoveFlags.Powder) || !target.HasType(PokemonType.Grass)) return true;
+            Say($"It doesn't affect {target.Name}...");
+            return false;
+        }
         if (hit.Protected) Say($"{target.Name} protected itself!");
         else Say(use.Targets.Count > 1 || IsDouble ? $"{target.Name} avoided the attack!" : $"{use.User.Name}'s attack missed!");
         return false;

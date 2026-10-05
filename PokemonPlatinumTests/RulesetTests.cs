@@ -169,8 +169,11 @@ public class RulesetTests
             battle.TryInflictStatus(battle.EnemySlots[0], StatusCondition.Sleep, battle.PlayerSlots[0]);
             return foe.SleepTurns;
         }
-        Assert.Equal(4, Longest(Ruleset.Platinum));
-        Assert.Equal(3, Longest(Ruleset.Modern));
+        // The counter drops by one each time the sleeper's turn comes and it wakes when nothing is left, so the
+        // longest sleep is one turn shorter than the counter: four turns in Platinum (Random 3, 2 in
+        // subscript_fall_asleep: 2 to 5), three by the modern rules
+        Assert.Equal(5, Longest(Ruleset.Platinum));
+        Assert.Equal(4, Longest(Ruleset.Modern));
     }
 
     [Fact]

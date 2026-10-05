@@ -27,17 +27,29 @@ In the `Ruleset` today, because the engine already runs these rules:
 | A burn takes, each turn | 1/8 of HP | 1/16 of HP |
 | Paralysis cuts Speed to | a quarter | a half |
 | Electric types | can be paralysed | can't |
-| A sleep has | four lengths | three |
+| A sleep lasts | 1 to 4 turns | 1 to 3 |
 | A confused Pokémon hurts itself | 1 time in 2 | 1 time in 3 |
 | Steel resists Ghost and Dark | yes | no |
 | A move's power, accuracy, PP, priority, type | Platinum's (Tackle 35 and 95%) | the newest games' (Tackle 40 and 100%) |
+| Weather an ability starts | lasts the battle | five turns, eight with the weather's rock |
+| Powder and spore moves on a Grass type | work | do nothing |
+| A Ghost type | can be held on the field | can always leave |
+| Toxic from a Poison type | can miss | can't |
+| A Taunt lasts | 3 to 5 turns | 3 |
+| An Encore lasts | 4 to 8 turns | 3 |
+| Disable lasts | 4 to 7 turns | 5 |
+| A Tailwind lasts | 3 turns | 4 |
+| An uproar lasts | 3 to 6 turns | 3 |
+| A binding move (Wrap, Fire Spin) hurts for | 2 to 5 turns, 5 with a Grip Claw, a sixteenth of HP each | 4 or 5 turns, 7 with a Grip Claw, an eighth each |
+| Protect, Detect or Endure again at once | half as likely each time, down to an eighth | a third as likely each time, down to 1 in 729 |
+| Minimize raises evasion by | one stage | two |
+
+The modern column's numbers for the rules R3 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
 
 Known differences that join the `Ruleset` in the session that writes their rule, never as a constant beside it:
 
 | Rule | Platinum | Modern | Session |
 | --- | --- | --- | --- |
-| Weather an ability starts | lasts the battle | five turns | R3, R7 |
-| Grass types and powder moves, Ghost types and trapping, Poison types and Toxic's aim | no special case | immune, free to leave, never misses | R3 |
 | EXP | by the foe's level alone, shared among those who fought | scaled by the difference in level; the whole party gets some | R10 |
 | Catching | Platinum's formula | critical captures, the later status bonuses | R9, R13 |
 | TMs | used up | kept | R11 |
@@ -57,11 +69,32 @@ R1 found places where the engine differed from the decompilation and left them, 
 - **Accuracy** is the original's table of stages, then the user's ability, the target's ability, the target's item and the user's item, each rounded down in turn.
 - **Struggle** has no type and can be a critical hit (before R2 it couldn't).
 
+R3 (2026-10-05) wrote the conditions and the field from the original's turn (`battle_controller_player.c`: what can stop a move, and the three passes of a turn's end), its script commands (`battle_script.c`) and the effect scripts themselves (`res/battle/scripts`). Where that changed what the default rules already did, it is again what Platinum does:
+
+- **A sleep** is a counter of 2 to 5 (`subscript_fall_asleep`) that drops by one each time the sleeper's turn comes; when nothing is left the Pokémon wakes and moves on that same turn. So a sleep lasts 1 to 4 turns (it was 0 to 3), and Rest's is always two.
+- **Bad poison** takes a sixteenth of HP, rounded down, times its count (it was the count times HP, over sixteen: a point more now and then).
+- **What follows a hit** is in the original's order: the lines about the hit, what the move does to its target, then the attacker's recoil or what it drained, and only then does a target that was knocked out go down, with Destiny Bond and Grudge answering at that moment.
+- **A Flame Orb or Toxic Orb** acts after everything else of its holder's turn end, so its harm starts the turn after.
+- **The end of a turn** runs in three passes, each in the original's order: what the two sides and the sky have (screens, veils and a tailwind run down; a Wish comes true; the weather goes on or ends and passes over everyone from the fastest); then each Pokémon from the fastest with everything that is its own (roots and a ring of water, its ability, its item, Leech Seed, poison, a burn, a nightmare, a curse, a binding move, Bad Dreams, an uproar, a rampage, Disable, Encore, Lock-On, Charge, Taunt, Magnet Rise, Heal Block, Embargo, Yawn, its berries, an orb); then what was sent ahead (Future Sight, a perish count) and Trick Room. Whoever is brought to nothing faints before the next thing happens.
+
+Our own choices in R3, where the original leaves room or this game is built differently:
+
+- **Counters count as the original's do**, each kind in its own way (some end when they reach nothing, Encore and Disable a turn end after), so the lengths in the table above are what the scripts' numbers come to in play. An uproar's is as the script draws it (3 to 6 turns).
+- **Heal Block** stops the moves on the original's own list, a draining move, Leech Seed, a Wish, Ingrain and Aqua Ring. It does not stop Leftovers or an ability that heals in the weather: Platinum's doesn't.
+- **Rest** is stopped by Insomnia and Vital Spirit only; Leaf Guard doesn't stop it even in the sun, as in Platinum.
+- **Brick Break** breaks the screens of a target its type can't hurt (a Ghost), as the original takes care to.
+- **A Jump Kick that doesn't land** costs half of what it would have done to that target, at most half the target's HP; a Protect counts as not landing; against a Ghost the damage is nothing and so is the fall.
+- **Roar and Whirlwind** in a wild battle end it as a getaway (`BattleResult.PlayerRan`), whoever used them, and so does Teleport.
+- **The weather of the place** comes into the battle and stays (`Weathers.InBattle`): rain of any strength is rain, snow of any strength is hail, a sandstorm and fog are themselves. No area open so far has any.
+- **Text**: every line a battle says about these is our own wording.
+- **Not shown yet**: a Substitute has no doll (the Pokémon stays as it is; the lines say what the Substitute took), and the weather over a battle is told in its lines but not drawn. A Pokémon that flew up or dug down is taken off its platform, its HP box left in place. The battle's drawing of both is for plan 04's follow-up, with the hooks R6 gives it.
+
 Still different, each waiting for the session whose rule it is:
 
-- A sleep is drawn as 1 to 4 and counted down before it is checked, so it lasts 0 to 3 turns. R3 takes the original's number from its battle scripts.
-- A target knocked out by a move goes down before the attacker's recoil is told. That is the order the engine has always had; R3 and R4 check it, with everything else that follows a hit, against the effect scripts.
-- The opponents choose "what looks best" (`TrainerAi`), with a little chance. R9 writes Platinum's own AI.
+- The moves whose effect touches these rules but is its own family wait for R4 and R5 with the rest of that family: Magic Coat and Snatch, Follow Me and the abilities that draw moves to them, Fake Out, Sucker Punch, Counter and Mirror Coat, Rollout and Fury Cutter (Defense Curl's doubling is remembered for it), Transform, Mimic and Sketch.
+- An ability's or an item's bonus is still applied in the finished damage where the original has it in the move's power or a stat (Thick Fat, and Dry Skin's weakness to Fire since R3): R7 and R8 give each its place.
+- Obedience, Truant and the Quick Claw's own line are not in the turn yet (R7, R8, R10).
+- The opponents choose "what looks best" (`TrainerAi`), with a little chance and some sense of when a condition or a screen would still do something. R9 writes Platinum's own AI.
 
 What matches, and is held by `FormulaTests`, `BattleScenarioTests` and `BattleCoreTests`: the damage formula and its order (stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, + 2, the critical multiplier, a Life Orb, the roll taking 0 to 15 hundredths off, then × 1.5 for the user's own type, then each of the target's types, and never less than 1 for a hit that lands), stat stages, what a critical hit ignores, and everything in the list above.
 

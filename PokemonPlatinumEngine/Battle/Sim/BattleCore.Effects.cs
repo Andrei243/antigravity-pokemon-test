@@ -30,8 +30,11 @@ public sealed partial class BattleCore
         /// <summary>Before a hit is tried: false when the move fails (and has said so).</summary>
         public Func<BattleCore, MoveUse, bool>? Start { get; init; }
 
-        /// <summary>Once, before any target is hit (Brick Break breaks the screens first).</summary>
-        public Action<BattleCore, MoveUse>? First { get; init; }
+        /// <summary>
+        /// For each target the move gets to, before the damage and even if its type can't hurt it (Brick Break
+        /// breaks the screens of whoever it reaches).
+        /// </summary>
+        public Action<BattleCore, MoveUse, Battler>? Reach { get; init; }
 
         /// <summary>The move's power against one target, in tenths of what its data says (20: double).</summary>
         public Func<BattleCore, MoveUse, Battler, int>? Power { get; init; }
@@ -64,14 +67,10 @@ public sealed partial class BattleCore
         /// <summary>On the turns it goes on by itself the move says its own lines, not "X used Y!" (Bide).</summary>
         public bool OwnLinesAfterFirst { get; init; }
 
-        public void Use(BattleCore b, MoveUse use)
-        {
-            if (Does != null) Does(b, use);
-            else b.ByItsFields(use);
-        }
+        public void Use(BattleCore b, MoveUse use) => Does!(b, use);
 
         public bool Begins(BattleCore b, MoveUse use) => Start?.Invoke(b, use) ?? true;
-        public void BeforeHits(BattleCore b, MoveUse use) => First?.Invoke(b, use);
+        public void OnReach(BattleCore b, MoveUse use, Battler target) => Reach?.Invoke(b, use, target);
         public int PowerTenths(BattleCore b, MoveUse use, Battler target) => use.Boost * (Power?.Invoke(b, use, target) ?? 10) / 10;
         public bool FollowsTo(Elsewhere where) => Array.IndexOf(Follows, where) >= 0;
         public bool SureUnder(BattleWeather weather) => SureIn != BattleWeather.None && SureIn == weather;
@@ -155,14 +154,12 @@ public sealed partial class BattleCore
         ["RemoveScreens"] = new()
         {
             PastScreens = true,
-            First = (b, use) =>
+            Reach = (b, use, t) =>
             {
-                foreach (var side in use.Targets.Where(t => t.Side != use.User.Side).Select(t => b.Field.Side(t.Side)).Distinct())
-                {
-                    if (!side.Reflect && !side.LightScreen) continue;
-                    side.ReflectTurns = side.LightScreenTurns = 0;
-                    b.Say("It shattered the barrier!");
-                }
+                var side = b.Field.Side(t.Side);
+                if (!side.Reflect && !side.LightScreen) return;
+                side.ReflectTurns = side.LightScreenTurns = 0;
+                b.Say("It shattered the barrier!");
             }
         },
         ["RemoveHazardsScreensEvaDown"] = new() { Does = (b, use) => b.Defog(use) },
@@ -550,9 +547,19 @@ public sealed partial class BattleCore
     /// <summary>A status move's effect on each target it gets to (Protect, accuracy and a target out of reach have their lines).</summary>
     private void OnEach(MoveUse use, Func<Battler, bool> effect)
     {
+        bool breaks = BattleEffects.Of(use.User).Any(e => e.IgnoresTargetAbility);
         foreach (var t in use.Targets) use.Line.With(Shown(use.User, t, use.Move, null));
         foreach (var t in use.Targets.Where(t => t.IsActive))
-            if (t == use.User || Arrives(use, t)) effect(t);
+        {
+            if (Result != BattleResult.None) return;
+            if (t != use.User)
+            {
+                if (!Arrives(use, t)) continue;
+                // Soundproof against Roar, and the like
+                if (BattleEffects.Of(t, includeAbility: !breaks).ToList().Any(e => e.AbsorbsMove(this, t, use.User, use.Move, 1f))) continue;
+            }
+            effect(t);
+        }
     }
 
     /// <summary>A length drawn evenly from the rules' range for it.</summary>
@@ -842,17 +849,23 @@ public sealed partial class BattleCore
     // ---------------------------------------------------------------- crashing, biding
 
     /// <summary>
-    /// <c>subscript_crash_on_miss</c>: a kick that doesn't land hurts its user by half of what it would have done,
-    /// and by no more than half the target's HP. Magic Guard lands on its feet.
+    /// <c>subscript_crash_on_miss</c>: a kick that doesn't land (a miss, a Protect) hurts its user by half of what
+    /// it would have done to that target, and by no more than half the target's HP. Against a target its type
+    /// can't hurt that damage is nothing, and so is the fall. Magic Guard lands on its feet.
     /// </summary>
     private void Crash(MoveUse use, MoveHit hit)
     {
         var user = use.User;
         if (!user.IsActive || BattleEffects.Of(user).Any(e => e.PreventsIndirectDamage)) return;
+        if (hit.Immune)
+        {
+            Say($"{user.Name} kept going and crashed!");
+            return;
+        }
         int would = DamageCalculator.Calculate(user, hit.Target, use.Move, rng, spread: false, rules: Rules,
-            powerTenths: use.Effect.PowerTenths(this, use, hit.Target), typeless: hit.Immune).Damage;
+            powerTenths: use.Effect.PowerTenths(this, use, hit.Target)).Damage;
         int crash = Math.Min(Formulas.Divide(would, 2), Formulas.Divide(hit.Target.Pokemon!.MaxHP, 2));
-        LoseHp(user, Math.Max(1, crash), $"{user.Name} kept going and crashed!", direct: true);
+        LoseHp(user, crash, $"{user.Name} kept going and crashed!", direct: true);
     }
 
     /// <summary>
@@ -947,11 +960,12 @@ public sealed partial class BattleCore
             bool moves = mine >= theirs || (rng.Roll(RollKind.Whirlwind, 256) * (mine + theirs) >> 8) + 1 > theirs / 4;
             if (!moves || (IsTrainerBattle && !HasReplacement(t))) return Fails();
 
-            if (IsTrainerBattle || t.IsPlayerSide && PlayerParty.Count > 1 && HasReplacement(t) && false)
+            if (IsTrainerBattle)
             {
                 DragOut(t);
                 return true;
             }
+            // Against or from a wild Pokémon it ends the meeting
             Say($"{t.Name} was driven off!");
             End(BattleResult.PlayerRan);
             return true;
@@ -1115,9 +1129,10 @@ public sealed partial class BattleCore
         var user = use.User;
         var p = user.Pokemon!;
         use.Line.With(Shown(user, user, use.Move, null));
-        if (user.Ability?.Effect is { } guard && guard.BlocksStatus(user, StatusCondition.Sleep))
+        // Insomnia and Vital Spirit; Leaf Guard doesn't stop a Rest in Platinum
+        if (Has(user, "Insomnia") || Has(user, "Vital Spirit"))
         {
-            Say($"{user.Name} stayed awake because of its {user.Ability.Name}!");
+            Say($"{user.Name} stayed awake because of its {user.Ability!.Name}!");
             return;
         }
         if (p.Status == StatusCondition.Sleep)

@@ -42,6 +42,20 @@ public static class Weathers
         _ => FieldWeather.Clear
     };
 
+    /// <summary>
+    /// The weather a battle fought under this sky opens with and keeps, as the original carries it over
+    /// (<c>BattleSystem_TriggerEffectOnSwitch</c>'s field weather): rain of any strength is rain, snow of any
+    /// strength is hail, and a sandstorm and fog are themselves.
+    /// </summary>
+    public static Battle.Sim.BattleWeather InBattle(FieldWeather weather) => weather switch
+    {
+        FieldWeather.Rain or FieldWeather.HeavyRain or FieldWeather.Thunderstorm => Battle.Sim.BattleWeather.Rain,
+        FieldWeather.Snow or FieldWeather.HeavySnow or FieldWeather.Blizzard => Battle.Sim.BattleWeather.Hail,
+        FieldWeather.Sandstorm => Battle.Sim.BattleWeather.Sandstorm,
+        FieldWeather.Fog => Battle.Sim.BattleWeather.Fog,
+        _ => Battle.Sim.BattleWeather.None
+    };
+
     /// <summary>How much harder than a breeze the wind blows: grass and leaves sway that much more.</summary>
     public static float Wind(FieldWeather weather) => weather switch
     {

@@ -162,6 +162,12 @@ public sealed class Importer
                 if (effectChance > 0) m.EffectChance = effectChance;
                 if (support == MoveEffectSupport.None || !expressible) MoveEffects.ClearFields(m);
             }
+            else if (effect != null)
+            {
+                // Run by the engine's own code for the effect, which finds it by this name
+                m.Effect = effect;
+                if (effectChance > 0) m.EffectChance = effectChance;
+            }
             m.Support = support;
             moves.Add(m);
         }

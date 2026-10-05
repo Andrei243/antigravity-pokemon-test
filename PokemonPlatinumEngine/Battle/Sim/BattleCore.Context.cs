@@ -151,7 +151,7 @@ public sealed partial class BattleCore
     }
 
     /// <summary>Confuses (<c>subscript_confuse</c>) unless already confused, kept clear by Own Tempo, behind a Substitute or under a Safeguard.</summary>
-    internal bool Confuse(Battler target, Battler? source, bool announceFailure, By how)
+    internal bool Confuse(Battler target, Battler? source, bool announceFailure, By how, string? line = null)
     {
         if (!target.IsActive) return false;
         bool byAnother = source != null && source != target;
@@ -177,7 +177,7 @@ public sealed partial class BattleCore
             return false;
         }
         target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
-        Say($"{target.Name} became confused!");
+        Say(line ?? $"{target.Name} became confused!");
         CheckConditionHooks(target, source);
         return true;
     }

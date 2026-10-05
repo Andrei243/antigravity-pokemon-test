@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
@@ -6,8 +7,9 @@ namespace DataImporter;
 /// <summary>
 /// Turns a move's battle effect into the <see cref="MoveData"/> fields the engine runs. Whatever the fields can't
 /// say is kept as <see cref="MoveData.Effect"/> with <see cref="MoveData.Support"/> Partial (the move still hits) or
-/// None (the move does nothing until plan 06 writes the effect). When an effect gets its code, move its name to
-/// <see cref="Gen4"/>'s fully supported cases (or the later moves' list) and run the importer again.
+/// None (the move does nothing until plan 06 writes the effect). An effect the engine has code for under its name
+/// (<see cref="BattleCore.HasMoveEffect"/>) is fully supported, and keeps its name so the engine can find it: after
+/// writing one, run the importer again.
 /// </summary>
 public static class MoveEffects
 {
@@ -125,7 +127,8 @@ public static class MoveEffects
             case "HEAL_HALF_MORE_IN_SUN": m.HealPercent = 50; partial = effect; break;
             case "HEAL_HALF_REMOVE_FLYING_TYPE": m.HealPercent = 50; partial = effect; break;
             case "DEF_UP_DOUBLE_ROLLOUT_POWER": Stat(StatType.Defense, 1, true, 100); partial = effect; break;
-            case "EVA_UP_2_MINIMIZE": Stat(StatType.Evasion, 2, true, 100); partial = effect; break;
+            // One stage in Platinum, whatever the effect is called (two from Generation 5: the rules say which)
+            case "EVA_UP_2_MINIMIZE": Stat(StatType.Evasion, 1, true, 100); partial = effect; break;
             case "SP_DEF_UP_DOUBLE_ELECTRIC_POWER": Stat(StatType.SpDefense, 1, true, 100); partial = effect; break;
             case "THUNDER": Status(StatusCondition.Paralyze, chance); partial = effect; break;
             case "BLIZZARD": Status(StatusCondition.Freeze, chance); partial = effect; break;
@@ -153,6 +156,9 @@ public static class MoveEffects
             bool hits = m.Category != MoveCategory.Status && m.Power > 0 && !ConditionalHits.Contains(effect);
             m.Support = hits ? MoveEffectSupport.Partial : MoveEffectSupport.None;
         }
+
+        // An effect the engine has code for is run whole, with whatever the fields say beside it
+        if (m.Effect != null && BattleCore.HasMoveEffect(m.Effect)) m.Support = MoveEffectSupport.Full;
     }
 
     /// <summary>Later moves' PokeAPI effect ids whose behaviour the meta fields describe completely (checked by hand).</summary>

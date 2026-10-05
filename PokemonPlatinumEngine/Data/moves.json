@@ -196,7 +196,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "ChargeTurnHighCrit",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -249,7 +248,6 @@
     "description": "Inflicts regular damage and can hit Pokémon in the air.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageFlyOrBounce",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -280,7 +278,6 @@
     "description": "Immediately ends wild battles. Forces trainers to switch Pokémon.",
     "flags": "Protect, Mirror",
     "effect": "ForceSwitch",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -303,7 +300,6 @@
     "description": "User flies high into the air, dodging all attacks, and hits next turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Fly",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -319,7 +315,6 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -371,7 +366,6 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "effect": "FlinchMinimizeDoubleHit",
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 120
   },
@@ -417,7 +411,6 @@
     "description": "If the user misses, it takes half the damage it would have inflicted in recoil.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "CrashOnMiss",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 90,
     "modern": {
@@ -568,7 +561,6 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -603,7 +595,6 @@
     "target": "RandomFoe",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -774,7 +765,6 @@
     "description": "Immediately ends wild battles. Forces trainers to switch Pokémon.",
     "flags": "Sound, Protect, Mirror",
     "effect": "ForceSwitch",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -852,7 +842,6 @@
     "description": "Disables the target's last used move for 1-8 turns.",
     "flags": "Protect, Mirror",
     "effect": "Disable",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -926,7 +915,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "PreventStatReduction",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -975,7 +963,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageDive",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -1016,7 +1003,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "Blizzard",
-    "support": "Partial",
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1084,7 +1070,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -1239,7 +1224,6 @@
     "description": "Seeds the target, stealing HP from it every turn.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StatusLeechSeed",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1298,7 +1282,6 @@
     "description": "Requires a turn to charge before attacking.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "SkipChargeTurnInSun",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -1375,7 +1358,6 @@
     "target": "RandomFoe",
     "flags": "Contact, Dance, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -1433,7 +1415,6 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -1513,7 +1494,6 @@
     "statusChancePercent": 30,
     "flags": "Protect, Mirror",
     "effect": "Thunder",
-    "support": "Partial",
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1547,7 +1527,6 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageDig",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130
   },
@@ -1579,7 +1558,6 @@
     "description": "User digs underground, dodging all attacks, and hits next turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Dig",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -1728,7 +1706,6 @@
     "description": "If the user is hit after using this move, its Attack rises by one stage.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RaiseAtkWhenHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -1744,7 +1721,6 @@
     "description": "Immediately ends wild battles. No effect otherwise.",
     "target": "User",
     "effect": "FleeFromWildBattle",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     },
@@ -1883,13 +1859,12 @@
     "maxPP": 20,
     "description": "Raises the user's evasion by two stages.",
     "targetStatChange": "Evasion",
-    "statStageAmount": 2,
+    "statStageAmount": 1,
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
     "effect": "EvaUp2Minimize",
-    "support": "Partial",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -1977,7 +1952,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "DefUpDoubleRolloutPower",
-    "support": "Partial",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -2021,7 +1995,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "SetLightScreen",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -2041,7 +2014,6 @@
     "description": "Resets all Pokémon's stats, accuracy, and evasion.",
     "target": "Field",
     "effect": "ResetStatChanges",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -2059,7 +2031,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "SetReflect",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -2080,7 +2051,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "CritUp2",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -2102,7 +2072,6 @@
     "target": "User",
     "flags": "Contact, Protect, KingsRock",
     "effect": "Bide",
-    "support": "None",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2284,7 +2253,6 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2320,7 +2288,6 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ChargeTurnDefUp",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -2434,7 +2401,6 @@
     "description": "If the user misses, it takes half the damage it would have inflicted in recoil.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "CrashOnMiss",
-    "support": "Partial",
     "zPower": 195,
     "maxPower": 95,
     "modern": {
@@ -2477,7 +2443,6 @@
     "description": "Only works on sleeping Pokémon. Drains half the damage inflicted to heal the user.",
     "flags": "Protect, Mirror",
     "effect": "RecoverDamageSleep",
-    "support": "None",
     "zPower": 180,
     "maxPower": 130
   },
@@ -2573,7 +2538,6 @@
     "flinchChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
     "effect": "ChargeTurnHighCritFlinch",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 140
   },
@@ -2698,7 +2662,6 @@
     "description": "Does nothing.",
     "target": "User",
     "effect": "DoNothing",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -2810,7 +2773,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Rest",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2957,7 +2919,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "SetSubstitute",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3047,7 +3008,6 @@
     "description": "Prevents the target from leaving battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -3067,7 +3027,6 @@
     "description": "Ensures that the user's next move will hit the target.",
     "flags": "Protect, Mirror",
     "effect": "NextAttackAlwaysHits",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3087,7 +3046,6 @@
     "description": "Target loses 1/4 its max HP every turn as long as it's asleep.",
     "flags": "Protect, Mirror",
     "effect": "StatusNightmare",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3125,7 +3083,6 @@
     "flags": "Sound, Protect, Mirror, KingsRock",
     "effect": "DamageWhileAsleep",
     "effectChance": 30,
-    "support": "None",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -3143,7 +3100,6 @@
     "maxPP": 10,
     "description": "Ghosts pay half their max HP to hurt the target every turn. Others decrease Speed but raise Attack and Defense.",
     "effect": "Curse",
-    "support": "None",
     "zBonus": {
       "effect": "Curse"
     }
@@ -3280,7 +3236,6 @@
     "description": "Prevents any moves from hitting the user this turn.",
     "target": "User",
     "effect": "Protect",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3443,7 +3398,6 @@
     "description": "Scatters Spikes, hurting opposing Pokémon that switch in.",
     "target": "FoeSide",
     "effect": "SetSpikes",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -3479,7 +3433,6 @@
     "description": "Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it's a Ghost.",
     "flags": "Protect, Mirror",
     "effect": "Foresight",
-    "support": "None",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -3496,7 +3449,6 @@
     "description": "If the user faints this turn, the target automatically will, too.",
     "target": "User",
     "effect": "KoMonThatDefeatedUser",
-    "support": "None",
     "zBonus": {
       "effect": "Redirect"
     }
@@ -3514,7 +3466,6 @@
     "target": "Field",
     "flags": "Sound",
     "effect": "AllFaint3Turns",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3550,7 +3501,6 @@
     "description": "Prevents any moves from hitting the user this turn.",
     "target": "User",
     "effect": "Protect",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -3592,7 +3542,6 @@
     "description": "Ensures that the user's next move will hit the target.",
     "flags": "Protect, Mirror",
     "effect": "NextAttackAlwaysHits",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -3613,7 +3562,6 @@
     "target": "RandomFoe",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -3632,7 +3580,6 @@
     "description": "Changes the weather to a sandstorm for five turns.",
     "target": "Field",
     "effect": "WeatherSandstorm",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -3671,7 +3618,6 @@
     "description": "Prevents the user's HP from lowering below 1 this turn.",
     "target": "User",
     "effect": "SurviveWith1Hp",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3842,7 +3788,6 @@
     "description": "Prevents the target from leaving battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -3862,7 +3807,6 @@
     "description": "Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "Infatuate",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3896,7 +3840,6 @@
     "target": "UserSide",
     "flags": "Sound, Snatch",
     "effect": "CurePartyStatus",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3962,7 +3905,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "PreventStatus",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4081,7 +4023,6 @@
     "description": "Allows the trainer to switch out the user and pass effects along to its replacement.",
     "target": "User",
     "effect": "PassStatsAndStatus",
-    "support": "None",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4098,7 +4039,6 @@
     "description": "Forces the target to repeat its last used move every turn for 2 to 6 turns.",
     "flags": "Protect, Mirror",
     "effect": "Encore",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4118,7 +4058,6 @@
     "description": "Has double power against, and can hit, Pokémon attempting to switch out.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HitBeforeSwitch",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -4134,7 +4073,6 @@
     "description": "Frees the user from binding moves, removes Leech Seed, and blows away Spikes.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RemoveHazardsAndBinding",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -4227,7 +4165,6 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
-    "support": "Partial",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4246,7 +4183,6 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
-    "support": "Partial",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4265,7 +4201,6 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
-    "support": "Partial",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -4321,7 +4256,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "FlinchDoubleDamageFlyOrBounce",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90
   },
@@ -4337,7 +4271,6 @@
     "description": "Changes the weather to rain for five turns.",
     "target": "Field",
     "effect": "WeatherRain",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4357,7 +4290,6 @@
     "description": "Changes the weather to sunny for five turns.",
     "target": "Field",
     "effect": "WeatherSun",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4485,7 +4417,6 @@
     "maxPP": 15,
     "description": "Hits the target two turns later.",
     "effect": "HitIn3Turns",
-    "support": "None",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -4523,7 +4454,6 @@
     "description": "Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Whirlpool",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -4584,7 +4514,6 @@
     "target": "RandomFoe",
     "flags": "Sound, Protect, Mirror, KingsRock",
     "effect": "Uproar",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -4676,7 +4605,6 @@
     "target": "Field",
     "flags": "Protect",
     "effect": "WeatherHail",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4696,7 +4624,6 @@
     "description": "Prevents the target from using the same move twice in a row.",
     "flags": "Protect, Mirror",
     "effect": "Torment",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -4778,7 +4705,6 @@
     "description": "Power doubles if user is burned, paralyzed, or poisoned.",
     "flags": "Contact, Protect, Mirror",
     "effect": "DoublePowerWhenStatused",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -4811,7 +4737,6 @@
     "description": "If the target is paralyzed, inflicts double damage and cures the paralysis.",
     "flags": "Contact, Protect, Mirror",
     "effect": "DoublePowerAndCureParalysis",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120,
     "modern": {
@@ -4869,7 +4794,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "SpDefUpDoubleElectricPower",
-    "support": "Partial",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4889,7 +4813,6 @@
     "description": "For the next few turns, the target can only use damaging moves.",
     "flags": "Protect, Mirror",
     "effect": "Taunt",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -4966,7 +4889,6 @@
     "description": "User will recover half its max HP at the end of the next turn.",
     "target": "User",
     "effect": "HealIn3Turns",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5000,7 +4922,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "GroundTrapUserContinuousHeal",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5098,7 +5019,6 @@
     "description": "Destroys Reflect and Light Screen.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RemoveScreens",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 90
   },
@@ -5114,7 +5034,6 @@
     "description": "Target sleeps at the end of the next turn.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StatusSleepNextTurn",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -5206,7 +5125,6 @@
     "description": "Prevents the target from using any moves that the user also knows.",
     "target": "User",
     "effect": "MakeSharedMovesUnuseable",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5227,7 +5145,6 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "HealStatus",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -5244,7 +5161,6 @@
     "description": "If the user faints this turn, the PP of the move that fainted it drops to 0.",
     "target": "User",
     "effect": "RemoveAllPpOnDefeat",
-    "support": "None",
     "zBonus": {
       "effect": "Redirect"
     }
@@ -5298,7 +5214,6 @@
     "description": "User dives underwater, dodging all attacks, and hits next turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Dive",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5469,7 +5384,6 @@
     "description": "Halves all Electric-type damage.",
     "target": "Field",
     "effect": "HalveElectricDamage",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5588,7 +5502,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5604,7 +5517,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5657,7 +5569,6 @@
     "description": "If there be weather, this move has doubled power and the weather's type.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "ChangeTypeWithWeather",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5674,7 +5585,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "CurePartyStatus",
-    "support": "None",
     "zBonus": {
       "effect": "Heal"
     }
@@ -5752,7 +5662,6 @@
     "description": "Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it's a Ghost.",
     "flags": "Protect, Mirror",
     "effect": "Foresight",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Attack"
@@ -5973,7 +5882,6 @@
     "description": "Inflicts regular damage and can hit Bounce and Fly users.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "effect": "HitFly",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 90
   },
@@ -5989,7 +5897,6 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -6118,7 +6025,6 @@
     "description": "Prevents the target from leaving battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -6175,7 +6081,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -6219,7 +6124,6 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Bounce",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6320,7 +6224,6 @@
     "description": "Halves all Fire-type damage.",
     "target": "Field",
     "effect": "HalveFireDamage",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -6448,7 +6351,6 @@
     "maxPP": 5,
     "description": "Hits the target two turns later.",
     "effect": "HitIn3Turns",
-    "support": "None",
     "zPower": 200,
     "maxPower": 140,
     "modern": {
@@ -6488,7 +6390,6 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfRemoveFlyingType",
-    "support": "Partial",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -6508,7 +6409,6 @@
     "description": "Disables moves and immunities that involve flying or levitating for five turns.",
     "target": "Field",
     "effect": "Gravity",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6528,7 +6428,6 @@
     "description": "Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",
     "flags": "Protect, Mirror",
     "effect": "IgnoreEvationRemoveDarkImmune",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6548,7 +6447,6 @@
     "description": "If the target is asleep, has double power and wakes it up.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerHealSleep",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 85,
     "modern": {
@@ -6600,8 +6498,7 @@
     "maxPP": 10,
     "description": "User faints. Its replacement has its HP fully restored and any major status effect removed.",
     "target": "User",
-    "effect": "FaintAndFullHealNextMon",
-    "support": "None"
+    "effect": "FaintAndFullHealNextMon"
   },
   {
     "id": 362,
@@ -6647,7 +6544,6 @@
     "priority": 2,
     "description": "Hits through Protect and Detect.",
     "effect": "RemoveProtect",
-    "support": "Partial",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -6683,7 +6579,6 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "DoubleSpeed3Turns",
-    "support": "None",
     "zBonus": {
       "effect": "Crit2"
     },
@@ -6737,7 +6632,6 @@
     "description": "User must switch out after attacking.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "SwitchHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -6809,7 +6703,6 @@
     "description": "Target cannot use held items.",
     "flags": "Protect, Mirror",
     "effect": "PreventItemUse",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6845,7 +6738,6 @@
     "description": "Transfers the user's major status effect to the target.",
     "flags": "Protect, Mirror",
     "effect": "TransferStatus",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6885,7 +6777,6 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "PreventHealing",
-    "support": "None",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6941,7 +6832,6 @@
     "description": "Nullifies target's ability until it leaves battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SupressAbility",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6961,7 +6851,6 @@
     "description": "Prevents the target from scoring critical hits for five turns.",
     "target": "UserSide",
     "effect": "PreventCrits",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -7135,7 +7024,6 @@
     "description": "Scatters poisoned spikes, poisoning opposing Pokémon that switch in.",
     "target": "FoeSide",
     "effect": "ToxicSpikes",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -7172,7 +7060,6 @@
     "description": "Restores 1/16 of the user's max HP each turn.",
     "target": "User",
     "effect": "RestoreHpEveryTurn",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -7192,7 +7079,6 @@
     "description": "User is immune to Ground moves and effects for five turns.",
     "target": "User",
     "effect": "GiveGroundImmunity",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -7578,7 +7464,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -7838,7 +7723,6 @@
     "description": "Lowers the target's evasion by one stage. Removes field effects from the enemy field.",
     "flags": "Protect, Mirror",
     "effect": "RemoveHazardsScreensEvaDown",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -7860,7 +7744,6 @@
     "target": "Field",
     "flags": "Mirror",
     "effect": "TrickRoom",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -7970,7 +7853,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -8087,7 +7969,6 @@
     "description": "Causes damage when opposing Pokémon switch in.",
     "target": "FoeSide",
     "effect": "StealthRock",
-    "support": "None",
     "zBonus": {
       "stats": [
         "Defense"
@@ -8311,7 +8192,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -8342,8 +8222,7 @@
     "description": "User faints, and its replacement is fully healed.",
     "target": "User",
     "flags": "Dance",
-    "effect": "FaintFullRestoreNextMon",
-    "support": "None"
+    "effect": "FaintFullRestoreNextMon"
   },
   {
     "id": 462,
@@ -8373,7 +8252,6 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
-    "support": "Partial",
     "zPower": 180,
     "maxPower": 130,
     "modern": {
@@ -8455,7 +8333,6 @@
     "description": "User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect.",
     "flags": "Contact, Mirror, KingsRock",
     "effect": "ShadowForce",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -9430,7 +9307,6 @@
     "description": "User must switch out after attacking.",
     "flags": "Protect, Mirror",
     "effect": "SwitchHit",
-    "support": "Partial",
     "zPower": 140,
     "maxPower": 120
   },
@@ -9704,7 +9580,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "FlinchMinimizeDoubleHit",
     "effectChance": 30,
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 120
   },
@@ -10208,7 +10083,6 @@
     "description": "User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect.",
     "flags": "Contact, Mirror",
     "effect": "ShadowForce",
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },
@@ -11705,7 +11579,6 @@
     "description": "Requires a turn to charge before attacking.",
     "flags": "Contact, Protect, Mirror",
     "effect": "SkipChargeTurnInSun",
-    "support": "Partial",
     "zPower": 190,
     "maxPower": 140
   },
@@ -12332,7 +12205,6 @@
     "description": "Destroys Reflect and Light Screen.",
     "flags": "Contact, Bite, Protect, Mirror",
     "effect": "RemoveScreens",
-    "support": "Partial",
     "zPower": 160,
     "maxPower": 130
   },
@@ -12413,7 +12285,6 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror",
     "effect": "RechargeAfter",
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -13705,7 +13576,6 @@
     "flags": "Protect, Mirror",
     "effect": "RechargeAfter",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 100
   },
@@ -13722,7 +13592,6 @@
     "flags": "Protect, Mirror",
     "effect": "RechargeAfter",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 200,
     "maxPower": 150
   },
@@ -14012,7 +13881,6 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "SwitchHit",
     "effectChance": 100,
-    "support": "Partial",
     "zPower": 120,
     "maxPower": 110
   },
@@ -14164,7 +14032,6 @@
     "flags": "Protect, Mirror",
     "effect": "Blizzard",
     "effectChance": 10,
-    "support": "Partial",
     "zPower": 175,
     "maxPower": 130
   },

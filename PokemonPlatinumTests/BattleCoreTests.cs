@@ -112,13 +112,14 @@ public class BattleCoreTests
     public void ARecordedBattleReplaysTheSame()
     {
         // The game's own battle, played by its menus with nothing fixed but the seed: moves, a switch, a Potion,
-        // a ball, a try at running, and whoever faints replaced
+        // a ball, a try at running, a U-turn (whose replacement is asked for in the middle of the turn), and
+        // whoever faints replaced
         static (Party Mine, Pokemon Wild) Teams()
         {
             var party = new Party();
             party.Add(Mon("Bidoof", 2, "Tackle"));
-            party.Add(Mon("Grotle", 24, "Razor Leaf", "Tackle"));
-            party.Add(Mon("Luxio", 23, "Spark", "Bite"));
+            party.Add(Mon("Grotle", 24, "Razor Leaf", "Tackle", "U-turn"));
+            party.Add(Mon("Luxio", 23, "Spark", "Bite", "U-turn"));
             return (party, Mon("Metang", 25, "Metal Claw", "Take Down"));
         }
 
@@ -143,8 +144,9 @@ public class BattleCoreTests
             {
                 case 1 when bench >= 0: battle.SelectSwitch(bench); break;
                 case 2: battle.SelectBagItem(2); break;
-                case 3: battle.SelectMove(1); break;
+                case 3: battle.SelectMove(2); break;
                 case 4: battle.SelectBagItem(0); break;
+                case 5: battle.SelectMove(1); break;
                 case 6: battle.SelectMainMenuOption(3); break;
                 default: battle.SelectMove(0); break;
             }
@@ -164,6 +166,8 @@ public class BattleCoreTests
         var answered = record.Answers.SelectMany(a => a).ToList();
         Assert.Superset(new HashSet<ChoiceKind> { ChoiceKind.Fight, ChoiceKind.Switch, ChoiceKind.Item }, answered.Select(c => c.Kind).ToHashSet());
         Assert.Contains(answered, c => c.Item == "Potion");
+        // A request in the middle of a turn is an answer of the record like any other
+        Assert.True(Lines(battle.Core.Log).Any(line => line.Contains("went back to")), string.Join(" / ", Lines(battle.Core.Log)));
         Assert.True(record.Answers.Count >= 6, $"{record.Answers.Count} answers");
 
         // Again with no screen at all: the same teams, a generator of the record's seed, the same answers

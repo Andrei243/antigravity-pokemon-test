@@ -383,7 +383,7 @@ internal sealed class WeatherHealer(BattleWeather weather, string name) : Battle
     public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
     {
         var p = self.Pokemon!;
-        if (over != weather || p.CurrentHP >= p.MaxHP || self.Volatile.HealBlockTurns > 0) return;
+        if (over != weather || p.CurrentHP >= p.MaxHP) return;
         ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 16), $"{self.Name}'s {name} restored a little HP!");
     }
 }
@@ -402,7 +402,7 @@ internal sealed class DrySkin : BattleEffect
     public override void UnderTheWeather(IBattleContext ctx, Battler self, BattleWeather over)
     {
         var p = self.Pokemon!;
-        if (over == BattleWeather.Rain && p.CurrentHP < p.MaxHP && self.Volatile.HealBlockTurns == 0)
+        if (over == BattleWeather.Rain && p.CurrentHP < p.MaxHP)
             ctx.RestoreHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s Dry Skin took in the rain!");
         else if (over == BattleWeather.Sun)
             ctx.LoseHp(self, Formulas.Divide(p.MaxHP, 8), $"{self.Name}'s Dry Skin suffers in the sun!");

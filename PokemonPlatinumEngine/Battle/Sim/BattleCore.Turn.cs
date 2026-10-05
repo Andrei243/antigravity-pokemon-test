@@ -136,7 +136,8 @@ public sealed partial class BattleCore
             };
             if (wears && !hidden && !effects.Any(e => e.ShelteredFrom(weather) || e.PreventsIndirectDamage))
                 LoseHp(b, Formulas.Divide(b.Pokemon!.MaxHP, 16), weather == BattleWeather.Sandstorm ? $"{b.Name} is buffeted by the sandstorm!" : $"{b.Name} is pelted by the hail!");
-            if (b.IsActive && !hidden) foreach (var e in effects) e.UnderTheWeather(this, b, weather);
+            // Under the ground or the water only the rain still reaches it
+            if (b.IsActive && (!hidden || weather == BattleWeather.Rain)) foreach (var e in effects) e.UnderTheWeather(this, b, weather);
             if (!Settle()) return false;
         }
         return true;
@@ -238,8 +239,7 @@ public sealed partial class BattleCore
             {
                 v.RampageTurns--;
                 if (b.Turn.MoveFailed) v.RampageTurns = 0;
-                else if (v.RampageTurns == 0 && !b.IsConfused && Confuse(b, null, false, By.Other))
-                    Say($"{b.Name} became confused due to fatigue!");
+                else if (v.RampageTurns == 0 && !b.IsConfused) Confuse(b, null, false, By.Other, $"{b.Name} became confused due to fatigue!");
                 if (v.RampageTurns == 0 && !b.IsHeldToItsMove) v.LockedMove = null;
             }
 

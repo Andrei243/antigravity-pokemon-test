@@ -156,7 +156,8 @@ public class BattleMechanicsTests
         Assert.Equal(hp - foe.MaxHP / 16, foe.CurrentHP);
         hp = foe.CurrentHP;
         UseMove(battle);
-        Assert.Equal(hp - foe.MaxHP * 2 / 16, foe.CurrentHP);
+        // A sixteenth, rounded down, times the count (battle_controller_player.c, MON_COND_CHECK_STATE_TOXIC)
+        Assert.Equal(hp - foe.MaxHP / 16 * 2, foe.CurrentHP);
     }
 
     [Fact]
@@ -395,9 +396,9 @@ public class BattleMechanicsTests
             Assert.All(abilities, a => Assert.NotNull(AbilityDatabase.Get(a)));
         }
 
-        // Shown but not working yet (weather, infatuation...): listed so they don't get forgotten
+        // Shown but not working yet (redirection, form changes...): listed so they don't get forgotten
         var pending = AbilityDatabase.GetAll().Where(a => !a.IsImplemented).Select(a => a.Name).ToList();
-        Assert.Contains("Sand Veil", pending);
+        Assert.Contains("Lightning Rod", pending);
         Assert.DoesNotContain("Intimidate", pending);
     }
 

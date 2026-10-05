@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Xunit;
 using PokemonPlatinumEngine.Battle.Effects;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
@@ -176,8 +177,10 @@ public class DataFileTests
     {
         foreach (var m in MoveDatabase.GetAll())
         {
-            // Anything not fully run names the effect still to write
-            Assert.Equal(m.Support != MoveEffectSupport.Full, m.Effect != null);
+            // Anything not fully run names the effect still to write; a move that is fully run names one only
+            // when the engine has code under that name
+            if (m.Support != MoveEffectSupport.Full) Assert.True(m.Effect != null, m.Name);
+            else if (m.Effect != null) Assert.True(BattleCore.HasMoveEffect(m.Effect), m.Name);
             // A move that does nothing yet carries no half-working side effects
             if (m.Support == MoveEffectSupport.None)
             {
@@ -190,11 +193,12 @@ public class DataFileTests
         }
 
         // How much runs may only grow (docs/mechanics/coverage.md has the details)
-        Assert.True(MoveDatabase.GetAll().Count(m => m.Support == MoveEffectSupport.Full) >= 333);
-        Assert.True(AbilityDatabase.GetAll().Count(a => a.IsImplemented) >= 70);
+        Assert.True(MoveDatabase.GetAll().Count(m => m.Support == MoveEffectSupport.Full) >= 466);
+        Assert.True(AbilityDatabase.GetAll().Count(a => a.IsImplemented) >= 93);
 
         Assert.Equal(("MultiHit", MoveEffectSupport.Partial), (MoveDatabase.Get("Fury Attack").Effect, MoveDatabase.Get("Fury Attack").Support));
-        Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Protect").Support);
+        Assert.Equal(("Protect", MoveEffectSupport.Full), (MoveDatabase.Get("Protect").Effect, MoveDatabase.Get("Protect").Support));
+        Assert.Equal(("Protect", MoveEffectSupport.Full), (MoveDatabase.Get("Detect").Effect, MoveDatabase.Get("Detect").Support));
         Assert.Equal((0, MoveEffectSupport.None), (MoveDatabase.Get("Seismic Toss").Power, MoveDatabase.Get("Seismic Toss").Support));
         Assert.Equal(MoveEffectSupport.None, MoveDatabase.Get("Fake Out").Support); // would always hit without its first-turn rule
         Assert.Equal((50, "HealHalfMoreInSun"), (MoveDatabase.Get("Synthesis").HealPercent, MoveDatabase.Get("Synthesis").Effect));

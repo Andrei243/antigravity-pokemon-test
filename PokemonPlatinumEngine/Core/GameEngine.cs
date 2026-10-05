@@ -1024,7 +1024,7 @@ public class GameEngine
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
 
-    /// <summary>What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do.</summary>
+    /// <summary>What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the weather of the place comes into the battle with it.</summary>
     private Battle.Sim.BattleConditions BattleConditionsHere() => new()
     {
         Terrain = currentMap.ArenaAt(player.GridX, player.GridY) switch
@@ -1034,7 +1034,8 @@ public class GameEngine
             _ => Battle.Sim.BattleTerrain.Land
         },
         Night = GameClock.IsNight,
-        HasCaught = species => playerPokedex.IsCaught(species.DexNumber)
+        HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
+        Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY))
     };
 
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
