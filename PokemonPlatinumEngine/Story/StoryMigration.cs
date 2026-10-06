@@ -41,6 +41,7 @@ public static class StoryMigration
     {
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
         if (savedVersion < 2) PastTheOpening(story, scripts);
+        if (savedVersion < 3) Run(story, scripts, ScriptLibrary.ChapterTwo);
     }
 
     /// <summary>
@@ -49,9 +50,17 @@ public static class StoryMigration
     /// by the script <see cref="ScriptLibrary.OpeningDone"/>, which sets the flags and variables the chapter would
     /// have left behind.
     /// </summary>
-    public static void PastTheOpening(StoryState story, ScriptLibrary scripts)
+    public static void PastTheOpening(StoryState story, ScriptLibrary scripts) => Run(story, scripts, ScriptLibrary.OpeningDone);
+
+    /// <summary>
+    /// Version 2, a save from before the second chapter was written (plan 02 · S5): the people its scenes bring on
+    /// (the assistant and Looker in Jubilife City, the president, the professor and Team Galactic at the north gate)
+    /// stood about with their old lines. They are taken off the map until their scenes, by
+    /// <see cref="ScriptLibrary.ChapterTwo"/>, which a new game runs too.
+    /// </summary>
+    private static void Run(StoryState story, ScriptLibrary scripts, string name)
     {
-        if (scripts.Find(ScriptLibrary.OpeningDone) is not { } script) return;
+        if (scripts.Find(name) is not { } script) return;
         var runner = new ScriptRunner(scripts, new HeadlessScriptHost(story) { ShowsNothing = true });
         runner.Start(script);
         runner.RunToEnd();

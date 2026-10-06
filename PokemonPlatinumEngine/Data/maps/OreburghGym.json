@@ -1,0 +1,169 @@
+{
+  "name": "OreburghGym",
+  "displayName": "Oreburgh Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Lab",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Rock",
+  "width": 11,
+  "height": 25,
+  "ground": [
+    "###########",
+    "###########",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#RRRcccRRR#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#RRRRRRccc#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#RRRcccRRR#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#cccRRRRRR#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#ccccccccc#",
+    "#RRRRRRccc#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####...####",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#######...#",
+    "#.........#",
+    "#.........#",
+    "####...####",
+    "#.........#",
+    "#.........#",
+    "#...#######",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#######...#",
+    "#.........#",
+    "#.#.....#.#",
+    "#.........#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 21,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 21,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 24,
+      "targetMap": "Sinnoh",
+      "targetX": 282,
+      "targetY": 757,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 21,
+      "text": "OREBURGH CITY POKéMON GYM\nLeader: Roark",
+      "script": "GymStatue"
+    },
+    {
+      "x": 8,
+      "y": 21,
+      "text": "OREBURGH CITY POKéMON GYM\nLeader: Roark",
+      "script": "GymStatue"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "roark",
+      "name": "Roark",
+      "npcType": "Roark",
+      "x": 5,
+      "y": 3,
+      "facing": "Down",
+      "script": "Roark"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 22,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "youngster_jonathon",
+      "name": "Jonathon",
+      "npcType": "Youngster",
+      "x": 4,
+      "y": 18,
+      "facing": "Right",
+      "trainer": {
+        "id": "youngster_jonathon",
+        "name": "Jonathon",
+        "trainerClass": "Youngster",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Youngster Jonathon: Rock types are tough as stone! Can you even scratch mine?",
+        "dialogueAfter": "Youngster Jonathon: Cracked like a pebble... The Leader is much harder than me, though!",
+        "sightRange": 5
+      }
+    },
+    {
+      "id": "youngster_darius",
+      "name": "Darius",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 11,
+      "facing": "Left",
+      "trainer": {
+        "id": "youngster_darius",
+        "name": "Darius",
+        "trainerClass": "Youngster",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Youngster Darius: Nobody gets to Roark without getting past me first!",
+        "dialogueAfter": "Youngster Darius: Fine, go on up. Roark's waiting, and he doesn't go easy.",
+        "sightRange": 3
+      }
+    }
+  ],
+  "wildEncounters": []
+}

@@ -28,7 +28,7 @@ public class OpeningTests
     /// story, the team and the bag, and the tile the player stands on. Everything is played as the engine plays it,
     /// and a script's warp brings on the script of the place it leads to.
     /// </summary>
-    private sealed class Game
+    internal sealed class Game
     {
         private readonly Dictionary<string, Map> maps = new(StringComparer.OrdinalIgnoreCase);
 

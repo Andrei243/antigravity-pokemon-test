@@ -440,3 +440,22 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The television | A caption of the special before the field appears | The special's last lines under "TV" over the bedroom | No caption screen; the lines are the same beat |
 | A nickname for the first Pokémon | The professor asks whether to give one | Not asked | Pokémon can't be named yet |
 | The Journal | Records what the player does | Given, and does nothing yet | The Journal's screen isn't built |
+
+## The second chapter (2026-10-06, plan 02 · S5)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_jubilife_city.s`, `scripts_trainers_school.s`, `scripts_route_203.s`, `scripts_oreburgh_gate_1f.s`, `scripts_oreburgh_city.s`, `scripts_oreburgh_mine_b2f.s`, `scripts_oreburgh_city_gym.s`, `scripts_init_new_game.s`)
+
+- **Looker holds the road to Route 203** until the player has delivered the parcel and has a Pokétch, and the Pokétch is the three coupons' price; the third clown has nothing to give until the president has told the campaign.
+- **The rival's teams** on Route 203 are the ones Platinum names after the player's starter, and so is the assistant's in the tag battle (`TRAINER_DAWN_JUBILIFE_CITY_<starter>` for a boy, Lucas's for a girl).
+- **The Gym's door** is kept by the rival until Roark has come back from the mine; the Coal Badge brings Team Galactic to Jubilife's north gate and takes the professor out of his lab until they are beaten.
+- **HM06** is given the first time the player passes the hiker in Oreburgh Gate, Badge or not; it is used in the field only with the Coal Badge.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The boy who takes the player to the Gym | Walks there with the player behind him | A fade, and the two stand before the Gym | Nobody follows the player yet |
+| The collector after the tag battle | Gives the Fashion Case and accessories | Not there | Accessories and contests are plan 06 · R17's |
+| Looker's Pal Pad, the Global Terminal's greeter | After the Coal Badge, by the Pokémon Center | Not there | Their rooms are plan 01 · M11's |
+| People who wander | Walk about within their own range | Stand where they are placed | The importer doesn't keep the ranges yet (S6) |
+

@@ -1073,6 +1073,8 @@ public static class WorldMapBuilder
         "clown" => "Clown",
         "looker" => "Looker",
         "cyrus" => "Cyrus",
+        "roark" => "Roark",
+        "grunt_m" or "grunt_f" => "Grunt",
         "briefcase" => "StarterBriefcase",
         _ => "Trainer"
     };

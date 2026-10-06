@@ -310,6 +310,13 @@ public sealed class MapFile
                 SightRange = t.SightRange,
                 DoubleBattle = t.DoubleBattle ?? false
             };
+            // A trainer of Platinum's data (the gym's, the school's) takes its team, mind and items from it, as the
+            // world's people do: a room needs to write only the id and the lines
+            if (TrainerDatabase.Get(t.Id) is { } record)
+            {
+                npc.TrainerData.FromPlatinum = t.Party.Count == 0;
+                TrainerDatabase.Fill(npc.TrainerData, record);
+            }
         }
 
         return npc;
@@ -412,8 +419,8 @@ public sealed class MapFile
             Id = t.Id,
             Name = t.Name,
             TrainerClass = t.TrainerClass,
-            Party = t.Party.Members.Select(p => new PartyMember { Species = p.Species.Name, Level = p.Level, Moves = ChosenMoves(p) }).ToList(),
-            PrizeMoney = t.PrizeMoney,
+            Party = t.FromPlatinum ? new() : t.Party.Members.Select(p => new PartyMember { Species = p.Species.Name, Level = p.Level, Moves = ChosenMoves(p) }).ToList(),
+            PrizeMoney = t.FromPlatinum ? new TrainerRecord().PrizeMoney : t.PrizeMoney,
             DialogueBefore = t.DialogueBefore,
             DialogueAfter = t.DialogueAfter,
             SightRange = t.SightRange,

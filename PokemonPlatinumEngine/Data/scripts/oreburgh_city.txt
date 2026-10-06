@@ -1,0 +1,106 @@
+# Oreburgh City (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_oreburgh_city.s).
+#
+# A boy meets the player at the edge of town and takes them to the Gym, where the rival stands at the door: Roark
+# has gone down the mine. Once Roark is back the rival leaves; once the Coal Badge is won, he runs into the player
+# on the way out and is off to Eterna City. VAR_OREBURGH_CITY_STATE: 1 taken to the Gym, 2 the Badge won, 3 the
+# rival gone on (or the professor saved in Jubilife first).
+
+
+# The way in from Oreburgh Gate (the original's trigger 3).
+script ToTheGym
+  emote youngster exclaim
+  if var PLAYER_Y == 748 walk youngster up 3
+  if var PLAYER_Y == 749 walk youngster up 2
+  if var PLAYER_Y == 750 walk youngster up 1
+  face youngster player
+  face player youngster
+  speaker "Boy"
+  say "Hey! You're a Trainer, right? You've come for the Gym? I knew it!"
+  say "I'll show you the way. Follow me!"
+  music "common/assistant"
+  fade out
+  place youngster 281 759 up
+  place player 282 759 up
+  fade in
+  face youngster player
+  say "This is the Oreburgh Gym! The Leader, Roark, is really strong. ...Huh? There's someone at the door."
+  face player up
+  music area
+  setvar VAR_OREBURGH_CITY_STATE 1
+  end
+
+
+# The rival at the Gym's door, until Roark is back from the mine.
+script Rival
+  face rival player
+  speaker "{rival}"
+  if flag FLAG_TALKED_TO_OREBURGH_CITY_RIVAL goto Again
+  say "{player}! You're late! I was going to take the Gym on first, but the Leader's not even here!"
+  say "Somebody said Roark went down the Oreburgh Mine. That's at the south end of town."
+  say "Go and get him, will you? I'm waiting right here. Hurry it up!"
+  setflag FLAG_TALKED_TO_OREBURGH_CITY_RIVAL
+  end
+label Again
+  say "The Gym Leader went down the mine, south of town. Go and drag him back already!"
+  end
+
+
+# The way out to Oreburgh Gate once the Badge is won (the original's trigger 4): the rival runs into the player.
+script RivalOnTheWayOut
+  clearflag FLAG_HIDE_OREBURGH_CITY_RIVAL
+  if var PLAYER_Y == 748 place rival 258 748 right
+  if var PLAYER_Y == 749 place rival 258 749 right
+  if var PLAYER_Y == 750 place rival 258 750 right
+  if var PLAYER_Y == 751 place rival 258 751 right
+  show rival
+  music "common/rival"
+  walk rival right 3 fast
+  emote rival exclaim
+  face player rival
+  speaker "{rival}"
+  say "Whoa! {player}! Watch where you're going!"
+  say "Got the Coal Badge? Me too! Roark was tough, but me and my team were tougher. Obviously."
+  say "Next stop: Eterna City and its Gym Badge. Out through Jubilife, then north. Bet I get there first!"
+  walk rival left 3 fast
+  hide rival
+  setflag FLAG_HIDE_OREBURGH_CITY_RIVAL
+  music area
+  setvar VAR_OREBURGH_CITY_STATE 3
+  end
+
+
+script Youngster
+  speaker "Boy"
+  if badge coal goto Badge
+  if flag FLAG_ROARK_RETURNED_TO_OREBURGH_GYM goto Waiting
+  say "The Gym's right there. Roark's the best Trainer in the whole town!"
+  end
+label Waiting
+  say "Roark's back at the Gym! Go on, he's waiting for you!"
+  end
+label Badge
+  say "You beat Roark? Can I see the Badge? ...Wow. So that's what a Coal Badge looks like up close!"
+  end
+
+
+script SchoolKidF
+  speaker "Schoolgirl"
+  if flag FLAG_ROARK_RETURNED_TO_OREBURGH_GYM goto Supervisor
+  say "Roark runs the Gym, but he's down in the mine more than he's up here."
+  end
+label Supervisor
+  say "Roark isn't only the Gym Leader. He keeps the mine safe for the workers too!"
+  end
+
+
+# A worker who gives a Super Potion to whoever is kind enough to hear him out.
+script Worker2
+  speaker "Worker"
+  if flag FLAG_RECEIVED_OREBURGH_CITY_SUPER_POTION goto Done
+  say "Hard work digging coal all day... Thanks for stopping to chat. Here, I've got a spare."
+  give "Super Potion"
+  setflag FLAG_RECEIVED_OREBURGH_CITY_SUPER_POTION
+label Done
+  say "Seeing a young Trainer about puts a smile on my face. Keep at it!"
+  end

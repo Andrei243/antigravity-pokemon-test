@@ -1,0 +1,39 @@
+# Route 203 (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_203.s).
+#
+# The rival waits just out of Jubilife City and battles the player with the team that hangs on the player's starter;
+# then he runs on to Oreburgh City. VAR_ROUTE_203_RIVAL_STATE: 1 battled.
+
+
+# The west end of the route (the original's trigger 6, four tiles deep).
+script Rival
+  music "common/rival"
+  emote rival exclaim
+  if var PLAYER_Y == 757 walk rival left 4
+  if var PLAYER_Y == 758 walk rival left 4 down 1
+  if var PLAYER_Y == 759 walk rival left 4 down 2
+  if var PLAYER_Y == 760 walk rival left 4 down 3
+  face rival player
+  face player rival
+  speaker "{rival}"
+  say "There you are, {player}! I've been waiting! You got a Pokétch? Me too. Obviously."
+  say "My Pokémon and I learned loads at the Trainers' School. Let's see if you've been slacking!"
+  if starter "Turtwig" goto VsChimchar
+  if starter "Chimchar" goto VsPiplup
+  battle rival as "rival_route_203_piplup"
+  goto After
+label VsChimchar
+  battle rival as "rival_route_203_turtwig"
+  goto After
+label VsPiplup
+  battle rival as "rival_route_203_chimchar"
+label After
+  speaker "{rival}"
+  say "Gah! What was that?! ...Fine, whatever. The real test is the Oreburgh Gym!"
+  say "Through Oreburgh Gate and you're there. I'll be the first to get the Badge, you'll see!"
+  walk rival right 6 fast
+  hide rival
+  setflag FLAG_HIDE_ROUTE_203_RIVAL
+  music area
+  setvar VAR_ROUTE_203_RIVAL_STATE 1
+  end

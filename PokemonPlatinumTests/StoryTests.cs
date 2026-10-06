@@ -1064,8 +1064,20 @@ public class StoryTests
         Assert.Equal("jubilife_city", script.File);
         var item = ItemDatabase.Get(coupon)!;
 
+        // The third clown has nothing to give until the president has told the campaign (plan 02 · S5)
+        if (who == "clown_3")
+        {
+            var early = new HeadlessScriptHost { Map = map };
+            var waiting = new ScriptRunner(Scripts, early);
+            waiting.Start(script, clown);
+            waiting.RunToEnd();
+            Assert.Empty(early.Asked);
+            Assert.Equal(0, early.Bag.GetQuantity(item));
+        }
+
         // No: nothing given, and the question is asked again next time
         var wrong = new HeadlessScriptHost { Map = map };
+        wrong.Story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
         wrong.Answers.Enqueue(1);
         var runner = new ScriptRunner(Scripts, wrong);
         runner.Start(script, clown);
@@ -1076,6 +1088,7 @@ public class StoryTests
 
         // Yes: the coupon, with its fanfare
         var right = new HeadlessScriptHost { Map = map };
+        right.Story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
         runner = new ScriptRunner(Scripts, right);
         runner.Start(script, clown);
         runner.RunToEnd();

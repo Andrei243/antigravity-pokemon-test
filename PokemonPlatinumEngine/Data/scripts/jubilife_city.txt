@@ -1,14 +1,234 @@
-# Jubilife City. docs/scripts.md describes the language; the lines are our own, on the original's beats.
+# Jubilife City (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_jubilife_city.s).
 #
-# The city's own scenes (the first arrival, Looker, the president announcing the Pokétch campaign, Team Galactic
-# by the north gate) are plan 02 · S5's. What is here already is the campaign's three clowns, who each ask one
-# question and give a coupon for the right answer.
-#
-# For S5: in the original the first two clowns turn up once the president has announced the campaign (the flag
-# FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2, which their objects already carry), and the third tells the player to
-# stay around until then (VAR_POKETCH_CAMPAIGN_STATE below 2). Both come with his scene.
+# VAR_JUBILIFE_CITY_STATE: 0 never here, 1 met the assistant and Looker, 2 given the Pokétch, 3 Team Galactic at the
+# north gate (set by the Coal Badge), 4 the professor saved. VAR_POKETCH_CAMPAIGN_STATE: 1 the rival has had his
+# parcel (the president comes out), 2 the campaign told. Looker stands at the road to Route 203 until the player has
+# been to the Trainers' School and has a Pokétch.
 
 
+# Arriving from Route 202 the first time (the original's trigger 2, at the south end of the main street): the
+# assistant comes to meet the player, they walk up the street together and run into Looker, who hands over a
+# Vs. Recorder; the assistant points out the Trainers' School, where the rival is waiting, and goes back to the lab.
+script FirstArrival
+  place looker 177 774 down
+  clearflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
+  show counterpart
+  emote counterpart exclaim
+  walk counterpart down 3
+  music "common/assistant"
+  speaker "{assistant}"
+  say "{player}! There you are. The professor asked me to keep an eye out for you."
+  say "Welcome to Jubilife City, the biggest city in Sinnoh! Come on, I'll show you around."
+  if var PLAYER_X == 173 walk player right 1
+  if var PLAYER_X == 175 walk player left 1
+  if var PLAYER_X == 176 walk player left 2
+  move counterpart left 1 up 15
+  walk player up 20
+  waitmoves
+  walk looker left 5
+  walk looker right 2
+  emote looker exclaim
+  face looker down
+  face player looker
+  face counterpart looker
+  speaker "???"
+  say "...! You there. You did not see me just now, yes? I was only... admiring the street."
+  speaker "Looker"
+  say "No. A detective does not lie to children. I am Looker, of the International Police."
+  ask "Looker! Surely the name is known to you?"
+  if yes goto Known
+  say "Truly? Never? ...Then we shall call it a clever disguise. It is better so."
+  goto Recorder
+label Known
+  say "Of course it is. And yet you will tell no one you saw me here, yes?"
+label Recorder
+  say "A certain group is at work in Sinnoh. I am here to learn what they want."
+  say "You are a Trainer. Trainers see a great deal. Here, take this. Record your battles and study them."
+  give "Vs. Recorder"
+  say "If you notice anything suspicious, you will remember my face. Farewell!"
+  walk looker right 3 up 7 fast
+  place looker 186 756 down
+  face counterpart player
+  face player counterpart
+  speaker "{assistant}"
+  say "...What a strange man. Anyway!"
+  face counterpart left
+  say "That building over there is the Trainers' School. {rival} ran in there a while ago, saying he'd learn everything in one go."
+  face counterpart player
+  say "You have his parcel, don't you? You'd better take it to him!"
+  say "I have to get back to the professor. See you, {player}!"
+  walk counterpart down 9
+  hide counterpart
+  setflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
+  music area
+  setvar VAR_JUBILIFE_CITY_STATE 1
+  end
+
+
+# The road east to Route 203 (the original's trigger 3): Looker turns the player back until they have been to the
+# Trainers' School and have a Pokétch.
+script LookerBlocks
+  face looker player
+  emote looker exclaim
+  speaker "Looker"
+  call LookerWhy
+  walk player left 1
+  end
+
+script LookerWhy
+  if not flag FLAG_TALKED_TO_TRAINERS_SCHOOL_RIVAL goto School
+  say "You have no Pokétch on your wrist yet. In this city, every Trainer has one."
+  say "Find the Pokétch Company's president. A detective's advice: never leave a city without its watch."
+  return
+label School
+  say "You have business at the Trainers' School first, I think. Your friend is waiting there."
+  return
+
+script Looker
+  face looker player
+  speaker "Looker"
+  if flag FLAG_RECEIVED_POKETCH goto Badges
+  call LookerWhy
+  end
+label Badges
+  say "Ah, the Pokétch. Good. Oreburgh City lies east, beyond Route 203."
+  say "A Gym is there. A Badge opens many doors... and people talk to a Trainer with a Badge."
+  end
+
+
+# The president of the Pokétch Company, out in the street once the rival has had his parcel (the original's
+# trigger 17): he stops the player, sees no Pokétch and starts the campaign.
+script PoketchCampaign
+  emote poketch_co_president exclaim
+  if var PLAYER_X == 172 walk poketch_co_president down 4 left 2
+  if var PLAYER_X == 173 walk poketch_co_president down 4 left 1
+  if var PLAYER_X == 174 walk poketch_co_president down 4
+  if var PLAYER_X == 175 walk poketch_co_president down 4 right 1
+  if var PLAYER_X == 176 walk poketch_co_president down 4 right 2
+  face poketch_co_president player
+  face player poketch_co_president
+  speaker "President"
+  say "Hold on, young Trainer! Your wrist is bare! You have no Pokétch!"
+  say "I am the president of the Pokétch Company, and that simply won't do."
+  say "We're holding a campaign! Three clowns in this city each have a quiz. Answer correctly, and each gives you a coupon."
+  say "Bring me all three coupons, and I'll give you a Pokétch of your very own!"
+  setvar VAR_POKETCH_CAMPAIGN_STATE 2
+  end
+
+script PoketchCoPresident
+  face poketch_co_president player
+  speaker "President"
+  if not flag FLAG_RECEIVED_COUPON_1 goto NotYet
+  if not flag FLAG_RECEIVED_COUPON_2 goto NotYet
+  if not flag FLAG_RECEIVED_COUPON_3 goto NotYet
+  say "Oh ho! All three coupons! Splendid. Then, as promised..."
+  take "Coupon 1"
+  take "Coupon 2"
+  take "Coupon 3"
+  poketch on
+  poketchapp DigitalWatch
+  poketchapp Calculator
+  poketchapp Pedometer
+  poketchapp PartyStatus
+  fanfare keyitem
+  text "{player} received a Pokétch!"
+  setflag FLAG_RECEIVED_POKETCH
+  setvar VAR_JUBILIFE_CITY_STATE 2
+  say "It tells the time, counts your steps and keeps an eye on your team. Press P to look at it."
+  say "We'll be adding more apps all the time. Come back and see us at the company!"
+  walk poketch_co_president up 3
+  hide poketch_co_president
+  setflag FLAG_HIDE_JUBILIFE_CITY_POKETCH_CO_PRESIDENT
+  clearflag FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT
+  end
+label NotYet
+  say "Find the three clowns around the city and answer their quizzes. Each gives a coupon. Collect all three!"
+  end
+
+
+# Team Galactic by the north gate (the original's trigger 4, once the Coal Badge is won): two grunts are after the
+# professor's research; the assistant and the player beat them together, side by side.
+script TeamGalactic
+  speaker "Galactic Grunt"
+  say "Come on, old man! Hand over your research on Pokémon evolution!"
+  if var PLAYER_X == 173 walk player right 1
+  if var PLAYER_X == 175 walk player left 1
+  walk player up 2
+  face player grunt_m_2
+  speaker "Prof. Rowan"
+  say "Out of the question. Research is to be shared, not stolen. What does your Team Galactic even want with it?"
+  speaker "Galactic Grunt"
+  say "That's none of your business! If you won't hand it over, we'll just take it!"
+  face counterpart player
+  speaker "{assistant}"
+  say "{player}! You came at just the right time. These two won't leave the professor alone."
+  say "Come on, let's battle them together and teach them some manners!"
+  speaker "Galactic Grunt"
+  say "Kids? Fine. Two on two! We'll flatten you both!"
+  if boy goto Dawn
+  if starter "Chimchar" goto LucasTurtwig
+  if starter "Piplup" goto LucasChimchar
+  battle grunt_m_1 and grunt_m_2 with "lucas_jubilife_city_turtwig"
+  goto Beaten
+label LucasTurtwig
+  battle grunt_m_1 and grunt_m_2 with "lucas_jubilife_city_chimchar"
+  goto Beaten
+label LucasChimchar
+  battle grunt_m_1 and grunt_m_2 with "lucas_jubilife_city_piplup"
+  goto Beaten
+label Dawn
+  if starter "Chimchar" goto DawnTurtwig
+  if starter "Piplup" goto DawnChimchar
+  battle grunt_m_1 and grunt_m_2 with "dawn_jubilife_city_turtwig"
+  goto Beaten
+label DawnTurtwig
+  battle grunt_m_1 and grunt_m_2 with "dawn_jubilife_city_chimchar"
+  goto Beaten
+label DawnChimchar
+  battle grunt_m_1 and grunt_m_2 with "dawn_jubilife_city_piplup"
+label Beaten
+  speaker "Galactic Grunt"
+  say "We lost to a couple of kids?! This isn't over! Team Galactic will make a new world, and you'll see!"
+  walk grunt_m_1 up 6 fast
+  hide grunt_m_1
+  walk grunt_m_2 up 6 fast
+  hide grunt_m_2
+  setflag FLAG_HIDE_JUBILIFE_GALACTIC_GRUNTS
+  music "common/rowan"
+  face prof_rowan player
+  speaker "Prof. Rowan"
+  say "Hmm. You two are a good team. Thank you, {player}."
+  say "Team Galactic... They spoke of evolution, and of a new world. I don't care for the sound of it."
+  speaker "{assistant}"
+  say "The professor studies how Pokémon evolve. That must be what they were after."
+  speaker "Prof. Rowan"
+  say "Pokémon grow and change, as people do. Keep filling your Pokédex, {player}. North of here lies Floaroma Town."
+  say "Come. We are going back to the lab."
+  walk prof_rowan down 2 fast
+  hide prof_rowan
+  setflag FLAG_HIDE_JUBILIFE_ROWAN
+  clearflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
+  speaker "{assistant}"
+  say "Bye, {player}! Good luck out there!"
+  walk counterpart down 2 fast
+  hide counterpart
+  setflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
+  music area
+  setvar VAR_JUBILIFE_CITY_STATE 4
+  setvar VAR_OREBURGH_CITY_STATE 3
+  end
+
+
+# Arriving in the city: once Team Galactic is at the north gate, the assistant stands beside the professor.
+script OnEnter
+  if var VAR_JUBILIFE_CITY_STATE >= 3 place counterpart 176 739 left
+  end
+
+
+# The campaign's three clowns each ask one question and give a coupon for the right answer. The first two come out
+# with the president, once the rival has had his parcel (FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2); the third is there
+# all along, but has nothing to give until the campaign has been told (VAR_POKETCH_CAMPAIGN_STATE 2).
 script Clown1
   if flag FLAG_RECEIVED_COUPON_1 goto Done
   say "Ta-da! Welcome to the Pokétch campaign! Here's my question..."
@@ -52,6 +272,7 @@ label Done
 
 
 script Clown3
+  if var VAR_POKETCH_CAMPAIGN_STATE < 2 goto Wait
   if flag FLAG_RECEIVED_COUPON_3 goto Done
   say "Last question of the Pokétch campaign! Ready?"
   ask "Can a Pokémon carry an item of its own?"
@@ -69,4 +290,14 @@ label Wrong
   end
 label Done
   say "One Pokémon, one item. Choose it well!"
+  end
+label Wait
+  say "Oh! Something fun is about to happen in this city. Stick around and you'll see!"
+  end
+
+
+# A grunt spoken to before the scene starts.
+script Grunt
+  speaker "Galactic Grunt"
+  say "Beat it, kid! This is Team Galactic business!"
   end

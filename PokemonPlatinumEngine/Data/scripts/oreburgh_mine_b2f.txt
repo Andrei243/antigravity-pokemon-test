@@ -1,0 +1,26 @@
+# Oreburgh Mine B2F (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_oreburgh_mine_b2f.s).
+#
+# Roark is at work at the bottom of the mine. Spoken to, he shows what Rock Smash does to a cracked rock and goes
+# back up to the Gym.
+
+
+script Roark
+  face roark player
+  speaker "Roark"
+  say "Hm? A Trainer, down here? ...Ah, you're here for the Gym. You'll have to wait while I clear this. Stand back and watch."
+  face roark right
+  sound "rock_smash"
+  camera shake 0.3
+  hide rock_smash_1
+  wait 0.4
+  face roark player
+  say "Rocks like that block the tunnels, so they need smashing. Rock Smash does it. You can learn it too, you know."
+  say "Right. If it's my Gym you want, I'll be waiting up there. Don't keep me long!"
+  fade out
+  hide roark
+  setflag FLAG_HIDE_OREBURGH_MINE_B2F_ROARK
+  setflag FLAG_ROARK_RETURNED_TO_OREBURGH_GYM
+  setflag FLAG_HIDE_OREBURGH_CITY_RIVAL
+  fade in
+  end

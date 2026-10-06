@@ -2,7 +2,10 @@
   "area": "route_203",
   "bgmTrack": "sinnoh/route203",
   "trees": "Round",
+  // The rival waits at the west end (plan 02 · S5, scripts/route_203.txt)
+  "triggers": [ { "trigger": 0, "script": "Rival" } ],
   "people": {
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Oreburgh City's just through the gate! Get a move on!" ] },
     "lass": {
       "name": "Lass",
       "dialog": [
