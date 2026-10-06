@@ -526,6 +526,7 @@ public partial class GameEngine
         public Party Party => game.playerParty;
         public Inventory Bag => game.playerInventory;
         public Poketch Poketch => game.poketch;
+        public SafariGame Safari => game.safari;
 
         public int Money
         {

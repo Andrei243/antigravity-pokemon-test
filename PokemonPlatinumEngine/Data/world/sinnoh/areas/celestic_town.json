@@ -1,0 +1,85 @@
+{
+  "key": "celestic_town",
+  "index": 442,
+  "name": "Celestic Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "City",
+  "dayMusic": "CITY04_D",
+  "nightMusic": "CITY04_N",
+  "encounters": "celestic_town",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 25, "maxLevel": 35 },
+    { "species": "Goldeen", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Corphish", "level": 30, "maxLevel": 40 },
+    { "species": "Crawdaunt", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 463, "z": 515, "to": "celestic_town_north_house", "toWarp": 0 },
+    { "x": 450, "z": 515, "to": "celestic_town_northwest_house", "toWarp": 0 },
+    { "x": 473, "z": 515, "to": "celestic_town_northeast_house", "toWarp": 0 },
+    { "x": 454, "z": 538, "to": "celestic_town_southwest_house", "toWarp": 0 },
+    { "x": 463, "z": 521, "to": "celestic_town_cave", "toWarp": 0 },
+    { "x": 472, "z": 538, "to": "celestic_town_pokecenter_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "expert_m", "looks": "expert_m", "movement": "wander_around", "x": 469, "z": 518, "facing": 1, "rangeX": 3, "rangeZ": 0, "y": 7, "script": "7" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "none", "x": 454, "z": 541, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "grunt_m", "looks": "grunt_m", "movement": "look_south", "x": 463, "z": 522, "facing": 1, "rangeX": 2, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_GRUNT_M", "script": "4" },
+    { "id": "elder", "looks": "expert_f", "movement": "look_north", "x": 462, "z": 538, "facing": 0, "rangeX": 2, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_ELDER", "script": "2" },
+    { "id": "cynthia", "looks": "cynthia", "movement": "look_west", "x": 466, "z": 522, "facing": 2, "rangeX": 2, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_CYNTHIA", "script": "6" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 466, "z": 537, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "10" },
+    { "id": "arrow_signpost_route_210_north", "looks": "arrow_signpost", "movement": "none", "x": 488, "z": 529, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_210_NORTH", "script": "65535" },
+    { "id": "arrow_signpost_route_211_east", "looks": "arrow_signpost", "movement": "none", "x": 440, "z": 526, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_211_EAST", "script": "65535" },
+    { "id": "ace_trainer_f", "looks": "ace_trainer_f", "movement": "look_south_and_west", "x": 454, "z": 516, "facing": 2, "rangeX": 0, "rangeZ": 2, "script": "8" },
+    { "id": "vent_1", "looks": "vent", "movement": "none", "x": 476, "z": 542, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_2", "looks": "vent", "movement": "none", "x": 470, "z": 542, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "item_dragon_fang", "looks": "pokeball", "movement": "none", "x": 469, "z": 533, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_CELESTIC_TOWN_DRAGON_FANG", "item": "Dragon Fang", "script": "7319" }
+  ],
+  "signs": [
+    { "x": 459, "z": 521, "type": 0, "script": "11" },
+    { "x": 460, "z": 521, "type": 0, "script": "11" },
+    { "x": 461, "z": 521, "type": 0, "script": "11" },
+    { "x": 465, "z": 521, "type": 0, "script": "12" },
+    { "x": 466, "z": 521, "type": 0, "script": "12" },
+    { "x": 467, "z": 521, "type": 0, "script": "12" },
+    { "x": 457, "z": 523, "type": 2, "script": "8273", "item": "King's Rock", "flag": "FLAG_OBTAINED_HIDDEN_CELESTIC_TOWN_KINGS_ROCK", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 463, "z": 538, "width": 3, "depth": 1, "script": "3", "variable": "VAR_CELESTIC_TOWN_ELDER_STATE", "value": "0" }
+  ]
+}

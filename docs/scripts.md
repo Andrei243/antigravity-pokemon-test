@@ -137,6 +137,7 @@ What an `if` can ask:
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `poketch` | The player has the Pokétch. |
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
+| `safari` | A Safari Game is under way in the Great Marsh. |
 
 ### What the story remembers
 
@@ -223,6 +224,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `sweetscent` | Draws out a wild Pokémon of the place where the player stands, on land or water, and battles it. `RESULT` is 0 when nothing lives there. |
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
+| `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. |
 
 ## Who is on the map
 

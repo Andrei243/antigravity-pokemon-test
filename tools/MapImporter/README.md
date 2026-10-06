@@ -18,7 +18,7 @@ A full run takes about twelve seconds. It needs `git` on the path the first time
 
 ## The game's own world files
 
-All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/world/sinnoh/world.json`, written by hand, lists the maps and the areas that are open. `--data` reads it and writes, beside it, the matrices of those maps, the chunks of the open areas and of every chunk next to one (they are in view from the edge), and the open areas' own files, each with its land encounters, and `habitats.json`, where every wild Pokémon of the region lives (every area's grass by time of day, water and rods, and where each area is on the overworld) for the Pokédex's area page. It deletes generated files that are no longer asked for and never touches `world.json` or `overlays/`. It takes a third of a second, writes the same bytes every time, and ends with an error if an open area's wild Pokémon name a species the game doesn't have. To open an area: add its key to `world.json`, run `--data`, write `overlays/<key>.json`, run the tests.
+All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/world/sinnoh/world.json`, written by hand, lists the maps and the areas that are open. `--data` reads it and writes, beside it, the matrices of those maps, the chunks of the open areas and of every chunk next to one (they are in view from the edge), and the open areas' own files, each with its land encounters, `habitats.json`, where every wild Pokémon of the region lives (every area's grass by time of day, water and rods, and where each area is on the overworld) for the Pokédex's area page, and `calendar.json`, Platinum's weather for each day of the year in the five places that follow a calendar. It deletes generated files that are no longer asked for and never touches `world.json` or `overlays/`. It takes a third of a second, writes the same bytes every time, and ends with an error if an open area's wild Pokémon name a species the game doesn't have. To open an area: add its key to `world.json`, run `--data`, write `overlays/<key>.json`, run the tests.
 
 ## What it writes
 
@@ -30,7 +30,7 @@ All of Sinnoh is 8.7 MB of world files; the game has only what is built. `Data/w
 | `compare/<area>.png` | An imported area next to the hand-made map that still stands in for it (none today: Jubilife City, the last, opened in plan 01 · M5) |
 | `areas/<key>.png` | Every area close up, eight pixels per tile, with its events |
 | `chunks/NNN.png` | Every chunk by behaviour, with the footprints of its props |
-| `world/matrices`, `world/chunks`, `world/areas`, `world/habitats.json` | The world files |
+| `world/matrices`, `world/chunks`, `world/areas`, `world/habitats.json`, `world/calendar.json` | The world files |
 | `report.md` | Counts; for each open area, how many of the original's people, warps and signs are in the game; the comparison in numbers; every texture name with the ground it was sorted into; every prop model; problems |
 
 It also rewrites `docs/tile-behaviours.md` in the repository.
@@ -44,6 +44,7 @@ It also rewrites `docs/tile-behaviours.md` in the repository.
 | People, warps, signs, triggers | `res/field/events/events_<area>.json` | positions, looks, movement, script numbers, how far a trainer sees; no script text |
 | What a model is called and how large it is | `res/field/props/models/*.nsbmd` (the name and the bounding box only) | `docs/world-models.md`: every model that stands outdoors, with its size, where it stands and what the game puts in its place (`Data/WorldModels.cs`). A model the catalogue doesn't know is listed under Problems |
 | What lies on the ground and what is hidden in it | `res/field/scripts/scripts_visible_items.s` (the item and the number each item ball's script sets), `include/data/field/hidden_items.h` (the table of hidden items), `generated/items.txt` and `generated/vars_flags.txt` (the numbers of items and of the hidden items' flags) | for each ball and each hidden place: the item, by the game's own name for it, and how many; for a hidden item also its flag and the Dowsing Machine's range. No line of the scripts' text |
+| The weather calendar | `src/field_overworld_weather.c` (`sYearlyWeather`) | the weather of each of its five places on each of the 366 days |
 | Wild Pokémon on land and on water | `res/field/encounters/encounters_<area>.json` | the twelve base land slots (species and level), the five water slots (species and a range of levels) and each table's rate |
 | Tile behaviours and the blocked flag | `res/field/maps/data/map_data_NNN.bin`, first section | all of it |
 | Props (buildings, signboards, furniture) | the same file, second section, and `res/field/props/models/*.nsbmd` | the model's id, its short name and its bounding box |

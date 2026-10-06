@@ -321,3 +321,23 @@ script BlackOutHome
   say "There. You all look much better now. Off you go again, and look after each other out there!"
   end
 
+
+
+# The end of a Safari Game in the Great Marsh (plan 01 · M7; the original's GreatMarsh scripts for the last step
+# and the last ball): the attendant's voice over the speakers, and the player is taken back out to Pastoria City,
+# in front of the observatory.
+script SafariTimeUp
+  speaker "Attendant"
+  say "Ding-dong! That's time! Your Safari Game is over."
+  say "Thank you for playing. Please come again!"
+  safari end
+  warp "Sinnoh" 610 810 down
+  end
+
+script SafariOutOfBalls
+  speaker "Attendant"
+  say "Ding-dong! You're out of Safari Balls, so your Safari Game is over."
+  say "Thank you for playing. Please come again!"
+  safari end
+  warp "Sinnoh" 610 810 down
+  end

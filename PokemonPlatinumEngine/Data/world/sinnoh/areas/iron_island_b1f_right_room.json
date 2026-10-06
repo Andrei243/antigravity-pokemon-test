@@ -1,0 +1,50 @@
+{
+  "key": "iron_island_b1f_right_room",
+  "index": 291,
+  "name": "Iron Island",
+  "matrix": 82,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "IronIslandCave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "iron_island_b1f_right_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 30 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Onix", "level": 31 },
+    { "species": "Onix", "level": 33 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 6, "z": 26, "to": "iron_island_b2f_left_room", "toWarp": 0 },
+    { "x": 16, "z": 26, "to": "iron_island_b2f_right_room", "toWarp": 0 },
+    { "x": 2, "z": 3, "to": "iron_island_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_max_repel", "looks": "pokeball", "movement": "none", "x": 21, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B1F_RIGHT_ROOM_MAX_REPEL", "item": "Max Repel", "script": "7137" },
+    { "id": "item_escape_rope", "looks": "pokeball", "movement": "none", "x": 2, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B1F_RIGHT_ROOM_ESCAPE_ROPE", "item": "Escape Rope", "script": "7136" },
+    { "id": "picnicker_summer", "looks": "picnicker", "movement": "wander_north_and_south", "x": 17, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_SUMMER" },
+    { "id": "item_revive", "looks": "pokeball", "movement": "none", "x": 7, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B1F_RIGHT_ROOM_REVIVE", "item": "Revive", "script": "7289" }
+  ],
+  "signs": [
+    { "x": 11, "z": 9, "type": 2, "script": "8052", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_IRON_ISLAND_B1F_RIGHT_ROOM_STAR_PIECE", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 11, "z": 23, "width": 1, "depth": 1, "script": "2", "variable": "VAR_MAP_LOCAL_0x00", "value": "0" }
+  ]
+}

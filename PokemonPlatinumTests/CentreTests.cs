@@ -207,7 +207,7 @@ public class CentreTests
     [Fact]
     public void AnItemReachedOnlyFromAPlaceNotBuiltYetIsHeldBack()
     {
-        // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (plan 01 · M7)
+        // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel, which the Ruin Maniac digs (plan 02)
         Assert.DoesNotContain(Overworld.Everyone, n => n.IsItemBall && n.Item == "Rare Candy" && (n.GridX, n.GridY) == (594, 653));
         Assert.Contains(Overworld.Everyone, n => n.IsItemBall && AreaKey(Overworld, n.GridX, n.GridY) == "solaceon_town");
     }

@@ -1,0 +1,22 @@
+{
+  "area": "iron_island_b1f_right_room",
+  "bgmTrack": "sinnoh/mine",
+  // The lift between the room's two levels (the original's trigger 0 moves its platform nine tiles up or down): until
+  // the platform itself moves, stepping onto it carries the player to the other level through a fade
+  "exits": [
+    { "x": 11, "z": 22, "map": "IronIslandB1FRight", "toX": 11, "toY": 24, "facing": "Down" },
+    { "x": 11, "z": 23, "map": "IronIslandB1FRight", "toX": 11, "toY": 21, "facing": "Up" }
+  ],
+  "people": {
+    "picnicker_summer": {
+      "name": "Summer",
+      "trainer": {
+        "id": "picnicker_summer",
+        "name": "Summer",
+        "trainerClass": "Picnicker",
+        "dialogueBefore": "Picnicker Summer: A picnic down a mine? Why not! Raichu and I will go anywhere for a good battle.",
+        "dialogueAfter": "Picnicker Summer: Oh well. Sandwich time, Raichu. We've earned that much."
+      }
+    }
+  }
+}

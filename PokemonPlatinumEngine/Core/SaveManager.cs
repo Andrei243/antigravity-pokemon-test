@@ -8,6 +8,9 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Core;
 
+/// <summary>A Safari Game as a save keeps it: the balls and the steps left.</summary>
+public sealed record SafariSave(int Balls, int Steps);
+
 public class SaveData
 {
     /// <summary>The <see cref="WorldVersion"/> from which Sinnoh's overworld is one map made from the imported world (plan 01 · M2).</summary>
@@ -68,6 +71,9 @@ public class SaveData
 
     /// <summary>The Pokétch: whether the player has it, its apps and the pedometer's count. Null in older saves.</summary>
     public PoketchSave? Poketch { get; set; }
+
+    /// <summary>A Safari Game under way in the Great Marsh (plan 01 · M7): its balls and steps left. Null when none is.</summary>
+    public SafariSave? Safari { get; set; }
 
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file

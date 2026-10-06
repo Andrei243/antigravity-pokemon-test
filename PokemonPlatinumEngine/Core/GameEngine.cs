@@ -132,6 +132,9 @@ public partial class GameEngine
 
     // The Pokétch (plan 02 · S2), and whether it is out on the screen
     private readonly Poketch poketch = new();
+
+    /// <summary>The Great Marsh's Safari Game, while one is on (plan 01 · M7; saved).</summary>
+    private readonly SafariGame safari = new();
     private readonly PoketchView poketchView = new();
 
     private static string playerName => PlayerIdentity.Name;
@@ -214,6 +217,7 @@ public partial class GameEngine
         pcBoxStorage.Clear();
         poketch.Clear();
         poketchView.Hide();
+        safari.End();
         registeredItem = null;
         exitSpot = null;
         lastDay = null;
@@ -325,6 +329,8 @@ public partial class GameEngine
         registeredItem = save.RegisteredItem;
         poketch.Load(save.Poketch);
         poketchView.Hide();
+        if (save.Safari is { } game) safari.Resume(game.Balls, game.Steps);
+        else safari.End();
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -403,6 +409,7 @@ public partial class GameEngine
             LastDay = lastDay,
             RegisteredItem = registeredItem,
             Poketch = poketch.Save(),
+            Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             BoxStorage = pcBoxStorage.Select(SavedPokemonData.FromPokemon).ToList(),
@@ -805,6 +812,9 @@ public partial class GameEngine
         // onto it, dust where they came down from a hop
         StepLeavesItsMark();
 
+        // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
+        if (safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
+
         // The story comes first: the script of the place walked into, then of the tiles stepped on; only then do trainers look
         if (entered || TryStepTrigger()) return true;
         return CheckTrainerSight();
@@ -1187,7 +1197,8 @@ public partial class GameEngine
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         var area = currentMap.AreaAt(player.GridX, player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
-        MeetWildPokemon(wild);
+        // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
+        MeetWildPokemon(wild, safari.Active ? BattleKind.Safari : BattleKind.Normal);
     }
 
     /// <summary>
@@ -1231,7 +1242,8 @@ public partial class GameEngine
                 Conditions = BattleConditionsHere(),
                 Kind = kind,
                 CannotFlee = cannotFlee,
-                PlayerName = name
+                PlayerName = name,
+                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
@@ -1442,6 +1454,12 @@ public partial class GameEngine
                 WhiteOut();
             }
             PlayFieldMusic();
+            // The Safari Game keeps the balls the battle didn't throw, and ends with the last of them
+            if (safari.Active && battle?.Kind == BattleKind.Safari)
+            {
+                safari.Balls = battle.SpecialBalls;
+                if (safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
+            }
         });
     }
 
@@ -1579,6 +1597,7 @@ public partial class GameEngine
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, playerParty);
+                if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();

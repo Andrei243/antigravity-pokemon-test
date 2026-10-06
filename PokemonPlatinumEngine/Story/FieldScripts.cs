@@ -36,6 +36,10 @@ public static class FieldScripts
     public const string BlackOutCenter = "common.BlackOutCenter";
     public const string BlackOutHome = "common.BlackOutHome";
 
+    /// <summary>The end of a Safari Game (plan 01 · M7): its last step taken, or its last ball thrown.</summary>
+    public const string SafariTimeUp = "common.SafariTimeUp";
+    public const string SafariOutOfBalls = "common.SafariOutOfBalls";
+
     /// <summary>
     /// The script a field move chosen from the party menu runs (<c>common.UseCut</c>…); null for Milk Drink and
     /// Soft-Boiled, which the party menu carries out itself, and Chatter, which has nothing to do here.

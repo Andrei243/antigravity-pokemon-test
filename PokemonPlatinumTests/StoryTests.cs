@@ -592,6 +592,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.EscapeRope, FieldScripts.CyclistsOnly });
         // Waking up after a lost battle, in a Pokémon Center or at home
         started.UnionWith(new[] { FieldScripts.BlackOutCenter, FieldScripts.BlackOutHome });
+        // The end of a Safari Game: its last step, or its last ball (plan 01 · M7)
+        started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -767,8 +769,10 @@ public class StoryTests
             Assert.Equal(FieldScripts.ItemBall, FieldScripts.For(ball));
             Assert.True(map.AreaAt(ball.GridX, ball.GridY)?.Open != false, $"{where} lies outside the open areas");
         }
-        // Each ball has a flag of its own: picking one up takes no other away
-        Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1).Select(g => g.Key));
+        // Each ball has a flag of its own: picking one up takes no other away. But for one the original shares: the
+        // TM in the Ruin Maniac's cave, which lies at the end of his tunnel once he has dug it (one or the other is there)
+        var shared = new[] { "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28" };
+        Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1 && !shared.Contains(g.Key)).Select(g => g.Key));
 
         // What the user asked to see, where Platinum has it: the Potion beside Route 202's grass and the Poké Ball of Route 203
         var overworld = OwnMaps.Value["Sinnoh"];

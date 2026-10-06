@@ -352,8 +352,8 @@ public class SouthWestTests
     public void AWayInThatLeadsNowhereIsClosed()
     {
         var map = Overworld;
-        // The Global Terminal's porch and the gate to Route 218 are open tiles in the world's data
-        foreach (var (x, y) in new[] { (149, 778), (128, 758), (128, 759) })
+        // The Global Terminal's porch is an open tile in the world's data
+        foreach (var (x, y) in new[] { (149, 778) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"one can walk into the way in at ({x},{y}), which leads nowhere");

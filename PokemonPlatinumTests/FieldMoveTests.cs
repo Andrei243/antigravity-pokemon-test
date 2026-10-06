@@ -447,12 +447,13 @@ public class FieldMoveTests
     public void FlyAndTeleportLandInFrontOfEachTownsPokemonCenter()
     {
         var map = Overworld;
-        foreach (var town in SpawnLocations.All.Where(s => map.Areas.Any(a => a.Key == s.Area && a.Open)))
+        // (Route 221's spot is in front of Pal Park, whose lobby comes after the Hall of Fame: plan 01 · M10)
+        foreach (var town in SpawnLocations.All.Where(s => map.Areas.Any(a => a.Key == s.Area && a.Open) && MapDatabase.MapNames.Contains(s.Room)))
         {
             Assert.Equal(town.Area, map.AreaAt(town.X, town.Y)?.Key);
             Assert.True(map.IsWalkable(town.X, town.Y), $"{town.Area}'s landing at {town.X},{town.Y} is not open ground");
             // The tile above it is the Pokémon Center's door (Twinleaf's: the player's house)
-            Assert.NotNull(map.GetWarpAt(town.X, town.Y - 1));
+            Assert.True(map.GetWarpAt(town.X, town.Y - 1) != null, $"{town.Area}: no door above its landing at {town.X},{town.Y}");
         }
 
         // The last Pokémon Center gone into is where Teleport goes; before any, Twinleaf Town

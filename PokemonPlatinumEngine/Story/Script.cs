@@ -24,6 +24,8 @@ public enum Op
     UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent,
     // The Pokétch (plan 02 · S2)
     Poketch, PoketchApp,
+    // The Great Marsh's Safari Game (plan 01 · M7)
+    Safari,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
@@ -36,7 +38,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

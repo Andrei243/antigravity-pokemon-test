@@ -413,6 +413,10 @@ public sealed class ScriptRunner
             case Op.PoketchApp:
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
                 break;
+            case Op.Safari:
+                if (i.Option) host.Safari.Start();
+                else host.Safari.End();
+                break;
             case Op.SweetScent:
                 // A wild Pokémon comes out where any live, and its battle is waited for
                 Result = 0;
@@ -561,6 +565,7 @@ public sealed class ScriptRunner
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
             Query.Poketch => host.Poketch.Enabled,
+            Query.Safari => host.Safari.Active,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")

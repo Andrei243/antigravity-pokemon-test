@@ -1,0 +1,97 @@
+{
+  "key": "route_221",
+  "index": 392,
+  "name": "Route 221",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_D_D",
+  "nightMusic": "ROAD_D_N",
+  "encounters": "route_221",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Floatzel", "level": 29 },
+    { "species": "Girafarig", "level": 28 },
+    { "species": "Roselia", "level": 28 },
+    { "species": "Roselia", "level": 29 },
+    { "species": "Sudowoodo", "level": 31 },
+    { "species": "Sudowoodo", "level": 30 },
+    { "species": "Girafarig", "level": 30 },
+    { "species": "Sudowoodo", "level": 29 },
+    { "species": "Floatzel", "level": 31 },
+    { "species": "Roselia", "level": 30 },
+    { "species": "Floatzel", "level": 31 },
+    { "species": "Roselia", "level": 30 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Wingull", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Pelipper", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Finneon", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Lumineon", "level": 25, "maxLevel": 35 },
+    { "species": "Lumineon", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Lumineon", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 261, "z": 900, "to": "route_221_house", "toWarp": 0 },
+    { "x": 306, "z": 909, "to": "pal_park_lobby", "toWarp": 0 },
+    { "x": 307, "z": 909, "to": "pal_park_lobby", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "swimmer_dillon", "looks": "swimmer_m", "movement": "wander_north_and_south", "x": 235, "z": 912, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_SWIMMER_DILLON" },
+    { "id": "swimmer_vanessa", "looks": "swimmer_f", "movement": "look_around", "x": 237, "z": 922, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_VANESSA" },
+    { "id": "fisherman_cory", "looks": "fisherman", "movement": "look_west", "x": 250, "z": 919, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_CORY" },
+    { "id": "collector_ivan", "looks": "collector", "movement": "look_north", "x": 288, "z": 915, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_COLLECTOR_IVAN" },
+    { "id": "ace_trainer_jake", "looks": "ace_trainer_m", "movement": "look_west", "x": 305, "z": 917, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_JAKE" },
+    { "id": "ace_trainer_shannon", "looks": "ace_trainer_f", "movement": "look_around", "x": 277, "z": 923, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_SHANNON" },
+    { "id": "signboard_pal_park", "looks": "signboard", "movement": "none", "x": 308, "z": 913, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "item_protein", "looks": "pokeball", "movement": "none", "x": 239, "z": 908, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_221_PROTEIN", "item": "Protein", "script": "7130" },
+    { "id": "item_tm81", "looks": "pokeball", "movement": "none", "x": 295, "z": 922, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_221_TM81", "item": "TM81", "script": "7131" },
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 256, "z": 916, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_221_ULTRA_BALL", "item": "Ultra Ball", "script": "7129" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 278, "z": 918, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 279, "z": 918, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 280, "z": 918, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 281, "z": 918, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "item_pure_incense", "looks": "pokeball", "movement": "none", "x": 250, "z": 902, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_221_PURE_INCENSE", "item": "Pure Incense", "script": "7101" },
+    { "id": "worker_west", "looks": "worker", "movement": "none", "x": 306, "z": 912, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_221_WORKER_WEST", "script": "1" },
+    { "id": "worker_east", "looks": "worker", "movement": "none", "x": 307, "z": 912, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_221_WORKER_EAST", "script": "2" }
+  ],
+  "signs": [
+    { "x": 267, "z": 923, "type": 2, "script": "8050", "item": "Hyper Potion", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_221_HYPER_POTION", "range": 2 },
+    { "x": 264, "z": 897, "type": 2, "script": "8049", "item": "Big Mushroom", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_221_BIG_MUSHROOM", "range": 2 },
+    { "x": 280, "z": 921, "type": 2, "script": "8190", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_221_ULTRA_BALL", "range": 2 },
+    { "x": 308, "z": 919, "type": 2, "script": "8191", "item": "Carbos", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_221_CARBOS", "range": 2 },
+    { "x": 272, "z": 917, "type": 2, "script": "8192", "item": "Max Revive", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_221_MAX_REVIVE", "range": 2 }
+  ],
+  "triggers": []
+}

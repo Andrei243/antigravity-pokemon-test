@@ -76,7 +76,8 @@ public class WorldTests
         Assert.True(Sinnoh.IsOpen("ROUTE_201"));
         Assert.True(Sinnoh.IsOpen("jubilife_city"));
         Assert.True(Sinnoh.IsOpen("eterna_city"));
-        Assert.False(Sinnoh.IsOpen("veilstone_city"));
+        Assert.True(Sinnoh.IsOpen("veilstone_city"));
+        Assert.False(Sinnoh.IsOpen("sunyshore_city"));
 
         foreach (string key in Sinnoh.Index.Areas)
         {
@@ -307,11 +308,10 @@ public class WorldTests
             Assert.True(closed == 0, $"{map.Name}: {closed} tiles outside the open areas can be walked on");
         }
 
-        // Route 218, in view from Jubilife City's west end, is such scenery: it has its gate house, and no way in
-        var beyond = Overworld.AreaAt(120, 758)!;
-        Assert.Equal("route_218", beyond.Key);
+        // Route 222, in view from Valor Lakefront's east end, is such scenery: nobody stands in it, and there is no way in
+        var beyond = Overworld.AreaAt(23 * 32 + 8, 24 * 32 + 16)!;
+        Assert.Equal("route_222", beyond.Key);
         Assert.False(beyond.Open);
-        Assert.Contains(MapStructures.FindBuildings(Overworld), b => Overworld.AreaAt(b.X0, b.Y0) == beyond);
         Assert.DoesNotContain(Overworld.NPCs, n => Overworld.AreaAt(n.GridX, n.GridY) == beyond);
     }
 

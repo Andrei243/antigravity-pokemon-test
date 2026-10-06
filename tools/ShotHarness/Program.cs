@@ -206,11 +206,13 @@ Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
 var windowSize = (Environment.GetEnvironmentVariable("SHOTS_WINDOW") ?? "1920x1080").Split('x');
 Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
 
-// Two runs draw the same pictures: the game's chance is seeded, and the clock its small motions keep time by is
-// the harness's own count of frames
+// Two runs draw the same pictures: the game's chance is seeded, the clock its small motions keep time by is the
+// harness's own count of frames, and the day is fixed (the weather calendar and Pokérus's days follow the date): the
+// first of June, when it rains on Route 212's south and Route 213 is clear
 Dice.Seed(20261004);
 long tick = 0;
 FrameClock.Fixed = 0;
+GameClock.FixedDate = new DateTime(2026, 6, 1);
 
 var startClock = System.Diagnostics.Stopwatch.StartNew();
 var engine = new GameEngine();
@@ -2321,7 +2323,21 @@ if (Run("world"))
         ("wa4_hearthome", "Sinnoh", 475, 700, Direction.Up), ("wa5_hearthome_contest", "Sinnoh", 479, 694, Direction.Up),
         ("wa6_amity_square", "AmitySquare", 11, 48, Direction.Up), ("wa7_amity_square_inside", "AmitySquare", 32, 30, Direction.Up),
         ("wa8_route209", "Sinnoh", 530, 720, Direction.Right), ("wa9_solaceon", "Sinnoh", 570, 660, Direction.Up),
-        ("wb0_solaceon_ruins", "SolaceonRuinsRoom1", 5, 9, Direction.Up)
+        ("wb0_solaceon_ruins", "SolaceonRuinsRoom1", 5, 9, Direction.Up),
+        // The east and the sea (plan 01 · M7): Route 210 and Celestic Town, Route 215 and Veilstone City, Route 214 and
+        // the lakes, Route 213 and Pastoria City, the Great Marsh, Route 212, Route 218 and Canalave City, Iron Island
+        ("wc0_route210_south", "Sinnoh", 560, 592, Direction.Up), ("wc1_route210_north", "Sinnoh", 527, 524, Direction.Left),
+        ("wc2_route210_bridge", "Sinnoh", 502, 530, Direction.Left), ("wc3_celestic", "Sinnoh", 465, 528, Direction.Up),
+        ("wc4_route215", "Sinnoh", 624, 591, Direction.Right), ("wc5_veilstone", "Sinnoh", 717, 613, Direction.Up),
+        ("wc6_veilstone_warehouses", "Sinnoh", 692, 586, Direction.Up), ("wc7_route214", "Sinnoh", 720, 688, Direction.Up),
+        ("wc8_valor_lakefront", "Sinnoh", 708, 780, Direction.Up), ("wc9_lake_valor", "LakeValor", 38, 14, Direction.Down),
+        ("wd0_route213", "Sinnoh", 688, 832, Direction.Right), ("wd1_hotel_pavilion", "Sinnoh", 691, 807, Direction.Up),
+        ("wd2_pastoria", "Sinnoh", 600, 817, Direction.Up), ("wd3_pastoria_boats", "Sinnoh", 623, 835, Direction.Down),
+        ("wd4_great_marsh", "GreatMarsh", 68, 114, Direction.Up), ("wd5_route212_mansion", "Sinnoh", 470, 774, Direction.Up),
+        ("wd6_route212_puddles", "Sinnoh", 478, 838, Direction.Down), ("wd7_trophy_garden", "TrophyGarden", 14, 22, Direction.Up),
+        ("wd8_route218", "Sinnoh", 93, 752, Direction.Left), ("wd9_canalave", "Sinnoh", 58, 724, Direction.Up),
+        ("we0_canalave_bridge", "Sinnoh", 47, 725, Direction.Left), ("we1_iron_island", "Sinnoh", 100, 502, Direction.Right),
+        ("we2_iron_island_lift", "IronIslandB1FRight", 11, 20, Direction.Down), ("we3_route221", "Sinnoh", 272, 912, Direction.Up)
     };
     foreach (var (name, map, x, y, facing) in places)
     {
@@ -2340,6 +2356,8 @@ if (Run("world"))
     At("Sinnoh", 310, 545, Direction.Up); Frames(2); Shot("w75_eterna_night");
     At("Sinnoh", 475, 700, Direction.Up); Frames(2); Shot("w76_hearthome_night");
     At("Sinnoh", 570, 660, Direction.Up); Frames(2); Shot("w77_solaceon_night");
+    At("Sinnoh", 717, 613, Direction.Up); Frames(2); Shot("w78_veilstone_night");
+    At("Sinnoh", 59, 731, Direction.Left); Frames(2); Shot("w79_canalave_night");
     // A cave's light ignores the clock: the same picture as by day
     At("OreburghGate1F", 8, 22, Direction.Right); Frames(2); Shot("w74_oreburgh_gate_night");
     engine.Settings.TimeOfDay = TimeOfDay.Day;

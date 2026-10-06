@@ -1,0 +1,68 @@
+{
+  "key": "route_220",
+  "index": 467,
+  "name": "Route 220",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Water",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Water",
+  "dayMusic": "ROAD_D_D",
+  "nightMusic": "ROAD_D_N",
+  "encounters": "route_220",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Wingull", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Pelipper", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Finneon", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Lumineon", "level": 25, "maxLevel": 35 },
+    { "species": "Lumineon", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 30, "maxLevel": 40 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 50 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [],
+  "objects": [
+    { "id": "swimmer_erik", "looks": "swimmer_m", "movement": "look_north", "x": 211, "z": 917, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "face_sides", "sight": 5, "script": "TRAINER_SWIMMER_ERIK" },
+    { "id": "swimmer_vincent", "looks": "swimmer_m", "movement": "walk_back_and_forth", "x": 198, "z": 911, "facing": 2, "rangeX": 7, "rangeZ": 0, "trainer": "face_sides", "sight": 1, "script": "TRAINER_SWIMMER_VINCENT" },
+    { "id": "swimmer_jessica", "looks": "swimmer_f", "movement": "walk_back_and_forth", "x": 175, "z": 905, "facing": 2, "rangeX": 7, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_JESSICA" },
+    { "id": "swimmer_erica", "looks": "swimmer_f", "movement": "walk_back_and_forth", "x": 169, "z": 907, "facing": 3, "rangeX": 5, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_ERICA" },
+    { "id": "swimmer_adrian", "looks": "swimmer_m", "movement": "look_south_and_west", "x": 185, "z": 918, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_ADRIAN" },
+    { "id": "swimmer_katelyn", "looks": "swimmer_f", "movement": "walk_south_west_north_east", "x": 204, "z": 903, "facing": 1, "rangeX": 6, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_SWIMMER_KATELYN" },
+    { "id": "swimmer_claire", "looks": "swimmer_f", "movement": "look_south_and_west", "x": 211, "z": 911, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_SWIMMER_CLAIRE" },
+    { "id": "item_carbos", "looks": "pokeball", "movement": "none", "x": 199, "z": 917, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_220_CARBOS", "item": "Carbos", "script": "7127" },
+    { "id": "item_splash_plate", "looks": "pokeball", "movement": "none", "x": 171, "z": 918, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_220_SPLASH_PLATE", "item": "Splash Plate", "script": "7125" },
+    { "id": "item_max_repel", "looks": "pokeball", "movement": "none", "x": 180, "z": 910, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_220_MAX_REPEL", "item": "Max Repel", "script": "7128" }
+  ],
+  "signs": [
+    { "x": 181, "z": 922, "type": 2, "script": "8048", "item": "Big Pearl", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_220_BIG_PEARL", "range": 2 },
+    { "x": 175, "z": 889, "type": 2, "script": "8169", "item": "Zinc", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_219_ZINC", "range": 2 }
+  ],
+  "triggers": []
+}

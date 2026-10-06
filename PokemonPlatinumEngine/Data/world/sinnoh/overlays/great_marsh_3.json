@@ -1,0 +1,17 @@
+{
+  "area": "great_marsh_3",
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  "people": {
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "Bait makes a Pokémon easier to catch, but it makes it likelier to run off, too.",
+        "Mud keeps it from running, but makes it harder to catch. Knowing which to throw is the whole game!"
+      ]
+    }
+  },
+  "signs": {
+    "signboard": "Great Marsh · Area 3\nTall marsh grass ahead. Have your Safari Balls ready!"
+  }
+}

@@ -1,0 +1,18 @@
+# Canalave City (plan 01 · M7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats.
+#
+# Sailor Eldritch's boat at the pier takes the player across to Iron Island and back (the island's own sailor
+# sails back). In the original he also sails to Fullmoon and Newmoon Islands once the story has found reasons to
+# go there (plan 02 and plan 01 · M10).
+
+script Ferry
+  face self player
+  say "Ahoy there! I sail folk over to Iron Island and back again, whenever the sea's kind."
+  ask "Fancy a trip across to Iron Island?"
+  if no goto Stay
+  say "Right you are. All aboard, and hold on to something!"
+  warp "Sinnoh" 100 502 right
+  end
+label Stay
+  say "No hurry. The boat's here whenever you want it."
+  end

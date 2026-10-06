@@ -1,0 +1,65 @@
+# Routes 210, 214 and 215 (the original's ROAD_F role: Route 210 climbing north from Solaceon into the fog, Route
+# 215's rain on the road to Veilstone, Route 214's rocky way down to the lakes): a driving D-major road, the trumpet
+# setting out over rolling piano and a pumping bass, the violin carrying it into a B-minor stretch of weather with a
+# wistful minor turn, and the two climbing together to the top. Original composition for this game.
+title Route 210
+tempo 140
+meter 4/4
+reverb 0.3
+nighttempo 0.93
+
+track lead trumpet night=flute vol=0.8 pan=0 rev=0.28
+  r1 | r1 |
+  L o4 a4 o5 d4. e8 f+4 | o5 g4. e8 d4 c4 | o4 b4 o5 d4 g4. f+8 | o5 a2 r4 f+8 g8 |
+  o5 a4. f+8 d4 f+4 | o5 g4. f+8 e4 d4 | o5 e4. f+8 g4 b4 | o5 a2. r4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 o4 a8 o5 c+8 e4 |
+  o4 a4 o5 d4. e8 f+4 | o5 g4. e8 d4 c4 | o4 b4 o5 d4 g4. f+8 | o5 a2. r4 |
+  o5 f4 b-4 o6 d4. c8 | o6 c2 o5 g4 e4 | o5 d4. e8 g4 f+4 | o5 e2. r4 |
+
+track counter violin night=clarinet vol=0.7 pan=-0.25 rev=0.34
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v122 o5 d4. e8 f+2 | o5 e4. d8 c+2 | o4 b4. o5 d8 e4 g4 | o5 f+2. r4 |
+  o5 g4. a8 b-2 | o5 a4. g8 f+2 | o5 f2 d4 f4 | o5 e2. r4 |
+  v76 o6 d1 | o6 e2 c2 | o6 d2 o5 b2 | o5 f+2 a2 |
+  o5 d2 f2 | o5 e2 g2 | o5 b2 a2 | o5 c+1 |
+
+track drive piano night=harp vol=0.34 pan=0.3 rev=0.24
+  o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 a8 >e8 a8 >c+8 e8 c+8 <a8 e8 |
+  L o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 c8 g8 >c8 e8 g8 e8 c8 <g8 | o2 g8 >d8 g8 b8 >d8 <b8 g8 d8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 |
+  o2 b8 >f+8 b8 >d8 f+8 d8 <b8 f+8 | o2 g8 >d8 g8 b8 >d8 <b8 g8 d8 | o3 e8 b8 >e8 g8 b8 g8 e8 <b8 | o3 a8 >e8 a8 >c+8 e8 c+8 <a8 e8 |
+  o2 b8 >f+8 b8 >d8 f+8 d8 <b8 f+8 | o3 a8 >e8 a8 >c+8 e8 c+8 <a8 e8 | o2 g8 >d8 g8 b8 >d8 <b8 g8 d8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 |
+  o2 g8 >d8 g8 b-8 >d8 <b-8 g8 d8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o2 b-8 >f8 b-8 >d8 f8 d8 <b-8 f8 | o3 a8 >e8 a8 >c+8 e8 c+8 <a8 e8 |
+  o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 c8 g8 >c8 e8 g8 e8 c8 <g8 | o2 g8 >d8 g8 b8 >d8 <b8 g8 d8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 |
+  o2 b-8 >f8 b-8 >d8 f8 d8 <b-8 f8 | o3 c8 g8 >c8 e8 g8 e8 c8 <g8 | o2 g8 >d8 g8 b8 >d8 <b8 g8 d8 | o3 a8 >e8 a8 >c+8 e8 c+8 <a8 e8 |
+
+track pad strings night=pad vol=0.27 pan=-0.1 rev=0.45
+  o3 (a >d f+)1 | o3 (a >c+ e)1 |
+  L o3 (a >d f+)1 | o3 (g >c e)1 | o3 (g b >d)1 | o3 (a >d f+)1 |
+  o3 (f+ b >d)1 | o3 (g b >d)1 | o3 (g b >e)1 | o3 (a >c+ e)1 |
+  o3 (f+ b >d)1 | o3 (e a >c+)1 | o3 (g b >d)1 | o3 (f+ a >d)1 |
+  o3 (g b- >d)1 | o3 (f+ a >d)1 | o3 (f b- >d)1 | o3 (e a >c+)1 |
+  o3 (a >d f+)1 | o3 (g >c e)1 | o3 (g b >d)1 | o3 (a >d f+)1 |
+  o3 (f b- >d)1 | o3 (g >c e)1 | o3 (g b >d)1 | o3 (a >c+ e)1 |
+
+track bass bass vol=0.57 rev=0.08
+  o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 | o2 a8 a8 >a8 <a8 a8 >e8 a8 <a8 |
+  L o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 | o3 c8 c8 >c8 <c8 c8 g8 >c8 <c8 | o3 g8 g8 >g8 <g8 g8 d8 g8 g8 | o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 |
+  o2 b8 b8 >b8 <b8 b8 >f+8 b8 <b8 | o3 g8 g8 >g8 <g8 g8 d8 g8 g8 | o3 e8 e8 >e8 <e8 e8 b8 >e8 <e8 | o2 a8 a8 >a8 <a8 a8 >e8 a8 <a8 |
+  o2 b8 b8 >b8 <b8 b8 >f+8 b8 <b8 | o2 a8 a8 >a8 <a8 a8 >e8 a8 <a8 | o3 g8 g8 >g8 <g8 g8 d8 g8 g8 | o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 |
+  o3 g8 g8 >g8 <g8 g8 d8 g8 g8 | o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 | o2 b-8 b-8 >b-8 <b-8 b-8 >f8 b-8 <b-8 | o2 a8 a8 >a8 <a8 a8 >e8 a8 <a8 |
+  o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 | o3 c8 c8 >c8 <c8 c8 g8 >c8 <c8 | o3 g8 g8 >g8 <g8 g8 d8 g8 g8 | o3 d8 d8 >d8 <d8 d8 a8 >d8 <d8 |
+  o2 b-8 b-8 >b-8 <b-8 b-8 >f8 b-8 <b-8 | o3 c8 c8 >c8 <c8 c8 g8 >c8 <c8 | o3 g8 g8 >g8 <g8 g8 d8 g8 g8 | o2 a8 a8 >a8 <a8 a8 >e8 a8 <a8 |
+
+track drums kit vol=0.54 rev=0.12
+  v62 b8 v38 h8 v44 h8 v38 h8 v62 b8 v38 h8 v44 h8 v38 h8 | v72 b8 v44 h8 v72 s8 v44 h8 v66 t16 t16 m16 m16 f16 f16 s16 s16 |
+  L v86 (b c)8 v48 h8 v76 s8 v48 h8 v80 b8 v48 h8 v76 s8 v48 h8 |
+  [ v80 b8 v48 h8 v76 s8 v58 b8 v80 b8 v48 h8 v76 s8 v48 h8 | ]6
+  v80 b8 v48 h8 v76 s8 v48 h8 v66 t16 t16 m16 m16 f8 v80 s8 |
+  [ v74 b8 v42 h8 v48 h8 v42 h8 v74 s8 v42 h8 v52 b8 v42 h8 | ]7
+  v74 b8 v42 h8 v70 s8 v42 h8 v62 t16 t16 m16 m16 f16 f16 s16 s16 |
+  v86 (b c)8 v48 h8 v76 s8 v48 h8 v80 b8 v48 h8 v76 s8 v48 h8 |
+  [ v80 b8 v48 h8 v76 s8 v58 b8 v80 b8 v48 h8 v76 s8 v48 h8 | ]6
+  v80 b8 v48 h8 v76 s8 v48 h8 v66 t16 t16 m16 m16 f8 v80 s8 |

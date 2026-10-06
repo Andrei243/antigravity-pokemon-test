@@ -1,0 +1,17 @@
+{
+  "area": "great_marsh_1",
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  "people": {
+    "ruin_maniac": {
+      "name": "Ruin Maniac",
+      "dialog": [
+        "I came here to dig for relics. So far all I've dug up is mud, mud and more mud.",
+        "Still, who knows what the marsh has swallowed over the years? I'll keep digging!"
+      ]
+    }
+  },
+  "signs": {
+    "signboard": "Great Marsh · Area 1\nThe marsh's far north-west. Few visitors make it this far!"
+  }
+}

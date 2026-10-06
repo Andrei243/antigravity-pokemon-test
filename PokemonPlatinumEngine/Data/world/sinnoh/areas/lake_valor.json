@@ -1,0 +1,78 @@
+{
+  "key": "lake_valor",
+  "index": 315,
+  "name": "Lake Valor",
+  "matrix": 105,
+  "kind": "Cave",
+  "sign": "Lake",
+  "weather": "Clear",
+  "camera": "ZoomedIn",
+  "battleBackground": "Forest",
+  "dayMusic": "D_LAKE",
+  "nightMusic": "D_LAKE",
+  "encounters": "lake_valor",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Staravia", "level": 38 },
+    { "species": "Bibarel", "level": 39 },
+    { "species": "Staravia", "level": 40 },
+    { "species": "Bibarel", "level": 41 },
+    { "species": "Golduck", "level": 40 },
+    { "species": "Psyduck", "level": 38 },
+    { "species": "Golduck", "level": 41 },
+    { "species": "Psyduck", "level": 39 },
+    { "species": "Staravia", "level": 40 },
+    { "species": "Bibarel", "level": 41 },
+    { "species": "Staravia", "level": 40 },
+    { "species": "Bibarel", "level": 41 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Seaking", "level": 25, "maxLevel": 35 },
+    { "species": "Seaking", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 51, "z": 8, "to": "valor_lakefront", "toWarp": 3 },
+    { "x": 32, "z": 32, "to": "valor_cavern", "toWarp": 1 },
+    { "x": 51, "z": 7, "to": "valor_lakefront", "toWarp": 4 },
+    { "x": 52, "z": 10, "to": "valor_lakefront", "toWarp": 5 },
+    { "x": 52, "z": 11, "to": "valor_lakefront", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "item_tm25", "looks": "pokeball", "movement": "none", "x": 53, "z": 46, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_LAKE_VALOR_TM25", "item": "TM25", "script": "7240" }
+  ],
+  "signs": [],
+  "triggers": []
+}

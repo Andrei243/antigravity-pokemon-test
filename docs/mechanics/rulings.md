@@ -233,7 +233,7 @@ Our own choices in R9:
 
 - **The lines** of the Great Marsh, of a wild Pokémon running and of the lesson are our own, on the original's beats.
 - **What the AI reads from the log**: an ability or an item counts as shown once a line names it on the Pokémon, which is how the original's flags are set by its messages.
-- **Left for the session whose rule it is**: the Great Marsh and Pal Park as places, with their steps and their timer (plan 01, R16); roamers moving over the map (R13); two trainers in the field spotting the player at once (plan 02); the partner drawn as a trainer in battle and healing the team between battles (a script's `heal`, plan 02's chapters); the Battle Frontier's own AI uses (R18).
+- **Left for the session whose rule it is**: Pal Park as a place, with its timer (R16), and the Great Marsh's daily Pokémon (R13; the marsh itself, its steps and its balls came with plan 01 · M7); roamers moving over the map (R13); two trainers in the field spotting the player at once (plan 02); the partner drawn as a trainer in battle and healing the team between battles (a script's `heal`, plan 02's chapters); the Battle Frontier's own AI uses (R18).
 
 What matches, and is held by `FormulaTests`, `BattleScenarioTests` and `BattleCoreTests`: the damage formula and its order (stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, + 2, the critical multiplier, a Life Orb, the roll taking 0 to 15 hundredths off, then × 1.5 for the user's own type, then each of the target's types, and never less than 1 for a hit that lands), stat stages, what a critical hit ignores, and everything in the list above.
 
@@ -381,3 +381,22 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | A cured Pokémon | A small face on its summary | Nothing | Our own interface: the PKRS tag shows only while it is carried |
 | A Rare Candy's fifth move | Asks which move to forget | Passed over, as before | The bag's own screens are R11 |
 | The Distortion World's ground | Gives Burmy the sandy cloak | The trash cloak, as the League's rooms do | `BattleTerrain.Special` stands for all of them; the Distortion World is plan 01's |
+
+## The east and the sea (2026-10-06, plan 01 · M7)
+
+**Platinum's rules, kept as they are** (`src/field_overworld_weather.c`, `src/overlay005/field_control.c`, `src/scrcmd.c`, `res/field/scripts/scripts_pastoria_city_observatory_gate_1f.s`)
+
+- **The weather calendar** (`FieldSystem_GetWeather`): the south of Route 212, Route 213, Route 216, Acuity Lakefront and Snowpoint City take the weather of today's row of `sYearlyWeather`, a table of the 366 days of a leap year; in any other year the days from March on read one row further. The date is the computer's, as the original's is the console's.
+- **The Safari Game**: for 500, thirty Safari Balls and 500 steps (`*steps >= 500` in the field's step counter, `*safariBallCount = 30`). Every Pokémon met is met in a Safari battle (plan 06 · R9's bait, mud and balls), whose balls are the game's own; the game ends on the last step or with the last ball, and the attendant takes the player back to the gate in Pastoria City. Saying no, or not having the fee, takes the player back out. Walking out through the gate ends a game still on.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The calendar's penalty | Changing the console's clock puts the five places on the 2nd of January's weather for a day (`FieldSystem_HasPenalty`) | No penalty: the row is always today's | The game reads the computer's clock and keeps no record of it being changed |
+| The Safari Game's gate | A counter in the observatory gate's room asks before the marsh | Asked as the player comes out into the marsh, which sends them back out on a no | The gate's rooms come with plan 01 · M11; until then it is walked through |
+| The marsh's daily Pokémon and its binoculars | Six species a day by the date, shown through the coin viewers; the tram rides between the areas | The areas' own tables every day; the viewers and the tram stand there and do nothing yet | Plan 06 · R13 (the Great Marsh's dailies) and plan 02's scripts |
+| Retiring from the game | The menu offers to end it early | Walk out through the gate | No field menu entry for it yet |
+| Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | No moving platforms yet (the Canalave Gym's lifts, plan 01 · M9, are the first to need them) |
+| Sailor Eldritch's boat | Sails to Iron Island, and to Fullmoon and Newmoon Islands when the story sends the player there | Iron Island and back | The two islands are plan 01 · M10's |
+| Maniac Tunnel | Dug once enough kinds of Unown are seen | Not open; Solaceon's Rare Candy beyond it is held back | The Ruin Maniac's digging is the story's (plan 02 · S8) |

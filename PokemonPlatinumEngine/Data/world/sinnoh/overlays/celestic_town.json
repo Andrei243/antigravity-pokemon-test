@@ -1,0 +1,37 @@
+{
+  "area": "celestic_town",
+  "bgmTrack": "sinnoh/celestic",
+  "trees": "Pine",
+  "architecture": "HalfTimber",
+  "doors": [
+    { "warp": 5, "map": "CelesticPokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+  ],
+  // The houses have no rooms yet (plan 01 · M11); the cave of the ruins opens with its scene (plan 02)
+  "locked": [ 0, 1, 2, 3, 4 ],
+  "people": {
+    "expert_m": {
+      "name": "Old Man",
+      "dialog": [
+        "Have you seen the little shrine in the middle of town? It was standing long before the town was.",
+        "Nobody remembers who built it. We just keep it swept and look after it."
+      ]
+    },
+    "ninja_boy": {
+      "name": "Boy",
+      "dialog": [
+        "Psst! Don't look at me. I'm keeping watch on this house in secret.",
+        "...Oh. You already looked."
+      ]
+    },
+    "ace_trainer_f": {
+      "name": "Trainer",
+      "dialog": [
+        "I climbed all the way up the mountain to see the old ruins here.",
+        "The air is so still and clear. You can almost hear the past whispering."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Celestic Town\nWhere the mountains keep the stories of long ago."
+  }
+}

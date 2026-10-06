@@ -464,7 +464,8 @@ public static class TileCodes
         (TileType.Walkway, 'H'),
         (TileType.CaveWall, 'X'),
         (TileType.CaveMouth, 'M'),
-        (TileType.ForestMouth, 'E')
+        (TileType.ForestMouth, 'E'),
+        (TileType.Puddle, 'p')
     };
 
     public static char CodeOf(TileType type)

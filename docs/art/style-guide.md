@@ -128,6 +128,16 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 | North bank | where land lies to the north the bank shows as a face 5 texels deep, `124,116,116` over `88,84,98`; other shores get a one-texel light rim |
 | Motion | everything moves in whole texels; no sub-texel scrolling |
 
+**Puddles** (plan 01 · M7; `TileType.Puddle`, from the behaviours `Puddle` and `StillPuddle`) are a ground of their own, not water: they are walked through and lie flat in the ground plane like sand or ice, painted by the same rule (a base, lighter patches, a rim where they meet other ground, marks), so neighbouring puddle tiles run together into one pool with a rounded edge.
+
+| Element | Value |
+|---|---|
+| Base | `112,142,170`: the sky, dimmed by the mud under it |
+| Patches | `138,168,194`, where it catches the sky |
+| Rim | `92,80,68`, dark wet earth, where the puddle meets other ground |
+| Marks | a glint `196,218,232`, a short stroke or a ring two texels across |
+| Reflection | whoever stands in one is mirrored in it: their sprite upside down on the ground under their feet, as long as it looks tall (its height over the sine of the camera's pitch), tinted `150,170,196`, fading from 45 % at the feet to nothing, and cut off where the puddle ends to the south |
+
 ### Grass, flowers, trees, ledges and rocks
 
 - **Tall grass**: two rows of clumps per tile, each clump five blades in four flat shades (`36,110,62`, `62,150,78`, `106,196,98`, tips `170,232,130`), 16 texels tall, the rows half a clump out of step. They sway at the top and lean away from anyone walking through.
@@ -246,6 +256,13 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Outcrop | a mass of rock as large as its tiles, in the boulders' three shades with ledges every 10 texels |
 | Mast | a lattice mast as tall as its model, a red light on top that burns all night |
 | Drums | three steel drums, two before and one behind: blue `78,112,168`, rust `170,96,64` and blue, each with a lid seen from above and two dark bands |
+| Ore heap | a mound like the coal heap's in the rust of iron ore: `150,96,78`, `118,72,62`, `186,132,108`, with grey glints (Iron Island) |
+| Headframe | the steel tower of a lift or over a mine's shaft, as tall as its model: two lattice legs leaning in to a platform, a cross-brace every 16 rows, and the winding wheel on top, a ring of steel with four spokes (Iron Island's lifts) |
+| Lift base | a steel platform knee high, ribbed on top, with a black and yellow edge |
+| Drawbridge leaf | over the planks the ground already shows: a steel truss along either edge of the deck, 16 rows tall, and at the bank end a portal of two posts and a beam 64 rows up, with a counterweight hanging from it (Canalave City) |
+| Marsh tram | the Great Marsh's little tram on its rails: two steel rails on sleepers the length of its tiles, and a car of green boards with an open side, a pale roof and wheels, at the end nearer the gate |
+| Binoculars | a coin viewer on a post: a grey head with two eyepieces on a column 34 texels tall |
+| Pavilion | a white open shelter of the Hotel Grand Lake: four posts and a turquoise roof in the Resort's colours |
 
 **The mine** (Oreburgh's yard and the mine under it; plan 01 · M5). The model of the yard blocks thin pieces of ground between its sheds, and those carry its conveyors (`WorldMapBuilder.Conveyors`):
 
@@ -535,6 +552,7 @@ A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (p
   - **Digital watch**: the hour and the minute in seven-segment figures 96 tall, a colon that blinks each second, and the day of the week under them.
   - **Pedometer**: the steps taken since it was last reset, in the same figures, five digits.
   - **Party status**: the team in two rows of three, each Pokémon's menu icon over an HP bar of its own in the LCD's greens; a fainted one is dark, one with a status has a small mark.
+- **The Safari Game** (plan 01 · M7): while a game is on in the Great Marsh, a panel 300 by 96 at the top right, 32 from the edges, as the other panels are: SAFARI BALLS and STEPS as labels over their numbers in Black 36, side by side; a number turns Red at a fifth of its start or under (6 balls, 100 steps). It shows whenever the field does, the Pokétch and the text box included, and goes when the game ends.
 - **Story scenes** (plan 02 · S1): a script has the field to itself, and the interface shows nothing of that but its text. Its fade is plain black over the field and under the text box, so a line can be read on a black screen; it takes 0.4 s unless the scene says otherwise. People a scene sends walking keep the trainers' walking pace (4.5 tiles a second, 8 in a hurry) and come to rest in an eighth of a second. A shake of the camera moves the picture up and down by whole texels thirty times a second, six texels at its start and dying away over its length (half a second unless said).
 
 ### Battle panels
