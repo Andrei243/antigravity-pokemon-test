@@ -21,7 +21,7 @@ public enum Op
     // People and the field
     Face, Walk, Move, WaitMoves, Emote, Show, Hide, Place, Warp, Fade, Wait, Camera,
     // Sound
-    Music, Fanfare, Sound,
+    Music, Fanfare, Sound, Cry,
     // The screens that exist
     Starter, Shop, Pc, Travel
 }

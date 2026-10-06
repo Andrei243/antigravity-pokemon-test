@@ -97,4 +97,7 @@ public interface IScriptHost
     void Music(string? song);
     void Fanfare(MusicRole role);
     void Sound(string name);
+
+    /// <summary>A Pokémon met in the field cries: a species, or one of its forms by name.</summary>
+    void Cry(string species);
 }

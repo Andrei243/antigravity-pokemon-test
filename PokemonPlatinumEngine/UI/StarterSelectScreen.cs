@@ -60,6 +60,7 @@ public class StarterSelectScreen
             AnswerYes = false;
             asking.Open();
             AudioManager.PlaySound("select");
+            if (PokemonDatabase.Get(Starters[SelectedIndex]) is { } starter) AudioManager.PlayCry(starter);
             return null;
         }
         if (!AnswerYes)

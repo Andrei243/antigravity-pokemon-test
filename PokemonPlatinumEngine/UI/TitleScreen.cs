@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -121,6 +122,8 @@ public sealed class TitleScreen
                 Enter(TitlePhase.Menu);
                 SelectedIndex = 0;
                 AudioManager.PlaySound("select");
+                // As in the original, Giratina answers the button
+                if (PokemonDatabase.Get("Giratina") is { } giratina) AudioManager.PlayCry(giratina);
                 break;
             case TitlePhase.Menu:
                 AudioManager.PlaySound("select");

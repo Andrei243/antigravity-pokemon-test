@@ -280,6 +280,8 @@ public static class ScriptParser
                 };
             case "sound":
                 return new Instruction { Op = Op.Sound, Line = line, Name = r.Text("a sound's name") };
+            case "cry":
+                return new Instruction { Op = Op.Cry, Line = line, Name = r.Text("a species' name") };
 
             case "starter":
                 return new Instruction { Op = Op.Starter, Line = line };

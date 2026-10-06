@@ -169,6 +169,7 @@ What an `if` can ask:
 | `music "sinnoh/jubilife"`, `music area`, `music stop` | A song, the place's own theme again, silence. |
 | `fanfare heal` / `item` / `pokemon` / `levelup` | |
 | `sound "select"` | One of the game's sound effects (`AudioManager.SoundNames`; [`sound-effects.md`](sound-effects.md) lists them). |
+| `cry "Shinx"`, `cry "Giratina-Origin"` | A Pokémon met in the field cries: a species, or a form by its name, with the original's field echo (`CryMode.FieldEvent`). |
 
 ### The screens that exist
 

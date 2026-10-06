@@ -290,4 +290,10 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("play a sound");
         Log.Add($"sound {name}");
     }
+
+    public void Cry(string species)
+    {
+        Shown("play a cry");
+        Log.Add($"cry {species}");
+    }
 }

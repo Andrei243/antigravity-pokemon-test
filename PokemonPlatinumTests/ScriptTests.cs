@@ -144,6 +144,7 @@ public class ScriptTests
           music stop
           fanfare item
           sound "select"
+          cry "Giratina-Origin"
           starter
           shop
           pc
@@ -902,5 +903,6 @@ public class ScriptTests
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }
         public void Sound(string name) { }
+        public void Cry(string species) { }
     }
 }

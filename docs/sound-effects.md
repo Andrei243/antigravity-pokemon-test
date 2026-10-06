@@ -86,3 +86,27 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 One sound for each type, played as a move of that type sets off (`SoundBank.MoveSound`), from the side of its user; the hit has its own sound as it lands (`hit_normal`, `hit_super`, `hit_weak`). A move aimed at several Pokémon is heard once.
 
 `move_normal`, `move_fire`, `move_water`, `move_grass`, `move_electric`, `move_ice`, `move_fighting`, `move_poison`, `move_ground`, `move_flying`, `move_psychic`, `move_bug`, `move_rock`, `move_ghost`, `move_dragon`, `move_steel`, `move_dark`, `move_fairy`.
+
+## Cries
+
+Every species and every form has a cry of its own (plan 05 · A4), synthesised by `Audio/Cries` from its data alone and the same on every run; none of the games' cries is copied or imitated.
+
+- **The voice** (`CryVoice.Of(species, form)`):
+  - **Pitch** comes from size. A Pokémon of a few kilograms cries around 600–1000 Hz, a whale or a legendary under 200 Hz (1150 Hz × (weight + 1)^−0.26 × (height + 0.3)^−0.18, nudged by up to 12% by its own name). Legendary and mythical Pokémon are a fifth lower, longer, and ring with an echo.
+  - **Length** grows with weight and with each evolution, from 0.35 to 1.45 seconds.
+  - **Syllables** follow the vowel groups of the name, one to four: Pikachu cries three, Mew one or two. Each syllable has its vowel's two formants and a shape (rising, falling, an arch, a dip, a trill) chosen by the letters around it. The last syllable is drawn out.
+  - **Timbre** comes from its types and is seeded by the first species of its line (`PokemonGenomes.Family`), so a line sounds related and deepens as it grows. The source is a mix of saw, pulse, sine and FM, with breath, a growl and a vibrato. Fire breathes and growls, Electric buzzes, Water gurgles, Steel rings, Ghost wavers with an echo, Bug whirs, Dragon roars.
+  - **A form** takes its own size and types and tunes the voice by its name: Giratina's Origin Forme keeps Giratina's syllables at its own pitch.
+- **Modes** (`CryMode`, after the original's `POKECRY_*` in `src/sound_playback.c`). The DS pitches a sample by playing it faster or slower, and so do we:
+
+| Mode | What it does | Heard |
+|---|---|---|
+| `Normal` | As it is. | A wild Pokémon appearing; the party's summary; the starter's question; an evolution, before and after; Giratina at the title. |
+| `Pinch` | 1.5 semitones lower. | Sent out with a status condition or with its HP bar not green (24 of its 48 pixels or fewer), unless its HP is full (`Cries.SendOutMode`). |
+| `Faint` | 3.5 semitones lower. | As it faints, before its fall. |
+| `Half`, `PinchHalf` | Twenty frames of sixty, the last ten fading. | Kept for the moments the original uses them. |
+| `FieldEvent` | A semitone higher, with an echo a third of a semitone up beside it at half the volume. | A script's `cry`. |
+| `Pokedex` | As it is. | An entry of the Pokédex opening. |
+
+- **Playing one**: `AudioManager.PlayCry(pokemon or species, form, mode, pan)` plays it on the cry bus, which dips the music under it. A battle asks for its Pokémon's cries ahead (`AudioManager.RequestCries`), and they are made on a worker. The last 48 are kept (`Cries.Kept`); a cry takes about ten milliseconds to make.
+- **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--modes] [--all]` renders cries with their spectrograms (a sample of every size and type when no species is named; `--all` checks every species and form without writing files). `CryTests` makes every species' and form's cry and holds it clean and unlike any other.
