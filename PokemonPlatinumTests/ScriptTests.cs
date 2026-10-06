@@ -173,7 +173,7 @@ public class ScriptTests
     {
         var all = ScriptParser.Parse("test", EveryCommand)[0];
         var read = all.Everything().Select(i => i.Op).ToHashSet();
-        Assert.Empty(Enum.GetValues<Op>().Where(op => !read.Contains(op)));
+        Assert.DoesNotContain(Enum.GetValues<Op>(), op => !read.Contains(op));
     }
 
     [Fact]
@@ -210,7 +210,7 @@ public class ScriptTests
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
-        Assert.Empty(Enum.GetValues<Query>().Where(q => !asked.Contains(q)));
+        Assert.DoesNotContain(Enum.GetValues<Query>(), q => !asked.Contains(q));
         Assert.True(script.Code[1].Condition!.Negated);
         Assert.Equal((Compare.GreaterOrEqual, "VAR_B"), (script.Code[3].Condition!.Compare, script.Code[3].Condition!.Other));
         Assert.Equal((Compare.GreaterOrEqual, 1), (script.Code[7].Condition!.Compare, script.Code[7].Condition!.Number));

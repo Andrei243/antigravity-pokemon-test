@@ -19,7 +19,7 @@ It follows the shape of plans 01–06: where we are, design, sessions, decisions
 ```
  Game (player A) ──WebSocket/TLS──┐                ┌──WebSocket/TLS── Game (player B)
                                   ▼                ▼
-                         PokemonPlatinum.Server (ASP.NET Core, .NET 9)
+                         PokemonPlatinum.Server (ASP.NET Core, .NET 10)
                          ├─ lobby: friend codes, link codes, presence
                          ├─ trade broker: offer → validate → commit → receipt
                          ├─ battle host: runs BattleRules headless, one per match

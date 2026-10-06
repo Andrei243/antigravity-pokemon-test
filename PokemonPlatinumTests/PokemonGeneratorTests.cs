@@ -4,7 +4,6 @@ using System.Linq;
 using System.Numerics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
-using Xunit.Abstractions;
 using static PokemonPlatinumTests.MeshPieces;
 
 namespace PokemonPlatinumTests;

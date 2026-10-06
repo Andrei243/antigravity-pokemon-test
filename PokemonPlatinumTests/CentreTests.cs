@@ -112,7 +112,7 @@ public class CentreTests
         }
         var forest = BuiltMaps.Value["EternaForest"];
         Assert.Null(forest.GetWarpAt(74, 15));   // the Old Chateau
-        Assert.Contains(forest.PlacedBuildings, b => b.Kind == BuildingKind.Mansion);
+        Assert.Contains(forest.PlacedBuildings!, b => b.Kind == BuildingKind.Mansion);
     }
 
     // ------------------------------------------------------------------ forests and caves

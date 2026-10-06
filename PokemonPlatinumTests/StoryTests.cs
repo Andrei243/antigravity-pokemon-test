@@ -598,7 +598,7 @@ public class StoryTests
                 started.Add(Scripts.Find(call.Name, script.File)!.FullName);
         }
 
-        Assert.Empty(Scripts.All.Select(s => s.FullName).Where(name => !started.Contains(name)));
+        Assert.DoesNotContain(Scripts.All.Select(s => s.FullName), name => !started.Contains(name));
     }
 
     [Fact]
@@ -619,8 +619,8 @@ public class StoryTests
     {
         // A flag nobody sets is a misspelling, unless it is a region's Hall of Fame (the League's script sets those)
         var known = Scripts.FlagsWritten.Concat(RegionDatabase.All.Select(r => r.StoryCompleteFlag)).ToHashSet();
-        Assert.Empty(Scripts.FlagsRead.Where(f => !known.Contains(f)));
-        Assert.Empty(Scripts.VariablesRead.Where(v => !Scripts.VariablesWritten.Contains(v)));
+        Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
+        Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v));
     }
 
     /// <summary>

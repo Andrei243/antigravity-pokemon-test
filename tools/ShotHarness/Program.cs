@@ -3211,7 +3211,7 @@ if (mode == "fieldmoves")
 
     // ---- a boulder in Oreburgh Gate: Strength, and the boulder pushed a tile on
     var gate = MapDatabase.Get("OreburghGateB1F");
-    NPC? boulder = null;
+    NPC boulder = null;
     Direction push = Direction.Up;
     foreach (var b in gate.Everyone.Where(n => n.Obstacle == PropType.StrengthBoulder))
         foreach (var d in new[] { Direction.Left, Direction.Right, Direction.Up, Direction.Down })

@@ -6,7 +6,6 @@ using System.Numerics;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using Raylib_cs;
-using Xunit.Abstractions;
 using static PokemonPlatinumTests.MeshPieces;
 
 namespace PokemonPlatinumTests;
