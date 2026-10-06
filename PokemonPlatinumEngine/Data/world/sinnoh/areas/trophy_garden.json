@@ -1,0 +1,41 @@
+{
+  "key": "trophy_garden",
+  "index": 287,
+  "name": "Trophy Garden",
+  "matrix": 79,
+  "kind": "Outdoors",
+  "sign": "Park",
+  "weather": "Clear",
+  "camera": "ZoomedIn",
+  "battleBackground": "Forest",
+  "dayMusic": "ROAD_E_D",
+  "nightMusic": "ROAD_E_N",
+  "encounters": "trophy_garden",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pichu", "level": 21 },
+    { "species": "Roselia", "level": 22 },
+    { "species": "Staravia", "level": 22 },
+    { "species": "Kricketune", "level": 23 },
+    { "species": "Roselia", "level": 23 },
+    { "species": "Staravia", "level": 24 },
+    { "species": "Pikachu", "level": 22 },
+    { "species": "Pichu", "level": 22 },
+    { "species": "Pikachu", "level": 24 },
+    { "species": "Pichu", "level": 22 },
+    { "species": "Pikachu", "level": 24 },
+    { "species": "Pichu", "level": 22 }
+  ],
+  "landRate": 10,
+  "eastSea": true,
+  "warps": [
+    { "x": 14, "z": 25, "to": "pokemon_mansion", "toWarp": 5 },
+    { "x": 15, "z": 25, "to": "pokemon_mansion", "toWarp": 5 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

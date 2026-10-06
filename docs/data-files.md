@@ -67,7 +67,8 @@ Tile codes (`TileCodes`):
 | `=` | Planks (a deck) | `s` | Stairs |
 | `m` | Marsh | `+` | Paving (a city's slabs) |
 | `H` | Walkway (a steel deck set with solar panels) | `X` | CaveWall (the rock a cave is cut into) |
-| `M` | CaveMouth (the dark inside a cave's mouth, seen from outside) | | |
+| `M` | CaveMouth (the dark inside a cave's mouth, seen from outside) | `E` | ForestMouth (the dark under the trees where a forest is entered) |
+| `p` | Puddle (walked through; it mirrors whoever stands in it) | | |
 
 The ground layer and the solid grid are separate because they don't always agree: doors sit in solid walls but are open, signposts are solid, and furniture props make the floor under them solid.
 
@@ -81,7 +82,7 @@ A tile's type is what it looks like. What it *does* is its **tile behaviour** (`
 
 | Where | Types |
 | --- | --- |
-| Rooms, solid | `Table`, `Chair`, `Sofa`, `Bookshelf`, `Television`, `Plant`, `Fridge`, `KitchenCounter`, `Stove`, `Stairs`, `Counter`, `HealingMachine`, `Bench`, `StoreShelf`, `LabDesk`, `LabMachine` |
+| Rooms, solid | `Table`, `Chair`, `Sofa`, `Bookshelf`, `Television`, `Plant`, `Fridge`, `KitchenCounter`, `Stove`, `Stairs`, `Counter`, `HealingMachine`, `Bench`, `StoreShelf`, `LabDesk`, `LabMachine`, `Bed`, `Computer` |
 | Rooms, decoration | `Rug` on the floor; `Window`, `Painting`, `Clock`, `WallEmblem` on the back wall (give them `y` 1) |
 | Outdoors, solid | `Boulder` (on land or in water), `Fence` (a run of tiles; fenced tiles that touch are joined, so a corner is two runs; wood, white or iron railings as the town builds), `LowWall` (the same in stone), `LampPost`, `Mailbox`, `Planter`, `Bench` (two tiles wide: a park bench; one tile wide and two deep, it lies north and south), and the obstacles field moves clear: `CutTree`, `CrackedRock`, `StrengthBoulder`, which as props only stand in the way (since plan 02 · S2 an obstacle that gives way is a person of the map with that `npcType`, as the world's are: "Obstacles" below) |
 | Outdoors, placed by the world's models | `Fountain`, `Boat`, `WindTurbine`, `Statue`, `HoneyTree`, `Crates`, `CoalHeap`, `Hedge`, `Column`, `Topiary`, `Cairn`, `Billboard`, `Outcrop`, `Mast`, `Drums`: each as large as its rectangle of tiles. A map file can place them too |
@@ -127,6 +128,7 @@ What the game loads is in `PokemonPlatinumEngine/Data/world/sinnoh/`:
 | `matrices/NNN.json`, `chunks/NNN.json`, `areas/<key>.json` | `dotnet run --project tools/MapImporter -- --data` | Only what `world.json` asks for: the matrices of its maps, the chunks of its open areas and of every chunk next to one (in view from its edge), and the open areas. A re-run reproduces the files exactly and removes those no longer needed; it never touches the two below. |
 | `overlays/<key>.json` | hand | What the import can't or mustn't bring for an open area: its music, where its doors lead, who its people are and what they say |
 | `habitats.json` | `dotnet run --project tools/MapImporter -- --data` | Where the region's wild Pokémon live, open areas or not, for the Pokédex's area page |
+| `calendar.json` | `dotnet run --project tools/MapImporter -- --data` | Platinum's weather calendar: the weather of five places for each day of the year |
 
 So opening an area is: add its key to `world.json`, run the importer with `--data`, write its overlay. `WorldTests` then checks that every chunk in view has its file, that every entry of the overlay points at something that exists, and that the area can be walked into and out of.
 
@@ -177,8 +179,8 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
 
 - `doors` and `locked` refer to the area's `warps` by their number, counting from 0. A warp whose other side is an open area needs neither: it leads there by itself, and whoever takes it is put down one step out of the warp at the far end (`WorldMapBuilder.Arrival`). A `door` sends one to a hand-made map instead (a room) and says where in it. A `locked` warp leads nowhere yet: a house door stays shut, a wall with a door painted on it. Any other warp whose far side isn't in the game is left out without a word, but a *door* that is neither open nor listed fails `WorldTests.ADoorIsOpenOrListedAsLocked`. A way in that is no door (a cave's mouth, a gate house, a hall's porch) and leads nowhere is closed: its tile is blocked, so nobody walks into an opening and stands in the wall.
 - `through` passes a gate house that has no rooms yet (plan 01 · M6: the Cycling Road's gates, Hearthome City's gates to Routes 208 and 209 and to Amity Square): the warp into it, numbered as `doors` are, leads straight out of the building's far side, at the warp of the area there that leads into it (`to`, `toWarp`), one step out of it. The gate's rooms come with plan 01 · M11. `"bicycle": true` marks a gate onto the Cycling Road (plan 02 · S2): only a rider is let through (anyone on foot is turned back by `common.CyclistsOnly`), and the Bicycle stays under them on the far side until the next warp.
-- `heldBack` leaves objects of the area file out for now, by id: an item on a ledge reached only through a place that isn't open yet (Solaceon's Rare Candy, over the ruins, is reached through Maniac Tunnel), or someone the imported collision closes in. Their overlay entries (lines, a trainer) may stay, ready for when they come back.
-- `exits` are warps of our own, for where the open world ends at a hand-made map. None is needed today: Jubilife City, which Route 202 led onto until plan 01 · M5, is part of the map of Sinnoh.
+- `heldBack` leaves objects of the area file out for now, by id: an item on a ledge reached only through a place that isn't open yet (Solaceon's Rare Candy, over the ruins, is reached through Maniac Tunnel, which plan 02's Ruin Maniac digs), or someone the imported collision closes in. Their overlay entries (lines, a trainer) may stay, ready for when they come back.
+- `exits` are warps of our own: where the open world ends at a hand-made map (none is, today: Jubilife City, which Route 202 led onto until plan 01 · M5, is part of the map of Sinnoh), or where the original moves the player with a script that has no counterpart yet. Iron Island's lifts are two each (plan 01 · M7): until a lift's platform moves, stepping onto its top or its foot is a warp to the other level of the same map, through a fade.
 - `people` is keyed by the `id` of an object in the area's file. Only the people listed appear; each takes its place and facing from the import, its character from the object's `looks` (`WorldMapBuilder.CharacterFor`, or `npcType` to choose), and its name, `dialog`, `trainer` block or `isStarterBriefcase` from here. Give `id` when something refers to the person. The original's script text is never imported: every line is ours. A trainer sees as far as the object's `sight` in the area's file says (0: they battle when spoken to). The two halves of a route list each other's people and signs near the border (Route 204's boys by the Ravaged Path); each is placed once, by the half it stands in, so give it its line in that half's overlay.
 - `signs` gives the text of the area's signposts and mailboxes, by the same ids. A signpost without one reads the area's name.
 - A person may have a `script` of the area's own file (`scripts/<key>.txt`, see `docs/scripts.md`) in place of `dialog`: `"clown_1": { "name": "Clown", "script": "Clown1" }`. Scripts call the area's people by their ids here. Whoever the area file hides by a flag (`hiddenBy`) is hidden by that flag in the game without the overlay saying so; `"hiddenBy": ""` keeps someone whatever the flag, another flag's name replaces it, and `shownBy` names a flag they wait for.
@@ -274,6 +276,8 @@ Every tile of a map of the world keeps the original's behaviour (`Map.BehaviourA
 | `W` | `Walkway` | The deck of a raised walkway of steel and solar panels |
 | `O` | `Broadleaf` | A broad-leaved tree, where an area's forests are not pines |
 | `M` | `CaveMouth` | The dark in the mouth of a cave |
+| `E` | `ForestMouth` | The dark under the trees where a forest is entered |
+| `p` | `Puddle` | A puddle, told by its behaviour (`Puddle`, `StillPuddle`) whatever its texture |
 | `B` | `Building` | Under a prop as large as a building |
 | `?` | `Unknown` | The importer couldn't tell; its report says why |
 
@@ -299,6 +303,8 @@ One area: a town, a route, a cave floor, a room. `key` is its name in lower case
 
 `land` (left out when nothing lives in its grass) is the area's wild Pokémon on land: Platinum's twelve slots in order, each `{ "species", "level" }`. A slot's chance is fixed by its place: 20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1 and 1 in a hundred (`WorldAreaFile.LandSlotWeights`). These are the base slots only; the ones the time of day, swarms and the Poké Radar swap in come with plan 03. `water` is the same for whoever surfs there: five slots, met 60, 30, 5, 4 and 1 times in a hundred, each `{ "species", "level", "maxLevel" }` with a range of levels. `landRate` and `waterRate` are Platinum's rates for the two tables: how often, out of a hundred, an attempt that gets through meets something (`EncounterSteps` has the whole rule). `oldRod`, `goodRod` and `superRod` (plan 02 · S2) are what bites on each rod there, five slots each like `water`'s, with `oldRodRate`, `goodRodRate` and `superRodRate` the chance in a hundred that anything bites at all: the Old Rod's slots bite 60, 30, 5, 4 and 1 times in a hundred, the other two's 40, 40, 15, 4 and 1 (`WorldAreaFile.RodSlotWeights`, the original's `GetRodEncounterSlot`). Each is left out where the rod catches nothing.
 
+`eastSea` (plan 06 · R10; left out when false) says the area's Shellos and Gastrodon are met in the east sea's colours, as the original's encounter data says by its form rates. `unownTable` is which of the original's Unown tables its Unown are drawn from (`FormRules.UnownTables`): 1 to 8 as the encounter data numbers them (most letters, F, R, I, N, E, D, the two marks), left out for none, which reads as the first.
+
 Then what stands on it, in tiles of its matrix (on the overworld: tiles of the whole region):
 
 - `warps`: `{ "x", "z", "to", "toWarp" }`: the tile leads to the warp numbered `toWarp` (counting from 0) of the area `to`. Six lifts lead to `dynamic`: a script decides where.
@@ -323,6 +329,19 @@ Where every wild Pokémon of the region lives, read by `Habitats` for the Pokéd
 ```
 
 `map` is the overworld's matrix as a picture: one string per row and one character per chunk, `~` where most of the chunk is water, `.` land, `T` a town or a city, a space where there is no chunk. Each area has its `key` and `name`, the chunks of the overworld it is shown on (`cells`, `"x,y"` each: an outdoor area's own, the chunks whose warps lead into a cave or a building, through any rooms between; the Great Marsh, which a script lets the player into, is shown at Pastoria City, and rooms reached only by scripted warps where the rest of the place is), and the species met there, each list left out when empty: in the grass or the cave in the `morning` (the table's own twelve slots), by `day` and at `night` (the two species each puts in slots 2 and 3), `surf`ing, and with the `oldRod`, `goodRod` and `superRod`. Swarms, the Poké Radar and the species a second game in the console calls up are not in it, as Platinum's Pokédex leaves them out.
+
+### `calendar.json`
+
+Platinum's weather calendar (`sYearlyWeather` in the original's `src/field_overworld_weather.c`, plan 01 · M7), read by `World.Calendar`. Five places name the calendar in their header instead of a weather: the south of Route 212, Route 213, Route 216, Acuity Lakefront and Snowpoint City. For each day of a leap year from the first of January, the file gives the weather of each, by the names the headers use.
+
+```json
+{
+  "places": [ "Route212South", "Route213", "Route216", "AcuityLakefront", "SnowpointCity" ],
+  "days": [ [ "Raining", "Clear", "HeavySnow", "Snowing", "Snowing" ], ... ]
+}
+```
+
+An area whose header names one of the places takes its weather from the row of today's date (`MapArea.WeatherOn`, by the computer's clock as the original goes by the console's). The table has a row for the 29th of February, so in any other year the days from March on are counted one further (`Weathers.CalendarDay`, as `FieldSystem_GetWeather` does).
 
 ## Sound map
 

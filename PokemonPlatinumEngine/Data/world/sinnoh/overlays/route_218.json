@@ -1,0 +1,59 @@
+{
+  "area": "route_218",
+  "bgmTrack": "sinnoh/route203",
+  "trees": "Round",
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "canalave_city", "toWarp": 7 },
+    { "warp": 1, "to": "canalave_city", "toWarp": 8 },
+    { "warp": 2, "to": "jubilife_city", "toWarp": 12 },
+    { "warp": 3, "to": "jubilife_city", "toWarp": 13 }
+  ],
+  // The blockade by the Canalave gate (a guitarist, a fisherman and their Pokémon) waits for the story (plan 02)
+  "people": {
+    "guitarist_tony": {
+      "name": "Tony",
+      "trainer": {
+        "id": "guitarist_tony",
+        "name": "Tony",
+        "trainerClass": "Guitarist",
+        "dialogueBefore": "Guitarist Tony: The waves keep the beat and I play along. Here comes the loud part!",
+        "dialogueAfter": "Guitarist Tony: Out of tune and out of luck. I'll go back to playing for the gulls."
+      }
+    },
+    "sailor_skyler": {
+      "name": "Skyler",
+      "trainer": {
+        "id": "sailor_skyler",
+        "name": "Skyler",
+        "trainerClass": "Sailor",
+        "dialogueBefore": "Sailor Skyler: Months at sea, and dry land still rocks under my feet! Battle me while I find my legs!",
+        "dialogueAfter": "Sailor Skyler: Bah! Give me a rolling deck any day. I fight better with the sea under me."
+      }
+    },
+    "fisherman_miguel": {
+      "name": "Miguel",
+      "trainer": {
+        "id": "fisherman_miguel",
+        "name": "Miguel",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Miguel: Shh, you'll frighten the fish! ...A battle? Go on, then, but keep it quiet.",
+        "dialogueAfter": "Fisherman Miguel: Lost the battle, and the fish have all swum off. Not my day."
+      }
+    },
+    "fisherman_luc": {
+      "name": "Luc",
+      "trainer": {
+        "id": "fisherman_luc",
+        "name": "Luc",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Luc: Every one of my Pokémon came up out of this water on the end of my line!",
+        "dialogueAfter": "Fisherman Luc: I'll cast again. There's always something bigger down there."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_jubilife_city": "Route 218\nEast: Jubilife City",
+    "arrow_signpost_canalave_city": "Route 218\nWest: Canalave City"
+  }
+}

@@ -1,0 +1,16 @@
+# Iron Island (plan 01 · M7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats.
+#
+# The island's sailor takes the player back to Canalave City, to the pier by Sailor Eldritch's boat.
+
+script Ferry
+  face self player
+  say "Seen enough of the island? The tunnels under it go a long way down."
+  ask "Shall I sail you back to Canalave City?"
+  if no goto Stay
+  say "Off we go, then!"
+  warp "Sinnoh" 44 750 left
+  end
+label Stay
+  say "Take your time. I'll be here with the boat."
+  end

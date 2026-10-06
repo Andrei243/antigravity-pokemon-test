@@ -124,6 +124,14 @@ internal sealed class CharacterStyle
             Top = new(196, 168, 118, 255), Accent = new(84, 70, 64, 255),
             Bottom = new(70, 66, 74, 255), Shoes = new(52, 42, 40, 255), Height = 1.04f, Build = BodyBuild.Adult
         },
+        // The leader of Team Galactic, met by the shore of Lake Verity (plan 02 · S4): our own take, a tall man with
+        // spiky blue hair in a long grey coat with a dark collar
+        "CYRUS" => new CharacterStyle
+        {
+            HairColor = new(66, 92, 156, 255), Hair = HairCut.Spiky, Coat = true,
+            Top = new(132, 136, 150, 255), Accent = new(56, 58, 74, 255),
+            Bottom = new(60, 62, 78, 255), Shoes = new(44, 44, 54, 255), Eyes = new(44, 48, 70, 255), Height = 1.1f, Build = BodyBuild.Adult
+        },
         "GENTLEMAN" => new CharacterStyle
         {
             HairColor = new(150, 146, 156, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,

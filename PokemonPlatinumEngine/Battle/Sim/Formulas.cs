@@ -132,12 +132,44 @@ public static class Formulas
         return (fought > 0 ? Math.Max(1, exp / fought) : 0, 0);
     }
 
-    /// <summary>What one Pokémon gets of it: half as much again with a Lucky Egg, and again from a trainer's Pokémon.</summary>
-    public static int ExpFor(int share, bool luckyEgg, bool trainerBattle)
+    /// <summary>
+    /// What one Pokémon gets of it: half as much again with a Lucky Egg, again from a trainer's Pokémon, and again
+    /// for a Pokémon that came from another trainer (<c>BattleSystem_PokemonIsOT</c>; seven tenths more for one
+    /// from a game in another language, which this game has none of).
+    /// </summary>
+    public static int ExpFor(int share, bool luckyEgg, bool trainerBattle, bool traded = false)
     {
         if (luckyEgg) share = share * 150 / 100;
         if (trainerBattle) share = share * 150 / 100;
+        if (traded) share = share * 150 / 100;
         return share;
+    }
+
+    /// <summary>
+    /// The modern rules' EXP (Generation 7 on): the foe's base EXP times its level over 5, halved for a Pokémon
+    /// that didn't fight, scaled by <c>((2L + 10) / (L + Lp + 10))^2.5</c> (L the foe's level, Lp the gainer's),
+    /// plus one; then half as much again for one from another trainer, again with a Lucky Egg, and a fifth more
+    /// for one past the level it would evolve at. Each step is rounded down.
+    /// </summary>
+    public static int ScaledExp(int baseExp, int foeLevel, int level, bool fought, bool traded, bool luckyEgg, bool pastEvolution)
+    {
+        double scale = Math.Pow((2.0 * foeLevel + 10) / (foeLevel + level + 10), 2.5);
+        int exp = (int)Math.Floor(baseExp * foeLevel / 5.0 / (fought ? 1 : 2) * scale) + 1;
+        if (traded) exp = exp * 150 / 100;
+        if (luckyEgg) exp = exp * 150 / 100;
+        if (pastEvolution) exp = exp * 120 / 100;
+        return exp;
+    }
+
+    /// <summary>
+    /// <c>BattleSystem_CalcMoneyPenalty</c>: what losing costs. The team's highest level, times 4, times the badges'
+    /// step (2, 4, 6, 9, 12, 16, 20, 25, 30 for none to eight), and never more than the player has.
+    /// </summary>
+    public static int MoneyPenalty(int highestLevel, int badges, int money)
+    {
+        int[] steps = { 2, 4, 6, 9, 12, 16, 20, 25, 30 };
+        int penalty = highestLevel * 4 * steps[Math.Clamp(badges, 0, steps.Length - 1)];
+        return Math.Min(penalty, Math.Max(0, money));
     }
 
     /// <summary>
@@ -212,4 +244,13 @@ public sealed class BattleConditions
 
     /// <summary>The place bends the order of things: the battle opens with five turns of Trick Room.</summary>
     public bool TrickRoom { get; init; }
+
+    /// <summary>How many badges the player has: what a traded Pokémon obeys by, and what losing costs (plan 06 · R10).</summary>
+    public int Badges { get; init; }
+
+    /// <summary>The player's money, which a loss takes a share of.</summary>
+    public int Money { get; init; }
+
+    /// <summary>Who the player is, as a Pokémon's original trainer is marked: one marked otherwise is someone else's. Null takes every Pokémon for the player's own.</summary>
+    public TrainerMark? Player { get; init; }
 }

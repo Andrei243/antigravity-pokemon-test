@@ -181,6 +181,8 @@ public sealed class WorldWriter
             GoodRodRate = goodRodRate,
             SuperRod = Water(header, "super_rod", out int? superRodRate),
             SuperRodRate = superRodRate,
+            EastSea = header.Encounters != null && decomp.Forms(header.Encounters).EastSea ? true : null,
+            UnownTable = header.Encounters != null && decomp.Forms(header.Encounters).UnownTable is > 0 and var unown ? unown : null,
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o => new AreaObject
             {
@@ -403,8 +405,9 @@ public sealed class WorldWriter
             Write("areas", header.Key, Area(header, nameOf(header)));
         }
 
-        // The whole region's wild Pokémon, open or not, for the Pokédex
+        // The whole region's wild Pokémon, open or not, for the Pokédex, and the calendar of its weather
         File.WriteAllText(Path.Combine(directory, WorldHabitatsFile.FileName), GameDataFiles.Serialize(Habitats(nameOf)));
+        File.WriteAllText(Path.Combine(directory, WorldCalendarFile.FileName), GameDataFiles.Serialize(Calendar()));
 
         foreach (string folder in new[] { "matrices", "chunks", "areas" })
         {
@@ -415,6 +418,9 @@ public sealed class WorldWriter
         }
         return wanted.Count;
     }
+
+    /// <summary>Platinum's weather calendar (<c>sYearlyWeather</c>), as the game reads it.</summary>
+    public WorldCalendarFile Calendar() => new() { Places = decomp.Calendar.Places, Days = decomp.Calendar.Days };
 
     /// <summary>Writes every matrix, chunk and area under <paramref name="directory"/> and returns how many files.</summary>
     public int WriteAll(string directory, Func<MapHeader, string> nameOf)
@@ -432,6 +438,7 @@ public sealed class WorldWriter
         for (int id = 0; id < decomp.LandCount; id++) Write("chunks", id.ToString("000", CultureInfo.InvariantCulture), Chunk(id));
         foreach (var header in decomp.Headers.Values.OrderBy(h => h.Index)) Write("areas", header.Key, Area(header, nameOf(header)));
         File.WriteAllText(Path.Combine(directory, WorldHabitatsFile.FileName), GameDataFiles.Serialize(Habitats(nameOf)));
-        return files + 1;
+        File.WriteAllText(Path.Combine(directory, WorldCalendarFile.FileName), GameDataFiles.Serialize(Calendar()));
+        return files + 2;
     }
 }

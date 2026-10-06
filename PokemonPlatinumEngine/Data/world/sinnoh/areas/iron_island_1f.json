@@ -1,0 +1,41 @@
+{
+  "key": "iron_island_1f",
+  "index": 289,
+  "name": "Iron Island",
+  "matrix": 80,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "IronIslandCave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "iron_island_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Geodude", "level": 32 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Onix", "level": 31 },
+    { "species": "Onix", "level": 33 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 31 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 6, "z": 8, "to": "iron_island", "toWarp": 1 },
+    { "x": 4, "z": 3, "to": "iron_island_b1f_left_room", "toWarp": 0 },
+    { "x": 8, "z": 3, "to": "iron_island_b1f_right_room", "toWarp": 2 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

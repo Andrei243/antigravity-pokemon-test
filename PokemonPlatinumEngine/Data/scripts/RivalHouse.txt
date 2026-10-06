@@ -1,0 +1,18 @@
+# The rival's house, downstairs (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_twinleaf_town_rival_house_1f.s): his mother always knows where he has run off to.
+
+
+script RivalMom
+  if flag FLAG_HAS_POKEDEX goto Pokedex
+  if flag FLAG_RIVAL_LEFT_HOME goto Left
+  speaker "{rival}'s Mom"
+  say "Oh, {player}! {rival} came tearing in a moment ago. He's up in his room."
+  end
+label Left
+  speaker "{rival}'s Mom"
+  say "{rival} rocketed out of the door. He's probably halfway along Route 201 by now. That boy never slows down!"
+  end
+label Pokedex
+  speaker "{rival}'s Mom"
+  say "Off on an adventure of your own? If you see {rival} out there, keep an eye on him for me."
+  end

@@ -1,0 +1,12 @@
+{
+  "area": "iron_island_b3f",
+  "bgmTrack": "sinnoh/mine",
+  // The lift up to the way out onto the island (the original's trigger 0): until its platform moves, stepping onto it
+  // carries the player to the other level through a fade, as on B1F and B2F
+  "exits": [
+    { "x": 9, "z": 10, "map": "IronIslandB3F", "toX": 9, "toY": 12, "facing": "Down" },
+    { "x": 9, "z": 11, "map": "IronIslandB3F", "toX": 9, "toY": 9, "facing": "Up" }
+  ],
+  // The Iron Ruins open after the Hall of Fame (plan 01 · M10)
+  "locked": [ 2, 3 ]
+}

@@ -1,0 +1,131 @@
+{
+  "area": "route_210_north",
+  "bgmTrack": "sinnoh/route210",
+  "trees": "Pine",
+  // Grandma Wilma's house has no rooms yet (plan 01 · M11)
+  "locked": [ 0 ],
+  "people": {
+    "black_belt": {
+      "name": "Black Belt",
+      "dialog": [
+        "I come up here to train in the fog. When you can't see, you learn to listen.",
+        "My reflexes have never been sharper!"
+      ]
+    },
+    "ace_trainer_ernest": {
+      "name": "Ernest",
+      "trainer": {
+        "id": "ace_trainer_ernest",
+        "name": "Ernest",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Ernest: Fog or no fog, I know a strong trainer when I see one. Let's battle!",
+        "dialogueAfter": "Ace Trainer Ernest: I saw that coming... about three moves too late."
+      }
+    },
+    "ace_trainer_alyssa": {
+      "name": "Alyssa",
+      "trainer": {
+        "id": "ace_trainer_alyssa",
+        "name": "Alyssa",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Alyssa: Training in the fog sharpens every sense. Shall we put mine to the test?",
+        "dialogueAfter": "Ace Trainer Alyssa: My senses are sharp. Yours are sharper, it seems."
+      }
+    },
+    "ninja_boy_joel": {
+      "name": "Joel",
+      "trainer": {
+        "id": "ninja_boy_joel",
+        "name": "Joel",
+        "trainerClass": "Ninja Boy",
+        "dialogueBefore": "Ninja Boy Joel: Out of the grass and into battle! You'll never see us coming!",
+        "dialogueAfter": "Ninja Boy Joel: You saw all four of us coming. How?"
+      }
+    },
+    "ninja_boy_nathan": {
+      "name": "Nathan",
+      "trainer": {
+        "id": "ninja_boy_nathan",
+        "name": "Nathan",
+        "trainerClass": "Ninja Boy",
+        "dialogueBefore": "Ninja Boy Nathan: In fog like this, a ninja hardly needs to hide at all! Ha!",
+        "dialogueAfter": "Ninja Boy Nathan: Maybe I should have hidden properly after all."
+      }
+    },
+    "ninja_boy_davido": {
+      "name": "Davido",
+      "trainer": {
+        "id": "ninja_boy_davido",
+        "name": "Davido",
+        "trainerClass": "Ninja Boy",
+        "dialogueBefore": "Ninja Boy Davido: You thought I was a rock, didn't you? Everybody does!",
+        "dialogueAfter": "Ninja Boy Davido: Back to being a rock, then. A quiet, beaten rock."
+      }
+    },
+    "dragon_tamer_patrick": {
+      "name": "Patrick",
+      "trainer": {
+        "id": "dragon_tamer_patrick",
+        "name": "Patrick",
+        "trainerClass": "Dragon Tamer",
+        "dialogueBefore": "Dragon Tamer Patrick: Dragons raised in these mountains grow up tough. Mine's no exception!",
+        "dialogueAfter": "Dragon Tamer Patrick: It's still young. One day it'll be a dragon nobody can stand against."
+      }
+    },
+    "bird_keeper_brianna": {
+      "name": "Brianna",
+      "trainer": {
+        "id": "bird_keeper_brianna",
+        "name": "Brianna",
+        "trainerClass": "Bird Keeper",
+        "dialogueBefore": "Bird Keeper Brianna: My owls see through fog as if it were broad daylight. Can you?",
+        "dialogueAfter": "Bird Keeper Brianna: They saw you clearly enough. They just couldn't stop you."
+      }
+    },
+    // The pair battle together, two Pokémon at a time; either of them starts it
+    "double_team_trainer_zac": {
+      "name": "Zac",
+      "trainer": {
+        "id": "double_team_zac_and_jen",
+        "name": "Zac & Jen",
+        "trainerClass": "Double Team",
+        "dialogueBefore": "Zac: Jen and I train together and battle together. Two against two!",
+        "dialogueAfter": "Zac: Sorry, Jen. That one was my fault."
+      }
+    },
+    "double_team_trainer_jen": {
+      "name": "Jen",
+      "trainer": {
+        "id": "double_team_zac_and_jen",
+        "name": "Zac & Jen",
+        "trainerClass": "Double Team",
+        "dialogueBefore": "Jen: Zac's always one step behind me. That's how we like it!",
+        "dialogueAfter": "Jen: Zac, we need to have a little talk about teamwork."
+      }
+    },
+    "veteran_brian": {
+      "name": "Brian",
+      "trainer": {
+        "id": "veteran_brian",
+        "name": "Brian",
+        "trainerClass": "Veteran",
+        "dialogueBefore": "Veteran Brian: I've battled on this road for longer than you've been alive. Come, show me what the young can do.",
+        "dialogueAfter": "Veteran Brian: Splendid. Every year the young ones get better. That's just as it should be."
+      }
+    },
+    "black_belt_adam": {
+      "name": "Adam",
+      "trainer": {
+        "id": "black_belt_adam",
+        "name": "Adam",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Adam: I run up this slope every morning to build my legs. You'll do nicely as the last stretch!",
+        "dialogueAfter": "Black Belt Adam: Ugh... my legs gave out before my spirit did."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_celestic_town": "Route 210\nWest: Celestic Town",
+    "signboard_grandma_wilmas_house": "Grandma Wilma's House\nKnock and come in: the kettle is always on."
+  }
+}

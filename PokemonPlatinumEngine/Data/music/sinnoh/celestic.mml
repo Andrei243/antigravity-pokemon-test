@@ -1,0 +1,48 @@
+# Celestic Town (the original's CITY04 role, which it shares with Eterna City; here a theme of its own): the oldest town
+# of Sinnoh round its shrine and ancient carving, and the elder who keeps the legends of time and space. A slow D-Dorian
+# sarabande, solemn but kind: the oboe over a lute and a drone, a choir chanting in bare fifths that warms into full chords,
+# a shrine bell at each phrase's end; by night the ocarina, a harp and a pad. Original composition for this game.
+title Celestic Town
+tempo 66
+meter 3/4
+reverb 0.42
+nighttempo 0.94
+
+track lead oboe night=ocarina vol=0.8 pan=0 rev=0.42
+  r2. | r2. |
+  L v100 o4 a4 b2 | o5 d4. c8 o4 b4 | o4 a8 g8 f2 | o4 g4 e2 |
+  o4 a4 o5 d2 | o5 e4 g2 | o5 e4. d8 c4 | o5 d2. |
+  v108 o5 c4 f2 | o5 a8 g8 e2 | o5 f4 d2 | o5 e4 d2 |
+  v100 o4 a4 b2 | o5 d4. e8 f4 | o5 g4 f2 | o5 e4 d4 c4 |
+
+track chant choir night=pad vol=0.33 pan=-0.2 rev=0.55
+  q8 o3 (d a >d)2. | (c g >c)2. |
+  L (d a >d)2. | (g >d g)2. | (d a >d)2. | (a >e a)2. |
+  (d a >d)2. | (g >d g)2. | (c g >c)2. | (d a >d)2. |
+  (a >c f)2. | (g >c e)2. | (f b- >d)2. | (a >d e)2. |
+  (a >d f)2. | (g b >d)2. | (f b- >d)2. | (g >c e)2. |
+
+track lute guitar night=harp vol=0.44 pan=0.3 rev=0.32
+  o3 d4 (a >d f)4 a8 >d8 | o3 c4 (g >c e)4 g8 >c8 |
+  L o3 d4 (a >d f)4 a8 >d8 | o2 g4 o3 (d g >d)4 b8 >d8 | o3 d4 (a >d f)4 a8 >d8 | o2 a4 o3 (e a >c)4 e8 a8 |
+  o3 d4 (a >d f)4 a8 >d8 | o2 g4 o3 (d g >d)4 b8 >d8 | o3 c4 (g >c e)4 g8 >c8 | o3 d4 (a >d f)4 a8 >d8 |
+  o2 f4 o3 (a >c f)4 a8 >c8 | o3 c4 (g >c e)4 g8 >c8 | o2 b-4 o3 (f b- >d)4 f8 b-8 | o2 a4 o3 (e a >d)4 e8 a8 |
+  o3 d4 (a >d f)4 a8 >d8 | o2 g4 o3 (d g >d)4 b8 >d8 | o2 b-4 o3 (f b- >d)4 f8 b-8 | o3 c4 (g >c e)4 g8 >c8 |
+
+track bass contrabass vol=0.55 rev=0.2
+  q8 o3 d2. | c2. |
+  L o3 d2. | d2. | d2. | o2 a2. |
+  o3 d2. | d2. | c2. | d2. |
+  o3 f2. | c2. | o2 b-2. | a2. |
+  o3 d2. | o2 g2. | b-2. | o3 c2. |
+
+track chime bell night=celesta vol=0.3 pan=-0.35 rev=0.6
+  r2. | r4 o5 g4 e4 |
+  L r2. | r2. | r2. | r4 o5 e4 a4 |
+  r2. | r2. | r2. | r4 o5 a4 d4 |
+  r2. | r2. | r2. | r4 o5 a4 e4 |
+  r2. | r2. | r2. | r4 o5 g4 e4 |
+
+track drum kit vol=0.46 rev=0.35
+  v44 f2. | v36 f4 r4 v24 m8 v28 f8 |
+  L [ v56 f4 v36 f4 r4 | v46 f4 r2 | v56 f4 v36 f4 r4 | v46 f4 r4 v26 m8 v30 f8 | ]4

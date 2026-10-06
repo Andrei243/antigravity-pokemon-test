@@ -132,8 +132,262 @@ internal static class Landmarks
             case PropType.Gantry:
                 Gantry(kit, prop);
                 return true;
+            case PropType.OreHeap:
+            {
+                int width = Math.Clamp(w - 8, 40, 88);
+                kit.Sprite(kit.Face($"ore.{width}", width, 34, c => PaintOre(c)), w / 2f, d / 2f + 10);
+                return true;
+            }
+            case PropType.Headframe:
+            {
+                int width = Math.Clamp(w - 8, 48, 96), rows = Rows(kit, prop.Height, 110, 200);
+                kit.Sprite(kit.Face($"headframe.{width}x{rows}", width, rows, c => PaintHeadframe(c)), w / 2f, d / 2f + 8);
+                return true;
+            }
+            case PropType.LiftBase:
+                LiftBase(kit, w, d);
+                return true;
+            case PropType.Drawbridge:
+                Drawbridge(kit, map, prop);
+                return true;
+            case PropType.Tram:
+                Tram(kit, w, d);
+                return true;
+            case PropType.Binoculars:
+                kit.Sprite(kit.Face("binoculars", 20, 44, PaintBinoculars), w / 2f, d / 2f + 6);
+                return true;
+            case PropType.Pavilion:
+                Pavilion(kit, w, d);
+                return true;
         }
         return false;
+    }
+
+    // ------------------------------------------------------------------ the east and the sea (plan 01 · M7)
+
+    private static readonly Tone Hazard = Tone.Of(236, 190, 52, 250, 214, 96, 186, 140, 36);
+    private static readonly Tone TramGreen = Tone.Of(70, 140, 92, 104, 176, 120, 46, 100, 66);
+    private static readonly Tone WhiteWood = Tone.Of(232, 234, 236, 248, 248, 250, 186, 190, 200);
+    private static readonly Tone Turquoise = Tone.Of(64, 170, 180, 110, 204, 210, 40, 120, 136);
+
+    /// <summary>The steel platform at the foot of a lift: knee high, ribbed on top, edged black and yellow.</summary>
+    private static void LiftBase(KitBuilder kit, int w, int d)
+    {
+        int x0 = 6, x1 = Math.Max(x0 + 24, w - 6), z0 = 6, z1 = Math.Max(z0 + 20, d - 6), h = 14;
+        var top = kit.Face($"lift.top.{x1 - x0}x{z1 - z0}", x1 - x0, z1 - z0, c =>
+        {
+            c.Rect(0, 0, c.Width, c.Height, Steel.Base);
+            for (int y = 4; y < c.Height - 4; y += 4) c.HLine(4, y, c.Width - 8, Steel.Light);
+            HazardEdge(c, 0, 0, c.Width, c.Height, 3);
+        });
+        var front = kit.Face($"lift.front.{x1 - x0}", x1 - x0, h, c => { Pix.Raised(c, 0, 0, c.Width, c.Height, Steel); HazardStripes(c, 0, 2, c.Width, 5); });
+        var side = kit.Face($"lift.side.{z1 - z0}", z1 - z0, h, c => { Pix.Raised(c, 0, 0, c.Width, c.Height, Steel); HazardStripes(c, 0, 2, c.Width, 5); });
+        kit.Box(x0, x1, z0, z1, 0, h, top, front, side, side);
+    }
+
+    private static void HazardStripes(PixelCanvas c, int x, int y, int w, int h)
+    {
+        for (int py = 0; py < h; py++)
+            for (int px = 0; px < w; px++)
+                c.SetRaw(x + px, y + py, (px + py) / 4 % 2 == 0 ? Hazard.Base : Rgb(40, 40, 50));
+    }
+
+    private static void HazardEdge(PixelCanvas c, int x, int y, int w, int h, int thick)
+    {
+        HazardStripes(c, x, y, w, thick);
+        HazardStripes(c, x, y + h - thick, w, thick);
+        HazardStripes(c, x, y, thick, h);
+        HazardStripes(c, x + w - thick, y, thick, h);
+    }
+
+    /// <summary>
+    /// A leaf of a drawbridge, over the planks the ground already shows: a steel truss along either edge of the
+    /// deck, and at the end on the bank a portal of two posts and a beam, with the counterweight hanging from it.
+    /// The deck is found on the map (the planks under the leaf's box), and its bank is the end that isn't water.
+    /// </summary>
+    private static void Drawbridge(KitBuilder kit, Map map, Prop prop)
+    {
+        int minX = int.MaxValue, maxX = int.MinValue, minZ = int.MaxValue, maxZ = int.MinValue;
+        for (int z = 0; z < prop.Depth; z++)
+            for (int x = 0; x < prop.Width; x++)
+                if (map.InBounds(prop.X + x, prop.Y + z) && map.GetGroundTile(prop.X + x, prop.Y + z) == TileType.Planks)
+                {
+                    minX = Math.Min(minX, x); maxX = Math.Max(maxX, x);
+                    minZ = Math.Min(minZ, z); maxZ = Math.Max(maxZ, z);
+                }
+        // (Where no planks lie under it, the whole of its box is the deck)
+        if (minX > maxX) (minX, maxX, minZ, maxZ) = (0, prop.Width - 1, 0, prop.Depth - 1);
+        float x0 = minX * 32, x1 = (maxX + 1) * 32, zn = minZ * 32 + 3, zs = (maxZ + 1) * 32 - 3;
+        int length = (int)(x1 - x0);
+        var truss = kit.Face($"bridge.truss.{length}", length, 16, PaintTruss);
+        var trussTop = kit.Face($"bridge.truss.top.{length}", length, 4, c => c.Rect(0, 0, c.Width, c.Height, Steel.Light));
+        var trussEnd = kit.Face("bridge.truss.end", 4, 16, c => Pix.Raised(c, 0, 0, 4, 16, Steel));
+        kit.Box(x0, x1, zn - 2, zn + 2, 0, 16, trussTop, truss, trussEnd, trussEnd, truss);
+        kit.Box(x0, x1, zs - 2, zs + 2, 0, 16, trussTop, truss, trussEnd, trussEnd, truss);
+
+        // The bank end: the side of the deck whose next tile west or east isn't water
+        int midZ = prop.Y + (minZ + maxZ) / 2;
+        bool westBank = !map.IsDeepWater(prop.X + minX - 1, midZ) || map.IsDeepWater(prop.X + maxX + 1, midZ);
+        float xh = westBank ? x0 + 6 : x1 - 6;
+        kit.Block("bridge.post", Steel, xh - 4, xh + 4, zn - 4, zn + 4, 0, 64);
+        kit.Block("bridge.post", Steel, xh - 4, xh + 4, zs - 4, zs + 4, 0, 64);
+        kit.Block("bridge.beam", Steel, xh - 4, xh + 4, zn - 4, zs + 4, 56, 64);
+        kit.Block("bridge.weight", Iron, xh - 7, xh + 7, (zn + zs) / 2f - 10, (zn + zs) / 2f + 10, 32, 52);
+    }
+
+    /// <summary>A truss 16 rows tall: a chord along the top and the foot, posts every 16 texels and a diagonal in each bay; the rest open.</summary>
+    public static void PaintTruss(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        c.Rect(0, 0, w, 3, Steel.Light);
+        c.Rect(0, h - 3, w, 3, Steel.Dark);
+        for (int x = 0; x < w; x += 16)
+        {
+            c.Rect(x, 0, 2, h, Steel.Base);
+            for (int i = 0; i < h - 6; i++)
+            {
+                int dx = x + 2 + i * 14 / (h - 6);
+                if (dx < w) c.SetRaw(dx, 3 + i, Steel.Dark);
+            }
+        }
+        c.Rect(w - 2, 0, 2, h, Steel.Base);
+    }
+
+    /// <summary>
+    /// The Great Marsh's tram: two rails on sleepers the length of its tiles (north and south, or east and
+    /// west), and the car at the end nearer the gate, south or east: green boards with an open side and a pale roof.
+    /// </summary>
+    private static void Tram(KitBuilder kit, int w, int d)
+    {
+        bool northSouth = d >= w;
+        int span = northSouth ? d : w;
+        var rails = kit.Face($"tram.rails.{(northSouth ? "ns" : "ew")}.{span}", northSouth ? 28 : span, northSouth ? span : 28, c => PaintRails(c, northSouth));
+        if (northSouth) kit.Decal(w / 2f - 14, w / 2f + 14, 0, d, 0.01f, rails);
+        else kit.Decal(0, w, d / 2f - 14, d / 2f + 14, 0.01f, rails);
+
+        int cw = northSouth ? 44 : 80, cd = northSouth ? 80 : 44;
+        float cx0 = northSouth ? w / 2f - cw / 2f : w - cw - 6, cz0 = northSouth ? d - cd - 6 : d / 2f - cd / 2f;
+        var roof = kit.Face($"tram.roof.{cw}x{cd}", cw, cd, c => { Pix.Raised(c, 0, 0, c.Width, c.Height, PaleStone); c.Rect(2, c.Height / 2, c.Width - 4, 1, PaleStone.Dark); });
+        var front = kit.Face($"tram.side.{cw}", cw, 30, c => PaintTramSide(c));
+        var side = kit.Face($"tram.side.{cd}", cd, 30, c => PaintTramSide(c));
+        kit.Box(cx0, cx0 + cw, cz0, cz0 + cd, 4, 34, roof, front, side, side, front);
+    }
+
+    private static void PaintRails(PixelCanvas c, bool northSouth)
+    {
+        int across = northSouth ? c.Width : c.Height, along = northSouth ? c.Height : c.Width;
+        void At(int a, int b, Color col) { if (northSouth) c.SetRaw(b, a, col); else c.SetRaw(a, b, col); }
+        for (int a = 0; a < along; a++)
+        {
+            bool sleeper = a % 8 < 3;
+            for (int b = 0; b < across; b++)
+            {
+                if (b == 5 || b == 6 || b == across - 7 || b == across - 6) At(a, b, b % 2 == 1 ? Steel.Light : Steel.Dark);
+                else if (sleeper && b > 1 && b < across - 2) At(a, b, DarkWood.Base);
+            }
+        }
+    }
+
+    /// <summary>A side of the tram's car: green boards below, an opening with two pillars above, wheels at the foot.</summary>
+    public static void PaintTramSide(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        Pix.Raised(c, 0, 12, w, h - 12, TramGreen);
+        for (int x = 4; x < w; x += 8) c.VLine(x, 13, h - 14, TramGreen.Dark);
+        c.Rect(0, 0, w, 3, TramGreen.Light);
+        foreach (int x in new[] { 0, w / 2 - 1, w - 3 }) c.Rect(x, 0, 3, 12, TramGreen.Base);
+        foreach (int x in new[] { 6, w - 14 })
+        {
+            Pix.Disc(c, x, h - 8, 8, Iron.Base);
+            Pix.Disc(c, x + 2, h - 6, 4, Iron.Light);
+        }
+    }
+
+    /// <summary>A coin viewer on a post, 20 by 44: a grey head with two eyepieces on a column on a foot.</summary>
+    public static void PaintBinoculars(PixelCanvas c)
+    {
+        c.Rect(7, 16, 6, 24, Steel.Base);
+        c.VLine(7, 16, 24, Steel.Light);
+        c.Rect(4, 39, 12, 4, Steel.Dark);
+        Pix.Raised(c, 2, 4, 16, 12, Steel);
+        Pix.Disc(c, 3, 6, 6, Iron.Base);
+        Pix.Disc(c, 11, 6, 6, Iron.Base);
+        Pix.Disc(c, 4, 7, 4, Glass);
+        Pix.Disc(c, 12, 7, 4, Glass);
+        Pix.Outline(c);
+    }
+
+    /// <summary>An open shelter of the Hotel Grand Lake: a pale floor, four white posts and a turquoise roof.</summary>
+    private static void Pavilion(KitBuilder kit, int w, int d)
+    {
+        int x0 = 12, x1 = Math.Max(x0 + 40, w - 12), z0 = 12, z1 = Math.Max(z0 + 36, d - 10);
+        kit.Block("pavilion.floor", PaleStone, x0 - 4, x1 + 4, z0 - 4, z1 + 4, 0, 4);
+        foreach (var (px, pz) in new[] { (x0, z0), (x1 - 6, z0), (x0, z1 - 6), (x1 - 6, z1 - 6) })
+            kit.Block("pavilion.post", WhiteWood, px, px + 6, pz, pz + 6, 4, 48);
+        int rw = x1 - x0 + 16, rd = z1 - z0 + 16;
+        var roof = kit.Face($"pavilion.roof.{rw}x{rd}", rw, rd, c =>
+        {
+            c.Rect(0, 0, rw, rd, Turquoise.Base);
+            for (int y = 3; y < rd; y += 5) c.HLine(0, y, rw, Turquoise.Dark);
+            c.Rect(rw / 2 - 2, 0, 4, rd, Turquoise.Light);
+            Pix.Border(c, 0, 0, rw, rd, Turquoise.Dark);
+        });
+        var eave = kit.Face($"pavilion.eave.{rw}", rw, 8, c => { Pix.Raised(c, 0, 0, c.Width, c.Height, Turquoise); c.HLine(0, 7, c.Width, WhiteWood.Base); });
+        var eaveSide = kit.Face($"pavilion.eave.{rd}", rd, 8, c => { Pix.Raised(c, 0, 0, c.Width, c.Height, Turquoise); c.HLine(0, 7, c.Width, WhiteWood.Base); });
+        kit.Box(x0 - 8, x1 + 8, z0 - 8, z1 + 8, 48, 56, roof, eave, eaveSide, eaveSide, eave);
+    }
+
+    /// <summary>A heap of iron ore: the coal heap's shape in the rust of ore, with grey glints.</summary>
+    public static void PaintOre(PixelCanvas c)
+    {
+        var light = Rgb(186, 132, 108);
+        var mid = Rgb(150, 96, 78);
+        var dark = Rgb(118, 72, 62);
+        int w = c.Width, h = c.Height;
+        Lump(c, w * 0.45f, h - 2f, w * 0.44f, h - 6f, light, mid, dark, h - 2f);
+        Lump(c, w * 0.76f, h - 1f, w * 0.22f, h * 0.5f, light, mid, dark, h - 2f);
+        foreach (var (x, y) in new[] { (0.3f, 0.5f), (0.5f, 0.3f), (0.62f, 0.62f), (0.2f, 0.75f), (0.8f, 0.8f) })
+            c.Rect((int)(w * x), (int)(h * y), 2, 1, Rgb(176, 176, 188));
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The headframe over a mine's shaft, filling its canvas: two lattice legs leaning in to a platform, a
+    /// cross-brace every 16 rows, and the winding wheel on top with its cable down the middle.
+    /// </summary>
+    public static void PaintHeadframe(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        int r = Math.Max(8, w / 6), top = 2 * r + 6;
+        int topL = w / 2 - w / 5, topR = w / 2 + w / 5;
+        int Lx(int y) => 2 + (topL - 2) * (h - 1 - y) / (h - 1 - top);
+        int Rx(int y) => w - 5 - (w - 5 - topR) * (h - 1 - y) / (h - 1 - top);
+        for (int y = top; y < h; y++)
+        {
+            c.Rect(Lx(y), y, 3, 1, Steel.Light);
+            c.Rect(Rx(y), y, 3, 1, Steel.Base);
+            int row = (h - 1 - y) % 16;
+            if (row == 0) c.Rect(Lx(y), y, Rx(y) - Lx(y) + 3, 2, Steel.Base);
+            else if (y < h - 2)
+            {
+                // A brace two texels thick from one leg to the other in each bay
+                int dx = Lx(y) + 3 + row * (Rx(y) - Lx(y) - 5) / 16;
+                c.Rect(dx, y, 2, 1, Steel.Dark);
+            }
+        }
+        c.Rect(topL - 4, top - 3, topR - topL + 11, 4, Steel.Dark);
+        // The wheel: a ring with four spokes, and the cable down the shaft
+        int cx = w / 2, cy = r + 2;
+        for (int y = -r; y <= r; y++)
+            for (int x = -r; x <= r; x++)
+            {
+                int dd = x * x + y * y;
+                if (dd <= r * r && dd >= (r - 3) * (r - 3)) c.SetRaw(cx + x, cy + y, Iron.Base);
+                else if (dd < (r - 3) * (r - 3) && (x == 0 || y == 0)) c.SetRaw(cx + x, cy + y, Iron.Light);
+            }
+        Pix.Disc(c, cx - 2, cy - 2, 4, Iron.Dark);
+        c.VLine(cx + r - 2, cy, h - cy - 1, Iron.Dark);
+        Pix.Outline(c);
     }
 
     // ------------------------------------------------------------------ boxes

@@ -132,6 +132,9 @@ public partial class GameEngine
 
     // The Pokétch (plan 02 · S2), and whether it is out on the screen
     private readonly Poketch poketch = new();
+
+    /// <summary>The Great Marsh's Safari Game, while one is on (plan 01 · M7; saved).</summary>
+    private readonly SafariGame safari = new();
     private readonly PoketchView poketchView = new();
 
     private static string playerName => PlayerIdentity.Name;
@@ -204,7 +207,7 @@ public partial class GameEngine
     /// Starts a new game as the character and under the name chosen in the introduction, played by the rules chosen
     /// on the title screen. The rules stay with the adventure: nothing in the game changes them afterwards.
     /// </summary>
-    public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum)
+    public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum, string? rival = null)
     {
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(rules);
@@ -214,8 +217,10 @@ public partial class GameEngine
         pcBoxStorage.Clear();
         poketch.Clear();
         poketchView.Hide();
+        safari.End();
         registeredItem = null;
         exitSpot = null;
+        lastDay = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
@@ -228,6 +233,7 @@ public partial class GameEngine
         playTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
+        PlayerIdentity.SetRival(rival);
         trainerId = fieldRandom.Next(0, 65536);
         adventureStarted = DateTime.Now;
 
@@ -294,17 +300,19 @@ public partial class GameEngine
         currentMap = MapDatabase.Get(start.Map);
         player = new Player(start.X, start.Y);
         player.Facing = start.Facing;
-
-        // Give starter items
-        playerInventory.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
-        playerInventory.AddItem(ItemDatabase.Get("Potion")!, 5);
-        playerInventory.AddItem(ItemDatabase.Get("Revive")!, 2);
-
-        // Initial party
-        var starterTurtwig = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
-        playerParty.Add(starterTurtwig);
-        playerPokedex.RegisterSeen(starterTurtwig.Species.DexNumber);
-        playerPokedex.RegisterCaught(starterTurtwig.Species.DexNumber);
+        // As in Platinum, the adventure begins with an empty bag and no Pokémon: the first comes from the
+        // professor's briefcase on Route 201 (plan 02 · S4). A region whose story isn't written yet (Kanto) still
+        // starts as every game did before: a Pokémon and a few items.
+        if (region.Id != RegionDatabase.Sinnoh)
+        {
+            playerInventory.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+            playerInventory.AddItem(ItemDatabase.Get("Potion")!, 5);
+            playerInventory.AddItem(ItemDatabase.Get("Revive")!, 2);
+            var first = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
+            playerParty.Add(first);
+            playerPokedex.RegisterSeen(first.Species.DexNumber);
+            playerPokedex.RegisterCaught(first.Species.DexNumber);
+        }
     }
 
     private void ApplySaveData(SaveData save)
@@ -320,9 +328,12 @@ public partial class GameEngine
         player.SetMode(save.Travel);
         if (save.PlayerHeight is { } standing) player.SetHeight(standing);
         exitSpot = save.Exit;
+        lastDay = save.LastDay;
         registeredItem = save.RegisteredItem;
         poketch.Load(save.Poketch);
         poketchView.Hide();
+        if (save.Safari is { } game) safari.Resume(game.Balls, game.Steps);
+        else safari.End();
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -373,6 +384,7 @@ public partial class GameEngine
         playerMoney = save.Money;
         playTime = save.PlayTimeSeconds;
         PlayerIdentity.Set(save.PlayerName, save.Look);
+        PlayerIdentity.SetRival(save.RivalName);
         // A save from before the card had a number gets one now, and keeps it
         trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
         adventureStarted = save.Started;
@@ -388,6 +400,7 @@ public partial class GameEngine
         {
             PlayerName = playerName,
             Look = PlayerIdentity.Look,
+            RivalName = PlayerIdentity.RivalName,
             TrainerId = trainerId,
             Started = adventureStarted,
             Rules = Ruleset.Current.Preset,
@@ -398,8 +411,10 @@ public partial class GameEngine
             Travel = player.Mode,
             PlayerHeight = player.HeightOn(currentMap),
             Exit = exitSpot,
+            LastDay = lastDay,
             RegisteredItem = registeredItem,
             Poketch = poketch.Save(),
+            Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             BoxStorage = pcBoxStorage.Select(SavedPokemonData.FromPokemon).ToList(),
@@ -499,7 +514,7 @@ public partial class GameEngine
                 if (introScreen.Phase == IntroPhase.Done)
                 {
                     introScreen.Close();
-                    StartNewGame(introScreen.Name, introScreen.Look, newGameRules);
+                    StartNewGame(introScreen.Name, introScreen.Look, newGameRules, introScreen.RivalName);
                 }
                 break;
             case GameState.Overworld:
@@ -518,6 +533,8 @@ public partial class GameEngine
                     {
                         if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle) playerMoney += battle.PrizeMoney;
                         if (battle.Result == BattleResult.PlayerVictory) playerMoney += battle.PayDayMoney;
+                        playerMoney = Math.Max(0, playerMoney - battle.MoneyLost);
+                        AfterBattle(battle);
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch
                         bool beaten = battle.Result == BattleResult.PlayerVictory;
@@ -600,14 +617,12 @@ public partial class GameEngine
                 var chosen = starterSelectScreen.Update(dt);
                 if (chosen != null)
                 {
-                    playerParty.Clear();
                     playerParty.Add(chosen);
                     playerPokedex.RegisterSeen(chosen.Species.DexNumber);
                     playerPokedex.RegisterCaught(chosen.Species.DexNumber);
                     // The story remembers which was taken, and with it which the rival takes
                     story.ChooseStarter(chosen.Species.Name);
                     scriptAnswer = Math.Max(0, Array.IndexOf(StoryState.Starters, chosen.Species.Name));
-                    ShowNotification($"Received {chosen.Species.Name} from Professor Rowan!");
                     currentState = GameState.Overworld;
                 }
                 break;
@@ -669,6 +684,7 @@ public partial class GameEngine
     {
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
+        KeepTheClock();
         SlideBoulders(dt);
         poketchView.Update(dt);
 
@@ -722,6 +738,8 @@ public partial class GameEngine
 
         if (InputManager.IsActionPressed(GameAction.Menu))
         {
+            startMenu.HasPokedex = story.Has(StoryState.PokedexFlag);
+            startMenu.HasPokemon = playerParty.Count > 0;
             startMenu.Open();
             return;
         }
@@ -798,6 +816,9 @@ public partial class GameEngine
         // What the step leaves behind: a print, dust, leaves, a ring on the water, a splash where they rode out
         // onto it, dust where they came down from a hop
         StepLeavesItsMark();
+
+        // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
+        if (safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
 
         // The story comes first: the script of the place walked into, then of the tiles stepped on; only then do trainers look
         if (entered || TryStepTrigger()) return true;
@@ -1177,7 +1198,12 @@ public partial class GameEngine
         Random rng = fieldRandom;
         int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
         // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize)
-        MeetWildPokemon(new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature));
+        var wild = new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
+        // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
+        var area = currentMap.AreaAt(player.GridX, player.GridY);
+        if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
+        // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
+        MeetWildPokemon(wild, safari.Active ? BattleKind.Safari : BattleKind.Normal);
     }
 
     /// <summary>
@@ -1221,20 +1247,63 @@ public partial class GameEngine
                 Conditions = BattleConditionsHere(),
                 Kind = kind,
                 CannotFlee = cannotFlee,
-                PlayerName = name
+                PlayerName = name,
+                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
 
-    /// <summary>What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the weather of the place comes into the battle with it.</summary>
+    /// <summary>
+    /// What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the
+    /// weather of the place comes into the battle with it. And of the player (plan 06 · R10): the badges a traded
+    /// Pokémon obeys by, the money a loss takes a share of, and who the player is.
+    /// </summary>
     private Battle.Sim.BattleConditions BattleConditionsHere() => new()
     {
         Terrain = TerrainAt(currentMap, player.GridX, player.GridY),
         Night = GameClock.IsNight,
         HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
-        Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY))
+        Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY)),
+        Badges = story.BadgeCount,
+        Money = playerMoney,
+        Player = PlayerMark
     };
+
+    /// <summary>
+    /// What the clock does to the team (plan 06 · R10): each new day takes a day off Pokérus
+    /// (<c>Party_UpdatePokerusStatus</c>), and from eight in the evening a Shaymin in its Sky Forme is back in its
+    /// Land Forme (<c>Party_SetShayminForm</c>, which reverts it as the clock passes eight).
+    /// </summary>
+    private void KeepTheClock()
+    {
+        var today = GameClock.Today;
+        if (lastDay is { } before && today > before) PokerusRules.DaysPass(playerParty, (today - before).Days);
+        lastDay = today;
+        if (FormRules.ShayminNight((int)GameClock.Hour))
+            foreach (var p in playerParty.Members) FormRules.BackToLand(p);
+    }
+
+    // The day the clock was last looked at, for Pokérus's days (saved)
+    private DateTime? lastDay;
+
+    /// <summary>Who the player is, as a Pokémon's original trainer is marked (plan 06 · R10).</summary>
+    private TrainerMark PlayerMark => new(PlayerIdentity.Name, trainerId, PlayerIdentity.Look);
+
+    /// <summary>
+    /// What follows any battle in the field (plan 06 · R10): Pokérus may come to the team and spread through it
+    /// (<c>BattleControllerPlayer_EndFight</c>, on the field's own chance), and an item the battle left in a
+    /// Pokémon's hands (Thief, Pickup) puts Giratina and Arceus in its form.
+    /// </summary>
+    private void AfterBattle(BattleEngine fought)
+    {
+        if (fought.Kind != BattleKind.CatchingLesson)
+        {
+            PokerusRules.TryInfect(playerParty, fieldRandom);
+            PokerusRules.Spread(playerParty, fieldRandom);
+        }
+        foreach (var p in playerParty.Members) FormRules.ByHeldItem(p);
+    }
 
     /// <summary>
     /// The ground a battle here is fought on, as the original picks it (<c>CalcTerrain</c>, <c>sTerrainForBackground</c>):
@@ -1387,18 +1456,54 @@ public partial class GameEngine
             }
             else if (isDefeat)
             {
-                playerParty.HealAll();
-                int penalty = Math.Min(playerMoney, 120);
-                playerMoney -= penalty;
-                currentMap = MapDatabase.Get("PlayerHouse");
-                player.SetPosition(4, 5, Direction.Down);
-                ArriveOnMap();
-                ShowNotification(penalty > 0 
-                    ? $"{playerName} whited out and lost {penalty} in money. Restored at home!"
-                    : $"{playerName} whited out. Restored at home!");
+                WhiteOut();
             }
             PlayFieldMusic();
+            // The Safari Game keeps the balls the battle didn't throw, and ends with the last of them
+            if (safari.Active && battle?.Kind == BattleKind.Safari)
+            {
+                safari.Balls = battle.SpecialBalls;
+                if (safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
+            }
         });
+    }
+
+    /// <summary>
+    /// Whiting out (plan 06 · R10; the original's <c>FieldTask_BlackOutFromBattle</c>): the player comes round in
+    /// front of the nurse of the Pokémon Center they last went into, or beside Mom at home before any, and the one
+    /// who looks after them heals the team (<c>common.BlackOutCenter</c>, <c>common.BlackOutHome</c>). Giratina takes
+    /// the form its item gives it, the Bicycle and the water are left behind, and Dig and an Escape Rope lead out to
+    /// the town. The money was taken by the battle (<see cref="BattleEngine.MoneyLost"/>).
+    /// </summary>
+    private void WhiteOut()
+    {
+        foreach (var p in playerParty.Members) FormRules.ByHeldItem(p);
+        var (room, home) = WhiteOutRoom();
+        currentMap = MapDatabase.Get(room);
+        var healer = currentMap.Everyone.FirstOrDefault(n => n.IsHealingNurse);
+        // In front of the nurse, the counter between them; at home, beside Mom
+        var (x, y, facing) = healer == null ? (4, 5, Direction.Down)
+            : home ? (healer.GridX - 1, healer.GridY, Direction.Right) : (healer.GridX, healer.GridY + 2, Direction.Up);
+        player.SetMode(TravelMode.OnFoot);
+        player.SetPosition(x, y, facing);
+        if (SpawnLocations.Get(story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        ArriveOnMap();
+        AnnounceLocation();
+        if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) playerParty.HealAll();
+    }
+
+    /// <summary>The room the player comes round in: in Sinnoh the last Pokémon Center's (<see cref="SpawnLocations.Respawn"/>), elsewhere the region's home.</summary>
+    private (string Room, bool Home) WhiteOutRoom()
+    {
+        var region = RegionDatabase.RegionOfMap(currentMap.Name);
+        if (region?.Id == RegionDatabase.Sinnoh)
+        {
+            var spawn = SpawnLocations.Respawn(story);
+            if (MapDatabase.MapNames.Contains(spawn.Room)) return (spawn.Room, spawn.Room == "PlayerHouse");
+            return ("PlayerHouse", true);
+        }
+        string house = region?.Maps.FirstOrDefault(m => m.EndsWith("PlayerHouse", StringComparison.Ordinal)) ?? "PlayerHouse";
+        return (house, true);
     }
 
     private void StartTransition(GameState nextState, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade)
@@ -1497,6 +1602,7 @@ public partial class GameEngine
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, playerParty);
+                if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();

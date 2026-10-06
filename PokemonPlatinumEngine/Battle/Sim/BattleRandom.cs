@@ -65,7 +65,12 @@ public enum RollKind
     /// <summary>After a battle won: out of 10, a Pokémon with Pickup finds something on a 0, then out of 100 which; out of 100, Honey Gather finds honey below its level's chance.</summary>
     Pickup,
     /// <summary>The Great Marsh: out of 10 for bait and mud (0 is the strong reaction), out of 255 against the Pokémon's flee rate.</summary>
-    Safari
+    Safari,
+    /// <summary>
+    /// A Pokémon of someone else's, over the level the badges command (plan 06 · R10): out of 256 against its level
+    /// and the cap, out of 4 for the move it uses instead and for what it says when it does nothing.
+    /// </summary>
+    Obedience
 }
 
 /// <summary>

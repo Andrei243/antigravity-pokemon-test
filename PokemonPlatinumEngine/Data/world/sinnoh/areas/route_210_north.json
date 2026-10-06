@@ -1,0 +1,102 @@
+{
+  "key": "route_210_north",
+  "index": 363,
+  "name": "Route 210",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Fog",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "ROAD_F_D",
+  "nightMusic": "ROAD_F_N",
+  "encounters": "route_210_north",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Swablu", "level": 27 },
+    { "species": "Bibarel", "level": 28 },
+    { "species": "Scyther", "level": 27 },
+    { "species": "Meditite", "level": 27 },
+    { "species": "Meditite", "level": 29 },
+    { "species": "Machop", "level": 28 },
+    { "species": "Scyther", "level": 29 },
+    { "species": "Machoke", "level": 29 },
+    { "species": "Machop", "level": 29 },
+    { "species": "Machoke", "level": 30 },
+    { "species": "Machop", "level": 29 },
+    { "species": "Machoke", "level": 30 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Whiscash", "level": 25, "maxLevel": 35 },
+    { "species": "Whiscash", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 564, "z": 516, "to": "route_210_grandma_wilma_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ace_trainer_ernest", "looks": "ace_trainer_m", "movement": "look_north_and_east", "x": 534, "z": 522, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_ERNEST" },
+    { "id": "ace_trainer_alyssa", "looks": "ace_trainer_f", "movement": "look_north", "x": 547, "z": 534, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_ALYSSA" },
+    { "id": "ninja_boy_joel", "looks": "ninja_boy", "movement": "disguise_grass", "x": 564, "z": 531, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "view_all_directions", "sight": 1, "script": "TRAINER_NINJA_BOY_JOEL" },
+    { "id": "ninja_boy_nathan", "looks": "ninja_boy", "movement": "disguise_grass", "x": 525, "z": 534, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "view_all_directions", "sight": 1, "script": "TRAINER_NINJA_BOY_NATHAN" },
+    { "id": "ninja_boy_davido", "looks": "ninja_boy", "movement": "disguise_rock", "x": 499, "z": 521, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "view_all_directions", "sight": 1, "script": "TRAINER_NINJA_BOY_DAVIDO" },
+    { "id": "dragon_tamer_patrick", "looks": "ace_trainer_m", "movement": "look_west", "x": 560, "z": 522, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_DRAGON_TAMER_PATRICK" },
+    { "id": "bird_keeper_brianna", "looks": "ace_trainer_f", "movement": "look_south", "x": 511, "z": 533, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BIRD_KEEPER_BRIANNA" },
+    { "id": "double_team_trainer_zac", "looks": "ace_trainer_m", "movement": "follow_partner_trainer", "x": 537, "z": 528, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 8, "trainer": "normal", "sight": 0, "script": "TRAINER_DOUBLE_TEAM_ZAC_AND_JEN" },
+    { "id": "double_team_trainer_jen", "looks": "ace_trainer_f", "movement": "walk_east_north_west_south", "x": 537, "z": 529, "facing": 3, "rangeX": 3, "rangeZ": 1, "y": 8, "trainer": "normal", "sight": 2, "script": "TRAINER_DOUBLE_TEAM_ZAC_AND_JEN" },
+    { "id": "veteran_brian", "looks": "expert_m", "movement": "look_south_and_west", "x": 494, "z": 528, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_VETERAN_BRIAN" },
+    { "id": "black_belt_adam", "looks": "black_belt", "movement": "look_east", "x": 518, "z": 540, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "face_sides", "sight": 4, "script": "TRAINER_BLACK_BELT_ADAM" },
+    { "id": "arrow_signpost_celestic_town", "looks": "arrow_signpost", "movement": "none", "x": 488, "z": 529, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "signboard_grandma_wilmas_house", "looks": "signboard", "movement": "none", "x": 562, "z": 516, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 497, "z": 540, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "cut_tree_1", "looks": "cut_tree", "movement": "none", "x": 559, "z": 531, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10000" },
+    { "id": "item_smoke_ball", "looks": "pokeball", "movement": "none", "x": 527, "z": 535, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_210_NORTH_SMOKE_BALL", "item": "Smoke Ball", "script": "7117" },
+    { "id": "item_wave_incense", "looks": "pokeball", "movement": "none", "x": 497, "z": 533, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_210_NORTH_WAVE_INCENSE", "item": "Wave Incense", "script": "7118" },
+    { "id": "item_tm30", "looks": "pokeball", "movement": "none", "x": 493, "z": 540, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_210_NORTH_TM30", "item": "TM30", "script": "7119" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 492, "z": 520, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 493, "z": 520, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 494, "z": 520, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 495, "z": 520, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 498, "z": 541, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_north_and_west", "x": 570, "z": 535, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "item_zinc", "looks": "pokeball", "movement": "none", "x": 562, "z": 526, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_210_NORTH_ZINC", "item": "Zinc", "script": "7279" },
+    { "id": "item_red_shard", "looks": "pokeball", "movement": "none", "x": 551, "z": 536, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_210_NORTH_RED_SHARD", "item": "Red Shard", "script": "7278" }
+  ],
+  "signs": [
+    { "x": 547, "z": 525, "type": 2, "script": "8045", "item": "Shiny Stone", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_210_NORTH_SHINY_STONE", "range": 2 },
+    { "x": 526, "z": 519, "type": 2, "script": "8044", "item": "Meadow Plate", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_210_NORTH_MEADOW_PLATE", "range": 0 }
+  ],
+  "triggers": []
+}

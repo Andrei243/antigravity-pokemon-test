@@ -121,7 +121,7 @@ internal sealed class FieldLife
         }
 
         // Platinum's three kinds of standing water: a puddle splashes, water ankle deep ripples, a still puddle
-        // only mirrors (which is not drawn yet)
+        // only mirrors (both puddles mirror whoever stands in them: WorldRenderer.DrawReflections)
         if (behaviour == TileBehavior.Puddle)
         {
             Splash(map, x, y, 0.8f, 2);

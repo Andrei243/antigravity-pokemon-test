@@ -16,10 +16,12 @@
     { "warp": 0, "to": "amity_square", "toWarp": 0 },
     { "warp": 1, "to": "amity_square", "toWarp": 1 },
     { "warp": 3, "to": "amity_square", "toWarp": 2 },
-    { "warp": 4, "to": "amity_square", "toWarp": 3 }
+    { "warp": 4, "to": "amity_square", "toWarp": 3 },
+    { "warp": 15, "to": "route_212_north", "toWarp": 0 },
+    { "warp": 16, "to": "route_212_north", "toWarp": 1 }
   ],
-  // The Contest Hall, the houses, the Gym, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11, M9); Route 212 is plan 01 · M7's
-  "locked": [ 2, 6, 7, 8, 9, 10, 12, 13, 15, 16 ],
+  // The Contest Hall, the houses, the Gym, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11, M9)
+  "locked": [ 2, 6, 7, 8, 9, 10, 12, 13 ],
   "people": {
     // In Platinum he offers to walk the player to the Contest Hall; the walk is plan 02's (S7)
     "fisherman": {

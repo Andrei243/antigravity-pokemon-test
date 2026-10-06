@@ -1,0 +1,67 @@
+{
+  "key": "iron_island_b2f_left_room",
+  "index": 293,
+  "name": "Iron Island",
+  "matrix": 84,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "IronIslandCave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "iron_island_b2f_left_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Onix", "level": 32 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Golbat", "level": 31 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Graveler", "level": 34 },
+    { "species": "Steelix", "level": 33 },
+    { "species": "Steelix", "level": 35 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 38, "z": 3, "to": "iron_island_b1f_right_room", "toWarp": 0 },
+    { "x": 14, "z": 48, "to": "iron_island_b3f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 38, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_LEFT_ROOM_ULTRA_BALL", "item": "Ultra Ball", "script": "7142" },
+    { "id": "item_dusk_ball", "looks": "pokeball", "movement": "none", "x": 9, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_LEFT_ROOM_DUSK_BALL", "item": "Dusk Ball", "script": "7140" },
+    { "id": "item_max_potion", "looks": "pokeball", "movement": "none", "x": 5, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_LEFT_ROOM_MAX_POTION", "item": "Max Potion", "script": "7141" },
+    { "id": "item_hp_up", "looks": "pokeball", "movement": "none", "x": 21, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_LEFT_ROOM_HP_UP", "item": "HP Up", "script": "7143" },
+    { "id": "riley", "looks": "riley", "movement": "look_north", "x": 34, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_IRON_ISLAND_B2F_LEFT_ROOM_RILEY", "script": "8" },
+    { "id": "grunt_m_west", "looks": "grunt_m", "movement": "look_east", "x": 19, "z": 40, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_IRON_ISLAND_B2F_LEFT_ROOM_GRUNTS", "script": "9" },
+    { "id": "grunt_m_east", "looks": "grunt_m", "movement": "look_east", "x": 19, "z": 41, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_IRON_ISLAND_B2F_LEFT_ROOM_GRUNTS", "script": "9" },
+    { "id": "hiker_damon", "looks": "hiker", "movement": "look_south", "x": 26, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_HIKER_DAMON" },
+    { "id": "hiker_maurice", "looks": "hiker", "movement": "look_east", "x": 21, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_HIKER_MAURICE" },
+    { "id": "black_belt_kendal", "looks": "black_belt", "movement": "look_south", "x": 36, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BLACK_BELT_KENDAL" },
+    { "id": "battle_girl_tyler", "looks": "battle_girl", "movement": "look_north", "x": 36, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BATTLE_GIRL_TYLER" },
+    { "id": "worker_brendon", "looks": "worker", "movement": "look_west", "x": 15, "z": 25, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_WORKER_BRENDON" },
+    { "id": "worker_quentin", "looks": "worker", "movement": "look_north", "x": 14, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_WORKER_QUENTIN" },
+    { "id": "ace_trainer_jonah", "looks": "ace_trainer_m", "movement": "look_east", "x": 23, "z": 31, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_JONAH" },
+    { "id": "ace_trainer_brenda", "looks": "ace_trainer_f", "movement": "look_west", "x": 27, "z": 31, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_BRENDA" },
+    { "id": "item_red_shard", "looks": "pokeball", "movement": "none", "x": 17, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_LEFT_ROOM_RED_SHARD", "item": "Red Shard", "script": "7286" },
+    { "id": "item_nugget", "looks": "pokeball", "movement": "none", "x": 1, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_LEFT_ROOM_NUGGET", "item": "Magnet", "script": "7288" }
+  ],
+  "signs": [
+    { "x": 32, "z": 40, "type": 2, "script": "8056", "item": "Iron Plate", "flag": "FLAG_OBTAINED_HIDDEN_IRON_ISLAND_B2F_LEFT_ROOM_IRON_PLATE", "range": 0 },
+    { "x": 29, "z": 29, "type": 2, "script": "8054", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_IRON_ISLAND_B2F_LEFT_ROOM_STAR_PIECE_1", "range": 2 },
+    { "x": 14, "z": 31, "type": 2, "script": "8055", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_IRON_ISLAND_B2F_LEFT_ROOM_STAR_PIECE_2", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 35, "z": 2, "width": 1, "depth": 2, "script": "3", "variable": "VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE", "value": "0" },
+    { "x": 36, "z": 2, "width": 1, "depth": 2, "script": "4", "variable": "VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE", "value": "1" },
+    { "x": 19, "z": 44, "width": 1, "depth": 1, "script": "2", "variable": "VAR_MAP_LOCAL_0x00", "value": "0" },
+    { "x": 21, "z": 40, "width": 1, "depth": 2, "script": "9", "variable": "VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE", "value": "1" }
+  ]
+}

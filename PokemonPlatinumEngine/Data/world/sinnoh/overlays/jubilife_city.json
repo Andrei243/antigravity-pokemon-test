@@ -12,8 +12,13 @@
     { "warp": 5, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" }
   ],
   // The condominiums, the Global Terminal, Jubilife TV and the two houses have no rooms yet (plan 01 · M11); two
-  // houses the original never used; the gate to Route 218 (plan 01 · M7)
-  "locked": [ 0, 1, 3, 4, 9, 10, 11, 12, 13 ],
+  // houses the original never used
+  "locked": [ 0, 1, 3, 4, 9, 10, 11 ],
+  // The gate house to Route 218 is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 12, "to": "route_218", "toWarp": 2 },
+    { "warp": 13, "to": "route_218", "toWarp": 3 }
+  ],
   "people": {
     // Story people the hand-made city had: they keep their lines until plan 02 · S5 gives them their scenes
     "counterpart": {
@@ -22,7 +27,7 @@
       "dialog": [
         "{assistant}: {player}! You made it through Route 202. Welcome to Jubilife City!",
         "{assistant}: It's the biggest city in Sinnoh. There's even a TV station!",
-        "{assistant}: Barry ran on ahead to the Trainers' School. It's up the main street, on the left.",
+        "{assistant}: {rival} ran on ahead to the Trainers' School. It's up the main street, on the left.",
         "{assistant}: Have a look inside! The lessons there are a big help when you're starting out."
       ]
     },

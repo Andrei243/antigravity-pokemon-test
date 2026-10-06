@@ -1,0 +1,15 @@
+# Verity Lakefront (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_verity_lakefront.s): the rival is waiting at the way into Lake Verity, and in they go.
+
+
+# The way up to the lake (the original's trigger 3).
+script IntoTheLake
+  face rival player
+  music "common/rival"
+  speaker "{rival}"
+  say "There you are! This is it: Lake Verity. Even the sign says a Pokémon lives in it!"
+  say "Come on, let's go and find it!"
+  clearflag FLAG_RIVAL_WAITS_AT_LAKEFRONT
+  setvar VAR_VERITY_LAKEFRONT_STATE 1
+  warp "LakeVerity" 46 53 up
+  end

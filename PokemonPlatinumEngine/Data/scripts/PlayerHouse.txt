@@ -1,0 +1,92 @@
+# Downstairs at home (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_twinleaf_town_player_house_1f.s).
+#
+# Mom: the rival has been and gone; a warning about tall grass at the door; the Running Shoes once the player has a
+# Pokémon; and, once the Pokédex is the player's, the Journal and the rival's mother with a parcel for her son.
+# VAR_PLAYER_HOUSE_STATE counts the visits as the original's does: 1 told, 2 warned, 3 back from the rival's
+# battle, 4 the shoes given, 6 the parcel given.
+
+
+script OnEnter
+  if var VAR_PLAYER_HOUSE_STATE == 0 goto RivalLeft
+  if var VAR_PLAYER_HOUSE_STATE == 3 goto RunningShoes
+  end
+label RivalLeft
+  walk mom right 1
+  face mom player
+  speaker "Mom"
+  say "Oh, you're up! {rival} was just here looking for you."
+  say "He went straight back out again. Something about Professor Rowan. That boy is always in such a hurry!"
+  walk mom left 1
+  face mom left
+  setflag FLAG_TALKED_TO_MOM
+  setvar VAR_PLAYER_HOUSE_STATE 1
+  end
+label RunningShoes
+  walk mom down 2 left 3
+  face mom player
+  face player mom
+  speaker "Mom"
+  say "{player}! Welcome home. ...Is that a Pokémon? Professor Rowan gave you a Pokémon of your own?"
+  say "Oh, I'm so glad he happened to be there. You should go to his lab in Sandgem Town and thank him properly."
+  say "And if you're going to be out and about, you'll want these. Your very own Running Shoes!"
+  setflag FLAG_HAS_RUNNING_SHOES
+  fanfare keyitem
+  text "{player} received the Running Shoes!"
+  say "Hold down the run button as you walk, and off you'll go! Now, be careful out there."
+  walk mom right 3 up 2
+  face mom left
+  setvar VAR_PLAYER_HOUSE_STATE 4
+  end
+
+
+# The tile in front of the door, the first time the player heads out.
+script DoorWarning
+  face mom player
+  speaker "Mom"
+  say "Going out after {rival}? Remember, wild Pokémon live in the tall grass."
+  say "Never walk into it without a Pokémon of your own!"
+  setvar VAR_PLAYER_HOUSE_STATE 2
+  end
+
+
+script Mom
+  if flag FLAG_HAS_POKEDEX goto Pokedex
+  if var VAR_PLAYER_HOUSE_STATE >= 4 goto Rest
+  if party > 0 goto Rest
+  speaker "Mom"
+  say "{rival} is always in such a rush. You'd better not keep him waiting!"
+  end
+label Pokedex
+  if flag FLAG_RECEIVED_PARCEL goto Rest
+  goto Parcel
+label Rest
+  call Healer
+  end
+label Parcel
+  speaker "Mom"
+  say "Welcome home! Let me look after your Pokémon first."
+  heal
+  fanfare heal
+  say "...So Professor Rowan wants you to fill in his Pokédex? That's wonderful! Then you'll want this."
+  give "Journal"
+  say "It's a Journal. It keeps a note of everything you do, so you can always look back on your adventure."
+  say "Honestly, I'd love to go on a journey like that myself. You take care of yourself out there."
+  sound "door_open"
+  show rival_mom
+  speaker "{rival}'s Mom"
+  say "Hello? Is {rival} here? ...Oh, he's gone already? That boy!"
+  walk rival_mom up 2
+  say "He ran off without the parcel I'd put by for him. I so wanted him to have it..."
+  speaker "Mom"
+  say "Then {player} can take it to him! You will, won't you?"
+  speaker "{rival}'s Mom"
+  say "Would you really? Thank you, dear!"
+  give "Parcel"
+  setflag FLAG_RECEIVED_PARCEL
+  say "I think he said he was going to Jubilife City. Please give it to him when you catch up with him."
+  walk rival_mom down 2
+  hide rival_mom
+  sound "door_close"
+  setvar VAR_PLAYER_HOUSE_STATE 6
+  end

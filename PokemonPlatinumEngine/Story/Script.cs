@@ -24,6 +24,8 @@ public enum Op
     UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent,
     // The Pokétch (plan 02 · S2)
     Poketch, PoketchApp,
+    // The Great Marsh's Safari Game (plan 01 · M7)
+    Safari,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
@@ -36,7 +38,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>
@@ -90,6 +92,12 @@ public sealed class Instruction
 
     /// <summary>A battle that is the game's first (the rival's on Route 201): no critical hits.</summary>
     public bool FirstBattle { get; init; }
+
+    /// <summary>
+    /// A battle against someone of the map with a team of Platinum's other than their own (<c>battle self as
+    /// "rival_route_201_turtwig"</c>): the rival, whose team depends on the starter the player took. Empty for their own.
+    /// </summary>
+    public string AsTrainer { get; init; } = "";
 
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }

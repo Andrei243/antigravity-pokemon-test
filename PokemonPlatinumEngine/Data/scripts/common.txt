@@ -5,7 +5,59 @@
 # What every game starts with. It is run with no screen, for a new game and for a save from before the story
 # was kept, so it may set flags and variables and do nothing else. A chapter that hides someone until their
 # scene comes sets the flag that hides them here.
+#
+# Plan 02 · S4, the original's InitNewGame: the rival bursting into the bedroom and his mother calling by later,
+# the rival coming out of his door, the professor, the assistant and the briefcase on Route 201, the people of
+# Lake Verity's later scenes and the legendary in its cavern, the rival and the professor in Sandgem Town; and the
+# guitarist who keeps the player in town until the rival has left home.
 script NewGame
+  setflag FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_2F_RIVAL
+  setflag FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_1F_RIVAL_MOM
+  setflag FLAG_HIDE_TWINLEAF_TOWN_RIVAL
+  setflag FLAG_HIDE_ROUTE_201_COUNTERPART
+  setflag FLAG_HIDE_ROUTE_201_PROF_ROWAN
+  setflag FLAG_HIDE_ROUTE_201_BRIEFCASE
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_STARLY
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_COUNTERPART
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_RIVAL
+  setflag FLAG_HIDE_VERITY_CAVERN_MESPRIT
+  setflag FLAG_HIDE_SANDGEM_TOWN_RIVAL
+  setflag FLAG_HIDE_SANDGEM_TOWN_PROF_ROWAN
+  setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK
+  setvar VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE 1
+  return
+
+
+# What the first chapter (plan 02 · S4, "Lake Verity and a Pokédex") leaves behind once it is played: run with no
+# screen for a save from before the chapter was written, whose game began with a Pokémon, a Pokédex and the
+# Running Shoes already (Story/StoryMigration.cs). Everyone the chapter sends away is gone, every scene played.
+script OpeningDone
+  call NewGame
+  setvar VAR_PLAYER_HOUSE_SPECIAL_PROGRAM_STATE 1
+  setvar VAR_PLAYER_HOUSE_RIVAL_STATE 1
+  setvar VAR_PLAYER_HOUSE_STATE 6
+  setvar VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE 2
+  setvar VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE 1
+  setvar VAR_RIVAL_HOUSE_STATE 1
+  setvar VAR_FOLLOWER_RIVAL_STATE 4
+  setvar VAR_VERITY_LAKEFRONT_STATE 1
+  setvar VAR_VISITED_LAKE_VERITY_WITH_RIVAL 1
+  setvar VAR_SANDGEM_TOWN_STATE 2
+  setvar VAR_SANDGEM_TOWN_LAB_STATE 1
+  setvar VAR_ROUTE_202_STATE 1
+  setflag FLAG_TALKED_TO_MOM
+  setflag FLAG_RIVAL_LEFT_HOME
+  setflag FLAG_HAS_POKEDEX
+  setflag FLAG_HAS_RUNNING_SHOES
+  setflag FLAG_RECEIVED_PARCEL
+  setflag FLAG_HIDE_TWINLEAF_TOWN_RIVAL_HOUSE_2F_RIVAL
+  setflag FLAG_HIDE_ROUTE_201_RIVAL
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_CYRUS
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_RIVAL
+  setflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  setflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART
+  setflag FLAG_HIDE_ROUTE_202_COUNTERPART
   end
 
 
@@ -46,6 +98,13 @@ script Nurse
   heal
   fanfare heal
   say "There we are! Every one of them is fit and well again."
+  # The first time one of the team has Pokérus, she says what it is (CommonScript_NurseCheckPokerus)
+  if flag FLAG_POKECENTER_IDENTIFIED_POKERUS goto Goodbye
+  if not pokerus goto Goodbye
+  setflag FLAG_POKECENTER_IDENTIFIED_POKERUS
+  say "Oh, one more thing. Your Pokémon seem to be carrying something very small... Pokérus, we call it."
+  say "Don't worry, it does them no harm. Pokémon who have it grow a little stronger from every battle, and it fades away after a few days."
+  end
 label Goodbye
   say "Take care out there, and come back whenever you need us!"
   end
@@ -290,4 +349,47 @@ script CyclistsOnly
   if facing down walk player up
   if facing left walk player right
   if facing right walk player left
+  end
+
+
+# Coming round after whiting out (plan 06 · R10; the original's CommonScript_PokecenterBlackOutRecover and
+# CommonScript_PlayerHouseBlackOutRecover): the game has put the player in front of the nurse of the Pokémon Center
+# they last went into, or beside Mom at home, and this is the one who looks after them.
+script BlackOutCenter
+  say "Oh my, you came in looking exhausted. First, let me look after your Pokémon."
+  heal
+  fanfare heal
+  say "There we are. Every one of them is fit and well again."
+  say "Please be careful out there. We'll be here whenever you need us."
+  end
+
+script BlackOutHome
+  face self player
+  say "{player}! Look at you, you're worn out. Sit down and rest for a bit."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "There. You all look much better now. Off you go again, and look after each other out there!"
+  end
+
+
+
+# The end of a Safari Game in the Great Marsh (plan 01 · M7; the original's GreatMarsh scripts for the last step
+# and the last ball): the attendant's voice over the speakers, and the player is taken back out to Pastoria City,
+# in front of the observatory.
+script SafariTimeUp
+  speaker "Attendant"
+  say "Ding-dong! That's time! Your Safari Game is over."
+  say "Thank you for playing. Please come again!"
+  safari end
+  warp "Sinnoh" 610 810 down
+  end
+
+script SafariOutOfBalls
+  speaker "Attendant"
+  say "Ding-dong! You're out of Safari Balls, so your Safari Game is over."
+  say "Thank you for playing. Please come again!"
+  safari end
+  warp "Sinnoh" 610 810 down
   end

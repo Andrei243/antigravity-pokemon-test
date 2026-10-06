@@ -1,0 +1,50 @@
+# Professor Rowan: the theme of his scenes (the original's SEQ_OPENING role in the field), as he strides onto Route 201
+# to stop two children at the tall grass, and later as he speaks of the Pokédex. A stately, measured march in B-flat:
+# the horn's stern dotted tune over low brass, tuba, timpani and a soft snare, answered by a warm, singing line in the
+# strings that turns for a moment to the minor iv before the march comes back. Original composition for this game.
+title Professor Rowan
+tempo 96
+meter 4/4
+reverb 0.26
+
+track lead horn vol=0.95 pan=0 rev=0.26
+  r1 | r2. o4 f8. a16 |
+  L v100 o4 b-4 f4 g8. a16 b-4 | o5 c4. o4 b-8 g4 e-4 | o5 d4. c8 o4 b-4 g4 | o4 a4. g8 f2 |
+  o4 b-4 f4 g8. a16 b-4 | o5 e-4. d8 c4 o4 g4 | o4 g4. b-8 a4. o5 c8 | o4 b-2. r4 |
+  r1 | r1 | r1 | r1 |
+  v80 o4 b-2 g2 | b-1 | f4. g8 a2 | v95 b-2 r4 f8. a16 |
+
+track answer strings vol=0.92 pan=0.2 rev=0.34
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2. q8 o5 c8 d8 |
+  o5 e-2 g4. f8 | d2 o4 b-4 o5 d4 | c4. d8 e-4 g4 | f2 e-4 c4 |
+  d2 b-4. a8 | g2 g-4. f8 | d4. e-8 c2 | o4 b-2 r2 |
+
+track chords brass vol=0.5 pan=-0.25 rev=0.24
+  r1 | v80 q8 o3 (f a >e-)1 |
+  L v85 q6 o3 (f b- >d)2 (f b- >d)2 | (g >c e-)2 (g >c e-)2 | (f b- >d)2 (g b- >e-)2 | (f a >c)2 (f a >e-)2 |
+  (f b- >d)2 (g b- >d)2 | (g b- >e-)2 (g >c e-)2 | (g b- >e-)2 (f a >e-)2 | (f b- >d)2 (f a- >d)2 |
+  v62 q8 (g b- >e-)1 | (f b- >d)1 | (g >c e-)1 | (f a >c)2 (f a >e-)2 |
+  (g b- >d)1 | (g b- >e-)2 (g- b- >e-)2 | (f b- >d)2 (f a >e-)2 | (f b- >d)2 v78 (f a >e-)2 |
+
+track bass tuba vol=0.7 rev=0.12
+  v90 q6 o3 b-4 r4 f4 r4 | f4 r4 a4 r4 |
+  L v90 q6 o3 b-2 f2 | c2 e-2 | d2 e-2 | f2 f4 e-4 |
+  d2 g2 | e-2 c2 | e-2 f2 | b-2 a-2 |
+  v72 q8 g1 | f1 | e-1 | f1 |
+  g1 | e-1 | f1 | v85 b-2 f2 |
+
+track timpani timpani vol=0.48 rev=0.22
+  v90 o3 b-4 r4 f4 r4 | v55 f16 f16 f16 f16 v65 f16 f16 f16 f16 v80 f16 f16 f16 f16 v95 f4 |
+  L v95 o3 b-4 r4 r2 | r1 | r1 | v85 f4 r4 f8 f8 f4 |
+  v95 b-4 r4 r2 | r1 | r2 v85 f4 f4 | v95 b-4 r4 r2 |
+  r1 | r1 | r1 | r2 v55 f4 f4 |
+  r1 | r1 | r2 v55 f16 f16 f16 f16 v65 f16 f16 f16 f16 | v90 b-4 r4 f4 v80 f8. f16 |
+
+track drums kit vol=0.52 pan=0.1 rev=0.14
+  v55 b4 v45 s8. s16 v55 b4 v45 s4 | v55 b4 v45 s8. s16 v55 b4 v50 s16 s16 s16 s16 |
+  L [ v60 b4 v42 s8. s16 v60 b4 v42 s4 | ]3 v60 b4 v42 s8. s16 v60 b4 v42 s8 s8 |
+  [ v60 b4 v42 s8. s16 v60 b4 v42 s4 | ]3 v60 b4 v42 s8. s16 v60 b4 r4 |
+  [ v42 b4 r4 v30 b4 r4 | ]6 v45 b4 r4 b4 v35 s16 s16 v40 s16 s16 |
+  v55 b4 v42 s8. s16 v55 b4 v45 s16 s16 v50 s16 s16 |

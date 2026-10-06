@@ -1,0 +1,22 @@
+{
+  "area": "great_marsh_6",
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  // The observatory is passed through to Pastoria City; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "pastoria_city", "toWarp": 7 },
+    { "warp": 1, "to": "pastoria_city", "toWarp": 8 }
+  ],
+  "people": {
+    "ace_trainer_m": {
+      "name": "Trainer",
+      "dialog": [
+        "Once your last Safari Ball is gone, your time in the marsh is up.",
+        "So don't waste them. Make every throw count!"
+      ]
+    }
+  },
+  "signs": {
+    "signboard": "Great Marsh · Area 6\nThe way in and out. The observatory, and Pastoria City beyond it, lie just to the south."
+  }
+}

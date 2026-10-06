@@ -1,0 +1,196 @@
+# Route 201 (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_201.s).
+#
+# The rival waits at the edge of the grass; the professor stops the two of them, asks whether they love Pokémon,
+# and trusts them with the Pokémon in his briefcase, which his assistant brings back from the lake. The player
+# chooses first; the rival takes the one strong against it and battles at once (the game's first battle, which
+# may be lost), and the player is sent home. Back on the road, the rival is off to Lake Verity to look for its
+# legendary Pokémon. VAR_FOLLOWER_RIVAL_STATE: 1 choosing, 2 home again, 3 the rival gone to the lake, 4 back.
+#
+# In the original the rival walks behind the player to the lake; here he runs on ahead and waits at the lakefront
+# (docs/mechanics/rulings.md, "The first chapter").
+
+
+# The rival's trigger at the top of the road out of Twinleaf Town (the original's trigger 2).
+script RowanAppears
+  face rival player
+  music "common/rival"
+  speaker "{rival}"
+  say "There you are, {player}! Way too slow! That's a ten-million fine!"
+  say "Listen. Professor Rowan's back, right? So he's got to have loads of Pokémon. We ask him, he gives us one each. Easy!"
+  say "But the tall grass is in the way... So here's the plan: we run through it so fast the wild Pokémon can't catch us!"
+  say "Ready? On three. One... two..."
+  speaker "???"
+  say "Wait! Stay right where you are!"
+  music "common/rowan"
+  show prof_rowan
+  walk prof_rowan right 4 down 1
+  face rival prof_rowan
+  face player prof_rowan
+  speaker "Prof. Rowan"
+  say "What do you think you are doing? Walking into tall grass without a Pokémon of your own is how people get hurt!"
+  speaker "{rival}"
+  say "......Huh? Hey! You're Professor Rowan! From the TV!"
+  speaker "Prof. Rowan"
+  walk prof_rowan left 2
+  say "Hmm... Should I...? No. But then again..."
+  walk prof_rowan right 2
+  face prof_rowan player
+label Ask
+  speaker "Prof. Rowan"
+  ask "Tell me truthfully. Do you love Pokémon?"
+  if yes goto Loves
+  speaker "{rival}"
+  say "Hey! What kind of answer is that? Tell him the truth!"
+  goto Ask
+label Loves
+  speaker "{rival}"
+  say "See? We both love Pokémon! And that's never, ever going to change. Right, {player}?"
+  ask "Right?"
+  if yes goto Agreed
+  say "Ha ha, very funny. That joke's getting old already! Let's try that again."
+  goto Ask
+label Agreed
+  speaker "Prof. Rowan"
+  say "Hmm... Two children charging into tall grass. What would they do with Pokémon of their own, I wonder?"
+  speaker "{rival}"
+  say "Then give one to my friend, at least! Running into the grass was my idea, not theirs."
+  speaker "Prof. Rowan"
+  say "...You would speak up for your friend. Very well. I will trust you both with a Pokémon."
+  say "But promise me you will never be so reckless again. Now, where has my briefcase got to...?"
+  music "common/assistant"
+  show counterpart
+  walk counterpart right 3 fast
+  speaker "{assistant}"
+  say "Professor! You left your briefcase by the lake! ...Wait. Are you giving those Pokémon to these two?"
+  speaker "Prof. Rowan"
+  say "I am. Today is the day these two set out."
+  show briefcase
+  say "{player}, the Pokémon are in that briefcase. Open it and choose the one you want."
+  speaker "{rival}"
+  say "Whoa, for real? You go first, {player}! I'll take whichever's left. Well, the best one that's left!"
+  face rival left
+  music area
+  setvar VAR_FOLLOWER_RIVAL_STATE 1
+  end
+
+
+# Walking off while the briefcase waits (the original's trigger 4, twice).
+script ChooseFirst
+  face rival player
+  speaker "{rival}"
+  say "Hey, where are you going? Open the briefcase and pick your Pokémon first!"
+  walk player left 1
+  end
+
+
+script Briefcase
+  fade out
+  setflag FLAG_HIDE_ROUTE_201_BRIEFCASE
+  hide self
+  fade in
+  starter
+  fanfare pokemon
+  text "{player} received the {starter}!"
+  face player prof_rowan
+  speaker "Prof. Rowan"
+  say "And {rival} has chosen {rivalstarter}. Hm. You both chose well. Like you, those Pokémon have never seen the world."
+  say "If anything troubles you, come and see me at my lab in Sandgem Town."
+  walk prof_rowan right 9
+  hide prof_rowan
+  setflag FLAG_HIDE_ROUTE_201_PROF_ROWAN
+  speaker "{assistant}"
+  say "Professor, wait for me! ...Sorry, coming through!"
+  walk counterpart right 9 fast
+  hide counterpart
+  setflag FLAG_HIDE_ROUTE_201_COUNTERPART
+  face rival player
+  speaker "{rival}"
+  say "Professor Rowan's actually kind of nice, huh? He looks so scary on TV."
+  say "Hey, {player}! Let's see what our Pokémon can do!"
+label Battle
+  ask "You're up for a battle, right?"
+  if yes goto Fight
+  say "Come on, don't be like that! Just one battle!"
+  goto Battle
+label Fight
+  if starter "Turtwig" goto VsChimchar
+  if starter "Chimchar" goto VsPiplup
+  battle rival as "rival_route_201_piplup" first canlose
+  goto After
+label VsChimchar
+  battle rival as "rival_route_201_turtwig" first canlose
+  goto After
+label VsPiplup
+  battle rival as "rival_route_201_chimchar" first canlose
+label After
+  speaker "{rival}"
+  if lost goto Lost
+  say "Whew... That wore me out! I'm going home to rest. My Pokémon too!"
+  goto Home
+label Lost
+  say "Whoa, I won? I actually won! Battling with Pokémon is the best!"
+label Home
+  setvar VAR_FOLLOWER_RIVAL_STATE 2
+  setvar VAR_PLAYER_HOUSE_STATE 3
+  fade out
+  heal
+  warp "PlayerHouse" 2 6 up
+  end
+
+
+# Back on the road (the original's trigger 16): the rival is off to the lake.
+script OffToTheLake
+  face rival player
+  music "common/rival"
+  speaker "{rival}"
+  say "Took you long enough! I want to go and thank Professor Rowan properly."
+  say "But first! You know the lake past the western end of this road? They say a legendary Pokémon lives in it!"
+  say "If we caught it, the professor would be so impressed! Race you there!"
+  walk rival left 4 fast
+  hide rival
+  setflag FLAG_HIDE_ROUTE_201_RIVAL
+  setflag FLAG_RIVAL_WAITS_AT_LAKEFRONT
+  music area
+  setvar VAR_FOLLOWER_RIVAL_STATE 3
+  end
+
+
+# While the rival waits at the lake, the road home and the road to Sandgem Town turn the player back (the
+# original's triggers 3 and 14, where he pulls the player back himself).
+script NotHome
+  text "{rival} ran off toward the lake at the western end of this road. Better catch up with him!"
+  walk player up 1
+  end
+
+script NotSandgem
+  text "{rival} ran off toward the lake at the western end of this road. Better catch up with him!"
+  walk player left 1
+  end
+
+
+script Rival
+  speaker "{rival}"
+  if var VAR_FOLLOWER_RIVAL_STATE == 1 goto Choose
+  say "My Pokémon and I are going to be the strongest ever. Just watch!"
+  end
+label Choose
+  say "Go on, you choose first! Then I'll take the best one that's left!"
+  end
+
+
+script Rowan
+  speaker "Prof. Rowan"
+  say "The Pokémon are in the briefcase. Go on, choose one."
+  end
+
+
+# The Mart's worker hands out a sample, once (FLAG_RECEIVED_ROUTE_201_POTION).
+script MartWorker
+  if flag FLAG_RECEIVED_ROUTE_201_POTION goto Done
+  say "I work at the Poké Mart in Sandgem Town. Here's a free sample to try out!"
+  give "Potion"
+  setflag FLAG_RECEIVED_ROUTE_201_POTION
+label Done
+  sayown
+  end

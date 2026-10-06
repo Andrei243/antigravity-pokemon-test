@@ -1,0 +1,10 @@
+{
+  "area": "trophy_garden",
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  // The Pokémon Mansion's hall is passed through to Route 212; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "route_212_north", "toWarp": 2 },
+    { "warp": 1, "to": "route_212_north", "toWarp": 2 }
+  ]
+}

@@ -128,6 +128,16 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 | North bank | where land lies to the north the bank shows as a face 5 texels deep, `124,116,116` over `88,84,98`; other shores get a one-texel light rim |
 | Motion | everything moves in whole texels; no sub-texel scrolling |
 
+**Puddles** (plan 01 · M7; `TileType.Puddle`, from the behaviours `Puddle` and `StillPuddle`) are a ground of their own, not water: they are walked through and lie flat in the ground plane like sand or ice, painted by the same rule (a base, lighter patches, a rim where they meet other ground, marks), so neighbouring puddle tiles run together into one pool with a rounded edge.
+
+| Element | Value |
+|---|---|
+| Base | `112,142,170`: the sky, dimmed by the mud under it |
+| Patches | `138,168,194`, where it catches the sky |
+| Rim | `92,80,68`, dark wet earth, where the puddle meets other ground |
+| Marks | a glint `196,218,232`, a short stroke or a ring two texels across |
+| Reflection | whoever stands in one is mirrored in it: their sprite upside down on the ground under their feet, as long as it looks tall (its height over the sine of the camera's pitch), tinted `150,170,196`, fading from 45 % at the feet to nothing, and cut off where the puddle ends to the south |
+
 ### Grass, flowers, trees, ledges and rocks
 
 - **Tall grass**: two rows of clumps per tile, each clump five blades in four flat shades (`36,110,62`, `62,150,78`, `106,196,98`, tips `170,232,130`), 16 texels tall, the rows half a clump out of step. They sway at the top and lean away from anyone walking through.
@@ -246,6 +256,13 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Outcrop | a mass of rock as large as its tiles, in the boulders' three shades with ledges every 10 texels |
 | Mast | a lattice mast as tall as its model, a red light on top that burns all night |
 | Drums | three steel drums, two before and one behind: blue `78,112,168`, rust `170,96,64` and blue, each with a lid seen from above and two dark bands |
+| Ore heap | a mound like the coal heap's in the rust of iron ore: `150,96,78`, `118,72,62`, `186,132,108`, with grey glints (Iron Island) |
+| Headframe | the steel tower of a lift or over a mine's shaft, as tall as its model: two lattice legs leaning in to a platform, a cross-brace every 16 rows, and the winding wheel on top, a ring of steel with four spokes (Iron Island's lifts) |
+| Lift base | a steel platform knee high, ribbed on top, with a black and yellow edge |
+| Drawbridge leaf | over the planks the ground already shows: a steel truss along either edge of the deck, 16 rows tall, and at the bank end a portal of two posts and a beam 64 rows up, with a counterweight hanging from it (Canalave City) |
+| Marsh tram | the Great Marsh's little tram on its rails: two steel rails on sleepers the length of its tiles, and a car of green boards with an open side, a pale roof and wheels, at the end nearer the gate |
+| Binoculars | a coin viewer on a post: a grey head with two eyepieces on a column 34 texels tall |
+| Pavilion | a white open shelter of the Hotel Grand Lake: four posts and a turquoise roof in the Resort's colours |
 
 **The mine** (Oreburgh's yard and the mine under it; plan 01 · M5). The model of the yard blocks thin pieces of ground between its sheds, and those carry its conveyors (`WorldMapBuilder.Conveyors`):
 
@@ -260,6 +277,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 - A room is a doll's house: floor, a back wall 80 texels tall and two side walls, cut away at the front. The wall strip is crown moulding, wallpaper with a small repeating motif, a chair rail, panelled wainscot and a skirting board.
 - **Floors**: planks 8 texels wide in three wood tones (whole planks, never single texels) with dark grooves and staggered joints; or tiles 16 texels square in two close tones with a grout line and a light edge. Walls shade the floor beside them in two flat steps.
 - **Furniture** is built from boxes whose every visible face is painted: a light line where the top meets the front, a dark line at the foot, panels and drawers as sunken or raised bevels, handles and knobs of two texels or more. Plants and vases are sprites on cards.
+- **A bedroom** (plan 02 · S4) has a bed and a desk with a computer. The bed is two tiles long against the north wall: a dark wooden headboard 26 texels tall, a frame 14 tall, a cream pillow at the head, the sheet turned back over a blue blanket quilted in lines eight texels apart. The desk is the PC's (`PropModels.BuildPc`): wood with a grille on its top and a monitor whose screen shows three lines of text.
 - **Rooms follow the clock**: by day the windows show sky and throw a soft patch of light across the floor, slanting the way the shadows fall; at twilight the glass and the patches turn orange; at night the glass is dark blue (`18,26,56`), the patches are gone and the room is lit warm and a little dimmer by its lamps (`ArtLook.IndoorRigFor`).
 
 ### Characters
@@ -535,6 +553,7 @@ A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (p
   - **Digital watch**: the hour and the minute in seven-segment figures 96 tall, a colon that blinks each second, and the day of the week under them.
   - **Pedometer**: the steps taken since it was last reset, in the same figures, five digits.
   - **Party status**: the team in two rows of three, each Pokémon's menu icon over an HP bar of its own in the LCD's greens; a fainted one is dark, one with a status has a small mark.
+- **The Safari Game** (plan 01 · M7): while a game is on in the Great Marsh, a panel 300 by 96 at the top right, 32 from the edges, as the other panels are: SAFARI BALLS and STEPS as labels over their numbers in Black 36, side by side; a number turns Red at a fifth of its start or under (6 balls, 100 steps). It shows whenever the field does, the Pokétch and the text box included, and goes when the game ends.
 - **Story scenes** (plan 02 · S1): a script has the field to itself, and the interface shows nothing of that but its text. Its fade is plain black over the field and under the text box, so a line can be read on a black screen; it takes 0.4 s unless the scene says otherwise. People a scene sends walking keep the trainers' walking pace (4.5 tiles a second, 8 in a hurry) and come to rest in an eighth of a second. A shake of the camera moves the picture up and down by whole texels thirty times a second, six texels at its start and dying away over its length (half a second unless said).
 
 ### Battle panels
@@ -543,11 +562,12 @@ A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (p
 - **Bag**: the same shape as the move menu: four item cards (pixel icon, name, ×count; greyed at ×0) and a panel describing the chosen one. Item icons are 20×20 pixel art shown at 3×: the ball itself, a spray bottle whose colour says which medicine, a crystal for a Revive.
 - **Trainer's team**: a dark tray hangs under the opponent's box with a ball for each Pokémon (grey once fainted) and a dot for each empty place.
 - A message that doesn't fit on one line wraps to two.
+- **A move to learn** (plan 06 · R10): when a Pokémon that knows four moves reaches a level with another to learn, the battle stops on its question in the message box, with Yes and No in the field's choice box (`DrawChoices`) standing 22 above the message box, its right edge on the box's. Choosing which move to forget shows the evolution scene's panel (`MoveChoice`: WANTS TO LEARN, the four moves and the new one) on the right, over the field, which stays in view; the message box keeps the question. The player's HP box is hidden while the question is open, as it is behind the switching cards. B keeps every move.
 - **Cursors** (`BattleEngine.MoveCursor`): a cursor moves the way its buttons lie. Among the commands, up and down go through FIGHT, BAG, POKÉMON and RUN in that order and round again; left and right cross between FIGHT and the stack beside it, and come back into the stack on the row the cursor stood on last. The move menu has no cursor on an empty place, and opens on the move that Pokémon chose last in this battle. Among a double battle's targets the cursor moves over the four cards as they lie and never stops on one that can't be aimed at: a step up or down that would land on one takes the card beside it. Enter answers a battle's menu, as it reads a battle's message on.
 
 ### Summary
 
-One Pokémon on three panels: on the left its number, level, the 128-px sprite at 3× on a pale disc, name, category, type pills, nature and experience (points, to next level, bar); top right the six stats, each with its value and a bar whose length and colour follow the species' base stat (red under 50, amber under 80, green under 110, teal above; HP shows current / max in the HP colours); bottom right the moves as rows with type pill, name, category, power, accuracy and PP. Up and down step through the team.
+One Pokémon on three panels: on the left its number, level, the 128-px sprite at 3× on a pale disc, name, category, type pills (with its status and a PKRS tag after them), nature and experience (points, to next level, bar); top right the six stats, each with its value and a bar whose length and colour follow the species' base stat (red under 50, amber under 80, green under 110, teal above; HP shows current / max in the HP colours); bottom right the moves as rows with type pill, name, category, power, accuracy and PP. Up and down step through the team.
 
 ### Menu screens (G10)
 
@@ -578,6 +598,7 @@ The screens:
   - **Search** (the Start button): a panel over the dimmed Pokédex with rows like the options' (a value on a pill between two arrows): which Pokédex (once the National one is open), the order (number, A to Z, heaviest, lightest, tallest, smallest), the first letter (A B C, D E F … Y Z), two types and a body shape (the Pokédex's fourteen), then SEARCH (Green) and RESET (Blue), and DIPLOMA (Gold) once one has been given. The results replace the list, with how many were found on a tag; B goes back to the whole list. As in Platinum it looks only among the species seen, and the orders by weight and height only among those caught; those orders show the weight or the height at each row's right.
   - **Diploma**: a cream certificate with a gold double rule over the dimmed screen: DIPLOMA, which Pokédex, the player's name, a line on what was done (in our own words), the day, and a gold seal. It is shown the first time the Pokédex is opened once it is complete, and again from the search panel.
 - **The party's menus** (plan 02 · S2): choosing a Pokémon on the party's cards opens its menu, a panel 400 wide standing on the prompt over the half of the screen its card isn't on, with a row of 70 for each entry (SUMMARY, its field moves in the order of its moves, SWITCH, CANCEL) like the bag's actions. The prompt then says "Do what with this Pokémon?", and any word the menu has (why a move can't be used here, what Soft-Boiled healed) takes the prompt's place until the next button. While Milk Drink or Soft-Boiled waits for a Pokémon to give HP to, the giver's card keeps the gold of a Pokémon being moved.
+- **Pokérus** (plan 06 · R10): while a Pokémon carries it, its party card and its summary show a PKRS tag after its status, in a colour of its own that no status or type uses (a deep teal, 16 132 124; a plum read as the poison status beside it). A Pokémon over it shows nothing; the original's small face for a cured one is left out.
 - **Fly** (`FlyScreen`, plan 02 · S2): the map of Sinnoh as the Pokédex's area page has it, larger (28 to a chunk) on the left, and on the right the towns Fly can reach as list rows in the region's order. The town under the cursor is lit on the map in the Selection colour, breathing as the Pokédex's places do, and the chunk the player stands in has a white ring. The A button flies there; B goes back to the party.
 - **Trainer Card** (`TrainerCardScreen`): one wide card that rises into place. A Blue band across its top carries TRAINER CARD and the ID number; under it the name, money, Pokédex, time played and the day the adventure began on the left, the player's own field sprite at 6× on a pale plate on the right, and along the bottom the eight badges at radius 44 with their names.
 - **PC boxes** (`PCScreen`): three columns. The party as six compact cards on the left; the box in the middle, 6 by 5 slots under its name between two arrows, each Pokémon as its menu icon at 2×; on the right the Pokémon under the cursor (sprite at 2×, name, level, types, HP, moves). The cursor moves from the party into the box and back, and up from the box's top row to its name, where left and right change box.

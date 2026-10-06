@@ -68,11 +68,12 @@ public class PokemonTests
         }
         Assert.Contains(MapDatabase.Get("JubilifePokeMart").NPCs, n => n.IsPokeMartClerk && n.DialogLines[0].Contains("Jubilife"));
 
-        // The roads out are open: east to Route 203 and north to Route 204. The gate to Route 218 is shut.
+        // The roads out are open: east to Route 203, north to Route 204, and through the gate house west to Route 218
+        // (plan 01 · M7)
         Assert.True(sinnoh.IsWalkable(190, 758) && sinnoh.AreaAt(193, 758)!.Key == "route_203" && sinnoh.IsWalkable(193, 758));
         Assert.True(sinnoh.IsWalkable(175, 737) && sinnoh.AreaAt(175, 735)!.Key == "route_204_south" && sinnoh.IsWalkable(175, 735));
-        Assert.Null(sinnoh.GetWarpAt(128, 758));
-        Assert.False(sinnoh.IsWalkable(128, 758) || sinnoh.IsWalkable(128, 759), "the gate to Route 218 should be closed");
+        var gate = sinnoh.GetWarpAt(128, 758)!;
+        Assert.Equal("route_218", sinnoh.AreaAt(gate.TargetX, gate.TargetY)!.Key);
     }
 
     [Fact]
@@ -289,7 +290,8 @@ public class PokemonTests
         var home = MapDatabase.Get("PlayerHouse");
 
         Assert.False(home.IsWalkable(4, 4), "the dining table should be solid");
-        Assert.False(home.IsWalkable(8, 3), "the stairs should be solid");
+        Assert.False(home.IsWalkable(8, 2), "the stairs should be solid");
+        Assert.Equal("PlayerHouse2F", home.GetWarpAt(8, 3)?.TargetMap);
         Assert.True(home.IsWalkable(4, 6), "the rug by the door should be walkable");
         Assert.True(home.IsWalkable(4, 5), "the white-out spot must stay free");
 

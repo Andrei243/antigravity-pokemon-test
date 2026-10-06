@@ -21,7 +21,7 @@
     "##########",
     "##########",
     "####..#.##",
-    "#.......##",
+    "#........#",
     "#..###...#",
     "#........#",
     "#........#",
@@ -122,23 +122,51 @@
       "targetX": 116,
       "targetY": 886,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "PlayerHouse2F",
+      "targetX": 7,
+      "targetY": 4,
+      "targetFacing": "Down"
     }
   ],
   "signboards": [],
   "npcs": [
     {
+      "id": "mom",
       "name": "Mom",
       "npcType": "Mom",
       "x": 6,
       "y": 4,
       "facing": "Left",
       "dialog": [
-        "Mom: Welcome home, honey! You and your Pokémon look like you need a rest.",
-        "Mom: ...There! All your Pokémon are fully healed and ready for adventure!",
-        "Mom: Don't forget your Running Shoes! Hold B, X or Shift to run anywhere!"
+        "Mom: Welcome home, honey! You and your Pokémon look like you could use a rest.",
+        "Mom: ...There! Everyone's fit and well again."
       ],
       "isHealingNurse": true,
-      "script": "Healer"
+      "script": "Mom"
+    },
+    {
+      "id": "rival_mom",
+      "name": "{rival}'s Mom",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 7,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_TWINLEAF_TOWN_PLAYER_HOUSE_1F_RIVAL_MOM"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 4,
+      "y": 7,
+      "width": 1,
+      "depth": 1,
+      "script": "DoorWarning",
+      "variable": "VAR_PLAYER_HOUSE_STATE",
+      "value": 1
     }
   ],
   "wildEncounters": []

@@ -126,6 +126,7 @@ public class ScriptTests
           battle self and twin with "cheryl_eterna_forest" canlose
           battle self with helper
           battle self first
+          battle self as "rival_route_201_piplup" first canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           catchinglesson "Bidoof" 2
@@ -154,6 +155,8 @@ public class ScriptTests
           sweetscent
           poketch on
           poketchapp PartyStatus
+          safari start
+          safari end
           music "sinnoh/jubilife"
           music area
           music stop
@@ -207,6 +210,8 @@ public class ScriptTests
               if boy end
               if girl end
               if poketch end
+              if pokerus end
+              if safari end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -934,6 +939,7 @@ public class ScriptTests
         public Party Party => inner.Party;
         public Inventory Bag => inner.Bag;
         public Poketch Poketch => inner.Poketch;
+        public SafariGame Safari => inner.Safari;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;
         public PlayerLook PlayerLook => inner.PlayerLook;

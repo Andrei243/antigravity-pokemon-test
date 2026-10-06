@@ -48,11 +48,21 @@ internal static partial class ModernUi
 
     /// <summary>The whole introduction at one moment.</summary>
     public static void DrawIntro(int sw, int sh, IntroScreen intro, IntroLook look, Texture2D? professor, Texture2D? boy, Texture2D? girl,
-        Texture2D? pokemon, Texture2D? ball, Texture2D? sprite)
+        Texture2D? pokemon, Texture2D? ball, Texture2D? sprite, Texture2D? friend = null)
     {
         IntroBackdrop(sw, sh, intro.Time, look.Backdrop);
         var phase = intro.Phase;
 
+        if (phase is IntroPhase.EnterRival or IntroPhase.ConfirmRival)
+        {
+            DrawNameEntry(sw, sh, intro.RivalEntry!, sprite, intro.Look, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.3f, 0f, 1f)),
+                "HIS NAME", PlayerIdentity.DefaultRivalName);
+            if (phase == IntroPhase.ConfirmRival)
+                Prompt(sw, sh, $"So his name is {intro.RivalName}?", "Your friend from next door, and your rival.",
+                    new[] { ("YES, THAT'S HIM", Green), ("NO, CHANGE IT", Blue) }, intro.AnswerYes ? 0 : 1,
+                    UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.18f, 0f, 1f)));
+            return;
+        }
         if (phase is IntroPhase.EnterName or IntroPhase.ConfirmName)
         {
             DrawNameEntry(sw, sh, intro.Entry!, sprite, intro.Look, UiMotion.EaseOut(Math.Clamp(intro.PhaseTime / 0.3f, 0f, 1f)));
@@ -66,6 +76,8 @@ internal static partial class ModernUi
         // ---- The professor, and the Pokémon beside him
         float centre = sw / 2f - look.ProfessorShift * 300f;
         if (professor is { } figure) IntroFigure(figure, centre, 1010, 990, look.Professor * look.Backdrop);
+        // The friend from next door comes up where the Pokémon stood
+        if (friend is { } neighbour && look.Friend > 0.004f) IntroFigure(neighbour, sw / 2f + 340 + (1f - look.Friend) * 80f, 1010, 900, look.Friend);
 
         // Where the Pokémon stands: its picture is 600 across with its feet a little above the dialogue panel
         const float pokemonSize = 600, pokemonBottom = 856;
@@ -146,9 +158,10 @@ internal static partial class ModernUi
     /// Entering a name: who is being named on the left (their field sprite at 6×), and on the right the name so
     /// far in seven slots over the keyboard.
     /// </summary>
-    public static void DrawNameEntry(int sw, int sh, NameEntry entry, Texture2D? sprite, PlayerLook look, float appear = 1f)
+    public static void DrawNameEntry(int sw, int sh, NameEntry entry, Texture2D? sprite, PlayerLook look, float appear = 1f,
+        string title = "YOUR NAME", string? fallbackName = null)
     {
-        ScreenTitle("YOUR NAME");
+        ScreenTitle(title);
         Hints(sw - Margin, 44, ("Z", "Pick"), ("X", "Delete"), ("Enter", "To OK"));
         float slide = (1f - appear) * 60f;
 
@@ -165,7 +178,7 @@ internal static partial class ModernUi
             Raylib.DrawTexturePro(figure, new Rectangle(0, 0, figure.Width, figure.Height),
                 new Rectangle(MathF.Round(plate.X + (plate.Width - w) / 2f), MathF.Round(plate.Y + plate.Height - 52 - h), w, h), Vector2.Zero, 0f, Color.White);
         }
-        string fallback = PlayerIdentity.DefaultName(look);
+        string fallback = fallbackName ?? PlayerIdentity.DefaultName(look);
         DrawWrapped($"Seven letters at most. Leave it empty to be called {fallback}.", who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
             28, Muted, 40, UiWeight.ExtraBold);
 

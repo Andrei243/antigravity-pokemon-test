@@ -54,7 +54,9 @@ public enum TerrainCover
     /// <summary>The dark in the mouth of a cave: blocked where it is the hole in the rock, open where it is the way in.</summary>
     CaveMouth,
     /// <summary>The dark under the trees where a forest is entered: blocked where it is the shade beyond, open where it is the way in.</summary>
-    ForestMouth
+    ForestMouth,
+    /// <summary>A puddle, walked through (plan 01 · M7): told by its behaviour, whatever its texture.</summary>
+    Puddle
 }
 
 /// <summary>The one-character codes of <see cref="TerrainCover"/> in chunk files.</summary>
@@ -68,7 +70,7 @@ public static class TerrainCoverCodes
         (TerrainCover.Water, '~'), (TerrainCover.Bridge, 'b'), (TerrainCover.Steps, 's'), (TerrainCover.Tree, 'T'),
         (TerrainCover.Cliff, 'C'), (TerrainCover.Boulder, 'R'), (TerrainCover.Fence, 'F'), (TerrainCover.Building, 'B'),
         (TerrainCover.Lamp, 'L'), (TerrainCover.Walkway, 'W'), (TerrainCover.Broadleaf, 'O'), (TerrainCover.CaveMouth, 'M'),
-        (TerrainCover.ForestMouth, 'E')
+        (TerrainCover.ForestMouth, 'E'), (TerrainCover.Puddle, 'p')
     };
 
     public static char CodeOf(TerrainCover cover) => Table.First(e => e.Cover == cover).Code;
@@ -327,6 +329,15 @@ public sealed class WorldAreaFile
 
     public static readonly int[] RodSlotWeights = { 40, 40, 15, 4, 1 };
 
+    /// <summary>
+    /// Shellos and Gastrodon are met here in the east sea's colours (plan 06 · R10; the original's
+    /// <c>rate_form0</c> and <c>rate_form1</c>): east of Mt. Coronet. Left out in the west.
+    /// </summary>
+    public bool? EastSea { get; set; }
+
+    /// <summary>Which of the original's Unown tables the Unown met here come from, from 1 (<see cref="Models.FormRules.UnownTables"/>); left out for the first.</summary>
+    public int? UnownTable { get; set; }
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();
@@ -342,6 +353,23 @@ public sealed class AreaEncounter
 
     /// <summary>For a slot with a range of levels (water), its top; <see cref="Level"/> is then its bottom.</summary>
     public int? MaxLevel { get; set; }
+}
+
+/// <summary>
+/// Platinum's weather calendar (<c>sYearlyWeather</c> in the original's <c>src/field_overworld_weather.c</c>; plan 01
+/// · M7): the five places whose header names the calendar instead of a weather, and for each day of a leap year,
+/// from the first of January, the weather of each of them, by the names the headers use (<c>Raining</c>,
+/// <c>HeavySnow</c>). Written by the map importer.
+/// </summary>
+public sealed class WorldCalendarFile
+{
+    public const string FileName = "calendar.json";
+
+    /// <summary>The places by the weather their headers name (<c>Route212South</c>, <c>Route213</c>...).</summary>
+    public List<string> Places { get; set; } = new();
+
+    /// <summary>366 rows, the 29th of February among them, each with a weather for every place in order.</summary>
+    public List<List<string>> Days { get; set; } = new();
 }
 
 /// <summary>

@@ -18,7 +18,9 @@ public sealed partial class DecompMaps
         "/res/field/props/models/", "/res/text/location_names.json", "/include/data/map_headers.h",
         "/generated/map_headers.txt", "/include/constants/field/map_tile_behaviors.h",
         // What lies on the ground and what is hidden in it: which item, and how many
-        "/generated/items.txt", "/generated/vars_flags.txt", "/res/field/scripts/scripts_visible_items.s", "/include/data/field/hidden_items.h"
+        "/generated/items.txt", "/generated/vars_flags.txt", "/res/field/scripts/scripts_visible_items.s", "/include/data/field/hidden_items.h",
+        // The five places whose weather follows the calendar (plan 01 · M7)
+        "/src/field_overworld_weather.c"
     };
 
     /// <summary>The script of the first item ball; the nth ball's is this plus n.</summary>
@@ -62,6 +64,9 @@ public sealed partial class DecompMaps
     public int MatrixCount { get; }
     public int LandCount { get; }
 
+    /// <summary>Platinum's weather calendar: its places, and each day's weather of each, by the headers' names.</summary>
+    public (List<string> Places, List<List<string>> Days) Calendar { get; }
+
     public DecompMaps(string root)
     {
         this.root = root;
@@ -80,7 +85,37 @@ public sealed partial class DecompMaps
         VisibleItems = ParseVisibleItems(File.ReadAllText(Path.Combine(root, "res", "field", "scripts", "scripts_visible_items.s")));
         HiddenItems = ParseHiddenItems(File.ReadAllText(Path.Combine(root, "include", "data", "field", "hidden_items.h")),
             File.ReadAllText(Path.Combine(root, "generated", "vars_flags.txt")));
+        Calendar = ParseCalendar(File.ReadAllText(Path.Combine(root, "src", "field_overworld_weather.c")));
     }
+
+    /// <summary>
+    /// <c>sYearlyWeather</c>: a row for each day of a leap year (<c>[DAY_OF_YEAR_JAN_01 - 1] = { ... }</c>) with a
+    /// weather for each of the five places its comment names, in the order of the header's weather values that
+    /// stand for them (<c>OVERWORLD_WEATHER_ROUTE_212_SOUTH</c> first). Weathers are given by the headers' names.
+    /// </summary>
+    public static (List<string> Places, List<List<string>> Days) ParseCalendar(string source)
+    {
+        string[] months = { "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" };
+        var rows = new SortedDictionary<int, List<string>>();
+        foreach (Match row in CalendarRow().Matches(source))
+        {
+            int month = Array.IndexOf(months, row.Groups[1].Value) + 1;
+            int day = int.Parse(row.Groups[2].Value);
+            if (month < 1) throw new InvalidDataException($"No month called {row.Groups[1].Value} in the weather calendar");
+            var date = new DateTime(2000, month, day);
+            rows[date.DayOfYear] = row.Groups[3].Value.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .Select(w => WorldWriter.Pascal(w["OVERWORLD_WEATHER_".Length..])).ToList();
+        }
+        if (rows.Count != 366 || rows.Keys.First() != 1 || rows.Keys.Last() != 366)
+            throw new InvalidDataException($"The weather calendar has {rows.Count} days, not the 366 of a leap year");
+        var places = new List<string> { "Route212South", "Route213", "Route216", "AcuityLakefront", "SnowpointCity" };
+        if (rows.Values.Any(r => r.Count != places.Count))
+            throw new InvalidDataException($"A day of the weather calendar doesn't give a weather for each of its {places.Count} places");
+        return (places, rows.Values.ToList());
+    }
+
+    [GeneratedRegex(@"\[DAY_OF_YEAR_([A-Z]{3})_(\d{2}) - 1\]\s*=\s*\{([^}]*)\}")]
+    private static partial Regex CalendarRow();
 
     /// <summary>What lies in the item ball that runs a script, or null for a script that is no item ball's.</summary>
     public (string Item, int Count)? VisibleItem(string script) =>
@@ -197,6 +232,21 @@ public sealed partial class DecompMaps
             Slots("land_encounters", "land_rate"), Species("day"), Species("night"),
             Slots("surf_encounters", "surf_rate"),
             Slots("old_rod_encounters", "old_rod_rate"), Slots("good_rod_encounters", "good_rod_rate"), Slots("super_rod_encounters", "super_rod_rate"));
+    }
+
+    /// <summary>
+    /// What an area's table says of the forms met there (plan 06 · R10): whether Shellos and Gastrodon are the east
+    /// sea's (<c>rate_form0</c>, <c>rate_form1</c>, read by <c>AddWildMonToParty</c>), and which of the Unown tables
+    /// its Unown come from (<c>unown_table</c>, from 1; 0 for none).
+    /// </summary>
+    public (bool EastSea, int UnownTable) Forms(string name)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        if (!File.Exists(path)) return (false, 0);
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var table = doc.RootElement;
+        int Read(string field) => table.TryGetProperty(field, out var v) && v.ValueKind == JsonValueKind.Number ? v.GetInt32() : 0;
+        return (Read("rate_form0") != 0 || Read("rate_form1") != 0, Read("unown_table"));
     }
 
     /// <summary>Name and bounding box of a prop's model; null for an id without a file.</summary>

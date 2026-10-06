@@ -1,0 +1,13 @@
+{
+  "area": "valor_lakefront",
+  "bgmTrack": "sinnoh/valor",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The restaurant and the houses have no rooms yet (plan 01 · M11); the drained lake is the story's (plan 02)
+  "locked": [ 0, 1, 2, 3, 4 ],
+  // Everyone at the lakefront (the cameramen, the beauty and the collector, Cynthia and the rest) waits for the
+  // story's scenes by their FLAG_HIDE_VALOR_LAKEFRONT_* flags (plan 02)
+  "signs": {
+    "signboard_seven_stars_restaurant": "Seven Stars Restaurant\nLakeside dining. Bring a partner: the house serves its battles two at a time."
+  }
+}
