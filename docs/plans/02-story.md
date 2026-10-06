@@ -98,7 +98,7 @@ Wild levels and every other trainer's team come from the decomp (`res/field/enco
 5. **Hidden by a flag as the original has it** (`hiddenBy`), plus `shownBy` for our own people. People who appear later start hidden: their chapter sets the flag in `common.NewGame` and clears it in their scene, as the original's new-game script does.
 6. **A trigger goes by a variable and a value**, as the original's do; the overlay only says which script.
 7. **`OnEnter` runs on every arrival**, also from a save, so it asks before it acts.
-8. **A battle lost ends the script** and the player wakes up at home as before; `battle ... canlose` is for the battles the story lets the player lose.
+8. **A battle lost ends the script** and the player wakes up in the last Pokémon Center (at home before any, since plan 06 · R10); `battle ... canlose` is for the battles the story lets the player lose.
 9. **The cancel button answers No, and picks the last entry of a menu.**
 10. **A script's names mean the people of its own place.** The map of Sinnoh has a `clown_1` in more than one town.
 11. **The nurse's lines are new.** She had four lines close to the original's wording; she now has five of our own and asks before she heals.
@@ -152,7 +152,7 @@ Party-menu field moves, the badge checks, obstacle objects (cut tree, cracked ro
 **Left for later, on purpose.**
 - Who gives what: the HMs, the Bicycle, the rods, the Pokétch and its apps are the chapters' (S5 to S13).
 - The Bicycle isn't drawn: the player keeps walking pictures at its pace until a riding sprite is made (plan 04).
-- The whiteout still wakes the player at home; the last Pokémon Center is plan 06 · R10 (the spot Teleport goes to is kept already).
+- ~~The whiteout still wakes the player at home~~: since plan 06 · R10 it wakes them in the last Pokémon Center, the spot Teleport goes to.
 - Feebas's six tiles in Mt. Coronet's lake, with the lake's floor (plan 01).
 - The Pokétch's other apps (the Dowsing Machine with the hidden items' ranges, the Day-Care Checker with the Day Care, the Marking Map with the roaming legendaries).
 - Deep snow's slow walk and the mud slopes wait for the areas that have them (plan 01 · M7 and M8).

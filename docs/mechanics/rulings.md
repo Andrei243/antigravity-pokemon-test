@@ -50,6 +50,11 @@ In the `Ruleset` today, because the engine already runs these rules:
 | Knock Off against a held item | its own 20 power | half as strong again |
 | The opponents' Thief, Covet, Trick and Switcheroo | fail outside the Battle Frontier | work |
 | Simple | the holder's stages change as anyone's and count double wherever they are read (damage, accuracy, the turn's order) | each change to the holder's stages is doubled |
+| EXP | by the foe's level alone (base × level / 7), shared among those who fought, half to Exp. Share holders | scaled by the two levels (Generation 7's formula), the whole team gets some, half for those who didn't fight, a fifth more past the level it would evolve at |
+| Effort in a stat | at most 255 | at most 252 |
+| A vitamin raises effort | up to 100 | up to the stat's limit |
+| A level-100 Pokémon | gains no effort from battles | still gains effort |
+| A shiny Pokémon | 1 in 8,192 | 1 in 4,096 |
 
 The modern column's numbers for the rules R3 to R5 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
 
@@ -57,7 +62,6 @@ Known differences that join the `Ruleset` in the session that writes their rule,
 
 | Rule | Platinum | Modern | Session |
 | --- | --- | --- | --- |
-| EXP | by the foe's level alone, shared among those who fought | scaled by the difference in level; the whole party gets some | R10 |
 | Catching | Platinum's formula | critical captures, the later status bonuses | R9, R13 |
 | TMs | used up | kept | R11 |
 | Poison in the field | hurts every four steps, down to 1 HP | none | R13 |
@@ -69,7 +73,7 @@ Known differences that join the `Ruleset` in the session that writes their rule,
 R1 found places where the engine differed from the decompilation and left them, because the default rules were not to change under the graphics session's comparison shots. R2 (2026-10-05) rewrote the battle's arithmetic from the original's functions. These are the only changes the default rules have had since R1, and each is what Platinum does:
 
 - **Catching** is the original's: whole numbers, two whole square roots (`BattleScript_CalcCatchShakes`), four rolls against the result, and each ball's own strength (Net, Dive, Nest, Repeat, Timer, Dusk and Quick Balls work; the battle is told whether it is night, on water or in a cave and which species have been caught). A Master Ball and a ball that can't fail make no rolls.
-- **EXP** is the original's (`BtlCmd_CalcExpGain`): base × level / 7, shared among the Pokémon that fought and still stand; with an Exp. Share in the party half goes to those who fought and half to the holders; a Lucky Egg and a trainer's Pokémon each add half, one after the other, rounded down each time. The bonus for a traded Pokémon joins with trading (R12, plan 07 · O5).
+- **EXP** is the original's (`BtlCmd_CalcExpGain`): base × level / 7, shared among the Pokémon that fought and still stand; with an Exp. Share in the party half goes to those who fought and half to the holders; a Lucky Egg and a trainer's Pokémon each add half, one after the other, rounded down each time. Since R10 a Pokémon from another trainer adds half again ("a boosted ... EXP."); one comes only by trading (R12, plan 07 · O5).
 - **Bonuses are whole-number steps**: an ability's or an item's bonus is applied by itself, in hundredths, and rounded down before the next, in one of the formula's places (to the move's power, to the stat, before the roll, to the finished damage). A Life Orb's comes before the roll, as in the original. Since R7 every ability's bonus stands in the original's own place and order, and since R8 every held item's too (below).
 - **Running** follows the original (`Battler_CanEscape`): a Pokémon no slower than the foe always gets away; a slower one by its Speed × 128 / the foe's Speed + 30 for each earlier try, kept in one byte, against a roll of 256. Before R2 running always worked. Smoke Ball and Run Away always get away.
 - **The turn's order** is the original's (`BattleSystem_CompareBattlerSpeed`): running first, then items and switches in the order of the places, then moves by priority, Quick Claw, Speed and a coin. Every place draws a number each turn, and a Quick Claw works when its holder's leaves nothing over five.
@@ -347,5 +351,33 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Pokétch | Twenty-five apps on the lower touch screen | The digital watch, the pedometer and the team's app, on a watch over the field (P shows it, O changes the app) | One screen and no touch; the other apps come with what they show (the Dowsing Machine with item hunting, the Day-Care Checker with the Day Care) |
 | The Bicycle | The player drawn riding it | Its pace, rules, music and sounds; the player is drawn on foot | No riding sprite yet |
 | Feebas | Only on six tiles of Mt. Coronet's lake, which change with the trend | Fished like any other slot | The lake's floor isn't open |
-| Waking up after losing | At the last Pokémon Center | At home, as before | The whiteout is plan 06 · R10 |
 | Fly's map | A cursor over the town map | A list of the towns beside the map, the town ringed | Our own interface (style guide, "Fly") |
+
+## After the battle (2026-10-06, plan 06 · R10)
+
+**Platinum's rules, kept as they are** (`src/battle/battle_script.c`, `battle_controller_player.c`, `battle_system.c`, `src/pokemon.c`, `src/item_use_pokemon.c`, `src/overlay006/wild_encounters.c`)
+
+- **Effort** (`BattleScript_CalcEffortValues`): each Pokémon that gains EXP for a foe also gains its yield, stat by stat in the order HP, Attack, Defense, Speed, Sp. Atk, Sp. Def: a Power item's number added to its own stat, then doubled by Pokérus (caught or cured), then by the Macho Brace, then cut to 255 in the stat and 510 in all; once the total is full the rest is skipped. The effort is counted before the levels the same EXP brings, so they work it into the stats; a Pokémon that didn't level shows it at its next level, as in the original. A level-100 Pokémon gains neither EXP nor effort.
+- **Vitamins and berries** (`CalculateEVUpdate`, `Pokemon_ApplyItemEffects`): a vitamin adds 10 up to 100 and does nothing at 100 or with the total full; a berry takes 10 away and brings a stat over 100 down to 100 at once. A berry on a stat at 0 still pleases its Pokémon, and is refused only when friendship is full too. Shedinja's HP effort can't be raised. The stats are worked out again at once.
+- **An item's friendship** (`UpdatePokemonFriendship`): by the three bands (below 100, below 200, from 200), a gain × 150 / 100 with a Soothe Bell, then + 1 in a Luxury Ball; never past 255 or under 0.
+- **Pokérus** (`Pokemon_ApplyPokerus`, `Pokemon_ValidatePokerus`, `Party_UpdatePokerusStatus`): after every battle but the catching lesson, three draws in 65,536 give one Pokémon of the team a strain, unless it has had one; then, one time in three, each carrier gives its strain to the one before it and the one after it that never had it. Each day takes a day off; with none left, or after more than four days at once, it is cured and can't come back. Its draws are the field's chance, not the battle's. The nurse notices it (`FLAG_POKECENTER_IDENTIFIED_POKERUS`, once).
+- **Obedience** (`BattleControllerPlayer_CheckObedience`): only a Pokémon whose original trainer is someone else can disobey, and only above the level the badges allow (10, then 30 from two badges, 50 from four, 70 from six, any with eight). Its three rolls of 256 are the original's: one against level and cap to obey, a second to use another move (or, asleep and told to Snore or Sleep Talk, to sleep on), and a third against the levels over the cap for a nap (not with a condition, Vital Spirit, Insomnia or an uproar), hurting itself (a typeless hit of 40) or doing nothing in one of four ways. A Rage it was in ends. Such a Pokémon gains half as much EXP again.
+- **Losing** (`subscript_battle_lost`, `BattleSystem_CalcMoneyPenalty`): the team's highest level × 4 × the badges' step (2, 4, 6, 9, 12, 16, 20, 25, 30), never more than the player has, is dropped before a wild Pokémon or paid to a trainer, in a battle the story lets the player lose as much as any other. The player wakes up in the Pokémon Center last gone into, in front of the nurse, or at home beside Mom before any (`FieldTask_BlackOutFromBattle`, `Location_InitBlackOut`; the spot is the one Teleport also reads, `VAR_SPAWN_LOCATION`), and the team is healed.
+- **Forms outside battle**: Burmy takes the cloak of the ground of every battle it was sent out in (`BattleSystem_SetBurmyForm`: grass the plant cloak, open ground, sand, mountains and caves the sandy one, buildings, bridges and the League's and Frontier's rooms the trash one; not in the Great Marsh or Pal Park). Shellos and Gastrodon are met in the east sea's colours where the area's encounter data says so, and Unown in its table's letters (the ruins' dead ends most letters, the rooms of the way through F, R, I, E, N, D, the room past Maniac Tunnel the two marks; `WildEncounters_UnownTables`). Giratina is in its Origin Forme while it holds the Griseous Orb, and Arceus with Multitype is the type of its plate, whenever what it holds changes (giving, taking, a battle that took or gave an item). The Gracidea sends Shaymin into its Sky Forme from 4:00 to 19:59, if it is standing and not frozen; night, being frozen (in battle too: "changed back into its Land Forme!") and being put in a box bring it back.
+- **A move to learn** (`SEQ_GET_EXP_WANTS_TO_LEARN_MOVE`): a level whose move doesn't fit asks, in the battle, whether to forget one; no asks whether to give up on it, and not giving up asks again. A move the Pokémon already knows is passed over.
+
+**Our own choices**
+
+- The battle's lines for losing and for disobeying are our own words on the original's beats.
+- A battle read on without an answer (the tests, the harness) keeps every move: no to forgetting, then yes to giving up.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The Gracidea on Shaymin | Only one met at an event (its fateful-encounter mark) | Any Shaymin | No events in this game |
+| The +1 friendship for the place it was met | Given by items and events alike | Left out | Pokémon don't record where they were met yet |
+| Shininess | Drawn from the personality and the trainer's ID (1 in 8,192) | A draw of its own at the same odds (1 in 4,096 by the modern rules), and nothing shows it yet | Personalities don't decide everything they do in the original yet (R15, breeding, is where they matter) |
+| A cured Pokémon | A small face on its summary | Nothing | Our own interface: the PKRS tag shows only while it is carried |
+| A Rare Candy's fifth move | Asks which move to forget | Passed over, as before | The bag's own screens are R11 |
+| The Distortion World's ground | Gives Burmy the sandy cloak | The trash cloak, as the League's rooms do | `BattleTerrain.Special` stands for all of them; the Distortion World is plan 01's |

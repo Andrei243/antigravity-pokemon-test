@@ -199,6 +199,21 @@ public sealed partial class DecompMaps
             Slots("old_rod_encounters", "old_rod_rate"), Slots("good_rod_encounters", "good_rod_rate"), Slots("super_rod_encounters", "super_rod_rate"));
     }
 
+    /// <summary>
+    /// What an area's table says of the forms met there (plan 06 · R10): whether Shellos and Gastrodon are the east
+    /// sea's (<c>rate_form0</c>, <c>rate_form1</c>, read by <c>AddWildMonToParty</c>), and which of the Unown tables
+    /// its Unown come from (<c>unown_table</c>, from 1; 0 for none).
+    /// </summary>
+    public (bool EastSea, int UnownTable) Forms(string name)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        if (!File.Exists(path)) return (false, 0);
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var table = doc.RootElement;
+        int Read(string field) => table.TryGetProperty(field, out var v) && v.ValueKind == JsonValueKind.Number ? v.GetInt32() : 0;
+        return (Read("rate_form0") != 0 || Read("rate_form1") != 0, Read("unown_table"));
+    }
+
     /// <summary>Name and bounding box of a prop's model; null for an id without a file.</summary>
     public ModelInfo? PropModel(int id)
     {

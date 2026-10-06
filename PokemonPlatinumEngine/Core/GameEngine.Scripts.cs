@@ -688,6 +688,7 @@ public partial class GameEngine
             game.playerPokedex.RegisterSeen(pokemon.Species.DexNumber);
             game.playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
             if (game.playerParty.Add(pokemon)) return true;
+            FormRules.BackToLand(pokemon);
             game.pcBoxStorage.Add(pokemon);
             return false;
         }

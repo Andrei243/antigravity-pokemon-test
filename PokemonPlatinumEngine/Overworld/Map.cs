@@ -57,6 +57,10 @@ public sealed class MapArea
     public List<WildEncounterEntry> WaterEncounters { get; } = new();
     public int WaterRate { get; set; }
 
+    /// <summary>Shellos and Gastrodon are met here in the east sea's colours, and the Unown in this table's letters (plan 06 · R10).</summary>
+    public bool EastSea { get; init; }
+    public int UnownTable { get; init; }
+
     /// <summary>The wild Pokémon hooked with each rod (by <see cref="FishingRod"/>), and each rod's rate (plan 02 · S2).</summary>
     public List<WildEncounterEntry>[] RodEncounters { get; } = { new(), new(), new() };
     public int[] RodRates { get; } = new int[3];

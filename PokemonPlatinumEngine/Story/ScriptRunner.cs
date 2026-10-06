@@ -561,6 +561,8 @@ public sealed class ScriptRunner
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
             Query.Poketch => host.Poketch.Enabled,
+            // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
+            Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

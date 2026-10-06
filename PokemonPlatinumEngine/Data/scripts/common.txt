@@ -46,6 +46,13 @@ script Nurse
   heal
   fanfare heal
   say "There we are! Every one of them is fit and well again."
+  # The first time one of the team has Pokérus, she says what it is (CommonScript_NurseCheckPokerus)
+  if flag FLAG_POKECENTER_IDENTIFIED_POKERUS goto Goodbye
+  if not pokerus goto Goodbye
+  setflag FLAG_POKECENTER_IDENTIFIED_POKERUS
+  say "Oh, one more thing. Your Pokémon seem to be carrying something very small... Pokérus, we call it."
+  say "Don't worry, it does them no harm. Pokémon who have it grow a little stronger from every battle, and it fades away after a few days."
+  end
 label Goodbye
   say "Take care out there, and come back whenever you need us!"
   end
@@ -291,3 +298,26 @@ script CyclistsOnly
   if facing left walk player right
   if facing right walk player left
   end
+
+
+# Coming round after whiting out (plan 06 · R10; the original's CommonScript_PokecenterBlackOutRecover and
+# CommonScript_PlayerHouseBlackOutRecover): the game has put the player in front of the nurse of the Pokémon Center
+# they last went into, or beside Mom at home, and this is the one who looks after them.
+script BlackOutCenter
+  say "Oh my, you came in looking exhausted. First, let me look after your Pokémon."
+  heal
+  fanfare heal
+  say "There we are. Every one of them is fit and well again."
+  say "Please be careful out there. We'll be here whenever you need us."
+  end
+
+script BlackOutHome
+  face self player
+  say "{player}! Look at you, you're worn out. Sit down and rest for a bit."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "There. You all look much better now. Off you go again, and look after each other out there!"
+  end
+

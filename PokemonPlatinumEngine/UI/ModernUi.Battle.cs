@@ -42,7 +42,7 @@ internal static partial class ModernUi
                 float slide = BattleHUD.BoxSlide(anim, foe);
                 if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f);
             }
-            if (hud.MenuState != BattleMenuState.SwitchPokemon)
+            if (hud.MenuState is not (BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove))
             {
                 for (int slot = 0; slot < 2; slot++)
                 {
@@ -58,8 +58,8 @@ internal static partial class ModernUi
             float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
             if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty);
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
-            // The team's cards cover the player's box while switching
-            if (playerSlide >= 0f && hud.MenuState != BattleMenuState.SwitchPokemon) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+            // The team's cards cover the player's box while switching, and a question about a move to learn takes its place
+            if (playerSlide >= 0f && hud.MenuState is not (BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
         }
 
         switch (hud.MenuState)
@@ -85,6 +85,15 @@ internal static partial class ModernUi
                 break;
             case BattleMenuState.SelectBagItem:
                 BagPanel(hud, inventory);
+                break;
+            case BattleMenuState.LearnMove:
+                // The question in the message box, and beside it its Yes and No or the moves to forget
+                MessageBox(new Rectangle(48, 858, 1824, 172), message, null);
+                if (battle.LearnStep == LearnStep.Choose && battle.Learner is { } learner && battle.MoveToLearn is { } wanted)
+                    MoveChoice(new Rectangle(sw - 64 - 820, 64, 820, 716), learner, wanted, battle.LearnCursor, 1f);
+                else
+                    // 22 above the message box, its right edge on the box's
+                    DrawChoices(sw + 48, sh + 40, new[] { "Yes", "No" }, battle.LearnCursor, 1f);
                 break;
             default:
                 MessageBox(new Rectangle(48, 858, 1824, 172), message, null);

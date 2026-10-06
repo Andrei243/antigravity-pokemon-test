@@ -216,6 +216,7 @@ public partial class GameEngine
         poketchView.Hide();
         registeredItem = null;
         exitSpot = null;
+        lastDay = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
@@ -320,6 +321,7 @@ public partial class GameEngine
         player.SetMode(save.Travel);
         if (save.PlayerHeight is { } standing) player.SetHeight(standing);
         exitSpot = save.Exit;
+        lastDay = save.LastDay;
         registeredItem = save.RegisteredItem;
         poketch.Load(save.Poketch);
         poketchView.Hide();
@@ -398,6 +400,7 @@ public partial class GameEngine
             Travel = player.Mode,
             PlayerHeight = player.HeightOn(currentMap),
             Exit = exitSpot,
+            LastDay = lastDay,
             RegisteredItem = registeredItem,
             Poketch = poketch.Save(),
             WorldVersion = SaveData.CurrentWorld,
@@ -518,6 +521,8 @@ public partial class GameEngine
                     {
                         if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle) playerMoney += battle.PrizeMoney;
                         if (battle.Result == BattleResult.PlayerVictory) playerMoney += battle.PayDayMoney;
+                        playerMoney = Math.Max(0, playerMoney - battle.MoneyLost);
+                        AfterBattle(battle);
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch
                         bool beaten = battle.Result == BattleResult.PlayerVictory;
@@ -669,6 +674,7 @@ public partial class GameEngine
     {
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
+        KeepTheClock();
         SlideBoulders(dt);
         poketchView.Update(dt);
 
@@ -1177,7 +1183,11 @@ public partial class GameEngine
         Random rng = fieldRandom;
         int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
         // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize)
-        MeetWildPokemon(new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature));
+        var wild = new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
+        // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
+        var area = currentMap.AreaAt(player.GridX, player.GridY);
+        if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
+        MeetWildPokemon(wild);
     }
 
     /// <summary>
@@ -1227,14 +1237,56 @@ public partial class GameEngine
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
 
-    /// <summary>What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the weather of the place comes into the battle with it.</summary>
+    /// <summary>
+    /// What a battle's rules ask of where and when it is fought: the Dive, Dusk and Repeat Balls do, and the
+    /// weather of the place comes into the battle with it. And of the player (plan 06 · R10): the badges a traded
+    /// Pokémon obeys by, the money a loss takes a share of, and who the player is.
+    /// </summary>
     private Battle.Sim.BattleConditions BattleConditionsHere() => new()
     {
         Terrain = TerrainAt(currentMap, player.GridX, player.GridY),
         Night = GameClock.IsNight,
         HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
-        Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY))
+        Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY)),
+        Badges = story.BadgeCount,
+        Money = playerMoney,
+        Player = PlayerMark
     };
+
+    /// <summary>
+    /// What the clock does to the team (plan 06 · R10): each new day takes a day off Pokérus
+    /// (<c>Party_UpdatePokerusStatus</c>), and from eight in the evening a Shaymin in its Sky Forme is back in its
+    /// Land Forme (<c>Party_SetShayminForm</c>, which reverts it as the clock passes eight).
+    /// </summary>
+    private void KeepTheClock()
+    {
+        var today = GameClock.Today;
+        if (lastDay is { } before && today > before) PokerusRules.DaysPass(playerParty, (today - before).Days);
+        lastDay = today;
+        if (FormRules.ShayminNight((int)GameClock.Hour))
+            foreach (var p in playerParty.Members) FormRules.BackToLand(p);
+    }
+
+    // The day the clock was last looked at, for Pokérus's days (saved)
+    private DateTime? lastDay;
+
+    /// <summary>Who the player is, as a Pokémon's original trainer is marked (plan 06 · R10).</summary>
+    private TrainerMark PlayerMark => new(PlayerIdentity.Name, trainerId, PlayerIdentity.Look);
+
+    /// <summary>
+    /// What follows any battle in the field (plan 06 · R10): Pokérus may come to the team and spread through it
+    /// (<c>BattleControllerPlayer_EndFight</c>, on the field's own chance), and an item the battle left in a
+    /// Pokémon's hands (Thief, Pickup) puts Giratina and Arceus in its form.
+    /// </summary>
+    private void AfterBattle(BattleEngine fought)
+    {
+        if (fought.Kind != BattleKind.CatchingLesson)
+        {
+            PokerusRules.TryInfect(playerParty, fieldRandom);
+            PokerusRules.Spread(playerParty, fieldRandom);
+        }
+        foreach (var p in playerParty.Members) FormRules.ByHeldItem(p);
+    }
 
     /// <summary>
     /// The ground a battle here is fought on, as the original picks it (<c>CalcTerrain</c>, <c>sTerrainForBackground</c>):
@@ -1387,18 +1439,48 @@ public partial class GameEngine
             }
             else if (isDefeat)
             {
-                playerParty.HealAll();
-                int penalty = Math.Min(playerMoney, 120);
-                playerMoney -= penalty;
-                currentMap = MapDatabase.Get("PlayerHouse");
-                player.SetPosition(4, 5, Direction.Down);
-                ArriveOnMap();
-                ShowNotification(penalty > 0 
-                    ? $"{playerName} whited out and lost {penalty} in money. Restored at home!"
-                    : $"{playerName} whited out. Restored at home!");
+                WhiteOut();
             }
             PlayFieldMusic();
         });
+    }
+
+    /// <summary>
+    /// Whiting out (plan 06 · R10; the original's <c>FieldTask_BlackOutFromBattle</c>): the player comes round in
+    /// front of the nurse of the Pokémon Center they last went into, or beside Mom at home before any, and the one
+    /// who looks after them heals the team (<c>common.BlackOutCenter</c>, <c>common.BlackOutHome</c>). Giratina takes
+    /// the form its item gives it, the Bicycle and the water are left behind, and Dig and an Escape Rope lead out to
+    /// the town. The money was taken by the battle (<see cref="BattleEngine.MoneyLost"/>).
+    /// </summary>
+    private void WhiteOut()
+    {
+        foreach (var p in playerParty.Members) FormRules.ByHeldItem(p);
+        var (room, home) = WhiteOutRoom();
+        currentMap = MapDatabase.Get(room);
+        var healer = currentMap.Everyone.FirstOrDefault(n => n.IsHealingNurse);
+        // In front of the nurse, the counter between them; at home, beside Mom
+        var (x, y, facing) = healer == null ? (4, 5, Direction.Down)
+            : home ? (healer.GridX - 1, healer.GridY, Direction.Right) : (healer.GridX, healer.GridY + 2, Direction.Up);
+        player.SetMode(TravelMode.OnFoot);
+        player.SetPosition(x, y, facing);
+        if (SpawnLocations.Get(story.Var(SpawnLocations.Variable)) is { } town) exitSpot = new MapSpot("Sinnoh", town.X, town.Y, Direction.Down);
+        ArriveOnMap();
+        AnnounceLocation();
+        if (healer == null || !StartScript(home ? FieldScripts.BlackOutHome : FieldScripts.BlackOutCenter, healer)) playerParty.HealAll();
+    }
+
+    /// <summary>The room the player comes round in: in Sinnoh the last Pokémon Center's (<see cref="SpawnLocations.Respawn"/>), elsewhere the region's home.</summary>
+    private (string Room, bool Home) WhiteOutRoom()
+    {
+        var region = RegionDatabase.RegionOfMap(currentMap.Name);
+        if (region?.Id == RegionDatabase.Sinnoh)
+        {
+            var spawn = SpawnLocations.Respawn(story);
+            if (MapDatabase.MapNames.Contains(spawn.Room)) return (spawn.Room, spawn.Room == "PlayerHouse");
+            return ("PlayerHouse", true);
+        }
+        string house = region?.Maps.FirstOrDefault(m => m.EndsWith("PlayerHouse", StringComparison.Ordinal)) ?? "PlayerHouse";
+        return (house, true);
     }
 
     private void StartTransition(GameState nextState, Action? onMidpoint = null, TransitionKind kind = TransitionKind.Fade)

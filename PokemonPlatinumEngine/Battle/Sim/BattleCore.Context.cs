@@ -149,6 +149,10 @@ public sealed partial class BattleCore
 
         // A Pokémon put to sleep or frozen in the middle of a move comes out of it
         if (status is StatusCondition.Sleep or StatusCondition.Freeze) Unlock(target);
+        // Shaymin's Sky Forme can't stand the cold: frozen, it is back in its Land Forme for good
+        // (subscript_check_shaymin_form, after the hit; plan 06 · R10)
+        if (status == StatusCondition.Freeze && !target.HasSubstitute && FormRules.BackToLand(p))
+            Say($"{target.Name} changed back into its Land Forme!").With(new Reshaped(target.Place));
         CheckConditionHooks(target, source);
         return true;
     }

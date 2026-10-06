@@ -97,7 +97,8 @@ internal static partial class ModernUi
         Level(r.X + r.Width - 44, r.Y + 58, p.Level, 40);
 
         float tx = TypePills(x, r.Y + 94, p);
-        StatusPill(tx + 4, r.Y + 94, p.IsFainted ? StatusCondition.Faint : p.Status);
+        float status = StatusPill(tx + 4, r.Y + 94, p.IsFainted ? StatusCondition.Faint : p.Status);
+        PokerusTag(tx + 4 + (status > 0 ? status + 8 : 0), r.Y + 94, p, 34);
 
         HpBar(x, r.Y + 150, r.Width - 308, 26, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
         string hpText = $"{p.CurrentHP} / {p.MaxHP}";
@@ -158,7 +159,8 @@ internal static partial class ModernUi
         NameWithGender(p, x, who.Y + 568, 52);
         UiFonts.Draw($"{p.Species.Category} Pokémon", x, who.Y + 606, 28, Muted, UiWeight.ExtraBold);
         float tx = TypePills(x, who.Y + 662, p, 42);
-        StatusPill(tx + 4, who.Y + 662, p.IsFainted ? StatusCondition.Faint : p.Status, 42);
+        float status = StatusPill(tx + 4, who.Y + 662, p.IsFainted ? StatusCondition.Faint : p.Status, 42);
+        PokerusTag(tx + 4 + (status > 0 ? status + 8 : 0), who.Y + 662, p, 42);
 
         UiShapes.Fill(new Rectangle(x, who.Y + 732, who.Width - 88, 3), 1.5f, Rule);
         Label("NATURE", x, who.Y + 752);

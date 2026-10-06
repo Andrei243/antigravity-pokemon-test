@@ -207,6 +207,7 @@ public class ScriptTests
               if boy end
               if girl end
               if poketch end
+              if pokerus end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

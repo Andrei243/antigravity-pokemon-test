@@ -590,6 +590,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace });
         // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot
         started.UnionWith(new[] { FieldScripts.EscapeRope, FieldScripts.CyclistsOnly });
+        // Waking up after a lost battle, in a Pokémon Center or at home
+        started.UnionWith(new[] { FieldScripts.BlackOutCenter, FieldScripts.BlackOutHome });
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {

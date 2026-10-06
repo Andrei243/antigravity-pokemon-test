@@ -1107,6 +1107,12 @@ if (Run("menus"))
     Frames(30); Shot("20b_summary");
     partyScreen.MoveCursor(0, 1, party.Count);
     Frames(30); Shot("20c_summary_second");
+    // Pokérus (plan 06 · R10): the PKRS tag after the status, on the summary and on the party's card
+    party.Members[1].Pokerus = 0x34;
+    Frames(4); Shot("20d_summary_pokerus");
+    partyScreen.ShowSummary = false;
+    Frames(30); Shot("20e_party_pokerus");
+    party.Members[1].Pokerus = 0;
     partyScreen.Close();
 
     Set("currentState", GameState.StarterSelect);
@@ -2078,7 +2084,7 @@ if (Run("life"))
     swimmer.Moves.Add(surf);
     var (bankX, bankY) = Nearest(111, 892, (x, y) => sinnoh.IsWalkable(x, y) && sinnoh.IsDeepWater(x + 1, y) && sinnoh.IsDeepWater(x + 2, y) && !sinnoh.IsSolid(x + 1, y));
     Put(bankX, bankY, Direction.Right);
-    T.GetMethod("TryStartSurf", Private)!.Invoke(engine, null);
+    walker.StartSurf(sinnoh);
     for (int guard = 0; guard < 120 && (walker.Mode != TravelMode.Surfing || walker.IsMoving); guard++) Frames(1);
     Frames(5); Shot("l06c_splash_riding_out"); ShotCrop("l06d_splash_native", 640, 380, 640, 360, 2);
     swimmer.Moves.Remove(surf);
@@ -2842,6 +2848,39 @@ if (mode == "conditions")
     Skip(1.0);
     Shot("96_transformed");
     party.Members.Remove(ditto);
+    Set("currentState", GameState.Overworld);
+
+    // A move to learn with four known (plan 06 · R10): the question, then the moves to forget beside the field
+    // (96_learn_ask, 96_learn_choose), and the line once one is forgotten (96_learn_learned)
+    var learner = new Pokemon(PokemonDatabase.Get("Turtwig")!, 8);
+    learner.Moves.Clear();
+    foreach (var m in new[] { "Tackle", "Withdraw", "Growl", "Leer" }) learner.Moves.Add(new Move(MoveDatabase.Get(m)));
+    learner.CurrentExp = learner.ExpForNextLevel - 1;
+    party.Members.Insert(0, learner);
+    cb = StartBattle("Bidoof", 3);
+    ToMainMenu(cb);
+    cb.EnemyPokemon.CurrentHP = 1;
+    cb.SelectMove(0);
+    for (int i = 0; i < 80 && !cb.IsLearningMove; i++)
+    {
+        Confirm(cb);
+        Skip(0.3);
+    }
+    Skip(0.5);
+    Shot("96_learn_ask");
+    cb.ChooseLearn(0);
+    for (int i = 0; i < 20 && !cb.IsLearningMove; i++)
+    {
+        Confirm(cb);
+        Skip(0.3);
+    }
+    cb.MoveLearnCursor(1);
+    Skip(0.5);
+    Shot("96_learn_choose");
+    cb.ChooseLearn(1);
+    ReadTo("Turtwig learned Absorb!");
+    Shot("96_learn_learned");
+    party.Members.Remove(learner);
     Set("currentState", GameState.Overworld);
 }
 

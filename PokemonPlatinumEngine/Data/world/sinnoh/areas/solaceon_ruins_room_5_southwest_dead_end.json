@@ -30,6 +30,8 @@
     { "species": "Unown", "level": 30 }
   ],
   "landRate": 10,
+  "eastSea": true,
+  "unownTable": 1,
   "warps": [
     { "x": 6, "z": 3, "to": "solaceon_ruins_room_5", "toWarp": 2 }
   ],

@@ -32,6 +32,10 @@ public static class FieldScripts
     public const string EscapeRope = "common.EscapeRope";
     public const string CyclistsOnly = "common.CyclistsOnly";
 
+    /// <summary>Waking up after a lost battle (plan 06 · R10): the nurse of the last Pokémon Center, or Mom at home.</summary>
+    public const string BlackOutCenter = "common.BlackOutCenter";
+    public const string BlackOutHome = "common.BlackOutHome";
+
     /// <summary>
     /// The script a field move chosen from the party menu runs (<c>common.UseCut</c>…); null for Milk Drink and
     /// Soft-Boiled, which the party menu carries out itself, and Chatter, which has nothing to do here.

@@ -102,6 +102,13 @@ public sealed record WeatherChanged(BattleWeather Weather) : BattleEvent;
 public sealed record ExpGained(Pokemon Pokemon, int Amount) : BattleEvent;
 public sealed record LevelRose(Pokemon Pokemon, int Level) : BattleEvent;
 
+/// <summary>
+/// A Pokémon that knows four moves reached a level with a move to learn (plan 06 · R10): the screen asks the
+/// player which move, if any, to forget for it (the original's <c>SEQ_GET_EXP_WANTS_TO_LEARN_MOVE</c>). The rules
+/// have changed nothing; whatever is chosen is given to both the screen's Pokémon and the rules' copy.
+/// </summary>
+public sealed record MoveWanted(Pokemon Pokemon, string Move) : BattleEvent;
+
 /// <summary>A ball is thrown at the foe in a slot and shakes this many times (4: it holds).</summary>
 public sealed record BallThrown(string Ball, int Slot, int Shakes) : BattleEvent;
 

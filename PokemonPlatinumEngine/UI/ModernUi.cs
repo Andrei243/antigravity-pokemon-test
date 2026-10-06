@@ -181,6 +181,13 @@ internal static partial class ModernUi
         return w;
     }
 
+    /// <summary>Pokérus's colour: the tag of a Pokémon that carries it (style guide, "The party's menus").</summary>
+    public static readonly Color PokerusColor = new(16, 132, 124, 255);
+
+    /// <summary>A PKRS tag while the Pokémon carries Pokérus (plan 06 · R10); returns its width, 0 for none.</summary>
+    public static float PokerusTag(float x, float y, Pokemon p, float height = 34f) =>
+        PokerusRules.Tag(p) is { } text ? Tag(x, y, text, PokerusColor, height) : 0f;
+
     /// <summary>A small grey tag for a short word ("LEAD", "IN BATTLE"); returns its width.</summary>
     public static float Tag(float x, float y, string text, Color color, float height = 34f)
     {

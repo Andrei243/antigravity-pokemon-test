@@ -327,6 +327,15 @@ public sealed class WorldAreaFile
 
     public static readonly int[] RodSlotWeights = { 40, 40, 15, 4, 1 };
 
+    /// <summary>
+    /// Shellos and Gastrodon are met here in the east sea's colours (plan 06 · R10; the original's
+    /// <c>rate_form0</c> and <c>rate_form1</c>): east of Mt. Coronet. Left out in the west.
+    /// </summary>
+    public bool? EastSea { get; set; }
+
+    /// <summary>Which of the original's Unown tables the Unown met here come from, from 1 (<see cref="Models.FormRules.UnownTables"/>); left out for the first.</summary>
+    public int? UnownTable { get; set; }
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();

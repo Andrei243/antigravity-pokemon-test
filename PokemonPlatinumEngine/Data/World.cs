@@ -439,7 +439,9 @@ public static class WorldMapBuilder
             Kind = file?.Kind ?? "",
             BikeAllowed = file?.Bike ?? false,
             EscapeRopeAllowed = file?.EscapeRope ?? false,
-            FlyAllowed = file?.Fly ?? false
+            FlyAllowed = file?.Fly ?? false,
+            EastSea = file?.EastSea ?? false,
+            UnownTable = file?.UnownTable ?? 0
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
 

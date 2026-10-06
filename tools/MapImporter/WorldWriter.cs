@@ -181,6 +181,8 @@ public sealed class WorldWriter
             GoodRodRate = goodRodRate,
             SuperRod = Water(header, "super_rod", out int? superRodRate),
             SuperRodRate = superRodRate,
+            EastSea = header.Encounters != null && decomp.Forms(header.Encounters).EastSea ? true : null,
+            UnownTable = header.Encounters != null && decomp.Forms(header.Encounters).UnownTable is > 0 and var unown ? unown : null,
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o => new AreaObject
             {

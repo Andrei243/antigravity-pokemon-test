@@ -52,6 +52,9 @@ that exists, every script to something that starts it, and plays each to its end
   the game's own, with no script.
 - **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
   `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
+- **Waking up after a lost battle** (plan 06 · R10). The player comes round in the Pokémon Center last gone into,
+  in front of the nurse, who runs `BlackOutCenter`, or at home before any, beside Mom, who runs `BlackOutHome`.
+  Both heal the team.
 - **A new game.** `common.NewGame` runs once, with no screen: it may set flags and variables and nothing else.
   It is also run for a save from before the story was kept (`Story/StoryMigration.cs`).
 
@@ -133,6 +136,7 @@ What an `if` can ask:
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `poketch` | The player has the Pokétch. |
+| `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
 
 ### What the story remembers
 
@@ -166,7 +170,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 
 | Command | |
 |---|---|
-| `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up at home, unless `canlose`: then the team is healed and the script goes on with `if lost`. |
+| `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up in the last Pokémon Center (at home before any), unless `canlose`: then the team is healed and the script goes on with `if lost`. |
 | `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
 | `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
 | `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
