@@ -43,4 +43,4 @@ track hats kit vol=0.48 pan=0.15 rev=0.1
 
 # Low HP: the alarm figure Black and White lay over the battle theme, two pips a beat, only while a Pokémon of the player's is in the red
 track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
-  v110 r1 | r1 | L [ o6 b16 r16 b16 r16 r4 b16 r16 b16 r16 r4 | ]16
+  v110 r1 | r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]16

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Audio;
 
@@ -199,6 +200,38 @@ public static class MusicDirector
             if (exists(shared)) return shared;
         }
         return null;
+    }
+
+    /// <summary>The folder, in a region's music or <c>common</c>, of the legendary and mythical Pokémon's own battle themes.</summary>
+    public const string LegendaryFolder = "legendary";
+
+    /// <summary>
+    /// The file name a species' own battle theme has in <see cref="LegendaryFolder"/>: its name in lower case, every
+    /// run of other characters one underscore (<c>ho_oh</c>, <c>type_null</c>, <c>tapu_koko</c>).
+    /// </summary>
+    public static string LegendaryKey(string speciesName)
+    {
+        var key = new System.Text.StringBuilder();
+        foreach (char c in speciesName.ToLowerInvariant())
+        {
+            if (char.IsAsciiLetterOrDigit(c)) key.Append(c);
+            else if (key.Length > 0 && key[^1] != '_') key.Append('_');
+        }
+        return key.ToString().TrimEnd('_');
+    }
+
+    /// <summary>
+    /// The battle theme for meeting a wild Pokémon. A legendary or mythical one brings its own (plan 05: every one has
+    /// a theme of its own), looked for in the region's <c>legendary</c> folder before the shared one, and falling back
+    /// to the legendary battle theme; anything else gets the wild battle theme. Its forms share it.
+    /// </summary>
+    public static string? WildBattleTheme(PokemonSpecies species, string? region, Func<string, bool> exists)
+    {
+        if (!species.Legendary && !species.Mythical) return Resolve(MusicRole.BattleWild, region, exists);
+        string file = $"{LegendaryFolder}/{LegendaryKey(species.Name)}";
+        if (!string.IsNullOrEmpty(region) && exists($"{region.ToLowerInvariant()}/{file}")) return $"{region.ToLowerInvariant()}/{file}";
+        if (exists($"{Common}/{file}")) return $"{Common}/{file}";
+        return Resolve(MusicRole.BattleLegendary, region, exists);
     }
 
     /// <summary>The theme that plays when a trainer of this class spots the player: the sound map's, or the boy's.</summary>

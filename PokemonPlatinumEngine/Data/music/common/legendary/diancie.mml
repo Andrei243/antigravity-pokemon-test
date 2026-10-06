@@ -1,0 +1,50 @@
+# Battle against Diancie (the jewel princess): one bar of falling glockenspiel, then a bright A-major dance on a
+# staccato celesta, with glockenspiel glints between its beats and clapping drums. Original composition for this game.
+title Battle! Diancie
+tempo 164
+meter 4/4
+lowhptempo 1.08
+reverb 0.3
+
+track lead celesta lowhp=sawlead vol=0.8 pan=0 rev=0.28
+  q5 r2 o5 e8 g+8 b8 o6 e8 |
+  L o5 e8 a8 o6 c+8 e8 r8 c+8 o5 b8 a8 | o5 g+8 b8 o6 e8 g+8 r8 f+8 e8 o5 b8 | o6 c+4 o5 a8 f+8 g+8 a8 b8 o6 c+8 | o6 d4. e8 f+4 e4 |
+  o6 e8 c+8 o5 a8 e8 a8 b8 o6 c+8 e8 | o6 g+4 e8 c+8 o5 b8 g+8 e4 | o5 f+8 a8 o6 d8 f+8 a4 f+8 e8 | o6 e4 o5 b8 g+8 e2 |
+  o5 a8 o6 c+8 f+8 a8 g+8 f+8 e8 c+8 | o6 d8 f+8 a8 f+8 e4 d4 | o6 c+8 e8 a8 e8 c+4 o5 a4 | o5 b8 o6 e8 g+8 b8 g+4 e4 |
+  o6 f+4. e8 d4 o5 a4 | o5 b8 o6 d8 f+8 b8 a8 f+8 d4 | o6 e8 g+8 b8 g+8 e8 o5 b8 g+8 b8 | o6 e4 f+8 g+8 b4 r4 |
+
+track glock glockenspiel vol=0.36 pan=0.3 rev=0.36
+  o5 b16 g+16 e16 o4 b16 o5 g+16 e16 o4 b16 g+16 e4 r4 |
+  L r4 o4 a16 o5 c+16 e16 a16 r4 o4 a16 o5 c+16 e16 a16 | r4 o4 b16 o5 e16 g+16 b16 r4 o4 b16 o5 e16 g+16 b16 |
+  r4 o4 a16 o5 c+16 f+16 a16 r4 o4 a16 o5 c+16 f+16 a16 | r4 o4 a16 o5 d16 f+16 a16 r4 o4 a16 o5 d16 f+16 a16 |
+  r4 o4 a16 o5 c+16 e16 a16 r4 o4 a16 o5 c+16 e16 a16 | r4 o4 g+16 o5 c+16 e16 g+16 r4 o4 g+16 o5 c+16 e16 g+16 |
+  r4 o4 a16 o5 d16 f+16 a16 r4 o4 a16 o5 d16 f+16 a16 | r4 o4 b16 o5 e16 g+16 b16 r4 o4 b16 o5 e16 g+16 b16 |
+  r4 o4 a16 o5 c+16 f+16 a16 r4 o4 a16 o5 c+16 f+16 a16 | r4 o4 a16 o5 d16 f+16 a16 r4 o4 a16 o5 d16 f+16 a16 |
+  r4 o4 a16 o5 c+16 e16 a16 r4 o4 a16 o5 c+16 e16 a16 | r4 o4 b16 o5 e16 g+16 b16 r4 o4 b16 o5 e16 g+16 b16 |
+  r4 o4 a16 o5 d16 f+16 a16 r4 o4 a16 o5 d16 f+16 a16 | r4 o4 b16 o5 d16 f+16 b16 r4 o4 b16 o5 d16 f+16 b16 |
+  r4 o4 b16 o5 e16 g+16 b16 r4 o4 b16 o5 e16 g+16 b16 | r4 o4 b16 o5 e16 g+16 b16 r4 o4 b16 o5 e16 g+16 b16 |
+
+track strings strings unless=lowhp vol=0.32 pan=-0.3 rev=0.34
+  r1 |
+  L o4 (c+ e a)1 | (e g+ b)1 | (c+ f+ a)1 | (d f+ a)1 |
+  (c+ e a)1 | (c+ e g+)1 | (d f+ a)1 | (e g+ b)1 |
+  (c+ f+ a)1 | (d f+ a)1 | (c+ e a)1 | (e g+ b)1 |
+  (d f+ a)1 | (d f+ b)1 | (e g+ b)1 | (e g+ b)1 |
+
+track bass synthbass vol=0.68 rev=0.05
+  r2 o3 e4 e4 |
+  L [ o3 a8 o4 a8 ]4 | [ o3 e8 o4 e8 ]4 | [ o3 f+8 o4 f+8 ]4 | [ o3 d8 o4 d8 ]4 |
+  [ o3 a8 o4 a8 ]4 | [ o3 c+8 o4 c+8 ]4 | [ o3 d8 o4 d8 ]4 | [ o3 e8 o4 e8 ]4 |
+  [ o3 f+8 o4 f+8 ]4 | [ o3 d8 o4 d8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 e8 o4 e8 ]4 |
+  [ o3 d8 o4 d8 ]4 | [ o3 b8 o4 b8 ]4 | [ o3 e8 o4 e8 ]4 | [ o3 e8 o4 e8 ]4 |
+
+track drums kit vol=0.5 rev=0.14
+  v100 r2 x8 x8 x16 x16 x8 |
+  L [ (b c)8 r8 x8 b8 r8 b8 x8 r8 | [ b8 r8 x8 b8 r8 b8 x8 r8 | ]6 x16 x16 x8 x16 x16 x8 t16 t16 m16 m16 f8 f8 | ]2
+
+track shaker kit vol=0.38 pan=0.2 rev=0.1
+  r1 | L [ v62 k16 v35 k16 k16 k16 v62 k16 v35 k16 k16 k16 v62 k16 v35 k16 k16 k16 v62 k16 v35 k16 k16 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.46 pan=0.1 rev=0.08
+  v110 r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]16

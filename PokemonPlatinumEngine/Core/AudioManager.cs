@@ -180,6 +180,17 @@ public static class AudioManager
     private static IReadOnlyList<AmbienceLayer>? forwarded;
     private static int forwardedCount;
 
+    /// <summary>
+    /// Cuts to the battle theme for meeting a wild Pokémon of this species: a legendary or mythical one's own, or
+    /// the wild battle theme (<see cref="MusicDirector.WildBattleTheme"/>).
+    /// </summary>
+    public static void PlayWildBattleMusic(PokemonSpecies species)
+    {
+        if (!isInitialized) return;
+        string? id = MusicDirector.WildBattleTheme(species, Region, MusicLibrary.Exists);
+        if (id != null) PlayMusic(id, immediate: true);
+    }
+
     /// <summary>Pauses the music for a jingle (healing, an item, a level-up), then lets it carry on.</summary>
     public static void PlayFanfare(MusicRole role)
     {

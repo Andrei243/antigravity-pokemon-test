@@ -1,0 +1,54 @@
+# Battle against Lugia (the guardian of the seas): a broad choir melody in F minor rolls over a string counter-line,
+# a deep pad and vibraphone waves, the basses swelling like a tide. Original composition for this game.
+title Battle! Lugia
+tempo 150
+meter 4/4
+lowhptempo 1.1
+reverb 0.4
+
+track lead choir lowhp=sawlead vol=0.92 pan=0 rev=0.42
+  r1 | o5 c2 o4 g4 o5 e4 |
+  L o4 f4 o5 c2 a-4 | o5 f2. e-8 d-8 | o5 e-2 g4 b-4 | o5 a-2 f4. g8 |
+  o5 a-4 o6 c2 o5 b-8 a-8 | o5 b-2 f4 d-4 | o5 f4. e-8 d-4 a-4 | o5 g2 e4 c4 |
+  o5 a-2 o6 d-4. c8 | o5 b-2 g4 e-4 | o5 c4 e-4 g4 o6 c4 | o6 c2. o5 b-8 a-8 |
+  o5 f4 b-4 o6 d-4. c8 | o6 d-2 o5 a-4 f4 | o5 g4. a-8 b-4 o6 e-4 | o5 g2 e2 |
+
+track counter strings vol=0.46 pan=-0.25 rev=0.4
+  r1 | o4 e2 c2 |
+  L o4 f2 a-2 | o4 a-2 f2 | o4 g2 b-2 | o4 a-2 o5 c2 |
+  o5 c2 o4 a-2 | o4 f2 b-2 | o4 a-2 f2 | o4 g2 e2 |
+  o4 f2 a-2 | o4 g2 e-2 | o4 e-2 g2 | o4 a-2 f2 |
+  o4 d-2 f2 | o4 f2 a-2 | o4 b-2 g2 | o4 e2 c2 |
+
+track waves vibraphone vol=0.35 pan=0.3 rev=0.5
+  o4 f8 a-8 o5 c8 f8 c8 o4 a-8 f8 c8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 o3 g8 |
+  L o4 f8 a-8 o5 c8 f8 c8 o4 a-8 f8 c8 | o4 d-8 f8 a-8 o5 d-8 o4 a-8 f8 d-8 o3 a-8 | o4 e-8 g8 b-8 o5 e-8 o4 b-8 g8 e-8 o3 b-8 | o4 f8 a-8 o5 c8 f8 c8 o4 a-8 f8 c8 |
+  o4 f8 a-8 o5 c8 f8 c8 o4 a-8 f8 c8 | o3 b-8 o4 d-8 f8 b-8 f8 d-8 o3 b-8 f8 | o4 d-8 f8 a-8 o5 d-8 o4 a-8 f8 d-8 o3 a-8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 o3 g8 |
+  o4 d-8 f8 a-8 o5 d-8 o4 a-8 f8 d-8 o3 a-8 | o4 e-8 g8 b-8 o5 e-8 o4 b-8 g8 e-8 o3 b-8 | o4 c8 e-8 g8 o5 c8 o4 g8 e-8 c8 o3 g8 | o4 f8 a-8 o5 c8 f8 c8 o4 a-8 f8 c8 |
+  o3 b-8 o4 d-8 f8 b-8 f8 d-8 o3 b-8 f8 | o4 d-8 f8 a-8 o5 d-8 o4 a-8 f8 d-8 o3 a-8 | o4 e-8 g8 b-8 o5 e-8 o4 b-8 g8 e-8 o3 b-8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 c8 o3 g8 |
+
+track pad pad unless=lowhp vol=0.34 pan=0.1 rev=0.5
+  o3 (f a- >c)1 | (e g >c)1 |
+  L o3 (f a- >c)1 | (f a- >d-)1 | (g b- >e-)1 | (f a- >c)1 |
+  o3 (f a- >c)1 | (f b- >d-)1 | (f a- >d-)1 | (e g >c)1 |
+  o3 (f a- >d-)1 | (g b- >e-)1 | (e- g >c)1 | (f a- >c)1 |
+  o3 (f b- >d-)1 | (f a- >d-)1 | (g b- >e-)1 | (e g >c)1 |
+
+track bass contrabass vol=0.84 rev=0.1
+  o3 f2. c4 | c2. g4 |
+  L o3 f2. c4 | d-2. a-4 | e-2. b-4 | f2. c4 |
+  o3 f2. c4 | b-2. f4 | d-2. a-4 | c2. g4 |
+  o3 d-2. a-4 | e-2. b-4 | c2. g4 | f2. c4 |
+  o3 b-2. f4 | d-2. a-4 | e-2. b-4 | c2. g4 |
+
+track drums kit vol=0.56 rev=0.25
+  v100 (b c)2 r2 | f8 f8 f8 f8 m8 m8 t8 t8 |
+  L (b c)4 r8 b8 s4. b8 | [ b4 r8 b8 s4. b8 | ]2 b4 r8 b8 s8 f8 f8 f8 | (b c)4 r8 b8 s4. b8 | [ b4 r8 b8 s4. b8 | ]2 f8 f8 m8 m8 t8 t8 s8 s8 |
+  (b c)4 r8 b8 s4. b8 | [ b4 r8 b8 s4. b8 | ]2 b4 r8 b8 s8 f8 f8 f8 | (b c)4 r8 b8 s4. b8 | [ b4 r8 b8 s4. b8 | ]2 f16 f16 f16 f16 m16 m16 m16 m16 t16 t16 t16 t16 (b c)4 |
+
+track shaker kit vol=0.36 pan=0.2 rev=0.15
+  r1 | r1 | L [ v52 k8 v32 k8 v52 k8 v32 k8 v52 k8 v32 k8 v52 k8 v32 k16 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.44 pan=-0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 b-16 r16 b-16 r16 r4 b-16 r16 b-16 r16 r4 | ]16

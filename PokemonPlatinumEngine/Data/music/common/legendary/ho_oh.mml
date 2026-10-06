@@ -1,0 +1,54 @@
+# Battle against Ho-Oh (the rainbow phoenix): a radiant trumpet theme in E-flat major rings out over brass, strings
+# and pealing bells, with a march in the drums. Original composition for this game.
+title Battle! Ho-Oh
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.34
+
+track lead trumpet lowhp=sawlead vol=0.8 pan=0 rev=0.3
+  r1 | o5 b-4 r8 b-8 o6 d4 f4 |
+  L o5 e-4 g8 b-8 o6 e-4. d8 | o6 d4 c8 o5 b-8 f4 b-4 | o6 c4. o5 b-8 a-4 e-4 | o5 f4 b-4 o6 d2 |
+  o6 e-4. d8 e-8 f8 g4 | o6 g4 e-4 c4 o5 g4 | o5 a-4 o6 c8 e-8 a-4. g8 | o6 f2 d4 o5 b-4 |
+  o6 e-4. c8 o5 a-4 o6 c4 | o6 d4. o5 b-8 f4 o6 d4 | o6 d4 o5 b8 o6 d8 g4. f+8 | o6 g2 e-4 c4 |
+  o6 c4 e-4 a-4. g8 | o6 f4. e-8 c4 o5 a-4 | o5 b-4 o6 d4 f4 d8 e-8 | o5 b-2 o6 d4 f4 |
+
+track brass brass vol=0.5 pan=-0.25 rev=0.3
+  r1 | o4 f2 b-2 |
+  L o4 g2 b-2 | o4 f2 b-2 | o4 a-2 e-2 | o4 b-2 f2 |
+  o4 g2 b-2 | o4 g2 e-2 | o4 e-2 a-2 | o4 f2 d2 |
+  o4 a-2 e-2 | o4 f2 b-2 | o4 b2 g2 | o4 g2 e-2 |
+  o4 e-2 a-2 | o4 a-2 f2 | o4 f2 d2 | o4 d2 f2 |
+
+track bells bell vol=0.46 pan=0.3 rev=0.45
+  o6 e-4 r4 o5 b-4 r4 | o5 b-4 r4 f4 r4 |
+  L o6 e-4 r4 o5 b-4 r4 | o5 b-4 r4 f4 r4 | o5 a-4 r4 e-4 r4 | o5 b-4 r4 f4 r4 |
+  o6 e-4 r4 o5 b-4 r4 | o6 c4 r4 o5 g4 r4 | o5 a-4 r4 e-4 r4 | o5 b-4 r4 f4 r4 |
+  o5 a-4 r4 e-4 r4 | o5 b-4 r4 f4 r4 | o5 g4 r4 d4 r4 | o6 c4 r4 o5 g4 r4 |
+  o5 a-4 r4 e-4 r4 | o5 f4 r4 o6 c4 r4 | o5 b-4 r4 f4 r4 | o5 b-4 r4 f4 r4 |
+
+track strings strings unless=lowhp vol=0.24 pan=0.15 rev=0.4
+  o4 (e- g b-)1 | (d f b-)1 |
+  L o4 (e- g b-)1 | (d f b-)1 | (c e- a-)1 | (d f b-)1 |
+  o4 (e- g b-)1 | (c e- g)1 | (c e- a-)1 | (d f b-)1 |
+  o4 (c e- a-)1 | (d f b-)1 | (d g b)1 | (c e- g)1 |
+  o4 (c e- a-)1 | (c f a-)1 | (d f b-)1 | (d f b-)1 |
+
+track bass bass vol=0.8 rev=0.05
+  o3 e-8 e-8 b-8 b-8 e-8 e-8 b-8 o4 e-8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 |
+  L o3 e-8 e-8 b-8 b-8 e-8 e-8 b-8 o4 e-8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 | o3 a-8 a-8 e-8 e-8 a-8 a-8 e-8 o4 a-8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 |
+  o3 e-8 e-8 b-8 b-8 e-8 e-8 b-8 o4 e-8 | o3 c8 c8 g8 g8 c8 c8 g8 o4 c8 | o3 a-8 a-8 e-8 e-8 a-8 a-8 e-8 o4 a-8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 |
+  o3 a-8 a-8 e-8 e-8 a-8 a-8 e-8 o4 a-8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 | o3 g8 g8 d8 d8 g8 g8 d8 o4 g8 | o3 c8 c8 g8 g8 c8 c8 g8 o4 c8 |
+  o3 a-8 a-8 e-8 e-8 a-8 a-8 e-8 o4 a-8 | o3 f8 f8 c8 c8 f8 f8 c8 o4 f8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 | o3 b-8 b-8 f8 f8 b-8 b-8 f8 o4 b-8 |
+
+track drums kit vol=0.54 rev=0.15
+  v90 (b c)4 r2. | v100 s8 s16 s16 s8 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 |
+  L (b c)4 s8 s16 s16 b4 s4 | [ b4 s8 s16 s16 b4 s4 | ]6 b4 s8 s16 s16 s16 s16 s16 s16 s16 s16 s16 s16 |
+  (b c)4 s8 s16 s16 b4 s4 | [ b4 s8 s16 s16 b4 s4 | ]6 b4 s8 s16 s16 t16 t16 m16 m16 f16 f16 f16 f16 |
+
+track hats kit vol=0.56 pan=0.15 rev=0.1
+  r1 | r1 | L [ v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 o8 v40 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.44 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

@@ -1,0 +1,53 @@
+# Battle against Rayquaza (the sky's dragon): a fast E-minor flight, a saw lead climbing over brass stabs, running
+# sixteenths and a bass leaping in octaves. Original composition for this game.
+title Battle! Rayquaza
+tempo 190
+meter 4/4
+lowhptempo 1.06
+reverb 0.24
+
+track lead sawlead lowhp=square vol=0.86 pan=0 rev=0.22
+  o4 b8 o5 e8 g8 b8 o6 e2 | o6 f+4. e8 d+4 o5 b4 |
+  L o5 e4 g4 b4. a8 | o6 c2 o5 g4 e4 | o5 d4 g8 a8 b4 o6 d4 | o6 f+2 e4 d4 |
+  o5 b2. g8 a8 | o5 g4 e8 g8 o6 c4 e4 | o6 e4. d8 c4 o5 a4 | o5 b2 a4 f+4 |
+  o5 g4. a8 o6 c4 e4 | o6 f+2. e8 d8 | o6 d4 o5 b8 o6 d8 g4 e4 | o6 e2 o5 b4 g4 |
+  o5 a4 o6 c8 d8 e4 c4 | o6 g4. e8 c4 e4 | o6 d4 e8 f+8 a4 f+4 | o6 f+2 d+4 o5 b4 |
+
+track counter brass vol=0.38 pan=-0.25 rev=0.2
+  o4 (e g b)2 (e g b)4 (e g b)4 | o4 (d+ f+ b)4. (d+ f+ b)8 (d+ f+ b)4 (d+ f+ b)4 |
+  L o4 (e g b)4. (e g b)8 r4 (e g b)4 | o4 (c e g)4. (c e g)8 r4 (c e g)4 | o4 (d g b)4. (d g b)8 r4 (d g b)4 | o4 (d f+ a)4. (d f+ a)8 r4 (d f+ a)4 |
+  o4 (e g b)4. (e g b)8 r4 (e g b)4 | o4 (c e g)4. (c e g)8 r4 (c e g)4 | o4 (c e a)4. (c e a)8 r4 (c e a)4 | o4 (d+ f+ b)4. (d+ f+ b)8 r4 (d+ f+ b)4 |
+  o4 (c e g)4. (c e g)8 r4 (c e g)4 | o4 (d f+ a)4. (d f+ a)8 r4 (d f+ a)4 | o4 (d g b)4. (d g b)8 r4 (d g b)4 | o4 (e g b)4. (e g b)8 r4 (e g b)4 |
+  o4 (c e a)4. (c e a)8 r4 (c e a)4 | o4 (c e g)4. (c e g)8 r4 (c e g)4 | o4 (d f+ a)4. (d f+ a)8 r4 (d f+ a)4 | o4 (d+ f+ b)4. (d+ f+ b)8 r4 (d+ f+ b)4 |
+
+track pad strings unless=lowhp vol=0.3 pan=0.3 rev=0.35
+  o3 (e g b)1 | o3 (d+ f+ b)1 |
+  L o3 (e g b)1 | o3 (e g >c)1 | o3 (g b >d)1 | o3 (f+ a >d)1 |
+  o3 (e g b)1 | o3 (e g >c)1 | o3 (e a >c)1 | o3 (d+ f+ b)1 |
+  o3 (e g >c)1 | o3 (f+ a >d)1 | o3 (g b >d)1 | o3 (e g b)1 |
+  o3 (e a >c)1 | o3 (e g >c)1 | o3 (f+ a >d)1 | o3 (d+ f+ b)1 |
+
+track arp square vol=0.3 pan=0.35 rev=0.15
+  [ o4 e16 g16 b16 o5 e16 ]4 | [ o4 d+16 f+16 b16 o5 d+16 ]4 |
+  L [ o4 e16 g16 b16 o5 e16 ]4 | [ o4 c16 e16 g16 o5 c16 ]4 | [ o4 d16 g16 b16 o5 d16 ]4 | [ o4 d16 f+16 a16 o5 d16 ]4 |
+  [ o4 e16 g16 b16 o5 e16 ]4 | [ o4 c16 e16 g16 o5 c16 ]4 | [ o4 c16 e16 a16 o5 c16 ]4 | [ o4 d+16 f+16 b16 o5 d+16 ]4 |
+  [ o4 c16 e16 g16 o5 c16 ]4 | [ o4 d16 f+16 a16 o5 d16 ]4 | [ o4 d16 g16 b16 o5 d16 ]4 | [ o4 e16 g16 b16 o5 e16 ]4 |
+  [ o4 c16 e16 a16 o5 c16 ]4 | [ o4 c16 e16 g16 o5 c16 ]4 | [ o4 d16 f+16 a16 o5 d16 ]4 | [ o4 d+16 f+16 b16 o5 d+16 ]4 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 e1 | [ o3 b8 o4 b8 ]4 |
+  L [ o3 e8 o4 e8 ]4 | [ o3 c8 o4 c8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 d8 o4 d8 ]4 |
+  [ o3 e8 o4 e8 ]4 | [ o3 c8 o4 c8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 b8 o4 b8 ]4 |
+  [ o3 c8 o4 c8 ]4 | [ o3 d8 o4 d8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 e8 o4 e8 ]4 |
+  [ o3 a8 o4 a8 ]4 | [ o3 c8 o4 c8 ]4 | [ o3 d8 o4 d8 ]4 | [ o3 b8 o4 b8 ]4 |
+
+track drums kit vol=0.5 rev=0.12
+  r2 s16 s16 s16 s16 s16 s16 s16 s16 | (b c)4 b8 b8 s16 s16 s16 s16 t16 t16 f16 f16 |
+  L v100 [ (b c)8 r8 s8 b8 r8 b8 s8 r8 | [ b8 r8 s8 b8 r8 b8 s8 r8 | ]6 b8 s16 s16 s8 s8 t16 t16 m16 m16 f8 f8 | ]2
+
+track hats kit vol=0.62 pan=-0.15 rev=0.1
+  r1 | r1 | L [ v60 h16 v35 h16 v45 h16 v35 h16 v60 h16 v35 h16 v45 h16 v35 h16 v60 h16 v35 h16 v45 h16 v35 h16 v60 o16 v35 h16 v45 h16 v35 h16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 b16 r16 b16 r16 r4 b16 r16 b16 r16 r4 | ]16

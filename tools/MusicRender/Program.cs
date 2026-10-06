@@ -2,7 +2,7 @@
 // ears: levels, clipping, NaNs, clicks, notes that clash (a minor second between two parts on a beat), and a
 // spectrogram picture of each sound (and of each song with --spectrogram) to look at.
 //
-//   dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--night] [--stems] [--passes N] [--spectrogram]
+//   dotnet run --project tools/MusicRender -- <out dir> [song id, folder or .mml file ...] [--night] [--stems] [--passes N] [--spectrogram]
 //   dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
 //   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
 //   dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]
@@ -180,6 +180,29 @@ var songs = MusicLibrary.All
     .ToList();
 
 bool problems = false;
+
+// A song named by its file is read from there, so a song being written is checked without building the game
+foreach (var file in filters.Where(f => f.EndsWith(".mml", StringComparison.OrdinalIgnoreCase)))
+{
+    if (!File.Exists(file))
+    {
+        Console.WriteLine($"{file}: no such file");
+        problems = true;
+        continue;
+    }
+    string full = Path.GetFullPath(file).Replace('\\', '/');
+    int at = full.IndexOf("/Data/music/", StringComparison.Ordinal);
+    string id = at >= 0 ? Path.ChangeExtension(full[(at + "/Data/music/".Length)..], null) : Path.GetFileNameWithoutExtension(file);
+    try
+    {
+        songs.Add(Mml.Parse(id, File.ReadAllText(file)));
+    }
+    catch (FormatException e)
+    {
+        Console.WriteLine($"{id}: {e.Message}");
+        problems = true;
+    }
+}
 foreach (var song in songs)
 {
     var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp, Handheld = handheld };
@@ -231,7 +254,7 @@ foreach (var song in songs)
     WriteWav(Path.Combine(outDir, name + ".wav"), samples);
     if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, 8192f);
 
-    var clashes = Clashes(song);
+    var clashes = Clashes(song, lowHp);
     // Loudness is measured before the fade, as the game plays it
     var bus = song.Loops ? AudioBus.Music : AudioBus.Fanfare;
     double loud = Loudness.Of(samples.AsSpan(0, (song.Loops ? frames - (int)(2.5 * Synthesizer.SampleRate) : frames) * 2), 2);
@@ -264,16 +287,19 @@ return problems ? 2 : 0;
 static double Db(float x) => x <= 0 ? -120 : 20 * Math.Log10(x);
 
 // Two pitched parts a minor second (or minor ninth) apart, where one of them starts on a beat and lasts at least an eighth
-static List<string> Clashes(Song song)
+// Two parts a minor second or ninth apart on a beat, in the arrangement rendered: the low-HP one's tracks
+// (only=lowhp) or the normal one's (unless=lowhp), never both
+static List<string> Clashes(Song song, bool lowHp)
 {
     var result = new List<string>();
-    var pitched = song.Tracks.Where(t => !t.IsDrums).ToList();
+    var pitched = song.Tracks.Where(t => !t.IsDrums && t.When != (lowHp ? TrackWhen.NotLowHp : TrackWhen.LowHp)).ToList();
     int beat = Song.TicksPerQuarter;
+    bool Checked(NoteEvent n) => n.Tick % beat == 0 && n.Length >= Song.TicksPerWhole / 8;
     foreach (var a in pitched)
     {
         foreach (var na in a.Notes)
         {
-            if (na.Tick % beat != 0 || na.Length < Song.TicksPerWhole / 8) continue;
+            if (!Checked(na)) continue;
             foreach (var b in pitched)
             {
                 if (ReferenceEquals(a, b)) continue;
@@ -281,7 +307,8 @@ static List<string> Clashes(Song song)
                 {
                     if (nb.Tick > na.Tick) break;
                     if (nb.Tick + nb.Gate <= na.Tick) continue;
-                    if (nb.Tick == na.Tick && string.CompareOrdinal(a.Name, b.Name) > 0) continue;
+                    // Two notes struck together are told once, unless the other is too short to be checked itself (an alarm's pip)
+                    if (nb.Tick == na.Tick && Checked(nb) && string.CompareOrdinal(a.Name, b.Name) > 0) continue;
                     int ka = na.Key + 12 * a.Instrument.OctaveShift, kb = nb.Key + 12 * b.Instrument.OctaveShift;
                     int iv = Math.Abs(ka - kb);
                     if (iv % 12 == 1 && iv < 24)

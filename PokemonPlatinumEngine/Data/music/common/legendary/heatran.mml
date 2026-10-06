@@ -1,0 +1,53 @@
+# Battle against Heatran (the lava dome Pokémon of Stark Mountain): magma rising by semitones, then a heavy
+# A-Phrygian theme on a saw lead over a tuba riff, brass stabs and timpani. Original composition for this game.
+title Battle! Heatran
+tempo 164
+meter 4/4
+lowhptempo 1.08
+reverb 0.24
+
+track lead sawlead lowhp=square vol=0.78 pan=0 rev=0.2
+  r1 | o4 a8 b-8 b8 o5 c8 c+8 d8 d+8 e8 |
+  L o5 a4 a8 b-8 a4 e4 | o5 f4. e8 d4 f4 | o5 e4 e8 f8 e4 c4 | o5 d4. e8 g4 b4 |
+  o6 c4 c8 d8 c4 o5 a4 | o6 d4 d8 e-8 d4 o5 b-4 | o6 c4. o5 b-8 a4 f4 | o5 g+4. a8 b2 |
+  o5 a4. g8 f4 d4 | o5 f4. g8 b-4 o6 d4 | o6 e4. d8 c4 o5 a4 | o5 b4. a8 g+4 e4 |
+  o5 f4 a8 o6 c8 f4 c4 | o6 d4 c8 o5 b-8 f4 d4 | o5 e4 g+4 b4 o6 d4 | o6 e4 d8 c8 o5 b4 g+4 |
+
+track brass brass vol=0.46 pan=-0.25 rev=0.2
+  r1 | r1 |
+  L o4 (c e a)4 r8 (c e a)8 r4 (c e a)4 | o4 (d f b-)4 r8 (d f b-)8 r4 (d f b-)4 | o4 (c e a)4 r8 (c e a)8 r4 (c e a)4 | o4 (d g b)4 r8 (d g b)8 r4 (d g b)4 |
+  o4 (c e a)4 r8 (c e a)8 r4 (c e a)4 | o4 (d f b-)4 r8 (d f b-)8 r4 (d f b-)4 | o4 (c f a)4 r8 (c f a)8 r4 (c f a)4 | o4 (e g+ b)4 r8 (e g+ b)8 r4 (e g+ b)4 |
+  o4 (d f a)4 r8 (d f a)8 r4 (d f a)4 | o4 (d f b-)4 r8 (d f b-)8 r4 (d f b-)4 | o4 (c e a)4 r8 (c e a)8 r4 (c e a)4 | o4 (e g+ b)4 r8 (e g+ b)8 r4 (e g+ b)4 |
+  o4 (c f a)4 r8 (c f a)8 r4 (c f a)4 | o4 (d f b-)4 r8 (d f b-)8 r4 (d f b-)4 | o4 (e g+ b)4 r8 (e g+ b)8 r4 (e g+ b)4 | o4 (e g+ b)4 r8 (e g+ b)8 r4 (e g+ b)4 |
+
+track pad pad unless=lowhp vol=0.36 pan=0.3 rev=0.35
+  r1 | r1 |
+  L o4 (c e a)1 | o4 (d f b-)1 | o4 (c e a)1 | o4 (d g b)1 |
+  o4 (c e a)1 | o4 (d f b-)1 | o4 (c f a)1 | o4 (e g+ b)1 |
+  o4 (d f a)1 | o4 (d f b-)1 | o4 (c e a)1 | o4 (e g+ b)1 |
+  o4 (c f a)1 | o4 (d f b-)1 | o4 (e g+ b)1 | o4 (e g+ b)1 |
+
+track bass tuba vol=0.62 rev=0.05
+  o3 a1 | o3 a2 a4 a4 |
+  L o3 a8 a8 r8 a8 b-8 a8 e8 a8 | o3 b-8 b-8 r8 b-8 o4 c8 o3 b-8 f8 b-8 | o3 a8 a8 r8 a8 b-8 a8 e8 a8 | o3 g8 g8 r8 g8 a8 g8 d8 g8 |
+  o3 a8 a8 r8 a8 b-8 a8 e8 a8 | o3 b-8 b-8 r8 b-8 o4 c8 o3 b-8 f8 b-8 | o3 f8 f8 r8 f8 g8 f8 c8 f8 | o3 e8 e8 r8 e8 f8 e8 b8 e8 |
+  o3 d8 d8 r8 d8 e8 d8 a8 d8 | o3 b-8 b-8 r8 b-8 o4 c8 o3 b-8 f8 b-8 | o3 a8 a8 r8 a8 b-8 a8 e8 a8 | o3 e8 e8 r8 e8 f8 e8 b8 e8 |
+  o3 f8 f8 r8 f8 g8 f8 c8 f8 | o3 b-8 b-8 r8 b-8 o4 c8 o3 b-8 f8 b-8 | o3 e8 e8 r8 e8 f8 e8 b8 e8 | o3 e8 e8 r8 e8 f8 e8 b8 e8 |
+
+track timpani timpani vol=0.34 rev=0.22
+  o3 [ a16 ]16 | o3 a4 r4 [ a16 ]8 |
+  L o3 a4 r2 a4 | o3 b-4 r2 b-4 | o3 a4 r2 a4 | o3 g4 r2 g4 |
+  o3 a4 r2 a4 | o3 b-4 r2 b-4 | o3 f4 r2 f4 | o3 e4 r2 [ e16 ]4 |
+  o3 d4 r2 d4 | o3 b-4 r2 b-4 | o3 a4 r2 a4 | o3 e4 r2 e4 |
+  o3 f4 r2 f4 | o3 b-4 r2 b-4 | o3 e4 r2 e4 | o3 e4 r2 [ e16 ]4 |
+
+track drums kit vol=0.45 rev=0.14
+  r1 | (b c)4 r4 t8 m8 f8 f8 |
+  L v100 [ (b c)8 b8 r8 b8 s4 b8 r8 | [ b8 b8 r8 b8 s4 b8 r8 | ]6 b8 b8 r8 b8 s8 s8 t16 m16 f16 f16 | ]2
+
+track hats kit vol=0.62 pan=0.15 rev=0.1
+  r1 | r1 | L [ v55 h8 v30 h8 v55 h8 v30 h8 v55 h8 v30 h8 v55 h8 v40 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]16

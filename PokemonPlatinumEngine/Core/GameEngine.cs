@@ -1088,9 +1088,10 @@ public partial class GameEngine
     {
         playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
 
-        // The battle theme cuts in as the screen starts to flash, before the battle itself appears
+        // The battle theme cuts in as the screen starts to flash, before the battle itself appears: a legendary's or
+        // a mythical's own, or the wild battle theme
         eyeThemePlaying = false;
-        AudioManager.PlayMusic(MusicRole.BattleWild, immediate: true);
+        AudioManager.PlayWildBattleMusic(wildPkmn.Species);
         var shown = PrepareModels(new[] { wildPkmn });
         StartTransition(GameState.Battle, () =>
         {

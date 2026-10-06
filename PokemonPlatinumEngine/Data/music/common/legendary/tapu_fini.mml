@@ -1,0 +1,57 @@
+# Battle against Tapu Fini (Poni's guardian, water): the guardians' tom pattern and horn call over rippling harp,
+# then a slow-moving D-major vibraphone line, clouded by C-major chords, over a misty pad and a dark contrabass:
+# calm on top, dangerous underneath. Original composition for this game.
+title Battle! Tapu Fini
+tempo 156
+meter 4/4
+lowhptempo 1.08
+reverb 0.4
+
+track lead vibraphone lowhp=sawlead vol=0.82 pan=0 rev=0.36
+  r1 | r1 |
+  L o5 f+2 e4 d4 | o5 e2. g4 | o5 b2 a4 g4 | o5 a2. r4 |
+  o5 f+2 d4 o4 b4 | o5 c2 e4 g4 | o5 b2 a4 g4 | o5 e2 c+4 e4 |
+  o5 a4. b8 a4 f+4 | o5 g4. e8 g4 o6 c4 | o6 d2 o5 b4 g4 | o5 g2 e4 b4 |
+  o5 d4. e8 f+4 b4 | o5 b4. a8 g4 d4 | o5 f+1 | o5 a1 |
+
+# The guardians' horn call: the tonic, a leap to the fifth, the pentatonic step above it and back, then the tonic an octave up
+track horn horn vol=0.48 pan=-0.2 rev=0.36
+  o4 d8 a4. b8 a8 o5 d4 | o5 d2. r4 |
+  L r1 | r1 | r1 | r1 | r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 | r1 | r1 | o4 d8 a4. b8 a8 o5 d4 | o5 d2. r4 |
+
+track harp harp vol=0.4 pan=0.3 rev=0.42
+  [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 |
+  L [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 c12 e12 g12 o5 c12 o4 g12 e12 ]2 | [ o3 g12 b12 o4 d12 g12 d12 o3 b12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 |
+  [ o3 b12 o4 d12 f+12 b12 f+12 d12 ]2 | [ o4 c12 e12 g12 o5 c12 o4 g12 e12 ]2 | [ o4 e12 g12 b12 o5 e12 o4 b12 g12 ]2 | [ o3 a12 o4 c+12 e12 a12 e12 c+12 ]2 |
+  [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 c12 e12 g12 o5 c12 o4 g12 e12 ]2 | [ o3 g12 b12 o4 d12 g12 d12 o3 b12 ]2 | [ o4 e12 g12 b12 o5 e12 o4 b12 g12 ]2 |
+  [ o3 b12 o4 d12 f+12 b12 f+12 d12 ]2 | [ o3 g12 b12 o4 d12 g12 d12 o3 b12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 | [ o4 d12 f+12 a12 o5 d12 o4 a12 f+12 ]2 |
+
+track pad pad unless=lowhp vol=0.32 pan=-0.3 rev=0.45
+  r1 | o4 (d f+ a)1 |
+  L o4 (d f+ a)1 | (c e g)1 | (d g b)1 | (d f+ a)1 |
+  (d f+ b)1 | (c e g)1 | (e g b)1 | (c+ e a)1 |
+  (d f+ a)1 | (c e g)1 | (d g b)1 | (e g b)1 |
+  (d f+ b)1 | (d g b)1 | (d f+ a)1 | (d f+ a)1 |
+
+track bass contrabass vol=0.72 rev=0.08
+  o3 d1 | o3 d1 |
+  L o3 d2. o2 a4 | o3 c2. o2 g4 | o2 g2. d4 | o3 d2. o2 a4 |
+  o2 b2. f+4 | o3 c2. o2 g4 | o3 e2. o2 b4 | o2 a2. e4 |
+  o3 d2. o2 a4 | o3 c2. o2 g4 | o2 g2. d4 | o3 e2. o2 b4 |
+  o2 b2. f+4 | o2 g2. d4 | o3 d2. o2 a4 | o3 d2. o2 a4 |
+
+# The guardians' drum pattern on the toms, two bars in four
+track toms kit vol=0.42 pan=-0.1 rev=0.22
+  v95 [ t8 t16 t16 m8 r8 f8 m8 f4 | ]2 L [ t8 t16 t16 m8 r8 f8 m8 f4 | t8 t16 t16 m8 r8 f8 m8 f4 | r1 | r1 | ]4
+
+track drums kit vol=0.46 rev=0.16
+  r1 | r1 |
+  L [ (b c)4 r8 b8 r4 s4 | [ b4 r8 b8 r4 s4 | ]6 b4 r8 b8 s8 s16 s16 s8 s8 | ]2
+
+track shaker kit vol=0.34 pan=0.2 rev=0.12
+  r1 | r1 | L [ v52 k8 v30 k8 v52 k8 v30 k8 v52 k8 v30 k8 v52 k8 v30 k8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.46 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

@@ -1,0 +1,54 @@
+# Battle against Kyogre (the sea's primal Pokémon): a storm at sea in D minor, a choir singing long lines over a pad
+# and a deep bass that rolls in triplets like swell, with thunder on the timpani. Original composition for this game.
+title Battle! Kyogre
+tempo 158
+meter 4/4
+lowhptempo 1.08
+reverb 0.38
+
+track lead choir lowhp=sawlead vol=0.95 pan=0 rev=0.4
+  r1 | o4 a2 o5 c+2 |
+  L o4 a2 o5 d4. e8 | o5 f2 g4 a4 | o5 b-2. g8 f8 | o5 e2 c4 o4 g4 |
+  o4 b-2. o5 d4 | o5 f4. e-8 d4 c4 | o5 c+2. e4 | o5 e2. r4 |
+  o5 d2 f4 a4 | o5 c2 a4 g4 | o5 g2. e4 | o5 f2 d2 |
+  o5 d2. c8 o4 b-8 | o5 c2 e4 g4 | o5 b-2 g4 d4 | o5 c+2 e2 |
+
+track counter horn vol=0.5 pan=-0.25 rev=0.32
+  r1 | o4 e2 a2 |
+  L r2 o4 f8 g8 a4 | o4 a4. g8 f4 d4 | r4 o4 d8 f8 b-4 f4 | o4 g2 e4 c4 |
+  r4 o4 d8 f8 g4 b-4 | o4 d4. c8 o3 b-4 o4 f4 | r4 o4 e8 g8 a4 o5 c+4 | o5 c+4. o4 b8 a4 e4 |
+  o4 f2 a4 o5 c4 | o4 a4. g8 f4 c4 | r4 o4 c8 d8 e4 g4 | o4 a4 o5 c4 o4 a4 f4 |
+  o4 f4. g8 f4 d4 | o4 e4. d8 c4 e4 | o4 d4. f8 g4 b-4 | o4 a4 e8 a8 o5 c+4 o4 g4 |
+
+track pad pad unless=lowhp vol=0.34 pan=0.25 rev=0.5
+  o4 (d f a)1 | o4 (c+ e a)1 |
+  L o4 (d f a)1 | o4 (d f a)1 | o4 (d f b-)1 | o4 (c e g)1 |
+  o4 (d g b-)1 | o4 (d f b-)1 | o4 (c+ e a)1 | o4 (c+ e a)1 |
+  o4 (d f a)1 | o4 (c f a)1 | o4 (c e g)1 | o4 (d f a)1 |
+  o4 (d f b-)1 | o4 (c e g)1 | o4 (d g b-)1 | o4 (c+ e a)1 |
+
+# The swell: a deep bass rolling in triplets
+track bass synthbass vol=0.74 rev=0.08
+  [ o3 d12 a12 o4 d12 o3 a12 ]3 | [ o2 a12 o3 e12 a12 e12 ]3 |
+  L [ o3 d12 a12 o4 d12 o3 a12 ]3 | [ o3 d12 a12 o4 d12 o3 a12 ]3 | [ o2 b-12 o3 f12 b-12 f12 ]3 | [ o3 c12 g12 o4 c12 o3 g12 ]3 |
+  [ o2 g12 o3 d12 g12 d12 ]3 | [ o2 b-12 o3 f12 b-12 f12 ]3 | [ o2 a12 o3 e12 a12 e12 ]3 | [ o2 a12 o3 e12 a12 e12 ]3 |
+  [ o3 d12 a12 o4 d12 o3 a12 ]3 | [ o2 f12 o3 c12 f12 c12 ]3 | [ o3 c12 g12 o4 c12 o3 g12 ]3 | [ o3 d12 a12 o4 d12 o3 a12 ]3 |
+  [ o2 b-12 o3 f12 b-12 f12 ]3 | [ o3 c12 g12 o4 c12 o3 g12 ]3 | [ o2 g12 o3 d12 g12 d12 ]3 | [ o2 a12 o3 e12 a12 e12 ]3 |
+
+track timpani timpani vol=0.36 rev=0.3
+  o3 v70 [ d16 ]8 v100 [ d16 ]8 | o3 a4 r4 a4 a8 a8 |
+  L o3 d4 r2 d16 d16 d16 d16 | o3 d4 r2 a16 a16 a16 a16 | o3 b-4 r2 b-16 b-16 b-16 b-16 | o3 c4 r2 c16 c16 c16 c16 |
+  o3 g4 r2 g16 g16 g16 g16 | o3 b-4 r2 b-16 b-16 b-16 b-16 | o3 a4 r2 a16 a16 a16 a16 | o3 a4 r2 e16 e16 e16 e16 |
+  o3 d4 r2 d16 d16 d16 d16 | o3 f4 r2 f16 f16 f16 f16 | o3 c4 r2 c16 c16 c16 c16 | o3 d4 r2 a16 a16 a16 a16 |
+  o3 b-4 r2 b-16 b-16 b-16 b-16 | o3 c4 r2 c16 c16 c16 c16 | o3 g4 r2 g16 g16 g16 g16 | o3 a4 r2 a16 a16 a16 a16 |
+
+track drums kit vol=0.48 rev=0.2
+  r1 | (b c)4 r4 r4 s16 s16 s16 s16 |
+  L v100 [ (b c)4 s8. b16 b8 b8 s4 | [ b4 s8. b16 b8 b8 s4 | ]6 b4 s8. b16 s16 s16 s16 s16 f8 f8 | ]2
+
+track hats kit vol=0.6 pan=0.2 rev=0.2
+  r1 | r1 | L [ v60 k8. v35 k16 v50 h8. v35 k16 v60 k8. v35 k16 v50 h8. v35 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

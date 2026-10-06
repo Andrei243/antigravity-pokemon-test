@@ -1,0 +1,53 @@
+# Battle against Enamorus (the force of love and spring): the Forces' whirling turn of four sixteenths on a harp, a
+# passionate violin swinging between F major and D minor, and an oboe answering. Original composition for this game.
+title Battle! Enamorus
+tempo 170
+meter 4/4
+lowhptempo 1.08
+reverb 0.32
+
+track lead violin lowhp=sawlead vol=0.68 pan=0 rev=0.3
+  o5 a1 | o5 c+2 e2 |
+  L o5 c4. f8 a4 o6 c4 | o6 e2 d4 c4 | o5 a4. o6 d8 f4 d8 c8 | o6 d2 c4 o5 b-4 |
+  o5 a4. b-8 o6 c4 f4 | o6 e4. d8 c4 o5 a4 | o6 f4. e8 d4 o5 a4 | o5 c+2 e4 a4 |
+  o5 b-4. o6 c8 d4 f4 | o6 e4. d8 c4 g4 | o6 a2 g4 f4 | o6 f4. e8 d4 c4 |
+  o5 b-4. a8 g4 d4 | o5 f4. g8 b-4 o6 d4 | o6 c+2 o5 b4 a4 | o5 a2 e2 |
+
+track whirl harp vol=0.5 pan=0.3 rev=0.3
+  [ o5 a16 b-16 a16 g16 ]4 | [ o5 e16 f16 e16 d16 ]4 |
+  L [ o5 a16 b-16 a16 g16 ]4 | [ o5 g16 a16 g16 f16 ]4 | [ o5 a16 b-16 a16 g16 ]4 | [ o5 f16 g16 f16 e-16 ]4 |
+  [ o5 a16 b-16 a16 g16 ]4 | [ o5 a16 b-16 a16 g16 ]4 | [ o5 f16 g16 f16 e16 ]4 | [ o5 e16 f16 e16 d16 ]4 |
+  [ o5 f16 g16 f16 e-16 ]4 | [ o5 g16 a16 g16 f16 ]4 | [ o5 a16 b-16 a16 g16 ]4 | [ o5 a16 b-16 a16 g16 ]4 |
+  [ o5 g16 a16 g16 f16 ]4 | [ o5 f16 g16 f16 e-16 ]4 | [ o5 e16 f16 e16 d16 ]4 | [ o5 e16 f16 e16 d16 ]4 |
+
+track oboe oboe vol=0.4 pan=-0.28 rev=0.28
+  r1 | r1 |
+  L o4 a2 o5 c2 | o4 g2 e2 | o4 f2 a2 | o4 f2 d2 |
+  o4 f2 a2 | o4 a2 e2 | o4 a2 f2 | o4 e2 a2 |
+  o4 d2 f2 | o4 g2 e2 | o5 c2 o4 a2 | o4 a2 f2 |
+  o4 d2 g2 | o4 d2 f2 | o4 e2 c+2 | o4 c+2 e2 |
+
+track strings strings unless=lowhp vol=0.3 pan=-0.1 rev=0.35
+  o4 (d f a)1 | o4 (c+ e a)1 |
+  L o4 (c f a)1 | o4 (c e g)1 | o4 (d f a)1 | o4 (d f b-)1 |
+  o4 (c f a)1 | o4 (c e a)1 | o4 (d f a)1 | o4 (c+ e a)1 |
+  o4 (d f b-)1 | o4 (c e g)1 | o4 (c f a)1 | o4 (d f a)1 |
+  o4 (d g b-)1 | o4 (d f b-)1 | o4 (c+ e a)1 | o4 (c+ e a)1 |
+
+track bass bass vol=0.64 rev=0.05
+  o3 d1 | o3 a1 |
+  L o3 f4. f8 r8 f8 c4 | o3 c4. c8 r8 c8 g4 | o3 d4. d8 r8 d8 a4 | o3 b-4. b-8 r8 b-8 f4 |
+  o3 f4. f8 r8 f8 c4 | o3 a4. a8 r8 a8 e4 | o3 d4. d8 r8 d8 a4 | o3 a4. a8 r8 a8 e4 |
+  o3 b-4. b-8 r8 b-8 f4 | o3 c4. c8 r8 c8 g4 | o3 f4. f8 r8 f8 c4 | o3 d4. d8 r8 d8 a4 |
+  o3 g4. g8 r8 g8 d4 | o3 b-4. b-8 r8 b-8 f4 | o3 a4. a8 r8 a8 e4 | o3 a4. a8 r8 a8 e4 |
+
+track drums kit vol=0.46 rev=0.14
+  r1 | b8 r8 s8 b8 t16 t16 m16 m16 f16 f16 (s c)8 |
+  L v100 [ (b c)8 r8 s8 b8 r8 b8 s8 s8 | b8 r8 s8 b8 r8 b8 s8 s8 | b8 r8 s8 b8 r8 b8 s8 s8 | b8 r8 s8 b8 t16 t16 m16 m16 f16 f16 s16 s16 | ]4
+
+track hats kit vol=0.34 pan=0.15 rev=0.1
+  r1 | r1 | L [ [ v55 h16 v35 h16 h16 h16 ]4 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | ]16

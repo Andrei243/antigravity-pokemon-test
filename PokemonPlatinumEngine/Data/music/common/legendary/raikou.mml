@@ -1,0 +1,47 @@
+# Battle against Raikou (the legendary beast of thunder): a fierce pulse lead races through A minor in runs of
+# sixteenths over brass and strings, the beasts' gallop in bass and kick. Original composition for this game.
+title Battle! Raikou
+tempo 188
+meter 4/4
+lowhptempo 1.06
+reverb 0.22
+
+track lead pulse lowhp=sawlead vol=0.84 pan=0 rev=0.2
+  r1 | o5 e8 r8 e8 r8 g+8 b8 o6 d8 e8 |
+  L o5 e8 a16 b16 o6 c8 o5 b16 a16 e8 a8 o6 c8 e8 | o6 f4. e8 c8 o5 a8 f8 a8 | o5 g8 b16 o6 c16 d8 o5 b8 g8 d8 g8 b8 | o5 g+4 b4 o6 e4. d8 |
+  o6 c8 o5 b16 a16 e8 a8 o6 c8 d16 e16 c8 o5 a8 | o6 e4 d8 c8 o5 g4 e4 | o5 f8 a16 b16 o6 d8 c8 o5 a8 f8 d8 f8 | o5 e8 g+8 b8 o6 d8 e4 r4 |
+  o6 c8 o5 a16 f16 c8 f8 a8 o6 c8 f4 | o6 d4. c8 o5 b8 a8 g8 b8 | o5 a8 o6 c8 e8 a8 g8 e8 c8 o5 a8 | o5 g4 o6 c4 e4 g4 |
+  o6 f8 e16 d16 a8 f8 d4 o5 a4 | o5 c8 f8 a8 o6 c8 f8 e8 c8 o5 a8 | o5 b4 g+8 b8 o6 e4 d4 | o5 b8 o6 c8 o5 b8 a8 g+4 r4 |
+
+track brass brass vol=0.45 pan=-0.25 rev=0.22
+  r1 | o4 (e g+ b)8 r8 (e g+ b)8 r8 (e g+ b)4 r4 |
+  L o4 a2 e2 | o4 a2 f2 | o4 g2 b2 | o4 g+2 e2 |
+  o4 a2 e2 | o4 g2 e2 | o4 f2 a2 | o4 g+2 b2 |
+  o4 a2 f2 | o4 b2 g2 | o4 a2 e2 | o4 g2 e2 |
+  o4 f2 d2 | o4 a2 f2 | o4 g+2 e2 | o4 g+2 b2 |
+
+track strings strings unless=lowhp vol=0.36 pan=0.3 rev=0.3
+  r1 | o4 (e g+ b)1 |
+  L o4 (c e a)1 | (c f a)1 | (d g b)1 | (e g+ b)1 |
+  o4 (c e a)1 | (c e g)1 | (d f a)1 | (e g+ b)1 |
+  o4 (c f a)1 | (d g b)1 | (c e a)1 | (c e g)1 |
+  o4 (d f a)1 | (c f a)1 | (e g+ b)1 | (e g+ b)1 |
+
+track bass synthbass vol=0.86 rev=0.04
+  [ o3 a8 a16 a16 ]4 | [ o3 e8 e16 e16 ]4 |
+  L [ o3 a8 a16 a16 ]4 | [ o3 f8 f16 f16 ]4 | [ o3 g8 g16 g16 ]4 | [ o3 e8 e16 e16 ]4 |
+  [ o3 a8 a16 a16 ]4 | [ o3 c8 c16 c16 ]4 | [ o3 d8 d16 d16 ]4 | [ o3 e8 e16 e16 ]4 |
+  [ o3 f8 f16 f16 ]4 | [ o3 g8 g16 g16 ]4 | [ o3 a8 a16 a16 ]4 | [ o3 c8 c16 c16 ]4 |
+  [ o3 d8 d16 d16 ]4 | [ o3 f8 f16 f16 ]4 | [ o3 e8 e16 e16 ]4 | [ o3 e8 e16 e16 ]4 |
+
+track drums kit vol=0.56 rev=0.1
+  v100 b8 b16 b16 b8 b16 b16 b8 b16 b16 b8 b16 b16 | (b c)8 r8 (b c)8 r8 s16 s16 s16 s16 t16 m16 f16 f16 |
+  L (b c)8 b16 b16 s8 b8 b8 b16 b16 s8 s8 | [ b8 b16 b16 s8 b8 b8 b16 b16 s8 s8 | ]6 b8 b16 b16 s8 b8 s16 s16 s16 s16 s8 s8 |
+  (b c)8 b16 b16 s8 b8 b8 b16 b16 s8 s8 | [ b8 b16 b16 s8 b8 b8 b16 b16 s8 s8 | ]6 b8 b16 b16 s8 b8 t16 t16 m16 m16 f8 f8 |
+
+track hats kit vol=0.46 pan=0.15 rev=0.08
+  r1 | r1 | L [ v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v50 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=-0.1 rev=0.06
+  v110 r1 | r1 | L [ o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]16

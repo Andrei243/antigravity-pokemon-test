@@ -1,0 +1,47 @@
+# Battle against Munkidori (the Retainer Pokémon, the toxic monkey of the Loyal Three): the Loyal Three's cocky
+# long-short swing and strutting bass, slipped through by a quick clarinet and a sly pulse in A minor.
+# Original composition for this game.
+title Battle! Munkidori
+tempo 176
+meter 4/4
+lowhptempo 1.07
+reverb 0.22
+
+track lead clarinet lowhp=sawlead vol=0.92 pan=0 rev=0.22
+  o5 e8. d16 c8. o4 b16 a8. g+16 a4 | o4 b8. o5 c16 d8. e16 g+4 r4 |
+  L o5 a8. e16 c8. e16 a8. g16 e4 | o5 d8. c16 o4 a8. g16 a4 r4 | o5 c8. d16 f8. a16 g4 f4 | o5 e8. d16 o4 b8. g+16 e4 g+4 |
+  o5 a8. g16 f8. e16 d8. f16 a4 | o5 e8. c16 o4 a8. o5 c16 e4 g4 | o5 a8. g16 f8. c16 d4 c4 | o4 b8. o5 c+16 d8. e16 g+4 e4 |
+  o5 a8. b16 o6 c8. o5 b16 a4 e4 | o5 d8. e16 g8. f16 d4 o4 b4 | o5 c8. a16 g8. f16 c4 a4 | o5 g+8. f+16 e8. d16 o4 b4 g+4 |
+  o5 d8. f16 a8. o6 c16 d4 c4 | o5 e8. g16 a8. g16 e4 c4 | o5 c8. d16 f8. g16 a4 o6 c4 | o5 e4 g+4 b4 o6 d4 |
+
+track pulse pulse vol=0.42 pan=-0.3 rev=0.16
+  r1 | r1 |
+  L o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. a16 r8. o5 c16 o4 r8. a16 r8. o5 c16 | o4 r8. g+16 r8. b16 r8. g+16 r8. b16 |
+  o4 r8. f16 r8. a16 r8. f16 r8. a16 | o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. a16 r8. o5 c16 o4 r8. a16 r8. o5 c16 | o4 r8. g+16 r8. b16 r8. g+16 r8. b16 |
+  o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. g16 r8. b16 r8. g16 r8. b16 | o4 r8. a16 r8. o5 c16 o4 r8. a16 r8. o5 c16 | o4 r8. g+16 r8. b16 r8. g+16 r8. b16 |
+  o4 r8. f16 r8. a16 r8. f16 r8. a16 | o4 r8. c16 r8. e16 r8. c16 r8. e16 | o4 r8. a16 r8. o5 c16 o4 r8. a16 r8. o5 c16 | o4 r8. g+16 r8. b16 r8. g+16 r8. b16 |
+
+track strings strings unless=lowhp vol=0.3 pan=0.3 rev=0.32
+  r1 | r1 |
+  L o4 (a >c e)1 | o4 (a >c e)1 | o4 (a >c f)1 | o4 (g+ b >e)1 |
+  o4 (a >d f)1 | o4 (a >c e)1 | o4 (a >c f)1 | o4 (g+ b >e)1 |
+  o4 (a >c e)1 | o4 (g b >d)1 | o4 (a >c f)1 | o4 (g+ b >e)1 |
+  o4 (a >d f)1 | o4 (a >c e)1 | o4 (a >c f)1 | o4 (g+ b >e)1 |
+
+track bass bass vol=0.84 rev=0.05
+  o2 a8. a16 o3 e8. o2 a16 o3 a4 r4 | o2 e8. e16 b8. e16 o3 e4 r4 |
+  L o2 a8. a16 o3 e8. o2 a16 o3 a8. g16 e8. o2 a16 | o2 a8. a16 o3 e8. o2 a16 o3 a8. g16 e8. o2 a16 | o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o2 e8. e16 b8. e16 o3 e8. d16 o2 b8. e16 |
+  o3 d8. d16 a8. d16 o4 d8. c16 o3 a8. d16 | o2 a8. a16 o3 e8. o2 a16 o3 a8. g16 e8. o2 a16 | o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o2 e8. e16 b8. e16 o3 e8. d16 o2 b8. e16 |
+  o2 a8. a16 o3 e8. o2 a16 o3 a8. g16 e8. o2 a16 | o2 g8. g16 o3 d8. o2 g16 o3 g8. f16 d8. o2 g16 | o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o2 e8. e16 b8. e16 o3 e8. d16 o2 b8. e16 |
+  o3 d8. d16 a8. d16 o4 d8. c16 o3 a8. d16 | o2 a8. a16 o3 e8. o2 a16 o3 a8. g16 e8. o2 a16 | o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o2 e8. e16 b8. e16 o3 e8. d16 o2 b8. e16 |
+
+track drums kit vol=0.54 rev=0.12
+  v100 b8. b16 s8. b16 b8. b16 s8. b16 | b8. b16 s8. b16 s16 s16 t16 t16 m16 m16 f16 f16 |
+  L [ (b c)8. b16 s8. r16 r8. b16 s8. s16 | [ b8. b16 s8. r16 r8. b16 s8. s16 | ]6 b8. b16 s8. r16 t16 t16 m16 m16 f16 f16 s16 s16 | ]2
+
+track shaker kit vol=0.42 pan=0.2 rev=0.1
+  r1 | r1 | L [ v66 k8. v40 k16 v66 k8. v40 k16 v66 k8. v40 k16 v66 k8. v40 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.54 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]16

@@ -550,6 +550,50 @@ public class MusicTests
     }
 
     [Fact]
+    public void TestEveryLegendaryAndMythicalHasABattleThemeOfItsOwn()
+    {
+        var grand = PokemonDatabase.GetAll().Where(s => s.Legendary || s.Mythical).OrderBy(s => s.DexNumber).ToList();
+        Assert.True(grand.Count >= 94);
+        var themes = new HashSet<string>();
+        foreach (var species in grand)
+        {
+            string id = MusicDirector.WildBattleTheme(species, RegionDatabase.Sinnoh, MusicLibrary.Exists)!;
+            Assert.Equal($"common/legendary/{MusicDirector.LegendaryKey(species.Name)}", id);
+            Assert.True(themes.Add(id), $"{species.Name} shares {id}");
+            var song = MusicLibrary.Get(id)!;
+            Assert.StartsWith("Battle!", song.Title);
+            Assert.True(song.Loops && song.LoopDuration() >= 18, $"{id} loops after {song.LoopDuration():0.0} s");
+            // A battle theme: it turns agitated while the player's Pokémon is in the red
+            Assert.True(song.LowHpTempo > 1.0, $"{id} plays no faster in the red");
+            Assert.Contains(song.Tracks, t => t.When == TrackWhen.LowHp);
+            Assert.Contains(song.Tracks, t => t.LowHpInstrument != null);
+        }
+        // Nothing else is in the folder: every theme there belongs to a species
+        var keys = grand.Select(s => MusicDirector.LegendaryKey(s.Name)).ToHashSet();
+        Assert.All(MusicLibrary.Ids.Where(i => i.Contains("/legendary/")), i => Assert.Contains(i[(i.LastIndexOf('/') + 1)..], keys));
+    }
+
+    [Fact]
+    public void TestAWildLegendaryBringsItsOwnTheme()
+    {
+        var dialga = PokemonDatabase.Get("Dialga")!;
+        Assert.Equal(("ho_oh", "type_null", "tapu_koko", "wo_chien"),
+            (MusicDirector.LegendaryKey("Ho-Oh"), MusicDirector.LegendaryKey("Type: Null"), MusicDirector.LegendaryKey("Tapu Koko"), MusicDirector.LegendaryKey("Wo-Chien")));
+        Assert.Equal("common/legendary/dialga", MusicDirector.WildBattleTheme(dialga, RegionDatabase.Sinnoh, MusicLibrary.Exists));
+        Assert.Equal("common/legendary/mew", MusicDirector.WildBattleTheme(PokemonDatabase.Get("Mew")!, RegionDatabase.Kanto, MusicLibrary.Exists));
+        // Anyone else meets the wild battle theme (the region's own where it has one)
+        Assert.Equal("common/battle_wild", MusicDirector.WildBattleTheme(PokemonDatabase.Get("Bidoof")!, RegionDatabase.Sinnoh, MusicLibrary.Exists));
+        Assert.Equal("kanto/battle_wild", MusicDirector.WildBattleTheme(PokemonDatabase.Get("Pidgey")!, RegionDatabase.Kanto, MusicLibrary.Exists));
+        // A region's own version first; without any, the legendary battle theme, then the wild one
+        Assert.Equal("sinnoh/legendary/dialga", MusicDirector.WildBattleTheme(dialga, RegionDatabase.Sinnoh,
+            id => id is "sinnoh/legendary/dialga" or "common/legendary/dialga"));
+        Assert.Equal("common/battle_legendary", MusicDirector.WildBattleTheme(dialga, null, id => id is "common/battle_legendary" or "common/battle_wild"));
+        Assert.Equal("common/battle_wild", MusicDirector.WildBattleTheme(dialga, null, id => id == "common/battle_wild"));
+        // After it, the wild victory, as in the original
+        Assert.Equal(MusicRole.VictoryWild, MusicDirector.VictoryRole(MusicDirector.BattleRole(Array.Empty<string>())));
+    }
+
+    [Fact]
     public void TestTheRivalsThemeCutsInWhileHeTalks()
     {
         var library = ScriptLibrary.Default;

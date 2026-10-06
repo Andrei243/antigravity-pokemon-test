@@ -1,0 +1,47 @@
+# Battle against Zapdos (the legendary bird of thunder): a jagged square lead leaps through E minor over crackling
+# sixteenth-note pulses, the dotted wingbeat driving bass and kick. Original composition for this game.
+title Battle! Zapdos
+tempo 184
+meter 4/4
+lowhptempo 1.07
+reverb 0.24
+
+track lead square lowhp=sawlead vol=0.76 pan=0 rev=0.22
+  r1 | o4 b8 r8 b8 r8 o5 d+4 f+4 |
+  L o4 b8 o5 e8 r8 g8 b4 a8 g8 | o5 g8. e16 r8 c8 e4 g4 | o5 a8 e8 r8 a8 o6 c4. o5 a8 | o5 b4 f+8 d+8 b8 r8 f+4 |
+  o4 b8 o5 e8 r8 g8 b8 o6 e8 d8 o5 b8 | o6 c4. o5 a8 f4 c4 | o5 d8 f+8 a8 o6 d8 r8 o5 a8 f+4 | o5 f+2 d+4 o4 b4 |
+  o4 g8 o5 c8 r8 e8 g4 e8 c8 | o5 a8. f+16 r8 d8 a4 o6 d4 | o6 e4 d8 o5 b8 r8 g8 e4 | o5 d8 g8 b8 o6 d8 r8 o5 b8 g4 |
+  o5 e8 a8 r8 o6 c8 e4 d8 c8 | o6 c8. o5 a16 r8 f8 o6 c4 o5 a4 | o5 g8 e8 c8 e8 g8 o6 c8 e4 | o5 b4 f+8 b8 o6 d+4 r4 |
+
+track crackle pulse vol=0.38 pan=0.3 rev=0.15
+  [ o5 v100 e16 v60 b16 g16 b16 ]4 | [ o5 v100 b16 v60 f+16 d+16 f+16 ]4 |
+  L [ o5 v100 e16 v60 b16 g16 b16 ]4 | [ o5 v100 c16 v60 g16 e16 g16 ]4 | [ o5 v100 a16 v60 e16 c16 e16 ]4 | [ o5 v100 b16 v60 f+16 d+16 f+16 ]4 |
+  [ o5 v100 e16 v60 b16 g16 b16 ]4 | [ o5 v100 a16 v60 f16 c16 f16 ]4 | [ o5 v100 d16 v60 a16 f+16 a16 ]4 | [ o5 v100 b16 v60 f+16 d+16 f+16 ]4 |
+  [ o5 v100 c16 v60 g16 e16 g16 ]4 | [ o5 v100 d16 v60 a16 f+16 a16 ]4 | [ o5 v100 e16 v60 b16 g16 b16 ]4 | [ o5 v100 g16 v60 d16 b16 d16 ]4 |
+  [ o5 v100 a16 v60 e16 c16 e16 ]4 | [ o5 v100 a16 v60 f16 c16 f16 ]4 | [ o5 v100 c16 v60 g16 e16 g16 ]4 | [ o5 v100 b16 v60 f+16 d+16 f+16 ]4 |
+
+track pad pad unless=lowhp vol=0.38 pan=-0.3 rev=0.35
+  o4 (e g b)1 | (d+ f+ b)1 |
+  L o4 (e g b)1 | (e g >c)1 | (e a >c)1 | (d+ f+ b)1 |
+  o4 (e g b)1 | (f a >c)1 | (d f+ a)1 | (d+ f+ b)1 |
+  o4 (e g >c)1 | (d f+ a)1 | (e g b)1 | (d g b)1 |
+  o4 (e a >c)1 | (f a >c)1 | (e g >c)1 | (d+ f+ b)1 |
+
+track bass synthbass vol=0.86 rev=0.04
+  [ o3 e8. e16 ]4 | [ o3 b8. b16 ]4 |
+  L [ o3 e8. e16 ]4 | [ o3 c8. c16 ]4 | [ o3 a8. a16 ]4 | [ o3 b8. b16 ]4 |
+  [ o3 e8. e16 ]4 | [ o3 f8. f16 ]4 | [ o3 d8. d16 ]4 | [ o3 b8. b16 ]4 |
+  [ o3 c8. c16 ]4 | [ o3 d8. d16 ]4 | [ o3 e8. e16 ]4 | [ o3 g8. g16 ]4 |
+  [ o3 a8. a16 ]4 | [ o3 f8. f16 ]4 | [ o3 c8. c16 ]4 | [ o3 b8. b16 ]4 |
+
+track drums kit vol=0.58 rev=0.1
+  v100 b8. b16 r2. | b8. b16 b8. b16 t16 t16 m16 m16 f16 f16 f16 f16 |
+  L (b c)8. b16 s8. b16 b8. b16 s8 s16 s16 | [ b8. b16 s8. b16 b8. b16 s8 s16 s16 | ]6 b8. b16 s8. b16 t16 t16 m16 m16 f8. f16 |
+  (b c)8. b16 s8. b16 b8. b16 s8 s16 s16 | [ b8. b16 s8. b16 b8. b16 s8 s16 s16 | ]6 (b c)8. b16 s8. b16 s16 s16 s16 s16 s16 s16 s16 s16 |
+
+track hats kit vol=0.46 pan=0.15 rev=0.08
+  r1 | r1 | L v65 [ h16 v40 h16 h16 v65 h16 v40 h16 h16 v65 h16 v40 h16 h16 v65 h16 v40 h16 h16 v65 o8 v40 h16 h16 v65 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=-0.1 rev=0.06
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

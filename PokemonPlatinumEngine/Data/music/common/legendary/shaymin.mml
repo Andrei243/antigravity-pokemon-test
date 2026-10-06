@@ -1,0 +1,55 @@
+# Battle against Shaymin (the Gratitude Pokémon of the flower fields): a springy F-major accordion tune in dotted
+# skips, a flute singing above it and a tuba and guitar keeping a bouncing two-step. Original composition for this
+# game.
+title Battle! Shaymin
+tempo 168
+meter 4/4
+lowhptempo 1.07
+reverb 0.24
+
+track lead accordion lowhp=sawlead vol=0.82 pan=0 rev=0.22
+  r1 | o5 g8 r8 g8 r8 o6 c8 r8 e4 |
+  L o5 c8. f16 a8. o6 c16 o5 a4 f4 | o5 b-8. o6 d16 f8. d16 c4 o5 b-4 | o6 c8. o5 g16 e8. g16 o6 c4 e4 | o6 f4. d8 c2 |
+  o5 a8. o6 d16 f8. d16 a4 g4 | o6 f8. d16 o5 b-8. o6 d16 f4 d4 | o6 d8. o5 b16 g8. b16 o6 d4 g4 | o6 e4 d8 c8 o5 g2 |
+  o5 f8 b-8 o6 d8 f8 g4 f4 | o6 e8 g8 e8 c8 d4 c4 | o5 a8 o6 c8 e8 a8 g4 e4 | o6 f4. e8 d4 o5 a4 |
+  o5 b-8. o6 d16 f8. a16 b-4 f4 | o6 g8. e16 c8. e16 g4 e4 | o6 a4 g8 f8 c4 f4 | o6 e4. d8 c4 o5 g4 |
+
+track flute flute vol=0.5 pan=-0.25 rev=0.3
+  r1 | o5 e2 g2 |
+  L o5 f2 a2 | o5 f2 d2 | o5 e2 g2 | o5 a2 f2 |
+  o5 f2 d2 | o5 d2 f2 | o5 g2 b2 | o5 g2 e2 |
+  o5 d2 f2 | o5 g2 e2 | o5 e2 c2 | o5 d2 f2 |
+  o5 d2 f2 | o5 e2 c2 | o5 f2 a2 | o5 g2 e2 |
+
+track guitar guitar vol=0.42 pan=0.3 rev=0.15
+  [ r8 o4 (f b- >d)8 ]4 | [ r8 o4 (e g >c)8 ]4 |
+  L [ r8 o4 (f a >c)8 ]4 | [ r8 o4 (f b- >d)8 ]4 | [ r8 o4 (e g >c)8 ]4 | [ r8 o4 (f a >c)8 ]4 |
+  [ r8 o4 (f a >d)8 ]4 | [ r8 o4 (f b- >d)8 ]4 | [ r8 o4 (d g b)8 ]4 | [ r8 o4 (e g >c)8 ]4 |
+  [ r8 o4 (f b- >d)8 ]4 | [ r8 o4 (e g >c)8 ]4 | [ r8 o4 (e a >c)8 ]4 | [ r8 o4 (f a >d)8 ]4 |
+  [ r8 o4 (f b- >d)8 ]4 | [ r8 o4 (e g >c)8 ]4 | [ r8 o4 (f a >c)8 ]4 | [ r8 o4 (e g >c)8 ]4 |
+
+track pad strings unless=lowhp vol=0.34 pan=-0.1 rev=0.4
+  o4 (d f b-)1 | (e g >c)1 |
+  L o4 (f a >c)1 | (d f b-)1 | (e g >c)1 | (f a >c)1 |
+  (d f a)1 | (d f b-)1 | (d g b)1 | (e g >c)1 |
+  (d f b-)1 | (e g >c)1 | (e a >c)1 | (d f a)1 |
+  (d f b-)1 | (e g >c)1 | (f a >c)1 | (e g >c)1 |
+
+track bass tuba vol=0.8 rev=0.08
+  o3 b-4 r4 f4 r4 | o3 c4 r4 g4 g8 a8 |
+  L o3 f4 r4 c4 r4 | o3 b-4 r4 f4 r4 | o3 c4 r4 g4 r4 | o3 f4 r4 c4 e8 f8 |
+  o3 d4 r4 a4 r4 | o3 b-4 r4 f4 r4 | o3 g4 r4 d4 r4 | o3 c4 r4 g4 g8 a8 |
+  o3 b-4 r4 f4 r4 | o3 c4 r4 g4 r4 | o3 a4 r4 e4 r4 | o3 d4 r4 a4 r4 |
+  o3 b-4 r4 f4 r4 | o3 c4 r4 g4 r4 | o3 f4 r4 c4 r4 | o3 c4 r4 g4 e8 d8 |
+
+track drums kit vol=0.5 rev=0.12
+  v90 b8 r8 s8 r8 b8 r8 s8 r8 | b8 r8 s8 r8 s16 s16 s16 s16 t16 m16 f16 f16 |
+  L v100 [ [ b8 s8 b8 s8 b8 s8 b8 s8 | ]3 b8 s8 b8 s8 s16 s16 x8 x8 x8 | ]4
+
+track hats kit vol=0.4 pan=0.2 rev=0.1
+  r1 | r1 |
+  L [ [ v55 h16 v30 k16 v45 h16 v30 k16 ]4 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

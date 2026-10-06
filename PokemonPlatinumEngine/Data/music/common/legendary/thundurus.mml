@@ -1,0 +1,55 @@
+# Battle against Thundurus (the bolt strike of the Forces of Nature): the Forces' turning sixteenths crackle on a
+# pulse while a saw lead strikes off the beat in E minor over a storm of sixteenth bass and claps. Original
+# composition for this game.
+title Battle! Thundurus
+tempo 188
+meter 4/4
+lowhptempo 1.08
+reverb 0.22
+
+track lead sawlead lowhp=square vol=0.72 pan=0 rev=0.2
+  o4 e1 | o4 b1 |
+  L o5 e8 e8 r8 b4 a8 g4 | o5 e8 g8 r8 o6 c4 o5 b8 g4 | o5 a4. e8 r8 a8 o6 c8 d8 | o6 d+4 o5 b8 f+8 r8 b4 a8 |
+  o5 b4. o6 e8 r8 e8 d8 o5 b8 | o6 d8 o5 a8 r8 f+4 a8 d4 | o5 e4 g8 o6 c8 r8 e4 d8 | o6 d+2 o5 b4 f+4 |
+  o6 c8 c8 r8 e4 d8 c4 | o5 b4 g8 e8 r8 g4 b8 | o6 c4. o5 g8 r8 g8 a8 b8 | o5 a4 o6 d8 o5 a8 r8 f+4 a8 |
+  o5 g4. e8 r8 g8 o6 c8 e8 | o6 e4 d8 c8 r8 o5 a4 o6 c8 | o5 b8 b8 r8 o6 e4 d8 o5 b4 | o5 f+4 a4 b4 o6 d+4 |
+
+track counter square vol=0.34 pan=-0.25 rev=0.22
+  r1 | r1 |
+  L o4 g2 b2 | o4 g2 e2 | o4 e2 a2 | o4 f+2 d+2 |
+  o4 g2 e2 | o4 f+2 a2 | o4 g2 e2 | o4 b2 f+2 |
+  o4 a2 e2 | o4 g2 b2 | o4 e2 g2 | o4 f+2 d2 |
+  o4 e2 g2 | o5 c2 o4 a2 | o4 g2 e2 | o4 d+2 f+2 |
+
+# The Forces' whirling figure: a turn of four sixteenths round a note of the chord
+track whirl pulse vol=0.3 pan=0.3 rev=0.2
+  r1 | [ o5 f+16 g16 f+16 e16 ]4 |
+  L [ o5 b16 o6 c16 o5 b16 a16 ]4 | [ o5 g16 a16 g16 f+16 ]4 | [ o5 e16 f+16 e16 d16 ]4 | [ o5 f+16 g16 f+16 e16 ]4 |
+  [ o5 b16 o6 c16 o5 b16 a16 ]4 | [ o5 a16 b16 a16 g16 ]4 | [ o5 g16 a16 g16 f+16 ]4 | [ o5 f+16 g16 f+16 e16 ]4 |
+  [ o5 e16 f+16 e16 d16 ]4 | [ o5 b16 o6 c16 o5 b16 a16 ]4 | [ o5 g16 a16 g16 f+16 ]4 | [ o5 a16 b16 a16 g16 ]4 |
+  [ o5 g16 a16 g16 f+16 ]4 | [ o5 e16 f+16 e16 d16 ]4 | [ o5 b16 o6 c16 o5 b16 a16 ]4 | [ o5 f+16 g16 f+16 e16 ]4 |
+
+track pad pad unless=lowhp vol=0.3 pan=-0.1 rev=0.4
+  o4 (e g b)1 | r1 |
+  L o4 (e g b)1 | (c e g)1 | (c e a)1 | (d+ f+ b)1 |
+  o4 (e g b)1 | (d f+ a)1 | (c e g)1 | (d+ f+ b)1 |
+  o4 (c e a)1 | (e g b)1 | (c e g)1 | (d f+ a)1 |
+  o4 (c e g)1 | (c e a)1 | (e g b)1 | (d+ f+ b)1 |
+
+track bass synthbass vol=0.74 rev=0.04
+  o3 e1 | o3 b1 |
+  L [ o3 e16 e16 o4 e16 o3 e16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 a16 a16 o4 a16 o3 a16 ]4 | [ o3 b16 b16 o4 b16 o3 b16 ]4 |
+  [ o3 e16 e16 o4 e16 o3 e16 ]4 | [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 b16 b16 o4 b16 o3 b16 ]4 |
+  [ o3 a16 a16 o4 a16 o3 a16 ]4 | [ o3 e16 e16 o4 e16 o3 e16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 d16 d16 o4 d16 o3 d16 ]4 |
+  [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 a16 a16 o4 a16 o3 a16 ]4 | [ o3 e16 e16 o4 e16 o3 e16 ]4 | [ o3 b16 b16 o4 b16 o3 b16 ]4 |
+
+track drums kit vol=0.46 rev=0.14
+  v110 (b c)2 r2 | v80 [ s16 ]8 v100 f16 f16 f16 f16 m16 m16 t16 t16 |
+  L v100 [ (b c)8 b8 s8 b16 b16 r8 b8 (s x)8 r8 | [ b8 b8 s8 b16 b16 r8 b8 (s x)8 r8 | ]6 b8 b8 s8 b16 b16 s16 s16 s16 s16 x16 x16 x16 x16 | ]2
+
+track hats kit vol=0.38 pan=0.15 rev=0.1
+  r1 | r1 | L [ v65 h16 v40 h16 v65 o16 v40 h16 v65 h16 v40 h16 v65 o16 v40 h16 v65 h16 v40 h16 v65 o16 v40 h16 v65 h16 v40 h16 v65 o16 v40 h16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

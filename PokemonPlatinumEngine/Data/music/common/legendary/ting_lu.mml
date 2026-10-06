@@ -1,0 +1,53 @@
+# Battle against Ting-Lu (the Ruinous Pokémon of the vessel): the Treasures of Ruin's four-note creep, down and back,
+# ground out by tuba and timpani under a heavy horn in C minor, half time. Original composition for this game.
+title Battle! Ting-Lu
+tempo 144
+meter 4/4
+lowhptempo 1.09
+reverb 0.3
+
+track lead horn lowhp=sawlead vol=0.86 pan=0 rev=0.28
+  r1 | o5 c4 o4 b4 a-4 o5 c4 |
+  L o5 c2. e-8 d8 | o4 b2. o5 d8 f8 | o4 a-2. b-8 o5 c8 | o5 c2 o4 g4 e-4 |
+  o4 f4. a-8 o5 c4 e-4 | o5 e-4. d8 c2 | o5 d-2 o4 b-4 a-4 | o4 g4 b4 o5 f4 d4 |
+  o5 g2. f8 e-8 | o5 e-2. f8 e-8 | o5 c4. d8 e-4 f4 | o4 g2 b4 o5 d4 |
+  o5 c4 e-4 a-4 g-4 | o5 f2 e-4 d-4 | o5 c4 o4 a-4 f4 a-4 | o4 b2 o5 f4 d4 |
+
+track counter strings vol=0.48 pan=-0.25 rev=0.3
+  r1 | r1 |
+  L o4 g1 | o4 g1 | o4 e-1 | o4 e-2 g2 |
+  o4 a-1 | o4 g1 | o4 f1 | o4 b1 |
+  o4 e-1 | o4 c1 | o4 a-1 | o4 g2 b2 |
+  o4 e-1 | o4 f1 | o4 a-1 | o4 g2 b2 |
+
+track choir choir unless=lowhp vol=0.32 pan=0.3 rev=0.45
+  r1 | r1 |
+  L o4 (c e- g)1 | o4 (d g b)1 | o4 (c e- a-)1 | o4 (c e- g)1 |
+  o4 (c f a-)1 | o4 (c e- g)1 | o4 (d- f a-)1 | o4 (d g b)1 |
+  o4 (c e- g)1 | o4 (c e- a-)1 | o4 (c f a-)1 | o4 (d g b)1 |
+  o4 (c e- a-)1 | o4 (d- f a-)1 | o4 (c f a-)1 | o4 (d g b)1 |
+
+track bass tuba vol=0.88 rev=0.1
+  o3 c1 | o3 c2 o2 g2 |
+  L o3 c2. c4 | o2 b2. b4 | o2 a-2. a-4 | o3 c2 o2 g2 |
+  o2 f2. f4 | o3 c2. c4 | o3 d-2. d-4 | o2 g2. g4 |
+  o3 c2. c4 | o2 a-2. a-4 | o2 f2. f4 | o2 g2. g4 |
+  o2 a-2. a-4 | o3 d-2. d-4 | o2 f2. f4 | o2 g2 g4 g4 |
+
+track timpani timpani vol=0.46 rev=0.25
+  o3 [ c16 ]16 | o3 c4 r4 o2 g2 |
+  L o3 c4 r4 o2 g4 r4 | o2 g4 r4 o3 d4 r4 | o2 a-4 r4 o3 e-4 r4 | o3 c4 r4 o2 g4 r4 |
+  o2 f4 r4 o3 c4 r4 | o3 c4 r4 o2 g4 r4 | o3 d-4 r4 o2 a-4 r4 | o2 g4 r4 o3 d4 r4 |
+  o3 c4 r4 o2 g4 r4 | o2 a-4 r4 o3 e-4 r4 | o2 f4 r4 o3 c4 r4 | o2 g4 r4 o3 d4 r4 |
+  o2 a-4 r4 o3 e-4 r4 | o3 d-4 r4 o2 a-4 r4 | o2 f4 r4 o3 c4 r4 | o2 g4 r4 [ g16 ]4 g4 |
+
+track drums kit vol=0.56 rev=0.2
+  v100 (b c)2 r2 | b2 s4 s8 s8 |
+  L [ (b c)4 r4 s4 r8 b8 | [ b4 r4 s4 r8 b8 | ]6 b4 r4 s8 s8 f8 f8 | ]2
+
+track hats kit vol=0.36 pan=0.2 rev=0.1
+  r1 | r1 | L v60 [ h8 v35 h8 v60 h8 v35 h8 v60 h8 v35 h8 v70 o8 v35 h8 v60 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.56 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 e-16 r16 e-16 r16 r4 e-16 r16 e-16 r16 r4 | ]16

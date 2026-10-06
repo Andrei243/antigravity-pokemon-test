@@ -1,0 +1,54 @@
+# Battle against Moltres (the legendary bird of fire): a proud trumpet fanfare in G minor over horns and strings, the
+# dotted wingbeat pounded out by timpani and tuba. Original composition for this game.
+title Battle! Moltres
+tempo 168
+meter 4/4
+lowhptempo 1.08
+reverb 0.3
+
+track lead trumpet lowhp=sawlead vol=0.72 pan=0 rev=0.28
+  r1 | o4 d8. d16 g8. g16 o5 d2 |
+  L o4 d4 g4. a8 b-4 | o5 b-2 g4 e-4 | o5 f4. e-8 d4 c4 | o5 d2 r8 f+8 a8 o6 c8 |
+  o5 d4 g4 b-4. a8 | o6 d4. c8 o5 b-4 f4 | o5 g4 e-8 g8 o6 c4 o5 b-8 a-8 | o5 a2 f+4 d4 |
+  o5 b-4 o6 e-4. d8 c8 o5 b-8 | o5 a4. c8 f4 a4 | o6 d4 c8 o5 b-8 f4 d4 | o5 g2 d4 g4 |
+  o4 g4 o5 c4 e-4. d8 | o5 e-4 g4 b-4 o6 e-4 | o6 d4. c8 o5 a4 f+4 | o5 f+4 a4 d2 |
+
+track horn horn vol=0.4 pan=-0.25 rev=0.32
+  r1 | o4 d2 g2 |
+  L o4 b-2 g2 | g2 b-2 | a2 f2 | f+2 a2 |
+  o4 b-2 g2 | f2 d2 | e-2 g2 | f+2 d2 |
+  o4 g2 b-2 | f2 a2 | f2 d2 | g2 b-2 |
+  o4 g2 e-2 | g2 b-2 | a2 f+2 | f+2 a2 |
+
+track strings strings unless=lowhp vol=0.34 pan=0.3 rev=0.4
+  r1 | o4 (d g b-)1 |
+  L o4 (d g b-)1 | (e- g b-)1 | (f a >c)1 | (d f+ a)1 |
+  o4 (d g b-)1 | (d f b-)1 | (e- g >c)1 | (d f+ a)1 |
+  o4 (e- g b-)1 | (f a >c)1 | (d f b-)1 | (d g b-)1 |
+  o4 (e- g >c)1 | (e- g b-)1 | (d f+ a)1 | (d f+ a)1 |
+
+track timpani timpani vol=0.46 rev=0.25
+  o3 g8. g16 g8. g16 d8. d16 g8. g16 | g8. g16 g8. g16 [ g16 ]8 |
+  L o3 g8. g16 r4 d8. d16 r4 | e-8. e-16 r4 b-8. b-16 r4 | f8. f16 r4 c8. c16 r4 | d8. d16 r4 a8. a16 r4 |
+  g8. g16 r4 d8. d16 r4 | b-8. b-16 r4 f8. f16 r4 | c8. c16 r4 g8. g16 r4 | d8. d16 r4 d8. d16 d8. d16 |
+  e-8. e-16 r4 b-8. b-16 r4 | f8. f16 r4 c8. c16 r4 | b-8. b-16 r4 f8. f16 r4 | g8. g16 r4 d8. d16 r4 |
+  c8. c16 r4 g8. g16 r4 | e-8. e-16 r4 b-8. b-16 r4 | d8. d16 r4 a8. a16 r4 | d8. d16 d8. d16 [ d16 ]8 |
+
+track bass tuba vol=0.62 rev=0.06
+  r1 | r1 |
+  L [ o3 g8. g16 ]4 | [ o3 e-8. e-16 ]4 | [ o3 f8. f16 ]4 | [ o3 d8. d16 ]4 |
+  [ o3 g8. g16 ]4 | [ o3 b-8. b-16 ]4 | [ o3 c8. c16 ]4 | [ o3 d8. d16 ]4 |
+  [ o3 e-8. e-16 ]4 | [ o3 f8. f16 ]4 | [ o3 b-8. b-16 ]4 | [ o3 g8. g16 ]4 |
+  [ o3 c8. c16 ]4 | [ o3 e-8. e-16 ]4 | [ o3 d8. d16 ]4 | [ o3 d8. d16 ]4 |
+
+track drums kit vol=0.48 rev=0.14
+  r1 | r2 v100 (b c)4 r4 |
+  L (b c)4 s8. s16 b4 s8 s16 s16 | [ b4 s8. s16 b4 s8 s16 s16 | ]6 b4 s8. s16 t16 t16 m16 m16 f16 f16 f16 f16 |
+  (b c)4 s8. s16 b4 s8 s16 s16 | [ b4 s8. s16 b4 s8 s16 s16 | ]6 b4 s8. s16 s16 s16 s16 s16 (b c)4 |
+
+track hats kit vol=0.38 pan=0.15 rev=0.1
+  r1 | r1 | L [ v62 h8 v42 h8 v62 h8 v42 h8 v62 h8 v42 h8 v62 o8 v42 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

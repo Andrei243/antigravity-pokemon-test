@@ -1,0 +1,53 @@
+# Battle against Regieleki (the electron golem): the Regis' tapped code (short, short, long) on a pulse, bare
+# parallel fifths, and a frantic F-sharp-minor square lead over a breakbeat. Original composition for this game.
+title Battle! Regieleki
+tempo 200
+meter 4/4
+lowhptempo 1.06
+reverb 0.2
+
+track lead square lowhp=sawlead vol=0.6 pan=0 rev=0.18
+  r1 | o5 c+8 e8 g+8 b8 o6 c+4 r4 |
+  L o5 c+8 f+8 a8 f+8 c+8 e8 f+8 a8 | o5 b8 a8 g+8 a8 b4 o6 c+4 | o6 d8 c+8 o5 a8 f+8 d8 f+8 a8 o6 d8 | o6 e8 d8 o5 b8 g+8 e4 g+8 b8 |
+  o5 a16 b16 o6 c+8 o5 a8 f+8 c+4 f+4 | o5 e8 f+8 a8 b8 o6 c+8 o5 b8 a8 e8 | o5 f+8 b8 o6 d8 c+8 o5 b4 f+4 | o5 g+8 f+8 e8 f+8 g+4 c+4 |
+  o5 f+16 a16 o6 d8 o5 a8 f+8 e8 f+8 a8 d8 | o5 g+8 b8 o6 e8 o5 b8 g+8 e8 b8 o6 e8 | o6 f+4 e8 c+8 o5 a8 b8 o6 c+8 e8 | o6 d4 c+8 o5 b8 a8 f+8 b4 |
+  o5 a8 b8 a8 f+8 d8 e8 f+8 a8 | o5 b8 o6 c+8 d8 c+8 o5 b8 g+8 e4 | o5 c+16 e16 g+8 o6 c+8 o5 g+8 e8 c+8 e8 g+8 | o6 c+4 o5 b8 g+8 f+8 g+8 b8 g+8 |
+
+track code pulse vol=0.4 pan=-0.25 rev=0.1
+  [ o4 f+16 f+16 o5 c+8 ]4 | [ o4 c+16 c+16 g+8 ]4 |
+  L [ o4 f+16 f+16 o5 c+8 ]4 | [ o4 f+16 f+16 o5 c+8 ]4 | [ o4 d16 d16 a8 ]4 | [ o4 e16 e16 b8 ]4 |
+  [ o4 f+16 f+16 o5 c+8 ]4 | [ o4 f+16 f+16 o5 c+8 ]4 | [ o4 b16 b16 o5 f+8 ]4 | [ o4 c+16 c+16 g+8 ]4 |
+  [ o4 d16 d16 a8 ]4 | [ o4 e16 e16 b8 ]4 | [ o4 f+16 f+16 o5 c+8 ]4 | [ o4 b16 b16 o5 f+8 ]4 |
+  [ o4 d16 d16 a8 ]4 | [ o4 e16 e16 b8 ]4 | [ o4 c+16 c+16 g+8 ]4 | [ o4 c+16 c+16 g+8 ]4 |
+
+track fifths square vol=0.3 pan=0.25 rev=0.15
+  r1 | o4 (c+ g+)4. (c+ g+)8 r4 (c+ g+)4 |
+  L o4 (f+ >c+)4. (f+ >c+)8 r4 (f+ >c+)4 | o4 (f+ >c+)4. (f+ >c+)8 r4 (f+ >c+)4 | o4 (d a)4. (d a)8 r4 (d a)4 | o4 (e b)4. (e b)8 r4 (e b)4 |
+  o4 (f+ >c+)4. (f+ >c+)8 r4 (f+ >c+)4 | o4 (f+ >c+)4. (f+ >c+)8 r4 (f+ >c+)4 | o4 (b >f+)4. (b >f+)8 r4 (b >f+)4 | o4 (c+ g+)4. (c+ g+)8 r4 (c+ g+)4 |
+  o4 (d a)4. (d a)8 r4 (d a)4 | o4 (e b)4. (e b)8 r4 (e b)4 | o4 (f+ >c+)4. (f+ >c+)8 r4 (f+ >c+)4 | o4 (b >f+)4. (b >f+)8 r4 (b >f+)4 |
+  o4 (d a)4. (d a)8 r4 (d a)4 | o4 (e b)4. (e b)8 r4 (e b)4 | o4 (c+ g+)4. (c+ g+)8 r4 (c+ g+)4 | o4 (c+ g+)4. (c+ g+)8 r4 (c+ g+)4 |
+
+track strings strings unless=lowhp vol=0.28 pan=0.35 rev=0.3
+  r1 | r1 |
+  L o3 (f+ >c+ f+)1 | o3 (f+ >c+ f+)1 | o3 (d a >d)1 | o3 (e b >e)1 |
+  o3 (f+ >c+ f+)1 | o3 (f+ >c+ f+)1 | o3 (b >f+ b)1 | o3 (c+ g+ >c+)1 |
+  o3 (d a >d)1 | o3 (e b >e)1 | o3 (f+ >c+ f+)1 | o3 (b >f+ b)1 |
+  o3 (d a >d)1 | o3 (e b >e)1 | o3 (c+ g+ >c+)1 | o3 (c+ g+ >c+)1 |
+
+track bass synthbass vol=0.6 rev=0.04
+  [ o3 f+16 f+16 o4 f+16 o3 f+16 ]4 | [ o3 c+16 c+16 o4 c+16 o3 c+16 ]4 |
+  L [ o3 f+16 f+16 o4 f+16 o3 f+16 ]4 | [ o3 f+16 f+16 o4 f+16 o3 f+16 ]4 | [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 e16 e16 o4 e16 o3 e16 ]4 |
+  [ o3 f+16 f+16 o4 f+16 o3 f+16 ]4 | [ o3 f+16 f+16 o4 f+16 o3 f+16 ]4 | [ o3 b16 b16 o4 b16 o3 b16 ]4 | [ o3 c+16 c+16 o4 c+16 o3 c+16 ]4 |
+  [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 e16 e16 o4 e16 o3 e16 ]4 | [ o3 f+16 f+16 o4 f+16 o3 f+16 ]4 | [ o3 b16 b16 o4 b16 o3 b16 ]4 |
+  [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 e16 e16 o4 e16 o3 e16 ]4 | [ o3 c+16 c+16 o4 c+16 o3 c+16 ]4 | [ o3 c+16 c+16 o4 c+16 o3 c+16 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  [ s16 ]16 | b8 s16 s16 s16 s16 b8 s16 s16 t16 t16 m16 m16 f16 f16 |
+  L v100 [ (b c)8 b16 s16 r16 b16 s8 b8 r16 b16 s8 r8 | b8 b16 s16 r16 b16 s8 b8 r16 b16 s8 r8 | b8 b16 s16 r16 b16 s8 b8 r16 b16 s8 r8 | b8 s16 s16 s16 s16 b8 s16 s16 t16 t16 m16 m16 f16 f16 | ]4
+
+track hats kit vol=0.38 pan=0.15 rev=0.08
+  r1 | r1 | L [ v70 h8 v45 h8 v60 h8 v45 h8 v70 h8 v45 h8 v60 h8 v45 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f+16 r16 f+16 r16 r4 f+16 r16 f+16 r16 r4 | ]16

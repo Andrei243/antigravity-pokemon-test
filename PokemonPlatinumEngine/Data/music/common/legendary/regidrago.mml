@@ -1,0 +1,60 @@
+# Battle against Regidrago (the dragon-orb golem): the Regis' tapped code (short, short, long) on a square under
+# bare fifths on horns, and a weighty G-minor brass theme in dotted strides. Original composition for this game.
+title Battle! Regidrago
+tempo 156
+meter 4/4
+lowhptempo 1.09
+reverb 0.3
+
+track lead brass lowhp=sawlead vol=0.7 pan=0 rev=0.26
+  o4 g4. g8 g2 | o4 d4. d8 d2 |
+  L o5 d2 o4 b-4. a8 | o4 g4. a8 b-4 o5 c4 | o5 e-2 c4. o4 b-8 | o4 a4. b-8 o5 c4 f4 |
+  o5 g2 f4. d8 | o5 d4. c8 o4 b-4 g4 | o5 c4. d8 e-4 g4 | o5 f+2 a4. f+8 |
+  o5 g2 b-4. g8 | o5 f4. e-8 d4 o4 b-4 | o5 c4. e-8 g4 f4 | o5 a2 f+4 d4 |
+  o5 b-4. a8 g4 d4 | o5 e-4. f8 g4 b-4 | o5 a4. g8 f+4 e4 | o5 d2. r4 |
+
+track horns horn vol=0.42 pan=-0.22 rev=0.28
+  o3 (g >d)1 | o3 (d a)1 |
+  L o3 (g >d)2. (g >d)4 | o3 (g >d)2. (g >d)4 | o3 (e- b-)2. (e- b-)4 | o3 (f >c)2. (f >c)4 |
+  o3 (g >d)2. (g >d)4 | o3 (g >d)2. (g >d)4 | o3 (c g)2. (c g)4 | o3 (d a)2. (d a)4 |
+  o3 (e- b-)2. (e- b-)4 | o3 (b- >f)2. (b- >f)4 | o3 (c g)2. (c g)4 | o3 (d a)2. (d a)4 |
+  o3 (g >d)2. (g >d)4 | o3 (e- b-)2. (e- b-)4 | o3 (d a)2. (d a)4 | o3 (d a)4 (d a)4 (d a)4 (d a)4 |
+
+track code square vol=0.32 pan=0.22 rev=0.12
+  [ o4 g16 g16 o5 d8 ]4 | [ o4 d16 d16 a8 ]4 |
+  L [ o4 g16 g16 o5 d8 ]4 | [ o4 g16 g16 o5 d8 ]4 | [ o4 e-16 e-16 b-8 ]4 | [ o4 f16 f16 o5 c8 ]4 |
+  [ o4 g16 g16 o5 d8 ]4 | [ o4 g16 g16 o5 d8 ]4 | [ o4 c16 c16 g8 ]4 | [ o4 d16 d16 a8 ]4 |
+  [ o4 e-16 e-16 b-8 ]4 | [ o4 b-16 b-16 o5 f8 ]4 | [ o4 c16 c16 g8 ]4 | [ o4 d16 d16 a8 ]4 |
+  [ o4 g16 g16 o5 d8 ]4 | [ o4 e-16 e-16 b-8 ]4 | [ o4 d16 d16 a8 ]4 | [ o4 d16 d16 a8 ]4 |
+
+track choir choir unless=lowhp vol=0.32 pan=0.32 rev=0.45
+  r1 | r1 |
+  L o4 (g >d)1 | o4 (g >d)1 | o4 (e- b-)1 | o4 (f >c)1 |
+  o4 (g >d)1 | o4 (g >d)1 | o4 (c g)1 | o4 (d a)1 |
+  o4 (e- b-)1 | o4 (b- >f)1 | o4 (c g)1 | o4 (d a)1 |
+  o4 (g >d)1 | o4 (e- b-)1 | o4 (d a)1 | o4 (d a)1 |
+
+track bass contrabass vol=0.66 rev=0.08
+  o3 g1 | o3 d1 |
+  L o3 g4. g8 g4 d4 | o3 g4. g8 g4 d4 | o3 e-4. e-8 e-4 b-4 | o3 f4. f8 f4 c4 |
+  o3 g4. g8 g4 d4 | o3 g4. g8 g4 d4 | o3 c4. c8 c4 g4 | o3 d4. d8 d4 a4 |
+  o3 e-4. e-8 e-4 b-4 | o3 b-4. b-8 b-4 f4 | o3 c4. c8 c4 g4 | o3 d4. d8 d4 a4 |
+  o3 g4. g8 g4 d4 | o3 e-4. e-8 e-4 b-4 | o3 d4. d8 d4 a4 | o3 d4 d4 d4 d4 |
+
+track timpani timpani vol=0.4 rev=0.25
+  o3 g4 r4 g8 g8 g4 | o3 d4 r4 [ d16 ]8 |
+  L o3 g4 r4 d4 r4 | o3 g4 r4 d8 d8 d4 | o3 e-4 r4 b-4 r4 | o3 f4 r4 c4 r4 |
+  o3 g4 r4 d4 r4 | o3 g4 r4 d8 d8 d4 | o3 c4 r4 g4 r4 | o3 d4 r4 a4 r4 |
+  o3 e-4 r4 b-4 r4 | o3 b-4 r4 f4 r4 | o3 c4 r4 g4 r4 | o3 d4 r4 a4 r4 |
+  o3 g4 r4 d4 r4 | o3 e-4 r4 b-4 r4 | o3 d4 r4 a4 r4 | o3 d4 r4 [ d16 ]8 |
+
+track drums kit vol=0.5 rev=0.15
+  r1 | (b c)4 r4 b4 s4 |
+  L v100 [ (b c)4 s8. s16 b4 (b s)4 | b4 s8. s16 b4 (b s)4 | b4 s8. s16 b4 (b s)4 | b4 s8. s16 b8 t16 t16 m16 m16 f16 f16 | ]4
+
+track hats kit vol=0.36 pan=0.15 rev=0.1
+  r1 | r1 | L [ v65 h8 v40 h8 v55 h8 v40 h8 v65 h8 v40 h8 v55 h8 v40 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.44 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

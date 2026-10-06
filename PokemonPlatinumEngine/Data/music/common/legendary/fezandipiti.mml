@@ -1,0 +1,46 @@
+# Battle against Fezandipiti (the Retainer Pokémon, the toxic pheasant of the Loyal Three): the Loyal Three's cocky
+# long-short swing and strutting bass, preened by a flute over rippling harp in F major. Original composition for this game.
+title Battle! Fezandipiti
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.32
+
+track lead flute lowhp=sawlead vol=0.86 pan=0 rev=0.3
+  o5 c8. d16 f8. g16 a4 o6 c4 | o6 d8. c16 o5 b-8. a16 g2 |
+  L o5 c8. f16 a8. o6 c16 f2 | o6 d8. c16 o5 a8. f16 d4 f4 | o5 f8. g16 b-8. o6 d16 f4. e-8 | o6 d8. c16 o5 g8. e16 c2 |
+  o5 a8. b-16 o6 c8. d16 f4 c4 | o6 e8. d16 c8. o5 a16 e4 a4 | o6 d8. c16 o5 b-8. a16 g4 f4 | o5 e8. f16 g8. a16 o6 c2 |
+  o6 f8. e16 d8. c16 o5 a4 f4 | o6 d8. f16 d8. c16 o5 b-4 f4 | o5 a8. o6 c16 f8. a16 g4 f4 | o6 e4 d8. c16 o5 g2 |
+  o5 f8. g16 b-8. o6 c16 d4 f4 | o6 g8. f16 d8. c16 o5 b-4 g4 | o5 a8. b-16 o6 c8. d16 e4 g4 | o6 e2 d4 c4 |
+
+track harp harp vol=0.44 pan=-0.3 rev=0.36
+  r1 | r1 |
+  L o4 f8 a8 o5 c8 f8 c8 o4 a8 f8 a8 | o4 d8 f8 a8 o5 d8 o4 a8 f8 d8 f8 | o4 d8 f8 b-8 o5 d8 o4 b-8 f8 d8 f8 | o4 e8 g8 o5 c8 e8 c8 o4 g8 e8 g8 |
+  o4 f8 a8 o5 c8 f8 c8 o4 a8 f8 a8 | o4 e8 a8 o5 c8 e8 c8 o4 a8 e8 a8 | o4 d8 f8 b-8 o5 d8 o4 b-8 f8 d8 f8 | o4 e8 g8 o5 c8 e8 c8 o4 g8 e8 g8 |
+  o4 d8 f8 a8 o5 d8 o4 a8 f8 d8 f8 | o4 d8 f8 b-8 o5 d8 o4 b-8 f8 d8 f8 | o4 f8 a8 o5 c8 f8 c8 o4 a8 f8 a8 | o4 e8 g8 o5 c8 e8 c8 o4 g8 e8 g8 |
+  o4 d8 f8 b-8 o5 d8 o4 b-8 f8 d8 f8 | o4 d8 g8 b-8 o5 d8 o4 b-8 g8 d8 g8 | o4 e8 g8 o5 c8 e8 c8 o4 g8 e8 g8 | o4 e8 g8 b-8 o5 e8 o4 b-8 g8 e8 g8 |
+
+track strings strings unless=lowhp vol=0.28 pan=0.3 rev=0.38
+  r1 | r1 |
+  L o4 (f a >c)1 | o4 (d f a)1 | o4 (d f b-)1 | o4 (e g >c)1 |
+  o4 (f a >c)1 | o4 (e a >c)1 | o4 (d f b-)1 | o4 (e g >c)1 |
+  o4 (d f a)1 | o4 (d f b-)1 | o4 (f a >c)1 | o4 (e g >c)1 |
+  o4 (d f b-)1 | o4 (d g b-)1 | o4 (e g >c)1 | o4 (e g b-)1 |
+
+track bass contrabass vol=0.74 rev=0.08
+  o3 f8. f16 o4 c8. o3 f16 o4 f4 r4 | o3 c8. c16 g8. c16 o4 c4 r4 |
+  L o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o3 d8. d16 a8. d16 o4 d8. c16 o3 a8. d16 | o2 b-8. b-16 o3 f8. o2 b-16 o3 b-8. a-16 f8. o2 b-16 | o3 c8. c16 g8. c16 o4 c8. o3 b-16 g8. c16 |
+  o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o2 a8. a16 o3 e8. o2 a16 o3 a8. g16 e8. o2 a16 | o2 b-8. b-16 o3 f8. o2 b-16 o3 b-8. a-16 f8. o2 b-16 | o3 c8. c16 g8. c16 o4 c8. o3 b-16 g8. c16 |
+  o3 d8. d16 a8. d16 o4 d8. c16 o3 a8. d16 | o2 b-8. b-16 o3 f8. o2 b-16 o3 b-8. a-16 f8. o2 b-16 | o3 f8. f16 o4 c8. o3 f16 o4 f8. e-16 c8. o3 f16 | o3 c8. c16 g8. c16 o4 c8. o3 b-16 g8. c16 |
+  o2 b-8. b-16 o3 f8. o2 b-16 o3 b-8. a-16 f8. o2 b-16 | o2 g8. g16 o3 d8. o2 g16 o3 g8. f16 d8. o2 g16 | o3 c8. c16 g8. c16 o4 c8. o3 b-16 g8. c16 | o3 c8. c16 g8. c16 o4 c8. o3 b-16 g8. c16 |
+
+track drums kit vol=0.44 rev=0.16
+  v90 b4 r4 b4 r4 | b8. b16 s8. b16 s16 s16 s16 s16 t16 m16 f16 f16 |
+  L [ v90 (b c)8. r16 s8. b16 b8. r16 s8. b16 | [ b8. r16 s8. b16 b8. r16 s8. b16 | ]6 b8. r16 s8. b16 s16 s16 t16 t16 m16 m16 f16 f16 | ]2
+
+track hats kit vol=0.38 pan=0.2 rev=0.12
+  r1 | r1 | L [ v58 h8. v34 h16 v58 h8. v34 h16 v58 h8. v34 h16 v64 o8. v34 h16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.48 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

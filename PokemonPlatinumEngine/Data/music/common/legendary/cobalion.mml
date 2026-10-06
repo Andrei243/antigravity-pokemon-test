@@ -1,0 +1,47 @@
+# Battle against Cobalion (the iron leader of the Swords of Justice): a snare roll opens every eight bars and a
+# steadfast G-minor march rides on brass, its dotted call answered by horns. Original composition for this game.
+title Battle! Cobalion
+tempo 168
+meter 4/4
+lowhptempo 1.08
+reverb 0.26
+
+track lead brass lowhp=sawlead vol=0.82 pan=0 rev=0.26
+  o4 g4. g8 d2 | o4 f+4. a8 o5 d4 r4 |
+  L o4 g4. d8 g2 | o4 b-4 o5 c8 d8 e-4 c4 | o5 e-4. d8 c4 o4 g4 | o4 f+4. a8 o5 d2 |
+  o5 d4. o4 b-8 g4 b-8 o5 c8 | o5 d4 c8 o4 b-8 o5 f4 d4 | o5 e-4. f8 g4 f8 e-8 | o5 d2 o4 a4 f+4 |
+  o5 g4. f8 e-2 | o5 f4. e-8 d4 c4 | o5 d4 g8 f8 g4 d4 | o5 c4 e-8 g8 f4 e-4 |
+  o5 b-4. g8 e-2 | o5 d4 f+4 a4 f+4 | o5 g4 f8 e-8 c4 e-4 | o5 d2. o4 a4 |
+
+track counter horn vol=0.42 pan=-0.25 rev=0.3
+  o3 g4. g8 d2 | o3 d4. f+8 a4 r4 |
+  L o4 d2 g2 | o4 e-2 g2 | o4 g2 e-2 | o4 f+2 a2 |
+  o4 g2 d2 | o4 f2 b-2 | o4 g2 b-2 | o4 a2 f+2 |
+  o4 b-2 g2 | o4 a2 f2 | o4 b-2 g2 | o4 g2 e-2 |
+  o4 g2 b-2 | o4 a2 f+2 | o4 e-2 g2 | o4 f+2 a2 |
+
+track pad strings unless=lowhp vol=0.32 pan=0.3 rev=0.4
+  r1 | o4 (d f+ a)2 r2 |
+  L o4 (d g b-)1 | (e- g b-)1 | (c e- g)1 | (d f+ a)1 |
+  o4 (d g b-)1 | (d f b-)1 | (e- g b-)1 | (d f+ a)1 |
+  o4 (e- g b-)1 | (c f a)1 | (d g b-)1 | (c e- g)1 |
+  o4 (e- g b-)1 | (d f+ a)1 | (c e- g)1 | (d f+ a)1 |
+
+track bass synthbass vol=0.76 rev=0.05
+  o3 g4. g8 g2 | o3 d4. d8 d4 r4 |
+  L [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 b-8 b-8 o4 b-8 o3 b-8 ]2 | [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 |
+  [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+
+# The Swords' snare roll at the start of every eight bars
+track drums kit vol=0.48 rev=0.14
+  v100 (b c)4. b8 b2 | v60 s32 v68 s32 v76 s32 v84 s32 v92 s32 v100 s32 v108 s32 v116 s32 v100 (b c)4 b4 r4 |
+  L [ v60 s32 v68 s32 v76 s32 v84 s32 v92 s32 v100 s32 v108 s32 v116 s32 v100 (b c)8 b8 s8 b8 b8 s8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 s16 s16 s16 s16 m16 m16 f16 f16 | ]2
+
+track hats kit vol=0.4 pan=0.15 rev=0.1
+  r1 | r1 | L [ v70 h8 v42 h8 v70 h8 v42 h8 v70 h8 v42 h8 v70 h8 v42 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

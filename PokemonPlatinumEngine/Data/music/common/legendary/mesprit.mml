@@ -1,0 +1,56 @@
+# Battle against Mesprit (the being of emotion, guardian of Lake Verity): a yearning C-minor violin song over
+# syncopated electric piano, its long first notes the lake guardians' motif (a step down, a sixth up). Original composition for this game.
+title Battle! Mesprit
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.34
+
+track lead violin lowhp=sawlead vol=0.88 pan=0 rev=0.34
+  o4 g4 o5 c4 e-4 g4 | o5 f2 d2 |
+  L o5 c2 o4 b-4 o5 g4 | o5 a-4. g8 f4 e-4 | o5 g2 f8 e-8 d8 e-8 | o5 d4 f4 b-2 |
+  o5 a-4. g8 f4 c4 | o5 e-2 d4 c4 | o5 f4 a-4 o6 d-4. c8 | o6 d2 o5 b4 g4 |
+  o6 c2 o5 b-4 o6 e-4 | o6 d4. c8 o5 b-4 f4 | o5 g4 b-4 o6 d4 f4 | o6 e-2 d4 c4 |
+  o6 c4 o5 a-8 b-8 o6 c4 f4 | o6 f4. e-8 d-4 o5 a-4 | o5 b4 o6 d4 g4 f4 | o6 d4. c8 o5 b4 g4 |
+
+track counter oboe vol=0.4 pan=-0.25 rev=0.3
+  r1 | r1 |
+  L o4 g2 e-2 | o4 e-2 c2 | o4 b-2 g2 | o4 f2 d2 |
+  o4 c2 a-2 | o4 g1 | o4 a-2 f2 | o4 g2 b2 |
+  o5 e-1 | o5 f2 d2 | o5 d2 o4 b-2 | o5 g1 |
+  o5 a-1 | o5 a-2 f2 | o5 d2 b2 | o5 b2 g2 |
+
+track keys epiano vol=0.34 pan=0.25 rev=0.25
+  r1 | r1 |
+  L o4 r8 (c e- g)8 r8 (c e- g)8 r8 (c e- g)4 (c e- g)8 | o4 r8 (c e- a-)8 r8 (c e- a-)8 r8 (c e- a-)4 (c e- a-)8 |
+  o4 r8 (e- g b-)8 r8 (e- g b-)8 r8 (e- g b-)4 (e- g b-)8 | o4 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)4 (d f b-)8 |
+  o4 r8 (c f a-)8 r8 (c f a-)8 r8 (c f a-)4 (c f a-)8 | o4 r8 (c e- g)8 r8 (c e- g)8 r8 (c e- g)4 (c e- g)8 |
+  o4 r8 (d- f a-)8 r8 (d- f a-)8 r8 (d- f a-)4 (d- f a-)8 | o4 r8 (d g b)8 r8 (d g b)8 r8 (d g b)4 (d g b)8 |
+  o4 r8 (c e- a-)8 r8 (c e- a-)8 r8 (c e- a-)4 (c e- a-)8 | o4 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)4 (d f b-)8 |
+  o4 r8 (d g b-)8 r8 (d g b-)8 r8 (d g b-)4 (d g b-)8 | o4 r8 (c e- g)8 r8 (c e- g)8 r8 (c e- g)4 (c e- g)8 |
+  o4 r8 (c f a-)8 r8 (c f a-)8 r8 (c f a-)4 (c f a-)8 | o4 r8 (d- f a-)8 r8 (d- f a-)8 r8 (d- f a-)4 (d- f a-)8 |
+  o4 r8 (d g b)8 r8 (d g b)8 r8 (d g b)4 (d g b)8 | o4 r8 (d g b)8 r8 (d g b)8 r8 (d g b)4 (d g b)8 |
+
+track pad strings unless=lowhp vol=0.32 pan=0.35 rev=0.42
+  o4 (c e- g)1 | o4 (d g b)1 |
+  L o4 (c e- g)1 | o4 (c e- a-)1 | o4 (e- g b-)1 | o4 (d f b-)1 |
+  o4 (c f a-)1 | o4 (c e- g)1 | o4 (d- f a-)1 | o4 (d g b)1 |
+  o4 (c e- a-)1 | o4 (d f b-)1 | o4 (d g b-)1 | o4 (c e- g)1 |
+  o4 (c f a-)1 | o4 (d- f a-)1 | o4 (d g b)1 | o4 (d g b)1 |
+
+track bass bass vol=0.66 rev=0.06
+  o3 c4 r4 c4 r4 | o3 g4 r4 g8 g8 g4 |
+  L o3 c4 r8 c8 g8 c8 o4 c8 o3 g8 | o3 a-4 r8 a-8 e-8 a-8 o4 a-8 o3 e-8 | o3 e-4 r8 e-8 b-8 e-8 o4 e-8 o3 b-8 | o3 b-4 r8 b-8 f8 b-8 o4 b-8 o3 f8 |
+  o3 f4 r8 f8 c8 f8 o4 f8 o3 c8 | o3 c4 r8 c8 g8 c8 o4 c8 o3 g8 | o3 d-4 r8 d-8 a-8 d-8 o4 d-8 o3 a-8 | o3 g4 r8 g8 d8 g8 o4 g8 o3 d8 |
+  o3 a-4 r8 a-8 e-8 a-8 o4 a-8 o3 e-8 | o3 b-4 r8 b-8 f8 b-8 o4 b-8 o3 f8 | o3 g4 r8 g8 d8 g8 o4 g8 o3 d8 | o3 c4 r8 c8 g8 c8 o4 c8 o3 g8 |
+  o3 f4 r8 f8 c8 f8 o4 f8 o3 c8 | o3 d-4 r8 d-8 a-8 d-8 o4 d-8 o3 a-8 | o3 g4 r8 g8 d8 g8 o4 g8 o3 d8 | o3 g4 r8 g8 d8 g8 o4 g8 o3 d8 |
+
+track drums kit vol=0.52 rev=0.15
+  r1 | r2 s8 s8 s16 s16 s16 s16 | L v100 [ (b c)8 r8 s8 b8 r8 b8 s8 r8 | [ b8 r8 s8 b8 r8 b8 s8 r8 | ]6 b8 r8 s8 b8 s16 s16 s16 s16 t16 t16 m16 f16 | ]2
+
+track hats kit vol=0.62 pan=0.15 rev=0.1
+  r1 | r1 | L [ v60 h8 v35 h8 v60 h8 v35 h8 v60 h8 v35 h8 v60 o8 v35 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

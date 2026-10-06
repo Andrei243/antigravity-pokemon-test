@@ -1,0 +1,54 @@
+# Battle against Latios (the earnest Eon Pokémon): an F-sharp-minor duet that keeps pressing forward, the clarinet
+# leading and the strings answering a third or a sixth below, over driving pizzicato. Original composition for this game.
+title Battle! Latios
+tempo 172
+meter 4/4
+lowhptempo 1.08
+reverb 0.3
+
+track lead clarinet lowhp=sawlead vol=0.82 pan=0.1 rev=0.28
+  o4 c+8 f+8 a8 o5 c+8 e4 c+4 | o5 f2 d+4 c+4 |
+  L o4 f+8 f+8 a8 o5 c+8 f+4 e8 c+8 | o5 d4. c+8 o4 a2 | o4 g+8 a8 b8 o5 c+8 e4 d4 | o5 c+2. r4 |
+  o4 f+8 f+8 a8 o5 c+8 a4 f+8 e8 | o5 d4. e8 f+4 d4 | o5 a4. f+8 d4 e4 | o5 f4. d+8 c+2 |
+  o4 b8 b8 o5 d8 f+8 b4 a8 f+8 | o5 g+4. f+8 e4 o4 b4 | o5 c+4 e8 f+8 a4 e4 | o5 f+4. e8 d4 o4 a4 |
+  o4 b4 o5 d8 e8 f+4 b4 | o5 a4. g+8 f+4 c+4 | o5 d4 e8 f+8 a4 f+4 | o5 f4. d+8 c+4 o4 g+4 |
+
+# The Eon duet: the second voice answers the first a third or a sixth apart
+track answer strings vol=0.72 pan=-0.2 rev=0.3
+  o3 a8 o4 c+8 f+8 a8 o5 c+4 o4 a4 | o4 g+2 b4 g+4 |
+  L r2 o4 a4 o5 c+4 | o4 r2 f+4. e8 | r2 o5 c+4 o4 b4 | r4 o4 g+8 g+8 b8 o5 d+8 f4 |
+  r2 o5 f+4 o4 a4 | o4 b4. o5 c+8 d4 o4 b4 | o5 f+4. d8 o4 f+4 a4 | o4 g+2 f4 g+4 |
+  r2 o5 d4 f+4 | o5 e4. d8 c+4 o4 g+4 | o4 a4 o5 c+8 d8 f+4 c+4 | o5 d4. c+8 o4 f+2 |
+  o4 r4 f+8 g+8 a4 o5 d4 | o5 f+4. e8 c+4 o4 a4 | o4 b4 a8 b8 o5 f+4 d4 | o5 c+4. o4 b8 g+4 f4 |
+
+track pad choir unless=lowhp vol=0.3 pan=0.3 rev=0.42
+  r1 | o3 (g+ >c+ f)1 |
+  L o3 (f+ a >c+)1 | o3 (f+ a >d)1 | o3 (g+ b >e)1 | o3 (g+ >c+ f)1 |
+  o3 (f+ a >c+)1 | o3 (f+ b >d)1 | o3 (f+ a >d)1 | o3 (g+ >c+ f)1 |
+  o3 (f+ b >d)1 | o3 (g+ b >e)1 | o3 (a >c+ e)1 | o3 (f+ a >d)1 |
+  o3 (f+ b >d)1 | o3 (f+ a >c+)1 | o3 (f+ a >d)1 | o3 (g+ >c+ f)1 |
+
+track pizz pizzicato vol=0.42 pan=0.25 rev=0.2
+  [ o3 f+8 o4 c+8 f+8 c+8 ]2 | [ o3 c+8 g+8 o4 c+8 o3 g+8 ]2 |
+  L [ o3 f+8 o4 c+8 f+8 c+8 ]2 | [ o3 d8 a8 o4 d8 o3 a8 ]2 | [ o3 e8 b8 o4 e8 o3 b8 ]2 | [ o3 c+8 g+8 o4 c+8 o3 g+8 ]2 |
+  [ o3 f+8 o4 c+8 f+8 c+8 ]2 | [ o3 b8 o4 f+8 b8 f+8 ]2 | [ o3 d8 a8 o4 d8 o3 a8 ]2 | [ o3 c+8 g+8 o4 c+8 o3 g+8 ]2 |
+  [ o3 b8 o4 f+8 b8 f+8 ]2 | [ o3 e8 b8 o4 e8 o3 b8 ]2 | [ o3 a8 o4 e8 a8 e8 ]2 | [ o3 d8 a8 o4 d8 o3 a8 ]2 |
+  [ o3 b8 o4 f+8 b8 f+8 ]2 | [ o3 f+8 o4 c+8 f+8 c+8 ]2 | [ o3 d8 a8 o4 d8 o3 a8 ]2 | [ o3 c+8 g+8 o4 c+8 o3 g+8 ]2 |
+
+track bass contrabass vol=0.7 rev=0.05
+  r1 | o3 c+4 r4 c+4 c+8 c+8 |
+  L [ o3 f+8. f+16 f+8 f+8 ]2 | [ o3 d8. d16 d8 d8 ]2 | [ o3 e8. e16 e8 e8 ]2 | [ o3 c+8. c+16 c+8 c+8 ]2 |
+  [ o3 f+8. f+16 f+8 f+8 ]2 | [ o3 b8. b16 b8 b8 ]2 | [ o3 d8. d16 d8 d8 ]2 | [ o3 c+8. c+16 c+8 c+8 ]2 |
+  [ o3 b8. b16 b8 b8 ]2 | [ o3 e8. e16 e8 e8 ]2 | [ o3 a8. a16 a8 a8 ]2 | [ o3 d8. d16 d8 d8 ]2 |
+  [ o3 b8. b16 b8 b8 ]2 | [ o3 f+8. f+16 f+8 f+8 ]2 | [ o3 d8. d16 d8 d8 ]2 | [ o3 c+8. c+16 c+8 c+8 ]2 |
+
+track drums kit vol=0.48 rev=0.14
+  r1 | (b c)4 r4 s8 s8 s16 s16 s16 s16 |
+  L v100 [ (b c)8 b8 s8 b16 b16 r8 b8 s8 r8 | [ b8 b8 s8 b16 b16 r8 b8 s8 r8 | ]6 b8 b8 s8 b16 b16 s16 s16 s16 s16 t8 f8 | ]2
+
+track hats kit vol=0.62 pan=-0.15 rev=0.1
+  r1 | r1 | L [ v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c+16 r16 c+16 r16 r4 c+16 r16 c+16 r16 r4 | ]16

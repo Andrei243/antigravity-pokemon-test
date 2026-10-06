@@ -1,0 +1,66 @@
+# Battle against Regigigas (the colossal master of the Regis): the Regis' tapped code (short, short, long) alone
+# on a pulse, waking bar by bar, then a slow A-minor choir over organ in bare parallel fifths. Original composition for this game.
+title Battle! Regigigas
+tempo 140
+meter 4/4
+lowhptempo 1.1
+reverb 0.4
+
+track lead choir lowhp=sawlead vol=0.86 pan=0 rev=0.4
+  r1 | r1 | r1 | r1 |
+  L o4 a2. o5 c4 | o5 e2 d4 c4 | o5 d2. o4 b4 | o4 g2 a4 b4 |
+  o5 c2. o4 a4 | o5 f2 e4 c4 | o4 b2. g+4 | o4 e1 |
+  o5 e2 a4. g8 | o5 g2 e4 c4 | o5 f2 e4 d4 | o4 b2. o5 d4 |
+  o5 c2 o4 a4 o5 c4 | o5 d2 o4 b4 o5 d4 | o5 e2 d4 o4 b4 | o4 e2 g+2 |
+
+# The Regis' bare parallel fifths
+track organ organ vol=0.36 pan=-0.2 rev=0.38
+  r1 | r1 | o3 (a >e)1 | o3 (a >e)2 (g >d)2 |
+  L o3 (a >e)1 | o3 (a >e)2 (g >d)2 | o3 (g >d)1 | o3 (g >d)2 (f >c)2 |
+  o3 (f >c)1 | o3 (f >c)1 | o3 (e b)1 | o3 (e b)2 (d a)2 |
+  o3 (a >e)1 | o4 (c g)1 | o3 (d a)1 | o3 (e b)1 |
+  o3 (f >c)1 | o3 (g >d)1 | o3 (e b)1 | o3 (e b)2 (d a)4 (e b)4 |
+
+track pad strings unless=lowhp vol=0.32 pan=0.3 rev=0.45
+  r1 | r1 | r1 | o3 (a >e a)2 (g >d g)2 |
+  L o3 (a >e a)1 | o3 (a >e a)2 (g >d g)2 | o3 (g >d g)1 | o3 (g >d g)2 (f >c f)2 |
+  o3 (f >c f)1 | o3 (f >c f)1 | o3 (e b >e)1 | o3 (e b >e)2 (d a >d)2 |
+  o3 (a >e a)1 | o4 (c g >c)1 | o3 (d a >d)1 | o3 (e b >e)1 |
+  o3 (f >c f)1 | o3 (g >d g)1 | o3 (e b >e)1 | o3 (e b >e)2 (d a >d)4 (e b >e)4 |
+
+# The Regis' code: short, short, long in sixteenths, in bare fifths
+track code pulse vol=0.3 pan=0.3 rev=0.15
+  o5 (a >e)16 (a >e)16 (a >e)8 r2. | o5 (a >e)16 (a >e)16 (a >e)8 r2. | o5 (a >e)16 (a >e)16 (a >e)8 r4 (a >e)16 (a >e)16 (a >e)8 r4 | o5 (a >e)16 (a >e)16 (a >e)8 r4 (g >d)16 (g >d)16 (g >d)8 r4 |
+  L o5 (a >e)16 (a >e)16 (a >e)8 r4 (a >e)16 (a >e)16 (a >e)8 r4 | o5 (a >e)16 (a >e)16 (a >e)8 r4 (g >d)16 (g >d)16 (g >d)8 r4 |
+  o5 (g >d)16 (g >d)16 (g >d)8 r4 (g >d)16 (g >d)16 (g >d)8 r4 | o5 (g >d)16 (g >d)16 (g >d)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 |
+  o5 (f >c)16 (f >c)16 (f >c)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 | o5 (f >c)16 (f >c)16 (f >c)8 r4 (a >e)16 (a >e)16 (a >e)8 r4 |
+  o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (d a)16 (d a)16 (d a)8 r4 |
+  o5 (a >e)16 (a >e)16 (a >e)8 r4 (a >e)16 (a >e)16 (a >e)8 r4 | o5 (c g)16 (c g)16 (c g)8 r4 (c g)16 (c g)16 (c g)8 r4 |
+  o5 (d a)16 (d a)16 (d a)8 r4 (d a)16 (d a)16 (d a)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+  o5 (f >c)16 (f >c)16 (f >c)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 | o5 (g >d)16 (g >d)16 (g >d)8 r4 (g >d)16 (g >d)16 (g >d)8 r4 |
+  o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+
+track bass contrabass vol=0.66 rev=0.1
+  r1 | r1 | o2 a1 | o2 a2 g2 |
+  L o2 a1 | o2 a2 g2 | o2 g1 | o2 g2 f2 |
+  o2 f1 | o2 f1 | o2 e1 | o2 e2 o3 d2 |
+  o2 a1 | o3 c1 | o3 d1 | o2 e1 |
+  o2 f1 | o2 g1 | o2 e1 | o2 e2 o3 d4 o2 e4 |
+
+track timpani timpani vol=0.44 rev=0.3
+  r1 | o3 a4 r2. | o3 a4 r4 a4 r4 | o3 a4 r4 [ g16 ]8 |
+  L o3 a4 r4 a4 r4 | o3 a4 r4 g4 r4 | o3 g4 r4 g4 r4 | o3 g4 r4 f4 r4 |
+  o3 f4 r4 f4 r4 | o3 f4 r4 f4 r4 | o3 e4 r4 e4 r4 | o3 e4 r4 d4 [ d16 ]4 |
+  o3 a4 r4 a4 r4 | o3 c4 r4 c4 r4 | o3 d4 r4 d4 r4 | o3 e4 r4 e4 r4 |
+  o3 f4 r4 f4 r4 | o3 g4 r4 g4 r4 | o3 e4 r4 e4 r4 | o3 e4 r4 d4 [ e16 ]4 |
+
+track drums kit vol=0.54 rev=0.22
+  r1 | r1 | r1 | r2 t8 m8 f8 f8 |
+  L v100 [ (b c)4 r4 s4 r8 b8 | [ b4 r4 s4 r8 b8 | ]6 b4 r4 s8 s8 t16 m16 f16 f16 | ]2
+
+track hats kit vol=0.7 pan=-0.15 rev=0.15
+  r1 | r1 | r1 | r1 | L [ v55 h4 v35 o4 v55 h4 v35 h8 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | r1 | r1 | L [ o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]16

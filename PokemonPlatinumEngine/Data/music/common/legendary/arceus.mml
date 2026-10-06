@@ -1,0 +1,74 @@
+# Battle against Arceus (the Original One, who shaped the universe): a solemn D-minor brass hymn over organ, choir
+# and timpani that breaks into D major halfway round, with triplet fanfares and a borrowed B-flat before it turns
+# home. Original composition for this game.
+title Battle! Arceus
+tempo 170
+meter 4/4
+lowhptempo 1.08
+reverb 0.36
+
+track lead brass lowhp=sawlead vol=0.74 pan=0 rev=0.3
+  o4 a4 o5 d8 f8 a2 | o5 b-4. a8 f4 d4 | o5 e4. f8 g4 o6 c4 | o5 a12 o6 c+12 e12 c+12 o5 a12 e12 a2 |
+  L o5 d2 a4. f8 | o5 f4 d12 e12 f12 b-2 | o5 g4. a8 g4 e4 | o5 f2 d4 o4 a4 |
+  o5 d4 g12 a12 b-12 o6 d2 | o6 c4 o5 b-4 f4 d4 | o5 e4. d8 c+4 o4 a4 | o4 a12 o5 c+12 e12 a2. |
+  o5 c4 f4 a4. g8 | o6 c4 o5 b-12 a12 g12 e2 | o5 f4. g8 b-4 o6 d4 | o6 c+4. o5 b8 a4 g4 |
+  o5 a2 o6 d4. e8 | o6 d2 o5 b12 o6 c12 d12 e4 | o6 c+2 o5 a4 e4 | o5 f+4. g8 a2 |
+  o5 b4 o6 d4 f+4. e8 | o6 d4 o5 b8 o6 d8 g2 | o6 e4 d8 o5 b8 g+4 b4 | o6 c+4 o5 a12 b12 o6 c+12 e2 |
+  o6 d4. c+8 o5 b4 g4 | o5 e4 a4 o6 c+4 e4 | o6 f2 d4 o5 b-4 | o5 a2 g4 e4 |
+
+track horn horn vol=0.42 pan=-0.25 rev=0.32
+  o4 d1 | o4 f1 | o4 e1 | o4 e1 |
+  L o4 a2 f2 | o4 f2 d2 | o4 e2 g2 | o4 f2 a2 |
+  o4 b-2 g2 | o4 d2 f2 | o4 e2 c+2 | o4 e1 |
+  o4 f2 a2 | o4 g2 e2 | o4 d2 f2 | o4 e2 c+2 |
+  o4 f+2 a2 | o4 g2 b2 | o4 a2 e2 | o4 d2 f+2 |
+  o4 f+2 d2 | o4 b2 g2 | o4 g+2 b2 | o4 e2 a2 |
+  o4 g2 b2 | o4 c+2 e2 | o4 d2 f2 | o4 e2 c+2 |
+
+track choir choir unless=lowhp vol=0.32 pan=0.3 rev=0.5
+  o4 (d f a)1 | (d f b-)1 | (c e g)1 | (c+ e a)1 |
+  L o4 (d f a)1 | (d f b-)1 | (c e g)1 | (d f a)1 |
+  (d g b-)1 | (d f b-)1 | (c+ e a)1 | (c+ e a)1 |
+  (c f a)1 | (c e g)1 | (d f b-)1 | (c+ e a)1 |
+  (d f+ a)1 | (d g b)1 | (c+ e a)1 | (d f+ a)1 |
+  (d f+ b)1 | (d g b)1 | (e g+ b)1 | (c+ e a)1 |
+  (d g b)1 | (c+ e a)1 | (d f b-)1 | (c+ e a)1 |
+
+track organ organ vol=0.24 pan=-0.1 rev=0.4
+  o3 (d a >d)1 | o2 (b- >f b-)1 | o3 (c g >c)1 | o2 (a >e a)1 |
+  L o3 (d a >d)1 | o2 (b- >f b-)1 | o3 (c g >c)1 | o3 (d a >d)1 |
+  o3 (g >d g)1 | o2 (b- >f b-)1 | o2 (a >e a)1 | o2 (a >e a)1 |
+  o3 (f >c f)1 | o3 (c g >c)1 | o2 (b- >f b-)1 | o2 (a >e a)1 |
+  o3 (d a >d)1 | o3 (g >d g)1 | o2 (a >e a)1 | o3 (d a >d)1 |
+  o2 (b >f+ b)1 | o3 (g >d g)1 | o3 (e b >e)1 | o2 (a >e a)1 |
+  o3 (g >d g)1 | o2 (a >e a)1 | o2 (b- >f b-)1 | o2 (a >e a)1 |
+
+track timpani timpani vol=0.36 rev=0.25
+  o3 [ d16 ]16 | o3 b-4 r4 f4 r4 | o3 c4 r4 g4 r4 | o3 a4 r4 [ e16 ]8 |
+  L o3 d4 r4 a4 r4 | o3 b-4 r4 f4 r4 | o3 c4 r4 g4 r4 | o3 d4 r4 a4 d8 d8 |
+  o3 g4 r4 d4 r4 | o3 b-4 r4 f4 r4 | o3 a4 r4 e4 r4 | o3 a4 r4 [ e16 ]8 |
+  o3 f4 r4 c4 r4 | o3 c4 r4 g4 r4 | o3 b-4 r4 f4 r4 | o3 a4 r4 [ a16 ]8 |
+  o3 d4 r4 a4 r4 | o3 g4 r4 d4 r4 | o3 a4 r4 e4 r4 | o3 d4 r4 a4 d8 d8 |
+  o3 b4 r4 f+4 r4 | o3 g4 r4 d4 r4 | o3 e4 r4 b4 r4 | o3 a4 r4 e4 a8 a8 |
+  o3 g4 r4 d4 r4 | o3 a4 r4 e4 r4 | o3 b-4 r4 f4 r4 | o3 a4 r4 [ a16 ]8 |
+
+track bass synthbass vol=0.58 rev=0.05
+  r1 | r1 | o3 c2 g2 | o3 a4 r4 a8 a8 a8 a8 |
+  L o3 d8 d8 o4 d8 o3 d8 d8 d8 o4 d8 o3 d8 | o3 b-8 b-8 o4 b-8 o3 b-8 b-8 b-8 o4 b-8 o3 b-8 | o3 c8 c8 o4 c8 o3 c8 c8 c8 o4 c8 o3 c8 | o3 d8 d8 o4 d8 o3 d8 d8 d8 o4 d8 o3 d8 |
+  o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 b-8 b-8 o4 b-8 o3 b-8 b-8 b-8 o4 b-8 o3 b-8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 |
+  o3 f8 f8 o4 f8 o3 f8 f8 f8 o4 f8 o3 f8 | o3 c8 c8 o4 c8 o3 c8 c8 c8 o4 c8 o3 c8 | o3 b-8 b-8 o4 b-8 o3 b-8 b-8 b-8 o4 b-8 o3 b-8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 |
+  o3 d8 d8 o4 d8 o3 d8 d8 d8 o4 d8 o3 d8 | o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 d8 d8 o4 d8 o3 d8 d8 d8 o4 d8 o3 d8 |
+  o3 b8 b8 o4 b8 o3 b8 b8 b8 o4 b8 o3 b8 | o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 e8 e8 o4 e8 o3 e8 e8 e8 o4 e8 o3 e8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 |
+  o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 b-8 b-8 o4 b-8 o3 b-8 b-8 b-8 o4 b-8 o3 b-8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 |
+
+track drums kit vol=0.46 rev=0.18
+  v100 (b c)4 r4 r2 | f4 r4 f4 r4 | f4 r4 f4 r4 | (b c)4 r4 t12 t12 t12 m12 m12 f12 |
+  L [ (b c)4 s4 b8 b8 s12 s12 s12 | [ b4 s4 b8 b8 s12 s12 s12 | ]10 b4 s4 t12 t12 t12 m12 m12 f12 | ]2
+
+track hats kit vol=0.38 pan=0.15 rev=0.1
+  r1 | r1 | r1 | r1 |
+  L [ [ v60 h8 v35 h8 ]4 | ]24
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | r1 | r1 | L [ o7 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]24

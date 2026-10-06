@@ -1,0 +1,52 @@
+# Battle against Cosmog (the nebula, a gentle drifting cloud): a twinkle of celesta, then a small, curious C-major
+# tune that skips up an arpeggio and turns back, over a soft pad and a shaker. Original composition for this game.
+title Battle! Cosmog
+tempo 150
+meter 4/4
+lowhptempo 1.07
+reverb 0.36
+
+track lead celesta lowhp=sawlead vol=0.84 pan=0 rev=0.4
+  o6 g16 e16 c16 e16 g16 e16 c16 e16 g16 e16 c16 e16 g4 | o6 d16 o5 b16 g16 b16 o6 d16 o5 b16 g16 b16 o6 d4 r4 |
+  L o5 c8 g8 o6 c8 e8 d4 c4 | o5 a8 b8 o6 c8 e8 d8 c8 o5 a4 | o5 a4 g8 a8 o6 c4 o5 a4 | o5 g8 a8 b8 o6 d8 o5 b4 g4 |
+  o5 e8 g8 o6 c8 e8 g4 e4 | o6 d4 o5 b8 a8 g4 b4 | o5 a8 o6 c8 f8 e8 d4 c4 | o5 b4. a8 g2 |
+  o5 e8 a8 o6 c8 e8 d8 c8 o5 a8 g8 | o5 f8 a8 o6 c8 f8 d4 c4 | o6 e8 d8 c8 o5 g8 a4 g4 | o5 b8 o6 d8 g8 d8 o5 b4 a4 |
+  o5 c8 f8 a8 o6 c8 f4 d8 c8 | o5 b8 o6 d8 g8 b8 a4 g4 | o6 c8 o5 g8 o6 e8 c8 g8 e8 d4 | o5 g4 a4 b4 r4 |
+
+track counter flute vol=0.52 pan=-0.25 rev=0.4
+  r1 | r1 |
+  L o4 e2 g2 | o4 e2 a2 | o4 f2 a2 | o4 d2 g2 |
+  o4 g2 e2 | o4 g2 b2 | o4 a2 f2 | o4 b2 d2 |
+  o4 c2 e2 | o4 c2 a2 | o4 g2 e2 | o4 d2 b2 |
+  o4 a2 o5 c2 | o4 b2 o5 d2 | o4 g2 e2 | o4 d2 g2 |
+
+track twinkle glockenspiel vol=0.3 pan=0.35 rev=0.5
+  r1 | r1 |
+  L o5 r8 g8 r8 e8 r8 c8 r8 g8 | o5 r8 a8 r8 e8 r8 c8 r8 e8 | o5 r8 a8 r8 f8 r8 c8 r8 a8 | o5 r8 b8 r8 g8 r8 d8 r8 b8 |
+  o5 r8 g8 r8 e8 r8 c8 r8 g8 | o5 r8 b8 r8 g8 r8 e8 r8 b8 | o5 r8 a8 r8 f8 r8 c8 r8 a8 | o5 r8 b8 r8 g8 r8 d8 r8 g8 |
+  o5 r8 a8 r8 e8 r8 c8 r8 e8 | o5 r8 a8 r8 f8 r8 c8 r8 a8 | o5 r8 g8 r8 e8 r8 c8 r8 g8 | o5 r8 b8 r8 g8 r8 d8 r8 b8 |
+  o5 r8 a8 r8 f8 r8 c8 r8 a8 | o5 r8 b8 r8 g8 r8 d8 r8 b8 | o5 r8 g8 r8 e8 r8 c8 r8 g8 | o5 r8 b8 r8 g8 r8 d8 r8 g8 |
+
+track pad pad unless=lowhp vol=0.34 pan=0.2 rev=0.5
+  o4 (c e g)1 | o4 (d g b)1 |
+  L o4 (c e g)1 | o4 (c e a)1 | o4 (c f a)1 | o4 (d g b)1 |
+  o4 (c e g)1 | o4 (e g b)1 | o4 (c f a)1 | o4 (d g b)1 |
+  o4 (c e a)1 | o4 (c f a)1 | o4 (c e g)1 | o4 (d g b)1 |
+  o4 (c f a)1 | o4 (d g b)1 | o4 (c e g)1 | o4 (d g b)1 |
+
+track bass bass vol=0.82 rev=0.08
+  r1 | o3 g2 d4 g4 |
+  L o3 c4. c8 g4 c4 | o3 a4. a8 e4 a4 | o3 f4. f8 c4 f4 | o3 g4. g8 d4 g4 |
+  o3 c4. c8 g4 c4 | o3 e4. e8 b4 e4 | o3 f4. f8 c4 f4 | o3 g4. g8 d4 g4 |
+  o3 a4. a8 e4 a4 | o3 f4. f8 c4 f4 | o3 c4. c8 g4 c4 | o3 g4. g8 d4 g4 |
+  o3 f4. f8 c4 f4 | o3 g4. g8 d4 g4 | o3 c4. c8 g4 c4 | o3 g4. g8 d4 g4 |
+
+track drums kit vol=0.4 rev=0.15
+  r1 | v90 r2 t16 t16 m16 m16 f16 f16 f8 | L v95 [ [ b4 s8 b8 r8 b8 s4 | ]3 b4 s8 b8 s16 s16 t16 m16 s4 | ]4
+
+track shaker kit vol=0.6 pan=-0.15 rev=0.12
+  r1 | r1 | L [ v70 k8 v45 k16 k16 v70 k8 v45 k16 k16 v70 k8 v45 k16 k16 v70 k8 v45 k16 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | ]16
