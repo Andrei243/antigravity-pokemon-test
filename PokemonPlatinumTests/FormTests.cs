@@ -201,7 +201,7 @@ public class FormTests
         // formes, the Primal Kyogre and Groudon, Basculin's stripes, Darmanitan's Zen Modes, Deerling's and Sawsbuck's
         // seasons, the female Frillish and Jellicent). The few that look just like their species show its sculpt.
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter" };
-        Assert.Equal(209, PokemonModels.Forms.Length);
+        Assert.Equal(223, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {

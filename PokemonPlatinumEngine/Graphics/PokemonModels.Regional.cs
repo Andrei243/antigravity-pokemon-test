@@ -797,4 +797,32 @@ internal static partial class PokemonModels
     private static PokeBuilder FrillishFemale() => FrillishBuild(true);
 
     private static PokeBuilder JellicentFemale() => JellicentBuild(true);
+
+    // ------------------------------------------------------------------ The rest of Unova's forms (their builds in PokemonModels.Unova4.cs)
+
+    private static PokeBuilder StunfiskGalar() => StunfiskBuild(true);
+
+    private static PokeBuilder BraviaryHisui() => BraviaryBuild(true);
+
+    private static PokeBuilder TornadusTherian() => TornadusTherianBuild();
+
+    private static PokeBuilder ThundurusTherian() => ThundurusTherianBuild();
+
+    private static PokeBuilder LandorusTherian() => LandorusTherianBuild();
+
+    private static PokeBuilder KyuremWhite() => KyuremBuild(Fusion.White);
+
+    private static PokeBuilder KyuremBlack() => KyuremBuild(Fusion.Black);
+
+    private static PokeBuilder KeldeoResolute() => KeldeoBuild(true);
+
+    private static PokeBuilder MeloettaPirouette() => MeloettaBuild(true);
+
+    private static PokeBuilder GenesectDouse() => GenesectBuild("Douse");
+
+    private static PokeBuilder GenesectShock() => GenesectBuild("Shock");
+
+    private static PokeBuilder GenesectBurn() => GenesectBuild("Burn");
+
+    private static PokeBuilder GenesectChill() => GenesectBuild("Chill");
 }

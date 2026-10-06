@@ -111,7 +111,7 @@ Every species and every form has a cry of its own (plan 05 · A4), synthesised b
 | `Pokedex` | As it is. | An entry of the Pokédex opening. |
 
 - **Playing one**: `AudioManager.PlayCry(pokemon or species, form, mode, pan)` plays it on the cry bus, which dips the music under it. A battle asks for its Pokémon's cries ahead (`AudioManager.RequestCries`), and they are made on a worker. The last 48 are kept (`Cries.Kept`); a cry takes about ten milliseconds to make.
-- **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--modes] [--all]` renders cries with their spectrograms (a sample of every size and type when no species is named; `--all` checks every species and form without writing files). `CryTests` makes every species' and form's cry and holds it clean and unlike any other.
+- **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--modes] [--all]` renders cries with their spectrograms (a sample of every size and type when no species is named; `--all` checks every species and form without writing files). `CryTests` makes every species' and form's cry and holds it clean, unlike any other and inside the cry bus's loudness window as the mixer plays it. A cry is brought to its peak (`Cries.Peak`) unless that would make it louder than `Loudness.CryCeiling`, and then turned down to the ceiling instead: a long, even cry (Leafeon, Florges) at its peak would sound louder than the rest.
 
 ## Ambience
 
