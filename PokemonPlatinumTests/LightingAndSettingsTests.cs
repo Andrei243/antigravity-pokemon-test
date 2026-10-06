@@ -219,4 +219,22 @@ public class LightingAndSettingsTests
         }
         Assert.Equal(new TimeOfDay?[] { null, TimeOfDay.Morning, TimeOfDay.Day, TimeOfDay.Twilight, TimeOfDay.Night, TimeOfDay.LateNight, null }, seen);
     }
+
+    [Theory]
+    [InlineData(9f)]
+    [InlineData(13f)]
+    [InlineData(18f)]
+    public void SnowCountryHasALowColdSunAndBloomsOnlyAboveTheSnow(float hour)
+    {
+        // Style guide, the areas' table: "Snow ... low sun, cold grading"
+        var day = ArtLook.FieldRig(hour, false);
+        var snow = ArtLook.Snowbound(day);
+        Assert.True(snow.Light.SunDirection.Y < day.Light.SunDirection.Y);
+        Assert.Equal(1f, snow.Light.SunDirection.Length(), 3);
+        Assert.True(snow.Light.SunColor.X < day.Light.SunColor.X && snow.Light.SunColor.Z / snow.Light.SunColor.X > day.Light.SunColor.Z / day.Light.SunColor.X);
+        Assert.True(snow.Light.GroundAmbient.Y > day.Light.GroundAmbient.Y);
+        Assert.True(snow.Post.Saturation < day.Post.Saturation);
+        Assert.True(snow.Post.BloomThreshold >= 0.95f);
+        Assert.True(snow.Post.HighlightTint.Z > snow.Post.HighlightTint.X);
+    }
 }

@@ -60,7 +60,7 @@ Other ground kinds follow the lawn's recipe (flat base, clean-edged patches one 
 |---|---|---|
 | Sand | `238,224,172` / `246,236,196` / `206,188,138` | short ripple arcs `214,196,140` |
 | Dirt | `176,136,96` / `194,156,112` / `138,102,70` | clods: 2×2 `146,108,74` with a light texel |
-| Snow | `186,204,232` / `196,212,238` / `150,172,214` | drift lines `168,188,224`, three texels long (kept well below white, so the patches of it in Twinleaf Town stay snow under the day light instead of blooming to a blank; the snow routes still need a light rig of their own) |
+| Snow | `186,204,232` / `196,212,238` / `150,172,214` | drift lines `168,188,224`, three texels long (kept well below white, so the patches of it in Twinleaf Town stay snow under the day light instead of blooming to a blank; snow country grades the light colder still, "Snow" in the areas' table) |
 | Cave floor | `112,100,104` / `130,118,120` / `74,66,80` | cracks `82,72,84`, pebbles `150,140,140` |
 | Rock | `158,152,150` / `176,170,166` / `112,106,116` | cracks: bent lines `104,100,112` three to five texels long, each with a light chip `208,204,200` beside it |
 | Ice | `150,200,236` / `172,214,242` / `112,166,216` | glints: diagonal strokes `232,246,255`, three texels (blue enough to stay ice under the day light, like the snow) |
@@ -661,7 +661,7 @@ Implemented so far: Twinleaf, Sandgem, Jubilife, Routes 201–202, Lake Verity, 
 | Lakes (Verity, Valor, Acuity) | the same greens, pale stone shores, clear blue water | calm, cooler shade |
 | Forests (Eterna) | deeper greens, dark trunks, dappled light | green-tinted shade, stronger vignette |
 | Caves and mines | warm browns, cool blue shadows | torch-warm highlights |
-| Snow (Route 216–217, Snowpoint) | white-blue ground, dark pines | low sun, cold grading |
+| Snow (Route 216–217, Snowpoint) | white-blue ground, dark pines | low sun, cold grading: wherever the player stands in snow country (an area with more snow than lawn), the hour's rig has its sun lowered (its height × 0.7), dimmed and cooled (× 0.74 and `0.92, 0.97, 1.08`), its sky light cooled (`0.94, 0.98, 1.06`), more light bounced up off the ground (× 1.15), its fog cooled toward `0.8, 0.86, 0.96`, and its grading colder: saturation × 0.9, contrast × 1.04, bloom only above 0.95 and half as strong, highlights `0.98, 1.0, 1.06` and shade `0.86, 0.92, 1.18`. It eases in and out over a second at an area's border (`ArtLook.Snowbound`) |
 | Coast (Pastoria, Sunyshore) | warm sand, turquoise water | high sun, saturated |
 | Cities (Jubilife, Veilstone) | pale paving, glass and steel | neutral, crisp |
 | Distortion World | desaturated violets and greys | flat, eerie light |
@@ -694,7 +694,7 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 
 - The interface is drawn a shape at a time: one or two tenths of a millisecond in the field, 1.2 ms for a double battle's menu. Drawing its shapes in batches would halve that; no scene needs it to stay inside the frame's budget. Battle models are drawn at one level of detail (their triangles are 0.3 ms of a frame), and scenery is batched per chunk rather than instanced, for the same reason: neither is where a frame goes.
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
-- The field still needs light rigs of its own for snow and caves when their areas are built; their battle arenas are ready (G8).
+- Snow country has its own grading of the hour's light since plan 01 · M8, and caves their own rig since M5.
 - Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Thirty-three models have plain stand-ins until their area is built (`docs/world-models.md` says which). Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
 - A cross gable would give the bigger houses their look.
 - A puddle has no look of its own yet (it is drawn as the ground round it), so nothing mirrors a walker; puddles and their reflections come with the first place that has them, Route 212 (plan 01 · M7). Only the player's steps leave prints, dust and leaves: other people don't walk about yet (plan 02).

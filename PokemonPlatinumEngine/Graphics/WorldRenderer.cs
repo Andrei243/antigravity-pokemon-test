@@ -247,6 +247,11 @@ public sealed class WorldRenderer
     /// </summary>
     internal FieldLife Life { get; } = new();
 
+    // How far the light has gone over to snow country's (0 to 1), the field clock when it was last eased, and the map
+    private float snowMix;
+    private double snowClock;
+    private Map? snowMap;
+
     // The weather of the scene last rendered and how bright a pale thing is in its light, for the layer drawn over the picture
     private FieldWeather weather;
     private float weatherLight = 1f;
@@ -323,7 +328,16 @@ public sealed class WorldRenderer
         lastWasIndoors = indoors;
         // The weather where the player stands changes the light; the opening's fly-overs are always fair
         weather = player != null ? map.WeatherAt(player.GridX, player.GridY) : FieldWeather.Clear;
-        var rig = ArtLook.Weathered(ArtLook.FieldRig(hour, map), weather);
+        var rig = ArtLook.FieldRig(hour, map);
+        // Snow country grades the light colder (style guide, the areas' table), easing in and out at its border
+        bool snowbound = player != null && !indoors && !map.IsCave && map.AreaAt(player.GridX, player.GridY)?.Snowbound == true;
+        double now = Life.Now;
+        snowMix = map != snowMap ? (snowbound ? 1f : 0f)
+            : Math.Clamp(snowMix + (snowbound ? 1f : -1f) * (float)Math.Clamp(now - snowClock, 0, 1), 0f, 1f);
+        snowClock = now;
+        snowMap = map;
+        if (snowMix > 0f) rig = LightRig.Lerp(rig, ArtLook.Snowbound(rig), snowMix);
+        rig = ArtLook.Weathered(rig, weather);
         var light = rig.Light;
         weatherLight = Brightness(rig);
 
