@@ -686,7 +686,12 @@ public class PokemonTests
             "Treecko", "Grovyle", "Sceptile", "Torchic", "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert", "Poochyena",
             "Mightyena", "Zigzagoon", "Linoone", "Lotad", "Lombre", "Ludicolo", "Seedot", "Nuzleaf", "Shiftry", "Taillow", "Swellow",
             "Surskit", "Masquerain", "Shroomish", "Breloom", "Slakoth", "Vigoroth", "Slaking", "Nincada", "Ninjask", "Shedinja", "Whismur",
-            "Loudred", "Exploud", "Makuhita", "Hariyama", "Skitty", "Delcatty"
+            "Loudred", "Exploud", "Makuhita", "Hariyama", "Skitty", "Delcatty",
+            // Hoenn's second batch, Sableye to Armaldo
+            "Sableye", "Mawile", "Aron", "Lairon", "Aggron", "Electrike", "Manectric", "Plusle", "Minun", "Volbeat", "Illumise",
+            "Gulpin", "Swalot", "Carvanha", "Sharpedo", "Wailmer", "Wailord", "Numel", "Camerupt", "Torkoal", "Spoink", "Grumpig",
+            "Spinda", "Trapinch", "Vibrava", "Flygon", "Cacnea", "Cacturne", "Zangoose", "Seviper", "Lunatone", "Solrock", "Corphish",
+            "Crawdaunt", "Baltoy", "Claydol", "Lileep", "Cradily", "Anorith", "Armaldo"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
