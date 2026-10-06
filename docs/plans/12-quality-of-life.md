@@ -63,7 +63,7 @@ Written 2026-10-06, before any session.
 
 ### Q1 · A save that survives
 - The style guide first: "Opening and title screen" for the save's notice, the "Leaving the game" line of "Field menus and notices" for the close button's question. `SaveManager`: the temp file and the move, `savegame.bak`, `Checksum`, `SaveLoad`; the title's notice (`TitlePhase.Notice` gains the save's line, which plan 16 · T3's crash notice shares); `GameState.WindowClosing` and `Program.Main` asking a new `engine.RequestClose()` instead of leaving the loop; `GameEngine.Draw`'s prompt over whatever is on screen.
-- Tests: a full `SaveData` round trip holding every public property of `Pokemon` by reflection, as `BattleCoreTests.ACopyTakesOnEverythingThatCanChange` does, with the properties the save doesn't keep yet (the EVs, the id, the original trainer, the met data) on a list the test names, which plan 07 · O2 and plan 08 · P3 shorten; a file cut short loads the backup and says `Recovered`; both damaged says `Damaged`; an old file without a checksum loads. Shots: `title` gains the notice (`title_15_notice_recovered`), `menus` the close prompt beside `09c_quit_prompt`.
+- Tests: a full `SaveData` round trip holding every public property of `Pokemon` by reflection, as `BattleCoreTests.ACopyTakesOnEverythingThatCanChange` does, with the properties the save doesn't keep yet (the id and the met data; the EVs and a traded Pokémon's original trainer are kept since plan 06 · R10) on a list the test names, which plan 07 · O2 and plan 08 · P3 shorten; a file cut short loads the backup and says `Recovered`; both damaged says `Damaged`; an old file without a checksum loads. Shots: `title` gains the notice (`title_15_notice_recovered`), `menus` the close prompt beside `09c_quit_prompt`.
 - **Done when** killing the game in the middle of a save loses nothing but that save, and the close button asks.
 
 ### Q2 · Where saves live, and slots
@@ -122,13 +122,13 @@ Written 2026-10-06, before any session.
 - **Done when** holding AUTO plays a wild battle to its end and a replay of it agrees.
 
 ### Q13 · Boxes anywhere and a sorted bag
-- The style guide's "Start menu" line of "Field menus and notices" and "Bag" line of "Menu screens (G10)" first. `BoxLink` and `StartMenuChoice.Boxes` (opening `PCScreen` as plan 06 · R12 leaves it), `Map.NoBoxLink`; `Inventory.Order`, `SaveData.BagOrder`, the sort tag, the letter jump on `PageLeft` and `PageRight`.
-- Tests in `MenuScreenTests`: each order; the TM pocket by name is by number; the order survives a save; the boxes refuse where the map says so. Shots: `menus` with the entry, the bag sorted by name and by quantity (`22h_bag_sorted_*`).
+- The style guide's "Start menu" line of "Field menus and notices" and "Bag" line of "Menu screens (G10)" first. `BoxLink` and `StartMenuChoice.Boxes` (opening `PCScreen` as plan 06 · R12 leaves it, in `StartMenu.Shown` only once the player has a Pokémon, as S4's POKéMON entry is), `Map.NoBoxLink`; `Inventory.Order`, `SaveData.BagOrder`, the sort tag, the letter jump on `PageLeft` and `PageRight`.
+- Tests in `MenuScreenTests`: each order; the TM pocket by name is by number; the order survives a save; the boxes refuse where the map says so, and the entry isn't there before the first Pokémon. Shots: `menus` with the entry, the bag sorted by name and by quantity (`22h_bag_sorted_*`).
 - **Done when** a Modern game opens the boxes from the start menu and a Platinum game's menu is unchanged.
 
 ### Q14 · What to do next, and rumours
-- The line's place in the style guide's "Field menus and notices" (the start menu) and "Menu screens (G10)" (the Trainer Card, the save's summary) first. `objective` (a new `Op`, a case in the parser and the runner, a method of both hosts, a line in `ScriptTests.EveryCommand`, its row in `docs/scripts.md`), `Objectives` and `VAR_OBJECTIVE`, `NextObjective` on the three panels, the `{objective}` placeholder, `common.Rumour` and the opt-in.
-- Tests: every way through every chapter's scripts leaves an objective set (`StoryTests`, `HeadlessScriptHost`); every rumour's condition names a flag that exists; the line is filled in. Shots: `menus` with the line on the start menu and the card.
+- The line's place in the style guide's "Field menus and notices" (the start menu) and "Menu screens (G10)" (the Trainer Card, the save's summary) first. `objective` (a new `Op`, a case in the parser and the runner, a method of both hosts, a line in `ScriptTests.EveryCommandHasItsLine`, its row in `docs/scripts.md`), `Objectives` and `VAR_OBJECTIVE`, the objectives of plan 02 · S4's opening (the player's house, Twinleaf Town, Route 201, the lake, Sandgem Town and the lab), written here because S4 came first, and a step of `StoryMigration` (`StoryState.CurrentVersion` raised from 2) that gives an older save the objective its flags imply, `NextObjective` on the three panels, the `{objective}` placeholder, `common.Rumour` and the opt-in.
+- Tests: every way through every chapter's scripts leaves an objective set (`StoryTests`, `HeadlessScriptHost`), the opening's first (`OpeningTests`); a save of story version 2 loads with an objective; every rumour's condition names a flag that exists; the line is filled in. Shots: `menus` with the line on the start menu and the card.
 - **Done when** a save loaded after a month says where to go and the townsfolk have moved on with the story.
 
 ### Q15 · The jukebox
@@ -138,13 +138,104 @@ Written 2026-10-06, before any session.
 
 ### Q16 · The screenshot key and photo mode in the field
 - The style guide first: the photo mode's panel in "Field menus and notices", its filters and frames in "Light, shadow and grading (day)". `CaptureScreen`, the folder, the toast and the shutter (its `SoundBank` entry and its row in `docs/sound-effects.md`); `PhotoScreen`, `GameState.Photo`, `PhotoView` through `ViewOf`, pan, zoom, tilt, time, weather, the frames and filters, the poses.
-- Tests: the camera's bounds; the view's lens stays within the three cameras'; a photo changes nothing in the game's clock or weather; `CaptureScreen` names files that sort by time. Shots: `look_13_photo_*` (a pan, a zoom, a tilt, a night and a rain borrowed, a frame, a pose).
+- Tests: the camera's bounds; the view's lens stays within the three cameras'; a photo changes nothing in the game's clock, date (`GameClock.FixedDate`, which plan 01 · M7's weather calendar reads) or weather; `CaptureScreen` names files that sort by time. Shots: `look_13_photo_*` (a pan, a zoom, a tilt, a night and a rain borrowed, a frame, a pose).
 - **Done when** F12 writes a 4K PNG and a photo of Twinleaf Town at night can be taken at noon.
 
 ### Q17 · Photo mode in battle
 - The style guide's "Camera (G8)" first (a held shot). `BattleCamera.Hold`, the `PokePose` stepping, the interface hidden over the stage, the same frames and filters.
 - Tests: holding a shot stops the director; a stepped pose is a function of its time. Shots: `battle` in photo mode from the overview and from behind the player's Pokémon (`23i_battle_photo_*`).
 - **Done when** a battle can be paused, framed and saved from any shot.
+
+### Q18 · Field moves without a party member who knows them
+- Can run any time after Q10, whose `RulesDefault` it uses (it writes the enum itself if it comes first). It is worth most once plan 02's chapters hand out the HMs (S5's HM06 onward); until then its tests and the harness put the HMs in the bag.
+- The style guide first: the party bullet of "Menu screens (G10)" (the strip of granted moves under the cards), and in "Field menus and notices" the cut-in bullet (a helper on the band) and the Pokétch bullet (the helpers' app). `OptionRow.FieldHelpers` with its `Describe` line, its `Change` case and its `GameSettings` field; `Overworld/FieldHelp.cs` (`Granted`, `Moves`, `CanUse`, `HelperFor`, `Helper`); `player.Moves` from `MovesOf(party) | FieldHelp.Moves(...)` in `GameEngine` and `HeadlessScriptHost`; the `granted` question (a `Query`, a case in `ScriptParser` and `ScriptRunner`, a method of both hosts, a line in `ScriptTests.EveryQuestionAnIfCanAskIsRead`, its row in `docs/scripts.md`) asked beside `knows` by `CutTree`, `Rock`, `Boulder`, `RockFace` and `Waterfall`; `usemove` falling back to the helper; `TryInteract`'s water through `CanUse`; the party screen's strip, `PartyScreen.TakeFieldMove` naming its user and `FlyScreen.Flier` a `Pokemon`; `PoketchApp.HiddenMoves`, in `Poketch.Shown` only while the row is on, painted in `ModernUi.Poketch.cs`; the line in `docs/mechanics/rulings.md`.
+- Tests (`FieldMoveTests`, `FieldMovementTests`, `StoryTests`): with the row off every obstacle answers as it does today and a waterfall stays blocked without the move; with it on, a tree falls to a team that knows no Cut once the Forest Badge and HM01 are both held, and not with either alone; Surf and Waterfall take the player out and up through `FieldMovement.Step`; under `Rules` a Modern game is granted the moves and a Platinum one isn't; making a helper leaves `Dice` where it was; a save written with the row on holds nothing of the grants.
+- Shots: the `fieldmoves` mode again with the row on and the team's moves taken away (`fm30_helpers_tree_asks`, `fm31_helpers_cut_in`, `fm32_helpers_party_strip`, `fm33_helpers_fly_map`, `fm34_helpers_poketch`); with the row off that mode's shots are unchanged.
+- **Done when** a Modern game with the badges and the HMs crosses Sinnoh's obstacles with a team that knows none of the moves, and `diff` of a Platinum game with the defaults is empty.
+
+### Q19 · Remembering and renaming from the party menu
+- Can run any time; after plan 13 · V4 it opens V4's prompt instead of building it.
+- The style guide first: the party bullet of "Menu screens (G10)" (the two entries, the list of moves to remember) and its keyboard bullet (the prompt's heading). `OptionRow.PartyTools`; `PartyActionKind.Remember` and `Rename` in `PartyScreen.ActionsFor` while it is on; `Models/Relearning.cs` (`Relearning.MovesFor(pokemon)`: the `Learnset`'s level-up moves at or below its level that it doesn't know, each once, in level order); the list, and the forgetting through `ModernUi.MoveChoice`; `GameState.Nickname` on `NameEntry` (written here if V4 hasn't, and V4 then reads it as done), offered for the player's own Pokémon (`OriginalTrainer` null).
+- Tests (`MenuScreenTests`): the list for a Pokémon of known moves and level; a fifth move asks which to forget and B keeps all four; a traded Pokémon has no RENAME; a name keeps to `NameEntry`'s rules and survives a save; with the row off the menu is today's.
+- Shots: `menus` (`20r_party_remember`, `20s_party_remember_forget`, `20t_party_rename`).
+- **Done when** a Modern game's Pokémon takes back a move it forgot and a new name from the party menu, and a Platinum game's menu is unchanged.
+
+### Q20 · Skipping a scene already seen
+- Can run any time now that plan 02 · S4's scenes exist; it is worth more with every chapter, and beside Q14, which touches the same scripts.
+- The style guide's "Story scenes" bullet of "Field menus and notices" (the hold's ring) first. `scene` and `endscene` (two `Op`s, cases in the parser and the runner, both hosts, lines in `ScriptTests.EveryCommandHasItsLine`, rows in `docs/scripts.md`), and `ScriptLibrary.Problems` naming a scene left open; `StoryState.ScenesSeen` saved as `SaveData.ScenesSeen`, and `GameSettings.ScenesSeen`; `OptionRow.SkipScenes`; `ScriptRunner.Hurry` and `FieldHost.Skipping`; the hold read in `UpdateScript`; S4's scenes wrapped (the scripts of the player's house, Twinleaf Town, Route 201, the lakefront and the lake, Sandgem Town and the lab).
+- Tests (`StoryTests`, `OpeningTests`): every scene on every way through played twice on `HeadlessScriptHost`, once in a hurry, leaves the same flags, variables, items, party, bag, map and positions, and asks the same questions (`Asked`); the hurry stops at each `ask`, `choose`, battle and screen; under `Seen` a scene this save hasn't finished can't be skipped; a scene skipped counts as seen.
+- Shots: the `opening` mode holds the skip in the lab's scene (`op30_skip_held`, `op31_skip_done`) and prints the player's and the people's tiles both ways; with the row off the mode's shots are unchanged.
+- **Done when** the opening's scenes can be skipped on a second playthrough and leave everyone where playing them does.
+
+### Q21 · Requests
+- After Q14, whose start-menu panel and `RulesDefault` row it shares; no chapter is needed first, since the clowns are in the game.
+- The style guide first: "Field menus and notices" (the start menu's entry, the pinned line) and "Menu screens (G10)" (the page). `Story/Requests.cs` (`Request`, its steps as conditions, `Requests.State(story)`) with the first entry, the Pokétch campaign; the `request` command (an `Op`, a case in the parser and the runner, both hosts, a line in `ScriptTests.EveryCommandHasItsLine`, its row in `docs/scripts.md`); `OptionRow.Requests`; `StartMenuChoice.Requests` in `StartMenu.Shown` while the row is on and a request is known; `RequestsScreen` and its painter in `ModernUi.Records.cs`; `SaveData.PinnedRequest`, the line over the field and the giver's bubble.
+- Tests: every flag and variable a request names exists in some script, as Q14's rumours are held; every request can be finished on some way through (`StoryTests`, `HeadlessScriptHost`); a request's state follows the flags, and an older save's read right with no migration; with the row off the start menu is today's.
+- Shots: `menus` (`09d_startmenu_requests`, `09e_requests_open`, `09f_requests_done`); `story` after the first clown (`st61_request_pinned`, `st62_request_giver`).
+- **Done when** the Pokétch campaign shows as an open request with its next step from the first clown on, can be pinned over the field, and moves to DONE as its last step is taken.
+
+### Q22 · What is left here
+- Can run before Q21 with the sign and the start menu's panel alone; the THIS AREA tab comes with Q21's page.
+- The style guide's "Location sign" and "Start menu" bullets of "Field menus and notices" first. `Models/AreaChecklist.cs` (the items, trainers and species left, and what can be come to now), `OptionRow.AreaChecklist`, the counts on `LocationSign` and on the start menu's panel, the THIS AREA tab.
+- Tests on the fixtures and on maps of the test's own (`Fixtures`, `StoryTests.OwnMaps`): a ball picked up and a hidden item found each lower the count; twins count once; a ball behind a cut tree counts only once Cut can be used there; the water's species count only with Surf and a rod's only with the rod; with the row off the sign is today's.
+- Shots: `10d_sign_counts` beside `10_sign_and_notice`, `09g_requests_this_area`, `09h_startmenu_counts`.
+- **Done when** arriving on Route 202 says how many items, trainers and species are left there, and each number falls as one is taken, beaten or caught.
+
+### Q23 · Trainer tips
+- After Q10, whose HELP page takes the TIPS tab.
+- The style guide first: the tip's card in "Field menus and notices" and "Battle panels", the TIPS tab in "Menu screens (G10)". `Models/Tips.cs` with about thirty tips in our own words; `SaveData.TipsSeen`; the triggers in `BattleEngine.Show` and in `GameEngine` (`PlayEvolutions`, a ledge's hop, a full bag); the `tip` command (an `Op`, a case in the parser and the runner, both hosts, a line in `ScriptTests.EveryCommandHasItsLine`, its row in `docs/scripts.md`) in `common.txt`'s obstacle scripts' `Cannot` labels, `Nurse`, `PC` and `Clerk`; the card; `OptionRow.Tips`; the TIPS tab.
+- Tests: every tip is named by a trigger in the code or a script, and every trigger names a tip; a tip shows once in a game; none shows while a script runs or the log plays; a Platinum game under `Rules` shows none.
+- Shots: `st60_tip_cut_tree` in `story`, `23j_battle_tip` (the first status condition) in `battle`, `look_14_help_tips`.
+- **Done when** a Modern game explains the first status condition and the first tree in the way, once each, and `diff` of a Platinum game with the defaults is empty.
+
+### Q24 · Timing assists and rumble
+- After Q5, whose `LastDevice` names the pad. The timing half needs nothing and can run earlier, with Q9; the rumble then comes after Q5.
+- `Core/TimingAssist.cs` and `OptionRow.TimingAssist`; `FishingAttempt` taking the setting (the window doubled, or the press made as the bite comes); the rule for the later timed presses written in `docs/mechanics/rulings.md` beside the rod's numbers. `Core/Haptics.cs` (the pulses, `Play`, `Listen`) and `OptionRow.Rumble`; the pulses fired from `AudioManager.PlaySound` by the sound's name and, for a critical hit, from `BattleEngine.Show` at impact; `Raylib.SetGamepadVibration` for `InputManager.LastDevice`'s pad only. Nothing is drawn but the two rows.
+- Tests: under Automatic an attempt played with no press lands every bite, over many seeds; under Generous a press at one and a half times `HookSeconds` lands it; with the row off the numbers are the rulings'; every pulse is named after a sound in `SoundBank` or is one of its own; a battle played through `BattleEngine` asks for a hit's pulse at the hit's impact and not at the lunge (`Haptics.Listen`), and for nothing with the row off or the keyboard last in use.
+- Shots: `look_8_options` with the two rows; `fm36_fish_assisted` (a bite landed under Automatic).
+- **Done when** the Super Rod lands every bite under Automatic, a pad trembles at a hit, a catch and a bite, and the user has judged the strengths on a pad.
+
+### Q25 · A lost battle fought again, and a battle suspended
+- After plan 08 · P10 (the `BattleRecordFile` it writes as a battle begins), Q1 (the close prompt) and Q2 (the slot a suspension is kept beside).
+- The style guide first: "Battle panels" (TRY AGAIN and GIVE UP), the "Leaving the game" line of "Field menus and notices" (SUSPEND AND QUIT), "Opening and title screen" (a slot's card naming its suspended battle). `OptionRow.RetryBattles`; the snapshot (`BuildSave` and the file) in `StartTrainerBattle`, `StartWildBattle` and the host's battles; the question in `EndBattle` before `WhiteOut`; the battle rebuilt from the file on a seed from `Dice`, and a scene's battle fought again under its waiting script; the battles left out (`canlose`, `BattleKind.CatchingLesson`, `Safari` and `PalPark`, a link or versus battle, plan 13's challenge rules); `suspend<n>.json` written from the close prompt, read by `ContinueGame`, replayed with nothing shown and deleted; a retry counted once plan 13 · V8 exists.
+- Tests: a lost wild battle tried again gives back the money, the items used and the HP, against the same Pokémon; a trainer fought again has his whole team back; a `canlose` battle asks nothing; with the row off a loss whites out as now; a suspended battle resumed reaches the same log as one played without a break, as `BattleCoreTests.ARecordedBattleReplaysTheSame` holds a replay, and its file is gone once resumed; a suspension of another data version is refused.
+- Shots: in `flow`, `86_flow_try_again`, `87_flow_tried_again`, `88_flow_suspend_prompt` and `89_flow_resumed`; in `title`, `title_17_continue_suspended`.
+- **Done when** a lost battle can be fought again from its start with the row on, and a battle left by the window's close button comes back at its last menu on CONTINUE, once.
+
+### Q26 · Searching, sorting and moving many in the boxes
+- After plan 06 · R12 (Platinum's own boxes) and Q13; the markings join the search once plan 08 · P3 and R12 bring them, and releasing many waits for Q9's hold.
+- The style guide's "PC boxes" bullet of "Menu screens (G10)" first (the search panel, a group picked up). `OptionRow.BoxTools`; `Models/BoxQuery.cs` (the filters, the sorts, the places found); the selection set in `PCScreen`, with `Move` and `Confirm` holding many; the search panel in `ModernUi.Storage.cs`; several released behind the hold.
+- Tests (`MenuScreenTests`): each filter; a sort keeps the party and is the same twice; a rectangle put down in a box with room lands in order, and in a box without room is refused whole; releasing many waits for the hold; with the row off the PC is R12's.
+- Shots: `menus` (`30f_pc_search`, `30g_pc_results`, `30h_pc_sorted`, `30i_pc_picked_many`).
+- **Done when** every Starly in eighteen boxes is found, picked up together and put down in one box, and a Platinum game's PC is unchanged.
+
+### Q27 · Saved teams and the judge
+- After Q26. Plan 07 · O2's `Id` if O2 has run; if not, this session gives every Pokémon its `Id` as O2 describes it (a GUID, given to each Pokémon of an older save as it loads, kept by `Pokemon.CopyStateFrom` and `SavedPokemonData`), and O2 keeps it.
+- The style guide's "PC boxes" bullet first. `SaveData.Teams` (a name and up to six ids); SAVE TEAM and a team swapped in from the PC in one step, the party going where the team's members were, a member no longer stored skipped with a line; the judge's six words of our own for each IV on the PC's side panel.
+- Tests: a team survives a save, a load and a sort; a swap with a member released brings the rest; `BattleCoreTests.ACopyTakesOnEverythingThatCanChange` passes with `Id`; a save from before ids gives each Pokémon one, once, and none twice.
+- Shots: `menus` (`30j_pc_teams`, `30k_pc_judge`).
+- **Done when** two named teams swap in and out of the party from the PC after a save and a load.
+
+### Q28 · Trades between one's own saves
+- After Q1 and Q2; it can run before Q26.
+- The style guide first: "Opening and title screen" (the HOME card) and "Menu screens (G10)" (the Home screen's two sides). `TitleChoice.Home`, `GameState.Home`, `UI/HomeScreen.cs` and its painter in `ModernUi.Storage.cs`; two slots read through `SavePaths`; TRADE through the journal (`home.pending.json`) and Q1's writer, and a journal found on the title finished first; `OriginalTrainer` set from the giving save's player; `SaveData.ArrivedByTrade`, handed by `ContinueGame` to `ReceiveTradedPokemon`; a save of another data version refused; plan 13's run under way and plan 18's `Crossing.CanTake` asked where they exist.
+- Tests on temp folders: a trade moves one Pokémon each way and both saves load; an arriving Kadabra evolves as its save is continued and one holding an Everstone doesn't; a Pokémon traded back is its first player's own again; a trade stopped after its journal is finished on the next start, with each Pokémon in one save only; the harness's out dir holds its own files.
+- Shots: `title_18_home`, `title_19_home_trade`, and `title_20_traded_evolves` (the evolution as the receiving save opens).
+- **Done when** a Kadabra traded from slot 2 to slot 1 becomes Alakazam as slot 1 is continued, and killing the game in the middle of a trade neither loses nor copies a Pokémon.
+
+### Q29 · The Home box
+- After Q28 (its screen and journal), Q26 (moving many) and Q27 (the ids that refuse a copy); plan 13's `RunState` and V6's mark are asked once they exist.
+- The style guide's Home bullet in "Menu screens (G10)" first. `Models/Bank.cs` and `home.json` in `SavePaths.Folder`; the Home side of `HomeScreen` against one slot's party and boxes; the rules at each move (a run under way, a randomised Pokémon's mark, `Crossing.CanTake`, an id already there, the data version).
+- Tests: a deposit and a withdrawal give back a Pokémon whole, every saved field; a Pokémon of a Nuzlocke under way can't leave and can once the run has ended; a copy is refused by its id; a `home.json` of another data version is refused with a notice.
+- Shots: `title_21_home_box`, `title_22_home_refused`.
+- **Done when** the team of a finished run is put in the Home box from its save and taken out into the main game, and no Pokémon is ever in two places.
+
+### Q30 · A gallery of the game's models
+- After Q15, whose title card it is built like (with plan 16 · T1's); it can run any time after that.
+- The style guide first: "Pokémon in menus" and "Do and don't" (the gallery is a scene like the evolution's), "Opening and title screen" (the GALLERY card), "Menu screens (G10)" (the gallery's panel, and the hint on a Pokédex entry). `UI/GalleryScreen.cs`, `GameState.Gallery`, `TitleChoice.Gallery`, the way in from a Pokédex entry; `GalleryScreen.Render` before `BeginTextureMode(virtualScreen)`; `PokemonSprites.Render`'s optional turn; the clip-to-pose mapping moved from `PokemonStudio` into `PokemonAnimation`; the cry; `Request` with the baked sprite until `TryGet` has the model; the people's tab through `CharacterStudio.Render`; the entries from `SeenSpecies`, the slots' on the title.
+- Tests: the screen's state (only species seen, every form of each, the clips in order, the turn wrapping round); a species not built shows its sprite and is asked for once; a bake with no turn is what it was (the sprite signatures unchanged).
+- Shots: `title_23_gallery_turning`, `title_24_gallery_clip`, `title_25_gallery_people`, `26w_pokedex_gallery_hint`; `profile` with the gallery open, inside the 8 ms budget on High.
+- **Done when** any species seen can be turned, played through its clips and heard from the title and from its Pokédex entry, and no frame waits for a model.
 
 ## Risks
 
