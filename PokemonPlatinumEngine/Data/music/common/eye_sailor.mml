@@ -1,0 +1,25 @@
+# A sailor's eyes meet the player's: a swaying, sentimental ballad in the old enka style, on accordion.
+# Platinum's role SEQ_EYE_ENKA (Sailor, Fisherman). Original composition for this game.
+title Eyes Meet! Sailor
+tempo 104
+meter 4/4
+reverb 0.4
+
+track lead accordion vol=0.8 pan=-0.05 rev=0.38
+  L o5 e4. f8 e4 c4 | o5 d4 f4 a4. f8 | o5 e4. f8 e4 o4 b4 | o5 c4. o4 b8 a2 |
+  o5 a4. g8 f4 c4 | o5 d4 f4 a4 f4 | o5 e4. f8 e4 d4 | o5 e4 c4 o4 a2 |
+
+track strings strings vol=0.4 pan=0.25 rev=0.45
+  L o4 (c e a)1 | (d f a)1 | (e g+ b)1 | (c e a)1 |
+  (c f a)1 | (d f a)1 | (d e g+ b)1 | (c e a)1 |
+
+track guitar guitar vol=0.4 pan=-0.3 rev=0.3
+  L o3 a8 o4 e8 a8 e8 o3 a8 o4 e8 a8 e8 | o3 d8 a8 o4 d8 o3 a8 d8 a8 o4 d8 o3 a8 | o3 e8 b8 o4 e8 o3 b8 e8 b8 o4 e8 o3 b8 | o3 a8 o4 e8 a8 e8 o3 a8 o4 e8 a8 e8 |
+  o3 f8 o4 c8 f8 c8 o3 f8 o4 c8 f8 c8 | o3 d8 a8 o4 d8 o3 a8 d8 a8 o4 d8 o3 a8 | o3 e8 b8 o4 e8 o3 b8 e8 b8 o4 e8 o3 b8 | o3 a8 o4 e8 a8 e8 o3 a4 r4 |
+
+track bass contrabass vol=0.6 rev=0.15
+  L o3 a2 e2 | d2 a2 | e2 b2 | a2 e2 |
+  f2 c2 | d2 a2 | e2 b2 | a2 r2 |
+
+track drums kit vol=0.38 rev=0.2
+  v80 L [ b4 h8 h8 s4 h8 h8 | ]8

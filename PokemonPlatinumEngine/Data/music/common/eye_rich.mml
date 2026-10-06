@@ -1,0 +1,21 @@
+# A rich trainer's eyes meet the player's: a pompous dotted strut of brass over a prim piano.
+# Platinum's role SEQ_EYE_RICH (Rich Boy, Lady, Gentleman, Socialite). Original composition for this game.
+title Eyes Meet! Rich
+tempo 116
+meter 4/4
+reverb 0.3
+
+track lead brass vol=0.8 pan=0 rev=0.28
+  L o5 b-8. f16 b-8. o6 d16 f4 d4 | o6 e-8. d16 e-8. g16 b-4 g4 | o6 f8. e-16 d8. c16 c4 o5 a4 | o5 b-4 f4 b-2 |
+  o5 b-8. f16 b-8. o6 d16 f4 b-4 | o6 g8. f16 e-8. d16 e-4 g4 | o6 f8. a16 o7 c8. o6 a16 f4 e-4 | o6 d4 o5 b-4 o6 d4 r4 |
+
+track piano piano vol=0.5 pan=0.25 rev=0.3
+  L o4 (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)8 r8 | (b- >e- g)8 r8 (b- >e- g)8 r8 (b- >e- g)8 r8 (b- >e- g)8 r8 | (a >c f)8 r8 (a >c f)8 r8 (a >c f)8 r8 (a >c f)8 r8 | (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)8 r8 |
+  (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)8 r8 | (b- >e- g)8 r8 (b- >e- g)8 r8 (b- >e- g)8 r8 (b- >e- g)8 r8 | (a >c e-)8 r8 (a >c e-)8 r8 (a >c e-)8 r8 (a >c e-)8 r8 | (b- >d f)8 r8 (b- >d f)8 r8 (b- >d f)4 r4 |
+
+track bass tuba vol=0.62 rev=0.1
+  L o4 b-4 f4 b-4 f4 | e-4 b-4 e-4 b-4 | f4 c4 f4 c4 | b-4 f4 b-4 r4 |
+  b-4 f4 b-4 f4 | e-4 b-4 e-4 g4 | f4 c4 f4 a4 | b-4 f4 b-4 r4 |
+
+track drums kit vol=0.45 rev=0.15
+  v85 L [ b4 s8. s16 b4 s4 | ]8

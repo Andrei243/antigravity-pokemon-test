@@ -1,0 +1,21 @@
+# A kid's eyes meet the player's: a bouncy marimba skip that loops until the battle cuts in.
+# Platinum's role SEQ_EYE_KID (Tuber, Ninja Boy, Twins, Poké Kid). Original composition for this game.
+title Eyes Meet! Kid
+tempo 160
+meter 4/4
+reverb 0.22
+
+track lead marimba vol=0.72 pan=0 rev=0.2
+  L o5 c8 e8 g8 e8 c8 e8 g4 | o5 a8 o6 c8 o5 a8 f8 a4 r4 | o5 g8 b8 o6 d8 o5 b8 g8 f8 e8 d8 | o5 c4 e4 c2 |
+  o5 e8 g8 o6 c8 o5 g8 e8 g8 o6 c4 | o6 c8 o5 a8 f8 a8 o6 c4 o5 a4 | o5 g8 a8 b8 o6 d8 o5 b8 g8 a8 b8 | o6 c4 o5 g4 o6 c2 |
+
+track pluck pizzicato vol=0.45 pan=0.3 rev=0.2
+  L o4 r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 | r8 (c f a)8 r8 (c f a)8 r8 (c f a)8 r8 (c f a)8 | r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 | r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 |
+  r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 | r8 (c f a)8 r8 (c f a)8 r8 (c f a)8 r8 (c f a)8 | r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 | r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 r4 |
+
+track bass bass vol=0.65 rev=0.05
+  L o4 c4 g4 c4 g4 | f4 c4 f4 c4 | g4 d4 g4 d4 | c4 g4 c2 |
+  c4 g4 c4 g4 | f4 c4 f4 a4 | g4 d4 g4 b4 | c4 g4 c2 |
+
+track drums kit vol=0.46 rev=0.1
+  v95 L [ b8 h8 s8 h8 b8 b8 s8 h8 | b8 h8 s8 h8 b8 h8 (s x)8 s8 | ]4

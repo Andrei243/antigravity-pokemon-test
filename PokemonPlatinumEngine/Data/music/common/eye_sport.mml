@@ -1,0 +1,21 @@
+# A sporty trainer's eyes meet the player's: a bright, quick square-wave run with a bouncing bass.
+# Platinum's role SEQ_EYE_SPORT (Swimmer, Cyclist, Bird Keeper, Skier, Jogger). Original composition for this game.
+title Eyes Meet! Sport
+tempo 160
+meter 4/4
+reverb 0.2
+
+track lead square vol=0.62 pan=0 rev=0.18
+  L o5 d8 f+8 a8 o6 d8 o5 a8 f+8 d8 f+8 | o5 g8 b8 o6 d8 g8 d8 o5 b8 g8 b8 | o5 a8 o6 c+8 e8 a8 g8 e8 c+8 e8 | o6 f+4 e8 d8 d2 |
+  o5 b8 o6 d8 f+8 b8 a8 f+8 d8 f+8 | o6 g8 d8 e8 d8 o5 b8 o6 d8 g8 d8 | o6 e8 c+8 o5 a8 o6 c+8 e8 a8 g8 e8 | o6 d4 f+4 d2 |
+
+track chords pulse vol=0.38 pan=0.3 rev=0.15
+  L o4 r8 (d f+ a)8 r8 (d f+ a)8 r8 (d f+ a)8 r8 (d f+ a)8 | r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 | r8 (c+ e a)8 r8 (c+ e a)8 r8 (c+ e a)8 r8 (c+ e a)8 | r8 (d f+ a)8 r8 (d f+ a)8 r8 (d f+ a)8 r8 (d f+ a)8 |
+  r8 (d f+ b)8 r8 (d f+ b)8 r8 (d f+ b)8 r8 (d f+ b)8 | r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 r8 (d g b)8 | r8 (c+ e a)8 r8 (c+ e a)8 r8 (c+ e a)8 r8 (c+ e a)8 | r8 (d f+ a)8 r8 (d f+ a)8 r8 (d f+ a)4 r8 |
+
+track bass synthbass vol=0.68 rev=0.05
+  L [ o3 d8 o4 d8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 d8 o4 d8 ]4 |
+  [ o3 b8 o4 b8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 d8 o4 d8 ]4 |
+
+track drums kit vol=0.52 rev=0.1
+  v100 L [ b8 h8 s8 h8 b8 h8 s8 b8 | b8 h8 s8 h8 b8 b8 (s x)8 h8 | ]4

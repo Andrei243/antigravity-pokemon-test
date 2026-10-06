@@ -98,6 +98,7 @@ public sealed class EvolutionScreen
         morphAngle = MathF.PI / 2f;
         Go(EvolutionPhase.Notice, $"What? {oldName} is evolving!");
         AudioManager.PlayCry(pokemon);
+        AudioManager.PlayMusic(MusicRole.Evolution);
     }
 
     private void Go(EvolutionPhase phase, string? message = null)
@@ -148,7 +149,7 @@ public sealed class EvolutionScreen
                 break;
             case EvolutionPhase.Reveal when phaseTime >= RevealTime:
                 Go(EvolutionPhase.Congratulate, $"Congratulations! Your {oldName} evolved into {pokemon!.Species.Name}!");
-                AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
+                AudioManager.PlayFanfare(MusicRole.FanfareEvolution);
                 break;
         }
     }

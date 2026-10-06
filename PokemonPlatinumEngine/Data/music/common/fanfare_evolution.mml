@@ -1,0 +1,21 @@
+# An evolution completed: a triumphant brass flourish.
+# Plays once, then the music comes back. Original composition for this game.
+title Evolution Complete
+tempo 132
+meter 4/4
+reverb 0.35
+
+track lead trumpet vol=0.9 rev=0.3
+  o5 g8 g8 g8 o6 c8 e4 g4 | o6 a8 g8 f8 a8 g4 f4 | o6 e4 g4 o7 c2 |
+
+track harmony horn vol=0.55 pan=-0.25 rev=0.3
+  o5 e8 e8 e8 g8 o6 c4 e4 | o6 f8 e8 d8 f8 e4 d4 | o6 c4 e4 g2 |
+
+track chords strings vol=0.45 pan=0.3 rev=0.4
+  o4 (c e g)2 (c e g)2 | (c f a)2 (d g b)2 | (c e g)1 |
+
+track bass tuba vol=0.65 rev=0.15
+  o4 c4 g4 c4 g4 | f4 c4 g4 d4 | c2 c2 |
+
+track drums kit vol=0.5 rev=0.15
+  v90 b8 s16 s16 b8 b8 s4 s4 | s8 s8 s8 s8 s8 s8 s8 s8 | (b c)2 r2 |

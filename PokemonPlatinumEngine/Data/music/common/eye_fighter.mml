@@ -1,0 +1,21 @@
+# A fighter's eyes meet the player's: a driving minor-key rock riff on lead synth and guitar.
+# Platinum's role SEQ_EYE_FIGHT (Black Belt, Battle Girl, Psychic, Guitarist, Roughneck). Original composition for this game.
+title Eyes Meet! Fighter
+tempo 168
+meter 4/4
+reverb 0.18
+
+track lead sawlead vol=0.72 pan=0 rev=0.18
+  L o5 e8 e8 r8 e8 g8 e8 d8 e8 | o5 b8 b8 r8 b8 a8 g8 f+8 g8 | o6 c8 c8 r8 c8 e8 d8 c8 d8 | o6 d8 d8 r8 d8 f+8 e8 d8 o5 a8 |
+  o5 e8 g8 b8 o6 e8 d8 o5 b8 g8 b8 | o6 e4 d8 o5 b8 o6 e4 g4 | o6 g8 e8 c8 e8 g8 a8 g8 e8 | o6 f+4 d+4 o5 b2 |
+
+track guitar guitar vol=0.5 pan=0.3 rev=0.12
+  L o3 [ (e b)8 ]8 | [ (e b)8 ]8 | [ (c g)8 ]8 | [ (d a)8 ]8 |
+  [ (e b)8 ]8 | [ (e b)8 ]8 | [ (c g)8 ]8 | [ (b >f+)8 ]8 |
+
+track bass synthbass vol=0.7 rev=0.05
+  L o3 [ e8 ]8 | [ e8 ]8 | [ c8 ]8 | [ d8 ]8 |
+  [ e8 ]8 | [ e8 ]8 | [ c8 ]8 | o2 [ b8 ]8 |
+
+track drums kit vol=0.55 rev=0.1
+  v100 L [ b8 h8 s8 h8 b8 b8 s8 h8 | ]7 b8 h8 s8 h8 s16 s16 s16 s16 s8 s8 |

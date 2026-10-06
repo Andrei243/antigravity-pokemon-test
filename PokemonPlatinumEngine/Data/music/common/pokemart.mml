@@ -1,0 +1,27 @@
+# A Poké Mart: a relaxed little bossa on electric piano and flute, for browsing the shelves.
+# Platinum's role SEQ_FS (the Friendly Shop). Original composition for this game.
+title Poké Mart
+tempo 120
+meter 4/4
+reverb 0.3
+
+track melody flute vol=0.75 pan=-0.1 rev=0.3
+  L o6 c4 o5 a8 o6 c8 d4 c4 | o5 b-4 g8 b-8 o6 d4 c4 | o5 b-4 g8 e8 c4 e4 | o5 f2. r4 |
+  o5 a4 f8 a8 o6 c4 o5 a4 | o5 b-4 o6 d8 c8 o5 b-4 g4 | o5 g4 b-8 o6 c8 d4 e4 | o6 f2. r4 |
+  o6 c4 o5 a8 o6 c8 d4 c4 | o5 b-4 g8 b-8 o6 d4 c4 | o5 b-4 g8 e8 c4 e4 | o5 f2. r4 |
+  o5 a4 f8 a8 o6 c4 o5 a4 | o5 b-4 o6 d8 c8 o5 b-4 g4 | o5 g4 b-8 o6 c8 d4 e4 | o5 f2. r4 |
+
+track keys epiano vol=0.42 pan=0.25 rev=0.3
+  L o4 (f a >c d)4. (f a >c d)8 r2 | (f g b- >d)4. (f g b- >d)8 r2 | (e g b- >c)4. (e g b- >c)8 r2 | (f a >c d)4. (f a >c d)8 r2 |
+  (d f a >c)4. (d f a >c)8 r2 | (f g b- >d)4. (f g b- >d)8 r2 | (e g b- >c)4. (e g b- >c)8 r2 | (f a >c)4. (f a >c)8 r2 |
+  (f a >c d)4. (f a >c d)8 r2 | (f g b- >d)4. (f g b- >d)8 r2 | (e g b- >c)4. (e g b- >c)8 r2 | (f a >c d)4. (f a >c d)8 r2 |
+  (d f a >c)4. (d f a >c)8 r2 | (f g b- >d)4. (f g b- >d)8 r2 | (e g b- >c)4. (e g b- >c)8 r2 | (f a >c)4. (f a >c)8 r2 |
+
+track bass bass vol=0.62 rev=0.1
+  L o4 f4. c8 f4. c8 | g4. d8 g4. d8 | c4. g8 c4. g8 | f4. c8 f4. c8 |
+  d4. a8 d4. a8 | g4. d8 g4. d8 | c4. g8 c4. g8 | f4. c8 f4. c8 |
+  f4. c8 f4. c8 | g4. d8 g4. d8 | c4. g8 c4. g8 | f4. c8 f4. c8 |
+  d4. a8 d4. a8 | g4. d8 g4. d8 | c4. g8 c4. g8 | f4. c8 f4. c8 |
+
+track drums kit vol=0.36 rev=0.15
+  v70 L [ b8. k16 s8 k8 b8 k8 s8 k8 | ]16

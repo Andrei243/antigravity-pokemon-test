@@ -4,6 +4,7 @@ using Xunit;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumTests;
 
@@ -71,7 +72,8 @@ public class MusicTests
             Assert.True(song.Loops, $"{id} should loop");
             Assert.True(song.LoopDuration() >= 25, $"{id} loops after only {song.LoopDuration():0.0} s");
         }
-        foreach (var role in new[] { MusicRole.FanfareHeal, MusicRole.FanfareItem, MusicRole.FanfareLevelUp, MusicRole.FanfarePokemon })
+        foreach (var role in new[] { MusicRole.FanfareHeal, MusicRole.FanfareItem, MusicRole.FanfareLevelUp, MusicRole.FanfarePokemon,
+                     MusicRole.FanfareEvolution, MusicRole.FanfareBadge, MusicRole.FanfareTM, MusicRole.FanfareKeyItem })
         {
             var song = MusicLibrary.Get(MusicDirector.Resolve(role, null, MusicLibrary.Exists)!)!;
             Assert.False(song.Loops, $"{song.Id} should play once");
@@ -401,8 +403,10 @@ public class MusicTests
         foreach (var (cls, theme) in SoundMap.BattleThemes) Assert.True(MusicDirector.BattleThemes.ContainsKey(theme), $"{cls}: '{theme}'");
         foreach (var role in Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Eye")))
             Assert.NotNull(MusicDirector.Resolve(role, null, MusicLibrary.Exists));
-        Assert.Equal("common/eye_girl", MusicDirector.Resolve(MusicRole.EyeLady, null, MusicLibrary.Exists));
-        Assert.Equal("common/eye_boy", MusicDirector.Resolve(MusicRole.EyeChampion, null, MusicLibrary.Exists));
+        Assert.Equal("common/eye_lady", MusicDirector.Resolve(MusicRole.EyeLady, null, MusicLibrary.Exists));
+        Assert.Equal("common/eye_champion", MusicDirector.Resolve(MusicRole.EyeChampion, null, MusicLibrary.Exists));
+        // Without its own song, an eye theme still falls back the way the director says
+        Assert.Equal("common/eye_girl", MusicDirector.Resolve(MusicRole.EyeLady, null, id => id is "common/eye_girl" or "common/eye_boy"));
 
         // Every trainer class the game's maps use is in the map
         MapDatabase.Initialize();
@@ -438,5 +442,55 @@ public class MusicTests
             Assert.True(song.Loops, $"{song.Id} should loop");
             Assert.True(song.LoopDuration() >= 8, $"{song.Id} loops after only {song.LoopDuration():0.0} s");
         }
+    }
+
+    [Fact]
+    public void TestTheCoreRolesHaveSongsOfTheirOwn()
+    {
+        // Plan 05 · A5: every role heard first has its own song now; what still falls back waits for A6
+        var waiting = new[] { MusicRole.BattleGalactic, MusicRole.BattleGalacticBoss, MusicRole.BattleEliteFour, MusicRole.BattleChampion,
+            MusicRole.BattleLegendary, MusicRole.VictoryGymLeader };
+        foreach (var role in Enum.GetValues<MusicRole>().Except(waiting))
+            Assert.True(MusicLibrary.Exists($"{MusicDirector.Common}/{MusicDirector.FileName(role)}"), $"{role} has no song of its own");
+        foreach (var role in Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Eye")).Append(MusicRole.Evolution).Append(MusicRole.Rival).Append(MusicRole.Introduction))
+        {
+            var song = MusicLibrary.Get(MusicDirector.Resolve(role, null, MusicLibrary.Exists)!)!;
+            Assert.True(song.Loops, $"{song.Id} should loop");
+            Assert.True(song.LoopDuration() >= 8, $"{song.Id} loops after only {song.LoopDuration():0.0} s");
+        }
+        // Each eye theme is a tune of its own, not a copy of another's
+        var eyes = Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Eye")).Select(r => MusicDirector.Resolve(r, null, MusicLibrary.Exists)).ToList();
+        Assert.Equal(eyes.Count, eyes.Distinct().Count());
+        // The Marts play their own theme
+        MapDatabase.Initialize();
+        foreach (var mart in MapDatabase.MapNames.Where(n => n.EndsWith("PokeMart")))
+            Assert.Equal("common/pokemart", MapDatabase.Get(mart).BgmTrack);
+    }
+
+    [Fact]
+    public void TestAnItemIsReceivedToTheFanfareOfItsKind()
+    {
+        Assert.Equal(MusicRole.FanfareItem, ScriptRunner.FanfareFor(ItemDatabase.Get("Potion")!));
+        Assert.Equal(MusicRole.FanfareTM, ScriptRunner.FanfareFor(ItemDatabase.GetAll().First(i => i.Pocket == ItemPocket.TMsAndHMs)));
+        Assert.Equal(MusicRole.FanfareKeyItem, ScriptRunner.FanfareFor(ItemDatabase.GetAll().First(i => i.Pocket == ItemPocket.KeyItems)));
+
+        var library = ScriptLibrary.FromSources(("test", "script S\n give \"Potion\"\n give \"TM01\"\n givebadge Coal\n fanfare evolution"));
+        var host = new HeadlessScriptHost();
+        var runner = new ScriptRunner(library, host);
+        runner.Start(library.All.First());
+        runner.RunToEnd();
+        Assert.Equal(new[] { "fanfare FanfareItem", "fanfare FanfareTM", "fanfare FanfareBadge", "fanfare FanfareEvolution" }, host.Log.Where(l => l.StartsWith("fanfare")));
+    }
+
+    [Fact]
+    public void TestTheRivalsThemeCutsInWhileHeTalks()
+    {
+        var library = ScriptLibrary.Default;
+        var barry = library.All.First(s => s.File == "twinleaf_town" && s.Name == "Barry");
+        var host = new HeadlessScriptHost();
+        var runner = new ScriptRunner(library, host);
+        runner.Start(barry, null, new[] { "Barry: Hey!" });
+        runner.RunToEnd();
+        Assert.Equal(new[] { "music common/rival", "music area" }, host.Log.Where(l => l.StartsWith("music")));
     }
 }

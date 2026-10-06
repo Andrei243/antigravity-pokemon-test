@@ -1,0 +1,25 @@
+# Evolution: a shimmering ostinato that climbs and circles, holding its breath for the change.
+# Platinum's role SEQ_SHINKA. Original composition for this game.
+title Evolution
+tempo 132
+meter 4/4
+reverb 0.4
+
+track ostinato vibraphone vol=0.6 pan=0.2 rev=0.4
+  L [ o5 a8 o6 c8 e8 c8 ]2 | [ o5 a8 o6 c8 f8 c8 ]2 | [ o5 b8 o6 d8 g8 d8 ]2 | [ o5 b8 o6 e8 g+8 e8 ]2 |
+  [ o5 a8 o6 c8 e8 c8 ]2 | [ o5 a8 o6 c8 f8 c8 ]2 | [ o5 a8 o6 d8 f8 d8 ]2 | [ o5 b8 o6 e8 g+8 e8 ]2 |
+
+track melody strings vol=0.5 pan=-0.25 rev=0.45
+  L o5 e2 a2 | o5 a2 o6 c2 | o6 d2 o5 b2 | o5 g+1 |
+  o6 c2 e2 | o6 f2 c2 | o6 d2 f2 | o6 e1 |
+
+track pad choir vol=0.28 pan=0 rev=0.5
+  L o4 (c e a)1 | (c f a)1 | (d g b)1 | (e g+ b)1 |
+  (c e a)1 | (c f a)1 | (d f a)1 | (e g+ b)1 |
+
+track bass contrabass vol=0.55 rev=0.2
+  L o3 a2 a2 | f2 f2 | g2 g2 | e2 e2 |
+  a2 a2 | f2 f2 | d2 d2 | e2 e2 |
+
+track drums kit vol=0.32 rev=0.25
+  v80 L [ b8 b8 r4 r2 | ]8

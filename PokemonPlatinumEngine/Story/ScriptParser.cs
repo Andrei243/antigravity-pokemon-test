@@ -270,11 +270,15 @@ public static class ScriptParser
                 {
                     Op = Op.Fanfare,
                     Line = line,
-                    Role = r.OneOf("heal", "item", "pokemon", "levelup") switch
+                    Role = r.OneOf("heal", "item", "pokemon", "levelup", "keyitem", "tm", "badge", "evolution") switch
                     {
                         "heal" => MusicRole.FanfareHeal,
                         "item" => MusicRole.FanfareItem,
                         "pokemon" => MusicRole.FanfarePokemon,
+                        "keyitem" => MusicRole.FanfareKeyItem,
+                        "tm" => MusicRole.FanfareTM,
+                        "badge" => MusicRole.FanfareBadge,
+                        "evolution" => MusicRole.FanfareEvolution,
                         _ => MusicRole.FanfareLevelUp
                     }
                 };

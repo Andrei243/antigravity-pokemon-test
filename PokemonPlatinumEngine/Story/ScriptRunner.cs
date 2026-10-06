@@ -252,7 +252,7 @@ public sealed class ScriptRunner
                 var (item, count) = Given(i);
                 host.Bag.AddItem(item, count);
                 lastItem = item.Name;
-                host.Fanfare(MusicRole.FanfareItem);
+                host.Fanfare(FanfareFor(item));
                 string verb = i.Op == Op.Find ? "found" : "received";
                 var lines = new List<string> { count == 1 ? $"{{player}} {verb} the {item.Name}!" : $"{{player}} {verb} {count} × {item.Name}!" };
                 // A TM or an HM says what it holds
@@ -284,6 +284,7 @@ public sealed class ScriptRunner
             }
             case Op.GiveBadge:
                 story.GiveBadge(i.Badge);
+                host.Fanfare(MusicRole.FanfareBadge);
                 break;
             case Op.GiveMoney:
                 host.Money += i.Number;
@@ -533,4 +534,12 @@ public sealed class ScriptRunner
             _ => match.Value
         };
     }) : text;
+
+    /// <summary>The fanfare an item is received to, as the original's: a TM or HM its own, a key item its own, anything else the item's.</summary>
+    public static MusicRole FanfareFor(ItemData item) => item.Pocket switch
+    {
+        ItemPocket.TMsAndHMs => MusicRole.FanfareTM,
+        ItemPocket.KeyItems => MusicRole.FanfareKeyItem,
+        _ => MusicRole.FanfareItem
+    };
 }

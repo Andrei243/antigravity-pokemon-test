@@ -1,0 +1,25 @@
+# One of the Elite Four turns to face the player: a grand, grave call of brass and strings over timpani.
+# Platinum's role SEQ_EYE_TENNO (the Elite Four). Original composition for this game.
+title Eyes Meet! Elite Four
+tempo 120
+meter 4/4
+reverb 0.35
+
+track lead brass vol=0.85 pan=0 rev=0.32
+  L o5 d4 a4 o6 d4. c8 | o6 d4. c8 o5 b-4 f4 | o5 g4 o6 c4 e4. d8 | o6 c+2 o5 a2 |
+  o6 d4 f4 a4. g8 | o6 f4 d4 o5 b-4 o6 d4 | o6 g4 f4 e4 d4 | o6 c+4 e4 a2 |
+
+track strings strings vol=0.45 pan=-0.25 rev=0.4
+  L o4 (d f a)1 | (d f b-)1 | (c e g)1 | (c+ e a)1 |
+  (d f a)1 | (d f b-)1 | (d g b-)1 | (c+ e a)1 |
+
+track timpani timpani vol=0.55 rev=0.3
+  L o3 d4 r4 a4 r4 | b-4 r4 f4 r4 | c4 r4 g4 r4 | a4 r4 e4 r4 |
+  d4 r4 a4 r4 | b-4 r4 f4 r4 | g4 r4 d4 r4 | a4 a4 a4 a4 |
+
+track bass contrabass vol=0.6 rev=0.15
+  L o3 d2 a2 | b-2 f2 | c2 g2 | a2 e2 |
+  d2 a2 | b-2 f2 | g2 d2 | a2 e2 |
+
+track drums kit vol=0.45 rev=0.2
+  v95 L (b c)4 s8 s8 b4 s4 | [ b4 s8 s8 b4 s4 | ]6 b4 s16 s16 s16 s16 s16 s16 s16 s16 s4 |

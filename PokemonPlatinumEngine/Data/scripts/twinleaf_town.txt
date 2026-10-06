@@ -1,0 +1,12 @@
+# Twinleaf Town. docs/scripts.md describes the language; the lines are our own, on the original's beats.
+#
+# The town's own scenes (the morning the adventure begins, Barry bursting in and dashing off to the lake) are plan
+# 02 · S2's. What is here already is Barry by his house, whose theme cuts in while he talks, as it does whenever he
+# turns up in the original.
+
+
+script Barry
+  music "common/rival"
+  sayown
+  music area
+  end
