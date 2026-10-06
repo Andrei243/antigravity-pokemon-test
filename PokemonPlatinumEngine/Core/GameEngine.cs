@@ -398,7 +398,7 @@ public partial class GameEngine
         SaveManager.SaveGame(BuildSave());
         if (quiet) return;
         ShowNotification("Game saved.");
-        AudioManager.PlaySound("select");
+        AudioManager.PlaySound("save");
     }
 
     public void Update(float dt)
@@ -632,8 +632,13 @@ public partial class GameEngine
         // A door that leads somewhere opens as the player steps up to it: the door's own tile, or the open way
         // into a porch with the door in the wall behind
         var (headX, headY) = player.Heading;
-        if (player.IsMoving && currentMap.GetWarpAt(headX, headY) != null && WorldRenderer.DoorPlace(currentMap, headX, headY) != null)
-            world.Life.OpenDoor(currentMap, headX, headY);
+        if (player.IsMoving && currentMap.GetWarpAt(headX, headY) != null && WorldRenderer.DoorPlace(currentMap, headX, headY) is { } opening
+            && world.Life.OpenDoor(currentMap, headX, headY))
+            AudioManager.PlaySound(opening.Glass ? "door_slide" : "door_open");
+
+        // The door the player came out of shuts behind them
+        if (world.Life.TakeShutting() is { } shutting && WorldRenderer.DoorPlace(shutting.Map, shutting.X, shutting.Y) is { } shut)
+            AudioManager.PlaySound(shut.Glass ? "door_slide" : "door_close");
 
         if (trainerApproach != null || currentState != GameState.Overworld) return;
 
@@ -876,12 +881,17 @@ public partial class GameEngine
     private void TryStartSurf()
     {
         if (!player.Moves.HasFlag(FieldMoves.Surf) || !player.StartSurf(currentMap)) return;
+        AudioManager.PlaySound("surf");
         var carrier = playerParty.Members.First(p => p.Moves.Any(m => m.Name == "Surf"));
         ShowNotification($"{carrier.Nickname} used Surf!");
     }
 
     private void HandleWarp(Warp warp)
     {
+        // A door has made its own sound as it opened; any other way through is the original's footsteps on stairs,
+        // and a warp panel its own
+        if (WorldRenderer.DoorPlace(currentMap, warp.SourceX, warp.SourceY) == null)
+            AudioManager.PlaySound(currentMap.BehaviourAt(warp.SourceX, warp.SourceY) == TileBehavior.WarpPanel ? "warp" : "stairs");
         // The music fades with the screen, so a building with its own theme starts as the door opens on it
         PlayAreaMusic(MapDatabase.Get(warp.TargetMap), warp.TargetX, warp.TargetY);
         StartTransition(GameState.Overworld, () =>

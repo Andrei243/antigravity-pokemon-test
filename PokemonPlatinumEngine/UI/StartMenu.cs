@@ -44,7 +44,7 @@ public class StartMenu
         SelectedIndex = 0;
         AskingToQuit = false;
         reveal.Open();
-        AudioManager.PlaySound("select");
+        AudioManager.PlaySound("menu_open");
     }
 
     public void Close()
@@ -53,7 +53,7 @@ public class StartMenu
         AskingToQuit = false;
         reveal.Close();
         prompt.Close();
-        AudioManager.PlaySound("cancel");
+        AudioManager.PlaySound("menu_close");
     }
 
     /// <summary>Puts the menu away at once, when a screen it opened takes over.</summary>

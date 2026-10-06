@@ -180,7 +180,7 @@ public sealed partial class BattleCore
             return false;
         }
         target.ConfusionTurns = 2 + rng.Roll(RollKind.ConfusionTurns, 4);
-        Say(line ?? $"{target.Name} became confused!");
+        Say(line ?? $"{target.Name} became confused!").With(new Confused(target.Place));
         CheckConditionHooks(target, source);
         return true;
     }

@@ -536,6 +536,24 @@ public class FieldLifeTests
     }
 
     [Fact]
+    public void ADoorSaysOnceWhenItBeginsToOpenAndWhenItShuts()
+    {
+        var map = Lawn();
+        var life = new FieldLife();
+        Assert.True(life.OpenDoor(map, 3, 2));
+        Assert.False(life.OpenDoor(map, 3, 2));
+        // A door that is opening never shuts by itself
+        Run(life, 2f);
+        Assert.Null(life.TakeShutting());
+
+        life.LeaveDoor(map, 3, 2);
+        Assert.Null(life.TakeShutting());
+        Run(life, FieldLife.DoorLingers + Frame);
+        Assert.Equal((map, 3, 2), life.TakeShutting());
+        Assert.Null(life.TakeShutting());
+    }
+
+    [Fact]
     public void GoingSomewhereElseForgetsEverything()
     {
         var map = Lawn();

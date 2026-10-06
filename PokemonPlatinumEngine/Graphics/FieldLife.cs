@@ -288,15 +288,24 @@ internal sealed class FieldLife
 
     // ------------------------------------------------------------------ doors
 
-    private readonly record struct Door(Map Map, int X, int Y, double OpenedAt, double? ShutAt);
+    private readonly record struct Door(Map Map, int X, int Y, double OpenedAt, double? ShutAt, bool ShutHeard = false);
 
     private Door? door;
 
-    /// <summary>A door starts to open (if it isn't open already): someone is stepping up to it.</summary>
-    public void OpenDoor(Map map, int x, int y)
+    /// <summary>A door starts to open (if it isn't open already): someone is stepping up to it. True if it has just begun to.</summary>
+    public bool OpenDoor(Map map, int x, int y)
     {
-        if (door is { } d && d.Map == map && d.X == x && d.Y == y && d.ShutAt == null) return;
+        if (door is { } d && d.Map == map && d.X == x && d.Y == y && d.ShutAt == null) return false;
         door = new Door(map, x, y, Now, null);
+        return true;
+    }
+
+    /// <summary>The door that has just begun to shut behind someone who came out of it, once: the moment to hear it.</summary>
+    public (Map Map, int X, int Y)? TakeShutting()
+    {
+        if (door is not { ShutAt: { } shut } d || d.ShutHeard || Now < shut) return null;
+        door = d with { ShutHeard = true };
+        return (d.Map, d.X, d.Y);
     }
 
     /// <summary>Someone has just come out of a door: it stands open behind them, and shuts in a moment.</summary>

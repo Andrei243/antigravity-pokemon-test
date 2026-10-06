@@ -68,8 +68,11 @@ public sealed record MoveShown(string Move, PokemonType Type, MoveCategory Categ
 /// <summary>A move's damage lands: the HP its target is left with.</summary>
 public sealed record Struck(Place Place, int Hp, bool Hard) : BattleEvent;
 
-/// <summary>The sound of the hits of one move landing.</summary>
-public sealed record HitSounded(bool SuperEffective) : BattleEvent;
+/// <summary>The sound of the hits of one move landing: super effective on any target, or not very effective on all.</summary>
+public sealed record HitSounded(bool SuperEffective, bool NotVeryEffective = false) : BattleEvent;
+
+/// <summary>A Pokémon is confused: it has just become so, or its confusion holds as it tries to move.</summary>
+public sealed record Confused(Place Place) : BattleEvent;
 
 /// <summary>HP restored, or lost to something that isn't a move's hit (poison, recoil): the HP it is left with.</summary>
 public sealed record HpChanged(Place Place, int Hp, bool Healed) : BattleEvent;
@@ -80,6 +83,9 @@ public sealed record StageChanged(Place Place, StatType Stat, int Stage, bool Ro
 public sealed record StatusChanged(Place Place, StatusCondition Status) : BattleEvent;
 
 public sealed record Fainted(Place Place) : BattleEvent;
+
+/// <summary>The player has got away from the battle.</summary>
+public sealed record GotAway : BattleEvent;
 
 /// <summary>A Pokémon goes where it can't be seen (into the air, under the ground), and comes back.</summary>
 public sealed record Vanished(Place Place) : BattleEvent;

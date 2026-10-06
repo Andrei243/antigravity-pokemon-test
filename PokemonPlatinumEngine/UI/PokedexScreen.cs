@@ -175,7 +175,7 @@ public class PokedexScreen
                 break;
             case PokedexFocus.Entry:
                 Page = Pages[UiNav.Wrap(Array.IndexOf(Pages, Page), Math.Sign(step), Pages.Length)];
-                AudioManager.PlaySound("cursor");
+                AudioManager.PlaySound("page");
                 break;
             case PokedexFocus.Search:
                 ChangeValue(Math.Sign(step));

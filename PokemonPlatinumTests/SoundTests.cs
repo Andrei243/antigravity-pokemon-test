@@ -1,8 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Xunit;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
@@ -226,5 +233,175 @@ public class SoundTests
         // A settings file from before the volumes existed plays everything at full volume
         var old = System.Text.Json.JsonSerializer.Deserialize<GameSettings>("""{ "Muted": false, "VSync": true }""")!;
         Assert.Equal((100, 100), (old.MusicVolume, old.SoundVolume));
+    }
+
+    // ------------------------------------------------------------------ the set (plan 05 · A3)
+
+    [Fact]
+    public void TheBankHasTheWholeSetThePlanAsksFor()
+    {
+        Assert.Equal(SoundBank.Names.Length, SoundBank.Names.Distinct(StringComparer.OrdinalIgnoreCase).Count());
+        foreach (var group in Enum.GetValues<SoundGroup>()) Assert.Contains(SoundBank.Entries, e => e.Group == group);
+        Assert.All(SoundBank.Entries, e =>
+        {
+            Assert.Matches("^[a-z_]+$", e.Name);
+            Assert.False(string.IsNullOrWhiteSpace(e.PlayedWhen), e.Name);
+            // Only the original's names are kept, never its sounds
+            if (e.Original != null) Assert.Matches("^SEQ_SE_(DP|PL)_[A-Z0-9_]+$", e.Original);
+        });
+
+        // A sound for every type's moves and for every status condition a Pokémon can be given
+        foreach (var type in Enum.GetValues<PokemonType>()) Assert.True(SoundBank.Exists(SoundBank.MoveSound(type)), type.ToString());
+        foreach (var status in Enum.GetValues<StatusCondition>().Where(s => s is not StatusCondition.None and not StatusCondition.Faint))
+            Assert.True(SoundBank.StatusSound(status) is { } name && SoundBank.Exists(name), status.ToString());
+        Assert.Null(SoundBank.StatusSound(StatusCondition.None));
+
+        // The checklist of the plan, by group
+        foreach (var name in new[] { "cursor", "select", "cancel", "error", "menu_open", "menu_close", "page", "text",
+                     "door_open", "door_close", "stairs", "warp", "bump", "ledge", "grass", "bike_bell", "gear", "surf", "step_puddle",
+                     "boulder", "rock_smash", "cut", "fish_cast", "fish_bite", "fish_reel", "poketch", "pc_on", "pc_off", "save", "exclaim",
+                     "send_out", "recall", "ball_throw", "ball_shake", "ball_click", "ball_break", "hit_normal", "hit_super", "hit_weak",
+                     "stat_up", "stat_down", "faint", "exp", "run_away" })
+            Assert.True(SoundBank.Exists(name), name);
+    }
+
+    [Fact]
+    public void EverySoundTheCodeAsksForIsInTheBank()
+    {
+        string repo = Repo();
+        var asked = new Regex(@"(?:PlaySound|Sound)\(\s*""([a-z_]+)""");
+        var unknown = new List<string>();
+        int found = 0;
+        foreach (var file in Directory.EnumerateFiles(Path.Combine(repo, "PokemonPlatinumEngine"), "*.cs", SearchOption.AllDirectories))
+            foreach (Match m in asked.Matches(File.ReadAllText(file)))
+            {
+                found++;
+                if (!SoundBank.Exists(m.Groups[1].Value)) unknown.Add($"{Path.GetFileName(file)}: {m.Groups[1].Value}");
+            }
+        Assert.True(found > 50);
+        Assert.Empty(unknown);
+    }
+
+    [Fact]
+    public void TheListOfSoundsNamesEverySound()
+    {
+        string doc = File.ReadAllText(Path.Combine(Repo(), "docs", "sound-effects.md"));
+        Assert.All(SoundBank.Names, name => Assert.Contains($"`{name}`", doc));
+    }
+
+    private static string Repo()
+    {
+        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
+            if (File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) return dir.FullName;
+        throw new DirectoryNotFoundException("The tests don't run from inside the repository");
+    }
+
+    [Fact]
+    public void AStepSoundsAsTheOriginalsDo()
+    {
+        Assert.Equal("grass", SoundBank.StepSound(TileBehavior.VeryTallGrass));
+        Assert.Null(SoundBank.StepSound(TileBehavior.TallGrass));
+        Assert.Equal("step_snow", SoundBank.StepSound(TileBehavior.ShallowSnow));
+        Assert.Equal("step_snow", SoundBank.StepSound(TileBehavior.DeepSnow));
+        Assert.Equal("step_puddle", SoundBank.StepSound(TileBehavior.Puddle));
+        Assert.Null(SoundBank.StepSound(TileBehavior.StillPuddle));
+        Assert.Equal("step_shallows", SoundBank.StepSound(TileBehavior.ShallowWater));
+        Assert.Equal("step_mud", SoundBank.StepSound(TileBehavior.Mud));
+        // Deep mud holds the feet fast: the original plays nothing as one sinks in, nor on sand
+        Assert.Null(SoundBank.StepSound(TileBehavior.DeepMud));
+        Assert.Null(SoundBank.StepSound(TileBehavior.Sand));
+    }
+
+    // ------------------------------------------------------------------ a battle, heard
+
+    /// <summary>What the game asks to hear while <paramref name="play"/> runs.</summary>
+    private static List<string> Hear(Action play)
+    {
+        var heard = AudioManager.Listen();
+        try
+        {
+            play();
+            return heard.ToList();
+        }
+        finally
+        {
+            AudioManager.StopListening();
+        }
+    }
+
+    [Fact]
+    public void AMoveIsHeardAsItSetsOffAndAsItLands()
+    {
+        var battle = Scenario.Battle(Scenario.Mon("Pikachu", 30, "Thunder Wave", "Growl", "Supersonic", "Tackle"), Scenario.Mon("Bidoof", 30));
+        // Each move's sound as it sets off, then what it did (the foe's own idle move is heard too)
+        void Heard(int move, string launch, string then)
+        {
+            var heard = Hear(() => Scenario.Turn(battle, move));
+            Assert.Contains(launch, heard);
+            Assert.Contains(then, heard);
+            Assert.True(heard.IndexOf(launch) < heard.IndexOf(then), string.Join(", ", heard));
+        }
+        Heard(0, "move_electric", "status_paralysis");
+        Heard(1, "move_normal", "stat_down");
+        Heard(2, "move_normal", "status_confusion");
+        var tackle = Hear(() => Scenario.Turn(battle, 3));
+        Assert.Equal(new[] { "move_normal", "hit_normal" }, tackle.Where(s => s.StartsWith("move_") || s.StartsWith("hit_")));
+    }
+
+    [Theory]
+    [InlineData("Squirtle", "Water Gun", "Charmander", "hit_super")]
+    [InlineData("Charmander", "Ember", "Squirtle", "hit_weak")]
+    [InlineData("Squirtle", "Tackle", "Charmander", "hit_normal")]
+    public void AHitSoundsAsHardAsItLands(string mine, string move, string foe, string expected)
+    {
+        var battle = Scenario.Battle(Scenario.Mon(mine, 20, move), Scenario.Mon(foe, 20));
+        var heard = Hear(() => Scenario.Turn(battle, 0));
+        Assert.Equal(new[] { expected }, heard.Where(s => s.StartsWith("hit_")));
+    }
+
+    [Theory]
+    [InlineData("Master Ball", 4)]
+    public void AThrownBallIsHeardWobbleByWobble(string ball, int shakes)
+    {
+        var party = new Party();
+        party.Add(Scenario.Mon("Pikachu", 30, "Tackle"));
+        var bag = new Inventory();
+        bag.AddItem(ItemDatabase.Get(ball)!);
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = bag, Pokedex = new Pokedex(),
+            WildPokemon = new List<Pokemon> { Scenario.Mon("Bidoof", 5) }, Random = Scenario.Steady(), Rules = Ruleset.Platinum
+        });
+        Scenario.Settle(battle);
+
+        var heard = Hear(() =>
+        {
+            battle.UseItem(ItemDatabase.Get(ball)!);
+            for (int i = 0; i < 600 && !battle.IsBattleOver; i++)
+            {
+                if (battle.IsWaitingForConfirm) battle.ConfirmMessage();
+                battle.Update(1f / 60f);
+            }
+        });
+        var ballSounds = heard.Where(s => s.StartsWith("ball_")).ToList();
+        Assert.Equal(new[] { "ball_throw" }.Concat(Enumerable.Repeat("ball_shake", Math.Min(shakes, 3))).Append(shakes >= 4 ? "ball_click" : "ball_break"), ballSounds);
+    }
+
+    [Fact]
+    public void RunningAwayIsHeard()
+    {
+        var battle = Scenario.Battle(Scenario.Mon("Pikachu", 30, "Tackle"), Scenario.Mon("Bidoof", 5));
+        var heard = Hear(() =>
+        {
+            battle.SelectMainMenuOption(3);
+            Scenario.Settle(battle);
+        });
+        Assert.Contains("run_away", heard);
+    }
+
+    [Fact]
+    public void TheSendOutIsHeardWhenTheBallOpens()
+    {
+        Assert.Contains("send_out", Hear(() => Scenario.Battle(Scenario.Mon("Pikachu", 30, "Tackle"), Scenario.Mon("Bidoof", 5))));
     }
 }

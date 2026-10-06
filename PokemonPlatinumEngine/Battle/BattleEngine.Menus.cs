@@ -286,7 +286,7 @@ public partial class BattleEngine
     /// <summary>Says why a choice can't be made and goes back to the menu it was made in.</summary>
     private void Refuse(string why, BattleMenuState backTo)
     {
-        AudioManager.PlaySound("cancel");
+        AudioManager.PlaySound("error");
         QueueMessage(why, () => HUD.MenuState = backTo);
         Pump();
     }

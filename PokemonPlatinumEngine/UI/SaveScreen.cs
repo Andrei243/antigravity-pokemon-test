@@ -88,7 +88,7 @@ public class SaveScreen
     {
         Saved = true;
         savedAge = 0f;
-        AudioManager.PlaySound("select");
+        AudioManager.PlaySound("save");
     }
 
     /// <summary>Runs the panel's slide and the moment it stays up after saving.</summary>
