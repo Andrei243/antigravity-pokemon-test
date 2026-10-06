@@ -1,7 +1,6 @@
 {
   "area": "oreburgh_city",
-  // Until plan 05 writes Oreburgh's own theme (the original's CITY03)
-  "bgmTrack": "sinnoh/jubilife",
+  "bgmTrack": "sinnoh/oreburgh",
   "trees": "Pine",
   "architecture": "Brick",
   "doors": [

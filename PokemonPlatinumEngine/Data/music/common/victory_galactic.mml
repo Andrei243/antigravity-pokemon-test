@@ -1,0 +1,40 @@
+# Victory over Team Galactic (the original's WINGINGA role: grunts and commanders): a cheeky synth fanfare and
+# a bouncing A-minor tune, half a victory and half a jeer. Original composition for this game.
+title Victory! Team Galactic
+tempo 156
+meter 4/4
+reverb 0.2
+
+track lead square vol=0.7 pan=0 rev=0.2
+  o5 a8 r16 a16 a8 r8 e4 o6 c4 | o5 b2. r4 |
+  L o5 a4 e8 a8 o6 c4 o5 b8 a8 | o5 g+4. a8 e2 | o5 f4 a8 o6 c8 f4 e8 c8 | o5 b2 g+4 e4 |
+  o5 a4 e8 a8 o6 c4 e4 | o6 d4. c8 o5 a4 f4 | o5 g+4 b8 o6 d8 e4 d4 | o5 b2. r4 |
+  o5 a4. g8 f4 c4 | o5 b4. a8 g4 d4 | o5 c4 e8 g8 o6 c4 o5 b4 | o5 a2. r4 |
+  o5 d4 f8 a8 o6 d4 c4 | o5 b4 g+8 b8 o6 e4 d4 | o6 c4 o5 b8 a8 e4 a4 | o5 g+4 b4 o6 e4 d4 |
+
+track comp pulse vol=0.34 pan=-0.3 rev=0.15
+  o4 (c e a)8 r16 (c e a)16 (c e a)8 r8 (c e a)4 (c e a)4 | (e g+ b)2. r4 |
+  L [ r8 o4 (c e a)8 ]4 | [ r8 o4 (c e a)8 ]4 | [ r8 o4 (c f a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 |
+  [ r8 o4 (c e a)8 ]4 | [ r8 o4 (d f a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (e g+ b)8 ]4 |
+  [ r8 o4 (c f a)8 ]4 | [ r8 o4 (d g b)8 ]4 | [ r8 o4 (c e g)8 ]4 | [ r8 o4 (c e a)8 ]4 |
+  [ r8 o4 (d f a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (c e a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 |
+
+track bells glockenspiel vol=0.2 pan=0.35 rev=0.3
+  r1 | r1 |
+  L r1 | r2. o5 e4 | r1 | r2. o5 b4 |
+  r1 | r2. o5 a4 | r1 | r2. o5 g+4 |
+  r1 | r2. o5 b4 | r1 | r2. o5 e4 |
+  r1 | r2. o5 b4 | r1 | r2. o5 b4 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 a8 r16 a16 a8 r8 a4 a4 | e2. r4 |
+  L [ o3 a8 o4 a8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 f8 o4 f8 ]4 | [ o3 e8 o4 e8 ]4 |
+  [ o3 a8 o4 a8 ]4 | [ o3 d8 o4 d8 ]4 | [ o3 e8 o4 e8 ]4 | [ o3 e8 o4 e8 ]4 |
+  [ o3 f8 o4 f8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 c8 o4 c8 ]4 | [ o3 a8 o4 a8 ]4 |
+  [ o3 d8 o4 d8 ]4 | [ o3 e8 o4 e8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 e8 o4 e8 ]4 |
+
+track drums kit vol=0.48 rev=0.12
+  v90 b8 s16 s16 s8 r8 b4 x4 | (b c)2. r4 | L [ (b c)4 x4 b8 b8 x4 | [ b4 x4 b8 b8 x4 | ]6 b4 x4 s16 s16 s16 s16 s16 s16 s16 s16 | ]2
+
+track hats kit vol=0.46 pan=0.15 rev=0.1
+  r1 | r1 | L v60 [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 o8 v40 h8 v60 | ]16

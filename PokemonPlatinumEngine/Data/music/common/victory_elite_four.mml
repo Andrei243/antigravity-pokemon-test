@@ -1,0 +1,40 @@
+# Victory over a member of the Elite Four (the original's WINTENNO role): a bright A-major fanfare on the
+# trumpet and a tune that keeps its head up for the next door. Original composition for this game.
+title Victory! Elite Four
+tempo 148
+meter 4/4
+reverb 0.24
+
+track lead trumpet vol=0.82 pan=0 rev=0.25
+  o4 a8 r16 a16 a8 r8 o5 c+4 e4 | o5 a2. r4 |
+  L o5 e4 c+8 e8 a4 g+8 f+8 | o5 e4. f+8 g+4 b4 | o5 a4 f+8 a8 o6 c+4 o5 b8 a8 | o5 f+2 d4 f+4 |
+  o5 e4 a8 o6 c+8 e4 c+4 | o5 g+4. e8 c+4 e4 | o5 f+4 a8 o6 d8 f+4 e4 | o5 b2. r4 |
+  o5 a4. f+8 d4 f+4 | o5 g+4. e8 b4 o6 e4 | o6 e4 c+8 o5 g+8 e4 g+4 | o5 a2 f+4 c+4 |
+  o5 d4 f+8 b8 o6 d4 c+8 o5 b8 | o6 e2 d4 o5 b4 | o6 c+4 o5 a8 e8 a4 o6 c+4 | o5 b4 g+4 e4 g+4 |
+
+track strings strings vol=0.42 pan=0.3 rev=0.35
+  o4 (c+ e)8 r16 (c+ e)16 (c+ e)8 r8 (e a)4 (e a)4 | (e a >c+)2. r4 |
+  L o4 (c+ e a)1 | (e g+ b)1 | (c+ f+ a)1 | (d f+ a)1 |
+  (c+ e a)1 | (c+ e g+)1 | (d f+ a)1 | (e g+ b)1 |
+  (d f+ a)1 | (e g+ b)1 | (c+ e g+)1 | (c+ f+ a)1 |
+  (d f+ b)1 | (e g+ b)1 | (c+ e a)1 | (e g+ b)1 |
+
+track comp epiano vol=0.38 pan=-0.3 rev=0.2
+  r1 | r1 |
+  L [ r8 o4 (c+ e a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (c+ f+ a)8 ]4 | [ r8 o4 (d f+ a)8 ]4 |
+  [ r8 o4 (c+ e a)8 ]4 | [ r8 o4 (c+ e g+)8 ]4 | [ r8 o4 (d f+ a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 |
+  [ r8 o4 (d f+ a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (c+ e g+)8 ]4 | [ r8 o4 (c+ f+ a)8 ]4 |
+  [ r8 o4 (d f+ b)8 ]4 | [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (c+ e a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 |
+
+track bass bass vol=0.7 rev=0.08
+  o3 a8 r8 a8 r8 e4 e4 | a2. r4 |
+  L o3 a4 e4 a4 e4 | e4 b4 e4 b4 | f+4 c+4 f+4 c+4 | d4 a4 d4 a4 |
+  a4 e4 a4 e4 | c+4 g+4 c+4 g+4 | d4 a4 d4 a4 | e4 b4 e4 b4 |
+  d4 a4 d4 a4 | e4 b4 e4 b4 | c+4 g+4 c+4 g+4 | f+4 c+4 f+4 c+4 |
+  b4 f+4 b4 f+4 | e4 b4 e4 d4 | a4 e4 a4 e4 | e4 b4 e4 b4 |
+
+track drums kit vol=0.48 rev=0.12
+  v90 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L [ (b c)4 s4 b8 b8 s4 | [ b4 s4 b8 b8 s4 | ]6 b4 s4 s16 s16 s16 s16 t16 m16 f16 f16 | ]2
+
+track hats kit vol=0.48 pan=0.15 rev=0.1
+  r1 | r1 | L v60 [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 | ]16

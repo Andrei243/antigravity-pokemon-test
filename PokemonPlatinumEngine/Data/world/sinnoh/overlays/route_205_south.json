@@ -1,7 +1,6 @@
 {
   "area": "route_205_south",
-  // Until plan 05 writes the theme of Route 205 (the original's ROAD_C)
-  "bgmTrack": "sinnoh/route201",
+  "bgmTrack": "sinnoh/route205",
   "trees": "Pine",
   // Eterna Forest (plan 01 · M6); the house on the route has no room yet (plan 01 · M11)
   "locked": [ 0, 1, 2 ],

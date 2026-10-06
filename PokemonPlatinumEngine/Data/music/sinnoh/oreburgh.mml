@@ -1,0 +1,37 @@
+# Oreburgh City (the original's CITY03 role): the mining town, a sturdy C-minor march with brass over a
+# pulse that turns like the pit's machinery. Original composition for this game.
+title Oreburgh City
+tempo 108
+meter 4/4
+reverb 0.24
+nighttempo 0.93
+
+track lead brass night=horn vol=0.8 pan=0 rev=0.25
+  L o4 g4. g8 o5 c4 d4 | o5 e-2 d4 c4 | o5 c4. o4 a-8 o5 c4 e-4 | o5 d2. r4 |
+  o4 g4. g8 o5 c4 e-4 | o5 f2 a-4 f4 | o5 g4. f8 d4 o4 b4 | o4 b2. r4 |
+  o5 c4 e-4 a-4. g8 | o5 f4 d4 b-4. a-8 | o5 g2 e-4 g4 | o5 g4. f8 e-4 c4 |
+  o5 a-4 g8 f8 c4 f4 | o5 d4 f4 g4 o4 b4 | o5 c2. r4 | o4 g4 b4 o5 d4 f4 |
+
+track machine pulse night=vibraphone vol=0.3 pan=0.35 rev=0.15
+  L [ o4 c16 e-16 g16 e-16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 | [ o3 a-16 o4 c16 e-16 c16 ]4 | [ o3 b-16 o4 d16 f16 d16 ]4 |
+  [ o4 c16 e-16 g16 e-16 ]4 | [ o4 c16 f16 a-16 f16 ]4 | [ o3 b16 o4 d16 g16 d16 ]4 | [ o3 b16 o4 d16 g16 d16 ]4 |
+  [ o3 a-16 o4 c16 e-16 c16 ]4 | [ o3 b-16 o4 d16 f16 d16 ]4 | [ o3 b-16 o4 e-16 g16 e-16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 |
+  [ o4 c16 f16 a-16 f16 ]4 | [ o3 b16 o4 d16 g16 d16 ]4 | [ o4 c16 e-16 g16 e-16 ]4 | [ o3 b16 o4 d16 g16 d16 ]4 |
+
+track pad strings night=pad vol=0.3 pan=-0.3 rev=0.38
+  L o4 (c e- g)1 | (c e- g)1 | o3 (a- >c e-)1 | o3 (b- >d f)1 |
+  o4 (c e- g)1 | (c f a-)1 | o3 (b >d g)1 | o3 (b >d g)1 |
+  o3 (a- >c e-)1 | o3 (b- >d f)1 | o3 (b- >e- g)1 | o4 (c e- g)1 |
+  o4 (c f a-)1 | o3 (b >d g)1 | o4 (c e- g)1 | o3 (b >d g)1 |
+
+track bass tuba vol=0.7 rev=0.06
+  L o3 c4 c4 g4 c4 | c4 c4 g4 c4 | o2 a-4 a-4 o3 e-4 o2 a-4 | b-4 b-4 o3 f4 o2 b-4 |
+  o3 c4 c4 g4 c4 | f4 f4 c4 f4 | g4 g4 d4 g4 | g4 g4 d4 g4 |
+  o2 a-4 a-4 o3 e-4 o2 a-4 | b-4 b-4 o3 f4 o2 b-4 | o3 e-4 e-4 b-4 e-4 | c4 c4 g4 c4 |
+  f4 f4 c4 f4 | g4 g4 d4 g4 | c4 c4 g4 c4 | g4 g4 d4 g4 |
+
+track drums kit vol=0.52 rev=0.12
+  v95 L [ (b c)4 s4 b8 b8 s4 | [ b4 s4 b8 b8 s4 | ]6 b4 s4 t8 m8 f8 f8 | ]2
+
+track hats kit vol=0.38 pan=0.1 rev=0.08
+  L v60 [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 x8 v40 h8 v60 | ]16

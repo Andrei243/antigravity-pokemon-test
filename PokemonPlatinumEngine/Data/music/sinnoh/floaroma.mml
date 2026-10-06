@@ -1,0 +1,40 @@
+# Floaroma Town (the original's TOWN03 role, also Floaroma Meadow and the Flower Paradise): a gentle F-major
+# waltz among the flowers, the flute over a harp. Original composition for this game.
+title Floaroma Town
+tempo 104
+meter 3/4
+reverb 0.36
+nighttempo 0.94
+
+track lead flute night=ocarina vol=0.78 pan=0 rev=0.36
+  L o5 a4. g8 f4 | o5 g2 e4 | o5 f4 a4 o6 d4 | o6 d4 c4 o5 b-4 |
+  o5 a2 f4 | o5 g4 b-4 o6 d4 | o6 c4. o5 b-8 g4 | o5 g2 r4 |
+  o5 f4 b-4 d4 | o5 e4 g4 o6 c4 | o5 a4. g8 e4 | o5 f2 d4 |
+  o5 d4 g4 b-4 | o5 g4 e4 c4 | o5 f2. | o5 e4 g4 o6 c4 |
+
+track harp harp night=celesta vol=0.42 pan=-0.3 rev=0.3
+  L o3 f8 o4 c8 f8 a8 f8 c8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 d8 a8 o4 d8 f8 d8 o3 a8 | o3 b-8 o4 f8 b-8 o5 d8 o4 b-8 f8 |
+  o3 f8 o4 c8 f8 a8 f8 c8 | o3 g8 o4 d8 g8 b-8 g8 d8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 |
+  o3 b-8 o4 f8 b-8 o5 d8 o4 b-8 f8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 a8 o4 e8 a8 o5 c8 o4 a8 e8 | o3 d8 a8 o4 d8 f8 d8 o3 a8 |
+  o3 g8 o4 d8 g8 b-8 g8 d8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 f8 o4 c8 f8 a8 f8 c8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 |
+
+track bells glockenspiel night=vibraphone vol=0.22 pan=0.4 rev=0.4
+  L r2. | r4 o5 c4 r4 | r2. | r4 o5 d4 r4 |
+  r2. | r4 o5 d4 r4 | r2. | r4 o5 e4 c4 |
+  r2. | r4 o5 c4 r4 | r2. | r4 o5 a4 r4 |
+  r2. | r4 o5 c4 r4 | r2. | r4 o5 c4 r4 |
+
+track pad strings night=pad vol=0.28 pan=0.2 rev=0.42
+  L o4 (c f a)2. | (c e g)2. | (d f a)2. | (d f b-)2. |
+  (c f a)2. | (d g b-)2. | (c e g)2. | (c e g)2. |
+  (d f b-)2. | (c e g)2. | (c e a)2. | (d f a)2. |
+  (d g b-)2. | (c e g)2. | (c f a)2. | (c e g)2. |
+
+track bass bass vol=0.62 rev=0.1
+  L o3 f2. | c2. | d2. | o2 b-2. |
+  o3 f2. | g2. | c2. | c2. |
+  o2 b-2. | o3 c2. | a2. | d2. |
+  g2. | c2. | f2. | c2. |
+
+track shaker kit vol=0.28 pan=0.15 rev=0.15
+  L [ v50 k4 v30 k8 k8 k8 k8 | ]16

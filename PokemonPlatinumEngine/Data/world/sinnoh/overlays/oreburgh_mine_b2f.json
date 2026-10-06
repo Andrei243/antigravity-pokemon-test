@@ -1,7 +1,6 @@
 {
   "area": "oreburgh_mine_b2f",
-  // Until plan 05 writes the mine's theme (the original's D_04)
-  "bgmTrack": "sinnoh/lake",
+  "bgmTrack": "sinnoh/mine",
   "people": {
     "worker": {
       "name": "Worker",

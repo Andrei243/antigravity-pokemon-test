@@ -1,0 +1,35 @@
+# The mountain's caves (the original's D_05 role: Oreburgh Gate, the Ravaged Path, Wayward Cave and Mount
+# Coronet): a slow D-minor walk in the dark, a lone clarinet, drips on the vibraphone and an echo.
+# Original composition for this game.
+title Cave
+tempo 92
+meter 4/4
+reverb 0.5
+night none
+
+track lead clarinet vol=0.7 pan=0 rev=0.45
+  L r1 | r1 | o4 d2 f4 a4 | o4 e2. r4 |
+  o4 a2 o5 d4 c4 | o4 b-2. a4 | o4 f2 d4 f4 | o4 e1 |
+  o4 g2 b-4 o5 d4 | o5 c2 o4 a2 | o4 b-2 g4 e-4 | o4 c+2. r4 |
+  o4 d2 f4 a4 | o5 d2. c4 | o4 b-2 g2 | o4 a1 |
+
+track drips vibraphone vol=0.3 pan=0.4 rev=0.6
+  L r4 o5 a8 r8 r4 o6 d8 r8 | r4 o5 f8 r8 r4 o5 a8 r8 | r4 o5 f8 r8 r4 o6 d8 r8 | r4 o5 e8 r8 r4 o6 c+8 r8 |
+  r4 o5 a8 r8 r4 o6 d8 r8 | r4 o5 g8 r8 r4 o6 d8 r8 | r4 o5 f8 r8 r4 o6 d8 r8 | r4 o5 e8 r8 r4 o6 c+8 r8 |
+  r4 o5 g8 r8 r4 o6 d8 r8 | r4 o5 a8 r8 r4 o6 d8 r8 | r4 o5 g8 r8 r4 o6 e-8 r8 | r4 o5 e8 r8 r4 o6 c+8 r8 |
+  r4 o5 a8 r8 r4 o6 d8 r8 | r4 o5 f8 r8 r4 o6 d8 r8 | r4 o5 g8 r8 r4 o6 d8 r8 | r4 o5 e8 r8 r4 o6 c+8 r8 |
+
+track pad pad vol=0.34 pan=-0.25 rev=0.5
+  L o3 (d f a)1 | (d f a)1 | (d f b-)1 | (c+ e a)1 |
+  (d f a)1 | (d g b-)1 | (d f b-)1 | (c+ e a)1 |
+  (d g b-)1 | (d f a)1 | (e- g b-)1 | (c+ e a)1 |
+  (d f a)1 | (d f b-)1 | (d g b-)1 | (c+ e a)1 |
+
+track bass contrabass vol=0.66 rev=0.2
+  L o3 d2 a2 | d2 a2 | o2 b-2 o3 f2 | o2 a2 o3 e2 |
+  d2 a2 | g2 d2 | o2 b-2 o3 f2 | o2 a2 o3 e2 |
+  g2 d2 | d2 a2 | e-2 b-2 | o2 a2 o3 e2 |
+  d2 a2 | o2 b-2 o3 f2 | g2 d2 | o2 a2 o3 e2 |
+
+track drums kit vol=0.34 rev=0.4
+  v70 L [ f4 r4 r4 k4 | r4 k4 f8 f8 r4 | ]8

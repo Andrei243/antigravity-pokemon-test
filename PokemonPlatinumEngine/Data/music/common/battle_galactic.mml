@@ -1,0 +1,52 @@
+# Battle against Team Galactic (the original's BA_GINGA role: grunts and commanders): a chromatic slide down,
+# then a cold G-minor drive on a square lead over a sixteenth-note bass. Original composition for this game.
+title Battle! Team Galactic
+tempo 172
+meter 4/4
+lowhptempo 1.08
+reverb 0.2
+
+track lead square lowhp=sawlead vol=0.72 pan=0 rev=0.2
+  o5 g16 f+16 f16 e16 e-16 d16 c+16 c16 o4 b16 b-16 a16 a-16 g4 | o4 (g b- >d)8 r8 (g b- >d)8 r8 (f+ a >d)4 r4 |
+  L o5 g4 d8 g8 b-4 a8 g8 | o5 f+4. g8 d2 | o5 e-4 g8 b-8 o6 e-4 d8 c8 | o5 a2 f+4 d4 |
+  o5 g4 d8 g8 b-4 o6 c8 d8 | o6 e-4. d8 c4 o5 g4 | o5 b-4 g8 b-8 o6 e-4 o5 b-4 | o5 a4 f+8 a8 o6 d2 |
+  o6 c4. o5 g8 e-4 c4 | o5 d4 g8 b-8 o6 d4 c8 o5 b-8 | o6 c4 e-4 a-4 g8 f8 | o5 f+4. e8 d4 a4 |
+  o5 g4 b-8 o6 e-8 g4 f8 e-8 | o6 e-4 d8 c8 o5 g4 e-4 | o5 f+4 a4 o6 c4 d4 | o6 d4 c4 o5 a4 f+4 |
+
+track double brass vol=0.42 pan=-0.2 rev=0.22
+  r1 | o3 (g b- >d)8 r8 (g b- >d)8 r8 (f+ a >d)4 r4 |
+  L o4 g2 b-2 | d1 | g2 b-2 | f+1 |
+  g2 b-2 | o5 c2 o4 g2 | g1 | f+1 |
+  g1 | g2 b-2 | o5 c1 | o4 a1 |
+  b-1 | g1 | a2 o5 c2 | o4 a2 f+2 |
+
+track stabs organ unless=lowhp vol=0.34 pan=0.3 rev=0.2
+  r1 | r1 |
+  L [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (e- g b-)8 ]4 | [ r8 o4 (d f+ a)8 ]4 |
+  [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (c e- g)8 ]4 | [ r8 o4 (e- g b-)8 ]4 | [ r8 o4 (d f+ a)8 ]4 |
+  [ r8 o4 (c e- g)8 ]4 | [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (c e- a-)8 ]4 | [ r8 o4 (d f+ a)8 ]4 |
+  [ r8 o4 (e- g b-)8 ]4 | [ r8 o4 (c e- g)8 ]4 | [ r8 o4 (d f+ a)8 ]4 | [ r8 o4 (d f+ a)8 ]4 |
+
+track pad strings unless=lowhp vol=0.36 pan=-0.35 rev=0.3
+  r1 | r1 |
+  L o4 (d g b-)1 | (d g b-)1 | (e- g b-)1 | (d f+ a)1 |
+  (d g b-)1 | (c e- g)1 | (e- g b-)1 | (d f+ a)1 |
+  (c e- g)1 | (d g b-)1 | (c e- a-)1 | (d f+ a)1 |
+  (e- g b-)1 | (c e- g)1 | (d f+ a)1 | (d f+ a)1 |
+
+track bass synthbass vol=0.72 rev=0.05
+  o3 g8 g8 g8 g8 g8 g8 g8 g8 | g8 r8 g8 r8 d4 r4 |
+  L [ o3 g8 g16 o4 g16 ]4 | [ o3 g8 g16 o4 g16 ]4 | [ o3 e-8 e-16 o4 e-16 ]4 | [ o3 d8 d16 o4 d16 ]4 |
+  [ o3 g8 g16 o4 g16 ]4 | [ o3 c8 c16 o4 c16 ]4 | [ o3 e-8 e-16 o4 e-16 ]4 | [ o3 d8 d16 o4 d16 ]4 |
+  [ o3 c8 c16 o4 c16 ]4 | [ o3 g8 g16 o4 g16 ]4 | [ o3 a-8 a-16 o4 a-16 ]4 | [ o3 d8 d16 o4 d16 ]4 |
+  [ o3 e-8 e-16 o4 e-16 ]4 | [ o3 c8 c16 o4 c16 ]4 | [ o3 d8 d16 o4 d16 ]4 | [ o3 d8 d16 o4 d16 ]4 |
+
+track drums kit vol=0.5 rev=0.12
+  v100 [ s16 ]12 b4 | (b c)8 r8 (b c)8 r8 b4 t16 t16 m16 f16 | L [ (b c)8 b8 s8 b8 b8 b8 s8 b8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 s16 s16 s16 s16 s16 s16 s16 s16 | ]2
+
+track hats kit vol=0.48 pan=0.15 rev=0.1
+  r1 | r1 | L v65 [ h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 o16 v40 h16 h16 h16 v65 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]16

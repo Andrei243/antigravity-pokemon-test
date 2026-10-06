@@ -1,0 +1,40 @@
+# Victory over Team Galactic's boss (the original's WINAKAGI role): a won battle that doesn't feel like one, a
+# slow C-minor anthem on brass and organ. Original composition for this game.
+title Victory! Galactic Boss
+tempo 132
+meter 4/4
+reverb 0.32
+
+track lead brass vol=0.8 pan=0 rev=0.3
+  o4 c4 e-4 g4 o5 c4 | o4 (g b >d)2. r4 |
+  L o5 g2 e-4 c4 | o5 c2 e-4 a-4 | o5 a-4. g8 f4 c4 | o5 d2 o4 b4 g4 |
+  o5 c4 e-4 g4 o6 c4 | o5 b-2 g4 e-4 | o5 a-4. o6 c8 e-4 c4 | o5 b2. r4 |
+  o5 a-4 o6 c4 e-4. d8 | o6 d2 o5 b-4 f4 | o5 g4. b-8 o6 e-4 d4 | o6 c2. r4 |
+  o5 a-4 o6 c4 f4 e-4 | o6 d2 o5 b4 g4 | o5 a-4 o6 c4 e-4 d4 | o6 d4 o5 b4 g4 d4 |
+
+track organ organ vol=0.34 pan=-0.3 rev=0.35
+  o3 (c g)1 | o3 (g b >d)2. r4 |
+  L o4 (c e- g)1 | (c e- a-)1 | (c f a-)1 | (d g b)1 |
+  (c e- g)1 | (e- g b-)1 | (c e- a-)1 | (d g b)1 |
+  (c e- a-)1 | (d f b-)1 | (e- g b-)1 | (c e- g)1 |
+  (c f a-)1 | (d g b)1 | (c e- a-)1 | (d g b)1 |
+
+track choir choir vol=0.24 pan=0.3 rev=0.45
+  r1 | r1 |
+  L o4 g1 | a-1 | a-1 | g1 |
+  g1 | g1 | a-1 | g1 |
+  a-1 | f1 | g1 | g1 |
+  a-1 | g1 | a-1 | g1 |
+
+track bass contrabass vol=0.66 rev=0.12
+  o3 c1 | o2 g2. r4 |
+  L o3 c2 g2 | o2 a-2 o3 e-2 | f2 c2 | o2 g2 o3 d2 |
+  c2 g2 | e-2 b-2 | o2 a-2 o3 e-2 | o2 g2 o3 d2 |
+  o2 a-2 o3 e-2 | o2 b-2 o3 f2 | e-2 b-2 | c2 g2 |
+  f2 c2 | o2 g2 o3 d2 | o2 a-2 o3 e-2 | o2 g2 o3 d2 |
+
+track drums kit vol=0.44 rev=0.2
+  v90 b4 r4 b4 r4 | (b c)2. r4 | L [ (b c)4 s4 b4 s4 | [ b4 s4 b4 s4 | ]6 b4 s4 s8 s8 s8 s8 | ]2
+
+track hats kit vol=0.36 pan=0.15 rev=0.12
+  r1 | r1 | L v55 [ h8 v35 h8 v55 h8 v35 h8 v55 h8 v35 h8 v55 h8 v35 h8 v55 | ]16

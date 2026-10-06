@@ -1,7 +1,6 @@
 {
   "area": "oreburgh_gate_1f",
-  // Until plan 05 writes the cave theme (the original's D_05)
-  "bgmTrack": "sinnoh/lake",
+  "bgmTrack": "sinnoh/cave",
   "people": {
     // In Platinum he hands over the HM for Rock Smash; the gift is plan 02's (S5)
     "hiker": {

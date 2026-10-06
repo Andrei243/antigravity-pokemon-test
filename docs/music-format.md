@@ -13,11 +13,11 @@ The game's music is original, written for this game in the style of the DS sound
 - **`Audio/MusicDirector`**: decides what plays, with no audio device. Maps name their theme in `bgmTrack`. Roles (title, battles, victories, fanfares) look in the current region's folder first, then `common`, then a more general role (`battle_gym` falls back to `battle_trainer`).
 - **`Core/AudioManager`**: opens a raylib audio stream whose callback runs the mixer on raylib's audio thread, so music keeps playing while the game thread loads a map. `PlayMusic(id)`, `PlayMusic(role)`, `PlayFanfare(role)`, `PlaySound(name, pan)`, `Region`. The options' two volumes (music and sound effects, 0 to 100) reach the buses through `SetVolumes`: the music's covers the fanfares, the effects' the cries and the ambience, until those have settings of their own (plan 05 · A7).
 
-At night (`TimeOfDay.Night` and `LateNight`) area themes play their night arrangement: each track may name a softer `night=` instrument, the tempo drops by the song's `nighttempo`, drums are quieter and the reverb a little wetter. The arrangement is chosen when the song starts, as Platinum does on entering an area.
+At night (`TimeOfDay.Night` and `LateNight`) area themes play their night arrangement: each track may name a softer `night=` instrument, the tempo drops by the song's `nighttempo`, drums are quieter and the reverb a little wetter. The arrangement is chosen when the song starts, as Platinum does on entering an area. A song whose header says `night none` has one arrangement for day and night alike, as the original's caves and dungeons do (their map headers give the same `SEQ_D_*` for day and night): the cave and the mine play the same at dusk, and carry on across it without a restart.
 
 A battle theme has a **low-HP arrangement** as well, switched on and off in the middle of the song while a Pokémon of the player's is in the red (its bar's colour, `BattleAnimator.LowHpRatio`): the song keeps its place, the next notes start on the tracks' `lowhp=` instruments, tracks marked `only=lowhp` join in (an alarm figure of two pips a beat) and tracks marked `unless=lowhp` fall silent (a pad), and the tempo rises by the song's `lowhptempo`. That is Black and White's way, chosen over Platinum's looping beep (2026-10-05): the music itself turns agitated. `AudioManager.LowHp` sets it; the engine sets it every frame of a battle from `BattleEngine.PlayerInDanger` and clears it when the battle is decided, so the victory theme plays calm.
 
-**Which theme plays when** (`MusicDirector`, plan 05 · A2): a place's own theme by day or by night; the surf theme while the player rides over the water and the bicycle's while they cycle, kept across towns and routes (`GameEngine.PlayFieldMusic`); a trainer's eye theme by their class from the moment they spot the player until the battle theme cuts in (and the place's own again if their script brings no battle); the battle theme by the most important opponent and its victory theme after; fanfares that pause the music. What a trainer class brings is `Data/audio/sound-map.json` (`Data/SoundMap.cs`): its eye theme, following the original's table (`src/field_bgm.c`) by our names for the classes, and a battle theme of its own for the few that have one (Gym Leader, Rival, Team Galactic, the Elite Four, the Champion). A class not listed gets the boy's eye theme and the trainer battle theme.
+**Which theme plays when** (`MusicDirector`, plan 05 · A2): a place's own theme by day or by night; the surf theme while the player rides over the water and the bicycle's while they cycle, kept across towns and routes (`GameEngine.PlayFieldMusic`); a trainer's eye theme by their class from the moment they spot the player until the battle theme cuts in (and the place's own again if their script brings no battle); the battle theme by the most important opponent and its victory theme after, chosen as the original's battle controller chooses it (`MusicDirector.VictoryRole`: the gym leaders', the Elite Four's, the Champion's, Team Galactic's, grunts and commanders alike, and their boss's have their own; the rival's is a trainer's); fanfares that pause the music. What a trainer class brings is `Data/audio/sound-map.json` (`Data/SoundMap.cs`): its eye theme, following the original's table (`src/field_bgm.c`) by our names for the classes, and a battle theme of its own for the few that have one (Gym Leader, Rival, Team Galactic, the Elite Four, the Champion). A class not listed gets the boy's eye theme and the trainer battle theme.
 
 ## Folders and roles
 
@@ -26,14 +26,19 @@ Data/music/
   common/      title, intro, pokecenter, pokemart, rival, evolution, surf, bicycle,
                eye_boy, eye_girl, eye_kid, eye_lady, eye_rich, eye_mountain, eye_fighter, eye_sport, eye_fun,
                eye_mystery, eye_sailor, eye_galactic, eye_ace, eye_elite_four, eye_champion,
-               battle_wild, battle_trainer, battle_gym, battle_rival, victory_wild, victory_trainer,
+               battle_wild, battle_trainer, battle_gym, battle_rival, battle_galactic, battle_galactic_boss,
+               battle_elite_four, battle_champion, battle_legendary,
+               victory_wild, victory_trainer, victory_gym, victory_galactic, victory_galactic_boss,
+               victory_elite_four, victory_champion,
                fanfare_heal, fanfare_item, fanfare_levelup, fanfare_pokemon, fanfare_evolution,
                fanfare_badge, fanfare_tm, fanfare_keyitem
   kanto/       pallet, battle_wild
-  sinnoh/      twinleaf, route201, route202 (Routes 202–204), sandgem, jubilife, lake, lab
+  sinnoh/      twinleaf, route201 (and Route 219, Verity Lakefront), route202, route203 (Routes 203 and 204),
+               route205 (Route 205, the Valley Windworks, the Fuego Ironworks), sandgem, jubilife, oreburgh,
+               floaroma (and the meadow), lake, lab, cave (Oreburgh Gate, the Ravaged Path), mine (Oreburgh Mine)
 ```
 
-A region gets its own version of a shared theme by adding a file with the role's name to its folder (`johto/battle_wild.mml`). Role file names are in `MusicDirector.FileName`, and a role without a file falls back to a more general one (`MusicDirector.Fallback`): every eye theme to `eye_boy` (the lady's and the rich one's through `eye_girl`), the Galactic, rival and gym battles to `battle_trainer`, the Elite Four's and the Champion's to `battle_gym`, a legendary's to `battle_wild`. Since A5 every eye theme has its own file (the fallbacks are kept for a region that brings only some of its own); the Galactic, Elite Four, Champion and legendary battles and the gym's victory are files still to write (A6). The introduction plays over the professor's welcome (`MusicRole.Introduction`), the evolution theme over the evolution scene and its fanfare at the end (the field's music comes back after, `GameEngine.FinishEvolution`), the rival's when a script calls it (Barry in Twinleaf Town), and an item is received to the fanfare of its kind (`ScriptRunner.FanfareFor`: a TM's, a key item's, or the item's), a badge to the badge's. `MusicTests` checks that every map's song exists, that every role resolves in every region, and that every song renders without clipping.
+A region gets its own version of a shared theme by adding a file with the role's name to its folder (`johto/battle_wild.mml`). Role file names are in `MusicDirector.FileName`, and a role without a file falls back to a more general one (`MusicDirector.Fallback`): every eye theme to `eye_boy` (the lady's and the rich one's through `eye_girl`), the Galactic, rival and gym battles to `battle_trainer`, the Elite Four's and the Champion's to `battle_gym`, a legendary's to `battle_wild`, the gym's, the Elite Four's and the Champion's victories through one another to `victory_trainer`, and the Galactic boss's victory through the grunts'. Since A6 every role has its own file; the fallbacks are kept for a region that brings only some of its own. The introduction plays over the professor's welcome (`MusicRole.Introduction`), the evolution theme over the evolution scene and its fanfare at the end (the field's music comes back after, `GameEngine.FinishEvolution`), the rival's when a script calls it (Barry in Twinleaf Town), and an item is received to the fanfare of its kind (`ScriptRunner.FanfareFor`: a TM's, a key item's, or the item's), a badge to the badge's. `MusicTests` checks that every map's song exists, that every role resolves in every region, and that every song renders without clipping.
 
 ## The format
 
@@ -45,7 +50,7 @@ title Twinleaf Town
 tempo 88            # quarter notes per minute
 meter 4/4           # for the bar checks; 6/8 and 3/4 work too
 reverb 0.32         # how much reverb returns to the mix
-nighttempo 0.93     # the night arrangement plays this much slower
+nighttempo 0.93     # the night arrangement plays this much slower (or "night none": one arrangement, day and night)
 lowhptempo 1.08     # a battle theme: the low-HP arrangement plays this much faster
 
 track melody flute night=ocarina vol=0.85 pan=0 rev=0.35

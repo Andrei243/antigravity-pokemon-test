@@ -1,0 +1,52 @@
+# Battle against the Champion (the original's BA_CHANP role): a piano falling through B minor, then a
+# sweeping theme on the violins over a relentless piano figure. Original composition for this game.
+title Battle! Champion
+tempo 180
+meter 4/4
+lowhptempo 1.08
+reverb 0.24
+
+track lead violin lowhp=sawlead vol=0.82 pan=0 rev=0.25
+  r1 | o4 (b >d f+)4 r4 (a+ >c+ f+)2 |
+  L o5 f+4. b8 o6 d4 c+8 o5 b8 | o5 a+2 f+4 b4 | o5 b4. o6 d8 g4 f+8 e8 | o6 e2 c+4 o5 a4 |
+  o5 f+4. b8 o6 d4 f+4 | o6 g4. f+8 e4 o5 b4 | o5 a+4 o6 c+8 f+8 e4 c+4 | o5 a+2. r4 |
+  o5 b4. o6 d8 g4 b4 | o6 a4. g8 e4 c+4 | o6 f+4 d4 o5 a4 f+4 | o5 b2 o6 d4 c+4 |
+  o5 b4 o6 e8 g8 b4 a8 g8 | o6 f+2 e4 c+4 | o6 d4 e8 f+8 g4 b4 | o6 a+2 f+4 c+4 |
+
+track brass brass vol=0.4 pan=-0.2 rev=0.22
+  r1 | o3 (b >d f+)4 r4 (a+ >c+ f+)2 |
+  L o4 b1 | f+1 | g1 | a1 |
+  b1 | b1 | a+1 | f+1 |
+  g2 b2 | a2 o5 c+2 | o4 a1 | f+1 |
+  g2 b2 | a+1 | b1 | a+1 |
+
+track piano piano vol=0.4 pan=0.3 rev=0.18
+  o5 b16 f+16 d16 o4 b16 o5 b16 f+16 d16 o4 b16 o5 b16 f+16 d16 o4 b16 o5 a+16 f+16 c+16 o4 a+16 | o4 (b >d f+)4 r4 (a+ >c+ f+)2 |
+  L [ o4 b16 o5 d16 f+16 d16 ]4 | [ o4 b16 o5 d16 f+16 d16 ]4 | [ o4 g16 b16 o5 d16 o4 b16 ]4 | [ o4 a16 o5 c+16 e16 c+16 ]4 |
+  [ o4 b16 o5 d16 f+16 d16 ]4 | [ o4 g16 b16 o5 e16 o4 b16 ]4 | [ o4 a+16 o5 c+16 f+16 c+16 ]4 | [ o4 a+16 o5 c+16 f+16 c+16 ]4 |
+  [ o4 g16 b16 o5 d16 o4 b16 ]4 | [ o4 a16 o5 c+16 e16 c+16 ]4 | [ o4 a16 o5 d16 f+16 d16 ]4 | [ o4 b16 o5 d16 f+16 d16 ]4 |
+  [ o4 g16 b16 o5 e16 o4 b16 ]4 | [ o4 a+16 o5 c+16 f+16 c+16 ]4 | [ o4 g16 b16 o5 d16 o4 b16 ]4 | [ o4 a+16 o5 c+16 f+16 c+16 ]4 |
+
+track pad strings unless=lowhp vol=0.36 pan=-0.35 rev=0.32
+  r1 | r1 |
+  L o4 (d f+ b)1 | (d f+ b)1 | (d g b)1 | (c+ e a)1 |
+  (d f+ b)1 | (e g b)1 | (c+ f+ a+)1 | (c+ f+ a+)1 |
+  (d g b)1 | (c+ e a)1 | (d f+ a)1 | (d f+ b)1 |
+  (e g b)1 | (c+ f+ a+)1 | (d g b)1 | (c+ f+ a+)1 |
+
+track bass synthbass vol=0.72 rev=0.05
+  r1 | o3 b4 r4 f+2 |
+  L [ o3 b8 o4 b8 ]4 | [ o3 b8 o4 b8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 a8 o4 a8 ]4 |
+  [ o3 b8 o4 b8 ]4 | [ o3 e8 o4 e8 ]4 | [ o3 f+8 o4 f+8 ]4 | [ o3 f+8 o4 f+8 ]4 |
+  [ o3 g8 o4 g8 ]4 | [ o3 a8 o4 a8 ]4 | [ o3 d8 o4 d8 ]4 | [ o3 b8 o4 b8 ]4 |
+  [ o3 e8 o4 e8 ]4 | [ o3 f+8 o4 f+8 ]4 | [ o3 g8 o4 g8 ]4 | [ o3 f+8 o4 f+8 ]4 |
+
+track drums kit vol=0.5 rev=0.12
+  r1 | (b c)4 r4 s16 s16 s16 s16 t16 m16 f16 f16 | v100 L [ (b c)8 b8 s8 b8 b8 b8 s8 b8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 s16 s16 s16 s16 s16 s16 s16 s16 | ]2
+
+track hats kit vol=0.46 pan=0.15 rev=0.1
+  r1 | r1 | L v65 [ h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]16

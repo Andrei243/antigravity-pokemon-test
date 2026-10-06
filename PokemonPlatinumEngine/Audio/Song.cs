@@ -52,6 +52,12 @@ public sealed class Song
     /// <summary>The night arrangement plays this much slower or faster.</summary>
     public double NightTempo { get; init; } = 0.95;
 
+    /// <summary>
+    /// False for a song that plays the same by day and by night (the header <c>night none</c>): the original's caves and
+    /// dungeons have one theme, the same by day and by night in their map headers.
+    /// </summary>
+    public bool HasNight { get; init; } = true;
+
     /// <summary>The low-HP arrangement of a battle theme plays this much faster (Black and White's way: the music itself turns agitated).</summary>
     public double LowHpTempo { get; init; } = 1.0;
 
@@ -69,7 +75,7 @@ public sealed class Song
 
     public bool Loops => LoopTick >= 0;
 
-    public double SecondsPerTick(bool night, bool lowHp = false) => 60.0 / (Tempo * (night ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * TicksPerQuarter);
+    public double SecondsPerTick(bool night, bool lowHp = false) => 60.0 / (Tempo * (night && HasNight ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * TicksPerQuarter);
 
     /// <summary>Length of one pass through the song, in seconds.</summary>
     public double Duration(bool night = false) => EndTick * SecondsPerTick(night);

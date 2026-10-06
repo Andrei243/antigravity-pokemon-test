@@ -1,7 +1,6 @@
 {
   "area": "route_203",
-  // Until plan 05 writes the theme of Routes 203 and 204 (the original's ROAD_B)
-  "bgmTrack": "sinnoh/route202",
+  "bgmTrack": "sinnoh/route203",
   "trees": "Round",
   "people": {
     "lass": {

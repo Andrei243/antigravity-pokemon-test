@@ -1,0 +1,37 @@
+# Route 205 (the original's ROAD_C role, also Eterna Forest's edge, the Valley Windworks and the Fuego Ironworks):
+# a breezy, wistful walk in six-eight, the oboe over a picked guitar. Original composition for this game.
+title Route 205
+tempo 114
+meter 6/8
+reverb 0.3
+nighttempo 0.94
+
+track lead oboe night=flute vol=0.78 pan=0 rev=0.3
+  L o5 e4. g8 f+8 e8 | o5 g4 a8 g4 e8 | o5 d4. o4 b4. | o5 d4 e8 f+4. |
+  o5 g4. b4 a8 | o5 g4 e8 c4. | o5 c8 d8 e8 a4 g8 | o5 f+2. |
+  o5 g4. e8 g8 o6 c8 | o5 b4 a8 f+4. | o5 f+4. d4 f+8 | o5 e2. |
+  o5 c4 e8 a4 b8 | o6 c4 o5 a8 f+4 d8 | o5 g4. d8 g8 b8 | o5 a4 f+8 d+4. |
+
+track guitar guitar night=harp vol=0.46 pan=-0.3 rev=0.25
+  L o3 e8 b8 o4 e8 g8 e8 o3 b8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 g8 o4 d8 g8 b8 g8 d8 | o3 d8 a8 o4 d8 f+8 d8 o3 a8 |
+  o3 e8 b8 o4 e8 g8 e8 o3 b8 | o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 a8 o4 e8 a8 o5 c8 o4 a8 e8 | o3 b8 o4 f+8 b8 o5 d+8 o4 b8 f+8 |
+  o3 c8 g8 o4 c8 e8 c8 o3 g8 | o3 d8 a8 o4 d8 f+8 d8 o3 a8 | o3 b8 o4 f+8 b8 o5 d8 o4 b8 f+8 | o3 e8 b8 o4 e8 g8 e8 o3 b8 |
+  o3 a8 o4 e8 a8 o5 c8 o4 a8 e8 | o3 d8 a8 o4 d8 f+8 d8 o3 a8 | o3 g8 o4 d8 g8 b8 g8 d8 | o3 b8 o4 f+8 b8 o5 d+8 o4 b8 f+8 |
+
+track pad strings night=pad vol=0.28 pan=0.25 rev=0.42
+  L o4 (e g b)2. | (c e g)2. | (d g b)2. | (d f+ a)2. |
+  (e g b)2. | (c e g)2. | (c e a)2. | (d+ f+ b)2. |
+  (c e g)2. | (d f+ a)2. | (d f+ b)2. | (e g b)2. |
+  (c e a)2. | (d f+ a)2. | (d g b)2. | (d+ f+ b)2. |
+
+track bass bass vol=0.66 rev=0.08
+  L o3 e4. b4. | c4. g4. | g4. d4. | d4. a4. |
+  e4. b4. | c4. g4. | a4. e4. | b4. f+4. |
+  c4. g4. | d4. a4. | b4. f+4. | e4. b4. |
+  a4. e4. | d4. a4. | g4. d4. | b4. f+4. |
+
+track drums kit vol=0.4 rev=0.15
+  v80 L [ b4 k8 s8 k8 k8 | ]15 b4 k8 s8 s16 s16 s8 |
+
+track shaker kit vol=0.3 pan=0.2 rev=0.1
+  L v50 [ k8 v30 k8 k8 v50 k8 v30 k8 k8 v50 | ]16

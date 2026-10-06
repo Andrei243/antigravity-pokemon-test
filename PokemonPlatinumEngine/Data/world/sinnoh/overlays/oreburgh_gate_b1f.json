@@ -1,7 +1,6 @@
 {
   "area": "oreburgh_gate_b1f",
-  // Until plan 05 writes the cave theme (the original's D_05)
-  "bgmTrack": "sinnoh/lake",
+  "bgmTrack": "sinnoh/cave",
   "people": {
     "cyclist_f": {
       "name": "Cyclist",
