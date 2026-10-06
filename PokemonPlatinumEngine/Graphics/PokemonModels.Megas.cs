@@ -1747,4 +1747,20 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Mega Golurk (its build in PokemonModels.Unova4.cs)
 
     private static PokeBuilder GolurkMega() => GolurkBuild(true);
+
+    // ------------------------------------------------------------------ Kalos's Megas (their builds in PokemonModels.Kalos1.cs)
+
+    private static PokeBuilder ChesnaughtMega() => ChesnaughtBuild(true);
+
+    private static PokeBuilder DelphoxMega() => FoxMageBuild(2, true);
+
+    private static PokeBuilder GreninjaMega() => GreninjaBuild(2);
+
+    private static PokeBuilder PyroarMega() => PyroarBuild(2);
+
+    private static PokeBuilder FloetteMega() => FloetteBuild(null, eternal: true, mega: true);
+
+    private static PokeBuilder MeowsticMaleMega() => MeowsticBuild(false, true);
+
+    private static PokeBuilder MeowsticFemaleMega() => MeowsticBuild(true, true);
 }
