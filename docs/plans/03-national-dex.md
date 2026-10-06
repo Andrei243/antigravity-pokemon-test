@@ -9,7 +9,7 @@
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
 - The Pokédex (D10, 2026-10-04): Platinum's Sinnoh Pokédex of 210 species, and the National one after the Hall of Fame, each with its own numbers and counts; an entry's INFO, AREA and SIZE pages; Platinum's search; diplomas (`Models/Pokedex.cs`, `Models/PokedexSearch.cs`, `Data/Habitats.cs`, `UI/PokedexScreen.cs`).
-- Every species has a 3D model: 678 hand-built, the whole of Platinum's Sinnoh Pokédex (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon; D8's 51 in `PokemonModels.Sinnoh3.cs`, from Azurill to Magnezone but for the legendaries; and D9's 35 in `PokemonModels.Sinnoh4.cs`, the legendaries and Tangela to Absol) and all 105 of Kanto's from outside it (`PokemonModels.Kanto1.cs`, Bulbasaur to Vileplume, `PokemonModels.Kanto2.cs`, Paras to Kingler, and `PokemonModels.Kanto3.cs`, Voltorb to Mew; decision 3) and all 64 of Johto's (`PokemonModels.Johto1.cs`, Chikorita to Corsola, and `PokemonModels.Johto2.cs`, Delibird to Celebi) and all 107 of Hoenn's (`PokemonModels.Hoenn1.cs`, Treecko to Delcatty, `PokemonModels.Hoenn2.cs`, Sableye to Armaldo, and `PokemonModels.Hoenn3.cs`, Castform to Deoxys) and all 156 of Unova's (`PokemonModels.Unova1.cs`, Victini to Audino, `PokemonModels.Unova2.cs`, Timburr to Zoroark, `PokemonModels.Unova3.cs`, Minccino to Chandelure, and `PokemonModels.Unova4.cs`, Axew to Genesect) and Kalos's first 36 (`PokemonModels.Kalos1.cs`, Chespin to Slurpuff), with every form of a hand-built species but those that look the same, the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
+- Every species has a 3D model: 714 hand-built, the whole of Platinum's Sinnoh Pokédex (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon; D8's 51 in `PokemonModels.Sinnoh3.cs`, from Azurill to Magnezone but for the legendaries; and D9's 35 in `PokemonModels.Sinnoh4.cs`, the legendaries and Tangela to Absol) and all 105 of Kanto's from outside it (`PokemonModels.Kanto1.cs`, Bulbasaur to Vileplume, `PokemonModels.Kanto2.cs`, Paras to Kingler, and `PokemonModels.Kanto3.cs`, Voltorb to Mew; decision 3) and all 64 of Johto's (`PokemonModels.Johto1.cs`, Chikorita to Corsola, and `PokemonModels.Johto2.cs`, Delibird to Celebi) and all 107 of Hoenn's (`PokemonModels.Hoenn1.cs`, Treecko to Delcatty, `PokemonModels.Hoenn2.cs`, Sableye to Armaldo, and `PokemonModels.Hoenn3.cs`, Castform to Deoxys) and all 156 of Unova's (`PokemonModels.Unova1.cs`, Victini to Audino, `PokemonModels.Unova2.cs`, Timburr to Zoroark, `PokemonModels.Unova3.cs`, Minccino to Chandelure, and `PokemonModels.Unova4.cs`, Axew to Genesect) and all 72 of Kalos's (`PokemonModels.Kalos1.cs`, Chespin to Slurpuff, and `PokemonModels.Kalos2.cs`, Inkay to Volcanion), with every form of a hand-built species but those that look the same, the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
 
 ## Decisions
 
@@ -314,6 +314,42 @@ Hand-built in batches of about fifty sculpts, species and their forms together, 
 - **Tests**: the hand-built list grew to 678 and the hand-built forms to 275; the forms that look like their species now include Greninja's Battle Bond and Scatterbug's and Spewpa's patterns; Honedge and Aegislash have one eye.
 - **Not done here**: the rest of Kalos, Inkay (686) to Volcanion (721), and its forms, the next batch; changing form in play (plan 06 · R19–R23 and R29).
 
+**Kalos, batch 2 (2026-10-06).**
+- **36 species** hand-built in `Graphics/PokemonModels.Kalos2.cs`: the National Pokédex from Inkay (686) to Volcanion (721), none of them in the Sinnoh Pokédex. Inkay and Malamar, Binacle and Barbaracle, Skrelp and Dragalge, Clauncher and Clawitzer, Helioptile and Heliolisk, the fossils (Tyrunt, Tyrantrum, Amaura, Aurorus), Sylveon, Hawlucha, Dedenne, Carbink, the Goomy line, Klefki, Phantump and Trevenant, Pumpkaboo and Gourgeist, Bergmite and Avalugg, Noibat and Noivern, and the mythical and legendary Pokémon of Kalos: Xerneas, Yveltal, Zygarde, Diancie, Hoopa and Volcanion. 714 species are now hand-built, every species of Kalos among them.
+- **19 forms**, every form of those species but those that look like another:
+  - in `PokemonModels.Regional.cs`:
+    - the Hisuian forms: Sliggoo and Goodra under shells of gray metal, and Avalugg, its slab pointed like an icebreaker's prow over a body of dark rock;
+    - Pumpkaboo's and Gourgeist's small, large and super sizes;
+    - Xerneas's Active Mode (each tine of its antlers tipped in a colour of the rainbow);
+    - Zygarde's 10% Forme (a lean black dog, a green streak flying from its neck) and Complete Forme (a giant with two great capes of black);
+    - Hoopa Unbound (a djinn over a coiling tail, two great arms and four hands floating free, each in a ring of gold);
+  - in `PokemonModels.Megas.cs`, the Megas of Legends: Z-A, from their pictures:
+    - Mega Malamar (two great rings, green and pink, for its collar, a rainbow down its front, floating on one point);
+    - Mega Barbaracle (a totem of three rocks, black banded orange, eight arms with a red eye on every hand);
+    - Mega Dragalge (a great cape of red fins);
+    - Mega Hawlucha (vast jagged wings, a gold ruff, a black mask);
+    - Mega Zygarde (its green core hanging under a vast black cylinder banded red, a purple cross on its end);
+    - Mega Diancie (a skirt of pink crystal, white veils, a greater diamond).
+
+  294 forms are hand-built, and 1,008 sculpts in all, no two the same. The 50% Zygarde with Power Construct looks like Zygarde and shows its sculpt. The 10% Zygarde with Power Construct looks like the 10% Forme, so it shows that form's sculpt: a form that looks like another form of its species is named in `PokemonModels.LooksLike`, and `FormTests` holds it to that form's signature.
+- **Kit**, in the batch's file:
+  - the hand with a face of the Binacle line (`BarnacleHand`) and the gray shell of the Hisuian slimes (`SlimeShell`);
+  - the sizes of the Pumpkaboo line, one build at each size's scale and fill.
+
+  Shared builds keep each line's forms consistent: Malamar's, Barbaracle's, Dragalge's, the shrimps, Hawlucha's, Sliggoo's, Goodra's, Pumpkaboo's and Gourgeist's four sizes, Avalugg's, Xerneas's two modes, Zygarde's four formes, Diancie's and Hoopa's.
+- **Soundness**:
+  - The check found Binacle's and Clauncher's eyes placed off the surface of their off-centre hands and head (the face was placed by an absolute x on a shape that isn't at x = 0), and one of Skrelp's fins floating free. All are fixed.
+  - Before the check ran, these were joined to their bodies: the rings round Hoopa Unbound's free hands, Mega Diancie's veils, and the Complete Zygarde's capes and shoulders.
+- **Look check**:
+  - Inkay's flaps and Helioptile's hood are shorter, and Binacle's nails are spread into a crown.
+  - Skrelp curves like a seahorse under a bigger leaf, and Clauncher's and Clawitzer's claws stand aside from their eyes.
+  - Tyrantrum's mane flares from its neck, Aurorus's sail is a curtain of fins, and Sylveon's feelers droop like ribbons.
+  - Bergmite is a mound of facets with yellow eyes rimmed lilac, not a cube.
+  - Xerneas stands fuller on shorter legs, Gourgeist's carved face no longer runs together, Mega Diancie's veils are lighter, and the 50% Zygarde rises in an S.
+- **Eyes**: Binacle has four (a pair on each hand) and Trevenant one (the other hollow is dark).
+- **Tests**: the hand-built list grew to 714 and the hand-built forms to 294. The forms that look like another now include the two Power Construct Zygarde. Binacle has four eyes and Trevenant one, and Hoopa Unbound is in five pieces by design.
+- **Not done here**: Alola and the later regions, Rowlet (722) onwards, the next batches; changing form in play (plan 06 · R19–R23 and R29).
+
 ### D12 · Every species obtainable
 Encounter tables for Platinum's post-game, the Pal Park-style area, the new zone for later generations, gifts, legendary quests, the trade-evolution replacement. A completeness test fails for any species with no way to get it.
 
@@ -355,5 +391,6 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 - [x] Popular species, Unova batch 3 (2026-10-06, decision 3: Minccino to Chandelure, 38 species and their 10 forms)
 - [x] Popular species, Unova batch 4 (2026-10-06, decision 3: Axew to Genesect, 40 species and their 14 forms; every species of Unova)
 - [x] Popular species, Kalos batch 1 (2026-10-06, decision 3: Chespin to Slurpuff, 36 species and their 52 forms)
+- [x] Popular species, Kalos batch 2 (2026-10-06, decision 3: Inkay to Volcanion, 36 species and their 19 forms; every species of Kalos)
 - [ ] D12 Every species obtainable
 - [ ] D13 Balance and polish

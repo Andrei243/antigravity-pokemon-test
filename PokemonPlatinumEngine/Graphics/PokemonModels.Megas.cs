@@ -1763,4 +1763,16 @@ internal static partial class PokemonModels
     private static PokeBuilder MeowsticMaleMega() => MeowsticBuild(false, true);
 
     private static PokeBuilder MeowsticFemaleMega() => MeowsticBuild(true, true);
+
+    private static PokeBuilder MalamarMega() => MalamarBuild(true);
+
+    private static PokeBuilder BarbaracleMega() => BarbaracleBuild(true);
+
+    private static PokeBuilder DragalgeMega() => DragalgeBuild(true);
+
+    private static PokeBuilder HawluchaMega() => HawluchaBuild(true);
+
+    private static PokeBuilder ZygardeMega() => ZygardeBuild(3);
+
+    private static PokeBuilder DiancieMega() => DiancieBuild(true);
 }
