@@ -91,7 +91,7 @@ Plan 06 · R17's seals add their stickers to this release; they never replace it
 - **The recipe**: a move's look is a recipe in `MoveFx`, with a file per batch (`MoveFx.Platinum1.cs` and on), built from the `Fx` primitives. New primitives and cells are added where a move needs them, and Y6 grows the atlas to 8 × 8. Secret Power's look by its ground is our own, as plan 06 · R6 asked; `EffectCue` gains the battle's `BattleTerrain` for it and for Camouflage.
 - **The sound**: a `SoundBank` entry `use_<move key>`. The prefix is its own because the move Psychic and the type's `move_psychic` would otherwise clash. Its `Original` names the original's first sound, and `SoundBank.MoveSound(move, type)` falls back to the type's sound.
 - **Read first, then written**: each batch first reads each move's script for its beats: its parts in order, when it lands, whether the background darkens, who shakes, and the names of its sounds. The particle files (`*_spa`), sprites and palettes are art and are never opened. Shapes, colours and sounds are our own.
-- **What every recipe holds to**: it lands at `ImpactTime` (a new `FxList.Landed` mark, set by `Impact` and by any recipe that lands its own way), ends by `EffectTime`, and at no age draws more quads than `MoveFx.MaxQuads`, the heaviest of G8's 146 as measured in Y6.
+- **What every recipe holds to**: it lands at `ImpactTime` (a new `FxList.Landed` mark, set by `Impact` and by any recipe that lands its own way), ends by `EffectTime`, and at no age draws more quads than a new `MoveFx.MaxQuads`, the heaviest of G8's 146 as measured in Y6.
 - **The cries**: the cry modes that Growl, Roar, Hyper Voice and Howl ask for join `CryMode` in Y6.
 
 **The batches follow the story.** Y6 works the order out once from the data, as a GPU-free `MoveSightings` in the test project. For each Platinum move it finds the first area, in plan 01's order of opening, where the player can see it: in a trainer's team as `TrainerDatabase.Fill` builds it, in a wild Pokémon of the area's tables at its level, or in a TM or HM found there. Y6 takes the first chapter's moves itself and writes the rest into Y7 to Y10 in that order, about seventy to a session. Moves that nothing shows before the post-game close Y10. The later games' moves follow plan 06's batches R24–R26, the Z-Moves R21 and the Max Moves R22. Until then each plays its type's template.
@@ -124,8 +124,8 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 ### Y3 · The turn's moments
 - The style guide first: "Marks on a Pokémon" in "Move effects (G8)" gains each moment.
 - `BattleMoment`, and `MomentShown` attached by the callers of `LoseHp` and `RestoreHp` in `BattleCore.Turn.cs`; by the checks before a move for a sleeping, frozen, paralysed, confused or infatuated Pokémon (`BattleCore.Moves.cs`); for the marsh's bait and mud (`BattleCore.Special.cs`, a place since plan 01 · M7); for the bag's items, the escape item and `LevelRose`.
-- Q11's `ItemShown` where the original plays its held-item animation (`HeldItemEffects`, `BattleCore.Items.cs`). A cue for Future Sight's and Doom Desire's landing. `CueKind.Moment` and its looks in `MoveFx`. `Show` plays a moment before its `HpChanged`. A sound for each moment.
-- Tests: a scenario (`CoreScenario`) for each `BattleMoment` whose log carries it on its line; each look draws and stops; Leech Seed's travels from the seeded to the seeder; a poison tick leaves `HitAge` at -1; `AiMemory` still passes `TrainerAiTests`; the replay holds.
+- Q11's `ItemShown` where the original plays its held-item animation (`HeldItemEffects`, `BattleCore.Items.cs`). A cue for Future Sight's and Doom Desire's landing. A new `CueKind.Moment` and its looks in `MoveFx`. `Show` plays a moment before its `HpChanged`. A sound for each moment.
+- Tests: a scenario (`CoreScenario`) for each `BattleMoment` whose log carries it on its line; each look draws and stops; Leech Seed's travels from the seeded to the seeder; a poison tick leaves `HitAge` at -1; `TrainerAiTests` still pass with the new events; the replay holds.
 - Harness: `96_turn_<moment>` for poison, burn, Leech Seed, Fire Spin, curse, Leftovers, a berry and the marsh's bait, and `96_future_sight`; `battle` and `doubles` against their runs before, changed only where a moment plays.
 - **Done when** the end of a turn can be read from the picture alone (who is poisoned, who is seeded and by whom, which item went off), and a poison tick no longer looks like a hit.
 
@@ -150,7 +150,7 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 - The sounds: `SoundBank.MoveSound(move, type)` and the `use_<key>` entries, with their rows under "Moves". The cry modes the five moves ask for, with their rows under "Cries".
 - `MoveSightings`, with the order written into this plan's Y7 to Y10; the first chapter's moves (Twinleaf Town to Oreburgh's gym, about forty).
 - A new harness mode, `moves [move ...]`, not part of `all`: boards of sixty moves at impact (`mv_NN`), each with its name and `FxList.Count` and the template's moves marked, and four moments of each move named (`mv_<move>`).
-- Tests: `MovePresentationTests`. Every recipe is pure in age and seed, lands at `ImpactTime` within a frame, draws nothing after `EffectTime` and stays under `MaxQuads`. Floors for Platinum's moves with a look and a sound of their own are raised to the batch, as `CoverageTests` does. Every `use_` sound renders clean and inside the effects' loudness window (`SoundTests`), and the new modes pass `CryTests`.
+- Tests: a new `MovePresentationTests`. Every recipe is pure in age and seed, lands at `ImpactTime` within a frame, draws nothing after `EffectTime` and stays under `MaxQuads`. Floors for Platinum's moves with a look and a sound of their own are raised to the batch, as `CoverageTests` does. Every `use_` sound renders clean and inside the effects' loudness window (`SoundTests`), and the new modes pass `CryTests`.
 - Harness: the board; `demo` against its run before; `profile` with the batch's heaviest move.
 - **Done when** the first chapter's battles show and sound each move as its own, the board shows all 467 with the templates marked, and `profile` holds.
 
@@ -169,10 +169,12 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 
 ### Y10 · Platinum's moves, batch 4 and the 467
 - The rest of Platinum's moves, the post-game's last; the floors become "every one", as plan 06 · R6's report became 467 of 467.
+- Tests and harness as Y6, and a full `demo`, `battle` and `doubles` run looked through on `contact` sheets against the run before Y6.
 - **Done when** none of Platinum's 467 moves plays a template or its type's sound, and the board's eight pages show it.
 
 ### Y11 · Later moves, batch 1
 - After plan 06 · R24 (about 127 moves): their recipes and sounds, read from Pokémon Showdown's move data for what each does and from no game's art; their own floor.
+- Tests and harness as Y6: `MovePresentationTests` over the batch, its moves on the `moves` board, its heaviest in `profile`.
 - **Done when** every move R24 made usable has its own look and sound, and `profile` holds.
 
 ### Y12 · Later moves, batch 2
@@ -185,16 +187,18 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 
 ### Y14 · Z-Moves
 - After plan 06 · R21: the 35 Z-Moves (type and exclusive) and the gathering of Z-Power before each, on the event R21 attaches; a status move's Z-Power cue before its own effect.
+- Tests as Y6 over the Z-Moves, and the Z-Power cue on R21's line; harness: the `moves` board, a Z-Move's four moments in `demo`, and `profile`.
 - **Done when** each Z-Move is its own and a recorded battle with one replays the same.
 
 ### Y15 · Max Moves and G-Max Moves
 - After plan 06 · R22: the 19 Max Moves and 33 G-Max Moves, sized for a Dynamax Pokémon, their side effects drawn through Y1's weathers and Y2's field looks.
+- Tests as Y6 over the batch, with each side effect's look set by its line; harness: the `moves` board and a Max Move at its three moments in `profile`.
 - **Done when** every Max and G-Max Move is its own and the heaviest stays under 8 ms on High.
 
 ## Risks
 
 - **The frame.** Lasting looks are drawn every frame, and a double battle at its menu was already 7.00 ms. Every look is timed back to back in `profile`, capped in quads by a test, and cut down if a scene crosses 8 ms.
-- **Size and taste.** 467 Platinum moves and about 470 later ones are our own looks and sounds. The board and `tools/MusicRender --sounds use_` are what the user reviews each batch, and a batch that runs long splits in two.
+- **Size and taste.** 467 Platinum moves and about 470 later ones are our own looks and sounds. The board and the batch's sounds rendered by `tools/MusicRender --sounds` are what the user reviews each batch, and a batch that runs long splits in two.
 - **Overlap.** Plan 09 · L2 and plan 10 · F2 and F10 add fields to `PokePose` and cases to `EyesOf`. One order, written in the style guide, decides between them, whichever plan lands first.
 - **The log grows.** New events go on many lines. The replay and random-battle tests carry them; a test that counts a line's events changes with them.
 - **Test time.** Up to 900 more sounds render in `SoundTests`. If the run grows by more than a few seconds, the full check moves to plan 16 · T4's nightly, and every run keeps a sample of each batch.
