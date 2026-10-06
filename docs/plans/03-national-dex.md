@@ -248,7 +248,7 @@ Hand-built in batches of about fifty sculpts, species and their forms together, 
   182 forms are hand-built, and 668 sculpts in all, no two the same.
 - **Kit**, in the batch's file: seven dots on a Regi's face in its own pattern. Shared builds keep each line's forms consistent: Castform's, Banette's, Salamence's, Metagross's, Latias's and Latios's (one build), Kyogre's, Groudon's, Rayquaza's and Deoxys's.
 - **Soundness**: the check found Castform's raindrop on an empty head bone, Spheal's tail fins, Sealeo's flippers, Regirock's and Regice's legs apart from their bodies; all are joined now. The look check gave Salamence flat wings swept back, Metagross a broader body on shorter legs, the Regis bigger dots, Latias and Latios a raised head, Groudon a bigger head on a neck, and shortened Wynaut's ears and Jirachi's streamers.
-- **Tests**: the hand-built list grew to 486 and the hand-built forms to 182; Beldum and Metang have one eye and the Regis none; a new test holds every species of Hoenn hand-built.
+- **Tests**: the hand-built list grew to 486 and the hand-built forms to 182; Beldum has one eye, Metang the two of the Beldum it is made of, and the Regis none; a new test holds every species of Hoenn hand-built.
 - **Not done here**: the popular species of Unova and the later regions, the next batches; changing form in play (plan 06 · R19–R23 and R29).
 
 ### D12 · Every species obtainable

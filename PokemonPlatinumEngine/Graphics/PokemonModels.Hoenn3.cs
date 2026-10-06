@@ -675,7 +675,7 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
-    /// <summary>Metang: two Beldum fused into a steel disc floating with one red eye in its top, white spikes at its sides and two great clawed arms.</summary>
+    /// <summary>Metang: two Beldum fused into a steel disc floating with a red eye of each on its brow, white spikes at its sides and two great clawed arms.</summary>
     private static PokeBuilder Metang()
     {
         var b = new PokeBuilder("Metang", 0.85f, BodyPlan.Floating, V(0, 0.32f, 0)) { Coat = Metal }.Hover();
@@ -684,7 +684,9 @@ internal static partial class PokemonModels
         var c = V(0, 0.36f, 0);
         var r = V(0.18f, 0.08f, 0.14f);
         b.Ell(Body, c, r, blue);
-        b.Ell(Body, c + V(0, 0.06f, 0.03f), V(0.08f, 0.05f, 0.08f), blue, blend: 0.02f);
+        var dome = c + V(0, 0.06f, 0.03f);
+        var dr = V(0.08f, 0.05f, 0.08f);
+        b.Ell(Body, dome, dr, blue, blend: 0.02f);
         b.PaintTorus(Body, c, 0.17f, 0.006f, Rgb(70, 96, 130), sz: 0.8f);
         PokeBuilder.Both(s =>
         {
@@ -700,10 +702,15 @@ internal static partial class PokemonModels
             foreach (var x in new[] { -0.03f, 0f, 0.03f })
                 b.Spike(arm, fist + V(x, -0.03f, 0.02f), fist + V(x * 1.3f, -0.1f, 0.05f), 0.016f, gray, mat: Shell);
         });
-        int head = b.Head(c + V(0, 0.08f, 0.04f));
-        var at = c + V(0, 0.09f, 0.085f);
-        b.Ell(head, at + V(0, 0, -0.01f), V(0.03f, 0.025f, 0.02f), Rgb(40, 50, 70), blend: 0.008f);
-        b.Eye(head, at + V(0, 0.002f, 0.01f), V(0, 0.4f, 1f), 0.016f, sclera: true, white: Rgb(230, 110, 120), pupil: Rgb(30, 30, 40));
+        // Two eyes, one from each Beldum, in dark sockets on the front of its brow
+        int head = b.Head(dome);
+        PokeBuilder.Both(s =>
+        {
+            var n = Vector3.Normalize(V(0.45f * s, 0.4f, 0.8f));
+            var at = Out(dome, dr, default, n);
+            b.Ell(head, at, V(0.028f, 0.024f, 0.02f), Rgb(40, 50, 70), blend: 0.008f);
+            b.Eye(head, at + n * 0.016f, n, 0.013f, sclera: true, white: Rgb(230, 110, 120), pupil: Rgb(30, 30, 40));
+        });
         return Lift(b);
     }
 
