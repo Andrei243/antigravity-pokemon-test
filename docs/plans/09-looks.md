@@ -174,8 +174,8 @@ Thirty-one shapes in all, drawn by `SceneTransition` and answered for by `Covers
 
 ## Needs and gives
 
-- **Needs** nothing first: every session builds on what plans 03, 04 and 06 · R2 gave. L9's Dr. Footstep waits for plan 01 · M7 and plan 02 · S8 (Route 213) and plan 06 · R17 (the ribbon); L10's puddles are seen on the terrain lab until plan 01 · M7 gives puddles their cover, and its polished floors until the League's rooms exist. Hold-to-skip and auto-advance are plan 08 · P2's and wait for nothing here. Plan 12 · Q8's `TextSize` and `ColourVision` and Q9's `ReduceMotion` act on the same box and camera, whichever comes first: L3's runs wrap at either text size and take their colours through the kit, so the remapping reaches them, and L4's rig leaves its shake to `ShakeCamera`, which Q9 stills.
-- **Gives** plan 02 its scenes' camera (L4) and richer lines (L3) for S12 and S15; plan 01 · M7 the puddle's mirror (L10), leaving Route 212 only the puddle's cover; plan 06 · R10 a drawn shiny for its roll and plan 06 · R17 the footprint for its ribbon; plan 07 · O2 nothing to wait for, since looks are read from fields the save already has; plan 10 the look names its field sprites bake by; plan 11 a portrait beside the box for its named cast.
+- **Needs** nothing first: every session builds on what plans 03, 04 and 06 · R2 gave. L9's Dr. Footstep waits for plan 01 · M11 (his house on Route 213, open since M7, has no room yet), plan 02 · S8 (his person and lines) and plan 06 · R17 (the ribbon); L10's polished floors are seen on the terrain lab until the League's rooms exist, and its puddles are plan 01 · M7's, done. Hold-to-skip and auto-advance are plan 08 · P2's and wait for nothing here. Plan 12 · Q8's `TextSize` and `ColourVision` and Q9's `ReduceMotion` act on the same box and camera, whichever comes first: L3's runs wrap at either text size and take their colours through the kit, so the remapping reaches them, and L4's rig leaves its shake to `ShakeCamera`, which Q9 stills. L11 and L12 need nothing: L12's elevator and the Hall of Fame's machine are tried in a room the harness builds until plan 01 · M11 and M9 make theirs. L13 needs L11's ripple, L14 needs L4's rig, and L15 needs plan 11 · C5 and C6 for faces worth showing (a band shows the stand-in before them). Q9's `ReduceFlashes` and `ReduceMotion` reach L11's flash and ripple and L14's camera, whichever lands second. Plan 06 · R18's Frontier and plan 07 · O6's link battles meet their rows of `ForBattle` when they exist.
+- **Gives** plan 02 its scenes' camera (L4) and richer lines (L3) for S12 and S15, the effects and set pieces each chapter needs (L11, L12; the table in "Design") and every Pokémon Center its machine now, and a way into each boss's battle (L13 to L15); plan 01 · M9 and M10 the polished floors' mirror for the League's rooms and the three ruins (L10); plan 06 · R10 a drawn shiny for its roll, R17 the footprint for its ribbon and R18 the Frontier's and the Brains' ways in; plan 07 · O2 nothing to wait for, since looks are read from fields the save already has, and O6 the link battle's way in; plan 10 the look names its field sprites bake by; plan 11 a portrait beside the box for its named cast, a band for its leaders and Elite Four, and C2 the Galactic mark its grunts' uniforms wear (decision 6); plan 12 · Q9 more flashes and motion to hold.
 
 ## Decisions for the user
 
@@ -183,6 +183,8 @@ Thirty-one shapes in all, drawn by `SceneTransition` and answered for by `Covers
 2. **Shiny palettes: a table for how many?** *Recommended:* the thirty best-known designs by hand and the rest by rule, growing as bad ones are seen. Alternative: every hand-built species by hand (642 choices and their 223 forms, several sessions more).
 3. **Female looks for generated species?** Today every flagged species to Unova is hand-built, so this decides the net for the batches to come. *Recommended:* the rule, replaced as plan 03's batches hand-build each. Alternative: none until hand-built, and the Pokédex shows one look for them.
 4. **Reflections on Medium?** *Recommended:* yes, since Medium is the preset for a slower machine at 4K and the pass is cheap where no water is in view. Alternative: High only.
+5. **What closes a band.** *Recommended:* white, as the original's bands, legendaries and mythicals all close, and G9's diamonds go with their test, since no way in of the original's uses them. Alternative: the bands close with G9's diamonds into the dark every other trainer's battle opens from, which keeps G9's shape in the game.
+6. **The Galactic mark.** The original's grunt and boss ways in throw the team's logo at the screen, which is art. *Recommended:* one mark of our own design, the same one plan 11 · C2 puts on the grunts' uniforms ("a uniform with a mark that is not their logo"), painted by one GPU-free painter both use, whichever session comes first. Alternative: no mark, and both ways in made of plain shapes.
 
 ## Status
 
@@ -196,3 +198,8 @@ Thirty-one shapes in all, drawn by `SceneTransition` and answered for by `Covers
 - [ ] L8 Female looks: Sinnoh and the Pokédex
 - [ ] L9 Footprints
 - [ ] L10 Reflections
+- [ ] L11 Effects for the story's scenes
+- [ ] L12 The original's set pieces
+- [ ] L13 The ways into a battle by place and by whom
+- [ ] L14 The legendary and mythical ways in
+- [ ] L15 The leaders' and the Elite Four's bands
