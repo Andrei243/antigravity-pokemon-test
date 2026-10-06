@@ -307,6 +307,16 @@ public static class WorldMapBuilder
             reached[z * w + x] = true;
             open.Enqueue((x, z));
         }
+        // A rock face is a blocked tile that Rock Climb takes one up or down along its grain (Mt. Coronet's upper
+        // floors lie past them): the floor at its far end is reached all the same, as the field's rule reaches it
+        void Step(int x, int z, int dx, int dz)
+        {
+            int nx = x + dx, nz = z + dz;
+            if (map.InBounds(nx, nz) && map.BehaviourAt(nx, nz) is var face
+                && (face == TileBehavior.RockClimbNorthSouth && dz != 0 || face == TileBehavior.RockClimbEastWest && dx != 0))
+                while (map.InBounds(nx, nz) && map.BehaviourAt(nx, nz) == face) { nx += dx; nz += dz; }
+            Reach(nx, nz);
+        }
         foreach (var (x, z) in entrances)
         {
             // A way in may itself be a blocked tile (a door): the cave starts beside it
@@ -316,7 +326,7 @@ public static class WorldMapBuilder
         while (open.Count > 0)
         {
             var (x, z) = open.Dequeue();
-            Reach(x + 1, z); Reach(x - 1, z); Reach(x, z + 1); Reach(x, z - 1);
+            Step(x, z, 1, 0); Step(x, z, -1, 0); Step(x, z, 0, 1); Step(x, z, 0, -1);
         }
         foreach (var (x, z) in vague)
             if (reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveFloor, isSolid: false);
