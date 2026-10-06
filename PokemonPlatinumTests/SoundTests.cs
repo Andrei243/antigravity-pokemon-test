@@ -48,12 +48,20 @@ public class SoundTests
             Assert.Same(sound, SoundBank.Get(name.ToUpperInvariant()));
             var s = sound!.Samples;
             Assert.All(s, x => Assert.True(float.IsFinite(x)));
-            Assert.InRange(sound.Duration, 0.02, 1.0);
+            // Thunder alone rolls on for seconds
+            Assert.InRange(sound.Duration, 0.02, name.StartsWith("thunder") ? 3.5 : 1.0);
             Assert.InRange(s.Max(MathF.Abs), 0.3f, 0.6f);
             Assert.True(Rms(s) > 0.02, $"{name} is nearly silent");
             // A sound's ends are rounded off, so it starts and stops without a click
             Assert.True(MathF.Abs(s[0]) < 0.02f && MathF.Abs(s[^1]) < 0.02f, $"{name} clicks");
             Assert.True(MathF.Abs(s.Average()) < 0.05f, $"{name} has a DC offset");
+
+            // As loud as the sound bus's window, as the mixer plays it (plan 05 · A7)
+            var mixer = new AudioMixer();
+            mixer.PlaySound(sound, AudioBus.Sound);
+            var (low, high) = Loudness.Target(AudioBus.Sound);
+            double loud = Loudness.Of(Render(mixer, sound.Duration + 0.1), 2);
+            Assert.True(loud >= low && loud <= high, $"{name} measures {loud:0.0} dB, outside {low} to {high}");
         }
     }
 
@@ -172,7 +180,7 @@ public class SoundTests
         var mixer = new AudioMixer();
         foreach (var name in SoundBank.Names) mixer.PlaySound(SoundBank.Get(name)!);
         Assert.Equal(Math.Min(AudioMixer.MaxSounds, SoundBank.Names.Length), mixer.SoundsPlaying);
-        var samples = Render(mixer, 1.0);
+        var samples = Render(mixer, SoundBank.Names.Max(n => SoundBank.Get(n)!.Duration) + 0.1);
         Assert.All(samples, s => Assert.True(float.IsFinite(s)));
         Assert.True(samples.Max(MathF.Abs) < 1f);
         Assert.Equal(0, mixer.SoundsPlaying);

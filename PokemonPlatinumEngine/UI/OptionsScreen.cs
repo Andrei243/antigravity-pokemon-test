@@ -7,24 +7,44 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>The settings the options screen offers, in the order of its rows.</summary>
-public enum OptionRow { TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay, Sound, MusicVolume, SoundVolume }
+public enum OptionRow
+{
+    TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
+    Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers
+}
 
 /// <summary>
-/// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, sound on or
-/// off, and the volumes of the music and the sound effects (the mixer's buses). Changes apply at once; the caller
-/// saves the settings when the screen reports a change.
+/// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
+/// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
+/// the ambience) and the speakers it plays through. Changes apply at once; the caller saves the settings when the
+/// screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
 public class OptionsScreen
 {
     private static readonly OptionRow[] Rows = Enum.GetValues<OptionRow>();
 
+    /// <summary>The rows the screen shows at once, above the help panel.</summary>
+    public const int VisibleRows = 9;
+
     public bool IsActive { get; private set; }
     public int SelectedIndex { get; set; }
+
+    /// <summary>The first row in the window.</summary>
+    public int FirstRow { get; private set; }
 
     public void Open()
     {
         IsActive = true;
         SelectedIndex = 0;
+        FirstRow = 0;
+    }
+
+    /// <summary>One step of the cursor up or down the rows, wrapping round; the window follows it.</summary>
+    public void Move(int dy)
+    {
+        SelectedIndex = (SelectedIndex + dy + Rows.Length) % Rows.Length;
+        FirstRow = UiNav.Window(FirstRow, SelectedIndex, Rows.Length, VisibleRows);
+        AudioManager.PlaySound("cursor");
     }
 
     /// <summary>Handles input; returns true when a setting changed and should be applied and saved.</summary>
@@ -32,16 +52,8 @@ public class OptionsScreen
     {
         if (!IsActive) return false;
 
-        if (InputManager.IsActionPressed(GameAction.Up))
-        {
-            SelectedIndex = (SelectedIndex - 1 + Rows.Length) % Rows.Length;
-            AudioManager.PlaySound("cursor");
-        }
-        else if (InputManager.IsActionPressed(GameAction.Down))
-        {
-            SelectedIndex = (SelectedIndex + 1) % Rows.Length;
-            AudioManager.PlaySound("cursor");
-        }
+        if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
+        else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
         else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Menu))
         {
             IsActive = false;
@@ -100,6 +112,15 @@ public class OptionsScreen
             case OptionRow.SoundVolume:
                 s.SoundVolume = Math.Clamp(s.SoundVolume + step * GameSettings.VolumeStep, 0, 100);
                 break;
+            case OptionRow.CryVolume:
+                s.CryVolume = Math.Clamp(s.CryVolume + step * GameSettings.VolumeStep, 0, 100);
+                break;
+            case OptionRow.AmbienceVolume:
+                s.AmbienceVolume = Math.Clamp(s.AmbienceVolume + step * GameSettings.VolumeStep, 0, 100);
+                break;
+            case OptionRow.Speakers:
+                s.Speakers = s.Speakers == SpeakerMode.Stereo ? SpeakerMode.Handheld : SpeakerMode.Stereo;
+                break;
         }
     }
 
@@ -127,7 +148,12 @@ public class OptionsScreen
             : "Follows your computer's clock, like the original: morning from 4, day from 10, twilight from 17, night from 20."),
         OptionRow.Sound => ("Sound", s.Muted ? "Off" : "On", "Music and sound effects (also the M key)."),
         OptionRow.MusicVolume => ("Music", $"{s.MusicVolume}%", "How loud the music and the fanfares play."),
-        _ => ("Sound effects", $"{s.SoundVolume}%", "How loud the sound effects and the cries play.")
+        OptionRow.SoundVolume => ("Sound effects", $"{s.SoundVolume}%", "How loud the sound effects play: menus, doors, footsteps, the moves in battle."),
+        OptionRow.CryVolume => ("Cries", $"{s.CryVolume}%", "How loud the Pokémon's cries play."),
+        OptionRow.AmbienceVolume => ("Ambience", $"{s.AmbienceVolume}%", "How loud the field's background sounds play: rain, wind, waterfalls, the sea, caves."),
+        _ => ("Speakers", s.Speakers == SpeakerMode.Handheld ? "Handheld" : "Stereo", s.Speakers == SpeakerMode.Handheld
+            ? "Sounds as the handheld's own small speakers would: no deep bass, a narrow stereo and ten-bit sound."
+            : "Full sound, for speakers or headphones.")
     };
 
     public void Draw(int sw, int sh, GameSettings settings)
@@ -138,13 +164,25 @@ public class OptionsScreen
         ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
 
         const float pitch = 86, height = 78;
-        for (int i = 0; i < Rows.Length; i++)
+        bool scrolls = Rows.Length > VisibleRows;
+        float width = sw - 128 - (scrolls ? 36 : 0);
+        for (int k = 0; k < Math.Min(VisibleRows, Rows.Length); k++)
         {
+            int i = FirstRow + k;
             var (label, value, _) = Describe(settings, Rows[i]);
-            ModernUi.ValueRow(new Rectangle(64, ModernUi.ContentTop + i * pitch, sw - 128, height), label, value, i == SelectedIndex);
+            ModernUi.ValueRow(new Rectangle(64, ModernUi.ContentTop + k * pitch, width, height), label, value, i == SelectedIndex);
+        }
+        if (scrolls)
+        {
+            // Where the window is among all the rows: a thin track with a thumb at the right
+            var track = new Rectangle(sw - 64 - 12, ModernUi.ContentTop, 12, VisibleRows * pitch - (pitch - height));
+            UiShapes.Fill(track, 6, ModernUi.Rule);
+            float size = track.Height * VisibleRows / Rows.Length;
+            float at = (track.Height - size) * FirstRow / (Rows.Length - VisibleRows);
+            UiShapes.Fill(new Rectangle(track.X, track.Y + at, track.Width, size), 6, ModernUi.Frame);
         }
 
-        float top = ModernUi.ContentTop + Rows.Length * pitch + 6;
+        float top = ModernUi.ContentTop + Math.Min(VisibleRows, Rows.Length) * pitch + 6;
         var help = new Rectangle(64, top, sw - 128, ModernUi.ContentBottom - top);
         ModernUi.Panel(help, 30);
         ModernUi.DrawWrapped(Describe(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);

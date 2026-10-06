@@ -358,12 +358,33 @@ internal static class WeatherFx
         if (weather != FieldWeather.Thunderstorm || time < 0.0) return 0f;
         const double window = 8.0;
         long n = (long)(time / window);
-        float since = (float)(time - n * window) - (1f + GroundBaker.Rand01((int)n, 7, 915) * 5f);
+        float since = (float)(time - n * window) - StrikeAt(n);
         if (since < 0f) return 0f;
         if (since < 0.07f) return 0.8f;
         if (since < 0.13f) return 0f;
         if (since < 0.22f) return 0.5f;
         return since < 0.4f ? 0.25f * (1f - (since - 0.22f) / 0.18f) : 0f;
+    }
+
+    /// <summary>When the storm's strike of the <paramref name="n"/>th eight seconds comes, from the start of them.</summary>
+    private static float StrikeAt(long n) => 1f + GroundBaker.Rand01((int)n, 7, 915) * 5f;
+
+    /// <summary>
+    /// The thunder heard after <see cref="Lightning"/>'s flashes between two moments: the sound's name for each
+    /// whose moment falls after <paramref name="from"/> and at or before <paramref name="to"/>. As the original's
+    /// storm does (<c>ov5_021D5EB8.c</c>), two strikes of three crack near (<c>thunder</c>, a fifth of a second
+    /// after the flash) and one rumbles from further off (<c>thunder_rumble</c>, a second after it).
+    /// </summary>
+    public static IEnumerable<string> Thunder(FieldWeather weather, double from, double to)
+    {
+        if (weather != FieldWeather.Thunderstorm || to <= from || to < 0.0) yield break;
+        const double window = 8.0;
+        for (long n = Math.Max(0, (long)(from / window) - 1); n <= (long)(to / window); n++)
+        {
+            bool far = GroundBaker.Rand01((int)n, 7, 916) < 1f / 3f;
+            double at = n * window + StrikeAt(n) + (far ? 1.0 : 0.2);
+            if (at > from && at <= to) yield return far ? "thunder_rumble" : "thunder";
+        }
     }
 
     /// <summary>

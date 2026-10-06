@@ -5,6 +5,10 @@
 //   dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--night] [--stems] [--passes N] [--spectrogram]
 //   dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
 //   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
+//   dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]
+//
+// Every report gives the loudness each bus is held to (Audio/Loudness: gated, in dBFS) and flags what falls outside
+// its bus's window.
 //   dotnet run --project tools/MusicRender -- --calibrate
 using System.IO.Compression;
 using System.Text;
@@ -16,6 +20,7 @@ if (args.Length < 1)
     Console.WriteLine("usage: MusicRender <out dir> [song id or folder ...] [--night] [--stems] [--passes N] [--spectrogram]");
     Console.WriteLine("       MusicRender <out dir> --sounds [name ...]");
     Console.WriteLine("       MusicRender <out dir> --cries [species or form ...] [--all] [--modes]");
+    Console.WriteLine("       MusicRender <out dir> --ambience [bed ...] [--handheld]");
     Console.WriteLine("       MusicRender --calibrate");
     return 1;
 }
@@ -52,17 +57,25 @@ int passes = 2;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--cries" or "--all" or "--modes") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--cries" or "--all" or "--modes" or "--ambience" or "--handheld") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
     filters.Add(args[i]);
 }
 
 Directory.CreateDirectory(outDir);
+bool handheld = args.Contains("--handheld");
+
+// The bus's window for a loudness, or a flag saying how far outside it is
+string Target(double loudness, AudioBus bus)
+{
+    var (low, high) = Loudness.Target(bus);
+    return loudness < low ? $"  QUIET by {low - loudness:0.0} dB" : loudness > high ? $"  LOUD by {loudness - high:0.0} dB" : "";
+}
 
 // Renders one sound as the mixer plays it on its bus, with a tenth of a second after; prints its numbers and says whether it is sound
 bool Check(string label, SoundSample sound, AudioBus bus, string file, bool write)
 {
-    var mixer = new AudioMixer();
+    var mixer = new AudioMixer { Handheld = handheld };
     mixer.PlaySound(sound, bus);
     int frames = sound.Samples.Length + Synthesizer.SampleRate / 10;
     var samples = new float[frames * 2];
@@ -88,7 +101,8 @@ bool Check(string label, SoundSample sound, AudioBus bus, string file, bool writ
         loudest = WriteSpectrogram(file + ".png", samples, 640, 256, 8192f);
     }
     bool clicks = head > 0.02f || tail > 0.02f;
-    Console.WriteLine($"{label,-12} {sound.Duration * 1000,5:0} ms  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loudest {loudest,5:0} Hz  ends {head:0.000}/{tail:0.000}  dc {dc,6:0.000}{(clicks ? "  CLICKS" : "")}{(nans > 0 ? $"  NaN {nans}" : "")}");
+    double loud = Loudness.Of(samples, 2);
+    Console.WriteLine($"{label,-12} {sound.Duration * 1000,5:0} ms  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loud {loud,6:0.0} dB  loudest {loudest,5:0} Hz  ends {head:0.000}/{tail:0.000}  dc {dc,6:0.000}{(clicks ? "  CLICKS" : "")}{(nans > 0 ? $"  NaN {nans}" : "")}{Target(loud, bus)}");
     return nans == 0 && peak < 0.999f && !clicks;
 }
 
@@ -97,7 +111,37 @@ if (args.Contains("--sounds"))
     // Every sound effect (or the ones named)
     bool bad = false;
     foreach (var name in SoundBank.Names.Where(n => filters.Count == 0 || filters.Contains(n, StringComparer.OrdinalIgnoreCase)))
-        bad |= !Check(name, SoundBank.Get(name)!, AudioBus.Sound, Path.Combine(outDir, "sound_" + name), true);
+        bad |= !Check(name, SoundBank.Get(name)!, AudioBus.Sound, Path.Combine(outDir, "sound_" + name + (handheld ? "_handheld" : "")), true);
+    return bad ? 2 : 0;
+}
+
+if (args.Contains("--ambience"))
+{
+    // Every ambience bed (or the ones named) as the mixer loops it: a second to fade in, then the loop twice; the
+    // seam is where the loop starts again, and must be no bigger a step than the bed's own
+    bool bad = false;
+    foreach (var bed in Enum.GetValues<AmbienceBed>().Where(b => filters.Count == 0 || filters.Contains(b.ToString(), StringComparer.OrdinalIgnoreCase)))
+    {
+        var sample = Ambience.Get(bed);
+        var mixer = new AudioMixer { Handheld = handheld };
+        mixer.SetAmbience(new[] { new AmbienceLayer(bed, 1f, 0f) });
+        double seconds = AudioMixer.AmbienceFade + sample.Duration * 2;
+        int frames = (int)(seconds * Synthesizer.SampleRate);
+        var samples = new float[frames * 2];
+        for (int done = 0; done < frames; done += 1024) mixer.Render(samples.AsSpan(done * 2, Math.Min(1024, frames - done) * 2));
+        int settled = (int)(AudioMixer.AmbienceFade * Synthesizer.SampleRate) + 1024;
+        double loud = Loudness.Of(samples.AsSpan(settled * 2), 2);
+        float peak = samples.Max(MathF.Abs);
+        var data = sample.Samples;
+        float seam = MathF.Abs(data[0] - data[^1]), step = 0f;
+        for (int i = 1; i < data.Length; i++) step = MathF.Max(step, MathF.Abs(data[i] - data[i - 1]));
+        string file = Path.Combine(outDir, "ambience_" + bed.ToString().ToLowerInvariant() + (handheld ? "_handheld" : ""));
+        WriteWav(file + ".wav", samples);
+        float loudest = WriteSpectrogram(file + ".png", samples, 900, 256, 8192f);
+        bool broken = seam > step || peak >= 0.999f || samples.Any(x => !float.IsFinite(x));
+        Console.WriteLine($"{bed,-12} {sample.Duration,5:0.0} s loop  peak {Db(peak),6:0.0} dB  loud {loud,6:0.0} dB  loudest {loudest,5:0} Hz  seam {seam:0.000} (largest step {step:0.000}){(broken ? "  BROKEN" : "")}{Target(loud, AudioBus.Ambience)}");
+        bad |= broken;
+    }
     return bad ? 2 : 0;
 }
 
@@ -124,7 +168,7 @@ if (args.Contains("--cries"))
         foreach (var mode in modes ? Enum.GetValues<CryMode>() : new[] { CryMode.Normal })
         {
             string label = mode == CryMode.Normal ? name : $"{name} {mode}";
-            bad |= !Check(label, Cries.Get(species, form, mode), AudioBus.Cry, Path.Combine(outDir, "cry_" + label.Replace(' ', '_').ToLowerInvariant()), !all);
+            bad |= !Check(label, Cries.Get(species, form, mode), AudioBus.Cry, Path.Combine(outDir, "cry_" + label.Replace(' ', '_').ToLowerInvariant() + (handheld ? "_handheld" : "")), !all);
         }
     }
     return bad ? 2 : 0;
@@ -138,7 +182,7 @@ var songs = MusicLibrary.All
 bool problems = false;
 foreach (var song in songs)
 {
-    var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp };
+    var mixer = new AudioMixer { Volume = 0.8f, LowHp = lowHp, Handheld = handheld };
     double seconds;
     if (song.Loops)
     {
@@ -183,12 +227,15 @@ foreach (var song in songs)
         sum += s * s;
     }
     double rms = Math.Sqrt(sum / samples.Length);
-    string name = song.Id.Replace('/', '_') + (night ? "_night" : "") + (lowHp ? "_lowhp" : "");
+    string name = song.Id.Replace('/', '_') + (night ? "_night" : "") + (lowHp ? "_lowhp" : "") + (handheld ? "_handheld" : "");
     WriteWav(Path.Combine(outDir, name + ".wav"), samples);
     if (spectrograms) WriteSpectrogram(Path.Combine(outDir, name + ".png"), samples, 1200, 256, 8192f);
 
     var clashes = Clashes(song);
-    Console.WriteLine($"{song.Id,-24} {song.Duration(night),6:0.0}s loop {song.LoopDuration(night),5:0.0}s  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  clashes {clashes.Count}  cpu {cpu:0.0}%{(nans > 0 ? $"  NaN {nans}" : "")}");
+    // Loudness is measured before the fade, as the game plays it
+    var bus = song.Loops ? AudioBus.Music : AudioBus.Fanfare;
+    double loud = Loudness.Of(samples.AsSpan(0, (song.Loops ? frames - (int)(2.5 * Synthesizer.SampleRate) : frames) * 2), 2);
+    Console.WriteLine($"{song.Id,-24} {song.Duration(night),6:0.0}s loop {song.LoopDuration(night),5:0.0}s  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loud {loud,6:0.0} dB  clashes {clashes.Count}  cpu {cpu:0.0}%{(nans > 0 ? $"  NaN {nans}" : "")}{Target(loud, bus)}");
     foreach (var c in clashes.Take(12)) Console.WriteLine("    " + c);
     if (stems)
     {

@@ -253,7 +253,8 @@ public partial class GameEngine
         renderContext.SetQuality(Settings.Quality);
         GameClock.Fixed = Settings.TimeOfDay;
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
-        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f);
+        AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
+        AudioManager.Handheld = Settings.Speakers == SpeakerMode.Handheld;
         dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         if (window) WindowSettings.Apply(Settings);
     }
@@ -416,13 +417,19 @@ public partial class GameEngine
         // The field's small life runs on while a dialogue or a fade covers it: dust settles, a door finishes opening
         if (gameStarted && currentState is GameState.Overworld or GameState.Dialogue or GameState.Transition)
         {
+            double before = world.Life.Now;
             world.Life.Advance(dt);
+            // Thunder follows a storm's lightning, a moment after the flash
+            foreach (var thunder in WeatherFx.Thunder(currentMap.WeatherAt(player.GridX, player.GridY), before, world.Life.Now))
+                AudioManager.PlaySound(thunder);
             // Rain and hail land round the player while they stand in it
             world.Life.Rainfall(currentMap, player.PixelX / Player.TileSize + 0.5f, player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
             foreach (var npc in currentMap.NPCs) npc.TickBubble(dt);
         }
+
+        UpdateAmbience();
 
         // Global Mute Toggle (M)
         if (Raylib.IsKeyPressed(KeyboardKey.M))
@@ -574,6 +581,38 @@ public partial class GameEngine
                 break;
         }
     }
+
+    private List<AmbienceLayer> fieldAmbience = new();
+    private (Map? Map, int X, int Y, FieldWeather Weather) ambienceAt;
+
+    /// <summary>
+    /// The field's ambience (plan 05 · A7): the beds heard where the player stands, worked out again when they step
+    /// onto another tile or the weather changes, and silence while a battle, an evolution, the title or the
+    /// introduction has the screen.
+    /// </summary>
+    private void UpdateAmbience()
+    {
+        bool heard = gameStarted && currentMap != null && player != null
+            && currentState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution);
+        if (!heard)
+        {
+            if (fieldAmbience.Count > 0) fieldAmbience = new List<AmbienceLayer>();
+            ambienceAt = default;
+        }
+        else
+        {
+            var at = (currentMap, player!.GridX, player.GridY, currentMap!.WeatherAt(player.GridX, player.GridY));
+            if (at != ambienceAt)
+            {
+                fieldAmbience = FieldAmbience.Around(currentMap, player.GridX, player.GridY);
+                ambienceAt = at;
+            }
+        }
+        AudioManager.SetAmbience(fieldAmbience);
+    }
+
+    /// <summary>The pan of a sound made at a tile column of the field: from its side of the screen.</summary>
+    internal float PanAt(int tileX) => FieldAmbience.PanOf(tileX - player.GridX);
 
     private void UpdateOverworld(float dt)
     {
@@ -817,7 +856,7 @@ public partial class GameEngine
         if (trainer == null) return false;
 
         trainerApproach = new TrainerApproach(trainer, player);
-        AudioManager.PlaySound("exclaim");
+        AudioManager.PlaySound("exclaim", PanAt(trainer.GridX));
 
         // Their eye theme, by their class, plays while they walk up and talk, until the battle theme cuts in
         AudioManager.Region = RegionDatabase.RegionOfMap(currentMap.Name)?.Id;
