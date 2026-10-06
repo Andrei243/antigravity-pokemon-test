@@ -942,6 +942,14 @@ internal static partial class PokemonModels
         return b;
     }
 
+    // ------------------------------------------------------------------ Mega Sableye, Mega Mawile and Mega Aggron (their builds in PokemonModels.Hoenn2.cs)
+
+    private static PokeBuilder SableyeMega() => SableyeBuild(true);
+
+    private static PokeBuilder MawileMega() => MawileBuild(true);
+
+    private static PokeBuilder AggronMega() => AggronBuild(true);
+
     // ------------------------------------------------------------------ Mega Medicham
 
     private static PokeBuilder MedichamMega()
@@ -997,6 +1005,14 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Eye(head, V(0.032f * s, 0.72f, 0.085f), V(0.4f * s, 0.05f, 1f), 0.02f, Rgb(120, 190, 230)));
         return Lift(b);
     }
+
+    // ------------------------------------------------------------------ Mega Manectric, Mega Sharpedo and Mega Camerupt (their builds in PokemonModels.Hoenn2.cs)
+
+    private static PokeBuilder ManectricMega() => ManectricBuild(true);
+
+    private static PokeBuilder SharpedoMega() => SharpedoBuild(true);
+
+    private static PokeBuilder CameruptMega() => CameruptBuild(true);
 
     // ------------------------------------------------------------------ Mega Altaria
 
