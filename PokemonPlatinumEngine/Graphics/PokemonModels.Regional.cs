@@ -620,6 +620,12 @@ internal static partial class PokemonModels
 
     private static PokeBuilder CorsolaGalar() => CorsolaBuild(true);
 
+    // ------------------------------------------------------------------ Galarian Zigzagoon and Linoone (their builds in PokemonModels.Hoenn1.cs)
+
+    private static PokeBuilder ZigzagoonGalar() => ZigzagoonBuild(true);
+
+    private static PokeBuilder LinooneGalar() => LinooneBuild(true);
+
     // ------------------------------------------------------------------ Dialga's and Palkia's Origin Formes
 
     private static PokeBuilder DialgaOrigin()

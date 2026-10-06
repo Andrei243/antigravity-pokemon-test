@@ -681,7 +681,12 @@ public class PokemonTests
             "Teddiursa", "Ursaring", "Slugma", "Magcargo", "Corsola",
             // Johto's second batch, Delibird to Celebi
             "Delibird", "Skarmory", "Kingdra", "Phanpy", "Donphan", "Stantler", "Smeargle", "Tyrogue", "Hitmontop", "Smoochum", "Miltank",
-            "Raikou", "Entei", "Suicune", "Larvitar", "Pupitar", "Tyranitar", "Lugia", "Ho-Oh", "Celebi"
+            "Raikou", "Entei", "Suicune", "Larvitar", "Pupitar", "Tyranitar", "Lugia", "Ho-Oh", "Celebi",
+            // Hoenn's first batch, Treecko to Delcatty
+            "Treecko", "Grovyle", "Sceptile", "Torchic", "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert", "Poochyena",
+            "Mightyena", "Zigzagoon", "Linoone", "Lotad", "Lombre", "Ludicolo", "Seedot", "Nuzleaf", "Shiftry", "Taillow", "Swellow",
+            "Surskit", "Masquerain", "Shroomish", "Breloom", "Slakoth", "Vigoroth", "Slaking", "Nincada", "Ninjask", "Shedinja", "Whismur",
+            "Loudred", "Exploud", "Makuhita", "Hariyama", "Skitty", "Delcatty"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));

@@ -892,6 +892,14 @@ internal static partial class PokemonModels
 
     private static PokeBuilder TyranitarMega() => TyranitarBuild(true);
 
+    // ------------------------------------------------------------------ Mega Sceptile, Mega Blaziken and Mega Swampert (their builds in PokemonModels.Hoenn1.cs)
+
+    private static PokeBuilder SceptileMega() => SceptileBuild(true);
+
+    private static PokeBuilder BlazikenMega() => BlazikenBuild(true);
+
+    private static PokeBuilder SwampertMega() => SwampertBuild(true);
+
     // ------------------------------------------------------------------ Mega Gardevoir
 
     private static PokeBuilder GardevoirMega()

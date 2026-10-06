@@ -40,7 +40,7 @@ public class PokemonModelTests
     /// </summary>
     private static readonly Dictionary<string, int> PiecesOf = new()
     {
-        ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5, ["Alakazam-Mega"] = 6
+        ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5, ["Alakazam-Mega"] = 6, ["Shedinja"] = 2
     };
 
     [Theory]
