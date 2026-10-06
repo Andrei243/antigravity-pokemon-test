@@ -330,7 +330,7 @@ public partial class GameEngine
         {
             if (who == null) game.player.ShowBubble(bubble, seconds);
             else who.ShowBubble(bubble, seconds);
-            if (bubble == EmoteBubble.Exclaim) AudioManager.PlaySound("exclaim");
+            if (bubble == EmoteBubble.Exclaim) AudioManager.PlaySound("exclaim", who == null ? 0f : game.PanAt(who.GridX));
         }
 
         public void Camera(CameraMove move, int x, int y, float seconds)

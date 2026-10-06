@@ -151,8 +151,8 @@ public class MusicTests
     {
         foreach (var song in MusicLibrary.All)
         {
-            // The first stretch of each song: no NaNs, no clipping, and actually audible
-            double seconds = Math.Min(song.Duration(), 6);
+            // The first stretch of each song: no NaNs, no clipping, and as loud as its bus's window (plan 05 · A7)
+            double seconds = Math.Min(song.Duration(), 10);
             var samples = Render(m =>
             {
                 if (song.Loops) m.Play(song, night: false);
@@ -162,6 +162,9 @@ public class MusicTests
             Assert.All(samples, s => Assert.True(float.IsFinite(s)));
             Assert.True(samples.Max(MathF.Abs) < 1f, $"{song.Id} clips");
             Assert.True(Rms(samples) > 0.01, $"{song.Id} is nearly silent");
+            var (low, high) = Loudness.Target(song.Loops ? AudioBus.Music : AudioBus.Fanfare);
+            double loud = Loudness.Of(samples, 2);
+            Assert.True(loud >= low && loud <= high, $"{song.Id} measures {loud:0.0} dB, outside {low} to {high}");
         }
     }
 

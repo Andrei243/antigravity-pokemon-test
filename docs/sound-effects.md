@@ -2,7 +2,7 @@
 
 Every sound effect of the game (plan 05 · A3), what it stands for in the original and when this game plays it. The sounds are our own: synthesised in code the first time each is asked for (`Audio/SoundBank`, built with the layers of `Audio/SoundDesign`: oscillators whose pitch glides, two-operator FM bells, noise through a resonant filter whose cutoff glides, scattered clicks and bubbles, an echo). Nothing is taken from the games; the second column names the original's sound effect (from the decompilation's `res/sound/pl_sound_data.json` and the code that plays it) only as the checklist of what needs a sound, and is empty where the original's name isn't known or there is none.
 
-**How they are heard.** Call `AudioManager.PlaySound(name, pan)`; a script says `sound <name>`. Every sound is brought to its own peak (a menu's blip lowest, about −16 dBFS; a blow in battle highest, about −10 dBFS) and starts and ends at nothing, so the mixer's sound bus needs no balancing of its own. In battle a sound comes from the side of the Pokémon it belongs to: the player's a little to the left, the foe's to the right (`BattleEngine.Sound`).
+**How they are heard.** Call `AudioManager.PlaySound(name, pan)`; a script says `sound <name>`. Every sound is brought to its own peak (a menu's blip lowest, about −16 dBFS; a blow in battle highest, about −10 dBFS) and starts and ends at nothing, so the mixer's sound bus needs no balancing of its own; measured as the mixer plays it, each lies within the sound bus's loudness window (`Audio/Loudness`, −38 to −20 dB: [`music-format.md`](music-format.md), "Loudness"). In battle a sound comes from the side of the Pokémon it belongs to: the player's a little to the left, the foe's to the right (`BattleEngine.Sound`). In the field a sound made by someone comes from their side of the screen (`GameEngine.PanAt`, `FieldAmbience.PanOf`: a trainer's "!" or a script's surprise, eight tiles to the side leaning 0.8 of the way), and the player's own from the middle.
 
 **Timing.** In battle a sound is heard when what it belongs to is seen: a move's sound as its line appears, the hit's as it lands (`HitDelay`), the send-out as the ball opens (`BattleAnimator.SendOutBallTime`), each of a thrown ball's wobbles as it begins (`BattleAnimator.BallWobbleAt`) and its click or burst as it settles. In the field a footstep's sound comes as the step begins, as the original's `player_move.c` plays it: in snow, a puddle, water ankle deep, shallow mud and **very** tall grass, and nowhere else (the original's ordinary tall grass and sand are silent). A door's sound comes as it begins to open (`FieldLife.OpenDoor` says so) and as it shuts behind someone who came out (`FieldLife.TakeShutting`); glass doors slide both ways. Going through any other warp is the original's footsteps on stairs, or a warp panel's own sound.
 
@@ -55,6 +55,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `fish_bite` | `SEQ_SE_DP_FW104` | Something bites (waits for fishing). |
 | `fish_reel` | — | The line reeled in (waits for fishing). |
 | `poketch` | `SEQ_SE_DP_POKETCH_003` | A Pokétch button (waits for the Pokétch). |
+| `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |
+| `thunder_rumble` | `SEQ_SE_DP_T_KAMI` | Thunder rolling from further off, a second after the lightning (one strike of three). |
 
 ## Battles
 
@@ -110,3 +112,23 @@ Every species and every form has a cry of its own (plan 05 · A4), synthesised b
 
 - **Playing one**: `AudioManager.PlayCry(pokemon or species, form, mode, pan)` plays it on the cry bus, which dips the music under it. A battle asks for its Pokémon's cries ahead (`AudioManager.RequestCries`), and they are made on a worker. The last 48 are kept (`Cries.Kept`); a cry takes about ten milliseconds to make.
 - **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--modes] [--all]` renders cries with their spectrograms (a sample of every size and type when no species is named; `--all` checks every species and form without writing files). `CryTests` makes every species' and form's cry and holds it clean and unlike any other.
+
+## Ambience
+
+The field's background sound (plan 05 · A7): loops ("beds") on the mixer's ambience bus, synthesised in code by `Audio/Ambience` like the sound effects, each made a second longer than it lasts and its last second crossfaded into its first, so it loops without a seam. Every bed is brought to the ambience bus's level (about ten dB under the music), so two can play under a song. What is heard where the player stands is `Overworld/FieldAmbience` (no drawing or audio device), worked out again on each step and whenever the weather changes; the mixer glides each bed to its gain and pan over 1.2 seconds (`AudioMixer.SetAmbience`), so walking up to a waterfall or out of the rain is smooth. A battle, an evolution, the title and the introduction silence it.
+
+| Bed | The original's | Heard |
+|---|---|---|
+| `Rain` | `SEQ_SE_DP_T_AME` | Rain where the player stands. |
+| `HeavyRain` | `SEQ_SE_DP_T_OOAME` | Heavy rain, or a thunderstorm (with `thunder` after its lightning). |
+| `Hail` | — | Hail. |
+| `Wind` | `SEQ_SE_DP_KAZE` | Snow: softly in light snow, harder in heavy snow. |
+| `Blizzard` | `SEQ_SE_DP_KAZE2` | A blizzard: a gale with a whistle in it. |
+| `Sandstorm` | — | A sandstorm. |
+| `Waterfall` | — | A waterfall within nine tiles: louder the nearer, from its side of the screen. |
+| `River` | — | Running water (river tiles) within reach. |
+| `Waves` | `SEQ_SE_DP_NAMI` | The sea, or a lake: louder the more of the view is water, from its side. |
+| `Cave` | — | In a cave (a map whose setting is a cave): a low rumble, and drips that ring round the walls. |
+
+Clear skies, clouds, fog and ash make no sound, and a room none at all. Water is heard by its tiles' behaviour (`Waterfall`, `River`, `Sea`), each tile within reach counting less the further off it is; the original's `Sea` is also the still water of lakes and ponds, so a lake's shore laps more softly than the open sea only by being smaller. **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]` renders each bed looped twice, with its spectrogram, its loudness against the bus's window and the size of its seam against its largest step; `AmbienceTests` holds the same, and the field's rules (the weather, the cave, a waterfall walked up to, the sea from the shore, thunder after each flash).
+

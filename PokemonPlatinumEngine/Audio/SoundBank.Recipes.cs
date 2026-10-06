@@ -53,6 +53,8 @@ public static partial class SoundBank
         Add("fish_bite", SoundGroup.Field, "SEQ_SE_DP_FW104", "Something bites (waits for fishing).");
         Add("fish_reel", SoundGroup.Field, null, "The line reeled in (waits for fishing).");
         Add("poketch", SoundGroup.Field, "SEQ_SE_DP_POKETCH_003", "A Pokétch button (waits for the Pokétch).");
+        Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
+        Add("thunder_rumble", SoundGroup.Field, "SEQ_SE_DP_T_KAMI", "Thunder rolling from further off, a second after the lightning (one strike of three).");
 
         // ---- Battles
         Add("send_out", SoundGroup.Battle, "SEQ_SE_DP_BOWA4", "A ball opens and a Pokémon comes out.");
@@ -235,6 +237,20 @@ public static partial class SoundBank
                 d.Thump(0, 0.12f, 160f, 70f, 0.4f, 0f);
                 d.Bubbles(0.1f, 0.4f, 6, 350f, 900f, 0.25f);
                 return Finish(d.S, 0.4f);
+            case "thunder":
+                // A crack that splits into a long, falling roll
+                d = new SoundDesign(2.6f, 0x7A11u);
+                d.Noise(0, 0.12f, Filter.High, 2400f, 900f, 0.8f, 0.7f, 0.02f, 2f);
+                d.Crackle(0, 0.25f, 40, 1800f, 0.5f);
+                d.Noise(0.03f, 2.5f, Filter.Low, 900f, 90f, 0.9f, 0.8f, 0.02f, 1.6f, flutterHz: 6f, flutterDepth: 0.5f);
+                d.Noise(0.05f, 2.3f, Filter.Band, 260f, 70f, 0.6f, 0.9f, 0.05f, 1.4f, flutterHz: 3.5f, flutterDepth: 0.6f);
+                return Finish(d.S, 0.6f);
+            case "thunder_rumble":
+                // No crack: a low roll that swells and fades a long way off
+                d = new SoundDesign(3.2f, 0x7A12u);
+                d.Noise(0, 3.2f, Filter.Low, 420f, 80f, 0.9f, 0.8f, 0.25f, 1.3f, flutterHz: 4.5f, flutterDepth: 0.55f);
+                d.Noise(0.2f, 2.8f, Filter.Band, 160f, 60f, 0.5f, 0.9f, 0.3f, 1.2f, flutterHz: 2.2f, flutterDepth: 0.6f);
+                return Finish(d.S, 0.45f);
             case "save":
                 // A soft chime of three bells: written and kept
                 d = new SoundDesign(0.75f);

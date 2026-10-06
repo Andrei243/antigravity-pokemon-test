@@ -20,6 +20,9 @@ public readonly record struct QualityProfile(float SceneScale, bool AmbientOcclu
     };
 }
 
+/// <summary>What the sound comes out of: speakers or headphones as they are, or the handheld's own small speakers.</summary>
+public enum SpeakerMode { Stereo, Handheld }
+
 /// <summary>How fast written lines are typed out.</summary>
 public enum TextSpeed { Slow, Normal, Fast }
 
@@ -40,8 +43,17 @@ public sealed class GameSettings
     /// <summary>How loud the music and the fanfares play, 0 to 100.</summary>
     public int MusicVolume { get; set; } = 100;
 
-    /// <summary>How loud the sound effects (and the cries) play, 0 to 100.</summary>
+    /// <summary>How loud the sound effects play, 0 to 100.</summary>
     public int SoundVolume { get; set; } = 100;
+
+    /// <summary>How loud the Pokémon's cries play, 0 to 100.</summary>
+    public int CryVolume { get; set; } = 100;
+
+    /// <summary>How loud the field's ambience (rain, wind, water, caves) plays, 0 to 100.</summary>
+    public int AmbienceVolume { get; set; } = 100;
+
+    /// <summary>Stereo, or the handheld's speakers.</summary>
+    public SpeakerMode Speakers { get; set; } = SpeakerMode.Stereo;
 
     /// <summary>The options move a volume by this much.</summary>
     public const int VolumeStep = 10;

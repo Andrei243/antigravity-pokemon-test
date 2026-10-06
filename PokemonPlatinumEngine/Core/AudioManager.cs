@@ -41,6 +41,7 @@ public static class AudioManager
             {
                 isInitialized = true;
                 SoundBank.Preload();
+                Ambience.RequestAll();
                 StartStream();
             }
         }
@@ -154,6 +155,31 @@ public static class AudioManager
         if (id != null) PlayMusic(id, immediate);
     }
 
+    /// <summary>What the field sounds like now (the beds asked for last), with or without an audio device: how tests hear the ambience.</summary>
+    public static IReadOnlyList<AmbienceLayer> CurrentAmbience { get; private set; } = Array.Empty<AmbienceLayer>();
+
+    /// <summary>
+    /// The field's ambience (plan 05 · A7): the beds that should sound now, each at its gain and pan. The game asks
+    /// every frame; a bed not yet made is left out until its worker has made it, then fades in.
+    /// </summary>
+    public static void SetAmbience(IReadOnlyList<AmbienceLayer> layers)
+    {
+        CurrentAmbience = layers;
+        if (!isInitialized) return;
+        ready.Clear();
+        foreach (var layer in layers)
+            if (Ambience.TryGet(layer.Bed) != null) ready.Add(layer);
+        // The mixer is told only when something changed: other beds, or one that has just been made
+        if (ReferenceEquals(layers, forwarded) && ready.Count == forwardedCount) return;
+        forwarded = layers;
+        forwardedCount = ready.Count;
+        mixer.SetAmbience(ready);
+    }
+
+    private static readonly List<AmbienceLayer> ready = new();
+    private static IReadOnlyList<AmbienceLayer>? forwarded;
+    private static int forwardedCount;
+
     /// <summary>Pauses the music for a jingle (healing, an item, a level-up), then lets it carry on.</summary>
     public static void PlayFanfare(MusicRole role)
     {
@@ -180,16 +206,26 @@ public static class AudioManager
     }
 
     /// <summary>
-    /// The options' volumes, 0 to 1: the music's bus carries the music and the fanfares, the sound's the effects,
-    /// the cries and the ambience.
+    /// The options' volumes, 0 to 1, one for each bus but the fanfares', which follow the music (a fanfare is the
+    /// music's own pause).
     /// </summary>
-    public static void SetVolumes(float music, float sound)
+    public static void SetVolumes(float music, float sound, float cries, float ambience)
     {
         mixer.SetVolume(AudioBus.Music, music);
         mixer.SetVolume(AudioBus.Fanfare, music);
         mixer.SetVolume(AudioBus.Sound, sound);
-        mixer.SetVolume(AudioBus.Cry, sound);
-        mixer.SetVolume(AudioBus.Ambience, sound);
+        mixer.SetVolume(AudioBus.Cry, cries);
+        mixer.SetVolume(AudioBus.Ambience, ambience);
+    }
+
+    /// <summary>A bus's volume as the options last set it.</summary>
+    public static float VolumeOf(AudioBus bus) => mixer.VolumeOf(bus);
+
+    /// <summary>Whether everything sounds as it would from the handheld's own speakers (the options' Speakers).</summary>
+    public static bool Handheld
+    {
+        get => mixer.Handheld;
+        set => mixer.Handheld = value;
     }
 
     public static void ToggleMute()

@@ -5,15 +5,15 @@ tempo 152
 meter 4/4
 reverb 0.35
 
-track lead square vol=0.65 rev=0.3
+track lead square vol=0.8 rev=0.3
   o6 c16 d16 e16 g16 e16 g16 >c4 r4. |
 
-track chime glockenspiel vol=0.55 pan=0.3 rev=0.45
+track chime glockenspiel vol=0.68 pan=0.3 rev=0.45
   r8. o5 g16 r4 >c4 r4 |
 
-track chords brass vol=0.5 pan=-0.25 rev=0.3
+track chords brass vol=0.62 pan=-0.25 rev=0.3
   r4 r8 o4 (e g >c)8 (g >c e)4 r4 |
 
-track bass bass vol=0.6 rev=0.15
+track bass bass vol=0.72 rev=0.15
   o4 c8 r8 <g8 r8 c4 r4 |
 

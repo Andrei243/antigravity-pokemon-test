@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace PokemonPlatinumEngine.Audio;
 
@@ -26,11 +27,25 @@ public sealed class AudioMixer
     /// <summary>Sound effects that can play at once; a further one takes the place of the one nearest its end.</summary>
     public const int MaxSounds = 8;
 
+    /// <summary>Ambience beds that can sound at once, and how long one takes to come in, go out or move across.</summary>
+    public const int MaxBeds = 6;
+    public const float AmbienceFade = 1.2f;
+
+    /// <summary>
+    /// The handheld speakers (an option): nothing under about 350 Hz or over about 6.5 kHz, the two sides drawn
+    /// close together, and the output rounded to the DS's ten bits with a little dither.
+    /// </summary>
+    public const float HandheldLow = 350f, HandheldHigh = 6500f, HandheldWidth = 0.3f;
+    public const int HandheldBits = 10;
+
     private readonly object gate = new();
     private readonly SongPlayer music = new();
     private readonly SongPlayer fanfare = new();
     private readonly float[] busVolume = { 1f, 1f, 1f, 1f, 1f };
     private readonly SoundVoice[] sounds = new SoundVoice[MaxSounds];
+    private readonly BedVoice[] beds = new BedVoice[MaxBeds];
+    private readonly float[] handheldHigh = new float[2], handheldLastIn = new float[2], handheldLow1 = new float[2], handheldLow2 = new float[2];
+    private uint dither = 0x2545F491u;
     private Song? pending;
     private bool pendingNight;
     private float musicGain = 1f;
@@ -51,10 +66,26 @@ public sealed class AudioMixer
         public AudioBus Bus;
     }
 
+    private struct BedVoice
+    {
+        public SoundSample? Sample;
+        public AmbienceBed Bed;
+        public int Position;
+        public float Gain, Target, Pan, PanTarget;
+    }
+
     /// <summary>Overall volume (0 to 1) before the limiter: the trim that keeps the mix out of it.</summary>
     public float Volume { get; set; } = 0.8f;
 
     public bool Muted { get; set; }
+
+    /// <summary>Whether the output sounds as the handheld's own speakers would (<see cref="HandheldLow"/>).</summary>
+    public bool Handheld
+    {
+        get { lock (gate) return handheld; }
+        set { lock (gate) handheld = value; }
+    }
+    private bool handheld;
 
     /// <summary>
     /// The music's low-HP arrangement (a battle theme turning agitated while the player's Pokémon is in the red).
@@ -180,6 +211,45 @@ public sealed class AudioMixer
         }
     }
 
+    /// <summary>
+    /// What the field sounds like now: each bed of <paramref name="layers"/> glides to its gain and pan over
+    /// <see cref="AmbienceFade"/>, starting from silence if it wasn't sounding, and every bed left out fades away.
+    /// A bed is looped for as long as it is wanted.
+    /// </summary>
+    public void SetAmbience(IReadOnlyList<AmbienceLayer> layers)
+    {
+        // Made outside the lock: the audio thread mustn't wait for a bed to be synthesised
+        var samples = new SoundSample[layers.Count];
+        for (int i = 0; i < layers.Count; i++) samples[i] = Ambience.Get(layers[i].Bed);
+        lock (gate)
+        {
+            for (int b = 0; b < beds.Length; b++) beds[b].Target = 0f;
+            for (int i = 0; i < layers.Count; i++)
+            {
+                var layer = layers[i];
+                int slot = Array.FindIndex(beds, v => v.Sample != null && v.Bed == layer.Bed);
+                if (slot < 0)
+                {
+                    slot = Array.FindIndex(beds, v => v.Sample == null);
+                    if (slot < 0) continue;
+                    beds[slot] = new BedVoice { Sample = samples[i], Bed = layer.Bed, Pan = layer.Pan };
+                }
+                beds[slot].Target = Math.Clamp(layer.Gain, 0f, 1f);
+                beds[slot].PanTarget = Math.Clamp(layer.Pan, -1f, 1f);
+            }
+        }
+    }
+
+    /// <summary>How loud a bed sounds now (0 when it isn't), as it glides towards what it was set to.</summary>
+    public float AmbienceGain(AmbienceBed bed)
+    {
+        lock (gate)
+        {
+            foreach (var v in beds) if (v.Sample != null && v.Bed == bed) return v.Gain;
+            return 0f;
+        }
+    }
+
     /// <summary>Stops every sound effect and cry at once (a scene change).</summary>
     public void StopSounds()
     {
@@ -246,8 +316,10 @@ public sealed class AudioMixer
                 }
 
                 RenderSounds(o);
+                RenderBeds(o, dt);
             }
 
+            if (handheld) Speakers(output);
             float gain = Muted ? 0f : Volume;
             for (int i = 0; i < output.Length; i++)
             {
@@ -261,9 +333,70 @@ public sealed class AudioMixer
                 float x = highPass[ch] * gain;
                 float ax = MathF.Abs(x);
                 if (ax > 0.8f) x = MathF.Sign(x) * (0.8f + 0.2f * MathF.Tanh((ax - 0.8f) / 0.2f));
+                // The handheld's ten bits, with a step of triangular dither
+                if (handheld && gain > 0f) x = MathF.Round(x * Levels + NextDither() + NextDither() - 1f) / Levels;
                 output[i] = x;
             }
         }
+    }
+
+    /// <summary>Adds the ambience beds into <paramref name="o"/>, moving each towards its gain and pan, and lets go of the ones faded out.</summary>
+    private void RenderBeds(Span<float> o, float dt)
+    {
+        int n = o.Length / 2;
+        float step = dt / AmbienceFade;
+        float bus = busVolume[(int)AudioBus.Ambience];
+        for (int b = 0; b < beds.Length; b++)
+        {
+            ref var v = ref beds[b];
+            if (v.Sample == null) continue;
+            float g0 = v.Gain, p0 = v.Pan;
+            v.Gain = v.Gain < v.Target ? MathF.Min(v.Target, v.Gain + step) : MathF.Max(v.Target, v.Gain - step);
+            v.Pan = v.Pan < v.PanTarget ? MathF.Min(v.PanTarget, v.Pan + step * 2f) : MathF.Max(v.PanTarget, v.Pan - step * 2f);
+            var data = v.Sample.Samples;
+            for (int i = 0; i < n; i++)
+            {
+                // Gain and pan glide across the chunk, so a bed never steps
+                float u = (i + 1) / (float)n;
+                float g = (g0 + (v.Gain - g0) * u) * bus;
+                float angle = (p0 + (v.Pan - p0) * u + 1f) * MathF.PI / 4f;
+                float x = data[v.Position] * g;
+                o[i * 2] += x * MathF.Cos(angle);
+                o[i * 2 + 1] += x * MathF.Sin(angle);
+                if (++v.Position >= data.Length) v.Position = 0;
+            }
+            if (v.Gain <= 0f && v.Target <= 0f) v.Sample = null;
+        }
+    }
+
+    /// <summary>The handheld's speakers: the sides drawn together and the band narrowed (the ten bits come after the limiter).</summary>
+    private void Speakers(Span<float> output)
+    {
+        float hp = 1f / (1f + MathF.Tau * HandheldLow / Synthesizer.SampleRate);
+        float lp = 1f - MathF.Exp(-MathF.Tau * HandheldHigh / Synthesizer.SampleRate);
+        for (int i = 0; i + 1 < output.Length; i += 2)
+        {
+            float mid = (output[i] + output[i + 1]) * 0.5f;
+            for (int ch = 0; ch < 2; ch++)
+            {
+                float x = mid + (output[i + ch] - mid) * HandheldWidth;
+                handheldHigh[ch] = hp * (handheldHigh[ch] + x - handheldLastIn[ch]);
+                handheldLastIn[ch] = x;
+                handheldLow1[ch] += lp * (handheldHigh[ch] - handheldLow1[ch]);
+                handheldLow2[ch] += lp * (handheldLow1[ch] - handheldLow2[ch]);
+                output[i + ch] = handheldLow2[ch] * 1.2f;
+            }
+        }
+    }
+
+    private const float Levels = 1 << (HandheldBits - 1);
+
+    private float NextDither()
+    {
+        dither ^= dither << 13;
+        dither ^= dither >> 17;
+        dither ^= dither << 5;
+        return (dither & 0xFFFFFF) / 16777216f;
     }
 
     /// <summary>Adds the sound effects that are playing into <paramref name="o"/> and drops the ones that have ended.</summary>
