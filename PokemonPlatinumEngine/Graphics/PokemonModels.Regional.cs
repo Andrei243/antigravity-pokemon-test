@@ -6,7 +6,8 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The regional forms of the hand-built species, and Dialga's and Palkia's Origin Formes, hand-built like the species
+// The regional forms of the hand-built species, Dialga's and Palkia's Origin Formes, and the other forms that are neither
+// Mega nor Gigantamax (Basculin's stripes, Darmanitan's Zen Modes), hand-built like the species
 // (after plan 03 · D11), in National Pokédex order: the Alolan Rattata line, Alolan Raichu, the Alolan Sandshrew,
 // Vulpix and Diglett lines, Alolan and Galarian Meowth, Alolan Persian, the Hisuian Growlithe line, the Alolan Geodude
 // line, Galarian Ponyta and Rapidash, the Galarian Slowpoke line, Galarian Farfetch'd, the Alolan Grimer line, Galarian
@@ -755,4 +756,26 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Hisuian Samurott (its build in PokemonModels.Unova1.cs)
 
     private static PokeBuilder SamurottHisui() => SamurottBuild(true);
+
+    // ------------------------------------------------------------------ Hisuian Lilligant, Basculin's other stripes, Galarian Darumaka, Darmanitan's Zen Mode and Galarian shapes, Galarian Yamask and the Hisuian Zorua line (their builds in PokemonModels.Unova2.cs)
+
+    private static PokeBuilder LilligantHisui() => LilligantBuild(true);
+
+    private static PokeBuilder BasculinBlue() => BasculinBuild(Stripe.Blue);
+
+    private static PokeBuilder BasculinWhite() => BasculinBuild(Stripe.White);
+
+    private static PokeBuilder DarumakaGalar() => DarumakaBuild(true);
+
+    private static PokeBuilder DarmanitanZen() => DarmanitanBuild(true, false);
+
+    private static PokeBuilder DarmanitanGalar() => DarmanitanBuild(false, true);
+
+    private static PokeBuilder DarmanitanGalarZen() => DarmanitanBuild(true, true);
+
+    private static PokeBuilder YamaskGalar() => YamaskBuild(true);
+
+    private static PokeBuilder ZoruaHisui() => ZoruaBuild(true);
+
+    private static PokeBuilder ZoroarkHisui() => ZoroarkBuild(true);
 }

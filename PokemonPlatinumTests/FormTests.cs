@@ -198,10 +198,10 @@ public class FormTests
         // sign of the Unown but A, which is the species itself) and the later games' (the regional forms, Dialga's and
         // Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps and costumes, the spiky-eared Pichu),
         // the forms of the Kanto, Johto, Hoenn and Unova species hand-built since among them (Castform's weathers, Deoxys's
-        // formes, the Primal Kyogre and Groudon). The few that look just like their species show
+        // formes, the Primal Kyogre and Groudon, Basculin's stripes, Darmanitan's Zen Modes). The few that look just like their species show
         // its sculpt.
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter" };
-        Assert.Equal(186, PokemonModels.Forms.Length);
+        Assert.Equal(199, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {
