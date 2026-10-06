@@ -38,6 +38,30 @@
     { "species": "Tentacruel", "level": 20, "maxLevel": 40 }
   ],
   "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Finneon", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Finneon", "level": 10, "maxLevel": 25 },
+    { "species": "Finneon", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 30, "maxLevel": 40 },
+    { "species": "Shellder", "level": 20, "maxLevel": 50 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
   "warps": [
     { "x": 243, "z": 654, "to": "valley_windworks_building", "toWarp": 0 }
   ],

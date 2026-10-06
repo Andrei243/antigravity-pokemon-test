@@ -27,6 +27,9 @@ public interface IScriptHost
     StoryState Story { get; }
     Party Party { get; }
     Inventory Bag { get; }
+
+    /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
+    Poketch Poketch { get; }
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }
@@ -97,6 +100,37 @@ public interface IScriptHost
 
     void Warp(string map, int x, int y, Direction? facing);
     void Fade(bool toBlack, float seconds);
+
+    // ------------------------------------------------------------------ field moves (plan 02 · S2)
+
+    /// <summary>
+    /// A Pokémon of the team uses a field move, once the line that says so has been read: its cut-in and its
+    /// sound, and what it does to the obstacle the script belongs to (a tree falling, a rock breaking apart).
+    /// The script waits while it plays (<see cref="Busy"/>). What the move leaves behind is the script's to say
+    /// with flags: the obstacle's own flag, <c>FLAG_STRENGTH_ACTIVE</c>.
+    /// </summary>
+    void UseMove(FieldMove move, Pokemon user, NPC? subject);
+
+    /// <summary>Sets out onto the water the player faces, on a Pokémon's back. False when there is no water there to surf on.</summary>
+    bool Surf();
+
+    /// <summary>Climbs the waterfall or the rock face the player faces, up or down. False when there is none to climb from here.</summary>
+    bool Climb();
+
+    /// <summary>Flies to the town chosen on the map before the script began. False when none was chosen.</summary>
+    bool Fly();
+
+    /// <summary>Back to the town of the Pokémon Center the player last went into (Teleport). False when there is no way there.</summary>
+    bool Teleport();
+
+    /// <summary>Out of the caves, to where the player went into them (Dig, an Escape Rope). False outside a cave or with no way out known.</summary>
+    bool Escape();
+
+    /// <summary>
+    /// Draws a wild Pokémon out where the player stands (Sweet Scent): true when one comes, and its battle starts
+    /// (<see cref="Outcome"/> once the host is no longer busy); false where nothing lives.
+    /// </summary>
+    bool SweetScent();
 
     // ------------------------------------------------------------------ sound
 

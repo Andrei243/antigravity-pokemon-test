@@ -9,8 +9,8 @@
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
-    { "warp": 8, "to": "route_206", "toWarp": 4 },
-    { "warp": 9, "to": "route_206", "toWarp": 5 }
+    { "warp": 8, "to": "route_206", "toWarp": 4, "bicycle": true },
+    { "warp": 9, "to": "route_206", "toWarp": 5, "bicycle": true }
   ],
   // The cycle shop, Team Galactic's building, the condominiums, the houses, the herb shop and the Gym have no rooms yet (plan 01 · M11, M9)
   "locked": [ 2, 3, 4, 5, 6, 7, 10, 11 ],

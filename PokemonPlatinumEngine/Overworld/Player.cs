@@ -50,6 +50,30 @@ public class Player
     /// <summary>The Bicycle's fast gear, which is what gets up a muddy slope. Only matters while cycling.</summary>
     public bool FastGear { get; set; }
 
+    /// <summary>
+    /// Whether Strength is in force (<see cref="FieldMoveRules.StrengthFlag"/>; the game keeps it up to date): walking
+    /// into a boulder then pushes it a tile on, if there is room beyond it.
+    /// </summary>
+    public bool PushesBoulders { get; set; }
+
+    /// <summary>
+    /// A boulder the player has just pushed, and which way, for the game to slide it along (it is already on its
+    /// new tile); taken with <see cref="TakePush"/>. Meanwhile the player walks on the spot behind it.
+    /// </summary>
+    private (NPC Boulder, Direction Way)? pushed;
+    private float pushing;
+
+    /// <summary>The boulder pushed this frame, once: the game slides it and plays its sound.</summary>
+    public (NPC Boulder, Direction Way)? TakePush()
+    {
+        var push = pushed;
+        pushed = null;
+        return push;
+    }
+
+    /// <summary>True while the player leans into a boulder that is sliding on.</summary>
+    public bool IsPushing => pushing > 0f;
+
     /// <summary>Counts the steps since the last wild battle or map change, for the odds of the next (<see cref="EncounterSteps"/>).</summary>
     public EncounterSteps Encounters { get; } = new();
 
@@ -139,6 +163,8 @@ public class Player
         IsSliding = false;
         mounting = false;
         carried = null;
+        pushed = null;
+        pushing = 0f;
         moveProgress = 0f;
         height = float.NaN;
         settled = false;
@@ -222,6 +248,15 @@ public class Player
     {
         if (bumpCooldown > 0f) bumpCooldown -= dt;
         bool walkingInPlace = false;
+
+        // Leaning into a boulder as it slides: the player walks on the spot until it has come to rest
+        if (pushing > 0f)
+        {
+            pushing -= dt;
+            WalkCycle += dt * 1.1f;
+            Settle(dt, walking: true);
+            return;
+        }
 
         if (!settled)
         {
@@ -383,6 +418,21 @@ public class Player
 
         // At the map's edge a warp underfoot is what happens next, not a thud
         if (step.Obstacle == Obstacle.MapEdge && map.GetWarpAt(GridX, GridY) != null) return;
+
+        // With Strength in force a boulder in the way is pushed on, if there is room beyond it (ov5_021DFF1C)
+        if (step.Obstacle == Obstacle.Person && PushesBoulders && Mode == TravelMode.OnFoot)
+        {
+            var (dx, dy) = FieldMovement.Delta(dir);
+            if (map.NpcIn(GridX + dx, GridY + dy, map.SurfaceAt(GridX + dx, GridY + dy, HeightOn(map)).Height) is { Obstacle: PropType.StrengthBoulder } boulder
+                && FieldMovement.CanPush(map, boulder, dir))
+            {
+                boulder.GridX += dx;
+                boulder.GridY += dy;
+                pushed = (boulder, dir);
+                pushing = FieldMovement.BoulderPushSeconds;
+                return;
+            }
+        }
         Bump();
     }
 
@@ -422,6 +472,19 @@ public class Player
         int nx = GridX + dx, ny = GridY + dy;
         Begin(map, new FieldStep(StepKind.Land, nx, ny, map.HeightAt(nx, ny), Pace.Walk, TravelMode.Surfing, Obstacle.None), Facing);
         mounting = true;
+        return true;
+    }
+
+    /// <summary>
+    /// Climbs the waterfall or the rock face the player faces, up or down, to the far side of it: what Waterfall
+    /// and Rock Climb do once the player has said yes (plan 02 · S2). False when there is nothing to climb from here.
+    /// </summary>
+    public bool Climb(Map map)
+    {
+        if (IsMoving || carried != null || pushing > 0f) return false;
+        var step = FieldMovement.Step(map, GridX, GridY, Facing, WalkerOn(map) with { Climbing = true });
+        if (step.Kind != StepKind.Climb) return false;
+        Begin(map, step, Facing);
         return true;
     }
 

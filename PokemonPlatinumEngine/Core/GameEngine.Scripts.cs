@@ -45,6 +45,19 @@ public partial class GameEngine
     private int presenceRevision = -1;
     private bool arrived;
 
+    // A field move being used (plan 02 · S2): its cut-in, and the obstacle it acts on as the band closes
+    private FieldCutIn? cutIn;
+    private NPC? cutInSubject;
+
+    // A step a field move began (out onto the water, a climb), which the script waits for
+    private bool fieldMoveStep;
+
+    // The town chosen on Fly's map, for the script that flies there
+    private SpawnLocation? flyTarget;
+
+    // Boulders sliding on after a push: which, how long they have left, and which way they go
+    private readonly List<(NPC Boulder, float Left, int Dx, int Dy)> slides = new();
+
     /// <summary>True while a script has the field: the player's keys do nothing.</summary>
     public bool ScriptRunning => runner != null && runner.IsRunning;
 
@@ -66,8 +79,9 @@ public partial class GameEngine
     /// </summary>
     /// <param name="item">The item the script's <c>find own</c> gives, when it isn't the subject's (a hidden item).</param>
     /// <param name="flag">The flag its <c>setflag own</c> sets, when it isn't the one that hides the subject.</param>
+    /// <param name="pokemon">The Pokémon of the team the script is for: the one whose field move was chosen in the party menu.</param>
     public bool StartScript(string name, NPC? subject = null, IReadOnlyList<string>? own = null, string? file = null,
-        (string Item, int Count)? item = null, string? flag = null)
+        (string Item, int Count)? item = null, string? flag = null, Pokemon? pokemon = null)
     {
         file ??= subject?.ScriptFile ?? currentMap.ScriptFileAt(subject?.GridX ?? player.GridX, subject?.GridY ?? player.GridY);
         if (scripts.Find(name, file) is not { } script)
@@ -75,7 +89,7 @@ public partial class GameEngine
             Console.Error.WriteLine($"No script '{name}' for {file}.");
             return false;
         }
-        runner.Start(script, subject, own, item, flag);
+        runner.Start(script, subject, own, item, flag, pokemon);
         return true;
     }
 
@@ -109,6 +123,9 @@ public partial class GameEngine
     /// <summary>The player has come to a map by a door, a warp or a save: whoever a script moved off it or onto it is back as the flags say.</summary>
     private void ArriveOnMap()
     {
+        // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
+        story.Unset(BicycleRules.OnCyclingRoadFlag);
+        ChangePlace();
         currentMap.ForgetForced();
         currentMap.ApplyPresence(story.Has);
         // Whoever was still walking on the map left behind stands where they were going, not between two tiles
@@ -118,12 +135,245 @@ public partial class GameEngine
         arrived = true;
     }
 
+    /// <summary>
+    /// The player has come to another place, by a warp or a step into another area: what lasted only while they
+    /// stayed is forgotten (plan 02 · S2), as the original does when the map's header changes: the place's local
+    /// flags (a tree that was cut grows back), Strength, Flash and Defog outside the caves, and every boulder that
+    /// was pushed goes back where it stood.
+    /// </summary>
+    private void ChangePlace()
+    {
+        bool cave = currentMap.AreaAt(player.GridX, player.GridY)?.IsCave ?? currentMap.IsCave;
+        FieldMoveRules.LeavePlace(story, cave);
+        // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
+        if (player.Mode == TravelMode.Cycling && !currentMap.BikeAllowedAt(player.GridX, player.GridY)) player.SetCycling(false);
+        fishing = null;
+        foreach (var (boulder, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
+        slides.Clear();
+        currentMap.ResetObstacles();
+    }
+
+    /// <summary>
+    /// A field move chosen in the party menu (plan 02 · S2): checked by the original's rules where the player
+    /// stands, and either the menu says why not, or it closes and the move's script runs (Fly's map opens first).
+    /// </summary>
+    private void UseFieldMoveFromMenu(FieldMove move, int index)
+    {
+        var user = playerParty.Members[index];
+        var walker = new Walker(player.Mode, player.HeightOn(currentMap), Moves: player.Moves);
+        var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker);
+        var error = FieldMoveRules.Check(move, spot, story);
+        // Dig needs a way out to lead to, and Fly a town to fly to
+        var towns = SpawnLocations.FlyDestinations(story, key => MapDatabase.Get("Sinnoh").Areas.Any(a => a.Key == key && a.Open)).ToList();
+        if (error == FieldMoveError.None && ((move == FieldMove.Dig && exitSpot == null) || (move == FieldMove.Fly && towns.Count == 0)))
+            error = FieldMoveError.Location;
+        if (error != FieldMoveError.None)
+        {
+            partyScreen.Message = FieldMoveRules.Why(error);
+            AudioManager.PlaySound("error");
+            return;
+        }
+
+        partyScreen.Close();
+        if (move == FieldMove.Fly)
+        {
+            var here = currentMap.Name == "Sinnoh" ? (player.GridX, player.GridY) : exitSpot is { } exit ? (exit.X, exit.Y) : ((int, int)?)null;
+            flyScreen.Open(towns, here, index);
+            currentState = GameState.FlyMap;
+            return;
+        }
+        currentState = GameState.Overworld;
+        // Cut, Rock Smash and Strength act on the obstacle in front, which is whose script it is
+        var (dx, dy) = FieldMovement.Delta(player.Facing);
+        int ax = player.GridX + dx, ay = player.GridY + dy;
+        NPC? subject = currentMap.InBounds(ax, ay) ? currentMap.NpcIn(ax, ay, currentMap.SurfaceAt(ax, ay, player.HeightOn(currentMap)).Height) : null;
+        StartScript(FieldScripts.FromMenu(move)!, subject is { IsObstacle: true } ? subject : null, pokemon: user);
+    }
+
+    /// <summary>
+    /// A warp is taken: going from the map of Sinnoh into anywhere else marks the way back out for Dig and an
+    /// Escape Rope (<c>Field_SetMapConnection</c>: the door's tile, or the one south of it for someone who walked
+    /// in northward), and going into a Pokémon Center makes its town the one Teleport goes back to
+    /// (<c>GetMapBlackOutWarpId</c>).
+    /// </summary>
+    private void NoteTheWayIn(Warp warp)
+    {
+        if (currentMap.Name == "Sinnoh" && warp.TargetMap != "Sinnoh")
+            exitSpot = new MapSpot("Sinnoh", player.GridX, player.GridY + (player.Facing == Direction.Up ? 1 : 0), player.Facing);
+        if (SpawnLocations.OfRoom(warp.TargetMap) is { } center) story.SetVar(SpawnLocations.Variable, center.Id);
+    }
+
+    /// <summary>Arriving in a town for the first time is what lets one fly there (<c>TryUnlockFlyLocationByMap</c>).</summary>
+    private void NoteArrival()
+    {
+        if (currentMap.AreaAt(player.GridX, player.GridY)?.Key is { } key && SpawnLocations.ArrivedIn(key) is { } town)
+            story.Set(town.ArrivalFlag);
+    }
+
+    /// <summary>
+    /// An item used in the field itself (plan 02 · S2), from the bag or the item button: the Bicycle got on or off,
+    /// a rod cast, an Escape Rope. Where it can't be, a notice says why.
+    /// </summary>
+    private void UseFieldItem(ItemData item)
+    {
+        int x = player.GridX, y = player.GridY;
+        if (item.FieldUse == "Bicycle")
+        {
+            var check = BicycleRules.Check(currentMap, x, y, player.Mode, story.Has(BicycleRules.OnCyclingRoadFlag));
+            if (check != BicycleCheck.Ok)
+            {
+                ShowNotification(BicycleRules.Why(check));
+                AudioManager.PlaySound("error");
+                return;
+            }
+            bool getOn = player.Mode != TravelMode.Cycling;
+            if (!player.SetCycling(getOn)) return;
+            if (getOn) AudioManager.PlaySound("bike_bell");
+            PlayFieldMusic();
+            return;
+        }
+        if (FishingAttempt.RodOf(item) is { } rod)
+        {
+            if (!FishingAttempt.CanCast(currentMap, x, y, player.Facing, player.HeightOn(currentMap)))
+            {
+                ShowNotification("There's no water here to fish in.");
+                AudioManager.PlaySound("error");
+                return;
+            }
+            var (dx, dy) = FieldMovement.Delta(player.Facing);
+            fishing = new FishingAttempt(rod, currentMap.Fish(x + dx, y + dy, rod, player.Lead), fieldRandom);
+            AudioManager.PlaySound("fish_cast");
+            return;
+        }
+        if (item.FieldUse == "EscapeRope")
+        {
+            var spot = FieldMoveRules.SpotOf(currentMap, x, y, player.Facing, new Walker(player.Mode, player.HeightOn(currentMap)));
+            if (!spot.CaveWithAWayOut || exitSpot == null)
+            {
+                ShowNotification("There's no way out to be found with it here.");
+                AudioManager.PlaySound("error");
+                return;
+            }
+            StartScript(FieldScripts.EscapeRope);
+        }
+    }
+
+    /// <summary>
+    /// A rod's cast plays out: the line lands, something bites (the "!" over the player) or nothing does, the
+    /// button is pressed in time or not, and what happened is said; a Pokémon reeled in is battled.
+    /// </summary>
+    private void UpdateFishing(float dt)
+    {
+        var cast = fishing!;
+        var before = cast.Stage;
+        cast.Update(dt, InputManager.IsActionPressed(GameAction.Confirm) || FishingPress);
+        FishingPress = false;
+        player.StandStill(dt);
+        var (dx, dy) = FieldMovement.Delta(player.Facing);
+        int wx = player.GridX + dx, wy = player.GridY + dy;
+        if (cast.Stage != before)
+        {
+            if (cast.Stage == FishingStage.Waiting) world.Life.Splash(currentMap, wx, wy, 0.8f, 2);
+            if (cast.Stage == FishingStage.Hooked)
+            {
+                player.ShowBubble(EmoteBubble.Exclaim, FishingAttempt.HookSeconds(cast.Rod));
+                world.Life.Splash(currentMap, wx, wy, 1.2f, 4);
+                AudioManager.PlaySound("fish_bite");
+            }
+            if (cast.Says)
+            {
+                if (cast.Stage == FishingStage.Landed) AudioManager.PlaySound("fish_reel");
+                dialogue.ShowDialogue("", new[] { cast.Message });
+                currentState = GameState.Dialogue;
+                cast.Read();
+                return;
+            }
+        }
+        if (cast.Stage != FishingStage.Done) return;
+        fishing = null;
+        if (cast.Caught is { } fish)
+        {
+            player.Encounters.Reset();
+            StartWildBattle(fish);
+        }
+    }
+
+    /// <summary>A press of the confirm button for a rod's cast, given by a tool in place of the keys (the screenshot harness).</summary>
+    public bool FishingPress { get; set; }
+
+    /// <summary>Where a rod's cast has got to, for tools; null when no rod is out.</summary>
+    public FishingStage? CastStage => fishing?.Stage;
+
+    /// <summary>What the field moves left in force, as the map and the player see it: boulders that can be pushed, a cave lit, fog lifted.</summary>
+    private void KeepFieldMovesInForce()
+    {
+        player.PushesBoulders = story.Has(FieldMoveRules.StrengthFlag);
+        currentMap.Lit = story.Has(FieldMoveRules.FlashFlag);
+        currentMap.FogLifted = story.Has(FieldMoveRules.DefogFlag);
+    }
+
+    /// <summary>A field move is used: its cut-in plays (with the Pokémon's cry, as the original's), and the script waits for it.</summary>
+    private void StartCutIn(FieldMove move, Pokemon user, NPC? subject)
+    {
+        cutIn = new FieldCutIn(user.ModelName, move);
+        cutInSubject = subject;
+        PokemonSprites.GetBaked(user.ModelName, SpriteView.Front);
+        AudioManager.PlayCry(user);
+    }
+
+    /// <summary>The cut-in runs on; as its band closes, what the move does to the obstacle in front happens.</summary>
+    private void UpdateCutIn(float dt)
+    {
+        if (cutIn == null) return;
+        cutIn.Advance(dt);
+        if (!cutIn.Done) return;
+        if (cutInSubject is { Obstacle: { } kind } subject && cutIn.FieldMove is FieldMove.Cut or FieldMove.RockSmash)
+        {
+            world.Life.GiveWay(currentMap, subject.GridX, subject.GridY, kind);
+            AudioManager.PlaySound(kind == PropType.CutTree ? "cut" : "rock_smash");
+        }
+        cutIn = null;
+        cutInSubject = null;
+    }
+
+    private void DrawCutIn()
+    {
+        if (cutIn == null) return;
+        var sprite = PixelArtGenerator.GetPokemonSprite(cutIn.Model, isBack: false);
+        ModernUi.DrawCutIn(VirtualWidth, VirtualHeight, sprite, cutIn.Move, cutIn.Band, cutIn.Slide, cutIn.Label);
+    }
+
+    /// <summary>A boulder the player pushed starts sliding on to its new tile (it is there already), with its sound.</summary>
+    private void SlideBoulders(float dt)
+    {
+        if (player.TakePush() is var (pushed, way))
+        {
+            var (dx, dy) = FieldMovement.Delta(way);
+            slides.RemoveAll(s => s.Boulder == pushed);
+            slides.Add((pushed, FieldMovement.BoulderPushSeconds, dx, dy));
+            pushed.StepOffsetX = -dx;
+            pushed.StepOffsetY = -dy;
+            AudioManager.PlaySound("boulder");
+        }
+        for (int i = slides.Count - 1; i >= 0; i--)
+        {
+            var (boulder, left, dx, dy) = slides[i];
+            left -= dt;
+            float rest = Math.Max(0f, left / FieldMovement.BoulderPushSeconds);
+            boulder.StepOffsetX = -dx * rest;
+            boulder.StepOffsetY = -dy * rest;
+            if (left <= 0f) slides.RemoveAt(i);
+            else slides[i] = (boulder, left, dx, dy);
+        }
+    }
+
     // ------------------------------------------------------------------ a frame
 
     /// <summary>One frame of the field while a script has it.</summary>
     private void UpdateScript(float dt)
     {
         AdvanceScriptedWalks(dt);
+        UpdateCutIn(dt);
         RunScript(dt);
     }
 
@@ -155,7 +405,18 @@ public partial class GameEngine
 
         if (playerWalk == null)
         {
-            player.StandStill(dt);
+            // A step a field move began (out onto the water, up a waterfall or a rock face) is taken to its end
+            if (player.IsMoving)
+            {
+                player.Advance(dt, currentMap, null, false, null, null, () =>
+                {
+                    StepLeavesItsMark();
+                    return false;
+                });
+                if (!player.IsMoving && player.Mode != musicTravel) PlayFieldMusic();
+            }
+            else player.StandStill(dt);
+            if (!player.IsMoving) fieldMoveStep = false;
             return;
         }
         playerWalk.Update(dt, player, currentMap, StepLeavesItsMark);
@@ -264,6 +525,7 @@ public partial class GameEngine
         public StoryState Story => game.story;
         public Party Party => game.playerParty;
         public Inventory Bag => game.playerInventory;
+        public Poketch Poketch => game.poketch;
 
         public int Money
         {
@@ -353,7 +615,8 @@ public partial class GameEngine
 
         // ---- what the script waits for
 
-        public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving;
+        public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
+            || game.fieldMoveStep;
 
         public void Say(string? speaker, IReadOnlyList<string> lines)
         {
@@ -432,6 +695,60 @@ public partial class GameEngine
         public void Warp(string map, int x, int y, Direction? facing) => game.WarpTo(map, x, y, facing);
 
         public void Fade(bool toBlack, float seconds) => game.scriptFade.To(toBlack, seconds);
+
+        // ---- field moves
+
+        public void UseMove(FieldMove move, Pokemon user, NPC? subject) => game.StartCutIn(move, user, subject);
+
+        public bool Surf()
+        {
+            if (!game.player.StartSurf(game.currentMap)) return false;
+            AudioManager.PlaySound("surf");
+            game.fieldMoveStep = true;
+            return true;
+        }
+
+        public bool Climb() => game.fieldMoveStep = game.player.Climb(game.currentMap);
+
+        public bool Fly()
+        {
+            if (game.flyTarget is not { } town) return false;
+            game.flyTarget = null;
+            game.player.SetMode(TravelMode.OnFoot);
+            game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
+            return true;
+        }
+
+        public bool Teleport()
+        {
+            var town = SpawnLocations.Respawn(game.story);
+            game.player.SetMode(TravelMode.OnFoot);
+            game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
+            return true;
+        }
+
+        public bool Escape()
+        {
+            if (game.exitSpot is not { } exit) return false;
+            game.player.SetMode(TravelMode.OnFoot);
+            game.WarpTo(exit.Map, exit.X, exit.Y, exit.Facing);
+            return true;
+        }
+
+        public bool SweetScent()
+        {
+            var map = game.currentMap;
+            int x = game.player.GridX, y = game.player.GridY;
+            var underfoot = map.BehaviourAt(x, y);
+            bool water = game.player.Mode == TravelMode.Surfing;
+            if (!TileBehaviors.HasEncounters(underfoot) || water != TileBehaviors.IsSurfable(underfoot)) return false;
+            if (map.DrawOutWild(x, y, water, game.player.Lead) is not { } wild) return false;
+            game.scriptOutcome = BattleOutcome.None;
+            game.battleMayBeLost = false;
+            game.player.Encounters.Reset();
+            game.StartWildBattle(wild);
+            return true;
+        }
 
         // ---- sound
 

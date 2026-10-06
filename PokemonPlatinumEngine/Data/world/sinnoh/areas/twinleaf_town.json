@@ -23,6 +23,30 @@
     { "species": "Golduck", "level": 20, "maxLevel": 40 }
   ],
   "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 25, "maxLevel": 35 },
+    { "species": "Goldeen", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
   "warps": [
     { "x": 105, "z": 875, "to": "twinleaf_town_rival_house_1f", "toWarp": 0 },
     { "x": 116, "z": 885, "to": "twinleaf_town_player_house_1f", "toWarp": 0 },

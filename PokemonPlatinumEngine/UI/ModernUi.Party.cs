@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Data;
@@ -12,23 +13,48 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <param name="appear">0 as the screen opens to 1 once it has settled: the cards rise into place one after another.</param>
-    public static void DrawParty(int sw, int sh, Party party, int selected, int? swapping, float appear = 1f)
+    /// <param name="actions">The chosen Pokémon's menu while it is open (style guide, "Menu screens"): a panel beside its card.</param>
+    /// <param name="giver">The Pokémon giving HP with Milk Drink or Soft-Boiled, whose card is marked while another is chosen.</param>
+    public static void DrawParty(int sw, int sh, Party party, int selected, int? swapping, float appear = 1f, string? prompt = null,
+        IReadOnlyList<string>? actions = null, int actionIndex = 0, int? giver = null)
     {
         Backdrop(sw, sh);
         ScreenTitle("POKÉMON");
-        Hints(sw - 64, 44, ("Z", "Summary"), ("Shift", "Move"), ("Esc", "Back"));
+        Hints(sw - 64, 44, ("Z", actions != null ? "Choose" : "Menu"), ("Shift", "Move"), ("Esc", "Back"));
 
+        Rectangle chosen = default;
         for (int i = 0; i < Party.MaxSize; i++)
         {
             float rise = (1f - UiMotion.EaseOut(appear * 1.6f - i * 0.12f)) * 40f;
             var r = new Rectangle(64 + (i % 2) * 912, 132 + (i / 2) * 256 + rise, 880, 232);
+            if (i == selected) chosen = r;
             if (i >= party.Count) EmptySlot(r, 34);
-            else PartyCard(r, party.Members[i], i == selected, i == swapping, i == 0);
+            else PartyCard(r, party.Members[i], i == selected, i == swapping || i == giver, i == 0);
         }
 
-        var prompt = new Rectangle(64, 920, 1792, 112);
-        Panel(prompt, 30);
-        UiFonts.DrawCentered(swapping.HasValue ? "Move to where?" : "Choose a Pokémon.", prompt.X + 52, prompt.Y + prompt.Height / 2f, 40, Ink, UiWeight.ExtraBold);
+        var box = new Rectangle(64, 920, 1792, 112);
+        Panel(box, 30);
+        UiFonts.DrawCentered(prompt ?? (swapping.HasValue ? "Move to where?" : "Choose a Pokémon."), box.X + 52, box.Y + box.Height / 2f, 40, Ink, UiWeight.ExtraBold);
+
+        if (actions != null) PartyActions(sw, chosen, box, actions, actionIndex);
+    }
+
+    /// <summary>
+    /// A Pokémon's menu: a panel standing on the prompt, over the half of the screen its card isn't on, a row to
+    /// an entry, the field moves among them in the field-move colour.
+    /// </summary>
+    private static void PartyActions(int sw, Rectangle card, Rectangle box, IReadOnlyList<string> actions, int selected)
+    {
+        const float width = 400, row = 70;
+        float height = 20 + actions.Count * row + 12;
+        bool onTheLeft = card.X > sw / 2f;
+        var panel = new Rectangle(onTheLeft ? 64 + 880 - width : sw - 64 - width, box.Y - 22 - height, width, height);
+        Panel(panel, 30);
+        for (int i = 0; i < actions.Count; i++)
+        {
+            var r = new Rectangle(panel.X + 14, panel.Y + 16 + i * row, width - 28, row - 8);
+            ListRow(r, i == selected, actions[i], nameX: 40, size: 32);
+        }
     }
 
     /// <summary>

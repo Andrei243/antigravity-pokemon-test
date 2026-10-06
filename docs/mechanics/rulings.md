@@ -321,3 +321,31 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Who hands out a diploma | The game director in Jubilife City's Game Freak building | The Pokédex itself, the first time it is opened once complete; it can be seen again from the search panel | Jubilife City is still a hand-made map without that building; plan 01 · M5 can move the ceremony there |
 | A place a script takes the player into | Shown on the town map where the place is | The Great Marsh is shown at Pastoria City, whose gate leads into it; Turnback Cave's inner rooms where the rest of the cave is | No warp leads there, so the import can't find their place by itself |
 | The size page's trainer | The player's silhouette | The player's own field sprite as a silhouette, 1.4 m tall for both characters | Our own choice of height |
+
+## Field moves and key items (2026-10-06, plan 02 · S2)
+
+**Platinum's rules, kept as they are** (`src/field_move_tasks.c`, `src/overlay005/`, `src/item_use_functions.c`)
+
+- The badge each move asks for outside battle is Platinum's: Coal for Rock Smash, Forest for Cut, Cobble for Fly, Fen for Surf, Relic for Defog, Mine for Strength, Icicle for Rock Climb, Beacon for Waterfall. Flash, Teleport, Dig, Sweet Scent, Soft-Boiled and Milk Drink ask for none.
+- Where a move can be used: Cut, Rock Smash (not from the water) and Strength facing their obstacle; Surf facing water one can surf on, on foot; Waterfall facing a waterfall from the water; Rock Climb facing a rock face along its grain; Flash in a dark place not lit yet; Defog in fog; Fly where the place's header allows flying, and Teleport there too but not in a town; Dig where it allows an Escape Rope and a way out is known; Sweet Scent anywhere. The party menu says why a move can't be used, and lists a Pokémon's field moves in the order of its moves.
+- Strength lasts until the player leaves the place; Flash and Defog until the player goes somewhere that isn't a cave. Leaving a place clears its local flags, so a tree that was cut and a rock that was smashed are back, and a boulder that was pushed stands where it stood.
+- A boulder is pushed only where it could itself step: no water, ledge, cliff, warp or anyone in the way. It takes the original's slow walk (16 frames).
+- Going down a waterfall needs a Pokémon that knows Waterfall and no badge, and asks nothing; going up asks.
+- Soft-Boiled and Milk Drink give a fifth of the user's maximum HP (no more than the other is missing), and can't be used by a Pokémon with that or less left, on itself, or on one fainted or at full HP.
+- Dig and an Escape Rope lead to where the player went into the caves (the tile outside the way in, one further south for someone who walked in northward); Teleport to the town of the Pokémon Center last gone into, Twinleaf Town before any.
+- Fly goes to the original's twenty fly spots, each opened by arriving in its town for the first time (the Pokémon League's two and Route 221's by the story).
+- Fishing: the cast takes 34 frames, whether anything will bite is rolled at the cast (the rod's rate, then a slot: 60, 30, 5, 4 and 1 in a hundred for the Old Rod, 40, 40, 15, 4 and 1 for the other two), something bites after one to four seconds, and the button must be pressed within 45, 30 or 15 frames by rod. Pressed early, the line comes up empty; nothing bites at all after four seconds.
+- The Bicycle can't be ridden through very tall grass, mud or the marsh's grass, nor where the place's header forbids it, and can't be got off on the Cycling Road or a bike bridge. The Cycling Road's gate keepers let only riders through, and a rider stays on the Bicycle until the next warp. The run button changes gear.
+- The Pokétch's apps keep the original's numbering.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Chatter in the field | Records the player's voice as Chatot's cry | Not in the party menu | No microphone (as Chatter's confusion, above) |
+| A partner travelling with the player | Fly, Teleport, Dig and an Escape Rope are refused while Cheryl, Mira, Riley or Buck walks along | The check is there (`FieldMoveError.Partner`) and never fires | Nobody walks along yet: their chapters (plan 02 · S6, S7, S10, S15) |
+| The Pokétch | Twenty-five apps on the lower touch screen | The digital watch, the pedometer and the team's app, on a watch over the field (P shows it, O changes the app) | One screen and no touch; the other apps come with what they show (the Dowsing Machine with item hunting, the Day-Care Checker with the Day Care) |
+| The Bicycle | The player drawn riding it | Its pace, rules, music and sounds; the player is drawn on foot | No riding sprite yet |
+| Feebas | Only on six tiles of Mt. Coronet's lake, which change with the trend | Fished like any other slot | The lake's floor isn't open |
+| Waking up after losing | At the last Pokémon Center | At home, as before | The whiteout is plan 06 · R10 |
+| Fly's map | A cursor over the town map | A list of the towns beside the map, the town ringed | Our own interface (style guide, "Fly") |

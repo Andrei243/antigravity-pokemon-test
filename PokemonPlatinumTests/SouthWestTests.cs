@@ -134,16 +134,17 @@ public class SouthWestTests
     }
 
     [Fact]
-    public void ADarkCaveShowsACircleUntilAPokemonKnowsFlash()
+    public void ADarkCaveShowsACircleUntilFlashLightsIt()
     {
         // None of the south-west's caves is dark (the original's one is Wayward Cave)
         Assert.All(Caves, name => Assert.False(BuiltMaps.Value[name].IsDark));
 
+        // Dark until Flash is used in it (plan 02 · S2: knowing the move isn't enough)
         var cave = new Map(8, 8) { Name = "Dark", Setting = MapSetting.Cave, IsDark = true };
-        Assert.True(Darkness.Covers(cave, FieldMoves.None));
-        Assert.True(Darkness.Covers(cave, FieldMoves.Surf | FieldMoves.RockClimb));
-        Assert.False(Darkness.Covers(cave, FieldMoves.Flash));
-        Assert.False(Darkness.Covers(new Map(8, 8) { Name = "Lit", Setting = MapSetting.Cave }, FieldMoves.None));
+        Assert.True(Darkness.Covers(cave));
+        cave.Lit = true;
+        Assert.False(Darkness.Covers(cave));
+        Assert.False(Darkness.Covers(new Map(8, 8) { Name = "Lit", Setting = MapSetting.Cave }));
 
         // The circle: seen as it is to 2.2 tiles, gone at 3.4, and darker all the way between
         Assert.Equal(0f, Darkness.At(0f));
@@ -153,7 +154,7 @@ public class SouthWestTests
         Assert.Equal(0.5f, Darkness.At(Darkness.Radius + Darkness.Soft / 2f), 3);
         for (float d = Darkness.Radius; d < Darkness.Reach; d += 0.1f) Assert.True(Darkness.At(d + 0.1f) >= Darkness.At(d));
 
-        // Knowing the move is all that is asked, as with Surf
+        // Knowing the move is what lets the party menu offer it
         var party = new Party();
         party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 12));
         Assert.False(FieldMovement.MovesOf(party).HasFlag(FieldMoves.Flash));

@@ -202,8 +202,10 @@ public class MenuScreenTests
         // Something only held
         Assert.Equal(new[] { BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Oran Berry")));
         Assert.Equal(new[] { BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Poké Ball")));
-        // As in Platinum, a Pokémon holds neither a Key Item nor a TM
-        Assert.Equal(new[] { BagAction.Cancel }, BagScreen.ActionsFor(Item("Old Rod")));
+        // As in Platinum, a Pokémon holds neither a Key Item nor a TM; a rod is used in the field and can be kept on
+        // the item button (plan 02 · S2), a key item that does nothing yet only cancels
+        Assert.Equal(new[] { BagAction.Cancel }, BagScreen.ActionsFor(Item("Town Map")));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Register, BagAction.Cancel }, BagScreen.ActionsFor(Item("Old Rod")));
         Assert.Equal(new[] { BagAction.Cancel }, BagScreen.ActionsFor(Item("TM01")));
         Assert.All(ItemDatabase.GetAll(), item =>
             Assert.Equal(item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs), BagScreen.CanGive(item)));
@@ -215,7 +217,7 @@ public class MenuScreenTests
         var hurt = Mon("Turtwig", 10);
         hurt.CurrentHP = 5;
         var party = PartyOf(hurt, Mon("Bidoof", 5));
-        var inventory = Bag(("Potion", 2), ("Old Rod", 1));
+        var inventory = Bag(("Potion", 2), ("Town Map", 1));
         var notes = new List<string>();
         var bag = new BagScreen();
         bag.Open();

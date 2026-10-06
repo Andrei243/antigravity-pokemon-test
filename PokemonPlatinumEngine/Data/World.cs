@@ -435,7 +435,11 @@ public static class WorldMapBuilder
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
             Arena = overlay?.BattleArena,
-            BattleBackground = file?.BattleBackground ?? ""
+            BattleBackground = file?.BattleBackground ?? "",
+            Kind = file?.Kind ?? "",
+            BikeAllowed = file?.Bike ?? false,
+            EscapeRopeAllowed = file?.EscapeRope ?? false,
+            FlyAllowed = file?.Fly ?? false
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
 
@@ -457,6 +461,13 @@ public static class WorldMapBuilder
         Fill(area.WaterEncounters, file?.Water, WorldAreaFile.WaterSlotWeights);
         area.LandRate = file?.LandRate ?? 0;
         area.WaterRate = file?.WaterRate ?? 0;
+        // The rods' tables: the Old Rod's slots bite as often as the water's, the other two's by their own weights
+        Fill(area.RodEncounters[(int)FishingRod.Old], file?.OldRod, WorldAreaFile.WaterSlotWeights);
+        Fill(area.RodEncounters[(int)FishingRod.Good], file?.GoodRod, WorldAreaFile.RodSlotWeights);
+        Fill(area.RodEncounters[(int)FishingRod.Super], file?.SuperRod, WorldAreaFile.RodSlotWeights);
+        area.RodRates[(int)FishingRod.Old] = file?.OldRodRate ?? 0;
+        area.RodRates[(int)FishingRod.Good] = file?.GoodRodRate ?? 0;
+        area.RodRates[(int)FishingRod.Super] = file?.SuperRodRate ?? 0;
         return area;
     }
 
@@ -1025,6 +1036,15 @@ public static class WorldMapBuilder
 
     private static bool IsSignpost(string looks) => looks is "map_signpost" or "arrow_signpost" or "signboard" or "trainer_tips_signpost" or "gym_signpost";
 
+    /// <summary>
+    /// A flag of the original's that lasts only while the player is in its area (<c>FLAG_MAP_LOCAL_...</c>, cleared
+    /// on leaving: <see cref="Story.StoryState.ClearLocal"/>) made the area's own, since one map of the world holds
+    /// many areas that number their local flags alike: <c>FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_ETERNA_CITY</c>. Any other
+    /// flag is left as it is.
+    /// </summary>
+    public static string LocalFlag(string flag, string areaKey) =>
+        flag.StartsWith(Story.StoryState.LocalFlagPrefix, StringComparison.Ordinal) ? flag + "_" + areaKey.ToUpperInvariant() : flag;
+
     /// <summary>The obstacle an object of the original is, by the name of its looks: what Cut, Rock Smash and Strength clear.</summary>
     public static PropType? ObstacleFor(string looks) => looks switch
     {
@@ -1071,9 +1091,14 @@ public static class WorldMapBuilder
                 if (overlay?.SignScripts?.GetValueOrDefault(o.Id) is { Length: > 0 } opened) map.SignScripts[(o.X, o.Z)] = opened;
                 continue;
             }
+            // An obstacle is an object of the map, as the original's is (plan 02 · S2): cleared by its field move, it
+            // stays gone by its own flag, which is local to its area and cleared when the player leaves it
             if (ObstacleFor(o.Looks) is { } obstacle)
             {
-                map.AddProp(obstacle, o.X, o.Z);
+                var thing = map.AddObstacle(obstacle, o.X, o.Z);
+                thing.HiddenBy = o.HiddenBy is { } flag ? LocalFlag(flag, key) : null;
+                thing.Key = o.Id;
+                thing.ScriptFile = key;
                 continue;
             }
             // An item in its ball lies where the original has it, and stays gone by the original's own flag
@@ -1165,6 +1190,7 @@ public static class WorldMapBuilder
             {
                 // A gate house passed through: out of its far side, at the warp there that leads into it
                 warp = Join(world, through.To, through.ToWarp);
+                if (warp != null) warp.CyclistsOnly = through.Bicycle;
             }
             else
             {

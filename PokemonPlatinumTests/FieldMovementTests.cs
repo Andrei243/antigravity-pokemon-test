@@ -16,8 +16,8 @@ public class FieldMovementTests
     private static Map Lawn(int width = 9, int height = 9) => new(width, height) { Name = "Lab" };
 
     private static FieldStep Step(Map map, int x, int y, Direction dir, TravelMode mode = TravelMode.OnFoot, FieldMoves moves = FieldMoves.None,
-        bool running = false, bool fastGear = false, float? height = null) =>
-        FieldMovement.Step(map, x, y, dir, new Walker(mode, height ?? map.HeightAt(x, y), running, fastGear, moves));
+        bool running = false, bool fastGear = false, float? height = null, bool climbing = false) =>
+        FieldMovement.Step(map, x, y, dir, new Walker(mode, height ?? map.HeightAt(x, y), running, fastGear, moves, climbing));
 
     private static void AssertBlocked(Obstacle why, FieldStep step)
     {
@@ -380,7 +380,7 @@ public class FieldMovementTests
     }
 
     [Fact]
-    public void AWaterfallIsClimbedWithWaterfallAndRiddenDownWithout()
+    public void AWaterfallIsClimbedOnceAskedAndRiddenDownWithTheMove()
     {
         // A river down the middle column with a fall of three tiles in it: the water above is three tiles higher
         var map = Lawn(5, 12);
@@ -396,24 +396,29 @@ public class FieldMovementTests
         AssertBlocked(Obstacle.Water, Step(map, 1, 5, East));
         Assert.False(FieldMovement.CanStartSurf(map, 1, 5, East, new Walker()));
 
-        // From below: not without the move; with it, to the water above
+        // From below: not without the move, and not by swimming into it with the move either: up it goes once the
+        // player has said yes to Waterfall (a climb they chose), to the water above
         AssertBlocked(Obstacle.Waterfall, Step(map, 2, 7, North, TravelMode.Surfing));
-        var up = Step(map, 2, 7, North, TravelMode.Surfing, FieldMoves.Waterfall);
+        AssertBlocked(Obstacle.Waterfall, Step(map, 2, 7, North, TravelMode.Surfing, FieldMoves.Waterfall));
+        AssertBlocked(Obstacle.Waterfall, Step(map, 2, 7, North, TravelMode.Surfing, climbing: true));
+        var up = Step(map, 2, 7, North, TravelMode.Surfing, FieldMoves.Waterfall, climbing: true);
         AssertMoves(StepKind.Climb, 2, 3, up);
         Assert.Equal((3f, TravelMode.Surfing), (up.Height, up.Mode));
 
-        // From above: the water carries one down, move or no move
-        var down = Step(map, 2, 3, South, TravelMode.Surfing, height: 3f);
+        // From above: the water carries down whoever has a Pokémon that knows the move, unasked (ov5_021E04A8);
+        // without one the fall is a wall
+        AssertBlocked(Obstacle.Waterfall, Step(map, 2, 3, South, TravelMode.Surfing, height: 3f));
+        var down = Step(map, 2, 3, South, TravelMode.Surfing, FieldMoves.Waterfall, height: 3f);
         AssertMoves(StepKind.Climb, 2, 7, down);
         Assert.Equal(0f, down.Height);
 
         // Never sideways
         map.SetGroundTile(1, 5, TileType.Water);
-        AssertBlocked(Obstacle.Waterfall, Step(map, 1, 5, East, TravelMode.Surfing, FieldMoves.Waterfall));
+        AssertBlocked(Obstacle.Waterfall, Step(map, 1, 5, East, TravelMode.Surfing, FieldMoves.Waterfall, climbing: true));
 
         // A fall with rock above it leads nowhere
         map.SetSolid(2, 3, true);
-        AssertBlocked(Obstacle.Waterfall, Step(map, 2, 7, North, TravelMode.Surfing, FieldMoves.Waterfall));
+        AssertBlocked(Obstacle.Waterfall, Step(map, 2, 7, North, TravelMode.Surfing, FieldMoves.Waterfall, climbing: true));
     }
 
     // ------------------------------------------------------------------ rock faces
@@ -432,23 +437,26 @@ public class FieldMovementTests
             map.SetBehaviour(2, y, TileBehavior.RockClimbNorthSouth);
         }
 
+        // Walking into it is a bump, move or no move: it is climbed once the player has said yes to Rock Climb
         AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North));
-        var up = Step(map, 2, 6, North, moves: FieldMoves.RockClimb);
+        AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North, moves: FieldMoves.RockClimb));
+        AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North, climbing: true));
+        var up = Step(map, 2, 6, North, moves: FieldMoves.RockClimb, climbing: true);
         AssertMoves(StepKind.Climb, 2, 2, up);
         Assert.Equal(4f, up.Height);
-        var down = Step(map, 2, 2, South, moves: FieldMoves.RockClimb, height: 4f);
+        var down = Step(map, 2, 2, South, moves: FieldMoves.RockClimb, height: 4f, climbing: true);
         AssertMoves(StepKind.Climb, 2, 6, down);
         Assert.Equal(0f, down.Height);
 
         // Not across its grain, and not on wheels
-        AssertBlocked(Obstacle.RockFace, Step(map, 1, 4, East, moves: FieldMoves.RockClimb));
-        AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North, TravelMode.Cycling, FieldMoves.RockClimb));
+        AssertBlocked(Obstacle.RockFace, Step(map, 1, 4, East, moves: FieldMoves.RockClimb, climbing: true));
+        AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North, TravelMode.Cycling, FieldMoves.RockClimb, climbing: true));
         Assert.True(FieldMovement.IsRockFace(TileBehavior.RockClimbEastWest, East));
         Assert.False(FieldMovement.IsRockFace(TileBehavior.RockClimbEastWest, North));
 
         // With someone standing at the top there is nowhere to climb to
         map.NPCs.Add(new NPC { Name = "Hiker", GridX = 2, GridY = 2 });
-        AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North, moves: FieldMoves.RockClimb));
+        AssertBlocked(Obstacle.RockFace, Step(map, 2, 6, North, moves: FieldMoves.RockClimb, climbing: true));
     }
 
     // ------------------------------------------------------------------ ice and moving floors

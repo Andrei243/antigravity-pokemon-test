@@ -366,14 +366,19 @@ public class ReliefTests
         Assert.Equal(PropType.StrengthBoulder, WorldMapBuilder.ObstacleFor("strength_boulder"));
         Assert.Null(WorldMapBuilder.ObstacleFor("lass"));
 
+        // Objects of the map, as the original's are (plan 02 · S2): in the way like a person, the tile under them open
         var map = new Map(5, 5) { Name = "Obstacles" };
         foreach (var (type, x) in new[] { (PropType.CutTree, 1), (PropType.CrackedRock, 2), (PropType.StrengthBoulder, 3) })
         {
-            var prop = map.AddProp(type, x, 2);
-            Assert.True(prop.IsSolid);
-            Assert.False(map.IsWalkable(x, 2));
-            Assert.Equal(Obstacle.Solid, FieldMovement.Step(map, x, 3, Direction.Up, new Walker()).Obstacle);
+            var thing = map.AddObstacle(type, x, 2);
+            Assert.Equal(type, thing.Obstacle);
+            Assert.True(thing.IsThing);
+            Assert.False(map.IsSolid(x, 2));
+            Assert.Equal(Obstacle.Person, FieldMovement.Step(map, x, 3, Direction.Up, new Walker()).Obstacle);
+            // Its card is the art below, standing a little south of the tile's middle
+            Assert.InRange(ThingCards.FootOf(type), 0.55f, 0.7f);
         }
+        Assert.Equal(0.5f, ThingCards.FootOf(PropType.Mailbox));
 
         // Each is a sprite with an outline, like the other things that stand on the ground
         foreach (var (name, w, h, paint) in new (string, int, int, Action<PixelCanvas>)[]

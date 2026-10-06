@@ -237,7 +237,7 @@ public sealed class MapFile
         }
 
         foreach (var n in Npcs)
-            map.NPCs.Add(BuildNpc(n, Name));
+            map.Add(BuildNpc(n, Name));
 
         foreach (var e in WildEncounters)
             map.WildEncounters.Add(new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight });

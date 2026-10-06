@@ -357,7 +357,7 @@ public sealed class WorldRenderer
         }
 
         // In a cave nobody has lit, where the player stands on the picture and how large a tile is there
-        dark = player != null && Darkness.Covers(map, player.Moves);
+        dark = player != null && Darkness.Covers(map);
         if (dark)
         {
             var feet = new Vector3(px, groundY, pz);
@@ -404,7 +404,7 @@ public sealed class WorldRenderer
         foreach (var scene in scenes)
             if (Reaches(scene, casters)) scene.DrawDepth(casters);
         DrawActors(CharacterPass.Depth);
-        DrawItemBalls(CharacterPass.Depth);
+        DrawThings(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
@@ -443,7 +443,7 @@ public sealed class WorldRenderer
         DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
-        DrawItemBalls(CharacterPass.Color);
+        DrawThings(CharacterPass.Color);
         DrawActors(CharacterPass.Color);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
@@ -686,15 +686,17 @@ public sealed class WorldRenderer
     {
         actors.Clear();
         mount = null;
-        itemBalls.Clear();
+        things.Clear();
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
-            if (npc.IsItemBall)
+            if (npc.IsThing)
             {
-                // An item in its ball is a card, not a person
-                float bx = npc.DrawX + 0.5f, bz = npc.DrawY + 0.5f;
-                itemBalls.Add(new Vector3(bx, Relief.At(map, bx, bz), bz));
+                // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of
+                // its tile's middle, as the props it once was did
+                var kind = npc.Obstacle ?? PropType.Mailbox;
+                float bx = npc.DrawX + 0.5f, bz = npc.DrawY + ThingCards.FootOf(kind);
+                things.Add((new Vector3(bx, Relief.At(map, bx, bz), bz), kind));
                 continue;
             }
             float seed = SeedOf(npc.Name);
@@ -750,21 +752,19 @@ public sealed class WorldRenderer
     }
 
     /// <summary>Each character is a pixel-art sprite baked from its 3D model, standing upright like the walls.</summary>
-    // Items lying on the ground in view, and the one card every one of them is drawn with
-    private readonly List<Vector3> itemBalls = new();
-    private CharacterSprites.Card? itemBallCard;
+    // Things on the ground in view (items' balls and the obstacles field moves clear), and the card of each kind;
+    // an item's ball goes under the key of the mailbox, which is never a thing
+    private readonly List<(Vector3 At, PropType Kind)> things = new();
+    private readonly Dictionary<PropType, CharacterSprites.Card> thingCards = new();
 
-    /// <summary>The balls of the items on the ground: the same small card at each, lit and casting like the people.</summary>
-    private void DrawItemBalls(CharacterPass pass)
+    /// <summary>The things on the ground: a card for each kind, lit and casting like the people.</summary>
+    private void DrawThings(CharacterPass pass)
     {
-        if (itemBalls.Count == 0) return;
-        if (itemBallCard is not { } card)
+        foreach (var (at, kind) in things)
         {
-            var art = new PixelCanvas(OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard);
-            OutdoorProps.PaintItemBall(art);
-            itemBallCard = card = CharacterSprites.MakeCard(context, art);
+            if (!thingCards.TryGetValue(kind, out var card)) thingCards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind));
+            CharacterSprites.DrawCard(card, at, VerticalScale, pass);
         }
-        foreach (var at in itemBalls) CharacterSprites.DrawCard(card, at, VerticalScale, pass);
     }
 
     private void DrawActors(CharacterPass pass)
@@ -984,9 +984,10 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            // (An item's ball has a smaller patch under it than a person)
+            // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
             if (!npc.IsPCTerminal && InSight(npc))
-                Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f), npc.IsItemBall ? 0.6f : 1f);
+                Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
+                    npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : 1f);
         }
         if (withPlayer) Blob(px, pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 

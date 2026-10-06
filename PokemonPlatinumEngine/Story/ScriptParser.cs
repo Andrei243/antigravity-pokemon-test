@@ -288,6 +288,30 @@ public static class ScriptParser
                         return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Shake, Seconds = r.More ? r.Seconds() : ShakeSeconds };
                 }
 
+            case "usemove":
+            {
+                string move = r.Text("a field move's name");
+                if (FieldMoveRules.Of(move) == null) throw r.Error($"'{move}' is no move a Pokémon uses in the field");
+                return new Instruction { Op = Op.UseMove, Line = line, Name = move };
+            }
+            case "surf":
+                return new Instruction { Op = Op.Surf, Line = line };
+            case "climb":
+                return new Instruction { Op = Op.Climb, Line = line };
+            case "fly":
+                return new Instruction { Op = Op.Fly, Line = line };
+            case "teleport":
+                return new Instruction { Op = Op.Teleport, Line = line };
+            case "escape":
+                return new Instruction { Op = Op.Escape, Line = line };
+            case "sweetscent":
+                return new Instruction { Op = Op.SweetScent, Line = line };
+            case "poketch":
+                r.OneOf("on");
+                return new Instruction { Op = Op.Poketch, Line = line };
+            case "poketchapp":
+                return new Instruction { Op = Op.PoketchApp, Line = line, Name = r.Enum<Models.PoketchApp>("a Pokétch app").ToString() };
+
             case "music":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Music, Line = line, Name = r.Text("a song") };
                 return new Instruction { Op = Op.Music, Line = line, Option = r.OneOf("area", "stop") == "area" };
@@ -394,6 +418,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Boy, Negated = negated };
             case "girl":
                 return new Condition { Query = Query.Girl, Negated = negated };
+            case "poketch":
+                return new Condition { Query = Query.Poketch, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

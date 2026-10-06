@@ -55,6 +55,18 @@ public class SaveData
     public float? PlayerHeight { get; set; }
 
     /// <summary>
+    /// Where Dig and an Escape Rope lead out of the caves: outside the way the player last went into them (plan 02
+    /// · S2). Null in older saves, and outside the caves.
+    /// </summary>
+    public MapSpot? Exit { get; set; }
+
+    /// <summary>The key item kept on the item button (the original's registered item), by name; null when none is.</summary>
+    public string? RegisteredItem { get; set; }
+
+    /// <summary>The Pokétch: whether the player has it, its apps and the pedometer's count. Null in older saves.</summary>
+    public PoketchSave? Poketch { get; set; }
+
+    /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
     /// </summary>

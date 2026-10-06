@@ -167,6 +167,13 @@ public class Warp
     public int TargetX { get; set; }
     public int TargetY { get; set; }
     public Direction TargetFacing { get; set; } = Direction.Down;
+
+    /// <summary>
+    /// A way onto the Cycling Road (plan 02 · S2): only a rider is let through, and comes out unable to get off
+    /// the Bicycle until the next warp.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool CyclistsOnly { get; set; }
 }
 
 /// <summary>

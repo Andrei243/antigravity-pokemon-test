@@ -396,7 +396,7 @@ public class WorldTests
                     $"{who} stands on a warp");
                 Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY));
                 Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
-                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsItemBall, $"{who} has nothing to say");
+                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing, $"{who} has nothing to say");
             }
 
             // Signs and mailboxes can be read from a tile beside them

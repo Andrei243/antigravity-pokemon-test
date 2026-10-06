@@ -20,6 +20,10 @@ public enum Op
     Battle, WildBattle, CatchingLesson,
     // People and the field
     Face, Walk, Move, WaitMoves, Emote, Show, Hide, Place, Warp, Fade, Wait, Camera,
+    // Field moves (plan 02 · S2)
+    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent,
+    // The Pokétch (plan 02 · S2)
+    Poketch, PoketchApp,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
@@ -32,7 +36,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

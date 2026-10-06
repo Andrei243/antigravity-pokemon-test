@@ -175,6 +175,12 @@ public sealed class WorldWriter
             LandRate = land == null ? null : landRate,
             Water = water,
             WaterRate = water == null ? null : waterRate,
+            OldRod = Water(header, "old_rod", out int? oldRodRate),
+            OldRodRate = oldRodRate,
+            GoodRod = Water(header, "good_rod", out int? goodRodRate),
+            GoodRodRate = goodRodRate,
+            SuperRod = Water(header, "super_rod", out int? superRodRate),
+            SuperRodRate = superRodRate,
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o => new AreaObject
             {
@@ -230,17 +236,21 @@ public sealed class WorldWriter
         return land.Count > 0 ? land : null;
     }
 
-    private List<AreaEncounter>? Water(MapHeader header, out int? rate)
+    private List<AreaEncounter>? Water(MapHeader header, out int? rate) => Water(header, "surf", out rate);
+
+    /// <summary>One of an area's tables of water slots (<c>surf</c>, or a rod's), with its rate; null when it has none.</summary>
+    private List<AreaEncounter>? Water(MapHeader header, string table, out int? rate)
     {
         rate = null;
         if (header.Encounters == null) return null;
         var water = new List<AreaEncounter>();
-        foreach (var (species, min, max) in decomp.WaterEncounters(header.Encounters, out int waterRate))
+        foreach (var (species, min, max) in decomp.WaterEncounters(header.Encounters, table, out int waterRate))
         {
             rate = waterRate;
             if (SpeciesName(species) is { } name) water.Add(new AreaEncounter { Species = name, Level = min, MaxLevel = max > min ? max : null });
-            else Problems.Add($"{header.Key}: wild {species} in the water is not a species the game knows");
+            else Problems.Add($"{header.Key}: wild {species} in the water ({table}) is not a species the game knows");
         }
+        if (water.Count == 0) rate = null;
         return water.Count > 0 ? water : null;
     }
 

@@ -2,7 +2,8 @@
   "area": "route_206",
   "bgmTrack": "sinnoh/route206",
   "trees": "Pine",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
+  // Gate houses are passed through; their rooms come with plan 01 · M11. Northward through the south gate, as
+  // southward through the north gate, is onto the Cycling Road: riders only (plan 02 · S2)
   "through": [
     { "warp": 4, "to": "eterna_city", "toWarp": 8 },
     { "warp": 5, "to": "eterna_city", "toWarp": 9 },
@@ -12,10 +13,10 @@
     { "warp": 3, "to": "route_206", "toWarp": 1 },
     { "warp": 8, "to": "route_206", "toWarp": 11 },
     { "warp": 9, "to": "route_206", "toWarp": 11 },
-    { "warp": 0, "to": "route_206", "toWarp": 2 },
-    { "warp": 1, "to": "route_206", "toWarp": 3 },
-    { "warp": 10, "to": "route_206", "toWarp": 7 },
-    { "warp": 11, "to": "route_206", "toWarp": 8 }
+    { "warp": 0, "to": "route_206", "toWarp": 2, "bicycle": true },
+    { "warp": 1, "to": "route_206", "toWarp": 3, "bicycle": true },
+    { "warp": 10, "to": "route_206", "toWarp": 7, "bicycle": true },
+    { "warp": 11, "to": "route_206", "toWarp": 8, "bicycle": true }
   ],
   "people": {
     "hiker": {

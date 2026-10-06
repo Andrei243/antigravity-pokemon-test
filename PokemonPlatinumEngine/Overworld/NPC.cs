@@ -80,6 +80,41 @@ public class NPC
 
     public bool IsItemBall => NpcType == ItemBallType;
 
+    // ---- Obstacles a field move clears (plan 02 · S2)
+
+    /// <summary>
+    /// The <see cref="NpcType"/>s of the three obstacles, which are objects of the map as the original's are: a small
+    /// tree for Cut, a cracked rock for Rock Smash, a boulder for Strength. Each is drawn as its card, stands in the
+    /// way like a person, and runs its common script when the player faces it and presses the button.
+    /// </summary>
+    public const string CutTreeType = "CutTree", CrackedRockType = "CrackedRock", BoulderType = "StrengthBoulder";
+
+    /// <summary>Which obstacle this is; null for anyone else.</summary>
+    public PropType? Obstacle => NpcType switch
+    {
+        CutTreeType => PropType.CutTree,
+        CrackedRockType => PropType.CrackedRock,
+        BoulderType => PropType.StrengthBoulder,
+        _ => null
+    };
+
+    public bool IsObstacle => Obstacle != null;
+
+    /// <summary>The <see cref="NpcType"/> of an obstacle.</summary>
+    public static string TypeOf(PropType obstacle) => obstacle switch
+    {
+        PropType.CutTree => CutTreeType,
+        PropType.CrackedRock => CrackedRockType,
+        PropType.StrengthBoulder => BoulderType,
+        _ => throw new ArgumentException($"{obstacle} is no obstacle a field move clears.")
+    };
+
+    /// <summary>
+    /// A thing rather than a person: an item's ball or an obstacle. It is drawn as a card, never as a character,
+    /// and never turns to face anyone.
+    /// </summary>
+    public bool IsThing => IsItemBall || IsObstacle;
+
     // ---- The story (plan 02 · S1)
 
     /// <summary>What scripts call them: their id in the area's file or in the map's. Null for someone no script names.</summary>

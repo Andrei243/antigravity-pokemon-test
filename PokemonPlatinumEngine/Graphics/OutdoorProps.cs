@@ -553,3 +553,37 @@ internal static class OutdoorProps
         Pix.Outline(c);
     }
 }
+
+/// <summary>
+/// The cards the things on the ground are drawn with (plan 02 · S2): an item's ball, and the three obstacles that
+/// field moves clear, which are objects of the map like the ball (<see cref="Overworld.NPC.IsThing"/>) and no longer
+/// part of a chunk's scenery, so one that is cut down or pushed along needs nothing rebuilt.
+/// </summary>
+public static class ThingCards
+{
+    /// <summary>The art of a kind of thing: an obstacle's, or an item's ball for anything else.</summary>
+    public static PixelCanvas Paint(PropType kind)
+    {
+        var (w, h, paint) = kind switch
+        {
+            PropType.CutTree => (26, 40, (Action<PixelCanvas>)OutdoorProps.PaintCutTree),
+            PropType.CrackedRock => (30, 26, OutdoorProps.PaintCrackedRock),
+            PropType.StrengthBoulder => (30, 30, OutdoorProps.PaintStrengthBoulder),
+            _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
+        };
+        var art = new PixelCanvas(w, h);
+        paint(art);
+        return art;
+    }
+
+    /// <summary>
+    /// How far into its tile, from the north, a thing stands: an item's ball at the middle, an obstacle a little
+    /// south of it, where it stood as a prop.
+    /// </summary>
+    public static float FootOf(PropType kind) => kind switch
+    {
+        PropType.CutTree or PropType.StrengthBoulder => 20f / 32f,
+        PropType.CrackedRock => 19f / 32f,
+        _ => 0.5f
+    };
+}

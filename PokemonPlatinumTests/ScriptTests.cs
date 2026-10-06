@@ -145,6 +145,15 @@ public class ScriptTests
           camera pan 3 4 0.5
           camera release
           camera shake
+          usemove "Cut"
+          surf
+          climb
+          fly
+          teleport
+          escape
+          sweetscent
+          poketch on
+          poketchapp PartyStatus
           music "sinnoh/jubilife"
           music area
           music stop
@@ -197,6 +206,7 @@ public class ScriptTests
               if facing left end
               if boy end
               if girl end
+              if poketch end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -923,6 +933,7 @@ public class ScriptTests
         public StoryState Story => inner.Story;
         public Party Party => inner.Party;
         public Inventory Bag => inner.Bag;
+        public Poketch Poketch => inner.Poketch;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;
         public PlayerLook PlayerLook => inner.PlayerLook;
@@ -946,6 +957,13 @@ public class ScriptTests
         public bool GivePokemon(Pokemon pokemon) => true;
         public void Warp(string map, int x, int y, Direction? facing) { }
         public void Fade(bool toBlack, float seconds) { }
+        public void UseMove(FieldMove move, Pokemon user, NPC? subject) { }
+        public bool Surf() => true;
+        public bool Climb() => true;
+        public bool Fly() => true;
+        public bool Teleport() => true;
+        public bool Escape() => true;
+        public bool SweetScent() => false;
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }
         public void Sound(string name) { }

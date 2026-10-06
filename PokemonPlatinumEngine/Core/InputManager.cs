@@ -12,7 +12,10 @@ public enum GameAction
     Confirm,  // A button (Z / Space / Enter)
     Cancel,   // B button (X / Esc / Shift)
     Menu,     // Start button (Enter / Tab)
-    Run       // Hold B / Shift
+    Run,      // Hold B / Shift
+    Item,     // Y button: the registered key item (C)
+    Poketch,  // The Pokétch, the handheld's lower screen: out or away (P)
+    PoketchApp // The Pokétch's side button: the next app (O)
 }
 
 public static class InputManager
@@ -29,6 +32,9 @@ public static class InputManager
             GameAction.Cancel => Raylib.IsKeyPressed(KeyboardKey.X) || Raylib.IsKeyPressed(KeyboardKey.Escape) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceRight),
             GameAction.Menu => Raylib.IsKeyPressed(KeyboardKey.Enter) || Raylib.IsKeyPressed(KeyboardKey.Tab) || Raylib.IsGamepadButtonPressed(0, GamepadButton.MiddleRight),
             GameAction.Run => Raylib.IsKeyDown(KeyboardKey.LeftShift) || Raylib.IsKeyDown(KeyboardKey.X) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceRight),
+            GameAction.Item => Raylib.IsKeyPressed(KeyboardKey.C) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceLeft),
+            GameAction.Poketch => Raylib.IsKeyPressed(KeyboardKey.P) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceUp),
+            GameAction.PoketchApp => Raylib.IsKeyPressed(KeyboardKey.O) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightTrigger1),
             _ => false
         };
     }
@@ -45,6 +51,9 @@ public static class InputManager
             GameAction.Cancel => Raylib.IsKeyDown(KeyboardKey.X) || Raylib.IsKeyDown(KeyboardKey.Escape) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceRight),
             GameAction.Menu => Raylib.IsKeyDown(KeyboardKey.Enter) || Raylib.IsKeyDown(KeyboardKey.Tab) || Raylib.IsGamepadButtonDown(0, GamepadButton.MiddleRight),
             GameAction.Run => Raylib.IsKeyDown(KeyboardKey.LeftShift) || Raylib.IsKeyDown(KeyboardKey.X) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceRight),
+            GameAction.Item => Raylib.IsKeyDown(KeyboardKey.C) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceLeft),
+            GameAction.Poketch => Raylib.IsKeyDown(KeyboardKey.P) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceUp),
+            GameAction.PoketchApp => Raylib.IsKeyDown(KeyboardKey.O) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightTrigger1),
             _ => false
         };
     }

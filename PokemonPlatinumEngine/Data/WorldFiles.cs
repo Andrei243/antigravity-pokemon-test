@@ -312,6 +312,21 @@ public sealed class WorldAreaFile
 
     public static readonly int[] WaterSlotWeights = { 60, 30, 5, 4, 1 };
 
+    /// <summary>
+    /// The wild Pokémon hooked with each rod (plan 02 · S2): five slots each with a range of levels, and the rod's
+    /// rate, the chance in a hundred that anything bites at all. The Old Rod's slots bite as often as the water's;
+    /// the Good and Super Rods' 40, 40, 15, 4 and 1 times in a hundred (<see cref="RodSlotWeights"/>,
+    /// <c>GetRodEncounterSlot</c>). Left out where the rod catches nothing.
+    /// </summary>
+    public List<AreaEncounter>? OldRod { get; set; }
+    public int? OldRodRate { get; set; }
+    public List<AreaEncounter>? GoodRod { get; set; }
+    public int? GoodRodRate { get; set; }
+    public List<AreaEncounter>? SuperRod { get; set; }
+    public int? SuperRodRate { get; set; }
+
+    public static readonly int[] RodSlotWeights = { 40, 40, 15, 4, 1 };
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();
@@ -484,6 +499,12 @@ public sealed class OverlayPassage
     public int Warp { get; set; }
     public string To { get; set; } = "";
     public int ToWarp { get; set; }
+
+    /// <summary>
+    /// A gate onto the Cycling Road (plan 02 · S2): only a rider goes through it, as the original's gate keepers
+    /// say, and comes out on the road unable to get off until the next warp (<c>FLAG_ON_CYCLING_ROAD</c>).
+    /// </summary>
+    public bool Bicycle { get; set; }
 }
 
 /// <summary>One of an area's triggers given its script: the name of one in the area's script file, or a common one.</summary>
