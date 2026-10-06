@@ -54,7 +54,11 @@ public enum TileType : byte
     /// <summary>The rock a cave is cut into: nobody walks on it, and it stands up from the floor as the cave's wall.</summary>
     CaveWall,
     /// <summary>The dark inside the mouth of a cave, as the open country shows it: a hollow at the foot of the rock.</summary>
-    CaveMouth
+    CaveMouth,
+
+    // Forests (plan 01 · M6)
+    /// <summary>The dark under the trees where a forest is entered (Eterna Forest, Floaroma Meadow).</summary>
+    ForestMouth
 }
 
 /// <summary>What a map of the imported world is where nothing else is said (plan 01 · M5).</summary>
@@ -77,7 +81,9 @@ public enum FieldCamera
     /// <summary>574.6 units away, pitched 63.26°, 19.0° of view: caves.</summary>
     Cave,
     /// <summary>515.5 units away, pitched 54.66°, 20.92° of view: Floaroma Meadow, Eterna Forest, Amity Square.</summary>
-    ZoomedIn
+    ZoomedIn,
+    /// <summary>866.6 units away, pitched 73.11°, 12.67° of view: the outside of Mt. Coronet's south face.</summary>
+    CoronetSouth
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>

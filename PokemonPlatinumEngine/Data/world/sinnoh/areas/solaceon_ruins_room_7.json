@@ -1,0 +1,48 @@
+{
+  "key": "solaceon_ruins_room_7",
+  "index": 240,
+  "name": "Solaceon Ruins",
+  "matrix": 41,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "encounters": "solaceon_ruins_room_7",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Unown", "level": 20 },
+    { "species": "Unown", "level": 21 },
+    { "species": "Unown", "level": 22 },
+    { "species": "Unown", "level": 23 },
+    { "species": "Unown", "level": 24 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 26 },
+    { "species": "Unown", "level": 27 },
+    { "species": "Unown", "level": 28 },
+    { "species": "Unown", "level": 29 },
+    { "species": "Unown", "level": 30 },
+    { "species": "Unown", "level": 30 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 8, "z": 3, "to": "solaceon_ruins_room_6", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_mind_plate", "looks": "pokeball", "movement": "none", "x": 4, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SOLACEON_RUINS_ROOM_7_MIND_PLATE", "item": "Mind Plate", "script": "7095" },
+    { "id": "item_odd_incense", "looks": "pokeball", "movement": "none", "x": 6, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SOLACEON_RUINS_ROOM_7_ODD_INCENSE", "item": "Odd Incense", "script": "7096" },
+    { "id": "item_nugget", "looks": "pokeball", "movement": "none", "x": 4, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SOLACEON_RUINS_ROOM_7_NUGGET", "item": "Nugget", "script": "7097" },
+    { "id": "item_hm05", "looks": "pokeball", "movement": "none", "x": 6, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SOLACEON_RUINS_ROOM_7_HM05", "item": "HM05", "script": "7098" }
+  ],
+  "signs": [
+    { "x": 4, "z": 1, "type": 0, "script": "1" },
+    { "x": 5, "z": 1, "type": 0, "script": "1" },
+    { "x": 6, "z": 1, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

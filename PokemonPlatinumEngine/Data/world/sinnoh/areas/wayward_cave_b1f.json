@@ -1,0 +1,47 @@
+{
+  "key": "wayward_cave_b1f",
+  "index": 285,
+  "name": "Wayward Cave",
+  "matrix": 75,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "wayward_cave_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzor", "level": 18 },
+    { "species": "Geodude", "level": 18 },
+    { "species": "Gible", "level": 17 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Bronzor", "level": 20 },
+    { "species": "Onix", "level": 20 },
+    { "species": "Gible", "level": 19 },
+    { "species": "Geodude", "level": 20 },
+    { "species": "Gible", "level": 20 },
+    { "species": "Onix", "level": 18 },
+    { "species": "Gible", "level": 20 },
+    { "species": "Onix", "level": 18 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 43, "z": 38, "to": "wayward_cave_1f", "toWarp": 3 },
+    { "x": 16, "z": 40, "to": "wayward_cave_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_grip_claw", "looks": "pokeball", "movement": "none", "x": 22, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_WAYWARD_CAVE_B1F_GRIP_CLAW", "item": "Grip Claw", "script": "7042" },
+    { "id": "item_max_ether", "looks": "pokeball", "movement": "none", "x": 31, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_WAYWARD_CAVE_B1F_MAX_ETHER", "item": "Max Ether", "script": "7040" },
+    { "id": "item_rare_candy", "looks": "pokeball", "movement": "none", "x": 33, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_WAYWARD_CAVE_B1F_RARE_CANDY", "item": "Rare Candy", "script": "7041" }
+  ],
+  "signs": [
+    { "x": 3, "z": 10, "type": 2, "script": "8011", "item": "Stardust", "flag": "FLAG_OBTAINED_HIDDEN_WAYWARD_CAVE_B1F_STARDUST", "range": 2 },
+    { "x": 4, "z": 39, "type": 2, "script": "8010", "item": "Dusk Stone", "flag": "FLAG_OBTAINED_HIDDEN_WAYWARD_CAVE_B1F_DUSK_STONE", "range": 2 }
+  ],
+  "triggers": []
+}

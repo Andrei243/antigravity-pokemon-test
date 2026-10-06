@@ -169,8 +169,9 @@ internal static partial class BuildingArt
             },
             BuildingKind.Mansion => new BuildingStyle
             {
-                Wall = WallKind.Plaster, Roof = RoofShape.Hip, RoofColor = Rgb(88, 98, 126), Storeys = 2, Window = WindowKind.Arched,
-                Portal = 84, Accent = Rgb(88, 98, 126)
+                // The Old Chateau in Eterna Forest is the same house gone to ruin: a roof of dark slate
+                Wall = WallKind.Plaster, Roof = RoofShape.Hip, RoofColor = b.Model == "d3_s01" ? Rgb(62, 58, 76) : Rgb(88, 98, 126), Storeys = 2,
+                Window = WindowKind.Arched, Portal = 84, Accent = b.Model == "d3_s01" ? Rgb(84, 70, 92) : Rgb(88, 98, 126)
             },
             BuildingKind.Galactic => new BuildingStyle
             {

@@ -91,9 +91,15 @@ public sealed class World
     /// <summary>Whether an area is built: its people stand in it and the player can walk there.</summary>
     public bool IsOpen(string area) => Index.Areas.Contains(area, StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>The map an area lies on, or null if the game makes no map of its matrix.</summary>
+    /// <summary>
+    /// The map an area lies on, or null if the game makes no map of its matrix. A matrix the original uses for
+    /// several places (the Solaceon Ruins' rooms) is a map for each, told apart by the area it is made for.
+    /// </summary>
     public WorldMapEntry? MapOf(string area) =>
-        Area(area) is { } file ? Index.Maps.FirstOrDefault(m => m.Matrix == file.Matrix) : null;
+        Area(area) is { } file
+            ? Index.Maps.FirstOrDefault(m => m.Matrix == file.Matrix && string.Equals(m.Area, area, StringComparison.OrdinalIgnoreCase))
+              ?? Index.Maps.FirstOrDefault(m => m.Matrix == file.Matrix && m.Area == null)
+            : null;
 
     /// <summary>The chunk under a tile of a matrix, with the tile's place in it; null where there is none.</summary>
     public (WorldChunkFile Chunk, int X, int Z)? ChunkAt(int matrixId, int x, int z)
@@ -192,6 +198,21 @@ public static class WorldMapBuilder
         foreach (string key in areas.Keys)
             foreach (var warp in world.Area(key)?.Warps ?? new()) entrances.Add((warp.X, warp.Z));
 
+        // A way in under a bridge (Wayward Cave's, under the Cycling Road): the original gives its tile the deck's
+        // height, and it is walked into from the ground under the deck. It is the ground's, with the deck over it
+        foreach (var (x, z) in entrances)
+        {
+            if (!map.InBounds(x, z) || map.DeckAt(x, z) != null) continue;
+            var (ax, az, _) = Arrival(map.BehaviourAt(x, z), x, z);
+            if (!map.InBounds(ax, az) || map.DeckAt(ax, az) is not { } over) continue;
+            float here = map.HeightAt(x, z), below = map.HeightAt(ax, az);
+            if (MathF.Abs(here - over) < 0.5f && here - below >= FieldMovement.StepLimit)
+            {
+                map.SetDeck(x, z, here);
+                map.SetHeight(x, z, below);
+            }
+        }
+
         // What a tile of unnamed ground will be isn't known yet, so nothing takes its own ground from one
         var unnamed = new bool[map.Width * map.Height];
         foreach (var (x, z) in vague) unnamed[z * map.Width + x] = true;
@@ -203,6 +224,9 @@ public static class WorldMapBuilder
         }
         else
         {
+            // The original paints its dark of a cave's mouth in a few places that lead into nothing (the west end of
+            // Route 205's bridge): open ground there with no way in on it or beside it is the ground round it
+            foreach (var (x, z) in OpenMouthsLeadingNowhere(map, entrances)) vague.Add((x, z));
             foreach (var (x, z) in vague) under[z * map.Width + x] = true;
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, GroundLike(map, x, z, under), map.IsSolid(x, z));
             StreetLamps(map, under);
@@ -229,6 +253,8 @@ public static class WorldMapBuilder
     {
         "Cave" => FieldCamera.Cave,
         "ZoomedIn" => FieldCamera.ZoomedIn,
+        // The north face's camera is the overworld's to within a hundredth of a degree (CAMERA_TYPE_MT_CORONET_EXT_NORTH)
+        "MtCoronetExtSouth" => FieldCamera.CoronetSouth,
         _ => FieldCamera.Default
     };
 
@@ -481,6 +507,8 @@ public static class WorldMapBuilder
             TerrainCover.CaveFloor => (TileType.CaveFloor, solid, null),
             // The dark of a cave's mouth: the hole in the rock where it blocks, the way in where it is open
             TerrainCover.CaveMouth => (TileType.CaveMouth, solid, null),
+            // The dark under the trees where a forest is entered, the same way round
+            TerrainCover.ForestMouth => (TileType.ForestMouth, solid, null),
             TerrainCover.Snow => (TileType.Snow, solid, null),
             TerrainCover.Ice => (TileType.Ice, solid, null),
             TerrainCover.Water => (TileType.Water, solid, null),
@@ -633,6 +661,23 @@ public static class WorldMapBuilder
                     left.Remove((x, z));
         }
         return result;
+    }
+
+    /// <summary>Open tiles of a cave's mouth with no way in on them or beside them.</summary>
+    private static List<(int X, int Z)> OpenMouthsLeadingNowhere(Map map, HashSet<(int X, int Z)> entrances)
+    {
+        var found = new List<(int X, int Z)>();
+        for (int z = 0; z < map.Height; z++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                if (map.GetGroundTile(x, z) != TileType.CaveMouth || map.IsSolid(x, z)) continue;
+                bool leads = false;
+                for (int dz = -1; dz <= 1 && !leads; dz++)
+                    for (int dx = -1; dx <= 1 && !leads; dx++)
+                        leads = entrances.Contains((x + dx, z + dz));
+                if (!leads) found.Add((x, z));
+            }
+        return found;
     }
 
     /// <summary>
@@ -967,6 +1012,10 @@ public static class WorldMapBuilder
             or "pokefan_f" => "Lady",
         "collector" or "gentleman" or "old_man" or "rich_boy" or "scientist_m" or "middle_aged_man" or "expert_m" or "hiker" or "worker"
             or "pokefan_m" => "Gentleman",
+        // The centre of Sinnoh's people (plan 01 · M6), as the nearest of the characters there are
+        "fisherman" or "pokemon_breeder_m" or "black_belt" or "ruin_maniac" or "artist" or "rancher" or "gym_guide" => "Gentleman",
+        "jogger" or "ninja_boy" or "psychic" => "Youngster",
+        "cowgirl" or "idol" or "receptionist" => "Lass",
         "cashier_m" or "cashier_f" or "clerk" or "waiter" => "Clerk",
         "clown" => "Clown",
         "looker" => "Looker",
@@ -1000,6 +1049,7 @@ public static class WorldMapBuilder
 
         foreach (var o in file.Objects)
         {
+            if (overlay?.HeldBack?.Contains(o.Id) == true) continue;
             // A copy of a neighbouring area's object, there so it shows across the border: the neighbour places it
             if (o.HiddenBy != null && o.HiddenBy.StartsWith("MAP_HEADER_", StringComparison.Ordinal)) continue;
             // The two halves of a route list each other's people and signs without saying so: whoever stands on
@@ -1062,6 +1112,8 @@ public static class WorldMapBuilder
                 ShownBy = person.ShownBy,
                 Trainer = person.Trainer
             }, map.Name);
+            // Someone the original stands on a bridge's deck stands there, over whoever walks under it
+            if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
             npc.ScriptFile = key;
@@ -1109,11 +1161,14 @@ public static class WorldMapBuilder
             {
                 warp = new Warp { TargetMap = door.Map, TargetX = door.X, TargetY = door.Y, TargetFacing = door.Facing };
             }
-            else if (world.IsOpen(from.To) && world.MapOf(from.To) is { } onto && world.Area(from.To) is { } target && from.ToWarp < target.Warps.Count)
+            else if (overlay?.Through?.FirstOrDefault(t => t.Warp == i) is { } through)
             {
-                var to = target.Warps[from.ToWarp];
-                var (x, z, facing) = Arrival(world.BehaviourAt(target.Matrix, to.X, to.Z), to.X, to.Z);
-                warp = new Warp { TargetMap = onto.Name, TargetX = x, TargetY = z, TargetFacing = facing };
+                // A gate house passed through: out of its far side, at the warp there that leads into it
+                warp = Join(world, through.To, through.ToWarp);
+            }
+            else
+            {
+                warp = Join(world, from.To, from.ToWarp);
             }
             if (warp == null) continue;
 
@@ -1131,6 +1186,15 @@ public static class WorldMapBuilder
         // can't walk into an opening and stand in the wall. A door is shut by itself.
         foreach (var from in file.Warps)
             if (map.GetWarpAt(from.X, from.Z) == null && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
+    }
+
+    /// <summary>A warp onto one of an open area's warps, coming out one step from it; null while the area isn't open or has no map.</summary>
+    private static Warp? Join(World world, string area, int toWarp)
+    {
+        if (!world.IsOpen(area) || world.MapOf(area) is not { } onto || world.Area(area) is not { } target || toWarp >= target.Warps.Count) return null;
+        var to = target.Warps[toWarp];
+        var (x, z, facing) = Arrival(world.BehaviourAt(target.Matrix, to.X, to.Z), to.X, to.Z);
+        return new Warp { TargetMap = onto.Name, TargetX = x, TargetY = z, TargetFacing = facing };
     }
 
     /// <summary>

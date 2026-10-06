@@ -1,0 +1,44 @@
+# Eterna Forest, the Lost Tower and the Solaceon Ruins (the original's D_02 role): a hushed A-minor wander under
+# the trees, the flute over a harp that keeps walking, glints of light on the celesta and a soft heartbeat on the
+# toms; a little eerie, never frightening. Original composition for this game.
+title Eterna Forest
+tempo 96
+meter 4/4
+reverb 0.48
+night none
+
+track lead flute vol=0.64 pan=0 rev=0.45
+  L o5 e4 a4 b2 | o6 c4. o5 b8 a2 | o5 g4 e4 d4. c8 | o4 b2. r4 |
+  o5 e4 a4 b4 o6 d4 | o6 c4. o5 a8 e2 | o5 f+4. e8 d4 a4 | o5 g+2. o4 b4 |
+  o5 a4. g8 a4 o6 c4 | o5 b2 a8 g8 d4 | o5 g4. f+8 g4 b4 | o5 a2. r4 |
+  o5 f4. e8 f4 a4 | o5 b4. a8 f4 d4 | o5 e2 d4 o4 b4 | o4 g+2. r4 |
+
+track harp harp vol=0.38 pan=-0.3 rev=0.4
+  L o3 a8 o4 e8 a8 b8 o5 c8 o4 b8 e8 a8 | o3 f8 o4 c8 f8 g8 a8 g8 c8 f8 | o3 a8 o4 e8 a8 b8 o5 c8 o4 b8 e8 a8 | o3 e8 b8 o4 e8 f+8 g8 f+8 o3 b8 o4 e8 |
+  o3 a8 o4 e8 a8 b8 o5 c8 o4 b8 e8 a8 | o3 f8 o4 c8 f8 g8 a8 g8 c8 f8 | o3 d8 a8 o4 d8 e8 f+8 e8 o3 a8 o4 d8 | o3 e8 b8 o4 e8 f+8 g+8 f+8 o3 b8 o4 e8 |
+  o3 f8 o4 c8 f8 g8 a8 g8 c8 f8 | o3 g8 o4 d8 g8 a8 b8 a8 d8 g8 | o3 e8 b8 o4 e8 f+8 g8 f+8 o3 b8 o4 e8 | o3 a8 o4 e8 a8 b8 o5 c8 o4 b8 e8 a8 |
+  o3 d8 a8 o4 d8 e8 f8 e8 o3 a8 o4 d8 | o2 b8 o3 f8 b8 o4 d8 f8 d8 o3 a8 b8 | o3 e8 b8 o4 e8 f+8 g+8 f+8 d8 e8 | o3 e8 b8 o4 e8 f+8 g+8 f+8 o3 b8 o4 e8 |
+
+track glints celesta vol=0.24 pan=0.45 rev=0.65
+  L r8 o6 e8 r4 r4 r8 o5 b8 | r4 r8 o6 e8 r4 r8 o5 a8 | r8 o6 a8 r4 r8 o6 e8 r4 | r4 r8 o5 b8 r4 r8 o6 f+8 |
+  r8 o6 e8 r4 r4 r8 o5 b8 | r4 r8 o6 c8 r4 r8 o6 g8 | r8 o6 a8 r4 r8 o6 f+8 r4 | r4 r8 o5 b8 r4 r8 o6 g+8 |
+  r8 o6 c8 r4 r4 r8 o6 e8 | r4 r8 o6 d8 r4 r8 o5 b8 | r8 o6 g8 r4 r8 o6 e8 r4 | r4 r8 o6 c8 r4 r8 o6 e8 |
+  r8 o6 d8 r4 r4 r8 o5 a8 | r4 r8 o6 f8 r4 r8 o6 d8 | r8 o6 e8 r4 r8 o6 d8 r4 | r4 r8 o5 b8 r4 r8 o6 e8 |
+
+track pad strings vol=0.28 pan=0.2 rev=0.5
+  L o4 (c e a)1 | o4 (c f a)1 | o4 (c e a)1 | o3 (b >e g)1 |
+  o4 (c e a)1 | o4 (c f a)1 | o3 (a >d f+)1 | o3 (b >e g+)1 |
+  o4 (c f a)1 | o3 (b >d g)1 | o3 (b >e g)1 | o4 (c e a)1 |
+  o3 (a >d f)1 | o3 (b >d f)1 | o3 (b >d g+)1 | o3 (b >e g+)1 |
+
+track bass contrabass vol=0.58 rev=0.25
+  L o3 a2 e2 | o3 f2 c2 | o3 a2 e2 | o3 e2 b2 |
+  o3 a2 e2 | o3 f2 c2 | o3 d2 a2 | o3 e2 b2 |
+  o3 f2 c2 | o3 g2 d2 | o3 e2 b2 | o3 a2 e2 |
+  o3 d2 a2 | o2 b2 o3 f2 | o3 e2 o2 b2 | o3 e2 o2 b2 |
+
+track drums kit vol=0.32 rev=0.4
+  v64 L [ f4 r4 f8 r8 r4 | f4 r4 f8 r8 r8 m16 f16 | ]8
+
+track shaker kit vol=0.26 pan=0.15 rev=0.2
+  L [ v26 k8 v42 k8 v26 k8 v42 k8 v26 k8 v42 k8 v26 k8 v42 k8 | ]16

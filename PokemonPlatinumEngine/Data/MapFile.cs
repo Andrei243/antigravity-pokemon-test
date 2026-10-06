@@ -463,7 +463,8 @@ public static class TileCodes
         (TileType.Paving, '+'),
         (TileType.Walkway, 'H'),
         (TileType.CaveWall, 'X'),
-        (TileType.CaveMouth, 'M')
+        (TileType.CaveMouth, 'M'),
+        (TileType.ForestMouth, 'E')
     };
 
     public static char CodeOf(TileType type)

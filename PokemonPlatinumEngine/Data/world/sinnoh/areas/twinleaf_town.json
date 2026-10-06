@@ -30,8 +30,8 @@
     { "x": 106, "z": 885, "to": "twinleaf_town_southwest_house", "toWarp": 0 }
   ],
   "objects": [
-    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "wander_around", "x": 119, "z": 878, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "6" },
-    { "id": "collector", "looks": "collector", "movement": "look_around", "x": 108, "z": 889, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "5" },
+    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "wander_around", "x": 119, "z": 878, "facing": 2, "rangeX": 1, "rangeZ": 0, "y": 1, "script": "6" },
+    { "id": "collector", "looks": "collector", "movement": "look_around", "x": 108, "z": 889, "facing": 0, "rangeX": 0, "rangeZ": 2, "y": 1, "script": "5" },
     { "id": "rival", "looks": "barry", "movement": "look_south", "x": 105, "z": 875, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TWINLEAF_TOWN_RIVAL", "script": "0" },
     { "id": "guitarist", "looks": "guitarist", "movement": "look_north_west_and_east", "x": 108, "z": 869, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" },
     { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 112, "z": 878, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "7" },

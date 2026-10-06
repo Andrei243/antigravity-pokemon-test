@@ -49,6 +49,8 @@ public enum PropType
     Crates,
     CoalHeap,
     Hedge,
+    /// <summary>A raised bed of flowers in a kerb of pale stone (Amity Square).</summary>
+    FlowerBed,
     /// <summary>A stone pillar as tall as its model (<see cref="Prop.Height"/>).</summary>
     Column,
     Topiary,

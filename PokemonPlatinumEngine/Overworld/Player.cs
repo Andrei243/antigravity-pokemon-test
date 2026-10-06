@@ -398,15 +398,16 @@ public class Player
         modeAfter = step.Mode;
         movingDir = dir;
         stepKind = step.Kind;
-        // A hop over a ledge takes as long as a step; a climb takes as long as the tiles it covers
-        stepRate = step.Kind == StepKind.Climb ? speed / tiles : speed;
+        // A hop over a ledge takes as long as a step; a climb takes as long as the tiles it covers, and a jump from
+        // a ramp, which flies, two thirds as long
+        stepRate = step.Kind switch { StepKind.Climb => speed / tiles, StepKind.Jump => speed * 1.5f / tiles, _ => speed };
         stride = speed;
-        hopArc = step.Kind switch { StepKind.Hop => 16f, StepKind.Land => 9f, _ => 0f };
+        hopArc = step.Kind switch { StepKind.Hop => 16f, StepKind.Land => 9f, StepKind.Jump => 8f + 6f * tiles, _ => 0f };
         IsHoppingLedge = hopArc > 0f;
         IsSliding = sliding;
         IsMoving = true;
         moveProgress = 0f;
-        if (step.Kind == StepKind.Hop) AudioManager.PlaySound("ledge");
+        if (step.Kind is StepKind.Hop or StepKind.Jump) AudioManager.PlaySound("ledge");
         else if (Mode != TravelMode.Surfing && SoundBank.StepSound(map.BehaviourAt(step.X, step.Y)) is { } footfall) AudioManager.PlaySound(footfall);
     }
 

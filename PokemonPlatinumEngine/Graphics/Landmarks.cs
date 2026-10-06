@@ -89,6 +89,16 @@ internal static class Landmarks
                 kit.Box(3, w - 3, 6, Math.Max(14, d - 4), 0, 20, top, front, side, side);
                 return true;
             }
+            case PropType.FlowerBed:
+            {
+                // A kerb of pale stone round a bed of flowers, knee high
+                int bw = w - 6, bd = Math.Max(10, d - 10);
+                var top = kit.Face($"flowerbed.top.{bw}x{bd}", bw, bd, PaintFlowerBed);
+                var front = kit.Face($"flowerbed.front.{bw}", bw, 12, c => Pix.Raised(c, 0, 0, c.Width, c.Height, PaleStone));
+                var side = kit.Face($"flowerbed.side.{bd}", bd, 12, c => Pix.Raised(c, 0, 0, c.Width, c.Height, PaleStone));
+                kit.Box(3, w - 3, 6, 6 + bd, 0, 12, top, front, side, side);
+                return true;
+            }
             case PropType.Column:
                 Column(kit, prop, w, d);
                 return true;
@@ -430,6 +440,26 @@ internal static class Landmarks
                 c.Rect(x, y, 5, 2, Leaf);
         c.HLine(0, 0, w, LeafLight);
         c.HLine(0, h - 1, w, Rgb(30, 84, 56));
+    }
+
+    /// <summary>The top of a flower bed: a rim of the kerb round dark soil set with flowers in rows, red, yellow, white and pink by turns.</summary>
+    private static void PaintFlowerBed(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        c.Rect(0, 0, w, h, PaleStone.Base);
+        c.Rect(2, 2, w - 4, h - 4, Rgb(96, 70, 52));
+        c.HLine(0, 0, w, PaleStone.Light);
+        c.HLine(0, h - 1, w, PaleStone.Dark);
+        Color[] petals = { Rgb(232, 76, 86), Rgb(246, 210, 76), Rgb(248, 246, 240), Rgb(240, 140, 186) };
+        int row = 0;
+        for (int y = 4; y + 3 <= h - 2; y += 5, row++)
+            for (int x = 4 + (row % 2) * 3; x + 4 <= w - 2; x += 6)
+            {
+                // Each flower two texels square, its leaves two wide under it: nothing a texel on its own
+                var petal = petals[(x / 6 + row) % petals.Length];
+                c.Rect(x, y, 2, 2, petal);
+                c.Rect(x + 1, y + 2, 2, 1, Leaf);
+            }
     }
 
     // ------------------------------------------------------------------ sprites

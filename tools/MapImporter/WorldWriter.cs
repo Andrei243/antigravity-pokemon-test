@@ -183,6 +183,7 @@ public sealed class WorldWriter
                 Movement = Trim(o.MovementType, "MOVEMENT_TYPE_", "").ToLowerInvariant(),
                 X = o.X,
                 Z = o.Z,
+                Y = o.Y > 0 ? o.Y : null,
                 Facing = o.InitialDir,
                 RangeX = o.MovementRangeX,
                 RangeZ = o.MovementRangeZ,

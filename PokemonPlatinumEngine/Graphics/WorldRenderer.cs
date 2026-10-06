@@ -708,7 +708,7 @@ public sealed class WorldRenderer
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
             actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
-                new Vector3(nx, Relief.At(map, nx, nz) - SinkAt(map, nx, nz), nz), Player.YawOf(npc.Facing), pose));
+                new Vector3(nx, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz), nz), Player.YawOf(npc.Facing), pose));
         }
 
         if (player == null) return;
@@ -794,7 +794,7 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            float ground = Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f);
+            float ground = npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f);
             if (npc.HasSpottedPlayer && npc.ExclamationTimer > 0f)
                 Bubble(EmoteBubble.Exclaim, TrainerApproach.ExclaimTime - npc.ExclamationTimer, npc.DrawX, npc.DrawY, ground);
             else if (npc.BubbleTimer > 0f && npc.Bubble != EmoteBubble.None && InSight(npc))
@@ -986,7 +986,7 @@ public sealed class WorldRenderer
         {
             // (An item's ball has a smaller patch under it than a person)
             if (!npc.IsPCTerminal && InSight(npc))
-                Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f), npc.IsItemBall ? 0.6f : 1f);
+                Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f), npc.IsItemBall ? 0.6f : 1f);
         }
         if (withPlayer) Blob(px, pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 

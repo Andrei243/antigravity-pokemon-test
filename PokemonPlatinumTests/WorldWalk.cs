@@ -6,7 +6,8 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// The game walked through from where it starts: every tile of every map that a player can come to who has
 /// everything the field can ask for. They walk by the field's own rules (<see cref="FieldMovement"/>: ledges the
-/// way they face, cliffs, bridges), set out onto water and ride it, climb waterfalls and rock faces, clear the
+/// way they face, cliffs, bridges), set out onto water and ride it, ride the Bicycle (jumping its ramps, up muddy
+/// slopes), climb waterfalls and rock faces, clear the
 /// three obstacles (a small tree, a cracked rock, a boulder to push), pick up whatever item lies in their way, and
 /// go through every warp to the map behind it. The world is no longer one place with one way through it: a cave lies between Route 204's two
 /// halves, and a warp reached only by Surf is still reached.
@@ -66,6 +67,19 @@ internal static class WorldWalk
                 {
                     Visit(map, step.X, step.Y, step.Mode, step.Height, arrived: false);
                     continue;
+                }
+                // On the Bicycle, in either gear, and off it again where it stops: a ramp is jumped, a muddy slope climbed
+                if (mode == TravelMode.OnFoot)
+                {
+                    bool rode = false;
+                    foreach (bool fast in new[] { true, false })
+                    {
+                        var ride = FieldMovement.Step(map, x, y, way, new Walker(TravelMode.Cycling, height, FastGear: fast, Moves: Everything));
+                        if (!ride.Moves) continue;
+                        Visit(map, ride.X, ride.Y, TravelMode.OnFoot, ride.Height, arrived: false);
+                        rode = true;
+                    }
+                    if (rode) continue;
                 }
 
                 var (dx, dy) = FieldMovement.Delta(way);

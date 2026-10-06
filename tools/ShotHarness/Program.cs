@@ -2302,7 +2302,20 @@ if (Run("world"))
         ("w54_floaroma", "Sinnoh", 178, 661, Direction.Up), ("w55_floaroma_shop", "Sinnoh", 180, 654, Direction.Up),
         ("w56_meadow", "FloaromaMeadow", 30, 30, Direction.Up), ("w57_meadow_house", "FloaromaMeadow", 39, 47, Direction.Up),
         ("w58_route205", "Sinnoh", 210, 632, Direction.Up), ("w59_route205_north", "Sinnoh", 208, 600, Direction.Up),
-        ("w60_windworks", "Sinnoh", 243, 657, Direction.Up), ("w61_fuego", "Sinnoh", 169, 590, Direction.Up)
+        ("w60_windworks", "Sinnoh", 243, 657, Direction.Up), ("w61_fuego", "Sinnoh", 169, 590, Direction.Up),
+        // The centre (plan 01 · M6): Eterna Forest and Eterna City, the Cycling Road and Routes 206 to 208, Wayward
+        // Cave and Mt. Coronet's south, Hearthome City and Amity Square, Route 209, Solaceon Town and its ruins
+        ("w90_forest_way_in", "Sinnoh", 206, 583, Direction.Up), ("w91_eterna_forest", "EternaForest", 30, 82, Direction.Up),
+        ("w92_eterna_forest_deep", "EternaForest", 60, 68, Direction.Right), ("w93_old_chateau", "EternaForest", 74, 18, Direction.Up),
+        ("w94_route205_north", "Sinnoh", 270, 532, Direction.Right), ("w95_eterna", "Sinnoh", 310, 545, Direction.Up),
+        ("w96_eterna_statue", "Sinnoh", 327, 530, Direction.Up), ("w97_eterna_gate", "Sinnoh", 304, 566, Direction.Down),
+        ("w98_under_cycling_road", "Sinnoh", 299, 613, Direction.Up), ("w99_route206_south", "Sinnoh", 305, 695, Direction.Up),
+        ("wa0_wayward_cave", "WaywardCave1F", 42, 51, Direction.Up), ("wa1_route207", "Sinnoh", 325, 720, Direction.Right),
+        ("wa2_coronet", "MtCoronet1FSouth", 6, 8, Direction.Right), ("wa3_route208", "Sinnoh", 420, 722, Direction.Right),
+        ("wa4_hearthome", "Sinnoh", 475, 700, Direction.Up), ("wa5_hearthome_contest", "Sinnoh", 479, 694, Direction.Up),
+        ("wa6_amity_square", "AmitySquare", 11, 48, Direction.Up), ("wa7_amity_square_inside", "AmitySquare", 32, 30, Direction.Up),
+        ("wa8_route209", "Sinnoh", 530, 720, Direction.Right), ("wa9_solaceon", "Sinnoh", 570, 660, Direction.Up),
+        ("wb0_solaceon_ruins", "SolaceonRuinsRoom1", 5, 9, Direction.Up)
     };
     foreach (var (name, map, x, y, facing) in places)
     {
@@ -2318,6 +2331,9 @@ if (Run("world"))
     At("Sinnoh", 282, 759, Direction.Up); Frames(2); Shot("w71_oreburgh_night");
     At("Sinnoh", 302, 782, Direction.Down); Frames(2); Shot("w72_oreburgh_yard_night");
     At("Sinnoh", 178, 661, Direction.Up); Frames(2); Shot("w73_floaroma_night");
+    At("Sinnoh", 310, 545, Direction.Up); Frames(2); Shot("w75_eterna_night");
+    At("Sinnoh", 475, 700, Direction.Up); Frames(2); Shot("w76_hearthome_night");
+    At("Sinnoh", 570, 660, Direction.Up); Frames(2); Shot("w77_solaceon_night");
     // A cave's light ignores the clock: the same picture as by day
     At("OreburghGate1F", 8, 22, Direction.Right); Frames(2); Shot("w74_oreburgh_gate_night");
     engine.Settings.TimeOfDay = TimeOfDay.Day;

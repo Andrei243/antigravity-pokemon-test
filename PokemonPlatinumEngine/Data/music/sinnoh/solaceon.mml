@@ -1,0 +1,61 @@
+# Solaceon Town (the original's CITY06 role): the farming town on the plateau, with the Pokémon Day Care and the
+# old ruins under the hill. A homely G-major pastorale rocking gently in six-eight: a fiddling violin in a
+# siciliano's lilt over an accordion's soft after-beats and a bass swinging from root to fifth; the clarinet
+# takes the tune for a verse and hums along under it when it comes back. By night the ocarina and the horn over
+# a celesta's after-beats, like a music box. Original composition for this game.
+title Solaceon Town
+tempo 108
+meter 6/8
+reverb 0.3
+nighttempo 0.94
+
+track lead violin night=ocarina vol=0.86 pan=0.05 rev=0.3
+  r2. | r2. |
+  L o4 b8. o5 c16 d8 g4. | o5 e8. d16 c8 e4. | o5 d8. e16 d8 o4 b8 a8 g8 | o4 a4. r8 b8 o5 c8 |
+  o5 d8. e16 d8 g4. | o5 a8. g16 e8 c4. | o5 c8. o4 b16 a8 o5 d4 c8 | o4 b4 a8 g4. |
+  r2. | r2. | r2. | r2. |
+  o5 g8. f+16 e8 o4 b4. | o5 c8. d16 e8 a4. | o5 g8. f+16 e8 d4 c8 | o4 a4. r8 b8 o5 c8 |
+  o4 b8. o5 c16 d8 g4. | o5 e8. d16 c8 e4. | o5 d8. e16 d8 o4 b8 a8 g8 | o4 a4. r8 b8 o5 c8 |
+  o5 d8. e16 d8 g4 b8 | o6 c4. o5 a8 g8 e8 | o5 e8. d16 c8 o4 a4 o5 c8 | o4 b4 a8 g4. |
+
+track counter clarinet night=horn vol=0.55 pan=-0.3 rev=0.3
+  r2. | r2. |
+  L r2. | r2. | r2. | r2. |
+  r2. | r2. | r2. | r2. |
+  v118 o4 e8. f+16 g8 b4. | o5 c8. o4 b16 a8 g4. | o4 a8. b16 o5 c8 e4. | o5 d8. c16 o4 b8 a4. |
+  v80 o4 e2. | e2. | e4. f+4. | f+2. |
+  d2. | e2. | d2. | f+4. a4. |
+  g2. | g4. e4. | e4. f+4. | g2. |
+
+track squeeze accordion night=celesta vol=0.34 pan=0.25 rev=0.24
+  q6 o3 r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (g >c e)8 (g >c e)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  L r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (g >c e)8 (g >c e)8 r8 (g >c e)8 (g >c e)8 | r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (g >c e)8 (g >c e)8 r8 (g >c e)8 (g >c e)8 | r8 (a >c e)8 (a >c e)8 r8 (f+ a >c)8 (f+ a >c)8 | r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 |
+  r8 (g b >e)8 (g b >e)8 r8 (g b >e)8 (g b >e)8 | r8 (g >c e)8 (g >c e)8 r8 (g >c e)8 (g >c e)8 | r8 (a >c e)8 (a >c e)8 r8 (a >c e)8 (a >c e)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (g b >e)8 (g b >e)8 r8 (g b >e)8 (g b >e)8 | r8 (a >c e)8 (a >c e)8 r8 (a >c e)8 (a >c e)8 | r8 (g >c e)8 (g >c e)8 r8 (f+ a >d)8 (f+ a >d)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (g >c e)8 (g >c e)8 r8 (g >c e)8 (g >c e)8 | r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (g >c e)8 (g >c e)8 r8 (g >c e)8 (g >c e)8 | r8 (a >c e)8 (a >c e)8 r8 (f+ a >c)8 (f+ a >c)8 | r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 |
+
+track pad strings night=pad vol=0.24 pan=-0.1 rev=0.42
+  o3 (g b >d)2. | (g >c e)4. (f+ a >d)4. |
+  L (g b >d)2. | (g >c e)2. | (g b >d)2. | (f+ a >d)2. |
+  (g b >d)2. | (g >c e)2. | (a >c e)4. (f+ a >c)4. | (g b >d)2. |
+  (g b >e)2. | (g >c e)2. | (a >c e)2. | (f+ a >d)2. |
+  (g b >e)2. | (a >c e)2. | (g >c e)4. (f+ a >d)4. | (f+ a >d)2. |
+  (g b >d)2. | (g >c e)2. | (g b >d)2. | (f+ a >d)2. |
+  (g b >d)2. | (g >c e)2. | (a >c e)4. (f+ a >c)4. | (g b >d)2. |
+
+track bass bass vol=0.62 rev=0.08
+  o3 g4. d4. | c4. d4. |
+  L g4. d4. | c4. g4. | g4. d4. | d4. a4. |
+  g4. d4. | c4. g4. | a4. d4. | g4. d4. |
+  e4. b4. | c4. g4. | a4. e4. | d4. a4. |
+  e4. b4. | a4. e4. | c4. d4. | d4. a4. |
+  g4. d4. | c4. g4. | g4. d4. | d4. a4. |
+  g4. d4. | c4. g4. | a4. d4. | g4. d4. |
+
+track kick kit vol=0.45 rev=0.1
+  v70 r2. | r2. | L [ b4. v40 b4. v70 | ]24
+
+track shaker kit vol=0.32 pan=0.15 rev=0.15
+  v45 [ k8 v25 k8 k8 v38 k8 v25 k8 k8 v45 | ]2 L [ k8 v25 k8 k8 v38 k8 v25 k8 k8 v45 | ]24

@@ -586,6 +586,48 @@ public class FieldMovementTests
     }
 
     [Fact]
+    public void ABicyclesRampIsJumpedTheWayItFaces()
+    {
+        // A ramp facing east, blocked as the original's are, with a gap after it (PlayerAvatar_TileMove_BikeRampEast:
+        // JUMP_FARTHER, 4 × 12 = 48 pixels, three tiles, in top gear; JUMP_NEAR_SLOW, one tile, in low)
+        var map = Lawn(12, 9);
+        map.SetBehaviour(4, 4, TileBehavior.BikeRampEast);
+        map.SetSolid(4, 4, true);
+        map.SetSolid(5, 4, true);
+
+        AssertBlocked(Obstacle.Ramp, Step(map, 3, 4, East));
+        AssertBlocked(Obstacle.Ramp, Step(map, 3, 4, East, running: true));
+        AssertMoves(StepKind.Jump, 7, 4, Step(map, 3, 4, East, TravelMode.Cycling, fastGear: true));
+        // Low gear lands on the tile after it, which here is blocked: nowhere to land
+        AssertBlocked(Obstacle.Ramp, Step(map, 3, 4, East, TravelMode.Cycling));
+        map.SetSolid(5, 4, false);
+        AssertMoves(StepKind.Jump, 5, 4, Step(map, 3, 4, East, TravelMode.Cycling));
+
+        // From its far end and from the side it is a wall, on a Bicycle too
+        AssertBlocked(Obstacle.Ramp, Step(map, 5, 4, West, TravelMode.Cycling, fastGear: true));
+        AssertBlocked(Obstacle.Ramp, Step(map, 4, 3, South, TravelMode.Cycling, fastGear: true));
+
+        // A ramp facing west is jumped westward
+        map.SetBehaviour(8, 6, TileBehavior.BikeRampWest);
+        AssertMoves(StepKind.Jump, 5, 6, Step(map, 9, 6, West, TravelMode.Cycling, fastGear: true));
+        Assert.Equal(Direction.Left, FieldMovement.RampDirection(TileBehavior.BikeRampWest));
+        Assert.Null(FieldMovement.RampDirection(TileBehavior.TallGrass));
+    }
+
+    [Fact]
+    public void ThePlayerFliesOffARampAndLandsBeyondIt()
+    {
+        var map = Lawn(12, 9);
+        map.SetBehaviour(4, 4, TileBehavior.BikeRampEast);
+        map.SetSolid(4, 4, true);
+        var player = new Player(3, 4) { FastGear = true };
+        player.SetMode(TravelMode.Cycling);
+        Walk(player, map, East);
+        Assert.Equal((7, 4), (player.GridX, player.GridY));
+        Assert.True(player.JustLanded);
+    }
+
+    [Fact]
     public void AMuddySlopeIsOnlyClimbedInTheFastGear()
     {
         // A slope two tiles long, climbed northward
@@ -812,7 +854,7 @@ public class FieldMovementTests
         var all = Enum.GetValues<TileBehavior>();
         var ruled = all.Where(b => TileBehaviors.InGame(b).Support == BehaviourSupport.Ruled).ToHashSet();
         var waiting = all.Where(b => TileBehaviors.InGame(b).Support == BehaviourSupport.Waiting).ToHashSet();
-        Assert.Equal(35, ruled.Count);
+        Assert.Equal(37, ruled.Count);
         Assert.All(all, b => Assert.False(string.IsNullOrWhiteSpace(TileBehaviors.InGame(b).Note)));
 
         // Plain: ground like any other as far as a step goes, where only the blocked flag and the height matter

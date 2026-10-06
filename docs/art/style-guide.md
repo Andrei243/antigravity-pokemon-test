@@ -110,6 +110,8 @@ The world's own heights are for whoever walks: a mountainside nobody can set foo
 
 - **Rock nobody walks on stands up**: two tiles above the nearest ground that isn't such rock, or a lip of three quarters of a tile where open ground lies right behind it (to its north). It shows the rock face of "Relief" to the south, east and west, and its top is the rock ground of "Ground". Rock that is walked on (a mountain path, Oreburgh's approach) stays at its own height.
 - **The mouth of a cave** is a dark hollow at the level of the ground, in the rock that stands round it: `24,20,30` with patches of `30,26,38`, a rim of `12,10,18`. It lies where the original paints its own dark (the importer knows the texture by name): behind the tile that is the way in (Oreburgh Gate, entered from the side), or round it, in which case the way in is as dark as the rest and still walked on (the Ravaged Path, entered northward: a slot in the foot of a rock face).
+- **The way into a forest** (plan 01 · M6: Eterna Forest, Floaroma Meadow) is the dark under the trees at the edge of the treeline, at the level of the ground: `34,40,30` with patches of `42,50,36`, a rim of `20,24,18`. It lies where the original paints its own (`fenter`); as with a cave's mouth, the dark is walked on where it is the way in and blocks where it is the shade beyond, and no tree grows in it.
+- **A Bicycle's ramp** (Wayward Cave, Oreburgh Gate) is a short run of steps up to the lip it is jumped from: blocked on foot, jumped on a Bicycle going its way (three tiles on in top gear, one in low).
 - **Don't** raise rock one walks on, grow a tree in a cave's mouth, or leave a mountain as a grey floor.
 
 

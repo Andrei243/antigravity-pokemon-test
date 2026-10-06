@@ -45,7 +45,9 @@ public enum StepKind
     /// <summary>From the water onto the shore: one tile on, and on foot again.</summary>
     Land,
     /// <summary>Up or down a waterfall or a rock face, to the first tile past it.</summary>
-    Climb
+    Climb,
+    /// <summary>Off a Bicycle's ramp, through the air to the tile it lands on.</summary>
+    Jump
 }
 
 /// <summary>Why a step was refused, for what the game does about it (a bump, an offer to surf).</summary>
@@ -73,7 +75,9 @@ public enum Obstacle
     /// <summary>A plank only a Bicycle crosses.</summary>
     BicyclesOnly,
     /// <summary>Ground a Bicycle can't be ridden on: snow, mud, grass taller than the rider.</summary>
-    NoBicycles
+    NoBicycles,
+    /// <summary>A Bicycle's ramp: a wall on foot, from the side and from its far end, or with nowhere to land.</summary>
+    Ramp
 }
 
 /// <summary>Whoever is taking a step: how they travel, the height they stand at, and what they can do.</summary>
@@ -141,6 +145,14 @@ public static class FieldMovement
     };
 
     /// <summary>A plank for Bicycles, and whether it runs north to south; null for anything else.</summary>
+    /// <summary>The way a Bicycle's ramp is jumped, or null for any other tile.</summary>
+    public static Direction? RampDirection(TileBehavior behaviour) => behaviour switch
+    {
+        TileBehavior.BikeRampEast => Direction.Right,
+        TileBehavior.BikeRampWest => Direction.Left,
+        _ => null
+    };
+
     public static bool? BikePlankRunsNorthSouth(TileBehavior behaviour) => behaviour switch
     {
         TileBehavior.BikeBridgeNorthSouth or TileBehavior.BikeBridgeNorthSouthOverSand => true,
@@ -200,10 +212,21 @@ public static class FieldMovement
             return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Walk, TravelMode.OnFoot, Obstacle.None);
         }
 
+        // A ramp is jumped the way it faces on a Bicycle, from the tile before it: onto it and three tiles on in top
+        // gear, one in low (PlayerAvatar_TileMove_BikeRampEast and West: JUMP_FARTHER, JUMP_NEAR_SLOW)
+        if (RampDirection(there) is { } launch)
+        {
+            if (walker.Mode != TravelMode.Cycling || dir != launch) return No(Obstacle.Ramp);
+            int reach = walker.FastGear ? 3 : 1;
+            int lx = nx + dx * reach, ly = ny + dy * reach;
+            if (!map.IsWalkable(lx, ly) || map.NpcIn(lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height) != null) return No(Obstacle.Ramp);
+            return new FieldStep(StepKind.Jump, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, PaceOn(here, walker), walker.Mode, Obstacle.None);
+        }
+
         if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
-        if (map.GetNpcAt(nx, ny) != null) return No(Obstacle.Person);
 
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
+        if (map.NpcIn(nx, ny, height) != null) return No(Obstacle.Person);
         if (MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
         bool water = TileBehaviors.IsSurfable(there) && !onDeck;
 

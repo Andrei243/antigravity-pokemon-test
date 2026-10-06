@@ -42,9 +42,9 @@
     { "x": 171, "z": 705, "to": "ravaged_path", "toWarp": 0 }
   ],
   "objects": [
-    { "id": "lass_sarah", "looks": "lass", "movement": "look_north_and_east", "x": 172, "z": 725, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_SARAH" },
-    { "id": "lass_samantha", "looks": "lass", "movement": "look_south", "x": 171, "z": 712, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_SAMANTHA" },
-    { "id": "youngster_tyler", "looks": "youngster", "movement": "look_west_and_east", "x": 167, "z": 722, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_TYLER" },
+    { "id": "lass_sarah", "looks": "lass", "movement": "look_north_and_east", "x": 172, "z": 725, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_SARAH" },
+    { "id": "lass_samantha", "looks": "lass", "movement": "look_south", "x": 171, "z": 712, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_SAMANTHA" },
+    { "id": "youngster_tyler", "looks": "youngster", "movement": "look_west_and_east", "x": 167, "z": 722, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_TYLER" },
     { "id": "youngster_south", "looks": "youngster", "movement": "wander_west_and_east", "x": 173, "z": 706, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "1" },
     { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 174, "z": 721, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
     { "id": "signboard", "looks": "signboard", "movement": "none", "x": 170, "z": 706, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },

@@ -472,7 +472,8 @@ public class Map
         return prop;
     }
 
-    public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y));
+    /// <summary>A counter or a table one talks across: a room's own, or a tile of the world that the original marks as one (Amity Square's gates).</summary>
+    public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y)) || (behaviours != null && BehaviourAt(x, y) == TileBehavior.Counter);
 
     public void SetSolid(int x, int y, bool isSolid)
     {
@@ -525,6 +526,13 @@ public class Map
     {
         return NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y);
     }
+
+    /// <summary>
+    /// Whoever stands on a tile at about a height: someone on a bridge's deck is not in the way of anyone on the
+    /// ground under it, nor the other way round.
+    /// </summary>
+    public NPC? NpcIn(int x, int y, float height) =>
+        NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y && MathF.Abs((n.Level ?? HeightAt(x, y)) - height) < FieldMovement.StepLimit);
 
     /// <summary>Platinum's rate for a small map's own wild Pokémon (see <see cref="EncounterSteps"/>).</summary>
     public int EncounterRate { get; set; } = 30;

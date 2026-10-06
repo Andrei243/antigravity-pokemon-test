@@ -264,7 +264,7 @@ public static class TileBehaviors
 
         TileBehavior.LongLedgeNorth or TileBehavior.LongLedgeSouth or TileBehavior.LongLedgeWest or TileBehavior.LongLedgeEast
             => (BehaviourSupport.Waiting, "The Distortion World's double jumps (plan 01 · M8)."),
-        TileBehavior.BikeRampEast or TileBehavior.BikeRampWest => (BehaviourSupport.Waiting, "The jump from a ramp (plan 01 · M6)."),
+        TileBehavior.BikeRampEast or TileBehavior.BikeRampWest => (BehaviourSupport.Ruled, "On a Bicycle going its way, jumped: three tiles on in top gear, one in low. A wall on foot (`FieldMovement.RampDirection`)."),
         TileBehavior.PastoriaGymHigh or TileBehavior.PastoriaGymMiddle or TileBehavior.PastoriaGymLow or TileBehavior.MovingFloor
             => (BehaviourSupport.Waiting, "Floors whose height the game moves (plan 01 · M9)."),
         TileBehavior.StairsEast or TileBehavior.StairsWest or TileBehavior.EntranceEast or TileBehavior.EntranceWest

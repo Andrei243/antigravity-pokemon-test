@@ -2,8 +2,8 @@
   "area": "route_205_south",
   "bgmTrack": "sinnoh/route205",
   "trees": "Pine",
-  // Eterna Forest (plan 01 · M6); the house on the route has no room yet (plan 01 · M11)
-  "locked": [ 0, 1, 2 ],
+  // The house on the route has no room yet (plan 01 · M11)
+  "locked": [ 2 ],
   "people": {
     "bug_catcher": {
       "name": "Bug Catcher",

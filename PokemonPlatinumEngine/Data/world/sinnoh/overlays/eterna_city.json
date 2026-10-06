@@ -1,0 +1,84 @@
+{
+  "area": "eterna_city",
+  "bgmTrack": "sinnoh/eterna",
+  "trees": "Pine",
+  "architecture": "HalfTimber",
+  "doors": [
+    { "warp": 0, "map": "EternaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 1, "map": "EternaPokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 8, "to": "route_206", "toWarp": 4 },
+    { "warp": 9, "to": "route_206", "toWarp": 5 }
+  ],
+  // The cycle shop, Team Galactic's building, the condominiums, the houses, the herb shop and the Gym have no rooms yet (plan 01 · M11, M9)
+  "locked": [ 2, 3, 4, 5, 6, 7, 10, 11 ],
+  "people": {
+    "pokemon_breeder_m": {
+      "name": "Man",
+      "dialog": [
+        "The Gym here is a greenhouse inside, and every Pokémon in it is a Grass type.",
+        "Fire scorches them and Flying moves batter them. Bug, Ice and Poison do nicely too."
+      ]
+    },
+    "expert_m": {
+      "name": "Old Man",
+      "dialog": [
+        "On the east side of town stands a statue of a Pokémon from Sinnoh's oldest tales.",
+        "It was already old when my grandfather's grandfather was a boy. Go and have a look at it."
+      ]
+    },
+    "ninja_boy": {
+      "name": "Boy",
+      "dialog": [
+        "Shh! I'm hiding in the statue's shadow. Nobody has found me all day!",
+        "...Apart from you. Don't tell anyone."
+      ]
+    },
+    "bug_catcher_1": {
+      "name": "Bug Catcher",
+      "dialog": [
+        "The cycle shop's bicycles fold up small enough to go in your Bag. I want one so much!",
+        "On a bike you could race down the Cycling Road, south of town."
+      ]
+    },
+    "bug_catcher_2": {
+      "name": "Bug Catcher",
+      "dialog": [
+        "West of here is Route 205, and past it Eterna Forest.",
+        "Bug Pokémon by the hundred live in those woods. I'm in there every weekend!"
+      ]
+    },
+    "pokemon_breeder_f_1": {
+      "name": "Woman",
+      "dialog": [
+        "The herb shop at the top of town sells medicine made from plants.",
+        "It's cheap and it works, but it's so bitter that a Pokémon sulks at you for days afterwards."
+      ]
+    },
+    "ace_trainer_f": {
+      "name": "Trainer",
+      "dialog": [
+        "Have you met the Underground Man? He lives right beside the Pokémon Center.",
+        "They say he has dug tunnels under half of Sinnoh, and he'll tell you about every one."
+      ]
+    },
+    "pokemon_breeder_f_2": {
+      "name": "Woman",
+      "dialog": [
+        "Through the gate to the south is the Cycling Road: Route 206.",
+        "You'll want a bicycle. Nobody gets down that road on foot."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost_west": "Eterna City\nOld stones, green streets, and a statue older than anyone can say.",
+    "map_signpost_east": "Eterna City\nOld stones, green streets, and a statue older than anyone can say.",
+    "gym_signpost": "Eterna City Pokémon Gym\nLeader: Gardenia\nGreen fingers and a will of iron!",
+    "signboard_rad_rickshaws_cycle_shop": "Rad Rickshaw's Cycle Shop\nBicycles for every road in Sinnoh.",
+    "signboard_team_galactic_eterna_building": "Team Galactic Eterna Building\nVisitors by appointment only.",
+    "signboard_underground_mans_house": "Underground Man's House\nAsk here about the tunnels under Sinnoh.",
+    "signboard_eterna_condominiums": "Eterna Condominiums\nQuiet homes in the heart of town."
+  }
+}

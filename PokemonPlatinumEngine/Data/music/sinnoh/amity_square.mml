@@ -1,0 +1,54 @@
+# Amity Square in Hearthome City (the original's D_KOUEN role): a carefree B-flat stroll in six-eight through the
+# park, the clarinet skipping along with a piccolo chirping at its heels like a Pokémon beside its trainer, the
+# marimba and the tuba keeping the bounce. Original composition for this game.
+title Amity Square
+tempo 120
+meter 6/8
+reverb 0.28
+night none
+
+track lead clarinet vol=0.74 pan=0 rev=0.28
+  L o4 f4 b-8 o5 d4 f8 | o5 e-4. c4. | o5 d8 c+8 d8 o4 b-4 a8 | o4 b-4. r4. |
+  o4 f4 b-8 o5 d4 f8 | o5 g4. f8 d8 o4 b-8 | o5 c4 e8 g4 b-8 | o5 a4 g8 f4 r8 |
+  o4 f4 b-8 o5 d4 f8 | o5 g4. b-4. | o5 a8 g+8 a8 o6 c4 o5 a8 | o5 b-4. r4. |
+  o5 g4 f8 e-4 d8 | o5 g-4. f4. | o5 e-8 d8 c8 o4 a4 f8 | o4 b-4. r4. |
+  o5 b-8 a8 b-8 g4 e-8 | o6 c8 o5 b8 o6 c8 o5 a4 f8 | o5 a8 g+8 a8 f4 d8 | o5 b-4. a4. |
+  o5 g8 f+8 g8 e-4 c8 | o5 f8 e8 f8 d4 c8 | o5 d-8 c8 d-8 o4 b-4 g-8 | o5 e-4 d8 c4 o4 a8 |
+
+track chirps piccolo vol=0.34 pan=0.35 rev=0.3
+  L r2. | r2. | r2. | r4. o5 f16 g16 f8 d8 |
+  r2. | r2. | r2. | r2. |
+  r2. | r2. | r2. | r4. o5 b-16 o6 c16 o5 b-8 f8 |
+  r2. | r2. | r2. | r4. o5 f16 a16 b-8 o6 d8 |
+  o5 b-8 a8 b-8 g4 e-8 | o6 c8 o5 b8 o6 c8 o5 a4 f8 | o5 a8 g+8 a8 f4 d8 | r2. |
+  o5 g8 f+8 g8 e-4 c8 | o5 f8 e8 f8 d4 c8 | o5 d-8 c8 d-8 o4 b-4 g-8 | r2. |
+
+track marimba marimba vol=0.42 pan=-0.3 rev=0.22
+  L r4 o4 (d f b-)8 r4 (d f b-)8 | r4 (e- g b-)8 r4 (e- g b-)8 | r4 (c f a)8 r4 (c f a)8 | r4 (d f b-)8 r4 (d f b-)8 |
+  r4 (d f b-)8 r4 (d f b-)8 | r4 (d g b-)8 r4 (d g b-)8 | r4 (e g b-)8 r4 (e g b-)8 | r4 (e- f a)8 r4 (e- f a)8 |
+  r4 (d f b-)8 r4 (d f b-)8 | r4 (e- g b-)8 r4 (e- g b-)8 | r4 (c f a)8 r4 (c f a)8 | r4 (d f b-)8 r4 (d f b-)8 |
+  r4 (e- g b-)8 r4 (e- g b-)8 | r4 (e- g- b-)8 r4 (e- g- b-)8 | r4 (e- f a)8 r4 (e- f a)8 | r4 (d f b-)8 r4 (d f b-)8 |
+  r4 (e- g b-)8 r4 (e- g b-)8 | r4 (c f a)8 r4 (c f a)8 | r4 (d f a)8 r4 (d f a)8 | r4 (d g b-)8 r4 (d g b-)8 |
+  r4 (c e- g)8 r4 (c e- g)8 | r4 (c f a)8 r4 (c f a)8 | r4 (d- g- b-)8 r4 (d- g- b-)8 | r4 (e- f a)8 r4 (e- f a)8 |
+
+track pad strings vol=0.22 pan=0.2 rev=0.35
+  L o4 (d f b-)2. | (e- g b-)2. | (c f a)2. | (d f b-)2. |
+  (d f b-)2. | (d g b-)2. | (e g b-)2. | (e- f a)2. |
+  (d f b-)2. | (e- g b-)2. | (c f a)2. | (d f b-)2. |
+  (e- g b-)2. | (e- g- b-)2. | (e- f a)2. | (d f b-)2. |
+  (e- g b-)2. | (c f a)2. | (d f a)2. | (d g b-)2. |
+  (c e- g)2. | (c f a)2. | (d- g- b-)2. | (e- f a)2. |
+
+track bass tuba vol=0.56 rev=0.1
+  L o3 b-4 r8 f4 r8 | o3 e-4 r8 b-4 r8 | o3 f4 r8 c4 r8 | o3 b-4 r8 f4 r8 |
+  o3 b-4 r8 f4 r8 | o3 g4 r8 d4 r8 | o3 c4 r8 g4 r8 | o3 f4 r8 c4 r8 |
+  o3 b-4 r8 f4 r8 | o3 e-4 r8 b-4 r8 | o3 f4 r8 c4 r8 | o3 b-4 r8 f4 r8 |
+  o3 e-4 r8 b-4 r8 | o3 e-4 r8 b-4 r8 | o3 f4 r8 c4 r8 | o3 b-4 r8 f4 r8 |
+  o3 e-4 r8 b-4 r8 | o3 f4 r8 c4 r8 | o3 d4 r8 a4 r8 | o3 g4 r8 d4 r8 |
+  o3 c4 r8 g4 r8 | o3 f4 r8 c4 r8 | o3 g-4 r8 d-4 r8 | o3 f4 r8 c4 r8 |
+
+track drums kit vol=0.34 rev=0.15
+  v76 L [ [ b4 r8 s4 r8 | ]7 b4 r8 s8 s16 s16 s8 | ]3
+
+track shaker kit vol=0.26 pan=0.2 rev=0.1
+  L [ v44 k8 v26 k8 k8 v44 k8 v26 k8 k8 | ]24

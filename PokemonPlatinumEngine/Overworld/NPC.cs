@@ -11,6 +11,12 @@ public class NPC
     public string Name { get; set; } = "Townsperson";
     public string NpcType { get; set; } = "Trainer"; // "Rowan", "Rival", "Nurse", "Clerk", "Youngster", "Lass", "StarterBriefcase"
     public int GridX { get; set; }
+
+    /// <summary>
+    /// The height they stand at where it isn't the ground's: on a bridge's deck, over ground others walk (plan 01 ·
+    /// M6). Null on the ground. Only someone at about that height runs into them or speaks to them.
+    /// </summary>
+    public float? Level { get; set; }
     public int GridY { get; set; }
     public Direction Facing { get; set; } = Direction.Down;
     public List<string> DialogLines { get; set; } = new();

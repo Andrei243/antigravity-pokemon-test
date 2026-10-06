@@ -17,6 +17,8 @@ public static class Cover
     private static readonly (Regex Pattern, TerrainCover? Cover)[] Rules = new (string, TerrainCover?)[]
     {
         ("^dhole", TerrainCover.CaveMouth),                      // the dark in the mouth of a cave ("dungeon hole")
+        ("^fenter", TerrainCover.ForestMouth),                   // the dark under the trees where a forest is entered
+        ("^dun_jump", TerrainCover.Steps),                       // the run up to a Bicycle's ramp
         ("shadow|kage", null),                                   // shadows painted over the ground
         ("^puddle", null),                                       // the behaviour already says puddle
         ("tree3|^bf_tree", TerrainCover.Broadleaf),              // the Battle Zone's forests
@@ -91,6 +93,8 @@ public static class Cover
                 if (!solid && (ground == TerrainCover.Walkway || above == TerrainCover.Walkway)) { result[i] = TerrainCover.Walkway; continue; }
                 // The mouth of a cave is its dark, whether the tile is the hole in the rock or the way in
                 if (ground == TerrainCover.CaveMouth || above == TerrainCover.CaveMouth) { result[i] = TerrainCover.CaveMouth; continue; }
+                // And so is the way into a forest
+                if (ground == TerrainCover.ForestMouth || above == TerrainCover.ForestMouth) { result[i] = TerrainCover.ForestMouth; continue; }
                 if (OfBehaviour((TileBehavior)land.Behaviour(x, z)) is { } fromBehaviour) { result[i] = fromBehaviour; continue; }
                 // Flowers stand over the lawn they grow in (Floaroma Meadow is a lawn with a sheet of flowers
                 // over every tile of it): the lawn is the ground, the flowers are what is seen

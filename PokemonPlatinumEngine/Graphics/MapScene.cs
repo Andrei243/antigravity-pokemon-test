@@ -42,6 +42,11 @@ internal sealed class MapScene
     public const float ZoomedFovYDeg = 20.92f;
     public const float ZoomedDistance = 515.456f / 16f;
 
+    // The outside of Mt. Coronet's south face: further off and looking down steeply (CAMERA_TYPE_MT_CORONET_EXT_SOUTH)
+    public const float CoronetSouthPitchDeg = 73.11f;
+    public const float CoronetSouthFovYDeg = 12.67f;
+    public const float CoronetSouthDistance = 866.554f / 16f;
+
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
     public const float IndoorFovYDeg = 30f;
@@ -109,6 +114,7 @@ internal sealed class MapScene
         {
             FieldCamera.Cave => new FieldView(CavePitchDeg, CaveFovYDeg, CaveDistance),
             FieldCamera.ZoomedIn => new FieldView(ZoomedPitchDeg, ZoomedFovYDeg, ZoomedDistance),
+            FieldCamera.CoronetSouth => new FieldView(CoronetSouthPitchDeg, CoronetSouthFovYDeg, CoronetSouthDistance),
             _ => FieldView.Outdoor
         };
     }

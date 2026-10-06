@@ -886,7 +886,9 @@ public partial class GameEngine
         int targetY = player.GridY + dy;
 
         // Check NPC interaction; reception and shop counters can be talked across
-        var npc = currentMap.GetNpcAt(targetX, targetY);
+        // Someone on a bridge's deck is out of reach from the ground under it
+        float standing = player.HeightOn(currentMap);
+        var npc = currentMap.NpcIn(targetX, targetY, currentMap.SurfaceAt(targetX, targetY, standing).Height);
         if (npc == null && currentMap.IsCounter(targetX, targetY))
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);
