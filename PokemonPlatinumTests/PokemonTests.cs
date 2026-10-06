@@ -691,7 +691,11 @@ public class PokemonTests
             "Sableye", "Mawile", "Aron", "Lairon", "Aggron", "Electrike", "Manectric", "Plusle", "Minun", "Volbeat", "Illumise",
             "Gulpin", "Swalot", "Carvanha", "Sharpedo", "Wailmer", "Wailord", "Numel", "Camerupt", "Torkoal", "Spoink", "Grumpig",
             "Spinda", "Trapinch", "Vibrava", "Flygon", "Cacnea", "Cacturne", "Zangoose", "Seviper", "Lunatone", "Solrock", "Corphish",
-            "Crawdaunt", "Baltoy", "Claydol", "Lileep", "Cradily", "Anorith", "Armaldo"
+            "Crawdaunt", "Baltoy", "Claydol", "Lileep", "Cradily", "Anorith", "Armaldo",
+            // Hoenn's third batch, Castform to Deoxys
+            "Castform", "Kecleon", "Shuppet", "Banette", "Wynaut", "Spheal", "Sealeo", "Walrein", "Clamperl", "Huntail", "Gorebyss",
+            "Relicanth", "Luvdisc", "Bagon", "Shelgon", "Salamence", "Beldum", "Metang", "Metagross", "Regirock", "Regice", "Registeel",
+            "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
@@ -723,6 +727,15 @@ public class PokemonTests
         var johto = PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 152 and <= 251).Select(s => s.Name).ToList();
         Assert.Equal(100, johto.Count);
         Assert.All(johto, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
+    }
+
+    [Fact]
+    public void EverySpeciesOfHoennIsHandBuilt()
+    {
+        // Plan 03, decision 3: the 107 Hoenn species outside the Sinnoh Pokédex, in three batches, and the 28 inside it
+        var hoenn = PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 252 and <= 386).Select(s => s.Name).ToList();
+        Assert.Equal(135, hoenn.Count);
+        Assert.All(hoenn, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
     }
 
     private static void Tick(BattleEngine battle, float seconds)

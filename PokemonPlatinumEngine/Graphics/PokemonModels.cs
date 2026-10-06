@@ -581,14 +581,18 @@ internal static partial class PokemonModels
         "Sableye", "Mawile", "Aron", "Lairon", "Aggron", "Electrike", "Manectric", "Plusle", "Minun", "Volbeat", "Illumise",
         "Gulpin", "Swalot", "Carvanha", "Sharpedo", "Wailmer", "Wailord", "Numel", "Camerupt", "Torkoal", "Spoink", "Grumpig",
         "Spinda", "Trapinch", "Vibrava", "Flygon", "Cacnea", "Cacturne", "Zangoose", "Seviper", "Lunatone", "Solrock", "Corphish",
-        "Crawdaunt", "Baltoy", "Claydol", "Lileep", "Cradily", "Anorith", "Armaldo"
+        "Crawdaunt", "Baltoy", "Claydol", "Lileep", "Cradily", "Anorith", "Armaldo",
+        // Hoenn's third batch, Castform to Deoxys
+        "Castform", "Kecleon", "Shuppet", "Banette", "Wynaut", "Spheal", "Sealeo", "Walrein", "Clamperl", "Huntail", "Gorebyss",
+        "Relicanth", "Luvdisc", "Bagon", "Shelgon", "Salamence", "Beldum", "Metang", "Metagross", "Regirock", "Regice", "Registeel",
+        "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"
     };
 
     /// <summary>
     /// Forms with a hand-built model of their own: every form of a hand-built species, Platinum's own (Rotom's
-    /// appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters) and the later
-    /// games' (the regional forms, Dialga's and Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps
-    /// and costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner
+    /// appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters, Castform's
+    /// weathers, Deoxys's formes) and the later games' (the regional forms, Dialga's and Palkia's Origin Formes, the
+    /// Megas, the Primal Kyogre and Groudon, the Gigantamax forms, Pikachu's caps and costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner
     /// Pikachu and Eevee) show its model.
     /// </summary>
     public static readonly string[] Forms =
@@ -598,6 +602,7 @@ internal static partial class PokemonModels
         "Unown-B", "Unown-C", "Unown-D", "Unown-E", "Unown-F", "Unown-G", "Unown-H", "Unown-I", "Unown-J", "Unown-K",
         "Unown-L", "Unown-M", "Unown-N", "Unown-O", "Unown-P", "Unown-Q", "Unown-R", "Unown-S", "Unown-T", "Unown-U",
         "Unown-V", "Unown-W", "Unown-X", "Unown-Y", "Unown-Z", "Unown-Exclamation", "Unown-Question",
+        "Castform-Sunny", "Castform-Rainy", "Castform-Snowy", "Deoxys-Attack", "Deoxys-Defense", "Deoxys-Speed",
         "Rattata-Alola", "Raticate-Alola", "Raichu-Alola", "Sandshrew-Alola", "Sandslash-Alola", "Vulpix-Alola", "Ninetales-Alola",
         "Diglett-Alola", "Dugtrio-Alola", "Meowth-Alola", "Meowth-Galar", "Persian-Alola", "Growlithe-Hisui", "Arcanine-Hisui",
         "Geodude-Alola", "Graveler-Alola", "Golem-Alola", "Ponyta-Galar", "Rapidash-Galar", "Slowpoke-Galar", "Slowbro-Galar",
@@ -609,7 +614,8 @@ internal static partial class PokemonModels
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
         "Mewtwo-Mega-Y", "Meganium-Mega", "Feraligatr-Mega", "Ampharos-Mega", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Skarmory-Mega", "Houndoom-Mega", "Tyranitar-Mega", "Sceptile-Mega", "Blaziken-Mega", "Swampert-Mega", "Gardevoir-Mega", "Sableye-Mega", "Mawile-Mega", "Aggron-Mega",
-        "Medicham-Mega", "Manectric-Mega", "Sharpedo-Mega", "Camerupt-Mega", "Altaria-Mega", "Chimecho-Mega", "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Staraptor-Mega", "Lopunny-Mega",
+        "Medicham-Mega", "Manectric-Mega", "Sharpedo-Mega", "Camerupt-Mega", "Altaria-Mega", "Banette-Mega", "Chimecho-Mega", "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Salamence-Mega", "Metagross-Mega", "Latias-Mega", "Latios-Mega", "Kyogre-Primal", "Groudon-Primal",
+        "Rayquaza-Mega", "Staraptor-Mega", "Lopunny-Mega",
         "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax",
@@ -1161,6 +1167,36 @@ internal static partial class PokemonModels
         "CRADILY" => Cradily(),
         "ANORITH" => Anorith(),
         "ARMALDO" => Armaldo(),
+        // Hoenn's third batch (PokemonModels.Hoenn3.cs)
+        "CASTFORM" => Castform(),
+        "KECLEON" => Kecleon(),
+        "SHUPPET" => Shuppet(),
+        "BANETTE" => Banette(),
+        "WYNAUT" => Wynaut(),
+        "SPHEAL" => Spheal(),
+        "SEALEO" => Sealeo(),
+        "WALREIN" => Walrein(),
+        "CLAMPERL" => Clamperl(),
+        "HUNTAIL" => Huntail(),
+        "GOREBYSS" => Gorebyss(),
+        "RELICANTH" => Relicanth(),
+        "LUVDISC" => Luvdisc(),
+        "BAGON" => Bagon(),
+        "SHELGON" => Shelgon(),
+        "SALAMENCE" => Salamence(),
+        "BELDUM" => Beldum(),
+        "METANG" => Metang(),
+        "METAGROSS" => Metagross(),
+        "REGIROCK" => Regirock(),
+        "REGICE" => Regice(),
+        "REGISTEEL" => Registeel(),
+        "LATIAS" => Latias(),
+        "LATIOS" => Latios(),
+        "KYOGRE" => Kyogre(),
+        "GROUDON" => Groudon(),
+        "RAYQUAZA" => Rayquaza(),
+        "JIRACHI" => Jirachi(),
+        "DEOXYS" => Deoxys(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1176,6 +1212,13 @@ internal static partial class PokemonModels
         "GASTRODON-EAST" => SeaSlug(true, east: true),
         "CHERRIM-SUNSHINE" => CherrimSunshine(),
         var unown when unown.StartsWith("UNOWN-") && UnownGlyphs.ContainsKey(unown[6..]) => Unown(unown[6..]),
+        // Platinum's forms of the popular species from outside its Pokédex (PokemonModels.Forms.cs)
+        "CASTFORM-SUNNY" => CastformSunny(),
+        "CASTFORM-RAINY" => CastformRainy(),
+        "CASTFORM-SNOWY" => CastformSnowy(),
+        "DEOXYS-ATTACK" => DeoxysAttack(),
+        "DEOXYS-DEFENSE" => DeoxysDefense(),
+        "DEOXYS-SPEED" => DeoxysSpeed(),
         // The later games' regional forms and Dialga's and Palkia's Origin Formes (PokemonModels.Regional.cs)
         "RATTATA-ALOLA" => RattataAlola(),
         "RATICATE-ALOLA" => RaticateAlola(),
@@ -1266,10 +1309,18 @@ internal static partial class PokemonModels
         "SHARPEDO-MEGA" => SharpedoMega(),
         "CAMERUPT-MEGA" => CameruptMega(),
         "ALTARIA-MEGA" => AltariaMega(),
+        "BANETTE-MEGA" => BanetteMega(),
         "CHIMECHO-MEGA" => ChimechoMega(),
         "ABSOL-MEGA" => AbsolMega(),
         "ABSOL-MEGA-Z" => AbsolMegaZ(),
         "GLALIE-MEGA" => GlalieMega(),
+        "SALAMENCE-MEGA" => SalamenceMega(),
+        "METAGROSS-MEGA" => MetagrossMega(),
+        "LATIAS-MEGA" => LatiasMega(),
+        "LATIOS-MEGA" => LatiosMega(),
+        "KYOGRE-PRIMAL" => KyogrePrimal(),
+        "GROUDON-PRIMAL" => GroudonPrimal(),
+        "RAYQUAZA-MEGA" => RayquazaMega(),
         "STARAPTOR-MEGA" => StaraptorMega(),
         "LOPUNNY-MEGA" => LopunnyMega(),
         "GARCHOMP-MEGA" => GarchompMega(),

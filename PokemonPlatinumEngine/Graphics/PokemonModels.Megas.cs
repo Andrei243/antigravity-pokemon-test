@@ -6,8 +6,9 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The Mega Evolutions of the hand-built species (after plan 03 · D11), in National Pokédex order. Each is our own
-// sculpt after the design: the species' build, changed as its Mega Evolution changes it.
+// The Mega Evolutions of the hand-built species (after plan 03 · D11), and the Primal Reversions of Kyogre and
+// Groudon, in National Pokédex order. Each is our own sculpt after the design: the species' build, changed as its
+// Mega Evolution changes it.
 internal static partial class PokemonModels
 {
     // ------------------------------------------------------------------ Mega Venusaur
@@ -1047,6 +1048,10 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
+    // ------------------------------------------------------------------ Mega Banette (its build in PokemonModels.Hoenn3.cs)
+
+    private static PokeBuilder BanetteMega() => BanetteBuild(true);
+
     // ------------------------------------------------------------------ Mega Chimecho
 
     private static PokeBuilder ChimechoMega()
@@ -1246,6 +1251,24 @@ internal static partial class PokemonModels
         });
         return Lift(b);
     }
+
+    // ------------------------------------------------------------------ Mega Salamence and Mega Metagross (their builds in PokemonModels.Hoenn3.cs)
+
+    private static PokeBuilder SalamenceMega() => SalamenceBuild(true);
+
+    private static PokeBuilder MetagrossMega() => MetagrossBuild(true);
+
+    // ------------------------------------------------------------------ Mega Latias and Mega Latios, the Primal Kyogre and Groudon and Mega Rayquaza (their builds in PokemonModels.Hoenn3.cs)
+
+    private static PokeBuilder LatiasMega() => LatiBuild(false, true);
+
+    private static PokeBuilder LatiosMega() => LatiBuild(true, true);
+
+    private static PokeBuilder KyogrePrimal() => KyogreBuild(true);
+
+    private static PokeBuilder GroudonPrimal() => GroudonBuild(true);
+
+    private static PokeBuilder RayquazaMega() => RayquazaBuild(true);
 
     // ------------------------------------------------------------------ Mega Staraptor
 
