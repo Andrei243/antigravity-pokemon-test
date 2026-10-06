@@ -1,0 +1,47 @@
+# Battle against Miraidon (the Paradox Pokémon of the far future): the paradox pair's call (a leap up and a turn
+# back to the tonic) traced on a square lead over a sequenced pulse and a sixteenth synth bass in D minor.
+# Original composition for this game.
+title Battle! Miraidon
+tempo 180
+meter 4/4
+lowhptempo 1.07
+reverb 0.22
+
+track lead square lowhp=sawlead vol=0.82 pan=0 rev=0.2
+  r1 | o5 d4 a8 o6 c8 d4 r4 |
+  L o5 d4 a8 o6 c8 d4. f8 | o6 e4 c4 d2 | o6 d4. c8 o5 f4 b-4 | o5 a4. g8 e4 c+4 |
+  o5 d8 f8 a8 o6 d8 c4 o5 a4 | o5 g4. a8 o6 c4 e4 | o6 d4 c4 o5 g4 b-4 | o5 a2 c+4 e4 |
+  o5 d4 a8 o6 c8 d4. f8 | o6 e4 c4 d2 | o5 f4 o6 c8 e8 f4. a8 | o6 g4 e4 d4 c4 |
+  o6 d4 o5 b-4 o6 f4 d4 | o6 c4 e8 g8 e4 c4 | o6 d4. c8 o5 g4 f4 | o5 e4 a4 o6 c+4 e4 |
+
+track seq pulse vol=0.42 pan=-0.3 rev=0.16
+  o4 [ d16 f16 a16 f16 ]4 | o4 [ d16 f16 a16 f16 ]4 |
+  L o4 [ d16 f16 a16 f16 ]4 | o4 [ c16 e16 g16 e16 ]4 | o4 [ d16 f16 b-16 f16 ]4 | o4 [ c+16 e16 a16 e16 ]4 |
+  o4 [ d16 f16 a16 f16 ]4 | o4 [ c16 e16 g16 e16 ]4 | o4 [ d16 g16 b-16 g16 ]4 | o4 [ c+16 e16 a16 e16 ]4 |
+  o4 [ d16 f16 a16 f16 ]4 | o4 [ c16 e16 g16 e16 ]4 | o4 [ d16 f16 a16 f16 ]4 | o4 [ c16 e16 g16 e16 ]4 |
+  o4 [ d16 f16 b-16 f16 ]4 | o4 [ c16 e16 g16 e16 ]4 | o4 [ d16 g16 b-16 g16 ]4 | o4 [ c+16 e16 a16 e16 ]4 |
+
+track pad pad unless=lowhp vol=0.3 pan=0.3 rev=0.4
+  r1 | r1 |
+  L o4 (d f a)1 | o4 (c e g)1 | o4 (d f b-)1 | o4 (c+ e a)1 |
+  o4 (d f a)1 | o4 (c e g)1 | o4 (d g b-)1 | o4 (c+ e a)1 |
+  o4 (d f a)1 | o4 (c e g)1 | o4 (d f a)1 | o4 (c e g)1 |
+  o4 (d f b-)1 | o4 (c e g)1 | o4 (d g b-)1 | o4 (c+ e a)1 |
+
+track bass synthbass vol=0.8 rev=0.04
+  r1 | o3 d8 d8 d8 d8 a8 a8 a8 a8 |
+  L [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 b-16 b-16 o4 b-16 o3 b-16 ]4 | [ o3 a16 a16 o4 a16 o3 a16 ]4 |
+  [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 g16 g16 o4 g16 o3 g16 ]4 | [ o3 a16 a16 o4 a16 o3 a16 ]4 |
+  [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 d16 d16 o4 d16 o3 d16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 |
+  [ o3 b-16 b-16 o4 b-16 o3 b-16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o3 g16 g16 o4 g16 o3 g16 ]4 | [ o3 a16 a16 o4 a16 o3 a16 ]4 |
+
+track drums kit vol=0.58 rev=0.1
+  v100 b4 b4 b4 b4 | b4 b4 x16 x16 x16 x16 s16 s16 s16 s16 |
+  L [ (b c)8 r16 b16 x8 r8 b8 b8 x8 r8 | [ b8 r16 b16 x8 r8 b8 b8 x8 r8 | ]6 b8 r16 b16 x8 r8 x16 x16 x16 x16 s16 s16 s16 s16 | ]2
+
+track hats kit vol=0.46 pan=0.15 rev=0.08
+  r1 | r1 | L v60 [ h16 v38 h16 v70 o16 v38 h16 v60 h16 v38 h16 v70 o16 v38 h16 v60 h16 v38 h16 v70 o16 v38 h16 v60 h16 v38 h16 v70 o16 v38 h16 v60 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.52 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

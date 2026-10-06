@@ -1,0 +1,53 @@
+# Battle against Azelf (the being of willpower, guardian of Lake Valor): a driving E-minor trumpet theme over
+# galloping guitar, its dotted first bar the lake guardians' motif (a step down, a sixth up). Original composition for this game.
+title Battle! Azelf
+tempo 176
+meter 4/4
+lowhptempo 1.06
+reverb 0.22
+
+track lead trumpet lowhp=sawlead vol=0.8 pan=0 rev=0.2
+  o4 b8. b16 b8. b16 o5 e4 g4 | o5 f+4 a4 b2 |
+  L o5 e8. d16 b4. a8 g8 e8 | o5 g8 g8 a8 g8 e4 c4 | o5 f+8. e16 d8 f+8 a4 o6 d4 | o6 d+2 o5 b4 f+4 |
+  o5 e8. d16 b4. o6 c8 d8 e8 | o6 d4 o5 b8 g8 d4 g4 | o5 a8 b8 o6 c8 d8 e4 c4 | o5 b4 d+8 f+8 b4 a4 |
+  o6 e4. d8 c4 o5 g4 | o6 d4. c8 o5 a4 f+4 | o5 f+8 g8 a8 b8 o6 d4 f+4 | o6 e2. o5 b4 |
+  o6 c8. o5 b16 g4 o6 c8. d16 e4 | o6 d8. c16 o5 a4 o6 d8. e16 f+4 | o6 f+4 d+4 o5 b4 o6 d+4 | o6 f+2 o5 b4 a4 |
+
+track counter horn vol=0.44 pan=-0.25 rev=0.22
+  o3 b2 o4 e2 | o4 d+2 f+2 |
+  L o4 b2 g2 | o4 g2 e2 | o4 a2 f+2 | o4 f+2 d+2 |
+  o4 g2 b2 | o4 b2 g2 | o4 e2 a2 | o4 d+2 f+2 |
+  o4 g2 e2 | o4 f+2 a2 | o4 d2 f+2 | o4 g2 b2 |
+  o4 e2 g2 | o4 f+2 a2 | o4 d+2 f+2 | o4 f+2 d+2 |
+
+track guitar guitar vol=0.36 pan=0.3 rev=0.12
+  [ o3 (e b)8 (e b)16 (e b)16 ]4 | [ o3 (b >f+)8 (b >f+)16 (b >f+)16 ]2 o3 (b >f+)4 r4 |
+  L [ o3 (e b)8 (e b)16 (e b)16 ]4 | [ o3 (c g)8 (c g)16 (c g)16 ]4 | [ o3 (d a)8 (d a)16 (d a)16 ]4 | [ o3 (b >f+)8 (b >f+)16 (b >f+)16 ]4 |
+  [ o3 (e b)8 (e b)16 (e b)16 ]4 | [ o3 (g >d)8 (g >d)16 (g >d)16 ]4 | [ o3 (a >e)8 (a >e)16 (a >e)16 ]4 | [ o3 (b >f+)8 (b >f+)16 (b >f+)16 ]4 |
+  [ o3 (c g)8 (c g)16 (c g)16 ]4 | [ o3 (d a)8 (d a)16 (d a)16 ]4 | [ o3 (b >f+)8 (b >f+)16 (b >f+)16 ]4 | [ o3 (e b)8 (e b)16 (e b)16 ]4 |
+  [ o3 (c g)8 (c g)16 (c g)16 ]4 | [ o3 (d a)8 (d a)16 (d a)16 ]4 | [ o3 (b >f+)8 (b >f+)16 (b >f+)16 ]4 | [ o3 (b >f+)8 (b >f+)16 (b >f+)16 ]4 |
+
+track pad strings unless=lowhp vol=0.3 pan=-0.35 rev=0.3
+  r1 | r1 |
+  L o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (d+ f+ b)1 |
+  o4 (e g b)1 | o4 (d g b)1 | o4 (c e a)1 | o4 (d+ f+ b)1 |
+  o4 (c e g)1 | o4 (d f+ a)1 | o4 (d f+ b)1 | o4 (e g b)1 |
+  o4 (c e g)1 | o4 (d f+ a)1 | o4 (d+ f+ b)1 | o4 (d+ f+ b)1 |
+
+track bass synthbass vol=0.66 rev=0.05
+  o3 e8 e8 e8 e8 e8 e8 e8 e8 | o3 b8 b8 b8 b8 b4 r4 |
+  L [ o3 e16 e16 o4 e8 o3 e16 e16 b8 ]2 | [ o3 c16 c16 o4 c8 o3 c16 c16 g8 ]2 | [ o3 d16 d16 o4 d8 o3 d16 d16 a8 ]2 | [ o3 b16 b16 o4 b8 o3 b16 b16 f+8 ]2 |
+  [ o3 e16 e16 o4 e8 o3 e16 e16 b8 ]2 | [ o3 g16 g16 o4 g8 o3 g16 g16 d8 ]2 | [ o3 a16 a16 o4 a8 o3 a16 a16 e8 ]2 | [ o3 b16 b16 o4 b8 o3 b16 b16 f+8 ]2 |
+  [ o3 c16 c16 o4 c8 o3 c16 c16 g8 ]2 | [ o3 d16 d16 o4 d8 o3 d16 d16 a8 ]2 | [ o3 b16 b16 o4 b8 o3 b16 b16 f+8 ]2 | [ o3 e16 e16 o4 e8 o3 e16 e16 b8 ]2 |
+  [ o3 c16 c16 o4 c8 o3 c16 c16 g8 ]2 | [ o3 d16 d16 o4 d8 o3 d16 d16 a8 ]2 | [ o3 b16 b16 o4 b8 o3 b16 b16 f+8 ]2 | [ o3 b16 b16 o4 b8 o3 b16 b16 f+8 ]2 |
+
+track drums kit vol=0.52 rev=0.12
+  v100 (b c)8 b8 s8 b8 b8 b8 s16 s16 s16 s16 | b8 b8 s8 b8 s16 s16 s16 s16 t16 t16 f16 f16 |
+  L [ (b c)8 b16 b16 s8 b8 r8 b8 s8 b16 b16 | [ b8 b16 b16 s8 b8 r8 b8 s8 b16 b16 | ]6 b8 b16 b16 s8 b8 s16 s16 s16 s16 s16 s16 x8 | ]2
+
+track hats kit vol=0.5 pan=0.15 rev=0.1
+  r1 | r1 | L [ [ v70 h16 v40 h16 v55 h16 v40 h16 ]4 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

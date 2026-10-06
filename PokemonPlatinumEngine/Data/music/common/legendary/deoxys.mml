@@ -1,0 +1,58 @@
+# Battle against Deoxys (the alien mythical Pokémon): a B-flat-minor signal from far off, synths in threes against the
+# four of the bar, and a chord a tritone away that does not belong. Original composition for this game.
+title Battle! Deoxys
+tempo 184
+meter 4/4
+lowhptempo 1.07
+reverb 0.28
+
+track lead sawlead lowhp=square vol=0.84 pan=0 rev=0.24
+  r1 | o5 a8. o6 c8. e-8 f8. e-8. c8 |
+  L o5 b-8. f8. b-8 o6 d-4 e-8 d-8 | o6 f8. e-8. d-8 o5 b-4 a-4 | o5 g-8. b-8. o6 d-8 e-4 d-8 o5 b-8 | o5 a4. o6 c8 e-4 o5 a4 |
+  o5 b-8. f8. b-8 o6 d-4 f8 e-8 | o6 e8. d8. o5 b8 g+4 e4 | o5 g-4. a-8 b-4 o6 d-4 | o6 c8. o5 a8. f8 c4 r4 |
+  o5 e-8. g-8. b-8 o6 e-4 d-8 c8 | o6 d-4. o5 a-8 f4 a-4 | o5 b-8. o6 d-8. g-8 e-4 d-4 | o6 c4. o5 b-8 a-4 e-4 |
+  o5 g-8. b-8. o6 e-8 g-4 e-4 | o6 e8. d8. o5 b8 g+4 b4 | o6 d-4. o5 b-8 g-4 b-4 | o5 a8. o6 c8. e-8 f4 r4 |
+
+track counter square vol=0.4 pan=-0.3 rev=0.18
+  r1 | o4 (f >c)8. (f >c)8. (f >c)8 (f >c)8. (f >c)8. (f >c)8 |
+  L o4 (b- >f)8. (b- >f)8. (b- >f)8 (b- >f)8. (b- >f)8. (b- >f)8 | o4 (b- >f)8. (b- >f)8. (b- >f)8 (b- >f)8. (b- >f)8. (b- >f)8 |
+  o4 (g- >d-)8. (g- >d-)8. (g- >d-)8 (g- >d-)8. (g- >d-)8. (g- >d-)8 | o4 (f >c)8. (f >c)8. (f >c)8 (f >c)8. (f >c)8. (f >c)8 |
+  o4 (b- >f)8. (b- >f)8. (b- >f)8 (b- >f)8. (b- >f)8. (b- >f)8 | o4 (e b)8. (e b)8. (e b)8 (e b)8. (e b)8. (e b)8 |
+  o4 (g- >d-)8. (g- >d-)8. (g- >d-)8 (g- >d-)8. (g- >d-)8. (g- >d-)8 | o4 (f >c)8. (f >c)8. (f >c)8 (f >c)8. (f >c)8. (f >c)8 |
+  o4 (e- b-)8. (e- b-)8. (e- b-)8 (e- b-)8. (e- b-)8. (e- b-)8 | o4 (d- a-)8. (d- a-)8. (d- a-)8 (d- a-)8. (d- a-)8. (d- a-)8 |
+  o4 (g- >d-)8. (g- >d-)8. (g- >d-)8 (g- >d-)8. (g- >d-)8. (g- >d-)8 | o4 (a- >e-)8. (a- >e-)8. (a- >e-)8 (a- >e-)8. (a- >e-)8. (a- >e-)8 |
+  o4 (e- b-)8. (e- b-)8. (e- b-)8 (e- b-)8. (e- b-)8. (e- b-)8 | o4 (e b)8. (e b)8. (e b)8 (e b)8. (e b)8. (e b)8 |
+  o4 (g- >d-)8. (g- >d-)8. (g- >d-)8 (g- >d-)8. (g- >d-)8. (g- >d-)8 | o4 (f >c)8. (f >c)8. (f >c)8 (f >c)8. (f >c)8. (f >c)8 |
+
+# The signal: arpeggios in threes across the four of the bar
+track signal pulse vol=0.38 pan=0.35 rev=0.2
+  [ o4 b-16 o5 d-16 f16 ]5 o4 b-16 | [ o4 f16 a16 o5 c16 ]5 o4 f16 |
+  L [ o4 b-16 o5 d-16 f16 ]5 o4 b-16 | [ o4 b-16 o5 d-16 f16 ]5 o4 b-16 | [ o4 g-16 b-16 o5 d-16 ]5 o4 g-16 | [ o4 f16 a16 o5 c16 ]5 o4 f16 |
+  [ o4 b-16 o5 d-16 f16 ]5 o4 b-16 | [ o4 e16 g+16 b16 ]5 o4 e16 | [ o4 g-16 b-16 o5 d-16 ]5 o4 g-16 | [ o4 f16 a16 o5 c16 ]5 o4 f16 |
+  [ o4 e-16 g-16 b-16 ]5 o4 e-16 | [ o4 d-16 f16 a-16 ]5 o4 d-16 | [ o4 g-16 b-16 o5 d-16 ]5 o4 g-16 | [ o4 a-16 o5 c16 e-16 ]5 o4 a-16 |
+  [ o4 e-16 g-16 b-16 ]5 o4 e-16 | [ o4 e16 g+16 b16 ]5 o4 e16 | [ o4 g-16 b-16 o5 d-16 ]5 o4 g-16 | [ o4 f16 a16 o5 c16 ]5 o4 f16 |
+
+track pad pad unless=lowhp vol=0.3 pan=0.2 rev=0.45
+  r1 | r1 |
+  L o3 (b- >d- f)1 | o3 (b- >d- f)1 | o3 (b- >d- g-)1 | o3 (a >c f)1 |
+  o3 (b- >d- f)1 | o3 (b >e g+)1 | o3 (b- >d- g-)1 | o3 (a >c f)1 |
+  o3 (b- >e- g-)1 | o3 (a- >d- f)1 | o3 (b- >d- g-)1 | o3 (a- >c e-)1 |
+  o3 (b- >e- g-)1 | o3 (b >e g+)1 | o3 (b- >d- g-)1 | o3 (a >c f)1 |
+
+track bass synthbass vol=0.72 rev=0.05
+  r1 | o3 f8. o4 f8. o3 f8. o4 f8. o3 f4 |
+  L o3 b-8. o4 b-8. o3 b-8. o4 b-8. o3 b-4 | o3 b-8. o4 b-8. o3 b-8. o4 b-8. o3 b-4 | o3 g-8. o4 g-8. o3 g-8. o4 g-8. o3 g-4 | o3 f8. o4 f8. o3 f8. o4 f8. o3 f4 |
+  o3 b-8. o4 b-8. o3 b-8. o4 b-8. o3 b-4 | o3 e8. o4 e8. o3 e8. o4 e8. o3 e4 | o3 g-8. o4 g-8. o3 g-8. o4 g-8. o3 g-4 | o3 f8. o4 f8. o3 f8. o4 f8. o3 f4 |
+  o3 e-8. o4 e-8. o3 e-8. o4 e-8. o3 e-4 | o3 d-8. o4 d-8. o3 d-8. o4 d-8. o3 d-4 | o3 g-8. o4 g-8. o3 g-8. o4 g-8. o3 g-4 | o3 a-8. o4 a-8. o3 a-8. o4 a-8. o3 a-4 |
+  o3 e-8. o4 e-8. o3 e-8. o4 e-8. o3 e-4 | o3 e8. o4 e8. o3 e8. o4 e8. o3 e4 | o3 g-8. o4 g-8. o3 g-8. o4 g-8. o3 g-4 | o3 f8. o4 f8. o3 f8. o4 f8. o3 f4 |
+
+track drums kit vol=0.5 rev=0.14
+  r1 | (b c)8. b8. s8 b8. s8. s16 s16 |
+  L v100 [ (b c)8. b8. s8 b8. b8. s8 | [ b8. b8. s8 b8. b8. s8 | ]6 b8. b8. s8 s16 s16 s16 s16 t16 m16 f16 f16 | ]2
+
+track hats kit vol=0.62 pan=-0.15 rev=0.1
+  r1 | r1 | L [ [ v60 h16 v35 h16 h16 ]5 v60 o16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a-16 r16 a-16 r16 r4 a-16 r16 a-16 r16 r4 | ]16

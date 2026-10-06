@@ -1,0 +1,65 @@
+# Battle against Regirock (the rock golem): a tapped code in bare fifths, then a grinding E-Phrygian theme on low
+# horn over tuba and timpani, the F always pressing down on the E. Original composition for this game.
+title Battle! Regirock
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.25
+
+track lead horn lowhp=sawlead vol=0.8 pan=0 rev=0.22
+  r1 | o4 e4 r4 f4 e4 |
+  L o4 e4. f8 e4 d4 | o4 g4 a8 g8 e4 d4 | o4 f4. g8 a4 o5 c4 | o4 b2 a4 g4 |
+  o4 a4. g8 f4 d4 | o4 e4 f8 e8 d2 | o4 c4 f4 a4 g8 f8 | o4 e2. r4 |
+  o4 a4. b8 o5 c4 e4 | o5 d4. c8 o4 b4 g4 | o4 a4 g8 f8 c4 f4 | o4 g2 e4 r4 |
+  o4 d4 f8 a8 o5 d4 c4 | o4 b4. a8 g4 d4 | o4 c4 f8 g8 a4 f8 e8 | o4 e2. r4 |
+
+track counter brass vol=0.42 pan=-0.25 rev=0.2
+  r1 | o3 (e b)4 r4 (f >c)4 (e b)4 |
+  L o3 (e b)4 r8 (e b)8 r4 (e b)8 r8 | o3 (e b)4 r8 (e b)8 r4 (e b)8 r8 | o3 (f >c)4 r8 (f >c)8 r4 (f >c)8 r8 | o3 (e b)4 r8 (e b)8 r4 (e b)8 r8 |
+  o3 (d a)4 r8 (d a)8 r4 (d a)8 r8 | o3 (d a)4 r8 (d a)8 r4 (d a)8 r8 | o3 (f >c)4 r8 (f >c)8 r4 (f >c)8 r8 | o3 (e b)4 r8 (e b)8 r4 (e b)8 r8 |
+  o3 (a >e)4 r8 (a >e)8 r4 (a >e)8 r8 | o3 (g >d)4 r8 (g >d)8 r4 (g >d)8 r8 | o3 (f >c)4 r8 (f >c)8 r4 (f >c)8 r8 | o3 (e b)4 r8 (e b)8 r4 (e b)8 r8 |
+  o3 (d a)4 r8 (d a)8 r4 (d a)8 r8 | o3 (g >d)4 r8 (g >d)8 r4 (g >d)8 r8 | o3 (f >c)4 r8 (f >c)8 r4 (f >c)8 r8 | o3 (e b)4 r8 (e b)8 r4 (e b)8 r8 |
+
+# The Regis' code: short-short-long in sixteenths, in bare fifths
+track code pulse vol=0.36 pan=0.3 rev=0.15
+  o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 | o5 (e b)4 r4 (f >c)4 (e b)4 |
+  L o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+  o5 (f >c)16 (f >c)16 (f >c)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+  o5 (d a)16 (d a)16 (d a)8 r4 (d a)16 (d a)16 (d a)8 r4 | o5 (d a)16 (d a)16 (d a)8 r4 (d a)16 (d a)16 (d a)8 r4 |
+  o5 (f >c)16 (f >c)16 (f >c)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+  o5 (a >e)16 (a >e)16 (a >e)8 r4 (a >e)16 (a >e)16 (a >e)8 r4 | o5 (g >d)16 (g >d)16 (g >d)8 r4 (g >d)16 (g >d)16 (g >d)8 r4 |
+  o5 (f >c)16 (f >c)16 (f >c)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+  o5 (d a)16 (d a)16 (d a)8 r4 (d a)16 (d a)16 (d a)8 r4 | o5 (g >d)16 (g >d)16 (g >d)8 r4 (g >d)16 (g >d)16 (g >d)8 r4 |
+  o5 (f >c)16 (f >c)16 (f >c)8 r4 (f >c)16 (f >c)16 (f >c)8 r4 | o5 (e b)16 (e b)16 (e b)8 r4 (e b)16 (e b)16 (e b)8 r4 |
+
+track pad organ unless=lowhp vol=0.3 pan=-0.3 rev=0.35
+  r1 | r1 |
+  L o3 (e b >e)1 | o3 (e b >e)1 | o3 (f >c f)1 | o3 (e b >e)1 |
+  o3 (d a >d)1 | o3 (d a >d)1 | o3 (f >c f)1 | o3 (e b >e)1 |
+  o3 (a >e a)1 | o3 (g >d g)1 | o3 (f >c f)1 | o3 (e b >e)1 |
+  o3 (d a >d)1 | o3 (g >d g)1 | o3 (f >c f)1 | o3 (e b >e)1 |
+
+track bass tuba vol=0.72 rev=0.05
+  r1 | o3 e4 r4 f4 e4 |
+  L o3 e8 e8 r8 e8 e4 e8 e8 | o3 e8 e8 r8 e8 e4 e8 e8 | o3 f8 f8 r8 f8 f4 f8 f8 | o3 e8 e8 r8 e8 e4 e8 e8 |
+  o3 d8 d8 r8 d8 d4 d8 d8 | o3 d8 d8 r8 d8 d4 d8 d8 | o3 f8 f8 r8 f8 f4 f8 f8 | o3 e8 e8 r8 e8 e4 e8 e8 |
+  o3 a8 a8 r8 a8 a4 a8 a8 | o3 g8 g8 r8 g8 g4 g8 g8 | o3 f8 f8 r8 f8 f4 f8 f8 | o3 e8 e8 r8 e8 e4 e8 e8 |
+  o3 d8 d8 r8 d8 d4 d8 d8 | o3 g8 g8 r8 g8 g4 g8 g8 | o3 f8 f8 r8 f8 f4 f8 f8 | o3 e8 e8 r8 e8 e4 e8 e8 |
+
+track timpani timpani vol=0.45 rev=0.25
+  o3 [ e16 ]16 | o3 e4 r4 f4 e4 |
+  L o3 e4 r4 b4 r4 | o3 e4 r4 b4 e8 e8 | o3 f4 r4 o4 c4 r4 | o3 e4 r4 b4 r4 |
+  o3 d4 r4 a4 r4 | o3 d4 r4 a4 d8 d8 | o3 f4 r4 o4 c4 r4 | o3 e4 r4 e8 e8 e4 |
+  o3 a4 r4 o4 e4 r4 | o3 g4 r4 o4 d4 r4 | o3 f4 r4 o4 c4 r4 | o3 e4 r4 b4 r4 |
+  o3 d4 r4 a4 r4 | o3 g4 r4 o4 d4 r4 | o3 f4 r4 o4 c4 r4 | o3 e4 r4 e8 e8 e4 |
+
+track drums kit vol=0.48 rev=0.15
+  r2 r4 f16 f16 m16 m16 | (b c)4 r4 (b c)4 (b c)4 |
+  L v100 [ (b c)4 r8 b8 s4 b8 b8 | [ b4 r8 b8 s4 b8 b8 | ]6 b4 s8 s8 t8 t8 f8 f8 | ]2
+
+track hats kit vol=0.62 pan=0.15 rev=0.1
+  r1 | r1 | L [ v60 h8 v35 h8 v60 h8 v35 h8 v60 o8 v35 h8 v60 h8 v35 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]16

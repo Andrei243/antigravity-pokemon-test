@@ -1,0 +1,63 @@
+# Battle against Meloetta (the melody Pokémon, a mythical): a quick F-major dance in three, a violin spinning in
+# turns over a piano's lilting chords, a flute and a light step of drums. Original composition for this game.
+title Battle! Meloetta
+tempo 168
+meter 3/4
+lowhptempo 1.08
+reverb 0.32
+
+track lead violin lowhp=sawlead vol=0.82 pan=0 rev=0.32
+  r2. | o5 e8 g8 b-8 o6 c8 e8 g8 |
+  L o5 c4 f4 a4 | o5 g8 a8 g8 f8 c4 | o5 e4. g8 c4 | o5 d8 e8 d8 c8 g4 |
+  o5 a4 d4 f4 | o5 f8 g8 f8 d8 b-4 | o5 g4. a8 g4 | o5 e8 f8 g8 b-8 o6 c4 |
+  o6 c4 o5 a4 f4 | o5 e8 f8 e8 d8 c4 | o5 d4. c8 o4 b-4 | o5 a2 c4 |
+  o5 b-8 a8 g8 b-8 o6 d4 | o6 c4 o5 g4 e4 | o5 f8 g8 a8 b-8 o6 c8 d8 | o6 f4 c4 o5 a4 |
+  o5 d4 f8 e8 d8 a8 | o5 c4. e8 a4 | o5 b-8 a8 g8 f8 d4 | o5 f2 a4 |
+  o5 g8 a8 b-8 o6 c8 d4 | o6 e4. d8 c4 | o5 a8 b-8 a8 g8 f8 a8 | o5 g4 b-4 o6 c4 |
+
+track counter flute vol=0.42 pan=-0.25 rev=0.36
+  r2. | r2. |
+  L o4 a2. | o5 c2. | o4 g2. | o4 e2. |
+  o4 f2. | o4 d2. | o4 e2. | o4 b-2. |
+  o4 a2. | o5 c2. | o4 f2. | o4 f2. |
+  o4 g2. | o4 e2. | o5 c2. | o4 a2. |
+  o4 f2. | o4 e2. | o4 d2. | o5 c2. |
+  o4 b-2. | o4 g2. | o4 f2. | o4 e2. |
+
+track piano piano vol=0.58 pan=0.25 rev=0.28
+  o4 (c f a)2. | r4 o4 (e g b-)4 (e g b-)4 |
+  L r4 o4 (c f a)4 (c f a)4 | r4 o4 (c f a)4 (c f a)4 | r4 o4 (c e g)4 (c e g)4 | r4 o4 (c e g)4 (c e g)4 |
+  r4 o4 (d f a)4 (d f a)4 | r4 o4 (d f b-)4 (d f b-)4 | r4 o4 (c e g)4 (c e g)4 | r4 o4 (e g b-)4 (e g b-)4 |
+  r4 o4 (c f a)4 (c f a)4 | r4 o4 (c e a)4 (c e a)4 | r4 o4 (d f b-)4 (d f b-)4 | r4 o4 (c f a)4 (c f a)4 |
+  r4 o4 (d g b-)4 (d g b-)4 | r4 o4 (c e g)4 (c e g)4 | r4 o4 (c f a)4 (c f a)4 | r4 o4 (c f a)4 (c f a)4 |
+  r4 o4 (d f a)4 (d f a)4 | r4 o4 (c e a)4 (c e a)4 | r4 o4 (d f b-)4 (d f b-)4 | r4 o4 (c f a)4 (c f a)4 |
+  r4 o4 (d g b-)4 (d g b-)4 | r4 o4 (c e g)4 (c e g)4 | r4 o4 (c f a)4 (c f a)4 | r4 o4 (e g b-)4 (e g b-)4 |
+
+track pad strings unless=lowhp vol=0.22 pan=-0.1 rev=0.42
+  r2. | r2. |
+  L o4 (c f a)2. | (c f a)2. | (c e g)2. | (c e g)2. |
+  o4 (d f a)2. | (d f b-)2. | (c e g)2. | (e g b-)2. |
+  o4 (c f a)2. | (c e a)2. | (d f b-)2. | (c f a)2. |
+  o4 (d g b-)2. | (c e g)2. | (c f a)2. | (c f a)2. |
+  o4 (d f a)2. | (c e a)2. | (d f b-)2. | (c f a)2. |
+  o4 (d g b-)2. | (c e g)2. | (c f a)2. | (e g b-)2. |
+
+track bass contrabass vol=0.74 rev=0.08
+  o3 f2. | o3 c2. |
+  L o3 f4 r2 | o3 c4 r2 | o3 c4 r2 | o3 g4 r2 |
+  o3 d4 r2 | o3 b-4 r2 | o3 c4 r2 | o3 c4 r4 o2 b-4 |
+  o3 f4 r2 | o3 a4 r2 | o3 b-4 r2 | o3 f4 r2 |
+  o3 g4 r2 | o3 c4 r2 | o3 f4 r2 | o3 c4 r2 |
+  o3 d4 r2 | o3 a4 r2 | o3 b-4 r2 | o3 f4 r2 |
+  o3 g4 r2 | o3 c4 r2 | o3 f4 r2 | o3 c4 r4 o2 b-4 |
+
+track drums kit vol=0.48 rev=0.16
+  r2. | r4 v80 t8 m8 f8 f8 |
+  L v95 [ (b c)4 v60 s4 s4 | [ v95 b4 v60 s4 s4 | ]6 v95 b4 v80 t8 m8 f8 f8 | ]3
+
+track shaker kit vol=0.34 pan=0.2 rev=0.12
+  r2. | r2. | L [ v58 k8 v34 k8 v50 k8 v34 k8 v50 k8 v34 k8 | ]24
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r2. | r2. | L [ o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 | ]24

@@ -1,0 +1,54 @@
+# Battle against Groudon (the land's primal Pokémon): an eruption in C minor, tuba and timpani pounding three, three
+# and two under a defiant trumpet, a dark choir behind and toms like falling rock. Original composition for this game.
+title Battle! Groudon
+tempo 150
+meter 4/4
+lowhptempo 1.09
+reverb 0.26
+
+track lead trumpet lowhp=sawlead vol=0.78 pan=0 rev=0.24
+  r1 | o4 b4. o5 d4. g4 |
+  L o4 g4. o5 c8 e-4 f8 e-8 | o5 g2. f8 e-8 | o5 c4 e-4 a-4. g8 | o5 g2 d4 o4 b4 |
+  o5 c4. d8 e-4 g4 | o5 a-2 f4 c4 | o5 f4. e-8 d-4 o4 a-4 | o4 b2 o5 d4 f4 |
+  o5 e-4. f8 e-4 c4 | o5 b-4 g8 b-8 o6 e-4 d-4 | o6 d4. c8 o5 b-4 f4 | o5 g4 e-8 c8 o4 g2 |
+  o5 c4 f8 a-8 o6 c4 o5 b-4 | o5 a-4. f8 d-4 f4 | o5 g4. f8 d4 o4 b4 | o4 g4 b8 o5 d8 f4 o4 b4 |
+
+track counter horn vol=0.54 pan=-0.25 rev=0.28
+  r1 | o4 d4. g4. b4 |
+  L o4 c1 | o4 e-1 | o4 e-2 c2 | o4 d2 o3 b2 |
+  o4 e-2 g2 | o4 f2 a-2 | o4 a-2 f2 | o4 g2 b2 |
+  o4 c1 | o4 g2 b-2 | o4 f2 d2 | o4 e-1 |
+  o4 a-2 f2 | o4 f2 a-2 | o4 d2 g2 | o3 b2 o4 d2 |
+
+track pad choir unless=lowhp vol=0.32 pan=0.3 rev=0.45
+  r1 | o3 (g b >d)1 |
+  L o3 (g >c e-)1 | o3 (g >c e-)1 | o3 (a- >c e-)1 | o3 (g b >d)1 |
+  o3 (g >c e-)1 | o3 (a- >c f)1 | o3 (a- >d- f)1 | o3 (g b >d)1 |
+  o3 (a- >c e-)1 | o3 (g b- >e-)1 | o3 (f b- >d)1 | o3 (g >c e-)1 |
+  o3 (a- >c f)1 | o3 (a- >d- f)1 | o3 (g b >d)1 | o3 (g b >d)1 |
+
+# Three, three and two: the ground heaving
+track bass tuba vol=0.74 rev=0.05
+  o3 c1 | o3 g4. g4. g4 |
+  L o3 c4. c4. c4 | o3 c4. c4. c4 | o2 a-4. a-4. a-4 | o3 g4. g4. g4 |
+  o3 c4. c4. c4 | o3 f4. f4. f4 | o3 d-4. d-4. d-4 | o3 g4. g4. g4 |
+  o2 a-4. a-4. a-4 | o3 e-4. e-4. e-4 | o2 b-4. b-4. b-4 | o3 c4. c4. c4 |
+  o3 f4. f4. f4 | o3 d-4. d-4. d-4 | o3 g4. g4. g4 | o3 g4. g4. g4 |
+
+track timpani timpani vol=0.46 rev=0.25
+  o3 v70 [ c16 ]8 v110 [ c16 ]8 | o3 g4. g4. o4 d8 d8 |
+  L o3 c8. c16 r8 c8. c16 r8 g8 g8 | o3 c8. c16 r8 c8. c16 r8 g8 g8 | o2 a-8. a-16 r8 a-8. a-16 r8 o3 e-8 e-8 | o3 g8. g16 r8 g8. g16 r8 o4 d8 d8 |
+  o3 c8. c16 r8 c8. c16 r8 g8 g8 | o3 f8. f16 r8 f8. f16 r8 o4 c8 c8 | o3 d-8. d-16 r8 d-8. d-16 r8 a-8 a-8 | o3 g8. g16 r8 g8. g16 r8 o4 d8 d8 |
+  o2 a-8. a-16 r8 a-8. a-16 r8 o3 e-8 e-8 | o3 e-8. e-16 r8 e-8. e-16 r8 b-8 b-8 | o2 b-8. b-16 r8 b-8. b-16 r8 o3 f8 f8 | o3 c8. c16 r8 c8. c16 r8 g8 g8 |
+  o3 f8. f16 r8 f8. f16 r8 o4 c8 c8 | o3 d-8. d-16 r8 d-8. d-16 r8 a-8 a-8 | o3 g8. g16 r8 g8. g16 r8 o4 d8 d8 | o3 g8. g16 r8 g8. g16 r8 g8 g8 |
+
+track drums kit vol=0.5 rev=0.18
+  r2 r4 f16 f16 f16 f16 | (b c)4. (b c)4. s16 s16 s16 s16 |
+  L v100 [ (b c)4. f4. m8 t8 | [ b4. f4. s4 | ]6 b4. f8 f8 m8 m8 t8 | ]2
+
+track hats kit vol=0.62 pan=0.15 rev=0.12
+  r1 | r1 | L [ v60 h8 v35 h8 h8 v60 h8 v35 h8 h8 v60 o8 v35 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | ]16

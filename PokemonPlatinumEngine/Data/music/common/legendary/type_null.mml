@@ -1,0 +1,47 @@
+# Battle against Type: Null (the masked synthetic): the family's motif (a fifth up from the tonic, a leap to the
+# ninth that falls back, then a step down from the fourth and a leap to the fifth) held in by an A-minor square lead,
+# clipped and low, over brass and a plodding heavy beat. Silvally sings the same motif freed. Original composition for this game.
+title Battle! Type: Null
+tempo 168
+meter 4/4
+lowhptempo 1.08
+reverb 0.22
+
+track lead square lowhp=sawlead vol=0.78 pan=0 rev=0.18
+  q5 r1 | o4 a4 r4 o5 e4 r4 |
+  L o4 a4. o5 e8 b4 a4 | o5 d4. c8 o4 b4 o5 e4 | o5 c4 r8 o4 b8 a4 e4 | o4 g4. a8 b4 r4 |
+  o4 a4. o5 e8 b4 o6 c4 | o5 f4. e8 d4 a4 | o5 c4 d8 c8 o4 a4 f4 | o4 g4 a8 b8 o5 e2 |
+  o5 f4. g8 a4 f4 | o5 g4. f8 d4 o4 b4 | o4 a4. o5 e8 b4 a4 | o5 g4. f+8 e4 o4 b4 |
+  o5 d4. c8 o4 b4 o5 e4 | o5 a4. g8 f4 c4 | o5 d4 g4 b4 a8 g8 | o5 e4. d8 o4 b4 g4 |
+
+track brass brass vol=0.52 pan=-0.25 rev=0.2
+  o3 (a >e)1 | o3 (a >e)2 r2 |
+  L o4 e2 c2 | o4 d2 f2 | o4 e2 a2 | o4 g2 e2 |
+  o4 c2 e2 | o4 f2 a2 | o4 a2 f2 | o4 g2 b2 |
+  o4 a2 o5 c2 | o4 b2 g2 | o4 c2 e2 | o4 b2 g2 |
+  o4 a2 f2 | o4 f2 a2 | o4 g2 b2 | o4 b2 g2 |
+
+track pad pad unless=lowhp vol=0.36 pan=0.3 rev=0.3
+  r1 | r1 |
+  L o4 (c e a)1 | (d f a)1 | (c e a)1 | (e g b)1 |
+  (c e a)1 | (d f a)1 | (c f a)1 | (e g b)1 |
+  (c f a)1 | (d g b)1 | (c e a)1 | (e g b)1 |
+  (d f a)1 | (c f a)1 | (d g b)1 | (e g b)1 |
+
+track bass synthbass vol=0.88 rev=0.04
+  o2 a4 r4 a4 r4 | o2 a4 r4 a4 r4 |
+  L [ o2 a4. a8 ]2 | [ o3 d4. d8 ]2 | [ o2 a4. a8 ]2 | [ o3 e4. e8 ]2 |
+  [ o2 a4. a8 ]2 | [ o3 d4. d8 ]2 | [ o3 f4. f8 ]2 | [ o3 e4. e8 ]2 |
+  [ o3 f4. f8 ]2 | [ o3 g4. g8 ]2 | [ o2 a4. a8 ]2 | [ o3 e4. e8 ]2 |
+  [ o3 d4. d8 ]2 | [ o3 f4. f8 ]2 | [ o3 g4. g8 ]2 | o3 e4. e8 e8 e8 e4 |
+
+track drums kit vol=0.66 rev=0.12
+  v100 b4 r4 b4 r4 | b4 r4 b8 b8 s8 s8 |
+  L [ (b c)4 r8 b8 s4 r8 b8 | [ b4 r8 b8 s4 r8 b8 | ]6 b8 b8 s8 s8 f8 f8 (b s)4 | ]2
+
+track hats kit vol=0.44 pan=0.2 rev=0.08
+  r1 | r1 | L [ v62 h8 v35 h8 v62 h8 v35 h8 v62 h8 v35 h8 v62 h8 v35 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.55 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

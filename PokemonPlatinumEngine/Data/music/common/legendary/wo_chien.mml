@@ -1,0 +1,46 @@
+# Battle against Wo-Chien (the Ruinous Pokémon of the tablets): the Treasures of Ruin's four-note creep, down and
+# back, drawn out on an oboe over a swampy pad in G minor. Original composition for this game.
+title Battle! Wo-Chien
+tempo 154
+meter 4/4
+lowhptempo 1.08
+reverb 0.34
+
+track lead oboe lowhp=sawlead vol=0.9 pan=0 rev=0.3
+  o4 g2 f+2 | o4 e-2 g2 |
+  L o5 g2. f8 g8 | o5 f+2. e8 d8 | o5 e-2. f8 g8 | o5 g4. f8 d4 c4 |
+  o4 b-4 o5 c4 e-4. d8 | o5 d2 b-4 g4 | o5 c4. d-8 e-4 c4 | o5 f+4 e4 d4 o4 a4 |
+  o6 d2. c8 o5 b-8 | o5 a2. f+8 a8 | o5 b-2 g4 e-4 | o5 c4 e-8 g8 o6 c4 o5 b-4 |
+  o5 b-4. a-8 g4 e-4 | o5 e-4 c4 a-4 g-4 | o5 f+2 a4 o6 c4 | o6 d4 c4 o5 a4 f+4 |
+
+track counter clarinet vol=0.48 pan=-0.25 rev=0.32
+  r1 | r1 |
+  L o4 b-1 | o4 a1 | o4 g1 | o4 b-1 |
+  o4 g1 | o4 g2 b-2 | o4 a-1 | o4 a2 f+2 |
+  o4 b-1 | o4 a1 | o4 g1 | o4 g2 e-2 |
+  o4 g1 | o4 a-2 e-2 | o4 a1 | o4 a2 f+2 |
+
+track pad pad unless=lowhp vol=0.34 pan=0.3 rev=0.45
+  r1 | r1 |
+  L o4 (g b- >d)1 | o4 (f+ a >d)1 | o4 (e- g b-)1 | o4 (g b- >d)1 |
+  o4 (e- g >c)1 | o4 (g b- >d)1 | o4 (a- >c e-)1 | o4 (f+ a >d)1 |
+  o4 (g b- >d)1 | o4 (f+ a >d)1 | o4 (e- g b-)1 | o4 (e- g >c)1 |
+  o4 (e- g b-)1 | o4 (a- >c e-)1 | o4 (f+ a >d)1 | o4 (f+ a >c)1 |
+
+track bass contrabass vol=0.82 rev=0.08
+  o3 g2 d2 | o3 e-2 g2 |
+  L o3 g4. g8 d4 g4 | o3 d4. d8 a4 d4 | o3 e-4. e-8 b-4 e-4 | o3 g4. g8 d4 g4 |
+  o3 c4. c8 g4 c4 | o3 g4. g8 d4 g4 | o3 a-4. a-8 e-4 a-4 | o3 d4. d8 a4 d4 |
+  o3 g4. g8 d4 g4 | o3 d4. d8 a4 d4 | o3 e-4. e-8 b-4 e-4 | o3 c4. c8 g4 c4 |
+  o3 e-4. e-8 b-4 e-4 | o3 a-4. a-8 e-4 a-4 | o3 d4. d8 a4 d4 | o3 d4 d8 d8 c4 o2 a4 |
+
+track drums kit vol=0.54 rev=0.18
+  v100 b2 b2 | b4 b4 s8 s8 s8 s8 |
+  L [ (b c)4 r8 b8 s4 r8 b8 | [ b4 r8 b8 s4 r8 b8 | ]6 b4 r8 b8 s8 s8 m8 f8 | ]2
+
+track hats kit vol=0.42 pan=0.2 rev=0.12
+  r1 | r1 | L v60 [ k8 v35 k8 v60 k8 v35 k8 v60 k8 v35 k8 v60 k8 v35 k8 v60 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.56 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

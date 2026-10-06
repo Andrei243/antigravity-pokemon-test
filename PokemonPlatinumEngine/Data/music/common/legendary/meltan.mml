@@ -1,0 +1,47 @@
+# Battle against Meltan (the hex-nut mythical, a little drop of liquid metal): marimba bouncing on octaves like a nut
+# on a bolt, a three-note twist to finish each bounce, bells ringing on the off beats, all in a bright C major.
+# Original composition for this game.
+title Battle! Meltan
+tempo 154
+meter 4/4
+lowhptempo 1.07
+reverb 0.24
+
+track lead marimba lowhp=sawlead vol=0.92 pan=0 rev=0.22
+  o4 g8 o5 g8 o4 g8 o5 g8 o4 g8 o5 g8 o4 g8 o5 g8 | o5 d8 o6 d8 o5 b8 o6 b8 o5 g4 r4 |
+  L o5 c8 o6 c8 o5 g8 o6 g8 e8 d8 c4 | o5 e8 g8 o6 c8 o5 g8 a8 g8 e4 | o5 f8 o6 f8 o5 c8 o6 c8 a8 g8 f4 | o5 g8 b8 o6 d8 o5 b8 a8 b8 g4 |
+  o5 c8 o6 c8 o5 g8 o6 g8 a8 g8 e8 c8 | o6 c8 o5 a8 e8 a8 o6 c8 d8 e4 | o5 d8 o6 d8 o5 a8 o6 a8 f+8 e8 d4 | o5 b8 o6 d8 o5 g8 a8 b4 r4 |
+  o5 a8 o6 c8 f8 c8 d8 c8 o5 a4 | o5 g8 o6 g8 o5 d8 o6 d8 b8 a8 g4 | o5 e8 o6 e8 o5 b8 o6 b8 g8 a8 e4 | o6 a8 g8 e8 c8 d8 e8 a4 |
+  o5 f8 a8 o6 c8 f8 d8 c8 o5 a4 | o5 b8 g8 b8 o6 d8 e8 d8 o5 b4 | o5 c8 o6 c8 o5 g8 o6 g8 e8 d8 c8 o5 g8 | o5 a8 b8 o6 d8 o5 b8 g4 g8 g8 |
+
+track bells bell vol=0.5 pan=-0.3 rev=0.35
+  r1 | r1 |
+  L r4 o5 e4 r4 g4 | r4 o5 g4 r4 e4 | r4 o5 a4 r4 o5 c4 | r4 o5 b4 r4 d4 |
+  r4 o5 e4 r4 g4 | r4 o5 c4 r4 e4 | r4 o5 f+4 r4 a4 | r4 o5 d4 r4 b4 |
+  r4 o5 c4 r4 f4 | r4 o5 b4 r4 g4 | r4 o5 g4 r4 b4 | r4 o5 e4 r4 c4 |
+  r4 o5 a4 r4 f4 | r4 o5 d4 r4 g4 | r4 o5 e4 r4 g4 | r4 o5 b4 r4 d4 |
+
+track strings strings unless=lowhp vol=0.28 pan=0.3 rev=0.3
+  r1 | o4 (d g b)1 |
+  L o4 (c e g)1 | o4 (c e g)1 | o4 (c f a)1 | o4 (d g b)1 |
+  o4 (c e g)1 | o4 (c e a)1 | o4 (d f+ a)1 | o4 (d g b)1 |
+  o4 (c f a)1 | o4 (d g b)1 | o4 (e g b)1 | o4 (c e a)1 |
+  o4 (c f a)1 | o4 (d g b)1 | o4 (c e g)1 | o4 (d g b)1 |
+
+track bass bass vol=0.74 rev=0.05
+  r1 | o3 g8 o4 g8 o3 d8 o4 d8 o3 g4 r4 |
+  L [ o3 c8 o4 c8 o3 g8 o4 g8 ]2 | [ o3 c8 o4 c8 o3 g8 o4 g8 ]2 | [ o3 f8 o4 f8 o3 c8 o4 c8 ]2 | [ o3 g8 o4 g8 o3 d8 o4 d8 ]2 |
+  [ o3 c8 o4 c8 o3 g8 o4 g8 ]2 | [ o3 a8 o4 a8 o3 e8 o4 e8 ]2 | [ o3 d8 o4 d8 o3 a8 o4 a8 ]2 | [ o3 g8 o4 g8 o3 d8 o4 d8 ]2 |
+  [ o3 f8 o4 f8 o3 c8 o4 c8 ]2 | [ o3 g8 o4 g8 o3 d8 o4 d8 ]2 | [ o3 e8 o4 e8 o3 b8 o4 b8 ]2 | [ o3 a8 o4 a8 o3 e8 o4 e8 ]2 |
+  [ o3 f8 o4 f8 o3 c8 o4 c8 ]2 | [ o3 g8 o4 g8 o3 d8 o4 d8 ]2 | [ o3 c8 o4 c8 o3 g8 o4 g8 ]2 | [ o3 g8 o4 g8 o3 d8 o4 d8 ]2 |
+
+track drums kit vol=0.5 rev=0.12
+  v95 [ b8 r8 ]4 | b8 r8 b8 r8 s16 s16 s16 s16 t16 m16 f8 |
+  L v100 [ [ b8 r8 s8 b8 r8 b8 s8 r8 | ]3 b8 r8 s8 b8 x16 x16 x16 x16 s8 s8 | ]4
+
+track hats kit vol=0.66 pan=0.2 rev=0.08
+  r1 | r1 | L [ v60 h8 v40 k8 v60 h8 v40 k8 v60 h8 v40 k8 v60 o8 v40 k8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

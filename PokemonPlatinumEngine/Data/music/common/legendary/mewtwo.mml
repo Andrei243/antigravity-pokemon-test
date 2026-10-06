@@ -1,0 +1,47 @@
+# Battle against Mewtwo (the engineered Psychic legend): a cold saw lead that creeps chromatically through C minor,
+# held back, over organ chords and a pulsing synth ostinato. Original composition for this game.
+title Battle! Mewtwo
+tempo 176
+meter 4/4
+lowhptempo 1.08
+reverb 0.26
+
+track lead sawlead lowhp=square vol=0.8 pan=0 rev=0.25
+  r1 | o4 g4. a-8 g4 b4 |
+  L o5 g2 r8 a-8 g8 f8 | o5 a-2 e-4. d8 | o5 e-2 c4. o4 b8 | o5 d-2 f4. e8 |
+  o5 g4. a-8 g4 e-4 | o5 c4. d-8 c4 e-4 | o5 f2 a-4 o6 c4 | o5 b2 r8 a-8 g4 |
+  o6 c2 o5 a-4. g8 | o5 f2 a-4 o6 d-4 | o6 c4. o5 b8 o6 c4 o5 e-4 | o5 d4. e-8 d4 b4 |
+  o5 g2 r4 g8 a-8 | o5 g+2 b4 o6 e4 | o6 f4. e8 c4 o5 a-4 | o5 b2 d4 f4 |
+
+track ostinato pulse vol=0.36 pan=0.3 rev=0.15
+  [ o4 c8 g8 e-8 g8 ]2 | [ o4 g8 o5 d8 o4 b8 o5 d8 ]2 |
+  L [ o4 c8 g8 e-8 g8 ]2 | [ o4 a-8 o5 e-8 c8 e-8 ]2 | [ o4 c8 g8 e-8 g8 ]2 | [ o4 d-8 a-8 f8 a-8 ]2 |
+  [ o4 c8 g8 e-8 g8 ]2 | [ o4 a-8 o5 e-8 c8 e-8 ]2 | [ o4 f8 o5 c8 o4 a-8 o5 c8 ]2 | [ o4 g8 o5 d8 o4 b8 o5 d8 ]2 |
+  [ o4 f8 o5 c8 o4 a-8 o5 c8 ]2 | [ o4 d-8 a-8 f8 a-8 ]2 | [ o4 a-8 o5 e-8 c8 e-8 ]2 | [ o4 g8 o5 d8 o4 b8 o5 d8 ]2 |
+  [ o4 c8 g8 e-8 g8 ]2 | [ o4 g+8 b8 e8 b8 ]2 | [ o4 f8 o5 c8 o4 a-8 o5 c8 ]2 | [ o4 g8 o5 d8 o4 b8 o5 d8 ]2 |
+
+track organ organ unless=lowhp vol=0.38 pan=-0.3 rev=0.35
+  o4 (c e- g)1 | (d g b)1 |
+  L o4 (c e- g)1 | (c e- a-)1 | (c e- g)1 | (d- f a-)1 |
+  o4 (c e- g)1 | (c e- a-)1 | (c f a-)1 | (d g b)1 |
+  o4 (c f a-)1 | (d- f a-)1 | (c e- a-)1 | (d g b)1 |
+  o4 (c e- g)1 | (e g+ b)1 | (c f a-)1 | (d g b)1 |
+
+track bass synthbass vol=0.92 rev=0.04
+  [ o3 c8 ]8 | [ o3 g8 ]8 |
+  L [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 d-8 d-8 o4 d-8 o3 d-8 ]2 |
+  [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 |
+  [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 d-8 d-8 o4 d-8 o3 d-8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 |
+  [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 |
+
+track drums kit vol=0.58 rev=0.14
+  r1 | v100 r2 b8 b8 s16 s16 s16 s16 |
+  L (b c)4 r8 b8 s4 r8 b16 b16 | [ b4 r8 b8 s4 r8 b16 b16 | ]6 b4 r8 b8 s8 s16 s16 s16 s16 s8 |
+  (b c)4 r8 b8 s4 r8 b16 b16 | [ b4 r8 b8 s4 r8 b16 b16 | ]6 b4 r8 b8 t16 t16 m16 m16 f16 f16 f8 |
+
+track hats kit vol=0.44 pan=0.15 rev=0.08
+  r1 | r1 | L [ v60 h8 v40 h8 v60 h8 v40 h16 h16 v60 h8 v40 h8 v60 o8 v40 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.44 pan=-0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

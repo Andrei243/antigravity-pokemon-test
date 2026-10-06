@@ -1,0 +1,49 @@
+# Battle against Zarude (the rogue monkey of the jungle): a swung D-dorian groove, a marimba swinging from branch to
+# branch over offbeat pulse stabs, bongos and a walking bass. Original composition for this game.
+title Battle! Zarude
+tempo 172
+meter 4/4
+lowhptempo 1.07
+reverb 0.22
+
+track lead marimba lowhp=sawlead vol=0.78 pan=0 rev=0.22
+  o5 d6 f12 a6 o6 d12 c4 o5 a4 | o5 g6 b12 o6 d6 c12 o5 b2 |
+  L o5 a6 a12 o6 c6 d12 o5 a4 f6 g12 | o5 b4 a6 g12 b6 o6 d12 e4 | o6 f6 e12 d6 c12 o5 a4 o6 d4 | o6 d6 o5 b12 g6 a12 b2 |
+  o5 a6 o6 c12 f6 e12 c4 o5 a4 | o5 g6 e12 g6 o6 c12 e4 d4 | o6 d4 c6 o5 a12 g6 f12 d4 | o5 e6 a12 o6 c6 e12 d4 c4 |
+  o5 a6 a12 o6 c6 d12 f4 g4 | o6 g4 d6 o5 b12 o6 d6 e12 d4 | o6 c4 o5 a6 f12 g6 a12 o6 c4 | o5 b6 a12 g6 b12 o6 d6 e12 g4 |
+  o6 e4 d6 c12 o5 g6 a12 o6 c4 | o6 e6 d12 c6 o5 a12 e4 a4 | o5 b4 g6 e12 g6 b12 o6 d4 | o6 d6 o5 b12 a6 g12 b2 |
+
+track stabs pulse vol=0.36 pan=-0.25 rev=0.15
+  r1 | r1 |
+  L [ r6 o4 (d f a)12 ]4 | [ r6 o4 (d g b)12 ]4 | [ r6 o4 (d f a)12 ]4 | [ r6 o4 (d g b)12 ]4 |
+  [ r6 o4 (c f a)12 ]4 | [ r6 o4 (c e g)12 ]4 | [ r6 o4 (d f a)12 ]4 | [ r6 o4 (c e a)12 ]4 |
+  [ r6 o4 (d f a)12 ]4 | [ r6 o4 (d g b)12 ]4 | [ r6 o4 (c f a)12 ]4 | [ r6 o4 (d g b)12 ]4 |
+  [ r6 o4 (c e g)12 ]4 | [ r6 o4 (c e a)12 ]4 | [ r6 o4 (e g b)12 ]4 | [ r6 o4 (d g b)12 ]4 |
+
+track organ organ unless=lowhp vol=0.26 pan=0.3 rev=0.25
+  r1 | r1 |
+  L o4 (d f a)1 | o4 (d g b)1 | o4 (d f a)1 | o4 (d g b)1 |
+  o4 (c f a)1 | o4 (c e g)1 | o4 (d f a)1 | o4 (c e a)1 |
+  o4 (d f a)1 | o4 (d g b)1 | o4 (c f a)1 | o4 (d g b)1 |
+  o4 (c e g)1 | o4 (c e a)1 | o4 (e g b)1 | o4 (d g b)1 |
+
+track bass bass vol=0.66 rev=0.05
+  o3 d2 a2 | o3 g2 d4 g4 |
+  L o3 d4 f4 a4 o4 c4 | o3 g4 b4 o4 d4 o3 b4 | o3 d4 a4 f4 a4 | o3 g4 d4 g4 b4 |
+  o3 f4 a4 o4 c4 o3 a4 | o3 c4 e4 g4 e4 | o3 d4 f4 a4 f4 | o3 a4 e4 c4 e4 |
+  o3 d4 f4 a4 o4 c4 | o3 g4 b4 o4 d4 o3 b4 | o3 f4 c4 f4 a4 | o3 g4 d4 b4 d4 |
+  o3 c4 g4 e4 g4 | o3 a4 e4 a4 o4 c4 | o3 e4 b4 g4 b4 | o3 g4 b4 o4 d4 o3 g4 |
+
+track drums kit vol=0.5 rev=0.12
+  r1 | b6 b12 s6 b12 t12 t12 m12 m12 f12 f12 |
+  L v100 [ (b c)6 b12 s6 b12 b6 r12 s6 b12 | b6 b12 s6 b12 b6 r12 s6 b12 | b6 b12 s6 b12 b6 r12 s6 b12 | b6 b12 s6 b12 t12 t12 m12 m12 f12 f12 | ]4
+
+track bongos kit vol=0.34 pan=-0.3 rev=0.15
+  r1 | r1 | L v80 [ r6 t12 r6 m12 t12 t12 m12 f6 f12 | ]16
+
+track shaker kit vol=0.36 pan=0.25 rev=0.1
+  r1 | r1 | L [ v70 k6 v40 k12 v60 k6 v40 k12 v70 k6 v40 k12 v60 k6 v40 k12 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.44 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

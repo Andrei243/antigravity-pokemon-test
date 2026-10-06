@@ -1,0 +1,53 @@
+# Battle against Lunala (the moone bird, the grown light at midnight): a harp turning under a choir, then the light
+# line's arpeggio in full on organ, rising in triplets through C-sharp minor and folding back, dark and hushed.
+# Original composition for this game.
+title Battle! Lunala
+tempo 164
+meter 4/4
+lowhptempo 1.08
+reverb 0.4
+
+track lead organ lowhp=sawlead vol=0.92 pan=0 rev=0.38
+  o5 c+2 e2 | o5 d+2 c4 o4 g+4 |
+  L o4 c+12 g+12 o5 c+12 e4 e8 d+8 c+4 | o4 b4. a8 o5 c+4 e4 | o4 f+12 a12 o5 c+12 f+4 e4 c+4 | o5 c4 o4 g+4 d+4 g+4 |
+  o5 c+12 g+12 o6 c+12 e4. d+8 c+8 o5 b8 | o5 g+4 b4 o6 e4 c+4 | o5 b4. c+8 d+4 f+4 | o5 d+2 c4 o4 g+4 |
+  o4 e12 a12 o5 c+12 e4 f+8 e8 c+4 | o5 a4. g+8 f+4 c+4 | o5 g+12 o6 c+12 e12 g+4 f+8 e8 c+4 | o6 d+4 c4 o5 g+2 |
+  o5 a12 o6 c+12 e12 a4 f+8 e8 c+4 | o6 d4. c+8 o5 a4 f+4 | o5 f+12 a12 o6 c+12 f+4 e4 c+4 | o5 g+4 o6 c4 d+2 |
+
+track counter clarinet vol=0.42 pan=-0.3 rev=0.4
+  r1 | r1 |
+  L o4 e2 g+2 | o4 e2 c+2 | o4 a2 f+2 | o4 g+2 d+2 |
+  o4 g+2 e2 | o4 b2 g+2 | o4 f+2 d+2 | o4 d+2 g+2 |
+  o4 c+2 e2 | o4 c+2 f+2 | o4 e2 g+2 | o4 g+2 d+2 |
+  o4 a2 e2 | o4 f+2 a2 | o4 a2 f+2 | o4 g+2 o5 c2 |
+
+track harp harp vol=0.36 pan=0.35 rev=0.45
+  [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
+  L [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 a8 o4 e8 a8 o5 c+8 ]2 | [ o3 f+8 o4 c+8 f+8 a8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
+  [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 e8 b8 o4 e8 g+8 ]2 | [ o3 b8 o4 f+8 b8 o5 d+8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
+  [ o3 a8 o4 e8 a8 o5 c+8 ]2 | [ o3 f+8 o4 c+8 f+8 a8 ]2 | [ o4 c+8 g+8 o5 c+8 e8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
+  [ o3 a8 o4 e8 a8 o5 c+8 ]2 | [ o3 d8 a8 o4 d8 f+8 ]2 | [ o3 f+8 o4 c+8 f+8 a8 ]2 | [ o3 g+8 o4 d+8 g+8 o5 c8 ]2 |
+
+track choir choir unless=lowhp vol=0.38 pan=-0.1 rev=0.5
+  o4 (c+ e g+)1 | o4 (c d+ g+)1 |
+  L o4 (c+ e g+)1 | o4 (c+ e a)1 | o4 (c+ f+ a)1 | o4 (c d+ g+)1 |
+  o4 (c+ e g+)1 | o4 (e g+ b)1 | o4 (d+ f+ b)1 | o4 (c d+ g+)1 |
+  o4 (c+ e a)1 | o4 (c+ f+ a)1 | o4 (c+ e g+)1 | o4 (c d+ g+)1 |
+  o4 (c+ e a)1 | o4 (d f+ a)1 | o4 (c+ f+ a)1 | o4 (c d+ g+)1 |
+
+track bass bass vol=0.72 rev=0.06
+  r1 | o2 g+2 g+2 |
+  L o3 c+8. c+16 r8 c+8 o4 c+8 o3 c+8 c+4 | o2 a8. a16 r8 a8 o3 a8 o2 a8 a4 | o2 f+8. f+16 r8 f+8 o3 f+8 o2 f+8 f+4 | o2 g+8. g+16 r8 g+8 o3 g+8 o2 g+8 g+4 |
+  o3 c+8. c+16 r8 c+8 o4 c+8 o3 c+8 c+4 | o3 e8. e16 r8 e8 o4 e8 o3 e8 e4 | o2 b8. b16 r8 b8 o3 b8 o2 b8 b4 | o2 g+8. g+16 r8 g+8 o3 g+8 o2 g+8 g+4 |
+  o2 a8. a16 r8 a8 o3 a8 o2 a8 a4 | o2 f+8. f+16 r8 f+8 o3 f+8 o2 f+8 f+4 | o3 c+8. c+16 r8 c+8 o4 c+8 o3 c+8 c+4 | o2 g+8. g+16 r8 g+8 o3 g+8 o2 g+8 g+4 |
+  o2 a8. a16 r8 a8 o3 a8 o2 a8 a4 | o3 d8. d16 r8 d8 o4 d8 o3 d8 d4 | o2 f+8. f+16 r8 f+8 o3 f+8 o2 f+8 f+4 | o2 g+8. g+16 r8 g+8 o3 g+8 o2 g+8 g+4 |
+
+track drums kit vol=0.46 rev=0.2
+  r1 | v90 r2 f8 f8 m8 t8 | L v100 [ [ b4 m8 b8 s4 t8 f8 | ]3 b4 m8 b8 s16 s16 t16 t16 m16 m16 f16 f16 | ]4
+
+track shaker kit vol=0.6 pan=0.2 rev=0.12
+  r1 | r1 | L [ v65 k16 v35 k16 k16 k16 v65 k16 v35 k16 k16 k16 v65 k16 v35 k16 k16 k16 v65 k16 v35 k16 k16 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 f+16 r16 f+16 r16 r4 f+16 r16 f+16 r16 r4 | ]16

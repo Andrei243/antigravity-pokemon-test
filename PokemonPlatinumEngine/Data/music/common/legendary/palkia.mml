@@ -1,0 +1,64 @@
+# Battle against Palkia (the master of space): harp sweeps across four octaves, then a vast D-minor theme on the
+# string section in long strides over a choir, the bright Dorian fourth opening it wide. Original composition for this game.
+title Battle! Palkia
+tempo 170
+meter 4/4
+lowhptempo 1.08
+reverb 0.38
+
+track lead strings lowhp=sawlead vol=0.8 pan=0 rev=0.34
+  r1 | o5 e2 a2 |
+  L o5 d4. a8 o6 d2 | o6 d4. c8 o5 b4 g4 | o5 f2 b-4 o6 d4 | o6 e2. d4 |
+  o6 d4. c8 o5 a4 f4 | o5 g4. a8 b4 o6 d4 | o6 f2 d4 o5 b-4 | o5 e2 a2 |
+  o5 g4 b-4 o6 d4 g4 | o6 f2 e4 d4 | o6 e-2 d4 o5 b-4 | o5 g2 o6 c4 e4 |
+  o6 d4. c8 o5 b-4 f4 | o6 c2 o5 a4 f4 | o5 g4 b-4 o6 d4 c4 | o6 c+2 o5 a4 e4 |
+
+track counter horn vol=0.4 pan=-0.25 rev=0.32
+  r1 | o4 c+2 e2 |
+  L o4 f2 a2 | o4 g2 b2 | o4 f2 d2 | o4 g2 e2 |
+  o4 a2 f2 | o4 b2 g2 | o4 b-2 f2 | o4 c+2 e2 |
+  o4 d2 g2 | o4 a2 f2 | o4 g2 b-2 | o4 e2 g2 |
+  o4 f2 d2 | o4 a2 f2 | o4 b-2 g2 | o4 e2 c+2 |
+
+track harp harp vol=0.36 pan=0.3 rev=0.4
+  o3 d16 f16 a16 o4 d16 f16 a16 o5 d16 f16 a16 o6 d16 f16 a16 r4 | o3 c+16 e16 a16 o4 c+16 e16 a16 o5 c+16 e16 a16 o6 c+16 e16 a16 r4 |
+  L o3 d16 f16 a16 o4 d16 f16 a16 o5 d16 f16 a16 o6 d16 f16 a16 r4 | o3 d16 g16 b16 o4 d16 g16 b16 o5 d16 g16 b16 o6 d16 g16 b16 r4 |
+  o3 d16 f16 b-16 o4 d16 f16 b-16 o5 d16 f16 b-16 o6 d16 f16 b-16 r4 | o3 c16 e16 g16 o4 c16 e16 g16 o5 c16 e16 g16 o6 c16 e16 g16 r4 |
+  o3 d16 f16 a16 o4 d16 f16 a16 o5 d16 f16 a16 o6 d16 f16 a16 r4 | o3 d16 g16 b16 o4 d16 g16 b16 o5 d16 g16 b16 o6 d16 g16 b16 r4 |
+  o3 d16 f16 b-16 o4 d16 f16 b-16 o5 d16 f16 b-16 o6 d16 f16 b-16 r4 | o3 c+16 e16 a16 o4 c+16 e16 a16 o5 c+16 e16 a16 o6 c+16 e16 a16 r4 |
+  o3 d16 g16 b-16 o4 d16 g16 b-16 o5 d16 g16 b-16 o6 d16 g16 b-16 r4 | o3 d16 f16 a16 o4 d16 f16 a16 o5 d16 f16 a16 o6 d16 f16 a16 r4 |
+  o3 e-16 g16 b-16 o4 e-16 g16 b-16 o5 e-16 g16 b-16 o6 e-16 g16 b-16 r4 | o3 c16 e16 g16 o4 c16 e16 g16 o5 c16 e16 g16 o6 c16 e16 g16 r4 |
+  o3 d16 f16 b-16 o4 d16 f16 b-16 o5 d16 f16 b-16 o6 d16 f16 b-16 r4 | o3 c16 f16 a16 o4 c16 f16 a16 o5 c16 f16 a16 o6 c16 f16 a16 r4 |
+  o3 d16 g16 b-16 o4 d16 g16 b-16 o5 d16 g16 b-16 o6 d16 g16 b-16 r4 | o3 c+16 e16 a16 o4 c+16 e16 a16 o5 c+16 e16 a16 o6 c+16 e16 a16 r4 |
+
+track choir choir unless=lowhp vol=0.34 pan=-0.3 rev=0.45
+  o4 (d f a)1 | o4 (c+ e a)1 |
+  L o4 (d f a)1 | o4 (d g b)1 | o4 (d f b-)1 | o4 (c e g)1 |
+  o4 (d f a)1 | o4 (d g b)1 | o4 (d f b-)1 | o4 (c+ e a)1 |
+  o4 (d g b-)1 | o4 (d f a)1 | o4 (e- g b-)1 | o4 (c e g)1 |
+  o4 (d f b-)1 | o4 (c f a)1 | o4 (d g b-)1 | o4 (c+ e a)1 |
+
+track bass contrabass vol=0.64 rev=0.1
+  o3 d1 | o3 a1 |
+  L o3 d2. a4 | o3 g2. d4 | o3 b-2. f4 | o3 c2. g4 |
+  o3 d2. a4 | o3 g2. d4 | o3 b-2. f4 | o3 a2. e4 |
+  o3 g2. d4 | o3 d2. a4 | o3 e-2. b-4 | o3 c2. g4 |
+  o3 b-2. f4 | o3 f2. c4 | o3 g2. d4 | o3 a2. e4 |
+
+track timpani timpani vol=0.38 rev=0.3
+  o3 d4 r2. | o3 a4 r4 [ a16 ]8 |
+  L o3 d4 r2. | o3 g4 r2. | o3 b-4 r2. | o3 c4 r2. |
+  o3 d4 r2. | o3 g4 r2. | o3 b-4 r2. | o3 a4 r4 [ a16 ]8 |
+  o3 g4 r2. | o3 d4 r2. | o3 e-4 r2. | o3 c4 r2. |
+  o3 b-4 r2. | o3 f4 r2. | o3 g4 r2. | o3 a4 r4 [ a16 ]8 |
+
+track drums kit vol=0.46 rev=0.2
+  r1 | r2 t16 t16 t16 t16 m16 m16 f16 f16 |
+  L v100 [ (b c)4 r8 b8 s4 r8 b8 | b4 r8 b8 s4 r8 b8 | b4 r8 b8 s4 r8 b8 | b4 r8 b8 s8 t16 t16 m16 m16 f16 f16 | ]4
+
+track hats kit vol=0.6 pan=0.2 rev=0.15
+  r1 | r1 | L [ v55 h8 v30 h8 v55 h8 v30 o8 v55 h8 v30 h8 v55 h8 v30 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | ]16

@@ -1,0 +1,53 @@
+# Battle against Terapagos (the Tera Pokémon in its crystal shell): a bell melody rings out over a choir, a
+# vibraphone and a glockenspiel glinting on the off-beats, bright in A major. Original composition for this game.
+title Battle! Terapagos
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.38
+
+track lead bell lowhp=sawlead vol=0.94 pan=0 rev=0.34
+  o5 a4 o6 c+4 e4 a4 | o6 g+2 e2 |
+  L o5 e4. a8 o6 c+4 e4 | o5 b4 o6 e4 o5 b4 g+4 | o6 c+4. o5 b8 a4 f+4 | o5 a4 o6 d4 f+4 e4 |
+  o6 e4. c+8 o5 a4 o6 c+4 | o5 b4. g+8 e4 f+4 | o5 a4 f+4 a4 o6 d4 | o5 b2 o6 e4 g+4 |
+  o6 f+4. e8 c+4 o5 a4 | o6 d4 e4 f+4 a4 | o6 a4. g+8 e4 c+4 | o6 b4 g+4 e4 d4 |
+  o5 f+4. a8 o6 d4 f+4 | o6 e4 d+4 c+4 o5 g+4 | o5 f+4 b4 o6 d4 e4 | o6 e2 d4 o5 b4 |
+
+track glock glockenspiel vol=0.34 pan=0.35 rev=0.4
+  r1 | r1 |
+  L o5 r8 c+8 r8 e8 r8 a8 r8 e8 | o5 r8 e8 r8 g+8 r8 b8 r8 g+8 | o5 r8 c+8 r8 f+8 r8 a8 r8 f+8 | o5 r8 d8 r8 f+8 r8 a8 r8 f+8 |
+  o5 r8 c+8 r8 e8 r8 a8 r8 e8 | o5 r8 e8 r8 g+8 r8 b8 r8 g+8 | o5 r8 d8 r8 f+8 r8 a8 r8 f+8 | o5 r8 e8 r8 g+8 r8 b8 r8 g+8 |
+  o5 r8 c+8 r8 f+8 r8 a8 r8 f+8 | o5 r8 d8 r8 f+8 r8 a8 r8 f+8 | o5 r8 c+8 r8 e8 r8 a8 r8 e8 | o5 r8 e8 r8 g+8 r8 b8 r8 g+8 |
+  o5 r8 d8 r8 f+8 r8 a8 r8 f+8 | o5 r8 c+8 r8 e8 r8 g+8 r8 e8 | o5 r8 d8 r8 f+8 r8 b8 r8 f+8 | o5 r8 e8 r8 g+8 r8 b8 r8 g+8 |
+
+track vibes vibraphone vol=0.48 pan=-0.3 rev=0.32
+  r1 | r1 |
+  L o4 c+2 e2 | o4 b2 e2 | o4 a2 f+2 | o4 f+2 a2 |
+  o4 e2 a2 | o4 e2 b2 | o4 f+2 d2 | o4 e2 b2 |
+  o4 c+2 f+2 | o4 d2 f+2 | o4 c+2 e2 | o4 b2 e2 |
+  o4 a2 f+2 | o4 e2 c+2 | o4 f+2 d2 | o4 e2 b2 |
+
+track choir choir unless=lowhp vol=0.32 pan=0.1 rev=0.5
+  r1 | r1 |
+  L o4 (c+ e a)1 | o4 (e g+ b)1 | o4 (c+ f+ a)1 | o4 (d f+ a)1 |
+  o4 (c+ e a)1 | o4 (e g+ b)1 | o4 (d f+ a)1 | o4 (e g+ b)1 |
+  o4 (c+ f+ a)1 | o4 (d f+ a)1 | o4 (c+ e a)1 | o4 (e g+ b)1 |
+  o4 (d f+ a)1 | o4 (c+ e g+)1 | o4 (d f+ b)1 | o4 (e g+ b)1 |
+
+track bass synthbass vol=0.8 rev=0.06
+  o3 a2 e2 | o3 e2 o2 b2 |
+  L o3 a4. a8 o4 a4 o3 e4 | o3 e4. e8 o4 e4 o3 b4 | o3 f+4. f+8 o4 f+4 o3 c+4 | o3 d4. d8 o4 d4 o3 a4 |
+  o3 a4. a8 o4 a4 o3 e4 | o3 e4. e8 o4 e4 o3 b4 | o3 d4. d8 o4 d4 o3 a4 | o3 e4. e8 o4 e4 o3 b4 |
+  o3 f+4. f+8 o4 f+4 o3 c+4 | o3 d4. d8 o4 d4 o3 a4 | o3 a4. a8 o4 a4 o3 e4 | o3 e4. e8 o4 e4 o3 b4 |
+  o3 d4. d8 o4 d4 o3 a4 | o3 c+4. c+8 o4 c+4 o3 g+4 | o2 b4. b8 o3 b4 f+4 | o3 e4. e8 o4 e4 o3 b4 |
+
+track drums kit vol=0.52 rev=0.16
+  v95 (b c)2 r2 | b4 b4 s8 s8 s16 s16 s16 s16 |
+  L [ (b c)8 r8 r8 b8 s4 b8 r8 | [ b8 r8 r8 b8 s4 b8 r8 | ]6 b8 r8 r8 b8 s16 s16 t16 t16 m16 m16 f16 f16 | ]2
+
+track hats kit vol=0.38 pan=0.2 rev=0.12
+  r1 | r1 | L [ v60 h8 v40 h8 v60 h8 v68 o8 v60 h8 v40 h8 v60 h8 v68 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.52 pan=-0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16

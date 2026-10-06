@@ -1,0 +1,50 @@
+# Battle against Tapu Bulu (Ula'ula's guardian, grass): the guardians' tom pattern and horn call, then a lumbering
+# G-minor tune on a low marimba in heavy dotted steps, a tuba treading underneath and the horn call returning
+# every eight bars. Original composition for this game.
+title Battle! Tapu Bulu
+tempo 150
+meter 4/4
+lowhptempo 1.1
+reverb 0.26
+
+track lead marimba lowhp=sawlead vol=0.85 pan=0 rev=0.22
+  r1 | r1 |
+  L o4 g4. g8 b-4 o5 c8 o4 b-8 | o4 d4. d8 g4 b-4 | o5 c4. c8 e-4 d8 c8 | o4 a4. a8 o5 d4 c8 o4 a8 |
+  o4 b-4. b-8 o5 e-4 f8 e-8 | o5 c4. o4 a8 f4 g8 a8 | o4 g4 r4 d4 r4 | o4 g4 r4 o5 d4 r4 |
+  o5 e-4. d8 c4 o4 g4 | o4 g4. b-8 o5 e-4 g4 | o5 f4. d8 o4 b-4 o5 c4 | o5 c4. a8 f4 e-4 |
+  o5 g4. f8 e-4 c4 | o5 d4. c8 o4 a4 f4 | o4 g4 r4 d4 r4 | o4 g4 r4 o5 d4 r4 |
+
+# The guardians' horn call: the tonic, a leap to the fifth, the pentatonic step above it and back, then the tonic an octave up
+track horn horn vol=0.5 pan=-0.2 rev=0.3
+  o4 g8 o5 d4. f8 d8 g4 | o5 g2. r4 |
+  L o3 b-1 | o4 d1 | o4 e-1 | o4 d2 f2 | o4 e-2 g2 | o4 f2 a2 | o4 g8 o5 d4. f8 d8 g4 | o5 g2. r4 |
+  o4 c2 e-2 | o4 e-2 o3 b-2 | o4 d1 | o4 c1 | o4 e-2 g2 | o4 f2 a2 | o4 g8 o5 d4. f8 d8 g4 | o5 g2. r4 |
+
+track strings strings unless=lowhp vol=0.3 pan=0.3 rev=0.32
+  r1 | r1 |
+  L o4 (d g b-)1 | (d g b-)1 | (c e- g)1 | (d f a)1 |
+  (e- g b-)1 | (c f a)1 | (d g b-)1 | (d g b-)1 |
+  (c e- g)1 | (e- g b-)1 | (d f b-)1 | (c f a)1 |
+  (c e- g)1 | (d f a)1 | (d g b-)1 | (d g b-)1 |
+
+track tuba tuba vol=0.74 rev=0.06
+  o3 g1 | o3 g2 d2 |
+  L o3 g4. g8 d2 | o3 g4. g8 d2 | o3 c4. c8 o2 g2 | o3 d4. d8 o2 a2 |
+  o3 e-4. e-8 o2 b-2 | o3 f4. f8 c2 | o3 g4. g8 d2 | o3 g4. g8 d2 |
+  o3 c4. c8 o2 g2 | o3 e-4. e-8 o2 b-2 | o2 b-4. b-8 f2 | o3 f4. f8 c2 |
+  o3 c4. c8 o2 g2 | o3 d4. d8 o2 a2 | o3 g4. g8 d2 | o3 g4. g8 d4 d4 |
+
+# The guardians' drum pattern on the toms
+track toms kit vol=0.5 pan=-0.1 rev=0.18
+  v105 [ t8 t16 t16 m8 r8 f8 m8 f4 | ]2 L [ t8 t16 t16 m8 r8 f8 m8 f4 | ]16
+
+track drums kit vol=0.52 rev=0.14
+  r1 | r1 |
+  L [ (b c)4 r4 s4. b8 | [ b4 r4 s4. b8 | ]6 b8 b8 s4 f8 f8 f4 | ]2
+
+track hats kit vol=0.36 pan=0.2 rev=0.1
+  r1 | r1 | L [ v58 h4 v40 h8 v30 h8 v58 h4 v40 h8 v30 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.46 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 g16 r16 g16 r16 r4 g16 r16 g16 r16 r4 | ]16

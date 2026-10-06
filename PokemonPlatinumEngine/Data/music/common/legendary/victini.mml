@@ -1,0 +1,54 @@
+# Battle against Victini (the Victory Pokémon): a bright B-flat-major trumpet tune of repeated-note calls and leaps,
+# pushed along by brass stabs, a galloping bass and a square-wave second voice. Original composition for this game.
+title Battle! Victini
+tempo 176
+meter 4/4
+lowhptempo 1.06
+reverb 0.22
+
+track lead trumpet lowhp=sawlead vol=0.8 pan=0 rev=0.22
+  o5 b-8 b-8 b-8 r8 b-8 r8 o6 e-4 | o6 c8 c8 c8 r8 c8 r8 f4 |
+  L o5 f8 f8 b-8 o6 d8 f4 d4 | o6 c4 o5 a8 o6 c8 f4. e-8 | o6 d8 d8 c8 o5 b-8 g4 b-4 | o5 b-4 o6 c8 d8 e-2 |
+  o6 f8 f8 d8 o5 b-8 o6 d4 f4 | o6 g8 f8 e-8 c8 f4 c4 | o6 e-8 g8 b-8 g8 f4 e-4 | o6 c4. o5 a8 f4 r4 |
+  o5 g8 b-8 o6 d8 g8 f4 d4 | o6 e-8 f8 g8 e-8 b-4 g4 | o6 f4 d4 o5 b-8 o6 c8 d8 f8 | o6 e-4 c4 o5 a4 f4 |
+  o6 g4. f8 e-4 o5 b-4 | o6 c8 d8 e-8 f8 a4 f4 | o6 g4 e8 c8 g4 e4 | o6 f4 c4 o5 a4 c8 e-8 |
+
+track counter square vol=0.3 pan=-0.25 rev=0.2
+  o5 g2 e-2 | o5 a2 f2 |
+  L o4 b-2 o5 d2 | o5 c2 o4 a2 | o4 b-2 o5 d2 | o5 e-2 o4 b-2 |
+  o5 d2 f2 | o5 c2 f2 | o5 e-2 g2 | o5 f2 c2 |
+  o5 d2 o4 b-2 | o5 e-2 g2 | o5 f2 d2 | o5 c2 o4 a2 |
+  o5 g2 e-2 | o5 a2 f2 | o5 e2 g2 | o5 f2 e-2 |
+
+track stabs brass vol=0.44 pan=0.3 rev=0.18
+  o4 (e- g b-)8 (e- g b-)8 (e- g b-)8 r8 (e- g b-)8 r8 (e- g b-)4 | o4 (c f a)8 (c f a)8 (c f a)8 r8 (c f a)8 r8 (c f a)4 |
+  L r4 r8 o4 (d f b-)8 r8 (d f b-)8 r4 | r4 r8 o4 (c f a)8 r8 (c f a)8 r4 | r4 r8 o4 (d g b-)8 r8 (d g b-)8 r4 | r4 r8 o4 (e- g b-)8 r8 (e- g b-)8 r4 |
+  r4 r8 o4 (d f b-)8 r8 (d f b-)8 r4 | r4 r8 o4 (c f a)8 r8 (c f a)8 r4 | r4 r8 o4 (e- g b-)8 r8 (e- g b-)8 r4 | r4 r8 o4 (c f a)8 r8 (c f a)8 r4 |
+  r4 r8 o4 (d g b-)8 r8 (d g b-)8 r4 | r4 r8 o4 (e- g b-)8 r8 (e- g b-)8 r4 | r4 r8 o4 (d f b-)8 r8 (d f b-)8 r4 | r4 r8 o4 (c f a)8 r8 (c f a)8 r4 |
+  r4 r8 o4 (e- g b-)8 r8 (e- g b-)8 r4 | r4 r8 o4 (c f a)8 r8 (c f a)8 r4 | r4 r8 o4 (c e g)8 r8 (c e g)8 r4 | r4 r8 o4 (c f a)8 r8 (c f a)8 r4 |
+
+track pad strings unless=lowhp vol=0.28 pan=-0.1 rev=0.35
+  o4 (e- g b-)1 | (c f a)1 |
+  L o4 (d f b-)1 | (c f a)1 | (d g b-)1 | (e- g b-)1 |
+  (d f b-)1 | (c f a)1 | (e- g b-)1 | (c f a)1 |
+  (d g b-)1 | (e- g b-)1 | (d f b-)1 | (c f a)1 |
+  (e- g b-)1 | (c f a)1 | (c e g)1 | (c f a)1 |
+
+track bass synthbass vol=0.68 rev=0.05
+  [ o3 e-8 e-16 e-16 o4 e-8 o3 e-8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 |
+  L [ o3 b-8 b-16 b-16 o4 b-8 o3 b-8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 | [ o3 g8 g16 g16 o4 g8 o3 g8 ]2 | [ o3 e-8 e-16 e-16 o4 e-8 o3 e-8 ]2 |
+  [ o3 b-8 b-16 b-16 o4 b-8 o3 b-8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 | [ o3 e-8 e-16 e-16 o4 e-8 o3 e-8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 |
+  [ o3 g8 g16 g16 o4 g8 o3 g8 ]2 | [ o3 e-8 e-16 e-16 o4 e-8 o3 e-8 ]2 | [ o3 b-8 b-16 b-16 o4 b-8 o3 b-8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 |
+  [ o3 e-8 e-16 e-16 o4 e-8 o3 e-8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 | [ o3 c8 c16 c16 o4 c8 o3 c8 ]2 | [ o3 f8 f16 f16 o4 f8 o3 f8 ]2 |
+
+track drums kit vol=0.52 rev=0.12
+  v100 (b c)8 b8 b8 r8 s8 r8 s4 | (b c)8 b8 b8 r8 s8 r8 s16 s16 s16 s16 |
+  L [ (b c)8 r16 b16 s8 b8 r8 b8 s8 r16 b16 | [ b8 r16 b16 s8 b8 r8 b8 s8 r16 b16 | ]6 b8 r16 b16 s8 b8 s16 s16 s16 s16 t16 t16 f16 f16 | ]2
+
+track hats kit vol=0.38 pan=0.2 rev=0.1
+  r1 | r1 |
+  L [ [ v60 h8 v40 h16 h16 v55 o8 v40 h8 ]2 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

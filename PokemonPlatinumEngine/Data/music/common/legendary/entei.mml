@@ -1,0 +1,47 @@
+# Battle against Entei (the legendary beast of volcanoes): a heavy brass theme in C minor over low piano blows and
+# strings, the beasts' gallop rumbling in the tuba and floor toms. Original composition for this game.
+title Battle! Entei
+tempo 172
+meter 4/4
+lowhptempo 1.08
+reverb 0.28
+
+track lead brass lowhp=sawlead vol=0.74 pan=0 rev=0.26
+  r1 | o4 g4 r8 g8 b4 o5 d4 |
+  L o4 c4 g4 o5 c4. e-8 | o5 e-4. d8 c4 o4 g4 | o4 a-2 o5 c4 e-4 | o5 d2. o4 b8 o5 c8 |
+  o4 c4 g4 o5 e-4. f8 | o5 f2 a-4 f8 d-8 | o5 c4. o4 b8 o5 c4 g4 | o5 g2 f8 e-8 d4 |
+  o5 c4 f4 a-4. g8 | o5 e-2 c4 o4 a-4 | o4 b-4 o5 e-4 g4. f8 | o5 f2 d4 o4 b-4 |
+  o5 c4. e-8 a-4. g8 | o5 f4. e-8 d-4 f4 | o5 d4 g4 b4. a-8 | o5 g2 d4 o4 b4 |
+
+track piano piano vol=0.36 pan=-0.25 rev=0.2
+  o3 (c e- g)4 r8 (c e- g)8 r4 (c e- g)4 | (d g b)4 r8 (d g b)8 r4 (d g b)4 |
+  L o3 (c e- g)4 r8 (c e- g)8 r4 (c e- g)4 | (c e- g)4 r8 (c e- g)8 r4 (c e- g)4 | (c e- a-)4 r8 (c e- a-)8 r4 (c e- a-)4 | (d g b)4 r8 (d g b)8 r4 (d g b)4 |
+  o3 (c e- g)4 r8 (c e- g)8 r4 (c e- g)4 | (d- f a-)4 r8 (d- f a-)8 r4 (d- f a-)4 | (c e- g)4 r8 (c e- g)8 r4 (c e- g)4 | (d g b)4 r8 (d g b)8 r4 (d g b)4 |
+  o3 (c f a-)4 r8 (c f a-)8 r4 (c f a-)4 | (c e- a-)4 r8 (c e- a-)8 r4 (c e- a-)4 | (e- g b-)4 r8 (e- g b-)8 r4 (e- g b-)4 | (d f b-)4 r8 (d f b-)8 r4 (d f b-)4 |
+  o3 (c e- a-)4 r8 (c e- a-)8 r4 (c e- a-)4 | (d- f a-)4 r8 (d- f a-)8 r4 (d- f a-)4 | (d g b)4 r8 (d g b)8 r4 (d g b)4 | (d g b)4 r8 (d g b)8 r4 (d g b)4 |
+
+track strings strings unless=lowhp vol=0.32 pan=0.3 rev=0.32
+  o3 (c g >c)1 | (d g b)1 |
+  L o4 (c e- g)1 | (c e- g)1 | (c e- a-)1 | (d g b)1 |
+  o4 (c e- g)1 | (d- f a-)1 | (c e- g)1 | (d g b)1 |
+  o4 (c f a-)1 | (c e- a-)1 | (e- g b-)1 | (d f b-)1 |
+  o4 (c e- a-)1 | (d- f a-)1 | (d g b)1 | (d g b)1 |
+
+track bass tuba vol=0.66 rev=0.05
+  [ o3 c8 c16 c16 ]4 | [ o3 g8 g16 g16 ]4 |
+  L [ o3 c8 c16 c16 ]4 | [ o3 c8 c16 c16 ]4 | [ o3 a-8 a-16 a-16 ]4 | [ o3 g8 g16 g16 ]4 |
+  [ o3 c8 c16 c16 ]4 | [ o3 d-8 d-16 d-16 ]4 | [ o3 c8 c16 c16 ]4 | [ o3 g8 g16 g16 ]4 |
+  [ o3 f8 f16 f16 ]4 | [ o3 a-8 a-16 a-16 ]4 | [ o3 e-8 e-16 e-16 ]4 | [ o3 b-8 b-16 b-16 ]4 |
+  [ o3 a-8 a-16 a-16 ]4 | [ o3 d-8 d-16 d-16 ]4 | [ o3 g8 g16 g16 ]4 | [ o3 g8 g16 g16 ]4 |
+
+track drums kit vol=0.5 rev=0.16
+  v100 (b c)4 r2. | f8 f16 f16 f8 f16 f16 m8 m16 m16 t8 t16 t16 |
+  L (b c)8 b16 b16 f8 f8 s4 b8 f8 | [ b8 b16 b16 f8 f8 s4 b8 f8 | ]6 b8 b16 b16 f8 f8 s16 s16 s16 s16 f8 f8 |
+  (b c)8 b16 b16 f8 f8 s4 b8 f8 | [ b8 b16 b16 f8 f8 s4 b8 f8 | ]6 b8 b16 b16 f8 f8 f16 f16 m16 m16 (b c)4 |
+
+track hats kit vol=0.36 pan=0.15 rev=0.1
+  r1 | r1 | L [ v58 h8 v36 h8 v58 h8 v36 h8 v58 h8 v36 h8 v58 o8 v36 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.44 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

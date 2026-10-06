@@ -1,0 +1,46 @@
+# Battle against Cosmoem (the protostar, motionless in its shell): a held C-minor chord and a throbbing bass, then
+# a slow vibraphone line that climbs an arpeggio and turns back, humming with gathered power. Original composition
+# for this game.
+title Battle! Cosmoem
+tempo 132
+meter 4/4
+lowhptempo 1.09
+reverb 0.38
+
+track lead vibraphone lowhp=sawlead vol=1.0 pan=0 rev=0.4
+  o4 g4 o5 c4 e-4 g4 | o5 b2 o6 d2 |
+  L o5 c4 g4 o6 c4 e-4 | o6 c2 o5 g2 | o5 a-4 o6 c4 e-4 f4 | o6 e-2 c2 |
+  o5 f4 a-4 o6 c4 f4 | o6 e-2 c2 | o5 b4 o6 d4 f4 d4 | o5 b2 g2 |
+  o5 g4 o6 c4 e-4 g4 | o6 g2 f4 e-4 | o6 c4 e-4 a-4 f8 e-8 | o6 d2 o5 b-4 f4 |
+  o5 a-4 o6 c4 f4 a-4 | o6 g2 e-4 c4 | o6 c4 o5 a-4 e-4 f4 | o5 g4 b4 o6 d4 o5 b4 |
+
+track counter strings vol=0.55 pan=-0.3 rev=0.45
+  r1 | r1 |
+  L o4 g2 e-2 | o4 c2 e-2 | o4 e-2 c2 | o4 a-2 e-2 |
+  o4 f2 a-2 | o4 c2 f2 | o4 d2 g2 | o4 b2 d2 |
+  o4 e-2 g2 | o4 g2 b-2 | o4 a-2 e-2 | o4 f2 d2 |
+  o4 c2 f2 | o4 e-2 g2 | o4 e-2 c2 | o4 d2 b2 |
+
+track pad pad unless=lowhp vol=0.4 pan=0.25 rev=0.5
+  o4 (c e- g)1 | o4 (d g b)1 |
+  L o4 (c e- g)1 | o4 (c e- g)1 | o4 (c e- a-)1 | o4 (c e- a-)1 |
+  o4 (c f a-)1 | o4 (c f a-)1 | o4 (d g b)1 | o4 (d g b)1 |
+  o4 (c e- g)1 | o4 (e- g b-)1 | o4 (c e- a-)1 | o4 (d f b-)1 |
+  o4 (c f a-)1 | o4 (c e- g)1 | o4 (c e- a-)1 | o4 (d g b)1 |
+
+track bass synthbass vol=0.85 rev=0.05
+  [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 |
+  L [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 |
+  [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 |
+  [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 b-8 b-8 o4 b-8 o3 b-8 ]2 |
+  [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 |
+
+track drums kit vol=0.46 rev=0.18
+  v100 (b c)4 r2. | r2 m16 m16 m16 m16 f16 f16 f16 f16 | L [ [ b4 r8 b8 s4 r8 b8 | ]3 b4 r8 b8 s4 m16 m16 f16 f16 | ]4
+
+track hats kit vol=0.7 pan=0.15 rev=0.1
+  r1 | r1 | L [ v60 h8 v35 h8 v60 h8 v35 h8 v60 h8 v35 h8 v60 o8 v35 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

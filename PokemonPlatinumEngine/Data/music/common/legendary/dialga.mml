@@ -1,0 +1,53 @@
+# Battle against Dialga (the master of time): a clock ticking on the hats and a bass that never lets up, then an
+# inexorable G-minor march on brass over organ, falling step by step like sand. Original composition for this game.
+title Battle! Dialga
+tempo 172
+meter 4/4
+lowhptempo 1.07
+reverb 0.28
+
+track lead brass lowhp=sawlead vol=0.8 pan=0 rev=0.26
+  r1 | o4 g4 b-4 o5 d4 f+4 |
+  L o5 g4. a8 b-4 g4 | o5 a4. b-8 o6 c4 o5 a4 | o5 b-4. a8 g4 e-4 | o5 f+2 d2 |
+  o5 d4 g4 b-4 o6 d4 | o6 c4. d8 c4 o5 a4 | o5 b-4 o6 c4 e-4 d4 | o5 a2 f+4 a4 |
+  o6 e-4. d8 c4 o5 g4 | o5 b-4. a8 g4 d4 | o5 e-4 a-4 o6 c4 o5 b-4 | o5 a4. g8 f+4 d4 |
+  o5 g4 o6 c4 e-4 g4 | o6 g4. f8 e-4 d4 | o6 d4 c8 o5 b-8 a4 f+4 | o5 d4 f+4 a4 o6 d4 |
+
+track counter horn vol=0.42 pan=-0.25 rev=0.28
+  r1 | r1 |
+  L o4 b-1 | o4 a1 | o4 g1 | o4 f+1 |
+  o4 g2 b-2 | o4 a2 f2 | o4 g2 b-2 | o4 a2 f+2 |
+  o4 g1 | o4 d2 g2 | o4 a-2 e-2 | o4 f+1 |
+  o4 e-2 g2 | o4 b-2 g2 | o4 a2 f+2 | o4 f+2 a2 |
+
+track organ organ unless=lowhp vol=0.3 pan=0.3 rev=0.35
+  r1 | o4 (d g b-)1 |
+  L o4 (d g b-)1 | o4 (c f a)1 | o4 (e- g b-)1 | o4 (d f+ a)1 |
+  o4 (d g b-)1 | o4 (c f a)1 | o4 (e- g b-)1 | o4 (d f+ a)1 |
+  o4 (c e- g)1 | o4 (d g b-)1 | o4 (c e- a-)1 | o4 (d f+ a)1 |
+  o4 (c e- g)1 | o4 (e- g b-)1 | o4 (d f+ a)1 | o4 (d f+ a)1 |
+
+track bass synthbass vol=0.66 rev=0.05
+  r1 | o3 g8 g8 g8 g8 g8 g8 f+8 f+8 |
+  L [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 f8 f8 o4 f8 o3 f8 ]2 | [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 a-8 a-8 o4 a-8 o3 a-8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 e-8 e-8 o4 e-8 o3 e-8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+
+track timpani timpani vol=0.4 rev=0.25
+  o3 g4 r2. | o3 g4 r4 g4 d4 |
+  L o3 g4 r4 d4 r4 | o3 f4 r4 c4 r4 | o3 e-4 r4 b-4 r4 | o3 d4 r4 a4 r4 |
+  o3 g4 r4 d4 r4 | o3 f4 r4 c4 r4 | o3 e-4 r4 b-4 r4 | o3 d8 d8 d8 d8 d16 d16 d16 d16 a4 |
+  o3 c4 r4 g4 r4 | o3 g4 r4 d4 r4 | o3 a-4 r4 e-4 r4 | o3 d4 r4 a4 r4 |
+  o3 c4 r4 g4 r4 | o3 e-4 r4 b-4 r4 | o3 d4 r4 a4 r4 | o3 d8 d8 d8 d8 d16 d16 d16 d16 a4 |
+
+track drums kit vol=0.5 rev=0.14
+  r1 | b4 r4 b4 s8 s8 | L v100 [ (b c)4 s4 b8 b8 s4 | [ b4 s4 b8 b8 s4 | ]6 b4 s4 s8 s8 s16 s16 s16 s16 | ]2
+
+# The clock: a tick and a tock on every beat, from the first bar to the last
+track clock kit vol=0.55 pan=0.2 rev=0.12
+  [ v95 h8 v50 k8 ]4 | [ v95 h8 v50 k8 ]4 | L [ [ v95 h8 v50 k8 ]4 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

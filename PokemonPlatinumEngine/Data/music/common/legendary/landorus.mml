@@ -1,0 +1,61 @@
+# Battle against Landorus (the abundance of the Forces of Nature): a marimba turns the Forces' sixteenths like
+# tilled earth under broad C-minor brass, timpani and a half-time beat. Original composition for this game.
+title Battle! Landorus
+tempo 164
+meter 4/4
+lowhptempo 1.08
+reverb 0.3
+
+track lead brass lowhp=sawlead vol=0.72 pan=0 rev=0.3
+  o4 c2 g2 | o4 b2 o5 d2 |
+  L o4 g2 o5 c2 | o5 e-2. c4 | o5 f4. e-8 c2 | o4 b2 o5 d4 f4 |
+  o5 g2 f4 e-4 | o5 b-2 g4 e-4 | o5 f2. d4 | o5 d4. c8 o4 b2 |
+  o5 c2 e-4 a-4 | o5 b-2 a-4 f4 | o5 g2. e-4 | o5 a-2 f4 c4 |
+  o5 e-4. f8 e-4 c4 | o5 g2 b-2 | o6 c2 o5 a-4 f4 | o5 g2 d4 o4 b4 |
+
+track counter trumpet vol=0.32 pan=-0.25 rev=0.3
+  r1 | r1 |
+  L o4 e-2 g2 | o4 a-2 e-2 | o4 a-2 f2 | o4 d2 g2 |
+  o4 e-2 c2 | o4 g2 b-2 | o4 d2 f2 | o4 g2 d2 |
+  o4 a-2 e-2 | o4 f2 d2 | o4 e-2 g2 | o4 f2 a-2 |
+  o4 a-2 e-2 | o4 e-2 g2 | o4 f2 a-2 | o4 b2 g2 |
+
+# The Forces' whirling figure: a turn of four sixteenths round a note of the chord
+track whirl marimba vol=0.4 pan=0.3 rev=0.25
+  r1 | [ o5 d16 e-16 d16 c16 ]4 |
+  L [ o5 g16 a-16 g16 f16 ]4 | [ o5 e-16 f16 e-16 d16 ]4 | [ o5 c16 d16 c16 o4 b-16 ]4 | [ o5 d16 e-16 d16 c16 ]4 |
+  [ o5 g16 a-16 g16 f16 ]4 | [ o4 b-16 o5 c16 o4 b-16 a-16 ]4 | [ o5 f16 g16 f16 e-16 ]4 | [ o5 d16 e-16 d16 c16 ]4 |
+  [ o5 e-16 f16 e-16 d16 ]4 | [ o5 f16 g16 f16 e-16 ]4 | [ o5 g16 a-16 g16 f16 ]4 | [ o5 c16 d16 c16 o4 b-16 ]4 |
+  [ o5 e-16 f16 e-16 d16 ]4 | [ o4 b-16 o5 c16 o4 b-16 a-16 ]4 | [ o5 c16 d16 c16 o4 b-16 ]4 | [ o5 d16 e-16 d16 c16 ]4 |
+
+track pad choir unless=lowhp vol=0.3 pan=-0.1 rev=0.45
+  r1 | r1 |
+  L o4 (c e- g)1 | (c e- a-)1 | (c f a-)1 | (d g b)1 |
+  o4 (c e- g)1 | (e- g b-)1 | (d f b-)1 | (d g b)1 |
+  o4 (c e- a-)1 | (d f b-)1 | (c e- g)1 | (c f a-)1 |
+  o4 (c e- a-)1 | (e- g b-)1 | (c f a-)1 | (d g b)1 |
+
+track timpani timpani vol=0.28 rev=0.24
+  o3 [ c16 ]16 | o3 [ g16 ]16 |
+  L o3 c8 c8 r4 g4 r4 | o3 a-8 a-8 r4 e-4 r4 | o3 f8 f8 r4 c4 r4 | o3 g8 g8 r4 d4 r4 |
+  o3 c8 c8 r4 g4 r4 | o3 e-8 e-8 r4 b-4 r4 | o3 b-8 b-8 r4 f4 r4 | o3 g4 r4 [ g16 ]8 |
+  o3 a-8 a-8 r4 e-4 r4 | o3 b-8 b-8 r4 f4 r4 | o3 c8 c8 r4 g4 r4 | o3 f8 f8 r4 c4 r4 |
+  o3 a-8 a-8 r4 e-4 r4 | o3 e-8 e-8 r4 b-4 r4 | o3 f8 f8 r4 c4 r4 | o3 g4 r4 [ g16 ]8 |
+
+track bass contrabass vol=0.58 rev=0.06
+  o3 c1 | o3 g1 |
+  L o3 c4. c8 c4 o2 g4 | o3 a-4. a-8 a-4 e-4 | o3 f4. f8 f4 c4 | o3 g4. g8 g4 d4 |
+  o3 c4. c8 c4 o2 g4 | o3 e-4. e-8 e-4 o2 b-4 | o3 b-4. b-8 b-4 f4 | o3 g4. g8 g4 d4 |
+  o3 a-4. a-8 a-4 e-4 | o3 b-4. b-8 b-4 f4 | o3 c4. c8 c4 o2 g4 | o3 f4. f8 f4 c4 |
+  o3 a-4. a-8 a-4 e-4 | o3 e-4. e-8 e-4 o2 b-4 | o3 f4. f8 f4 c4 | o3 g4. g8 g4 d4 |
+
+track drums kit vol=0.46 rev=0.16
+  r1 | r4 v80 f8 f8 m8 m8 t8 t8 |
+  L v100 [ (b c)4 r8 b8 s4 r8 b8 | [ b4 r8 b8 s4 r8 b8 | ]2 b4 r8 b8 s16 s16 t16 t16 m16 m16 f16 f16 | [ b4 r8 b8 s4 r8 b8 | ]3 b4 r8 b8 s16 s16 t16 t16 m16 m16 f16 f16 | ]2
+
+track shaker kit vol=0.36 pan=0.2 rev=0.12
+  r1 | r1 | L [ v58 k8 v34 k16 k16 v58 k8 v34 k16 k16 v58 k8 v34 k16 k16 v58 k8 v34 k16 k16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.45 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]16

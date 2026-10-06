@@ -1,0 +1,46 @@
+# Battle against Yveltal (the destruction bird): an organ darkening over four bars, then a D-minor saw lead that
+# swoops and snaps over brass hits and a churning bass. Original composition for this game.
+title Battle! Yveltal
+tempo 168
+meter 4/4
+lowhptempo 1.07
+reverb 0.26
+
+track lead sawlead lowhp=square vol=0.72 pan=0 rev=0.24
+  r1 | r1 | o4 b-8 o5 d8 f8 b-8 o6 d4 c4 | o5 g8 o6 c8 e8 g8 e4 c4 |
+  L o5 d8 d8 a4 f8 e8 d4 | o5 a8. g16 f8 e8 f4 a4 | o5 b-4. o6 c8 d4 f4 | o6 e4 d8 c8 o5 g2 |
+  o5 d8 d8 a4 f8 g8 a8 o6 c8 | o6 d4. c8 o5 b-4 g4 | o6 f4 d8 o5 b-8 f4 d4 | o5 e4 a4 o6 c4 e4 |
+  o6 d4 o5 b-8 g8 d4 g4 | o5 a8. g16 a8 o6 c8 d2 | o6 f8 f8 d8 c8 o5 b-4 f4 | o5 a4. g8 f4 c4 |
+  o5 g8 b-8 o6 d8 g8 f4 d4 | o6 d4. c8 o5 b-4 f4 | o5 g8 c8 e8 g8 o6 c4 e4 | o6 e4. d8 c4 o5 a4 |
+
+track brass brass vol=0.48 pan=-0.25 rev=0.2
+  o3 (d a)1 | o3 (d a)2 (d a)4 (d a)4 | o3 (b- >f)1 | o4 (c g)2 (c g)8 (c g)8 (c g)4 |
+  L o4 (d a)8. (d a)16 r4 (d a)8 r8 r4 | o4 (d a)8. (d a)16 r4 (d a)8 r8 r4 | o3 (b- >f)8. (b- >f)16 r4 (b- >f)8 r8 r4 | o4 (c g)8. (c g)16 r4 (c g)8 r8 r4 |
+  o4 (d a)8. (d a)16 r4 (d a)8 r8 r4 | o3 (g >d)8. (g >d)16 r4 (g >d)8 r8 r4 | o3 (b- >f)8. (b- >f)16 r4 (b- >f)8 r8 r4 | o3 (a >e)8. (a >e)16 r4 (a >e)8 r8 r4 |
+  o3 (g >d)8. (g >d)16 r4 (g >d)8 r8 r4 | o4 (d a)8. (d a)16 r4 (d a)8 r8 r4 | o3 (b- >f)8. (b- >f)16 r4 (b- >f)8 r8 r4 | o3 (f >c)8. (f >c)16 r4 (f >c)8 r8 r4 |
+  o3 (g >d)8. (g >d)16 r4 (g >d)8 r8 r4 | o3 (b- >f)8. (b- >f)16 r4 (b- >f)8 r8 r4 | o4 (c g)8. (c g)16 r4 (c g)8 r8 r4 | o3 (a >e)8. (a >e)16 r4 (a >e)4 (a >e)4 |
+
+track organ organ unless=lowhp vol=0.38 pan=0.3 rev=0.3
+  o4 (d f a)1 | (d f a)1 | (d f b-)1 | (c e g)1 |
+  L o4 (d f a)2. (d f a)4 | (d f a)2. (d f a)4 | (d f b-)2. (d f b-)4 | (c e g)2. (c e g)4 |
+  (d f a)2. (d f a)4 | (d g b-)2. (d g b-)4 | (d f b-)2. (d f b-)4 | (c e a)2. (c e a)4 |
+  (d g b-)2. (d g b-)4 | (d f a)2. (d f a)4 | (d f b-)2. (d f b-)4 | (c f a)2. (c f a)4 |
+  (d g b-)2. (d g b-)4 | (d f b-)2. (d f b-)4 | (c e g)2. (c e g)4 | (c e a)2. (c e a)4 |
+
+track bass synthbass vol=0.76 rev=0.04
+  o2 d1 | o2 d1 | o2 b-1 | o3 c2 c8 c8 c4 |
+  L [ o2 d16 d16 o3 d16 o2 d16 ]4 | [ o2 d16 d16 o3 d16 o2 d16 ]4 | [ o2 b-16 b-16 o3 b-16 o2 b-16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 |
+  [ o2 d16 d16 o3 d16 o2 d16 ]4 | [ o2 g16 g16 o3 g16 o2 g16 ]4 | [ o2 b-16 b-16 o3 b-16 o2 b-16 ]4 | [ o2 a16 a16 o3 a16 o2 a16 ]4 |
+  [ o2 g16 g16 o3 g16 o2 g16 ]4 | [ o2 d16 d16 o3 d16 o2 d16 ]4 | [ o2 b-16 b-16 o3 b-16 o2 b-16 ]4 | [ o2 f16 f16 o3 f16 o2 f16 ]4 |
+  [ o2 g16 g16 o3 g16 o2 g16 ]4 | [ o2 b-16 b-16 o3 b-16 o2 b-16 ]4 | [ o3 c16 c16 o4 c16 o3 c16 ]4 | [ o2 a16 a16 o3 a16 o2 a16 ]4 |
+
+track drums kit vol=0.56 rev=0.12
+  v100 (b c)2 r2 | r1 | b4 r4 b4 r4 | s16 s16 s16 s16 s16 s16 s16 s16 f8 f8 (b c)4 |
+  L [ (b c)8 r16 b16 s8 b8 r8 b8 s8 s16 b16 | [ b8 r16 b16 s8 b8 r8 b8 s8 s16 b16 | ]6 s16 s16 s16 s16 s16 s16 s16 s16 f8 f8 m8 t8 | ]2
+
+track hats kit vol=0.46 pan=0.2 rev=0.1
+  r1 | r1 | r1 | r1 | L [ v70 h8 v45 h16 h16 v70 h8 v45 h16 h16 v70 h8 v45 h16 h16 v70 h8 v45 h16 h16 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | r1 | r1 | L [ o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]16

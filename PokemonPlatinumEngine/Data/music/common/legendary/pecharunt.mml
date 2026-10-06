@@ -1,0 +1,47 @@
+# Battle against Pecharunt (the Subjugation Pokémon of the poisoned mochi): a sugary accordion tune with chromatic
+# slips over an oom-pah of pizzicato strings and a hollow pad, sweet and sinister in C minor. Original composition for
+# this game.
+title Battle! Pecharunt
+tempo 150
+meter 4/4
+lowhptempo 1.09
+reverb 0.3
+
+track lead accordion lowhp=sawlead vol=0.95 pan=0 rev=0.26
+  o5 c4 o4 b8 o5 c8 e-4 d4 | o5 c4 e-4 g4 r4 |
+  L o5 g4. f+8 g4 e-4 | o5 c4. d8 e-4 g4 | o5 a-4. g8 f4 e-4 | o5 f4 d4 g4 o4 b4 |
+  o5 c4. o4 b8 o5 c4 a-4 | o5 g4. a-8 g4 e-4 | o5 c4 e-4 a-4 g-4 | o5 f2 d4 o4 b4 |
+  o5 e-4. d8 c4 g4 | o5 b-4. a8 b-4 g4 | o5 a-4 f4 c4 d4 | o5 d4. e-8 d4 o4 b4 |
+  o5 e-4. d-8 c4 a-4 | o5 g4 b-4 o6 e-4 d-4 | o6 c4 o5 b-4 a-4 f4 | o5 g4 f4 d4 o4 b4 |
+
+track pizz pizzicato vol=0.62 pan=-0.3 rev=0.22
+  r1 | r4 o4 (e- g)8 r8 (e- g)8 r8 (e- g)4 |
+  L r4 o4 (e- g)8 r8 (e- g)8 r8 (e- g)4 | r4 o4 (e- g)8 r8 (e- g)8 r8 (e- g)4 | r4 o4 (e- a-)8 r8 (e- a-)8 r8 (e- a-)4 | r4 o4 (d g)8 r8 (d g)8 r8 (d g)4 |
+  r4 o4 (f a-)8 r8 (f a-)8 r8 (f a-)4 | r4 o4 (e- g)8 r8 (e- g)8 r8 (e- g)4 | r4 o4 (e- a-)8 r8 (e- a-)8 r8 (e- a-)4 | r4 o4 (d g)8 r8 (d g)8 r8 (d g)4 |
+  r4 o4 (e- g)8 r8 (e- g)8 r8 (e- g)4 | r4 o4 (g b-)8 r8 (g b-)8 r8 (g b-)4 | r4 o4 (f a-)8 r8 (f a-)8 r8 (f a-)4 | r4 o4 (d g)8 r8 (d g)8 r8 (d g)4 |
+  r4 o4 (e- a-)8 r8 (e- a-)8 r8 (e- a-)4 | r4 o4 (g b-)8 r8 (g b-)8 r8 (g b-)4 | r4 o4 (f a-)8 r8 (f a-)8 r8 (f a-)4 | r4 o4 (d g)8 r8 (d g)8 r8 (d g)4 |
+
+track pad pad unless=lowhp vol=0.34 pan=0.3 rev=0.45
+  r1 | r1 |
+  L o4 (c e- g)1 | o4 (c e- g)1 | o4 (c e- a-)1 | o4 (d g b)1 |
+  o4 (c f a-)1 | o4 (c e- g)1 | o4 (c e- a-)1 | o4 (d g b)1 |
+  o4 (c e- g)1 | o4 (e- g b-)1 | o4 (c f a-)1 | o4 (d g b)1 |
+  o4 (c e- a-)1 | o4 (e- g b-)1 | o4 (c f a-)1 | o4 (d g b)1 |
+
+track bass contrabass vol=0.9 rev=0.08
+  o3 c4 r4 o2 g4 r4 | o3 c4 r4 o2 g4 r4 |
+  L o3 c4 r4 o2 g4 r4 | o3 c4 r4 o2 g4 r4 | o2 a-4 r4 o3 e-4 r4 | o2 g4 r4 o3 d4 r4 |
+  o2 f4 r4 o3 c4 r4 | o3 c4 r4 o2 g4 r4 | o2 a-4 r4 o3 e-4 r4 | o2 g4 r4 o3 d4 r4 |
+  o3 c4 r4 o2 g4 r4 | o3 e-4 r4 o2 b-4 r4 | o2 f4 r4 o3 c4 r4 | o2 g4 r4 o3 d4 r4 |
+  o2 a-4 r4 o3 e-4 r4 | o3 e-4 r4 o2 b-4 r4 | o2 f4 r4 o3 c4 r4 | o2 g4 r4 b4 o3 d4 |
+
+track drums kit vol=0.56 rev=0.18
+  r1 | v95 b4 r4 x4 r4 |
+  L [ (b c)4 r8 b8 x4 r4 | [ b4 r8 b8 x4 r4 | ]6 b4 r8 b8 x8 x8 s16 s16 s16 s16 | ]2
+
+track hats kit vol=0.42 pan=0.2 rev=0.12
+  r1 | r1 | L [ v58 h8 v34 h8 v58 h8 v34 h8 v58 h8 v34 h8 v66 o8 v34 h8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.58 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]16

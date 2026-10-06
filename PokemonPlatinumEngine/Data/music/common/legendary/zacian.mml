@@ -1,0 +1,47 @@
+# Battle against Zacian (the hero of the sword, a wolf with a blade in its jaws): a trumpet's call over trembling
+# violin, then the heroes' knightly fanfare, a dotted leap up a fourth, carried by a sharp E-minor violin over strings
+# and a marching snare. Original composition for this game.
+title Battle! Zacian
+tempo 178
+meter 4/4
+lowhptempo 1.08
+reverb 0.3
+
+track lead violin lowhp=sawlead vol=0.86 pan=0 rev=0.28
+  [ o5 e16 ]16 | [ o5 d+16 ]16 |
+  L o4 b8. b16 o5 e8. f+16 g4 b4 | o5 c8. d16 e8. g16 o6 c4 o5 g4 | o5 a8. a16 o6 d8. e16 f+4 e8 d8 | o5 f+4. e8 d+4 b4 |
+  o5 b8. b16 o6 e8. f+16 g4 a8 g8 | o6 b4 a8 g8 d4 g4 | o6 c8. o5 b16 a8. g16 e4 a4 | o5 b8. a16 g+8. f+16 d+4 f+4 |
+  o5 e8. e16 g8. a16 o6 c4 e4 | o6 d8. d16 f+8. e16 d4 a4 | o6 g4 e8 d8 o5 b4 o6 d4 | o6 e8. d16 o5 b8. a16 g4 b4 |
+  o5 a8. a16 o6 c8. d16 e4 c4 | o6 d8. c16 o5 a8. b16 f+4 a4 | o5 g8. g16 o6 c8. d16 e4 g4 | o6 f+2 d+4 o5 b4 |
+
+track trumpet trumpet vol=0.55 pan=-0.25 rev=0.3
+  o4 b8. b16 o5 e4 r8 o4 b8 o5 e4 | o5 f+2 d+4 o4 b4 |
+  L r2 o4 g8. g16 b4 | r2 o4 g8. g16 o5 c4 | r2 o4 a8. a16 o5 d4 | r2 o4 f+8. f+16 b4 |
+  r2 o4 b8. b16 o5 e4 | r2 o4 b8. b16 o5 d4 | r2 o4 a8. a16 o5 c4 | r2 o4 d+8. d+16 f+4 |
+  r2 o4 e8. e16 g4 | r2 o4 f+8. f+16 a4 | r2 o4 d8. d16 g4 | r2 o4 e8. e16 g4 |
+  r2 o4 e8. e16 a4 | r2 o4 d8. d16 f+4 | r2 o4 e8. e16 g4 | r2 o4 b8. b16 o5 d+4 |
+
+track strings strings unless=lowhp vol=0.38 pan=0.3 rev=0.35
+  o4 (e g b)1 | o4 (d+ f+ b)1 |
+  L o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 | o4 (d+ f+ b)1 |
+  o4 (e g b)1 | o4 (d g b)1 | o4 (c e a)1 | o4 (d+ f+ b)1 |
+  o4 (c e g)1 | o4 (d f+ a)1 | o4 (d g b)1 | o4 (e g b)1 |
+  o4 (c e a)1 | o4 (d f+ a)1 | o4 (c e g)1 | o4 (d+ f+ b)1 |
+
+track bass bass vol=0.72 rev=0.06
+  o3 e4 r4 e4 r4 | o2 b4 r4 b4 r4 |
+  L o3 e8. e16 e8 e8 e8. e16 b8 e8 | o3 c8. c16 c8 c8 c8. c16 g8 c8 | o3 d8. d16 d8 d8 d8. d16 a8 d8 | o2 b8. b16 b8 b8 b8. b16 o3 f+8 o2 b8 |
+  o3 e8. e16 e8 e8 e8. e16 b8 e8 | o3 g8. g16 g8 g8 g8. g16 o4 d8 o3 g8 | o2 a8. a16 a8 a8 a8. a16 o3 e8 o2 a8 | o2 b8. b16 b8 b8 b8. b16 o3 f+8 o2 b8 |
+  o3 c8. c16 c8 c8 c8. c16 g8 c8 | o3 d8. d16 d8 d8 d8. d16 a8 d8 | o3 g8. g16 g8 g8 g8. g16 o4 d8 o3 g8 | o3 e8. e16 e8 e8 e8. e16 b8 e8 |
+  o2 a8. a16 a8 a8 a8. a16 o3 e8 o2 a8 | o3 d8. d16 d8 d8 d8. d16 a8 d8 | o3 c8. c16 c8 c8 c8. c16 g8 c8 | o2 b8. b16 b8 b8 b8. b16 o3 f+8 o2 b8 |
+
+track drums kit vol=0.46 rev=0.14
+  v100 (b c)4 r4 s16 s16 s16 s16 s16 s16 s16 s16 | (b c)4 r4 [ s16 ]8 |
+  L [ (b c)8 s16 s16 s8 b8 b8 s16 s16 s8 b8 | [ b8 s16 s16 s8 b8 b8 s16 s16 s8 b8 | ]2 b8 s16 s16 s8 b8 s16 s16 s16 s16 t16 m16 f16 f16 | ]4
+
+track hats kit vol=0.64 pan=0.15 rev=0.1
+  r1 | r1 | L [ v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 o8 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.4 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16
