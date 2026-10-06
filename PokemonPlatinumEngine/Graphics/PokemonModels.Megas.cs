@@ -849,6 +849,10 @@ internal static partial class PokemonModels
         return b;
     }
 
+    // ------------------------------------------------------------------ Mega Skarmory (its build in PokemonModels.Johto2.cs)
+
+    private static PokeBuilder SkarmoryMega() => SkarmoryBuild(true);
+
     // ------------------------------------------------------------------ Mega Houndoom
 
     private static PokeBuilder HoundoomMega()
@@ -883,6 +887,10 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.042f * s, 0.55f), V(0.45f * s, 0.1f, 1f), 0.024f, Rgb(220, 40, 50), glare: true));
         return b;
     }
+
+    // ------------------------------------------------------------------ Mega Tyranitar (its build in PokemonModels.Johto2.cs)
+
+    private static PokeBuilder TyranitarMega() => TyranitarBuild(true);
 
     // ------------------------------------------------------------------ Mega Gardevoir
 

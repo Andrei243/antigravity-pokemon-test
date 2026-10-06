@@ -197,10 +197,10 @@ public class FormTests
         // (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, every letter and
         // sign of the Unown but A, which is the species itself) and the later games' (the regional forms, Dialga's and
         // Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps and costumes, the spiky-eared Pichu),
-        // the forms of the Kanto species hand-built since among them. The few that look just like their species show
+        // the forms of the Kanto and Johto species hand-built since among them. The few that look just like their species show
         // its sculpt.
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter" };
-        Assert.Equal(155, PokemonModels.Forms.Length);
+        Assert.Equal(157, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {
