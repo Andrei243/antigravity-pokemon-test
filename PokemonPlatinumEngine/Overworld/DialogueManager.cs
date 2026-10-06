@@ -80,7 +80,7 @@ public class DialogueManager
             if (currentSpeaker.Length > 0 && currentLine.StartsWith(prefix, StringComparison.Ordinal)) currentLine = currentLine[prefix.Length..];
             charIndex = 0;
             charProgress = 0f;
-            AudioManager.PlaySound("select");
+            AudioManager.PlaySound("text");
         }
         else
         {

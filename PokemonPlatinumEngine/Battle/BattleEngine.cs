@@ -347,20 +347,28 @@ public partial class BattleEngine
             {
                 var pokemon = mirror.Shown(entered.Pokemon);
                 At(entered.Place).Pokemon = pokemon;
-                if (entered.FromBall) Anim.SendOut(entered.Place.Side, pokemon, entered.Place.Slot);
+                if (entered.FromBall)
+                {
+                    Anim.SendOut(entered.Place.Side, pokemon, entered.Place.Slot);
+                    After(BattleAnimator.SendOutBallTime, () => Sound("send_out", entered.Place.Side));
+                }
                 else Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
                 break;
             }
             case Recalled recalled:
                 Anim.Recall(recalled.Place.Side, recalled.Place.Slot);
-                break;
-            case Left:
-                AudioManager.PlaySound("select");
+                Sound("recall", recalled.Place.Side);
                 break;
             case Lunged lunged:
                 Anim.Attack(lunged.Place.Side, lunged.Place.Slot, lunged.Category);
                 break;
             case MoveShown move:
+                // The move's own sound as it sets off, once however many it is aimed at
+                if (Anim.Time != moveSoundAt)
+                {
+                    moveSoundAt = Anim.Time;
+                    Sound(SoundBank.MoveSound(move.Type), move.From.Side);
+                }
                 Anim.Cue(new EffectCue
                 {
                     Kind = CueKind.Move,
@@ -382,28 +390,33 @@ public partial class BattleEngine
                 Anim.Hit(struck.Place.Side, struck.Place.Slot, struck.Hard ? 1.8f : 1f);
                 break;
             case HitSounded sound:
-                AudioManager.PlaySound(sound.SuperEffective ? "hit_super" : "hit_normal");
+                AudioManager.PlaySound(sound.SuperEffective ? "hit_super" : sound.NotVeryEffective ? "hit_weak" : "hit_normal");
                 break;
             case HpChanged change:
                 if (At(change.Place).Pokemon is { } changed) changed.CurrentHP = change.Hp;
                 if (change.Healed)
                 {
                     Anim.Heal(change.Place.Side, change.Place.Slot);
-                    AudioManager.PlaySound("heal");
+                    Sound("heal", change.Place.Side);
                 }
                 else
                 {
                     Anim.Hit(change.Place.Side, change.Place.Slot);
-                    AudioManager.PlaySound("hit_normal");
+                    Sound("hit_normal", change.Place.Side);
                 }
                 break;
             case StageChanged stage:
                 if (At(stage.Place).Pokemon is { } staged) staged.StatStages[stage.Stat] = stage.Stage;
                 Anim.StatChange(stage.Place.Side, stage.Place.Slot, stage.Rose);
+                Sound(stage.Rose ? "stat_up" : "stat_down", stage.Place.Side);
                 break;
             case StatusChanged status:
                 if (At(status.Place).Pokemon is { } afflicted) afflicted.Status = status.Status;
                 if (status.Status != StatusCondition.None) Anim.StatusGiven(status.Place.Side, status.Place.Slot, status.Status);
+                if (SoundBank.StatusSound(status.Status) is { } ailment) Sound(ailment, status.Place.Side);
+                break;
+            case Confused confused:
+                Sound("status_confusion", confused.Place.Side);
                 break;
             case Vanished gone:
                 Anim[gone.Place.Side, gone.Place.Slot].Away = true;
@@ -425,17 +438,24 @@ public partial class BattleEngine
             case WeatherChanged weather:
                 Weather = weather.Weather;
                 break;
+            case GotAway:
+                AudioManager.PlaySound("run_away", -0.3f);
+                break;
             case Fainted fainted:
                 if (At(fainted.Place).Pokemon is { } down)
                 {
                     down.Status = StatusCondition.Faint;
                     down.CurrentHP = 0;
                 }
-                AudioManager.PlaySound("faint");
+                Sound("faint", fainted.Place.Side);
                 Anim.Faint(fainted.Place.Side, 0.15f, fainted.Place.Slot);
                 break;
             case ExpGained exp:
-                mirror.Shown(exp.Pokemon).GainExp(exp.Amount, out _);
+                var gaining = mirror.Shown(exp.Pokemon);
+                gaining.GainExp(exp.Amount, out _);
+                // The bar fills only under a Pokémon on the field
+                if (Enumerable.Range(0, Anim.Slots).Any(s => Anim[BattleSide.Player, s].Shown == gaining))
+                    AudioManager.PlaySound("exp", -0.3f);
                 break;
             case LevelRose level:
             {
@@ -450,6 +470,9 @@ public partial class BattleEngine
                 // before the line about it.
                 AudioManager.PlaySound("ball_throw");
                 Anim.ThrowBall(ball.Ball, ball.Slot, ball.Shakes);
+                for (int wobble = 0; wobble < Math.Min(ball.Shakes, 3); wobble++)
+                    After(BattleAnimator.BallWobbleAt(wobble), () => Sound("ball_shake", BattleSide.Enemy));
+                After(BattleAnimator.BallSettleTime(ball.Shakes), () => Sound(ball.Shakes >= 4 ? "ball_click" : "ball_break", BattleSide.Enemy));
                 if (ball.Shakes >= 4) messageWaitTimer = BattleAnimator.BallThrowTime(ball.Shakes) + 0.1f;
                 else
                 {
@@ -527,6 +550,12 @@ public partial class BattleEngine
     }
 
     private void After(float delay, Action effect) => pendingEffects.Add((delay, effect));
+
+    /// <summary>A sound from one side of the battle: the player's a little to the left, the foe's to the right, as they stand.</summary>
+    private static void Sound(string name, BattleSide side) => AudioManager.PlaySound(name, side == BattleSide.Player ? -0.3f : 0.3f);
+
+    /// <summary>When the last move's sound was played: a move aimed at several Pokémon is shown once for each, and heard once.</summary>
+    private float moveSoundAt = -1f;
 
     private void UpdatePendingEffects(float dt)
     {

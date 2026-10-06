@@ -106,7 +106,7 @@ public class ShopScreen
             if (MostAffordable(item, money) < 1)
             {
                 onNotification("You don't have enough money.");
-                AudioManager.PlaySound("cancel");
+                AudioManager.PlaySound("error");
                 return 0;
             }
             ChoosingQuantity = true;

@@ -108,7 +108,7 @@ public class BagScreen
     {
         if (step == 0 || Actions != null) return;
         CurrentPocket = Pockets[UiNav.Wrap(PocketIndex, step, Pockets.Length)];
-        AudioManager.PlaySound("cursor");
+        AudioManager.PlaySound("page");
     }
 
     /// <summary>
@@ -179,7 +179,7 @@ public class BagScreen
             if (actions.Count == 1)
             {
                 onNotification("It can't be used here.");
-                AudioManager.PlaySound("cancel");
+                AudioManager.PlaySound("error");
                 return;
             }
             Actions = actions;

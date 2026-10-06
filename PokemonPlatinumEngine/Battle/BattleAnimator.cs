@@ -153,6 +153,9 @@ public sealed class BattleAnimator
     public static float BallSettleTime(int shakes) =>
         BallArriveTime + BallOpenTime + BallDropTime + (BallWobbleTime + BallPauseTime) * Math.Min(shakes, 3);
 
+    /// <summary>When the ball's wobble <paramref name="wobble"/> (0-based) begins, from the throw.</summary>
+    public static float BallWobbleAt(int wobble) => BallArriveTime + BallOpenTime + BallDropTime + (BallWobbleTime + BallPauseTime) * wobble;
+
     /// <summary>How long a throw with <paramref name="shakes"/> successful shake checks takes to play out.</summary>
     public static float BallThrowTime(int shakes) => BallSettleTime(shakes) + BallEndTime;
 

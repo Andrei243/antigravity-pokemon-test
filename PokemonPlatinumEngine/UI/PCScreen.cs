@@ -41,7 +41,7 @@ public class PCScreen
         Cell = 0;
         Box = 0;
         openAge = 0f;
-        AudioManager.PlaySound("select");
+        AudioManager.PlaySound("pc_on");
     }
 
     public void Close() => IsActive = false;
@@ -65,6 +65,7 @@ public class PCScreen
     public void Move(int dx, int dy, int partyCount)
     {
         if (dx == 0 && dy == 0) return;
+        int boxBefore = Box;
         int col = Cell % Columns, row = Cell / Columns;
         switch (Zone)
         {
@@ -109,7 +110,7 @@ public class PCScreen
                 }
                 break;
         }
-        AudioManager.PlaySound("cursor");
+        AudioManager.PlaySound(Box != boxBefore ? "page" : "cursor");
     }
 
     /// <summary>The A button: a party Pokémon goes into storage (never the last one); a stored one joins the party if there is room.</summary>
@@ -164,7 +165,7 @@ public class PCScreen
         else if (InputManager.IsActionPressed(GameAction.Cancel))
         {
             Close();
-            AudioManager.PlaySound("cancel");
+            AudioManager.PlaySound("pc_off");
         }
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party, boxStorage, onNotification);
     }

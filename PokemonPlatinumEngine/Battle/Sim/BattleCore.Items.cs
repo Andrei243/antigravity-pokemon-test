@@ -331,7 +331,7 @@ public sealed partial class BattleCore
         if (item.BattleUse == "Escaping")
         {
             if (IsTrainerBattle) return;
-            Say("Got away safely!");
+            Say("Got away safely!").With(new GotAway());
             End(BattleResult.PlayerRan);
             return;
         }

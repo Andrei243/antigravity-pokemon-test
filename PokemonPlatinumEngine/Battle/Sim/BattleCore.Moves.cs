@@ -431,7 +431,7 @@ public sealed partial class BattleCore
             }
             else
             {
-                Say($"{user.Name} is confused!");
+                Say($"{user.Name} is confused!").With(new Confused(user.Place));
                 // It hurts itself one time in the rules' odds (the die's first face): a typeless 40-power hit
                 if (rng.Roll(RollKind.ConfusionSelfHit, Rules.ConfusionSelfHitOdds) == 0)
                 {
@@ -805,7 +805,11 @@ public sealed partial class BattleCore
 
         // The move's effect flies to each target and lands with the damage
         foreach (var hit in use.Hits) use.Line.With(Shown(user, hit.Target, move, hit));
-        if (use.Hits.Any(h => h.Landed)) use.Line.AtImpact(new HitSounded(use.Hits.Any(h => h.Landed && h.SuperEffective)));
+        if (use.Hits.Any(h => h.Landed))
+        {
+            bool super = use.Hits.Any(h => h.Landed && h.SuperEffective);
+            use.Line.AtImpact(new HitSounded(super, !super && use.Hits.Where(h => h.Landed).All(h => h.NotVeryEffective)));
+        }
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
 
         AfterStrike(use);

@@ -656,7 +656,7 @@ public sealed partial class BattleCore : IBattleContext
             Say("Can't escape!");
             return;
         }
-        Say("Got away safely!");
+        Say("Got away safely!").With(new GotAway());
         End(BattleResult.PlayerRan);
     }
 

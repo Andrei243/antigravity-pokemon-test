@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using PokemonPlatinumEngine.Audio;
@@ -81,9 +82,20 @@ public static class AudioManager
         }
     }
 
+    [ThreadStatic] private static List<string>? heard;
+
+    /// <summary>
+    /// Starts noting every sound asked for on this thread, with or without an audio device, in a list that fills as
+    /// they are: how tests hear what the game plays. <see cref="StopListening"/> ends it.
+    /// </summary>
+    public static List<string> Listen() => heard = new List<string>();
+
+    public static void StopListening() => heard = null;
+
     /// <summary>Plays a sound effect by name, over the music. <paramref name="pan"/> is -1 for the left, 1 for the right.</summary>
     public static void PlaySound(string soundName, float pan = 0f)
     {
+        heard?.Add(soundName);
         if (isMuted || !isInitialized) return;
         var sound = SoundBank.Get(soundName);
         if (sound == null)

@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 
@@ -329,11 +330,7 @@ public class Player
         IsSliding = carried != null;
 
         InTallGrass = map.IsTallGrass(GridX, GridY);
-        if (InTallGrass)
-        {
-            GrassRustleTimer = 0.2f;
-            AudioManager.PlaySound("grass");
-        }
+        if (InTallGrass) GrassRustleTimer = 0.2f;
 
         // Pokémon live in grass, in caves and in water; the water's are met only by someone surfing on it
         bool onWater = Mode == TravelMode.Surfing;
@@ -409,7 +406,8 @@ public class Player
         IsSliding = sliding;
         IsMoving = true;
         moveProgress = 0f;
-        if (IsHoppingLedge) AudioManager.PlaySound("select");
+        if (step.Kind == StepKind.Hop) AudioManager.PlaySound("ledge");
+        else if (Mode != TravelMode.Surfing && SoundBank.StepSound(map.BehaviourAt(step.X, step.Y)) is { } footfall) AudioManager.PlaySound(footfall);
     }
 
     /// <summary>

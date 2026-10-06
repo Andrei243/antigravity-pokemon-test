@@ -168,7 +168,7 @@ What an `if` can ask:
 |---|---|
 | `music "sinnoh/jubilife"`, `music area`, `music stop` | A song, the place's own theme again, silence. |
 | `fanfare heal` / `item` / `pokemon` / `levelup` | |
-| `sound "select"` | One of the game's sound effects (`AudioManager.SoundNames`). |
+| `sound "select"` | One of the game's sound effects (`AudioManager.SoundNames`; [`sound-effects.md`](sound-effects.md) lists them). |
 
 ### The screens that exist
 
