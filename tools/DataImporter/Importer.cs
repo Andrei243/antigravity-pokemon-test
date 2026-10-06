@@ -496,6 +496,12 @@ public sealed partial class Importer
 
         s.Learnset = d.GetProperty("learnset").GetProperty("by_level").EnumerateArray()
             .Select(e => new LearnableMove { Level = e[0].GetInt32(), MoveName = api.MoveName(moveConstants.IndexOf(e[1].GetString()!)) }).ToList();
+        // The machines and tutors it learns from (plan 06 · R11): the TMs and HMs by name, the tutors' moves
+        var machines = d.GetProperty("learnset").GetProperty("by_tm").EnumerateArray().Select(t => t.GetString()!).ToList();
+        s.TmMoves = machines.Count > 0 ? machines : null;
+        var tutored = d.GetProperty("learnset").GetProperty("by_tutor").EnumerateArray()
+            .Select(m => api.MoveName(moveConstants.IndexOf(m.GetString()!))).ToList();
+        s.TutorMoves = tutored.Count > 0 ? tutored : null;
 
         var evolutions = d.GetProperty("evolutions").EnumerateArray().Select(PlatinumEvolution).ToList();
         s.Evolutions = evolutions.Count > 0 ? evolutions : null;
@@ -644,6 +650,53 @@ public sealed partial class Importer
     }
 
     private Dictionary<int, List<CsvRow>>? levelUp;
+
+    /// <summary>
+    /// The TMs, HMs and tutor moves of the species after Platinum (plan 06 · R11): each Platinum machine whose move
+    /// the species learns by a machine in any of its own games, and each of Platinum's tutor moves it learns from a
+    /// tutor in them. Platinum's own species keep the decompilation's lists.
+    /// </summary>
+    public void AddLaterMachines(List<PokemonSpecies> species, List<ItemData> items)
+    {
+        var machineOf = items.Where(i => i.TeachesMove != null && i.Id < 1000 && i.Pocket == ItemPocket.TMsAndHMs)
+            .OrderBy(i => i.Id).GroupBy(i => i.TeachesMove!).ToDictionary(g => g.Key, g => g.First());
+        var tutorMoves = species.Where(s => s.TutorMoves != null).SelectMany(s => s.TutorMoves!).ToHashSet();
+        var learned = api.Table("pokemon_moves").Where(r => r.Int("pokemon_move_method_id") is 3 or 4)
+            .GroupBy(r => r.Int("pokemon_id")).ToDictionary(g => g.Key, g => g.ToList());
+        foreach (var s in species.Where(s => s.Generation > 4))
+        {
+            var rows = learned.GetValueOrDefault(s.DexNumber) ?? new();
+            var byMachine = rows.Where(r => r.Int("pokemon_move_method_id") == 4).Select(r => api.MoveName(r.Int("move_id"))).ToHashSet();
+            var byTutor = rows.Where(r => r.Int("pokemon_move_method_id") == 3).Select(r => api.MoveName(r.Int("move_id"))).ToHashSet();
+            var machines = machineOf.Where(m => byMachine.Contains(m.Key)).Select(m => m.Value).OrderBy(i => i.Id).Select(i => i.Name).ToList();
+            s.TmMoves = machines.Count > 0 ? machines : null;
+            var tutored = byTutor.Where(tutorMoves.Contains).OrderBy(m => m, StringComparer.Ordinal).ToList();
+            s.TutorMoves = tutored.Count > 0 ? tutored : null;
+        }
+    }
+
+    /// <summary>
+    /// The Poké Marts' stock (plan 06 · R11), from the decompilation's lists (<c>include/data/mart_items.h</c>): the
+    /// common counter's items with the badges each needs, and every specialty counter's, by the original's id
+    /// without its prefix (<c>jubilife</c>, <c>eterna_house</c>, <c>veilstone_1f_right</c>). Item names only.
+    /// </summary>
+    public MartData Marts()
+    {
+        string header = decomp.Include("data", "mart_items.h");
+        var marts = new MartData();
+        string common = System.Text.RegularExpressions.Regex.Match(header, @"PokeMartCommonItems\[\] = \{(.*?)\};", System.Text.RegularExpressions.RegexOptions.Singleline).Groups[1].Value;
+        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(common, @"\{ (ITEM_\w+), 0x([0-9A-Fa-f]+) \}"))
+            marts.Common.Add(new MartItem { Item = ItemName(m.Groups[1].Value), Badges = Convert.ToInt32(m.Groups[2].Value, 16) });
+        var arrays = System.Text.RegularExpressions.Regex.Matches(header, @"const u16 (\w+)\[\] = \{(.*?)\};", System.Text.RegularExpressions.RegexOptions.Singleline)
+            .ToDictionary(m => m.Groups[1].Value, m => m.Groups[2].Value);
+        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(header, @"\[MART_SPECIALTIES_ID_(\w+)\] = (\w+)"))
+        {
+            string key = m.Groups[1].Value.ToLowerInvariant();
+            var stock = System.Text.RegularExpressions.Regex.Matches(arrays[m.Groups[2].Value], @"\bITEM_\w+").Select(i => ItemName(i.Value)).ToList();
+            marts.Specialties[key] = stock;
+        }
+        return marts;
+    }
 
     /// <summary>
     /// A species' evolutions from PokeAPI (the default entry of each), leaving out regional-form ones. Rows that
@@ -1211,6 +1264,8 @@ public sealed partial class Importer
         item.CanBeRegistered = d.GetProperty("canRegister").GetBoolean();
         item.FieldUse = Named("fieldUseFunc", "ITEM_USE_FUNC_");
         item.BattleUse = Named("battleUseCategory", "BATTLE_USE_CATEGORY_");
+        item.BattlePocket = Named("battlePocket", "BATTLE_POCKET_MASK_");
+        if (hold == "HOLD_EFFECT_NONE") item.EffectParam = d.GetProperty("effectParam").GetInt32();
         if (p.ValueKind == JsonValueKind.Object)
         {
             var use = new Dictionary<string, int>();

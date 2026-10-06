@@ -393,3 +393,9 @@ script SafariOutOfBalls
   safari end
   warp "Sinnoh" 610 810 down
   end
+
+
+# A Repel's last step (plan 06 · R11; the original's common script 32).
+script RepelWoreOff
+  text "The Repel's effect wore off..."
+  end

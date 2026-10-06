@@ -393,10 +393,10 @@ internal sealed class Original
     public string? AbilityName;
 
     /// <summary>The whole move list, with each move's PP (Transform).</summary>
-    public List<(MoveData Data, int Pp)>? Moves;
+    public List<(MoveData Data, int Pp, int Ups)>? Moves;
 
     /// <summary>One slot's move and PP, for each slot Mimic filled.</summary>
-    public Dictionary<int, (MoveData Data, int Pp)>? MoveSlots;
+    public Dictionary<int, (MoveData Data, int Pp, int Ups)>? MoveSlots;
 }
 
 /// <summary>What is true of a Pokémon for the turn being played and no longer.</summary>

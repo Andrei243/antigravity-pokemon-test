@@ -196,17 +196,19 @@ public class MenuScreenTests
     [Fact]
     public void WhatCanBeDoneWithAnItemFollowsWhatItIs()
     {
-        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Potion")));
-        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Fire Stone")));
-        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Rare Candy")));
-        // Something only held
-        Assert.Equal(new[] { BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Oran Berry")));
-        Assert.Equal(new[] { BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(Item("Poké Ball")));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("Potion")));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("Fire Stone")));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("Rare Candy")));
+        // A berry that heals is used too (plan 06 · R11); something only held is given or thrown away
+        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("Oran Berry")));
+        Assert.Equal(new[] { BagAction.Give, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("Poké Ball")));
         // As in Platinum, a Pokémon holds neither a Key Item nor a TM; a rod is used in the field and can be kept on
-        // the item button (plan 02 · S2), a key item that does nothing yet only cancels
+        // the item button (plan 02 · S2), a key item that does nothing yet only cancels; a TM teaches and can be
+        // thrown away, an HM can't
         Assert.Equal(new[] { BagAction.Cancel }, BagScreen.ActionsFor(Item("Town Map")));
         Assert.Equal(new[] { BagAction.Use, BagAction.Register, BagAction.Cancel }, BagScreen.ActionsFor(Item("Old Rod")));
-        Assert.Equal(new[] { BagAction.Cancel }, BagScreen.ActionsFor(Item("TM01")));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("TM01")));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Cancel }, BagScreen.ActionsFor(Item("HM01")));
         Assert.All(ItemDatabase.GetAll(), item =>
             Assert.Equal(item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs), BagScreen.CanGive(item)));
     }
@@ -228,12 +230,12 @@ public class MenuScreenTests
 
         bag.MovePocket(1);
         bag.Confirm(inventory, party, notes.Add);
-        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Cancel }, bag.Actions);
+        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Toss, BagAction.Cancel }, bag.Actions);
         Assert.Equal(0, bag.ActionIndex);
 
         // While they are up the arrows move among them, and the pocket can't be changed
         bag.MoveCursor(-1, 1);
-        Assert.Equal(2, bag.ActionIndex);
+        Assert.Equal(3, bag.ActionIndex);
         bag.MovePocket(1);
         Assert.Equal(ItemPocket.Medicine, bag.CurrentPocket);
 
@@ -309,7 +311,7 @@ public class MenuScreenTests
         Assert.Equal(0, inventory.GetQuantity(Item("Potion")));
 
         // Giving something else brings the first back
-        bag.BeginTargetChoice(Item("Oran Berry"));
+        bag.BeginTargetChoice(Item("Oran Berry"), give: true);
         Assert.True(bag.Giving);
         bag.UseOnTarget(inventory, party, _ => { }, new EvolutionContext { Party = party, Bag = inventory });
         Assert.Equal("Oran Berry", turtwig.HeldItem?.Name);
@@ -329,55 +331,57 @@ public class MenuScreenTests
         var p = Mon("Turtwig", 20);
         int full = p.MaxHP;
         var potion = Item("Potion");
-        Assert.False(FieldItems.WouldHelp(potion, p));
-        Assert.Null(FieldItems.Use(potion, p));
+        Assert.False(ItemUse.WouldHelp(potion, p));
+        Assert.False(ItemUse.Apply(potion, p).Applied);
 
         p.CurrentHP = full - 30;
-        Assert.True(FieldItems.WouldHelp(potion, p));
-        Assert.NotNull(FieldItems.Use(potion, p));
+        Assert.True(ItemUse.WouldHelp(potion, p));
+        Assert.True(ItemUse.Apply(potion, p).Applied);
         Assert.Equal(full - 10, p.CurrentHP);
         // Never past full
-        FieldItems.Use(potion, p);
+        ItemUse.Apply(potion, p);
         Assert.Equal(full, p.CurrentHP);
 
         // A status: the right cure, or one that cures anything; an Antidote also stops bad poison
         p.Status = StatusCondition.Burn;
-        Assert.False(FieldItems.WouldHelp(Item("Antidote"), p));
-        Assert.True(FieldItems.WouldHelp(Item("Burn Heal"), p));
-        Assert.True(FieldItems.WouldHelp(Item("Full Heal"), p));
+        Assert.False(ItemUse.WouldHelp(Item("Antidote"), p));
+        Assert.True(ItemUse.WouldHelp(Item("Burn Heal"), p));
+        Assert.True(ItemUse.WouldHelp(Item("Full Heal"), p));
         p.Status = StatusCondition.Toxic;
         p.ToxicCounter = 3;
-        Assert.True(FieldItems.WouldHelp(Item("Antidote"), p));
-        FieldItems.Use(Item("Antidote"), p);
+        Assert.True(ItemUse.WouldHelp(Item("Antidote"), p));
+        ItemUse.Apply(Item("Antidote"), p);
         Assert.Equal((StatusCondition.None, 0), (p.Status, p.ToxicCounter));
-        Assert.False(FieldItems.WouldHelp(Item("Full Heal"), p));
+        Assert.False(ItemUse.WouldHelp(Item("Full Heal"), p));
 
         // Fainted: only a Revive helps, with half its HP; a Max Revive with all of it
         p.CurrentHP = 0;
         p.Status = StatusCondition.Faint;
-        Assert.False(FieldItems.WouldHelp(potion, p));
-        Assert.False(FieldItems.WouldHelp(Item("Full Heal"), p));
-        Assert.False(FieldItems.WouldHelp(Item("Full Restore"), p));
-        Assert.True(FieldItems.WouldHelp(Item("Revive"), p));
-        FieldItems.Use(Item("Revive"), p);
+        Assert.False(ItemUse.WouldHelp(potion, p));
+        Assert.False(ItemUse.WouldHelp(Item("Full Heal"), p));
+        Assert.False(ItemUse.WouldHelp(Item("Full Restore"), p));
+        Assert.True(ItemUse.WouldHelp(Item("Revive"), p));
+        ItemUse.Apply(Item("Revive"), p);
         Assert.Equal((full / 2, false), (p.CurrentHP, p.IsFainted));
-        Assert.False(FieldItems.WouldHelp(Item("Revive"), p));
+        Assert.False(ItemUse.WouldHelp(Item("Revive"), p));
         p.CurrentHP = 0;
-        FieldItems.Use(Item("Max Revive"), p);
+        ItemUse.Apply(Item("Max Revive"), p);
         Assert.Equal(full, p.CurrentHP);
 
         // A Full Restore does both
         p.CurrentHP = 1;
         p.Status = StatusCondition.Paralyze;
-        FieldItems.Use(Item("Full Restore"), p);
+        ItemUse.Apply(Item("Full Restore"), p);
         Assert.Equal((full, StatusCondition.None), (p.CurrentHP, p.Status));
-        Assert.False(FieldItems.WouldHelp(Item("Full Restore"), p));
+        Assert.False(ItemUse.WouldHelp(Item("Full Restore"), p));
 
-        // Only medicine is medicine
-        Assert.True(FieldItems.IsMedicine(potion));
-        Assert.False(FieldItems.IsMedicine(Item("Poké Ball")));
-        Assert.False(FieldItems.IsMedicine(Item("Rare Candy")));
-        Assert.Null(FieldItems.Use(Item("Poké Ball"), p));
+        // Only what the table says is used on a Pokémon is: medicine, a Rare Candy, the berries that heal
+        Assert.True(ItemUse.IsUsedOnPokemon(potion));
+        Assert.True(ItemUse.IsUsedOnPokemon(Item("Rare Candy")));
+        Assert.True(ItemUse.IsUsedOnPokemon(Item("Oran Berry")));
+        Assert.False(ItemUse.IsUsedOnPokemon(Item("Poké Ball")));
+        Assert.False(ItemUse.IsUsedOnPokemon(Item("Razz Berry")));
+        Assert.False(ItemUse.Apply(Item("Poké Ball"), p).Applied);
     }
 
     [Fact]
@@ -434,7 +438,7 @@ public class MenuScreenTests
     public void AShopAsksHowManyAndSellsWhatTheMoneyBuys()
     {
         var shop = new ShopScreen();
-        shop.Open("Sandgem Poké Mart");
+        shop.Open("Sandgem Poké Mart", start: ShopMode.Buying);
         Assert.Equal("SANDGEM POKÉ MART", shop.Name);
         Assert.True(shop.Stock.Count >= 4);
         var notes = new List<string>();
@@ -468,8 +472,9 @@ public class MenuScreenTests
 
         // The second press buys that many and says what it cost
         shop.Move(1, 0, money);
-        int spent = shop.Confirm(inventory, money, notes.Add);
-        Assert.Equal(potion.Price * 2, spent);
+        // The second press buys that many: the money goes down by what they cost
+        int change = shop.Confirm(inventory, money, notes.Add);
+        Assert.Equal(-potion.Price * 2, change);
         Assert.Equal(2, inventory.GetQuantity(potion));
         Assert.False(shop.ChoosingQuantity);
         Assert.Single(notes);
@@ -499,6 +504,9 @@ public class MenuScreenTests
         Assert.False(shop.ChoosingQuantity);
         Assert.Equal("You don't have enough money.", notes.Last());
 
+        // Out of the list to the first question, and out
+        shop.Cancel();
+        Assert.Equal(ShopMode.Choosing, shop.Mode);
         shop.Cancel();
         Assert.False(shop.IsActive);
     }
@@ -507,7 +515,7 @@ public class MenuScreenTests
     public void AShopsCursorWrapsRoundItsStock()
     {
         var shop = new ShopScreen();
-        shop.Open();
+        shop.Open(start: ShopMode.Buying);
         Assert.Equal("POKÉ MART", shop.Name);
         shop.Move(0, -1, 0);
         Assert.Equal(shop.Stock.Count - 1, shop.SelectedIndex);

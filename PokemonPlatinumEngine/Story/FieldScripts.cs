@@ -38,6 +38,9 @@ public static class FieldScripts
 
     /// <summary>The end of a Safari Game (plan 01 · M7): its last step taken, or its last ball thrown.</summary>
     public const string SafariTimeUp = "common.SafariTimeUp";
+
+    /// <summary>A Repel's last step (plan 06 · R11).</summary>
+    public const string RepelWoreOff = "common.RepelWoreOff";
     public const string SafariOutOfBalls = "common.SafariOutOfBalls";
 
     /// <summary>

@@ -281,7 +281,7 @@ public static class Evolution
             Ball = PokeBall
         };
         shell.Moves.Clear();
-        foreach (var m in p.Moves) shell.Moves.Add(new Move(m.Data, m.CurrentPP));
+        foreach (var m in p.Moves) shell.Moves.Add(new Move(m.Data, m.CurrentPP, m.PPUps));
         shell.RecalculateStats();
         shell.CurrentHP = shell.MaxHP;
 

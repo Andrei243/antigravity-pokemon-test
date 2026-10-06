@@ -959,7 +959,7 @@ public class ScriptTests
         public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first) { }
         public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
-        public void Open(ScriptScreen screen, NPC? subject) { }
+        public void Open(ScriptScreen screen, NPC? subject, string? counter = null) { }
         public bool GivePokemon(Pokemon pokemon) => true;
         public void Warp(string map, int x, int y, Direction? facing) { }
         public void Fade(bool toBlack, float seconds) { }

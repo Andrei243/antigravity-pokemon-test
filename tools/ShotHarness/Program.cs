@@ -1152,7 +1152,8 @@ if (Run("menus"))
     foreach (var (item, count) in new[]
              {
                  ("Potion", 5), ("Super Potion", 2), ("Antidote", 3), ("Revive", 1), ("Rare Candy", 2), ("Fire Stone", 1), ("Poké Ball", 10),
-                 ("Great Ball", 3), ("Oran Berry", 4), ("Escape Rope", 2), ("Old Rod", 1), ("Town Map", 1), ("TM01", 1), ("Repel", 3)
+                 ("Great Ball", 3), ("Oran Berry", 4), ("Escape Rope", 2), ("Old Rod", 1), ("Town Map", 1), ("TM01", 1), ("Repel", 3),
+                ("Ether", 2), ("TM76", 1), ("HM06", 1)
              })
         if (ItemDatabase.Get(item) is { } data) inventory.AddItem(data, count);
     Set("currentState", GameState.BagMenu);
@@ -1167,7 +1168,38 @@ if (Run("menus"))
     bag.Confirm(inventory, party, engine.ShowNotification);
     Frames(30); Shot("22c_bag_use_on");
     bag.CancelTarget();
-    bag.MovePocket(2);
+
+    // The items of plan 06 · R11: TOSS and its "how many?", an Ether's choice of move, a TM's ABLE and NOT ABLE
+    void PickItem(string name)
+    {
+        var data = ItemDatabase.Get(name)!;
+        bag.CurrentPocket = data.Pocket;
+        bag.SelectedIndex = inventory.GetPocketItems(data.Pocket).FindIndex(st => st.Data.Name == name);
+    }
+    void ChooseAction(BagAction action)
+    {
+        bag.Confirm(inventory, party, engine.ShowNotification);
+        while (bag.Actions != null && bag.Actions[bag.ActionIndex] != action) bag.MoveCursor(1, bag.Actions.Count);
+        bag.Confirm(inventory, party, engine.ShowNotification);
+    }
+    PickItem("Potion");
+    ChooseAction(BagAction.Toss);
+    bag.MoveToss(1, 0, inventory.GetQuantity(ItemDatabase.Get("Potion")!));
+    bag.MoveToss(1, 0, inventory.GetQuantity(ItemDatabase.Get("Potion")!));
+    Frames(20); Shot("22g_bag_toss");
+    bag.Cancel();
+    party.Members[0].Moves[0].CurrentPP = 3;
+    PickItem("Ether");
+    ChooseAction(BagAction.Use);
+    bag.UseOnTarget(inventory, party, engine.ShowNotification, new EvolutionContext { Party = party, Bag = inventory });
+    Frames(20); Shot("22h_bag_ether_move");
+    bag.CancelMove();
+    bag.CancelTarget();
+    PickItem("TM76");
+    ChooseAction(BagAction.Use);
+    Frames(30); Shot("22i_bag_tm_able");
+    bag.CancelTarget();
+    PickItem("TM01");
     Frames(4); Shot("22d_bag_tm");
     bag.MovePocket(4);
     Frames(4); Shot("22e_bag_key_items");
@@ -1197,13 +1229,26 @@ if (Run("menus"))
     Set("currentState", GameState.Overworld);
     Set("currentState", GameState.Shop);
     var shop = (ShopScreen)Get("shopScreen");
-    shop.Open("Sandgem Poké Mart");
-    Frames(30); shop.Move(0, 1, 3000); shop.Move(0, 1, 3000);
-    Frames(2); Shot("29_shop");
+    // The counter's first question, the common stock with three badges, "how many?", then the bag's items to sell
+    shop.Open("Oreburgh Poké Mart", MartDatabase.Stock(null, 3));
+    Frames(30); Shot("29a_shop_question");
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    shop.Move(0, 1, 3000); shop.Move(0, 1, 3000);
+    Frames(12); Shot("29_shop");
     shop.Confirm(inventory, 3000, engine.ShowNotification);
     shop.Move(1, 0, 3000); shop.Move(1, 0, 3000);
     Frames(30); Shot("29b_shop_how_many");
     shop.Cancel();
+    shop.Cancel();
+    shop.Move(0, 1, 3000);
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    shop.Move(0, 1, 3000, inventory: inventory);
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    Frames(30); Shot("29c_shop_sell");
+    shop.Close();
+    // A counter of a town's own goods
+    shop.Open("Veilstone Dept. Store", MartDatabase.Stock("veilstone_2f_mid", 0), ShopMode.Buying);
+    Frames(30); Shot("29d_shop_specialties");
     shop.Close();
     var boxed = (List<Pokemon>)Get("pcBoxStorage");
     foreach (var name in new[] { "Starly", "Bidoof", "Shinx", "Budew", "Kricketot", "Staravia", "Luxio", "Riolu", "Gible", "Prinplup" })
@@ -1225,10 +1270,21 @@ if (Run("menus"))
     mb.HUD.MenuState = BattleMenuState.SwitchPokemon;
     mb.HUD.SwitchMenuIndex = 1;
     Frames(2); Shot("23_battle_switch");
-    mb.HUD.MenuState = BattleMenuState.SelectBagItem;
-    mb.HUD.BagMenuIndex = 2;
-    Frames(2); Shot("24_battle_bag");
+    mb.HUD.MenuState = BattleMenuState.Main;
+    // The battle's bag (plan 06 · R11): its four pockets and the last item used, a pocket's items, who a Potion is
+    // for, and which move an Ether is for
+    mb.SelectMainMenuOption(1);
+    Frames(12); Shot("24_battle_bag");
     ShotCrop("24b_battle_bag_native", 40, 820, 1140, 230, 2);
+    mb.SelectBagPocket(0);
+    Frames(12); Shot("24c_battle_bag_items");
+    mb.SelectBagItem(mb.BagListed.ToList().FindIndex(st => st.Data.Name == "Potion"));
+    Frames(12); Shot("24d_battle_bag_target");
+    mb.BagBack(); mb.BagBack();
+    mb.SelectBagItem(mb.BagListed.ToList().FindIndex(st => st.Data.Name == "Ether"));
+    mb.SelectBagTarget(0);
+    Frames(12); Shot("24e_battle_bag_move");
+    mb.BagBack(); mb.BagBack(); mb.BagBack(); mb.BagBack();
     mb.HUD.MenuState = BattleMenuState.Main;
 
     // A trainer battle, for the row of balls under the foe's box and a long message

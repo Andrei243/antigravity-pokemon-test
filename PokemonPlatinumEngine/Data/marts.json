@@ -1,0 +1,227 @@
+{
+  "common": [
+    {
+      "item": "Poké Ball",
+      "badges": 1
+    },
+    {
+      "item": "Great Ball",
+      "badges": 3
+    },
+    {
+      "item": "Ultra Ball",
+      "badges": 4
+    },
+    {
+      "item": "Potion",
+      "badges": 1
+    },
+    {
+      "item": "Super Potion",
+      "badges": 2
+    },
+    {
+      "item": "Hyper Potion",
+      "badges": 4
+    },
+    {
+      "item": "Max Potion",
+      "badges": 5
+    },
+    {
+      "item": "Full Restore",
+      "badges": 6
+    },
+    {
+      "item": "Revive",
+      "badges": 3
+    },
+    {
+      "item": "Antidote",
+      "badges": 1
+    },
+    {
+      "item": "Paralyze Heal",
+      "badges": 1
+    },
+    {
+      "item": "Awakening",
+      "badges": 2
+    },
+    {
+      "item": "Burn Heal",
+      "badges": 2
+    },
+    {
+      "item": "Ice Heal",
+      "badges": 2
+    },
+    {
+      "item": "Full Heal",
+      "badges": 4
+    },
+    {
+      "item": "Escape Rope",
+      "badges": 2
+    },
+    {
+      "item": "Repel",
+      "badges": 2
+    },
+    {
+      "item": "Super Repel",
+      "badges": 3
+    },
+    {
+      "item": "Max Repel",
+      "badges": 4
+    }
+  ],
+  "specialties": {
+    "jubilife": [
+      "Air Mail",
+      "Heal Ball"
+    ],
+    "oreburgh": [
+      "Tunnel Mail",
+      "Heal Ball",
+      "Net Ball"
+    ],
+    "floaroma": [
+      "Bloom Mail",
+      "Heal Ball",
+      "Net Ball"
+    ],
+    "eterna_mart": [
+      "Air Mail",
+      "Heal Ball",
+      "Net Ball",
+      "Nest Ball"
+    ],
+    "eterna_house": [
+      "Heal Powder",
+      "Energy Powder",
+      "Energy Root",
+      "Revival Herb"
+    ],
+    "hearthome": [
+      "Heart Mail",
+      "Heal Ball",
+      "Net Ball",
+      "Nest Ball"
+    ],
+    "solaceon": [
+      "Air Mail",
+      "Net Ball",
+      "Nest Ball",
+      "Dusk Ball"
+    ],
+    "pastoria": [
+      "Air Mail",
+      "Nest Ball",
+      "Dusk Ball",
+      "Quick Ball"
+    ],
+    "veilstone_1f_right": [
+      "Potion",
+      "Super Potion",
+      "Hyper Potion",
+      "Max Potion",
+      "Revive",
+      "Antidote",
+      "Paralyze Heal",
+      "Burn Heal",
+      "Ice Heal",
+      "Awakening",
+      "Full Heal"
+    ],
+    "veilstone_1f_left": [
+      "Poké Ball",
+      "Great Ball",
+      "Ultra Ball",
+      "Escape Rope",
+      "Poké Doll",
+      "Repel",
+      "Super Repel",
+      "Max Repel",
+      "Grass Mail",
+      "Flame Mail",
+      "Bubble Mail",
+      "Space Mail"
+    ],
+    "veilstone_2f_up": [
+      "X Speed",
+      "X Attack",
+      "X Defense",
+      "Guard Spec.",
+      "Dire Hit",
+      "X Accuracy",
+      "X Sp. Atk",
+      "X Sp. Def"
+    ],
+    "veilstone_2f_mid": [
+      "Protein",
+      "Iron",
+      "Calcium",
+      "Zinc",
+      "Carbos",
+      "HP Up"
+    ],
+    "veilstone_3f_up": [
+      "TM83",
+      "TM17",
+      "TM54",
+      "TM20",
+      "TM33",
+      "TM16",
+      "TM70"
+    ],
+    "veilstone_3f_down": [
+      "TM38",
+      "TM25",
+      "TM14",
+      "TM22",
+      "TM52",
+      "TM15"
+    ],
+    "celestic": [
+      "Air Mail",
+      "Dusk Ball",
+      "Quick Ball",
+      "Timer Ball"
+    ],
+    "snowpoint": [
+      "Snow Mail",
+      "Dusk Ball",
+      "Quick Ball",
+      "Timer Ball"
+    ],
+    "canalave": [
+      "Air Mail",
+      "Quick Ball",
+      "Timer Ball",
+      "Repeat Ball"
+    ],
+    "sunyshore": [
+      "Steel Mail",
+      "Luxury Ball"
+    ],
+    "pokemon_league": [
+      "Heal Ball",
+      "Net Ball",
+      "Nest Ball",
+      "Dusk Ball",
+      "Quick Ball",
+      "Timer Ball",
+      "Repeat Ball",
+      "Luxury Ball"
+    ],
+    "veilstone_b1f": [
+      "Figy Berry",
+      "Wiki Berry",
+      "Mago Berry",
+      "Aguav Berry",
+      "Iapapa Berry"
+    ]
+  }
+}

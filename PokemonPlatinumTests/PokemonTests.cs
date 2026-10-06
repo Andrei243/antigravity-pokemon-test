@@ -535,7 +535,7 @@ public class PokemonTests
         var battle = new BattleEngine(party, foe, inventory, pokedex, null, new List<Pokemon>());
         SkipMessages(battle);
 
-        battle.SelectBagItem(0);
+        battle.UseBagItem("Poké Ball");
         Assert.Equal("Lucas used one Poké Ball!", battle.CurrentMessage);
         battle.ConfirmMessage();
         Tick(battle, BattleAnimator.BallThrowTime(4) + 0.5f);
@@ -561,7 +561,7 @@ public class PokemonTests
             var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Giratina")!, 70), inventory, new Pokedex());
             SkipMessages(battle);
 
-            battle.SelectBagItem(0);
+            battle.UseBagItem("Poké Ball");
             string thrown = battle.CurrentMessage;
             battle.ConfirmMessage();
 

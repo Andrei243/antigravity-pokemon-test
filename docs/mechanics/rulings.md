@@ -379,8 +379,29 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The +1 friendship for the place it was met | Given by items and events alike | Left out | Pokémon don't record where they were met yet |
 | Shininess | Drawn from the personality and the trainer's ID (1 in 8,192) | A draw of its own at the same odds (1 in 4,096 by the modern rules), and nothing shows it yet | Personalities don't decide everything they do in the original yet (R15, breeding, is where they matter) |
 | A cured Pokémon | A small face on its summary | Nothing | Our own interface: the PKRS tag shows only while it is carried |
-| A Rare Candy's fifth move | Asks which move to forget | Passed over, as before | The bag's own screens are R11 |
 | The Distortion World's ground | Gives Burmy the sandy cloak | The trash cloak, as the League's rooms do | `BattleTerrain.Special` stands for all of them; the Distortion World is plan 01's |
+
+## The bag and shops (2026-10-06, plan 06 · R11)
+
+**Platinum's rules, kept as they are** (`src/item_use_pokemon.c`, `src/pokemon.c`, `src/overlay006/wild_encounters.c`, `src/scrcmd_shop.c`, `include/data/mart_items.h`)
+
+- **An item on a Pokémon** (`Pokemon_CheckItemEffects`, `Pokemon_ApplyItemEffects`): first whether it would do anything (the party's ABLE and NOT ABLE), then its parts in the original's order: the conditions it heals, HP or a revival, a level, PP Ups, PP, effort, and last the item's friendship, which is given only if something was done. HP comes back by the table's amount or its shares (−1 all, −2 half, −3 a quarter), and a Pokémon whose most is 1 is given 1. A revival brings a fainted Pokémon round and nothing else; a Rare Candy on a fainted Pokémon brings it round with the HP the level adds.
+- **PP Ups** (`MoveTable_CalcMaxPP`): each adds a fifth of the move's base PP, three at most; a PP Max gives all three; a move with fewer than 5 base PP (Sketch) takes none. The PP the raise adds are given at once.
+- **A Rare Candy's friendship**: only the table's (+5, +3, +2 by band); the +5, +3, +2 a level gives is the battle's own (`BattleScript`'s level-up), not the item's.
+- **TMs and HMs**: taught to a species whose list names the machine; a TM is used up, an HM isn't, and an HM's move can't be forgotten to make room for another.
+- **A Repel** (`RepelPreventsEncounter`): while its steps last, a wild Pokémon of a lower level than the team's first Pokémon that can fight is turned away; another can't be used while one lasts. **The flutes** (`ModifyEncounterRateWithFlute`): the Black Flute halves the encounter rate and the White Flute adds half, after the rate's other changes, until the player goes elsewhere.
+- **The Marts** (`ScrCmd_PokeMartCommon`): the common counter's stock grows with the badges in six steps (none, one or two, three or four, five or six, seven, eight), each item from its own step on; a town's own counter (`ScrCmd_PokeMartSpecialties`) sells its list whatever the badges. A shop pays half an item's price, nothing for a key item.
+
+**Our own choices**
+
+- The shop's and the bag's lines are our own words.
+- The second counter of each Mart is a second clerk standing beside the first, at the end of the counter; Platinum's rooms have the two clerks too, and ours are laid out by hand until plan 01 · M11.
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Later species' TMs and HMs | Not in Platinum | PokeAPI's machine moves of the species that are Platinum's machines | So a species from a later game learns what its own games teach |
+| Mail | Written on its own screen | Held and given, never written | The mail screen is plan 11's |
+| The move tutors | In their houses (Route 212, Snowpoint, Survival Area) | Each species' list in the data (`tutorMoves`), nobody to teach yet | Their rooms are plan 01 · M11 |
 
 ## The east and the sea (2026-10-06, plan 01 · M7)
 

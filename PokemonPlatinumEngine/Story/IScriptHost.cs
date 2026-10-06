@@ -96,7 +96,7 @@ public interface IScriptHost
     /// Opens a screen and waits for it to close. The starters' sets <see cref="Answer"/> to the one chosen (0 to
     /// 2); the way to another region sets it to 1 where there is one from here and 0 where there is none.
     /// </summary>
-    void Open(ScriptScreen screen, NPC? subject);
+    void Open(ScriptScreen screen, NPC? subject, string? counter = null);
 
     /// <summary>Adds a Pokémon to the team, or to the PC when the team is full; true if it went to the team.</summary>
     bool GivePokemon(Pokemon pokemon);

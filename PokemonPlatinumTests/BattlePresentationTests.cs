@@ -526,7 +526,7 @@ public class BattlePresentationTests
         inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
         var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1 }, inventory, new Pokedex(), null, new List<Pokemon>());
         for (int i = 0; i < 10 && battle.HUD.MenuState == BattleMenuState.Message; i++) battle.ConfirmMessage();
-        battle.SelectBagItem(0);
+        battle.UseBagItem("Poké Ball");
         battle.ConfirmMessage();
         Assert.NotNull(battle.Anim.Ball);
         Assert.Equal("Poké Ball", battle.Anim.Ball!.Ball);

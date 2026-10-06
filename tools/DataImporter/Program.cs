@@ -50,6 +50,8 @@ var evolutionItems = species.SelectMany(s => s.Evolutions ?? new()).Select(e => 
 var importedItems = importer.Items(evolutionItems, moves);
 importer.AddLaterMechanics(importedItems, showdown);
 var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
+importer.AddLaterMachines(species, items);
+var marts = importer.Marts();
 
 Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
@@ -61,6 +63,7 @@ Write(Path.Combine(outDir, MoveDatabase.FileName), GameDataFiles.Serialize(moves
 Write(Path.Combine(outDir, AbilityDatabase.FileName), GameDataFiles.Serialize(abilities));
 Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items));
 Write(Path.Combine(outDir, TrainerDatabase.FileName), GameDataFiles.Serialize(trainers));
+Write(Path.Combine(outDir, MartDatabase.FileName), GameDataFiles.Serialize(marts));
 Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items));
 Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities, {items.Count} items and {trainers.Count} trainers in {outDir}");
 return 0;

@@ -578,7 +578,7 @@ public class FieldMoveTests
         Assert.Equal(new[] { BagAction.Use, BagAction.Register, BagAction.Cancel }, BagScreen.ActionsFor(bicycle));
         Assert.Equal(new[] { BagAction.Use, BagAction.Deselect, BagAction.Cancel }, BagScreen.ActionsFor(bicycle, "Bicycle"));
         foreach (string rod in new[] { "Old Rod", "Good Rod", "Super Rod" }) Assert.True(BagScreen.UsedInField(ItemDatabase.Get(rod)!));
-        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Cancel }, BagScreen.ActionsFor(ItemDatabase.Get("Escape Rope")!));
+        Assert.Equal(new[] { BagAction.Use, BagAction.Give, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(ItemDatabase.Get("Escape Rope")!));
 
         var bag = new Inventory();
         bag.AddItem(bicycle, 1);

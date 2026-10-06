@@ -65,10 +65,13 @@ public static class Coverage
 
     // ------------------------------------------------------------------ what an item has to run
 
-    // What the bag's medicine rule (Models/FieldItems.cs) carries out of an item's use parameters
-    private static readonly HashSet<string> MedicineRuns = new()
+    // What using an item on a Pokémon from the bag (Models/ItemUse.cs) carries out of its use parameters. Confusion
+    // and infatuation only exist in battle, so an item that cures them has nothing more to do in the field
+    private static readonly HashSet<string> FieldRuns = new()
     {
-        "hpRestored", "healSleep", "healPoison", "healBurn", "healFreeze", "healParalysis", "healConfusion", "revive", "levelUp"
+        "hpRestored", "healSleep", "healPoison", "healBurn", "healFreeze", "healParalysis", "healConfusion", "healAttract",
+        "revive", "reviveAll", "levelUp", "ppUp", "ppMax", "ppRestored", "restorePPAllMoves",
+        "hpEVs", "atkEVs", "defEVs", "speedEVs", "spatkEVs", "spdefEVs", "friendshipLow", "friendshipMed", "friendshipHigh"
     };
 
     // Balls that catch as they do in Platinum. The rest have an aftermath not written yet (a Luxury Ball's
@@ -101,11 +104,19 @@ public static class Coverage
         return jobs.All(j => j == Works.NotYet) ? Works.NotYet : Works.Partly;
     }
 
-    /// <summary>What using it from the bag outside a battle does: the medicine rule runs the parameters above; the rest is plan 06 · R11.</summary>
+    /// <summary>
+    /// What using it from the bag outside a battle does (plan 06 · R11): the field's own uses (the Bicycle, the rods,
+    /// an Escape Rope, a Repel, a flute, Sacred Ash), teaching a TM or an HM, evolving, the Gracidea, and an item used
+    /// on a Pokémon by the parameters above. A berry is also planted in soil, which waits for berry soil (R14).
+    /// </summary>
     private static Works FieldUseOf(ItemData item)
     {
+        if (BagScreen.UsedInField(item) || BagScreen.UsedInBag(item) || MoveTeaching.IsMachine(item) || item.FieldUse == "Gracidea")
+            return Works.Fully;
+        if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item)) return Works.Fully;
         if (!BagScreen.CanUse(item)) return Works.NotYet;
-        return item.Use == null || item.Use.Keys.All(MedicineRuns.Contains) ? Works.Fully : Works.Partly;
+        bool runs = item.Use == null || item.Use.Keys.All(FieldRuns.Contains);
+        return runs && item.FieldUse != "Berry" ? Works.Fully : Works.Partly;
     }
 
     private static string Word(Works works) => works switch

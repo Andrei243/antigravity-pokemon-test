@@ -129,6 +129,8 @@ public sealed class MapFile
         public bool? IsPokeMartClerk { get; set; }
         public bool? IsPCTerminal { get; set; }
         public bool? IsTransportAttendant { get; set; }
+        /// <summary>A clerk's counter: a specialty id of <c>marts.json</c>; left out, the common counter.</summary>
+        public string? Mart { get; set; }
 
         /// <summary>The script talking to them runs, where it isn't the common one for what they are (docs/scripts.md).</summary>
         public string? Script { get; set; }
@@ -261,6 +263,7 @@ public sealed class MapFile
             IsPokeMartClerk = n.IsPokeMartClerk ?? false,
             IsPCTerminal = n.IsPCTerminal ?? false,
             IsTransportAttendant = n.IsTransportAttendant ?? false,
+            Mart = n.Mart,
             Key = n.Id,
             Script = n.Script,
             HiddenBy = n.HiddenBy,
@@ -398,6 +401,7 @@ public sealed class MapFile
         IsPokeMartClerk = npc.IsPokeMartClerk ? true : null,
         IsPCTerminal = npc.IsPCTerminal ? true : null,
         IsTransportAttendant = npc.IsTransportAttendant ? true : null,
+        Mart = npc.Mart,
         Script = npc.Script,
         HiddenBy = npc.HiddenBy,
         ShownBy = npc.ShownBy,

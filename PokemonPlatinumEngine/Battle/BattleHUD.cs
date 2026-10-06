@@ -13,7 +13,14 @@ public enum BattleMenuState
     Main,
     Moves,
     SwitchPokemon,
+    /// <summary>The battle's bag: its four pockets and the item used last (plan 06 · R11).</summary>
+    SelectBagPocket,
+    /// <summary>The items of the pocket opened.</summary>
     SelectBagItem,
+    /// <summary>The Pokémon an item from the bag is for.</summary>
+    SelectBagTarget,
+    /// <summary>The move of that Pokémon's an item restores (an Ether, a Leppa Berry).</summary>
+    SelectBagMove,
     /// <summary>Choosing which Pokémon a move is aimed at (double battles).</summary>
     SelectTarget,
     Message,
@@ -30,6 +37,12 @@ public class BattleHUD
     public int MoveMenuIndex { get; set; } = 0;
     public int SwitchMenuIndex { get; set; } = 0;
     public int BagMenuIndex { get; set; } = 0;
+
+    /// <summary>The cursor on the bag's pockets (4: the item used last), the first row of a pocket's list that shows, and the cursors on the team and on a Pokémon's moves.</summary>
+    public int BagPocketIndex { get; set; } = 0;
+    public int BagFirstRow { get; set; } = 0;
+    public int BagTargetIndex { get; set; } = 0;
+    public int BagMoveIndex { get; set; } = 0;
     public int TargetMenuIndex { get; set; } = 0;
 
     /// <summary>Draws the HP boxes and the bottom panel over the battle field.</summary>

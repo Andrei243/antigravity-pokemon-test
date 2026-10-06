@@ -92,6 +92,18 @@
         "Clerk: Welcome to the Solaceon Poké Mart! How may I serve you today?"
       ],
       "isPokeMartClerk": true
+    },
+    {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "Clerk: Welcome! This counter has goods you'll only find here in Solaceon Town."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "solaceon"
     }
   ],
   "wildEncounters": []

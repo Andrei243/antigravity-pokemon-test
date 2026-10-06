@@ -12,14 +12,16 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What can be done with the item under the cursor.</summary>
-public enum BagAction { Use, Give, Register, Deselect, Cancel }
+public enum BagAction { Use, Give, Toss, Register, Deselect, Cancel }
 
 /// <summary>
 /// The bag: Platinum's eight pockets as tabs, the pocket's items as a list and the chosen item beside it. The A
-/// button opens what can be done with an item (USE, GIVE, CANCEL); using or giving goes on to the party to
-/// pick a Pokémon. Its logic takes no input (<see cref="MovePocket"/>, <see cref="MoveCursor"/>,
-/// <see cref="Confirm"/>, <see cref="Cancel"/>), so tests and the harness drive it. Up or down kept down runs on
-/// through a pocket's list (<see cref="HeldKey"/>).
+/// button opens what can be done with an item (USE, GIVE, TOSS, CANCEL); using or giving goes on to the party to
+/// pick a Pokémon, and an item used on one move (an Ether, a PP Up) to that Pokémon's moves. A TM or an HM is
+/// taught to the Pokémon picked, and a Pokémon that knows four moves already is asked which to forget, as it is
+/// for a move a Rare Candy's level brings (plan 06 · R11). Its logic takes no input (<see cref="MovePocket"/>,
+/// <see cref="MoveCursor"/>, <see cref="Confirm"/>, <see cref="Cancel"/>), so tests and the harness drive it. Up or
+/// down kept down runs on through a pocket's list (<see cref="HeldKey"/>).
 /// </summary>
 public class BagScreen
 {
@@ -80,6 +82,37 @@ public class BagScreen
     /// </summary>
     public string? Registered { get; set; }
 
+    /// <summary>The Repel's steps and the flute (plan 06 · R11): the game hands its own over as the bag opens.</summary>
+    public EncounterAids Aids { get; set; } = new();
+
+    /// <summary>The player's name, for what the bag says when a Repel or a flute is used.</summary>
+    public string PlayerName { get; set; } = PlayerIdentity.Name;
+
+    // ---- throwing items away
+
+    /// <summary>True while the bag asks how many of the chosen item to throw away, and the number chosen so far.</summary>
+    public bool Tossing { get; private set; }
+    public int TossCount { get; private set; } = 1;
+
+    // ---- an item used on one move
+
+    /// <summary>True while the item waits for one of the chosen Pokémon's moves (an Ether, a PP Up), and the cursor on them.</summary>
+    public bool ChoosingMove { get; private set; }
+    public int MoveIndex { get; private set; }
+
+    // ---- teaching a move to a Pokémon that knows four
+
+    private readonly Queue<(Pokemon Pokemon, string Move, ItemData? Machine)> toTeach = new();
+    private (Pokemon Pokemon, string Move, ItemData? Machine)? teaching;
+    private Pokemon? grownByCandy;
+    private EvolutionContext? candyContext;
+
+    /// <summary>The Pokémon being taught and the move it wants, while the bag asks which move to forget (null otherwise).</summary>
+    public (Pokemon Pokemon, string Move, ItemData? Machine)? Teaching => teaching;
+
+    /// <summary>The cursor of the "forget which move?" panel: 0 to 3 a move, 4 "don't learn it".</summary>
+    public int ForgetIndex { get; private set; }
+
     // An item used in the field itself (the Bicycle, a rod, an Escape Rope), for the game to carry out once the bag closes
     private ItemData? usedInField;
 
@@ -107,6 +140,10 @@ public class BagScreen
         Array.Clear(firsts);
         Actions = null;
         choosingFor = null;
+        Tossing = false;
+        ChoosingMove = false;
+        teaching = null;
+        toTeach.Clear();
         openAge = 0f;
         upDown.Release();
     }
@@ -116,6 +153,8 @@ public class BagScreen
         IsActive = false;
         Actions = null;
         choosingFor = null;
+        Tossing = false;
+        ChoosingMove = false;
     }
 
     // ---------------------------------------------------------------- moving about
@@ -123,7 +162,7 @@ public class BagScreen
     /// <summary>To the next or the previous pocket, wrapping round; each keeps its own cursor.</summary>
     public void MovePocket(int step)
     {
-        if (step == 0 || Actions != null) return;
+        if (step == 0 || Actions != null || Tossing) return;
         CurrentPocket = Pockets[UiNav.Wrap(PocketIndex, step, Pockets.Length)];
         AudioManager.PlaySound("page");
     }
@@ -134,7 +173,7 @@ public class BagScreen
     /// </summary>
     public void MoveCursor(int step, int count, bool held = false)
     {
-        if (step == 0) return;
+        if (step == 0 || Tossing) return;
         if (Actions != null)
         {
             ActionIndex = UiNav.Wrap(ActionIndex, step, Actions.Count);
@@ -160,12 +199,12 @@ public class BagScreen
     // ---------------------------------------------------------------- what an item can do
 
     /// <summary>
-    /// Items used on one Pokémon: medicine, Rare Candies, what evolves a Pokémon, and (plan 06 · R10) the vitamins
-    /// and EV berries, and the Gracidea.
+    /// Items used on one Pokémon: medicine and the berries that heal (by their use parameters, <see cref="ItemUse"/>),
+    /// Rare Candies, vitamins and EV berries, what evolves a Pokémon, the Gracidea, and TMs and HMs.
     /// </summary>
     public static bool CanUse(ItemData item) =>
-        FieldItems.IsMedicine(item) || item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item)
-        || EffortRules.IsEffortItem(item) || item.FieldUse == "Gracidea";
+        ItemUse.IsUsedOnPokemon(item) || Evolution.IsUsedToEvolve(item) || EffortRules.IsEffortItem(item)
+        || item.FieldUse == "Gracidea" || MoveTeaching.IsMachine(item);
 
     /// <summary>
     /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
@@ -173,8 +212,14 @@ public class BagScreen
     /// </summary>
     public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope";
 
+    /// <summary>Items that do their work from the bag itself, on nobody: the Repels and the flutes, and Sacred Ash on the whole team.</summary>
+    public static bool UsedInBag(ItemData item) => EncounterAids.IsAid(item) || ItemUse.RevivesAll(item);
+
     /// <summary>As in Platinum, a Pokémon can hold anything but a Key Item or a TM.</summary>
     public static bool CanGive(ItemData item) => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs);
+
+    /// <summary>Whether it can be thrown away: anything but a key item, or an item the table says can't be (an HM).</summary>
+    public static bool CanToss(ItemData item) => item.Pocket != ItemPocket.KeyItems && !item.CantBeTossed;
 
     /// <summary>Items the player aims at one Pokémon, to use or to give.</summary>
     public static bool NeedsTarget(ItemData item) => CanUse(item) || CanGive(item);
@@ -183,8 +228,9 @@ public class BagScreen
     public static List<BagAction> ActionsFor(ItemData item, string? registered = null)
     {
         var actions = new List<BagAction>();
-        if (CanUse(item) || UsedInField(item)) actions.Add(BagAction.Use);
+        if (CanUse(item) || UsedInField(item) || UsedInBag(item)) actions.Add(BagAction.Use);
         if (CanGive(item)) actions.Add(BagAction.Give);
+        if (CanToss(item)) actions.Add(BagAction.Toss);
         if (item.CanBeRegistered && UsedInField(item)) actions.Add(registered == item.Name ? BagAction.Deselect : BagAction.Register);
         actions.Add(BagAction.Cancel);
         return actions;
@@ -192,7 +238,7 @@ public class BagScreen
 
     /// <summary>
     /// The A button: on an item, opens what can be done with it; on one of those, does it. Using and giving
-    /// both go on to the party to pick a Pokémon.
+    /// both go on to the party to pick a Pokémon; throwing away asks how many.
     /// </summary>
     public void Confirm(Inventory inventory, Party party, Action<string> onNotification)
     {
@@ -200,6 +246,17 @@ public class BagScreen
         if (items.Count == 0) return;
         Follow(items.Count);
         var item = items[SelectedIndex].Data;
+
+        if (Tossing)
+        {
+            int count = Math.Clamp(TossCount, 1, inventory.GetQuantity(item));
+            inventory.RemoveItem(item, count);
+            Tossing = false;
+            AudioManager.PlaySound("select");
+            onNotification(count == 1 ? $"Threw away the {item.Name}." : $"Threw away {count} × {item.Name}.");
+            Follow(inventory.GetPocketItems(CurrentPocket).Count);
+            return;
+        }
 
         if (Actions == null)
         {
@@ -218,24 +275,47 @@ public class BagScreen
 
         var action = Actions[Math.Clamp(ActionIndex, 0, Actions.Count - 1)];
         Actions = null;
-        if (action == BagAction.Cancel)
+        switch (action)
         {
-            AudioManager.PlaySound("cancel");
-            return;
-        }
-        if (action is BagAction.Register or BagAction.Deselect)
-        {
-            Registered = action == BagAction.Register ? item.Name : null;
-            AudioManager.PlaySound("select");
-            onNotification(action == BagAction.Register ? $"The {item.Name} is ready on the item button." : $"The {item.Name} is off the item button.");
-            return;
-        }
-        if (action == BagAction.Use && UsedInField(item))
-        {
-            usedInField = item;
-            AudioManager.PlaySound("select");
-            Close();
-            return;
+            case BagAction.Cancel:
+                AudioManager.PlaySound("cancel");
+                return;
+            case BagAction.Register or BagAction.Deselect:
+                Registered = action == BagAction.Register ? item.Name : null;
+                AudioManager.PlaySound("select");
+                onNotification(action == BagAction.Register ? $"The {item.Name} is ready on the item button." : $"The {item.Name} is off the item button.");
+                return;
+            case BagAction.Toss:
+                Tossing = true;
+                TossCount = 1;
+                AudioManager.PlaySound("select");
+                return;
+            case BagAction.Use when UsedInField(item):
+                usedInField = item;
+                AudioManager.PlaySound("select");
+                Close();
+                return;
+            case BagAction.Use when EncounterAids.IsAid(item):
+                var (said, usedUp) = Aids.Use(item, PlayerName);
+                if (usedUp) inventory.RemoveItem(item, 1);
+                AudioManager.PlaySound(usedUp || item.Name.EndsWith("Flute") ? "select" : "error");
+                onNotification(said);
+                Follow(inventory.GetPocketItems(CurrentPocket).Count);
+                return;
+            case BagAction.Use when ItemUse.RevivesAll(item):
+                // Sacred Ash brings round the whole team at once (Party_ApplyItemEffects to each)
+                var revived = ItemUse.ReviveAll(item, party);
+                if (revived.Count == 0)
+                {
+                    onNotification("It won't have any effect.");
+                    AudioManager.PlaySound("error");
+                    return;
+                }
+                inventory.RemoveItem(item, 1);
+                AudioManager.PlaySound("heal");
+                onNotification(revived.Count == 1 ? $"{revived[0]} came round, fully healed." : $"{string.Join(", ", revived)} came round, fully healed.");
+                Follow(inventory.GetPocketItems(CurrentPocket).Count);
+                return;
         }
         if (party.Count == 0)
         {
@@ -245,12 +325,23 @@ public class BagScreen
         BeginTargetChoice(item, give: action == BagAction.Give);
     }
 
-    /// <summary>The B button: out of the item's actions, then out of the bag.</summary>
+    /// <summary>The B button: out of a step of the item's use, out of its actions, then out of the bag.</summary>
     public void Cancel()
     {
-        if (Actions != null) Actions = null;
+        if (Tossing) Tossing = false;
+        else if (Actions != null) Actions = null;
         else Close();
         AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>Left and right change the number to throw away by one, up and down by ten, between one and all of them.</summary>
+    public void MoveToss(int dx, int dy, int have)
+    {
+        if (!Tossing || have <= 0) return;
+        int next = Math.Clamp(TossCount + dx - dy * 10, 1, have);
+        if (next == TossCount) return;
+        TossCount = next;
+        AudioManager.PlaySound("cursor");
     }
 
     /// <param name="context">What evolutions need to know (the hour, the map); just the party and the bag when left out.</param>
@@ -260,19 +351,40 @@ public class BagScreen
         openAge += dt;
         tick.Update(dt);
 
-        // Up or down kept down runs on through a pocket's list; an item's actions and the party take presses only
-        bool list = choosingFor == null && Actions == null;
+        // Up or down kept down runs on through a pocket's list; everything else takes presses only
+        bool list = choosingFor == null && Actions == null && !Tossing;
         int dx = InputManager.Axis(GameAction.Left, GameAction.Right);
         int dy = upDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down),
             list ? InputManager.Axis(GameAction.Up, GameAction.Down, held: true) : 0);
+        bool confirm = InputManager.IsActionPressed(GameAction.Confirm), cancel = InputManager.IsActionPressed(GameAction.Cancel);
 
         if (choosingFor != null)
         {
             choiceAge += dt;
-            if (dx != 0 || dy != 0) MoveTarget(dx, dy, party.Count);
-            else if (InputManager.IsActionPressed(GameAction.Cancel)) CancelTarget();
-            else if (InputManager.IsActionPressed(GameAction.Confirm))
-                UseOnTarget(inventory, party, onNotification, context ?? new EvolutionContext { Party = party, Bag = inventory });
+            if (teaching != null)
+            {
+                if (dy != 0) MoveForget(dy);
+                else if (cancel) { ForgetIndex = 4; ConfirmForget(inventory, onNotification); }
+                else if (confirm) ConfirmForget(inventory, onNotification);
+            }
+            else if (ChoosingMove)
+            {
+                if (dy != 0) MoveMove(dy, party);
+                else if (cancel) CancelMove();
+                else if (confirm) UseOnMove(inventory, party, onNotification);
+            }
+            else if (dx != 0 || dy != 0) MoveTarget(dx, dy, party.Count);
+            else if (cancel) CancelTarget();
+            else if (confirm) UseOnTarget(inventory, party, onNotification, context ?? new EvolutionContext { Party = party, Bag = inventory });
+            return;
+        }
+
+        if (Tossing)
+        {
+            var items = inventory.GetPocketItems(CurrentPocket);
+            if (dx != 0 || dy != 0) MoveToss(dx, dy, items.Count > 0 ? items[Math.Min(SelectedIndex, items.Count - 1)].Quantity : 0);
+            else if (cancel) Cancel();
+            else if (confirm) Confirm(inventory, party, onNotification);
             return;
         }
 
@@ -284,8 +396,8 @@ public class BagScreen
         }
 
         // A button pressed while the list runs on still counts: it acts on the item the cursor has come to
-        if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
-        else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(inventory, party, onNotification);
+        if (cancel) Cancel();
+        else if (confirm) Confirm(inventory, party, onNotification);
     }
 
     // ---------------------------------------------------------------- items used on a Pokémon of the player's choosing
@@ -298,6 +410,7 @@ public class BagScreen
         choosingFor = item;
         giving = give;
         TargetIndex = 0;
+        ChoosingMove = false;
         choiceAge = 0f;
         AudioManager.PlaySound("select");
     }
@@ -313,13 +426,15 @@ public class BagScreen
     public void CancelTarget()
     {
         choosingFor = null;
+        ChoosingMove = false;
         AudioManager.PlaySound("cancel");
     }
 
     /// <summary>
-    /// Uses the waiting item on the Pokémon under the cursor, or gives it to hold. An evolution it sets off is
-    /// left for <see cref="TakeEvolution"/>: one from a Rare Candy's level can be stopped, one from a stone can't.
-    /// Something that would have no effect stays in the bag and the choice stays open.
+    /// Uses the waiting item on the Pokémon under the cursor, or gives it to hold. An item used on one move goes on
+    /// to the Pokémon's moves; a TM or an HM teaches its move, asking which to forget when there are four. An
+    /// evolution it sets off is left for <see cref="TakeEvolution"/>: one from a Rare Candy's level can be stopped,
+    /// one from a stone can't. Something that would have no effect stays in the bag and the choice stays open.
     /// </summary>
     public void UseOnTarget(Inventory inventory, Party party, Action<string> onNotification, EvolutionContext context)
     {
@@ -331,25 +446,48 @@ public class BagScreen
         {
             GiveToHold(item, inventory, target, onNotification);
         }
-        else if (item.EffectType == ItemEffectType.LevelUp)
+        else if (MoveTeaching.IsMachine(item))
         {
-            if (target.Level >= 100)
+            // A TM or an HM: ABLE, NOT ABLE or LEARNED already (UseTMHMFromMenu)
+            string move = item.TeachesMove!;
+            switch (MoveTeaching.Answer(target, item))
             {
-                onNotification("It won't have any effect.");
+                case TeachAnswer.Learned:
+                    onNotification($"{target.DisplayName} knows {move} already.");
+                    AudioManager.PlaySound("error");
+                    return;
+                case TeachAnswer.NotAble:
+                    onNotification($"{target.DisplayName} can't learn {move}.");
+                    AudioManager.PlaySound("error");
+                    return;
+            }
+            if (target.Moves.Count < 4)
+            {
+                onNotification(MoveTeaching.Learn(target, move));
+                if (!MoveTeaching.IsHm(item)) inventory.RemoveItem(item, 1);
+                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
+            }
+            else
+            {
+                BeginTeaching(target, move, item);
                 return;
             }
-            // A Rare Candy also brings a fainted Pokémon round, with the hit points the level gave it
-            bool wasFainted = target.IsFainted;
-            target.GainExp(target.ExpForNextLevel - target.CurrentExp, out _);
-            if (wasFainted) target.Revive(target.CurrentHP);
-            inventory.RemoveItem(item, 1);
-            AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
-            onNotification($"{target.DisplayName} grew to Lv. {target.Level}!");
-            context.Item = null;
-            if (Evolution.Find(target, EvolutionTrigger.LevelUp, context) is { } grown)
-                request = new EvolutionRequest(target, grown, Cancellable: true);
         }
-        else if (Evolution.IsUsedToEvolve(item))
+        else if (ItemUse.NeedsMove(item))
+        {
+            // An Ether, a PP Up, a Leppa Berry: on to the Pokémon's moves
+            if (!ItemUse.WouldHelpAnyMove(item, target))
+            {
+                onNotification("It won't have any effect.");
+                AudioManager.PlaySound("error");
+                return;
+            }
+            ChoosingMove = true;
+            MoveIndex = 0;
+            AudioManager.PlaySound("select");
+            return;
+        }
+        else if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item))
         {
             context.Item = item;
             var evolution = Evolution.Find(target, EvolutionTrigger.UseItem, context);
@@ -360,21 +498,6 @@ public class BagScreen
             }
             inventory.RemoveItem(item, 1);
             request = new EvolutionRequest(target, evolution, Cancellable: false);
-        }
-        else if (EffortRules.IsEffortItem(item))
-        {
-            // A vitamin or an EV berry (plan 06 · R10): the effort changes, and the friendship with it
-            int before = EffortRules.Total(target);
-            if (!EffortRules.UseItem(item, target))
-            {
-                onNotification("It won't have any effect.");
-                return;
-            }
-            inventory.RemoveItem(item, 1);
-            AudioManager.PlaySound("heal");
-            onNotification(EffortRules.Total(target) > before ? $"{target.DisplayName}'s base stats grew from the {item.Name}."
-                : $"{target.DisplayName} grew friendlier, and its base stats came down a little.");
-            if (inventory.GetQuantity(item) > 0) return;
         }
         else if (item.FieldUse == "Gracidea")
         {
@@ -388,24 +511,144 @@ public class BagScreen
             AudioManager.PlayCry(target);
             onNotification($"{target.DisplayName} changed into its Sky Forme!");
         }
-        else if (FieldItems.IsMedicine(item))
+        else if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item))
         {
-            if (FieldItems.Use(item, target) is not { } done)
+            // Medicine, berries, vitamins and the Rare Candy, by the item table (Pokemon_ApplyItemEffects)
+            var result = ItemUse.Apply(item, target);
+            if (!result.Applied)
             {
-                onNotification("It won't have any effect.");
+                onNotification(result.Message);
+                AudioManager.PlaySound("error");
                 return;
             }
             inventory.RemoveItem(item, 1);
-            AudioManager.PlaySound("heal");
-            onNotification(done);
-            // While there is more of it, the party stays up for the next Pokémon, as in the games
-            if (inventory.GetQuantity(item) > 0) return;
+            onNotification(result.Message);
+            if (result.NewLevel != null)
+            {
+                AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
+                // The moves the level brings that don't fit are asked about one by one; the evolution waits for them
+                grownByCandy = target;
+                candyContext = context;
+                context.Item = null;
+                foreach (string wanted in result.Wanted) toTeach.Enqueue((target, wanted, null));
+                if (NextTeaching()) return;
+                CheckCandyEvolution();
+            }
+            else
+            {
+                AudioManager.PlaySound("heal");
+                // While there is more of it, the party stays up for the next Pokémon, as in the games
+                if (inventory.GetQuantity(item) > 0) return;
+            }
         }
         else
         {
             GiveToHold(item, inventory, target, onNotification);
         }
         choosingFor = null;
+    }
+
+    // ---------------------------------------------------------------- the move an item is used on
+
+    public void MoveMove(int dy, Party party)
+    {
+        if (!ChoosingMove || TargetIndex >= party.Count) return;
+        int count = party.Members[TargetIndex].Moves.Count;
+        if (count == 0) return;
+        MoveIndex = UiNav.Wrap(MoveIndex, Math.Sign(dy), count);
+        AudioManager.PlaySound("cursor");
+    }
+
+    public void CancelMove()
+    {
+        ChoosingMove = false;
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>Uses the waiting item on the move under the cursor; one it would do nothing for stays in the bag.</summary>
+    public void UseOnMove(Inventory inventory, Party party, Action<string> onNotification)
+    {
+        if (!ChoosingMove || choosingFor is not { } item || TargetIndex >= party.Count) return;
+        var target = party.Members[TargetIndex];
+        var result = ItemUse.Apply(item, target, MoveIndex);
+        if (!result.Applied)
+        {
+            onNotification(result.Message);
+            AudioManager.PlaySound("error");
+            return;
+        }
+        inventory.RemoveItem(item, 1);
+        AudioManager.PlaySound("heal");
+        onNotification(result.Message);
+        ChoosingMove = false;
+        choosingFor = null;
+    }
+
+    // ---------------------------------------------------------------- a move to learn when four are known
+
+    private void BeginTeaching(Pokemon p, string move, ItemData? machine)
+    {
+        teaching = (p, move, machine);
+        ForgetIndex = 0;
+        AudioManager.PlaySound("select");
+    }
+
+    private bool NextTeaching()
+    {
+        while (toTeach.Count > 0)
+        {
+            var next = toTeach.Dequeue();
+            if (next.Pokemon.Knows(next.Move)) continue;
+            BeginTeaching(next.Pokemon, next.Move, next.Machine);
+            return true;
+        }
+        teaching = null;
+        return false;
+    }
+
+    public void MoveForget(int dy)
+    {
+        if (teaching == null) return;
+        ForgetIndex = UiNav.Wrap(ForgetIndex, Math.Sign(dy), 5);
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>
+    /// Forgets the move under the cursor for the new one (a TM is used up, an HM isn't), or, on the last row, gives
+    /// the new move up. A move an HM taught can't be forgotten here.
+    /// </summary>
+    public void ConfirmForget(Inventory inventory, Action<string> onNotification)
+    {
+        if (teaching is not var (p, move, machine)) return;
+        if (ForgetIndex >= 4 || ForgetIndex >= p.Moves.Count)
+        {
+            onNotification($"{p.DisplayName} did not learn {move}.");
+            AudioManager.PlaySound("cancel");
+        }
+        else if (MoveTeaching.WhyNotForget(p, ForgetIndex) is { } why)
+        {
+            onNotification(why);
+            AudioManager.PlaySound("error");
+            return;
+        }
+        else
+        {
+            onNotification(MoveTeaching.Learn(p, move, ForgetIndex));
+            if (machine != null && !MoveTeaching.IsHm(machine)) inventory.RemoveItem(machine, 1);
+            AudioManager.PlayFanfare(MusicRole.FanfareLevelUp);
+        }
+        teaching = null;
+        if (NextTeaching()) return;
+        CheckCandyEvolution();
+        choosingFor = null;
+    }
+
+    private void CheckCandyEvolution()
+    {
+        if (grownByCandy is { } grown && candyContext is { } context && Evolution.Find(grown, EvolutionTrigger.LevelUp, context) is { } evolution)
+            request = new EvolutionRequest(grown, evolution, Cancellable: true);
+        grownByCandy = null;
+        candyContext = null;
     }
 
     /// <summary>Gives an item to a Pokémon to hold; whatever it held goes back in the bag.</summary>
@@ -429,15 +672,23 @@ public class BagScreen
     public bool? WouldWorkOn(Pokemon p, EvolutionContext probe)
     {
         if (choosingFor is not { } item || giving) return null;
-        if (item.EffectType == ItemEffectType.LevelUp) return p.Level < 100;
-        if (Evolution.IsUsedToEvolve(item))
+        if (MoveTeaching.IsMachine(item)) return MoveTeaching.Answer(p, item) == TeachAnswer.Able;
+        if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item))
         {
             probe.Item = item;
             return Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null;
         }
-        if (EffortRules.IsEffortItem(item)) return EffortRules.WouldHelp(item, p);
         if (item.FieldUse == "Gracidea") return FormRules.CanTakeToTheSky(p, (int)GameClock.Hour);
-        return FieldItems.IsMedicine(item) ? FieldItems.WouldHelp(item, p) : null;
+        if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item)) return ItemUse.WouldHelpAnyMove(item, p);
+        return null;
+    }
+
+    /// <summary>What a Pokémon's card says while an item waits for it: ABLE or NOT ABLE, and for a TM or an HM LEARNED too.</summary>
+    public string? TagFor(Pokemon p, EvolutionContext probe)
+    {
+        if (choosingFor is { } item && !giving && MoveTeaching.IsMachine(item))
+            return MoveTeaching.Answer(p, item) switch { TeachAnswer.Able => "ABLE", TeachAnswer.Learned => "LEARNED", _ => "NOT ABLE" };
+        return WouldWorkOn(p, probe) is { } can ? (can ? "ABLE" : "NOT ABLE") : null;
     }
 
     public void Draw(int screenWidth, int screenHeight, Inventory inventory, Party party, EvolutionContext? context = null)
@@ -449,13 +700,21 @@ public class BagScreen
             // An item used on a Pokémon says who it would work on, as the games do
             var item = choosingFor;
             var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
-            string prompt = giving ? $"Give the {item.Name} to which Pokémon?" : $"Use the {item.Name} on which Pokémon?";
-            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt, p => WouldWorkOn(p, probe),
+            string prompt = giving ? $"Give the {item.Name} to which Pokémon?"
+                : MoveTeaching.IsMachine(item) ? $"Teach {item.TeachesMove} to which Pokémon?" : $"Use the {item.Name} on which Pokémon?";
+            ModernUi.DrawPartyChoice(screenWidth, screenHeight, party, TargetIndex, prompt, p => TagFor(p, probe),
                 Math.Clamp(choiceAge / ChoiceAppearTime, 0f, 1f), giving ? "Give" : "Use");
+            var panel = new Rectangle(screenWidth - 780, 120, 716, 760);
+            if (teaching is var (p, move, _)) ModernUi.MoveChoice(panel, p, move, ForgetIndex, 1f);
+            else if (ChoosingMove && TargetIndex < party.Count)
+                ModernUi.MovePick(panel, party.Members[TargetIndex], MoveIndex, $"Use the {item.Name} on which move?");
             return;
         }
 
-        Follow(inventory.GetPocketItems(CurrentPocket).Count);
+        var shown = inventory.GetPocketItems(CurrentPocket);
+        Follow(shown.Count);
         ModernUi.DrawBag(screenWidth, screenHeight, this, inventory, Math.Clamp(openAge / AppearTime, 0f, 1f));
+        if (Tossing && shown.Count > 0)
+            ModernUi.TossBox(screenWidth, screenHeight, shown[Math.Min(SelectedIndex, shown.Count - 1)].Data, TossCount);
     }
 }

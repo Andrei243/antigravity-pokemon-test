@@ -594,6 +594,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.BlackOutCenter, FieldScripts.BlackOutHome });
         // The end of a Safari Game: its last step, or its last ball (plan 01 · M7)
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
+        // A Repel's last step (plan 06 · R11)
+        started.Add(FieldScripts.RepelWoreOff);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -984,12 +986,17 @@ public class StoryTests
     [Fact]
     public void TheClerkGreetsOpensTheCounterAndSeesThePlayerOff()
     {
-        var clerk = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.IsPokeMartClerk);
+        var clerk = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.IsPokeMartClerk && n.Mart == null);
         var (host, _) = Play(FieldScripts.For(clerk)!, clerk);
 
         Assert.Contains("Jubilife", host.Transcript[0].Text);
         Assert.Equal(new[] { "open Shop" }, host.Log);
         Assert.Equal(2, host.Transcript.Count);
+
+        // The second clerk keeps the town's own counter (plan 06 · R11)
+        var own = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.Mart == "jubilife");
+        (host, _) = Play(FieldScripts.For(own)!, own);
+        Assert.Equal(new[] { "open Shop jubilife" }, host.Log);
     }
 
     [Fact]

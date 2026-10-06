@@ -58,10 +58,10 @@ internal static partial class ModernUi
     }
 
     /// <summary>
-    /// The team as the target of an item from the bag. <paramref name="able"/> says whether the item would do
-    /// anything for a Pokémon (null: nothing to say), shown as ABLE or NOT ABLE on its card, as in the games.
+    /// The team as the target of an item from the bag. <paramref name="tag"/> says what the item would come to for
+    /// a Pokémon (null: nothing to say), shown on its card as the games do: ABLE, NOT ABLE, and for a TM LEARNED.
     /// </summary>
-    public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, bool?> able, float appear = 1f,
+    public static void DrawPartyChoice(int sw, int sh, Party party, int selected, string prompt, Func<Pokemon, string?> tag, float appear = 1f,
         string action = "Use")
     {
         Backdrop(sw, sh);
@@ -79,7 +79,7 @@ internal static partial class ModernUi
             }
             var p = party.Members[i];
             PartyCard(r, p, i == selected, false, lead: false);
-            if (able(p) is { } can) Tag(r.X + 264, r.Y + 183, can ? "ABLE" : "NOT ABLE", can ? Green : Muted);
+            if (tag(p) is { } said) Tag(r.X + 264, r.Y + 183, said, said == "ABLE" ? Green : Muted);
         }
 
         var box = new Rectangle(64, 920, 1792, 112);

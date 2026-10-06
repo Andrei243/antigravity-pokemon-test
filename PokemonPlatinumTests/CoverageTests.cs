@@ -58,8 +58,8 @@ public class CoverageTests
         // All 123 since plan 06 · R7
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(0, n.LaterAbilitiesRun, "later abilities with an effect");
-        AtLeast(169, n.PlatinumItemsFully, "Platinum's items that work");
-        AtLeast(238, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
+        AtLeast(297, n.PlatinumItemsFully, "Platinum's items that work");
+        AtLeast(350, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         AtLeast(0, n.SpecialMovesRun, "Z-Moves and Max Moves run");
 
@@ -240,12 +240,14 @@ public class CoverageTests
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Full Restore")!));   // from the bag and in battle (plan 06 · R8)
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("X Attack")!));       // in battle, which is all it is for
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Poké Doll")!));
-        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Occa Berry")!));    // held; eaten from the bag is R11's
+        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Occa Berry")!));    // held; planted in soil is R14's
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Macho Brace")!));    // its Speed in battle (the EVs it doubles are R10's)
         Assert.Equal(200, ItemDatabase.Get("Hyper Potion")!.EffectValue);            // the table's signed byte read right
         Assert.Equal(200, ItemDatabase.Get("Hyper Potion")!.Use!["hpRestored"]);
-        Assert.Equal(Works.NotYet, Coverage.Of(ItemDatabase.Get("TM01")!));
-        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Ether")!));        // in battle; the bag's PP is R11's
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("TM01")!));          // teaches from the bag (plan 06 · R11)
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Ether")!));         // in battle and from the bag (R11)
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Repel")!));         // keeps weaker Pokémon away (R11)
+        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Oran Berry")!));   // eaten and held; planted is R14's
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Leftovers")!));
         Assert.Equal(Works.NothingToRun, Coverage.Of(ItemDatabase.Get("Nugget")!));
     }
