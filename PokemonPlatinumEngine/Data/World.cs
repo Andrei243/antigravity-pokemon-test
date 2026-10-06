@@ -298,7 +298,8 @@ public static class WorldMapBuilder
         bool IsRock(int x, int z) => map.GetGroundTile(x, z) == TileType.CaveWall;
 
         // What can be reached from the cave's ways in, over anything that isn't blocked (water is ridden, a ledge
-        // hopped, a cracked rock smashed: none of them is a blocked tile)
+        // hopped, a cracked rock smashed: none of them is a blocked tile), and over a Bicycle's ramp, which is: it is
+        // jumped the way it faces, to one tile past it in low gear and three in top (Victory Road's second floor)
         var reached = new bool[w * h];
         var open = new Queue<(int X, int Z)>();
         void Reach(int x, int z)
@@ -327,6 +328,13 @@ public static class WorldMapBuilder
         {
             var (x, z) = open.Dequeue();
             Step(x, z, 1, 0); Step(x, z, -1, 0); Step(x, z, 0, 1); Step(x, z, 0, -1);
+            foreach (var way in new[] { Direction.Left, Direction.Right })
+            {
+                var (dx, dz) = FieldMovement.Delta(way);
+                if (!map.InBounds(x + dx, z + dz) || FieldMovement.RampDirection(map.BehaviourAt(x + dx, z + dz)) != way) continue;
+                Reach(x + 2 * dx, z + 2 * dz);
+                Reach(x + 4 * dx, z + 4 * dz);
+            }
         }
         foreach (var (x, z) in vague)
             if (reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveFloor, isSolid: false);

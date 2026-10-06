@@ -91,6 +91,7 @@ public static class WorldModels
         Door("t1_door1"), Door("t2_door1"), Door("t2_door2"), Door("t3_door1"), Door("l2_door1"), Door("d3_door1"),
         Ground("wfall3_4", "a waterfall"), Ground("wfall3_5", "a waterfall"), Ground("wfall16_5", "a waterfall"), Ground("wfall11_14", "a waterfall"),
         Ground("wfall7_4dun", "a waterfall in a cave (Mt. Coronet's fourth floor)"),
+        Ground("wfall3_4dun", "a waterfall in a cave (Victory Road)"),
         Ground("l_lake", "the surface of a lake"), Ground("l_lake_l4", "the surface of a lake"),
         Ground("cy_slope", "a muddy slope only a Bicycle gets up: its own ground draws it"),
         Ground("cy_slope_dun", "a Bicycle's ramp in a cave: the run up to it draws it"),

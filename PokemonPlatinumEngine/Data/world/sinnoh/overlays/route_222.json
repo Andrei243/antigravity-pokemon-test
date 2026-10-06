@@ -1,0 +1,148 @@
+{
+  "area": "route_222",
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  "architecture": "Seaside",
+  // The gate house to Sunyshore City is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "sunyshore_city", "toWarp": 3 },
+    { "warp": 1, "to": "sunyshore_city", "toWarp": 6 }
+  ],
+  // The house of the size contest and the Pikachu Fan Club have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 3 ],
+  // Policeman Thomas battles only at night in the original, where his double without a battle
+  // (policeman_thomas_no_battle, on the same tile) walks his beat by day: only the trainer is written here
+  "people": {
+    "fisherman": {
+      "name": "Fisherman",
+      "dialog": [
+        "I hooked a real beauty off this beach this morning. Biggest catch of my life!",
+        "One good bite like that and I'm smiling for a week. That's why I keep coming back."
+      ]
+    },
+    // In Platinum he gives away the TM for Fling; the gift is plan 02's (S7)
+    "rich_boy": {
+      "name": "Rich Boy",
+      "dialog": [
+        "Fling is a move that hurls whatever your Pokémon is holding straight at the foe.",
+        "Heavy things hit hardest, and some items do something rather odd when they land. Do experiment!"
+      ]
+    },
+    "fisherman_brett": {
+      "name": "Brett",
+      "trainer": {
+        "id": "fisherman_brett",
+        "name": "Brett",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Brett: Shh, you'll scare the fish away! ...Oh, all right. One quick battle.",
+        "dialogueAfter": "Fisherman Brett: Lost the battle and the fish. What a morning."
+      }
+    },
+    "fisherman_alec": {
+      "name": "Alec",
+      "trainer": {
+        "id": "fisherman_alec",
+        "name": "Alec",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Alec: Everyone laughs at a Magikarp. Nobody laughs at what it grows into!",
+        "dialogueAfter": "Fisherman Alec: Go on, then. You can laugh a little."
+      }
+    },
+    "fisherman_george": {
+      "name": "George",
+      "trainer": {
+        "id": "fisherman_george",
+        "name": "George",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman George: Four lines in the water, four Pokémon on the hook. Let's see which of them bites!",
+        "dialogueAfter": "Fisherman George: Not so much as a nibble. Back to waiting."
+      }
+    },
+    "fisherman_cole": {
+      "name": "Cole",
+      "trainer": {
+        "id": "fisherman_cole",
+        "name": "Cole",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Cole: I reeled in two Gyarados off this very beach. Want to meet them?",
+        "dialogueAfter": "Fisherman Cole: Two Gyarados, and still you landed me."
+      }
+    },
+    "beauty_nicola": {
+      "name": "Nicola",
+      "trainer": {
+        "id": "beauty_nicola",
+        "name": "Nicola",
+        "trainerClass": "Beauty",
+        "dialogueBefore": "Beauty Nicola: The sea air does wonders for Lopunny's fur. Isn't it gorgeous? Now watch it move!",
+        "dialogueAfter": "Beauty Nicola: Beaten, but still beautiful. That's what matters."
+      }
+    },
+    "tuber_conner": {
+      "name": "Conner",
+      "trainer": {
+        "id": "tuber_conner",
+        "name": "Conner",
+        "trainerClass": "Tuber",
+        "dialogueBefore": "Tuber Conner: I can't swim yet, so I stay where my feet touch the bottom! Battle me!",
+        "dialogueAfter": "Tuber Conner: I'm not crying! It's just sea water!"
+      }
+    },
+    "tuber_holly": {
+      "name": "Holly",
+      "trainer": {
+        "id": "tuber_holly",
+        "name": "Holly",
+        "trainerClass": "Tuber",
+        "dialogueBefore": "Tuber Holly: My Remoraid squirts water at anybody who comes close. Here it comes!",
+        "dialogueAfter": "Tuber Holly: Now I'm soaked too. I don't mind. It's the beach!"
+      }
+    },
+    "rich_boy_trey": {
+      "name": "Trey",
+      "trainer": {
+        "id": "rich_boy_trey",
+        "name": "Trey",
+        "trainerClass": "Rich Boy",
+        "dialogueBefore": "Rich Boy Trey: I'm on my way to see Sunyshore's famous lighthouse. You'll do as a little entertainment.",
+        "dialogueAfter": "Rich Boy Trey: How tiresome. I shall need a long rest at the hotel."
+      }
+    },
+    "sailor_luther": {
+      "name": "Luther",
+      "trainer": {
+        "id": "sailor_luther",
+        "name": "Luther",
+        "trainerClass": "Sailor",
+        "dialogueBefore": "Sailor Luther: A good sailor keeps a Pokémon for the sky, one for the deck and one for the sea. Meet my crew!",
+        "dialogueAfter": "Sailor Luther: The whole crew overboard! Abandon ship!"
+      }
+    },
+    "sailor_marc": {
+      "name": "Marc",
+      "trainer": {
+        "id": "sailor_marc",
+        "name": "Marc",
+        "trainerClass": "Sailor",
+        "dialogueBefore": "Sailor Marc: Ahoy! My shipmate's a small one, but it rides the waves like a champion!",
+        "dialogueAfter": "Sailor Marc: Small ones grow. Next time we meet, it'll have grown."
+      }
+    },
+    "policeman_thomas": {
+      "name": "Thomas",
+      "trainer": {
+        "id": "policeman_thomas",
+        "name": "Thomas",
+        "trainerClass": "Policeman",
+        "dialogueBefore": "Policeman Thomas: People get up to all sorts once the sun goes down. Let's see what you're up to!",
+        "dialogueAfter": "Policeman Thomas: No trouble-maker, just a strong trainer. Carry on, and get home safely."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_sunyshore_city": "Route 222\nEast: Sunyshore City",
+    "arrow_signpost_hotel_grand_lake": "Route 222\nWest: Hotel Grand Lake",
+    "signboard_pikachu_fan_club": "Pikachu Fan Club\nAnyone who loves Pikachu is welcome here!",
+    "signboard_pokemon_size_contest": "Pokémon Size Contest\nHow big is your catch? Come in and have it measured!"
+  }
+}
