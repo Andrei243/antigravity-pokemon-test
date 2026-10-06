@@ -677,6 +677,14 @@ internal static partial class PokemonModels
 
     private static PokeBuilder MewtwoMegaY() => MewtwoBuild(2);
 
+    // ------------------------------------------------------------------ Mega Meganium, Mega Feraligatr and Mega Ampharos (their builds in PokemonModels.Johto1.cs)
+
+    private static PokeBuilder MeganiumMega() => MeganiumBuild(true);
+
+    private static PokeBuilder FeraligatrMega() => CrocBuild(2, true);
+
+    private static PokeBuilder AmpharosMega() => AmpharosBuild(true);
+
     // ------------------------------------------------------------------ Mega Steelix
 
     private static PokeBuilder SteelixMega()
