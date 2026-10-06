@@ -1725,4 +1725,14 @@ internal static partial class PokemonModels
         });
         return Lift(b);
     }
+
+    // ------------------------------------------------------------------ Mega Emboar (its build in PokemonModels.Unova1.cs)
+
+    private static PokeBuilder EmboarMega() => EmboarBuild(true);
+
+    // ------------------------------------------------------------------ Mega Excadrill and Mega Audino (their builds in PokemonModels.Unova1.cs)
+
+    private static PokeBuilder ExcadrillMega() => ExcadrillBuild(true);
+
+    private static PokeBuilder AudinoMega() => AudinoBuild(true);
 }

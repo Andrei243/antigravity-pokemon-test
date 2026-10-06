@@ -751,4 +751,8 @@ internal static partial class PokemonModels
             Frond(b, tail, path[^2], path[^1] + V(dx, dy, -0.2f), 0.045f, wing, V(0, 1f, 0.2f), 0.45f);
         return b;
     }
+
+    // ------------------------------------------------------------------ Hisuian Samurott (its build in PokemonModels.Unova1.cs)
+
+    private static PokeBuilder SamurottHisui() => SamurottBuild(true);
 }
