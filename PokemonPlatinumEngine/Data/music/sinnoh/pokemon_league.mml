@@ -1,0 +1,73 @@
+# The Pokémon League's grounds (the original's CITY10 role): the great hall on its plateau at the end of Victory
+# Road, the Pokémon Center and the last shop before the Elite Four, and the doors the whole journey has led to. A
+# grand, ceremonial B-flat processional: brass in dotted steps, the horn beneath, a harp rolling, the timpani and a
+# parade snare keeping the stately pace and bells pealing at the ends of phrases; the second half looks back once,
+# through a borrowed minor chord, before turning towards the doors again. By night the horn and a clarinet over a
+# pad and a celesta. Original composition for this game.
+title Pokémon League
+tempo 96
+meter 4/4
+reverb 0.38
+nighttempo 0.94
+
+track lead brass night=horn vol=0.78 pan=0 rev=0.34
+  v100 o4 f8. f16 f8. f16 b-4 o5 d4 | o5 c2. r4 |
+  L v104 o4 f4. b-8 o5 d4. f8 | o5 g4. f8 e-4 g4 | o5 f4. e-8 d4 o4 b-4 | o5 c2. r4 |
+  o5 d4. g8 b-4. a8 | o5 g2 e-4 f4 | o5 e4. f8 g4 o6 c4 | o5 a2. r4 |
+  v108 o5 b-2 g4 e-4 | o5 a4. b-8 o6 c4 o5 a4 | o5 f4. g8 a4 o6 d4 | o6 d2 c4 o5 b-4 |
+  o5 b-4. o6 c8 d4 e-4 | o6 e-4. d-8 o5 b-4 g-4 | o5 f4. g8 b-4 o6 d4 | v100 o6 c2 o5 a4 f4 |
+
+track under horn night=clarinet vol=0.4 pan=-0.3 rev=0.36
+  r1 | r1 |
+  L v92 o4 d2 f2 | o4 e-2 b-2 | o4 d2 f2 | o4 f2 a2 |
+  o4 d2 g2 | o4 e-2 g2 | o4 e2 g2 | o4 f1 |
+  o4 g1 | o4 a1 | o4 a1 | o4 b-1 |
+  o4 g1 | o4 g-1 | o4 f1 | o4 a2 e-2 |
+
+track roll harp vol=0.4 pan=0.3 rev=0.36
+  v86 o3 b-8 o4 f8 b-8 o5 d8 f8 d8 o4 b-8 f8 | o3 f8 o4 c8 f8 a8 o5 c8 o4 a8 f8 c8 |
+  L o3 b-8 o4 f8 b-8 o5 d8 f8 d8 o4 b-8 f8 | o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 |
+  o3 d8 f8 b-8 o4 d8 f8 d8 o3 b-8 f8 | o3 f8 o4 c8 f8 a8 o5 c8 o4 a8 f8 c8 |
+  o3 g8 o4 d8 g8 b-8 o5 d8 o4 b-8 g8 d8 | o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 |
+  o3 c8 g8 o4 c8 e8 g8 e8 c8 o3 g8 | o3 f8 o4 c8 f8 a8 o5 c8 o4 a8 f8 c8 |
+  o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 | o3 f8 o4 c8 f8 a8 o5 c8 o4 a8 f8 c8 |
+  o3 d8 a8 o4 d8 f8 a8 f8 d8 o3 a8 | o3 g8 o4 d8 g8 b-8 o5 d8 o4 b-8 g8 d8 |
+  o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 | o3 e-8 b-8 o4 e-8 g-8 b-8 g-8 e-8 o3 b-8 |
+  o3 f8 b-8 o4 d8 f8 b-8 f8 d8 o3 b-8 | o3 f8 o4 c8 e-8 a8 o5 c8 o4 a8 e-8 c8 |
+
+track pad strings night=pad vol=0.26 pan=-0.15 rev=0.45
+  q8 o4 (d f b-)1 | o4 (c f a)1 |
+  L o4 (d f b-)1 | o4 (e- g b-)1 | o4 (d f b-)1 | o4 (c f a)1 |
+  o4 (d g b-)1 | o4 (e- g b-)1 | o4 (c e g)1 | o4 (c f a)1 |
+  o4 (e- g b-)1 | o4 (c f a)1 | o4 (d f a)1 | o4 (d g b-)1 |
+  o4 (e- g b-)1 | o4 (e- g- b-)1 | o4 (d f b-)1 | o4 (c e- f a)1 |
+
+track peal bell night=celesta vol=0.3 pan=0.4 rev=0.6
+  r1 | r2 o6 c4 o5 f4 |
+  L v100 o5 f4 d4 o4 b-2 | r1 | r1 | r2 o6 c4 o5 f4 |
+  r1 | r1 | r1 | r2 o5 a4 f4 |
+  r1 | r1 | r1 | r2 o5 b-4 g4 |
+  r1 | r1 | r1 | r2 o6 c4 o5 a4 |
+
+track bass contrabass vol=0.56 rev=0.22
+  q8 o2 b-1 | o3 f1 |
+  L o2 b-1 | o3 e-1 | o3 d1 | o3 f1 |
+  o3 g1 | o3 e-1 | o3 c1 | o3 f1 |
+  o3 e-1 | o3 f1 | o3 d1 | o3 g1 |
+  o3 e-1 | o3 e-1 | o3 f1 | o3 f1 |
+
+track drum timpani vol=0.4 rev=0.3
+  v84 o3 b-4 r4 v64 f4 r4 | v80 o3 f4 r4 v48 f16 f16 f16 f16 v64 f16 f16 f16 f16 |
+  L v86 o3 b-4 r4 v66 f4 r4 | v76 o3 e-4 r2. | v82 o3 d4 r4 v62 f4 r4 | v80 o3 f4 r4 v48 f16 f16 f16 f16 v64 f16 f16 f16 f16 |
+  v84 o3 g4 r4 v64 d4 r4 | v76 o3 e-4 r2. | v80 o3 c4 r4 v62 g4 r4 | v80 o3 f4 r4 v48 f16 f16 f16 f16 v64 f16 f16 f16 f16 |
+  v80 o3 e-4 r2. | v80 o3 f4 r2. | v80 o3 d4 r2. | v80 o3 g4 r2. |
+  v80 o3 e-4 r2. | v80 o3 e-4 r2. | v84 o3 f4 r4 v64 b-4 r4 | v80 o3 f4 r4 v48 f16 f16 f16 f16 v66 f16 f16 f16 f16 |
+
+track parade kit vol=0.44 rev=0.2
+  v62 s16 s16 s16 s16 v66 s16 s16 s16 s16 v72 s16 s16 s16 s16 v78 s16 s16 s16 s16 | v80 (b c)4 v50 s8. v36 s16 v60 b4 v50 s8 v40 s8 |
+  L v84 (b c)4 v50 s8. v36 s16 v66 b4 v50 s8 v40 s8 |
+  [ v74 b4 v50 s8. v36 s16 v66 b4 v50 s8 v40 s8 | ]6
+  v74 b4 v50 s8. v36 s16 v58 s16 s16 v64 s16 s16 v70 s16 s16 v76 s16 s16 |
+  v80 (b c)4 v48 s8. v34 s16 v62 b4 v48 s8 v38 s8 |
+  [ v70 b4 v48 s8. v34 s16 v62 b4 v48 s8 v38 s8 | ]6
+  v70 b4 v48 s8. v34 s16 v58 s16 s16 v64 s16 s16 v70 s16 s16 v78 s16 s16 |

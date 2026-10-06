@@ -1,0 +1,76 @@
+# Routes 216 and 217 and Acuity Lakefront (the original's ROAD_SNOW role): the snowbound roads north of Mt. Coronet,
+# drifts up to the knee, a blizzard in the face and the lake waiting at the end. A determined G-minor march into the
+# wind: the violin strides out in dotted steps over a piano tramping in eighths and a bass that never stops walking,
+# the snare like boots in the snow and the shaker hissing like the gusts; the horn leans in beside it for a braver
+# E-flat stretch, icy glockenspiel flurries end each phrase, and four bars of the wind alone push on to the dominant.
+# By night a flute and a clarinet over a harp and a pad. Original composition for this game.
+title Route 216
+tempo 120
+meter 4/4
+reverb 0.34
+nighttempo 0.93
+
+track lead violin night=flute vol=0.88 pan=0 rev=0.32
+  r1 | r1 |
+  L v104 o5 d4. c8 o4 b-4 g4 | o5 e-4. d8 c4 o4 b-4 | o5 d4. c8 o4 b-4 o5 d4 | o5 c2. o4 a8 b-8 |
+  o5 d4. e-8 f4 g4 | o5 b-4. a-8 g4 e-4 | o5 g4. f8 e-4 c4 | o5 d4 o4 a4 o5 d4 f+4 |
+  v112 o5 g2 b-4. g8 | o5 a2 o6 c4 o5 a4 | o5 f4. e8 d4 a4 | o5 b-2 a4 g4 |
+  o5 g4. f8 e-4 g4 | o5 a4. g8 f4 a4 | o5 b-4. a8 b-4 o6 d4 | o6 c2 o5 a4 f+4 |
+  v96 o5 d1 | o5 e-1 | o5 g1 | o5 f+2. r4 |
+
+track lean horn night=clarinet vol=0.42 pan=-0.3 rev=0.34
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v96 o4 b-2 o5 e-2 | o5 c2 f2 | o4 a2 o5 d2 | o5 d2 o4 b-2 |
+  o4 g2 o5 c2 | o4 a2 o5 c2 | o5 d2 f2 | o4 a2 f+2 |
+  r1 | r1 | r1 | r1 |
+
+track tramp piano night=harp vol=0.3 pan=0.3 rev=0.24
+  v90 o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 | o2 d8 o3 (f+ a >d)8 o2 a8 o3 (f+ a >d)8 o2 d8 o3 (f+ a >d)8 o2 a8 o3 (f+ a >d)8 |
+  L o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 | o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 |
+  o2 b-8 o3 (f b- >d)8 f8 (f b- >d)8 o2 b-8 o3 (f b- >d)8 f8 (f b- >d)8 | o2 f8 o3 (f a >c)8 c8 (f a >c)8 o2 f8 o3 (f a >c)8 c8 (f a >c)8 |
+  o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 | o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 |
+  o2 c8 o3 (g >c e-)8 o2 g8 o3 (g >c e-)8 o2 c8 o3 (g >c e-)8 o2 g8 o3 (g >c e-)8 | o2 d8 o3 (f+ a >d)8 o2 a8 o3 (f+ a >d)8 o2 d8 o3 (f+ a >d)8 o2 a8 o3 (f+ a >d)8 |
+  o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 | o2 f8 o3 (f a >c)8 c8 (f a >c)8 o2 f8 o3 (f a >c)8 c8 (f a >c)8 |
+  o2 d8 o3 (f a >d)8 o2 a8 o3 (f a >d)8 o2 d8 o3 (f a >d)8 o2 a8 o3 (f a >d)8 | o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 |
+  o2 c8 o3 (g >c e-)8 o2 g8 o3 (g >c e-)8 o2 c8 o3 (g >c e-)8 o2 g8 o3 (g >c e-)8 | o2 f8 o3 (f a >c)8 c8 (f a >c)8 o2 f8 o3 (f a >c)8 c8 (f a >c)8 |
+  o2 b-8 o3 (f b- >d)8 f8 (f b- >d)8 o2 b-8 o3 (f b- >d)8 f8 (f b- >d)8 | o2 d8 o3 (f+ a >c)8 o2 a8 o3 (f+ a >c)8 o2 d8 o3 (f+ a >c)8 o2 a8 o3 (f+ a >c)8 |
+  o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 o2 g8 o3 (g b- >d)8 d8 (g b- >d)8 | o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 o2 e-8 o3 (g b- >e-)8 o2 b-8 o3 (g b- >e-)8 |
+  o2 c8 o3 (g >c e-)8 o2 g8 o3 (g >c e-)8 o2 c8 o3 (g >c e-)8 o2 g8 o3 (g >c e-)8 | o2 d8 o3 (f+ a >d)8 o2 a8 o3 (f+ a >d)8 o2 d8 o3 (f+ a >d)8 o2 a8 o3 (f+ a >d)8 |
+
+track pad strings night=pad vol=0.26 pan=-0.15 rev=0.45
+  q8 o3 (b- >d g)1 | o3 (a >d f+)1 |
+  L o3 (b- >d g)1 | o3 (b- >e- g)1 | o3 (b- >d f)1 | o3 (a >c f)1 |
+  o3 (b- >d g)1 | o3 (b- >e- g)1 | o3 (g >c e-)1 | o3 (a >d f+)1 |
+  o3 (b- >e- g)1 | o3 (a >c f)1 | o3 (a >d f)1 | o3 (b- >d g)1 |
+  o3 (g >c e-)1 | o3 (a >c f)1 | o3 (b- >d f)1 | o3 (a >c f+)1 |
+  o3 (b- >d g)1 | o3 (b- >e- g)1 | o3 (g >c e-)1 | o3 (a >d f+)1 |
+
+track flurry glockenspiel night=celesta vol=0.24 pan=0.4 rev=0.5
+  r1 | r1 |
+  L r1 | r1 | r1 | r2 o6 c16 o5 a16 f16 c16 o4 a16 f16 r8 |
+  r1 | r1 | r1 | r2 o5 a16 f+16 d16 o4 a16 f+16 d16 r8 |
+  r1 | r1 | r1 | r2. o5 g16 d16 o4 b-16 g16 |
+  r1 | r1 | r1 | r2 o6 c16 o5 a16 f+16 d16 c16 o4 a16 r8 |
+  o5 d16 o4 b-16 g16 d16 r4 o5 g16 d16 o4 b-16 g16 r4 | o5 g16 e-16 o4 b-16 g16 r4 o5 b-16 g16 e-16 o4 b-16 r4 |
+  o5 g16 e-16 c16 o4 g16 r4 o5 c16 o4 g16 e-16 c16 r4 | o5 a16 f+16 d16 o4 a16 r4 o5 f+16 d16 o4 a16 f+16 r4 |
+
+track bass bass vol=0.62 rev=0.08
+  q6 o3 g4 d4 g4 d4 | o3 d4 a4 d4 f+4 |
+  L o3 g4 d4 g4 f4 | o3 e-4 b-4 e-4 d4 | o3 b-4 f4 b-4 g4 | o3 f4 c4 f4 f+4 |
+  o3 g4 d4 g4 f4 | o3 e-4 b-4 e-4 d4 | o3 c4 g4 c4 c+4 | o3 d4 a4 f+4 a4 |
+  o3 e-4 b-4 e-4 g4 | o3 f4 c4 f4 e4 | o3 d4 a4 f4 a4 | o3 g4 d4 g4 b-4 |
+  o3 c4 g4 c4 e-4 | o3 f4 c4 f4 a4 | o3 b-4 f4 d4 c4 | o3 d4 a4 f+4 d4 |
+  o3 g4 d4 g4 d4 | o3 e-4 b-4 e-4 b-4 | o3 c4 g4 c4 g4 | o3 d4 a4 d4 f+4 |
+
+track boots kit vol=0.5 rev=0.14
+  v70 b8 v30 k8 v50 s8 v30 k8 v62 b8 v30 k8 v50 s8 v40 k16 k16 | v70 b8 v30 k8 v50 s8 v30 k8 v50 s16 s16 v58 s16 s16 v66 s16 s16 v74 s16 s16 |
+  L v86 (b c)8 v34 k8 v60 s8 v34 k8 v72 b8 v34 k8 v60 s8 v44 k16 k16 |
+  [ v78 b8 v34 k8 v60 s8 v34 k8 v72 b8 v34 k8 v60 s8 v44 k16 k16 | ]6
+  v78 b8 v34 k8 v60 s8 v34 k8 v56 s16 s16 v62 s16 s16 v70 s16 s16 v80 s16 s16 |
+  v86 (b c)8 v34 k8 v60 s8 v34 k8 v72 b8 v34 k8 v60 s8 v44 k16 k16 |
+  [ v78 b8 v34 k8 v60 s8 v34 k8 v72 b8 v34 k8 v60 s8 v44 k16 k16 | ]6
+  v78 b8 v34 k8 v60 s8 v34 k8 v56 s16 s16 v62 s16 s16 v70 s16 s16 v80 s16 s16 |
+  [ v70 b8 v40 k16 k16 v52 s8 v40 k16 k16 v64 b8 v40 k16 k16 v52 s8 v48 k16 k16 | ]3
+  v70 b8 v40 k16 k16 v52 s8 v40 k16 k16 v56 t16 t16 m16 m16 v66 f16 f16 v74 s8 |

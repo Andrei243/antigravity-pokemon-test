@@ -1,0 +1,79 @@
+# Victory Road (the original's D_01 role): the last cave before the Pokémon League, its waterfalls, boulders and
+# sheer rock, and the strongest trainers in Sinnoh waiting on every ledge. A driving, heroic B-minor push: strings
+# churning in sixteenths and a synth bass pumping eighths under a trumpet that sets its jaw, the horn steady beside
+# it; the middle breaks into D major as the summit comes in sight, and the last stretch hammers a Neapolitan C against
+# the tonic with brass and timpani before falling back to the dominant to climb again. The same by day and by night,
+# like every cave. Original composition for this game.
+title Victory Road
+tempo 144
+meter 4/4
+reverb 0.3
+night none
+
+track lead trumpet vol=0.78 pan=0 rev=0.28
+  r1 | r1 |
+  L v104 o4 b4 o5 f+4. e8 d4 | o5 d4. e8 d4 o4 b4 | o5 c+4. d8 e4 a4 | o5 a+4. g+8 f+2 |
+  o4 b4 o5 f+4. g8 a4 | o5 b4. a8 g4 d4 | o5 e4. f+8 g4 b4 | o5 f+2 a+4 o6 c+4 |
+  v110 o5 f+4. e8 d4 a4 | o5 e4. f+8 e4 c+4 | o5 d4. e8 g4 b4 | o5 a2. f+8 g8 |
+  o5 g4. a8 b4 o6 e4 | o6 c+4. o5 b8 a4 o6 c+4 | o6 d4. e8 d4 o5 b4 | o6 e2 c+4 o5 a4 |
+  v116 o5 b8 b8 r8 b8 o6 d4 o5 b4 | o6 c8 c8 r8 c8 e4 c4 | o5 b8 b8 r8 b8 o6 d4 f+4 | o6 g4. e8 c4 o5 g4 |
+  o5 g4. a8 b4 o6 d4 | o6 e4. f+8 e4 c+4 | o6 e4. d8 o5 b4 g4 | v104 o5 a+4. g+8 f+2 |
+
+track steady horn vol=0.42 pan=-0.3 rev=0.3
+  r1 | r1 |
+  L v96 o4 d2 f+2 | o4 g2 d2 | o4 e2 a2 | o4 c+2 a+2 |
+  o4 f+2 d2 | o4 d2 g2 | o4 g2 e2 | o4 a+2 c+2 |
+  o4 a1 | o4 c+1 | o4 b1 | o4 a1 |
+  o4 b1 | o4 a1 | o4 b1 | o4 c+1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track churn strings vol=0.34 pan=0.3 rev=0.22
+  v96 [ o4 f+16 b16 o5 d16 o4 b16 ]4 | [ o4 c+16 f+16 a+16 f+16 ]4 |
+  L [ o4 f+16 b16 o5 d16 o4 b16 ]4 | [ o4 d16 g16 b16 g16 ]4 | [ o4 e16 a16 o5 c+16 o4 a16 ]4 | [ o4 c+16 f+16 a+16 f+16 ]4 |
+  [ o4 f+16 b16 o5 d16 o4 b16 ]4 | [ o4 d16 g16 b16 g16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 c+16 f+16 a+16 f+16 ]4 |
+  [ o4 f+16 a16 o5 d16 o4 a16 ]4 | [ o4 e16 a16 o5 c+16 o4 a16 ]4 | [ o4 d16 g16 b16 g16 ]4 | [ o4 f+16 a16 o5 d16 o4 a16 ]4 |
+  [ o4 e16 g16 b16 g16 ]4 | [ o4 e16 a16 o5 c+16 o4 a16 ]4 | [ o4 d16 g16 b16 g16 ]4 | [ o4 e16 a16 o5 c+16 o4 a16 ]4 |
+  [ o4 f+16 b16 o5 d16 o4 b16 ]4 | [ o4 e16 g16 o5 c16 o4 g16 ]4 | [ o4 f+16 b16 o5 d16 o4 b16 ]4 | [ o4 e16 g16 o5 c16 o4 g16 ]4 |
+  [ o4 d16 g16 b16 g16 ]4 | [ o4 e16 a16 o5 c+16 o4 a16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 c+16 f+16 a+16 f+16 ]4 |
+
+track stabs brass vol=0.4 pan=-0.2 rev=0.22
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v100 o4 (d f+ b)8 (d f+ b)8 r8 (d f+ b)8 (d f+ b)4 r4 | o4 (e g >c)8 (e g >c)8 r8 (e g >c)8 (e g >c)4 r4 |
+  o4 (d f+ b)8 (d f+ b)8 r8 (d f+ b)8 (d f+ b)4 r4 | o4 (e g >c)8 (e g >c)8 r8 (e g >c)8 (e g >c)4 r4 |
+  o4 (d g b)8 (d g b)8 r8 (d g b)8 (d g b)4 r4 | o4 (c+ e a)8 (c+ e a)8 r8 (c+ e a)8 (c+ e a)4 r4 |
+  o4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 r4 | o4 (c+ f+ a+)8 (c+ f+ a+)8 r8 (c+ f+ a+)8 (c+ f+ a+)4 r4 |
+
+track bass synthbass vol=0.56 rev=0.05
+  o3 b8 b8 o4 b8 o3 b8 b8 b8 o4 b8 o3 b8 | o3 f+8 f+8 o4 f+8 o3 f+8 f+8 f+8 o4 f+8 o3 f+8 |
+  L o3 b8 b8 o4 b8 o3 b8 b8 b8 o4 b8 o3 b8 | o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 f+8 f+8 o4 f+8 o3 f+8 f+8 f+8 o4 f+8 o3 f+8 |
+  o3 b8 b8 o4 b8 o3 b8 b8 b8 o4 b8 o3 b8 | o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 e8 e8 o4 e8 o3 e8 e8 e8 o4 e8 o3 e8 | o3 f+8 f+8 o4 f+8 o3 f+8 f+8 f+8 o4 f+8 o3 f+8 |
+  o3 d8 d8 o4 d8 o3 d8 d8 d8 o4 d8 o3 d8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 d8 d8 o4 d8 o3 d8 d8 d8 o4 d8 o3 d8 |
+  o3 e8 e8 o4 e8 o3 e8 e8 e8 o4 e8 o3 e8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 |
+  o3 b8 b8 o4 b8 o3 b8 b8 b8 o4 b8 o3 b8 | o3 c8 c8 o4 c8 o3 c8 c8 c8 o4 c8 o3 c8 | o3 b8 b8 o4 b8 o3 b8 b8 b8 o4 b8 o3 b8 | o3 c8 c8 o4 c8 o3 c8 c8 c8 o4 c8 o3 c8 |
+  o3 g8 g8 o4 g8 o3 g8 g8 g8 o4 g8 o3 g8 | o3 a8 a8 o4 a8 o3 a8 a8 a8 o4 a8 o3 a8 | o3 e8 e8 o4 e8 o3 e8 e8 e8 o4 e8 o3 e8 | o3 f+8 f+8 o4 f+8 o3 f+8 f+8 f+8 o4 f+8 o3 f+8 |
+
+track drum timpani vol=0.38 rev=0.28
+  v84 o3 b4 r2. | v80 o3 f+4 r4 v50 f+16 f+16 f+16 f+16 v66 f+16 f+16 f+16 f+16 |
+  L v88 o3 b4 r2. | r1 | v80 o3 a4 r2. | v80 o3 f+4 r4 v56 f+8 f+8 v74 f+4 |
+  v88 o3 b4 r2. | r1 | v80 o3 e4 r2. | v80 o3 f+4 r4 v50 f+16 f+16 f+16 f+16 v66 f+16 f+16 f+16 f+16 |
+  v88 o3 d4 r2. | r1 | v80 o3 g4 r2. | v84 o3 d4 r2. |
+  v80 o3 e4 r2. | r1 | v80 o3 g4 r2. | v80 o3 a4 r4 v50 a16 a16 a16 a16 v66 a16 a16 a16 a16 |
+  v90 o3 b8 b8 r8 b8 b4 r4 | v90 o4 c8 c8 r8 c8 c4 r4 | v90 o3 b8 b8 r8 b8 b4 r4 | v90 o4 c8 c8 r8 c8 c4 r4 |
+  v86 o3 g4 r2. | v86 o3 a4 r2. | v86 o3 e4 r2. | v60 o3 f+16 f+16 f+16 f+16 v70 f+16 f+16 f+16 f+16 v80 f+16 f+16 f+16 f+16 v90 f+4 |
+
+track kit kit vol=0.46 rev=0.12
+  v70 b8 v36 h8 v60 s8 v66 b8 v66 b8 v36 h8 v60 s8 v36 h8 | v70 b8 v36 h8 v60 s8 v66 b8 v60 t16 t16 m16 m16 f16 f16 v74 s16 s16 |
+  L v92 (b c)8 v44 h8 v72 s8 v80 b8 v82 b8 v44 h8 v72 s8 v44 h8 |
+  [ v86 b8 v44 h8 v72 s8 v80 b8 v82 b8 v44 h8 v72 s8 v44 h8 | ]6
+  v86 b8 v44 h8 v72 s8 v80 b8 v70 t16 t16 m16 m16 f16 f16 v80 s16 s16 |
+  v92 (b c)8 v44 h8 v72 s8 v80 b8 v82 b8 v44 h8 v72 s8 v44 h8 |
+  [ v86 b8 v44 h8 v72 s8 v80 b8 v82 b8 v44 h8 v72 s8 v44 h8 | ]6
+  v86 b8 v44 h8 v72 s8 v80 b8 v70 t16 t16 m16 m16 f16 f16 v80 s16 s16 |
+  v94 (b c)8 v50 h8 v76 s8 v84 b8 v86 b8 v50 h8 v76 s8 v66 s16 s16 |
+  [ v88 b8 v50 h8 v76 s8 v84 b8 v86 b8 v50 h8 v76 s8 v66 s16 s16 | ]6
+  v88 b8 v50 h8 v76 s8 v84 b8 v74 t16 t16 m16 m16 f16 f16 v86 s16 s16 |
