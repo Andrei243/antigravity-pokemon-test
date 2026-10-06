@@ -504,6 +504,11 @@ internal static partial class PokemonModels
 
     private static PokeBuilder MoltresGalar() => MoltresBuild(true);
 
+    // ------------------------------------------------------------------ Hisuian Typhlosion (its build, Galarian Slowking's, Hisuian Qwilfish's and
+    // Galarian Corsola's in PokemonModels.Johto1.cs)
+
+    private static PokeBuilder TyphlosionHisui() => TyphlosionBuild(true);
+
     // ------------------------------------------------------------------ Paldean Wooper
 
     /// <summary>A gill like the end of a bone: a stalk out from the head forking into two knobbed prongs.</summary>
@@ -555,6 +560,12 @@ internal static partial class PokemonModels
         return b;
     }
 
+    // ------------------------------------------------------------------ Galarian Slowking, Hisuian Qwilfish
+
+    private static PokeBuilder SlowkingGalar() => SlowkingBuild(true);
+
+    private static PokeBuilder QwilfishHisui() => QwilfishBuild(true);
+
     // ------------------------------------------------------------------ Hisuian Sneasel
 
     private static PokeBuilder SneaselHisui()
@@ -604,6 +615,10 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.042f * s, 0.6f), V(0.4f * s, 0.1f, 1f), 0.022f, Rgb(220, 50, 70), glare: true));
         return b;
     }
+
+    // ------------------------------------------------------------------ Galarian Corsola
+
+    private static PokeBuilder CorsolaGalar() => CorsolaBuild(true);
 
     // ------------------------------------------------------------------ Dialga's and Palkia's Origin Formes
 

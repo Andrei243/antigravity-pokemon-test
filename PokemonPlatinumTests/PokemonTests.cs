@@ -672,7 +672,13 @@ public class PokemonTests
             "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Koffing", "Weezing",
             "Kangaskhan", "Horsea", "Seadra", "Staryu", "Starmie", "Jynx", "Pinsir", "Tauros", "Lapras", "Ditto",
             "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair",
-            "Dragonite", "Mewtwo", "Mew"
+            "Dragonite", "Mewtwo", "Mew",
+            // Johto's first batch, Chikorita to Corsola
+            "Chikorita", "Bayleef", "Meganium", "Cyndaquil", "Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr",
+            "Sentret", "Furret", "Ledyba", "Ledian", "Spinarak", "Ariados", "Chinchou", "Lanturn", "Igglybuff", "Natu", "Xatu",
+            "Mareep", "Flaaffy", "Ampharos", "Bellossom", "Politoed", "Hoppip", "Skiploom", "Jumpluff", "Sunkern", "Sunflora",
+            "Slowking", "Wobbuffet", "Pineco", "Forretress", "Dunsparce", "Snubbull", "Granbull", "Qwilfish", "Shuckle",
+            "Teddiursa", "Ursaring", "Slugma", "Magcargo", "Corsola"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));

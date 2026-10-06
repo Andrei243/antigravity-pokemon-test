@@ -2,7 +2,7 @@
 
 Any species' 3D model can be replaced by a model file you supply (plan 03 · D5). The game uses it everywhere the
 species appears: in battle, in the evolution scene, on the title screen and in the menu sprites, which are baked from
-it. Species without a file keep their hand-built model (315 species: the whole Sinnoh Pokédex and the rest of Kanto; and 148 forms of them) or their generated one (everyone else).
+it. Species without a file keep their hand-built model (359 species: the whole Sinnoh Pokédex, the rest of Kanto and Johto from Chikorita to Corsola; and 155 forms of them) or their generated one (everyone else).
 
 ## Where the files go
 
