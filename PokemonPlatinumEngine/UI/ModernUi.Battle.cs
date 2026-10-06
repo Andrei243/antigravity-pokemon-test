@@ -42,7 +42,7 @@ internal static partial class ModernUi
                 float slide = BattleHUD.BoxSlide(anim, foe);
                 if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f);
             }
-            if (hud.MenuState is not (BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove))
+            if (!CoversPlayerBox(hud.MenuState))
             {
                 for (int slot = 0; slot < 2; slot++)
                 {
@@ -59,7 +59,7 @@ internal static partial class ModernUi
             if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty);
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
             // The team's cards cover the player's box while switching, and a question about a move to learn takes its place
-            if (playerSlide >= 0f && hud.MenuState is not (BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+            if (playerSlide >= 0f && !CoversPlayerBox(hud.MenuState)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
         }
 
         switch (hud.MenuState)
@@ -380,12 +380,18 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ bag
 
-    private static readonly Color[] PocketColors = { Green, Gold, Red, Blue };
+    // A property, not a field: the colour tokens are fields of another file of this partial class, and a static field
+    // here may be set before them (it read them as transparent black)
+    private static Color[] PocketColors => new[] { Green, Gold, Red, Blue };
 
     /// <summary>
     /// The battle's bag (plan 06 · R11): its four pockets as big buttons two to a row, each with how many items it
     /// holds, and under them the item used last, as Platinum's touch screen has them.
     /// </summary>
+    /// <summary>The menus whose panels stand where the player's HP box is: the team's cards, the bag's, a move to learn.</summary>
+    private static bool CoversPlayerBox(BattleMenuState state) => state is BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove
+        or BattleMenuState.SelectBagPocket or BattleMenuState.SelectBagItem or BattleMenuState.SelectBagTarget or BattleMenuState.SelectBagMove;
+
     private static void BagPockets(BattleHUD hud, int sw, int sh, BattleEngine battle)
     {
         Dim(sw, sh, 120);
