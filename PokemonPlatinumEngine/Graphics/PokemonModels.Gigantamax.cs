@@ -497,4 +497,8 @@ internal static partial class PokemonModels
         MaxClouds(b, Body, V(0.06f, 0.95f, -0.08f), 0.035f, 0.14f, 0.24f, 1.1f, 0.3f);
         return b;
     }
+
+    // ------------------------------------------------------------------ Gigantamax Garbodor (its build in PokemonModels.Unova2.cs)
+
+    private static PokeBuilder GarbodorGmax() => GarbodorBuild(true);
 }

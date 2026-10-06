@@ -590,15 +590,21 @@ internal static partial class PokemonModels
         "Victini", "Snivy", "Servine", "Serperior", "Tepig", "Pignite", "Emboar", "Oshawott", "Dewott", "Samurott", "Patrat",
         "Watchog", "Lillipup", "Herdier", "Stoutland", "Purrloin", "Liepard", "Pansage", "Simisage", "Pansear", "Simisear", "Panpour",
         "Simipour", "Munna", "Musharna", "Pidove", "Tranquill", "Unfezant", "Blitzle", "Zebstrika", "Roggenrola", "Boldore", "Gigalith",
-        "Woobat", "Swoobat", "Drilbur", "Excadrill", "Audino"
+        "Woobat", "Swoobat", "Drilbur", "Excadrill", "Audino",
+        // Unova's second batch, Timburr to Zoroark
+        "Timburr", "Gurdurr", "Conkeldurr", "Tympole", "Palpitoad", "Seismitoad", "Throh", "Sawk", "Sewaddle", "Swadloon", "Leavanny",
+        "Venipede", "Whirlipede", "Scolipede", "Cottonee", "Whimsicott", "Petilil", "Lilligant", "Basculin", "Sandile", "Krokorok",
+        "Krookodile", "Darumaka", "Darmanitan", "Maractus", "Dwebble", "Crustle", "Scraggy", "Scrafty", "Sigilyph", "Yamask", "Cofagrigus",
+        "Tirtouga", "Carracosta", "Archen", "Archeops", "Trubbish", "Garbodor", "Zorua", "Zoroark"
     };
 
     /// <summary>
     /// Forms with a hand-built model of their own: every form of a hand-built species, Platinum's own (Rotom's
     /// appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters, Castform's
-    /// weathers, Deoxys's formes) and the later games' (the regional forms, Dialga's and Palkia's Origin Formes, the
-    /// Megas, the Primal Kyogre and Groudon, the Gigantamax forms, Pikachu's caps and costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner
-    /// Pikachu and Eevee) show its model.
+    /// weathers, Deoxys's formes) and the later games' (the regional forms, Dialga's and Palkia's Origin Formes, Basculin's
+    /// stripes, Darmanitan's Zen Modes, the Megas, the Primal Kyogre and Groudon, the Gigantamax forms, Pikachu's caps and
+    /// costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner Pikachu
+    /// and Eevee) show its model.
     /// </summary>
     public static readonly string[] Forms =
     {
@@ -615,15 +621,17 @@ internal static partial class PokemonModels
         "Weezing-Galar", "Mr. Mime-Galar", "Tauros-Paldea-Combat-Breed", "Tauros-Paldea-Blaze-Breed", "Tauros-Paldea-Aqua-Breed",
         "Articuno-Galar", "Zapdos-Galar", "Moltres-Galar", "Typhlosion-Hisui", "Wooper-Paldea", "Slowking-Galar", "Qwilfish-Hisui",
         "Sneasel-Hisui", "Corsola-Galar", "Zigzagoon-Galar", "Linoone-Galar", "Dialga-Origin", "Palkia-Origin", "Samurott-Hisui",
+        "Lilligant-Hisui", "Basculin-Blue-Striped", "Basculin-White-Striped", "Darumaka-Galar", "Darmanitan-Zen",
+        "Darmanitan-Galar-Standard", "Darmanitan-Galar-Zen", "Yamask-Galar", "Zorua-Hisui", "Zoroark-Hisui",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
         "Mewtwo-Mega-Y", "Meganium-Mega", "Feraligatr-Mega", "Ampharos-Mega", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Skarmory-Mega", "Houndoom-Mega", "Tyranitar-Mega", "Sceptile-Mega", "Blaziken-Mega", "Swampert-Mega", "Gardevoir-Mega", "Sableye-Mega", "Mawile-Mega", "Aggron-Mega",
         "Medicham-Mega", "Manectric-Mega", "Sharpedo-Mega", "Camerupt-Mega", "Altaria-Mega", "Banette-Mega", "Chimecho-Mega", "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Salamence-Mega", "Metagross-Mega", "Latias-Mega", "Latios-Mega", "Kyogre-Primal", "Groudon-Primal",
         "Rayquaza-Mega", "Staraptor-Mega", "Lopunny-Mega",
-        "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega", "Emboar-Mega", "Excadrill-Mega", "Audino-Mega",
+        "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega", "Emboar-Mega", "Excadrill-Mega", "Audino-Mega", "Scolipede-Mega", "Scrafty-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
-        "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax",
+        "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
         "Pikachu-Cosplay", "Pichu-Spiky-Eared"
@@ -1241,6 +1249,47 @@ internal static partial class PokemonModels
         "DRILBUR" => Drilbur(),
         "EXCADRILL" => Excadrill(),
         "AUDINO" => Audino(),
+        // Unova's second batch (PokemonModels.Unova2.cs)
+        "TIMBURR" => Timburr(),
+        "GURDURR" => Gurdurr(),
+        "CONKELDURR" => Conkeldurr(),
+        "TYMPOLE" => Tympole(),
+        "PALPITOAD" => Palpitoad(),
+        "SEISMITOAD" => Seismitoad(),
+        "THROH" => Throh(),
+        "SAWK" => Sawk(),
+        "SEWADDLE" => Sewaddle(),
+        "SWADLOON" => Swadloon(),
+        "LEAVANNY" => Leavanny(),
+        "VENIPEDE" => Venipede(),
+        "WHIRLIPEDE" => Whirlipede(),
+        "SCOLIPEDE" => Scolipede(),
+        "COTTONEE" => Cottonee(),
+        "WHIMSICOTT" => Whimsicott(),
+        "PETILIL" => Petilil(),
+        "LILLIGANT" => Lilligant(),
+        "BASCULIN" => Basculin(),
+        "SANDILE" => Sandile(),
+        "KROKOROK" => Krokorok(),
+        "KROOKODILE" => Krookodile(),
+        "DARUMAKA" => Darumaka(),
+        "DARMANITAN" => Darmanitan(),
+        "MARACTUS" => Maractus(),
+        "DWEBBLE" => Dwebble(),
+        "CRUSTLE" => Crustle(),
+        "SCRAGGY" => Scraggy(),
+        "SCRAFTY" => Scrafty(),
+        "SIGILYPH" => Sigilyph(),
+        "YAMASK" => Yamask(),
+        "COFAGRIGUS" => Cofagrigus(),
+        "TIRTOUGA" => Tirtouga(),
+        "CARRACOSTA" => Carracosta(),
+        "ARCHEN" => Archen(),
+        "ARCHEOPS" => Archeops(),
+        "TRUBBISH" => Trubbish(),
+        "GARBODOR" => Garbodor(),
+        "ZORUA" => Zorua(),
+        "ZOROARK" => Zoroark(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1263,7 +1312,7 @@ internal static partial class PokemonModels
         "DEOXYS-ATTACK" => DeoxysAttack(),
         "DEOXYS-DEFENSE" => DeoxysDefense(),
         "DEOXYS-SPEED" => DeoxysSpeed(),
-        // The later games' regional forms and Dialga's and Palkia's Origin Formes (PokemonModels.Regional.cs)
+        // The later games' regional forms, Dialga's and Palkia's Origin Formes, Basculin's stripes and Darmanitan's Zen Modes (PokemonModels.Regional.cs)
         "RATTATA-ALOLA" => RattataAlola(),
         "RATICATE-ALOLA" => RaticateAlola(),
         "RAICHU-ALOLA" => RaichuAlola(),
@@ -1311,6 +1360,16 @@ internal static partial class PokemonModels
         "DIALGA-ORIGIN" => DialgaOrigin(),
         "PALKIA-ORIGIN" => PalkiaOrigin(),
         "SAMUROTT-HISUI" => SamurottHisui(),
+        "LILLIGANT-HISUI" => LilligantHisui(),
+        "BASCULIN-BLUE-STRIPED" => BasculinBlue(),
+        "BASCULIN-WHITE-STRIPED" => BasculinWhite(),
+        "DARUMAKA-GALAR" => DarumakaGalar(),
+        "DARMANITAN-ZEN" => DarmanitanZen(),
+        "DARMANITAN-GALAR-STANDARD" => DarmanitanGalar(),
+        "DARMANITAN-GALAR-ZEN" => DarmanitanGalarZen(),
+        "YAMASK-GALAR" => YamaskGalar(),
+        "ZORUA-HISUI" => ZoruaHisui(),
+        "ZOROARK-HISUI" => ZoroarkHisui(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
@@ -1378,6 +1437,8 @@ internal static partial class PokemonModels
         "EMBOAR-MEGA" => EmboarMega(),
         "EXCADRILL-MEGA" => ExcadrillMega(),
         "AUDINO-MEGA" => AudinoMega(),
+        "SCOLIPEDE-MEGA" => ScolipedeMega(),
+        "SCRAFTY-MEGA" => ScraftyMega(),
         // Gigantamax (PokemonModels.Gigantamax.cs), and Pikachu's caps and costumes and the spiky-eared Pichu (PokemonModels.Pikachu.cs)
         "VENUSAUR-GMAX" => VenusaurGmax(),
         "CHARIZARD-GMAX" => CharizardGmax(),
@@ -1391,6 +1452,7 @@ internal static partial class PokemonModels
         "LAPRAS-GMAX" => LaprasGmax(),
         "EEVEE-GMAX" => EeveeGmax(),
         "SNORLAX-GMAX" => SnorlaxGmax(),
+        "GARBODOR-GMAX" => GarbodorGmax(),
         "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)
