@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle;
@@ -32,7 +33,8 @@ internal sealed class BattleMirror
     public Trainer Copy(Trainer trainer) => new()
     {
         Id = trainer.Id,
-        Name = trainer.Name,
+        // The rival's data names him "{rival}": the battle calls him what the player did
+        Name = PlayerIdentity.Fill(trainer.Name),
         TrainerClass = trainer.TrainerClass,
         Party = Copy(trainer.Party),
         PrizeMoney = trainer.PrizeMoney,

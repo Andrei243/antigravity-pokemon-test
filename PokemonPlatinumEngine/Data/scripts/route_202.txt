@@ -1,0 +1,37 @@
+# Route 202 (plan 02 · S4, and the first beat of S5). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_route_202.s).
+#
+# The assistant waits at the south end of the road. Until the player has been home and been given the rival's
+# parcel, they send the player back to tell their family; with it, they show how a Pokémon is caught and give the
+# player Poké Balls. VAR_ROUTE_202_STATE: 1 shown.
+
+
+# The road north out of Sandgem Town (the original's trigger 6).
+script CatchingLesson
+  if flag FLAG_RECEIVED_PARCEL goto Lesson
+  face counterpart player
+  speaker "{assistant}"
+  if flag FLAG_TALKED_TO_ROUTE_202_COUNTERPART goto Again
+  say "{player}! Have you told your family you're helping the professor? Go home and tell them first. Your mom will worry otherwise!"
+  setflag FLAG_TALKED_TO_ROUTE_202_COUNTERPART
+  walk player right 1
+  end
+label Again
+  say "Go home and tell your family first!"
+  walk player right 1
+  end
+label Lesson
+  music "common/assistant"
+  face counterpart player
+  speaker "{assistant}"
+  say "Oh, {player}! Are you off to Jubilife City? ...Do you know how to catch a Pokémon? I'll show you. Watch closely!"
+  catchinglesson "Bidoof" 2
+  say "That's how it's done! Weaken it first, then throw a Poké Ball. Here, take some of these."
+  give "Poké Ball" 5
+  say "Good luck with the Pokédex, {player}! I'll see you around!"
+  walk counterpart left 3 fast
+  hide counterpart
+  setflag FLAG_HIDE_ROUTE_202_COUNTERPART
+  music area
+  setvar VAR_ROUTE_202_STATE 1
+  end

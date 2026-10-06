@@ -1,0 +1,65 @@
+{
+  "area": "canalave_city",
+  "bgmTrack": "sinnoh/canalave",
+  "trees": "Round",
+  "architecture": "Harbour",
+  "doors": [
+    { "warp": 1, "map": "CanalavePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 2, "map": "CanalavePokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 7, "to": "route_218", "toWarp": 0 },
+    { "warp": 8, "to": "route_218", "toWarp": 1 }
+  ],
+  // The Gym, the library, the inn and the houses have no rooms yet (plan 01 · M11, M9)
+  "locked": [ 0, 3, 4, 5, 6, 9, 10 ],
+  // Sailor Eldritch, who sails trainers to Iron Island, is written with the ferry
+  "people": {
+    // He sails the player to Iron Island and back (scripts/canalave_city.txt)
+    "sailor_eldritch": { "name": "Sailor Eldritch", "script": "Ferry" },
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "Ships bring all sorts into this harbour from over the sea.",
+        "I'm on the quay first thing every morning to see what's come in. You never know!"
+      ]
+    },
+    "lass": {
+      "name": "Lass",
+      "dialog": [
+        "My Psyduck could watch the boats on the canal all day.",
+        "It just sits there, holding its head, and never says a word. Well, apart from \"Psy?\""
+      ]
+    },
+    "pokemon_breeder_m": {
+      "name": "Man",
+      "dialog": [
+        "Out at sea there's an island riddled with old mine tunnels: Iron Island.",
+        "Nobody digs there now, but trainers go over to train in the dark. A sailor down at the harbour takes them across."
+      ]
+    },
+    "ace_trainer_f": {
+      "name": "Trainer",
+      "dialog": [
+        "The Gym Leader here is Byron. His son Roark runs the Gym in Oreburgh City.",
+        "Steel-type Pokémon shrug off most moves. Fire, Fighting and Ground moves are the ones that get through."
+      ]
+    },
+    "old_man": {
+      "name": "Old Man",
+      "dialog": [
+        "When a tall ship comes in, the bridge over the canal lifts right up to let it through.",
+        "I've watched it go up and down every day of my life, and I still stop to look."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Canalave City\nA harbour town where the ships still come and go.",
+    "gym_signpost": "Canalave City Pokémon Gym\nLeader: Byron\nHis Pokémon are forged from steel!",
+    "signboard_canalave_library": "Canalave Library\nThree floors of books, and stories older than the city.",
+    "signboard_canalave_dock": "Canalave Harbour\nFerries leave from the end of this pier.",
+    "signboard_sailor_eldritchs_house": "Sailor Eldritch's House\nHome of the Iron Island ferry's skipper.",
+    "signboard_harbor_inn": "Harbour Inn\nA warm bed, a hot meal, and the sound of the sea."
+  }
+}

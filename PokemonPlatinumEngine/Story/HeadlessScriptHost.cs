@@ -24,9 +24,11 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Party Party { get; }
     public Inventory Bag { get; }
     public Poketch Poketch { get; } = new();
+    public SafariGame Safari { get; } = new();
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }
+    public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
 
     /// <summary>Where Pokémon go when the team is full.</summary>
     public List<Pokemon> Box { get; } = new();
@@ -93,7 +95,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (ShowsNothing) throw new ScriptException($"A script that may only set things up tried to {what}.");
     }
 
-    private string Named(string text) => PlayerIdentity.Fill(text, PlayerName, PlayerLook);
+    private string Named(string text) => PlayerIdentity.Fill(text, PlayerName, PlayerLook, RivalName);
 
     // ------------------------------------------------------------------ the field
 
@@ -241,11 +243,10 @@ public sealed class HeadlessScriptHost : IScriptHost
         Answer = 0;
         if (screen != ScriptScreen.Starter) return;
 
-        // As the game does for now: the Pokémon chosen is the whole team (plan 02 · S4 takes the free Turtwig away)
+        // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
         int choice = Math.Clamp(StarterChoice, 0, StoryState.Starters.Length - 1);
         string species = StoryState.Starters[choice];
-        Party.Clear();
-        Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 5));
+        GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, 5));
         Story.ChooseStarter(species);
         Answer = choice;
     }

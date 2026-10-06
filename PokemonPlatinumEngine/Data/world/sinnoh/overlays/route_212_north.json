@@ -1,0 +1,114 @@
+{
+  "area": "route_212_north",
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  // The gate to Hearthome City is passed through, and the Pokémon Mansion's hall to the Trophy Garden behind it; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "hearthome_city", "toWarp": 15 },
+    { "warp": 1, "to": "hearthome_city", "toWarp": 16 },
+    { "warp": 2, "to": "trophy_garden", "toWarp": 0 }
+  ],
+  // The policemen battle only at night in the original, where their doubles without a battle (policeman_*_no_battle,
+  // on the same tiles) stand by day: only the trainers are written here
+  "people": {
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "That grand house is the Pokémon Mansion. Its owner is ever so rich, and ever so proud of it.",
+        "Behind it is the Trophy Garden. Rare Pokémon turn up there every now and then!"
+      ]
+    },
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "Enjoy the sunshine while it lasts.",
+        "Further down this road it turns to rain, and it stays wet all the way to Pastoria City."
+      ]
+    },
+    "rich_boy_jason": {
+      "name": "Jason",
+      "trainer": {
+        "id": "rich_boy_jason",
+        "name": "Jason",
+        "trainerClass": "Rich Boy",
+        "dialogueBefore": "Rich Boy Jason: My Prinplup has its own pool and its own coach. Can your Pokémon say the same?",
+        "dialogueAfter": "Rich Boy Jason: Clearly I'll need to hire a better coach."
+      }
+    },
+    "lady_melissa": {
+      "name": "Melissa",
+      "trainer": {
+        "id": "lady_melissa",
+        "name": "Melissa",
+        "trainerClass": "Lady",
+        "dialogueBefore": "Lady Melissa: Oh, a visitor! Shall we have a little battle while the tea is brewing?",
+        "dialogueAfter": "Lady Melissa: Goodness me. The tea has gone quite cold."
+      }
+    },
+    "gentleman_jeremy": {
+      "name": "Jeremy",
+      "trainer": {
+        "id": "gentleman_jeremy",
+        "name": "Jeremy",
+        "trainerClass": "Gentleman",
+        "dialogueBefore": "Gentleman Jeremy: My Chatot repeats everything it hears, so do mind your language while we battle.",
+        "dialogueAfter": "Gentleman Jeremy: Chatot, I beg you, don't repeat what I just said."
+      }
+    },
+    "socialite_reina": {
+      "name": "Reina",
+      "trainer": {
+        "id": "socialite_reina",
+        "name": "Reina",
+        "trainerClass": "Socialite",
+        "dialogueBefore": "Socialite Reina: A battle, darling? How wonderfully unexpected! Roselia, do the honours.",
+        "dialogueAfter": "Socialite Reina: How simply dreadful. I must sit down."
+      }
+    },
+    "policeman_bobby": {
+      "name": "Bobby",
+      "trainer": {
+        "id": "policeman_bobby",
+        "name": "Bobby",
+        "trainerClass": "Policeman",
+        "dialogueBefore": "Policeman Bobby: Stop right there! I'll have to see what your Pokémon are made of.",
+        "dialogueAfter": "Policeman Bobby: Very good. Carry on, and stay out of trouble."
+      }
+    },
+    "policeman_alex": {
+      "name": "Alex",
+      "trainer": {
+        "id": "policeman_alex",
+        "name": "Alex",
+        "trainerClass": "Policeman",
+        "dialogueBefore": "Policeman Alex: I keep watch over the mansion. Nobody walks past me without a battle!",
+        "dialogueAfter": "Policeman Alex: You may pass. Keep to the road, please."
+      }
+    },
+    "policeman_dylan": {
+      "name": "Dylan",
+      "trainer": {
+        "id": "policeman_dylan",
+        "name": "Dylan",
+        "trainerClass": "Policeman",
+        "dialogueBefore": "Policeman Dylan: Up and down, up and down, all shift long. At last, something happens!",
+        "dialogueAfter": "Policeman Dylan: Right. Back to walking up and down."
+      }
+    },
+    "policeman_caleb": {
+      "name": "Caleb",
+      "trainer": {
+        "id": "policeman_caleb",
+        "name": "Caleb",
+        "trainerClass": "Policeman",
+        "dialogueBefore": "Policeman Caleb: Hold it! I'll need to see your Trainer Card. And your Pokémon, in battle.",
+        "dialogueAfter": "Policeman Caleb: Everything seems to be in order. On your way."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_hearthome_city": "Route 212\nNorth: Hearthome City\nSouth: Pastoria City",
+    "signboard_pokemon_mansion": "Pokémon Mansion\nA grand house, with a garden of rare Pokémon behind it.",
+    "trainer_tips_signpost": "Trainer Tips\nGive your Pokémon a Berry to hold. In battle it will eat it all by itself when the time is right!"
+  }
+}

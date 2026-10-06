@@ -308,6 +308,7 @@ public partial class GameEngine
     private void KeepFieldMovesInForce()
     {
         player.PushesBoulders = story.Has(FieldMoveRules.StrengthFlag);
+        player.HasRunningShoes = story.Has(StoryState.RunningShoesFlag);
         currentMap.Lit = story.Has(FieldMoveRules.FlashFlag);
         currentMap.FogLifted = story.Has(FieldMoveRules.DefogFlag);
     }
@@ -526,6 +527,7 @@ public partial class GameEngine
         public Party Party => game.playerParty;
         public Inventory Bag => game.playerInventory;
         public Poketch Poketch => game.poketch;
+        public SafariGame Safari => game.safari;
 
         public int Money
         {
@@ -688,6 +690,7 @@ public partial class GameEngine
             game.playerPokedex.RegisterSeen(pokemon.Species.DexNumber);
             game.playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
             if (game.playerParty.Add(pokemon)) return true;
+            FormRules.BackToLand(pokemon);
             game.pcBoxStorage.Add(pokemon);
             return false;
         }

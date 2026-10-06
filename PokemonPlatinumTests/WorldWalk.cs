@@ -85,10 +85,34 @@ internal static class WorldWalk
                 else if (step.Obstacle == Obstacle.Person && mode == TravelMode.OnFoot && map.GetNpcAt(nx, ny) is { IsThing: true }
                          && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, TravelMode.OnFoot, map.HeightAt(nx, ny), arrived: false);
+                // Someone a new game hides until their scene (the rival on his own doorstep) isn't in the way at all
+                else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { HiddenBy: { } hiding } && HiddenAtStart.Value.Contains(hiding)
+                         && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // Someone who takes the player somewhere when spoken to (a ferry) is a way there too
+                else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { Script: { } name } person)
+                    foreach (var sent in WarpsOf(name, person.ScriptFile))
+                    {
+                        var onto = mapOf(sent.Name);
+                        Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                    }
             }
         }
         return reached;
     }
+
+    /// <summary>The flags a new game starts with set (common.NewGame): whoever they hide is off the map when the walk sets out.</summary>
+    public static readonly Lazy<HashSet<string>> HiddenAtStart = new(() =>
+    {
+        var story = new PokemonPlatinumEngine.Story.StoryState();
+        PokemonPlatinumEngine.Story.StoryMigration.BeginNewGame(story, PokemonPlatinumEngine.Story.ScriptLibrary.Default);
+        return story.Flags.ToHashSet();
+    });
+
+    /// <summary>Where a person's script can send the player (its <c>warp</c> commands, whichever answer leads there).</summary>
+    private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file) =>
+        PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything().Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)
+        ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
 
     /// <summary>The whole game from where each region that is built begins.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>

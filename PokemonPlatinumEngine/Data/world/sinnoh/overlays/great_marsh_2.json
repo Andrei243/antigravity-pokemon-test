@@ -1,0 +1,17 @@
+{
+  "area": "great_marsh_2",
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  "people": {
+    "parasol_lady": {
+      "name": "Parasol Lady",
+      "dialog": [
+        "One step into the deep mud and you're wading along at half the pace.",
+        "I keep to the firm ground. My parasol and I prefer to stay clean."
+      ]
+    }
+  },
+  "signs": {
+    "signboard": "Great Marsh · Area 2\nThe marsh's far north-east. Keep to the paths and keep your boots dry."
+  }
+}

@@ -11,15 +11,18 @@
   // The two houses have no rooms yet (plan 01 · M11)
   "locked": [ 3, 4 ],
   "people": {
+    // The chapter's people (scripts/sandgem_town.txt; plan 02 · S4): the assistant who takes the player to the lab
+    // and shows them round, the rival running out of it, the professor at its door with a TM
     "sandgem_counterpart": {
       "name": "{assistant}",
       "npcType": "Assistant",
       "dialog": [
-        "{assistant}: Hi, {player}! Welcome to Sandgem Town!",
-        "{assistant}: The Professor's lab is the big building right behind me.",
-        "{assistant}: The Pokémon Center and the Poké Mart are just along the road to the east."
+        "{assistant}: The Pokémon Center has the red roof, and the Poké Mart the blue one.",
+        "{assistant}: Tell your family about the Pokédex before you go too far, {player}!"
       ]
     },
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Out of my way! I've got places to be!" ] },
+    "prof_rowan": { "name": "Prof. Rowan", "dialog": [ "Prof. Rowan: Hm. Off you go, then." ] },
     "youngster": {
       "name": "Boy",
       "dialog": [
@@ -42,10 +45,11 @@
       ]
     }
   },
+  "triggers": [ { "trigger": 0, "script": "MeetAssistant" } ],
   "signs": {
     "map_signpost": "Sandgem Town\nTown of Sand and Sparkle!\nNorth: Route 202 | West: Route 201",
     "signboard_pokemon_research_lab": "Pokémon Research Lab",
-    "signboard_counterpart_house": "Dawn's House",
+    "signboard_counterpart_house": "{assistant}'s House",
     "signboard_pokemon_center": "Pokémon Center\nRest your tired Pokémon here.",
     "signboard_poke_mart": "Poké Mart\nEverything a trainer needs."
   }

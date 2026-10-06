@@ -89,8 +89,11 @@ public partial class BattleEngine
     /// <summary>What a trainer battle won pays: the trainers' prize money, doubled by an Amulet Coin or a Luck Incense on the field (plan 06 · R8).</summary>
     public int PrizeMoney => core.PrizeMoney;
 
+    /// <summary>What losing cost the player, by the team's highest level and the badges (plan 06 · R10).</summary>
+    public int MoneyLost => core.MoneyLost;
+
     public BattleResult Result { get; private set; } = BattleResult.None;
-    public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && steps.Count == 0;
+    public bool IsBattleOver => Result != BattleResult.None && !waitingForMessageConfirm && steps.Count == 0 && interlude.Count == 0 && learning == null;
 
     /// <summary>
     /// True while a Pokémon of the player's on the field is in the red as its bar shows it
@@ -315,9 +318,10 @@ public partial class BattleEngine
     /// <summary>Shows what is queued until a line waits to be read or an animation holds the queue.</summary>
     private void Pump()
     {
-        while (!waitingForMessageConfirm && messageWaitTimer <= 0f)
+        // A question about a move to learn holds everything until it is answered; its own lines go first
+        while (!waitingForMessageConfirm && messageWaitTimer <= 0f && HUD.MenuState != BattleMenuState.LearnMove)
         {
-            if (steps.Count == 0)
+            if (steps.Count == 0 && interlude.Count == 0)
             {
                 if (!playingTheLog) return;
                 playingTheLog = false;
@@ -325,7 +329,7 @@ public partial class BattleEngine
                 continue;
             }
 
-            switch (steps.Dequeue())
+            switch (interlude.Count > 0 ? interlude.Dequeue() : steps.Dequeue())
             {
                 case Line line:
                     currentMessage = line.Text;
@@ -493,6 +497,9 @@ public partial class BattleEngine
                 if (Enumerable.Range(0, Anim.Slots).Any(s => Anim[BattleSide.Player, s].Shown == gaining))
                     AudioManager.PlaySound("exp", -0.3f);
                 break;
+            case MoveWanted wanted:
+                WantMove(wanted);
+                break;
             case LevelRose level:
             {
                 var grown = mirror.Shown(level.Pokemon);
@@ -543,6 +550,12 @@ public partial class BattleEngine
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
 
+        if (IsLearningMove)
+        {
+            HandleLearnInput();
+            return;
+        }
+
         if (waitingForMessageConfirm)
         {
             if (ConfirmPressed || InputManager.IsActionPressed(GameAction.Cancel))
@@ -572,12 +585,20 @@ public partial class BattleEngine
     /// <summary>The message currently on screen.</summary>
     public string CurrentMessage => currentMessage;
 
-    /// <summary>A message is on screen waiting to be dismissed.</summary>
-    public bool IsWaitingForConfirm => waitingForMessageConfirm;
+    /// <summary>A message is on screen waiting to be dismissed, or a question about a move to learn waits for its answer.</summary>
+    public bool IsWaitingForConfirm => waitingForMessageConfirm || IsLearningMove;
 
-    /// <summary>Dismisses the message on screen and goes on to what follows it.</summary>
+    /// <summary>
+    /// Dismisses the message on screen and goes on to what follows it. A question about a move to learn is
+    /// answered with whatever keeps the moves as they are.
+    /// </summary>
     public void ConfirmMessage()
     {
+        if (IsLearningMove)
+        {
+            ChooseLearn(KeepingAnswer);
+            return;
+        }
         if (!waitingForMessageConfirm) return;
 
         // Anything the message started lands now, so what is shown never runs ahead of it

@@ -1,0 +1,43 @@
+{
+  "key": "ruin_maniac_cave_short",
+  "index": 286,
+  "name": "Ruin Maniac Cave",
+  "matrix": 76,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "ruin_maniac_cave_short",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 23 },
+    { "species": "Geodude", "level": 22 },
+    { "species": "Geodude", "level": 21 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Hippopotas", "level": 22 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Hippopotas", "level": 24 }
+  ],
+  "landRate": 10,
+  "eastSea": true,
+  "warps": [
+    { "x": 6, "z": 7, "to": "route_214", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_tm28", "looks": "pokeball", "movement": "none", "x": 4, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28", "item": "TM28", "script": "7116" },
+    { "id": "ruin_maniac", "looks": "collector", "movement": "look_west", "x": 3, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

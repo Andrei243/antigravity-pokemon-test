@@ -3,19 +3,16 @@
   "bgmTrack": "sinnoh/route201",
   "trees": "Round",
   "people": {
-    // In Platinum the Professor hands out the first Pokémon here, from his briefcase, not at the lake
-    "prof_rowan": {
-      "name": "Prof. Rowan",
-      "dialog": [
-        "Prof. Rowan: Hm! You were about to walk into the tall grass without a Pokémon of your own?",
-        "Prof. Rowan: My briefcase is on the path, just over there. There are three Poké Balls inside.",
-        "Prof. Rowan: Go on. Choose the Pokémon that will be your partner."
-      ]
-    },
+    // The chapter's people (scripts/route_201.txt; plan 02 · S4). In Platinum the professor hands out the first
+    // Pokémon here, from his briefcase, not at the lake; his assistant brings the briefcase from the lake
+    "rival": { "name": "{rival}", "script": "Rival" },
+    "prof_rowan": { "name": "Prof. Rowan", "script": "Rowan" },
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "dialog": [ "{assistant}: Go on, {player}! The Pokémon are in the briefcase." ] },
     "briefcase": {
       "id": "starter_briefcase",
       "name": "Professor's Briefcase",
-      "isStarterBriefcase": true
+      "isStarterBriefcase": true,
+      "script": "Briefcase"
     },
     "pokemon_breeder_m": {
       "name": "Breeder",
@@ -26,6 +23,7 @@
     },
     "cashier_m": {
       "name": "Mart Clerk",
+      "script": "MartWorker",
       "dialog": [
         "I work at the Poké Mart in Sandgem Town, at the east end of this road.",
         "Come by when your Pokémon need Potions!"
@@ -46,6 +44,12 @@
       ]
     }
   },
+  // The original's triggers: the professor's scene, the rival keeping the player at the briefcase, the road back
+  // to the lake (and the two ways the player is turned back while the rival waits there)
+  "triggers": [
+    { "trigger": 0, "script": "RowanAppears" }, { "trigger": 1, "script": "ChooseFirst" }, { "trigger": 2, "script": "NotHome" },
+    { "trigger": 3, "script": "ChooseFirst" }, { "trigger": 4, "script": "NotSandgem" }, { "trigger": 5, "script": "OffToTheLake" }
+  ],
   "signs": {
     "arrow_signpost_twinleaf_town": "Route 201\nSouth: Twinleaf Town",
     "arrow_signpost_sandgem_town": "Route 201\nEast: Sandgem Town",

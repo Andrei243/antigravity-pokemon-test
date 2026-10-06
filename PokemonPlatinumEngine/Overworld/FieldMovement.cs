@@ -253,7 +253,9 @@ public static class FieldMovement
         bool fastBike = walker.Mode == TravelMode.Cycling && walker.FastGear;
         if (dir == Direction.Up && (IsMudSlope(there) || IsMudSlope(here)) && !fastBike) return No(Obstacle.MudSlope);
 
-        var plank = BikePlankRunsNorthSouth(there);
+        // A Bicycle's plank is the deck's: whoever walks on the ground under it (a road through the gorge beneath Route
+        // 210's bridge) is not on it (plan 01 · M7)
+        var plank = map.DeckAt(nx, ny) != null && !onDeck ? null : BikePlankRunsNorthSouth(there);
         if (walker.Mode == TravelMode.Cycling)
         {
             if (StopsBicycles(there)) return No(Obstacle.NoBicycles);

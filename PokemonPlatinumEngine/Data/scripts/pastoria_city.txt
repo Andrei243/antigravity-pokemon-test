@@ -1,0 +1,10 @@
+# Pastoria City (plan 01 · M7). docs/scripts.md describes the language; the lines are our own.
+#
+# Walking back out of the Great Marsh through the observatory ends a Safari Game that is still on.
+
+script OnEnter
+  if not safari end
+  safari end
+  speaker "Attendant"
+  say "Welcome back! Your Safari Game is over. We hope you found something good out there!"
+  end

@@ -52,6 +52,9 @@ that exists, every script to something that starts it, and plays each to its end
   the game's own, with no script.
 - **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
   `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
+- **Waking up after a lost battle** (plan 06 · R10). The player comes round in the Pokémon Center last gone into,
+  in front of the nurse, who runs `BlackOutCenter`, or at home before any, beside Mom, who runs `BlackOutHome`.
+  Both heal the team.
 - **A new game.** `common.NewGame` runs once, with no screen: it may set flags and variables and nothing else.
   It is also run for a save from before the story was kept (`Story/StoryMigration.cs`).
 
@@ -102,9 +105,10 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 | `ask "..."` | A question with Yes and No beside it. Then `if yes` / `if no`. The cancel button answers no. |
 | `choose "question" "A" "B" ...` | A question with up to six answers. `RESULT` is the place of the one picked, from 0. The cancel button picks the last, so the way out goes last. |
 
-A line may hold `{player}` and `{assistant}` (who they are is filled in as it is shown), `{self}`,
-`{lead}` (the first Pokémon of the team), `{starter}` and `{rivalstarter}`, `{item}` (the last item given or
-taken), `{money}`, `{result}` and `{var:NAME}`.
+A line may hold `{player}`, `{assistant}` and `{rival}` (who they are is filled in as it is shown, a speaker's
+name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{rivalstarter}` and
+`{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
+`{money}`, `{result}` and `{var:NAME}`.
 
 ### Where a script goes
 
@@ -133,6 +137,8 @@ What an `if` can ask:
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `poketch` | The player has the Pokétch. |
+| `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
+| `safari` | A Safari Game is under way in the Great Marsh. |
 
 ### What the story remembers
 
@@ -166,10 +172,11 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 
 | Command | |
 |---|---|
-| `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up at home, unless `canlose`: then the team is healed and the script goes on with `if lost`. |
+| `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up in the last Pokémon Center (at home before any), unless `canlose`: then the team is healed and the script goes on with `if lost`. |
 | `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
 | `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
 | `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
+| `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
@@ -219,6 +226,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `sweetscent` | Draws out a wild Pokémon of the place where the player stands, on land or water, and battles it. `RESULT` is 0 when nothing lives there. |
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
+| `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. |
 
 ## Who is on the map
 

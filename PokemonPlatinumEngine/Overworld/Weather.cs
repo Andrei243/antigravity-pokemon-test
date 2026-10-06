@@ -22,9 +22,9 @@ public static class Weathers
     /// <summary>
     /// The weather of an imported area, by the name its header gives it (Platinum's own list). Five places take
     /// theirs from a calendar in Platinum (<c>sYearlyWeather</c> in the original's
-    /// <c>src/field_overworld_weather.c</c>): until that is imported with their areas, each has the weather it
-    /// has on most days. The values that only set a mood indoors (a cave before Flash, the forest's shade)
-    /// put nothing in the air.
+    /// <c>src/field_overworld_weather.c</c>), which the world's <c>calendar.json</c> holds and
+    /// <see cref="MapArea.WeatherOn"/> reads; without it, each has the weather it has on most days. The values
+    /// that only set a mood indoors (a cave before Flash, the forest's shade) put nothing in the air.
     /// </summary>
     public static FieldWeather Of(string? name) => name switch
     {
@@ -41,6 +41,13 @@ public static class Weathers
         "SlowAshfall" => FieldWeather.Ash,
         _ => FieldWeather.Clear
     };
+
+    /// <summary>
+    /// A day's row in Platinum's calendar (<c>FieldSystem_GetWeather</c>): the table has a row for every day of a
+    /// leap year, and in any other year the days from March on are counted one further, past the 29th of February.
+    /// </summary>
+    public static int CalendarDay(System.DateTime date) =>
+        date.DayOfYear - 1 + (date.Month > 2 && !System.DateTime.IsLeapYear(date.Year) ? 1 : 0);
 
     /// <summary>
     /// The weather a battle fought under this sky opens with and keeps, as the original carries it over

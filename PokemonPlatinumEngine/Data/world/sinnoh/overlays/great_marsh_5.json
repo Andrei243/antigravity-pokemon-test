@@ -1,0 +1,17 @@
+{
+  "area": "great_marsh_5",
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  "people": {
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "My Bicycle's no use in here. The wheels just sink into the mud!",
+        "And don't bother running, either. You'll only splash yourself."
+      ]
+    }
+  },
+  "signs": {
+    "signboard": "Great Marsh · Area 5\nPlease leave the marsh as you found it, for the Pokémon who call it home."
+  }
+}

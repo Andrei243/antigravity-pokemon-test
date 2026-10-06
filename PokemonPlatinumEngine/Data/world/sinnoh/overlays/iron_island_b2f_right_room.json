@@ -1,0 +1,26 @@
+{
+  "area": "iron_island_b2f_right_room",
+  "bgmTrack": "sinnoh/mine",
+  "people": {
+    "worker_noel": {
+      "name": "Noel",
+      "trainer": {
+        "id": "worker_noel",
+        "name": "Noel",
+        "trainerClass": "Worker",
+        "dialogueBefore": "Worker Noel: Round and round these tunnels I go, checking the old props. And now I've found a trainer!",
+        "dialogueAfter": "Worker Noel: You've shaken me up more than any rockfall ever did."
+      }
+    },
+    "worker_braden": {
+      "name": "Braden",
+      "trainer": {
+        "id": "worker_braden",
+        "name": "Braden",
+        "trainerClass": "Worker",
+        "dialogueBefore": "Worker Braden: My Steelix grew up down here in the dark, among the iron. It's as hard as the island itself!",
+        "dialogueAfter": "Worker Braden: Even steel can be beaten, then. Who'd have thought it?"
+      }
+    }
+  }
+}

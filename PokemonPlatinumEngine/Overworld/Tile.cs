@@ -58,7 +58,11 @@ public enum TileType : byte
 
     // Forests (plan 01 · M6)
     /// <summary>The dark under the trees where a forest is entered (Eterna Forest, Floaroma Meadow).</summary>
-    ForestMouth
+    ForestMouth,
+
+    // The east (plan 01 · M7)
+    /// <summary>A puddle: shallow water walked through, which mirrors whoever stands in it (Route 212).</summary>
+    Puddle
 }
 
 /// <summary>What a map of the imported world is where nothing else is said (plan 01 · M5).</summary>

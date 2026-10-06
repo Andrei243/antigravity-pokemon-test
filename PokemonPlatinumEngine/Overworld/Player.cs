@@ -56,6 +56,9 @@ public class Player
     /// </summary>
     public bool PushesBoulders { get; set; }
 
+    /// <summary>The Running Shoes Mom gives (plan 02 · S4): without them the run button does nothing on foot.</summary>
+    public bool HasRunningShoes { get; set; } = true;
+
     /// <summary>
     /// A boulder the player has just pushed, and which way, for the game to slide it along (it is already on its
     /// new tile); taken with <see cref="TakePush"/>. Meanwhile the player walks on the spot behind it.
@@ -303,7 +306,7 @@ public class Player
         {
             // Idle state: follow the steering
             IsSliding = false;
-            IsRunning = Mode == TravelMode.OnFoot && run;
+            IsRunning = Mode == TravelMode.OnFoot && run && HasRunningShoes;
 
             if (want is { } desiredDir)
             {

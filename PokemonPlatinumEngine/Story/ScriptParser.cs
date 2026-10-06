@@ -191,11 +191,14 @@ public static class ScriptParser
                 if (who == "player") throw r.Error("the player can't be battled");
                 // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
                 bool mayLose = false, byId = false, first = false;
-                string second = "", partner = "";
+                string second = "", partner = "", asTrainer = "";
                 while (r.More)
                 {
-                    switch (r.OneOf("canlose", "first", "and", "with"))
+                    switch (r.OneOf("canlose", "first", "and", "with", "as"))
                     {
+                        case "as":
+                            asTrainer = r.Text("a trainer's id");
+                            break;
                         case "canlose":
                             mayLose = true;
                             break;
@@ -213,7 +216,7 @@ public static class ScriptParser
                             break;
                     }
                 }
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first };
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer };
             }
             case "wildbattle":
             case "catchinglesson":
@@ -311,6 +314,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Poketch, Line = line };
             case "poketchapp":
                 return new Instruction { Op = Op.PoketchApp, Line = line, Name = r.Enum<Models.PoketchApp>("a Pokétch app").ToString() };
+            case "safari":
+                return new Instruction { Op = Op.Safari, Line = line, Option = r.OneOf("start", "end") == "start" };
 
             case "music":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Music, Line = line, Name = r.Text("a song") };
@@ -420,6 +425,10 @@ public static class ScriptParser
                 return new Condition { Query = Query.Girl, Negated = negated };
             case "poketch":
                 return new Condition { Query = Query.Poketch, Negated = negated };
+            case "pokerus":
+                return new Condition { Query = Query.Pokerus, Negated = negated };
+            case "safari":
+                return new Condition { Query = Query.Safari, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

@@ -19,6 +19,10 @@ public enum PropType
     StoreShelf,
     LabDesk,
     LabMachine,
+    /// <summary>A bed two tiles long, its head against the north wall (plan 02 · S4).</summary>
+    Bed,
+    /// <summary>A desk with a computer on it (the player's own, in the bedroom).</summary>
+    Computer,
 
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,
@@ -74,6 +78,22 @@ public enum PropType
     /// the middle one open), or a single pier when it covers one tile.
     /// </summary>
     Gantry,
+
+    // The east and the sea (plan 01 · M7)
+    /// <summary>A heap of iron ore (Iron Island).</summary>
+    OreHeap,
+    /// <summary>The steel tower over a mine's shaft, with its winding wheel, as tall as its model (Iron Island).</summary>
+    Headframe,
+    /// <summary>The steel platform at the foot of a lift.</summary>
+    LiftBase,
+    /// <summary>A leaf of a drawbridge over the planks the ground shows: trusses along the deck and a portal at its bank (Canalave City).</summary>
+    Drawbridge,
+    /// <summary>The Great Marsh's little tram on its rails.</summary>
+    Tram,
+    /// <summary>A coin viewer on a post.</summary>
+    Binoculars,
+    /// <summary>An open shelter on four posts under a roof (the Hotel Grand Lake).</summary>
+    Pavilion,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,

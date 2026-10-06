@@ -82,6 +82,22 @@ public sealed class World
         return area;
     }
 
+    /// <summary>
+    /// Platinum's weather calendar, each place's weather for each day of a leap year (<see cref="WorldCalendarFile"/>);
+    /// empty when the folder has none.
+    /// </summary>
+    public IReadOnlyDictionary<string, FieldWeather[]> Calendar => calendar ??= LoadCalendar();
+    private Dictionary<string, FieldWeather[]>? calendar;
+
+    private Dictionary<string, FieldWeather[]> LoadCalendar()
+    {
+        var days = new Dictionary<string, FieldWeather[]>(StringComparer.OrdinalIgnoreCase);
+        if (Optional<WorldCalendarFile>(WorldCalendarFile.FileName) is not { } file) return days;
+        for (int p = 0; p < file.Places.Count; p++)
+            days[file.Places[p]] = file.Days.Select(day => Weathers.Of(day[p])).ToArray();
+        return days;
+    }
+
     public WorldOverlayFile? Overlay(string key)
     {
         if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"));
@@ -432,6 +448,7 @@ public static class WorldMapBuilder
             BgmTrack = overlay?.BgmTrack ?? "",
             Open = file != null && world.IsOpen(key),
             Weather = Weathers.Of(file?.Weather),
+            Calendar = file?.Weather is { } named && world.Calendar.TryGetValue(named, out var days) ? days : null,
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
             Arena = overlay?.BattleArena,
@@ -439,7 +456,9 @@ public static class WorldMapBuilder
             Kind = file?.Kind ?? "",
             BikeAllowed = file?.Bike ?? false,
             EscapeRopeAllowed = file?.EscapeRope ?? false,
-            FlyAllowed = file?.Fly ?? false
+            FlyAllowed = file?.Fly ?? false,
+            EastSea = file?.EastSea ?? false,
+            UnownTable = file?.UnownTable ?? 0
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
 
@@ -515,6 +534,7 @@ public static class WorldMapBuilder
             TerrainCover.Sand => (TileType.Sand, solid, null),
             TerrainCover.Rock => (TileType.Rock, solid, null),
             TerrainCover.Marsh => (TileType.Marsh, solid, null),
+            TerrainCover.Puddle => (TileType.Puddle, solid, null),
             TerrainCover.CaveFloor => (TileType.CaveFloor, solid, null),
             // The dark of a cave's mouth: the hole in the rock where it blocks, the way in where it is open
             TerrainCover.CaveMouth => (TileType.CaveMouth, solid, null),
@@ -837,6 +857,28 @@ public static class WorldMapBuilder
             int z0 = (int)MathF.Floor(model.Z - 0.5f) + 1, z1 = (int)MathF.Ceiling(model.Z1 - 0.5f) - 1;
             if (x1 < x0) x0 = x1 = (int)MathF.Floor((model.X + model.X1) / 2f);
             if (z1 < z0) z0 = z1 = (int)MathF.Floor((model.Z + model.Z1) / 2f);
+            // Boats moored side by side whose boxes overlap (Pastoria's two) each keep their own side of the line
+            // halfway between them, or their decks would run together into one slab
+            if (scenery.Prop == PropType.Boat)
+                foreach (var other in models)
+                {
+                    if (ReferenceEquals(other, model) || other.Model?.Prop != PropType.Boat
+                        || other.X >= model.X1 || model.X >= other.X1 || other.Z >= model.Z1 || model.Z >= other.Z1) continue;
+                    float mx = (model.X + model.X1) / 2f, mz = (model.Z + model.Z1) / 2f, ox = (other.X + other.X1) / 2f, oz = (other.Z + other.Z1) / 2f;
+                    // A tile is this boat's when its middle lies on this boat's side of the line
+                    if (MathF.Abs(mz - oz) >= MathF.Abs(mx - ox))
+                    {
+                        float line = (mz + oz) / 2f;
+                        if (mz < oz) z1 = Math.Min(z1, (int)MathF.Ceiling(line - 0.5f) - 1);
+                        else z0 = Math.Max(z0, (int)MathF.Ceiling(line - 0.5f));
+                    }
+                    else
+                    {
+                        float line = (mx + ox) / 2f;
+                        if (mx < ox) x1 = Math.Min(x1, (int)MathF.Ceiling(line - 0.5f) - 1);
+                        else x0 = Math.Max(x0, (int)MathF.Ceiling(line - 0.5f));
+                    }
+                }
             if (!map.InBounds(x0, z0)) continue;
             map.Props.Add(new Prop
             {
@@ -1030,6 +1072,7 @@ public static class WorldMapBuilder
         "cashier_m" or "cashier_f" or "clerk" or "waiter" => "Clerk",
         "clown" => "Clown",
         "looker" => "Looker",
+        "cyrus" => "Cyrus",
         "briefcase" => "StarterBriefcase",
         _ => "Trainer"
     };

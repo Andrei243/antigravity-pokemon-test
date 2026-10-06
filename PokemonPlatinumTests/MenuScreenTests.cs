@@ -1097,7 +1097,7 @@ public class MenuScreenTests
     public void NoWrittenLineNamesThePlayerOutright()
     {
         // Every line of every map goes through the names chosen in the introduction
-        var known = new[] { "{player}", "{assistant}" };
+        var known = new[] { "{player}", "{assistant}", "{rival}" };
         void Check(string where, string text)
         {
             Assert.DoesNotContain("Lucas", text);
@@ -1366,12 +1366,36 @@ public class MenuScreenTests
         intro.PressStart();
         intro.PressConfirm();
         intro.PressConfirm();
-        Assert.Equal(IntroPhase.Farewell, intro.Phase);
+        Assert.Equal(IntroPhase.AskRival, intro.Phase);
 
-        // He says the name, and sends the player off
+        // He says the name, then shows the friend from next door (as in Platinum, the rival is named last)
         intro.PressConfirm();
         Assert.StartsWith("Maya!", intro.SpokenText);
+        Run(intro, 0.7f);
         Assert.Equal(1f, intro.Appearance().Professor);
+        Assert.Equal(1f, intro.Appearance().Friend, 2);
+        Through(intro, IntroPhase.EnterRival);
+        Assert.Equal(0f, intro.Appearance().Friend);
+        Assert.Equal(PlayerIdentity.DefaultRivalName, intro.RivalName);
+        foreach (char c in "Kit") intro.RivalEntry!.Type(c);
+        intro.PressStart();
+        intro.PressConfirm();
+        Assert.Equal(IntroPhase.ConfirmRival, intro.Phase);
+        // No goes back to the keyboard; B there deletes a letter
+        intro.Move(1, 0);
+        intro.PressConfirm();
+        Assert.Equal((IntroPhase.EnterRival, "Kit"), (intro.Phase, intro.RivalEntry!.Text));
+        intro.PressCancel();
+        Assert.Equal("Ki", intro.RivalName);
+        intro.RivalEntry.Type('t');
+        intro.PressStart();
+        intro.PressConfirm();
+        intro.PressConfirm();
+        Assert.Equal(IntroPhase.Farewell, intro.Phase);
+
+        // He says the rival's name back, and sends the player off
+        intro.PressConfirm();
+        Assert.StartsWith("Kit,", intro.SpokenText);
         Through(intro, IntroPhase.SendOff);
         Assert.False(intro.Talking);
         Run(intro, 1f);
@@ -1385,7 +1409,7 @@ public class MenuScreenTests
         Run(intro, IntroScreen.SendOffTime);
         Assert.Equal(IntroPhase.Done, intro.Phase);
         Assert.False(intro.IsActive);
-        Assert.Equal(("Maya", PlayerLook.Girl), (intro.Name, intro.Look));
+        Assert.Equal(("Maya", PlayerLook.Girl, "Kit"), (intro.Name, intro.Look, intro.RivalName));
         Assert.Equal(1f, intro.Appearance().Dark);
 
         // The boy with nothing entered is Lucas
@@ -1398,7 +1422,11 @@ public class MenuScreenTests
         plain.PressStart();
         plain.PressConfirm();
         plain.PressConfirm();
-        Assert.Equal(("Lucas", PlayerLook.Boy), (plain.Name, plain.Look));
+        Through(plain, IntroPhase.EnterRival);
+        plain.PressStart();
+        plain.PressConfirm();
+        plain.PressConfirm();
+        Assert.Equal(("Lucas", PlayerLook.Boy, "Barry"), (plain.Name, plain.Look, plain.RivalName));
     }
 
     [Fact]

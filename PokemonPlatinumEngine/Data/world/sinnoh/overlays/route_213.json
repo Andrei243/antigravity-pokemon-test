@@ -1,0 +1,133 @@
+{
+  "area": "route_213",
+  "bgmTrack": "sinnoh/valor",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The gate to Pastoria City and the Hotel Grand Lake's lobby are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "pastoria_city", "toWarp": 10 },
+    { "warp": 1, "to": "pastoria_city", "toWarp": 11 },
+    { "warp": 3, "to": "route_213", "toWarp": 4 },
+    { "warp": 4, "to": "route_213", "toWarp": 3 }
+  ],
+  // Dr. Footstep's house and the hotel's houses have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 5, 6, 7 ],
+  "people": {
+    "fisherman": {
+      "name": "Fisherman",
+      "dialog": [
+        "See those rocks along the beach? They're cracked right through.",
+        "A Pokémon that knows Rock Smash breaks them in one go. Me, I just fish round them."
+      ]
+    },
+    "beauty": {
+      "name": "Beauty",
+      "dialog": [
+        "I've taken a cottage at the Hotel Grand Lake for the whole summer.",
+        "Mornings on the beach, evenings by the lake. Bliss!"
+      ]
+    },
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "Listen closely to a Chatot. It picks up the sounds around it and sings them back to you.",
+        "There are plenty in the grass along this beach, chattering away."
+      ]
+    },
+    "swimmer_sheltin": {
+      "name": "Sheltin",
+      "trainer": {
+        "id": "swimmer_sheltin",
+        "name": "Sheltin",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Sheltin: Out here, the sea belongs to me and my Pokémon. Let's see you keep your head above water!",
+        "dialogueAfter": "Swimmer Sheltin: Washed up on the shore... I'd better swim a few more lengths."
+      }
+    },
+    "swimmer_evan": {
+      "name": "Evan",
+      "trainer": {
+        "id": "swimmer_evan",
+        "name": "Evan",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Evan: Race you to the rocks! Or we could just battle. Battling's quicker.",
+        "dialogueAfter": "Swimmer Evan: I'd have done better in the race."
+      }
+    },
+    "swimmer_mary": {
+      "name": "Mary",
+      "trainer": {
+        "id": "swimmer_mary",
+        "name": "Mary",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Mary: The water's lovely and warm today. Fancy a battle while you're out here?",
+        "dialogueAfter": "Swimmer Mary: Brr! Losing gives me goose bumps."
+      }
+    },
+    "swimmer_haley": {
+      "name": "Haley",
+      "trainer": {
+        "id": "swimmer_haley",
+        "name": "Haley",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Haley: Up and down I swim, until a trainer comes along. And here you are!",
+        "dialogueAfter": "Swimmer Haley: Oh well. Back to my lengths, then."
+      }
+    },
+    "tuber_jared": {
+      "name": "Jared",
+      "trainer": {
+        "id": "tuber_jared",
+        "name": "Jared",
+        "trainerClass": "Tuber",
+        "dialogueBefore": "Tuber Jared: My rubber ring keeps me floating all day long. Let's battle!",
+        "dialogueAfter": "Tuber Jared: Glub... I'm going back to the shallow end."
+      }
+    },
+    "tuber_chelsea": {
+      "name": "Chelsea",
+      "trainer": {
+        "id": "tuber_chelsea",
+        "name": "Chelsea",
+        "trainerClass": "Tuber",
+        "dialogueBefore": "Tuber Chelsea: Mummy says I can play on the beach until teatime. Battle with me!",
+        "dialogueAfter": "Tuber Chelsea: Never mind. Marill and I are going to build a sandcastle instead."
+      }
+    },
+    "beauty_cyndy": {
+      "name": "Cyndy",
+      "trainer": {
+        "id": "beauty_cyndy",
+        "name": "Cyndy",
+        "trainerClass": "Beauty",
+        "dialogueBefore": "Beauty Cyndy: A day by the sea is good for the skin, and a battle is good for the spirit!",
+        "dialogueAfter": "Beauty Cyndy: I came here to relax, and now look at me. Time to lie in the sun a while."
+      }
+    },
+    "fisherman_kenneth": {
+      "name": "Kenneth",
+      "trainer": {
+        "id": "fisherman_kenneth",
+        "name": "Kenneth",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Kenneth: Something's tugging at my line... Oh, it's only you. A battle it is, then!",
+        "dialogueAfter": "Fisherman Kenneth: Off you go. You've scared all the fish away anyway."
+      }
+    },
+    "sailor_paul": {
+      "name": "Paul",
+      "trainer": {
+        "id": "sailor_paul",
+        "name": "Paul",
+        "trainerClass": "Sailor",
+        "dialogueBefore": "Sailor Paul: Ahoy there! Every sailor worth his salt needs a strong arm. Let's test yours!",
+        "dialogueAfter": "Sailor Paul: Blow me down! You'd make a fine deckhand."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": "Route 213\nWest: Pastoria City\nEast: Hotel Grand Lake, Valor Lakefront",
+    "signboard_dr_footsteps_house": "Dr. Footstep's House\nHe reads a Pokémon's footprints to learn what is in its heart.",
+    "signboard_hotel_grand_lake": "Hotel Grand Lake\nCottages by the sea, a short stroll from Lake Valor."
+  }
+}

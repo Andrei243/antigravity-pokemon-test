@@ -1,0 +1,73 @@
+{
+  "area": "route_221",
+  "bgmTrack": "sinnoh/route206",
+  "trees": "Round",
+  // The house has no rooms yet (plan 01 · M11); Pal Park comes after the Hall of Fame (plan 01 · M10)
+  "locked": [ 0, 1, 2 ],
+  // The two workers at Pal Park's door wait for the story (plan 02)
+  "people": {
+    "swimmer_dillon": {
+      "name": "Dillon",
+      "trainer": {
+        "id": "swimmer_dillon",
+        "name": "Dillon",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Dillon: I swam all the way over from Route 220 without stopping! Mind if I battle while I rest?",
+        "dialogueAfter": "Swimmer Dillon: I'll just float on my back for a bit. Ahh, that's better."
+      }
+    },
+    "swimmer_vanessa": {
+      "name": "Vanessa",
+      "trainer": {
+        "id": "swimmer_vanessa",
+        "name": "Vanessa",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Vanessa: My Golduck swims faster than any Pokémon I know. Want to see?",
+        "dialogueAfter": "Swimmer Vanessa: Fast isn't the same as strong. I'll remember that."
+      }
+    },
+    "fisherman_cory": {
+      "name": "Cory",
+      "trainer": {
+        "id": "fisherman_cory",
+        "name": "Cory",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Cory: Three casts, three Finneon, all before breakfast. Want to meet them?",
+        "dialogueAfter": "Fisherman Cory: They'll grow. And when they do, you'd better watch out."
+      }
+    },
+    "collector_ivan": {
+      "name": "Ivan",
+      "trainer": {
+        "id": "collector_ivan",
+        "name": "Ivan",
+        "trainerClass": "Collector",
+        "dialogueBefore": "Collector Ivan: I've gathered rare Pokémon from all over. Let me show you the jewel of my collection!",
+        "dialogueAfter": "Collector Ivan: My jewel has lost its sparkle. A good polish, and it'll shine again."
+      }
+    },
+    "ace_trainer_jake": {
+      "name": "Jake",
+      "trainer": {
+        "id": "ace_trainer_jake",
+        "name": "Jake",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Jake: Staraptor and I flew out over the sea looking for a strong trainer. Looks like we found one!",
+        "dialogueAfter": "Ace Trainer Jake: A good battle is worth the trip, win or lose."
+      }
+    },
+    "ace_trainer_shannon": {
+      "name": "Shannon",
+      "trainer": {
+        "id": "ace_trainer_shannon",
+        "name": "Shannon",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Shannon: This far from the cities, there's nobody to hold back for. Give it everything!",
+        "dialogueAfter": "Ace Trainer Shannon: You gave it everything, all right. More than I did!"
+      }
+    }
+  },
+  "signs": {
+    "signboard_pal_park": "Pal Park\nPokémon from distant lands, waiting to make new friends."
+  }
+}

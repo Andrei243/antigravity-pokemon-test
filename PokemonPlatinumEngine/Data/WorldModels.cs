@@ -129,8 +129,8 @@ public static class WorldModels
         // ---------------------------------------------------------------- Canalave City
         House("c2_h01a", Architecture.Harbour, "a house of Canalave City"),
         Built("c2_s02", BuildingKind.Library, "Canalave Library", Architecture.Harbour, storeys: 3, sign: "LIBRARY"),
-        Ground("c2_s03a", "the west leaf of Canalave's drawbridge", until: "M7"),
-        Ground("c2_s03b", "the east leaf of Canalave's drawbridge", until: "M7"),
+        Thing("c2_s03a", PropType.Drawbridge, "the west leaf of Canalave's drawbridge"),
+        Thing("c2_s03b", PropType.Drawbridge, "the east leaf of Canalave's drawbridge"),
         Thing("c2_o02", PropType.Boat, "a ship at its pier"),
         Thing("c2_o04", PropType.Crates, "cargo on the quay"),
 
@@ -147,6 +147,11 @@ public static class WorldModels
         // Inside the mine
         Built("d01_o1", BuildingKind.Factory, "the mine's loading machine, with a conveyor down either side of the coal face", storeys: 1, thin: PropType.Conveyor),
         Thing("can01", PropType.Drums, "steel drums in the mine"),
+        // Iron Island's outside (plan 01 · M7)
+        Thing("can02", PropType.Drums, "steel drums on Iron Island"),
+        Thing("iron01", PropType.OreHeap, "a heap of iron ore"),
+        Thing("d24_o01", PropType.Headframe, "the tower of a lift between the levels of Iron Island's tunnels"),
+        Thing("lift_base01", PropType.LiftBase, "the platform at the foot of a lift on Iron Island"),
         Thing("box02", PropType.Crates, "crates in the mine"),
 
         // ---------------------------------------------------------------- Eterna City
@@ -169,7 +174,7 @@ public static class WorldModels
         // ---------------------------------------------------------------- Pastoria City
         House("c6_h01", Architecture.Marsh, "a house of Pastoria City"),
         Built("c06_s01", BuildingKind.Hall, "the Great Marsh's gate and lookout", Architecture.Marsh, storeys: 2, sign: "MARSH"),
-        Thing("c06_s02", PropType.Boat, "a boat at its pier", until: "M7"),
+        Thing("c06_s02", PropType.Boat, "a boat at its pier (Pastoria moors two side by side)"),
 
         // ---------------------------------------------------------------- Veilstone City
         House("c7_h01", Architecture.Stone, "a house of Veilstone City"),
@@ -179,7 +184,7 @@ public static class WorldModels
         Built("c7_s03", BuildingKind.Galactic, "Team Galactic's headquarters", storeys: 5),
         Built("c7_s04", BuildingKind.Shop, "the Veilstone Department Store", Architecture.Stone, storeys: 5, sign: "STORE"),
         Thing("c7_o02", PropType.Mast, "a mast beside Team Galactic's headquarters"),
-        Thing("c7_o01a", PropType.Hedge, "something low beside the warehouses", until: "M7"),
+        Thing("c7_o01a", PropType.Crates, "crates stacked beside the warehouses"),
 
         // ---------------------------------------------------------------- Sunyshore City
         House("c8_h01", Architecture.Seaside, "a house of Sunyshore City"),
@@ -228,7 +233,7 @@ public static class WorldModels
         Thing("r212s03", PropType.Topiary, "a clipped tree of the Mansion's garden"),
         Built("d23_yane", BuildingKind.Mansion, "the Mansion's back, over the Trophy Garden"),
         Built("r213s01", BuildingKind.Hotel, "the Hotel Grand Lake", Architecture.Resort, storeys: 2, sign: "HOTEL"),
-        Built("r213s02", BuildingKind.House, "a pavilion of the Hotel Grand Lake", Architecture.Resort, until: "M7"),
+        Thing("r213s02", PropType.Pavilion, "a pavilion of the Hotel Grand Lake"),
         Built("l2_s01", BuildingKind.Shop, "the restaurant at Valor Lakefront", Architecture.Resort, storeys: 2, sign: "DINER"),
         House("l2_s02a", Architecture.Resort, "a cottage of the Hotel Grand Lake"),
         Built("r221s01", BuildingKind.Hall, "Pal Park", sign: "PAL PARK"),
@@ -242,8 +247,8 @@ public static class WorldModels
         Thing("d11_o01b", PropType.Bench, "a bench in Amity Square"),
         Thing("d11_o02a", PropType.FlowerBed, "a flower bed of Amity Square"),
         Thing("d11_o02b", PropType.FlowerBed, "a flower bed of Amity Square"),
-        Thing("d6_o01", PropType.Crates, "the Great Marsh's tram", until: "M7"),
-        Thing("d6_o02", PropType.Cairn, "the Great Marsh's lookout glasses", until: "M7"),
+        Thing("d6_o01", PropType.Tram, "the Great Marsh's tram on its rails"),
+        Thing("d6_o02", PropType.Binoculars, "the Great Marsh's coin viewers"),
         Thing("d5_colum01", PropType.Column, "a column of Spear Pillar"), Thing("d5_colum02", PropType.Column, "a column of Spear Pillar"),
         Thing("d5_colum03", PropType.Column, "a column of Spear Pillar"), Thing("d5_colum04", PropType.Column, "a column of Spear Pillar"),
         Thing("d5_colum05", PropType.Column, "a broken column of Spear Pillar"), Thing("d5_colum06", PropType.Column, "a broken column of Spear Pillar"),

@@ -39,4 +39,13 @@ public static class GameClock
     public static TimeOfDay Now => ForHour((int)Hour);
 
     public static bool IsNight => Now is TimeOfDay.Night or TimeOfDay.LateNight;
+
+    /// <summary>A day fixed by a tool or a test; null follows the computer's calendar.</summary>
+    public static DateTime? FixedDate { get; set; }
+
+    /// <summary>
+    /// Today's date, for what counts days (Pokérus, plan 06 · R10): the computer's, like the DS's real-time clock,
+    /// unless a tool fixed it.
+    /// </summary>
+    public static DateTime Today => FixedDate?.Date ?? DateTime.Today;
 }

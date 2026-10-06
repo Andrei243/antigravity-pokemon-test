@@ -24,8 +24,12 @@
         "It's why the pond is so cold. I wouldn't swim in it!"
       ]
     },
+    // The rival, who comes out of his door into the player; the guitarist keeps the player in town until he has
+    // left home (scripts/twinleaf_town.txt; plan 02 · S4)
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Can't stop now! Professor Rowan's waiting!" ] },
     "guitarist": {
       "name": "Guitarist",
+      "script": "Guitarist",
       "dialog": [
         "Route 201 is straight up this road.",
         "Wild Pokémon jump out of the tall grass there. Don't walk in without a Pokémon of your own!"
@@ -35,23 +39,9 @@
   "signs": {
     "map_signpost": "Twinleaf Town\nFresh and free! The town where journeys begin.",
     "mailbox_player": "{player}'s mailbox.\nThere's nothing in it.",
-    "mailbox_rival": "Barry's mailbox.\nIt's stuffed with letters nobody has opened."
+    "mailbox_rival": "{rival}'s mailbox.\nIt's stuffed with letters nobody has opened."
   },
-  "npcs": [
-    {
-      "name": "Barry",
-      "npcType": "Rival",
-      "script": "Barry",
-      "x": 109,
-      "y": 880,
-      "facing": "Right",
-      "dialog": [
-        "Barry: Hey, {player}! You're finally ready!",
-        "Barry: Professor Rowan is on Route 201, just north of town, and he's brought his briefcase!",
-        "Barry: Come on! Up the road, and no dawdling!"
-      ]
-    }
-  ],
+  "triggers": [ { "trigger": 0, "script": "GuitaristStops" }, { "trigger": 1, "script": "RivalRunsOut" } ],
   "props": [
     { "type": "LampPost", "x": 109, "y": 876, "width": 1, "depth": 1 },
     { "type": "LampPost", "x": 114, "y": 880, "width": 1, "depth": 1 },

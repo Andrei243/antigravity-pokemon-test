@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-170 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+174 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -20,7 +20,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `board_d` | a billboard | a prop: Billboard |  | 1.5 × 0.4 × 2.5 | 1 | Route 215 |
 | `box02` | crates in the mine | a prop: Crates |  | 1.9 × 1.9 × 1.5 | 7 | Oreburgh Mine |
 | `c06_s01` | the Great Marsh's gate and lookout | a building: Hall, built as in Marsh, 2 storeys, signed MARSH |  | 6.4 × 7.6 × 6.1 | 2 | Great Marsh, Pastoria City |
-| `c06_s02` | a boat at its pier | a prop: Boat | M7 | 8.5 × 5.6 × 2.4 | 5 | Fight Area, Pastoria City |
+| `c06_s02` | a boat at its pier (Pastoria moors two side by side) | a prop: Boat |  | 8.5 × 5.6 × 2.4 | 5 | Fight Area, Pastoria City |
 | `c09_s02` | the ferry between Snowpoint City and the Fight Area | a prop: Boat |  | 9.4 × 5.2 × 2.6 | 2 | Fight Area, Snowpoint City |
 | `c10_s01` | the Pokémon League | a building: League, 3 storeys |  | 11.5 × 9.2 × 16.4 | 1 | Pokémon League |
 | `c10_s02` | a lantern on the League's steps | a prop: LampPost |  | 1.6 × 1.6 × 2.7 | 4 | Pokémon League |
@@ -39,8 +39,8 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c2_o02` | a ship at its pier | a prop: Boat |  | 5.6 × 8.7 × 2.4 | 6 | Canalave City, Fullmoon Island, Iron Island |
 | `c2_o04` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Canalave City |
 | `c2_s02` | Canalave Library | a building: Library, built as in Harbour, 3 storeys, signed LIBRARY |  | 5.5 × 4.4 × 7.3 | 1 | Canalave City |
-| `c2_s03a` | the west leaf of Canalave's drawbridge | nothing of its own: the ground under it draws it | M7 | 7.3 × 6.5 × 4.6 | 1 | Canalave City |
-| `c2_s03b` | the east leaf of Canalave's drawbridge | nothing of its own: the ground under it draws it | M7 | 7.2 × 6.2 × 4.6 | 1 | Canalave City |
+| `c2_s03a` | the west leaf of Canalave's drawbridge | a prop: Drawbridge |  | 7.3 × 6.5 × 4.6 | 1 | Canalave City |
+| `c2_s03b` | the east leaf of Canalave's drawbridge | a prop: Drawbridge |  | 7.2 × 6.2 × 4.6 | 1 | Canalave City |
 | `c3_b01a` | a block of miners' flats | a building: Apartments, built as in Brick |  | 5.6 × 4.4 × 6.3 | 3 | Oreburgh City |
 | `c3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.8 | 22 | Canalave City, Hearthome City, Iron Island and 4 more |
 | `c3_door2` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.8 | 3 | Oreburgh City |
@@ -69,7 +69,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c5_s03` | the Contest Hall | a building: Hall, signed CONTEST |  | 11.2 × 8.8 × 5.3 | 1 | Hearthome City |
 | `c6_h01` | a house of Pastoria City | a building: House, built as in Marsh |  | 4.7 × 3.1 × 4.8 | 7 | Pastoria City, Route 212, Route 213 |
 | `c7_h01` | a house of Veilstone City | a building: House, built as in Stone |  | 4.4 × 3.1 × 3.8 | 5 | Veilstone City |
-| `c7_o01a` | something low beside the warehouses | a prop: Hedge | M7 | 3.0 × 1.8 × 1.8 | 2 | Veilstone City |
+| `c7_o01a` | crates stacked beside the warehouses | a prop: Crates |  | 3.0 × 1.8 × 1.8 | 2 | Veilstone City |
 | `c7_o02` | a mast beside Team Galactic's headquarters | a prop: Mast |  | 3.7 × 3.7 × 10.3 | 2 | Veilstone City |
 | `c7_s01` | the Game Corner | a building: Shop, built as in Stone, signed GAMES |  | 5.5 × 3.1 × 4.3 | 1 | Veilstone City |
 | `c7_s02a` | Team Galactic's warehouse, with a way in | a building: Warehouse |  | 5.6 × 4.3 × 3.6 | 1 | Veilstone City |
@@ -87,6 +87,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c9_o03` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Snowpoint City |
 | `c9_s01` | Snowpoint Temple | a building: Temple |  | 11.0 × 8.0 × 5.9 | 1 | Snowpoint City |
 | `can01` | steel drums in the mine | a prop: Drums |  | 1.8 × 1.9 × 1.2 | 4 | Oreburgh Mine |
+| `can02` | steel drums on Iron Island | a prop: Drums |  | 0.8 × 0.9 × 1.2 | 28 | Iron Island |
 | `cy_slope` | a muddy slope only a Bicycle gets up: its own ground draws it | nothing of its own: the ground under it draws it |  | 1.0 × 2.0 × 2.0 | 14 | Route 207, Route 209, Route 210, Route 228 |
 | `cy_slope_dun` | a Bicycle's ramp in a cave: the run up to it draws it | nothing of its own: the ground under it draws it |  | 1.0 × 2.0 × 2.0 | 3 | Wayward Cave |
 | `d01_o1` | the mine's loading machine, with a conveyor down either side of the coal face | a building: Factory, 1 storeys |  | 21.0 × 9.4 × 4.6 | 1 | Oreburgh Mine |
@@ -99,6 +100,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d16_o02` | the mouth of Stark Mountain | a prop: Outcrop | M10 | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
 | `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 2 | Solaceon Ruins |
 | `d23_yane` | the Mansion's back, over the Trophy Garden | a building: Mansion |  | 32.0 × 5.5 × 4.8 | 1 | Trophy Garden |
+| `d24_o01` | the tower of a lift between the levels of Iron Island's tunnels | a prop: Headframe |  | 3.0 × 2.8 × 8.5 | 3 | Iron Island |
 | `d2_s01` | a wind turbine | a prop: WindTurbine |  | 2.8 × 5.4 × 8.3 | 3 | Valley Windworks |
 | `d2_s01a` | a wind turbine | a prop: WindTurbine |  | 3.0 × 5.1 × 7.5 | 4 | Valley Windworks |
 | `d2_s01b` | a wind turbine | a prop: WindTurbine |  | 2.4 × 4.7 × 7.9 | 2 | Valley Windworks |
@@ -132,8 +134,8 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d5_colum06x` | a broken column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 4.6 | 4 | Hall of Origin |
 | `d5_colum07` | a fallen column of Spear Pillar | a prop: Column |  | 5.2 × 3.0 × 4.9 | 4 | Spear Pillar |
 | `d5_colum07x` | a fallen column of the Hall of Origin | a prop: Column |  | 5.2 × 3.0 × 4.9 | 4 | Hall of Origin |
-| `d6_o01` | the Great Marsh's tram | a prop: Crates | M7 | 4.2 × 8.2 × 0.9 | 6 | Great Marsh |
-| `d6_o02` | the Great Marsh's lookout glasses | a prop: Cairn | M7 | 0.8 × 0.6 × 1.4 | 6 | Great Marsh |
+| `d6_o01` | the Great Marsh's tram on its rails | a prop: Tram |  | 4.2 × 8.2 × 0.9 | 6 | Great Marsh |
+| `d6_o02` | the Great Marsh's coin viewers | a prop: Binoculars |  | 0.8 × 0.6 × 1.4 | 6 | Great Marsh |
 | `fs` | a Poké Mart | a building: PokeMart |  | 4.2 × 2.8 × 3.2 | 12 | Canalave City, Eterna City, Fight Area and 9 more |
 | `fs_01` | Snowpoint's Poké Mart, under snow | a building: PokeMart, built as in Snow |  | 4.2 × 2.8 × 3.2 | 1 | Snowpoint City |
 | `funsui` | a fountain | a prop: Fountain |  | 4.1 × 3.6 × 2.9 | 3 | Jubilife City |
@@ -141,10 +143,12 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `gate_b` | a gate house on a road that runs east and west | a building: Gate |  | 8.0 × 5.8 × 3.9 | 8 | Hearthome City, Route 213, Route 218 and 3 more |
 | `gym00` | a Gym, in the colours of its leader's type | a building: Gym |  | 7.5 × 4.0 × 4.9 | 8 | Canalave City, Eterna City, Hearthome City and 5 more |
 | `gym_door00` | a door | nothing of its own: the building's art has its door |  | 1.8 × 0.0 × 2.6 | 11 | Battle Frontier, Battle Park, Canalave City and 8 more |
+| `iron01` | a heap of iron ore | a prop: OreHeap |  | 1.9 × 2.0 × 1.8 | 4 | Iron Island |
 | `l2_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.9 | 7 | Route 213, Valor Lakefront |
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
-| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 4 | Lake Verity |
+| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 8 | Lake Valor, Lake Verity |
+| `lift_base01` | the platform at the foot of a lift on Iron Island | a prop: LiftBase |  | 3.0 × 2.3 × 0.9 | 2 | Iron Island |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |
 | `pc` | a Pokémon Center | a building: PokemonCenter |  | 5.2 × 3.6 × 3.9 | 16 | Canalave City, Celestic Town, Eterna City and 13 more |
 | `pc_01` | Snowpoint's Pokémon Center, under snow | a building: PokemonCenter, built as in Snow |  | 5.4 × 3.6 × 3.9 | 1 | Snowpoint City |
@@ -156,7 +160,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `r212s02` | a clipped tree, at the Mansion and in Canalave City | a prop: Topiary |  | 2.0 × 1.7 × 2.4 | 3 | Canalave City, Route 212 |
 | `r212s03` | a clipped tree of the Mansion's garden | a prop: Topiary |  | 1.7 × 1.6 × 2.7 | 4 | Route 212 |
 | `r213s01` | the Hotel Grand Lake | a building: Hotel, built as in Resort, 2 storeys, signed HOTEL |  | 5.5 × 4.2 × 4.9 | 1 | Route 213 |
-| `r213s02` | a pavilion of the Hotel Grand Lake | a building: House, built as in Resort | M7 | 4.0 × 4.1 × 2.4 | 1 | Route 213 |
+| `r213s02` | a pavilion of the Hotel Grand Lake | a prop: Pavilion |  | 4.0 × 4.1 × 2.4 | 1 | Route 213 |
 | `r221s01` | Pal Park | a building: Hall, signed PAL PARK |  | 6.4 × 8.2 × 5.2 | 2 | Pal Park, Route 221 |
 | `r224o01` | the white rock of Route 224 | a prop: Cairn |  | 2.9 × 2.0 × 1.1 | 1 | Route 224 |
 | `t1_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.8 | 11 | Hearthome City, Route 216, Route 217 and 3 more |
@@ -190,5 +194,5 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 
 ## In numbers
 
-- 89 models are buildings, of 26 kinds; 55 are props; 13 are doors.
-- 28 have a stand-in for now: 14 until M10, 7 until M7, 7 until M8.
+- 88 models are buildings, of 26 kinds; 62 are props; 13 are doors.
+- 21 have a stand-in for now: 14 until M10, 7 until M8.

@@ -1,0 +1,15 @@
+{
+  "area": "lake_verity_low_water",
+  "bgmTrack": "sinnoh/lake",
+  "trees": "Pine",
+  // Lake Verity as it is until Team Galactic comes (plan 02 · S4): the man by the shore and the rival who came with
+  // the player (scripts/lake_verity_low_water.txt). The original's lake with Mars and her grunts, with Verity
+  // Cavern on its island, is the later chapter's (plan 02 · S10).
+  "people": {
+    "cyrus": { "name": "Cyrus", "dialog": [ "......" ] },
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: The legendary Pokémon has to be around here somewhere!" ] }
+  },
+  // The TM38 ball stands where nothing leads on this version of the lake; it waits for the lake of the later
+  // chapter, whose own file has it too
+  "heldBack": [ "item_tm38" ]
+}
