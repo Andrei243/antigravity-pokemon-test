@@ -52,13 +52,16 @@ internal static class Scenario
         return battle;
     }
 
-    /// <summary>Confirms messages until a menu opens or the battle ends; returns what was said.</summary>
+    /// <summary>
+    /// Confirms messages until a menu opens or the battle ends; returns what was said. A question about a move to
+    /// learn is read on like a message, which keeps every move the Pokémon knows.
+    /// </summary>
     public static List<string> Settle(BattleEngine battle)
     {
         var said = new List<string>();
         for (int i = 0; i < 400 && !battle.IsBattleOver; i++)
         {
-            if (battle.HUD.MenuState != BattleMenuState.Message) break;
+            if (battle.HUD.MenuState is not (BattleMenuState.Message or BattleMenuState.LearnMove)) break;
             if (battle.IsWaitingForConfirm) said.Add(battle.CurrentMessage);
             battle.ConfirmMessage();
             battle.Update(1f / 60f);

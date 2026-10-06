@@ -98,8 +98,8 @@ public static class RegionDatabase
         new()
         {
             Id = Sinnoh, Name = "Sinnoh", Generation = 4,
-            // In front of the player's house in Twinleaf Town, on the overworld map made from the imported world
-            Start = new MapSpot("Sinnoh", 116, 886),
+            // In the player's room upstairs at home in Twinleaf Town, facing the television, as in Platinum (plan 02 · S4)
+            Start = new MapSpot("PlayerHouse2F", 4, 4, Direction.Up),
             Maps = new[]
             {
                 // The imported world: the overworld, and the places that are matrices of their own
@@ -112,11 +112,15 @@ public static class RegionDatabase
                 "SolaceonRuinsRoom4", "SolaceonRuinsRoom4SoutheastDeadEnd", "SolaceonRuinsRoom5",
                 "SolaceonRuinsRoom5SoutheastDeadEnd", "SolaceonRuinsRoom5SouthwestDeadEnd", "SolaceonRuinsRoom6",
                 "SolaceonRuinsRoom6NorthwestDeadEnd", "SolaceonRuinsRoom6SoutheastDeadEnd", "SolaceonRuinsRoom7",
+                // Plan 01 · M7: the east and the sea
+                "RuinManiacCave", "LakeValor", "GreatMarsh", "TrophyGarden",
+                "IronIsland1F", "IronIslandB1FLeft", "IronIslandB1FRight", "IronIslandB2FRight", "IronIslandB2FLeft", "IronIslandB3F",
                 // Rooms, still made by hand (plan 01 · M11)
-                "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
+                "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",
                 "OreburghPokemonCenter", "OreburghPokeMart", "FloaromaPokemonCenter", "FloaromaPokeMart",
-                "EternaPokemonCenter", "EternaPokeMart", "HearthomePokemonCenter", "HearthomePokeMart", "SolaceonPokemonCenter", "SolaceonPokeMart"
+                "EternaPokemonCenter", "EternaPokeMart", "HearthomePokemonCenter", "HearthomePokeMart", "SolaceonPokemonCenter", "SolaceonPokeMart",
+                "VeilstonePokemonCenter", "PastoriaPokemonCenter", "PastoriaPokeMart", "CelesticPokemonCenter", "CanalavePokemonCenter", "CanalavePokeMart"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

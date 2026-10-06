@@ -24,6 +24,15 @@ public sealed class MapArea
     /// <summary>What falls or hangs in the air here.</summary>
     public FieldWeather Weather { get; set; }
 
+    /// <summary>
+    /// For the five places whose weather follows Platinum's calendar (plan 01 · M7): the weather of each day of a
+    /// leap year, from the first of January (<see cref="Weathers.CalendarDay"/>). Null for every other area.
+    /// </summary>
+    public IReadOnlyList<FieldWeather>? Calendar { get; init; }
+
+    /// <summary>The area's weather on a day: the calendar's, where it follows one.</summary>
+    public FieldWeather WeatherOn(DateTime day) => Calendar is { Count: 366 } days ? days[Weathers.CalendarDay(day)] : Weather;
+
     /// <summary>Snow country: more of its open ground is snow than lawn, so snow lies on its trees too.</summary>
     public bool Snowbound { get; set; }
 
@@ -56,6 +65,10 @@ public sealed class MapArea
     /// <summary>The wild Pokémon met surfing on the area's water, and the rate for them.</summary>
     public List<WildEncounterEntry> WaterEncounters { get; } = new();
     public int WaterRate { get; set; }
+
+    /// <summary>Shellos and Gastrodon are met here in the east sea's colours, and the Unown in this table's letters (plan 06 · R10).</summary>
+    public bool EastSea { get; init; }
+    public int UnownTable { get; init; }
 
     /// <summary>The wild Pokémon hooked with each rod (by <see cref="FishingRod"/>), and each rod's rate (plan 02 · S2).</summary>
     public List<WildEncounterEntry>[] RodEncounters { get; } = { new(), new(), new() };
@@ -195,7 +208,8 @@ public class Map
     public FieldWeather WeatherAt(int x, int y)
     {
         if (IsIndoors) return FieldWeather.Clear;
-        var weather = AreaAt(x, y)?.Weather ?? Weather;
+        // The calendar follows the computer's date, as the original follows the DS's
+        var weather = AreaAt(x, y) is { } area ? area.WeatherOn(Core.GameClock.Today) : Weather;
         if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;
         return IsCave && weather != FieldWeather.Fog ? FieldWeather.Clear : weather;
     }
@@ -284,6 +298,7 @@ public class Map
             TileType.Snow => TileBehavior.ShallowSnow,
             TileType.Ice => TileBehavior.Ice,
             TileType.Marsh => TileBehavior.Mud,
+            TileType.Puddle => TileBehavior.Puddle,
             _ => TileBehavior.None
         };
     }

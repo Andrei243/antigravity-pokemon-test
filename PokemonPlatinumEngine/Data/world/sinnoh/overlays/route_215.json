@@ -1,0 +1,86 @@
+{
+  "area": "route_215",
+  "bgmTrack": "sinnoh/route210",
+  "trees": "Round",
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "veilstone_city", "toWarp": 0 },
+    { "warp": 1, "to": "veilstone_city", "toWarp": 1 }
+  ],
+  // Joggers Scott and Craig battle at some hours and only jog past at others: the original's arrival script swaps
+  // each pair of objects by their FLAG_HIDE_ROUTE_215_JOGGER_* flags, so all four wait for that script (plan 02)
+  "people": {
+    "black_belt": {
+      "name": "Black Belt",
+      "dialog": [
+        "The rain on this road never stops. Not for a single day.",
+        "I train out here anyway. If you can fight in this, you can fight anywhere!"
+      ]
+    },
+    "black_belt_derek": {
+      "name": "Derek",
+      "trainer": {
+        "id": "black_belt_derek",
+        "name": "Derek",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Derek: Rain only makes training harder, and harder is better! Battle me!",
+        "dialogueAfter": "Black Belt Derek: Soaked through and beaten. At least the soaking was good training."
+      }
+    },
+    "black_belt_gregory": {
+      "name": "Gregory",
+      "trainer": {
+        "id": "black_belt_gregory",
+        "name": "Gregory",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Gregory: My Machop and I train as one. Let's see you handle all three of them!",
+        "dialogueAfter": "Black Belt Gregory: Three of them, and not one could land the blow that mattered. Back to training!"
+      }
+    },
+    "black_belt_nathaniel": {
+      "name": "Nathaniel",
+      "trainer": {
+        "id": "black_belt_nathaniel",
+        "name": "Nathaniel",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Nathaniel: Fists up! A real fighter never turns down a challenge!",
+        "dialogueAfter": "Black Belt Nathaniel: Hmph. A hundred more push-ups in the puddles for me."
+      }
+    },
+    "ruin_maniac_calvin": {
+      "name": "Calvin",
+      "trainer": {
+        "id": "ruin_maniac_calvin",
+        "name": "Calvin",
+        "trainerClass": "Ruin Maniac",
+        "dialogueBefore": "Ruin Maniac Calvin: I'm off to Celestic Town to study its ruins. You'll make a nice break on the way!",
+        "dialogueAfter": "Ruin Maniac Calvin: I'll leave the battling to you and get back to my old stones."
+      }
+    },
+    "ace_trainer_dennis": {
+      "name": "Dennis",
+      "trainer": {
+        "id": "ace_trainer_dennis",
+        "name": "Dennis",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Dennis: Battling in the rain is all part of my training. Ready to get wet?",
+        "dialogueAfter": "Ace Trainer Dennis: You'd do well anywhere, rain or shine."
+      }
+    },
+    "ace_trainer_maya": {
+      "name": "Maya",
+      "trainer": {
+        "id": "ace_trainer_maya",
+        "name": "Maya",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Maya: Rain is good for the flowers, and for my team too! Here we go!",
+        "dialogueAfter": "Ace Trainer Maya: I'll dry off, think it over and come back stronger."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_west": "Route 215\nWest: Route 210",
+    "arrow_signpost_veilstone_city": "Route 215\nEast: Veilstone City",
+    "trainer_tips_signpost": "Trainer Tips\nIn the rain, Water-type moves hit harder and Fire-type moves are weakened. Some Pokémon love a downpour!"
+  }
+}

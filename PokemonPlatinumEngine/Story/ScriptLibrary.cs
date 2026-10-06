@@ -23,6 +23,12 @@ public sealed class ScriptLibrary
     /// <summary>The script that sets what every new game starts with; it may say and show nothing.</summary>
     public const string NewGame = "common.NewGame";
 
+    /// <summary>
+    /// What the first chapter leaves behind once played (plan 02 · S4): run, with no screen, for a save from before
+    /// it was written. Like <see cref="NewGame"/>, it may only set flags and variables.
+    /// </summary>
+    public const string OpeningDone = "common.OpeningDone";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;
@@ -141,6 +147,9 @@ public sealed class ScriptLibrary
                         break;
                     case Op.Battle when i.PartnerById && TrainerDatabase.Get(i.Partner) == null:
                         Wrong(i, $"there is no trainer '{i.Partner}'");
+                        break;
+                    case Op.Battle when i.AsTrainer.Length > 0 && TrainerDatabase.Get(i.AsTrainer) == null:
+                        Wrong(i, $"there is no trainer '{i.AsTrainer}'");
                         break;
                     case Op.Warp when mapExists != null && !mapExists(i.Name):
                         Wrong(i, $"there is no map '{i.Name}'");

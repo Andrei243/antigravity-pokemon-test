@@ -131,6 +131,8 @@ public class PCScreen
             }
             var pokemon = party.Members[PartyIndex];
             party.RemoveAt(PartyIndex);
+            // A Shaymin goes into a box in its Land Forme (BoxPokemon_SetShayminForm; plan 06 · R10)
+            FormRules.BackToLand(pokemon);
             stored.Add(pokemon);
             PartyIndex = Math.Min(PartyIndex, party.Count - 1);
             // The box it went into comes up, so it is seen to land

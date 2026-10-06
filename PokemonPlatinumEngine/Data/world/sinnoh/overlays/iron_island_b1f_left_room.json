@@ -1,0 +1,16 @@
+{
+  "area": "iron_island_b1f_left_room",
+  "bgmTrack": "sinnoh/mine",
+  "people": {
+    "camper_lawrence": {
+      "name": "Lawrence",
+      "trainer": {
+        "id": "camper_lawrence",
+        "name": "Lawrence",
+        "trainerClass": "Camper",
+        "dialogueBefore": "Camper Lawrence: I came out to camp in the old mine. Battling in the dark is the best training there is!",
+        "dialogueAfter": "Camper Lawrence: I'd better pitch my tent somewhere quieter and train a while longer."
+      }
+    }
+  }
+}

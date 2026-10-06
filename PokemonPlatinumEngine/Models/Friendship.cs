@@ -75,4 +75,26 @@ public static class FriendshipRules
         }
         p.Friendship = Math.Clamp(p.Friendship + delta, 0, Max);
     }
+
+    private static int Band(Pokemon p, (int Low, int Mid, int High) change) =>
+        p.Friendship >= 200 ? change.High : p.Friendship >= 100 ? change.Mid : change.Low;
+
+    /// <summary>
+    /// An item's own friendship (a vitamin, an EV berry, a Rare Candy; <c>UpdatePokemonFriendship</c>): the same
+    /// bands, but here a Soothe Bell's half again comes before the Luxury Ball's one, the other way round from the
+    /// events' (<c>Pokemon_UpdateFriendship</c>).
+    /// </summary>
+    public static void ChangeByItem(Pokemon p, (int Low, int Mid, int High) change)
+    {
+        int delta = Band(p, change);
+        if (delta > 0)
+        {
+            if (p.HeldItem?.HoldEffect == SootheEffect) delta = delta * 150 / 100;
+            if (p.Ball == LuxuryBall) delta++;
+        }
+        p.Friendship = Math.Clamp(p.Friendship + delta, 0, Max);
+    }
+
+    /// <summary>Whether an item's friendship would raise it (<c>CheckFriendshipItemEffect</c>): not at the most, and only by a gain.</summary>
+    public static bool WouldRaise(Pokemon p, (int Low, int Mid, int High) change) => p.Friendship < Max && Band(p, change) > 0;
 }

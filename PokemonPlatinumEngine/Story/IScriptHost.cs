@@ -30,6 +30,9 @@ public interface IScriptHost
 
     /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
     Poketch Poketch { get; }
+
+    /// <summary>The Great Marsh's Safari Game, while one is under way (plan 01 · M7).</summary>
+    SafariGame Safari { get; }
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }

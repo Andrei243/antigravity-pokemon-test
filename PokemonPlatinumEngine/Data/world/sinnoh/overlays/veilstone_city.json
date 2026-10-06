@@ -1,0 +1,100 @@
+{
+  "area": "veilstone_city",
+  "bgmTrack": "sinnoh/veilstone",
+  "trees": "Round",
+  "architecture": "Stone",
+  "doors": [
+    { "warp": 10, "map": "VeilstonePokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+  ],
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "route_215", "toWarp": 0 },
+    { "warp": 1, "to": "route_215", "toWarp": 1 },
+    { "warp": 11, "to": "route_214", "toWarp": 0 },
+    { "warp": 12, "to": "route_214", "toWarp": 1 }
+  ],
+  // The Game Corner, the Department Store, the warehouse, the prize exchange, the houses, the Gym and the Galactic building have no rooms yet (plan 01 · M11, M9)
+  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15, 16 ],
+  "people": {
+    "guitarist_1": {
+      "name": "Guitarist",
+      "dialog": [
+        "The cliffs all round this city keep the wind off.",
+        "Best place in Sinnoh to play outdoors, if you ask me. Listen to that echo!"
+      ]
+    },
+    "pokefan_m": {
+      "name": "Man",
+      "dialog": [
+        "Been to the Department Store yet?",
+        "You could spend a whole day in there and still not see every floor."
+      ]
+    },
+    "battle_girl_1": {
+      "name": "Girl",
+      "dialog": [
+        "Maylene, our Gym Leader, trains harder than anybody in this city.",
+        "One day I'm going to fight just like her!"
+      ]
+    },
+    "lady": {
+      "name": "Lady",
+      "dialog": [
+        "I popped into the Department Store for one little thing.",
+        "And here I am with a dozen bags. It happens every single time!"
+      ]
+    },
+    "battle_girl_2": {
+      "name": "Girl",
+      "dialog": [
+        "See those big rocks at the east end of town? They fell from the sky, ages and ages ago.",
+        "Meteorites! The whole city grew up around them."
+      ]
+    },
+    "roughneck_1": {
+      "name": "Tough Guy",
+      "dialog": [
+        "That big building at the north end of town belongs to Team Galactic.",
+        "New energy for everyone, they say. Funny how you never see anyone go in or out."
+      ]
+    },
+    "guitarist_2": {
+      "name": "Guitarist",
+      "dialog": [
+        "The Game Corner's right here. Win some coins, and the shop next door swaps them for prizes.",
+        "Me? I'm saving up for a new set of strings."
+      ]
+    },
+    "roughneck_2": {
+      "name": "Tough Guy",
+      "dialog": [
+        "Everyone in this city is training at something.",
+        "Even my old gran does press-ups on the doorstep every morning."
+      ]
+    },
+    "battle_girl_3": {
+      "name": "Girl",
+      "dialog": [
+        "Through the gate to the south is Route 214, and past that, Lake Valor.",
+        "There's a very grand hotel by the lake. One day I'll stay there!"
+      ]
+    },
+    "guitarist_3": {
+      "name": "Guitarist",
+      "dialog": [
+        "This city is one big dojo. Even I do sit-ups between songs.",
+        "The Gym's just along the street, if you're feeling brave."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Veilstone City\nThe city where the stars came down to stay.",
+    "gym_signpost": "Veilstone City Pokémon Gym\nLeader: Maylene\nHer fighting spirit never bends!",
+    "signboard_department_store": "Veilstone Department Store\nFloor after floor of goods for trainers and their Pokémon.",
+    "signboard_game_corner": "Veilstone Game Corner\nBright lights and spinning reels. Coins are sold inside.",
+    "signboard_prize_exchange": "Prize Exchange\nTrade your Game Corner coins for TMs and other prizes.",
+    "signboard_galactic_warehouse": "Galactic Warehouse\nPrivate property. Keep out!",
+    "signboard_galactic_building": "Team Galactic Building\nBuilding new energy for a brand-new world.",
+    "signboard_lake_valor": "Route 214\nSouth: Valor Lakefront, Lake Valor"
+  }
+}

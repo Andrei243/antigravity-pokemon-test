@@ -1,0 +1,11 @@
+{
+  "area": "iron_island",
+  "bgmTrack": "sinnoh/route203",
+  "trees": "Pine",
+  // The house has no rooms yet (plan 01 · M11)
+  "locked": [ 0 ],
+  "people": {
+    // He sails the player back to Canalave City (scripts/iron_island.txt); Riley waits for his chapter (plan 02)
+    "sailor": { "name": "Sailor", "script": "Ferry" }
+  }
+}

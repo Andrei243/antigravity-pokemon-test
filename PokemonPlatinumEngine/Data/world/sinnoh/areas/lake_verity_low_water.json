@@ -1,0 +1,80 @@
+{
+  "key": "lake_verity_low_water",
+  "index": 311,
+  "name": "Lake Verity",
+  "matrix": 101,
+  "kind": "Cave",
+  "sign": "Lake",
+  "weather": "Clear",
+  "camera": "ZoomedIn",
+  "battleBackground": "Forest",
+  "dayMusic": "D_LAKE",
+  "nightMusic": "D_LAKE",
+  "encounters": "lake_verity_low_water",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Starly", "level": 2 },
+    { "species": "Bidoof", "level": 2 },
+    { "species": "Starly", "level": 3 },
+    { "species": "Bidoof", "level": 3 },
+    { "species": "Starly", "level": 3 },
+    { "species": "Bidoof", "level": 3 },
+    { "species": "Starly", "level": 4 },
+    { "species": "Bidoof", "level": 4 },
+    { "species": "Starly", "level": 4 },
+    { "species": "Bidoof", "level": 4 },
+    { "species": "Starly", "level": 4 },
+    { "species": "Bidoof", "level": 4 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Seaking", "level": 25, "maxLevel": 35 },
+    { "species": "Seaking", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 46, "z": 54, "to": "verity_lakefront", "toWarp": 1 },
+    { "x": 47, "z": 54, "to": "verity_lakefront", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "prof_rowan", "looks": "prof_rowan", "movement": "look_north", "x": 48, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_LOW_WATER_PROF_ROWAN", "script": "4" },
+    { "id": "counterpart", "looks": "var_0", "movement": "look_north", "x": 49, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_LOW_WATER_COUNTERPART", "script": "5" },
+    { "id": "starly_east", "looks": "starly", "movement": "look_west", "x": 57, "z": 43, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_LOW_WATER_STARLY", "script": "0" },
+    { "id": "starly_south", "looks": "starly", "movement": "look_north", "x": 48, "z": 51, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_LOW_WATER_STARLY", "script": "0" },
+    { "id": "cyrus", "looks": "cyrus", "movement": "look_north", "x": 48, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_LOW_WATER_CYRUS", "script": "0" },
+    { "id": "rival", "looks": "barry", "movement": "look_north", "x": 47, "z": 54, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VERITY_LOW_WATER_RIVAL", "script": "0" },
+    { "id": "item_tm38", "looks": "pokeball", "movement": "none", "x": 25, "z": 54, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_LAKE_VERITY_TM38", "item": "TM38", "script": "7239" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,12 +1,53 @@
-# Twinleaf Town. docs/scripts.md describes the language; the lines are our own, on the original's beats.
+# Twinleaf Town (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_twinleaf_town.s).
 #
-# The town's own scenes (the morning the adventure begins, Barry bursting in and dashing off to the lake) are plan
-# 02 · S2's. What is here already is Barry by his house, whose theme cuts in while he talks, as it does whenever he
-# turns up in the original.
+# The guitarist keeps the player in town until the rival has left home, and the rival comes charging out of his
+# door into the player on the way. His theme cuts in whenever he turns up, as it does in the original.
 
 
-script Barry
+# The road north (the original's trigger 4), until the rival has left home.
+script GuitaristStops
+  face guitarist player
+  emote guitarist exclaim
+  speaker "Guitarist"
+  say "Whoa, hold on! {rival} was out here a minute ago, looking all over for you."
+  say "He went back home. Don't you want to know what he wanted?"
+  walk player down 1
+  end
+
+
+# In front of the rival's door (the original's trigger 2): he runs straight into the player.
+script RivalRunsOut
+  sound "door_open"
+  show rival
+  sound "bump"
+  camera shake 0.3
+  walk player down 1
+  emote player exclaim
+  walk rival down 1
   music "common/rival"
-  sayown
+  speaker "{rival}"
+  say "Ow! Who's standing right outside my door? ...Oh, it's you, {player}!"
+  say "Listen, I'm off to see Professor Rowan! You're coming too, right? Hurry up!"
+  walk rival right 3 fast
+  emote rival exclaim
+  wait 0.3
+  walk rival left 3 fast
+  face rival player
+  say "Wait, wait! I forgot something! Don't go anywhere!"
+  walk rival up 1 fast
+  hide rival
+  sound "door_close"
   music area
+  setvar VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE 1
+  end
+
+
+script Guitarist
+  if var VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE >= 2 goto Gone
+  speaker "Guitarist"
+  say "{rival} was out here looking for you. He's back at his house now."
+  end
+label Gone
+  sayown
   end

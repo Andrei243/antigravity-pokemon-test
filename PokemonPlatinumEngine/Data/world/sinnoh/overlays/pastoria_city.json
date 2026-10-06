@@ -1,0 +1,90 @@
+{
+  "area": "pastoria_city",
+  "bgmTrack": "sinnoh/pastoria",
+  "trees": "Round",
+  "architecture": "Marsh",
+  "doors": [
+    { "warp": 9, "map": "PastoriaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 2, "map": "PastoriaPokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The gate to Route 213 and the Great Marsh's observatory are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 10, "to": "route_213", "toWarp": 0 },
+    { "warp": 11, "to": "route_213", "toWarp": 1 },
+    { "warp": 7, "to": "great_marsh_6", "toWarp": 0 },
+    { "warp": 8, "to": "great_marsh_6", "toWarp": 1 }
+  ],
+  // The Gym and the houses have no rooms yet (plan 01 · M11, M9)
+  "locked": [ 0, 1, 3, 4, 5, 6 ],
+  "people": {
+    "picnicker": {
+      "name": "Picnicker",
+      "dialog": [
+        "I spent all morning at the top of the observatory, looking out over the Great Marsh.",
+        "Different Pokémon come out to play in the mud every day. I could watch them for hours!"
+      ]
+    },
+    "black_belt": {
+      "name": "Black Belt",
+      "dialog": [
+        "Our Gym Leader is a wrestler, and he never holds anything back!",
+        "His Pokémon are all Water types. Bring something that doesn't mind a soaking."
+      ]
+    },
+    "ace_trainer_m_1": {
+      "name": "Trainer",
+      "dialog": [
+        "This Clefairy follows me everywhere. I hardly ever put it in its ball.",
+        "It likes Pastoria's sunshine as much as I do."
+      ]
+    },
+    "collector_1": {
+      "name": "Collector",
+      "dialog": [
+        "The Great Marsh is different from one day to the next.",
+        "A Pokémon you saw yesterday might not show its face today. That's what keeps me coming back."
+      ]
+    },
+    "scientist_m": {
+      "name": "Scientist",
+      "dialog": [
+        "Marsh mud is full of minerals. It keeps the skin of Water Pokémon healthy.",
+        "No wonder so many of them make their homes out there."
+      ]
+    },
+    "beauty": {
+      "name": "Beauty",
+      "dialog": [
+        "I came all this way to see the Great Marsh.",
+        "Now I'm here, I'm not sure I dare walk in the mud in these shoes."
+      ]
+    },
+    "parasol_lady": {
+      "name": "Parasol Lady",
+      "dialog": [
+        "Just west of town, on Route 212, the rain hardly ever stops.",
+        "In Pastoria the sun shines, but I keep my parasol up anyway. You never know!"
+      ]
+    },
+    "collector_2": {
+      "name": "Collector",
+      "dialog": [
+        "Some of the Pokémon in the Great Marsh live nowhere else in Sinnoh.",
+        "Collectors like me come from all over, just for a chance to catch one."
+      ]
+    },
+    "ace_trainer_m_2": {
+      "name": "Trainer",
+      "dialog": [
+        "The Gym here hits you with wave after wave of Water moves.",
+        "So I'm buying every Potion the Poké Mart has on its shelves."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Pastoria City\nWhere the wetlands begin and the wild comes right up to the door.",
+    "gym_signpost": "Pastoria City Pokémon Gym\nLeader: Crasher Wake\nHis Water Pokémon hit like a breaking wave!",
+    "signboard_great_marsh": "Great Marsh Observatory\nLook out over the marsh from the top floor, or step into it for the Safari Game.",
+    "signboard_safari_game": "Safari Game\nCatch the Great Marsh's Pokémon with Safari Balls! Sign up at the observatory, north of town."
+  }
+}

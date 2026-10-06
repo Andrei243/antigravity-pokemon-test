@@ -1,0 +1,17 @@
+{
+  "area": "great_marsh_4",
+  "bgmTrack": "sinnoh/great_marsh",
+  "trees": "Round",
+  "people": {
+    "bug_catcher": {
+      "name": "Bug Catcher",
+      "dialog": [
+        "I'm after the Yanma that zip over the reeds here. They're so fast!",
+        "I've walked every bit of this marsh looking for them. Well, nearly every bit."
+      ]
+    }
+  },
+  "signs": {
+    "signboard": "Great Marsh · Area 4\nDeep mud ahead: slow going on foot, and no place for a Bicycle."
+  }
+}

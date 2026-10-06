@@ -20,6 +20,16 @@ public class StartMenu
 
     private static readonly Entry[] Entries = Enum.GetValues<Entry>();
 
+    /// <summary>
+    /// Whether the player has a Pokédex and any Pokémon yet: as in Platinum, the menu shows those two entries only
+    /// once there is something behind them (plan 02 · S4).
+    /// </summary>
+    public bool HasPokedex { get; set; } = true;
+    public bool HasPokemon { get; set; } = true;
+
+    /// <summary>The entries the menu shows now, in order.</summary>
+    private Entry[] Shown => Entries.Where(e => (e != Entry.Pokedex || HasPokedex) && (e != Entry.Pokemon || HasPokemon)).ToArray();
+
     /// <summary>The answers to "Quit the game?", in button order; the first (staying) is highlighted when it opens.</summary>
     public static readonly string[] QuitAnswers = { "KEEP PLAYING", "SAVE AND QUIT", "QUIT" };
 
@@ -36,7 +46,7 @@ public class StartMenu
     /// <summary>Shown on the entry that opens the Trainer Card, as in the games.</summary>
     public string PlayerName { get; set; } = "Trainer";
 
-    public int EntryCount => Entries.Length;
+    public int EntryCount => Shown.Length;
 
     public void Open()
     {
@@ -72,7 +82,7 @@ public class StartMenu
     {
         if (!IsActive || step == 0) return;
         if (AskingToQuit) QuitIndex = Math.Clamp(QuitIndex + step, 0, QuitAnswers.Length - 1);
-        else SelectedIndex = ((SelectedIndex + step) % Entries.Length + Entries.Length) % Entries.Length;
+        else SelectedIndex = ((SelectedIndex + step) % EntryCount + EntryCount) % EntryCount;
         AudioManager.PlaySound("cursor");
     }
 
@@ -95,7 +105,7 @@ public class StartMenu
             }
         }
 
-        switch (Entries[SelectedIndex])
+        switch (Shown[SelectedIndex])
         {
             case Entry.Pokedex: return StartMenuChoice.Pokedex;
             case Entry.Pokemon: return StartMenuChoice.Pokemon;
@@ -164,7 +174,7 @@ public class StartMenu
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!reveal.Visible) return;
-        ModernUi.DrawStartMenu(screenWidth, Entries.Select(Describe).ToList(), SelectedIndex, reveal.Shown);
+        ModernUi.DrawStartMenu(screenWidth, Shown.Select(Describe).ToList(), SelectedIndex, reveal.Shown);
 
         if (!prompt.Visible) return;
         ModernUi.Prompt(screenWidth, screenHeight, "Quit the game?", "Anything since your last save will be lost unless you save first.",

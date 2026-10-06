@@ -1,0 +1,57 @@
+# The professor's young assistant hurries up, a little out of breath and glad to see you.
+# Platinum's role SEQ_THE_GIRL / SEQ_THE_BOY (the counterpart's theme): a skipping, sunny flute over bubbling marimba,
+# warm rather than silly. Original composition for this game.
+title The Professor's Assistant
+tempo 140
+meter 4/4
+reverb 0.26
+
+track lead flute vol=0.74 pan=0 rev=0.3
+  q6 r1 | r2 r4 r8 o5 c16 c+16 |
+  L o5 d8. b16 a8. g16 a8 b8 g8 r8 | e8. o6 c16 o5 b8. a16 b8 o6 c8 e8 r8 | o6 d8. o5 b16 g8. e16 g8 a8 b8 o6 d8 | o6 c8. o5 b16 a8. g16 f+4 r8 d8 |
+  o5 g8. o6 d16 o5 b8. g16 o6 d8 e8 d8 o5 b8 | o6 d+8. o5 b16 o6 f+8. d+16 o5 b4 a4 | o5 g8. e16 c8. e16 f+8 a8 o6 c8 o5 a8 | o5 b8. o6 d16 g8 r8 f8. d16 o5 b8 g8 |
+  o5 e4. g8 b4 a8. g16 | o5 f+4. d8 a4 f+8. e16 | o5 e4. c8 g4 e8. d16 | o5 d8 g8 a8 o6 c8 o5 f+8 a8 o6 c8 d8 |
+  o5 g4. b8 o6 e4 d8. c16 | o5 b4. o6 d+8 f+4 e8. d+16 | o6 g4 e8. d16 c+8 e8 g8 a8 | o6 g8. e16 c8. o5 a16 f+8 a8 o6 c8 o5 a8 |
+  o5 g8 b8 o6 d8 g8 f+8 d8 o5 b8 a8 | o5 g8. e16 g8. b16 o6 d4 r8 o5 b8 | o6 e8. d16 o5 b8. g16 g8. b16 o6 c+8 e8 | o6 d4 c8 o5 a8 f+8 a8 r8 c16 c+16 |
+
+track counter clarinet vol=0.45 pan=-0.3 rev=0.3
+  r1 | r1 |
+  L o4 b1 | o5 c2 e2 | o5 d2 o4 b2 | o5 c1 |
+  o4 b1 | o4 a1 | o4 g2 a2 | o4 b2 o5 d4 f4 |
+  o4 g4. b8 o5 d4 c8. o4 b16 | o4 a4. f+8 o5 d4 d8. o4 b16 | o5 c4. o4 a8 o5 e4 c8. o4 b16 | o4 a8 o5 d8 e8 g8 d8 f+8 a8 a8 |
+  o5 e4. g8 g4 g8. e16 | o5 d+4. f+8 a4 a8. f+16 | o5 b4 g8. f+16 e8 a8 o6 c+8 e8 | o6 e8. c16 o5 a8. e16 d8 f+8 a8 f+8 |
+  o4 b2 a2 | o4 g1 | o4 e1 | o4 g2 f+2 |
+
+track bubbles marimba vol=0.4 pan=0.3 rev=0.25
+  o4 g8 o5 d16 g16 o4 b8 o5 d8 o4 g8 o5 d16 g16 o4 b8 o5 d8 | o4 a8 o5 e16 g16 c8 e8 o4 f+8 o5 c16 d16 o4 a8 f+8 |
+  L o4 g8 o5 d16 g16 o4 b8 o5 d8 o4 g8 o5 d16 g16 o4 b8 o5 d8 | o4 g8 o5 e16 g16 c8 e8 o4 g8 o5 e16 g16 c8 e8 |
+  o4 g8 o5 d16 e16 o4 b8 o5 d8 o4 g8 o5 d16 e16 o4 b8 o5 d8 | o4 a8 o5 e16 g16 c8 e8 o4 f+8 o5 c16 d16 o4 a8 o5 c8 |
+  o4 g8 o5 d16 g16 o4 b8 o5 d8 o4 g8 o5 d16 g16 o4 b8 o5 d8 | o4 f+8 b16 o5 d+16 o4 a8 b8 o4 f+8 b16 o5 d+16 o4 a8 b8 |
+  o4 g8 o5 e16 g16 c8 e8 o4 f+8 o5 c16 d16 o4 a8 o5 c8 | o4 g8 o5 d16 g16 o4 b8 o5 d8 o4 f8 b16 o5 d16 o4 g8 b8 |
+  o4 g8 o5 e16 b16 c8 e8 o4 g8 o5 e16 b16 c8 e8 | o4 f+8 b16 o5 d16 o4 a8 b8 o4 f+8 b16 o5 d16 o4 a8 b8 |
+  o4 a8 o5 e16 g16 c8 e8 o4 a8 o5 e16 g16 c8 e8 | o4 g8 o5 c16 d16 o4 a8 o5 c8 o4 f+8 o5 c16 d16 o4 a8 o5 c8 |
+  o4 g8 o5 e16 b16 c8 e8 o4 g8 o5 e16 b16 c8 e8 | o4 f+8 b16 o5 d+16 o4 a8 b8 o4 f+8 b16 o5 d+16 o4 a8 b8 |
+  o4 g8 o5 d16 e16 o4 b8 o5 d8 o4 g8 o5 c+16 e16 o4 a8 o5 c+8 | o4 a8 o5 e16 g16 c8 e8 o4 f+8 o5 c16 d16 o4 a8 o5 c8 |
+  o4 g8 o5 d16 g16 o4 b8 o5 d8 o4 f+8 o5 d16 f+16 o4 a8 o5 d8 | o4 g8 o5 d16 e16 o4 b8 o5 d8 o4 g8 o5 d16 e16 o4 b8 o5 d8 |
+  o4 g8 o5 e16 b16 c8 e8 o4 g8 o5 c+16 e16 o4 b8 o5 c+8 | o4 g8 o5 c16 d16 o4 a8 o5 c8 o4 f+8 o5 c16 d16 o4 a8 f+8 |
+
+track sparkle glockenspiel vol=0.3 pan=0.4 rev=0.45
+  r1 | r1 |
+  L r2 r4 r8 o5 b16 o6 d16 | r2 r4 r8 o5 g16 o6 c16 | r1 | r2 r4 o5 a16 o6 c16 r8 |
+  r1 | r1 | r1 | r1 |
+  o5 e4 r2. | o5 f+4 r2. | o5 e4 r2. | r1 |
+  o5 g4 r2. | o5 b4 r2. | r2 o5 c+8 e8 g8 a8 | r1 |
+  r1 | r2 r4 o5 g16 b16 r8 | r1 | r1 |
+
+track bass bass vol=0.64 rev=0.08
+  r1 | o3 a4 o4 e8. o3 a16 d4 a8. d16 |
+  L o3 g4 o4 d8. o3 g16 b4 o4 d8. o3 g16 | o4 c4 g8. c16 e4 g8. c16 | o3 e4 b8. e16 g4 b8. e16 | o3 a4 o4 e8. o3 a16 d4 a8. d16 |
+  o3 g4 o4 d8. o3 g16 b4 o4 d8. o3 g16 | o3 b4 o4 f+8. o3 b16 o4 d+4 f+8. o3 b16 | o4 c4 g8. c16 o3 d4 a8. d16 | o3 g4 o4 d8. o3 g16 b4 o4 f8. o3 g16 |
+  o4 c4 g8. c16 e4 g8. c16 | o3 b4 o4 f+8. o3 b16 o4 d4 f+8. o3 b16 | o3 a4 o4 e8. o3 a16 o4 c4 e8. o3 a16 | o3 d4 a8. d16 f+4 a8. d16 |
+  o4 c4 g8. c16 e4 g8. c16 | o3 b4 o4 f+8. o3 b16 o4 d+4 f+8. o3 b16 | o3 e4 b8. e16 a4 o4 e8. o3 a16 | o3 a4 o4 e8. o3 a16 d4 a8. d16 |
+  o3 g4 o4 d8. o3 g16 f+4 a8. f+16 | o3 e4 b8. e16 d4 b8. d16 | o4 c4 g8. c16 c+4 g8. c+16 | o4 d4 o3 a8. o4 d16 o3 f+4 a8. d16 |
+
+track drums kit vol=0.5 rev=0.12
+  v45 [ k8. k16 ]4 | v70 b8. v40 k16 v55 s8. v40 k16 v70 b8. v40 k16 v50 s16 s16 v60 s16 s16 |
+  L [ [ v70 b8. v40 k16 v55 s8. v40 k16 v70 b8. v40 k16 v55 s8. v40 k16 | ]7 v70 b8. v40 k16 v55 s8. v40 k16 v70 b8. v40 k16 v60 x8 x8 | ]2
+  [ v70 b8. v40 k16 v55 s8. v40 k16 v70 b8. v40 k16 v55 s8. v40 k16 | ]3 v70 b8. v40 k16 v55 s8. v40 k16 v70 b8. v40 k16 v50 s16 s16 v60 s16 s16 |

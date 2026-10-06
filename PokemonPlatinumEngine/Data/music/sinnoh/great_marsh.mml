@@ -1,0 +1,65 @@
+# The Great Marsh (the original's D_SAFARI role: the safari game in Pastoria City's marsh, the little tram over
+# the reeds, binoculars on the tower, rare Pokémon in the mud): a playful F-major caper, the oboe tiptoeing up its
+# arpeggios over a bouncing bass and plucked after-beats, a sneaking D-minor stretch to a ticking clock, and the
+# marimba chugging along beside it like the tram. Original composition for this game.
+title Great Marsh
+tempo 126
+meter 4/4
+reverb 0.26
+nighttempo 0.94
+
+track lead oboe night=ocarina vol=0.95 pan=0 rev=0.26
+  r1 | r1 |
+  L q6 o4 f8 r8 a8 r8 o5 c8 r16 o4 b16 o5 c8 r8 | o5 d8 c8 o4 a8 f8 g4 r4 | o4 b-8 r8 o5 d8 r8 f8 r16 e16 f8 r8 | o5 g8 f8 e8 d8 c4 r4 |
+  o4 f8 r8 a8 r8 o5 c8 r16 o4 b16 o5 c8 r8 | o4 f+8 r8 a8 r8 o5 c8 r16 o4 b16 o5 c8 r8 | o5 d8 c8 o4 b-8 g8 f4 r4 | o4 g8 r8 b-8 r8 o5 c4 r4 |
+  q7 o5 d2 c+4 d4 | o5 f4. e8 d4 o4 a4 | o4 b-4. a8 g4 b-4 | o5 c+2 e4 g4 |
+  o5 a2 g+4 a4 | o5 f4. e8 d4 c+4 | q6 o4 b-8 r8 o5 d8 r8 f8 r8 b-8 r8 | o5 g8 r8 e8 r8 c4 r4 |
+  o5 c8 c8 c8 o4 a8 o5 c8 c8 c8 f8 | o5 e8 e8 e8 c8 e8 e8 e8 g8 | o5 f8 f8 f8 d8 f8 f8 f8 b-8 | o5 a-8 g8 f8 d-8 c4 r4 |
+  o5 c8 r8 f8 r8 a8 r16 g+16 a8 o6 c8 | o6 d8 c8 o5 a8 f+8 a4 r4 | o5 b-8 a8 g8 f8 e8 g8 b-8 o6 c8 | o5 f8 a8 g8 f8 e8 r8 r4 |
+
+track ride marimba night=vibraphone vol=0.55 pan=-0.3 rev=0.22
+  o5 c16 c16 r8 o4 a8 r8 o5 c16 c16 r8 o4 a8 r8 | o4 b-16 b-16 r8 g8 r8 e8 r8 c8 r8 |
+  L r1 | r2. o5 c16 d16 c16 o4 a16 | r1 | r2. o4 g16 a16 b-16 o5 c16 |
+  r1 | r1 | r2. o5 d16 o4 b-16 g16 b-16 | r2. o5 c16 o4 b-16 g16 e16 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2. o4 g16 a16 b-16 b16 |
+  o4 a8 a8 a8 f8 a8 a8 a8 o5 c8 | o5 c8 c8 c8 o4 g8 o5 c8 c8 c8 e8 | o5 d8 d8 d8 o4 b-8 o5 d8 d8 d8 f8 | o5 f8 e-8 d-8 o4 b-8 a-4 r4 |
+  o4 a8 r8 o5 c8 r8 f8 r8 f8 a8 | o5 f+8 f+8 f+8 d8 f+8 r8 r4 | o5 g8 f8 d8 d8 c8 e8 g8 e8 | o5 c8 f8 e8 c8 o4 b-8 r8 o5 c16 o4 b-16 g16 e16 |
+
+track pluck pizzicato night=harp vol=0.42 pan=0.3 rev=0.2
+  o4 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 |
+  L o4 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (f b- >d)8 r8 (f b- >d)8 r8 (f b- >d)8 r8 (f b- >d)8 | r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (f+ a >c)8 r8 (f+ a >c)8 r8 (f+ a >c)8 r8 (f+ a >c)8 | r8 (f b- >d)8 r8 (f b- >d)8 r8 (f b- >d)8 r8 (f b- >d)8 | r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 |
+  o4 d8 r8 f8 r8 a8 r8 f8 r8 | o4 d8 r8 f8 r8 a8 r8 f+8 r8 | o4 d8 r8 g8 r8 b-8 r8 g8 r8 | o4 c+8 r8 e8 r8 g8 r8 e8 r8 |
+  o4 d8 r8 f8 r8 a8 r8 f8 r8 | o4 d8 r8 c+8 r8 c8 r8 o3 b8 r8 | o4 d8 r8 f8 r8 b-8 r8 f8 r8 | o4 c8 r8 e8 r8 g8 r8 e8 r8 |
+  o4 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 r8 (g b- >c)8 | r8 (f b- >d)8 r8 (f b- >d)8 r8 (f b- >d)8 r8 (f b- >d)8 | r8 (f b- >d-)8 r8 (f b- >d-)8 r8 (f b- >d-)8 r8 (f b- >d-)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (f+ a >c)8 r8 (f+ a >c)8 r8 (f+ a >c)8 r8 (f+ a >c)8 | r8 (f b- >d)8 r8 (f b- >d)8 r8 (g b- >c)8 r8 (g b- >c)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (g b- >c)8 r8 (g b- >c)8 |
+
+track glints glockenspiel night=celesta vol=0.32 pan=0.4 rev=0.4
+  r1 | r1 |
+  L r1 | r1 | r1 | r2. o5 c8 r8 |
+  r1 | r1 | r1 | r2. o5 e8 r8 |
+  r1 | r2. o5 a8 r8 | r1 | r2. o5 g8 r8 |
+  r1 | r2. o5 a8 r8 | r1 | r1 |
+  r1 | r1 | r1 | r2. o5 f8 r8 |
+  r1 | r2. o5 f+8 r8 | r1 | r1 |
+
+track bass bass vol=0.68 rev=0.08
+  q4 o3 f4 c4 f4 c4 | o3 c4 g4 c4 o2 g4 |
+  L o3 f4 c4 f4 c4 | o3 f4 c4 f4 a4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o3 c4 g4 c4 e4 |
+  o3 f4 c4 f4 e-4 | o3 d4 a4 f+4 a4 | o3 g4 d4 g4 d4 | o3 c4 g4 e4 g4 |
+  q3 o3 d4 r4 o2 a4 r4 | o3 d4 r4 o2 a4 r4 | o3 g4 r4 d4 r4 | o2 a4 r4 o3 e4 r4 |
+  o3 d4 r4 o2 a4 r4 | o3 d4 r4 c4 r4 | o2 b-4 r4 o3 f4 r4 | o3 c4 r4 o2 g4 r4 |
+  q4 o3 f4 c4 f4 c4 | o3 c4 g4 c4 g4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 b-4 o3 f4 o2 b-4 o3 f4 |
+  o3 f4 c4 f4 c4 | o3 d4 a4 d4 a4 | o3 g4 d4 c4 o2 g4 | o3 f4 c4 c4 o2 g4 |
+
+track drums kit vol=0.48 rev=0.12
+  v50 b8 v26 k8 v40 t8 v26 k8 v46 b8 v26 k8 v40 m8 v26 k8 | v50 b8 v26 k8 v40 t8 v26 k8 v46 b8 v26 k8 v46 s16 s16 v58 s8 |
+  L v74 (b c)8 v34 k8 v56 s8 v34 k8 v66 b8 v34 k8 v56 s8 v42 b8 |
+  [ v66 b8 v34 k8 v56 s8 v34 k8 v66 b8 v34 k8 v56 s8 v42 b8 | ]6
+  v66 b8 v34 k8 v56 s8 v34 k8 v50 t16 t16 m16 m16 v56 f8 v62 s8 |
+  [ v56 b8 v26 k8 v42 t8 v26 k8 v48 b8 v26 k8 v42 m8 v26 k8 | ]7
+  v56 b8 v26 k8 v42 t8 v26 k8 v46 s16 s16 v52 s16 s16 v60 s8 v40 s8 |
+  v74 (b c)8 v34 k8 v56 s8 v34 k8 v66 b8 v34 k8 v56 s8 v42 b8 |
+  [ v66 b8 v34 k8 v56 s8 v34 k8 v66 b8 v34 k8 v56 s8 v42 b8 | ]6
+  v66 b8 v34 k8 v56 s8 v34 k8 v50 t16 t16 m16 m16 v56 f8 v62 s8 |

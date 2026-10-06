@@ -1,0 +1,61 @@
+# Professor Rowan's lab in Sandgem Town (plan 02 · S4). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_sandgem_town_pokemon_research_lab.s).
+#
+# The first visit: the professor looks at the player's Pokémon, sees the bond already there, and asks the player
+# to fill in a Pokédex of every Pokémon in Sinnoh. The assistant, who has one too, introduces themself.
+
+
+script OnEnter
+  if var VAR_SANDGEM_TOWN_LAB_STATE != 0 end
+  if var VAR_SANDGEM_TOWN_STATE == 0 end
+  walk counterpart up 3
+  walk player up 4
+  face counterpart prof_rowan
+  speaker "Prof. Rowan"
+  say "Ah, there you are. Let me have a look at that Pokémon of yours."
+  say "...Hm. It seems happy to be with you."
+  say "Then trusting it to you was no mistake."
+  say "When I first saw you two charging into the tall grass, I was shocked. But a bond is already growing between you and your Pokémon."
+  say "Cherish that Pokémon, and cherish that bond."
+  speaker "{assistant}"
+  say "I'm glad! I could tell straight away that you're kind to Pokémon."
+  music "common/rowan"
+  speaker "Prof. Rowan"
+  say "Now. As you know, I am Rowan, and I study Pokémon. There is something I would ask of you."
+label Ask
+  speaker "Prof. Rowan"
+  ask "Will you take this Pokédex, and record every kind of Pokémon you meet in Sinnoh for me?"
+  if yes goto Takes
+  say "...I see. Well, I am a patient man. I will ask you again."
+  goto Ask
+label Takes
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex!"
+  say "Go everywhere you can and meet every kind of Pokémon there is. That is what the Pokédex is for."
+  speaker "{assistant}"
+  say "I'm helping the professor fill in a Pokédex too!"
+  speaker "Prof. Rowan"
+  say "Tell me, {player}: how did it feel, walking along Route 201 with a Pokémon at your side?"
+  say "I have lived for sixty years, and I still feel that thrill. Your great adventure begins now."
+  face counterpart player
+  speaker "{assistant}"
+  say "I'm {assistant}, by the way. I help the professor out. My first Pokémon is {assistantstarter}!"
+  say "We're both working on the Pokédex now, so let's do our best. See you outside!"
+  walk counterpart down 3
+  hide counterpart
+  setflag FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART
+  clearflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  music area
+  setvar VAR_SANDGEM_TOWN_LAB_STATE 1
+  end
+
+
+script Rowan
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 0 goto Before
+  speaker "Prof. Rowan"
+  say "Your adventure is waiting, {player}. Go and see the Pokémon of Sinnoh for yourself."
+  end
+label Before
+  sayown
+  end

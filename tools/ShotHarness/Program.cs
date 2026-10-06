@@ -7,6 +7,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> dex [--back] [species ...]   boards of every species' 3D model, sixty to a page (--back: from behind)
 //   dotnet run --project tools/ShotHarness -- <output dir> export [species ...]   species' models as .glb files, to edit and drop into overrides/models
 //   dotnet run --project tools/ShotHarness -- <output dir> profile            where a frame goes: the heavy scenes timed, then taken apart pass by pass
+//   dotnet run --project tools/ShotHarness -- <output dir> opening            the first chapter's scenes, played by its own scripts
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
 //   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]   a rectangle of a shot, enlarged
@@ -206,11 +207,13 @@ Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);
 var windowSize = (Environment.GetEnvironmentVariable("SHOTS_WINDOW") ?? "1920x1080").Split('x');
 Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
 
-// Two runs draw the same pictures: the game's chance is seeded, and the clock its small motions keep time by is
-// the harness's own count of frames
+// Two runs draw the same pictures: the game's chance is seeded, the clock its small motions keep time by is the
+// harness's own count of frames, and the day is fixed (the weather calendar and Pokérus's days follow the date): the
+// first of June, when it rains on Route 212's south and Route 213 is clear
 Dice.Seed(20261004);
 long tick = 0;
 FrameClock.Fixed = 0;
+GameClock.FixedDate = new DateTime(2026, 6, 1);
 
 var startClock = System.Diagnostics.Stopwatch.StartNew();
 var engine = new GameEngine();
@@ -236,6 +239,27 @@ const BindingFlags Private = BindingFlags.NonPublic | BindingFlags.Instance;
 var T = typeof(GameEngine);
 object Get(string field) => T.GetField(field, Private)!.GetValue(engine)!;
 void Set(string field, object value) => T.GetField(field, Private)!.SetValue(engine, value);
+
+// A new game begins in the player's room with nothing (plan 02 · S4). The modes show the game past its first
+// chapter, as every new game began before the chapter was written: in front of the house with a Turtwig, the
+// Pokédex, the Running Shoes and a few items, and everyone the chapter sends away gone (common.OpeningDone)
+void PastTheOpening()
+{
+    StoryMigration.PastTheOpening((StoryState)Get("story"), ScriptLibrary.Default);
+    var team = (Party)Get("playerParty");
+    var dex = (Pokedex)Get("playerPokedex");
+    var bag = (Inventory)Get("playerInventory");
+    var first = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
+    team.Add(first);
+    dex.RegisterSeen(first.Species.DexNumber);
+    dex.RegisterCaught(first.Species.DexNumber);
+    bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+    bag.AddItem(ItemDatabase.Get("Potion")!, 5);
+    bag.AddItem(ItemDatabase.Get("Revive")!, 2);
+    Set("currentMap", MapDatabase.Get("Sinnoh"));
+    ((Player)Get("player")).SetPosition(116, 886, Direction.Down);
+}
+PastTheOpening();
 
 void Frames(int n)
 {
@@ -1107,6 +1131,12 @@ if (Run("menus"))
     Frames(30); Shot("20b_summary");
     partyScreen.MoveCursor(0, 1, party.Count);
     Frames(30); Shot("20c_summary_second");
+    // Pokérus (plan 06 · R10): the PKRS tag after the status, on the summary and on the party's card
+    party.Members[1].Pokerus = 0x34;
+    Frames(4); Shot("20d_summary_pokerus");
+    partyScreen.ShowSummary = false;
+    Frames(30); Shot("20e_party_pokerus");
+    party.Members[1].Pokerus = 0;
     partyScreen.Close();
 
     Set("currentState", GameState.StarterSelect);
@@ -1515,6 +1545,12 @@ if (Run("intro"))
     intro.PressStart(); Frames(4); Shot("i18_keyboard_ok");
     intro.PressConfirm(); Frames(30); Shot("i19_so_you_are_maya");
     intro.PressConfirm();
+    // The friend next door (plan 02 · S4): he steps in beside the professor, and his name is the one Platinum gives
+    // him unless another is typed
+    Until(IntroPhase.AskRival); Frames(50); Line(); Shot("i19b_your_friend");
+    Until(IntroPhase.EnterRival); Frames(30); Shot("i19c_his_name");
+    intro.PressStart(); intro.PressConfirm(); Frames(30); Shot("i19d_so_his_name_is");
+    intro.PressConfirm();
     Until(IntroPhase.Farewell); Line(); Shot("i20_farewell");
     Until(IntroPhase.SendOff); Frames(48); Shot("i21_send_off");
     Frames(40); Shot("i22_shrinking");
@@ -1525,6 +1561,17 @@ if (Run("intro"))
         // Let it end: the game begins as Maya, the girl
         for (int guard = 0; guard < 400 && (GameState)Get("currentState") == GameState.Intro; guard++) Frames(1);
         Frames(60); Shot("i30_the_game_begins");
+        // In her room, with the television's special on (plan 02 · S4)
+        var tv = (DialogueManager)Get("dialogue");
+        for (int guard = 0; guard < 600 && !(tv.IsActive && tv.IsCurrentLineComplete); guard++) Frames(1);
+        Frames(10); Shot("i30b_the_television");
+        // Past the first chapter for the rest: a Pokémon to battle with
+        for (int guard = 0; guard < 3000 && (GameState)Get("currentState") != GameState.Overworld; guard++)
+        {
+            if (tv.IsActive && tv.IsCurrentLineComplete) tv.Advance();
+            Frames(1);
+        }
+        PastTheOpening();
         Frames(120);
         var card = T.GetMethod("HandleStartMenuChoice", Private)!;
         card.Invoke(engine, new object[] { StartMenuChoice.Trainer });
@@ -2072,16 +2119,30 @@ if (Run("life"))
     ShotCrop("l06b_rings_native", 560, 380, 640, 360, 2);
     walker.SetMode(TravelMode.OnFoot);
 
-    // Riding out onto the pond from its bank: the splash where the Pokémon lands
+    // Riding out onto the pond from its bank: the splash where the Pokémon lands. The ride begins as the game's
+    // does (plan 02 · S2): the water is faced and looked at, Surf's question (asked only of someone with the Fen
+    // Badge) is answered yes, and the move's line and cut-in are seen through
     var swimmer = ((Party)Get("playerParty")).Members[0];
     var surf = new Move(MoveDatabase.Get("Surf")!);
     swimmer.Moves.Add(surf);
+    var story = (StoryState)Get("story");
+    int badges = story.BadgeMask;
+    story.GiveBadge(Badge.Fen);
     var (bankX, bankY) = Nearest(111, 892, (x, y) => sinnoh.IsWalkable(x, y) && sinnoh.IsDeepWater(x + 1, y) && sinnoh.IsDeepWater(x + 2, y) && !sinnoh.IsSolid(x + 1, y));
     Put(bankX, bankY, Direction.Right);
-    T.GetMethod("TryStartSurf", Private)!.Invoke(engine, null);
-    for (int guard = 0; guard < 120 && (walker.Mode != TravelMode.Surfing || walker.IsMoving); guard++) Frames(1);
+    T.GetMethod("TryInteract", Private)!.Invoke(engine, null);
+    var text = (DialogueManager)Get("dialogue");
+    for (int guard = 0; guard < 120 && !engine.Choice.IsOpen; guard++) { text.FinishLine(); Frames(1); }
+    engine.Choice.Confirm();
+    for (int guard = 0; guard < 600 && (walker.Mode != TravelMode.Surfing || walker.IsMoving); guard++)
+    {
+        text.FinishLine(); text.Advance();
+        Frames(1);
+    }
+    if (walker.Mode != TravelMode.Surfing || engine.ScriptRunning) Console.WriteLine("  !! never happened: the ride out onto the pond");
     Frames(5); Shot("l06c_splash_riding_out"); ShotCrop("l06d_splash_native", 640, 380, 640, 360, 2);
     swimmer.Moves.Remove(surf);
+    story.SetBadges(badges);
     walker.SetMode(TravelMode.OnFoot);
 
     // A door: ajar as the step toward it begins, open as it ends, then from inside out again and shut behind
@@ -2315,7 +2376,21 @@ if (Run("world"))
         ("wa4_hearthome", "Sinnoh", 475, 700, Direction.Up), ("wa5_hearthome_contest", "Sinnoh", 479, 694, Direction.Up),
         ("wa6_amity_square", "AmitySquare", 11, 48, Direction.Up), ("wa7_amity_square_inside", "AmitySquare", 32, 30, Direction.Up),
         ("wa8_route209", "Sinnoh", 530, 720, Direction.Right), ("wa9_solaceon", "Sinnoh", 570, 660, Direction.Up),
-        ("wb0_solaceon_ruins", "SolaceonRuinsRoom1", 5, 9, Direction.Up)
+        ("wb0_solaceon_ruins", "SolaceonRuinsRoom1", 5, 9, Direction.Up),
+        // The east and the sea (plan 01 · M7): Route 210 and Celestic Town, Route 215 and Veilstone City, Route 214 and
+        // the lakes, Route 213 and Pastoria City, the Great Marsh, Route 212, Route 218 and Canalave City, Iron Island
+        ("wc0_route210_south", "Sinnoh", 560, 592, Direction.Up), ("wc1_route210_north", "Sinnoh", 527, 524, Direction.Left),
+        ("wc2_route210_bridge", "Sinnoh", 502, 530, Direction.Left), ("wc3_celestic", "Sinnoh", 465, 528, Direction.Up),
+        ("wc4_route215", "Sinnoh", 624, 591, Direction.Right), ("wc5_veilstone", "Sinnoh", 717, 613, Direction.Up),
+        ("wc6_veilstone_warehouses", "Sinnoh", 692, 586, Direction.Up), ("wc7_route214", "Sinnoh", 720, 688, Direction.Up),
+        ("wc8_valor_lakefront", "Sinnoh", 708, 780, Direction.Up), ("wc9_lake_valor", "LakeValor", 38, 14, Direction.Down),
+        ("wd0_route213", "Sinnoh", 688, 832, Direction.Right), ("wd1_hotel_pavilion", "Sinnoh", 691, 807, Direction.Up),
+        ("wd2_pastoria", "Sinnoh", 600, 817, Direction.Up), ("wd3_pastoria_boats", "Sinnoh", 623, 835, Direction.Down),
+        ("wd4_great_marsh", "GreatMarsh", 68, 114, Direction.Up), ("wd5_route212_mansion", "Sinnoh", 470, 774, Direction.Up),
+        ("wd6_route212_puddles", "Sinnoh", 478, 838, Direction.Down), ("wd7_trophy_garden", "TrophyGarden", 14, 22, Direction.Up),
+        ("wd8_route218", "Sinnoh", 93, 752, Direction.Left), ("wd9_canalave", "Sinnoh", 58, 724, Direction.Up),
+        ("we0_canalave_bridge", "Sinnoh", 47, 725, Direction.Left), ("we1_iron_island", "Sinnoh", 100, 502, Direction.Right),
+        ("we2_iron_island_lift", "IronIslandB1FRight", 11, 20, Direction.Down), ("we3_route221", "Sinnoh", 272, 912, Direction.Up)
     };
     foreach (var (name, map, x, y, facing) in places)
     {
@@ -2334,6 +2409,8 @@ if (Run("world"))
     At("Sinnoh", 310, 545, Direction.Up); Frames(2); Shot("w75_eterna_night");
     At("Sinnoh", 475, 700, Direction.Up); Frames(2); Shot("w76_hearthome_night");
     At("Sinnoh", 570, 660, Direction.Up); Frames(2); Shot("w77_solaceon_night");
+    At("Sinnoh", 717, 613, Direction.Up); Frames(2); Shot("w78_veilstone_night");
+    At("Sinnoh", 59, 731, Direction.Left); Frames(2); Shot("w79_canalave_night");
     // A cave's light ignores the clock: the same picture as by day
     At("OreburghGate1F", 8, 22, Direction.Right); Frames(2); Shot("w74_oreburgh_gate_night");
     engine.Settings.TimeOfDay = TimeOfDay.Day;
@@ -2843,6 +2920,39 @@ if (mode == "conditions")
     Shot("96_transformed");
     party.Members.Remove(ditto);
     Set("currentState", GameState.Overworld);
+
+    // A move to learn with four known (plan 06 · R10): the question, then the moves to forget beside the field
+    // (96_learn_ask, 96_learn_choose), and the line once one is forgotten (96_learn_learned)
+    var learner = new Pokemon(PokemonDatabase.Get("Turtwig")!, 8);
+    learner.Moves.Clear();
+    foreach (var m in new[] { "Tackle", "Withdraw", "Growl", "Leer" }) learner.Moves.Add(new Move(MoveDatabase.Get(m)));
+    learner.CurrentExp = learner.ExpForNextLevel - 1;
+    party.Members.Insert(0, learner);
+    cb = StartBattle("Bidoof", 3);
+    ToMainMenu(cb);
+    cb.EnemyPokemon.CurrentHP = 1;
+    cb.SelectMove(0);
+    for (int i = 0; i < 80 && !cb.IsLearningMove; i++)
+    {
+        Confirm(cb);
+        Skip(0.3);
+    }
+    Skip(0.5);
+    Shot("96_learn_ask");
+    cb.ChooseLearn(0);
+    for (int i = 0; i < 20 && !cb.IsLearningMove; i++)
+    {
+        Confirm(cb);
+        Skip(0.3);
+    }
+    cb.MoveLearnCursor(1);
+    Skip(0.5);
+    Shot("96_learn_choose");
+    cb.ChooseLearn(1);
+    ReadTo("Turtwig learned Absorb!");
+    Shot("96_learn_learned");
+    party.Members.Remove(learner);
+    Set("currentState", GameState.Overworld);
 }
 
 // ---------------------------------------------------------------- contact sheets
@@ -2919,6 +3029,7 @@ if (Run("sheets"))
 if (Run("story"))
 {
     engine.StartNewGame();
+    PastTheOpening();
     Set("currentState", GameState.Overworld);
     ((LocationSign)Get("locationSign")).Hide();
     var story = (StoryState)Get("story");
@@ -3147,6 +3258,7 @@ if (Run("story"))
 if (mode == "fieldmoves")
 {
     engine.StartNewGame();
+    PastTheOpening();
     Set("currentState", GameState.Overworld);
     ((LocationSign)Get("locationSign")).Hide();
     var story = (StoryState)Get("story");
@@ -3353,6 +3465,135 @@ if (mode == "fieldmoves")
 
 // Writes species' models as .glb files into <out dir>/models, to refine in a 3D editor and drop into overrides/models
 // (the hand-built ones when no species are named)
+// ---------------------------------------------------------------- the first chapter (plan 02 · S4)
+
+// The opening's scenes (op*), played by the game's own scripts in a new game of their own: the bedroom and the
+// television's special, the rival bursting in, the rival running out of his door, the professor on Route 201 and
+// his briefcase, the first battle, the man in grey at Lake Verity, the Pokédex in the lab and the assistant's tour
+// of Sandgem Town. The scenes after the briefcase are started one by one where they play (the test project plays
+// the chapter through in order, OpeningTests). Not part of "all".
+if (mode == "opening")
+{
+    engine.StartNewGame();
+    Set("currentState", GameState.Overworld);
+    ((LocationSign)Get("locationSign")).Hide();
+    var story = (StoryState)Get("story");
+    var interact = T.GetMethod("TryInteract", Private)!;
+    var sinnoh = MapDatabase.Get("Sinnoh");
+
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Frames(1);
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+    // Reads on, saying yes to every question, until a line says something (null: to the script's end)
+    void ReadTo(string? text, int most = 2400)
+    {
+        for (int i = 0; i < most; i++)
+        {
+            if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); return; }
+            if (text == null && !engine.ScriptRunning && !Box().IsActive) return;
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+    }
+    void Scene(string file)
+    {
+        engine.StartScript(ScriptLibrary.Default.In(file, ScriptLibrary.OnEnter)!);
+    }
+
+    // ---- the bedroom: the special's last lines, then the room
+    Until(() => Box().IsActive, "the television");
+    Whole(); Shot("op01_the_television");
+    ReadTo(null);
+    Frames(30); Shot("op02_the_bedroom");
+
+    // ---- a step off the starting tile: the rival comes up the stairs
+    engine.Steering = (Direction.Down, false);
+    Until(() => engine.ScriptRunning, "the rival's entrance", 120);
+    engine.Steering = null;
+    ReadTo("Did you see it?"); Frames(10); Shot("op03_the_rival_bursts_in");
+    ReadTo(null);
+    Console.WriteLine($"bedroom: rival state {story.Var("VAR_PLAYER_HOUSE_RIVAL_STATE")}, rival on the map {((Map)Get("currentMap")).NPCs.Any(n => n.Key == "rival")}");
+
+    // ---- Twinleaf Town: the rival runs out of his door into the player
+    At("Sinnoh", 106, 876, Direction.Left);
+    engine.Steering = (Direction.Left, false);
+    Until(() => engine.ScriptRunning, "the rival's door", 120);
+    engine.Steering = null;
+    ReadTo("Who's standing right outside my door?"); Frames(10); Shot("op04_the_rival_runs_out");
+    ReadTo(null);
+
+    // ---- Route 201: the professor stops the two of them at the grass
+    story.SetVar("VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE", 2);
+    At("Sinnoh", 111, 858, Direction.Up);
+    engine.Steering = (Direction.Up, false);
+    Until(() => engine.ScriptRunning, "the professor's scene", 120);
+    engine.Steering = null;
+    ReadTo("Way too slow!"); Shot("op05_route201_the_rival_waits");
+    ReadTo("What do you think you are doing?"); Frames(10); Shot("op06_route201_the_professor");
+    ReadTo("Do you love Pokémon?");
+    Until(() => engine.Choice.IsOpen, "the professor's question"); Frames(20); Shot("op07_route201_do_you_love_pokemon");
+    ReadTo("Open it and choose"); Frames(10); Shot("op08_route201_the_briefcase");
+    ReadTo(null);
+
+    // ---- the briefcase: the three Pokémon
+    var briefcase = sinnoh.NPCs.First(n => n.Key == "briefcase");
+    At("Sinnoh", briefcase.GridX, briefcase.GridY + 1, Direction.Up);
+    interact.Invoke(engine, null);
+    Until(() => State() == GameState.StarterSelect, "the briefcase opening", 600);
+    Frames(40); Shot("op09_the_briefcase");
+    ((StarterSelectScreen)Get("starterSelectScreen")).Close();
+
+    // ---- the first battle: the rival with Platinum's team for a Turtwig
+    var rivalTeam = new Trainer { Id = "rival_route_201_turtwig" };
+    TrainerDatabase.Fill(rivalTeam, TrainerDatabase.Get(rivalTeam.Id)!);
+    engine.StartScript(ScriptLibrary.Default.In("lake_verity_low_water", ScriptLibrary.OnEnter)!);
+    PastTheOpening();
+    story.SetVar("VAR_VISITED_LAKE_VERITY_WITH_RIVAL", 0);
+    story.Unset("FLAG_HIDE_LAKE_VERITY_LOW_WATER_CYRUS");
+    var first = StartBattle("", 5, rivalTeam, "Route201");
+    Skip(1.0); Shot("op10_the_first_battle_begins");
+    ToMainMenu(first); Shot("op11_the_first_battle");
+
+    // ---- Lake Verity: the man in grey
+    At("LakeVerity", 46, 53, Direction.Up);
+    ReadTo("Who's that"); Frames(10); Shot("op12_lake_who_is_that");
+    ReadTo("My name is Cyrus."); Frames(30); Shot("op13_lake_cyrus");
+    ReadTo("Step aside."); Frames(10); Shot("op14_lake_step_aside");
+    ReadTo("Did you hear that?"); Frames(10); Shot("op15_lake_did_you_hear_that");
+    ReadTo(null);
+
+    // ---- the lab: the Pokédex
+    story.SetVar("VAR_SANDGEM_TOWN_STATE", 1);
+    story.SetVar("VAR_SANDGEM_TOWN_LAB_STATE", 0);
+    story.Unset("FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART");
+    Scene("RowanLab");
+    At("RowanLab", 5, 8, Direction.Up);
+    ReadTo("Let me have a look"); Frames(10); Shot("op16_lab_the_professor");
+    ReadTo("Will you take this Pokédex");
+    Until(() => engine.Choice.IsOpen, "the professor's request"); Frames(20); Shot("op17_lab_the_pokedex");
+    ReadTo("My first Pokémon is"); Frames(10); Shot("op18_lab_the_assistant");
+    ReadTo(null);
+
+    // ---- Sandgem Town: the professor's TM and the assistant's tour
+    story.SetVar("VAR_SANDGEM_TOWN_STATE", 1);
+    story.Unset("FLAG_HIDE_SANDGEM_TOWN_PROF_ROWAN");
+    story.Unset("FLAG_HIDE_SANDGEM_TOWN_COUNTERPART");
+    Scene("sandgem_town");
+    At("Sinnoh", 168, 843, Direction.Down);
+    ReadTo("One more thing."); Frames(10); Shot("op19_sandgem_one_more_thing");
+    ReadTo("That's the Pokémon Center"); Frames(50); Shot("op20_sandgem_the_center");
+    ReadTo("And that's the Poké Mart"); Frames(50); Shot("op21_sandgem_the_mart");
+    ReadTo(null);
+    Console.WriteLine($"opening: Pokédex {story.Has(StoryState.PokedexFlag)}, TM27 {inventory.GetQuantity(ItemDatabase.Get("TM27")!)}, sandgem state {story.Var("VAR_SANDGEM_TOWN_STATE")}");
+}
+
 if (mode == "export")
 {
     var asm = typeof(GameEngine).Assembly;

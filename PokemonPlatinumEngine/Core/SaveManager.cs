@@ -8,6 +8,9 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Core;
 
+/// <summary>A Safari Game as a save keeps it: the balls and the steps left.</summary>
+public sealed record SafariSave(int Balls, int Steps);
+
 public class SaveData
 {
     /// <summary>The <see cref="WorldVersion"/> from which Sinnoh's overworld is one map made from the imported world (plan 01 · M2).</summary>
@@ -23,6 +26,9 @@ public class SaveData
 
     /// <summary>Which of the two characters the player is. Saves from before the choice existed are the boy.</summary>
     public PlayerLook Look { get; set; }
+
+    /// <summary>The rival's name, given in the introduction (plan 02 · S4). Older saves call him by his own.</summary>
+    public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
 
     /// <summary>The number on the Trainer Card, drawn when the game began. 0 in older saves: one is drawn on loading.</summary>
     public int TrainerId { get; set; }
@@ -60,11 +66,17 @@ public class SaveData
     /// </summary>
     public MapSpot? Exit { get; set; }
 
+    /// <summary>The day the clock was last looked at, for Pokérus's days (plan 06 · R10). Null in older saves.</summary>
+    public DateTime? LastDay { get; set; }
+
     /// <summary>The key item kept on the item button (the original's registered item), by name; null when none is.</summary>
     public string? RegisteredItem { get; set; }
 
     /// <summary>The Pokétch: whether the player has it, its apps and the pedometer's count. Null in older saves.</summary>
     public PoketchSave? Poketch { get; set; }
+
+    /// <summary>A Safari Game under way in the Great Marsh (plan 01 · M7): its balls and steps left. Null when none is.</summary>
+    public SafariSave? Safari { get; set; }
 
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
@@ -149,6 +161,14 @@ public class SavedPokemonData
     public int IvSpAttack { get; set; } = 15;
     public int IvSpDefense { get; set; } = 15;
     public int IvSpeed { get; set; } = 15;
+
+    /// <summary>Its effort values (plan 06 · R10); 0 in saves from before they were gained.</summary>
+    public int EvHP { get; set; }
+    public int EvAttack { get; set; }
+    public int EvDefense { get; set; }
+    public int EvSpAttack { get; set; }
+    public int EvSpDefense { get; set; }
+    public int EvSpeed { get; set; }
     public int CurrentExp { get; set; } = 0;
 
     /// <summary>Null in saves from before abilities: the species' first ability is used.</summary>
@@ -162,6 +182,12 @@ public class SavedPokemonData
     /// <summary>Null in saves from before personality values: a new one is rolled.</summary>
     public uint? Personality { get; set; }
     public string? Ball { get; set; }
+
+    /// <summary>The trainer who first had it, when that wasn't the player (plan 06 · R10); left out for the player's own.</summary>
+    public TrainerMark? OriginalTrainer { get; set; }
+
+    /// <summary>Its Pokérus byte (<see cref="PokerusRules"/>); 0, left out, for one that never had it.</summary>
+    public int Pokerus { get; set; }
 
     /// <summary>Steps, move uses and knock-outs counted toward an evolution; left out when there are none.</summary>
     public Dictionary<string, int>? EvolutionProgress { get; set; }
@@ -186,6 +212,12 @@ public class SavedPokemonData
             IvSpAttack = p.IvSpAttack,
             IvSpDefense = p.IvSpDefense,
             IvSpeed = p.IvSpeed,
+            EvHP = p.EvHP,
+            EvAttack = p.EvAttack,
+            EvDefense = p.EvDefense,
+            EvSpAttack = p.EvSpAttack,
+            EvSpDefense = p.EvSpDefense,
+            EvSpeed = p.EvSpeed,
             CurrentExp = p.CurrentExp,
             Ability = p.AbilityName,
             HeldItem = p.HeldItem?.Name,
@@ -193,6 +225,8 @@ public class SavedPokemonData
             Beauty = p.Beauty,
             Personality = p.Personality,
             Ball = p.Ball,
+            OriginalTrainer = p.OriginalTrainer,
+            Pokerus = p.Pokerus,
             EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null
         };
 
@@ -217,10 +251,18 @@ public class SavedPokemonData
             IvSpAttack = IvSpAttack,
             IvSpDefense = IvSpDefense,
             IvSpeed = IvSpeed,
+            EvHP = EvHP,
+            EvAttack = EvAttack,
+            EvDefense = EvDefense,
+            EvSpAttack = EvSpAttack,
+            EvSpDefense = EvSpDefense,
+            EvSpeed = EvSpeed,
             CurrentExp = CurrentExp,
             HeldItem = HeldItem != null ? ItemDatabase.Get(HeldItem) : null,
             Beauty = Beauty,
-            Ball = Ball
+            Ball = Ball,
+            OriginalTrainer = OriginalTrainer,
+            Pokerus = Pokerus
         };
         if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;

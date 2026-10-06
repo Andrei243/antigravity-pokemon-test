@@ -130,7 +130,7 @@ public sealed partial class BattleCore
 
         user.MovedThisTurn = true;
         ItemLetItMoveFirst(act);
-        if (!CanMove(user, move))
+        if (!CanMove(user, move) || (!goesOn && Disobeys(user, ref move, ref target)))
         {
             v.LastMove = null;
             lastMoveShown = null;
@@ -475,6 +475,86 @@ public sealed partial class BattleCore
         }
         return true;
     }
+
+    /// <summary>
+    /// <c>BattleControllerPlayer_CheckObedience</c>, after what can stop a move and before its PP (plan 06 · R10):
+    /// a Pokémon of the player's whose original trainer is someone else, over the level the badges command
+    /// (<see cref="Obedience"/>), may not do as it's told. Each test is a roll of 256 against its level and the
+    /// cap. Failing the first, it ignores an order to Snore or Sleep Talk while asleep; passing the second, it uses
+    /// another of its moves it could pick instead (true is not returned: the move and target are changed);
+    /// otherwise, by how far over the cap it is, it lies down for a nap, hurts itself as a confused Pokémon does,
+    /// or does nothing. True when it doesn't use a move at all.
+    /// </summary>
+    private bool Disobeys(Battler user, ref Move move, ref Battler? target)
+    {
+        var p = user.Pokemon!;
+        if (!user.IsPlayerSide || user.Trainer != null || Kind == BattleKind.CatchingLesson) return false;
+        if (!Obedience.IsOutsider(p, Conditions.Player)) return false;
+        if (Obedience.LevelCap(Conditions.Badges) is not { } cap || p.Level <= cap) return false;
+        if (Obedience.Obeys(p.Level, cap, rng.Roll(RollKind.Obedience, 256))) return false;
+
+        if (move.Data.Effect == "RaiseAtkWhenHit") user.Volatile.Rage = false;
+        if (p.Status == StatusCondition.Sleep && UsableAsleep(move.Data))
+        {
+            Say($"{user.Name} ignored the order and slept on!");
+            return true;
+        }
+
+        if (Obedience.Obeys(p.Level, cap, rng.Roll(RollKind.Obedience, 256)))
+        {
+            var chosen = move;
+            var others = p.Moves.Where(m => m != chosen && WhyNotMove(user, m) == null).ToList();
+            if (others.Count == 0)
+            {
+                DoesNothing(user);
+                return true;
+            }
+            // The original draws a place of four until it lands on one it could pick
+            Move other;
+            do
+            {
+                int slot = rng.Roll(RollKind.Obedience, 4);
+                other = slot < p.Moves.Count ? p.Moves[slot] : chosen;
+            }
+            while (!others.Contains(other));
+            Say($"{user.Name} ignored the order and did as it liked!");
+            move = other;
+            target = null;
+            return false;
+        }
+
+        int over = p.Level - cap;
+        int roll = rng.Roll(RollKind.Obedience, 256);
+        if (roll < over && p.Status == StatusCondition.None && !Has(user, "Vital Spirit") && !Has(user, "Insomnia") && !UproarIsOn)
+        {
+            Say($"{user.Name} lay down for a nap!");
+            TryInflictStatus(user, StatusCondition.Sleep, null, false, By.Other);
+            return true;
+        }
+        if (roll - over < over)
+        {
+            // A typeless hit of 40 on itself, as a confused Pokémon's
+            Say($"{user.Name} won't do as it's told!");
+            var self = DamageCalculator.Calculate(user, user, move, rng, spread: false, powerOverride: 40, rules: Rules);
+            p.CurrentHP -= Math.Min(p.CurrentHP, self.Damage);
+            user.Turn.TookDamage = true;
+            Say("It hurt itself in its confusion!")
+                .AtImpact(new Struck(user.Place, p.CurrentHP, Hard: false)).AtImpact(new HitSounded(false));
+            Unlock(user);
+            return true;
+        }
+        DoesNothing(user);
+        return true;
+    }
+
+    /// <summary>One of four ways of not listening (<c>subscript_disobey_do_nothing</c>), drawn at random.</summary>
+    private void DoesNothing(Battler user) => Say(rng.Roll(RollKind.Obedience, 4) switch
+    {
+        1 => $"{user.Name} won't listen!",
+        2 => $"{user.Name} looked the other way!",
+        3 => $"{user.Name} acted as if it hadn't heard!",
+        _ => $"{user.Name} is lazing about!"
+    });
 
     /// <summary>The move was lost in a way a rampage or an uproar ends on.</summary>
     private static bool Lost(Battler user)

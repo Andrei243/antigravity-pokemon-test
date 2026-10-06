@@ -1,0 +1,70 @@
+# Veilstone City (the original's CITY07 role): the city carved out of a rocky basin, with its meteorites, the
+# department store, the Game Corner and the fighting Gym. A sturdy, proud D-major tune on a bright trumpet over brass
+# stabs and a marimba striking in threes and twos like a mason's hammer, with a bustling middle where the trumpet and
+# the horn call back and forth; at night a horn, a clarinet and a guitar. Original composition for this game.
+title Veilstone City
+tempo 126
+meter 4/4
+reverb 0.24
+nighttempo 0.93
+
+track lead trumpet night=horn vol=0.8 pan=0 rev=0.25
+  r1 | r1 |
+  L o5 d4. o4 a8 o5 d4 e8 f+8 | o5 g4. e8 c4 e8 g8 | o5 a4. g8 d4 e8 f+8 | o5 e2. c+8 e8 |
+  o5 d4. o4 a8 o5 d4 f+8 a8 | o5 a4. o6 c8 o5 a4 f4 | o5 g4. a8 b4 o6 c+4 | o6 d2. r4 |
+  q6 o5 f+8 f+8 a8 f+8 e8 d8 e4 | r1 | o5 g8 g8 b8 g8 a8 g8 e4 | r1 |
+  o5 b8 b8 a8 f+8 a8 b8 o6 d4 | r1 | q7 o5 e4 g4 o6 c4. o5 g8 | o5 a4. e8 c+4 e4 |
+  o5 d4. o4 a8 o5 d4 e8 f+8 | o5 g4. e8 c4 e8 g8 | o5 a4. g8 d4 e8 f+8 | o5 e2. c+8 e8 |
+  o5 d4. o4 a8 o5 d4 f+8 a8 | o5 a4. o6 c8 d4 c4 | o5 b4. o6 d8 e4 d4 | o6 c+4. o5 b8 a4 e8 o4 a8 |
+
+track counter horn night=clarinet vol=0.45 pan=-0.3 rev=0.3
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  o4 a2 f+2 | o4 a2 o5 c2 | o4 b2 o5 c+2 | o4 a2. r4 |
+  r1 | q6 o4 b8 b8 o5 d8 o4 b8 a8 g8 a4 | r1 | o4 a8 a8 o5 c+8 o4 a8 b8 a8 e4 |
+  r1 | o5 d8 d8 o4 b8 g8 b8 o5 d8 e4 | q7 o4 g4 o5 c4 e4. c8 | o4 e4. c+8 e4 a4 |
+  o4 f+2 a4 b4 | o5 c2 o4 g4 a4 | o4 b2 g4 a4 | o4 c+2. e4 |
+  o4 a2 f+2 | o4 f2 a2 | o4 g2 b2 | o4 e2 c+4 e4 |
+
+track stabs brass night=guitar vol=0.4 pan=0.25 rev=0.2
+  o4 (d f+ a)8 r4 (d f+ a)8 r4 (d f+ a)8 r8 | o4 (c+ e a)8 r4 (c+ e a)8 r4 (c+ e a)8 r8 |
+  L o4 (d f+ a)8 r4 (d f+ a)8 r4 (d f+ a)8 r8 | o4 (c e g)8 r4 (c e g)8 r4 (c e g)8 r8 | o3 (b >d g)8 r4 (b >d g)8 r4 (b >d g)8 r8 | o4 (c+ e a)8 r4 (c+ e a)8 r4 (c+ e a)8 r8 |
+  o4 (d f+ a)8 r4 (d f+ a)8 r4 (d f+ a)8 r8 | o4 (c f a)8 r4 (c f a)8 r4 (c f a)8 r8 | o3 (b >d g)8 r4 o4 (c+ e a)8 r4 (c+ e a)8 r8 | o4 (d f+ a)8 r4 (d f+ a)8 r4 (d f+ a)8 r8 |
+  [ r8 o4 (d f+ b)8 ]4 | [ r8 o3 (b >d g)8 ]4 | [ r8 o3 (b >e g)8 ]4 | [ r8 o4 (c+ e a)8 ]4 |
+  [ r8 o4 (d f+ b)8 ]4 | [ r8 o3 (b >d g)8 ]4 | [ r8 o4 (c e g)8 ]4 | o4 (c+ e a)8 r4 (c+ e a)8 r4 (c+ e a)8 r8 |
+  o4 (d f+ a)8 r4 (d f+ a)8 r4 (d f+ a)8 r8 | o4 (c e g)8 r4 (c e g)8 r4 (c e g)8 r8 | o3 (b >d g)8 r4 (b >d g)8 r4 (b >d g)8 r8 | o4 (c+ e a)8 r4 (c+ e a)8 r4 (c+ e a)8 r8 |
+  o4 (d f+ a)8 r4 (d f+ a)8 r4 (d f+ a)8 r8 | o4 (c f a)8 r4 (c f a)8 r4 (c f a)8 r8 | o3 (b >d g)8 r4 (b >d g)8 r4 (b >d g)8 r8 | o4 (c+ e a)8 r4 (c+ e a)8 r4 (c+ e a)8 r8 |
+
+track hammer marimba night=vibraphone vol=0.4 pan=-0.2 rev=0.2
+  v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 | v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 |
+  L v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 | v100 o4 c8 v62 g8 o5 c8 v100 o4 c8 v62 g8 o5 c8 v100 o4 c8 v62 g8 |
+  v100 o3 g8 v62 o4 d8 g8 v100 o3 g8 v62 o4 d8 g8 v100 o3 g8 v62 o4 d8 | v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 |
+  v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 | v100 o3 f8 v62 o4 c8 f8 v100 o3 f8 v62 o4 c8 f8 v100 o3 f8 v62 o4 c8 |
+  v100 o3 g8 v62 o4 d8 g8 v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 | v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 |
+  [ v90 o3 b16 v55 o4 f+16 b16 f+16 ]4 | [ v90 o3 g16 v55 o4 d16 g16 d16 ]4 | [ v90 o4 e16 v55 b16 o5 e16 o4 b16 ]4 | [ v90 o3 a16 v55 o4 e16 a16 e16 ]4 |
+  [ v90 o3 b16 v55 o4 f+16 b16 f+16 ]4 | [ v90 o3 g16 v55 o4 d16 g16 d16 ]4 | [ v90 o4 c16 v55 g16 o5 c16 o4 g16 ]4 | v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 |
+  v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 | v100 o4 c8 v62 g8 o5 c8 v100 o4 c8 v62 g8 o5 c8 v100 o4 c8 v62 g8 |
+  v100 o3 g8 v62 o4 d8 g8 v100 o3 g8 v62 o4 d8 g8 v100 o3 g8 v62 o4 d8 | v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 |
+  v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 o5 d8 v100 o4 d8 v62 a8 | v100 o3 f8 v62 o4 c8 f8 v100 o3 f8 v62 o4 c8 f8 v100 o3 f8 v62 o4 c8 |
+  v100 o3 g8 v62 o4 d8 g8 v100 o3 g8 v62 o4 d8 g8 v100 o3 g8 v62 o4 d8 | v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 a8 v100 o3 a8 v62 o4 e8 |
+
+track bass bass vol=0.66 rev=0.06
+  o3 d4. d4. a4 | o2 a4. a4. o3 e4 |
+  L o3 d4. d4. a4 | o3 c4. c4. g4 | o2 g4. g4. o3 d4 | o2 a4. a4. o3 c+4 |
+  o3 d4. d4. a4 | o3 f4. f4. c4 | o2 g4. a4. o3 c+4 | o3 d4. d4. f+4 |
+  [ o2 b8 o3 b8 ]4 | [ o2 g8 o3 g8 ]4 | [ o3 e8 o4 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 b8 o3 b8 ]4 | [ o2 g8 o3 g8 ]4 | [ o3 c8 o4 c8 ]4 | o2 a4. a4. o3 c+4 |
+  o3 d4. d4. a4 | o3 c4. c4. g4 | o2 g4. g4. o3 d4 | o2 a4. a4. o3 c+4 |
+  o3 d4. d4. a4 | o3 f4. f4. c4 | o2 g4. g4. o3 d4 | o2 a4. a4. o3 c+4 |
+
+track drums kit vol=0.5 rev=0.12
+  v100 (b c)8 v45 h8 v90 s8 v95 b8 v50 h8 v45 h8 v95 (b s)8 v45 h8 | v100 b8 v45 h8 v90 s8 v95 b8 v80 t16 t16 m16 m16 v90 f8 v95 (b s)8 |
+  L v100 (b c)8 v45 h8 v90 s8 v95 b8 v50 h8 v45 h8 v95 (b s)8 v45 h8 |
+  [ v100 b8 v45 h8 v90 s8 v95 b8 v50 h8 v45 h8 v95 (b s)8 v45 h8 | ]6
+  v100 b8 v45 h8 v90 s8 v95 b8 v80 t16 t16 m16 m16 v90 f8 v95 (b s)8 |
+  v100 (b c)8 v45 h16 h16 v90 (s x)8 v95 b8 v50 h16 h16 v45 h16 h16 v95 (b s x)8 v55 o8 |
+  [ v100 b8 v45 h16 h16 v90 (s x)8 v95 b8 v50 h16 h16 v45 h16 h16 v95 (b s x)8 v55 o8 | ]6
+  v100 b8 v45 h8 v90 s8 v95 b8 v80 t16 t16 m16 m16 v90 f16 f16 v95 (b s)8 |
+  v100 (b c)8 v45 h8 v90 s8 v95 b8 v50 h8 v45 h8 v95 (b s)8 v45 h8 |
+  [ v100 b8 v45 h8 v90 s8 v95 b8 v50 h8 v45 h8 v95 (b s)8 v45 h8 | ]6
+  v100 b8 v45 h8 v90 s8 v95 b8 v80 t16 t16 m16 m16 v90 f8 v95 (b s)8 |

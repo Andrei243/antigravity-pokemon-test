@@ -1,0 +1,27 @@
+# The Great Marsh's way in (plan 01 · M7). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats.
+#
+# The observatory in Pastoria City is passed through until its rooms are built (plan 01 · M11), so the counter's
+# question is asked as the player comes out into the marsh: for the fee, thirty Safari Balls and five hundred steps
+# (SafariGame). Saying no, or not having the money, takes the player back out.
+
+script OnEnter
+  if safari end
+  speaker "Attendant"
+  say "Welcome to the Great Marsh! This is where the Safari Game is played."
+  say "For $500 you get 30 Safari Balls and 500 steps to catch whatever you can find out in the marsh."
+  ask "Would you like to play?"
+  if no goto Leave
+  takemoney 500
+  if result == 0 goto Short
+  safari start
+  sound "select"
+  say "Here are your 30 Safari Balls. When they're gone, or your steps run out, the game is over."
+  say "Throw bait to calm a Pokémon down, or mud to keep it in one place. Good luck out there!"
+  end
+label Short
+  say "Oh dear, you don't have quite enough for the fee."
+label Leave
+  say "Then please come again some time!"
+  warp "Sinnoh" 610 810 down
+  end

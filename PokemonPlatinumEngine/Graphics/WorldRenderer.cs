@@ -440,6 +440,7 @@ public sealed class WorldRenderer
             if (indoors) scene.DrawLights(rig.LampGlow, 0f, rig.LightTint);
             else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
         }
+        DrawReflections(map, camera);
         DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
@@ -954,6 +955,32 @@ public sealed class WorldRenderer
         Rlgl.TexCoord2f(u0, v0); Rlgl.Vertex3f(tx0, y1, cz);
         Rlgl.End();
         Rlgl.SetTexture(0);
+    }
+
+    /// <summary>
+    /// Whoever stands in a puddle is mirrored in it (style guide, "Puddles"): their sprite upside down on the ground
+    /// to the south of their feet, as far as the puddle runs that way.
+    /// </summary>
+    private void DrawReflections(Map map, Camera3D camera)
+    {
+        static bool Mirrors(TileBehavior b) => b is TileBehavior.Puddle or TileBehavior.StillPuddle;
+        float pitchDeg = MapScene.PitchOf(map);
+        Camera3D? straight = map.IsIndoors ? null : camera;
+        bool any = false;
+        foreach (var actor in actors)
+        {
+            int tx = (int)MathF.Floor(actor.Feet.X), tz = (int)MathF.Floor(actor.Feet.Z);
+            if (!map.InBounds(tx, tz) || !Mirrors(map.BehaviourAt(tx, tz))) continue;
+            int end = tz + 1;
+            while (end < tz + 4 && map.InBounds(tx, end) && Mirrors(map.BehaviourAt(tx, end))) end++;
+            if (!any) Rlgl.DisableDepthMask();
+            any = true;
+            CharacterSprites.DrawReflection(actor.Rig, actor.Pose, actor.Yaw, actor.Feet, pitchDeg, end - actor.Feet.Z, straight);
+        }
+        if (!any) return;
+        Rlgl.SetTexture(0);
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
     }
 
     /// <summary>

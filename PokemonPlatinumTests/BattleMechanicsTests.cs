@@ -689,7 +689,7 @@ public class BattleMechanicsTests
         said = Settle(battle);
         if (battle.Result == BattleResult.PlayerVictory)
         {
-            Assert.Contains("Player defeated Galactic Grunt A and Galactic Grunt B!", said);
+            Assert.Contains("Lucas defeated Galactic Grunt A and Galactic Grunt B!", said);
             Assert.Contains("Lucas received $300 for winning!", said);
         }
     }

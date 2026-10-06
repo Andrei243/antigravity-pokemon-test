@@ -1,0 +1,46 @@
+{
+  "key": "iron_island_b2f_right_room",
+  "index": 292,
+  "name": "Iron Island",
+  "matrix": 83,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "IronIslandCave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "iron_island_b2f_right_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Onix", "level": 32 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Golbat", "level": 31 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Graveler", "level": 34 },
+    { "species": "Steelix", "level": 33 },
+    { "species": "Steelix", "level": 35 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 2, "z": 3, "to": "iron_island_b1f_right_room", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_elixir", "looks": "pokeball", "movement": "none", "x": 16, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_RIGHT_ROOM_ELIXIR", "item": "Elixir", "script": "7138" },
+    { "id": "item_tm23", "looks": "pokeball", "movement": "none", "x": 7, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B2F_RIGHT_ROOM_TM23", "item": "TM23", "script": "7139" },
+    { "id": "worker_noel", "looks": "worker", "movement": "walk_east_north_west_south", "x": 4, "z": 5, "facing": 3, "rangeX": 6, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_WORKER_NOEL" },
+    { "id": "worker_braden", "looks": "worker", "movement": "walk_north_east_west_south", "x": 1, "z": 19, "facing": 0, "rangeX": 4, "rangeZ": 6, "trainer": "normal", "sight": 3, "script": "TRAINER_WORKER_BRADEN" }
+  ],
+  "signs": [
+    { "x": 12, "z": 17, "type": 2, "script": "8053", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_IRON_ISLAND_B2F_RIGHT_ROOM_STAR_PIECE", "range": 2 }
+  ],
+  "triggers": []
+}

@@ -65,6 +65,8 @@ public static class Cover
         TileBehavior.Sand => TerrainCover.Sand,
         TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow or TileBehavior.ShallowSnow or TileBehavior.ShadedSnow => TerrainCover.Snow,
         TileBehavior.Mud or TileBehavior.DeepMud or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass => TerrainCover.Marsh,
+        // A puddle is a look of its own, whatever ground its texture shows (plan 01 · M7)
+        TileBehavior.Puddle or TileBehavior.StillPuddle => TerrainCover.Puddle,
         TileBehavior.Bridge or TileBehavior.BridgeEnd or TileBehavior.BridgeOverCave or TileBehavior.BridgeOverWater or TileBehavior.BridgeOverSnow
             or (>= TileBehavior.BikeBridgeNorthSouth and <= TileBehavior.BikeBridgeEastWestOverSand) => TerrainCover.Bridge,
         _ => null

@@ -29,6 +29,8 @@ public sealed partial class BattleCore
         place.FoughtAgainst.Clear();
         foreach (var foe in EnemySlots.Where(b => b.IsActive))
             foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
+        // The player's own that took part, for what a battle leaves on them (Burmy's cloak)
+        if (place.IsPlayerSide && place.Trainer == null) sentOut.Add(place.Pokemon);
     }
 
     /// <summary>

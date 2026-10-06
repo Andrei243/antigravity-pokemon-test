@@ -336,6 +336,21 @@ public class Pokemon
     /// <summary>The ball it was caught in (null for one that wasn't caught). A Luxury Ball makes friendship grow faster.</summary>
     public string? Ball { get; set; }
 
+    /// <summary>
+    /// The trainer who first had it (the original's OT: name, ID number and whether a boy or a girl; plan 06 · R10).
+    /// Null for the player's own: one the player caught, hatched or was given, and every Pokémon of a save from
+    /// before it was kept. Only one that came from someone else carries a mark, and it is what a Pokémon obeys
+    /// by (<see cref="Obedience"/>) and gains more EXP for.
+    /// </summary>
+    public TrainerMark? OriginalTrainer { get; set; }
+
+    /// <summary>
+    /// Pokérus as the original keeps it, in one byte (<see cref="PokerusRules"/>): the strain in the high four
+    /// bits and the days it has left in the low four. 0 is one that never had it; a strain with no days left is
+    /// cured, and still doubles the EVs it gains.
+    /// </summary>
+    public int Pokerus { get; set; }
+
     /// <summary>What it has done toward an evolution that counts something: steps walked, uses of a move, foes knocked out
     /// (the keys are <see cref="Evolution"/>'s).</summary>
     public Dictionary<string, int> EvolutionProgress { get; private set; } = new();
@@ -415,6 +430,9 @@ public class Pokemon
     public float Height => FormData?.Height ?? Species.Height;
     public float Weight => FormData?.Weight ?? Species.Weight;
     public int BaseExpYield => FormData?.BaseExpYield ?? Species.BaseExpYield;
+
+    /// <summary>The effort it leaves the Pokémon that beat it: its form's, or its species'.</summary>
+    public StatSpread? EvYield => FormData?.EvYield ?? Species.EvYield;
     public int CatchRate => FormData?.CatchRate ?? Species.CatchRate;
 
     /// <summary>The name its model and sprites are asked for by: its form's, or its species'.</summary>
@@ -435,7 +453,8 @@ public class Pokemon
         Gender = gender ?? drawnGender;
         Form = FormOfGender();
         Nature = nature ?? drawnNature;
-        IsShiny = rng.Next(8192) == 0;
+        // One in 8,192 by Platinum's rules, one in 4,096 by the modern ones (plan 06 · R10)
+        IsShiny = rng.Next(Ruleset.Current.ShinyOdds) == 0;
         // One of its form's abilities, each as likely
         AbilityName = Abilities.Count == 0 ? null : Abilities[rng.Next(Abilities.Count)];
 
@@ -504,6 +523,17 @@ public class Pokemon
     }
 
     public void CalculateStats() => RecalculateStats();
+
+    /// <summary>
+    /// Works its stats out again and moves its HP by what its maximum moved (<c>Pokemon_CalcStats</c>): what the
+    /// original does after a vitamin. A fainted Pokémon stays down.
+    /// </summary>
+    public void ReckonStats()
+    {
+        int oldMax = MaxHP;
+        RecalculateStats();
+        if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMax, 1, MaxHP);
+    }
 
     public void RecalculateStats()
     {
@@ -683,9 +713,17 @@ public class Pokemon
     /// Adds EXP and levels up as far as it reaches; true if the level rose. Evolution is not part of it: the games
     /// evolve once the battle (or the item's use) is over, so ask <see cref="Evolution.Find"/> then.
     /// </summary>
-    public bool GainExp(int expGained, out List<string> newMovesLearned)
+    public bool GainExp(int expGained, out List<string> newMovesLearned) => GainExp(expGained, out newMovesLearned, out _);
+
+    /// <param name="newMovesLearned">The moves of the levels reached that it learned, into a free place.</param>
+    /// <param name="movesWanted">
+    /// Those it couldn't, knowing four already: the game asks which move to forget for each (the original's
+    /// <c>LEARNSET_ALL_SLOTS_FILLED</c>). A move it knows already is neither.
+    /// </param>
+    public bool GainExp(int expGained, out List<string> newMovesLearned, out List<string> movesWanted)
     {
         newMovesLearned = new List<string>();
+        movesWanted = new List<string>();
         if (Level >= 100) return false;
 
         CurrentExp += expGained;
@@ -700,10 +738,11 @@ public class Pokemon
             RecalculateStats();
             CurrentHP += (MaxHP - oldMaxHP); // Keep HP difference
 
-            // Check for new moves
-            var movesToLearn = Learnset.Where(m => m.Level == Level);
-            foreach (var m in movesToLearn)
+            // The moves of the new level, in the learnset's order (Pokemon_LevelUpMove): learned into a free
+            // place, or wanted when there is none; one it knows already is passed over
+            foreach (var m in Learnset.Where(m => m.Level == Level))
             {
+                if (Knows(m.MoveName) || movesWanted.Contains(m.MoveName)) continue;
                 if (Moves.Count < 4)
                 {
                     Moves.Add(MoveDatabase.Create(m.MoveName));
@@ -711,7 +750,7 @@ public class Pokemon
                 }
                 else
                 {
-                    newMovesLearned.Add(m.MoveName);
+                    movesWanted.Add(m.MoveName);
                 }
             }
         }
@@ -833,6 +872,8 @@ public class Pokemon
         Beauty = other.Beauty;
         Personality = other.Personality;
         Ball = other.Ball;
+        OriginalTrainer = other.OriginalTrainer;
+        Pokerus = other.Pokerus;
 
         CurrentHP = other.CurrentHP;
         MaxHP = other.MaxHP;
@@ -874,3 +915,12 @@ public class Pokemon
     }
 }
 
+/// <summary>
+/// Who a Pokémon first belonged to, as the original marks it (<c>MON_DATA_OT_NAME</c>, <c>OT_ID</c>, <c>OT_GENDER</c>):
+/// a Pokémon is the player's own when all three are the player's (<c>BattleSystem_PokemonIsOT</c>).
+/// </summary>
+public sealed record TrainerMark(string Name, int Id, Core.PlayerLook Look)
+{
+    /// <summary>Whether this is the given trainer.</summary>
+    public bool Is(string name, int id, Core.PlayerLook look) => Name == name && Id == id && Look == look;
+}

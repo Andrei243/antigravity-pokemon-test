@@ -156,4 +156,21 @@ internal static partial class ModernUi
         UiShapes.Shape(plate, 18, fill, new Color(234, 240, 248, (int)(255 * label)), new Color(52, 64, 96, (int)(255 * label)), 3, skew: -0.2f);
         UiFonts.DrawCentered(move, plate.X + 48f, plate.Y + plate.Height / 2f, 52, Ink with { A = (byte)(255 * label) }, UiWeight.Black);
     }
+
+    /// <summary>
+    /// The Safari Game's count (style guide, "The Safari Game"; plan 01 · M7): the balls and the steps left, on a
+    /// panel at the top right. A number turns red at a fifth of its start or under.
+    /// </summary>
+    public static void SafariCount(int sw, int balls, int steps)
+    {
+        var r = new Rectangle(sw - 32 - 300, 32, 300, 96);
+        Panel(r, 24);
+        void Count(string label, int value, int low, float x)
+        {
+            Label(label, x, r.Y + 18);
+            UiFonts.Draw(value.ToString(), x, r.Y + 44, 36, value <= low ? Red : Ink, UiWeight.Black);
+        }
+        Count("SAFARI BALLS", balls, Models.SafariGame.StartBalls / 5, r.X + 28);
+        Count("STEPS", steps, Models.SafariGame.StartSteps / 5, r.X + 184);
+    }
 }

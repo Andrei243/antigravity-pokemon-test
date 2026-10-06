@@ -1,0 +1,24 @@
+# The rival's room (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_twinleaf_town_rival_house_2f.s): he is packing, sees the player, and dashes off to wait on the
+# road north of town, which lets the guitarist let the player through.
+
+
+script OnEnter
+  if var VAR_RIVAL_HOUSE_STATE != 0 end
+  speaker "{rival}"
+  say "Bag... got it. Notebook... got it. Okay! Now all I need is..."
+  emote rival exclaim
+  face rival player
+  music "common/rival"
+  say "{player}! What are you doing in here? We're going to see Professor Rowan, remember?"
+  say "I'll be waiting on the road north of town. Don't be late, or it's a ten-million fine!"
+  walk player right 1
+  walk rival left 4 up 1 fast
+  hide rival
+  sound "stairs"
+  setflag FLAG_HIDE_TWINLEAF_TOWN_RIVAL_HOUSE_2F_RIVAL
+  setflag FLAG_RIVAL_LEFT_HOME
+  music area
+  setvar VAR_RIVAL_HOUSE_STATE 1
+  setvar VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE 2
+  end

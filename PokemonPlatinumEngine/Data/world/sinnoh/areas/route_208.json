@@ -62,6 +62,7 @@
     { "species": "Seaking", "level": 40, "maxLevel": 55 }
   ],
   "superRodRate": 75,
+  "eastSea": true,
   "warps": [
     { "x": 447, "z": 726, "to": "route_208_gate_to_hearthome_city", "toWarp": 1 },
     { "x": 447, "z": 727, "to": "route_208_gate_to_hearthome_city", "toWarp": 1 },

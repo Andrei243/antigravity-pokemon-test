@@ -1,0 +1,91 @@
+{
+  "key": "canalave_city",
+  "index": 33,
+  "name": "Canalave City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "City",
+  "dayMusic": "CITY02_D",
+  "nightMusic": "CITY02_N",
+  "encounters": "canalave_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Shellos", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 },
+    { "species": "Gastrodon", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Finneon", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Finneon", "level": 10, "maxLevel": 25 },
+    { "species": "Finneon", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 30, "maxLevel": 40 },
+    { "species": "Staryu", "level": 20, "maxLevel": 50 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 39, "z": 731, "to": "canalave_city_gym", "toWarp": 0 },
+    { "x": 58, "z": 722, "to": "canalave_city_pokecenter_1f", "toWarp": 0 },
+    { "x": 53, "z": 740, "to": "canalave_city_mart", "toWarp": 0 },
+    { "x": 37, "z": 718, "to": "canalave_library_1f", "toWarp": 0 },
+    { "x": 54, "z": 748, "to": "canalave_city_southeast_house", "toWarp": 0 },
+    { "x": 58, "z": 713, "to": "canalave_city_harbor_inn", "toWarp": 0 },
+    { "x": 39, "z": 748, "to": "canalave_city_sailor_eldritch_house", "toWarp": 0 },
+    { "x": 63, "z": 754, "to": "route_218_gate_to_canalave_city", "toWarp": 0 },
+    { "x": 63, "z": 755, "to": "route_218_gate_to_canalave_city", "toWarp": 0 },
+    { "x": 53, "z": 732, "to": "canalave_city_east_house", "toWarp": 0 },
+    { "x": 38, "z": 740, "to": "canalave_city_west_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "collector", "looks": "collector", "movement": "wander_around", "x": 58, "z": 749, "facing": 0, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "8" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 52, "z": 717, "facing": 2, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "11" },
+    { "id": "pokemon_breeder_m", "looks": "pokemon_breeder_m", "movement": "wander_around", "x": 59, "z": 728, "facing": 3, "rangeX": 2, "rangeZ": 1, "y": 1, "script": "9" },
+    { "id": "ace_trainer_f", "looks": "ace_trainer_f", "movement": "wander_north_and_south", "x": 33, "z": 730, "facing": 1, "rangeX": 0, "rangeZ": 1, "y": 1, "script": "10" },
+    { "id": "signboard_canalave_library", "looks": "signboard", "movement": "none", "x": 35, "z": 722, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "16" },
+    { "id": "gym_signpost", "looks": "gym_signpost", "movement": "none", "x": 36, "z": 732, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "15" },
+    { "id": "signboard_canalave_dock", "looks": "signboard", "movement": "none", "x": 41, "z": 752, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "18" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 54, "z": 754, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "14" },
+    { "id": "signboard_sailor_eldritchs_house", "looks": "signboard", "movement": "none", "x": 37, "z": 748, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "17" },
+    { "id": "psyduck", "looks": "psyduck", "movement": "none", "x": 52, "z": 718, "facing": 1, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "12" },
+    { "id": "old_man", "looks": "old_man", "movement": "wander_west_and_east", "x": 41, "z": 735, "facing": 2, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "13" },
+    { "id": "rival_bridge", "looks": "barry", "movement": "look_north", "x": 37, "z": 723, "facing": 0, "rangeX": 1, "rangeZ": 1, "y": 1, "hiddenBy": "FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE", "script": "3" },
+    { "id": "counterpart", "looks": "var_0", "movement": "look_south", "x": 39, "z": 720, "facing": 1, "rangeX": 1, "rangeZ": 1, "y": 1, "hiddenBy": "FLAG_HIDE_CANALAVE_CITY_COUNTERPART", "script": "7" },
+    { "id": "prof_rowan", "looks": "prof_rowan", "movement": "look_south", "x": 38, "z": 720, "facing": 1, "rangeX": 1, "rangeZ": 1, "y": 1, "hiddenBy": "FLAG_HIDE_CANALAVE_CITY_PROF_ROWAN", "script": "6" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_west", "x": 43, "z": 725, "facing": 0, "rangeX": 1, "rangeZ": 1, "y": 1, "hiddenBy": "FLAG_HIDE_CANALAVE_CITY_SAILOR", "script": "0" },
+    { "id": "item_tm89", "looks": "pokeball", "movement": "none", "x": 34, "z": 762, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_CANALAVE_CITY_TM89", "item": "TM89", "script": "7134" },
+    { "id": "sailor_eldritch", "looks": "sailor", "movement": "look_west", "x": 45, "z": 750, "facing": 0, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "20" },
+    { "id": "signboard_harbor_inn", "looks": "signboard", "movement": "none", "x": 56, "z": 714, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "19" },
+    { "id": "rival_library", "looks": "barry", "movement": "look_south", "x": 37, "z": 719, "facing": 1, "rangeX": 1, "rangeZ": 1, "y": 1, "hiddenBy": "FLAG_HIDE_CANALAVE_CITY_RIVAL_LIBRARY", "script": "25" }
+  ],
+  "signs": [
+    { "x": 59, "z": 712, "type": 0, "script": "21" },
+    { "x": 36, "z": 753, "type": 2, "script": "8218", "item": "Big Pearl", "flag": "FLAG_OBTAINED_HIDDEN_CANALAVE_CITY_BIG_PEARL", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 47, "z": 723, "width": 1, "depth": 4, "script": "2", "variable": "VAR_CANALAVE_CITY_STATE", "value": "0" }
+  ]
+}

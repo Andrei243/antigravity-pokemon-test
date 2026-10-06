@@ -1,0 +1,43 @@
+{
+  "key": "iron_island_b1f_left_room",
+  "index": 290,
+  "name": "Iron Island",
+  "matrix": 81,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "IronIslandCave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "iron_island_b1f_left_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 30 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Onix", "level": 31 },
+    { "species": "Onix", "level": 33 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 15, "z": 3, "to": "iron_island_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_protector", "looks": "pokeball", "movement": "none", "x": 5, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B1F_LEFT_ROOM_PROTECTOR", "item": "Protector", "script": "7135" },
+    { "id": "camper_lawrence", "looks": "camper", "movement": "look_south_and_east", "x": 11, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_CAMPER_LAWRENCE" },
+    { "id": "item_yellow_shard", "looks": "pokeball", "movement": "none", "x": 7, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B1F_LEFT_ROOM_YELLOW_SHARD", "item": "Yellow Shard", "script": "7287" }
+  ],
+  "signs": [],
+  "triggers": []
+}

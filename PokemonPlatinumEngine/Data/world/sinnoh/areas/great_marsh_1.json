@@ -1,0 +1,79 @@
+{
+  "key": "great_marsh_1",
+  "index": 504,
+  "name": "Great Marsh",
+  "matrix": 240,
+  "kind": "Outdoors",
+  "sign": "Forest",
+  "weather": "Clear",
+  "camera": "ZoomedIn",
+  "battleBackground": "Forest",
+  "dayMusic": "D_SAFARI",
+  "nightMusic": "D_SAFARI",
+  "encounters": "great_marsh_1",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Wooper", "level": 28 },
+    { "species": "Bibarel", "level": 28 },
+    { "species": "Tropius", "level": 28 },
+    { "species": "Tropius", "level": 30 },
+    { "species": "Wooper", "level": 29 },
+    { "species": "Quagsire", "level": 30 },
+    { "species": "Wooper", "level": 28 },
+    { "species": "Wooper", "level": 30 },
+    { "species": "Yanma", "level": 30 },
+    { "species": "Tangela", "level": 30 },
+    { "species": "Yanma", "level": 31 },
+    { "species": "Tangela", "level": 31 }
+  ],
+  "landRate": 35,
+  "water": [
+    { "species": "Wooper", "level": 20, "maxLevel": 30 },
+    { "species": "Wooper", "level": 20, "maxLevel": 30 },
+    { "species": "Quagsire", "level": 20, "maxLevel": 40 },
+    { "species": "Quagsire", "level": 20, "maxLevel": 40 },
+    { "species": "Quagsire", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 3, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 4, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Carvanha", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 20, "maxLevel": 50 },
+    { "species": "Carvanha", "level": 40, "maxLevel": 55 },
+    { "species": "Carvanha", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [],
+  "objects": [
+    { "id": "item_yellow_shard", "looks": "pokeball", "movement": "none", "x": 48, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_GREAT_MARSH_1_YELLOW_SHARD", "item": "Yellow Shard", "script": "7066" },
+    { "id": "item_poke_ball", "looks": "pokeball", "movement": "none", "x": 49, "z": 54, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_GREAT_MARSH_1_POKE_BALL", "item": "Poké Ball", "script": "7067" },
+    { "id": "signboard", "looks": "signboard", "movement": "none", "x": 61, "z": 46, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "ruin_maniac", "looks": "ruin_maniac", "movement": "look_around", "x": 55, "z": 58, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "signboard_great_marsh_2", "looks": "signboard", "movement": "none", "x": 70, "z": 46, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_GREAT_MARSH_2", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 62, "z": 38, "type": 0, "script": "8803" },
+    { "x": 33, "z": 37, "type": 2, "script": "8210", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_GREAT_MARSH_1_RARE_CANDY", "range": 1 }
+  ],
+  "triggers": []
+}

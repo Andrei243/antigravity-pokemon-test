@@ -233,6 +233,44 @@ internal static class CharacterSprites
     }
 
     /// <summary>
+    /// A character's reflection in a puddle (style guide, "Puddles"): the baked sprite upside down on the ground
+    /// under the feet, as long as it looks tall (its height over the sine of the camera's pitch), tinted and fading
+    /// to nothing, and cut off <paramref name="reach"/> tiles south of the feet, where the puddle ends. Drawn with
+    /// rlgl and the default shader inside the scene pass, as the blob shadows are; given the field's camera, each
+    /// corner on raised ground is moved where the scenery's shader puts the ground (<see cref="WorldRenderer.Straighten"/>).
+    /// </summary>
+    public static void DrawReflection(CharacterRig rig, CharacterPose pose, float yaw, Vector3 feet, float pitchDeg, float reach, Camera3D? straight)
+    {
+        if (!Cache.TryGetValue(KeyOf(rig, pose, yaw), out var baked)) return;
+        float sin = MathF.Sin(pitchDeg * MathF.PI / 180f);
+        float length = FrameH / sin;
+        float shown = MathF.Min(length, reach);
+        if (shown <= 1f / TexelsPerUnit) return;
+
+        // The feet stand a little above the sprite's bottom row (DrawBillboard's margin): the mirror starts at them
+        float footV = 1f - 0.05f / FrameH;
+        float endV = MathF.Max(0f, footV - shown * sin / FrameH);
+        float x0 = WorldRenderer.SnapToTexel(feet.X) - FrameW / 2f, x1 = x0 + FrameW;
+        float z0 = WorldRenderer.SnapToTexel(feet.Z), z1 = z0 + MathF.Round(shown * TexelsPerUnit) / TexelsPerUnit;
+        float y = feet.Y + 0.012f;
+        byte near = 115, far = (byte)(near * Math.Clamp(1f - shown / length, 0f, 1f));
+
+        float X(float x, float z) => straight is { } cam && feet.Y != 0f ? WorldRenderer.Straighten(cam, pitchDeg, x, y, z) : x;
+        Rlgl.CheckRenderBatchLimit(4);
+        Rlgl.SetTexture(baked.Texture.Id);
+        Rlgl.Begin(DrawMode.Quads);
+        Rlgl.Color4ub(150, 170, 196, near);
+        Rlgl.TexCoord2f(0, footV); Rlgl.Vertex3f(X(x0, z0), y, z0);
+        Rlgl.Color4ub(150, 170, 196, far);
+        Rlgl.TexCoord2f(0, endV); Rlgl.Vertex3f(X(x0, z1), y, z1);
+        Rlgl.TexCoord2f(1, endV); Rlgl.Vertex3f(X(x1, z1), y, z1);
+        Rlgl.Color4ub(150, 170, 196, near);
+        Rlgl.TexCoord2f(1, footV); Rlgl.Vertex3f(X(x1, z0), y, z0);
+        Rlgl.End();
+        FrameProfiler.Count(2);
+    }
+
+    /// <summary>
     /// A character's field sprite standing still and facing the camera, for the interface to show large (the
     /// Trainer Card, the name entry). Bakes it if it isn't baked yet, so call outside any texture mode.
     /// </summary>

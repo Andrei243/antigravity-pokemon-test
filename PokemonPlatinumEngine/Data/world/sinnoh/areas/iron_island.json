@@ -1,0 +1,63 @@
+{
+  "key": "iron_island",
+  "index": 288,
+  "name": "Iron Island",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Cave",
+  "weather": "Clear8",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_B_D",
+  "nightMusic": "ROAD_B_N",
+  "encounters": "iron_island",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Wingull", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 20, "maxLevel": 40 },
+    { "species": "Pelipper", "level": 20, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Finneon", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Finneon", "level": 10, "maxLevel": 25 },
+    { "species": "Finneon", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 30, "maxLevel": 40 },
+    { "species": "Qwilfish", "level": 20, "maxLevel": 50 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 111, "z": 499, "to": "iron_island_house", "toWarp": 0 },
+    { "x": 117, "z": 489, "to": "iron_island_1f", "toWarp": 0 },
+    { "x": 103, "z": 489, "to": "iron_island_b3f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "none", "x": 99, "z": 502, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "riley", "looks": "riley", "movement": "look_south", "x": 117, "z": 490, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_IRON_ISLAND_RILEY", "script": "3" }
+  ],
+  "signs": [
+    { "x": 114, "z": 504, "type": 2, "script": "8051", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_IRON_ISLAND_STAR_PIECE", "range": 2 }
+  ],
+  "triggers": []
+}

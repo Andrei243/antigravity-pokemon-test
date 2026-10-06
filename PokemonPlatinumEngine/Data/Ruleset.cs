@@ -149,6 +149,29 @@ public sealed class Ruleset
     /// </summary>
     public bool SimpleDoublesChanges { get; private init; }
 
+    // ---- After the battle (plan 06 · R10)
+
+    /// <summary>
+    /// EXP by the newest games' formula (Generation 7 on): the foe's base EXP and level over 5, scaled by the two
+    /// levels (<c>((2L + 10) / (L + Lp + 10))^2.5</c>), plus one, and given to the whole party, the Pokémon that
+    /// didn't fight getting half; no bonus for a trainer's Pokémon, a fifth more for one past the level it would
+    /// evolve at. In Platinum the foe's base EXP times its level over 7 is shared among those who fought it, and
+    /// an Exp. Share's holder takes half.
+    /// </summary>
+    public bool ScaledExp { get; private init; }
+
+    /// <summary>The most effort one stat can hold: 255 in Platinum, 252 from Generation 6.</summary>
+    public int EvStatCap { get; private init; } = 255;
+
+    /// <summary>How far a vitamin raises a stat's effort: 100 in Platinum, the stat's cap from Generation 8.</summary>
+    public int VitaminLimit { get; private init; } = 100;
+
+    /// <summary>Whether a Pokémon at level 100 still gains effort from a battle (Generation 5 on); in Platinum it gains nothing.</summary>
+    public bool EvsAtLevel100 { get; private init; }
+
+    /// <summary>One wild or new Pokémon in how many is shiny: 8,192 in Platinum, 4,096 from Generation 6.</summary>
+    public int ShinyOdds { get; private init; } = 8192;
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -186,7 +209,12 @@ public sealed class Ruleset
         ChatterConfusionChance = 100,
         KnockOffStrongerOnItem = true,
         FoesCanTakeItems = true,
-        SimpleDoublesChanges = true
+        SimpleDoublesChanges = true,
+        ScaledExp = true,
+        EvStatCap = 252,
+        VitaminLimit = 252,
+        EvsAtLevel100 = true,
+        ShinyOdds = 4096
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

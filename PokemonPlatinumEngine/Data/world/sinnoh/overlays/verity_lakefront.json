@@ -2,6 +2,13 @@
   "area": "verity_lakefront",
   "bgmTrack": "sinnoh/route201",
   "trees": "Pine",
+  // The rival runs on ahead from Route 201 and waits at the way in (plan 02 · S4; in the original he walks behind
+  // the player), and the original's trigger takes them both in (scripts/verity_lakefront.txt)
+  "npcs": [
+    { "id": "rival", "name": "{rival}", "npcType": "Rival", "x": 82, "y": 846, "facing": "Left", "shownBy": "FLAG_RIVAL_WAITS_AT_LAKEFRONT",
+      "dialog": [ "{rival}: Come on! The lake is right up there!" ] }
+  ],
+  "triggers": [ { "trigger": 0, "script": "IntoTheLake" } ],
   "signs": {
     "trainer_tips_signpost": "Lake Verity\nThey say a Pokémon of emotion sleeps at the bottom of this lake."
   }

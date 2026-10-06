@@ -585,11 +585,15 @@ public class StoryTests
     public void NoScriptIsLeftThatNothingStarts()
     {
         var started = Starters().Select(s => Scripts.Find(s.Script, s.File)!.FullName).ToHashSet();
-        started.UnionWith(new[] { FieldScripts.Nurse, FieldScripts.Clerk, FieldScripts.Pc, FieldScripts.Briefcase, FieldScripts.Attendant, FieldScripts.Trainer, FieldScripts.Talk, FieldScripts.Sign, ScriptLibrary.NewGame });
+        started.UnionWith(new[] { FieldScripts.Nurse, FieldScripts.Clerk, FieldScripts.Pc, FieldScripts.Briefcase, FieldScripts.Attendant, FieldScripts.Trainer, FieldScripts.Talk, FieldScripts.Sign, ScriptLibrary.NewGame, ScriptLibrary.OpeningDone });
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace });
         // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot
         started.UnionWith(new[] { FieldScripts.EscapeRope, FieldScripts.CyclistsOnly });
+        // Waking up after a lost battle, in a Pokémon Center or at home
+        started.UnionWith(new[] { FieldScripts.BlackOutCenter, FieldScripts.BlackOutHome });
+        // The end of a Safari Game: its last step, or its last ball (plan 01 · M7)
+        started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -641,10 +645,14 @@ public class StoryTests
             Assert.True(ways.Count < 300, $"{script.FullName} has more than 300 ways through it");
             var planned = toTry.Pop();
             var taken = new List<int>();
-            int Decide(int answers)
+            var asked = new HashSet<string>();
+            // A question asked again on the same way through (the professor asking until he hears yes) is answered
+            // with the first answer, or a loop would make the ways through it endless
+            int Decide(int answers, string? question = null)
             {
                 int choice = taken.Count < planned.Count ? planned[taken.Count] : 0;
-                if (taken.Count >= planned.Count)
+                bool again = question != null && !asked.Add(question);
+                if (taken.Count >= planned.Count && !again)
                     for (int other = 1; other < answers; other++) toTry.Push(taken.Append(other).ToList());
                 taken.Add(choice);
                 return choice;
@@ -653,7 +661,7 @@ public class StoryTests
             var host = new HeadlessScriptHost { Map = map, MapNamed = name => OwnMaps.Value.GetValueOrDefault(name) };
             host.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
             host.PlayerTile = subject != null ? (subject.GridX, subject.GridY + 1) : (0, 0);
-            host.Decide = (_, answers) => Decide(answers.Count);
+            host.Decide = (question, answers) => Decide(answers.Count, question);
             host.Fight = _ => Decide(2) == 0 ? BattleOutcome.Won : BattleOutcome.Lost;
             before?.Invoke(host);
 
@@ -710,13 +718,17 @@ public class StoryTests
     {
         // A place's script is played as whatever starts it would start it, on the place's own map
         var played = new HashSet<string>();
-        foreach (var (what, name, file, map, person) in Starters())
+        // Taken whole first: the scripts played take people off the maps and put them back
+        foreach (var (what, name, file, map, person) in Starters().ToList())
         {
             var script = Scripts.Find(name, file)!;
             // The common ones are played below, by someone who is everything at once, not by each of the hundreds who share them
             if (script.File == ScriptLibrary.Common) continue;
             played.Add(script.FullName);
-            var ways = EveryWayThrough(script, map, person);
+            // A trigger's script starts with the player on the trigger, as stepping onto it starts it
+            var trigger = person == null ? map.Triggers.FirstOrDefault(t => t.Script == name && what.StartsWith("the trigger", StringComparison.Ordinal)
+                && what.Contains($" at {t.X},{t.Y} ", StringComparison.Ordinal)) : null;
+            var ways = EveryWayThrough(script, map, person, before: trigger == null ? null : host => host.PlayerTile = (trigger.X, trigger.Y));
             Assert.NotEmpty(ways);
             foreach (var (host, _) in ways)
                 Assert.True(host.Problems.Count == 0, $"{script.FullName}, started by {what}: {string.Join("; ", host.Problems)}");
@@ -765,8 +777,10 @@ public class StoryTests
             Assert.Equal(FieldScripts.ItemBall, FieldScripts.For(ball));
             Assert.True(map.AreaAt(ball.GridX, ball.GridY)?.Open != false, $"{where} lies outside the open areas");
         }
-        // Each ball has a flag of its own: picking one up takes no other away
-        Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1).Select(g => g.Key));
+        // Each ball has a flag of its own: picking one up takes no other away. But for one the original shares: the
+        // TM in the Ruin Maniac's cave, which lies at the end of his tunnel once he has dug it (one or the other is there)
+        var shared = new[] { "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28" };
+        Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1 && !shared.Contains(g.Key)).Select(g => g.Key));
 
         // What the user asked to see, where Platinum has it: the Potion beside Route 202's grass and the Poké Ball of Route 203
         var overworld = OwnMaps.Value["Sinnoh"];
@@ -1129,7 +1143,7 @@ public class StoryTests
 
             // The trigger keeps the original's tiles, variable and value, and takes our script, looked for in the area's file
             var first = LoadedWorld.Value.Area("jubilife_city")!.Triggers[0];
-            var trigger = map.Triggers.Single();
+            var trigger = map.Triggers.Single(t => t.ScriptFile == "jubilife_city");
             Assert.Equal((first.X, first.Z, first.Width, first.Depth), (trigger.X, trigger.Y, trigger.Width, trigger.Depth));
             Assert.Equal(("FirstArrival", "jubilife_city", "VAR_JUBILIFE_CITY_STATE", 0), (trigger.Script, trigger.ScriptFile, trigger.Variable, trigger.Value));
             var story = new StoryState();

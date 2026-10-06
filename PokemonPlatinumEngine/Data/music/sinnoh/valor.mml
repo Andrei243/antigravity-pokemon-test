@@ -1,0 +1,58 @@
+# Valor Lakefront and Route 213 (the original's TOWN07 role: the resort on Lake Valor, the Hotel Grand Lake's white
+# villas and its restaurant, holiday-makers on the long beach): a breezy A-major shuffle in a lazy swing, the flute
+# idling over a strummed guitar and a loping contrabass, a marimba answering like a steel pan; by night a clarinet
+# and a vibraphone over a harp, a lounge on the terrace. Original composition for this game.
+title Valor Lakefront
+tempo 104
+meter 4/4
+reverb 0.3
+nighttempo 0.94
+
+track lead flute night=clarinet vol=0.74 pan=0 rev=0.32
+  r1 | r1 |
+  L r6 o5 c+12 e6 f+12 a2 | g+6 f+12 e6 c+12 o4 b2 | r6 o5 d12 f+6 a12 b2 | a6 f12 d6 f12 e2 |
+  r6 o5 e12 g+6 b12 o6 c+4 o5 b4 | a6 g+12 f+6 e12 c+2 | d6 c+12 o4 b6 a12 b2 | r6 o4 g+12 b6 o5 d12 e4 d4 |
+  r6 o5 c+12 e6 f+12 a2 | g+6 a12 g+6 f+12 e2 | r6 o5 d12 f+6 a12 o6 d2 | d6 o5 b12 a6 f12 a2 |
+  g+6 a12 b6 g+12 e2 | r6 o5 f+12 a+6 o6 c+12 e4 c+4 | d6 c+12 o5 b6 a12 g+6 b12 o6 d6 o5 b12 | a2. r4 |
+  r6 o5 f+12 a6 b12 a2 | r6 o5 e12 g+6 a12 g+2 | r6 o5 d12 f+6 g+12 f+2 | e6 c+12 o4 a6 b12 o5 c+2 |
+  r6 o5 d12 g6 a12 b2 | a+6 b12 a+6 g+12 f+2 | r6 o5 f+12 b6 o6 c+12 d2 | c+6 o5 b12 g+6 e12 d4 r4 |
+
+track marimba marimba night=vibraphone vol=0.5 pan=-0.3 rev=0.26
+  o5 e6 c+12 o4 a6 b12 o5 c+6 e12 f+4 | e6 d12 o4 b6 g+12 e2 |
+  L r2 r6 o5 e12 c+6 e12 | r2 r6 o5 g+12 e6 c+12 | r2 r6 o5 a12 f+6 d12 | r2 r6 o5 f12 d6 o4 b12 |
+  r1 | r2 r6 o5 e12 f+6 a12 | r2 r6 o5 d12 f+6 a12 | r1 |
+  r2 o5 e6 f+12 e6 c+12 | r2 r6 o5 b12 g+6 e12 | r2 r6 o5 a12 b6 a12 | r2 r6 o5 f12 d6 f12 |
+  r2 r6 o5 g+12 b6 o6 c+12 | r2 o5 a+4 e4 | o5 f+4 d4 e4 g+4 | r2 r6 o5 c+12 e6 f+12 |
+  r6 o5 d12 f+6 g+12 f+6 f+12 f+6 f+12 | r6 o5 c+12 e6 f+12 e6 e12 e6 e12 | r6 o4 b12 o5 d6 e12 d6 d12 d6 d12 | r2 r6 o5 e12 f+6 a12 |
+  r6 o4 b12 o5 d6 e12 g6 g12 g6 g12 | f+6 g+12 f+6 e12 c+6 c+12 c+6 c+12 | r6 o5 d12 f+6 a12 b6 b12 b6 b12 | g+6 e12 d6 o4 b12 g+4 r4 |
+
+track guitar guitar night=harp vol=0.34 pan=0.3 rev=0.22
+  o3 (e a >c+ f+)4 r6 (e a >c+ f+)12 r4 r6 (e a >c+ f+)12 | (e g+ b >d)4 r6 (e g+ b >d)12 r4 r6 (e g+ b >d)12 |
+  L (e a >c+ f+)4 r6 (e a >c+ f+)12 r4 r6 (e a >c+ f+)12 | (e g+ b >c+)4 r6 (e g+ b >c+)12 r4 r6 (e g+ b >c+)12 | (f+ a b >d)4 r6 (f+ a b >d)12 r4 r6 (f+ a b >d)12 | (f a b >d)4 r6 (f a b >d)12 r4 r6 (f a b >d)12 |
+  (e g+ b >c+)4 r6 (e g+ b >c+)12 r4 r6 (e g+ b >c+)12 | (f+ a >c+ e)4 r6 (f+ a >c+ e)12 r4 r6 (f+ a >c+ e)12 | (f+ a b >d)4 r6 (f+ a b >d)12 r4 r6 (f+ a b >d)12 | (e g+ b >d)4 r6 (e g+ b >d)12 r4 r6 (e g+ b >d)12 |
+  (e a >c+ f+)4 r6 (e a >c+ f+)12 r4 r6 (e a >c+ f+)12 | (e g+ b >c+)4 r6 (e g+ b >c+)12 r4 r6 (e g+ b >c+)12 | (f+ a b >d)4 r6 (f+ a b >d)12 r4 r6 (f+ a b >d)12 | (f a b >d)4 r6 (f a b >d)12 r4 r6 (f a b >d)12 |
+  (e g+ b >c+)4 r6 (e g+ b >c+)12 r4 r6 (e g+ b >c+)12 | (e a+ >c+ f+)4 r6 (e a+ >c+ f+)12 r4 r6 (e a+ >c+ f+)12 | (f+ a b >d)4 r6 (f+ a b >d)12 (e g+ b >d)4 r6 (e g+ b >d)12 | (e a >c+ e)4 r6 (e a >c+ e)12 r4 r6 (e a >c+ e)12 |
+  (f+ a >d f+)4 r6 (f+ a >d f+)12 r4 r6 (f+ a >d f+)12 | (e g+ b >c+)4 r6 (e g+ b >c+)12 r4 r6 (e g+ b >c+)12 | (f+ a b >d)4 r6 (f+ a b >d)12 r4 r6 (f+ a b >d)12 | (e a >c+ e)4 r6 (e a >c+ e)12 r4 r6 (e a >c+ e)12 |
+  (g b >d g)4 r6 (g b >d g)12 r4 r6 (g b >d g)12 | (e a+ >c+ f+)4 r6 (e a+ >c+ f+)12 r4 r6 (e a+ >c+ f+)12 | (f+ a b >d)4 r6 (f+ a b >d)12 r4 r6 (f+ a b >d)12 | (e g+ b >d)4 r6 (e g+ b >d)12 r4 r6 (e g+ b >d)12 |
+
+track pad strings night=pad vol=0.22 pan=-0.2 rev=0.42
+  o4 (c+ e a)1 | (d e g+ b)1 |
+  L (c+ e a)1 | (c+ e g+ b)1 | (d f+ a b)1 | (d f a b)1 |
+  (c+ e g+ b)1 | (c+ e f+ a)1 | (d f+ a b)1 | (d e g+ b)1 |
+  (c+ e a)1 | (c+ e g+ b)1 | (d f+ a b)1 | (d f a b)1 |
+  (c+ e g+ b)1 | (c+ e f+ a+)1 | (d f+ a b)2 (d e g+ b)2 | (c+ e a)1 |
+  (d f+ a)1 | (c+ e g+ b)1 | (d f+ a b)1 | (c+ e a)1 |
+  (d g b)1 | (c+ e f+ a+)1 | (d f+ a b)1 | (d e g+ b)1 |
+
+track bass contrabass vol=0.7 rev=0.12
+  q6 o2 a4 r6 a12 o3 e4 r6 f12 | e4 r6 e12 o2 b4 r6 g+12 |
+  L a4 r6 a12 o3 e4 r6 c12 | c+4 r6 c+12 o2 g+4 r6 o3 c+12 | d4 r6 d12 o2 a4 r6 o3 d12 | d4 r6 d12 o2 a4 r6 o3 c12 |
+  c+4 r6 c+12 o2 g+4 r6 o3 f12 | f+4 r6 f+12 c+4 r6 o2 a+12 | b4 r6 b12 o3 f+4 r6 f12 | e4 r6 e12 o2 b4 r6 g+12 |
+  a4 r6 a12 o3 e4 r6 c12 | c+4 r6 c+12 o2 g+4 r6 o3 c+12 | d4 r6 d12 o2 a4 r6 o3 d12 | d4 r6 d12 o2 a4 r6 o3 c12 |
+  c+4 r6 c+12 o2 g+4 r6 o3 f12 | f+4 r6 f+12 c+4 r6 o2 a+12 | b4 r6 b12 o3 e4 r6 o2 g+12 | a4 r6 a12 o3 e4 r6 c+12 |
+  d4 r6 d12 o2 a4 r6 o3 d12 | c+4 r6 c+12 o2 g+4 r6 o3 c12 | o2 b4 r6 b12 o3 f+4 r6 o2 a+12 | a4 r6 a12 o3 e4 r6 o2 g+12 |
+  g4 r6 g12 o3 d4 r6 o2 g12 | o3 f+4 r6 f+12 c+4 r6 c12 | o2 b4 r6 b12 o3 f+4 r6 f12 | e4 r6 e12 o2 b4 r6 g+12 |
+
+track drums kit vol=0.5 rev=0.14
+  [ v30 k6 v18 k12 v24 k6 v18 k12 v30 k6 v18 k12 v24 k6 v18 k12 | ]2
+  L [ [ v56 b6 v24 k12 v30 s6 v24 k12 v46 b6 v24 k12 v30 s6 v24 k12 | ]7 v56 b6 v24 k12 v30 s6 v24 k12 v46 b6 v26 s12 v32 s6 v40 s12 | ]3

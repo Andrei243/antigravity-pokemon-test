@@ -1,0 +1,15 @@
+{
+  "area": "ruin_maniac_cave_short",
+  "bgmTrack": "sinnoh/mine",
+  "people": {
+    // In the original he digs on toward the Solaceon Ruins once the player has seen enough of the Unown, and the
+    // way through to Maniac Tunnel opens (plan 02)
+    "ruin_maniac": {
+      "name": "Ruin Maniac",
+      "dialog": [
+        "The ruins at Solaceon are full of those strange letter-shaped Pokémon. I'm digging my way there!",
+        "Tell you what: find more kinds of them, and I'll put my back into it. This tunnel will reach the ruins yet."
+      ]
+    }
+  }
+}

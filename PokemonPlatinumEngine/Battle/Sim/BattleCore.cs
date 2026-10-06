@@ -137,6 +137,13 @@ public sealed partial class BattleCore : IBattleContext
     private readonly IBattleController? playerController, enemyController, partnerController;
     private readonly Pokemon? firstTrainerPokemon;
     private readonly List<Pokemon> leveledUp = new();
+    private readonly HashSet<Pokemon> sentOut = new();
+
+    /// <summary>The player's own Pokémon that were sent out in the battle (<c>battleParticipantMask</c>).</summary>
+    public IReadOnlyCollection<Pokemon> SentOut => sentOut;
+
+    /// <summary>What losing cost the player (<see cref="Formulas.MoneyPenalty"/>): taken off their money once the battle is over.</summary>
+    public int MoneyLost { get; private set; }
     private readonly List<BattleEvent> log = new();
     private readonly List<IReadOnlyList<BattleChoice>> answers = new();
     private readonly uint? startedFrom;
@@ -883,8 +890,15 @@ public sealed partial class BattleCore : IBattleContext
         bool beaten = Partner != null ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots);
         if (beaten)
         {
-            Say($"{playerName} is out of usable Pokémon!");
-            Say($"{playerName} whited out...");
+            // subscript_battle_lost: a share of the money, by the team's highest level and the badges
+            // (BtlCmd_PayPrizeMoney), dropped before a wild Pokémon or handed to a trainer
+            Say($"{playerName} has no Pokémon left that can fight!");
+            int highest = PlayerParty.Members.Select(p => p.Level).DefaultIfEmpty(0).Max();
+            MoneyLost = Formulas.MoneyPenalty(highest, Conditions.Badges, Conditions.Money);
+            if (MoneyLost > 0)
+                Say(IsTrainerBattle ? $"{playerName} handed ${MoneyLost} over to the winner." : $"{playerName} dropped ${MoneyLost} in the panic!");
+            Say("...  ...  ...");
+            Say($"{playerName} whited out!");
             End(BattleResult.PlayerDefeat);
             return;
         }
@@ -893,12 +907,12 @@ public sealed partial class BattleCore : IBattleContext
         Emit(new Won());
         if (IsTrainerBattle)
         {
-            Say($"Player defeated {string.Join(" and ", Trainers.Select(t => t.FullTitle))}!");
+            Say($"{playerName} defeated {string.Join(" and ", Trainers.Select(t => t.FullTitle))}!");
             Say($"{playerName} received ${PrizeMoney} for winning!");
         }
         else
         {
-            Say($"Player defeated the wild {JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName))}!");
+            Say($"{playerName} defeated the wild {JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName))}!");
         }
         // What Pay Day scattered, up to the original's most
         if (PayDayMoney > 0) Say($"{playerName} picked up ${Math.Min(PayDayMoney, 65535)}!");
@@ -913,6 +927,9 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
         if (result == BattleResult.PlayerVictory) PickUp();
+        // Burmy takes the cloak of the ground it fought on (BattleSystem_SetBurmyForm; not in the Great Marsh or Pal Park)
+        if (Kind is not (BattleKind.Safari or BattleKind.PalPark or BattleKind.CatchingLesson))
+            FormRules.CloakBurmy(sentOut, Conditions.Terrain);
         Result = result;
         Emit(new Ended(result));
     }
@@ -972,15 +989,36 @@ public sealed partial class BattleCore : IBattleContext
     }
 
     /// <summary>
-    /// The EXP a fainted foe leaves (<see cref="Formulas.ExpShares"/>): shared among the player's Pokémon that
-    /// fought it and are still standing, with the Exp. Share's half for its holders and the Lucky Egg's and a
-    /// trainer battle's bonus on each one's part.
+    /// The EXP a fainted foe leaves (<c>Task_GiveExperience</c>; <see cref="Formulas.ExpShares"/>): shared among the
+    /// player's Pokémon that fought it and are still standing, with the Exp. Share's half for its holders, and the
+    /// Lucky Egg's, a trainer battle's and another trainer's Pokémon's bonus on each one's part. Whoever gains EXP
+    /// gains the foe's effort too (<see cref="EffortRules.Gain"/>); a Pokémon at level 100 gains neither. By the
+    /// modern rules the whole party gains by the scaled formula (<see cref="Formulas.ScaledExp"/>).
     /// </summary>
     private void AwardExp(Battler defeated)
     {
         var foe = defeated.Pokemon!;
         var standing = PlayerParty.Members.Where(p => !p.IsFainted).ToList();
         var fought = standing.Where(defeated.FoughtAgainst.Contains).ToList();
+
+        if (Rules.ScaledExp)
+        {
+            foreach (var p in standing)
+            {
+                bool traded = Obedience.IsOutsider(p, Conditions.Player);
+                if (p.Level >= 100)
+                {
+                    if (Rules.EvsAtLevel100) EffortRules.Gain(p, foe.EvYield, Rules);
+                    continue;
+                }
+                bool past = p.Species.LevelEvolution is { } next && p.Level >= next.Level;
+                int exp = Formulas.ScaledExp(foe.BaseExpYield, foe.Level, p.Level, fought.Contains(p), traded,
+                    p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, past);
+                Give(p, exp, traded, foe);
+            }
+            return;
+        }
+
         var holders = standing.Where(p => p.HeldItem?.HoldEffect == HeldItemEffects.ExpShare).ToList();
         if (fought.Count == 0 && holders.Count == 0) return;
 
@@ -990,18 +1028,28 @@ public sealed partial class BattleCore : IBattleContext
             if (p.Level >= 100) continue;
             int part = (fought.Contains(p) ? share : 0) + (holders.Contains(p) ? shared : 0);
             if (part == 0) continue;
-            int exp = Formulas.ExpFor(part, p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, IsTrainerBattle);
-
-            Say($"{p.DisplayName} gained {exp} EXP. Points!");
-            bool rose = p.GainExp(exp, out var moves);
-            Emit(new ExpGained(p, exp));
-            if (!rose) continue;
-
-            // Evolution waits for the battle to end (see LeveledUp)
-            if (!leveledUp.Contains(p)) leveledUp.Add(p);
-            Emit(new LevelRose(p, p.Level));
-            Say($"{p.DisplayName} grew to Lv. {p.Level}!");
-            foreach (string move in moves) Say($"{p.DisplayName} learned {move}!");
+            bool traded = Obedience.IsOutsider(p, Conditions.Player);
+            Give(p, Formulas.ExpFor(part, p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, IsTrainerBattle, traded), traded, foe);
         }
+    }
+
+    /// <summary>
+    /// One Pokémon's EXP: the line, the foe's effort (before the level, which counts it), the levels it reaches and
+    /// the moves they bring. A move it can't fit is the screen's to ask about (<see cref="MoveWanted"/>).
+    /// </summary>
+    private void Give(Pokemon p, int exp, bool boosted, Pokemon foe)
+    {
+        Say(boosted ? $"{p.DisplayName} gained a boosted {exp} EXP. Points!" : $"{p.DisplayName} gained {exp} EXP. Points!");
+        EffortRules.Gain(p, foe.EvYield, Rules);
+        bool rose = p.GainExp(exp, out var learned, out var wanted);
+        Emit(new ExpGained(p, exp));
+        if (!rose) return;
+
+        // Evolution waits for the battle to end (see LeveledUp)
+        if (!leveledUp.Contains(p)) leveledUp.Add(p);
+        Emit(new LevelRose(p, p.Level));
+        Say($"{p.DisplayName} grew to Lv. {p.Level}!");
+        foreach (string move in learned) Say($"{p.DisplayName} learned {move}!");
+        foreach (string move in wanted) Emit(new MoveWanted(p, move));
     }
 }

@@ -151,15 +151,15 @@
       ]
     },
     {
-      "name": "Barry",
+      "name": "{rival}",
       "npcType": "Rival",
       "x": 10,
       "y": 4,
       "facing": "Left",
       "dialog": [
-        "Barry: {player}! What took you so long? I've already learned everything here!",
-        "Barry: Next stop is Oreburgh City and its Gym. I'm getting my first Badge before you!",
-        "Barry: Don't fall behind, or I'll fine you 10 million!"
+        "{rival}: {player}! What took you so long? I've already learned everything here!",
+        "{rival}: Next stop is Oreburgh City and its Gym. I'm getting my first Badge before you!",
+        "{rival}: Don't fall behind, or I'll fine you 10 million!"
       ]
     },
     {

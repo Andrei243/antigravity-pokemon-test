@@ -1,0 +1,79 @@
+# Sandgem Town (plan 02 · S4). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_sandgem_town.s).
+#
+# The professor's assistant meets the player at the edge of town and takes them to the lab, out of whose door the
+# rival comes running; coming back out with a Pokédex, the professor gives a TM and the assistant shows the
+# player round. VAR_SANDGEM_TOWN_STATE: 1 taken to the lab, 2 shown round.
+
+
+# The west edge of town (the original's trigger 2).
+script MeetAssistant
+  music "common/assistant"
+  face sandgem_counterpart player
+  emote sandgem_counterpart exclaim
+  speaker "{assistant}"
+  say "Oh! You're {player}, right? Professor Rowan is waiting for you in his lab. Come on, it's right here!"
+  fade out
+  place player 168 843 up
+  place sandgem_counterpart 167 843 up
+  fade in
+  sound "door_open"
+  show rival
+  sound "bump"
+  walk player down 1
+  emote player exclaim
+  music "common/rival"
+  speaker "{rival}"
+  say "Whoa, {player}! Slow as ever. ...You know, the professor isn't scary at all. He's just kind of strange!"
+  say "Anyway, I'm off. Later!"
+  walk rival down 1 right 7 fast
+  hide rival
+  setflag FLAG_HIDE_SANDGEM_TOWN_RIVAL
+  music "common/assistant"
+  face sandgem_counterpart player
+  speaker "{assistant}"
+  say "Was that your friend? He's in a real hurry, isn't he? ...Well, in we go!"
+  hide sandgem_counterpart
+  setflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  music area
+  setvar VAR_SANDGEM_TOWN_STATE 1
+  warp "RowanLab" 5 8 up
+  end
+
+
+# Out of the lab with the Pokédex (the original's OnFrame_ExitLab).
+script OnEnter
+  if var VAR_SANDGEM_TOWN_STATE != 1 end
+  if var VAR_SANDGEM_TOWN_LAB_STATE == 0 end
+  sound "door_open"
+  show prof_rowan
+  speaker "Prof. Rowan"
+  say "{player}! One more thing."
+  face player prof_rowan
+  say "Take this with you."
+  give "TM27"
+  say "A Technical Machine teaches a Pokémon a move. Each one can be used only once, so think before you use it."
+  say "That one holds Return. The more your Pokémon cares for you, the stronger the move becomes."
+  hide prof_rowan
+  setflag FLAG_HIDE_SANDGEM_TOWN_PROF_ROWAN
+  sound "door_close"
+  music "common/assistant"
+  place sandgem_counterpart 168 845 up
+  walk sandgem_counterpart up 1
+  face player sandgem_counterpart
+  face sandgem_counterpart player
+  speaker "{assistant}"
+  say "The professor had TMs? I never knew! ...Oh, let me show you round Sandgem!"
+  camera pan 177 843 0.8
+  say "That's the Pokémon Center, with the red roof. They'll heal your Pokémon there whenever you like, and it's free."
+  camera pan 187 843 0.8
+  say "And that's the Poké Mart, with the blue roof. You can buy Poké Balls and Potions there."
+  camera release 0.6
+  say "Don't forget to tell your family you're helping the professor! Heal your Pokémon at the Center first, though."
+  say "See you later, {player}!"
+  walk sandgem_counterpart down 1 left 3
+  hide sandgem_counterpart
+  setflag FLAG_HIDE_SANDGEM_TOWN_COUNTERPART
+  music area
+  setvar VAR_SANDGEM_TOWN_STATE 2
+  end

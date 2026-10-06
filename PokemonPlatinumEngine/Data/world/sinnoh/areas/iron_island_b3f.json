@@ -1,0 +1,46 @@
+{
+  "key": "iron_island_b3f",
+  "index": 294,
+  "name": "Iron Island",
+  "matrix": 85,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "IronIslandCave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_04",
+  "nightMusic": "D_04",
+  "encounters": "iron_island_b3f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Steelix", "level": 32 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Golbat", "level": 31 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Graveler", "level": 33 },
+    { "species": "Graveler", "level": 34 },
+    { "species": "Steelix", "level": 33 },
+    { "species": "Steelix", "level": 35 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 2, "z": 5, "to": "iron_island", "toWarp": 2 },
+    { "x": 14, "z": 15, "to": "iron_island_b2f_left_room", "toWarp": 1 },
+    { "x": 14, "z": 1, "to": "iron_island_iron_ruins", "toWarp": 0 },
+    { "x": 14, "z": 1, "to": "iron_ruins", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_shiny_stone", "looks": "pokeball", "movement": "none", "x": 14, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_IRON_ISLAND_B3F_SHINY_STONE", "item": "Shiny Stone", "script": "7144" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 9, "z": 11, "width": 1, "depth": 1, "script": "2", "variable": "VAR_MAP_LOCAL_0x00", "value": "0" }
+  ]
+}

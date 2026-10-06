@@ -352,8 +352,8 @@ public class SouthWestTests
     public void AWayInThatLeadsNowhereIsClosed()
     {
         var map = Overworld;
-        // The Global Terminal's porch and the gate to Route 218 are open tiles in the world's data
-        foreach (var (x, y) in new[] { (149, 778), (128, 758), (128, 759) })
+        // The Global Terminal's porch is an open tile in the world's data
+        foreach (var (x, y) in new[] { (149, 778) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"one can walk into the way in at ({x},{y}), which leads nowhere");
@@ -378,7 +378,10 @@ public class SouthWestTests
         Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (173, 706));
         Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (175, 700));
         Assert.Contains("Ravaged Path", map.Signboards[(170, 706)]);
-        Assert.Equal(map.NPCs.Count, map.NPCs.Select(n => (n.GridX, n.GridY)).Distinct().Count());
+        // (People who start off the map until their scene, like the professor and his assistant on Route 201, may
+        // share the tile they come on from)
+        var standing = map.NPCs.Where(n => n.HiddenBy == null || !WorldWalk.HiddenAtStart.Value.Contains(n.HiddenBy)).ToList();
+        Assert.Equal(standing.Count, standing.Select(n => (n.GridX, n.GridY)).Distinct().Count());
 
         // Each says its own half's line
         Assert.Contains("Ravaged Path", map.GetNpcAt(173, 706)!.DialogLines[0]);

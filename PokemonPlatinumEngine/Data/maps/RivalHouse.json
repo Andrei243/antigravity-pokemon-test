@@ -1,6 +1,6 @@
 {
   "name": "RivalHouse",
-  "displayName": "Barry's Home",
+  "displayName": "{rival}'s Home",
   "bgmTrack": "sinnoh/twinleaf",
   "interior": "House",
   "trees": "Round",
@@ -20,7 +20,7 @@
   "solid": [
     "##########",
     "##########",
-    "###.#.####",
+    "###.######",
     "#........#",
     "#..###...#",
     "##.......#",
@@ -126,6 +126,13 @@
       "y": 1,
       "width": 2,
       "depth": 1
+    },
+    {
+      "type": "Stairs",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 2
     }
   ],
   "warps": [
@@ -136,21 +143,26 @@
       "targetX": 105,
       "targetY": 876,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 3,
+      "targetMap": "RivalHouse2F",
+      "targetX": 2,
+      "targetY": 3,
+      "targetFacing": "Right"
     }
   ],
   "signboards": [],
   "npcs": [
     {
-      "name": "Barry's Mom",
+      "id": "rival_mom",
+      "name": "{rival}'s Mom",
       "npcType": "Lady",
       "x": 7,
       "y": 4,
       "facing": "Down",
-      "dialog": [
-        "Barry's Mom: Oh, {player}! Barry just dashed out the door again.",
-        "Barry's Mom: He said he'd fine you 10 million if you're late! That boy never slows down...",
-        "Barry's Mom: Take care out there, and keep an eye on him for me!"
-      ]
+      "script": "RivalMom"
     }
   ],
   "wildEncounters": []

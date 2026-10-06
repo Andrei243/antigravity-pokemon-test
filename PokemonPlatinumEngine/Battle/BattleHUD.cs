@@ -16,7 +16,9 @@ public enum BattleMenuState
     SelectBagItem,
     /// <summary>Choosing which Pokémon a move is aimed at (double battles).</summary>
     SelectTarget,
-    Message
+    Message,
+    /// <summary>A Pokémon wants a fifth move: a question of Yes and No, or which move to forget (plan 06 · R10).</summary>
+    LearnMove
 }
 
 public class BattleHUD

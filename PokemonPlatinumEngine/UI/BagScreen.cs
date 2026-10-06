@@ -159,9 +159,13 @@ public class BagScreen
 
     // ---------------------------------------------------------------- what an item can do
 
-    /// <summary>Items used on one Pokémon: medicine, Rare Candies and what evolves a Pokémon.</summary>
+    /// <summary>
+    /// Items used on one Pokémon: medicine, Rare Candies, what evolves a Pokémon, and (plan 06 · R10) the vitamins
+    /// and EV berries, and the Gracidea.
+    /// </summary>
     public static bool CanUse(ItemData item) =>
-        FieldItems.IsMedicine(item) || item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item);
+        FieldItems.IsMedicine(item) || item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item)
+        || EffortRules.IsEffortItem(item) || item.FieldUse == "Gracidea";
 
     /// <summary>
     /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
@@ -357,6 +361,33 @@ public class BagScreen
             inventory.RemoveItem(item, 1);
             request = new EvolutionRequest(target, evolution, Cancellable: false);
         }
+        else if (EffortRules.IsEffortItem(item))
+        {
+            // A vitamin or an EV berry (plan 06 · R10): the effort changes, and the friendship with it
+            int before = EffortRules.Total(target);
+            if (!EffortRules.UseItem(item, target))
+            {
+                onNotification("It won't have any effect.");
+                return;
+            }
+            inventory.RemoveItem(item, 1);
+            AudioManager.PlaySound("heal");
+            onNotification(EffortRules.Total(target) > before ? $"{target.DisplayName}'s base stats grew from the {item.Name}."
+                : $"{target.DisplayName} grew friendlier, and its base stats came down a little.");
+            if (inventory.GetQuantity(item) > 0) return;
+        }
+        else if (item.FieldUse == "Gracidea")
+        {
+            // Shaymin takes to the sky by day (Pokemon_CanShayminSkyForm); the flower stays in the bag
+            if (!FormRules.CanTakeToTheSky(target, (int)GameClock.Hour))
+            {
+                onNotification("It won't have any effect.");
+                return;
+            }
+            target.ChangeForm("Shaymin-Sky");
+            AudioManager.PlayCry(target);
+            onNotification($"{target.DisplayName} changed into its Sky Forme!");
+        }
         else if (FieldItems.IsMedicine(item))
         {
             if (FieldItems.Use(item, target) is not { } done)
@@ -384,12 +415,14 @@ public class BagScreen
         var previous = holder.HeldItem;
         holder.HeldItem = item;
         AudioManager.PlaySound("select");
+        // Giratina with the Griseous Orb and Arceus with a plate change form as they take it (plan 06 · R10)
+        string changed = FormRules.ByHeldItem(holder) ? $" {holder.DisplayName} changed its form!" : "";
         if (previous != null)
         {
             inventory.AddItem(previous, 1);
-            onNotification($"{holder.DisplayName} swapped its {previous.Name} for the {item.Name}.");
+            onNotification($"{holder.DisplayName} swapped its {previous.Name} for the {item.Name}.{changed}");
         }
-        else onNotification($"{holder.DisplayName} was given the {item.Name} to hold.");
+        else onNotification($"{holder.DisplayName} was given the {item.Name} to hold.{changed}");
     }
 
     /// <summary>Whether the waiting item would do anything for a Pokémon: ABLE or NOT ABLE on its card (null: nothing to say).</summary>
@@ -402,6 +435,8 @@ public class BagScreen
             probe.Item = item;
             return Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null;
         }
+        if (EffortRules.IsEffortItem(item)) return EffortRules.WouldHelp(item, p);
+        if (item.FieldUse == "Gracidea") return FormRules.CanTakeToTheSky(p, (int)GameClock.Hour);
         return FieldItems.IsMedicine(item) ? FieldItems.WouldHelp(item, p) : null;
     }
 

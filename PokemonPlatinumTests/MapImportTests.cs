@@ -357,6 +357,8 @@ public class MapImportTests
         Assert.Equal(TerrainCover.Marsh, Cover.OfBehaviour(TileBehavior.DeepMarshGrass));
         Assert.Equal(TerrainCover.Bridge, Cover.OfBehaviour(TileBehavior.BikeBridgeEastWestOverWater));
         Assert.Equal(TerrainCover.CaveFloor, Cover.OfBehaviour(TileBehavior.CaveFloor));
+        Assert.Equal(TerrainCover.Puddle, Cover.OfBehaviour(TileBehavior.Puddle));
+        Assert.Equal(TerrainCover.Puddle, Cover.OfBehaviour(TileBehavior.StillPuddle));
         Assert.Null(Cover.OfBehaviour(TileBehavior.None));
         Assert.Null(Cover.OfBehaviour(TileBehavior.Door));
         Assert.Null(Cover.OfBehaviour(TileBehavior.LedgeSouth));
@@ -597,6 +599,31 @@ public class MapImportTests
             """);
         Assert.Equal(new[] { "NONE", "UNUSED_x01", "TALL_GRASS" }, names);
         Assert.Equal("TALL_GRASS", names[(int)TileBehavior.TallGrass]);
+    }
+
+    [Fact]
+    public void TheWeatherCalendarIsADayOfALeapYearForEachOfFivePlaces()
+    {
+        // sYearlyWeather's rows, written as the original writes them, in any order
+        var source = new System.Text.StringBuilder("static const u8 sYearlyWeather[DAY_OF_YEAR_COUNT][OVERWORLD_WEATHER_YEARLY_COUNT] = {\n");
+        string[] months = { "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" };
+        for (var day = new DateTime(2000, 12, 31); day.Year == 2000; day = day.AddDays(-1))
+        {
+            string first = day is { Month: 2, Day: 29 } ? "OVERWORLD_WEATHER_THUNDERSTORM" : "OVERWORLD_WEATHER_RAINING";
+            source.Append($"    [DAY_OF_YEAR_{months[day.Month - 1]}_{day.Day:00} - 1] = {{{first}, OVERWORLD_WEATHER_CLEAR, OVERWORLD_WEATHER_HEAVY_SNOW, OVERWORLD_WEATHER_SNOWING, OVERWORLD_WEATHER_HAILING}},\n");
+        }
+        source.Append("};\n");
+
+        var (places, days) = DecompMaps.ParseCalendar(source.ToString());
+        Assert.Equal(new[] { "Route212South", "Route213", "Route216", "AcuityLakefront", "SnowpointCity" }, places);
+        Assert.Equal(366, days.Count);
+        Assert.Equal(new[] { "Raining", "Clear", "HeavySnow", "Snowing", "Hailing" }, days[0]);
+        Assert.Equal("Thunderstorm", days[59][0]);
+        Assert.Equal("Raining", days[60][0]);
+
+        // A table that lost a day is no calendar
+        string shortOne = string.Join("\n", source.ToString().Split('\n').Where(l => !l.Contains("DAY_OF_YEAR_JUL_04")));
+        Assert.Throws<InvalidDataException>(() => DecompMaps.ParseCalendar(shortOne));
     }
 
     [Fact]
