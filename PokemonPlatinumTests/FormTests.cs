@@ -200,14 +200,16 @@ public class FormTests
         // the forms of the Kanto, Johto, Hoenn, Unova and Kalos species hand-built since among them (Castform's weathers,
         // Deoxys's formes, the Primal Kyogre and Groudon, Basculin's stripes, Darmanitan's Zen Modes, Deerling's and
         // Sawsbuck's seasons, the female Frillish and Jellicent, Vivillon's patterns, the Flabébé line's colours,
-        // Furfrou's trims). The few that look just like their species show its sculpt: Mothim's cloaks, the partner
-        // Pikachu and Eevee, Greninja's Battle Bond, and Scatterbug and Spewpa, whose pattern shows only once they are
-        // Vivillon.
+        // Furfrou's trims, the sizes of the Pumpkaboo line, Zygarde's formes). The few that look just like their species
+        // show its sculpt: Mothim's cloaks, the partner Pikachu and Eevee, Greninja's Battle Bond, Scatterbug and Spewpa,
+        // whose pattern shows only once they are Vivillon, and the 50% Zygarde with Power Construct; the 10% Zygarde
+        // with Power Construct shows the 10% Forme's (PokemonModels.LooksLike).
         var patterns = new[] { "Polar", "Tundra", "Continental", "Garden", "Elegant", "Meadow", "Modern", "Marine", "Archipelago", "High-Plains",
             "Sandstorm", "River", "Monsoon", "Savanna", "Sun", "Ocean", "Jungle", "Fancy", "Poke-Ball" };
-        var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter", "Greninja-Battle-Bond" }
+        var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter", "Greninja-Battle-Bond", "Zygarde-10-Power-Construct",
+                "Zygarde-50-Power-Construct" }
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
-        Assert.Equal(275, PokemonModels.Forms.Length);
+        Assert.Equal(294, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {
@@ -219,8 +221,9 @@ public class FormTests
             foreach (var form in PokemonDatabase.Get(species)!.Forms ?? new())
             {
                 bool same = sameLook.Contains(form.Name);
+                var shown = PokemonModels.LooksLike.GetValueOrDefault(form.Name, species);
                 Assert.True(PokemonModels.HasModel(form.Name) != same, form.Name);
-                Assert.True(PokemonModels.Signature(species) == PokemonModels.Signature(form.Name) == same, form.Name);
+                Assert.True(PokemonModels.Signature(shown) == PokemonModels.Signature(form.Name) == same, form.Name);
             }
         // No two hand-built sculpts are the same: the cloaks, Mega Raichu X and Y, a Mega and its Z form
         var all = PokemonModels.Species.Concat(PokemonModels.Forms).ToList();
