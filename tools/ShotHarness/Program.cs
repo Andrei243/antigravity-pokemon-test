@@ -2119,16 +2119,30 @@ if (Run("life"))
     ShotCrop("l06b_rings_native", 560, 380, 640, 360, 2);
     walker.SetMode(TravelMode.OnFoot);
 
-    // Riding out onto the pond from its bank: the splash where the Pokémon lands
+    // Riding out onto the pond from its bank: the splash where the Pokémon lands. The ride begins as the game's
+    // does (plan 02 · S2): the water is faced and looked at, Surf's question (asked only of someone with the Fen
+    // Badge) is answered yes, and the move's line and cut-in are seen through
     var swimmer = ((Party)Get("playerParty")).Members[0];
     var surf = new Move(MoveDatabase.Get("Surf")!);
     swimmer.Moves.Add(surf);
+    var story = (StoryState)Get("story");
+    int badges = story.BadgeMask;
+    story.GiveBadge(Badge.Fen);
     var (bankX, bankY) = Nearest(111, 892, (x, y) => sinnoh.IsWalkable(x, y) && sinnoh.IsDeepWater(x + 1, y) && sinnoh.IsDeepWater(x + 2, y) && !sinnoh.IsSolid(x + 1, y));
     Put(bankX, bankY, Direction.Right);
-    walker.StartSurf(sinnoh);
-    for (int guard = 0; guard < 120 && (walker.Mode != TravelMode.Surfing || walker.IsMoving); guard++) Frames(1);
+    T.GetMethod("TryInteract", Private)!.Invoke(engine, null);
+    var text = (DialogueManager)Get("dialogue");
+    for (int guard = 0; guard < 120 && !engine.Choice.IsOpen; guard++) { text.FinishLine(); Frames(1); }
+    engine.Choice.Confirm();
+    for (int guard = 0; guard < 600 && (walker.Mode != TravelMode.Surfing || walker.IsMoving); guard++)
+    {
+        text.FinishLine(); text.Advance();
+        Frames(1);
+    }
+    if (walker.Mode != TravelMode.Surfing || engine.ScriptRunning) Console.WriteLine("  !! never happened: the ride out onto the pond");
     Frames(5); Shot("l06c_splash_riding_out"); ShotCrop("l06d_splash_native", 640, 380, 640, 360, 2);
     swimmer.Moves.Remove(surf);
+    story.SetBadges(badges);
     walker.SetMode(TravelMode.OnFoot);
 
     // A door: ajar as the step toward it begins, open as it ends, then from inside out again and shut behind

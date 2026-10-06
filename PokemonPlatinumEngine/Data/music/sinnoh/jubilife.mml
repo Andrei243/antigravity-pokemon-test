@@ -26,14 +26,14 @@ track stabs brass night=horn vol=0.4 pan=-0.25 rev=0.2
   r1 | r1 | r1 | r1 |
   r1 | r1 | r1 | r1 |
   r1 | r1 | r1 | r1 |
-  r8 o4 (e f a)8 r4 (e f a)8 r4. | r8 (f g b)8 r4 (f g b)8 r4. | r8 (e g >d)8 r4 (e g >d)8 r4. | r8 (g a >c)8 r4 (g a >c)8 r4. |
-  r8 (f >c d)8 r4 (f >c d)8 r4. | r8 (f g b)8 r4 (f g b)8 r4. | r8 (e b >c)8 r4 (e b >c)8 r4. | r8 (f g >c)8 r4 r8 (f g b)8 r4 |
+  r8 o4 (e f a)8 r4 (e g a)8 r4. | r8 (f g b)8 r4 (f g b)8 r4. | r8 (e g >d)8 r4 (e g >d)8 r4. | r8 (g a >c)8 r4 (g a >c)8 r4. |
+  r8 (f >c d)8 r4 (f >c d)8 r4. | r8 (f g b)8 r4 (f g b)8 r4. | r8 (e b >c)8 r4 (e b >d)8 r4. | r8 (f g >c)8 r4 r8 (f g b)8 r4 |
 
 track comp epiano night=vibraphone vol=0.32 pan=0.3 rev=0.25
   L r8 o3 (b >c e g)8 r4 (b >c e g)8 r8 (b >c e g)4 | r8 (a >c e g)8 r4 (a >c e g)8 r8 (a >c e g)4 | r8 (a >c d f)8 r4 (a >c d f)8 r8 (a >c d f)4 | r8 (g b >d f)8 r4 (g b >d f)8 r8 (g b >d f)4 |
   r8 (g b >c e)8 r4 (g b >c e)8 r8 (g b >c e)4 | r8 (g a >c e)8 r4 (g a >c e)8 r8 (g a >c e)4 | r8 (f a >c e)8 r4 (f a >c e)8 r8 (f a >c e)4 | r8 (f g b >d)8 r4 (f g b >d)8 r8 (f g b >d)4 |
   r8 (g b >c e)8 r4 (g b >c e)8 r8 (g b >c e)4 | r8 (a- b >d e)8 r4 (a- b >d e)8 r8 (a- b >d e)4 | r8 (g a >c e)8 r4 (g a >c e)8 r8 (g a >c e)4 | r8 (g b- >c e)8 r4 (g b- >c e)8 r8 (g b- >c e)4 |
-  r8 (f a >c e)8 r4 (f a >c e)8 r8 (f a >c e)4 | r8 (f a- >c d)8 r4 (f a- >c d)8 r8 (f a- >c d)4 | r8 (g b >d e)8 r4 r8 (g a >c+ e)8 r4 | r8 (f a >c d)8 r4 r8 (f g b >d)8 r4 |
+  r8 (f a >c e)8 r4 (f a >c d)8 r8 (f a >c e)4 | r8 (f a- >c d)8 r4 (f a- >c d)8 r8 (f a- >c d)4 | r8 (g b >d e)8 r4 r8 (g a >c+ e)8 r4 | r8 (f a >c d)8 r4 r8 (f g b >d)8 r4 |
   r8 (f a >c e)8 r4 (f a >c e)8 r8 (f a >c e)4 | r8 (f g b >d)8 r4 (f g b >d)8 r8 (f g b >d)4 | r8 (g b >d e)8 r4 (g b >d e)8 r8 (g b >d e)4 | r8 (g a >c e)8 r4 (g a >c e)8 r8 (g a >c e)4 |
   r8 (f a >c d)8 r4 (f a >c d)8 r8 (f a >c d)4 | r8 (f g b >d)8 r4 (f g b >d)8 r8 (f g b >d)4 | r8 (g b >c e)8 r4 (g b >c e)8 r8 (g b >c e)4 | r8 (g >c d f)8 r4 r8 (g b >d f)8 r4 |
 

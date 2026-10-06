@@ -19,6 +19,13 @@ public static class Loudness
     /// <summary>The level each ambience bed is brought to as it is made: what a layer's gain of 1 means.</summary>
     public const double AmbienceBedLevel = -23;
 
+    /// <summary>
+    /// The loudest a cry is made, as it is: played centred at the mixer's own volume, about 5 dB lower, it measures
+    /// half a decibel under the top of the cry bus's window. Most cries are brought to their peak well under it; a
+    /// long, even one would pass it at its peak and is turned down instead.
+    /// </summary>
+    public const double CryCeiling = -12.5;
+
     /// <summary>The window a bus's content must measure within, in dBFS (at the bus's full volume).</summary>
     public static (double Low, double High) Target(AudioBus bus) => bus switch
     {

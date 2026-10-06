@@ -1,0 +1,142 @@
+# Plan 15 · Side activities from the later games
+
+Written 2026-10-06, before any session.
+
+**Goal**: pastimes the later games added that fit Sinnoh's post-game or the regions to come, each a GPU-free state that tests play to its end, with a screen on the kit and a harness mode: the Pokédex's research tasks (Legends: Arceus), a research level per species that fills its entry page by page and makes the Sinnoh Pokédex at level 10 the long goal; Poké Jobs and Poké Pelago (Sword and Shield, Sun and Moon), which give the Pokémon in the boxes something to do while the game is shut, for real hours; the Bug-Catching Contest (HeartGold and SoulSilver's, from Gold and Silver), a timed catch in a park judged against other entrants; and the Pokéathlon, ten athletic events in five courses with a stat sheet for every species. None of it is Platinum's, so none of it moves Platinum's defaults: the research page only reads what the player did, the jobs open under the modern rules alone, and the park and the dome stand in the zone that isn't Platinum's, after the Hall of Fame, built once so plan 20 (Johto) can place the National Park and the real dome on the same code.
+
+## Where we are
+
+- **The Pokédex** (`Models/Pokedex.cs`, plan 03 · D10) keeps `SeenSpecies` and `CaughtSpecies` by dex number, `RegisterSeen` and `RegisterCaught` called from `BattleEngine.Show` on the `Seen` and `Caught` events, the National unlock (`CanUnlockNational`) and the two diplomas (`AwardDiplomas`, `Diplomas` as `PokedexMode`s). `PokedexScreen` has three pages (`PokedexPage { Info, Area, Size }`, `Pages`, `Sideways`), drawn by `ModernUi.Pokedex.cs` (`DexInfo`, `DexArea`, `DexSize`, `Diploma`); `MenuScreenTests.APokedexEntryHasThreePagesAndStepsThroughTheSpeciesSeen` holds the count. Nothing counts what the player did with a species beyond `Pokemon.EvolutionProgress`, which `Evolution.CountMoveUse`, `CountDefeat`, `CountStep` and `CountCriticalHit` fill only for the species whose evolution asks (`BattleCore.Moves.cs`, `BattleCore.cs`, `GameEngine.OnStep`).
+- **The log's events** (`Battle/Sim/BattleLog.cs`) say everything a record needs: `Seen(Species)`, `MoveShown(Move, Type, Category, From, To, …)` with its places, `Fainted(Place)`, `Caught(Pokemon, Ball, ToBox)`, `LevelRose(Pokemon, Level)`, `Won`, `Ended(Result)`. `BattleEngine.Show` plays them on the screen's own copies (`BattleMirror`), so it knows which Pokémon stands at a `Place`. `GameEngine.PlayEvolutions` plays what `Evolution.Evolve` does and `EndBattle` asks the rules for `BattleEngine.LeveledUp`.
+- **The save** (`Core/SaveManager.cs`): `SaveData` has `Started` (a `DateTime?`), `PlayTimeSeconds` (summed from `dt` in `GameEngine.Update`), `BoxStorage` as a flat list of `SavedPokemonData`, `Rules` (`RulesPreset.Platinum` or `Modern`), `Diplomas`, `NationalPokedex`, and the story's fields with `StoryVersion` (`StoryMigration.Upgrade`). It keeps no time of the last save and nothing that waits on the wall clock; `GameClock` gives the hour alone (`Hour`, `Now`, `IsNight`, `Fixed` for tools), and plan 06 · R14 owes the calendar. Plan 08 · P3 adds `MetDate` beside `Started`; plan 12 · Q3 autosaves; plan 13 · V10 keeps a run timer on real time.
+- **The PC** (`UI/PCScreen.cs`, `ModernUi.DrawStorage`): the party column, a box grid of `Columns` × `Rows` over `GameEngine.pcBoxStorage`, deposit and withdraw (`Confirm(party, stored, onNotification)`), opened by `common.PC` through the `pc` command (`ScriptScreen.Pc`, `IScriptHost.Open`). Plan 06 · R12 owes real boxes, names and wallpapers; plan 12 · Q13 opens the boxes from the start menu under the modern rules.
+- **Balls**: `Formulas.BallTenths(ball, target, turn, conditions)` is a switch on the ball's name (the Safari Ball gives 15), `BattleBall.LookOf` its colours and mark, `PixelArtGenerator.GetItemIcon` its icon by pocket. `items.json` has the Safari, Cherish, Dream and Beast Balls but no Sport Ball; a new item is an entry of `tools/DataImporter/Overrides/items.json` (`Overrides.Apply`), which also rewrites `docs/mechanics/coverage.md`. `BattleConditions` (`Terrain`, `Night`, `HasCaught`, `Weather`, `TrickRoom`) is what `GameEngine.BattleConditionsHere` hands a battle, and `BattleCore.WhyNot` and `WhyNotItem` are the one place a choice is refused. Plan 06 · R9 built the Great Marsh's battle (`BattleKind.Safari`: no Pokémon of the player's, bait and mud, the balls counted by `CoreSetup.SpecialBalls`, and `WhyNotItem` refusing every item but the Safari Ball by the battle's kind); the Great Marsh as a place, with its steps and its timer, is plan 01's and plan 06 · R16's, and plan 06 · R28 owes the later games' balls as data.
+- **Wild Pokémon** come from `Map.RollWildEncounter(x, y, steps, water, thick, lead)` through `WildEncounterRules.Meet` on a `MapArea`'s `WildEncounters` and `LandRate`; `GameEngine.StartWildBattle` makes the battle. `Habitats` (`Data/Habitats.cs`, `HabitatArea` with `Morning`, `Day`, `Night`, `Surf` and the rods) says where a species lives for the area page.
+- **Scripts** (plan 02 · S1): `Op` has `Starter`, `Shop`, `Pc` and `Travel` for the four screens, `Query` twenty-one questions, none about the rules a game is played by; `ScriptRunner.Start` takes a subject and its own lines; `HeadlessScriptHost` (`Transcript`, `Asked`, `Fight`) plays a script to its end; `StoryTests.OwnMaps` gives a script a map of its own.
+- **The field's clocks for tools**: `Dice.Seed`, `FrameClock.Fixed` and `engine.Settings.TimeOfDay` with `ApplySettings(window: false)` are how `tools/ShotHarness/Program.cs` makes two runs draw the same pictures; a mode is `mode == "…"` there.
+- **Pokémon outside battle**: only the menu sprites (`PokemonSprites`, 48-px icons) and the surfer's mount; plan 10 · F1 bakes `FieldSprites` (four facings, two idle frames) and F2 their walk strips; plan 09 · L5 moves the menu sprites.
+- **Where the later games' things stand**: Sinnoh's post-game areas are plan 01 · M10's (Platinum's own), and plan 03 · D12 names a new zone for the later generations' species, whose ground is ours to lay out. The README's chain puts Johto after Kanto; plan 20 (Johto) is where the National Park and the Pokéathlon Dome belong.
+
+## Design
+
+**Each activity is a state without a screen.** `Models/Research.cs`, `Models/PokeJobs.cs`, `Models/BugContest.cs` and `Models/Athlon.cs` hold the rules, take `dt` and plain inputs, draw their chance from a `Random` they are handed (the engine gives `Dice.New()`, a test a seed) and are saved whole in `SaveData` as plain fields. The screens (`UI/JobsScreen.cs`, `UI/ContestScreen.cs`, `UI/AthlonScreen.cs`, with `ModernUi.Jobs.cs`, `.Contest.cs`, `.Athlon.cs`) keep their cursors in methods that take no input and draw with the kit. A harness mode per activity shoots every screen; because every clock and every roll comes from `Dice`, `FrameClock` and the new `WallClock`, two runs draw the same pictures.
+
+### Research (`Models/Research.cs`)
+
+- **Tasks from the data, never by hand**: `ResearchTasks.For(species)` gives five to seven `ResearchTask`s (`ResearchKind`: `Met`, `Caught`, `Defeated`, `MoveUsed` for two moves of its own learnset, `Leveled`, `Evolved` when it evolves, `Befriended` at `FriendshipRules.EvolveAt`), each with a ladder of targets (1, 2, 5, 10, 25) worth a point a rung, weighted so that every ladder's last rung together makes 10 levels (`Research.LevelOf`). A species whose data lacks a kind (nothing to evolve into) simply has fewer tasks and steeper weights.
+- **The record**: a `ResearchRecord` is a dictionary of counts by task key, like `EvolutionProgress`, one per species in `SaveData.Research` (by dex number; null in older saves reads as empty).
+- **Fed from the screen's side**, where the game's own Pokémon are: a new `GameEngine.Research` method is called from `BattleEngine.Show`'s cases (`Seen` → `Met`; `MoveShown` whose `From` is a player's place → `MoveUsed` on that Pokémon's species; `Fainted` at an enemy place → `Defeated` on its species, and on the record of the player's active Pokémon; `Caught`; `LevelRose`), from `PlayEvolutions` (`Evolved` on the species evolved from) and from `GameEngine.OnStep`'s friendship pass (`Befriended`). A level that rises is told by the `Toast` once the battle is over, never inside it.
+- **The long goal**: the Sinnoh Pokédex's 210 at level 10 awards a research certificate, drawn by `ModernUi.Diploma` given a heading of its own and kept as `SaveData.ResearchComplete`. It changes nothing in play, so it needs no option and no rules choice.
+- **The page** is `PokedexPage.Tasks`, fourth after SIZE, its tab violet: the tasks as `ListRow`s with a rung meter each, the level on a disc; a species' level also stands as a small number on its list row. The style guide's "Menu screens (G10)" Pokédex bullets change first (four pages, the row's number).
+
+### Poké Jobs (`Models/PokeJobs.cs`)
+
+- **One reader of real time**: `Core/WallClock.cs`, whose `Now` is `DateTime.UtcNow` unless `Fixed` is set; the harness sets it beside `FrameClock.Fixed`, tests advance it by hand, and plan 12 · Q3 and plan 13 · V10 are asked to read it too. `SaveData.LastSaved` (UTC) is written by `BuildSave`.
+- **A job holds its Pokémon**: a `Job` is the Pokémon itself as `SavedPokemonData`, its `JobKind`, `Started` and `Ends` (UTC). A Pokémon on a job is in `SaveData.Jobs` and nowhere else, so the PC, the party, trading and the Pokédex's counts see it gone without an identity to look it up by, and plan 07 · O2's id is not needed.
+- **What a job pays**: `JobBoard.Post(pokemon, kind, hours)` and `Collect(now)` give a `JobResult`: EXP by the hour as a share of `Pokemon.ExpForNextLevel` (our own rate, a level's worth in eight hours at most, taken through `Pokemon.GainExp` so moves are learned as a battle's level-up learns them), berries of Platinum's by a table per kind, friendship through `FriendshipRules.Change`. The EV reward waits for plan 06 · R10's EV gains, and a nursery that hatches eggs for plan 06 · R15. The kinds are Sun and Moon's islands in our own words: an errand, an orchard, a hot spring, the nursery later.
+- **A clock set back pays nothing**: `Collect` pays for the hours between `Started` and `Now`, never more than planned, and refuses when `Now` is before `Started`.
+- **The board** is `JobsScreen` (`GameState.Jobs`): the boxes' Pokémon as `ListRow`s, the kind on `Tabs`, the hours on a `Stepper` (1 to 24), the jobs under way with their time left, and a result panel on collecting. Evolutions a job's levels bring go through `PlayEvolutions` from the board, as the bag's do.
+- **The door is the modern rules**: the board is reached from `common.PC`, whose script becomes a menu (storage, jobs, log off) in a game played by the modern rules, through a new `jobs` command (`Op.Jobs`, `ScriptScreen.Jobs`) and a new `modern` question (`Query.Modern`, reading `Ruleset.Current.Preset`). Under Platinum's rules the PC asks nothing new, so a Platinum game is Platinum's. This is where plan 06's later-generation scope and the "Platinum first" rule bite, and plan 06 · R1's choice at NEW GAME is the answer.
+
+### The Bug-Catching Contest (`Models/BugContest.cs`)
+
+- **A venue is data** (`Data/contests.json`, `ContestVenue`): the park's area key, its own encounter table of Bug species with a rarity score each (the HGSS table's species and levels, as numbers; a stand-in of Sinnoh's Bugs until Johto's are met), the days it opens, the prizes.
+- **The state** (`BugContest`, saved as `SaveData.BugContest`): the one party member taken in (chosen through `ModernUi.DrawPartyChoice`; the rest kept as `Held`, a list of `SavedPokemonData`), twenty Sport Balls, the entry (a copy, `SavedPokemonData`, with the HP it was caught at), the clock (twenty minutes summed from `dt` while the field or a battle is on screen, as HGSS counts it) and the seed its five rival entrants were drawn with, so a save made in the park loads back into the same contest.
+- **Ordinary wild battles, one ball**: the park's wild Pokémon come from the venue's table through the same `WildEncounterRules.Meet`, and `BattleConditions.OnlyBall` names the Sport Ball, which `WhyNotItem` reads to refuse every other item while it is set (beside plan 06 · R9's line that does the same for the Great Marsh by its `BattleKind.Safari`; the contest's battles are fought with the player's own Pokémon, so they take no kind of their own). A second catch asks whether to keep the new one (`ChoiceBox`).
+- **The Sport Ball** is an entry of `Overrides/items.json` (pocket `PokeBalls`, `effectType` `CatchPokemon`, `effectValue` 15, `battleUse` `PokeBall`), a line of `BallTenths` (15 tenths, HGSS's 1.5×), a look in `BattleBall.LookOf` and a mark of its own. The importer is run and `CoverageTests`' item floor raised.
+- **Judging** is `BugContest.Judge(entry, venue)`: the level, the sum of its stats against its species' best at that level (so IVs count), the species' rarity and the HP left, in our own weights written into the rulings. The rivals score by the same function on entries rolled from the table.
+- **The results** are `ContestScreen` (`GameState.ContestResults`): the five entrants and the player in order, the winning entry on a disc, the prize given.
+- **The gate and the park**: the gate is a room (a hand-made `Data/maps/<Name>.json`), its attendant a person with a `Script` that asks, takes the party and sends the player through a warp into the park; the park's time left stands in a corner of the field (`ModernUi.Field`), and when it runs out a fade takes the player back to the gate.
+- **Where it stands**: the first venue is a park in plan 03 · D12's zone, open every day until plan 06 · R14's calendar gives Tuesday, Thursday and Saturday (a stand-in row in `docs/mechanics/rulings.md`); the National Park is plan 20's venue of the same code. A Johto activity in Sinnoh sits against "Follow Platinum", which is why nothing of it touches a map or a script of Platinum's and all of it waits past the Hall of Fame.
+
+### The Pokéathlon (`Models/Athlon.cs`)
+
+- **Stats from the data**: `AthleteStats.Of(species)` gives Speed, Power, Skill, Stamina and Jump, one to five each, by our own formula (Speed from base Speed; Power from Attack and Sp. Attack; Stamina from HP and the defences; Jump from height and weight, more for what flies or floats; Skill from the rest and the body shape), with no table from the games. Aprijuice is Johto's and waits for plan 20's Apricorns.
+- **An event is a function**: an `AthlonEvent` has `Advance(dt, AthlonInput)` and `Score`, a pure function of its inputs and its seed, played by a team of three whose stats are the event's numbers (a hurdler's speed, a thrower's power); three rival teams are rolled from the Sinnoh Pokédex with the run's own `Random`.
+- **The ten and the five**: HGSS's events (Hurdle Dash, Pennant Capture, Circle Push, Block Smash, Disc Catch, Lamp Jump, Relay Run, Ring Drop, Snow Throw, Goal Roll) and its five courses of three, paired as HGSS pairs them, checked against Bulbapedia when written (`Data/athlon.json`).
+- **The screen** is `AthlonScreen` (`GameState.Athlon`): the course choice, the team from the party, each event drawn in 2D in layout units with `UiShapes` and the Pokémon as `FieldSprites` cards at whole-number scales (plan 10 · F1; the menu icon at 2× until then), the scoreboard, the medals. `SaveData.Athlon` keeps the records and the points, which buy Platinum's items in the dome's shop at our own prices.
+- **The dome** is a building in plan 03 · D12's zone (`BuildingKind` gains `Dome`; the style guide's "Buildings" first); Johto's dome is plan 20's.
+
+**GPU-free and drawn.** The four models, `WallClock`, the `Research` feed, `BattleConditions.OnlyBall`, the `jobs` command and the `modern` question take no window; tests drive them with a seed, a fixed clock and plain inputs. What draws: the TASKS page, the three new screens, the field's corner, a building kind and a ball, each with harness shots, and `diff` must list only them.
+
+## Sessions
+
+### E1 · The research record
+- `Models/Research.cs`: `ResearchKind`, `ResearchTask`, `ResearchTasks.For`, `ResearchRecord`, `Research.LevelOf` and `Points`; `SaveData.Research` (null in older saves reads as empty); `GameEngine.Research` fed from `BattleEngine.Show`'s cases, `PlayEvolutions` and `OnStep`; the `Toast` after the battle; `SaveData.ResearchComplete` and the certificate's rule.
+- Tests (`ResearchTests`): every species' tasks are achievable with its own data (the two moves are in its learnset, `Evolved` only where `Evolutions` has an entry); the rungs give 10 levels exactly; a battle through `CoreScenario.Wild` played by `BattleEngine` counts a move used, a foe beaten and a catch once each; a save round-trips the record; the certificate comes at 210 species and never twice.
+- **Done when** a wild battle fills Starly's record in a headless test and the counts survive a save and a load.
+
+### E2 · The TASKS page
+- `PokedexPage.Tasks`, `ModernUi.DexTasks` (the list of tasks with rung meters, the level on a disc, the heading's violet tab), the level's number on the list row, the certificate through `Diploma` with its own heading; the style guide's "Menu screens (G10)" Pokédex bullets first; `docs/mechanics/rulings.md` gains a "Research" section (the tasks, the ladder, the certificate).
+- Tests: `APokedexEntryHasThreePagesAndStepsThroughTheSpeciesSeen` becomes four; a species unseen shows no tasks; `TheListsShowAsManyRowsAsTheirPanelsHold` covers the page.
+- Shots: `26m_pokedex_tasks_starly`, `26n_pokedex_tasks_complete`, `26o_pokedex_research_certificate`, a `26_pokedex_turtwig` row with the level.
+- **Done when** the page reads a record the harness filled through a battle and `diff` lists only the Pokédex shots.
+
+### E3 · Poké Jobs
+- `Core/WallClock.cs`; `SaveData.LastSaved`, `SaveData.Jobs`, `Job`, `JobKind`; `Models/PokeJobs.cs` with `JobBoard`, `Post`, `Collect`, the rate tables (EXP by the hour, berries by kind, friendship by the hour) and the clock rules; `JobsScreen`, `ModernUi.Jobs.cs`, `GameState.Jobs`; `Op.Jobs` with `ScriptScreen.Jobs` and `Query.Modern` (a case in the parser and the runner, a method of both hosts, a line in `ScriptTests.EveryCommandHasItsLine`, their rows in `docs/scripts.md`); `common.PC`'s menu under the modern rules; `PlayEvolutions` from the board; the harness sets `WallClock.Fixed`; the rulings' "Later games' side activities" rows.
+- Style guide first: "Menu screens (G10)" gains the board.
+- Tests (`PokeJobsTests`): a fixed clock advanced eight hours pays a level's worth and no more; a clock set back pays nothing; a Pokémon posted is in neither party nor box and comes back whole (`ACopyTakesOnEverythingThatCanChange`'s fields); a save with a job loads a day later and collects; `common.PC` asks three ways under the modern rules and none under Platinum's (`HeadlessScriptHost`); an older save reads as no jobs.
+- Shots: `jobs` mode (`j01_pc_menu`, `j02_board`, `j03_posting`, `j04_under_way`, `j05_collected`), with the clock fixed.
+- **Done when** a Bidoof left on an errand overnight comes back a level higher in a modern game, and a Platinum game's PC is byte for byte what it was.
+
+### E4 · The contest's rules and the Sport Ball
+- The Sport Ball through `Overrides/items.json`, `BallTenths`, `BattleBall.LookOf` and its icon, the importer run and the coverage floor raised; `BattleConditions.OnlyBall` and `WhyNotItem`; `Data/contests.json` and `ContestVenue`; `Models/BugContest.cs` with the state, the clock, the entry, the swap, `Judge`, the rivals and the prizes; `SaveData.BugContest`; the rulings' rows (the weights of the judging, the HGSS table as numbers, twenty minutes).
+- Tests (`BugContestTests`): the Sport Ball catches at 15 tenths; under `OnlyBall` every other item is refused and outside it the Sport Ball is not; `Judge` against numbers worked out by hand; a second catch asks and the swap keeps the right one; the rivals are the same for a seed; the clock stops the contest at twenty minutes; the held party comes back; a save in the park loads into the same contest.
+- **Done when** a contest is played to its results in a test with the bare state and `CoreScenario`.
+
+### E5 · The park, the gate and the results
+- The park as an area of plan 03 · D12's zone with the venue's table (`MapArea.WildEncounters` swapped in while the contest is on), the gate room, its attendant's script (the question, the party choice through the host, the warp), the corner with the time left (`ModernUi.Field`; the style guide's "Field menus and notices" first), the fade back at the end, `ContestScreen` and `ModernUi.Contest.cs` (`GameState.ContestResults`), the prize given with the item fanfare.
+- Tests: the attendant's script on every way through it (`StoryTests`, a map of its own); the park's encounters are the venue's and the zone's own afterwards; `WorldWalk` reaches the gate.
+- Shots: `contest` mode (`ct01_gate_asks`, `ct02_party_choice`, `ct03_park_corner`, `ct04_battle_sport_ball`, `ct05_swap_asked`, `ct06_results`, `ct07_prize`).
+- **Done when** a contest is walked from the gate to the prize in the harness and the shots repeat.
+
+### E6 · The dome, the stats and the first events
+- `Models/Athlon.cs`: `AthleteStats.Of`, `AthlonEvent`, `AthlonInput`, the course flow (`AthlonRun`: three events, the scoreboard), the rivals, `SaveData.Athlon`; `AthlonScreen`, `ModernUi.Athlon.cs`, `GameState.Athlon`; the dome in the zone (`BuildingKind.Dome`, its style in `BuildingArt.StyleOf`; the style guide's "Buildings" first) with its clerk's script; the first three events, one of each kind: Hurdle Dash (a run with jumps), Block Smash (taps against a clock), Ring Drop (a push on a platform).
+- Tests (`AthlonTests`): every species' stats are one to five; an event's score is the same for the same inputs and seed; the frame is bounded (an event takes no more than its length of `dt`); a run saves its records.
+- Shots: `athlon` mode (`at01_dome`, `at02_course_choice`, `at03_team`, `at04_hurdle_dash`, `at05_block_smash`, `at06_ring_drop`, `at07_scoreboard`).
+- **Done when** a team of three plays a course of the three events to its scoreboard in the harness and in a test.
+
+### E7 · Events, batch 2
+- Pennant Capture, Snow Throw, Disc Catch and Lamp Jump as `AthlonEvent`s, each with its test of a pure function and a shot (`at08_` to `at11_`).
+- **Done when** seven events play and their shots repeat.
+
+### E8 · Events, batch 3, the courses and the shop
+- Relay Run, Circle Push and Goal Roll; the five courses as HGSS pairs them (`Data/athlon.json`); medals (gold, silver, bronze by score bands of our own) and the records board; the points and the dome's shop of Platinum's items (`ShopScreen`'s stock given by the dome); a `MusicRole` for the dome's theme, our own, in `Data/music/common/`.
+- Tests: every course names three events that exist; a medal's band; the shop refuses what the points can't pay.
+- Shots: `at12_` to `at14_` for the events, `at15_records`, `at16_shop`.
+- **Done when** all ten events play in the five courses and a medal is seen on the board.
+
+## Risks
+
+- **A record that counts twice**: `Show` plays a line once, but a `MoveShown` reaches every target of a spread move and a `Fainted` follows a hit that `Struck` already showed. E1 counts a move once per use (on the first `MoveShown` of a `Lunged`) and a defeat once per `Fainted`, and the test holds both.
+- **Real time in a game whose pictures repeat**: `WallClock` is the only reader of `DateTime.UtcNow`; anything else that reads it (plan 13 · V10's timer) is asked to go through it, and the harness fixes it. A job's clock is checked for going backwards.
+- **Free EXP changes the balance**: a job pays at most a level's worth a night, only in a modern game, and the rate is one table a session can turn down.
+- **The zone isn't built**: the park and the dome wait for plan 03 · D12's ground (plan 01 · M10 builds Platinum's post-game areas, not ours). E4 and E6 to E8 build the rules and the screens on maps of their own in the tests and the harness, so only E5 and the dome's placing wait.
+- **Two frameworks for a limited stay**: the Great Marsh counts steps and takes the player's Pokémon out of its battles (plan 06 · R9's `BattleKind.Safari`, refusing every item but its ball by kind; the place and its steps are plan 01's and R16's); the contest counts minutes and keeps one Pokémon and one kind of ball (`BattleConditions.OnlyBall`). They share the field's corner, and nothing else, on purpose.
+- **Ten events are ten small games**: E6 to E8 keep each to a few hundred lines on one `AthlonEvent` shape; a tenth that doesn't fit the shape is dropped before it bends it.
+- **Scope**: eight sessions. E1 to E3 are the value, E4 and E5 the second, E6 to E8 the least and last.
+
+## Needs and gives
+
+- **Needs**: plan 03 · D10 (done: the Pokédex and its screen) and D12 (the zone) for E5 and the dome; plan 06 · R1 (done: the rules choice) for the jobs' door; plan 06 · R10 for the EV reward and R15 for the nursery; plan 06 · R14 for the contest's days; plan 10 · F1 and F2 for the Pokémon in the events (the icons until then); plan 02 · S1 (done) for the attendants' scripts; plan 01 · M10 for the post-game to stand in; plan 20 (Johto) for the venues that belong there and the Apricorns.
+- **Gives**: plan 20 the contest and the Pokéathlon as code with venues to place; plan 01 and plan 06 · R16 the field's corner for the Great Marsh's steps and timer; plan 13 · V8 and V9 the research levels, the jobs and the medals of the dome as counters to stand medals on; plan 08 · P13 a fourth page beside its entries; plan 12 · Q3 and plan 13 · V10 `WallClock`; plan 07 · O2 nothing to wait for, since a job holds its Pokémon.
+
+## Decisions for the user
+
+1. **Where the research page lives.** *Recommended:* a fourth page of Platinum's Pokédex, after SIZE, shown always, since it only reads what the player did and gives nothing in play. The alternative keeps it to the modern rules, like the jobs, and a Platinum game's Pokédex has three pages.
+2. **Who may take a job.** *Recommended:* the boxes' Pokémon only, in a game played by the modern rules, with the Pokémon held in the job itself. The alternative opens the board under Platinum's rules as a row of the options, which a session can add later without a change to the model.
+3. **Where the contest and the dome stand before Johto.** *Recommended:* in plan 03 · D12's zone, after the Hall of Fame, on the rules' own data, so both can be played before plan 20 exists and Platinum's maps are untouched. The alternative builds the rules and screens now and keeps every venue for plan 20.
+4. **Minutes or steps for the contest.** *Recommended:* twenty minutes of the game's own time, as HGSS has, summed from `dt` so tests and the harness run it. The alternative counts steps like the Great Marsh and shares its limited stay (plan 01 and plan 06 · R16, on R9's Safari battle).
+5. **A second decompilation for the contest's numbers.** *Recommended:* no: the judging is our own formula written into the rulings, and the table's species and levels are numbers taken from Bulbapedia. The alternative pins pret/pokeheartgold in `Sources.cs` for the judging code, which plan 20 will want anyway and can bring.
+6. **How the athletic stats are made.** *Recommended:* from the data by our own formula, the same on every machine, with no table from the games. The alternative imports HGSS's per-species table when plan 20 pins its source, and the formula stays for every species that table lacks.
+
+## Status
+
+- [ ] E1 The research record
+- [ ] E2 The TASKS page
+- [ ] E3 Poké Jobs
+- [ ] E4 The contest's rules and the Sport Ball
+- [ ] E5 The park, the gate and the results
+- [ ] E6 The dome, the stats and the first events
+- [ ] E7 Events, batch 2
+- [ ] E8 Events, batch 3, the courses and the shop

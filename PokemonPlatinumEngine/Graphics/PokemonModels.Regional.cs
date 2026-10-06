@@ -7,7 +7,8 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 // The regional forms of the hand-built species, Dialga's and Palkia's Origin Formes, and the other forms that are neither
-// Mega nor Gigantamax (Basculin's stripes, Darmanitan's Zen Modes), hand-built like the species
+// Mega nor Gigantamax (Basculin's stripes, Darmanitan's Zen Modes, Deerling's and Sawsbuck's seasons, the female Frillish
+// and Jellicent), hand-built like the species
 // (after plan 03 · D11), in National Pokédex order: the Alolan Rattata line, Alolan Raichu, the Alolan Sandshrew,
 // Vulpix and Diglett lines, Alolan and Galarian Meowth, Alolan Persian, the Hisuian Growlithe line, the Alolan Geodude
 // line, Galarian Ponyta and Rapidash, the Galarian Slowpoke line, Galarian Farfetch'd, the Alolan Grimer line, Galarian
@@ -778,4 +779,50 @@ internal static partial class PokemonModels
     private static PokeBuilder ZoruaHisui() => ZoruaBuild(true);
 
     private static PokeBuilder ZoroarkHisui() => ZoroarkBuild(true);
+
+    // ------------------------------------------------------------------ Deerling's and Sawsbuck's seasons and the female Frillish and Jellicent (their builds in PokemonModels.Unova3.cs)
+
+    private static PokeBuilder DeerlingSummer() => DeerlingBuild(Season.Summer);
+
+    private static PokeBuilder DeerlingAutumn() => DeerlingBuild(Season.Autumn);
+
+    private static PokeBuilder DeerlingWinter() => DeerlingBuild(Season.Winter);
+
+    private static PokeBuilder SawsbuckSummer() => SawsbuckBuild(Season.Summer);
+
+    private static PokeBuilder SawsbuckAutumn() => SawsbuckBuild(Season.Autumn);
+
+    private static PokeBuilder SawsbuckWinter() => SawsbuckBuild(Season.Winter);
+
+    private static PokeBuilder FrillishFemale() => FrillishBuild(true);
+
+    private static PokeBuilder JellicentFemale() => JellicentBuild(true);
+
+    // ------------------------------------------------------------------ The rest of Unova's forms (their builds in PokemonModels.Unova4.cs)
+
+    private static PokeBuilder StunfiskGalar() => StunfiskBuild(true);
+
+    private static PokeBuilder BraviaryHisui() => BraviaryBuild(true);
+
+    private static PokeBuilder TornadusTherian() => TornadusTherianBuild();
+
+    private static PokeBuilder ThundurusTherian() => ThundurusTherianBuild();
+
+    private static PokeBuilder LandorusTherian() => LandorusTherianBuild();
+
+    private static PokeBuilder KyuremWhite() => KyuremBuild(Fusion.White);
+
+    private static PokeBuilder KyuremBlack() => KyuremBuild(Fusion.Black);
+
+    private static PokeBuilder KeldeoResolute() => KeldeoBuild(true);
+
+    private static PokeBuilder MeloettaPirouette() => MeloettaBuild(true);
+
+    private static PokeBuilder GenesectDouse() => GenesectBuild("Douse");
+
+    private static PokeBuilder GenesectShock() => GenesectBuild("Shock");
+
+    private static PokeBuilder GenesectBurn() => GenesectBuild("Burn");
+
+    private static PokeBuilder GenesectChill() => GenesectBuild("Chill");
 }

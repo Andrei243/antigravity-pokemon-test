@@ -222,7 +222,7 @@ public static class Cries
 {
     private const int Rate = Synthesizer.SampleRate;
 
-    /// <summary>The peak every cry is brought to: louder than any sound effect, as the original's are.</summary>
+    /// <summary>The peak a cry is brought to, unless that would make it too loud (<see cref="Loudness.CryCeiling"/>): louder than any sound effect, as the original's are.</summary>
     public const float Peak = 0.6f;
 
     /// <summary>How many cries are kept made; a Pokédex scrolled through all of them would otherwise keep every one.</summary>
@@ -442,7 +442,10 @@ public static class Cries
         return o;
     }
 
-    /// <summary>Takes out any offset, brings the cry to its peak and rounds its ends (2 ms in, 12 ms out).</summary>
+    /// <summary>
+    /// Takes out any offset, brings the cry to its peak and rounds its ends (2 ms in, 12 ms out); a cry that is then
+    /// louder than <see cref="Loudness.CryCeiling"/> is turned down to it, so every cry sits in its bus's window.
+    /// </summary>
     private static float[] Finish(float[] s)
     {
         if (s.Length == 0) return s;
@@ -461,6 +464,12 @@ public static class Cries
             int left = s.Length - 1 - i;
             if (left < fadeOut) g *= left / (float)fadeOut;
             s[i] *= g;
+        }
+        double loud = Loudness.Of(s);
+        if (loud > Loudness.CryCeiling)
+        {
+            float down = Loudness.Linear(Loudness.CryCeiling - loud);
+            for (int i = 0; i < s.Length; i++) s[i] *= down;
         }
         return s;
     }

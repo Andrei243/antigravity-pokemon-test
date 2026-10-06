@@ -37,6 +37,7 @@ public class CryTests
     public void EverySpeciesAndFormCriesCleanlyInAVoiceOfItsOwn()
     {
         var seen = new Dictionary<string, string>();
+        var (low, high) = Loudness.Target(AudioBus.Cry);
         int count = 0;
         foreach (var species in PokemonDatabase.GetAll().OrderBy(s => s.DexNumber))
             foreach (var form in new string?[] { null }.Concat(species.Forms?.Select(f => f.Name) ?? Enumerable.Empty<string>()))
@@ -48,10 +49,24 @@ public class CryTests
                 Assert.InRange(voice.Pitch, 65f, 1500f);
                 Assert.InRange(voice.Syllables.Length, 1, 4);
                 Assert.All(s, x => Assert.True(float.IsFinite(x)));
-                Assert.InRange(s.Max(MathF.Abs), Cries.Peak - 0.01f, Cries.Peak + 0.01f);
+                // At its peak, or turned down under it to the ceiling
+                float peak = s.Max(MathF.Abs);
+                double made = Loudness.Of(s);
+                Assert.True(peak <= Cries.Peak + 0.01f, $"{name} peaks at {peak:0.000}");
+                Assert.True(peak >= Cries.Peak - 0.01f || Math.Abs(made - Loudness.CryCeiling) < 0.05, $"{name} is turned down to {made:0.0} dB");
+                Assert.True(made <= Loudness.CryCeiling + 0.05, $"{name} is made at {made:0.0} dB");
                 Assert.True(MathF.Abs(s[0]) < 0.02f && MathF.Abs(s[^1]) < 0.02f, $"{name} clicks");
                 double rms = Math.Sqrt(s.Average(x => (double)x * x));
                 Assert.True(rms > 0.03, $"{name} is nearly silent");
+
+                // In its bus's window as the mixer plays it
+                var mixer = new AudioMixer();
+                mixer.PlaySound(new SoundSample("cry " + name, s), AudioBus.Cry);
+                var heard = new float[(s.Length + Synthesizer.SampleRate / 10) * 2];
+                for (int done = 0; done < heard.Length; done += 2048)
+                    mixer.Render(heard.AsSpan(done, Math.Min(2048, heard.Length - done)));
+                double loud = Loudness.Of(heard, 2);
+                Assert.True(loud >= low && loud <= high, $"{name} cries at {loud:0.0} dB, outside {low} to {high}");
 
                 // No two cries are the same
                 string print = string.Join(",", Enumerable.Range(0, 64).Select(i => s[s.Length * i / 64].ToString("0.000")));
