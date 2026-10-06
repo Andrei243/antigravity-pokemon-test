@@ -16,7 +16,7 @@ Written 2026-10-06, before any session.
 - **The original**, at the pinned commit:
   - `generated/battle_sub_animations.txt` lists its forty battle animations that are not moves: one for each condition (asleep, poisoned, burned, frozen, paralysed, confused, infatuated), level up, a bag item, a held item, shiny, a stat's boost and drop, HP restored, the doll's four swaps, an escape item, the five weathers, the Great Marsh's happy, eating and angry, and the damage from a curse, a nightmare, Leech Seed, Ingrain and the seven binding moves.
   - `BtlCmd_PlayBattleAnimation` (`src/battle/battle_script.c`) plays them only with the Battle Scene on, apart from the doll's four. On a Pokémon behind a Substitute or out of sight, `BattleSystem_ShouldShowStatusEffect` (`battle_lib.c`) shows only the weathers, the doll's swaps and the escape. After a poison tick the bar drains with no blink (`SYSCTL_SKIP_SPRITE_BLINK`), and Future Sight lands with its move's own animation.
-  - Each move's animation is a script of its own (`res/moves/<move>/anim.s`). Of the 460 found under their folder names, 107 darken the background, 279 shake a Pokémon, and together they play 261 different sounds. Five play the user's cry in a mode of their own: Growl (`UPROAR_1`, `_2`), Roar (`HOWL_1`, `_2`), Hyper Voice (`HYPERVOICE_1`, `_2`), Howl (`MID_MOVE`) and Chatter (its plain cry). Secret Power plays one plain hit.
+  - Each move's animation is a script of its own (`res/moves/<move>/anim.s`). Of 460 of them read for this plan, 107 darken the background, 279 shake a Pokémon, and together they play 261 different sounds. Five play the user's cry in a mode of their own: Growl (`UPROAR_1`, `_2`), Roar (`HOWL_1`, `_2`), Hyper Voice (`HYPERVOICE_1`, `_2`), Howl (`MID_MOVE`) and Chatter (its plain cry). Secret Power plays one plain hit.
   - Nothing is drawn while a hazard, a screen or Trick Room lasts, no ability has an animation of its own (`subscript_intimidate` plays only the stat drop), and a trainer's Pokémon are made in Poké Balls (`BoxPokemon_InitWith`, `src/pokemon.c`; the trainer data names only a seal, `ball_seal`).
 - **The frame** (plan 04 · G11, High, the 1080p window): a battle at its menu takes 6.73 ms, a double battle at its menu 7.00, and Surf's wave arriving 7.47, the heaviest moment measured.
 
@@ -45,7 +45,7 @@ The three condition events go on every line that sets, wears off or clears a con
 - hail bouncing;
 - fog lying in low layers.
 
-The light goes through `ArtLook.Weathered`, using the field weather each battle weather comes from (`Weathers` maps both ways). The harsh sun has a rig of its own (a stronger, warmer key and more bloom), because the field has no such weather. A cue plays as each weather starts and on each turn it goes on, and the layer stays for as long as the weather lasts. A snow or sand arena's own drift gives way to the battle's weather.
+The light goes through `ArtLook.Weathered`, using the field weather each battle weather comes from (a new way back beside `Weathers.InBattle`). The harsh sun has a rig of its own (a stronger, warmer key and more bloom), because the field has no such weather. A cue plays as each weather starts and on each turn it goes on, and the layer stays for as long as the weather lasts. A snow or sand arena's own drift gives way to the battle's weather.
 
 **The doll.** A new `Graphics/SubstituteDoll.cs` is a small figure of our own, sculpted with the SDF kit and meshed once and cached like `BattleBall`. There is one look for everyone, sized to the place. `CombatantView.Substitute` holds it and its age:
 - the Pokémon shrinks out of sight as the doll drops in (`SUBSTITUTE_IN`);
@@ -111,7 +111,7 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 - `WeatherContinues` on the turn's line (`BattleCore.Turn.cs`). `Show` starts a weather's cue and its layer on `WeatherChanged`, and finally gets a case for `SubstituteChanged`.
 - `ArenaFx.Weather` and the rigs under each weather; `CombatantView.Substitute`; `Graphics/SubstituteDoll.cs`, preloaded with `BattleBall`'s; the doll's swaps and flinch in `BattleRenderer`; the rule for what shows behind a doll; five weather sounds and the doll's two in `SoundBank`, with their rows in `docs/sound-effects.md`.
 - Tests: the new event on each "continues" line and the log otherwise unchanged; `ARecordedBattleReplaysTheSame` and the random battles with the new events; the view's doll up and down by the lines, not by the core; the weather's and the doll's looks pure in age and seed; a status cue hidden behind a doll while a weather's shows.
-- Harness: `conditions` gains `96_weather_<kind>` for the five, both at a menu and at their turn's line, and `96_substitute_up`, `_aside` and `_faded`; `arenas` gains a grass arena in rain and one in harsh sun; `profile` gains the rain scene.
+- Harness: `conditions` gains `96_weather_<kind>` for the five, both at a menu and at their turn's line, and `96_substitute_up`, `_aside` and `_faded`; `arenas` gains a grass arena in rain and one in harsh sun; `battle` and `demo` show no change under `diff` against their runs before, since their skies are clear; `profile` gains the rain scene.
 - **Done when** a battle on Route 215 is fought in rain that can be seen, a Substitute stands in front of its Pokémon until it fades, and the battle at its menu in rain stays under 8 ms on High.
 
 ### Y2 · What lies on the field
@@ -126,7 +126,7 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 - `BattleMoment`, and `MomentShown` attached by the callers of `LoseHp` and `RestoreHp` in `BattleCore.Turn.cs`; by the checks before a move for a sleeping, frozen, paralysed, confused or infatuated Pokémon (`BattleCore.Moves.cs`); for the marsh's bait and mud (`BattleCore.Special.cs`, a place since plan 01 · M7); for the bag's items, the escape item and `LevelRose`.
 - Q11's `ItemShown` where the original plays its held-item animation (`HeldItemEffects`, `BattleCore.Items.cs`). A cue for Future Sight's and Doom Desire's landing. `CueKind.Moment` and its looks in `MoveFx`. `Show` plays a moment before its `HpChanged`. A sound for each moment.
 - Tests: a scenario (`CoreScenario`) for each `BattleMoment` whose log carries it on its line; each look draws and stops; Leech Seed's travels from the seeded to the seeder; a poison tick leaves `HitAge` at -1; `AiMemory` still passes `TrainerAiTests`; the replay holds.
-- Harness: `96_turn_<moment>` for poison, burn, Leech Seed, Fire Spin, curse, Leftovers, a berry and the marsh's bait, and `96_future_sight`.
+- Harness: `96_turn_<moment>` for poison, burn, Leech Seed, Fire Spin, curse, Leftovers, a berry and the marsh's bait, and `96_future_sight`; `battle` and `doubles` against their runs before, changed only where a moment plays.
 - **Done when** the end of a turn can be read from the picture alone (who is poisoned, who is seeded and by whom, which item went off), and a poison tick no longer looks like a hit.
 
 ### Y4 · Each its own ball
@@ -141,14 +141,14 @@ A look that pushes a scene over 8 ms is cut down before it lands. No look goes t
 - `PokePose.Dodge`, `Tired`, `Cheer` and `Charge`, with the six body plans' clips; `EyesOf` in the order of the design, keeping L2's and F10's places whether or not they have landed; the views' ages, set in `Show` from `MoveShown.Missed`, `Won`, `Caught`, `Ended` and the new `Charging` on `BeginCharge`'s line.
 - `ClipRole.Dodge`, `Tired` and `Cheer`, with their names and the fallback. A move's charge half on the cue (`EffectCue.Charging`): the template gathers an aura of its type, and the charge moves get theirs in their batches.
 - Tests: each clip pure in time, starting and ending at rest with planted feet (G7's tests extended); the dodge clear of the miss's path at `ImpactTime`; tiredness taken from the bar, not from the HP; `EyesOf` case by case; an imported model with and without the clip; `Charging` on every charge turn, and the replay holds.
-- Harness: `96_dodge`, `96_tired`, `96_cheer` and `96_charge` in `conditions`; the `pokemon` mode's `92_clips_*` boards gain the three clips; `profile`'s battle at its menu with both Pokémon tired.
+- Harness: `96_dodge`, `96_tired`, `96_cheer` and `96_charge` in `conditions`; the `pokemon` mode's `92_clips_*` boards gain the three clips; `battle` and `demo` against their runs before, changed only where a Pokémon misses, is in the red or wins; `profile`'s battle at its menu with both Pokémon tired.
 - **Done when** a miss is dodged, a Pokémon in the red is seen to be, the winner cheers, and the battle at its menu costs what it did before.
 
 ### Y6 · Moves of their own: the kit, the board and the first chapter
 - The style guide first: "Move effects (G8)" gains "Moves of their own" (beats read from the original; shapes and sounds our own; the landing, the length, the cap) and the new cells.
 - The atlas at 8 × 8 (`FxTextures.Rows`), `FxList.Landed`, `MoveFx.MaxQuads`, `EffectCue`'s terrain for Secret Power and Camouflage, and the per-batch files.
 - The sounds: `SoundBank.MoveSound(move, type)` and the `use_<key>` entries, with their rows under "Moves". The cry modes the five moves ask for, with their rows under "Cries".
-- `MoveSightings`, with the order written into Y7 to Y10 here; the first chapter's moves (Twinleaf Town to Oreburgh's gym, about forty).
+- `MoveSightings`, with the order written into this plan's Y7 to Y10; the first chapter's moves (Twinleaf Town to Oreburgh's gym, about forty).
 - A new harness mode, `moves [move ...]`, not part of `all`: boards of sixty moves at impact (`mv_NN`), each with its name and `FxList.Count` and the template's moves marked, and four moments of each move named (`mv_<move>`).
 - Tests: `MovePresentationTests`. Every recipe is pure in age and seed, lands at `ImpactTime` within a frame, draws nothing after `EffectTime` and stays under `MaxQuads`. Floors for Platinum's moves with a look and a sound of their own are raised to the batch, as `CoverageTests` does. Every `use_` sound renders clean and inside the effects' loudness window (`SoundTests`), and the new modes pass `CryTests`.
 - Harness: the board; `demo` against its run before; `profile` with the batch's heaviest move.

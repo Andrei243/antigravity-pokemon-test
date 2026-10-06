@@ -167,7 +167,7 @@ Written 2026-10-06, before any session.
 ## Status
 
 - [ ] B1 Inverse battles
-- [ ] B2 Sky battles
+- [ ] B2 Sky battles (optional: a second check judged it low value)
 - [ ] B3 Hordes: the core
 - [ ] B4 Hordes on screen and in the grass
 - [ ] B5 SOS calls
@@ -178,4 +178,6 @@ Written 2026-10-06, before any session.
 - [ ] B10 The Pike and the Pyramid
 - [ ] B11 The World Tournament: Sinnoh's leaders
 - [ ] B12 The World Tournament: events and the other regions
-- [ ] B13 The Battle Royal (optional)
+- [ ] B13 The Battle Royal (optional: a second check judged it low value)
+- [ ] B14 Master Trainers: the masters' file and the one-on-one rule
+- [ ] B15 The Masters' Hall and the titles
