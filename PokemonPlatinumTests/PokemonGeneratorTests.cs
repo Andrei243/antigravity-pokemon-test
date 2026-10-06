@@ -94,12 +94,14 @@ public class PokemonGeneratorTests
 
     /// <summary>
     /// One generated species of every body kind: the first in the National Pokédex that isn't hand-built, so the
-    /// samples move on as the hand-built batches take species over.
+    /// samples move on as the hand-built batches take species over. Where every species of a kind is hand-built (the
+    /// cocoons since Pupitar), the first of the kind: the generator still makes that kind, so its generated model is
+    /// meshed all the same.
     /// </summary>
-    public static IEnumerable<object[]> OneOfEachKind => Enum.GetValues<BodyKind>().Select(kind => new object[]
+    public static IEnumerable<object[]> OneOfEachKind => Enum.GetValues<BodyKind>().Select(kind =>
     {
-        PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).First(n => !PokemonModels.HasModel(n) && PokemonGenomes.For(n)?.Kind == kind),
-        kind.ToString()
+        var ofKind = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).Where(n => PokemonGenomes.For(n)?.Kind == kind).ToList();
+        return new object[] { ofKind.FirstOrDefault(n => !PokemonModels.HasModel(n)) ?? ofKind.First(), kind.ToString() };
     });
 
     [Theory]
@@ -107,7 +109,7 @@ public class PokemonGeneratorTests
     public void EachBodyKindMeshesIntoASoundModel(string species, string kind)
     {
         Assert.Equal(kind, PokemonGenomes.For(species)!.Kind.ToString());
-        var m = PokemonModels.Build(species);
+        var m = PokemonModels.Finish(PokemonGenerator.Build(species)!);
         output.WriteLine($"{species} ({kind}): {m.Plan}, {m.Skeleton.Count} bones, {m.Mesh.VertexCount} vertices, {m.Decals.Count} decals");
         Assert.Null(m.Imported);
         Assert.Empty(Problems(m));

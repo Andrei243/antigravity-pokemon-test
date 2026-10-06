@@ -568,7 +568,10 @@ internal static partial class PokemonModels
         "Sentret", "Furret", "Ledyba", "Ledian", "Spinarak", "Ariados", "Chinchou", "Lanturn", "Igglybuff", "Natu", "Xatu",
         "Mareep", "Flaaffy", "Ampharos", "Bellossom", "Politoed", "Hoppip", "Skiploom", "Jumpluff", "Sunkern", "Sunflora",
         "Slowking", "Wobbuffet", "Pineco", "Forretress", "Dunsparce", "Snubbull", "Granbull", "Qwilfish", "Shuckle",
-        "Teddiursa", "Ursaring", "Slugma", "Magcargo", "Corsola"
+        "Teddiursa", "Ursaring", "Slugma", "Magcargo", "Corsola",
+        // Johto's second batch, Delibird to Celebi
+        "Delibird", "Skarmory", "Kingdra", "Phanpy", "Donphan", "Stantler", "Smeargle", "Tyrogue", "Hitmontop", "Smoochum", "Miltank",
+        "Raikou", "Entei", "Suicune", "Larvitar", "Pupitar", "Tyranitar", "Lugia", "Ho-Oh", "Celebi"
     };
 
     /// <summary>
@@ -595,7 +598,7 @@ internal static partial class PokemonModels
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
-        "Mewtwo-Mega-Y", "Meganium-Mega", "Feraligatr-Mega", "Ampharos-Mega", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Houndoom-Mega", "Gardevoir-Mega", "Medicham-Mega",
+        "Mewtwo-Mega-Y", "Meganium-Mega", "Feraligatr-Mega", "Ampharos-Mega", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Skarmory-Mega", "Houndoom-Mega", "Tyranitar-Mega", "Gardevoir-Mega", "Medicham-Mega",
         "Altaria-Mega", "Chimecho-Mega", "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Staraptor-Mega", "Lopunny-Mega",
         "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
@@ -1047,6 +1050,27 @@ internal static partial class PokemonModels
         "SLUGMA" => Slugma(),
         "MAGCARGO" => Magcargo(),
         "CORSOLA" => Corsola(),
+        // Johto's second batch (PokemonModels.Johto2.cs)
+        "DELIBIRD" => Delibird(),
+        "SKARMORY" => Skarmory(),
+        "KINGDRA" => Kingdra(),
+        "PHANPY" => Phanpy(),
+        "DONPHAN" => Donphan(),
+        "STANTLER" => Stantler(),
+        "SMEARGLE" => Smeargle(),
+        "TYROGUE" => Tyrogue(),
+        "HITMONTOP" => Hitmontop(),
+        "SMOOCHUM" => Smoochum(),
+        "MILTANK" => Miltank(),
+        "RAIKOU" => Raikou(),
+        "ENTEI" => Entei(),
+        "SUICUNE" => Suicune(),
+        "LARVITAR" => Larvitar(),
+        "PUPITAR" => Pupitar(),
+        "TYRANITAR" => Tyranitar(),
+        "LUGIA" => Lugia(),
+        "HO-OH" => HoOh(),
+        "CELEBI" => Celebi(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1135,7 +1159,9 @@ internal static partial class PokemonModels
         "STEELIX-MEGA" => SteelixMega(),
         "SCIZOR-MEGA" => ScizorMega(),
         "HERACROSS-MEGA" => HeracrossMega(),
+        "SKARMORY-MEGA" => SkarmoryMega(),
         "HOUNDOOM-MEGA" => HoundoomMega(),
+        "TYRANITAR-MEGA" => TyranitarMega(),
         "GARDEVOIR-MEGA" => GardevoirMega(),
         "MEDICHAM-MEGA" => MedichamMega(),
         "ALTARIA-MEGA" => AltariaMega(),
@@ -1174,7 +1200,7 @@ internal static partial class PokemonModels
     };
 
     /// <summary>Meshes the sculpted model, its outline shell and its decals.</summary>
-    private static PokeModel Finish(PokeBuilder b)
+    internal static PokeModel Finish(PokeBuilder b)
     {
         var m = b.Model;
         var sdf = b.Sdf;

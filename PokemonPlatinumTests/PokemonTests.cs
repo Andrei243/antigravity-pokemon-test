@@ -678,7 +678,10 @@ public class PokemonTests
             "Sentret", "Furret", "Ledyba", "Ledian", "Spinarak", "Ariados", "Chinchou", "Lanturn", "Igglybuff", "Natu", "Xatu",
             "Mareep", "Flaaffy", "Ampharos", "Bellossom", "Politoed", "Hoppip", "Skiploom", "Jumpluff", "Sunkern", "Sunflora",
             "Slowking", "Wobbuffet", "Pineco", "Forretress", "Dunsparce", "Snubbull", "Granbull", "Qwilfish", "Shuckle",
-            "Teddiursa", "Ursaring", "Slugma", "Magcargo", "Corsola"
+            "Teddiursa", "Ursaring", "Slugma", "Magcargo", "Corsola",
+            // Johto's second batch, Delibird to Celebi
+            "Delibird", "Skarmory", "Kingdra", "Phanpy", "Donphan", "Stantler", "Smeargle", "Tyrogue", "Hitmontop", "Smoochum", "Miltank",
+            "Raikou", "Entei", "Suicune", "Larvitar", "Pupitar", "Tyranitar", "Lugia", "Ho-Oh", "Celebi"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
@@ -701,6 +704,15 @@ public class PokemonTests
         var kanto = PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 1 and <= 151).Select(s => s.Name).ToList();
         Assert.Equal(151, kanto.Count);
         Assert.All(kanto, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
+    }
+
+    [Fact]
+    public void EverySpeciesOfJohtoIsHandBuilt()
+    {
+        // Plan 03, decision 3: the 64 Johto species outside the Sinnoh Pokédex, in two batches, and the 36 inside it
+        var johto = PokemonDatabase.GetAll().Where(s => s.DexNumber is >= 152 and <= 251).Select(s => s.Name).ToList();
+        Assert.Equal(100, johto.Count);
+        Assert.All(johto, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
     }
 
     private static void Tick(BattleEngine battle, float seconds)
