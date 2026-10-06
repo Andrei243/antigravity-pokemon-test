@@ -878,4 +878,30 @@ internal static partial class PokemonModels
     private static PokeBuilder MeowsticFemale() => MeowsticBuild(true, false);
 
     private static PokeBuilder AegislashBlade() => AegislashBuild(true);
+
+    private static PokeBuilder SliggooHisui() => SliggooBuild(true);
+
+    private static PokeBuilder GoodraHisui() => GoodraBuild(true);
+
+    private static PokeBuilder PumpkabooSmall() => PumpkabooBuild(0);
+
+    private static PokeBuilder PumpkabooLarge() => PumpkabooBuild(2);
+
+    private static PokeBuilder PumpkabooSuper() => PumpkabooBuild(3);
+
+    private static PokeBuilder GourgeistSmall() => GourgeistBuild(0);
+
+    private static PokeBuilder GourgeistLarge() => GourgeistBuild(2);
+
+    private static PokeBuilder GourgeistSuper() => GourgeistBuild(3);
+
+    private static PokeBuilder AvaluggHisui() => AvaluggBuild(true);
+
+    private static PokeBuilder XerneasActive() => XerneasBuild(true);
+
+    private static PokeBuilder Zygarde10() => ZygardeBuild(1);
+
+    private static PokeBuilder ZygardeComplete() => ZygardeBuild(2);
+
+    private static PokeBuilder HoopaUnbound() => HoopaBuild(true);
 }
