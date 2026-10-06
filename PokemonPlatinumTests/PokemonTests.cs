@@ -695,7 +695,12 @@ public class PokemonTests
             // Hoenn's third batch, Castform to Deoxys
             "Castform", "Kecleon", "Shuppet", "Banette", "Wynaut", "Spheal", "Sealeo", "Walrein", "Clamperl", "Huntail", "Gorebyss",
             "Relicanth", "Luvdisc", "Bagon", "Shelgon", "Salamence", "Beldum", "Metang", "Metagross", "Regirock", "Regice", "Registeel",
-            "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"
+            "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys",
+            // Unova's first batch, Victini to Audino
+            "Victini", "Snivy", "Servine", "Serperior", "Tepig", "Pignite", "Emboar", "Oshawott", "Dewott", "Samurott", "Patrat",
+            "Watchog", "Lillipup", "Herdier", "Stoutland", "Purrloin", "Liepard", "Pansage", "Simisage", "Pansear", "Simisear", "Panpour",
+            "Simipour", "Munna", "Musharna", "Pidove", "Tranquill", "Unfezant", "Blitzle", "Zebstrika", "Roggenrola", "Boldore", "Gigalith",
+            "Woobat", "Swoobat", "Drilbur", "Excadrill", "Audino"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
