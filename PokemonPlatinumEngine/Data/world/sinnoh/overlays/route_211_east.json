@@ -1,0 +1,61 @@
+{
+  "area": "route_211_east",
+  "bgmTrack": "sinnoh/route210",
+  "trees": "Pine",
+  "people": {
+    // In Platinum he jumps when the player speaks to him and hands over TM77 (Psych Up); the gift waits for plan 02
+    "ace_trainer_m": {
+      "name": "Trainer",
+      "dialog": [
+        "I'm training to be so tough that nothing in the world can make me flinch.",
+        "...Whoa! Don't creep up on people like that!",
+        "Ahem. Do you know Psych Up? It copies every boost your foe has built up. Let them do the warming up for you!"
+      ]
+    },
+    "bird_keeper_katherine": {
+      "name": "Katherine",
+      "trainer": {
+        "id": "bird_keeper_katherine",
+        "name": "Katherine",
+        "trainerClass": "Bird Keeper",
+        "dialogueBefore": "Bird Keeper Katherine: My Noctowl spotted you long before you reached this slope. Let's battle!",
+        "dialogueAfter": "Bird Keeper Katherine: It saw you coming. It just couldn't keep up with you."
+      }
+    },
+    "ninja_boy_nick": {
+      "name": "Nick",
+      "trainer": {
+        "id": "ninja_boy_nick",
+        "name": "Nick",
+        "trainerClass": "Ninja Boy",
+        "dialogueBefore": "Ninja Boy Nick: A talking rock? No, a ninja! And a ninja never refuses a battle!",
+        "dialogueAfter": "Ninja Boy Nick: Back to sitting very still and being a boulder, then."
+      }
+    },
+    "black_belt_sean": {
+      "name": "Sean",
+      "trainer": {
+        "id": "black_belt_sean",
+        "name": "Sean",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Sean: Up and down this slope all day long, that's my training. You'll be my rest stop!",
+        "dialogueAfter": "Black Belt Sean: Some rest stop. I'm more worn out than when I started."
+      }
+    },
+    "ruin_maniac_harry": {
+      "name": "Harry",
+      "trainer": {
+        "id": "ruin_maniac_harry",
+        "name": "Harry",
+        "trainerClass": "Ruin Maniac",
+        "dialogueBefore": "Ruin Maniac Harry: Bronzor were first dug up in ancient ruins, you know. I've three! Care to see them?",
+        "dialogueAfter": "Ruin Maniac Harry: All three of them, polished off like old mirrors in a museum."
+      }
+    }
+  },
+  "signs": {
+    "trainer_tips_signpost": "Trainer Tips\nMountains are long and their caves are dark. Fill your bag with Potions and an Escape Rope or two before you head in!",
+    "arrow_signpost_mt_coronet": "Route 211\nWest: Mt. Coronet",
+    "arrow_signpost_celestic_town": "Route 211\nEast: Celestic Town"
+  }
+}

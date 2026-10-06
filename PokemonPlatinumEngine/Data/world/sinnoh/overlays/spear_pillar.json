@@ -1,0 +1,8 @@
+{
+  "area": "spear_pillar",
+  "bgmTrack": "sinnoh/spear_pillar",
+  "evolutionSites": [ "Magnetic Field" ]
+  // Cyrus, Mars and Jupiter, their grunts and the rival, and the scenes the area's three triggers start (the
+  // grunts at the top of the steps, Cyrus at the altar, the Hall of Origin in the post-game), come with the story
+  // (plan 02 · S12, and plan 01 · M10 for the Hall of Origin)
+}

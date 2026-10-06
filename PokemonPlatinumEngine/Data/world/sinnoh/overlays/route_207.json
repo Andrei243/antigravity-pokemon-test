@@ -2,10 +2,8 @@
   "area": "route_207",
   "bgmTrack": "sinnoh/route206",
   "trees": "Pine",
-  // Mt. Coronet's upper floors (plan 01 · M8)
-  "locked": [ 1 ],
-  // The ledges over the route's east end are climbed to from Mt. Coronet's second floor (plan 01 · M8)
-  "heldBack": [ "item_iron", "item_timer_ball" ],
+  // The ledges over the route's east end, with the Iron and the Timer Ball, are reached from Mt. Coronet's second
+  // floor (warp 1, plan 01 · M8)
   "people": {
     "cyclist_m": {
       "name": "Cyclist",

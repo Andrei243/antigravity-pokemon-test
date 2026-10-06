@@ -1,0 +1,7 @@
+{
+  "area": "mt_coronet_1f_north_room_2",
+  "bgmTrack": "sinnoh/cave",
+  "evolutionSites": [ "Magnetic Field" ],
+  // The way into the Iceberg Ruins opens after the Hall of Fame (plan 01 · M10)
+  "locked": [ 2, 3 ]
+}

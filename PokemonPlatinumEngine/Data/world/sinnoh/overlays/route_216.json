@@ -1,0 +1,103 @@
+{
+  "area": "route_216",
+  "bgmTrack": "sinnoh/route216",
+  "trees": "Pine",
+  // The Snowbound Lodge has no rooms yet (plan 01 · M11)
+  "locked": [ 1 ],
+  "people": {
+    "ace_trainer_blake": {
+      "name": "Blake",
+      "trainer": {
+        "id": "ace_trainer_blake",
+        "name": "Blake",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Blake: Every step through this snow is training. A battle is the best step of all!",
+        "dialogueAfter": "Ace Trainer Blake: I'd blame the snow, but it was you. It was all you."
+      }
+    },
+    "ace_trainer_laura": {
+      "name": "Laura",
+      "trainer": {
+        "id": "ace_trainer_laura",
+        "name": "Laura",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Laura: My Tropius doesn't mind the cold at all. Even the fruit round its neck never freezes!",
+        "dialogueAfter": "Ace Trainer Laura: Cool as the snow itself. You kept your head the whole way through."
+      }
+    },
+    "black_belt_philip": {
+      "name": "Philip",
+      "trainer": {
+        "id": "black_belt_philip",
+        "name": "Philip",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Philip: I train by smashing the ice on this road! Let's see if you crack as easily!",
+        "dialogueAfter": "Black Belt Philip: I was the one who cracked. Back to the ice for me."
+      }
+    },
+    "skier_bradley": {
+      "name": "Bradley",
+      "trainer": {
+        "id": "skier_bradley",
+        "name": "Bradley",
+        "trainerClass": "Skier",
+        "dialogueBefore": "Skier Bradley: Look out below! ...Oh, a battle? Sure, I can stop. Eventually!",
+        "dialogueAfter": "Skier Bradley: Wiped out! Right into the deepest drift on the slope."
+      }
+    },
+    "ace_trainer_garrett": {
+      "name": "Garrett",
+      "trainer": {
+        "id": "ace_trainer_garrett",
+        "name": "Garrett",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Garrett: You came all the way through the mountain? Then you're worth a battle.",
+        "dialogueAfter": "Ace Trainer Garrett: You've earned the road ahead. I'll go and thaw out somewhere."
+      }
+    },
+    "ace_trainer_maria": {
+      "name": "Maria",
+      "trainer": {
+        "id": "ace_trainer_maria",
+        "name": "Maria",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Maria: I'm on my way to Snowpoint to take on its Gym. You'll be my warm-up!",
+        "dialogueAfter": "Ace Trainer Maria: If that was the warm-up, I'd better keep training before I reach the Gym."
+      }
+    },
+    "skier_kaitlyn": {
+      "name": "Kaitlyn",
+      "trainer": {
+        "id": "skier_kaitlyn",
+        "name": "Kaitlyn",
+        "trainerClass": "Skier",
+        "dialogueBefore": "Skier Kaitlyn: Fresh snow, clear skies and a trainer to battle. What a perfect day!",
+        "dialogueAfter": "Skier Kaitlyn: Face first into the snow. Good thing it's soft!"
+      }
+    },
+    "skier_edward": {
+      "name": "Edward",
+      "trainer": {
+        "id": "skier_edward",
+        "name": "Edward",
+        "trainerClass": "Skier",
+        "dialogueBefore": "Skier Edward: Nobody's faster on these slopes than me, except my Sneasel!",
+        "dialogueAfter": "Skier Edward: Too fast for my own good. I went sliding right past the win."
+      }
+    },
+    "skier_andrea": {
+      "name": "Andrea",
+      "trainer": {
+        "id": "skier_andrea",
+        "name": "Andrea",
+        "trainerClass": "Skier",
+        "dialogueBefore": "Skier Andrea: My Snover and I play out in the snow all day. Want to join in?",
+        "dialogueAfter": "Skier Andrea: That wasn't the snowball fight I had in mind."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": "Route 216\nEast: Mt. Coronet",
+    "signboard_snowbound_lodge": "Snowbound Lodge\nCome in out of the snow and rest by the fire."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "area": "mt_coronet_1f_tunnel_room",
+  "bgmTrack": "sinnoh/mt_coronet",
+  "evolutionSites": [ "Magnetic Field" ],
+  // Both ways out land on a mat that the original leaves across a corridor (the north face's cave mouth opens east off
+  // a path running north and south; the first floor's mat south off a passage running west): one step on the way the
+  // mat faces is rock, so each says where to come out, on the corridor beside it
+  "doors": [
+    { "warp": 0, "map": "MtCoronetOutsideNorth", "x": 45, "y": 29, "facing": "Down" },
+    { "warp": 1, "map": "MtCoronet1FNorthRoom1", "x": 20, "y": 61, "facing": "Left" }
+  ]
+  // Team Galactic's grunts on the climb to Spear Pillar (three trainers, and the lost one by the way in) come with
+  // that chapter (plan 02 · S12); their teams are Platinum's in trainers.json
+}

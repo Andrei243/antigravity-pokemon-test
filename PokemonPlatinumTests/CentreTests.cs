@@ -104,8 +104,9 @@ public class CentreTests
     public void ADoorOfAPlaceNotBuiltYetStaysShut()
     {
         var map = Overworld;
-        // The Lost Tower, Mt. Coronet's upper floors, Eterna's Gym, Hearthome's Contest Hall, Solaceon's Day Care
-        foreach (var (x, y) in new[] { (568, 680), (348, 717), (312, 562), (479, 691), (553, 645) })
+        // The Lost Tower, Eterna's Gym, Hearthome's Contest Hall, Solaceon's Day Care (Mt. Coronet's upper floors,
+        // shut here until plan 01 · M8, are open)
+        foreach (var (x, y) in new[] { (568, 680), (312, 562), (479, 691), (553, 645) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) leads nowhere and can be walked into");

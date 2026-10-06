@@ -1,0 +1,9 @@
+{
+  "area": "lake_acuity_low_water",
+  "bgmTrack": "sinnoh/lake",
+  "trees": "Pine",
+  // The rival, who comes to the lake after Team Galactic has gone, waits for the story (plan 02 · S11).
+  // The TM14 ball stands in the grass north of the water, which cliffs close off on this version of the lake; it
+  // waits for the lake Team Galactic comes to, whose own file has it too
+  "heldBack": [ "item_tm14" ]
+}

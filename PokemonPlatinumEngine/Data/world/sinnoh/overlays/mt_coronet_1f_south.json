@@ -1,6 +1,7 @@
 {
   "area": "mt_coronet_1f_south",
   "bgmTrack": "sinnoh/cave",
-  // Mt. Coronet's upper floors (plan 01 · M8)
-  "locked": [ 2 ]
+  // Magneton and Nosepass evolve anywhere inside Mt. Coronet, as the original's table of places says
+  "evolutionSites": [ "Magnetic Field" ]
+  // Its way up (warp 2) leads to the second floor since plan 01 · M8
 }

@@ -1,0 +1,10 @@
+{
+  "area": "mt_coronet_outside_south",
+  "bgmTrack": "sinnoh/mt_coronet",
+  "trees": "Pine",
+  "evolutionSites": [ "Magnetic Field" ],
+  // The top of this map is the north face's ledge by the way into the fourth floor, seen from the south: the north
+  // face's own map has the same cracked rocks (and the same two Star Pieces under the ground), and on this map nothing
+  // leads up to them
+  "heldBack": [ "rock_smash_2", "rock_smash_3", "rock_smash_4", "rock_smash_5", "rock_smash_6", "rock_smash_7" ]
+}

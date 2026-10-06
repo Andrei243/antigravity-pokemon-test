@@ -468,6 +468,8 @@ public class WorldTests
                 for (int x = 0; x < m.Width; x++)
                 {
                     if (m.GetGroundTile(x, y) != TileType.TallGrass || m.AreaAt(x, y) is not { Open: true } area) continue;
+                    // Lake Acuity before Team Galactic comes has grass and, by the original's own header, nothing living in it
+                    if (area.Key == "lake_acuity_low_water") continue;
                     Assert.True(area.WildEncounters.Count > 0, $"{m.Name}: tall grass at ({x},{y}) in {area.Key}, where nothing lives");
                     if (m == map && area == route201) grass ??= (x, y);
                 }

@@ -828,8 +828,11 @@ public class StoryTests
         var hidden = OwnMaps.Value.Values.SelectMany(map => map.HiddenItems.Select(h => (Map: map, At: h.Key, Item: h.Value))).ToList();
         Assert.True(hidden.Count >= 20, $"only {hidden.Count} hidden items");
         // The original gives one flag to two places now and then, and says so in its name (Route 207's or Wayward
-        // Cave's): whichever is found first, the other is gone too
-        Assert.Empty(hidden.GroupBy(h => h.Item.Flag).Where(g => g.Count() > 1 && !g.Key.Contains("_OR_")).Select(g => g.Key));
+        // Cave's), or the two are one place shown on two maps (Mt. Coronet's north and south faces share a ledge and
+        // its two Star Pieces): whichever is found first, the other is gone too
+        Assert.Empty(hidden.GroupBy(h => h.Item.Flag)
+            .Where(g => g.Count() > 1 && !g.Key.Contains("_OR_") && !g.All(h => h.Map.Name.StartsWith("MtCoronetOutside", StringComparison.Ordinal)))
+            .Select(g => g.Key));
 
         foreach (var (map, at, item) in hidden)
         {

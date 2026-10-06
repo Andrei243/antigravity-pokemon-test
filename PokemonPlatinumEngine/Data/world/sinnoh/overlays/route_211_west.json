@@ -1,0 +1,41 @@
+{
+  "area": "route_211_west",
+  "bgmTrack": "sinnoh/route205",
+  "trees": "Pine",
+  "people": {
+    "bird_keeper_alexandra": {
+      "name": "Alexandra",
+      "trainer": {
+        "id": "bird_keeper_alexandra",
+        "name": "Alexandra",
+        "trainerClass": "Bird Keeper",
+        "dialogueBefore": "Bird Keeper Alexandra: The wind pours down off the mountain here. My birds love to ride it. Shall we?",
+        "dialogueAfter": "Bird Keeper Alexandra: Grounded already! We'll go back to practising our take-offs."
+      }
+    },
+    "hiker_louis": {
+      "name": "Louis",
+      "trainer": {
+        "id": "hiker_louis",
+        "name": "Louis",
+        "trainerClass": "Hiker",
+        "dialogueBefore": "Hiker Louis: I'm off into Mt. Coronet. A battle first, to warm up my legs!",
+        "dialogueAfter": "Hiker Louis: That took the puff right out of me. The mountain can wait a while."
+      }
+    },
+    "ninja_boy_zach": {
+      "name": "Zach",
+      "trainer": {
+        "id": "ninja_boy_zach",
+        "name": "Zach",
+        "trainerClass": "Ninja Boy",
+        "dialogueBefore": "Ninja Boy Zach: You walked straight past me! Out of the shadows, my Zubat!",
+        "dialogueAfter": "Ninja Boy Zach: Three Zubat, and not one of them could find a way through you."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_mt_coronet": "Route 211\nEast: Mt. Coronet",
+    "arrow_signpost_eterna_city": "Route 211\nWest: Eterna City"
+  }
+}
