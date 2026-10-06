@@ -904,4 +904,8 @@ internal static partial class PokemonModels
     private static PokeBuilder ZygardeComplete() => ZygardeBuild(2);
 
     private static PokeBuilder HoopaUnbound() => HoopaBuild(true);
+
+    // ------------------------------------------------------------------ Alola's forms (their builds in PokemonModels.Alola1.cs)
+
+    private static PokeBuilder DecidueyeHisui() => DecidueyeBuild(true);
 }
