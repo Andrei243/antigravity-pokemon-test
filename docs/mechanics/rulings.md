@@ -400,3 +400,22 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | No moving platforms yet (the Canalave Gym's lifts, plan 01 · M9, are the first to need them) |
 | Sailor Eldritch's boat | Sails to Iron Island, and to Fullmoon and Newmoon Islands when the story sends the player there | Iron Island and back | The two islands are plan 01 · M10's |
 | Maniac Tunnel | Dug once enough kinds of Unown are seen | Not open; Solaceon's Rare Candy beyond it is held back | The Ruin Maniac's digging is the story's (plan 02 · S8) |
+
+## The first chapter (2026-10-06, plan 02 · S4)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_twinleaf_town*.s`, `scripts_route_201.s`, `scripts_verity_lakefront.s`, `scripts_lake_verity_low_water.s`, `scripts_sandgem_town*.s`, `scripts_route_202.s`, `src/field/field_system.c`'s `InitNewGame`)
+
+- **A new game** begins upstairs at home with no Pokémon, an empty bag and no Pokédex, and the start menu offers POKéDEX and POKéMON only once the player has them. Running needs the Running Shoes, which Mom gives once the player has come home with a Pokémon.
+- **The first battle is the rival's**, not a wild Starly's (Diamond and Pearl's): his team is the one Platinum names after the player's starter (`TRAINER_RIVAL_ROUTE_201_<starter>`, the one strong against it), it has no critical hits, and it may be lost: the team is healed either way and the player wakes at home.
+- **The professor and the Pokédex ask until they hear yes**, as the original's questions loop; the rival asks for his battle the same way.
+- **The assistant's first Pokémon** is the one of the three neither child took.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The rival on the way to the lake | Walks behind the player from Route 201 to the lakefront | Runs ahead and waits at the lakefront; the roads home and to Sandgem Town tell the player he went to the lake | Nobody follows the player yet |
+| The way to the lab door | The assistant walks the player from the edge of Sandgem Town to the lab | A fade, and the two stand at the door | Two people walked side by side through a town isn't a script command yet |
+| The television | A caption of the special before the field appears | The special's last lines under "TV" over the bedroom | No caption screen; the lines are the same beat |
+| A nickname for the first Pokémon | The professor asks whether to give one | Not asked | Pokémon can't be named yet |
+| The Journal | Records what the player does | Given, and does nothing yet | The Journal's screen isn't built |

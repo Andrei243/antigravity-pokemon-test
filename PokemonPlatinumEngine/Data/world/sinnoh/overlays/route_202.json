@@ -39,6 +39,9 @@
         "dialogueAfter": "Youngster Logan: You beat me? That was fun all the same. I'm going to battle everybody!"
       }
     },
+    // The assistant sends the player home without the rival's parcel, and shows how Pokémon are caught with it
+    // (scripts/route_202.txt; plan 02 · S4)
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "script": "CatchingLesson" },
     "youngster": {
       "name": "Boy",
       "dialog": [
@@ -47,6 +50,7 @@
       ]
     }
   },
+  "triggers": [ { "trigger": 0, "script": "CatchingLesson" } ],
   "signs": {
     "arrow_signpost_sandgem_town": "Route 202\nSouth: Sandgem Town",
     "arrow_signpost_jubilife_city": "Route 202\nNorth: Jubilife City",

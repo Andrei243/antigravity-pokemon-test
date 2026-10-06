@@ -191,11 +191,14 @@ public static class ScriptParser
                 if (who == "player") throw r.Error("the player can't be battled");
                 // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
                 bool mayLose = false, byId = false, first = false;
-                string second = "", partner = "";
+                string second = "", partner = "", asTrainer = "";
                 while (r.More)
                 {
-                    switch (r.OneOf("canlose", "first", "and", "with"))
+                    switch (r.OneOf("canlose", "first", "and", "with", "as"))
                     {
+                        case "as":
+                            asTrainer = r.Text("a trainer's id");
+                            break;
                         case "canlose":
                             mayLose = true;
                             break;
@@ -213,7 +216,7 @@ public static class ScriptParser
                             break;
                     }
                 }
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first };
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer };
             }
             case "wildbattle":
             case "catchinglesson":

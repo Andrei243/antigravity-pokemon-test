@@ -82,7 +82,7 @@ A tile's type is what it looks like. What it *does* is its **tile behaviour** (`
 
 | Where | Types |
 | --- | --- |
-| Rooms, solid | `Table`, `Chair`, `Sofa`, `Bookshelf`, `Television`, `Plant`, `Fridge`, `KitchenCounter`, `Stove`, `Stairs`, `Counter`, `HealingMachine`, `Bench`, `StoreShelf`, `LabDesk`, `LabMachine` |
+| Rooms, solid | `Table`, `Chair`, `Sofa`, `Bookshelf`, `Television`, `Plant`, `Fridge`, `KitchenCounter`, `Stove`, `Stairs`, `Counter`, `HealingMachine`, `Bench`, `StoreShelf`, `LabDesk`, `LabMachine`, `Bed`, `Computer` |
 | Rooms, decoration | `Rug` on the floor; `Window`, `Painting`, `Clock`, `WallEmblem` on the back wall (give them `y` 1) |
 | Outdoors, solid | `Boulder` (on land or in water), `Fence` (a run of tiles; fenced tiles that touch are joined, so a corner is two runs; wood, white or iron railings as the town builds), `LowWall` (the same in stone), `LampPost`, `Mailbox`, `Planter`, `Bench` (two tiles wide: a park bench; one tile wide and two deep, it lies north and south), and the obstacles field moves clear: `CutTree`, `CrackedRock`, `StrengthBoulder`, which as props only stand in the way (since plan 02 · S2 an obstacle that gives way is a person of the map with that `npcType`, as the world's are: "Obstacles" below) |
 | Outdoors, placed by the world's models | `Fountain`, `Boat`, `WindTurbine`, `Statue`, `HoneyTree`, `Crates`, `CoalHeap`, `Hedge`, `Column`, `Topiary`, `Cairn`, `Billboard`, `Outcrop`, `Mast`, `Drums`: each as large as its rectangle of tiles. A map file can place them too |

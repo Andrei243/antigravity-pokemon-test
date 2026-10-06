@@ -105,9 +105,10 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 | `ask "..."` | A question with Yes and No beside it. Then `if yes` / `if no`. The cancel button answers no. |
 | `choose "question" "A" "B" ...` | A question with up to six answers. `RESULT` is the place of the one picked, from 0. The cancel button picks the last, so the way out goes last. |
 
-A line may hold `{player}` and `{assistant}` (who they are is filled in as it is shown), `{self}`,
-`{lead}` (the first Pokémon of the team), `{starter}` and `{rivalstarter}`, `{item}` (the last item given or
-taken), `{money}`, `{result}` and `{var:NAME}`.
+A line may hold `{player}`, `{assistant}` and `{rival}` (who they are is filled in as it is shown, a speaker's
+name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{rivalstarter}` and
+`{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
+`{money}`, `{result}` and `{var:NAME}`.
 
 ### Where a script goes
 
@@ -175,6 +176,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
 | `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
 | `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
+| `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |

@@ -9,7 +9,8 @@ public enum PlayerLook { Boy, Girl }
 /// Who the player is in the game being played: the name and the look chosen in the introduction. Whoever
 /// shows the player (the field, a battle, the Trainer Card) or names them (messages, written lines) asks
 /// here. The character the player didn't choose is the professor's assistant, as in the games.
-/// Written lines name them with <c>{player}</c> and <c>{assistant}</c>; plan 02's scripts will take this over.
+/// Written lines name them with <c>{player}</c> and <c>{assistant}</c>, and the rival, the friend from next door
+/// whom the player names last in the introduction (plan 02 · S4), with <c>{rival}</c>.
 /// </summary>
 public static class PlayerIdentity
 {
@@ -18,6 +19,15 @@ public static class PlayerIdentity
 
     public static string Name { get; private set; } = DefaultName(PlayerLook.Boy);
     public static PlayerLook Look { get; private set; }
+
+    /// <summary>The rival's name, as the player gave it.</summary>
+    public static string RivalName { get; private set; } = DefaultRivalName;
+
+    /// <summary>The rival's own name, when none is entered.</summary>
+    public const string DefaultRivalName = "Barry";
+
+    /// <summary>Names the rival; an empty name takes his own.</summary>
+    public static void SetRival(string? name) => RivalName = Clean(name) is { Length: > 0 } given ? given : DefaultRivalName;
 
     /// <summary>Sets who the player is; an empty name takes the look's own.</summary>
     public static void Set(string? name, PlayerLook look)
@@ -51,11 +61,11 @@ public static class PlayerIdentity
         : npcType.Equals("Player", StringComparison.OrdinalIgnoreCase) ? CharacterOf(look)
         : npcType;
 
-    /// <summary>A written line with the player's and the assistant's names put in.</summary>
-    public static string Fill(string text) => Fill(text, Name, Look);
+    /// <summary>A written line with the player's, the assistant's and the rival's names put in.</summary>
+    public static string Fill(string text) => Fill(text, Name, Look, RivalName);
 
-    public static string Fill(string text, string name, PlayerLook look) =>
-        text.Contains('{') ? text.Replace("{player}", name).Replace("{assistant}", DefaultName(Other(look))) : text;
+    public static string Fill(string text, string name, PlayerLook look, string rival = DefaultRivalName) =>
+        text.Contains('{') ? text.Replace("{player}", name).Replace("{assistant}", DefaultName(Other(look))).Replace("{rival}", rival) : text;
 
     /// <summary>A name as it may be kept: trimmed, at most seven characters, nothing that would break a line.</summary>
     public static string Clean(string? name)

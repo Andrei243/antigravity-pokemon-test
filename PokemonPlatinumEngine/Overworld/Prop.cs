@@ -19,6 +19,10 @@ public enum PropType
     StoreShelf,
     LabDesk,
     LabMachine,
+    /// <summary>A bed two tiles long, its head against the north wall (plan 02 · S4).</summary>
+    Bed,
+    /// <summary>A desk with a computer on it (the player's own, in the bedroom).</summary>
+    Computer,
 
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,

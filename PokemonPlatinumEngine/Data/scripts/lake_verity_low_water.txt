@@ -1,0 +1,48 @@
+# Lake Verity, as the game finds it before Team Galactic comes (plan 02 · S4). docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_lake_verity_low_water.s).
+#
+# The first visit with the rival: a man in grey stands by the shore and speaks to the lake, names himself and
+# walks away; then something cries out over the water, and the rival, with no Poké Balls, races off to the
+# professor's lab.
+
+
+script OnEnter
+  if var VAR_VISITED_LAKE_VERITY_WITH_RIVAL != 0 end
+  show rival
+  place rival 47 53 up
+  wait 0.4
+  speaker "{rival}"
+  say "Huh? Who's that, down by the water?"
+  camera pan 48 44 1.0
+  wait 0.5
+  speaker "???"
+  say "......"
+  say "Time flows on without end, and space stretches on without limit... And one day, both will answer to me."
+  say "My name is Cyrus."
+  say "You who sleep beneath this lake. Sleep on, while you still can."
+  camera release 0.8
+  walk cyrus down 5 left 1 down 3
+  speaker "Cyrus"
+  say "Step aside."
+  walk rival right 1
+  walk cyrus down 2
+  hide cyrus
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_CYRUS
+  face rival player
+  speaker "{rival}"
+  say "...What was that about? What a weird guy."
+  say "Forget him! The legendary Pokémon! Let's find it and catch it!"
+  cry "Mesprit"
+  text "Something cried out, somewhere far out over the lake..."
+  emote rival exclaim
+  walk rival up 2 fast
+  walk rival down 2 fast
+  face rival player
+  say "Did you hear that? That had to be it! ...Oh, no. We don't have any Poké Balls!"
+  say "Right! We'll ask Professor Rowan for some. Race you to his lab in Sandgem! Last one there pays the fine!"
+  walk rival left 1 down 1 fast
+  hide rival
+  setflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_RIVAL
+  setvar VAR_FOLLOWER_RIVAL_STATE 4
+  setvar VAR_VISITED_LAKE_VERITY_WITH_RIVAL 1
+  end

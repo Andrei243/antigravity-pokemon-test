@@ -59,6 +59,8 @@ internal static class PropModels
             case PropType.Bench: Bench(kit, w); break;
             case PropType.StoreShelf: StoreShelf(kit, w, againstWall: p.Y <= 2); break;
             case PropType.LabDesk: LabDesk(kit, w); break;
+            case PropType.Bed: Bed(kit, d); break;
+            case PropType.Computer: BuildPc(kit, p.X, p.Y); break;
             case PropType.LabMachine: LabMachine(kit, d, facesEast: p.X <= 1, facesWest: p.X + p.Width >= map.Width - 1); break;
             case PropType.Rug: Rug(kit, w, d, map.Interior == InteriorStyle.PokemonCenter); break;
             case PropType.Window: Window(kit, w); break;
@@ -517,6 +519,43 @@ internal static class PropModels
     }
 
     /// <summary>A computer on a small desk, for PC tiles.</summary>
+    /// <summary>
+    /// A bed (style guide, "Rooms"): a wooden frame and headboard, a cream pillow, the sheet turned back over a blue
+    /// blanket quilted in lines, its head against the north wall.
+    /// </summary>
+    private static void Bed(KitBuilder kit, int d)
+    {
+        int length = d - 4;
+        var top = kit.Face($"bed.top.{length}", 26, length, c =>
+        {
+            TopFace(c, BlueFabric);
+            Pix.Raised(c, 4, 3, 18, 9, Cream);
+            c.Rect(1, 14, 24, 4, Cream.Light);
+            c.HLine(1, 17, 24, Cream.Dark);
+            for (int y = 25; y < length - 3; y += 8) c.HLine(2, y, 22, BlueFabric.Dark);
+        });
+        var foot = kit.Face("bed.foot", 26, 14, c =>
+        {
+            Pix.Raised(c, 0, 0, 26, 14, Wood);
+            c.Rect(1, 1, 24, 6, BlueFabric.Base);
+            c.HLine(1, 6, 24, BlueFabric.Dark);
+        });
+        var side = kit.Face($"bed.side.{length}", length, 14, c =>
+        {
+            Pix.Raised(c, 0, 0, length, 14, WoodDark);
+            c.Rect(1, 1, length - 2, 6, BlueFabric.Dark);
+        });
+        kit.Box(3, 29, 3, 3 + length, 0, 14, top, foot, side, side);
+        var head = kit.Face("bed.head", 28, 26, c =>
+        {
+            Pix.Raised(c, 0, 0, 28, 26, WoodDark);
+            Pix.Sunken(c, 4, 4, 20, 14, WoodDark);
+        });
+        var headTop = kit.Face("bed.head.top", 28, 3, c => TopFace(c, Wood));
+        var headSide = kit.Face("bed.head.side", 3, 26, c => Pix.Raised(c, 0, 0, 3, 26, WoodDark));
+        kit.Box(2, 30, 0, 3, 0, 26, headTop, head, headSide, headSide);
+    }
+
     public static void BuildPc(KitBuilder kit, int tx, int ty)
     {
         kit.Origin = new Vector3(tx, 0, ty);

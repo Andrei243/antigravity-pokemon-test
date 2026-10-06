@@ -290,7 +290,8 @@ public class PokemonTests
         var home = MapDatabase.Get("PlayerHouse");
 
         Assert.False(home.IsWalkable(4, 4), "the dining table should be solid");
-        Assert.False(home.IsWalkable(8, 3), "the stairs should be solid");
+        Assert.False(home.IsWalkable(8, 2), "the stairs should be solid");
+        Assert.Equal("PlayerHouse2F", home.GetWarpAt(8, 3)?.TargetMap);
         Assert.True(home.IsWalkable(4, 6), "the rug by the door should be walkable");
         Assert.True(home.IsWalkable(4, 5), "the white-out spot must stay free");
 

@@ -1,0 +1,39 @@
+# The player's room, where the adventure begins (plan 02 · S4). docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_twinleaf_town_player_house_2f.s).
+#
+# The game opens on the end of a television special about Professor Rowan's return to Sinnoh. At the player's first
+# step the rival bursts in from the stairs: he saw it too, and they're off to ask the professor for Pokémon.
+
+
+script OnEnter
+  if var VAR_PLAYER_HOUSE_SPECIAL_PROGRAM_STATE != 0 end
+  setvar VAR_PLAYER_HOUSE_SPECIAL_PROGRAM_STATE 1
+  wait 0.6
+  speaker "TV"
+  say "...and that brings us to the end of tonight's special, \"Meet Professor Rowan\"."
+  say "After many years of research far away in the Kanto region, the professor has come home to Sinnoh, to his laboratory in Sandgem Town."
+  say "We'll leave you with his own words: \"We share this world with Pokémon. Live alongside them, and you will come to understand them.\""
+  say "This has been Jubilife TV. Good night, Sinnoh!"
+  end
+
+
+# The first step off the starting tile, whichever way (the original's four triggers round it).
+script RivalRushesIn
+  sound "stairs"
+  show rival
+  music "common/rival"
+  emote rival exclaim
+  walk rival left 1 fast
+  face player rival
+  face rival player
+  speaker "{rival}"
+  say "{player}! Did you see it? On TV, just now? The special on Professor Rowan!"
+  say "He's back in Sinnoh, and he studies Pokémon, so he's got to have tons of them! If we ask nicely, he's sure to give us one each!"
+  say "...Whoa, is that a new computer? Lucky! ...Huh? What was I saying?"
+  say "Right! We're going to see Professor Rowan! I'll wait for you outside. If you're late, that's a ten-million fine!"
+  walk rival right 1 fast
+  hide rival
+  sound "stairs"
+  music area
+  setvar VAR_PLAYER_HOUSE_RIVAL_STATE 1
+  end

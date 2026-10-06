@@ -126,6 +126,7 @@ public class ScriptTests
           battle self and twin with "cheryl_eterna_forest" canlose
           battle self with helper
           battle self first
+          battle self as "rival_route_201_piplup" first canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           catchinglesson "Bidoof" 2

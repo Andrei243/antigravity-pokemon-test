@@ -6,7 +6,7 @@
   "region": "Sinnoh",
   "maps": [
     { "name": "Sinnoh", "matrix": 0, "trees": "Pine" },
-    { "name": "LakeVerity", "matrix": 102, "area": "lake_verity", "trees": "Pine" },
+    { "name": "LakeVerity", "matrix": 101, "area": "lake_verity_low_water", "trees": "Pine" },
     { "name": "OreburghGate1F", "matrix": 3, "area": "oreburgh_gate_1f", "setting": "Cave" },
     { "name": "OreburghGateB1F", "matrix": 4, "area": "oreburgh_gate_b1f", "setting": "Cave" },
     { "name": "OreburghMineB1F", "matrix": 5, "area": "oreburgh_mine_b1f", "setting": "Cave" },
@@ -53,7 +53,7 @@
     "twinleaf_town",
     "route_201",
     "verity_lakefront",
-    "lake_verity",
+    "lake_verity_low_water",
     "sandgem_town",
     "route_202",
     "route_219",

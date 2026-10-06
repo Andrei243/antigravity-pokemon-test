@@ -1,7 +1,0 @@
-{
-  "area": "lake_verity",
-  "bgmTrack": "sinnoh/lake",
-  "trees": "Pine",
-  // The cave on the island has no map yet (plan 01 · M6)
-  "locked": [ 0 ]
-}

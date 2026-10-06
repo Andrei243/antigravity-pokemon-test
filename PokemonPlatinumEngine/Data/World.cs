@@ -1072,6 +1072,7 @@ public static class WorldMapBuilder
         "cashier_m" or "cashier_f" or "clerk" or "waiter" => "Clerk",
         "clown" => "Clown",
         "looker" => "Looker",
+        "cyrus" => "Cyrus",
         "briefcase" => "StarterBriefcase",
         _ => "Trainer"
     };

@@ -40,6 +40,21 @@ public static class StoryMigration
     public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts)
     {
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
+        if (savedVersion < 2) PastTheOpening(story, scripts);
+    }
+
+    /// <summary>
+    /// Version 1, a save from before the first chapter was written (plan 02 · S4): its game began with a Turtwig, a
+    /// Pokédex and the Running Shoes, out in front of the house. It is taken to have played the chapter already,
+    /// by the script <see cref="ScriptLibrary.OpeningDone"/>, which sets the flags and variables the chapter would
+    /// have left behind.
+    /// </summary>
+    public static void PastTheOpening(StoryState story, ScriptLibrary scripts)
+    {
+        if (scripts.Find(ScriptLibrary.OpeningDone) is not { } script) return;
+        var runner = new ScriptRunner(scripts, new HeadlessScriptHost(story) { ShowsNothing = true });
+        runner.Start(script);
+        runner.RunToEnd();
     }
 
     /// <summary>

@@ -251,20 +251,28 @@ public class WorldTests
         Assert.Equal((96, 64), (Lake.Width, Lake.Height));
         Assert.True(Lake.IsStreamed);
         Assert.Equal("Lake Verity", Lake.DisplayNameAt(46, 53));
-        Assert.Equal("lake_verity", Assert.Single(Lake.Areas).Key);
+        Assert.Equal("lake_verity_low_water", Assert.Single(Lake.Areas).Key);
     }
 
     [Fact]
-    public void ANewGameStartsOutsideThePlayersDoor()
+    public void ANewGameStartsInThePlayersRoomAndTheHouseOpensOntoTwinleafTown()
     {
+        // As in Platinum, in the room upstairs, facing the television (plan 02 · S4)
         var start = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!;
-        Assert.Equal(("Sinnoh", 116, 886), (start.Map, start.X, start.Y));
+        Assert.Equal(("PlayerHouse2F", 4, 4, Direction.Up), (start.Map, start.X, start.Y, start.Facing));
+        MapDatabase.Initialize();
+        var room = MapDatabase.Get("PlayerHouse2F");
+        Assert.True(room.IsWalkable(start.X, start.Y));
+        Assert.Equal("PlayerHouse", Assert.Single(room.Warps).TargetMap);
+        var door = MapDatabase.Get("PlayerHouse").Warps.Single(w => w.TargetMap == "Sinnoh");
+        Assert.Equal((116, 886), (door.TargetX, door.TargetY));
         Assert.True(Overworld.IsWalkable(116, 886));
         Assert.Equal("twinleaf_town", Overworld.AreaAt(116, 886)!.Key);
         Assert.Equal("PlayerHouse", Overworld.GetWarpAt(116, 885)?.TargetMap);
 
+        // A save that names no place wakes up outside the front door
         var fresh = new SaveData();
-        Assert.Equal(start, fresh.Place() with { Facing = start.Facing });
+        Assert.Equal(("Sinnoh", 116, 886), (fresh.Place().Map, fresh.Place().X, fresh.Place().Y));
 
         // Every map of the world belongs to the region
         Assert.All(Sinnoh.Index.Maps, entry => Assert.Equal(RegionDatabase.Sinnoh, RegionDatabase.RegionOfMap(entry.Name)?.Id));
@@ -387,6 +395,9 @@ public class WorldTests
             var reach = reached[map];
             foreach (var npc in map.NPCs)
             {
+                // Someone a new game hides until their scene (the professor at his lab's door, the rival on his own
+                // doorstep) comes on where the scene puts them, and may share that tile with another
+                if (npc.HiddenBy is { } hiding && WorldWalk.HiddenAtStart.Value.Contains(hiding)) continue;
                 people++;
                 string who = $"{map.Name}: {npc.Name} at ({npc.GridX},{npc.GridY})";
                 Assert.True(map.AreaAt(npc.GridX, npc.GridY)?.Open, $"{who} stands outside the open areas");
@@ -394,7 +405,7 @@ public class WorldTests
                 // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's)
                 Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit,
                     $"{who} stands on a warp");
-                Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY));
+                Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY) && !(n.HiddenBy is { } h && WorldWalk.HiddenAtStart.Value.Contains(h)));
                 Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
                 Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing, $"{who} has nothing to say");
             }
@@ -417,8 +428,9 @@ public class WorldTests
         }
         Assert.True(people >= 15, $"only {people} people in the world");
 
-        // The story's first steps: the rival in town, the professor and his briefcase on Route 201
-        Assert.Equal("twinleaf_town", Overworld.AreaAt(Overworld.NPCs.Single(n => n.Name == "Barry").GridX, Overworld.NPCs.Single(n => n.Name == "Barry").GridY)!.Key);
+        // The story's first steps: the rival at his door in town, the professor and his briefcase on Route 201
+        var rival = Assert.Single(Overworld.Everyone, n => n.Name == "{rival}" && Overworld.AreaAt(n.GridX, n.GridY)!.Key == "twinleaf_town");
+        Assert.Equal(("FLAG_HIDE_TWINLEAF_TOWN_RIVAL", "Rival"), (rival.HiddenBy, rival.NpcType));
         var briefcase = Overworld.NPCs.Single(n => n.IsStarterBriefcase);
         Assert.Equal("starter_briefcase", briefcase.Id);
         Assert.Equal("route_201", Overworld.AreaAt(briefcase.GridX, briefcase.GridY)!.Key);
@@ -641,7 +653,7 @@ public class WorldTests
         foreach (var (old, map, area) in new[]
         {
             ("TwinleafTown", "Sinnoh", "twinleaf_town"), ("Route201", "Sinnoh", "route_201"), ("SandgemTown", "Sinnoh", "sandgem_town"),
-            ("Route202", "Sinnoh", "route_202"), ("LakeVerity", "LakeVerity", "lake_verity")
+            ("Route202", "Sinnoh", "route_202"), ("LakeVerity", "LakeVerity", "lake_verity_low_water")
         })
         {
             // A save from before the import has no WorldVersion, and tiles counted from its own map's corner

@@ -27,7 +27,7 @@
       "dialog": [
         "{assistant}: {player}! You made it through Route 202. Welcome to Jubilife City!",
         "{assistant}: It's the biggest city in Sinnoh. There's even a TV station!",
-        "{assistant}: Barry ran on ahead to the Trainers' School. It's up the main street, on the left.",
+        "{assistant}: {rival} ran on ahead to the Trainers' School. It's up the main street, on the left.",
         "{assistant}: Have a look inside! The lessons there are a big help when you're starting out."
       ]
     },

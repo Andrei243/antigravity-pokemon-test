@@ -122,6 +122,7 @@
   "signboards": [],
   "npcs": [
     {
+      "id": "prof_rowan",
       "name": "Prof. Rowan",
       "npcType": "Rowan",
       "x": 5,
@@ -131,7 +132,17 @@
         "Prof. Rowan: Ah, {player}! Welcome to my research facility.",
         "Prof. Rowan: The bond between trainers and Pokémon is truly limitless.",
         "Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!"
-      ]
+      ],
+      "script": "Rowan"
+    },
+    {
+      "id": "counterpart",
+      "name": "{assistant}",
+      "npcType": "Assistant",
+      "x": 6,
+      "y": 7,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_LAB_COUNTERPART"
     }
   ],
   "wildEncounters": []

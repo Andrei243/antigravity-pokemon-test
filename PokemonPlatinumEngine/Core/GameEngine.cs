@@ -207,7 +207,7 @@ public partial class GameEngine
     /// Starts a new game as the character and under the name chosen in the introduction, played by the rules chosen
     /// on the title screen. The rules stay with the adventure: nothing in the game changes them afterwards.
     /// </summary>
-    public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum)
+    public void StartNewGame(string? name, PlayerLook look, RulesPreset rules = RulesPreset.Platinum, string? rival = null)
     {
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(rules);
@@ -233,6 +233,7 @@ public partial class GameEngine
         playTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
+        PlayerIdentity.SetRival(rival);
         trainerId = fieldRandom.Next(0, 65536);
         adventureStarted = DateTime.Now;
 
@@ -299,17 +300,19 @@ public partial class GameEngine
         currentMap = MapDatabase.Get(start.Map);
         player = new Player(start.X, start.Y);
         player.Facing = start.Facing;
-
-        // Give starter items
-        playerInventory.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
-        playerInventory.AddItem(ItemDatabase.Get("Potion")!, 5);
-        playerInventory.AddItem(ItemDatabase.Get("Revive")!, 2);
-
-        // Initial party
-        var starterTurtwig = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
-        playerParty.Add(starterTurtwig);
-        playerPokedex.RegisterSeen(starterTurtwig.Species.DexNumber);
-        playerPokedex.RegisterCaught(starterTurtwig.Species.DexNumber);
+        // As in Platinum, the adventure begins with an empty bag and no Pokémon: the first comes from the
+        // professor's briefcase on Route 201 (plan 02 · S4). A region whose story isn't written yet (Kanto) still
+        // starts as every game did before: a Pokémon and a few items.
+        if (region.Id != RegionDatabase.Sinnoh)
+        {
+            playerInventory.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+            playerInventory.AddItem(ItemDatabase.Get("Potion")!, 5);
+            playerInventory.AddItem(ItemDatabase.Get("Revive")!, 2);
+            var first = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
+            playerParty.Add(first);
+            playerPokedex.RegisterSeen(first.Species.DexNumber);
+            playerPokedex.RegisterCaught(first.Species.DexNumber);
+        }
     }
 
     private void ApplySaveData(SaveData save)
@@ -381,6 +384,7 @@ public partial class GameEngine
         playerMoney = save.Money;
         playTime = save.PlayTimeSeconds;
         PlayerIdentity.Set(save.PlayerName, save.Look);
+        PlayerIdentity.SetRival(save.RivalName);
         // A save from before the card had a number gets one now, and keeps it
         trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
         adventureStarted = save.Started;
@@ -396,6 +400,7 @@ public partial class GameEngine
         {
             PlayerName = playerName,
             Look = PlayerIdentity.Look,
+            RivalName = PlayerIdentity.RivalName,
             TrainerId = trainerId,
             Started = adventureStarted,
             Rules = Ruleset.Current.Preset,
@@ -509,7 +514,7 @@ public partial class GameEngine
                 if (introScreen.Phase == IntroPhase.Done)
                 {
                     introScreen.Close();
-                    StartNewGame(introScreen.Name, introScreen.Look, newGameRules);
+                    StartNewGame(introScreen.Name, introScreen.Look, newGameRules, introScreen.RivalName);
                 }
                 break;
             case GameState.Overworld:
@@ -612,14 +617,12 @@ public partial class GameEngine
                 var chosen = starterSelectScreen.Update(dt);
                 if (chosen != null)
                 {
-                    playerParty.Clear();
                     playerParty.Add(chosen);
                     playerPokedex.RegisterSeen(chosen.Species.DexNumber);
                     playerPokedex.RegisterCaught(chosen.Species.DexNumber);
                     // The story remembers which was taken, and with it which the rival takes
                     story.ChooseStarter(chosen.Species.Name);
                     scriptAnswer = Math.Max(0, Array.IndexOf(StoryState.Starters, chosen.Species.Name));
-                    ShowNotification($"Received {chosen.Species.Name} from Professor Rowan!");
                     currentState = GameState.Overworld;
                 }
                 break;
@@ -735,6 +738,8 @@ public partial class GameEngine
 
         if (InputManager.IsActionPressed(GameAction.Menu))
         {
+            startMenu.HasPokedex = story.Has(StoryState.PokedexFlag);
+            startMenu.HasPokemon = playerParty.Count > 0;
             startMenu.Open();
             return;
         }

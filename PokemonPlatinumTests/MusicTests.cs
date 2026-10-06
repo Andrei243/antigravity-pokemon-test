@@ -4,6 +4,7 @@ using Xunit;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumTests;
@@ -602,11 +603,14 @@ public class MusicTests
     [Fact]
     public void TestTheRivalsThemeCutsInWhileHeTalks()
     {
+        // The rival running out of his door into the player (plan 02 · S4): his theme from the bump to his going back in
         var library = ScriptLibrary.Default;
-        var barry = library.All.First(s => s.File == "twinleaf_town" && s.Name == "Barry");
-        var host = new HeadlessScriptHost();
+        var outOfHisDoor = library.Find("RivalRunsOut", "twinleaf_town")!;
+        var map = new Map(8, 8);
+        map.NPCs.Add(new NPC { Key = "rival", Name = "{rival}", GridX = 3, GridY = 2 });
+        var host = new HeadlessScriptHost { Map = map, PlayerTile = (3, 3) };
         var runner = new ScriptRunner(library, host);
-        runner.Start(barry, null, new[] { "Barry: Hey!" });
+        runner.Start(outOfHisDoor);
         runner.RunToEnd();
         Assert.Equal(new[] { "music common/rival", "music area" }, host.Log.Where(l => l.StartsWith("music")));
     }

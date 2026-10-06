@@ -306,6 +306,14 @@ public sealed class ScriptRunner
             case Op.Battle:
             {
                 var foe = Person(i.Name, i) ?? throw Wrong(i, "the player can't be battled");
+                if (i.AsTrainer.Length > 0)
+                {
+                    // Someone of the map who battles with a team of Platinum's: they are that trainer from now on
+                    var record = TrainerDatabase.Get(i.AsTrainer) ?? throw Wrong(i, $"there is no trainer '{i.AsTrainer}'");
+                    var team = new Trainer { Id = record.Id };
+                    TrainerDatabase.Fill(team, record);
+                    foe.TrainerData = team;
+                }
                 if (foe.TrainerData == null) throw Wrong(i, $"{foe.Name} is no trainer and can't be battled");
                 NPC? second = null;
                 if (i.Other.Length > 0)
@@ -586,8 +594,8 @@ public sealed class ScriptRunner
 
     /// <summary>
     /// Fills in what a line leaves to the moment: <c>{var:NAME}</c>, <c>{lead}</c> (the first Pokémon of the team),
-    /// <c>{starter}</c> and <c>{rivalstarter}</c>, <c>{self}</c>, <c>{item}</c> (the last one given or taken),
-    /// <c>{user}</c> (the Pokémon the last <c>usemove</c> named), <c>{money}</c> and <c>{result}</c>. <c>{player}</c> and <c>{assistant}</c> are left for the host, which
+    /// <c>{starter}</c>, <c>{rivalstarter}</c> and <c>{assistantstarter}</c> (the one neither took), <c>{self}</c>, <c>{item}</c> (the last one given or taken),
+    /// <c>{user}</c> (the Pokémon the last <c>usemove</c> named), <c>{money}</c> and <c>{result}</c>. <c>{player}</c>, <c>{assistant}</c> and <c>{rival}</c> are left for the host, which
     /// knows who the player is.
     /// </summary>
     public string Fill(string text) => text.Contains('{') ? Placeholder.Replace(text, match =>
@@ -599,6 +607,7 @@ public sealed class ScriptRunner
             "lead" => host.Party.Members.FirstOrDefault()?.Nickname ?? "your Pokémon",
             "starter" => host.Story.PlayerStarter ?? "",
             "rivalstarter" => host.Story.RivalStarter ?? "",
+            "assistantstarter" => host.Story.AssistantStarter ?? "",
             "self" => Subject?.Name ?? "",
             "item" => lastItem,
             "user" => lastUser,

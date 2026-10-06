@@ -308,6 +308,7 @@ public partial class GameEngine
     private void KeepFieldMovesInForce()
     {
         player.PushesBoulders = story.Has(FieldMoveRules.StrengthFlag);
+        player.HasRunningShoes = story.Has(StoryState.RunningShoesFlag);
         currentMap.Lit = story.Has(FieldMoveRules.FlashFlag);
         currentMap.FogLifted = story.Has(FieldMoveRules.DefogFlag);
     }

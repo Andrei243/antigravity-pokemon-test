@@ -98,8 +98,8 @@ public static class RegionDatabase
         new()
         {
             Id = Sinnoh, Name = "Sinnoh", Generation = 4,
-            // In front of the player's house in Twinleaf Town, on the overworld map made from the imported world
-            Start = new MapSpot("Sinnoh", 116, 886),
+            // In the player's room upstairs at home in Twinleaf Town, facing the television, as in Platinum (plan 02 · S4)
+            Start = new MapSpot("PlayerHouse2F", 4, 4, Direction.Up),
             Maps = new[]
             {
                 // The imported world: the overworld, and the places that are matrices of their own
@@ -116,7 +116,7 @@ public static class RegionDatabase
                 "RuinManiacCave", "LakeValor", "GreatMarsh", "TrophyGarden",
                 "IronIsland1F", "IronIslandB1FLeft", "IronIslandB1FRight", "IronIslandB2FRight", "IronIslandB2FLeft", "IronIslandB3F",
                 // Rooms, still made by hand (plan 01 · M11)
-                "PlayerHouse", "RivalHouse", "PokemonCenter", "PokeMart", "RowanLab",
+                "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",
                 "OreburghPokemonCenter", "OreburghPokeMart", "FloaromaPokemonCenter", "FloaromaPokeMart",
                 "EternaPokemonCenter", "EternaPokeMart", "HearthomePokemonCenter", "HearthomePokeMart", "SolaceonPokemonCenter", "SolaceonPokeMart",

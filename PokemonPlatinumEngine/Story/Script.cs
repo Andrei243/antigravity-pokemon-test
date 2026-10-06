@@ -93,6 +93,12 @@ public sealed class Instruction
     /// <summary>A battle that is the game's first (the rival's on Route 201): no critical hits.</summary>
     public bool FirstBattle { get; init; }
 
+    /// <summary>
+    /// A battle against someone of the map with a team of Platinum's other than their own (<c>battle self as
+    /// "rival_route_201_turtwig"</c>): the rival, whose team depends on the starter the player took. Empty for their own.
+    /// </summary>
+    public string AsTrainer { get; init; } = "";
+
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }
     public int X { get; init; }

@@ -27,6 +27,9 @@ public class SaveData
     /// <summary>Which of the two characters the player is. Saves from before the choice existed are the boy.</summary>
     public PlayerLook Look { get; set; }
 
+    /// <summary>The rival's name, given in the introduction (plan 02 · S4). Older saves call him by his own.</summary>
+    public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
+
     /// <summary>The number on the Trainer Card, drawn when the game began. 0 in older saves: one is drawn on loading.</summary>
     public int TrainerId { get; set; }
 
