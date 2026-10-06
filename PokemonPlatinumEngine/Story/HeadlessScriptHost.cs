@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -193,19 +194,24 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public int Answer { get; private set; }
 
-    public void Battle(NPC trainer, bool mayLose)
+    public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first)
     {
         Shown("start a battle");
         Waits();
         Outcome = Fight?.Invoke(trainer) ?? BattleOutcome.Won;
-        Log.Add($"battle {trainer.TrainerData?.Id} {Outcome}");
-        if (Outcome == BattleOutcome.Won && trainer.TrainerData is { } beaten)
+        string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "");
+        Log.Add($"battle {trainer.TrainerData?.Id}{with} {Outcome}");
+        if (Outcome == BattleOutcome.Won)
         {
-            Money += beaten.PrizeMoney;
-            Story.Defeat(beaten.Id);
-            // Two people who battle as one trainer are beaten together
-            foreach (var npc in (Map?.Everyone ?? new[] { trainer }).Append(trainer))
-                if (npc == trainer || (beaten.Id.Length > 0 && npc.TrainerData?.Id == beaten.Id)) npc.FinishBattle(true);
+            foreach (var foe in second == null ? new[] { trainer } : new[] { trainer, second })
+            {
+                if (foe.TrainerData is not { } beaten) continue;
+                Money += beaten.PrizeMoney;
+                Story.Defeat(beaten.Id);
+                // Two people who battle as one trainer are beaten together
+                foreach (var npc in (Map?.Everyone ?? new[] { foe }).Append(foe))
+                    if (npc == foe || (beaten.Id.Length > 0 && npc.TrainerData?.Id == beaten.Id)) npc.FinishBattle(true);
+            }
         }
         else if (Outcome == BattleOutcome.Lost)
         {
@@ -213,13 +219,14 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
-    public void WildBattle(Pokemon wild)
+    public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
     {
         Shown("start a battle");
         Waits();
-        Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
-        Log.Add($"wildbattle {wild.Species.Name} {wild.Level} {Outcome}");
-        if (Outcome == BattleOutcome.Caught) GivePokemon(wild);
+        // The lesson is the assistant's battle: their ball always catches, and what they catch is theirs
+        Outcome = kind == BattleKind.CatchingLesson ? BattleOutcome.Caught : Fight?.Invoke(null) ?? BattleOutcome.Won;
+        Log.Add($"{(kind == BattleKind.CatchingLesson ? "catchinglesson" : "wildbattle")} {wild.Species.Name} {wild.Level}{(cannotFlee ? " nofleeing" : "")} {Outcome}");
+        if (Outcome == BattleOutcome.Caught && kind != BattleKind.CatchingLesson) GivePokemon(wild);
         else if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 

@@ -12,7 +12,7 @@ public static class Sources
 {
     public const string DecompRepo = "https://github.com/pret/pokeplatinum.git";
     public const string DecompCommit = "c248fb3f8cc9934ded800e489567c5c0eeee92eb";
-    public static readonly string[] DecompFolders = { "/res/pokemon/", "/res/moves/", "/res/items/data/", "/generated/" };
+    public static readonly string[] DecompFolders = { "/res/pokemon/", "/res/moves/", "/res/items/data/", "/res/trainers/data/", "/include/data/trainer_class_prize_mul.h", "/include/data/trainer_class_genders.h", "/generated/" };
 
     public const string PokeApiRepo = "https://github.com/PokeAPI/pokeapi.git";
     public const string PokeApiCommit = "bc92d3b6029ef1abe9e7ad424c400b338f3c11fe";

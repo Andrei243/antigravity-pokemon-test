@@ -102,13 +102,8 @@ public sealed partial class BattleCore
             // Hidden Power: the second bit of each IV makes the power, the first bit the type (BtlCmd_CalcHiddenPowerParams)
             Start = (b, use) =>
             {
-                var p = use.User.Pokemon!;
-                int powerBits = ((p.IvHP & 2) >> 1) | (p.IvAttack & 2) | ((p.IvDefense & 2) << 1) | ((p.IvSpeed & 2) << 2) | ((p.IvSpAttack & 2) << 3) | ((p.IvSpDefense & 2) << 4);
-                int typeBits = (p.IvHP & 1) | ((p.IvAttack & 1) << 1) | ((p.IvDefense & 1) << 2) | ((p.IvSpeed & 1) << 3) | ((p.IvSpAttack & 1) << 4) | ((p.IvSpDefense & 1) << 5);
-                use.Scratch = b.Rules.HiddenPowerPower > 0 ? b.Rules.HiddenPowerPower : powerBits * 40 / 63 + 30;
-                int id = typeBits * 15 / 63 + 1;
-                if (id >= 9) id++;
-                Retype(use, PlatinumTypeOrder[id]);
+                use.Scratch = HiddenPowerPower(use.User.Pokemon!, b.Rules);
+                Retype(use, HiddenPowerType(use.User.Pokemon!));
                 return true;
             },
             BasePower = (b, use, t) => (int)use.Scratch!
@@ -271,6 +266,22 @@ public sealed partial class BattleCore
     }
 
     /// <summary>Low Kick and Grass Knot by the target's weight in tenths of a kilogram (<c>sWeightToPower</c>).</summary>
+    /// <summary>Hidden Power's power: the second bit of each IV (<c>BtlCmd_CalcHiddenPowerParams</c>), or the rules' fixed one.</summary>
+    internal static int HiddenPowerPower(Pokemon p, Ruleset rules)
+    {
+        int powerBits = ((p.IvHP & 2) >> 1) | (p.IvAttack & 2) | ((p.IvDefense & 2) << 1) | ((p.IvSpeed & 2) << 2) | ((p.IvSpAttack & 2) << 3) | ((p.IvSpDefense & 2) << 4);
+        return rules.HiddenPowerPower > 0 ? rules.HiddenPowerPower : powerBits * 40 / 63 + 30;
+    }
+
+    /// <summary>Hidden Power's type: the first bit of each IV, counted through Platinum's order of types (the "???" type skipped).</summary>
+    internal static PokemonType HiddenPowerType(Pokemon p)
+    {
+        int typeBits = (p.IvHP & 1) | ((p.IvAttack & 1) << 1) | ((p.IvDefense & 1) << 2) | ((p.IvSpeed & 1) << 3) | ((p.IvSpAttack & 1) << 4) | ((p.IvSpDefense & 1) << 5);
+        int id = typeBits * 15 / 63 + 1;
+        if (id >= 9) id++;
+        return PlatinumTypeOrder[id];
+    }
+
     internal static int WeightPower(Pokemon p)
     {
         int weight = (int)Math.Round(p.Weight * 10f);
@@ -310,7 +321,7 @@ public sealed partial class BattleCore
         int baseAttack = member.FormData?.BaseStats?.Attack ?? member.Species.BaseAttack;
         int baseDefense = target.Pokemon!.FormData?.BaseStats?.Defense ?? target.Pokemon.Species.BaseDefense;
         int damage = baseAttack * use.Data.Power * (member.Level * 2 / 5 + 2) / Math.Max(1, baseDefense) / 50 + 2;
-        if (DamageCalculator.RollsCritical(use.User, target, use.Move, rng, Rules))
+        if (!NoCriticalHits && DamageCalculator.RollsCritical(use.User, target, use.Move, rng, Rules))
         {
             damage = Formulas.Scale(damage, Rules.CriticalMultiplier * BattleEffects.Of(use.User).Aggregate(1f, (m, e) => Math.Max(m, e.CriticalBoost)));
             use.Hits[^1].Critical = true;

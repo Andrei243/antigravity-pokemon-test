@@ -817,6 +817,60 @@ if (Run("doubles"))
     d = StartDouble(Array.Empty<Trainer>(), new[] { new Pokemon(PokemonDatabase.Get("Bidoof")!, 4), new Pokemon(PokemonDatabase.Get("Gible")!, 4) });
     Skip(130 / 60.0); Shot("9b_wild_pair");
     Confirm(d); Skip(70 / 60.0); Confirm(d); Skip(2 / 60.0); Shot("9c_wild_pair_main");
+
+    // A tag battle (plan 06 · R9): Cheryl at the player's side against two grunts
+    BattleEngine StartSpecial(BattleSetup setup)
+    {
+        var e = new BattleEngine(setup);
+        ((BattleRenderer)Get("battleRenderer")).SetArena((Map)Get("currentMap"));
+        Set("battle", e);
+        Set("currentState", GameState.Battle);
+        return e;
+    }
+    party.HealAll();
+    var cheryl = new Trainer { Id = "cheryl", Name = "Cheryl", TrainerClass = "Pokémon Trainer" };
+    cheryl.Party.Add(new Pokemon(PokemonDatabase.Get("Chansey")!, 20));
+    var g1 = new Trainer { Name = "Grunt", TrainerClass = "Galactic Grunt" };
+    g1.Party.Add(new Pokemon(PokemonDatabase.Get("Stunky")!, 11));
+    var g2 = new Trainer { Name = "Grunt", TrainerClass = "Galactic Grunt" };
+    g2.Party.Add(new Pokemon(PokemonDatabase.Get("Glameow")!, 11));
+    d = StartSpecial(new BattleSetup
+    {
+        PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double, Trainers = new List<Trainer> { g1, g2 },
+        Partner = cheryl, Random = new Random(5)
+    });
+    Skip(130 / 60.0); Shot("9d_tag_intro");
+    for (int guard = 0; guard < 8 && d.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(d); Skip(70 / 60.0); }
+    Skip(2 / 60.0); Shot("9e_tag_main");
+    d.SelectMove(0); if (d.HUD.MenuState == BattleMenuState.SelectTarget) d.SelectTarget(0);
+    Skip(8 / 60.0);
+    for (int guard = 0; guard < 20 && d.HUD.MenuState == BattleMenuState.Message && !d.IsBattleOver; guard++) { Confirm(d); Skip(25 / 60.0); }
+    Skip(0.8); Shot("9f_tag_after_turn");
+
+    // The Great Marsh: balls, bait and mud, and no Pokémon of the player's
+    d = StartSpecial(new BattleSetup
+    {
+        PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { new Pokemon(PokemonDatabase.Get("Carnivine")!, 25) },
+        Kind = BattleKind.Safari, SpecialBalls = 30, Random = new Random(5)
+    });
+    Skip(130 / 60.0); Confirm(d); Skip(70 / 60.0);
+    for (int guard = 0; guard < 4 && d.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(d); Skip(30 / 60.0); }
+    Skip(2 / 60.0); Shot("9g_safari_main");
+    d.SelectMainMenuOption(1); Skip(20 / 60.0); Shot("9h_safari_bait");
+
+    // The catching lesson, which the player watches
+    var lessonParty = new Party();
+    lessonParty.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 5));
+    var lessonBag = new Inventory();
+    lessonBag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
+    d = StartSpecial(new BattleSetup
+    {
+        PlayerParty = lessonParty, Inventory = lessonBag, Pokedex = pokedex, WildPokemon = new List<Pokemon> { new Pokemon(PokemonDatabase.Get("Bidoof")!, 2) },
+        Kind = BattleKind.CatchingLesson, PlayerName = "Dawn", Random = new Random(5)
+    });
+    Skip(130 / 60.0); Shot("9i_lesson_intro");
+    for (int guard = 0; guard < 10 && !d.IsBattleOver; guard++) { Confirm(d); Skip(60 / 60.0); }
+    Shot("9j_lesson_caught");
     Timing("double battle");
 }
 

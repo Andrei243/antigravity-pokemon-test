@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -301,15 +302,35 @@ public sealed class ScriptRunner
             {
                 var foe = Person(i.Name, i) ?? throw Wrong(i, "the player can't be battled");
                 if (foe.TrainerData == null) throw Wrong(i, $"{foe.Name} is no trainer and can't be battled");
+                NPC? second = null;
+                if (i.Other.Length > 0)
+                {
+                    second = Person(i.Other, i) ?? throw Wrong(i, "the player can't be battled");
+                    if (second.TrainerData == null) throw Wrong(i, $"{second.Name} is no trainer and can't be battled");
+                }
+                Trainer? partner = null;
+                if (i.PartnerById)
+                {
+                    var record = TrainerDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no trainer '{i.Partner}'");
+                    partner = new Trainer { Id = record.Id };
+                    TrainerDatabase.Fill(partner, record);
+                }
+                else if (i.Partner.Length > 0)
+                {
+                    var beside = Person(i.Partner, i) ?? throw Wrong(i, "the player can't be their own partner");
+                    partner = beside.TrainerData ?? throw Wrong(i, $"{beside.Name} is no trainer and can't battle beside the player");
+                }
                 bool mayLose = i.Option;
-                host.Battle(foe, mayLose);
+                host.Battle(foe, second, partner, mayLose, i.FirstBattle);
                 afterBusy = () => AfterBattle(mayLose);
                 break;
             }
             case Op.WildBattle:
+            case Op.CatchingLesson:
             {
                 var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
-                host.WildBattle(new Pokemon(species, i.Number));
+                var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
+                host.WildBattle(new Pokemon(species, i.Number), kind, cannotFlee: i.Option);
                 afterBusy = () => AfterBattle(mayLose: false);
                 break;
             }

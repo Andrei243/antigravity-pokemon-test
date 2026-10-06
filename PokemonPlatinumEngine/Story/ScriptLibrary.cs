@@ -106,7 +106,8 @@ public sealed class ScriptLibrary
             if (i.Op is Op.Battle or Op.Face or Op.Walk or Op.Move or Op.Emote or Op.Show or Op.Hide or Op.Place)
             {
                 if (i.Name is not ("player" or "self")) yield return (i.Name, i.Line);
-                if (i.Op == Op.Face && i.Other is not ("" or "player" or "self")) yield return (i.Other, i.Line);
+                if (i.Op is Op.Face or Op.Battle && i.Other is not ("" or "player" or "self")) yield return (i.Other, i.Line);
+                if (i.Op == Op.Battle && !i.PartnerById && i.Partner is not ("" or "self")) yield return (i.Partner, i.Line);
             }
         }
     }
@@ -135,8 +136,11 @@ public sealed class ScriptLibrary
                     case Op.Cry when PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
                         Wrong(i, $"there is no species or form '{i.Name}'");
                         break;
-                    case Op.GivePokemon or Op.WildBattle when PokemonDatabase.Get(i.Name) == null:
+                    case Op.GivePokemon or Op.WildBattle or Op.CatchingLesson when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
+                        break;
+                    case Op.Battle when i.PartnerById && TrainerDatabase.Get(i.Partner) == null:
+                        Wrong(i, $"there is no trainer '{i.Partner}'");
                         break;
                     case Op.Warp when mapExists != null && !mapExists(i.Name):
                         Wrong(i, $"there is no map '{i.Name}'");

@@ -121,6 +121,9 @@ public sealed class StoryState
     /// <summary>The species the rival took: as in the original, the one that is strong against the player's.</summary>
     public string? RivalStarter { get; private set; }
 
+    /// <summary>The species the professor's assistant has: the one left in the briefcase (the original's counterpart's starter); null until the player has chosen.</summary>
+    public string? AssistantStarter => PlayerStarter == null ? null : Starters.First(s => s != PlayerStarter && s != RivalStarter);
+
     /// <summary>The starter the rival takes when the player takes this one (grass is answered with fire, fire with water, water with grass).</summary>
     public static string RivalStarterFor(string playerStarter)
     {

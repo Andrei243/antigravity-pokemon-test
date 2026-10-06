@@ -17,5 +17,11 @@ public class Trainer
     /// <summary>Battles two Pokémon at a time (twins, couples), if the player has two that can fight.</summary>
     public bool DoubleBattle { get; set; }
 
+    /// <summary>How the trainer thinks in battle (plan 06 · R9): Platinum's flags from the trainer's data.</summary>
+    public Battle.Sim.Ai.AiFlags Ai { get; set; } = Battle.Sim.Ai.AiFlags.Basic;
+
+    /// <summary>The items the trainer can use in battle, by name (Platinum's: up to four, Potions to Full Restores).</summary>
+    public List<string> Items { get; set; } = new();
+
     public string FullTitle => $"{TrainerClass} {Name}";
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -122,7 +123,12 @@ public class ScriptTests
           takemoney 50
           heal
           battle self canlose
+          battle self and twin with "cheryl_eterna_forest" canlose
+          battle self with helper
+          battle self first
           wildbattle "Starly" 2
+          wildbattle "Giratina" 47 nofleeing
+          catchinglesson "Bidoof" 2
           face self player
           face player up
           walk player up 2 left fast
@@ -734,6 +740,44 @@ public class ScriptTests
         Assert.Equal(outcome == BattleOutcome.Caught ? 1 : 0, host.Party.Count);
     }
 
+    [Fact]
+    public void TwoTrainersBattledAtOnceAreBothBeatenAndAPartnerByIdIsPlatinums()
+    {
+        var first = Trainer("grunt_a", "Ann", prize: 100);
+        var second = Trainer("grunt_b", "Bob", prize: 200);
+        var (runner, host) = Ready("""
+            script S
+              battle grunt_a and grunt_b with "cheryl_eterna_forest"
+            """);
+        host.Map = Room(first, second);
+        host.Money = 0;
+        runner.RunToEnd();
+
+        Assert.Contains("battle grunt_a and grunt_b with cheryl_eterna_forest Won", host.Log);
+        Assert.True(host.Story.HasDefeated("grunt_a"));
+        Assert.True(host.Story.HasDefeated("grunt_b"));
+        Assert.Equal(300, host.Money);
+        Assert.Empty(host.Problems);
+    }
+
+    [Fact]
+    public void TheCatchingLessonIsTheAssistantsAndTellsOfACatch()
+    {
+        var host = Run("script S\n catchinglesson \"Bidoof\" 2\n if result == 3 setflag FLAG_SHOWN");
+
+        Assert.True(host.Story.Has("FLAG_SHOWN"));
+        Assert.Contains("catchinglesson Bidoof 2 Caught", host.Log);
+        // What the assistant caught isn't the player's
+        Assert.Equal(0, host.Party.Count);
+    }
+
+    [Fact]
+    public void AWildBattleThatCantBeFledSaysSo()
+    {
+        var host = Run("script S\n wildbattle \"Giratina\" 47 nofleeing", h => h.Fight = _ => BattleOutcome.Won);
+        Assert.Contains("wildbattle Giratina 47 nofleeing Won", host.Log);
+    }
+
     // ------------------------------------------------------------------ people and the field
 
     private static Map Room(params NPC[] people)
@@ -895,8 +939,8 @@ public class ScriptTests
         public bool Busy => false;
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;
-        public void Battle(NPC trainer, bool mayLose) { }
-        public void WildBattle(Pokemon wild) { }
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first) { }
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
         public void Open(ScriptScreen screen, NPC? subject) { }
         public bool GivePokemon(Pokemon pokemon) => true;

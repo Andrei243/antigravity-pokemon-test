@@ -1067,6 +1067,8 @@ public static class WorldMapBuilder
             npc.ScriptFile = key;
             // How far a trainer sees is the original's own number
             if (npc.TrainerData != null && o.Sight is { } sight) npc.TrainerData.SightRange = sight;
+            // How it thinks, what it carries and its team are Platinum's (plan 06 · R9)
+            if (npc.TrainerData != null && TrainerDatabase.Get(o.Script) is { } platinum) TrainerDatabase.Fill(npc.TrainerData, platinum);
             map.NPCs.Add(npc);
         }
 

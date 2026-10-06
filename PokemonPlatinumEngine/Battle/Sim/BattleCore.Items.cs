@@ -37,6 +37,45 @@ public sealed partial class BattleCore
     }
 
     /// <summary>
+    /// <c>BattleSystem_CompareBattlerSpeed</c> as the trainer AI asks it, before anyone has chosen (plan 06 · R9): no
+    /// priority, and a Quick Claw or Custap Berry that would go off is counted but nothing is remembered. Whether the
+    /// first goes before the second, after it, or, between two of the same Speed, after it as a tie on a coin's
+    /// flip (the original's <c>COMPARE_SPEED_TIE</c>).
+    /// </summary>
+    internal Ai.SpeedOrder CompareSpeed(Battler first, Battler second)
+    {
+        var a = first.Pokemon;
+        var b = second.Pokemon;
+        if (a == null || b == null) return Ai.SpeedOrder.Faster;
+        if (a.CurrentHP == 0 && b.CurrentHP > 0) return Ai.SpeedOrder.Slower;
+        if (a.CurrentHP > 0 && b.CurrentHP == 0) return Ai.SpeedOrder.Faster;
+
+        int speedA = EffectiveSpeed(first), speedB = EffectiveSpeed(second);
+        bool quickA = WouldMoveFirst(first), quickB = WouldMoveFirst(second);
+        bool lagA = BattleEffects.HoldEffectOf(first) == "PriorityDown", lagB = BattleEffects.HoldEffectOf(second) == "PriorityDown";
+        bool stallA = Has(first, "Stall"), stallB = Has(second, "Stall");
+
+        Ai.SpeedOrder Tie() => rng.Roll(RollKind.SpeedTie, 2) == 1 ? Ai.SpeedOrder.Tie : Ai.SpeedOrder.Faster;
+        if (quickA && quickB) return speedA < speedB ? Ai.SpeedOrder.Slower : speedA == speedB ? Tie() : Ai.SpeedOrder.Faster;
+        if (quickA != quickB) return quickB ? Ai.SpeedOrder.Slower : Ai.SpeedOrder.Faster;
+        if (lagA && lagB) return speedA > speedB ? Ai.SpeedOrder.Slower : speedA == speedB ? Tie() : Ai.SpeedOrder.Faster;
+        if (lagA != lagB) return lagA ? Ai.SpeedOrder.Slower : Ai.SpeedOrder.Faster;
+        if (stallA && stallB) return speedA > speedB ? Ai.SpeedOrder.Slower : speedA == speedB ? Tie() : Ai.SpeedOrder.Faster;
+        if (stallA != stallB) return stallA ? Ai.SpeedOrder.Slower : Ai.SpeedOrder.Faster;
+        if (speedA == speedB) return Tie();
+        return (Field.TrickRoom ? speedA > speedB : speedA < speedB) ? Ai.SpeedOrder.Slower : Ai.SpeedOrder.Faster;
+    }
+
+    /// <summary>A Quick Claw on the number its place last drew, or a Custap Berry at its HP: what <see cref="ItemsInTheOrder"/> counts, with nothing remembered.</summary>
+    private bool WouldMoveFirst(Battler user)
+    {
+        string? hold = BattleEffects.HoldEffectOf(user);
+        int param = BattleEffects.HoldParamOf(user);
+        if (hold == "SometimesPriority" && param > 0 && speedRolls[Number(user)] % (100 / param) == 0) return true;
+        return hold == "PinchPriority" && user.Pokemon!.CurrentHP <= user.Pokemon.MaxHP / HeldItemEffects.PinchParam(user, param);
+    }
+
+    /// <summary>
     /// <c>subscript_check_quick_claw</c>, as the holder's move begins: a Custap Berry that went off says so (unless
     /// its holder is the last to act anyway) and is eaten; a Quick Claw says nothing, as in the original, which
     /// only plays its animation. Either way the item is no longer kept safe.
@@ -276,6 +315,10 @@ public sealed partial class BattleCore
     {
         var item = ItemDatabase.Get(choice.Item ?? "");
         if (item == null) return $"There is no item called {choice.Item}.";
+        // The Great Marsh and Pal Park have their own balls and nothing else
+        if (Kind is BattleKind.Safari or BattleKind.PalPark)
+            return item.Name != "Safari Ball" ? "Only the balls you were given can be used here." : SpecialBalls <= 0 ? "You have no balls left!" : null;
+        if (item.Name == "Safari Ball") return "Safari Balls are for the Great Marsh.";
         if (item.Pocket == ItemPocket.PokeBalls)
         {
             if (IsTrainerBattle) return "The Trainer blocked the Ball! Don't be a thief!";
@@ -327,7 +370,7 @@ public sealed partial class BattleCore
             return;
         }
 
-        Say($"{playerName} used the {item.Name}!");
+        Say($"{user.Trainer?.FullTitle ?? playerName} used the {item.Name}!");
         if (item.BattleUse == "Escaping")
         {
             if (IsTrainerBattle) return;

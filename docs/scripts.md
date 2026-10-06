@@ -145,7 +145,12 @@ What an `if` can ask:
 | Command | |
 |---|---|
 | `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up at home, unless `canlose`: then the team is healed and the script goes on with `if lost`. |
+| `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
+| `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
+| `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
+| `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
+| `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
 
 ### People and the field
 

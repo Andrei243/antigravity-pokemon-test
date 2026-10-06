@@ -165,6 +165,8 @@ public sealed partial class BattleCore
     private void SwitchInChecks()
     {
         if (Result != BattleResult.None) return;
+        // In the Great Marsh and Pal Park nobody is sent out: no ability has anyone to act on
+        if (Kind is BattleKind.Safari or BattleKind.PalPark) return;
         var order = BySpeed();
         foreach (var (flag, abilities) in EntryPhases)
         {
@@ -236,10 +238,10 @@ public sealed partial class BattleCore
 
     private void ExecuteSwitch(Battler place, int partyIndex)
     {
-        if (!CanSendIn(partyIndex)) return;
+        if (!CanSendIn(place, partyIndex)) return;
         var outgoing = place.Pokemon!;
-        var incoming = PlayerParty.Members[partyIndex];
-        var back = Say($"Come back, {outgoing.DisplayName}!");
+        var incoming = place.Roster!.Members[partyIndex];
+        var back = Say(place.Trainer == null ? $"Come back, {outgoing.DisplayName}!" : $"{place.Trainer.FullTitle} withdrew {outgoing.DisplayName}!");
 
         // A foe that chose Pursuit catches it on its way out
         if (!Pursue(place)) back.With(new Recalled(place.Place));
@@ -251,7 +253,7 @@ public sealed partial class BattleCore
         if (Result != BattleResult.None) return;
         if (place.Pokemon == outgoing && place.IsActive) Withdraw(place);
         Emit(new Left(place.Place));
-        Arrive(place, incoming, $"Go! {incoming.DisplayName}!");
+        Arrive(place, incoming, SentOutLine(place, incoming));
     }
 
     /// <summary>A Pokémon takes a place in the middle of things: its line, what lies in wait for it, then what it does on entry.</summary>
@@ -348,8 +350,7 @@ public sealed partial class BattleCore
     // ---------------------------------------------------------------- made to leave, and leaving by a move
 
     /// <summary>Someone of the place's party could come in for the Pokémon standing there.</summary>
-    private bool HasReplacement(Battler place) =>
-        place.IsPlayerSide ? Enumerable.Range(0, PlayerParty.Count).Any(CanSendIn) : NextFromRoster(place, EnemySlots.Select(b => b.Pokemon)) != null;
+    private bool HasReplacement(Battler place) => place.Roster != null && Enumerable.Range(0, place.Roster.Count).Any(i => CanSendIn(place, i));
 
     /// <summary>
     /// Roar and Whirlwind's doing in a trainer battle (<c>BtlCmd_TryWhirlwind</c>): one of the target's party that
@@ -357,9 +358,8 @@ public sealed partial class BattleCore
     /// </summary>
     private void DragOut(Battler target)
     {
-        var bench = target.IsPlayerSide
-            ? Enumerable.Range(0, PlayerParty.Count).Where(CanSendIn).Select(i => PlayerParty.Members[i]).ToList()
-            : target.Roster!.Members.Where(p => !p.IsFainted && EnemySlots.All(b => b.Pokemon != p)).ToList();
+        var bench = target.Roster == null ? new List<Pokemon>()
+            : Enumerable.Range(0, target.Roster.Count).Where(i => CanSendIn(target, i)).Select(i => target.Roster.Members[i]).ToList();
         if (bench.Count == 0) return;
         var dragged = bench[rng.Roll(RollKind.DraggedOut, bench.Count)];
 
@@ -375,25 +375,22 @@ public sealed partial class BattleCore
     private IEnumerable<BattleRequest> PickReplacement(Battler place)
     {
         picked = null;
-        if (!place.IsPlayerSide)
-        {
-            picked = NextFromRoster(place, EnemySlots.Select(b => b.Pokemon));
-            yield break;
-        }
-        if (!Enumerable.Range(0, PlayerParty.Count).Any(CanSendIn)) yield break;
+        if (!HasReplacement(place)) yield break;
 
         int index;
-        if (controllers[(int)BattleSide.Player] is { } controller) index = controller.ChooseReplacement(this, place);
+        if (ControllerOf(place) is { } controller) index = controller.ChooseReplacement(this, place);
         else
         {
             yield return new ReplacementRequest(place.Place);
             index = answer[0].SwitchTo;
         }
-        if (CanSendIn(index)) picked = PlayerParty.Members[index];
+        if (CanSendIn(place, index)) picked = place.Roster!.Members[index];
+        // Whoever chooses must name someone who can come: the next able one otherwise
+        else picked = NextFromRoster(place, SlotsOf(place.Side).Select(b => b.Pokemon));
     }
 
     private string SentOutLine(Battler place, Pokemon incoming) =>
-        place.IsPlayerSide ? $"Go! {incoming.DisplayName}!" : $"{place.Trainer!.FullTitle} sent out {incoming.DisplayName}!";
+        place.Trainer == null ? $"Go! {incoming.DisplayName}!" : $"{place.Trainer.FullTitle} sent out {incoming.DisplayName}!";
 
     /// <summary>
     /// A Pokémon leaves by its own move once the move is done: U-turn brings it back (Pursuit can catch it), Baton
@@ -460,26 +457,26 @@ public sealed partial class BattleCore
         {
             var entered = new List<Battler>();
 
-            // The foes first
+            // The foes first, each trainer's Pokémon picked as the AI picks after a faint
             foreach (var place in EnemySlots.Where(b => !b.IsActive && b.Roster != null))
             {
-                var next = NextFromRoster(place, EnemySlots.Select(b => b.Pokemon));
-                if (next == null) continue;
+                foreach (var request in PickReplacement(place)) yield return request;
+                if (picked == null) continue;
+                var next = picked;
                 entered.Add(place);
                 SendIn(place, next);
-                Say($"{place.Trainer!.FullTitle} sent out {next.DisplayName}!")
-                    .With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true));
+                Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true));
             }
 
-            // Then each empty place of the player's, while there is anyone left to send
+            // Then each empty place of the player's side (the partner's too), while there is anyone left to send
             foreach (var place in PlayerSlots.Where(b => !b.IsActive))
             {
                 foreach (var request in PickReplacement(place)) yield return request;
-                if (picked == null) break;
+                if (picked == null) continue;
                 var chosen = picked;
                 entered.Add(place);
                 SendIn(place, chosen);
-                Say($"Go! {chosen.DisplayName}!").With(new Entered(place.Place, chosen, FromBall: true));
+                Say(SentOutLine(place, chosen)).With(new Entered(place.Place, chosen, FromBall: true));
             }
 
             if (entered.Count == 0) yield break;

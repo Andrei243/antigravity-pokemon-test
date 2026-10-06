@@ -2,7 +2,8 @@ using System.Collections.Generic;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
 
-public enum ChoiceKind { Fight, Switch, Item, Run }
+/// <summary>What a choice is: a move, a switch, an item, running; in the Great Marsh also bait or mud thrown at the Pokémon.</summary>
+public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud }
 
 /// <summary>
 /// What one Pokémon's trainer decides for a turn, as plain data: a seed and the choices made are a whole battle
@@ -34,6 +35,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     public static BattleChoice UseItem(Place who, string item, int onPartyMember = -1, int onMove = -1) =>
         new(who, ChoiceKind.Item) { Item = item, SwitchTo = onPartyMember, Move = onMove };
     public static BattleChoice Run(Place who) => new(who, ChoiceKind.Run);
+
+    /// <summary>The Great Marsh: bait thrown to the Pokémon (easier to catch, likelier to run).</summary>
+    public static BattleChoice Bait(Place who) => new(who, ChoiceKind.Bait);
+
+    /// <summary>The Great Marsh: mud thrown at the Pokémon (likelier to stay, harder to catch).</summary>
+    public static BattleChoice Mud(Place who) => new(who, ChoiceKind.Mud);
 }
 
 /// <summary>

@@ -374,18 +374,18 @@ public partial class GameEngine
 
         public int Answer => game.scriptAnswer;
 
-        public void Battle(NPC trainer, bool mayLose)
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first)
         {
             game.scriptOutcome = BattleOutcome.None;
             game.battleMayBeLost = mayLose;
-            game.StartTrainerBattle(trainer);
+            game.StartTrainerBattle(trainer, second, partner, first);
         }
 
-        public void WildBattle(Pokemon wild)
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
         {
             game.scriptOutcome = BattleOutcome.None;
             game.battleMayBeLost = false;
-            game.MeetWildPokemon(wild);
+            game.MeetWildPokemon(wild, kind, cannotFlee);
         }
 
         public BattleOutcome Outcome => game.scriptOutcome;

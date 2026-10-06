@@ -35,6 +35,24 @@ public sealed class CoreSetup
 
     /// <summary>Who chooses for the other side; left out, the opponents' own chooser (<see cref="TrainerAi"/>).</summary>
     public IBattleController? EnemyController { get; init; } = TrainerAi.Instance;
+
+    /// <summary>What kind of battle it is (<see cref="BattleKind"/>).</summary>
+    public BattleKind Kind { get; init; } = BattleKind.Normal;
+
+    /// <summary>The trainer beside the player in a tag battle: their party fills the player's second place.</summary>
+    public Trainer? Partner { get; init; }
+
+    /// <summary>Who chooses for the partner; left out, the trainer AI.</summary>
+    public IBattleController? PartnerController { get; init; } = TrainerAi.Instance;
+
+    /// <summary>The player can't run from this battle.</summary>
+    public bool CannotFlee { get; init; }
+
+    /// <summary>The game's first battle: no critical hits (<c>BATTLE_STATUS_FIRST_BATTLE</c>).</summary>
+    public bool FirstBattle { get; init; }
+
+    /// <summary>The Safari Balls or Park Balls the player has.</summary>
+    public int SpecialBalls { get; init; }
 }
 
 /// <summary>
@@ -89,9 +107,34 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>What Pay Day has scattered for the player so far; picked up with the winnings.</summary>
     public int PayDayMoney { get; private set; }
 
+    /// <summary>What kind of battle it is: a roamer, the catching lesson, the Great Marsh, Pal Park (plan 06 · R9).</summary>
+    public BattleKind Kind { get; }
+
+    /// <summary>The trainer beside the player in a tag battle, whose Pokémon stand in the player's second place.</summary>
+    public Trainer? Partner { get; }
+
+    /// <summary>The player can't run from this battle.</summary>
+    public bool CannotFlee { get; }
+
+    /// <summary>The game's first battle, which has no critical hits.</summary>
+    public bool FirstBattle { get; }
+
+    /// <summary>No critical hit lands in the catching lesson or the first battle (<c>BtlCmd_CalcCrit</c>).</summary>
+    internal bool NoCriticalHits => Kind == BattleKind.CatchingLesson || FirstBattle;
+
+    /// <summary>The Safari Balls or Park Balls left, in the Great Marsh and Pal Park.</summary>
+    public int SpecialBalls { get; private set; }
+
+    /// <summary>What the trainer AI knows of the battle (the moves, abilities and items it has seen, its trainers' items).</summary>
+    public Ai.AiMemory AiMemory { get; } = new();
+
+    /// <summary>The Great Marsh's two counters (the original's <c>safariCatchStage</c> and <c>safariEscapeCount</c>, 0 to 12, 6 to begin with): bait and mud move them.</summary>
+    public int SafariCatchStage { get; private set; } = 6;
+    public int SafariEscapeCount { get; private set; } = 6;
+
     private readonly Random rng;
     private readonly string playerName;
-    private readonly IBattleController?[] controllers = new IBattleController?[2];
+    private readonly IBattleController? playerController, enemyController, partnerController;
     private readonly Pokemon? firstTrainerPokemon;
     private readonly List<Pokemon> leveledUp = new();
     private readonly List<BattleEvent> log = new();
@@ -113,17 +156,31 @@ public sealed partial class BattleCore : IBattleContext
         startedFrom = (rng as BattleRandom)?.State;
         playerName = setup.PlayerName;
         firstTrainerPokemon = setup.FirstTrainerPokemon;
-        controllers[(int)BattleSide.Player] = setup.PlayerController;
-        controllers[(int)BattleSide.Enemy] = setup.EnemyController;
+        playerController = setup.PlayerController;
+        enemyController = setup.EnemyController;
+        partnerController = setup.PartnerController;
+        Kind = setup.Kind;
+        CannotFlee = setup.CannotFlee;
+        FirstBattle = setup.FirstBattle;
+        SpecialBalls = setup.SpecialBalls;
+        Partner = Kind is BattleKind.Safari or BattleKind.PalPark ? null : setup.Partner;
 
-        // A double battle needs two Pokémon able to fight on each side
-        bool canDouble = PlayerParty.Members.Count(p => !p.IsFainted) >= 2 &&
-            (Trainers.Count == 0 ? WildPokemon.Count >= 2
-                : Trainers.Count >= 2 || Trainers[0].Party.Members.Count(p => !p.IsFainted) >= 2);
-        Format = setup.Format == BattleFormat.Double && canDouble ? BattleFormat.Double : BattleFormat.Single;
+        // A double battle needs two Pokémon able to fight on each side; a partner brings the player's second
+        bool foesForTwo = Trainers.Count == 0 ? WildPokemon.Count >= 2 : Trainers.Count >= 2 || Trainers[0].Party.Members.Count(p => !p.IsFainted) >= 2;
+        bool canDouble = Partner != null
+            ? PlayerParty.Members.Any(p => !p.IsFainted) && Partner.Party.Members.Any(p => !p.IsFainted) && foesForTwo
+            : PlayerParty.Members.Count(p => !p.IsFainted) >= 2 && foesForTwo;
+        if (Partner != null && !canDouble) Partner = null;
+        Format = (setup.Format == BattleFormat.Double || Partner != null) && canDouble && Kind is not (BattleKind.Safari or BattleKind.PalPark)
+            ? BattleFormat.Double : BattleFormat.Single;
         int slots = IsDouble ? 2 : 1;
 
-        PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i) { Roster = PlayerParty, Field = Field }).ToList();
+        PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i)
+        {
+            Roster = i == 1 && Partner != null ? Partner.Party : PlayerParty,
+            Trainer = i == 1 ? Partner : null,
+            Field = Field
+        }).ToList();
         foreach (var p in PlayerParty.Members) Evolution.BeginBattle(p);
         EnemySlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Enemy, i) { Field = Field }).ToList();
         Field.WeatherIgnored = () => AllBattlers.Any(b => b.IsActive && BattleEffects.Of(b).Any(e => e.IgnoresWeather));
@@ -133,9 +190,10 @@ public sealed partial class BattleCore : IBattleContext
         Field.Turn = () => Turn;
         Field.Battlers = () => AllBattlers;
 
-        // The first Pokémon in: the first ones able to fight
-        var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(slots).ToList();
+        // The first Pokémon in: the first ones able to fight (a partner sends its own first)
+        var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(Partner != null ? 1 : slots).ToList();
         if (leads.Count == 0) leads.Add(PlayerParty.Members.First());
+        if (Partner != null) leads.Add(Partner.Party.Members.First(p => !p.IsFainted));
         for (int i = 0; i < leads.Count; i++) PlayerSlots[i].Pokemon = leads[i];
 
         for (int i = 0; i < slots; i++)
@@ -234,10 +292,30 @@ public sealed partial class BattleCore : IBattleContext
 
     private static BattleSide Other(BattleSide side) => side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player;
 
-    /// <summary>The party member at this position could come in: it can fight and isn't out already.</summary>
-    public bool CanSendIn(int partyIndex) =>
-        partyIndex >= 0 && partyIndex < PlayerParty.Count && !PlayerParty.Members[partyIndex].IsFainted &&
-        PlayerSlots.All(b => b.Pokemon != PlayerParty.Members[partyIndex]);
+    /// <summary>
+    /// Who chooses for a place from inside the core: the opponents' chooser for the other side, the partner's for the
+    /// partner's place, the player's own (null: the choices come from outside) for the player's. The catching
+    /// lesson's helper chooses by itself.
+    /// </summary>
+    private IBattleController? ControllerOf(Battler b)
+    {
+        if (!b.IsPlayerSide) return enemyController;
+        if (b.Trainer != null) return partnerController;
+        if (Kind == BattleKind.CatchingLesson) return TrainerAi.Instance;
+        return playerController;
+    }
+
+    /// <summary>The player's party member at this position could come in: it can fight and isn't out already.</summary>
+    public bool CanSendIn(int partyIndex) => CanSendIn(PlayerSlots[0], partyIndex);
+
+    /// <summary>The member at this position of the party that sends Pokémon to this place could come in there.</summary>
+    public bool CanSendIn(Battler place, int partyIndex)
+    {
+        var roster = At(place.Place).Roster;
+        if (roster == null || partyIndex < 0 || partyIndex >= roster.Count) return false;
+        var p = roster.Members[partyIndex];
+        return !p.IsFainted && SlotsOf(place.Side).All(b => b.Pokemon != p);
+    }
 
     // ---------------------------------------------------------------- the log
 
@@ -284,14 +362,16 @@ public sealed partial class BattleCore : IBattleContext
             // A Pokémon in the middle of a move, or that has to recharge, has nothing to choose
             var choices = new List<BattleChoice>();
             var free = InTurnOrderOfPlaces().Where(b => b.IsActive && !b.IsHeldToItsMove).ToList();
-            var asked = free.Where(b => controllers[(int)b.Side] == null).Select(b => b.Place).ToList();
+            var asked = free.Where(b => ControllerOf(b) == null).Select(b => b.Place).ToList();
             if (asked.Count > 0)
             {
                 yield return new ActionRequest(asked);
                 choices.AddRange(answer);
             }
-            foreach (var b in free.Where(b => controllers[(int)b.Side] != null))
-                choices.Add(controllers[(int)b.Side]!.ChooseAction(this, b));
+            foreach (var b in free.Where(b => ControllerOf(b) != null))
+                choices.Add(ControllerOf(b)!.ChooseAction(this, b));
+            // The Great Marsh's Pokémon and Pal Park's have no moves to choose: they watch, or run
+            if (Kind is BattleKind.Safari or BattleKind.PalPark) choices.RemoveAll(c => c.Who.Side == BattleSide.Enemy);
             foreach (var b in InTurnOrderOfPlaces().Where(b => b.IsActive && b.IsHeldToItsMove))
                 choices.Add(BattleChoice.GoOn(b.Place));
 
@@ -335,11 +415,25 @@ public sealed partial class BattleCore : IBattleContext
                 : $"A wild {foes[0].Pokemon!.DisplayName} appeared!");
         }
 
-        var go = Say($"Go! {JoinNames(mine.Select(b => b.Pokemon!.DisplayName))}!");
-        foreach (var b in mine)
+        // The Great Marsh and Pal Park are played with balls alone: none of the player's Pokémon comes out
+        if (Kind is BattleKind.Safari or BattleKind.PalPark)
+        {
+            OpenUnderTheSky();
+            return;
+        }
+
+        // A partner sends theirs out with their own line
+        var own = mine.Where(b => b.Trainer == null).ToList();
+        var go = Say($"Go! {JoinNames(own.Select(b => b.Pokemon!.DisplayName))}!");
+        foreach (var b in own)
         {
             OnEntered(b, opening: true);
             go.With(new Entered(b.Place, b.Pokemon!, FromBall: true));
+        }
+        foreach (var b in mine.Where(b => b.Trainer != null))
+        {
+            OnEntered(b, opening: true);
+            Say($"{b.Trainer!.FullTitle} sent out {b.Pokemon!.DisplayName}!").With(new Entered(b.Place, b.Pokemon!, FromBall: true));
         }
 
         OpenUnderTheSky();
@@ -380,7 +474,14 @@ public sealed partial class BattleCore : IBattleContext
             switch (act.Choice.Kind)
             {
                 case ChoiceKind.Run:
-                    if (!ranThisTurn) TryRun(act.User);
+                    if (!act.User.IsPlayerSide) Flee(act.User);
+                    else if (!ranThisTurn) TryRun(act.User);
+                    break;
+                case ChoiceKind.Bait:
+                    ThrowBait(act.User);
+                    break;
+                case ChoiceKind.Mud:
+                    ThrowMud(act.User);
                     break;
                 case ChoiceKind.Fight:
                     foreach (var request in ExecuteMove(act)) yield return request;
@@ -408,6 +509,20 @@ public sealed partial class BattleCore : IBattleContext
         }
         ranThisTurn = false;
         if (Result != BattleResult.None) yield break;
+
+        // The Great Marsh's Pokémon has its say once the player has thrown: it runs, or watches
+        if (Kind == BattleKind.Safari)
+        {
+            SafariPokemonActs();
+            if (Result != BattleResult.None) yield break;
+            Turn++;
+            yield break;
+        }
+        if (Kind == BattleKind.PalPark)
+        {
+            Turn++;
+            yield break;
+        }
 
         EndOfTurn();
         if (Result != BattleResult.None) yield break;
@@ -481,7 +596,7 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var act in acts) ItemsInTheOrder(act);
 
         var byPlace = acts.OrderBy(a => Number(a.User)).ToList();
-        var runner = byPlace.FirstOrDefault(a => a.Choice.Kind == ChoiceKind.Run && a.User.IsPlayerSide);
+        var runner = byPlace.FirstOrDefault(a => a.Choice.Kind == ChoiceKind.Run);
         if (runner != null) return byPlace.Where(a => a == runner).Concat(byPlace.Where(a => a != runner)).ToList();
 
         var order = byPlace.Where(a => a.Choice.Kind is ChoiceKind.Item or ChoiceKind.Switch)
@@ -598,7 +713,7 @@ public sealed partial class BattleCore : IBattleContext
         var target = EnemySlots.FirstOrDefault(b => b.IsActive);
         if (target == null) return;
         var foe = target.Pokemon!;
-        Say($"{playerName} used one {ball.Name}!");
+        Say($"{playerName} used one {(Kind == BattleKind.PalPark ? "Park Ball" : ball.Name)}!");
 
         // A Pokémon that isn't there to be hit can't be caught either
         if (target.IsElsewhere)
@@ -607,7 +722,9 @@ public sealed partial class BattleCore : IBattleContext
             return;
         }
 
-        int shakes = CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions);
+        // The catching lesson's ball and Pal Park's can't fail (BATTLE_TYPE_ALWAYS_CATCH)
+        int shakes = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? 4 : CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions, SafariCatchStage);
+        if (ball.Name == "Safari Ball") SpecialBalls = Math.Max(0, SpecialBalls - 1);
         Emit(new BallThrown(ball.Name, target.Slot, shakes));
         if (shakes < 4)
         {
@@ -618,6 +735,16 @@ public sealed partial class BattleCore : IBattleContext
                 2 => "Aargh! Almost had it!",
                 _ => "Gah! It was so close, too!"
             });
+            if (Kind == BattleKind.Safari) SafariGameOver();
+            return;
+        }
+
+        // The lesson's catch is the assistant's own: it stays theirs
+        if (Kind == BattleKind.CatchingLesson)
+        {
+            Emit(new Caught(foe, ball.Name, ToBox: false));
+            Say($"Gotcha! {foe.DisplayName} was caught!");
+            End(BattleResult.EnemyCaught);
             return;
         }
 
@@ -638,6 +765,18 @@ public sealed partial class BattleCore : IBattleContext
         if (IsTrainerBattle)
         {
             Say("No! There's no running from a Trainer battle!");
+            return;
+        }
+        if (CannotFlee)
+        {
+            Say("There's no getting away from this one!");
+            return;
+        }
+        // The Great Marsh and Pal Park can always be left
+        if (Kind is BattleKind.Safari or BattleKind.PalPark)
+        {
+            Say("Got away safely!").With(new GotAway());
+            End(BattleResult.PlayerRan);
             return;
         }
 
@@ -739,7 +878,10 @@ public sealed partial class BattleCore : IBattleContext
 
     private void CheckBattleEnd()
     {
-        if (SideDefeated(PlayerSlots))
+        // Beside a partner the player is beaten once their own party is down, whatever the partner has left
+        // (BattleControllerPlayer_CheckBattleOver, for a battle with an AI partner)
+        bool beaten = Partner != null ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots);
+        if (beaten)
         {
             Say($"{playerName} is out of usable Pokémon!");
             Say($"{playerName} whited out...");

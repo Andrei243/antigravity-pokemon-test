@@ -67,6 +67,25 @@ public class MoveData
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int EffectChance { get; set; }
 
+    /// <summary>
+    /// The decompilation's own battle effect of one of Platinum's moves (<c>AtkUp2</c> for Swords Dance, <c>Hit</c> for
+    /// Tackle), whatever the fields say: what the trainer AI asks of a move (plan 06 · R9). Null for the later moves.
+    /// </summary>
+    public string? BattleEffect
+    {
+        get => battleEffect;
+        set { battleEffect = value; effectId = null; }
+    }
+
+    private string? battleEffect;
+    private Battle.Sim.Ai.MoveEffectId? effectId;
+
+    /// <summary><see cref="BattleEffect"/> as the AI's enum; <see cref="Battle.Sim.Ai.MoveEffectId.Hit"/> for a move Platinum doesn't have.</summary>
+    [JsonIgnore]
+    public Battle.Sim.Ai.MoveEffectId EffectId =>
+        effectId ??= battleEffect != null && Enum.TryParse(battleEffect.Length > 0 && char.IsDigit(battleEffect[0]) ? "N" + battleEffect : battleEffect, out Battle.Sim.Ai.MoveEffectId id)
+            ? id : Battle.Sim.Ai.MoveEffectId.Hit;
+
     /// <summary>How much of the move the engine runs; anything but Full has an <see cref="Effect"/> still to write.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public MoveEffectSupport Support { get; set; } = MoveEffectSupport.Full;

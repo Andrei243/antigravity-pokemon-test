@@ -452,8 +452,13 @@ public sealed partial class BattleCore
         ["RemoveAllPpOnDefeat"] = new() { Does = (b, use) => b.Once(use.User.Volatile.Grudge, () => use.User.Volatile.Grudge = true, $"{use.User.Name} wants its foe to bear a grudge!") },
         ["MakeSharedMovesUnuseable"] = new()
         {
-            Does = (b, use) => b.Once(use.User.Volatile.Imprisoning || !b.ActiveFoes(use.User).Any(foe => foe.Pokemon!.Moves.Any(m => use.User.Pokemon!.Moves.Any(own => own.Data == m.Data))),
-                () => use.User.Volatile.Imprisoning = true, $"{use.User.Name} sealed the moves it shares with its foe!")
+            Does = (b, use) =>
+            {
+                // The foes are marked before anything is checked (BtlCmd_TryImprison); only the AI reads the mark
+                foreach (var foe in b.SlotsOf(Other(use.User.Side)).Where(f => f.Pokemon != null)) foe.Volatile.Imprisoned = true;
+                b.Once(use.User.Volatile.Imprisoning || !b.ActiveFoes(use.User).Any(foe => foe.Pokemon!.Moves.Any(m => use.User.Pokemon!.Moves.Any(own => own.Data == m.Data))),
+                    () => use.User.Volatile.Imprisoning = true, $"{use.User.Name} sealed the moves it shares with its foe!");
+            }
         },
         ["HalveElectricDamage"] = new() { Does = (b, use) => b.Once(use.User.Volatile.MudSport, () => use.User.Volatile.MudSport = true, "Electricity's power was weakened!") },
         ["HalveFireDamage"] = new() { Does = (b, use) => b.Once(use.User.Volatile.WaterSport, () => use.User.Volatile.WaterSport = true, "Fire's power was weakened!") },

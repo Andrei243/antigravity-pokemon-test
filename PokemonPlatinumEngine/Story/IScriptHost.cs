@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -74,9 +75,15 @@ public interface IScriptHost
     void Ask(string? speaker, string question, IReadOnlyList<string> answers, int cancel);
     int Answer { get; }
 
-    /// <summary>Battles a trainer of the map. <see cref="Outcome"/> is how it went once the host is no longer busy.</summary>
-    void Battle(NPC trainer, bool mayLose);
-    void WildBattle(Pokemon wild);
+    /// <summary>
+    /// Battles a trainer of the map, or two at once (<paramref name="second"/>), perhaps with a trainer at the
+    /// player's side (<paramref name="partner"/>, a tag battle). <see cref="Outcome"/> is how it went once the host is
+    /// no longer busy. The game's first battle (<paramref name="first"/>) has no critical hits.
+    /// </summary>
+    void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first);
+
+    /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
+    void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee);
     BattleOutcome Outcome { get; }
 
     /// <summary>

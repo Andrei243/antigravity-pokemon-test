@@ -112,7 +112,7 @@ Wild levels and every other trainer's team come from the decomp (`res/field/enco
 - **No list of its own in the save**: a ball is gone because its flag is set, as in the original (`FLAG_OBTAINED_ROUTE_202_POTION`), so `TakenItems` stays for whatever a later chapter gives no flag to.
 - **Decisions**: every ball looks the same whatever is in it, as in Platinum; a hidden item is found by looking at its tile, never by standing on it; the bag is never full, so nothing is left lying. The Works Key's ball in Floaroma Meadow is no item ball (its script is the meadow's own) and waits for S6.
 - **Not yet**: the Dowsing Machine (the ranges are imported; the Pokétch is S2's), and berries' soft soil.
-- A wild battle a script starts can be run from until plan 06 · R9 gives battles a "can't flee".
+- ~~A wild battle a script starts can be run from until plan 06 · R9 gives battles a "can't flee".~~ Done in R9 (2026-10-06): `wildbattle "Giratina" 47 nofleeing`, and with it `battle a and b with c` (two trainers, a partner), `battle self first` (the rival's first battle) and `catchinglesson "Bidoof" 2`.
 - The rival's name and `{rival}` in lines (S4, see below).
 - People don't wander: the area files keep each object's `movement` (`wander_around`, `look_south`…) and nothing reads it yet. It belongs with the first chapter that has a town full of people (S4), not with the scripts.
 - A badge has no fanfare of its own (`fanfare` knows `heal`, `item`, `pokemon`, `levelup`): plan 05.

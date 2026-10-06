@@ -1,4 +1,4 @@
-// Rebuilds species.json, moves.json, abilities.json and items.json in PokemonPlatinumEngine/Data from the Platinum
+// Rebuilds species.json, moves.json, abilities.json, items.json and trainers.json in PokemonPlatinumEngine/Data from the Platinum
 // decompilation and PokeAPI, then applies the hand corrections in tools/DataImporter/Overrides and writes the coverage
 // report docs/mechanics/coverage.md. See tools/DataImporter/README.md.
 //
@@ -51,14 +51,18 @@ var importedItems = importer.Items(evolutionItems, moves);
 importer.AddLaterMechanics(importedItems, showdown);
 var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
 
+Console.WriteLine("Trainers…");
+var trainers = importer.Trainers(species);
+
 Check(species, moves, abilities, items);
 
 Write(Path.Combine(outDir, PokemonDatabase.FileName), GameDataFiles.Serialize(species));
 Write(Path.Combine(outDir, MoveDatabase.FileName), GameDataFiles.Serialize(moves));
 Write(Path.Combine(outDir, AbilityDatabase.FileName), GameDataFiles.Serialize(abilities));
 Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items));
+Write(Path.Combine(outDir, TrainerDatabase.FileName), GameDataFiles.Serialize(trainers));
 Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items));
-Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities and {items.Count} items in {outDir}");
+Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities, {items.Count} items and {trainers.Count} trainers in {outDir}");
 return 0;
 
 string FetchShowdown()

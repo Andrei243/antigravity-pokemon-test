@@ -40,6 +40,16 @@ public sealed class Decomp
         return File.Exists(path) ? Parse(path) : null;
     }
 
+    /// <summary>A trainer's data (<c>res/trainers/data/&lt;key&gt;.json</c>), or null for an id with none.</summary>
+    public JsonElement? Trainer(string key)
+    {
+        string path = Path.Combine(root, "res", "trainers", "data", key + ".json");
+        return File.Exists(path) ? Parse(path) : null;
+    }
+
+    /// <summary>The text of a header under <c>include/</c> (a table the importer reads numbers from).</summary>
+    public string Include(params string[] parts) => File.ReadAllText(Path.Combine(new[] { root, "include" }.Concat(parts).ToArray()));
+
     private static string Folder(string constant, string prefix) => constant[prefix.Length..].ToLowerInvariant();
 
     private JsonElement Read(params string[] parts) => Parse(Path.Combine(new[] { root }.Concat(parts).ToArray()));

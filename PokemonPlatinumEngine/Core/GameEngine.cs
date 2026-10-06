@@ -60,7 +60,7 @@ public partial class GameEngine
 
     // A trainer who spotted the player and is walking up, and the one being battled
     private TrainerApproach? trainerApproach;
-    private NPC? battleTrainer;
+    private readonly List<NPC> battleTrainers = new();
 
     // How the player was travelling when the field's music was last chosen, and whether a trainer's eye theme is on
     private TravelMode musicTravel = TravelMode.OnFoot;
@@ -493,21 +493,24 @@ public partial class GameEngine
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch
                         bool beaten = battle.Result == BattleResult.PlayerVictory;
-                        battleTrainer?.FinishBattle(beaten);
-                        // Two people who battle as one trainer (a pair of twins) are beaten together, and the story remembers it
-                        if (beaten && battleTrainer?.TrainerData is { Id.Length: > 0 } pair)
+                        foreach (var battleTrainer in battleTrainers)
                         {
-                            story.Defeat(pair.Id);
-                            foreach (var other in currentMap.Everyone.Where(n => n != battleTrainer && n.TrainerData?.Id == pair.Id)) other.FinishBattle(true);
+                            battleTrainer.FinishBattle(beaten);
+                            // Two people who battle as one trainer (a pair of twins) are beaten together, and the story remembers it
+                            if (beaten && battleTrainer.TrainerData is { Id.Length: > 0 } pair)
+                            {
+                                story.Defeat(pair.Id);
+                                foreach (var other in currentMap.Everyone.Where(n => n != battleTrainer && n.TrainerData?.Id == pair.Id)) other.FinishBattle(true);
+                            }
                         }
-                        battleTrainer = null;
+                        battleTrainers.Clear();
                         // What a script that started the battle is told of it
                         scriptOutcome = battle.Result switch
                         {
                             BattleResult.PlayerVictory => BattleOutcome.Won,
                             BattleResult.PlayerDefeat => BattleOutcome.Lost,
                             BattleResult.EnemyCaught => BattleOutcome.Caught,
-                            BattleResult.PlayerRan => BattleOutcome.Fled,
+                            BattleResult.PlayerRan or BattleResult.EnemyFled => BattleOutcome.Fled,
                             _ => BattleOutcome.None
                         };
                         EndBattle();
@@ -1081,12 +1084,27 @@ public partial class GameEngine
     }
 
     /// <summary>
-    /// A battle with one wild Pokémon: one met in the grass, or one a script puts in the player's way. (Not a
-    /// second <c>StartWildBattle</c>: the screenshot harness finds that one by its name alone.)
+    /// A battle with one wild Pokémon: one met in the grass, or one a script puts in the player's way, perhaps one
+    /// that can't be run from (a legendary the story brings), or the assistant's catching lesson, which the player
+    /// watches (plan 06 · R9). (Not a second <c>StartWildBattle</c>: the screenshot harness finds that one by its
+    /// name alone.)
     /// </summary>
-    private void MeetWildPokemon(Pokemon wildPkmn)
+    private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false)
     {
-        playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
+        // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
+        if (kind != BattleKind.CatchingLesson) playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
+        // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
+        var party = playerParty;
+        var bag = playerInventory;
+        string? name = null;
+        if (kind == BattleKind.CatchingLesson)
+        {
+            party = new Party();
+            party.Add(new Pokemon(PokemonDatabase.Get(story.AssistantStarter ?? "Piplup")!, 5));
+            bag = new Inventory();
+            bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
+            name = PlayerIdentity.Fill("{assistant}");
+        }
 
         // The battle theme cuts in as the screen starts to flash, before the battle itself appears: a legendary's or
         // a mythical's own, or the wild battle theme
@@ -1098,12 +1116,15 @@ public partial class GameEngine
             AwaitModels(shown);
             battle = new BattleEngine(new BattleSetup
             {
-                PlayerParty = playerParty,
-                Inventory = playerInventory,
+                PlayerParty = party,
+                Inventory = bag,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
                 WildPokemon = new List<Pokemon> { wildPkmn },
-                Conditions = BattleConditionsHere()
+                Conditions = BattleConditionsHere(),
+                Kind = kind,
+                CannotFlee = cannotFlee,
+                PlayerName = name
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
@@ -1171,17 +1192,21 @@ public partial class GameEngine
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
-    private void StartTrainerBattle(NPC trainerNpc)
+    /// <summary>A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9).</summary>
+    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false)
     {
         var trainer = trainerNpc.TrainerData!;
         if (trainer.Party.Count == 0)
         {
             trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
         }
+        // Two trainers at once (a tag battle's foes), each with a team of their own
+        var trainers = new List<Trainer> { trainer };
+        if (secondNpc?.TrainerData is { } second) trainers.Add(second);
 
         eyeThemePlaying = false;
-        AudioManager.PlayMusic(MusicDirector.BattleRole(new[] { trainer.TrainerClass }), immediate: true);
-        var shown = PrepareModels(trainer.Party.Members);
+        AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
+        var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(partner?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -1191,12 +1216,16 @@ public partial class GameEngine
                 Inventory = playerInventory,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
-                Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
-                Trainers = new List<Trainer> { trainer },
+                Format = trainer.DoubleBattle || trainers.Count > 1 || partner != null ? BattleFormat.Double : BattleFormat.Single,
+                Trainers = trainers,
+                Partner = partner,
+                FirstBattle = firstBattle,
                 Conditions = BattleConditionsHere()
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
-            battleTrainer = trainerNpc;
+            battleTrainers.Clear();
+            battleTrainers.Add(trainerNpc);
+            if (secondNpc?.TrainerData != null) battleTrainers.Add(secondNpc);
         }, SceneTransition.ForBattle(trainer: true, trainer.TrainerClass.Contains("Leader", StringComparison.OrdinalIgnoreCase),
             trainer.Party.Members[0].Level, LeadLevel()));
     }

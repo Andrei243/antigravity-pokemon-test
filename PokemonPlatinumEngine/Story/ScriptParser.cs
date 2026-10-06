@@ -189,15 +189,41 @@ public static class ScriptParser
             {
                 string who = r.Who();
                 if (who == "player") throw r.Error("the player can't be battled");
-                bool mayLose = r.More && r.OneOf("canlose") == "canlose";
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Option = mayLose };
+                // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
+                bool mayLose = false, byId = false, first = false;
+                string second = "", partner = "";
+                while (r.More)
+                {
+                    switch (r.OneOf("canlose", "first", "and", "with"))
+                    {
+                        case "canlose":
+                            mayLose = true;
+                            break;
+                        case "first":
+                            first = true;
+                            break;
+                        case "and":
+                            second = r.Who();
+                            if (second == "player" || second == who) throw r.Error("the second trainer is someone else of the map");
+                            break;
+                        default:
+                            byId = r.PeekQuoted;
+                            partner = byId ? r.Text("a trainer's id") : r.Who();
+                            if (partner == "player" || partner == who || partner == second) throw r.Error("the player's partner is someone else of the map");
+                            break;
+                    }
+                }
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first };
             }
             case "wildbattle":
+            case "catchinglesson":
             {
                 string species = r.Text("a species' name");
                 int level = r.Int("its level");
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level };
+                if (word == "catchinglesson") return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level };
+                bool noFleeing = r.More && r.OneOf("nofleeing") == "nofleeing";
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing };
             }
 
             case "face":
