@@ -117,7 +117,7 @@ Written 2026-10-06, before any session.
 ## Decisions for the user
 
 1. **Portraits beside the text box?** Platinum has none. *Recommended:* yes, for named characters only, drawn from our own field sprites as the Trainer Card does, the name kept in its pill. Alternative: none, and L3 stays coloured names, pauses and the backlog.
-2. **Shiny palettes: a table for how many?** *Recommended:* the thirty best-known designs by hand and the rest by rule, growing as bad ones are seen. Alternative: every hand-built species by hand (417 choices, several sessions more).
+2. **Shiny palettes: a table for how many?** *Recommended:* the thirty best-known designs by hand and the rest by rule, growing as bad ones are seen. Alternative: every hand-built species by hand (642 choices and their 223 forms, several sessions more).
 3. **Female looks for generated species?** Today every flagged species to Unova is hand-built, so this decides the net for the batches to come. *Recommended:* the rule, replaced as plan 03's batches hand-build each. Alternative: none until hand-built, and the Pokédex shows one look for them.
 4. **Reflections on Medium?** *Recommended:* yes, since Medium is the preset for a slower machine at 4K and the pass is cheap where no water is in view. Alternative: High only.
 
