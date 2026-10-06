@@ -1739,4 +1739,8 @@ internal static partial class PokemonModels
     private static PokeBuilder ScolipedeMega() => ScolipedeBuild(true);
 
     private static PokeBuilder ScraftyMega() => ScraftyBuild(true);
+
+    private static PokeBuilder EelektrossMega() => EelektrossBuild(true);
+
+    private static PokeBuilder ChandelureMega() => ChandelureBuild(true);
 }
