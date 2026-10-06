@@ -1,0 +1,44 @@
+{
+  "key": "mt_coronet_1f_north_room_2",
+  "index": 217,
+  "name": "Mt. Coronet",
+  "matrix": 19,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "mt_coronet_1f_north_room_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzor", "level": 33 },
+    { "species": "Graveler", "level": 34 },
+    { "species": "Meditite", "level": 33 },
+    { "species": "Clefairy", "level": 32 },
+    { "species": "Machoke", "level": 35 },
+    { "species": "Meditite", "level": 35 },
+    { "species": "Chingling", "level": 32 },
+    { "species": "Nosepass", "level": 33 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Chingling", "level": 34 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Chingling", "level": 34 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 27, "to": "mt_coronet_b1f", "toWarp": 1 },
+    { "x": 2, "z": 18, "to": "route_216", "toWarp": 0 },
+    { "x": 15, "z": 16, "to": "mt_coronet_iceberg_ruins", "toWarp": 0 },
+    { "x": 15, "z": 16, "to": "iceberg_ruins", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 14, "z": 17, "type": 2, "script": "8061", "item": "Yellow Shard", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_1F_NORTH_ROOM_2_YELLOW_SHARD", "range": 2 }
+  ],
+  "triggers": []
+}

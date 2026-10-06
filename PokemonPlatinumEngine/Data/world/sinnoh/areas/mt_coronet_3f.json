@@ -1,0 +1,46 @@
+{
+  "key": "mt_coronet_3f",
+  "index": 209,
+  "name": "Mt. Coronet",
+  "matrix": 11,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "mt_coronet_3f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzong", "level": 37 },
+    { "species": "Graveler", "level": 38 },
+    { "species": "Medicham", "level": 37 },
+    { "species": "Clefairy", "level": 36 },
+    { "species": "Machoke", "level": 39 },
+    { "species": "Medicham", "level": 39 },
+    { "species": "Chingling", "level": 36 },
+    { "species": "Nosepass", "level": 37 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chingling", "level": 38 },
+    { "species": "Medicham", "level": 38 },
+    { "species": "Chingling", "level": 38 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 14, "z": 26, "to": "mt_coronet_2f", "toWarp": 4 },
+    { "x": 18, "z": 26, "to": "mt_coronet_2f", "toWarp": 5 },
+    { "x": 3, "z": 29, "to": "mt_coronet_outside_south", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "galactic_grunt_2", "looks": "grunt_f", "movement": "look_around", "x": 15, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS", "script": "TRAINER_GALACTIC_GRUNT_MT_CORONET_3F_2" },
+    { "id": "galactic_grunt_1", "looks": "grunt_m", "movement": "walk_back_and_forth", "x": 2, "z": 20, "facing": 3, "rangeX": 1, "rangeZ": 0, "trainer": "face_sides", "sight": 2, "hiddenBy": "FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS", "script": "TRAINER_GALACTIC_GRUNT_MT_CORONET_3F_1" }
+  ],
+  "signs": [
+    { "x": 3, "z": 15, "type": 2, "script": "8083", "item": "Max Repel", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_3F_MAX_REPEL", "range": 2 }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,102 @@
+{
+  "key": "mt_coronet_b1f",
+  "index": 219,
+  "name": "Mt. Coronet",
+  "matrix": 21,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "Default",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "mt_coronet_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzor", "level": 33 },
+    { "species": "Graveler", "level": 34 },
+    { "species": "Meditite", "level": 33 },
+    { "species": "Clefairy", "level": 32 },
+    { "species": "Machoke", "level": 35 },
+    { "species": "Meditite", "level": 35 },
+    { "species": "Chingling", "level": 32 },
+    { "species": "Nosepass", "level": 33 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Chingling", "level": 34 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Chingling", "level": 34 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Zubat", "level": 20, "maxLevel": 30 },
+    { "species": "Zubat", "level": 20, "maxLevel": 30 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 3, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 4, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 8, "z": 60, "to": "mt_coronet_1f_north_room_1", "toWarp": 1 },
+    { "x": 8, "z": 3, "to": "mt_coronet_1f_north_room_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 2, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 4, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 13, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 25, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "rock_smash_5", "looks": "rock_smash", "movement": "none", "x": 28, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10001" },
+    { "id": "rock_smash_6", "looks": "rock_smash", "movement": "none", "x": 29, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10001" },
+    { "id": "rock_smash_7", "looks": "rock_smash", "movement": "none", "x": 6, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_7", "script": "10001" },
+    { "id": "rock_smash_8", "looks": "rock_smash", "movement": "none", "x": 7, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10001" },
+    { "id": "rock_smash_9", "looks": "rock_smash", "movement": "none", "x": 7, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_9", "script": "10001" },
+    { "id": "rock_smash_10", "looks": "rock_smash", "movement": "none", "x": 5, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_10", "script": "10001" },
+    { "id": "rock_smash_11", "looks": "rock_smash", "movement": "none", "x": 7, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_11", "script": "10001" },
+    { "id": "rock_smash_12", "looks": "rock_smash", "movement": "none", "x": 29, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_12", "script": "10001" },
+    { "id": "rock_smash_13", "looks": "rock_smash", "movement": "none", "x": 4, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_14", "script": "10001" },
+    { "id": "rock_smash_14", "looks": "rock_smash", "movement": "none", "x": 7, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_15", "script": "10001" },
+    { "id": "rock_smash_15", "looks": "rock_smash", "movement": "none", "x": 4, "z": 57, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_16", "script": "10001" },
+    { "id": "rock_smash_16", "looks": "rock_smash", "movement": "none", "x": 3, "z": 60, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_17", "script": "10001" },
+    { "id": "strength_boulder_1", "looks": "strength_boulder", "movement": "none", "x": 17, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_18", "script": "10002" },
+    { "id": "strength_boulder_2", "looks": "strength_boulder", "movement": "none", "x": 5, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_19", "script": "10002" },
+    { "id": "item_revive", "looks": "pokeball", "movement": "none", "x": 17, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_B1F_REVIVE", "item": "Revive", "script": "7156" },
+    { "id": "item_soft_sand", "looks": "pokeball", "movement": "none", "x": 6, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_B1F_SOFT_SAND", "item": "Soft Sand", "script": "7151" },
+    { "id": "item_light_clay", "looks": "pokeball", "movement": "none", "x": 22, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_B1F_LIGHT_CLAY", "item": "Light Clay", "script": "7152" },
+    { "id": "item_max_elixir", "looks": "pokeball", "movement": "none", "x": 26, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_B1F_MAX_ELIXIR", "item": "Max Elixir", "script": "7155" },
+    { "id": "item_full_restore", "looks": "pokeball", "movement": "none", "x": 29, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_B1F_FULL_RESTORE", "item": "Full Restore", "script": "7154" },
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 2, "z": 60, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_B1F_ULTRA_BALL", "item": "Ultra Ball", "script": "7153" }
+  ],
+  "signs": [
+    { "x": 12, "z": 11, "type": 2, "script": "8070", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_B1F_STAR_PIECE", "range": 2 },
+    { "x": 6, "z": 3, "type": 2, "script": "8069", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_B1F_RARE_CANDY", "range": 2 },
+    { "x": 7, "z": 27, "type": 2, "script": "8068", "item": "Blue Shard", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_B1F_BLUE_SHARD", "range": 2 },
+    { "x": 2, "z": 61, "type": 2, "script": "8067", "item": "Green Shard", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_B1F_GREEN_SHARD", "range": 2 }
+  ],
+  "triggers": []
+}

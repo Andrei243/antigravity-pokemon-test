@@ -1,0 +1,95 @@
+{
+  "key": "mt_coronet_4f_rooms_1_and_2",
+  "index": 212,
+  "name": "Mt. Coronet",
+  "matrix": 14,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_MOUNT1",
+  "nightMusic": "D_MOUNT1",
+  "encounters": "mt_coronet_4f_rooms_1_and_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzong", "level": 37 },
+    { "species": "Graveler", "level": 38 },
+    { "species": "Medicham", "level": 37 },
+    { "species": "Clefairy", "level": 36 },
+    { "species": "Machoke", "level": 39 },
+    { "species": "Medicham", "level": 39 },
+    { "species": "Chingling", "level": 36 },
+    { "species": "Nosepass", "level": 37 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chingling", "level": 38 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chingling", "level": 38 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Zubat", "level": 20, "maxLevel": 30 },
+    { "species": "Zubat", "level": 20, "maxLevel": 30 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Dratini", "level": 15, "maxLevel": 25 },
+    { "species": "Whiscash", "level": 20, "maxLevel": 50 },
+    { "species": "Dragonair", "level": 20, "maxLevel": 40 },
+    { "species": "Dragonair", "level": 35, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 7, "z": 25, "to": "mt_coronet_outside_south", "toWarp": 1 },
+    { "x": 35, "z": 24, "to": "mt_coronet_outside_south", "toWarp": 2 },
+    { "x": 17, "z": 6, "to": "mt_coronet_4f_rooms_1_and_2", "toWarp": 3 },
+    { "x": 59, "z": 6, "to": "mt_coronet_4f_rooms_1_and_2", "toWarp": 2 },
+    { "x": 40, "z": 10, "to": "mt_coronet_outside_north", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "_rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 6, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "_rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 8, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "_rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 5, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "_rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 26, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "_rock_smash_5", "looks": "rock_smash", "movement": "none", "x": 29, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10001" },
+    { "id": "_rock_smash_6", "looks": "rock_smash", "movement": "none", "x": 30, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10001" },
+    { "id": "_galactic_grunt_2", "looks": "grunt_m", "movement": "look_north_and_east", "x": 23, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS", "script": "TRAINER_GALACTIC_GRUNT_MT_CORONET_4F_2" },
+    { "id": "_galactic_grunt_1", "looks": "grunt_m", "movement": "look_west", "x": 10, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "face_sides", "sight": 4, "hiddenBy": "FLAG_HIDE_MT_CORONET_GALACTIC_GRUNTS", "script": "TRAINER_GALACTIC_GRUNT_MT_CORONET_4F_1" },
+    { "id": "item_adamant_orb", "looks": "pokeball", "movement": "none", "x": 57, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_4F_ROOMS_1_AND_2_ADAMANT_ORB", "item": "Adamant Orb", "script": "7037" },
+    { "id": "item_lustrous_orb", "looks": "pokeball", "movement": "none", "x": 61, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_4F_ROOMS_1_AND_2_LUSTROUS_ORB", "item": "Lustrous Orb", "script": "7039" }
+  ],
+  "signs": [
+    { "x": 5, "z": 6, "type": 2, "script": "8093", "item": "Sun Stone", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_SUN_STONE", "range": 2 },
+    { "x": 19, "z": 3, "type": 2, "script": "8094", "item": "Full Heal", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_FULL_HEAL", "range": 2 },
+    { "x": 29, "z": 12, "type": 2, "script": "8095", "item": "Max Revive", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_MAX_REVIVE", "range": 2 },
+    { "x": 26, "z": 18, "type": 2, "script": "8098", "item": "Heal Powder", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_HEAL_POWDER", "range": 2 },
+    { "x": 29, "z": 24, "type": 2, "script": "8097", "item": "Yellow Shard", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_YELLOW_SHARD", "range": 2 },
+    { "x": 38, "z": 14, "type": 2, "script": "8096", "item": "Stardust", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_STARDUST", "range": 2 },
+    { "x": 59, "z": 3, "type": 2, "script": "8099", "item": "Stone Plate", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_STONE_PLATE", "range": 0 },
+    { "x": 37, "z": 9, "type": 2, "script": "8261", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOMS_1_AND_2_ULTRA_BALL", "range": 2 }
+  ],
+  "triggers": []
+}

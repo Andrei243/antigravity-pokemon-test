@@ -1,0 +1,46 @@
+{
+  "key": "snowpoint_city",
+  "index": 165,
+  "name": "Snowpoint City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "SnowpointCity",
+  "camera": "Default",
+  "battleBackground": "Snow",
+  "dayMusic": "CITY09_D",
+  "nightMusic": "CITY09_N",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 353, "z": 208, "to": "snowpoint_city_west_house", "toWarp": 0 },
+    { "x": 379, "z": 208, "to": "snowpoint_city_east_house", "toWarp": 0 },
+    { "x": 366, "z": 197, "to": "snowpoint_temple_1f", "toWarp": 0 },
+    { "x": 353, "z": 232, "to": "snowpoint_city_mart", "toWarp": 0 },
+    { "x": 379, "z": 233, "to": "snowpoint_city_pokecenter_1f", "toWarp": 0 },
+    { "x": 367, "z": 222, "to": "snowpoint_city_gym", "toWarp": 0 },
+    { "x": 367, "z": 197, "to": "snowpoint_temple_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ace_trainer_snow_f", "looks": "ace_trainer_snow_f", "movement": "wander_around", "x": 365, "z": 243, "facing": 1, "rangeX": 2, "rangeZ": 0, "y": 7, "script": "5" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 360, "z": 240, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "10" },
+    { "id": "gym_signpost", "looks": "gym_signpost", "movement": "none", "x": 363, "z": 222, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "snowpoint_npc_m", "looks": "snowpoint_npc_m", "movement": "wander_around", "x": 361, "z": 216, "facing": 3, "rangeX": 1, "rangeZ": 1, "y": 7, "script": "8" },
+    { "id": "snowpoint_npc_f_1", "looks": "snowpoint_npc_f", "movement": "wander_around", "x": 376, "z": 211, "facing": 1, "rangeX": 1, "rangeZ": 1, "y": 7, "script": "6" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_north_and_south", "x": 373, "z": 228, "facing": 0, "rangeX": 0, "rangeZ": 1, "y": 7, "script": "9" },
+    { "id": "temple_guard", "looks": "ace_trainer_snow_f", "movement": "look_south", "x": 367, "z": 198, "facing": 1, "rangeX": 2, "rangeZ": 0, "y": 7, "script": "2" },
+    { "id": "candice", "looks": "candice", "movement": "look_north", "x": 366, "z": 208, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_SNOWPOINT_CITY_CANDICE", "script": "4" },
+    { "id": "sailor_ss_spiral", "looks": "sailor", "movement": "none", "x": 356, "z": 247, "facing": 0, "rangeX": 2, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_SNOWPOINT_CITY_SAILOR_SS_SPIRAL", "script": "12" },
+    { "id": "snowpoint_npc_f_2", "looks": "snowpoint_npc_f", "movement": "look_north_south_and_east", "x": 355, "z": 221, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 7, "script": "7" },
+    { "id": "cynthia", "looks": "cynthia", "movement": "look_south", "x": 366, "z": 241, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA", "script": "0" },
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 372, "z": 245, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SNOWPOINT_CITY_ULTRA_BALL", "item": "Ultra Ball", "script": "7310" }
+  ],
+  "signs": [
+    { "x": 381, "z": 220, "type": 2, "script": "8178", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_SNOWPOINT_CITY_RARE_CANDY", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 366, "z": 198, "width": 1, "depth": 1, "script": "3", "variable": "VAR_SNOWPOINT_CITY_STATE", "value": "0" }
+  ]
+}

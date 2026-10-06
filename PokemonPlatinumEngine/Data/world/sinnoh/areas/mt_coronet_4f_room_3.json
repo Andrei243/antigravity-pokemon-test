@@ -1,0 +1,42 @@
+{
+  "key": "mt_coronet_4f_room_3",
+  "index": 213,
+  "name": "Mt. Coronet",
+  "matrix": 15,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_MOUNT1",
+  "nightMusic": "D_MOUNT1",
+  "encounters": "mt_coronet_4f_room_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzong", "level": 37 },
+    { "species": "Graveler", "level": 38 },
+    { "species": "Medicham", "level": 37 },
+    { "species": "Clefairy", "level": 36 },
+    { "species": "Machoke", "level": 39 },
+    { "species": "Medicham", "level": 39 },
+    { "species": "Chingling", "level": 36 },
+    { "species": "Nosepass", "level": 37 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chingling", "level": 38 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chimecho", "level": 39 }
+  ],
+  "landRate": 15,
+  "warps": [
+    { "x": 2, "z": 3, "to": "mt_coronet_outside_north", "toWarp": 1 },
+    { "x": 18, "z": 8, "to": "mt_coronet_5f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 11, "z": 8, "type": 2, "script": "8100", "item": "Max Elixir", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_4F_ROOM_3_MAX_ELIXIR", "range": 2 }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,60 @@
+{
+  "key": "route_216",
+  "index": 383,
+  "name": "Route 216",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Route216",
+  "camera": "Default",
+  "battleBackground": "Snow",
+  "dayMusic": "ROAD_SNOW_D",
+  "nightMusic": "ROAD_SNOW_N",
+  "encounters": "route_216",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Snover", "level": 32 },
+    { "species": "Sneasel", "level": 33 },
+    { "species": "Meditite", "level": 32 },
+    { "species": "Snover", "level": 33 },
+    { "species": "Meditite", "level": 33 },
+    { "species": "Sneasel", "level": 34 },
+    { "species": "Snover", "level": 34 },
+    { "species": "Sneasel", "level": 35 },
+    { "species": "Graveler", "level": 35 },
+    { "species": "Snover", "level": 35 },
+    { "species": "Graveler", "level": 35 },
+    { "species": "Snover", "level": 35 }
+  ],
+  "landRate": 30,
+  "warps": [
+    { "x": 375, "z": 403, "to": "mt_coronet_1f_north_room_2", "toWarp": 1 },
+    { "x": 303, "z": 398, "to": "route_216_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ace_trainer_blake", "looks": "ace_trainer_snow_m", "movement": "look_south", "x": 355, "z": 402, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_BLAKE" },
+    { "id": "ace_trainer_laura", "looks": "ace_trainer_snow_f", "movement": "look_north", "x": 328, "z": 405, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_LAURA" },
+    { "id": "black_belt_philip", "looks": "black_belt", "movement": "look_north_and_east", "x": 337, "z": 392, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BLACK_BELT_PHILIP" },
+    { "id": "skier_bradley", "looks": "skier_m", "movement": "walk_back_and_forth", "x": 350, "z": 392, "facing": 2, "rangeX": 7, "rangeZ": 0, "trainer": "spin_counterclockwise", "sight": 2, "script": "TRAINER_SKIER_BRADLEY" },
+    { "id": "ace_trainer_garrett", "looks": "ace_trainer_snow_m", "movement": "look_north_and_south", "x": 299, "z": 394, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_GARRETT" },
+    { "id": "ace_trainer_maria", "looks": "ace_trainer_snow_f", "movement": "look_north_and_west", "x": 344, "z": 411, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_MARIA" },
+    { "id": "skier_kaitlyn", "looks": "skier_f", "movement": "walk_south_east_north_west", "x": 342, "z": 385, "facing": 3, "rangeX": 12, "rangeZ": 4, "trainer": "normal", "sight": 2, "script": "TRAINER_SKIER_KAITLYN" },
+    { "id": "skier_edward", "looks": "skier_m", "movement": "walk_south_east_north_west", "x": 311, "z": 402, "facing": 1, "rangeX": 4, "rangeZ": 2, "trainer": "normal", "sight": 1, "script": "TRAINER_SKIER_EDWARD" },
+    { "id": "skier_andrea", "looks": "skier_f", "movement": "walk_east_south_west_north", "x": 366, "z": 391, "facing": 3, "rangeX": 7, "rangeZ": 4, "trainer": "normal", "sight": 2, "script": "TRAINER_SKIER_ANDREA" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 375, "z": 402, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "signboard_snowbound_lodge", "looks": "signboard", "movement": "none", "x": 305, "z": 399, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "item_tm13", "looks": "pokeball", "movement": "none", "x": 377, "z": 392, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_216_TM13", "item": "TM13", "script": "7157" },
+    { "id": "item_full_heal", "looks": "pokeball", "movement": "none", "x": 342, "z": 396, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_216_FULL_HEAL", "item": "Full Heal", "script": "7159" },
+    { "id": "item_mental_herb", "looks": "pokeball", "movement": "none", "x": 358, "z": 389, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_216_MENTAL_HERB", "item": "Mental Herb", "script": "7158" },
+    { "id": "item_hp_up", "looks": "pokeball", "movement": "none", "x": 367, "z": 386, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_216_HP_UP", "item": "HP Up", "script": "7246" },
+    { "id": "item_max_potion", "looks": "pokeball", "movement": "none", "x": 369, "z": 397, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_216_MAX_POTION", "item": "Max Potion", "script": "7290" },
+    { "id": "item_revive", "looks": "pokeball", "movement": "none", "x": 331, "z": 411, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_216_REVIVE", "item": "Revive", "script": "7291" }
+  ],
+  "signs": [
+    { "x": 357, "z": 409, "type": 2, "script": "8071", "item": "PP Up", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_216_PP_UP", "range": 2 }
+  ],
+  "triggers": []
+}

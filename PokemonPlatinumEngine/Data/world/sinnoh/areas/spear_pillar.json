@@ -1,0 +1,34 @@
+{
+  "key": "spear_pillar",
+  "index": 220,
+  "name": "Spear Pillar",
+  "matrix": 22,
+  "kind": "Outdoors",
+  "sign": "Cave",
+  "weather": "Clear13",
+  "camera": "SpearPillar",
+  "battleBackground": "Mountain",
+  "dayMusic": "D_MOUNT2",
+  "nightMusic": "D_MOUNT2",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 31, "z": 53, "to": "mt_coronet_6f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "grunt_f", "looks": "grunt_f", "movement": "look_south", "x": 30, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_GRUNTS", "script": "6" },
+    { "id": "cyrus", "looks": "cyrus", "movement": "look_north", "x": 31, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_CYRUS", "script": "1" },
+    { "id": "mars", "looks": "mars", "movement": "look_south", "x": 33, "z": 32, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_MARS_JUPITER", "script": "8" },
+    { "id": "grunt_m", "looks": "grunt_m", "movement": "look_south", "x": 32, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_GRUNTS", "script": "6" },
+    { "id": "jupiter", "looks": "jupiter", "movement": "look_south", "x": 29, "z": 32, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_MARS_JUPITER", "script": "7" },
+    { "id": "rival", "looks": "barry", "movement": "none", "x": 30, "z": 35, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SPEAR_PILLAR_RIVAL", "script": "1" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 31, "z": 48, "width": 1, "depth": 1, "script": "3", "variable": "VAR_SPEAR_PILLAR_STATE", "value": "0" },
+    { "x": 30, "z": 32, "width": 3, "depth": 1, "script": "5", "variable": "VAR_SPEAR_PILLAR_STATE", "value": "1" },
+    { "x": 31, "z": 52, "width": 1, "depth": 1, "script": "2039", "variable": "VAR_HALL_OF_ORIGIN_STATE", "value": "1" }
+  ]
+}

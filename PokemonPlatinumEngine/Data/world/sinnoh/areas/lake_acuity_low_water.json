@@ -1,0 +1,27 @@
+{
+  "key": "lake_acuity_low_water",
+  "index": 317,
+  "name": "Lake Acuity",
+  "matrix": 107,
+  "kind": "Cave",
+  "sign": "Lake",
+  "weather": "Clear",
+  "camera": "LakeAcuity",
+  "battleBackground": "Snow",
+  "dayMusic": "D_LAKE",
+  "nightMusic": "D_LAKE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 14, "z": 50, "to": "acuity_lakefront", "toWarp": 0 },
+    { "x": 15, "z": 50, "to": "acuity_lakefront", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rival", "looks": "barry", "movement": "look_north_and_east", "x": 16, "z": 46, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_ACUITY_LOW_WATER_RIVAL", "script": "1" },
+    { "id": "item_tm14", "looks": "pokeball", "movement": "none", "x": 38, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_LAKE_ACUITY_TM14", "item": "TM14", "script": "7241" }
+  ],
+  "signs": [],
+  "triggers": []
+}
