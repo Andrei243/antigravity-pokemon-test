@@ -1743,4 +1743,8 @@ internal static partial class PokemonModels
     private static PokeBuilder EelektrossMega() => EelektrossBuild(true);
 
     private static PokeBuilder ChandelureMega() => ChandelureBuild(true);
+
+    // ------------------------------------------------------------------ Mega Golurk (its build in PokemonModels.Unova4.cs)
+
+    private static PokeBuilder GolurkMega() => GolurkBuild(true);
 }

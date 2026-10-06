@@ -600,14 +600,18 @@ internal static partial class PokemonModels
         "Minccino", "Cinccino", "Gothita", "Gothorita", "Gothitelle", "Solosis", "Duosion", "Reuniclus", "Ducklett", "Swanna", "Vanillite",
         "Vanillish", "Vanilluxe", "Deerling", "Sawsbuck", "Emolga", "Karrablast", "Escavalier", "Foongus", "Amoonguss", "Frillish", "Jellicent",
         "Alomomola", "Joltik", "Galvantula", "Ferroseed", "Ferrothorn", "Klink", "Klang", "Klinklang", "Tynamo", "Eelektrik", "Eelektross",
-        "Elgyem", "Beheeyem", "Litwick", "Lampent", "Chandelure"
+        "Elgyem", "Beheeyem", "Litwick", "Lampent", "Chandelure",
+        // Unova's fourth batch, Axew to Genesect
+        "Axew", "Fraxure", "Haxorus", "Cubchoo", "Beartic", "Cryogonal", "Shelmet", "Accelgor", "Stunfisk", "Mienfoo", "Mienshao", "Druddigon", "Golett", "Golurk", "Pawniard", "Bisharp", "Bouffalant",
+        "Rufflet", "Braviary", "Vullaby", "Mandibuzz", "Heatmor", "Durant", "Deino", "Zweilous", "Hydreigon", "Larvesta", "Volcarona",
+        "Cobalion", "Terrakion", "Virizion", "Tornadus", "Thundurus", "Reshiram", "Zekrom", "Landorus", "Kyurem", "Keldeo", "Meloetta", "Genesect"
     };
 
     /// <summary>
     /// Forms with a hand-built model of their own: every form of a hand-built species, Platinum's own (Rotom's
     /// appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters, Castform's
     /// weathers, Deoxys's formes) and the later games' (the regional forms, Dialga's and Palkia's Origin Formes, Basculin's
-    /// stripes, Darmanitan's Zen Modes, Deerling's and Sawsbuck's seasons, the female Frillish and Jellicent, the Megas, the Primal Kyogre and Groudon, the Gigantamax forms, Pikachu's caps and
+    /// stripes, Darmanitan's Zen Modes, Deerling's and Sawsbuck's seasons, the female Frillish and Jellicent, the Therian Formes, Kyurem's fusions, Keldeo's Resolute Form, Meloetta's Pirouette Forme, Genesect's drives, the Megas, the Primal Kyogre and Groudon, the Gigantamax forms, Pikachu's caps and
     /// costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner Pikachu
     /// and Eevee) show its model.
     /// </summary>
@@ -629,14 +633,16 @@ internal static partial class PokemonModels
         "Lilligant-Hisui", "Basculin-Blue-Striped", "Basculin-White-Striped", "Darumaka-Galar", "Darmanitan-Zen",
         "Darmanitan-Galar-Standard", "Darmanitan-Galar-Zen", "Yamask-Galar", "Zorua-Hisui", "Zoroark-Hisui",
         "Deerling-Summer", "Deerling-Autumn", "Deerling-Winter", "Sawsbuck-Summer", "Sawsbuck-Autumn", "Sawsbuck-Winter",
-        "Frillish-Female", "Jellicent-Female",
+        "Frillish-Female", "Jellicent-Female", "Stunfisk-Galar", "Braviary-Hisui", "Tornadus-Therian", "Thundurus-Therian",
+        "Landorus-Therian", "Kyurem-White", "Kyurem-Black", "Keldeo-Resolute", "Meloetta-Pirouette", "Genesect-Douse", "Genesect-Shock",
+        "Genesect-Burn", "Genesect-Chill",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
         "Mewtwo-Mega-Y", "Meganium-Mega", "Feraligatr-Mega", "Ampharos-Mega", "Steelix-Mega", "Scizor-Mega", "Heracross-Mega", "Skarmory-Mega", "Houndoom-Mega", "Tyranitar-Mega", "Sceptile-Mega", "Blaziken-Mega", "Swampert-Mega", "Gardevoir-Mega", "Sableye-Mega", "Mawile-Mega", "Aggron-Mega",
         "Medicham-Mega", "Manectric-Mega", "Sharpedo-Mega", "Camerupt-Mega", "Altaria-Mega", "Banette-Mega", "Chimecho-Mega", "Absol-Mega", "Absol-Mega-Z", "Glalie-Mega", "Salamence-Mega", "Metagross-Mega", "Latias-Mega", "Latios-Mega", "Kyogre-Primal", "Groudon-Primal",
         "Rayquaza-Mega", "Staraptor-Mega", "Lopunny-Mega",
-        "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega", "Emboar-Mega", "Excadrill-Mega", "Audino-Mega", "Scolipede-Mega", "Scrafty-Mega", "Eelektross-Mega", "Chandelure-Mega",
+        "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega", "Emboar-Mega", "Excadrill-Mega", "Audino-Mega", "Scolipede-Mega", "Scrafty-Mega", "Eelektross-Mega", "Chandelure-Mega", "Golurk-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
@@ -1336,6 +1342,47 @@ internal static partial class PokemonModels
         "LITWICK" => Litwick(),
         "LAMPENT" => Lampent(),
         "CHANDELURE" => Chandelure(),
+        // Unova's fourth batch (PokemonModels.Unova4.cs)
+        "AXEW" => Axew(),
+        "FRAXURE" => Fraxure(),
+        "HAXORUS" => Haxorus(),
+        "CUBCHOO" => Cubchoo(),
+        "BEARTIC" => Beartic(),
+        "CRYOGONAL" => Cryogonal(),
+        "SHELMET" => Shelmet(),
+        "ACCELGOR" => Accelgor(),
+        "STUNFISK" => Stunfisk(),
+        "MIENFOO" => Mienfoo(),
+        "MIENSHAO" => Mienshao(),
+        "DRUDDIGON" => Druddigon(),
+        "GOLETT" => Golett(),
+        "GOLURK" => Golurk(),
+        "PAWNIARD" => Pawniard(),
+        "BISHARP" => Bisharp(),
+        "BOUFFALANT" => Bouffalant(),
+        "RUFFLET" => Rufflet(),
+        "BRAVIARY" => Braviary(),
+        "VULLABY" => Vullaby(),
+        "MANDIBUZZ" => Mandibuzz(),
+        "HEATMOR" => Heatmor(),
+        "DURANT" => Durant(),
+        "DEINO" => Deino(),
+        "ZWEILOUS" => Zweilous(),
+        "HYDREIGON" => Hydreigon(),
+        "LARVESTA" => Larvesta(),
+        "VOLCARONA" => Volcarona(),
+        "COBALION" => Cobalion(),
+        "TERRAKION" => Terrakion(),
+        "VIRIZION" => Virizion(),
+        "TORNADUS" => Tornadus(),
+        "THUNDURUS" => Thundurus(),
+        "RESHIRAM" => Reshiram(),
+        "ZEKROM" => Zekrom(),
+        "LANDORUS" => Landorus(),
+        "KYUREM" => Kyurem(),
+        "KELDEO" => Keldeo(),
+        "MELOETTA" => Meloetta(),
+        "GENESECT" => Genesect(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1424,6 +1471,19 @@ internal static partial class PokemonModels
         "SAWSBUCK-WINTER" => SawsbuckWinter(),
         "FRILLISH-FEMALE" => FrillishFemale(),
         "JELLICENT-FEMALE" => JellicentFemale(),
+        "STUNFISK-GALAR" => StunfiskGalar(),
+        "BRAVIARY-HISUI" => BraviaryHisui(),
+        "TORNADUS-THERIAN" => TornadusTherian(),
+        "THUNDURUS-THERIAN" => ThundurusTherian(),
+        "LANDORUS-THERIAN" => LandorusTherian(),
+        "KYUREM-WHITE" => KyuremWhite(),
+        "KYUREM-BLACK" => KyuremBlack(),
+        "KELDEO-RESOLUTE" => KeldeoResolute(),
+        "MELOETTA-PIROUETTE" => MeloettaPirouette(),
+        "GENESECT-DOUSE" => GenesectDouse(),
+        "GENESECT-SHOCK" => GenesectShock(),
+        "GENESECT-BURN" => GenesectBurn(),
+        "GENESECT-CHILL" => GenesectChill(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
@@ -1495,6 +1555,7 @@ internal static partial class PokemonModels
         "SCRAFTY-MEGA" => ScraftyMega(),
         "EELEKTROSS-MEGA" => EelektrossMega(),
         "CHANDELURE-MEGA" => ChandelureMega(),
+        "GOLURK-MEGA" => GolurkMega(),
         // Gigantamax (PokemonModels.Gigantamax.cs), and Pikachu's caps and costumes and the spiky-eared Pichu (PokemonModels.Pikachu.cs)
         "VENUSAUR-GMAX" => VenusaurGmax(),
         "CHARIZARD-GMAX" => CharizardGmax(),
