@@ -757,7 +757,7 @@ public class StoryTests
 
             Assert.Equal(ball.ItemCount, host.Bag.GetQuantity(ItemDatabase.Get(ball.Item!)!));
             Assert.True(host.Story.Has(ball.HiddenBy!));
-            Assert.Contains($"fanfare {MusicRole.FanfareItem}", host.Log);
+            Assert.Contains($"fanfare {ScriptRunner.FanfareFor(ItemDatabase.Get(ball.Item!)!)}", host.Log);
             Assert.StartsWith($"{host.PlayerName} found ", host.Transcript[0].Text);
 
             // The flag is what takes it off the map: nothing stands there any more, now or after a save is loaded
@@ -1024,7 +1024,8 @@ public class StoryTests
         runner.RunToEnd();
         Assert.Equal(1, right.Bag.GetQuantity(item));
         Assert.True(right.Story.Has(flag));
-        Assert.Contains($"fanfare {MusicRole.FanfareItem}", right.Log);
+        // A coupon is a key item, received to the key item's fanfare
+        Assert.Contains($"fanfare {MusicRole.FanfareKeyItem}", right.Log);
         Assert.Equal("Clown", right.Transcript[0].Speaker);
 
         // Afterwards the clown only talks: no second coupon

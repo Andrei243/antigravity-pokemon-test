@@ -447,6 +447,7 @@ public partial class GameEngine
                         newGameRules = titleScreen.Rules;
                         currentState = GameState.Intro;
                         introScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed));
+                        AudioManager.PlayMusic(MusicRole.Introduction);
                         break;
                     case TitleChoice.Options:
                         optionsReturnState = GameState.Title;
@@ -781,8 +782,8 @@ public partial class GameEngine
         }
         if (BeginNextEvolution()) return;
 
-        if (evolutionReturnState == GameState.Overworld) StartTransition(GameState.Overworld, () => PlayAreaMusic(currentMap, player.GridX, player.GridY));
-        else StartTransition(evolutionReturnState);
+        // The evolution's theme gives way to the field's again, wherever the scene goes back to
+        StartTransition(evolutionReturnState, PlayFieldMusic);
     }
 
     /// <summary>

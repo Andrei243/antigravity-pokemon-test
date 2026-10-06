@@ -1,0 +1,18 @@
+# A key item received: a short, glittering call that something important has changed hands.
+# Plays once, then the music comes back. Original composition for this game.
+title Key Item Obtained
+tempo 132
+meter 4/4
+reverb 0.42
+
+track lead trumpet vol=0.85 rev=0.32
+  o5 a8. a16 o6 d8. e16 f+4 a4 | o6 g8. a16 b8. a16 g4 d4 | o6 a4 c+4 d2 |
+
+track sparkle celesta vol=0.42 pan=0.35 rev=0.5
+  [ o6 d16 f+16 a16 f+16 ]4 | [ o6 d16 g16 b16 g16 ]4 | [ o6 c+16 e16 a16 e16 ]2 [ o6 d16 f+16 a16 f+16 ]2 |
+
+track chords strings vol=0.42 pan=-0.3 rev=0.45
+  o4 (d f+ a)1 | (d g b)1 | (c+ e a)2 (d f+ a)2 |
+
+track bass contrabass vol=0.6 rev=0.2
+  o3 d1 | g1 | a2 d2 |

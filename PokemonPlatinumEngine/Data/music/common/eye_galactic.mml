@@ -1,0 +1,25 @@
+# A Team Galactic grunt's eyes meet the player's: a cold, menacing synth march in C minor.
+# Platinum's role SEQ_EYE_GINGA (Galactic Grunts and Commanders). Original composition for this game.
+title Eyes Meet! Team Galactic
+tempo 152
+meter 4/4
+reverb 0.22
+
+track lead sawlead vol=0.7 pan=0 rev=0.2
+  L o5 c8 c8 e-8 c8 g8 c8 f8 e-8 | o5 g8 g8 b-8 g8 o6 c8 o5 g8 f8 e-8 | o5 a-8 a-8 o6 c8 o5 a-8 o6 e-8 o5 a-8 o6 c8 o5 a-8 | o5 g8 g8 b8 g8 o6 d8 o5 b8 g8 b8 |
+  o6 c4 e-4 g8 f8 e-4 | o6 e-4 c4 o5 g2 | o6 c4 e-4 a-4 e-4 | o6 d4 o5 b4 g2 |
+
+track arps pulse vol=0.32 pan=0.35 rev=0.15
+  L o4 [ c16 e-16 g16 e-16 ]4 | [ c16 e-16 g16 e-16 ]4 | [ c16 e-16 a-16 e-16 ]4 | [ d16 g16 b16 g16 ]4 |
+  [ c16 e-16 g16 e-16 ]4 | [ c16 e-16 g16 e-16 ]4 | [ c16 e-16 a-16 e-16 ]4 | [ d16 g16 b16 g16 ]4 |
+
+track pad pad vol=0.32 pan=-0.3 rev=0.4
+  L o4 (c e- g)1 | (c e- g)1 | (c e- a-)1 | (d g b)1 |
+  (c e- g)1 | (c e- g)1 | (c e- a-)1 | (d g b)1 |
+
+track bass synthbass vol=0.72 rev=0.05
+  L o3 [ c8 ]8 | [ c8 ]8 | [ a-8 ]8 | [ g8 ]8 |
+  [ c8 ]8 | [ c8 ]8 | [ a-8 ]8 | [ g8 ]8 |
+
+track drums kit vol=0.52 rev=0.1
+  v100 L [ b8 h8 (s x)8 h8 b8 b8 (s x)8 h8 | ]8

@@ -23,13 +23,17 @@ A battle theme has a **low-HP arrangement** as well, switched on and off in the 
 
 ```
 Data/music/
-  common/      title, pokecenter, surf, bicycle, eye_boy, eye_girl, battle_wild, battle_trainer, battle_gym,
-               victory_wild, victory_trainer, fanfare_heal, fanfare_item, fanfare_levelup, fanfare_pokemon
+  common/      title, intro, pokecenter, pokemart, rival, evolution, surf, bicycle,
+               eye_boy, eye_girl, eye_kid, eye_lady, eye_rich, eye_mountain, eye_fighter, eye_sport, eye_fun,
+               eye_mystery, eye_sailor, eye_galactic, eye_ace, eye_elite_four, eye_champion,
+               battle_wild, battle_trainer, battle_gym, battle_rival, victory_wild, victory_trainer,
+               fanfare_heal, fanfare_item, fanfare_levelup, fanfare_pokemon, fanfare_evolution,
+               fanfare_badge, fanfare_tm, fanfare_keyitem
   kanto/       pallet, battle_wild
   sinnoh/      twinleaf, route201, route202 (Routes 202–204), sandgem, jubilife, lake, lab
 ```
 
-A region gets its own version of a shared theme by adding a file with the role's name to its folder (`johto/battle_wild.mml`). Role file names are in `MusicDirector.FileName`, and a role without a file falls back to a more general one (`MusicDirector.Fallback`): every eye theme to `eye_boy` (the lady's and the rich one's through `eye_girl`), the Galactic, rival and gym battles to `battle_trainer`, the Elite Four's and the Champion's to `battle_gym`, a legendary's to `battle_wild`. The thirteen other eye themes, the Galactic, Elite Four, Champion and legendary battles and their victories are files still to write (A5, A6). `MusicTests` checks that every map's song exists, that every role resolves in every region, and that every song renders without clipping.
+A region gets its own version of a shared theme by adding a file with the role's name to its folder (`johto/battle_wild.mml`). Role file names are in `MusicDirector.FileName`, and a role without a file falls back to a more general one (`MusicDirector.Fallback`): every eye theme to `eye_boy` (the lady's and the rich one's through `eye_girl`), the Galactic, rival and gym battles to `battle_trainer`, the Elite Four's and the Champion's to `battle_gym`, a legendary's to `battle_wild`. Since A5 every eye theme has its own file (the fallbacks are kept for a region that brings only some of its own); the Galactic, Elite Four, Champion and legendary battles and the gym's victory are files still to write (A6). The introduction plays over the professor's welcome (`MusicRole.Introduction`), the evolution theme over the evolution scene and its fanfare at the end (the field's music comes back after, `GameEngine.FinishEvolution`), the rival's when a script calls it (Barry in Twinleaf Town), and an item is received to the fanfare of its kind (`ScriptRunner.FanfareFor`: a TM's, a key item's, or the item's), a badge to the badge's. `MusicTests` checks that every map's song exists, that every role resolves in every region, and that every song renders without clipping.
 
 ## The format
 

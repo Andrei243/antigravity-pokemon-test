@@ -1,0 +1,27 @@
+# The rival bursts in: an impatient, breathless chase of a tune, always a step ahead of itself.
+# Platinum's role SEQ_THE_RIV (Barry's theme). Original composition for this game.
+title Rival Appears!
+tempo 168
+meter 4/4
+reverb 0.2
+
+track lead square vol=0.62 pan=0 rev=0.18
+  L o5 d16 e16 f+8 a8 f+8 o6 d8 o5 a8 f+8 a8 | o6 d8 e8 f+8 d8 o5 a4 f+4 | o5 g16 a16 b8 o6 d8 o5 b8 o6 g8 d8 o5 b8 o6 d8 | o6 c+8 d8 e8 c+8 o5 a4 e4 |
+  o6 f+8 e8 d8 o5 a8 f+8 a8 o6 d8 f+8 | o6 f+8 d8 o5 b8 o6 d8 f+8 b8 a8 f+8 | o6 g8 f+8 e8 d8 o5 b8 o6 d8 g8 b8 | o6 a8 g8 e8 c+8 o5 a8 o6 c+8 e8 g8 |
+  o6 d4 o5 b8 o6 d8 g4 d4 | o6 e4 c+8 e8 a4 e4 | o6 c+4 o5 a8 o6 c+8 f+4 e4 | o6 d4 o5 b8 o6 d8 f+4 d4 |
+  o6 g8 f+8 g8 a8 b4 g4 | o6 a8 g8 a8 b8 o7 c+4 o6 a4 | o7 d4 o6 a4 f+4 a4 | o7 d8 r8 o6 d8 r8 d4 r4 |
+
+track stabs brass vol=0.5 pan=-0.25 rev=0.2
+  L o4 (d f+ a)8 r8 r8 (d f+ a)8 r2 | (d f+ a)8 r8 r8 (d f+ a)8 r2 | (d g b)8 r8 r8 (d g b)8 r2 | (c+ e a)8 r8 r8 (c+ e a)8 r2 |
+  (d f+ a)8 r8 r8 (d f+ a)8 r2 | (d f+ b)8 r8 r8 (d f+ b)8 r2 | (d g b)8 r8 r8 (d g b)8 r2 | (c+ e a)8 r8 r8 (c+ e a)8 r2 |
+  (d g b)8 r8 r8 (d g b)8 r2 | (c+ e a)8 r8 r8 (c+ e a)8 r2 | (c+ f+ a)8 r8 r8 (c+ f+ a)8 r2 | (d f+ b)8 r8 r8 (d f+ b)8 r2 |
+  (d g b)8 r8 r8 (d g b)8 r2 | (c+ e a)8 r8 r8 (c+ e a)8 r2 | (d f+ a)8 r8 r8 (d f+ a)8 r2 | (d f+ a)8 r8 r8 (d f+ a)8 r2 |
+
+track bass synthbass vol=0.7 rev=0.05
+  L [ o3 d8 d8 o4 d8 o3 d8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 a8 a8 o4 a8 o3 a8 ]2 |
+  [ o3 d8 d8 o4 d8 o3 d8 ]2 | [ o3 b8 b8 o4 b8 o3 b8 ]2 | [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 a8 a8 o4 a8 o3 a8 ]2 |
+  [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 a8 a8 o4 a8 o3 a8 ]2 | [ o3 f+8 f+8 o4 f+8 o3 f+8 ]2 | [ o3 b8 b8 o4 b8 o3 b8 ]2 |
+  [ o3 g8 g8 o4 g8 o3 g8 ]2 | [ o3 a8 a8 o4 a8 o3 a8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 | o3 d8 r8 d8 r8 d4 r4 |
+
+track drums kit vol=0.52 rev=0.1
+  v100 L [ b8 h8 s8 h8 b8 b8 s8 h8 | ]15 b8 r8 b8 r8 (b c)4 r4 |

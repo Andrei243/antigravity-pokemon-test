@@ -1,0 +1,21 @@
+# A hiker's eyes meet the player's: a hearty oom-pah on accordion and tuba.
+# Platinum's role SEQ_EYE_MOUNT (Hiker, Ruin Maniac, Rancher, Cowgirl). Original composition for this game.
+title Eyes Meet! Mountain
+tempo 120
+meter 4/4
+reverb 0.26
+
+track lead accordion vol=0.8 pan=-0.05 rev=0.25
+  L o5 g4 b8 a8 g4 d4 | o5 e4 g8 a8 g4 e4 | o5 f+4 a8 b8 a4 f+4 | o5 g2 d2 |
+  o5 g4 b8 o6 d8 o5 b4 g4 | o6 c4 e8 d8 c4 o5 g4 | o5 a4 o6 c8 o5 a8 f+4 d4 | o5 g2. r4 |
+
+track strum guitar vol=0.5 pan=0.3 rev=0.25
+  L o4 r4 (g b >d)4 r4 (g b >d)4 | r4 (c e g)4 r4 (c e g)4 | r4 (d f+ a)4 r4 (d f+ a)4 | r4 (g b >d)4 r4 (g b >d)4 |
+  r4 (g b >d)4 r4 (g b >d)4 | r4 (c e g)4 r4 (c e g)4 | r4 (c d f+ a)4 r4 (c d f+ a)4 | r4 (g b >d)4 r4 r4 |
+
+track bass tuba vol=0.68 rev=0.1
+  L o4 g4 r4 d4 r4 | c4 r4 g4 r4 | d4 r4 a4 r4 | g4 r4 d4 r4 |
+  g4 r4 d4 r4 | c4 r4 g4 r4 | d4 r4 a4 r4 | g4 r4 d4 g4 |
+
+track drums kit vol=0.48 rev=0.12
+  v90 L [ b4 s4 b4 s4 | b4 s4 b8 b8 s4 | ]4

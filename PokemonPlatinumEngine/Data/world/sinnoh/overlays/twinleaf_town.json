@@ -41,6 +41,7 @@
     {
       "name": "Barry",
       "npcType": "Rival",
+      "script": "Barry",
       "x": 109,
       "y": 880,
       "facing": "Right",

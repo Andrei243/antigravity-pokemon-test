@@ -541,7 +541,9 @@ public class ScriptTests
             "Ana found 3 × Poké Ball!", "Ana put them away in the Poké Balls pocket.",
             "Ana found the TM70!", "TM70 holds the move Flash.", "Ana put it away in the TMs & HMs pocket."
         }, Said(host));
-        Assert.Equal(3, host.Log.Count(l => l == $"fanfare {MusicRole.FanfareItem}"));
+        // A TM is received to its own fanfare
+        Assert.Equal(2, host.Log.Count(l => l == $"fanfare {MusicRole.FanfareItem}"));
+        Assert.Equal(1, host.Log.Count(l => l == $"fanfare {MusicRole.FanfareTM}"));
         Assert.Equal(3, host.Bag.GetQuantity(ItemDatabase.Get("Poké Ball")!));
     }
 

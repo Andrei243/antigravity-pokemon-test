@@ -167,7 +167,7 @@ What an `if` can ask:
 | Command | |
 |---|---|
 | `music "sinnoh/jubilife"`, `music area`, `music stop` | A song, the place's own theme again, silence. |
-| `fanfare heal` / `item` / `pokemon` / `levelup` | |
+| `fanfare heal` / `item` / `pokemon` / `levelup` / `keyitem` / `tm` / `badge` / `evolution` | `give` and `find` play the fanfare of the item's kind themselves (a TM's, a key item's, or the item's), and `givebadge` the badge's. |
 | `sound "select"` | One of the game's sound effects (`AudioManager.SoundNames`; [`sound-effects.md`](sound-effects.md) lists them). |
 | `cry "Shinx"`, `cry "Giratina-Origin"` | A Pokémon met in the field cries: a species, or a form by its name, with the original's field echo (`CryMode.FieldEvent`). |
 

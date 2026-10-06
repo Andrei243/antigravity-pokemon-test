@@ -1,0 +1,22 @@
+# The Champion turns to face the player: a poignant, sweeping piano line over full strings.
+# Platinum's role SEQ_EYE_CHAMP (the Champion). Original composition for this game.
+title Eyes Meet! Champion
+tempo 104
+meter 4/4
+reverb 0.4
+
+track lead piano vol=0.82 pan=-0.05 rev=0.38
+  L o5 e8 g8 b8 o6 e8 d8 o5 b8 g8 b8 | o6 c8 e8 g8 e8 d8 c8 o5 g8 o6 c8 | o6 c8 e8 a8 e8 c8 e8 o5 a8 o6 c8 | o5 b8 o6 d+8 f+8 d+8 o5 b8 o6 d+8 f+8 a8 |
+  o6 g4 e8 f+8 g4 b4 | o6 g4 e4 c4 e4 | o6 f+4 a4 d4 f+4 | o6 f+2 d+2 |
+
+track strings strings vol=0.45 pan=0.25 rev=0.45
+  L o4 (e g b)1 | (c e g)1 | (c e a)1 | (b >d+ f+)1 |
+  (e g b)1 | (c e g)1 | (d f+ a)1 | (b >d+ f+)1 |
+
+track bass contrabass vol=0.62 rev=0.2
+  L o3 e1 | c1 | a1 | b1 |
+  e1 | c1 | d1 | b1 |
+
+track timpani timpani vol=0.4 rev=0.35
+  L o3 e4 r2. | c4 r2. | a4 r2. | b4 b8 b8 b4 b4 |
+  e4 r2. | c4 r2. | d4 r2. | b4 b8 b8 b4 b4 |

@@ -15,6 +15,12 @@ namespace PokemonPlatinumEngine.Audio;
 public enum MusicRole
 {
     Title,
+    /// <summary>The new-game introduction: the professor's welcome.</summary>
+    Introduction,
+    /// <summary>The rival's own theme, for the scenes where he bursts in.</summary>
+    Rival,
+    /// <summary>The evolution scene.</summary>
+    Evolution,
     Surf,
     Bicycle,
     EyeBoy,
@@ -47,7 +53,11 @@ public enum MusicRole
     FanfareHeal,
     FanfareItem,
     FanfareLevelUp,
-    FanfarePokemon
+    FanfarePokemon,
+    FanfareEvolution,
+    FanfareBadge,
+    FanfareTM,
+    FanfareKeyItem
 }
 
 /// <summary>
@@ -96,6 +106,9 @@ public static class MusicDirector
     public static string FileName(MusicRole role) => role switch
     {
         MusicRole.Title => "title",
+        MusicRole.Introduction => "intro",
+        MusicRole.Rival => "rival",
+        MusicRole.Evolution => "evolution",
         MusicRole.Surf => "surf",
         MusicRole.Bicycle => "bicycle",
         MusicRole.EyeBoy => "eye_boy",
@@ -129,6 +142,10 @@ public static class MusicDirector
         MusicRole.FanfareItem => "fanfare_item",
         MusicRole.FanfareLevelUp => "fanfare_levelup",
         MusicRole.FanfarePokemon => "fanfare_pokemon",
+        MusicRole.FanfareEvolution => "fanfare_evolution",
+        MusicRole.FanfareBadge => "fanfare_badge",
+        MusicRole.FanfareTM => "fanfare_tm",
+        MusicRole.FanfareKeyItem => "fanfare_keyitem",
         _ => throw new ArgumentOutOfRangeException(nameof(role))
     };
 
@@ -149,6 +166,8 @@ public static class MusicDirector
         MusicRole.BattleChampion => MusicRole.BattleEliteFour,
         MusicRole.BattleLegendary => MusicRole.BattleWild,
         MusicRole.VictoryGymLeader => MusicRole.VictoryTrainer,
+        MusicRole.FanfareEvolution => MusicRole.FanfarePokemon,
+        MusicRole.FanfareBadge or MusicRole.FanfareTM or MusicRole.FanfareKeyItem => MusicRole.FanfareItem,
         _ => null
     };
 
