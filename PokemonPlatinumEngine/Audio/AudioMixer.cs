@@ -109,6 +109,8 @@ public sealed class AudioMixer
     /// </summary>
     public void Play(Song song, bool night, bool immediate = false)
     {
+        // A song with one arrangement is the same song at dusk: it carries on
+        night &= song.HasNight;
         lock (gate)
         {
             var current = pending ?? music.Song;

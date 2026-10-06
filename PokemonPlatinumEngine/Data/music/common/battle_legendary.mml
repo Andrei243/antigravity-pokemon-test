@@ -1,0 +1,52 @@
+# Battle against a legendary Pokémon (the original's BA_DPOKE roles): timpani and a rising call, then a vast
+# F-minor theme on brass over a choir. Original composition for this game.
+title Battle! Legendary Pokemon
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.3
+
+track lead brass lowhp=sawlead vol=0.78 pan=0 rev=0.28
+  o4 c4 f4 a-4 o5 c4 | o4 (f a- >c)4 r4 (e g >c)2 |
+  L o5 f2 a-4 g8 f8 | o5 c2 o4 a-4 o5 c4 | o5 d-4. f8 a-4 f4 | o5 g2 e-4 b-4 |
+  o5 a-4. g8 f4 c4 | o5 d-4 f8 b-8 o6 d-4 c8 o5 b-8 | o5 c4 e8 g8 o6 c4 o5 b-4 | o5 e2. r4 |
+  o5 f4. a-8 o6 d-4 c4 | o5 b-4. g8 e-4 g4 | o6 c4 e-4 a-4 g4 | o6 f2 c4 o5 a-4 |
+  o5 b-4 o6 d-8 f8 b-4 a-8 f8 | o6 g2 c4 o5 g4 | o6 d-4 c8 o5 b-8 a-4 f4 | o5 g4 o6 c4 o5 g4 e4 |
+
+track horn horn vol=0.4 pan=-0.2 rev=0.3
+  o3 c4 f4 a-4 o4 c4 | o3 (f a- >c)4 r4 (e g >c)2 |
+  L o4 c1 | f1 | f1 | e-1 |
+  c1 | f1 | e1 | g1 |
+  a-1 | g1 | e-1 | a-1 |
+  f1 | e1 | f1 | e1 |
+
+track choir choir unless=lowhp vol=0.34 pan=0.3 rev=0.45
+  r1 | r1 |
+  L o4 (c f a-)1 | (c f a-)1 | (d- f a-)1 | (e- g b-)1 |
+  (c f a-)1 | (d- f b-)1 | (c e g)1 | (c e g)1 |
+  (d- f a-)1 | (e- g b-)1 | (c e- a-)1 | (c f a-)1 |
+  (d- f b-)1 | (c e g)1 | (d- f a-)1 | (c e g)1 |
+
+track timpani timpani vol=0.42 rev=0.25
+  o3 [ f16 ]16 | f4 r4 c2 |
+  L o3 f4 r4 c4 r4 | f4 r4 c4 r4 | d-4 r4 a-4 r4 | e-4 r4 b-4 r4 |
+  f4 r4 c4 r4 | d-4 r4 f4 r4 | c4 r4 g4 r4 | c4 r4 c8 c8 c4 |
+  d-4 r4 a-4 r4 | e-4 r4 b-4 r4 | a-4 r4 e-4 r4 | f4 r4 c4 r4 |
+  d-4 r4 f4 r4 | c4 r4 g4 r4 | d-4 r4 a-4 r4 | c4 r4 c8 c8 c4 |
+
+track bass synthbass vol=0.7 rev=0.05
+  r1 | o3 f4 r4 c2 |
+  L [ o3 f8 f16 o4 f16 ]4 | [ o3 f8 f16 o4 f16 ]4 | [ o3 d-8 d-16 o4 d-16 ]4 | [ o3 e-8 e-16 o4 e-16 ]4 |
+  [ o3 f8 f16 o4 f16 ]4 | [ o3 d-8 d-16 o4 d-16 ]4 | [ o3 c8 c16 o4 c16 ]4 | [ o3 c8 c16 o4 c16 ]4 |
+  [ o3 d-8 d-16 o4 d-16 ]4 | [ o3 e-8 e-16 o4 e-16 ]4 | [ o3 a-8 a-16 o4 a-16 ]4 | [ o3 f8 f16 o4 f16 ]4 |
+  [ o3 d-8 d-16 o4 d-16 ]4 | [ o3 c8 c16 o4 c16 ]4 | [ o3 d-8 d-16 o4 d-16 ]4 | [ o3 c8 c16 o4 c16 ]4 |
+
+track drums kit vol=0.46 rev=0.15
+  r1 | (b c)4 r4 r2 | v100 L [ (b c)8 b8 s8 b8 b8 b8 s8 b8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 t16 t16 t16 t16 m16 m16 f16 f16 | ]2
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  r1 | r1 | L v65 [ h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 | ]16
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 e-16 r16 e-16 r16 r4 e-16 r16 e-16 r16 r4 | ]16

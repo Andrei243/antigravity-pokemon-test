@@ -1,7 +1,6 @@
 {
   "area": "floaroma_town",
-  // Until plan 05 writes Floaroma's own theme (the original's TOWN03)
-  "bgmTrack": "sinnoh/sandgem",
+  "bgmTrack": "sinnoh/floaroma",
   "trees": "Round",
   "architecture": "Cottage",
   "doors": [

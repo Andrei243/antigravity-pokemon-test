@@ -1,0 +1,37 @@
+# The mines (the original's D_04 role: Oreburgh Mine, Iron Island's tunnels and the Fuego Ironworks' hall):
+# an E-minor work song, a square lead over a chugging bass and the rattle of carts. Original composition for this game.
+title Mine
+tempo 120
+meter 4/4
+reverb 0.3
+night none
+
+track lead square vol=0.62 pan=0 rev=0.3
+  L o5 e4. f+8 g4 e4 | o5 b2 a4 g4 | o5 g4. e8 c4 e4 | o5 f+2. r4 |
+  o5 e4. f+8 g4 b4 | o6 e2 d4 o5 b4 | o5 c4. e8 g4 o6 c4 | o5 b2. r4 |
+  o5 a4. b8 o6 c4 o5 a4 | o5 g4 b4 e4 g4 | o5 e4. d8 c4 e4 | o5 f+4 a4 d4 f+4 |
+  o5 e2 a4 c4 | o5 d+2 f+4 a4 | o5 g2 e4 g4 | o5 f+2 d+4 f+4 |
+
+track gears pulse vol=0.28 pan=-0.35 rev=0.15
+  L [ o4 e16 g16 b16 g16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o4 e16 g16 b16 g16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o3 b16 o4 d+16 f+16 d+16 ]4 |
+  [ o3 a16 o4 c16 e16 c16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o4 d16 f+16 a16 f+16 ]4 |
+  [ o3 a16 o4 c16 e16 c16 ]4 | [ o3 b16 o4 d+16 f+16 d+16 ]4 | [ o4 e16 g16 b16 g16 ]4 | [ o3 b16 o4 d+16 f+16 d+16 ]4 |
+
+track stabs brass vol=0.36 pan=0.3 rev=0.2
+  L o4 (e g b)8 r8 r2. | r1 | o4 (c e g)8 r8 r2. | o4 (d f+ a)8 r8 r4 (d f+ a)8 r8 r4 |
+  o4 (e g b)8 r8 r2. | r1 | o4 (c e g)8 r8 r2. | o3 (b >d+ f+)8 r8 r4 (b >d+ f+)8 r8 r4 |
+  o4 (c e a)8 r8 r2. | r1 | o4 (c e g)8 r8 r2. | o4 (d f+ a)8 r8 r4 (d f+ a)8 r8 r4 |
+  o4 (c e a)8 r8 r2. | o3 (b >d+ f+)8 r8 r2. | o4 (e g b)8 r8 r2. | o3 (b >d+ f+)8 r8 r4 (b >d+ f+)8 r8 r4 |
+
+track bass synthbass vol=0.66 rev=0.05
+  L [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o2 b8 b8 o3 b8 o2 b8 ]2 |
+  [ o2 a8 a8 o3 a8 o2 a8 ]2 | [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o3 c8 c8 o4 c8 o3 c8 ]2 | [ o3 d8 d8 o4 d8 o3 d8 ]2 |
+  [ o2 a8 a8 o3 a8 o2 a8 ]2 | [ o2 b8 b8 o3 b8 o2 b8 ]2 | [ o3 e8 e8 o4 e8 o3 e8 ]2 | [ o2 b8 b8 o3 b8 o2 b8 ]2 |
+
+track drums kit vol=0.5 rev=0.15
+  v95 L [ (b c)8 b8 s8 b8 b8 b8 s8 b8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 t16 t16 m16 m16 f16 f16 f16 f16 | ]2
+
+track carts kit vol=0.34 pan=0.2 rev=0.1
+  L v55 [ k16 v30 k16 k16 k16 v55 k16 v30 k16 k16 k16 v55 o8 v30 k16 k16 v55 k16 v30 k16 k16 k16 v55 | ]16

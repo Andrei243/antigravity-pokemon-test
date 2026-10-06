@@ -1,7 +1,6 @@
 {
   "area": "floaroma_meadow",
-  // Until plan 05 writes Floaroma's own theme (the original's TOWN03)
-  "bgmTrack": "sinnoh/sandgem",
+  "bgmTrack": "sinnoh/floaroma",
   "trees": "Round",
   "architecture": "Cottage",
   // The honey seller's house has no room yet (plan 01 · M11)

@@ -1,7 +1,6 @@
 {
   "area": "valley_windworks_outside",
-  // Until plan 05 writes the theme of Route 205 (the original's ROAD_C)
-  "bgmTrack": "sinnoh/route201",
+  "bgmTrack": "sinnoh/route205",
   "trees": "Round",
   // The works have no room yet (plan 01 · M11)
   "locked": [ 0 ],

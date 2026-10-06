@@ -50,6 +50,12 @@ public enum MusicRole
     VictoryWild,
     VictoryTrainer,
     VictoryGymLeader,
+    /// <summary>After beating Team Galactic's grunts and commanders.</summary>
+    VictoryGalactic,
+    /// <summary>After beating the Galactic boss.</summary>
+    VictoryGalacticBoss,
+    VictoryEliteFour,
+    VictoryChampion,
     FanfareHeal,
     FanfareItem,
     FanfareLevelUp,
@@ -138,6 +144,10 @@ public static class MusicDirector
         MusicRole.VictoryWild => "victory_wild",
         MusicRole.VictoryTrainer => "victory_trainer",
         MusicRole.VictoryGymLeader => "victory_gym",
+        MusicRole.VictoryGalactic => "victory_galactic",
+        MusicRole.VictoryGalacticBoss => "victory_galactic_boss",
+        MusicRole.VictoryEliteFour => "victory_elite_four",
+        MusicRole.VictoryChampion => "victory_champion",
         MusicRole.FanfareHeal => "fanfare_heal",
         MusicRole.FanfareItem => "fanfare_item",
         MusicRole.FanfareLevelUp => "fanfare_levelup",
@@ -165,7 +175,10 @@ public static class MusicDirector
         MusicRole.BattleEliteFour => MusicRole.BattleGymLeader,
         MusicRole.BattleChampion => MusicRole.BattleEliteFour,
         MusicRole.BattleLegendary => MusicRole.BattleWild,
-        MusicRole.VictoryGymLeader => MusicRole.VictoryTrainer,
+        MusicRole.VictoryGymLeader or MusicRole.VictoryGalactic => MusicRole.VictoryTrainer,
+        MusicRole.VictoryGalacticBoss => MusicRole.VictoryGalactic,
+        MusicRole.VictoryEliteFour => MusicRole.VictoryGymLeader,
+        MusicRole.VictoryChampion => MusicRole.VictoryEliteFour,
         MusicRole.FanfareEvolution => MusicRole.FanfarePokemon,
         MusicRole.FanfareBadge or MusicRole.FanfareTM or MusicRole.FanfareKeyItem => MusicRole.FanfareItem,
         _ => null
@@ -224,11 +237,19 @@ public static class MusicDirector
         _ => 0
     };
 
-    /// <summary>The victory theme that follows a battle theme.</summary>
+    /// <summary>
+    /// The victory theme that follows a battle theme, as the original's battle controller picks it by the trainer
+    /// beaten (<c>BattleController_CheckBattleOver</c>): the gym leaders', the Elite Four's, the Champion's, Team
+    /// Galactic's (grunts and commanders alike) and their boss's have their own; the rival's is a trainer's.
+    /// </summary>
     public static MusicRole VictoryRole(MusicRole battle) => battle switch
     {
         MusicRole.BattleWild or MusicRole.BattleLegendary => MusicRole.VictoryWild,
-        MusicRole.BattleGymLeader or MusicRole.BattleEliteFour or MusicRole.BattleChampion => MusicRole.VictoryGymLeader,
+        MusicRole.BattleGymLeader => MusicRole.VictoryGymLeader,
+        MusicRole.BattleEliteFour => MusicRole.VictoryEliteFour,
+        MusicRole.BattleChampion => MusicRole.VictoryChampion,
+        MusicRole.BattleGalactic => MusicRole.VictoryGalactic,
+        MusicRole.BattleGalacticBoss => MusicRole.VictoryGalacticBoss,
         _ => MusicRole.VictoryTrainer
     };
 

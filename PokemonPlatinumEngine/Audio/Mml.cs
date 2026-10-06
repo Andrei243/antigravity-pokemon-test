@@ -26,6 +26,7 @@ public static class Mml
     {
         string title = id;
         double tempo = 120, nightTempo = 0.95, lowHpTempo = 1.0;
+        bool hasNight = true;
         int beatsPerBar = 4, beatUnit = 4;
         float reverb = 0.3f;
         var trackHeaders = new List<(string Header, StringBuilder Body, int Line)>();
@@ -56,6 +57,10 @@ public static class Mml
                 case "title": title = rest; break;
                 case "tempo": tempo = ParseDouble(rest, id, n); break;
                 case "nighttempo": nightTempo = ParseDouble(rest, id, n); break;
+                case "night":
+                    if (rest != "none") throw Error(id, n, $"'night' takes only 'none', not '{rest}'");
+                    hasNight = false;
+                    break;
                 case "lowhptempo": lowHpTempo = ParseDouble(rest, id, n); break;
                 case "reverb": reverb = (float)ParseDouble(rest, id, n); break;
                 case "meter":
@@ -96,7 +101,7 @@ public static class Mml
 
         var song = new Song
         {
-            Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, LowHpTempo = lowHpTempo, TicksPerBar = ticksPerBar,
+            Id = id, Title = title, Tempo = tempo, NightTempo = nightTempo, HasNight = hasNight, LowHpTempo = lowHpTempo, TicksPerBar = ticksPerBar,
             LoopTick = loopTick, EndTick = endTick, Reverb = reverb
         };
         foreach (var t in tracks) song.Tracks.Add(t.Track);

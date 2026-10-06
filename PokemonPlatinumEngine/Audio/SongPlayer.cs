@@ -54,13 +54,13 @@ public sealed class SongPlayer
     public void Start(Song s, bool atNight)
     {
         song = s;
-        night = atNight;
+        night = atNight && s.HasNight;
         tick = 0;
         Loops = 0;
-        ticksPerSample = 1.0 / (s.SecondsPerTick(atNight, agitated) * Synthesizer.SampleRate);
+        ticksPerSample = 1.0 / (s.SecondsPerTick(night, agitated) * Synthesizer.SampleRate);
         next = new int[s.Tracks.Count];
         synth.AllNotesOff(immediate: true);
-        synth.ReverbLevel = s.Reverb + (atNight ? 0.08f : 0f);
+        synth.ReverbLevel = s.Reverb + (night ? 0.08f : 0f);
         Playing = true;
     }
 

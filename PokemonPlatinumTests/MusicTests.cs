@@ -109,7 +109,14 @@ public class MusicTests
         Assert.Equal("common/battle_trainer", MusicDirector.Resolve(MusicRole.BattleRival, RegionDatabase.Sinnoh, OnlyShared));
         Assert.Equal("common/battle_trainer", MusicDirector.Resolve(MusicRole.BattleGymLeader, null, OnlyShared));
         Assert.Equal("common/victory_trainer", MusicDirector.Resolve(MusicRole.VictoryGymLeader, null, OnlyShared));
+        Assert.Equal("common/victory_trainer", MusicDirector.Resolve(MusicRole.VictoryChampion, null, OnlyShared));
+        Assert.Equal("common/victory_trainer", MusicDirector.Resolve(MusicRole.VictoryGalacticBoss, null, OnlyShared));
         Assert.Null(MusicDirector.Resolve(MusicRole.BattleWild, null, OnlyShared));
+
+        // The nearest role first: the Champion's victory through the Elite Four's, the boss's through the grunts'
+        static bool Some(string id) => id is "common/victory_gym" or "common/victory_galactic" or "common/victory_trainer";
+        Assert.Equal("common/victory_gym", MusicDirector.Resolve(MusicRole.VictoryChampion, null, Some));
+        Assert.Equal("common/victory_galactic", MusicDirector.Resolve(MusicRole.VictoryGalacticBoss, null, Some));
     }
 
     [Fact]
@@ -360,7 +367,7 @@ public class MusicTests
     [Fact]
     public void TestEveryBattleThemeHasALowHpArrangement()
     {
-        foreach (var role in new[] { MusicRole.BattleWild, MusicRole.BattleTrainer, MusicRole.BattleGymLeader })
+        foreach (var role in Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Battle")))
         {
             foreach (var region in RegionDatabase.All.Select(r => r.Id))
             {
@@ -424,13 +431,33 @@ public class MusicTests
         Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRole(new[] { "Galactic Grunt", "Gym Leader" }));
         Assert.Equal(MusicRole.BattleTrainer, MusicDirector.BattleRole(new[] { "Nobody" }));
 
-        // Roles without a song of their own fall back to the nearest that has one
-        Assert.Equal("common/battle_trainer", MusicDirector.Resolve(MusicRole.BattleGalacticBoss, null, MusicLibrary.Exists));
-        Assert.Equal("common/battle_gym", MusicDirector.Resolve(MusicRole.BattleChampion, null, MusicLibrary.Exists));
-        Assert.Equal("common/battle_wild", MusicDirector.Resolve(MusicRole.BattleLegendary, null, MusicLibrary.Exists));
-        Assert.Equal(MusicRole.VictoryGymLeader, MusicDirector.VictoryRole(MusicRole.BattleChampion));
-        Assert.Equal(MusicRole.VictoryTrainer, MusicDirector.VictoryRole(MusicRole.BattleGalactic));
+        // Each of them has its song now (plan 05 · A6)
+        Assert.Equal("common/battle_galactic_boss", MusicDirector.Resolve(MusicRole.BattleGalacticBoss, null, MusicLibrary.Exists));
+        Assert.Equal("common/battle_champion", MusicDirector.Resolve(MusicRole.BattleChampion, null, MusicLibrary.Exists));
+        Assert.Equal("common/battle_legendary", MusicDirector.Resolve(MusicRole.BattleLegendary, null, MusicLibrary.Exists));
         Assert.Equal(MusicRole.VictoryWild, MusicDirector.VictoryRole(MusicRole.BattleLegendary));
+    }
+
+    [Fact]
+    public void TestTheVictoryThemeFollowsTheTrainerBeaten()
+    {
+        // The original's battle controller: Team Galactic's commanders win the grunts' theme, the rival a trainer's
+        MusicRole After(params string[] classes) => MusicDirector.VictoryRole(MusicDirector.BattleRole(classes));
+        Assert.Equal(MusicRole.VictoryTrainer, After("Youngster"));
+        Assert.Equal(MusicRole.VictoryTrainer, After("Rival"));
+        Assert.Equal(MusicRole.VictoryGymLeader, After("Gym Leader"));
+        Assert.Equal(MusicRole.VictoryGalactic, After("Galactic Grunt"));
+        Assert.Equal(MusicRole.VictoryGalactic, After("Commander Mars"));
+        Assert.Equal(MusicRole.VictoryGalacticBoss, After("Galactic Boss"));
+        Assert.Equal(MusicRole.VictoryEliteFour, After("Elite Four"));
+        Assert.Equal(MusicRole.VictoryChampion, After("Champion"));
+        Assert.Equal(MusicRole.VictoryWild, After());
+
+        // Each plays a song of its own, and loops while the player reads the prize
+        var victories = Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Victory")).ToList();
+        var songs = victories.Select(r => MusicDirector.Resolve(r, RegionDatabase.Sinnoh, MusicLibrary.Exists)!).ToList();
+        Assert.Equal(victories.Count, songs.Distinct().Count());
+        Assert.All(songs, id => Assert.True(MusicLibrary.Get(id)!.Loops, $"{id} should loop"));
     }
 
     [Fact]
@@ -447,10 +474,8 @@ public class MusicTests
     [Fact]
     public void TestTheCoreRolesHaveSongsOfTheirOwn()
     {
-        // Plan 05 · A5: every role heard first has its own song now; what still falls back waits for A6
-        var waiting = new[] { MusicRole.BattleGalactic, MusicRole.BattleGalacticBoss, MusicRole.BattleEliteFour, MusicRole.BattleChampion,
-            MusicRole.BattleLegendary, MusicRole.VictoryGymLeader };
-        foreach (var role in Enum.GetValues<MusicRole>().Except(waiting))
+        // Plan 05 · A5 and A6: every role has its own song; the fallbacks are for a region that brings only some of its own
+        foreach (var role in Enum.GetValues<MusicRole>())
             Assert.True(MusicLibrary.Exists($"{MusicDirector.Common}/{MusicDirector.FileName(role)}"), $"{role} has no song of its own");
         foreach (var role in Enum.GetValues<MusicRole>().Where(r => r.ToString().StartsWith("Eye")).Append(MusicRole.Evolution).Append(MusicRole.Rival).Append(MusicRole.Introduction))
         {
@@ -480,6 +505,45 @@ public class MusicTests
         runner.Start(library.All.First());
         runner.RunToEnd();
         Assert.Equal(new[] { "fanfare FanfareItem", "fanfare FanfareTM", "fanfare FanfareBadge", "fanfare FanfareEvolution" }, host.Log.Where(l => l.StartsWith("fanfare")));
+    }
+
+    [Fact]
+    public void TestTheOpenAreasPlayTheThemeOfTheirRole()
+    {
+        // Plan 05 · A6: the original's role for each area (its header's day theme), by our song for it
+        var expected = new Dictionary<string, string>
+        {
+            ["route_203"] = "sinnoh/route203", ["route_204_south"] = "sinnoh/route203", ["route_204_north"] = "sinnoh/route203",
+            ["route_205_south"] = "sinnoh/route205", ["valley_windworks_outside"] = "sinnoh/route205", ["fuego_ironworks_outside"] = "sinnoh/route205",
+            ["oreburgh_city"] = "sinnoh/oreburgh", ["floaroma_town"] = "sinnoh/floaroma", ["floaroma_meadow"] = "sinnoh/floaroma",
+            ["oreburgh_gate_1f"] = "sinnoh/cave", ["oreburgh_gate_b1f"] = "sinnoh/cave", ["ravaged_path"] = "sinnoh/cave",
+            ["oreburgh_mine_b1f"] = "sinnoh/mine", ["oreburgh_mine_b2f"] = "sinnoh/mine"
+        };
+        MapDatabase.Initialize();
+        var themes = Themes().ToDictionary(t => t.Place[(t.Place.IndexOf('/') + 1)..], t => t.Track);
+        foreach (var (area, track) in expected)
+            Assert.Equal(track, themes[area]);
+        // No town shares its theme with another any more
+        var towns = new[] { "twinleaf_town", "sandgem_town", "jubilife_city", "oreburgh_city", "floaroma_town" };
+        Assert.Equal(towns.Length, towns.Select(t => themes[t]).Distinct().Count());
+    }
+
+    [Fact]
+    public void TestACaveSoundsTheSameByDayAndByNight()
+    {
+        // The original's caves have one theme: their map headers give SEQ_D_04 or SEQ_D_05 by day and by night alike
+        foreach (var id in new[] { "sinnoh/cave", "sinnoh/mine" })
+        {
+            var song = MusicLibrary.Get(id)!;
+            Assert.False(song.HasNight);
+            Assert.Equal(song.Duration(), song.Duration(night: true));
+            var player = new SongPlayer();
+            player.Start(song, atNight: true);
+            Assert.False(player.Night);
+        }
+        Assert.True(MusicLibrary.Get("sinnoh/oreburgh")!.HasNight);
+        Assert.Throws<FormatException>(() => Mml.Parse("test", "night some\ntrack a flute\n  c1 |\n"));
+        Assert.False(Mml.Parse("test", "night none\ntrack a flute\n  c1 |\n").HasNight);
     }
 
     [Fact]
