@@ -8,7 +8,9 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // The forms Platinum itself gives species of its Sinnoh Pokédex, hand-built like the species (after plan 03 · D11):
 // Rotom's five appliances, Giratina's Origin Forme, Burmy's and Wormadam's sandy and trash cloaks, Shellos's and
-// Gastrodon's East Sea colours, Cherrim in the sun and Unown's other letters. Each is our own sculpt after the design.
+// Gastrodon's East Sea colours, Cherrim in the sun and Unown's other letters; and those it gives the popular species
+// from outside its Pokédex, hand-built since: Castform's weathers and Deoxys's formes (their builds in
+// PokemonModels.Hoenn3.cs). Each is our own sculpt after the design.
 internal static partial class PokemonModels
 {
     /// <summary>What Burmy has wrapped round itself, and what Wormadam's gown grew from.</summary>
@@ -515,4 +517,20 @@ internal static partial class PokemonModels
         b.Eye(Body, eye + V(0, 0, 0.023f), V(0, 0, 1f), 0.05f, sclera: true, pupil: black, glare: glyph.Lidded);
         return Lift(b);
     }
+
+    // ------------------------------------------------------------------ Castform's weathers (its build in PokemonModels.Hoenn3.cs)
+
+    private static PokeBuilder CastformSunny() => CastformBuild(1);
+
+    private static PokeBuilder CastformRainy() => CastformBuild(2);
+
+    private static PokeBuilder CastformSnowy() => CastformBuild(3);
+
+    // ------------------------------------------------------------------ Deoxys's formes (its build in PokemonModels.Hoenn3.cs)
+
+    private static PokeBuilder DeoxysAttack() => DeoxysBuild(1);
+
+    private static PokeBuilder DeoxysDefense() => DeoxysBuild(2);
+
+    private static PokeBuilder DeoxysSpeed() => DeoxysBuild(3);
 }
