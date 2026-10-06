@@ -363,6 +363,9 @@ public sealed class ScriptRunner
             case Op.Sound:
                 host.Sound(i.Name);
                 break;
+            case Op.Cry:
+                host.Cry(i.Name);
+                break;
 
             case Op.Starter:
                 host.Open(ScriptScreen.Starter, Subject);

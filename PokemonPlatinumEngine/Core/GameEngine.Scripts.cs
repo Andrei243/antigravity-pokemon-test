@@ -445,5 +445,12 @@ public partial class GameEngine
         public void Fanfare(MusicRole role) => AudioManager.PlayFanfare(role);
 
         public void Sound(string name) => AudioManager.PlaySound(name);
+
+        // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
+        public void Cry(string species)
+        {
+            if (PokemonDatabase.Get(species) is { } own) AudioManager.PlayCry(own, null, CryMode.FieldEvent);
+            else if (PokemonDatabase.SpeciesOfForm(species) is { } of) AudioManager.PlayCry(of, species, CryMode.FieldEvent);
+        }
     }
 }

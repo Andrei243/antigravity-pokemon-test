@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -207,6 +208,7 @@ public class PokedexScreen
                 {
                     Focus = PokedexFocus.Entry;
                     AudioManager.PlaySound("select");
+                    AudioManager.PlayCry(entry.Species, null, CryMode.Pokedex);
                 }
                 break;
             case PokedexFocus.Search:

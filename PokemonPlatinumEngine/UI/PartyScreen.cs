@@ -1,4 +1,5 @@
 using System;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
@@ -89,6 +90,7 @@ public class PartyScreen
             {
                 ShowSummary = true;
                 summaryAge = 0f;
+                if (SelectedIndex < party.Count) AudioManager.PlayCry(party.Members[SelectedIndex]);
             }
             AudioManager.PlaySound("select");
         }

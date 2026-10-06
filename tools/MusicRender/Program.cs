@@ -4,15 +4,18 @@
 //
 //   dotnet run --project tools/MusicRender -- <out dir> [song id or folder ...] [--night] [--stems] [--passes N] [--spectrogram]
 //   dotnet run --project tools/MusicRender -- <out dir> --sounds [name ...]
+//   dotnet run --project tools/MusicRender -- <out dir> --cries [species or form ...] [--all] [--modes]
 //   dotnet run --project tools/MusicRender -- --calibrate
 using System.IO.Compression;
 using System.Text;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Data;
 
 if (args.Length < 1)
 {
     Console.WriteLine("usage: MusicRender <out dir> [song id or folder ...] [--night] [--stems] [--passes N] [--spectrogram]");
     Console.WriteLine("       MusicRender <out dir> --sounds [name ...]");
+    Console.WriteLine("       MusicRender <out dir> --cries [species or form ...] [--all] [--modes]");
     Console.WriteLine("       MusicRender --calibrate");
     return 1;
 }
@@ -49,45 +52,80 @@ int passes = 2;
 var filters = new List<string>();
 for (int i = 1; i < args.Length; i++)
 {
-    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp") continue;
+    if (args[i] is "--night" or "--stems" or "--spectrogram" or "--sounds" or "--lowhp" or "--cries" or "--all" or "--modes") continue;
     if (args[i] == "--passes") { passes = int.Parse(args[++i]); continue; }
     filters.Add(args[i]);
 }
 
 Directory.CreateDirectory(outDir);
 
+// Renders one sound as the mixer plays it on its bus, with a tenth of a second after; prints its numbers and says whether it is sound
+bool Check(string label, SoundSample sound, AudioBus bus, string file, bool write)
+{
+    var mixer = new AudioMixer();
+    mixer.PlaySound(sound, bus);
+    int frames = sound.Samples.Length + Synthesizer.SampleRate / 10;
+    var samples = new float[frames * 2];
+    for (int done = 0; done < frames; done += 1024) mixer.Render(samples.AsSpan(done * 2, Math.Min(1024, frames - done) * 2));
+
+    float peak = 0f;
+    double sum = 0;
+    int nans = 0;
+    foreach (float x in samples)
+    {
+        if (!float.IsFinite(x)) { nans++; continue; }
+        peak = MathF.Max(peak, MathF.Abs(x));
+        sum += x * x;
+    }
+    double rms = Math.Sqrt(sum / samples.Length);
+    // A click is a jump at either end: a sound has to start and stop at nothing
+    float head = MathF.Abs(sound.Samples[0]), tail = MathF.Abs(sound.Samples[^1]);
+    float dc = sound.Samples.Average();
+    float loudest = 0f;
+    if (write)
+    {
+        WriteWav(file + ".wav", samples);
+        loudest = WriteSpectrogram(file + ".png", samples, 640, 256, 8192f);
+    }
+    bool clicks = head > 0.02f || tail > 0.02f;
+    Console.WriteLine($"{label,-12} {sound.Duration * 1000,5:0} ms  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loudest {loudest,5:0} Hz  ends {head:0.000}/{tail:0.000}  dc {dc,6:0.000}{(clicks ? "  CLICKS" : "")}{(nans > 0 ? $"  NaN {nans}" : "")}");
+    return nans == 0 && peak < 0.999f && !clicks;
+}
+
 if (args.Contains("--sounds"))
 {
-    // Every sound effect (or the ones named) through the mixer as the game plays it, with a tenth of a second after
+    // Every sound effect (or the ones named)
     bool bad = false;
     foreach (var name in SoundBank.Names.Where(n => filters.Count == 0 || filters.Contains(n, StringComparer.OrdinalIgnoreCase)))
-    {
-        var sound = SoundBank.Get(name)!;
-        var mixer = new AudioMixer();
-        mixer.PlaySound(sound);
-        int frames = sound.Samples.Length + Synthesizer.SampleRate / 10;
-        var samples = new float[frames * 2];
-        for (int done = 0; done < frames; done += 1024) mixer.Render(samples.AsSpan(done * 2, Math.Min(1024, frames - done) * 2));
+        bad |= !Check(name, SoundBank.Get(name)!, AudioBus.Sound, Path.Combine(outDir, "sound_" + name), true);
+    return bad ? 2 : 0;
+}
 
-        float peak = 0f;
-        double sum = 0;
-        int nans = 0;
-        foreach (float s in samples)
+if (args.Contains("--cries"))
+{
+    // The cries of the species named (a form by its name: Giratina-Origin), of a few of every size and type, or
+    // with --all of every species and form (numbers only); --modes adds each of the original's modes
+    bool bad = false;
+    bool all = args.Contains("--all"), modes = args.Contains("--modes");
+    var names = filters.Count > 0 ? filters
+        : all ? PokemonDatabase.GetAll().OrderBy(sp => sp.DexNumber).SelectMany(sp => new[] { sp.Name }.Concat(sp.Forms?.Select(f => f.Name) ?? Enumerable.Empty<string>())).ToList()
+        : new List<string> { "Turtwig", "Grotle", "Torterra", "Chimchar", "Infernape", "Piplup", "Empoleon", "Starly", "Bidoof", "Shinx", "Pikachu",
+            "Geodude", "Onix", "Zubat", "Gastly", "Magikarp", "Gyarados", "Happiny", "Snorlax", "Wailord", "Unown", "Dialga", "Palkia", "Giratina", "Giratina-Origin", "Arceus" };
+    foreach (var name in names)
+    {
+        var species = PokemonDatabase.Get(name) ?? PokemonDatabase.SpeciesOfForm(name);
+        if (species == null)
         {
-            if (!float.IsFinite(s)) { nans++; continue; }
-            peak = MathF.Max(peak, MathF.Abs(s));
-            sum += s * s;
+            Console.WriteLine($"{name}: no such species or form");
+            bad = true;
+            continue;
         }
-        double rms = Math.Sqrt(sum / samples.Length);
-        // A click is a jump at either end: a sound has to start and stop at nothing
-        float head = MathF.Abs(sound.Samples[0]), tail = MathF.Abs(sound.Samples[^1]);
-        float dc = sound.Samples.Average();
-        string file = Path.Combine(outDir, "sound_" + name);
-        WriteWav(file + ".wav", samples);
-        float loudest = WriteSpectrogram(file + ".png", samples, 640, 256, 8192f);
-        bool clicks = head > 0.02f || tail > 0.02f;
-        Console.WriteLine($"{name,-12} {sound.Duration * 1000,5:0} ms  peak {Db(peak),6:0.0} dB  rms {Db((float)rms),6:0.0} dB  loudest {loudest,5:0} Hz  ends {head:0.000}/{tail:0.000}  dc {dc,6:0.000}{(clicks ? "  CLICKS" : "")}{(nans > 0 ? $"  NaN {nans}" : "")}");
-        if (nans > 0 || peak >= 0.999f || clicks) bad = true;
+        string? form = species.Name.Equals(name, StringComparison.OrdinalIgnoreCase) ? null : name;
+        foreach (var mode in modes ? Enum.GetValues<CryMode>() : new[] { CryMode.Normal })
+        {
+            string label = mode == CryMode.Normal ? name : $"{name} {mode}";
+            bad |= !Check(label, Cries.Get(species, form, mode), AudioBus.Cry, Path.Combine(outDir, "cry_" + label.Replace(' ', '_').ToLowerInvariant()), !all);
+        }
     }
     return bad ? 2 : 0;
 }

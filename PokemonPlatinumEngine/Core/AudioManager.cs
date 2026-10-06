@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Models;
 using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Core;
@@ -104,6 +105,26 @@ public static class AudioManager
             return;
         }
         mixer.PlaySound(sound, AudioBus.Sound, 1f, pan);
+    }
+
+    /// <summary>
+    /// Plays a Pokémon's cry on the cry bus, which dips the music under it. <paramref name="pan"/> is -1 for the
+    /// left, 1 for the right. Tests hear it as "cry &lt;species or form&gt;", with the mode after unless it is normal.
+    /// </summary>
+    public static void PlayCry(Pokemon pokemon, CryMode mode = CryMode.Normal, float pan = 0f) => PlayCry(pokemon.Species, pokemon.Form, mode, pan);
+
+    public static void PlayCry(PokemonSpecies species, string? form = null, CryMode mode = CryMode.Normal, float pan = 0f)
+    {
+        string name = species.Form(form)?.Name ?? species.Name;
+        heard?.Add(mode == CryMode.Normal ? $"cry {name}" : $"cry {name} {mode}");
+        if (isMuted || !isInitialized) return;
+        mixer.PlaySound(Cries.Get(species, form, mode), AudioBus.Cry, 1f, pan);
+    }
+
+    /// <summary>Makes the cries a scene is about to play on a worker, so none is made on the frame that plays it. Nothing without an audio device.</summary>
+    public static void RequestCries(IEnumerable<Pokemon> pokemon)
+    {
+        if (isInitialized) Cries.Request(pokemon);
     }
 
     /// <summary>

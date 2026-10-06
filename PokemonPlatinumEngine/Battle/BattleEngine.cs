@@ -176,6 +176,9 @@ public partial class BattleEngine
         PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();
         EnemySlots = core.EnemySlots.Select(OnScreen).ToList();
 
+        // Every cry the battle may play, made on a worker before it is heard
+        AudioManager.RequestCries(PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members)));
+
         core.Start();
         Play(core.TakeLog());
         Pump();
@@ -351,8 +354,15 @@ public partial class BattleEngine
                 {
                     Anim.SendOut(entered.Place.Side, pokemon, entered.Place.Slot);
                     After(BattleAnimator.SendOutBallTime, () => Sound("send_out", entered.Place.Side));
+                    // It cries as it comes out of the ball: lower if it comes out hurt or ailing, as in the original
+                    var mode = Cries.SendOutMode(pokemon);
+                    After(BattleAnimator.SendOutBallTime + CryDelay, () => AudioManager.PlayCry(pokemon, mode, Pan(entered.Place.Side)));
                 }
-                else Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
+                else
+                {
+                    Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
+                    AudioManager.PlayCry(pokemon, CryMode.Normal, Pan(entered.Place.Side));
+                }
                 break;
             }
             case Recalled recalled:
@@ -447,6 +457,8 @@ public partial class BattleEngine
                     down.Status = StatusCondition.Faint;
                     down.CurrentHP = 0;
                 }
+                // Its cry, low and slow, as it goes down
+                if (At(fainted.Place).Pokemon is { } fallen) AudioManager.PlayCry(fallen, CryMode.Faint, Pan(fainted.Place.Side));
                 Sound("faint", fainted.Place.Side);
                 Anim.Faint(fainted.Place.Side, 0.15f, fainted.Place.Slot);
                 break;
@@ -552,7 +564,12 @@ public partial class BattleEngine
     private void After(float delay, Action effect) => pendingEffects.Add((delay, effect));
 
     /// <summary>A sound from one side of the battle: the player's a little to the left, the foe's to the right, as they stand.</summary>
-    private static void Sound(string name, BattleSide side) => AudioManager.PlaySound(name, side == BattleSide.Player ? -0.3f : 0.3f);
+    private static void Sound(string name, BattleSide side) => AudioManager.PlaySound(name, Pan(side));
+
+    private static float Pan(BattleSide side) => side == BattleSide.Player ? -0.3f : 0.3f;
+
+    /// <summary>How long after its ball opens a Pokémon cries: once it has begun to grow out of the light.</summary>
+    public const float CryDelay = 0.15f;
 
     /// <summary>When the last move's sound was played: a move aimed at several Pokémon is shown once for each, and heard once.</summary>
     private float moveSoundAt = -1f;

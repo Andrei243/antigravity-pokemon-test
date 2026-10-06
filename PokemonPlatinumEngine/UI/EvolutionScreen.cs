@@ -97,7 +97,7 @@ public sealed class EvolutionScreen
         time = 0f;
         morphAngle = MathF.PI / 2f;
         Go(EvolutionPhase.Notice, $"What? {oldName} is evolving!");
-        AudioManager.PlaySound("exclaim");
+        AudioManager.PlayCry(pokemon);
     }
 
     private void Go(EvolutionPhase phase, string? message = null)
@@ -159,6 +159,8 @@ public sealed class EvolutionScreen
         foreach (var move in Outcome.NewMoves) movesToLearn.Enqueue(move);
         Go(EvolutionPhase.Burst);
         AudioManager.PlaySound("levelup");
+        // What it has become cries out in its new voice
+        AudioManager.PlayCry(pokemon!);
     }
 
     public void PressConfirm()
