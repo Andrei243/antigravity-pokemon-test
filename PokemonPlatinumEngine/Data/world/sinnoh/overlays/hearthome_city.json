@@ -1,0 +1,136 @@
+{
+  "area": "hearthome_city",
+  "bgmTrack": "sinnoh/hearthome",
+  "trees": "Round",
+  "architecture": "Townhouse",
+  "doors": [
+    { "warp": 5, "map": "HearthomePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 11, "map": "HearthomePokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 14, "to": "route_208", "toWarp": 0 },
+    { "warp": 18, "to": "route_208", "toWarp": 1 },
+    { "warp": 19, "to": "route_209", "toWarp": 0 },
+    { "warp": 17, "to": "route_209", "toWarp": 1 },
+    { "warp": 0, "to": "amity_square", "toWarp": 0 },
+    { "warp": 1, "to": "amity_square", "toWarp": 1 },
+    { "warp": 3, "to": "amity_square", "toWarp": 2 },
+    { "warp": 4, "to": "amity_square", "toWarp": 3 }
+  ],
+  // The Contest Hall, the houses, the Gym, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11, M9); Route 212 is plan 01 · M7's
+  "locked": [ 2, 6, 7, 8, 9, 10, 12, 13, 15, 16 ],
+  "people": {
+    // In Platinum he offers to walk the player to the Contest Hall; the walk is plan 02's (S7)
+    "fisherman": {
+      "name": "Fisherman",
+      "dialog": [
+        "Here for the contests? The Contest Hall is the grand building at the top of the street.",
+        "I don't enter myself. I just go and cheer. The crowd's half the fun!"
+      ]
+    },
+    "pokefan_m_1": {
+      "name": "Man",
+      "dialog": [
+        "So, which is it to be first: the Gym, or a contest?",
+        "Win a Badge or win a ribbon. Either way, Hearthome will cheer you on."
+      ]
+    },
+    "pokemon_breeder_f_1": {
+      "name": "Woman",
+      "dialog": [
+        "Since I started pushing a pram, I see every step and every kerb in this city.",
+        "Before, I never noticed a single one!"
+      ]
+    },
+    "pokemon_breeder_m_1": {
+      "name": "Man",
+      "dialog": [
+        "People here say hello to strangers, and they mean it.",
+        "There's something about this city that makes everyone open up."
+      ]
+    },
+    "pokefan_f": {
+      "name": "Woman",
+      "dialog": [
+        "How many kinds of Pokémon do you suppose there are in the world?",
+        "Every time I think I've met them all, a new one turns up."
+      ]
+    },
+    // In Platinum he gives decorations for the Underground to trainers who have done great things; the gifts are plan 02's
+    "mr_goods": {
+      "name": "Mr. Goods",
+      "dialog": [
+        "People call me Mr. Goods. I collect fine things, and I give them away to trainers who've earned them.",
+        "Do something truly remarkable, and come and tell me about it."
+      ]
+    },
+    "battle_girl_1": {
+      "name": "Girl",
+      "dialog": [
+        "A ribbon, a hat, or a flower behind the ear?",
+        "I can never decide what my Pokémon should wear on stage at a contest!"
+      ]
+    },
+    "battle_girl_2": {
+      "name": "Girl",
+      "dialog": [
+        "I used a Fire Stone on my Pokémon, and it evolved right there in my hands!",
+        "Some Pokémon won't evolve however much they battle. They need the right stone."
+      ]
+    },
+    "hiker_1": {
+      "name": "Hiker",
+      "dialog": [
+        "I walk my Pachirisu round Amity Square every morning, just north of here.",
+        "Big as I am, it's the one setting the pace!"
+      ]
+    },
+    "black_belt_1": {
+      "name": "Black Belt",
+      "dialog": [
+        "For years I trained alone on a mountain, with nobody to talk to.",
+        "Then I came down to Hearthome. Now I can't walk ten steps without someone wanting a chat!"
+      ]
+    },
+    "pokemon_breeder_m_2": {
+      "name": "Man",
+      "dialog": [
+        "One day my little one will be old enough for a Pokémon of their own.",
+        "I wonder which Pokémon they'll make friends with first?"
+      ]
+    },
+    "pokemon_breeder_f_2": {
+      "name": "Woman",
+      "dialog": [
+        "I'm only visiting, but I'd love to live here one day.",
+        "Hearthome feels like home the moment you arrive."
+      ]
+    },
+    "artist": {
+      "name": "Artist",
+      "dialog": [
+        "I come to this spot every day to paint the city.",
+        "The light on these streets is never the same twice. I don't think I'll ever finish!"
+      ]
+    },
+    "black_belt_2": {
+      "name": "Black Belt",
+      "dialog": [
+        "Ghost-type Pokémon don't feel Normal or Fighting moves at all.",
+        "I learnt that one the hard way, against this city's Gym."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Hearthome City\nA city with a warm welcome at every door.",
+    "arrow_signpost_west": "Hearthome City\nWest: Route 208, Mt. Coronet\nSouth: Route 212",
+    "arrow_signpost_east": "Hearthome City\nEast: Route 209, Solaceon Town",
+    "gym_signpost": "Hearthome City Pokémon Gym\nLeader: Fantina\nShe dances with the ghosts!",
+    "signboard_pokemon_contest_hall": "Pokémon Contest Hall\nStep up on stage and show the crowd how your Pokémon shines!",
+    "signboard_pokemon_fan_club": "Pokémon Fan Club\nCome in and tell us all about your favourite!",
+    "signboard_amity_square_west_gate": "Amity Square · West Gate\nA park for a quiet stroll with your Pokémon.",
+    "signboard_amity_square_east_gate": "Amity Square · East Gate\nA park for a quiet stroll with your Pokémon.",
+    "signboard_poffin_house": "Poffin House\nTreats baked together taste twice as sweet."
+  }
+}

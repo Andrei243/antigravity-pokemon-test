@@ -130,6 +130,19 @@ public class PokemonForm
     }
 }
 
+/// <summary>
+/// A species in Pal Park's catching show (the original's <c>pal_park</c> block): the field or the water it hides in
+/// (one of four corners each, 0 for none), how often it turns up against the others there, and the points a catch of
+/// it brings.
+/// </summary>
+public class PalParkData
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int LandArea { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] public int WaterArea { get; set; }
+    public int Rarity { get; set; }
+    public int CatchingPoints { get; set; }
+}
+
 public class PokemonSpecies
 {
     public int DexNumber { get; set; }
@@ -169,6 +182,13 @@ public class PokemonSpecies
     public int HatchCycles { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int BaseFriendship { get; set; }
+
+    /// <summary>How likely it is to run in the Great Marsh, out of 255 (Platinum's species, <c>safari_flee_rate</c>); 0 for the later ones.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int SafariFleeRate { get; set; }
+
+    /// <summary>Where it turns up in Pal Park's catching show and what it is worth there (Platinum's species); null for the later ones.</summary>
+    public PalParkData? PalPark { get; set; }
     public float Height { get; set; } = 0.5f; // meters
     public float Weight { get; set; } = 10.0f; // kg
     /// <summary>Body colour and shape, as the Pokédex sorts them (for the generated models of plan 03 · D5).</summary>

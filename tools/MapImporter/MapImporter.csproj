@@ -3,7 +3,7 @@
   <!-- Development tool: reads Sinnoh's map layouts (not its models or textures) from the Platinum decompilation. -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>

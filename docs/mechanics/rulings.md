@@ -181,7 +181,6 @@ One thing R7 found in the battle's face, not in the rules: a choice handed over 
 Still different, each waiting for the session whose rule it is:
 
 - Obedience is not in the turn yet (R10).
-- The opponents choose "what looks best" (`TrainerAi`), with a little chance and some sense of when a condition or a screen would still do something. R9 writes Platinum's own AI.
 
 R8 (2026-10-05) gave every one of Platinum's 158 held items its code, by the item table's hold effect rather than by name, from the original's block of items in the damage function, its comparison of Speed, its three trigger functions for held items (`BattleSystem_TriggerHeldItem`, `_TriggerLeftovers`, `_TriggerDetrimentalHeldItem`), its answers to a hit (`_TriggerHeldItemOnHit`, `_OnPivotMove`), the accuracy check, the subscripts for the berries against a type and the Quick Claw, and the bag's command (`BtlCmd_UseBagItem`). Where that changed what the engine did, it is again what Platinum does:
 
@@ -199,6 +198,38 @@ Our own choices in R8:
 - **A Metronome's count** forgives a move that landed nowhere (the original decrements on its own flag for a failed move); and the count is kept for every move the holder uses, as the original's `metronomeMove` is.
 - **The refusal for an item the battle can't use** ("There's a time and place for everything, but not now.") is our own line; the original's bag doesn't offer such an item in battle at all. The battle's BAG menu is still the four-item shortcut; R11 builds the bag's screen, with the berries used from it.
 - **Left for the session whose rule it is**: the EV items' EVs and the use items' friendship (R10); the bag's screen in battle (R11); wild Pokémon holding items (R13); the later games' items (R28).
+
+R9 (2026-10-06) wrote Platinum's trainer AI from the original's own (`src/battle/trainer_ai/trainer_ai.c` and the 8,108 lines of its script, `script.s`), the battles that play by rules of their own from the controller and the field's battle setups (`battle_controller_player.c`, `battle_display.c`, `field_battle_data_transfer.c`), and the trainers themselves from `res/trainers/data` and `TrainerData_BuildParty`. Where that changed what the engine did, it is again what Platinum does:
+
+- **The AI scores every move** (`TrainerAI_Init`, `TrainerAI_EvalMoves`): 100 to start, 0 for a move that can't be chosen or has no PP, a damage roll of 100 minus 0 to 15 for each, then each routine its trainer's data names (Basic, EvalAttack, Expert, SetupFirstTurn, Risky, PrioritizeExtremes, BatonPass, CheckHp, Weather, Harassment; TagStrategy added in any double battle) adds or takes away, routine by routine in the order of their bits. The highest score is used, a tie broken by chance. In a double battle each move is scored against each of the other three, a move on the partner counting only at 100 or more, and the best of the four used (`TrainerAI_MainDoubles`).
+- **What the AI knows** is what the original's does: the moves it has seen each Pokémon use, an ability or an item once a line has shown it, and otherwise a guess from the species (an even chance between two abilities). Its arithmetic is the original's, the types' multipliers as 40ths (an immunity 0, neutral 40, the user's own type 60 left as it is), and every roll it makes is the battle's (`RollKind.AiChoice`), so a battle with a trainer still replays.
+- **Switching, items and the Pokémon sent in after a faint** are the original's (`TrainerAI_ShouldSwitch` and its six checks, `TrainerAI_ShouldUseItem`, `BattleAI_PostKOSwitchIn`). A trainer's items are the up to four its data gives; one further down the list is looked at only once few enough of the trainer's Pokémon are left (the original's count of the living against the items).
+- **A trainer's team** is built as the original builds it: the personality from the generator seeded with the IV scale, the level, the species and the trainer's id, run on by its class, with the class's gender in its low byte; the IVs all the scale's share of 31; the nature, gender and ability from the personality; never shiny. The prize money is the last Pokémon's level × 4 × the class's multiplier, doubled in a double battle.
+- **Wild Pokémon** use a move drawn at random from those they can use, as the original's do.
+
+Platinum's quirks, kept because they are what the game does:
+
+- **Basic asks for Levitate twice** where the second was meant to be Dry Skin, so Dry Skin never marks a Water move down. **EvaDown2 and AccDown2** are checked with each other's routine.
+- **Thunder's own check in Expert** is never reached (its dispatch goes elsewhere first); **Magnitude** compares the ability loaded last by the check before it.
+- **Weather** (the flag) gives its +5 to a move that sets weather the field hasn't got; any other move falls through to the sun's check, so on the first turn every move but a sunny day gets it alike.
+- **The item check doesn't stop at the first item it would use**: every item after it that passes the count's gate is spent too, and the last of them is the one used (`TrainerAI_ShouldUseItem` sets `result` and never breaks).
+- **The Pokémon sent in after a faint** is scored in a byte that wraps round, as the original's is; **Perish Song's switch** never fires (the original compares the wrong value).
+- **The Great Marsh's bait and mud**: bait raises the catch stage and, nine times in ten, the escape stage; mud lowers the escape stage and, nine times in ten, the catch stage; the Pokémon runs when a roll of 255 is at or under its species' flee rate taken at the escape stage. The player acts first.
+
+The battles of their own (`BattleKind`):
+
+- **A roamer** runs at its first chance (`RoamingPokemon_Main`) unless bound, held by Mean Look, or held by Shadow Tag or by Arena Trap (Levitate floats above it).
+- **The catching lesson** (`FieldBattleDTO_NewCatchingTutorial`): the assistant's own starter at level 5 against a level-2 Bidoof, twenty Poké Balls, nothing chosen by the player; no critical hit, no move misses, and a ball that can't fail. The original's screens choose the assistant's first move and then the ball; here the assistant uses one move and then throws (the AI's `CatchTutorial` routine would throw at a fifth of the HP). The player's Pokédex isn't told of the Bidoof, and the catch is the assistant's.
+- **The first battle** (the rival's on Route 201, `BATTLE_STATUS_FIRST_BATTLE`) has no critical hits.
+- **A battle that can't be run from** (the story's legendaries) refuses RUN.
+- **Pal Park**: a Park Ball can't fail and the player acts first, so the Pokémon never acts. It is thrown as a Safari Ball and said as a Park Ball, since Platinum has no Park Ball item. The show's score is the original's (`catching_show.c`): the six species' points, 200 for each catch that shares no type with the one before, 50 for each type caught, two for each second under a thousand.
+- **A tag battle** (a partner at the player's side, `BATTLE_TYPE_TRAINER_WITH_AI_PARTNER`): the partner chooses with its own data's flags and never uses items; the player loses when their own team is down, whatever the partner has left.
+
+Our own choices in R9:
+
+- **The lines** of the Great Marsh, of a wild Pokémon running and of the lesson are our own, on the original's beats.
+- **What the AI reads from the log**: an ability or an item counts as shown once a line names it on the Pokémon, which is how the original's flags are set by its messages.
+- **Left for the session whose rule it is**: the Great Marsh and Pal Park as places, with their steps and their timer (plan 01, R16); roamers moving over the map (R13); two trainers in the field spotting the player at once (plan 02); the partner drawn as a trainer in battle and healing the team between battles (a script's `heal`, plan 02's chapters); the Battle Frontier's own AI uses (R18).
 
 What matches, and is held by `FormulaTests`, `BattleScenarioTests` and `BattleCoreTests`: the damage formula and its order (stat × power × (2 × level / 5 + 2) / defence / 50, a burn's halving, + 2, the critical multiplier, a Life Orb, the roll taking 0 to 15 hundredths off, then × 1.5 for the user's own type, then each of the target's types, and never less than 1 for a hit that lands), stat stages, what a critical hit ignores, and everything in the list above.
 
@@ -290,3 +321,31 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Who hands out a diploma | The game director in Jubilife City's Game Freak building | The Pokédex itself, the first time it is opened once complete; it can be seen again from the search panel | Jubilife City is still a hand-made map without that building; plan 01 · M5 can move the ceremony there |
 | A place a script takes the player into | Shown on the town map where the place is | The Great Marsh is shown at Pastoria City, whose gate leads into it; Turnback Cave's inner rooms where the rest of the cave is | No warp leads there, so the import can't find their place by itself |
 | The size page's trainer | The player's silhouette | The player's own field sprite as a silhouette, 1.4 m tall for both characters | Our own choice of height |
+
+## Field moves and key items (2026-10-06, plan 02 · S2)
+
+**Platinum's rules, kept as they are** (`src/field_move_tasks.c`, `src/overlay005/`, `src/item_use_functions.c`)
+
+- The badge each move asks for outside battle is Platinum's: Coal for Rock Smash, Forest for Cut, Cobble for Fly, Fen for Surf, Relic for Defog, Mine for Strength, Icicle for Rock Climb, Beacon for Waterfall. Flash, Teleport, Dig, Sweet Scent, Soft-Boiled and Milk Drink ask for none.
+- Where a move can be used: Cut, Rock Smash (not from the water) and Strength facing their obstacle; Surf facing water one can surf on, on foot; Waterfall facing a waterfall from the water; Rock Climb facing a rock face along its grain; Flash in a dark place not lit yet; Defog in fog; Fly where the place's header allows flying, and Teleport there too but not in a town; Dig where it allows an Escape Rope and a way out is known; Sweet Scent anywhere. The party menu says why a move can't be used, and lists a Pokémon's field moves in the order of its moves.
+- Strength lasts until the player leaves the place; Flash and Defog until the player goes somewhere that isn't a cave. Leaving a place clears its local flags, so a tree that was cut and a rock that was smashed are back, and a boulder that was pushed stands where it stood.
+- A boulder is pushed only where it could itself step: no water, ledge, cliff, warp or anyone in the way. It takes the original's slow walk (16 frames).
+- Going down a waterfall needs a Pokémon that knows Waterfall and no badge, and asks nothing; going up asks.
+- Soft-Boiled and Milk Drink give a fifth of the user's maximum HP (no more than the other is missing), and can't be used by a Pokémon with that or less left, on itself, or on one fainted or at full HP.
+- Dig and an Escape Rope lead to where the player went into the caves (the tile outside the way in, one further south for someone who walked in northward); Teleport to the town of the Pokémon Center last gone into, Twinleaf Town before any.
+- Fly goes to the original's twenty fly spots, each opened by arriving in its town for the first time (the Pokémon League's two and Route 221's by the story).
+- Fishing: the cast takes 34 frames, whether anything will bite is rolled at the cast (the rod's rate, then a slot: 60, 30, 5, 4 and 1 in a hundred for the Old Rod, 40, 40, 15, 4 and 1 for the other two), something bites after one to four seconds, and the button must be pressed within 45, 30 or 15 frames by rod. Pressed early, the line comes up empty; nothing bites at all after four seconds.
+- The Bicycle can't be ridden through very tall grass, mud or the marsh's grass, nor where the place's header forbids it, and can't be got off on the Cycling Road or a bike bridge. The Cycling Road's gate keepers let only riders through, and a rider stays on the Bicycle until the next warp. The run button changes gear.
+- The Pokétch's apps keep the original's numbering.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Chatter in the field | Records the player's voice as Chatot's cry | Not in the party menu | No microphone (as Chatter's confusion, above) |
+| A partner travelling with the player | Fly, Teleport, Dig and an Escape Rope are refused while Cheryl, Mira, Riley or Buck walks along | The check is there (`FieldMoveError.Partner`) and never fires | Nobody walks along yet: their chapters (plan 02 · S6, S7, S10, S15) |
+| The Pokétch | Twenty-five apps on the lower touch screen | The digital watch, the pedometer and the team's app, on a watch over the field (P shows it, O changes the app) | One screen and no touch; the other apps come with what they show (the Dowsing Machine with item hunting, the Day-Care Checker with the Day Care) |
+| The Bicycle | The player drawn riding it | Its pace, rules, music and sounds; the player is drawn on foot | No riding sprite yet |
+| Feebas | Only on six tiles of Mt. Coronet's lake, which change with the trend | Fished like any other slot | The lake's floor isn't open |
+| Waking up after losing | At the last Pokémon Center | At home, as before | The whiteout is plan 06 · R10 |
+| Fly's map | A cursor over the town map | A list of the towns beside the map, the town ringed | Our own interface (style guide, "Fly") |

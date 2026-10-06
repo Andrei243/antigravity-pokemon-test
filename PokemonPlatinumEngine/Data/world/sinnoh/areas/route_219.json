@@ -23,6 +23,30 @@
     { "species": "Pelipper", "level": 20, "maxLevel": 40 }
   ],
   "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Finneon", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Lumineon", "level": 25, "maxLevel": 35 },
+    { "species": "Lumineon", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Lumineon", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
   "warps": [],
   "objects": [
     { "id": "tuber_trenton", "looks": "tuber_m", "movement": "walk_back_and_forth", "x": 171, "z": 887, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TUBER_TRENTON" },

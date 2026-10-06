@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-167 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+170 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -87,15 +87,17 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c9_o03` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Snowpoint City |
 | `c9_s01` | Snowpoint Temple | a building: Temple |  | 11.0 × 8.0 × 5.9 | 1 | Snowpoint City |
 | `can01` | steel drums in the mine | a prop: Drums |  | 1.8 × 1.9 × 1.2 | 4 | Oreburgh Mine |
-| `cy_slope` | a ramp for the Bicycle | nothing of its own: the ground under it draws it | M6 | 1.0 × 2.0 × 2.0 | 14 | Route 207, Route 209, Route 210, Route 228 |
+| `cy_slope` | a muddy slope only a Bicycle gets up: its own ground draws it | nothing of its own: the ground under it draws it |  | 1.0 × 2.0 × 2.0 | 14 | Route 207, Route 209, Route 210, Route 228 |
+| `cy_slope_dun` | a Bicycle's ramp in a cave: the run up to it draws it | nothing of its own: the ground under it draws it |  | 1.0 × 2.0 × 2.0 | 3 | Wayward Cave |
 | `d01_o1` | the mine's loading machine, with a conveyor down either side of the coal face | a building: Factory, 1 storeys |  | 21.0 × 9.4 × 4.6 | 1 | Oreburgh Mine |
 | `d11_o01a` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
 | `d11_o01b` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
-| `d11_o02a` | a flower bed of Amity Square | a prop: Hedge | M6 | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
-| `d11_o02b` | a flower bed of Amity Square | a prop: Hedge | M6 | 2.2 × 3.2 × 1.0 | 1 | Amity Square |
-| `d11s01` | a standing stone of Amity Square | a prop: Column | M6 | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
+| `d11_o02a` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
+| `d11_o02b` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.2 × 3.2 × 1.0 | 1 | Amity Square |
+| `d11s01` | a great standing stone of Amity Square | a prop: Outcrop |  | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
 | `d16_o01` | lava on Stark Mountain's flank | nothing of its own: the ground under it draws it | M10 | 7.0 × 8.0 × 0.0 | 2 | Stark Mountain |
 | `d16_o02` | the mouth of Stark Mountain | a prop: Outcrop | M10 | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
+| `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 2 | Solaceon Ruins |
 | `d23_yane` | the Mansion's back, over the Trophy Garden | a building: Mansion |  | 32.0 × 5.5 × 4.8 | 1 | Trophy Garden |
 | `d2_s01` | a wind turbine | a prop: WindTurbine |  | 2.8 × 5.4 × 8.3 | 3 | Valley Windworks |
 | `d2_s01a` | a wind turbine | a prop: WindTurbine |  | 3.0 × 5.1 × 7.5 | 4 | Valley Windworks |
@@ -110,7 +112,8 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d32_s04` | the Battle Arcade | a building: Hall, signed ARCADE | M10 | 13.0 × 9.6 × 12.6 | 1 | Battle Frontier |
 | `d32_s05` | a low building of the Battle Frontier | a building: Warehouse | M10 | 7.9 × 4.8 × 2.4 | 2 | Battle Frontier |
 | `d32_s06` | a low building of the Fight Area | a building: Warehouse | M10 | 5.9 × 6.0 × 2.9 | 2 | Fight Area |
-| `d3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.2 × 1.6 | 1 | Route 212 |
+| `d3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.2 × 1.6 | 2 | Eterna Forest, Route 212 |
+| `d3_s01` | the Old Chateau, abandoned in Eterna Forest | a building: Mansion, 2 storeys |  | 11.5 × 5.3 × 5.3 | 1 | Eterna Forest |
 | `d4_s01` | the Fuego Ironworks | a building: Factory, signed IRONWORKS |  | 16.0 × 10.5 × 8.9 | 1 | Fuego Ironworks |
 | `d5_ana_d` | a rift at Spear Pillar | nothing of its own: the ground under it draws it | M8 | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
 | `d5_ana_p` | a rift at Spear Pillar | nothing of its own: the ground under it draws it | M8 | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
@@ -187,5 +190,5 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 
 ## In numbers
 
-- 88 models are buildings, of 26 kinds; 54 are props; 13 are doors.
-- 32 have a stand-in for now: 14 until M10, 4 until M6, 7 until M7, 7 until M8.
+- 89 models are buildings, of 26 kinds; 55 are props; 13 are doors.
+- 28 have a stand-in for now: 14 until M10, 7 until M7, 7 until M8.

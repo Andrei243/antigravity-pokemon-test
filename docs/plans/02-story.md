@@ -8,7 +8,8 @@
 - `Core/GameEngine.cs` switches between overworld, dialogue, battle and menu states. NPCs (`Overworld/NPC.cs`) have lines of their own or a script, and can be trainers (line of sight, "!" and a battle), a nurse, a clerk, a PC or the starter briefcase.
 - A fresh game already has a Turtwig, and the Running Shoes are always on.
 - *Since 2026-10-05, after S1:* items lie on the ground. The 37 item balls and 21 hidden items of the open areas are where Platinum has them, with what Platinum puts in them (the Potion by Route 202's grass, a Poké Ball on Route 203, TMs in Oreburgh Gate's cellar, a Rare Candy in Floaroma Meadow), and every area opened later brings its own.
-- There are no cutscenes, key items, field moves or rival yet.
+- *Since S2 (2026-10-06):* the field moves work, from the party menu and from what the player faces, with Platinum's badges: trees are cut, rocks smashed, boulders pushed, Wayward Cave lit, the water surfed, waterfalls and rock faces climbed, and Fly, Teleport, Dig and Sweet Scent do what they do. The Bicycle is ridden (and the Cycling Road's gates let only riders through), the rods fish, an Escape Rope leads out of the caves, a key item can be kept on the item button, and the Pokétch has its clock, pedometer and team. Nothing gives any of them yet: that is the chapters'.
+- There are no cutscenes or rival yet.
 - Battles (`Battle/BattleEngine.cs`): single and double battles with physical/special damage, simple status and stat moves, catching, EXP, level-ups and evolution, switching, a small bag. Presentation (`BattleAnimator`, `BattleRenderer`) is driven by `QueueMessage(text, onComplete, onShow)`: `onShow` starts the animation a message describes. Abilities, held items and Gen 4 status rules are partly in (see plan 06 · R7–R9); no weather or tag battles.
 
 ## Design
@@ -112,7 +113,7 @@ Wild levels and every other trainer's team come from the decomp (`res/field/enco
 - **No list of its own in the save**: a ball is gone because its flag is set, as in the original (`FLAG_OBTAINED_ROUTE_202_POTION`), so `TakenItems` stays for whatever a later chapter gives no flag to.
 - **Decisions**: every ball looks the same whatever is in it, as in Platinum; a hidden item is found by looking at its tile, never by standing on it; the bag is never full, so nothing is left lying. The Works Key's ball in Floaroma Meadow is no item ball (its script is the meadow's own) and waits for S6.
 - **Not yet**: the Dowsing Machine (the ranges are imported; the Pokétch is S2's), and berries' soft soil.
-- A wild battle a script starts can be run from until plan 06 · R9 gives battles a "can't flee".
+- ~~A wild battle a script starts can be run from until plan 06 · R9 gives battles a "can't flee".~~ Done in R9 (2026-10-06): `wildbattle "Giratina" 47 nofleeing`, and with it `battle a and b with c` (two trainers, a partner), `battle self first` (the rival's first battle) and `catchinglesson "Bidoof" 2`.
 - The rival's name and `{rival}` in lines (S4, see below).
 - People don't wander: the area files keep each object's `movement` (`wander_around`, `look_south`…) and nothing reads it yet. It belongs with the first chapter that has a town full of people (S4), not with the scripts.
 - A badge has no fanfare of its own (`fanfare` knows `heal`, `item`, `pokemon`, `levelup`): plan 05.
@@ -124,6 +125,37 @@ Party-menu field moves, the badge checks, obstacle objects (cut tree, cracked ro
 *Ready from S1:* the question ("Would you like to use Cut?") is `ask` in a script, with `if knows "Cut"` and `if badge forest` for the gate, and the common script an obstacle runs is one more entry of `common.txt`; an obstacle that gives way and comes back with the map is `hide` (it holds until the map is come to again). What is missing is the trigger: facing a prop and pressing the button, and choosing a move from the party menu, start no script yet.
 
 *Ready from plan 01 · M3:* the movement states and their rules (`Overworld/FieldMovement.cs`): surfing with its start from the shore and its landing, waterfalls up and down, rock faces, the Bicycle's pace and where it can't go. Today each asks only that a party Pokémon knows the move (`FieldMovement.MovesOf`): the badge checks go there. Surf starts on the confirm button at the water's edge with no question asked; the party-menu way of using a move, and the yes-or-no, are this session's. The three obstacles are props that are drawn and block (`CutTree`, `CrackedRock`, `StrengthBoulder`, placed from the import); making them give way means removing the prop and rebuilding the chunk's scene. The Bicycle has rules but no item, no sprite and no key.
+
+**Outcome of S2 (2026-10-06).** All of it is in; what gives the moves and the items is the chapters'.
+
+- **The rules** (`Overworld/FieldMoveRules.cs`, GPU-free): the fifteen field moves of Platinum's party menu (`FieldMove`; Chatter is left out, `docs/mechanics/rulings.md`), the badge each asks for (Platinum's, Relic for Defog and Fen for Surf), and the original's check of where each can be used (`Check` on a `FieldSpot`: the obstacle or tile faced, water, a dark place, fog, a place one may fly from, a way out of the caves, a partner, what is in force already), with the original's reasons as our own words (`Why`).
+- **Obstacles are things of the map**, as the original's are: the 18 small trees, 65 cracked rocks and 2 boulders of the open areas (`NPC.Obstacle`, `Map.AddObstacle`) are drawn as cards and stand in the way like a person. Each carries the original's flag that hides it once cleared, made its area's own (`FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_ETERNA_CITY`); local flags are cleared whenever the player comes to another place (`StoryState.ClearLocal`), so trees and rocks are back on the next visit and pushed boulders stand where they stood.
+- **Facing one** runs its common script (`CutTree`, `Rock`, `Boulder`): our own words for what it is, and a question when a Pokémon of the team knows the move and the badge allows it. The tile ahead does the same as the original's `Field_TileBehaviorToScript`: a rock face (`RockFace`), a waterfall from the water (`Waterfall`), deep water at the player's feet (`Water`, offered only to someone who may surf: Surf no longer starts without a question).
+- **The party menu** lists each Pokémon's field moves under SUMMARY and SWITCH, in the order of its moves (`PartyScreen.ActionsFor`); a move that can't be used here says why, and one that can closes the menu and runs `common.Use<Move>` for that Pokémon. Soft-Boiled and Milk Drink choose a Pokémon to share HP with, in the menu itself.
+- **Using a move** is `usemove` in a script: "{user} used Cut!", then the cut-in (`UI/FieldCutIn.cs`; style guide, "A field move's cut-in": the Pokémon on a band across the screen with its cry), and as the band closes the obstacle gives way (leaves, or a cloud of chips; `FieldLife.GiveWay`). Strength puts every boulder of the place within reach of a push (the original's slow walk, the player leaning in), until the player leaves; Flash lights a dark cave and Defog lifts the fog, until the player goes somewhere that isn't a cave (story flags, `FLAG_STRENGTH_ACTIVE`, `FLAG_FLASH_ACTIVE`, `FLAG_DEFOG_ACTIVE`). Surf rides out, Waterfall and Rock Climb climb (`Player.Climb`: the movement rules let one up only after a yes, `Walker.Climbing`; down a waterfall needs the move and no badge, as in the original). Fly opens the map of the towns arrived in (`UI/FlyScreen.cs`; the original's twenty fly spots, `Data/SpawnLocations.cs`), Teleport goes back to the town of the last Pokémon Center gone into, Dig and an Escape Rope out of the caves to where the player went in, and Sweet Scent draws out a wild Pokémon of the place.
+- **Key items**: the bag uses the Bicycle, the rods and an Escape Rope in the field (`BagScreen.TakeFieldUse`) and keeps one key item on the item button (REGISTER; C, saved). The Bicycle has its rules (`Overworld/Bicycle.cs`: where one may ride or get off), its music, its bell and its gears on the run button; the Cycling Road's gates (`"bicycle": true` on an overlay's passage) send anyone on foot back (`common.CyclistsOnly`) and keep a rider on the Bicycle until the next warp. The rods (`Overworld/Fishing.cs`) cast, wait, bite and land by the original's timings, from each area's three rod tables, which the importer now writes (`oldRod`, `goodRod`, `superRod`). The Key Items pocket was there already.
+- **The Pokétch** (`Models/Poketch.cs`, saved): given by `poketch on`, its apps by `poketchapp`, shown over the field on P with O for the next app (`UI/PoketchView.cs`; style guide, "The Pokétch"): the digital watch, the pedometer (every step counted while it is on the wrist) and the team's app.
+- **Scripts**: `usemove`, `surf`, `climb`, `fly`, `teleport`, `escape`, `sweetscent`, `poketch on`, `poketchapp`, the question `poketch` and `{user}` in lines ([`docs/scripts.md`](../scripts.md), "Field moves and key items"), with both hosts.
+- **Checked by** `FieldMoveTests` (every gate blocked without the move or the badge and open with both, the obstacles' scripts on their maps, the boulder's push, the climbs, Flash and Defog and how long they last, the party menu, Soft-Boiled, the cut-in, the fly spots, Fly's map, Teleport, Dig and Sweet Scent, the Bicycle's rules and the Cycling Road's gates, the bag's field use and the item button, fishing, the rod tables, the Pokétch, the new commands' errors), and the story's own tests play every new common script to its end on every way through it. The harness's `fieldmoves` mode shows them in the game (`fm01` to `fm26`).
+
+**Decisions taken in S2.**
+
+1. **An obstacle is a thing of the map, not a prop**, as in the original: it is found, talked to, hidden by its flag and pushed like someone of the map, and nothing of the scenery is rebuilt when one gives way.
+2. **What lasts only in a place is a local flag**, cleared when the player comes to another area or through a warp, as the original clears its local flags when the map's header changes. One map of the world holds many areas, so an obstacle's flag is made its area's own.
+3. **The question asks; the movement rules only follow.** The badge is asked by the script and by the menu, never by `FieldMovement`, which asks that the move is known and, for a climb up, that the player said yes.
+4. **Surf asks.** M3's Surf on the confirm button with no question is gone: facing deep water asks, as the original does.
+5. **The party menu checks before it closes**, so a move that can't be used says why without leaving the menu, and the script that runs can take the check as done.
+6. **The cut-in plays the Pokémon's cry**, as the original's does, and the obstacle gives way as its band closes, not after it.
+7. **The Pokétch shows three apps**: the clock, the pedometer and the team. The rest are kept in the save as they are given and wait for what they show.
+8. **Partners never travel along yet**, so the partner check is written and never fires; the chapters with Cheryl, Mira, Riley and Buck turn it on.
+
+**Left for later, on purpose.**
+- Who gives what: the HMs, the Bicycle, the rods, the Pokétch and its apps are the chapters' (S5 to S13).
+- The Bicycle isn't drawn: the player keeps walking pictures at its pace until a riding sprite is made (plan 04).
+- The whiteout still wakes the player at home; the last Pokémon Center is plan 06 · R10 (the spot Teleport goes to is kept already).
+- Feebas's six tiles in Mt. Coronet's lake, with the lake's floor (plan 01).
+- The Pokétch's other apps (the Dowsing Machine with the hidden items' ranges, the Day-Care Checker with the Day Care, the Marking Map with the roaming legendaries).
+- Deep snow's slow walk and the mud slopes wait for the areas that have them (plan 01 · M7 and M8).
 
 ### S3 · Moved to plan 06
 Double and tag battles, trainer AI, scripted wild battles, whiteout money, the EXP Share, the move-learning prompt and cancelling evolution are now [plan 06](06-game-mechanics.md) · R9 and R10. S5's tag battle in Jubilife needs R9 first. The number S3 stays unused so the chapters keep theirs.
@@ -158,7 +190,7 @@ Still to do in S4: the rival's name, which Platinum asks last in the introductio
 ## Status
 
 - [x] S1 Story state and scripting (2026-10-05)
-- [ ] S2 Field moves, obstacles and key items
+- [x] S2 Field moves, obstacles and key items (2026-10-06)
 - S3 moved to plan 06 (R9, R10)
 - [ ] S4 Lake Verity and a Pokédex
 - [ ] S5 Jubilife and Roark

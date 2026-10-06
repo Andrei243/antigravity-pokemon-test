@@ -15,7 +15,9 @@ public enum BattleResult
     PlayerVictory,
     PlayerDefeat,
     EnemyCaught,
-    PlayerRan
+    PlayerRan,
+    /// <summary>The wild Pokémon ran away (a roamer, one of the Great Marsh's).</summary>
+    EnemyFled
 }
 
 /// <summary>
@@ -157,6 +159,9 @@ public partial class BattleEngine
         pcBoxStorage = setup.PcStorage;
         Trainers = setup.Trainers;
 
+        Kind = setup.Kind;
+        Partner = setup.Partner;
+
         // The rules get copies of every Pokémon; the game's own are what the screen shows
         var trainers = setup.Trainers.Select(mirror.Copy).ToList();
         core = new BattleCore(new CoreSetup
@@ -169,7 +174,12 @@ public partial class BattleEngine
             Random = setup.Random,
             Rules = setup.Rules,
             Conditions = setup.Conditions ?? new BattleConditions { HasCaught = species => Pokedex.IsCaught(species.DexNumber) },
-            PlayerName = PlayerIdentity.Name
+            PlayerName = setup.PlayerName ?? PlayerIdentity.Name,
+            Kind = setup.Kind,
+            Partner = setup.Partner == null ? null : mirror.Copy(setup.Partner),
+            CannotFlee = setup.CannotFlee,
+            FirstBattle = setup.FirstBattle,
+            SpecialBalls = setup.SpecialBalls
         });
 
         Anim.Slots = core.PlayerSlots.Count;
@@ -188,9 +198,23 @@ public partial class BattleEngine
     private Battler OnScreen(Battler place) => new(place.Side, place.Slot)
     {
         Pokemon = place.Pokemon == null ? null : mirror.Shown(place.Pokemon),
-        Roster = place.IsPlayerSide ? PlayerParty : IsTrainerBattle ? Trainers[Math.Min(place.Slot, Trainers.Count - 1)].Party : null,
-        Trainer = place.IsPlayerSide || !IsTrainerBattle ? null : Trainers[Math.Min(place.Slot, Trainers.Count - 1)]
+        Roster = place.IsPlayerSide ? (place.Slot == 1 && Partner != null && core.Partner != null ? Partner.Party : PlayerParty)
+            : IsTrainerBattle ? Trainers[Math.Min(place.Slot, Trainers.Count - 1)].Party : null,
+        Trainer = place.IsPlayerSide ? (place.Slot == 1 && core.Partner != null ? Partner : null)
+            : !IsTrainerBattle ? null : Trainers[Math.Min(place.Slot, Trainers.Count - 1)]
     };
+
+    /// <summary>What kind of battle it is (a roamer, the catching lesson, the Great Marsh, Pal Park).</summary>
+    public BattleKind Kind { get; }
+
+    /// <summary>The trainer beside the player in a tag battle (their Pokémon stand in the player's second place).</summary>
+    public Trainer? Partner { get; }
+
+    /// <summary>The Safari Balls or Park Balls left.</summary>
+    public int SpecialBalls => core.SpecialBalls;
+
+    /// <summary>The places the player chooses for: the player's own (not a partner's, and none in the catching lesson).</summary>
+    public IEnumerable<Battler> PlayerChooses => Kind == BattleKind.CatchingLesson ? Enumerable.Empty<Battler>() : PlayerSlots.Where(b => b.Trainer == null);
 
     private IReadOnlyList<Battler> SlotsOf(BattleSide side) => side == BattleSide.Player ? PlayerSlots : EnemySlots;
 
@@ -344,7 +368,7 @@ public partial class BattleEngine
                 if (trainers.Second != null) Anim.EnemyTrainer2 = trainers.Second;
                 break;
             case Seen seen:
-                Pokedex.RegisterSeen(seen.Species.DexNumber);
+                if (Kind != BattleKind.CatchingLesson) Pokedex.RegisterSeen(seen.Species.DexNumber);
                 break;
             case Entered entered:
             {
@@ -496,6 +520,8 @@ public partial class BattleEngine
             {
                 var mine = mirror.Shown(caught.Pokemon);
                 AudioManager.PlayMusic(MusicRole.VictoryWild);
+                // The catching lesson's catch is the assistant's: neither the player's Pokédex nor their team hears of it
+                if (Kind == BattleKind.CatchingLesson) break;
                 Pokedex.RegisterCaught(mine.Species.DexNumber);
                 mine.ResetStatStages();
                 mine.Ball = caught.Ball;

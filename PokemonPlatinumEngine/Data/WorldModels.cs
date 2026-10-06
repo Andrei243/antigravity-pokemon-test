@@ -91,7 +91,8 @@ public static class WorldModels
         Door("t1_door1"), Door("t2_door1"), Door("t2_door2"), Door("t3_door1"), Door("l2_door1"), Door("d3_door1"),
         Ground("wfall3_4", "a waterfall"), Ground("wfall3_5", "a waterfall"), Ground("wfall16_5", "a waterfall"), Ground("wfall11_14", "a waterfall"),
         Ground("l_lake", "the surface of a lake"), Ground("l_lake_l4", "the surface of a lake"),
-        Ground("cy_slope", "a ramp for the Bicycle", until: "M6"),
+        Ground("cy_slope", "a muddy slope only a Bicycle gets up: its own ground draws it"),
+        Ground("cy_slope_dun", "a Bicycle's ramp in a cave: the run up to it draws it"),
 
         // ---------------------------------------------------------------- towns
         House("t1_h01", Architecture.Timber, "a house of Twinleaf Town"),
@@ -221,6 +222,7 @@ public static class WorldModels
         Built("r209s01", BuildingKind.Tower, "the Lost Tower"),
         Thing("r209s02", PropType.Cairn, "the Hallowed Tower"),
         Built("r210h02", BuildingKind.Shop, "the Café Cabin", Architecture.Farm, sign: "CAFE"),
+        Built("d3_s01", BuildingKind.Mansion, "the Old Chateau, abandoned in Eterna Forest", storeys: 2),
         Built("r212s01", BuildingKind.Mansion, "the Pokémon Mansion"),
         Thing("r212s02", PropType.Topiary, "a clipped tree, at the Mansion and in Canalave City"),
         Thing("r212s03", PropType.Topiary, "a clipped tree of the Mansion's garden"),
@@ -234,11 +236,12 @@ public static class WorldModels
         Thing("board_d", PropType.Billboard, "a billboard"),
 
         // ---------------------------------------------------------------- places of their own
-        Thing("d11s01", PropType.Column, "a standing stone of Amity Square", until: "M6"),
+        Thing("d11s01", PropType.Outcrop, "a great standing stone of Amity Square"),
+        Thing("d20_o03", PropType.Outcrop, "a block of carved stone in the Solaceon Ruins"),
         Thing("d11_o01a", PropType.Bench, "a bench in Amity Square"),
         Thing("d11_o01b", PropType.Bench, "a bench in Amity Square"),
-        Thing("d11_o02a", PropType.Hedge, "a flower bed of Amity Square", until: "M6"),
-        Thing("d11_o02b", PropType.Hedge, "a flower bed of Amity Square", until: "M6"),
+        Thing("d11_o02a", PropType.FlowerBed, "a flower bed of Amity Square"),
+        Thing("d11_o02b", PropType.FlowerBed, "a flower bed of Amity Square"),
         Thing("d6_o01", PropType.Crates, "the Great Marsh's tram", until: "M7"),
         Thing("d6_o02", PropType.Cairn, "the Great Marsh's lookout glasses", until: "M7"),
         Thing("d5_colum01", PropType.Column, "a column of Spear Pillar"), Thing("d5_colum02", PropType.Column, "a column of Spear Pillar"),

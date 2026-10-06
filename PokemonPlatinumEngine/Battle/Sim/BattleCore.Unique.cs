@@ -912,6 +912,7 @@ public sealed partial class BattleCore
             return;
         }
         user.Volatile.Types = new List<PokemonType> { type };
+        user.Volatile.Camouflaged = true;
         Say($"{user.Name} transformed into the {type} type!");
     }
 

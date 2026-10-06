@@ -52,7 +52,9 @@ public enum TerrainCover
     /// <summary>A broad-leaved tree, where an area's forests are not Sinnoh's pines (the Battle Zone).</summary>
     Broadleaf,
     /// <summary>The dark in the mouth of a cave: blocked where it is the hole in the rock, open where it is the way in.</summary>
-    CaveMouth
+    CaveMouth,
+    /// <summary>The dark under the trees where a forest is entered: blocked where it is the shade beyond, open where it is the way in.</summary>
+    ForestMouth
 }
 
 /// <summary>The one-character codes of <see cref="TerrainCover"/> in chunk files.</summary>
@@ -65,7 +67,8 @@ public static class TerrainCoverCodes
         (TerrainCover.CaveFloor, 'c'), (TerrainCover.Snow, '^'), (TerrainCover.Ice, 'i'), (TerrainCover.Marsh, 'm'),
         (TerrainCover.Water, '~'), (TerrainCover.Bridge, 'b'), (TerrainCover.Steps, 's'), (TerrainCover.Tree, 'T'),
         (TerrainCover.Cliff, 'C'), (TerrainCover.Boulder, 'R'), (TerrainCover.Fence, 'F'), (TerrainCover.Building, 'B'),
-        (TerrainCover.Lamp, 'L'), (TerrainCover.Walkway, 'W'), (TerrainCover.Broadleaf, 'O'), (TerrainCover.CaveMouth, 'M')
+        (TerrainCover.Lamp, 'L'), (TerrainCover.Walkway, 'W'), (TerrainCover.Broadleaf, 'O'), (TerrainCover.CaveMouth, 'M'),
+        (TerrainCover.ForestMouth, 'E')
     };
 
     public static char CodeOf(TerrainCover cover) => Table.First(e => e.Cover == cover).Code;
@@ -309,6 +312,21 @@ public sealed class WorldAreaFile
 
     public static readonly int[] WaterSlotWeights = { 60, 30, 5, 4, 1 };
 
+    /// <summary>
+    /// The wild Pokémon hooked with each rod (plan 02 · S2): five slots each with a range of levels, and the rod's
+    /// rate, the chance in a hundred that anything bites at all. The Old Rod's slots bite as often as the water's;
+    /// the Good and Super Rods' 40, 40, 15, 4 and 1 times in a hundred (<see cref="RodSlotWeights"/>,
+    /// <c>GetRodEncounterSlot</c>). Left out where the rod catches nothing.
+    /// </summary>
+    public List<AreaEncounter>? OldRod { get; set; }
+    public int? OldRodRate { get; set; }
+    public List<AreaEncounter>? GoodRod { get; set; }
+    public int? GoodRodRate { get; set; }
+    public List<AreaEncounter>? SuperRod { get; set; }
+    public int? SuperRodRate { get; set; }
+
+    public static readonly int[] RodSlotWeights = { 40, 40, 15, 4, 1 };
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();
@@ -426,10 +444,23 @@ public sealed class WorldOverlayFile
     public List<OverlayExit>? Exits { get; set; }
 
     /// <summary>
+    /// Warps into a building that is only passed through (a gate house), by number, each with the warp of the
+    /// area it comes out at on the far side: one is put down there as if the building's rooms had been walked.
+    /// Its rooms come with plan 01 · M11.
+    /// </summary>
+    public List<OverlayPassage>? Through { get; set; }
+
+    /// <summary>
     /// Which of the original's people and things appear, by their id in the area file, and who they are here.
     /// Anyone not listed stays away until the story brings them.
     /// </summary>
     public Dictionary<string, OverlayPerson>? People { get; set; }
+
+    /// <summary>
+    /// Objects of the area file left out for now, by id: an item on a ledge reached only through a place that
+    /// isn't open yet, which would lie where nobody can get to it.
+    /// </summary>
+    public List<string>? HeldBack { get; set; }
 
     /// <summary>What the area's signposts and mailboxes say, by their id in the area file.</summary>
     public Dictionary<string, string>? Signs { get; set; }
@@ -459,6 +490,21 @@ public sealed class OverlayDoor
     public int X { get; set; }
     public int Y { get; set; }
     public Direction Facing { get; set; } = Direction.Up;
+}
+
+/// <summary>A warp into a gate house, and the warp of the area on its far side one comes out at.</summary>
+[JsonConverter(typeof(OneLine<OverlayPassage>))]
+public sealed class OverlayPassage
+{
+    public int Warp { get; set; }
+    public string To { get; set; } = "";
+    public int ToWarp { get; set; }
+
+    /// <summary>
+    /// A gate onto the Cycling Road (plan 02 · S2): only a rider goes through it, as the original's gate keepers
+    /// say, and comes out on the road unable to get off until the next warp (<c>FLAG_ON_CYCLING_ROAD</c>).
+    /// </summary>
+    public bool Bicycle { get; set; }
 }
 
 /// <summary>One of an area's triggers given its script: the name of one in the area's script file, or a common one.</summary>
@@ -529,6 +575,12 @@ public sealed class AreaObject
     public int Facing { get; set; }
     public int RangeX { get; set; }
     public int RangeZ { get; set; }
+
+    /// <summary>
+    /// How high the original stands it, in tiles; left out on the ground. Someone on a bridge's deck has the deck's
+    /// height here, and the ground under them may be walked (or be a way into a cave, as under the Cycling Road).
+    /// </summary>
+    public int? Y { get; set; }
 
     /// <summary>For a trainer: how they watch for the player; left out for everyone else.</summary>
     public string? Trainer { get; set; }

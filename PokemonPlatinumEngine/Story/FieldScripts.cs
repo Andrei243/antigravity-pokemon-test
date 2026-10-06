@@ -20,6 +20,28 @@ public static class FieldScripts
     public const string ItemBall = "common.ItemBall";
     public const string HiddenItem = "common.HiddenItem";
 
+    // Field moves (plan 02 · S2): what an obstacle, the water, a waterfall and a rock face run when faced
+    public const string CutTree = "common.CutTree";
+    public const string Rock = "common.Rock";
+    public const string Boulder = "common.Boulder";
+    public const string Water = "common.Water";
+    public const string Waterfall = "common.Waterfall";
+    public const string RockFace = "common.RockFace";
+
+    /// <summary>An Escape Rope used from the bag, and the Cycling Road's gate keepers turning back anyone not riding.</summary>
+    public const string EscapeRope = "common.EscapeRope";
+    public const string CyclistsOnly = "common.CyclistsOnly";
+
+    /// <summary>
+    /// The script a field move chosen from the party menu runs (<c>common.UseCut</c>…); null for Milk Drink and
+    /// Soft-Boiled, which the party menu carries out itself, and Chatter, which has nothing to do here.
+    /// </summary>
+    public static string? FromMenu(FieldMove move) => move switch
+    {
+        FieldMove.MilkDrink or FieldMove.Softboiled or FieldMove.Chatter => null,
+        _ => "common.Use" + move
+    };
+
     /// <summary>
     /// The script talking to someone runs: their own, or the common one for what they are. Null for someone with
     /// nothing to say or do.
@@ -28,6 +50,8 @@ public static class FieldScripts
     {
         if (!string.IsNullOrEmpty(npc.Script)) return npc.Script;
         if (npc.IsItemBall) return ItemBall;
+        if (npc.Obstacle is { } obstacle)
+            return obstacle switch { PropType.CutTree => CutTree, PropType.CrackedRock => Rock, _ => Boulder };
         if (npc.IsStarterBriefcase) return Briefcase;
         if (npc.IsHealingNurse) return Nurse;
         if (npc.IsPokeMartClerk) return Clerk;

@@ -47,6 +47,28 @@ public sealed class StoryState
         if (flags.Remove(flag)) Revision++;
     }
 
+    /// <summary>The beginning of the name of a flag that lasts only while the player stays in one place (the original's map-local flags).</summary>
+    public const string LocalFlagPrefix = "FLAG_MAP_LOCAL_";
+
+    /// <summary>The same for a variable.</summary>
+    public const string LocalVariablePrefix = "VAR_MAP_LOCAL_";
+
+    /// <summary>
+    /// Forgets the flags and variables that last only while the player stays in one place, as the original does
+    /// whenever the map's header changes (<c>FieldSystem_ClearLocalFlags</c>): on walking into another area and on
+    /// every warp. A tree that was cut grows back, a rock that was smashed is whole again.
+    /// </summary>
+    public void ClearLocal()
+    {
+        bool changed = flags.RemoveWhere(f => f.StartsWith(LocalFlagPrefix, StringComparison.Ordinal)) > 0;
+        foreach (var name in variables.Keys.Where(v => v.StartsWith(LocalVariablePrefix, StringComparison.Ordinal)).ToList())
+        {
+            variables.Remove(name);
+            changed = true;
+        }
+        if (changed) Revision++;
+    }
+
     // ------------------------------------------------------------------ variables
 
     /// <summary>The variables that aren't nought, which is what a save keeps.</summary>
@@ -120,6 +142,9 @@ public sealed class StoryState
 
     /// <summary>The species the rival took: as in the original, the one that is strong against the player's.</summary>
     public string? RivalStarter { get; private set; }
+
+    /// <summary>The species the professor's assistant has: the one left in the briefcase (the original's counterpart's starter); null until the player has chosen.</summary>
+    public string? AssistantStarter => PlayerStarter == null ? null : Starters.First(s => s != PlayerStarter && s != RivalStarter);
 
     /// <summary>The starter the rival takes when the player takes this one (grass is answered with fire, fire with water, water with grass).</summary>
     public static string RivalStarterFor(string playerStarter)

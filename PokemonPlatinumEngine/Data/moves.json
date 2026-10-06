@@ -10,6 +10,7 @@
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -25,6 +26,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 100,
     "maxPower": 75
   },
@@ -40,6 +42,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -55,6 +58,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -69,6 +73,7 @@
     "maxPP": 20,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -84,6 +89,7 @@
     "description": "Scatters money on the ground worth five times the user's level.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "IncreasePrizeMoney",
+    "battleEffect": "IncreasePrizeMoney",
     "zPower": 100,
     "maxPower": 90
   },
@@ -100,6 +106,7 @@
     "inflictStatus": "Burn",
     "statusChancePercent": 10,
     "flags": "Contact, Punch, Protect, Mirror",
+    "battleEffect": "BurnHit",
     "zPower": 140,
     "maxPower": 130
   },
@@ -116,6 +123,7 @@
     "inflictStatus": "Freeze",
     "statusChancePercent": 10,
     "flags": "Contact, Punch, Protect, Mirror",
+    "battleEffect": "FreezeHit",
     "zPower": 140,
     "maxPower": 130
   },
@@ -132,6 +140,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 10,
     "flags": "Contact, Punch, Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 140,
     "maxPower": 130
   },
@@ -146,6 +155,7 @@
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -160,6 +170,7 @@
     "maxPP": 30,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 110
   },
@@ -175,6 +186,7 @@
     "description": "Causes a one-hit KO.",
     "flags": "Contact, Protect, Mirror",
     "effect": "OneHitKo",
+    "battleEffect": "OneHitKo",
     "zPower": 180,
     "maxPower": 130
   },
@@ -192,6 +204,7 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "ChargeTurnHighCrit",
+    "battleEffect": "ChargeTurnHighCrit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -211,6 +224,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Dance, Snatch",
+    "battleEffect": "AtkUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -229,6 +243,7 @@
     "maxPP": 30,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -244,6 +259,7 @@
     "description": "Inflicts regular damage and can hit Pokémon in the air.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageFlyOrBounce",
+    "battleEffect": "DoubleDamageFlyOrBounce",
     "zPower": 100,
     "maxPower": 90
   },
@@ -258,6 +274,7 @@
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -274,6 +291,7 @@
     "description": "Immediately ends wild battles. Forces trainers to switch Pokémon.",
     "flags": "Protect, Mirror",
     "effect": "ForceSwitch",
+    "battleEffect": "ForceSwitch",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -296,6 +314,7 @@
     "description": "User flies high into the air, dodging all attacks, and hits next turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Fly",
+    "battleEffect": "Fly",
     "zPower": 175,
     "maxPower": 130
   },
@@ -311,6 +330,7 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
+    "battleEffect": "BindHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -328,6 +348,7 @@
     "maxPP": 20,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -342,6 +363,7 @@
     "maxPP": 15,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -362,6 +384,7 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "effect": "FlinchMinimizeDoubleHit",
+    "battleEffect": "FlinchMinimizeDoubleHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -377,6 +400,7 @@
     "description": "Hits twice in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitTwice",
+    "battleEffect": "HitTwice",
     "zPower": 100,
     "maxPower": 80
   },
@@ -391,6 +415,7 @@
     "maxPP": 5,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -406,6 +431,7 @@
     "description": "If the user misses, it takes half the damage it would have inflicted in recoil.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "CrashOnMiss",
+    "battleEffect": "CrashOnMiss",
     "zPower": 180,
     "maxPower": 90,
     "modern": {
@@ -425,6 +451,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 120,
     "maxPower": 80
   },
@@ -442,6 +469,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AccDown",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -461,6 +489,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 140,
     "maxPower": 120
   },
@@ -475,6 +504,7 @@
     "maxPP": 25,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -490,6 +520,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -505,6 +536,7 @@
     "description": "Causes a one-hit KO.",
     "flags": "Contact, Protect, Mirror",
     "effect": "OneHitKo",
+    "battleEffect": "OneHitKo",
     "zPower": 180,
     "maxPower": 130
   },
@@ -519,6 +551,7 @@
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -539,6 +572,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -554,6 +588,7 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
+    "battleEffect": "BindHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -572,6 +607,7 @@
     "description": "User receives 1/4 the damage it inflicts in recoil.",
     "recoilPercent": 25,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilQuarter",
     "zPower": 175,
     "maxPower": 130
   },
@@ -588,6 +624,7 @@
     "target": "RandomFoe",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
+    "battleEffect": "ContinueAndConfuseSelf",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -607,6 +644,7 @@
     "description": "User receives 1/3 the damage inflicted in recoil.",
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilThird",
     "zPower": 190,
     "maxPower": 140
   },
@@ -625,6 +663,7 @@
     "statChangeChancePercent": 100,
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "DefDown",
     "zBonus": {
       "stats": [
         "Attack"
@@ -645,6 +684,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 30,
     "flags": "Protect, Mirror",
+    "battleEffect": "PoisonHit",
     "zPower": 100,
     "maxPower": 70
   },
@@ -662,6 +702,7 @@
     "statusChancePercent": 20,
     "flags": "Protect, Mirror",
     "effect": "PoisonMultiHit",
+    "battleEffect": "PoisonMultiHit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -677,6 +718,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -699,6 +741,7 @@
     "statChangeChancePercent": 100,
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "DefDown",
     "zBonus": {
       "stats": [
         "Attack"
@@ -718,6 +761,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Contact, Bite, Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -736,6 +780,7 @@
     "statChangeChancePercent": 100,
     "target": "AllFoes",
     "flags": "Sound, Protect, Reflectable, Mirror",
+    "battleEffect": "AtkDown",
     "zBonus": {
       "stats": [
         "Defense"
@@ -756,6 +801,7 @@
     "description": "Immediately ends wild battles. Forces trainers to switch Pokémon.",
     "flags": "Sound, Protect, Mirror",
     "effect": "ForceSwitch",
+    "battleEffect": "ForceSwitch",
     "zBonus": {
       "stats": [
         "Defense"
@@ -779,6 +825,7 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "stats": [
         "Speed"
@@ -798,6 +845,7 @@
     "description": "Confuses the target.",
     "confuseChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusConfuse",
     "zBonus": {
       "stats": [
         "Speed"
@@ -817,6 +865,7 @@
     "description": "Inflicts 20 points of damage.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "20DamageFlat",
+    "battleEffect": "20DamageFlat",
     "zPower": 100,
     "maxPower": 100
   },
@@ -832,6 +881,7 @@
     "description": "Disables the target's last used move for 1-8 turns.",
     "flags": "Protect, Mirror",
     "effect": "Disable",
+    "battleEffect": "Disable",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -854,6 +904,7 @@
     "statChangeChancePercent": 10,
     "target": "AllFoes",
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 100,
     "maxPower": 70
   },
@@ -870,6 +921,7 @@
     "inflictStatus": "Burn",
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "BurnHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -886,6 +938,7 @@
     "inflictStatus": "Burn",
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "BurnHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -905,6 +958,7 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "PreventStatReduction",
+    "battleEffect": "PreventStatReduction",
     "zBonus": {
       "effect": "Heal"
     }
@@ -920,6 +974,7 @@
     "maxPP": 25,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -934,6 +989,7 @@
     "maxPP": 5,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -953,6 +1009,7 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageDive",
+    "battleEffect": "DoubleDamageDive",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -972,6 +1029,7 @@
     "inflictStatus": "Freeze",
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "FreezeHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -993,6 +1051,7 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "Blizzard",
+    "battleEffect": "Blizzard",
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1011,6 +1070,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "ConfuseHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -1028,6 +1088,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpeedHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -1045,6 +1106,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerAttackHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -1060,6 +1122,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -1074,6 +1137,7 @@
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -1088,6 +1152,7 @@
     "maxPP": 20,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -1103,6 +1168,7 @@
     "description": "User receives 1/4 the damage it inflicts in recoil.",
     "recoilPercent": 25,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilQuarter",
     "zPower": 160,
     "maxPower": 90,
     "modern": {
@@ -1121,6 +1187,7 @@
     "description": "Inflicts more damage to heavier targets, with a maximum of 120 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithWeight",
+    "battleEffect": "IncreasePowerWithWeight",
     "zPower": 160,
     "maxPower": 100
   },
@@ -1137,6 +1204,7 @@
     "description": "Inflicts twice the damage the user received from the last physical hit it took.",
     "flags": "Contact",
     "effect": "Counter",
+    "battleEffect": "Counter",
     "zPower": 100,
     "maxPower": 75
   },
@@ -1152,6 +1220,7 @@
     "description": "Inflicts damage equal to the user's level.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "LevelDamageFlat",
+    "battleEffect": "LevelDamageFlat",
     "zPower": 100,
     "maxPower": 75
   },
@@ -1166,6 +1235,7 @@
     "maxPP": 15,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -1181,6 +1251,7 @@
     "description": "Drains half the damage inflicted to heal the user.",
     "drainPercent": 50,
     "flags": "Protect, Mirror",
+    "battleEffect": "RecoverHalfDamageDealt",
     "zPower": 100,
     "maxPower": 90
   },
@@ -1196,6 +1267,7 @@
     "description": "Drains half the damage inflicted to heal the user.",
     "drainPercent": 50,
     "flags": "Protect, Mirror",
+    "battleEffect": "RecoverHalfDamageDealt",
     "zPower": 120,
     "maxPower": 90
   },
@@ -1211,6 +1283,7 @@
     "description": "Seeds the target, stealing HP from it every turn.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StatusLeechSeed",
+    "battleEffect": "StatusLeechSeed",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1231,6 +1304,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpAtkUp",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -1254,6 +1328,7 @@
     "critStage": 1,
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 100,
     "maxPower": 110
   },
@@ -1269,6 +1344,7 @@
     "description": "Requires a turn to charge before attacking.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "SkipChargeTurnInSun",
+    "battleEffect": "SkipChargeTurnInSun",
     "zPower": 190,
     "maxPower": 140
   },
@@ -1285,6 +1361,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusPoison",
     "zBonus": {
       "stats": [
         "Defense"
@@ -1305,6 +1382,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusParalyze",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -1325,6 +1403,7 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "stats": [
         "Speed"
@@ -1345,6 +1424,7 @@
     "target": "RandomFoe",
     "flags": "Contact, Dance, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
+    "battleEffect": "ContinueAndConfuseSelf",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -1367,6 +1447,7 @@
     "statChangeChancePercent": 100,
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "SpeedDown",
     "zBonus": {
       "stats": [
         "Speed"
@@ -1386,6 +1467,7 @@
     "description": "Inflicts 40 points of damage.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "40DamageFlat",
+    "battleEffect": "40DamageFlat",
     "zPower": 100,
     "maxPower": 100
   },
@@ -1401,6 +1483,7 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
+    "battleEffect": "BindHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -1421,6 +1504,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -1437,6 +1521,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -1456,6 +1541,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusParalyze",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -1480,6 +1566,7 @@
     "statusChancePercent": 30,
     "flags": "Protect, Mirror",
     "effect": "Thunder",
+    "battleEffect": "Thunder",
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1497,6 +1584,7 @@
     "maxPP": 15,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -1513,6 +1601,7 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageDig",
+    "battleEffect": "DoubleDamageDig",
     "zPower": 180,
     "maxPower": 130
   },
@@ -1528,6 +1617,7 @@
     "description": "Causes a one-hit KO.",
     "flags": "Protect, Mirror",
     "effect": "OneHitKo",
+    "battleEffect": "OneHitKo",
     "zPower": 180,
     "maxPower": 130
   },
@@ -1543,6 +1633,7 @@
     "description": "User digs underground, dodging all attacks, and hits next turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Dig",
+    "battleEffect": "Dig",
     "zPower": 160,
     "maxPower": 130
   },
@@ -1559,6 +1650,7 @@
     "inflictStatus": "Toxic",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusBadlyPoison",
     "zBonus": {
       "stats": [
         "Defense"
@@ -1581,6 +1673,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "ConfuseHit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -1598,6 +1691,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 175,
     "maxPower": 130
   },
@@ -1614,6 +1708,7 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "stats": [
         "Speed"
@@ -1637,6 +1732,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "AtkUp",
     "zBonus": {
       "stats": [
         "Attack"
@@ -1660,6 +1756,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpeedUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1676,6 +1773,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 90
   },
@@ -1691,6 +1789,7 @@
     "description": "If the user is hit after using this move, its Attack rises by one stage.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RaiseAtkWhenHit",
+    "battleEffect": "RaiseAtkWhenHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -1706,6 +1805,7 @@
     "description": "Immediately ends wild battles. No effect otherwise.",
     "target": "User",
     "effect": "FleeFromWildBattle",
+    "battleEffect": "FleeFromWildBattle",
     "zBonus": {
       "effect": "Heal"
     },
@@ -1725,6 +1825,7 @@
     "description": "Inflicts damage equal to the user's level.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "LevelDamageFlat",
+    "battleEffect": "LevelDamageFlat",
     "zPower": 100,
     "maxPower": 100
   },
@@ -1740,6 +1841,7 @@
     "description": "Copies the target's last used move.",
     "flags": "Protect",
     "effect": "CopyMoveForBattle",
+    "battleEffect": "CopyMoveForBattle",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -1761,6 +1863,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
+    "battleEffect": "DefDown2",
     "zBonus": {
       "stats": [
         "Attack"
@@ -1784,6 +1887,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "EvaUp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1801,6 +1905,7 @@
     "target": "User",
     "flags": "Snatch",
     "healPercent": 50,
+    "battleEffect": "RestoreHalfHp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -1824,6 +1929,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefUp",
     "zBonus": {
       "stats": [
         "Defense"
@@ -1848,6 +1954,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "EvaUp2Minimize",
+    "battleEffect": "EvaUp2Minimize",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -1869,6 +1976,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AccDown",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -1888,6 +1996,7 @@
     "description": "Confuses the target.",
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusConfuse",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -1911,6 +2020,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefUp",
     "zBonus": {
       "stats": [
         "Defense"
@@ -1935,6 +2045,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "DefUpDoubleRolloutPower",
+    "battleEffect": "DefUpDoubleRolloutPower",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -1958,6 +2069,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -1978,6 +2090,7 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "SetLightScreen",
+    "battleEffect": "SetLightScreen",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -1997,6 +2110,7 @@
     "description": "Resets all Pokémon's stats, accuracy, and evasion.",
     "target": "Field",
     "effect": "ResetStatChanges",
+    "battleEffect": "ResetStatChanges",
     "zBonus": {
       "effect": "Heal"
     }
@@ -2014,6 +2128,7 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "SetReflect",
+    "battleEffect": "SetReflect",
     "zBonus": {
       "stats": [
         "Defense"
@@ -2034,6 +2149,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "CritUp2",
+    "battleEffect": "CritUp2",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -2055,6 +2171,7 @@
     "target": "User",
     "flags": "Contact, Protect, KingsRock",
     "effect": "Bide",
+    "battleEffect": "Bide",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2068,7 +2185,8 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "Randomly selects and uses any move in the game.",
-    "effect": "CallRandomMove"
+    "effect": "CallRandomMove",
+    "battleEffect": "CallRandomMove"
   },
   {
     "id": 119,
@@ -2081,6 +2199,7 @@
     "maxPP": 20,
     "description": "Uses the target's last used move.",
     "effect": "CopyMove",
+    "battleEffect": "CopyMove",
     "zBonus": {
       "stats": [
         "Attack"
@@ -2101,6 +2220,7 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HalveDefense",
+    "battleEffect": "HalveDefense",
     "zPower": 200,
     "maxPower": 150
   },
@@ -2115,6 +2235,7 @@
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 180,
     "maxPower": 130
   },
@@ -2131,6 +2252,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2150,6 +2272,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 40,
     "flags": "Protect, Mirror",
+    "battleEffect": "PoisonHit",
     "zPower": 100,
     "maxPower": 70,
     "modern": {
@@ -2169,6 +2292,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 30,
     "flags": "Protect, Mirror",
+    "battleEffect": "PoisonHit",
     "zPower": 120,
     "maxPower": 85
   },
@@ -2184,6 +2308,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -2200,6 +2325,7 @@
     "inflictStatus": "Burn",
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "BurnHit",
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -2218,6 +2344,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -2233,6 +2360,7 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
+    "battleEffect": "BindHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2252,6 +2380,7 @@
     "description": "Never misses.",
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -2268,6 +2397,7 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ChargeTurnDefUp",
     "effectChance": 100,
+    "battleEffect": "ChargeTurnDefUp",
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -2287,6 +2417,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -2304,6 +2435,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "LowerSpeedHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -2323,6 +2455,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpDefUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -2341,6 +2474,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AccDown",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -2361,6 +2495,7 @@
     "target": "User",
     "flags": "Snatch",
     "healPercent": 50,
+    "battleEffect": "RestoreHalfHp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2380,6 +2515,7 @@
     "description": "If the user misses, it takes half the damage it would have inflicted in recoil.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "CrashOnMiss",
+    "battleEffect": "CrashOnMiss",
     "zPower": 195,
     "maxPower": 95,
     "modern": {
@@ -2400,6 +2536,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusParalyze",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -2422,6 +2559,7 @@
     "description": "Only works on sleeping Pokémon. Drains half the damage inflicted to heal the user.",
     "flags": "Protect, Mirror",
     "effect": "RecoverDamageSleep",
+    "battleEffect": "RecoverDamageSleep",
     "zPower": 180,
     "maxPower": 130
   },
@@ -2438,6 +2576,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusPoison",
     "zBonus": {
       "stats": [
         "Defense"
@@ -2460,6 +2599,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -2475,6 +2615,7 @@
     "description": "Drains half the damage inflicted to heal the user.",
     "drainPercent": 50,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "RecoverHalfDamageDealt",
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -2495,6 +2636,7 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "stats": [
         "Speed"
@@ -2516,6 +2658,7 @@
     "flinchChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
     "effect": "ChargeTurnHighCritFlinch",
+    "battleEffect": "ChargeTurnHighCritFlinch",
     "zPower": 200,
     "maxPower": 140
   },
@@ -2530,6 +2673,7 @@
     "maxPP": 10,
     "description": "User becomes a copy of the target until it leaves battle.",
     "effect": "Transform",
+    "battleEffect": "Transform",
     "zBonus": {
       "effect": "Heal"
     }
@@ -2549,6 +2693,7 @@
     "statChangeChancePercent": 10,
     "target": "AllFoes",
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpeedHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2567,6 +2712,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 20,
     "flags": "Contact, Punch, Protect, Mirror",
+    "battleEffect": "ConfuseHit",
     "zPower": 140,
     "maxPower": 120
   },
@@ -2583,6 +2729,7 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -2601,6 +2748,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AccDown",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -2620,6 +2768,7 @@
     "description": "Inflicts damage between 50% and 150% of the user's level.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RandomDamage1To150Level",
+    "battleEffect": "RandomDamage1To150Level",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -2638,6 +2787,7 @@
     "description": "Does nothing.",
     "target": "User",
     "effect": "DoNothing",
+    "battleEffect": "DoNothing",
     "zBonus": {
       "stats": [
         "Attack"
@@ -2661,6 +2811,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2680,6 +2831,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 180,
     "maxPower": 130,
     "modern": {
@@ -2700,6 +2852,7 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HalveDefense",
+    "battleEffect": "HalveDefense",
     "zPower": 200,
     "maxPower": 150
   },
@@ -2715,6 +2868,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2730,6 +2884,7 @@
     "description": "Hits twice in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HitTwice",
+    "battleEffect": "HitTwice",
     "zPower": 100,
     "maxPower": 130
   },
@@ -2746,6 +2901,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Rest",
+    "battleEffect": "Rest",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2766,6 +2922,7 @@
     "flinchChancePercent": 30,
     "target": "AllFoes",
     "flags": "Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 140,
     "maxPower": 130
   },
@@ -2781,6 +2938,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -2800,6 +2958,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "AtkUp",
     "zBonus": {
       "stats": [
         "Attack"
@@ -2819,6 +2978,7 @@
     "description": "User's type changes to the type of one of its moves at random.",
     "target": "User",
     "effect": "Conversion",
+    "battleEffect": "Conversion",
     "zBonus": {
       "stats": [
         "Attack",
@@ -2843,6 +3003,7 @@
     "flags": "Protect, Mirror",
     "effect": "TriAttack",
     "effectChance": 20,
+    "battleEffect": "TriAttack",
     "zPower": 160,
     "maxPower": 130
   },
@@ -2858,6 +3019,7 @@
     "description": "Inflicts damage equal to half the target's HP.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HalveHp",
+    "battleEffect": "HalveHp",
     "zPower": 100,
     "maxPower": 100
   },
@@ -2873,6 +3035,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 140,
     "maxPower": 120
   },
@@ -2889,6 +3052,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "SetSubstitute",
+    "battleEffect": "SetSubstitute",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -2904,7 +3068,8 @@
     "maxPP": 1,
     "description": "User takes 1/4 its max HP in recoil.",
     "flags": "Contact, Protect, KingsRock",
-    "effect": "Struggle"
+    "effect": "Struggle",
+    "battleEffect": "Struggle"
   },
   {
     "id": 166,
@@ -2917,6 +3082,7 @@
     "maxPP": 1,
     "description": "Permanently becomes the target's last used move.",
     "effect": "LearnMovePermanent",
+    "battleEffect": "LearnMovePermanent",
     "zBonus": {
       "stats": [
         "Attack",
@@ -2940,6 +3106,7 @@
     "description": "Hits three times, increasing power by 100% with each successful hit.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitThreeTimes",
+    "battleEffect": "HitThreeTimes",
     "zPower": 120,
     "maxPower": 80
   },
@@ -2955,6 +3122,7 @@
     "description": "Takes the target's item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StealHeldItem",
+    "battleEffect": "StealHeldItem",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -2974,6 +3142,7 @@
     "description": "Prevents the target from leaving battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
+    "battleEffect": "PreventEscape",
     "zBonus": {
       "stats": [
         "Defense"
@@ -2993,6 +3162,7 @@
     "description": "Ensures that the user's next move will hit the target.",
     "flags": "Protect, Mirror",
     "effect": "NextAttackAlwaysHits",
+    "battleEffect": "NextAttackAlwaysHits",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3012,6 +3182,7 @@
     "description": "Target loses 1/4 its max HP every turn as long as it's asleep.",
     "flags": "Protect, Mirror",
     "effect": "StatusNightmare",
+    "battleEffect": "StatusNightmare",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3033,6 +3204,7 @@
     "statusChancePercent": 10,
     "flags": "Contact, Protect, Mirror",
     "thawsUser": true,
+    "battleEffect": "ThawAndBurnHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -3049,6 +3221,7 @@
     "flags": "Sound, Protect, Mirror, KingsRock",
     "effect": "DamageWhileAsleep",
     "effectChance": 30,
+    "battleEffect": "DamageWhileAsleep",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -3066,6 +3239,7 @@
     "maxPP": 10,
     "description": "Ghosts pay half their max HP to hurt the target every turn. Others decrease Speed but raise Attack and Defense.",
     "effect": "Curse",
+    "battleEffect": "Curse",
     "zBonus": {
       "effect": "Curse"
     }
@@ -3082,6 +3256,7 @@
     "description": "Inflicts more damage when the user has less HP remaining, with a maximum of 200 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithLessHp",
+    "battleEffect": "IncreasePowerWithLessHp",
     "zPower": 160,
     "maxPower": 130
   },
@@ -3097,6 +3272,7 @@
     "description": "Changes the user's type to a random type either resistant or immune to the last move used against it.",
     "target": "User",
     "effect": "Conversion2",
+    "battleEffect": "Conversion2",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3113,6 +3289,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 180,
     "maxPower": 130
   },
@@ -3130,6 +3307,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
+    "battleEffect": "SpeedDown2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3149,6 +3327,7 @@
     "description": "Inflicts more damage when the user has less HP remaining, with a maximum of 200 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithLessHp",
+    "battleEffect": "IncreasePowerWithLessHp",
     "zPower": 160,
     "maxPower": 100
   },
@@ -3164,6 +3343,7 @@
     "description": "Lowers the PP of the target's last used move by 4.",
     "flags": "Protect, Mirror",
     "effect": "DecreaseLastMovePp",
+    "battleEffect": "DecreaseLastMovePp",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3182,6 +3362,7 @@
     "statusChancePercent": 10,
     "target": "AllFoes",
     "flags": "Protect, Mirror",
+    "battleEffect": "FreezeHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -3198,6 +3379,7 @@
     "description": "Prevents any moves from hitting the user this turn.",
     "target": "User",
     "effect": "Protect",
+    "battleEffect": "Protect",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3217,6 +3399,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 70
   },
@@ -3234,6 +3417,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "SpeedDown2",
     "zBonus": {
       "stats": [
         "Speed"
@@ -3255,6 +3439,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -3270,6 +3455,7 @@
     "description": "Confuses the target.",
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusConfuse",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3293,6 +3479,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "MaxAtkLoseHalfMaxHp",
+    "battleEffect": "MaxAtkLoseHalfMaxHp",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3310,6 +3497,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 30,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "PoisonHit",
     "zPower": 175,
     "maxPower": 90
   },
@@ -3327,6 +3515,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerAccuracyHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -3344,6 +3533,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 50,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "LowerAccuracyHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -3359,6 +3549,7 @@
     "description": "Scatters Spikes, hurting opposing Pokémon that switch in.",
     "target": "FoeSide",
     "effect": "SetSpikes",
+    "battleEffect": "SetSpikes",
     "zBonus": {
       "stats": [
         "Defense"
@@ -3379,6 +3570,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 100,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -3394,6 +3586,7 @@
     "description": "Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it's a Ghost.",
     "flags": "Protect, Mirror",
     "effect": "Foresight",
+    "battleEffect": "Foresight",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -3410,6 +3603,7 @@
     "description": "If the user faints this turn, the target automatically will, too.",
     "target": "User",
     "effect": "KoMonThatDefeatedUser",
+    "battleEffect": "KoMonThatDefeatedUser",
     "zBonus": {
       "effect": "Redirect"
     }
@@ -3427,6 +3621,7 @@
     "target": "Field",
     "flags": "Sound",
     "effect": "AllFaint3Turns",
+    "battleEffect": "AllFaint3Turns",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3446,6 +3641,7 @@
     "statChangeChancePercent": 100,
     "target": "AllFoes",
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpeedHit",
     "zPower": 100,
     "maxPower": 110
   },
@@ -3462,6 +3658,7 @@
     "description": "Prevents any moves from hitting the user this turn.",
     "target": "User",
     "effect": "Protect",
+    "battleEffect": "Protect",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -3484,6 +3681,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -3502,6 +3700,7 @@
     "description": "Ensures that the user's next move will hit the target.",
     "flags": "Protect, Mirror",
     "effect": "NextAttackAlwaysHits",
+    "battleEffect": "NextAttackAlwaysHits",
     "zBonus": {
       "stats": [
         "Speed"
@@ -3522,6 +3721,7 @@
     "target": "RandomFoe",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
+    "battleEffect": "ContinueAndConfuseSelf",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -3540,6 +3740,7 @@
     "description": "Changes the weather to a sandstorm for five turns.",
     "target": "Field",
     "effect": "WeatherSandstorm",
+    "battleEffect": "WeatherSandstorm",
     "zBonus": {
       "stats": [
         "Speed"
@@ -3559,6 +3760,7 @@
     "description": "Drains half the damage inflicted to heal the user.",
     "drainPercent": 50,
     "flags": "Protect, Mirror",
+    "battleEffect": "RecoverHalfDamageDealt",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -3578,6 +3780,7 @@
     "description": "Prevents the user's HP from lowering below 1 this turn.",
     "target": "User",
     "effect": "SurviveWith1Hp",
+    "battleEffect": "SurviveWith1Hp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3599,6 +3802,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AtkDown2",
     "zBonus": {
       "stats": [
         "Defense"
@@ -3621,6 +3825,7 @@
     "description": "Power doubles every turn this move is used in succession after the first, resetting after five turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurnLockInto",
+    "battleEffect": "DoublePowerEachTurnLockInto",
     "zPower": 100,
     "maxPower": 90
   },
@@ -3636,6 +3841,7 @@
     "description": "Cannot lower the target's HP below 1.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "LeaveWith1Hp",
+    "battleEffect": "LeaveWith1Hp",
     "zPower": 100,
     "maxPower": 90
   },
@@ -3654,6 +3860,7 @@
     "statChangeChancePercent": 100,
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AtkUp2StatusConfusion",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3674,6 +3881,7 @@
     "target": "User",
     "flags": "Snatch",
     "healPercent": 50,
+    "battleEffect": "RestoreHalfHp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3694,6 +3902,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "ParalyzeHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -3709,6 +3918,7 @@
     "description": "Power doubles every turn this move is used in succession after the first, maxing out after five turns.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurn",
+    "battleEffect": "DoublePowerEachTurn",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -3730,6 +3940,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 10,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RaiseDefHit",
     "zPower": 140,
     "maxPower": 120
   },
@@ -3745,6 +3956,7 @@
     "description": "Prevents the target from leaving battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
+    "battleEffect": "PreventEscape",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -3764,6 +3976,7 @@
     "description": "Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "Infatuate",
+    "battleEffect": "Infatuate",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3779,6 +3992,7 @@
     "maxPP": 10,
     "description": "Randomly uses one of the user's other three moves. Only works if the user is sleeping.",
     "effect": "UseRandomLearnedMoveSleep",
+    "battleEffect": "UseRandomLearnedMoveSleep",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -3796,6 +4010,7 @@
     "target": "UserSide",
     "flags": "Sound, Snatch",
     "effect": "CurePartyStatus",
+    "battleEffect": "CurePartyStatus",
     "zBonus": {
       "effect": "Heal"
     }
@@ -3812,6 +4027,7 @@
     "description": "Power increases with happiness, up to a maximum of 102.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnFriendship",
+    "battleEffect": "PowerBasedOnFriendship",
     "zPower": 160,
     "maxPower": 130
   },
@@ -3827,6 +4043,7 @@
     "description": "Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP.",
     "flags": "Protect, Mirror",
     "effect": "RandomPowerMaybeHeal",
+    "battleEffect": "RandomPowerMaybeHeal",
     "zPower": 100,
     "maxPower": 100
   },
@@ -3842,6 +4059,7 @@
     "description": "Power increases as happiness decreases, up to a maximum of 102.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnLowFriendship",
+    "battleEffect": "PowerBasedOnLowFriendship",
     "zPower": 160,
     "maxPower": 130
   },
@@ -3858,6 +4076,7 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "PreventStatus",
+    "battleEffect": "PreventStatus",
     "zBonus": {
       "stats": [
         "Speed"
@@ -3877,6 +4096,7 @@
     "description": "Sets the user's and targets's HP to the average of their current HP.",
     "flags": "Protect, Mirror",
     "effect": "AverageHp",
+    "battleEffect": "AverageHp",
     "zBonus": {
       "stats": [
         "Defense"
@@ -3898,6 +4118,7 @@
     "statusChancePercent": 50,
     "flags": "Protect, Mirror",
     "thawsUser": true,
+    "battleEffect": "ThawAndBurnHit",
     "zPower": 180,
     "maxPower": 130
   },
@@ -3914,6 +4135,7 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Psywave",
+    "battleEffect": "Psywave",
     "zPower": 140,
     "maxPower": 140
   },
@@ -3929,6 +4151,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 100,
     "flags": "Contact, Punch, Protect, Mirror",
+    "battleEffect": "ConfuseHit",
     "zPower": 180,
     "maxPower": 90
   },
@@ -3943,6 +4166,7 @@
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -3959,6 +4183,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "ParalyzeHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -3974,6 +4199,7 @@
     "description": "Allows the trainer to switch out the user and pass effects along to its replacement.",
     "target": "User",
     "effect": "PassStatsAndStatus",
+    "battleEffect": "PassStatsAndStatus",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3990,6 +4216,7 @@
     "description": "Forces the target to repeat its last used move every turn for 2 to 6 turns.",
     "flags": "Protect, Mirror",
     "effect": "Encore",
+    "battleEffect": "Encore",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4009,6 +4236,7 @@
     "description": "Has double power against, and can hit, Pokémon attempting to switch out.",
     "flags": "Contact, Protect, Mirror",
     "effect": "HitBeforeSwitch",
+    "battleEffect": "HitBeforeSwitch",
     "zPower": 100,
     "maxPower": 90
   },
@@ -4024,6 +4252,7 @@
     "description": "Frees the user from binding moves, removes Leech Seed, and blows away Spikes.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RemoveHazardsAndBinding",
+    "battleEffect": "RemoveHazardsAndBinding",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -4045,6 +4274,7 @@
     "statChangeChancePercent": 100,
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "EvaDown",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -4066,6 +4296,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "LowerDefenseHit",
     "zPower": 180,
     "maxPower": 130
   },
@@ -4084,6 +4315,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 10,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "RaiseAttackHit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -4099,6 +4331,7 @@
     "priority": -1,
     "description": "Never misses.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "PriorityNeg1BypassAccuracy",
     "zPower": 140,
     "maxPower": 85
   },
@@ -4116,6 +4349,7 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
+    "battleEffect": "HealHalfMoreInSun",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4134,6 +4368,7 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
+    "battleEffect": "HealHalfMoreInSun",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4152,6 +4387,7 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
+    "battleEffect": "HealHalfMoreInSun",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -4171,6 +4407,7 @@
     "description": "Power and type depend upon user's IVs. Power can range from 30 to 70.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RandomPowerBasedOnIvs",
+    "battleEffect": "RandomPowerBasedOnIvs",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -4189,6 +4426,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 180,
     "maxPower": 90
   },
@@ -4206,6 +4444,7 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "FlinchDoubleDamageFlyOrBounce",
+    "battleEffect": "FlinchDoubleDamageFlyOrBounce",
     "zPower": 100,
     "maxPower": 90
   },
@@ -4221,6 +4460,7 @@
     "description": "Changes the weather to rain for five turns.",
     "target": "Field",
     "effect": "WeatherRain",
+    "battleEffect": "WeatherRain",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4240,6 +4480,7 @@
     "description": "Changes the weather to sunny for five turns.",
     "target": "Field",
     "effect": "WeatherSun",
+    "battleEffect": "WeatherSun",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4261,6 +4502,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 20,
     "flags": "Contact, Bite, Protect, Mirror",
+    "battleEffect": "LowerDefenseHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -4276,6 +4518,7 @@
     "priority": -5,
     "description": "Inflicts twice the damage the user received from the last special hit it took.",
     "effect": "MirrorCoat",
+    "battleEffect": "MirrorCoat",
     "zPower": 100,
     "maxPower": 100
   },
@@ -4291,6 +4534,7 @@
     "description": "Discards the user's stat changes and copies the target's.",
     "flags": "Snatch",
     "effect": "CopyStatChanges",
+    "battleEffect": "CopyStatChanges",
     "zBonus": {
       "effect": "Heal"
     }
@@ -4307,6 +4551,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -4334,6 +4579,7 @@
       "Speed"
     ],
     "flags": "Protect, Mirror",
+    "battleEffect": "RaiseAllStatsHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -4351,6 +4597,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 20,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -4365,6 +4612,7 @@
     "maxPP": 15,
     "description": "Hits the target two turns later.",
     "effect": "HitIn3Turns",
+    "battleEffect": "HitIn3Turns",
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -4387,6 +4635,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 50,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "LowerDefenseHit",
     "zPower": 100,
     "maxPower": 70
   },
@@ -4402,6 +4651,7 @@
     "description": "Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Whirlpool",
+    "battleEffect": "Whirlpool",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -4421,6 +4671,7 @@
     "description": "Hits once for every conscious Pokémon the trainer has.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BeatUp",
+    "battleEffect": "BeatUp",
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -4441,6 +4692,7 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "AlwaysFlinchFirstTurnOnly",
     "effectChance": 100,
+    "battleEffect": "AlwaysFlinchFirstTurnOnly",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -4460,6 +4712,7 @@
     "target": "RandomFoe",
     "flags": "Sound, Protect, Mirror, KingsRock",
     "effect": "Uproar",
+    "battleEffect": "Uproar",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -4479,6 +4732,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Stockpile",
+    "battleEffect": "Stockpile",
     "zBonus": {
       "effect": "Heal"
     }
@@ -4495,6 +4749,7 @@
     "description": "Power is 100 times the amount of energy Stockpiled.",
     "flags": "Protect, KingsRock",
     "effect": "SpitUp",
+    "battleEffect": "SpitUp",
     "zPower": 100,
     "maxPower": 100
   },
@@ -4511,6 +4766,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Swallow",
+    "battleEffect": "Swallow",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4529,6 +4785,7 @@
     "statusChancePercent": 10,
     "target": "AllFoes",
     "flags": "Protect, Mirror",
+    "battleEffect": "BurnHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -4548,6 +4805,7 @@
     "target": "Field",
     "flags": "Protect",
     "effect": "WeatherHail",
+    "battleEffect": "WeatherHail",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4567,6 +4825,7 @@
     "description": "Prevents the target from using the same move twice in a row.",
     "flags": "Protect, Mirror",
     "effect": "Torment",
+    "battleEffect": "Torment",
     "zBonus": {
       "stats": [
         "Defense"
@@ -4589,6 +4848,7 @@
     "statChangeChancePercent": 100,
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "SpAtkUpCauseConfusion",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4609,6 +4869,7 @@
     "inflictStatus": "Burn",
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusBurn",
     "zBonus": {
       "stats": [
         "Attack"
@@ -4631,6 +4892,7 @@
     "description": "Lowers the target's Attack and Special Attack by two stages. User faints.",
     "flags": "Protect, Mirror",
     "effect": "FaintAndAtkSpAtkDown2",
+    "battleEffect": "FaintAndAtkSpAtkDown2",
     "zBonus": {
       "effect": "HealReplacement"
     }
@@ -4647,6 +4909,7 @@
     "description": "Power doubles if user is burned, paralyzed, or poisoned.",
     "flags": "Contact, Protect, Mirror",
     "effect": "DoublePowerWhenStatused",
+    "battleEffect": "DoublePowerWhenStatused",
     "zPower": 140,
     "maxPower": 120
   },
@@ -4663,6 +4926,7 @@
     "description": "If the user takes damage before attacking, the attack is canceled.",
     "flags": "Contact, Punch, Protect",
     "effect": "HitLastWhiffIfHit",
+    "battleEffect": "HitLastWhiffIfHit",
     "zPower": 200,
     "maxPower": 100
   },
@@ -4678,6 +4942,7 @@
     "description": "If the target is paralyzed, inflicts double damage and cures the paralysis.",
     "flags": "Contact, Protect, Mirror",
     "effect": "DoublePowerAndCureParalysis",
+    "battleEffect": "DoublePowerAndCureParalysis",
     "zPower": 140,
     "maxPower": 120,
     "modern": {
@@ -4697,6 +4962,7 @@
     "description": "Redirects the target's single-target effects to the user for this turn.",
     "target": "User",
     "effect": "MakeGlobalTarget",
+    "battleEffect": "MakeGlobalTarget",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -4714,7 +4980,8 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Uses a move which depends upon the terrain.",
-    "effect": "NaturePower"
+    "effect": "NaturePower",
+    "battleEffect": "NaturePower"
   },
   {
     "id": 268,
@@ -4733,6 +5000,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "SpDefUpDoubleElectricPower",
+    "battleEffect": "SpDefUpDoubleElectricPower",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4752,6 +5020,7 @@
     "description": "For the next few turns, the target can only use damaging moves.",
     "flags": "Protect, Mirror",
     "effect": "Taunt",
+    "battleEffect": "Taunt",
     "zBonus": {
       "stats": [
         "Attack"
@@ -4772,6 +5041,7 @@
     "description": "Ally's next move inflicts half more damage.",
     "target": "Ally",
     "effect": "BoostAllyPowerBy50Percent",
+    "battleEffect": "BoostAllyPowerBy50Percent",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4788,6 +5058,7 @@
     "description": "User and target swap items.",
     "flags": "Protect, Mirror",
     "effect": "SwitchHeldItems",
+    "battleEffect": "SwitchHeldItems",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4806,6 +5077,7 @@
     "maxPP": 10,
     "description": "Copies the target's ability.",
     "effect": "CopyAbility",
+    "battleEffect": "CopyAbility",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4825,6 +5097,7 @@
     "description": "User will recover half its max HP at the end of the next turn.",
     "target": "User",
     "effect": "HealIn3Turns",
+    "battleEffect": "HealIn3Turns",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4842,7 +5115,8 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Randomly selects and uses one of the trainer's other Pokémon's moves.",
-    "effect": "UseRandomAllyMove"
+    "effect": "UseRandomAllyMove",
+    "battleEffect": "UseRandomAllyMove"
   },
   {
     "id": 275,
@@ -4857,6 +5131,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "GroundTrapUserContinuousHeal",
+    "battleEffect": "GroundTrapUserContinuousHeal",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4882,6 +5157,7 @@
       "Defense"
     ],
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "LowerOwnAtkAndDef",
     "zPower": 190,
     "maxPower": 95
   },
@@ -4897,6 +5173,7 @@
     "priority": 4,
     "description": "Reflects back the first effect move used on the user this turn.",
     "effect": "ApplyMagicCoat",
+    "battleEffect": "ApplyMagicCoat",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4916,6 +5193,7 @@
     "description": "User recovers the item it last used up.",
     "target": "User",
     "effect": "Recycle",
+    "battleEffect": "Recycle",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4936,6 +5214,7 @@
     "description": "Inflicts double damage if the user takes damage before attacking this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfHit",
+    "battleEffect": "DoublePowerIfHit",
     "zPower": 120,
     "maxPower": 80
   },
@@ -4951,6 +5230,7 @@
     "description": "Destroys Reflect and Light Screen.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RemoveScreens",
+    "battleEffect": "RemoveScreens",
     "zPower": 140,
     "maxPower": 90
   },
@@ -4966,6 +5246,7 @@
     "description": "Target sleeps at the end of the next turn.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StatusSleepNextTurn",
+    "battleEffect": "StatusSleepNextTurn",
     "zBonus": {
       "stats": [
         "Speed"
@@ -4985,6 +5266,7 @@
     "description": "Target drops its held item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "RemoveHeldItem",
+    "battleEffect": "RemoveHeldItem",
     "zPower": 120,
     "maxPower": 120,
     "modern": {
@@ -5003,6 +5285,7 @@
     "description": "Lowers the target's HP to equal the user's.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "SetHpEqualToUser",
+    "battleEffect": "SetHpEqualToUser",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5019,6 +5302,7 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DecreasePowerWithLessUserHp",
+    "battleEffect": "DecreasePowerWithLessUserHp",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5034,6 +5318,7 @@
     "description": "User and target swap abilities.",
     "flags": "Protect, Mirror",
     "effect": "SwitchAbilities",
+    "battleEffect": "SwitchAbilities",
     "zBonus": {
       "stats": [
         "Speed"
@@ -5053,6 +5338,7 @@
     "description": "Prevents the target from using any moves that the user also knows.",
     "target": "User",
     "effect": "MakeSharedMovesUnuseable",
+    "battleEffect": "MakeSharedMovesUnuseable",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5073,6 +5359,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "HealStatus",
+    "battleEffect": "HealStatus",
     "zBonus": {
       "effect": "Heal"
     }
@@ -5089,6 +5376,7 @@
     "description": "If the user faints this turn, the PP of the move that fainted it drops to 0.",
     "target": "User",
     "effect": "RemoveAllPpOnDefeat",
+    "battleEffect": "RemoveAllPpOnDefeat",
     "zBonus": {
       "effect": "Redirect"
     }
@@ -5105,6 +5393,7 @@
     "priority": 4,
     "description": "Steals the target's move, if it's self-targeted.",
     "effect": "StealStatusMove",
+    "battleEffect": "StealStatusMove",
     "zBonus": {
       "stats": [
         "Speed"
@@ -5125,6 +5414,7 @@
     "flags": "Protect, Mirror",
     "effect": "SecretPower",
     "effectChance": 30,
+    "battleEffect": "SecretPower",
     "zPower": 140,
     "maxPower": 120
   },
@@ -5140,6 +5430,7 @@
     "description": "User dives underwater, dodging all attacks, and hits next turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Dive",
+    "battleEffect": "Dive",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5155,6 +5446,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 100,
     "maxPower": 70
   },
@@ -5171,6 +5463,7 @@
     "target": "User",
     "flags": "Snatch",
     "effect": "Camouflage",
+    "battleEffect": "Camouflage",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -5194,6 +5487,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpAtkUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -5212,6 +5506,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 50,
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5232,6 +5527,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 50,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "LowerSpAtkHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5252,6 +5548,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Dance, Protect, Reflectable, Mirror",
+    "battleEffect": "AtkDown2",
     "zBonus": {
       "stats": [
         "Defense"
@@ -5272,6 +5569,7 @@
     "confuseChancePercent": 100,
     "target": "AllOthers",
     "flags": "Dance, Protect, Mirror",
+    "battleEffect": "ConfuseAll",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -5293,6 +5591,7 @@
     "statusChancePercent": 10,
     "critStage": 1,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "HighCriticalBurnHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5308,6 +5607,7 @@
     "description": "Halves all Electric-type damage.",
     "target": "Field",
     "effect": "HalveElectricDamage",
+    "battleEffect": "HalveElectricDamage",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5327,6 +5627,7 @@
     "description": "Power doubles every turn this move is used in succession after the first, resetting after five turns.",
     "flags": "Contact, Ballistic, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurnLockInto",
+    "battleEffect": "DoublePowerEachTurnLockInto",
     "zPower": 100,
     "maxPower": 90
   },
@@ -5342,6 +5643,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -5358,6 +5660,7 @@
     "target": "User",
     "flags": "Snatch",
     "healPercent": 50,
+    "battleEffect": "RestoreHalfHp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -5377,6 +5680,7 @@
     "description": "Inflicts regular damage with no additional effect.",
     "target": "AllFoes",
     "flags": "Sound, Protect, Mirror",
+    "battleEffect": "Hit",
     "zPower": 175,
     "maxPower": 130
   },
@@ -5393,6 +5697,7 @@
     "inflictStatus": "Toxic",
     "statusChancePercent": 30,
     "flags": "Contact, Bite, Protect, Mirror",
+    "battleEffect": "BadlyPoisonHit",
     "zPower": 100,
     "maxPower": 75
   },
@@ -5410,6 +5715,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 50,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "LowerDefenseHit",
     "zPower": 140,
     "maxPower": 130
   },
@@ -5425,6 +5731,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5440,6 +5747,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5458,6 +5766,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 20,
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "RaiseAttackHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5477,6 +5786,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 100,
     "maxPower": 90
   },
@@ -5492,6 +5802,7 @@
     "description": "If there be weather, this move has doubled power and the weather's type.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "ChangeTypeWithWeather",
+    "battleEffect": "ChangeTypeWithWeather",
     "zPower": 160,
     "maxPower": 130
   },
@@ -5508,6 +5819,7 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "CurePartyStatus",
+    "battleEffect": "CurePartyStatus",
     "zBonus": {
       "effect": "Heal"
     }
@@ -5526,6 +5838,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "SpDefDown2",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -5546,6 +5859,7 @@
     "critStage": 1,
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -5567,6 +5881,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "UserSpAtkDown2",
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -5585,6 +5900,7 @@
     "description": "Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it's a Ghost.",
     "flags": "Protect, Mirror",
     "effect": "Foresight",
+    "battleEffect": "Foresight",
     "zBonus": {
       "stats": [
         "Attack"
@@ -5606,6 +5922,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror",
+    "battleEffect": "LowerSpeedHit",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -5635,6 +5952,7 @@
       "Speed"
     ],
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "RaiseAllStatsHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -5652,6 +5970,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
+    "battleEffect": "SpDefDown2",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -5672,6 +5991,7 @@
     "inflictStatus": "Sleep",
     "statusChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "stats": [
         "Speed"
@@ -5696,6 +6016,7 @@
       "Defense"
     ],
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "AtkDefDown",
     "zBonus": {
       "stats": [
         "Defense"
@@ -5722,6 +6043,7 @@
     ],
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefSpdUp",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5742,6 +6064,7 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "DecreasePowerWithLessUserHp",
+    "battleEffect": "DecreasePowerWithLessUserHp",
     "zPower": 200,
     "maxPower": 150
   },
@@ -5757,6 +6080,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 10,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "ConfuseHit",
     "zPower": 140,
     "maxPower": 130
   },
@@ -5771,6 +6095,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -5786,6 +6111,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 10,
     "flags": "Protect, Mirror",
+    "battleEffect": "FlinchHit",
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -5804,6 +6130,7 @@
     "description": "Inflicts regular damage and can hit Bounce and Fly users.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "effect": "HitFly",
+    "battleEffect": "HitFly",
     "zPower": 160,
     "maxPower": 90
   },
@@ -5819,6 +6146,7 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
+    "battleEffect": "BindHit",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -5838,6 +6166,7 @@
     "description": "Causes a one-hit KO.",
     "flags": "Protect, Mirror",
     "effect": "OneHitKo",
+    "battleEffect": "OneHitKo",
     "zPower": 180,
     "maxPower": 130
   },
@@ -5856,6 +6185,7 @@
     "statChangeChancePercent": 30,
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "LowerAccuracyHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5874,6 +6204,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -5891,6 +6222,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -5906,6 +6238,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -5928,6 +6261,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -5944,6 +6278,7 @@
     "description": "Prevents the target from leaving battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
+    "battleEffect": "PreventEscape",
     "zBonus": {
       "stats": [
         "Defense"
@@ -5967,6 +6302,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Sound, Snatch",
+    "battleEffect": "AtkUp",
     "zBonus": {
       "stats": [
         "Attack"
@@ -5985,6 +6321,7 @@
     "maxPP": 15,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6000,6 +6337,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -6022,6 +6360,7 @@
     ],
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "AtkDefUp",
     "zBonus": {
       "stats": [
         "Attack"
@@ -6043,6 +6382,7 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Bounce",
+    "battleEffect": "Bounce",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6060,6 +6400,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "LowerSpeedHit",
     "zPower": 100,
     "maxPower": 110
   },
@@ -6077,6 +6418,7 @@
     "statusChancePercent": 10,
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCriticalPoisonHit",
     "zPower": 100,
     "maxPower": 75
   },
@@ -6092,6 +6434,7 @@
     "description": "Takes the target's item.",
     "flags": "Contact, Protect, Mirror",
     "effect": "StealHeldItem",
+    "battleEffect": "StealHeldItem",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -6113,6 +6456,7 @@
     "statusChancePercent": 10,
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilParalyzeHit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -6127,6 +6471,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -6142,6 +6487,7 @@
     "description": "Halves all Fire-type damage.",
     "target": "Field",
     "effect": "HalveFireDamage",
+    "battleEffect": "HalveFireDamage",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -6168,6 +6514,7 @@
     ],
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpAtkSpDefUp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -6184,6 +6531,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 175,
     "maxPower": 130
   },
@@ -6206,6 +6554,7 @@
     ],
     "target": "User",
     "flags": "Dance, Snatch",
+    "battleEffect": "AtkSpdUp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -6222,6 +6571,7 @@
     "description": "Hits 2-5 times in one turn.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
+    "battleEffect": "MultiHit",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -6239,6 +6589,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -6254,6 +6605,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 20,
     "flags": "Pulse, Protect, Mirror, KingsRock",
+    "battleEffect": "ConfuseHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -6268,6 +6620,7 @@
     "maxPP": 5,
     "description": "Hits the target two turns later.",
     "effect": "HitIn3Turns",
+    "battleEffect": "HitIn3Turns",
     "zPower": 200,
     "maxPower": 140,
     "modern": {
@@ -6290,6 +6643,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "UserSpAtkDown2",
     "zPower": 200,
     "maxPower": 140
   },
@@ -6307,6 +6661,7 @@
     "flags": "Snatch",
     "healPercent": 50,
     "effect": "HealHalfRemoveFlyingType",
+    "battleEffect": "HealHalfRemoveFlyingType",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -6326,6 +6681,7 @@
     "description": "Disables moves and immunities that involve flying or levitating for five turns.",
     "target": "Field",
     "effect": "Gravity",
+    "battleEffect": "Gravity",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6345,6 +6701,7 @@
     "description": "Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",
     "flags": "Protect, Mirror",
     "effect": "IgnoreEvationRemoveDarkImmune",
+    "battleEffect": "IgnoreEvationRemoveDarkImmune",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6364,6 +6721,7 @@
     "description": "If the target is asleep, has double power and wakes it up.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerHealSleep",
+    "battleEffect": "DoublePowerHealSleep",
     "zPower": 140,
     "maxPower": 85,
     "modern": {
@@ -6385,6 +6743,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 100,
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "SpeedDownHit",
     "zPower": 180,
     "maxPower": 90
   },
@@ -6400,6 +6759,7 @@
     "description": "Power raises when the user has lower Speed, up to a maximum of 150.",
     "flags": "Contact, Ballistic, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnLowSpeed",
+    "battleEffect": "PowerBasedOnLowSpeed",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6414,7 +6774,8 @@
     "maxPP": 10,
     "description": "User faints. Its replacement has its HP fully restored and any major status effect removed.",
     "target": "User",
-    "effect": "FaintAndFullHealNextMon"
+    "effect": "FaintAndFullHealNextMon",
+    "battleEffect": "FaintAndFullHealNextMon"
   },
   {
     "id": 362,
@@ -6428,6 +6789,7 @@
     "description": "Has double power against Pokémon that have less than half their max HP remaining.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoublePowerWhenBelowHalf",
+    "battleEffect": "DoublePowerWhenBelowHalf",
     "zPower": 120,
     "maxPower": 120
   },
@@ -6443,6 +6805,7 @@
     "description": "Power and type depend on the held berry.",
     "flags": "Protect, Mirror",
     "effect": "NaturalGift",
+    "battleEffect": "NaturalGift",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6458,6 +6821,7 @@
     "priority": 2,
     "description": "Hits through Protect and Detect.",
     "effect": "RemoveProtect",
+    "battleEffect": "RemoveProtect",
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -6476,6 +6840,7 @@
     "description": "If target has a berry, inflicts double damage and uses the berry.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "EatBerry",
+    "battleEffect": "EatBerry",
     "zPower": 120,
     "maxPower": 110
   },
@@ -6492,6 +6857,7 @@
     "target": "UserSide",
     "flags": "Snatch",
     "effect": "DoubleSpeed3Turns",
+    "battleEffect": "DoubleSpeed3Turns",
     "zBonus": {
       "effect": "Crit2"
     },
@@ -6512,6 +6878,7 @@
     "target": "UserOrAlly",
     "flags": "Snatch",
     "effect": "RandomStatUp2",
+    "battleEffect": "RandomStatUp2",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -6528,6 +6895,7 @@
     "description": "Strikes back at the last Pokémon to hit the user this turn with 1.5× the damage.",
     "flags": "Mirror",
     "effect": "MetalBurst",
+    "battleEffect": "MetalBurst",
     "zPower": 100,
     "maxPower": 100
   },
@@ -6543,6 +6911,7 @@
     "description": "User must switch out after attacking.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "SwitchHit",
+    "battleEffect": "SwitchHit",
     "zPower": 140,
     "maxPower": 120
   },
@@ -6564,6 +6933,7 @@
       "SpDefense"
     ],
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "DefSpdDownHit",
     "zPower": 190,
     "maxPower": 95
   },
@@ -6579,6 +6949,7 @@
     "description": "Power is doubled if the target has already moved this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfMovingSecond",
+    "battleEffect": "DoublePowerIfMovingSecond",
     "zPower": 100,
     "maxPower": 100
   },
@@ -6594,6 +6965,7 @@
     "description": "Power is doubled if the target has already received damage this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfTargetHit",
+    "battleEffect": "DoublePowerIfTargetHit",
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -6612,6 +6984,7 @@
     "description": "Target cannot use held items.",
     "flags": "Protect, Mirror",
     "effect": "PreventItemUse",
+    "battleEffect": "PreventItemUse",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6631,6 +7004,7 @@
     "description": "Throws held item at the target; power depends on the item.",
     "flags": "Protect, Mirror",
     "effect": "Fling",
+    "battleEffect": "Fling",
     "zPower": 100,
     "maxPower": 100
   },
@@ -6646,6 +7020,7 @@
     "description": "Transfers the user's major status effect to the target.",
     "flags": "Protect, Mirror",
     "effect": "TransferStatus",
+    "battleEffect": "TransferStatus",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6668,6 +7043,7 @@
     "description": "Power increases when this move has less PP, up to a maximum of 200.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HigherPowerWhenLowPp",
+    "battleEffect": "HigherPowerWhenLowPp",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6684,6 +7060,7 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "effect": "PreventHealing",
+    "battleEffect": "PreventHealing",
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6703,6 +7080,7 @@
     "description": "Power increases against targets with more HP remaining, up to a maximum of 121 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreHp",
+    "battleEffect": "IncreasePowerWithMoreHp",
     "zPower": 190,
     "maxPower": 140
   },
@@ -6718,6 +7096,7 @@
     "description": "User swaps Attack and Defense.",
     "target": "User",
     "effect": "SwapAtkDef",
+    "battleEffect": "SwapAtkDef",
     "zBonus": {
       "stats": [
         "Attack"
@@ -6737,6 +7116,7 @@
     "description": "Nullifies target's ability until it leaves battle.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SupressAbility",
+    "battleEffect": "SupressAbility",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6756,6 +7136,7 @@
     "description": "Prevents the target from scoring critical hits for five turns.",
     "target": "UserSide",
     "effect": "PreventCrits",
+    "battleEffect": "PreventCrits",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -6775,6 +7156,7 @@
     "description": "Uses the target's move against it before it attacks, with power increased by half.",
     "flags": "Protect",
     "effect": "UseMoveFirst",
+    "battleEffect": "UseMoveFirst",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6793,6 +7175,7 @@
     "maxPP": 20,
     "description": "Uses the target's last used move.",
     "effect": "UseLastUsedMove",
+    "battleEffect": "UseLastUsedMove",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -6812,6 +7195,7 @@
     "description": "User swaps Attack and Special Attack changes with the target.",
     "flags": "Protect, Mirror",
     "effect": "SwapAtkSpAtkStatChanges",
+    "battleEffect": "SwapAtkSpAtkStatChanges",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6831,6 +7215,7 @@
     "description": "User swaps Defense and Special Defense changes with the target.",
     "flags": "Protect, Mirror",
     "effect": "SwapDefSpDefStatChanges",
+    "battleEffect": "SwapDefSpDefStatChanges",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6850,6 +7235,7 @@
     "description": "Power increases against targets with more raised stats, up to a maximum of 200.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreStatUp",
+    "battleEffect": "IncreasePowerWithMoreStatUp",
     "zPower": 160,
     "maxPower": 130
   },
@@ -6865,6 +7251,7 @@
     "description": "Can only be used after all of the user's other moves have been used.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "FailIfNotUsedAllOtherMoves",
+    "battleEffect": "FailIfNotUsedAllOtherMoves",
     "zPower": 200,
     "maxPower": 140,
     "modern": {
@@ -6883,6 +7270,7 @@
     "description": "Changes the target's ability to Insomnia.",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SetAbilityToInsomnia",
+    "battleEffect": "SetAbilityToInsomnia",
     "zBonus": {
       "stats": [
         "Speed"
@@ -6903,6 +7291,7 @@
     "description": "Only works if the target is about to use a damaging move.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitFirstIfTargetAttacking",
+    "battleEffect": "HitFirstIfTargetAttacking",
     "zPower": 140,
     "maxPower": 120,
     "modern": {
@@ -6921,6 +7310,7 @@
     "description": "Scatters poisoned spikes, poisoning opposing Pokémon that switch in.",
     "target": "FoeSide",
     "effect": "ToxicSpikes",
+    "battleEffect": "ToxicSpikes",
     "zBonus": {
       "stats": [
         "Defense"
@@ -6940,6 +7330,7 @@
     "description": "User and target swap stat changes.",
     "flags": "Protect, Mirror",
     "effect": "SwapStatChanges",
+    "battleEffect": "SwapStatChanges",
     "zBonus": {
       "effect": "Crit2"
     }
@@ -6956,6 +7347,7 @@
     "description": "Restores 1/16 of the user's max HP each turn.",
     "target": "User",
     "effect": "RestoreHpEveryTurn",
+    "battleEffect": "RestoreHpEveryTurn",
     "zBonus": {
       "stats": [
         "Defense"
@@ -6975,6 +7367,7 @@
     "description": "User is immune to Ground moves and effects for five turns.",
     "target": "User",
     "effect": "GiveGroundImmunity",
+    "battleEffect": "GiveGroundImmunity",
     "zBonus": {
       "stats": [
         "Evasion"
@@ -6997,6 +7390,7 @@
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror",
     "thawsUser": true,
+    "battleEffect": "RecoilBurnHit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -7013,6 +7407,7 @@
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "ParalyzeHit",
     "zPower": 120,
     "maxPower": 80
   },
@@ -7027,6 +7422,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Pulse, Ballistic, Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 160,
     "maxPower": 90,
     "modern": {
@@ -7049,6 +7445,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpeedUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -7066,6 +7463,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "PoisonHit",
     "zPower": 160,
     "maxPower": 90
   },
@@ -7081,6 +7479,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 20,
     "flags": "Pulse, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7096,6 +7495,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 140,
     "maxPower": 120
   },
@@ -7110,6 +7510,7 @@
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 175,
     "maxPower": 130
   },
@@ -7124,6 +7525,7 @@
     "maxPP": 15,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7139,6 +7541,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -7156,6 +7559,7 @@
     "maxPP": 15,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7173,6 +7577,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Sound, Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 175,
     "maxPower": 130
   },
@@ -7187,6 +7592,7 @@
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Pulse, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -7205,6 +7611,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 180,
     "maxPower": 130
   },
@@ -7219,6 +7626,7 @@
     "maxPP": 20,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -7237,6 +7645,7 @@
     "description": "Drains half the damage inflicted to heal the user.",
     "drainPercent": 50,
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoverHalfDamageDealt",
     "zPower": 140,
     "maxPower": 90,
     "modern": {
@@ -7256,6 +7665,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 70
   },
@@ -7273,6 +7683,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 190,
     "maxPower": 95
   },
@@ -7290,6 +7701,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Ballistic, Protect, Mirror",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -7308,6 +7720,7 @@
     "description": "User receives 1/3 the damage inflicted in recoil.",
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilThird",
     "zPower": 190,
     "maxPower": 140
   },
@@ -7325,6 +7738,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 175,
     "maxPower": 130
   },
@@ -7340,6 +7754,7 @@
     "description": "User and target swap items.",
     "flags": "Protect, Mirror",
     "effect": "SwitchHeldItems",
+    "battleEffect": "SwitchHeldItems",
     "zBonus": {
       "stats": [
         "Speed"
@@ -7359,6 +7774,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -7378,6 +7794,7 @@
     "statChangeChancePercent": 100,
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "SpAtkUp2",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -7394,6 +7811,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 90
   },
@@ -7410,6 +7828,7 @@
     "description": "Inflicts double damage if the user takes damage before attacking this turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfHit",
+    "battleEffect": "DoublePowerIfHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -7425,6 +7844,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 90
   },
@@ -7440,6 +7860,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 140,
     "maxPower": 120
   },
@@ -7457,6 +7878,7 @@
     "statusChancePercent": 10,
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchParalyzeHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -7474,6 +7896,7 @@
     "statusChancePercent": 10,
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchFreezeHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -7491,6 +7914,7 @@
     "statusChancePercent": 10,
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchBurnHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -7506,6 +7930,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 90
   },
@@ -7523,6 +7948,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 30,
     "flags": "Ballistic, Protect, Mirror, KingsRock",
+    "battleEffect": "LowerAccuracyHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -7538,6 +7964,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 140,
     "maxPower": 120
   },
@@ -7553,6 +7980,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7570,6 +7998,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "LowerAccuracyHit",
     "zPower": 120,
     "maxPower": 120
   },
@@ -7587,6 +8016,7 @@
     "statStageAmount": -1,
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "LowerSpDefHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7602,6 +8032,7 @@
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "ConfuseHit",
     "zPower": 175,
     "maxPower": 130
   },
@@ -7617,6 +8048,7 @@
     "description": "Lowers the target's evasion by one stage. Removes field effects from the enemy field.",
     "flags": "Protect, Mirror",
     "effect": "RemoveHazardsScreensEvaDown",
+    "battleEffect": "RemoveHazardsScreensEvaDown",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -7638,6 +8070,7 @@
     "target": "Field",
     "flags": "Mirror",
     "effect": "TrickRoom",
+    "battleEffect": "TrickRoom",
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -7660,6 +8093,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "UserSpAtkDown2",
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -7680,6 +8114,7 @@
     "statusChancePercent": 30,
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "ParalyzeHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7697,6 +8132,7 @@
     "statusChancePercent": 30,
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "BurnHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7715,6 +8151,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "UserSpAtkDown2",
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -7732,6 +8169,7 @@
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Hit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -7747,6 +8185,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -7764,6 +8203,7 @@
     "statusChancePercent": 10,
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "HighCriticalPoisonHit",
     "zPower": 140,
     "maxPower": 85
   },
@@ -7780,6 +8220,7 @@
     "inflictStatus": "Poison",
     "statusChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "PoisonHit",
     "zPower": 190,
     "maxPower": 95,
     "modern": {
@@ -7798,6 +8239,7 @@
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "FlinchHit",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7812,6 +8254,7 @@
     "maxPP": 20,
     "description": "Never misses.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
+    "battleEffect": "BypassAccuracy",
     "zPower": 120,
     "maxPower": 110
   },
@@ -7827,6 +8270,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 180,
     "maxPower": 130
   },
@@ -7843,6 +8287,7 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SpAtkDown2OppositeGender",
+    "battleEffect": "SpAtkDown2OppositeGender",
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -7862,6 +8307,7 @@
     "description": "Causes damage when opposing Pokémon switch in.",
     "target": "FoeSide",
     "effect": "StealthRock",
+    "battleEffect": "StealthRock",
     "zBonus": {
       "stats": [
         "Defense"
@@ -7881,6 +8327,7 @@
     "description": "Inflicts more damage to heavier targets, with a maximum of 120 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithWeight",
+    "battleEffect": "IncreasePowerWithWeight",
     "zPower": 160,
     "maxPower": 130
   },
@@ -7896,6 +8343,7 @@
     "description": "Has a higher chance to confuse the target when the recorded sound is louder.",
     "flags": "Sound, Protect",
     "effect": "Chatter",
+    "battleEffect": "Chatter",
     "zPower": 120,
     "maxPower": 120,
     "modern": {
@@ -7914,6 +8362,7 @@
     "description": "If the user is holding a appropriate plate or drive, the damage inflicted will match it.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Judgement",
+    "battleEffect": "Judgement",
     "zPower": 180,
     "maxPower": 130
   },
@@ -7929,6 +8378,7 @@
     "description": "If target has a berry, inflicts double damage and uses the berry.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "EatBerry",
+    "battleEffect": "EatBerry",
     "zPower": 120,
     "maxPower": 110
   },
@@ -7947,6 +8397,7 @@
     "statChangeTargetSelf": true,
     "statChangeChancePercent": 70,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "RaiseSpAtkHit",
     "zPower": 100,
     "maxPower": 100
   },
@@ -7962,6 +8413,7 @@
     "description": "User receives 1/3 the damage inflicted in recoil.",
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilThird",
     "zPower": 190,
     "maxPower": 140
   },
@@ -7977,6 +8429,7 @@
     "priority": 1,
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "Priority1",
     "zPower": 100,
     "maxPower": 90
   },
@@ -7992,6 +8445,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 175,
     "maxPower": 130
   },
@@ -8014,6 +8468,7 @@
     ],
     "target": "User",
     "flags": "Snatch",
+    "battleEffect": "DefSpdUp",
     "zBonus": {
       "stats": [
         "Defense"
@@ -8034,6 +8489,7 @@
     "target": "User",
     "flags": "Snatch",
     "healPercent": 50,
+    "battleEffect": "RestoreHalfHp",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -8050,6 +8506,7 @@
     "description": "User receives 1/2 the damage inflicted in recoil.",
     "recoilPercent": 50,
     "flags": "Contact, Protect, Mirror, KingsRock",
+    "battleEffect": "RecoilHalf",
     "zPower": 200,
     "maxPower": 150
   },
@@ -8065,6 +8522,7 @@
     "description": "Hits twice in one turn.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitTwice",
+    "battleEffect": "HitTwice",
     "zPower": 140,
     "maxPower": 120
   },
@@ -8080,6 +8538,7 @@
     "description": "User foregoes its next turn to recharge.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
+    "battleEffect": "RechargeAfter",
     "zPower": 200,
     "maxPower": 150
   },
@@ -8095,6 +8554,7 @@
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "HighCritical",
     "zPower": 180,
     "maxPower": 130
   },
@@ -8110,7 +8570,8 @@
     "description": "User faints, and its replacement is fully healed.",
     "target": "User",
     "flags": "Dance",
-    "effect": "FaintFullRestoreNextMon"
+    "effect": "FaintFullRestoreNextMon",
+    "battleEffect": "FaintFullRestoreNextMon"
   },
   {
     "id": 462,
@@ -8124,6 +8585,7 @@
     "description": "Power increases against targets with more HP remaining, up to a maximum of 121 power.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreHp",
+    "battleEffect": "IncreasePowerWithMoreHp",
     "zPower": 190,
     "maxPower": 140
   },
@@ -8139,6 +8601,7 @@
     "description": "Prevents the target from fleeing and inflicts damage for 2-5 turns.",
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
+    "battleEffect": "BindHit",
     "zPower": 180,
     "maxPower": 130,
     "modern": {
@@ -8160,6 +8623,7 @@
     "statusChancePercent": 100,
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
+    "battleEffect": "StatusSleep",
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -8181,6 +8645,7 @@
     "statStageAmount": -2,
     "statChangeChancePercent": 40,
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "LowerSpDef2Hit",
     "zPower": 190,
     "maxPower": 140
   },
@@ -8205,6 +8670,7 @@
       "Speed"
     ],
     "flags": "Protect, Mirror, KingsRock",
+    "battleEffect": "RaiseAllStatsHit",
     "zPower": 120,
     "maxPower": 110
   },
@@ -8220,6 +8686,7 @@
     "description": "User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect.",
     "flags": "Contact, Mirror, KingsRock",
     "effect": "ShadowForce",
+    "battleEffect": "ShadowForce",
     "zPower": 190,
     "maxPower": 140
   },

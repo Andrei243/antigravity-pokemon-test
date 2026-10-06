@@ -1,0 +1,15 @@
+{
+  "area": "eterna_forest_outside",
+  "bgmTrack": "sinnoh/route205",
+  "trees": "Pine",
+  "people": {
+    "pokemon_breeder_f": {
+      "name": "Woman",
+      "dialog": [
+        "Somebody looks after this soft soil. You can tell by how dark and damp it is.",
+        "Plant a Berry in it, water it now and then, and it gives you back more than you put in."
+      ]
+    }
+  },
+  "signs": {}
+}

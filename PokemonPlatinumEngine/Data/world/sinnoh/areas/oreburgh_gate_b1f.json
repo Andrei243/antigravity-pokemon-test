@@ -38,11 +38,35 @@
     { "species": "Golbat", "level": 20, "maxLevel": 40 }
   ],
   "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
   "warps": [
     { "x": 48, "z": 4, "to": "oreburgh_gate_1f", "toWarp": 2 }
   ],
   "objects": [
-    { "id": "veteran_grant", "looks": "expert_m", "movement": "look_north_and_south", "x": 13, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_VETERAN_GRANT" },
+    { "id": "veteran_grant", "looks": "expert_m", "movement": "look_north_and_south", "x": 13, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_VETERAN_GRANT" },
     { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 9, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
     { "id": "strength_boulder_1", "looks": "strength_boulder", "movement": "none", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10002" },
     { "id": "strength_boulder_2", "looks": "strength_boulder", "movement": "none", "x": 8, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10002" },

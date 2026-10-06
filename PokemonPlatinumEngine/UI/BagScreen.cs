@@ -12,7 +12,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What can be done with the item under the cursor.</summary>
-public enum BagAction { Use, Give, Cancel }
+public enum BagAction { Use, Give, Register, Deselect, Cancel }
 
 /// <summary>
 /// The bag: Platinum's eight pockets as tabs, the pocket's items as a list and the chosen item beside it. The A
@@ -73,6 +73,23 @@ public class BagScreen
 
     /// <summary>Whether the waiting item is to be given to hold rather than used.</summary>
     public bool Giving => giving;
+
+    /// <summary>
+    /// The key item kept ready on the item button (the original's registered item, its Y button), by name; the game
+    /// sets it as the bag opens and saves it.
+    /// </summary>
+    public string? Registered { get; set; }
+
+    // An item used in the field itself (the Bicycle, a rod, an Escape Rope), for the game to carry out once the bag closes
+    private ItemData? usedInField;
+
+    /// <summary>Hands over the item chosen to be used in the field, once: the bag has closed for it.</summary>
+    public ItemData? TakeFieldUse()
+    {
+        var item = usedInField;
+        usedInField = null;
+        return item;
+    }
 
     /// <summary>Hands over the evolution an item has just set off, once.</summary>
     public EvolutionRequest? TakeEvolution()
@@ -146,18 +163,25 @@ public class BagScreen
     public static bool CanUse(ItemData item) =>
         FieldItems.IsMedicine(item) || item.EffectType == ItemEffectType.LevelUp || Evolution.IsUsedToEvolve(item);
 
+    /// <summary>
+    /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
+    /// Bicycle, the three rods, the Escape Rope. The bag closes and the game carries them out.
+    /// </summary>
+    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope";
+
     /// <summary>As in Platinum, a Pokémon can hold anything but a Key Item or a TM.</summary>
     public static bool CanGive(ItemData item) => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs);
 
     /// <summary>Items the player aims at one Pokémon, to use or to give.</summary>
     public static bool NeedsTarget(ItemData item) => CanUse(item) || CanGive(item);
 
-    /// <summary>What the A button offers for an item, CANCEL last.</summary>
-    public static List<BagAction> ActionsFor(ItemData item)
+    /// <summary>What the A button offers for an item, CANCEL last: a key item that can be kept on the item button offers that too.</summary>
+    public static List<BagAction> ActionsFor(ItemData item, string? registered = null)
     {
         var actions = new List<BagAction>();
-        if (CanUse(item)) actions.Add(BagAction.Use);
+        if (CanUse(item) || UsedInField(item)) actions.Add(BagAction.Use);
         if (CanGive(item)) actions.Add(BagAction.Give);
+        if (item.CanBeRegistered && UsedInField(item)) actions.Add(registered == item.Name ? BagAction.Deselect : BagAction.Register);
         actions.Add(BagAction.Cancel);
         return actions;
     }
@@ -175,7 +199,7 @@ public class BagScreen
 
         if (Actions == null)
         {
-            var actions = ActionsFor(item);
+            var actions = ActionsFor(item, Registered);
             if (actions.Count == 1)
             {
                 onNotification("It can't be used here.");
@@ -193,6 +217,20 @@ public class BagScreen
         if (action == BagAction.Cancel)
         {
             AudioManager.PlaySound("cancel");
+            return;
+        }
+        if (action is BagAction.Register or BagAction.Deselect)
+        {
+            Registered = action == BagAction.Register ? item.Name : null;
+            AudioManager.PlaySound("select");
+            onNotification(action == BagAction.Register ? $"The {item.Name} is ready on the item button." : $"The {item.Name} is off the item button.");
+            return;
+        }
+        if (action == BagAction.Use && UsedInField(item))
+        {
+            usedInField = item;
+            AudioManager.PlaySound("select");
+            Close();
             return;
         }
         if (party.Count == 0)

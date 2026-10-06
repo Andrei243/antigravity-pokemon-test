@@ -1,0 +1,69 @@
+{
+  "area": "amity_square",
+  "bgmTrack": "sinnoh/amity_square",
+  // The imported collision data closes in the Spooky Plate's hollow under a great stone, and the two people who
+  // stand on the stones' raised ground: held back (their lines kept) until the square's stones are looked at again
+  // (plan 01 · M11)
+  "heldBack": [ "item_spooky_plate", "pokemon_breeder_f", "gift_man" ],
+  "trees": "Round",
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "hearthome_city", "toWarp": 0 },
+    { "warp": 1, "to": "hearthome_city", "toWarp": 1 },
+    { "warp": 2, "to": "hearthome_city", "toWarp": 3 },
+    { "warp": 3, "to": "hearthome_city", "toWarp": 4 }
+  ],
+  "people": {
+    // In Platinum the two receptionists let a Pokémon of a few kinds out of its ball to walk beside the player; nothing walks beside the player yet
+    "receptionist_west": {
+      "name": "Receptionist",
+      "dialog": [
+        "Welcome to Amity Square! Take as long as you like.",
+        "Some trainers walk the paths with a Pokémon at their side. It does them both a world of good."
+      ]
+    },
+    "receptionist_east": {
+      "name": "Receptionist",
+      "dialog": [
+        "This is Amity Square, where people and Pokémon come to unwind.",
+        "Keep an eye on the ground as you go. Visitors drop all sorts of things."
+      ]
+    },
+    "pokemon_breeder_m": {
+      "name": "Man",
+      "dialog": [
+        "The old stones round this square were standing long before anyone built Hearthome.",
+        "Nobody knows who raised them. My Drifloon likes to float about them all afternoon."
+      ]
+    },
+    "pokemon_breeder_f": {
+      "name": "Woman",
+      "dialog": [
+        "My Happiny and I come here every single day.",
+        "The fresh air does us both good. Then it naps all the way home."
+      ]
+    },
+    "collector": {
+      "name": "Man",
+      "dialog": [
+        "All my life I dreamt of strolling round this park with a Pikachu.",
+        "And today, at last, here we are! I could burst!"
+      ]
+    },
+    "twin": {
+      "name": "Girl",
+      "dialog": [
+        "Do you talk to your Pokémon? You should!",
+        "My Clefairy understands every word I say. Well, nearly every word."
+      ]
+    },
+    // In Platinum he gives away Berries or an accessory once a day; the gift is plan 02's (S7)
+    "gift_man": {
+      "name": "Man",
+      "dialog": [
+        "Good day to you! I walk in this park every day, rain or shine.",
+        "You never know what you'll find on the paths. Only this morning I came across a handful of Berries!"
+      ]
+    }
+  }
+}

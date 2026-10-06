@@ -1,0 +1,72 @@
+# Hearthome City (the original's CITY05 role): the city of warm hearts, with its Contest Hall, the church-like
+# foreign building, Amity Square where people stroll with their Pokémon, and the Pokémon Fan Club. A warm,
+# lilting E-flat swing: a violin sings the tune over swung piano, a soft church organ, a walking bass and brushed
+# drums, a trumpet takes the bridge and bells peal at the ends of phrases; at night a clarinet, a horn, a pad
+# and an electric piano. Original composition for this game.
+title Hearthome City
+tempo 120
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead violin night=clarinet vol=0.9 pan=0 rev=0.3
+  r1 | r1 |
+  L r6 o4 b-12 o5 e-6 g12 b-4^6 a-12 | o5 g2 f6 e-12 f4 | r6 o5 c12 f6 a-12 o6 c4^6 o5 b-12 | o5 a-2 g6 f12 g4 |
+  r6 o4 b-12 o5 e-6 g12 b-4^6 o6 c12 | o6 e-4^6 d12 c4 o5 a-4 | o5 b-4^6 g12 b-4 g6 e12 | o5 f4^6 e-12 d2 |
+  r6 o4 b-12 o5 e-6 g12 b-4^6 a-12 | o5 g2 f6 e-12 f4 | r6 o5 c12 f6 a-12 o6 c4^6 o5 b-12 | o5 a-2 g6 a-12 b-4 |
+  o6 e-2 d-6 c12 o5 b-4 | o6 c4 o5 a-6 o6 c12 o5 b4 a-4 | o5 a-4 g6 f12 g4 a-6 f12 | o5 e-2. r4 |
+  v68 o5 c1 | d1 | d1 | e1 |
+  e-1 | d1 | d2 e2 | e-2 d2 |
+
+track bridge trumpet night=horn vol=0.75 pan=0.05 rev=0.3
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 e-4 a-6 o6 c12 e-2 | o6 d4^6 c12 o5 b-4 a-4 | o5 g2 f6 g12 b-4 | o5 b-2 g6 e12 g4 |
+  o5 c4 f6 a-12 o6 c2 | o5 b-4^6 a-12 f4 d4 | o5 d4 g6 b-12 o6 c4 o5 b-6 g12 | o5 a-6 g12 f6 e-12 d4 f4 |
+
+track bells bell night=celesta vol=0.35 pan=0.4 rev=0.5
+  o6 e-4 o5 b-4 g4 e-4 | o6 d4 o5 b-4 f4 a-4 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 o5 f4 b-4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | o6 e-4 o5 b-4 g4 e-4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 o5 f4 b-4 |
+
+track organ organ night=pad vol=0.25 pan=-0.3 rev=0.4
+  q8 o4 (e- g b-)1 | (d f a- b-)1 |
+  L (e- g b-)1 | (c e- g b-)1 | (c e- f a-)1 | (d f a- b-)1 |
+  (e- g b-)1 | (c e- a-)1 | (d f g b-)2 (c e g b-)2 | (c e- f a-)2 (d f a- b-)2 |
+  (e- g b-)1 | (c e- g b-)1 | (c e- f a-)1 | (d f a- b-)1 |
+  (d- e- g b-)1 | (c e- a-)2 (c- e- f a-)2 | (c e- f a-)2 (d f a- b-)2 | (e- g b-)1 |
+  (c e- f a-)1 | (d f a- b-)1 | (d f g b-)1 | (c e g b-)1 |
+  (c e- f a-)1 | (d f a- b-)1 | (d f g b-)2 (c e g b-)2 | (c e- f a-)2 (d f a- b-)2 |
+
+track comp piano night=epiano vol=0.3 pan=0.3 rev=0.25
+  q6 o3 (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 | (a- b- >d f)4 r6 (a- b- >d f)12 r4 r6 (a- b- >d f)12 |
+  L (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 | (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 | (a- >c e- f)4 r6 (a- >c e- f)12 r4 r6 (a- >c e- f)12 | (a- b- >d f)4 r6 (a- b- >d f)12 r4 r6 (a- b- >d f)12 |
+  (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 | (a- >c e- f)4 r6 (a- >c e- f)12 r4 r6 (a- >c e- f)12 | (f g b- >d)4 r6 (f g b- >d)12 (e g b- >d)4 r6 (e g b- >d)12 | (a- >c e- f)4 r6 (a- >c e- f)12 (a- b- >d f)4 r6 (a- b- >d f)12 |
+  (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 | (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 | (a- >c e- f)4 r6 (a- >c e- f)12 r4 r6 (a- >c e- f)12 | (a- b- >d f)4 r6 (a- b- >d f)12 r4 r6 (a- b- >d f)12 |
+  (g b- >d- e-)4 r6 (g b- >d- e-)12 r4 r6 (g b- >d- e-)12 | (a- >c e- f)4 r6 (a- >c e- f)12 (a- >c- e- f)4 r6 (a- >c- e- f)12 | (a- >c e- f)4 r6 (a- >c e- f)12 (a- b- >d f)4 r6 (a- b- >d f)12 | (g b- >c e-)4 r6 (g b- >c e-)12 r4 r6 (g b- >c e-)12 |
+  (a- >c e- f)4 r6 (a- >c e- f)12 r4 r6 (a- >c e- f)12 | (a- b- >d f)4 r6 (a- b- >d f)12 r4 r6 (a- b- >d f)12 | (f g b- >d)4 r6 (f g b- >d)12 r4 r6 (f g b- >d)12 | (e g b- >d)4 r6 (e g b- >d)12 r4 r6 (e g b- >d)12 |
+  (a- >c e- f)4 r6 (a- >c e- f)12 r4 r6 (a- >c e- f)12 | (a- b- >d f)4 r6 (a- b- >d f)12 r4 r6 (a- b- >d f)12 | (f g b- >d)4 r6 (f g b- >d)12 (e g b- >d)4 r6 (e g b- >d)12 | (a- >c e- f)4 r6 (a- >c e- f)12 (a- b- >d f)4 r6 (a- b- >d f)12 |
+
+track bass bass vol=0.7 rev=0.08
+  o3 e-2 g2 | o2 b-2 o3 d2 |
+  L o3 e-2 o2 b-2 | o3 c2 g2 | o3 f2 c2 | o2 b-2 o3 f2 |
+  o3 e-2 g2 | o3 a-2 e-2 | o3 g2 c2 | o3 f2 o2 b-2 |
+  o3 e-4 g4 b-4 d4 | o3 c4 e-4 g4 e4 | o3 f4 a-4 c4 o2 b4 | o2 b-4 o3 d4 f4 e4 |
+  o3 e-4 g4 b-4 a4 | o3 a-4 c4 o2 b4 o3 e-4 | o3 f4 a-4 o2 b-4 o3 d4 | o3 e-4 g4 b-4 g4 |
+  o3 a-4 g4 f4 e-4 | o3 d4 f4 a-4 f4 | o3 g4 f4 d4 o2 b-4 | o3 c4 e4 g4 e4 |
+  o3 f4 g4 a-4 a4 | o3 b-4 f4 d4 f4 | o3 g4 d4 c4 e4 | o3 f4 c4 o2 b-4 o3 d4 |
+
+track drums kit vol=0.55 rev=0.12
+  r1 | r2 v50 s6 s12 v60 s6 v70 s12 |
+  L [ v80 (b c)4 v50 s4 v65 b4 v50 s4 | [ v65 b4 v50 s4 v65 b4 v50 s4 | ]6 v65 b4 v50 s4 v55 s6 s12 v65 s6 v75 s12 | ]3
+
+track ride kit vol=0.65 pan=0.15 rev=0.1
+  [ v45 h4 v60 h6 v30 h12 v45 h4 v60 h6 v30 h12 | ]2
+  L [ v45 h4 v60 h6 v30 h12 v45 h4 v60 h6 v30 h12 | ]24

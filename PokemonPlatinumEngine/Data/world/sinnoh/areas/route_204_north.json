@@ -38,15 +38,39 @@
     { "species": "Golduck", "level": 20, "maxLevel": 40 }
   ],
   "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
   "warps": [
     { "x": 180, "z": 698, "to": "ravaged_path", "toWarp": 1 }
   ],
   "objects": [
-    { "id": "bug_catcher_brandon", "looks": "bug_catcher", "movement": "walk_back_and_forth", "x": 182, "z": 685, "facing": 2, "rangeX": 4, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_BUG_CATCHER_BRANDON" },
-    { "id": "aroma_lady_taylor", "looks": "pokemon_breeder_f", "movement": "look_south_and_east", "x": 177, "z": 692, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_AROMA_LADY_TAYLOR" },
-    { "id": "twin_liv", "looks": "twin", "movement": "look_south", "x": 175, "z": 679, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TWINS_LIV_AND_LIZ" },
-    { "id": "twin_liz", "looks": "twin", "movement": "look_south", "x": 176, "z": 679, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_TWINS_LIV_AND_LIZ" },
-    { "id": "youngster_north", "looks": "youngster", "movement": "wander_west_and_east", "x": 175, "z": 700, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "1" },
+    { "id": "bug_catcher_brandon", "looks": "bug_catcher", "movement": "walk_back_and_forth", "x": 182, "z": 685, "facing": 2, "rangeX": 4, "rangeZ": 0, "y": 5, "trainer": "normal", "sight": 1, "script": "TRAINER_BUG_CATCHER_BRANDON" },
+    { "id": "aroma_lady_taylor", "looks": "pokemon_breeder_f", "movement": "look_south_and_east", "x": 177, "z": 692, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 5, "trainer": "normal", "sight": 4, "script": "TRAINER_AROMA_LADY_TAYLOR" },
+    { "id": "twin_liv", "looks": "twin", "movement": "look_south", "x": 175, "z": 679, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 5, "trainer": "normal", "sight": 3, "script": "TRAINER_TWINS_LIV_AND_LIZ" },
+    { "id": "twin_liz", "looks": "twin", "movement": "look_south", "x": 176, "z": 679, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 5, "trainer": "normal", "sight": 4, "script": "TRAINER_TWINS_LIV_AND_LIZ" },
+    { "id": "youngster_north", "looks": "youngster", "movement": "wander_west_and_east", "x": 175, "z": 700, "facing": 3, "rangeX": 1, "rangeZ": 0, "y": 5, "script": "1" },
     { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 177, "z": 681, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
     { "id": "signboard", "looks": "signboard", "movement": "none", "x": 170, "z": 706, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
     { "id": "youngster_south", "looks": "youngster", "movement": "wander_west_and_east", "x": 173, "z": 706, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "0" },

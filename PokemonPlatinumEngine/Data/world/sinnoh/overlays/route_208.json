@@ -1,0 +1,98 @@
+{
+  "area": "route_208",
+  "bgmTrack": "sinnoh/route206",
+  "trees": "Pine",
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "hearthome_city", "toWarp": 14 },
+    { "warp": 1, "to": "hearthome_city", "toWarp": 18 }
+  ],
+  // The house on the route has no room yet (plan 01 · M11)
+  "locked": [ 2 ],
+  "people": {
+    // In Platinum he hands over the Odd Keystone; the gift is plan 02's (S5)
+    "black_belt": {
+      "name": "Black Belt",
+      "dialog": [
+        "I dug up an odd stone on my travels. It's heavier than it looks, and it turns cold at night.",
+        "There's a little tower of stones on Route 209 with one missing. I wonder if this one belongs there."
+      ]
+    },
+    "hiker_robert": {
+      "name": "Robert",
+      "trainer": {
+        "id": "hiker_robert",
+        "name": "Robert",
+        "trainerClass": "Hiker",
+        "dialogueBefore": "Hiker Robert: Fresh down off Mt. Coronet and itching for a battle! Nosepass, show them!",
+        "dialogueAfter": "Hiker Robert: Beaten, and turned round too. Good thing Nosepass always points north."
+      }
+    },
+    "hiker_alexander": {
+      "name": "Alexander",
+      "trainer": {
+        "id": "hiker_alexander",
+        "name": "Alexander",
+        "trainerClass": "Hiker",
+        "dialogueBefore": "Hiker Alexander: Few trainers ever find this quiet corner. Let's see whether you deserve to!",
+        "dialogueAfter": "Hiker Alexander: You're tougher than any rock I've met, and I've met a great many."
+      }
+    },
+    "hiker_jonathan": {
+      "name": "Jonathan",
+      "trainer": {
+        "id": "hiker_jonathan",
+        "name": "Jonathan",
+        "trainerClass": "Hiker",
+        "dialogueBefore": "Hiker Jonathan: My legs are like jelly after that mountain, but my Onix is as solid as ever!",
+        "dialogueAfter": "Hiker Jonathan: Onix and I will sit a while. Hearthome City's just down the road, if you're heading that way."
+      }
+    },
+    "black_belt_kyle": {
+      "name": "Kyle",
+      "trainer": {
+        "id": "black_belt_kyle",
+        "name": "Kyle",
+        "trainerClass": "Black Belt",
+        "dialogueBefore": "Black Belt Kyle: Hup! I train on this road between the mountain and the city. Spar with me!",
+        "dialogueAfter": "Black Belt Kyle: A fine bout! Machop and I will train twice as hard tomorrow."
+      }
+    },
+    "fisherman_cody": {
+      "name": "Cody",
+      "trainer": {
+        "id": "fisherman_cody",
+        "name": "Cody",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Cody: Shh, they're biting! ...Oh, very well. One battle, and then you let me fish in peace.",
+        "dialogueAfter": "Fisherman Cody: Well, that's frightened off every fish for a mile around. Thanks ever so much."
+      }
+    },
+    "aroma_lady_hannah": {
+      "name": "Hannah",
+      "trainer": {
+        "id": "aroma_lady_hannah",
+        "name": "Hannah",
+        "trainerClass": "Aroma Lady",
+        "dialogueBefore": "Aroma Lady Hannah: Berry flowers smell wonderful in bloom. My Combee can't stay away, and neither can I!",
+        "dialogueAfter": "Aroma Lady Hannah: Lovely battle! Do plant a Berry of your own. The flowers are half the fun."
+      }
+    },
+    "artist_william": {
+      "name": "William",
+      "trainer": {
+        "id": "artist_william",
+        "name": "William",
+        "trainerClass": "Artist",
+        "dialogueBefore": "Artist William: I'm painting the mountain. Stand still a moment, would you? ...No? Then let's battle!",
+        "dialogueAfter": "Artist William: Now I'll have to paint you into the picture: a trainer, victorious, on Route 208."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_12": "Route 208\nWest: Mt. Coronet",
+    "arrow_signpost_10": "Route 208\nEast: Hearthome City",
+    "signboard": "Berry Master's House\nA Berry a day for anyone who calls.",
+    "trainer_tips_signpost": "Trainer Tips\nBerries grow best in soft soil. Plant one, water it now and then, and you'll pick more than you planted."
+  }
+}

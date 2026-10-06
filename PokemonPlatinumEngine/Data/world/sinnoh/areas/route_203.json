@@ -38,16 +38,40 @@
     { "species": "Golduck", "level": 20, "maxLevel": 40 }
   ],
   "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
   "warps": [
     { "x": 246, "z": 749, "to": "oreburgh_gate_1f", "toWarp": 0 }
   ],
   "objects": [
     { "id": "youngster_sebastian", "looks": "youngster", "movement": "look_west", "x": 234, "z": 757, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_YOUNGSTER_SEBASTIAN" },
-    { "id": "youngster_michael", "looks": "youngster", "movement": "look_west", "x": 204, "z": 750, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_MICHAEL" },
+    { "id": "youngster_michael", "looks": "youngster", "movement": "look_west", "x": 204, "z": 750, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_MICHAEL" },
     { "id": "lass_kaitlin", "looks": "lass", "movement": "wander_around", "x": 243, "z": 757, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_LASS_KAITLIN" },
-    { "id": "youngster_dallas", "looks": "youngster", "movement": "look_south", "x": 222, "z": 756, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_DALLAS" },
-    { "id": "lass_madeline", "looks": "lass", "movement": "look_south", "x": 240, "z": 748, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_MADELINE" },
-    { "id": "rival", "looks": "barry", "movement": "look_west", "x": 201, "z": 757, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_203_RIVAL", "script": "0" },
+    { "id": "youngster_dallas", "looks": "youngster", "movement": "look_south", "x": 222, "z": 756, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 4, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_DALLAS" },
+    { "id": "lass_madeline", "looks": "lass", "movement": "look_south", "x": 240, "z": 748, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_MADELINE" },
+    { "id": "rival", "looks": "barry", "movement": "look_west", "x": 201, "z": 757, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_HIDE_ROUTE_203_RIVAL", "script": "0" },
     { "id": "arrow_signpost_jubilife_city", "looks": "arrow_signpost", "movement": "none", "x": 200, "z": 756, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
     { "id": "arrow_signpost_oreburgh_city", "looks": "arrow_signpost", "movement": "none", "x": 244, "z": 747, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
     { "id": "trainer_tips_signpost_east", "looks": "trainer_tips_signpost", "movement": "none", "x": 238, "z": 752, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" },

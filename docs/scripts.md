@@ -37,6 +37,21 @@ that exists, every script to something that starts it, and plays each to its end
 - **Arriving.** A file's `OnEnter` runs when the player comes to its place by a door, a warp, a loaded save, or
   by walking across the border of its area. It runs every time, so it asks a variable or a flag before it does
   anything.
+- **Facing an obstacle or the water** (plan 02 · S2). A thin tree, a cracked rock and a boulder are things of the
+  map (`npcType` `CutTree`, `CrackedRock`, `StrengthBoulder`) and run `CutTree`, `Rock` and `Boulder` when the
+  player faces one and presses the button. The tile ahead starts one too, as the original's
+  `Field_TileBehaviorToScript` does: a rock face along its grain runs `RockFace`, a waterfall faced from the water
+  `Waterfall`, and deep water at the player's feet `Water`, which the field offers only to someone who may surf
+  (the move and the Fen Badge).
+- **A field move chosen from the party menu.** The menu checks the move where the player stands
+  (`FieldMoveRules.Check`: the place, the badge, a partner, what is in force already) and then runs `Use` and the
+  move's name (`UseCut`, `UseFly`, `UseSweetScent`), for the Pokémon chosen. Cut, Rock Smash and Strength act on the
+  obstacle in front, which is whose script it is (its `own` flag is the obstacle's). Fly's map is chosen before
+  `UseFly` runs.
+- **An item used from the bag or the item button.** An Escape Rope runs `EscapeRope`; the Bicycle and the rods are
+  the game's own, with no script.
+- **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
+  `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
 - **A new game.** `common.NewGame` runs once, with no screen: it may set flags and variables and nothing else.
   It is also run for a save from before the story was kept (`Story/StoryMigration.cs`).
 
@@ -117,6 +132,7 @@ What an `if` can ask:
 | `taken "item_id"` | An item on the ground has been picked up. |
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
+| `poketch` | The player has the Pokétch. |
 
 ### What the story remembers
 
@@ -125,6 +141,12 @@ What an `if` can ask:
 | `setflag FLAG_X`, `clearflag FLAG_X` | Flags are named `FLAG_` and capitals, after the original's where it has one. |
 | `setflag own`, `clearflag own` | The script's own flag: the one that hides whoever it belongs to (an item's ball), or that says a hidden item has been found. Setting it is what makes the ball gone for good. |
 | `setvar VAR_X 2`, `addvar VAR_X 1` | Variables likewise (`VAR_`). One never set is 0. |
+
+A flag named `FLAG_MAP_LOCAL_...` lasts only while the player stays in its place, as the original's local flags
+do: it is cleared whenever the player comes to another area or through a warp (`StoryState.ClearLocal`). An
+obstacle's flag is one of these, made its area's own (`FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_ETERNA_CITY`), so a tree
+that was cut grows back once the player has gone. So are three of the game's own: `FLAG_STRENGTH_ACTIVE` (cleared
+on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on going anywhere that isn't a cave).
 
 ### Giving and taking
 
@@ -145,7 +167,12 @@ What an `if` can ask:
 | Command | |
 |---|---|
 | `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up at home, unless `canlose`: then the team is healed and the script goes on with `if lost`. |
+| `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
+| `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
+| `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
+| `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
+| `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
 
 ### People and the field
 
@@ -175,6 +202,23 @@ What an `if` can ask:
 
 `starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `shop`, `pc`, `travel` (the way to the
 next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here).
+
+### Field moves and key items
+
+Plan 02 · S2. These do what a move or an item does; whether it may be used is the script's to ask first
+(`if knows "Cut"`, `if badge forest`), or the party menu's, which has asked before a `Use...` script runs.
+
+| Command | What it does |
+|---|---|
+| `usemove "Cut"` | "{user} used Cut!", then the move's cut-in (the Pokémon on a band across the screen, with its cry). As the band closes, the obstacle the script belongs to gives way (Cut and Rock Smash). `{user}` in a line is the Pokémon that used it: the one chosen in the party menu, or the first of the team who knows the move. The move must be a field move. |
+| `surf` | The player rides out onto the water ahead and the script waits for the step. `RESULT` is 0 where there is no water to ride out on. |
+| `climb` | Up or down the waterfall or rock face ahead, to its end. `RESULT` 0 where there is none. |
+| `fly` | Through a fade to the town chosen on Fly's map, in front of its Pokémon Center (or the player's house in Twinleaf Town). |
+| `teleport` | Through a fade to the town of the Pokémon Center last gone into. |
+| `escape` | Through a fade out of the caves, to where the player went into them (Dig, an Escape Rope). |
+| `sweetscent` | Draws out a wild Pokémon of the place where the player stands, on land or water, and battles it. `RESULT` is 0 when nothing lives there. |
+| `poketch on` | Gives the player the Pokétch. |
+| `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 
 ## Who is on the map
 

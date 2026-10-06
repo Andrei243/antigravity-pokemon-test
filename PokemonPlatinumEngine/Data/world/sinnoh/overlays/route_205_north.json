@@ -1,0 +1,48 @@
+{
+  "area": "route_205_north",
+  "bgmTrack": "sinnoh/route205",
+  "trees": "Pine",
+  "people": {
+    "fisherman": {
+      "name": "Fisherman",
+      "dialog": [
+        "A rod reaches the Pokémon that never come up onto the bank. Cast, wait, and pull the moment it bites.",
+        "Psyduck and Golduck swim in this water. Between them they've stolen half my bait."
+      ]
+    },
+    "fisherman_andrew": {
+      "name": "Andrew",
+      "trainer": {
+        "id": "fisherman_andrew",
+        "name": "Andrew",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Andrew: Every one of my Pokémon came out of this water. Want to meet the lot of them?",
+        "dialogueAfter": "Fisherman Andrew: One of these days one of them will grow into something fearsome. You just wait."
+      }
+    },
+    "fisherman_joseph": {
+      "name": "Joseph",
+      "trainer": {
+        "id": "fisherman_joseph",
+        "name": "Joseph",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Joseph: Shh, you'll scare the fish! ...Oh, go on, then. One battle, and back to my line.",
+        "dialogueAfter": "Fisherman Joseph: My Goldeen's horn is sharp, but you were sharper today."
+      }
+    },
+    "fisherman_zachary": {
+      "name": "Zachary",
+      "trainer": {
+        "id": "fisherman_zachary",
+        "name": "Zachary",
+        "trainerClass": "Fisherman",
+        "dialogueBefore": "Fisherman Zachary: Not a single bite all morning. A battle will pass the time!",
+        "dialogueAfter": "Fisherman Zachary: Lost the battle and still no fish. It just isn't my day."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_eterna_forest": "Route 205\nWest: Eterna Forest, Floaroma Town",
+    "arrow_signpost_eterna_city": "Route 205\nEast: Eterna City"
+  }
+}

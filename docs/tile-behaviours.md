@@ -99,8 +99,8 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0xA7` | `DeepMarshGrass` | Deep marsh mud with grass. | **Rule.** Half a walk's pace, no Bicycles. (Getting stuck, as in Platinum, is not built.) | yes |  | 584 | 0 | Great Marsh |
 | `0xA8` | `ShallowSnow` | A thin cover of snow that keeps footprints. | **Rule.** No Bicycles. Every step leaves a footprint. |  |  | 1,443 | 7 | Snowpoint City, Mt. Coronet, Lake Acuity and 3 more |
 | `0xA9` | `ShadedSnow` | Thin snow in shade. | Walked on; every step leaves a footprint that fades. |  |  | 84 | 0 | Lake Verity, Twinleaf Town |
-| `0xD7` | `BikeRampEast` | A ramp jumped eastward on a fast Bicycle. | *Not yet.* The jump from a ramp (plan 01 · M6). |  |  | 9 | 9 | Victory Road, Oreburgh Gate, Wayward Cave |
-| `0xD8` | `BikeRampWest` | A ramp jumped westward on a fast Bicycle. | *Not yet.* The jump from a ramp (plan 01 · M6). |  |  | 15 | 15 | Victory Road, Oreburgh Gate, Wayward Cave, Route 227 |
+| `0xD7` | `BikeRampEast` | A ramp jumped eastward on a fast Bicycle. | **Rule.** On a Bicycle going its way, jumped: three tiles on in top gear, one in low. A wall on foot (`FieldMovement.RampDirection`). |  |  | 9 | 9 | Victory Road, Oreburgh Gate, Wayward Cave |
+| `0xD8` | `BikeRampWest` | A ramp jumped westward on a fast Bicycle. | **Rule.** On a Bicycle going its way, jumped: three tiles on in top gear, one in low. A wall on foot (`FieldMovement.RampDirection`). |  |  | 15 | 15 | Victory Road, Oreburgh Gate, Wayward Cave, Route 227 |
 | `0xD9` | `BikeSlopeTop` | The top of a muddy slope that only a fast Bicycle climbs. | **Rule.** Climbed only on a Bicycle in its fast gear. (The slide back down is not played.) |  |  | 17 | 0 | Wayward Cave, Route 207, Route 209 and 2 more |
 | `0xDA` | `BikeSlopeBottom` | The foot of a muddy slope. | **Rule.** Climbed only on a Bicycle in its fast gear. (The slide back down is not played.) |  |  | 17 | 0 | Wayward Cave, Route 207, Route 209 and 2 more |
 | `0xDB` | `BikeRack` | A bicycle rack. | Ground like any other: only the blocked flag and the height matter. |  |  | 33 | 33 | Jubilife City, Oreburgh City, Eterna City, Pastoria City |
@@ -114,7 +114,7 @@ Every tile of the imported world carries two things from Platinum's own map data
 
 ## What the game does with them
 
-The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: 35 of the behaviours have a rule there, 30 are ground like any other as far as a step goes, and 29 wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
+The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: 37 of the behaviours have a rule there, 30 are ground like any other as far as a step goes, and 27 wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
 
 - **A step** onto a tile is refused if the tile is blocked, if someone stands on it, or if its ground is 1.25 tiles or more above or below; otherwise the behaviours of the tile left and the tile entered decide.
 - **Pace** is Platinum's five speeds. A walk is 4.5 tiles a second and a run 8; surfing goes at a run; the Bicycle at a run in its low gear and half as fast again in its high one.

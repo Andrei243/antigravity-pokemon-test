@@ -24,6 +24,11 @@ public class SouthWestTests
     private static Map Overworld => BuiltMaps.Value["Sinnoh"];
     private static Map MapNamed(string name) => BuiltMaps.Value.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
 
+    /// <summary>The tiles of the overworld's warps that lead nowhere yet.</summary>
+    private static readonly Lazy<HashSet<(int X, int Y)>> ShutWays = new(() =>
+        Sinnoh.Index.Areas.Select(Sinnoh.Area).Where(a => a!.Matrix == 0).SelectMany(a => a!.Warps)
+            .Where(w => Overworld.GetWarpAt(w.X, w.Z) == null).Select(w => (w.X, w.Z)).ToHashSet());
+
     private static readonly string[] Caves = { "OreburghGate1F", "OreburghGateB1F", "OreburghMineB1F", "OreburghMineB2F", "RavagedPath" };
 
     private static IEnumerable<(int X, int Y)> Tiles(Map map)
@@ -129,16 +134,17 @@ public class SouthWestTests
     }
 
     [Fact]
-    public void ADarkCaveShowsACircleUntilAPokemonKnowsFlash()
+    public void ADarkCaveShowsACircleUntilFlashLightsIt()
     {
         // None of the south-west's caves is dark (the original's one is Wayward Cave)
         Assert.All(Caves, name => Assert.False(BuiltMaps.Value[name].IsDark));
 
+        // Dark until Flash is used in it (plan 02 · S2: knowing the move isn't enough)
         var cave = new Map(8, 8) { Name = "Dark", Setting = MapSetting.Cave, IsDark = true };
-        Assert.True(Darkness.Covers(cave, FieldMoves.None));
-        Assert.True(Darkness.Covers(cave, FieldMoves.Surf | FieldMoves.RockClimb));
-        Assert.False(Darkness.Covers(cave, FieldMoves.Flash));
-        Assert.False(Darkness.Covers(new Map(8, 8) { Name = "Lit", Setting = MapSetting.Cave }, FieldMoves.None));
+        Assert.True(Darkness.Covers(cave));
+        cave.Lit = true;
+        Assert.False(Darkness.Covers(cave));
+        Assert.False(Darkness.Covers(new Map(8, 8) { Name = "Lit", Setting = MapSetting.Cave }));
 
         // The circle: seen as it is to 2.2 tiles, gone at 3.4, and darker all the way between
         Assert.Equal(0f, Darkness.At(0f));
@@ -148,7 +154,7 @@ public class SouthWestTests
         Assert.Equal(0.5f, Darkness.At(Darkness.Radius + Darkness.Soft / 2f), 3);
         for (float d = Darkness.Radius; d < Darkness.Reach; d += 0.1f) Assert.True(Darkness.At(d + 0.1f) >= Darkness.At(d));
 
-        // Knowing the move is all that is asked, as with Surf
+        // Knowing the move is what lets the party menu offer it
         var party = new Party();
         party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 12));
         Assert.False(FieldMovement.MovesOf(party).HasFlag(FieldMoves.Flash));
@@ -181,6 +187,8 @@ public class SouthWestTests
         foreach (var (x, y) in Tiles(map))
         {
             if (map.GetGroundTile(x, y) != TileType.Rock || !map.IsSolid(x, y)) continue;
+            // A cracked rock stands on the ground as it is, and so does a way in that leads nowhere yet, shut
+            if (map.Props.Any(p => p.Covers(x, y)) || ShutWays.Value.Contains((x, y))) continue;
             raised++;
             if (map.InBounds(x, y - 1) && !(map.GetGroundTile(x, y - 1) == TileType.Rock && map.IsSolid(x, y - 1)) && !map.IsDeepWater(x, y - 1))
                 Assert.Equal(map.HeightAt(x, y - 1) + WorldMapBuilder.CaveLipRise, map.HeightAt(x, y));
@@ -353,9 +361,11 @@ public class SouthWestTests
         // The Trainers' School is entered the same way, and is open
         Assert.Equal("TrainersSchool", map.GetWarpAt(168, 776)!.TargetMap);
         Assert.False(map.IsSolid(168, 776));
-        // Eterna Forest isn't built: Route 205 ends at its trees
-        Assert.Null(map.GetWarpAt(206, 581));
-        Assert.True(map.IsSolid(206, 581) && map.IsSolid(207, 581));
+        // The Lost Tower's rooms aren't built: its way in on Route 209 is shut (plan 01 · M11)
+        Assert.Null(map.GetWarpAt(568, 680));
+        Assert.True(map.IsSolid(568, 680));
+        // Eterna Forest is (plan 01 · M6): Route 205 leads into it
+        Assert.Equal("EternaForest", map.GetWarpAt(206, 581)!.TargetMap);
     }
 
     // ------------------------------------------------------------------ people

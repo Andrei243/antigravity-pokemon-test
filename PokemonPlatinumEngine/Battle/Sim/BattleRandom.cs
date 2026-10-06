@@ -63,7 +63,9 @@ public enum RollKind
     /// <summary>Which of several things a move picks: Tri Attack's condition (a burn, a freeze, paralysis), Acupressure's stat.</summary>
     Pick,
     /// <summary>After a battle won: out of 10, a Pokémon with Pickup finds something on a 0, then out of 100 which; out of 100, Honey Gather finds honey below its level's chance.</summary>
-    Pickup
+    Pickup,
+    /// <summary>The Great Marsh: out of 10 for bait and mud (0 is the strong reaction), out of 255 against the Pokémon's flee rate.</summary>
+    Safari
 }
 
 /// <summary>

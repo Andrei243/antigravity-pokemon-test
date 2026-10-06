@@ -25,6 +25,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 6.9,
     "color": "Green",
@@ -126,6 +131,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1,
     "weight": 13,
     "color": "Green",
@@ -235,6 +245,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2,
     "weight": 100,
     "color": "Green",
@@ -370,6 +385,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 8.5,
     "color": "Red",
@@ -454,6 +474,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 19,
     "color": "Red",
@@ -542,6 +567,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 90.5,
     "color": "Red",
@@ -698,6 +728,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 9,
     "color": "Blue",
@@ -798,6 +833,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1,
     "weight": 22.5,
     "color": "Blue",
@@ -905,6 +945,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.6,
     "weight": 85.5,
     "color": "Blue",
@@ -1038,6 +1083,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 2.9,
     "color": "Green",
@@ -1092,6 +1142,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 9.9,
     "color": "Green",
@@ -1143,6 +1198,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 32,
     "color": "White",
@@ -1254,6 +1314,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 3.2,
     "color": "Brown",
@@ -1309,6 +1374,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 10,
     "color": "Yellow",
@@ -1360,6 +1430,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 29.5,
     "color": "Yellow",
@@ -1475,6 +1550,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 1.8,
     "color": "Brown",
@@ -1571,6 +1651,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.1,
     "weight": 30,
     "color": "Brown",
@@ -1675,6 +1760,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 39.5,
     "color": "Brown",
@@ -1806,6 +1896,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 3.5,
     "color": "Purple",
@@ -1925,6 +2020,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 18.5,
     "color": "Brown",
@@ -2056,6 +2156,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 2,
     "color": "Brown",
@@ -2143,6 +2248,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.2,
     "weight": 38,
     "color": "Brown",
@@ -2236,6 +2346,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 2,
     "weight": 6.9,
     "color": "Purple",
@@ -2336,6 +2451,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 3.5,
     "weight": 65,
     "color": "Purple",
@@ -2465,6 +2586,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.4,
     "weight": 6,
     "color": "Yellow",
@@ -3150,6 +3276,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.8,
     "weight": 30,
     "color": "Yellow",
@@ -3357,6 +3488,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 12,
     "color": "Yellow",
@@ -3553,6 +3689,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 29.5,
     "color": "Yellow",
@@ -3701,6 +3842,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.4,
     "weight": 7,
     "color": "Blue",
@@ -3796,6 +3942,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 20,
     "color": "Blue",
@@ -3893,6 +4044,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 60,
     "color": "Blue",
@@ -3969,6 +4125,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 9,
     "color": "Purple",
@@ -4065,6 +4226,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.9,
     "weight": 19.5,
     "color": "Purple",
@@ -4163,6 +4329,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 62,
     "color": "Purple",
@@ -4239,6 +4410,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.6,
     "weight": 7.5,
     "color": "Pink",
@@ -4357,6 +4533,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.3,
     "weight": 40,
     "color": "Pink",
@@ -4446,6 +4627,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 9.9,
     "color": "Brown",
@@ -4633,6 +4819,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 19.9,
     "color": "Yellow",
@@ -4737,6 +4928,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.5,
     "weight": 5.5,
     "color": "Pink",
@@ -4838,6 +5034,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1,
     "weight": 12,
     "color": "Pink",
@@ -4906,6 +5107,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.8,
     "weight": 7.5,
     "color": "Purple",
@@ -4994,6 +5200,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.6,
     "weight": 55,
     "color": "Purple",
@@ -5093,6 +5304,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 5.4,
     "color": "Blue",
@@ -5184,6 +5400,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 8.6,
     "color": "Blue",
@@ -5289,6 +5510,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 18.6,
     "color": "Red",
@@ -5361,6 +5587,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 5.4,
     "color": "Red",
@@ -5447,6 +5679,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 29.5,
     "color": "Red",
@@ -5541,6 +5778,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 1,
     "weight": 30,
     "color": "Purple",
@@ -5642,6 +5884,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.5,
     "weight": 12.5,
     "color": "Purple",
@@ -5751,6 +5998,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.2,
     "weight": 0.8,
     "color": "Brown",
@@ -5929,6 +6181,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 33.3,
     "color": "Brown",
@@ -6136,6 +6393,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 4.2,
     "color": "Yellow",
@@ -6407,6 +6669,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 32,
     "color": "Yellow",
@@ -6609,6 +6876,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 90,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 19.6,
     "color": "Yellow",
@@ -6706,6 +6979,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.7,
     "weight": 76.6,
     "color": "Blue",
@@ -6807,6 +7086,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 28,
     "color": "Brown",
@@ -6910,6 +7194,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 32,
     "color": "Brown",
@@ -7019,6 +7308,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.7,
     "weight": 19,
     "color": "Brown",
@@ -7213,6 +7507,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.9,
     "weight": 155,
     "color": "Brown",
@@ -7373,6 +7672,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 12.4,
     "color": "Blue",
@@ -7468,6 +7772,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1,
     "weight": 20,
     "color": "Blue",
@@ -7578,6 +7887,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.3,
     "weight": 54,
     "color": "Blue",
@@ -7650,6 +7964,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.9,
     "weight": 19.5,
     "color": "Brown",
@@ -7698,6 +8017,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.3,
     "weight": 56.5,
     "color": "Brown",
@@ -7798,6 +8122,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.5,
     "weight": 48,
     "color": "Brown",
@@ -7921,6 +8250,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 19.5,
     "color": "Gray",
@@ -8017,6 +8351,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 70.5,
     "color": "Gray",
@@ -8117,6 +8456,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.6,
     "weight": 130,
     "color": "Gray",
@@ -8219,6 +8563,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.7,
     "weight": 4,
     "color": "Green",
@@ -8314,6 +8663,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 6.4,
     "color": "Green",
@@ -8418,6 +8772,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.7,
     "weight": 15.5,
     "color": "Green",
@@ -8521,6 +8880,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.9,
     "weight": 45.5,
     "color": "Blue",
@@ -8618,6 +8982,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.6,
     "weight": 55,
     "color": "Blue",
@@ -8717,6 +9086,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.4,
     "weight": 20,
     "color": "Brown",
@@ -8903,6 +9277,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 105,
     "color": "Brown",
@@ -9097,6 +9476,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 300,
     "color": "Brown",
@@ -9289,6 +9673,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 30,
     "color": "Yellow",
@@ -9458,6 +9847,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.7,
     "weight": 95,
     "color": "Yellow",
@@ -9652,6 +10046,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.2,
     "weight": 36,
     "color": "Pink",
@@ -9859,6 +10258,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.6,
     "weight": 78.5,
     "color": "Pink",
@@ -10088,6 +10492,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.3,
     "weight": 6,
     "color": "Gray",
@@ -10193,6 +10602,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 60,
     "color": "Gray",
@@ -10311,6 +10725,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 15,
     "color": "Brown",
@@ -10515,6 +10934,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.4,
     "weight": 39.2,
     "color": "Brown",
@@ -10607,6 +11031,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.8,
     "weight": 85.2,
     "color": "Brown",
@@ -10715,6 +11144,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.1,
     "weight": 90,
     "color": "White",
@@ -10824,6 +11258,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.7,
     "weight": 120,
     "color": "White",
@@ -10941,6 +11380,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.9,
     "weight": 30,
     "color": "Purple",
@@ -11131,6 +11575,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 30,
     "color": "Purple",
@@ -11316,6 +11765,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.3,
     "weight": 4,
     "color": "Purple",
@@ -11413,6 +11867,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 132.5,
     "color": "Purple",
@@ -11480,6 +11939,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.3,
     "weight": 0.1,
     "color": "Purple",
@@ -11579,6 +12043,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.6,
     "weight": 0.1,
     "color": "Purple",
@@ -11686,6 +12155,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.5,
     "weight": 40.5,
     "color": "Purple",
@@ -11812,6 +12286,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 8.8,
     "weight": 210,
     "color": "Gray",
@@ -11924,6 +12403,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 32.4,
     "color": "Yellow",
@@ -12027,6 +12511,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.6,
     "weight": 75.6,
     "color": "Yellow",
@@ -12140,6 +12629,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 6.5,
     "color": "Red",
@@ -12243,6 +12737,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 60,
     "color": "Red",
@@ -12352,6 +12851,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 10.4,
     "color": "Red",
@@ -12539,6 +13043,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 66.6,
     "color": "Red",
@@ -12740,6 +13249,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 2.5,
     "color": "Pink",
@@ -12847,6 +13362,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2,
     "weight": 120,
     "color": "Yellow",
@@ -13026,6 +13546,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 6.5,
     "color": "Brown",
@@ -13132,6 +13657,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 45,
     "color": "Brown",
@@ -13336,6 +13866,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 49.8,
     "color": "Brown",
@@ -13437,6 +13972,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.4,
     "weight": 50.2,
     "color": "Brown",
@@ -13539,6 +14079,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 65.5,
     "color": "Pink",
@@ -13639,6 +14184,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 1,
     "color": "Purple",
@@ -13739,6 +14289,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 9.5,
     "color": "Purple",
@@ -13942,6 +14497,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 115,
     "color": "Gray",
@@ -14032,6 +14592,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.9,
     "weight": 120,
     "color": "Gray",
@@ -14133,6 +14698,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.1,
     "weight": 34.6,
     "color": "Pink",
@@ -14233,6 +14803,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 90,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 35,
     "color": "Blue",
@@ -14345,6 +14921,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 150,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2.2,
     "weight": 80,
     "color": "Brown",
@@ -14458,6 +15040,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 8,
     "color": "Blue",
@@ -14551,6 +15138,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 25,
     "color": "Blue",
@@ -14656,6 +15248,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 15,
     "color": "Red",
@@ -14752,6 +15349,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 39,
     "color": "Red",
@@ -14849,6 +15451,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 34.5,
     "color": "Brown",
@@ -14950,6 +15557,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 80,
     "color": "Purple",
@@ -15026,6 +15638,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 54.5,
     "color": "Pink",
@@ -15293,6 +15910,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 56,
     "color": "Green",
@@ -15415,6 +16037,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 40.6,
     "color": "Red",
@@ -15521,6 +16148,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 30,
     "color": "Yellow",
@@ -15617,6 +16249,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 44.5,
     "color": "Red",
@@ -15712,6 +16349,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 55,
     "color": "Brown",
@@ -15830,6 +16472,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 88.4,
     "color": "Brown",
@@ -16159,6 +16806,12 @@
     ],
     "hatchCycles": 5,
     "baseFriendship": 70,
+    "safariFleeRate": 90,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.9,
     "weight": 10,
     "color": "Red",
@@ -16216,6 +16869,12 @@
     ],
     "hatchCycles": 5,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 6.5,
     "weight": 235,
     "color": "Blue",
@@ -16321,6 +16980,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2.5,
     "weight": 220,
     "color": "Blue",
@@ -16426,6 +17090,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.3,
     "weight": 4,
     "color": "Purple",
@@ -16467,6 +17136,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.3,
     "weight": 6.5,
     "color": "Brown",
@@ -16657,6 +17331,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1,
     "weight": 29,
     "color": "Blue",
@@ -16750,6 +17429,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.8,
     "weight": 24.5,
     "color": "Yellow",
@@ -16843,6 +17527,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.9,
     "weight": 25,
     "color": "Red",
@@ -16936,6 +17625,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.8,
     "weight": 36.5,
     "color": "Pink",
@@ -17042,6 +17736,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 7.5,
     "color": "Blue",
@@ -17139,6 +17838,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 35,
     "color": "Blue",
@@ -17238,6 +17942,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 11.5,
     "color": "Brown",
@@ -17331,6 +18040,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 40.5,
     "color": "Brown",
@@ -17437,6 +18151,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.8,
     "weight": 59,
     "color": "Purple",
@@ -17559,6 +18278,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2.1,
     "weight": 460,
     "color": "Black",
@@ -17662,6 +18386,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 55.4,
     "color": "Blue",
@@ -17845,6 +18574,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.6,
     "weight": 52.6,
     "color": "Yellow",
@@ -18031,6 +18765,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2,
     "weight": 60,
     "color": "Yellow",
@@ -18217,6 +18956,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.8,
     "weight": 3.3,
     "color": "Blue",
@@ -18312,6 +19056,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 4,
     "weight": 16.5,
     "color": "Blue",
@@ -18416,6 +19165,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2.2,
     "weight": 210,
     "color": "Brown",
@@ -18546,6 +19300,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2,
     "weight": 122,
     "color": "Purple",
@@ -18693,6 +19452,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 0.4,
     "weight": 4,
     "color": "Pink",
@@ -18777,6 +19541,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.9,
     "weight": 6.4,
     "color": "Green",
@@ -18877,6 +19646,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 15.8,
     "color": "Green",
@@ -18985,6 +19759,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.8,
     "weight": 100.5,
     "color": "Green",
@@ -19112,6 +19891,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 7.9,
     "color": "Yellow",
@@ -19207,6 +19991,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 19,
     "color": "Yellow",
@@ -19311,6 +20100,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 79.5,
     "color": "Yellow",
@@ -19507,6 +20301,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 9.5,
     "color": "Blue",
@@ -19611,6 +20410,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 25,
     "color": "Blue",
@@ -19719,6 +20523,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2.3,
     "weight": 88.8,
     "color": "Blue",
@@ -19849,6 +20658,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.8,
     "weight": 6,
     "color": "Brown",
@@ -19948,6 +20762,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.8,
     "weight": 32.5,
     "color": "Brown",
@@ -20051,6 +20870,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 90,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.7,
     "weight": 21.2,
     "color": "Brown",
@@ -20156,6 +20981,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.6,
     "weight": 40.8,
     "color": "Brown",
@@ -20272,6 +21103,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 1,
     "weight": 10.8,
     "color": "Red",
@@ -20368,6 +21204,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.4,
     "weight": 35.6,
     "color": "Red",
@@ -20466,6 +21307,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 8.5,
     "color": "Green",
@@ -20566,6 +21412,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.1,
     "weight": 33.5,
     "color": "Red",
@@ -20683,6 +21534,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.8,
     "weight": 75,
     "color": "Purple",
@@ -20780,6 +21636,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 12,
     "color": "Blue",
@@ -20880,6 +21741,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 22.5,
     "color": "Blue",
@@ -20990,6 +21856,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.3,
     "weight": 2,
     "color": "Yellow",
@@ -21063,6 +21934,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.3,
     "weight": 3,
     "color": "Pink",
@@ -21139,6 +22015,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.3,
     "weight": 1,
     "color": "Pink",
@@ -21212,6 +22093,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.3,
     "weight": 1.5,
     "color": "White",
@@ -21315,6 +22201,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.6,
     "weight": 3.2,
     "color": "White",
@@ -21430,6 +22321,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.2,
     "weight": 2,
     "color": "Green",
@@ -21535,6 +22431,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 15,
     "color": "Green",
@@ -21637,6 +22538,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 7.8,
     "color": "White",
@@ -21724,6 +22630,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 13.3,
     "color": "Pink",
@@ -21819,6 +22730,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.4,
     "weight": 61.5,
     "color": "Yellow",
@@ -21951,6 +22867,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.4,
     "weight": 5.8,
     "color": "Green",
@@ -22027,6 +22948,12 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 8.5,
     "color": "Blue",
@@ -22122,6 +23049,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 28.5,
     "color": "Blue",
@@ -22230,6 +23162,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 38,
     "color": "Brown",
@@ -22335,6 +23272,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 33.9,
     "color": "Green",
@@ -22402,6 +23344,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 0.5,
     "color": "Pink",
@@ -22511,6 +23458,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 1,
     "color": "Green",
@@ -22632,6 +23584,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.8,
     "weight": 3,
     "color": "Blue",
@@ -22756,6 +23713,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 11.5,
     "color": "Purple",
@@ -22856,6 +23818,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.3,
     "weight": 1.8,
     "color": "Yellow",
@@ -22952,6 +23919,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 8.5,
     "color": "Yellow",
@@ -23047,6 +24019,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 38,
     "color": "Red",
@@ -23158,6 +24136,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 8.5,
     "color": "Blue",
@@ -23327,6 +24311,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 75,
     "color": "Blue",
@@ -23421,6 +24411,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.9,
     "weight": 26.5,
     "color": "Purple",
@@ -23514,6 +24509,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1,
     "weight": 27,
     "color": "Black",
@@ -23608,6 +24608,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 2.1,
     "color": "Black",
@@ -23698,6 +24703,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2,
     "weight": 79.5,
     "color": "Pink",
@@ -23913,6 +24923,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.7,
     "weight": 1,
     "color": "Gray",
@@ -24009,6 +25024,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 5,
     "color": "Black",
@@ -24158,6 +25178,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.3,
     "weight": 28.5,
     "color": "Blue",
@@ -24212,6 +25237,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 41.5,
     "color": "Yellow",
@@ -24320,6 +25350,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 7.2,
     "color": "Gray",
@@ -24419,6 +25454,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 125.8,
     "color": "Purple",
@@ -24535,6 +25575,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.5,
     "weight": 14,
     "color": "Yellow",
@@ -24637,6 +25682,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.1,
     "weight": 64.8,
     "color": "Purple",
@@ -24735,6 +25785,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 9.2,
     "weight": 400,
     "color": "Gray",
@@ -24873,6 +25928,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 7.8,
     "color": "Pink",
@@ -24982,6 +26042,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 48.7,
     "color": "Purple",
@@ -25085,6 +26150,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.5,
     "weight": 3.9,
     "color": "Gray",
@@ -25295,6 +26365,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.8,
     "weight": 118,
     "color": "Red",
@@ -25426,6 +26501,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.6,
     "weight": 20.5,
     "color": "Yellow",
@@ -25505,6 +26585,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 54,
     "color": "Blue",
@@ -25620,6 +26705,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.9,
     "weight": 28,
     "color": "Black",
@@ -25788,6 +26878,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 8.8,
     "color": "Brown",
@@ -25887,6 +26982,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.8,
     "weight": 125.8,
     "color": "Brown",
@@ -25987,6 +27087,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 35,
     "color": "Red",
@@ -26083,6 +27188,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 55,
     "color": "Red",
@@ -26192,6 +27302,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 6.5,
     "color": "Brown",
@@ -26294,6 +27409,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 55.8,
     "color": "Brown",
@@ -26413,6 +27533,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 5,
     "color": "Pink",
@@ -26605,6 +27730,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 12,
     "color": "Gray",
@@ -26695,6 +27825,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 28.5,
     "color": "Red",
@@ -26802,6 +27937,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 16,
     "color": "Red",
@@ -26845,6 +27985,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2.1,
     "weight": 220,
     "color": "Purple",
@@ -26965,6 +28110,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.7,
     "weight": 50.5,
     "color": "Gray",
@@ -27078,6 +28228,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 10.8,
     "color": "Black",
@@ -27179,6 +28334,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 35,
     "color": "Black",
@@ -27308,6 +28468,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.8,
     "weight": 152,
     "color": "Blue",
@@ -27409,6 +28574,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 33.5,
     "color": "Blue",
@@ -27504,6 +28674,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 120,
     "color": "Gray",
@@ -27605,6 +28780,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.6,
     "weight": 32.5,
     "color": "Red",
@@ -27713,6 +28893,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.4,
     "weight": 71.2,
     "color": "Brown",
@@ -27814,6 +28999,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 58,
     "color": "White",
@@ -27891,6 +29081,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.7,
     "weight": 21,
     "color": "Purple",
@@ -27961,6 +29156,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.4,
     "weight": 48,
     "color": "Brown",
@@ -28055,6 +29255,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.4,
     "weight": 6,
     "color": "Pink",
@@ -28155,6 +29360,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.6,
     "weight": 23.5,
     "color": "Yellow",
@@ -28246,6 +29456,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.7,
     "weight": 21.4,
     "color": "Red",
@@ -28336,6 +29551,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 75.5,
     "color": "Pink",
@@ -28426,6 +29646,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.5,
     "weight": 46.8,
     "color": "Pink",
@@ -28521,6 +29746,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.9,
     "weight": 178,
     "color": "Yellow",
@@ -28615,6 +29845,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2.1,
     "weight": 198,
     "color": "Brown",
@@ -28709,6 +29944,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2,
     "weight": 187,
     "color": "Blue",
@@ -28802,6 +30042,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 72,
     "color": "Green",
@@ -28897,6 +30142,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 152,
     "color": "Gray",
@@ -28999,6 +30249,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2,
     "weight": 202,
     "color": "Green",
@@ -29125,6 +30380,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 5.2,
     "weight": 216,
     "color": "White",
@@ -29222,6 +30482,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 3.8,
     "weight": 199,
     "color": "Red",
@@ -29320,6 +30585,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 0.6,
     "weight": 5,
     "color": "Green",
@@ -29412,6 +30682,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 5,
     "color": "Green",
@@ -29503,6 +30778,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 21.6,
     "color": "Green",
@@ -29606,6 +30886,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 52.2,
     "color": "Green",
@@ -29730,6 +31015,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 2.5,
     "color": "Red",
@@ -29818,6 +31108,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 19.5,
     "color": "Red",
@@ -29921,6 +31216,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.9,
     "weight": 52,
     "color": "Red",
@@ -30044,6 +31344,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 7.6,
     "color": "Blue",
@@ -30136,6 +31441,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.7,
     "weight": 28,
     "color": "Blue",
@@ -30240,6 +31550,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.5,
     "weight": 81.9,
     "color": "Blue",
@@ -30360,6 +31675,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 13.6,
     "color": "Gray",
@@ -30459,6 +31779,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 37,
     "color": "Gray",
@@ -30564,6 +31889,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.4,
     "weight": 17.5,
     "color": "Brown",
@@ -30734,6 +32064,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 32.5,
     "color": "White",
@@ -30932,6 +32267,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 3.6,
     "color": "Red",
@@ -30997,6 +32337,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 10,
     "color": "White",
@@ -31048,6 +32393,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 28.4,
     "color": "Yellow",
@@ -31139,6 +32489,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 11.5,
     "color": "Purple",
@@ -31190,6 +32545,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 31.6,
     "color": "Green",
@@ -31272,6 +32632,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 2.6,
     "color": "Green",
@@ -31361,6 +32726,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.2,
     "weight": 32.5,
     "color": "Green",
@@ -31451,6 +32821,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 55,
     "color": "Green",
@@ -31505,6 +32880,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 4,
     "color": "Brown",
@@ -31578,6 +32958,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 28,
     "color": "Brown",
@@ -31668,6 +33053,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.3,
     "weight": 59.6,
     "color": "Brown",
@@ -31726,6 +33116,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 2.3,
     "color": "Blue",
@@ -31809,6 +33204,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 19.8,
     "color": "Blue",
@@ -31910,6 +33310,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.6,
     "weight": 9.5,
     "color": "White",
@@ -32003,6 +33408,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.2,
     "weight": 28,
     "color": "Yellow",
@@ -32119,6 +33529,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 6.6,
     "color": "White",
@@ -32222,6 +33637,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 20.2,
     "color": "White",
@@ -32342,6 +33762,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.6,
     "weight": 48.4,
     "color": "White",
@@ -32473,6 +33898,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 1.7,
     "color": "Blue",
@@ -32554,6 +33984,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 3.6,
     "color": "Blue",
@@ -32661,6 +34096,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 4.5,
     "color": "Brown",
@@ -32754,6 +34195,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 39.2,
     "color": "Green",
@@ -32855,6 +34301,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 24,
     "color": "Brown",
@@ -32932,6 +34383,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 46.5,
     "color": "White",
@@ -33021,6 +34477,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2,
     "weight": 130.5,
     "color": "Brown",
@@ -33117,6 +34578,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 5.5,
     "color": "Gray",
@@ -33206,6 +34672,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 12,
     "color": "Yellow",
@@ -33311,6 +34782,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.8,
     "weight": 1.2,
     "color": "Brown",
@@ -33395,6 +34871,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 16.3,
     "color": "Pink",
@@ -33482,6 +34963,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 40.5,
     "color": "Blue",
@@ -33585,6 +35071,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 84,
     "color": "Blue",
@@ -33711,6 +35202,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 86.4,
     "color": "Yellow",
@@ -33818,6 +35314,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2.3,
     "weight": 253.8,
     "color": "Brown",
@@ -33932,6 +35433,12 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.2,
     "weight": 2,
     "color": "Blue",
@@ -34006,6 +35513,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 97,
     "color": "Gray",
@@ -34107,6 +35619,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 11,
     "color": "Pink",
@@ -34221,6 +35738,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 32.6,
     "color": "Purple",
@@ -34286,6 +35808,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 11,
     "color": "Purple",
@@ -34416,6 +35943,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 11.5,
     "color": "Black",
@@ -34536,6 +36068,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 60,
     "color": "Gray",
@@ -34636,6 +36173,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 120,
     "color": "Gray",
@@ -34748,6 +36290,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2.1,
     "weight": 360,
     "color": "Gray",
@@ -34878,6 +36425,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 11.2,
     "color": "Blue",
@@ -34978,6 +36530,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 31.5,
     "color": "Red",
@@ -35109,6 +36666,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 15.2,
     "color": "Green",
@@ -35204,6 +36766,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 40.2,
     "color": "Yellow",
@@ -35329,6 +36896,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.4,
     "weight": 4.2,
     "color": "Yellow",
@@ -35429,6 +37001,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.4,
     "weight": 4.2,
     "color": "Yellow",
@@ -35530,6 +37107,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.7,
     "weight": 17.7,
     "color": "Gray",
@@ -35630,6 +37212,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 17.7,
     "color": "Purple",
@@ -35728,6 +37315,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.3,
     "weight": 2,
     "color": "Green",
@@ -35836,6 +37429,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 10.3,
     "color": "Green",
@@ -35935,6 +37534,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.7,
     "weight": 80,
     "color": "Purple",
@@ -36045,6 +37649,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "safariFleeRate": 90,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 20.8,
     "color": "Red",
@@ -36140,6 +37750,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.8,
     "weight": 88.8,
     "color": "Blue",
@@ -36273,6 +37888,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 2,
     "weight": 130,
     "color": "Blue",
@@ -36377,6 +37997,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 14.5,
     "weight": 398,
     "color": "Blue",
@@ -36487,6 +38112,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 24,
     "color": "Yellow",
@@ -36580,6 +38210,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.9,
     "weight": 220,
     "color": "Red",
@@ -36697,6 +38332,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 80.4,
     "color": "Brown",
@@ -36793,6 +38433,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 30.6,
     "color": "Black",
@@ -36892,6 +38537,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 71.5,
     "color": "Purple",
@@ -36998,6 +38648,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.1,
     "weight": 5,
     "color": "Brown",
@@ -37088,6 +38743,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 15,
     "color": "Brown",
@@ -37182,6 +38842,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 15.3,
     "color": "Green",
@@ -37274,6 +38939,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2,
     "weight": 82,
     "color": "Green",
@@ -37362,6 +39032,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 51.3,
     "color": "Green",
@@ -37471,6 +39146,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 77.4,
     "color": "Green",
@@ -37586,6 +39266,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 1.2,
     "color": "Blue",
@@ -37683,6 +39368,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 20.6,
     "color": "Blue",
@@ -37814,6 +39504,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 40.3,
     "color": "White",
@@ -37908,6 +39603,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2.7,
     "weight": 52.5,
     "color": "Black",
@@ -37997,6 +39697,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 168,
     "color": "Yellow",
@@ -38095,6 +39800,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 154,
     "color": "Red",
@@ -38194,6 +39904,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 1.9,
     "color": "Gray",
@@ -38295,6 +40011,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 23.6,
     "color": "Blue",
@@ -38405,6 +40126,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 11.5,
     "color": "Red",
@@ -38502,6 +40228,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 32.8,
     "color": "Red",
@@ -38608,6 +40339,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 21.5,
     "color": "Brown",
@@ -38706,6 +40442,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 108,
     "color": "Black",
@@ -38814,6 +40555,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 23.8,
     "color": "Purple",
@@ -38909,6 +40655,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 60.4,
     "color": "Green",
@@ -39006,6 +40757,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.7,
     "weight": 12.5,
     "color": "Gray",
@@ -39097,6 +40853,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 68.2,
     "color": "Gray",
@@ -39191,6 +40952,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 7.4,
     "color": "Brown",
@@ -39248,6 +41014,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 6.2,
     "weight": 162,
     "color": "Pink",
@@ -39341,6 +41112,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.3,
     "weight": 0.8,
     "color": "Gray",
@@ -39434,6 +41210,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 22,
     "color": "Green",
@@ -39538,6 +41320,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 2.3,
     "color": "Black",
@@ -39637,6 +41424,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 12.5,
     "color": "Black",
@@ -39763,6 +41555,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 15,
     "color": "Black",
@@ -39859,6 +41656,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.6,
     "weight": 30.6,
     "color": "Black",
@@ -39985,6 +41787,12 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2,
     "weight": 100,
     "color": "Green",
@@ -40080,6 +41888,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.6,
     "weight": 1,
     "color": "Blue",
@@ -40198,6 +42011,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 47,
     "color": "White",
@@ -40347,6 +42165,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.6,
     "weight": 14,
     "color": "Blue",
@@ -40419,6 +42242,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 16.8,
     "color": "Gray",
@@ -40517,6 +42345,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.5,
     "weight": 256.5,
     "color": "Gray",
@@ -40636,6 +42469,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 39.5,
     "color": "Blue",
@@ -40733,6 +42571,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 87.6,
     "color": "Blue",
@@ -40834,6 +42677,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.4,
     "weight": 150.6,
     "color": "Blue",
@@ -40935,6 +42783,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 52.5,
     "color": "Blue",
@@ -41000,6 +42853,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.7,
     "weight": 27,
     "color": "Blue",
@@ -41084,6 +42942,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.8,
     "weight": 22.6,
     "color": "Pink",
@@ -41171,6 +43034,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1,
     "weight": 23.4,
     "color": "Gray",
@@ -41260,6 +43128,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 8.7,
     "color": "Pink",
@@ -41348,6 +43221,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 42.1,
     "color": "Blue",
@@ -41438,6 +43316,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 110.5,
     "color": "White",
@@ -41545,6 +43428,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 102.6,
     "color": "Blue",
@@ -41678,6 +43566,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 95.2,
     "color": "Blue",
@@ -41725,6 +43618,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 202.5,
     "color": "Blue",
@@ -41828,6 +43726,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.6,
     "weight": 550,
     "color": "Blue",
@@ -41949,6 +43852,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 230,
     "color": "Brown",
@@ -42038,6 +43946,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.8,
     "weight": 175,
     "color": "Blue",
@@ -42128,6 +44041,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.9,
     "weight": 205,
     "color": "Gray",
@@ -42226,6 +44144,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 90,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.4,
     "weight": 40,
     "color": "Red",
@@ -42341,6 +44264,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 90,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2,
     "weight": 60,
     "color": "Blue",
@@ -42454,6 +44382,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 4.5,
     "weight": 352,
     "color": "Blue",
@@ -42557,6 +44490,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 3.5,
     "weight": 950,
     "color": "Red",
@@ -42666,6 +44604,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 7,
     "weight": 206.5,
     "color": "Green",
@@ -42771,6 +44714,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 0.3,
     "weight": 1.1,
     "color": "Yellow",
@@ -42872,6 +44820,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 1.7,
     "weight": 60.8,
     "color": "Red",
@@ -43196,6 +45149,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 10.2,
     "color": "Green",
@@ -43289,6 +45247,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 97,
     "color": "Green",
@@ -43387,6 +45350,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 2.2,
     "weight": 310,
     "color": "Green",
@@ -43493,6 +45461,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 6.2,
     "color": "Brown",
@@ -43587,6 +45560,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 22,
     "color": "Brown",
@@ -43690,6 +45668,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.2,
     "weight": 55,
     "color": "Brown",
@@ -43788,6 +45771,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 5.2,
     "color": "Blue",
@@ -43884,6 +45872,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.8,
     "weight": 23,
     "color": "Blue",
@@ -43989,6 +45982,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 84.5,
     "color": "Blue",
@@ -44095,6 +46093,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 90,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.3,
     "weight": 2,
     "color": "Brown",
@@ -44183,6 +46187,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 15.5,
     "color": "Brown",
@@ -44275,6 +46285,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 24.9,
     "color": "Brown",
@@ -44403,6 +46418,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 90,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 50,
+      "catchingPoints": 30
+    },
     "height": 0.5,
     "weight": 20,
     "color": "Brown",
@@ -44497,6 +46518,12 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 31.5,
     "color": "Brown",
@@ -44591,6 +46618,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.3,
     "weight": 2.2,
     "color": "Red",
@@ -44646,6 +46678,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 25.5,
     "color": "Red",
@@ -44735,6 +46772,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 9.5,
     "color": "Blue",
@@ -44823,6 +46865,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 30.5,
     "color": "Blue",
@@ -44915,6 +46962,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.4,
     "weight": 42,
     "color": "Blue",
@@ -45006,6 +47058,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.2,
     "weight": 1.2,
     "color": "Green",
@@ -45076,6 +47134,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 14.5,
     "color": "Green",
@@ -45144,6 +47207,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 31.5,
     "color": "Blue",
@@ -45231,6 +47299,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.6,
     "weight": 102.5,
     "color": "Blue",
@@ -45317,6 +47390,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 57,
     "color": "Gray",
@@ -45405,6 +47483,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.3,
     "weight": 149.5,
     "color": "Gray",
@@ -45498,6 +47581,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.2,
     "weight": 3.4,
     "color": "Green",
@@ -45590,6 +47678,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 6.5,
     "color": "Green",
@@ -45832,6 +47925,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 23.3,
     "color": "Yellow",
@@ -45932,6 +48030,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.3,
     "weight": 5.5,
     "color": "Yellow",
@@ -45990,6 +48093,11 @@
     ],
     "hatchCycles": 15,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 38.5,
     "color": "Yellow",
@@ -46092,6 +48200,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 3.9,
     "color": "White",
@@ -46175,6 +48288,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.7,
     "weight": 29.5,
     "color": "Brown",
@@ -46263,6 +48381,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.1,
     "weight": 33.5,
     "color": "Brown",
@@ -46357,6 +48480,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.4,
     "weight": 3.3,
     "color": "Pink",
@@ -46440,6 +48568,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.5,
     "weight": 9.3,
     "color": "Purple",
@@ -46532,6 +48665,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.3,
     "weight": 6.3,
     "color": "Purple",
@@ -46631,6 +48769,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.9,
     "weight": 29.9,
     "color": "Purple",
@@ -46728,6 +48871,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 100,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.2,
     "weight": 20.3,
     "color": "Purple",
@@ -46831,6 +48979,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.4,
     "weight": 1.2,
     "color": "Purple",
@@ -46928,6 +49081,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 15,
     "color": "Purple",
@@ -47026,6 +49184,11 @@
       "Human-Like"
     ],
     "hatchCycles": 20,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.4,
     "weight": 5.5,
     "color": "Brown",
@@ -47127,6 +49290,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.2,
     "weight": 33.3,
     "color": "Brown",
@@ -47254,6 +49422,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 4.4,
     "color": "Purple",
@@ -47315,6 +49488,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 27.3,
     "color": "Black",
@@ -47385,6 +49563,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.5,
     "weight": 3.9,
     "color": "Gray",
@@ -47477,6 +49660,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1,
     "weight": 43.8,
     "color": "Gray",
@@ -47575,6 +49763,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.2,
     "weight": 0.6,
     "color": "Yellow",
@@ -47642,6 +49835,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.4,
     "weight": 19.2,
     "color": "Purple",
@@ -47735,6 +49933,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 38,
     "color": "Purple",
@@ -47830,6 +50033,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 60.5,
     "color": "Green",
@@ -47928,6 +50136,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.3,
     "weight": 187,
     "color": "Green",
@@ -48038,6 +50251,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.5,
     "weight": 15,
     "color": "Brown",
@@ -48135,6 +50353,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.6,
     "weight": 13,
     "color": "Pink",
@@ -48265,6 +50488,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.6,
     "weight": 24.4,
     "color": "Pink",
@@ -48331,6 +50559,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.5,
     "weight": 1.9,
     "color": "Black",
@@ -48419,6 +50652,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1,
     "weight": 108,
     "color": "Purple",
@@ -48510,6 +50748,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.7,
     "weight": 20.5,
     "color": "Blue",
@@ -48595,6 +50838,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 56,
     "color": "Blue",
@@ -48684,6 +50932,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.9,
     "weight": 95,
     "color": "Blue",
@@ -48818,6 +51071,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.6,
     "weight": 105,
     "color": "Black",
@@ -48922,6 +51180,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.7,
     "weight": 20.2,
     "color": "Blue",
@@ -49005,6 +51268,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.2,
     "weight": 54,
     "color": "Blue",
@@ -49145,6 +51413,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 0.8,
     "weight": 49.5,
     "color": "Brown",
@@ -49228,6 +51501,11 @@
     ],
     "hatchCycles": 30,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2,
     "weight": 300,
     "color": "Brown",
@@ -49327,6 +51605,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 0.8,
     "weight": 12,
     "color": "Purple",
@@ -49421,6 +51705,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.3,
     "weight": 61.5,
     "color": "Purple",
@@ -49524,6 +51814,12 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 100,
+    "safariFleeRate": 150,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.7,
     "weight": 23,
     "color": "Blue",
@@ -49625,6 +51921,12 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "safariFleeRate": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1.3,
     "weight": 44.4,
     "color": "Blue",
@@ -49727,6 +52029,12 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "safariFleeRate": 60,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 1.4,
     "weight": 27,
     "color": "Green",
@@ -49815,6 +52123,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.4,
     "weight": 7,
     "color": "Blue",
@@ -49911,6 +52224,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.2,
     "weight": 24,
     "color": "Blue",
@@ -50010,6 +52328,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1,
     "weight": 65,
     "color": "Blue",
@@ -50109,6 +52432,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 30,
+      "catchingPoints": 50
+    },
     "height": 1,
     "weight": 50.5,
     "color": "White",
@@ -50203,6 +52531,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 20,
+      "catchingPoints": 70
+    },
     "height": 2.2,
     "weight": 135.5,
     "color": "White",
@@ -50319,6 +52652,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.1,
     "weight": 34,
     "color": "Black",
@@ -50425,6 +52763,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.2,
     "weight": 180,
     "color": "Gray",
@@ -50539,6 +52882,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.7,
     "weight": 140,
     "color": "Pink",
@@ -50639,6 +52987,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2.4,
     "weight": 282.8,
     "color": "Gray",
@@ -50741,6 +53094,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2,
     "weight": 128.6,
     "color": "Blue",
@@ -50851,6 +53209,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.8,
     "weight": 138.6,
     "color": "Yellow",
@@ -50952,6 +53315,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.6,
     "weight": 68,
     "color": "Red",
@@ -51056,6 +53424,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.5,
     "weight": 38,
     "color": "White",
@@ -51117,6 +53490,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.9,
     "weight": 51.5,
     "color": "Green",
@@ -51235,6 +53613,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1,
     "weight": 25.5,
     "color": "Green",
@@ -51328,6 +53711,11 @@
     ],
     "hatchCycles": 35,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.8,
     "weight": 25.9,
     "color": "Blue",
@@ -51422,6 +53810,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2,
     "weight": 42.5,
     "color": "Purple",
@@ -51537,6 +53930,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2.5,
     "weight": 291,
     "color": "Brown",
@@ -51647,6 +54045,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 0.9,
     "weight": 34,
     "color": "Red",
@@ -51755,6 +54158,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.6,
     "weight": 52,
     "color": "White",
@@ -51885,6 +54293,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.4,
     "weight": 340,
     "color": "Gray",
@@ -52000,6 +54413,11 @@
     ],
     "hatchCycles": 25,
     "baseFriendship": 35,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 2.2,
     "weight": 106.6,
     "color": "Black",
@@ -52119,6 +54537,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 10,
+      "catchingPoints": 80
+    },
     "height": 1.3,
     "weight": 26.6,
     "color": "White",
@@ -52237,6 +54660,11 @@
     ],
     "hatchCycles": 20,
     "baseFriendship": 70,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.3,
     "weight": 0.3,
     "color": "Red",
@@ -52415,6 +54843,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.3,
     "weight": 0.3,
     "color": "Yellow",
@@ -52502,6 +54935,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.3,
     "weight": 0.3,
     "color": "Pink",
@@ -52588,6 +55026,11 @@
     ],
     "hatchCycles": 80,
     "baseFriendship": 140,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.3,
     "weight": 0.3,
     "color": "Blue",
@@ -52673,6 +55116,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 5.4,
     "weight": 683,
     "color": "White",
@@ -52772,6 +55220,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 4.2,
     "weight": 336,
     "color": "Purple",
@@ -52870,6 +55323,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.7,
     "weight": 430,
     "color": "Brown",
@@ -52974,6 +55432,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 3.7,
     "weight": 420,
     "color": "White",
@@ -53055,6 +55518,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 4.5,
     "weight": 750,
     "color": "Black",
@@ -53155,6 +55623,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 1,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 1.5,
     "weight": 85.6,
     "color": "Yellow",
@@ -53250,6 +55723,11 @@
     ],
     "hatchCycles": 40,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 3,
+      "catchingPoints": 90
+    },
     "height": 0.4,
     "weight": 3.1,
     "color": "Blue",
@@ -53332,6 +55810,11 @@
     ],
     "hatchCycles": 10,
     "baseFriendship": 70,
+    "palPark": {
+      "waterArea": 4,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 0.3,
     "weight": 1.4,
     "color": "Blue",
@@ -53420,6 +55903,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 1.5,
     "weight": 50.5,
     "color": "Black",
@@ -53520,6 +56008,11 @@
     ],
     "hatchCycles": 120,
     "baseFriendship": 100,
+    "palPark": {
+      "landArea": 3,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 0.2,
     "weight": 2.1,
     "color": "Green",
@@ -53679,6 +56172,11 @@
       "Undiscovered"
     ],
     "hatchCycles": 120,
+    "palPark": {
+      "landArea": 2,
+      "rarity": 1,
+      "catchingPoints": 100
+    },
     "height": 3.2,
     "weight": 320,
     "color": "White",

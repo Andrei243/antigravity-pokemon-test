@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -122,7 +123,12 @@ public class ScriptTests
           takemoney 50
           heal
           battle self canlose
+          battle self and twin with "cheryl_eterna_forest" canlose
+          battle self with helper
+          battle self first
           wildbattle "Starly" 2
+          wildbattle "Giratina" 47 nofleeing
+          catchinglesson "Bidoof" 2
           face self player
           face player up
           walk player up 2 left fast
@@ -139,6 +145,15 @@ public class ScriptTests
           camera pan 3 4 0.5
           camera release
           camera shake
+          usemove "Cut"
+          surf
+          climb
+          fly
+          teleport
+          escape
+          sweetscent
+          poketch on
+          poketchapp PartyStatus
           music "sinnoh/jubilife"
           music area
           music stop
@@ -158,7 +173,7 @@ public class ScriptTests
     {
         var all = ScriptParser.Parse("test", EveryCommand)[0];
         var read = all.Everything().Select(i => i.Op).ToHashSet();
-        Assert.Empty(Enum.GetValues<Op>().Where(op => !read.Contains(op)));
+        Assert.DoesNotContain(Enum.GetValues<Op>(), op => !read.Contains(op));
     }
 
     [Fact]
@@ -191,10 +206,11 @@ public class ScriptTests
               if facing left end
               if boy end
               if girl end
+              if poketch end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
-        Assert.Empty(Enum.GetValues<Query>().Where(q => !asked.Contains(q)));
+        Assert.DoesNotContain(Enum.GetValues<Query>(), q => !asked.Contains(q));
         Assert.True(script.Code[1].Condition!.Negated);
         Assert.Equal((Compare.GreaterOrEqual, "VAR_B"), (script.Code[3].Condition!.Compare, script.Code[3].Condition!.Other));
         Assert.Equal((Compare.GreaterOrEqual, 1), (script.Code[7].Condition!.Compare, script.Code[7].Condition!.Number));
@@ -734,6 +750,44 @@ public class ScriptTests
         Assert.Equal(outcome == BattleOutcome.Caught ? 1 : 0, host.Party.Count);
     }
 
+    [Fact]
+    public void TwoTrainersBattledAtOnceAreBothBeatenAndAPartnerByIdIsPlatinums()
+    {
+        var first = Trainer("grunt_a", "Ann", prize: 100);
+        var second = Trainer("grunt_b", "Bob", prize: 200);
+        var (runner, host) = Ready("""
+            script S
+              battle grunt_a and grunt_b with "cheryl_eterna_forest"
+            """);
+        host.Map = Room(first, second);
+        host.Money = 0;
+        runner.RunToEnd();
+
+        Assert.Contains("battle grunt_a and grunt_b with cheryl_eterna_forest Won", host.Log);
+        Assert.True(host.Story.HasDefeated("grunt_a"));
+        Assert.True(host.Story.HasDefeated("grunt_b"));
+        Assert.Equal(300, host.Money);
+        Assert.Empty(host.Problems);
+    }
+
+    [Fact]
+    public void TheCatchingLessonIsTheAssistantsAndTellsOfACatch()
+    {
+        var host = Run("script S\n catchinglesson \"Bidoof\" 2\n if result == 3 setflag FLAG_SHOWN");
+
+        Assert.True(host.Story.Has("FLAG_SHOWN"));
+        Assert.Contains("catchinglesson Bidoof 2 Caught", host.Log);
+        // What the assistant caught isn't the player's
+        Assert.Equal(0, host.Party.Count);
+    }
+
+    [Fact]
+    public void AWildBattleThatCantBeFledSaysSo()
+    {
+        var host = Run("script S\n wildbattle \"Giratina\" 47 nofleeing", h => h.Fight = _ => BattleOutcome.Won);
+        Assert.Contains("wildbattle Giratina 47 nofleeing Won", host.Log);
+    }
+
     // ------------------------------------------------------------------ people and the field
 
     private static Map Room(params NPC[] people)
@@ -879,6 +933,7 @@ public class ScriptTests
         public StoryState Story => inner.Story;
         public Party Party => inner.Party;
         public Inventory Bag => inner.Bag;
+        public Poketch Poketch => inner.Poketch;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;
         public PlayerLook PlayerLook => inner.PlayerLook;
@@ -895,13 +950,20 @@ public class ScriptTests
         public bool Busy => false;
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;
-        public void Battle(NPC trainer, bool mayLose) { }
-        public void WildBattle(Pokemon wild) { }
+        public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first) { }
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
         public void Open(ScriptScreen screen, NPC? subject) { }
         public bool GivePokemon(Pokemon pokemon) => true;
         public void Warp(string map, int x, int y, Direction? facing) { }
         public void Fade(bool toBlack, float seconds) { }
+        public void UseMove(FieldMove move, Pokemon user, NPC? subject) { }
+        public bool Surf() => true;
+        public bool Climb() => true;
+        public bool Fly() => true;
+        public bool Teleport() => true;
+        public bool Escape() => true;
+        public bool SweetScent() => false;
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }
         public void Sound(string name) { }

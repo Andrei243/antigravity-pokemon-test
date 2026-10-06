@@ -520,14 +520,20 @@ public class MusicTests
             ["route_205_south"] = "sinnoh/route205", ["valley_windworks_outside"] = "sinnoh/route205", ["fuego_ironworks_outside"] = "sinnoh/route205",
             ["oreburgh_city"] = "sinnoh/oreburgh", ["floaroma_town"] = "sinnoh/floaroma", ["floaroma_meadow"] = "sinnoh/floaroma",
             ["oreburgh_gate_1f"] = "sinnoh/cave", ["oreburgh_gate_b1f"] = "sinnoh/cave", ["ravaged_path"] = "sinnoh/cave",
-            ["oreburgh_mine_b1f"] = "sinnoh/mine", ["oreburgh_mine_b2f"] = "sinnoh/mine"
+            ["oreburgh_mine_b1f"] = "sinnoh/mine", ["oreburgh_mine_b2f"] = "sinnoh/mine",
+            // The centre (plan 01 · M6)
+            ["route_205_north"] = "sinnoh/route205", ["eterna_forest_outside"] = "sinnoh/route205", ["eterna_forest"] = "sinnoh/forest",
+            ["eterna_city"] = "sinnoh/eterna", ["route_206"] = "sinnoh/route206", ["route_207"] = "sinnoh/route206", ["route_208"] = "sinnoh/route206",
+            ["wayward_cave_1f"] = "sinnoh/cave", ["mt_coronet_1f_south"] = "sinnoh/cave", ["hearthome_city"] = "sinnoh/hearthome",
+            ["amity_square"] = "sinnoh/amity_square", ["route_209"] = "sinnoh/route209", ["solaceon_town"] = "sinnoh/solaceon",
+            ["solaceon_ruins_room_1"] = "sinnoh/forest"
         };
         MapDatabase.Initialize();
         var themes = Themes().ToDictionary(t => t.Place[(t.Place.IndexOf('/') + 1)..], t => t.Track);
         foreach (var (area, track) in expected)
             Assert.Equal(track, themes[area]);
         // No town shares its theme with another any more
-        var towns = new[] { "twinleaf_town", "sandgem_town", "jubilife_city", "oreburgh_city", "floaroma_town" };
+        var towns = new[] { "twinleaf_town", "sandgem_town", "jubilife_city", "oreburgh_city", "floaroma_town", "eterna_city", "hearthome_city", "solaceon_town" };
         Assert.Equal(towns.Length, towns.Select(t => themes[t]).Distinct().Count());
     }
 
@@ -535,7 +541,7 @@ public class MusicTests
     public void TestACaveSoundsTheSameByDayAndByNight()
     {
         // The original's caves have one theme: their map headers give SEQ_D_04 or SEQ_D_05 by day and by night alike
-        foreach (var id in new[] { "sinnoh/cave", "sinnoh/mine" })
+        foreach (var id in new[] { "sinnoh/cave", "sinnoh/mine", "sinnoh/forest", "sinnoh/amity_square" })
         {
             var song = MusicLibrary.Get(id)!;
             Assert.False(song.HasNight);

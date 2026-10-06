@@ -167,6 +167,34 @@ internal sealed class FieldLife
             pieces.Add(new Piece(Kind.Puff, new Vector3(cx + side, ground, cz + 0.25f), Now, tint, 0, side, 1.25f));
     }
 
+    // The rock's browns, for the dust and the chips it breaks into
+    private static readonly Color RockDust = Rgb(168, 128, 92), RockLight = Rgb(204, 168, 126), RockDark = Rgb(122, 90, 70);
+
+    /// <summary>
+    /// An obstacle gives way on a tile (plan 02 · S2; style guide, "Obstacles giving way"): a tree that is cut
+    /// down bursts into leaf bits thrown higher and wider than the grass's, with a puff of dust; a rock that is
+    /// smashed into puffs of its own brown and chips flung out low.
+    /// </summary>
+    public void GiveWay(Map map, int x, int y, PropType obstacle)
+    {
+        if (!map.InBounds(x, y)) return;
+        float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
+        float[] sides = { -0.8f, -0.5f, -0.2f, 0.2f, 0.5f, 0.8f };
+        if (obstacle == PropType.CutTree)
+        {
+            for (int i = 0; i < sides.Length; i++)
+                pieces.Add(new Piece(Kind.Leaf, new Vector3(cx, ground + 0.2f, cz + 0.2f), Now, i % 2 == 0 ? LeafLight : LeafMid, 0, sides[i],
+                    MathF.Abs(sides[i]) < 0.3f ? 1.6f : MathF.Abs(sides[i]) < 0.6f ? 1.3f : 1f));
+            pieces.Add(new Piece(Kind.Puff, new Vector3(cx, ground, cz + 0.25f), Now, DustOf(map.GetGroundTile(x, y)), 0, 0f, 1.25f));
+            return;
+        }
+        foreach (float side in new[] { -0.3f, 0f, 0.3f })
+            pieces.Add(new Piece(Kind.Puff, new Vector3(cx + side, ground, cz + 0.25f), Now, RockDust, 0, side, 1.5f));
+        for (int i = 0; i < sides.Length; i++)
+            pieces.Add(new Piece(Kind.Leaf, new Vector3(cx, ground + 0.1f, cz + 0.2f), Now, i % 3 == 0 ? RockLight : i % 3 == 1 ? RockDust : RockDark, 0,
+                sides[i], 0.55f));
+    }
+
     /// <summary>
     /// Water is thrown up on a tile: a ring, and drops to both sides. A puddle stepped in gives a small ring and
     /// two drops; water someone rides out onto gives a wide ring and four drops that fly higher.

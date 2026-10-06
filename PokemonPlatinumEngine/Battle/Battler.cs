@@ -206,10 +206,16 @@ internal sealed class Volatiles
 
     public bool AbilitySuppressed;
 
+    /// <summary>A foe used Imprison: what it knows is sealed from this one (the original's <c>MOVE_EFFECT_IMPRISONED</c>, which only the AI reads).</summary>
+    public bool Imprisoned;
+
     // ---- Its own
 
     public int SubstituteHp;
     public bool FocusEnergy, Ingrained, AquaRing, Minimized, DefenseCurl, DestinyBond, Grudge, Rage, Imprisoning, MudSport, WaterSport;
+
+    /// <summary>It used Camouflage (the original's <c>MOVE_EFFECT_CAMOUFLAGE</c>, which only the AI reads).</summary>
+    public bool Camouflaged;
 
     /// <summary>Protect, Detect and Endure used with success in a row: each makes the next less likely.</summary>
     public int ProtectChain;
@@ -252,6 +258,13 @@ internal sealed class Volatiles
 
     /// <summary>Whoever hit it last (Bide strikes back there).</summary>
     public Place? LastHitBy;
+
+    /// <summary>
+    /// The last move that landed on it from someone else since it last moved, and whose it was (the original's
+    /// <c>moveHit</c> and <c>moveHitBattler</c>): what the trainer AI weighs when it thinks of switching.
+    /// </summary>
+    public MoveData? LastHitMove;
+    public Place? LastHitMoveBy;
 
     /// <summary>The turn it came in on, and the first turn it gets to act in (Fake Out works on that one alone).</summary>
     public int EnteredOnTurn, FirstTurn;

@@ -586,6 +586,11 @@ public class StoryTests
     {
         var started = Starters().Select(s => Scripts.Find(s.Script, s.File)!.FullName).ToHashSet();
         started.UnionWith(new[] { FieldScripts.Nurse, FieldScripts.Clerk, FieldScripts.Pc, FieldScripts.Briefcase, FieldScripts.Attendant, FieldScripts.Trainer, FieldScripts.Talk, FieldScripts.Sign, ScriptLibrary.NewGame });
+        // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
+        started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace });
+        // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot
+        started.UnionWith(new[] { FieldScripts.EscapeRope, FieldScripts.CyclistsOnly });
+        started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
             if (script.Name == ScriptLibrary.OnEnter) started.Add(script.FullName);
@@ -593,7 +598,7 @@ public class StoryTests
                 started.Add(Scripts.Find(call.Name, script.File)!.FullName);
         }
 
-        Assert.Empty(Scripts.All.Select(s => s.FullName).Where(name => !started.Contains(name)));
+        Assert.DoesNotContain(Scripts.All.Select(s => s.FullName), name => !started.Contains(name));
     }
 
     [Fact]
@@ -614,8 +619,8 @@ public class StoryTests
     {
         // A flag nobody sets is a misspelling, unless it is a region's Hall of Fame (the League's script sets those)
         var known = Scripts.FlagsWritten.Concat(RegionDatabase.All.Select(r => r.StoryCompleteFlag)).ToHashSet();
-        Assert.Empty(Scripts.FlagsRead.Where(f => !known.Contains(f)));
-        Assert.Empty(Scripts.VariablesRead.Where(v => !Scripts.VariablesWritten.Contains(v)));
+        Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
+        Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v));
     }
 
     /// <summary>
@@ -666,6 +671,28 @@ public class StoryTests
         return ways;
     }
 
+    /// <summary>The common scripts of the field moves (plan 02 · S2), and those they call.</summary>
+    private static readonly HashSet<string> FieldMoveScripts = new HashSet<string>
+    {
+        FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace,
+        "common.StrengthOn"
+    }.Concat(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>()).ToHashSet();
+
+    /// <summary>A team between them knowing every move a Pokémon uses in the field, and every badge.</summary>
+    private static void KnowsEveryFieldMove(HeadlessScriptHost host)
+    {
+        host.Party.Clear();
+        var moves = Enum.GetValues<FieldMove>().Where(m => m != FieldMove.Chatter).Select(FieldMoveRules.MoveName).ToList();
+        for (int i = 0; i < moves.Count; i += 4)
+        {
+            var pokemon = new Pokemon(PokemonDatabase.Get("Bibarel")!, 40);
+            pokemon.Moves.Clear();
+            foreach (string move in moves.Skip(i).Take(4)) pokemon.Moves.Add(new Move(MoveDatabase.Get(move)!));
+            host.Party.Add(pokemon);
+        }
+        host.Story.SetBadges(0xFF);
+    }
+
     private static NPC AnyTrainer() => MapFile.BuildNpc(new MapFile.NpcRecord
     {
         Id = "anyone", Name = "Anyone", NpcType = "Youngster", X = 2, Y = 2,
@@ -699,13 +726,20 @@ public class StoryTests
 
         foreach (var script in Scripts.All.Where(s => s.File == ScriptLibrary.Common && s.FullName != ScriptLibrary.NewGame))
         {
-            // An item's two scripts are started by a ball and by a place in the ground; every other by a person
+            // An item's two scripts are started by a ball and by a place in the ground; a field move's by an obstacle
+            // (with a team that knows every field move and has every badge, and with one that has neither, but for the
+            // party menu's, which only a Pokémon that knows the move starts); every other by a person
+            var obstacle = new NPC { NpcType = NPC.CutTreeType, Name = "Tree", HiddenBy = "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_TEST", GridX = 2, GridY = 2 };
+            bool fieldMove = FieldMoveScripts.Contains(script.FullName);
             var ways = script.FullName switch
             {
                 FieldScripts.ItemBall => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.ItemBallType, Name = "Potion", Item = "Potion", HiddenBy = "FLAG_OBTAINED_TEST_POTION" }),
                 FieldScripts.HiddenItem => EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"),
+                _ when fieldMove => EveryWayThrough(script, new Map(8, 8), obstacle, before: KnowsEveryFieldMove),
                 _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
             };
+            if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)
+                ways.AddRange(EveryWayThrough(script, new Map(8, 8), obstacle));
             Assert.NotEmpty(ways);
             Assert.All(ways, way => Assert.Empty(way.Host.Problems));
         }
@@ -777,7 +811,9 @@ public class StoryTests
     {
         var hidden = OwnMaps.Value.Values.SelectMany(map => map.HiddenItems.Select(h => (Map: map, At: h.Key, Item: h.Value))).ToList();
         Assert.True(hidden.Count >= 20, $"only {hidden.Count} hidden items");
-        Assert.Empty(hidden.GroupBy(h => h.Item.Flag).Where(g => g.Count() > 1).Select(g => g.Key));
+        // The original gives one flag to two places now and then, and says so in its name (Route 207's or Wayward
+        // Cave's): whichever is found first, the other is gone too
+        Assert.Empty(hidden.GroupBy(h => h.Item.Flag).Where(g => g.Count() > 1 && !g.Key.Contains("_OR_")).Select(g => g.Key));
 
         foreach (var (map, at, item) in hidden)
         {

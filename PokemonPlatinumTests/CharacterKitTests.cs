@@ -5,7 +5,6 @@ using System.Linq;
 using System.Numerics;
 using PokemonPlatinumEngine.Graphics;
 using Raylib_cs;
-using Xunit.Abstractions;
 
 namespace PokemonPlatinumTests;
 

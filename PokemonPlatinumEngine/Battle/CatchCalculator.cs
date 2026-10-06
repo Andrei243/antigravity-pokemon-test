@@ -25,14 +25,24 @@ public static class CatchCalculator
         return new CatchResult { IsCaught = shakes == 4, Shakes = shakes };
     }
 
+    /// <summary>
+    /// The Great Marsh's share of a species' catch rate at each of its thirteen stages (<c>sSafariCatchRate</c>):
+    /// a quarter at 0, the whole at 6 where every encounter starts, four times at 12.
+    /// </summary>
+    public static readonly (int Num, int Den)[] SafariStages =
+        { (10, 40), (10, 35), (10, 30), (10, 25), (10, 20), (10, 15), (10, 10), (15, 10), (20, 10), (25, 10), (30, 10), (35, 10), (40, 10) };
+
     /// <summary>How many times the ball shakes: 4 means it held.</summary>
     /// <param name="turn">Turns of the battle already played (the Timer and Quick Balls count them).</param>
-    public static int Shakes(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions)
+    /// <param name="safariStage">For a Safari Ball, the Great Marsh's stage the species' catch rate is taken at.</param>
+    public static int Shakes(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions, int safariStage = 6)
     {
         // A Master Ball holds whatever the rolls would have said
         if (ball.EffectValue >= 9999) return 4;
 
-        int rate = Formulas.CatchRate(wild.CatchRate, Formulas.BallTenths(ball.Name, wild, turn, conditions),
+        int speciesRate = wild.CatchRate;
+        if (ball.Name == "Safari Ball") speciesRate = speciesRate * SafariStages[safariStage].Num / SafariStages[safariStage].Den;
+        int rate = Formulas.CatchRate(speciesRate, Formulas.BallTenths(ball.Name, wild, turn, conditions),
             wild.MaxHP, wild.CurrentHP, wild.Status);
         if (rate >= 255) return 4;
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -22,6 +23,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public StoryState Story { get; }
     public Party Party { get; }
     public Inventory Bag { get; }
+    public Poketch Poketch { get; } = new();
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }
@@ -193,19 +195,24 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public int Answer { get; private set; }
 
-    public void Battle(NPC trainer, bool mayLose)
+    public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first)
     {
         Shown("start a battle");
         Waits();
         Outcome = Fight?.Invoke(trainer) ?? BattleOutcome.Won;
-        Log.Add($"battle {trainer.TrainerData?.Id} {Outcome}");
-        if (Outcome == BattleOutcome.Won && trainer.TrainerData is { } beaten)
+        string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "");
+        Log.Add($"battle {trainer.TrainerData?.Id}{with} {Outcome}");
+        if (Outcome == BattleOutcome.Won)
         {
-            Money += beaten.PrizeMoney;
-            Story.Defeat(beaten.Id);
-            // Two people who battle as one trainer are beaten together
-            foreach (var npc in (Map?.Everyone ?? new[] { trainer }).Append(trainer))
-                if (npc == trainer || (beaten.Id.Length > 0 && npc.TrainerData?.Id == beaten.Id)) npc.FinishBattle(true);
+            foreach (var foe in second == null ? new[] { trainer } : new[] { trainer, second })
+            {
+                if (foe.TrainerData is not { } beaten) continue;
+                Money += beaten.PrizeMoney;
+                Story.Defeat(beaten.Id);
+                // Two people who battle as one trainer are beaten together
+                foreach (var npc in (Map?.Everyone ?? new[] { foe }).Append(foe))
+                    if (npc == foe || (beaten.Id.Length > 0 && npc.TrainerData?.Id == beaten.Id)) npc.FinishBattle(true);
+            }
         }
         else if (Outcome == BattleOutcome.Lost)
         {
@@ -213,13 +220,14 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
-    public void WildBattle(Pokemon wild)
+    public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
     {
         Shown("start a battle");
         Waits();
-        Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
-        Log.Add($"wildbattle {wild.Species.Name} {wild.Level} {Outcome}");
-        if (Outcome == BattleOutcome.Caught) GivePokemon(wild);
+        // The lesson is the assistant's battle: their ball always catches, and what they catch is theirs
+        Outcome = kind == BattleKind.CatchingLesson ? BattleOutcome.Caught : Fight?.Invoke(null) ?? BattleOutcome.Won;
+        Log.Add($"{(kind == BattleKind.CatchingLesson ? "catchinglesson" : "wildbattle")} {wild.Species.Name} {wild.Level}{(cannotFlee ? " nofleeing" : "")} {Outcome}");
+        if (Outcome == BattleOutcome.Caught && kind != BattleKind.CatchingLesson) GivePokemon(wild);
         else if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 
@@ -269,6 +277,96 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("fade the screen");
         Waits();
         Log.Add(toBlack ? "fade out" : "fade in");
+    }
+
+    // ------------------------------------------------------------------ field moves
+
+    /// <summary>How the player travels: on foot until a script has them surf.</summary>
+    public TravelMode PlayerMode { get; set; }
+
+    public void UseMove(FieldMove move, Pokemon user, NPC? subject)
+    {
+        Shown("use a field move");
+        Waits();
+        Log.Add($"usemove {FieldMoveRules.MoveName(move)} {user.Nickname}{(subject != null ? " on " + subject.Name : "")}");
+    }
+
+    public bool Surf()
+    {
+        Shown("go out onto the water");
+        var (x, y) = PlayerTile;
+        if (Map != null && !FieldMovement.CanStartSurf(Map, x, y, PlayerFacing, new Walker(PlayerMode, Map.HeightAt(x, y))))
+        {
+            Log.Add("surf nowhere");
+            return false;
+        }
+        var (dx, dy) = FieldMovement.Delta(PlayerFacing);
+        PlayerTile = (x + dx, y + dy);
+        PlayerMode = TravelMode.Surfing;
+        Log.Add("surf");
+        return true;
+    }
+
+    /// <summary>Where <c>fly</c> goes: the town chosen on the map. Null, and <c>fly</c> does nothing.</summary>
+    public SpawnLocation? FlyTo { get; set; }
+
+    /// <summary>Where <c>escape</c> leads out of the caves; null where no way out is known.</summary>
+    public MapSpot? Exit { get; set; }
+
+    /// <summary>What <c>sweetscent</c> draws out: a species and its level, or null where nothing lives.</summary>
+    public (string Species, int Level)? Scented { get; set; }
+
+    public bool Fly()
+    {
+        Shown("fly");
+        if (FlyTo is not { } town) return false;
+        Warp("Sinnoh", town.X, town.Y, Direction.Down);
+        return true;
+    }
+
+    public bool Teleport()
+    {
+        Shown("teleport");
+        var town = SpawnLocations.Respawn(Story);
+        Warp("Sinnoh", town.X, town.Y, Direction.Down);
+        return true;
+    }
+
+    public bool Escape()
+    {
+        Shown("escape");
+        if (Exit is not { } exit) return false;
+        Warp(exit.Map, exit.X, exit.Y, exit.Facing);
+        return true;
+    }
+
+    public bool SweetScent()
+    {
+        Shown("draw a Pokémon out");
+        if (Scented is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
+
+    public bool Climb()
+    {
+        Shown("climb");
+        if (Map == null)
+        {
+            Log.Add("climb");
+            return true;
+        }
+        var (x, y) = PlayerTile;
+        var step = FieldMovement.Step(Map, x, y, PlayerFacing,
+            new Walker(PlayerMode, Map.HeightAt(x, y), Moves: FieldMovement.MovesOf(Party), Climbing: true));
+        if (step.Kind != StepKind.Climb)
+        {
+            Log.Add("climb nowhere");
+            return false;
+        }
+        PlayerTile = (step.X, step.Y);
+        Log.Add($"climb {step.X} {step.Y}");
+        return true;
     }
 
     // ------------------------------------------------------------------ sound

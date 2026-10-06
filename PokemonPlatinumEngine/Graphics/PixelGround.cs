@@ -62,7 +62,9 @@ internal static class PixelGround
         // The top of a cave's wall: the dark of rock nobody stands on
         new(TileType.CaveWall, new(66, 58, 70, 255), new(78, 70, 80, 255), new(44, 38, 52, 255), new(52, 46, 60, 255), 78),
         // The dark inside the mouth of a cave, seen from the open country
-        new(TileType.CaveMouth, new(24, 20, 30, 255), new(30, 26, 38, 255), new(12, 10, 18, 255), new(18, 16, 26, 255), 79)
+        new(TileType.CaveMouth, new(24, 20, 30, 255), new(30, 26, 38, 255), new(12, 10, 18, 255), new(18, 16, 26, 255), 79),
+        // The dark under the trees where a forest is entered
+        new(TileType.ForestMouth, new(34, 40, 30, 255), new(42, 50, 36, 255), new(20, 24, 18, 255), new(28, 34, 24, 255), 80)
     };
 
     // Built ground, painted tile for tile with straight edges: paving, bridge decks, walkways and stairs

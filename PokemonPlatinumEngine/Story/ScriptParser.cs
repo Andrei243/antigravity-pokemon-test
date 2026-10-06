@@ -189,15 +189,41 @@ public static class ScriptParser
             {
                 string who = r.Who();
                 if (who == "player") throw r.Error("the player can't be battled");
-                bool mayLose = r.More && r.OneOf("canlose") == "canlose";
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Option = mayLose };
+                // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
+                bool mayLose = false, byId = false, first = false;
+                string second = "", partner = "";
+                while (r.More)
+                {
+                    switch (r.OneOf("canlose", "first", "and", "with"))
+                    {
+                        case "canlose":
+                            mayLose = true;
+                            break;
+                        case "first":
+                            first = true;
+                            break;
+                        case "and":
+                            second = r.Who();
+                            if (second == "player" || second == who) throw r.Error("the second trainer is someone else of the map");
+                            break;
+                        default:
+                            byId = r.PeekQuoted;
+                            partner = byId ? r.Text("a trainer's id") : r.Who();
+                            if (partner == "player" || partner == who || partner == second) throw r.Error("the player's partner is someone else of the map");
+                            break;
+                    }
+                }
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first };
             }
             case "wildbattle":
+            case "catchinglesson":
             {
                 string species = r.Text("a species' name");
                 int level = r.Int("its level");
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level };
+                if (word == "catchinglesson") return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level };
+                bool noFleeing = r.More && r.OneOf("nofleeing") == "nofleeing";
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing };
             }
 
             case "face":
@@ -261,6 +287,30 @@ public static class ScriptParser
                     default:
                         return new Instruction { Op = Op.Camera, Line = line, Camera = CameraMove.Shake, Seconds = r.More ? r.Seconds() : ShakeSeconds };
                 }
+
+            case "usemove":
+            {
+                string move = r.Text("a field move's name");
+                if (FieldMoveRules.Of(move) == null) throw r.Error($"'{move}' is no move a Pokémon uses in the field");
+                return new Instruction { Op = Op.UseMove, Line = line, Name = move };
+            }
+            case "surf":
+                return new Instruction { Op = Op.Surf, Line = line };
+            case "climb":
+                return new Instruction { Op = Op.Climb, Line = line };
+            case "fly":
+                return new Instruction { Op = Op.Fly, Line = line };
+            case "teleport":
+                return new Instruction { Op = Op.Teleport, Line = line };
+            case "escape":
+                return new Instruction { Op = Op.Escape, Line = line };
+            case "sweetscent":
+                return new Instruction { Op = Op.SweetScent, Line = line };
+            case "poketch":
+                r.OneOf("on");
+                return new Instruction { Op = Op.Poketch, Line = line };
+            case "poketchapp":
+                return new Instruction { Op = Op.PoketchApp, Line = line, Name = r.Enum<Models.PoketchApp>("a Pokétch app").ToString() };
 
             case "music":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Music, Line = line, Name = r.Text("a song") };
@@ -368,6 +418,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Boy, Negated = negated };
             case "girl":
                 return new Condition { Query = Query.Girl, Negated = negated };
+            case "poketch":
+                return new Condition { Query = Query.Poketch, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

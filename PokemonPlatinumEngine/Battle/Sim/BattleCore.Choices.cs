@@ -65,6 +65,7 @@ public sealed partial class BattleCore
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:
+                if (Kind is BattleKind.Safari or BattleKind.PalPark) return "There's no Pokémon of yours here to fight.";
                 if (choice.Move == BattleChoice.HeldMove) return b.IsHeldToItsMove ? null : $"{b.Name} isn't in the middle of a move.";
                 var moves = b.Pokemon!.Moves;
                 if (choice.Move < 0 || choice.Move >= moves.Count)
@@ -72,12 +73,17 @@ public sealed partial class BattleCore
                 return WhyNotMove(b, moves[choice.Move]);
 
             case ChoiceKind.Switch:
-                if (!b.IsPlayerSide) return "Only the player's side answers with a switch.";
-                if (!CanSendIn(choice.SwitchTo)) return "That Pokémon can't be sent in.";
+                if (Kind is BattleKind.Safari or BattleKind.PalPark) return "There's no Pokémon of yours here to switch.";
+                if (!CanSendIn(b, choice.SwitchTo)) return "That Pokémon can't be sent in.";
                 return TrapOn(b, forRunning: false);
 
             case ChoiceKind.Run:
+                if (CannotFlee && b.IsPlayerSide) return "There's no running from this battle!";
+                if (Kind is BattleKind.Safari or BattleKind.PalPark) return null;
                 return IsTrainerBattle ? null : TrapOn(b, forRunning: true);
+
+            case ChoiceKind.Bait or ChoiceKind.Mud:
+                return Kind == BattleKind.Safari ? null : "There's nothing to throw that at here.";
 
             case ChoiceKind.Item:
                 return WhyNotItem(b, choice);

@@ -114,9 +114,37 @@ public partial class BattleEngine
         return true;
     }
 
-    /// <summary>Acts on a choice from the main battle menu: 0 FIGHT, 1 BAG, 2 POKÉMON, 3 RUN.</summary>
+    /// <summary>
+    /// Acts on a choice from the main battle menu: 0 FIGHT, 1 BAG, 2 POKÉMON, 3 RUN; in the Great Marsh 0 the Safari
+    /// Ball, 1 bait, 2 mud, 3 RUN; in Pal Park 0 the Park Ball and 3 RUN.
+    /// </summary>
     public void SelectMainMenuOption(int index)
     {
+        if (Kind is BattleKind.Safari or BattleKind.PalPark)
+        {
+            var place = PlayerSlots[0].Place;
+            switch (index)
+            {
+                case 0:
+                    AudioManager.PlaySound("select");
+                    // Pal Park's Park Ball is thrown as the original throws it, as a Safari Ball that can't miss
+                    Commit(BattleChoice.UseItem(place, "Safari Ball"));
+                    break;
+                case 1 when Kind == BattleKind.Safari:
+                    AudioManager.PlaySound("select");
+                    Commit(BattleChoice.Bait(place));
+                    break;
+                case 2 when Kind == BattleKind.Safari:
+                    AudioManager.PlaySound("select");
+                    Commit(BattleChoice.Mud(place));
+                    break;
+                case 3:
+                    Commit(BattleChoice.Run(place));
+                    break;
+            }
+            return;
+        }
+
         switch (index)
         {
             case 0:

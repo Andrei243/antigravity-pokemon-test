@@ -333,8 +333,12 @@ public class MapImportTests
         Assert.Null(Cover.OfTexture("puddle_b", out bool puddleKnown));
         Assert.True(puddleKnown);
 
-        Assert.Null(Cover.OfTexture("fenter", out bool known));   // a forest's way in: sorted when the first forest is built
+        Assert.Null(Cover.OfTexture("kao_kanban", out bool known));   // Pastoria's sign: sorted when its town is built
         Assert.False(known);
+        // A forest's way in has been sorted since the first forest was built (plan 01 · M6), and so has a Bicycle's ramp
+        Assert.Equal(TerrainCover.ForestMouth, Cover.OfTexture("fenter", out bool forestKnown));
+        Assert.True(forestKnown);
+        Assert.Equal(TerrainCover.Steps, Cover.OfTexture("dun_jump", out _));
         // A cave's mouth has been sorted since the first cave was built (plan 01 · M5)
         Assert.Equal(TerrainCover.CaveMouth, Cover.OfTexture("dhole", out bool mouthKnown));
         Assert.True(mouthKnown);

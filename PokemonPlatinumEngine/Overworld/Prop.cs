@@ -23,8 +23,9 @@ public enum PropType
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,
 
-    // Obstacles a field move clears (plan 02 · S2 makes them give way; until then they only stand in the way):
-    // a small tree for Cut, a cracked rock for Rock Smash, a round boulder for Strength
+    // Obstacles a field move clears: a small tree for Cut, a cracked rock for Rock Smash, a round boulder for
+    // Strength. Since plan 02 · S2 they are objects of the map, as the original's are (NPC.Obstacle; Map.AddObstacle),
+    // drawn as cards and cleared or pushed by their scripts; the kinds stay here for their art.
     CutTree,
     CrackedRock,
     StrengthBoulder,
@@ -49,6 +50,8 @@ public enum PropType
     Crates,
     CoalHeap,
     Hedge,
+    /// <summary>A raised bed of flowers in a kerb of pale stone (Amity Square).</summary>
+    FlowerBed,
     /// <summary>A stone pillar as tall as its model (<see cref="Prop.Height"/>).</summary>
     Column,
     Topiary,

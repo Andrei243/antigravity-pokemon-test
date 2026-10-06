@@ -159,6 +159,9 @@ public sealed partial class BattleCore
         }
         if (BattleEffects.Of(user).Any(e => e.LocksMoveChoice) && user.Pokemon!.Moves.Contains(move)) user.ChoiceLock = move;
         v.LastMove = move.Data == StruggleData ? null : move.Data;
+        // Using a move of its own forgets the one that hit it (BattleControllerPlayer_MoveEnd)
+        v.LastHitMove = null;
+        v.LastHitMoveBy = null;
         CountForMetronome(user, move);
         int slot = user.Pokemon!.Moves.IndexOf(move);
         if (slot >= 0 && move.Data.Effect != "FailIfNotUsedAllOtherMoves") v.UsedMoveSlots |= 1 << slot;
@@ -310,8 +313,14 @@ public sealed partial class BattleCore
     /// </summary>
     private static void RememberHit(Battler target, Battler user, Move move)
     {
-        if (target == user || target.Side == user.Side) return;
         var v = target.Volatile;
+        // What the trainer AI looks at when it thinks of switching (the original's moveHit and moveHitBattler)
+        if (target != user)
+        {
+            v.LastHitMove = move.Data;
+            v.LastHitMoveBy = user.Place;
+        }
+        if (target == user || target.Side == user.Side) return;
         v.Conversion2Move = move.Data;
         v.Conversion2Type = move.Type;
         v.Conversion2By = user.Place;
@@ -681,6 +690,8 @@ public sealed partial class BattleCore
         var user = use.User;
         var move = use.Move;
         if (move.Accuracy <= 0 || !use.Effect.RollsAccuracy) return true;
+        // Nothing misses in the catching lesson (BattleControllerPlayer_CheckMoveHitAccuracy)
+        if (Kind == BattleKind.CatchingLesson) return true;
         // From Generation 6 a Poison type's Toxic can't miss
         if (Rules.PoisonTypesNeverMissToxic && move.Category == MoveCategory.Status && move.Data.InflictStatus == StatusCondition.Toxic && user.HasType(PokemonType.Poison)) return true;
         var weather = Field.WeatherInEffect;
@@ -842,7 +853,9 @@ public sealed partial class BattleCore
         {
             result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1, rules: Rules,
                 powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens,
-                basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance, damageTenths: use.DamageTenths);
+                basePower: effect.BasePower?.Invoke(this, use, t), noVariance: effect.NoVariance, damageTenths: use.DamageTenths,
+                // The catching lesson and the first battle have no critical hits (BtlCmd_CalcCrit)
+                noCrit: NoCriticalHits);
         }
         bool critical = result.IsCritical || use.StrikeCritical;
         use.StrikeCritical = false;

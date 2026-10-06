@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -15,6 +16,17 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>Draws the HP boxes and whichever panel the battle menu is showing.</summary>
+    /// <summary>
+    /// The battle's four commands: FIGHT and BAG, POKÉMON, RUN; in the Great Marsh the Safari Ball (with how many are
+    /// left), BAIT, MUD and RUN; in Pal Park the Park Ball and RUN (an empty label is a command that isn't there).
+    /// </summary>
+    public static (string Big, string[] Small) CommandLabels(BattleEngine battle) => battle.Kind switch
+    {
+        BattleKind.Safari => ($"SAFARI BALL ×{battle.SpecialBalls}", new[] { "BAIT", "MUD", "RUN" }),
+        BattleKind.PalPark => ($"PARK BALL ×{battle.SpecialBalls}", new[] { "", "", "RUN" }),
+        _ => ("FIGHT", new[] { "BAG", "POKÉMON", "RUN" })
+    };
+
     public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
     {
         var active = battle.PlayerPokemon;
@@ -53,12 +65,14 @@ internal static partial class ModernUi
         switch (hud.MenuState)
         {
             case BattleMenuState.Main:
-                MessageBox(new Rectangle(48, 858, 1060, 172), null, active.DisplayName);
-                string[] labels = { "BAG", "POKÉMON", "RUN" };
+                // The Great Marsh and Pal Park are played with balls alone: the commands are the ball and what else can be thrown
+                bool balls = battle.Kind is BattleKind.Safari or BattleKind.PalPark;
+                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : active.DisplayName);
+                var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
-                Button(new Rectangle(1140, 848, 432, 190), 34, Red, "FIGHT", 60, hud.MainMenuIndex == 0);
+                Button(new Rectangle(1140, 848, 432, 190), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
                 for (int i = 0; i < 3; i++)
-                    Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
+                    if (labels[i].Length > 0) Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
                 break;
             case BattleMenuState.Moves:
                 MoveMenu(hud, active);

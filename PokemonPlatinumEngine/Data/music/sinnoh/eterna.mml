@@ -1,0 +1,60 @@
+# Eterna City (the original's CITY04 role): the old city at the foot of Mount Coronet, with its ancient statue,
+# its cycle shop and the forest at its gate. A stately, unhurried E-flat major in four, calm and quietly proud:
+# the horn over a rolling harp and strings, a bell tolling at the head of each phrase, the timpani under the
+# cadences, and a turn to the flattened seventh's chord for the city's age. The oboe answers the horn and sings
+# above it the last time round; by night the clarinet and the flute, a celesta and a softer pad.
+# Original composition for this game.
+title Eterna City
+tempo 80
+meter 4/4
+reverb 0.34
+nighttempo 0.93
+
+track lead horn night=clarinet vol=0.85 pan=0 rev=0.32
+  r1 | r1 |
+  L o4 b-2 o5 e-4. d8 | c2 o4 a-4 o5 c4 | o4 b-4. g8 e-4 g4 | f2. r4 |
+  o4 b-2 o5 e-4. f8 | a-4. g8 f4 e-4 | c4. o4 b-8 a-4 f4 | e-2. g4 |
+  o5 c4 e-4 g4. f8 | e-2 c4 e-4 | f2 a-4. f8 | e-2 d2 |
+  o4 b-2 o5 e-4. g8 | g4 f4 e-4 c4 | e-4. f8 d4 o4 b-4 | o5 e-2 r2 |
+
+track counter oboe night=flute vol=0.45 pan=-0.25 rev=0.36
+  r1 | r1 |
+  L r1 | r1 | r1 | r2. o5 d8 c8 |
+  r1 | r1 | r1 | r2 o5 g8 f8 e-8 d8 |
+  r1 | r1 | r1 | r1 |
+  o5 e-2 g2 | b-2 g2 | a-2 f2 | g2 f4 d4 |
+
+track harp harp night=celesta vol=0.42 pan=0.3 rev=0.36
+  o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 | o3 b-8 o4 e-8 f8 b-8 o3 b-8 o4 d8 f8 b-8 |
+  L o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 | o3 a-8 o4 c8 e-8 a-8 o5 c8 o4 a-8 e-8 c8 | o3 c8 g8 o4 c8 e-8 g8 e-8 c8 o3 g8 | o3 b-8 o4 e-8 f8 b-8 o3 b-8 o4 d8 f8 b-8 |
+  o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 | o3 a-8 o4 c8 e-8 a-8 o5 c8 o4 a-8 e-8 c8 | o3 f8 o4 c8 f8 a-8 o3 b-8 o4 d8 f8 a-8 | o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 |
+  o3 c8 g8 o4 c8 e-8 g8 e-8 c8 o3 g8 | o3 a-8 o4 c8 e-8 a-8 o5 c8 o4 a-8 e-8 c8 | o3 d-8 a-8 o4 d-8 f8 a-8 f8 d-8 o3 a-8 | o3 b-8 o4 e-8 f8 b-8 o3 b-8 o4 d8 f8 b-8 |
+  o3 e-8 b-8 o4 e-8 g8 b-8 g8 e-8 o3 b-8 | o3 c8 g8 o4 c8 e-8 g8 e-8 c8 o3 g8 | o3 a-8 o4 c8 e-8 a-8 o3 b-8 o4 d8 f8 b-8 | o3 e-8 b-8 o4 e-8 g8 o3 b-8 o4 d8 f8 b-8 |
+
+track pad strings night=pad vol=0.3 pan=-0.15 rev=0.42
+  o3 (g b- >e-)1 | (b- >e- f)2 (b- >d f)2 |
+  L (g b- >e-)1 | (a- >c e-)1 | (g >c e-)1 | (b- >e- f)2 (b- >d f)2 |
+  (g b- >e-)1 | (a- >c e-)1 | (a- >c f)2 (a- >d f)2 | (g b- >e-)1 |
+  (g >c e-)1 | (a- >c e-)1 | (a- >d- f)1 | (b- >e- f)2 (b- >d f)2 |
+  (g b- >e-)1 | (g >c e-)1 | (a- >c e-)2 (b- >d f)2 | (g b- >e-)2 (b- >d f)2 |
+
+track bell bell night=vibraphone vol=0.34 pan=0.4 rev=0.55
+  o5 e-2 r2 | o4 b-2 r2 |
+  L o5 e-2 r2 | r1 | r1 | r1 |
+  o5 e-2 r2 | r1 | r1 | r1 |
+  o5 c2 r2 | r1 | o4 a-2 r2 | r1 |
+  o5 e-2 r2 | r1 | r1 | r2 o4 b-2 |
+
+track bass contrabass vol=0.62 rev=0.15
+  o3 e-1 | o2 b-1 |
+  L o3 e-2 o2 b-2 | o2 a-2 o3 e-2 | o3 c2 o2 g2 | o2 b-1 |
+  o3 e-2 o2 b-2 | o2 a-2 o3 c2 | o3 f2 o2 b-2 | o3 e-2 o2 b-2 |
+  o3 c2 o2 g2 | o2 a-2 o3 e-2 | o3 d-2 o2 a-2 | o2 b-1 |
+  o3 e-2 o2 b-2 | o3 c2 o2 g2 | o2 a-2 b-2 | o3 e-2 o2 b-2 |
+
+track timpani timpani vol=0.4 rev=0.25
+  v90 o3 e-4 r4 r2 | r2 v60 o2 b-8 b-8 v80 b-4 v90 |
+  L o3 e-4 r4 r2 | r1 | r1 | r2 v60 o2 b-8 b-8 v80 b-4 v90 |
+  o3 e-4 r4 r2 | r1 | r1 | r1 |
+  o3 c4 r4 r2 | r1 | r1 | r2 v60 o2 b-8 b-8 v80 b-4 v90 |
+  o3 e-4 r4 r2 | r1 | r1 | r2 v60 o2 b-8 b-8 v80 b-4 v90 |

@@ -9,7 +9,7 @@ namespace DataImporter;
 /// abilities 1–123, Platinum's items) come from Platinum's own data in the decompilation; everything later comes
 /// from PokeAPI. Names, categories, egg groups, colours, shapes and the short effect texts come from PokeAPI too.
 /// </summary>
-public sealed class Importer
+public sealed partial class Importer
 {
     public const int LastPlatinumSpecies = 493;
     public const int LastPlatinumMove = 467;
@@ -94,6 +94,7 @@ public sealed class Importer
                 | (gen4Flags.Contains("MOVE_FLAG_TRIGGERS_KINGS_ROCK") ? MoveFlags.KingsRock : 0)
                 | LaterFlags(flags.GetValueOrDefault(id));
             MoveEffects.Gen4(m, effect, chance);
+            m.BattleEffect = Names.Pascal(effect, "");
             m.Modern = ModernValues(m, row);
             moves.Add(m);
         }
@@ -476,6 +477,19 @@ public sealed class Importer
         };
         s.HatchCycles = d.GetProperty("hatch_cycles").GetInt32();
         s.BaseFriendship = d.GetProperty("base_friendship").GetInt32();
+        s.SafariFleeRate = d.GetProperty("safari_flee_rate").GetInt32();
+        if (d.TryGetProperty("catching_show", out var show))
+        {
+            int Area(string key, string prefix) =>
+                show.GetProperty(key).GetString() switch { var a when a!.EndsWith("NORTH_WEST") => 1, var a when a.EndsWith("NORTH_EAST") => 2, var a when a.EndsWith("SOUTH_WEST") => 3, var a when a.EndsWith("SOUTH_EAST") => 4, _ => 0 };
+            s.PalPark = new PalParkData
+            {
+                LandArea = Area("pal_park_land_area", "PAL_PARK_AREA_LAND_"),
+                WaterArea = Area("pal_park_water_area", "PAL_PARK_AREA_WATER_"),
+                Rarity = show.GetProperty("rarity").GetInt32(),
+                CatchingPoints = show.GetProperty("catching_points").GetInt32()
+            };
+        }
 
         s.Abilities = d.GetProperty("abilities").EnumerateArray().Select(a => a.GetString()!)
             .Where(a => a != "ABILITY_NONE").Select(a => api.AbilityName(abilityConstants.IndexOf(a))).Distinct().ToList();

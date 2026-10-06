@@ -46,15 +46,15 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on. |
 | `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off. |
 | `heal` | `SEQ_SE_DP_KAIFUKU` | A medicine used from the bag, HP restored in battle. |
-| `bike_bell` | `SEQ_SE_DP_JITENSYA` | Getting on the Bicycle (waits for the Bicycle, plan 02 · S2). |
-| `gear` | `SEQ_SE_DP_GEAR` | The Bicycle's gear changes (waits for the Bicycle, plan 02 · S2). |
-| `boulder` | — | A boulder pushed with Strength (waits for plan 02 · S2). |
-| `rock_smash` | — | A rock broken with Rock Smash (waits for plan 02 · S2). |
-| `cut` | `SEQ_SE_DP_FW015` | A tree cut down with Cut (waits for plan 02 · S2). |
-| `fish_cast` | — | A rod cast (waits for fishing). |
-| `fish_bite` | `SEQ_SE_DP_FW104` | Something bites (waits for fishing). |
-| `fish_reel` | — | The line reeled in (waits for fishing). |
-| `poketch` | `SEQ_SE_DP_POKETCH_003` | A Pokétch button (waits for the Pokétch). |
+| `bike_bell` | `SEQ_SE_DP_JITENSYA` | Getting on the Bicycle (plan 02 · S2). |
+| `gear` | `SEQ_SE_DP_GEAR` | The Bicycle's gear changes, on the run button while riding. |
+| `boulder` | — | A boulder pushed with Strength, as it starts to slide. |
+| `rock_smash` | — | A rock broken with Rock Smash, as the cut-in's band closes. |
+| `cut` | `SEQ_SE_DP_FW015` | A tree cut down with Cut, as the cut-in's band closes. |
+| `fish_cast` | — | A rod cast. |
+| `fish_bite` | `SEQ_SE_DP_FW104` | Something bites, with the "!" over the player. |
+| `fish_reel` | — | The line reeled in: a Pokémon hooked in time. |
+| `poketch` | `SEQ_SE_DP_POKETCH_003` | The Pokétch put on the screen or away, and its app changed. |
 | `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |
 | `thunder_rumble` | `SEQ_SE_DP_T_KAMI` | Thunder rolling from further off, a second after the lightning (one strike of three). |
 

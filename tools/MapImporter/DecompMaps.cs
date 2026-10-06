@@ -152,16 +152,22 @@ public sealed partial class DecompMaps
     /// The wild Pokémon met surfing on an area's water, slot by slot with each slot's range of levels, and the
     /// table's rate; empty when nothing lives in its water.
     /// </summary>
-    public List<(string Species, int MinLevel, int MaxLevel)> WaterEncounters(string name, out int rate)
+    public List<(string Species, int MinLevel, int MaxLevel)> WaterEncounters(string name, out int rate) => WaterEncounters(name, "surf", out rate);
+
+    /// <summary>
+    /// The same for one of the original's tables of water slots by its prefix: <c>surf</c>, or a rod's
+    /// (<c>old_rod</c>, <c>good_rod</c>, <c>super_rod</c>).
+    /// </summary>
+    public List<(string Species, int MinLevel, int MaxLevel)> WaterEncounters(string name, string table, out int rate)
     {
         string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
         var slots = new List<(string, int, int)>();
         rate = 0;
         if (!File.Exists(path)) return slots;
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
-        if (!doc.RootElement.TryGetProperty("surf_rate", out var surfRate) || surfRate.GetInt32() == 0) return slots;
+        if (!doc.RootElement.TryGetProperty(table + "_rate", out var surfRate) || surfRate.GetInt32() == 0) return slots;
         rate = surfRate.GetInt32();
-        foreach (var slot in doc.RootElement.GetProperty("surf_encounters").EnumerateArray())
+        foreach (var slot in doc.RootElement.GetProperty(table + "_encounters").EnumerateArray())
         {
             int a = slot.GetProperty("level_min").GetInt32(), b = slot.GetProperty("level_max").GetInt32();
             slots.Add((slot.GetProperty("species").GetString() ?? "", Math.Min(a, b), Math.Max(a, b)));

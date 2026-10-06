@@ -1,0 +1,87 @@
+{
+  "key": "mt_coronet_1f_south",
+  "index": 207,
+  "name": "Mt. Coronet",
+  "matrix": 9,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "mt_coronet_1f_south",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzor", "level": 18 },
+    { "species": "Geodude", "level": 19 },
+    { "species": "Meditite", "level": 18 },
+    { "species": "Clefairy", "level": 17 },
+    { "species": "Machop", "level": 20 },
+    { "species": "Meditite", "level": 20 },
+    { "species": "Chingling", "level": 17 },
+    { "species": "Nosepass", "level": 18 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Chingling", "level": 19 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Chingling", "level": 19 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Zubat", "level": 20, "maxLevel": 30 },
+    { "species": "Zubat", "level": 20, "maxLevel": 30 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 },
+    { "species": "Golbat", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 20, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 4, "z": 8, "to": "route_207", "toWarp": 0 },
+    { "x": 27, "z": 20, "to": "route_208", "toWarp": 3 },
+    { "x": 25, "z": 3, "to": "mt_coronet_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 16, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 20, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 24, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 25, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "item_protein", "looks": "pokeball", "movement": "none", "x": 13, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_1F_SOUTH_PROTEIN", "item": "Protein", "script": "7046" },
+    { "id": "item_dawn_stone", "looks": "pokeball", "movement": "none", "x": 28, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_1F_SOUTH_DAWN_STONE", "item": "Dawn Stone", "script": "7047" },
+    { "id": "cyrus", "looks": "cyrus", "movement": "look_south", "x": 15, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_CORONET_1F_SOUTH_CYRUS", "script": "0" }
+  ],
+  "signs": [
+    { "x": 13, "z": 18, "type": 2, "script": "8013", "item": "Stardust", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_1F_SOUTH_STARDUST", "range": 2 },
+    { "x": 4, "z": 5, "type": 2, "script": "8271", "item": "Energy Powder", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_1F_SOUTH_ENERGYPOWDER", "range": 2 },
+    { "x": 7, "z": 26, "type": 2, "script": "8272", "item": "Revive", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_1F_SOUTH_REVIVE", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 14, "z": 23, "width": 1, "depth": 1, "script": "1", "variable": "VAR_MT_CORONET_1F_SOUTH_STATE", "value": "0" }
+  ]
+}

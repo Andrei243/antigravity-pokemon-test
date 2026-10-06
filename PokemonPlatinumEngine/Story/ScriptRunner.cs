@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -43,6 +44,8 @@ public sealed class ScriptRunner
     private string lastItem = "";
     private (string Item, int Count)? ownItem;
     private string? ownFlag;
+    private Pokemon? ownPokemon;
+    private string lastUser = "";
 
     public ScriptRunner(ScriptLibrary library, IScriptHost host)
     {
@@ -71,8 +74,11 @@ public sealed class ScriptRunner
     /// <param name="own">The lines <c>sayown</c> says: a person's, a signboard's.</param>
     /// <param name="item">The item <c>find own</c> gives; left out, what the subject holds (an item ball's).</param>
     /// <param name="flag">The flag <c>setflag own</c> sets; left out, the one that hides the subject.</param>
-    public void Start(Script start, NPC? subject = null, IReadOnlyList<string>? own = null, (string Item, int Count)? item = null, string? flag = null)
+    /// <param name="pokemon">The Pokémon of the team the script was started for: the one whose field move was chosen in the party menu.</param>
+    public void Start(Script start, NPC? subject = null, IReadOnlyList<string>? own = null, (string Item, int Count)? item = null, string? flag = null,
+        Pokemon? pokemon = null)
     {
+        ownPokemon = pokemon;
         ownItem = item ?? (subject is { Item: { } held } ? ((string, int)?)(held, Math.Max(1, subject.ItemCount)) : null);
         ownFlag = flag ?? subject?.HiddenBy;
         calls.Clear();
@@ -301,15 +307,35 @@ public sealed class ScriptRunner
             {
                 var foe = Person(i.Name, i) ?? throw Wrong(i, "the player can't be battled");
                 if (foe.TrainerData == null) throw Wrong(i, $"{foe.Name} is no trainer and can't be battled");
+                NPC? second = null;
+                if (i.Other.Length > 0)
+                {
+                    second = Person(i.Other, i) ?? throw Wrong(i, "the player can't be battled");
+                    if (second.TrainerData == null) throw Wrong(i, $"{second.Name} is no trainer and can't be battled");
+                }
+                Trainer? partner = null;
+                if (i.PartnerById)
+                {
+                    var record = TrainerDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no trainer '{i.Partner}'");
+                    partner = new Trainer { Id = record.Id };
+                    TrainerDatabase.Fill(partner, record);
+                }
+                else if (i.Partner.Length > 0)
+                {
+                    var beside = Person(i.Partner, i) ?? throw Wrong(i, "the player can't be their own partner");
+                    partner = beside.TrainerData ?? throw Wrong(i, $"{beside.Name} is no trainer and can't battle beside the player");
+                }
                 bool mayLose = i.Option;
-                host.Battle(foe, mayLose);
+                host.Battle(foe, second, partner, mayLose, i.FirstBattle);
                 afterBusy = () => AfterBattle(mayLose);
                 break;
             }
             case Op.WildBattle:
+            case Op.CatchingLesson:
             {
                 var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
-                host.WildBattle(new Pokemon(species, i.Number));
+                var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
+                host.WildBattle(new Pokemon(species, i.Number), kind, cannotFlee: i.Option);
                 afterBusy = () => AfterBattle(mayLose: false);
                 break;
             }
@@ -353,6 +379,44 @@ public sealed class ScriptRunner
                 host.Camera(i.Camera, i.X, i.Y, i.Seconds);
                 // A shake goes on under whatever comes next; a pan is waited for
                 if (i.Camera != CameraMove.Shake) waiting = i.Seconds;
+                break;
+
+            case Op.UseMove:
+            {
+                // The Pokémon chosen in the party menu, or the first of the team that knows the move (FindPartySlotWithMove)
+                var move = FieldMoveRules.Of(i.Name) ?? throw Wrong(i, $"'{i.Name}' is no field move");
+                var user = ownPokemon != null && ownPokemon.Moves.Any(m => m.Name == i.Name) ? ownPokemon
+                    : FieldMoveRules.Knower(host.Party, move) ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
+                lastUser = user.Nickname;
+                host.Say(null, new[] { $"{user.Nickname} used {i.Name}!" });
+                afterBusy = () => host.UseMove(move, user, Subject);
+                break;
+            }
+            case Op.Surf:
+                Result = host.Surf() ? 1 : 0;
+                break;
+            case Op.Climb:
+                Result = host.Climb() ? 1 : 0;
+                break;
+            case Op.Fly:
+                Result = host.Fly() ? 1 : 0;
+                break;
+            case Op.Teleport:
+                Result = host.Teleport() ? 1 : 0;
+                break;
+            case Op.Escape:
+                Result = host.Escape() ? 1 : 0;
+                break;
+            case Op.Poketch:
+                host.Poketch.Enabled = true;
+                break;
+            case Op.PoketchApp:
+                host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
+                break;
+            case Op.SweetScent:
+                // A wild Pokémon comes out where any live, and its battle is waited for
+                Result = 0;
+                if (host.SweetScent()) afterBusy = () => AfterBattle(mayLose: false);
                 break;
 
             case Op.Music:
@@ -496,6 +560,7 @@ public sealed class ScriptRunner
             Query.Facing => host.FacingOf(null).ToString() == c.Name,
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
+            Query.Poketch => host.Poketch.Enabled,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -515,7 +580,7 @@ public sealed class ScriptRunner
     /// <summary>
     /// Fills in what a line leaves to the moment: <c>{var:NAME}</c>, <c>{lead}</c> (the first Pokémon of the team),
     /// <c>{starter}</c> and <c>{rivalstarter}</c>, <c>{self}</c>, <c>{item}</c> (the last one given or taken),
-    /// <c>{money}</c> and <c>{result}</c>. <c>{player}</c> and <c>{assistant}</c> are left for the host, which
+    /// <c>{user}</c> (the Pokémon the last <c>usemove</c> named), <c>{money}</c> and <c>{result}</c>. <c>{player}</c> and <c>{assistant}</c> are left for the host, which
     /// knows who the player is.
     /// </summary>
     public string Fill(string text) => text.Contains('{') ? Placeholder.Replace(text, match =>
@@ -529,6 +594,7 @@ public sealed class ScriptRunner
             "rivalstarter" => host.Story.RivalStarter ?? "",
             "self" => Subject?.Name ?? "",
             "item" => lastItem,
+            "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),
             _ => match.Value

@@ -1,0 +1,87 @@
+{
+  "key": "route_205_north",
+  "index": 349,
+  "name": "Route 205",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_C_D",
+  "nightMusic": "ROAD_C_N",
+  "encounters": "route_205_north",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Bidoof", "level": 12 },
+    { "species": "Budew", "level": 12 },
+    { "species": "Wurmple", "level": 13 },
+    { "species": "Kricketot", "level": 12 },
+    { "species": "Silcoon", "level": 14 },
+    { "species": "Cascoon", "level": 14 },
+    { "species": "Bidoof", "level": 13 },
+    { "species": "Bidoof", "level": 14 },
+    { "species": "Budew", "level": 13 },
+    { "species": "Budew", "level": 14 },
+    { "species": "Beautifly", "level": 15 },
+    { "species": "Dustox", "level": 15 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 259, "z": 525, "to": "eterna_forest", "toWarp": 3 },
+    { "x": 259, "z": 524, "to": "eterna_forest", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "fisherman_andrew", "looks": "fisherman", "movement": "look_east", "x": 274, "z": 531, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 7, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_ANDREW" },
+    { "id": "fisherman_joseph", "looks": "fisherman", "movement": "look_south", "x": 270, "z": 532, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 7, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_JOSEPH" },
+    { "id": "fisherman_zachary", "looks": "fisherman", "movement": "look_south", "x": 277, "z": 535, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 7, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_ZACHARY" },
+    { "id": "arrow_signpost_eterna_forest", "looks": "arrow_signpost", "movement": "none", "x": 262, "z": 523, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "arrow_signpost_eterna_city", "looks": "arrow_signpost", "movement": "none", "x": 281, "z": 532, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 267, "z": 532, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 7, "script": "1" },
+    { "id": "item_guard_spec", "looks": "pokeball", "movement": "none", "x": 274, "z": 541, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_205_NORTH_GUARD_SPEC", "item": "Guard Spec.", "script": "7023" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 277, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 278, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 279, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 280, "z": 519, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 293, "z": 530, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ETERNA_CITY", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 285, "z": 520, "type": 2, "script": "8150", "item": "Super Potion", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_205_NORTH_SUPER_POTION", "range": 2 }
+  ],
+  "triggers": []
+}

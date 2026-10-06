@@ -1,0 +1,44 @@
+{
+  "key": "solaceon_ruins_room_2",
+  "index": 229,
+  "name": "Solaceon Ruins",
+  "matrix": 39,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "encounters": "solaceon_ruins_room_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Unown", "level": 20 },
+    { "species": "Unown", "level": 21 },
+    { "species": "Unown", "level": 22 },
+    { "species": "Unown", "level": 23 },
+    { "species": "Unown", "level": 24 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 26 },
+    { "species": "Unown", "level": 27 },
+    { "species": "Unown", "level": 28 },
+    { "species": "Unown", "level": 29 },
+    { "species": "Unown", "level": 30 },
+    { "species": "Unown", "level": 30 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 4, "z": 3, "to": "solaceon_ruins_room_1", "toWarp": 1 },
+    { "x": 4, "z": 10, "to": "solaceon_ruins_room_3", "toWarp": 0 },
+    { "x": 6, "z": 3, "to": "solaceon_ruins_room_2_northeast_dead_end", "toWarp": 0 },
+    { "x": 6, "z": 10, "to": "solaceon_ruins_room_2_southeast_dead_end", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_north_south_and_east", "x": 4, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

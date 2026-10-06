@@ -1,0 +1,33 @@
+{
+  "key": "eterna_forest_outside",
+  "index": 202,
+  "name": "Eterna Forest",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_C_D",
+  "nightMusic": "ROAD_C_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 231, "z": 554, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 230, "z": 554, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 232, "z": 554, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 233, "z": 554, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "cut_tree_1", "looks": "cut_tree", "movement": "none", "x": 246, "z": 540, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10000" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "none", "x": 247, "z": 540, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10000" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "none", "x": 216, "z": 566, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10000" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "none", "x": 216, "z": 567, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10000" },
+    { "id": "item_tm82", "looks": "pokeball", "movement": "none", "x": 243, "z": 569, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ETERNA_FOREST_OUTSIDE_TM82", "item": "TM82", "script": "7028" },
+    { "id": "item_silver_power", "looks": "pokeball", "movement": "none", "x": 228, "z": 571, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ETERNA_FOREST_OUTSIDE_SILVER_POWDER", "item": "Silver Powder", "script": "7029" },
+    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "wander_around", "x": 232, "z": 560, "facing": 2, "rangeX": 2, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

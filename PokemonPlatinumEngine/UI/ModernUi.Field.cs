@@ -118,4 +118,42 @@ internal static partial class ModernUi
         UiShapes.Shape(new Rectangle(r.X + 26, r.Y + 16, 22, r.Height - 32), 11, Lighter(color, 0.15f), Darker(color, 0.1f), skew: -0.2f);
         UiFonts.DrawCentered(name, r.X + 76, r.Y + r.Height / 2f, 44, Ink, UiWeight.Black);
     }
+
+    /// <summary>
+    /// A field move's cut-in (style guide, "A field move's cut-in"): a dark band across the screen edged with the
+    /// Selection colour, the Pokémon's sprite running through it and the move's name on a slanted plate beside it.
+    /// </summary>
+    public static void DrawCutIn(int sw, int sh, Texture2D sprite, string move, float band, float slide, float label)
+    {
+        if (band <= 0f) return;
+        const float full = 300f, edge = 4f, size = 256f;
+        float middle = sh * 0.44f, half = full / 2f * band;
+        var dark = new Color(36, 44, 68, 236);
+        Raylib.DrawRectangleRec(new Rectangle(0, middle - half, sw, half * 2f), dark);
+        if (band >= 0.5f)
+        {
+            Raylib.DrawRectangleRec(new Rectangle(0, middle - half, sw, edge), Selection);
+            Raylib.DrawRectangleRec(new Rectangle(0, middle + half - edge, sw, edge), Selection);
+        }
+
+        // The Pokémon holds a little left of the middle, and comes from beyond the right edge and leaves past the left
+        float hold = sw * 0.42f - size / 2f;
+        float x = slide >= 0f ? hold + slide * (sw - hold + 40f) : hold + slide * (hold + size + 40f);
+        float top = middle - size / 2f - 8f;
+        // Only what is inside the band shows: the sprite is cut to it, top and bottom
+        float y0 = Math.Max(top, middle - half), y1 = Math.Min(top + size, middle + half);
+        if (y1 > y0)
+        {
+            float texel = sprite.Height / size;
+            var source = new Rectangle(0, (y0 - top) * texel, sprite.Width, (y1 - y0) * texel);
+            Raylib.DrawTexturePro(sprite, source, new Rectangle(MathF.Round(x), y0, size, y1 - y0), Vector2.Zero, 0f, Color.White);
+        }
+
+        if (label <= 0f) return;
+        float tw = UiFonts.Measure(move, 52, UiWeight.Black);
+        var plate = new Rectangle(sw * 0.42f + size / 2f + 24f + (1f - label) * 60f, middle - 44f, tw + 96f, 88f);
+        var fill = new Color(255, 255, 255, (int)(255 * label));
+        UiShapes.Shape(plate, 18, fill, new Color(234, 240, 248, (int)(255 * label)), new Color(52, 64, 96, (int)(255 * label)), 3, skew: -0.2f);
+        UiFonts.DrawCentered(move, plate.X + 48f, plate.Y + plate.Height / 2f, 52, Ink with { A = (byte)(255 * label) }, UiWeight.Black);
+    }
 }

@@ -38,6 +38,17 @@ public sealed class MapArea
     public string BattleBackground { get; set; } = "";
     public List<string> EvolutionSites { get; } = new();
 
+    /// <summary>What the original's header calls the place: <c>Town</c>, <c>Outdoors</c>, <c>Cave</c>, <c>Indoors</c>, <c>PokemonCenter</c> or <c>Underground</c>.</summary>
+    public string Kind { get; init; } = "";
+
+    public bool IsTown => Kind == "Town";
+    public bool IsCave => Kind == "Cave";
+
+    /// <summary>What the header lets the player do here (plan 02 · S2): ride the Bicycle, use an Escape Rope (and Dig), fly away (and Teleport).</summary>
+    public bool BikeAllowed { get; init; }
+    public bool EscapeRopeAllowed { get; init; }
+    public bool FlyAllowed { get; init; }
+
     /// <summary>The wild Pokémon of the area's grass and caves, and Platinum's rate for them (see <see cref="EncounterSteps"/>).</summary>
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public int LandRate { get; set; }
@@ -45,6 +56,10 @@ public sealed class MapArea
     /// <summary>The wild Pokémon met surfing on the area's water, and the rate for them.</summary>
     public List<WildEncounterEntry> WaterEncounters { get; } = new();
     public int WaterRate { get; set; }
+
+    /// <summary>The wild Pokémon hooked with each rod (by <see cref="FishingRod"/>), and each rod's rate (plan 02 · S2).</summary>
+    public List<WildEncounterEntry>[] RodEncounters { get; } = { new(), new(), new() };
+    public int[] RodRates { get; } = new int[3];
 }
 
 public class Map
@@ -93,6 +108,18 @@ public class Map
     /// with Flash (the original's <c>DarkFlash</c> weather, which only Wayward Cave has).
     /// </summary>
     public bool IsDark { get; set; }
+
+    /// <summary>
+    /// Whether Flash has lit this dark place (plan 02 · S2): the game keeps it from <see cref="FieldMoveRules.FlashFlag"/>
+    /// for the map the player is on. A dark map that isn't lit is covered (<see cref="Darkness.Covers"/>).
+    /// </summary>
+    public bool Lit { get; set; }
+
+    /// <summary>
+    /// Whether Defog has blown the fog away here: fog then reads as clear weather (<see cref="WeatherAt"/>), as the
+    /// original sets the field's weather to clear. The game keeps it from <see cref="FieldMoveRules.DefogFlag"/>.
+    /// </summary>
+    public bool FogLifted { get; set; }
 
     // ------------------------------------------------------------------ areas of a large map
 
@@ -169,6 +196,7 @@ public class Map
     {
         if (IsIndoors) return FieldWeather.Clear;
         var weather = AreaAt(x, y)?.Weather ?? Weather;
+        if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;
         return IsCave && weather != FieldWeather.Fog ? FieldWeather.Clear : weather;
     }
 
@@ -458,6 +486,43 @@ public class Map
         overheadLayer[y * Width + x] = type;
     }
 
+    // Where each obstacle stood when the map was made, to put a pushed boulder back
+    private readonly Dictionary<NPC, (int X, int Y)> obstacleHomes = new();
+
+    /// <summary>Puts an obstacle that a field move clears on a tile: an object of the map, like an item's ball (plan 02 · S2).</summary>
+    public NPC AddObstacle(PropType obstacle, int x, int y)
+    {
+        var thing = new NPC
+        {
+            Name = obstacle switch { PropType.CutTree => "Tree", PropType.CrackedRock => "Rock", _ => "Boulder" },
+            NpcType = NPC.TypeOf(obstacle),
+            GridX = x,
+            GridY = y
+        };
+        Add(thing);
+        return thing;
+    }
+
+    /// <summary>Someone or something of the map; an obstacle has the tile it stands on kept, to be put back there (<see cref="ResetObstacles"/>).</summary>
+    public void Add(NPC npc)
+    {
+        NPCs.Add(npc);
+        if (npc.IsObstacle) obstacleHomes[npc] = (npc.GridX, npc.GridY);
+    }
+
+    /// <summary>
+    /// Puts every boulder that was pushed back where it stood, as the original's objects are when their map is
+    /// loaded again: the game does it when the player comes to another place.
+    /// </summary>
+    public void ResetObstacles()
+    {
+        foreach (var (thing, (x, y)) in obstacleHomes)
+        {
+            (thing.GridX, thing.GridY) = (x, y);
+            thing.StepOffsetX = thing.StepOffsetY = 0f;
+        }
+    }
+
     /// <summary>Places furniture or decoration; furniture makes the tiles it covers solid.</summary>
     public Prop AddProp(PropType type, int x, int y, int width = 1, int depth = 1)
     {
@@ -472,7 +537,8 @@ public class Map
         return prop;
     }
 
-    public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y));
+    /// <summary>A counter or a table one talks across: a room's own, or a tile of the world that the original marks as one (Amity Square's gates).</summary>
+    public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y)) || (behaviours != null && BehaviourAt(x, y) == TileBehavior.Counter);
 
     public void SetSolid(int x, int y, bool isSolid)
     {
@@ -526,6 +592,13 @@ public class Map
         return NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y);
     }
 
+    /// <summary>
+    /// Whoever stands on a tile at about a height: someone on a bridge's deck is not in the way of anyone on the
+    /// ground under it, nor the other way round.
+    /// </summary>
+    public NPC? NpcIn(int x, int y, float height) =>
+        NPCs.FirstOrDefault(n => n.GridX == x && n.GridY == y && MathF.Abs((n.Level ?? HeightAt(x, y)) - height) < FieldMovement.StepLimit);
+
     /// <summary>Platinum's rate for a small map's own wild Pokémon (see <see cref="EncounterSteps"/>).</summary>
     public int EncounterRate { get; set; } = 30;
 
@@ -537,6 +610,34 @@ public class Map
     {
         if (AreaAt(x, y) is { } area) return water ? (area.WaterEncounters, area.WaterRate) : (area.WildEncounters, area.LandRate);
         return water ? (Array.Empty<WildEncounterEntry>(), 0) : (WildEncounters, EncounterRate);
+    }
+
+    /// <summary>
+    /// What bites a rod cast into the water at a tile (plan 02 · S2): the rod's rate decides whether anything does
+    /// (<c>WildEncounters_TryFishingEncounter</c>), then one of its five slots by weight, as for the water, with the
+    /// lead's ability having its say. Null when nothing will bite; a small map's water has nothing in it.
+    /// </summary>
+    public WildEncounterEntry? Fish(int x, int y, FishingRod rod, WildLead? lead = null)
+    {
+        if (AreaAt(x, y) is not { } area) return null;
+        var table = area.RodEncounters[(int)rod];
+        int rate = area.RodRates[(int)rod];
+        if (table.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
+        return WildEncounterRules.Meet(table, water: true, lead, rng);
+    }
+
+    /// <summary>Whether the Bicycle may be ridden at a tile: as its area's header says, and outdoors on a small map, never in a room.</summary>
+    public bool BikeAllowedAt(int x, int y) => AreaAt(x, y)?.BikeAllowed ?? !IsIndoors;
+
+    /// <summary>
+    /// A wild Pokémon drawn out at once from the place's table, with no odds to meet first: Sweet Scent (plan 02 ·
+    /// S2, <c>WildEncounters_TrySweetScentEncounter</c>). Null where nothing lives, or where the lead's ability
+    /// scares it off.
+    /// </summary>
+    public WildEncounterEntry? DrawOutWild(int x, int y, bool water = false, WildLead? lead = null)
+    {
+        var (table, _) = WildAt(x, y, water);
+        return table.Count == 0 ? null : WildEncounterRules.Meet(table, water, lead, rng);
     }
 
     /// <summary>

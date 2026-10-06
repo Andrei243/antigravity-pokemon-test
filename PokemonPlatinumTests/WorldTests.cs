@@ -54,19 +54,29 @@ public class WorldTests
     private static bool CanStandBeside(HashSet<(int X, int Y)> reached, int x, int y) =>
         Steps.Any(s => reached.Contains((x + s.X, y + s.Y)));
 
+    /// <summary>Beside someone, or across a counter from them.</summary>
+    private static bool CanTalkTo(Map map, HashSet<(int X, int Y)> reached, int x, int y) =>
+        CanStandBeside(reached, x, y) || Steps.Any(s => map.IsCounter(x + s.X, y + s.Y) && reached.Contains((x + 2 * s.X, y + 2 * s.Y)));
+
     // ------------------------------------------------------------------ the files
 
     [Fact]
     public void TheIndexSaysWhatIsBuilt()
     {
-        Assert.Equal(new[] { "Sinnoh", "LakeVerity", "OreburghGate1F", "OreburghGateB1F", "OreburghMineB1F", "OreburghMineB2F", "RavagedPath", "FloaromaMeadow" },
-            Sinnoh.Index.Maps.Select(m => m.Name));
+        Assert.Equal(new[] { "Sinnoh", "LakeVerity", "OreburghGate1F", "OreburghGateB1F", "OreburghMineB1F", "OreburghMineB2F", "RavagedPath", "FloaromaMeadow",
+                "EternaForest", "WaywardCave1F", "WaywardCaveB1F", "MtCoronet1FSouth", "AmitySquare" },
+            Sinnoh.Index.Maps.Select(m => m.Name).Take(13));
+        // The Solaceon Ruins' rooms, some of which share one of the original's matrices
+        Assert.Equal(18, Sinnoh.Index.Maps.Count(m => m.Name.StartsWith("SolaceonRuins", StringComparison.Ordinal)));
+        Assert.Equal("SolaceonRuinsRoom4SoutheastDeadEnd", Sinnoh.MapOf("solaceon_ruins_room_4_southeast_dead_end")!.Name);
+        Assert.Equal("SolaceonRuinsRoom1SoutheastDeadEnd", Sinnoh.MapOf("solaceon_ruins_room_1_southeast_dead_end")!.Name);
         Assert.Equal(0, Sinnoh.Index.Maps[0].Matrix);
         Assert.Null(Sinnoh.Index.Maps[0].Area);   // the overworld's matrix names the area of each chunk itself
         Assert.Equal(Sinnoh.Index.Areas.Count, Sinnoh.Index.Areas.Distinct(StringComparer.OrdinalIgnoreCase).Count());
         Assert.True(Sinnoh.IsOpen("ROUTE_201"));
         Assert.True(Sinnoh.IsOpen("jubilife_city"));
-        Assert.False(Sinnoh.IsOpen("eterna_city"));
+        Assert.True(Sinnoh.IsOpen("eterna_city"));
+        Assert.False(Sinnoh.IsOpen("veilstone_city"));
 
         foreach (string key in Sinnoh.Index.Areas)
         {
@@ -130,6 +140,9 @@ public class WorldTests
                 Assert.True(ids.Contains(person), $"{key}: the overlay gives lines to '{person}', and nobody in the area is called that");
             foreach (var (id, person) in overlay.People ?? new())
                 Assert.True(person.Dialog?.Count > 0 || person.Trainer != null || person.IsStarterBriefcase == true || person.Script != null, $"{key}: {id} has nothing to say");
+
+            foreach (string held in overlay.HeldBack ?? new())
+                Assert.True(ids.Contains(held), $"{key}: the overlay holds back '{held}', and nothing in the area is called that");
 
             foreach (string sign in overlay.Signs?.Keys ?? Enumerable.Empty<string>())
             {
@@ -378,10 +391,12 @@ public class WorldTests
                 string who = $"{map.Name}: {npc.Name} at ({npc.GridX},{npc.GridY})";
                 Assert.True(map.AreaAt(npc.GridX, npc.GridY)?.Open, $"{who} stands outside the open areas");
                 Assert.False(map.IsSolid(npc.GridX, npc.GridY), $"{who} stands in something solid");
-                Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null, $"{who} stands on a warp");
+                // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's)
+                Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit,
+                    $"{who} stands on a warp");
                 Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY));
-                Assert.True(CanStandBeside(reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
-                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsItemBall, $"{who} has nothing to say");
+                Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
+                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing, $"{who} has nothing to say");
             }
 
             // Signs and mailboxes can be read from a tile beside them

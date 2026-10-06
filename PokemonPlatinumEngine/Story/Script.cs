@@ -17,9 +17,13 @@ public enum Op
     // What the player is given, finds and has taken back
     Give, Find, AddItem, Take, GivePokemon, GiveBadge, GiveMoney, TakeMoney, Heal,
     // Battles
-    Battle, WildBattle,
+    Battle, WildBattle, CatchingLesson,
     // People and the field
     Face, Walk, Move, WaitMoves, Emote, Show, Hide, Place, Warp, Fade, Wait, Camera,
+    // Field moves (plan 02 · S2)
+    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent,
+    // The Pokétch (plan 02 · S2)
+    Poketch, PoketchApp,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
@@ -32,7 +36,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>
@@ -74,8 +78,18 @@ public sealed class Instruction
     /// <summary>Who or what the line is about: a flag, a variable, a person, an item, a species, a label, a script, a map, a song.</summary>
     public string Name { get; init; } = "";
 
-    /// <summary>A second name: who a person turns to face.</summary>
+    /// <summary>A second name: who a person turns to face, the second trainer of a battle against two.</summary>
     public string Other { get; init; } = "";
+
+    /// <summary>
+    /// Who battles beside the player (plan 06 · R9): a person of the map, or with <see cref="PartnerById"/> a trainer
+    /// of Platinum's data by its id.
+    /// </summary>
+    public string Partner { get; init; } = "";
+    public bool PartnerById { get; init; }
+
+    /// <summary>A battle that is the game's first (the rival's on Route 201): no critical hits.</summary>
+    public bool FirstBattle { get; init; }
 
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }

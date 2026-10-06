@@ -22,11 +22,11 @@
     { "x": 167, "z": 854, "to": "sandgem_town_house", "toWarp": 0 }
   ],
   "objects": [
-    { "id": "youngster", "looks": "youngster", "movement": "wander_around", "x": 187, "z": 855, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "4" },
-    { "id": "pokemon_breeder_m", "looks": "pokemon_breeder_m", "movement": "look_around", "x": 171, "z": 854, "facing": 1, "rangeX": 2, "rangeZ": 0, "script": "5" },
-    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "look_south_and_west", "x": 183, "z": 852, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "6" },
-    { "id": "rival", "looks": "barry", "movement": "look_south", "x": 168, "z": 842, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_RIVAL", "script": "0" },
-    { "id": "sandgem_counterpart", "looks": "var_0", "movement": "look_west", "x": 168, "z": 845, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_COUNTERPART", "script": "10300" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_around", "x": 187, "z": 855, "facing": 2, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "4" },
+    { "id": "pokemon_breeder_m", "looks": "pokemon_breeder_m", "movement": "look_around", "x": 171, "z": 854, "facing": 1, "rangeX": 2, "rangeZ": 0, "y": 1, "script": "5" },
+    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "look_south_and_west", "x": 183, "z": 852, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "script": "6" },
+    { "id": "rival", "looks": "barry", "movement": "look_south", "x": 168, "z": 842, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_RIVAL", "script": "0" },
+    { "id": "sandgem_counterpart", "looks": "var_0", "movement": "look_west", "x": 168, "z": 845, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_HIDE_SANDGEM_TOWN_COUNTERPART", "script": "10300" },
     { "id": "signboard_pokemon_research_lab", "looks": "signboard", "movement": "none", "x": 165, "z": 843, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "9" },
     { "id": "signboard_counterpart_house", "looks": "signboard", "movement": "none", "x": 174, "z": 854, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "10" },
     { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 182, "z": 854, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "8" },

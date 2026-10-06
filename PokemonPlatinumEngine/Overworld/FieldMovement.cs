@@ -30,7 +30,7 @@ public enum FieldMoves
     Surf = 1,
     Waterfall = 2,
     RockClimb = 4,
-    /// <summary>Lights a dark cave (<see cref="Darkness"/>).</summary>
+    /// <summary>Knows Flash, which lights a dark cave once it is used (<see cref="Darkness"/>, <see cref="FieldMoveRules"/>).</summary>
     Flash = 8
 }
 
@@ -45,7 +45,9 @@ public enum StepKind
     /// <summary>From the water onto the shore: one tile on, and on foot again.</summary>
     Land,
     /// <summary>Up or down a waterfall or a rock face, to the first tile past it.</summary>
-    Climb
+    Climb,
+    /// <summary>Off a Bicycle's ramp, through the air to the tile it lands on.</summary>
+    Jump
 }
 
 /// <summary>Why a step was refused, for what the game does about it (a bump, an offer to surf).</summary>
@@ -73,12 +75,19 @@ public enum Obstacle
     /// <summary>A plank only a Bicycle crosses.</summary>
     BicyclesOnly,
     /// <summary>Ground a Bicycle can't be ridden on: snow, mud, grass taller than the rider.</summary>
-    NoBicycles
+    NoBicycles,
+    /// <summary>A Bicycle's ramp: a wall on foot, from the side and from its far end, or with nowhere to land.</summary>
+    Ramp
 }
 
-/// <summary>Whoever is taking a step: how they travel, the height they stand at, and what they can do.</summary>
+/// <summary>
+/// Whoever is taking a step: how they travel, the height they stand at, and what they can do. <see cref="Climbing"/>
+/// is a climb they chose to make, by saying yes to Waterfall or Rock Climb (plan 02 · S2): walking into a rock face
+/// or up a waterfall is a bump, as in the original.
+/// </summary>
 public readonly record struct Walker(
-    TravelMode Mode = TravelMode.OnFoot, float Height = 0f, bool Running = false, bool FastGear = false, FieldMoves Moves = FieldMoves.None);
+    TravelMode Mode = TravelMode.OnFoot, float Height = 0f, bool Running = false, bool FastGear = false, FieldMoves Moves = FieldMoves.None,
+    bool Climbing = false);
 
 /// <summary>What a step comes to: where it ends, at what height, how fast, and how the walker travels afterwards.</summary>
 public readonly record struct FieldStep(StepKind Kind, int X, int Y, float Height, Pace Pace, TravelMode Mode, Obstacle Obstacle)
@@ -96,6 +105,9 @@ public static class FieldMovement
 {
     /// <summary>Platinum's limit: ground this many tiles or more above or below can't be stepped onto.</summary>
     public const float StepLimit = 1.25f;
+
+    /// <summary>How long a boulder takes to be pushed a tile with Strength: the original's slow walk, 16 frames at 30 a second.</summary>
+    public const float BoulderPushSeconds = 16f / 30f;
 
     public static (int X, int Y) Delta(Direction dir) => dir switch
     {
@@ -141,6 +153,14 @@ public static class FieldMovement
     };
 
     /// <summary>A plank for Bicycles, and whether it runs north to south; null for anything else.</summary>
+    /// <summary>The way a Bicycle's ramp is jumped, or null for any other tile.</summary>
+    public static Direction? RampDirection(TileBehavior behaviour) => behaviour switch
+    {
+        TileBehavior.BikeRampEast => Direction.Right,
+        TileBehavior.BikeRampWest => Direction.Left,
+        _ => null
+    };
+
     public static bool? BikePlankRunsNorthSouth(TileBehavior behaviour) => behaviour switch
     {
         TileBehavior.BikeBridgeNorthSouth or TileBehavior.BikeBridgeNorthSouthOverSand => true,
@@ -180,30 +200,44 @@ public static class FieldMovement
             return new FieldStep(StepKind.Hop, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
         }
 
-        // A waterfall is taken north or south only: up it with Waterfall, down it by letting go
+        // A waterfall is taken north or south only: up it once the player has said yes to Waterfall, down it with a
+        // Pokémon that knows the move (ov5_021E04A8: the way down needs the move and no badge, the way up the question)
         if (there == TileBehavior.Waterfall)
         {
             if (walker.Mode != TravelMode.Surfing) return No(Obstacle.Water);
             if (dir is Direction.Left or Direction.Right) return No(Obstacle.Waterfall);
-            if (dir == Direction.Up && !walker.Moves.HasFlag(FieldMoves.Waterfall)) return No(Obstacle.Waterfall);
+            if (!walker.Moves.HasFlag(FieldMoves.Waterfall)) return No(Obstacle.Waterfall);
+            if (dir == Direction.Up && !walker.Climbing) return No(Obstacle.Waterfall);
             var (tx, ty) = PastRun(map, nx, ny, dx, dy, b => b == TileBehavior.Waterfall);
             if (!map.InBounds(tx, ty) || map.IsSolid(tx, ty) || !map.IsDeepWater(tx, ty)) return No(Obstacle.Waterfall);
             return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Fast, TravelMode.Surfing, Obstacle.None);
         }
 
-        // A rock face is climbed along its grain with Rock Climb, to the ground past it
+        // A rock face is climbed along its grain with Rock Climb, once the player has said yes to it, to the ground past it
         if (there is TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest)
         {
-            if (!IsRockFace(there, dir) || walker.Mode != TravelMode.OnFoot || !walker.Moves.HasFlag(FieldMoves.RockClimb)) return No(Obstacle.RockFace);
+            if (!IsRockFace(there, dir) || walker.Mode != TravelMode.OnFoot || !walker.Moves.HasFlag(FieldMoves.RockClimb) || !walker.Climbing)
+                return No(Obstacle.RockFace);
             var (tx, ty) = PastRun(map, nx, ny, dx, dy, b => b == there);
             if (!map.IsWalkable(tx, ty)) return No(Obstacle.RockFace);
             return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Walk, TravelMode.OnFoot, Obstacle.None);
         }
 
+        // A ramp is jumped the way it faces on a Bicycle, from the tile before it: onto it and three tiles on in top
+        // gear, one in low (PlayerAvatar_TileMove_BikeRampEast and West: JUMP_FARTHER, JUMP_NEAR_SLOW)
+        if (RampDirection(there) is { } launch)
+        {
+            if (walker.Mode != TravelMode.Cycling || dir != launch) return No(Obstacle.Ramp);
+            int reach = walker.FastGear ? 3 : 1;
+            int lx = nx + dx * reach, ly = ny + dy * reach;
+            if (!map.IsWalkable(lx, ly) || map.NpcIn(lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height) != null) return No(Obstacle.Ramp);
+            return new FieldStep(StepKind.Jump, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, PaceOn(here, walker), walker.Mode, Obstacle.None);
+        }
+
         if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
-        if (map.GetNpcAt(nx, ny) != null) return No(Obstacle.Person);
 
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
+        if (map.NpcIn(nx, ny, height) != null) return No(Obstacle.Person);
         if (MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
         bool water = TileBehaviors.IsSurfable(there) && !onDeck;
 
@@ -299,6 +333,19 @@ public static class FieldMovement
         if (ClosedToward(map.BehaviourAt(x, y), dir) || ClosedToward(there, Opposite(dir))) return false;
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
         return !onDeck && MathF.Abs(height - walker.Height) < StepLimit;
+    }
+
+    /// <summary>
+    /// Whether a boulder can be pushed a tile on with Strength: the tile beyond is open ground it could be walked
+    /// onto at its own height, with nobody there (the original asks the boulder's own step for a collision,
+    /// <c>sub_02063EBC</c>): no water, no ledge, no cliff, nothing solid.
+    /// </summary>
+    public static bool CanPush(Map map, NPC boulder, Direction dir)
+    {
+        var (dx, dy) = Delta(dir);
+        var step = Step(map, boulder.GridX, boulder.GridY, dir, new Walker(TravelMode.OnFoot, map.HeightAt(boulder.GridX, boulder.GridY)));
+        return step.Kind == StepKind.Walk && step.X == boulder.GridX + dx && step.Y == boulder.GridY + dy
+            && map.GetWarpAt(step.X, step.Y) == null;
     }
 
     /// <summary>What a party can do in the field: the moves its Pokémon know that open the way.</summary>

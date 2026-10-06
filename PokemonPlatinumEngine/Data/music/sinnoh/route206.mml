@@ -1,0 +1,51 @@
+# Routes 206, 207 and 208 (the original's ROAD_D role: the Cycling Road's shade under the bridge, the rocky climb
+# to Mt. Coronet, the farmland road to Hearthome City): a sturdy, upbeat mountain-road walk in C major, the brass
+# section striding up over a climbing piano, a lydian lift for the open sky and the horn joining for the last
+# stretch of the climb. Original composition for this game.
+title Route 206
+tempo 138
+meter 4/4
+reverb 0.26
+nighttempo 0.93
+
+track lead brass night=horn vol=0.8 pan=0 rev=0.26
+  L o4 g4 o5 c4. d8 e4 | o5 a4. g8 f+4 d4 | o5 e4. d8 c4 o4 g4 | o4 a4 b8 o5 c8 d2 |
+  o5 c4 e4 a4. g8 | o5 f4. e8 d4 c4 | o5 d4. e8 f4 g4 | o5 e2. d8 e8 |
+  o5 f4. e8 f4 a4 | o5 g4. f8 g4 b4 | o5 a4. g8 a4 o6 c4 | o5 b4 a4 g4 e4 |
+  o5 c4 f4 a4 o6 c4 | o6 d4. c8 o5 a4 b4 | o5 a4. g8 f4 d4 | o4 b4. o5 c8 d4 o4 f4 |
+
+track horn horn night=clarinet vol=0.38 pan=-0.3 rev=0.3
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 c2. f4 | o5 d2. g4 | o5 e2. a4 | o5 e2 o4 b2 |
+  o4 a2 o5 c2 | o5 f+2 d2 | o5 f2 c2 | o4 g1 |
+
+track piano piano night=epiano vol=0.36 pan=0.3 rev=0.22
+  L o3 c8 g8 >c8 e8 g8 e8 c8 <g8 | o3 c8 a8 >d8 a8 f+8 a8 d8 <a8 | o3 c8 g8 >c8 e8 g8 e8 c8 <g8 | o3 g8 >d8 g8 d8 b8 g8 d8 <b8 |
+  o3 a8 >e8 a8 >c8 e8 c8 <a8 e8 | o3 f8 >c8 f8 a8 >c8 <a8 f8 c8 | o3 d8 a8 >d8 f8 <g8 b8 >d8 f8 | o3 c8 g8 >c8 e8 g8 e8 c8 <g8 |
+  o3 f8 >c8 f8 a8 >c8 <a8 f8 c8 | o3 g8 >d8 g8 d8 b8 g8 d8 <b8 | o3 a8 >e8 a8 >c8 e8 c8 <a8 e8 | o3 e8 b8 >e8 g8 b8 g8 e8 <b8 |
+  o3 f8 >c8 f8 a8 >c8 <a8 f8 c8 | o3 d8 a8 >d8 a8 f+8 a8 d8 <a8 | o3 d8 a8 >c8 f8 a8 f8 c8 <a8 | o3 g8 >d8 f8 g8 b8 g8 f8 d8 |
+
+track bells glockenspiel night=celesta vol=0.2 pan=0.4 rev=0.4
+  L r1 | r1 | r1 | r2 o4 b8 o5 d8 g4 |
+  r1 | r1 | r1 | r2 o4 g8 o5 c8 e4 |
+  r1 | r1 | r1 | r2 o4 g8 b8 o5 e4 |
+  r1 | r1 | r1 | r2 o4 g8 b8 o5 d4 |
+
+track pad strings night=pad vol=0.3 pan=-0.15 rev=0.4
+  L o4 (c e g)1 | o4 (d f+ a)1 | o4 (c e g)1 | o3 (b >d g)1 |
+  o4 (c e a)1 | o4 (c f a)1 | o4 (d f a)2 o3 (b >d f)2 | o4 (c e g)1 |
+  o4 (c f a)1 | o3 (b >d g)1 | o4 (c e a)1 | o3 (b >e g)1 |
+  o4 (c f a)1 | o4 (d f+ a)1 | o4 (d f a)1 | o3 (b >d f)1 |
+
+track bass bass vol=0.68 rev=0.08
+  L o3 c4. c8 g4 e4 | o3 c4. c8 a4 d4 | o3 c4. c8 g4 e4 | o3 g4. g8 d4 b4 |
+  o3 a4. a8 e4 c4 | o3 f4. f8 c4 a4 | o3 d4. a8 g4 d4 | o3 c4. c8 g4 e4 |
+  o3 f4. f8 c4 a4 | o3 g4. g8 d4 b4 | o3 a4. a8 e4 c4 | o3 e4. e8 b4 g4 |
+  o3 f4. f8 a4 c4 | o3 d4. d8 a4 f+4 | o3 d4. d8 a4 f4 | o3 g4. g8 d4 o2 b4 |
+
+track drums kit vol=0.5 rev=0.12
+  v92 L [ (b c)4 s8 b8 b4 s4 | [ b4 s8 b8 b4 s4 | ]6 b4 s8 b8 t16 t16 m16 m16 f8 f8 | ]2
+
+track hats kit vol=0.4 pan=0.12 rev=0.1
+  L [ v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 | v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v50 o8 | ]8

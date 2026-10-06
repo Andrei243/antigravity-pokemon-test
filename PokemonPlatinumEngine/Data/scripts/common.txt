@@ -98,3 +98,196 @@ label Beaten
   trainerline after
   if result == 0 sayown
   end
+
+
+# ---- Field moves (plan 02 · S2): what the obstacles and the water ask, after the original's
+# scripts_field_moves.s, in our own words. The obstacle scripts run when the player faces one and presses the
+# button; the Use scripts run when a field move is chosen from the party menu, which has checked the move and its
+# badge already. An obstacle's own flag is local to its area: what is cleared is back once the player leaves. An
+# obstacle asks in the game's own voice, with no name on the box.
+
+# A thin tree in the way. Cut clears it, with the Forest Badge.
+script CutTree
+  speaker none
+  if not knows "Cut" goto Cannot
+  if not badge forest goto Cannot
+  ask "This thin tree could be cut down. Use Cut?"
+  if no end
+  usemove "Cut"
+  setflag own
+  end
+label Cannot
+  text "A thin tree stands in the way. A sharp enough move might clear it."
+  end
+
+script UseCut
+  usemove "Cut"
+  setflag own
+  end
+
+
+# A rock full of cracks. Rock Smash breaks it, with the Coal Badge.
+script Rock
+  speaker none
+  if not knows "Rock Smash" goto Cannot
+  if not badge coal goto Cannot
+  ask "The rock is riddled with cracks. Use Rock Smash?"
+  if no end
+  usemove "Rock Smash"
+  setflag own
+  end
+label Cannot
+  text "The rock is riddled with cracks. A hard enough blow might break it apart."
+  end
+
+script UseRockSmash
+  usemove "Rock Smash"
+  setflag own
+  end
+
+
+# A heavy boulder. Strength, with the Mine Badge, lets every boulder here be pushed until the player leaves.
+script Boulder
+  speaker none
+  if flag FLAG_STRENGTH_ACTIVE goto Ready
+  if not knows "Strength" goto Cannot
+  if not badge mine goto Cannot
+  ask "A heavy boulder. Use Strength to shift it?"
+  if no end
+  call StrengthOn
+  end
+label Ready
+  text "With Strength in use, the boulders here can be pushed."
+  end
+label Cannot
+  text "A heavy boulder. Only a Pokémon of great power could shift it."
+  end
+
+script UseStrength
+  if flag FLAG_STRENGTH_ACTIVE goto Ready
+  call StrengthOn
+  end
+label Ready
+  text "With Strength in use, the boulders here can be pushed."
+  end
+
+script StrengthOn
+  usemove "Strength"
+  setflag FLAG_STRENGTH_ACTIVE
+  text "{user} braces itself. The boulders here can be pushed now."
+  return
+
+
+# A rock face along its grain. Rock Climb goes up or down it, with the Icicle Badge.
+script RockFace
+  if not knows "Rock Climb" goto Cannot
+  if not badge icicle goto Cannot
+  ask "The rock face is rough enough to grip. Use Rock Climb?"
+  if no end
+  usemove "Rock Climb"
+  climb
+  end
+label Cannot
+  text "A steep, rough wall of rock. A Pokémon might be able to scale it."
+  end
+
+script UseRockClimb
+  usemove "Rock Climb"
+  climb
+  end
+
+
+# Deep water at the player's feet. The field offers it only to someone who may surf (the move and the Fen Badge).
+script Water
+  ask "The water is deep enough to cross on a Pokémon. Use Surf?"
+  if no end
+  usemove "Surf"
+  surf
+  end
+
+script UseSurf
+  usemove "Surf"
+  surf
+  end
+
+
+# A waterfall, faced from the water below it. Waterfall goes up it, with the Beacon Badge.
+script Waterfall
+  if not knows "Waterfall" goto Cannot
+  if not badge beacon goto Cannot
+  ask "A great waterfall. Use Waterfall to go up it?"
+  if no end
+  usemove "Waterfall"
+  climb
+  end
+label Cannot
+  text "A wall of water comes crashing down."
+  end
+
+script UseWaterfall
+  usemove "Waterfall"
+  climb
+  end
+
+
+# Light in a dark cave, until the player leaves the caves.
+script UseFlash
+  usemove "Flash"
+  setflag FLAG_FLASH_ACTIVE
+  end
+
+
+# The fog blown away, until the player leaves for a place that isn't a cave.
+script UseDefog
+  usemove "Defog"
+  setflag FLAG_DEFOG_ACTIVE
+  text "The fog has lifted."
+  end
+
+
+# Away to a town already visited, chosen on the map before this runs.
+script UseFly
+  usemove "Fly"
+  fly
+  end
+
+
+# Back to the town of the Pokémon Center last gone into.
+script UseTeleport
+  usemove "Teleport"
+  teleport
+  end
+
+
+# Out of the caves, to where the player went into them.
+script UseDig
+  usemove "Dig"
+  escape
+  end
+
+
+# A sweet smell that draws out whatever lives where the player stands.
+script UseSweetScent
+  usemove "Sweet Scent"
+  sweetscent
+  if result == 0 text "The sweet scent drifts away, but nothing comes out."
+  end
+
+
+# An Escape Rope used from the bag: one is used up, and the player is out of the caves.
+script EscapeRope
+  take "Escape Rope"
+  text "{player} used an Escape Rope."
+  escape
+  end
+
+
+# One of the Cycling Road's gate keepers, to someone who comes to the gate on foot: back they go.
+script CyclistsOnly
+  speaker "Gate Keeper"
+  say "Hold on there! Past this gate is the Cycling Road, and it's for Bicycles only. Come back riding one!"
+  if facing up walk player down
+  if facing down walk player up
+  if facing left walk player right
+  if facing right walk player left
+  end

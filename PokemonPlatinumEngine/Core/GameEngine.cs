@@ -32,6 +32,8 @@ public enum GameState
     Evolution,
     SaveMenu,
     Intro,
+    /// <summary>Fly's map of the towns to fly to (plan 02 · S2).</summary>
+    FlyMap,
     Transition
 }
 
@@ -60,7 +62,7 @@ public partial class GameEngine
 
     // A trainer who spotted the player and is walking up, and the one being battled
     private TrainerApproach? trainerApproach;
-    private NPC? battleTrainer;
+    private readonly List<NPC> battleTrainers = new();
 
     // How the player was travelling when the field's music was last chosen, and whether a trainer's eye theme is on
     private TravelMode musicTravel = TravelMode.OnFoot;
@@ -72,6 +74,17 @@ public partial class GameEngine
     // UI Sub-screens
     private readonly StartMenu startMenu = new();
     private readonly PartyScreen partyScreen = new();
+    private readonly FlyScreen flyScreen = new();
+
+    // Where Dig and an Escape Rope lead out of the caves: outside the way the player went into them (the
+    // original's exit location), saved with the game
+    private MapSpot? exitSpot;
+
+    // The key item kept on the item button (saved), a rod's cast under way, and whether the run button was down
+    // last frame (on the Bicycle a press changes gear)
+    private string? registeredItem;
+    private FishingAttempt? fishing;
+    private bool runWasDown;
     private readonly BagScreen bagScreen = new();
     private readonly PokedexScreen pokedexScreen = new();
     private readonly TrainerCardScreen trainerCardScreen = new();
@@ -117,6 +130,10 @@ public partial class GameEngine
     /// <summary>What the story remembers: flags, variables, trainers beaten, items taken, the badges, the starters (plan 02 · S1).</summary>
     private readonly StoryState story = new();
 
+    // The Pokétch (plan 02 · S2), and whether it is out on the screen
+    private readonly Poketch poketch = new();
+    private readonly PoketchView poketchView = new();
+
     private static string playerName => PlayerIdentity.Name;
 
     /// <summary>The rules picked on the title screen, held while the introduction plays.</summary>
@@ -159,7 +176,7 @@ public partial class GameEngine
         LoadScripts();
 
         // Every character the maps use (those a flag hides for now too), sculpted and meshed in the background while the title screen plays
-        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => !n.IsItemBall).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
+        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => !n.IsThing).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
         // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonModels.Preloaded.ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
@@ -195,6 +212,10 @@ public partial class GameEngine
         playerInventory.Clear();
         playerPokedex.Clear();
         pcBoxStorage.Clear();
+        poketch.Clear();
+        poketchView.Hide();
+        registeredItem = null;
+        exitSpot = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
@@ -298,6 +319,10 @@ public partial class GameEngine
         // A save made out on the water wakes up there, still on its Pokémon's back; one made on a bridge, on its deck
         player.SetMode(save.Travel);
         if (save.PlayerHeight is { } standing) player.SetHeight(standing);
+        exitSpot = save.Exit;
+        registeredItem = save.RegisteredItem;
+        poketch.Load(save.Poketch);
+        poketchView.Hide();
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -372,6 +397,9 @@ public partial class GameEngine
             PlayerFacing = player.Facing,
             Travel = player.Mode,
             PlayerHeight = player.HeightOn(currentMap),
+            Exit = exitSpot,
+            RegisteredItem = registeredItem,
+            Poketch = poketch.Save(),
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             BoxStorage = pcBoxStorage.Select(SavedPokemonData.FromPokemon).ToList(),
@@ -493,21 +521,24 @@ public partial class GameEngine
 
                         // Only a beaten trainer is done; after a loss they wait for a rematch
                         bool beaten = battle.Result == BattleResult.PlayerVictory;
-                        battleTrainer?.FinishBattle(beaten);
-                        // Two people who battle as one trainer (a pair of twins) are beaten together, and the story remembers it
-                        if (beaten && battleTrainer?.TrainerData is { Id.Length: > 0 } pair)
+                        foreach (var battleTrainer in battleTrainers)
                         {
-                            story.Defeat(pair.Id);
-                            foreach (var other in currentMap.Everyone.Where(n => n != battleTrainer && n.TrainerData?.Id == pair.Id)) other.FinishBattle(true);
+                            battleTrainer.FinishBattle(beaten);
+                            // Two people who battle as one trainer (a pair of twins) are beaten together, and the story remembers it
+                            if (beaten && battleTrainer.TrainerData is { Id.Length: > 0 } pair)
+                            {
+                                story.Defeat(pair.Id);
+                                foreach (var other in currentMap.Everyone.Where(n => n != battleTrainer && n.TrainerData?.Id == pair.Id)) other.FinishBattle(true);
+                            }
                         }
-                        battleTrainer = null;
+                        battleTrainers.Clear();
                         // What a script that started the battle is told of it
                         scriptOutcome = battle.Result switch
                         {
                             BattleResult.PlayerVictory => BattleOutcome.Won,
                             BattleResult.PlayerDefeat => BattleOutcome.Lost,
                             BattleResult.EnemyCaught => BattleOutcome.Caught,
-                            BattleResult.PlayerRan => BattleOutcome.Fled,
+                            BattleResult.PlayerRan or BattleResult.EnemyFled => BattleOutcome.Fled,
                             _ => BattleOutcome.None
                         };
                         EndBattle();
@@ -516,12 +547,32 @@ public partial class GameEngine
                 break;
             case GameState.PartyMenu:
                 partyScreen.Update(playerParty, dt);
-                if (!partyScreen.IsActive) currentState = GameState.Overworld;
+                if (partyScreen.TakeFieldMove() is var (move, index)) UseFieldMoveFromMenu(move, index);
+                else if (!partyScreen.IsActive) currentState = GameState.Overworld;
+                break;
+            case GameState.FlyMap:
+                flyScreen.Update(dt);
+                if (flyScreen.TakeChoice() is { } town)
+                {
+                    flyTarget = town;
+                    currentState = GameState.Overworld;
+                    StartScript("common.UseFly", pokemon: playerParty.Members[flyScreen.Flier]);
+                }
+                else if (!flyScreen.IsActive)
+                {
+                    currentState = GameState.PartyMenu;
+                    partyScreen.IsActive = true;
+                }
                 break;
             case GameState.BagMenu:
                 bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
+                registeredItem = bagScreen.Registered;
                 if (bagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
-                else if (!bagScreen.IsActive) currentState = GameState.Overworld;
+                else if (!bagScreen.IsActive)
+                {
+                    currentState = GameState.Overworld;
+                    if (bagScreen.TakeFieldUse() is { } usedHere) UseFieldItem(usedHere);
+                }
                 break;
             case GameState.Evolution:
                 evolutionScreen.Update(dt);
@@ -616,10 +667,22 @@ public partial class GameEngine
 
     private void UpdateOverworld(float dt)
     {
+        // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
+        KeepFieldMovesInForce();
+        SlideBoulders(dt);
+        poketchView.Update(dt);
+
         // A script has the field: the keys do nothing until it ends
         if (runner.IsRunning)
         {
             UpdateScript(dt);
+            return;
+        }
+
+        // A rod is out: the keys are the rod's until it is put away
+        if (fishing != null)
+        {
+            UpdateFishing(dt);
             return;
         }
 
@@ -663,6 +726,28 @@ public partial class GameEngine
             return;
         }
 
+        // The Pokétch comes out or goes away; its side button changes the app
+        if (InputManager.IsActionPressed(GameAction.Poketch)) poketchView.Toggle(poketch);
+        if (InputManager.IsActionPressed(GameAction.PoketchApp)) poketchView.NextApp(poketch);
+
+        // The key item kept on the item button (the original's Y button)
+        if (InputManager.IsActionPressed(GameAction.Item) && !player.IsMoving)
+        {
+            if (registeredItem != null && ItemDatabase.Get(registeredItem) is { } kept && playerInventory.GetQuantity(kept) > 0) UseFieldItem(kept);
+            else ShowNotification("A key item can be kept on this button: register one in the bag.");
+            return;
+        }
+
+        // On the Bicycle the run button changes gear (the original's B button)
+        bool runDown = InputManager.IsActionDown(GameAction.Run);
+        if (player.Mode == TravelMode.Cycling && runDown && !runWasDown)
+        {
+            player.FastGear = !player.FastGear;
+            AudioManager.PlaySound("gear");
+            ShowNotification(player.FastGear ? "Top gear." : "Low gear.");
+        }
+        runWasDown = runDown;
+
         // Overworld Player Movement
         player.Moves = FieldMovement.MovesOf(playerParty);
         player.Lead = WildLead.Of(playerParty);
@@ -705,6 +790,7 @@ public partial class GameEngine
             foreach (var p in playerParty.Members) FriendshipRules.Apply(p, FriendshipEvent.WalkCycle, fieldRandom);
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
+        poketch.Step();
         // Riding out onto the water or back onto land, or getting on or off the bicycle, changes the music
         if (player.Mode != musicTravel) PlayFieldMusic();
         bool entered = EnterArea();
@@ -727,8 +813,12 @@ public partial class GameEngine
     {
         var area = currentMap.AreaAt(player.GridX, player.GridY);
         if (area == currentArea) return false;
+        bool another = currentArea != null && area != null;
         currentArea = area;
         if (area == null) return false;
+        // Another place: what lasted only while the player stayed in the last one is forgotten
+        if (another) ChangePlace();
+        NoteArrival();
         PlayFieldMusic();
         if (!string.IsNullOrEmpty(area.DisplayName)) locationSign.Show(area.DisplayName);
         return StartEnterScript();
@@ -883,16 +973,18 @@ public partial class GameEngine
         int targetY = player.GridY + dy;
 
         // Check NPC interaction; reception and shop counters can be talked across
-        var npc = currentMap.GetNpcAt(targetX, targetY);
+        // Someone on a bridge's deck is out of reach from the ground under it
+        float standing = player.HeightOn(currentMap);
+        var npc = currentMap.NpcIn(targetX, targetY, currentMap.SurfaceAt(targetX, targetY, standing).Height);
         if (npc == null && currentMap.IsCounter(targetX, targetY))
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);
         }
         if (npc != null)
         {
-            // Face player (a trainer goes back to looking the old way if they win)
+            // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is
             if (npc.IsTrainer) npc.LeavePost();
-            npc.FaceTowards(player.GridX, player.GridY);
+            if (!npc.IsThing) npc.FaceTowards(player.GridX, player.GridY);
 
             // What happens next is theirs to say: their own script, or the common one for what they are
             // (a nurse, a clerk, a PC, the briefcase, a trainer, someone with lines)
@@ -911,23 +1003,27 @@ public partial class GameEngine
         if (FieldScripts.HiddenAt(currentMap, targetX, targetY, story) is { } hidden
             && StartScript(FieldScripts.HiddenItem, file: currentMap.ScriptFileAt(targetX, targetY), item: (hidden.Item, hidden.Count), flag: hidden.Flag)) return;
 
-        TryStartSurf();
-    }
-
-    /// <summary>
-    /// At the edge of deep water with a Pokémon that knows Surf, the confirm button sends it out and the player
-    /// rides off on it. (Platinum also asks for the Fen Badge; badges come with the story, plan 02.)
-    /// </summary>
-    private void TryStartSurf()
-    {
-        if (!player.Moves.HasFlag(FieldMoves.Surf) || !player.StartSurf(currentMap)) return;
-        AudioManager.PlaySound("surf");
-        var carrier = playerParty.Members.First(p => p.Moves.Any(m => m.Name == "Surf"));
-        ShowNotification($"{carrier.Nickname} used Surf!");
+        // What the tile ahead is (Field_TileBehaviorToScript): a waterfall faced from the water, a rock face along
+        // its grain, and deep water at the player's feet, offered only to someone who may surf (the move and the
+        // Fen Badge), as the original offers it
+        var walker = new Walker(player.Mode, standing, Moves: player.Moves);
+        var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker);
+        if (spot.Waterfall && spot.Surfing) StartScript(FieldScripts.Waterfall);
+        else if (spot.RockFace && player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
+        else if (spot.Water && FieldMoveRules.Knower(playerParty, FieldMove.Surf) != null
+                 && FieldMoveRules.Check(FieldMove.Surf, spot, story) == FieldMoveError.None) StartScript(FieldScripts.Water);
     }
 
     private void HandleWarp(Warp warp)
     {
+        // Onto the Cycling Road only a rider is let through: the gate keeper turns anyone else back
+        if (warp.CyclistsOnly && player.Mode != TravelMode.Cycling)
+        {
+            StartScript(FieldScripts.CyclistsOnly);
+            return;
+        }
+        NoteTheWayIn(warp);
+
         // A door has made its own sound as it opened; any other way through is the original's footsteps on stairs,
         // and a warp panel its own
         if (WorldRenderer.DoorPlace(currentMap, warp.SourceX, warp.SourceY) == null)
@@ -940,6 +1036,8 @@ public partial class GameEngine
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
             ArriveOnMap();
             AnnounceLocation();
+            // Through a gate onto the Cycling Road, the Bicycle stays under the player until the next warp
+            if (warp.CyclistsOnly) story.Set(BicycleRules.OnCyclingRoadFlag);
 
             // Coming out of a building, the door stands open behind the player for a moment, then shuts
             world.Life.Clear();
@@ -1022,6 +1120,7 @@ public partial class GameEngine
     private void AnnounceLocation()
     {
         currentArea = currentMap.AreaAt(player.GridX, player.GridY);
+        NoteArrival();
         if (currentMap.IsIndoors) locationSign.Hide();
         else locationSign.Show(currentMap.DisplayNameAt(player.GridX, player.GridY));
     }
@@ -1042,6 +1141,7 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.Bag:
                 currentState = GameState.BagMenu;
+                bagScreen.Registered = registeredItem;
                 bagScreen.Open();
                 break;
             case StartMenuChoice.Trainer:
@@ -1081,12 +1181,27 @@ public partial class GameEngine
     }
 
     /// <summary>
-    /// A battle with one wild Pokémon: one met in the grass, or one a script puts in the player's way. (Not a
-    /// second <c>StartWildBattle</c>: the screenshot harness finds that one by its name alone.)
+    /// A battle with one wild Pokémon: one met in the grass, or one a script puts in the player's way, perhaps one
+    /// that can't be run from (a legendary the story brings), or the assistant's catching lesson, which the player
+    /// watches (plan 06 · R9). (Not a second <c>StartWildBattle</c>: the screenshot harness finds that one by its
+    /// name alone.)
     /// </summary>
-    private void MeetWildPokemon(Pokemon wildPkmn)
+    private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false)
     {
-        playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
+        // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
+        if (kind != BattleKind.CatchingLesson) playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
+        // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
+        var party = playerParty;
+        var bag = playerInventory;
+        string? name = null;
+        if (kind == BattleKind.CatchingLesson)
+        {
+            party = new Party();
+            party.Add(new Pokemon(PokemonDatabase.Get(story.AssistantStarter ?? "Piplup")!, 5));
+            bag = new Inventory();
+            bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
+            name = PlayerIdentity.Fill("{assistant}");
+        }
 
         // The battle theme cuts in as the screen starts to flash, before the battle itself appears: a legendary's or
         // a mythical's own, or the wild battle theme
@@ -1098,12 +1213,15 @@ public partial class GameEngine
             AwaitModels(shown);
             battle = new BattleEngine(new BattleSetup
             {
-                PlayerParty = playerParty,
-                Inventory = playerInventory,
+                PlayerParty = party,
+                Inventory = bag,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
                 WildPokemon = new List<Pokemon> { wildPkmn },
-                Conditions = BattleConditionsHere()
+                Conditions = BattleConditionsHere(),
+                Kind = kind,
+                CannotFlee = cannotFlee,
+                PlayerName = name
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
@@ -1171,17 +1289,21 @@ public partial class GameEngine
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
-    private void StartTrainerBattle(NPC trainerNpc)
+    /// <summary>A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9).</summary>
+    private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false)
     {
         var trainer = trainerNpc.TrainerData!;
         if (trainer.Party.Count == 0)
         {
             trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
         }
+        // Two trainers at once (a tag battle's foes), each with a team of their own
+        var trainers = new List<Trainer> { trainer };
+        if (secondNpc?.TrainerData is { } second) trainers.Add(second);
 
         eyeThemePlaying = false;
-        AudioManager.PlayMusic(MusicDirector.BattleRole(new[] { trainer.TrainerClass }), immediate: true);
-        var shown = PrepareModels(trainer.Party.Members);
+        AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
+        var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(partner?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -1191,12 +1313,16 @@ public partial class GameEngine
                 Inventory = playerInventory,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
-                Format = trainer.DoubleBattle ? BattleFormat.Double : BattleFormat.Single,
-                Trainers = new List<Trainer> { trainer },
+                Format = trainer.DoubleBattle || trainers.Count > 1 || partner != null ? BattleFormat.Double : BattleFormat.Single,
+                Trainers = trainers,
+                Partner = partner,
+                FirstBattle = firstBattle,
                 Conditions = BattleConditionsHere()
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
-            battleTrainer = trainerNpc;
+            battleTrainers.Clear();
+            battleTrainers.Add(trainerNpc);
+            if (secondNpc?.TrainerData != null) battleTrainers.Add(secondNpc);
         }, SceneTransition.ForBattle(trainer: true, trainer.TrainerClass.Contains("Leader", StringComparison.OrdinalIgnoreCase),
             trainer.Party.Members[0].Level, LeadLevel()));
     }
@@ -1368,6 +1494,9 @@ public partial class GameEngine
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
                 // A script's black screen covers the field and leaves the text over it
                 DrawScriptFade();
+                DrawCutIn();
+                // The Pokétch shows over the field while nothing else is on the screen
+                if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, playerParty);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 locationSign.Draw();
@@ -1378,6 +1507,9 @@ public partial class GameEngine
                 break;
             case GameState.PartyMenu:
                 partyScreen.Draw(VirtualWidth, VirtualHeight, playerParty);
+                break;
+            case GameState.FlyMap:
+                flyScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.BagMenu:
                 bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());

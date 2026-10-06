@@ -1,0 +1,120 @@
+{
+  "area": "route_209",
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  // Gate houses are passed through; their rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "hearthome_city", "toWarp": 19 },
+    { "warp": 1, "to": "hearthome_city", "toWarp": 17 }
+  ],
+  // The Lost Tower is a building's floors (plan 01 · M11)
+  "locked": [ 2 ],
+  // Joggers Richard and Raul battle in the morning and only jog past at other times: the original's arrival script
+  // swaps them by their FLAG_HIDE_ROUTE_209_JOGGER_* flags, so all four objects wait for that script (plan 02 · S7)
+  "people": {
+    "pokefan_m": {
+      "name": "Man",
+      "dialog": [
+        "That tower up ahead is the Lost Tower.",
+        "People climb it to remember Pokémon who are no longer with them. Go quietly, if you go in."
+      ]
+    },
+    // In Platinum he gives away the Good Rod; the gift is plan 02's (S7)
+    "fisherman": {
+      "name": "Fisherman",
+      "dialog": [
+        "There's water all along this route, and plenty living in it.",
+        "With a good rod in your hand, you'd be amazed what bites."
+      ]
+    },
+    "breeder_albert": {
+      "name": "Albert",
+      "trainer": {
+        "id": "breeder_albert",
+        "name": "Albert",
+        "trainerClass": "Pokémon Breeder",
+        "dialogueBefore": "Pokémon Breeder Albert: I've raised these little ones since the day they hatched. Let's see how they've grown!",
+        "dialogueAfter": "Pokémon Breeder Albert: They're still young. Every battle teaches them something, win or lose."
+      }
+    },
+    "breeder_jennifer": {
+      "name": "Jennifer",
+      "trainer": {
+        "id": "breeder_jennifer",
+        "name": "Jennifer",
+        "trainerClass": "Pokémon Breeder",
+        "dialogueBefore": "Pokémon Breeder Jennifer: Don't be fooled by their size. My babies are tougher than they look!",
+        "dialogueAfter": "Pokémon Breeder Jennifer: Back home for a nap, all of you. You've more than earned it."
+      }
+    },
+    "cowgirl_shelley": {
+      "name": "Shelley",
+      "trainer": {
+        "id": "cowgirl_shelley",
+        "name": "Shelley",
+        "trainerClass": "Cowgirl",
+        "dialogueBefore": "Cowgirl Shelley: Easy now... My Ponyta's been itching for a gallop all day. Let's go!",
+        "dialogueAfter": "Cowgirl Shelley: Whoa there! Looks like we bit off more than we could chew."
+      }
+    },
+    // The area file gives her a Pikachu's looks; a girl plays her here
+    "poke_kid_danielle": {
+      "name": "Danielle",
+      "npcType": "Lass",
+      "trainer": {
+        "id": "poke_kid_danielle",
+        "name": "Danielle",
+        "trainerClass": "Poké Kid",
+        "dialogueBefore": "Poké Kid Danielle: My Pichu is my very best friend! Will you battle us?",
+        "dialogueAfter": "Poké Kid Danielle: Are you all right, Pichu? We'll be stronger next time, I promise!"
+      }
+    },
+    // The twins battle together, two Pokémon at a time; either of them starts it
+    "twin_emma": {
+      "name": "Emma",
+      "trainer": {
+        "id": "twins_emma_and_lil",
+        "name": "Emma & Lil",
+        "trainerClass": "Twins",
+        "dialogueBefore": "Emma: Lil and I do everything together. Battles too!",
+        "dialogueAfter": "Emma: Well, at least we lost together, Lil."
+      }
+    },
+    "twin_lil": {
+      "name": "Lil",
+      "trainer": {
+        "id": "twins_emma_and_lil",
+        "name": "Emma & Lil",
+        "trainerClass": "Twins",
+        "dialogueBefore": "Lil: Two of us and two of our Pokémon. That's fair, isn't it?",
+        "dialogueAfter": "Lil: Emma, I think we need a bit more practice."
+      }
+    },
+    // The couple battle together too, two Pokémon at a time
+    "young_couple_trainer_sue": {
+      "name": "Sue",
+      "trainer": {
+        "id": "young_couple_ty_and_sue",
+        "name": "Ty & Sue",
+        "trainerClass": "Young Couple",
+        "dialogueBefore": "Sue: We're out for a walk together, and you want a battle? Oh, go on then!",
+        "dialogueAfter": "Sue: Never mind, Ty. It was still a lovely afternoon."
+      }
+    },
+    "young_couple_trainer_ty": {
+      "name": "Ty",
+      "trainer": {
+        "id": "young_couple_ty_and_sue",
+        "name": "Ty & Sue",
+        "trainerClass": "Young Couple",
+        "dialogueBefore": "Ty: Sue and I make a brilliant team. Watch this!",
+        "dialogueAfter": "Ty: And I so wanted to look good in front of Sue..."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_hearthome_city": "Route 209\nWest: Hearthome City",
+    "arrow_signpost_solaceon_town": "Route 209\nNorth: Solaceon Town",
+    "trainer_tips_signpost": "Trainer Tips\nThe Bag keeps what you carry in pockets. Key Items, such as a Bicycle or a fishing rod, have a pocket all their own."
+  }
+}
