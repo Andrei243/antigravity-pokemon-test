@@ -978,4 +978,16 @@ internal static partial class PokemonModels
     private static PokeBuilder CalyrexIce() => GlastrierBuild(true);
 
     private static PokeBuilder CalyrexShadow() => SpectrierBuild(true);
+
+    // ------------------------------------------------------------------ The Bloodmoon Ursaluna, the female Basculegion and the Therian Enamorus (their builds in PokemonModels.Hisui.cs)
+
+    private static PokeBuilder UrsalunaBloodmoon() => UrsalunaBuild(true);
+
+    private static PokeBuilder BasculegionFemale() => BasculegionBuild(true);
+
+    private static PokeBuilder EnamorusTherian() => EnamorusTherianBuild();
+
+    // ------------------------------------------------------------------ The female Oinkologne (its build in PokemonModels.Paldea1.cs)
+
+    private static PokeBuilder OinkologneFemale() => OinkologneBuild(true);
 }
