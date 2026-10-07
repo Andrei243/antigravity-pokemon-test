@@ -1775,4 +1775,8 @@ internal static partial class PokemonModels
     private static PokeBuilder ZygardeMega() => ZygardeBuild(3);
 
     private static PokeBuilder DiancieMega() => DiancieBuild(true);
+
+    // ------------------------------------------------------------------ Alola's Megas (their builds in PokemonModels.Alola1.cs)
+
+    private static PokeBuilder CrabominableMega() => CrabominableBuild(true);
 }

@@ -197,19 +197,19 @@ public class FormTests
         // (Rotom's appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, every letter and
         // sign of the Unown but A, which is the species itself) and the later games' (the regional forms, Dialga's and
         // Palkia's Origin Formes, the Megas, the Gigantamax forms, Pikachu's caps and costumes, the spiky-eared Pichu),
-        // the forms of the Kanto, Johto, Hoenn, Unova and Kalos species hand-built since among them (Castform's weathers,
+        // the forms of the Kanto, Johto, Hoenn, Unova, Kalos and Alola species hand-built since among them (Castform's weathers,
         // Deoxys's formes, the Primal Kyogre and Groudon, Basculin's stripes, Darmanitan's Zen Modes, Deerling's and
         // Sawsbuck's seasons, the female Frillish and Jellicent, Vivillon's patterns, the Flabébé line's colours,
-        // Furfrou's trims, the sizes of the Pumpkaboo line, Zygarde's formes). The few that look just like their species
+        // Furfrou's trims, the sizes of the Pumpkaboo line, Zygarde's formes, Oricorio's styles). The few that look just like their species
         // show its sculpt: Mothim's cloaks, the partner Pikachu and Eevee, Greninja's Battle Bond, Scatterbug and Spewpa,
-        // whose pattern shows only once they are Vivillon, and the 50% Zygarde with Power Construct; the 10% Zygarde
+        // whose pattern shows only once they are Vivillon, the 50% Zygarde with Power Construct and the Own Tempo Rockruff; the 10% Zygarde
         // with Power Construct shows the 10% Forme's (PokemonModels.LooksLike).
         var patterns = new[] { "Polar", "Tundra", "Continental", "Garden", "Elegant", "Meadow", "Modern", "Marine", "Archipelago", "High-Plains",
             "Sandstorm", "River", "Monsoon", "Savanna", "Sun", "Ocean", "Jungle", "Fancy", "Poke-Ball" };
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter", "Greninja-Battle-Bond", "Zygarde-10-Power-Construct",
-                "Zygarde-50-Power-Construct" }
+                "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo" }
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
-        Assert.Equal(294, PokemonModels.Forms.Length);
+        Assert.Equal(302, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {
