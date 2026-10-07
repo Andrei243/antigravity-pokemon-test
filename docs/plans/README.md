@@ -4,6 +4,7 @@ Twenty-six plans, each worked through over several sessions. Plans 01 to 07 buil
 
 | Plan | Delivers | First session | Rough size |
 |---|---|---|---|
+| [00 · Overview](00-overview.md) | The order of everything left (written 2026-10-07, after all 26 plans were read): six lanes that run side by side, waves of sessions merged together, the shared seams and their owners, the hot files and how to merge them, the decisions that gate sessions | Wave 0 | — |
 | [01 · Sinnoh map](01-sinnoh-map.md) | Every town, route, forest, cave, lake, sea route, gym and the Pokémon League, with surfing, elevation, weather and seamless travel | M1 | 12–16 sessions |
 | [02 · Story](02-story.md) | The whole story from Twinleaf Town to the Hall of Fame and the post-game, paced like the original: HM obstacles, story blockers, key items, badges, rival and Team Galactic | S1 | 13–17 sessions |
 | [03 · National Pokédex](03-national-dex.md) | All 1025 species: the Sinnoh Pokédex during the story, the National Pokédex after the Hall of Fame, with moves, abilities, evolutions, models and a way to get each one | D1 | 12–16 sessions |
@@ -33,6 +34,8 @@ Twenty-six plans, each worked through over several sessions. Plans 01 to 07 buil
 
 ## Order
 
+**The order now is [00 · Overview](00-overview.md)**: it reorders what is left so that several sessions run at once and merge together. What follows is the order as first written, kept for its reasons.
+
 The plans depend on each other, so interleave them rather than finishing one before starting the next.
 
 1. **Look and sound first.** Everything built later inherits them.
@@ -56,6 +59,10 @@ Each plan's "Needs and gives" section lists the exact dependencies.
 ## Starting a session
 
 One session per conversation works best. Any of these prompts starts one:
+
+```text
+Do wave 2 of docs/plans/00-overview.md.
+```
 
 ```text
 Do session G1 of the roadmap.
