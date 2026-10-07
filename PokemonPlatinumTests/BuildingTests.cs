@@ -572,8 +572,8 @@ public class BuildingTests
             if (prop.IsSolid)
                 Assert.True(min.Z >= prop.Y - slack && max.Z <= prop.Y + prop.Depth + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is deeper than its tiles");
             else if (prop.Type != PropType.Rug)
-                // Things on the back wall hang on its face, two tiles in
-                Assert.InRange(max.Z, 2f, 2.2f);
+                // Things on the back wall hang on its face, two tiles in (more in a room rebuilt to the original's plan)
+                Assert.InRange(max.Z, map.RoomCorner().Back, map.RoomCorner().Back + 0.2f);
         }
     }
 

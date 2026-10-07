@@ -5,11 +5,13 @@
   "architecture": "Snow",
   "doors": [
     { "warp": 4, "map": "SnowpointPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 3, "map": "SnowpointPokeMart", "x": 4, "y": 6, "facing": "Up" }
+    { "warp": 3, "map": "SnowpointPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    // The west house, where a woman trades her Haunter for a Medicham (plan 06 · R12), built to the original's plan
+    { "warp": 0, "map": "SnowpointWestHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
-  // The Gym and the houses have no rooms yet (plan 01 · M11, M9); Snowpoint Temple opens after the Hall of Fame
+  // The Gym and the east house have no rooms yet (plan 01 · M11, M9); Snowpoint Temple opens after the Hall of Fame
   // (plan 01 · M10, plan 02 · S15)
-  "locked": [ 0, 1, 2, 5, 6 ],
+  "locked": [ 1, 2, 5, 6 ],
   // Candice at the temple's door and Cynthia on the quay come with the story (plan 02 · S11, S15). The original's
   // trigger in front of the temple, where its guard turns the player back, waits for the temple to open
   "people": {

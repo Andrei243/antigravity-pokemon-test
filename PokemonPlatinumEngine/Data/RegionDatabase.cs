@@ -131,7 +131,10 @@ public static class RegionDatabase
                 "EternaPokemonCenter", "EternaPokeMart", "HearthomePokemonCenter", "HearthomePokeMart", "SolaceonPokemonCenter", "SolaceonPokeMart",
                 "VeilstonePokemonCenter", "PastoriaPokemonCenter", "PastoriaPokeMart", "CelesticPokemonCenter", "CanalavePokemonCenter", "CanalavePokeMart",
                 "SnowpointPokemonCenter", "SnowpointPokeMart",
-                "SunyshorePokemonCenter", "SunyshorePokeMart", "PokemonLeagueSouthPokemonCenter", "PokemonLeagueNorthPokemonCenter"
+                "SunyshorePokemonCenter", "SunyshorePokeMart", "PokemonLeagueSouthPokemonCenter", "PokemonLeagueNorthPokemonCenter",
+                // Rebuilt to the original's plans, so its people stand where the original's do: three houses of the
+                // in-game trades (plan 06 · R12) and the Valley Windworks' hall (plan 02 · S6)
+                "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

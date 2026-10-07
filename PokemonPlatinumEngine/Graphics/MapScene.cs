@@ -67,6 +67,15 @@ internal sealed class MapScene
     public int Margin { get; }
     public Vector3 RoomCenter { get; private set; }
 
+    /// <summary>
+    /// How deep a room is for the camera, counted as a hand-made room's height is (its floor, the two rows of wall
+    /// behind it and the front wall): a room rebuilt to the original's plan may have more wall behind its floor.
+    /// </summary>
+    public int RoomDepth => Map.Height - roomCorner.Back + 2;
+
+    // Where a room's floor begins (Map.RoomCorner): its side wall stands west of it and its back wall north
+    private readonly (int Left, int Back) roomCorner;
+
     /// <summary>The ground this scene can show something on: its tiles and what leans in from just outside them.</summary>
     public GroundRect Bounds => Reach(ground);
 
@@ -92,6 +101,7 @@ internal sealed class MapScene
         PitchDeg = PitchOf(map);
         VS = VerticalScaleOf(map);
         Margin = map.IsIndoors || chunk != null ? 0 : OutdoorMargin;
+        roomCorner = map.IsIndoors ? map.RoomCorner() : (1, 2);
         if (chunk is { } c)
         {
             ground = content = forest = c;
@@ -518,9 +528,9 @@ internal sealed class MapScene
 
     private bool IsInteriorFloor(int tx, int ty, TileType t)
     {
-        if (ty < 2) return false;
+        if (ty < roomCorner.Back) return false;
         if (ty == Map.Height - 1) return t == TileType.Door;
-        return tx > 0 && tx < Map.Width - 1;
+        return tx >= roomCorner.Left && tx < Map.Width - 1;
     }
 
     /// <summary>
@@ -784,7 +794,8 @@ internal sealed class MapScene
     {
         const int T = GroundBaker.ArtTile, wallH = PropModels.WallHeight, cap = 16;
         int w = Map.Width, h = Map.Height;
-        int left = T, right = (w - 1) * T, back = 2 * T, front = (h - 1) * T;
+        var (lx, by) = roomCorner;
+        int left = lx * T, right = (w - 1) * T, back = by * T, front = (h - 1) * T;
         var style = Map.Interior;
         kit.Origin = Vector3.Zero;
 
@@ -811,6 +822,23 @@ internal sealed class MapScene
             tx = end;
         }
 
+        // The room's own inner walls (a room rebuilt to the original's plan: the Valley Windworks' hall and the
+        // corridor below it) are cut away as the front wall is, so the camera sees over them, but only down to the
+        // wainscot: each face that looks onto the floor is the lower part of the room's wall, under the walls' dark top
+        const int innerH = PropModels.InnerWallHeight;
+        bool Floor(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1 && Map.GetGroundTile(x, y) != TileType.Wall;
+        Art? inner = null;
+        for (int ty = by; ty < h - 1; ty++)
+            for (int tx = lx; tx < w - 1; tx++)
+            {
+                if (Map.GetGroundTile(tx, ty) != TileType.Wall) continue;
+                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH));
+                bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
+                var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
+                    c => GroundBaker.PaintWallTop(c, n, s, wst, e));
+                kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, innerH, top, s ? inner : null, wst ? inner : null, e ? inner : null);
+            }
+
         var daylight = batches.For(SceneTextures.WindowLight, MeshPass.Light);
         foreach (var prop in Map.Props)
         {
@@ -819,14 +847,14 @@ internal sealed class MapScene
 
             // Light from the window falls across the floor, slanting the way the room's shadows do
             const float y = 0.012f, reach = 2.3f, slant = 0.8f;
-            float x0 = prop.X + 0.2f, x1 = prop.X + prop.Width - 0.2f, z0 = 2.02f;
+            float x0 = prop.X + 0.2f, x1 = prop.X + prop.Width - 0.2f, z0 = by + 0.02f;
             daylight.Quad(new(x0 + slant, y, z0 + reach), new(x1 + slant, y, z0 + reach), new(x1, y, z0), new(x0, y, z0),
                 new(0, 1), new(1, 1), new(1, 0), new(0, 0), Color.White, Up);
         }
-        for (int ty = 2; ty < h - 1; ty++)
-            for (int tx = 1; tx < w - 1; tx++)
+        for (int ty = by; ty < h - 1; ty++)
+            for (int tx = lx; tx < w - 1; tx++)
                 if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(kit, tx, ty);
 
-        RoomCenter = new Vector3(w / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
+        RoomCenter = new Vector3((lx + w - 1) / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
     }
 }
