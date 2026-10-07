@@ -314,7 +314,7 @@
       "trainer": {
         "id": "galactic_grunt_valley_windworks_2",
         "name": "Grunt",
-        "trainerClass": "Galactic Grunt",
+        "trainerClass": "Galactic",
         "party": [],
         "prizeMoney": 300,
         "dialogueBefore": "Galactic Grunt: Hey! Nobody walks into the Windworks without Team Galactic's say-so!",
@@ -333,7 +333,7 @@
       "trainer": {
         "id": "galactic_grunt_valley_windworks_3",
         "name": "Grunt",
-        "trainerClass": "Galactic Grunt",
+        "trainerClass": "Galactic",
         "party": [],
         "prizeMoney": 300,
         "dialogueBefore": "Galactic Grunt: Every gust this valley makes belongs to Team Galactic now. Want it back? Take it!",

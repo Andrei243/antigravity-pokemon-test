@@ -9,8 +9,8 @@
   "triggers": [ { "trigger": 0, "script": "Grunts" } ],
   "people": {
     "pokefan_m": { "name": "Honey Man", "script": "HoneyMan" },
-    "grunt_m_west": { "name": "Team Galactic Grunt", "dialog": [ "Buzz off, kid. We're busy here." ] },
-    "grunt_m_east": { "name": "Team Galactic Grunt", "dialog": [ "Buzz off, kid. We're busy here." ] },
+    "grunt_m_west": { "name": "Galactic Grunt", "dialog": [ "Buzz off, kid. We're busy here." ] },
+    "grunt_m_east": { "name": "Galactic Grunt", "dialog": [ "Buzz off, kid. We're busy here." ] },
     // The key the grunts drop, shown for the scene and picked up at once
     "item_works_key": { "name": "Works Key", "npcType": "ItemBall", "item": "Works Key", "script": "WorksKey" }
   }

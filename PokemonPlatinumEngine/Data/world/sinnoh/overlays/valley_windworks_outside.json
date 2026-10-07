@@ -8,7 +8,7 @@
   // The grunt at the door, its lock, and Looker once Commander Mars is beaten (plan 02 · S6)
   "read": { "4": "Door" },
   "people": {
-    "grunt_m": { "name": "Team Galactic Grunt", "script": "DoorGrunt" },
+    "grunt_m": { "name": "Galactic Grunt", "script": "DoorGrunt" },
     "looker": { "name": "Looker", "dialog": [ "Their base is in Eterna City. Remember it!" ] }
   },
   "signs": {

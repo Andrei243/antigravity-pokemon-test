@@ -147,6 +147,9 @@ public sealed partial class Importer
             "BREEDER" => "Pokémon Breeder",
             "DP_PLAYER" or "PLAYER" => "Pokémon Trainer",
             "GALACTIC_BOSS" => "Galactic Boss",
+            // The original's class is "Galactic" and every grunt's name "Grunt" (res/text/trainer_class_names.json):
+            // together "Galactic Grunt", not the constant's "Galactic Grunt Grunt"
+            "GALACTIC_GRUNT" => "Galactic",
             "SIS_AND_BRO" => "Sis and Bro",
             "BELLE_AND_PA" => "Belle & Pa",
             _ => string.Join(' ', body.Split('_').Select(w => w[0] + w[1..].ToLowerInvariant()))

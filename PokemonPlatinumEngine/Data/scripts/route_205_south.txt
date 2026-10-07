@@ -87,7 +87,7 @@ script Grunts
 
 script GruntsTalk
   face grunt_m_west right
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Team Galactic is carrying out important research in Eterna Forest. No kids past this point."
   face grunt_m_east left
   say "Research means catching Pokémon, lots of them. And the Windworks makes all the power we could want!"

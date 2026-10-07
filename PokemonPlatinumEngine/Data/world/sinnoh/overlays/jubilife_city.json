@@ -45,14 +45,14 @@
     "grunt_m_1": {
       "name": "Grunt",
       "script": "Grunt",
-      "trainer": { "id": "galactic_grunt_jubilife_city_1", "name": "Grunt", "trainerClass": "Galactic Grunt", "party": [], "sightRange": 0,
+      "trainer": { "id": "galactic_grunt_jubilife_city_1", "name": "Grunt", "trainerClass": "Galactic", "party": [], "sightRange": 0,
         "dialogueBefore": "Galactic Grunt: You'll regret getting in Team Galactic's way!",
         "dialogueAfter": "Galactic Grunt: Ugh! Beaten by a kid..." }
     },
     "grunt_m_2": {
       "name": "Grunt",
       "script": "Grunt",
-      "trainer": { "id": "galactic_grunt_jubilife_city_2", "name": "Grunt", "trainerClass": "Galactic Grunt", "party": [], "sightRange": 0,
+      "trainer": { "id": "galactic_grunt_jubilife_city_2", "name": "Grunt", "trainerClass": "Galactic", "party": [], "sightRange": 0,
         "dialogueBefore": "Galactic Grunt: Two on two, then! Don't cry when you lose!",
         "dialogueAfter": "Galactic Grunt: How did we lose?!" }
     },

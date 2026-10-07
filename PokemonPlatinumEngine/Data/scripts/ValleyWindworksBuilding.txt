@@ -15,7 +15,7 @@ script OnEnter
 label Alarm
   # The first time in (the original's OnFrame script): a grunt by the door runs to tell the Commander
   emote galactic_grunt_1 exclaim
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Wha-? How did you get in here? You've got a key?! I've got to warn the Commander!"
   move galactic_grunt_1 left 9 fast
   wait 0.3
@@ -135,7 +135,7 @@ label Windy
 
 # The grunt by the controls (the original's script 3).
 script Grunt
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Go on, get closer. Our Commander will flatten you!"
   end
 

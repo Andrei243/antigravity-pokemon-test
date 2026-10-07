@@ -47,10 +47,10 @@ label Looker
 
 # The grunt on the door's mat (the original's script 3).
 script DoorGrunt
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "You want inside? You'll have to get past me. Let's battle for it!"
   battle self as "galactic_grunt_valley_windworks_1"
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Owned by some kid... Fine! I'm locking myself in with my key, and you can't get through!"
   say "The only other key is with my pals in the flower meadow. Ha!"
   face self up

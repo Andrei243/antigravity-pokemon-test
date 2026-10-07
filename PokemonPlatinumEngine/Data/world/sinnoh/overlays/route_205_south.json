@@ -8,8 +8,8 @@
   "triggers": [ { "trigger": 0, "script": "LittleGirl" }, { "trigger": 1, "script": "BridgeGrunts" } ],
   "people": {
     "little_girl": { "name": "Little Girl", "script": "Girl" },
-    "grunt_m_west": { "name": "Team Galactic Grunt", "script": "Grunts" },
-    "grunt_m_east": { "name": "Team Galactic Grunt", "script": "Grunts" },
+    "grunt_m_west": { "name": "Galactic Grunt", "script": "Grunts" },
+    "grunt_m_east": { "name": "Galactic Grunt", "script": "Grunts" },
     // On the bridge once Team Galactic has gone
     "youngster": {
       "name": "Youngster",

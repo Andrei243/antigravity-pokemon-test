@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -48,7 +49,7 @@ public class WindworksTests
         game.Arrive("Sinnoh", 170, 650);
         Assert.NotNull(game.Present("grunt_m_west", "floaroma_town"));
         game.Talk("grunt_m_west", "floaroma_town");
-        Assert.All(game.Said, l => Assert.Equal("Team Galactic Grunt", l.Speaker));
+        Assert.All(game.Said, l => Assert.Equal("Galactic Grunt", l.Speaker));
 
         // Route 205: the little girl stops the player on the road out of town, and the grunts in town are gone
         Assert.True(game.Fires("LittleGirl"));
@@ -287,6 +288,29 @@ public class WindworksTests
         // Twins who battle as one trainer are one trainer, not a pair who came together
         east.TrainerData!.Id = "bug_catcher_jack";
         Assert.Null(TrainerApproach.FindSpotter(map, 4, 5, except: west));
+    }
+
+    [Fact]
+    public void AGruntIsCalledAsPlatinumCallsThemOnce()
+    {
+        // The original's class is "Galactic" and the name "Grunt" (res/text/trainer_class_names.json): "Galactic Grunt"
+        var record = TrainerDatabase.Get("galactic_grunt_valley_windworks_1")!;
+        Assert.Equal("Galactic", record.Class);
+        var grunt = new Trainer { Id = record.Id };
+        TrainerDatabase.Fill(grunt, record);
+        Assert.Equal("Galactic Grunt", grunt.FullTitle);
+        Assert.All(TrainerDatabase.All.Where(t => t.Id.StartsWith("galactic_grunt_")), t => Assert.Equal("Galactic", t.Class));
+
+        // A line written "Galactic Grunt: ..." is said under that title, and the grunts' themes follow the class
+        var map = new Map(4, 4);
+        var npc = MapDatabase.Get("ValleyWindworksBuilding").FindPerson("galactic_grunt_2")!;
+        Assert.Equal("Galactic Grunt", npc.TrainerData!.FullTitle);
+        var host = new HeadlessScriptHost { Map = map };
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(ScriptParser.Parse("test", "script Line\n  trainerline before\n")[0], npc);
+        runner.RunToEnd();
+        Assert.Equal("Galactic Grunt", host.Transcript.Single().Speaker);
+        Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRole(new[] { "Galactic" }));
     }
 
     [Fact]

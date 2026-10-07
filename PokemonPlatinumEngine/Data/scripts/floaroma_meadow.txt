@@ -8,7 +8,7 @@
 
 # The way in from town (the original's trigger 0, two tiles wide, VAR_FLOAROMA_MEADOW_STATE 0).
 script Grunts
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Come on, old man, hand over the Honey! The sweet stuff brings Pokémon running, and we need plenty of Pokémon."
   say "Do as we say, or else!"
   face grunt_m_west down
@@ -19,12 +19,12 @@ script Grunts
   say "We make sure the brat keeps quiet, that's what!"
   battle grunt_m_west as "galactic_grunt_floaroma_meadow_1"
   face grunt_m_west right
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Aw, man... This is so lame."
   face grunt_m_west down
   say "Heh heh. My turn! Your Pokémon are worn out after that, I bet."
   battle grunt_m_east as "galactic_grunt_floaroma_meadow_2"
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Forget the Honey! Back to the Windworks, quick!"
   fade out
   hide grunt_m_west

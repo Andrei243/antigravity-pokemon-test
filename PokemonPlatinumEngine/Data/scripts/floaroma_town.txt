@@ -8,7 +8,7 @@
 # Either grunt spoken to (the original's script 2): they talk between themselves, and nobody gets by.
 script Grunts
   face grunt_m_west right
-  speaker "Team Galactic Grunt"
+  speaker "Galactic Grunt"
   say "Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?"
   face grunt_m_east left
   say "Quit moaning. Orders are orders. Now look tough, there's a kid watching."

@@ -357,8 +357,8 @@ An area whose header names one of the places takes its weather from the row of t
 
 ```json
 {
-  "eyeThemes": { "Youngster": "boy", "Lass": "girl", "Hiker": "mountain", "Galactic Grunt": "galactic" },
-  "battleThemes": { "Gym Leader": "gym", "Rival": "rival", "Galactic Grunt": "galactic", "Champion": "champion" }
+  "eyeThemes": { "Youngster": "boy", "Lass": "girl", "Hiker": "mountain", "Galactic": "galactic" },
+  "battleThemes": { "Gym Leader": "gym", "Rival": "rival", "Galactic": "galactic", "Champion": "champion" }
 }
 ```
 

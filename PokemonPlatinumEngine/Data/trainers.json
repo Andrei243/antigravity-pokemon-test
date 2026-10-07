@@ -8550,7 +8550,7 @@
   {
     "id": "galactic_grunt_floaroma_meadow_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -8568,7 +8568,7 @@
   {
     "id": "galactic_grunt_floaroma_meadow_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -8592,7 +8592,7 @@
   {
     "id": "galactic_grunt_valley_windworks_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -8610,7 +8610,7 @@
   {
     "id": "galactic_grunt_valley_windworks_3",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -11909,7 +11909,7 @@
   {
     "id": "galactic_grunt_team_galactic_eterna_building_1f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -11933,7 +11933,7 @@
   {
     "id": "dummy_411",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -11951,7 +11951,7 @@
   {
     "id": "galactic_grunt_team_galactic_eterna_building_2f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -11969,7 +11969,7 @@
   {
     "id": "dummy_413",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -11987,7 +11987,7 @@
   {
     "id": "galactic_grunt_jubilife_city_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12005,7 +12005,7 @@
   {
     "id": "galactic_grunt_jubilife_city_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12023,7 +12023,7 @@
   {
     "id": "galactic_grunt_celestic_town",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12047,7 +12047,7 @@
   {
     "id": "galactic_grunt_lake_valor_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12065,7 +12065,7 @@
   {
     "id": "galactic_grunt_lake_valor_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12101,7 +12101,7 @@
   {
     "id": "galactic_grunt_lake_verity_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12119,7 +12119,7 @@
   {
     "id": "galactic_grunt_lake_verity_3",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12143,7 +12143,7 @@
   {
     "id": "galactic_grunt_team_galactic_eterna_building_1f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12167,7 +12167,7 @@
   {
     "id": "galactic_grunt_team_galactic_eterna_building_2f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12185,7 +12185,7 @@
   {
     "id": "galactic_grunt_team_galactic_eterna_building_3f",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12215,7 +12215,7 @@
   {
     "id": "dummy_424",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12233,7 +12233,7 @@
   {
     "id": "galactic_grunt_lake_valor_3",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12257,7 +12257,7 @@
   {
     "id": "galactic_grunt_lake_verity_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12304,7 +12304,7 @@
   {
     "id": "galactic_grunt_lake_verity_4",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12328,7 +12328,7 @@
   {
     "id": "galactic_grunt_galactic_hq_1f",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12346,7 +12346,7 @@
   {
     "id": "dummy_429",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -12364,7 +12364,7 @@
   {
     "id": "galactic_grunt_galactic_hq_2f_3",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14773,7 +14773,7 @@
   {
     "id": "galactic_grunt_galactic_hq_b2f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14791,7 +14791,7 @@
   {
     "id": "galactic_grunt_galactic_hq_b2f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14815,7 +14815,7 @@
   {
     "id": "galactic_grunt_galactic_hq_3f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14833,7 +14833,7 @@
   {
     "id": "galactic_grunt_galactic_hq_2f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14863,7 +14863,7 @@
   {
     "id": "dummy_511",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14881,7 +14881,7 @@
   {
     "id": "galactic_grunt_galactic_hq_3f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14905,7 +14905,7 @@
   {
     "id": "galactic_grunt_galactic_hq_2f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14929,7 +14929,7 @@
   {
     "id": "galactic_grunt_galactic_hq_3f_3",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14953,7 +14953,7 @@
   {
     "id": "galactic_grunt_mt_coronet_3f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -14971,7 +14971,7 @@
   {
     "id": "galactic_grunt_mt_coronet_4f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15001,7 +15001,7 @@
   {
     "id": "galactic_grunt_mt_coronet_4f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15025,7 +15025,7 @@
   {
     "id": "galactic_grunt_mt_coronet_tunnel_room_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15055,7 +15055,7 @@
   {
     "id": "galactic_grunt_mt_coronet_tunnel_room_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15073,7 +15073,7 @@
   {
     "id": "galactic_grunt_mt_coronet_5f_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15097,7 +15097,7 @@
   {
     "id": "galactic_grunt_spear_pillar_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15121,7 +15121,7 @@
   {
     "id": "galactic_grunt_galactic_hq_3f_4",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15151,7 +15151,7 @@
   {
     "id": "galactic_grunt_mt_coronet_3f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15169,7 +15169,7 @@
   {
     "id": "galactic_grunt_mt_coronet_tunnel_room_3",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15199,7 +15199,7 @@
   {
     "id": "galactic_grunt_mt_coronet_5f_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15223,7 +15223,7 @@
   {
     "id": "galactic_grunt_mt_coronet_6f",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -15253,7 +15253,7 @@
   {
     "id": "galactic_grunt_spear_pillar_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24043,7 +24043,7 @@
   {
     "id": "dummy_833",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24061,7 +24061,7 @@
   {
     "id": "dummy_834",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24079,7 +24079,7 @@
   {
     "id": "galactic_grunt_iron_island_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24109,7 +24109,7 @@
   {
     "id": "galactic_grunt_iron_island_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24679,7 +24679,7 @@
   {
     "id": "galactic_grunt_valley_windworks_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24769,7 +24769,7 @@
   {
     "id": "galactic_grunt_valor_lakefront",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24787,7 +24787,7 @@
   {
     "id": "galactic_grunt_veilstone_city_1",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],
@@ -24811,7 +24811,7 @@
   {
     "id": "galactic_grunt_veilstone_city_2",
     "name": "Grunt",
-    "class": "Galactic Grunt",
+    "class": "Galactic",
     "ai": [
       "Basic"
     ],

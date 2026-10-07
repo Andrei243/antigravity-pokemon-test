@@ -404,7 +404,7 @@ public class MusicTests
         Assert.Equal(MusicRole.EyeBoy, MusicDirector.EyeRole("Youngster"));
         Assert.Equal(MusicRole.EyeGirl, MusicDirector.EyeRole("Lass"));
         Assert.Equal(MusicRole.EyeMountain, MusicDirector.EyeRole("Hiker"));
-        Assert.Equal(MusicRole.EyeGalactic, MusicDirector.EyeRole("Galactic Grunt"));
+        Assert.Equal(MusicRole.EyeGalactic, MusicDirector.EyeRole("Galactic"));
         Assert.Equal(MusicRole.EyeChampion, MusicDirector.EyeRole("Champion"));
         Assert.Equal(MusicRole.EyeBoy, MusicDirector.EyeRole("Nobody"));
         Assert.Equal(MusicRole.EyeBoy, MusicDirector.EyeRole(null));
@@ -430,9 +430,9 @@ public class MusicTests
     [Fact]
     public void TestBattleThemesFollowTheSoundMapAndTheMostImportantOpponent()
     {
-        Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRole(new[] { "Galactic Grunt" }));
+        Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRole(new[] { "Galactic" }));
         Assert.Equal(MusicRole.BattleChampion, MusicDirector.BattleRole(new[] { "Youngster", "Champion" }));
-        Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRole(new[] { "Galactic Grunt", "Gym Leader" }));
+        Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRole(new[] { "Galactic", "Gym Leader" }));
         Assert.Equal(MusicRole.BattleTrainer, MusicDirector.BattleRole(new[] { "Nobody" }));
 
         // Each of them has its song now (plan 05 · A6)
@@ -450,7 +450,7 @@ public class MusicTests
         Assert.Equal(MusicRole.VictoryTrainer, After("Youngster"));
         Assert.Equal(MusicRole.VictoryTrainer, After("Rival"));
         Assert.Equal(MusicRole.VictoryGymLeader, After("Gym Leader"));
-        Assert.Equal(MusicRole.VictoryGalactic, After("Galactic Grunt"));
+        Assert.Equal(MusicRole.VictoryGalactic, After("Galactic"));
         Assert.Equal(MusicRole.VictoryGalactic, After("Commander Mars"));
         Assert.Equal(MusicRole.VictoryGalacticBoss, After("Galactic Boss"));
         Assert.Equal(MusicRole.VictoryEliteFour, After("Elite Four"));
