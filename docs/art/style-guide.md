@@ -115,6 +115,20 @@ The world's own heights are for whoever walks: a mountainside nobody can set foo
 - **A Bicycle's ramp** (Wayward Cave, Oreburgh Gate) is a short run of steps up to the lip it is jumped from: blocked on foot, jumped on a Bicycle going its way (three tiles on in top gear, one in low).
 - **Don't** raise rock one walks on, grow a tree in a cave's mouth, or leave a mountain as a grey floor.
 
+### The Distortion World
+
+The Distortion World (plan 01 · M8) is islands of stone floating over nothing: the field's pixel grid, sprites and relief, with no ground under the islands and no sky over them. Each floor is a map of its own (the setting `Void`).
+
+- **The void is nothing**: every tile that blocks the way without being rock, water, grass or a tree is nothing, and so is a gap the original jumps across, and everything past the map's edge. Nothing has no ground and no face of its own: the picture shows the background there.
+- **An island's edge over the void is its underside**: rock hanging three tiles down (`WorldMapBuilder.VoidDrop`) and ending in points of uneven length. The art is 128 texels wide and 48 rows tall, stretched once down the drop: a pale edge `164,154,180`, two beds of rock `112,102,130`, each lit along its top `138,128,156` and shaded under `86,78,104`, then the hanging rock in two darker steps `92,84,112` and `70,62,90`, and the points outlined in `52,46,70`. Below the points the art is empty, so the void shows through. The underside hangs from the island's edge, however deep the void lies beside it (an upper stone floats over a lower floor).
+- **The islands' stone** is a ground of its own: base `122,112,138`, lighter patches `136,126,152`, a rim `84,74,100` and cracks `100,90,118`. Ledges between islands are ridges of the same stone, with a paler line `170,160,190` along the top of the drop.
+- **Rock rims an island**: the original's rock stands three quarters of a tile above the stone beside it (the least that is still a step with a face), so the paths between rims stay in view. Its faces are the rock face of "Relief".
+- **A way somewhere is a slab set into the stone** (a tile of its own, `DistortionSlab`): a joint `76,68,94` round a slab `170,162,188`, lit `204,198,218` on its top and left and shaded `118,108,138` on its bottom and right, with a four-pointed star `226,218,244` in the middle. Only the ways have one; the original's other marks on its floors are the stone like the rest.
+- **The sea under B3F**: water that reaches the map's edge is a sea far under the islands, one level under the lowest of them, filling the nothing round them; its water is the field's.
+- **The light ignores the clock** (`ArtLook.VoidFieldRig`): a dim, cool key from high over the left `0.50,0.48,0.60`, violet light from all round `0.46,0.42,0.58` and a cold teal bounce from below `0.30,0.36,0.38`. The background is a deep violet `36,30,50`, and far islands fade into `0.16,0.13,0.21` (40 % at most, from 40 units to 76). The grade drains the colour (saturation 0.78, contrast 1.08), shade leans violet `0.92,0.86,1.16`, highlights a little green `0.98,1.03,1.0`, bloom only above 0.92 at 0.2, and a strong vignette (0.42) closes the picture in. No sky, no cloud shade, no lamps, no weather.
+- **The camera is the field's**, and it shows past the islands' edges into the void (no overscan of forest or rock).
+- **Don't** draw ground under the void, light it by the hour, give a void tile a face, or grow forest past a floor's edge.
+
 
 ### Water
 
@@ -223,7 +237,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Tower (Lost Tower, Battle Tower) | cut stone | four tiers, each a little narrower than the one below, a slit window in each, under a pointed slate cap |
 | Lighthouse | white stucco with a red band `214,72,62` | three narrowing tiers, a gallery, and a lantern room whose glass burns all night |
 | Factory (the mine's works, the Windworks, the Ironworks) | sheet metal under a flat roof | no windows but a strip under the eave; a sliding door; vents, and a smokestack on the Ironworks |
-| Warehouse | sheet metal under a low gable in the same metal | a sliding door two bays wide |
+| Warehouse | sheet metal under a low gable in the same metal; in snow country (Snowpoint's harbour storehouse) logs under a roof of snow | a sliding door two bays wide: in logs, barn doors of boards with rails and a brace across each leaf, and over them on the upper storey a loft door of boards in a frame of beams, with a hoist beam, a rope and a hook above it |
 | Mansion | plaster, two storeys, hip roof slate `88,98,126` | arched windows, an entrance block |
 | Team Galactic's buildings | dark panel under a flat roof | slit windows `120,230,220`, a yellow band `232,204,76` along the top, spikes on the roof corners |
 | Pokémon League | pale stone `214,210,204`, flat roofs | three tiers stepping back, a crimson band `196,60,70`, arched windows, a grand open porch |
@@ -264,6 +278,10 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Marsh tram | the Great Marsh's little tram on its rails: two steel rails on sleepers the length of its tiles, and a car of green boards with an open side, a pale roof and wheels, at the end nearer the gate |
 | Binoculars | a coin viewer on a post: a grey head with two eyepieces on a column 34 texels tall |
 | Pavilion | a white open shelter of the Hotel Grand Lake: four posts and a turquoise roof in the Resort's colours |
+| Sea stack | a stack of rock in the sea (Sunyshore City), built like the relief's rock: a wide foot wet where the waves break on it (`96,98,118`, `70,72,92`), a body over its west side and a taller crown over its east, each set back from the one under it, and a boulder broken off at the foot. The tops are mottled rock `158,152,150` / `146,140,140` with cracks `118,112,120` and gulls' white; the crown is grown over with sea grass `120,190,104` (tufts `76,146,88`, a ragged edge) and clumps of pink flowers `232,150,186`. The water's foam laps round its foot |
+| Snowdrift | a long low heap of snow banked against a wall, in the roof's snow `226,234,246`, `204,216,238` and its blue shade `176,192,226`, with drift lines along it, outlined in the deepest |
+| Rift | a tear standing in the air at Spear Pillar: a jagged slit 36 texels wide and as tall as its model, its core `48,34,66`, its edge lit (blue for Dialga's, pink for Palkia's) and glowing all night, with sparks round it |
+| Rift's shadow | the dark the rifts cast on the floor: rings of violet falling to the dark of the rift at the middle, flat on the ground, and a wisp rising from it |
 
 **The mine** (Oreburgh's yard and the mine under it; plan 01 · M5). The model of the yard blocks thin pieces of ground between its sheds, and those carry its conveyors (`WorldMapBuilder.Conveyors`):
 
@@ -665,9 +683,9 @@ Implemented so far: Twinleaf, Sandgem, Jubilife, Routes 201–202, Lake Verity, 
 | Snow (Route 216–217, Snowpoint) | white-blue ground, dark pines | low sun, cold grading: wherever the player stands in snow country (an area with more snow than lawn), the hour's rig has its sun lowered (its height × 0.7), dimmed and cooled (× 0.74 and `0.92, 0.97, 1.08`), its sky light cooled (`0.94, 0.98, 1.06`), more light bounced up off the ground (× 1.15), its fog cooled toward `0.8, 0.86, 0.96`, and its grading colder: saturation × 0.9, contrast × 1.04, bloom only above 0.95 and half as strong, highlights `0.98, 1.0, 1.06` and shade `0.86, 0.92, 1.18`. It eases in and out over a second at an area's border (`ArtLook.Snowbound`) |
 | Coast (Pastoria, Sunyshore) | warm sand, turquoise water | high sun, saturated |
 | Cities (Jubilife, Veilstone) | pale paving, glass and steel | neutral, crisp |
-| Distortion World | desaturated violets and greys | flat, eerie light |
+| Distortion World | grey-violet stone over a deep violet void, rims of pale rock, slabs with a star where the ways are | dim, cool and drained, the same at every hour ("The Distortion World") |
 
-Caves, buildings and the Distortion World will need their own rigs that ignore the clock, as rooms do today.
+Rooms, caves and the Distortion World have their own rigs that ignore the clock.
 
 ## Do and don't
 
@@ -695,8 +713,8 @@ Caves, buildings and the Distortion World will need their own rigs that ignore t
 
 - The interface is drawn a shape at a time: one or two tenths of a millisecond in the field, 1.2 ms for a double battle's menu. Drawing its shapes in batches would halve that; no scene needs it to stay inside the frame's budget. Battle models are drawn at one level of detail (their triangles are 0.3 ms of a frame), and scenery is batched per chunk rather than instanced, for the same reason: neither is where a frame goes.
 - Relief (plan 01 · M3) is drawn from the maps' heights, but no area open so far has any: it is seen on the harness's terrain lab until the hills past Jubilife City open. Raised ground does not shade the ground behind it yet: only its faces cast shadows.
-- Snow country has its own grading of the hour's light since plan 01 · M8, and caves their own rig since M5.
-- Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Thirty-three models have plain stand-ins until their area is built (`docs/world-models.md` says which). Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
+- Snow country has its own grading of the hour's light since plan 01 · M8, caves their own rig since M5, and the Distortion World its own since M8. Its walls and ceilings, walked with sideways gravity in the original, are not built: only its floors are walked.
+- Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Fourteen models have plain stand-ins until their area is built, all of them in plan 01 · M10 (`docs/world-models.md` says which); the last of M8's (Sunyshore's sea stack, Snowpoint's harbour storehouse and its drifts, Spear Pillar's rifts) were built with the Distortion World. Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
 - A cross gable would give the bigger houses their look.
 - A puddle has no look of its own yet (it is drawn as the ground round it), so nothing mirrors a walker; puddles and their reflections come with the first place that has them, Route 212 (plan 01 · M7). Only the player's steps leave prints, dust and leaves: other people don't walk about yet (plan 02).
 - The weather has its eleven looks, but the five places whose weather follows Platinum's calendar keep one weather until the calendar is imported with them (plan 01 · M7 and M8), and the moods Platinum gives some forests, caves and halls through the same setting are not built. Weather is silent until plan 05, and a battle doesn't yet begin in the field's weather (plan 06 · R3).

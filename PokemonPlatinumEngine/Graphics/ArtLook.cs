@@ -131,7 +131,23 @@ internal static class ArtLook
     public static LightRig FieldRig(float hour, bool indoors) => AtHour(hour, indoors ? IndoorRigFor : FieldRigFor);
 
     /// <summary>The field's light on a map: a room's by the clock through its windows, a cave's own, the sky's by the hour.</summary>
-    public static LightRig FieldRig(float hour, Overworld.Map map) => map.IsCave && !map.IsIndoors ? CaveFieldRig : FieldRig(hour, map.IsIndoors);
+    public static LightRig FieldRig(float hour, Overworld.Map map) =>
+        map.IsVoid ? VoidFieldRig : map.IsCave && !map.IsIndoors ? CaveFieldRig : FieldRig(hour, map.IsIndoors);
+
+    /// <summary>
+    /// The Distortion World (style guide, "The Distortion World"): it ignores the clock. A dim, cool key from high
+    /// over the left, violet light from all round and a cold teal bounce from below; the void behind everything is a
+    /// deep violet that far islands fade into; the colour is drained and the corners close in.
+    /// </summary>
+    public static readonly LightRig VoidFieldRig = new(
+        new SceneLighting(Dir(-0.32f, 0.88f, 0.34f), V(0.5f, 0.48f, 0.6f), V(0.46f, 0.42f, 0.58f), V(0.3f, 0.36f, 0.38f)),
+        Rgb(36, 30, 50), V(0.16f, 0.13f, 0.21f), 0.4f, 40f, 76f,
+        FieldDayPost with
+        {
+            BloomThreshold = 0.92f, BloomStrength = 0.2f, Saturation = 0.78f, Contrast = 1.08f,
+            ShadowTint = V(0.92f, 0.86f, 1.16f), HighlightTint = V(0.98f, 1.03f, 1.0f), Vignette = 0.42f
+        },
+        0f, 0.32f, NoSky);
 
     /// <summary>
     /// The field inside a cave (style guide, "Caves"): it ignores the clock. A low warm key from the upper left,

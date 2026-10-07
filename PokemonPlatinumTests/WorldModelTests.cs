@@ -570,6 +570,29 @@ public class WorldModelTests
     }
 
     [Fact]
+    public void ASeaStackStandsOnTheRockTheWorldBlocks()
+    {
+        // Its box lies two rows south of the tiles the world blocks (Sunyshore's does): it takes the blocked tiles
+        // joined to those under its box, and nothing apart from them
+        var blocked = new HashSet<(int, int)>();
+        for (int z = 2; z <= 7; z++)
+            for (int x = 4; x <= 9; x++)
+                blocked.Add((x, z));
+        blocked.Add((14, 5));
+        bool Blocked(int x, int z) => blocked.Contains((x, z));
+        Assert.Equal((4, 2, 9, 7), WorldMapBuilder.BlockedRound(4, 4, 9, 9, Blocked));
+        // With nothing blocked under it, its box
+        Assert.Equal((20, 20, 22, 22), WorldMapBuilder.BlockedRound(20, 20, 22, 22, Blocked));
+
+        // Sunyshore's own stands only over blocked tiles, so nobody surfs into its rock
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        var stack = Assert.Single(sinnoh.Props, p => p.Type == PropType.SeaStack);
+        for (int z = stack.Y; z < stack.Y + stack.Depth; z++)
+            for (int x = stack.X; x < stack.X + stack.Width; x++)
+                Assert.True(sinnoh.IsSolid(x, z), $"the sea stack stands over ({x},{z}), which is open");
+    }
+
+    [Fact]
     public void FencesFollowTheTownAndLowWallsJoinUp()
     {
         Assert.Equal(OutdoorProps.FenceKind.Wood, OutdoorProps.FenceOf(Architecture.Timber));

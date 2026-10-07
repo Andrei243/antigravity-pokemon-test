@@ -177,9 +177,29 @@ internal static partial class BuildingArt
     }
 
     /// <summary>A sliding door of ribbed metal on a rail, 52 by 40: works and warehouses.</summary>
-    private static void SlidingDoor(PixelCanvas c, int cx, int groundY)
+    private static void SlidingDoor(PixelCanvas c, int cx, int groundY, bool timber = false)
     {
         int x0 = cx - 26, y0 = groundY - 40;
+        if (timber)
+        {
+            // A pair of barn doors in boards under a beam, each with two rails and a brace from its foot to its far rail
+            c.Rect(x0 - 2, y0 - 4, 56, 4, Beam.Base);
+            c.HLine(x0 - 2, y0 - 4, 56, Beam.Light);
+            Pix.Raised(c, x0, y0, 52, 40, Boards);
+            for (int px = 6; px < 52; px += 6) c.VLine(x0 + px, y0 + 1, 38, Boards.Dark);
+            foreach (int leaf in new[] { x0, x0 + 26 })
+            {
+                c.Rect(leaf + 1, y0 + 6, 24, 3, Beam.Base);
+                c.Rect(leaf + 1, y0 + 31, 24, 3, Beam.Base);
+                c.HLine(leaf + 1, y0 + 6, 24, Beam.Light);
+                c.HLine(leaf + 1, y0 + 31, 24, Beam.Light);
+                for (int i = 0; i < 22; i++) c.Rect(leaf + 2 + i, y0 + 30 - i * 21 / 22, 2, 1, Beam.Base);
+            }
+            c.VLine(x0 + 25, y0, 40, Beam.Dark);
+            c.Rect(x0 + 21, y0 + 18, 2, 5, Iron.Dark);
+            c.Rect(x0 + 29, y0 + 18, 2, 5, Iron.Dark);
+            return;
+        }
         c.Rect(x0 - 2, y0 - 3, 56, 3, Iron.Base);
         c.HLine(x0 - 2, y0 - 3, 56, Iron.Light);
         var door = Tone.Of(PixelCanvas.Shadow(Metal.Base, 0.18f));
@@ -189,6 +209,28 @@ internal static partial class BuildingArt
         c.VLine(x0 + 26, y0, 40, door.Light);
         c.Rect(x0 + 21, y0 + 18, 2, 6, Iron.Dark);
         c.Rect(x0 + 29, y0 + 18, 2, 6, Iron.Dark);
+    }
+
+    /// <summary>
+    /// A loft door of boards standing on <paramref name="sillY"/>, 22 by 24 in a frame of beams; over the top one a
+    /// beam juts out with a rope hanging from it to a hook beside the door.
+    /// </summary>
+    private static void LoftDoor(PixelCanvas c, int cx, int sillY, bool top)
+    {
+        int x0 = cx - 11, y0 = sillY - 24;
+        c.Rect(x0 - 2, y0 - 2, 26, 28, Beam.Base);
+        c.HLine(x0 - 2, y0 - 2, 26, Beam.Light);
+        Pix.Raised(c, x0, y0, 22, 24, Boards);
+        for (int px = 5; px < 22; px += 5) c.VLine(x0 + px, y0 + 1, 22, Boards.Dark);
+        c.Rect(x0 + 1, y0 + 10, 20, 2, Beam.Base);
+        if (!top) return;
+        // The hoist: a beam's end over the door, the rope down beside it and the hook at its foot
+        c.Rect(cx - 4, y0 - 9, 8, 6, Beam.Base);
+        c.HLine(cx - 4, y0 - 9, 8, Beam.Light);
+        c.Rect(cx - 4, y0 - 4, 8, 1, Beam.Dark);
+        c.VLine(x0 + 25, y0 - 6, 18, Rgb(198, 176, 132));
+        c.Rect(x0 + 24, y0 + 12, 3, 2, Iron.Base);
+        c.Rect(x0 + 26, y0 + 14, 1, 2, Iron.Base);
     }
 
     /// <summary>Team Galactic's mark as this game draws it: a yellow lozenge with a dark core, <paramref name="size"/> across.</summary>

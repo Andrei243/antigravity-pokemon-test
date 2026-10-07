@@ -113,6 +113,9 @@ public class Map
     public MapSetting Setting { get; set; } = MapSetting.Outdoors;
     public bool IsCave => Setting == MapSetting.Cave;
 
+    /// <summary>The Distortion World (plan 01 · M8): islands over nothing, a light of their own, no weather.</summary>
+    public bool IsVoid => Setting == MapSetting.Void;
+
     /// <summary>The camera the field is looked at with here, as the area's header in the original names it.</summary>
     public FieldCamera Camera { get; set; } = FieldCamera.Default;
 
@@ -211,6 +214,7 @@ public class Map
         // The calendar follows the computer's date, as the original follows the DS's
         var weather = AreaAt(x, y) is { } area ? area.WeatherOn(Core.GameClock.Today) : Weather;
         if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;
+        if (IsVoid) return FieldWeather.Clear;
         return IsCave && weather != FieldWeather.Fog ? FieldWeather.Clear : weather;
     }
 
@@ -248,6 +252,8 @@ public class Map
                 case TileType.Sand: return BattleArena.Sand;
                 case TileType.Snow: return BattleArena.Snow;
                 case TileType.CaveFloor: return BattleArena.Cave;
+                // The Distortion World's own stage comes with its battles (plan 02 · S13); a cave's stands in
+                case TileType.DistortionGround or TileType.DistortionSlab: return BattleArena.Cave;
             }
         }
         return named ?? BattleArena.Grass;
@@ -662,7 +668,7 @@ public class Map
             for (int x = place.X; x < place.X + place.Width; x++)
             {
                 int i = y * Width + x;
-                groundLayer[i] = IsCave ? TileType.CaveWall : TileType.Tree;
+                groundLayer[i] = IsCave ? TileType.CaveWall : IsVoid ? TileType.Void : TileType.Tree;
                 overheadLayer[i] = null;
                 solidGrid[i] = true;
                 if (behaviours != null) behaviours[i] = Implied;

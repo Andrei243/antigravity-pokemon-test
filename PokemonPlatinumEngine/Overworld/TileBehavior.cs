@@ -149,10 +149,10 @@ public static class TileBehaviors
         [TileBehavior.PastoriaGymMiddle] = "Pastoria Gym: the middle tier of floor.",
         [TileBehavior.PastoriaGymLow] = "Pastoria Gym: the lowest tier of floor.",
         [TileBehavior.MovingFloor] = "Ground whose height the game moves (lifts, the gyms' platforms and water); it blocks while the floor is elsewhere.",
-        [TileBehavior.LongLedgeNorth] = "A drop two tiles deep, jumped northward.",
-        [TileBehavior.LongLedgeSouth] = "A drop two tiles deep, jumped southward.",
-        [TileBehavior.LongLedgeWest] = "A drop two tiles deep, jumped westward.",
-        [TileBehavior.LongLedgeEast] = "A drop two tiles deep, jumped eastward.",
+        [TileBehavior.LongLedgeNorth] = "A gap in the Distortion World, jumped northward to the third tile on.",
+        [TileBehavior.LongLedgeSouth] = "A gap in the Distortion World, jumped southward to the third tile on.",
+        [TileBehavior.LongLedgeWest] = "A gap in the Distortion World, jumped westward to the third tile on.",
+        [TileBehavior.LongLedgeEast] = "A gap in the Distortion World, jumped eastward to the third tile on.",
         [TileBehavior.StairsEast] = "Stairs at the side of a room: walking east onto them takes the warp there.",
         [TileBehavior.StairsWest] = "Stairs at the side of a room, taken walking west.",
         [TileBehavior.Unknown60] = "Not understood yet.",
@@ -263,7 +263,7 @@ public static class TileBehaviors
             => (BehaviourSupport.Ruled, "Ridden along on a Bicycle, never across, and never walked."),
 
         TileBehavior.LongLedgeNorth or TileBehavior.LongLedgeSouth or TileBehavior.LongLedgeWest or TileBehavior.LongLedgeEast
-            => (BehaviourSupport.Waiting, "The Distortion World's double jumps (plan 01 · M8)."),
+            => (BehaviourSupport.Ruled, "A gap in the Distortion World: jumped the way it faces, over it and the tile past it to the third tile on, on foot; the drop it is from every other side (`FieldMovement.LongJumpDirection`)."),
         TileBehavior.BikeRampEast or TileBehavior.BikeRampWest => (BehaviourSupport.Ruled, "On a Bicycle going its way, jumped: three tiles on in top gear, one in low. A wall on foot (`FieldMovement.RampDirection`)."),
         TileBehavior.PastoriaGymHigh or TileBehavior.PastoriaGymMiddle or TileBehavior.PastoriaGymLow or TileBehavior.MovingFloor
             => (BehaviourSupport.Waiting, "Floors whose height the game moves (plan 01 · M9)."),

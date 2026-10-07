@@ -350,7 +350,7 @@ public sealed class WorldRenderer
         weather = player != null ? map.WeatherAt(player.GridX, player.GridY) : FieldWeather.Clear;
         var rig = ArtLook.FieldRig(hour, map);
         // Snow country grades the light colder (style guide, the areas' table), easing in and out at its border
-        bool snowbound = player != null && !indoors && !map.IsCave && map.AreaAt(player.GridX, player.GridY)?.Snowbound == true;
+        bool snowbound = player != null && !indoors && !map.IsCave && !map.IsVoid && map.AreaAt(player.GridX, player.GridY)?.Snowbound == true;
         double now = Life.Now;
         snowMix = map != snowMap ? (snowbound ? 1f : 0f)
             : Math.Clamp(snowMix + (snowbound ? 1f : -1f) * (float)Math.Clamp(now - snowClock, 0, 1), 0f, 1f);
@@ -603,8 +603,9 @@ public sealed class WorldRenderer
         var t = new Vector3(px, groundY + 0.6f * MapScene.VerticalScaleOf(map), pz);
         var lens = MapScene.ViewOf(map);
         var (farOff, nearOff, halfW) = VisibleGround(t.Y - groundY, lens);
-        // A cave ends at its rock: the view stays inside it. The open country shows a few tiles of forest past its edge
-        float overscan = map.IsCave ? 0f : 4f;
+        // A cave ends at its rock and the Distortion World at its edge: the view stays inside them. The open country
+        // shows a few tiles of forest past its edge
+        float overscan = map.IsCave || map.IsVoid ? 0f : 4f;
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
         t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
 

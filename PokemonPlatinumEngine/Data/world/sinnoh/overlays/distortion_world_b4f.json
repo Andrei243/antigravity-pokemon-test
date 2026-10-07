@@ -1,0 +1,14 @@
+{
+  "area": "distortion_world_b4f",
+  "bgmTrack": "sinnoh/distortion_world",
+  "exits": [
+    // The slabs: up to B3F (sMovingPlatformMapTemplateB4F_1 and B4F_2, paths 10 and 11) and down to B5F (B4F_3, path 12)
+    { "x": 22, "z": 28, "map": "DistortionWorldB3F", "toX": 32, "toY": 41, "facing": "Down" },
+    { "x": 38, "z": 37, "map": "DistortionWorldB3F", "toX": 48, "toY": 50, "facing": "Down" },
+    { "x": 21, "z": 43, "map": "DistortionWorldB5F", "toX": 21, "toY": 43, "facing": "Down" },
+    // Up the wall (floating platform 0), across the ceiling (platform 1) to the waterfall that falls to B5F
+    // (sMapEventB4F_Waterfall, a cascade 42 tiles down): until gravity turns, the wall's foot carries the player to
+    // the shore of the pool the waterfall falls into
+    { "x": 48, "z": 22, "map": "DistortionWorldB5F", "toX": 44, "toY": 33, "facing": "Left" }
+  ]
+}

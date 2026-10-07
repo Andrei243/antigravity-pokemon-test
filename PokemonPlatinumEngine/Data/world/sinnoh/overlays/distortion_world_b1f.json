@@ -1,0 +1,13 @@
+{
+  "area": "distortion_world_b1f",
+  "bgmTrack": "sinnoh/distortion_world",
+  "exits": [
+    // The slabs: up to 1F (sMovingPlatformMapTemplateB1F_1, path 1) and down to B2F (B1F_2, path 2)
+    { "x": 40, "z": 19, "map": "DistortionWorld1F", "toX": 19, "toY": 44, "facing": "Down" },
+    { "x": 33, "z": 10, "map": "DistortionWorldB2F", "toX": 18, "toY": 45, "facing": "Down" },
+    // The wall walked sideways between its two ends (the original's floating platform 0 and its four jump points,
+    // tw_arc.narc): until gravity turns, each end carries the player to the other
+    { "x": 12, "z": 14, "map": "DistortionWorldB1F", "toX": 12, "toY": 23, "facing": "Right" },
+    { "x": 12, "z": 23, "map": "DistortionWorldB1F", "toX": 12, "toY": 14, "facing": "Right" }
+  ]
+}
