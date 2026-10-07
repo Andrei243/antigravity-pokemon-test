@@ -1726,6 +1726,12 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
+    // ------------------------------------------------------------------ Mega Heatran and Mega Darkrai (their builds in PokemonModels.Sinnoh5.cs)
+
+    private static PokeBuilder HeatranMega() => HeatranBuild(true);
+
+    private static PokeBuilder DarkraiMega() => DarkraiBuild(true);
+
     // ------------------------------------------------------------------ Mega Emboar (its build in PokemonModels.Unova1.cs)
 
     private static PokeBuilder EmboarMega() => EmboarBuild(true);

@@ -505,4 +505,16 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Gigantamax Melmetal (its build in PokemonModels.Alola3.cs)
 
     private static PokeBuilder MelmetalGmax() => MelmetalBuild(true);
+
+    // ------------------------------------------------------------------ Galar's: Rillaboom, Cinderace, Inteleon, Corviknight and Orbeetle (their builds in PokemonModels.Galar1.cs)
+
+    private static PokeBuilder RillaboomGmax() => RillaboomBuild(true);
+
+    private static PokeBuilder CinderaceGmax() => CinderaceBuild(true);
+
+    private static PokeBuilder InteleonGmax() => InteleonBuild(true);
+
+    private static PokeBuilder CorviknightGmax() => CorviknightBuild(true);
+
+    private static PokeBuilder OrbeetleGmax() => OrbeetleBuild(true);
 }
