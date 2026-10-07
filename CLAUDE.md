@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A fan remake of Pokémon Platinum in C# (.NET 10) on Raylib-cs 8.1 (raylib 6.0), built toward the full game over many sessions. The roadmap lives in `docs/plans/` (start with `docs/plans/README.md`); the art rules live in `docs/art/style-guide.md`. Read the relevant plan before continuing roadmap work, and tick its status checklist and record decisions in it when a session ends.
+A fan remake of Pokémon Platinum in C# (.NET 10) on Raylib-cs 8.1 (raylib 6.0), built toward the full game over many sessions. The roadmap lives in `docs/plans/` (start with `docs/plans/README.md`; `docs/plans/00-overview.md` is the order of what is left, in waves of sessions that run side by side); the art rules live in `docs/art/style-guide.md`. Read the relevant plan before continuing roadmap work, and tick its status checklist and record decisions in it when a session ends.
 
 The git repository is this folder. The parent folder has the same name and is not a repository; sessions often start there.
 

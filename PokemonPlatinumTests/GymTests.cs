@@ -492,6 +492,9 @@ public class GymTests
         Assert.True(room.IsWalkable(door.TargetX, door.TargetY));
         var back = Assert.Single(room.Warps, w => w.TargetMap == "Sinnoh");
         Assert.Equal((door.SourceX, door.SourceY + 1), (back.TargetX, back.TargetY));
-        Assert.True(world.IsWalkable(back.TargetX, back.TargetY));
+        // The way out is open ground; only someone a story flag takes off the map may stand on it (Gardenia, at her
+        // door until she is spoken to, plan 02 · S6)
+        Assert.False(world.IsSolid(back.TargetX, back.TargetY));
+        Assert.All(world.NPCs.Where(n => (n.GridX, n.GridY) == (back.TargetX, back.TargetY)), n => Assert.NotNull(n.HiddenBy));
     }
 }
