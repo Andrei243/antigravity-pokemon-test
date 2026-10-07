@@ -10,10 +10,13 @@ namespace PokemonPlatinumEngine.Data;
 /// the player's house), the tile of the map of Sinnoh in front of it where Fly and Teleport land, the room whose
 /// door sets it as the place to come back to, and whether arriving in the town is what lets one fly there.
 /// </summary>
-public sealed record SpawnLocation(int Id, string Area, int X, int Y, string Room, bool UnlockedOnArrival = true)
+public sealed record SpawnLocation(int Id, string Area, int X, int Y, string Room, bool UnlockedOnArrival = true, string? Flag = null)
 {
-    /// <summary>The flag that first arriving in the town sets, which lets one fly there: <c>FLAG_FIRST_ARRIVAL_ETERNA_CITY</c>.</summary>
-    public string ArrivalFlag => "FLAG_FIRST_ARRIVAL_" + Area.ToUpperInvariant();
+    /// <summary>
+    /// The flag that first arriving in the town sets, which lets one fly there: <c>FLAG_FIRST_ARRIVAL_ETERNA_CITY</c>.
+    /// The League's two are set by its Pokémon Centers' own scripts, as the original's are.
+    /// </summary>
+    public string ArrivalFlag => Flag ?? "FLAG_FIRST_ARRIVAL_" + Area.ToUpperInvariant();
 }
 
 /// <summary>
@@ -45,7 +48,7 @@ public static class SpawnLocations
         new(12, "veilstone_city", 717, 612, "VeilstonePokemonCenter"),
         new(13, "sunyshore_city", 860, 785, "SunyshorePokemonCenter"),
         new(14, "snowpoint_city", 379, 234, "SnowpointPokemonCenter"),
-        new(15, "pokemon_league", 842, 599, "PokemonLeagueSouthPokemonCenter", UnlockedOnArrival: false),
+        new(15, "pokemon_league", 842, 599, "PokemonLeagueSouthPokemonCenter", UnlockedOnArrival: false, Flag: "FLAG_FIRST_ARRIVAL_OUTSIDE_VICTORY_ROAD"),
         new(16, "fight_area", 647, 430, "FightAreaPokemonCenter"),
         new(17, "survival_area", 659, 339, "SurvivalAreaPokemonCenter"),
         new(18, "resort_area", 802, 473, "ResortAreaPokemonCenter"),
@@ -59,7 +62,7 @@ public static class SpawnLocations
     public static SpawnLocation? ArrivedIn(string areaKey) => All.FirstOrDefault(s => s.Area == areaKey && s.UnlockedOnArrival);
 
     /// <summary>The place a room makes the one to come back to, on going into it (<c>GetMapBlackOutWarpId</c>).</summary>
-    public static SpawnLocation? OfRoom(string mapName) => All.FirstOrDefault(s => s.Room == mapName && s.Id != 19);
+    public static SpawnLocation? OfRoom(string mapName) => All.FirstOrDefault(s => s.Room == mapName && s.Id != PalParkLobby);
 
     /// <summary>Where Teleport takes the player: the town of the Pokémon Center they last went into, Twinleaf Town before any.</summary>
     public static SpawnLocation Respawn(StoryState story) => Get(story.Var(Variable)) ?? All[0];
@@ -68,5 +71,8 @@ public static class SpawnLocations
     /// The towns Fly can go to: those first arrived in, among the areas that are open, in the original's order.
     /// </summary>
     public static IEnumerable<SpawnLocation> FlyDestinations(StoryState story, Func<string, bool> isOpen) =>
-        All.Where(s => s.UnlockedOnArrival && story.Has(s.ArrivalFlag) && isOpen(s.Area));
+        All.Where(s => s.Id != PalParkLobby && story.Has(s.ArrivalFlag) && isOpen(s.Area));
+
+    /// <summary>Pal Park's lobby: a place to come back to, never one to fly to (the original's <c>isWarpPos</c> 0).</summary>
+    public const int PalParkLobby = 19;
 }

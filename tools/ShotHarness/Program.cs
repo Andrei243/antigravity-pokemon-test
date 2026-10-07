@@ -3571,11 +3571,12 @@ if (mode == "jubilife")
         if (!holds()) Console.WriteLine($"  !! never happened: {what}");
     }
     void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
-    void ReadTo(string? text, int most = 3000)
+    void ReadTo(string? text, int most = 1500)
     {
         for (int i = 0; i < most; i++)
         {
-            if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); return; }
+            if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+            if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 60) break;
             if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
             if (State() == GameState.Battle) { Win(); continue; }
             if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
@@ -3619,8 +3620,14 @@ if (mode == "jubilife")
         interact.Invoke(engine, null);
     }
 
+    // Whatever the new game started (the bedroom's television) is read to its end first
+    Frames(5);
+    Console.WriteLine($"jubilife mode: script running {engine.ScriptRunning}, text {Box().IsActive}, state {State()}");
+    ReadTo(null, 600);
+
     // ---- Jubilife City: the assistant comes to meet the player, and Looker
     StepOnto(174, 796, Direction.Up);
+    Console.WriteLine($"first arrival: script running {engine.ScriptRunning}, at {((Player)Get("player")).GridX},{((Player)Get("player")).GridY}");
     ReadTo("Welcome to Jubilife City"); Frames(10); Shot("j01_jubilife_the_assistant");
     ReadTo("Surely the name"); Until(() => engine.Choice.IsOpen, "Looker's question"); Frames(20); Shot("j02_jubilife_looker");
     ReadTo("Trainers' School."); Frames(10); Shot("j03_jubilife_the_school");

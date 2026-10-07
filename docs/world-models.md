@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-174 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+176 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -147,7 +147,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `l2_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.9 | 7 | Route 213, Valor Lakefront |
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
-| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 8 | Lake Valor, Lake Verity |
+| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 12 | Lake Acuity, Lake Valor, Lake Verity |
 | `lift_base01` | the platform at the foot of a lift on Iron Island | a prop: LiftBase |  | 3.0 × 2.3 × 0.9 | 2 | Iron Island |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |
 | `pc` | a Pokémon Center | a building: PokemonCenter |  | 5.2 × 3.6 × 3.9 | 16 | Canalave City, Celestic Town, Eterna City and 13 more |
@@ -190,7 +190,9 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `wfall11_14` | a waterfall | nothing of its own: the ground under it draws it |  | 11.0 × 0.8 × 14.6 | 1 | Pokémon League |
 | `wfall16_5` | a waterfall | nothing of its own: the ground under it draws it |  | 16.0 × 0.8 × 5.6 | 1 | Pokémon League |
 | `wfall3_4` | a waterfall | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 4.6 | 3 | Route 210 |
+| `wfall3_4dun` | a waterfall in a cave (Victory Road) | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 4.6 | 2 | Victory Road |
 | `wfall3_5` | a waterfall | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 5.6 | 1 | Route 208 |
+| `wfall7_4dun` | a waterfall in a cave (Mt. Coronet's fourth floor) | nothing of its own: the ground under it draws it |  | 7.0 × 0.8 × 4.6 | 1 | Mt. Coronet |
 
 ## In numbers
 

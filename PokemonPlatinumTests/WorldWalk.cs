@@ -85,8 +85,10 @@ internal static class WorldWalk
                 else if (step.Obstacle == Obstacle.Person && mode == TravelMode.OnFoot && map.GetNpcAt(nx, ny) is { IsThing: true }
                          && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, TravelMode.OnFoot, map.HeightAt(nx, ny), arrived: false);
-                // Someone a new game hides until their scene (the rival on his own doorstep) isn't in the way at all
-                else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { HiddenBy: { } hiding } && HiddenAtStart.Value.Contains(hiding)
+                // Someone a new game hides until their scene (the rival on his own doorstep) isn't in the way at all, and
+                // nor is someone the story takes away (the rival at the Oreburgh Gym's door, once Roark is back)
+                else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { HiddenBy: { } hiding }
+                         && (HiddenAtStart.Value.Contains(hiding) || HiddenByTheStory.Value.Contains(hiding))
                          && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // Someone who takes the player somewhere when spoken to (a ferry) is a way there too
@@ -108,6 +110,11 @@ internal static class WorldWalk
         PokemonPlatinumEngine.Story.StoryMigration.BeginNewGame(story, PokemonPlatinumEngine.Story.ScriptLibrary.Default);
         return story.Flags.ToHashSet();
     });
+
+    /// <summary>The flags some script sets: whoever they hide stands in the way only until the story moves them on.</summary>
+    public static readonly Lazy<HashSet<string>> HiddenByTheStory = new(() =>
+        PokemonPlatinumEngine.Story.ScriptLibrary.Default.All.SelectMany(s => s.Everything())
+            .Where(i => i.Op == PokemonPlatinumEngine.Story.Op.SetFlag && !i.Own).Select(i => i.Name).ToHashSet(StringComparer.Ordinal));
 
     /// <summary>Where a person's script can send the player (its <c>warp</c> commands, whichever answer leads there).</summary>
     private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file) =>

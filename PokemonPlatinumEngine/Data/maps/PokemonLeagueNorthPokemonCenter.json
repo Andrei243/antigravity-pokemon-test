@@ -148,7 +148,8 @@
       "dialog": [
         "Clerk: Welcome! This counter keeps a few things for trainers who've come this far."
       ],
-      "isPokeMartClerk": true
+      "isPokeMartClerk": true,
+      "mart": "pokemon_league"
     },
     {
       "name": "Trainer",

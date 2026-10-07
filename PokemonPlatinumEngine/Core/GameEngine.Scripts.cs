@@ -394,8 +394,20 @@ public partial class GameEngine
             runner.Abort();
         }
         RefreshPresence();
-        if (!runner.IsRunning) EndScript();
+        if (!runner.IsRunning)
+        {
+            EndScript();
+            // The tiles a step into a new place ended on are tried once that place's own script is done (OnStep)
+            if (triggerAfterEnter)
+            {
+                triggerAfterEnter = false;
+                if (currentState == GameState.Overworld) TryStepTrigger();
+            }
+        }
     }
+
+    /// <summary>A step came into a new place, whose script runs first: the trigger under the player waits for it.</summary>
+    private bool triggerAfterEnter;
 
     /// <summary>People a script set walking take their steps, and the player theirs or stands still. Also under text.</summary>
     private void AdvanceScriptedWalks(float dt)
