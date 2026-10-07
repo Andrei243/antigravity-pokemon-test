@@ -1475,7 +1475,10 @@ public partial class GameEngine
                 PlayerName = name,
                 SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0
             });
-            battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
+            // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
+            // terrain gives both the same platforms), whatever ground the player cast from
+            if (hooked) battleRenderer.SetArena(BattleArena.Water, trees: currentMap.TreesAt(player.GridX, player.GridY));
+            else battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
 

@@ -485,6 +485,12 @@ public partial class BattleEngine
             case GotAway:
                 AudioManager.PlaySound("run_away", -0.3f);
                 break;
+            case Left { Ran: true } left:
+                // A wild Pokémon that runs (a roamer, one of the Great Marsh's) is gone from its platform as its line
+                // is read, with the sound of running; one called back goes with its recall
+                Anim[left.Place.Side, left.Place.Slot].Present = false;
+                Sound("run_away", left.Place.Side);
+                break;
             case Fainted fainted:
                 if (At(fainted.Place).Pokemon is { } down)
                 {
