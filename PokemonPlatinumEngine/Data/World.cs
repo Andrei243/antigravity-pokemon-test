@@ -187,6 +187,8 @@ public static class WorldMapBuilder
         var under = new bool[map.Width * map.Height];
         // Open tiles whose ground the import couldn't name: they take the ground round them
         var vague = new List<(int X, int Z)>();
+        // Blocked tiles the original draws nothing on: forest among trees, rock anywhere else
+        var blank = new List<(int X, int Z)>();
         // How many of each area's trees are broad-leaved and how many are pines, and how much of its ground is snow or green
         var trees = new Dictionary<MapArea, (int Broad, int Pine, int Snow, int Green)>();
         for (int cy = 0; cy < matrix.Height; cy++)
@@ -198,7 +200,7 @@ public static class WorldMapBuilder
 
                 int id = matrix.ChunkAt(cx, cy);
                 if (id == WorldMatrixFile.NoChunk || world.Chunk(id) is not { } chunk) continue;
-                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague);
+                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank);
                 foreach (var prop in chunk.Props)
                     models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, WorldModels.Of(prop.Name), area));
 
@@ -260,6 +262,7 @@ public static class WorldMapBuilder
             foreach (var (x, z) in OpenMouthsLeadingNowhere(map, entrances)) vague.Add((x, z));
             foreach (var (x, z) in vague) under[z * map.Width + x] = true;
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, GroundLike(map, x, z, under), map.IsSolid(x, z));
+            BareRock(map, blank);
             StreetLamps(map, under);
             // The mouth of a cave is no rock: it stays at the level of the ground, a dark hollow under the rock round it
             RaiseRock(map, (x, z) => map.GetGroundTile(x, z) == TileType.Rock && map.IsSolid(x, z));
@@ -471,6 +474,32 @@ public static class WorldMapBuilder
         if (type == TileType.CaveFloor) return (TileType.DistortionGround, blocks, null);
         return (type, blocks, prop);
     }
+
+    /// <summary>
+    /// A blocked tile with nothing drawn on it in the original is forest where trees stand within
+    /// <see cref="BlankReach"/> tiles of it, and rock anywhere else: the bare ground round Mt. Coronet's faces and
+    /// past Spear Pillar's way in was pine forest because whatever blocks without saying what it is was taken for a tree.
+    /// </summary>
+    private static void BareRock(Map map, List<(int X, int Z)> blank)
+    {
+        var isBlank = new HashSet<(int X, int Z)>(blank);
+        bool TreeNear(int x, int z)
+        {
+            for (int dz = -BlankReach; dz <= BlankReach; dz++)
+                for (int dx = -BlankReach; dx <= BlankReach; dx++)
+                {
+                    int nx = x + dx, nz = z + dz;
+                    if (map.InBounds(nx, nz) && !isBlank.Contains((nx, nz)) && map.GetGroundTile(nx, nz) == TileType.Tree) return true;
+                }
+            return false;
+        }
+        // Decided on the map as it was, so the first tiles turned to rock don't decide their neighbours
+        var bare = blank.Where(t => !TreeNear(t.X, t.Z)).ToList();
+        foreach (var (x, z) in bare) map.SetGroundTile(x, z, TileType.Rock, isSolid: true);
+    }
+
+    /// <summary>How far a blocked tile nobody named looks for trees before it is taken for forest.</summary>
+    public const int BlankReach = 2;
 
     /// <summary>
     /// Stands rock up above the ground (style guide, "Caves" and "Rock outdoors"): each tile of rock on the
@@ -724,7 +753,9 @@ public static class WorldMapBuilder
     /// <param name="altitude">How high the matrix sets the whole chunk, in tiles.</param>
     /// <param name="under">Marks the tiles whose look is settled later, by the model that stands on them.</param>
     /// <param name="vague">Gathers the open tiles of ground nobody named.</param>
-    private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, bool[] under, List<(int X, int Z)> vague)
+    /// <param name="blank">Gathers the blocked tiles the original draws nothing on.</param>
+    private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, bool[] under,
+        List<(int X, int Z)> vague, List<(int X, int Z)> blank)
     {
         for (int z = 0; z < T; z++)
             for (int x = 0; x < T; x++)
@@ -742,6 +773,7 @@ public static class WorldMapBuilder
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
                 if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
                 if (cover == TerrainCover.Unknown && !solid && type == TileType.Grass) vague.Add((ox + x, oy + z));
+                if (cover == TerrainCover.Unknown && solid && type == TileType.Tree) blank.Add((ox + x, oy + z));
                 if (prop is { } standing && (blocks || !area.Open)) map.Props.Add(new Prop { Type = standing, X = ox + x, Y = oy + z });
             }
     }

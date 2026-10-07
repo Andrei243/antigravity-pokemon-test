@@ -71,7 +71,7 @@ Three kinds are built things and keep straight edges, tile for tile, instead of 
 
 | Kind | Look |
 |---|---|
-| Paving (the ground of cities) | stone slabs 16 texels square, `204,206,214`, one in four a shade darker `194,198,208`, with a joint line `168,172,188` along each slab's east and south edge. Where paving meets other ground it ends in a kerb two texels wide, `150,154,172` with a light line `226,228,234` inside it |
+| Paving (the ground of cities, and the ancient floor of Spear Pillar) | stone slabs 16 texels square, `204,206,214`, one in four a shade darker `194,198,208`, with a joint line `168,172,188` along each slab's east and south edge. Where paving meets other ground it ends in a kerb two texels wide, `150,154,172` with a light line `226,228,234` inside it |
 | Planks (bridge decks, boardwalks) | boards 8 texels wide laid across the way one walks, `178,134,92`, every third one a shade lighter `192,150,104`; a groove `126,90,62` between boards, a nail texel `96,70,52` at each end, and a dark rail line `104,74,54` along the deck's open sides |
 | Stairs | treads 8 texels deep in stone `184,178,170`: a light nose `214,210,204` on the edge that faces downhill and the riser's shade `122,116,124` under it, so a flight reads as steps whichever way it climbs |
 
