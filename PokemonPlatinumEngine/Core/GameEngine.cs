@@ -791,6 +791,10 @@ public partial class GameEngine
         KeepTheClock();
         SlideBoulders(dt);
         poketchView.Update(dt);
+        // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
+        // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
+        // anywhere else left people where they were until the next of those
+        RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
         partner?.Update(dt, player.Stride);
