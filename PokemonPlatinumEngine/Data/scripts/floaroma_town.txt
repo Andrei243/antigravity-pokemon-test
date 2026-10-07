@@ -1,0 +1,15 @@
+# Floaroma Town (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_floaroma_town.s).
+#
+# Two Team Galactic grunts stand on the way into Floaroma Meadow until the little girl on Route 205 tells the player
+# what they are up to; she sets FLAG_HIDE_FLOAROMA_TOWN_GRUNTS, and they are gone into the meadow.
+
+
+# Either grunt spoken to (the original's script 2): they talk between themselves, and nobody gets by.
+script Grunts
+  face grunt_m_west right
+  speaker "Team Galactic Grunt"
+  say "Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?"
+  face grunt_m_east left
+  say "Quit moaning. Orders are orders. Now look tough, there's a kid watching."
+  end

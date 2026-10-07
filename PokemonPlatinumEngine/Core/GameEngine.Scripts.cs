@@ -81,7 +81,7 @@ public partial class GameEngine
     /// <param name="flag">The flag its <c>setflag own</c> sets, when it isn't the one that hides the subject.</param>
     /// <param name="pokemon">The Pokémon of the team the script is for: the one whose field move was chosen in the party menu.</param>
     public bool StartScript(string name, NPC? subject = null, IReadOnlyList<string>? own = null, string? file = null,
-        (string Item, int Count)? item = null, string? flag = null, Pokemon? pokemon = null)
+        (string Item, int Count)? item = null, string? flag = null, Pokemon? pokemon = null, NPC? pair = null)
     {
         file ??= subject?.ScriptFile ?? currentMap.ScriptFileAt(subject?.GridX ?? player.GridX, subject?.GridY ?? player.GridY);
         if (scripts.Find(name, file) is not { } script)
@@ -89,7 +89,7 @@ public partial class GameEngine
             Console.Error.WriteLine($"No script '{name}' for {file}.");
             return false;
         }
-        runner.Start(script, subject, own, item, flag, pokemon);
+        runner.Start(script, subject, own, item, flag, pokemon, pair);
         return true;
     }
 
@@ -138,6 +138,11 @@ public partial class GameEngine
         foreach (var walk in npcWalks) walk.Finish();
         npcWalks.Clear();
         playerWalk = null;
+        // Those who move about of their own accord start again from where they first stood, as the original lays
+        // its objects out afresh (plan 02 · S6)
+        wandering.Clear();
+        Wandering.SendHome(currentMap);
+        KeepPartnerAlong();
         arrived = true;
     }
 
@@ -202,7 +207,7 @@ public partial class GameEngine
     {
         var user = playerParty.Members[index];
         var walker = new Walker(player.Mode, player.HeightOn(currentMap), Moves: player.Moves);
-        var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker);
+        var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker) with { Partner = partner != null };
         var error = FieldMoveRules.Check(move, spot, story);
         // Dig needs a way out to lead to, and Fly a town to fly to
         var towns = SpawnLocations.FlyDestinations(story, key => MapDatabase.Get("Sinnoh").Areas.Any(a => a.Key == key && a.Open)).ToList();
@@ -301,6 +306,14 @@ public partial class GameEngine
             UseVsSeeker();
             return;
         }
+        // Travelling with someone, the Bicycle, the rods and an Escape Rope stay in the bag (CanUseBicycle,
+        // CanUseFishingRod, CanUseEscapeRope: ITEM_USE_CANNOT_USE_WITH_PARTNER)
+        if (partner != null && (item.FieldUse is "Bicycle" or "EscapeRope" || FishingAttempt.RodOf(item) != null))
+        {
+            ShowNotification(FieldMoveRules.Why(FieldMoveError.Partner));
+            AudioManager.PlaySound("error");
+            return;
+        }
         if (item.FieldUse == "Bicycle")
         {
             var check = BicycleRules.Check(currentMap, x, y, player.Mode, story.Has(BicycleRules.OnCyclingRoadFlag));
@@ -331,7 +344,7 @@ public partial class GameEngine
         }
         if (item.FieldUse == "EscapeRope")
         {
-            var spot = FieldMoveRules.SpotOf(currentMap, x, y, player.Facing, new Walker(player.Mode, player.HeightOn(currentMap)));
+            var spot = FieldMoveRules.SpotOf(currentMap, x, y, player.Facing, new Walker(player.Mode, player.HeightOn(currentMap))) with { Partner = partner != null };
             if (!spot.CaveWithAWayOut || exitSpot == null)
             {
                 ShowNotification("There's no way out to be found with it here.");
@@ -680,6 +693,8 @@ public partial class GameEngine
         /// <summary>Whoever is told to go somewhere else first arrives where they were going.</summary>
         private void StopWalk(NPC who)
         {
+            game.wandering.Settle(who);
+            if (game.partner?.Who == who) game.partner.Settle();
             foreach (var walk in game.npcWalks.Where(w => w.Who == who)) walk.Finish();
             game.npcWalks.RemoveAll(w => w.Who == who);
         }
@@ -859,6 +874,10 @@ public partial class GameEngine
         }
 
         public void Turnback() => TurnbackCave.Reaim(game.currentMap, game.player.GridX, game.player.GridY, game.story, Dice.Shared);
+
+        public void TravelWith(NPC? who, string? trainerId) => game.SetPartner(who, trainerId);
+
+        public string? Partner => game.partner?.TrainerId;
 
         public bool Escape()
         {

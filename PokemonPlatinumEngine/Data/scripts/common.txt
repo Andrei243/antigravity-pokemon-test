@@ -54,6 +54,19 @@ script ChapterTwo
 script ChapterThree
   setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
   setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  # Windworks and Eterna (scripts_init_new_game.s): who comes once Commander Mars is beaten, and Eterna's people
+  # whose scenes come later
+  setflag FLAG_HIDE_ROUTE_205_SOUTH_YOUNGSTER
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_LITTLE_GIRL
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER
+  setflag FLAG_HIDE_ETERNA_FOREST_GARDENIA
+  setflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
+  setflag FLAG_HIDE_ETERNA_CITY_RIVAL
+  setflag FLAG_HIDE_ETERNA_CITY_POKECENTER_1F_BUNEARY
+  setflag FLAG_HIDE_CYCLE_SHOP_POKEFAN_M
+  setflag FLAG_HIDE_CYCLE_SHOP_CLEFAIRY
+  setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_LOOKER
+  setflag FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK
   return
 
 
@@ -190,6 +203,15 @@ label Beaten
 label Rematch
   trainerline before
   battle self rematch
+  end
+
+# Two trainers who saw the player at once and came up together (APPROACH_TYPE_VS2, plan 02 · S6): both say their
+# line and battle side by side, against the player's two Pokémon or, while someone travels with the player, against
+# the player and that partner (BATTLE_TYPE_TRAINER_WITH_AI_PARTNER)
+script TrainerPair
+  trainerline before
+  trainerline before pair
+  battle self and pair with partner
   end
 
 

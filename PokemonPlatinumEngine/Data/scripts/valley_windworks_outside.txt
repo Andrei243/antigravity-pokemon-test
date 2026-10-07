@@ -1,0 +1,79 @@
+# The Valley Windworks, outside (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_valley_windworks_outside.s).
+#
+# A grunt guards the door. Beaten, he locks himself in with his key; the other key is the one the meadow's grunts
+# dropped, and with it the door opens (FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR, which the door waits for). Coming out
+# after Commander Mars, the player meets Looker, who looks inside and says where Team Galactic is based.
+# VAR_VALLEY_WINDWORKS_LOOKER_STATE: 1 waiting outside, 2 gone. The Drifloon of Fridays waits for a Pokémon that can
+# stand in the field.
+
+
+script OnEnter
+  if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE == 2 setvar VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 3
+  if var VAR_VALLEY_WINDWORKS_LOOKER_STATE == 1 goto Looker
+  end
+label Looker
+  # Stepping out after Commander Mars (the original's OnFrame script)
+  emote looker exclaim
+  wait 0.3
+  walk looker up 4 fast
+  face looker right
+  face player left
+  speaker "Looker"
+  say "Ah, it is you! Allow me: Looker, of the International Police. I shall investigate inside. Wait here a moment!"
+  walk player down 1
+  face player up
+  walk looker right 1
+  face looker up
+  sound "door_open"
+  hide looker
+  sound "door_close"
+  wait 2.0
+  sound "door_open"
+  show looker
+  sound "door_close"
+  face looker down
+  say "Nobody left inside but the staff. But listen: Team Galactic has a building of its own, in Eterna City."
+  say "Whatever they are planning, the answer must lie there. Until we meet again!"
+  wait 0.3
+  face player left
+  face player down
+  walk looker left 1 down 7 left 9 fast
+  hide looker
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER
+  setvar VAR_VALLEY_WINDWORKS_LOOKER_STATE 2
+  end
+
+
+# The grunt on the door's mat (the original's script 3).
+script DoorGrunt
+  speaker "Team Galactic Grunt"
+  say "You want inside? You'll have to get past me. Let's battle for it!"
+  battle self as "galactic_grunt_valley_windworks_1"
+  speaker "Team Galactic Grunt"
+  say "Owned by some kid... Fine! I'm locking myself in with my key, and you can't get through!"
+  say "The only other key is with my pals in the flower meadow. Ha!"
+  face self up
+  sound "door_open"
+  hide self
+  sound "door_close"
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_GRUNT_M
+  speaker none
+  text "Ka-chunk!"
+  end
+
+
+# The door (the original's bg script 4): locked until the Works Key turns in it.
+script Door
+  speaker none
+  if flag FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR end
+  if not flag FLAG_OBTAINED_FLOAROMA_MEADOW_WORKS_KEY goto Locked
+  ask "The door is locked from the inside. Use the Works Key?"
+  if no end
+  setflag FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR
+  sound "door_open"
+  text "Ka-chunk! The door is open!"
+  end
+label Locked
+  text "The door is locked from the inside."
+  end

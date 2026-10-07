@@ -25,9 +25,13 @@ public sealed class TrainerApproach
     private float stepProgress;
     private float turnTimer = TurnTime;
 
-    public TrainerApproach(NPC trainer, Player player)
+    // Whether the player turns to face this trainer once they stand face to face: the first of two who came together
+    private readonly bool turnPlayer;
+
+    public TrainerApproach(NPC trainer, Player player, bool turnPlayer = true)
     {
         Trainer = trainer;
+        this.turnPlayer = turnPlayer;
         (dx, dy) = Step(trainer.Facing);
         stepsLeft = Math.Abs(player.GridX - trainer.GridX) + Math.Abs(player.GridY - trainer.GridY) - 1;
 
@@ -36,9 +40,10 @@ public sealed class TrainerApproach
         trainer.ExclamationTimer = ExclaimTime;
     }
 
-    /// <summary>The first trainer still waiting for a battle who is looking at the tile, or null.</summary>
-    public static NPC? FindSpotter(Map map, int x, int y) =>
-        map.NPCs.FirstOrDefault(n => n.IsTrainer && !n.HasBattled && n.TrainerData != null && CanSee(map, n, x, y));
+    /// <summary>The first trainer still waiting for a battle who is looking at the tile, or null; one other than <paramref name="except"/>, when given.</summary>
+    public static NPC? FindSpotter(Map map, int x, int y, NPC? except = null) =>
+        map.NPCs.FirstOrDefault(n => n != except && n.IsTrainer && !n.HasBattled && n.TrainerData != null && CanSee(map, n, x, y)
+            && (except?.TrainerData == null || n.TrainerData!.Id != except.TrainerData.Id));
 
     /// <summary>
     /// Trainers look straight ahead for as many tiles as their sight range, and not past anything they
@@ -116,7 +121,7 @@ public sealed class TrainerApproach
             Trainer.StepOffsetX = -dx;
             Trainer.StepOffsetY = -dy;
         }
-        else
+        else if (turnPlayer)
         {
             player.Facing = Opposite(Trainer.Facing);
         }

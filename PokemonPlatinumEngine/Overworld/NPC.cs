@@ -27,6 +27,9 @@ public class NPC
     public bool HasSpottedPlayer { get; set; } = false;
     public float ExclamationTimer { get; set; } = 0f;
 
+    /// <summary>How they move about when nobody sends them anywhere (plan 02 · S6); null for someone who stands still.</summary>
+    public PersonMovement? Movement { get; set; }
+
     /// <summary>What shows in the bubble over this person's head, for how much longer, and for how long it has.</summary>
     public EmoteBubble Bubble { get; private set; }
     public float BubbleTimer { get; private set; }

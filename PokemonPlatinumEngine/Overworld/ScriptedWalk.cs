@@ -27,11 +27,16 @@ public sealed class NpcWalk
     /// <summary>True once they stand where the walk ends, legs still.</summary>
     public bool IsDone { get; private set; }
 
-    public NpcWalk(NPC who, IEnumerable<Direction> path, bool fast)
+    public NpcWalk(NPC who, IEnumerable<Direction> path, bool fast) : this(who, path, fast ? RunPace : WalkPace)
+    {
+    }
+
+    /// <summary>A walk at a pace of its own, in tiles a second: someone keeping up with the player.</summary>
+    public NpcWalk(NPC who, IEnumerable<Direction> path, float pace)
     {
         Who = who;
         steps = new Queue<Direction>(path);
-        pace = fast ? RunPace : WalkPace;
+        this.pace = pace;
     }
 
     public void Update(float dt)

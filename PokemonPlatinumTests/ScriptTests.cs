@@ -158,6 +158,8 @@ public class ScriptTests
           safari start
           safari end
           turnback
+          partner cheryl "cheryl_eterna_forest"
+          partner off
           choosepokemon
           trade kazza
           halloffame
@@ -218,6 +220,7 @@ public class ScriptTests
               if poketch end
               if pokerus end
               if safari end
+              if partner end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -976,6 +979,8 @@ public class ScriptTests
         public bool Teleport() => true;
         public bool Escape() => true;
         public void Turnback() { }
+        public void TravelWith(NPC? who, string? trainerId) { }
+        public string? Partner => null;
         public bool Trade(string trade, int slot) => false;
         public void EnterHallOfFame() { }
         public void Note(JournalEvent line) { }

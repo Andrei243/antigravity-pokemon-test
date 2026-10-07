@@ -1217,6 +1217,8 @@ public static class WorldMapBuilder
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
             npc.ScriptFile = key;
+            // How they move about of their own accord, within the original's range round where they stand (plan 02 · S6)
+            if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
             // How far a trainer sees is the original's own number
             if (npc.TrainerData != null && o.Sight is { } sight) npc.TrainerData.SightRange = sight;
             // How it thinks, what it carries and its team are Platinum's (plan 06 · R9)
@@ -1265,7 +1267,7 @@ public static class WorldMapBuilder
             Warp? warp = null;
             if (overlay?.Doors?.FirstOrDefault(d => d.Warp == i) is { } door)
             {
-                warp = new Warp { TargetMap = door.Map, TargetX = door.X, TargetY = door.Y, TargetFacing = door.Facing };
+                warp = new Warp { TargetMap = door.Map, TargetX = door.X, TargetY = door.Y, TargetFacing = door.Facing, OpenedBy = door.OpenedBy };
             }
             else if (overlay?.Through?.FirstOrDefault(t => t.Warp == i) is { } through)
             {

@@ -178,6 +178,13 @@ public class Warp
     /// </summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public bool CyclistsOnly { get; set; }
+
+    /// <summary>
+    /// A door locked until the story sets this flag (plan 02 · S6: the Valley Windworks' door, opened with the Works
+    /// Key): its tile stands in the way until then, and can be read. Null for a door that is always open.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? OpenedBy { get; set; }
 }
 
 /// <summary>

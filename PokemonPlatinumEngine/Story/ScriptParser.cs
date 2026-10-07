@@ -116,7 +116,12 @@ public static class ScriptParser
             case "sayown":
                 return new Instruction { Op = Op.SayOwn, Line = line };
             case "trainerline":
-                return new Instruction { Op = Op.TrainerLine, Line = line, Option = r.OneOf("before", "after") == "after" };
+            {
+                bool after = r.OneOf("before", "after") == "after";
+                // The second of two trainers who saw the player at once says their line too
+                string whose = r.More ? r.OneOf("pair") : "";
+                return new Instruction { Op = Op.TrainerLine, Line = line, Option = after, Name = whose };
+            }
             case "speaker":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Speaker, Line = line, Name = r.Text("the speaker's name") };
                 return r.OneOf("none", "self") == "self"
@@ -186,6 +191,18 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Heal, Line = line };
             case "turnback":
                 return new Instruction { Op = Op.Turnback, Line = line };
+            case "partner":
+            {
+                if (r.PeekWord("off"))
+                {
+                    r.OneOf("off");
+                    return new Instruction { Op = Op.Partner, Line = line };
+                }
+                string who = r.Who();
+                if (who == "player") throw r.Error("the player can't travel with themselves");
+                string id = r.Text("the id of the trainer who battles beside the player");
+                return new Instruction { Op = Op.Partner, Line = line, Name = who, Other = id, Option = true };
+            }
 
             case "battle":
             {
@@ -447,6 +464,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Pokerus, Negated = negated };
             case "safari":
                 return new Condition { Query = Query.Safari, Negated = negated };
+            case "partner":
+                return new Condition { Query = Query.Partner, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }
@@ -526,6 +545,9 @@ public static class ScriptParser
         public bool PeekIs(string word) => More && !tokens[at].Quoted && tokens[at].Text == word;
         public bool PeekNumber => More && !tokens[at].Quoted && int.TryParse(tokens[at].Text, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out _);
         public bool PeekDirection => More && !tokens[at].Quoted && DirectionOf(tokens[at].Text) != null;
+
+        /// <summary>Whether the next word is this one, unquoted.</summary>
+        public bool PeekWord(string word) => More && !tokens[at].Quoted && tokens[at].Text == word;
         public bool PeekCompare => More && !tokens[at].Quoted && CompareOf(tokens[at].Text) != null;
 
         public ScriptException Error(string message) => new($"{file}.txt({Line}): {message}.");

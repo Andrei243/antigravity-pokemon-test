@@ -61,6 +61,12 @@ public sealed class ScriptRunner
     /// <summary>Whoever the script belongs to: the person spoken to, the trainer who challenged. <c>self</c> in a script.</summary>
     public NPC? Subject { get; private set; }
 
+    /// <summary>
+    /// The second of two trainers who saw the player at once and came together (<c>APPROACH_TYPE_VS2</c>, plan 02 ·
+    /// S6): <c>pair</c> in the script. Null for any other script.
+    /// </summary>
+    public NPC? Pair { get; private set; }
+
     /// <summary>What the last question, battle or handing-over came to. <c>RESULT</c> in a script.</summary>
     public int Result { get; private set; }
 
@@ -76,9 +82,10 @@ public sealed class ScriptRunner
     /// <param name="flag">The flag <c>setflag own</c> sets; left out, the one that hides the subject.</param>
     /// <param name="pokemon">The Pokémon of the team the script was started for: the one whose field move was chosen in the party menu.</param>
     public void Start(Script start, NPC? subject = null, IReadOnlyList<string>? own = null, (string Item, int Count)? item = null, string? flag = null,
-        Pokemon? pokemon = null)
+        Pokemon? pokemon = null, NPC? pair = null)
     {
         ownPokemon = pokemon;
+        Pair = pair;
         ownItem = item ?? (subject is { Item: { } held } ? ((string, int)?)(held, Math.Max(1, subject.ItemCount)) : null);
         ownFlag = flag ?? subject?.HiddenBy;
         calls.Clear();
@@ -197,12 +204,12 @@ public sealed class ScriptRunner
                 break;
             case Op.TrainerLine:
             {
-                var trainer = (Subject ?? throw Wrong(i, "'trainerline' needs someone the script belongs to")).TrainerData
-                    ?? throw Wrong(i, $"{Subject.Name} is no trainer and has no trainer's lines");
+                var whose = i.Name.Length > 0 ? Person(i.Name, i)! : Subject ?? throw Wrong(i, "'trainerline' needs someone the script belongs to");
+                var trainer = whose.TrainerData ?? throw Wrong(i, $"{whose.Name} is no trainer and has no trainer's lines");
                 string line = i.Option ? trainer.DialogueAfter : trainer.DialogueBefore;
                 Result = string.IsNullOrEmpty(line) ? 0 : 1;
                 // A line written "Youngster Tristan: ..." is said under that whole title, as the text box shows who speaks
-                string? title = line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) ? trainer.FullTitle : speaker;
+                string? title = line.StartsWith(trainer.FullTitle + ": ", StringComparison.Ordinal) ? trainer.FullTitle : whose == Subject ? speaker : whose.Name;
                 if (Result == 1) host.Say(title, new[] { Fill(line) });
                 break;
             }
@@ -307,6 +314,14 @@ public sealed class ScriptRunner
             case Op.Turnback:
                 host.Turnback();
                 break;
+            case Op.Partner:
+                if (i.Option)
+                {
+                    if (TrainerDatabase.Get(i.Other) == null) throw Wrong(i, $"there is no trainer '{i.Other}'");
+                    host.TravelWith(Person(i.Name, i) ?? throw Wrong(i, "the player can't travel with themselves"), i.Other);
+                }
+                else host.TravelWith(null, null);
+                break;
 
             case Op.Battle:
             {
@@ -327,7 +342,18 @@ public sealed class ScriptRunner
                     if (second.TrainerData == null) throw Wrong(i, $"{second.Name} is no trainer and can't be battled");
                 }
                 Trainer? partner = null;
-                if (i.PartnerById)
+                // Whoever travels with the player, if anyone does (plan 02 · S6): a fresh team of theirs for each
+                // battle, as the original builds the partner's party from the data every time (Trainer_Encounter)
+                if (i.Partner == "partner" && !i.PartnerById)
+                {
+                    if (host.Partner is { } id)
+                    {
+                        var record = TrainerDatabase.Get(id) ?? throw Wrong(i, $"there is no trainer '{id}'");
+                        partner = new Trainer { Id = record.Id };
+                        TrainerDatabase.Fill(partner, record);
+                    }
+                }
+                else if (i.PartnerById)
                 {
                     var record = TrainerDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no trainer '{i.Partner}'");
                     partner = new Trainer { Id = record.Id };
@@ -543,6 +569,7 @@ public sealed class ScriptRunner
     {
         "player" => null,
         "self" => Subject ?? throw Wrong(at, "'self' is nobody here: no person started this script"),
+        "pair" => Pair ?? throw Wrong(at, "'pair' is nobody here: no second trainer came with this one"),
         _ => host.FindNpc(who, place.Length > 0 ? place : null) ?? throw Wrong(at, $"nobody on this map is called '{who}'")
     };
 
@@ -609,6 +636,7 @@ public sealed class ScriptRunner
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
             Query.Poketch => host.Poketch.Enabled,
             Query.Safari => host.Safari.Active,
+            Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")

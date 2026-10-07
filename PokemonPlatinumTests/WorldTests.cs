@@ -404,9 +404,10 @@ public class WorldTests
                 string who = $"{map.Name}: {npc.Name} at ({npc.GridX},{npc.GridY})";
                 Assert.True(map.AreaAt(npc.GridX, npc.GridY)?.Open, $"{who} stands outside the open areas");
                 Assert.False(map.IsSolid(npc.GridX, npc.GridY), $"{who} stands in something solid");
-                // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's)
-                Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit,
-                    $"{who} stands on a warp");
+                // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's),
+                // and someone the story sends away may stand in a doorway until it does (Floaroma's grunts at the meadow's)
+                Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit
+                    || npc.HiddenBy != null, $"{who} stands on a warp");
                 Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY) && !(n.HiddenBy is { } h && WorldWalk.HiddenAtStart.Value.Contains(h)));
                 Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
                 Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing, $"{who} has nothing to say");

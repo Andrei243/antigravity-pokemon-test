@@ -1,0 +1,115 @@
+# Eterna Forest (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_eterna_forest.s, scripts_follower_partners.s).
+#
+# Cheryl waits by the way in from Route 205 and asks to come through the forest with the player. She walks behind,
+# heals the team after every battle that isn't lost, and battles beside the player as Platinum's
+# "cheryl_eterna_forest": wild Pokémon come two at a time, and trainers who face one another take on the pair of them.
+# She won't go back out the way they came, and parts at the far side with a Soothe Bell.
+# VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE: 0 not with her, 1 together, 2 parted.
+
+
+# Away from the forest, she waits where she first stood (the original's OnTransition)
+script OnEnter
+  if flag FLAG_TRAVELED_WITH_CHERYL end
+  if partner end
+  setvar VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE 0
+  place cheryl 28 83 down
+  end
+
+
+# The first step in from Route 205 (trigger 0, state 0).
+script Join
+  emote cheryl exclaim
+  walk cheryl down 1
+  if var PLAYER_X == 29 walk cheryl right 1
+  face cheryl down
+  face player up
+  speaker "Cheryl"
+  if flag FLAG_TALKED_TO_ETERNA_FOREST_CHERYL goto Again
+  say "Oh, hello! My name is Cheryl. I wanted to go through the forest, but I heard Team Galactic is about, and..."
+  say "Would you let me come along with you? My Pokémon is a fine healer, and I'll keep yours in good shape as we go."
+  goto Together
+label Again
+  say "There you are! Shall we go through the forest together after all?"
+label Together
+  fanfare levelup
+  text "{player} decided to go through the forest with Cheryl."
+  setflag FLAG_TALKED_TO_ETERNA_FOREST_CHERYL
+  setvar VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE 1
+  speaker "Cheryl"
+  say "Thank you! I'll heal your Pokémon after every battle, so don't hold back."
+  partner cheryl "cheryl_eterna_forest"
+  end
+
+
+# Back out the way they came (trigger 1 on the way out, state 1): she stays and waits.
+script Wait
+  partner off
+  # She walks a step behind: on the tile the player came from, just inside the forest
+  if var PLAYER_X == 28 place cheryl 28 85 down
+  if var PLAYER_X == 29 place cheryl 29 85 down
+  face cheryl down
+  speaker "Cheryl"
+  say "Oh, you're going back out? Then I'll wait for you here."
+  walk cheryl up 2
+  if var PLAYER_X == 29 walk cheryl left 1
+  face cheryl down
+  setvar VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE 0
+  end
+
+
+# The far side of the forest (trigger 2, a column six tiles deep at x 82, state 1): she says goodbye and goes.
+script Part
+  # She walks a step behind: on the tile the player came from, west of them
+  if var PLAYER_Y == 34 place cheryl 81 34 right
+  if var PLAYER_Y == 35 place cheryl 81 35 right
+  if var PLAYER_Y == 36 place cheryl 81 36 right
+  if var PLAYER_Y == 37 place cheryl 81 37 right
+  if var PLAYER_Y == 38 place cheryl 81 38 right
+  if var PLAYER_Y == 39 place cheryl 81 39 right
+  face cheryl right
+  emote cheryl exclaim
+  wait 0.4
+  face player left
+  speaker "Cheryl"
+  say "We made it through! Thank you so much. I don't think I could have done it on my own."
+  say "Please take this, as a token of my thanks."
+  give "Soothe Bell"
+  if var PLAYER_Y == 34 walk cheryl down 2 right 5
+  if var PLAYER_Y == 35 walk cheryl down 1 right 5
+  if var PLAYER_Y == 36 walk cheryl down 1 right 5
+  if var PLAYER_Y == 37 walk cheryl up 1 right 5
+  if var PLAYER_Y == 38 walk cheryl up 1 right 5
+  if var PLAYER_Y == 39 walk cheryl up 2 right 5
+  face player right
+  face cheryl left
+  speaker "Cheryl"
+  say "I'm sure we'll meet again somewhere. Take care of yourself, {player}!"
+  wait 0.3
+  sound "stairs"
+  partner off
+  hide cheryl
+  setflag FLAG_HIDE_ETERNA_FOREST_CHERYL
+  setflag FLAG_TRAVELED_WITH_CHERYL
+  setvar VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE 2
+  end
+
+
+# Cheryl spoken to (the original's FollowerPartners_Cheryl): three things she has to say, the last again and again.
+script Cheryl
+  if var VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE != 1 goto Waiting
+  if var VAR_FOLLOWER_CHERYL_TIMES_TALKED >= 2 goto Third
+  if var VAR_FOLLOWER_CHERYL_TIMES_TALKED == 1 goto Second
+  say "Two Pokémon on the field at once, side by side! It still takes me by surprise, {player}."
+  addvar VAR_FOLLOWER_CHERYL_TIMES_TALKED 1
+  end
+label Second
+  say "My Pokémon may not look like much in battle, but there's no finer healer."
+  addvar VAR_FOLLOWER_CHERYL_TIMES_TALKED 1
+  end
+label Third
+  say "Battling beside you, {player}, my heart is racing! What a feeling!"
+  end
+label Waiting
+  say "I'll wait for you here. Let's go through the forest together when you're ready."
+  end

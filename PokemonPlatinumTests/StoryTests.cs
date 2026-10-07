@@ -598,6 +598,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
         // A Repel's last step (plan 06 · R11)
         started.Add(FieldScripts.RepelWoreOff);
+        // Two trainers who saw the player at once (plan 02 · S6)
+        started.Add(FieldScripts.TrainerPair);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -636,7 +638,7 @@ public class StoryTests
     /// the script belongs to and the map are put back as they were between one way and the next.
     /// </summary>
     private static List<(HeadlessScriptHost Host, ScriptRunner Runner)> EveryWayThrough(Script script, Map? map, NPC? subject, IReadOnlyList<string>? own = null,
-        Action<HeadlessScriptHost>? before = null, (string Item, int Count)? item = null, string? flag = null)
+        Action<HeadlessScriptHost>? before = null, (string Item, int Count)? item = null, string? flag = null, NPC? pair = null)
     {
         var ways = new List<(HeadlessScriptHost, ScriptRunner)>();
         var toTry = new Stack<List<int>>();
@@ -670,7 +672,7 @@ public class StoryTests
             before?.Invoke(host);
 
             var runner = new ScriptRunner(Scripts, host);
-            runner.Start(script, subject, own, item, flag);
+            runner.Start(script, subject, own, item, flag, pair: pair);
             runner.RunToEnd();
             ways.Add((host, runner));
 
@@ -752,6 +754,9 @@ public class StoryTests
                 FieldScripts.ItemBall => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.ItemBallType, Name = "Potion", Item = "Potion", HiddenBy = "FLAG_OBTAINED_TEST_POTION" }),
                 FieldScripts.HiddenItem => EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"),
                 _ when fieldMove => EveryWayThrough(script, new Map(8, 8), obstacle, before: KnowsEveryFieldMove),
+                // Two trainers who came together, beside whoever travels with the player and without anyone
+                FieldScripts.TrainerPair => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer())
+                    .Concat(EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer(), before: host => host.TravelWith(new NPC { Name = "Cheryl" }, "cheryl_eterna_forest"))).ToList(),
                 _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
             };
             if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)

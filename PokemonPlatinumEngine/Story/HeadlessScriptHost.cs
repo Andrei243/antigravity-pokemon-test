@@ -385,6 +385,17 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Map != null) TurnbackChose = TurnbackCave.Reaim(Map, PlayerTile.X, PlayerTile.Y, Story, Rng);
     }
 
+    /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>
+    public NPC? Travelling { get; private set; }
+    public string? Partner { get; private set; }
+
+    public void TravelWith(NPC? who, string? trainerId)
+    {
+        Travelling = who;
+        Partner = who == null ? null : trainerId;
+        Log.Add(who == null ? "partner off" : $"partner {who.Name} {trainerId}");
+    }
+
     public bool SweetScent()
     {
         Shown("draw a Pokémon out");

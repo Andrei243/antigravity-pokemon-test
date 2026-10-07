@@ -1,0 +1,94 @@
+# Route 205, south of the bridge (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_route_205_south.s).
+#
+# A little girl stops the player on the road out of Floaroma Town: Team Galactic has taken over the Valley Windworks,
+# where her papa works, and the grunts who were in town have gone off to the meadow (VAR_VALLEY_WINDWORKS_STATE 1).
+# Two more grunts hold the bridge north until Commander Mars is beaten in the Windworks, which hides them
+# (FLAG_HIDE_ROUTE_205_SOUTH_GRUNTS) and brings the girl home.
+
+
+# The road out of Floaroma Town (the original's trigger 0, a column six tiles deep at x 211; she stands on its
+# middle). She turns to the player, and comes a step closer if they are two tiles away.
+script LittleGirl
+  if var PLAYER_Y == 659 goto FromAbove
+  if var PLAYER_Y == 660 goto JustAbove
+  if var PLAYER_Y == 662 goto JustBelow
+  if var PLAYER_Y == 663 goto FromBelow
+  face little_girl down
+  emote little_girl exclaim
+  face player up
+  goto Plea
+label FromAbove
+  face little_girl up
+  emote little_girl exclaim
+  walk little_girl up 1
+  face player down
+  goto Plea
+label JustAbove
+  face little_girl up
+  emote little_girl exclaim
+  face player down
+  goto Plea
+label JustBelow
+  face little_girl down
+  emote little_girl exclaim
+  face player up
+  goto Plea
+label FromBelow
+  face little_girl down
+  emote little_girl exclaim
+  walk little_girl down 1
+  face player up
+label Plea
+  call Help
+  end
+
+
+# Spoken to (the original's script 5): the same plea the first time, and after it only her wish.
+script Girl
+  if flag FLAG_TALKED_TO_ROUTE_205_SOUTH_LITTLE_GIRL goto Again
+  call Help
+  end
+label Again
+  say "I want to see my papa... Please make the spacemen go away."
+  end
+
+
+# Her plea (HideFloaromaTownGrunts): the grunts in town are on their way to the meadow, and the Windworks waits.
+script Help
+  setflag FLAG_HIDE_FLOAROMA_TOWN_GRUNTS
+  setflag FLAG_TALKED_TO_ROUTE_205_SOUTH_LITTLE_GIRL
+  setvar VAR_VALLEY_WINDWORKS_STATE 1
+  speaker "Little Girl"
+  say "Please, you have to help! My papa works at the Valley Windworks, and people dressed like spacemen took it over!"
+  say "They won't let him come home! And two of them were in town just now... They said they were going to the flower meadow."
+  return
+
+
+# The north end of the bridge (trigger 1, VAR_VALLEY_WINDWORKS_STATE 1): the two grunts send the player back.
+script BridgeGrunts
+  call GruntsTalk
+  move grunt_m_west right 1 fast
+  walk player down 1
+  face player up
+  waitmoves
+  face grunt_m_west down
+  wait 0.5
+  walk grunt_m_west left 1
+  face grunt_m_west down
+  face grunt_m_east down
+  end
+
+
+# Either grunt spoken to (script 4): the same two lines, and no push.
+script Grunts
+  call GruntsTalk
+  end
+
+script GruntsTalk
+  face grunt_m_west right
+  speaker "Team Galactic Grunt"
+  say "Team Galactic is carrying out important research in Eterna Forest. No kids past this point."
+  face grunt_m_east left
+  say "Research means catching Pokémon, lots of them. And the Windworks makes all the power we could want!"
+  return

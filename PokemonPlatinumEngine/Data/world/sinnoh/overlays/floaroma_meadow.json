@@ -5,14 +5,13 @@
   "architecture": "Cottage",
   // The honey seller's house has no room yet (plan 01 · M11)
   "locked": [ 2 ],
+  // Two grunts and the honey man at the way in from town (plan 02 · S6)
+  "triggers": [ { "trigger": 0, "script": "Grunts" } ],
   "people": {
-    // In Platinum he sells Honey once Team Galactic has been driven off; the sale is plan 02's (S5)
-    "pokefan_m": {
-      "name": "Honey Man",
-      "dialog": [
-        "The bees of this meadow make the sweetest honey in Sinnoh.",
-        "Spread some on a tree with a sweet smell of its own, and wait. Pokémon can't keep away from it."
-      ]
-    }
+    "pokefan_m": { "name": "Honey Man", "script": "HoneyMan" },
+    "grunt_m_west": { "name": "Team Galactic Grunt", "dialog": [ "Buzz off, kid. We're busy here." ] },
+    "grunt_m_east": { "name": "Team Galactic Grunt", "dialog": [ "Buzz off, kid. We're busy here." ] },
+    // The key the grunts drop, shown for the scene and picked up at once
+    "item_works_key": { "name": "Works Key", "npcType": "ItemBall", "item": "Works Key", "script": "WorksKey" }
   }
 }

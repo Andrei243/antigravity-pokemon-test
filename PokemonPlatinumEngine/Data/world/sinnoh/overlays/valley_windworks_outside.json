@@ -4,6 +4,12 @@
   "trees": "Round",
   // The works have no room yet (plan 01 · M11)
   "locked": [ 0 ],
+  // The grunt at the door, its lock, and Looker once Commander Mars is beaten (plan 02 · S6)
+  "read": { "4": "Door" },
+  "people": {
+    "grunt_m": { "name": "Team Galactic Grunt", "script": "DoorGrunt" },
+    "looker": { "name": "Looker", "dialog": [ "Their base is in Eterna City. Remember it!" ] }
+  },
   "signs": {
     "signboard": "Valley Windworks\nClean power from the wind of the valley."
   }

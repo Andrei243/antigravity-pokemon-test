@@ -28,6 +28,8 @@ public enum Op
     Safari,
     // Turnback Cave's doors (plan 01 · M8)
     Turnback,
+    // Someone travelling with the player (plan 02 · S6)
+    Partner,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
@@ -42,7 +44,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch, Partner
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

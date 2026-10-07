@@ -1,0 +1,87 @@
+# Floaroma Meadow (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_floaroma_meadow.s).
+#
+# Two grunts are leaning on the honey man for his Honey. They battle the player one after the other, with no rest
+# between, and run back to the Valley Windworks, dropping the key to its door. The honey man hands it over with ten
+# jars of Honey, and sells it from then on. VAR_FLOAROMA_MEADOW_STATE: 1 the grunts are gone.
+
+
+# The way in from town (the original's trigger 0, two tiles wide, VAR_FLOAROMA_MEADOW_STATE 0).
+script Grunts
+  speaker "Team Galactic Grunt"
+  say "Come on, old man, hand over the Honey! The sweet stuff brings Pokémon running, and we need plenty of Pokémon."
+  say "Do as we say, or else!"
+  face grunt_m_west down
+  face grunt_m_east down
+  emote grunt_m_west exclaim
+  emote grunt_m_east exclaim
+  say "Huh? A kid! What do we do?"
+  say "We make sure the brat keeps quiet, that's what!"
+  battle grunt_m_west as "galactic_grunt_floaroma_meadow_1"
+  face grunt_m_west right
+  speaker "Team Galactic Grunt"
+  say "Aw, man... This is so lame."
+  face grunt_m_west down
+  say "Heh heh. My turn! Your Pokémon are worn out after that, I bet."
+  battle grunt_m_east as "galactic_grunt_floaroma_meadow_2"
+  speaker "Team Galactic Grunt"
+  say "Forget the Honey! Back to the Windworks, quick!"
+  fade out
+  hide grunt_m_west
+  hide grunt_m_east
+  setflag FLAG_HIDE_FLOAROMA_MEADOW_GRUNT_M_WEST
+  setflag FLAG_HIDE_FLOAROMA_MEADOW_GRUNT_M_EAST
+  setvar VAR_FLOAROMA_MEADOW_STATE 1
+  clearflag FLAG_HIDE_FLOAROMA_MEADOW_WORKS_KEY
+  show item_works_key
+  fade in
+  # The honey man comes down to the key they dropped and turns to the player
+  walk pokefan_m down 1
+  face pokefan_m right
+  wait 0.8
+  hide item_works_key
+  if var PLAYER_X == 13 walk pokefan_m right 1
+  face pokefan_m down
+  setflag FLAG_HIDE_FLOAROMA_MEADOW_WORKS_KEY
+  speaker "Honey Man"
+  say "Thank you, thank you! Those ruffians dropped this as they ran off. It must be the key to the Valley Windworks."
+  give "Works Key"
+  setflag FLAG_OBTAINED_FLOAROMA_MEADOW_WORKS_KEY
+  say "And please, take some Honey for your trouble. I've plenty to spare!"
+  give "Honey" 10
+  say "Spread Honey on a sweet-smelling tree and come back after a while. Pokémon can't resist it!"
+  setflag FLAG_DEFEATED_FLOAROMA_MEADOW_GRUNTS
+  end
+
+
+# The honey man (the original's script 5): a jar of Honey for $100, or ten for $1,000.
+script HoneyMan
+  say "Honey from this meadow is the sweetest there is. Would you like some?"
+  choose "You have ${money}. How much Honey would you like?" "One jar for $100" "Ten jars for $1,000" "No, thanks"
+  if result == 0 goto One
+  if result == 1 goto Ten
+  say "Oh, I see. Do come back if you change your mind."
+  end
+label One
+  takemoney 100
+  if result == 0 goto Short
+  sound "select"
+  give "Honey"
+  goto Thanks
+label Ten
+  takemoney 1000
+  if result == 0 goto Short
+  sound "select"
+  give "Honey" 10
+label Thanks
+  say "Thank you kindly! Spread it on a tree, and wait."
+  end
+label Short
+  say "Oh dear, you haven't quite enough money for that."
+  end
+
+
+# The key the grunts drop (the original's script 7): on the ground only while the honey man comes for it, and his to
+# hand over, so there is nothing to pick up.
+script WorksKey
+  end

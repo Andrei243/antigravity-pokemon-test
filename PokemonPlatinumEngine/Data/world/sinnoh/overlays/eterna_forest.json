@@ -3,7 +3,10 @@
   "bgmTrack": "sinnoh/forest",
   // The Old Chateau is a building's rooms (plan 01 · M11)
   "locked": [ 4 ],
+  // Cheryl joins at the way in from Route 205, waits if the player goes back out, and parts at the far side (plan 02 · S6)
+  "triggers": [ { "trigger": 0, "script": "Join" }, { "trigger": 1, "script": "Wait" }, { "trigger": 2, "script": "Part" } ],
   "people": {
+    "cheryl": { "name": "Cheryl", "npcType": "Lady", "script": "Cheryl" },
     "bug_catcher": {
       "name": "Bug Catcher",
       "dialog": [
@@ -11,8 +14,8 @@
         "I've raised four of them now. Every single one turned out a Cascoon!"
       ]
     },
-    // They stand in pairs, facing one another; in Platinum each pair takes on the player and Cheryl two against
-    // two. Until plan 02 brings her, each battles alone.
+    // They stand in pairs, facing one another: stepping between a pair, both come at once (APPROACH_TYPE_VS2), two
+    // against the player and Cheryl while she travels along, two against the player's two Pokémon otherwise.
     "bug_catcher_jack": {
       "name": "Jack",
       "trainer": {

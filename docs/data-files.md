@@ -145,11 +145,12 @@ Lengths are in tiles and heights too (one tile is 16 of the original's units). x
     { "name": "LakeVerity", "matrix": 102, "area": "lake_verity", "trees": "Pine" },
     { "name": "OreburghGate1F", "matrix": 3, "area": "oreburgh_gate_1f", "setting": "Cave" }
   ],
-  "areas": [ "twinleaf_town", "route_201", "verity_lakefront", "lake_verity", "sandgem_town", "route_202", "route_219", "jubilife_city", "route_203", "oreburgh_gate_1f" ]
+  "areas": [ "twinleaf_town", "route_201", "verity_lakefront", "lake_verity", "sandgem_town", "route_202", "route_219", "jubilife_city", "route_203", "oreburgh_gate_1f" ],
+  "hidden": [ { "var": "VAR_HIDDEN_LOCATION_SPRING_PATH", "value": 786, "chunkX": 23, "chunkY": 21, "chunksWide": 2, "chunksHigh": 2 } ]
 }
 ```
 
-Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (matrix 0, the overworld, is 30 by 30 chunks: 960 by 960 tiles), so a position on it is a tile of the whole matrix and never changes when more of the region opens. `area` names the area of a matrix that has none per chunk (a lake, a cave); `trees` is the kind of tree where an area's overlay names none. `setting` is `Outdoors` when left out, or `Cave` ("Caves" below). A map of one area takes that area's camera from its header (`Cave`, `ZoomedIn`; `FieldCamera`) and is dark if its header's weather says so. `areas` lists the areas that are **open**: their people, signs, doors and wild Pokémon are in the game and their ground can be walked on. Every other area is scenery: its chunks, where the game has them, are drawn and solid; where it has none there is forest.
+Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (matrix 0, the overworld, is 30 by 30 chunks: 960 by 960 tiles), so a position on it is a tile of the whole matrix and never changes when more of the region opens. `area` names the area of a matrix that has none per chunk (a lake, a cave); `trees` is the kind of tree where an area's overlay names none. `setting` is `Outdoors` when left out, or `Cave` ("Caves" below). A map of one area takes that area's camera from its header (`Cave`, `ZoomedIn`; `FieldCamera`) and is dark if its header's weather says so. `areas` lists the areas that are **open**: their people, signs, doors and wild Pokémon are in the game and their ground can be walked on. Every other area is scenery: its chunks, where the game has them, are drawn and solid; where it has none there is forest. `hidden` lists places of the overworld the story reveals (plan 01 · M8, the original's `MapMatrix_RevealSpringPath`): a block of chunks of matrix 0 that is forest, as if it weren't there, until the variable `var` holds `value`, after which its chunks are in the map and drawn again (`Map.AddHiddenPlace`, `MapDatabase.ApplyHiddenPlaces`).
 
 ### `overlays/<key>.json`
 
@@ -161,7 +162,7 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
   "architecture": "Timber",           // optional: how its fences and walls are built, where its houses don't say
   "battleArena": "Forest",            // optional, as in a map file
   "evolutionSites": [ "Moss Rock" ],  // optional, as in a map file
-  "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" } ],
+  "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 4, "y": 6, "facing": "Up" } ],   // "openedBy": a flag it waits for
   "locked": [ 2, 3 ],
   "exits": [ { "x": 173, "z": 800, "map": "SomeHandMadeMap", "toX": 19, "toY": 32, "facing": "Up" } ],
   "through": [ { "warp": 14, "to": "route_208", "toWarp": 0 } ],   // optional: a gate house walked through
@@ -173,6 +174,7 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
   "signs": { "map_signpost": "Twinleaf Town\nFresh and free! The town where journeys begin." },
   "signScripts": { "trainer_tips_signpost": "TrainerTips" },   // optional: signs that run a script of the area's file
   "triggers": [ { "trigger": 0, "script": "RivalStopsYou" } ], // optional: the area's triggers that have a script, by number
+  "read": { "4": "Door" },            // optional: things read in the ground (a door, a statue) by the original's script number
   "npcs": [ … ],                      // people of our own, as in a map file, in tiles of the map
   "props": [ { "type": "LampPost", "x": 109, "y": 876, "width": 1, "depth": 1 } ]
 }
@@ -185,7 +187,10 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
 - `people` is keyed by the `id` of an object in the area's file. Only the people listed appear; each takes its place and facing from the import, its character from the object's `looks` (`WorldMapBuilder.CharacterFor`, or `npcType` to choose), and its name, `dialog`, `trainer` block or `isStarterBriefcase` from here. Give `id` when something refers to the person. The original's script text is never imported: every line is ours. A trainer sees as far as the object's `sight` in the area's file says (0: they battle when spoken to). The two halves of a route list each other's people and signs near the border (Route 204's boys by the Ravaged Path); each is placed once, by the half it stands in, so give it its line in that half's overlay.
 - `signs` gives the text of the area's signposts and mailboxes, by the same ids. A signpost without one reads the area's name.
 - A person may have a `script` of the area's own file (`scripts/<key>.txt`, see `docs/scripts.md`) in place of `dialog`: `"clown_1": { "name": "Clown", "script": "Clown1" }`. Scripts call the area's people by their ids here. Whoever the area file hides by a flag (`hiddenBy`) is hidden by that flag in the game without the overlay saying so; `"hiddenBy": ""` keeps someone whatever the flag, another flag's name replaces it, and `shownBy` names a flag they wait for.
-- `signScripts` gives a signpost a script instead of plain reading, and `triggers` gives the area's own triggers their scripts by their number in the area's file, counting from 0. The tiles, the variable and its value stay the original's (`triggers` in `areas/<key>.json`); a trigger not listed does nothing.
+- `signScripts` gives a signpost a script instead of plain reading, and `triggers` gives the area's own triggers their scripts by their number in the area's file, counting from 0. The tiles, the variable and its value stay the original's (`triggers` in `areas/<key>.json`); a trigger not listed does nothing. A trigger on the tile in front of a warp also starts as the player comes out of the warp onto it, as the original's step off a door's mat does, and one on a warp's own tile goes before the warp (plan 02 · S6).
+- `read` gives the area's things that are read where they stand (the original's background events of its own scripts, `signs` of type 0 in the area's file: the Valley Windworks' door, Eterna City's statue) a script of the area's file, by the original's script number (`Map.TileScripts`). Facing the tile and pressing the button runs it.
+- A door may wait for the story: `"openedBy": "FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR"` keeps its tile shut, a wall like a locked door, until a script sets the flag (`Warp.OpenedBy`, `Map.ApplyDoors`, plan 02 · S6); the door's own `read` script is what sets it.
+- People move about as the area file says (plan 02 · S6): an object's `movement` with its `rangeX` and `rangeZ` is read by `PersonMovement.Parse` (those who look about turn, those who wander step within the box round where they stand, those who walk a loop go round it; `Overworld/Wandering.cs`). `"still": true` keeps a person standing where a scene of ours counts on finding them.
 
 ### How a chunk becomes tiles
 

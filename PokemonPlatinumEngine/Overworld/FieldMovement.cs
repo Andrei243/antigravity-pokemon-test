@@ -237,7 +237,7 @@ public static class FieldMovement
         if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
 
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
-        if (map.NpcIn(nx, ny, height) != null) return No(Obstacle.Person);
+        if (map.NpcIn(nx, ny, height) is { } someone && someone != map.Follower) return No(Obstacle.Person);
         if (MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
         bool water = TileBehaviors.IsSurfable(there) && !onDeck;
 

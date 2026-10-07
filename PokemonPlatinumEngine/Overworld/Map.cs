@@ -418,6 +418,16 @@ public class Map
         foreach (var npc in everyone) (npc.IsPresent(flagSet) ? NPCs : Absent).Add(npc);
     }
 
+    /// <summary>
+    /// Locks and unlocks the doors that wait for the story (<see cref="Warp.OpenedBy"/>): a locked door's tile stands
+    /// in the way like a wall, an open one is walked into as ever.
+    /// </summary>
+    public void ApplyDoors(Func<string, bool> flagSet)
+    {
+        foreach (var warp in Warps)
+            if (warp.OpenedBy is { } flag) SetSolid(warp.SourceX, warp.SourceY, !flagSet(flag));
+    }
+
     /// <summary>Forgets who a script showed or hid by itself: from here on the flags decide again.</summary>
     public void ForgetForced()
     {
@@ -769,6 +779,12 @@ public class Map
     }
 
     /// <summary>
+    /// Someone walking behind the player (plan 02 · S6, <see cref="Overworld.Follower"/>): spoken to like anyone, but
+    /// never in the player's way, so walking back into them swaps the two round.
+    /// </summary>
+    public NPC? Follower { get; set; }
+
+    /// <summary>
     /// Whoever stands on a tile at about a height: someone on a bridge's deck is not in the way of anyone on the
     /// ground under it, nor the other way round.
     /// </summary>
@@ -823,6 +839,17 @@ public class Map
     /// </summary>
     /// <param name="thick">In grass taller than the walker, or on a Bicycle: more attempts get through.</param>
     /// <param name="lead">The Pokémon at the head of the party; left out, nothing shapes the meeting.</param>
+    /// <summary>
+    /// A second Pokémon of the land's table beside one already met, as a partner's battles bring
+    /// (<c>TryGenerateGrassEncounter_DoubleBattle</c>, plan 02 · S6): drawn as the first was, or null when the lead
+    /// scared it off.
+    /// </summary>
+    public WildEncounterEntry? MeetAnother(int x, int y, WildLead? lead = null)
+    {
+        var (table, _) = WildAt(x, y);
+        return WildEncounterRules.Meet(table, false, lead, rng);
+    }
+
     public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false, WildLead? lead = null)
     {
         var (table, rate) = WildAt(x, y, water);

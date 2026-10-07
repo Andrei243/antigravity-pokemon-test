@@ -66,6 +66,12 @@ public partial class GameEngine
 
     // A trainer who spotted the player and is walking up, and the one being battled
     private TrainerApproach? trainerApproach;
+
+    // The second of two trainers who saw the player at once (plan 02 · S6)
+    private TrainerApproach? pairApproach;
+
+    // The player came through a warp, onto the tile in front of it: a trigger there starts as a step onto it would
+    private bool steppedOutOfWarp;
     private readonly List<NPC> battleTrainers = new();
 
     // How the player was travelling when the field's music was last chosen, and whether a trainer's eye theme is on
@@ -141,6 +147,19 @@ public partial class GameEngine
     private Journal journal = new();
     private readonly JournalScreen journalScreen = new();
     private float rematchSpin;
+
+    // The people who move about of their own accord (plan 02 · S6), and their chance: drawn from Dice the first time
+    // anyone moves, so a run in which nobody does draws nothing
+    private readonly Wandering wandering = new();
+    private Random? peopleRandom;
+
+    /// <summary>Keeps everyone standing where they are: the harness, whose shots count on people being where they first stood.</summary>
+    public bool PeopleStayPut { get; set; }
+
+    // Whoever travels with the player (plan 02 · S6): Cheryl through Eterna Forest. The tile the player was last
+    // seen heading for tells when they set off from another
+    private Follower? partner;
+    private (int X, int Y) partnerHeading;
     private DateTime? adventureStarted;
 
     /// <summary>What the story remembers: flags, variables, trainers beaten, items taken, the badges, the starters (plan 02 · S1).</summary>
@@ -242,6 +261,7 @@ public partial class GameEngine
         registeredItem = null;
         exitSpot = null;
         lastDay = null;
+        partner = null;
         MapDatabase.RestoreDefeatedTrainers(Array.Empty<string>());
         // The story starts over: the flags and variables every game begins with, and everyone where those put them
         runner.Abort();
@@ -425,6 +445,14 @@ public partial class GameEngine
         hallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
         journal = new Journal();
         journal.Restore(save.Journal);
+
+        // Whoever was travelling with the player goes on doing so, behind them
+        partner = null;
+        if (save.Partner is { } partnerId && save.PartnerPerson is { } person && currentMap.FindPerson(person) is { } along)
+        {
+            partner = new Follower(along, partnerId);
+            KeepPartnerAlong();
+        }
     }
 
     /// <summary>The game as it stands, as a save.</summary>
@@ -455,6 +483,8 @@ public partial class GameEngine
             Exit = exitSpot,
             LastDay = lastDay,
             RegisteredItem = registeredItem,
+            Partner = partner?.TrainerId,
+            PartnerPerson = partner?.Who.Key,
             RepelSteps = encounterAids.RepelSteps,
             Poketch = poketch.Save(),
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
@@ -762,9 +792,14 @@ public partial class GameEngine
         SlideBoulders(dt);
         poketchView.Update(dt);
 
-        // A script has the field: the keys do nothing until it ends
+        // Whoever travels with the player keeps up, whatever else has the field
+        partner?.Update(dt, player.Stride);
+
+        // A script has the field: the keys do nothing until it ends, and people moving of their own accord only
+        // finish the step they are on
         if (runner.IsRunning)
         {
+            wandering.Continue(dt);
             UpdateScript(dt);
             return;
         }
@@ -781,18 +816,32 @@ public partial class GameEngine
         {
             arrived = false;
             RefreshPresence();
-            if (StartEnterScript()) return;
+            // Out of a warp the original walks the player a step onto the tile in front, and that step can start a
+            // trigger, once the place's own script is done (Cheryl at Eterna Forest's edge, plan 02 · S6)
+            bool stepped = steppedOutOfWarp;
+            steppedOutOfWarp = false;
+            if (StartEnterScript())
+            {
+                triggerAfterEnter |= stepped;
+                return;
+            }
+            if (stepped && TryStepTrigger()) return;
         }
 
-        // A trainer has spotted the player: nothing else happens until they have walked up
+        // A trainer has spotted the player: nothing else happens until they have walked up (both of them, when two
+        // came together)
         if (trainerApproach != null)
         {
             trainerApproach.Update(dt, player);
-            if (trainerApproach.IsDone)
+            pairApproach?.Update(dt, player);
+            if (trainerApproach.IsDone && pairApproach?.IsDone != false)
             {
                 var trainer = trainerApproach.Trainer;
+                var pair = pairApproach?.Trainer;
                 trainerApproach = null;
-                ChallengeTrainer(trainer);
+                pairApproach = null;
+                if (pair != null) StartScript(FieldScripts.TrainerPair, trainer, pair: pair);
+                else ChallengeTrainer(trainer);
             }
             return;
         }
@@ -840,11 +889,22 @@ public partial class GameEngine
         }
         runWasDown = runDown;
 
+        // People move about of their own accord, kept out of the player's way
+        if (!PeopleStayPut) wandering.Update(dt, currentMap, (player.GridX, player.GridY), player.Heading, peopleRandom ??= Dice.New());
+
         // Overworld Player Movement
         player.Moves = FieldMovement.MovesOf(playerParty);
         player.Lead = WildLead.Of(playerParty, encounterAids);
         if (Steering is { } steer) player.Advance(dt, currentMap, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
         else player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+
+        // The player has set off from a tile: whoever travels with them goes there next
+        if (partner != null && currentMap.Follower == partner.Who)
+        {
+            var head = player.Heading;
+            if (head != (player.GridX, player.GridY) && head != partnerHeading) partner.PlayerLeft(player.GridX, player.GridY);
+            partnerHeading = head;
+        }
 
         // A door that leads somewhere opens as the player steps up to it: the door's own tile, or the open way
         // into a porch with the door in the wall behind
@@ -1054,7 +1114,17 @@ public partial class GameEngine
         var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY);
         if (trainer == null) return false;
 
+        wandering.Settle(trainer);
         trainerApproach = new TrainerApproach(trainer, player);
+        // Two trainers who see the player at once come together (APPROACH_TYPE_VS2): two against one when the
+        // player has two Pokémon able to fight, or against the player and whoever travels with them
+        pairApproach = null;
+        if (TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, except: trainer) is { } second
+            && (partner != null || playerParty.Members.Count(p => !p.IsFainted) >= 2))
+        {
+            wandering.Settle(second);
+            pairApproach = new TrainerApproach(second, player, turnPlayer: false);
+        }
         AudioManager.PlaySound("exclaim", PanAt(trainer.GridX));
 
         // Their eye theme, by their class, plays while they walk up and talk, until the battle theme cuts in
@@ -1120,7 +1190,7 @@ public partial class GameEngine
         // its grain, and deep water at the player's feet, offered only to someone who may surf (the move and the
         // Fen Badge), as the original offers it
         var walker = new Walker(player.Mode, standing, Moves: player.Moves);
-        var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker);
+        var spot = FieldMoveRules.SpotOf(currentMap, player.GridX, player.GridY, player.Facing, walker) with { Partner = partner != null };
         if (spot.Waterfall && spot.Surfing) StartScript(FieldScripts.Waterfall);
         else if (spot.RockFace && player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
         else if (spot.Water && FieldMoveRules.Knower(playerParty, FieldMove.Surf) != null
@@ -1129,6 +1199,9 @@ public partial class GameEngine
 
     private void HandleWarp(Warp warp)
     {
+        // A trigger waiting on the tile goes first, as the original's coordinate events come before the step off a
+        // mat that takes its warp: Cheryl turns the player back at the forest's edge (plan 02 · S6)
+        if (FieldScripts.TriggerAt(currentMap, warp.SourceX, warp.SourceY, story) != null && TryStepTrigger()) return;
         // Onto the Cycling Road only a rider is let through: the gate keeper turns anyone else back
         if (warp.CyclistsOnly && player.Mode != TravelMode.Cycling)
         {
@@ -1148,6 +1221,7 @@ public partial class GameEngine
             currentMap = MapDatabase.Get(warp.TargetMap);
             player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
             ArriveOnMap();
+            steppedOutOfWarp = true;
             AnnounceLocation();
             // Through a gate onto the Cycling Road, the Bicycle stays under the player until the next warp
             if (warp.CyclistsOnly) story.Set(BicycleRules.OnCyclingRoadFlag);
@@ -1296,8 +1370,18 @@ public partial class GameEngine
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         var area = currentMap.AreaAt(player.GridX, player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
+        // Beside a partner every Pokémon of the grass comes with a second (TryGenerateGrassEncounter_DoubleBattle): both
+        // are drawn as the first was, and the lead's ability scaring either off leaves the grass quiet
+        Pokemon? second = null;
+        if (partner != null && player.Mode != TravelMode.Surfing && !safari.Active)
+        {
+            if (currentMap.MeetAnother(player.GridX, player.GridY, player.Lead) is not { } other) return;
+            var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
+            second = new Pokemon(otherSpecies, other.MinLevel, gender: other.Gender, nature: other.Nature);
+            if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
+        }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
-        MeetWildPokemon(wild, safari.Active ? BattleKind.Safari : BattleKind.Normal);
+        MeetWildPokemon(wild, safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second);
     }
 
     /// <summary>
@@ -1306,8 +1390,9 @@ public partial class GameEngine
     /// watches (plan 06 · R9). (Not a second <c>StartWildBattle</c>: the screenshot harness finds that one by its
     /// name alone.)
     /// </summary>
-    private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false)
+    private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null)
     {
+        if (second != null) playerPokedex.RegisterSeen(second.Species.DexNumber);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
         if (kind != BattleKind.CatchingLesson) playerPokedex.RegisterSeen(wildPkmn.Species.DexNumber);
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
@@ -1327,7 +1412,10 @@ public partial class GameEngine
         // a mythical's own, or the wild battle theme
         eyeThemePlaying = false;
         AudioManager.PlayWildBattleMusic(wildPkmn.Species);
-        var shown = PrepareModels(new[] { wildPkmn });
+        // Whoever travels with the player battles beside them, with a fresh team of their own
+        var beside = kind == BattleKind.Normal ? PartnerTrainer() : null;
+        var wilds = second != null ? new List<Pokemon> { wildPkmn, second } : new List<Pokemon> { wildPkmn };
+        var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         StartTransition(GameState.Battle, () =>
         {
             AwaitModels(shown);
@@ -1338,7 +1426,9 @@ public partial class GameEngine
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
                 Place = PlaceName(),
-                WildPokemon = new List<Pokemon> { wildPkmn },
+                WildPokemon = wilds,
+                Format = second != null ? BattleFormat.Double : BattleFormat.Single,
+                Partner = beside,
                 Conditions = BattleConditionsHere(),
                 Kind = kind,
                 CannotFlee = cannotFlee,
@@ -1450,6 +1540,45 @@ public partial class GameEngine
         };
     }
 
+    /// <summary>
+    /// Someone of the map starts travelling with the player (plan 02 · S6): they walk behind and battle beside the
+    /// player as a trainer of Platinum's data; null for both and they stop, where they stand.
+    /// </summary>
+    private void SetPartner(NPC? who, string? trainerId)
+    {
+        if (partner != null)
+        {
+            partner.Settle();
+            foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) if (map.Follower == partner.Who) map.Follower = null;
+        }
+        partner = who != null && trainerId != null ? new Follower(who, trainerId) : null;
+        if (partner == null) return;
+        // Off the Bicycle: nobody rides with someone walking beside them (SetPlayerBike FALSE as Cheryl joins)
+        if (player.Mode == TravelMode.Cycling && player.SetCycling(false)) PlayFieldMusic();
+        wandering.Settle(partner.Who);
+        currentMap.Follower = partner.Who;
+        partnerHeading = player.Heading;
+    }
+
+    /// <summary>The player has come to a map: whoever travels with them is behind them if they belong to it.</summary>
+    private void KeepPartnerAlong()
+    {
+        if (partner == null) return;
+        if (!currentMap.Everyone.Contains(partner.Who)) return;
+        currentMap.Follower = partner.Who;
+        partner.Behind(player.GridX, player.GridY, player.Facing);
+        partnerHeading = player.Heading;
+    }
+
+    /// <summary>A fresh team of whoever travels with the player, as the original builds it for every battle; null when nobody does.</summary>
+    private Trainer? PartnerTrainer()
+    {
+        if (partner == null || TrainerDatabase.Get(partner.TrainerId) is not { } record) return null;
+        var trainer = new Trainer { Id = record.Id };
+        TrainerDatabase.Fill(trainer, record);
+        return trainer;
+    }
+
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => playerParty.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
@@ -1530,6 +1659,9 @@ public partial class GameEngine
     {
         bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
         ScoreBattle();
+        // Travelling with someone, the team is healed after every battle that isn't lost (encounter.c,
+        // Party_HealAllMembers when the partner flag is set)
+        if (!isDefeat && partner != null && battle != null) playerParty.HealAll();
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && runner.IsRunning && battleMayBeLost;
         battleMayBeLost = false;
@@ -1649,6 +1781,8 @@ public partial class GameEngine
     /// </summary>
     private void WhiteOut()
     {
+        // Whoever travelled with the player stays behind (FieldSystem_ClearPartnerTrainer)
+        SetPartner(null, null);
         foreach (var p in playerParty.Members) FormRules.ByHeldItem(p);
         var (room, home) = WhiteOutRoom();
         currentMap = MapDatabase.Get(room);

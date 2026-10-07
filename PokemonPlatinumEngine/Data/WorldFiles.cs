@@ -544,6 +544,9 @@ public sealed class OverlayDoor
     public int X { get; set; }
     public int Y { get; set; }
     public Direction Facing { get; set; } = Direction.Up;
+
+    /// <summary>A story flag the door stays locked until (plan 02 · S6); left out for a door that is always open.</summary>
+    public string? OpenedBy { get; set; }
 }
 
 /// <summary>A warp into a gate house, and the warp of the area on its far side one comes out at.</summary>
@@ -608,6 +611,12 @@ public sealed class OverlayPerson
 
     /// <summary>For an item ball the overlay places itself (one whose script says what is in it): the item it holds.</summary>
     public string? Item { get; set; }
+
+    /// <summary>
+    /// Keeps them standing where the original has them move about (plan 02 · S6): someone a scene of ours walks
+    /// from a tile it counts on.
+    /// </summary>
+    public bool Still { get; set; }
 }
 
 /// <summary>A tile that leads elsewhere: to the warp numbered <see cref="ToWarp"/> of the area <see cref="To"/>.</summary>

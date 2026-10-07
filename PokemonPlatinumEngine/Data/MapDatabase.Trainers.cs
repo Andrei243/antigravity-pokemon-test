@@ -33,6 +33,7 @@ public static partial class MapDatabase
         {
             if (forget) map.ForgetForced();
             map.ApplyPresence(flagSet);
+            map.ApplyDoors(flagSet);
         }
     }
 

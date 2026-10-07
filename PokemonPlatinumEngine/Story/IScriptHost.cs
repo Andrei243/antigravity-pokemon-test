@@ -145,6 +145,16 @@ public interface IScriptHost
     void Turnback();
 
     /// <summary>
+    /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
+    /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
+    /// stop.
+    /// </summary>
+    void TravelWith(NPC? who, string? trainerId);
+
+    /// <summary>The trainer id of whoever travels with the player now; null when nobody does.</summary>
+    string? Partner { get; }
+
+    /// <summary>
     /// Draws a wild Pokémon out where the player stands (Sweet Scent): true when one comes, and its battle starts
     /// (<see cref="Outcome"/> once the host is no longer busy); false where nothing lives.
     /// </summary>

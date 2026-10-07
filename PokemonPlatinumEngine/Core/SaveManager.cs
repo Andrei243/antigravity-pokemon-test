@@ -72,6 +72,13 @@ public class SaveData
     /// <summary>The key item kept on the item button (the original's registered item), by name; null when none is.</summary>
     public string? RegisteredItem { get; set; }
 
+    /// <summary>
+    /// Whoever travels with the player (plan 02 · S6): the trainer of Platinum's data who battles beside them, and
+    /// the person of the map who walks behind, by their key. Null when nobody does, and in older saves.
+    /// </summary>
+    public string? Partner { get; set; }
+    public string? PartnerPerson { get; set; }
+
     /// <summary>The steps the Repel has left (plan 06 · R11); a save from before has none.</summary>
     public int RepelSteps { get; set; }
 
