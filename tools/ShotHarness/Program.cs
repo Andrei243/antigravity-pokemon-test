@@ -3849,7 +3849,7 @@ if (mode == "windworks")
     ReadTo(null);
     At("Sinnoh", 175, 657, Direction.Up); Frames(30); Shot("ww02_floaroma_people_stand");
     engine.PeopleStayPut = false;
-    Frames(600);
+    Frames(300);
     Shot("ww03_floaroma_people_about");
     engine.PeopleStayPut = true;
 
