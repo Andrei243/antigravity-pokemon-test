@@ -639,7 +639,10 @@ internal static partial class PokemonModels
         "Grapploct", "Sinistea", "Polteageist",
         // Galar's third batch, Hatenna to Morpeko
         "Hatenna", "Hattrem", "Hatterene", "Impidimp", "Morgrem", "Grimmsnarl", "Obstagoon", "Perrserker", "Cursola", "Sirfetch'd", "Mr. Rime",
-        "Runerigus", "Milcery", "Alcremie", "Falinks", "Pincurchin", "Snom", "Frosmoth", "Stonjourner", "Eiscue", "Indeedee", "Morpeko"
+        "Runerigus", "Milcery", "Alcremie", "Falinks", "Pincurchin", "Snom", "Frosmoth", "Stonjourner", "Eiscue", "Indeedee", "Morpeko",
+        // Galar's last batch, Cufant to Calyrex
+        "Cufant", "Copperajah", "Dracozolt", "Arctozolt", "Dracovish", "Arctovish", "Duraludon", "Dreepy", "Drakloak", "Dragapult", "Zacian",
+        "Zamazenta", "Eternatus", "Kubfu", "Urshifu", "Zarude", "Regieleki", "Regidrago", "Glastrier", "Spectrier", "Calyrex"
     };
 
     /// <summary>
@@ -702,6 +705,7 @@ internal static partial class PokemonModels
         "Alcremie-Rainbow-Swirl-Berry-Sweet", "Alcremie-Rainbow-Swirl-Love-Sweet", "Alcremie-Rainbow-Swirl-Star-Sweet", "Alcremie-Rainbow-Swirl-Clover-Sweet",
         "Alcremie-Rainbow-Swirl-Flower-Sweet", "Alcremie-Rainbow-Swirl-Ribbon-Sweet",
         "Eiscue-Noice", "Indeedee-Female", "Morpeko-Hangry",
+        "Zacian-Crowned", "Zamazenta-Crowned", "Eternatus-Eternamax", "Urshifu-Rapid-Strike", "Zarude-Dada", "Calyrex-Ice", "Calyrex-Shadow",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -716,7 +720,7 @@ internal static partial class PokemonModels
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
         "Melmetal-Gmax", "Rillaboom-Gmax", "Cinderace-Gmax", "Inteleon-Gmax", "Corviknight-Gmax", "Orbeetle-Gmax", "Drednaw-Gmax", "Coalossal-Gmax",
         "Flapple-Gmax", "Sandaconda-Gmax", "Toxtricity-Amped-Gmax", "Centiskorch-Gmax",
-        "Hatterene-Gmax", "Grimmsnarl-Gmax", "Alcremie-Gmax",
+        "Hatterene-Gmax", "Grimmsnarl-Gmax", "Alcremie-Gmax", "Copperajah-Gmax", "Duraludon-Gmax", "Urshifu-Single-Strike-Gmax", "Urshifu-Rapid-Strike-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
         "Pikachu-Cosplay", "Pichu-Spiky-Eared"
@@ -1706,6 +1710,27 @@ internal static partial class PokemonModels
         "EISCUE" => Eiscue(),
         "INDEEDEE" => Indeedee(),
         "MORPEKO" => Morpeko(),
+        "CUFANT" => Cufant(),
+        "COPPERAJAH" => Copperajah(),
+        "DRACOZOLT" => Dracozolt(),
+        "ARCTOZOLT" => Arctozolt(),
+        "DRACOVISH" => Dracovish(),
+        "ARCTOVISH" => Arctovish(),
+        "DURALUDON" => Duraludon(),
+        "DREEPY" => Dreepy(),
+        "DRAKLOAK" => Drakloak(),
+        "DRAGAPULT" => Dragapult(),
+        "ZACIAN" => Zacian(),
+        "ZAMAZENTA" => Zamazenta(),
+        "ETERNATUS" => Eternatus(),
+        "KUBFU" => Kubfu(),
+        "URSHIFU" => Urshifu(),
+        "ZARUDE" => Zarude(),
+        "REGIELEKI" => Regieleki(),
+        "REGIDRAGO" => Regidrago(),
+        "GLASTRIER" => Glastrier(),
+        "SPECTRIER" => Spectrier(),
+        "CALYREX" => Calyrex(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1862,6 +1887,13 @@ internal static partial class PokemonModels
         "EISCUE-NOICE" => EiscueNoice(),
         "INDEEDEE-FEMALE" => IndeedeeFemale(),
         "MORPEKO-HANGRY" => MorpekoHangry(),
+        "ZACIAN-CROWNED" => ZacianCrowned(),
+        "ZAMAZENTA-CROWNED" => ZamazentaCrowned(),
+        "ETERNATUS-ETERNAMAX" => EternatusEternamax(),
+        "URSHIFU-RAPID-STRIKE" => UrshifuRapidStrike(),
+        "ZARUDE-DADA" => ZarudeDada(),
+        "CALYREX-ICE" => CalyrexIce(),
+        "CALYREX-SHADOW" => CalyrexShadow(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
@@ -1985,6 +2017,10 @@ internal static partial class PokemonModels
         "HATTERENE-GMAX" => HattereneGmax(),
         "GRIMMSNARL-GMAX" => GrimmsnarlGmax(),
         "ALCREMIE-GMAX" => AlcremieGmax(),
+        "COPPERAJAH-GMAX" => CopperajahGmax(),
+        "DURALUDON-GMAX" => DuraludonGmax(),
+        "URSHIFU-SINGLE-STRIKE-GMAX" => UrshifuSingleStrikeGmax(),
+        "URSHIFU-RAPID-STRIKE-GMAX" => UrshifuRapidStrikeGmax(),
         "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A form that looks just like another form of its species shows that form's sculpt

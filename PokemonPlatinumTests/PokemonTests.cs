@@ -752,7 +752,10 @@ public class PokemonTests
             "Grapploct", "Sinistea", "Polteageist",
             // Galar's third batch, Hatenna to Morpeko
             "Hatenna", "Hattrem", "Hatterene", "Impidimp", "Morgrem", "Grimmsnarl", "Obstagoon", "Perrserker", "Cursola", "Sirfetch'd", "Mr. Rime",
-            "Runerigus", "Milcery", "Alcremie", "Falinks", "Pincurchin", "Snom", "Frosmoth", "Stonjourner", "Eiscue", "Indeedee", "Morpeko"
+            "Runerigus", "Milcery", "Alcremie", "Falinks", "Pincurchin", "Snom", "Frosmoth", "Stonjourner", "Eiscue", "Indeedee", "Morpeko",
+            // Galar's last batch, Cufant to Calyrex
+            "Cufant", "Copperajah", "Dracozolt", "Arctozolt", "Dracovish", "Arctovish", "Duraludon", "Dreepy", "Drakloak", "Dragapult", "Zacian",
+            "Zamazenta", "Eternatus", "Kubfu", "Urshifu", "Zarude", "Regieleki", "Regidrago", "Glastrier", "Spectrier", "Calyrex"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));

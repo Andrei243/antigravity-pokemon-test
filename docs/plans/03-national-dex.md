@@ -9,7 +9,7 @@
 - Pokémon have natures, IVs, six growth rates (Erratic and Fluctuating included), gender by species ratio, abilities, held items, friendship and a personality value. Every evolution method runs (`docs/mechanics/evolution.md`, done 2026-10-02). No EVs gained, forms or breeding yet.
 - `docs/mechanics/coverage.md` (generated) lists which moves, abilities, held items and evolution methods the engine runs.
 - The Pokédex (D10, 2026-10-04): Platinum's Sinnoh Pokédex of 210 species, and the National one after the Hall of Fame, each with its own numbers and counts; an entry's INFO, AREA and SIZE pages; Platinum's search; diplomas (`Models/Pokedex.cs`, `Models/PokedexSearch.cs`, `Data/Habitats.cs`, `UI/PokedexScreen.cs`).
-- Every species has a 3D model: 877 hand-built, the whole of Platinum's Sinnoh Pokédex (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon; D8's 51 in `PokemonModels.Sinnoh3.cs`, from Azurill to Magnezone but for the legendaries; and D9's 35 in `PokemonModels.Sinnoh4.cs`, the legendaries and Tangela to Absol) and the seven of Sinnoh outside it (`PokemonModels.Sinnoh5.cs`, Heatran to Arceus) and all 105 of Kanto's from outside it (`PokemonModels.Kanto1.cs`, Bulbasaur to Vileplume, `PokemonModels.Kanto2.cs`, Paras to Kingler, and `PokemonModels.Kanto3.cs`, Voltorb to Mew; decision 3) and all 64 of Johto's (`PokemonModels.Johto1.cs`, Chikorita to Corsola, and `PokemonModels.Johto2.cs`, Delibird to Celebi) and all 107 of Hoenn's (`PokemonModels.Hoenn1.cs`, Treecko to Delcatty, `PokemonModels.Hoenn2.cs`, Sableye to Armaldo, and `PokemonModels.Hoenn3.cs`, Castform to Deoxys) and all 156 of Unova's (`PokemonModels.Unova1.cs`, Victini to Audino, `PokemonModels.Unova2.cs`, Timburr to Zoroark, `PokemonModels.Unova3.cs`, Minccino to Chandelure, and `PokemonModels.Unova4.cs`, Axew to Genesect) and all 72 of Kalos's (`PokemonModels.Kalos1.cs`, Chespin to Slurpuff, and `PokemonModels.Kalos2.cs`, Inkay to Volcanion) and all 88 of Alola's (`PokemonModels.Alola1.cs`, Rowlet to Bewear, `PokemonModels.Alola2.cs`, Bounsweet to Kommo-o, and `PokemonModels.Alola3.cs`, Tapu Koko to Melmetal) and Galar's first 68 (`PokemonModels.Galar1.cs`, Grookey to Eldegoss, `PokemonModels.Galar2.cs`, Wooloo to Polteageist, and `PokemonModels.Galar3.cs`, Hatenna to Morpeko), with every form of a hand-built species but those that look the same, the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
+- Every species has a 3D model: 898 hand-built, the whole of Platinum's Sinnoh Pokédex (the 24 of plan 04 in `Graphics/PokemonModels.cs`, Buneary among them for the new-game introduction; D6's 50 in `PokemonModels.Sinnoh1.cs`, the Sinnoh Pokédex from Kricketot to Lopunny; D7's 50 in `PokemonModels.Sinnoh2.cs`, from Gastly to Hippowdon; D8's 51 in `PokemonModels.Sinnoh3.cs`, from Azurill to Magnezone but for the legendaries; and D9's 35 in `PokemonModels.Sinnoh4.cs`, the legendaries and Tangela to Absol) and the seven of Sinnoh outside it (`PokemonModels.Sinnoh5.cs`, Heatran to Arceus) and all 105 of Kanto's from outside it (`PokemonModels.Kanto1.cs`, Bulbasaur to Vileplume, `PokemonModels.Kanto2.cs`, Paras to Kingler, and `PokemonModels.Kanto3.cs`, Voltorb to Mew; decision 3) and all 64 of Johto's (`PokemonModels.Johto1.cs`, Chikorita to Corsola, and `PokemonModels.Johto2.cs`, Delibird to Celebi) and all 107 of Hoenn's (`PokemonModels.Hoenn1.cs`, Treecko to Delcatty, `PokemonModels.Hoenn2.cs`, Sableye to Armaldo, and `PokemonModels.Hoenn3.cs`, Castform to Deoxys) and all 156 of Unova's (`PokemonModels.Unova1.cs`, Victini to Audino, `PokemonModels.Unova2.cs`, Timburr to Zoroark, `PokemonModels.Unova3.cs`, Minccino to Chandelure, and `PokemonModels.Unova4.cs`, Axew to Genesect) and all 72 of Kalos's (`PokemonModels.Kalos1.cs`, Chespin to Slurpuff, and `PokemonModels.Kalos2.cs`, Inkay to Volcanion) and all 88 of Alola's (`PokemonModels.Alola1.cs`, Rowlet to Bewear, `PokemonModels.Alola2.cs`, Bounsweet to Kommo-o, and `PokemonModels.Alola3.cs`, Tapu Koko to Melmetal) and all 89 of Galar's (`PokemonModels.Galar1.cs`, Grookey to Eldegoss, `PokemonModels.Galar2.cs`, Wooloo to Polteageist, `PokemonModels.Galar3.cs`, Hatenna to Morpeko, and `PokemonModels.Galar4.cs`, Cufant to Calyrex), with every form of a hand-built species but those that look the same, the rest generated from their data (D5: `PokemonGenome.cs`, `PokemonGenerator.cs`), and any of them can be replaced by a glTF file in `overrides/models` (`ImportedModels`, [`docs/model-files.md`](../model-files.md)). Models are built in the background when a battle or scene is about to show them; start-up builds and bakes sprites only for the first 24 hand-built species (`PokemonModels.Preloaded`) and the stand-in, and every other menu sprite is baked the first time a menu asks for it and cached as a PNG.
 
 ## Decisions
 
@@ -459,6 +459,42 @@ Hand-built in batches of about fifty sculpts, species and their forms together, 
 - **Tests**: the hand-built list grew to 877 and the hand-built forms to 440. Runerigus has one eye, Falinks twelve, the Gigantamax Alcremie none.
 - **Not done here**: the rest of Galar, Cufant (878) onwards, and its forms; the later regions; changing form in play (plan 06 · R19–R23 and R29).
 
+**Galar, batch 4 (2026-10-07).**
+- **21 species** hand-built in `Graphics/PokemonModels.Galar4.cs`: the National Pokédex from Cufant (878) to Calyrex (898), none of them in the Sinnoh Pokédex. Cufant and Copperajah; Dracozolt, Arctozolt, Dracovish and Arctovish; Duraludon; Dreepy, Drakloak and Dragapult; Zacian, Zamazenta and Eternatus; Kubfu and Urshifu; Zarude, Regieleki and Regidrago; Glastrier, Spectrier and Calyrex. 898 species are now hand-built, every species of Galar among them.
+- **11 forms**, every form of those species:
+  - in `PokemonModels.Regional.cs`:
+    - the Crowned Zacian: a gold helm with long ears, gold plates rising from its back like wings, and a sword held crosswise in its jaws, its blade glowing rose;
+    - the Crowned Zamazenta: a gold helm, a gold and red shield across its chest and gold plates on its shoulders;
+    - Urshifu's Rapid Strike Style: a lighter grey, its long white hair streaming back;
+    - Zarude's Dada: a pink cape tied at its neck;
+    - Calyrex's Ice and Shadow Riders: Calyrex, smaller and its bulb pale teal, on Glastrier's or Spectrier's back, holding reins to the horse's muzzle;
+  - Eternatus's Eternamax: a vast pink mass bristling with dark spikes, its core a white star. Its build is beside Eternatus's in `PokemonModels.Galar4.cs`;
+  - in `PokemonModels.Gigantamax.cs`:
+    - the Gigantamax Copperajah: darker, its trunk a column to the ground, plates of teal and white rising from its back in tiers;
+    - the Gigantamax Duraludon: a tower, with a spire for a head, a wall of blue glass down its front and arms like a building's wings;
+    - Urshifu's two: the Single Strike Style red, its robe and topknot flaring into flames, and the Rapid Strike Style white, wrapped in flowing blue.
+
+  451 forms are hand-built (Platinum's own 64 and the later games' 387), and 1,349 sculpts in all, no two the same.
+- **Shared builds**: Copperajah's two, Duraludon's two, Zacian's two, Zamazenta's two, Urshifu's four, Zarude's two, and Glastrier's two and Spectrier's two (with and without their rider, `CalyrexRider`). The kit in the batch's file adds:
+  - the fossils' legs and bird's head (`FossilLegs`, `BirdCrest`);
+  - a Dreepy at any size (`DreepyBody`: Dreepy itself, and the Dreepys riding on its elders);
+  - the stealth flier's hat (`DeltaHat`);
+  - a horse's legs (`HorseLegs`, which hands each leg's bone on for more, as Glastrier's crystals use it).
+- **Soundness**: the check found these, all fixed:
+  - Dreepy's body bone carrying nothing;
+  - the Gigantamax Duraludon's eyes off its spire;
+  - Dragapult's Dreepys' eyes in the middle of its hat (`On` takes the point's x on the model, not its offset from the centre);
+  - Zamazenta's mane apart from its neck;
+  - the heads of Urshifu, Zarude and Calyrex apart from their bodies;
+  - the Ice Rider's eyes too small for the mesh once Glastrier had grown heavier.
+- **Look check**: Copperajah stands lower and its head is bigger; Duraludon's body, head and arms are broader, where it had looked like a thin robot; Glastrier is a heavier horse, thicker in the leg and body.
+- **Eyes**:
+  - four for Drakloak (its own and the Dreepy's on its hat) and for Calyrex's two riders (the horse's and Calyrex's);
+  - six for Dragapult (its own and its two Dreepys');
+  - none for Eternatus and its Eternamax, or for Regieleki and Regidrago (dots in their place).
+- **Tests**: the hand-built list grew to 898 and the hand-built forms to 451, with those eye counts.
+- **Not done here**: the later regions, from Wyrdeer (899) on; changing form in play (plan 06 · R19–R23 and R29).
+
 ### D12 · Every species obtainable
 Encounter tables for Platinum's post-game, the Pal Park-style area, the new zone for later generations, gifts, legendary quests, the trade-evolution replacement. A completeness test fails for any species with no way to get it.
 
@@ -507,5 +543,6 @@ Level curves in the post-game areas, start-up time and memory with 1025 species,
 - [x] Sinnoh's last seven and Galar batch 1 (2026-10-07, decision 3: Heatran to Arceus, every species of Sinnoh, and Grookey to Eldegoss, 28 species and their 25 forms)
 - [x] Popular species, Galar batch 2 (2026-10-07, decision 3: Wooloo to Polteageist, 25 species and their 13 forms, 9 of them sculpted)
 - [x] Popular species, Galar batch 3 (2026-10-07, decision 3: Hatenna to Morpeko, 22 species and their 69 forms)
+- [x] Popular species, Galar batch 4 (2026-10-07, decision 3: Cufant to Calyrex, 21 species and their 11 forms; every species of Galar)
 - [ ] D12 Every species obtainable
 - [ ] D13 Balance and polish

@@ -962,4 +962,20 @@ internal static partial class PokemonModels
     private static PokeBuilder IndeedeeFemale() => IndeedeeBuild(true);
 
     private static PokeBuilder MorpekoHangry() => MorpekoBuild(true);
+
+    // ------------------------------------------------------------------ The Crowned Sword and Shield (their builds in PokemonModels.Galar4.cs, with Eternatus's Eternamax)
+
+    private static PokeBuilder ZacianCrowned() => ZacianBuild(true);
+
+    private static PokeBuilder ZamazentaCrowned() => ZamazentaBuild(true);
+
+    // ------------------------------------------------------------------ The Rapid Strike Style, Dada and Calyrex's riders (their builds in PokemonModels.Galar4.cs)
+
+    private static PokeBuilder UrshifuRapidStrike() => UrshifuBuild(true, false);
+
+    private static PokeBuilder ZarudeDada() => ZarudeBuild(true);
+
+    private static PokeBuilder CalyrexIce() => GlastrierBuild(true);
+
+    private static PokeBuilder CalyrexShadow() => SpectrierBuild(true);
 }

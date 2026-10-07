@@ -537,4 +537,14 @@ internal static partial class PokemonModels
     private static PokeBuilder HattereneGmax() => HattereneBuild(true);
 
     private static PokeBuilder GrimmsnarlGmax() => GrimmsnarlBuild(true);
+
+    // ------------------------------------------------------------------ Galar's last batch's: Copperajah, Duraludon and Urshifu (their builds in PokemonModels.Galar4.cs)
+
+    private static PokeBuilder CopperajahGmax() => CopperajahBuild(true);
+
+    private static PokeBuilder DuraludonGmax() => DuraludonBuild(true);
+
+    private static PokeBuilder UrshifuSingleStrikeGmax() => UrshifuBuild(false, true);
+
+    private static PokeBuilder UrshifuRapidStrikeGmax() => UrshifuBuild(true, true);
 }
