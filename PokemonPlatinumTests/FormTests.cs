@@ -202,7 +202,8 @@ public class FormTests
         // Primal Kyogre and Groudon, Basculin's stripes, Darmanitan's Zen Modes, Deerling's and Sawsbuck's seasons, the
         // female Frillish and Jellicent, Vivillon's patterns, the Flabébé line's colours, Furfrou's trims, the sizes of
         // the Pumpkaboo line, Zygarde's formes, Oricorio's styles, Silvally's memories, Minior's cores, Necrozma's
-        // fusions, Magearna's colours, Cramorant's catches, Toxtricity's Low Key Form). The few that look just like
+        // fusions, Magearna's colours, Cramorant's catches, Toxtricity's Low Key Form, Alcremie's creams and sweets,
+        // Eiscue's Noice Face, the female Indeedee, the Hangry Morpeko). The few that look just like
         // their species show its sculpt: Mothim's cloaks, the partner Pikachu and Eevee, Greninja's Battle Bond,
         // Scatterbug and Spewpa, whose pattern shows only once they are Vivillon, the 50% Zygarde with Power Construct,
         // the Own Tempo Rockruff, Minior's meteors, whose cores don't show, and the antique Sinistea and Polteageist,
@@ -215,7 +216,7 @@ public class FormTests
                 "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo", "Appletun-Gmax", "Toxtricity-Low-Key-Gmax", "Sinistea-Antique", "Polteageist-Antique" }
             .Concat(new[] { "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" }.Select(c => "Minior-" + c + "-Meteor"))
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
-        Assert.Equal(371, PokemonModels.Forms.Length);
+        Assert.Equal(440, PokemonModels.Forms.Length);
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {

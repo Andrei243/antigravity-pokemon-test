@@ -531,4 +531,10 @@ internal static partial class PokemonModels
     private static PokeBuilder ToxtricityAmpedGmax() => ToxtricityBuild(false, true);
 
     private static PokeBuilder CentiskorchGmax() => CentiskorchBuild(true);
+
+    // ------------------------------------------------------------------ Galar's third batch's: Hatterene, Grimmsnarl and Alcremie (their builds in PokemonModels.Galar3.cs)
+
+    private static PokeBuilder HattereneGmax() => HattereneBuild(true);
+
+    private static PokeBuilder GrimmsnarlGmax() => GrimmsnarlBuild(true);
 }
