@@ -28,6 +28,12 @@ public interface IScriptHost
     Party Party { get; }
     Inventory Bag { get; }
 
+    /// <summary>
+    /// Whether the player has a Pokémon able to fight. A battle is never started without one (<see cref="ScriptRunner"/>):
+    /// the story gives the first Pokémon before any battle, and a battle with none ended the game.
+    /// </summary>
+    bool CanBattle => Party.HasUsablePokemon;
+
     /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
     Poketch Poketch { get; }
 

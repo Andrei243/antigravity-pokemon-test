@@ -1434,14 +1434,26 @@ public static class WorldMapBuilder
                 map.TileScripts[(s.X, s.Z)] = read;
         }
 
-        // The original's triggers that have a script of ours: its tiles, its variable and its value
+        // The original's triggers that have a script of ours: its tiles, its variable and its value; and ours, where
+        // the original has none, on the tiles the overlay gives
         foreach (var bound in overlay?.Triggers ?? new())
         {
-            if (bound.Trigger < 0 || bound.Trigger >= file.Triggers.Count)
-                throw new InvalidDataException($"The overlay of {key} gives a script to trigger {bound.Trigger}, and the area has {file.Triggers.Count}.");
-            var t = file.Triggers[bound.Trigger];
+            if (bound.Trigger is not { } number)
+            {
+                if (bound.X is not { } x || bound.Z is not { } z)
+                    throw new InvalidDataException($"A trigger in the overlay of {key} gives neither the original's number nor its own tiles.");
+                map.Triggers.Add(new StepTrigger
+                {
+                    X = x, Y = z, Width = bound.Width, Depth = bound.Depth, Script = bound.Script, ScriptFile = key,
+                    Variable = bound.Variable, Value = bound.Value
+                });
+                continue;
+            }
+            if (number < 0 || number >= file.Triggers.Count)
+                throw new InvalidDataException($"The overlay of {key} gives a script to trigger {number}, and the area has {file.Triggers.Count}.");
+            var t = file.Triggers[number];
             if (!int.TryParse(t.Value, out int value))
-                throw new InvalidDataException($"Trigger {bound.Trigger} of {key} waits for the value '{t.Value}', which is no number.");
+                throw new InvalidDataException($"Trigger {number} of {key} waits for the value '{t.Value}', which is no number.");
             map.Triggers.Add(new StepTrigger
             {
                 X = t.X, Y = t.Z, Width = t.Width, Depth = t.Depth, Script = bound.Script, ScriptFile = key,

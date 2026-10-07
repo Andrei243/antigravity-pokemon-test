@@ -1135,6 +1135,8 @@ public partial class GameEngine
     /// <summary>After each step: a trainer looking this way notices the player and comes over to battle.</summary>
     private bool CheckTrainerSight()
     {
+        // Nobody challenges a player with no Pokémon able to fight (StartWildBattle says why)
+        if (!playerParty.HasUsablePokemon) return false;
         var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY);
         if (trainer == null) return false;
 
@@ -1391,6 +1393,9 @@ public partial class GameEngine
 
     private void StartWildBattle(WildEncounterEntry entry)
     {
+        // No wild Pokémon is met by a player with none able to fight: the story gives the first before the grass is
+        // ever reached, and a game where that went wrong must not start a battle it can't play (it ended the game)
+        if (!playerParty.HasUsablePokemon) return;
         // Met in the field: the roamers and the Poké Radar hear how it ends (plan 06 · R13)
         fieldEncounter = true;
         // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)

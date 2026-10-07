@@ -128,7 +128,9 @@ public class OpeningTests
                 MapNamed = name => maps.GetValueOrDefault(name),
                 StarterChoice = Starter,
                 RivalName = Rival,
-                Fight = _ => Fight
+                Fight = _ => Fight,
+                // As in the game, a chapter's battles are fought only with a Pokémon of the player's
+                NeedsPokemon = true
             };
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
@@ -287,6 +289,104 @@ public class OpeningTests
         Assert.Equal(done.Variables.OrderBy(v => v.Key), game.Story.Variables.OrderBy(v => v.Key));
         Assert.Empty(done.Flags.Except(game.Story.Flags));
         Assert.Equal(new[] { "FLAG_TALKED_TO_ROUTE_202_COUNTERPART" }, game.Story.Flags.Except(done.Flags).Order());
+    }
+
+    /// <summary>A new game played as the chapter goes, to the professor's scene on Route 201: the briefcase waits.</summary>
+    private static Game ToTheBriefcase()
+    {
+        var game = new Game();
+        game.Step("RivalRushesIn");
+        game.Through("PlayerHouse");
+        game.Step("DoorWarning");
+        game.Through("Sinnoh");
+        game.Step("GuitaristStops");
+        game.Step("RivalRunsOut");
+        game.Through("RivalHouse");
+        game.Talk("rival_mom");
+        game.Through("RivalHouse2F");
+        game.Through("RivalHouse");
+        game.Through("Sinnoh");
+        game.Step("RowanAppears");
+        Assert.Equal(1, game.Story.Var("VAR_FOLLOWER_RIVAL_STATE"));
+        Assert.Empty(game.Party.Members);
+        return game;
+    }
+
+    /// <summary>
+    /// The professor's scene leaves him, his assistant and the briefcase on Route 201 until a Pokémon is chosen, not
+    /// only until the next door, as the original clears their flags. Shown by the script alone, they were gone when
+    /// the player came back out of a house, the briefcase with them, and the game went on with no Pokémon at all.
+    /// </summary>
+    [Fact]
+    public void TheBriefcaseWaitsOnRoute201WhereverThePlayerGoesMeanwhile()
+    {
+        var game = ToTheBriefcase();
+        InView(game);
+
+        // Out of a door and back onto the road: who stands there is what the story's flags say
+        game.Arrive("Sinnoh", game.Tile.X, game.Tile.Y);
+        Assert.NotNull(game.Present("briefcase"));
+        Assert.NotNull(game.Present("prof_rowan"));
+        Assert.NotNull(game.Present("counterpart"));
+        InView(game);
+
+        // A game played before the scene cleared their flags lost all three at the first door; it finds them again
+        // as soon as it is back on the road
+        foreach (var flag in new[] { "FLAG_HIDE_ROUTE_201_PROF_ROWAN", "FLAG_HIDE_ROUTE_201_COUNTERPART", "FLAG_HIDE_ROUTE_201_BRIEFCASE" })
+            game.Story.Set(flag);
+        game.Arrive("Sinnoh", game.Tile.X, game.Tile.Y);
+        Assert.NotNull(game.Present("briefcase"));
+        Assert.NotNull(game.Present("prof_rowan"));
+        InView(game);
+
+        // And the briefcase still gives the first Pokémon
+        game.Talk("briefcase");
+        Assert.Single(game.Party.Members);
+    }
+
+    /// <summary>
+    /// The briefcase can be seen and walked up to: nobody stands on the tile in front of it. The rival's own tile is
+    /// that one, and from the field's steep camera his back hid the briefcase from the player altogether.
+    /// </summary>
+    private static void InView(Game game)
+    {
+        var briefcase = game.Present("briefcase")!;
+        var front = (briefcase.GridX, briefcase.GridY + 1);
+        Assert.DoesNotContain(game.Map.NPCs, n => (n.GridX, n.GridY) == front);
+        Assert.True(game.Map.IsWalkable(front.Item1, front.Item2));
+        Assert.NotNull(game.Present("rival"));
+    }
+
+    /// <summary>
+    /// While the briefcase waits, every way off the professor's stretch of road turns the player back: the whole of
+    /// the grass's edge, the road west to the lake and the road home (overlays/route_201.json). The original holds
+    /// only two tiles of the grass's edge; past them a player with no Pokémon walked into the grass, where every
+    /// battle ended the game.
+    /// </summary>
+    [Fact]
+    public void NobodyLeavesTheBriefcaseWithoutAPokemon()
+    {
+        var game = ToTheBriefcase();
+        var map = game.Map;
+        var reached = new HashSet<(int X, int Y)> { game.Tile };
+        var queue = new Queue<(int X, int Y)>(reached);
+        while (queue.Count > 0)
+        {
+            var (x, y) = queue.Dequeue();
+            foreach (var (nx, ny) in new[] { (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1) })
+            {
+                if (!map.InBounds(nx, ny) || !map.IsWalkable(nx, ny) || reached.Contains((nx, ny))) continue;
+                // A step onto a trigger that fires now turns the player back
+                if (FieldScripts.TriggerAt(map, nx, ny, game.Story) != null) continue;
+                reached.Add((nx, ny));
+                queue.Enqueue((nx, ny));
+            }
+            Assert.True(reached.Count < 500, "the player walks off down the road");
+        }
+
+        Assert.DoesNotContain(reached, t => map.IsTallGrass(t.X, t.Y));
+        Assert.DoesNotContain(reached, t => map.GetWarpAt(t.X, t.Y) != null);
+        Assert.All(reached, t => Assert.Equal("route_201", map.ScriptFileAt(t.X, t.Y)));
     }
 
     [Fact]

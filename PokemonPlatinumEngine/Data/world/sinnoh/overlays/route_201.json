@@ -48,7 +48,14 @@
   // to the lake (and the two ways the player is turned back while the rival waits there)
   "triggers": [
     { "trigger": 0, "script": "RowanAppears" }, { "trigger": 1, "script": "ChooseFirst" }, { "trigger": 2, "script": "NotHome" },
-    { "trigger": 3, "script": "ChooseFirst" }, { "trigger": 4, "script": "NotSandgem" }, { "trigger": 5, "script": "OffToTheLake" }
+    { "trigger": 3, "script": "ChooseFirst" }, { "trigger": 4, "script": "NotSandgem" }, { "trigger": 5, "script": "OffToTheLake" },
+    // Ours, while the briefcase waits (VAR_FOLLOWER_RIVAL_STATE 1): the original's two hold only part of the grass's
+    // edge, and a player with no Pokémon walked round them into the grass. With these the whole of its edge, the road
+    // west to the lake and the road home turn the player back until a Pokémon is chosen.
+    { "x": 115, "z": 852, "depth": 2, "variable": "VAR_FOLLOWER_RIVAL_STATE", "value": 1, "script": "ChooseFirst" },
+    { "x": 115, "z": 855, "depth": 2, "variable": "VAR_FOLLOWER_RIVAL_STATE", "value": 1, "script": "ChooseFirst" },
+    { "x": 103, "z": 853, "depth": 3, "variable": "VAR_FOLLOWER_RIVAL_STATE", "value": 1, "script": "ChooseFirstWest" },
+    { "x": 110, "z": 858, "width": 4, "variable": "VAR_FOLLOWER_RIVAL_STATE", "value": 1, "script": "ChooseFirstSouth" }
   ],
   "signs": {
     "arrow_signpost_twinleaf_town": "Route 201\nSouth: Twinleaf Town",

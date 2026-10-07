@@ -97,6 +97,15 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Pauses) Busy = true;
     }
 
+    /// <summary>
+    /// Whether a battle needs a Pokémon of the player's able to fight, as it does in the game (<see cref="IScriptHost.CanBattle"/>).
+    /// Off unless a test turns it on, so a test of the language battles with an empty team; a chapter played through
+    /// turns it on.
+    /// </summary>
+    public bool NeedsPokemon { get; set; }
+
+    public bool CanBattle => !NeedsPokemon || Party.HasUsablePokemon;
+
     public HeadlessScriptHost(StoryState? story = null, Party? party = null, Inventory? bag = null)
     {
         Story = story ?? new StoryState();

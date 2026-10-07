@@ -340,6 +340,7 @@ public sealed class ScriptRunner
 
             case Op.Battle:
             {
+                if (NoPokemonToBattle()) break;
                 var foe = Person(i.Name, i) ?? throw Wrong(i, "the player can't be battled");
                 if (i.AsTrainer.Length > 0)
                 {
@@ -405,6 +406,8 @@ public sealed class ScriptRunner
             case Op.WildBattle:
             case Op.CatchingLesson:
             {
+                // The catching lesson is the assistant's battle, fought with the assistant's own Pokémon
+                if (i.Op == Op.WildBattle && NoPokemonToBattle()) break;
                 var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
                 var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
                 host.WildBattle(new Pokemon(species, i.Number), kind, cannotFlee: i.Option);
@@ -580,6 +583,20 @@ public sealed class ScriptRunner
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
+    }
+
+    /// <summary>
+    /// A battle the player has no Pokémon to fight is never started: the story gives the first Pokémon before any
+    /// battle, and a game where that went wrong must not start one it can't play (it ended the game). A line says
+    /// why and the script ends there, so whatever the battle would have led to waits for the player to come back
+    /// with a Pokémon.
+    /// </summary>
+    private bool NoPokemonToBattle()
+    {
+        if (host.CanBattle) return false;
+        host.Say(null, new[] { "{player} has no Pokémon that can battle!" });
+        Finish();
+        return true;
     }
 
     /// <summary>
