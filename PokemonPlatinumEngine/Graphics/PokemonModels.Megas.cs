@@ -1726,6 +1726,12 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
+    // ------------------------------------------------------------------ Mega Heatran and Mega Darkrai (their builds in PokemonModels.Sinnoh5.cs)
+
+    private static PokeBuilder HeatranMega() => HeatranBuild(true);
+
+    private static PokeBuilder DarkraiMega() => DarkraiBuild(true);
+
     // ------------------------------------------------------------------ Mega Emboar (its build in PokemonModels.Unova1.cs)
 
     private static PokeBuilder EmboarMega() => EmboarBuild(true);
@@ -1779,4 +1785,18 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Alola's Megas (their builds in PokemonModels.Alola1.cs)
 
     private static PokeBuilder CrabominableMega() => CrabominableBuild(true);
+
+    // ------------------------------------------------------------------ Alola's second batch's Megas (their builds in PokemonModels.Alola2.cs)
+
+    private static PokeBuilder GolisopodMega() => GolisopodBuild(true);
+
+    private static PokeBuilder DrampaMega() => DrampaBuild(true);
+
+    // ------------------------------------------------------------------ Alola's third batch's Megas (their builds in PokemonModels.Alola3.cs)
+
+    private static PokeBuilder MagearnaMega() => MagearnaBuild(false, true);
+
+    private static PokeBuilder MagearnaOriginalMega() => MagearnaBuild(true, true);
+
+    private static PokeBuilder ZeraoraMega() => ZeraoraBuild(true);
 }

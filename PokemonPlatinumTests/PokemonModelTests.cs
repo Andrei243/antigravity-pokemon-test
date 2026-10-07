@@ -32,7 +32,11 @@ public class PokemonModelTests
         ["Kangaskhan-Mega"] = 4, ["Staryu"] = 0, ["Starmie"] = 0, ["Starmie-Mega"] = 0, ["Chinchou"] = 0, ["Lunatone"] = 1, ["Claydol"] = 7,
         ["Beldum"] = 1, ["Regirock"] = 0, ["Regice"] = 0, ["Registeel"] = 0, ["Roggenrola"] = 0, ["Boldore"] = 0, ["Sigilyph"] = 1, ["Vanilluxe"] = 4, ["Klang"] = 1, ["Klinklang"] = 1, ["Litwick"] = 1, ["Deino"] = 0, ["Zweilous"] = 0,
         ["Honedge"] = 1, ["Aegislash"] = 1, ["Aegislash-Blade"] = 1,
-        ["Binacle"] = 4, ["Trevenant"] = 1
+        ["Binacle"] = 4, ["Trevenant"] = 1,
+        ["Type: Null"] = 0, ["Dhelmise"] = 1,
+        ["Nihilego"] = 0, ["Xurkitree"] = 0, ["Celesteela"] = 0, ["Kartana"] = 0, ["Blacephalon"] = 0, ["Meltan"] = 1, ["Melmetal"] = 1,
+        ["Melmetal-Gmax"] = 1, ["Regigigas"] = 0, ["Darkrai"] = 1, ["Darkrai-Mega"] = 1, ["Cinderace-Gmax"] = 0, ["Inteleon-Gmax"] = 0,
+        ["Rolycoly"] = 1, ["Flapple-Gmax"] = 0, ["Sandaconda-Gmax"] = 0
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
