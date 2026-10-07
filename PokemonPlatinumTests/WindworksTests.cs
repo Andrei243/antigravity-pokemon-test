@@ -86,9 +86,65 @@ public class WindworksTests
 
         // The door is read from its mat and opens with the key
         Assert.Equal("Door", game.Map.TileScripts[(243, 654)]);
+        Assert.Equal("FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR", game.Map.GetWarpAt(243, 654)!.OpenedBy);
         game.Tile = (243, 655);
         game.Play(Scripts.Find("Door", "valley_windworks_outside")!);
         Assert.True(game.Story.Has("FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR"));
+
+        // Inside: a grunt runs to warn the Commander
+        game.Through("ValleyWindworksBuilding");
+        Assert.Contains(game.Said, l => l.Text.Contains("warn the Commander"));
+        Assert.Equal(1, game.Story.Var("VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE"));
+        Assert.Null(game.Present("galactic_grunt_1"));
+        Assert.Null(game.Present("little_girl"));
+
+        // Commander Mars beside the controls: beaten, Team Galactic goes, the bridge opens, the girl runs in to her papa
+        var mars = game.Step("Mars");
+        Assert.Contains("battle commander_mars_valley_windworks Won", mars.Log);
+        Assert.Contains(mars.Transcript, l => l.Speaker == "Charon");
+        Assert.Equal(2, game.Story.Var("VAR_VALLEY_WINDWORKS_STATE"));
+        Assert.Equal(2, game.Story.Var("VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE"));
+        Assert.Null(game.Present("mars"));
+        Assert.Null(game.Present("charon"));
+        Assert.NotNull(game.Present("little_girl"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_205_SOUTH_GRUNTS"));
+        Assert.False(game.Story.Has("FLAG_HIDE_ROUTE_205_SOUTH_YOUNGSTER"));
+        Assert.False(game.Fires("Mars"));
+
+        // Out again: Looker
+        game.Through("Sinnoh");
+        Assert.Contains(game.Said, l => l.Speaker == "Looker" && l.Text.Contains("Eterna City"));
+        Assert.Equal(3, game.Story.Var("VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE"));
+        Assert.Null(game.Present("grunt_m_west", "route_205_south"));
+        Assert.NotNull(game.Present("youngster", "route_205_south"));
+
+        // The papa and the girl at home afterwards
+        game.Through("ValleyWindworksBuilding");
+        var girl = game.Present("little_girl")!;
+        Assert.Equal((21, 5), (girl.GridX, girl.GridY));
+        Assert.Contains(game.Talk("scientist_papa").Transcript, l => l.Text.Contains("turbines"));
+    }
+
+    [Theory]
+    [InlineData("OreburghNorthHouse1F", "school_kid_f", "kazza", "Machop", "Abra", "FLAG_TRADED_FOR_KAZZA_ABRA")]
+    [InlineData("EternaCondominiums1F", "ninja_boy", "charap", "Buizel", "Chatot", "FLAG_TRADED_FOR_CHARAP_CHATOT")]
+    [InlineData("SnowpointWestHouse", "mindy", "gaspar", "Medicham", "Haunter", "FLAG_TRADED_FOR_GASPAR_HAUNTER")]
+    public void ThePeopleWhoTradeTakeTheSpeciesTheyAskForAndNothingElse(string room, string who, string trade, string wants, string gives, string flag)
+    {
+        var map = MapDatabase.Get(room);
+        var person = map.FindPerson(who)!;
+        foreach (bool right in new[] { false, true })
+        {
+            var host = new HeadlessScriptHost { Map = map, PokemonChoice = 1 };
+            host.Party.Add(new Pokemon(PokemonDatabase.Get("Grotle")!, 20));
+            host.Party.Add(new Pokemon(PokemonDatabase.Get(right ? wants : "Bidoof")!, 20));
+            var runner = new ScriptRunner(Scripts, host);
+            runner.Start(Scripts.Find(person.Script!, room)!, person);
+            runner.RunToEnd();
+            Assert.Equal(right, host.Story.Has(flag));
+            Assert.Equal(right ? gives : "Bidoof", host.Party.Members[1].Species.Name);
+            Assert.Contains(host.Log, l => l.StartsWith($"trade {trade} {(right ? "done" : "refused")}"));
+        }
     }
 
     [Fact]

@@ -3910,12 +3910,23 @@ if (mode == "windworks")
     ReadTo(null);
     Console.WriteLine($"windworks: door open {story.Has("FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR")}");
 
-    // ---- inside: Commander Mars (the building's scenes)
-    // MARS
+    // ---- inside: the grunt who runs off, Commander Mars and Charon, the girl and her papa
+    At("Sinnoh", 243, 655, Direction.Up);
+    engine.Steering = (Direction.Up, false);
+    Until(() => (Map)Get("currentMap") != MapDatabase.Get("Sinnoh"), "into the windworks", 300);
+    engine.Steering = null;
+    ReadTo("warn the Commander"); Frames(10); Shot("ww13_windworks_the_alarm");
+    ReadTo(null);
+    StepOnto("ValleyWindworksBuilding", 19, 7, Direction.Up);
+    ReadTo("whole new world"); Frames(10); Shot("ww14_windworks_commander_mars");
+    IntoBattle("Commander Mars");
+    ToMainMenu((BattleEngine)Get("battle")); Shot("ww15_windworks_the_battle");
+    ReadTo("Will you be quiet"); Frames(10); Shot("ww16_windworks_charon");
+    ReadTo("all stinky"); Frames(10); Shot("ww17_windworks_the_girl_and_her_papa");
+    ReadTo(null);
+    Console.WriteLine($"windworks: freed {story.Var("VAR_VALLEY_WINDWORKS_STATE")}, bridge open {story.Has("FLAG_HIDE_ROUTE_205_SOUTH_GRUNTS")}");
 
     // ---- outside again: Looker
-    story.SetVar("VAR_VALLEY_WINDWORKS_LOOKER_STATE", 1);
-    story.Unset("FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER");
     ComeThrough("Sinnoh", 243, 655, Direction.Down);
     ReadTo("International Police"); Frames(10); Shot("ww20_windworks_looker");
     ReadTo("Eterna City"); Frames(10); Shot("ww21_windworks_looker_back");

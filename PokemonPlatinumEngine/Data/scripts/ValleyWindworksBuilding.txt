@@ -1,0 +1,147 @@
+# Inside the Valley Windworks (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_valley_windworks_building.s).
+#
+# A grunt runs off to warn the Commander as the player comes in with the Works Key (VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE
+# 1). Commander Mars waits by the turbines' controls with Charon; beaten, Team Galactic leaves, the bridge on Route 205
+# opens, and the girl from Route 205 runs in to her papa. VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE: 2 Mars beaten,
+# 3 once the player has been outside again. VAR_VALLEY_WINDWORKS_STATE 2: the windworks are free.
+
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_VALLEY_WINDWORKS
+  if var VAR_VALLEY_WINDWORKS_STATE >= 2 call Reunited
+  if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE == 0 goto Alarm
+  end
+label Alarm
+  # The first time in (the original's OnFrame script): a grunt by the door runs to tell the Commander
+  emote galactic_grunt_1 exclaim
+  speaker "Team Galactic Grunt"
+  say "Wha-? How did you get in here? You've got a key?! I've got to warn the Commander!"
+  move galactic_grunt_1 left 9 fast
+  wait 0.3
+  face player left
+  waitmoves
+  hide galactic_grunt_1
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_GALACTIC_GRUNT_1
+  setvar VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 1
+  end
+
+
+# Once the windworks are free the girl stays with her papa (the original's OnTransition). The original sits him on
+# the chair at 18,4, which in our room is a chair in the way (it keeps the player to the trigger before Mars): he
+# stands at the end of his table instead.
+script Reunited
+  place little_girl 21 5 left
+  place scientist_papa 20 4 down
+  return
+
+
+# Beside the turbines' controls (the original's trigger 0, two tiles deep at x 19, state 1).
+script Mars
+  emote mars exclaim
+  if var PLAYER_Y == 6 walk mars up 1
+  face mars left
+  face player right
+  speaker "Commander Mars"
+  say "Oh, a visitor! I'm Mars, one of Team Galactic's Commanders. We're making a whole new world, you know."
+  say "This place's power is ours now. You want it back? Then let's have a battle!"
+  battle mars as "commander_mars_valley_windworks"
+  speaker "Commander Mars"
+  say "Oh, I really messed that one up..."
+  face charon down
+  wait 0.5
+  speaker "Charon"
+  say "Losing to a child, Mars? Never mind. We've gathered more than enough electricity already."
+  face mars up
+  speaker "Commander Mars"
+  say "Will you be quiet, Charon!"
+  face mars left
+  say "Fine. We'll leave this place for the time being. But Team Galactic isn't finished. See you around!"
+  fade out
+  hide mars
+  hide charon
+  hide grunt_m
+  hide galactic_grunt_2
+  hide galactic_grunt_3
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_TEAM_GALACTIC
+  setflag FLAG_HIDE_ROUTE_205_SOUTH_GRUNTS
+  clearflag FLAG_HIDE_ROUTE_205_SOUTH_YOUNGSTER
+  setvar VAR_VALLEY_WINDWORKS_STATE 2
+  fade in
+  # The papa comes down from the controls
+  if var PLAYER_Y == 6 walk scientist_papa down 3 left 1
+  if var PLAYER_Y == 7 walk scientist_papa down 4 left 1
+  face scientist_papa left
+  speaker "Papa"
+  say "Thank you, oh, thank you! They wanted the windworks' energy, and Pokémon too, for some new universe of theirs."
+  say "Thanks to you I can go home to my little girl!"
+  # And she runs in from the door
+  setflag FLAG_HIDE_ROUTE_205_SOUTH_LITTLE_GIRL
+  clearflag FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_LITTLE_GIRL
+  show little_girl
+  if var PLAYER_Y == 6 goto Below
+  walk little_girl right 4 up 2 right 6 fast
+  face little_girl down
+  wait 0.4
+  face scientist_papa up
+  goto Hug
+label Below
+  walk little_girl right 4 up 1 right 6 fast
+  face little_girl up
+  wait 0.4
+  face scientist_papa down
+label Hug
+  speaker "Little Girl"
+  say "Papa! Papa!! ...Eww, Papa, you're all stinky!"
+  face scientist_papa right
+  wait 0.3
+  face scientist_papa left
+  wait 0.3
+  face scientist_papa little_girl
+  speaker "Papa"
+  say "Ha ha, sorry! I've been working without a break, you see."
+  speaker "Little Girl"
+  say "Now the balloon Pokémon will come and visit again!"
+  setvar VAR_VALLEY_WINDWORKS_LOOKER_STATE 1
+  clearflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER
+  setvar VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 2
+  setflag FLAG_ALT_MUSIC_VALLEY_WINDWORKS_BUILDING
+  end
+
+
+# The windworks' engineer (the original's script 5).
+script Papa
+  if var VAR_VALLEY_WINDWORKS_STATE < 2 goto Held
+  if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE >= 3 goto Turbines
+  say "A balloon Pokémon drifts in by the windworks on a certain day of the week. It loves the wind here."
+  end
+label Turbines
+  say "The Valley Windworks turns the wind of the valley into electricity with its turbines. Clean power!"
+  end
+label Held
+  say "They've taken over the controls... Please, you have to stop them!"
+  end
+
+
+# The girl, once she is home with her papa (the original's script 6).
+script Girl
+  if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE >= 3 goto Windy
+  say "Now the balloon Pokémon will come and visit again!"
+  end
+label Windy
+  say "When the wind blows hard, the balloon Pokémon gets blown right away!"
+  end
+
+
+# The grunt by the controls (the original's script 3).
+script Grunt
+  speaker "Team Galactic Grunt"
+  say "Go on, get closer. Our Commander will flatten you!"
+  end
+
+
+# The two computers (the original's background events): what the room's file has on their screens.
+script Notes
+  speaker none
+  sayown
+  end
