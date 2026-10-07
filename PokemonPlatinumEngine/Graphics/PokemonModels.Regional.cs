@@ -825,4 +825,83 @@ internal static partial class PokemonModels
     private static PokeBuilder GenesectBurn() => GenesectBuild("Burn");
 
     private static PokeBuilder GenesectChill() => GenesectBuild("Chill");
+
+    // ------------------------------------------------------------------ Kalos's forms (their builds in PokemonModels.Kalos1.cs)
+
+    private static PokeBuilder GreninjaAsh() => GreninjaBuild(1);
+
+    /// <summary>Vivillon in one of its patterns, from the form's name (VIVILLON-POLAR), or null for a pattern it has none of.</summary>
+    private static PokeBuilder? VivillonForm(string form)
+    {
+        var key = VivillonPatterns.Keys.FirstOrDefault(k => ("VIVILLON-" + k).Equals(form, StringComparison.OrdinalIgnoreCase));
+        return key == null || key == "Meadow" ? null : VivillonBuild(key);
+    }
+
+    private static PokeBuilder PyroarFemale() => PyroarBuild(1);
+
+    private static PokeBuilder FlabebeYellow() => FlabebeBuild("Yellow");
+
+    private static PokeBuilder FlabebeOrange() => FlabebeBuild("Orange");
+
+    private static PokeBuilder FlabebeBlue() => FlabebeBuild("Blue");
+
+    private static PokeBuilder FlabebeWhite() => FlabebeBuild("White");
+
+    private static PokeBuilder FloetteYellow() => FloetteBuild("Yellow");
+
+    private static PokeBuilder FloetteOrange() => FloetteBuild("Orange");
+
+    private static PokeBuilder FloetteBlue() => FloetteBuild("Blue");
+
+    private static PokeBuilder FloetteWhite() => FloetteBuild("White");
+
+    private static PokeBuilder FloetteEternal() => FloetteBuild(null, eternal: true);
+
+    private static PokeBuilder FlorgesYellow() => FlorgesBuild("Yellow");
+
+    private static PokeBuilder FlorgesOrange() => FlorgesBuild("Orange");
+
+    private static PokeBuilder FlorgesBlue() => FlorgesBuild("Blue");
+
+    private static PokeBuilder FlorgesWhite() => FlorgesBuild("White");
+
+    /// <summary>The trims Furfrou can be given, by the form's name after "Furfrou-".</summary>
+    private static readonly string[] FurfrouTrims = { "Heart", "Star", "Diamond", "Debutante", "Matron", "Dandy", "La-Reine", "Kabuki", "Pharaoh" };
+
+    /// <summary>Furfrou in one of its trims, from the form's name (FURFROU-LA-REINE), or null for a trim it has none of.</summary>
+    private static PokeBuilder? FurfrouForm(string form)
+    {
+        var trim = FurfrouTrims.FirstOrDefault(t => ("FURFROU-" + t).Equals(form, StringComparison.OrdinalIgnoreCase));
+        return trim == null ? null : FurfrouBuild(trim);
+    }
+
+    private static PokeBuilder MeowsticFemale() => MeowsticBuild(true, false);
+
+    private static PokeBuilder AegislashBlade() => AegislashBuild(true);
+
+    private static PokeBuilder SliggooHisui() => SliggooBuild(true);
+
+    private static PokeBuilder GoodraHisui() => GoodraBuild(true);
+
+    private static PokeBuilder PumpkabooSmall() => PumpkabooBuild(0);
+
+    private static PokeBuilder PumpkabooLarge() => PumpkabooBuild(2);
+
+    private static PokeBuilder PumpkabooSuper() => PumpkabooBuild(3);
+
+    private static PokeBuilder GourgeistSmall() => GourgeistBuild(0);
+
+    private static PokeBuilder GourgeistLarge() => GourgeistBuild(2);
+
+    private static PokeBuilder GourgeistSuper() => GourgeistBuild(3);
+
+    private static PokeBuilder AvaluggHisui() => AvaluggBuild(true);
+
+    private static PokeBuilder XerneasActive() => XerneasBuild(true);
+
+    private static PokeBuilder Zygarde10() => ZygardeBuild(1);
+
+    private static PokeBuilder ZygardeComplete() => ZygardeBuild(2);
+
+    private static PokeBuilder HoopaUnbound() => HoopaBuild(true);
 }
