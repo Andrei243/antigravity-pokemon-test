@@ -293,6 +293,19 @@ Image Capture()
     var rt = (RenderTexture2D)Get("virtualScreen");
     var img = Raylib.LoadImageFromTexture(rt.Texture);
     Raylib.ImageFlipVertical(ref img);
+    // The game's picture is opaque everywhere (the window shows it over black): a see-through pixel is drawn darker
+    // in the game than in the shot
+    if (img.Format == PixelFormat.UncompressedR8G8B8A8)
+    {
+        long seeThrough = 0;
+        unsafe
+        {
+            byte* p = (byte*)img.Data;
+            for (long i = 3, end = (long)img.Width * img.Height * 4; i < end; i += 4)
+                if (p[i] != 255) seeThrough++;
+        }
+        if (seeThrough > 0) Console.WriteLine($"!! the picture is see-through in {seeThrough} pixels");
+    }
     return img;
 }
 

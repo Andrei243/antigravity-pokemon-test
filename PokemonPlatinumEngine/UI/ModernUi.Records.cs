@@ -183,9 +183,7 @@ internal static partial class ModernUi
             PixelArt(PixelArtGenerator.GetPokemonSprite(mon.Species, isBack: false), new Vector2(picture.X + picture.Width / 2f, picture.Y + picture.Height / 2f + 6), 2);
             string name = mon.Species.ToUpperInvariant();
             UiFonts.DrawCentered(name, photo.X + (photo.Width - UiFonts.Measure(name, 28, UiWeight.Black)) / 2f, photo.Y + photo.Height - 38, 28, Ink, UiWeight.Black);
-            BeginOpaque();
             UiShapes.Fill(new Rectangle(photo.X + photo.Width / 2f - 64, photo.Y - 16, 128, 38), 4, new Color(246, 236, 196, 210), skew: 0.25f);
-            EndOpaque();
             textRight = photo.X - 40;
         }
 
@@ -276,10 +274,8 @@ internal static partial class ModernUi
         UiShapes.Shape(band, 30, Lighter(colour, 0.16f), Darker(colour, 0.1f), Darker(colour, 0.32f), 3);
         if (Metallic(info.Colour))
         {
-            BeginOpaque();
             UiShapes.Fill(new Rectangle(band.X + band.Width * 0.56f, band.Y + 6, 86, band.Height - 12), 6, new Color(255, 255, 255, 46), skew: -0.45f);
             UiShapes.Fill(new Rectangle(band.X + band.Width * 0.56f + 104, band.Y + 6, 26, band.Height - 12), 6, new Color(255, 255, 255, 34), skew: -0.45f);
-            EndOpaque();
         }
         float bandY = band.Y + band.Height / 2f;
         UiFonts.DrawCentered(info.Name, band.X + 44, bandY + 3, 52, new Color(0, 0, 0, 60), UiWeight.Black);

@@ -75,8 +75,6 @@ internal static partial class ModernUi
         // ---- The box: its wallpaper, its name over the places, which box it is, the places
         var box = new Rectangle(team.X + team.Width + Gutter + slide, ContentTop, 792, height);
         Panel(box, 34);
-        // The lining is all translucent things over the wallpaper, which must stay as solid as it looks
-        BeginOpaque();
         Wallpaper(new Rectangle(box.X + 12, box.Y + 12, box.Width - 24, box.Height - 24), current.Wallpaper);
 
         bool onName = pc.Zone == StorageZone.BoxName;
@@ -138,7 +136,6 @@ internal static partial class ModernUi
         float paperW = UiFonts.Measure(paper, 44 * 0.58f, UiWeight.Black) + 44 * 0.9f;
         float gridRight = gridX + BoxCell * PCScreen.Columns + BoxGap * (PCScreen.Columns - 1);
         Tag(gridRight - paperW, tagY, paper, tagInk, 44);
-        EndOpaque();
 
         // ---- The Pokémon under the cursor, or the one carried
         var detail = new Rectangle(box.X + box.Width + Gutter + slide, ContentTop, sw - Margin - (box.X + box.Width + Gutter + slide), height);
@@ -167,10 +164,8 @@ internal static partial class ModernUi
                 StorageZone.Box => new Vector2(cursor.X + cursor.Width / 2f, cursor.Y + cursor.Height / 2f),
                 _ => new Vector2(plate.X + plate.Width / 2f, plate.Y + plate.Height + 40)
             };
-            BeginOpaque();
             UiShapes.Glow(spot + new Vector2(0, 30), 38, 11, new Color(10, 16, 40, 110));
             PixelArt(PixelArtGenerator.GetPokemonIcon(held.ModelName), spot - new Vector2(0, 46), 2, Hop(false) * 2);
-            EndOpaque();
         }
 
         // ---- The menus, beside the cursor on the side with more room

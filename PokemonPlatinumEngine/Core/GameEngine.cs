@@ -1893,6 +1893,10 @@ public partial class GameEngine
         // Render scene to native 1920x1080 Full HD buffer
         Raylib.BeginTextureMode(virtualScreen);
         Raylib.ClearBackground(Color.Black);
+        // The picture stays opaque whatever is drawn on it: raylib's usual blending blends alpha like a colour, so
+        // anything translucent lowered the alpha of what it covered, and the window, which shows the picture over
+        // black, showed every translucent panel darker than it is. The clear is the only thing that writes alpha.
+        Rlgl.ColorMask(true, true, true, false);
         Raylib.BeginMode2D(new Camera2D { Zoom = RenderScale });
 
         switch (currentState)
@@ -1979,6 +1983,8 @@ public partial class GameEngine
             SceneTransition.Draw(transitionKind, isFadingOut, transitionTimer, VirtualWidth, VirtualHeight);
 
         Raylib.EndMode2D();
+        // (Ending the 2D mode drew what was batched; every other target is written whole)
+        Rlgl.ColorMask(true, true, true, true);
         Raylib.EndTextureMode();
         FrameProfiler.Lap(FrameSection.Interface);
 

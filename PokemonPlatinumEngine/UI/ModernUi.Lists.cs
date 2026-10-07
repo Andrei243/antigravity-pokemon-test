@@ -95,39 +95,8 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ signs
 
-    private static int opaqueDepth;
-
-    /// <summary>
-    /// From here to <see cref="EndOpaque"/>, whatever is translucent is laid over what is under it without making the
-    /// picture itself see-through. raylib's usual blending treats the picture's alpha like its colours, so something
-    /// translucent drawn over a solid pixel lowers that pixel's alpha, and the window shows the picture over black:
-    /// a translucent plate came out grey, and two soft edges of one sign meeting showed as a darker line. Here the
-    /// colours blend as ever and alpha only adds up. Calls nest.
-    /// </summary>
-    public static void BeginOpaque()
-    {
-        if (opaqueDepth++ > 0) return;
-        const int srcAlpha = 0x0302, oneMinusSrcAlpha = 0x0303, one = 1, add = 0x8006;
-        Rlgl.SetBlendFactorsSeparate(srcAlpha, oneMinusSrcAlpha, one, oneMinusSrcAlpha, add, add);
-        Raylib.BeginBlendMode(BlendMode.CustomSeparate);
-    }
-
-    public static void EndOpaque()
-    {
-        if (opaqueDepth == 0 || --opaqueDepth > 0) return;
-        Raylib.EndBlendMode();
-    }
-
-    /// <summary>Shapes laid over one another to make one sign, so that their soft edges inside it leave no trace (<see cref="BeginOpaque"/>).</summary>
-    private static void AsOneShape(Action draw)
-    {
-        BeginOpaque();
-        draw();
-        EndOpaque();
-    }
-
     /// <summary>A five-pointed star, its points <paramref name="radius"/> from its middle.</summary>
-    public static void Star(Vector2 c, float radius, Color color) => AsOneShape(() =>
+    public static void Star(Vector2 c, float radius, Color color)
     {
         float inner = radius * 0.45f;
         UiShapes.Circle(c, inner, color);
@@ -139,7 +108,7 @@ internal static partial class ModernUi
             var right = c + new Vector2(MathF.Cos(a + half), MathF.Sin(a + half)) * inner;
             UiShapes.Triangle(tip, left, right, color);
         }
-    });
+    }
 
     /// <summary>The six marks the boxes put on a Pokémon, in their order (<see cref="Markings"/>).</summary>
     public static readonly string[] MarkNames = { "Circle", "Triangle", "Square", "Heart", "Star", "Diamond" };
@@ -160,12 +129,9 @@ internal static partial class ModernUi
                 UiShapes.Fill(new Rectangle(c.X - h * 0.74f, c.Y - h * 0.74f, h * 1.48f, h * 1.48f), h * 0.18f, color);
                 break;
             case 3:
-                AsOneShape(() =>
-                {
-                    UiShapes.Circle(new Vector2(c.X - h * 0.42f, c.Y - h * 0.26f), h * 0.46f, color);
-                    UiShapes.Circle(new Vector2(c.X + h * 0.42f, c.Y - h * 0.26f), h * 0.46f, color);
-                    UiShapes.Triangle(new Vector2(c.X - h * 0.85f, c.Y - h * 0.1f), new Vector2(c.X + h * 0.85f, c.Y - h * 0.1f), new Vector2(c.X, c.Y + h * 0.84f), color);
-                });
+                UiShapes.Circle(new Vector2(c.X - h * 0.42f, c.Y - h * 0.26f), h * 0.46f, color);
+                UiShapes.Circle(new Vector2(c.X + h * 0.42f, c.Y - h * 0.26f), h * 0.46f, color);
+                UiShapes.Triangle(new Vector2(c.X - h * 0.85f, c.Y - h * 0.1f), new Vector2(c.X + h * 0.85f, c.Y - h * 0.1f), new Vector2(c.X, c.Y + h * 0.84f), color);
                 break;
             case 4:
                 Star(c, h * 0.98f, color);
