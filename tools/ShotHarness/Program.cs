@@ -3936,8 +3936,9 @@ if (mode == "windworks")
     ComeThrough("EternaForest", 28, 85, Direction.Up);
     ReadTo("My name is Cheryl"); Frames(10); Shot("ww22_forest_cheryl");
     ReadTo(null);
-    Walk(Direction.Up, 3); Walk(Direction.Right, 2); Shot("ww23_forest_cheryl_follows");
-    Walk(Direction.Left, 1); Shot("ww24_forest_turning_back_into_her");
+    Walk(Direction.Up, 2); Shot("ww23_forest_cheryl_follows");
+    // A step west, and back east into her: the two swap round
+    Walk(Direction.Left, 1); Walk(Direction.Right, 1); Shot("ww24_forest_turning_back_into_her");
     // A wild battle beside her: two Pokémon at once
     T.GetMethod("StartWildBattle", Private)!.Invoke(engine, new object[] { new WildEncounterEntry { SpeciesName = "Wurmple", MinLevel = 12, MaxLevel = 12, Weight = 1 } });
     Until(() => State() == GameState.Battle, "the wild double battle", 300);
