@@ -31,7 +31,10 @@ public class TrainerCardScreen
 {
     private const float AppearTime = 0.35f;
 
-    private float openAge;
+    /// <summary>How long turning the card over takes: it narrows to its edge, then opens on the other side.</summary>
+    public const float FlipTime = 0.3f;
+
+    private float openAge, flipAge = FlipTime;
     private Texture2D? portrait;
 
     public bool IsActive { get; set; }
@@ -43,6 +46,7 @@ public class TrainerCardScreen
     public void Flip()
     {
         ShowingBack = !ShowingBack;
+        flipAge = 0f;
         AudioManager.PlaySound("page");
     }
 
@@ -52,6 +56,7 @@ public class TrainerCardScreen
         IsActive = true;
         ShowingBack = false;
         openAge = 0f;
+        flipAge = FlipTime;
         this.portrait = portrait;
     }
 
@@ -64,6 +69,7 @@ public class TrainerCardScreen
     {
         if (!IsActive) return;
         openAge += dt;
+        flipAge += dt;
 
         if (InputManager.IsActionPressed(GameAction.Confirm)) Flip();
         else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Menu))
@@ -76,6 +82,7 @@ public class TrainerCardScreen
     public void Draw(int screenWidth, int screenHeight, TrainerCardInfo info)
     {
         if (!IsActive) return;
-        ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f));
+        ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f), ShowingBack,
+            Math.Clamp(flipAge / FlipTime, 0f, 1f));
     }
 }

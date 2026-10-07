@@ -183,7 +183,12 @@ internal static partial class ModernUi
             28, Muted, 40, UiWeight.ExtraBold);
 
         // ---- The name and the keyboard
-        var board = new Rectangle(who.X + who.Width + Gutter + slide * 2, ContentTop, sw - Margin - (who.X + who.Width + Gutter + slide * 2), ContentBottom - ContentTop);
+        NameBoard(new Rectangle(who.X + who.Width + Gutter + slide * 2, ContentTop, sw - Margin - (who.X + who.Width + Gutter + slide * 2), ContentBottom - ContentTop), entry);
+    }
+
+    /// <summary>A panel with the name so far in its slots (as many as the name may have) over the keyboard.</summary>
+    public static void NameBoard(Rectangle board, NameEntry entry)
+    {
         Panel(board, 34);
         float keysWidth = NameEntry.Columns * KeyWidth + (NameEntry.Columns - 1) * KeyGap;
         float x0 = board.X + (board.Width - keysWidth) / 2f;
