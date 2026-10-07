@@ -478,3 +478,26 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Galactic lobby theme in the Windworks | `SEQ_D_GINLOBBY` until Mars is beaten | Route 205's theme throughout | No lobby theme yet (plan 05) |
 | Cheryl joining | A jingle of its own (`SEQ_GONIN`) | The level-up fanfare | No partner jingle yet (plan 05) |
 | A follower through a warp | Follows the player onto the next map | Stays on her own map, the battles still beside the player | Only Cheryl travels so far, and the forest's exits turn the player back while she does |
+
+## The third chapter, second half (2026-10-07, plan 02 · S6)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_eterna_city.s`, `scripts_team_galactic_eterna_building_1f.s` to `_4f.s`, `scripts_cycle_shop.s`, `scripts_eterna_city_underground_man_house.s`, `scripts_eterna_city_pokecenter_1f.s`, `scripts_eterna_forest.s`, `scripts_eterna_city_gym.s`, `src/map_object.c`)
+
+- **HM01 comes before the Gym**: Cynthia gives it in front of Team Galactic's building as soon as the rival's scene at the statue is over (her trigger waits for `VAR_ETERNA_CITY_STATE` 1), and Cut clears the trees in the field only with the Forest Badge, so the building, behind a tree, comes after the Gym.
+- **Gardenia stands at her Gym's door** from the start of a game and goes in once spoken to. Someone a script takes away is hidden by their own flag for good, as the original's `RemoveObject` sets it (`MapObject_SetFlagAndDeleteObject`): the rival, Cyrus, Cynthia and Gardenia all leave so.
+- **The building's floors are the original's to the tile**, and so is Looker's warning: on each floor one way up comes out in a pocket with a grunt and an item whose only way on is back down, the other where the next way up is. Its grunts, Scientist Travon and Commander Jupiter fight with Platinum's teams; Jupiter's defeat takes every grunt out of the building and the town (`FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS`) and sends the manager home.
+- **Eterna's ways out are watched** from the Bicycle (`VAR_ETERNA_CITY_BLOCK_EXITS_STATE` 1) until the player has the Explorer Kit as well, which the town's arrival script checks: the west way tells of the Cycling Road, the south one sends the player to the Underground Man.
+- **Gardenia waits before the Old Chateau** once her Gym's script has cleared `FLAG_HIDE_ETERNA_FOREST_GARDENIA`, as the original's does after her battle.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Cynthia's Egg | After Commander Jupiter, by the cycle shop: a Togepi Egg, and she waits there until the team has room or the player takes it | Not given; her two triggers (states 3 and 4) wait | There are no eggs yet (plan 06 · R15) |
+| The Pokémon Team Galactic held | A Clefairy and a Buneary on the top floor, then the Clefairy in the cycle shop and the Buneary in the Pokémon Center | Not there; the flags that move them are set as the original sets them | A Pokémon can't stand in the field yet (plan 10) |
+| The Galactic lobby theme in the building | `SEQ_D_GINLOBBY` until Jupiter is beaten | Eterna's theme throughout | No lobby theme yet (plan 05) |
+| The Underground Man's missions and his PC | Six missions below ground; the PC's pages on flags, spheres and traps | The Explorer Kit, his offer and the first mission; the PC's notes in a line | The Underground is plan 06 · R16's |
+| The bug catcher at the west way out | Goes back to his line about the wind once the assistant has been met on Route 207 | Tells of the Cycling Road as long as the player has the Bicycle | Route 207's scene is plan 02 · S7's |
+| The Friendship Checker's woman | Reads out the first Pokémon's friendship on later visits | One line of her own after giving the app | A script can't ask a Pokémon's friendship yet; the app is kept and shown once the Pokétch runs it |
+| The Old Chateau | Its rooms, its ghosts and Rotom's television | Its door in the forest stays shut | Its rooms are plan 01 · M11's; nothing of the story happens inside |
+| Rotom's room in the building | Behind a wall on the ground floor that the Secret Key opens | The wall | The Secret Key is the post-game's |

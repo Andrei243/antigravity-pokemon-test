@@ -24,8 +24,16 @@ public class RoomPlanTests
         new object[] { "OreburghNorthHouse1F", 3, 3, 11, 12 },
         new object[] { "EternaCondominiums1F", 3, 3, 11, 12 },
         new object[] { "SnowpointWestHouse", 1, 3, 4, 8 },
-        new object[] { "ValleyWindworksBuilding", 1, 3, 12, 16 }
+        new object[] { "ValleyWindworksBuilding", 1, 3, 12, 16 },
+        // Eterna City's rooms of plan 02 · S6, part 2
+        new object[] { "EternaCycleShop", 1, 3, 7, 11 },
+        new object[] { "EternaUndergroundManHouse", 1, 3, 4, 8 },
+        new object[] { "TeamGalacticEternaBuilding1F", 1, 6, 11, 15 }
     };
+
+    /// <summary>The Team Galactic Eterna Building's upper floors: no door, only the stairs, and each cut in two (one
+    /// staircase of each pair a trap that leads back down into the other part).</summary>
+    internal static readonly string[] UpperFloors = { "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F" };
 
     // The original's people (res/field/events/events_<map>.json of the decompilation): local id, tile, facing
     public static IEnumerable<object[]> People => new[]
@@ -45,7 +53,28 @@ public class RoomPlanTests
         new object[] { "ValleyWindworksBuilding", "galactic_grunt_3", 12, 3, Direction.Down },
         new object[] { "ValleyWindworksBuilding", "little_girl", 10, 8, Direction.Right },
         new object[] { "ValleyWindworksBuilding", "grunt_m", 18, 8, Direction.Down },
-        new object[] { "ValleyWindworksBuilding", "charon", 21, 5, Direction.Left }
+        new object[] { "ValleyWindworksBuilding", "charon", 21, 5, Direction.Left },
+        new object[] { "EternaCycleShop", "pokefan_m", 3, 5, Direction.Down },
+        new object[] { "EternaCycleShop", "youngster", 5, 10, Direction.Left },
+        new object[] { "EternaUndergroundManHouse", "underground_man", 6, 5, Direction.Down },
+        new object[] { "EternaUndergroundManHouse", "scientist_m", 3, 5, Direction.Down },
+        new object[] { "EternaUndergroundManHouse", "youngster", 8, 7, Direction.Left },
+        new object[] { "EternaUndergroundManHouse", "bug_catcher", 9, 6, Direction.Left },
+        new object[] { "TeamGalacticEternaBuilding1F", "grunt_m_1", 3, 11, Direction.Down },
+        new object[] { "TeamGalacticEternaBuilding1F", "grunt_m_2", 10, 11, Direction.Down },
+        new object[] { "TeamGalacticEternaBuilding1F", "galactic_grunt_1", 16, 8, Direction.Left },
+        new object[] { "TeamGalacticEternaBuilding1F", "galactic_grunt_2", 12, 8, Direction.Right },
+        new object[] { "TeamGalacticEternaBuilding1F", "grunt_m_looker", 14, 15, Direction.Up },
+        new object[] { "TeamGalacticEternaBuilding1F", "looker", 14, 15, Direction.Up },
+        new object[] { "TeamGalacticEternaBuilding2F", "grunt_m", 7, 6, Direction.Up },
+        new object[] { "TeamGalacticEternaBuilding2F", "grunt_f", 19, 8, Direction.Left },
+        new object[] { "TeamGalacticEternaBuilding2F", "galactic_grunt_1", 3, 6, Direction.Up },
+        new object[] { "TeamGalacticEternaBuilding2F", "galactic_grunt_2", 13, 8, Direction.Left },
+        new object[] { "TeamGalacticEternaBuilding3F", "grunt_m", 12, 5, Direction.Right },
+        new object[] { "TeamGalacticEternaBuilding3F", "galactic_grunt", 8, 7, Direction.Up },
+        new object[] { "TeamGalacticEternaBuilding3F", "scientist_travon", 18, 5, Direction.Right },
+        new object[] { "TeamGalacticEternaBuilding4F", "jupiter", 14, 6, Direction.Down },
+        new object[] { "TeamGalacticEternaBuilding4F", "pokefan_m", 14, 9, Direction.Up }
     };
 
     [Theory]
@@ -68,15 +97,15 @@ public class RoomPlanTests
         // The door is in the front wall, the row under the original's exit mat
         Assert.Equal(map.Height - 1, matY + 1);
         Assert.Equal(TileType.Door, map.GetGroundTile(matX, matY + 1));
-        Assert.Equal("Sinnoh", Assert.Single(map.Warps).TargetMap);
-        Assert.Equal((matX, matY + 1), (map.Warps[0].SourceX, map.Warps[0].SourceY));
+        var door = Assert.Single(map.Warps, w => w.TargetMap == "Sinnoh");
+        Assert.Equal((matX, matY + 1), (door.SourceX, door.SourceY));
         Assert.True(map.IsWalkable(matX, matY));
     }
 
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);
@@ -121,6 +150,71 @@ public class RoomPlanTests
         // the way on either side of it
         Assert.False(map.IsWalkable(18, 5));
         Assert.Contains(map.Everyone, n => (n.GridX, n.GridY) == (18, 8));
+    }
+
+    // The original's stairs between the Team Galactic Eterna Building's floors: each pair of warps leads one into the
+    // other, and whoever goes up or down is put beside the stairs at the far end, walking away from them
+    public static IEnumerable<object[]> Stairs => new[]
+    {
+        new object[] { "TeamGalacticEternaBuilding1F", 14, 6, "TeamGalacticEternaBuilding2F", 3, 3 },
+        new object[] { "TeamGalacticEternaBuilding1F", 20, 6, "TeamGalacticEternaBuilding2F", 8, 3 },
+        new object[] { "TeamGalacticEternaBuilding2F", 14, 3, "TeamGalacticEternaBuilding3F", 2, 3 },
+        new object[] { "TeamGalacticEternaBuilding2F", 20, 3, "TeamGalacticEternaBuilding3F", 8, 3 },
+        new object[] { "TeamGalacticEternaBuilding3F", 14, 3, "TeamGalacticEternaBuilding4F", 3, 3 },
+        new object[] { "TeamGalacticEternaBuilding3F", 20, 3, "TeamGalacticEternaBuilding4F", 8, 3 }
+    };
+
+    [Theory]
+    [MemberData(nameof(Stairs))]
+    public void TheEternaBuildingsStairsJoinItsFloorsAsTheOriginalsDo(string below, int ux, int uy, string above, int dx, int dy)
+    {
+        var lower = Room(below);
+        var upper = Room(above);
+        var up = lower.GetWarpAt(ux, uy)!;
+        Assert.Equal((above, dx - 1, dy, Direction.Left), (up.TargetMap, up.TargetX, up.TargetY, up.TargetFacing));
+        var down = upper.GetWarpAt(dx, dy)!;
+        Assert.Equal((below, ux + 1, uy, Direction.Right), (down.TargetMap, down.TargetX, down.TargetY, down.TargetFacing));
+        Assert.True(upper.IsWalkable(dx - 1, dy));
+        Assert.True(lower.IsWalkable(ux + 1, uy));
+        // The flights stand beside their warps: up to the west, down to the east
+        Assert.Contains(lower.Props, p => p.Type == PropType.SideStairsUp && p.Covers(ux - 1, uy));
+        Assert.Contains(upper.Props, p => p.Type == PropType.SideStairsDown && p.Covers(dx + 1, dy));
+    }
+
+    /// <summary>The tiles one can walk to on a floor from a tile, without its stairs, whoever stands about.</summary>
+    private static HashSet<(int, int)> Reach(Map map, int x, int y)
+    {
+        var seen = new HashSet<(int, int)> { (x, y) };
+        var queue = new Queue<(int X, int Y)>(seen);
+        while (queue.Count > 0)
+        {
+            var (cx, cy) = queue.Dequeue();
+            if (map.GetWarpAt(cx, cy) != null && (cx, cy) != (x, y)) continue;
+            foreach (var (nx, ny) in new[] { (cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1) })
+                if (map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && seen.Add((nx, ny))) queue.Enqueue((nx, ny));
+        }
+        return seen;
+    }
+
+    [Fact]
+    public void OneOfEachFloorsTwoStaircasesIsATrap()
+    {
+        // Looker's warning: on each floor one way up comes out in a pocket with nothing but a grunt or two and an item,
+        // whose only way on is back down, and the other comes out where the next way up is
+        foreach (var (floor, trap, onward, next) in new[]
+                 {
+                     ("TeamGalacticEternaBuilding2F", (2, 3), (7, 3), (14, 3)),
+                     ("TeamGalacticEternaBuilding3F", (7, 3), (1, 3), (14, 3)),
+                     ("TeamGalacticEternaBuilding4F", (7, 3), (2, 3), (14, 7))
+                 })
+        {
+            var map = Room(floor);
+            Assert.DoesNotContain(next, Reach(map, trap.Item1, trap.Item2));
+            Assert.Contains(next, Reach(map, onward.Item1, onward.Item2));
+        }
+        // Commander Jupiter stands where the right way leads, before the manager she holds
+        var top = Room("TeamGalacticEternaBuilding4F");
+        Assert.Equal((14, 6), (top.FindPerson("jupiter")!.GridX, top.FindPerson("jupiter")!.GridY));
     }
 
     [Fact]

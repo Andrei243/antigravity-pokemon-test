@@ -7,80 +7,82 @@
     { "warp": 0, "map": "EternaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 1, "map": "EternaPokeMart", "x": 4, "y": 6, "facing": "Up" },
     // The condominiums' ground floor, where a boy trades his Chatot for a Buizel (plan 06 · R12), built to the original's plan
-    { "warp": 4, "map": "EternaCondominiums1F", "x": 11, "y": 12, "facing": "Up" }
+    { "warp": 4, "map": "EternaCondominiums1F", "x": 11, "y": 12, "facing": "Up" },
+    // The rooms of the chapter (plan 02 · S6), built to the original's plans: the cycle shop, Team Galactic's building
+    // (its door is behind the trees Cut clears) and the Underground Man's house
+    { "warp": 2, "map": "EternaCycleShop", "x": 7, "y": 11, "facing": "Up" },
+    { "warp": 3, "map": "TeamGalacticEternaBuilding1F", "x": 11, "y": 15, "facing": "Up" },
+    { "warp": 11, "map": "EternaUndergroundManHouse", "x": 4, "y": 8, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
     { "warp": 8, "to": "route_206", "toWarp": 4, "bicycle": true },
     { "warp": 9, "to": "route_206", "toWarp": 5, "bicycle": true }
   ],
-  // The cycle shop, Team Galactic's building, the houses, the herb shop and the Gym have no rooms yet (plan 01 · M11, M9)
-  "locked": [ 2, 3, 5, 6, 7, 10, 11 ],
+  // The houses and the herb shop have no rooms yet (plan 01 · M11), nor the Gym (plan 01 · M9)
+  "locked": [ 5, 6, 7, 10 ],
+  // Plan 02 · S6 (scripts/eterna_city.txt): the rival running into the player and Cyrus at the statue (trigger 0),
+  // Cynthia with HM01 before the Team Galactic building (triggers 3 and 6), and, once the Bicycle is had, the two
+  // people who stop the player at the town's ways out until they also have an Explorer Kit (triggers 1 and 2).
+  // Cynthia's Egg (triggers 4 and 5) waits for eggs (plan 06 · R15).
+  "triggers": [
+    { "trigger": 0, "script": "RivalAndCyrus" },
+    { "trigger": 1, "script": "BlockSouth" },
+    { "trigger": 2, "script": "BlockWest" },
+    { "trigger": 3, "script": "CynthiaCut" },
+    { "trigger": 6, "script": "CynthiaCut" }
+  ],
+  // The statue, its plate torn off
+  "read": { "18": "Statue" },
   "people": {
+    // The rival and Cynthia are only about in their scenes
+    "rival": { "name": "{rival}", "dialog": [ "{player}! The statue's this way. Come on, come on!" ] },
+    "cyrus": { "name": "Cyrus", "dialog": [ "......", "Time, space... and the Pokémon said to have made them. A myth worth looking into." ] },
+    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "dialog": [ "Good luck on your journey, {player}." ] },
+    "gardenia": { "name": "Gardenia", "npcType": "Gardenia", "script": "Gardenia" },
+    "grunt_m_1": { "name": "Galactic Grunt", "script": "GruntStatue" },
+    "grunt_m_2": { "name": "Galactic Grunt", "script": "GruntTough" },
+    "grunt_m_3": { "name": "Galactic Grunt", "script": "GruntBuilding" },
     "pokemon_breeder_m": {
       "name": "Man",
       "dialog": [
-        "The Gym here is a greenhouse inside, and every Pokémon in it is a Grass type.",
-        "Fire scorches them and Flying moves batter them. Bug, Ice and Poison do nicely too."
+        "Nobody leaves Eterna without trying the Cycling Road.",
+        "You'll want wheels for it, mind. The cycle shop is just up the street."
       ]
     },
     "expert_m": {
       "name": "Old Man",
       "dialog": [
-        "On the east side of town stands a statue of a Pokémon from Sinnoh's oldest tales.",
-        "It was already old when my grandfather's grandfather was a boy. Go and have a look at it."
+        "Eterna City is nothing like the town I grew up in.",
+        "Back in my day, you could hear the forest from every street."
       ]
     },
     "ninja_boy": {
       "name": "Boy",
       "dialog": [
-        "Shh! I'm hiding in the statue's shadow. Nobody has found me all day!",
-        "...Apart from you. Don't tell anyone."
+        "Long ago, people really saw the Pokémon this statue shows. Can you imagine?",
+        "I stand here every day, in case it comes back."
       ]
     },
-    "bug_catcher_1": {
-      "name": "Bug Catcher",
-      "dialog": [
-        "The cycle shop's bicycles fold up small enough to go in your Bag. I want one so much!",
-        "On a bike you could race down the Cycling Road, south of town."
-      ]
-    },
-    "bug_catcher_2": {
-      "name": "Bug Catcher",
-      "dialog": [
-        "West of here is Route 205, and past it Eterna Forest.",
-        "Bug Pokémon by the hundred live in those woods. I'm in there every weekend!"
-      ]
-    },
-    "pokemon_breeder_f_1": {
-      "name": "Woman",
-      "dialog": [
-        "The herb shop at the top of town sells medicine made from plants.",
-        "It's cheap and it works, but it's so bitter that a Pokémon sulks at you for days afterwards."
-      ]
-    },
+    "bug_catcher_1": { "name": "Bug Catcher", "script": "BugCatcherFriend" },
+    "bug_catcher_2": { "name": "Bug Catcher", "script": "BugCatcherBike" },
+    "pokemon_breeder_f_1": { "name": "Woman", "script": "WomanBuilding" },
     "ace_trainer_f": {
       "name": "Trainer",
       "dialog": [
-        "Have you met the Underground Man? He lives right beside the Pokémon Center.",
-        "They say he has dug tunnels under half of Sinnoh, and he'll tell you about every one."
+        "Eterna's meant to be ancient, you know.",
+        "Funny, with all these tall blocks of flats about."
       ]
     },
-    "pokemon_breeder_f_2": {
-      "name": "Woman",
-      "dialog": [
-        "Through the gate to the south is the Cycling Road: Route 206.",
-        "You'll want a bicycle. Nobody gets down that road on foot."
-      ]
-    }
+    "pokemon_breeder_f_2": { "name": "Woman", "script": "WomanUnderground" }
   },
   "signs": {
     "map_signpost_west": "Eterna City\nOld stones, green streets, and a statue older than anyone can say.",
     "map_signpost_east": "Eterna City\nOld stones, green streets, and a statue older than anyone can say.",
     "gym_signpost": "Eterna City Pokémon Gym\nLeader: Gardenia\nGreen fingers and a will of iron!",
     "signboard_rad_rickshaws_cycle_shop": "Rad Rickshaw's Cycle Shop\nBicycles for every road in Sinnoh.",
-    "signboard_team_galactic_eterna_building": "Team Galactic Eterna Building\nVisitors by appointment only.",
+    "signboard_team_galactic_eterna_building": "Team Galactic Eterna Building\nBring us your Pokémon!",
     "signboard_underground_mans_house": "Underground Man's House\nAsk here about the tunnels under Sinnoh.",
-    "signboard_eterna_condominiums": "Eterna Condominiums\nQuiet homes in the heart of town."
+    "signboard_eterna_condominiums": "Eterna Condominiums\nQuiet homes, and a man who rates nicknames."
   }
 }

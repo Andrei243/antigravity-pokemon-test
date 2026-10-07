@@ -322,7 +322,7 @@ public class DataFileTests
     {
         MapDatabase.Initialize();
         var names = MapDatabase.MapNames.ToList();
-        Assert.Equal(130, names.Count); // 38 rooms and 90 maps of the imported world in Sinnoh, 2 hand-made maps in Kanto
+        Assert.Equal(136, names.Count); // 44 rooms and 90 maps of the imported world in Sinnoh, 2 hand-made maps in Kanto
         Assert.Contains("Sinnoh", names);
         Assert.Contains("PlayerHouse", names);
 

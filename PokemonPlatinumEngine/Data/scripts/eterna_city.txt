@@ -1,0 +1,312 @@
+# Eterna City (plan 02 · S6, part 2). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_eterna_city.s).
+#
+# The rival runs into the player and takes them to the statue, where Cyrus stands musing on time and space and leaves
+# (VAR_ETERNA_CITY_STATE 1). In front of the Team Galactic building Cynthia hands over HM01 (2). Gardenia waits at her
+# Gym's door. Once Commander Jupiter is beaten in the building (3, scripts/TeamGalacticEternaBuilding4F.txt), the
+# cycle shop's manager gives the Bicycle, and from then until the player also has the Underground Man's Explorer Kit
+# two people stop them at the town's ways out west and south (VAR_ETERNA_CITY_BLOCK_EXITS_STATE 1).
+# Cynthia's Togepi Egg (states 3 to 5, the original's triggers 4 and 5) waits for eggs (plan 06 · R15).
+
+
+# Arriving (the original's OnTransition): with the Bicycle and the Explorer Kit both in the bag, nobody stops the player
+# at the ways out any more.
+script OnEnter
+  if var VAR_ETERNA_CITY_BLOCK_EXITS_STATE != 1 end
+  if not item "Bicycle" end
+  if not item "Explorer Kit" end
+  setvar VAR_ETERNA_CITY_BLOCK_EXITS_STATE 0
+  end
+
+
+# The street before the Team Galactic building (the original's trigger 0, a column of tiles at x 303, state 0): the
+# rival comes running up the west street and straight into the player, and leads the way to the statue, where Cyrus is.
+script RivalAndCyrus
+  clearflag FLAG_HIDE_ETERNA_CITY_RIVAL
+  place rival 299 533 up
+  show rival
+  if var PLAYER_Y == 524 goto Middle
+  if var PLAYER_Y == 525 goto Below
+  walk rival up 10 right 3 fast
+  call Bump
+  walk rival down 1 right 1
+  face rival up
+  face player down
+  goto Lead
+label Middle
+  walk rival up 9 right 3 fast
+  call Bump
+  walk rival down 1 right 2 up 1
+  face rival left
+  face player right
+  goto Lead
+label Below
+  walk rival up 8 right 3 fast
+  call Bump
+  walk rival up 1 right 1
+  face rival down
+  face player up
+label Lead
+  # He sets off east along the street and the player follows a step behind, to stand beside him before the statue
+  if var PLAYER_Y == 524 goto LeadBeside
+  move rival right 19
+  wait 0.4
+  if var PLAYER_Y == 523 goto LeadAbove
+  walk player up 1 right 18 down 1 right 1
+  goto AtTheStatue
+label LeadAbove
+  walk player down 1 right 18 down 1 right 1
+  goto AtTheStatue
+label LeadBeside
+  move rival right 18
+  wait 0.4
+  walk player right 18 down 1 right 1
+label AtTheStatue
+  waitmoves
+  face rival right
+  face player right
+  speaker "{rival}"
+  say "Huh? Who's that?"
+  music area
+  # A man in grey stands before the statue: the camera goes to him
+  camera pan 327 525 0.8
+  wait 0.4
+  speaker "Cyrus"
+  say "...So this is the statue Eterna is so proud of."
+  say "Time and space, turning round each other in an endless spiral... and the people of Sinnoh still bow to the Pokémon said to rule them."
+  say "An old myth. Its truth needs looking into..."
+  wait 0.3
+  walk cyrus left 3 up 1
+  face cyrus left
+  camera release 0.6
+  say "...Excuse me. You're in my way."
+  walk player down 1
+  face player right
+  walk cyrus left 14
+  face player left
+  hide cyrus
+  setflag FLAG_HIDE_ETERNA_CITY_CYRUS
+  wait 0.8
+  walk rival down 1 fast
+  face rival down
+  face player up
+  speaker "{rival}"
+  say "Oh, right! {player}! When we crashed into each other just now, I had the best idea!"
+  say "The secret to being the greatest Trainer ever. Ready? Make sure every move you use hits!"
+  say "And make sure every move the other side uses misses! Do both, and you can never, ever lose!"
+  say "Unbeatable, that's what I'll be! Anyway, take a good look at the statue. Catch you later!"
+  walk rival left 12 fast
+  hide rival
+  setflag FLAG_HIDE_ETERNA_CITY_RIVAL
+  setvar VAR_ETERNA_CITY_STATE 1
+  end
+
+# The rival's last step, into the player: they are knocked a step east and turn round to see who it was.
+script Bump
+  walk player right 1
+  face player left
+  walk rival right 1 fast
+  sound "bump"
+  text "Thud!!"
+  music "common/rival"
+  speaker "{rival}"
+  say "Ow! Oh, it's you, {player}! You've come to see the Pokémon statue too, right? Come on, I'll show you the way!"
+  return
+
+
+# Before the Team Galactic building (the original's triggers 3 and 6, state 1): Cynthia comes along the street, asks
+# the player's name, and gives HM01 Cut.
+script CynthiaCut
+  clearflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
+  if var PLAYER_Y != 522 goto Beside
+  # In front of the trees: she comes up behind the player
+  if var PLAYER_X == 304 place cynthia 313 524 left
+  if var PLAYER_X == 305 place cynthia 314 524 left
+  if var PLAYER_X == 306 place cynthia 315 524 left
+  show cynthia
+  walk cynthia left 4
+  emote cynthia exclaim
+  walk cynthia left 5 up 1
+  face player down
+  goto Talk
+label Beside
+  # Coming along the street: she comes up on the player's right
+  if var PLAYER_Y == 523 place cynthia 313 523 left
+  if var PLAYER_Y == 524 place cynthia 313 524 left
+  if var PLAYER_Y == 525 place cynthia 313 525 left
+  show cynthia
+  walk cynthia left 4
+  emote cynthia exclaim
+  walk cynthia left 4
+  face player right
+label Talk
+  speaker "Cynthia"
+  say "Oh, that device of yours... Is it a Pokédex? Now that brings back memories."
+  say "Forgive me for asking, but what's your name? ...{player}. I'll be sure to remember it."
+  say "My name is Cynthia. I'm a Trainer, the same as you. Lately I've been reading up on Sinnoh's old myths. I can't help being curious."
+  face cynthia right
+  wait 0.4
+  face cynthia player
+  say "There's a statue of an ancient Pokémon here in Eterna. Have you been to see it yet?"
+  say "The myths call it a Pokémon of tremendous power. Who knows? Travelling with a Pokédex, you may meet something like it yourself."
+  say "Oh, I know. Take this with you. It should come in handy."
+  give "HM01"
+  speaker "Cynthia"
+  say "Don't forget, Cut can be used outside battle too. It clears the way to places you couldn't get to before."
+  say "And that matters a great deal when you're filling a Pokédex, doesn't it? Good luck, {player}!"
+  say "Oh, one last thing. Please give my regards to Professor Rowan."
+  # She goes on her way, down the street to the west
+  if var PLAYER_Y == 523 walk cynthia down 1 left 6 down 10
+  if var PLAYER_Y == 524 walk cynthia down 1 left 6 down 9
+  if var PLAYER_Y == 525 walk cynthia up 1 left 6 down 10
+  if var PLAYER_X == 305 walk cynthia left 1
+  if var PLAYER_X == 306 walk cynthia left 2
+  if var PLAYER_Y == 522 walk cynthia left 5 down 10
+  face player left
+  hide cynthia
+  setflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
+  setvar VAR_ETERNA_CITY_STATE 2
+  end
+
+
+# The Gym's Leader at its door (the original's script 24): she has heard of the player, and goes in to wait at the back.
+script Gardenia
+  speaker "Gardenia"
+  say "Hi! I'm Gardenia, the Gym Leader of this town!"
+  say "My last challenger was a boy in a terrible hurry. {rival}, he said his name was. He told me all about you."
+  say "He said there was another challenger on the way, and I haven't been able to sit still since!"
+  say "In my Gym, nobody gets to battle the Leader until they've beaten every other Trainer in there first."
+  say "I'll be waiting for you right at the back. Don't you dare disappoint me!"
+  face self up
+  sound "door_open"
+  hide self
+  sound "door_close"
+  setflag FLAG_HIDE_ETERNA_CITY_GARDENIA
+  end
+
+
+# The statue's plinth (the original's script 18), read from the south.
+script Statue
+  speaker none
+  text "Eterna City's statue of an ancient Pokémon. Something was fixed to its base once. Only the marks of the screws are left."
+  end
+
+
+# The grunts about town until Team Galactic leaves (the original's scripts 2, 3 and 4).
+script GruntStatue
+  speaker "Galactic Grunt"
+  say "Oi, kid! Stay away from that statue!"
+  say "Team Galactic is conducting an official investigation of it. Official, got it?"
+  end
+
+script GruntTough
+  speaker "Galactic Grunt"
+  say "Hey! You, the Trainer! Hand over your... er..."
+  say "On second thoughts, you look like you can handle yourself. Keep your Pokémon. Off you go, then!"
+  end
+
+script GruntBuilding
+  speaker "Galactic Grunt"
+  say "Had a look at our building up the street? It went up in no time at all."
+  say "That's what you can do with Team Galactic's kind of money!"
+  end
+
+
+# By the cycle shop (the original's script 8).
+script BugCatcherFriend
+  speaker "Bug Catcher"
+  if flag FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING goto Kickstand
+  say "My friend says Team Galactic took his favourite Pokémon off him."
+  say "I bet he's making it up. Team Galactic look so cool! They're nothing like ordinary crooks."
+  end
+label Kickstand
+  say "When you jump off your Bike, do you kick the stand down as you land? Doing it in one go looks so cool!"
+  end
+
+
+# At the west way out (the original's script 22). FLAG_RECEIVED_BICYCLE is set by the cycle shop's manager. The original
+# also goes back to the wind once the assistant has been met on Route 207 (VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE),
+# which is plan 02 · S7's scene.
+script BugCatcherBike
+  speaker "Bug Catcher"
+  if not flag FLAG_RECEIVED_BICYCLE goto Wind
+  call BikeNews
+  face self down
+  end
+label Wind
+  say "Doesn't riding a Bike with the wind in your face feel amazing?"
+  face self down
+  end
+
+script BikeNews
+  say "Whoa! You've got a Bicycle!"
+  say "Take it down the Cycling Road, south of town. It goes all the way to Hearthome City, and it's fast and fun the whole way!"
+  return
+
+
+# The west way out while the player has the Bicycle and no Explorer Kit (the original's trigger 2, a column at x 297):
+# the bug catcher steps down, tells them about the Cycling Road and nudges them back into town.
+script BlockWest
+  face bug_catcher_2 down
+  emote bug_catcher_2 exclaim
+  if var PLAYER_Y == 533 walk bug_catcher_2 down 1
+  if var PLAYER_Y == 534 walk bug_catcher_2 down 2
+  face player up
+  speaker "Bug Catcher"
+  call BikeNews
+  walk player right 1
+  face player left
+  if var PLAYER_Y == 533 walk bug_catcher_2 up 1
+  if var PLAYER_Y == 534 walk bug_catcher_2 up 2
+  face bug_catcher_2 down
+  end
+
+
+# By the Mart (the original's script 6).
+script WomanBuilding
+  speaker "Woman"
+  if flag FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING goto Gone
+  say "Ever since Team Galactic put up that building, the whole town has felt tense and gloomy."
+  say "Whatever are they up to in there?"
+  end
+label Gone
+  say "Team Galactic has packed up and gone. I wonder what will become of that building of theirs."
+  end
+
+
+# At the south way out, by the Cycling Road's gate (the original's script 19). FLAG_RECEIVED_EXPLORER_KIT is set by the
+# Underground Man.
+script WomanUnderground
+  speaker "Woman"
+  if flag FLAG_RECEIVED_EXPLORER_KIT goto Kit
+  call KitNews
+  end
+label Kit
+  say "Going down into the Underground with an Explorer Kit is such fun, isn't it?"
+  end
+
+script KitNews
+  say "Oh, don't tell me you haven't got an Explorer Kit!"
+  say "Go and have a word with the man who lives next door to the Pokémon Center."
+  return
+
+
+# The south way out while the player has the Bicycle and no Explorer Kit (the original's trigger 1, a row at y 565):
+# the woman by the gate comes over and sends them to the Underground Man.
+script BlockSouth
+  face pokemon_breeder_f_2 right
+  emote pokemon_breeder_f_2 exclaim
+  if var PLAYER_X == 304 walk pokemon_breeder_f_2 right 1
+  if var PLAYER_X == 305 walk pokemon_breeder_f_2 right 2
+  if var PLAYER_X == 306 walk pokemon_breeder_f_2 right 3
+  if var PLAYER_X == 307 walk pokemon_breeder_f_2 right 4
+  face player left
+  speaker "Woman"
+  call KitNews
+  if var PLAYER_X == 304 walk pokemon_breeder_f_2 left 1
+  if var PLAYER_X == 305 walk pokemon_breeder_f_2 left 2
+  if var PLAYER_X == 306 walk pokemon_breeder_f_2 left 3
+  if var PLAYER_X == 307 walk pokemon_breeder_f_2 left 4
+  face pokemon_breeder_f_2 right
+  walk player up 1
+  end

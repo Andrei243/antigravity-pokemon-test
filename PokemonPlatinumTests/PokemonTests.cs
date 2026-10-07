@@ -213,6 +213,11 @@ public class PokemonTests
             .ToList();
         Assert.NotEmpty(arrivals);
 
+        // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
+        // warp need only be reached from one arrival or another (RoomPlanTests holds how their stairs join).
+        bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName);
+        var reachedFromAny = new HashSet<(int, int)>();
+
         foreach (var (startX, startY) in arrivals)
         {
             Assert.True(map.IsWalkable(startX, startY), $"{mapName}: arrival tile ({startX},{startY}) is not walkable");
@@ -235,11 +240,19 @@ public class PokemonTests
                 }
             }
 
+            reachedFromAny.UnionWith(reached);
+            if (cutInTwo) continue;
             foreach (var warp in map.Warps)
             {
                 Assert.True(reached.Contains((warp.SourceX, warp.SourceY)),
                     $"{mapName}: warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) is unreachable from arrival ({startX},{startY})");
             }
+        }
+
+        foreach (var warp in map.Warps)
+        {
+            Assert.True(reachedFromAny.Contains((warp.SourceX, warp.SourceY)),
+                $"{mapName}: warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) is unreachable from every arrival");
         }
     }
 

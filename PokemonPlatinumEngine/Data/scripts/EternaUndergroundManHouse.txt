@@ -1,0 +1,58 @@
+# The Underground Man's house in Eterna City (plan 02 · S6). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_eterna_city_underground_man_house.s).
+#
+# The Underground Man gives the Explorer Kit (FLAG_RECEIVED_EXPLORER_KIT) and offers to teach the player
+# (FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR), starting with a trip below ground. The Underground itself, his later
+# missions and the PC's pages are plan 06 · R16's.
+
+
+# The Underground Man (the original's script 1).
+script UndergroundMan
+  speaker "Underground Man"
+  if flag FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR goto Mission
+  if flag FLAG_RECEIVED_EXPLORER_KIT goto Offer
+  say "Yes, it's me! The first man ever to go down below and dig himself a tunnel!"
+  say "Underground Man, they call me. Everybody does. Here, a present for you."
+  say "Mind you keep your side of the bargain and make good use of it!"
+  give "Explorer Kit"
+  setflag FLAG_RECEIVED_EXPLORER_KIT
+  speaker "Underground Man"
+  say "That Explorer Kit will take you straight down into the Underground. Just use it, and there you are!"
+  say "Down there is a whole other world. You can do all sorts of things!"
+label Offer
+  ask "So how about it? Shall I teach you everything it takes to be a real spelunker?"
+  if no goto Refused
+  setflag FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "Ha! That's what I like to hear! I'll teach you with missions, one at a time."
+label Mission
+  say "Your first: go down into the Underground. Nothing to it. Use your Explorer Kit, out of doors and not in a cave."
+  say "Manage that, and I'll set you your next test."
+  end
+label Refused
+  say "Ah... I'd hoped to show a young one like you all the wonders of the tunnels."
+  say "But I can't make you, can I? Sigh... It does get lonely down here sometimes."
+  end
+
+
+# The man from Oreburgh's mining museum (the original's script 3): his advice once, and a shorter word after.
+script Scientist
+  speaker "Scientist"
+  if flag FLAG_TALKED_TO_UNDERGROUND_MAN_HOUSE_SCIENTIST_M goto Again
+  setflag FLAG_TALKED_TO_UNDERGROUND_MAN_HOUSE_SCIENTIST_M
+  say "Treasure hunting, that's the thing! I work at the mining museum over in Oreburgh."
+  say "The Underground Man taught me a thing or two about digging up Treasure and Spheres. Here's his best tip."
+  say "Now and then you'll strike dark rock. It's terribly hard, and if you keep hammering at it, the whole wall comes down!"
+  say "Remember that, and you'll be bringing up Treasure in no time."
+  end
+label Again
+  say "More advice? Your Explorer Kit has a hammer and a pick. Whatever you uncover before the wall falls in is yours to keep."
+  say "Leave the dark rock alone, though. It won't break, and every blow brings the wall nearer to collapse."
+  end
+
+
+# The house's PC (the original's script 5): what it says of the Underground.
+script PC
+  speaker none
+  sayown
+  end

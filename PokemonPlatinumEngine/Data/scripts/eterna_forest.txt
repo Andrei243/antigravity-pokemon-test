@@ -5,6 +5,7 @@
 # heals the team after every battle that isn't lost, and battles beside the player as Platinum's
 # "cheryl_eterna_forest": wild Pokémon come two at a time, and trainers who face one another take on the pair of them.
 # She won't go back out the way they came, and parts at the far side with a Soothe Bell.
+# Once Eterna's Gym is beaten, Gardenia stands before the Old Chateau (part 2).
 # VAR_ETERNA_FOREST_FOLLOWER_CHERYL_STATE: 0 not with her, 1 together, 2 parted.
 
 
@@ -112,4 +113,27 @@ label Third
   end
 label Waiting
   say "I'll wait for you here. Let's go through the forest together when you're ready."
+  end
+
+
+# Gardenia by the trees before the Old Chateau (the original's script 7), once her Gym's Badge is won: she has heard
+# the rumours of its ghosts too, and would look into them herself if she weren't so busy. She goes off east.
+script Gardenia
+  speaker "Gardenia"
+  say "Oh, hi there! Did the rumours bring you out here as well?"
+  face self up
+  wait 0.4
+  say "Everyone's been whispering about the ghost Pokémon of the Old Chateau. And there's talk of creepy shadows too."
+  face self player
+  say "I ought to go and look myself, but going in there is... well, a Gym Leader is a busy person, you know."
+  say "Far too busy to go poking about old houses. That's the only reason, honest! I'm n-not frightened or anything!"
+  say "W-well then, have fun exploring!"
+  if facing up goto FromTheSouth
+  walk self down 2 right 9
+  goto Gone
+label FromTheSouth
+  walk self left 1 down 2 right 10
+label Gone
+  hide self
+  setflag FLAG_HIDE_ETERNA_FOREST_GARDENIA
   end

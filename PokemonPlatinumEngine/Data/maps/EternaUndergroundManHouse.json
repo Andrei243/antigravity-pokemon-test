@@ -1,0 +1,192 @@
+{
+  "name": "EternaUndergroundManHouse",
+  "displayName": "Underground Man's House",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#####.#####",
+    "###.......#",
+    "##........#",
+    "##........#",
+    "#........##",
+    "#.......###",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 3,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 6,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 310,
+      "targetY": 531,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 2,
+      "text": "A poster on the wall: \"Never lose your way below ground again! Ask about the Underground Radar.\""
+    },
+    {
+      "x": 1,
+      "y": 5,
+      "text": "Notes on the Underground fill the PC's screen: Spheres that grow in the walls, traps that catch the careless, and the flags of Secret Bases.",
+      "script": "PC"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "youngster",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "There are tunnels under every part of Sinnoh. They say you can get anywhere down there!"
+      ]
+    },
+    {
+      "id": "scientist_m",
+      "name": "Scientist",
+      "npcType": "Scientist",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "script": "Scientist"
+    },
+    {
+      "id": "underground_man",
+      "name": "Underground Man",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "UndergroundMan"
+    },
+    {
+      "id": "bug_catcher",
+      "name": "Bug Catcher",
+      "npcType": "Youngster",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "I dig and dig, but all that ever comes out of the walls is Armor Fossils!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}
