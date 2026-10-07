@@ -3604,6 +3604,18 @@ if (mode == "jubilife")
         Until(() => State() == GameState.Overworld, "the field again", 1500);
         Frames(10);
     }
+    // Reads on (yes to every question) until a scene's battle has begun
+    void IntoBattle(string what)
+    {
+        for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+        {
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
+        else Skip(1.0);
+    }
     void StepOnto(int x, int y, Direction way)
     {
         var (dx, dy) = way switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
@@ -3660,7 +3672,7 @@ if (mode == "jubilife")
     // ---- Route 203: the rival
     StepOnto(196, 757, Direction.Right);
     ReadTo("slacking"); Frames(10); Shot("j09_route203_the_rival");
-    Until(() => State() == GameState.Battle, "the rival's battle", 600);
+    IntoBattle("the rival's battle");
     var rivalFight = (BattleEngine)Get("battle");
     ToMainMenu(rivalFight); Shot("j10_route203_the_battle");
     ReadTo(null);
@@ -3692,7 +3704,7 @@ if (mode == "jubilife")
     At("OreburghGym", 5, 13, Direction.Up); Frames(30); Shot("j18_gym_the_rocks");
     TalkTo("OreburghGym", "roark");
     ReadTo("I'm Roark"); Frames(10); Shot("j19_gym_roark");
-    Until(() => State() == GameState.Battle, "Roark's battle", 600);
+    IntoBattle("Roark's battle");
     var gymFight = (BattleEngine)Get("battle");
     ToMainMenu(gymFight); Shot("j20_gym_the_battle");
     ReadTo("received the Coal Badge"); Frames(10); Shot("j21_gym_the_coal_badge");
@@ -3705,7 +3717,7 @@ if (mode == "jubilife")
     ReadTo(null);
     StepOnto(174, 743, Direction.Up);
     ReadTo("teach them some manners"); Frames(10); Shot("j23_jubilife_team_galactic");
-    Until(() => State() == GameState.Battle, "the tag battle", 900);
+    IntoBattle("the tag battle");
     var tag = (BattleEngine)Get("battle");
     ToMainMenu(tag); Shot("j24_jubilife_the_tag_battle");
     ReadTo("You two are a good team"); Frames(10); Shot("j25_jubilife_the_professor");
