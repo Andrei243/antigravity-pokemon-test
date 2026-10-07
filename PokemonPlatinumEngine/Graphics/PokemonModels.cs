@@ -647,7 +647,11 @@ internal static partial class PokemonModels
         "Wyrdeer", "Kleavor", "Ursaluna", "Basculegion", "Sneasler", "Overqwil", "Enamorus",
         // Paldea's first batch, Sprigatito to Pawmot
         "Sprigatito", "Floragato", "Meowscarada", "Fuecoco", "Crocalor", "Skeledirge", "Quaxly", "Quaxwell", "Quaquaval", "Lechonk", "Oinkologne",
-        "Tarountula", "Spidops", "Nymble", "Lokix", "Pawmi", "Pawmo", "Pawmot"
+        "Tarountula", "Spidops", "Nymble", "Lokix", "Pawmi", "Pawmo", "Pawmot",
+        // Paldea's second batch, Tandemaus to Klawf
+        "Tandemaus", "Maushold", "Fidough", "Dachsbun", "Smoliv", "Dolliv", "Arboliva", "Squawkabilly", "Nacli", "Naclstack", "Garganacl",
+        "Charcadet", "Armarouge", "Ceruledge", "Tadbulb", "Bellibolt", "Wattrel", "Kilowattrel", "Maschiff", "Mabosstiff", "Shroodle", "Grafaiai",
+        "Bramblin", "Brambleghast", "Toedscool", "Toedscruel", "Klawf"
     };
 
     /// <summary>
@@ -712,6 +716,7 @@ internal static partial class PokemonModels
         "Eiscue-Noice", "Indeedee-Female", "Morpeko-Hangry",
         "Zacian-Crowned", "Zamazenta-Crowned", "Eternatus-Eternamax", "Urshifu-Rapid-Strike", "Zarude-Dada", "Calyrex-Ice", "Calyrex-Shadow",
         "Ursaluna-Bloodmoon", "Basculegion-Female", "Enamorus-Therian", "Oinkologne-Female",
+        "Maushold-Family-Of-Three", "Squawkabilly-Blue-Plumage", "Squawkabilly-Yellow-Plumage", "Squawkabilly-White-Plumage",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -1762,6 +1767,33 @@ internal static partial class PokemonModels
         "PAWMI" => Pawmi(),
         "PAWMO" => Pawmo(),
         "PAWMOT" => Pawmot(),
+        "TANDEMAUS" => Tandemaus(),
+        "MAUSHOLD" => Maushold(),
+        "FIDOUGH" => Fidough(),
+        "DACHSBUN" => Dachsbun(),
+        "SMOLIV" => Smoliv(),
+        "DOLLIV" => Dolliv(),
+        "ARBOLIVA" => Arboliva(),
+        "SQUAWKABILLY" => Squawkabilly(),
+        "NACLI" => Nacli(),
+        "NACLSTACK" => Naclstack(),
+        "GARGANACL" => Garganacl(),
+        "CHARCADET" => Charcadet(),
+        "ARMAROUGE" => Armarouge(),
+        "CERULEDGE" => Ceruledge(),
+        "TADBULB" => Tadbulb(),
+        "BELLIBOLT" => Bellibolt(),
+        "WATTREL" => Wattrel(),
+        "KILOWATTREL" => Kilowattrel(),
+        "MASCHIFF" => Maschiff(),
+        "MABOSSTIFF" => Mabosstiff(),
+        "SHROODLE" => Shroodle(),
+        "GRAFAIAI" => Grafaiai(),
+        "BRAMBLIN" => Bramblin(),
+        "BRAMBLEGHAST" => Brambleghast(),
+        "TOEDSCOOL" => Toedscool(),
+        "TOEDSCRUEL" => Toedscruel(),
+        "KLAWF" => Klawf(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1929,6 +1961,10 @@ internal static partial class PokemonModels
         "BASCULEGION-FEMALE" => BasculegionFemale(),
         "ENAMORUS-THERIAN" => EnamorusTherian(),
         "OINKOLOGNE-FEMALE" => OinkologneFemale(),
+        "MAUSHOLD-FAMILY-OF-THREE" => MausholdFamilyOfThree(),
+        "SQUAWKABILLY-BLUE-PLUMAGE" => SquawkabillyBlue(),
+        "SQUAWKABILLY-YELLOW-PLUMAGE" => SquawkabillyYellow(),
+        "SQUAWKABILLY-WHITE-PLUMAGE" => SquawkabillyWhite(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
