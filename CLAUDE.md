@@ -284,4 +284,5 @@ The field and battles are 3D scenes; almost every asset is generated in code at 
 - **Reference data**: the pret/pokeplatinum decompilation has most game data as JSON. `docs/plans/README.md` lists the paths; fetch raw files from `https://raw.githubusercontent.com/pret/pokeplatinum/main/<path>`. Bulbapedia blocks automated fetching; pokemondb.net and Serebii work.
 - **Style guide first**: when a visual rule has to change, change `docs/art/style-guide.md` before the code. `StyleGuideTests` checks the rules that can be tested without a GPU.
 - **Add tests for new rules** (movement, scripts, battle effects, data completeness) and keep them green.
+- **The full suite runs once, after everything is merged.** When a session does several steps at once (one of each plan, often by agents in worktrees of their own), each step runs only the tests of what it touches (`--filter`); the whole of `dotnet test PokemonPlatinumTests` runs once, on the tree with every step merged, and what fails there is fixed there. Running it per step costs the most time and finds nothing the merged run doesn't.
 - **Commits**: commit or push only when the user asks; commit on `main`.
