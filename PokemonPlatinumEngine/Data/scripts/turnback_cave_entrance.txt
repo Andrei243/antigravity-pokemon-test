@@ -1,0 +1,23 @@
+# Turnback Cave's entrance (plan 01 · M8). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_turnback_cave_entrance.s).
+#
+# Every door of the entrance and of the rooms further in is aimed as the player comes in (`turnback`, the
+# original's InitTurnbackCave): back the way one came is the entrance again, and the other three doors lead on.
+# The entrance starts the count over.
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_TURNBACK_CAVE
+  setvar VAR_TURNBACK_CAVE_PILLARS_SEEN 0
+  setvar VAR_TURNBACK_CAVE_ROOMS_VISITED 0
+  turnback
+  end
+
+# The words cut into the rock by the way in
+script Inscription
+  speaker none
+  if flag FLAG_CAUGHT_GIRATINA goto Offering
+  say "Words are cut deep into the rock: \"Walk past three pillars, and the master of the other side will be waiting.\""
+  end
+label Offering
+  say "Words are cut deep into the rock: \"Walk past three pillars, and leave something for the place where the worlds touch.\""
+  end

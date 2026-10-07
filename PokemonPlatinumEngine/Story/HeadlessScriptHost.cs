@@ -62,6 +62,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>Everything else that happened, in order, a word and its details each: <c>fanfare FanfareHeal</c>, <c>open Shop</c>, <c>warp PlayerHouse 4 5</c>.</summary>
     public List<string> Log { get; } = new();
 
+    /// <summary>Where chance comes from (Turnback Cave's doors): the same every run unless a test hands its own.</summary>
+    public Random Rng { get; set; } = new(0);
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 
@@ -339,6 +342,15 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Exit is not { } exit) return false;
         Warp(exit.Map, exit.X, exit.Y, exit.Facing);
         return true;
+    }
+
+    /// <summary>Where Turnback Cave's doors were last aimed (null before any).</summary>
+    public string? TurnbackChose { get; private set; }
+
+    public void Turnback()
+    {
+        Log.Add("turnback");
+        if (Map != null) TurnbackChose = TurnbackCave.Reaim(Map, PlayerTile.X, PlayerTile.Y, Story, Rng);
     }
 
     public bool SweetScent()

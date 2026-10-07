@@ -20,7 +20,7 @@ internal static partial class ModernUi
     /// The storage system in three columns: the party, the box (six slots by five under its name), and the
     /// Pokémon under the cursor.
     /// </summary>
-    public static void DrawStorage(int sw, int sh, PCScreen pc, Party party, List<Pokemon> stored, float appear = 1f)
+    public static void DrawStorage(int sw, int sh, PCScreen pc, Party party, PcBoxes stored, float appear = 1f)
     {
         Backdrop(sw, sh);
         ScreenTitle("PC BOXES");
@@ -58,7 +58,7 @@ internal static partial class ModernUi
         var box = new Rectangle(team.X + team.Width + Gutter + slide, ContentTop, 792, height);
         Panel(box, 34);
         bool naming = pc.Zone == StorageZone.BoxName;
-        string name = $"BOX {pc.Box + 1}";
+        string name = stored.Boxes[pc.Box].Name.ToUpperInvariant();
         float nameW = UiFonts.Measure(name, 44, UiWeight.Black);
         var plate = new Rectangle(box.X + box.Width / 2f - 190, box.Y + 30, 380, 76);
         if (naming)
@@ -72,8 +72,7 @@ internal static partial class ModernUi
         UiIcons.ArrowH(new Vector2(plate.X - 44, plate.Y + plate.Height / 2f), 22, -1, arrow);
         UiIcons.ArrowH(new Vector2(plate.X + plate.Width + 44, plate.Y + plate.Height / 2f), 22, 1, arrow);
 
-        int firstStored = pc.Box * PCScreen.BoxSize;
-        int inBox = Math.Clamp(stored.Count - firstStored, 0, PCScreen.BoxSize);
+        int inBox = stored.Boxes[pc.Box].Count;
         string count = $"{inBox} / {PCScreen.BoxSize}";
         UiFonts.DrawCentered(count, box.X + (box.Width - UiFonts.Measure(count, 24, UiWeight.Black)) / 2f, box.Y + 136, 24, Muted, UiWeight.Black);
 
@@ -85,8 +84,7 @@ internal static partial class ModernUi
             bool selected = pc.Zone == StorageZone.Box && pc.Cell == i;
             if (selected) UiShapes.Shadow(r, 24, 22, Vector2.Zero, Selection with { A = 190 });
             UiShapes.Shape(r, 24, SlotTop, SlotBottom, selected ? Selection : Rule, selected ? 6f : 3f);
-            if (firstStored + i >= stored.Count) continue;
-            var p = stored[firstStored + i];
+            if (stored[pc.Box, i] is not { } p) continue;
             PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), new Vector2(r.X + cell / 2f, r.Y + cell / 2f - 2), 2, Hop(selected) * 2);
         }
 

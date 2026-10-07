@@ -1013,7 +1013,7 @@ if (Run("demo"))
     renderer.SetArena(BattleArena.Grass);
     var wild = new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1, Status = StatusCondition.Sleep };
     inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
-    var c = new BattleEngine(party, wild, inventory, pokedex, null, new List<Pokemon>());
+    var c = new BattleEngine(party, wild, inventory, pokedex, null, new PcBoxes());
     Set("battle", c);
     Skip(2.2); Confirm(c); Skip(1.2); Confirm(c); Skip(0.6);
     c.UseItem(ItemDatabase.Get("Poké Ball")!);
@@ -1250,19 +1250,19 @@ if (Run("menus"))
     shop.Open("Veilstone Dept. Store", MartDatabase.Stock("veilstone_2f_mid", 0), ShopMode.Buying);
     Frames(30); Shot("29d_shop_specialties");
     shop.Close();
-    var boxed = (List<Pokemon>)Get("pcBoxStorage");
+    var boxed = (PcBoxes)Get("pcBoxStorage");
     foreach (var name in new[] { "Starly", "Bidoof", "Shinx", "Budew", "Kricketot", "Staravia", "Luxio", "Riolu", "Gible", "Prinplup" })
-        boxed.Add(new Pokemon(PokemonDatabase.Get(name)!, 4 + boxed.Count * 3));
+        boxed.Store(new Pokemon(PokemonDatabase.Get(name)!, 4 + boxed.Count * 3));
     Set("currentState", GameState.PCStorage);
     var pc = (PCScreen)Get("pcScreen");
-    pc.Open();
+    pc.Open(boxed);
     Frames(30); Shot("30_pc");
     pc.Move(1, 0, party.Count); pc.Move(1, 0, party.Count); pc.Move(0, 1, party.Count);
     Frames(4); Shot("30b_pc_in_the_box");
     pc.Move(0, -1, party.Count); pc.Move(0, -1, party.Count);
     Frames(4); Shot("30c_pc_box_name");
     pc.Close();
-    boxed.Clear();
+    Set("pcBoxStorage", new PcBoxes());
 
     // The battle's panels for switching and for the bag
     var mb = StartBattle("Shinx", 5);

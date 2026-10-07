@@ -157,6 +157,7 @@ public class ScriptTests
           poketchapp PartyStatus
           safari start
           safari end
+          turnback
           music "sinnoh/jubilife"
           music area
           music stop
@@ -969,6 +970,7 @@ public class ScriptTests
         public bool Fly() => true;
         public bool Teleport() => true;
         public bool Escape() => true;
+        public void Turnback() { }
         public bool SweetScent() => false;
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }

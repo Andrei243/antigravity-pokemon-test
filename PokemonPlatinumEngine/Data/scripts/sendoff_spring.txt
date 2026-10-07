@@ -1,0 +1,7 @@
+# Sendoff Spring (plan 01 · M8; scripts_sendoff_spring.s). Once Giratina has been caught, a ball waits again in
+# Turnback Cave's last room each time the player comes through here. Cynthia's scene as the player comes out of
+# the Distortion World is plan 02 · S12's.
+
+script OnEnter
+  if flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
+  end

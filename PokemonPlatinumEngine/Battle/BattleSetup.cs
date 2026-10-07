@@ -38,7 +38,7 @@ public sealed class BattleSetup
     public required Pokedex Pokedex { get; init; }
 
     /// <summary>Where caught Pokémon go when the party is full.</summary>
-    public List<Pokemon>? PcStorage { get; init; }
+    public PcBoxes? PcStorage { get; init; }
 
     public BattleFormat Format { get; init; } = BattleFormat.Single;
 

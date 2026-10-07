@@ -216,6 +216,26 @@ public sealed class WorldRenderer
 
     private readonly List<(Map Map, int X, int Y)> leaving = new();
 
+    /// <summary>
+    /// Lets go of whatever was drawn of a part of a map whose ground has changed (a place the story revealed or
+    /// hid again, plan 01 · M8): its chunks and their neighbours, whose edges were baked with it, are made again
+    /// as they come into view.
+    /// </summary>
+    public void Forget(Map map, int x, int y, int width, int height)
+    {
+        var stale = chunks.Keys.Where(k => k.Map == map
+            && k.X >= x / Map.ChunkTiles - 1 && k.X <= (x + width - 1) / Map.ChunkTiles + 1
+            && k.Y >= y / Map.ChunkTiles - 1 && k.Y <= (y + height - 1) / Map.ChunkTiles + 1).ToList();
+        foreach (var key in stale)
+        {
+            var slot = chunks[key];
+            slot.Pending?.Wait();
+            slot.Arriving?.Unload();
+            slot.Scene?.Unload();
+            chunks.Remove(key);
+        }
+    }
+
     private void Evict(Map map, float focusX, float focusZ)
     {
         leaving.Clear();

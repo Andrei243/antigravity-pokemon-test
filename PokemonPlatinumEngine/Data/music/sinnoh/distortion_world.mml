@@ -1,0 +1,102 @@
+# The Distortion World (the original's PL_D_GIRATINA role): the reverse world behind Turnback Cave, where islands of
+# rock float upside down, waterfalls run sideways and Giratina keeps its own laws of time and space. One whole-tone
+# melody heard three ways, as the world turns it: first as it is, a hollow ocarina over a low D pedal while harp runs
+# float upwards; then upside down, the horn singing its inversion while the pedal moves to the top of the strings,
+# the bass falls away and the runs fall instead; then backwards and a semitone higher in the other whole-tone scale,
+# brass, choir and timpani over an E-flat pedal, with a clock that ticks in threes against the four. A whole-tone
+# scale has no semitones, so nothing in a section rubs, and nothing ever resolves; a shaker swells as if played in
+# reverse into each turn, and the E-flat sinks back to D to begin again. Original composition for this game.
+title Distortion World
+tempo 76
+meter 4/4
+reverb 0.55
+night none
+
+track lead ocarina vol=0.66 pan=0 rev=0.5
+  L v96 o5 d4. e8 f+2 | o5 c2. r4 | o4 a+4. o5 c8 d4 g+4 | o5 f+1 |
+  o5 e4. f+8 g+4 a+4 | o6 c2 o5 a+4 e4 | o5 f+4. e8 d4 c4 | o5 d2. r4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v88 r4 o5 e-2. | o5 c+4 e-4 f8 g4. | o5 f4 b4 o6 c+2 | o5 b4 a4 g8 f4. |
+  o5 g1 | o5 a4 e-4 c+8 o4 b4. | r4 o5 c+2. | o5 g2 f8 e-4. |
+
+track under horn vol=0.62 pan=-0.15 rev=0.45
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v94 o5 d4. c8 o4 a+2 | o5 e2. r4 | o5 f+4. e8 d4 o4 g+4 | o4 a+1 |
+  o5 c4. o4 a+8 g+4 f+4 | o4 e2 f+4 o5 c4 | o4 a+4. o5 c8 d4 e4 | o5 d2. r4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track strings strings vol=0.4 pan=-0.25 rev=0.45
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  q8 v72 o5 g+1^1 | v80 g+1^1 | v72 g+1^1 | v80 g+1^1 |
+  v96 r4 o5 e-2. | o5 c+4 e-4 f8 g4. | o5 f4 b4 o6 c+2 | o5 b4 a4 g8 f4. |
+  o5 g1 | o5 a4 e-4 c+8 o4 b4. | r4 o5 c+2. | o5 g2 f8 e-4. |
+
+track haze pad vol=0.34 pan=0.2 rev=0.6
+  L q8 o4 (d f+ a+)1 | (c e g+)1 | o3 (a+ >d f+)1 | o4 (c e g+)1 |
+  o4 (d f+ a+)1 | (c e g+)1 | (d f+ a+ >c)1 | (c e g+ >d)1 |
+  o4 (e g+ >c)1 | (d f+ a+)1 | (e g+ >c)1 | (d f+ a+)1 |
+  o4 (e g+ >c)1 | (d f+ a+)1 | (c e f+ a+)1 | (d e g+ >c)1 |
+  o4 (e- g b)1 | (f a >c+)1 | (e- g b)1 | (f a >c+)1 |
+  o4 (e- g b >c+)1 | (f a b >e-)1 | (e- f a >c+)1 | (e- g b >c+)1 |
+
+track voices choir vol=0.3 pan=-0.3 rev=0.6
+  L q8 r1 | r1 | r1 | r1 |
+  o4 (d a+)1 | (c g+)1 | (d a+)1 | (e >c)1 |
+  o3 (g+ >d)1 | (a+ >e)1 | (g+ >d)1 | (a+ >e)1 |
+  o3 (g+ >d)1 | (a+ >e)1 | (f+ >c)1 | (g+ >d)1 |
+  o4 (e- b)1 | (c+ a)1 | (e- b)1 | (c+ a)1 |
+  o4 (e- b)1 | (f >c+)1 | (e- b)1 | (e- g)1 |
+
+track glory brass vol=0.36 pan=0.25 rev=0.45
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v78 o4 (e- g b)1 | (f a >c+)1 | v84 (e- g b)1 | (f a >c+)1 |
+  v90 o4 (e- g b >c+)1 | (f a b >e-)1 | v80 (e- g b)2 r2 | r1 |
+
+track float harp vol=0.4 pan=0.4 rev=0.6
+  L v84 r1 | r2 o4 d16 e16 f+16 g+16 a+16 o5 c16 d16 e16 | r1 | r2 o4 c16 d16 e16 f+16 g+16 a+16 o5 c16 d16 |
+  r1 | r2 o4 e16 f+16 g+16 a+16 o5 c16 d16 e16 f+16 | r1 | r2 o4 a+16 o5 c16 d16 e16 f+16 g+16 a+16 o6 c16 |
+  r1 | r2 o6 c16 o5 a+16 g+16 f+16 e16 d16 c16 o4 a+16 | r1 | r2 o5 g+16 f+16 e16 d16 c16 o4 a+16 g+16 f+16 |
+  r1 | r2 o5 f+16 e16 d16 c16 o4 a+16 g+16 f+16 e16 | r1 | r2 o5 e16 d16 c16 o4 a+16 g+16 f+16 e16 d16 |
+  v74 r1 | r2 o4 e-16 f16 g16 a16 b16 o5 c+16 e-16 f16 | r1 | r2 o5 b16 a16 g16 f16 e-16 c+16 o4 b16 a16 |
+  r1 | r2 o4 f16 g16 a16 b16 o5 c+16 e-16 f16 g16 | r1 | r2 o4 e-16 f16 g16 a16 b16 o5 c+16 e-16 f16 |
+
+track clock marimba vol=0.28 pan=-0.4 rev=0.5
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v80 o5 d8 r4 d8 r4 d8 r8 | r8 d8 r4 d8 r4 d8 | r4 d8 r4 d8 r4 |
+  o5 d8 r4 d8 r4 d8 r8 | r8 d8 r4 d8 r4 d8 | r4 d8 r4 d8 r4 |
+  o5 d8 r4 d8 r4 d8 r8 | r8 d8 r4 d8 r4 d8 |
+  o5 e-8 r4 e-8 r4 e-8 r8 | r8 e-8 r4 e-8 r4 e-8 | r4 e-8 r4 e-8 r4 |
+  o5 e-8 r4 e-8 r4 e-8 r8 | r8 e-8 r4 e-8 r4 e-8 | r4 e-8 r4 e-8 r4 |
+  o5 e-8 r4 e-8 r4 e-8 r8 | r8 e-8 r4 e-8 r4 e-8 |
+
+track ground contrabass vol=0.6 rev=0.25
+  L q8 o3 d1 | d1 | d1 | d1 |
+  o3 d1 | d1 | d1 | d1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o3 e-1 | e-1 | e-1 | e-1 |
+  o3 e-1 | e-1 | e-1 | e-1 |
+
+track drum timpani vol=0.4 rev=0.4
+  L v66 o3 d4 r2. | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v60 o3 g+4 r2. | r1 | r1 | r1 |
+  v60 o3 g+4 r2. | r1 | r1 | r1 |
+  v84 o3 e-4 r2. | r1 | v70 o3 a4 r2. | r1 |
+  v84 o3 e-4 r2. | r1 | v70 o3 a4 r2. | v28 o3 e-16 e-16 e-16 e-16 v34 e-16 e-16 e-16 e-16 v40 e-16 e-16 e-16 e-16 v48 e-16 e-16 e-16 e-16 |
+
+track air kit vol=0.45 rev=0.6
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 v24 k16 v32 k16 v40 k16 v50 k16 v60 k16 v70 k16 v80 k16 v88 k16 |
+  v50 f2 r2 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 v24 k16 v32 k16 v40 k16 v50 k16 v60 k16 v70 k16 v80 k16 v88 k16 |
+  v62 c1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 v24 k16 v32 k16 v40 k16 v50 k16 v60 k16 v70 k16 v80 k16 v88 k16 |

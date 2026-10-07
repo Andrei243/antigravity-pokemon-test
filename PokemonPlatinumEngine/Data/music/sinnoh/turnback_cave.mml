@@ -1,0 +1,76 @@
+# Turnback Cave (the original's D_03 role): the fog-filled cave beyond Sendoff Spring whose rooms are all alike and
+# lead back to the entrance unless the way is kept, past three ancient pillars, down to the doorway of the Distortion
+# World. Four rooms of one phrase: a low flute sighs over a pad, the vibraphone drips and echoes the phrase's tail,
+# and each room is the last a minor third higher. The phrase keeps to one octatonic scale, which a minor third maps
+# onto itself, so every room is made of the very same notes and the same diminished doorway chord closes each one.
+# Then the pillars: a bell tolls three times, the bass falls by whole tones, a low clarinet chants over a choir, and a
+# ii-V turns back into C minor at the entrance again. Original composition for this game.
+title Turnback Cave
+tempo 72
+meter 4/4
+reverb 0.55
+night none
+
+track lead flute vol=0.62 pan=0 rev=0.5
+  L v92 o4 g4. a8 b-2 | o5 c4 o4 b-4 g4. e8 | o4 e-4. d-8 c2 | r1 |
+  o4 b-4. o5 c8 d-2 | o5 e-4 d-4 o4 b-4. g8 | o4 g-4. e8 e-2 | r1 |
+  o5 c+4. d+8 e2 | o5 f+4 e4 c+4. o4 a+8 | o4 a4. g8 f+2 | r1 |
+  o5 e4. f+8 g2 | o5 a4 g4 e4. c+8 | o5 c4. o4 b-8 a2 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track drips vibraphone vol=0.3 pan=0.35 rev=0.6
+  L v84 r4 r8 o5 g8 r4 r8 o6 c8 | r4 r8 o5 e-8 r4 r8 g8 | r4 r8 o5 a8 r4 r8 e-8 | v92 r4 o5 e-4. d-8 c4 |
+  v84 r4 r8 o5 b-8 r4 r8 o6 e-8 | r4 r8 o5 g-8 r4 r8 b-8 | r4 r8 o6 c8 r4 r8 o5 g-8 | v92 r4 o5 g-4. e8 e-4 |
+  v84 r4 r8 o5 c+8 r4 r8 f+8 | r4 r8 o4 a8 r4 r8 o5 c+8 | r4 r8 o5 d+8 r4 r8 o4 a8 | v92 r4 o5 a4. g8 f+4 |
+  v84 r4 r8 o5 e8 r4 r8 a8 | r4 r8 o5 c8 r4 r8 e8 | r4 r8 o5 f+8 r4 r8 c8 | v92 r4 o6 c4. o5 b-8 a4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | v76 r4 r8 o5 g8 r4 r8 b8 |
+
+track fog pad vol=0.36 pan=-0.2 rev=0.55
+  L q8 o3 (c e- g)1 | (c e- g)1 | (c e- a)1 | (c e- f+ a)1 |
+  o3 (e- g- b-)1 | (e- g- b-)1 | (e- g- >c)1 | (e- f+ a >c)1 |
+  o3 (f+ a >c+)1 | (f+ a >c+)1 | (f+ a >d+)1 | (f+ a >c e-)1 |
+  o3 (a >c e)1 | (a >c e)1 | (a >c f+)1 | (a >c e- f+)1 |
+  o3 (g+ b >d+)1 | (g+ b >d+)1 | (f+ a >c+)1 | (f+ a >c+)1 |
+  o3 (e g b)1 | (e g b)1 | (d f a- >c)1 | (g b >d f)1 |
+
+track mist choir vol=0.24 pan=0.2 rev=0.6
+  L q8 o4 (c g)1 | (c g)1 | (c e-)1 | (c e-)1 |
+  o4 (e- b-)1 | (e- b-)1 | (e- g-)1 | (e- g-)1 |
+  o4 (f+ >c+)1 | (f+ >c+)1 | (f+ a)1 | (f+ a)1 |
+  o4 (a >e)1 | (a >e)1 | (a >c)1 | (a >c)1 |
+  o3 (g+ >d+)1 | (g+ >d+)1 | (f+ >c+)1 | (f+ >c+)1 |
+  o3 (e b)1 | (e b)1 | (d a-)1 | (g >d)1 |
+
+track chant clarinet vol=0.6 pan=-0.1 rev=0.45
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v96 o4 g+4. b8 o5 d+2 | o5 f+4 r8 e8 d+2 | o4 f+4. a8 o5 c+2 | o5 e4 r8 d8 c+2 |
+  o4 e4. g8 b2 | o5 d4 r8 c8 o4 b2 | o4 d4. f8 a-2 | o4 b4 r8 a-8 g2 |
+
+track pillars bell vol=0.36 pan=0.3 rev=0.7
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v100 o5 g+2 r2 | r1 | o5 f+2 r2 | r1 |
+  o5 e2 r2 | r1 | r1 | r1 |
+
+track bass contrabass vol=0.6 rev=0.25
+  L q8 o3 c1 | c1 | c1 | c1 |
+  o3 e-1 | e-1 | e-1 | e-1 |
+  o3 f+1 | f+1 | f+1 | f+1 |
+  o3 a1 | a1 | a1 | a1 |
+  o3 g+1 | g+1 | f+1 | f+1 |
+  o3 e1 | e1 | d1 | g1 |
+
+track steps timpani vol=0.4 rev=0.35
+  L v64 o3 c4 r2. | r1 | r1 | r1 |
+  v64 o3 e-4 r2. | r1 | r1 | r1 |
+  v64 o3 f+4 r2. | r1 | r1 | r1 |
+  v64 o3 a4 r2. | r1 | r1 | r1 |
+  v86 o3 g+4 r2. | r1 | v86 o3 f+4 r2. | r1 |
+  v86 o3 e4 r2. | r1 | v70 o3 d4 r2. | v34 o3 g16 g16 g16 g16 v42 g16 g16 g16 g16 v50 g16 g16 g16 g16 v58 g16 g16 g16 g16 |

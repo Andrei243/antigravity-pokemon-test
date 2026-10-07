@@ -23,6 +23,10 @@ public static partial class MapDatabase
     /// Puts everyone of every map where the story has them: on it, or off it while a flag hides them (plan 02 ·
     /// S1). With <paramref name="forget"/>, whoever a script showed or hid by itself goes by the flags again.
     /// </summary>
+    /// <summary>Hides or reveals every map's hidden places as the story says (<see cref="Map.ApplyHiddenPlaces"/>); what changed.</summary>
+    public static List<(Map Map, Map.HiddenPlace Place)> ApplyHiddenPlaces(System.Func<string, int> variable) =>
+        Maps.Values.SelectMany(map => map.ApplyHiddenPlaces(variable).Select(place => (map, place))).ToList();
+
     public static void ApplyPresence(System.Func<string, bool> flagSet, bool forget = false)
     {
         foreach (var map in Maps.Values)

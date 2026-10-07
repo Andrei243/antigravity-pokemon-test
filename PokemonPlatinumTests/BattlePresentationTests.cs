@@ -524,7 +524,7 @@ public class BattlePresentationTests
         party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
         var inventory = new Inventory();
         inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
-        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1 }, inventory, new Pokedex(), null, new List<Pokemon>());
+        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1 }, inventory, new Pokedex(), null, new PcBoxes());
         for (int i = 0; i < 10 && battle.HUD.MenuState == BattleMenuState.Message; i++) battle.ConfirmMessage();
         battle.UseBagItem("Poké Ball");
         battle.ConfirmMessage();

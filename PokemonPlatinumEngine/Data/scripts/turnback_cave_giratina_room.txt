@@ -1,0 +1,42 @@
+# Giratina's room at the end of Turnback Cave (plan 01 · M8; scripts_turnback_cave_giratina_room.s). Its doors
+# are never aimed: every one of them leads back to the entrance.
+#
+# Giratina waits here after the Hall of Fame if it got away in the Distortion World (the Hall of Fame clears its
+# flag, plan 02 · S14). Until then a new game keeps it hidden: a Pokémon can't be drawn standing in the field
+# until plan 10 · F1. Once it is caught, a ball lies here each time the player comes back through Sendoff
+# Spring, and what is in it hangs on how few rooms it took to get here.
+
+script Giratina
+  cry "Giratina"
+  speaker none
+  say "A roar shakes the whole cave!"
+  wildbattle "Giratina" 47 nofleeing
+  if var RESULT == 3 goto Caught
+  hide self
+  say "Giratina sank back into the shadows and was gone..."
+  end
+label Caught
+  setflag FLAG_CAUGHT_GIRATINA
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  hide self
+  end
+
+script Item
+  if var VAR_TURNBACK_CAVE_ROOMS_VISITED == 3 goto ReaperCloth
+  if var VAR_TURNBACK_CAVE_ROOMS_VISITED < 15 goto RareBone
+  find "Stardust"
+  goto Taken
+label ReaperCloth
+  find "Reaper Cloth"
+  goto Taken
+label RareBone
+  find "Rare Bone"
+label Taken
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
+  hide self
+  end
+
+script Inscription
+  speaker none
+  say "Words are cut into the stone: \"Here the world we know and the world beyond it lie one over the other.\""
+  end

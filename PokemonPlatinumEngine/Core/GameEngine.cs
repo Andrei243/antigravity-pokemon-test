@@ -121,7 +121,7 @@ public partial class GameEngine
     private readonly Party playerParty = new();
     private readonly Inventory playerInventory = new();
     private readonly Pokedex playerPokedex = new();
-    private readonly List<Pokemon> pcBoxStorage = new();
+    private PcBoxes pcBoxStorage = new();
     private int playerMoney = 3000;
     private float playTime = 0f;
     private int trainerId;
@@ -217,7 +217,7 @@ public partial class GameEngine
         playerParty.Clear();
         playerInventory.Clear();
         playerPokedex.Clear();
-        pcBoxStorage.Clear();
+        pcBoxStorage = new PcBoxes();
         poketch.Clear();
         poketchView.Hide();
         safari.End();
@@ -359,11 +359,8 @@ public partial class GameEngine
             playerPokedex.RegisterCaught(fallback.Species.DexNumber);
         }
 
-        pcBoxStorage.Clear();
-        foreach (var pData in save.BoxStorage)
-        {
-            pcBoxStorage.Add(pData.ToPokemon());
-        }
+        // Each stored Pokémon in its own place; a save from before the boxes had places lays its list out in them
+        pcBoxStorage = save.Boxes?.ToBoxes() ?? PcBoxes.FromList(save.BoxStorage.Select(p => p.ToPokemon()));
 
         playerInventory.Clear();
         foreach (var itData in save.Inventory)
@@ -384,7 +381,7 @@ public partial class GameEngine
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
         story.Restore(save.ToStory());
-        StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage), scripts);
+        StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts);
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -425,7 +422,7 @@ public partial class GameEngine
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
-            BoxStorage = pcBoxStorage.Select(SavedPokemonData.FromPokemon).ToList(),
+            Boxes = SavedBoxes.From(pcBoxStorage),
             Inventory = playerInventory.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
             SeenSpecies = playerPokedex.SeenSpecies.ToList(),
             CaughtSpecies = playerPokedex.CaughtSpecies.ToList(),
@@ -967,7 +964,7 @@ public partial class GameEngine
         else
         {
             if (given != null) pcBoxStorage.Remove(given);
-            if (!playerParty.Add(received)) pcBoxStorage.Add(received);
+            if (!playerParty.Add(received)) pcBoxStorage.Store(received);
         }
 
         received.Friendship = received.Species.BaseFriendship;
@@ -1036,6 +1033,10 @@ public partial class GameEngine
             string read = currentMap.SignScripts.GetValueOrDefault((targetX, targetY)) ?? FieldScripts.Sign;
             if (StartScript(read, own: new[] { sign }, file: currentMap.ScriptFileAt(targetX, targetY))) return;
         }
+
+        // A tile that is read when faced: an inscription, a pillar
+        if (currentMap.TileScripts.GetValueOrDefault((targetX, targetY)) is { } faced
+            && StartScript(faced, file: currentMap.ScriptFileAt(targetX, targetY))) return;
 
         // Something hidden where the player is looking: it is found, once
         if (FieldScripts.HiddenAt(currentMap, targetX, targetY, story) is { } hidden

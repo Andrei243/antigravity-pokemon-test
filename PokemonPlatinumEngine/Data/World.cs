@@ -130,7 +130,18 @@ public sealed class World
     public TileBehavior BehaviourAt(int matrixId, int x, int z) =>
         ChunkAt(matrixId, x, z) is { } at ? at.Chunk.BehaviourAt(at.X, at.Z) : TileBehavior.None;
 
-    public List<Map> BuildMaps() => Index.Maps.Select(entry => WorldMapBuilder.Build(this, entry)).ToList();
+    public List<Map> BuildMaps()
+    {
+        var maps = Index.Maps.Select(entry => WorldMapBuilder.Build(this, entry)).ToList();
+        // What the story reveals later is built like the rest, and the map keeps a copy of it to put back
+        foreach (var hidden in Index.Hidden)
+            maps.FirstOrDefault(m => m.Name == hidden.Map)?.AddHiddenPlace(hidden.Var, hidden.Value, hidden.ChunkX, hidden.ChunkY, hidden.ChunksWide, hidden.ChunksHigh);
+        // Turnback Cave's doors are aimed as the player comes into each room: they learn here where each door leads
+        foreach (string area in TurnbackCave.Everywhere)
+            for (int door = 0; door < TurnbackCave.Doors.Count; door++)
+                if (WorldMapBuilder.WayInto(this, area, door) is { } way) TurnbackCave.Learn(area, door, way);
+        return maps;
+    }
 }
 
 /// <summary>
@@ -1198,7 +1209,8 @@ public static class WorldMapBuilder
                 // The flag that hides them is the original's own unless the overlay says otherwise
                 HiddenBy = person.HiddenBy is { } hiddenBy ? (hiddenBy.Length > 0 ? hiddenBy : null) : o.HiddenBy,
                 ShownBy = person.ShownBy,
-                Trainer = person.Trainer
+                Trainer = person.Trainer,
+                Item = person.Item
             }, map.Name);
             // Someone the original stands on a bridge's deck stands there, over whoever walks under it
             if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
@@ -1219,10 +1231,16 @@ public static class WorldMapBuilder
             map.NPCs.Add(npc);
         }
 
-        // What is hidden in the ground, found by looking at its tile
+        // What is hidden in the ground, found by looking at its tile; and what is read there, where the overlay
+        // gives the original's script one of ours
         foreach (var s in file.Signs)
-            if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null && map.InBounds(s.X, s.Z))
+        {
+            if (!map.InBounds(s.X, s.Z)) continue;
+            if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null)
                 map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
+            else if (overlay?.Read?.GetValueOrDefault(s.Script) is { Length: > 0 } read)
+                map.TileScripts[(s.X, s.Z)] = read;
+        }
 
         // The original's triggers that have a script of ours: its tiles, its variable and its value
         foreach (var bound in overlay?.Triggers ?? new())
@@ -1276,6 +1294,9 @@ public static class WorldMapBuilder
         foreach (var from in file.Warps)
             if (map.GetWarpAt(from.X, from.Z) == null && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
+
+    /// <summary>The way into an open area through one of its warps (Turnback Cave's doors, which are aimed as the player comes in).</summary>
+    public static Warp? WayInto(World world, string area, int toWarp) => Join(world, area, toWarp);
 
     /// <summary>A warp onto one of an open area's warps, coming out one step from it; null while the area isn't open or has no map.</summary>
     private static Warp? Join(World world, string area, int toWarp)

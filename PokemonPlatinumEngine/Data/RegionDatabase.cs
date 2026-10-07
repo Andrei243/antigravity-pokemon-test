@@ -121,6 +121,9 @@ public static class RegionDatabase
                 "SpearPillar", "LakeAcuity",
                 // Plan 01 · M8: Victory Road
                 "VictoryRoad1F", "VictoryRoad2F", "VictoryRoadB1F",
+                // Plan 01 · M8, part 2: Sendoff Spring and Turnback Cave
+                "SendoffSpring", "TurnbackCaveEntrance", "TurnbackCavePillarRoom", "TurnbackCaveGiratinaRoom",
+                "TurnbackCavePillar1Room1", "TurnbackCavePillar1Room2", "TurnbackCavePillar1Room3", "TurnbackCavePillar1Room4", "TurnbackCavePillar1Room5", "TurnbackCavePillar1Room6", "TurnbackCavePillar2Room1", "TurnbackCavePillar2Room2", "TurnbackCavePillar2Room3", "TurnbackCavePillar2Room4", "TurnbackCavePillar2Room5", "TurnbackCavePillar2Room6", "TurnbackCavePillar3Room1", "TurnbackCavePillar3Room2", "TurnbackCavePillar3Room3", "TurnbackCavePillar3Room4", "TurnbackCavePillar3Room5", "TurnbackCavePillar3Room6",
                 // Rooms, still made by hand (plan 01 · M11)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",

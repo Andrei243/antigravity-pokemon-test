@@ -117,6 +117,9 @@ public partial class GameEngine
     {
         if (!startOver && presenceRevision == story.Revision) return;
         presenceRevision = story.Revision;
+        // A place the story reveals is in the map from then on, and drawn again (the Spring Path, plan 01 · M8)
+        foreach (var (map, place) in MapDatabase.ApplyHiddenPlaces(story.Var))
+            world?.Forget(map, place.X, place.Y, place.Width, place.Height);
         MapDatabase.ApplyPresence(story.Has, forget: startOver);
     }
 
@@ -686,7 +689,7 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;
-                    game.pcScreen.Open();
+                    game.pcScreen.Open(game.pcBoxStorage);
                     break;
                 case ScriptScreen.Travel:
                     // The way to the next region, where this map has one: the attendant says how things stand,
@@ -706,8 +709,7 @@ public partial class GameEngine
             game.playerPokedex.RegisterSeen(pokemon.Species.DexNumber);
             game.playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
             if (game.playerParty.Add(pokemon)) return true;
-            FormRules.BackToLand(pokemon);
-            game.pcBoxStorage.Add(pokemon);
+            game.pcBoxStorage.Store(pokemon);
             return false;
         }
 
@@ -745,6 +747,8 @@ public partial class GameEngine
             game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
             return true;
         }
+
+        public void Turnback() => TurnbackCave.Reaim(game.currentMap, game.player.GridX, game.player.GridY, game.story, Dice.Shared);
 
         public bool Escape()
         {

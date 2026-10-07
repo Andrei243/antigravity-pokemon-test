@@ -4,6 +4,12 @@
   // overlay (overlays/<key>.json). A map whose "setting" is "Cave" is rock wherever nothing else is said: its
   // walls stand up from the floor, and no sky lights it.
   "region": "Sinnoh",
+  // Chunks the original leaves out (forest in their place) until the story reveals them: the Spring Path's four,
+  // until VAR_HIDDEN_LOCATION_SPRING_PATH holds the original's number for it (0x0312), which the Distortion World's
+  // end and the Hall of Fame set
+  "hidden": [
+    { "var": "VAR_HIDDEN_LOCATION_SPRING_PATH", "value": 786, "chunkX": 23, "chunkY": 21, "chunksWide": 2, "chunksHigh": 2 }
+  ],
   "maps": [
     { "name": "Sinnoh", "matrix": 0, "trees": "Pine" },
     { "name": "LakeVerity", "matrix": 101, "area": "lake_verity_low_water", "trees": "Pine" },
@@ -65,7 +71,31 @@
     { "name": "LakeAcuity", "matrix": 107, "area": "lake_acuity_low_water", "trees": "Pine" },
     { "name": "VictoryRoad1F", "matrix": 43, "area": "victory_road_1f", "setting": "Cave" },
     { "name": "VictoryRoad2F", "matrix": 44, "area": "victory_road_2f", "setting": "Cave" },
-    { "name": "VictoryRoadB1F", "matrix": 45, "area": "victory_road_b1f", "setting": "Cave" }
+    { "name": "VictoryRoadB1F", "matrix": 45, "area": "victory_road_b1f", "setting": "Cave" },
+    // Plan 01 · M8, part 2: Sendoff Spring, Turnback Cave (its rooms share three matrices, so a map is made for
+    // each room, as the Solaceon Ruins' are) and the Distortion World, a floor to a map
+    { "name": "SendoffSpring", "matrix": 60, "area": "sendoff_spring", "trees": "Pine" },
+    { "name": "TurnbackCaveEntrance", "matrix": 61, "area": "turnback_cave_entrance", "setting": "Cave" },
+    { "name": "TurnbackCavePillarRoom", "matrix": 62, "area": "turnback_cave_pillar_room", "setting": "Cave" },
+    { "name": "TurnbackCaveGiratinaRoom", "matrix": 63, "area": "turnback_cave_giratina_room", "setting": "Cave" },
+    { "name": "TurnbackCavePillar1Room1", "matrix": 64, "area": "turnback_cave_pillar_1_room_1", "setting": "Cave" },
+    { "name": "TurnbackCavePillar1Room2", "matrix": 64, "area": "turnback_cave_pillar_1_room_2", "setting": "Cave" },
+    { "name": "TurnbackCavePillar1Room3", "matrix": 65, "area": "turnback_cave_pillar_1_room_3", "setting": "Cave" },
+    { "name": "TurnbackCavePillar1Room4", "matrix": 65, "area": "turnback_cave_pillar_1_room_4", "setting": "Cave" },
+    { "name": "TurnbackCavePillar1Room5", "matrix": 66, "area": "turnback_cave_pillar_1_room_5", "setting": "Cave" },
+    { "name": "TurnbackCavePillar1Room6", "matrix": 66, "area": "turnback_cave_pillar_1_room_6", "setting": "Cave" },
+    { "name": "TurnbackCavePillar2Room1", "matrix": 64, "area": "turnback_cave_pillar_2_room_1", "setting": "Cave" },
+    { "name": "TurnbackCavePillar2Room2", "matrix": 64, "area": "turnback_cave_pillar_2_room_2", "setting": "Cave" },
+    { "name": "TurnbackCavePillar2Room3", "matrix": 65, "area": "turnback_cave_pillar_2_room_3", "setting": "Cave" },
+    { "name": "TurnbackCavePillar2Room4", "matrix": 65, "area": "turnback_cave_pillar_2_room_4", "setting": "Cave" },
+    { "name": "TurnbackCavePillar2Room5", "matrix": 66, "area": "turnback_cave_pillar_2_room_5", "setting": "Cave" },
+    { "name": "TurnbackCavePillar2Room6", "matrix": 66, "area": "turnback_cave_pillar_2_room_6", "setting": "Cave" },
+    { "name": "TurnbackCavePillar3Room1", "matrix": 64, "area": "turnback_cave_pillar_3_room_1", "setting": "Cave" },
+    { "name": "TurnbackCavePillar3Room2", "matrix": 64, "area": "turnback_cave_pillar_3_room_2", "setting": "Cave" },
+    { "name": "TurnbackCavePillar3Room3", "matrix": 65, "area": "turnback_cave_pillar_3_room_3", "setting": "Cave" },
+    { "name": "TurnbackCavePillar3Room4", "matrix": 65, "area": "turnback_cave_pillar_3_room_4", "setting": "Cave" },
+    { "name": "TurnbackCavePillar3Room5", "matrix": 66, "area": "turnback_cave_pillar_3_room_5", "setting": "Cave" },
+    { "name": "TurnbackCavePillar3Room6", "matrix": 66, "area": "turnback_cave_pillar_3_room_6", "setting": "Cave" }
   ],
   "areas": [
     "twinleaf_town",
@@ -179,6 +209,29 @@
     "victory_road_1f",
     "victory_road_2f",
     "victory_road_b1f",
-    "pokemon_league"
+    "pokemon_league",
+    "spring_path",
+    "sendoff_spring",
+    "turnback_cave_entrance",
+    "turnback_cave_pillar_room",
+    "turnback_cave_giratina_room",
+    "turnback_cave_pillar_1_room_1",
+    "turnback_cave_pillar_1_room_2",
+    "turnback_cave_pillar_1_room_3",
+    "turnback_cave_pillar_1_room_4",
+    "turnback_cave_pillar_1_room_5",
+    "turnback_cave_pillar_1_room_6",
+    "turnback_cave_pillar_2_room_1",
+    "turnback_cave_pillar_2_room_2",
+    "turnback_cave_pillar_2_room_3",
+    "turnback_cave_pillar_2_room_4",
+    "turnback_cave_pillar_2_room_5",
+    "turnback_cave_pillar_2_room_6",
+    "turnback_cave_pillar_3_room_1",
+    "turnback_cave_pillar_3_room_2",
+    "turnback_cave_pillar_3_room_3",
+    "turnback_cave_pillar_3_room_4",
+    "turnback_cave_pillar_3_room_5",
+    "turnback_cave_pillar_3_room_6"
   ]
 }

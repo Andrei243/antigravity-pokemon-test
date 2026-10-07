@@ -454,6 +454,12 @@ public class Map
     /// <summary>Items hidden in the ground, by their tile (plan 02).</summary>
     public Dictionary<(int X, int Y), HiddenItem> HiddenItems { get; } = new();
 
+    /// <summary>
+    /// Tiles that run a script when faced (plan 01 · M8): the original's read events that aren't signposts, such as
+    /// an inscription in a cave or a pillar. The script is the place's own.
+    /// </summary>
+    public Dictionary<(int X, int Y), string> TileScripts { get; } = new();
+
     /// <summary>The file a place's scripts are written in: its area's key on a map of the world, the map's name otherwise.</summary>
     public string ScriptFileAt(int x, int y) => InBounds(x, y) && AreaAt(x, y) is { Key.Length: > 0 } area ? area.Key : Name;
 
@@ -554,6 +560,161 @@ public class Map
 
     /// <summary>A counter or a table one talks across: a room's own, or a tile of the world that the original marks as one (Amity Square's gates).</summary>
     public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y)) || (behaviours != null && BehaviourAt(x, y) == TileBehavior.Counter);
+
+    // ------------------------------------------------------------------ places the story reveals (plan 01 · M8)
+
+    /// <summary>
+    /// A part of the region the original leaves out until the story reveals it: the Spring Path, whose chunks
+    /// are forest (<c>MapMatrix_RevealSpringPath</c>) until a variable holds the original's number for it. The map
+    /// is built with the place in it and keeps a copy of everything that stands there; hiding it makes its tiles
+    /// forest, of no area, with nothing on them, and revealing it puts the copy back.
+    /// </summary>
+    public sealed class HiddenPlace
+    {
+        public string Var { get; init; } = "";
+        public int Value { get; init; }
+
+        /// <summary>The tiles it covers: whole chunks.</summary>
+        public int X { get; init; }
+        public int Y { get; init; }
+        public int Width { get; init; }
+        public int Height { get; init; }
+
+        /// <summary>Whether the map shows forest there now.</summary>
+        public bool Hidden { get; internal set; }
+
+        internal TileType[] Ground = Array.Empty<TileType>();
+        internal TileType?[] Overhead = Array.Empty<TileType?>();
+        internal bool[] Solid = Array.Empty<bool>();
+        internal TileBehavior[]? Behaviours;
+        internal float[]? Heights, SlopesX, SlopesZ, Decks;
+        internal MapArea?[] AreaCells = Array.Empty<MapArea?>();
+        internal List<Warp> Warps = new();
+        internal List<Prop> Props = new();
+        internal List<NPC> People = new();
+        internal List<StepTrigger> Triggers = new();
+        internal List<KeyValuePair<(int X, int Y), string>> Signboards = new(), SignScripts = new(), TileScripts = new();
+        internal List<KeyValuePair<(int X, int Y), HiddenItem>> HiddenItems = new();
+
+        public bool Covers(int x, int y) => x >= X && y >= Y && x < X + Width && y < Y + Height;
+    }
+
+    public List<HiddenPlace> HiddenPlaces { get; } = new();
+
+    /// <summary>Keeps a copy of the chunks given (in chunks, from their top left one) as a place the story reveals; shown until <see cref="ApplyHiddenPlaces"/> hides it.</summary>
+    public HiddenPlace AddHiddenPlace(string variable, int value, int chunkX, int chunkY, int chunksWide, int chunksHigh)
+    {
+        int x0 = chunkX * ChunkTiles, y0 = chunkY * ChunkTiles;
+        int w = Math.Min(chunksWide * ChunkTiles, Width - x0), h = Math.Min(chunksHigh * ChunkTiles, Height - y0);
+        var place = new HiddenPlace { Var = variable, Value = value, X = x0, Y = y0, Width = w, Height = h };
+        T[] Copy<T>(T[] all)
+        {
+            var part = new T[w * h];
+            for (int y = 0; y < h; y++) Array.Copy(all, (y0 + y) * Width + x0, part, y * w, w);
+            return part;
+        }
+        place.Ground = Copy(groundLayer);
+        place.Overhead = Copy(overheadLayer);
+        place.Solid = Copy(solidGrid);
+        place.Behaviours = behaviours != null ? Copy(behaviours) : null;
+        place.Heights = heights != null ? Copy(heights) : null;
+        place.SlopesX = slopesX != null ? Copy(slopesX) : null;
+        place.SlopesZ = slopesZ != null ? Copy(slopesZ) : null;
+        place.Decks = decks != null ? Copy(decks) : null;
+        place.AreaCells = new MapArea?[chunksWide * chunksHigh];
+        for (int cy = 0; cy < chunksHigh; cy++)
+            for (int cx = 0; cx < chunksWide; cx++)
+                place.AreaCells[cy * chunksWide + cx] = areaGrid?[(chunkY + cy) * ChunkColumns + chunkX + cx];
+        place.Warps.AddRange(Warps.Where(wp => place.Covers(wp.SourceX, wp.SourceY)));
+        place.Props.AddRange(Props.Where(pr => place.Covers(pr.X, pr.Y)));
+        place.People.AddRange(Everyone.Where(n => place.Covers(n.GridX, n.GridY)));
+        place.Triggers.AddRange(Triggers.Where(t => place.Covers(t.X, t.Y)));
+        place.Signboards.AddRange(Signboards.Where(kv => place.Covers(kv.Key.X, kv.Key.Y)));
+        place.SignScripts.AddRange(SignScripts.Where(kv => place.Covers(kv.Key.X, kv.Key.Y)));
+        place.TileScripts.AddRange(TileScripts.Where(kv => place.Covers(kv.Key.X, kv.Key.Y)));
+        place.HiddenItems.AddRange(HiddenItems.Where(kv => place.Covers(kv.Key.X, kv.Key.Y)));
+        HiddenPlaces.Add(place);
+        return place;
+    }
+
+    /// <summary>
+    /// Hides or reveals each of the map's hidden places as the story's variables say. Returns the places whose
+    /// ground changed, so whatever was drawn of them can be made again.
+    /// </summary>
+    public List<HiddenPlace> ApplyHiddenPlaces(Func<string, int> variable)
+    {
+        var changed = new List<HiddenPlace>();
+        foreach (var place in HiddenPlaces)
+        {
+            bool hide = variable(place.Var) != place.Value;
+            if (hide == place.Hidden) continue;
+            if (hide) Hide(place); else Reveal(place);
+            place.Hidden = hide;
+            BuildingCache = null;
+            changed.Add(place);
+        }
+        return changed;
+    }
+
+    private void Hide(HiddenPlace place)
+    {
+        for (int y = place.Y; y < place.Y + place.Height; y++)
+            for (int x = place.X; x < place.X + place.Width; x++)
+            {
+                int i = y * Width + x;
+                groundLayer[i] = IsCave ? TileType.CaveWall : TileType.Tree;
+                overheadLayer[i] = null;
+                solidGrid[i] = true;
+                if (behaviours != null) behaviours[i] = Implied;
+                if (heights != null) heights[i] = GroundLevel;
+                if (slopesX != null) slopesX[i] = slopesZ![i] = 0f;
+                if (decks != null) decks[i] = float.NaN;
+            }
+        int columns = place.Width / ChunkTiles, rows = place.Height / ChunkTiles;
+        if (areaGrid != null)
+            for (int cy = 0; cy < rows; cy++)
+                for (int cx = 0; cx < columns; cx++)
+                    areaGrid[(place.Y / ChunkTiles + cy) * ChunkColumns + place.X / ChunkTiles + cx] = null;
+        Warps.RemoveAll(place.Warps.Contains);
+        Props.RemoveAll(place.Props.Contains);
+        NPCs.RemoveAll(place.People.Contains);
+        Absent.RemoveAll(place.People.Contains);
+        Triggers.RemoveAll(place.Triggers.Contains);
+        foreach (var kv in place.Signboards) Signboards.Remove(kv.Key);
+        foreach (var kv in place.SignScripts) SignScripts.Remove(kv.Key);
+        foreach (var kv in place.TileScripts) TileScripts.Remove(kv.Key);
+        foreach (var kv in place.HiddenItems) HiddenItems.Remove(kv.Key);
+    }
+
+    private void Reveal(HiddenPlace place)
+    {
+        int w = place.Width;
+        void Put<T>(T[] part, T[] all)
+        {
+            for (int y = 0; y < place.Height; y++) Array.Copy(part, y * w, all, (place.Y + y) * Width + place.X, w);
+        }
+        Put(place.Ground, groundLayer);
+        Put(place.Overhead, overheadLayer);
+        Put(place.Solid, solidGrid);
+        if (place.Behaviours != null && behaviours != null) Put(place.Behaviours, behaviours);
+        if (place.Heights != null && heights != null) Put(place.Heights, heights);
+        if (place.SlopesX != null && slopesX != null) { Put(place.SlopesX, slopesX); Put(place.SlopesZ!, slopesZ!); }
+        if (place.Decks != null && decks != null) Put(place.Decks, decks);
+        int columns = place.Width / ChunkTiles, rows = place.Height / ChunkTiles;
+        if (areaGrid != null)
+            for (int cy = 0; cy < rows; cy++)
+                for (int cx = 0; cx < columns; cx++)
+                    areaGrid[(place.Y / ChunkTiles + cy) * ChunkColumns + place.X / ChunkTiles + cx] = place.AreaCells[cy * columns + cx];
+        Warps.AddRange(place.Warps);
+        Props.AddRange(place.Props);
+        // Whoever the flags hide goes back among the absent at the next presence check
+        NPCs.AddRange(place.People);
+        Triggers.AddRange(place.Triggers);
+        foreach (var kv in place.Signboards) Signboards[kv.Key] = kv.Value;
+        foreach (var kv in place.SignScripts) SignScripts[kv.Key] = kv.Value;
+        foreach (var kv in place.TileScripts) TileScripts[kv.Key] = kv.Value;
+        foreach (var kv in place.HiddenItems) HiddenItems[kv.Key] = kv.Value;
+    }
 
     public void SetSolid(int x, int y, bool isSolid)
     {

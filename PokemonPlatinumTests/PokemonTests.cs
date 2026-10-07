@@ -532,7 +532,7 @@ public class PokemonTests
 
         // Asleep on 1 HP: a Poké Ball can't miss
         var foe = new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1, Status = StatusCondition.Sleep };
-        var battle = new BattleEngine(party, foe, inventory, pokedex, null, new List<Pokemon>());
+        var battle = new BattleEngine(party, foe, inventory, pokedex, null, new PcBoxes());
         SkipMessages(battle);
 
         battle.UseBagItem("Poké Ball");

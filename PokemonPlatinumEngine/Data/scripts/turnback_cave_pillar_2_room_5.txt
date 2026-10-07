@@ -1,0 +1,7 @@
+# One of the six rooms of Turnback Cave before pillar 2 (plan 01 · M8; scripts_turnback_cave_pillar_2_room_5.s):
+# one more room walked through, and the doors aimed again.
+
+script OnEnter
+  addvar VAR_TURNBACK_CAVE_ROOMS_VISITED 1
+  turnback
+  end

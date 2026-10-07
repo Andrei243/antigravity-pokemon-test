@@ -116,7 +116,7 @@ public partial class BattleEngine
 
     private readonly BattleCore core;
     private readonly BattleMirror mirror = new();
-    private readonly List<Pokemon>? pcBoxStorage;
+    private readonly PcBoxes? pcBoxStorage;
     private readonly List<Pokemon> leveledUpPokemon = new();
 
     // What is still to be shown: lines that wait to be read, and things that happen between them
@@ -140,7 +140,7 @@ public partial class BattleEngine
         Inventory playerInventory,
         Pokedex pokedex,
         Trainer? trainer = null,
-        List<Pokemon>? pcStorage = null)
+        PcBoxes? pcStorage = null)
         : this(new BattleSetup
         {
             PlayerParty = playerParty,
@@ -532,7 +532,7 @@ public partial class BattleEngine
                 Pokedex.RegisterCaught(mine.Species.DexNumber);
                 mine.ResetStatStages();
                 mine.Ball = caught.Ball;
-                if (caught.ToBox) pcBoxStorage?.Add(mine);
+                if (caught.ToBox) pcBoxStorage?.Store(mine);
                 else PlayerParty.Add(mine);
                 break;
             }

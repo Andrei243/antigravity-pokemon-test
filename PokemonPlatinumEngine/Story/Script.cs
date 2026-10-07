@@ -26,6 +26,8 @@ public enum Op
     Poketch, PoketchApp,
     // The Great Marsh's Safari Game (plan 01 · M7)
     Safari,
+    // Turnback Cave's doors (plan 01 · M8)
+    Turnback,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist

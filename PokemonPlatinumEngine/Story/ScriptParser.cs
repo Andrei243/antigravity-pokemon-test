@@ -184,6 +184,8 @@ public static class ScriptParser
             }
             case "heal":
                 return new Instruction { Op = Op.Heal, Line = line };
+            case "turnback":
+                return new Instruction { Op = Op.Turnback, Line = line };
 
             case "battle":
             {

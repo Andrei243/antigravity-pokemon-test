@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,6 +38,14 @@ public class Party
     public void Clear()
     {
         Members.Clear();
+    }
+
+    /// <summary>Puts a Pokémon in at a place of the team (the PC putting one down between two others); false when full.</summary>
+    public bool Insert(int index, Pokemon pokemon)
+    {
+        if (IsFull) return false;
+        Members.Insert(Math.Clamp(index, 0, Members.Count), pokemon);
+        return true;
     }
 
     public void Swap(int indexA, int indexB)

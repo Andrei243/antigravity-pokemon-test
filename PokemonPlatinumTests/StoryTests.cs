@@ -545,6 +545,8 @@ public class StoryTests
                     yield return ($"{npc.Name} at {npc.GridX},{npc.GridY} of {map.Name}", script, npc.ScriptFile ?? map.ScriptFileAt(npc.GridX, npc.GridY), map, npc);
             foreach (var (at, script) in map.SignScripts)
                 yield return ($"the sign at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
+            foreach (var (at, script) in map.TileScripts)
+                yield return ($"the tile read at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
             foreach (var trigger in map.Triggers)
                 yield return ($"the trigger at {trigger.X},{trigger.Y} of {map.Name}", trigger.Script, trigger.ScriptFile ?? map.Name, map, null);
             foreach (var (at, hidden) in map.HiddenItems)
@@ -776,7 +778,8 @@ public class StoryTests
             Assert.True(ItemDatabase.Get(ball.Item!) != null, $"{where} is no item");
             Assert.True(ball.ItemCount >= 1);
             Assert.False(string.IsNullOrEmpty(ball.HiddenBy), $"{where} has no flag to keep it gone");
-            Assert.Equal(FieldScripts.ItemBall, FieldScripts.For(ball));
+            // A ball whose place's script decides what is in it (Turnback Cave's last room) runs that script
+            Assert.Equal(ball.Script ?? FieldScripts.ItemBall, FieldScripts.For(ball));
             Assert.True(map.AreaAt(ball.GridX, ball.GridY)?.Open != false, $"{where} lies outside the open areas");
         }
         // Each ball has a flag of its own: picking one up takes no other away. But for one the original shares: the
@@ -794,7 +797,8 @@ public class StoryTests
     [Fact]
     public void AnItemPickedUpIsThePlayersAndItsBallIsGoneForGood()
     {
-        foreach (var (map, ball) in ItemBalls().ToList())
+        // A ball whose own script decides what is in it has a test of its own (TurnbackCaveTests)
+        foreach (var (map, ball) in ItemBalls().Where(b => b.Ball.Script == null).ToList())
         {
             var host = new HeadlessScriptHost { Map = map };
             map.ApplyPresence(host.Story.Has);

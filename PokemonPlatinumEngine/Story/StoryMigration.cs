@@ -42,6 +42,7 @@ public static class StoryMigration
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
         if (savedVersion < 2) PastTheOpening(story, scripts);
         if (savedVersion < 3) Run(story, scripts, ScriptLibrary.ChapterTwo);
+        else if (savedVersion < 4) Run(story, scripts, ScriptLibrary.ChapterThree);
     }
 
     /// <summary>

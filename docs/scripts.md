@@ -227,6 +227,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 | `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. |
+| `turnback` | Aims the doors of the Turnback Cave room the player has just come into, as the original's `InitTurnbackCave` does (plan 01 · M8; `TurnbackCave`): the door they came in by leads back to the entrance, the other three on, to Giratina's room once `VAR_TURNBACK_CAVE_PILLARS_SEEN` is 3, to the entrance once `VAR_TURNBACK_CAVE_ROOMS_VISITED` is 30, and otherwise to a pillar's room one time in four or to one of the next pillar's six rooms. The room's own `OnEnter` keeps the counts and calls it. |
 
 ## Who is on the map
 

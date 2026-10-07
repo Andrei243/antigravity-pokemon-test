@@ -49,6 +49,15 @@ internal static class WorldWalk
             {
                 var onto = mapOf(warp.TargetMap);
                 Visit(onto, warp.TargetX, warp.TargetY, TravelMode.OnFoot, onto.HeightAt(warp.TargetX, warp.TargetY), arrived: true);
+                // A door of Turnback Cave is aimed as the player comes in, and can lead into any of its rooms
+                int door = TurnbackCave.IsPart(map.AreaAt(x, y)?.Key) ? IndexOf(TurnbackCave.Doors, (x, y)) : -1;
+                if (door >= 0)
+                    foreach (string room in TurnbackCave.Everywhere)
+                        if (TurnbackCave.WayInto(room, TurnbackCave.Opposite(door)) is { } way)
+                        {
+                            var into = mapOf(way.TargetMap);
+                            Visit(into, way.TargetX, way.TargetY, TravelMode.OnFoot, into.HeightAt(way.TargetX, way.TargetY), arrived: true);
+                        }
                 continue;
             }
 
@@ -120,6 +129,13 @@ internal static class WorldWalk
     private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file) =>
         PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything().Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)
         ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+
+    private static int IndexOf(IReadOnlyList<(int X, int Y)> tiles, (int X, int Y) tile)
+    {
+        for (int i = 0; i < tiles.Count; i++)
+            if (tiles[i] == tile) return i;
+        return -1;
+    }
 
     /// <summary>The whole game from where each region that is built begins.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>

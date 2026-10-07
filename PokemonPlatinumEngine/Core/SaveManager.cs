@@ -107,7 +107,11 @@ public class SaveData
             : new MapSpot(CurrentMapName, PlayerGridX, PlayerGridY, PlayerFacing);
 
     public List<SavedPokemonData> Party { get; set; } = new();
+    /// <summary>The PC as saves before plan 06 · R12 kept it: one list, laid out thirty to a box as it loads.</summary>
     public List<SavedPokemonData> BoxStorage { get; set; } = new();
+
+    /// <summary>The PC's boxes, each Pokémon in its place (plan 06 · R12); null in a save from before.</summary>
+    public SavedBoxes? Boxes { get; set; }
     public List<SavedItemData> Inventory { get; set; } = new();
     public List<int> SeenSpecies { get; set; } = new();
     public List<int> CaughtSpecies { get; set; } = new();
@@ -192,6 +196,13 @@ public class SavedPokemonData
     /// <summary>Its Pokérus byte (<see cref="PokerusRules"/>); 0, left out, for one that never had it.</summary>
     public int Pokerus { get; set; }
 
+    /// <summary>The PC's marks on it (plan 06 · R12), where it was met and on what day at what level, and its language when foreign.</summary>
+    public int Marks { get; set; }
+    public string? MetLocation { get; set; }
+    public int MetLevel { get; set; }
+    public DateTime? MetDate { get; set; }
+    public string? Language { get; set; }
+
     /// <summary>Steps, move uses and knock-outs counted toward an evolution; left out when there are none.</summary>
     public Dictionary<string, int>? EvolutionProgress { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
@@ -230,6 +241,11 @@ public class SavedPokemonData
             Ball = p.Ball,
             OriginalTrainer = p.OriginalTrainer,
             Pokerus = p.Pokerus,
+            Marks = p.Marks,
+            MetLocation = p.MetLocation,
+            MetLevel = p.MetLevel,
+            MetDate = p.MetDate,
+            Language = p.Language,
             EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null
         };
 
@@ -265,7 +281,12 @@ public class SavedPokemonData
             Beauty = Beauty,
             Ball = Ball,
             OriginalTrainer = OriginalTrainer,
-            Pokerus = Pokerus
+            Pokerus = Pokerus,
+            Marks = Marks,
+            MetLocation = MetLocation,
+            MetLevel = MetLevel,
+            MetDate = MetDate,
+            Language = Language
         };
         if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;
@@ -343,4 +364,53 @@ public static class SaveManager
             return null;
         }
     }
+}
+
+/// <summary>The PC's boxes in a save (plan 06 · R12): the box the PC was left on, the wallpapers unlocked, and each box's name, wallpaper and Pokémon by place.</summary>
+public class SavedBoxes
+{
+    public int CurrentBox { get; set; }
+    public int UnlockedWallpapers { get; set; }
+    public List<SavedBox> Boxes { get; set; } = new();
+
+    public static SavedBoxes From(PcBoxes pc) => new()
+    {
+        CurrentBox = pc.CurrentBox,
+        UnlockedWallpapers = pc.UnlockedWallpapers,
+        Boxes = pc.Boxes.Select(b => new SavedBox
+        {
+            Name = b.Name,
+            Wallpaper = b.Wallpaper,
+            Pokemon = b.Slots.Select((p, slot) => (p, slot)).Where(t => t.p != null)
+                .Select(t => new SavedBoxedPokemon { Slot = t.slot, Pokemon = SavedPokemonData.FromPokemon(t.p!) }).ToList()
+        }).ToList()
+    };
+
+    public PcBoxes ToBoxes()
+    {
+        var pc = new PcBoxes { UnlockedWallpapers = UnlockedWallpapers, CurrentBox = Math.Clamp(CurrentBox, 0, PcBoxes.BoxCount - 1) };
+        for (int i = 0; i < Math.Min(Boxes.Count, PcBoxes.BoxCount); i++)
+        {
+            var saved = Boxes[i];
+            pc.Rename(i, saved.Name);
+            if (pc.HasWallpaper(saved.Wallpaper)) pc.Boxes[i].Wallpaper = saved.Wallpaper;
+            foreach (var boxed in saved.Pokemon)
+                if (boxed.Slot is >= 0 and < PcBoxes.BoxSize && pc[i, boxed.Slot] == null)
+                    pc.Boxes[i].Slots[boxed.Slot] = boxed.Pokemon.ToPokemon();
+        }
+        return pc;
+    }
+}
+
+public class SavedBox
+{
+    public string Name { get; set; } = "";
+    public int Wallpaper { get; set; }
+    public List<SavedBoxedPokemon> Pokemon { get; set; } = new();
+}
+
+public class SavedBoxedPokemon
+{
+    public int Slot { get; set; }
+    public SavedPokemonData Pokemon { get; set; } = new();
 }

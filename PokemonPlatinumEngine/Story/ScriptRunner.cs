@@ -302,6 +302,9 @@ public sealed class ScriptRunner
             case Op.Heal:
                 host.Party.HealAll();
                 break;
+            case Op.Turnback:
+                host.Turnback();
+                break;
 
             case Op.Battle:
             {

@@ -129,6 +129,9 @@ public interface IScriptHost
     /// <summary>Out of the caves, to where the player went into them (Dig, an Escape Rope). False outside a cave or with no way out known.</summary>
     bool Escape();
 
+    /// <summary>Turnback Cave aims the doors of the room the player has just come into (<see cref="TurnbackCave"/>).</summary>
+    void Turnback();
+
     /// <summary>
     /// Draws a wild Pokémon out where the player stands (Sweet Scent): true when one comes, and its battle starts
     /// (<see cref="Outcome"/> once the host is no longer busy); false where nothing lives.

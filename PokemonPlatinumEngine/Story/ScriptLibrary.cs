@@ -35,6 +35,12 @@ public sealed class ScriptLibrary
     /// </summary>
     public const string ChapterTwo = "common.ChapterTwo";
 
+    /// <summary>
+    /// Who the third chapter keeps out of sight until their scenes (plan 02 · S6), and what Turnback Cave keeps
+    /// hidden (plan 01 · M8): called by <see cref="ChapterTwo"/>, and run for a save from before.
+    /// </summary>
+    public const string ChapterThree = "common.ChapterThree";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

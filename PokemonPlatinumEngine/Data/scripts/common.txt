@@ -43,6 +43,17 @@ script ChapterTwo
   setflag FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
   setflag FLAG_HIDE_FLOAROMA_MEADOW_WORKS_KEY
   if var VAR_OREBURGH_GATE_1F_HIKER_STATE == 0 setvar VAR_OREBURGH_GATE_1F_HIKER_STATE 1
+  call ChapterThree
+  return
+
+
+# Who the third chapter (plan 02 · S6, "Windworks and Eterna") keeps out of sight until their scenes, as the
+# original's new game does, and what waits in Turnback Cave (plan 01 · M8): its ball, and Giratina, which a game of
+# ours keeps hidden until the Hall of Fame because a Pokémon can't be drawn standing in the field yet. Called by
+# ChapterTwo, and run for a save from before (Story/StoryMigration.cs). It may only set flags and variables.
+script ChapterThree
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
   return
 
 
