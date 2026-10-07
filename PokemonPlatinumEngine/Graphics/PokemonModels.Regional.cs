@@ -990,4 +990,14 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ The female Oinkologne (its build in PokemonModels.Paldea1.cs)
 
     private static PokeBuilder OinkologneFemale() => OinkologneBuild(true);
+
+    // ------------------------------------------------------------------ Maushold's family of three and Squawkabilly's plumages (their builds in PokemonModels.Paldea2.cs)
+
+    private static PokeBuilder MausholdFamilyOfThree() => MausholdBuild(true);
+
+    private static PokeBuilder SquawkabillyBlue() => SquawkabillyBuild("Blue");
+
+    private static PokeBuilder SquawkabillyYellow() => SquawkabillyBuild("Yellow");
+
+    private static PokeBuilder SquawkabillyWhite() => SquawkabillyBuild("White");
 }
