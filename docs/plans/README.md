@@ -1,6 +1,6 @@
 # Roadmap: from demo to the full Platinum
 
-Twenty-five plans, each worked through over several sessions. Plans 01 to 07 build Platinum and play it with friends; plans 08 to 25, written on 2026-10-06 before any of their sessions, add what those seven leave out, the other regions of the chain, and the guards and polish around them:
+Twenty-six plans, each worked through over several sessions. Plans 01 to 07 build Platinum and play it with friends; plans 08 to 25, written on 2026-10-06 before any of their sessions, add what those seven leave out, the other regions of the chain, and the guards and polish around them; plan 26, written on 2026-10-07 at the user's request, voices the characters' lines:
 
 | Plan | Delivers | First session | Rough size |
 |---|---|---|---|
@@ -29,6 +29,7 @@ Twenty-five plans, each worked through over several sessions. Plans 01 to 07 bui
 | [23 · The later regions](23-later-regions.md) | Kalos, Alola, Galar, Paldea, Hisui as Sinnoh's past and Legends: Z-A's Lumiose, on the tile grid | Z1 | 24 sessions |
 | [24 · Guards](24-guards.md) | What must not move, checked by machine: CLAUDE.md's rules as build errors, golden battles, scripts, teams and saves, strict data loading with schemas, and a damage oracle against Showdown's calculator | X1 | 6 sessions |
 | [25 · Battle presentation, second pass](25-battle-presentation.md) | The field's state drawn on the stage (weather, the Substitute, hazards, screens), each Pokémon's own ball, body language, and a picture and a sound of its own for every move | Y1 | 15 sessions |
+| [26 · Voice](26-voice.md) | Every character's lines spoken: the boy recorded in the user's own voice (as the assistant, and short calls in battle as the player), everyone else from synthesised voices the user chooses, in a voice pack outside git, behind an option that gives back today's silent game | V1 | 7+ sessions |
 
 ## Order
 
