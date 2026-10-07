@@ -32,7 +32,8 @@ public class PokemonModelTests
         ["Kangaskhan-Mega"] = 4, ["Staryu"] = 0, ["Starmie"] = 0, ["Starmie-Mega"] = 0, ["Chinchou"] = 0, ["Lunatone"] = 1, ["Claydol"] = 7,
         ["Beldum"] = 1, ["Regirock"] = 0, ["Regice"] = 0, ["Registeel"] = 0, ["Roggenrola"] = 0, ["Boldore"] = 0, ["Sigilyph"] = 1, ["Vanilluxe"] = 4, ["Klang"] = 1, ["Klinklang"] = 1, ["Litwick"] = 1, ["Deino"] = 0, ["Zweilous"] = 0,
         ["Honedge"] = 1, ["Aegislash"] = 1, ["Aegislash-Blade"] = 1,
-        ["Binacle"] = 4, ["Trevenant"] = 1
+        ["Binacle"] = 4, ["Trevenant"] = 1,
+        ["Type: Null"] = 0, ["Dhelmise"] = 1
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
