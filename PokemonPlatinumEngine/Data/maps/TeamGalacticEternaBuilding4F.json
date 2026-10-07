@@ -1,0 +1,272 @@
+{
+  "name": "TeamGalacticEternaBuilding4F",
+  "displayName": "Team Galactic Eterna Building",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 24,
+  "height": 14,
+  "ground": [
+    "########################",
+    "########################",
+    "########################",
+    "#_____#____##__________#",
+    "#_____#____##__________#",
+    "#_____#____##__________#",
+    "#_____#________________#",
+    "#_____#________________#",
+    "#_____#######___########",
+    "#_____#######___########",
+    "#_____#######___########",
+    "#______________________#",
+    "#______________________#",
+    "########################"
+  ],
+  "solid": [
+    "########################",
+    "########################",
+    "########################",
+    "#...###..######..#######",
+    "#...###..######....#####",
+    "#.....#....##..........#",
+    "#...###....##..........#",
+    "#...###....##..........#",
+    "#.....#######...########",
+    "#.....#######...########",
+    "#.....#######...########",
+    "###......##......##..###",
+    "###..................###",
+    "########################"
+  ],
+  "props": [
+    {
+      "type": "SideStairsDown",
+      "x": 4,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 21,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 22,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 12,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 17,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 18,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 21,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 22,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "TeamGalacticEternaBuilding3F",
+      "targetX": 21,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 3,
+      "targetMap": "TeamGalacticEternaBuilding3F",
+      "targetX": 15,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 16,
+      "y": 10,
+      "text": "A poster on the wall: \"For peace across the whole world!\" Team Galactic"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "npcType": "Jupiter",
+      "x": 14,
+      "y": 6,
+      "facing": "Down",
+      "script": "Jupiter",
+      "hiddenBy": "FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS"
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Manager",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 9,
+      "facing": "Up",
+      "script": "Manager",
+      "hiddenBy": "FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_4F_HOSTAGES"
+    },
+    {
+      "name": "Revive",
+      "npcType": "ItemBall",
+      "x": 9,
+      "y": 6,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_TEAM_GALACTIC_ETERNA_BUILDING_4F_REVIVE",
+      "item": "Revive"
+    },
+    {
+      "name": "Blue Shard",
+      "npcType": "ItemBall",
+      "x": 8,
+      "y": 6,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_TEAM_GALACTIC_ETERNA_BUILDING_4F_BLUE_SHARD",
+      "item": "Blue Shard"
+    },
+    {
+      "name": "Upgrade",
+      "npcType": "ItemBall",
+      "x": 21,
+      "y": 5,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_TEAM_GALACTIC_ETERNA_BUILDING_4F_UPGRADE",
+      "item": "Upgrade"
+    }
+  ],
+  "wildEncounters": []
+}

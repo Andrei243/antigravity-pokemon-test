@@ -34,6 +34,20 @@ public class NorthTests
         Assert.Equal(snowbound, found.Snowbound);
     }
 
+    [Fact]
+    public void SpearPillarIsStoneAndNoForest()
+    {
+        // Its floor's textures (dun08_chip_*, colum_*) are paving, and the two blocked tiles beside its way in that
+        // the original draws nothing on are rock, not a pine (World.BareRock): it was lawn and trees
+        var pillar = BuiltMaps.Value["SpearPillar"];
+        Assert.Equal(TileType.Paving, pillar.GetGroundTile(31, 40));
+        for (int y = 0; y < pillar.Height; y++)
+            for (int x = 0; x < pillar.Width; x++)
+                Assert.NotEqual(TileType.Tree, pillar.GetGroundTile(x, y));
+        Assert.DoesNotContain(Enumerable.Range(0, pillar.Height).SelectMany(y => Enumerable.Range(0, pillar.Width).Select(x => (x, y))),
+            t => !pillar.IsSolid(t.x, t.y) && pillar.GetGroundTile(t.x, t.y) == TileType.Grass);
+    }
+
     [Theory]
     [InlineData("route_216")]
     [InlineData("acuity_lakefront")]

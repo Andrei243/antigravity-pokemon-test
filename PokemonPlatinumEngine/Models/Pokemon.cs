@@ -143,6 +143,16 @@ public class PalParkData
     public int CatchingPoints { get; set; }
 }
 
+/// <summary>
+/// What a wild Pokémon of a species may be holding (plan 06 · R13; the original's <c>held_items</c>): its common
+/// item and its rare one, either missing. The same item twice is always held.
+/// </summary>
+public class WildItems
+{
+    public string? Common { get; set; }
+    public string? Rare { get; set; }
+}
+
 public class PokemonSpecies
 {
     public int DexNumber { get; set; }
@@ -189,6 +199,9 @@ public class PokemonSpecies
 
     /// <summary>Where it turns up in Pal Park's catching show and what it is worth there (Platinum's species); null for the later ones.</summary>
     public PalParkData? PalPark { get; set; }
+
+    /// <summary>What it may hold when met in the wild (plan 06 · R13, <see cref="Overworld.WildEncounterRules.HeldItem"/>); null when nothing.</summary>
+    public WildItems? WildItems { get; set; }
     public float Height { get; set; } = 0.5f; // meters
     public float Weight { get; set; } = 10.0f; // kg
     /// <summary>Body colour and shape, as the Pokédex sorts them (for the generated models of plan 03 · D5).</summary>

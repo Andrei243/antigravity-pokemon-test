@@ -569,6 +569,9 @@ public static class ThingCards
             PropType.CutTree => (26, 40, (Action<PixelCanvas>)OutdoorProps.PaintCutTree),
             PropType.CrackedRock => (30, 26, OutdoorProps.PaintCrackedRock),
             PropType.StrengthBoulder => (30, 30, OutdoorProps.PaintStrengthBoulder),
+            PropType.PunchingBag => (24, 44, GymArt.PaintPunchingBag),
+            PropType.TireStack => (30, 30, GymArt.PaintTireStack),
+            PropType.Bollard => (16, 28, GymArt.PaintBollard),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);
@@ -584,6 +587,7 @@ public static class ThingCards
     {
         PropType.CutTree or PropType.StrengthBoulder => 20f / 32f,
         PropType.CrackedRock => 19f / 32f,
+        PropType.PunchingBag or PropType.TireStack or PropType.Bollard => 18f / 32f,
         _ => 0.5f
     };
 }

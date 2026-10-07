@@ -30,6 +30,24 @@
     { "species": "Onix", "level": 18 }
   ],
   "landRate": 10,
+  "day": [
+    "Geodude",
+    "Zubat"
+  ],
+  "night": [
+    "Geodude",
+    "Zubat"
+  ],
+  "swarm": [
+    "Bronzor",
+    "Geodude"
+  ],
+  "radar": [
+    "Bronzor",
+    "Onix",
+    "Geodude",
+    "Onix"
+  ],
   "warps": [
     { "x": 30, "z": 55, "to": "route_206", "toWarp": 12 },
     { "x": 41, "z": 53, "to": "route_206", "toWarp": 13 },

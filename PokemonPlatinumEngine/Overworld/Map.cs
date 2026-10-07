@@ -62,6 +62,16 @@ public sealed class MapArea
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public int LandRate { get; set; }
 
+    /// <summary>
+    /// What other moments put in some of the land's slots (plan 06 · R13; <see cref="EncounterSlots"/>): the day's
+    /// and the night's two (slots 2 and 3), a swarm's two (slots 0 and 1) and the Poké Radar's four (slots 4, 5, 10
+    /// and 11). Empty where the area has no grass.
+    /// </summary>
+    public List<string> DaySlots { get; } = new();
+    public List<string> NightSlots { get; } = new();
+    public List<string> SwarmSlots { get; } = new();
+    public List<string> RadarSlots { get; } = new();
+
     /// <summary>The wild Pokémon met surfing on the area's water, and the rate for them.</summary>
     public List<WildEncounterEntry> WaterEncounters { get; } = new();
     public int WaterRate { get; set; }
@@ -155,6 +165,12 @@ public class Map
     /// original sets the field's weather to clear. The game keeps it from <see cref="FieldMoveRules.DefogFlag"/>.
     /// </summary>
     public bool FogLifted { get; set; }
+
+    /// <summary>
+    /// The Gym's puzzle, for a Gym rebuilt to the original's plan (plan 01 · M9): the flower clock, the dark rooms'
+    /// doors, the punching bags, the water. Null everywhere else.
+    /// </summary>
+    public GymPuzzle? Puzzle { get; set; }
 
     // ------------------------------------------------------------------ areas of a large map
 
@@ -821,66 +837,102 @@ public class Map
 
     /// <summary>
     /// The wild Pokémon that live at a tile, on its land or in its water, with the place's rate for them: its
-    /// area's on a map of the world, the map's own otherwise (a small map has no water table).
+    /// area's on a map of the world, the map's own otherwise (a small map has no water table). At a moment
+    /// (<see cref="EncounterMoment"/>) the grass's slots are the moment's: the time of day's, a swarm's, the Trophy
+    /// Garden's and the Great Marsh's species in their places (plan 06 · R13, <see cref="EncounterSlots"/>).
     /// </summary>
-    public (IReadOnlyList<WildEncounterEntry> Table, int Rate) WildAt(int x, int y, bool water = false)
+    public (IReadOnlyList<WildEncounterEntry> Table, int Rate) WildAt(int x, int y, bool water = false, EncounterMoment? moment = null)
     {
-        if (AreaAt(x, y) is { } area) return water ? (area.WaterEncounters, area.WaterRate) : (area.WildEncounters, area.LandRate);
+        if (AreaAt(x, y) is { } area)
+            return water ? (area.WaterEncounters, area.WaterRate) : (moment == null ? area.WildEncounters : EncounterSlots.Grass(area, moment), area.LandRate);
         return water ? (Array.Empty<WildEncounterEntry>(), 0) : (WildEncounters, EncounterRate);
     }
 
     /// <summary>
     /// What bites a rod cast into the water at a tile (plan 02 · S2): the rod's rate decides whether anything does
     /// (<c>WildEncounters_TryFishingEncounter</c>), then one of its five slots by weight, as for the water, with the
-    /// lead's ability having its say. Null when nothing will bite; a small map's water has nothing in it.
+    /// lead's ability having its say (Keen Eye and Intimidate, but never a Repel). On one of the day's Feebas tiles
+    /// every slot is Feebas, one time in two (plan 06 · R13, <see cref="Feebas"/>). Null when nothing will bite; a
+    /// small map's water has nothing in it.
     /// </summary>
-    public WildEncounterEntry? Fish(int x, int y, FishingRod rod, WildLead? lead = null)
+    public WildEncounterEntry? Fish(int x, int y, FishingRod rod, WildLead? lead = null, EncounterMoment? moment = null)
     {
         if (AreaAt(x, y) is not { } area) return null;
-        var table = area.RodEncounters[(int)rod];
+        IReadOnlyList<WildEncounterEntry> table = area.RodEncounters[(int)rod];
         int rate = area.RodRates[(int)rod];
         if (table.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
-        return WildEncounterRules.Meet(table, water: true, lead, rng);
+        var feebas = SpecialEncounterTables.Sinnoh.Feebas;
+        if (moment?.State is { } state && feebas.Area == area.Key
+            && Feebas.Bites(SpecialEncounterTables.FeebasTiles, state.DailyNumber, x, y, rng))
+            table = Overworld.Feebas.Table(feebas.Species, table);
+        return WildEncounterRules.Meet(table, water: true, lead is { } first ? first with { RepelLevel = null } : null, rng);
     }
 
     /// <summary>Whether the Bicycle may be ridden at a tile: as its area's header says, and outdoors on a small map, never in a room.</summary>
     public bool BikeAllowedAt(int x, int y) => AreaAt(x, y)?.BikeAllowed ?? !IsIndoors;
 
     /// <summary>
-    /// A wild Pokémon drawn out at once from the place's table, with no odds to meet first: Sweet Scent (plan 02 ·
-    /// S2, <c>WildEncounters_TrySweetScentEncounter</c>). Null where nothing lives, or where the lead's ability
-    /// scares it off.
+    /// A wild Pokémon drawn out at once from the place's table, with no odds to meet first: Sweet Scent and Honey
+    /// (plan 02 · S2, <c>WildEncounters_TrySweetScentEncounter</c>). Neither Keen Eye nor a Repel keeps it away, and a
+    /// roamer where the player stands comes one time in two (plan 06 · R13). Null only where nothing lives.
     /// </summary>
-    public WildEncounterEntry? DrawOutWild(int x, int y, bool water = false, WildLead? lead = null)
+    public WildEncounterEntry? DrawOutWild(int x, int y, bool water = false, WildLead? lead = null, EncounterMoment? moment = null)
     {
-        var (table, _) = WildAt(x, y, water);
-        return table.Count == 0 ? null : WildEncounterRules.Meet(table, water, lead, rng);
+        var (table, _) = WildAt(x, y, water, moment);
+        if (table.Count == 0) return null;
+        if (moment is { Partner: false, State: { } state } && Roamers.MeetHere(state, AreaAt(x, y)?.Key, rng) is { } roamer)
+            return RoamerMet(state, roamer);
+        return WildEncounterRules.Meet(table, water, lead, rng, keptAway: false);
     }
 
     /// <summary>
     /// A wild Pokémon for a step onto a tile, or null: Platinum's odds for the step (<see cref="EncounterSteps.Meets"/>)
     /// at the place's rate, then one of the place's table by weight, with its level decided. The ability of the
-    /// Pokémon at the head of the party has its say in each (<see cref="WildEncounterRules"/>).
+    /// Pokémon at the head of the party has its say in each (<see cref="WildEncounterRules"/>). At a moment
+    /// (<see cref="EncounterMoment"/>, plan 06 · R13) the table is the moment's, a shaking patch of the Poké Radar
+    /// always meets its Pokémon, and a roamer where the player stands is met one time in two.
     /// </summary>
     /// <param name="thick">In grass taller than the walker, or on a Bicycle: more attempts get through.</param>
     /// <param name="lead">The Pokémon at the head of the party; left out, nothing shapes the meeting.</param>
+    public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false, WildLead? lead = null, EncounterMoment? moment = null)
+    {
+        var (table, rate) = WildAt(x, y, water, moment);
+        if (table.Count == 0 || rate <= 0) return null;
+        rate = WildEncounterRules.Rate(rate, lead, WeatherAt(x, y));
+        bool meets = steps.Meets(rate, thick, rng, moment?.Today);
+        // A shaking patch always has its Pokémon (PokeRadar_ShouldDoRadarEncounter)
+        var radar = moment?.Radar?.StepOnto(x, y);
+        if (!meets && radar == null) return null;
+
+        var area = AreaAt(x, y);
+        // A roamer where the player stands, but never in a patch or beside a partner (TryEncounterRoamer); a Repel
+        // keeps it away as it would anything of its level
+        if (radar == null && moment is { Partner: false, State: { } state } && Roamers.MeetHere(state, area?.Key, rng) is { } roamer)
+            return WildEncounterRules.RepelTurnsAway(lead, state.Roamers[roamer].Level) ? null : RoamerMet(state, roamer);
+
+        if (radar is { } patch && moment?.Radar is { } chain && !water)
+            return chain.Meet(table, area, patch, lead, this, x, y, moment.Height, rng);
+        var met = WildEncounterRules.Meet(table, water, lead, rng);
+        // Any other Pokémon of the grass ends the Poké Radar's chain
+        if (met != null && !water) moment?.Radar?.Clear();
+        return met;
+    }
+
+    private static WildEncounterEntry RoamerMet(Models.SpecialEncounters state, int slot)
+    {
+        var roamer = state.Roamers[slot];
+        return new WildEncounterEntry { SpeciesName = roamer.Species, MinLevel = roamer.Level, MaxLevel = roamer.Level, Roamer = slot };
+    }
+
     /// <summary>
     /// A second Pokémon of the land's table beside one already met, as a partner's battles bring
     /// (<c>TryGenerateGrassEncounter_DoubleBattle</c>, plan 02 · S6): drawn as the first was, or null when the lead
     /// scared it off.
     /// </summary>
-    public WildEncounterEntry? MeetAnother(int x, int y, WildLead? lead = null)
+    public WildEncounterEntry? MeetAnother(int x, int y, WildLead? lead = null, EncounterMoment? moment = null)
     {
-        var (table, _) = WildAt(x, y);
+        var (table, _) = WildAt(x, y, moment: moment);
         return WildEncounterRules.Meet(table, false, lead, rng);
-    }
-
-    public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false, WildLead? lead = null)
-    {
-        var (table, rate) = WildAt(x, y, water);
-        rate = WildEncounterRules.Rate(rate, lead, WeatherAt(x, y));
-        if (table.Count == 0 || !steps.Meets(rate, thick, rng)) return null;
-        return WildEncounterRules.Meet(table, water, lead, rng);
     }
 }
 
@@ -902,7 +954,8 @@ public sealed class EncounterSteps
     /// times in ten (seven in ten where <paramref name="thick"/>), and one that gets through succeeds as often
     /// as the place's <paramref name="rate"/> out of a hundred.
     /// </summary>
-    public bool Meets(int rate, bool thick, Random rng)
+    /// <param name="today">The day, whose date may change the odds that an attempt gets through (<see cref="SpecialDates"/>); left out, it doesn't.</param>
+    public bool Meets(int rate, bool thick, Random rng, DateTime? today = null)
     {
         if (rate <= 0) return false;
         if (attempts < 8 - Math.Min(8, rate / 10))
@@ -910,6 +963,8 @@ public sealed class EncounterSteps
             attempts++;
             if (rng.Next(100) >= 5) return false;
         }
-        return rng.Next(100) < (thick ? 70 : 40) && rng.Next(100) < rate;
+        int flat = thick ? 70 : 40;
+        if (today is { } day) flat = Math.Min(100, SpecialDates.ModifyEncounterRate(flat, day));
+        return rng.Next(100) < flat && rng.Next(100) < rate;
     }
 }

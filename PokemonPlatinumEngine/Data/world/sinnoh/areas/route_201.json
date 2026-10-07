@@ -30,6 +30,24 @@
     { "species": "Bidoof", "level": 2 }
   ],
   "landRate": 30,
+  "day": [
+    "Starly",
+    "Bidoof"
+  ],
+  "night": [
+    "Kricketot",
+    "Bidoof"
+  ],
+  "swarm": [
+    "Doduo",
+    "Doduo"
+  ],
+  "radar": [
+    "Nidoran♂",
+    "Nidoran♀",
+    "Nidoran♂",
+    "Nidoran♀"
+  ],
   "warps": [],
   "objects": [
     { "id": "pokemon_breeder_m", "looks": "pokemon_breeder_m", "movement": "wander_around", "x": 123, "z": 854, "facing": 2, "rangeX": 1, "rangeZ": 1, "y": 1, "script": "9" },

@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 34 }
   ],
   "landRate": 10,
+  "day": [
+    "Meditite",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Clefairy"
+  ],
+  "swarm": [
+    "Bronzor",
+    "Graveler"
+  ],
+  "radar": [
+    "Machoke",
+    "Meditite",
+    "Golbat",
+    "Chingling"
+  ],
   "water": [
     { "species": "Zubat", "level": 20, "maxLevel": 30 },
     { "species": "Zubat", "level": 20, "maxLevel": 30 },

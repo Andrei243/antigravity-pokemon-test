@@ -30,6 +30,24 @@
     { "species": "Onix", "level": 18 }
   ],
   "landRate": 10,
+  "day": [
+    "Gible",
+    "Zubat"
+  ],
+  "night": [
+    "Gible",
+    "Zubat"
+  ],
+  "swarm": [
+    "Bronzor",
+    "Geodude"
+  ],
+  "radar": [
+    "Bronzor",
+    "Onix",
+    "Gible",
+    "Onix"
+  ],
   "warps": [
     { "x": 43, "z": 38, "to": "wayward_cave_1f", "toWarp": 3 },
     { "x": 16, "z": 40, "to": "wayward_cave_1f", "toWarp": 2 }

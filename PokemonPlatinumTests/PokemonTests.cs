@@ -213,11 +213,19 @@ public class PokemonTests
             .ToList();
         Assert.NotEmpty(arrivals);
 
+        // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
+        // warp need only be reached from one arrival or another (RoomPlanTests holds how their stairs join).
+        bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName);
+        var reachedFromAny = new HashSet<(int, int)>();
+
         foreach (var (startX, startY) in arrivals)
         {
             Assert.True(map.IsWalkable(startX, startY), $"{mapName}: arrival tile ({startX},{startY}) is not walkable");
 
-            // Flood fill; stepping onto a warp tile triggers it, so don't expand past one
+            // Flood fill; stepping onto a warp tile triggers it, so don't expand past one. Someone a story flag takes
+            // off the map isn't in the way for good (the bollards in Fantina's room, gone once she is beaten)
+            bool Open(int x, int y) => map.IsWalkable(x, y) || !map.IsSolid(x, y)
+                && map.NPCs.Any(n => (n.GridX, n.GridY) == (x, y)) && map.NPCs.Where(n => (n.GridX, n.GridY) == (x, y)).All(n => n.HiddenBy != null);
             var reached = new HashSet<(int, int)> { (startX, startY) };
             var queue = new Queue<(int X, int Y)>();
             queue.Enqueue((startX, startY));
@@ -228,18 +236,26 @@ public class PokemonTests
 
                 foreach (var (nx, ny) in new[] { (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1) })
                 {
-                    if (map.IsWalkable(nx, ny) && reached.Add((nx, ny)))
+                    if (Open(nx, ny) && reached.Add((nx, ny)))
                     {
                         queue.Enqueue((nx, ny));
                     }
                 }
             }
 
+            reachedFromAny.UnionWith(reached);
+            if (cutInTwo) continue;
             foreach (var warp in map.Warps)
             {
                 Assert.True(reached.Contains((warp.SourceX, warp.SourceY)),
                     $"{mapName}: warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) is unreachable from arrival ({startX},{startY})");
             }
+        }
+
+        foreach (var warp in map.Warps)
+        {
+            Assert.True(reachedFromAny.Contains((warp.SourceX, warp.SourceY)),
+                $"{mapName}: warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) is unreachable from every arrival");
         }
     }
 

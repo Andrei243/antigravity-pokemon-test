@@ -1,0 +1,35 @@
+# Eterna City's Pokémon Center (plan 02 · S6). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_eterna_city_pokecenter_1f.s).
+#
+# A boy whose Pokémon Team Galactic took, until it is back with him, and a woman with a Pokétch app that tells how
+# close a Pokémon feels to its Trainer (the Friendship Checker: given and kept, and shown once the Pokétch runs it).
+# The boy's Buneary, home again (FLAG_HIDE_ETERNA_CITY_POKECENTER_1F_BUNEARY), waits for Pokémon that stand in the field.
+
+
+# The boy (the original's script 3).
+script Schoolboy
+  speaker "Schoolboy"
+  if flag FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING goto Back
+  say "Team Galactic took my Pokémon away. They've taken other people's too."
+  say "Somebody ought to do something, but everyone's too scared of them... What are they doing to my Pokémon?"
+  end
+label Back
+  say "I've got my Pokémon back! I'm so happy I want to ride my Bike down the Cycling Road with it right now!"
+  end
+
+
+# The woman with the app (the original's script 5).
+script FriendshipChecker
+  speaker "Woman"
+  if flag FLAG_RECEIVED_ETERNA_FRIENDSHIP_CHECKER goto Given
+  if not poketch goto Given
+  say "Hello there, little Trainer! What Pokémon have you brought along with you today?"
+  say "Here, this Pokétch app shows how close your Pokémon feel to you."
+  poketchapp FriendshipChecker
+  setflag FLAG_RECEIVED_ETERNA_FRIENDSHIP_CHECKER
+  fanfare keyitem
+  text "The Friendship Checker was added to the Pokétch!"
+  end
+label Given
+  say "Spend enough time together, and any Pokémon will open its heart to you."
+  end

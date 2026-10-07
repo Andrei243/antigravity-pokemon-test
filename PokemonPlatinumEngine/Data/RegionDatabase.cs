@@ -127,6 +127,8 @@ public static class RegionDatabase
                 // Plan 01 · M8, part 2: the Distortion World, a floor to a map, and the room Turnback Cave's portal leads to
                 "DistortionWorld1F", "DistortionWorldB1F", "DistortionWorldB2F", "DistortionWorldB3F", "DistortionWorldB4F",
                 "DistortionWorldB5F", "DistortionWorldB6F", "DistortionWorldB7F", "DistortionWorldGiratinaRoom", "DistortionWorldTurnbackCaveRoom",
+                // Plan 01 · M9, part 1: the Gyms rebuilt to the original's plans, with their puzzles
+                "EternaGym", "HearthomeGym", "HearthomeGymRoom1", "HearthomeGymRoom2", "HearthomeGymLeaderRoom", "VeilstoneGym",
                 // Rooms, still made by hand (plan 01 · M11)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",
@@ -137,7 +139,10 @@ public static class RegionDatabase
                 "SunyshorePokemonCenter", "SunyshorePokeMart", "PokemonLeagueSouthPokemonCenter", "PokemonLeagueNorthPokemonCenter",
                 // Rebuilt to the original's plans, so its people stand where the original's do: three houses of the
                 // in-game trades (plan 06 · R12) and the Valley Windworks' hall (plan 02 · S6)
-                "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding"
+                "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding",
+                // Eterna City's rooms of plan 02 · S6: the cycle shop, the Underground Man's house and Team Galactic's building
+                "EternaCycleShop", "EternaUndergroundManHouse",
+                "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

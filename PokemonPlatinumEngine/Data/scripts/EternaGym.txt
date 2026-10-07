@@ -1,0 +1,107 @@
+# The Eterna Gym (plan 01 · M9), rebuilt to the original's plan. docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_eterna_city_gym.s).
+#
+# The flower clock: every trainer beaten, and Gardenia, turns its hands on to the next time (flowerclock,
+# AdvanceEternaGymClock), and the hands are the only ways over its face. The three trainers battle when spoken to,
+# in the order the clock lets the player reach them (VAR_ETERNA_GYM_TRAINERS_BEATEN). Gardenia gives the Forest
+# Badge and TM86 and sends her own Pokémon off to wait for the player in Eterna Forest (FLAG_HIDE_ETERNA_FOREST_
+# GARDENIA, which plan 02 · S6's scene there reads).
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge forest goto Won
+  say "Hey, champ in the making! Welcome to the Eterna Gym!"
+  say "Gardenia's Pokémon are Grass types. Fire, Flying, Ice, Poison and Bug moves all hit them hard."
+  say "See the big flower clock? Its hands are the only paths across it. Beat a trainer here and the hands move on."
+  say "Keep at it until a hand points the way to Gardenia!"
+  end
+label Won
+  say "You beat Gardenia! The way you read that clock was something else, {player}."
+  end
+
+
+script GymStatue
+  speaker none
+  if badge forest goto Won
+  say "ETERNA CITY POKéMON GYM. Leader: Gardenia. Certified Trainers: {rival}"
+  end
+label Won
+  say "ETERNA CITY POKéMON GYM. Leader: Gardenia. Certified Trainers: {rival}, {player}"
+  end
+
+
+# The first trainer, by the way in: beating her turns the hands to a quarter past six
+script Caroline
+  if var VAR_ETERNA_GYM_TRAINERS_BEATEN >= 1 goto Beaten
+  trainerline before
+  battle self
+  trainerline after
+  setvar VAR_ETERNA_GYM_TRAINERS_BEATEN 1
+  call Clock
+  end
+label Beaten
+  trainerline after
+  end
+
+# The second, past the minute hand to the east: the hands go to a quarter past nine, and the right fountain drains
+script Jenna
+  if var VAR_ETERNA_GYM_TRAINERS_BEATEN >= 2 goto Beaten
+  trainerline before
+  battle self
+  trainerline after
+  setvar VAR_ETERNA_GYM_TRAINERS_BEATEN 2
+  call Clock
+  end
+label Beaten
+  trainerline after
+  end
+
+# The third, over the hour hand to the west: the hands go to a quarter to one, and the left fountain drains
+script Angela
+  if var VAR_ETERNA_GYM_TRAINERS_BEATEN >= 3 goto Beaten
+  trainerline before
+  battle self
+  trainerline after
+  setvar VAR_ETERNA_GYM_TRAINERS_BEATEN 3
+  call Clock
+  end
+label Beaten
+  trainerline after
+  end
+
+# The clock turns on, with the camera on it; a fountain's water drains with it after the second and third trainers
+script Clock
+  flowerclock
+  if result == 2 text "The water level in the fountain dropped!"
+  camera release
+  return
+
+
+script Gardenia
+  speaker "Gardenia"
+  if badge forest goto Won
+  say "Welcome! I'm Gardenia, the Leader of the Eterna Gym, and I'm absolutely crazy about Grass-type Pokémon."
+  say "You got through my clock, so you must have a good head on your shoulders. Let's see if your Pokémon do too!"
+  battle self as "leader_gardenia"
+  say "Wow, you're strong! My Pokémon and I did our best, and you were still better. You've won this fair and square."
+  givebadge forest
+  text "{player} received the Forest Badge from Gardenia!"
+  defeat "aroma_lady_jenna"
+  defeat "aroma_lady_angela"
+  defeat "lass_caroline"
+  defeat "beauty_lindsay"
+  clearflag FLAG_HIDE_ETERNA_FOREST_GARDENIA
+  say "With the Forest Badge, Pokémon up to level 30 will listen to you, even ones you got in trades."
+  say "And it lets you use Cut outside of battle, so thin trees won't stand in your way any more."
+label Tm
+  say "Oh, and take this as well. It's one of my favourite moves."
+  give "TM86"
+  setflag FLAG_RECEIVED_GARDENIA_TM86
+  say "TM86 is Grass Knot. It trips the foe up, and the heavier the foe, the harder it falls!"
+  call Clock
+  end
+label Won
+  if not flag FLAG_RECEIVED_GARDENIA_TM86 goto Tm
+  say "I lost, but my Pokémon and I had a great time. Next time, my Grass types will bloom even brighter!"
+  end

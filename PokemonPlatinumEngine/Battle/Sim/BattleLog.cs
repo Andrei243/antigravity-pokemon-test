@@ -56,7 +56,8 @@ public sealed record Entered(Place Place, Pokemon Pokemon, bool FromBall) : Batt
 
 /// <summary>A Pokémon is called back (the animation); <see cref="Left"/> is when it is gone.</summary>
 public sealed record Recalled(Place Place) : BattleEvent;
-public sealed record Left(Place Place) : BattleEvent;
+/// <param name="Ran">A wild Pokémon that ran away (a roamer, one of the Great Marsh's), not one called back.</param>
+public sealed record Left(Place Place, bool Ran = false) : BattleEvent;
 
 /// <summary>A Pokémon starts its move.</summary>
 public sealed record Lunged(Place Place, MoveCategory Category) : BattleEvent;

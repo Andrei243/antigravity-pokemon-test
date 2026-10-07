@@ -30,6 +30,24 @@
     { "species": "Dustox", "level": 14 }
   ],
   "landRate": 30,
+  "day": [
+    "Wurmple",
+    "Budew"
+  ],
+  "night": [
+    "Kricketot",
+    "Hoothoot"
+  ],
+  "swarm": [
+    "Slakoth",
+    "Slakoth"
+  ],
+  "radar": [
+    "Nincada",
+    "Nincada",
+    "Nincada",
+    "Nincada"
+  ],
   "warps": [
     { "x": 28, "z": 86, "to": "route_205_south", "toWarp": 0 },
     { "x": 29, "z": 86, "to": "route_205_south", "toWarp": 1 },

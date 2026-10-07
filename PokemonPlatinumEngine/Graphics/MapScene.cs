@@ -826,8 +826,9 @@ internal sealed class MapScene
         var style = Map.Interior;
         kit.Origin = Vector3.Zero;
 
-        var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style));
-        var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style));
+        var theme = Map.ArenaType;
+        var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style, 0, theme));
+        var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme));
         kit.Quad(kit.At(left, 0, back), kit.At(right, 0, back), kit.At(right, wallH, back), kit.At(left, wallH, back), backWall, KitBuilder.FrontNormal);
         kit.Quad(kit.At(left, 0, front), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, front), sideWall, Vector3.UnitX);
         kit.Quad(kit.At(right, 0, back), kit.At(right, 0, front), kit.At(right, wallH, front), kit.At(right, wallH, back), sideWall, -Vector3.UnitX);
@@ -859,7 +860,7 @@ internal sealed class MapScene
             for (int tx = lx; tx < w - 1; tx++)
             {
                 if (Map.GetGroundTile(tx, ty) != TileType.Wall) continue;
-                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH));
+                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH, theme));
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
                 var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
                     c => GroundBaker.PaintWallTop(c, n, s, wst, e));

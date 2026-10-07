@@ -30,6 +30,24 @@
     { "species": "Hippopotas", "level": 24 }
   ],
   "landRate": 10,
+  "day": [
+    "Geodude",
+    "Geodude"
+  ],
+  "night": [
+    "Geodude",
+    "Geodude"
+  ],
+  "swarm": [
+    "Geodude",
+    "Geodude"
+  ],
+  "radar": [
+    "Geodude",
+    "Geodude",
+    "Geodude",
+    "Hippopotas"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 6, "z": 7, "to": "route_214", "toWarp": 2 }

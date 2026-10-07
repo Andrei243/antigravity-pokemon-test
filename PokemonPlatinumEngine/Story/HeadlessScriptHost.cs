@@ -65,6 +65,17 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>Where chance comes from (Turnback Cave's doors): the same every run unless a test hands its own.</summary>
     public Random Rng { get; set; } = new(0);
 
+    /// <summary>What the game remembers of its wild Pokémon (plan 06 · R13).</summary>
+    public SpecialEncounters Encounters { get; set; } = SpecialEncounters.NewGame(new Random(0));
+
+    /// <summary>The honey tree the player faces; null unless a test says (on a map, the one the player faces from the south).</summary>
+    public int? HoneyTreeFaced { get => honeyTree ?? (Map != null ? HoneyTrees.Faced(Map, PlayerTile.X, PlayerTile.Y, PlayerFacing) : null); set => honeyTree = value; }
+    private int? honeyTree;
+
+    public uint TrainerNumber { get; set; } = 12345;
+
+    public Random Chance => Rng;
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 
@@ -383,6 +394,21 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         Log.Add("turnback");
         if (Map != null) TurnbackChose = TurnbackCave.Reaim(Map, PlayerTile.X, PlayerTile.Y, Story, Rng);
+    }
+
+    public void Defeat(string trainerId)
+    {
+        Log.Add($"defeat {trainerId}");
+        if (Map == null) return;
+        foreach (var npc in Map.Everyone)
+            if (npc.TrainerData?.Id == trainerId) npc.HasBattled = true;
+    }
+
+    public void TurnClock(int from, int to)
+    {
+        Log.Add($"flowerclock {from} {to}");
+        // The clock is at rest at once: the map's tiles follow the story's new state
+        if (Map?.Puzzle is EternaClock clock) clock.Apply(Map, Story);
     }
 
     /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>

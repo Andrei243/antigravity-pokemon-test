@@ -66,13 +66,17 @@ public static class WildEncounterRules
     /// of the table, its level, Keen Eye and Intimidate's say, then the gender and the nature the lead's ability
     /// chose for it. What comes back is a row of its own, with the level decided.
     /// </summary>
-    public static WildEncounterEntry? Meet(IReadOnlyList<WildEncounterEntry> table, bool water, WildLead? lead, Random rng)
+    /// <param name="keptAway">
+    /// Whether Keen Eye, Intimidate and a Repel can keep the Pokémon away: not one drawn out by Sweet Scent or Honey
+    /// (<c>WildEncounters_TrySweetScentEncounter</c> sets <c>ignoreAbilityBlock</c> and leaves the Repel out).
+    /// </param>
+    public static WildEncounterEntry? Meet(IReadOnlyList<WildEncounterEntry> table, bool water, WildLead? lead, Random rng, bool keptAway = true)
     {
         if (table.Count == 0) return null;
         var slot = Slot(table, water, lead, rng);
         int level = Level(table, slot, water, lead, rng);
-        if (ScaredOff(lead, level, rng)) return null;
-        if (RepelTurnsAway(lead, level)) return null;
+        if (keptAway && ScaredOff(lead, level, rng)) return null;
+        if (keptAway && RepelTurnsAway(lead, level)) return null;
         return new WildEncounterEntry
         {
             SpeciesName = slot.SpeciesName,
@@ -144,6 +148,24 @@ public static class WildEncounterRules
     /// <summary><c>GetNatureForWildMon</c>: with Synchronize the lead's own nature one time in two; null leaves it to chance.</summary>
     public static Nature? NatureFor(WildLead? lead, Random rng) =>
         lead is { Ability: "Synchronize" } first && rng.Next(2) == 0 ? first.Nature : null;
+
+    /// <summary>
+    /// What a wild Pokémon is holding (plan 06 · R13; <c>Pokemon_GiveHeldItem</c>, from <c>AddWildMonToParty</c>): a
+    /// species whose two items are one and the same always holds it; otherwise, out of a hundred, 45 hold nothing, 50
+    /// its common item and 5 its rare one, or with Compound Eyes at the head of the party 20, 60 and 20. A trainer's
+    /// Pokémon, a roamer and the catching lesson's are given nothing this way. The roll is drawn whatever the species.
+    /// </summary>
+    public static ItemData? HeldItem(PokemonSpecies species, WildLead? lead, Random rng)
+    {
+        int roll = rng.Next(100);
+        var items = species.WildItems;
+        string? common = items?.Common, rare = items?.Rare;
+        if (common != null && common == rare) return ItemDatabase.Get(common);
+        var (none, upToCommon) = lead?.Ability == "Compound Eyes" ? (20, 80) : (45, 95);
+        if (roll < none) return null;
+        string? held = roll < upToCommon ? common : rare;
+        return held == null ? null : ItemDatabase.Get(held);
+    }
 
     /// <summary><c>CreateWildMon</c>: with Cute Charm, two times in three, the gender the lead isn't, for a species that has both; null leaves it to chance.</summary>
     public static Gender? GenderFor(PokemonSpecies? species, WildLead? lead, Random rng)

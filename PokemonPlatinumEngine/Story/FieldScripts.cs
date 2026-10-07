@@ -44,6 +44,15 @@ public static class FieldScripts
 
     /// <summary>A Repel's last step (plan 06 · R11).</summary>
     public const string RepelWoreOff = "common.RepelWoreOff";
+
+    /// <summary>
+    /// Wild Pokémon (plan 06 · R13): a honey tree faced from the south, Honey used from the bag, a Pokémon that came
+    /// through poison in the field, and the day's swarm as the assistant's sister tells of it.
+    /// </summary>
+    public const string HoneyTree = "common.HoneyTree";
+    public const string UseHoney = "common.UseHoney";
+    public const string PoisonSurvived = "common.PoisonSurvived";
+    public const string SwarmNews = "common.SwarmNews";
     public const string SafariOutOfBalls = "common.SafariOutOfBalls";
 
     /// <summary>

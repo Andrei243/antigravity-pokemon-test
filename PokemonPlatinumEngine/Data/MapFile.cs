@@ -33,6 +33,9 @@ public sealed class MapFile
     /// <summary>Places some Pokémon evolve at (see <see cref="Map.EvolutionSites"/>); left out when there are none.</summary>
     public List<string>? EvolutionSites { get; set; }
 
+    /// <summary>A Gym's puzzle by its name (<see cref="GymPuzzle.Create"/>, plan 01 · M9); left out for a room without one.</summary>
+    public string? Puzzle { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -148,6 +151,15 @@ public sealed class MapFile
         public string? Item { get; set; }
         public int? Count { get; set; }
         public TrainerRecord? Trainer { get; set; }
+
+        /// <summary>
+        /// How they move about when left to themselves (plan 01 · M9), as the original's events name it
+        /// (<c>wander_around</c>, <c>look_around</c>; <see cref="PersonMovement.Parse"/>), with the range of tiles round
+        /// where they stand that they keep to. Left out for someone who stands still.
+        /// </summary>
+        public string? Movement { get; set; }
+        public int? RangeX { get; set; }
+        public int? RangeZ { get; set; }
     }
 
     public sealed class TrainerRecord
@@ -187,7 +199,8 @@ public sealed class MapFile
             Architecture = Architecture ?? TownArchitecture.Timber,
             Arena = BattleArena,
             ArenaType = ArenaType,
-            EvolutionSites = EvolutionSites?.ToList() ?? new()
+            EvolutionSites = EvolutionSites?.ToList() ?? new(),
+            Puzzle = GymPuzzle.Create(Puzzle)
         };
 
         CheckRows(Ground, "ground");
@@ -272,6 +285,7 @@ public sealed class MapFile
             ItemCount = n.Count ?? 1
         };
         if (n.Id != null) npc.Id = n.Id;
+        if (n.Movement != null) npc.Movement = PersonMovement.Parse(n.Movement, n.RangeX ?? 0, n.RangeZ ?? 0, n.X, n.Y, n.Facing);
         if (npc.IsItemBall || npc.Item != null)
         {
             if (!npc.IsItemBall) throw new InvalidDataException($"Map {mapName}: {n.Name} holds an item and is no item ball (npcType \"{NPC.ItemBallType}\").");
@@ -347,6 +361,7 @@ public sealed class MapFile
             BattleArena = map.Arena,
             ArenaType = map.ArenaType,
             EvolutionSites = map.EvolutionSites.Count > 0 ? map.EvolutionSites.ToList() : null,
+            Puzzle = map.Puzzle?.Name,
             Width = map.Width,
             Height = map.Height
         };
@@ -414,6 +429,9 @@ public sealed class MapFile
         ShownBy = npc.ShownBy,
         Item = npc.Item,
         Count = npc.Item != null && npc.ItemCount > 1 ? npc.ItemCount : null,
+        Movement = npc.Movement?.Source is { Length: > 0 } moves ? moves : null,
+        RangeX = npc.Movement is { RangeX: > 0 } mx ? mx.RangeX : null,
+        RangeZ = npc.Movement is { RangeZ: > 0 } mz ? mz.RangeZ : null,
         Trainer = npc.IsTrainer && npc.TrainerData is { } t ? new TrainerRecord
         {
             Id = t.Id,

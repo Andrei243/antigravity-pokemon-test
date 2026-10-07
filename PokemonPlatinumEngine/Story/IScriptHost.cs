@@ -145,6 +145,19 @@ public interface IScriptHost
     void Turnback();
 
     /// <summary>
+    /// A trainer counts as beaten from now on, with no battle (the original's <c>SetTrainerFlag</c>, plan 01 · M9): a
+    /// Gym's trainers once its Leader is. The story has noted it already; whoever carries the trainer is marked.
+    /// </summary>
+    void Defeat(string trainerId);
+
+    /// <summary>
+    /// The Eterna Gym's flower clock turns from the time of one state to the next's, with the camera on it, and a
+    /// fountain drains where the new state says so (<see cref="EternaClock.Turn"/>). The story's state has moved on
+    /// already; the script waits while the clock turns (<see cref="Busy"/>).
+    /// </summary>
+    void TurnClock(int from, int to);
+
+    /// <summary>
     /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
     /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
     /// stop.
@@ -169,4 +182,18 @@ public interface IScriptHost
 
     /// <summary>A Pokémon met in the field cries: a species, or one of its forms by name.</summary>
     void Cry(string species);
+
+    // ------------------------------------------------------------------ wild Pokémon (plan 06 · R13)
+
+    /// <summary>What the game remembers of its wild Pokémon: swarms, the Trophy Garden, the honey trees, the roamers.</summary>
+    SpecialEncounters Encounters { get; }
+
+    /// <summary>The honey tree the player faces from the south (<see cref="HoneyTrees.Faced"/>); null when none.</summary>
+    int? HoneyTreeFaced { get; }
+
+    /// <summary>The trainer's whole number, the card's and its hidden half (the original's 32 bits): it picks the Munchlax trees.</summary>
+    uint TrainerNumber { get; }
+
+    /// <summary>Where a script's own draws come from: a honey tree slathered, a Trophy Garden Pokémon, a roamer set loose.</summary>
+    System.Random Chance { get; }
 }

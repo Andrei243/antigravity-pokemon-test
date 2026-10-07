@@ -30,6 +30,24 @@
     { "species": "Snover", "level": 35 }
   ],
   "landRate": 30,
+  "day": [
+    "Sneasel",
+    "Snover"
+  ],
+  "night": [
+    "Snorunt",
+    "Snorunt"
+  ],
+  "swarm": [
+    "Delibird",
+    "Delibird"
+  ],
+  "radar": [
+    "Piloswine",
+    "Piloswine",
+    "Piloswine",
+    "Piloswine"
+  ],
   "warps": [
     { "x": 293, "z": 311, "to": "route_217_west_house", "toWarp": 0 },
     { "x": 316, "z": 285, "to": "route_217_northeast_house", "toWarp": 0 }

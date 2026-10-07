@@ -30,6 +30,24 @@
     { "species": "Bronzor", "level": 16 }
   ],
   "landRate": 30,
+  "day": [
+    "Meditite",
+    "Meditite"
+  ],
+  "night": [
+    "Zubat",
+    "Hoothoot"
+  ],
+  "swarm": [
+    "Meditite",
+    "Bidoof"
+  ],
+  "radar": [
+    "Tyrogue",
+    "Tyrogue",
+    "Tyrogue",
+    "Tyrogue"
+  ],
   "warps": [
     { "x": 380, "z": 532, "to": "mt_coronet_1f_north_room_1", "toWarp": 2 }
   ],

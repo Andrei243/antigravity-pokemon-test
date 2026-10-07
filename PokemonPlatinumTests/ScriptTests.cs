@@ -158,6 +158,8 @@ public class ScriptTests
           safari start
           safari end
           turnback
+          defeat "lass_caroline"
+          flowerclock
           partner cheryl "cheryl_eterna_forest"
           partner off
           choosepokemon
@@ -174,6 +176,13 @@ public class ScriptTests
           shop
           pc
           travel
+          honeytree status
+          honeytree slather
+          honeytree battle
+          swarms on
+          trophygarden
+          roamer start "Mesprit"
+          survivepoison VAR_A
         script Other
           end
         """;
@@ -949,6 +958,10 @@ public class ScriptTests
         public Inventory Bag => inner.Bag;
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
+        public SpecialEncounters Encounters => inner.Encounters;
+        public int? HoneyTreeFaced => inner.HoneyTreeFaced;
+        public uint TrainerNumber => inner.TrainerNumber;
+        public Random Chance => inner.Chance;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;
         public PlayerLook PlayerLook => inner.PlayerLook;
@@ -979,6 +992,8 @@ public class ScriptTests
         public bool Teleport() => true;
         public bool Escape() => true;
         public void Turnback() { }
+        public void Defeat(string trainerId) { }
+        public void TurnClock(int from, int to) { }
         public void TravelWith(NPC? who, string? trainerId) { }
         public string? Partner => null;
         public bool Trade(string trade, int slot) => false;

@@ -25,6 +25,9 @@ public enum PersonMoves
 /// </summary>
 public sealed record PersonMovement(PersonMoves Kind, Direction[] Ways, int RangeX, int RangeZ, int HomeX, int HomeY)
 {
+    /// <summary>The movement type as the area or map file names it (<c>wander_around</c>), for writing it back out.</summary>
+    public string Source { get; init; } = "";
+
     private static readonly Dictionary<string, Direction> Named = new()
     {
         ["north"] = Direction.Up, ["south"] = Direction.Down, ["west"] = Direction.Left, ["east"] = Direction.Right
@@ -41,7 +44,7 @@ public sealed record PersonMovement(PersonMoves Kind, Direction[] Ways, int Rang
         if (string.IsNullOrEmpty(movement)) return null;
         var words = movement.Split('_');
         Direction[] Ways(IEnumerable<string> names) => names.Where(Named.ContainsKey).Select(n => Named[n]).ToArray();
-        PersonMovement Of(PersonMoves kind, Direction[] ways) => new(kind, ways, Math.Max(0, rangeX), Math.Max(0, rangeZ), x, y);
+        PersonMovement Of(PersonMoves kind, Direction[] ways) => new(kind, ways, Math.Max(0, rangeX), Math.Max(0, rangeZ), x, y) { Source = movement };
 
         switch (words[0])
         {

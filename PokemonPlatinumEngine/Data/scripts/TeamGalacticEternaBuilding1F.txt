@@ -1,0 +1,73 @@
+# The Team Galactic Eterna Building, ground floor (plan 02 · S6). docs/scripts.md describes the language; the lines are
+# our own, on the original's beats (scripts_team_galactic_eterna_building_1f.s).
+#
+# The first time in, a grunt by the door turns out to be Looker in disguise: he warns the player that each floor has
+# two staircases, one of them a trap (VAR_TEAM_GALACTIC_ETERNA_BUILDING_1F_STATE 1). Looker and his disguise are two
+# people of the room on one tile, as the original's are, and one stands in for the other while he speaks as himself.
+# The wall to Rotom's room waits for the Secret Key (the post-game's).
+
+
+script OnEnter
+  if var VAR_TEAM_GALACTIC_ETERNA_BUILDING_1F_STATE != 0 end
+  face grunt_m_looker left
+  emote grunt_m_looker exclaim
+  wait 0.3
+  walk grunt_m_looker left 2
+  face player right
+  speaker "Looker"
+  say "Psst! It is I! Looker! Ha ha! You did not know me, yes? You jumped!"
+  say "But of course. A man of the International Police must be a master of disguise."
+  call Spin
+  place looker 12 15 left
+  show looker
+  hide grunt_m_looker
+  wait 0.5
+  say "...Now. You are a fine Trainer, this I know very well. All the same, take care in here."
+  say "And a word of advice. On every floor of this building there are two staircases, and one of them is a trap."
+  say "But these Team Galactic crooks, they are not, how do you say, very bright. The right way should not be hard to find!"
+  call Spin
+  place grunt_m_looker 12 15 left
+  show grunt_m_looker
+  hide looker
+  setvar VAR_TEAM_GALACTIC_ETERNA_BUILDING_1F_STATE 1
+  end
+
+# A quick turn on the spot, as a disguise goes on or comes off
+script Spin
+  face grunt_m_looker down
+  face looker down
+  wait 0.05
+  face grunt_m_looker right
+  face looker right
+  wait 0.1
+  face grunt_m_looker up
+  face looker up
+  wait 0.1
+  face grunt_m_looker left
+  face looker left
+  wait 0.05
+  return
+
+
+# Looker in his grunt's uniform (the original's script 4).
+script Looker
+  speaker "Looker"
+  say "I am investigating Team Galactic, but who they are and what they want, I still cannot say."
+  say "Their underlings, it seems, know nothing of their boss's plans."
+  say "Remember: two staircases, and one is a trap. These crooks are not clever. The right way should be easy to spot!"
+  end
+
+
+# The grunt by the door (the original's script 1).
+script Welcome
+  speaker "Galactic Grunt"
+  say "Hello and welcome to Team Galactic! Come to hand over your Pokémon?"
+  say "...You haven't? Then clear off our property! Unless you'd like what the cycle shop's manager got."
+  end
+
+
+# The grunt behind the counter (the original's script 2).
+script Stars
+  speaker "Galactic Grunt"
+  say "This little world isn't enough for Team Galactic. We look to the stars!"
+  end

@@ -598,6 +598,9 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
         // A Repel's last step (plan 06 · R11)
         started.Add(FieldScripts.RepelWoreOff);
+        // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag, poison's survivors, and the assistant's
+        // sister's news of swarms (her house is plan 01 · M11's)
+        started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived, FieldScripts.SwarmNews });
         // Two trainers who saw the player at once (plan 02 · S6)
         started.Add(FieldScripts.TrainerPair);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
@@ -757,6 +760,14 @@ public class StoryTests
                 // Two trainers who came together, beside whoever travels with the player and without anyone
                 FieldScripts.TrainerPair => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer())
                     .Concat(EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer(), before: host => host.TravelWith(new NPC { Name = "Cheryl" }, "cheryl_eterna_forest"))).ToList(),
+                // A honey tree faced, bare, slathered or with a Pokémon waiting, with Honey in the bag or none (plan 06 · R13)
+                FieldScripts.HoneyTree => new[] { 0, 1440, 600 }.SelectMany(minutes => new[] { 0, 2 }.SelectMany(honey => EveryWayThrough(script, new Map(8, 8), null, before: host =>
+                {
+                    host.HoneyTreeFaced = 0;
+                    host.Encounters.Trees[0].MinutesLeft = minutes;
+                    host.Encounters.Trees[0].Group = 1;
+                    if (honey > 0) host.Bag.AddItem(ItemDatabase.Get("Honey")!, honey);
+                }))).ToList(),
                 _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
             };
             if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)

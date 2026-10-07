@@ -1,5 +1,6 @@
 using System;
 using Raylib_cs;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
@@ -26,10 +27,30 @@ internal static class GroundBaker
     /// <summary>Paints a room's floor into one texture laid over the 3D floor.</summary>
     public static PixelCanvas BakeInterior(Map map)
     {
-        var c = new PixelCanvas(map.Width * ArtTile, map.Height * ArtTile);
-        for (int y = 0; y < c.Height; y++)
-            for (int x = 0; x < c.Width; x++)
-                c.SetRaw(x, y, FloorTexel(map.Interior, x, y));
+        PixelCanvas c;
+        if (map.Interior == InteriorStyle.Gym)
+        {
+            // A Gym's floor is the ground its tiles say, as the field's is (lawn, flowers, paths, earth), and its hall's
+            // own tiles where its tiles are floor, wall or door (a wall's shows at the foot of an inner wall with no face
+            // to the south, a door's round the exit mat; style guide, "Gyms")
+            c = PixelGround.Bake(map, new TileWindow(0, 0, map.Width, map.Height), pad: 0, worldSeeds: false, out _);
+            var hall = HallTiles(map.ArenaType);
+            for (int ty = 0; ty < map.Height; ty++)
+                for (int tx = 0; tx < map.Width; tx++)
+                {
+                    if (map.GetGroundTile(tx, ty) is not (TileType.Floor or TileType.Wall or TileType.Door)) continue;
+                    for (int y = 0; y < ArtTile; y++)
+                        for (int x = 0; x < ArtTile; x++)
+                            c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, HallTexel(hall, tx * ArtTile + x, ty * ArtTile + y));
+                }
+        }
+        else
+        {
+            c = new PixelCanvas(map.Width * ArtTile, map.Height * ArtTile);
+            for (int y = 0; y < c.Height; y++)
+                for (int x = 0; x < c.Width; x++)
+                    c.SetRaw(x, y, FloorTexel(map.Interior, x, y));
+        }
 
         // The walls shade the floor beside them: two flat steps
         var (lx, by) = map.RoomCorner();
@@ -73,6 +94,26 @@ internal static class GroundBaker
         return lx == 15 || ly == 15 ? PixelCanvas.Shadow(b, 0.15f) : lx == 0 || ly == 0 ? PixelCanvas.Light1(tile, 0.35f) : tile;
     }
 
+    /// <summary>The two tones of a Gym hall's floor tiles, in its leader's colours (style guide, "Gyms").</summary>
+    private static (Color A, Color B, Color Grout) HallTiles(PokemonType? theme) => theme switch
+    {
+        // Veilstone's dojo: boards of pale wood; the Pastoria Gym's pool deck: white and pale blue
+        PokemonType.Fighting => (Rgb(214, 172, 118), Rgb(200, 156, 104), Rgb(150, 108, 72)),
+        PokemonType.Water => (Rgb(234, 242, 248), Rgb(206, 226, 240), Rgb(150, 182, 210)),
+        // The Hearthome Gym's halls: dark slate in purple and plum
+        PokemonType.Ghost => (Rgb(92, 78, 118), Rgb(80, 66, 104), Rgb(52, 42, 70)),
+        PokemonType.Rock => (Rgb(176, 160, 142), Rgb(162, 146, 128), Rgb(118, 104, 92)),
+        _ => (Rgb(236, 232, 214), Rgb(222, 216, 196), Rgb(172, 164, 140))
+    };
+
+    private static Color HallTexel((Color A, Color B, Color Grout) hall, int x, int y)
+    {
+        // Squares of 16 in two tones, a grout line at the right and the foot, a light edge at the left and the top
+        var tile = (x / 16 + y / 16) % 2 == 0 ? hall.A : hall.B;
+        int lx = x % 16, ly = y % 16;
+        return lx == 15 || ly == 15 ? hall.Grout : lx == 0 || ly == 0 ? PixelCanvas.Light1(tile, 0.3f) : tile;
+    }
+
     /// <summary>The mat at a room's door, with an arrow pointing out.</summary>
     private static void ExitMat(PixelCanvas c, int ox, int oy, InteriorStyle style)
     {
@@ -95,9 +136,15 @@ internal static class GroundBaker
     /// A room's wall strip from <paramref name="from"/> rows below its top down to the skirting: a wall cut away
     /// part of the way up (a room's inner walls) shows only the lower part of it.
     /// </summary>
-    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from)
+    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from) => PaintWall(c, style, from, null);
+
+    /// <summary>
+    /// The same for a Gym, whose walls are in its leader's colours (<paramref name="theme"/>, the type its stage is
+    /// themed on; style guide, "Gyms"): a greenhouse's green, a dark hall's violet, a dojo's wood, a pool's blue.
+    /// </summary>
+    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from, PokemonType? theme)
     {
-        var (paper, motif, wainscot, trim, skirting) = style switch
+        var (paper, motif, wainscot, trim, skirting) = style == InteriorStyle.Gym ? GymWall(theme) : style switch
         {
             InteriorStyle.PokemonCenter => (Rgb(250, 242, 240), Rgb(242, 214, 216), Tone.Of(232, 108, 116), Tone.Of(248, 248, 250), Tone.Of(150, 70, 84)),
             InteriorStyle.PokeMart => (Rgb(234, 242, 250), Rgb(214, 226, 242), Tone.Of(76, 128, 216), Tone.Of(248, 248, 250), Tone.Of(52, 84, 150)),
@@ -134,6 +181,17 @@ internal static class GroundBaker
                 c.SetRaw(x, ry, col);
             }
     }
+
+    private static (Color Paper, Color Motif, Tone Wainscot, Tone Trim, Tone Skirting) GymWall(PokemonType? theme) => theme switch
+    {
+        // Eterna's greenhouse: pale green glass between white frames, over a wainscot of green-stained boards
+        PokemonType.Grass => (Rgb(214, 238, 214), Rgb(190, 224, 192), Tone.Of(96, 156, 96), Tone.Of(250, 252, 248), Tone.Of(66, 112, 70)),
+        PokemonType.Ghost => (Rgb(74, 58, 96), Rgb(96, 76, 124), Tone.Of(60, 44, 80), Tone.Of(148, 120, 176), Tone.Of(40, 30, 56)),
+        PokemonType.Fighting => (Rgb(240, 226, 196), Rgb(224, 206, 170), Tone.Of(150, 98, 60), Tone.Of(196, 146, 96), Tone.Of(104, 66, 44)),
+        PokemonType.Water => (Rgb(214, 234, 248), Rgb(188, 218, 242), Tone.Of(70, 130, 200), Tone.Of(248, 250, 254), Tone.Of(44, 88, 150)),
+        PokemonType.Rock => (Rgb(196, 186, 170), Rgb(178, 168, 152), Tone.Of(132, 108, 86), Tone.Of(214, 206, 192), Tone.Of(94, 76, 62)),
+        _ => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128))
+    };
 
     /// <summary>The dark top of a cut-away wall, with a paler line along its inner edge.</summary>
     public static void PaintWallTop(PixelCanvas c)

@@ -1,0 +1,35 @@
+# Rad Rickshaw's Cycle Shop in Eterna City (plan 02 · S6). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_cycle_shop.s).
+#
+# The manager is away until the player frees him from Team Galactic's building (FLAG_HIDE_CYCLE_SHOP_POKEFAN_M); back
+# behind his counter, he gives the newest Bicycle (FLAG_RECEIVED_BICYCLE), and from then until the player also has an
+# Explorer Kit, Eterna's ways out are watched (VAR_ETERNA_CITY_BLOCK_EXITS_STATE 1, scripts/eterna_city.txt). His
+# Clefairy waits for Pokémon that stand in the field (plan 10).
+
+
+# The manager (the original's script 1).
+script Manager
+  speaker "Manager"
+  if flag FLAG_RECEIVED_BICYCLE goto Manual
+  say "You're the one who rescued me! I want to say thank you properly, so here."
+  say "It's the very newest Bicycle we have. No, no, I won't hear a word against it. Take it!"
+  give "Bicycle"
+  setflag FLAG_RECEIVED_BICYCLE
+  setvar VAR_ETERNA_CITY_BLOCK_EXITS_STATE 1
+  speaker "Manager"
+label Manual
+  say "Since it's the newest model, let me go through the manual with you."
+  say "\"Change gear with the run button. The lower gear isn't so quick, but it's easy to steer.\""
+  say "\"The higher gear is hard to steer and hard to stop, but oh, is it fast!\""
+  end
+
+
+# The boy minding the shop (the original's script 3).
+script ShopBoy
+  speaker "Shop Boy"
+  if flag FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING goto Back
+  say "The manager went over to Team Galactic's building, and he still isn't back. What can be keeping him?"
+  end
+label Back
+  say "What did Team Galactic even want with other people's Pokémon?"
+  end

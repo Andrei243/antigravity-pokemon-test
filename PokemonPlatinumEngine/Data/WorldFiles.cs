@@ -306,6 +306,20 @@ public sealed class WorldAreaFile
     public static readonly int[] LandSlotWeights = { 20, 20, 10, 10, 10, 10, 5, 5, 4, 4, 1, 1 };
 
     /// <summary>
+    /// The two species the day (10:00 to 19:59) and the night (20:00 to 3:59) put in slots 2 and 3 of <see cref="Land"/>,
+    /// whose own are the morning's (plan 06 · R13; the original's <c>day</c> and <c>night</c>,
+    /// <c>WildEncounters_ReplaceTimedEncounters</c>). Left out with the land table.
+    /// </summary>
+    public List<string>? Day { get; set; }
+    public List<string>? Night { get; set; }
+
+    /// <summary>The two species a swarm here puts in slots 0 and 1 (the original's <c>swarms</c>); left out with the land table.</summary>
+    public List<string>? Swarm { get; set; }
+
+    /// <summary>The four species the Poké Radar's hard shake puts in slots 4, 5, 10 and 11 (the original's <c>radar</c>); left out with the land table.</summary>
+    public List<string>? Radar { get; set; }
+
+    /// <summary>
     /// The wild Pokémon met surfing on the area's water: five slots, met 60, 30, 5, 4 and 1 times in a hundred
     /// (<see cref="WaterSlotWeights"/>), each with a range of levels. Left out when it has none.
     /// </summary>
@@ -414,6 +428,72 @@ public sealed class HabitatArea
     public List<string>? OldRod { get; set; }
     public List<string>? GoodRod { get; set; }
     public List<string>? SuperRod { get; set; }
+}
+
+/// <summary>
+/// Platinum's tables of wild Pokémon that belong to no one area's header (plan 06 · R13; the original's
+/// <c>encdata_ex</c> archive, written by <c>tools/MapImporter --data</c> into <c>world/&lt;region&gt;/encounters.json</c>):
+/// the honey trees', the Great Marsh's daily Pokémon, the Trophy Garden's and Feebas's tiles.
+/// </summary>
+public sealed class WorldEncountersFile
+{
+    public const string FileName = "encounters.json";
+
+    /// <summary>What comes to a honey tree, six slots to each group (<c>encounters_honey_tree.json</c>): the common, the uncommon and the rare (Munchlax).</summary>
+    public HoneyTreeTables HoneyTrees { get; set; } = new();
+
+    /// <summary>
+    /// The Great Marsh's daily Pokémon (<c>encounters_great_marsh_lookout.json</c>): 32 species each, one drawn for
+    /// each of its six areas by the day's number, from <see cref="GreatMarshTables.Local"/> before the National
+    /// Pokédex and from <see cref="GreatMarshTables.National"/> after.
+    /// </summary>
+    public GreatMarshTables GreatMarsh { get; set; } = new();
+
+    /// <summary>The sixteen species Mr. Backlot can bring to his Trophy Garden (<c>encounters_trophy_garden.json</c>'s <c>daily_encounters</c>).</summary>
+    public List<string> TrophyGarden { get; set; } = new();
+
+    /// <summary>Where Feebas lives: the tiles of a lake fished with any rod (the original's <c>elusive_rod_encounter</c>).</summary>
+    public FeebasTiles Feebas { get; set; } = new();
+
+    /// <summary>
+    /// The places swarms come to, in the original's order (<see cref="Overworld.Swarms.Areas"/>), each with its name
+    /// and the species that swarms there (its table's first <c>swarms</c> species, <c>Swarm_GetMapIdAndSpecies</c>):
+    /// what is told of the day's swarm, open place or not.
+    /// </summary>
+    public List<SwarmPlace> Swarms { get; set; } = new();
+}
+
+[JsonConverter(typeof(OneLine<SwarmPlace>))]
+public sealed class SwarmPlace
+{
+    public string Area { get; set; } = "";
+    public string Name { get; set; } = "";
+    public string Species { get; set; } = "";
+}
+
+public sealed class HoneyTreeTables
+{
+    public List<string> Common { get; set; } = new();
+    public List<string> Uncommon { get; set; } = new();
+    public List<string> Rare { get; set; } = new();
+}
+
+public sealed class GreatMarshTables
+{
+    public List<string> Local { get; set; } = new();
+    public List<string> National { get; set; } = new();
+}
+
+/// <summary>
+/// Feebas's lake: the area, the species and every tile of the lake the original divides among four groups (in
+/// its own order, which is what the day's number picks from), <c>"x,z"</c> in tiles of the area's matrix, separated
+/// by spaces.
+/// </summary>
+public sealed class FeebasTiles
+{
+    public string Area { get; set; } = "";
+    public string Species { get; set; } = "";
+    public string Tiles { get; set; } = "";
 }
 
 /// <summary>

@@ -116,6 +116,20 @@ public class NPC
 
     public bool IsObstacle => Obstacle != null;
 
+    // ---- Things of a Gym's puzzle (plan 01 · M9)
+
+    /// <summary>The <see cref="NpcType"/>s of the things of the Gyms' puzzles: in the way like a person, drawn as a card.</summary>
+    public const string PunchingBagType = "PunchingBag", TireStackType = "TireStack", BollardType = "Bollard";
+
+    /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
+    public PropType? GymThing => NpcType switch
+    {
+        PunchingBagType => PropType.PunchingBag,
+        TireStackType => PropType.TireStack,
+        BollardType => PropType.Bollard,
+        _ => null
+    };
+
     /// <summary>The <see cref="NpcType"/> of an obstacle.</summary>
     public static string TypeOf(PropType obstacle) => obstacle switch
     {
@@ -129,7 +143,7 @@ public class NPC
     /// A thing rather than a person: an item's ball or an obstacle. It is drawn as a card, never as a character,
     /// and never turns to face anyone.
     /// </summary>
-    public bool IsThing => IsItemBall || IsObstacle;
+    public bool IsThing => IsItemBall || IsObstacle || GymThing != null;
 
     // ---- The story (plan 02 · S1)
 

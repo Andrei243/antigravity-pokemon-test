@@ -314,6 +314,21 @@ public sealed class ScriptRunner
             case Op.Turnback:
                 host.Turnback();
                 break;
+            // SetTrainerFlag: a Gym's trainers count as beaten once its Leader is (plan 01 · M9)
+            case Op.Defeat:
+                story.Defeat(i.Name);
+                host.Defeat(i.Name);
+                break;
+            // AdvanceEternaGymClock: the clock turns on to its next time; RESULT is 1 when it turned, 2 when a
+            // fountain drained with it too, 0 once the Leader is beaten and there is no further time
+            case Op.FlowerClock:
+            {
+                int from = story.Var(EternaClock.StateVar);
+                Result = EternaClock.Advance(story) ? (EternaClock.HasWater(from, true) != EternaClock.HasWater(from + 1, true)
+                    || EternaClock.HasWater(from, false) != EternaClock.HasWater(from + 1, false) ? 2 : 1) : 0;
+                if (Result > 0) host.TurnClock(from, from + 1);
+                break;
+            }
             case Op.Partner:
                 if (i.Option)
                 {
@@ -519,6 +534,49 @@ public sealed class ScriptRunner
                 Result = host.Trade(i.Name, Result) ? 1 : 0;
                 break;
 
+            // Wild Pokémon (plan 06 · R13)
+            case Op.HoneyTree:
+            {
+                int tree = host.HoneyTreeFaced ?? throw Wrong(i, "the player faces no honey tree");
+                var state = host.Encounters;
+                switch (i.Name)
+                {
+                    case "status":
+                        // GetHoneyTreeStatus: 1 bare, 2 slathered, 3 ready
+                        Result = (int)HoneyTrees.Status(state.Trees[tree]);
+                        break;
+                    case "slather":
+                        HoneyTrees.Slather(state, tree, host.TrainerNumber, host.Chance);
+                        break;
+                    default:
+                    {
+                        // StartHoneyTreeBattle: whatever came to the tree, and the honey is gone from it
+                        var met = HoneyTrees.Meet(state, tree, SpecialEncounterTables.Sinnoh.HoneyTrees, WildLead.Of(host.Party), host.Chance);
+                        var species = PokemonDatabase.Get(met.SpeciesName) ?? throw Wrong(i, $"there is no species '{met.SpeciesName}'");
+                        host.WildBattle(new Pokemon(species, met.MinLevel, host.Chance, met.Gender, met.Nature), BattleKind.Normal, cannotFlee: false);
+                        afterBusy = () => AfterBattle(mayLose: false);
+                        break;
+                    }
+                }
+                break;
+            }
+            case Op.Swarms:
+                host.Encounters.SwarmsOn = true;
+                break;
+            case Op.TrophyGarden:
+                TrophyGardenRules.AddNew(host.Encounters, SpecialEncounterTables.Sinnoh.TrophyGarden, host.Chance);
+                break;
+            case Op.Roamer:
+                Roamers.SetLoose(host.Encounters, Roamers.SlotOf(i.Name) ?? throw Wrong(i, $"'{i.Name}' doesn't roam"), host.Chance);
+                break;
+            case Op.SurvivePoison:
+            {
+                // SurvivePoison: the team's Pokémon at the place the variable gives, cured if it came through
+                int slot = Value(i.Name);
+                Result = slot >= 0 && slot < host.Party.Count && FieldPoison.TrySurvive(host.Party.Members[slot]) ? 1 : 0;
+                break;
+            }
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -676,6 +734,12 @@ public sealed class ScriptRunner
             "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),
+            // The team's Pokémon at the place a variable gives (poison's survivors)
+            "member" when argument.Length > 0 => Value(argument) is var slot && slot >= 0 && slot < host.Party.Count ? host.Party.Members[slot].Nickname : "",
+            // The day's swarm and where it is, and the Trophy Garden's newest (plan 06 · R13)
+            "swarm" => Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily)),
+            "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
+            "trophygarden" => TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden) ?? "",
             _ => match.Value
         };
     }) : text;

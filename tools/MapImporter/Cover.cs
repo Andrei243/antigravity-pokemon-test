@@ -40,6 +40,7 @@ public static class Cover
         ("step|slope", TerrainCover.Steps),
         ("^nsand|^blueglay|^road|^hage$", TerrainCover.Path),
         ("_road|^c\\d+_r\\d|_cy\\d|_base|_g\\d$|_grand$|kado$", TerrainCover.Paving),
+        ("^dun08_chip|^colum_", TerrainCover.Paving),            // Spear Pillar's ancient stone floor, and its columns' feet
         ("^c\\d+_lamp|^c\\d+_light|^bf_light", TerrainCover.Lamp),      // the street lamps of the cities
         ("hanger|rale|stop$|lamp|light|^c\\d+_f_|^c\\d+_d_|_pol\\d|_hei_|_gate|^c1_o02$", TerrainCover.Fence)
     }.Select(r => (new Regex(r.Item1, RegexOptions.Compiled), r.Item2)).ToArray();

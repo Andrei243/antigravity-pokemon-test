@@ -31,7 +31,11 @@ public sealed class WorldRenderer
     public WorldRenderer(RenderContext context)
     {
         this.context = context;
+        gymPieces = new GymPieces(context.Shaders);
     }
+
+    // What moves in a Gym's puzzle (plan 01 · M9): the clock's hands, the fountains' water
+    private readonly GymPieces gymPieces;
 
     private MapScene GetScene(Map map)
     {
@@ -267,6 +271,13 @@ public sealed class WorldRenderer
     /// </summary>
     internal FieldLife Life { get; } = new();
 
+    /// <summary>
+    /// Tiles of grass that something unseen shakes (the Poké Radar's patches, plan 06 · R13), and whether hard: the
+    /// grass there parts as round a walker's feet, from a point that jumps from side to side on the field's clock.
+    /// The game sets it every frame.
+    /// </summary>
+    internal List<(int X, int Y, bool Hard)> Stirring { get; } = new();
+
     // How far the light has gone over to snow country's (0 to 1), the field clock when it was last eased, and the map
     private float snowMix;
     private double snowClock;
@@ -403,6 +414,20 @@ public sealed class WorldRenderer
             darkTile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
         }
 
+        // In a dark room of the Hearthome Gym, where each light is on the picture: the player's and every trainer's
+        gymLights.Clear();
+        gymFog = 0f;
+        if (player != null && map.Puzzle is HearthomeDoors rooms)
+        {
+            gymFog = rooms.Fog;
+            gymLights.Add(OnPicture(new Vector3(px, groundY, pz), camera, out gymTile));
+            foreach (var npc in HearthomeDoors.LightBearers(map))
+            {
+                float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
+                gymLights.Add(OnPicture(new Vector3(nx, Relief.At(map, nx, nz), nz), camera, out _));
+            }
+        }
+
         // Outdoors, only the part of the map near the view is drawn (rooms are small enough to draw whole)
         GroundRect? view = null, casters = null;
         if (!indoors) (view, casters) = VisibleRects(map, camera.Target, groundY, light.SunDirection);
@@ -420,6 +445,13 @@ public sealed class WorldRenderer
 
         // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
         walkerFeet.Clear();
+        // Shaking grass first, so the people are among the last eight the shader keeps
+        int shake = (int)(Life.Now * 12.0) % 2 == 0 ? 1 : -1;
+        foreach (var (sx, sy, hard) in Stirring)
+        {
+            float cx = sx + 0.5f + shake * (hard ? 7f : 4f) / 32f, cz = sy + 0.5f;
+            walkerFeet.Add(new Vector3(cx, Relief.At(map, sx + 0.5f, cz), cz));
+        }
         foreach (var actor in actors) walkerFeet.Add(actor.Feet);
         shaders.SetWalkers(walkerFeet);
 
@@ -437,6 +469,7 @@ public sealed class WorldRenderer
         Rlgl.DisableBackfaceCulling();
         foreach (var scene in scenes)
             if (Reaches(scene, casters)) scene.DrawDepth(casters);
+        gymPieces.DrawDepth(map);
         DrawActors(CharacterPass.Depth);
         DrawThings(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
@@ -466,6 +499,7 @@ public sealed class WorldRenderer
 
         foreach (var scene in scenes)
             if (Reaches(scene, view)) scene.Draw(view);
+        gymPieces.Draw(map);
         // In a room the light on the floor is daylight; outdoors it is lamplight, which only shows once it is dark
         // (squared, so pools stay faint while the lamps are coming on at twilight)
         foreach (var scene in scenes)
@@ -502,6 +536,7 @@ public sealed class WorldRenderer
         context.Composite(new Rectangle(0, 0, destWidth, destHeight));
         DrawWeather(destWidth, destHeight);
         if (dark) DrawDarkness(destWidth, destHeight);
+        if (gymFog > 0f) DrawGymFog(destWidth, destHeight);
     }
 
     private bool dark;
@@ -528,6 +563,63 @@ public sealed class WorldRenderer
         if (lit.X > 0 && height > 0) Raylib.DrawRectangleRec(new Rectangle(0, top, lit.X, height), colour);
         if (right < destWidth && height > 0) Raylib.DrawRectangleRec(new Rectangle(right, top, destWidth - right, height), colour);
     }
+
+    private float gymFog;
+    private Vector2 gymTile;
+    private readonly List<Vector2> gymLights = new();
+
+    /// <summary>Where a point of the ground is on the picture (0 to 1 each way), round a person's middle, and how large a tile is there.</summary>
+    private static Vector2 OnPicture(Vector3 feet, Camera3D camera, out Vector2 tile)
+    {
+        var at = Raylib.GetWorldToScreenEx(feet, camera, 1920, 1080);
+        var east = Raylib.GetWorldToScreenEx(feet + Vector3.UnitX, camera, 1920, 1080);
+        var south = Raylib.GetWorldToScreenEx(feet + Vector3.UnitZ, camera, 1920, 1080);
+        tile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
+        return new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
+    }
+
+    /// <summary>
+    /// The dark of the Hearthome Gym's rooms (style guide, "Gyms"): a black fog over the whole picture, not quite
+    /// opaque (<see cref="HearthomeDoors.Fog"/>), lifted round the player and round each trainer, each light a circle
+    /// of the floor. Drawn as a grid whose corners take the fog of the nearest light, so any number of lights join.
+    /// </summary>
+    private void DrawGymFog(int destWidth, int destHeight)
+    {
+        const int cell = 20;
+        int cols = (destWidth + cell - 1) / cell, rows = (destHeight + cell - 1) / cell;
+        if (gymCorners.Length < (cols + 1) * (rows + 1)) gymCorners = new byte[(cols + 1) * (rows + 1)];
+        for (int j = 0; j <= rows; j++)
+            for (int i = 0; i <= cols; i++)
+            {
+                float u = i * cell / (float)destWidth, v = j * cell / (float)destHeight, fog = 1f;
+                foreach (var light in gymLights)
+                {
+                    float dx = (u - light.X) / gymTile.X, dy = (v - light.Y) / gymTile.Y;
+                    fog = MathF.Min(fog, HearthomeDoors.FogAt(MathF.Sqrt(dx * dx + dy * dy)));
+                }
+                gymCorners[j * (cols + 1) + i] = (byte)MathF.Round(fog * gymFog * 255f);
+            }
+
+        var (r, g, b) = Darkness.Colour;
+        for (int j = 0; j < rows; j++)
+        {
+            Rlgl.CheckRenderBatchLimit(4 * cols);
+            Rlgl.Begin(DrawMode.Quads);
+            float y0 = j * cell, y1 = MathF.Min(destHeight, y0 + cell);
+            for (int i = 0; i < cols; i++)
+            {
+                float x0 = i * cell, x1 = MathF.Min(destWidth, x0 + cell);
+                int k = j * (cols + 1) + i;
+                Rlgl.Color4ub(r, g, b, gymCorners[k]); Rlgl.Vertex2f(x0, y0);
+                Rlgl.Color4ub(r, g, b, gymCorners[k + cols + 1]); Rlgl.Vertex2f(x0, y1);
+                Rlgl.Color4ub(r, g, b, gymCorners[k + cols + 2]); Rlgl.Vertex2f(x1, y1);
+                Rlgl.Color4ub(r, g, b, gymCorners[k + 1]); Rlgl.Vertex2f(x1, y0);
+            }
+            Rlgl.End();
+        }
+    }
+
+    private byte[] gymCorners = Array.Empty<byte>();
 
     private void DrawWeather(int destWidth, int destHeight)
     {
@@ -741,7 +833,7 @@ public sealed class WorldRenderer
             {
                 // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of
                 // its tile's middle, as the props it once was did
-                var kind = npc.Obstacle ?? PropType.Mailbox;
+                var kind = npc.Obstacle ?? npc.GymThing ?? PropType.Mailbox;
                 float bx = npc.DrawX + 0.5f, bz = npc.DrawY + ThingCards.FootOf(kind);
                 things.Add((new Vector3(bx, Relief.At(map, bx, bz), bz), kind));
                 continue;

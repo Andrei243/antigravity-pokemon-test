@@ -21,7 +21,7 @@ public sealed partial class BattleCore
             Say($"{runner.Name} tried to get away, but couldn't!");
             return;
         }
-        Say($"{runner.Name} ran away!").With(new Left(runner.Place));
+        Say($"{runner.Name} ran away!").With(new Left(runner.Place, Ran: true));
         End(BattleResult.EnemyFled);
     }
 
@@ -68,7 +68,7 @@ public sealed partial class BattleCore
         int fleeRate = p.Species.SafariFleeRate * num / den;
         if (rng.Roll(RollKind.Safari, 255) <= fleeRate)
         {
-            Say($"The wild {p.DisplayName} fled!").With(new Left(foe.Place));
+            Say($"The wild {p.DisplayName} fled!").With(new Left(foe.Place, Ran: true));
             End(BattleResult.EnemyFled);
             return;
         }

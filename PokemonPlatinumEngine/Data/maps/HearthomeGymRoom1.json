@@ -1,0 +1,121 @@
+{
+  "name": "HearthomeGymRoom1",
+  "displayName": "Hearthome Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ghost",
+  "puzzle": "HearthomeRoom1",
+  "width": 17,
+  "height": 12,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_#___#___#___#_#",
+    "#_______________#",
+    "####_#_#_#_#_####",
+    "#_#____#_#______#",
+    "#_#___#####__#__#",
+    "#_____#______#__#",
+    "#_###_______###_#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "####.###.###.####",
+    "#.#...#...#...#.#",
+    "#...............#",
+    "####.#.#.#.#.####",
+    "#.#....#.#......#",
+    "#.#...#####..#..#",
+    "#.....#......#..#",
+    "#.###.......###.#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymRoom2",
+      "targetX": 14,
+      "targetY": 22,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymRoom2",
+      "targetX": 14,
+      "targetY": 22,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymRoom2",
+      "targetX": 14,
+      "targetY": 22,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 11,
+      "targetMap": "HearthomeGym",
+      "targetX": 4,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "youngster_donny",
+      "name": "Donny",
+      "npcType": "Youngster",
+      "x": 12,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "youngster_donny",
+        "name": "Donny",
+        "trainerClass": "Youngster",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Youngster Donny: It's so dark in here... Wh-who's there?! A Trainer? Then let's battle!",
+        "dialogueAfter": "Youngster Donny: Phew. At least now I know it was only you.",
+        "sightRange": 2
+      },
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "lass_molly",
+      "name": "Molly",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 7,
+      "facing": "Right",
+      "trainer": {
+        "id": "lass_molly",
+        "name": "Molly",
+        "trainerClass": "Lass",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Lass Molly: Ghost Pokémon love the dark, and so do I! Let me show you why.",
+        "dialogueAfter": "Lass Molly: The candlelight suits you. Maybe you'll find the right door.",
+        "sightRange": 2
+      },
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    }
+  ],
+  "wildEncounters": []
+}

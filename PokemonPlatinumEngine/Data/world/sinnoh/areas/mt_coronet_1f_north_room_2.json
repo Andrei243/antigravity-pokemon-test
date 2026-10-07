@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 34 }
   ],
   "landRate": 10,
+  "day": [
+    "Meditite",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Clefairy"
+  ],
+  "swarm": [
+    "Bronzor",
+    "Graveler"
+  ],
+  "radar": [
+    "Machoke",
+    "Meditite",
+    "Golbat",
+    "Chingling"
+  ],
   "warps": [
     { "x": 10, "z": 27, "to": "mt_coronet_b1f", "toWarp": 1 },
     { "x": 2, "z": 18, "to": "route_216", "toWarp": 0 },

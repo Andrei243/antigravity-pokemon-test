@@ -249,7 +249,7 @@ internal static partial class ModernUi
         if (shown.MetLocation is { } place)
         {
             Label(shown.MetDate is { } day ? $"MET  {day.ToString("d MMM yyyy", CultureInfo.InvariantCulture).ToUpperInvariant()}" : "MET", x, y + 696);
-            var lines = Wrap($"Met in {place} at Lv. {shown.MetLevel}.", wide, 26, UiWeight.ExtraBold);
+            var lines = Wrap($"Met {PlaceWords.In(place)} at Lv. {shown.MetLevel}.", wide, 26, UiWeight.ExtraBold);
             for (int i = 0; i < lines.Count && i < 2; i++) UiFonts.Draw(lines[i], x, y + 722 + i * 34, 26, Ink, UiWeight.ExtraBold);
         }
         if (shown.HeldItem is { } item)

@@ -1,0 +1,221 @@
+{
+  "name": "EternaCycleShop",
+  "displayName": "Rad Rickshaw's Cycle Shop",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#######D#########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#.....##..####.##",
+    "#.....#.........#",
+    "###.###.##.##.###",
+    "#...............#",
+    "#.........##.##.#",
+    "#...............#",
+    "#.......##.##.###",
+    "#..##...........#",
+    "#..##.....##.##.#",
+    "#######.#########"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 10,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 12,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 8,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 11,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 14,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 10,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 13,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 8,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 11,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 14,
+      "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 10,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bicycle",
+      "x": 13,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 310,
+      "targetY": 540,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 3,
+      "text": "A manual for the newest Bicycle. \"Change gear with the run button: the low gear steers easily, the high gear flies!\""
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "text": "A manual for the newest Bicycle. \"Change gear with the run button: the low gear steers easily, the high gear flies!\""
+    },
+    {
+      "x": 12,
+      "y": 3,
+      "text": "A catalogue of bicycles from the Hoenn region: one built for nothing but speed, and one built for tricks and jumps."
+    },
+    {
+      "x": 13,
+      "y": 3,
+      "text": "A catalogue of bicycles from the Hoenn region: one built for nothing but speed, and one built for tricks and jumps."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "pokefan_m",
+      "name": "Manager",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "script": "Manager",
+      "hiddenBy": "FLAG_HIDE_CYCLE_SHOP_POKEFAN_M"
+    },
+    {
+      "id": "youngster",
+      "name": "Shop Boy",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 10,
+      "facing": "Left",
+      "script": "ShopBoy"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -350,7 +350,6 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | A partner travelling with the player | Fly, Teleport, Dig and an Escape Rope are refused while Cheryl, Mira, Riley or Buck walks along | The check is there (`FieldMoveError.Partner`) and never fires | Nobody walks along yet: their chapters (plan 02 · S6, S7, S10, S15) |
 | The Pokétch | Twenty-five apps on the lower touch screen | The digital watch, the pedometer and the team's app, on a watch over the field (P shows it, O changes the app) | One screen and no touch; the other apps come with what they show (the Dowsing Machine with item hunting, the Day-Care Checker with the Day Care) |
 | The Bicycle | The player drawn riding it | Its pace, rules, music and sounds; the player is drawn on foot | No riding sprite yet |
-| Feebas | Only on six tiles of Mt. Coronet's lake, which change with the trend | Fished like any other slot | The lake's floor isn't open |
 | Fly's map | A cursor over the town map | A list of the towns beside the map, the town ringed | Our own interface (style guide, "Fly") |
 
 ## After the battle (2026-10-06, plan 06 · R10)
@@ -416,7 +415,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | --- | --- | --- | --- |
 | The calendar's penalty | Changing the console's clock puts the five places on the 2nd of January's weather for a day (`FieldSystem_HasPenalty`) | No penalty: the row is always today's | The game reads the computer's clock and keeps no record of it being changed |
 | The Safari Game's gate | A counter in the observatory gate's room asks before the marsh | Asked as the player comes out into the marsh, which sends them back out on a no | The gate's rooms come with plan 01 · M11; until then it is walked through |
-| The marsh's daily Pokémon and its binoculars | Six species a day by the date, shown through the coin viewers; the tram rides between the areas | The areas' own tables every day; the viewers and the tram stand there and do nothing yet | Plan 06 · R13 (the Great Marsh's dailies) and plan 02's scripts |
+| The marsh's binoculars | The day's species shown through the coin viewers; the tram rides between the areas | The day's species are met (plan 06 · R13); the viewers and the tram stand there and do nothing yet | Plan 02's scripts |
 | Retiring from the game | The menu offers to end it early | Walk out through the gate | No field menu entry for it yet |
 | Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | No moving platforms yet (the Canalave Gym's lifts, plan 01 · M9, are the first to need them) |
 | Sailor Eldritch's boat | Sails to Iron Island, and to Fullmoon and Newmoon Islands when the story sends the player there | Iron Island and back | The two islands are plan 01 · M10's |
@@ -478,3 +477,59 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Galactic lobby theme in the Windworks | `SEQ_D_GINLOBBY` until Mars is beaten | Route 205's theme throughout | No lobby theme yet (plan 05) |
 | Cheryl joining | A jingle of its own (`SEQ_GONIN`) | The level-up fanfare | No partner jingle yet (plan 05) |
 | A follower through a warp | Follows the player onto the next map | Stays on her own map, the battles still beside the player | Only Cheryl travels so far, and the forest's exits turn the player back while she does |
+
+## Wild encounters (2026-10-07, plan 06 · R13)
+
+**Platinum's rules, kept as they are** (`src/overlay006/wild_encounters.c`, `swarm.c`, `special_dates.c`, `great_marsh_daily_encounters.c`, `trophy_garden_daily_encounters.c`, `roamer_after_battle.c`, `feebas_fishing.c`, `src/overlay005/honey_tree.c`, `field_control.c`, `src/pokeradar.c`, `src/roaming_pokemon.c`, `src/special_encounter.c`, `res/field/encounters/`)
+
+- **The grass's slots at a moment** (`WildEncounters_TryWildEncounter`), each keeping the level and weight of the slot it takes: the morning (4:00 to 9:59) keeps the table's own slots 2 and 3, the day and the evening (10:00 to 19:59) put the area's day species in them and the night and the late night (20:00 to 3:59) its night species; then a swarm's species in slots 0 and 1, the Trophy Garden's two in 6 and 7 once the player has the National Pokédex, and during a Safari Game the Great Marsh's daily species in 6 and 7. Water and rods keep their tables (but Feebas's tiles, below).
+- **The day's number** (`RecordMixedRNG`, `SpecialEncounter_SetMixedRecordDailies`): each new day moves it on (× 1,812,433,253 + 1 in 32 bits, once a day passed), and the Great Marsh's and the swarm's numbers become it. Swarms are at one of 22 places, the number modulo 22 (`sSwarmMapIdTable`), from the day the assistant's sister first tells of them; the Great Marsh's six areas each read five bits of theirs (area n the bits from 5n) from a list of 32, the National Pokédex's once the player has it.
+- **The Trophy Garden** (`TrophyGarden_AddNewMon`): each new Pokémon is drawn from the garden's sixteen until it is neither of the two there, takes the first place and moves the first to the second.
+- **The days that change the odds** (`SpecialDates_ModifyEncounterRate`): on 39 days of the year (the original's list of 43, four of which change nothing) the flat chance that an attempt gets through (40 in a hundred, 70 in very tall grass or on a Bicycle) moves by five or ten either way, never under one; with the clock's penalty (which this game never gives, "The east and the sea") it wouldn't.
+- **What wild Pokémon hold** (`Pokemon_GiveHeldItem`): a species whose two items are the same always holds it; otherwise 45 in a hundred hold nothing, 50 the common item and 5 the rare, or 20, 60 and 20 with Compound Eyes at the head of the team. Every wild Pokémon met in the field or put in the way by a script is given one, but a roamer, the catching lesson's and Pal Park's.
+- **What keeps a Pokémon away**: Sweet Scent and Honey draw one out whatever the lead's Keen Eye or Intimidate and whatever Repel lasts (`WildEncounters_TrySweetScentEncounter`); a rod's catch can be kept away by Keen Eye and Intimidate but never by a Repel; a roamer is kept away by a Repel as a Pokémon of its level would be.
+- **A Pokémon hooked on a rod is fought on the water** (`FieldBattleDTO_SetWaterTerrain`), wherever the player stands to fish: the Dive Ball, Camouflage, Nature Power and Secret Power read water.
+- **Honey trees** (`HoneyTree_SlatherTree`, `HoneyTree_GetTreeSlatherStatus`): 21 trees, slathered from the south with a Honey. A day's honey (1,440 minutes) draws one group as it is slathered: nothing 10 in a hundred, the common table 70 and the uncommon 20, or at one of the player's four Munchlax trees nothing 9, common 20, uncommon 70 and Munchlax 1. Six hours later (1,080 minutes left) a slot of the group's six is waiting (40, 20, 20, 10, 5, 5 in a hundred) at a level from 5 to 15, and the tree shakes as the group's table says. The same tree slathered twice running keeps its group nine times in ten. The four Munchlax trees are four bytes of the trainer's 32-bit number, each modulo 21, later ones moved on past any repeat. Battling what came takes the honey with it.
+- **The Poké Radar** (`PokeRadar_*`, `RadarSpawnPatches`, `SetupGrassPatches`): fifty steps charge its battery; used standing in tall grass, on foot and alone, it sets one patch of tall grass shaking on each of four rings round the player (9, 7, 5 and 3 tiles across), only at the player's height in the player's place. A patch walked into always meets a Pokémon. The first starts a chain of its species; after a battle won or a catch the patches are set again, each going on with the chain 88, 68, 48 and 28 times in a hundred from the outer ring in (98, 78, 58, 38 after a catch) and, if so, sparkling one time in 8,200 − 200 × the chain (never better than one in 200); a patch that doesn't go on shakes softly or hard on a coin, and a hard shake puts the area's four radar species in slots 4, 5, 10 and 11. Running, losing, another Pokémon met, a trainer, a warp, the Bicycle or every patch out of the screen ends the chain, which counts to 999.
+- **Roaming Pokémon** (`RoamingPokemon_*`, `RoamerAfterBattle_UpdateRoamers`): six slots (Mesprit and Cresselia at 50, Darkrai at 40, the three birds at 60), each set loose by the story. Whenever the player walks into another place every roamer moves on, anywhere one time in sixteen and to a place nearby otherwise, never into the one the player has just left (a warp notes where the player is but moves nobody; not during a Safari Game); flying, Teleport and a game continued send each anywhere. Where one is, a Pokémon met in the field is it one time in two (not beside a partner or in a radar patch). It flees, keeps its HP and condition, and once knocked out or caught roams no more (`VAR_ROAMING_<SPECIES>_STATE`); after any battle with it, and three times in ten after another wild battle, every roamer where the player stands moves elsewhere.
+- **Feebas** (`PlayerAvatar_IsFacingFeebasTile`): the tiles of Mt. Coronet's lake are cut into four groups in the original's order, and the day's number picks one of each by its four bytes; a cast at one hooks Feebas (levels 10 to 20, any rod) one time in two.
+- **Poison in the field** (`Field_UpdatePoison`, `Pokemon_DoPoisonDamage`, `Pokemon_TrySurvivePoison`): every fourth step each poisoned Pokémon able to fight loses a hit point, never its last, and the field flashes; one left with one hit point comes through, cured, and loses a little friendship (5, 5 or 10 by its band).
+
+**Our own choices**
+
+- The honey tree's, the radar's, the poison's and the swarm's lines are our own words.
+- The day's number starts at a draw of the field's chance in a new game, where the original starts it at nothing until a record-mixing group is founded; the trainer's hidden half (the 16 bits the card doesn't show) is drawn the same way and kept with the wild Pokémon's state (`SpecialEncounters.SecretId`).
+- The radar's patches stir their grass (it parts and jumps from side to side, as round someone's feet) and shed a few blades, the more for a hard shake, a sparkle over a shiny one; a honey tree with Pokémon at it sheds leaves from its crown. The original animates the grass and the tree with sprites of its own.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The pair of species a second game calls up | Slots 8 and 9 take two of the game in the DS's other slot | The table's own | No second game to read (plan 08's dual-slot stand-in) |
+| Who tells of swarms and of the Trophy Garden | The assistant's sister in her house in Sandgem Town; Mr. Backlot in his mansion, once a day | The common scripts are ready (`common.SwarmNews`, the `trophygarden` command) and nobody runs them yet | Their rooms are plan 01 · M11's |
+| The radar's chain records and its music | The longest chain kept, the radar's own theme while patches shake | Neither | Records are plan 08's; the theme is plan 05's |
+| Who is where | The Pokétch's marking map shows the roamers; the TV tells of swarms | Neither yet | The Pokétch's map is plan 06 · R14's, the TV plan 08's |
+| Poison by the modern rules | Generation 5 on: poison does nothing outside battle | So (`Ruleset.PoisonInTheField`) | The modern preset's ruling |
+
+## The third chapter, second half (2026-10-07, plan 02 · S6)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_eterna_city.s`, `scripts_team_galactic_eterna_building_1f.s` to `_4f.s`, `scripts_cycle_shop.s`, `scripts_eterna_city_underground_man_house.s`, `scripts_eterna_city_pokecenter_1f.s`, `scripts_eterna_forest.s`, `scripts_eterna_city_gym.s`, `src/map_object.c`)
+
+- **HM01 comes before the Gym**: Cynthia gives it in front of Team Galactic's building as soon as the rival's scene at the statue is over (her trigger waits for `VAR_ETERNA_CITY_STATE` 1), and Cut clears the trees in the field only with the Forest Badge, so the building, behind a tree, comes after the Gym.
+- **Gardenia stands at her Gym's door** from the start of a game and goes in once spoken to. Someone a script takes away is hidden by their own flag for good, as the original's `RemoveObject` sets it (`MapObject_SetFlagAndDeleteObject`): the rival, Cyrus, Cynthia and Gardenia all leave so.
+- **The building's floors are the original's to the tile**, and so is Looker's warning: on each floor one way up comes out in a pocket with a grunt and an item whose only way on is back down, the other where the next way up is. Its grunts, Scientist Travon and Commander Jupiter fight with Platinum's teams; Jupiter's defeat takes every grunt out of the building and the town (`FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS`) and sends the manager home.
+- **Eterna's ways out are watched** from the Bicycle (`VAR_ETERNA_CITY_BLOCK_EXITS_STATE` 1) until the player has the Explorer Kit as well, which the town's arrival script checks: the west way tells of the Cycling Road, the south one sends the player to the Underground Man.
+- **Gardenia waits before the Old Chateau** once her Gym's script has cleared `FLAG_HIDE_ETERNA_FOREST_GARDENIA`, as the original's does after her battle.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Cynthia's Egg | After Commander Jupiter, by the cycle shop: a Togepi Egg, and she waits there until the team has room or the player takes it | Not given; her two triggers (states 3 and 4) wait | There are no eggs yet (plan 06 · R15) |
+| The Pokémon Team Galactic held | A Clefairy and a Buneary on the top floor, then the Clefairy in the cycle shop and the Buneary in the Pokémon Center | Not there; the flags that move them are set as the original sets them | A Pokémon can't stand in the field yet (plan 10) |
+| The Galactic lobby theme in the building | `SEQ_D_GINLOBBY` until Jupiter is beaten | Eterna's theme throughout | No lobby theme yet (plan 05) |
+| The Underground Man's missions and his PC | Six missions below ground; the PC's pages on flags, spheres and traps | The Explorer Kit, his offer and the first mission; the PC's notes in a line | The Underground is plan 06 · R16's |
+| The bug catcher at the west way out | Goes back to his line about the wind once the assistant has been met on Route 207 | Tells of the Cycling Road as long as the player has the Bicycle | Route 207's scene is plan 02 · S7's |
+| The Friendship Checker's woman | Reads out the first Pokémon's friendship on later visits | One line of her own after giving the app | A script can't ask a Pokémon's friendship yet; the app is kept and shown once the Pokétch runs it |
+| The Old Chateau | Its rooms, its ghosts and Rotom's television | Its door in the forest stays shut | Its rooms are plan 01 · M11's; nothing of the story happens inside |
+| Rotom's room in the building | Behind a wall on the ground floor that the Secret Key opens | The wall | The Secret Key is the post-game's |

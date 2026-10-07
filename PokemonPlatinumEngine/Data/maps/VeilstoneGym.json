@@ -1,0 +1,486 @@
+{
+  "name": "VeilstoneGym",
+  "displayName": "Veilstone Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fighting",
+  "puzzle": "VeilstoneBags",
+  "width": 26,
+  "height": 32,
+  "ground": [
+    "##########################",
+    "##########################",
+    "##########################",
+    "#########_______########_#",
+    "#########________________#",
+    "#########_______#________#",
+    "############_#########___#",
+    "#__#__#_==============_#_#",
+    "#____#_____#________##___#",
+    "#____###_###__________#__#",
+    "#__=#__#_==========_#_#__#",
+    "#__=__##_##__######___#=##",
+    "#_#=====_#___#++++#_=##=_#",
+    "#__==_##_##__#++++#_=##=_#",
+    "##_=====_#___++++++_=##=_#",
+    "#___=_______##++++#_=_#=_#",
+    "#___=_______#######_==#=_#",
+    "##_======_#_________==#=_#",
+    "#__==___=#___________=#=_#",
+    "#__==___=#__________#=#=_#",
+    "##_======_#__#######_=#=_#",
+    "#___=________##++++#_=#=_#",
+    "###_=######___+++++#_=#=_#",
+    "#____######___#+++++_=#=_#",
+    "#___#######___#++++#_=#=_#",
+    "#____######___######__#=_#",
+    "#____######__#_=====_##=_#",
+    "#____######___________#=_#",
+    "#________________________#",
+    "#______________________#_#",
+    "#_____________________####",
+    "############D#############"
+  ],
+  "solid": [
+    "##########################",
+    "##########################",
+    "##########################",
+    "#########.......########.#",
+    "#########................#",
+    "#########.......#........#",
+    "############.#########...#",
+    "#..#..#................#.#",
+    "#....#.....#........##...#",
+    "#....###.###..........#..#",
+    "#...#..#............#.#..#",
+    "#.....##.##..######...#.##",
+    "#.#......#...#....#..##..#",
+    "#.....##.##..#....#..##..#",
+    "##.......#...........##..#",
+    "#...........##....#...#..#",
+    "#...........#######...#..#",
+    "##........#...........#..#",
+    "#........#............#..#",
+    "#........#..........#.#..#",
+    "##........#..#######..#..#",
+    "#..........####....#..#..#",
+    "###..######........#..#..#",
+    "#....######...#.......#..#",
+    "#...#######...#....#..#..#",
+    "#....########.######..#..#",
+    "###..######..#.......##..#",
+    "#..########...........#..#",
+    "#........................#",
+    "#.........#...#........#.#",
+    "#.....................####",
+    "############.#############"
+  ],
+  "props": [
+    {
+      "type": "Boulder",
+      "x": 11,
+      "y": 21,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 12,
+      "y": 21,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 11,
+      "y": 25,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 12,
+      "y": 25,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 1,
+      "y": 26,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 2,
+      "y": 26,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 3,
+      "y": 27,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 4,
+      "y": 27,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 10,
+      "y": 29,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 14,
+      "y": 29,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 12,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 14,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 20,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 12,
+      "sourceY": 31,
+      "targetMap": "Sinnoh",
+      "targetX": 684,
+      "targetY": 612,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 29,
+      "text": "VEILSTONE CITY POKéMON GYM\nLeader: Maylene",
+      "script": "GymStatue"
+    },
+    {
+      "x": 14,
+      "y": 29,
+      "text": "VEILSTONE CITY POKéMON GYM\nLeader: Maylene",
+      "script": "GymStatue"
+    },
+    {
+      "x": 10,
+      "y": 2,
+      "text": "Do one good deed every day.",
+      "script": "Poster"
+    },
+    {
+      "x": 12,
+      "y": 2,
+      "text": "Take one day at a time.",
+      "script": "Poster"
+    },
+    {
+      "x": 14,
+      "y": 2,
+      "text": "Treasure every meeting.",
+      "script": "Poster"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "maylene",
+      "name": "Maylene",
+      "npcType": "Maylene",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "script": "Maylene",
+      "hiddenBy": "FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 13,
+      "y": 29,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "black_belt_colby",
+      "name": "Colby",
+      "npcType": "BlackBelt",
+      "x": 15,
+      "y": 23,
+      "facing": "Right",
+      "trainer": {
+        "id": "black_belt_colby",
+        "name": "Colby",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt Colby: This ring is where we sharpen ourselves. Step in, if you dare!",
+        "dialogueAfter": "Black Belt Colby: My guard was down... The bags will show you the way through. Hit them true.",
+        "sightRange": 3
+      },
+      "movement": "look_north_and_east"
+    },
+    {
+      "id": "black_belt_darren",
+      "name": "Darren",
+      "npcType": "BlackBelt",
+      "x": 16,
+      "y": 14,
+      "facing": "Left",
+      "trainer": {
+        "id": "black_belt_darren",
+        "name": "Darren",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt Darren: I see everything from inside this ring. Including you!",
+        "dialogueAfter": "Black Belt Darren: Beaten fair and square. Your Pokémon fight with real spirit.",
+        "sightRange": 2
+      },
+      "movement": "look_around"
+    },
+    {
+      "id": "black_belt_jeffery",
+      "name": "Jeffery",
+      "npcType": "BlackBelt",
+      "x": 2,
+      "y": 9,
+      "facing": "Down",
+      "trainer": {
+        "id": "black_belt_jeffery",
+        "name": "Jeffery",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt Jeffery: You've come all this way round? Then you'll have to come through me as well!",
+        "dialogueAfter": "Black Belt Jeffery: Ugh... Maylene trains harder than all of us put together. Good luck.",
+        "sightRange": 2
+      },
+      "movement": "look_south_and_west"
+    },
+    {
+      "id": "black_belt_rafael",
+      "name": "Rafael",
+      "npcType": "BlackBelt",
+      "x": 11,
+      "y": 13,
+      "facing": "Down",
+      "trainer": {
+        "id": "black_belt_rafael",
+        "name": "Rafael",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt Rafael: Kick a bag and it flies along its track! But you'll have to beat me before you get any further.",
+        "dialogueAfter": "Black Belt Rafael: Hoo! You hit harder than any bag I've ever kicked.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "punching_bag_1",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 3,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_2",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 4,
+      "y": 22,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_3",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 8,
+      "y": 7,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_4",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 8,
+      "y": 20,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_5",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 15,
+      "y": 26,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_6",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 16,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_7",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 20,
+      "y": 17,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_8",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 21,
+      "y": 24,
+      "facing": "Down"
+    },
+    {
+      "id": "punching_bag_9",
+      "name": "Punching Bag",
+      "npcType": "PunchingBag",
+      "x": 23,
+      "y": 11,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_1",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 3,
+      "y": 21,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_2",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 8,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_3",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 8,
+      "y": 12,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_4",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 8,
+      "y": 14,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_5",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 12,
+      "y": 7,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_6",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 12,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_7",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 19,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_8",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 20,
+      "y": 11,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_9",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 20,
+      "y": 26,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_10",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 22,
+      "y": 7,
+      "facing": "Down"
+    },
+    {
+      "id": "tire_stack_11",
+      "name": "Tyres",
+      "npcType": "TireStack",
+      "x": 23,
+      "y": 28,
+      "facing": "Down"
+    }
+  ],
+  "wildEncounters": []
+}

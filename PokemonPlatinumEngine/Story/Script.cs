@@ -30,12 +30,16 @@ public enum Op
     Turnback,
     // Someone travelling with the player (plan 02 · S6)
     Partner,
+    // The Gyms (plan 01 · M9): a trainer beaten without a battle, and the Eterna Gym's flower clock
+    Defeat, FlowerClock,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
     Starter, Shop, Pc, Travel,
     // The trainer tools (plan 06 · R12)
-    ChoosePokemon, Trade, HallOfFame
+    ChoosePokemon, Trade, HallOfFame,
+    // Wild Pokémon (plan 06 · R13)
+    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

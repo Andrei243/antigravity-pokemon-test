@@ -5,7 +5,9 @@
   "architecture": "Townhouse",
   "doors": [
     { "warp": 5, "map": "HearthomePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 11, "map": "HearthomePokeMart", "x": 4, "y": 6, "facing": "Up" }
+    { "warp": 11, "map": "HearthomePokeMart", "x": 4, "y": 6, "facing": "Up" },
+    // Fantina's Gym and its dark rooms, built to the original's plans (plan 01 · M9)
+    { "warp": 8, "map": "HearthomeGym", "x": 4, "y": 8, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -20,8 +22,8 @@
     { "warp": 15, "to": "route_212_north", "toWarp": 0 },
     { "warp": 16, "to": "route_212_north", "toWarp": 1 }
   ],
-  // The Contest Hall, the houses, the Gym, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11, M9)
-  "locked": [ 2, 6, 7, 8, 9, 10, 12, 13 ],
+  // The Contest Hall, the houses, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 6, 7, 9, 10, 12, 13 ],
   "people": {
     // In Platinum he offers to walk the player to the Contest Hall; the walk is plan 02's (S7)
     "fisherman": {

@@ -30,6 +30,24 @@
     { "species": "Gabite", "level": 43 }
   ],
   "landRate": 15,
+  "day": [
+    "Graveler",
+    "Steelix"
+  ],
+  "night": [
+    "Golbat",
+    "Steelix"
+  ],
+  "swarm": [
+    "Magneton",
+    "Steelix"
+  ],
+  "radar": [
+    "Steelix",
+    "Magneton",
+    "Onix",
+    "Gabite"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 20, "z": 16, "to": "victory_road_1f", "toWarp": 0 },

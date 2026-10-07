@@ -30,6 +30,24 @@
     { "species": "Chimecho", "level": 39 }
   ],
   "landRate": 15,
+  "day": [
+    "Medicham",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Clefairy"
+  ],
+  "swarm": [
+    "Bronzong",
+    "Graveler"
+  ],
+  "radar": [
+    "Machoke",
+    "Medicham",
+    "Golbat",
+    "Chimecho"
+  ],
   "warps": [
     { "x": 2, "z": 3, "to": "mt_coronet_outside_north", "toWarp": 1 },
     { "x": 18, "z": 8, "to": "mt_coronet_5f", "toWarp": 0 }

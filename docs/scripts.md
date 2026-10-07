@@ -48,8 +48,11 @@ that exists, every script to something that starts it, and plays each to its end
   move's name (`UseCut`, `UseFly`, `UseSweetScent`), for the Pokémon chosen. Cut, Rock Smash and Strength act on the
   obstacle in front, which is whose script it is (its `own` flag is the obstacle's). Fly's map is chosen before
   `UseFly` runs.
-- **An item used from the bag or the item button.** An Escape Rope runs `EscapeRope`; the Bicycle and the rods are
-  the game's own, with no script.
+- **An item used from the bag or the item button.** An Escape Rope runs `EscapeRope` and Honey `UseHoney`; the
+  Bicycle, the rods and the Poké Radar are the game's own, with no script.
+- **Wild Pokémon** (plan 06 · R13). A honey tree faced from the south runs `HoneyTree` (it has no person of its own:
+  the tree is a prop, found by its place, `HoneyTrees.Faced`); poison that leaves a Pokémon with one hit point in
+  the field runs `PoisonSurvived`. `SwarmNews` is the assistant's sister's, for when her house is built.
 - **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
   `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
 - **Waking up after a lost battle** (plan 06 · R10). The player comes round in the Pokémon Center last gone into,
@@ -110,7 +113,9 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 A line may hold `{player}`, `{assistant}` and `{rival}` (who they are is filled in as it is shown, a speaker's
 name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{rivalstarter}` and
 `{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
-`{money}`, `{result}` and `{var:NAME}`.
+`{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
+variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
+`{trophygarden}` the Trophy Garden's newest (plan 06 · R13).
 
 ### Where a script goes
 
@@ -185,6 +190,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
+| `defeat "lass_caroline"` | A trainer of Platinum's data counts as beaten without a battle, in this game and every save of it, and whoever carries that trainer on any map stops wanting to battle: a Leader's script does it for the trainers of the Gym once the Badge is won (the original's `SetTrainerFlag`, plan 01 · M9). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
 
 ### People and the field
@@ -225,6 +231,14 @@ Plan 06 · R12.
 | `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). |
 | `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written and its screen shows. |
 
+### Gyms
+
+Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymPuzzle`): the Hearthome Gym's doors are chosen and the Veilstone Gym's bags and tyres laid out as the player comes in, and a bag is kicked by facing it and pressing the button, all with no script. What a script does to a puzzle is here.
+
+| Command | What it does |
+|---|---|
+| `flowerclock` | Turns the Eterna Gym's flower clock on to its next time (`VAR_ETERNA_GYM_FLOWER_CLOCK_STATE`, the original's `AdvanceEternaGymClock`; `EternaClock`) and waits while its hands turn and a fountain drains, the camera on them; `camera release` brings it back. `RESULT` is 0 where the clock is at its last time already, 1 when it turned, 2 when a fountain drained too. |
+
 ### Field moves and key items
 
 Plan 02 · S2. These do what a move or an item does; whether it may be used is the script's to ask first
@@ -245,6 +259,20 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `partner cheryl "cheryl_eterna_forest"` | Someone of the map travels with the player (plan 02 · S6; `Follower`): they walk a step behind, onto each tile the player leaves, and are never in the player's way (walking back into them swaps the two round). While they do, the team is healed after every battle that isn't lost, every Pokémon met in the grass comes with a second and the partner battles beside the player, two trainers who see the player at once come together for a tag battle, the Bicycle, the rods, an Escape Rope and the field moves that leave the place can't be used, and losing leaves them behind. The player gets off the Bicycle. Saved. |
 | `partner off` | They stop, where they stand. |
 | `turnback` | Aims the doors of the Turnback Cave room the player has just come into, as the original's `InitTurnbackCave` does (plan 01 · M8; `TurnbackCave`): the door they came in by leads back to the entrance, the other three on, to Giratina's room once `VAR_TURNBACK_CAVE_PILLARS_SEEN` is 3, to the entrance once `VAR_TURNBACK_CAVE_ROOMS_VISITED` is 30, and otherwise to a pillar's room one time in four or to one of the next pillar's six rooms. The room's own `OnEnter` keeps the counts and calls it. |
+
+### Wild Pokémon
+
+Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (`Models/SpecialEncounters.cs`).
+
+| Command | What it does |
+|---|---|
+| `honeytree status` | `RESULT` is the honey tree the player faces: 1 bare (no honey, or its day is over), 2 slathered but nothing has come yet, 3 something waits (`HoneyTrees.Status`). |
+| `honeytree slather` | A day of honey on the tree faced, and what it will draw (`HoneyTrees.Slather`). The Honey is the script's own `take`. |
+| `honeytree battle` | Battles whatever came to the tree faced, which takes the honey with it. A battle lost ends the script. |
+| `swarms on` | Swarms begin (`SpecialEncounter_EnableSwarms`): from now on one place of 22 has one each day. |
+| `trophygarden` | Mr. Backlot brings one more Pokémon to the Trophy Garden (`TrophyGarden_AddNewMon`); `{trophygarden}` names it. |
+| `roamer start "Mesprit"` | Sets a roaming Pokémon loose (`RoamingPokemon_ActivateSlot`): Mesprit, Cresselia, Darkrai, Moltres, Zapdos or Articuno, made afresh at its level and full HP, somewhere at random. |
+| `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 
 ## Who is on the map
 

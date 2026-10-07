@@ -30,6 +30,24 @@
     { "species": "Geodude", "level": 7 }
   ],
   "landRate": 30,
+  "day": [
+    "Ponyta",
+    "Machop"
+  ],
+  "night": [
+    "Kricketot",
+    "Zubat"
+  ],
+  "swarm": [
+    "Phanpy",
+    "Phanpy"
+  ],
+  "radar": [
+    "Stantler",
+    "Stantler",
+    "Stantler",
+    "Stantler"
+  ],
   "warps": [
     { "x": 341, "z": 712, "to": "mt_coronet_1f_south", "toWarp": 0 },
     { "x": 348, "z": 717, "to": "mt_coronet_2f", "toWarp": 1 }

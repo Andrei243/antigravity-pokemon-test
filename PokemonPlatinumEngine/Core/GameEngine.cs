@@ -258,6 +258,9 @@ public partial class GameEngine
         safari.End();
         encounterAids.RepelSteps = 0;
         encounterAids.Flute = Flute.None;
+        // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
+        encounters = SpecialEncounters.NewGame(fieldRandom);
+        radar.Clear();
         registeredItem = null;
         exitSpot = null;
         lastDay = null;
@@ -389,6 +392,11 @@ public partial class GameEngine
         else safari.End();
         encounterAids.RepelSteps = Math.Max(0, save.RepelSteps);
         encounterAids.Flute = Flute.None;
+        // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
+        // game come back to sends every roamer anywhere (the original's continue task)
+        encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
+        radar.Clear();
+        Roamers.Scatter(encounters, fieldRandom);
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -488,6 +496,7 @@ public partial class GameEngine
             RepelSteps = encounterAids.RepelSteps,
             Poketch = poketch.Save(),
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
+            Encounters = encounters,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(pcBoxStorage),
@@ -535,6 +544,8 @@ public partial class GameEngine
         {
             double before = world.Life.Now;
             world.Life.Advance(dt);
+            // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
+            TickEncounters(dt);
             // Thunder follows a storm's lightning, a moment after the flash
             foreach (var thunder in WeatherFx.Thunder(currentMap.WeatherAt(player.GridX, player.GridY), before, world.Life.Now))
                 AudioManager.PlaySound(thunder);
@@ -788,9 +799,14 @@ public partial class GameEngine
     {
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
+        KeepPuzzleInForce(dt);
         KeepTheClock();
         SlideBoulders(dt);
         poketchView.Update(dt);
+        // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
+        // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
+        // anywhere else left people where they were until the next of those
+        RefreshPresence();
 
         // Whoever travels with the player keeps up, whatever else has the field
         partner?.Update(dt, player.Stride);
@@ -803,6 +819,9 @@ public partial class GameEngine
             UpdateScript(dt);
             return;
         }
+
+        // A Gym's puzzle has the field for a moment: a punching bag on its run (plan 01 · M9)
+        if (PuzzleHoldsField) return;
 
         // A rod is out: the keys are the rod's until it is put away
         if (fishing != null)
@@ -895,6 +914,7 @@ public partial class GameEngine
         // Overworld Player Movement
         player.Moves = FieldMovement.MovesOf(playerParty);
         player.Lead = WildLead.Of(playerParty, encounterAids);
+        player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) player.Advance(dt, currentMap, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
         else player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
 
@@ -953,6 +973,8 @@ public partial class GameEngine
         // onto it, dust where they came down from a hop
         StepLeavesItsMark();
 
+        // Poison bites every fourth step, the Poké Radar charges and its patches out of sight go still (plan 06 · R13)
+        if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
         if (safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
         // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
@@ -985,8 +1007,10 @@ public partial class GameEngine
         bool another = currentArea != null && area != null;
         currentArea = area;
         if (area == null) return false;
-        // Another place: what lasted only while the player stayed in the last one is forgotten
+        // Another place: what lasted only while the player stayed in the last one is forgotten, and the roamers move on
+        // (FieldSystem_InitFlagsOnMapChange, not during a Safari Game; plan 06 · R13)
         if (another) ChangePlace();
+        if (another && !safari.Active) Roamers.PlayerWalkedInto(encounters, area.Key, fieldRandom);
         NoteArrival();
         PlayFieldMusic();
         if (!string.IsNullOrEmpty(area.DisplayName)) locationSign.Show(area.DisplayName);
@@ -1159,6 +1183,8 @@ public partial class GameEngine
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);
         }
+        // A punching bag of the Veilstone Gym is kicked, not spoken to (plan 01 · M9)
+        if (npc != null && TryKickBag(npc)) return;
         if (npc != null)
         {
             // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is
@@ -1185,6 +1211,9 @@ public partial class GameEngine
         // Something hidden where the player is looking: it is found, once
         if (FieldScripts.HiddenAt(currentMap, targetX, targetY, story) is { } hidden
             && StartScript(FieldScripts.HiddenItem, file: currentMap.ScriptFileAt(targetX, targetY), item: (hidden.Item, hidden.Count), flag: hidden.Flag)) return;
+
+        // A honey tree faced from the south (HoneyTree_TryInteract, plan 06 · R13)
+        if (HoneyTrees.Faced(currentMap, player.GridX, player.GridY, player.Facing) != null && StartScript(FieldScripts.HoneyTree)) return;
 
         // What the tile ahead is (Field_TileBehaviorToScript): a waterfall faced from the water, a rock face along
         // its grain, and deep water at the player's feet, offered only to someone who may surf (the move and the
@@ -1362,11 +1391,21 @@ public partial class GameEngine
 
     private void StartWildBattle(WildEncounterEntry entry)
     {
+        // Met in the field: the roamers and the Poké Radar hear how it ends (plan 06 · R13)
+        fieldEncounter = true;
+        // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)
+        if (entry.Roamer is { } roamer)
+        {
+            MeetWildPokemon(RoamerToBattle(roamer), BattleKind.Roamer);
+            return;
+        }
         var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
         Random rng = fieldRandom;
         int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
         // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize)
         var wild = new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
+        // A Poké Radar patch's sparkle
+        if (entry.Shiny) wild.IsShiny = true;
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         var area = currentMap.AreaAt(player.GridX, player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
@@ -1375,7 +1414,11 @@ public partial class GameEngine
         Pokemon? second = null;
         if (partner != null && player.Mode != TravelMode.Surfing && !safari.Active)
         {
-            if (currentMap.MeetAnother(player.GridX, player.GridY, player.Lead) is not { } other) return;
+            if (currentMap.MeetAnother(player.GridX, player.GridY, player.Lead, EncounterMomentNow()) is not { } other)
+            {
+                fieldEncounter = false;
+                return;
+            }
             var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
             second = new Pokemon(otherSpecies, other.MinLevel, gender: other.Gender, nature: other.Nature);
             if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
@@ -1415,6 +1458,9 @@ public partial class GameEngine
         // Whoever travels with the player battles beside them, with a fresh team of their own
         var beside = kind == BattleKind.Normal ? PartnerTrainer() : null;
         var wilds = second != null ? new List<Pokemon> { wildPkmn, second } : new List<Pokemon> { wildPkmn };
+        // What wild Pokémon hold, and the Poké Radar's chain, which only a Pokémon of the field's own lets go on (plan 06 · R13)
+        GiveWildItems(wilds, kind);
+        if (!fieldEncounter) EndRadarChain();
         var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         StartTransition(GameState.Battle, () =>
         {
@@ -1435,7 +1481,10 @@ public partial class GameEngine
                 PlayerName = name,
                 SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0
             });
-            battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
+            // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
+            // terrain gives both the same platforms), whatever ground the player cast from
+            if (hooked) battleRenderer.SetArena(BattleArena.Water, trees: currentMap.TreesAt(player.GridX, player.GridY));
+            else battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
         }, SceneTransition.ForBattle(trainer: false, leader: false, wildPkmn.Level, LeadLevel()));
     }
 
@@ -1446,7 +1495,8 @@ public partial class GameEngine
     /// </summary>
     private Battle.Sim.BattleConditions BattleConditionsHere() => new()
     {
-        Terrain = TerrainAt(currentMap, player.GridX, player.GridY),
+        // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
+        Terrain = hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(currentMap, player.GridX, player.GridY),
         Night = GameClock.IsNight,
         HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY)),
@@ -1463,8 +1513,11 @@ public partial class GameEngine
     private void KeepTheClock()
     {
         var today = GameClock.Today;
-        if (lastDay is { } before && today > before) PokerusRules.DaysPass(playerParty, (today - before).Days);
+        int days = lastDay is { } before && today > before ? (today - before).Days : 0;
+        if (days > 0) PokerusRules.DaysPass(playerParty, days);
         lastDay = today;
+        // The day's numbers, the daily flags and the honey trees' minutes (plan 06 · R13)
+        KeepTheEncounterClock(days);
         if (FormRules.ShayminNight((int)GameClock.Hour))
             foreach (var p in playerParty.Members) FormRules.BackToLand(p);
     }
@@ -1585,6 +1638,8 @@ public partial class GameEngine
     /// <summary>A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9).</summary>
     private void StartTrainerBattle(NPC trainerNpc, NPC? secondNpc = null, Trainer? partner = null, bool firstBattle = false)
     {
+        // A trainer's battle ends the Poké Radar's chain (Encounter_NewVsTrainer)
+        EndRadarChain();
         var trainer = trainerNpc.TrainerData!;
         if (trainer.Party.Count == 0)
         {
@@ -1659,6 +1714,8 @@ public partial class GameEngine
     {
         bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
         ScoreBattle();
+        // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)
+        if (battle != null) EncountersAfterBattle(battle, isDefeat);
         // Travelling with someone, the team is healed after every battle that isn't lost (encounter.c,
         // Party_HealAllMembers when the partner flag is set)
         if (!isDefeat && partner != null && battle != null) playerParty.HealAll();
@@ -1907,6 +1964,7 @@ public partial class GameEngine
             case GameState.Overworld:
             case GameState.Dialogue:
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
+                DrawPoisonFlash();
                 // A script's black screen covers the field and leaves the text over it
                 DrawScriptFade();
                 DrawCutIn();

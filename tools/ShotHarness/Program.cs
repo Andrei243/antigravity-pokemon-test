@@ -8,6 +8,8 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> export [species ...]   species' models as .glb files, to edit and drop into overrides/models
 //   dotnet run --project tools/ShotHarness -- <output dir> profile            where a frame goes: the heavy scenes timed, then taken apart pass by pass
 //   dotnet run --project tools/ShotHarness -- <output dir> opening            the first chapter's scenes, played by its own scripts
+//   dotnet run --project tools/ShotHarness -- <output dir> encounters         wild Pokémon beyond the tables: the Poké Radar, a honey tree, poison, swarms, a roamer, Feebas
+//   dotnet run --project tools/ShotHarness -- <output dir> eterna             the third chapter's second half: Eterna City, Team Galactic's building, the Bicycle
 //   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -2022,6 +2024,247 @@ if (mode == "rooms")
     engine.ApplySettings(window: false);
 }
 
+// ---------------------------------------------------------------- the Gyms and their puzzles (plan 01 · M9)
+
+// The Gyms rebuilt to the original's plans with their puzzles (not part of `all`), each from its door, its puzzle
+// in its states, a trainer's battle starting and the Leader: the Eterna Gym's flower clock turning and its
+// fountains draining, the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the
+// Pastoria Gym's water rising and falling. It wins every battle and prints what each puzzle left behind.
+if (mode == "gyms")
+{
+    var story = (StoryState)Get("story");
+    var team = (Party)Get("playerParty");
+    var interact = T.GetMethod("TryInteract", Private)!;
+    var arrive = T.GetMethod("ArriveOnMap", Private)!;
+    team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Infernape")!, 60));
+    ((LocationSign)Get("locationSign")).Hide();
+
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    // A frame of the game, drawn only every sixth time: the puzzles' motions are functions of time, so the frames
+    // between only cost time under software rendering
+    int quiet = 0;
+    void Tick()
+    {
+        FrameClock.Fixed = ++tick / 60.0;
+        engine.Update(1f / 60f);
+        if (++quiet % 6 == 0) engine.Draw();
+    }
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Tick();
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    void Win()
+    {
+        var fight = (BattleEngine)Get("battle");
+        for (int guard = 0; guard < 200 && !fight.IsBattleOver; guard++)
+        {
+            if (fight.HUD.MenuState == BattleMenuState.Main)
+            {
+                foreach (var foe in fight.EnemyParty.Members) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                // A Gym is a long run of battles: the lead's moves never run dry, and it uses the first that touches
+                // the foe (Close Combat does nothing to a Ghost)
+                var lead = fight.PlayerPokemon;
+                foreach (var move in lead.Moves) move.CurrentPP = move.MaxPP;
+                var target = fight.EnemyPokemon;
+                int pick = lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status
+                    && TypeChart.GetEffectiveness(m.Data.Type, target.PrimaryType, target.SecondaryType) > 0f);
+                fight.SelectMainMenuOption(0);
+                fight.SelectMove(Math.Max(0, pick));
+                if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
+            }
+            else Confirm(fight);
+            Skip(0.5);
+        }
+        Until(() => State() == GameState.Overworld, "the field again", 1500);
+        Frames(10);
+    }
+    // Reads on until the script has ended, winning its battles; or, given a test, until it holds
+    void ReadOn(Func<bool>? until = null, int most = 3000)
+    {
+        for (int i = 0; i < most; i++)
+        {
+            if (until != null && until()) return;
+            if (until == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
+            if (State() == GameState.Battle) { Win(); continue; }
+            if (engine.Choice.IsOpen) { Skip(10 / 60.0); engine.Choice.Confirm(); Skip(4 / 60.0); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Tick(); Tick(); }
+            else Tick();
+        }
+        Console.WriteLine("  !! the script never got there");
+    }
+    void IntoBattle(string what)
+    {
+        ReadOn(() => State() == GameState.Battle, 1500);
+        if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
+        else Skip(1.6);
+    }
+    // Comes in by the door, as the game does: the room's puzzle is laid out
+    void Enter(string map, int x, int y)
+    {
+        At(map, x, y, Direction.Up);
+        arrive.Invoke(engine, null);
+        Frames(2);
+        ReadOn();
+    }
+    void TalkFrom(string map, string key, int x, int y, Direction facing)
+    {
+        At(map, x, y, facing);
+        interact.Invoke(engine, null);
+    }
+    object? Field(string name) => T.GetField(name, Private)!.GetValue(engine);
+    // `gyms eterna veilstone hearthome`: only the Gyms named
+    var only = args.Length > 2 ? args[2..] : null;
+    bool Want(string gym) => only == null || only.Contains(gym);
+
+    // ---- the Eterna Gym: the flower clock
+    if (Want("eterna"))
+    {
+    Enter("EternaGym", 11, 27);
+    Frames(20); Shot("g01_eterna_door");
+    At("EternaGym", 11, 19, Direction.Up); Frames(4); Shot("g02_eterna_clock_at_twenty_five_past_seven");
+    TalkFrom("EternaGym", "lass_caroline", 13, 22, Direction.Right);
+    IntoBattle("Caroline's battle"); Shot("g03_eterna_battle_caroline");
+    ReadOn(() => Field("clockTurn") != null);
+    Skip(1.5); Shot("g04_eterna_clock_turning");
+    ReadOn();
+    Shot("g05_eterna_quarter_past_six");
+    Console.WriteLine($"eterna: clock {story.Var(EternaClock.StateVar)}, trainers {story.Var(EternaClock.TrainersVar)}");
+    // Up the hour hand: the hop over its tip
+    At("EternaGym", 11, 19, Direction.Up); Frames(2);
+    engine.Steering = (Direction.Up, false); Frames(6); engine.Steering = null; Shot("g06_eterna_hop_over_the_tip"); Frames(30);
+    var walker = (Player)Get("player");
+    Console.WriteLine($"eterna: after the hop the player stands at {walker.GridX},{walker.GridY}");
+    TalkFrom("EternaGym", "aroma_lady_jenna", 20, 16, Direction.Down);
+    ReadOn(() => Field("clockTurn") != null);
+    ReadOn(() => Field("clockTurn") is EternaClock.Turn { Draining: true });
+    Skip(1.0); Shot("g07_eterna_right_fountain_drains");
+    ReadOn();
+    Shot("g08_eterna_quarter_past_nine");
+    TalkFrom("EternaGym", "aroma_lady_angela", 2, 8, Direction.Up);
+    ReadOn();
+    At("EternaGym", 11, 12, Direction.Up); Frames(4); Shot("g09_eterna_quarter_to_one");
+    TalkFrom("EternaGym", "gardenia", 11, 4, Direction.Up);
+    ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Gardenia")); Box().FinishLine(); Frames(4); Shot("g10_eterna_gardenia");
+    IntoBattle("Gardenia's battle"); Shot("g11_eterna_battle_gardenia");
+    ReadOn();
+    At("EternaGym", 11, 20, Direction.Up); Frames(4); Shot("g12_eterna_half_past_twelve");
+    Console.WriteLine($"eterna: Forest Badge {story.HasBadge(Badge.Forest)}, clock {story.Var(EternaClock.StateVar)}, TM86 {((Inventory)Get("playerInventory")).GetQuantity(ItemDatabase.Get("TM86")!)}");
+    }
+
+    Map Here() => (Map)Get("currentMap");
+    // Walks one way until the player is somewhere else (through a door) and the fade has opened again
+    void WalkInto(Direction way)
+    {
+        var from = Here();
+        engine.Steering = (way, false);
+        Until(() => Here() != from, "a way through", 240);
+        engine.Steering = null;
+        Until(() => State() == GameState.Overworld, "the field after the door", 240);
+        Frames(30);
+        ReadOn();
+    }
+
+    // ---- the Veilstone Gym: the punching bags
+    if (Want("veilstone"))
+    {
+    Enter("VeilstoneGym", 12, 30);
+    Frames(20); Shot("g21_veilstone_door");
+    // A black belt's battle, then the rest kept from walking up while the bags are kicked
+    TalkFrom("VeilstoneGym", "black_belt_colby", 16, 23, Direction.Left);
+    IntoBattle("Colby's battle"); Shot("g22_veilstone_battle_black_belt");
+    ReadOn();
+    foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+    // The kicks that open the way to Maylene (GymTests.SolveVeilstone found them), the first and the last shown
+    // before, while the bag runs and after its stack has fallen
+    var kicks = new (int X, int Y, Direction Way)[]
+    {
+        (15, 26, Direction.Right), (3, 10, Direction.Down), (3, 14, Direction.Right), (8, 20, Direction.Up), (8, 17, Direction.Left),
+        (3, 17, Direction.Down), (4, 22, Direction.Up), (4, 12, Direction.Right), (20, 17, Direction.Up), (16, 10, Direction.Left),
+        (13, 10, Direction.Left), (8, 7, Direction.Right)
+    };
+    for (int k = 0; k < kicks.Length; k++)
+    {
+        var (bx, by, way) = kicks[k];
+        var (dx, dy) = FieldMovement.Delta(way);
+        bool show = k == 0 || k == kicks.Length - 1;
+        string n = k == 0 ? "first" : "last";
+        At("VeilstoneGym", bx - dx, by - dy, way);
+        if (show) { Frames(4); Shot($"g23_veilstone_{n}_bag_before"); }
+        interact.Invoke(engine, null);
+        if (show) { Skip(1.4); Shot($"g24_veilstone_{n}_bag_running"); }
+        Until(() => Field("bagRun") == null, "the bag's run");
+        if (show) { Frames(20); Shot($"g25_veilstone_{n}_bag_after"); }
+        ReadOn();
+    }
+    var dojo = Here();
+    Console.WriteLine($"veilstone: {dojo.NPCs.Count(VeilstoneBags.IsTireStack)} stacks standing, bags at " +
+        string.Join(" ", dojo.NPCs.Where(VeilstoneBags.IsBag).Select(b => $"{b.GridX},{b.GridY}")));
+    At("VeilstoneGym", 12, 8, Direction.Up); Frames(4); Shot("g26_veilstone_the_way_open");
+    TalkFrom("VeilstoneGym", "maylene", 12, 5, Direction.Up);
+    ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Maylene")); Box().FinishLine(); Frames(4); Shot("g27_veilstone_maylene");
+    IntoBattle("Maylene's battle"); Shot("g28_veilstone_battle_maylene");
+    ReadOn();
+    Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge(Badge.Cobble)}, TM60 {((Inventory)Get("playerInventory")).GetQuantity(ItemDatabase.Get("TM60")!)}");
+    }
+
+    // ---- the Hearthome Gym: the dark rooms and their doors
+    if (Want("hearthome"))
+    {
+    At("HearthomeGym", 4, 8, Direction.Up);
+    arrive.Invoke(engine, null);
+    ReadOn(() => Box().IsActive, 600); Box().FinishLine(); Frames(4); Shot("g31_hearthome_guide");
+    ReadOn();
+    At("HearthomeGym", 4, 6, Direction.Up); Frames(4); Shot("g32_hearthome_entrance");
+    At("HearthomeGym", 4, 3, Direction.Up);
+    WalkInto(Direction.Up);
+    Shot("g33_hearthome_first_room");
+    HearthomeDoors Doors() => (HearthomeDoors)Here().Puzzle!;
+    Console.WriteLine($"hearthome: first room {Here().Name}, the way on is the {Doors().Correct}, its sign at {Doors().Clue}");
+    // Seen from beside it: something small right behind the player is behind their head
+    void Beside((int X, int Y) spot)
+    {
+        bool west = Here().IsWalkable(spot.X - 1, spot.Y);
+        At(Here().Name, spot.X + (west ? -1 : 1), spot.Y, west ? Direction.Right : Direction.Left);
+    }
+    var clue = Doors().Clue;
+    Beside(clue); Frames(4); Shot("g34_hearthome_the_sign_on_the_floor");
+    TalkFrom(Here().Name, "lass_molly", 5, 7, Direction.Left);
+    IntoBattle("Molly's battle"); Shot("g35_hearthome_battle");
+    ReadOn();
+    // A wrong door, and back at the entrance
+    var wrong = Doors().Doors.First(d => d.Sign != Doors().Correct);
+    At(Here().Name, wrong.X, 3, Direction.Up); Frames(4); Shot("g36_hearthome_before_a_wrong_door");
+    WalkInto(Direction.Up);
+    Shot("g37_hearthome_back_at_the_entrance");
+    Console.WriteLine($"hearthome: the {wrong.Sign} door led to {Here().Name} {((Player)Get("player")).GridX},{((Player)Get("player")).GridY}");
+    // In again (another door is chosen), through the right one, and on through the second room
+    At("HearthomeGym", 4, 3, Direction.Up);
+    WalkInto(Direction.Up);
+    var right = Doors().Doors.First(d => d.Sign == Doors().Correct);
+    At(Here().Name, right.X, 3, Direction.Up);
+    WalkInto(Direction.Up);
+    Shot("g38_hearthome_second_room");
+    clue = Doors().Clue;
+    Beside(clue); Frames(4); Shot("g39_hearthome_second_sign");
+    Console.WriteLine($"hearthome: second room, the way on is the {Doors().Correct}, its sign at {clue}");
+    right = Doors().Doors.First(d => d.Sign == Doors().Correct);
+    At(Here().Name, right.X, 3, Direction.Up);
+    WalkInto(Direction.Up);
+    Shot("g40_hearthome_fantinas_room");
+    TalkFrom("HearthomeGymLeaderRoom", "fantina", 4, 11, Direction.Up);
+    Skip(0.3); Shot("g41_hearthome_fantina_twirls");
+    ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Fantina")); Box().FinishLine(); Frames(4); Shot("g42_hearthome_fantina");
+    IntoBattle("Fantina's battle"); Shot("g43_hearthome_battle_fantina");
+    ReadOn();
+    At("HearthomeGymLeaderRoom", 7, 10, Direction.Right); Frames(4); Shot("g44_hearthome_bollards_gone");
+    Console.WriteLine($"hearthome: Relic Badge {story.HasBadge(Badge.Relic)}, TM65 {((Inventory)Get("playerInventory")).GetQuantity(ItemDatabase.Get("TM65")!)}, bollards {Here().NPCs.Count(n => n.Key.StartsWith("bollard"))}");
+    Enter("HearthomeGymRoom1", 8, 10);
+    Frames(4); Shot("g45_hearthome_first_room_after_the_badge");
+    }
+}
+
 // ---------------------------------------------------------------- the imported world (plan 01 · M2)
 
 if (mode == "area")
@@ -3753,6 +3996,263 @@ if (mode == "fieldmoves")
     }
 }
 
+// ---------------------------------------------------------------- wild Pokémon (plan 06 · R13)
+
+// The wild Pokémon beyond the tables, in a game of their own (en*; not part of "all"): the Poké Radar's patches
+// shaking and a patch walked into, a honey tree's question, its honey, the tree shaking with what came and its
+// battle, poison biting in the field and a Pokémon pulling through, the assistant's sister's news of swarms and a
+// swarm's Pokémon, a roaming Pokémon met and fleeing, and Feebas at Mt. Coronet's lake. It prints what each left
+// behind (the chain, the tree, the roamer's HP and place, the day's Feebas tiles).
+if (mode == "encounters")
+{
+    engine.StartNewGame();
+    PastTheOpening();
+    Set("currentState", GameState.Overworld);
+    ((LocationSign)Get("locationSign")).Hide();
+    var team = (Party)Get("playerParty");
+    var bag = (Inventory)Get("playerInventory");
+    var state = (SpecialEncounters)Get("encounters");
+    var radar = (RadarChain)Get("radar");
+    var interact = T.GetMethod("TryInteract", Private)!;
+    var useItem = T.GetMethod("UseFieldItem", Private)!;
+    var wildBattle = T.GetMethod("StartWildBattle", Private)!;
+    var sinnoh = MapDatabase.Get("Sinnoh");
+
+    // At a spot, with no arrival sign left over from the last place (At moves the player without arriving)
+    void Go(string map, int x, int y, Direction facing)
+    {
+        At(map, x, y, facing);
+        ((LocationSign)Get("locationSign")).Hide();
+    }
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Frames(1);
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+    void Next() { Box().Advance(); Frames(2); }
+    void ReadOn(int most = 12)
+    {
+        for (int i = 0; i < most && Box().IsActive && !Box().IsQuestion; i++) { Whole(); Next(); }
+    }
+    // A battle ended: the foe brought down to 1 HP and struck, or run from
+    void EndBattle(bool run)
+    {
+        var fight = (BattleEngine)Get("battle");
+        for (int guard = 0; guard < 200 && !fight.IsBattleOver; guard++)
+        {
+            if (fight.HUD.MenuState == BattleMenuState.Main)
+            {
+                if (run) fight.SelectMainMenuOption(3);
+                else
+                {
+                    if (fight.EnemyPokemon is { } wild) wild.CurrentHP = Math.Min(wild.CurrentHP, 1);
+                    fight.SelectMainMenuOption(0);
+                    fight.SelectMove(0);
+                }
+            }
+            else Confirm(fight);
+            Skip(0.5);
+        }
+        Until(() => State() == GameState.Overworld, "the field again", 1500);
+        Frames(10);
+    }
+
+    // A strong lead, so nothing here is a struggle, and the items each scene uses
+    team.Clear();
+    var lead = new Pokemon(PokemonDatabase.Get("Staraptor")!, 50);
+    team.Add(lead);
+    team.Add(new Pokemon(PokemonDatabase.Get("Bibarel")!, 40));
+    bag.AddItem(ItemDatabase.Get("Poké Radar")!, 1);
+    bag.AddItem(ItemDatabase.Get("Honey")!, 3);
+    bag.AddItem(ItemDatabase.Get("Super Rod")!, 1);
+
+    // ---- the Poké Radar on Route 202: the tile of tall grass with the most tall grass round it
+    var r202 = sinnoh.FindArea("route_202")!;
+    var b202 = sinnoh.AreaBounds("route_202")!.Value;
+    (int X, int Y) best = default;
+    int most = -1;
+    for (int y = b202.Y + 4; y < b202.Y + b202.Height - 4; y++)
+        for (int x = b202.X + 4; x < b202.X + b202.Width - 4; x++)
+        {
+            if (sinnoh.AreaAt(x, y) != r202 || sinnoh.BehaviourAt(x, y) != TileBehavior.TallGrass || !sinnoh.IsWalkable(x, y)) continue;
+            int grass = 0;
+            for (int dy = -4; dy <= 4; dy++)
+                for (int dx = -4; dx <= 4; dx++)
+                    if (sinnoh.BehaviourAt(x + dx, y + dy) == TileBehavior.TallGrass) grass++;
+            if (grass > most) (best, most) = ((x, y), grass);
+        }
+    Go("Sinnoh", best.X, best.Y, Direction.Down);
+    state.RadarCharge = RadarChain.BatterySteps;
+    useItem.Invoke(engine, new object[] { ItemDatabase.Get("Poké Radar")! });
+    Frames(50); Shot("en01_radar_shaking");
+    Console.WriteLine($"radar: at {best.X},{best.Y}, {radar.Patches.Count(p => p.Active)} patches shaking: " +
+        string.Join(", ", radar.Patches.Where(p => p.Active).Select(p => $"{p.X},{p.Y} {p.Shake}{(p.ContinuesChain ? " goes on" : "")}")));
+
+    // Into a shaking patch, from the tile beside it: a Pokémon whatever the odds, which starts a chain
+    var patch = radar.Patches.Where(p => p.Active).OrderBy(p => Math.Abs(p.X - best.X) + Math.Abs(p.Y - best.Y)).FirstOrDefault();
+    if (patch != null)
+    {
+        var from = new[] { (0, 1, Direction.Up), (0, -1, Direction.Down), (1, 0, Direction.Left), (-1, 0, Direction.Right) }
+            .Select(s => (X: patch.X + s.Item1, Y: patch.Y + s.Item2, Way: s.Item3))
+            .FirstOrDefault(s => sinnoh.IsWalkable(s.X, s.Y) && !radar.Patches.Any(p => p.Active && (p.X, p.Y) == (s.X, s.Y)));
+        ((Player)Get("player")).SetPosition(from.X, from.Y, from.Way);
+        Frames(2);
+        engine.Steering = (from.Way, false);
+        Until(() => State() != GameState.Overworld, "the patch's Pokémon", 120);
+        engine.Steering = null;
+        Until(() => State() == GameState.Battle, "the patch's battle", 300);
+        var fight = (BattleEngine)Get("battle");
+        ToMainMenu(fight);
+        Shot("en02_radar_patch_battle");
+        Console.WriteLine($"radar: met {fight.EnemyPokemon?.Species.Name} at {fight.EnemyPokemon?.Level}, chain {radar.Count} of {radar.Species}");
+        EndBattle(run: false);
+        Frames(40); Shot("en03_radar_after_a_win");
+        Console.WriteLine($"radar: after the win the chain is {radar.Count}, {radar.Patches.Count(p => p.Active)} patches shaking, {radar.Patches.Count(p => p.Active && p.ContinuesChain)} going on with it");
+    }
+
+    // ---- the honey tree on Route 205's south: faced from the south, with Honey in the bag
+    var r205 = sinnoh.FindArea("route_205_south")!;
+    var tree = sinnoh.Props.First(p => p.Type == PropType.HoneyTree && sinnoh.AreaAt(p.X, p.Y) == r205);
+    int tx = Enumerable.Range(tree.X, tree.Width).OrderBy(x => Math.Abs(x - (tree.X + tree.Width / 2))).First(x => sinnoh.IsWalkable(x, tree.Y + tree.Depth));
+    Go("Sinnoh", tx, tree.Y + tree.Depth, Direction.Up);
+    Frames(10);
+    interact.Invoke(engine, null); Frames(3);
+    Whole(); Next();
+    Until(() => engine.Choice.IsOpen, "the tree's question"); Frames(20); Shot("en04_honey_tree_asks");
+    engine.Choice.Confirm(); Frames(4);
+    Until(() => Box().IsActive, "the honey's line"); Whole(); Shot("en05_honey_slathered");
+    ReadOn();
+    Until(() => !engine.ScriptRunning, "the tree's script to end");
+    var honeyTree = state.Trees[HoneyTrees.IdOf("route_205_south")!.Value];
+    Console.WriteLine($"honey tree: {honeyTree.MinutesLeft} minutes of honey, group {honeyTree.Group}, slot {honeyTree.Slot}, shakes {honeyTree.Shakes}");
+
+    // Six hours later: it shakes with what came (the uncommon group, shaking hard), and the battle begins at a look
+    honeyTree.MinutesLeft = 600;
+    honeyTree.Group = 2;
+    honeyTree.Slot = 5;
+    honeyTree.Shakes = 3;
+    Frames(45); Shot("en06_honey_tree_shaking");
+    interact.Invoke(engine, null); Frames(3);
+    Until(() => State() == GameState.Battle, "the tree's battle", 300);
+    var treeFight = (BattleEngine)Get("battle");
+    ToMainMenu(treeFight);
+    Shot("en07_honey_tree_battle");
+    Console.WriteLine($"honey tree: met {treeFight.EnemyPokemon?.Species.Name} at {treeFight.EnemyPokemon?.Level}, holding {treeFight.EnemyPokemon?.HeldItem?.Name ?? "nothing"}");
+    EndBattle(run: true);
+    for (int i = 0; i < 300 && (engine.ScriptRunning || Box().IsActive); i++)
+    {
+        if (engine.Choice.IsOpen) { Frames(4); engine.Choice.Back(); Frames(4); }
+        else if (Box().IsActive) { Whole(); Next(); }
+        else Frames(1);
+    }
+    Console.WriteLine($"honey tree: afterwards {honeyTree.MinutesLeft} minutes of honey");
+
+    // ---- poison in the field: a step in four bites, and a Pokémon down to one hit point pulls through
+    Go("Sinnoh", 112, 880, Direction.Down);
+    lead.Status = StatusCondition.Poison;
+    lead.CurrentHP = 3;
+    state.PoisonSteps = 0;
+    var walks = new[] { Direction.Down, Direction.Up, Direction.Down, Direction.Up };
+    foreach (var way in walks)
+    {
+        engine.Steering = (way, false);
+        Until(() => ((Player)Get("player")).IsMoving, "a step", 30);
+        engine.Steering = null;
+        Until(() => !((Player)Get("player")).IsMoving, "the step's end", 60);
+    }
+    Frames(2); Shot("en08_poison_bites");
+    foreach (var way in walks)
+    {
+        engine.Steering = (way, false);
+        Until(() => ((Player)Get("player")).IsMoving || Box().IsActive, "a step", 30);
+        engine.Steering = null;
+        Until(() => !((Player)Get("player")).IsMoving, "the step's end", 60);
+    }
+    Until(() => Box().IsActive, "the poison's line", 120);
+    Whole(); Shot("en09_poison_survived");
+    ReadOn();
+    Until(() => !engine.ScriptRunning, "the poison's script to end");
+    Console.WriteLine($"poison: {lead.Nickname} at {lead.CurrentHP} HP, {lead.Status}");
+    Frames(30);   // the flash fades
+
+    // ---- swarms: the assistant's sister tells of them (her house is to come: a stand-in for her), and a swarm's Pokémon
+    state.SwarmDaily = 1;   // Route 202's, its Zigzagoon
+    Go("Sinnoh", 116, 888, Direction.Down);
+    engine.StartScript(FieldScripts.SwarmNews, new NPC { Name = "{assistant}'s sister", NpcType = "Woman" });
+    Frames(3); Whole(); Shot("en10_swarms_begin");
+    ReadOn();
+    Until(() => !engine.ScriptRunning, "the sister's first news");
+    engine.StartScript(FieldScripts.SwarmNews, new NPC { Name = "{assistant}'s sister", NpcType = "Woman" });
+    Frames(3); Whole(); Shot("en11_swarm_today");
+    ReadOn();
+    Until(() => !engine.ScriptRunning, "the sister's news");
+    Go("Sinnoh", best.X, best.Y, Direction.Down);
+    var moment = (EncounterMoment)T.GetMethod("EncounterMomentNow", Private)!.Invoke(engine, null)!;
+    var slots = sinnoh.WildAt(best.X, best.Y, moment: moment).Table;
+    Console.WriteLine($"swarm: on {Swarms.Today(state)}, Route 202's grass is now {string.Join(", ", slots.Select(s => s.SpeciesName))}");
+    WildEncounterEntry? swarming = null;
+    for (int i = 0; i < 200 && swarming?.SpeciesName != "Zigzagoon"; i++) swarming = sinnoh.DrawOutWild(best.X, best.Y, lead: null, moment: moment);
+    wildBattle.Invoke(engine, new object[] { swarming! });
+    Until(() => State() == GameState.Battle, "the swarm's battle", 300);
+    var swarmFight = (BattleEngine)Get("battle");
+    ToMainMenu(swarmFight);
+    Shot("en12_swarm_battle");
+    EndBattle(run: true);
+
+    // ---- a roaming Pokémon: Mesprit set loose, met on Route 202, fleeing at once and keeping its HP
+    lead.CurrentHP = lead.MaxHP;
+    Roamers.SetLoose(state, Roamers.SlotOf("Mesprit")!.Value, new Random(5));
+    state.Roamers[0].Route = Array.IndexOf(Roamers.Routes, "route_202");
+    state.Roamers[0].Pokemon!.CurrentHP -= 30;
+    Go("Sinnoh", best.X, best.Y, Direction.Down);
+    wildBattle.Invoke(engine, new object[] { new WildEncounterEntry { SpeciesName = "Mesprit", MinLevel = 50, MaxLevel = 50, Roamer = 0 } });
+    Until(() => State() == GameState.Battle, "the roamer's battle", 300);
+    var roam = (BattleEngine)Get("battle");
+    ToMainMenu(roam);
+    Shot("en13_roamer_met");
+    roam.SelectMainMenuOption(0);
+    roam.SelectMove(0);
+    Skip(0.5);
+    // Read on to the line that says it ran, and catch it there
+    for (int i = 0; i < 12 && !roam.IsBattleOver && !roam.CurrentMessage.Contains("ran away"); i++) { Confirm(roam); Skip(0.6); }
+    Skip(0.4);
+    Shot("en14_roamer_flees");
+    EndBattle(run: true);
+    Console.WriteLine($"roamer: Mesprit at {state.Roamers[0].Pokemon?.CurrentHP} HP, now on {Roamers.PlaceOf(state.Roamers[0])}, roaming {state.Roamers[0].Active}");
+
+    // ---- Feebas: the day's four tiles of Mt. Coronet's lake, and what a rod cast onto one brings up
+    var lakeTiles = SpecialEncounterTables.FeebasTiles;
+    var today = Feebas.TilesToday(lakeTiles, state.DailyNumber);
+    var coronet = MapDatabase.Get("MtCoronetB1F");
+    var feebasMoment = new EncounterMoment { State = state };
+    var bites = new Dictionary<string, int>();
+    for (int i = 0; i < 200; i++)
+        if (coronet.Fish(today[0].X, today[0].Y, FishingRod.Super, null, feebasMoment) is { } bite) bites[bite.SpeciesName] = bites.GetValueOrDefault(bite.SpeciesName) + 1;
+    Console.WriteLine($"feebas: today's tiles {string.Join(" ", today.Select(t => $"{t.X},{t.Y}"))}; 200 casts onto the first: {string.Join(", ", bites.Select(b => $"{b.Key} {b.Value}"))}");
+    // The lake seen from a shore beside one of its tiles
+    var shore = lakeTiles.SelectMany(t => new[] { (0, 1, Direction.Up), (0, -1, Direction.Down), (1, 0, Direction.Left), (-1, 0, Direction.Right) }
+            .Select(s => (X: t.X + s.Item1, Y: t.Y + s.Item2, Way: s.Item3)))
+        .FirstOrDefault(s => coronet.IsWalkable(s.X, s.Y));
+    if (shore != default)
+    {
+        Go("MtCoronetB1F", shore.X, shore.Y, shore.Way);
+        Frames(20); Shot("en15_feebas_lake");
+        Set("fishing", new FishingAttempt(FishingRod.Super, new WildEncounterEntry { SpeciesName = "Feebas", MinLevel = 15, MaxLevel = 15 }, new Random(3)));
+        Until(() => engine.CastStage == FishingStage.Hooked, "the bite", 400);
+        engine.FishingPress = true; Frames(4);
+        Whole(); Next();
+        Until(() => State() == GameState.Battle, "Feebas's battle", 600);
+        var feebasFight = (BattleEngine)Get("battle");
+        ToMainMenu(feebasFight);
+        Shot("en16_feebas_battle");
+        EndBattle(run: true);
+    }
+    else Console.WriteLine("  !! no shore beside Feebas's lake");
+}
+
 // ---------------------------------------------------------------- model files
 
 // Writes species' models as .glb files into <out dir>/models, to refine in a 3D editor and drop into overrides/models
@@ -4159,6 +4659,256 @@ if (mode == "windworks")
     ReadTo("meet again"); Frames(10); Shot("ww29_forest_cheryl_at_the_exit");
     ReadTo(null);
     Console.WriteLine($"forest: soothe bell {bag.GetQuantity(ItemDatabase.Get("Soothe Bell")!)}, travelled {story.Has("FLAG_TRAVELED_WITH_CHERYL")}");
+}
+
+// The third chapter's second half (plan 02 · S6, part 2; not part of `all`), played by its own scripts: the rival and
+// Cyrus at Eterna City's statue, Cynthia and HM01, Gardenia at her Gym's door, the tree before Team Galactic's
+// building (the Forest Badge is given as the Gym gives it: the Gym's inside is plan 01 · M9's), Looker in disguise,
+// the building's floors and Commander Jupiter, the cycle shop's Bicycle, the ways out watched until the Explorer Kit,
+// the Underground Man, the Pokémon Center and Gardenia before the Old Chateau
+if (mode == "eterna")
+{
+    engine.StartNewGame();
+    PastTheOpening();
+    Set("currentState", GameState.Overworld);
+    ((LocationSign)Get("locationSign")).Hide();
+    var story = (StoryState)Get("story");
+    var bag = (Inventory)Get("playerInventory");
+    var team = (Party)Get("playerParty");
+    var interact = T.GetMethod("TryInteract", Private)!;
+    var torterra = new Pokemon(PokemonDatabase.Get("Torterra")!, 40);
+    torterra.Moves.Clear();
+    foreach (string move in new[] { "Razor Leaf", "Earthquake", "Cut", "Bite" }) torterra.Moves.Add(new Move(MoveDatabase.Get(move)!));
+    team.Members.Insert(0, torterra);
+
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    Player Me() => (Player)Get("player");
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Frames(1);
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+    void ReadTo(string? text, int most = 2400)
+    {
+        for (int i = 0; i < most; i++)
+        {
+            if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+            if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 60) break;
+            if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
+            if (State() == GameState.Battle) { Win(); continue; }
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+    }
+    // A battle won: every foe brought down to 1 HP and struck
+    void Win()
+    {
+        var fight = (BattleEngine)Get("battle");
+        for (int guard = 0; guard < 300 && !fight.IsBattleOver; guard++)
+        {
+            if (fight.HUD.MenuState == BattleMenuState.Main)
+            {
+                foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                foreach (var wild in fight.Core.EnemySlots.Where(b => b.Pokemon != null)) wild.Pokemon!.CurrentHP = Math.Min(wild.Pokemon.CurrentHP, 1);
+                fight.SelectMainMenuOption(0);
+                fight.SelectMove(0);
+                if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
+            }
+            else Confirm(fight);
+            Skip(0.5);
+        }
+        Until(() => State() == GameState.Overworld, "the field again", 1500);
+        Frames(10);
+    }
+    void IntoBattle(string what)
+    {
+        for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+        {
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
+        else Skip(1.0);
+    }
+    // A step onto a tile of a map, from the tile before it, that starts a scene
+    void StepOnto(string map, int x, int y, Direction way)
+    {
+        var (dx, dy) = way switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+        At(map, x - dx, y - dy, way);
+        engine.Steering = (way, false);
+        Until(() => engine.ScriptRunning, $"the scene at {x},{y}", 120);
+        engine.Steering = null;
+    }
+    // Comes into a map through a warp onto a tile, as the game does: its own script, then the trigger stepped out onto
+    void ComeThrough(string map, int x, int y, Direction facing)
+    {
+        At(map, x, y, facing);
+        T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
+        Set("steppedOutOfWarp", true);
+        Frames(2);
+    }
+    // Talks to someone of a map (a room's people belong to no area: place null), from below unless told otherwise
+    void TalkTo(string map, string key, string? place, int dx = 0, int dy = 1)
+    {
+        var m = MapDatabase.Get(map);
+        var npc = m.NPCs.First(n => n.Key == key && (place == null || n.ScriptFile == place));
+        var facing = (dx, dy) switch { (0, 1) => Direction.Up, (0, -1) => Direction.Down, (1, 0) => Direction.Left, _ => Direction.Right };
+        At(map, npc.GridX + dx, npc.GridY + dy, facing);
+        interact.Invoke(engine, null);
+    }
+    // Walks into a door ahead until the map changes, and lets the arrival's own script start
+    void Into(Direction way, string what)
+    {
+        var from = Get("currentMap");
+        engine.Steering = (way, false);
+        Until(() => Get("currentMap") != from, what, 300);
+        engine.Steering = null;
+        Frames(40);
+    }
+
+    Frames(5);
+    ReadTo(null, 600);
+
+    // ---- Eterna City as the chapter finds it: Cyrus before the statue, Gardenia at her Gym's door, grunts about
+    At("Sinnoh", 322, 524, Direction.Right); Frames(30); Shot("et01_eterna_cyrus_at_the_statue");
+    // The row of pines south of the Gym's door hides whoever stands right in front of it: she is seen from her side
+    At("Sinnoh", 311, 563, Direction.Right); Frames(30); Shot("et02_eterna_gardenia_at_her_door");
+
+    // ETERNA_FROM=cynthia or =building starts the run later on (the harness runs slowly under software rendering),
+    // the story set as the scenes before would have left it
+    string from = Environment.GetEnvironmentVariable("ETERNA_FROM") ?? "";
+    if (from is "cynthia" or "building")
+    {
+        story.SetVar("VAR_ETERNA_CITY_STATE", 1);
+        story.Set("FLAG_HIDE_ETERNA_CITY_CYRUS");
+        story.Set("FLAG_HIDE_ETERNA_CITY_RIVAL");
+    }
+    if (from == "building")
+    {
+        story.SetVar("VAR_ETERNA_CITY_STATE", 2);
+        story.Set("FLAG_HIDE_ETERNA_CITY_CYNTHIA");
+        story.Set("FLAG_HIDE_ETERNA_CITY_GARDENIA");
+        bag.AddItem(ItemDatabase.Get("HM01")!, 1);
+        story.GiveBadge(Badge.Forest);
+        story.Unset("FLAG_HIDE_ETERNA_FOREST_GARDENIA");
+    }
+
+    // ---- the rival runs into the player and takes them to the statue; Cyrus
+    if (from == "")
+    {
+        StepOnto("Sinnoh", 303, 524, Direction.Right);
+        ReadTo("Thud"); Frames(10); Shot("et03_eterna_the_rival_bumps");
+        ReadTo("show you the way"); Frames(10); Shot("et04_eterna_the_rival");
+        ReadTo("Who's that"); Frames(10); Shot("et05_eterna_at_the_statue");
+        ReadTo("Time and space"); Frames(10); Shot("et06_eterna_cyrus");
+        ReadTo("in my way"); Frames(10); Shot("et07_eterna_cyrus_steps_up");
+        ReadTo("best idea"); Frames(10); Shot("et08_eterna_the_rivals_idea");
+        ReadTo(null); Frames(20); Shot("et09_eterna_the_rival_gone");
+        Console.WriteLine($"eterna: state {story.Var("VAR_ETERNA_CITY_STATE")}, player at {Me().GridX},{Me().GridY}");
+    }
+
+    // ---- Cynthia and HM01, before Team Galactic's building
+    if (from != "building")
+    {
+        StepOnto("Sinnoh", 304, 523, Direction.Up);
+        ReadTo("Pokédex"); Frames(10); Shot("et10_eterna_cynthia");
+        ReadTo("HM01"); Frames(10); Shot("et11_eterna_hm01");
+        ReadTo("Professor Rowan"); Frames(10); Shot("et12_eterna_cynthias_regards");
+        ReadTo(null); Frames(20);
+        Console.WriteLine($"eterna: state {story.Var("VAR_ETERNA_CITY_STATE")}, HM01 {bag.GetQuantity(ItemDatabase.Get("HM01")!)}");
+
+        // ---- Gardenia at her Gym's door
+        TalkTo("Sinnoh", "gardenia", "eterna_city", -1, 0);
+        ReadTo("Gym Leader"); Frames(10); Shot("et13_eterna_gardenia");
+        ReadTo(null); Frames(20); Shot("et14_eterna_gardenia_gone_in");
+
+        // ---- the Forest Badge as the Gym gives it, and the tree before the building cut down
+        story.GiveBadge(Badge.Forest);
+        story.Unset("FLAG_HIDE_ETERNA_FOREST_GARDENIA");
+        At("Sinnoh", 305, 522, Direction.Up);
+        interact.Invoke(engine, null);
+        ReadTo("Use Cut"); Frames(10); Shot("et15_eterna_the_tree");
+        ReadTo(null); Frames(20); Shot("et16_eterna_the_way_in");
+    }
+
+    // ETERNA_ONLY=city stops once the way into the building is open
+    if (Environment.GetEnvironmentVariable("ETERNA_ONLY") != "city")
+    {
+        // ---- inside: Looker in disguise
+        if (from == "building") At("Sinnoh", 305, 520, Direction.Up);
+        Into(Direction.Up, "into the building");
+        ReadTo("It is I"); Frames(10); Shot("et17_building_looker_in_disguise");
+        ReadTo("two staircases"); Frames(10); Shot("et18_building_looker_himself");
+        ReadTo(null); Frames(20);
+
+        // ---- the floors
+        At("TeamGalacticEternaBuilding1F", 11, 13, Direction.Up); Frames(30); Shot("et19_building_1f");
+        At("TeamGalacticEternaBuilding1F", 15, 7, Direction.Left); Frames(30); Shot("et20_building_1f_stairs");
+        At("TeamGalacticEternaBuilding2F", 15, 6, Direction.Up); Frames(30); Shot("et21_building_2f");
+        At("TeamGalacticEternaBuilding3F", 13, 11, Direction.Up); Frames(30); Shot("et22_building_3f");
+        // A trainer of the floors
+        TalkTo("TeamGalacticEternaBuilding3F", "scientist_travon", null, 1, 0);
+        IntoBattle("Travon");
+        ToMainMenu((BattleEngine)Get("battle")); Shot("et23_building_travon");
+        Win(); ReadTo(null);
+
+        // ---- Commander Jupiter
+        At("TeamGalacticEternaBuilding4F", 14, 8, Direction.Up); Frames(30); Shot("et24_building_4f");
+        TalkTo("TeamGalacticEternaBuilding4F", "jupiter", null);
+        ReadTo("Jupiter, a Commander"); Frames(10); Shot("et25_building_jupiter");
+        IntoBattle("Jupiter");
+        ToMainMenu((BattleEngine)Get("battle")); Shot("et26_building_the_battle");
+        Win();
+        ReadTo("myths"); Frames(10); Shot("et27_building_jupiters_warning");
+        ReadTo("cycle shop"); Frames(10); Shot("et28_building_the_manager");
+        ReadTo(null); Frames(20); Shot("et29_building_free");
+        Console.WriteLine($"building: state {story.Var("VAR_ETERNA_CITY_STATE")}, galactic gone {story.Has("FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING")}");
+
+        // ---- the cycle shop's Bicycle
+        At("EternaCycleShop", 7, 9, Direction.Up); Frames(30); Shot("et30_cycle_shop");
+        TalkTo("EternaCycleShop", "pokefan_m", null);
+        ReadTo("newest Bicycle"); Frames(10); Shot("et31_cycle_shop_the_manager");
+        ReadTo(null); Frames(10);
+        Console.WriteLine($"cycle shop: bicycle {bag.GetQuantity(ItemDatabase.Get("Bicycle")!)}, exits watched {story.Var("VAR_ETERNA_CITY_BLOCK_EXITS_STATE")}");
+
+        // ---- the ways out, watched until the Explorer Kit
+        ComeThrough("Sinnoh", 310, 540, Direction.Down);
+        StepOnto("Sinnoh", 297, 533, Direction.Left);
+        ReadTo("You've got a Bicycle"); Frames(10); Shot("et32_eterna_the_west_way_out");
+        ReadTo(null); Frames(20);
+        StepOnto("Sinnoh", 305, 565, Direction.Down);
+        ReadTo("Explorer Kit"); Frames(10); Shot("et33_eterna_the_south_way_out");
+        ReadTo(null); Frames(20);
+
+        // ---- the Underground Man
+        At("EternaUndergroundManHouse", 4, 7, Direction.Up); Frames(30); Shot("et34_underground_mans_house");
+        TalkTo("EternaUndergroundManHouse", "underground_man", null);
+        ReadTo("Underground Man, they call me"); Frames(10); Shot("et35_the_underground_man");
+        ReadTo(null); Frames(10);
+        ComeThrough("Sinnoh", 310, 531, Direction.Down);
+        Console.WriteLine($"eterna: explorer kit {bag.GetQuantity(ItemDatabase.Get("Explorer Kit")!)}, exits watched {story.Var("VAR_ETERNA_CITY_BLOCK_EXITS_STATE")}");
+
+        // ---- the Pokémon Center's people
+        At("EternaPokemonCenter", 5, 6, Direction.Up); Frames(30); Shot("et36_pokemon_center");
+
+        // ---- Gardenia before the Old Chateau
+        At("EternaForest", 73, 35, Direction.Up); Frames(30); Shot("et37_forest_gardenia");
+        TalkTo("EternaForest", "gardenia", "eterna_forest");
+        ReadTo("Old Chateau"); Frames(10); Shot("et38_forest_gardenia_and_the_chateau");
+        ReadTo("frightened"); Frames(10); Shot("et39_forest_gardenia_not_scared");
+        ReadTo(null); Frames(20); Shot("et40_forest_gardenia_gone");
+    }
+    else
+    {
+        // Only the city: and a look at two of the rooms beside it
+        At("TeamGalacticEternaBuilding3F", 13, 11, Direction.Up); Frames(30); Shot("et22_building_3f");
+        At("EternaUndergroundManHouse", 4, 7, Direction.Up); Frames(30); Shot("et34_underground_mans_house");
+    }
 }
 
 if (mode == "opening")

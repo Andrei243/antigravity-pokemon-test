@@ -206,6 +206,10 @@ public class TrainerAiTests
         var said = Turn(core);
         Assert.Equal(BattleResult.EnemyFled, core.Result);
         Assert.Contains(said, s => s.EndsWith("ran away!"));
+        // Its line takes it off the platform as it is read (BattleEngine.Show), where a Pokémon called back goes
+        // with its recall
+        var line = Assert.Single(core.Log.OfType<Said>(), s => s.Text.EndsWith("ran away!"));
+        Assert.Contains(line.Shows, e => e is Left { Ran: true } left && left.Place == core.EnemySlots[0].Place);
     }
 
     [Fact]

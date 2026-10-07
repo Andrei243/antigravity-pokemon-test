@@ -30,6 +30,24 @@
     { "species": "Bronzor", "level": 29 }
   ],
   "landRate": 30,
+  "day": [
+    "Meditite",
+    "Meditite"
+  ],
+  "night": [
+    "Zubat",
+    "Noctowl"
+  ],
+  "swarm": [
+    "Meditite",
+    "Graveler"
+  ],
+  "radar": [
+    "Chingling",
+    "Machoke",
+    "Machoke",
+    "Bronzor"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 419, "z": 527, "to": "mt_coronet_1f_north_room_1", "toWarp": 3 }

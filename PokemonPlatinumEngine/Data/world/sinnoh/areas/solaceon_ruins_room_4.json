@@ -30,6 +30,24 @@
     { "species": "Unown", "level": 30 }
   ],
   "landRate": 10,
+  "day": [
+    "Unown",
+    "Unown"
+  ],
+  "night": [
+    "Unown",
+    "Unown"
+  ],
+  "swarm": [
+    "Unown",
+    "Unown"
+  ],
+  "radar": [
+    "Unown",
+    "Unown",
+    "Unown",
+    "Unown"
+  ],
   "eastSea": true,
   "unownTable": 4,
   "warps": [

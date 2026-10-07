@@ -120,6 +120,24 @@
       "y": 2,
       "facing": "Up",
       "isPCTerminal": true
+    },
+    {
+      "id": "school_kid_m",
+      "name": "Schoolboy",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "script": "Schoolboy"
+    },
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Woman",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "FriendshipChecker"
     }
   ],
   "wildEncounters": []

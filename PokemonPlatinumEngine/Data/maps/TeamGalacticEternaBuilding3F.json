@@ -1,0 +1,280 @@
+{
+  "name": "TeamGalacticEternaBuilding3F",
+  "displayName": "Team Galactic Eterna Building",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 24,
+  "height": 14,
+  "ground": [
+    "########################",
+    "########################",
+    "########################",
+    "#____##____#_____#_____#",
+    "#____##____#_____#_____#",
+    "#____##____#_____#_____#",
+    "#___###___##____##____##",
+    "#____##____##____##____#",
+    "#____##____##____##____#",
+    "#__#########___###___###",
+    "#____##____#_____#_____#",
+    "#______________________#",
+    "#______________________#",
+    "########################"
+  ],
+  "solid": [
+    "########################",
+    "########################",
+    "########################",
+    "#..####..#####...###...#",
+    "#..####..#####...###...#",
+    "#....##....#.....#.....#",
+    "#...###...##....##....##",
+    "#...###...###...###...##",
+    "#....##....##....##....#",
+    "#..#########...###...###",
+    "#..#########...###...###",
+    "#......................#",
+    "#......................#",
+    "########################"
+  ],
+  "props": [
+    {
+      "type": "SideStairsDown",
+      "x": 3,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 12,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 18,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 16,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 22,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 15,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 16,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 21,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 22,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 16,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "TeamGalacticEternaBuilding2F",
+      "targetX": 21,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 20,
+      "sourceY": 3,
+      "targetMap": "TeamGalacticEternaBuilding4F",
+      "targetX": 7,
+      "targetY": 3,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 2,
+      "sourceY": 3,
+      "targetMap": "TeamGalacticEternaBuilding2F",
+      "targetX": 15,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 3,
+      "targetMap": "TeamGalacticEternaBuilding4F",
+      "targetX": 2,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 16,
+      "y": 2,
+      "text": "A poster on the wall: \"Ask nothing. Follow the path. Success awaits!\" Team Galactic"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "grunt_m",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "Ordinary folk like you could never grasp Team Galactic's great plan!",
+        "...Mind you, nobody's ever explained it to me either."
+      ],
+      "hiddenBy": "FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS"
+    },
+    {
+      "id": "galactic_grunt",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 8,
+      "y": 7,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS",
+      "trainer": {
+        "id": "galactic_grunt_team_galactic_eterna_building_3f",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: Wrong turn, kid! This floor is a dead end, and so are you!",
+        "dialogueAfter": "Galactic Grunt: A dead end for me, then. The way up is on the other side.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "scientist_travon",
+      "name": "Travon",
+      "npcType": "Scientist",
+      "x": 18,
+      "y": 5,
+      "facing": "Right",
+      "hiddenBy": "FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS",
+      "trainer": {
+        "id": "scientist_travon",
+        "name": "Travon",
+        "trainerClass": "Scientist",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Scientist Travon: My research needs a subject. You and your Pokémon will do nicely.",
+        "dialogueAfter": "Scientist Travon: Fascinating. My notes did not predict that at all.",
+        "sightRange": 3
+      }
+    },
+    {
+      "name": "X Sp. Atk",
+      "npcType": "ItemBall",
+      "x": 10,
+      "y": 8,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_TEAM_GALACTIC_ETERNA_BUILDING_3F_X_SPECIAL",
+      "item": "X Sp. Atk"
+    }
+  ],
+  "wildEncounters": []
+}

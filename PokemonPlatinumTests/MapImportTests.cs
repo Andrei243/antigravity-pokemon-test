@@ -291,6 +291,8 @@ public class MapImportTests
     [InlineData("c07_base_k2", TerrainCover.Paving)]
     [InlineData("c3_grand", TerrainCover.Paving)]
     [InlineData("r206_cy2", TerrainCover.Paving)]
+    [InlineData("dun08_chip_a", TerrainCover.Paving)]
+    [InlineData("colum_b", TerrainCover.Paving)]
     [InlineData("tree01", TerrainCover.Tree)]
     [InlineData("conttree2_b", TerrainCover.Tree)]
     [InlineData("g1_treeb", TerrainCover.Tree)]

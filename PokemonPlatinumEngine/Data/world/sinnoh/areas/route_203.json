@@ -30,6 +30,24 @@
     { "species": "Bidoof", "level": 7 }
   ],
   "landRate": 30,
+  "day": [
+    "Starly",
+    "Bidoof"
+  ],
+  "night": [
+    "Kricketot",
+    "Zubat"
+  ],
+  "swarm": [
+    "Cubone",
+    "Cubone"
+  ],
+  "radar": [
+    "Bidoof",
+    "Abra",
+    "Starly",
+    "Bidoof"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

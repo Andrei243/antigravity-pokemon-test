@@ -1,0 +1,75 @@
+# The Team Galactic Eterna Building, top floor (plan 02 · S6). docs/scripts.md describes the language; the lines are
+# our own, on the original's beats (scripts_team_galactic_eterna_building_4f.s).
+#
+# Commander Jupiter keeps the cycle shop's manager here with the Pokémon Team Galactic took. Beaten, she tells of her
+# boss's plans for the myths and leaves, and Team Galactic leaves Eterna City with her: its grunts and Looker are gone
+# from the building and the town, the manager goes back to his shop, and the girl in the Pokémon Center has her Buneary
+# back (FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING, VAR_ETERNA_CITY_STATE 3). The Clefairy and the Buneary held here wait
+# for Pokémon that stand in the field (plan 10).
+
+
+# Commander Jupiter (the original's script 2), spoken to from the south or from either side.
+script Jupiter
+  face pokefan_m up
+  speaker "Jupiter"
+  say "Hm? Was there something you wanted? ...No, don't tell me. I can see it on your face. You want these Pokémon freed."
+  say "How very tiresome. Fine. I am Jupiter, a Commander of Team Galactic, and I'll deal with you personally."
+  battle self as "commander_jupiter_team_galactic_eterna_building"
+  speaker "Jupiter"
+  say "Well, well. Aren't you the tough one...? It hardly matters. Our official investigation of the Pokémon statue is finished."
+  say "And Mars has brought back all the energy we wanted from the Valley Windworks. We're quite done with this town."
+  say "Since you fought so hard, I'll tell you one little thing. Our boss is studying the myths of ancient Pokémon."
+  say "With the power of a Pokémon out of legend, he will rule over all of Sinnoh..."
+  say "I suggest you keep out of Team Galactic's business from now on. Consider this your last warning!"
+  fade out
+  hide self
+  fade in
+  wait 0.4
+  # The manager comes up to the player
+  if facing left goto FromTheEast
+  if facing right goto FromTheWest
+  walk pokefan_m up 1
+  face player down
+  goto Thanks
+label FromTheEast
+  walk pokefan_m up 3
+  face pokefan_m right
+  goto Thanks
+label FromTheWest
+  walk pokefan_m up 3
+  face pokefan_m left
+label Thanks
+  call Grateful
+  fade out
+  setflag FLAG_HIDE_ETERNA_CITY_GALACTIC_GRUNTS
+  setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_LOOKER
+  setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_GRUNT_M_LOOKER
+  setflag FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING
+  clearflag FLAG_HIDE_CYCLE_SHOP_POKEFAN_M
+  clearflag FLAG_HIDE_CYCLE_SHOP_CLEFAIRY
+  clearflag FLAG_HIDE_ETERNA_CITY_POKECENTER_1F_BUNEARY
+  hide pokefan_m
+  setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_4F_HOSTAGES
+  setvar VAR_ETERNA_CITY_STATE 3
+  fade in
+  setflag FLAG_ALT_MUSIC_GALACTIC_ETERNA_BUILDING
+  end
+
+script Grateful
+  speaker "Manager"
+  say "I've got my Clefairy back, and it's all thanks to you!"
+  say "Those Team Galactic types told me, \"That Clefairy came from outer space! Hand it over!\" Who says things like that?"
+  say "If you ask me, they're the ones from outer space! Well, anyway, they're gone now. Thank you, thank you!"
+  say "I can't thank you properly in a place like this. Come by my cycle shop, will you?"
+  return
+
+
+# The cycle shop's manager, held here (the original's script 5).
+script Manager
+  speaker "Manager"
+  if flag FLAG_TEAM_GALACTIC_LEFT_ETERNA_BUILDING goto Free
+  say "What is it with this Team Galactic? Why take people's Pokémon? What are they trying to do?"
+  end
+label Free
+  call Grateful
+  end
