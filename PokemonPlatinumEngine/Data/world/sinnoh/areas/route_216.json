@@ -30,6 +30,24 @@
     { "species": "Snover", "level": 35 }
   ],
   "landRate": 30,
+  "day": [
+    "Meditite",
+    "Snover"
+  ],
+  "night": [
+    "Zubat",
+    "Snorunt"
+  ],
+  "swarm": [
+    "Snover",
+    "Sneasel"
+  ],
+  "radar": [
+    "Meditite",
+    "Sneasel",
+    "Graveler",
+    "Snover"
+  ],
   "warps": [
     { "x": 375, "z": 403, "to": "mt_coronet_1f_north_room_2", "toWarp": 1 },
     { "x": 303, "z": 398, "to": "route_216_house", "toWarp": 0 }

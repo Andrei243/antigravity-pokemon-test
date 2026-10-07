@@ -209,6 +209,37 @@ internal sealed class FieldLife
             pieces.Add(new Piece(Kind.Drop, new Vector3(cx + side, ground, cz + 0.1f), Now, DropTint, 0, side * 0.5f, size));
     }
 
+    private static readonly Color Sparkle = Rgb(255, 246, 196);
+
+    /// <summary>
+    /// A patch of tall grass the Poké Radar has set shaking (plan 06 · R13): two bits of grass tossed up out of it, four
+    /// thrown higher for a hard shake, and from the patch that sparkles two glints with them.
+    /// </summary>
+    public void Rustle(Map map, int x, int y, bool hard, bool sparkle)
+    {
+        if (!map.InBounds(x, y) || map.IsIndoors) return;
+        float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
+        float[] sides = hard ? new[] { -0.5f, -0.2f, 0.2f, 0.5f } : new[] { -0.25f, 0.25f };
+        for (int i = 0; i < sides.Length; i++)
+            pieces.Add(new Piece(Kind.Leaf, new Vector3(cx, ground, cz + 0.2f), Now, i % 2 == 0 ? LeafLight : LeafMid, 0, sides[i], hard ? 1.2f : 0.7f));
+        if (!sparkle) return;
+        foreach (float side in new[] { -0.3f, 0.3f })
+            pieces.Add(new Piece(Kind.Drop, new Vector3(cx + side, ground + 0.3f, cz + 0.15f), Now, Sparkle, 0, -side * 0.5f, 1.6f));
+    }
+
+    /// <summary>
+    /// A honey tree shakes with what the honey drew to it (plan 06 · R13): leaves shaken loose from its crown, more
+    /// the harder it shakes.
+    /// </summary>
+    public void ShakeTree(Map map, int x, int y, float crown, int shakes)
+    {
+        if (!map.InBounds(x, y) || shakes <= 0) return;
+        float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
+        float[] sides = shakes >= 3 ? new[] { -0.8f, -0.5f, -0.2f, 0.2f, 0.5f, 0.8f } : shakes == 2 ? new[] { -0.6f, -0.2f, 0.2f, 0.6f } : new[] { -0.4f, 0.4f };
+        for (int i = 0; i < sides.Length; i++)
+            pieces.Add(new Piece(Kind.Leaf, new Vector3(cx, ground + crown, cz + 0.2f), Now, i % 2 == 0 ? LeafLight : LeafMid, 0, sides[i], 0.6f));
+    }
+
     /// <summary>
     /// Rain (or hail) is landing round a spot (in tiles): thirty times a second <paramref name="dropsABeat"/>
     /// drops come down on the ground in view of it, a fleck where one lands on open ground, and on water one

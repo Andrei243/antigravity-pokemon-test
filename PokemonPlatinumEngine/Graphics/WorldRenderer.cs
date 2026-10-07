@@ -267,6 +267,13 @@ public sealed class WorldRenderer
     /// </summary>
     internal FieldLife Life { get; } = new();
 
+    /// <summary>
+    /// Tiles of grass that something unseen shakes (the Poké Radar's patches, plan 06 · R13), and whether hard: the
+    /// grass there parts as round a walker's feet, from a point that jumps from side to side on the field's clock.
+    /// The game sets it every frame.
+    /// </summary>
+    internal List<(int X, int Y, bool Hard)> Stirring { get; } = new();
+
     // How far the light has gone over to snow country's (0 to 1), the field clock when it was last eased, and the map
     private float snowMix;
     private double snowClock;
@@ -420,6 +427,13 @@ public sealed class WorldRenderer
 
         // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
         walkerFeet.Clear();
+        // Shaking grass first, so the people are among the last eight the shader keeps
+        int shake = (int)(Life.Now * 12.0) % 2 == 0 ? 1 : -1;
+        foreach (var (sx, sy, hard) in Stirring)
+        {
+            float cx = sx + 0.5f + shake * (hard ? 7f : 4f) / 32f, cz = sy + 0.5f;
+            walkerFeet.Add(new Vector3(cx, Relief.At(map, sx + 0.5f, cz), cz));
+        }
         foreach (var actor in actors) walkerFeet.Add(actor.Feet);
         shaders.SetWalkers(walkerFeet);
 

@@ -30,6 +30,24 @@
     { "species": "Machoke", "level": 30 }
   ],
   "landRate": 30,
+  "day": [
+    "Swablu",
+    "Meditite"
+  ],
+  "night": [
+    "Noctowl",
+    "Hoothoot"
+  ],
+  "swarm": [
+    "Swablu",
+    "Bibarel"
+  ],
+  "radar": [
+    "Bagon",
+    "Bagon",
+    "Bagon",
+    "Bagon"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

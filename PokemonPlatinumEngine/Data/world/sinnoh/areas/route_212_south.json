@@ -30,6 +30,24 @@
     { "species": "Shellos", "level": 26 }
   ],
   "landRate": 30,
+  "day": [
+    "Buizel",
+    "Shellos"
+  ],
+  "night": [
+    "Buizel",
+    "Shellos"
+  ],
+  "swarm": [
+    "Shellos",
+    "Quagsire"
+  ],
+  "radar": [
+    "Grimer",
+    "Grimer",
+    "Grimer",
+    "Grimer"
+  ],
   "water": [
     { "species": "Shellos", "level": 20, "maxLevel": 30 },
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },

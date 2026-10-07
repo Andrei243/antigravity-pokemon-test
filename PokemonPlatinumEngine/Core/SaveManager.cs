@@ -89,6 +89,12 @@ public class SaveData
     public SafariSave? Safari { get; set; }
 
     /// <summary>
+    /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
+    /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
+    /// </summary>
+    public SpecialEncounters? Encounters { get; set; }
+
+    /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
     /// </summary>

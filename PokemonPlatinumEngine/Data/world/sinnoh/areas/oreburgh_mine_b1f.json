@@ -30,6 +30,24 @@
     { "species": "Zubat", "level": 7 }
   ],
   "landRate": 10,
+  "day": [
+    "Zubat",
+    "Zubat"
+  ],
+  "night": [
+    "Zubat",
+    "Zubat"
+  ],
+  "swarm": [
+    "Geodude",
+    "Geodude"
+  ],
+  "radar": [
+    "Geodude",
+    "Geodude",
+    "Geodude",
+    "Geodude"
+  ],
   "warps": [
     { "x": 11, "z": 1, "to": "oreburgh_city", "toWarp": 12 },
     { "x": 12, "z": 1, "to": "oreburgh_city", "toWarp": 13 },

@@ -30,6 +30,24 @@
     { "species": "Dustox", "level": 15 }
   ],
   "landRate": 30,
+  "day": [
+    "Wurmple",
+    "Budew"
+  ],
+  "night": [
+    "Kricketot",
+    "Hoothoot"
+  ],
+  "swarm": [
+    "Bidoof",
+    "Budew"
+  ],
+  "radar": [
+    "Slowpoke",
+    "Slowpoke",
+    "Slowpoke",
+    "Slowpoke"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

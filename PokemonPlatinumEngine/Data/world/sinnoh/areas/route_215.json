@@ -30,6 +30,24 @@
     { "species": "Kadabra", "level": 22 }
   ],
   "landRate": 30,
+  "day": [
+    "Staravia",
+    "Staravia"
+  ],
+  "night": [
+    "Marill",
+    "Marill"
+  ],
+  "swarm": [
+    "Drowzee",
+    "Drowzee"
+  ],
+  "radar": [
+    "Lickitung",
+    "Abra",
+    "Marill",
+    "Kadabra"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 671, "z": 598, "to": "route_215_gate_to_veilstone_city", "toWarp": 1 },

@@ -30,6 +30,24 @@
     { "species": "Golbat", "level": 10 }
   ],
   "landRate": 10,
+  "day": [
+    "Zubat",
+    "Psyduck"
+  ],
+  "night": [
+    "Zubat",
+    "Psyduck"
+  ],
+  "swarm": [
+    "Zubat",
+    "Psyduck"
+  ],
+  "radar": [
+    "Geodude",
+    "Zubat",
+    "Zubat",
+    "Golbat"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Zubat", "level": 20, "maxLevel": 30 },

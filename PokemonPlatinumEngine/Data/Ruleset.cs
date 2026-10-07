@@ -172,6 +172,12 @@ public sealed class Ruleset
     /// <summary>One wild or new Pokémon in how many is shiny: 8,192 in Platinum, 4,096 from Generation 6.</summary>
     public int ShinyOdds { get; private init; } = 8192;
 
+    /// <summary>
+    /// Whether poison hurts a Pokémon outside battle, a hit point every fourth step (plan 06 · R13,
+    /// <c>Field_UpdatePoison</c>): in Platinum, and no longer from Generation 5.
+    /// </summary>
+    public bool PoisonInTheField { get; private init; } = true;
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -214,7 +220,8 @@ public sealed class Ruleset
         EvStatCap = 252,
         VitaminLimit = 252,
         EvsAtLevel100 = true,
-        ShinyOdds = 4096
+        ShinyOdds = 4096,
+        PoisonInTheField = false
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

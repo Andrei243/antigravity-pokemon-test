@@ -30,6 +30,24 @@
     { "species": "Graveler", "level": 31 }
   ],
   "landRate": 10,
+  "day": [
+    "Zubat",
+    "Golbat"
+  ],
+  "night": [
+    "Zubat",
+    "Golbat"
+  ],
+  "swarm": [
+    "Geodude",
+    "Graveler"
+  ],
+  "radar": [
+    "Geodude",
+    "Graveler",
+    "Geodude",
+    "Graveler"
+  ],
   "warps": [
     { "x": 6, "z": 8, "to": "iron_island", "toWarp": 1 },
     { "x": 4, "z": 3, "to": "iron_island_b1f_left_room", "toWarp": 0 },

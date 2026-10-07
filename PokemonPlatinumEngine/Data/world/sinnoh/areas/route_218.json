@@ -30,6 +30,24 @@
     { "species": "Gastrodon", "level": 30 }
   ],
   "landRate": 30,
+  "day": [
+    "Chatot",
+    "Chatot"
+  ],
+  "night": [
+    "Gastrodon",
+    "Floatzel"
+  ],
+  "swarm": [
+    "Voltorb",
+    "Voltorb"
+  ],
+  "radar": [
+    "Mr. Mime",
+    "Mr. Mime",
+    "Floatzel",
+    "Gastrodon"
+  ],
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Shellos", "level": 20, "maxLevel": 30 },

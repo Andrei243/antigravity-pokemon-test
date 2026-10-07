@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 15 }
   ],
   "landRate": 10,
+  "day": [
+    "Meditite",
+    "Geodude"
+  ],
+  "night": [
+    "Zubat",
+    "Cleffa"
+  ],
+  "swarm": [
+    "Bronzor",
+    "Geodude"
+  ],
+  "radar": [
+    "Machop",
+    "Meditite",
+    "Zubat",
+    "Chingling"
+  ],
   "warps": [
     { "x": 21, "z": 61, "to": "mt_coronet_1f_tunnel_room", "toWarp": 1 },
     { "x": 11, "z": 10, "to": "mt_coronet_b1f", "toWarp": 0 },

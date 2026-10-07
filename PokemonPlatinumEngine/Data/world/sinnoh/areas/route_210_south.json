@@ -30,6 +30,24 @@
     { "species": "Chansey", "level": 21 }
   ],
   "landRate": 30,
+  "day": [
+    "Ponyta",
+    "Ponyta"
+  ],
+  "night": [
+    "Noctowl",
+    "Hoothoot"
+  ],
+  "swarm": [
+    "Staravia",
+    "Geodude"
+  ],
+  "radar": [
+    "Miltank",
+    "Tauros",
+    "Miltank",
+    "Tauros"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 566, "z": 591, "to": "cafe", "toWarp": 0 }

@@ -30,6 +30,24 @@
     { "species": "Roselia", "level": 30 }
   ],
   "landRate": 30,
+  "day": [
+    "Roselia",
+    "Roselia"
+  ],
+  "night": [
+    "Floatzel",
+    "Roselia"
+  ],
+  "swarm": [
+    "Farfetch'd",
+    "Farfetch'd"
+  ],
+  "radar": [
+    "Nidorino",
+    "Nidorina",
+    "Nidorino",
+    "Nidorina"
+  ],
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Wingull", "level": 20, "maxLevel": 30 },

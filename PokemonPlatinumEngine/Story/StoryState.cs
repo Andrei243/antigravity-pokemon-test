@@ -75,6 +75,18 @@ public sealed class StoryState
         if (changed) Revision++;
     }
 
+    /// <summary>Flags that last only until the day changes (the original's daily flags, <c>FLAG_DAILY_...</c>).</summary>
+    public const string DailyFlagPrefix = "FLAG_DAILY_";
+
+    /// <summary>
+    /// A new day has come (<c>FieldSystem_ClearDailyFlags</c>, plan 06 · R13): every daily flag is cleared, so what
+    /// was done once today (Mr. Backlot's news of the Trophy Garden) can be done again.
+    /// </summary>
+    public void ClearDaily()
+    {
+        if (flags.RemoveWhere(f => f.StartsWith(DailyFlagPrefix, StringComparison.Ordinal)) > 0) Revision++;
+    }
+
     // ------------------------------------------------------------------ variables
 
     /// <summary>The variables that aren't nought, which is what a save keeps.</summary>

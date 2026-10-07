@@ -30,6 +30,24 @@
     { "species": "Gabite", "level": 43 }
   ],
   "landRate": 15,
+  "day": [
+    "Graveler",
+    "Azumarill"
+  ],
+  "night": [
+    "Golbat",
+    "Azumarill"
+  ],
+  "swarm": [
+    "Floatzel",
+    "Azumarill"
+  ],
+  "radar": [
+    "Onix",
+    "Floatzel",
+    "Steelix",
+    "Gabite"
+  ],
   "water": [
     { "species": "Floatzel", "level": 30, "maxLevel": 50 },
     { "species": "Floatzel", "level": 30, "maxLevel": 50 },

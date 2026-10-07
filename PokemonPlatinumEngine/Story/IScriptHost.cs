@@ -169,4 +169,18 @@ public interface IScriptHost
 
     /// <summary>A Pokémon met in the field cries: a species, or one of its forms by name.</summary>
     void Cry(string species);
+
+    // ------------------------------------------------------------------ wild Pokémon (plan 06 · R13)
+
+    /// <summary>What the game remembers of its wild Pokémon: swarms, the Trophy Garden, the honey trees, the roamers.</summary>
+    SpecialEncounters Encounters { get; }
+
+    /// <summary>The honey tree the player faces from the south (<see cref="HoneyTrees.Faced"/>); null when none.</summary>
+    int? HoneyTreeFaced { get; }
+
+    /// <summary>The trainer's whole number, the card's and its hidden half (the original's 32 bits): it picks the Munchlax trees.</summary>
+    uint TrainerNumber { get; }
+
+    /// <summary>Where a script's own draws come from: a honey tree slathered, a Trophy Garden Pokémon, a roamer set loose.</summary>
+    System.Random Chance { get; }
 }

@@ -30,6 +30,24 @@
     { "species": "Zubat", "level": 8 }
   ],
   "landRate": 10,
+  "day": [
+    "Zubat",
+    "Zubat"
+  ],
+  "night": [
+    "Zubat",
+    "Zubat"
+  ],
+  "swarm": [
+    "Geodude",
+    "Geodude"
+  ],
+  "radar": [
+    "Geodude",
+    "Geodude",
+    "Geodude",
+    "Geodude"
+  ],
   "warps": [
     { "x": 15, "z": 1, "to": "oreburgh_mine_b1f", "toWarp": 3 }
   ],

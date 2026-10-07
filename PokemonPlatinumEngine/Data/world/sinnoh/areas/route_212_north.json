@@ -30,6 +30,24 @@
     { "species": "Marill", "level": 23 }
   ],
   "landRate": 30,
+  "day": [
+    "Staravia",
+    "Ralts"
+  ],
+  "night": [
+    "Marill",
+    "Marill"
+  ],
+  "swarm": [
+    "Roselia",
+    "Marill"
+  ],
+  "radar": [
+    "Smeargle",
+    "Smeargle",
+    "Smeargle",
+    "Smeargle"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

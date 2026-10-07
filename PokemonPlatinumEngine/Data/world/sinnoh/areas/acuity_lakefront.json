@@ -30,6 +30,24 @@
     { "species": "Snover", "level": 35 }
   ],
   "landRate": 30,
+  "day": [
+    "Sneasel",
+    "Snover"
+  ],
+  "night": [
+    "Snorunt",
+    "Snorunt"
+  ],
+  "swarm": [
+    "Snover",
+    "Swinub"
+  ],
+  "radar": [
+    "Sneasel",
+    "Swinub",
+    "Sneasel",
+    "Snover"
+  ],
   "warps": [
     { "x": 308, "z": 229, "to": "lake_acuity_low_water", "toWarp": 0 },
     { "x": 309, "z": 229, "to": "lake_acuity_low_water", "toWarp": 1 },

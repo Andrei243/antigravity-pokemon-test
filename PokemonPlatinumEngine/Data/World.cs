@@ -98,6 +98,13 @@ public sealed class World
         return days;
     }
 
+    /// <summary>
+    /// The region's tables of wild Pokémon that belong to no one area (plan 06 · R13, <see cref="WorldEncountersFile"/>):
+    /// the honey trees', the Great Marsh's and the Trophy Garden's dailies and Feebas's tiles. Empty when the folder has none.
+    /// </summary>
+    public WorldEncountersFile Encounters => encounters ??= Optional<WorldEncountersFile>(WorldEncountersFile.FileName) ?? new();
+    private WorldEncountersFile? encounters;
+
     public WorldOverlayFile? Overlay(string key)
     {
         if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"));
@@ -653,6 +660,11 @@ public static class WorldMapBuilder
         Fill(area.WildEncounters, file?.Land, WorldAreaFile.LandSlotWeights);
         Fill(area.WaterEncounters, file?.Water, WorldAreaFile.WaterSlotWeights);
         area.LandRate = file?.LandRate ?? 0;
+        // What the time of day, a swarm and the Poké Radar put in the land's slots (plan 06 · R13)
+        area.DaySlots.AddRange(file?.Day ?? new());
+        area.NightSlots.AddRange(file?.Night ?? new());
+        area.SwarmSlots.AddRange(file?.Swarm ?? new());
+        area.RadarSlots.AddRange(file?.Radar ?? new());
         area.WaterRate = file?.WaterRate ?? 0;
         // The rods' tables: the Old Rod's slots bite as often as the water's, the other two's by their own weights
         Fill(area.RodEncounters[(int)FishingRod.Old], file?.OldRod, WorldAreaFile.WaterSlotWeights);
