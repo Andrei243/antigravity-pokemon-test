@@ -1,0 +1,7 @@
+# The Pokémon Center before Victory Road (plan 01 · M8). docs/scripts.md describes the language.
+
+
+# Coming in lets Fly come here (the original's own first arrival, set by this room's script)
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_OUTSIDE_VICTORY_ROAD
+  end

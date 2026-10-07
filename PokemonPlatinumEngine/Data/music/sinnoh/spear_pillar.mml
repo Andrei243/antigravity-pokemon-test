@@ -1,0 +1,71 @@
+# Spear Pillar (the original's D_MOUNT2 role): the broken columns of an ancient temple at the summit of Mt. Coronet,
+# above the clouds, where the myths say time and space began and where Team Galactic's leader means to begin them
+# again. An E-Phrygian rite, awe held on a breath: low strings pulse in eighths like a heartbeat that won't slow, an
+# organ and a choir hold bare fifths, the horn chants an old melody and a temple bell tolls; the second half lifts
+# through chords a third apart, brass and a quickening timpani, and ends on a half close that never quite resolves.
+# Original composition for this game.
+title Spear Pillar
+tempo 88
+meter 4/4
+reverb 0.5
+night none
+
+track lead horn vol=0.84 pan=0 rev=0.45
+  r1 | r1 |
+  L v100 o4 e2 g4 b4 | o5 c2. o4 a4 | o4 b4. a8 g4 e4 | o4 f4. e8 d2 |
+  o4 e4 g4 b4 o5 e4 | o5 f2 c4 o4 a4 | o4 b4 o5 d4 g4 d4 | o5 c+2. r4 |
+  v110 o5 e2 g4 e4 | o5 e-2 c4 o4 a-4 | o5 d2 f4 d4 | o5 e2 g4 o6 c4 |
+  v114 o6 d2 c4 o5 a4 | o5 b-2 f4 d4 | o5 f2 c4 o4 a4 | v100 o4 b2. r4 |
+
+track pulse strings vol=0.44 pan=0.25 rev=0.35
+  q6 v96 o3 e8 e8 b8 e8 o4 e8 o3 e8 b8 e8 | o3 f8 f8 o4 c8 o3 f8 o4 f8 o3 f8 o4 c8 o3 f8 |
+  L o3 e8 e8 b8 e8 o4 e8 o3 e8 b8 e8 | o3 f8 f8 o4 c8 o3 f8 o4 f8 o3 f8 o4 c8 o3 f8 |
+  o3 e8 e8 b8 e8 o4 e8 o3 e8 b8 e8 | o3 d8 d8 a8 d8 o4 d8 o3 d8 a8 d8 |
+  o3 e8 e8 b8 e8 o4 e8 o3 e8 b8 e8 | o3 f8 f8 o4 c8 o3 f8 o4 f8 o3 f8 o4 c8 o3 f8 |
+  o3 g8 g8 o4 d8 o3 g8 o4 g8 o3 g8 o4 d8 o3 g8 | o3 a8 a8 o4 e8 o3 a8 o4 a8 o3 a8 o4 e8 o3 a8 |
+  v104 o3 c8 c8 g8 c8 o4 c8 o3 c8 g8 c8 | o2 a-8 a-8 o3 e-8 o2 a-8 o3 a-8 o2 a-8 o3 e-8 o2 a-8 |
+  o2 b-8 b-8 o3 f8 o2 b-8 o3 b-8 o2 b-8 o3 f8 o2 b-8 | o3 c8 c8 g8 c8 o4 c8 o3 c8 g8 c8 |
+  o3 d8 d8 a8 d8 o4 d8 o3 d8 a8 d8 | o2 b-8 b-8 o3 f8 o2 b-8 o3 b-8 o2 b-8 o3 f8 o2 b-8 |
+  o3 f8 f8 o4 c8 o3 f8 o4 f8 o3 f8 o4 c8 o3 f8 | o2 b8 b8 o3 f+8 o2 b8 o3 b8 o2 b8 o3 f+8 o2 b8 |
+
+track organ organ vol=0.22 pan=-0.2 rev=0.5
+  q8 r1 | r1 |
+  L o4 (e g b)1 | o4 (f a >c)1 | o4 (e g b)1 | o4 (d f a)1 |
+  o4 (e g b)1 | o4 (f a >c)1 | o4 (d g b)1 | o4 (c+ e a)1 |
+  o4 (c e g)1 | o4 (c e- a-)1 | o4 (d f b-)1 | o4 (c e g)1 |
+  o4 (d f a)1 | o4 (d f b-)1 | o4 (c f a)1 | o4 (d+ f+ b)1 |
+
+track chant choir vol=0.3 pan=0.15 rev=0.6
+  q8 r1 | r1 |
+  L o3 (e b >e)1 | o3 (f >c f)1 | o3 (e b >e)1 | o3 (d a >d)1 |
+  o3 (e b >e)1 | o3 (f >c f)1 | o3 (g >d g)1 | o3 (a >e a)1 |
+  o3 (c g >c)1 | o3 (a- >e- a-)1 | o3 (b- >f b-)1 | o3 (c g >c)1 |
+  o3 (d a >d)1 | o3 (b- >f b-)1 | o3 (f >c f)1 | o2 (b >f+ b)1 |
+
+track call brass vol=0.4 pan=-0.3 rev=0.4
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  v86 o4 (c e g)2 r2 | o4 (c e- a-)2 r2 | o4 (d f b-)2 r2 | o4 (c e g)2 r2 |
+  v92 o4 (d f a)2 r2 | o4 (d f b-)2 r2 | o4 (c f a)2 r2 | o4 (d+ f+ b)2 r2 |
+
+track bass contrabass vol=0.6 rev=0.25
+  q8 o3 e1 | o3 f1 |
+  L o3 e1 | o3 f1 | o3 e1 | o3 d1 |
+  o3 e1 | o3 f1 | o3 g1 | o3 a1 |
+  o3 c1 | o2 a-1 | o2 b-1 | o3 c1 |
+  o3 d1 | o2 b-1 | o3 f1 | o2 b1 |
+
+track temple bell vol=0.3 pan=0.4 rev=0.7
+  v100 o5 e2 r2 | r1 |
+  L o5 e2 r2 | r1 | o5 e2 r2 | r1 |
+  o5 e2 r2 | r1 | o5 d2 r2 | r1 |
+  o5 g2 r2 | r1 | o5 f2 r2 | r1 |
+  o5 a2 r2 | r1 | o5 c2 r2 | r1 |
+
+track heart timpani vol=0.42 rev=0.35
+  v50 o3 e8 v74 e4. r2 | v50 o3 f8 v74 f4. r2 |
+  L v50 o3 e8 v74 e4. r2 | v50 o3 f8 v74 f4. r2 | v50 o3 e8 v74 e4. r2 | v50 o3 d8 v74 d4. r2 |
+  v50 o3 e8 v74 e4. r2 | v50 o3 f8 v74 f4. r2 | v50 o3 g8 v74 g4. r2 | v50 o3 a8 v74 a4. r2 |
+  v54 o3 c8 v78 c4. v54 c8 v78 c4. | v54 o3 a-8 v78 a-4. v54 a-8 v78 a-4. | v54 o3 b-8 v78 b-4. v54 b-8 v78 b-4. | v54 o3 c8 v78 c4. v54 c8 v78 c4. |
+  v56 o3 d8 v80 d4. v56 d8 v80 d4. | v56 o3 b-8 v80 b-4. v56 b-8 v80 b-4. | v56 o3 f8 v80 f4. v56 f8 v80 f4. | v40 o3 b16 b16 b16 b16 v50 b16 b16 b16 b16 v62 b16 b16 b16 b16 v76 b16 b16 b16 b16 |

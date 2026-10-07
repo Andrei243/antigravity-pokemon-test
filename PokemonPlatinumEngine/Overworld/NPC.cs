@@ -69,6 +69,13 @@ public class NPC
     /// <summary>Takes the player to the next region (a ferry sailor, say) once this region's story is finished.</summary>
     public bool IsTransportAttendant { get; set; } = false;
 
+    /// <summary>
+    /// For a Poké Mart's clerk: the counter they keep, by the original's specialty id (<c>jubilife</c>,
+    /// <c>eterna_house</c>; <see cref="Data.MartDatabase"/>); null keeps the common counter, whose stock grows with
+    /// the badges (plan 06 · R11).
+    /// </summary>
+    public string? Mart { get; set; }
+
     // ---- Items on the ground (plan 02)
 
     /// <summary>The <see cref="NpcType"/> of an item lying on the ground in its ball: it is drawn as the ball, and picked up by speaking to it.</summary>

@@ -119,12 +119,12 @@ public sealed partial class BattleCore
         if (o.Moves != null)
         {
             p.Moves.Clear();
-            foreach (var (data, pp) in o.Moves) p.Moves.Add(new Move(data, pp));
+            foreach (var (data, pp, ups) in o.Moves) p.Moves.Add(new Move(data, pp, ups));
         }
         else if (o.MoveSlots != null)
         {
-            foreach (var (slot, (data, pp)) in o.MoveSlots)
-                if (slot < p.Moves.Count) p.Moves[slot] = new Move(data, pp);
+            foreach (var (slot, (data, pp, ups)) in o.MoveSlots)
+                if (slot < p.Moves.Count) p.Moves[slot] = new Move(data, pp, ups);
         }
         place.Volatile.Original = null;
     }

@@ -1,0 +1,12 @@
+{
+  "area": "acuity_lakefront",
+  "bgmTrack": "sinnoh/route216",
+  "trees": "Pine",
+  // The way in shares its tiles between two lakes, as the original moves its warps by script: the lake as it is now
+  // (warps 0 and 1) and the lake Team Galactic comes to (warps 2 and 3), which opens with its chapter (plan 02 · S11)
+  "locked": [ 2, 3 ],
+  // The rival, who runs on up to the lake ahead of the player (the original's trigger), comes with that chapter too
+  "signs": {
+    "arrow_signpost": "Acuity Lakefront\nNorth: Lake Acuity"
+  }
+}

@@ -121,6 +121,7 @@ internal static partial class ModernUi
     {
         BagAction.Use => "USE",
         BagAction.Give => "GIVE",
+        BagAction.Toss => "TOSS",
         BagAction.Register => "REGISTER",
         BagAction.Deselect => "DESELECT",
         _ => "CANCEL"
@@ -141,34 +142,37 @@ internal static partial class ModernUi
     }
 
     /// <summary>
-    /// A shop's counter: the stock with its prices, the player's money, the chosen item, and over them "how
-    /// many?" once something is being bought.
+    /// A shop's counter: the first question (BUY, SELL, SEE YA!), then the stock with its prices or the bag's items
+    /// with what they sell for, the player's money, the chosen item, and over them "how many?" once something is
+    /// changing hands.
     /// </summary>
     public static void DrawShop(int sw, int sh, ShopScreen shop, int money, Inventory inventory, float appear, float asking, bool askingVisible)
     {
         Backdrop(sw, sh);
         ScreenTitle(shop.Name);
-        Hints(sw - Margin, 44, ("Z", "Buy"), ("Esc", "Leave"));
+        bool selling = shop.Mode == ShopMode.Selling;
+        Hints(sw - Margin, 44, ("Z", shop.Mode == ShopMode.Choosing ? "Choose" : selling ? "Sell" : "Buy"), ("Esc", shop.Mode == ShopMode.Choosing ? "Leave" : "Back"));
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
-        var stock = shop.Stock;
+        var listed = shop.Listed;
 
-        // ---- The stock
+        // ---- The stock, or the bag's items
         var list = new Rectangle(Margin - slide, ContentTop, 920, ContentBottom - ContentTop);
         Panel(list, 34);
-        bool scrolls = stock.Count > ShopScreen.VisibleRows;
-        for (int row = 0; row < ShopScreen.VisibleRows && shop.FirstRow + row < stock.Count; row++)
+        bool scrolls = listed.Count > ShopScreen.VisibleRows;
+        for (int row = 0; row < ShopScreen.VisibleRows && shop.FirstRow + row < listed.Count; row++)
         {
             int index = shop.FirstRow + row;
-            var item = stock[index];
+            var item = listed[index];
             var r = RowRect(list, row, 40, scrolls);
-            bool selected = index == shop.SelectedIndex;
-            bool affordable = item.Price <= money;
-            var ink = ListRow(r, selected, item.Name);
+            bool selected = shop.Mode != ShopMode.Choosing && index == shop.SelectedIndex;
+            int price = selling ? ShopScreen.SellPrice(item) : item.Price;
+            bool affordable = selling || item.Price <= money;
+            var ink = ListRow(r, selected, selling ? $"{item.Name}  ×{inventory.GetQuantity(item)}" : item.Name);
             RowIcon(r, PixelArtGenerator.GetItemIcon(item), 1.5f, selected);
-            MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, item.Price, 30, selected ? Color.White : affordable ? ink : Red);
+            MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, price, 30, selected ? Color.White : affordable ? ink : Red);
         }
-        ScrollBar(list, shop.FirstRow, ShopScreen.VisibleRows, stock.Count, 40);
+        ScrollBar(list, shop.FirstRow, ShopScreen.VisibleRows, listed.Count, 40);
 
         // ---- The player's money
         float rx = Margin + 920 + Gutter + slide, rw = sw - Margin * 2 - 920 - Gutter;
@@ -180,32 +184,60 @@ internal static partial class ModernUi
         // ---- The chosen item
         var detail = new Rectangle(rx, ContentTop + 132 + 24, rw, ContentBottom - ContentTop - 132 - 24);
         Panel(detail, 34);
-        if (shop.Selected is { } chosen)
+        if (shop.Mode != ShopMode.Choosing && shop.Selected is { } chosen)
             ItemDetail(detail, chosen, PocketTab(chosen.Pocket), ("IN BAG", $"×{inventory.GetQuantity(chosen)}"));
 
-        if (askingVisible && shop.Selected is { } buying) QuantityPrompt(sw, sh, buying, shop.Quantity, asking);
+        if (shop.Mode == ShopMode.Choosing) ShopQuestion(sw, sh, shop.ChoiceIndex);
+        if (askingVisible && shop.Selected is { } buying) QuantityPrompt(sw, sh, buying, shop.Quantity, asking, selling);
     }
 
-    /// <summary>"Buy how many?" over the dimmed shop: the item, a stepper and what that many cost.</summary>
-    private static void QuantityPrompt(int sw, int sh, ItemData item, int quantity, float appear)
+    /// <summary>The counter's first question, over the dimmed shop: BUY, SELL or SEE YA!</summary>
+    private static void ShopQuestion(int sw, int sh, int cursor)
+    {
+        Dim(sw, sh, 120);
+        var r = new Rectangle(sw / 2f - 300, sh / 2f - 230, 600, 460);
+        Panel(r, 36);
+        UiFonts.Draw("What can I do for you?", r.X + 48, r.Y + 40, 40, Ink, UiWeight.Black);
+        for (int i = 0; i < ShopScreen.Choices.Length; i++)
+            Button(new Rectangle(r.X + 48, r.Y + 120 + i * 104, r.Width - 96, 84), 34, i == 2 ? Blue : Green, ShopScreen.Choices[i], 32, cursor == i);
+    }
+
+    /// <summary>"Buy how many?" or "Sell how many?" over the dimmed shop: the item, a stepper and what that many come to.</summary>
+    private static void QuantityPrompt(int sw, int sh, ItemData item, int quantity, float appear, bool selling = false)
     {
         Dim(sw, sh, (int)(150 * appear));
         var r = new Rectangle(sw / 2f - 480, sh / 2f - 220 + (1f - appear) * 60f, 960, 440);
         Panel(r, 36);
-        UiFonts.Draw("Buy how many?", r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
-        HintsDark(r.X + r.Width - 40, r.Y + 46, ("Z", "Buy"), ("Esc", "Back"));
+        UiFonts.Draw(selling ? "Sell how many?" : "Buy how many?", r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
+        HintsDark(r.X + r.Width - 40, r.Y + 46, ("Z", selling ? "Sell" : "Buy"), ("Esc", "Back"));
 
+        int each = selling ? ShopScreen.SellPrice(item) : item.Price;
         var c = new Vector2(r.X + 56 + 52, r.Y + 176);
         UiShapes.Circle(c, 52, Disc);
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
         UiFonts.DrawCentered(item.Name, r.X + 56 + 128, r.Y + 160, 40, Ink, UiWeight.Black);
-        float each = Money(r.X + 56 + 128, r.Y + 204, item.Price, 26, Muted);
-        UiFonts.DrawCentered("each", r.X + 56 + 128 + each + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
+        float width = Money(r.X + 56 + 128, r.Y + 204, each, 26, Muted);
+        UiFonts.DrawCentered("each", r.X + 56 + 128 + width + 10, r.Y + 204, 24, Muted, UiWeight.ExtraBold);
 
         Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 180), $"× {quantity}");
 
         UiShapes.Fill(new Rectangle(r.X + 56, r.Y + 272, r.Width - 112, 3), 1.5f, Rule);
-        UiFonts.DrawCentered("TOTAL", r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
-        MoneyRight(r.X + r.Width - 56, r.Y + 350, item.Price * quantity, 60, Ink);
+        UiFonts.DrawCentered(selling ? "YOU GET" : "TOTAL", r.X + 56, r.Y + 350, 28, Muted, UiWeight.Black);
+        MoneyRight(r.X + r.Width - 56, r.Y + 350, each * quantity, 60, Ink);
+    }
+
+    /// <summary>"Throw away how many?" over the dimmed bag (plan 06 · R11): the item and a stepper.</summary>
+    public static void TossBox(int sw, int sh, ItemData item, int count)
+    {
+        Dim(sw, sh, 140);
+        var r = new Rectangle(sw / 2f - 440, sh / 2f - 160, 880, 320);
+        Panel(r, 36);
+        UiFonts.Draw("Throw away how many?", r.X + 56, r.Y + 44, 44, Ink, UiWeight.Black);
+        HintsDark(r.X + r.Width - 40, r.Y + 46, ("Z", "Toss"), ("Esc", "Back"));
+        var c = new Vector2(r.X + 56 + 52, r.Y + 200);
+        UiShapes.Circle(c, 52, Disc);
+        PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);
+        UiFonts.DrawCentered(item.Name, r.X + 56 + 128, r.Y + 200, 40, Ink, UiWeight.Black);
+        Stepper(new Vector2(r.X + r.Width - 56 - 44 - 120 - 24, r.Y + 200), $"× {count}");
     }
 }

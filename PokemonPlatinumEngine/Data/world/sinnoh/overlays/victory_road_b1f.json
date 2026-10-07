@@ -1,0 +1,57 @@
+{
+  "area": "victory_road_b1f",
+  "bgmTrack": "sinnoh/victory_road",
+  "people": {
+    // The pair battle together, two Pokémon at a time; either of them starts it
+    "double_team_trainer_jo": {
+      "name": "Jo",
+      "trainer": {
+        "id": "double_team_jo_and_pat",
+        "name": "Jo & Pat",
+        "trainerClass": "Double Team",
+        "dialogueBefore": "Jo: Pat and I explore every corner of this cave together. Now battle us together!",
+        "dialogueAfter": "Jo: Let's go and explore somewhere a little gentler, Pat."
+      }
+    },
+    "double_team_trainer_pat": {
+      "name": "Pat",
+      "trainer": {
+        "id": "double_team_jo_and_pat",
+        "name": "Jo & Pat",
+        "trainerClass": "Double Team",
+        "dialogueBefore": "Pat: Wherever Jo goes, I go. Even into battle!",
+        "dialogueAfter": "Pat: Jo, I followed you straight into a defeat."
+      }
+    },
+    "dragon_tamer_ondrej": {
+      "name": "Ondrej",
+      "trainer": {
+        "id": "dragon_tamer_ondrej",
+        "name": "Ondrej",
+        "trainerClass": "Dragon Tamer",
+        "dialogueBefore": "Dragon Tamer Ondrej: Dragons are the mightiest Pokémon there are, and mine will prove it!",
+        "dialogueAfter": "Dragon Tamer Ondrej: Mighty, yes. Mighty enough, no."
+      }
+    },
+    "psychic_valencia": {
+      "name": "Valencia",
+      "trainer": {
+        "id": "psychic_valencia",
+        "name": "Valencia",
+        "trainerClass": "Psychic",
+        "dialogueBefore": "Psychic Valencia: The dark down here sharpens the mind. Can you feel what I'm thinking?",
+        "dialogueAfter": "Psychic Valencia: All I can feel now is that I've lost."
+      }
+    },
+    "ace_trainer_henry": {
+      "name": "Henry",
+      "trainer": {
+        "id": "ace_trainer_henry",
+        "name": "Henry",
+        "trainerClass": "Ace Trainer",
+        "dialogueBefore": "Ace Trainer Henry: I've been pacing up and down here, getting ready for the League. You're just what I need!",
+        "dialogueAfter": "Ace Trainer Henry: Back to pacing, then."
+      }
+    }
+  }
+}

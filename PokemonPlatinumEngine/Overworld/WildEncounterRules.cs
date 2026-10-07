@@ -9,12 +9,20 @@ namespace PokemonPlatinumEngine.Overworld;
 /// <summary>
 /// The Pokémon at the head of the party, as far as the wild Pokémon care (the original's
 /// <c>WildEncounters_FieldParams</c>): its ability works in the field whether it can fight or not, and so does
-/// what it holds (<paramref name="HoldEffect"/>: a Cleanse Tag's <c>EncountersDown</c>).
+/// what it holds (<paramref name="HoldEffect"/>: a Cleanse Tag's <c>EncountersDown</c>). The bag's aids ride with it
+/// (plan 06 · R11): <paramref name="RepelLevel"/> is the level of the team's first Pokémon that can fight while a
+/// Repel works, and <paramref name="Flute"/> the flute played in this place.
 /// </summary>
-public readonly record struct WildLead(string? Ability, int Level, Nature Nature, Gender Gender, string? HoldEffect = null)
+public readonly record struct WildLead(string? Ability, int Level, Nature Nature, Gender Gender, string? HoldEffect = null,
+    int? RepelLevel = null, Flute Flute = Flute.None)
 {
     public static WildLead? Of(Party party) =>
         party.Members.Count == 0 ? null : new WildLead(party.Members[0].AbilityName, party.Members[0].Level, party.Members[0].Nature, party.Members[0].Gender, party.Members[0].HeldItem?.HoldEffect);
+
+    /// <summary>The lead with the bag's aids: the Repel's level from the first that can fight (<c>Party_FindFirstEligibleBattler</c>), and the flute.</summary>
+    public static WildLead? Of(Party party, EncounterAids aids) => Of(party) is { } lead
+        ? lead with { RepelLevel = aids.RepelActive ? party.FirstUsable?.Level : null, Flute = aids.Flute }
+        : null;
 }
 
 /// <summary>
@@ -28,8 +36,9 @@ public static class WildEncounterRules
     /// <summary>
     /// <c>ModifyEncounterRateWithFieldParams</c>: twice the place's rate with Arena Trap, No Guard or Illuminate;
     /// half with White Smoke, Quick Feet or Stench, with Sand Veil in a sandstorm and with Snow Cloak in the snow;
-    /// never over a hundred. Then <c>ModifyEncounterRateWithHeldItem</c>: two thirds of that with a Cleanse Tag or
-    /// a Pure Incense in the lead's hands (plan 06 · R8).
+    /// never over a hundred. Then <c>ModifyEncounterRateWithFlute</c> (plan 06 · R11): half with the Black Flute,
+    /// half again with the White one. Then <c>ModifyEncounterRateWithHeldItem</c>: two thirds of that with a Cleanse
+    /// Tag or a Pure Incense in the lead's hands (plan 06 · R8).
     /// </summary>
     public static int Rate(int rate, WildLead? lead, FieldWeather weather)
     {
@@ -46,6 +55,8 @@ public static class WildEncounterRules
                 break;
         }
         rate = Math.Min(rate, 100);
+        if (first.Flute == Flute.Black) rate /= 2;
+        else if (first.Flute == Flute.White) rate += rate / 2;
         if (first.HoldEffect == PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.EncountersDown) rate = rate * 2 / 3;
         return rate;
     }
@@ -61,6 +72,7 @@ public static class WildEncounterRules
         var slot = Slot(table, water, lead, rng);
         int level = Level(table, slot, water, lead, rng);
         if (ScaredOff(lead, level, rng)) return null;
+        if (RepelTurnsAway(lead, level)) return null;
         return new WildEncounterEntry
         {
             SpeciesName = slot.SpeciesName,
@@ -118,6 +130,9 @@ public static class WildEncounterRules
         if (water) return high;
         return Math.Max(high, table.Where(e => e.SpeciesName == slot.SpeciesName).Max(e => Math.Max(e.MinLevel, e.MaxLevel)));
     }
+
+    /// <summary><c>RepelPreventsEncounter</c>: while a Repel works, a wild Pokémon of a lower level than the team's first that can fight stays away.</summary>
+    public static bool RepelTurnsAway(WildLead? lead, int wildLevel) => lead?.RepelLevel is { } level && level > wildLevel;
 
     /// <summary><c>FirstMonAbilityPreventsEncounter</c>: with Keen Eye or Intimidate on a lead above level 5, a wild Pokémon five levels or more below it stays away one time in two.</summary>
     public static bool ScaredOff(WildLead? lead, int wildLevel, Random rng)

@@ -1,0 +1,69 @@
+# Mt. Coronet's high floors and its snowy peak (the original's D_MOUNT1 role: the long climb through the mountain
+# that splits Sinnoh in two, out into the snow and up towards the ruins at its summit): a grave C-minor ascent. The
+# horn walks up over a piano that keeps climbing in eighths, the timpani treads beneath, a choir holds bare fifths
+# and snow glints on the celesta at the ends of phrases; the second half climbs a step a bar, from A-flat through a
+# chromatic rise to the dominant, and the horn with it. Original composition for this game.
+title Mt. Coronet
+tempo 96
+meter 4/4
+reverb 0.44
+night none
+
+track lead horn vol=0.86 pan=0 rev=0.4
+  r1 | r1 |
+  L v100 o4 g2 o5 c4. d8 | o5 e-4. d8 c4 o4 b-4 | o4 a-2 o5 c4 e-4 | o5 d2. r4 |
+  o4 g4 o5 c4 e-4 g4 | o5 b-2 g4 e-4 | o5 a-4. g8 f4 c4 | o5 d2 o4 b2 |
+  v106 o5 c4. d8 e-2 | o5 d4. e-8 f2 | o5 e-4. f8 g2 | o5 f4. g8 a-2 |
+  v112 o5 g4. a-8 b-2 | o5 a-4. b-8 o6 c2 | o6 e-2 c4 o5 a4 | v100 o5 b2. r4 |
+
+track climb piano vol=0.4 pan=0.3 rev=0.3
+  v84 o3 c8 g8 o4 c8 e-8 g8 o5 c8 o4 g8 e-8 | o2 g8 o3 d8 g8 b8 o4 d8 g8 d8 o3 b8 |
+  L o3 c8 g8 o4 c8 e-8 g8 o5 c8 o4 g8 e-8 | o2 b-8 o3 g8 o4 c8 e-8 g8 o5 c8 o4 g8 e-8 |
+  o2 a-8 o3 e-8 a-8 o4 c8 e-8 a-8 e-8 c8 | o2 g8 o3 d8 g8 b8 o4 d8 g8 d8 o3 b8 |
+  o3 c8 g8 o4 c8 e-8 g8 o5 c8 o4 g8 e-8 | o2 b-8 o3 e-8 g8 b-8 o4 e-8 g8 e-8 o3 b-8 |
+  o2 f8 o3 c8 f8 a-8 o4 c8 f8 c8 o3 a-8 | o2 g8 o3 d8 g8 b8 o4 d8 g8 d8 o3 b8 |
+  o2 a-8 o3 e-8 a-8 o4 c8 e-8 a-8 e-8 c8 | o2 b-8 o3 f8 b-8 o4 d8 f8 b-8 f8 d8 |
+  o3 c8 g8 o4 c8 e-8 g8 o5 c8 o4 g8 e-8 | o3 d8 a-8 o4 c8 f8 a-8 o5 c8 o4 a-8 f8 |
+  o3 e-8 b-8 o4 e-8 g8 b-8 o5 e-8 o4 b-8 g8 | o3 f8 o4 c8 f8 a-8 o5 c8 f8 c8 o4 a-8 |
+  o3 f+8 o4 c8 e-8 a8 o5 c8 e-8 c8 o4 a8 | o3 g8 o4 d8 g8 b8 o5 d8 g8 d8 o4 b8 |
+
+track pad strings vol=0.28 pan=-0.15 rev=0.45
+  q8 o4 (c e- g)1 | o3 (b >d g)1 |
+  L o4 (c e- g)1 | o4 (c e- g)1 | o4 (c e- a-)1 | o3 (b >d g)1 |
+  o4 (c e- g)1 | o4 (e- g b-)1 | o4 (c f a-)1 | o3 (b >d g)1 |
+  o4 (c e- a-)1 | o4 (d f b-)1 | o4 (e- g >c)1 | o4 (d f a- >c)1 |
+  o4 (e- g b-)1 | o4 (f a- >c)1 | o4 (e- f+ a >c)1 | o4 (d g b)1 |
+
+track chant choir vol=0.28 pan=-0.3 rev=0.55
+  q8 r1 | o3 (g >d g)1 |
+  L o3 (c g >c)1 | o3 (c g >c)1 | o3 (a- >e- a-)1 | o3 (g >d g)1 |
+  o3 (c g >c)1 | o3 (e- b- >e-)1 | o3 (f >c f)1 | o3 (g >d g)1 |
+  o3 (a- >e- a-)1 | o3 (b- >f b-)1 | o4 (c g >c)1 | o4 (f >c f)1 |
+  o4 (e- b- >e-)1 | o4 (f >c f)1 | o4 (f+ >c f+)1 | o4 (g >d g)1 |
+
+track bass contrabass vol=0.6 rev=0.2
+  q8 o3 c1 | o2 g1 |
+  L o3 c1 | o2 b-1 | o2 a-1 | o2 g1 |
+  o3 c1 | o2 b-1 | o2 f1 | o2 g1 |
+  o2 a-1 | o2 b-1 | o3 c1 | o3 d1 |
+  o3 e-1 | o3 f1 | o3 f+1 | o3 g2 o2 g2 |
+
+track tread timpani vol=0.42 rev=0.3
+  v80 o4 c4 r4 v58 c4 r4 | v80 o3 g4 r4 v44 g16 g16 g16 g16 v56 g16 g16 g16 g16 |
+  L v80 o4 c4 r4 v58 c4 r4 | v76 o4 c4 r2. | v76 o4 c4 r2. | v80 o3 g4 r4 v58 g4 r4 |
+  v80 o4 c4 r4 v58 c4 r4 | v76 o3 b-4 r2. | v76 o4 c4 r2. | v40 o3 g16 g16 g16 g16 v50 g16 g16 g16 g16 v62 g16 g16 g16 g16 v80 g4 |
+  v76 o3 a-4 r4 v54 a-4 r4 | v78 o3 b-4 r4 v56 b-4 r4 | v80 o4 c4 r4 v58 c4 r4 | v82 o4 d4 r4 v60 d4 r4 |
+  v84 o4 e-4 r4 v62 e-4 r4 | v86 o4 f4 r4 v64 f4 r4 | v88 o4 f+4 r4 v66 f+4 r4 | v88 o4 g4 r4 v44 o3 g16 g16 g16 g16 v56 g16 g16 g16 g16 |
+
+track snow celesta vol=0.26 pan=0.4 rev=0.6
+  r1 | r1 |
+  L r1 | r1 | r1 | r4 o6 g8 r8 d8 r8 o5 b8 r8 |
+  r1 | r1 | r1 | r4 o6 g8 r8 d8 r8 o5 b8 r8 |
+  r1 | r1 | r1 | r4 o6 c8 r8 o5 a-8 r8 f8 r8 |
+  r1 | r1 | r1 | r4 o6 g8 r8 d8 r8 o5 b8 r8 |
+
+track wind kit vol=0.42 pan=-0.1 rev=0.35
+  r1 | r1 |
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  [ v34 k8 v52 k8 v34 k8 v46 k8 v34 k8 v52 k8 v34 k8 v46 k8 | ]8

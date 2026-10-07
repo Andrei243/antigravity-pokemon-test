@@ -129,6 +129,8 @@ public sealed class MapFile
         public bool? IsPokeMartClerk { get; set; }
         public bool? IsPCTerminal { get; set; }
         public bool? IsTransportAttendant { get; set; }
+        /// <summary>A clerk's counter: a specialty id of <c>marts.json</c>; left out, the common counter.</summary>
+        public string? Mart { get; set; }
 
         /// <summary>The script talking to them runs, where it isn't the common one for what they are (docs/scripts.md).</summary>
         public string? Script { get; set; }
@@ -261,6 +263,7 @@ public sealed class MapFile
             IsPokeMartClerk = n.IsPokeMartClerk ?? false,
             IsPCTerminal = n.IsPCTerminal ?? false,
             IsTransportAttendant = n.IsTransportAttendant ?? false,
+            Mart = n.Mart,
             Key = n.Id,
             Script = n.Script,
             HiddenBy = n.HiddenBy,
@@ -307,6 +310,13 @@ public sealed class MapFile
                 SightRange = t.SightRange,
                 DoubleBattle = t.DoubleBattle ?? false
             };
+            // A trainer of Platinum's data (the gym's, the school's) takes its team, mind and items from it, as the
+            // world's people do: a room needs to write only the id and the lines
+            if (TrainerDatabase.Get(t.Id) is { } record)
+            {
+                npc.TrainerData.FromPlatinum = t.Party.Count == 0;
+                TrainerDatabase.Fill(npc.TrainerData, record);
+            }
         }
 
         return npc;
@@ -398,6 +408,7 @@ public sealed class MapFile
         IsPokeMartClerk = npc.IsPokeMartClerk ? true : null,
         IsPCTerminal = npc.IsPCTerminal ? true : null,
         IsTransportAttendant = npc.IsTransportAttendant ? true : null,
+        Mart = npc.Mart,
         Script = npc.Script,
         HiddenBy = npc.HiddenBy,
         ShownBy = npc.ShownBy,
@@ -408,8 +419,8 @@ public sealed class MapFile
             Id = t.Id,
             Name = t.Name,
             TrainerClass = t.TrainerClass,
-            Party = t.Party.Members.Select(p => new PartyMember { Species = p.Species.Name, Level = p.Level, Moves = ChosenMoves(p) }).ToList(),
-            PrizeMoney = t.PrizeMoney,
+            Party = t.FromPlatinum ? new() : t.Party.Members.Select(p => new PartyMember { Species = p.Species.Name, Level = p.Level, Moves = ChosenMoves(p) }).ToList(),
+            PrizeMoney = t.FromPlatinum ? new TrainerRecord().PrizeMoney : t.PrizeMoney,
             DialogueBefore = t.DialogueBefore,
             DialogueAfter = t.DialogueAfter,
             SightRange = t.SightRange,

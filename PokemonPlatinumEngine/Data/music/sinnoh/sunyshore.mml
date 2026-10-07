@@ -1,0 +1,77 @@
+# Sunyshore City (the original's CITY08 role): the solar-powered city on Sinnoh's eastern tip, its streets raised on
+# walkways of solar panels, the market and the beach below, the Vista Lighthouse looking out to the Pokémon League
+# and an electric Gym. A bright E-major tune in the sun: a synth lead skipping over a calypso bass, a guitar's
+# off-beat strums and a pulse glittering in sixteenths like light on the panels, a marimba answering like a steel pan;
+# the middle opens out as the strings swell, and a bridge climbs the flattened sixth and seventh to the top of the lighthouse.
+# By night a clarinet, a harp, a celesta and a vibraphone. Original composition for this game.
+title Sunyshore City
+tempo 138
+meter 4/4
+reverb 0.28
+nighttempo 0.93
+
+track lead square night=clarinet vol=1 pan=0 rev=0.28
+  r1 | r1 |
+  L v100 o5 b4 o6 e8 d+8 e4 r8 o5 b8 | o6 c+4. o5 b8 g+4 e4 | o5 f+8 g+8 a8 b8 o6 c+4 e4 | o6 d+4. c+8 o5 b2 |
+  o5 b4 o6 e8 d+8 e4 r8 g+8 | o6 g+4. f+8 d+4 o5 b4 | o6 c+8 o5 b8 a8 g+8 a4 o6 c+4 | o5 b2. r4 |
+  v94 o6 c+2 o5 b8 a8 b4 | o6 d+2 c+8 o5 b8 o6 c+4 | o5 b2 g+8 a8 b4 | o6 e2. r4 |
+  o6 c+2 o5 a8 b8 o6 c+4 | o6 d+4. c+8 o5 b4 a4 | o5 g+4 b4 o6 c+4 e4 | o6 f+2. r4 |
+  v104 o6 e4. d8 c4 o5 g4 | o6 f+4. e8 d4 o5 a4 | o6 g+4. f+8 e4 o5 b4 | o6 e2 c+4 o5 g+4 |
+  o6 g4. e8 c4 e4 | o6 a4. f+8 d4 f+4 | o6 e4 c+4 o5 a4 o6 c+4 | v100 o5 b4 a4 f+4 d+4 |
+
+track strum guitar night=harp vol=0.4 pan=-0.3 rev=0.2
+  q4 v90 [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (d+ a b)8 ]4 |
+  L [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (e g+ >c+)8 ]4 | [ r8 o4 (e a >c+)8 ]4 | [ r8 o4 (d+ f+ b)8 ]4 |
+  [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (d+ g+ b)8 ]4 | [ r8 o4 (e a >c+)8 ]4 | [ r8 o4 (d+ a b)8 ]4 |
+  [ r8 o4 (e a >c+)8 ]4 | [ r8 o4 (d+ f+ b)8 ]4 | [ r8 o4 (d+ g+ b)8 ]4 | [ r8 o4 (e g+ >c+)8 ]4 |
+  [ r8 o4 (c+ f+ a)8 ]4 | [ r8 o4 (d+ f+ b)8 ]4 | [ r8 o4 (e g+ b)8 ]2 [ r8 o4 (e a >c+)8 ]2 | [ r8 o4 (d+ f+ b)8 ]4 |
+  [ r8 o4 (e g >c)8 ]4 | [ r8 o4 (d f+ a)8 ]4 | [ r8 o4 (e g+ b)8 ]4 | [ r8 o4 (e g+ b)8 ]4 |
+  [ r8 o4 (e g >c)8 ]4 | [ r8 o4 (d f+ a)8 ]4 | [ r8 o4 (e a >c+)8 ]4 | [ r8 o4 (d+ a b)8 ]4 |
+
+track panels pulse night=celesta vol=0.22 pan=0.35 rev=0.3
+  v80 [ o4 e16 b16 o5 e16 g+16 ]4 | [ o3 b16 o4 f+16 a16 o5 d+16 ]4 |
+  L [ o4 e16 b16 o5 e16 g+16 ]4 | [ o4 c+16 g+16 o5 c+16 e16 ]4 | [ o3 a16 o4 e16 a16 o5 c+16 ]4 | [ o3 b16 o4 f+16 b16 o5 d+16 ]4 |
+  [ o4 e16 b16 o5 e16 g+16 ]4 | [ o3 g+16 o4 d+16 g+16 b16 ]4 | [ o3 a16 o4 e16 a16 o5 c+16 ]4 | [ o3 b16 o4 f+16 a16 o5 d+16 ]4 |
+  [ o3 a16 o4 e16 a16 o5 c+16 ]4 | [ o3 b16 o4 f+16 b16 o5 d+16 ]4 | [ o3 g+16 o4 d+16 g+16 b16 ]4 | [ o4 c+16 g+16 o5 c+16 e16 ]4 |
+  [ o3 f+16 o4 c+16 f+16 a16 ]4 | [ o3 b16 o4 f+16 b16 o5 d+16 ]4 | [ o3 g+16 o4 e16 g+16 b16 ]2 [ o3 a16 o4 e16 a16 o5 c+16 ]2 | [ o3 b16 o4 f+16 b16 o5 d+16 ]4 |
+  [ o4 c16 g16 o5 c16 e16 ]4 | [ o4 d16 a16 o5 d16 f+16 ]4 | [ o4 e16 b16 o5 e16 g+16 ]4 | [ o4 e16 b16 o5 e16 g+16 ]4 |
+  [ o4 c16 g16 o5 c16 e16 ]4 | [ o4 d16 a16 o5 d16 f+16 ]4 | [ o3 a16 o4 e16 a16 o5 c+16 ]4 | [ o3 b16 o4 f+16 a16 o5 d+16 ]4 |
+
+track pan marimba night=vibraphone vol=0.44 pan=0.25 rev=0.22
+  r1 | r2. o5 b16 a16 f+16 d+16 |
+  L r1 | r1 | r1 | r2 o5 d+16 f+16 b16 o6 d+16 f+8 r8 |
+  r1 | r1 | r1 | r2. o5 b16 a16 f+16 d+16 |
+  r1 | r1 | r1 | r2. o5 g+16 b16 o6 c+16 e16 |
+  r1 | r1 | r1 | r2. o5 d+16 f+16 a16 b16 |
+  o5 e8 g8 r8 o6 c8 r8 o5 g8 o6 c8 e8 | o5 f+8 a8 r8 o6 d8 r8 o5 a8 o6 d8 f+8 | o5 g+8 b8 r8 o6 e8 r8 o5 b8 o6 e8 g+8 | o6 e8 r8 r4 r4 o5 b16 o6 c+16 e16 g+16 |
+  o5 e8 g8 r8 o6 c8 r8 o5 g8 o6 c8 e8 | o5 f+8 a8 r8 o6 d8 r8 o5 a8 o6 d8 f+8 | o5 e8 a8 r8 o6 c+8 r8 o5 a8 o6 c+8 e8 | r2. o5 b16 a16 f+16 d+16 |
+
+track pad strings night=pad vol=0.24 pan=-0.1 rev=0.4
+  q8 v80 o4 (e g+ b)1 | o4 (d+ f+ a)1 |
+  L o4 (e g+ b)1 | o4 (e g+ >c+)1 | o4 (c+ e a)1 | o4 (d+ f+ b)1 |
+  o4 (e g+ b)1 | o4 (d+ g+ b)1 | o4 (c+ e a)1 | o4 (d+ f+ a)1 |
+  v100 o4 (c+ e a)1 | o4 (d+ f+ b)1 | o4 (d+ g+ b)1 | o4 (e g+ >c+)1 |
+  o4 (c+ f+ a)1 | o4 (d+ f+ b)1 | o4 (e g+ b)2 (e a >c+)2 | o4 (d+ f+ b)1 |
+  o4 (e g >c)1 | o4 (d f+ a)1 | o4 (e g+ b)1 | o4 (e g+ b)1 |
+  o4 (e g >c)1 | o4 (d f+ a)1 | o4 (c+ e a)1 | o4 (d+ f+ a)1 |
+
+track bass bass vol=0.68 rev=0.06
+  q6 o3 e4. e4. b4 | o2 b4. b4. o3 a4 |
+  L o3 e4. e4. b4 | o3 c+4. c+4. g+4 | o2 a4. a4. o3 e4 | o2 b4. b4. o3 f+4 |
+  o3 e4. e4. b4 | o3 g+4. g+4. d+4 | o2 a4. a4. o3 e4 | o2 b4. b4. o3 a4 |
+  o2 a4. a4. o3 e4 | o2 b4. b4. o3 f+4 | o3 g+4. g+4. d+4 | o3 c+4. c+4. g+4 |
+  o3 f+4. f+4. c+4 | o2 b4. b4. o3 f+4 | o3 g+4 e4 o2 a4 o3 e4 | o2 b4. b4. o3 f+4 |
+  o3 c4. c4. g4 | o3 d4. d4. a4 | o3 e4. e4. b4 | o3 e4. e4. g+4 |
+  o3 c4. c4. g4 | o3 d4. d4. a4 | o2 a4. a4. o3 e4 | o2 b4. b4. o3 a4 |
+
+track drums kit vol=0.48 rev=0.12
+  v80 b8 v40 h8 v60 x8 v74 b8 v44 h8 v40 h8 v60 x8 v44 h8 | v80 b8 v40 h8 v60 x8 v74 b8 v60 t16 t16 m16 m16 v66 f8 v70 x8 |
+  L v90 (b c)8 v40 h8 v62 x8 v76 b8 v46 h8 v40 h8 v62 x8 v46 h8 |
+  [ v82 b8 v40 h8 v62 x8 v76 b8 v46 h8 v40 h8 v62 x8 v46 h8 | ]6
+  v82 b8 v40 h8 v62 x8 v76 b8 v60 t16 t16 m16 m16 v66 f8 v70 x8 |
+  v90 (b c)8 v40 h8 v62 x8 v76 b8 v46 h8 v40 h8 v62 x8 v46 h8 |
+  [ v82 b8 v40 h8 v62 x8 v76 b8 v46 h8 v40 h8 v62 x8 v46 h8 | ]6
+  v82 b8 v40 h8 v62 x8 v76 b8 v60 t16 t16 m16 m16 v66 f8 v70 x8 |
+  v90 (b c)8 v44 o8 v66 (s x)8 v78 b8 v48 h8 v78 b8 v66 (s x)8 v48 h8 |
+  [ v84 b8 v44 o8 v66 (s x)8 v78 b8 v48 h8 v78 b8 v66 (s x)8 v48 h8 | ]6
+  v84 b8 v44 o8 v66 (s x)8 v78 b8 v64 s16 s16 v70 s16 s16 v76 t16 m16 v82 f16 f16 |

@@ -449,7 +449,7 @@ public sealed class ScriptRunner
                 afterBusy = () => Result = host.Answer;
                 break;
             case Op.Shop:
-                host.Open(ScriptScreen.Shop, Subject);
+                host.Open(ScriptScreen.Shop, Subject, i.Name.Length > 0 ? i.Name : null);
                 break;
             case Op.Pc:
                 host.Open(ScriptScreen.Pc, Subject);

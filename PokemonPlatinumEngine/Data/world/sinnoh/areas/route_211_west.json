@@ -1,0 +1,51 @@
+{
+  "key": "route_211_west",
+  "index": 365,
+  "name": "Route 211",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "ROAD_C_D",
+  "nightMusic": "ROAD_C_N",
+  "encounters": "route_211_west",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Meditite", "level": 13 },
+    { "species": "Bidoof", "level": 14 },
+    { "species": "Meditite", "level": 14 },
+    { "species": "Meditite", "level": 15 },
+    { "species": "Chingling", "level": 14 },
+    { "species": "Machop", "level": 14 },
+    { "species": "Chingling", "level": 16 },
+    { "species": "Bronzor", "level": 14 },
+    { "species": "Machop", "level": 15 },
+    { "species": "Bronzor", "level": 16 },
+    { "species": "Machop", "level": 15 },
+    { "species": "Bronzor", "level": 16 }
+  ],
+  "landRate": 30,
+  "warps": [
+    { "x": 380, "z": 532, "to": "mt_coronet_1f_north_room_1", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "bird_keeper_alexandra", "looks": "ace_trainer_f", "movement": "look_south", "x": 367, "z": 523, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BIRD_KEEPER_ALEXANDRA" },
+    { "id": "hiker_louis", "looks": "hiker", "movement": "look_south_and_east", "x": 377, "z": 529, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_LOUIS" },
+    { "id": "ninja_boy_zach", "looks": "ninja_boy", "movement": "disguise_rock", "x": 361, "z": 525, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "view_all_directions", "sight": 1, "script": "TRAINER_NINJA_BOY_ZACH" },
+    { "id": "arrow_signpost_mt_coronet", "looks": "arrow_signpost", "movement": "none", "x": 379, "z": 531, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 379, "z": 527, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "item_tm12", "looks": "pokeball", "movement": "none", "x": 368, "z": 535, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_211_WEST_TM12", "item": "TM12", "script": "7027" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 344, "z": 530, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ETERNA_CITY", "script": "65535" },
+    { "id": "arrow_signpost_eterna_city", "looks": "arrow_signpost", "movement": "none", "x": 353, "z": 531, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [
+    { "x": 355, "z": 521, "type": 2, "script": "8003", "item": "Great Ball", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_211_WEST_GREAT_BALL", "range": 2 },
+    { "x": 347, "z": 517, "type": 2, "script": "8228", "item": "Moon Stone", "flag": "FLAG_OBTAINED_HIDDEN_ETERNA_CITY_MOON_STONE", "range": 2 }
+  ],
+  "triggers": []
+}

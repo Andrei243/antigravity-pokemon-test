@@ -345,7 +345,7 @@ public static class ScriptParser
             case "starter":
                 return new Instruction { Op = Op.Starter, Line = line };
             case "shop":
-                return new Instruction { Op = Op.Shop, Line = line };
+                return new Instruction { Op = Op.Shop, Line = line, Name = r.More ? r.Text("a counter's key") : "" };
             case "pc":
                 return new Instruction { Op = Op.Pc, Line = line };
             case "travel":

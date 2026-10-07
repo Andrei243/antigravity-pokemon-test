@@ -196,6 +196,17 @@ public class PokemonSpecies
     public string? Shape { get; set; }
     public string DexEntry { get; set; } = string.Empty;
     public List<LearnableMove> Learnset { get; set; } = new();
+
+    /// <summary>
+    /// The TMs and HMs it can learn, by the machine's name (<c>TM06</c>, <c>HM01</c>), in their order (plan 06 · R11):
+    /// Platinum's own list for its species, and for a later one each Platinum machine whose move it learns by a
+    /// machine in its own games. Null for none.
+    /// </summary>
+    public List<string>? TmMoves { get; set; }
+
+    /// <summary>The moves Platinum's move tutors can teach it; null for none.</summary>
+    public List<string>? TutorMoves { get; set; }
+
     public List<EvolutionData>? Evolutions { get; set; }
 
     /// <summary>The abilities this species can have: one or two, in the order the game picks from.</summary>
@@ -846,7 +857,7 @@ public class Pokemon
     public Pokemon Clone()
     {
         var copy = (Pokemon)MemberwiseClone();
-        copy.Moves = Moves.Select(m => new Move(m.Data, m.CurrentPP)).ToList();
+        copy.Moves = Moves.Select(m => new Move(m.Data, m.CurrentPP, m.PPUps)).ToList();
         copy.StatStages = new Dictionary<StatType, int>(StatStages);
         copy.EvolutionProgress = new Dictionary<string, int>(EvolutionProgress);
         return copy;
@@ -908,8 +919,8 @@ public class Pokemon
         for (int i = 0; i < other.Moves.Count; i++)
         {
             if (i < Moves.Count && Moves[i].Data == other.Moves[i].Data) Moves[i].CurrentPP = other.Moves[i].CurrentPP;
-            else if (i < Moves.Count) Moves[i] = new Move(other.Moves[i].Data, other.Moves[i].CurrentPP);
-            else Moves.Add(new Move(other.Moves[i].Data, other.Moves[i].CurrentPP));
+            else if (i < Moves.Count) Moves[i] = new Move(other.Moves[i].Data, other.Moves[i].CurrentPP, other.Moves[i].PPUps);
+            else Moves.Add(new Move(other.Moves[i].Data, other.Moves[i].CurrentPP, other.Moves[i].PPUps));
         }
         if (Moves.Count > other.Moves.Count) Moves.RemoveRange(other.Moves.Count, Moves.Count - other.Moves.Count);
     }

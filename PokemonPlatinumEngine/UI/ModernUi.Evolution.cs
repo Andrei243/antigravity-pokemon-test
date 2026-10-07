@@ -123,13 +123,29 @@ internal static partial class ModernUi
 
         Label("FORGET WHICH MOVE?", r.X + 44, r.Y + 178);
         for (int i = 0; i < p.Moves.Count && i < 4; i++)
-            MoveRow(new Rectangle(x, r.Y + 212 + i * 96, w, 86), p.Moves[i].Data, p.Moves[i].CurrentPP, cursor == i, Selection);
+            MoveRow(new Rectangle(x, r.Y + 212 + i * 96, w, 86), p.Moves[i].Data, p.Moves[i].CurrentPP, cursor == i, Selection, p.Moves[i].MaxPP);
 
         var keep = new Rectangle(x, r.Y + 212 + 4 * 96 + 14, w, 78);
         Button(keep, 39, Blue, $"Don't learn {newMove}", 30, cursor == 4);
     }
 
-    private static void MoveRow(Rectangle row, MoveData move, int? pp, bool selected, Color accent)
+    /// <summary>
+    /// The moves of a Pokémon to use an item on (an Ether, a PP Up; plan 06 · R11): its four moves with their PP,
+    /// the one under <paramref name="cursor"/> picked out.
+    /// </summary>
+    public static void MovePick(Rectangle r, Pokemon p, int cursor, string title)
+    {
+        Panel(r, 34);
+        float x = r.X + 28, w = r.Width - 56;
+        Label(title.ToUpperInvariant(), r.X + 44, r.Y + 30);
+        for (int i = 0; i < p.Moves.Count && i < 4; i++)
+        {
+            var m = p.Moves[i];
+            MoveRow(new Rectangle(x, r.Y + 72 + i * 96, w, 86), m.Data, m.CurrentPP, cursor == i, Selection, m.MaxPP);
+        }
+    }
+
+    private static void MoveRow(Rectangle row, MoveData move, int? pp, bool selected, Color accent, int? maxPP = null)
     {
         if (selected) UiShapes.Shadow(row, 24, 22, Vector2.Zero, accent with { A = 170 });
         bool framed = selected || pp == null;
@@ -140,7 +156,8 @@ internal static partial class ModernUi
         string detail = move.Category.ToString().ToUpperInvariant() + (move.Power > 0 ? $"  ·  POWER {move.Power}" : "") +
                         (move.Accuracy > 0 ? $"  ·  ACC {move.Accuracy}" : "");
         UiFonts.DrawCentered(detail, row.X + 186, cy + 22, 18, Muted, UiWeight.Black);
-        string points = pp is { } left ? $"{left} / {move.MaxPP}" : $"PP {move.MaxPP}";
+        int most = maxPP ?? move.MaxPP;
+        string points = pp is { } left ? $"{left} / {most}" : $"PP {most}";
         UiFonts.DrawCentered(points, row.X + row.Width - 28 - UiFonts.Measure(points, 28, UiWeight.Black), cy, 28, Ink, UiWeight.Black);
     }
 }

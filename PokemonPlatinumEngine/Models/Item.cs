@@ -68,6 +68,20 @@ public class ItemData
     public string? BattleUse { get; set; }
 
     /// <summary>
+    /// Where the battle's bag shows it (plan 06 · R11), as the original's battle pocket mask names it:
+    /// <c>RecoverHp</c>, <c>RecoverPp</c>, <c>RecoverStatus</c>, <c>RecoverHpStatus</c> (in both of the first
+    /// two tabs), <c>PokeBalls</c>, <c>BattleItems</c>; null for an item the battle's bag never shows.
+    /// </summary>
+    public string? BattlePocket { get; set; }
+
+    /// <summary>
+    /// The item's own number when it holds nothing (a held item's is <see cref="HoldParam"/>): the steps a Repel
+    /// lasts, a flute's share of the encounter rate.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int EffectParam { get; set; }
+
+    /// <summary>
     /// What using it changes: <c>hpRestored</c> 20, <c>healPoison</c> 1, <c>atkEVs</c> 10, <c>friendshipLow</c> 5…
     /// A flag is 1; <c>hpRestored</c> and <c>ppRestored</c> use the original's codes below zero (all, half, a quarter).
     /// </summary>

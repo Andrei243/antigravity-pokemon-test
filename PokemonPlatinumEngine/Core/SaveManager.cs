@@ -72,6 +72,9 @@ public class SaveData
     /// <summary>The key item kept on the item button (the original's registered item), by name; null when none is.</summary>
     public string? RegisteredItem { get; set; }
 
+    /// <summary>The steps the Repel has left (plan 06 · R11); a save from before has none.</summary>
+    public int RepelSteps { get; set; }
+
     /// <summary>The Pokétch: whether the player has it, its apps and the pedometer's count. Null in older saves.</summary>
     public PoketchSave? Poketch { get; set; }
 
@@ -232,7 +235,7 @@ public class SavedPokemonData
 
         foreach (var m in p.Moves)
         {
-            saved.Moves.Add(new SavedMoveData { MoveName = m.Name, CurrentPP = m.CurrentPP });
+            saved.Moves.Add(new SavedMoveData { MoveName = m.Name, CurrentPP = m.CurrentPP, PPUps = m.PPUps });
         }
         return saved;
     }
@@ -282,6 +285,7 @@ public class SavedPokemonData
             foreach (var sm in Moves)
             {
                 var move = MoveDatabase.Create(sm.MoveName);
+                move.PPUps = Math.Clamp(sm.PPUps, 0, 3);
                 move.CurrentPP = sm.CurrentPP;
                 p.Moves.Add(move);
             }
@@ -294,6 +298,10 @@ public class SavedMoveData
 {
     public string MoveName { get; set; } = "Tackle";
     public int CurrentPP { get; set; } = 35;
+
+    /// <summary>The PP Ups it has taken (plan 06 · R11); a save from before has none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int PPUps { get; set; }
 }
 
 public class SavedItemData

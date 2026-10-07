@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 using PokemonPlatinumEngine.Data;
 
@@ -206,7 +207,15 @@ public class Move
 {
     public MoveData Data { get; }
     public int CurrentPP { get; set; }
-    public int MaxPP => Data.MaxPP;
+
+    /// <summary>How many PP Ups it has taken, 0 to 3 (a PP Max gives all three; plan 06 · R11).</summary>
+    public int PPUps { get; set; }
+
+    /// <summary>Its most PP, a fifth more for each PP Up (<c>MoveTable_CalcMaxPP</c>, rounded down).</summary>
+    public int MaxPP => MaxPPWith(Data, PPUps);
+
+    /// <summary><c>MoveTable_CalcMaxPP</c>: a move's PP with so many PP Ups (three at most).</summary>
+    public static int MaxPPWith(MoveData data, int ppUps) => data.MaxPP + data.MaxPP * 20 * Math.Clamp(ppUps, 0, 3) / 100;
 
     public string Name => Data.Name;
     public PokemonType Type => Data.Type;
@@ -224,10 +233,11 @@ public class Move
         CurrentPP = data.MaxPP;
     }
 
-    public Move(MoveData data, int currentPP)
+    public Move(MoveData data, int currentPP, int ppUps = 0)
     {
         Data = data;
         CurrentPP = currentPP;
+        PPUps = ppUps;
     }
 
     public void RestorePP()

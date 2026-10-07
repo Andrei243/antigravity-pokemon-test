@@ -66,6 +66,15 @@ internal static class PropModels
             case PropType.Window: Window(kit, w); break;
             case PropType.Painting: kit.Card(3, 29, 32.5f, 40, 60, kit.Face("painting", 26, 20, PaintPainting)); break;
             case PropType.Clock: kit.Card(8, 24, 32.5f, 50, 66, kit.Face("clock", 16, 16, PaintClock)); break;
+            // The rocks of the Oreburgh Gym's ledges (plan 02 · S5) are the boulders of the field
+            case PropType.Boulder:
+            {
+                bool mirrored = (p.X * 7 + p.Y * 3) % 2 == 1;
+                kit.Sprite(kit.Face(mirrored ? "boulder.mirrored" : "boulder", 36, 30, c => OutdoorProps.PaintBoulder(c, mirrored)), 16, 19);
+                break;
+            }
+            // A Gym's statues by its door (plan 02 · S5) are the statues the world's towns have
+            case PropType.Statue: Landmarks.Add(kit, map, p, new MeshBuilder()); break;
             case PropType.WallEmblem:
                 kit.Card(1, 31, 32.5f, 36, 66, kit.Face("emblem", 30, 30, c => BuildingArt.BallRoundel(c, 0, 0, 30)));
                 break;

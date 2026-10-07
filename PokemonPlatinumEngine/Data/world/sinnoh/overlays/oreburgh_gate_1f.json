@@ -1,15 +1,10 @@
 {
   "area": "oreburgh_gate_1f",
   "bgmTrack": "sinnoh/cave",
+  "triggers": [ { "trigger": 0, "script": "HikerStops" } ],
   "people": {
-    // In Platinum he hands over the HM for Rock Smash; the gift is plan 02's (S5)
-    "hiker": {
-      "name": "Hiker",
-      "dialog": [
-        "Hiker: See the cracked rocks in here? A Pokémon that knows Rock Smash breaks them to bits.",
-        "Hiker: Not just any trainer may use it outside a battle, mind. You need the Badge from Oreburgh's Gym first."
-      ]
-    },
+    // He hands over the HM for Rock Smash as the player passes (plan 02 · S5, scripts/oreburgh_gate_1f.txt)
+    "hiker": { "name": "Hiker", "script": "Hiker" },
     "camper_curtis": {
       "name": "Curtis",
       "trainer": {

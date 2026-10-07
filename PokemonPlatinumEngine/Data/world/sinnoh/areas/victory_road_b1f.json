@@ -1,0 +1,86 @@
+{
+  "key": "victory_road_b1f",
+  "index": 246,
+  "name": "Victory Road",
+  "matrix": 45,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_01",
+  "nightMusic": "D_01",
+  "encounters": "victory_road_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Floatzel", "level": 42 },
+    { "species": "Azumarill", "level": 41 },
+    { "species": "Graveler", "level": 41 },
+    { "species": "Azumarill", "level": 43 },
+    { "species": "Onix", "level": 42 },
+    { "species": "Floatzel", "level": 44 },
+    { "species": "Golbat", "level": 44 },
+    { "species": "Graveler", "level": 43 },
+    { "species": "Steelix", "level": 44 },
+    { "species": "Gabite", "level": 43 },
+    { "species": "Steelix", "level": 44 },
+    { "species": "Gabite", "level": 43 }
+  ],
+  "landRate": 15,
+  "water": [
+    { "species": "Floatzel", "level": 30, "maxLevel": 50 },
+    { "species": "Floatzel", "level": 30, "maxLevel": 50 },
+    { "species": "Golbat", "level": 30, "maxLevel": 50 },
+    { "species": "Golbat", "level": 30, "maxLevel": 50 },
+    { "species": "Golbat", "level": 30, "maxLevel": 50 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 55,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 4, "z": 39, "to": "victory_road_1f", "toWarp": 2 },
+    { "x": 6, "z": 46, "to": "victory_road_1f", "toWarp": 3 },
+    { "x": 3, "z": 22, "to": "victory_road_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "item_tm59", "looks": "pokeball", "movement": "none", "x": 13, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_B1F_TM59", "item": "TM59", "script": "7190" },
+    { "id": "double_team_trainer_pat", "looks": "ace_trainer_m", "movement": "follow_partner_trainer", "x": 33, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_DOUBLE_TEAM_JO_AND_PAT" },
+    { "id": "double_team_trainer_jo", "looks": "ace_trainer_f", "movement": "walk_west_north_east_south", "x": 33, "z": 44, "facing": 2, "rangeX": 6, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_DOUBLE_TEAM_JO_AND_PAT" },
+    { "id": "dragon_tamer_ondrej", "looks": "ace_trainer_m", "movement": "look_north", "x": 10, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_DRAGON_TAMER_ONDREJ" },
+    { "id": "psychic_valencia", "looks": "psychic", "movement": "look_west", "x": 22, "z": 29, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PSYCHIC_VALENCIA" },
+    { "id": "ace_trainer_henry", "looks": "ace_trainer_m", "movement": "walk_back_and_forth", "x": 32, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 6, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_HENRY" },
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 33, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_B1F_ULTRA_BALL", "item": "Ultra Ball", "script": "7312" },
+    { "id": "item_calcium", "looks": "pokeball", "movement": "none", "x": 35, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_B1F_CALCIUM", "item": "Calcium", "script": "7313" }
+  ],
+  "signs": [
+    { "x": 24, "z": 35, "type": 2, "script": "8118", "item": "Heart Scale", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_B1F_HEART_SCALE", "range": 2 },
+    { "x": 5, "z": 24, "type": 2, "script": "8119", "item": "Max Elixir", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_B1F_MAX_ELIXIR", "range": 2 }
+  ],
+  "triggers": []
+}

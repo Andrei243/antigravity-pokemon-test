@@ -4,213 +4,226 @@
   "bgmTrack": "sinnoh/jubilife",
   "interior": "Lab",
   "trees": "Round",
-  "width": 13,
-  "height": 11,
+  "width": 16,
+  "height": 12,
   "ground": [
-    "#############",
-    "#############",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "#___________#",
-    "######D######"
+    "################",
+    "################",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#______________#",
+    "#######D########"
   ],
   "solid": [
-    "#############",
-    "#############",
-    "###.......###",
-    "#...........#",
-    "#...........#",
-    "#..##..##...#",
-    "#...........#",
-    "#..##..##...#",
-    "#...........#",
-    "##.........##",
-    "######.######"
+    "################",
+    "################",
+    "#....##........#",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "#..##....##.##.#",
+    "#..............#",
+    "#..............#",
+    "#..##..........#",
+    "#.............##",
+    "#######.########"
   ],
   "props": [
     {
+      "type": "Counter",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
       "type": "Bookshelf",
       "x": 1,
-      "y": 2,
+      "y": 1,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Bookshelf",
       "x": 2,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Bookshelf",
-      "x": 10,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Bookshelf",
-      "x": 11,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Painting",
-      "x": 6,
       "y": 1,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Window",
-      "x": 3,
+      "x": 9,
       "y": 1,
       "width": 2,
       "depth": 1
     },
     {
       "type": "Window",
-      "x": 8,
+      "x": 12,
       "y": 1,
       "width": 2,
       "depth": 1
     },
     {
-      "type": "Table",
-      "x": 3,
-      "y": 5,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Table",
+      "type": "Clock",
       "x": 7,
-      "y": 5,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Table",
-      "x": 3,
-      "y": 7,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Table",
-      "x": 7,
-      "y": 7,
-      "width": 2,
-      "depth": 1
-    },
-    {
-      "type": "Plant",
-      "x": 1,
-      "y": 9,
+      "y": 1,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 11,
+      "type": "Table",
+      "x": 3,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
       "y": 9,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 10,
       "width": 1,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 6,
-      "sourceY": 10,
+      "sourceX": 7,
+      "sourceY": 11,
       "targetMap": "Sinnoh",
       "targetX": 168,
       "targetY": 777,
       "targetFacing": "Down"
     }
   ],
-  "signboards": [],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 2,
+      "text": "The blackboard",
+      "script": "Blackboard"
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "text": "The blackboard",
+      "script": "Blackboard"
+    },
+    {
+      "x": 4,
+      "y": 9,
+      "text": "Someone's notebook lies open: \"Status conditions stay after a battle. Healing at a Pokémon Center cures them all.\""
+    }
+  ],
   "npcs": [
     {
+      "id": "teacher",
       "name": "Teacher",
       "npcType": "Lady",
-      "x": 6,
-      "y": 3,
+      "x": 5,
+      "y": 4,
       "facing": "Down",
       "dialog": [
         "Teacher: Welcome to the Trainers' School! Today's lesson is about status conditions.",
-        "Teacher: A poisoned or burned Pokémon keeps losing HP, even after the battle ends.",
-        "Teacher: An Antidote or a Burn Heal sorts that out. Or rest at a Pokémon Center!",
-        "Teacher: Try a practice battle with my students. They've been studying hard!"
+        "Teacher: The blackboard has the details. Read it, then try what you've learned on my students!"
       ]
     },
     {
+      "id": "rival",
       "name": "{rival}",
       "npcType": "Rival",
-      "x": 10,
-      "y": 4,
-      "facing": "Left",
+      "x": 6,
+      "y": 3,
+      "facing": "Up",
+      "script": "Rival",
+      "hiddenBy": "FLAG_HIDE_TRAINERS_SCHOOL_RIVAL"
+    },
+    {
+      "id": "youngster_1",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 14,
+      "y": 9,
+      "facing": "Down",
       "dialog": [
-        "{rival}: {player}! What took you so long? I've already learned everything here!",
-        "{rival}: Next stop is Oreburgh City and its Gym. I'm getting my first Badge before you!",
-        "{rival}: Don't fall behind, or I'll fine you 10 million!"
+        "I come here every day after lunch. A Trainer can never know too much!"
       ]
     },
     {
-      "id": "trainer_cole",
-      "name": "Cole",
-      "npcType": "Youngster",
-      "x": 1,
-      "y": 4,
+      "id": "lass",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 8,
       "facing": "Right",
-      "trainer": {
-        "id": "trainer_cole",
-        "name": "Cole",
-        "trainerClass": "School Kid",
-        "party": [
-          {
-            "species": "Bidoof",
-            "level": 7
-          },
-          {
-            "species": "Starly",
-            "level": 7
-          }
-        ],
-        "prizeMoney": 140,
-        "dialogueBefore": "School Kid Cole: I just aced my test on type matchups! Let me show you!",
-        "dialogueAfter": "School Kid Cole: Knowing the theory isn't enough, huh? Back to studying.",
-        "sightRange": 3
-      }
+      "dialog": [
+        "We're quizzing each other on types. Grass beats Water, Water beats Fire, Fire beats Grass... I think?"
+      ]
     },
     {
-      "id": "trainer_jenna",
-      "name": "Jenna",
-      "npcType": "Lass",
-      "x": 11,
+      "id": "youngster_2",
+      "name": "Boy",
+      "npcType": "Youngster",
+      "x": 5,
       "y": 8,
       "facing": "Left",
-      "trainer": {
-        "id": "trainer_jenna",
-        "name": "Jenna",
-        "trainerClass": "School Kid",
-        "party": [
-          {
-            "species": "Shinx",
-            "level": 8
-          }
-        ],
-        "prizeMoney": 160,
-        "dialogueBefore": "School Kid Jenna: Practice battle! The teacher says real trainers never say no!",
-        "dialogueAfter": "School Kid Jenna: You're good! Did you study here too?",
-        "sightRange": 3
-      }
+      "dialog": [
+        "She thinks she knows every type matchup. I'm going to find one she doesn't!"
+      ]
+    },
+    {
+      "id": "school_kid_harrison",
+      "name": "Harrison",
+      "npcType": "Youngster",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "script": "Harrison"
+    },
+    {
+      "id": "school_kid_christine",
+      "name": "Christine",
+      "npcType": "Lass",
+      "x": 14,
+      "y": 4,
+      "facing": "Down",
+      "script": "Christine"
+    },
+    {
+      "name": "X Attack",
+      "npcType": "ItemBall",
+      "x": 1,
+      "y": 4,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_TRAINERS_SCHOOL_X_ATTACK",
+      "item": "X Attack"
     }
   ],
   "wildEncounters": []

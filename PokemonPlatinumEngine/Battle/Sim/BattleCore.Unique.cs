@@ -262,8 +262,8 @@ public sealed partial class BattleCore
         if (slot < 0) return Fails();
 
         var o = Keep(user);
-        o.MoveSlots ??= new Dictionary<int, (MoveData, int)>();
-        o.MoveSlots.TryAdd(slot, (moves[slot].Data, moves[slot].CurrentPP));
+        o.MoveSlots ??= new Dictionary<int, (MoveData, int, int)>();
+        o.MoveSlots.TryAdd(slot, (moves[slot].Data, moves[slot].CurrentPP, moves[slot].PPUps));
         moves[slot] = new Move(last, Math.Min(5, last.MaxPP));
         if (last.Name == "Last Resort") v.UsedMoveSlots = 0;
         Say($"{user.Name} learned {last.Name}!");
@@ -710,7 +710,7 @@ public sealed partial class BattleCore
         if (o.Moves == null)
         {
             // The moves it had before anything changed them: a slot Mimic filled goes back to Mimic first
-            o.Moves = p.Moves.Select(m => (m.Data, m.CurrentPP)).ToList();
+            o.Moves = p.Moves.Select(m => (m.Data, m.CurrentPP, m.PPUps)).ToList();
             if (o.MoveSlots != null)
                 foreach (var (slot, kept) in o.MoveSlots)
                     if (slot < o.Moves.Count) o.Moves[slot] = kept;

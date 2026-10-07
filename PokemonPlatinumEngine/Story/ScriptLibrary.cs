@@ -29,6 +29,12 @@ public sealed class ScriptLibrary
     /// </summary>
     public const string OpeningDone = "common.OpeningDone";
 
+    /// <summary>
+    /// Who the second chapter keeps out of sight until their scenes (plan 02 · S5): called by <see cref="NewGame"/>,
+    /// and run for a save from before the chapter was written. It may only set flags and variables.
+    /// </summary>
+    public const string ChapterTwo = "common.ChapterTwo";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;
@@ -150,6 +156,9 @@ public sealed class ScriptLibrary
                         break;
                     case Op.Battle when i.AsTrainer.Length > 0 && TrainerDatabase.Get(i.AsTrainer) == null:
                         Wrong(i, $"there is no trainer '{i.AsTrainer}'");
+                        break;
+                    case Op.Shop when i.Name.Length > 0 && !MartDatabase.Specialties.ContainsKey(i.Name):
+                        Wrong(i, $"there is no counter '{i.Name}'");
                         break;
                     case Op.Warp when mapExists != null && !mapExists(i.Name):
                         Wrong(i, $"there is no map '{i.Name}'");

@@ -1,0 +1,59 @@
+{
+  "key": "mt_coronet_2f",
+  "index": 208,
+  "name": "Mt. Coronet",
+  "matrix": 10,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_05",
+  "nightMusic": "D_05",
+  "encounters": "mt_coronet_2f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Bronzong", "level": 37 },
+    { "species": "Graveler", "level": 38 },
+    { "species": "Medicham", "level": 37 },
+    { "species": "Clefairy", "level": 36 },
+    { "species": "Machoke", "level": 39 },
+    { "species": "Medicham", "level": 39 },
+    { "species": "Chingling", "level": 36 },
+    { "species": "Nosepass", "level": 37 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chingling", "level": 38 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Chingling", "level": 38 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 27, "z": 48, "to": "mt_coronet_1f_south", "toWarp": 2 },
+    { "x": 2, "z": 59, "to": "route_207", "toWarp": 1 },
+    { "x": 7, "z": 23, "to": "mt_coronet_2f", "toWarp": 3 },
+    { "x": 7, "z": 12, "to": "mt_coronet_2f", "toWarp": 2 },
+    { "x": 11, "z": 4, "to": "mt_coronet_3f", "toWarp": 0 },
+    { "x": 21, "z": 4, "to": "mt_coronet_3f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_max_revive", "looks": "pokeball", "movement": "none", "x": 3, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_2F_MAX_REVIVE", "item": "Max Revive", "script": "7170" },
+    { "id": "item_max_repel", "looks": "pokeball", "movement": "none", "x": 23, "z": 37, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_2F_MAX_REPEL", "item": "Max Repel", "script": "7172" },
+    { "id": "item_tm80", "looks": "pokeball", "movement": "none", "x": 3, "z": 55, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_2F_TM80", "item": "TM80", "script": "7171" },
+    { "id": "item_escape_rope", "looks": "pokeball", "movement": "none", "x": 13, "z": 60, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_MT_CORONET_2F_ESCAPE_ROPE", "item": "Escape Rope", "script": "7173" },
+    { "id": "cave_painting", "looks": "cave_painting", "movement": "none", "x": 7, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING", "script": "1" },
+    { "id": "looker", "looks": "looker", "movement": "look_west", "x": 10, "z": 26, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_CORONET_2F_LOOKER", "script": "3" },
+    { "id": "cave_painting_shards_left", "looks": "cave_painting_shards_left", "movement": "none", "x": 6, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING_SHARDS", "script": "4" },
+    { "id": "cave_painting_shards_right", "looks": "cave_painting_shards_right", "movement": "none", "x": 8, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING_SHARDS", "script": "4" },
+    { "id": "strength_boulder", "looks": "strength_boulder", "movement": "none", "x": 14, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10002" }
+  ],
+  "signs": [
+    { "x": 25, "z": 11, "type": 2, "script": "8082", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_2F_STAR_PIECE", "range": 2 },
+    { "x": 16, "z": 35, "type": 2, "script": "8081", "item": "Red Shard", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_2F_RED_SHARD", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 11, "z": 24, "width": 1, "depth": 3, "script": "2", "variable": "VAR_MT_CORONET_2F_STATE", "value": "1" }
+  ]
+}

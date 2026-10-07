@@ -1,0 +1,77 @@
+{
+  "key": "pokemon_league",
+  "index": 172,
+  "name": "Pokémon League",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear8",
+  "camera": "SlightlyZoomedOut",
+  "battleBackground": "City",
+  "dayMusic": "CITY10_D",
+  "nightMusic": "CITY10_N",
+  "encounters": "pokemon_league",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Wingull", "level": 30, "maxLevel": 40 },
+    { "species": "Pelipper", "level": 30, "maxLevel": 50 },
+    { "species": "Pelipper", "level": 30, "maxLevel": 50 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 50 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 50 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Remoraid", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Octillery", "level": 30, "maxLevel": 40 },
+    { "species": "Luvdisc", "level": 20, "maxLevel": 30 },
+    { "species": "Octillery", "level": 40, "maxLevel": 55 },
+    { "species": "Octillery", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 842, "z": 598, "to": "pokemon_league_south_pokecenter_1f", "toWarp": 0 },
+    { "x": 847, "z": 559, "to": "pokemon_league_north_pokecenter_1f", "toWarp": 1 },
+    { "x": 851, "z": 597, "to": "victory_road_1f", "toWarp": 7 },
+    { "x": 853, "z": 582, "to": "victory_road_1f", "toWarp": 8 },
+    { "x": 850, "z": 597, "to": "victory_road_1f", "toWarp": 7 },
+    { "x": 852, "z": 597, "to": "victory_road_1f", "toWarp": 7 },
+    { "x": 853, "z": 581, "to": "victory_road_1f", "toWarp": 8 },
+    { "x": 853, "z": 583, "to": "victory_road_1f", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "signboard", "looks": "signboard", "movement": "none", "x": 848, "z": 598, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 849, "z": 580, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [
+    { "x": 842, "z": 580, "type": 2, "script": "8120", "item": "Sky Plate", "flag": "FLAG_OBTAINED_HIDDEN_POKEMON_LEAGUE_SKY_PLATE", "range": 0 },
+    { "x": 842, "z": 577, "type": 0, "script": "3" },
+    { "x": 843, "z": 577, "type": 0, "script": "3" },
+    { "x": 851, "z": 577, "type": 0, "script": "3" },
+    { "x": 852, "z": 577, "type": 0, "script": "3" },
+    { "x": 837, "z": 561, "type": 0, "script": "3" },
+    { "x": 838, "z": 561, "type": 0, "script": "3" },
+    { "x": 856, "z": 561, "type": 0, "script": "3" },
+    { "x": 857, "z": 561, "type": 0, "script": "3" }
+  ],
+  "triggers": []
+}

@@ -267,7 +267,8 @@ public sealed partial class BattleCore
     {
         if (item.Pocket == ItemPocket.PokeBalls) return true;
         if (item.BattleUse == "Escaping") return true;
-        if (!item.CanUseInBattle || item.Use == null) return false;
+        // The berries that heal show in the battle's pockets too (their battle pocket; plan 06 · R11)
+        if (!(item.CanUseInBattle || item.BattlePocket != null) || item.Use == null) return false;
         return item.Use.Keys.All(UseRuns.Contains) && item.Use.Keys.Any(k => !FriendshipKeys.Contains(k));
     }
 

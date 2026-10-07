@@ -9,7 +9,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Catches a wild Pokémon every time.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 2×.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 1.5×.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon in the Great Marsh or Safari Zone. Success rate is 1.5×.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 3× for water and bug Pokémon.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 3.5× when underwater, fishing, or surfing.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 3.9× for level 1 Pokémon, and drops steadily to 1× at level 30.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 9,
@@ -105,7 +113,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 3× for previously-caught Pokémon.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 10,
@@ -117,7 +126,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate increases by 0.1× (Gen V: 0.3×) every turn, to a max of 4×.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 11,
@@ -129,7 +139,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Caught Pokémon start with 200 happiness.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 12,
@@ -141,7 +152,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 13,
@@ -153,7 +165,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 3.5× at night and in caves.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 14,
@@ -165,7 +178,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Caught Pokémon are immediately healed.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 15,
@@ -177,7 +191,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon. Success rate is 4× (Gen V: 5×), but only on the first turn.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 16,
@@ -189,7 +204,8 @@
     "canUseInBattle": true,
     "canUseInOverworld": false,
     "description": "Tries to catch a wild Pokémon.",
-    "battleUse": "PokeBall"
+    "battleUse": "PokeBall",
+    "battlePocket": "PokeBalls"
   },
   {
     "id": 17,
@@ -204,6 +220,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 20,
     "use": {
       "hpRestored": 20
     }
@@ -222,6 +240,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healPoison": 1
     }
@@ -240,6 +259,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healBurn": 1
     }
@@ -258,6 +278,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healFreeze": 1
     }
@@ -276,6 +297,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1
     }
@@ -294,6 +316,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healParalysis": 1
     }
@@ -311,6 +334,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHpStatus",
+    "effectParam": 255,
     "use": {
       "healSleep": 1,
       "healPoison": 1,
@@ -334,6 +359,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 255,
     "use": {
       "hpRestored": -1
     }
@@ -351,6 +378,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 200,
     "use": {
       "hpRestored": 200
     }
@@ -368,6 +397,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 50,
     "use": {
       "hpRestored": 50
     }
@@ -385,6 +416,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1,
       "healPoison": 1,
@@ -407,6 +439,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "revive": 1,
       "hpRestored": -2
@@ -425,6 +458,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "revive": 1,
       "hpRestored": -1
@@ -443,6 +477,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 50,
     "use": {
       "hpRestored": 50
     }
@@ -460,6 +496,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 60,
     "use": {
       "hpRestored": 60
     }
@@ -477,6 +515,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 80,
     "use": {
       "hpRestored": 80
     }
@@ -494,6 +534,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "effectParam": 100,
     "use": {
       "hpRestored": 100
     }
@@ -511,6 +553,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": 50,
       "friendshipLow": -5,
@@ -531,6 +574,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": 200,
       "friendshipLow": -10,
@@ -551,6 +595,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1,
       "healPoison": 1,
@@ -576,6 +621,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "revive": 1,
       "hpRestored": -1,
@@ -597,6 +643,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverPp",
+    "effectParam": 10,
     "use": {
       "ppRestored": 10
     }
@@ -614,6 +662,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverPp",
+    "effectParam": 255,
     "use": {
       "ppRestored": -1
     }
@@ -631,6 +681,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverPp",
+    "effectParam": 10,
     "use": {
       "restorePPAllMoves": 1,
       "ppRestored": 10
@@ -649,6 +701,8 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverPp",
+    "effectParam": 255,
     "use": {
       "restorePPAllMoves": 1,
       "ppRestored": -1
@@ -667,6 +721,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1,
       "healPoison": 1,
@@ -691,6 +746,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": 20
     }
@@ -898,6 +954,7 @@
     "flingPower": 30,
     "fieldUse": "Healing",
     "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1,
       "healPoison": 1,
@@ -918,6 +975,7 @@
     "canUseInOverworld": false,
     "description": "Prevents stat changes in battle for five turns in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "guardSpec": 1,
       "friendshipLow": 1,
@@ -935,6 +993,7 @@
     "canUseInOverworld": false,
     "description": "Increases the chance of a critical hit in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "critStages": 1,
       "friendshipLow": 1,
@@ -952,6 +1011,7 @@
     "canUseInOverworld": false,
     "description": "Raises Attack by one stage in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "atkStages": 1,
       "friendshipLow": 1,
@@ -969,6 +1029,7 @@
     "canUseInOverworld": false,
     "description": "Raises Defense by one stage in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "defStages": 1,
       "friendshipLow": 1,
@@ -986,6 +1047,7 @@
     "canUseInOverworld": false,
     "description": "Raises Speed by one stage in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "speedStages": 1,
       "friendshipLow": 1,
@@ -1003,6 +1065,7 @@
     "canUseInOverworld": false,
     "description": "Raises accuracy by one stage in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "accStages": 1,
       "friendshipLow": 1,
@@ -1020,6 +1083,7 @@
     "canUseInOverworld": false,
     "description": "Raises Special Attack by one stage in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "spatkStages": 1,
       "friendshipLow": 1,
@@ -1037,6 +1101,7 @@
     "canUseInOverworld": false,
     "description": "Raises Special Defense by one stage in battle. Raises happiness.",
     "flingPower": 30,
+    "battlePocket": "BattleItems",
     "use": {
       "spdefStages": 1
     }
@@ -1052,7 +1117,8 @@
     "canUseInOverworld": false,
     "description": "Ends a wild battle.",
     "flingPower": 30,
-    "battleUse": "Escaping"
+    "battleUse": "Escaping",
+    "battlePocket": "BattleItems"
   },
   {
     "id": 64,
@@ -1065,7 +1131,8 @@
     "canUseInOverworld": false,
     "description": "Ends a wild battle.",
     "flingPower": 30,
-    "battleUse": "Escaping"
+    "battleUse": "Escaping",
+    "battlePocket": "BattleItems"
   },
   {
     "id": 65,
@@ -1079,6 +1146,7 @@
     "canUseInOverworld": false,
     "description": "Cures sleep.",
     "flingPower": 30,
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1
     }
@@ -1094,6 +1162,7 @@
     "canUseInOverworld": false,
     "description": "Cures confusion.",
     "flingPower": 30,
+    "battlePocket": "RecoverStatus",
     "use": {
       "healConfusion": 1
     }
@@ -1109,6 +1178,7 @@
     "canUseInOverworld": false,
     "description": "Cures attraction.",
     "flingPower": 30,
+    "battlePocket": "RecoverStatus",
     "use": {
       "healAttract": 1
     }
@@ -1124,7 +1194,8 @@
     "canUseInOverworld": true,
     "description": "Halves the wild Pokémon encounter rate.",
     "flingPower": 30,
-    "fieldUse": "BagMessage"
+    "fieldUse": "BagMessage",
+    "effectParam": 50
   },
   {
     "id": 69,
@@ -1137,7 +1208,8 @@
     "canUseInOverworld": true,
     "description": "Doubles the wild Pokémon encounter rate.",
     "flingPower": 30,
-    "fieldUse": "BagMessage"
+    "fieldUse": "BagMessage",
+    "effectParam": 150
   },
   {
     "id": 70,
@@ -1222,7 +1294,8 @@
     "canUseInOverworld": true,
     "description": "For 200 steps, prevents wild encounters of level lower than your party's lead Pokémon.",
     "flingPower": 30,
-    "fieldUse": "BagMessage"
+    "fieldUse": "BagMessage",
+    "effectParam": 200
   },
   {
     "id": 77,
@@ -1235,7 +1308,8 @@
     "canUseInOverworld": true,
     "description": "For 250 steps, prevents wild encounters of level lower than your party's lead Pokémon.",
     "flingPower": 30,
-    "fieldUse": "BagMessage"
+    "fieldUse": "BagMessage",
+    "effectParam": 250
   },
   {
     "id": 78,
@@ -1261,7 +1335,8 @@
     "canUseInOverworld": true,
     "description": "For 100 steps, prevents wild encounters of level lower than your party's lead Pokémon.",
     "flingPower": 30,
-    "fieldUse": "BagMessage"
+    "fieldUse": "BagMessage",
+    "effectParam": 100
   },
   {
     "id": 80,
@@ -1865,6 +1940,7 @@
     "naturalGiftType": "Fire",
     "pluckEffect": "PrzRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healParalysis": 1
     }
@@ -1886,6 +1962,7 @@
     "naturalGiftType": "Water",
     "pluckEffect": "SlpRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1
     }
@@ -1907,6 +1984,7 @@
     "naturalGiftType": "Electric",
     "pluckEffect": "PsnRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healPoison": 1
     }
@@ -1928,6 +2006,7 @@
     "naturalGiftType": "Grass",
     "pluckEffect": "BrnRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healBurn": 1
     }
@@ -1949,6 +2028,7 @@
     "naturalGiftType": "Ice",
     "pluckEffect": "FrzRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healFreeze": 1
     }
@@ -1971,6 +2051,7 @@
     "naturalGiftType": "Fighting",
     "pluckEffect": "PpRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverPp",
     "use": {
       "ppRestored": 10
     }
@@ -1993,6 +2074,7 @@
     "naturalGiftType": "Poison",
     "pluckEffect": "HpRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": 10
     }
@@ -2014,6 +2096,7 @@
     "naturalGiftType": "Ground",
     "pluckEffect": "CnfRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healConfusion": 1
     }
@@ -2035,6 +2118,7 @@
     "naturalGiftType": "Flying",
     "pluckEffect": "AllRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1,
       "healPoison": 1,
@@ -2062,6 +2146,7 @@
     "naturalGiftType": "Psychic",
     "pluckEffect": "HpPctRestore",
     "fieldUse": "Berry",
+    "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": -3
     }

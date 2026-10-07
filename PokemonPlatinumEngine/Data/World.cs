@@ -298,7 +298,8 @@ public static class WorldMapBuilder
         bool IsRock(int x, int z) => map.GetGroundTile(x, z) == TileType.CaveWall;
 
         // What can be reached from the cave's ways in, over anything that isn't blocked (water is ridden, a ledge
-        // hopped, a cracked rock smashed: none of them is a blocked tile)
+        // hopped, a cracked rock smashed: none of them is a blocked tile), and over a Bicycle's ramp, which is: it is
+        // jumped the way it faces, to one tile past it in low gear and three in top (Victory Road's second floor)
         var reached = new bool[w * h];
         var open = new Queue<(int X, int Z)>();
         void Reach(int x, int z)
@@ -306,6 +307,16 @@ public static class WorldMapBuilder
             if (!map.InBounds(x, z) || reached[z * w + x] || map.IsSolid(x, z)) return;
             reached[z * w + x] = true;
             open.Enqueue((x, z));
+        }
+        // A rock face is a blocked tile that Rock Climb takes one up or down along its grain (Mt. Coronet's upper
+        // floors lie past them): the floor at its far end is reached all the same, as the field's rule reaches it
+        void Step(int x, int z, int dx, int dz)
+        {
+            int nx = x + dx, nz = z + dz;
+            if (map.InBounds(nx, nz) && map.BehaviourAt(nx, nz) is var face
+                && (face == TileBehavior.RockClimbNorthSouth && dz != 0 || face == TileBehavior.RockClimbEastWest && dx != 0))
+                while (map.InBounds(nx, nz) && map.BehaviourAt(nx, nz) == face) { nx += dx; nz += dz; }
+            Reach(nx, nz);
         }
         foreach (var (x, z) in entrances)
         {
@@ -316,7 +327,14 @@ public static class WorldMapBuilder
         while (open.Count > 0)
         {
             var (x, z) = open.Dequeue();
-            Reach(x + 1, z); Reach(x - 1, z); Reach(x, z + 1); Reach(x, z - 1);
+            Step(x, z, 1, 0); Step(x, z, -1, 0); Step(x, z, 0, 1); Step(x, z, 0, -1);
+            foreach (var way in new[] { Direction.Left, Direction.Right })
+            {
+                var (dx, dz) = FieldMovement.Delta(way);
+                if (!map.InBounds(x + dx, z + dz) || FieldMovement.RampDirection(map.BehaviourAt(x + dx, z + dz)) != way) continue;
+                Reach(x + 2 * dx, z + 2 * dz);
+                Reach(x + 4 * dx, z + 4 * dz);
+            }
         }
         foreach (var (x, z) in vague)
             if (reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveFloor, isSolid: false);
@@ -1073,6 +1091,8 @@ public static class WorldMapBuilder
         "clown" => "Clown",
         "looker" => "Looker",
         "cyrus" => "Cyrus",
+        "roark" => "Roark",
+        "grunt_m" or "grunt_f" => "Grunt",
         "briefcase" => "StarterBriefcase",
         _ => "Trainer"
     };

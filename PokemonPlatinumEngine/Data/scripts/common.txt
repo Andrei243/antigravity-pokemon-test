@@ -26,6 +26,23 @@ script NewGame
   setflag FLAG_HIDE_SANDGEM_TOWN_PROF_ROWAN
   setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_OAK
   setvar VAR_TWINLEAF_TOWN_GUITARIST_TRIGGER_STATE 1
+  call ChapterTwo
+  return
+
+
+# Who the second chapter (plan 02 · S5, "Jubilife and Roark") keeps out of sight until their scenes, as the
+# original's new game does: called by NewGame, and run for a save from before the chapter was written
+# (Story/StoryMigration.cs). It may only set flags and variables, and ends in return.
+script ChapterTwo
+  setflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
+  setflag FLAG_HIDE_JUBILIFE_ROWAN
+  setflag FLAG_HIDE_JUBILIFE_GALACTIC_GRUNTS
+  setflag FLAG_HIDE_JUBILIFE_CITY_POKETCH_CO_PRESIDENT
+  setflag FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT
+  setflag FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2
+  setflag FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
+  setflag FLAG_HIDE_FLOAROMA_MEADOW_WORKS_KEY
+  if var VAR_OREBURGH_GATE_1F_HIKER_STATE == 0 setvar VAR_OREBURGH_GATE_1F_HIKER_STATE 1
   return
 
 
@@ -392,4 +409,10 @@ script SafariOutOfBalls
   say "Thank you for playing. Please come again!"
   safari end
   warp "Sinnoh" 610 810 down
+  end
+
+
+# A Repel's last step (plan 06 · R11; the original's common script 32).
+script RepelWoreOff
+  text "The Repel's effect wore off..."
   end

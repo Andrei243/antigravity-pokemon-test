@@ -13,8 +13,28 @@ namespace PokemonPlatinumEngine.Battle;
 // onto them. What a menu refuses (no PP, a Pokémon already out) it refuses here, before the rules are asked.
 public partial class BattleEngine
 {
-    /// <summary>The items offered by the battle's BAG menu, in slot order.</summary>
-    public static IReadOnlyList<string> BagItems { get; } = new[] { "Poké Ball", "Great Ball", "Potion", "Super Potion" };
+    /// <summary>How many of a pocket's items the battle's bag shows at once (two to a row).</summary>
+    public const int BagRows = 4, BagColumns = 2;
+
+    // The battle's bag (plan 06 · R11): the pocket open, the item chosen and the Pokémon it is for
+    private int bagPocket;
+    private ItemData? bagItem;
+    private int bagTarget = -1;
+
+    /// <summary>The pocket of the battle's bag that is open (0 to 3; <see cref="BattleBag.Pockets"/>).</summary>
+    public int BagPocket => bagPocket;
+
+    /// <summary>The items of the pocket that is open.</summary>
+    public IReadOnlyList<ItemStack> BagListed => BattleBag.Items(PlayerInventory, bagPocket);
+
+    /// <summary>The item chosen from the bag while its Pokémon or move is being picked.</summary>
+    public ItemData? BagItemChosen => bagItem;
+
+    /// <summary>The Pokémon of the team the chosen item is for, while its move is being picked.</summary>
+    public int BagTarget => bagTarget;
+
+    /// <summary>The item used last from the bag in this battle (the fifth button).</summary>
+    public string? LastUsedItem { get; private set; }
 
     private int menuSlot;
     private List<int> asked = new();
@@ -161,8 +181,7 @@ public partial class BattleEngine
                 HUD.MoveMenuIndex = Math.Clamp(lastMove.GetValueOrDefault(MenuBattler.Pokemon!), 0, Math.Max(0, MenuBattler.Pokemon!.Moves.Count - 1));
                 break;
             case 1:
-                HUD.MenuState = BattleMenuState.SelectBagItem;
-                HUD.BagMenuIndex = 0;
+                HUD.MenuState = BattleMenuState.SelectBagPocket;
                 break;
             case 2:
                 HUD.MenuState = BattleMenuState.SwitchPokemon;
@@ -256,34 +275,108 @@ public partial class BattleEngine
         Commit(BattleChoice.Switch(place, partyIndex));
     }
 
-    /// <summary>Uses the item in the given slot, as chosen from the BAG menu.</summary>
+    /// <summary>Opens a pocket of the battle's bag (0 to 3), or with 4 goes straight to the item used last.</summary>
+    public void SelectBagPocket(int pocket)
+    {
+        if (pocket == BattleBag.LastUsed)
+        {
+            if (LastUsedItem is { } name && ItemDatabase.Get(name) is { } last && PlayerInventory.GetQuantity(last) > 0) ChooseBagItem(last);
+            else Refuse("There's no item to use again.", BattleMenuState.SelectBagPocket);
+            return;
+        }
+        if (pocket < 0 || pocket >= BattleBag.Pockets.Length) return;
+        bagPocket = pocket;
+        HUD.BagMenuIndex = 0;
+        HUD.BagFirstRow = 0;
+        HUD.MenuState = BattleMenuState.SelectBagItem;
+        AudioManager.PlaySound("select");
+    }
+
+    /// <summary>Chooses the item at this place in the open pocket: it is used, or goes on to the Pokémon it is for.</summary>
     public void SelectBagItem(int index)
     {
-        if (index < 0 || index >= BagItems.Count) return;
+        var listed = BagListed;
+        if (index < 0 || index >= listed.Count) return;
+        ChooseBagItem(listed[index].Data);
+    }
 
-        string itemName = BagItems[index];
-        var itemData = ItemDatabase.Get(itemName);
-        if (itemData == null) return;
-
-        string? refusal = null;
-        if (PlayerInventory.GetQuantity(itemData) <= 0) refusal = $"You don't have any {itemName}s left!";
-        else if (itemData.Pocket == ItemPocket.PokeBalls && IsTrainerBattle) refusal = "The Trainer blocked the Ball! Don't be a thief!";
-        else if (itemData.Pocket == ItemPocket.PokeBalls && EnemySlots.Count(b => b.IsActive) > 1) refusal = "There are two Pokémon out! The Ball can't be aimed!";
-        else
+    private void ChooseBagItem(ItemData item)
+    {
+        if (BattleBag.ForAPartyMember(item))
         {
-            InCore(MenuBattler);
-            refusal = core.WhyNot(BattleChoice.UseItem(MenuBattler.Place, itemData.Name));
+            bagItem = item;
+            bagTarget = -1;
+            // The cursor starts on the Pokémon whose menu is open
+            HUD.BagTargetIndex = Math.Max(0, PlayerParty.Members.IndexOf(MenuBattler.Pokemon!));
+            HUD.MenuState = BattleMenuState.SelectBagTarget;
+            AudioManager.PlaySound("select");
+            return;
         }
+        UseFromBag(item, -1, -1, BattleMenuState.SelectBagItem);
+    }
 
+    /// <summary>The Pokémon of the team the chosen item is for: it is used on it, or goes on to its moves.</summary>
+    public void SelectBagTarget(int partyIndex)
+    {
+        if (bagItem is not { } item || partyIndex < 0 || partyIndex >= PlayerParty.Count) return;
+        if (BattleBag.ForAMove(item))
+        {
+            bagTarget = partyIndex;
+            HUD.BagMoveIndex = 0;
+            HUD.MenuState = BattleMenuState.SelectBagMove;
+            AudioManager.PlaySound("select");
+            return;
+        }
+        UseFromBag(item, partyIndex, -1, BattleMenuState.SelectBagTarget);
+    }
+
+    /// <summary>The move of the chosen Pokémon the item restores.</summary>
+    public void SelectBagMove(int move)
+    {
+        if (bagItem is not { } item || bagTarget < 0) return;
+        UseFromBag(item, bagTarget, move, BattleMenuState.SelectBagMove);
+    }
+
+    /// <summary>
+    /// Uses an item of the bag as the menus would after choosing it: the Pokémon of the team it is for and its move,
+    /// where it needs them. For tests and tools that drive a battle.
+    /// </summary>
+    public void UseBagItem(string name, int onPartyMember = -1, int onMove = -1)
+    {
+        if (ItemDatabase.Get(name) is { } item) UseFromBag(item, onPartyMember, onMove, BattleMenuState.Main);
+    }
+
+    private void UseFromBag(ItemData item, int onPartyMember, int onMove, BattleMenuState backTo)
+    {
+        InCore(MenuBattler);
+        var choice = BattleChoice.UseItem(MenuBattler.Place, item.Name, onPartyMember, onMove);
+        string? refusal = PlayerInventory.GetQuantity(item) <= 0 ? $"You don't have any {item.Name}s left!" : core.WhyNot(choice);
         if (refusal != null)
         {
-            Refuse(refusal, BattleMenuState.SelectBagItem);
+            Refuse(refusal, backTo);
             return;
         }
 
-        PlayerInventory.RemoveItem(itemData, 1);
+        PlayerInventory.RemoveItem(item, 1);
+        LastUsedItem = item.Name;
+        bagItem = null;
+        bagTarget = -1;
         AudioManager.PlaySound("select");
-        Commit(BattleChoice.UseItem(MenuBattler.Place, itemData.Name));
+        Commit(choice);
+    }
+
+    /// <summary>The B button in the battle's bag: a step back, from a move to the team, the team to the pocket, the pocket to the bag, the bag to the commands.</summary>
+    public void BagBack()
+    {
+        AudioManager.PlaySound("cancel");
+        HUD.MenuState = HUD.MenuState switch
+        {
+            BattleMenuState.SelectBagMove => BattleMenuState.SelectBagTarget,
+            BattleMenuState.SelectBagTarget => BattleMenuState.SelectBagItem,
+            BattleMenuState.SelectBagItem => BattleMenuState.SelectBagPocket,
+            _ => BattleMenuState.Main
+        };
+        if (HUD.MenuState is BattleMenuState.SelectBagItem or BattleMenuState.SelectBagPocket) bagItem = null;
     }
 
     /// <summary>
@@ -348,9 +441,25 @@ public partial class BattleEngine
                 before = HUD.SwitchMenuIndex;
                 after = HUD.SwitchMenuIndex = UI.Kit.UiNav.Grid(before, PlayerParty.Count, 3, dx, dy);
                 break;
+            case BattleMenuState.SelectBagPocket:
+                // The four pockets two to a row, and the item used last under them
+                before = HUD.BagPocketIndex;
+                after = HUD.BagPocketIndex = UI.Kit.UiNav.Grid(before, BattleBag.Pockets.Length + 1, 2, dx, dy);
+                break;
             case BattleMenuState.SelectBagItem:
+                int listed = BagListed.Count;
                 before = HUD.BagMenuIndex;
-                after = HUD.BagMenuIndex = UI.Kit.UiNav.Grid(before, BagItems.Count, 2, dx, dy);
+                after = HUD.BagMenuIndex = UI.Kit.UiNav.Grid(before, listed, BagColumns, dx, dy);
+                HUD.BagFirstRow = UI.Kit.UiNav.Window(HUD.BagFirstRow, after / BagColumns, (listed + BagColumns - 1) / BagColumns, BagRows);
+                break;
+            case BattleMenuState.SelectBagTarget:
+                before = HUD.BagTargetIndex;
+                after = HUD.BagTargetIndex = UI.Kit.UiNav.Grid(before, PlayerParty.Count, 3, dx, dy);
+                break;
+            case BattleMenuState.SelectBagMove:
+                before = HUD.BagMoveIndex;
+                int moves = bagTarget >= 0 && bagTarget < PlayerParty.Count ? PlayerParty.Members[bagTarget].Moves.Count : 0;
+                after = HUD.BagMoveIndex = moves == 0 ? 0 : UI.Kit.UiNav.Grid(before, moves, 2, dx, dy);
                 break;
             default:
                 return;
@@ -454,15 +563,21 @@ public partial class BattleEngine
                 if (confirm) SelectSwitch(HUD.SwitchMenuIndex);
                 break;
 
-            case BattleMenuState.SelectBagItem:
+            case BattleMenuState.SelectBagPocket or BattleMenuState.SelectBagItem or BattleMenuState.SelectBagTarget or BattleMenuState.SelectBagMove:
                 if (cancel)
                 {
-                    AudioManager.PlaySound("cancel");
-                    HUD.MenuState = BattleMenuState.Main;
+                    BagBack();
                     return;
                 }
                 MoveCursor(dx, dy);
-                if (confirm) SelectBagItem(HUD.BagMenuIndex);
+                if (!confirm) break;
+                switch (HUD.MenuState)
+                {
+                    case BattleMenuState.SelectBagPocket: SelectBagPocket(HUD.BagPocketIndex); break;
+                    case BattleMenuState.SelectBagItem: SelectBagItem(HUD.BagMenuIndex); break;
+                    case BattleMenuState.SelectBagTarget: SelectBagTarget(HUD.BagTargetIndex); break;
+                    default: SelectBagMove(HUD.BagMoveIndex); break;
+                }
                 break;
         }
     }

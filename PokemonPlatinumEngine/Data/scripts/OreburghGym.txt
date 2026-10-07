@@ -1,0 +1,60 @@
+# The Oreburgh Gym (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_oreburgh_city_gym.s).
+#
+# Roark battles for the Coal Badge and gives TM76, Stealth Rock. His Badge sets off what comes next: Team Galactic
+# by Jubilife City's north gate, the assistant and the professor there, and the rival on the way out of town.
+
+
+script Roark
+  face roark player
+  speaker "Roark"
+  if badge coal goto Won
+  say "Welcome to the Oreburgh Gym! I'm Roark, the Gym Leader."
+  say "Down in the mine I dig for fossils and coal. Up here I dig for strong Trainers."
+  say "My Rock-type Pokémon are as hard as the bedrock under this town. Let's see what you're made of!"
+  battle self as "leader_roark"
+  say "...Hah. That was a fine battle. You've earned this: the Coal Badge, the Badge of the Oreburgh Gym."
+  givebadge coal
+  fanfare badge
+  text "{player} received the Coal Badge from Roark!"
+  say "With it, Pokémon up to level 20 will obey you, even ones you got in a trade."
+  say "And Rock Smash can be used outside battle now. Cracked rocks won't stand in your way."
+  setvar VAR_OREBURGH_CITY_STATE 2
+  setvar VAR_JUBILIFE_CITY_STATE 3
+  clearflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
+  clearflag FLAG_HIDE_JUBILIFE_ROWAN
+  clearflag FLAG_HIDE_JUBILIFE_GALACTIC_GRUNTS
+  setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
+label Tm
+  say "Take this too. It's a TM I'm rather proud of."
+  give "TM76"
+  setflag FLAG_RECEIVED_ROARK_TM76
+  say "TM76 holds Stealth Rock. It scatters sharp rocks around the other side, and they hurt every Pokémon that comes in."
+  say "The next Gym is in Eterna City, north past Floaroma Town. Its Leader, Gardenia, uses Grass types. Good luck!"
+  end
+label Won
+  if not flag FLAG_RECEIVED_ROARK_TM76 goto Tm
+  say "Every Trainer that comes through here leaves me stronger, win or lose. Come back any time!"
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge coal goto Won
+  say "Hey there, champ in the making! Welcome to the Oreburgh Gym!"
+  say "Roark uses Rock types. Grass and Water moves hit them hard, and Fighting and Ground do well too."
+  say "Normal and Flying moves barely scratch them. Choose your team with that in mind!"
+  end
+label Won
+  say "You beat Roark! That was something to see. Your name's going up on the statue!"
+  end
+
+
+script GymStatue
+  speaker none
+  if badge coal goto Won
+  say "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: (none yet)"
+  end
+label Won
+  say "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: {player}"
+  end

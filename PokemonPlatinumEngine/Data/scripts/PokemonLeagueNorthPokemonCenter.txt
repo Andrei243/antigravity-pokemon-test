@@ -1,0 +1,8 @@
+# The Pokémon League's Pokémon Center (plan 01 · M8). docs/scripts.md describes the language.
+
+
+# Coming in lets Fly come here (the original's own first arrival, set by this room's script). The door guard and
+# the Elite Four's doors are plan 01 · M9's
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_POKEMON_LEAGUE
+  end

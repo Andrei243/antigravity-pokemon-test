@@ -1,0 +1,8 @@
+{
+  "area": "mt_coronet_1f_north_room_1",
+  "bgmTrack": "sinnoh/cave",
+  // Magneton and Nosepass evolve anywhere inside Mt. Coronet, as the original's table of places says
+  "evolutionSites": [ "Magnetic Field" ]
+  // Team Galactic's two grunts who stand in the way down to B1F until the scene at Lake Verity (plan 02 · S10), and
+  // the grunt who comes after the Galactic headquarters (S11), wait for the story
+}

@@ -77,7 +77,8 @@ public class WorldTests
         Assert.True(Sinnoh.IsOpen("jubilife_city"));
         Assert.True(Sinnoh.IsOpen("eterna_city"));
         Assert.True(Sinnoh.IsOpen("veilstone_city"));
-        Assert.False(Sinnoh.IsOpen("sunyshore_city"));
+        Assert.True(Sinnoh.IsOpen("sunyshore_city"));
+        Assert.False(Sinnoh.IsOpen("route_224"));
 
         foreach (string key in Sinnoh.Index.Areas)
         {
@@ -316,9 +317,10 @@ public class WorldTests
             Assert.True(closed == 0, $"{map.Name}: {closed} tiles outside the open areas can be walked on");
         }
 
-        // Route 222, in view from Valor Lakefront's east end, is such scenery: nobody stands in it, and there is no way in
-        var beyond = Overworld.AreaAt(23 * 32 + 8, 24 * 32 + 16)!;
-        Assert.Equal("route_222", beyond.Key);
+        // Route 224, in view from the Pokémon League's grounds, is such scenery until the Hall of Fame (plan 01 · M10):
+        // nobody stands in it, and there is no way in
+        var beyond = Overworld.AreaAt(27 * 32 + 16, 17 * 32 + 16)!;
+        Assert.Equal("route_224", beyond.Key);
         Assert.False(beyond.Open);
         Assert.DoesNotContain(Overworld.NPCs, n => Overworld.AreaAt(n.GridX, n.GridY) == beyond);
     }
@@ -468,6 +470,8 @@ public class WorldTests
                 for (int x = 0; x < m.Width; x++)
                 {
                     if (m.GetGroundTile(x, y) != TileType.TallGrass || m.AreaAt(x, y) is not { Open: true } area) continue;
+                    // Lake Acuity before Team Galactic comes has grass and, by the original's own header, nothing living in it
+                    if (area.Key == "lake_acuity_low_water") continue;
                     Assert.True(area.WildEncounters.Count > 0, $"{m.Name}: tall grass at ({x},{y}) in {area.Key}, where nothing lives");
                     if (m == map && area == route201) grass ??= (x, y);
                 }

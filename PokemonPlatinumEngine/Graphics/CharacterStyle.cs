@@ -132,6 +132,23 @@ internal sealed class CharacterStyle
             Top = new(132, 136, 150, 255), Accent = new(56, 58, 74, 255),
             Bottom = new(60, 62, 78, 255), Shoes = new(44, 44, 54, 255), Eyes = new(44, 48, 70, 255), Height = 1.1f, Build = BodyBuild.Adult
         },
+        // Oreburgh's Gym Leader (plan 02 · S5): our own take, a young miner with red hair under a yellow safety
+        // helmet, in a work coat and jeans
+        "ROARK" => new CharacterStyle
+        {
+            HairColor = new(170, 66, 50, 255), Hair = HairCut.Spiky,
+            Hat = Headwear.Cap, HatColor = new(246, 196, 62, 255), HatBand = new(120, 92, 56, 255),
+            Top = new(112, 116, 98, 255), Accent = new(70, 72, 62, 255), Coat = true,
+            Bottom = new(58, 74, 116, 255), Shoes = new(92, 62, 44, 255), Height = 1.04f, Build = BodyBuild.Adult
+        },
+        // Team Galactic's grunts (plan 02 · S5): our own take, teal hair cut in a bowl and a pale grey uniform with a
+        // dark collar
+        "GRUNT" => new CharacterStyle
+        {
+            HairColor = new(64, 150, 158, 255), Hair = HairCut.Short,
+            Top = new(208, 212, 222, 255), Accent = new(56, 60, 80, 255),
+            Bottom = new(150, 156, 172, 255), Shoes = new(52, 54, 66, 255), Height = 1.0f, Build = BodyBuild.Adult
+        },
         "GENTLEMAN" => new CharacterStyle
         {
             HairColor = new(150, 146, 156, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,

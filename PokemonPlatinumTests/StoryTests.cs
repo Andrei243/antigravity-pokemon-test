@@ -594,6 +594,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.BlackOutCenter, FieldScripts.BlackOutHome });
         // The end of a Safari Game: its last step, or its last ball (plan 01 · M7)
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
+        // A Repel's last step (plan 06 · R11)
+        started.Add(FieldScripts.RepelWoreOff);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -826,8 +828,11 @@ public class StoryTests
         var hidden = OwnMaps.Value.Values.SelectMany(map => map.HiddenItems.Select(h => (Map: map, At: h.Key, Item: h.Value))).ToList();
         Assert.True(hidden.Count >= 20, $"only {hidden.Count} hidden items");
         // The original gives one flag to two places now and then, and says so in its name (Route 207's or Wayward
-        // Cave's): whichever is found first, the other is gone too
-        Assert.Empty(hidden.GroupBy(h => h.Item.Flag).Where(g => g.Count() > 1 && !g.Key.Contains("_OR_")).Select(g => g.Key));
+        // Cave's), or the two are one place shown on two maps (Mt. Coronet's north and south faces share a ledge and
+        // its two Star Pieces): whichever is found first, the other is gone too
+        Assert.Empty(hidden.GroupBy(h => h.Item.Flag)
+            .Where(g => g.Count() > 1 && !g.Key.Contains("_OR_") && !g.All(h => h.Map.Name.StartsWith("MtCoronetOutside", StringComparison.Ordinal)))
+            .Select(g => g.Key));
 
         foreach (var (map, at, item) in hidden)
         {
@@ -984,12 +989,17 @@ public class StoryTests
     [Fact]
     public void TheClerkGreetsOpensTheCounterAndSeesThePlayerOff()
     {
-        var clerk = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.IsPokeMartClerk);
+        var clerk = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.IsPokeMartClerk && n.Mart == null);
         var (host, _) = Play(FieldScripts.For(clerk)!, clerk);
 
         Assert.Contains("Jubilife", host.Transcript[0].Text);
         Assert.Equal(new[] { "open Shop" }, host.Log);
         Assert.Equal(2, host.Transcript.Count);
+
+        // The second clerk keeps the town's own counter (plan 06 · R11)
+        var own = OwnMaps.Value["JubilifePokeMart"].Everyone.Single(n => n.Mart == "jubilife");
+        (host, _) = Play(FieldScripts.For(own)!, own);
+        Assert.Equal(new[] { "open Shop jubilife" }, host.Log);
     }
 
     [Fact]
@@ -1057,8 +1067,20 @@ public class StoryTests
         Assert.Equal("jubilife_city", script.File);
         var item = ItemDatabase.Get(coupon)!;
 
+        // The third clown has nothing to give until the president has told the campaign (plan 02 · S5)
+        if (who == "clown_3")
+        {
+            var early = new HeadlessScriptHost { Map = map };
+            var waiting = new ScriptRunner(Scripts, early);
+            waiting.Start(script, clown);
+            waiting.RunToEnd();
+            Assert.Empty(early.Asked);
+            Assert.Equal(0, early.Bag.GetQuantity(item));
+        }
+
         // No: nothing given, and the question is asked again next time
         var wrong = new HeadlessScriptHost { Map = map };
+        wrong.Story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
         wrong.Answers.Enqueue(1);
         var runner = new ScriptRunner(Scripts, wrong);
         runner.Start(script, clown);
@@ -1069,6 +1091,7 @@ public class StoryTests
 
         // Yes: the coupon, with its fanfare
         var right = new HeadlessScriptHost { Map = map };
+        right.Story.SetVar("VAR_POKETCH_CAMPAIGN_STATE", 2);
         runner = new ScriptRunner(Scripts, right);
         runner.Start(script, clown);
         runner.RunToEnd();

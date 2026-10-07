@@ -1,0 +1,62 @@
+# Snowpoint City (the original's CITY09 role): the northernmost town, low roofs under deep snow, the Gym on the ice,
+# the harbour frozen at its edge and the old temple beyond. A quiet A-flat lullaby in three: a music box turning on
+# the celesta above, the flute singing softly over strings, a borrowed minor chord's chill and a half step down at
+# each phrase's end; the horn warms the middle, which climbs to the flattened seventh like a window lit in the snow.
+# By night the ocarina and a clarinet over a vibraphone and a pad. Original composition for this game.
+title Snowpoint City
+tempo 104
+meter 3/4
+reverb 0.42
+nighttempo 0.94
+
+track lead flute night=ocarina vol=0.92 pan=0 rev=0.42
+  r2. | r2. |
+  L v96 o5 e-2 c4 | o5 c2 o4 a-4 | o4 a-4 o5 d-4 f4 | o5 e-2. |
+  o5 e-4 f4 e-4 | o5 a-4. g8 f4 | o4 a-4 o5 d-4 e4 | o5 e-2. |
+  v102 o5 f4. a-8 o6 d-4 | o6 e-4. d-8 o5 b-4 | o5 g4 e-4 g4 | o5 a-2. |
+  o5 f4 d-4 o4 b-4 | o4 b-2 o5 d-4 | o5 f2 e-4 | o5 e-2. |
+  v96 o5 e-2 c4 | o5 c2 o4 a-4 | o4 a-4 o5 d-4 f4 | o5 e-4 g4 b-4 |
+  o6 c2 o5 g4 | o5 a-2 f4 | o5 b-2 g4 | o5 a-2. |
+
+track musicbox celesta night=vibraphone vol=0.34 pan=0.35 rev=0.5
+  v84 o5 a-8 o6 e-8 c8 e-8 a-8 e-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 |
+  L o5 a-8 o6 e-8 c8 e-8 a-8 e-8 | o5 f8 o6 c8 o5 a-8 o6 c8 f8 c8 | o5 f8 o6 d-8 o5 a-8 o6 d-8 f8 d-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 |
+  o5 a-8 o6 e-8 c8 e-8 a-8 e-8 | o5 f8 o6 c8 o5 a-8 o6 c8 f8 c8 | o5 e8 o6 d-8 o5 a-8 o6 d-8 e8 d-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 |
+  o5 f8 o6 d-8 o5 a-8 o6 d-8 f8 d-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 | o5 e-8 o6 c8 o5 g8 o6 c8 e-8 c8 | o5 f8 o6 c8 o5 a-8 o6 c8 f8 c8 |
+  o5 f8 o6 d-8 o5 b-8 o6 d-8 f8 d-8 | o5 g-8 o6 d-8 o5 b-8 o6 d-8 g-8 d-8 | o5 f8 o6 d-8 o5 a-8 o6 d-8 f8 d-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 |
+  o5 a-8 o6 e-8 c8 e-8 a-8 e-8 | o5 f8 o6 c8 o5 a-8 o6 c8 f8 c8 | o5 f8 o6 d-8 o5 a-8 o6 d-8 f8 d-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 |
+  o5 e-8 o6 c8 o5 g8 o6 c8 e-8 c8 | o5 f8 o6 d-8 o5 a-8 o6 d-8 f8 d-8 | o5 e-8 b-8 g8 b-8 o6 e-8 o5 b-8 | o5 a-8 o6 e-8 c8 e-8 a-8 e-8 |
+
+track warm horn night=clarinet vol=0.36 pan=-0.3 rev=0.4
+  r2. | r2. |
+  L r2. | r2. | r2. | r2. |
+  r2. | r2. | r2. | r2. |
+  v90 o4 a-2. | o4 b-2. | o4 g2. | o4 a-2. |
+  o4 f2. | o4 g-2. | o4 f2. | o4 g2. |
+  r2. | r2. | r2. | r2. |
+  o4 g2. | o4 a-2. | o4 g2. | o4 e-2. |
+
+track pad strings night=pad vol=0.29 pan=-0.15 rev=0.48
+  q8 o4 (c e- a-)2. | o3 (b- >e- g)2. |
+  L o4 (c e- a-)2. | o4 (c f a-)2. | o4 (d- f a-)2. | o3 (b- >e- g)2. |
+  o4 (c e- a-)2. | o4 (c f a-)2. | o4 (d- e a-)2. | o3 (b- >e- g)2. |
+  o4 (d- f a-)2. | o3 (b- >e- g)2. | o4 (c e- g)2. | o4 (c f a-)2. |
+  o4 (d- f b-)2. | o4 (d- g- b-)2. | o4 (d- f a-)2. | o3 (b- >e- g)2. |
+  o4 (c e- a-)2. | o4 (c f a-)2. | o4 (d- f a-)2. | o3 (b- >e- g)2. |
+  o4 (c e- g)2. | o4 (d- f a-)2. | o3 (b- >e- g)2. | o4 (c e- a-)2. |
+
+track bass contrabass vol=0.6 rev=0.25
+  q8 o3 a-2. | o3 e-2. |
+  L o3 a-2. | o3 f2. | o3 d-2. | o3 e-2. |
+  o3 a-2. | o3 f2. | o3 d-2. | o3 e-2. |
+  o3 d-2. | o3 e-2. | o3 c2. | o3 f2. |
+  o2 b-2. | o2 g-2. | o3 d-2. | o3 e-2. |
+  o3 a-2. | o3 f2. | o3 d-2. | o3 e-2. |
+  o3 c2. | o3 d-2. | o3 e-2. | o3 a-2. |
+
+track drift kit vol=0.34 pan=0.1 rev=0.4
+  r2. | r2. |
+  L r2. | r2. | r2. | r2. |
+  r2. | r2. | r2. | r2. |
+  [ v40 f4 v22 k8 v30 k8 v22 k8 v30 k8 | ]8
+  [ v34 f4 v20 k8 v26 k8 v20 k8 v26 k8 | ]8

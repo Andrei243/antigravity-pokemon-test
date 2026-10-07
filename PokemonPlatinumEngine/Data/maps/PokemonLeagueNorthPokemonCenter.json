@@ -1,0 +1,178 @@
+{
+  "name": "PokemonLeagueNorthPokemonCenter",
+  "displayName": "Pokémon Center",
+  "bgmTrack": "common/pokecenter",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#________P#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "##.....#.##",
+    "#.######..#",
+    "#.#.......#",
+    "#.#.......#",
+    "###.....###",
+    "#........##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 8,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "WallEmblem",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 847,
+      "targetY": 560,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Nurse Joy",
+      "npcType": "Nurse",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "isHealingNurse": true
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 9,
+      "y": 2,
+      "facing": "Up",
+      "isPCTerminal": true
+    },
+    {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "Clerk: Welcome! Stock up well before you take on the Elite Four."
+      ],
+      "isPokeMartClerk": true
+    },
+    {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 1,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "Clerk: Welcome! This counter keeps a few things for trainers who've come this far."
+      ],
+      "isPokeMartClerk": true,
+      "mart": "pokemon_league"
+    },
+    {
+      "name": "Trainer",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Trainer: The Elite Four sent me back here again. That makes five times!",
+        "Trainer: But I'm not giving up. I'll keep coming back until I've beaten every one of them."
+      ]
+    },
+    {
+      "name": "Guitarist",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "Guitarist: Everybody asks me what the Elite Four are like.",
+        "Guitarist: I could tell you, but that'd spoil it. Some things you've got to go and feel for yourself!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

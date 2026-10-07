@@ -1,0 +1,100 @@
+# The Trainers' School in Jubilife City (plan 02 · S5). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_trainers_school.s).
+#
+# The rival is at the blackboard. He takes the parcel his mother sent, gives the player a Town Map and runs off to
+# Oreburgh City; that brings the Pokétch Company's president and two of the campaign's clowns out into the city.
+# Two pupils battle the player when spoken to, and once both are beaten the second gives a Potion.
+
+
+script Rival
+  face rival player
+  speaker "{rival}"
+  if not item "Parcel" goto NoParcel
+  say "Huh? {player}! What are you doing here? ...Wait, you've got something for me? From my mom?"
+  fanfare item
+  take "Parcel"
+  text "{player} handed over the Parcel."
+  say "Whoa, it's a Town Map! Two of them! Mom must've packed one for you, too. Here, take it!"
+  give "Town Map"
+  say "I've already learned everything this school has to teach, so I'm off to Oreburgh City for my first Gym Badge!"
+  say "You'd better hurry up, {player}! Or I'm fining you ten million!"
+  walk rival down 7 fast
+  sound "door_open"
+  hide rival
+  setflag FLAG_HIDE_TRAINERS_SCHOOL_RIVAL
+  setflag FLAG_TALKED_TO_TRAINERS_SCHOOL_RIVAL
+  setvar VAR_POKETCH_CAMPAIGN_STATE 1
+  clearflag FLAG_HIDE_JUBILIFE_CITY_POKETCH_CO_PRESIDENT
+  clearflag FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2
+  end
+label NoParcel
+  say "This lesson's about status conditions. I knew all of it already. Obviously."
+  end
+
+
+# The blackboard: what each condition does, chosen from a list.
+script Blackboard
+  speaker none
+  say "The blackboard lists the status conditions a Pokémon can suffer in battle."
+  choose "Read about which condition?" "POISON" "PARALYSIS" "SLEEP" "BURN" "FREEZE" "EXIT"
+  if var RESULT == 0 goto Poison
+  if var RESULT == 1 goto Paralysis
+  if var RESULT == 2 goto Sleep
+  if var RESULT == 3 goto Burn
+  if var RESULT == 4 goto Freeze
+  end
+label Poison
+  say "Poison: the Pokémon loses HP each turn, and even as it walks in the field. An Antidote cures it."
+  end
+label Paralysis
+  say "Paralysis: the Pokémon is slowed down, and sometimes can't move at all. A Paralyze Heal cures it."
+  end
+label Sleep
+  say "Sleep: the Pokémon can't use moves until it wakes up. An Awakening wakes it at once."
+  end
+label Burn
+  say "Burn: the Pokémon loses HP each turn, and its physical moves hit weaker. A Burn Heal cures it."
+  end
+label Freeze
+  say "Freeze: the Pokémon can't move until it thaws. Fire-type moves thaw it, and so does an Ice Heal."
+  end
+
+
+# The two pupils who battle when spoken to (the original's trainers fight with the teams Platinum gives them).
+script Harrison
+  face school_kid_harrison player
+  if flag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_HARRISON goto Beaten
+  say "A real battle? Against a real Trainer? I've been studying for this!"
+  battle self as "school_kid_harrison"
+  setflag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_HARRISON
+  if flag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_CHRISTINE goto Potion
+  say "Wow, it's hard to win a real battle! Have you battled Christine over there yet?"
+  end
+label Beaten
+  if flag FLAG_RECEIVED_TRAINERS_SCHOOL_POTION goto Done
+  if flag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_CHRISTINE goto Potion
+  say "Battling's the best way to learn. Go and battle Christine too!"
+  end
+label Potion
+  say "You beat both of us! The teacher says a winner gets a prize. Here!"
+  give "Potion"
+  setflag FLAG_RECEIVED_TRAINERS_SCHOOL_POTION
+label Done
+  say "A Potion gives back 20 HP. Use it before your Pokémon gets too weak!"
+  end
+
+script Christine
+  face school_kid_christine player
+  if flag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_CHRISTINE goto Beaten
+  say "Don't be shy! A Trainer battles anyone who asks. Let's go!"
+  battle self as "school_kid_christine"
+  setflag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_CHRISTINE
+  if flag FLAG_DEFEATED_TRAINERS_SCHOOL_SCHOOL_KID_HARRISON goto Both
+  say "I could've done better... Have you tried Harrison yet?"
+  end
+label Beaten
+  say "I could've done better. I'll study harder!"
+  end
+label Both
+  say "You beat Harrison too? Then go and talk to him. He has something for you!"
+  end

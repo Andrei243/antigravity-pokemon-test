@@ -207,7 +207,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 
 ### The screens that exist
 
-`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `shop`, `pc`, `travel` (the way to the
+`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `travel` (the way to the
 next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here).
 
 ### Field moves and key items

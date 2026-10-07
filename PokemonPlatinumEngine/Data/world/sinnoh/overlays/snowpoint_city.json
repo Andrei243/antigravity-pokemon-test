@@ -1,0 +1,72 @@
+{
+  "area": "snowpoint_city",
+  "bgmTrack": "sinnoh/snowpoint",
+  "trees": "Pine",
+  "architecture": "Snow",
+  "doors": [
+    { "warp": 4, "map": "SnowpointPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 3, "map": "SnowpointPokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The Gym and the houses have no rooms yet (plan 01 · M11, M9); Snowpoint Temple opens after the Hall of Fame
+  // (plan 01 · M10, plan 02 · S15)
+  "locked": [ 0, 1, 2, 5, 6 ],
+  // Candice at the temple's door and Cynthia on the quay come with the story (plan 02 · S11, S15). The original's
+  // trigger in front of the temple, where its guard turns the player back, waits for the temple to open
+  "people": {
+    "ace_trainer_snow_f": {
+      "name": "Trainer",
+      "dialog": [
+        "Brrr! Snowpoint never warms up, not even in the middle of summer.",
+        "I wear three coats, and my Pokémon still have to huddle round me to keep me warm!"
+      ]
+    },
+    "snowpoint_npc_f_1": {
+      "name": "Woman",
+      "dialog": [
+        "Everybody in Snowpoint owns a good scarf. You can't get through a winter here without one.",
+        "Mine was knitted from Mareep wool. Soft, warm, and only a little bit static!"
+      ]
+    },
+    "snowpoint_npc_f_2": {
+      "name": "Woman",
+      "dialog": [
+        "Candice, our Gym Leader, has been teaching me how to battle!",
+        "She says the cold air keeps your mind sharp. Mostly it just makes my nose run."
+      ]
+    },
+    "snowpoint_npc_m": {
+      "name": "Man",
+      "dialog": [
+        "There's an ancient temple at the top of town. I'd give anything to see what's inside.",
+        "Nobody gets past the woman standing at its door, though. Not even me, and I've lived here all my life."
+      ]
+    },
+    "sailor": {
+      "name": "Sailor",
+      "dialog": [
+        "Ships put in here from all over. Snowpoint's a quiet stop, mind you. Not much ever happens.",
+        "After weeks out on a cold sea, though, a quiet town is just what a sailor wants."
+      ]
+    },
+    // In Platinum she lets the Champion in; the temple waits for the post-game (plan 02 · S15)
+    "temple_guard": {
+      "name": "Temple Guard",
+      "dialog": [
+        "Behind me stands Snowpoint Temple, built in an age long before the town.",
+        "Only those the temple has chosen may enter. I'm sorry, but I cannot let you pass."
+      ]
+    },
+    // In Platinum he sails the Champion to the Battle Zone (plan 02 · S15); until then he only says where his ship goes
+    "sailor_ss_spiral": {
+      "name": "Sailor",
+      "dialog": [
+        "This ship sails north to the Battle Zone, where the strongest trainers in the land gather.",
+        "We only take trainers who have proved themselves at the Pokémon League. I'll be watching for you!"
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Snowpoint City\nThe northernmost town in Sinnoh, where the snow never melts.",
+    "gym_signpost": "Snowpoint City Pokémon Gym\nLeader: Candice\nHer Ice-type Pokémon never feel the cold!"
+  }
+}

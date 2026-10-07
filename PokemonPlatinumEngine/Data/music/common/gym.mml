@@ -1,0 +1,76 @@
+# Inside a Pokémon Gym (the original's SEQ_GYM role, the same in every Gym): you have come to be tested. A confident,
+# driving E-flat major march: a bright trumpet tune over off-beat brass stabs and a bass pumping in octaves, then a
+# stricter middle where the trumpet calls, the horn answers and the snare drives like a drill, and a climb of brass hits
+# up through C-flat and D-flat back home. Indoors, so one arrangement by day and by night. Original composition for
+# this game.
+title Pokémon Gym
+tempo 138
+meter 4/4
+reverb 0.22
+night none
+
+track lead trumpet vol=0.8 pan=0 rev=0.22
+  o5 f4 r8 f8 r4 f8 f8 | o5 b-4. a-8 f4 r4 |
+  L o4 b-8 o5 e-8 g8 b-4. g8 b-8 | o6 c4. o5 a-8 o6 c8 e-4. | o6 d8 c8 o5 b-8 f8 g8 f8 d8 f8 | o5 e-4 g8 b-8 o6 e-4 r4 |
+  o6 e-8 d8 c8 o5 g8 r8 g8 o6 c8 d8 | o6 e-4. c8 o5 a-4 b-8 o6 c8 | o6 d8 c8 o5 a8 c8 f4 a8 o6 c8 | o6 d2 c4 o5 b-4 |
+  o5 g4. o6 c8 o5 b-4 g4 | o6 d4. c8 o5 b-2 | r1 | r2 r8 o5 b-8 o6 c8 d8 |
+  o6 e-4. d8 c4 o5 g4 | o6 d4. e-8 d4 o5 b-4 | o6 c4 e-4 f4 e-4 | o6 d2 f4 d4 |
+  o6 c8 r8 c8 c8 r8 c8 e-4 | o6 d8 r8 d8 d8 r8 d8 f4 | o6 e-8 r8 e-8 e-8 r8 e-8 g-4 | o6 f2. r4 |
+
+track counter horn vol=0.45 pan=-0.3 rev=0.26
+  o5 d4 r8 d8 r4 d8 d8 | o5 d4. c8 o4 a-4 r4 |
+  L o4 g1 | o4 a-2 o5 c2 | o4 f2 d2 | o4 g2 b-2 |
+  o4 g1 | o4 a-1 | o4 a1 | o4 f2 a-2 |
+  o4 e-1 | o4 d1 | o4 a-4. b-8 o5 c4 e-4 | o5 e-4. c8 o4 b-4 r4 |
+  o4 e-2 g2 | o4 d1 | o4 a-2 o5 c2 | o4 f2 b-2 |
+  o4 a-8 r8 a-8 a-8 r8 a-8 o5 c4 | o4 b-8 r8 b-8 b-8 r8 b-8 o5 d4 | o4 b8 r8 b8 b8 r8 b8 o5 e-4 | o5 d-2. r4 |
+
+track stabs brass vol=0.38 pan=0.25 rev=0.18
+  q6 o4 (b- >d f)4 r8 (b- >d f)8 r4 (b- >d f)8 (b- >d f)8 | o4 (b- >d f)4. r8 (a- >d f)4 r4 |
+  L q4 [ r8 o4 (e- g b-)8 ]4 | [ r8 o4 (c e- a-)8 ]4 | [ r8 o4 (d f b-)8 ]4 | [ r8 o4 (e- g b-)8 ]4 |
+  [ r8 o4 (c e- g)8 ]4 | [ r8 o4 (c e- a-)8 ]4 | [ r8 o4 (c f a)8 ]4 | [ r8 o4 (d f b-)8 ]4 |
+  q3 r4 o4 (c e- g)4 r4 (c e- g)4 | r4 o4 (d g b-)4 r4 (d g b-)4 | r4 o4 (c e- a-)4 r4 (c e- a-)4 | r4 o4 (e- g b-)4 r4 (e- g b-)4 |
+  r4 o4 (c e- g)4 r4 (c e- g)4 | r4 o4 (d g b-)4 r4 (d g b-)4 | r4 o4 (c e- a-)4 r4 (c e- a-)4 | r4 o4 (d f b-)4 r4 (d f b-)4 |
+  q6 o4 (c e- a-)8 r8 (c e- a-)8 (c e- a-)8 r8 (c e- a-)8 (e- a- >c)4 | o4 (d f b-)8 r8 (d f b-)8 (d f b-)8 r8 (d f b-)8 (f b- >d)4 |
+  o4 (e- g- b)8 r8 (e- g- b)8 (e- g- b)8 r8 (e- g- b)8 (g- b >e-)4 | q7 o4 (f a- >d-)2. r4 |
+
+track pad strings vol=0.3 pan=-0.2 rev=0.36
+  o4 (d f b-)1 | o4 (d f a-)2. r4 |
+  L o4 (e- g b-)1 | (e- a- >c)1 | (d f b-)1 | (e- g b-)1 |
+  (e- g >c)1 | (e- a- >c)1 | (f a >c)1 | (d f b-)1 |
+  (e- g >c)1 | (d g b-)1 | (e- a- >c)1 | (e- g b-)1 |
+  (e- g >c)1 | (d g b-)1 | (e- a- >c)1 | (d f b-)1 |
+  (e- a- >c)1 | (d f b-)1 | (e- g- b)1 | (d- f a-)1 |
+
+track bass bass vol=0.66 rev=0.06
+  o2 b-4 r8 b-8 r4 b-8 b-8 | o2 b-8 b-8 o3 b-8 o2 b-8 b-8 b-8 o3 a-8 f8 |
+  L [ o3 e-8 o4 e-8 ]4 | [ o2 a-8 o3 a-8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o3 e-8 o4 e-8 ]4 |
+  [ o3 c8 o4 c8 ]4 | [ o2 a-8 o3 a-8 ]4 | [ o3 f8 o4 f8 ]4 | [ o2 b-8 o3 b-8 ]4 |
+  [ o3 c8 ]8 | [ o2 g8 ]8 | [ o2 a-8 ]8 | [ o3 e-8 ]8 |
+  [ o3 c8 ]8 | [ o2 g8 ]8 | [ o2 a-8 ]8 | [ o2 b-8 o3 b-8 ]4 |
+  o2 a-8 r8 a-8 a-8 r8 a-8 a-4 | o2 b-8 r8 b-8 b-8 r8 b-8 b-4 | o2 b8 r8 b8 b8 r8 b8 b4 | o3 d-2. r4 |
+
+track timpani timpani vol=0.42 rev=0.2
+  v110 o3 b-4 r8 v95 b-8 r4 b-8 b-8 | v105 o3 f4 r4 v60 b-16 v66 b-16 v72 b-16 v78 b-16 v84 b-16 v90 b-16 v98 b-16 v108 b-16 |
+  L v110 o3 e-4 r2. | r1 | r1 | r1 |
+  v100 o3 c4 r2. | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r2 v60 o3 b-16 v66 b-16 v72 b-16 v78 b-16 v84 b-16 v90 b-16 v98 b-16 v108 b-16 |
+  v100 o3 a-8 r8 v82 a-8 a-8 r8 a-8 v95 a-4 | v100 o3 b-8 r8 v82 b-8 b-8 r8 b-8 v95 b-4 | v100 o3 b8 r8 v82 b8 b8 r8 b8 v95 b4 | v110 o3 d-4 r4 v60 a-16 v66 a-16 v72 a-16 v78 a-16 v84 a-16 v90 a-16 v98 a-16 v108 a-16 |
+
+track drums kit vol=0.5 rev=0.12
+  v110 (b c)4 r8 v95 (b s)8 r4 (b s)8 (b s)8 | v100 (b s)4. v80 s8 v70 s16 v75 s16 v80 s16 v85 s16 v90 t16 t16 m16 f16 |
+  L v105 (b c)4 v90 s4 v100 b8 b8 v90 s4 |
+  [ v100 b4 v90 s4 v100 b8 b8 v90 s4 | ]6
+  v100 b4 v90 s4 v100 b8 v80 s16 s16 v90 t16 t16 m16 f16 |
+  v105 (b c)8 v50 s16 s16 v90 s8 v50 s16 s16 v100 b8 v50 s16 s16 v90 s8 v55 s16 s16 |
+  [ v100 b8 v50 s16 s16 v90 s8 v50 s16 s16 v100 b8 v50 s16 s16 v90 s8 v55 s16 s16 | ]6
+  v100 b8 v50 s16 s16 v90 s8 v50 s16 s16 v85 s16 s16 s16 s16 v95 t16 m16 f16 f16 |
+  v100 (b c)8 r8 v86 (b s)8 (b s)8 r8 (b s)8 v92 (b s)4 | v92 (b s)8 r8 v86 (b s)8 (b s)8 r8 (b s)8 v92 (b s)4 |
+  v96 (b c)8 r8 v86 (b s)8 (b s)8 r8 (b s)8 v92 (b s)4 | v100 (b c)4 v70 s16 v75 s16 v80 s16 v85 s16 v90 s16 s16 s16 s16 v95 t16 t16 m16 m16 |
+
+track hats kit vol=0.5 pan=0.12 rev=0.08
+  r1 | r1 |
+  L [ v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v45 o8 | ]8
+  [ [ v55 h16 v30 h16 v40 h16 v30 h16 ]4 | ]8
+  [ r8 v55 h8 ]4 | [ r8 v55 h8 ]4 | [ r8 v55 h8 ]4 | r1 |

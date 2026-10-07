@@ -42,7 +42,7 @@ internal static partial class ModernUi
                 float slide = BattleHUD.BoxSlide(anim, foe);
                 if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f);
             }
-            if (hud.MenuState is not (BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove))
+            if (!CoversPlayerBox(hud.MenuState))
             {
                 for (int slot = 0; slot < 2; slot++)
                 {
@@ -59,7 +59,7 @@ internal static partial class ModernUi
             if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty);
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
             // The team's cards cover the player's box while switching, and a question about a move to learn takes its place
-            if (playerSlide >= 0f && hud.MenuState is not (BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+            if (playerSlide >= 0f && !CoversPlayerBox(hud.MenuState)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
         }
 
         switch (hud.MenuState)
@@ -83,8 +83,19 @@ internal static partial class ModernUi
             case BattleMenuState.SwitchPokemon:
                 SwitchPanel(hud, sw, sh, party, active, battle);
                 break;
+            case BattleMenuState.SelectBagPocket:
+                BagPockets(hud, sw, sh, battle);
+                break;
             case BattleMenuState.SelectBagItem:
-                BagPanel(hud, inventory);
+                BagPanel(hud, sw, sh, battle);
+                break;
+            case BattleMenuState.SelectBagTarget:
+                BagTargets(hud, sw, sh, party, battle);
+                break;
+            case BattleMenuState.SelectBagMove:
+                BagTargets(hud, sw, sh, party, battle);
+                if (battle.BagTarget >= 0 && battle.BagTarget < party.Count && battle.BagItemChosen is { } restoring)
+                    MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, $"Use the {restoring.Name} on which move?");
                 break;
             case BattleMenuState.LearnMove:
                 // The question in the message box, and beside it its Yes and No or the moves to forget
@@ -369,39 +380,120 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ bag
 
-    /// <summary>The items usable in battle as four cards, with the chosen one described beside them (like the move menu).</summary>
-    private static void BagPanel(BattleHUD hud, Inventory inventory)
-    {
-        IReadOnlyList<string> names = BattleEngine.BagItems;
-        ItemData? chosen = null;
-        for (int i = 0; i < names.Count; i++)
-        {
-            var r = new Rectangle(48 + (i % 2) * 556, 836 + (i / 2) * 104, 536, 96);
-            bool selected = hud.BagMenuIndex == i;
-            var item = ItemDatabase.Get(names[i]);
-            int quantity = item != null ? inventory.GetQuantity(item) : 0;
-            if (selected) chosen = item;
+    // A property, not a field: the colour tokens are fields of another file of this partial class, and a static field
+    // here may be set before them (it read them as transparent black)
+    private static Color[] PocketColors => new[] { Green, Gold, Red, Blue };
 
+    /// <summary>
+    /// The battle's bag (plan 06 · R11): its four pockets as big buttons two to a row, each with how many items it
+    /// holds, and under them the item used last, as Platinum's touch screen has them.
+    /// </summary>
+    /// <summary>The menus whose panels stand where the player's HP box is: the team's cards, the bag's, a move to learn.</summary>
+    private static bool CoversPlayerBox(BattleMenuState state) => state is BattleMenuState.SwitchPokemon or BattleMenuState.LearnMove
+        or BattleMenuState.SelectBagPocket or BattleMenuState.SelectBagItem or BattleMenuState.SelectBagTarget or BattleMenuState.SelectBagMove;
+
+    private static void BagPockets(BattleHUD hud, int sw, int sh, BattleEngine battle)
+    {
+        Dim(sw, sh, 120);
+        var head = new Rectangle(48, 548, 1824, 84);
+        Panel(head, 26);
+        UiFonts.DrawCentered("BAG", head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Open"), ("X", "Back"));
+
+        for (int i = 0; i < BattleBag.Pockets.Length; i++)
+        {
+            var r = new Rectangle(48 + (i % 2) * 920, 648 + (i / 2) * 132, 904, 116);
+            int count = BattleBag.Items(battle.PlayerInventory, i).Count;
+            Button(r, 34, PocketColors[i], BattleBag.Pockets[i], 38, hud.BagPocketIndex == i);
+            string held = count == 1 ? "1 KIND" : $"{count} KINDS";
+            UiFonts.DrawCentered(held, r.X + r.Width - 40 - UiFonts.Measure(held, 24, UiWeight.Black), r.Y + r.Height / 2f, 24,
+                new Color(255, 255, 255, 220), UiWeight.Black);
+        }
+        var last = new Rectangle(48, 912, 1824, 108);
+        Button(last, 34, new Color(126, 132, 156, 255), battle.LastUsedItem is { } name ? $"LAST ITEM USED: {name.ToUpperInvariant()}" : "LAST ITEM USED",
+            34, hud.BagPocketIndex == BattleBag.LastUsed);
+    }
+
+    /// <summary>
+    /// A pocket of the battle's bag: its items as cards two to a row with how many are left, a page at a time, and
+    /// the chosen one described beside them.
+    /// </summary>
+    private static void BagPanel(BattleHUD hud, int sw, int sh, BattleEngine battle)
+    {
+        Dim(sw, sh, 120);
+        var listed = battle.BagListed;
+        var head = new Rectangle(48, 548, 1824, 84);
+        Panel(head, 26);
+        UiFonts.DrawCentered(BattleBag.Pockets[battle.BagPocket], head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Use"), ("X", "Back"));
+
+        ItemData? chosen = null;
+        int first = hud.BagFirstRow * BattleEngine.BagColumns;
+        for (int slot = 0; slot < BattleEngine.BagRows * BattleEngine.BagColumns; slot++)
+        {
+            int i = first + slot;
+            var r = new Rectangle(48 + (slot % 2) * 584, 648 + (slot / 2) * 96, 568, 86);
+            if (i >= listed.Count)
+            {
+                EmptySlot(r, 26);
+                continue;
+            }
+            var item = listed[i].Data;
+            bool selected = hud.BagMenuIndex == i;
+            if (selected) chosen = item;
             if (selected) UiShapes.Shadow(r, 26, 26, Vector2.Zero, Gold with { A = 190 });
             else UiShapes.Shadow(r, 26, 14, new Vector2(0, 6), ShadowColor);
             UiShapes.Shape(r, 26, PanelTop, PanelBottom, selected ? Darker(Gold, 0.12f) : Frame, selected ? 5f : 3f);
-
-            if (item != null)
-            {
-                var icon = PixelArtGenerator.GetItemIcon(item);
-                UiShapes.Circle(new Vector2(r.X + 58, r.Y + r.Height / 2f), 38, new Color(226, 234, 246, 255));
-                Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height), new Rectangle(r.X + 28, r.Y + 18, 60, 60),
-                    Vector2.Zero, 0f, quantity > 0 ? Color.White : new Color(255, 255, 255, 110));
-            }
-            UiFonts.DrawCentered(names[i], r.X + 116, r.Y + r.Height / 2f, 32, quantity > 0 ? Ink : Muted, UiWeight.Black);
-            string count = $"×{quantity}";
-            UiFonts.DrawCentered(count, r.X + r.Width - 34 - UiFonts.Measure(count, 30, UiWeight.Black), r.Y + r.Height / 2f, 30, quantity > 0 ? Ink : Muted, UiWeight.Black);
+            var icon = PixelArtGenerator.GetItemIcon(item);
+            UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 34, new Color(226, 234, 246, 255));
+            Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height), new Rectangle(r.X + 26, r.Y + 17, 52, 52), Vector2.Zero, 0f, Color.White);
+            UiFonts.DrawCentered(item.Name, r.X + 104, r.Y + r.Height / 2f, 30, Ink, UiWeight.Black);
+            string count = $"×{listed[i].Quantity}";
+            UiFonts.DrawCentered(count, r.X + r.Width - 30 - UiFonts.Measure(count, 28, UiWeight.Black), r.Y + r.Height / 2f, 28, Ink, UiWeight.Black);
         }
+        if (listed.Count == 0) UiFonts.DrawCentered("Nothing in this pocket.", 96, 648 + 2 * 96, 32, Muted, UiWeight.ExtraBold);
 
-        var info = new Rectangle(1172, 836, 700, 200);
+        var info = new Rectangle(1232, 648, 640, 374);
         Panel(info, 28);
-        UiFonts.DrawCentered("BAG", info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
-        HintsDark(info.X + info.Width - 24, info.Y + 18, ("X", "Back"));
-        if (chosen != null) DrawWrapped(chosen.Description, info.X + 44, info.Y + 92, info.Width - 88, 26, Ink, 36);
+        if (chosen != null)
+        {
+            UiFonts.DrawCentered(chosen.Name, info.X + 40, info.Y + 52, 34, Ink, UiWeight.Black);
+            DrawWrapped(chosen.Description, info.X + 40, info.Y + 104, info.Width - 80, 26, Ink, 36);
+        }
+    }
+
+    /// <summary>The team, to pick the Pokémon an item from the bag is for, with the item named over them.</summary>
+    private static void BagTargets(BattleHUD hud, int sw, int sh, Party party, BattleEngine battle)
+    {
+        Dim(sw, sh, 120);
+        var head = new Rectangle(48, 548, 1824, 84);
+        Panel(head, 26);
+        string item = battle.BagItemChosen?.Name ?? "it";
+        UiFonts.DrawCentered($"Use the {item} on which Pokémon?", head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
+        HintsDark(head.X + head.Width - 24, head.Y + 16, ("Z", "Use"), ("X", "Back"));
+
+        for (int i = 0; i < Party.MaxSize; i++)
+        {
+            var r = new Rectangle(48 + (i % 3) * 616, 648 + (i / 3) * 196, 592, 180);
+            if (i >= party.Count)
+            {
+                EmptySlot(r, 30);
+                continue;
+            }
+            var p = party.Members[i];
+            bool selected = hud.BagTargetIndex == i;
+            Card(r, 30, selected);
+            Portrait(new Vector2(r.X + 96, r.Y + r.Height / 2f), 68, p, 2, selected);
+            float x = r.X + 184;
+            NameWithGender(p, x, r.Y + 46, 34);
+            Level(r.X + r.Width - 34, r.Y + 46, p.Level, 32);
+            HpBar(x, r.Y + 76, r.Width - 184 - 34, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
+            string hpText = $"{p.CurrentHP} / {p.MaxHP}";
+            UiFonts.DrawCentered(hpText, r.X + r.Width - 34 - UiFonts.Measure(hpText, 26, UiWeight.Black), r.Y + 136, 26, Ink, UiWeight.Black);
+            float tagX = x;
+            if (battle.PlayerSlots.Any(b => b.Pokemon == p) && !p.IsFainted) tagX += Tag(tagX, r.Y + 120, "IN BATTLE", Blue, 32) + 8;
+            StatusPill(tagX, r.Y + 120, p.IsFainted ? StatusCondition.Faint : p.Status, 32);
+            if (p.IsFainted) UiShapes.Fill(r, 30, new Color(40, 40, 60, 90));
+        }
     }
 }

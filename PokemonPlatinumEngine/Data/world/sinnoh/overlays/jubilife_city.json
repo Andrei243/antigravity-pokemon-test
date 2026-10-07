@@ -6,7 +6,7 @@
   "doors": [
     { "warp": 2, "map": "JubilifePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 6, "map": "JubilifePokeMart", "x": 4, "y": 6, "facing": "Up" },
-    { "warp": 7, "map": "TrainersSchool", "x": 6, "y": 9, "facing": "Up" },
+    { "warp": 7, "map": "TrainersSchool", "x": 7, "y": 10, "facing": "Up" },
     // The Pokétch Company has two doors onto the street and one hall behind them
     { "warp": 8, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 5, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" }
@@ -19,26 +19,42 @@
     { "warp": 12, "to": "route_218", "toWarp": 2 },
     { "warp": 13, "to": "route_218", "toWarp": 3 }
   ],
+  // The original's coordinate triggers by number: the first arrival, Team Galactic at the north gate, Looker on the
+  // road to Route 203 and the Pokétch campaign (the GTS greeter and the Pal Pad wait for their rooms and items)
+  "triggers": [
+    { "trigger": 0, "script": "FirstArrival" },
+    { "trigger": 1, "script": "TeamGalactic" },
+    { "trigger": 2, "script": "LookerBlocks" },
+    { "trigger": 4, "script": "PoketchCampaign" }
+  ],
   "people": {
-    // Story people the hand-made city had: they keep their lines until plan 02 · S5 gives them their scenes
+    // The city's story people (plan 02 · S5, scripts/jubilife_city.txt): the assistant meets the player on arrival
+    // and stands by the professor when Team Galactic stops him; Looker watches the road to Route 203; the Pokétch
+    // Company's president comes out once the rival has had his parcel
     "counterpart": {
       "name": "{assistant}",
       "npcType": "Assistant",
-      "dialog": [
-        "{assistant}: {player}! You made it through Route 202. Welcome to Jubilife City!",
-        "{assistant}: It's the biggest city in Sinnoh. There's even a TV station!",
-        "{assistant}: {rival} ran on ahead to the Trainers' School. It's up the main street, on the left.",
-        "{assistant}: Have a look inside! The lessons there are a big help when you're starting out."
-      ]
+      "dialog": [ "{assistant}: The professor's research is important. We can't let anyone take it!" ]
     },
-    "looker": {
-      "name": "Looker",
-      "dialog": [
-        "???: ...! You did not see me. I am simply a man admiring the street.",
-        "Looker: Very well. You may call me Looker. My work is... the international kind.",
-        "Looker: A certain group is up to something in Sinnoh. I am here to find out what.",
-        "Looker: If you notice anyone suspicious, you will remember my face, yes? Farewell!"
-      ]
+    "looker": { "name": "Looker", "script": "Looker" },
+    "poketch_co_president": { "name": "President", "npcType": "Gentleman", "script": "PoketchCoPresident" },
+    "prof_rowan": {
+      "name": "Prof. Rowan",
+      "dialog": [ "Prof. Rowan: Hmph. These people will not get one page of my research." ]
+    },
+    "grunt_m_1": {
+      "name": "Grunt",
+      "script": "Grunt",
+      "trainer": { "id": "galactic_grunt_jubilife_city_1", "name": "Grunt", "trainerClass": "Galactic Grunt", "party": [], "sightRange": 0,
+        "dialogueBefore": "Galactic Grunt: You'll regret getting in Team Galactic's way!",
+        "dialogueAfter": "Galactic Grunt: Ugh! Beaten by a kid..." }
+    },
+    "grunt_m_2": {
+      "name": "Grunt",
+      "script": "Grunt",
+      "trainer": { "id": "galactic_grunt_jubilife_city_2", "name": "Grunt", "trainerClass": "Galactic Grunt", "party": [], "sightRange": 0,
+        "dialogueBefore": "Galactic Grunt: Two on two, then! Don't cry when you lose!",
+        "dialogueAfter": "Galactic Grunt: How did we lose?!" }
     },
     // The campaign's three clowns ask their questions and give their coupons (scripts/jubilife_city.txt)
     "clown_1": { "name": "Clown", "script": "Clown1" },

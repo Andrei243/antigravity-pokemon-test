@@ -235,11 +235,11 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public BattleOutcome Outcome { get; private set; }
 
-    public void Open(ScriptScreen screen, NPC? subject)
+    public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
     {
         Shown("open a screen");
         Waits();
-        Log.Add($"open {screen}");
+        Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}" : $"open {screen}");
         Answer = 0;
         if (screen != ScriptScreen.Starter) return;
 

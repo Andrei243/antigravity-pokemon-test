@@ -1,0 +1,10 @@
+{
+  "area": "mt_coronet_6f",
+  "bgmTrack": "sinnoh/mt_coronet",
+  "evolutionSites": [ "Magnetic Field" ],
+  // The way out onto the summit leads to Spear Pillar as it stands before the story reaches it (warp 1). The same
+  // tile leads, in the original, to the pillar torn by the Distortion World and to Dialga's and Palkia's in the
+  // post-game: those come with plan 02 · S12 and plan 01 · M10
+  "locked": [ 2, 3, 4 ]
+  // Team Galactic's grunt by the way out comes with the climb to Spear Pillar (plan 02 · S12)
+}

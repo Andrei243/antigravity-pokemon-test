@@ -1,0 +1,39 @@
+# Oreburgh Gate (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_oreburgh_gate_1f.s).
+#
+# A hiker gives the player HM06, Rock Smash, the first time they pass him. VAR_OREBURGH_GATE_1F_HIKER_STATE: 1 he
+# waits (set by every new game), 2 the HM given.
+
+
+# The tile in front of him (the original's trigger 3).
+script HikerStops
+  emote hiker exclaim
+  face hiker player
+  face player hiker
+  call GiveHm
+  end
+
+script Hiker
+  face hiker player
+  if not flag FLAG_RECEIVED_HM06 goto Give
+  call Explain
+  end
+label Give
+  call GiveHm
+  end
+
+script GiveHm
+  speaker "Hiker"
+  say "Hey there, young Trainer! Going through the Gate? Then you'll want this."
+  say "Plenty of cracked rocks in these tunnels. Smash 'em, and you'll find all sorts of things!"
+  give "HM06"
+  setflag FLAG_RECEIVED_HM06
+  setvar VAR_OREBURGH_GATE_1F_HIKER_STATE 2
+  call Explain
+  return
+
+script Explain
+  speaker "Hiker"
+  say "That HM holds Rock Smash. Teach it to a Pokémon and it can break cracked rocks out here in the field."
+  say "Mind you, it only works outside battle once you've earned the Badge from Oreburgh's Gym."
+  return

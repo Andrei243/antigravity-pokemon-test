@@ -1,0 +1,20 @@
+{
+  "area": "mt_coronet_2f",
+  "bgmTrack": "sinnoh/cave",
+  "evolutionSites": [ "Magnetic Field" ],
+  // The way down lands on the first floor's stairs, which face east in a passage running north and south: one step
+  // east of them is rock, so it says where to come out, on the passage below them
+  "doors": [
+    { "warp": 0, "map": "MtCoronet1FSouth", "x": 25, "y": 4, "facing": "Down" }
+  ],
+  // The cave painting stands over the hole up to the floor's upper half (warp 2) until Team Galactic breaks it,
+  // after their headquarters (plan 02 · S11); then Looker waits beside it. Until then the upper half is come to from
+  // above, by the third floor, and the way down through the hole (warp 3) lands in front of the painting, as in the
+  // original
+  "locked": [ 2 ],
+  // The Max Revive lies in the middle of the floor, reached by two passages that run under arches of rock. The
+  // original gives an arch's tiles two heights on plain cave floor, and the world builder makes a deck of two heights
+  // only where the tile says it is a bridge: it takes the arches for raised ground, so both passages end at a cliff
+  // until it doesn't
+  "heldBack": [ "item_max_revive" ]
+}

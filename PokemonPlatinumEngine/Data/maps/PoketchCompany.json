@@ -119,11 +119,10 @@
       "y": 2,
       "facing": "Down",
       "dialog": [
-        "President: Welcome to the Pokétch Company! I'm the president, and the inventor of the Pokétch.",
-        "President: It's a watch made for trainers, and we're giving them away in a campaign!",
-        "President: Three clowns around Jubilife each have a question for you. Answer them all!",
-        "President: Do that, and a brand-new Pokétch is yours. I'll be waiting right here!"
-      ]
+        "President: Ah, the young Trainer from the campaign! How is that Pokétch treating you?",
+        "President: Our engineers dream up new apps every day. We'll hand them out about town as they're ready!"
+      ],
+      "hiddenBy": "FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT"
     },
     {
       "name": "Engineer",

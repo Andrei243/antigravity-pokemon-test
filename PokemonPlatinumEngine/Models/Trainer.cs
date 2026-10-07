@@ -23,5 +23,11 @@ public class Trainer
     /// <summary>The items the trainer can use in battle, by name (Platinum's: up to four, Potions to Full Restores).</summary>
     public List<string> Items { get; set; } = new();
 
+    /// <summary>
+    /// The team, prize money and mind were taken from Platinum's data (<c>trainers.json</c>), because the map wrote
+    /// only the trainer's id: a map written back out leaves them to the data again (<c>MapFile.FromMap</c>).
+    /// </summary>
+    public bool FromPlatinum { get; set; }
+
     public string FullTitle => $"{TrainerClass} {Name}";
 }

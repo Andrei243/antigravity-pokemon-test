@@ -148,6 +148,8 @@ public partial class GameEngine
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (player.Mode == TravelMode.Cycling && !currentMap.BikeAllowedAt(player.GridX, player.GridY)) player.SetCycling(false);
         fishing = null;
+        // A flute's tune lasts only while the player stays where it was played (field_map_change_flags.c)
+        encounterAids.ChangePlace();
         foreach (var (boulder, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
         slides.Clear();
         currentMap.ResetObstacles();
@@ -392,8 +394,20 @@ public partial class GameEngine
             runner.Abort();
         }
         RefreshPresence();
-        if (!runner.IsRunning) EndScript();
+        if (!runner.IsRunning)
+        {
+            EndScript();
+            // The tiles a step into a new place ended on are tried once that place's own script is done (OnStep)
+            if (triggerAfterEnter)
+            {
+                triggerAfterEnter = false;
+                if (currentState == GameState.Overworld) TryStepTrigger();
+            }
+        }
     }
+
+    /// <summary>A step came into a new place, whose script runs first: the trigger under the player waits for it.</summary>
+    private bool triggerAfterEnter;
 
     /// <summary>People a script set walking take their steps, and the player theirs or stands still. Also under text.</summary>
     private void AdvanceScriptedWalks(float dt)
@@ -655,7 +669,7 @@ public partial class GameEngine
 
         public BattleOutcome Outcome => game.scriptOutcome;
 
-        public void Open(ScriptScreen screen, NPC? subject)
+        public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
         {
             game.scriptAnswer = 0;
             switch (screen)
@@ -666,7 +680,9 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.Shop:
                     game.currentState = GameState.Shop;
-                    game.shopScreen.Open(game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY));
+                    // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
+                    game.shopScreen.Open(game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY),
+                        MartDatabase.Stock(counter ?? subject?.Mart, game.story.BadgeCount));
                     break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;

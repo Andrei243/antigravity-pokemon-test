@@ -1,0 +1,76 @@
+{
+  "area": "sunyshore_city",
+  "bgmTrack": "sinnoh/sunyshore",
+  "trees": "Round",
+  "architecture": "Seaside",
+  "doors": [
+    { "warp": 11, "map": "SunyshorePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 5, "map": "SunyshorePokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The gate house to Route 222 is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 3, "to": "route_222", "toWarp": 0 },
+    { "warp": 6, "to": "route_222", "toWarp": 1 }
+  ],
+  // The Gym, the Vista Lighthouse, Sunyshore Market and the houses have no rooms yet (plan 01 · M11, M9); two
+  // houses the original never used
+  "locked": [ 0, 1, 2, 4, 7, 8, 9, 10, 12, 13 ],
+  // Flint, who meets the player at the gate and sends them to find Volkner, and the rival, who comes running once the
+  // Gym is beaten (trigger 0), wait for the story (plan 02)
+  "people": {
+    // She is visiting from Johto. In Platinum she hands over the HM for Waterfall in the rival's scene after the
+    // Gym; the gift is plan 02's
+    "jasmine": {
+      "name": "Jasmine",
+      "npcType": "Lass",
+      "dialog": [
+        "A harbour, and a lighthouse keeping watch over the sea... This town feels just like my own, far away in Johto.",
+        "I came all the way to Sinnoh to grow stronger. I won't go home until I have."
+      ]
+    },
+    "sailor_1": {
+      "name": "Sailor",
+      "dialog": [
+        "See that great rock out in the water? Squint a little and it looks just like a Pokémon.",
+        "Sailors steer by it. Once it's in sight, you know you're nearly home."
+      ]
+    },
+    "pokefan_f": {
+      "name": "Pokéfan",
+      "dialog": [
+        "All the walkways in town are covered in solar panels. They drink in the sunshine all day long.",
+        "A city this bright needs a lot of power, and the sun gives us every bit of it!"
+      ]
+    },
+    "pokemon_breeder_f": {
+      "name": "Pokémon Breeder",
+      "dialog": [
+        "Sunyshore is one of the busiest ports in Sinnoh.",
+        "Ships from all over the world tie up here. You never know who, or what, will step ashore next!"
+      ]
+    },
+    "worker": {
+      "name": "Worker",
+      "dialog": [
+        "Our Gym Leader keeps rebuilding his Gym, and every time he switches it on, the lights go out all over town!",
+        "Those gears of his gobble up more power than the rest of Sunyshore put together."
+      ]
+    },
+    "sailor_2": {
+      "name": "Sailor",
+      "dialog": [
+        "This whole town stands on walkways, up over the rocks and the waves.",
+        "Felt strange when I first came ashore. But people and Pokémon get used to anything, given time."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Sunyshore City\nA bright harbour city, powered by the sun.",
+    "gym_signpost": "Sunyshore City Pokémon Gym\nLeader: Volkner\nThe strongest Gym Leader in Sinnoh, and the brightest spark in town!",
+    "signboard_vista_lighthouse": "Vista Lighthouse\nIts light guides every ship safely into Sunyshore.",
+    "signboard_sunyshore_market": "Sunyshore Market\nSomething new on sale every day of the week!",
+    "signboard_julias_house": "Julia's House\nDrop in any day: there's a warm welcome for trainers and their Pokémon.",
+    "signboard_pokemon_rock": "Pokémon Rock\nA rock out at sea in the shape of a Pokémon. Can you tell which?",
+    "signboard_blank": "Whatever this sign once said, the sun and the salt spray have bleached it away."
+  }
+}

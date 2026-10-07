@@ -135,6 +135,9 @@ public partial class GameEngine
 
     /// <summary>The Great Marsh's Safari Game, while one is on (plan 01 · M7; saved).</summary>
     private readonly SafariGame safari = new();
+
+    /// <summary>The Repel's steps and the flute played here (plan 06 · R11); the Repel's steps are saved.</summary>
+    private readonly EncounterAids encounterAids = new();
     private readonly PoketchView poketchView = new();
 
     private static string playerName => PlayerIdentity.Name;
@@ -218,6 +221,8 @@ public partial class GameEngine
         poketch.Clear();
         poketchView.Hide();
         safari.End();
+        encounterAids.RepelSteps = 0;
+        encounterAids.Flute = Flute.None;
         registeredItem = null;
         exitSpot = null;
         lastDay = null;
@@ -334,6 +339,8 @@ public partial class GameEngine
         poketchView.Hide();
         if (save.Safari is { } game) safari.Resume(game.Balls, game.Steps);
         else safari.End();
+        encounterAids.RepelSteps = Math.Max(0, save.RepelSteps);
+        encounterAids.Flute = Flute.None;
 
         playerParty.Clear();
         foreach (var pData in save.Party)
@@ -413,6 +420,7 @@ public partial class GameEngine
             Exit = exitSpot,
             LastDay = lastDay,
             RegisteredItem = registeredItem,
+            RepelSteps = encounterAids.RepelSteps,
             Poketch = poketch.Save(),
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             WorldVersion = SaveData.CurrentWorld,
@@ -768,7 +776,7 @@ public partial class GameEngine
 
         // Overworld Player Movement
         player.Moves = FieldMovement.MovesOf(playerParty);
-        player.Lead = WildLead.Of(playerParty);
+        player.Lead = WildLead.Of(playerParty, encounterAids);
         if (Steering is { } steer) player.Advance(dt, currentMap, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
         else player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
 
@@ -819,9 +827,18 @@ public partial class GameEngine
 
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
         if (safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
+        // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
+        if (encounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
 
-        // The story comes first: the script of the place walked into, then of the tiles stepped on; only then do trainers look
-        if (entered || TryStepTrigger()) return true;
+        // The story comes first: the script of the place walked into, then of the tiles stepped on; only then do trainers
+        // look. A step into a place onto a trigger does both, the place's first (as the original runs a map's own
+        // script as it loads, before its coordinate events): the trigger is tried once that script has ended
+        if (entered)
+        {
+            triggerAfterEnter = true;
+            return true;
+        }
+        if (TryStepTrigger()) return true;
         return CheckTrainerSight();
     }
 
@@ -1163,6 +1180,8 @@ public partial class GameEngine
             case StartMenuChoice.Bag:
                 currentState = GameState.BagMenu;
                 bagScreen.Registered = registeredItem;
+                bagScreen.Aids = encounterAids;
+                bagScreen.PlayerName = PlayerIdentity.Name;
                 bagScreen.Open();
                 break;
             case StartMenuChoice.Trainer:

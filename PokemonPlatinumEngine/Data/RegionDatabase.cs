@@ -115,12 +115,20 @@ public static class RegionDatabase
                 // Plan 01 · M7: the east and the sea
                 "RuinManiacCave", "LakeValor", "GreatMarsh", "TrophyGarden",
                 "IronIsland1F", "IronIslandB1FLeft", "IronIslandB1FRight", "IronIslandB2FRight", "IronIslandB2FLeft", "IronIslandB3F",
+                // Plan 01 · M8: Mt. Coronet's north and summit, Spear Pillar and Lake Acuity
+                "MtCoronet1FNorthRoom1", "MtCoronet1FNorthRoom2", "MtCoronet1FTunnelRoom", "MtCoronetB1F", "MtCoronet2F", "MtCoronet3F",
+                "MtCoronetOutsideSouth", "MtCoronetOutsideNorth", "MtCoronet4FRooms1And2", "MtCoronet4FRoom3", "MtCoronet5F", "MtCoronet6F",
+                "SpearPillar", "LakeAcuity",
+                // Plan 01 · M8: Victory Road
+                "VictoryRoad1F", "VictoryRoad2F", "VictoryRoadB1F",
                 // Rooms, still made by hand (plan 01 · M11)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",
-                "OreburghPokemonCenter", "OreburghPokeMart", "FloaromaPokemonCenter", "FloaromaPokeMart",
+                "OreburghPokemonCenter", "OreburghPokeMart", "OreburghGym", "FloaromaPokemonCenter", "FloaromaPokeMart",
                 "EternaPokemonCenter", "EternaPokeMart", "HearthomePokemonCenter", "HearthomePokeMart", "SolaceonPokemonCenter", "SolaceonPokeMart",
-                "VeilstonePokemonCenter", "PastoriaPokemonCenter", "PastoriaPokeMart", "CelesticPokemonCenter", "CanalavePokemonCenter", "CanalavePokeMart"
+                "VeilstonePokemonCenter", "PastoriaPokemonCenter", "PastoriaPokeMart", "CelesticPokemonCenter", "CanalavePokemonCenter", "CanalavePokeMart",
+                "SnowpointPokemonCenter", "SnowpointPokeMart",
+                "SunyshorePokemonCenter", "SunyshorePokeMart", "PokemonLeagueSouthPokemonCenter", "PokemonLeagueNorthPokemonCenter"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

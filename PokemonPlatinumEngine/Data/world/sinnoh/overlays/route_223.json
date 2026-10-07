@@ -1,0 +1,138 @@
+{
+  "area": "route_223",
+  "bgmTrack": "sinnoh/route210",
+  "trees": "Round",
+  // Jasmine stands on Sunyshore's side of the border, where its own overlay places her
+  "people": {
+    "swimmer_wesley": {
+      "name": "Wesley",
+      "trainer": {
+        "id": "swimmer_wesley",
+        "name": "Wesley",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Wesley: The sea on the way to the League is rough. Only the toughest swimmers make it this far!",
+        "dialogueAfter": "Swimmer Wesley: I'm tough. You're tougher."
+      }
+    },
+    "swimmer_ricardo": {
+      "name": "Ricardo",
+      "trainer": {
+        "id": "swimmer_ricardo",
+        "name": "Ricardo",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Ricardo: Mind where you surf! My Tentacruel's tentacles reach a long, long way!",
+        "dialogueAfter": "Swimmer Ricardo: All those tentacles, and not one of them could catch you."
+      }
+    },
+    "swimmer_francisco": {
+      "name": "Francisco",
+      "trainer": {
+        "id": "swimmer_francisco",
+        "name": "Francisco",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Francisco: My Golduck taught me how to swim. Now it's going to teach you a lesson!",
+        "dialogueAfter": "Swimmer Francisco: Looks like we're the ones who need more lessons."
+      }
+    },
+    "swimmer_colton": {
+      "name": "Colton",
+      "trainer": {
+        "id": "swimmer_colton",
+        "name": "Colton",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Colton: Out here, trouble comes from the sky and the sea at once. Can you watch both?",
+        "dialogueAfter": "Swimmer Colton: You kept your eyes open, all right."
+      }
+    },
+    "swimmer_troy": {
+      "name": "Troy",
+      "trainer": {
+        "id": "swimmer_troy",
+        "name": "Troy",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Troy: One Pokémon is all I need, as long as it's a Gyarados!",
+        "dialogueAfter": "Swimmer Troy: Maybe I need a second one after all."
+      }
+    },
+    "swimmer_oscar": {
+      "name": "Oscar",
+      "trainer": {
+        "id": "swimmer_oscar",
+        "name": "Oscar",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Oscar: Mantine and Remoraid swim side by side in these waters. My team and I do too!",
+        "dialogueAfter": "Swimmer Oscar: We'll swim off and lick our wounds together, then."
+      }
+    },
+    "swimmer_miranda": {
+      "name": "Miranda",
+      "trainer": {
+        "id": "swimmer_miranda",
+        "name": "Miranda",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Miranda: Lumineon's fins glow in deep water. Pretty, isn't it? It's pretty strong, too!",
+        "dialogueAfter": "Swimmer Miranda: Pretty, yes. Strong enough... not today."
+      }
+    },
+    "swimmer_aubree": {
+      "name": "Aubree",
+      "trainer": {
+        "id": "swimmer_aubree",
+        "name": "Aubree",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Aubree: Bibarel isn't fast, but it never, ever gets tired. We'll swim rings round you!",
+        "dialogueAfter": "Swimmer Aubree: You swam rings round us instead."
+      }
+    },
+    "swimmer_paige": {
+      "name": "Paige",
+      "trainer": {
+        "id": "swimmer_paige",
+        "name": "Paige",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Paige: The Pokémon League is just up the waterfall. Bet you can't get past me first!",
+        "dialogueAfter": "Swimmer Paige: Bet lost. Go on, then: the waterfall's that way."
+      }
+    },
+    "swimmer_crystal": {
+      "name": "Crystal",
+      "trainer": {
+        "id": "swimmer_crystal",
+        "name": "Crystal",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Crystal: The water out here is so clear I can see right to the bottom!",
+        "dialogueAfter": "Swimmer Crystal: And now I can see clearly that I've lost."
+      }
+    },
+    "swimmer_cassandra": {
+      "name": "Cassandra",
+      "trainer": {
+        "id": "swimmer_cassandra",
+        "name": "Cassandra",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Cassandra: Training on the open sea makes Pokémon stronger than any pool ever could!",
+        "dialogueAfter": "Swimmer Cassandra: Seems the open sea has made you stronger still."
+      }
+    },
+    "swimmer_gabrielle": {
+      "name": "Gabrielle",
+      "trainer": {
+        "id": "swimmer_gabrielle",
+        "name": "Gabrielle",
+        "trainerClass": "Swimmer",
+        "dialogueBefore": "Swimmer Gabrielle: Heading for the Pokémon League? You'll have to cross the sea first, and that means me!",
+        "dialogueAfter": "Swimmer Gabrielle: Good luck at the League. You'll need less of it than most."
+      }
+    },
+    "sailor_zachariah": {
+      "name": "Zachariah",
+      "trainer": {
+        "id": "sailor_zachariah",
+        "name": "Zachariah",
+        "trainerClass": "Sailor",
+        "dialogueBefore": "Sailor Zachariah: I've sailed every sea there is, and none has waves like these. Steady yourself!",
+        "dialogueAfter": "Sailor Zachariah: Knocked flat by someone riding on a Pokémon's back. Well, I never!"
+      }
+    }
+  }
+}

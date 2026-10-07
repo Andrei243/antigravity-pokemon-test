@@ -1152,7 +1152,8 @@ if (Run("menus"))
     foreach (var (item, count) in new[]
              {
                  ("Potion", 5), ("Super Potion", 2), ("Antidote", 3), ("Revive", 1), ("Rare Candy", 2), ("Fire Stone", 1), ("Poké Ball", 10),
-                 ("Great Ball", 3), ("Oran Berry", 4), ("Escape Rope", 2), ("Old Rod", 1), ("Town Map", 1), ("TM01", 1), ("Repel", 3)
+                 ("Great Ball", 3), ("Oran Berry", 4), ("Escape Rope", 2), ("Old Rod", 1), ("Town Map", 1), ("TM01", 1), ("Repel", 3),
+                ("Ether", 2), ("TM76", 1), ("HM06", 1)
              })
         if (ItemDatabase.Get(item) is { } data) inventory.AddItem(data, count);
     Set("currentState", GameState.BagMenu);
@@ -1167,7 +1168,38 @@ if (Run("menus"))
     bag.Confirm(inventory, party, engine.ShowNotification);
     Frames(30); Shot("22c_bag_use_on");
     bag.CancelTarget();
-    bag.MovePocket(2);
+
+    // The items of plan 06 · R11: TOSS and its "how many?", an Ether's choice of move, a TM's ABLE and NOT ABLE
+    void PickItem(string name)
+    {
+        var data = ItemDatabase.Get(name)!;
+        bag.CurrentPocket = data.Pocket;
+        bag.SelectedIndex = inventory.GetPocketItems(data.Pocket).FindIndex(st => st.Data.Name == name);
+    }
+    void ChooseAction(BagAction action)
+    {
+        bag.Confirm(inventory, party, engine.ShowNotification);
+        while (bag.Actions != null && bag.Actions[bag.ActionIndex] != action) bag.MoveCursor(1, bag.Actions.Count);
+        bag.Confirm(inventory, party, engine.ShowNotification);
+    }
+    PickItem("Potion");
+    ChooseAction(BagAction.Toss);
+    bag.MoveToss(1, 0, inventory.GetQuantity(ItemDatabase.Get("Potion")!));
+    bag.MoveToss(1, 0, inventory.GetQuantity(ItemDatabase.Get("Potion")!));
+    Frames(20); Shot("22g_bag_toss");
+    bag.Cancel();
+    party.Members[0].Moves[0].CurrentPP = 3;
+    PickItem("Ether");
+    ChooseAction(BagAction.Use);
+    bag.UseOnTarget(inventory, party, engine.ShowNotification, new EvolutionContext { Party = party, Bag = inventory });
+    Frames(20); Shot("22h_bag_ether_move");
+    bag.CancelMove();
+    bag.CancelTarget();
+    PickItem("TM76");
+    ChooseAction(BagAction.Use);
+    Frames(30); Shot("22i_bag_tm_able");
+    bag.CancelTarget();
+    PickItem("TM01");
     Frames(4); Shot("22d_bag_tm");
     bag.MovePocket(4);
     Frames(4); Shot("22e_bag_key_items");
@@ -1197,13 +1229,26 @@ if (Run("menus"))
     Set("currentState", GameState.Overworld);
     Set("currentState", GameState.Shop);
     var shop = (ShopScreen)Get("shopScreen");
-    shop.Open("Sandgem Poké Mart");
-    Frames(30); shop.Move(0, 1, 3000); shop.Move(0, 1, 3000);
-    Frames(2); Shot("29_shop");
+    // The counter's first question, the common stock with three badges, "how many?", then the bag's items to sell
+    shop.Open("Oreburgh Poké Mart", MartDatabase.Stock(null, 3));
+    Frames(30); Shot("29a_shop_question");
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    shop.Move(0, 1, 3000); shop.Move(0, 1, 3000);
+    Frames(12); Shot("29_shop");
     shop.Confirm(inventory, 3000, engine.ShowNotification);
     shop.Move(1, 0, 3000); shop.Move(1, 0, 3000);
     Frames(30); Shot("29b_shop_how_many");
     shop.Cancel();
+    shop.Cancel();
+    shop.Move(0, 1, 3000);
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    shop.Move(0, 1, 3000, inventory: inventory);
+    shop.Confirm(inventory, 3000, engine.ShowNotification);
+    Frames(30); Shot("29c_shop_sell");
+    shop.Close();
+    // A counter of a town's own goods
+    shop.Open("Veilstone Dept. Store", MartDatabase.Stock("veilstone_2f_mid", 0), ShopMode.Buying);
+    Frames(30); Shot("29d_shop_specialties");
     shop.Close();
     var boxed = (List<Pokemon>)Get("pcBoxStorage");
     foreach (var name in new[] { "Starly", "Bidoof", "Shinx", "Budew", "Kricketot", "Staravia", "Luxio", "Riolu", "Gible", "Prinplup" })
@@ -1225,10 +1270,21 @@ if (Run("menus"))
     mb.HUD.MenuState = BattleMenuState.SwitchPokemon;
     mb.HUD.SwitchMenuIndex = 1;
     Frames(2); Shot("23_battle_switch");
-    mb.HUD.MenuState = BattleMenuState.SelectBagItem;
-    mb.HUD.BagMenuIndex = 2;
-    Frames(2); Shot("24_battle_bag");
+    mb.HUD.MenuState = BattleMenuState.Main;
+    // The battle's bag (plan 06 · R11): its four pockets and the last item used, a pocket's items, who a Potion is
+    // for, and which move an Ether is for
+    mb.SelectMainMenuOption(1);
+    Frames(12); Shot("24_battle_bag");
     ShotCrop("24b_battle_bag_native", 40, 820, 1140, 230, 2);
+    mb.SelectBagPocket(0);
+    Frames(12); Shot("24c_battle_bag_items");
+    mb.SelectBagItem(mb.BagListed.ToList().FindIndex(st => st.Data.Name == "Potion"));
+    Frames(12); Shot("24d_battle_bag_target");
+    mb.BagBack(); mb.BagBack();
+    mb.SelectBagItem(mb.BagListed.ToList().FindIndex(st => st.Data.Name == "Ether"));
+    mb.SelectBagTarget(0);
+    Frames(12); Shot("24e_battle_bag_move");
+    mb.BagBack(); mb.BagBack(); mb.BagBack(); mb.BagBack();
     mb.HUD.MenuState = BattleMenuState.Main;
 
     // A trainer battle, for the row of balls under the foe's box and a long message
@@ -2390,7 +2446,18 @@ if (Run("world"))
         ("wd6_route212_puddles", "Sinnoh", 478, 838, Direction.Down), ("wd7_trophy_garden", "TrophyGarden", 14, 22, Direction.Up),
         ("wd8_route218", "Sinnoh", 93, 752, Direction.Left), ("wd9_canalave", "Sinnoh", 58, 724, Direction.Up),
         ("we0_canalave_bridge", "Sinnoh", 47, 725, Direction.Left), ("we1_iron_island", "Sinnoh", 100, 502, Direction.Right),
-        ("we2_iron_island_lift", "IronIslandB1FRight", 11, 20, Direction.Down), ("we3_route221", "Sinnoh", 272, 912, Direction.Up)
+        ("we2_iron_island_lift", "IronIslandB1FRight", 11, 20, Direction.Down), ("we3_route221", "Sinnoh", 272, 912, Direction.Up),
+        // The north and the end (plan 01 · M8): Route 211 and Mt. Coronet to its summit and Spear Pillar, Routes 216
+        // and 217 in the snow, Acuity Lakefront and Lake Acuity, Snowpoint City; Route 222, Sunyshore City, Route 223,
+        // Victory Road and the Pokémon League
+        ("wf0_route211_west", "Sinnoh", 367, 524, Direction.Up), ("wf1_route211_east", "Sinnoh", 428, 541, Direction.Up),
+        ("wf2_coronet_north", "MtCoronet1FNorthRoom1", 22, 27, Direction.Up), ("wf3_coronet_2f", "MtCoronet2F", 13, 61, Direction.Up),
+        ("wf4_coronet_summit", "MtCoronetOutsideNorth", 43, 45, Direction.Up), ("wf5_spear_pillar", "SpearPillar", 31, 49, Direction.Up),
+        ("wf6_route216", "Sinnoh", 337, 393, Direction.Up), ("wf7_route217", "Sinnoh", 314, 297, Direction.Up),
+        ("wf8_acuity_lakefront", "Sinnoh", 323, 236, Direction.Up), ("wf9_lake_acuity", "LakeAcuity", 16, 47, Direction.Up),
+        ("wg0_snowpoint", "Sinnoh", 363, 223, Direction.Up), ("wg1_route222", "Sinnoh", 769, 790, Direction.Up),
+        ("wg2_sunyshore", "Sinnoh", 856, 783, Direction.Up), ("wg3_route223", "Sinnoh", 844, 683, Direction.Up),
+        ("wg4_victory_road", "VictoryRoad1F", 28, 47, Direction.Up), ("wg5_pokemon_league", "Sinnoh", 848, 599, Direction.Up)
     };
     foreach (var (name, map, x, y, facing) in places)
     {
@@ -2411,6 +2478,8 @@ if (Run("world"))
     At("Sinnoh", 570, 660, Direction.Up); Frames(2); Shot("w77_solaceon_night");
     At("Sinnoh", 717, 613, Direction.Up); Frames(2); Shot("w78_veilstone_night");
     At("Sinnoh", 59, 731, Direction.Left); Frames(2); Shot("w79_canalave_night");
+    At("Sinnoh", 363, 223, Direction.Up); Frames(2); Shot("wg6_snowpoint_night");
+    At("Sinnoh", 856, 783, Direction.Up); Frames(2); Shot("wg7_sunyshore_night");
     // A cave's light ignores the clock: the same picture as by day
     At("OreburghGate1F", 8, 22, Direction.Right); Frames(2); Shot("w74_oreburgh_gate_night");
     engine.Settings.TimeOfDay = TimeOfDay.Day;
@@ -3110,6 +3179,9 @@ if (Run("story"))
 
     // ---- a clown of the Pokétch campaign: the question, the right answer, the coupon
     var sinnoh = MapDatabase.Get("Sinnoh");
+    // The campaign's first two clowns come out once the rival has had his parcel (plan 02 · S5)
+    story.Unset("FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2");
+    Frames(2);
     var clown = sinnoh.FindPerson("clown_1", "jubilife_city")!;
     At("Sinnoh", clown.GridX, clown.GridY + 1, Direction.Up);
     Talk(); Whole(); Next();
@@ -3472,6 +3544,196 @@ if (mode == "fieldmoves")
 // his briefcase, the first battle, the man in grey at Lake Verity, the Pokédex in the lab and the assistant's tour
 // of Sandgem Town. The scenes after the briefcase are started one by one where they play (the test project plays
 // the chapter through in order, OpeningTests). Not part of "all".
+// The second chapter's scenes (plan 02 · S5), in a game of its own, by its own scripts (not part of "all"): the
+// assistant and Looker in Jubilife City, the rival and his parcel at the Trainers' School, the Pokétch campaign and
+// the Pokétch, the rival on Route 203, the hiker's HM in Oreburgh Gate, the boy who takes the player to the Gym and
+// the rival at its door, Roark down the mine, the Gym and its Leader's battle and Badge, and Team Galactic at
+// Jubilife's north gate with the assistant battling beside the player.
+if (mode == "jubilife")
+{
+    engine.StartNewGame();
+    PastTheOpening();
+    Set("currentState", GameState.Overworld);
+    ((LocationSign)Get("locationSign")).Hide();
+    var story = (StoryState)Get("story");
+    var bag = (Inventory)Get("playerInventory");
+    var team = (Party)Get("playerParty");
+    var interact = T.GetMethod("TryInteract", Private)!;
+    var sinnoh = MapDatabase.Get("Sinnoh");
+    bag.AddItem(ItemDatabase.Get("Parcel")!, 1);
+    team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Torterra")!, 40));
+
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Frames(1);
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+    void ReadTo(string? text, int most = 1500)
+    {
+        for (int i = 0; i < most; i++)
+        {
+            if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+            if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 60) break;
+            if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
+            if (State() == GameState.Battle) { Win(); continue; }
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+    }
+    // A battle a scene starts, won: every foe brought down to 1 HP and struck
+    void Win()
+    {
+        var fight = (BattleEngine)Get("battle");
+        for (int guard = 0; guard < 200 && !fight.IsBattleOver; guard++)
+        {
+            if (fight.HUD.MenuState == BattleMenuState.Main)
+            {
+                foreach (var foe in fight.EnemyParty.Members) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                fight.SelectMainMenuOption(0);
+                fight.SelectMove(0);
+                if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
+            }
+            else Confirm(fight);
+            Skip(0.5);
+        }
+        Until(() => State() == GameState.Overworld, "the field again", 1500);
+        Frames(10);
+    }
+    // Reads on (yes to every question) until a scene's battle has begun
+    void IntoBattle(string what)
+    {
+        for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+        {
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
+        else Skip(1.0);
+    }
+    void StepOnto(int x, int y, Direction way)
+    {
+        var (dx, dy) = way switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+        bool fromAnotherMap = (Map)Get("currentMap") != sinnoh;
+        At("Sinnoh", x - dx, y - dy, way);
+        // Out of a room the game comes back by a door, which brings back whoever a script hid on the map before
+        // (and runs the place's own arrival script, which is let finish before the step it is waiting for)
+        if (fromAnotherMap)
+        {
+            T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
+            Frames(2);
+            Until(() => !engine.ScriptRunning, "the arrival's own script", 120);
+        }
+        engine.Steering = (way, false);
+        Until(() => engine.ScriptRunning, $"the scene at {x},{y}", 120);
+        engine.Steering = null;
+    }
+    void TalkTo(string map, string key, string? place = null)
+    {
+        var m = MapDatabase.Get(map);
+        var npc = m.NPCs.First(n => n.Key == key && (place == null || m.ScriptFileAt(n.GridX, n.GridY) == place));
+        At(map, npc.GridX, npc.GridY + 1, Direction.Up);
+        interact.Invoke(engine, null);
+    }
+
+    // Whatever the new game started (the bedroom's television) is read to its end first
+    Frames(5);
+    Console.WriteLine($"jubilife mode: script running {engine.ScriptRunning}, text {Box().IsActive}, state {State()}");
+    ReadTo(null, 600);
+
+    // ---- Jubilife City: the assistant comes to meet the player, and Looker
+    StepOnto(174, 796, Direction.Up);
+    Console.WriteLine($"first arrival: script running {engine.ScriptRunning}, at {((Player)Get("player")).GridX},{((Player)Get("player")).GridY}");
+    ReadTo("Welcome to Jubilife City"); Frames(10); Shot("j01_jubilife_the_assistant");
+    ReadTo("Surely the name"); Until(() => engine.Choice.IsOpen, "Looker's question"); Frames(20); Shot("j02_jubilife_looker");
+    ReadTo("Trainers' School."); Frames(10); Shot("j03_jubilife_the_school");
+    ReadTo(null);
+    Console.WriteLine($"jubilife: state {story.Var("VAR_JUBILIFE_CITY_STATE")}, Vs. Recorder {bag.GetQuantity(ItemDatabase.Get("Vs. Recorder")!)}");
+    StepOnto(188, 758, Direction.Right);
+    ReadTo("Trainers' School first"); Frames(10); Shot("j04_jubilife_looker_blocks");
+    ReadTo(null);
+
+    // ---- the Trainers' School: the parcel
+    At("TrainersSchool", 7, 10, Direction.Up); Frames(30); Shot("j05_trainers_school");
+    TalkTo("TrainersSchool", "rival");
+    ReadTo("Town Map!"); Frames(10); Shot("j06_school_the_parcel");
+    ReadTo(null);
+    Console.WriteLine($"school: parcel {bag.GetQuantity(ItemDatabase.Get("Parcel")!)}, campaign {story.Var("VAR_POKETCH_CAMPAIGN_STATE")}");
+
+    // ---- the campaign: the president stops the player; the coupons; the Pokétch
+    StepOnto(174, 776, Direction.Up);
+    ReadTo("Three clowns"); Frames(10); Shot("j07_jubilife_the_president");
+    ReadTo(null);
+    foreach (var (coupon, flag) in new[] { ("Coupon 1", "FLAG_RECEIVED_COUPON_1"), ("Coupon 2", "FLAG_RECEIVED_COUPON_2"), ("Coupon 3", "FLAG_RECEIVED_COUPON_3") })
+    {
+        bag.AddItem(ItemDatabase.Get(coupon)!, 1);
+        story.Set(flag);
+    }
+    TalkTo("Sinnoh", "poketch_co_president", "jubilife_city");
+    ReadTo("received a Pokétch"); Frames(10); Shot("j08_jubilife_the_poketch");
+    ReadTo(null);
+
+    // ---- Route 203: the rival
+    StepOnto(196, 757, Direction.Right);
+    ReadTo("slacking"); Frames(10); Shot("j09_route203_the_rival");
+    IntoBattle("the rival's battle");
+    var rivalFight = (BattleEngine)Get("battle");
+    ToMainMenu(rivalFight); Shot("j10_route203_the_battle");
+    ReadTo(null);
+
+    // ---- Oreburgh Gate: the hiker's HM
+    var hiker = MapDatabase.Get("OreburghGate1F").NPCs.First(n => n.Key == "hiker");
+    At("OreburghGate1F", hiker.GridX - 1, hiker.GridY + 2, Direction.Right);
+    engine.Steering = (Direction.Right, false);
+    Until(() => engine.ScriptRunning, "the hiker", 120);
+    engine.Steering = null;
+    ReadTo("you'll want this"); Frames(10); Shot("j11_oreburgh_gate_the_hiker");
+    ReadTo(null);
+
+    // ---- Oreburgh City: the boy, the rival at the Gym's door, Roark down the mine
+    StepOnto(266, 749, Direction.Right);
+    ReadTo("Follow me"); Frames(10); Shot("j12_oreburgh_the_boy");
+    ReadTo("someone at the door"); Frames(10); Shot("j13_oreburgh_the_gym");
+    ReadTo(null);
+    TalkTo("Sinnoh", "rival", "oreburgh_city");
+    ReadTo("Oreburgh Mine"); Frames(10); Shot("j14_oreburgh_the_rival_at_the_door");
+    ReadTo(null);
+    TalkTo("OreburghMineB2F", "roark");
+    ReadTo("Stand back and watch"); Frames(10); Shot("j15_mine_roark");
+    ReadTo("Rock Smash does it"); Frames(10); Shot("j16_mine_the_rock_smashed");
+    ReadTo(null);
+
+    // ---- the Gym: inside, its Leader, the Badge
+    At("OreburghGym", 5, 23, Direction.Up); Frames(40); Shot("j17_gym_inside");
+    At("OreburghGym", 5, 13, Direction.Up); Frames(30); Shot("j18_gym_the_rocks");
+    TalkTo("OreburghGym", "roark");
+    ReadTo("I'm Roark"); Frames(10); Shot("j19_gym_roark");
+    IntoBattle("Roark's battle");
+    var gymFight = (BattleEngine)Get("battle");
+    ToMainMenu(gymFight); Shot("j20_gym_the_battle");
+    ReadTo("received the Coal Badge"); Frames(10); Shot("j21_gym_the_coal_badge");
+    ReadTo(null);
+    Console.WriteLine($"gym: coal badge {story.HasBadge(Badge.Coal)}, TM76 {bag.GetQuantity(ItemDatabase.Get("TM76")!)}, jubilife {story.Var("VAR_JUBILIFE_CITY_STATE")}");
+
+    // ---- the way out: the rival; then Jubilife's north gate
+    StepOnto(262, 749, Direction.Left);
+    ReadTo("Eterna City"); Frames(10); Shot("j22_oreburgh_the_rival_on_the_way_out");
+    ReadTo(null);
+    StepOnto(174, 743, Direction.Up);
+    ReadTo("teach them some manners"); Frames(10); Shot("j23_jubilife_team_galactic");
+    IntoBattle("the tag battle");
+    var tag = (BattleEngine)Get("battle");
+    ToMainMenu(tag); Shot("j24_jubilife_the_tag_battle");
+    ReadTo("You two are a good team"); Frames(10); Shot("j25_jubilife_the_professor");
+    ReadTo(null);
+    Console.WriteLine($"north gate: jubilife {story.Var("VAR_JUBILIFE_CITY_STATE")}, grunts gone {story.Has("FLAG_HIDE_JUBILIFE_GALACTIC_GRUNTS")}");
+}
+
 if (mode == "opening")
 {
     engine.StartNewGame();

@@ -203,6 +203,37 @@ internal static class ArtLook
         };
     }
 
+    /// <summary>
+    /// The light in snow country (style guide, the areas' table: a low sun and cold grading), laid over the hour's
+    /// rig: the sun lower, dimmer and cooler, more light bounced up off the snow, colder fog and grading, and bloom
+    /// only on what is brighter than the snow, which would otherwise glow to a blank by day.
+    /// </summary>
+    public static LightRig Snowbound(LightRig rig)
+    {
+        var sun = rig.Light.SunDirection;
+        var low = Vector3.Normalize(new Vector3(sun.X, sun.Y * 0.7f, sun.Z));
+        return rig with
+        {
+            Light = rig.Light with
+            {
+                SunDirection = low,
+                SunColor = rig.Light.SunColor * 0.74f * V(0.92f, 0.97f, 1.08f),
+                SkyAmbient = rig.Light.SkyAmbient * V(0.94f, 0.98f, 1.06f),
+                GroundAmbient = rig.Light.GroundAmbient * 1.15f
+            },
+            FogColor = Vector3.Lerp(rig.FogColor, V(0.8f, 0.86f, 0.96f), 0.5f),
+            Post = rig.Post with
+            {
+                Saturation = rig.Post.Saturation * 0.9f,
+                Contrast = rig.Post.Contrast * 1.04f,
+                BloomThreshold = MathF.Max(rig.Post.BloomThreshold, 0.95f),
+                BloomStrength = rig.Post.BloomStrength * 0.5f,
+                HighlightTint = V(0.98f, 1.0f, 1.06f),
+                ShadowTint = V(0.86f, 0.92f, 1.18f)
+            }
+        };
+    }
+
     public static LightRig BattleRig(float hour) => AtHour(hour, BattleRigFor);
 
     // ------------------------------------------------------------------ field (HD-2D)

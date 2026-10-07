@@ -143,9 +143,9 @@ public class BattleCoreTests
             else switch (turn++ % 7)
             {
                 case 1 when bench >= 0: battle.SelectSwitch(bench); break;
-                case 2: battle.SelectBagItem(2); break;
+                case 2: battle.UseBagItem("Potion"); break;
                 case 3: battle.SelectMove(2); break;
-                case 4: battle.SelectBagItem(0); break;
+                case 4: battle.UseBagItem("Poké Ball"); break;
                 case 5: battle.SelectMove(1); break;
                 case 6: battle.SelectMainMenuOption(3); break;
                 default: battle.SelectMove(0); break;

@@ -1,0 +1,97 @@
+{
+  "key": "sunyshore_city",
+  "index": 150,
+  "name": "Sunyshore City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "SlightlyZoomedOut",
+  "battleBackground": "City",
+  "dayMusic": "CITY08_D",
+  "nightMusic": "CITY08_N",
+  "encounters": "sunyshore_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 30, "maxLevel": 40 },
+    { "species": "Wingull", "level": 30, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 50 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 50 },
+    { "species": "Pelipper", "level": 30, "maxLevel": 50 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Remoraid", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Octillery", "level": 30, "maxLevel": 40 },
+    { "species": "Staryu", "level": 20, "maxLevel": 50 },
+    { "species": "Octillery", "level": 40, "maxLevel": 55 },
+    { "species": "Octillery", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 849, "z": 762, "to": "sunyshore_market", "toWarp": 0 },
+    { "x": 883, "z": 743, "to": "sunyshore_city_northeast_house", "toWarp": 0 },
+    { "x": 845, "z": 768, "to": "sunyshore_city_west_house", "toWarp": 0 },
+    { "x": 832, "z": 790, "to": "route_222_gate_to_sunyshore_city", "toWarp": 1 },
+    { "x": 875, "z": 743, "to": "sunyshore_city_northwest_house", "toWarp": 0 },
+    { "x": 853, "z": 768, "to": "sunyshore_city_mart", "toWarp": 0 },
+    { "x": 832, "z": 791, "to": "route_222_gate_to_sunyshore_city", "toWarp": 1 },
+    { "x": 832, "z": 751, "to": "unused_sunyshore_city_house_1", "toWarp": 0 },
+    { "x": 832, "z": 750, "to": "unused_sunyshore_city_house_2", "toWarp": 0 },
+    { "x": 888, "z": 771, "to": "sunyshore_city_east_house", "toWarp": 0 },
+    { "x": 886, "z": 790, "to": "vista_lighthouse_elevator", "toWarp": 0 },
+    { "x": 860, "z": 784, "to": "sunyshore_city_pokecenter_1f", "toWarp": 0 },
+    { "x": 845, "z": 747, "to": "sunyshore_city_gym_room_1", "toWarp": 0 },
+    { "x": 850, "z": 762, "to": "sunyshore_market", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor_1", "looks": "sailor", "movement": "wander_around", "x": 883, "z": 770, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 7, "script": "4" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "wander_around", "x": 856, "z": 782, "facing": 1, "rangeX": 0, "rangeZ": 2, "y": 7, "script": "6" },
+    { "id": "pokemon_breeder_f", "looks": "pokemon_breeder_f", "movement": "wander_around", "x": 848, "z": 785, "facing": 3, "rangeX": 4, "rangeZ": 0, "y": 7, "script": "7" },
+    { "id": "worker", "looks": "worker", "movement": "wander_west_and_east", "x": 881, "z": 793, "facing": 1, "rangeX": 1, "rangeZ": 0, "y": 7, "script": "5" },
+    { "id": "signboard_sunyshore_market", "looks": "signboard", "movement": "none", "x": 848, "z": 763, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "13" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 841, "z": 788, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "10" },
+    { "id": "gym_signpost", "looks": "gym_signpost", "movement": "none", "x": 847, "z": 748, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "sailor_2", "looks": "sailor", "movement": "wander_around", "x": 854, "z": 754, "facing": 1, "rangeX": 0, "rangeZ": 5, "y": 7, "script": "3" },
+    { "id": "signboard_vista_lighthouse", "looks": "signboard", "movement": "none", "x": 882, "z": 790, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "12" },
+    { "id": "jasmine", "looks": "jasmine", "movement": "look_east", "x": 857, "z": 741, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "vent_1", "looks": "vent", "movement": "none", "x": 853, "z": 751, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_2", "looks": "vent", "movement": "none", "x": 853, "z": 745, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_3", "looks": "vent", "movement": "none", "x": 853, "z": 755, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "signboard_julias_house", "looks": "signboard", "movement": "none", "x": 885, "z": 744, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "14" },
+    { "id": "signboard_pokemon_rock", "looks": "signboard", "movement": "none", "x": 885, "z": 770, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "16" },
+    { "id": "signboard_blank", "looks": "signboard", "movement": "none", "x": 858, "z": 759, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "15" },
+    { "id": "vent_4", "looks": "vent", "movement": "none", "x": 884, "z": 794, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "item_thunderstone", "looks": "pokeball", "movement": "none", "x": 881, "z": 779, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SUNYSHORE_CITY_THUNDERSTONE", "item": "Thunder Stone", "script": "7177" },
+    { "id": "flint", "looks": "flint", "movement": "look_south", "x": 845, "z": 748, "facing": 1, "rangeX": 4, "rangeZ": 0, "y": 7, "hiddenBy": "FLAG_HIDE_SUNYSHORE_CITY_FLINT", "script": "18" },
+    { "id": "vent_5", "looks": "vent", "movement": "none", "x": 878, "z": 794, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "rival", "looks": "barry", "movement": "look_north", "x": 855, "z": 747, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SUNYSHORE_CITY_RIVAL", "script": "0" }
+  ],
+  "signs": [
+    { "x": 855, "z": 759, "type": 2, "script": "8111", "item": "Carbos", "flag": "FLAG_OBTAINED_HIDDEN_SUNYSHORE_CITY_CARBOS", "range": 2 },
+    { "x": 889, "z": 792, "type": 2, "script": "8110", "item": "Zap Plate", "flag": "FLAG_OBTAINED_HIDDEN_SUNYSHORE_CITY_ZAP_PLATE", "range": 0 }
+  ],
+  "triggers": [
+    { "x": 853, "z": 743, "width": 5, "depth": 1, "script": "8", "variable": "VAR_SUNYSHORE_CITY_STATE", "value": "2" }
+  ]
+}

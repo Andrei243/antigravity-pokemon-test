@@ -1,0 +1,57 @@
+{
+  "key": "mt_coronet_outside_south",
+  "index": 211,
+  "name": "Mt. Coronet",
+  "matrix": 13,
+  "kind": "Outdoors",
+  "sign": "Cave",
+  "weather": "HeavySnow",
+  "camera": "MtCoronetExtSouth",
+  "battleBackground": "Snow",
+  "dayMusic": "D_MOUNT1",
+  "nightMusic": "D_MOUNT1",
+  "encounters": "mt_coronet_outside_south",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Snover", "level": 36 },
+    { "species": "Abomasnow", "level": 38 },
+    { "species": "Medicham", "level": 38 },
+    { "species": "Abomasnow", "level": 39 },
+    { "species": "Machoke", "level": 40 },
+    { "species": "Medicham", "level": 40 },
+    { "species": "Chingling", "level": 37 },
+    { "species": "Nosepass", "level": 38 },
+    { "species": "Absol", "level": 38 },
+    { "species": "Chingling", "level": 39 },
+    { "species": "Absol", "level": 40 },
+    { "species": "Chingling", "level": 39 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 12, "z": 35, "to": "mt_coronet_3f", "toWarp": 2 },
+    { "x": 11, "z": 17, "to": "mt_coronet_4f_rooms_1_and_2", "toWarp": 0 },
+    { "x": 39, "z": 18, "to": "mt_coronet_4f_rooms_1_and_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 13, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 42, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 43, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 45, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "rock_smash_5", "looks": "rock_smash", "movement": "none", "x": 45, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10001" },
+    { "id": "rock_smash_6", "looks": "rock_smash", "movement": "none", "x": 42, "z": 0, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10001" },
+    { "id": "rock_smash_7", "looks": "rock_smash", "movement": "none", "x": 47, "z": 0, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_7", "script": "10001" },
+    { "id": "strength_boulder", "looks": "strength_boulder", "movement": "none", "x": 25, "z": 29, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10002" }
+  ],
+  "signs": [
+    { "x": 41, "z": 7, "type": 2, "script": "8084", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_OUTSIDE_STAR_PIECE_1", "range": 2 },
+    { "x": 44, "z": 10, "type": 2, "script": "8092", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_OUTSIDE_STAR_PIECE_2", "range": 2 },
+    { "x": 13, "z": 29, "type": 2, "script": "8089", "item": "Blue Shard", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_OUTSIDE_SOUTH_BLUE_SHARD", "range": 2 },
+    { "x": 31, "z": 33, "type": 2, "script": "8090", "item": "Max Potion", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_OUTSIDE_SOUTH_MAX_POTION", "range": 2 },
+    { "x": 15, "z": 22, "type": 2, "script": "8260", "item": "Revival Herb", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_OUTSIDE_SOUTH_REVIVAL_HERB", "range": 2 },
+    { "x": 34, "z": 13, "type": 2, "script": "8269", "item": "Energy Root", "flag": "FLAG_OBTAINED_HIDDEN_MT_CORONET_OUTSIDE_SOUTH_ENERGY_ROOT", "range": 2 }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,49 @@
+{
+  "key": "acuity_lakefront",
+  "index": 340,
+  "name": "Acuity Lakefront",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "AcuityLakefront",
+  "camera": "Default",
+  "battleBackground": "Snow",
+  "dayMusic": "ROAD_SNOW_D",
+  "nightMusic": "ROAD_SNOW_N",
+  "encounters": "acuity_lakefront",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Snover", "level": 33 },
+    { "species": "Swinub", "level": 32 },
+    { "species": "Sneasel", "level": 33 },
+    { "species": "Snover", "level": 32 },
+    { "species": "Sneasel", "level": 35 },
+    { "species": "Swinub", "level": 34 },
+    { "species": "Snover", "level": 34 },
+    { "species": "Swinub", "level": 32 },
+    { "species": "Sneasel", "level": 35 },
+    { "species": "Snover", "level": 35 },
+    { "species": "Sneasel", "level": 35 },
+    { "species": "Snover", "level": 35 }
+  ],
+  "landRate": 30,
+  "warps": [
+    { "x": 308, "z": 229, "to": "lake_acuity_low_water", "toWarp": 0 },
+    { "x": 309, "z": 229, "to": "lake_acuity_low_water", "toWarp": 1 },
+    { "x": 308, "z": 229, "to": "lake_acuity", "toWarp": 3 },
+    { "x": 309, "z": 229, "to": "lake_acuity", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 340, "z": 230, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ACUITY_LAKEFRONT_ULTRA_BALL", "item": "Ultra Ball", "script": "7163" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 309, "z": 242, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "rival", "looks": "barry", "movement": "look_south", "x": 310, "z": 237, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL", "script": "0" },
+    { "id": "item_reaper_cloth", "looks": "pokeball", "movement": "none", "x": 323, "z": 235, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ACUITY_LAKEFRONT_REAPER_CLOTH", "item": "Reaper Cloth", "script": "7309" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 310, "z": 244, "width": 2, "depth": 1, "script": "4", "variable": "VAR_ACUITY_LAKEFRONT_STATE", "value": "0" }
+  ]
+}

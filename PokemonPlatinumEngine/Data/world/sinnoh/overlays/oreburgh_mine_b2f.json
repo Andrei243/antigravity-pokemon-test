@@ -2,6 +2,8 @@
   "area": "oreburgh_mine_b2f",
   "bgmTrack": "sinnoh/mine",
   "people": {
+    // Roark at work, until he goes back to his Gym (plan 02 · S5, scripts/oreburgh_mine_b2f.txt)
+    "roark": { "name": "Roark", "script": "Roark" },
     "worker": {
       "name": "Worker",
       "dialog": [
