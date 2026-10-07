@@ -501,4 +501,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Gigantamax Garbodor (its build in PokemonModels.Unova2.cs)
 
     private static PokeBuilder GarbodorGmax() => GarbodorBuild(true);
+
+    // ------------------------------------------------------------------ Gigantamax Melmetal (its build in PokemonModels.Alola3.cs)
+
+    private static PokeBuilder MelmetalGmax() => MelmetalBuild(true);
 }

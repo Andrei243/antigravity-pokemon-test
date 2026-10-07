@@ -623,7 +623,11 @@ internal static partial class PokemonModels
         // Alola's second batch, Bounsweet to Kommo-o
         "Bounsweet", "Steenee", "Tsareena", "Comfey", "Oranguru", "Passimian", "Wimpod", "Golisopod", "Sandygast", "Palossand",
         "Pyukumuku", "Type: Null", "Silvally", "Minior", "Komala", "Turtonator", "Togedemaru", "Mimikyu", "Bruxish", "Drampa", "Dhelmise",
-        "Jangmo-o", "Hakamo-o", "Kommo-o"
+        "Jangmo-o", "Hakamo-o", "Kommo-o",
+        // Alola's third batch, Tapu Koko to Melmetal
+        "Tapu Koko", "Tapu Lele", "Tapu Bulu", "Tapu Fini", "Cosmog", "Cosmoem", "Solgaleo", "Lunala", "Nihilego", "Buzzwole", "Pheromosa",
+        "Xurkitree", "Celesteela", "Kartana", "Guzzlord", "Necrozma", "Magearna", "Marshadow", "Poipole", "Naganadel", "Stakataka",
+        "Blacephalon", "Zeraora", "Meltan", "Melmetal"
     };
 
     /// <summary>
@@ -664,6 +668,7 @@ internal static partial class PokemonModels
         "Gourgeist-Large", "Gourgeist-Super", "Avalugg-Hisui", "Xerneas-Active", "Zygarde-10", "Zygarde-Complete", "Hoopa-Unbound",
         "Decidueye-Hisui", "Oricorio-Pom-Pom", "Oricorio-Pau", "Oricorio-Sensu", "Lycanroc-Midnight", "Lycanroc-Dusk",
         "Wishiwashi-School", "Silvally-Fighting", "Silvally-Flying", "Silvally-Poison", "Silvally-Ground", "Silvally-Rock", "Silvally-Bug", "Silvally-Ghost", "Silvally-Steel", "Silvally-Fire", "Silvally-Water", "Silvally-Grass", "Silvally-Electric", "Silvally-Psychic", "Silvally-Ice", "Silvally-Dragon", "Silvally-Dark", "Silvally-Fairy", "Minior-Red", "Minior-Orange", "Minior-Yellow", "Minior-Green", "Minior-Blue", "Minior-Indigo", "Minior-Violet", "Mimikyu-Busted",
+        "Necrozma-Dusk", "Necrozma-Dawn", "Necrozma-Ultra", "Magearna-Original",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -672,9 +677,11 @@ internal static partial class PokemonModels
         "Rayquaza-Mega", "Staraptor-Mega", "Lopunny-Mega",
         "Garchomp-Mega", "Garchomp-Mega-Z", "Lucario-Mega", "Lucario-Mega-Z", "Abomasnow-Mega", "Gallade-Mega", "Froslass-Mega", "Emboar-Mega", "Excadrill-Mega", "Audino-Mega", "Scolipede-Mega", "Scrafty-Mega", "Eelektross-Mega", "Chandelure-Mega", "Golurk-Mega",
         "Chesnaught-Mega", "Delphox-Mega", "Greninja-Mega", "Pyroar-Mega", "Floette-Mega", "Meowstic-Male-Mega", "Meowstic-Female-Mega",
-        "Malamar-Mega", "Barbaracle-Mega", "Dragalge-Mega", "Hawlucha-Mega", "Zygarde-Mega", "Diancie-Mega", "Crabominable-Mega", "Golisopod-Mega", "Drampa-Mega",
+        "Malamar-Mega", "Barbaracle-Mega", "Dragalge-Mega", "Hawlucha-Mega", "Zygarde-Mega", "Diancie-Mega", "Crabominable-Mega", "Golisopod-Mega", "Drampa-Mega", "Magearna-Mega", "Magearna-Original-Mega",
+        "Zeraora-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
+        "Melmetal-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
         "Pikachu-Cosplay", "Pichu-Spiky-Eared"
@@ -1561,6 +1568,31 @@ internal static partial class PokemonModels
         "JANGMO-O" => Jangmoo(),
         "HAKAMO-O" => Hakamoo(),
         "KOMMO-O" => Kommoo(),
+        "TAPU KOKO" => TapuKoko(),
+        "TAPU LELE" => TapuLele(),
+        "TAPU BULU" => TapuBulu(),
+        "TAPU FINI" => TapuFini(),
+        "COSMOG" => Cosmog(),
+        "COSMOEM" => Cosmoem(),
+        "SOLGALEO" => Solgaleo(),
+        "LUNALA" => Lunala(),
+        "NIHILEGO" => Nihilego(),
+        "BUZZWOLE" => Buzzwole(),
+        "PHEROMOSA" => Pheromosa(),
+        "XURKITREE" => Xurkitree(),
+        "CELESTEELA" => Celesteela(),
+        "KARTANA" => Kartana(),
+        "GUZZLORD" => Guzzlord(),
+        "NECROZMA" => Necrozma(),
+        "MAGEARNA" => Magearna(),
+        "MARSHADOW" => Marshadow(),
+        "POIPOLE" => Poipole(),
+        "NAGANADEL" => Naganadel(),
+        "STAKATAKA" => Stakataka(),
+        "BLACEPHALON" => Blacephalon(),
+        "ZERAORA" => Zeraora(),
+        "MELTAN" => Meltan(),
+        "MELMETAL" => Melmetal(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1704,6 +1736,10 @@ internal static partial class PokemonModels
         var silvally when silvally.StartsWith("SILVALLY-") && SilvallyForm(silvally) != null => SilvallyForm(silvally)!,
         var minior when minior.StartsWith("MINIOR-") && MiniorForm(minior) != null => MiniorForm(minior)!,
         "MIMIKYU-BUSTED" => MimikyuBusted(),
+        "NECROZMA-DUSK" => NecrozmaDusk(),
+        "NECROZMA-DAWN" => NecrozmaDawn(),
+        "NECROZMA-ULTRA" => NecrozmaUltra(),
+        "MAGEARNA-ORIGINAL" => MagearnaOriginal(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
@@ -1792,6 +1828,9 @@ internal static partial class PokemonModels
         "CRABOMINABLE-MEGA" => CrabominableMega(),
         "GOLISOPOD-MEGA" => GolisopodMega(),
         "DRAMPA-MEGA" => DrampaMega(),
+        "MAGEARNA-MEGA" => MagearnaMega(),
+        "MAGEARNA-ORIGINAL-MEGA" => MagearnaOriginalMega(),
+        "ZERAORA-MEGA" => ZeraoraMega(),
         // Gigantamax (PokemonModels.Gigantamax.cs), and Pikachu's caps and costumes and the spiky-eared Pichu (PokemonModels.Pikachu.cs)
         "VENUSAUR-GMAX" => VenusaurGmax(),
         "CHARIZARD-GMAX" => CharizardGmax(),
@@ -1806,6 +1845,7 @@ internal static partial class PokemonModels
         "EEVEE-GMAX" => EeveeGmax(),
         "SNORLAX-GMAX" => SnorlaxGmax(),
         "GARBODOR-GMAX" => GarbodorGmax(),
+        "MELMETAL-GMAX" => MelmetalGmax(),
         "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A form that looks just like another form of its species shows that form's sculpt

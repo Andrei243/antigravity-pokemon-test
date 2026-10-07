@@ -1785,4 +1785,12 @@ internal static partial class PokemonModels
     private static PokeBuilder GolisopodMega() => GolisopodBuild(true);
 
     private static PokeBuilder DrampaMega() => DrampaBuild(true);
+
+    // ------------------------------------------------------------------ Alola's third batch's Megas (their builds in PokemonModels.Alola3.cs)
+
+    private static PokeBuilder MagearnaMega() => MagearnaBuild(false, true);
+
+    private static PokeBuilder MagearnaOriginalMega() => MagearnaBuild(true, true);
+
+    private static PokeBuilder ZeraoraMega() => ZeraoraBuild(true);
 }

@@ -736,7 +736,11 @@ public class PokemonTests
             // Alola's second batch, Bounsweet to Kommo-o
             "Bounsweet", "Steenee", "Tsareena", "Comfey", "Oranguru", "Passimian", "Wimpod", "Golisopod", "Sandygast", "Palossand",
             "Pyukumuku", "Type: Null", "Silvally", "Minior", "Komala", "Turtonator", "Togedemaru", "Mimikyu", "Bruxish", "Drampa", "Dhelmise",
-            "Jangmo-o", "Hakamo-o", "Kommo-o"
+            "Jangmo-o", "Hakamo-o", "Kommo-o",
+            // Alola's third batch, Tapu Koko to Melmetal
+            "Tapu Koko", "Tapu Lele", "Tapu Bulu", "Tapu Fini", "Cosmog", "Cosmoem", "Solgaleo", "Lunala", "Nihilego", "Buzzwole", "Pheromosa",
+            "Xurkitree", "Celesteela", "Kartana", "Guzzlord", "Necrozma", "Magearna", "Marshadow", "Poipole", "Naganadel", "Stakataka",
+            "Blacephalon", "Zeraora", "Meltan", "Melmetal"
         };
         Assert.All(handBuilt, n => Assert.True(PokemonPlatinumEngine.Graphics.PokemonModels.HasModel(n), n));
         Assert.All(handBuilt, n => Assert.NotNull(PokemonDatabase.Get(n)));
