@@ -642,7 +642,12 @@ internal static partial class PokemonModels
         "Runerigus", "Milcery", "Alcremie", "Falinks", "Pincurchin", "Snom", "Frosmoth", "Stonjourner", "Eiscue", "Indeedee", "Morpeko",
         // Galar's last batch, Cufant to Calyrex
         "Cufant", "Copperajah", "Dracozolt", "Arctozolt", "Dracovish", "Arctovish", "Duraludon", "Dreepy", "Drakloak", "Dragapult", "Zacian",
-        "Zamazenta", "Eternatus", "Kubfu", "Urshifu", "Zarude", "Regieleki", "Regidrago", "Glastrier", "Spectrier", "Calyrex"
+        "Zamazenta", "Eternatus", "Kubfu", "Urshifu", "Zarude", "Regieleki", "Regidrago", "Glastrier", "Spectrier", "Calyrex",
+        // The seven first met in Hisui, Wyrdeer to Enamorus
+        "Wyrdeer", "Kleavor", "Ursaluna", "Basculegion", "Sneasler", "Overqwil", "Enamorus",
+        // Paldea's first batch, Sprigatito to Pawmot
+        "Sprigatito", "Floragato", "Meowscarada", "Fuecoco", "Crocalor", "Skeledirge", "Quaxly", "Quaxwell", "Quaquaval", "Lechonk", "Oinkologne",
+        "Tarountula", "Spidops", "Nymble", "Lokix", "Pawmi", "Pawmo", "Pawmot"
     };
 
     /// <summary>
@@ -706,6 +711,7 @@ internal static partial class PokemonModels
         "Alcremie-Rainbow-Swirl-Flower-Sweet", "Alcremie-Rainbow-Swirl-Ribbon-Sweet",
         "Eiscue-Noice", "Indeedee-Female", "Morpeko-Hangry",
         "Zacian-Crowned", "Zamazenta-Crowned", "Eternatus-Eternamax", "Urshifu-Rapid-Strike", "Zarude-Dada", "Calyrex-Ice", "Calyrex-Shadow",
+        "Ursaluna-Bloodmoon", "Basculegion-Female", "Enamorus-Therian", "Oinkologne-Female",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -1731,6 +1737,31 @@ internal static partial class PokemonModels
         "GLASTRIER" => Glastrier(),
         "SPECTRIER" => Spectrier(),
         "CALYREX" => Calyrex(),
+        "WYRDEER" => Wyrdeer(),
+        "KLEAVOR" => Kleavor(),
+        "URSALUNA" => Ursaluna(),
+        "BASCULEGION" => Basculegion(),
+        "SNEASLER" => Sneasler(),
+        "OVERQWIL" => Overqwil(),
+        "ENAMORUS" => Enamorus(),
+        "SPRIGATITO" => Sprigatito(),
+        "FLORAGATO" => Floragato(),
+        "MEOWSCARADA" => Meowscarada(),
+        "FUECOCO" => Fuecoco(),
+        "CROCALOR" => Crocalor(),
+        "SKELEDIRGE" => Skeledirge(),
+        "QUAXLY" => Quaxly(),
+        "QUAXWELL" => Quaxwell(),
+        "QUAQUAVAL" => Quaquaval(),
+        "LECHONK" => Lechonk(),
+        "OINKOLOGNE" => Oinkologne(),
+        "TAROUNTULA" => Tarountula(),
+        "SPIDOPS" => Spidops(),
+        "NYMBLE" => Nymble(),
+        "LOKIX" => Lokix(),
+        "PAWMI" => Pawmi(),
+        "PAWMO" => Pawmo(),
+        "PAWMOT" => Pawmot(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1894,6 +1925,10 @@ internal static partial class PokemonModels
         "ZARUDE-DADA" => ZarudeDada(),
         "CALYREX-ICE" => CalyrexIce(),
         "CALYREX-SHADOW" => CalyrexShadow(),
+        "URSALUNA-BLOODMOON" => UrsalunaBloodmoon(),
+        "BASCULEGION-FEMALE" => BasculegionFemale(),
+        "ENAMORUS-THERIAN" => EnamorusTherian(),
+        "OINKOLOGNE-FEMALE" => OinkologneFemale(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
