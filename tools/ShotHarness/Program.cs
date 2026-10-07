@@ -3808,7 +3808,8 @@ if (mode == "windworks")
         {
             if (fight.HUD.MenuState == BattleMenuState.Main)
             {
-                foreach (var foe in fight.EnemyParty.Members) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                // A wild battle has no team of the foe's: its Pokémon are the ones on the field
+                foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                 foreach (var wild in fight.Core.EnemySlots.Where(b => b.Pokemon != null)) wild.Pokemon!.CurrentHP = Math.Min(wild.Pokemon.CurrentHP, 1);
                 fight.SelectMainMenuOption(0);
                 fight.SelectMove(0);
