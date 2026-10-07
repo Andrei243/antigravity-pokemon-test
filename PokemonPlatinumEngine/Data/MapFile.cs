@@ -476,7 +476,10 @@ public static class TileCodes
         (TileType.CaveWall, 'X'),
         (TileType.CaveMouth, 'M'),
         (TileType.ForestMouth, 'E'),
-        (TileType.Puddle, 'p')
+        (TileType.Puddle, 'p'),
+        (TileType.Void, 'V'),
+        (TileType.DistortionGround, 'd'),
+        (TileType.DistortionSlab, 'Q')
     };
 
     public static char CodeOf(TileType type)

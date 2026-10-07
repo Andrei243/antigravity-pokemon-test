@@ -48,7 +48,74 @@ public sealed class WorldWriter
 
         file.Heights = land.Heights.Plates.Select(ToPlate).ToList();
         file.Props = land.Props.Select(ToProp).ToList();
+        AddFloatingFloors(file, landId);
         return file;
+    }
+
+    private Dictionary<int, List<(int X, int Z, DistortionWorld.Floor Floor, int FloorX, int FloorZ)>>? floating;
+
+    /// <summary>
+    /// The floors the Distortion World floats over a map's own ground (<see cref="DistortionWorld"/>: B2F's upper
+    /// stones) are written into the chunks under them: where the chunk is blocked and the floor is open, the tile is the
+    /// floor's, its behaviour and blocked flag, at the floor's height, a plate of its own for each run of such tiles
+    /// along a row. The original keeps them apart and walks them as another level of the same map; so does the game.
+    /// </summary>
+    private void AddFloatingFloors(WorldChunkFile file, int landId)
+    {
+        if (floating == null)
+        {
+            floating = new();
+            foreach (var (index, floors) in decomp.Distortion?.Floors ?? new Dictionary<int, List<DistortionWorld.Floor>>())
+            {
+                if (decomp.Headers.Values.FirstOrDefault(h => h.Index == index) is not { } header) continue;
+                var matrix = decomp.Matrix(header.Matrix);
+                foreach (var floor in floors)
+                    for (int z = 0; z < floor.Depth; z++)
+                        for (int x = 0; x < floor.Width; x++)
+                        {
+                            int mx = floor.X + x, mz = floor.Z + z;
+                            if (mx < 0 || mz < 0 || mx >= matrix.Width * LandData.Tiles || mz >= matrix.Height * LandData.Tiles) continue;
+                            int chunkLand = matrix.LandAt(mx / LandData.Tiles, mz / LandData.Tiles);
+                            if (chunkLand == MapImporter.Matrix.NoLand) continue;
+                            if (!floating.TryGetValue(chunkLand, out var tiles)) floating[chunkLand] = tiles = new();
+                            tiles.Add((mx % LandData.Tiles, mz % LandData.Tiles, floor, x, z));
+                        }
+            }
+        }
+        if (!floating.TryGetValue(landId, out var mine)) return;
+
+        var land = decomp.Land(landId);
+        var raised = new SortedDictionary<(int Z, int X), int>();
+        foreach (var (x, z, floor, fx, fz) in mine)
+        {
+            if (!land.Solid(x, z) || floor.Solid(fx, fz)) continue;
+            var behaviours = file.Behaviours[z].ToCharArray();
+            floor.Behaviour(fx, fz).ToString("X2", CultureInfo.InvariantCulture).CopyTo(0, behaviours, x * 2, 2);
+            file.Behaviours[z] = new string(behaviours);
+            var solid = file.Solid[z].ToCharArray();
+            solid[x] = '.';
+            file.Solid[z] = new string(solid);
+            var cover = file.Cover[z].ToCharArray();
+            cover[x] = TerrainCoverCodes.CodeOf(Cover.OfBehaviour((PokemonPlatinumEngine.Overworld.TileBehavior)floor.Behaviour(fx, fz)) ?? TerrainCover.Unknown);
+            file.Cover[z] = new string(cover);
+            raised[(z, x)] = floor.Height;
+        }
+
+        // A plate for each run of the floor's tiles along a row, at the floor's height
+        foreach (var row in raised.GroupBy(t => t.Key.Z))
+        {
+            var tiles = row.OrderBy(t => t.Key.X).ToList();
+            for (int i = 0; i < tiles.Count;)
+            {
+                int j = i;
+                while (j + 1 < tiles.Count && tiles[j + 1].Key.X == tiles[j].Key.X + 1 && tiles[j + 1].Value == tiles[i].Value) j++;
+                file.Heights.Add(new HeightPlate
+                {
+                    X = tiles[i].Key.X, Z = row.Key, Width = j - i + 1, Depth = 1, Height = tiles[i].Value, SlopeX = 0, SlopeZ = 0
+                });
+                i = j + 1;
+            }
+        }
     }
 
     // Rounded once, at the end and in double precision, so 10.1114 is written as 10.1114 and a level slope as 0
@@ -151,6 +218,8 @@ public sealed class WorldWriter
     public WorldAreaFile Area(MapHeader header, string name)
     {
         var events = decomp.Events(header.Events);
+        // The Distortion World gives its events in its own space, where each floor lies at an offset of its own
+        var (ox, _, oz) = decomp.Distortion?.Offsets.GetValueOrDefault(header.Index) ?? default;
         var land = Land(header, out int? landRate);
         var water = Water(header, out int? waterRate);
         return new WorldAreaFile
@@ -183,14 +252,14 @@ public sealed class WorldWriter
             SuperRodRate = superRodRate,
             EastSea = header.Encounters != null && decomp.Forms(header.Encounters).EastSea ? true : null,
             UnownTable = header.Encounters != null && decomp.Forms(header.Encounters).UnownTable is > 0 and var unown ? unown : null,
-            Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
+            Warps = events.Warps.Select(w => new AreaWarp { X = w.X - ox, Z = w.Z - oz, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o => new AreaObject
             {
                 Id = Trim(o.Id, "LOCALID_", "").ToLowerInvariant(),
                 Looks = Trim(o.GraphicsId, "OBJ_EVENT_GFX_", "").ToLowerInvariant(),
                 Movement = Trim(o.MovementType, "MOVEMENT_TYPE_", "").ToLowerInvariant(),
-                X = o.X,
-                Z = o.Z,
+                X = o.X - ox,
+                Z = o.Z - oz,
                 Y = o.Y > 0 ? o.Y : null,
                 Facing = o.InitialDir,
                 RangeX = o.MovementRangeX,
@@ -203,10 +272,10 @@ public sealed class WorldWriter
                 Count = Lying(header, o) is { Count: > 1 } several ? several.Count : null,
                 Script = o.Script
             }).ToList(),
-            Signs = events.Signs.Select(s => Sign(header, s)).ToList(),
+            Signs = events.Signs.Select(s => Sign(header, s)).Select(s => { s.X -= ox; s.Z -= oz; return s; }).ToList(),
             Triggers = events.Triggers.Select(t => new AreaTrigger
             {
-                X = t.X, Z = t.Z, Width = Math.Max(1, t.Width), Depth = Math.Max(1, t.Length), Script = t.Script, Variable = t.Var, Value = t.Value
+                X = t.X - ox, Z = t.Z - oz, Width = Math.Max(1, t.Width), Depth = Math.Max(1, t.Length), Script = t.Script, Variable = t.Var, Value = t.Value
             }).ToList()
         };
     }

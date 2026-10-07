@@ -1,0 +1,10 @@
+{
+  "area": "distortion_world_b6f",
+  "bgmTrack": "sinnoh/distortion_world",
+  // The pits the boulders fall into from B5F are plan 02 · S13's
+  "exits": [
+    // The slabs: up to B5F (sMovingPlatformMapTemplateB6F_1, path 17) and down to B7F (B6F_2, path 18)
+    { "x": 31, "z": 29, "map": "DistortionWorldB5F", "toX": 30, "toY": 33, "facing": "Down" },
+    { "x": 29, "z": 48, "map": "DistortionWorldB7F", "toX": 11, "toY": 54, "facing": "Down" }
+  ]
+}

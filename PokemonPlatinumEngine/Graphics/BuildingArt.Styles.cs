@@ -162,10 +162,11 @@ internal static partial class BuildingArt
                 Wall = WallKind.Metal, Roof = RoofShape.Flat, RoofColor = FlatGrey, Window = WindowKind.None, SlidingDoor = true,
                 Accent = Rgb(88, 104, 132), Gear = b.Model == "d4_s01" ? RoofGear.Vents | RoofGear.Stack : RoofGear.Vents
             },
+            // Snowpoint's harbour has a storehouse of logs under snow, with barn doors and a loft door with a hoist over them
             BuildingKind.Warehouse => new BuildingStyle
             {
                 Wall = snowy ? WallKind.Log : WallKind.Metal, Roof = RoofShape.Gable, RoofColor = snowy ? SnowRoof : MetalRoof,
-                Window = WindowKind.None, SlidingDoor = true, Accent = Rgb(88, 104, 132)
+                Window = WindowKind.None, SlidingDoor = true, Loft = snowy, Accent = Rgb(88, 104, 132)
             },
             BuildingKind.Mansion => new BuildingStyle
             {

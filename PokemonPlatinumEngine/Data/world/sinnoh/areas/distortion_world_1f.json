@@ -1,0 +1,25 @@
+{
+  "key": "distortion_world_1f",
+  "index": 573,
+  "name": "Distortion World",
+  "matrix": 269,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "InteriorOrthographic",
+  "battleBackground": "DistortionWorld",
+  "dayMusic": "PL_D_GIRATINA",
+  "nightMusic": "PL_D_GIRATINA",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 43, "to": "mt_coronet_6f", "toWarp": 2 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 34, "z": 29, "type": 0, "script": "2" }
+  ],
+  "triggers": []
+}

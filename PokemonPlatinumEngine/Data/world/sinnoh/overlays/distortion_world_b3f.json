@@ -1,0 +1,15 @@
+{
+  "area": "distortion_world_b3f",
+  "bgmTrack": "sinnoh/distortion_world",
+  "exits": [
+    // The slabs: up to B2F (sMovingPlatformMapTemplateB3F_1, path 5), down to B4F (B3F_2 and B3F_3, paths 6 and 7)
+    // and down past B4F to B5F (B3F_4, paths 8 and 9). B3F_3's slab is the mark a tile south of the template's place
+    { "x": 18, "z": 10, "map": "DistortionWorldB2F", "toX": 50, "toY": 31, "facing": "Down" },
+    { "x": 32, "z": 41, "map": "DistortionWorldB4F", "toX": 22, "toY": 28, "facing": "Down" },
+    { "x": 48, "z": 50, "map": "DistortionWorldB4F", "toX": 38, "toY": 37, "facing": "Down" },
+    { "x": 49, "z": 22, "map": "DistortionWorldB5F", "toX": 39, "toY": 9, "facing": "Down" },
+    // The wall walked sideways between its two ends (floating platform 0)
+    { "x": 10, "z": 28, "map": "DistortionWorldB3F", "toX": 10, "toY": 39, "facing": "Right" },
+    { "x": 10, "z": 39, "map": "DistortionWorldB3F", "toX": 10, "toY": 28, "facing": "Right" }
+  ]
+}

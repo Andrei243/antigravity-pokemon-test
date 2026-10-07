@@ -134,6 +134,25 @@ public static class FieldMovement
         _ => null
     };
 
+    /// <summary>
+    /// The way one of the Distortion World's gaps is jumped (its "jump twice" tiles, <c>TILE_BEHAVIOR_JUMP_*_TWICE</c>);
+    /// null for any other tile.
+    /// </summary>
+    public static Direction? LongJumpDirection(TileBehavior behaviour) => behaviour switch
+    {
+        TileBehavior.LongLedgeNorth => Direction.Up,
+        TileBehavior.LongLedgeSouth => Direction.Down,
+        TileBehavior.LongLedgeWest => Direction.Left,
+        TileBehavior.LongLedgeEast => Direction.Right,
+        _ => null
+    };
+
+    /// <summary>
+    /// How far a jump across one of the Distortion World's gaps carries: from the tile before it to the third tile
+    /// on (<c>MovementAction_JumpDistortionWorldNorth</c> and the rest: two units a frame for 24 frames, three tiles).
+    /// </summary>
+    public const int LongJumpTiles = 3;
+
     /// <summary>Whether a tile's side toward a direction is closed, so nobody steps across that edge either way.</summary>
     public static bool ClosedToward(TileBehavior behaviour, Direction side) => behaviour switch
     {
@@ -198,6 +217,15 @@ public static class FieldMovement
             int lx = nx + dx, ly = ny + dy;
             if (facing != dir || walker.Mode == TravelMode.Surfing || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
             return new FieldStep(StepKind.Hop, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
+        }
+
+        // A gap in the Distortion World is jumped the way its tile says, over it and the tile beyond, to the third
+        // tile on (PlayerAvatar_WillJumpTwiceDistortion); from any other side it is the drop it is
+        if (LongJumpDirection(there) is { } across)
+        {
+            int lx = x + dx * LongJumpTiles, ly = y + dy * LongJumpTiles;
+            if (across != dir || walker.Mode != TravelMode.OnFoot || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
+            return new FieldStep(StepKind.Jump, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
         }
 
         // A waterfall is taken north or south only: up it once the player has said yes to Waterfall, down it with a

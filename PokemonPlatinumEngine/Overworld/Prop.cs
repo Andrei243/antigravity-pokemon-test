@@ -95,6 +95,16 @@ public enum PropType
     /// <summary>An open shelter on four posts under a roof (the Hotel Grand Lake).</summary>
     Pavilion,
 
+    // The north and the end (plan 01 · M8)
+    /// <summary>A stack of rock standing in the sea, the water lapping round its foot (Sunyshore City).</summary>
+    SeaStack,
+    /// <summary>A low drift of snow banked against a wall (Snowpoint City's harbour).</summary>
+    Snowdrift,
+    /// <summary>A tear in the air taller than a person, edged in light: where Spear Pillar is torn open (plan 02 · S12).</summary>
+    Rift,
+    /// <summary>The dark a rift casts on the ground below it: the way down into the Distortion World.</summary>
+    RiftShadow,
+
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
     Window,

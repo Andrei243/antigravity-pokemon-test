@@ -137,7 +137,19 @@ internal static class WorldWalk
         return -1;
     }
 
-    /// <summary>The whole game from where each region that is built begins.</summary>
+    /// <summary>
+    /// Where the story alone takes the player, with no way there on foot: the Distortion World (plan 01 · M8), through
+    /// the rift at Spear Pillar (plan 02 · S12's scene; the original's warp to 55, 40 of its space, facing south) and
+    /// through the portal that opens in Turnback Cave's room for Giratina once it has been battled (116, 75). A walk
+    /// of the whole game sets out from these too, as the player will once the scenes open them.
+    /// </summary>
+    public static readonly MapSpot[] StoryArrivals =
+    {
+        new("DistortionWorld1F", 34, 30, Direction.Down),
+        new("DistortionWorldTurnbackCaveRoom", 46, 45, Direction.Down)
+    };
+
+    /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>
-        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).ToArray());
+        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).ToArray());
 }

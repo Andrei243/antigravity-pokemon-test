@@ -50,10 +50,11 @@ It also rewrites `docs/tile-behaviours.md` in the repository.
 | Props (buildings, signboards, furniture) | the same file, second section, and `res/field/props/models/*.nsbmd` | the model's id, its short name and its bounding box |
 | The chunk's 3D model | the same file, third section | for each tile, the *name* of the texture drawn there, turned into a kind of ground |
 | Heights | the same file, fourth section ("BDHC") | every plate, in tiles |
+| The Distortion World's own space and its floating floors | `res/prebuilt/fielddata/tornworld/tw_arc.narc` (member 0: where each floor lies; each floor's file: its floating platforms) and `tw_arc_attr.narc` (their tile attributes) | each floor's place, subtracted from its events; the platforms of the floor kind, as open tiles with their behaviours and a plate at their height. Not the walls and ceilings, nor anything drawn |
 
 No vertex, texture, palette or animation leaves the cache. From a model the importer keeps a name and a box (props), or the names of textures and where their polygons lie (terrain); the vertices are read only to find which tiles a polygon covers. What the game draws on those tiles is our own art.
 
-The layouts of the binary files were confirmed against the game's own loaders in the decompilation: `src/overlay005/land_data.c` (the four sections), `map_prop.c` (props, 48 bytes each), `bdhc.c` and `docs/maps/bdhc.md` (heights), `src/terrain_collision_manager.c` (behaviour in the low byte, the blocked flag in the top bit, and the 1.25-tile step limit), `src/map_matrix.c` (matrices and altitudes).
+The layouts of the binary files were confirmed against the game's own loaders in the decompilation: `src/overlay005/land_data.c` (the four sections), `map_prop.c` (props, 48 bytes each), `bdhc.c` and `docs/maps/bdhc.md` (heights), `src/terrain_collision_manager.c` (behaviour in the low byte, the blocked flag in the top bit, and the 1.25-tile step limit), `src/map_matrix.c` (matrices and altitudes), `src/overlay009/ov9_02249960.c` (the Distortion World's archives: its map list of 12-byte entries, its floating platforms of 20 bytes each, and their attributes read a row of `tileCountVertical` to each step south).
 
 ## How a tile gets its look
 

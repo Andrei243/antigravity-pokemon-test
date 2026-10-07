@@ -52,10 +52,10 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0x57` | `PastoriaGymMiddle` | Pastoria Gym: the middle tier of floor. | *Not yet.* Floors whose height the game moves (plan 01 · M9). |  |  | 6 | 0 | Pastoria City |
 | `0x58` | `PastoriaGymLow` | Pastoria Gym: the lowest tier of floor. | *Not yet.* Floors whose height the game moves (plan 01 · M9). |  |  | 10 | 0 | Pastoria City |
 | `0x59` | `MovingFloor` | Ground whose height the game moves (lifts, the gyms' platforms and water); it blocks while the floor is elsewhere. | *Not yet.* Floors whose height the game moves (plan 01 · M9). |  |  | 1,149 | 207 | Canalave City, Pastoria City, Sunyshore City |
-| `0x5A` | `LongLedgeNorth` | A drop two tiles deep, jumped northward. | *Not yet.* The Distortion World's double jumps (plan 01 · M8). |  |  | 58 | 12 | Distortion World |
-| `0x5B` | `LongLedgeSouth` | A drop two tiles deep, jumped southward. | *Not yet.* The Distortion World's double jumps (plan 01 · M8). |  |  | 58 | 12 | Distortion World |
-| `0x5C` | `LongLedgeWest` | A drop two tiles deep, jumped westward. | *Not yet.* The Distortion World's double jumps (plan 01 · M8). |  |  | 54 | 45 | Distortion World |
-| `0x5D` | `LongLedgeEast` | A drop two tiles deep, jumped eastward. | *Not yet.* The Distortion World's double jumps (plan 01 · M8). |  |  | 54 | 45 | Distortion World |
+| `0x5A` | `LongLedgeNorth` | A gap in the Distortion World, jumped northward to the third tile on. | **Rule.** A gap in the Distortion World: jumped the way it faces, over it and the tile past it to the third tile on, on foot; the drop it is from every other side (`FieldMovement.LongJumpDirection`). |  |  | 58 | 12 | Distortion World |
+| `0x5B` | `LongLedgeSouth` | A gap in the Distortion World, jumped southward to the third tile on. | **Rule.** A gap in the Distortion World: jumped the way it faces, over it and the tile past it to the third tile on, on foot; the drop it is from every other side (`FieldMovement.LongJumpDirection`). |  |  | 58 | 12 | Distortion World |
+| `0x5C` | `LongLedgeWest` | A gap in the Distortion World, jumped westward to the third tile on. | **Rule.** A gap in the Distortion World: jumped the way it faces, over it and the tile past it to the third tile on, on foot; the drop it is from every other side (`FieldMovement.LongJumpDirection`). |  |  | 54 | 45 | Distortion World |
+| `0x5D` | `LongLedgeEast` | A gap in the Distortion World, jumped eastward to the third tile on. | **Rule.** A gap in the Distortion World: jumped the way it faces, over it and the tile past it to the third tile on, on foot; the drop it is from every other side (`FieldMovement.LongJumpDirection`). |  |  | 54 | 45 | Distortion World |
 | `0x5E` | `StairsEast` | Stairs at the side of a room: walking east onto them takes the warp there. | *Not yet.* Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11). |  |  | 83 | 0 | 20 places |
 | `0x5F` | `StairsWest` | Stairs at the side of a room, taken walking west. | *Not yet.* Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11). |  |  | 84 | 0 | 20 places |
 | `0x60` | `Unknown60` | Not understood yet. | *Not yet.* Not understood. |  |  | 3 | 0 | unknown 324, unknown 325, Pal Park |
@@ -114,7 +114,7 @@ Every tile of the imported world carries two things from Platinum's own map data
 
 ## What the game does with them
 
-The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: 37 of the behaviours have a rule there, 30 are ground like any other as far as a step goes, and 27 wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
+The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: 41 of the behaviours have a rule there, 30 are ground like any other as far as a step goes, and 23 wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
 
 - **A step** onto a tile is refused if the tile is blocked, if someone stands on it, or if its ground is 1.25 tiles or more above or below; otherwise the behaviours of the tile left and the tile entered decide.
 - **Pace** is Platinum's five speeds. A walk is 4.5 tiles a second and a run 8; surfing goes at a run; the Bicycle at a run in its low gear and half as fast again in its high one.

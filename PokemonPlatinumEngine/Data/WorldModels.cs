@@ -192,14 +192,14 @@ public static class WorldModels
         House("c8_h01", Architecture.Seaside, "a house of Sunyshore City"),
         Built("c8_s02", BuildingKind.Shop, "the Sunyshore Market", Architecture.Seaside, sign: "MARKET"),
         Built("c8_s03", BuildingKind.Lighthouse, "the Vista Lighthouse"),
-        Thing("c8_o02", PropType.Outcrop, "a rock standing off Sunyshore's shore", until: "M8"),
+        Thing("c8_o02", PropType.SeaStack, "a stack of rock standing in the sea off Sunyshore's shore"),
 
         // ---------------------------------------------------------------- Snowpoint City
         House("c9_h01", Architecture.Snow, "a house of Snowpoint City"),
         Built("c9_s01", BuildingKind.Temple, "Snowpoint Temple"),
-        Built("c9_o01", BuildingKind.Warehouse, "a store shed at Snowpoint's harbour", Architecture.Snow, until: "M8"),
-        Thing("c9_o02", PropType.Hedge, "something low under the snow", until: "M8"),
-        Thing("c9_o02b", PropType.Hedge, "something low under the snow", until: "M8"),
+        Built("c9_o01", BuildingKind.Warehouse, "the storehouse on Snowpoint's harbour, with a loft door and a hoist over its door", Architecture.Snow),
+        Thing("c9_o02", PropType.Snowdrift, "a drift of snow banked against the storehouse"),
+        Thing("c9_o02b", PropType.Snowdrift, "a drift of snow banked against the storehouse"),
         Thing("c9_o03", PropType.Crates, "cargo on the quay"),
         Thing("c09_s02", PropType.Boat, "the ferry between Snowpoint City and the Fight Area"),
 
@@ -261,8 +261,10 @@ public static class WorldModels
         Thing("d5_colum03x", PropType.Column, "a column of the Hall of Origin"), Thing("d5_colum04x", PropType.Column, "a column of the Hall of Origin"),
         Thing("d5_colum05x", PropType.Column, "a broken column of the Hall of Origin"), Thing("d5_colum06x", PropType.Column, "a broken column of the Hall of Origin"),
         Thing("d5_colum07x", PropType.Column, "a fallen column of the Hall of Origin"),
-        Ground("d5_ana_d", "a rift at Spear Pillar", until: "M8"), Ground("d5_ana_p", "a rift at Spear Pillar", until: "M8"),
-        Ground("d5_ana_pl", "the rift's shadow on Spear Pillar's floor", until: "M8")
+        // The rifts that open at Spear Pillar in plan 02 · S12's scene: Dialga's, Palkia's, and the dark beneath
+        Thing("d5_ana_d", PropType.Rift, "the rift that opens at Spear Pillar where Dialga comes"),
+        Thing("d5_ana_p", PropType.Rift, "the rift that opens at Spear Pillar where Palkia comes"),
+        Thing("d5_ana_pl", PropType.RiftShadow, "the dark the rifts cast on Spear Pillar's floor: the way into the Distortion World")
     };
 
     private static readonly Dictionary<string, WorldModel> ByName = Table.ToDictionary(m => m.Name, StringComparer.Ordinal);

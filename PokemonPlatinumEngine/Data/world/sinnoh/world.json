@@ -2,7 +2,8 @@
   // What is built of Sinnoh so far. "maps" are the maps the game makes from the imported matrices; "areas" are
   // the areas that are open to walk in. After adding an area, run tools/MapImporter with --data and write its
   // overlay (overlays/<key>.json). A map whose "setting" is "Cave" is rock wherever nothing else is said: its
-  // walls stand up from the floor, and no sky lights it.
+  // walls stand up from the floor, and no sky lights it. One whose "setting" is "Void" is nothing where nothing is
+  // said: islands float over a drop nobody walks into (the Distortion World).
   "region": "Sinnoh",
   // Chunks the original leaves out (forest in their place) until the story reveals them: the Spring Path's four,
   // until VAR_HIDDEN_LOCATION_SPRING_PATH holds the original's number for it (0x0312), which the Distortion World's
@@ -95,7 +96,19 @@
     { "name": "TurnbackCavePillar3Room3", "matrix": 65, "area": "turnback_cave_pillar_3_room_3", "setting": "Cave" },
     { "name": "TurnbackCavePillar3Room4", "matrix": 65, "area": "turnback_cave_pillar_3_room_4", "setting": "Cave" },
     { "name": "TurnbackCavePillar3Room5", "matrix": 66, "area": "turnback_cave_pillar_3_room_5", "setting": "Cave" },
-    { "name": "TurnbackCavePillar3Room6", "matrix": 66, "area": "turnback_cave_pillar_3_room_6", "setting": "Cave" }
+    { "name": "TurnbackCavePillar3Room6", "matrix": 66, "area": "turnback_cave_pillar_3_room_6", "setting": "Cave" },
+    // The Distortion World: islands over nothing, a floor to a map, joined where the original carries the player
+    // between floors (its rising and falling slabs, the waterfall, the way into Giratina's room)
+    { "name": "DistortionWorld1F", "matrix": 269, "area": "distortion_world_1f", "setting": "Void" },
+    { "name": "DistortionWorldB1F", "matrix": 270, "area": "distortion_world_b1f", "setting": "Void" },
+    { "name": "DistortionWorldB2F", "matrix": 271, "area": "distortion_world_b2f", "setting": "Void" },
+    { "name": "DistortionWorldB3F", "matrix": 272, "area": "distortion_world_b3f", "setting": "Void" },
+    { "name": "DistortionWorldB4F", "matrix": 273, "area": "distortion_world_b4f", "setting": "Void" },
+    { "name": "DistortionWorldB5F", "matrix": 275, "area": "distortion_world_b5f", "setting": "Void" },
+    { "name": "DistortionWorldB6F", "matrix": 276, "area": "distortion_world_b6f", "setting": "Void" },
+    { "name": "DistortionWorldB7F", "matrix": 277, "area": "distortion_world_b7f", "setting": "Void" },
+    { "name": "DistortionWorldGiratinaRoom", "matrix": 278, "area": "distortion_world_giratina_room", "setting": "Void" },
+    { "name": "DistortionWorldTurnbackCaveRoom", "matrix": 279, "area": "distortion_world_turnback_cave_room", "setting": "Void" }
   ],
   "areas": [
     "twinleaf_town",
@@ -232,6 +245,16 @@
     "turnback_cave_pillar_3_room_3",
     "turnback_cave_pillar_3_room_4",
     "turnback_cave_pillar_3_room_5",
-    "turnback_cave_pillar_3_room_6"
+    "turnback_cave_pillar_3_room_6",
+    "distortion_world_1f",
+    "distortion_world_b1f",
+    "distortion_world_b2f",
+    "distortion_world_b3f",
+    "distortion_world_b4f",
+    "distortion_world_b5f",
+    "distortion_world_b6f",
+    "distortion_world_b7f",
+    "distortion_world_giratina_room",
+    "distortion_world_turnback_cave_room"
   ]
 }

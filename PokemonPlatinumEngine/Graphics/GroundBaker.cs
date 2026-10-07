@@ -170,8 +170,8 @@ internal static class GroundBaker
         {
             TileType.Path => TileType.Path,
             TileType.Water => TileType.Water,
-            // Past its edge a cave is rock, as the open country is forest
-            _ => map.IsCave ? TileType.CaveWall : TileType.Tree
+            // Past its edge a cave is rock, as the open country is forest, and the Distortion World is nothing
+            _ => map.IsCave ? TileType.CaveWall : map.IsVoid ? TileType.Void : TileType.Tree
         };
     }
 

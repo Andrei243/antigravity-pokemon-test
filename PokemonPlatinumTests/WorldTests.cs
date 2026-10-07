@@ -389,8 +389,9 @@ public class WorldTests
     [Fact]
     public void PeopleStandOnOpenGroundWhereTheyCanBeTalkedTo()
     {
-        // The whole game from its start, through every warp, by someone who can surf and clear what is in the way
-        var reached = WorldWalk.From(MapNamed, RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!);
+        // The whole game from its start, through every warp, by someone who can surf and clear what is in the way, and
+        // on from where only the story takes the player (the Distortion World)
+        var reached = WorldWalk.From(MapNamed, WorldWalk.StoryArrivals.Prepend(RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!).ToArray());
         Assert.All(BuiltMaps.Value.Values, built => Assert.True(reached.ContainsKey(built), $"{built.Name} can't be reached from Twinleaf Town"));
 
         int people = 0;

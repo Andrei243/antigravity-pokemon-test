@@ -20,7 +20,9 @@ public sealed partial class DecompMaps
         // What lies on the ground and what is hidden in it: which item, and how many
         "/generated/items.txt", "/generated/vars_flags.txt", "/res/field/scripts/scripts_visible_items.s", "/include/data/field/hidden_items.h",
         // The five places whose weather follows the calendar (plan 01 · M7)
-        "/src/field_overworld_weather.c"
+        "/src/field_overworld_weather.c",
+        // The Distortion World's own space and the floors that float in it (plan 01 · M8)
+        "/" + DistortionWorld.MainArchive, "/" + DistortionWorld.AttributeArchive
     };
 
     /// <summary>The script of the first item ball; the nth ball's is this plus n.</summary>
@@ -128,6 +130,19 @@ public sealed partial class DecompMaps
 
     private List<string> Lines(params string[] parts) =>
         File.ReadAllLines(Path.Combine(new[] { root }.Concat(parts).ToArray())).Select(l => l.Trim()).Where(l => l.Length > 0).ToList();
+
+    private DistortionWorld? distortion;
+    private bool distortionRead;
+
+    /// <summary>The Distortion World's own data (<see cref="MapImporter.DistortionWorld"/>), or null when the checkout has none.</summary>
+    public DistortionWorld? Distortion
+    {
+        get
+        {
+            if (!distortionRead) (distortion, distortionRead) = (MapImporter.DistortionWorld.Load(root), true);
+            return distortion;
+        }
+    }
 
     public LandData Land(int id)
     {

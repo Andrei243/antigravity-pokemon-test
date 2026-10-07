@@ -62,7 +62,18 @@ public enum TileType : byte
 
     // The east (plan 01 · M7)
     /// <summary>A puddle: shallow water walked through, which mirrors whoever stands in it (Route 212).</summary>
-    Puddle
+    Puddle,
+
+    // The Distortion World (plan 01 · M8)
+    /// <summary>Nothing at all: the drop the Distortion World's islands float over. No ground is drawn there and nobody walks into it.</summary>
+    Void,
+    /// <summary>The grey-violet stone of the Distortion World's islands.</summary>
+    DistortionGround,
+    /// <summary>
+    /// A pale slab set into an island, where the Distortion World carries the player somewhere else: a slab that
+    /// rises or sinks to another floor, a stone that ferries across the drop, the foot of a wall walked sideways.
+    /// </summary>
+    DistortionSlab
 }
 
 /// <summary>What a map of the imported world is where nothing else is said (plan 01 · M5).</summary>
@@ -71,7 +82,12 @@ public enum MapSetting
     /// <summary>Open country under the sky: forest where no chunk says otherwise, lit by the time of day.</summary>
     Outdoors,
     /// <summary>The inside of a cave: rock where no chunk says otherwise, walls standing up from the floor, a light of its own.</summary>
-    Cave
+    Cave,
+    /// <summary>
+    /// The Distortion World (plan 01 · M8): islands floating over nothing. Where nothing stands there is no ground at
+    /// all, only the drop beneath the islands, which nobody walks into; the islands have a light of their own.
+    /// </summary>
+    Void
 }
 
 /// <summary>

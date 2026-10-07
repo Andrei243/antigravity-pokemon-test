@@ -1,0 +1,18 @@
+{
+  "area": "distortion_world_b5f",
+  "bgmTrack": "sinnoh/distortion_world",
+  // The boulders of the three lakes' guardians and the pits they fall through are plan 02 · S13's
+  "exits": [
+    // The slabs: up to B4F (sMovingPlatformMapTemplateB5F_1, path 13), down to B6F (B5F_2, path 14) and up past
+    // B4F to B3F (B5F_3, path 15)
+    { "x": 21, "z": 43, "map": "DistortionWorldB4F", "toX": 21, "toY": 43, "facing": "Down" },
+    { "x": 30, "z": 33, "map": "DistortionWorldB6F", "toX": 31, "toY": 29, "facing": "Down" },
+    { "x": 39, "z": 9, "map": "DistortionWorldB3F", "toX": 49, "toY": 22, "facing": "Down" },
+    // The waterfall that rises to B4F (sMapEventB5F_Waterfall: surfing east into it at 47, 42 to 45): until it
+    // carries anyone up, it takes them to the foot of B4F's wall
+    { "x": 47, "z": 42, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" },
+    { "x": 47, "z": 43, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" },
+    { "x": 47, "z": 44, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" },
+    { "x": 47, "z": 45, "map": "DistortionWorldB4F", "toX": 48, "toY": 22, "facing": "Left" }
+  ]
+}
