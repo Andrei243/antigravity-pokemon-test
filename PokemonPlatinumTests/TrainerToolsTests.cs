@@ -170,7 +170,21 @@ public class TrainerToolsTests
         Assert.False(journal.OpensOnContinue(Day.AddDays(12)));
         Assert.True(journal.OpensOnContinue(Day.AddDays(13)));
         Assert.Contains("Arrived in Hearthome City.", Journal.Lines(journal.Today));
+        Assert.Contains("Battled lots of wild Pokémon on Route 201, Starly among them.", Journal.Lines(journal.Today));
     }
+
+    [Theory]
+    [InlineData("Route 203", "on Route 203")]
+    [InlineData("Mt. Coronet", "on Mt. Coronet")]
+    [InlineData("Iron Island", "on Iron Island")]
+    [InlineData("Lake Verity", "at Lake Verity")]
+    [InlineData("Valor Lakefront", "at Valor Lakefront")]
+    [InlineData("Spear Pillar", "at Spear Pillar")]
+    [InlineData("Valley Windworks", "at the Valley Windworks")]
+    [InlineData("Great Marsh", "in the Great Marsh")]
+    [InlineData("Jubilife City", "in Jubilife City")]
+    [InlineData("Eterna Forest", "in Eterna Forest")]
+    public void APlaceIsNamedAsASentenceSaysIt(string place, string said) => Assert.Equal(said, PlaceWords.In(place));
 
     [Fact]
     public void AVisitToAMartIsToldByWhatCameOfIt()

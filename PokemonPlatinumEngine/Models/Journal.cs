@@ -123,14 +123,14 @@ public sealed class Journal
     /// <summary>A page told in words of our own: one line for each thing it keeps.</summary>
     public static IEnumerable<string> Lines(JournalPage page)
     {
-        yield return $"Took up the adventure in {page.Place}.";
+        yield return $"Took up the adventure {PlaceWords.In(page.Place)}.";
         foreach (var e in page.Events) yield return Line(e);
         if (page.Pokemon is { } p)
             yield return p.Caught ? $"Caught {Article(p.Species)} {p.Species}{At(p.Place)}." : $"Battled lots of wild Pokémon{At(p.Place)}, {p.Species} among them.";
         if (page.Trainer is { } trainer) yield return $"Battled {trainer.Name}{At(trainer.Place)}.";
     }
 
-    private static string At(string? place) => string.IsNullOrEmpty(place) ? "" : $" in {place}";
+    private static string At(string? place) => string.IsNullOrEmpty(place) ? "" : " " + PlaceWords.In(place);
 
     private static string Article(string word) => "AEIOU".Contains(char.ToUpperInvariant(word[0])) ? "an" : "a";
 
@@ -148,9 +148,9 @@ public sealed class Journal
         JournalEventKind.BeatGymLeader => $"Beat {e.Subject} and won a Gym Badge!",
         JournalEventKind.BeatEliteFourMember => $"Beat {e.Subject} of the Elite Four.",
         JournalEventKind.BeatChampion => $"Beat the Champion, {e.Subject}!",
-        JournalEventKind.ArrivedInLocation => $"Arrived in {e.Subject}.",
-        JournalEventKind.LeftCave => $"Made it out of {e.Subject}.",
-        JournalEventKind.LeftBuilding => $"Left {e.Subject}.",
+        JournalEventKind.ArrivedInLocation => $"Arrived {PlaceWords.In(e.Subject ?? "")}.",
+        JournalEventKind.LeftCave => $"Made it out of {PlaceWords.Named(e.Subject ?? "")}.",
+        JournalEventKind.LeftBuilding => $"Left {PlaceWords.Named(e.Subject ?? "")}.",
         JournalEventKind.ItemWasObtained => $"Found {e.Subject}.",
         JournalEventKind.UsedFieldMove => $"Used {e.Subject} in the field.",
         _ => ""
