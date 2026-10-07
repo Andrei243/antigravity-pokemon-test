@@ -926,4 +926,14 @@ internal static partial class PokemonModels
     }
 
     private static PokeBuilder MimikyuBusted() => MimikyuBuild(true);
+
+    // ------------------------------------------------------------------ Alola's third batch's forms (their builds in PokemonModels.Alola3.cs)
+
+    private static PokeBuilder NecrozmaDusk() => SolgaleoBuild(true);
+
+    private static PokeBuilder NecrozmaDawn() => LunalaBuild(true);
+
+    private static PokeBuilder NecrozmaUltra() => NecrozmaBuild(true);
+
+    private static PokeBuilder MagearnaOriginal() => MagearnaBuild(true, false);
 }
