@@ -1,0 +1,44 @@
+{
+  "area": "distortion_world_b2f",
+  "bgmTrack": "sinnoh/distortion_world",
+  // B2F is stepping stones on two levels, the upper nine tiles over the lower (the original's floating floors,
+  // which the importer writes into the chunks). Small rocks ferry the player across the drop between stones, and
+  // two of them up or down between the levels (its events P2N to P18N: MOVE_PLATFORM with the player on it, then
+  // a jump onto the stone beyond). Until rocks move, each edge where one waits carries the player through a fade to
+  // the edge it would set them down at.
+  "exits": [
+    // The slabs: up to B1F (sMovingPlatformMapTemplateB2F_1, path 3) and down to B3F (B2F_8, path 4)
+    { "x": 18, "z": 45, "map": "DistortionWorldB1F", "toX": 33, "toY": 10, "facing": "Down" },
+    { "x": 50, "z": 31, "map": "DistortionWorldB3F", "toX": 18, "toY": 10, "facing": "Down" },
+    // The wall from the lower stones up to the upper (floating platform 4)
+    { "x": 16, "z": 23, "map": "DistortionWorldB2F", "toX": 16, "toY": 15, "facing": "Right" },
+    { "x": 16, "z": 15, "map": "DistortionWorldB2F", "toX": 16, "toY": 23, "facing": "Right" },
+    // The ferrying rocks of the lower stones
+    { "x": 18, "z": 36, "map": "DistortionWorldB2F", "toX": 18, "toY": 25, "facing": "Up" },
+    { "x": 18, "z": 25, "map": "DistortionWorldB2F", "toX": 18, "toY": 36, "facing": "Down" },
+    { "x": 18, "z": 21, "map": "DistortionWorldB2F", "toX": 18, "toY": 10, "facing": "Up" },
+    { "x": 18, "z": 10, "map": "DistortionWorldB2F", "toX": 18, "toY": 21, "facing": "Down" },
+    { "x": 20, "z": 8, "map": "DistortionWorldB2F", "toX": 32, "toY": 8, "facing": "Right" },
+    { "x": 32, "z": 8, "map": "DistortionWorldB2F", "toX": 20, "toY": 8, "facing": "Left" },
+    { "x": 41, "z": 10, "map": "DistortionWorldB2F", "toX": 41, "toY": 50, "facing": "Down" },
+    { "x": 41, "z": 50, "map": "DistortionWorldB2F", "toX": 41, "toY": 10, "facing": "Up" },
+    { "x": 36, "z": 31, "map": "DistortionWorldB2F", "toX": 48, "toY": 31, "facing": "Right" },
+    { "x": 48, "z": 31, "map": "DistortionWorldB2F", "toX": 36, "toY": 31, "facing": "Left" },
+    // ... of the upper stones
+    { "x": 20, "z": 15, "map": "DistortionWorldB2F", "toX": 32, "toY": 15, "facing": "Right" },
+    { "x": 32, "z": 15, "map": "DistortionWorldB2F", "toX": 20, "toY": 15, "facing": "Left" },
+    { "x": 36, "z": 15, "map": "DistortionWorldB2F", "toX": 48, "toY": 15, "facing": "Right" },
+    { "x": 48, "z": 15, "map": "DistortionWorldB2F", "toX": 36, "toY": 15, "facing": "Left" },
+    { "x": 50, "z": 17, "map": "DistortionWorldB2F", "toX": 50, "toY": 43, "facing": "Down" },
+    { "x": 50, "z": 43, "map": "DistortionWorldB2F", "toX": 50, "toY": 17, "facing": "Up" },
+    { "x": 48, "z": 45, "map": "DistortionWorldB2F", "toX": 36, "toY": 45, "facing": "Left" },
+    { "x": 36, "z": 45, "map": "DistortionWorldB2F", "toX": 48, "toY": 45, "facing": "Right" },
+    { "x": 48, "z": 52, "map": "DistortionWorldB2F", "toX": 28, "toY": 52, "facing": "Left" },
+    { "x": 28, "z": 52, "map": "DistortionWorldB2F", "toX": 48, "toY": 52, "facing": "Right" },
+    // ... and between the levels
+    { "x": 34, "z": 36, "map": "DistortionWorldB2F", "toX": 34, "toY": 33, "facing": "Up" },
+    { "x": 34, "z": 33, "map": "DistortionWorldB2F", "toX": 34, "toY": 36, "facing": "Down" },
+    { "x": 13, "z": 38, "map": "DistortionWorldB2F", "toX": 16, "toY": 38, "facing": "Right" },
+    { "x": 16, "z": 38, "map": "DistortionWorldB2F", "toX": 13, "toY": 38, "facing": "Left" }
+  ]
+}

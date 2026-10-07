@@ -62,6 +62,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>Everything else that happened, in order, a word and its details each: <c>fanfare FanfareHeal</c>, <c>open Shop</c>, <c>warp PlayerHouse 4 5</c>.</summary>
     public List<string> Log { get; } = new();
 
+    /// <summary>Where chance comes from (Turnback Cave's doors): the same every run unless a test hands its own.</summary>
+    public Random Rng { get; set; } = new(0);
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 
@@ -235,12 +238,17 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public BattleOutcome Outcome { get; private set; }
 
+    /// <summary>The place of the team's Pokémon chosen when a script asks for one (<c>choosepokemon</c>); 255 backs out.</summary>
+    public int PokemonChoice { get; set; }
+
     public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
     {
         Shown("open a screen");
         Waits();
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}" : $"open {screen}");
         Answer = 0;
+        // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
+        if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
@@ -251,8 +259,35 @@ public sealed class HeadlessScriptHost : IScriptHost
         Answer = choice;
     }
 
+    /// <summary>The Hall of Fame the script entered teams into.</summary>
+    public HallOfFame HallOfFame { get; } = new();
+
+    /// <summary>The Journal the script wrote in.</summary>
+    public Journal Journal { get; } = new();
+
+    public void Note(JournalEvent line)
+    {
+        if (Journal.Today == null) Journal.TakenUp(GameClock.Today, "");
+        Journal.Tell(line);
+        Log.Add($"journal {line.Kind} {line.Subject}");
+    }
+
+    public void EnterHallOfFame()
+    {
+        HallOfFame.Enter(Party, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (PlayerName, 0), GameClock.Today);
+        Log.Add("halloffame");
+    }
+
+    public bool Trade(string trade, int slot)
+    {
+        bool done = NpcTrades.Get(trade) is { } t && NpcTrades.Trade(t, Party, slot, GameClock.Today) != null;
+        Log.Add($"trade {trade} {(done ? "done" : "refused")}");
+        return done;
+    }
+
     public bool GivePokemon(Pokemon pokemon)
     {
+        pokemon.Met(Map?.DisplayNameAt(PlayerTile.X, PlayerTile.Y), GameClock.Today);
         if (Party.Add(pokemon)) return true;
         Box.Add(pokemon);
         return false;
@@ -339,6 +374,26 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Exit is not { } exit) return false;
         Warp(exit.Map, exit.X, exit.Y, exit.Facing);
         return true;
+    }
+
+    /// <summary>Where Turnback Cave's doors were last aimed (null before any).</summary>
+    public string? TurnbackChose { get; private set; }
+
+    public void Turnback()
+    {
+        Log.Add("turnback");
+        if (Map != null) TurnbackChose = TurnbackCave.Reaim(Map, PlayerTile.X, PlayerTile.Y, Story, Rng);
+    }
+
+    /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>
+    public NPC? Travelling { get; private set; }
+    public string? Partner { get; private set; }
+
+    public void TravelWith(NPC? who, string? trainerId)
+    {
+        Travelling = who;
+        Partner = who == null ? null : trainerId;
+        Log.Add(who == null ? "partner off" : $"partner {who.Name} {trainerId}");
     }
 
     public bool SweetScent()

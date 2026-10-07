@@ -216,6 +216,26 @@ public sealed class WorldRenderer
 
     private readonly List<(Map Map, int X, int Y)> leaving = new();
 
+    /// <summary>
+    /// Lets go of whatever was drawn of a part of a map whose ground has changed (a place the story revealed or
+    /// hid again, plan 01 · M8): its chunks and their neighbours, whose edges were baked with it, are made again
+    /// as they come into view.
+    /// </summary>
+    public void Forget(Map map, int x, int y, int width, int height)
+    {
+        var stale = chunks.Keys.Where(k => k.Map == map
+            && k.X >= x / Map.ChunkTiles - 1 && k.X <= (x + width - 1) / Map.ChunkTiles + 1
+            && k.Y >= y / Map.ChunkTiles - 1 && k.Y <= (y + height - 1) / Map.ChunkTiles + 1).ToList();
+        foreach (var key in stale)
+        {
+            var slot = chunks[key];
+            slot.Pending?.Wait();
+            slot.Arriving?.Unload();
+            slot.Scene?.Unload();
+            chunks.Remove(key);
+        }
+    }
+
     private void Evict(Map map, float focusX, float focusZ)
     {
         leaving.Clear();
@@ -330,7 +350,7 @@ public sealed class WorldRenderer
         weather = player != null ? map.WeatherAt(player.GridX, player.GridY) : FieldWeather.Clear;
         var rig = ArtLook.FieldRig(hour, map);
         // Snow country grades the light colder (style guide, the areas' table), easing in and out at its border
-        bool snowbound = player != null && !indoors && !map.IsCave && map.AreaAt(player.GridX, player.GridY)?.Snowbound == true;
+        bool snowbound = player != null && !indoors && !map.IsCave && !map.IsVoid && map.AreaAt(player.GridX, player.GridY)?.Snowbound == true;
         double now = Life.Now;
         snowMix = map != snowMap ? (snowbound ? 1f : 0f)
             : Math.Clamp(snowMix + (snowbound ? 1f : -1f) * (float)Math.Clamp(now - snowClock, 0, 1), 0f, 1f);
@@ -568,10 +588,11 @@ public sealed class WorldRenderer
             // that (a Gym) keeps the deepest room's distance and follows the player along its length (style guide,
             // "A room is seen whole; a hall is followed")
             var roomTarget = room.RoomCenter;
-            float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(map.Height, DeepestRoom) - 1) / 8f);
-            if (map.Height > DeepestRoom)
+            int depth = room.RoomDepth;
+            float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(depth, DeepestRoom) - 1) / 8f);
+            if (depth > DeepestRoom)
             {
-                float reach = (map.Height - DeepestRoom) / 2f;
+                float reach = (depth - DeepestRoom) / 2f;
                 roomTarget.Z = SnapToTexel(Math.Clamp(pz, roomTarget.Z - reach, roomTarget.Z + reach));
             }
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
@@ -583,8 +604,9 @@ public sealed class WorldRenderer
         var t = new Vector3(px, groundY + 0.6f * MapScene.VerticalScaleOf(map), pz);
         var lens = MapScene.ViewOf(map);
         var (farOff, nearOff, halfW) = VisibleGround(t.Y - groundY, lens);
-        // A cave ends at its rock: the view stays inside it. The open country shows a few tiles of forest past its edge
-        float overscan = map.IsCave ? 0f : 4f;
+        // A cave ends at its rock and the Distortion World at its edge: the view stays inside them. The open country
+        // shows a few tiles of forest past its edge
+        float overscan = map.IsCave || map.IsVoid ? 0f : 4f;
         t.X = ClampOrCenter(t.X, -overscan + halfW, map.Width + overscan - halfW);
         t.Z = ClampOrCenter(t.Z, -overscan - farOff, map.Height + overscan - nearOff);
 

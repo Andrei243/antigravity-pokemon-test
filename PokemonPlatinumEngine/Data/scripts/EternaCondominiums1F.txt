@@ -1,0 +1,27 @@
+# The Eterna Condominiums, ground floor (plan 06 · R12). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_eterna_city_condominiums_1f.s).
+#
+# A boy trades his Chatot, Charap, for a Buizel (NpcTrades "charap"). FLAG_TRADED_FOR_CHARAP_CHATOT: the trade is
+# done. The Name Rater, who lives here too, waits for a naming screen.
+
+
+script Charap
+  if flag FLAG_TRADED_FOR_CHARAP_CHATOT goto Done
+  ask "Buizel is the coolest Pokémon ever! Will you trade me one for my Chatot?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade charap
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_CHARAP_CHATOT
+  say "Yes! A Buizel, all mine! This is the best day ever!"
+  end
+label NotWanted
+  say "That's not a Buizel! I only want a Buizel."
+  end
+label Waiting
+  say "Aww. Come back if you ever find a Buizel, OK?"
+  end
+label Done
+  say "Has Chatot learned Chatter yet? It can say anything you teach it!"
+  end

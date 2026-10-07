@@ -24,7 +24,7 @@ internal static class SceneTextures
     {
         ownerThread = Environment.CurrentManagedThreadId;
         _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace; _ = RockLedgeFace;
-        _ = BankFace; _ = RockFace; _ = Waterfall;
+        _ = BankFace; _ = RockFace; _ = Waterfall; _ = IslandUnderside;
         _ = LightPool; _ = LampGlow; _ = WindowLight;
     }
 
@@ -113,6 +113,9 @@ internal static class SceneTextures
 
     /// <summary>The face of a step in the ground under rock, snow or a cave's floor.</summary>
     public static Texture2D RockFace => Get("rock_face", NatureArt.RockFace, repeat: true);
+
+    /// <summary>The underside of the Distortion World's islands, which ends in points of rock over the void.</summary>
+    public static Texture2D IslandUnderside => Get("island_underside", NatureArt.IslandUnderside, repeat: true);
 
     /// <summary>The sheet of a waterfall, repeating down it.</summary>
     public static Texture2D Waterfall => Get("waterfall", NatureArt.Waterfall, repeat: true);

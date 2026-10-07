@@ -337,6 +337,71 @@ internal static class NatureArt
         return c;
     }
 
+    // ------------------------------------------------------------------ the Distortion World's islands
+
+    /// <summary>How many tiles of an island's edge one width of its underside's art covers, so its points don't repeat tile by tile.</summary>
+    public const int UndersideTiles = 4;
+
+    /// <summary>Rows of the underside's art: drawn once from an island's edge down to the void's depth.</summary>
+    public const int UndersideRows = 48;
+
+    /// <summary>
+    /// The underside of one of the Distortion World's islands (style guide, "The Distortion World"): its stone's
+    /// edge and two beds of rock in the island's grey-violet, then rock that darkens in two flat steps as it hangs
+    /// down and ends in points of uneven length, each outlined in the darkest shade. Below the points the art is
+    /// empty, so the void shows there. 32 × <see cref="UndersideTiles"/> by <see cref="UndersideRows"/>.
+    /// </summary>
+    public static PixelCanvas IslandUnderside()
+    {
+        const int w = 32 * UndersideTiles, h = UndersideRows;
+        var c = new PixelCanvas(w, h);
+        var top = Rgb(164, 154, 180);
+        var lit = Rgb(138, 128, 156);
+        var rock = Rgb(112, 102, 130);
+        var deep = Rgb(86, 78, 104);
+        var lower = Rgb(92, 84, 112);
+        var lowest = Rgb(70, 62, 90);
+        var ink = Rgb(52, 46, 70);
+
+        // Where the rock ends in each column: a wavy line with points hanging from it (centre, half width, depth)
+        (int At, int Half, int Depth)[] points =
+        {
+            (9, 6, 17), (24, 4, 9), (38, 8, 21), (55, 5, 12), (70, 9, 19), (86, 4, 10), (99, 7, 22), (117, 6, 14)
+        };
+        int Bottom(int x)
+        {
+            int bottom = 22 + (x * 7 / 11 % 5 == 0 ? 1 : 0) + (x / 13 % 3);
+            foreach (var (at, half, depth) in points)
+            {
+                int d = Math.Min(Math.Abs(x - at), Math.Abs(x - at - w));
+                if (d <= half) bottom = Math.Max(bottom, 22 + depth * (half - d) / half);
+            }
+            return Math.Min(h - 1, bottom);
+        }
+
+        for (int x = 0; x < w; x++)
+        {
+            int bottom = Bottom(x);
+            for (int y = 0; y <= bottom; y++)
+            {
+                // The edge, two beds each lit along its top and shaded under, then the hanging rock in two steps
+                Color col = y == 0 ? top
+                    : y is 1 or 8 ? lit
+                    : y is 6 or 7 or 13 or 14 ? deep
+                    : y < 16 ? rock
+                    : y < 30 ? lower
+                    : lowest;
+                // A crack down each bed here and there
+                if (y is > 2 and < 6 && (x + 5) % 23 == 0 || y is > 9 and < 13 && (x + 14) % 29 == 0) col = deep;
+                // The points' outline: the last texel of each column, and the side of a point where it steps down
+                bool stepped = Bottom((x + w - 1) % w) < y || Bottom((x + 1) % w) < y;
+                if (y == bottom || (y > 16 && stepped)) col = ink;
+                c.SetRaw(x, y, col);
+            }
+        }
+        return c;
+    }
+
     // ------------------------------------------------------------------ falling water
 
     /// <summary>

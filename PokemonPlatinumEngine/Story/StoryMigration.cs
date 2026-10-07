@@ -42,6 +42,25 @@ public static class StoryMigration
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
         if (savedVersion < 2) PastTheOpening(story, scripts);
         if (savedVersion < 3) Run(story, scripts, ScriptLibrary.ChapterTwo);
+        else if (savedVersion < 4) Run(story, scripts, ScriptLibrary.ChapterThree);
+        if (savedVersion < 4) RenameTrainers(story);
+    }
+
+    /// <summary>
+    /// Route 205's trainers were placed under ids of our own before Platinum's data filled them (plan 02 · S6): a
+    /// save that beat one under its old id has beaten the data's.
+    /// </summary>
+    private static readonly Dictionary<string, string> RenamedTrainers = new()
+    {
+        ["trainer_jacob"] = "camper_jacob", ["trainer_daniel"] = "hiker_daniel", ["trainer_elizabeth"] = "aroma_lady_elizabeth",
+        ["trainer_zackary"] = "camper_zackary", ["trainer_siena"] = "picnicker_siena", ["trainer_nicholas"] = "hiker_nicholas",
+        ["trainer_kelsey"] = "battle_girl_kelsey", ["trainer_karina"] = "picnicker_karina"
+    };
+
+    private static void RenameTrainers(StoryState story)
+    {
+        foreach (var (old, now) in RenamedTrainers)
+            if (story.HasDefeated(old)) story.Defeat(now);
     }
 
     /// <summary>

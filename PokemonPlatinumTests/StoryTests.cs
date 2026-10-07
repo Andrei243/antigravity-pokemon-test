@@ -545,6 +545,8 @@ public class StoryTests
                     yield return ($"{npc.Name} at {npc.GridX},{npc.GridY} of {map.Name}", script, npc.ScriptFile ?? map.ScriptFileAt(npc.GridX, npc.GridY), map, npc);
             foreach (var (at, script) in map.SignScripts)
                 yield return ($"the sign at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
+            foreach (var (at, script) in map.TileScripts)
+                yield return ($"the tile read at {at.X},{at.Y} of {map.Name}", script, map.ScriptFileAt(at.X, at.Y), map, null);
             foreach (var trigger in map.Triggers)
                 yield return ($"the trigger at {trigger.X},{trigger.Y} of {map.Name}", trigger.Script, trigger.ScriptFile ?? map.Name, map, null);
             foreach (var (at, hidden) in map.HiddenItems)
@@ -596,6 +598,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
         // A Repel's last step (plan 06 · R11)
         started.Add(FieldScripts.RepelWoreOff);
+        // Two trainers who saw the player at once (plan 02 · S6)
+        started.Add(FieldScripts.TrainerPair);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -634,7 +638,7 @@ public class StoryTests
     /// the script belongs to and the map are put back as they were between one way and the next.
     /// </summary>
     private static List<(HeadlessScriptHost Host, ScriptRunner Runner)> EveryWayThrough(Script script, Map? map, NPC? subject, IReadOnlyList<string>? own = null,
-        Action<HeadlessScriptHost>? before = null, (string Item, int Count)? item = null, string? flag = null)
+        Action<HeadlessScriptHost>? before = null, (string Item, int Count)? item = null, string? flag = null, NPC? pair = null)
     {
         var ways = new List<(HeadlessScriptHost, ScriptRunner)>();
         var toTry = new Stack<List<int>>();
@@ -668,7 +672,7 @@ public class StoryTests
             before?.Invoke(host);
 
             var runner = new ScriptRunner(Scripts, host);
-            runner.Start(script, subject, own, item, flag);
+            runner.Start(script, subject, own, item, flag, pair: pair);
             runner.RunToEnd();
             ways.Add((host, runner));
 
@@ -750,6 +754,9 @@ public class StoryTests
                 FieldScripts.ItemBall => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.ItemBallType, Name = "Potion", Item = "Potion", HiddenBy = "FLAG_OBTAINED_TEST_POTION" }),
                 FieldScripts.HiddenItem => EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"),
                 _ when fieldMove => EveryWayThrough(script, new Map(8, 8), obstacle, before: KnowsEveryFieldMove),
+                // Two trainers who came together, beside whoever travels with the player and without anyone
+                FieldScripts.TrainerPair => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer())
+                    .Concat(EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer(), before: host => host.TravelWith(new NPC { Name = "Cheryl" }, "cheryl_eterna_forest"))).ToList(),
                 _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
             };
             if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)
@@ -776,7 +783,8 @@ public class StoryTests
             Assert.True(ItemDatabase.Get(ball.Item!) != null, $"{where} is no item");
             Assert.True(ball.ItemCount >= 1);
             Assert.False(string.IsNullOrEmpty(ball.HiddenBy), $"{where} has no flag to keep it gone");
-            Assert.Equal(FieldScripts.ItemBall, FieldScripts.For(ball));
+            // A ball whose place's script decides what is in it (Turnback Cave's last room) runs that script
+            Assert.Equal(ball.Script ?? FieldScripts.ItemBall, FieldScripts.For(ball));
             Assert.True(map.AreaAt(ball.GridX, ball.GridY)?.Open != false, $"{where} lies outside the open areas");
         }
         // Each ball has a flag of its own: picking one up takes no other away. But for one the original shares: the
@@ -794,7 +802,8 @@ public class StoryTests
     [Fact]
     public void AnItemPickedUpIsThePlayersAndItsBallIsGoneForGood()
     {
-        foreach (var (map, ball) in ItemBalls().ToList())
+        // A ball whose own script decides what is in it has a test of its own (TurnbackCaveTests)
+        foreach (var (map, ball) in ItemBalls().Where(b => b.Ball.Script == null).ToList())
         {
             var host = new HeadlessScriptHost { Map = map };
             map.ApplyPresence(host.Story.Has);

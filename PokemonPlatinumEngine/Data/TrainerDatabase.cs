@@ -31,6 +31,14 @@ public sealed class TrainerRecord
 
     public int PrizeMoney { get; set; }
     public List<TrainerPokemonRecord> Party { get; set; } = new();
+
+    /// <summary>
+    /// Who the trainer is at each of the Vs. Seeker's five levels (plan 06 · R12; <c>gVsSeekerRematchData</c>): a
+    /// trainer's id for each, null for a level with no team of its own, as long as the original's row goes. Absent
+    /// for one who can't be battled again.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string?>? Rematches { get; set; }
 }
 
 /// <summary>A Pokémon of a trainer's team as the original keeps it, with the personality it works out for it.</summary>

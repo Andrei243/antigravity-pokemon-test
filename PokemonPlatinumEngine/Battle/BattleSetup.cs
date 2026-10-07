@@ -38,7 +38,10 @@ public sealed class BattleSetup
     public required Pokedex Pokedex { get; init; }
 
     /// <summary>Where caught Pokémon go when the party is full.</summary>
-    public List<Pokemon>? PcStorage { get; init; }
+    public PcBoxes? PcStorage { get; init; }
+
+    /// <summary>The name of the place it is fought in: where a Pokémon caught in it was met (plan 06 · R12).</summary>
+    public string? Place { get; init; }
 
     public BattleFormat Format { get; init; } = BattleFormat.Single;
 

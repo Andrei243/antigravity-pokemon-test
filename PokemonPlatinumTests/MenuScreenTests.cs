@@ -907,63 +907,242 @@ public class MenuScreenTests
         var turtwig = Mon("Turtwig", 5);
         var starly = Mon("Starly", 4);
         var party = PartyOf(turtwig, starly);
-        var stored = new List<Pokemon>();
+        var pc = new PcBoxes();
         var notes = new List<string>();
-        var pc = new PCScreen();
-        pc.Open();
-        Assert.Same(turtwig, pc.Under(party, stored));
+        var screen = new PCScreen();
+        screen.Open(pc);
+        Assert.Same(turtwig, screen.Under(party, pc));
 
-        // A party Pokémon goes into the first box
-        pc.Confirm(party, stored, notes.Add);
+        // A on a member of the team opens what can be done with it; STORE puts it in the box on the screen
+        screen.Confirm(party, pc, notes.Add);
+        Assert.Equal(new[] { PcAction.Move, PcAction.Store, PcAction.Mark, PcAction.Release, PcAction.Cancel }, screen.Menu);
+        screen.Choose(PcAction.Store, party, pc, notes.Add);
         Assert.Equal(new[] { starly }, party.Members);
-        Assert.Equal(new[] { turtwig }, stored);
+        Assert.Same(turtwig, pc[0, 0]);
         Assert.Contains("Box 1", notes.Last());
-        Assert.Same(starly, pc.Under(party, stored));
 
-        // Never the last one
-        pc.Confirm(party, stored, notes.Add);
+        // Never the last one able to battle
+        screen.Choose(PcAction.Store, party, pc, notes.Add);
         Assert.Single(party.Members);
-        Assert.Equal("That's your last Pokémon!", notes.Last());
+        Assert.Equal("That's your last Pokémon able to battle!", notes.Last());
 
-        // In the box: the first slot holds it, the next is empty
-        pc.Move(1, 0, party.Count);
-        Assert.Same(turtwig, pc.Under(party, stored));
-        pc.Move(1, 0, party.Count);
-        Assert.Null(pc.Under(party, stored));
-        pc.Confirm(party, stored, notes.Add);
-        Assert.Single(stored);
-
-        // Taken out again, it joins the party
-        pc.Move(-1, 0, party.Count);
-        pc.Confirm(party, stored, notes.Add);
+        // WITHDRAW takes it out of its place onto the team, healed
+        turtwig.CurrentHP = 1;
+        screen.Move(1, 0, party.Count);
+        Assert.Same(turtwig, screen.Under(party, pc));
+        screen.Choose(PcAction.Withdraw, party, pc, notes.Add);
         Assert.Equal(new[] { starly, turtwig }, party.Members);
-        Assert.Empty(stored);
+        Assert.Equal(turtwig.MaxHP, turtwig.CurrentHP);
+        Assert.Null(pc[0, 0]);
 
-        // A full party takes nobody
-        var full = PartyOf(Enumerable.Range(0, Party.MaxSize).Select(_ => Mon("Bidoof", 3)).ToArray());
-        stored.Add(Mon("Shinx", 3));
-        pc.Confirm(full, stored, notes.Add);
-        Assert.Single(stored);
-        Assert.Equal("Your party is full.", notes.Last());
+        // MOVE picks one up and A puts it down in another place; on someone, the two change places
+        var shinx = Mon("Shinx", 3);
+        pc.PutIn(0, 1, shinx);
+        screen.Move(1, 0, party.Count);
+        Assert.Same(shinx, screen.Under(party, pc));
+        screen.Choose(PcAction.Move, party, pc, notes.Add);
+        Assert.Same(shinx, screen.Held);
+        screen.Move(0, 1, party.Count);
+        screen.Confirm(party, pc, notes.Add);
+        Assert.Null(screen.Held);
+        Assert.Same(shinx, pc[0, PCScreen.Columns + 1]);
 
-        // The thirty-first Pokémon lands in the second box, and the screen turns to it
-        stored.Clear();
-        for (int i = 0; i < PCScreen.BoxSize; i++) stored.Add(Mon("Bidoof", 2));
-        pc.Open();
-        pc.Confirm(full, stored, notes.Add);
-        Assert.Equal(1, pc.Box);
-        Assert.Contains("Box 2", notes.Last());
-        pc.Zone = StorageZone.Box;
-        pc.Cell = 0;
-        Assert.Equal(PCScreen.BoxSize, pc.StoredIndex);
-        Assert.Same(stored[^1], pc.Under(full, stored));
+        // Carried back to the team, it joins it
+        screen.Choose(PcAction.Move, party, pc, notes.Add);
+        screen.Zone = StorageZone.Party;
+        screen.PartyIndex = party.Count;
+        screen.Confirm(party, pc, notes.Add);
+        Assert.Equal(new[] { starly, turtwig, shinx }, party.Members);
 
-        // The name of a box is nothing to press
-        pc.Zone = StorageZone.BoxName;
-        int count = stored.Count;
-        pc.Confirm(full, stored, notes.Add);
-        Assert.Equal(count, stored.Count);
-        Assert.Null(pc.Under(full, stored));
+        // B puts a Pokémon carried back where it was
+        screen.PartyIndex = 0;
+        screen.Choose(PcAction.Move, party, pc, notes.Add);
+        Assert.Equal(2, party.Count);
+        Assert.True(screen.Cancel(party, pc));
+        Assert.Equal(new[] { starly, turtwig, shinx }, party.Members);
+    }
+
+    [Fact]
+    public void TheBoxesHaveNamesWallpapersAndMarks()
+    {
+        var pc = new PcBoxes();
+        var party = PartyOf(Mon("Turtwig", 5));
+        var notes = new List<string>();
+        var screen = new PCScreen();
+        Assert.Equal("Box 1", pc.Boxes[0].Name);
+        Assert.Equal(1, pc.Boxes[17].Wallpaper);
+
+        // A on the box's name: a new name, cut to eight letters, and the next wallpaper the PC has
+        screen.Open(pc);
+        screen.Zone = StorageZone.BoxName;
+        screen.Confirm(party, pc, notes.Add);
+        Assert.Equal(new[] { PcBoxAction.Name, PcBoxAction.Wallpaper, PcBoxAction.Cancel }, screen.BoxMenu);
+        screen.ChooseForBox(PcBoxAction.Name, pc);
+        Assert.NotNull(screen.Naming);
+        screen.FinishNaming(pc, "Favourites");
+        Assert.Equal("Favourit", pc.Boxes[0].Name);
+        pc.Boxes[0].Wallpaper = 15;
+        screen.NextWallpaper(pc);
+        Assert.Equal(0, pc.Boxes[0].Wallpaper);
+        pc.UnlockedWallpapers = 1;
+        pc.Boxes[0].Wallpaper = 15;
+        screen.NextWallpaper(pc);
+        Assert.Equal("Distortion", PcBoxes.WallpaperNames[pc.Boxes[0].Wallpaper]);
+
+        // MARK: the circle and the star, then OK
+        var mon = Mon("Starly", 4);
+        pc.PutIn(0, 0, mon);
+        screen.Zone = StorageZone.Box;
+        screen.Cell = 0;
+        screen.Choose(PcAction.Mark, party, pc, notes.Add);
+        screen.Confirm(party, pc, notes.Add);
+        screen.MarkIndex = 4;
+        screen.Confirm(party, pc, notes.Add);
+        screen.MarkIndex = 6;
+        screen.Confirm(party, pc, notes.Add);
+        Assert.Equal(Markings.Circle | Markings.Star, (Markings)mon.Marks);
+    }
+
+    [Fact]
+    public void APokemonSentToThePcGoesToTheBoxItWasLeftOnAndOn()
+    {
+        // PCBoxes_TryStoreBoxMon: the current box first, then the next ones, round to the first
+        var pc = new PcBoxes { CurrentBox = 17 };
+        for (int i = 0; i < PcBoxes.BoxSize; i++) pc.PutIn(17, i, Mon("Bidoof", 2));
+        Assert.Equal((0, 0), pc.Store(Mon("Shinx", 3)));
+        Assert.Equal((0, 1), pc.Store(Mon("Shinx", 3)));
+
+        // Going in restores its PP and takes a Shaymin back to its Land Forme
+        var tired = Mon("Starly", 6);
+        tired.Moves[0].CurrentPP = 0;
+        pc.Store(tired);
+        Assert.Equal(tired.Moves[0].MaxPP, tired.Moves[0].CurrentPP);
+
+        // A save from before laid its one list out thirty to a box
+        var old = PcBoxes.FromList(Enumerable.Range(0, 31).Select(_ => Mon("Bidoof", 2)));
+        Assert.Equal(30, old.Boxes[0].Count);
+        Assert.NotNull(old[1, 0]);
+    }
+
+    [Fact]
+    public void APokemonThatAloneKnowsAMoveTheFieldNeedsComesBackWhenReleased()
+    {
+        // sReleaseBlockingMoves: Surf, Rock Climb and Waterfall
+        var pc = new PcBoxes();
+        var swimmer = Mon("Bibarel", 20);
+        swimmer.Moves.Clear();
+        swimmer.Moves.Add(MoveDatabase.Create("Surf"));
+        var party = PartyOf(Mon("Turtwig", 5), swimmer);
+        Assert.Equal(ReleaseOutcome.CameBack, pc.Release(swimmer, party));
+        Assert.Contains(swimmer, party.Members);
+
+        // With another that knows it, in a box, it can go
+        var other = Mon("Buizel", 20);
+        other.Moves.Clear();
+        other.Moves.Add(MoveDatabase.Create("Surf"));
+        pc.Store(other);
+        Assert.Equal(ReleaseOutcome.Released, pc.Release(swimmer, party));
+        Assert.DoesNotContain(swimmer, party.Members);
+
+        // The team's last able Pokémon stays
+        Assert.Equal(ReleaseOutcome.LastOne, pc.Release(party.Members[0], party));
+    }
+
+    [Fact]
+    public void TheBoxesAreSavedPlaceByPlace()
+    {
+        var pc = new PcBoxes { CurrentBox = 3, UnlockedWallpapers = 5 };
+        pc.Rename(3, "Bugs");
+        pc.Boxes[3].Wallpaper = 18;
+        var starly = Mon("Starly", 9);
+        starly.Marks = (int)(Markings.Heart | Markings.Square);
+        starly.MetLocation = "Route 201";
+        starly.MetLevel = 3;
+        pc.PutIn(3, 17, starly);
+
+        var back = GameDataFiles.Deserialize<SavedBoxes>(GameDataFiles.Serialize(SavedBoxes.From(pc))).ToBoxes();
+        Assert.Equal((3, 5, "Bugs", 18), (back.CurrentBox, back.UnlockedWallpapers, back.Boxes[3].Name, back.Boxes[3].Wallpaper));
+        Assert.Equal("Starly", back[3, 17]!.Species.Name);
+        Assert.Equal(starly.Marks, back[3, 17]!.Marks);
+        Assert.Equal(("Route 201", 3), (back[3, 17]!.MetLocation, back[3, 17]!.MetLevel));
+        Assert.Equal(1, back.Count);
+    }
+
+    /// <summary>
+    /// Style guide, "Box wallpapers": the twenty-four are painted in code, the same every time, each its own, and quiet
+    /// enough for the icons to read on them: no pixel darker than 0.4 in lightness, none more than 0.36 from the rest.
+    /// </summary>
+    [Fact]
+    public void EveryWallpaperIsItsOwnAndQuietEnoughForTheIcons()
+    {
+        static Color[] Pixels(PixelCanvas canvas)
+        {
+            var pixels = new Color[canvas.Width * canvas.Height];
+            for (int y = 0; y < canvas.Height; y++)
+                for (int x = 0; x < canvas.Width; x++) pixels[y * canvas.Width + x] = canvas.Get(x, y);
+            return pixels;
+        }
+
+        Assert.Equal(24, PcBoxes.WallpaperNames.Count);
+        var painted = new List<Color[]>();
+        for (int i = 0; i < PcBoxes.WallpaperNames.Count; i++)
+        {
+            var pixels = Pixels(BoxWallpapers.Paint(i));
+            Assert.Equal(pixels, Pixels(BoxWallpapers.Paint(i)));
+
+            double darkest = 1, lightest = 0;
+            foreach (var c in pixels)
+            {
+                if (c.A < 255) continue;
+                double lightness = (0.2126 * c.R + 0.7152 * c.G + 0.0722 * c.B) / 255;
+                darkest = Math.Min(darkest, lightness);
+                lightest = Math.Max(lightest, lightness);
+            }
+            string name = PcBoxes.WallpaperNames[i];
+            Assert.True(darkest >= 0.4, $"{name} is too dark ({darkest:F3})");
+            Assert.True(lightest - darkest <= 0.36, $"{name} is too loud ({darkest:F3} to {lightest:F3})");
+
+            // Its own: most of it differs from every other
+            foreach (var other in painted)
+            {
+                int differ = 0;
+                for (int p = 0; p < pixels.Length; p++)
+                    if (Math.Abs(pixels[p].R - other[p].R) + Math.Abs(pixels[p].G - other[p].G) + Math.Abs(pixels[p].B - other[p].B) > 12) differ++;
+                Assert.True(differ > pixels.Length / 4, $"{name} looks like an earlier wallpaper");
+            }
+            painted.Add(pixels);
+
+            // The corners are rounded off: the lining's corner is clear, its middle whole
+            Assert.Equal(0, pixels[0].A);
+            Assert.Equal(255, pixels[pixels.Length / 2].A);
+        }
+    }
+
+    [Fact]
+    public void EachColourOfTheTrainerCardIsItsOwnAndTheMarksAreSix()
+    {
+        // Style guide, "Trainer Card": slate without a Pokédex, then teal, cobalt, bronze, silver, gold and black
+        var colours = Enum.GetValues<TrainerCardRules.CardColour>().Select(ModernUi.CardColor).ToList();
+        Assert.Equal(7, colours.Count);
+        Assert.Equal(colours.Count, colours.Distinct().Count());
+
+        // The marks the PC draws are the six the boxes keep, in their order
+        Assert.Equal(Enum.GetValues<Markings>().Length - 1, ModernUi.MarkNames.Length);
+        for (int m = 0; m < ModernUi.MarkNames.Length; m++) Assert.Equal(ModernUi.MarkNames[m], ((Markings)(1 << m)).ToString());
+    }
+
+    [Fact]
+    public void TheTrainerCardTurnsOverAndOpensOnItsFront()
+    {
+        var card = new TrainerCardScreen();
+        card.Open();
+        Assert.False(card.ShowingBack);
+        card.Flip();
+        Assert.True(card.ShowingBack);
+        // Opened again, it shows its front
+        card.Close();
+        card.Open();
+        Assert.False(card.ShowingBack);
     }
 
     // ------------------------------------------------------------------ the choice of a partner

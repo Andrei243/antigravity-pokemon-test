@@ -204,6 +204,13 @@ void main()
         Shape(new Rectangle(center.X - r, center.Y - r, r * 2, r * 2), r, clear, clear, color, thickness);
     }
 
+    /// <summary>A rounded box turned by <paramref name="degrees"/> about its middle (a diamond is a square turned by 45).</summary>
+    public static void Turned(Vector2 center, float halfWidth, float halfHeight, float radius, float degrees, Color color)
+    {
+        float a = degrees * MathF.PI / 180f;
+        Box(center, halfWidth, halfHeight, radius, color, color, default, 0f, 0f, 1f, new Vector2(MathF.Cos(a), MathF.Sin(a)));
+    }
+
     /// <summary>A line with round ends.</summary>
     public static void Line(Vector2 a, Vector2 b, float thickness, Color color)
     {

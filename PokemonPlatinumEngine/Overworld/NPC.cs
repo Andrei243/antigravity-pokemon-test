@@ -27,6 +27,9 @@ public class NPC
     public bool HasSpottedPlayer { get; set; } = false;
     public float ExclamationTimer { get; set; } = 0f;
 
+    /// <summary>How they move about when nobody sends them anywhere (plan 02 · S6); null for someone who stands still.</summary>
+    public PersonMovement? Movement { get; set; }
+
     /// <summary>What shows in the bubble over this person's head, for how much longer, and for how long it has.</summary>
     public EmoteBubble Bubble { get; private set; }
     public float BubbleTimer { get; private set; }
@@ -47,6 +50,12 @@ public class NPC
         BubbleAge += dt;
     }
     public bool HasBattled { get; set; } = false;
+
+    /// <summary>
+    /// A trainer the Vs. Seeker found wanting a rematch (plan 06 · R12): spins where they stand until spoken to, a
+    /// hundred steps go by or the player goes somewhere else. Never saved, as in the original.
+    /// </summary>
+    public bool ReadyForRematch { get; set; }
 
     // Walking (a trainer stepping up to the player): the grid position is where the current step ends
     public float StepOffsetX { get; set; }

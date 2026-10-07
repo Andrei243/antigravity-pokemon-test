@@ -1,0 +1,258 @@
+{
+  "name": "OreburghNorthHouse1F",
+  "displayName": "Oreburgh City",
+  "bgmTrack": "sinnoh/oreburgh",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###########D########"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "####..#########...##",
+    "###...........#....#",
+    "###..####..........#",
+    "###..####..........#",
+    "###................#",
+    "###................#",
+    "###..####..........#",
+    "###..###...........#",
+    "###................#",
+    "####..............##",
+    "###########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stairs",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 278,
+      "targetY": 747,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "expert_f",
+      "name": "Expert",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Trade a Pokémon away and whatever it's holding goes along with it.",
+        "I once sent off a dear little Amulet Coin that way. Check their paws before you trade!"
+      ]
+    },
+    {
+      "id": "school_kid_f",
+      "name": "School Kid",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 7,
+      "facing": "Down",
+      "script": "Kazza"
+    },
+    {
+      "id": "pokemon_breeder_m",
+      "name": "Pokémon Breeder",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "A breeder's secret for you: a Pokémon that came to you in a trade grows up in a hurry.",
+        "It takes a bigger share of experience from every battle than one you caught yourself."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

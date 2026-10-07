@@ -427,6 +427,26 @@ public sealed class WorldIndexFile
     public string Region { get; set; } = "";
     public List<WorldMapEntry> Maps { get; set; } = new();
     public List<string> Areas { get; set; } = new();
+
+    /// <summary>Parts of a map the original leaves out until the story reveals them (plan 01 · M8: the Spring Path).</summary>
+    public List<WorldHiddenPlace> Hidden { get; set; } = new();
+}
+
+/// <summary>
+/// Chunks of a map that are forest until a story variable holds the original's number for them
+/// (<see cref="Overworld.Map.HiddenPlace"/>): the original swaps the Spring Path's four for forest until then.
+/// </summary>
+public sealed class WorldHiddenPlace
+{
+    public string Map { get; set; } = "Sinnoh";
+    public string Var { get; set; } = "";
+    public int Value { get; set; }
+
+    /// <summary>The first chunk's column and row, and how many chunks across and down.</summary>
+    public int ChunkX { get; set; }
+    public int ChunkY { get; set; }
+    public int ChunksWide { get; set; } = 1;
+    public int ChunksHigh { get; set; } = 1;
 }
 
 /// <summary>One map the game makes from a matrix: the overworld, or a place that is a matrix of its own.</summary>
@@ -497,6 +517,12 @@ public sealed class WorldOverlayFile
     public Dictionary<string, string>? SignScripts { get; set; }
 
     /// <summary>
+    /// Tiles read by facing them (the original's "bg events": an inscription, a pillar), by the number of the
+    /// original's script they run: every such tile of the area runs our script of that name (plan 01 · M8).
+    /// </summary>
+    public Dictionary<string, string>? Read { get; set; }
+
+    /// <summary>
     /// Which of the area's triggers start a script, by the trigger's number in the area file. The tiles, the
     /// variable and its value are the original's; the script is ours. A trigger not listed does nothing.
     /// </summary>
@@ -518,6 +544,9 @@ public sealed class OverlayDoor
     public int X { get; set; }
     public int Y { get; set; }
     public Direction Facing { get; set; } = Direction.Up;
+
+    /// <summary>A story flag the door stays locked until (plan 02 · S6); left out for a door that is always open.</summary>
+    public string? OpenedBy { get; set; }
 }
 
 /// <summary>A warp into a gate house, and the warp of the area on its far side one comes out at.</summary>
@@ -579,6 +608,15 @@ public sealed class OverlayPerson
     /// <summary>A story flag they wait for: they are on the map only while it is set.</summary>
     public string? ShownBy { get; set; }
     public MapFile.TrainerRecord? Trainer { get; set; }
+
+    /// <summary>For an item ball the overlay places itself (one whose script says what is in it): the item it holds.</summary>
+    public string? Item { get; set; }
+
+    /// <summary>
+    /// Keeps them standing where the original has them move about (plan 02 · S6): someone a scene of ours walks
+    /// from a tile it counts on.
+    /// </summary>
+    public bool Still { get; set; }
 }
 
 /// <summary>A tile that leads elsewhere: to the warp numbered <see cref="ToWarp"/> of the area <see cref="To"/>.</summary>

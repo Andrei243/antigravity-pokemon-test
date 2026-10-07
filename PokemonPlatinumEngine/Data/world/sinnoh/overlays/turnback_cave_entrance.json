@@ -1,0 +1,7 @@
+{
+  "area": "turnback_cave_entrance",
+  // Its four doors are aimed as the player comes in (scripts/turnback_cave_entrance.txt, TurnbackCave); the fifth
+  // leads back out to Sendoff Spring
+  "bgmTrack": "sinnoh/turnback_cave",
+  "read": { "2": "Inscription" }
+}

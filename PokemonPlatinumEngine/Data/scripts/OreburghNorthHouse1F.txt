@@ -1,0 +1,26 @@
+# A house in the north of Oreburgh City (plan 06 · R12). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_oreburgh_city_north_house_1f.s).
+#
+# A girl trades her Abra, Kazza, for a Machop (NpcTrades "kazza"). FLAG_TRADED_FOR_KAZZA_ABRA: the trade is done.
+
+
+script Kazza
+  if flag FLAG_TRADED_FOR_KAZZA_ABRA goto Done
+  ask "I've been hoping for a Machop! Would you trade me one for my Abra?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade kazza
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_KAZZA_ABRA
+  say "Yay, a Machop! Please be nice to my Abra, won't you?"
+  end
+label NotWanted
+  say "Hmm? That isn't a Machop. I was hoping for a Machop."
+  end
+label Waiting
+  say "Oh... Well, if you ever have a Machop to spare, I'll be right here."
+  end
+label Done
+  say "Our Pokémon swapped homes, and now we're friends too!"
+  end

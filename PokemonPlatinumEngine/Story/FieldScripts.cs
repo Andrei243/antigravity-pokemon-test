@@ -15,6 +15,9 @@ public static class FieldScripts
     public const string Briefcase = "common.Briefcase";
     public const string Attendant = "common.Attendant";
     public const string Trainer = "common.Trainer";
+
+    /// <summary>Two trainers who saw the player at once and came together (plan 02 · S6); <c>pair</c> is the second.</summary>
+    public const string TrainerPair = "common.TrainerPair";
     public const string Talk = "common.Talk";
     public const string Sign = "common.Sign";
     public const string ItemBall = "common.ItemBall";

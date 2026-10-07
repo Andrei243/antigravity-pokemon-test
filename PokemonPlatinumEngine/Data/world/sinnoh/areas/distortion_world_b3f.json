@@ -1,0 +1,21 @@
+{
+  "key": "distortion_world_b3f",
+  "index": 576,
+  "name": "Distortion World",
+  "matrix": 272,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "InteriorOrthographic",
+  "battleBackground": "DistortionWorld",
+  "dayMusic": "PL_D_GIRATINA",
+  "nightMusic": "PL_D_GIRATINA",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

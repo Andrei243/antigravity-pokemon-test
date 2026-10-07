@@ -26,8 +26,14 @@ internal sealed record BuildingStyle
     public WindowKind Window { get; init; } = WindowKind.Cottage;
     public bool GlassDoor { get; init; }
 
-    /// <summary>A sliding door of ribbed metal, two bays wide: works and warehouses.</summary>
+    /// <summary>A sliding door of ribbed metal, two bays wide: works and warehouses. In a wall of logs, a pair of barn doors in boards.</summary>
     public bool SlidingDoor { get; init; }
+
+    /// <summary>
+    /// A loft door in each storey above the main door, under a beam with a rope and a hook to hoist goods in by: a
+    /// harbour's storehouse (Snowpoint City).
+    /// </summary>
+    public bool Loft { get; init; }
 
     public SignKind Sign { get; init; }
 
@@ -215,7 +221,7 @@ internal static partial class BuildingArt
                 switch (bays[i])
                 {
                     case BayKind.Door when sliding:
-                        SlidingDoor(c, Math.Clamp(cx, 30, w - 30), h);
+                        SlidingDoor(c, Math.Clamp(cx, 30, w - 30), h, timber: s.Wall == WallKind.Log);
                         break;
                     case BayKind.Door when s.Portal == 0:
                         Door(c, cx, h, s, DoorLight(b, i, light));
@@ -229,9 +235,12 @@ internal static partial class BuildingArt
                         Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17, s, light);
                         break;
                 }
-                // Every storey above has a window in every bay
+                // Every storey above has a window in every bay, or over a storehouse's door its loft door
                 for (int k = 1; k < s.Storeys; k++)
-                    Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17 - k * UpperStorey, s with { FlowerBoxes = false }, light);
+                {
+                    if (s.Loft && bays[i] == BayKind.Door) LoftDoor(c, sliding ? Math.Clamp(cx, 30, w - 30) : cx, h - 17 - k * UpperStorey, top: k == s.Storeys - 1);
+                    else Window(c, cx + (i == 0 ? 4 : i == bays.Length - 1 ? -4 : 0), h - 17 - k * UpperStorey, s with { FlowerBoxes = false }, light);
+                }
             }
             if (s.RoseWindow) RoseWindow(c, w / 2, 30);
             EaveShade(c, 0, w);

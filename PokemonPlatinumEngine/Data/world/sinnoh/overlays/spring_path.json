@@ -1,0 +1,6 @@
+{
+  "area": "spring_path",
+  // The way from Route 214 to Sendoff Spring. The original leaves its chunk out of the region (forest in its
+  // place) until the story reveals it, after the Distortion World or the Hall of Fame (world.json, "hidden")
+  "bgmTrack": "sinnoh/route210"
+}

@@ -585,6 +585,55 @@ public class MapImportTests
         Assert.True(balls >= 37 && hidden >= 20, $"{balls} balls and {hidden} hidden items");
     }
 
+    /// <summary>A Nitro archive of the given members, as the original's NARCs are laid out (header, BTAF, BTNF, GMIF).</summary>
+    private static byte[] Narc(params byte[][] members)
+    {
+        var data = new List<byte>();
+        var table = new List<byte>(Le(members.Length));
+        foreach (var member in members)
+        {
+            table.AddRange(Le(data.Count, data.Count + member.Length));
+            data.AddRange(member);
+            while (data.Count % 4 != 0) data.Add(0xFF);
+        }
+        byte[] Section(string magic, List<byte> body) => Join(Encoding.ASCII.GetBytes(magic), Le(8 + body.Count), body.ToArray());
+        var btaf = Section("BTAF", table);
+        var btnf = Section("BTNF", new List<byte>(Le(4, 0x10000)));
+        var gmif = Section("GMIF", data);
+        int size = 16 + btaf.Length + btnf.Length + gmif.Length;
+        var header = Join(Encoding.ASCII.GetBytes("NARC"), Le16(0xFFFE, 0x0100), Le(size), Le16(16, 3));
+        return Join(header, btaf, btnf, gmif);
+    }
+
+    [Fact]
+    public void TheDistortionWorldsFloorsLieAtOffsetsAndItsFloatingFloorsAreRead()
+    {
+        // Member 0: two maps, { header, file, x, altitude, z }; then each map's file: five sizes, then its floating
+        // platforms (a count and 20 bytes each). B2F has a floor nine up with attributes 0, and a wall that is left out
+        var mapInfo = Join(Le(2), Le(573), Le16(0, 21, 288, 10), Le(575), Le16(1, 15, 224, 0));
+        var firstFloor = Join(Le(0, 0, 0, 0, 4), Le(0));
+        var platforms = Join(Le(2),
+            Le16(0, 0, 15, 233, 0, 3, 0, 1, 4, 4),     // a floor: x 15 to 18, z 0 to 1, attributes 0, rows of 4
+            Le16(1, 0, 30, 225, 15, 0, 8, 8, 32, 32)); // a west wall: never walked here
+        var b2f = Join(Le(0, platforms.Length, 0, 0, 0), platforms);
+        // Attributes: east first, a row of four to each step south; open at (1,0) and (2,1), the rest blocked
+        var attributes = Le16(0x8000, 0x005B, 0x8000, 0x8000, 0x8000, 0x8000, 0x0000, 0x8000);
+
+        var world = DistortionWorld.Parse(Narc(mapInfo, firstFloor, b2f), Narc(attributes));
+        Assert.Equal((21, 288, 10), world.Offsets[573]);
+        Assert.Equal((15, 224, 0), world.Offsets[575]);
+        Assert.False(world.Floors.ContainsKey(573));
+        var floor = Assert.Single(world.Floors[575]);
+        // In tiles of B2F's own map: the floor's corner less the map's offset, and its height above the map's
+        Assert.Equal((0, 0, 4, 2, 9), (floor.X, floor.Z, floor.Width, floor.Depth, floor.Height));
+        Assert.False(floor.Solid(1, 0));
+        Assert.Equal((byte)TileBehavior.LongLedgeSouth, floor.Behaviour(1, 0));
+        Assert.False(floor.Solid(2, 1));
+        Assert.True(floor.Solid(0, 0) && floor.Solid(3, 1));
+
+        Assert.Throws<InvalidDataException>(() => DistortionWorld.Narc(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 }));
+    }
+
     [Fact]
     public void BehaviourNamesAreNumberedByTheirPlaceInTheList()
     {

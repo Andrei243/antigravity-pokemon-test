@@ -153,11 +153,13 @@ public class WorldTests
                 Assert.True(map.GetSignboardAt(named!.X, named.Z) == overlay.Signs![sign], $"{key}: '{sign}' is not a sign that can be read");
             }
 
+            // A door may be listed as locked too: shut until the story opens it, it says where it will lead (the
+            // Valley Windworks', locked from inside until the Works Key)
             foreach (var door in overlay.Doors ?? new())
             {
                 Assert.InRange(door.Warp, 0, file.Warps.Count - 1);
                 Assert.True(MapDatabase.MapNames.Contains(door.Map), $"{key}: door {door.Warp} leads to {door.Map}, which is no map");
-                Assert.True(overlay.Locked?.Contains(door.Warp) != true, $"{key}: door {door.Warp} is both open and locked");
+                Assert.Single(overlay.Doors!, d => d.Warp == door.Warp);
             }
             foreach (int locked in overlay.Locked ?? new())
                 Assert.InRange(locked, 0, file.Warps.Count - 1);
@@ -387,8 +389,9 @@ public class WorldTests
     [Fact]
     public void PeopleStandOnOpenGroundWhereTheyCanBeTalkedTo()
     {
-        // The whole game from its start, through every warp, by someone who can surf and clear what is in the way
-        var reached = WorldWalk.From(MapNamed, RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!);
+        // The whole game from its start, through every warp, by someone who can surf and clear what is in the way, and
+        // on from where only the story takes the player (the Distortion World)
+        var reached = WorldWalk.From(MapNamed, WorldWalk.StoryArrivals.Prepend(RegionDatabase.Get(RegionDatabase.Sinnoh)!.Start!).ToArray());
         Assert.All(BuiltMaps.Value.Values, built => Assert.True(reached.ContainsKey(built), $"{built.Name} can't be reached from Twinleaf Town"));
 
         int people = 0;
@@ -404,9 +407,10 @@ public class WorldTests
                 string who = $"{map.Name}: {npc.Name} at ({npc.GridX},{npc.GridY})";
                 Assert.True(map.AreaAt(npc.GridX, npc.GridY)?.Open, $"{who} stands outside the open areas");
                 Assert.False(map.IsSolid(npc.GridX, npc.GridY), $"{who} stands in something solid");
-                // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's)
-                Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit,
-                    $"{who} stands on a warp");
+                // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's),
+                // and someone the story sends away may stand in a doorway until it does (Floaroma's grunts at the meadow's)
+                Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit
+                    || npc.HiddenBy != null, $"{who} stands on a warp");
                 Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY) && !(n.HiddenBy is { } h && WorldWalk.HiddenAtStart.Value.Contains(h)));
                 Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
                 Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing, $"{who} has nothing to say");

@@ -362,6 +362,38 @@ public class Pokemon
     /// </summary>
     public int Pokerus { get; set; }
 
+    /// <summary>
+    /// The six marks the PC's boxes put on a Pokémon to sort it by (plan 06 · R12): a bit each for the circle,
+    /// triangle, square, heart, star and diamond (<see cref="Markings"/>).
+    /// </summary>
+    public int Marks { get; set; }
+
+    /// <summary>
+    /// Where it was met (plan 06 · R12): the name of the place, as the original writes the location's name, or a
+    /// name of its own for how it came ("a trade"); null for one met before this was kept.
+    /// </summary>
+    public string? MetLocation { get; set; }
+
+    /// <summary>Its level when it was met (0 for one hatched, as in the original).</summary>
+    public int MetLevel { get; set; }
+
+    /// <summary>The day it was met (the game's own day, <see cref="Core.GameClock.Today"/>).</summary>
+    public DateTime? MetDate { get; set; }
+
+    /// <summary>Notes where, on what day and at what level it was met, as catching it or being given it does.</summary>
+    public void Met(string? place, DateTime day)
+    {
+        MetLocation = place;
+        MetLevel = Level;
+        MetDate = day.Date;
+    }
+
+    /// <summary>
+    /// The language of the game it came from, when not this one's (plan 06 · R12): a Pokémon from abroad gains 1.7
+    /// times the EXP instead of 1.5. Null for one of this game's language.
+    /// </summary>
+    public string? Language { get; set; }
+
     /// <summary>What it has done toward an evolution that counts something: steps walked, uses of a move, foes knocked out
     /// (the keys are <see cref="Evolution"/>'s).</summary>
     public Dictionary<string, int> EvolutionProgress { get; private set; } = new();
@@ -885,6 +917,11 @@ public class Pokemon
         Ball = other.Ball;
         OriginalTrainer = other.OriginalTrainer;
         Pokerus = other.Pokerus;
+        Marks = other.Marks;
+        MetLocation = other.MetLocation;
+        MetLevel = other.MetLevel;
+        MetDate = other.MetDate;
+        Language = other.Language;
 
         CurrentHP = other.CurrentHP;
         MaxHP = other.MaxHP;

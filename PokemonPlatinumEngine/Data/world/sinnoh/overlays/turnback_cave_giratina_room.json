@@ -1,0 +1,13 @@
+{
+  "area": "turnback_cave_giratina_room",
+  "bgmTrack": "sinnoh/turnback_cave",
+  "read": { "4": "Inscription" },
+  "people": {
+    // The ball that waits here once Giratina is caught (scripts/turnback_cave_giratina_room.txt)
+    // (what is in it hangs on the rooms walked: its script picks)
+    "item": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Stardust", "script": "Item" },
+    // After the Hall of Fame, if it got away in the Distortion World (FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA,
+    // which a new game sets: it can't be drawn standing in the field until plan 10 · F1)
+    "giratina": { "name": "Giratina", "script": "Giratina" }
+  }
+}

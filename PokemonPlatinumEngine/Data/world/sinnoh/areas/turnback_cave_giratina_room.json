@@ -1,0 +1,34 @@
+{
+  "key": "turnback_cave_giratina_room",
+  "index": 270,
+  "name": "Turnback Cave",
+  "matrix": 63,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "27",
+  "camera": "Default",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_03",
+  "nightMusic": "D_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 1, "to": "turnback_cave_entrance", "toWarp": 2 },
+    { "x": 20, "z": 11, "to": "turnback_cave_entrance", "toWarp": 3 },
+    { "x": 11, "z": 20, "to": "turnback_cave_entrance", "toWarp": 0 },
+    { "x": 2, "z": 11, "to": "turnback_cave_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "giratina", "looks": "giratina_altered", "movement": "none", "x": 11, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA", "script": "2" },
+    { "id": "item", "looks": "pokeball", "movement": "none", "x": 11, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM", "script": "3" }
+  ],
+  "signs": [
+    { "x": 11, "z": 12, "type": 0, "script": "4" },
+    { "x": 10, "z": 12, "type": 0, "script": "4" },
+    { "x": 12, "z": 12, "type": 0, "script": "4" },
+    { "x": 11, "z": 14, "type": 0, "script": "6" }
+  ],
+  "triggers": []
+}

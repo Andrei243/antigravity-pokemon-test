@@ -1,0 +1,5 @@
+{
+  "area": "turnback_cave_pillar_1_room_1",
+  // Its four doors are aimed as the player comes in (scripts/turnback_cave_pillar_1_room_1.txt, TurnbackCave)
+  "bgmTrack": "sinnoh/turnback_cave"
+}

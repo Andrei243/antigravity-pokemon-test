@@ -49,6 +49,15 @@ internal static class WorldWalk
             {
                 var onto = mapOf(warp.TargetMap);
                 Visit(onto, warp.TargetX, warp.TargetY, TravelMode.OnFoot, onto.HeightAt(warp.TargetX, warp.TargetY), arrived: true);
+                // A door of Turnback Cave is aimed as the player comes in, and can lead into any of its rooms
+                int door = TurnbackCave.IsPart(map.AreaAt(x, y)?.Key) ? IndexOf(TurnbackCave.Doors, (x, y)) : -1;
+                if (door >= 0)
+                    foreach (string room in TurnbackCave.Everywhere)
+                        if (TurnbackCave.WayInto(room, TurnbackCave.Opposite(door)) is { } way)
+                        {
+                            var into = mapOf(way.TargetMap);
+                            Visit(into, way.TargetX, way.TargetY, TravelMode.OnFoot, into.HeightAt(way.TargetX, way.TargetY), arrived: true);
+                        }
                 continue;
             }
 
@@ -121,7 +130,26 @@ internal static class WorldWalk
         PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything().Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)
         ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
 
-    /// <summary>The whole game from where each region that is built begins.</summary>
+    private static int IndexOf(IReadOnlyList<(int X, int Y)> tiles, (int X, int Y) tile)
+    {
+        for (int i = 0; i < tiles.Count; i++)
+            if (tiles[i] == tile) return i;
+        return -1;
+    }
+
+    /// <summary>
+    /// Where the story alone takes the player, with no way there on foot: the Distortion World (plan 01 · M8), through
+    /// the rift at Spear Pillar (plan 02 · S12's scene; the original's warp to 55, 40 of its space, facing south) and
+    /// through the portal that opens in Turnback Cave's room for Giratina once it has been battled (116, 75). A walk
+    /// of the whole game sets out from these too, as the player will once the scenes open them.
+    /// </summary>
+    public static readonly MapSpot[] StoryArrivals =
+    {
+        new("DistortionWorld1F", 34, 30, Direction.Down),
+        new("DistortionWorldTurnbackCaveRoom", 46, 45, Direction.Down)
+    };
+
+    /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>
-        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).ToArray());
+        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).ToArray());
 }

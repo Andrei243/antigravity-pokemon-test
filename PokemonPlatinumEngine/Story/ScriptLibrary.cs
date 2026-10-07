@@ -35,6 +35,12 @@ public sealed class ScriptLibrary
     /// </summary>
     public const string ChapterTwo = "common.ChapterTwo";
 
+    /// <summary>
+    /// Who the third chapter keeps out of sight until their scenes (plan 02 · S6), and what Turnback Cave keeps
+    /// hidden (plan 01 · M8): called by <see cref="ChapterTwo"/>, and run for a save from before.
+    /// </summary>
+    public const string ChapterThree = "common.ChapterThree";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;
@@ -115,11 +121,14 @@ public sealed class ScriptLibrary
     {
         foreach (var i in script.Everything())
         {
-            if (i.Op is Op.Battle or Op.Face or Op.Walk or Op.Move or Op.Emote or Op.Show or Op.Hide or Op.Place)
+            // "pair" is the second of two trainers who came together, and a battle "with partner" is beside whoever
+            // travels with the player: the game's own, named by nobody's file (plan 02 · S6)
+            if (i.Op is Op.Battle or Op.Face or Op.Walk or Op.Move or Op.Emote or Op.Show or Op.Hide or Op.Place
+                || i.Op == Op.Partner && i.Option)
             {
-                if (i.Name is not ("player" or "self")) yield return (i.Name, i.Line);
-                if (i.Op is Op.Face or Op.Battle && i.Other is not ("" or "player" or "self")) yield return (i.Other, i.Line);
-                if (i.Op == Op.Battle && !i.PartnerById && i.Partner is not ("" or "self")) yield return (i.Partner, i.Line);
+                if (i.Name is not ("player" or "self" or "pair")) yield return (i.Name, i.Line);
+                if (i.Op is Op.Face or Op.Battle && i.Other is not ("" or "player" or "self" or "pair")) yield return (i.Other, i.Line);
+                if (i.Op == Op.Battle && !i.PartnerById && i.Partner is not ("" or "self" or "partner")) yield return (i.Partner, i.Line);
             }
         }
     }

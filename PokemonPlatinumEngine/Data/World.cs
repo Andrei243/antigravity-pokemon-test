@@ -130,7 +130,18 @@ public sealed class World
     public TileBehavior BehaviourAt(int matrixId, int x, int z) =>
         ChunkAt(matrixId, x, z) is { } at ? at.Chunk.BehaviourAt(at.X, at.Z) : TileBehavior.None;
 
-    public List<Map> BuildMaps() => Index.Maps.Select(entry => WorldMapBuilder.Build(this, entry)).ToList();
+    public List<Map> BuildMaps()
+    {
+        var maps = Index.Maps.Select(entry => WorldMapBuilder.Build(this, entry)).ToList();
+        // What the story reveals later is built like the rest, and the map keeps a copy of it to put back
+        foreach (var hidden in Index.Hidden)
+            maps.FirstOrDefault(m => m.Name == hidden.Map)?.AddHiddenPlace(hidden.Var, hidden.Value, hidden.ChunkX, hidden.ChunkY, hidden.ChunksWide, hidden.ChunksHigh);
+        // Turnback Cave's doors are aimed as the player comes into each room: they learn here where each door leads
+        foreach (string area in TurnbackCave.Everywhere)
+            for (int door = 0; door < TurnbackCave.Doors.Count; door++)
+                if (WorldMapBuilder.WayInto(this, area, door) is { } way) TurnbackCave.Learn(area, door, way);
+        return maps;
+    }
 }
 
 /// <summary>
@@ -149,7 +160,7 @@ public static class WorldMapBuilder
     public static Map Build(World world, WorldMapEntry entry)
     {
         var matrix = world.Matrix(entry.Matrix);
-        bool cave = entry.Setting == MapSetting.Cave;
+        bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void;
         var map = new Map(matrix.Width * T, matrix.Height * T)
         {
             Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting
@@ -162,11 +173,11 @@ public static class WorldMapBuilder
         }
 
         // Until a chunk says otherwise the world is forest nobody can enter, on Sinnoh's usual ground level; a
-        // cave is rock
+        // cave is rock, and the Distortion World nothing
         for (int y = 0; y < map.Height; y++)
             for (int x = 0; x < map.Width; x++)
             {
-                map.SetGroundTile(x, y, cave ? TileType.CaveWall : TileType.Tree, isSolid: true);
+                map.SetGroundTile(x, y, cave ? TileType.CaveWall : nothing ? TileType.Void : TileType.Tree, isSolid: true);
                 map.SetHeight(x, y, GroundLevel);
             }
 
@@ -238,6 +249,10 @@ public static class WorldMapBuilder
         {
             CaveRock(map, vague, entrances);
         }
+        else if (nothing)
+        {
+            VoidIslands(map);
+        }
         else
         {
             // The original paints its dark of a cave's mouth in a few places that lead into nothing (the west end of
@@ -258,6 +273,11 @@ public static class WorldMapBuilder
         RocksInWater(map);
         foreach (var (key, area) in areas)
             if (area.Open) PlaceEvents(world, map, key, area);
+        // In the Distortion World a way somewhere is a slab set into the island
+        if (nothing)
+            foreach (var warp in map.Warps)
+                if (map.InBounds(warp.SourceX, warp.SourceY) && map.GetGroundTile(warp.SourceX, warp.SourceY) == TileType.DistortionGround)
+                    map.SetGroundTile(warp.SourceX, warp.SourceY, TileType.DistortionSlab, map.IsSolid(warp.SourceX, warp.SourceY));
 
         // Last, because a door knows where it leads only once the warps are in place
         map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
@@ -343,6 +363,113 @@ public static class WorldMapBuilder
             for (int x = 0; x < w; x++)
                 if (!map.IsSolid(x, z) && !reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveWall, isSolid: true);
         RaiseRock(map, IsRock);
+    }
+
+    /// <summary>How far below the islands of the Distortion World the drop under them is drawn, in tiles: the depth of their undersides.</summary>
+    public const float VoidDrop = 3f;
+
+    /// <summary>
+    /// How far the Distortion World's rock stands above the island it rims: the least that is still a step with a
+    /// face, so a path between two rims stays in view.
+    /// </summary>
+    public const float VoidRimRise = 0.75f;
+
+    /// <summary>
+    /// Finishes the Distortion World's islands (plan 01 · M8; style guide, "The Distortion World"). Water that reaches
+    /// the map's edge is the sea far under the islands: it lies at the drop's depth and fills the nothing round
+    /// them, so the islands stand out of it. Everything else that is nothing lies <see cref="VoidDrop"/> under the
+    /// nearest island, so each island's edge shows its underside; and the rock that rims an island stands
+    /// <see cref="VoidRimRise"/> above it.
+    /// </summary>
+    private static void VoidIslands(Map map)
+    {
+        int w = map.Width, h = map.Height;
+        bool Nothing(int x, int z) => map.GetGroundTile(x, z) == TileType.Void;
+        bool Water(int x, int z) => map.GetGroundTile(x, z) == TileType.Water;
+
+        // The sea: water joined to the map's edge, and the nothing joined to it
+        var sea = new bool[w * h];
+        var flood = new Queue<(int X, int Z)>();
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+                if ((x == 0 || z == 0 || x == w - 1 || z == h - 1) && Water(x, z))
+                {
+                    sea[z * w + x] = true;
+                    flood.Enqueue((x, z));
+                }
+        while (flood.Count > 0)
+        {
+            var (x, z) = flood.Dequeue();
+            foreach (var (dx, dz) in new[] { (0, 1), (1, 0), (-1, 0), (0, -1) })
+            {
+                int nx = x + dx, nz = z + dz;
+                if (!map.InBounds(nx, nz) || sea[nz * w + nx] || !(Water(nx, nz) || Nothing(nx, nz))) continue;
+                sea[nz * w + nx] = true;
+                flood.Enqueue((nx, nz));
+            }
+        }
+        for (int i = 0; i < sea.Length; i++)
+        {
+            if (!sea[i]) continue;
+            int x = i % w, z = i / w;
+            // Nobody surfs on the sea down there; a gap over it is still jumped
+            if (Nothing(x, z) && FieldMovement.LongJumpDirection(map.BehaviourAt(x, z)) == null) map.SetBehaviour(x, z, TileBehavior.Sea);
+            map.SetGroundTile(x, z, TileType.Water, isSolid: true);
+        }
+
+        // The height of the nearest island, for each tile of the drop and of the sea
+        bool Below(int x, int z) => sea[z * w + x] || Nothing(x, z);
+        var near = new float[w * h];
+        var seen = new bool[w * h];
+        var front = new Queue<(int X, int Z)>();
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+            {
+                if (Below(x, z)) continue;
+                near[z * w + x] = map.HeightAt(x, z);
+                seen[z * w + x] = true;
+                front.Enqueue((x, z));
+            }
+        if (front.Count == 0) return;
+        while (front.Count > 0)
+        {
+            var (x, z) = front.Dequeue();
+            foreach (var (dx, dz) in new[] { (0, 1), (1, 0), (-1, 0), (0, -1) })
+            {
+                int nx = x + dx, nz = z + dz;
+                if (!map.InBounds(nx, nz) || seen[nz * w + nx]) continue;
+                seen[nz * w + nx] = true;
+                near[nz * w + nx] = near[z * w + x];
+                front.Enqueue((nx, nz));
+            }
+        }
+        // The sea is one level, under the lowest island that stands in it
+        float seaLevel = float.MaxValue;
+        for (int i = 0; i < sea.Length; i++)
+            if (sea[i]) seaLevel = MathF.Min(seaLevel, MathF.Floor(near[i]) - VoidDrop);
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+            {
+                if (sea[z * w + x]) map.SetHeight(x, z, seaLevel);
+                else if (Below(x, z)) map.SetHeight(x, z, MathF.Floor(near[z * w + x]) - VoidDrop);
+                else if (map.GetGroundTile(x, z) == TileType.Rock && map.IsSolid(x, z)) map.SetHeight(x, z, map.HeightAt(x, z) + VoidRimRise);
+            }
+    }
+
+    /// <summary>
+    /// What a tile is in the Distortion World: what the original doesn't say anything of is nothing where it blocks
+    /// and the islands' stone where it is walked on, and a gap jumped across is nothing too. Rock, water, grass and
+    /// trees are what they are.
+    /// </summary>
+    public static (TileType Type, bool Solid, PropType? Prop) InTheVoid(TerrainCover cover, TileBehavior behaviour, bool solid, TileType type, bool blocks, PropType? prop)
+    {
+        if (FieldMovement.LongJumpDirection(behaviour) != null) return (TileType.Void, true, null);
+        // A ledge is a drop from one island down onto the next (B5F's), hopped whatever the original's blocked flag says
+        if (FieldMovement.LedgeDirection(behaviour) != null) return (type, blocks, prop);
+        if (cover == TerrainCover.Unknown) return solid ? (TileType.Void, true, null) : (TileType.DistortionGround, false, null);
+        // The original's marks on its floors (behaviour 0x08) are the stone like the rest: the ways somewhere get slabs
+        if (type == TileType.CaveFloor) return (TileType.DistortionGround, blocks, null);
+        return (type, blocks, prop);
     }
 
     /// <summary>
@@ -610,6 +737,7 @@ public static class WorldMapBuilder
 
                 var (type, blocks, prop) = Look(cover, behaviour, solid);
                 if (map.IsCave) (type, prop) = InACave(type, blocks, prop);
+                else if (map.IsVoid) (type, blocks, prop) = InTheVoid(cover, behaviour, solid, type, blocks, prop);
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
                 if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
@@ -897,6 +1025,9 @@ public static class WorldMapBuilder
                         else x0 = Math.Max(x0, (int)MathF.Ceiling(line - 0.5f));
                     }
                 }
+            // A stack of rock in the sea stands on the rock the world blocks: Sunyshore's box lies two rows south of
+            // its blocked tiles, over water a swimmer crosses. It takes the blocked tiles joined to those under its box
+            if (scenery.Prop == PropType.SeaStack) (x0, z0, x1, z1) = BlockedRound(x0, z0, x1, z1, Blocked);
             if (!map.InBounds(x0, z0)) continue;
             map.Props.Add(new Prop
             {
@@ -906,6 +1037,32 @@ public static class WorldMapBuilder
         }
         return parts;
     }
+
+    /// <summary>
+    /// The rectangle of the blocked tiles joined to those inside a rectangle, reaching no more than
+    /// <see cref="BlockedReach"/> tiles past it; the rectangle itself when none of it is blocked.
+    /// </summary>
+    public static (int X0, int Z0, int X1, int Z1) BlockedRound(int x0, int z0, int x1, int z1, Func<int, int, bool> blocked)
+    {
+        var seen = new HashSet<(int X, int Z)>();
+        var open = new Queue<(int X, int Z)>();
+        for (int z = z0; z <= z1; z++)
+            for (int x = x0; x <= x1; x++)
+                if (blocked(x, z) && seen.Add((x, z))) open.Enqueue((x, z));
+        if (seen.Count == 0) return (x0, z0, x1, z1);
+        while (open.Count > 0)
+        {
+            var (x, z) = open.Dequeue();
+            foreach (var (nx, nz) in new[] { (x + 1, z), (x - 1, z), (x, z + 1), (x, z - 1) })
+                if (nx >= x0 - BlockedReach && nx <= x1 + BlockedReach && nz >= z0 - BlockedReach && nz <= z1 + BlockedReach
+                    && blocked(nx, nz) && seen.Add((nx, nz)))
+                    open.Enqueue((nx, nz));
+        }
+        return (seen.Min(t => t.X), seen.Min(t => t.Z), seen.Max(t => t.X), seen.Max(t => t.Z));
+    }
+
+    /// <summary>How far past its box a sea stack's blocked rock is looked for, in tiles.</summary>
+    public const int BlockedReach = 3;
 
     /// <summary>How far a conveyor reaches from a gantry, in tiles, toward what feeds it or what it fills.</summary>
     public const int ConveyorReach = 8;
@@ -1198,13 +1355,16 @@ public static class WorldMapBuilder
                 // The flag that hides them is the original's own unless the overlay says otherwise
                 HiddenBy = person.HiddenBy is { } hiddenBy ? (hiddenBy.Length > 0 ? hiddenBy : null) : o.HiddenBy,
                 ShownBy = person.ShownBy,
-                Trainer = person.Trainer
+                Trainer = person.Trainer,
+                Item = person.Item
             }, map.Name);
             // Someone the original stands on a bridge's deck stands there, over whoever walks under it
             if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
             npc.ScriptFile = key;
+            // How they move about of their own accord, within the original's range round where they stand (plan 02 · S6)
+            if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
             // How far a trainer sees is the original's own number
             if (npc.TrainerData != null && o.Sight is { } sight) npc.TrainerData.SightRange = sight;
             // How it thinks, what it carries and its team are Platinum's (plan 06 · R9)
@@ -1219,10 +1379,16 @@ public static class WorldMapBuilder
             map.NPCs.Add(npc);
         }
 
-        // What is hidden in the ground, found by looking at its tile
+        // What is hidden in the ground, found by looking at its tile; and what is read there, where the overlay
+        // gives the original's script one of ours
         foreach (var s in file.Signs)
-            if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null && map.InBounds(s.X, s.Z))
+        {
+            if (!map.InBounds(s.X, s.Z)) continue;
+            if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null)
                 map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
+            else if (overlay?.Read?.GetValueOrDefault(s.Script) is { Length: > 0 } read)
+                map.TileScripts[(s.X, s.Z)] = read;
+        }
 
         // The original's triggers that have a script of ours: its tiles, its variable and its value
         foreach (var bound in overlay?.Triggers ?? new())
@@ -1247,7 +1413,7 @@ public static class WorldMapBuilder
             Warp? warp = null;
             if (overlay?.Doors?.FirstOrDefault(d => d.Warp == i) is { } door)
             {
-                warp = new Warp { TargetMap = door.Map, TargetX = door.X, TargetY = door.Y, TargetFacing = door.Facing };
+                warp = new Warp { TargetMap = door.Map, TargetX = door.X, TargetY = door.Y, TargetFacing = door.Facing, OpenedBy = door.OpenedBy };
             }
             else if (overlay?.Through?.FirstOrDefault(t => t.Warp == i) is { } through)
             {
@@ -1276,6 +1442,9 @@ public static class WorldMapBuilder
         foreach (var from in file.Warps)
             if (map.GetWarpAt(from.X, from.Z) == null && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
+
+    /// <summary>The way into an open area through one of its warps (Turnback Cave's doors, which are aimed as the player comes in).</summary>
+    public static Warp? WayInto(World world, string area, int toWarp) => Join(world, area, toWarp);
 
     /// <summary>A warp onto one of an open area's warps, coming out one step from it; null while the area isn't open or has no map.</summary>
     private static Warp? Join(World world, string area, int toWarp)

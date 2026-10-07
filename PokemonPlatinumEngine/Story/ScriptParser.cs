@@ -116,7 +116,12 @@ public static class ScriptParser
             case "sayown":
                 return new Instruction { Op = Op.SayOwn, Line = line };
             case "trainerline":
-                return new Instruction { Op = Op.TrainerLine, Line = line, Option = r.OneOf("before", "after") == "after" };
+            {
+                bool after = r.OneOf("before", "after") == "after";
+                // The second of two trainers who saw the player at once says their line too
+                string whose = r.More ? r.OneOf("pair") : "";
+                return new Instruction { Op = Op.TrainerLine, Line = line, Option = after, Name = whose };
+            }
             case "speaker":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Speaker, Line = line, Name = r.Text("the speaker's name") };
                 return r.OneOf("none", "self") == "self"
@@ -184,18 +189,35 @@ public static class ScriptParser
             }
             case "heal":
                 return new Instruction { Op = Op.Heal, Line = line };
+            case "turnback":
+                return new Instruction { Op = Op.Turnback, Line = line };
+            case "partner":
+            {
+                if (r.PeekWord("off"))
+                {
+                    r.OneOf("off");
+                    return new Instruction { Op = Op.Partner, Line = line };
+                }
+                string who = r.Who();
+                if (who == "player") throw r.Error("the player can't travel with themselves");
+                string id = r.Text("the id of the trainer who battles beside the player");
+                return new Instruction { Op = Op.Partner, Line = line, Name = who, Other = id, Option = true };
+            }
 
             case "battle":
             {
                 string who = r.Who();
                 if (who == "player") throw r.Error("the player can't be battled");
                 // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
-                bool mayLose = false, byId = false, first = false;
+                bool mayLose = false, byId = false, first = false, rematch = false;
                 string second = "", partner = "", asTrainer = "";
                 while (r.More)
                 {
-                    switch (r.OneOf("canlose", "first", "and", "with", "as"))
+                    switch (r.OneOf("canlose", "first", "and", "with", "as", "rematch"))
                     {
+                        case "rematch":
+                            rematch = true;
+                            break;
                         case "as":
                             asTrainer = r.Text("a trainer's id");
                             break;
@@ -216,7 +238,7 @@ public static class ScriptParser
                             break;
                     }
                 }
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer };
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch };
             }
             case "wildbattle":
             case "catchinglesson":
@@ -347,9 +369,20 @@ public static class ScriptParser
             case "shop":
                 return new Instruction { Op = Op.Shop, Line = line, Name = r.More ? r.Text("a counter's key") : "" };
             case "pc":
-                return new Instruction { Op = Op.Pc, Line = line };
+                // "pc halloffame" opens the Hall of Fame's records instead of the boxes (plan 06 · R12)
+                return new Instruction { Op = Op.Pc, Line = line, Name = r.More ? r.OneOf("halloffame") : "" };
+            case "halloffame":
+                return new Instruction { Op = Op.HallOfFame, Line = line };
             case "travel":
                 return new Instruction { Op = Op.Travel, Line = line };
+            case "choosepokemon":
+                return new Instruction { Op = Op.ChoosePokemon, Line = line };
+            case "trade":
+            {
+                string trade = r.Word("a trade");
+                if (Models.NpcTrades.Get(trade) == null) throw r.Error($"'{trade}' is no trade (NpcTrades)");
+                return new Instruction { Op = Op.Trade, Line = line, Name = trade };
+            }
 
             case "script":
             case "label":
@@ -411,6 +444,8 @@ public static class ScriptParser
                 return Counted(Query.Result);
             case "defeated":
                 return new Condition { Query = Query.Defeated, Negated = negated, Name = r.Text("a trainer's id, or self") };
+            case "rematch":
+                return new Condition { Query = Query.Rematch, Negated = negated, Name = r.Text("self") };
             case "taken":
                 return new Condition { Query = Query.Taken, Negated = negated, Name = r.Text("an item's id") };
             case "starter":
@@ -429,6 +464,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Pokerus, Negated = negated };
             case "safari":
                 return new Condition { Query = Query.Safari, Negated = negated };
+            case "partner":
+                return new Condition { Query = Query.Partner, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }
@@ -508,6 +545,9 @@ public static class ScriptParser
         public bool PeekIs(string word) => More && !tokens[at].Quoted && tokens[at].Text == word;
         public bool PeekNumber => More && !tokens[at].Quoted && int.TryParse(tokens[at].Text, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out _);
         public bool PeekDirection => More && !tokens[at].Quoted && DirectionOf(tokens[at].Text) != null;
+
+        /// <summary>Whether the next word is this one, unquoted.</summary>
+        public bool PeekWord(string word) => More && !tokens[at].Quoted && tokens[at].Text == word;
         public bool PeekCompare => More && !tokens[at].Quoted && CompareOf(tokens[at].Text) != null;
 
         public ScriptException Error(string message) => new($"{file}.txt({Line}): {message}.");

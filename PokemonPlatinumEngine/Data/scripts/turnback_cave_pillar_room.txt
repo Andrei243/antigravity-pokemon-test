@@ -1,0 +1,14 @@
+# Turnback Cave's room of a pillar (plan 01 · M8; scripts_turnback_cave_pillar_room.s). Each time the player comes
+# in, one more pillar has been seen; three, and the doors lead to Giratina's room.
+
+script OnEnter
+  addvar VAR_TURNBACK_CAVE_PILLARS_SEEN 1
+  addvar VAR_TURNBACK_CAVE_ROOMS_VISITED 1
+  turnback
+  end
+
+script Pillar
+  speaker none
+  sound "select"
+  say "A great stone pillar stands here, worn smooth. Pillars passed: {var:VAR_TURNBACK_CAVE_PILLARS_SEEN}. Rooms walked through: {var:VAR_TURNBACK_CAVE_ROOMS_VISITED}."
+  end

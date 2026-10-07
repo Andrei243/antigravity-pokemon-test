@@ -32,7 +32,8 @@ internal static class GroundBaker
                 c.SetRaw(x, y, FloorTexel(map.Interior, x, y));
 
         // The walls shade the floor beside them: two flat steps
-        int left = ArtTile, right = (map.Width - 1) * ArtTile, top = 2 * ArtTile, bottom = (map.Height - 1) * ArtTile;
+        var (lx, by) = map.RoomCorner();
+        int left = lx * ArtTile, right = (map.Width - 1) * ArtTile, top = by * ArtTile, bottom = (map.Height - 1) * ArtTile;
         foreach (var (from, depth, amount) in new[] { (0, 6, 0.22f), (6, 6, 0.11f) })
         {
             Pix.Shade(c, left, top + from, right - left, depth, amount);
@@ -88,7 +89,13 @@ internal static class GroundBaker
     /// Paints one wall of a room, the full height of the canvas (80 texels) and as wide as the wall: crown
     /// moulding, wallpaper with a small motif, a chair rail, panelled wainscot and a skirting board.
     /// </summary>
-    public static void PaintWall(PixelCanvas c, InteriorStyle style)
+    public static void PaintWall(PixelCanvas c, InteriorStyle style) => PaintWall(c, style, 0);
+
+    /// <summary>
+    /// A room's wall strip from <paramref name="from"/> rows below its top down to the skirting: a wall cut away
+    /// part of the way up (a room's inner walls) shows only the lower part of it.
+    /// </summary>
+    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from)
     {
         var (paper, motif, wainscot, trim, skirting) = style switch
         {
@@ -100,9 +107,10 @@ internal static class GroundBaker
 
         const int crown = 6, rail = 48, panels = 52, skirt = 74;
         int w = c.Width, h = c.Height;
-        for (int y = 0; y < h; y++)
+        for (int ry = 0; ry < h; ry++)
             for (int x = 0; x < w; x++)
             {
+                int y = ry + from;
                 Color col;
                 if (y < crown) col = y == 0 ? trim.Light : y == crown - 1 ? trim.Dark : trim.Base;
                 else if (y < rail)
@@ -122,8 +130,8 @@ internal static class GroundBaker
                             ? (px == 3 || py == 3 ? wainscot.Dark : px == 12 || py == 18 ? wainscot.Light : wainscot.Base)
                             : wainscot.Base;
                 }
-                else col = y == skirt ? skirting.Light : y == h - 1 ? skirting.Dark : skirting.Base;
-                c.SetRaw(x, y, col);
+                else col = y == skirt ? skirting.Light : ry == h - 1 ? skirting.Dark : skirting.Base;
+                c.SetRaw(x, ry, col);
             }
     }
 
@@ -133,6 +141,20 @@ internal static class GroundBaker
         var cap = Tone.Of(62, 56, 74);
         c.Rect(0, 0, c.Width, c.Height, cap.Base);
         Pix.Border(c, 0, 0, c.Width, c.Height, cap.Light);
+    }
+
+    /// <summary>
+    /// The dark top of a tile of a room's inner wall: the paler line only along the sides that look onto the floor,
+    /// so a wall of many tiles reads as one.
+    /// </summary>
+    public static void PaintWallTop(PixelCanvas c, bool north, bool south, bool west, bool east)
+    {
+        var cap = Tone.Of(62, 56, 74);
+        c.Rect(0, 0, c.Width, c.Height, cap.Base);
+        if (north) c.HLine(0, 0, c.Width, cap.Light);
+        if (south) c.HLine(0, c.Height - 1, c.Width, cap.Light);
+        if (west) c.VLine(0, 0, c.Height, cap.Light);
+        if (east) c.VLine(c.Width - 1, 0, c.Height, cap.Light);
     }
 
     // ------------------------------------------------------------------ shared lookups
@@ -148,8 +170,8 @@ internal static class GroundBaker
         {
             TileType.Path => TileType.Path,
             TileType.Water => TileType.Water,
-            // Past its edge a cave is rock, as the open country is forest
-            _ => map.IsCave ? TileType.CaveWall : TileType.Tree
+            // Past its edge a cave is rock, as the open country is forest, and the Distortion World is nothing
+            _ => map.IsCave ? TileType.CaveWall : map.IsVoid ? TileType.Void : TileType.Tree
         };
     }
 

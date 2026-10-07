@@ -43,6 +43,30 @@ script ChapterTwo
   setflag FLAG_HIDE_JUBILIFE_CITY_COLLECTOR
   setflag FLAG_HIDE_FLOAROMA_MEADOW_WORKS_KEY
   if var VAR_OREBURGH_GATE_1F_HIKER_STATE == 0 setvar VAR_OREBURGH_GATE_1F_HIKER_STATE 1
+  call ChapterThree
+  return
+
+
+# Who the third chapter (plan 02 · S6, "Windworks and Eterna") keeps out of sight until their scenes, as the
+# original's new game does, and what waits in Turnback Cave (plan 01 · M8): its ball, and Giratina, which a game of
+# ours keeps hidden until the Hall of Fame because a Pokémon can't be drawn standing in the field yet. Called by
+# ChapterTwo, and run for a save from before (Story/StoryMigration.cs). It may only set flags and variables.
+script ChapterThree
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM
+  setflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  # Windworks and Eterna (scripts_init_new_game.s): who comes once Commander Mars is beaten, and Eterna's people
+  # whose scenes come later
+  setflag FLAG_HIDE_ROUTE_205_SOUTH_YOUNGSTER
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_LITTLE_GIRL
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER
+  setflag FLAG_HIDE_ETERNA_FOREST_GARDENIA
+  setflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
+  setflag FLAG_HIDE_ETERNA_CITY_RIVAL
+  setflag FLAG_HIDE_ETERNA_CITY_POKECENTER_1F_BUNEARY
+  setflag FLAG_HIDE_CYCLE_SHOP_POKEFAN_M
+  setflag FLAG_HIDE_CYCLE_SHOP_CLEFAIRY
+  setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_LOOKER
+  setflag FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK
   return
 
 
@@ -171,8 +195,23 @@ script Trainer
   battle self
   end
 label Beaten
+  # The Vs. Seeker found them wanting a rematch (plan 06 · R12): the team of the level the story has reached
+  if rematch self goto Rematch
   trainerline after
   if result == 0 sayown
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end
+
+# Two trainers who saw the player at once and came up together (APPROACH_TYPE_VS2, plan 02 · S6): both say their
+# line and battle side by side, against the player's two Pokémon or, while someone travels with the player, against
+# the player and that partner (BATTLE_TYPE_TRAINER_WITH_AI_PARTNER)
+script TrainerPair
+  trainerline before
+  trainerline before pair
+  battle self and pair with partner
   end
 
 

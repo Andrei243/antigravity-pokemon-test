@@ -26,10 +26,16 @@ public enum Op
     Poketch, PoketchApp,
     // The Great Marsh's Safari Game (plan 01 · M7)
     Safari,
+    // Turnback Cave's doors (plan 01 · M8)
+    Turnback,
+    // Someone travelling with the player (plan 02 · S6)
+    Partner,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
-    Starter, Shop, Pc, Travel
+    Starter, Shop, Pc, Travel,
+    // The trainer tools (plan 06 · R12)
+    ChoosePokemon, Trade, HallOfFame
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -38,7 +44,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch, Partner
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>
@@ -98,6 +104,9 @@ public sealed class Instruction
     /// "rival_route_201_turtwig"</c>): the rival, whose team depends on the starter the player took. Empty for their own.
     /// </summary>
     public string AsTrainer { get; init; } = "";
+
+    /// <summary>For <c>battle self rematch</c>: the trainer fights with the team the Vs. Seeker has them bring (plan 06 · R12).</summary>
+    public bool Rematch { get; init; }
 
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }

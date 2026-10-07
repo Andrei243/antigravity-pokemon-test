@@ -66,8 +66,17 @@ internal static class PixelGround
         // The dark under the trees where a forest is entered
         new(TileType.ForestMouth, new(34, 40, 30, 255), new(42, 50, 36, 255), new(20, 24, 18, 255), new(28, 34, 24, 255), 80),
         // A puddle: the sky dimmed by the mud under it, a rim of wet earth (style guide, "Puddles")
-        new(TileType.Puddle, new(112, 142, 170, 255), new(138, 168, 194, 255), new(92, 80, 68, 255), new(196, 218, 232, 255), 81)
+        new(TileType.Puddle, new(112, 142, 170, 255), new(138, 168, 194, 255), new(92, 80, 68, 255), new(196, 218, 232, 255), 81),
+        // The grey-violet stone of the Distortion World's islands (style guide, "The Distortion World")
+        new(TileType.DistortionGround, new(122, 112, 138, 255), new(136, 126, 152, 255), new(84, 74, 100, 255), new(100, 90, 118, 255), 82)
     };
+
+    // A slab set into an island of the Distortion World where a way somewhere is
+    private static readonly Color Slab = new(170, 162, 188, 255);
+    private static readonly Color SlabLight = new(204, 198, 218, 255);
+    private static readonly Color SlabDark = new(118, 108, 138, 255);
+    private static readonly Color SlabJoint = new(76, 68, 94, 255);
+    private static readonly Color SlabMark = new(226, 218, 244, 255);
 
     // Built ground, painted tile for tile with straight edges: paving, bridge decks, walkways and stairs
     private static readonly Color Paving = new(204, 206, 214, 255);
@@ -115,11 +124,13 @@ internal static class PixelGround
         // The map tile under the canvas's first tile
         int originX = window.X - pad, originY = window.Y - pad;
         int seedX = worldSeeds ? originX : 0, seedY = worldSeeds ? originY : 0;
-        // In a cave a ledge is a ridge of rock on the cave's floor, not of lawn
-        bool cave = map.IsCave;
+        // In a cave a ledge is a ridge of rock on the cave's floor, not of lawn. In the Distortion World the void is
+        // never seen, so the islands' stone runs on into it, and their edges are where the undersides hang
+        bool cave = map.IsCave, nothing = map.IsVoid;
         TileType? TypeAt(int tx, int ty)
         {
             var type = GroundBaker.TypeAt(map, tx + originX, ty + originY);
+            if (nothing && type is TileType.Void or TileType.LedgeDown or TileType.LedgeLeft or TileType.LedgeRight) return TileType.DistortionGround;
             return cave && type is TileType.LedgeDown or TileType.LedgeLeft or TileType.LedgeRight ? TileType.CaveFloor : type;
         }
         bool IsBuilding(int tx, int ty) => MapStructures.IsBuildingTile(map, tx + originX, ty + originY);
@@ -137,7 +148,7 @@ internal static class PixelGround
 
         var path = Mask(tw, th, IsPath, blur: 5);
         var water = Mask(tw, th, (x, y) => GroundBaker.IsWaterAt(map, x + originX, y + originY), blur: 8);
-        var forest = Mask(tw, th, (x, y) => TypeAt(x, y) is TileType.Tree or TileType.TreeTrunk, blur: 10);
+        var forest = nothing ? null : Mask(tw, th, (x, y) => TypeAt(x, y) is TileType.Tree or TileType.TreeTrunk, blur: 10);
         var tall = Mask(tw, th, (x, y) => TypeAt(x, y) == TileType.TallGrass, blur: 3);
         var walls = Mask(tw, th, IsBuilding, blur: 6);
 
@@ -185,8 +196,8 @@ internal static class PixelGround
                 int i = y * w + x;
                 float gx = x / (float)T + seedX, gy = y / (float)T + seedY;
 
-                // Lawn: flat base with clean-edged lighter patches
-                var col = lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
+                // Lawn: flat base with clean-edged lighter patches (in the Distortion World, its stone)
+                var col = nothing ? Kinds[^1].Base : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
                 if (forest != null && forest[i] >= 0.5f) col = Forest;
                 if (tall != null && tall[i] >= 0.5f) col = TallGround;
 
@@ -271,6 +282,10 @@ internal static class PixelGround
                     var (slopeX, slopeZ) = map.SlopeAt(tx + originX, ty + originY);
                     PaintStairs(c, tx * T, ty * T, slopeX, slopeZ, Flight(-1, 0), Flight(1, 0), Flight(0, -1), Flight(0, 1));
                 }
+                else if (t == TileType.DistortionSlab)
+                {
+                    PaintSlab(c, tx * T, ty * T);
+                }
                 else if (t == TileType.Walkway)
                 {
                     bool Deck(int dx, int dy) => TypeAt(tx + dx, ty + dy) is TileType.Walkway or TileType.Planks or TileType.Stairs or TileType.Paving;
@@ -308,6 +323,31 @@ internal static class PixelGround
                     wet = kept.Get(x, y).A > 0;
         waterMask = wet ? kept : null;
         return c.Crop(cut, cut, keepW, keepH);
+    }
+
+    // ------------------------------------------------------------------ the Distortion World
+
+    /// <summary>
+    /// A slab set into one of the Distortion World's islands where a way somewhere is (style guide, "The Distortion
+    /// World"): a square of pale stone a texel inside a dark joint, lit along its top and left and shaded along its
+    /// bottom and right, with a mark like a four-pointed star in its middle.
+    /// </summary>
+    internal static void PaintSlab(PixelCanvas c, int ox, int oy)
+    {
+        c.Rect(ox, oy, T, T, SlabJoint);
+        c.Rect(ox + 2, oy + 2, T - 4, T - 4, Slab);
+        c.HLine(ox + 2, oy + 2, T - 4, SlabLight);
+        c.VLine(ox + 2, oy + 2, T - 4, SlabLight);
+        c.Rect(ox + 2, oy + T - 4, T - 4, 2, SlabDark);
+        c.Rect(ox + T - 4, oy + 2, 2, T - 4, SlabDark);
+        int mx = ox + T / 2, my = oy + T / 2;
+        for (int i = -7; i <= 7; i++)
+        {
+            int width = Math.Max(1, (7 - Math.Abs(i)) / 3);
+            c.Rect(mx - width, my + i, width * 2, 1, SlabMark);
+            c.Rect(mx + i, my - width, 1, width * 2, SlabMark);
+        }
+        c.Rect(mx - 1, my - 1, 2, 2, SlabDark);
     }
 
     // ------------------------------------------------------------------ paving and walkways
@@ -397,18 +437,29 @@ internal static class PixelGround
             }
         if (!any) return null;
 
-        // Boulders standing in the water keep a dry patch under them, so foam laps round each one
+        // Boulders and stacks of rock standing in the water keep a dry patch under them, so foam laps round each one
         foreach (var prop in map.Props)
         {
-            if (prop.Type != PropType.Boulder) continue;
+            if (prop.Type is not (PropType.Boulder or PropType.SeaStack)) continue;
             int cx = (int)((prop.X - originX + prop.Width / 2f) * T), cy = (int)((prop.Y - originY + prop.Depth / 2f) * T);
             if (cx < 0 || cy < 0 || cx >= w || cy >= h || !surface[cy * w + cx]) continue;
-            for (int y = cy - RockFootprint; y <= cy + RockFootprint; y++)
-                for (int x = cx - RockFootprint; x <= cx + RockFootprint; x++)
+            // A stack's foot is the size of its lower tier (Landmarks.SeaStack); a boulder's a round patch
+            bool stack = prop.Type == PropType.SeaStack;
+            int rx = stack ? prop.Width * T / 2 - 6 : RockFootprint, ry = stack ? prop.Depth * T / 2 - 4 : RockFootprint;
+            for (int y = cy - ry; y <= cy + ry; y++)
+                for (int x = cx - rx; x <= cx + rx; x++)
                 {
                     if (x < 0 || y < 0 || x >= w || y >= h) continue;
-                    float dx = x - cx, dy = (y - cy) * 1.3f;
-                    if (dx * dx + dy * dy > RockFootprint * RockFootprint) continue;
+                    if (stack)
+                    {
+                        float sx = (x - cx) / (float)rx, sy = (y - cy) / (float)ry;
+                        if (sx * sx + sy * sy > 1f) continue;
+                    }
+                    else
+                    {
+                        float dx = x - cx, dy = (y - cy) * 1.3f;
+                        if (dx * dx + dy * dy > RockFootprint * RockFootprint) continue;
+                    }
                     surface[y * w + x] = false;
                     c.SetRaw(x, y, BankBase);
                 }

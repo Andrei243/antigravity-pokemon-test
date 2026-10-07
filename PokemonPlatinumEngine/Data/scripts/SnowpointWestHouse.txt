@@ -1,0 +1,27 @@
+# A house in the west of Snowpoint City (plan 06 · R12). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_snowpoint_city_west_house.s).
+#
+# Mindy trades her Haunter, Gaspar, for a Medicham (NpcTrades "gaspar"); it holds an Everstone, which keeps it from
+# evolving. FLAG_TRADED_FOR_GASPAR_HAUNTER: the trade is done.
+
+
+script Gaspar
+  if flag FLAG_TRADED_FOR_GASPAR_HAUNTER goto Done
+  ask "Medicham is so lively and so charming! Would you trade one for my Haunter?"
+  if no goto Waiting
+  choosepokemon
+  if result == 255 goto Waiting
+  trade gaspar
+  if result == 0 goto NotWanted
+  setflag FLAG_TRADED_FOR_GASPAR_HAUNTER
+  say "Oh, thank you! I gave Haunter an Everstone to hold, so it will stay just as it is."
+  end
+label NotWanted
+  say "That isn't a Medicham. Medicham is the one I asked for."
+  end
+label Waiting
+  say "That's all right, if you don't want to."
+  end
+label Done
+  say "My Medicham and I are such good friends already!"
+  end

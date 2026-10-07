@@ -67,6 +67,15 @@ internal sealed class MapScene
     public int Margin { get; }
     public Vector3 RoomCenter { get; private set; }
 
+    /// <summary>
+    /// How deep a room is for the camera, counted as a hand-made room's height is (its floor, the two rows of wall
+    /// behind it and the front wall): a room rebuilt to the original's plan may have more wall behind its floor.
+    /// </summary>
+    public int RoomDepth => Map.Height - roomCorner.Back + 2;
+
+    // Where a room's floor begins (Map.RoomCorner): its side wall stands west of it and its back wall north
+    private readonly (int Left, int Back) roomCorner;
+
     /// <summary>The ground this scene can show something on: its tiles and what leans in from just outside them.</summary>
     public GroundRect Bounds => Reach(ground);
 
@@ -92,6 +101,7 @@ internal sealed class MapScene
         PitchDeg = PitchOf(map);
         VS = VerticalScaleOf(map);
         Margin = map.IsIndoors || chunk != null ? 0 : OutdoorMargin;
+        roomCorner = map.IsIndoors ? map.RoomCorner() : (1, 2);
         if (chunk is { } c)
         {
             ground = content = forest = c;
@@ -374,6 +384,8 @@ internal sealed class MapScene
                 var t = TypeAt(tx, ty);
                 if (t == null) continue;
                 if (Map.IsIndoors && !IsInteriorFloor(tx, ty, t.Value)) continue;
+                // Under the Distortion World's islands there is no ground: the void shows through
+                if (t == TileType.Void) continue;
 
                 float u0 = (tx - ground.X) / tilesW, u1 = (tx - ground.X + 1) / tilesW;
                 float v0 = (ty - ground.Y) / tilesH, v1 = (ty - ground.Y + 1) / tilesH;
@@ -425,7 +437,8 @@ internal sealed class MapScene
     /// <summary>The drawn height of the ground at a point of the map (0 on a map without relief).</summary>
     private float Y(float x, float z) => Relief.At(Map, x, z);
 
-    private static bool IsRocky(TileType type) => type is TileType.Rock or TileType.Snow or TileType.Ice or TileType.CaveFloor or TileType.CaveWall or TileType.CaveMouth;
+    private static bool IsRocky(TileType type) => type is TileType.Rock or TileType.Snow or TileType.Ice or TileType.CaveFloor or TileType.CaveWall or TileType.CaveMouth
+        or TileType.DistortionGround or TileType.DistortionSlab;
 
     /// <summary>
     /// The faces between levels (style guide, "Relief"): wherever a tile stands higher than its neighbour to the
@@ -439,30 +452,39 @@ internal sealed class MapScene
         var rock = batches.For(SceneTextures.RockFace);
         var beams = batches.For(SceneTextures.White);
         var beam = new Color(104, 74, 54, 255);
+        // In the Distortion World an island's edge over the void is its underside, ending in points of rock
+        var under = Map.IsVoid ? batches.For(SceneTextures.IslandUnderside) : null;
+        bool Over(int x, int y) => under != null && TypeAt(x, y) == TileType.Void;
 
         for (int ty = ground.Y; ty < ground.Bottom; ty++)
             for (int tx = ground.X; tx < ground.Right; tx++)
             {
                 if (!Map.InBounds(tx, ty)) continue;
+                // The void has no ground, so no edge of its own: only an island's edge over it shows
+                if (under != null && TypeAt(tx, ty) == TileType.Void) continue;
                 var (nw, ne, sw, se) = Relief.Corners(Map, tx, ty);
                 var face = IsRocky(Map.GetGroundTile(tx, ty)) ? rock : earth;
 
                 // Each edge against the matching edge of the tile beyond it; a face that would look north is never seen
                 float wide = face == rock ? NatureArt.RockFaceTiles : 1f;
+                bool island = under != null && TypeAt(tx, ty) != TileType.Void;
                 if (Map.InBounds(tx, ty + 1))
                 {
                     var s = Relief.Corners(Map, tx, ty + 1);
-                    Face(face, new(tx, 0, ty + 1), sw, s.NW, new(tx + 1, 0, ty + 1), se, s.NE, South, tx, wide);
+                    if (island && Over(tx, ty + 1)) Underside(under!, new(tx, 0, ty + 1), sw, new(tx + 1, 0, ty + 1), se, South, tx);
+                    else Face(face, new(tx, 0, ty + 1), sw, s.NW, new(tx + 1, 0, ty + 1), se, s.NE, South, tx, wide);
                 }
                 if (Map.InBounds(tx + 1, ty))
                 {
                     var e = Relief.Corners(Map, tx + 1, ty);
-                    Face(face, new(tx + 1, 0, ty + 1), se, e.SW, new(tx + 1, 0, ty), ne, e.NW, Vector3.UnitX, ty, wide);
+                    if (island && Over(tx + 1, ty)) Underside(under!, new(tx + 1, 0, ty + 1), se, new(tx + 1, 0, ty), ne, Vector3.UnitX, ty);
+                    else Face(face, new(tx + 1, 0, ty + 1), se, e.SW, new(tx + 1, 0, ty), ne, e.NW, Vector3.UnitX, ty, wide);
                 }
                 if (Map.InBounds(tx - 1, ty))
                 {
                     var w = Relief.Corners(Map, tx - 1, ty);
-                    Face(face, new(tx, 0, ty), nw, w.NE, new(tx, 0, ty + 1), sw, w.SE, -Vector3.UnitX, ty, wide);
+                    if (island && Over(tx - 1, ty)) Underside(under!, new(tx, 0, ty), nw, new(tx, 0, ty + 1), sw, -Vector3.UnitX, ty);
+                    else Face(face, new(tx, 0, ty), nw, w.NE, new(tx, 0, ty + 1), sw, w.SE, -Vector3.UnitX, ty, wide);
                 }
 
                 // A bridge's deck has a beam along each side that is open
@@ -516,11 +538,25 @@ internal sealed class MapScene
         }
     }
 
+    /// <summary>
+    /// The underside of one of the Distortion World's islands along a tile's edge over the void: the art stretched
+    /// once from the island's edge down <see cref="Data.WorldMapBuilder.VoidDrop"/>, so its points of rock end where
+    /// the face does and nothing shows below them, however deep the void beside it lies (an upper stone of B2F
+    /// floats over a void that is lower under the floor beside it).
+    /// </summary>
+    private static void Underside(MeshBuilder mesh, Vector3 a, float topA, Vector3 b, float topB, Vector3 normal, float along)
+    {
+        float u0 = along / NatureArt.UndersideTiles, u1 = (along + 1f) / NatureArt.UndersideTiles;
+        float drop = Data.WorldMapBuilder.VoidDrop;
+        mesh.Quad(a with { Y = topA - drop }, b with { Y = topB - drop }, b with { Y = topB }, a with { Y = topA },
+            new(u0, 1f), new(u1, 1f), new(u1, 0f), new(u0, 0f), Color.White, normal);
+    }
+
     private bool IsInteriorFloor(int tx, int ty, TileType t)
     {
-        if (ty < 2) return false;
+        if (ty < roomCorner.Back) return false;
         if (ty == Map.Height - 1) return t == TileType.Door;
-        return tx > 0 && tx < Map.Width - 1;
+        return tx >= roomCorner.Left && tx < Map.Width - 1;
     }
 
     /// <summary>
@@ -694,11 +730,11 @@ internal sealed class MapScene
     private void AddLedges(MeshBatches batches)
     {
         float h = 0.375f * VS;
-        // In a cave the ridge is the floor's own rock (style guide, "Caves")
-        var lawn = Map.IsCave ? new Color(130, 118, 120, 255) : new Color(104, 190, 98, 255);
-        var dirt = Map.IsCave ? new Color(82, 72, 84, 255) : new Color(146, 108, 72, 255);
+        // In a cave the ridge is the floor's own rock (style guide, "Caves"), and in the Distortion World its islands' stone
+        var lawn = Map.IsVoid ? new Color(136, 126, 152, 255) : Map.IsCave ? new Color(130, 118, 120, 255) : new Color(104, 190, 98, 255);
+        var dirt = Map.IsVoid ? new Color(84, 74, 100, 255) : Map.IsCave ? new Color(82, 72, 84, 255) : new Color(146, 108, 72, 255);
         var flat = batches.For(SceneTextures.White);
-        var face = batches.For(Map.IsCave ? SceneTextures.RockLedgeFace : SceneTextures.LedgeFace);
+        var face = batches.For(Map.IsCave || Map.IsVoid ? SceneTextures.RockLedgeFace : SceneTextures.LedgeFace);
         for (int ty = content.Y; ty < content.Bottom; ty++)
         {
             for (int tx = content.X; tx < content.Right; tx++)
@@ -753,7 +789,8 @@ internal sealed class MapScene
         float xBack = X(0.12f), xTop = X(0.36f), xFront = X(0.62f);
         var outward = westward ? -Vector3.UnitX : Vector3.UnitX;
         var slope = Vector3.Normalize(new Vector3(westward ? 0.7f : -0.7f, 1, 0));
-        var lip = new Color(160, 222, 122, 255);
+        // (in the Distortion World a paler line of its stone)
+        var lip = Map.IsVoid ? new Color(170, 160, 190, 255) : new Color(160, 222, 122, 255);
 
         flat.Quad(new(xBack, g, z1), new(xTop, top, z1), new(xTop, top, z0), new(xBack, g, z0), default, default, default, default, lawn, slope);
         flat.Quad(new(xTop, top, z1), new(xFront, top, z1), new(xFront, top, z0), new(xTop, top, z0), default, default, default, default, lawn, Up);
@@ -784,7 +821,8 @@ internal sealed class MapScene
     {
         const int T = GroundBaker.ArtTile, wallH = PropModels.WallHeight, cap = 16;
         int w = Map.Width, h = Map.Height;
-        int left = T, right = (w - 1) * T, back = 2 * T, front = (h - 1) * T;
+        var (lx, by) = roomCorner;
+        int left = lx * T, right = (w - 1) * T, back = by * T, front = (h - 1) * T;
         var style = Map.Interior;
         kit.Origin = Vector3.Zero;
 
@@ -811,6 +849,23 @@ internal sealed class MapScene
             tx = end;
         }
 
+        // The room's own inner walls (a room rebuilt to the original's plan: the Valley Windworks' hall and the
+        // corridor below it) are cut away as the front wall is, so the camera sees over them, but only down to the
+        // wainscot: each face that looks onto the floor is the lower part of the room's wall, under the walls' dark top
+        const int innerH = PropModels.InnerWallHeight;
+        bool Floor(int x, int y) => x >= lx && x < w - 1 && y >= by && y < h - 1 && Map.GetGroundTile(x, y) != TileType.Wall;
+        Art? inner = null;
+        for (int ty = by; ty < h - 1; ty++)
+            for (int tx = lx; tx < w - 1; tx++)
+            {
+                if (Map.GetGroundTile(tx, ty) != TileType.Wall) continue;
+                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH));
+                bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
+                var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
+                    c => GroundBaker.PaintWallTop(c, n, s, wst, e));
+                kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, innerH, top, s ? inner : null, wst ? inner : null, e ? inner : null);
+            }
+
         var daylight = batches.For(SceneTextures.WindowLight, MeshPass.Light);
         foreach (var prop in Map.Props)
         {
@@ -819,14 +874,14 @@ internal sealed class MapScene
 
             // Light from the window falls across the floor, slanting the way the room's shadows do
             const float y = 0.012f, reach = 2.3f, slant = 0.8f;
-            float x0 = prop.X + 0.2f, x1 = prop.X + prop.Width - 0.2f, z0 = 2.02f;
+            float x0 = prop.X + 0.2f, x1 = prop.X + prop.Width - 0.2f, z0 = by + 0.02f;
             daylight.Quad(new(x0 + slant, y, z0 + reach), new(x1 + slant, y, z0 + reach), new(x1, y, z0), new(x0, y, z0),
                 new(0, 1), new(1, 1), new(1, 0), new(0, 0), Color.White, Up);
         }
-        for (int ty = 2; ty < h - 1; ty++)
-            for (int tx = 1; tx < w - 1; tx++)
+        for (int ty = by; ty < h - 1; ty++)
+            for (int tx = lx; tx < w - 1; tx++)
                 if (Map.GetGroundTile(tx, ty) == TileType.PC) PropModels.BuildPc(kit, tx, ty);
 
-        RoomCenter = new Vector3(w / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
+        RoomCenter = new Vector3((lx + w - 1) / 2f, 0.6f * VS, (back + front) / (2f * T) + 0.2f);
     }
 }

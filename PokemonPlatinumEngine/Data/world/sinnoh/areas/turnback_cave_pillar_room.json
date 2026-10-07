@@ -1,0 +1,30 @@
+{
+  "key": "turnback_cave_pillar_room",
+  "index": 269,
+  "name": "Turnback Cave",
+  "matrix": 62,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "Default",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_03",
+  "nightMusic": "D_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 1, "to": "turnback_cave_entrance", "toWarp": 2 },
+    { "x": 20, "z": 11, "to": "turnback_cave_entrance", "toWarp": 3 },
+    { "x": 11, "z": 20, "to": "turnback_cave_entrance", "toWarp": 0 },
+    { "x": 2, "z": 11, "to": "turnback_cave_entrance", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 10, "z": 14, "type": 0, "script": "2" },
+    { "x": 11, "z": 14, "type": 0, "script": "2" },
+    { "x": 12, "z": 14, "type": 0, "script": "2" }
+  ],
+  "triggers": []
+}

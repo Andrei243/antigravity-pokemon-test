@@ -49,4 +49,7 @@ public static class GameDataFiles
     }
 
     public static string Serialize<T>(T value) => JsonSerializer.Serialize(value, Json) + "\n";
+
+    /// <summary>Reads a value back from what <see cref="Serialize{T}"/> wrote.</summary>
+    public static T Deserialize<T>(string text) => JsonSerializer.Deserialize<T>(text, Json) ?? throw new InvalidDataException("Nothing to read.");
 }

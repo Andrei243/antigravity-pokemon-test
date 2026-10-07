@@ -44,6 +44,9 @@
         "People give a bunch of them when they want to say thank you."
       ]
     },
+    // On the way into the meadow until the girl on Route 205 is met (plan 02 · S6)
+    "grunt_m_west": { "name": "Galactic Grunt", "script": "Grunts" },
+    "grunt_m_east": { "name": "Galactic Grunt", "script": "Grunts" },
     "camper": {
       "name": "Camper",
       "dialog": [

@@ -1,0 +1,13 @@
+{
+  "area": "distortion_world_1f",
+  "bgmTrack": "sinnoh/distortion_world",
+  // The original's one warp here leads out onto Mt. Coronet's sixth floor from a tile of the void nobody stands on
+  // (a leftover: the way back is the portal north of where the rift puts the player, at 34,29, which plan 02 · S12's
+  // scene opens with the way in)
+  "locked": [ 0 ],
+  // The slab that sinks to B1F (sMovingPlatformMapTemplate1F_1, elevator path 0): until slabs move, stepping onto it
+  // carries the player down through a fade, onto the slab it stops at
+  "exits": [
+    { "x": 19, "z": 44, "map": "DistortionWorldB1F", "toX": 40, "toY": 19, "facing": "Down" }
+  ]
+}

@@ -7,10 +7,12 @@
     { "warp": 1, "map": "OreburghPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 2, "map": "OreburghPokeMart", "x": 4, "y": 6, "facing": "Up" },
     // Roark's Gym, built for its chapter (plan 02 · S5)
-    { "warp": 0, "map": "OreburghGym", "x": 5, "y": 23, "facing": "Up" }
+    { "warp": 0, "map": "OreburghGym", "x": 5, "y": 23, "facing": "Up" },
+    // The house north of the Mart, where a girl trades her Abra for a Machop (plan 06 · R12), built to the original's plan
+    { "warp": 8, "map": "OreburghNorthHouse1F", "x": 11, "y": 12, "facing": "Up" }
   ],
-  // The museum and the seven houses have no rooms yet (plan 01 · M11)
-  "locked": [ 3, 4, 5, 6, 7, 8, 9 ],
+  // The museum and the six other houses have no rooms yet (plan 01 · M11)
+  "locked": [ 3, 4, 5, 6, 7, 9 ],
   // The boy who takes the player to the Gym, and the rival on the way out once the Badge is won (plan 02 · S5)
   "triggers": [ { "trigger": 0, "script": "ToTheGym" }, { "trigger": 1, "script": "RivalOnTheWayOut" } ],
   "people": {

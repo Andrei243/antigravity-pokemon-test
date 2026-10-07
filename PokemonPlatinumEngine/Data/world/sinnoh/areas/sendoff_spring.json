@@ -1,0 +1,76 @@
+{
+  "key": "sendoff_spring",
+  "index": 267,
+  "name": "Sendoff Spring",
+  "matrix": 60,
+  "kind": "Cave",
+  "sign": "Lake",
+  "weather": "Clear8",
+  "camera": "Default",
+  "battleBackground": "Forest",
+  "dayMusic": "ROAD_F_D",
+  "nightMusic": "ROAD_F_N",
+  "encounters": "sendoff_spring",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Graveler", "level": 38 },
+    { "species": "Bibarel", "level": 37 },
+    { "species": "Graveler", "level": 39 },
+    { "species": "Staravia", "level": 38 },
+    { "species": "Bibarel", "level": 38 },
+    { "species": "Staravia", "level": 40 },
+    { "species": "Graveler", "level": 37 },
+    { "species": "Chingling", "level": 37 },
+    { "species": "Dusclops", "level": 40 },
+    { "species": "Chingling", "level": 39 },
+    { "species": "Dusclops", "level": 40 },
+    { "species": "Chingling", "level": 39 }
+  ],
+  "landRate": 30,
+  "water": [
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 },
+    { "species": "Golduck", "level": 20, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 12, "z": 56, "to": "spring_path", "toWarp": 0 },
+    { "x": 13, "z": 56, "to": "spring_path", "toWarp": 1 },
+    { "x": 31, "z": 16, "to": "turnback_cave_entrance", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "cynthia", "looks": "cynthia", "movement": "look_south", "x": 31, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SENDOFF_SPRING_CYNTHIA", "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

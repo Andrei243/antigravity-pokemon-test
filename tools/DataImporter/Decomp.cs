@@ -50,6 +50,9 @@ public sealed class Decomp
     /// <summary>The text of a header under <c>include/</c> (a table the importer reads numbers from).</summary>
     public string Include(params string[] parts) => File.ReadAllText(Path.Combine(new[] { root, "include" }.Concat(parts).ToArray()));
 
+    /// <summary>A file of the original's C source (the Vs. Seeker's rematch table).</summary>
+    public string Source(params string[] parts) => File.ReadAllText(Path.Combine(new[] { root, "src" }.Concat(parts).ToArray()));
+
     private static string Folder(string constant, string prefix) => constant[prefix.Length..].ToLowerInvariant();
 
     private JsonElement Read(params string[] parts) => Parse(Path.Combine(new[] { root }.Concat(parts).ToArray()));

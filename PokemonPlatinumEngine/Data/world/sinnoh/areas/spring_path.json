@@ -1,0 +1,24 @@
+{
+  "key": "spring_path",
+  "index": 341,
+  "name": "Spring Path",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_F_D",
+  "nightMusic": "ROAD_F_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 762, "z": 713, "to": "sendoff_spring", "toWarp": 0 },
+    { "x": 763, "z": 713, "to": "sendoff_spring", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

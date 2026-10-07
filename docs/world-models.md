@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-176 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+179 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -77,13 +77,13 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c7_s03` | Team Galactic's headquarters | a building: Galactic, 5 storeys |  | 15.0 × 9.3 × 13.9 | 1 | Veilstone City |
 | `c7_s04` | the Veilstone Department Store | a building: Shop, built as in Stone, 5 storeys, signed STORE |  | 5.9 × 5.6 × 10.6 | 1 | Veilstone City |
 | `c8_h01` | a house of Sunyshore City | a building: House, built as in Seaside |  | 5.0 × 3.1 × 4.1 | 6 | Route 222, Sunyshore City |
-| `c8_o02` | a rock standing off Sunyshore's shore | a prop: Outcrop | M8 | 6.6 × 5.5 × 6.5 | 1 | Sunyshore City |
+| `c8_o02` | a stack of rock standing in the sea off Sunyshore's shore | a prop: SeaStack |  | 6.6 × 5.5 × 6.5 | 1 | Sunyshore City |
 | `c8_s02` | the Sunyshore Market | a building: Shop, built as in Seaside, signed MARKET |  | 6.6 × 6.0 × 3.7 | 1 | Sunyshore City |
 | `c8_s03` | the Vista Lighthouse | a building: Lighthouse |  | 6.5 × 7.0 × 12.7 | 1 | Sunyshore City |
 | `c9_h01` | a house of Snowpoint City | a building: House, built as in Snow |  | 4.2 × 2.8 × 4.8 | 5 | Route 216, Route 217, Snowpoint City |
-| `c9_o01` | a store shed at Snowpoint's harbour | a building: Warehouse, built as in Snow | M8 | 7.6 × 6.0 × 8.1 | 1 | Snowpoint City |
-| `c9_o02` | something low under the snow | a prop: Hedge | M8 | 3.0 × 1.8 × 1.8 | 4 | Snowpoint City |
-| `c9_o02b` | something low under the snow | a prop: Hedge | M8 | 2.1 × 2.6 × 1.8 | 2 | Snowpoint City |
+| `c9_o01` | the storehouse on Snowpoint's harbour, with a loft door and a hoist over its door | a building: Warehouse, built as in Snow |  | 7.6 × 6.0 × 8.1 | 1 | Snowpoint City |
+| `c9_o02` | a drift of snow banked against the storehouse | a prop: Snowdrift |  | 3.0 × 1.8 × 1.8 | 4 | Snowpoint City |
+| `c9_o02b` | a drift of snow banked against the storehouse | a prop: Snowdrift |  | 2.1 × 2.6 × 1.8 | 2 | Snowpoint City |
 | `c9_o03` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Snowpoint City |
 | `c9_s01` | Snowpoint Temple | a building: Temple |  | 11.0 × 8.0 × 5.9 | 1 | Snowpoint City |
 | `can01` | steel drums in the mine | a prop: Drums |  | 1.8 × 1.9 × 1.2 | 4 | Oreburgh Mine |
@@ -98,7 +98,8 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d11s01` | a great standing stone of Amity Square | a prop: Outcrop |  | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
 | `d16_o01` | lava on Stark Mountain's flank | nothing of its own: the ground under it draws it | M10 | 7.0 × 8.0 × 0.0 | 2 | Stark Mountain |
 | `d16_o02` | the mouth of Stark Mountain | a prop: Outcrop | M10 | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
-| `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 2 | Solaceon Ruins |
+| `d20_o01b` | the pillar in the middle of Turnback Cave's pillar room | a prop: Column |  | 1.8 × 1.8 × 4.6 | 1 | Turnback Cave |
+| `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 5 | Solaceon Ruins, Turnback Cave |
 | `d23_yane` | the Mansion's back, over the Trophy Garden | a building: Mansion |  | 32.0 × 5.5 × 4.8 | 1 | Trophy Garden |
 | `d24_o01` | the tower of a lift between the levels of Iron Island's tunnels | a prop: Headframe |  | 3.0 × 2.8 × 8.5 | 3 | Iron Island |
 | `d2_s01` | a wind turbine | a prop: WindTurbine |  | 2.8 × 5.4 × 8.3 | 3 | Valley Windworks |
@@ -117,9 +118,9 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.2 × 1.6 | 2 | Eterna Forest, Route 212 |
 | `d3_s01` | the Old Chateau, abandoned in Eterna Forest | a building: Mansion, 2 storeys |  | 11.5 × 5.3 × 5.3 | 1 | Eterna Forest |
 | `d4_s01` | the Fuego Ironworks | a building: Factory, signed IRONWORKS |  | 16.0 × 10.5 × 8.9 | 1 | Fuego Ironworks |
-| `d5_ana_d` | a rift at Spear Pillar | nothing of its own: the ground under it draws it | M8 | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
-| `d5_ana_p` | a rift at Spear Pillar | nothing of its own: the ground under it draws it | M8 | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
-| `d5_ana_pl` | the rift's shadow on Spear Pillar's floor | nothing of its own: the ground under it draws it | M8 | 7.8 × 7.8 × 0.5 | 1 | Spear Pillar |
+| `d5_ana_d` | the rift that opens at Spear Pillar where Dialga comes | a prop: Rift |  | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
+| `d5_ana_p` | the rift that opens at Spear Pillar where Palkia comes | a prop: Rift |  | 1.6 × 1.2 × 5.6 | 1 | Spear Pillar |
+| `d5_ana_pl` | the dark the rifts cast on Spear Pillar's floor: the way into the Distortion World | a prop: RiftShadow |  | 7.8 × 7.8 × 0.5 | 1 | Spear Pillar |
 | `d5_colum01` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 6.6 | 4 | Spear Pillar |
 | `d5_colum01x` | a column of the Hall of Origin | a prop: Column |  | 2.4 × 2.4 × 6.6 | 11 | Hall of Origin |
 | `d5_colum02` | a column of Spear Pillar | a prop: Column |  | 2.4 × 2.4 × 6.6 | 4 | Spear Pillar |
@@ -148,6 +149,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
 | `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 12 | Lake Acuity, Lake Valor, Lake Verity |
+| `l_lake_l4` | the surface of a lake | nothing of its own: the ground under it draws it |  | 20.0 × 16.0 × 0.0 | 1 | Sendoff Spring |
 | `lift_base01` | the platform at the foot of a lift on Iron Island | a prop: LiftBase |  | 3.0 × 2.3 × 0.9 | 2 | Iron Island |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |
 | `pc` | a Pokémon Center | a building: PokemonCenter |  | 5.2 × 3.6 × 3.9 | 16 | Canalave City, Celestic Town, Eterna City and 13 more |
@@ -193,8 +195,9 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `wfall3_4dun` | a waterfall in a cave (Victory Road) | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 4.6 | 2 | Victory Road |
 | `wfall3_5` | a waterfall | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 5.6 | 1 | Route 208 |
 | `wfall7_4dun` | a waterfall in a cave (Mt. Coronet's fourth floor) | nothing of its own: the ground under it draws it |  | 7.0 × 0.8 × 4.6 | 1 | Mt. Coronet |
+| `yabu_ana_in` | the rift in the floor of Giratina's room in Turnback Cave | nothing of its own: the ground under it draws it |  | 2.0 × 2.0 × 0.0 | 1 | Turnback Cave |
 
 ## In numbers
 
-- 88 models are buildings, of 26 kinds; 62 are props; 13 are doors.
-- 21 have a stand-in for now: 14 until M10, 7 until M8.
+- 88 models are buildings, of 26 kinds; 66 are props; 13 are doors.
+- 14 have a stand-in for now: 14 until M10.

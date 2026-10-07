@@ -457,5 +457,24 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The boy who takes the player to the Gym | Walks there with the player behind him | A fade, and the two stand before the Gym | Nobody follows the player yet |
 | The collector after the tag battle | Gives the Fashion Case and accessories | Not there | Accessories and contests are plan 06 · R17's |
 | Looker's Pal Pad, the Global Terminal's greeter | After the Coal Badge, by the Pokémon Center | Not there | Their rooms are plan 01 · M11's |
-| People who wander | Walk about within their own range | Stand where they are placed | The importer doesn't keep the ranges yet (S6) |
+| People who wander | Walk about within their own range | Stand where they are placed (until S6, which made them move) | The importer didn't keep the ranges yet |
 
+
+## The third chapter, first half (2026-10-07, plan 02 · S6)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_floaroma_town.s`, `scripts_route_205_south.s`, `scripts_floaroma_meadow.s`, `scripts_valley_windworks_outside.s`, `scripts_eterna_forest.s`, `scripts_follower_partners.s`, `src/overlay006/wild_encounters.c`, `src/encounter.c`, `src/unk_0206450C.c`)
+
+- **People move about** by their movement type and range (`Overworld/Wandering.cs`): those who look about turn after a wait of 16, 32, 48 or 64 frames drawn at random; those who wander turn the same way and take a step that way only when it stays within their range of where they first stood and nothing is in it; those who walk a loop go round a corner of their box, out along two legs to its edge and back along two to where they began, marking time while something blocks them. Coming to a map again puts everyone back where they first stood.
+- **Someone travelling with the player** (Cheryl, `Overworld/Follower.cs`) heals the team after every battle that isn't lost (fled from too: `CheckPlayerWonBattle` counts only a loss or a draw as not won), brings a second wild Pokémon into every battle of the grass (both drawn as the first is; the lead scaring either off leaves the grass quiet), battles beside the player with a fresh team of their own each time, stays behind when the player whites out, and keeps the Bicycle, the rods, an Escape Rope and the field moves that leave the place in the bag. The player gets off the Bicycle as she joins.
+- **Two trainers who see the player at once come together** (`APPROACH_TYPE_VS2`): beside a partner always, as a tag battle; without one, two against the player's two Pokémon when the player has two able to fight, and otherwise one at a time.
+- **The meadow's two grunts** battle one after the other with no healing between, and a loss in either leaves them there for both battles again.
+- **Coming out of a warp** onto a trigger starts it, as the original's step off a door's mat does (Cheryl at the forest's edge); a trigger on a warp's own tile goes before the warp (she turns the player back from it).
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Drifloon at the Valley Windworks | On Fridays, after Commander Mars, a Drifloon floats by the signboard to be battled | Not there | A Pokémon can't stand in the field yet |
+| The Galactic lobby theme in the Windworks | `SEQ_D_GINLOBBY` until Mars is beaten | Route 205's theme throughout | No lobby theme yet (plan 05) |
+| Cheryl joining | A jingle of its own (`SEQ_GONIN`) | The level-up fanfare | No partner jingle yet (plan 05) |
+| A follower through a warp | Follows the player onto the next map | Stays on her own map, the battles still beside the player | Only Cheryl travels so far, and the forest's exits turn the player back while she does |

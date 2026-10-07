@@ -208,9 +208,10 @@ public class BagScreen
 
     /// <summary>
     /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
-    /// Bicycle, the three rods, the Escape Rope. The bag closes and the game carries them out.
+    /// Bicycle, the three rods, the Escape Rope, the Journal and the Vs. Seeker (plan 06 · R12). The bag closes and
+    /// the game carries them out.
     /// </summary>
-    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope";
+    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker";
 
     /// <summary>Items that do their work from the bag itself, on nobody: the Repels and the flutes, and Sacred Ash on the whole team.</summary>
     public static bool UsedInBag(ItemData item) => EncounterAids.IsAid(item) || ItemUse.RevivesAll(item);

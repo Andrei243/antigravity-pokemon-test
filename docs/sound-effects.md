@@ -45,6 +45,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on. |
 | `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off. |
+| `vs_seeker` | `SE_DP_VS_SEEKER_BEEP_sseq` | The Vs. Seeker is used: it searches for trainers who want a rematch. |
 | `heal` | `SEQ_SE_DP_KAIFUKU` | A medicine used from the bag, HP restored in battle. |
 | `bike_bell` | `SEQ_SE_DP_JITENSYA` | Getting on the Bicycle (plan 02 · S2). |
 | `gear` | `SEQ_SE_DP_GEAR` | The Bicycle's gear changes, on the run button while riding. |

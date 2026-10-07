@@ -8,6 +8,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> export [species ...]   species' models as .glb files, to edit and drop into overrides/models
 //   dotnet run --project tools/ShotHarness -- <output dir> profile            where a frame goes: the heavy scenes timed, then taken apart pass by pass
 //   dotnet run --project tools/ShotHarness -- <output dir> opening            the first chapter's scenes, played by its own scripts
+//   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
 //   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]   a rectangle of a shot, enlarged
@@ -218,6 +219,9 @@ GameClock.FixedDate = new DateTime(2026, 6, 1);
 var startClock = System.Diagnostics.Stopwatch.StartNew();
 var engine = new GameEngine();
 engine.Initialize();
+// People who move about of their own accord would stand elsewhere in every shot: they stay put but where a mode
+// shows them moving (plan 02 · S6)
+engine.PeopleStayPut = true;
 double startMs = startClock.Elapsed.TotalMilliseconds;
 
 // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
@@ -290,6 +294,19 @@ Image Capture()
     var rt = (RenderTexture2D)Get("virtualScreen");
     var img = Raylib.LoadImageFromTexture(rt.Texture);
     Raylib.ImageFlipVertical(ref img);
+    // The game's picture is opaque everywhere (the window shows it over black): a see-through pixel is drawn darker
+    // in the game than in the shot
+    if (img.Format == PixelFormat.UncompressedR8G8B8A8)
+    {
+        long seeThrough = 0;
+        unsafe
+        {
+            byte* p = (byte*)img.Data;
+            for (long i = 3, end = (long)img.Width * img.Height * 4; i < end; i += 4)
+                if (p[i] != 255) seeThrough++;
+        }
+        if (seeThrough > 0) Console.WriteLine($"!! the picture is see-through in {seeThrough} pixels");
+    }
     return img;
 }
 
@@ -1013,7 +1030,7 @@ if (Run("demo"))
     renderer.SetArena(BattleArena.Grass);
     var wild = new Pokemon(PokemonDatabase.Get("Starly")!, 3) { CurrentHP = 1, Status = StatusCondition.Sleep };
     inventory.AddItem(ItemDatabase.Get("Poké Ball")!, 1);
-    var c = new BattleEngine(party, wild, inventory, pokedex, null, new List<Pokemon>());
+    var c = new BattleEngine(party, wild, inventory, pokedex, null, new PcBoxes());
     Set("battle", c);
     Skip(2.2); Confirm(c); Skip(1.2); Confirm(c); Skip(0.6);
     c.UseItem(ItemDatabase.Get("Poké Ball")!);
@@ -1213,7 +1230,25 @@ if (Run("menus"))
     var handle = T.GetMethod("HandleStartMenuChoice", Private) ?? T.GetMethod("HandleStartMenu", Private);
     handle!.Invoke(engine, new object[] { StartMenuChoice.Trainer });
     Frames(40); Shot("28_trainer_card");
-    ((TrainerCardScreen)Get("trainerCardScreen")).Close();
+    // Turned over (plan 06 · R12): halfway, then its back
+    var trainerCard = (TrainerCardScreen)Get("trainerCardScreen");
+    trainerCard.Flip();
+    Frames(6); Shot("28a_trainer_card_turning");
+    Frames(30); Shot("28b_trainer_card_back");
+    trainerCard.Close();
+    // Another colour: a team in the Hall of Fame is the first star (cobalt), with a score and a debut on the back
+    var scoreBefore = Get("trainerScore");
+    var fameBefore = Get("hallOfFame");
+    var fame = new HallOfFame();
+    fame.Enter(party, p => ("Lucas", 12345), new DateTime(2026, 10, 7, 14, 32, 0));
+    Set("hallOfFame", fame);
+    Set("trainerScore", 2468);
+    handle.Invoke(engine, new object[] { StartMenuChoice.Trainer });
+    Frames(40); Shot("28c_trainer_card_cobalt");
+    trainerCard.Flip();
+    Frames(30); Shot("28d_trainer_card_cobalt_back");
+    trainerCard.Close();
+    Set("trainerScore", scoreBefore);
     ((StoryState)Get("story")).SetBadges(0);
 
     // Saving: the question over the field, and the moment after
@@ -1250,19 +1285,123 @@ if (Run("menus"))
     shop.Open("Veilstone Dept. Store", MartDatabase.Stock("veilstone_2f_mid", 0), ShopMode.Buying);
     Frames(30); Shot("29d_shop_specialties");
     shop.Close();
-    var boxed = (List<Pokemon>)Get("pcBoxStorage");
+    var boxed = (PcBoxes)Get("pcBoxStorage");
     foreach (var name in new[] { "Starly", "Bidoof", "Shinx", "Budew", "Kricketot", "Staravia", "Luxio", "Riolu", "Gible", "Prinplup" })
-        boxed.Add(new Pokemon(PokemonDatabase.Get(name)!, 4 + boxed.Count * 3));
+        boxed.Store(new Pokemon(PokemonDatabase.Get(name)!, 4 + boxed.Count * 3));
     Set("currentState", GameState.PCStorage);
     var pc = (PCScreen)Get("pcScreen");
-    pc.Open();
+    pc.Open(boxed);
     Frames(30); Shot("30_pc");
     pc.Move(1, 0, party.Count); pc.Move(1, 0, party.Count); pc.Move(0, 1, party.Count);
     Frames(4); Shot("30b_pc_in_the_box");
     pc.Move(0, -1, party.Count); pc.Move(0, -1, party.Count);
     Frames(4); Shot("30c_pc_box_name");
+    // Plan 06 · R12: the box's own menu, two of its wallpapers, a Pokémon's menu, one carried, its marks and where
+    // it was met, the question before a release, and the box's name typed anew
+    var bidoof = boxed[0, 1]!;
+    bidoof.Met("Route 201", new DateTime(2026, 6, 1));
+    bidoof.HeldItem = ItemDatabase.Get("Oran Berry");
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30d_pc_box_menu");
+    pc.MenuIndex = 1;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30e_pc_wallpaper_city");
+    boxed.UnlockedWallpapers = 0xFF;
+    boxed.Boxes[0].Wallpaper = PcBoxes.WallpaperNames.Count - 1;
+    pc.Move(0, 1, party.Count);
+    Frames(4); Shot("30f_pc_wallpaper_galactic");
+    boxed.Boxes[0].Wallpaper = 0;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30g_pc_menu");
+    pc.Choose(PcAction.Move, party, boxed, engine.ShowNotification);
+    pc.Move(0, 1, party.Count); pc.Move(0, 1, party.Count);
+    Frames(4); Shot("30h_pc_carrying");
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Choose(PcAction.Mark, party, boxed, engine.ShowNotification);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    for (int i = 0; i < 3; i++) pc.Move(1, 0, party.Count);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Move(1, 0, party.Count);
+    Frames(4); Shot("30i_pc_marks");
+    pc.MarkIndex = 6;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30j_pc_marked");
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Choose(PcAction.Release, party, boxed, engine.ShowNotification);
+    Frames(20); Shot("30k_pc_release");
+    pc.Cancel(party, boxed);
+    for (int i = 0; i < 3; i++) pc.Move(0, -1, party.Count);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.MenuIndex = 0;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    var naming = pc.Naming!;
+    while (naming.Backspace()) { }
+    foreach (char c in "Fav") naming.Type(c);
+    naming.Move(3, 1);
+    Frames(4); Shot("30l_pc_naming");
+    naming.Type('s');
+    pc.FinishNaming(boxed, naming.Result(boxed.Boxes[0].Name));
+    Frames(4); Shot("30m_pc_named");
     pc.Close();
-    boxed.Clear();
+    Set("pcBoxStorage", new PcBoxes());
+
+    // The PC's Hall of Fame (plan 06 · R12): two teams, the newest first; a Pokémon of it, its moves, the older team
+    var champions = new Party();
+    foreach (var (species, level, nickname) in new[]
+             {
+                 ("Torterra", 52, "Bramble"), ("Staraptor", 50, ""), ("Luxray", 49, "Volt"), ("Gastrodon", 48, ""), ("Lucario", 51, ""),
+                 ("Garchomp", 54, "")
+             })
+    {
+        var member = new Pokemon(PokemonDatabase.Get(species)!, level);
+        if (nickname.Length > 0) member.Nickname = nickname;
+        champions.Add(member);
+    }
+    champions.Members[4].IsShiny = true;
+    fame.Enter(champions, p => ("Lucas", 12345), new DateTime(2026, 10, 21));
+    var famous = typeof(GameEngine).Assembly.GetType("PokemonPlatinumEngine.Graphics.PokemonSprites")!;
+    foreach (var member in champions.Members.Concat(party.Members)) famous.GetMethod("Request")!.Invoke(null, new object[] { member.ModelName });
+    famous.GetMethod("Flush")!.Invoke(null, new[] { Get("renderContext") });
+    var hallOfFame = (HallOfFameScreen)Get("hallOfFameScreen");
+    Set("currentState", GameState.HallOfFame);
+    hallOfFame.Open();
+    Frames(30); Shot("30n_hall_of_fame");
+    hallOfFame.Move(0, 1, fame); hallOfFame.Move(0, 1, fame); hallOfFame.Move(0, 1, fame); hallOfFame.Move(0, 1, fame);
+    Frames(4); Shot("30o_hall_of_fame_shiny");
+    hallOfFame.Turn();
+    Frames(4); Shot("30p_hall_of_fame_moves");
+    hallOfFame.Move(1, 0, fame);
+    hallOfFame.Turn();
+    Frames(4); Shot("30q_hall_of_fame_first_team");
+    hallOfFame.Close();
+    Set("hallOfFame", fameBefore);
+
+    // The Journal (plan 06 · R12): two days, the newest first, with a Pokémon caught and a trainer beaten
+    var journalBefore = Get("journal");
+    var journal = new Journal();
+    journal.TakenUp(new DateTime(2026, 6, 1), "Twinleaf Town");
+    journal.Tell(new JournalEvent(JournalEventKind.LeftResearchLab));
+    journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, "Sandgem Town"));
+    journal.BeatTrainer("Youngster Tristan", "Route 202");
+    journal.TakenUp(new DateTime(2026, 6, 3), "Jubilife City");
+    journal.Tell(new JournalEvent(JournalEventKind.ShoppedAtMart));
+    journal.Tell(new JournalEvent(JournalEventKind.ItemWasObtained, "the Pokétch"));
+    journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, "Oreburgh City"));
+    journal.Caught("Starly", "Route 203");
+    journal.BeatTrainer("Rival " + PlayerIdentity.RivalName, "Route 203");
+    famous.GetMethod("Request")!.Invoke(null, new object[] { "Starly" });
+    famous.GetMethod("Flush")!.Invoke(null, new[] { Get("renderContext") });
+    Set("journal", journal);
+    Set("currentState", GameState.Journal);
+    var journalScreen = (JournalScreen)Get("journalScreen");
+    journalScreen.Open();
+    Frames(30); Shot("22j_journal");
+    journalScreen.Turn(1, journal);
+    Frames(4); Shot("22k_journal_older");
+    journalScreen.Close();
+    Set("journal", journalBefore);
+    Set("currentState", GameState.Overworld);
 
     // The battle's panels for switching and for the bag
     var mb = StartBattle("Shinx", 5);
@@ -1853,6 +1992,34 @@ if (Run("buildings"))
     if (args.Length > 2)
         Boards(args[2], streets.Select(s => s.Name).Concat(rooms.Select(r => r.Name))
             .Concat(new[] { "b20_twinleaf_night", "b21_sandgem_night", "b22_jubilife_night", "b23_house_night", "b24_twinleaf_late_night", "b25_jubilife_twilight", "b26_center_twilight" }).ToArray());
+}
+
+// ---------------------------------------------------------------- rooms rebuilt to the original's plans
+
+// The rooms built to the original's own floor plans, so its people stand on its tiles (not part of `all`): the
+// three houses of the in-game trades and the Valley Windworks' hall, from the door and from inside
+if (mode == "rooms")
+{
+    (string Name, string Map, int X, int Y, Direction Facing)[] plans =
+    {
+        ("r1_oreburgh_north_house", "OreburghNorthHouse1F", 11, 12, Direction.Up),
+        ("r2_eterna_condominiums", "EternaCondominiums1F", 11, 12, Direction.Up),
+        ("r3_snowpoint_west_house", "SnowpointWestHouse", 4, 8, Direction.Up),
+        ("r4_windworks_door", "ValleyWindworksBuilding", 12, 16, Direction.Up),
+        ("r5_windworks_hall", "ValleyWindworksBuilding", 8, 7, Direction.Up),
+        ("r6_windworks_commander", "ValleyWindworksBuilding", 18, 6, Direction.Right)
+    };
+    foreach (var (name, map, x, y, facing) in plans)
+    {
+        At(map, x, y, facing); Frames(2); Shot(name);
+    }
+    At("ValleyWindworksBuilding", 8, 7, Direction.Up); Frames(2);
+    ShotCrop("r7_windworks_hall_native", 560, 240, 800, 450, 2);
+    engine.Settings.TimeOfDay = TimeOfDay.Night;
+    engine.ApplySettings(window: false);
+    At("SnowpointWestHouse", 4, 8, Direction.Up); Frames(2); Shot("r8_snowpoint_west_house_night");
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
+    engine.ApplySettings(window: false);
 }
 
 // ---------------------------------------------------------------- the imported world (plan 01 · M2)
@@ -2560,6 +2727,59 @@ if (Run("world"))
         At(map, x, y, Direction.Up);
         Timing(label);
     }
+
+    // The Distortion World and the north's last stand-ins (plan 01 · M8, part 2)
+    DistortionWorldShots();
+}
+
+// Not part of `all` but the end of `world`: the Distortion World's floors, islands over nothing, from where the rift
+// at Spear Pillar puts the player down to Giratina's room (its light is the same at every hour), and the models that
+// stood in for the north's last landmarks: Sunyshore's sea stack, Snowpoint's harbour storehouse and its drifts, and
+// Spear Pillar's rifts (which stand on the torn Spear Pillar of plan 02 · S12's scene, put on the pillar for the picture)
+if (mode == "distortion") DistortionWorldShots();
+
+void DistortionWorldShots()
+{
+    (string Name, string Map, int X, int Y, Direction Facing)[] distorted =
+    {
+        ("wh0_distortion_1f", "DistortionWorld1F", 34, 30, Direction.Down), ("wh1_distortion_1f_slab", "DistortionWorld1F", 20, 42, Direction.Down),
+        ("wh2_distortion_b1f", "DistortionWorldB1F", 24, 12, Direction.Right), ("wh3_distortion_b2f_stones", "DistortionWorldB2F", 18, 25, Direction.Up),
+        ("wh4_distortion_b2f_upper", "DistortionWorldB2F", 34, 38, Direction.Up), ("wh5_distortion_b3f", "DistortionWorldB3F", 18, 22, Direction.Down),
+        ("wh6_distortion_b4f", "DistortionWorldB4F", 12, 12, Direction.Down), ("wh7_distortion_b5f", "DistortionWorldB5F", 30, 33, Direction.Up),
+        ("wh8_distortion_b6f", "DistortionWorldB6F", 25, 28, Direction.Right), ("wh9_distortion_b7f", "DistortionWorldB7F", 11, 44, Direction.Up),
+        ("whg_distortion_giratina_room", "DistortionWorldGiratinaRoom", 15, 20, Direction.Up),
+        ("wht_distortion_turnback_room", "DistortionWorldTurnbackCaveRoom", 46, 45, Direction.Down)
+    };
+    foreach (var (name, map, x, y, facing) in distorted)
+    {
+        At(map, x, y, facing); Frames(2); Shot(name);
+    }
+    engine.Settings.TimeOfDay = TimeOfDay.Night;
+    engine.ApplySettings(window: false);
+    At("DistortionWorld1F", 34, 30, Direction.Down); Frames(2); Shot("whn_distortion_1f_night");
+    engine.Settings.TimeOfDay = TimeOfDay.Day;
+    engine.ApplySettings(window: false);
+
+    // The north's landmarks that had stand-ins until now
+    // (seen from the water south of it, surfing)
+    At("Sinnoh", 882, 765, Direction.Up);
+    ((Player)Get("player")).SetMode(TravelMode.Surfing);
+    Frames(2); Shot("wi0_sunyshore_sea_stack");
+    ((Player)Get("player")).SetMode(TravelMode.OnFoot);
+    At("Sinnoh", 375, 246, Direction.Up); Frames(2); Shot("wi1_snowpoint_storehouse");
+    var pillar = MapDatabase.Get("SpearPillar");
+    var rifts = new[]
+    {
+        new Prop { Type = PropType.RiftShadow, X = 28, Y = 20, Width = 7, Depth = 7, Height = 0.5f, Model = "d5_ana_pl" },
+        new Prop { Type = PropType.Rift, X = 29, Y = 23, Width = 1, Depth = 1, Height = 5.6f, Model = "d5_ana_d" },
+        new Prop { Type = PropType.Rift, X = 33, Y = 23, Width = 1, Depth = 1, Height = 5.6f, Model = "d5_ana_p" }
+    };
+    var renderer = (WorldRenderer)Get("world");
+    pillar.Props.AddRange(rifts);
+    renderer.Forget(pillar, 0, 0, pillar.Width, pillar.Height);
+    At("SpearPillar", 31, 28, Direction.Up); Frames(2); Shot("wi2_spear_pillar_rifts");
+    foreach (var rift in rifts) pillar.Props.Remove(rift);
+    renderer.Forget(pillar, 0, 0, pillar.Width, pillar.Height);
 }
 
 // The shortest way on foot between two tiles (ledges are walked round, as they must be going north)
@@ -3732,6 +3952,213 @@ if (mode == "jubilife")
     ReadTo("You two are a good team"); Frames(10); Shot("j25_jubilife_the_professor");
     ReadTo(null);
     Console.WriteLine($"north gate: jubilife {story.Var("VAR_JUBILIFE_CITY_STATE")}, grunts gone {story.Has("FLAG_HIDE_JUBILIFE_GALACTIC_GRUNTS")}");
+}
+
+if (mode == "windworks")
+{
+    engine.StartNewGame();
+    PastTheOpening();
+    Set("currentState", GameState.Overworld);
+    ((LocationSign)Get("locationSign")).Hide();
+    var story = (StoryState)Get("story");
+    var bag = (Inventory)Get("playerInventory");
+    var team = (Party)Get("playerParty");
+    var interact = T.GetMethod("TryInteract", Private)!;
+    team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Torterra")!, 40));
+
+    DialogueManager Box() => (DialogueManager)Get("dialogue");
+    GameState State() => (GameState)Get("currentState");
+    Player Me() => (Player)Get("player");
+    void Until(Func<bool> holds, string what, int most = 900)
+    {
+        for (int i = 0; i < most && !holds(); i++) Frames(1);
+        if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+    }
+    void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+    void ReadTo(string? text, int most = 1500)
+    {
+        for (int i = 0; i < most; i++)
+        {
+            if (text != null && Box().IsActive && Box().CurrentLine.Contains(text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+            if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 60) break;
+            if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
+            if (State() == GameState.Battle) { Win(); continue; }
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+    }
+    // A battle won: every foe brought down to 1 HP and struck
+    void Win()
+    {
+        var fight = (BattleEngine)Get("battle");
+        for (int guard = 0; guard < 300 && !fight.IsBattleOver; guard++)
+        {
+            if (fight.HUD.MenuState == BattleMenuState.Main)
+            {
+                // A wild battle has no team of the foe's: its Pokémon are the ones on the field
+                foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                foreach (var wild in fight.Core.EnemySlots.Where(b => b.Pokemon != null)) wild.Pokemon!.CurrentHP = Math.Min(wild.Pokemon.CurrentHP, 1);
+                fight.SelectMainMenuOption(0);
+                fight.SelectMove(0);
+                if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
+            }
+            else Confirm(fight);
+            Skip(0.5);
+        }
+        Until(() => State() == GameState.Overworld, "the field again", 1500);
+        Frames(10);
+    }
+    void IntoBattle(string what)
+    {
+        for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+        {
+            if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+            else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
+        else Skip(1.0);
+    }
+    // A step onto a tile of a map, from the tile before it, that starts a scene
+    void StepOnto(string map, int x, int y, Direction way)
+    {
+        var (dx, dy) = way switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+        At(map, x - dx, y - dy, way);
+        engine.Steering = (way, false);
+        Until(() => engine.ScriptRunning, $"the scene at {x},{y}", 120);
+        engine.Steering = null;
+    }
+    // Comes into a map through a warp onto a tile, as the game does: its own script, then the trigger stepped out onto
+    void ComeThrough(string map, int x, int y, Direction facing)
+    {
+        At(map, x, y, facing);
+        T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
+        Set("steppedOutOfWarp", true);
+        Frames(2);
+    }
+    void TalkTo(string map, string key, string place)
+    {
+        var m = MapDatabase.Get(map);
+        var npc = m.NPCs.First(n => n.Key == key && n.ScriptFile == place);
+        At(map, npc.GridX, npc.GridY + 1, Direction.Up);
+        interact.Invoke(engine, null);
+    }
+    void Walk(Direction way, int steps)
+    {
+        for (int i = 0; i < steps; i++)
+        {
+            var (x0, y0) = (Me().GridX, Me().GridY);
+            engine.Steering = (way, false);
+            Until(() => Me().IsMoving, "a step", 60);
+            Until(() => !Me().IsMoving || (Me().GridX, Me().GridY) != (x0, y0), "the step's end", 60);
+        }
+        engine.Steering = null;
+        Frames(20);
+    }
+
+    Frames(5);
+    ReadTo(null, 600);
+
+    // ---- Floaroma Town: the grunts at the meadow's door, and its people about their day
+    TalkTo("Sinnoh", "grunt_m_west", "floaroma_town");
+    ReadTo("signed up"); Frames(10); Shot("ww01_floaroma_the_grunts");
+    ReadTo(null);
+    At("Sinnoh", 175, 657, Direction.Up); Frames(30); Shot("ww02_floaroma_people_stand");
+    engine.PeopleStayPut = false;
+    Frames(300);
+    Shot("ww03_floaroma_people_about");
+    engine.PeopleStayPut = true;
+
+    // ---- Route 205: the little girl, the bridge
+    StepOnto("Sinnoh", 211, 659, Direction.Right);
+    ReadTo("spacemen"); Frames(10); Shot("ww04_route205_the_little_girl");
+    ReadTo(null);
+    StepOnto("Sinnoh", 217, 653, Direction.Up);
+    ReadTo("Eterna Forest"); Frames(10); Shot("ww05_route205_the_bridge");
+    ReadTo(null); Frames(20); Shot("ww06_route205_sent_back");
+    Console.WriteLine($"route 205: windworks {story.Var("VAR_VALLEY_WINDWORKS_STATE")}, town grunts gone {story.Has("FLAG_HIDE_FLOAROMA_TOWN_GRUNTS")}");
+
+    // ---- Floaroma Meadow: two battles, the Works Key
+    StepOnto("FloaromaMeadow", 12, 48, Direction.Up);
+    ReadTo("hand over the Honey"); Frames(10); Shot("ww07_meadow_the_grunts");
+    IntoBattle("the first grunt");
+    ToMainMenu((BattleEngine)Get("battle")); Shot("ww08_meadow_the_battle");
+    ReadTo("dropped this"); Frames(10); Shot("ww09_meadow_the_works_key");
+    ReadTo(null);
+    Console.WriteLine($"meadow: works key {bag.GetQuantity(ItemDatabase.Get("Works Key")!)}, honey {bag.GetQuantity(ItemDatabase.Get("Honey")!)}");
+
+    // ---- the Valley Windworks: the grunt at the door, the door
+    TalkTo("Sinnoh", "grunt_m", "valley_windworks_outside");
+    ReadTo("battle for it"); Frames(10); Shot("ww10_windworks_the_door_grunt");
+    ReadTo("Ka-chunk"); Frames(10); Shot("ww11_windworks_locked_in");
+    ReadTo(null);
+    At("Sinnoh", 243, 655, Direction.Up);
+    interact.Invoke(engine, null);
+    ReadTo("door is open"); Frames(10); Shot("ww12_windworks_the_door_opens");
+    ReadTo(null);
+    Console.WriteLine($"windworks: door open {story.Has("FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR")}");
+
+    // ---- inside: the grunt who runs off, Commander Mars and Charon, the girl and her papa
+    At("Sinnoh", 243, 655, Direction.Up);
+    engine.Steering = (Direction.Up, false);
+    Until(() => (Map)Get("currentMap") != MapDatabase.Get("Sinnoh"), "into the windworks", 300);
+    engine.Steering = null;
+    ReadTo("warn the Commander"); Frames(10); Shot("ww13_windworks_the_alarm");
+    ReadTo(null);
+    StepOnto("ValleyWindworksBuilding", 19, 7, Direction.Up);
+    ReadTo("whole new world"); Frames(10); Shot("ww14_windworks_commander_mars");
+    IntoBattle("Commander Mars");
+    ToMainMenu((BattleEngine)Get("battle")); Shot("ww15_windworks_the_battle");
+    ReadTo("Will you be quiet"); Frames(10); Shot("ww16_windworks_charon");
+    ReadTo("all stinky"); Frames(10); Shot("ww17_windworks_the_girl_and_her_papa");
+    ReadTo(null);
+    Console.WriteLine($"windworks: freed {story.Var("VAR_VALLEY_WINDWORKS_STATE")}, bridge open {story.Has("FLAG_HIDE_ROUTE_205_SOUTH_GRUNTS")}");
+
+    // ---- outside again: Looker
+    ComeThrough("Sinnoh", 243, 655, Direction.Down);
+    ReadTo("International Police"); Frames(10); Shot("ww20_windworks_looker");
+    ReadTo("Eterna City"); Frames(10); Shot("ww21_windworks_looker_back");
+    ReadTo(null);
+
+    // ---- Eterna Forest: Cheryl
+    ComeThrough("EternaForest", 28, 85, Direction.Up);
+    ReadTo("My name is Cheryl"); Frames(10); Shot("ww22_forest_cheryl");
+    ReadTo(null);
+    Walk(Direction.Up, 2); Shot("ww23_forest_cheryl_follows");
+    // A step west, and back east into her: the two swap round
+    Walk(Direction.Left, 1); Walk(Direction.Right, 1); Shot("ww24_forest_turning_back_into_her");
+    // A wild battle beside her: two Pokémon at once
+    T.GetMethod("StartWildBattle", Private)!.Invoke(engine, new object[] { new WildEncounterEntry { SpeciesName = "Wurmple", MinLevel = 12, MaxLevel = 12, Weight = 1 } });
+    Until(() => State() == GameState.Battle, "the wild double battle", 300);
+    var wildFight = (BattleEngine)Get("battle");
+    ToMainMenu(wildFight); Shot("ww25_forest_two_wild_pokemon");
+    Win();
+    Console.WriteLine($"forest: after the wild battle, team healed {team.Members.All(p => p.CurrentHP == p.MaxHP)}");
+    // Two trainers who face one another come together
+    At("EternaForest", 38, 68, Direction.Up);
+    T.GetMethod("KeepPartnerAlong", Private)!.Invoke(engine, null);
+    Frames(10);
+    engine.Steering = (Direction.Up, false);
+    Until(() => Me().GridY == 67, "the step between the pair", 120);
+    engine.Steering = null;
+    Frames(30); Shot("ww26_forest_the_pair_see_the_player");
+    Until(() => engine.ScriptRunning, "the pair's challenge", 300);
+    IntoBattle("the pair's battle");
+    var tag = (BattleEngine)Get("battle");
+    ToMainMenu(tag); Shot("ww27_forest_the_tag_battle");
+    Win();
+    ReadTo(null);
+    // The far side: she says goodbye
+    At("EternaForest", 81, 36, Direction.Right);
+    T.GetMethod("KeepPartnerAlong", Private)!.Invoke(engine, null);
+    Frames(10);
+    StepOnto("EternaForest", 82, 36, Direction.Right);
+    ReadTo("token of my thanks"); Frames(10); Shot("ww28_forest_cheryl_parts");
+    ReadTo("meet again"); Frames(10); Shot("ww29_forest_cheryl_at_the_exit");
+    ReadTo(null);
+    Console.WriteLine($"forest: soothe bell {bag.GetQuantity(ItemDatabase.Get("Soothe Bell")!)}, travelled {story.Has("FLAG_TRAVELED_WITH_CHERYL")}");
 }
 
 if (mode == "opening")

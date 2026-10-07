@@ -161,8 +161,231 @@ internal static class Landmarks
             case PropType.Pavilion:
                 Pavilion(kit, w, d);
                 return true;
+            case PropType.SeaStack:
+                SeaStack(kit, prop, w, d);
+                return true;
+            case PropType.Snowdrift:
+            {
+                int width = Math.Clamp(w - 4, 30, 92);
+                kit.Sprite(kit.Face($"drift.{width}", width, 22, c => PaintSnowdrift(c)), w / 2f, d / 2f + 8);
+                return true;
+            }
+            case PropType.Rift:
+            {
+                int rows = Rows(kit, prop.Height, 70, 170);
+                bool palkia = prop.Model.EndsWith("_p", StringComparison.Ordinal);
+                kit.Sprite(kit.Face($"rift.{(palkia ? "p" : "d")}.{rows}", 36, rows, c => PaintRift(c, palkia)), w / 2f, d / 2f + 6);
+                return true;
+            }
+            case PropType.RiftShadow:
+                RiftShadow(kit, w, d);
+                return true;
         }
         return false;
+    }
+
+    // ------------------------------------------------------------------ the north and the end (plan 01 · M8)
+
+    private static readonly Color Wet = Rgb(96, 98, 118), WetDark = Rgb(70, 72, 92);
+    private static readonly Color Thrift = Rgb(120, 190, 104), ThriftDark = Rgb(76, 146, 88), ThriftBloom = Rgb(232, 150, 186);
+
+    /// <summary>
+    /// A stack of rock standing in the sea (Sunyshore City), built like the relief's rock: a wide foot, wet where the
+    /// waves break on it, a body over its west side and a taller crown over its east, each set back from the one
+    /// under it so the outline steps in unevenly as weathered rock does, and a boulder broken off at the foot. The
+    /// crown is grown over with sea grass and clumps of pink flowers. The water's own foam laps round its foot
+    /// (<see cref="PixelGround"/> keeps the tiles under it dry).
+    /// </summary>
+    private static void SeaStack(KitBuilder kit, Prop prop, int w, int d)
+    {
+        int rows = Rows(kit, MathF.Min(prop.Height, 7f), 60, 150);
+        int foot = rows * 2 / 5, body = rows * 3 / 4;
+        int x0 = 6, x1 = Math.Max(x0 + 40, w - 6), z0 = 10, z1 = Math.Max(z0 + 32, d - 4);
+        int bw = x1 - x0, bd = z1 - z0;
+        StackTier(kit, x0, x1 - bw / 6, z0, z1, 0, foot, wet: 12, grass: false);
+        StackTier(kit, x0 + bw / 10, x0 + bw * 2 / 3, z0 + bd / 8, z1 - bd * 3 / 10, foot, body, wet: 0, grass: false);
+        StackTier(kit, x0 + bw * 2 / 5, x1 - bw / 6 - bw / 12, z0 + bd / 20, z1 - bd * 9 / 20, foot, rows, wet: 0, grass: true);
+        // The boulder: low, wet to its top, off the foot's south-east corner
+        StackTier(kit, x1 - bw / 4, x1, z1 - bd / 3, z1, 0, Math.Max(10, foot / 2), wet: 10, grass: false);
+    }
+
+    /// <summary>One block of a sea stack, every face painted at its size: rock faces, and a top of bare rock or of sea grass.</summary>
+    private static void StackTier(KitBuilder kit, int x0, int x1, int z0, int z1, int y0, int y1, int wet, bool grass)
+    {
+        int bw = x1 - x0, bd = z1 - z0, h = y1 - y0;
+        var front = kit.Face($"stack.face.{bw}x{h}.{wet}", bw, h, c => PaintStackFace(c, wet));
+        var side = kit.Face($"stack.face.{bd}x{h}.{wet}", bd, h, c => PaintStackFace(c, wet));
+        var top = kit.Face($"stack.{(grass ? "cap" : "top")}.{bw}x{bd}", bw, bd, c => PaintStackTop(c, grass));
+        kit.Box(x0, x1, z0, z1, y0, y1, top, front, side, side, front);
+    }
+
+    /// <summary>A face of a sea stack: the relief's rock face tiled across it, and the <paramref name="wet"/> rows at its foot darkened by the sea.</summary>
+    public static void PaintStackFace(PixelCanvas c, int wet)
+    {
+        var rock = NatureArt.RockFace();
+        wet = Math.Min(wet, c.Height);
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                var col = rock.Get(x % rock.Width, y % rock.Height);
+                if (y >= c.Height - wet)
+                    col = y == c.Height - wet ? WetDark : (col.R + col.G + col.B) / 3 < 130 ? WetDark : Wet;
+                c.SetRaw(x, y, col);
+            }
+    }
+
+    /// <summary>
+    /// The top of a sea stack's block: weathered rock, mottled and cracked, with a light rim and the white of the
+    /// gulls that perch there; or a cap of sea grass with a ragged edge over the rock, tufts of darker grass and
+    /// clumps of pink flowers where chance puts them (the same every time: chance here is the texel's place).
+    /// </summary>
+    public static void PaintStackTop(PixelCanvas c, bool grass)
+    {
+        int w = c.Width, h = c.Height;
+        var rock = Tone.Of(158, 152, 150, 176, 170, 166, 112, 106, 116);
+        var mottle = Rgb(146, 140, 140);
+        var crack = Rgb(118, 112, 120);
+        var guano = Rgb(226, 224, 216);
+        Pix.Raised(c, 0, 0, w, h, rock);
+        float R(int x, int y, int salt) => GroundBaker.Rand01(x, y, salt);
+        for (int y = 2; y < h - 2; y++)
+            for (int x = 2; x < w - 2; x++)
+            {
+                if (R(x / 3, y / 3, 61) < 0.22f) c.SetRaw(x, y, mottle);
+                if (!grass && R(x, y, 67) < 0.004f) c.Rect(x, y, 2, 1, guano);
+            }
+        // A few cracks, each a short crooked run
+        int cracks = Math.Max(1, w * h / 900);
+        for (int i = 0; i < cracks; i++)
+        {
+            int cx = 4 + (int)(R(i, 1, 71) * (w - 8)), cy = 4 + (int)(R(i, 2, 71) * (h - 8));
+            for (int step = 0; step < 9 && cx > 1 && cx < w - 2 && cy > 1 && cy < h - 2; step++)
+            {
+                c.SetRaw(cx, cy, crack);
+                cx += 1;
+                cy += R(i, step, 73) < 0.5f ? 0 : R(i, step, 79) < 0.5f ? 1 : -1;
+            }
+        }
+        if (!grass) return;
+
+        // The grass keeps two texels off the rock's rim, more where its ragged edge bites in
+        for (int y = 2; y < h - 2; y++)
+            for (int x = 2; x < w - 2; x++)
+            {
+                int edge = Math.Min(Math.Min(x, w - 1 - x), Math.Min(y, h - 1 - y));
+                int bite = 2 + (int)(R(x / 2, y / 2, 83) * 3);
+                if (edge < bite) continue;
+                c.SetRaw(x, y, edge == bite ? ThriftDark : R(x / 2, y / 2, 89) < 0.18f ? ThriftDark : Thrift);
+            }
+        // Clumps of flowers, a few texels each
+        int clumps = Math.Max(2, w * h / 140);
+        for (int i = 0; i < clumps; i++)
+        {
+            int fx = 6 + (int)(R(i, 3, 97) * (w - 13)), fy = 6 + (int)(R(i, 4, 97) * (h - 13));
+            c.Rect(fx, fy, 2, 1, ThriftBloom);
+            c.Rect(fx + 2, fy + 1, 1, 1, ThriftBloom);
+            c.Rect(fx - 1, fy + 1, 1, 1, ThriftBloom);
+            c.Rect(fx, fy + 2, 2, 1, ThriftDark);
+        }
+    }
+
+    /// <summary>
+    /// A drift of snow banked against a wall, filling its canvas: a long low heap in the roof's snow and its shades,
+    /// with drift lines along it, outlined in the deepest of them.
+    /// </summary>
+    public static void PaintSnowdrift(PixelCanvas c)
+    {
+        var light = Rgb(226, 234, 246);
+        var mid = Rgb(204, 216, 238);
+        var shade = Rgb(176, 192, 226);
+        int w = c.Width, h = c.Height;
+        Lump(c, w * 0.42f, h - 1f, w * 0.4f, h - 4f, light, mid, shade, h - 1f);
+        Lump(c, w * 0.72f, h - 1f, w * 0.27f, h * 0.62f, light, mid, shade, h - 1f);
+        for (int x = (int)(w * 0.18f); x < w * 0.66f; x += 11) c.Rect(x, h / 2 + (x / 11 % 2) * 3, 6, 1, shade);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// A rift torn in the air, filling a canvas 36 texels wide: a jagged slit of the Distortion World's dark, widest in
+    /// its middle and wandering a texel or two as it goes, edged in a band of light (Dialga's steel blue, or
+    /// Palkia's pearl pink) that burns after dark, with sparks of the same light beside it.
+    /// </summary>
+    public static void PaintRift(PixelCanvas c, bool palkia)
+    {
+        var core = Rgb(48, 34, 66);
+        var swirl = Rgb(84, 58, 112);
+        var edge = palkia ? Rgb(236, 168, 212) : Rgb(150, 198, 240);
+        var edgeDark = palkia ? Rgb(196, 110, 168) : Rgb(96, 140, 214);
+        int w = c.Width, h = c.Height, mid = w / 2;
+        for (int y = 2; y < h - 2; y++)
+        {
+            float t = (y - 2f) / (h - 5f);
+            int half = (int)MathF.Round(MathF.Sin(t * MathF.PI) * 11f) + (y / 5 % 3 == 1 ? 1 : 0);
+            int centre = mid + (y / 9 % 4) switch { 0 => 0, 1 => 2, 2 => 1, _ => -2 };
+            if (half < 1) half = 1;
+            for (int x = centre - half - 2; x <= centre + half + 1; x++)
+            {
+                int from = x - (centre - half);
+                Color col = x < centre - half || x > centre + half - 1 ? edge
+                    : from == 0 || x == centre + half - 1 ? edgeDark
+                    : (y + from) % 7 == 0 ? swirl
+                    : core;
+                c.SetRaw(x, y, col);
+            }
+        }
+        // The light of the edge burns after dark; sparks of it beside the rift
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+                if (c.Get(x, y) is var col && col.A > 0 && (col.Equals(edge) || col.Equals(edgeDark))) c.SetRaw(x, y, col with { A = ArtSheet.PublicLight });
+        foreach (var (x, y) in new[] { (4, h / 4), (w - 6, h / 3), (5, h * 2 / 3), (w - 5, h * 3 / 4) })
+        {
+            c.Rect(x, y, 2, 2, edge with { A = ArtSheet.PublicLight });
+        }
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The dark a rift casts on the floor beneath it: a ragged pit of the Distortion World's violets lying flat on the
+    /// ground, darkest in its middle, with a wisp of its dark rising from it.
+    /// </summary>
+    private static void RiftShadow(KitBuilder kit, int w, int d)
+    {
+        int pw = Math.Max(24, w - 8), pd = Math.Max(24, d - 8);
+        var pit = kit.Face($"rift.pit.{pw}x{pd}", pw, pd, PaintRiftPit);
+        kit.Decal(4, 4 + pw, 4, 4 + pd, 0.02f, pit);
+        kit.Sprite(kit.Face("rift.wisp", 28, 30, PaintRiftWisp), w / 2f, d / 2f + 4);
+    }
+
+    /// <summary>The pit a rift casts: rings of violet, each a little darker and its edge broken, out to a ragged rim.</summary>
+    public static void PaintRiftPit(PixelCanvas c)
+    {
+        Color[] rings = { Rgb(112, 92, 140), Rgb(84, 64, 112), Rgb(64, 46, 88), Rgb(48, 34, 66) };
+        float cx = c.Width / 2f, cy = c.Height / 2f;
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                float u = (x + 0.5f - cx) / cx, v = (y + 0.5f - cy) / cy;
+                // The rim is ragged: a little nearer or further by the angle, in steps
+                float angle = MathF.Atan2(v, u);
+                float reach = 0.92f + 0.06f * ((int)((angle + MathF.PI) * 4f) % 3) / 2f;
+                float r = MathF.Sqrt(u * u + v * v) / reach;
+                if (r > 1f) continue;
+                int ring = Math.Clamp((int)((1f - r) * 6f), 0, rings.Length - 1);
+                c.SetRaw(x, y, rings[ring]);
+            }
+    }
+
+    /// <summary>A wisp of the Distortion World's dark rising from a rift's pit, in three violets.</summary>
+    public static void PaintRiftWisp(PixelCanvas c)
+    {
+        var light = Rgb(132, 104, 168);
+        var mid = Rgb(96, 72, 128);
+        var dark = Rgb(66, 48, 92);
+        int w = c.Width, h = c.Height;
+        Lump(c, w * 0.5f, h - 2f, w * 0.36f, h * 0.3f, light, mid, dark, h - 1f);
+        Lump(c, w * 0.42f, h * 0.55f, w * 0.18f, h * 0.24f, light, mid, dark);
+        Lump(c, w * 0.6f, h * 0.28f, w * 0.12f, h * 0.18f, light, mid, dark);
+        Pix.Outline(c);
     }
 
     // ------------------------------------------------------------------ the east and the sea (plan 01 · M7)

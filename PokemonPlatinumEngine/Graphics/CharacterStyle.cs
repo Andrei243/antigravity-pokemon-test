@@ -149,6 +149,22 @@ internal sealed class CharacterStyle
             Top = new(208, 212, 222, 255), Accent = new(56, 60, 80, 255),
             Bottom = new(150, 156, 172, 255), Shoes = new(52, 54, 66, 255), Height = 1.0f, Build = BodyBuild.Adult
         },
+        // Team Galactic's Commander met at the Valley Windworks (plan 02 · S6): our own take, short crimson hair and the
+        // team's pale uniform, its dark collar and a short grey skirt
+        "MARS" => new CharacterStyle
+        {
+            HairColor = new(196, 54, 70, 255), Hair = HairCut.Short,
+            Top = new(222, 224, 232, 255), Accent = new(56, 60, 80, 255),
+            Bottom = new(132, 138, 156, 255), Skirt = true, Shoes = new(52, 54, 66, 255), Sole = new(200, 202, 212, 255),
+            Eyes = new(150, 50, 70, 255), Height = 1.0f, Build = BodyBuild.Adult, Lashes = true
+        },
+        // The team's old scientist (plan 02 · S6): our own take, a short man with thin grey hair in a long white lab coat
+        "CHARON" => new CharacterStyle
+        {
+            HairColor = new(178, 180, 190, 255), Hair = HairCut.Swept, Coat = true,
+            Top = new(236, 238, 244, 255), Accent = new(84, 86, 108, 255),
+            Bottom = new(76, 78, 96, 255), Shoes = new(52, 42, 40, 255), Height = 0.94f, Build = BodyBuild.Adult
+        },
         "GENTLEMAN" => new CharacterStyle
         {
             HairColor = new(150, 146, 156, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,

@@ -1,0 +1,386 @@
+{
+  "name": "ValleyWindworksBuilding",
+  "displayName": "Valley Windworks",
+  "bgmTrack": "sinnoh/route205",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 24,
+  "height": 18,
+  "ground": [
+    "########################",
+    "########################",
+    "########################",
+    "#___#____________#_____#",
+    "#___#____________#_____#",
+    "#___#____________#_____#",
+    "#______________________#",
+    "#______________________#",
+    "#___#____________#_____#",
+    "#___#____________#_____#",
+    "#___#____________#_____#",
+    "#___####################",
+    "#___####################",
+    "#___####################",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "############D###########"
+  ],
+  "solid": [
+    "########################",
+    "########################",
+    "########################",
+    "##..####......######..##",
+    "#...#............##....#",
+    "#...#............###...#",
+    "#........####..........#",
+    "#........####..........#",
+    "#...#............#.....#",
+    "#...###........###.#..##",
+    "#...###........###.#..##",
+    "#...####################",
+    "#...####################",
+    "#...####################",
+    "#...................####",
+    "#......................#",
+    "##.....................#",
+    "############.###########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 16,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 22,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 20,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 18,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 18,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 12,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 15,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 16,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 19,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 19,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 22,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 22,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 20,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 21,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 22,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 16,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 12,
+      "sourceY": 17,
+      "targetMap": "Sinnoh",
+      "targetX": 243,
+      "targetY": 655,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 19,
+      "y": 9,
+      "text": "Notes fill the screen: where each of Team Galactic's Commanders is sent, and what each is to bring back. The Valley Windworks' power heads the list.",
+      "script": "Notes"
+    },
+    {
+      "x": 22,
+      "y": 9,
+      "text": "Notes fill the screen: where each of Team Galactic's Commanders is sent, and what each is to bring back. The Valley Windworks' power heads the list.",
+      "script": "Notes"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "galactic_grunt_1",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 14,
+      "facing": "Down",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_GALACTIC_GRUNT_1"
+    },
+    {
+      "id": "mars",
+      "name": "Mars",
+      "npcType": "Mars",
+      "x": 20,
+      "y": 7,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_TEAM_GALACTIC"
+    },
+    {
+      "id": "scientist_papa",
+      "name": "Scientist",
+      "npcType": "Gentleman",
+      "x": 21,
+      "y": 3,
+      "facing": "Down",
+      "script": "Papa"
+    },
+    {
+      "id": "galactic_grunt_2",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 3,
+      "y": 8,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_valley_windworks_2",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: Hey! Nobody walks into the Windworks without Team Galactic's say-so!",
+        "dialogueAfter": "Galactic Grunt: Whoa... Fine, go on in. The Commander will sort you out.",
+        "sightRange": 2
+      }
+    },
+    {
+      "id": "galactic_grunt_3",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 3,
+      "facing": "Down",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_valley_windworks_3",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: Every gust this valley makes belongs to Team Galactic now. Want it back? Take it!",
+        "dialogueAfter": "Galactic Grunt: Blown away... The Commander is not going to like this.",
+        "sightRange": 2
+      }
+    },
+    {
+      "id": "little_girl",
+      "name": "Little Girl",
+      "npcType": "Lass",
+      "x": 10,
+      "y": 8,
+      "facing": "Right",
+      "script": "Girl",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_LITTLE_GIRL"
+    },
+    {
+      "id": "grunt_m",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 18,
+      "y": 8,
+      "facing": "Down",
+      "script": "Grunt",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_TEAM_GALACTIC"
+    },
+    {
+      "id": "charon",
+      "name": "Charon",
+      "npcType": "Charon",
+      "x": 21,
+      "y": 5,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_VALLEY_WINDWORKS_BUILDING_TEAM_GALACTIC"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 19,
+      "y": 6,
+      "width": 1,
+      "depth": 2,
+      "script": "Mars",
+      "variable": "VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE",
+      "value": 1
+    }
+  ],
+  "wildEncounters": []
+}

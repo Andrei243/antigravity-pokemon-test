@@ -1,0 +1,11 @@
+{
+  "area": "distortion_world_turnback_cave_room",
+  "bgmTrack": "sinnoh/distortion_world",
+  // Reached through the portal in Turnback Cave's own room for Giratina once it has been battled; the portal both
+  // ways and the Griseous Orb that waits here are plan 02's
+  "exits": [
+    // The wall walked sideways between its two ends (the original's floating platform 0)
+    { "x": 48, "z": 25, "map": "DistortionWorldTurnbackCaveRoom", "toX": 48, "toY": 37, "facing": "Left" },
+    { "x": 48, "z": 37, "map": "DistortionWorldTurnbackCaveRoom", "toX": 48, "toY": 25, "facing": "Left" }
+  ]
+}

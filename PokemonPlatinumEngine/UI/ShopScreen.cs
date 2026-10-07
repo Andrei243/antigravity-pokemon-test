@@ -68,8 +68,17 @@ public class ShopScreen
     /// Opens the counter on its first question, with the stock it sells (none given: the common list with no
     /// badges). <paramref name="start"/> opens it straight on a list instead.
     /// </summary>
+    /// <summary>
+    /// What this visit came to, for the Journal (plan 06 · R12, <c>shop_menu.c</c>): purchases (one for each of a
+    /// single item, two once anything was bought several at a time) and the units sold.
+    /// </summary>
+    public int Purchases { get; private set; }
+    public int UnitsSold { get; private set; }
+
     public void Open(string? name = null, IEnumerable<ItemData>? sells = null, ShopMode start = ShopMode.Choosing)
     {
+        Purchases = 0;
+        UnitsSold = 0;
         IsActive = true;
         ChoiceIndex = 0;
         SelectedIndex = 0;
@@ -198,6 +207,7 @@ public class ShopScreen
         {
             if (!inventory.RemoveItem(item, count)) return 0;
             int earned = count * SellPrice(item);
+            UnitsSold += count;
             AudioManager.PlaySound("select");
             onNotification(count == 1 ? $"Sold a {item.Name} for {earned}." : $"Sold {count} × {item.Name} for {earned}.");
             selling.Clear();
@@ -210,6 +220,7 @@ public class ShopScreen
         int cost = count * item.Price;
         if (cost > money) return 0;
         inventory.AddItem(item, count);
+        Purchases = count > 1 ? 2 : Purchases + 1;
         AudioManager.PlaySound("select");
         onNotification(count == 1 ? $"Bought a {item.Name}." : $"Bought {count} × {item.Name}.");
         return -cost;

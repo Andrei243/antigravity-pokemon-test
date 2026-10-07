@@ -255,7 +255,8 @@ public class SoundTests
             Assert.Matches("^[a-z_]+$", e.Name);
             Assert.False(string.IsNullOrWhiteSpace(e.PlayedWhen), e.Name);
             // Only the original's names are kept, never its sounds
-            if (e.Original != null) Assert.Matches("^SEQ_SE_(DP|PL)_[A-Z0-9_]+$", e.Original);
+            // The decompilation names most of its sounds SEQ_SE_DP_..., and a few by the sequence itself (SE_DP_..._sseq)
+            if (e.Original != null) Assert.Matches("^(SEQ_SE_(DP|PL)_[A-Z0-9_]+|SE_(DP|PL)_[A-Z0-9_]+_sseq)$", e.Original);
         });
 
         // A sound for every type's moves and for every status condition a Pokémon can be given

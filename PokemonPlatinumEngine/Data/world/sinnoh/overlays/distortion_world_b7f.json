@@ -1,0 +1,12 @@
+{
+  "area": "distortion_world_b7f",
+  "bgmTrack": "sinnoh/distortion_world",
+  // Cynthia and Cyrus wait here in plan 02 · S13's scene
+  "exits": [
+    // The slab up to B6F (sMovingPlatformMapTemplateB7F_1, path 19)
+    { "x": 11, "z": 54, "map": "DistortionWorldB6F", "toX": 29, "toY": 48, "facing": "Down" },
+    // On north into Giratina's room (DistWorld_HandlePlayerPositionChanged: walking north at 89, 56 or 57 of the
+    // Distortion World's space, once Cyrus is beaten; the story's condition is plan 02 · S13's)
+    { "x": 15, "z": 24, "map": "DistortionWorldGiratinaRoom", "toX": 15, "toY": 23, "facing": "Up" }
+  ]
+}

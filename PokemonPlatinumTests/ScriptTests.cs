@@ -157,6 +157,13 @@ public class ScriptTests
           poketchapp PartyStatus
           safari start
           safari end
+          turnback
+          partner cheryl "cheryl_eterna_forest"
+          partner off
+          choosepokemon
+          trade kazza
+          halloffame
+          pc halloffame
           music "sinnoh/jubilife"
           music area
           music stop
@@ -203,6 +210,7 @@ public class ScriptTests
               if result != 1 end
               if defeated self end
               if defeated "roark" end
+              if rematch self end
               if taken "item_potion" end
               if starter "Piplup" end
               if money >= 500 end
@@ -212,6 +220,7 @@ public class ScriptTests
               if poketch end
               if pokerus end
               if safari end
+              if partner end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -969,6 +978,12 @@ public class ScriptTests
         public bool Fly() => true;
         public bool Teleport() => true;
         public bool Escape() => true;
+        public void Turnback() { }
+        public void TravelWith(NPC? who, string? trainerId) { }
+        public string? Partner => null;
+        public bool Trade(string trade, int slot) => false;
+        public void EnterHallOfFame() { }
+        public void Note(JournalEvent line) { }
         public bool SweetScent() => false;
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }

@@ -1,0 +1,10 @@
+{
+  "area": "distortion_world_giratina_room",
+  "bgmTrack": "sinnoh/distortion_world",
+  // Giratina, Cynthia, Cyrus, the stones that rise as the player comes and the portal to Sendoff Spring are plan
+  // 02 · S13's scene
+  "exits": [
+    // Back south onto B7F (walking south at 15, 25 or 26: the original's script 4 puts the player at 15, 25 of B7F)
+    { "x": 15, "z": 25, "map": "DistortionWorldB7F", "toX": 15, "toY": 25, "facing": "Down" }
+  ]
+}

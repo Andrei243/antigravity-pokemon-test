@@ -89,6 +89,7 @@ label Done
 `label Name` marks a place in a script for `goto`.
 
 **People** are `player`, `self` (whoever the script belongs to: the person spoken to, the trainer who came up),
+`pair` (the second of two trainers who saw the player at once and came up together, in `common.TrainerPair`),
 or a person's name: their id in the area's file (`clown_1`, `looker`) or in the map file, or failing that their
 displayed name. A script's names mean the people of its own place: `clown_1` in `jubilife_city.txt` is
 Jubilife's, and nobody of another area is found. Someone a flag has taken off the map is still found.
@@ -101,6 +102,7 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 | `text "..."` | The same with no name on the box: the game's own voice. |
 | `sayown` | The lines the script was started with: a person's `dialog`, a signboard's text. |
 | `trainerline before` / `after` | The trainer's own line before the battle, or once beaten. `RESULT` is 1 if there was a line to say, 0 if not. |
+| `trainerline before pair` | The same for the second of two trainers who came together (`pair`, below), under their own title. |
 | `speaker "Name"` / `none` / `self` | Who the following `say` lines are said by. A script starts with `self`. |
 | `ask "..."` | A question with Yes and No beside it. Then `if yes` / `if no`. The cancel button answers no. |
 | `choose "question" "A" "B" ...` | A question with up to six answers. `RESULT` is the place of the one picked, from 0. The cancel button picks the last, so the way out goes last. |
@@ -139,6 +141,8 @@ What an `if` can ask:
 | `poketch` | The player has the Pokétch. |
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
 | `safari` | A Safari Game is under way in the Great Marsh. |
+| `partner` | Someone travels with the player (`partner`, below). |
+| `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
 
 ### What the story remembers
 
@@ -175,6 +179,8 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `battle self [canlose]` | A trainer battle with someone of the map who is a trainer. Won, the script goes on (and they are beaten for good, prize money paid). Lost, the script ends there and the player wakes up in the last Pokémon Center (at home before any), unless `canlose`: then the team is healed and the script goes on with `if lost`. |
 | `battle self and other` | Two trainers of the map at once, each with a team of their own, in a double battle. Won, both are beaten. |
 | `battle self with cheryl`, `battle self with "cheryl_eterna_forest"` | A tag battle: someone of the map who is a trainer, or a trainer of Platinum's data by id, battles beside the player, with a team of their own and their own mind. The player loses when their own team is down, whatever the partner has left. The words after the first trainer come in any order (`battle a and b with c canlose`). |
+| `battle self and pair with partner` | Two trainers who came together, side by side (plan 02 · S6): against the player's two Pokémon, or beside whoever travels with the player (`partner`), who brings a fresh team of their own from Platinum's data, as the original builds it for every battle. Nobody travelling, `with partner` adds no one. |
+| `battle self rematch` | A rematch the Vs. Seeker found (plan 06 · R12): the trainer brings the team of the highest level of their row the story has unlocked and not yet beaten (`VsSeeker.RematchTeam`), for this battle only, and stops waiting. |
 | `battle self first` | The game's first battle (the rival's on Route 201): no critical hits, as in Platinum. |
 | `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
@@ -207,8 +213,17 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 
 ### The screens that exist
 
-`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `travel` (the way to the
+`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `travel` (the way to the
 next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here).
+
+### The trainer tools
+
+Plan 06 · R12.
+
+| Command | |
+|---|---|
+| `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). |
+| `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written and its screen shows. |
 
 ### Field moves and key items
 
@@ -227,6 +242,9 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 | `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. |
+| `partner cheryl "cheryl_eterna_forest"` | Someone of the map travels with the player (plan 02 · S6; `Follower`): they walk a step behind, onto each tile the player leaves, and are never in the player's way (walking back into them swaps the two round). While they do, the team is healed after every battle that isn't lost, every Pokémon met in the grass comes with a second and the partner battles beside the player, two trainers who see the player at once come together for a tag battle, the Bicycle, the rods, an Escape Rope and the field moves that leave the place can't be used, and losing leaves them behind. The player gets off the Bicycle. Saved. |
+| `partner off` | They stop, where they stand. |
+| `turnback` | Aims the doors of the Turnback Cave room the player has just come into, as the original's `InitTurnbackCave` does (plan 01 · M8; `TurnbackCave`): the door they came in by leads back to the entrance, the other three on, to Giratina's room once `VAR_TURNBACK_CAVE_PILLARS_SEEN` is 3, to the entrance once `VAR_TURNBACK_CAVE_ROOMS_VISITED` is 30, and otherwise to a pillar's room one time in four or to one of the next pillar's six rooms. The room's own `OnEnter` keeps the counts and calls it. |
 
 ## Who is on the map
 

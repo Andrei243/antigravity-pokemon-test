@@ -454,7 +454,7 @@ public class BagAndShopTests
 
     private static BattleEngine Battle(Party party, Inventory inventory)
     {
-        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Bidoof")!, 3), inventory, new Pokedex(), null, new List<Pokemon>());
+        var battle = new BattleEngine(party, new Pokemon(PokemonDatabase.Get("Bidoof")!, 3), inventory, new Pokedex(), null, new PcBoxes());
         for (int i = 0; i < 20 && battle.HUD.MenuState == BattleMenuState.Message; i++) battle.ConfirmMessage();
         return battle;
     }

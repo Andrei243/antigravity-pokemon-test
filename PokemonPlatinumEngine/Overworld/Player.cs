@@ -121,6 +121,9 @@ public class Player
     /// <summary>The tile a step in progress is taking the player to; where they stand, between steps.</summary>
     public (int X, int Y) Heading => IsMoving ? (targetGridX, targetGridY) : (GridX, GridY);
 
+    /// <summary>The pace of the step under way, in tiles a second: what someone walking behind keeps up with.</summary>
+    public float Stride => stride;
+
     /// <summary>What shows in the bubble over the player's head, for how much longer, and for how long it has.</summary>
     public EmoteBubble Bubble { get; private set; }
     public float BubbleTimer { get; private set; }

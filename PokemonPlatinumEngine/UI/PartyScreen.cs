@@ -55,9 +55,27 @@ public class PartyScreen
 
     private (FieldMove Move, int Index)? chosenMove;
 
+    /// <summary>
+    /// Open for a script to have a Pokémon of the team chosen (plan 06 · R12: the one to trade): A chooses the one
+    /// under the cursor and closes, B closes with none. <see cref="Chosen"/> is the place chosen, or
+    /// <see cref="NoneChosen"/>.
+    /// </summary>
+    public bool Choosing { get; private set; }
+    public int Chosen { get; private set; } = NoneChosen;
+    public const int NoneChosen = 255;
+
+    /// <summary>Opens the team for a Pokémon to be chosen (<see cref="Choosing"/>).</summary>
+    public void OpenToChoose()
+    {
+        Open();
+        Choosing = true;
+        Chosen = NoneChosen;
+    }
+
     public void Open()
     {
         IsActive = true;
+        Choosing = false;
         SelectedIndex = 0;
         SwapSourceIndex = null;
         ShowSummary = false;
@@ -102,6 +120,7 @@ public class PartyScreen
     public string Prompt => Message ?? (Sharing != null ? "Give HP to which Pokémon?"
         : SwapSourceIndex.HasValue ? "Move to where?"
         : Actions != null ? "Do what with this Pokémon?"
+        : Choosing ? "Choose which Pokémon?"
         : "Choose a Pokémon.");
 
     /// <summary>The confirm button: opens a Pokémon's menu, carries out the entry chosen in it, puts a Pokémon down, or gives HP.</summary>
@@ -109,6 +128,13 @@ public class PartyScreen
     {
         Message = null;
         if (SelectedIndex >= party.Count) return;
+        if (Choosing)
+        {
+            Chosen = SelectedIndex;
+            AudioManager.PlaySound("select");
+            Close();
+            return;
+        }
         if (Sharing is var (giver, _))
         {
             int healed = FieldMoveRules.ShareHp(party.Members[giver], party.Members[SelectedIndex]);
