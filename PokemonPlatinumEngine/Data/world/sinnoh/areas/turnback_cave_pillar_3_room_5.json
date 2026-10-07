@@ -30,6 +30,24 @@
     { "species": "Chimecho", "level": 38 }
   ],
   "landRate": 15,
+  "day": [
+    "Haunter",
+    "Golbat"
+  ],
+  "night": [
+    "Dusclops",
+    "Golbat"
+  ],
+  "swarm": [
+    "Haunter",
+    "Bronzong"
+  ],
+  "radar": [
+    "Haunter",
+    "Golbat",
+    "Dusclops",
+    "Chimecho"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 11, "z": 1, "to": "turnback_cave_entrance", "toWarp": 2 },

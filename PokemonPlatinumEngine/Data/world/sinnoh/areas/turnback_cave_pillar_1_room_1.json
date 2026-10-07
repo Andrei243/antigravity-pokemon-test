@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 18 }
   ],
   "landRate": 15,
+  "day": [
+    "Gastly",
+    "Golbat"
+  ],
+  "night": [
+    "Dusclops",
+    "Golbat"
+  ],
+  "swarm": [
+    "Gastly",
+    "Bronzor"
+  ],
+  "radar": [
+    "Gastly",
+    "Golbat",
+    "Dusclops",
+    "Chingling"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 11, "z": 1, "to": "turnback_cave_entrance", "toWarp": 2 },

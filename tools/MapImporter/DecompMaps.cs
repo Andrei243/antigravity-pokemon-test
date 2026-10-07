@@ -250,6 +250,33 @@ public sealed partial class DecompMaps
     }
 
     /// <summary>
+    /// One of the lists of species an area's table of wild Pokémon keeps beside its slots (plan 06 · R13): the
+    /// <c>day</c> and <c>night</c> pairs, the <c>swarms</c> pair and the <c>radar</c> four, as species constants.
+    /// Empty when the area has no table or no grass encounters (the lists are then all the same filler).
+    /// </summary>
+    public List<string> SlotList(string name, string list)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        if (!File.Exists(path)) return new();
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var table = doc.RootElement;
+        if (!table.TryGetProperty("land_rate", out var rate) || rate.GetInt32() == 0 || !table.TryGetProperty(list, out var names)) return new();
+        return names.EnumerateArray().Select(s => s.GetString() ?? "").ToList();
+    }
+
+    /// <summary>
+    /// One of the original's tables that belong to no area's header (plan 06 · R13): the files <c>encdata_ex</c> is
+    /// built from (<c>encounters_honey_tree</c>, <c>encounters_great_marsh_lookout</c>, the Trophy Garden's
+    /// <c>daily_encounters</c>, Mt. Coronet's <c>elusive_rod_encounter</c>), as their JSON.
+    /// </summary>
+    public JsonElement EncounterFile(string name)
+    {
+        string path = Path.Combine(root, "res", "field", "encounters", name + ".json");
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        return doc.RootElement.Clone();
+    }
+
+    /// <summary>
     /// What an area's table says of the forms met there (plan 06 · R10): whether Shellos and Gastrodon are the east
     /// sea's (<c>rate_form0</c>, <c>rate_form1</c>, read by <c>AddWildMonToParty</c>), and which of the Unown tables
     /// its Unown come from (<c>unown_table</c>, from 1; 0 for none).

@@ -30,6 +30,24 @@
     { "species": "Shellos", "level": 26 }
   ],
   "landRate": 30,
+  "day": [
+    "Chatot",
+    "Chatot"
+  ],
+  "night": [
+    "Shellos",
+    "Buizel"
+  ],
+  "swarm": [
+    "Shellos",
+    "Buizel"
+  ],
+  "radar": [
+    "Swellow",
+    "Swellow",
+    "Swellow",
+    "Swellow"
+  ],
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Wingull", "level": 20, "maxLevel": 30 },

@@ -174,6 +174,13 @@ public class ScriptTests
           shop
           pc
           travel
+          honeytree status
+          honeytree slather
+          honeytree battle
+          swarms on
+          trophygarden
+          roamer start "Mesprit"
+          survivepoison VAR_A
         script Other
           end
         """;
@@ -949,6 +956,10 @@ public class ScriptTests
         public Inventory Bag => inner.Bag;
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
+        public SpecialEncounters Encounters => inner.Encounters;
+        public int? HoneyTreeFaced => inner.HoneyTreeFaced;
+        public uint TrainerNumber => inner.TrainerNumber;
+        public Random Chance => inner.Chance;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;
         public PlayerLook PlayerLook => inner.PlayerLook;

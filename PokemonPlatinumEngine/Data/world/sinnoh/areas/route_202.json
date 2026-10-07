@@ -30,6 +30,24 @@
     { "species": "Bidoof", "level": 2 }
   ],
   "landRate": 30,
+  "day": [
+    "Starly",
+    "Bidoof"
+  ],
+  "night": [
+    "Kricketot",
+    "Bidoof"
+  ],
+  "swarm": [
+    "Zigzagoon",
+    "Zigzagoon"
+  ],
+  "radar": [
+    "Sentret",
+    "Sentret",
+    "Sentret",
+    "Sentret"
+  ],
   "warps": [],
   "objects": [
     { "id": "youngster_tristan", "looks": "youngster", "movement": "look_south", "x": 166, "z": 813, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_YOUNGSTER_TRISTAN" },

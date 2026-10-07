@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 39 }
   ],
   "landRate": 10,
+  "day": [
+    "Medicham",
+    "Abomasnow"
+  ],
+  "night": [
+    "Golbat",
+    "Noctowl"
+  ],
+  "swarm": [
+    "Snover",
+    "Abomasnow"
+  ],
+  "radar": [
+    "Loudred",
+    "Loudred",
+    "Loudred",
+    "Loudred"
+  ],
   "warps": [
     { "x": 12, "z": 35, "to": "mt_coronet_3f", "toWarp": 2 },
     { "x": 11, "z": 17, "to": "mt_coronet_4f_rooms_1_and_2", "toWarp": 0 },

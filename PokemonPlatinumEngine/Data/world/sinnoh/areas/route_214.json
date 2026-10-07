@@ -30,6 +30,24 @@
     { "species": "Rhyhorn", "level": 24 }
   ],
   "landRate": 30,
+  "day": [
+    "Graveler",
+    "Rhyhorn"
+  ],
+  "night": [
+    "Houndour",
+    "Zubat"
+  ],
+  "swarm": [
+    "Spoink",
+    "Spoink"
+  ],
+  "radar": [
+    "Poochyena",
+    "Poochyena",
+    "Poochyena",
+    "Poochyena"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

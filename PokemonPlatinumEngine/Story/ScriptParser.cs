@@ -377,6 +377,24 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Travel, Line = line };
             case "choosepokemon":
                 return new Instruction { Op = Op.ChoosePokemon, Line = line };
+            // Wild Pokémon (plan 06 · R13)
+            case "honeytree":
+                return new Instruction { Op = Op.HoneyTree, Line = line, Name = r.OneOf("status", "slather", "battle") };
+            case "swarms":
+                r.OneOf("on");
+                return new Instruction { Op = Op.Swarms, Line = line };
+            case "trophygarden":
+                return new Instruction { Op = Op.TrophyGarden, Line = line };
+            case "roamer":
+            {
+                r.OneOf("start");
+                string species = r.Text("a roaming Pokémon's species");
+                if (Overworld.Roamers.SlotOf(species) == null) throw r.Error($"'{species}' is no Pokémon that roams (Roamers.Slots)");
+                return new Instruction { Op = Op.Roamer, Line = line, Name = species };
+            }
+            case "survivepoison":
+                return new Instruction { Op = Op.SurvivePoison, Line = line, Name = r.Variable(writable: false) };
+
             case "trade":
             {
                 string trade = r.Word("a trade");

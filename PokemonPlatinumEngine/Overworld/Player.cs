@@ -83,6 +83,12 @@ public class Player
     /// <summary>The Pokémon at the head of the party, whose ability shapes the wild Pokémon met (<see cref="WildEncounterRules"/>); the game keeps it up to date.</summary>
     public WildLead? Lead { get; set; }
 
+    /// <summary>
+    /// What the moment brings to the wild Pokémon met (plan 06 · R13, <see cref="EncounterMoment"/>), asked for as a
+    /// step is taken; left out, a place's table is its own. The game sets it.
+    /// </summary>
+    public Func<EncounterMoment?>? Moment { get; set; }
+
     private float moveProgress = 0f;
     private int targetGridX = 0;
     private int targetGridY = 0;
@@ -378,7 +384,7 @@ public class Player
         if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && onWater == TileBehaviors.IsSurfable(underfoot))
         {
             bool thick = underfoot == TileBehavior.VeryTallGrass || Mode == TravelMode.Cycling;
-            var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick, Lead);
+            var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick, Lead, Moment?.Invoke());
             if (wild != null)
             {
                 Encounters.Reset();

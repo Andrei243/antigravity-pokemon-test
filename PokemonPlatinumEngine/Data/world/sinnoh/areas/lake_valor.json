@@ -30,6 +30,24 @@
     { "species": "Bibarel", "level": 41 }
   ],
   "landRate": 30,
+  "day": [
+    "Staravia",
+    "Bibarel"
+  ],
+  "night": [
+    "Staravia",
+    "Bibarel"
+  ],
+  "swarm": [
+    "Staravia",
+    "Bibarel"
+  ],
+  "radar": [
+    "Wobbuffet",
+    "Wobbuffet",
+    "Wobbuffet",
+    "Wobbuffet"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

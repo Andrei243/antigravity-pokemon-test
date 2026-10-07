@@ -132,6 +132,9 @@ public partial class GameEngine
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
         story.Unset(BicycleRules.OnCyclingRoadFlag);
         ChangePlace();
+        // Another map ends the Poké Radar's chain (RadarChain_Clear), and the roamers note where the player is (plan 06 · R13)
+        EndRadarChain();
+        Roamers.NotePlace(encounters, PlaceKey());
         currentMap.ForgetForced();
         currentMap.ApplyPresence(story.Has);
         // Whoever was still walking on the map left behind stands where they were going, not between two tiles
@@ -289,6 +292,29 @@ public partial class GameEngine
     }
 
     /// <summary>
+    /// The Poké Radar used (plan 06 · R13, <see cref="RadarChain"/>): in tall grass, on foot and alone, with its battery
+    /// charged, it sets four patches shaking round the player; otherwise a notice says why not.
+    /// </summary>
+    private void UsePokeRadar()
+    {
+        switch (radar.Use(encounters, currentMap, player.GridX, player.GridY, player.HeightOn(currentMap), player.Mode, partner != null, fieldRandom))
+        {
+            case RadarUse.CantUse:
+                ShowNotification(partner != null ? FieldMoveRules.Why(FieldMoveError.Partner) : "The Poké Radar can only be used standing in tall grass.");
+                AudioManager.PlaySound("error");
+                return;
+            case RadarUse.NotCharged:
+                ShowNotification($"The battery has run dry! {RadarChain.BatterySteps - encounters.RadarCharge} more steps to charge it.");
+                AudioManager.PlaySound("error");
+                return;
+            case RadarUse.Quiet:
+                ShowNotification("The grass around stayed quiet...");
+                return;
+        }
+        AudioManager.PlaySound("grass");
+    }
+
+    /// <summary>
     /// An item used in the field itself (plan 02 · S2), from the bag or the item button: the Bicycle got on or off,
     /// a rod cast, an Escape Rope. Where it can't be, a notice says why.
     /// </summary>
@@ -304,6 +330,17 @@ public partial class GameEngine
         if (item.FieldUse == "VsSeeker")
         {
             UseVsSeeker();
+            return;
+        }
+        if (item.FieldUse == "PokeRadar")
+        {
+            UsePokeRadar();
+            return;
+        }
+        // Honey from the bag draws out a wild Pokémon as Sweet Scent does, and is used up (UseHoneyFromMenu)
+        if (item.FieldUse == "Honey")
+        {
+            StartScript(FieldScripts.UseHoney);
             return;
         }
         // Travelling with someone, the Bicycle, the rods and an Escape Rope stay in the bag (CanUseBicycle,
@@ -325,6 +362,8 @@ public partial class GameEngine
             }
             bool getOn = player.Mode != TravelMode.Cycling;
             if (!player.SetCycling(getOn)) return;
+            // Getting on ends the Poké Radar's chain (MountOrUnmountBicycle)
+            if (getOn) EndRadarChain();
             if (getOn) AudioManager.PlaySound("bike_bell");
             PlayFieldMusic();
             return;
@@ -338,7 +377,7 @@ public partial class GameEngine
                 return;
             }
             var (dx, dy) = FieldMovement.Delta(player.Facing);
-            fishing = new FishingAttempt(rod, currentMap.Fish(x + dx, y + dy, rod, player.Lead), fieldRandom);
+            fishing = new FishingAttempt(rod, currentMap.Fish(x + dx, y + dy, rod, player.Lead, EncounterMomentNow()), fieldRandom);
             AudioManager.PlaySound("fish_cast");
             return;
         }
@@ -861,6 +900,8 @@ public partial class GameEngine
             if (game.flyTarget is not { } town) return false;
             game.flyTarget = null;
             game.player.SetMode(TravelMode.OnFoot);
+            // Flying sends every roamer anywhere (FieldSystem_SetFlyFlags; plan 06 · R13)
+            Roamers.Scatter(game.encounters, game.fieldRandom);
             game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
             return true;
         }
@@ -869,6 +910,8 @@ public partial class GameEngine
         {
             var town = SpawnLocations.Respawn(game.story);
             game.player.SetMode(TravelMode.OnFoot);
+            // So does Teleport (FieldSystem_SetTeleportFlags)
+            Roamers.Scatter(game.encounters, game.fieldRandom);
             game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
             return true;
         }
@@ -894,7 +937,7 @@ public partial class GameEngine
             var underfoot = map.BehaviourAt(x, y);
             bool water = game.player.Mode == TravelMode.Surfing;
             if (!TileBehaviors.HasEncounters(underfoot) || water != TileBehaviors.IsSurfable(underfoot)) return false;
-            if (map.DrawOutWild(x, y, water, game.player.Lead) is not { } wild) return false;
+            if (map.DrawOutWild(x, y, water, game.player.Lead, game.EncounterMomentNow()) is not { } wild) return false;
             game.scriptOutcome = BattleOutcome.None;
             game.battleMayBeLost = false;
             game.player.Encounters.Reset();
@@ -914,6 +957,16 @@ public partial class GameEngine
         public void Fanfare(MusicRole role) => AudioManager.PlayFanfare(role);
 
         public void Sound(string name) => AudioManager.PlaySound(name);
+
+        // ---- wild Pokémon (plan 06 · R13)
+
+        public SpecialEncounters Encounters => game.encounters;
+
+        public int? HoneyTreeFaced => HoneyTrees.Faced(game.currentMap, game.player.GridX, game.player.GridY, game.player.Facing);
+
+        public uint TrainerNumber => game.TrainerNumber;
+
+        public Random Chance => game.fieldRandom;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

@@ -30,6 +30,24 @@
     { "species": "Pichu", "level": 22 }
   ],
   "landRate": 10,
+  "day": [
+    "Staravia",
+    "Staravia"
+  ],
+  "night": [
+    "Kricketune",
+    "Kricketune"
+  ],
+  "swarm": [
+    "Pichu",
+    "Roselia"
+  ],
+  "radar": [
+    "Roselia",
+    "Staravia",
+    "Pikachu",
+    "Pichu"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 14, "z": 25, "to": "pokemon_mansion", "toWarp": 5 },

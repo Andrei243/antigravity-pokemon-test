@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 38 }
   ],
   "landRate": 10,
+  "day": [
+    "Medicham",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Clefairy"
+  ],
+  "swarm": [
+    "Bronzong",
+    "Graveler"
+  ],
+  "radar": [
+    "Machoke",
+    "Medicham",
+    "Medicham",
+    "Chingling"
+  ],
   "warps": [
     { "x": 14, "z": 26, "to": "mt_coronet_2f", "toWarp": 4 },
     { "x": 18, "z": 26, "to": "mt_coronet_2f", "toWarp": 5 },

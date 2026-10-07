@@ -455,3 +455,75 @@ script SafariOutOfBalls
 script RepelWoreOff
   text "The Repel's effect wore off..."
   end
+
+
+# A honey tree faced from the south (plan 06 · R13; the original's common script 8, CommonScript_HoneyTree). With
+# Honey in the bag the player may spread some on the bark; six hours later whatever it drew is waiting there, and
+# is battled at once, which takes the honey with it.
+script HoneyTree
+  sound "select"
+  honeytree status
+  if result == 3 goto Battle
+  if result == 2 goto Slathered
+  if not item "Honey" goto BareNoHoney
+  text "The bark of this tree smells faintly sweet."
+  goto Slather
+label BareNoHoney
+  text "The bark of this tree smells faintly sweet." "Pokémon might come to it, with a little Honey to tempt them."
+  end
+label Slathered
+  if not item "Honey" goto SlatheredNoHoney
+  text "Honey glistens on the bark. Nothing has come for it yet."
+  goto Slather
+label SlatheredNoHoney
+  text "Honey glistens on the bark. Nothing has come for it yet."
+  end
+label Slather
+  ask "Spread some Honey on the bark?"
+  if no end
+  take "Honey"
+  honeytree slather
+  wait 0.33
+  text "{player} spread Honey all over the bark."
+  end
+label Battle
+  honeytree battle
+  if item "Honey" goto Slather
+  end
+
+
+# Honey used from the bag (plan 06 · R13; UseHoneyFromMenu): one is used up, and its scent draws out a wild Pokémon
+# where any live, as Sweet Scent does.
+script UseHoney
+  take "Honey"
+  text "{player} used the Honey."
+  sweetscent
+  if result == 0 text "The sweet smell hangs in the air, but nothing comes out."
+  end
+
+
+# Poison in the field (plan 06 · R13; the original's common script 3, CommonScript_FieldEffectPoisonFainted): each
+# Pokémon of the team left with one hit point by the poison comes through it, cured, and the game says so.
+script PoisonSurvived
+  setvar VAR_POISON_SURVIVOR 0
+label Next
+  survivepoison VAR_POISON_SURVIVOR
+  if result == 1 text "{member:VAR_POISON_SURVIVOR} held on through the poison!" "It shook the poison off."
+  addvar VAR_POISON_SURVIVOR 1
+  if var VAR_POISON_SURVIVOR < PARTY_COUNT goto Next
+  setvar VAR_POISON_SURVIVOR 0
+  end
+
+
+# The day's swarm (plan 06 · R13; scripts_sandgem_town_counterpart_house_1f.s): the assistant's sister in Sandgem
+# Town, once the Hall of Fame is behind the player. The first time she speaks of it, swarms begin; from then on
+# she tells where today's is. Her house is built with plan 01 · M11's rooms, and she runs this then.
+script SwarmNews
+  if flag FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX goto Today
+  setflag FLAG_TALKED_TO_COUNTERPART_SISTER_WITH_NATIONAL_DEX
+  swarms on
+  say "Did you hear? Lately, whole crowds of one kind of Pokémon keep turning up in one place or another!" "Every day it's somewhere new. Come and ask me, and I'll tell you where it is today, {player}!"
+  end
+label Today
+  say "Today there's a whole crowd of {swarm} on {swarmplace}!" "If you want to meet one, now's your chance, {player}!"
+  end

@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 38 }
   ],
   "landRate": 10,
+  "day": [
+    "Medicham",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Clefairy"
+  ],
+  "swarm": [
+    "Graveler",
+    "Graveler"
+  ],
+  "radar": [
+    "Machoke",
+    "Medicham",
+    "Golbat",
+    "Chingling"
+  ],
   "warps": [
     { "x": 2, "z": 58, "to": "mt_coronet_outside_north", "toWarp": 2 },
     { "x": 16, "z": 13, "to": "mt_coronet_1f_north_room_1", "toWarp": 0 }

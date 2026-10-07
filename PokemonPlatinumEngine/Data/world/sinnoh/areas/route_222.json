@@ -30,6 +30,24 @@
     { "species": "Magneton", "level": 41 }
   ],
   "landRate": 30,
+  "day": [
+    "Electabuzz",
+    "Chatot"
+  ],
+  "night": [
+    "Floatzel",
+    "Floatzel"
+  ],
+  "swarm": [
+    "Skitty",
+    "Skitty"
+  ],
+  "radar": [
+    "Flaaffy",
+    "Flaaffy",
+    "Flaaffy",
+    "Flaaffy"
+  ],
   "water": [
     { "species": "Tentacool", "level": 30, "maxLevel": 40 },
     { "species": "Wingull", "level": 30, "maxLevel": 40 },

@@ -48,4 +48,10 @@ public static class GameClock
     /// unless a tool fixed it.
     /// </summary>
     public static DateTime Today => FixedDate?.Date ?? DateTime.Today;
+
+    /// <summary>
+    /// This moment, for what counts minutes (the honey trees, plan 06 · R13): today at the hour of the day. Fixed
+    /// by a tool (a date and a time of day), it stands still.
+    /// </summary>
+    public static DateTime Moment => Fixed == null && FixedDate == null ? DateTime.Now : Today.AddHours(Hour);
 }

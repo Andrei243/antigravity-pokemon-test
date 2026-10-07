@@ -30,6 +30,24 @@
     { "species": "Chingling", "level": 39 }
   ],
   "landRate": 30,
+  "day": [
+    "Graveler",
+    "Staravia"
+  ],
+  "night": [
+    "Dusclops",
+    "Golbat"
+  ],
+  "swarm": [
+    "Graveler",
+    "Bibarel"
+  ],
+  "radar": [
+    "Bibarel",
+    "Staravia",
+    "Dusclops",
+    "Chingling"
+  ],
   "water": [
     { "species": "Golduck", "level": 20, "maxLevel": 40 },
     { "species": "Golduck", "level": 20, "maxLevel": 40 },

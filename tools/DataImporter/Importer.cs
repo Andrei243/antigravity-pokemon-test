@@ -478,6 +478,11 @@ public sealed partial class Importer
         s.HatchCycles = d.GetProperty("hatch_cycles").GetInt32();
         s.BaseFriendship = d.GetProperty("base_friendship").GetInt32();
         s.SafariFleeRate = d.GetProperty("safari_flee_rate").GetInt32();
+        // What it may hold in the wild (plan 06 · R13; Pokemon_GiveHeldItem reads the two)
+        var held = d.GetProperty("held_items");
+        string? Held(string which) => held.GetProperty(which).GetString() is { } item && item != "ITEM_NONE" ? ItemName(item) : null;
+        string? commonItem = Held("common"), rareItem = Held("rare");
+        if (commonItem != null || rareItem != null) s.WildItems = new WildItems { Common = commonItem, Rare = rareItem };
         if (d.TryGetProperty("catching_show", out var show))
         {
             int Area(string key, string prefix) =>
@@ -553,6 +558,27 @@ public sealed partial class Importer
         return evo;
     }
 
+    /// <summary>
+    /// What a later species may hold in the wild (plan 06 · R13), from the newest game PokeAPI gives items for: an
+    /// item held half the time or more is its common one, one held less often its rare one, and one always held both.
+    /// </summary>
+    private WildItems? LaterWildItems(int pokemonId)
+    {
+        var rows = api.Table("pokemon_items").Where(r => r.Int("pokemon_id") == pokemonId).ToList();
+        if (rows.Count == 0) return null;
+        int newest = rows.Max(r => r.Int("version_id"));
+        string? common = null, rare = null;
+        foreach (var r in rows.Where(r => r.Int("version_id") == newest))
+        {
+            string item = api.ItemName(r.Int("item_id"));
+            int rarity = r.Int("rarity");
+            if (rarity >= 100) common = rare = item;
+            else if (rarity >= 50) common ??= item;
+            else rare ??= item;
+        }
+        return common == null && rare == null ? null : new WildItems { Common = common, Rare = rare };
+    }
+
     private PokemonSpecies LaterSpecies(int dex)
     {
         var s = Common(dex);
@@ -581,6 +607,7 @@ public sealed partial class Importer
         s.BaseFriendship = row.IntOrNull("base_happiness") ?? 0;
 
         s.Abilities = AbilitiesOf(pid).Where(a => !a.Hidden).Select(a => a.Name).Distinct().ToList();
+        s.WildItems = LaterWildItems(pid);
         s.Learnset = LaterLearnset(pid);
         var evolutions = LaterEvolutionsOf(dex);
         s.Evolutions = evolutions.Count > 0 ? evolutions : null;

@@ -242,6 +242,10 @@ public sealed class WorldWriter
             Fly = header.Fly,
             Land = land,
             LandRate = land == null ? null : landRate,
+            Day = land == null ? null : SlotSpecies(header, "day", 2),
+            Night = land == null ? null : SlotSpecies(header, "night", 2),
+            Swarm = land == null ? null : SlotSpecies(header, "swarms", 2),
+            Radar = land == null ? null : SlotSpecies(header, "radar", 4),
             Water = water,
             WaterRate = water == null ? null : waterRate,
             OldRod = Water(header, "old_rod", out int? oldRodRate),
@@ -305,6 +309,92 @@ public sealed class WorldWriter
             else Problems.Add($"{header.Key}: wild {species} is not a species the game knows");
         }
         return land.Count > 0 ? land : null;
+    }
+
+    /// <summary>
+    /// One of the lists an area's table keeps beside its land slots (plan 06 · R13: the day's and the night's two,
+    /// a swarm's two, the Poké Radar's four) by the game's names; null when the area has none, or when a species in
+    /// it isn't one the game knows (reported).
+    /// </summary>
+    private List<string>? SlotSpecies(MapHeader header, string list, int count)
+    {
+        if (header.Encounters == null) return null;
+        var constants = decomp.SlotList(header.Encounters, list);
+        if (constants.Count == 0) return null;
+        if (constants.Count != count) Problems.Add($"{header.Key}: its {list} list has {constants.Count} species, not {count}");
+        var names = new List<string>();
+        foreach (string constant in constants)
+        {
+            if (SpeciesName(constant) is { } name) names.Add(name);
+            else
+            {
+                Problems.Add($"{header.Key}: {constant} in its {list} list is not a species the game knows");
+                return null;
+            }
+        }
+        return names;
+    }
+
+    /// <summary>
+    /// The tables of wild Pokémon that belong to no one area (plan 06 · R13): the honey trees', the Great Marsh's
+    /// daily Pokémon, the Trophy Garden's and Feebas's lake, as the original builds <c>encdata_ex</c> from them.
+    /// Feebas's tiles are kept in the original's order, from its <c>(z × 32 × the matrix's width) + x</c> to
+    /// tiles of the lake's matrix.
+    /// </summary>
+    public WorldEncountersFile Encounters(Func<MapHeader, string> nameOf)
+    {
+        List<string> Names(System.Text.Json.JsonElement array, string what)
+        {
+            var names = new List<string>();
+            foreach (var e in array.EnumerateArray())
+            {
+                string constant = e.GetString() ?? "";
+                if (SpeciesName(constant) is { } name) names.Add(name);
+                else Problems.Add($"{what}: {constant} is not a species the game knows");
+            }
+            return names;
+        }
+
+        var honey = decomp.EncounterFile("encounters_honey_tree");
+        var marsh = decomp.EncounterFile("encounters_great_marsh_lookout");
+        var trophy = decomp.EncounterFile("encounters_trophy_garden");
+        var coronet = decomp.EncounterFile("encounters_mt_coronet_b1f").GetProperty("elusive_rod_encounter");
+
+        // The lake's header: the only one whose table has an elusive rod (MapHeader_HasFeebasTiles)
+        var lake = decomp.Headers.Values.First(h => h.Encounters == "encounters_mt_coronet_b1f");
+        int width = decomp.Matrix(lake.Matrix).Width * LandData.Tiles;
+        var tiles = coronet.GetProperty("tiles").EnumerateArray().Select(t => t.GetInt32()).ToList();
+        int expected = coronet.GetProperty("map_dimensions").EnumerateArray().Sum(d => d.GetInt32());
+        if (tiles.Count != expected) Problems.Add($"Feebas's lake lists {tiles.Count} tiles where its maps count {expected}");
+
+        return new WorldEncountersFile
+        {
+            HoneyTrees = new HoneyTreeTables
+            {
+                Common = Names(honey.GetProperty("common"), "honey trees"),
+                Uncommon = Names(honey.GetProperty("uncommon"), "honey trees"),
+                Rare = Names(honey.GetProperty("rare"), "honey trees")
+            },
+            GreatMarsh = new GreatMarshTables
+            {
+                Local = Names(marsh.GetProperty("before_national_dex"), "the Great Marsh"),
+                National = Names(marsh.GetProperty("after_national_dex"), "the Great Marsh")
+            },
+            TrophyGarden = Names(trophy.GetProperty("daily_encounters"), "the Trophy Garden"),
+            Feebas = new FeebasTiles
+            {
+                Area = lake.Key,
+                Species = SpeciesName(coronet.GetProperty("species").GetString() ?? "") ?? "",
+                Tiles = string.Join(' ', tiles.Select(t => $"{t % width},{t / width}"))
+            },
+            Swarms = PokemonPlatinumEngine.Overworld.Swarms.Areas.Select(key =>
+            {
+                var header = decomp.Headers.Values.First(h => h.Key == key);
+                string? species = header.Encounters == null ? null : decomp.SlotList(header.Encounters, "swarms").FirstOrDefault();
+                if (species == null || SpeciesName(species) is not { } name) Problems.Add($"{key}: no species swarms there");
+                return new SwarmPlace { Area = key, Name = nameOf(header), Species = species != null ? SpeciesName(species) ?? "" : "" };
+            }).ToList()
+        };
     }
 
     private List<AreaEncounter>? Water(MapHeader header, out int? rate) => Water(header, "surf", out rate);
@@ -477,6 +567,7 @@ public sealed class WorldWriter
         // The whole region's wild Pokémon, open or not, for the Pokédex, and the calendar of its weather
         File.WriteAllText(Path.Combine(directory, WorldHabitatsFile.FileName), GameDataFiles.Serialize(Habitats(nameOf)));
         File.WriteAllText(Path.Combine(directory, WorldCalendarFile.FileName), GameDataFiles.Serialize(Calendar()));
+        File.WriteAllText(Path.Combine(directory, WorldEncountersFile.FileName), GameDataFiles.Serialize(Encounters(nameOf)));
 
         foreach (string folder in new[] { "matrices", "chunks", "areas" })
         {
@@ -508,6 +599,7 @@ public sealed class WorldWriter
         foreach (var header in decomp.Headers.Values.OrderBy(h => h.Index)) Write("areas", header.Key, Area(header, nameOf(header)));
         File.WriteAllText(Path.Combine(directory, WorldHabitatsFile.FileName), GameDataFiles.Serialize(Habitats(nameOf)));
         File.WriteAllText(Path.Combine(directory, WorldCalendarFile.FileName), GameDataFiles.Serialize(Calendar()));
-        return files + 2;
+        File.WriteAllText(Path.Combine(directory, WorldEncountersFile.FileName), GameDataFiles.Serialize(Encounters(nameOf)));
+        return files + 3;
     }
 }

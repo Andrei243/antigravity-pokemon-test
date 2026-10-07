@@ -30,6 +30,24 @@
     { "species": "Gastrodon", "level": 31 }
   ],
   "landRate": 30,
+  "day": [
+    "Magmar",
+    "Floatzel"
+  ],
+  "night": [
+    "Gastrodon",
+    "Floatzel"
+  ],
+  "swarm": [
+    "Magmar",
+    "Magnemite"
+  ],
+  "radar": [
+    "Aron",
+    "Aron",
+    "Aron",
+    "Aron"
+  ],
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Shellos", "level": 20, "maxLevel": 30 },

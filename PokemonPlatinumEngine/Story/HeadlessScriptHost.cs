@@ -65,6 +65,17 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>Where chance comes from (Turnback Cave's doors): the same every run unless a test hands its own.</summary>
     public Random Rng { get; set; } = new(0);
 
+    /// <summary>What the game remembers of its wild Pokémon (plan 06 · R13).</summary>
+    public SpecialEncounters Encounters { get; set; } = SpecialEncounters.NewGame(new Random(0));
+
+    /// <summary>The honey tree the player faces; null unless a test says (on a map, the one the player faces from the south).</summary>
+    public int? HoneyTreeFaced { get => honeyTree ?? (Map != null ? HoneyTrees.Faced(Map, PlayerTile.X, PlayerTile.Y, PlayerFacing) : null); set => honeyTree = value; }
+    private int? honeyTree;
+
+    public uint TrainerNumber { get; set; } = 12345;
+
+    public Random Chance => Rng;
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 

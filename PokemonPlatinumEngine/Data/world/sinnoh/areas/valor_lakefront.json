@@ -30,6 +30,24 @@
     { "species": "Bibarel", "level": 27 }
   ],
   "landRate": 30,
+  "day": [
+    "Staravia",
+    "Staravia"
+  ],
+  "night": [
+    "Kricketune",
+    "Houndour"
+  ],
+  "swarm": [
+    "Girafarig",
+    "Bibarel"
+  ],
+  "radar": [
+    "Nidorino",
+    "Nidorina",
+    "Nidorino",
+    "Nidorina"
+  ],
   "eastSea": true,
   "warps": [
     { "x": 706, "z": 790, "to": "restaurant", "toWarp": 0 },

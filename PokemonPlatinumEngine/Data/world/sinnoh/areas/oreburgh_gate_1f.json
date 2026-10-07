@@ -30,6 +30,24 @@
     { "species": "Zubat", "level": 8 }
   ],
   "landRate": 10,
+  "day": [
+    "Zubat",
+    "Psyduck"
+  ],
+  "night": [
+    "Zubat",
+    "Psyduck"
+  ],
+  "swarm": [
+    "Zubat",
+    "Psyduck"
+  ],
+  "radar": [
+    "Geodude",
+    "Zubat",
+    "Zubat",
+    "Zubat"
+  ],
   "warps": [
     { "x": 4, "z": 22, "to": "route_203", "toWarp": 0 },
     { "x": 27, "z": 22, "to": "oreburgh_city", "toWarp": 10 },

@@ -35,7 +35,9 @@ public enum Op
     // The screens that exist
     Starter, Shop, Pc, Travel,
     // The trainer tools (plan 06 · R12)
-    ChoosePokemon, Trade, HallOfFame
+    ChoosePokemon, Trade, HallOfFame,
+    // Wild Pokémon (plan 06 · R13)
+    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

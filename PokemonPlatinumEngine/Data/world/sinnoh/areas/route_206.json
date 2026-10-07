@@ -30,6 +30,24 @@
     { "species": "Geodude", "level": 18 }
   ],
   "landRate": 30,
+  "day": [
+    "Gligar",
+    "Ponyta"
+  ],
+  "night": [
+    "Kricketune",
+    "Zubat"
+  ],
+  "swarm": [
+    "Larvitar",
+    "Larvitar"
+  ],
+  "radar": [
+    "Baltoy",
+    "Baltoy",
+    "Baltoy",
+    "Baltoy"
+  ],
   "warps": [
     { "x": 302, "z": 688, "to": "route_206_cycling_road_south_gate", "toWarp": 4 },
     { "x": 303, "z": 688, "to": "route_206_cycling_road_south_gate", "toWarp": 4 },

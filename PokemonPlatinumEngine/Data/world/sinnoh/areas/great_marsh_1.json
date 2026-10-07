@@ -30,6 +30,24 @@
     { "species": "Tangela", "level": 31 }
   ],
   "landRate": 35,
+  "day": [
+    "Tropius",
+    "Tropius"
+  ],
+  "night": [
+    "Noctowl",
+    "Noctowl"
+  ],
+  "swarm": [
+    "Wooper",
+    "Bibarel"
+  ],
+  "radar": [
+    "Wooper",
+    "Quagsire",
+    "Yanma",
+    "Tangela"
+  ],
   "water": [
     { "species": "Wooper", "level": 20, "maxLevel": 30 },
     { "species": "Wooper", "level": 20, "maxLevel": 30 },

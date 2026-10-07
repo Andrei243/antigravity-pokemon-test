@@ -30,6 +30,24 @@
     { "species": "Chansey", "level": 19 }
   ],
   "landRate": 30,
+  "day": [
+    "Staravia",
+    "Ralts"
+  ],
+  "night": [
+    "Zubat",
+    "Duskull"
+  ],
+  "swarm": [
+    "Snubbull",
+    "Snubbull"
+  ],
+  "radar": [
+    "Kirlia",
+    "Kirlia",
+    "Kirlia",
+    "Kirlia"
+  ],
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

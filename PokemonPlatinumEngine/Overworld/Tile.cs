@@ -254,4 +254,12 @@ public class WildEncounterEntry
     /// <summary>The nature Synchronize chose for the Pokémon met; never in a table.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public Nature? Nature { get; set; }
+
+    /// <summary>The Pokémon met is shiny: a Poké Radar patch's sparkle (plan 06 · R13); never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Shiny { get; set; }
+
+    /// <summary>The Pokémon met is a roaming one, in this slot of the roamers (plan 06 · R13, <see cref="Roamers"/>); never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int? Roamer { get; set; }
 }
