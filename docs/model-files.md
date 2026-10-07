@@ -2,7 +2,7 @@
 
 Any species' 3D model can be replaced by a model file you supply (plan 03 · D5). The game uses it everywhere the
 species appears: in battle, in the evolution scene, on the title screen and in the menu sprites, which are baked from
-it. Species without a file keep their hand-built model (877 species: every species of Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos and Alola and Galar's first 68; and 440 forms of them) or their generated one (everyone else).
+it. Species without a file keep their hand-built model (950 species: every species of Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola and Galar, the seven first met in Hisui and Paldea's first 45; and 459 forms of them) or their generated one (everyone else).
 
 ## Where the files go
 

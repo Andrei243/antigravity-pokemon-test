@@ -962,4 +962,42 @@ internal static partial class PokemonModels
     private static PokeBuilder IndeedeeFemale() => IndeedeeBuild(true);
 
     private static PokeBuilder MorpekoHangry() => MorpekoBuild(true);
+
+    // ------------------------------------------------------------------ The Crowned Sword and Shield (their builds in PokemonModels.Galar4.cs, with Eternatus's Eternamax)
+
+    private static PokeBuilder ZacianCrowned() => ZacianBuild(true);
+
+    private static PokeBuilder ZamazentaCrowned() => ZamazentaBuild(true);
+
+    // ------------------------------------------------------------------ The Rapid Strike Style, Dada and Calyrex's riders (their builds in PokemonModels.Galar4.cs)
+
+    private static PokeBuilder UrshifuRapidStrike() => UrshifuBuild(true, false);
+
+    private static PokeBuilder ZarudeDada() => ZarudeBuild(true);
+
+    private static PokeBuilder CalyrexIce() => GlastrierBuild(true);
+
+    private static PokeBuilder CalyrexShadow() => SpectrierBuild(true);
+
+    // ------------------------------------------------------------------ The Bloodmoon Ursaluna, the female Basculegion and the Therian Enamorus (their builds in PokemonModels.Hisui.cs)
+
+    private static PokeBuilder UrsalunaBloodmoon() => UrsalunaBuild(true);
+
+    private static PokeBuilder BasculegionFemale() => BasculegionBuild(true);
+
+    private static PokeBuilder EnamorusTherian() => EnamorusTherianBuild();
+
+    // ------------------------------------------------------------------ The female Oinkologne (its build in PokemonModels.Paldea1.cs)
+
+    private static PokeBuilder OinkologneFemale() => OinkologneBuild(true);
+
+    // ------------------------------------------------------------------ Maushold's family of three and Squawkabilly's plumages (their builds in PokemonModels.Paldea2.cs)
+
+    private static PokeBuilder MausholdFamilyOfThree() => MausholdBuild(true);
+
+    private static PokeBuilder SquawkabillyBlue() => SquawkabillyBuild("Blue");
+
+    private static PokeBuilder SquawkabillyYellow() => SquawkabillyBuild("Yellow");
+
+    private static PokeBuilder SquawkabillyWhite() => SquawkabillyBuild("White");
 }
