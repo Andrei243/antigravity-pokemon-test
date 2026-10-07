@@ -29,7 +29,7 @@ Twenty-six plans, each worked through over several sessions. Plans 01 to 07 buil
 | [23 · The later regions](23-later-regions.md) | Kalos, Alola, Galar, Paldea, Hisui as Sinnoh's past and Legends: Z-A's Lumiose, on the tile grid | Z1 | 24 sessions |
 | [24 · Guards](24-guards.md) | What must not move, checked by machine: CLAUDE.md's rules as build errors, golden battles, scripts, teams and saves, strict data loading with schemas, and a damage oracle against Showdown's calculator | X1 | 6 sessions |
 | [25 · Battle presentation, second pass](25-battle-presentation.md) | The field's state drawn on the stage (weather, the Substitute, hazards, screens), each Pokémon's own ball, body language, and a picture and a sound of its own for every move | Y1 | 15 sessions |
-| [26 · Voice](26-voice.md) | Every character's lines spoken: the rival Barry recorded in the user's own voice, the player silent as in Platinum, everyone else from synthesised voices the user chooses, in a voice pack outside git, behind an option that gives back today's silent game | V1 | 7+ sessions |
+| [26 · Voice](26-voice.md) | Every character's lines spoken: the rival Barry in the user's own voice, cloned from a few samples kept in the repository, the player silent as in Platinum, everyone else from synthesised voices the user chooses, the lines in a voice pack outside git, behind an option that gives back today's silent game | V1 | 7+ sessions |
 
 ## Order
 
