@@ -36,6 +36,7 @@ The numbers in this guide live in `ArtLook` as one light rig per layer and time 
 - Point filtering everywhere; no mipmaps on pixel art.
 - Upright things (walls, sprites, signs) are stretched by `VS = 1 / cos(pitch)` so they read at true proportions from Platinum's steep camera (pitch 59.05°, FOV 16.18°).
 - **Upright things stand upright on screen.** Under that camera, perspective would make everything tall lean outward, by up to 20° at the sides of the screen, and shear its pixel art. Outdoors the vertex shader takes the lean out (`ArtLook.FieldUpright`, `FieldShaders.SetUpright`): every vertex is drawn straight above the point on the ground beneath it. A wall is then an undistorted rectangle, a sprite keeps square texels, and the ground keeps its perspective. Rooms keep true perspective, because their side walls are what makes them a doll's house.
+- **A room is seen whole; a hall is followed.** The camera looks at a room's middle and pulls back as the room deepens, up to the depth of a fourteen-tile room. A hall deeper than that (a Gym) keeps that distance and follows the player along its length, between its back wall and its door, so its people stay the size they are in any room.
 
 ### Ground
 

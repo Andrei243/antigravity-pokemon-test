@@ -564,9 +564,16 @@ public sealed class WorldRenderer
 
         if (room != null)
         {
-            // Deeper rooms pull the camera back a little so the whole room stays in frame
+            // Deeper rooms pull the camera back a little so the whole room stays in frame; a hall deeper than
+            // that (a Gym) keeps the deepest room's distance and follows the player along its length (style guide,
+            // "A room is seen whole; a hall is followed")
             var roomTarget = room.RoomCenter;
-            float distance = MapScene.IndoorDistance * Math.Max(1f, (map.Height - 1) / 8f);
+            float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(map.Height, DeepestRoom) - 1) / 8f);
+            if (map.Height > DeepestRoom)
+            {
+                float reach = (map.Height - DeepestRoom) / 2f;
+                roomTarget.Z = SnapToTexel(Math.Clamp(pz, roomTarget.Z - reach, roomTarget.Z + reach));
+            }
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
                 MapScene.IndoorFovYDeg, CameraProjection.Perspective);
         }
@@ -587,6 +594,9 @@ public sealed class WorldRenderer
 
         return new Camera3D(t + dir * lens.Distance, t, Vector3.UnitY, lens.FovYDeg, CameraProjection.Perspective);
     }
+
+    /// <summary>The deepest room the camera frames whole: a deeper hall is followed along its length.</summary>
+    public const int DeepestRoom = 14;
 
     internal static float SnapToTexel(float v) => MathF.Round(v * CharacterSprites.TexelsPerUnit) / CharacterSprites.TexelsPerUnit;
 
