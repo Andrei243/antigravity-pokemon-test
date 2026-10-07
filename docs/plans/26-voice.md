@@ -1,12 +1,13 @@
-# Plan 26 · Voice: every character's lines spoken, the boy in the user's own voice
+# Plan 26 · Voice: every character's lines spoken, Barry in the user's own voice
 
 Written 2026-10-07, before any session, at the user's request: "make all the characters' text also have audio
-dubbing, and for the main male character use my voice".
+dubbing", with the rival, Barry, in the user's own voice (decided the same day: the player says nothing in Platinum,
+so the user's voice goes to the most talkative male character instead).
 
-**Goal**: every line a character says in a text box is also heard, in a voice that is that character's own. The boy
-(Lucas, or whatever the player names him) speaks in the user's voice, recorded by the user. Everyone else is cast
-from a synthesised voice the user approves: the named cast one voice each, everyone else from a set of voices by kind
-of person, so two lasses in one town don't sound alike. Turning voices off gives back today's game exactly. Nothing
+**Goal**: every line a character says in a text box is also heard, in a voice that is that character's own. The rival,
+Barry (or whatever the player names him), speaks in the user's voice, recorded by the user. The player stays silent,
+as in Platinum. Everyone else is cast from a synthesised voice the user approves: the named cast one voice each,
+everyone else from a set of voices by kind of person, so two lasses in one town don't sound alike. Turning voices off gives back today's game exactly. Nothing
 is taken from the games or the anime, no real performer's voice is imitated, and the user's recordings stay theirs.
 
 ## Where we are
@@ -45,16 +46,18 @@ is taken from the games or the anime, no real performer's voice is imitated, and
   - Plan 12 · Q9's captions name sounds.
   - Plan 16 · T2 makes release builds.
 
-## What "the main male character" means here
+## The user's part: Barry
 
-In Platinum the player never speaks. The boy appears in two roles here:
+**Decision (2026-10-07, the user's):** the player character has no lines, as in Platinum, and gets none, not even
+short calls in battle. The user's voice goes to **the rival, Barry**: the most talkative male character, in nearly
+every chapter from the first scene to the Pokémon League and after.
 
-1. **As the assistant**: when the player chooses the girl, the boy is Professor Rowan's assistant, a speaking part in about fifteen scenes of the story. Here he is always called Lucas, so every one of his lines can be recorded whole, name included.
-2. **As the player**: when the player chooses the boy, he says nothing in the original. The plan gives him **barks**, short calls that never carry a name, to keep the silent hero silent in the story while still hearing the user:
-   - in battle: sending a Pokémon out ("Go!", "You've got this!"), calling one back, a ball thrown, a catch, a win, a loss;
-   - in the field: a few reactions (surprise at a "!", a yes and a no to a question).
-
-The recommended reading is both: all of the assistant's lines, and the player's barks (decision 1). If the user meant the rival Barry (the most talkative male), the same tooling records him instead; only the cast entry changes.
+- **How much he says.** Today, 56 lines (about 780 words) from Twinleaf Town to Oreburgh City, spread over ten script files. They include his bedroom, Route 201's lake trip, Sandgem, the Trainers' School, Route 203's battle and Oreburgh. Across Platinum's whole story, in this game's own words, perhaps 400 to 600 lines. On top come:
+  - his trainer lines before and after each rival battle;
+  - plan 11 · C12's lines in battle (his last Pokémon, his first to fall, his last in the red).
+- **His name.** The introduction lets the player rename him (`{rival}`). Other people's lines that say his name never speak it, unless the player kept "Barry": then a second take that says it can play. His own lines carry `{player}` often ("...Oh, it's you, {player}!"); the spoken version drops it.
+- **His starter.** Lines that name his Pokémon (`{rivalstarter}`) are recorded once for each of the three.
+- **The boy and the girl** are cast like everyone else: the assistant (the character the player isn't, always under the default name, Lucas or Dawn) gets a synthesised voice of their own.
 
 ## Design
 
@@ -65,7 +68,6 @@ The recommended reading is both: all of the assistant's lines, and the player's 
   - a person's line is `world:<area>.<NPC.Key>.dialog.<k>`, `...before.<k>` or `...after.<k>`;
   - a hand-made map's person is `map:<Name>.<NPC.Key>...`;
   - the introduction's is `intro:<phase>.<k>`;
-  - barks are `bark:<kind>.<n>`.
 
   If plan 17 · N4 hasn't run when V1 starts, V1 builds the numbering and the address exactly as N4 describes them, and N4 then only adds the sibling files.
 - **The catalogue** is `Data/voice/lines.json`, written by a new `tools/VoiceTool catalogue`. It holds one entry per line:
@@ -83,7 +85,7 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 
   A line with one carries a spoken text that leaves it out ("Hey, {player}! Over here!" is shown, "Hey! Over here!" is spoken). The tool fills a first version by dropping the name and the comma round it and asks for the rest by hand. A line where the name can't be dropped gracefully can be marked shown-only, and the text then shows alone.
 - **Variants.**
-  - A placeholder with few values is recorded once per value: `{starter}` and `{rivalstarter}` three times, `{assistant}` once each for Lucas and Dawn.
+  - A placeholder with few values is recorded once per value: `{starter}` and `{rivalstarter}` three times, `{assistant}` once each for Lucas and Dawn (both synthesised).
   - Where the player kept a default name (Lucas, Dawn, Barry), a line may have a second take that says the name, played only then.
 
   The key of a variant is the line's key with `~starter=Piplup` or `~named` after it.
@@ -96,7 +98,7 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 
 ### Where the voices come from
 
-- **The user's recordings** for the boy (V3). Recorded per line, three takes of each, the best chosen. Optionally (decision 3), a model of the user's voice is trained on those same recordings, so lines written after a recording session can be heard in the user's voice until they record them for real; such a line is marked synthetic in the catalogue and replaced when he does.
+- **The user's recordings** for Barry (V3). Recorded per line, three takes of each, the best chosen. Optionally (decision 3), a model of the user's voice is trained on those same recordings, so lines written after a recording session can be heard in the user's voice until they record them for real; such a line is marked synthetic in the catalogue and replaced when they do.
 - **Synthesised voices** for everyone else, made offline by a text-to-speech engine and baked into files, never generated while the game runs.
   - **Why offline:** a neural model in the game would add hundreds of megabytes and a second or more of delay per line, and would sound different on every machine.
   - **Candidates for V4's trial** (each licence to be checked when it is downloaded, with the user's OK as the project rules ask, and credited in `docs/art/CREDITS.md`):
@@ -162,18 +164,16 @@ The recommended reading is both: all of the assistant's lines, and the player's 
   - else the person spoken to (`self`): their own cast entry, else their class's or type's archetype by hash;
   - else the display name looked up in the cast.
 
-  `{assistant}` resolves to `assistant_boy` or `assistant_girl` by the player's look. Barks belong to `player_boy` or `player_girl`.
-- **Barks** come from new calls at the moments the battle's face already shows: the player's send-out (`BattleEngine.Show` of a send-out on the player's side), a recall, a ball thrown, a catch, a win and a loss. Each picks one of a kind's takes by the animator's seed, never the battle's generator, so no bark can change a battle and a replay stays the same.
+  `{assistant}` resolves to `assistant_boy` or `assistant_girl` by the player's look; `{rival}`, and the rival's `npcType` and trainer class, to `rival`, whose cast entry says "recorded": the user's takes, never a synthesised voice (or the stand-in model, decision 3).
 - **Mouths.** `AudioManager.VoiceLevel` (the envelope of the voice now playing, read once a frame) moves the speaker's mouth:
   - in the field, through the faces' open and shut mouth (`CharacterFaces`, plan 11's expressions);
-  - in battle, the trainer on the stage;
+  - in battle, the trainer on the stage (Barry at each rival battle);
   - in the introduction, Rowan.
 
   The speaker on screen is the person the talk belongs to.
 - **Options** (the options screen scrolls already):
   - `Voices`: Off, Story only (the named cast), All;
   - `Voice volume`;
-  - `The player's voice`: Off or On, for barks;
   - `Let voices finish`: Off or On.
 
   With `Voices` off, nothing new is loaded, played or drawn.
@@ -190,17 +190,17 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 - **Everyone has a voice:** every speaker resolves to a cast entry. A `speaker` whose display name matches no cast entry and has no id is an error that names its file and line.
 - **Spoken texts are safe:** no spoken text contains a free placeholder, and a variant exists for each value of a few-valued one.
 - **Files fit the game:** every file in a pack decodes, is within the voice bus's loudness window, has its peak under −1 dB, starts and ends at nothing, and matches the text hash it claims. These run when a pack is present (on the user's machine and in the release build) and are skipped, and say so, when none is.
-- **What tests hear:** a talk asks for its lines' voices in order. A at a finished line cuts the voice; A at a half-written one doesn't. Voices off asks for nothing. Barks come from the animator's seed (a recorded battle replays the same log with them on or off). A stale or missing line plays nothing and shows its text.
+- **What tests hear:** a talk asks for its lines' voices in order. A at a finished line cuts the voice; A at a half-written one doesn't. Voices off asks for nothing. A recorded battle replays the same log with voices on or off. A stale or missing line plays nothing and shows its text.
 
 ## The user's recording
 
-- **How much.** The assistant's part is about 15 scenes of Platinum's story. In this game's own words, that is perhaps 250 to 400 lines once plan 02 has written them all. Barks add about 60 short takes (six kinds of battle call, ten takes each, plus field reactions). With the dialogue lines' starter variants, about 500 recordings in all. At a comfortable two to three finished lines a minute, with retakes, that is three to five hours at the microphone, spread over sessions as chapters are written. A chapter's lines are recorded once its text is final, never before, so as little as possible goes stale.
+- **How much.** Barry's 56 lines today are a first session of about half an hour. The whole story is perhaps 400 to 600 lines. With his starter's three variants, his "Barry" takes and his battle lines, that is some 600 to 800 recordings. At a comfortable two to three finished lines a minute, with retakes, that is four to seven hours at the microphone, spread over sessions as chapters are written. A chapter's lines are recorded once its text is final, never before, so as little as possible goes stale.
 - **Equipment and setting.**
   - Any decent USB microphone (a dynamic one forgives an untreated room).
   - A quiet room with soft furnishings, the same place and distance every session (about a hand's span), and a pop filter.
   - 48 kHz, 24-bit, peaks round −12 dB.
   - A short guide goes in `docs/voice/recording.md`: warming up, reading the direction, matching energy across sessions by listening back to the last session's first lines.
-- **Performance.** The direction column and the line before each line give the scene. The boy as assistant is warm and a little earnest; the barks are short and full of energy. The user decides the character (decision 2).
+- **Performance.** The direction column and the line before each line give the scene. Barry is impatient, loud and warm-hearted: he runs everywhere, threatens fines he never collects, and talks faster than he thinks. Mostly high energy, with a few quiet moments in the second half of the story (after the lakes, at Spear Pillar). The user decides how he sounds (decision 2).
 - **A model of the user's voice** (decision 3) needs only these recordings, about half an hour of clean speech, fine-tuned locally and kept wherever the user keeps the takes. It is never committed and never sent to a service the user hasn't chosen.
 
 ## Sessions
@@ -217,20 +217,19 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 - `AudioBus.Voice` and its dip; `Loudness`'s voice window.
 - `VoiceLibrary` with NVorbis (with the user's OK for the package), the pack's `pack.json`, the cache and the decoding ahead.
 - `Say`, `ShowDialogue` and `HeadlessScriptHost` carrying keys; A's two behaviours.
-- The four option rows; `waitvoice`; `Listen`'s voice lines.
+- The three option rows; `waitvoice`; `Listen`'s voice lines.
 - A pack of test voices made in the tests themselves: a few lines of synthesised vowels, enough to measure timing, the dip and the cut.
 - **Done when** a talk in the field speaks its lines from a pack, cuts and finishes as the player presses A, dips the music, and plays exactly as today with no pack or voices off.
 
-### V3 · The recording kit and the boy's first chapter
+### V3 · The recording kit and Barry's first chapter
 - `VoiceTool export` and `bake`, and the booth page; `docs/voice/recording.md`.
-- The barks, wired into the battle's send-out, recall, throw, catch, win and loss, and the field's reactions.
-- The user records chapter 1's assistant lines and the barks; the bake's report, then listening in the game.
-- **Done when** a new game as the girl hears the assistant in the user's voice through the first chapter, and as the boy hears the barks in battle.
+- The user records Barry's 56 lines so far (and his two starters' other takes); the bake's report, then listening in the game.
+- **Done when** a new game hears Barry in the user's voice from his bedroom door to Oreburgh City, and in his Route 203 battle's lines.
 
 ### V4 · The synthesised cast, the trial
 - The three engines' trial on twenty lines, with the user choosing by ear and approving each licence and download.
 - `Data/voice/lexicon.json` for every name the open areas say.
-- `VoiceTool generate`, and voice design for the named cast of the open areas: Rowan, the rival, the two mothers, Dawn as the assistant, Looker, Cheryl, Roark, Mars and the grunts.
+- `VoiceTool generate`, and voice design for the named cast of the open areas: Rowan, the two mothers, Lucas and Dawn as the assistant, Looker, Cheryl, Roark, Mars and the grunts.
 - **Done when** the first chapter is fully voiced and the user has approved each character's voice.
 
 ### V5 · Everyone else
@@ -250,7 +249,7 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 - Every chapter of plan 02, and later each region's (plans 19 to 23), is voiced as part of its own work, as plan 05 · A6 gives each new area its music:
   - its new people's archetypes, generated;
   - its named characters, generated;
-  - the boy's lines, recorded by the user once the chapter's text is final.
+  - Barry's lines, recorded by the user once the chapter's text is final.
 - The report keeps the gap visible.
 
 ### V8 · Other languages (with plan 17 · N6)
@@ -283,10 +282,8 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 
 ## Decisions for the user
 
-1. **Which character is "the main male character".** *Recommended:* the boy in both his roles, the assistant's lines when the player is the girl and short barks when he is the player, keeping Platinum's silent hero silent in the story. Alternatives:
-   - the boy speaking in the story too, with new lines written for him: a change to Platinum's story;
-   - Barry, the rival, instead.
-2. **The boy's character**: how he sounds (age, energy) is the user's to perform; the direction column carries whatever the user decides.
+1. **Whose voice is the user's.** *Decided 2026-10-07:* Barry's, recorded; the player stays silent with no calls.
+2. **Barry's character**: how he sounds (age, energy, pace) is the user's to perform; the direction column carries whatever the user decides.
 3. **A model of the user's voice.** *Recommended:* only as a stand-in for lines not yet recorded, marked as such and replaced, trained and kept on the user's machine. Alternative: no model, and unrecorded lines stay text only until they record them.
 4. **Voices on by default.** *Recommended:* "Story only" once chapter 1 is fully voiced, "All" once V5 has run; off until then. Alternative: off by default always, as the original has none.
 5. **Where the files live.** *Recommended:* a pack outside git, released as its own download, the user's takes and any model only on their machine. Alternatives:
@@ -304,7 +301,7 @@ The recommended reading is both: all of the assistant's lines, and the player's 
 
 - [ ] V1 The catalogue, the cast and the keys
 - [ ] V2 Playing a voice
-- [ ] V3 The recording kit and the boy's first chapter
+- [ ] V3 The recording kit and Barry's first chapter
 - [ ] V4 The synthesised cast, the trial
 - [ ] V5 Everyone else
 - [ ] V6 The face and the stage
