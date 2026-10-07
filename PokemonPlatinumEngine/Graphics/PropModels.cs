@@ -84,7 +84,174 @@ internal static class PropModels
             case PropType.WallEmblem:
                 kit.Card(1, 31, 32.5f, 36, 66, kit.Face("emblem", 30, 30, c => BuildingArt.BallRoundel(c, 0, 0, 30)));
                 break;
+            // Eterna City's rooms (plan 02 · S6): the Team Galactic building's stairs at the sides of its floors, the
+            // cycle shop's bicycles, a bin, and boxes stacked in a storeroom
+            case PropType.SideStairsUp: SideStairsUp(kit, w, d); break;
+            case PropType.SideStairsDown: SideStairsDown(kit, w, d); break;
+            case PropType.Bicycle: kit.Sprite(kit.Face("bicycle", 58, 36, PaintBicycle), w / 2f, d / 2f + 10); break;
+            case PropType.TrashCan: TrashCan(kit); break;
+            case PropType.Crates: Boxes(kit, p); break;
         }
+    }
+
+    // ------------------------------------------------------------------ Eterna City's rooms (plan 02 · S6)
+
+    /// <summary>
+    /// Steel steps climbing west from the foot of the flight (its east end) to the floor above, the full depth of the
+    /// prop, with a rail along their open south side: eight steps of the prop's width, the last just under the top of
+    /// the wall.
+    /// </summary>
+    private static void SideStairsUp(KitBuilder kit, int w, int d)
+    {
+        const int steps = 8, rise = 8;
+        int run = w / steps, z0 = 2, z1 = d - 4;
+        var tread = kit.Face($"sidestairs.tread.{z1 - z0}", run, z1 - z0, c =>
+        {
+            c.Rect(0, 0, run, c.Height, Steel.Base);
+            // A ribbed plate, light at the step's nosing on its east edge
+            for (int y = 2; y < c.Height - 1; y += 4) c.HLine(1, y, run - 2, Steel.Dark);
+            c.VLine(run - 1, 0, c.Height, Steel.Light);
+            c.VLine(0, 0, c.Height, Steel.Dark);
+        });
+        for (int i = 0; i < steps; i++)
+        {
+            int x1 = w - i * run, top = (i + 1) * rise;
+            var south = kit.Face($"sidestairs.south.{top}", run, top, c => Pix.Raised(c, 0, 0, run, top, Casing));
+            var riser = kit.Face($"sidestairs.riser.{z1 - z0}x{top}", z1 - z0, top, c =>
+            {
+                Pix.Raised(c, 0, 0, z1 - z0, top, Casing);
+                c.HLine(0, 0, z1 - z0, Steel.Light);
+            });
+            kit.Box(x1 - run, x1, z0, z1, 0, top, tread, south, null, riser);
+            // The rail climbs with the steps along the open side
+            kit.Block("sidestairs.rail", Dark, x1 - run, x1, z1, z1 + 2, top, top + 12);
+        }
+        kit.Block("sidestairs.newel", Dark, w - 3, w, z1 - 1, z1 + 3, 0, rise + 18);
+    }
+
+    /// <summary>
+    /// A stairwell going down eastward: a well in the floor whose steps sink into the dark the further east they go,
+    /// with a rail round its open sides and a post at each corner.
+    /// </summary>
+    private static void SideStairsDown(KitBuilder kit, int w, int d)
+    {
+        const int steps = 7;
+        int z0 = 2, z1 = d - 4;
+        var well = kit.Face($"sidestairs.well.{w}x{z1 - z0}", w, z1 - z0, c =>
+        {
+            int run = w / steps;
+            for (int i = 0; i < steps; i++)
+            {
+                // Each step lower and darker than the one before it, its nosing catching a little light
+                float dark = 0.12f + 0.11f * i;
+                var tone = PixelCanvas.Mix(Steel.Base, Rgb(30, 32, 44), dark);
+                int x0 = i * run, x1 = i == steps - 1 ? w : x0 + run;
+                c.Rect(x0, 0, x1 - x0, c.Height, tone);
+                c.VLine(x0, 0, c.Height, PixelCanvas.Mix(Steel.Light, Rgb(30, 32, 44), dark));
+                for (int y = 3; y < c.Height - 1; y += 4) c.HLine(x0 + 2, y, x1 - x0 - 3, PixelCanvas.Shadow(tone, 0.25f));
+            }
+            c.HLine(0, 0, w, Dark.Dark);
+            c.HLine(0, c.Height - 1, w, Dark.Dark);
+        });
+        kit.Decal(0, w, z0, z1, 0.004f, well);
+        // The rail along the south side and across the far end; the head of the stairs, on the west, is open
+        kit.Block("sidestairs.downrail", Dark, 2, w, z1, z1 + 2, 16, 19);
+        kit.Block("sidestairs.downrail.end", Dark, w - 2, w, z0, z1, 16, 19);
+        foreach (int x in new[] { 2, w / 2 - 1, w - 3 })
+            kit.Block("sidestairs.post", Dark, x, x + 2, z1, z1 + 2, 0, 16);
+        kit.Block("sidestairs.post", Dark, w - 2, w, z0, z0 + 2, 0, 16);
+    }
+
+    /// <summary>A bicycle standing on its kickstand, side on: a sprite 58 by 36.</summary>
+    public static void PaintBicycle(PixelCanvas c)
+    {
+        var tyre = Rgb(44, 42, 56);
+        var frame = Tone.Of(220, 64, 70);
+        var chrome = Rgb(206, 212, 226);
+        foreach (int cx in new[] { 13, 45 })
+        {
+            // A wheel: the tyre and the rim, open between the spokes
+            const float cy = 24.5f, r = 11.5f;
+            for (int y = 13; y < 36; y++)
+                for (int x = cx - 11; x <= cx + 12; x++)
+                {
+                    float dx = x + 0.5f - (cx + 0.5f), dy = y + 0.5f - cy, dist = MathF.Sqrt(dx * dx + dy * dy);
+                    if (dist <= r && dist > r - 2.5f) c.Set(x, y, tyre);
+                    else if (dist <= r - 2.5f && dist > r - 3.5f) c.Set(x, y, chrome);
+                }
+            c.Line(cx - 7, 23, cx + 7, 26, chrome);
+            c.Line(cx, 17, cx, 32, chrome);
+            c.Line(cx - 6, 30, cx + 6, 19, chrome);
+            c.Rect(cx - 1, 23, 3, 3, Dark.Base);
+        }
+        // The frame: from the back hub to the pedals and the saddle, across to the head tube and the front hub
+        void Tube(int x0, int y0, int x1, int y1)
+        {
+            c.Line(x0, y0, x1, y1, frame.Base);
+            c.Line(x0, y0 - 1, x1, y1 - 1, frame.Light);
+            c.Line(x0, y0 + 1, x1, y1 + 1, frame.Dark);
+        }
+        Tube(13, 25, 27, 26);
+        Tube(13, 25, 22, 12);
+        Tube(22, 12, 27, 26);
+        Tube(22, 12, 41, 12);
+        Tube(27, 26, 41, 13);
+        Tube(41, 10, 45, 25);
+        // The saddle, the handlebars, the pedal and the chain ring
+        c.Rect(17, 7, 10, 3, Dark.Base);
+        c.HLine(17, 7, 10, Dark.Light);
+        c.Rect(21, 10, 2, 3, chrome);
+        c.Rect(39, 5, 3, 6, chrome);
+        c.Rect(36, 4, 9, 2, Dark.Base);
+        Pix.Disc(c, 24, 23, 7, chrome);
+        c.Rect(24, 29, 6, 2, Dark.Base);
+        // The kickstand
+        c.Line(27, 27, 23, 35, Dark.Base);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// Cardboard boxes on each tile a storeroom's pile covers, a smaller one on top of most (but never on a single
+    /// box): indoors the crates of the world's yards are these, each standing within its own tile.
+    /// </summary>
+    private static void Boxes(KitBuilder kit, Prop p)
+    {
+        var card = Tone.Of(204, 164, 108);
+        Art Top(int w, int d) => kit.Face($"box.top.{w}x{d}", w, d, c =>
+        {
+            TopFace(c, card);
+            // A strip of tape along the lid's seam
+            c.Rect(0, d / 2 - 2, w, 4, Rgb(226, 206, 160));
+            c.HLine(0, d / 2 + 2, w, card.Dark);
+        });
+        Art Side(int w, int h) => kit.Face($"box.side.{w}x{h}", w, h, c =>
+        {
+            Pix.Raised(c, 0, 0, w, h, card);
+            c.Rect(w / 2 - 2, 0, 4, Math.Min(6, h), Rgb(226, 206, 160));
+        });
+        for (int ty = 0; ty < p.Depth; ty++)
+            for (int tx = 0; tx < p.Width; tx++)
+            {
+                int x = tx * 32, z = ty * 32;
+                kit.Box(x + 3, x + 29, z + 5, z + 29, 0, 22, Top(26, 24), Side(26, 22), Side(24, 22), Side(24, 22));
+                // A pile of one box stays low: whoever stands behind it is seen over it
+                if (p.Width * p.Depth == 1 || ((p.X + tx) * 7 + (p.Y + ty) * 3) % 3 == 0) continue;
+                kit.Box(x + 7, x + 25, z + 9, z + 25, 22, 38, Top(18, 16), Side(18, 16), Side(16, 16), Side(16, 16));
+            }
+    }
+
+    /// <summary>A round bin of grey steel with a lid, waist high.</summary>
+    private static void TrashCan(KitBuilder kit)
+    {
+        var body = kit.Face("trashcan", 22, 30, c =>
+        {
+            Pix.Raised(c, 0, 4, 22, 26, Steel);
+            for (int x = 3; x < 20; x += 4) c.VLine(x, 7, 20, Steel.Dark);
+            Pix.Raised(c, 0, 0, 22, 5, Casing);
+            c.Rect(8, 0, 6, 2, Dark.Base);
+            Pix.Outline(c);
+        });
+        kit.Sprite(body, 16, 22);
     }
 
     // ------------------------------------------------------------------ kitchen

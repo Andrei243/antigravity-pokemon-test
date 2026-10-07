@@ -23,6 +23,17 @@ public enum PropType
     Bed,
     /// <summary>A desk with a computer on it (the player's own, in the bedroom).</summary>
     Computer,
+    /// <summary>
+    /// A flight of stairs at the side of a room, two tiles each way, climbing west to the floor above, as the Team
+    /// Galactic Eterna Building's do (plan 02 · S6): its warp is the tile east of its foot.
+    /// </summary>
+    SideStairsUp,
+    /// <summary>A stairwell at the side of a room going down eastward to the floor below, behind a rail: its warp is the tile west of its head.</summary>
+    SideStairsDown,
+    /// <summary>A bicycle on its stand, two tiles wide: what a cycle shop shows (Eterna City's, plan 02 · S6).</summary>
+    Bicycle,
+    /// <summary>A waste bin.</summary>
+    TrashCan,
 
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,

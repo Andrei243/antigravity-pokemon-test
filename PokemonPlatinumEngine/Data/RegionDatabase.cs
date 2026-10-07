@@ -139,7 +139,10 @@ public static class RegionDatabase
                 "SunyshorePokemonCenter", "SunyshorePokeMart", "PokemonLeagueSouthPokemonCenter", "PokemonLeagueNorthPokemonCenter",
                 // Rebuilt to the original's plans, so its people stand where the original's do: three houses of the
                 // in-game trades (plan 06 · R12) and the Valley Windworks' hall (plan 02 · S6)
-                "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding"
+                "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding",
+                // Eterna City's rooms of plan 02 · S6: the cycle shop, the Underground Man's house and Team Galactic's building
+                "EternaCycleShop", "EternaUndergroundManHouse",
+                "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

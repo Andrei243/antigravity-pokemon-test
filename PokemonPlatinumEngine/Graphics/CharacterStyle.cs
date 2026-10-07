@@ -190,6 +190,41 @@ internal sealed class CharacterStyle
             Top = new(236, 238, 244, 255), Accent = new(84, 86, 108, 255),
             Bottom = new(76, 78, 96, 255), Shoes = new(52, 42, 40, 255), Height = 0.94f, Build = BodyBuild.Adult
         },
+        // Plan 02 · S6, Eterna City. A Trainer studying Sinnoh's myths, met by the Team Galactic building: our own take,
+        // long golden hair and a long black coat with a pale grey collar over black trousers
+        "CYNTHIA" => new CharacterStyle
+        {
+            HairColor = new(246, 220, 120, 255), Hair = HairCut.Long, Coat = true,
+            Top = new(44, 42, 52, 255), Accent = new(196, 198, 210, 255),
+            Bottom = new(40, 38, 48, 255), Shoes = new(30, 28, 36, 255), Sole = new(90, 88, 100, 255),
+            Eyes = new(70, 60, 50, 255), Height = 1.06f, Build = BodyBuild.Adult, Lashes = true
+        },
+        // Eterna's Gym Leader, at her Gym's door and later in Eterna Forest: our own take, short russet hair, a leaf-green
+        // jacket with a darker collar, dark shorts and brown boots
+        "GARDENIA" => new CharacterStyle
+        {
+            HairColor = new(186, 86, 52, 255), Hair = HairCut.Short,
+            Top = new(84, 160, 90, 255), Accent = new(38, 98, 60, 255),
+            Bottom = new(52, 48, 60, 255), Shorts = true, Shoes = new(122, 80, 52, 255), Sole = new(70, 50, 40, 255),
+            Eyes = new(74, 120, 70, 255), Height = 1.0f, Build = BodyBuild.Adult, Lashes = true, Blush = true
+        },
+        // Team Galactic's Commander in the Eterna building: our own take, violet hair cut in a bob and the team's pale
+        // uniform with its dark collar and a short dark skirt
+        "JUPITER" => new CharacterStyle
+        {
+            HairColor = new(126, 72, 160, 255), Hair = HairCut.Short,
+            Top = new(222, 224, 232, 255), Accent = new(56, 60, 80, 255),
+            Bottom = new(70, 72, 92, 255), Skirt = true, Shoes = new(52, 54, 66, 255), Sole = new(200, 202, 212, 255),
+            Eyes = new(110, 62, 140, 255), Height = 1.02f, Build = BodyBuild.Adult, Lashes = true
+        },
+        // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's):
+        // our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
+        "SCIENTIST" => new CharacterStyle
+        {
+            HairColor = new(92, 70, 56, 255), Hair = HairCut.Short, Coat = true,
+            Top = new(240, 242, 246, 255), Accent = new(86, 118, 176, 255),
+            Bottom = new(96, 100, 116, 255), Shoes = new(56, 48, 46, 255), Height = 1.02f, Build = BodyBuild.Adult
+        },
         "GENTLEMAN" => new CharacterStyle
         {
             HairColor = new(150, 146, 156, 255), Hair = HairCut.Swept, Mustache = true, Coat = true,
