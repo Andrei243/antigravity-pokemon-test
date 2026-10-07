@@ -153,11 +153,13 @@ public class WorldTests
                 Assert.True(map.GetSignboardAt(named!.X, named.Z) == overlay.Signs![sign], $"{key}: '{sign}' is not a sign that can be read");
             }
 
+            // A door may be listed as locked too: shut until the story opens it, it says where it will lead (the
+            // Valley Windworks', locked from inside until the Works Key)
             foreach (var door in overlay.Doors ?? new())
             {
                 Assert.InRange(door.Warp, 0, file.Warps.Count - 1);
                 Assert.True(MapDatabase.MapNames.Contains(door.Map), $"{key}: door {door.Warp} leads to {door.Map}, which is no map");
-                Assert.True(overlay.Locked?.Contains(door.Warp) != true, $"{key}: door {door.Warp} is both open and locked");
+                Assert.Single(overlay.Doors!, d => d.Warp == door.Warp);
             }
             foreach (int locked in overlay.Locked ?? new())
                 Assert.InRange(locked, 0, file.Warps.Count - 1);

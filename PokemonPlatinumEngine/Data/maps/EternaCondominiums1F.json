@@ -1,0 +1,251 @@
+{
+  "name": "EternaCondominiums1F",
+  "displayName": "Eterna City",
+  "bgmTrack": "sinnoh/eterna",
+  "interior": "House",
+  "trees": "Round",
+  "width": 20,
+  "height": 14,
+  "ground": [
+    "####################",
+    "####################",
+    "####################",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###________________#",
+    "###########D########"
+  ],
+  "solid": [
+    "####################",
+    "####################",
+    "####################",
+    "####..#########...##",
+    "###...........#....#",
+    "###...###..........#",
+    "###..####..........#",
+    "###................#",
+    "###................#",
+    "###..####..........#",
+    "###..###...........#",
+    "###................#",
+    "####..............##",
+    "###########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stairs",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 5,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 18,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 315,
+      "targetY": 549,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ninja_boy",
+      "name": "Ninja Boy",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "script": "Charap"
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Pokéfan",
+      "npcType": "Gentleman",
+      "x": 15,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Everybody in these condominiums keeps a Pokémon or three.",
+        "The walls are thin, so you hear them chattering at all hours. I wouldn't have it any other way!"
+      ]
+    },
+    {
+      "id": "expert_m",
+      "name": "Expert",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "A Pokémon raised by another Trainer brings a little of that Trainer along with it.",
+        "You can see it in how it battles. Trading is how Trainers learn from one another."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

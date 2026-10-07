@@ -2,7 +2,9 @@
   "area": "valley_windworks_outside",
   "bgmTrack": "sinnoh/route205",
   "trees": "Round",
-  // The works have no room yet (plan 01 · M11)
+  // The works' hall, built to the original's plan for Commander Mars's scene (plan 02 · S6). Its door stays locked from
+  // inside until the Works Key opens it: a door that is also listed as locked says where it will lead
+  "doors": [ { "warp": 0, "map": "ValleyWindworksBuilding", "x": 12, "y": 16, "facing": "Up" } ],
   "locked": [ 0 ],
   // The grunt at the door, its lock, and Looker once Commander Mars is beaten (plan 02 · S6)
   "read": { "4": "Door" },

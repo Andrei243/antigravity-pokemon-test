@@ -86,6 +86,25 @@ public class Map
     public InteriorStyle Interior { get; set; } = InteriorStyle.None;
     public bool IsIndoors => Interior != InteriorStyle.None;
 
+    /// <summary>
+    /// Where a room's floor begins: the first column and the first row with anything but wall on them, above the
+    /// front wall's row. Its side wall stands west of the one and its back wall north of the other. The rooms made
+    /// by hand begin at (1, 2); a room rebuilt to the original's plan begins where the original's floor does, so its
+    /// people stand on the original's tiles. Wall tiles inside that are the room's own inner walls.
+    /// </summary>
+    public (int Left, int Back) RoomCorner()
+    {
+        int left = Width, back = Height;
+        for (int y = 0; y < Height - 1; y++)
+            for (int x = 0; x < Width; x++)
+            {
+                if (groundLayer[y * Width + x] == TileType.Wall) continue;
+                left = Math.Min(left, x);
+                back = Math.Min(back, y);
+            }
+        return left < Width ? (left, back) : (1, 2);
+    }
+
     /// <summary>True for maps with a sizeable body of water (not a garden pond): battles there have a lake behind them.</summary>
     public bool HasLake => groundLayer.Count(t => t == TileType.Water) >= 40;
 

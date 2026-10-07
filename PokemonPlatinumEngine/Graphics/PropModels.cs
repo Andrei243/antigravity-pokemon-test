@@ -38,13 +38,16 @@ internal static class PropModels
     /// <summary>Height of a room's walls in texels.</summary>
     public const int WallHeight = 80;
 
+    /// <summary>Height of a room's inner walls in texels: cut away like the front wall, down to the wainscot.</summary>
+    public const int InnerWallHeight = 28;
+
     public static void Build(KitBuilder kit, Prop p, Map map)
     {
         kit.Origin = new Vector3(p.X, 0, p.Y);
         int w = p.Width * 32, d = p.Depth * 32;
         switch (p.Type)
         {
-            case PropType.Table: Table(kit, w, map.Interior == InteriorStyle.House); break;
+            case PropType.Table: Table(kit, w, d, map.Interior == InteriorStyle.House); break;
             case PropType.Chair: Chair(kit, p, map); break;
             case PropType.Sofa: Sofa(kit, p, map, w, d); break;
             case PropType.Bookshelf: Bookshelf(kit); break;
@@ -57,11 +60,11 @@ internal static class PropModels
             case PropType.Counter: Counter(kit, w, d, map.Interior == InteriorStyle.PokemonCenter); break;
             case PropType.HealingMachine: HealingMachine(kit); break;
             case PropType.Bench: Bench(kit, w); break;
-            case PropType.StoreShelf: StoreShelf(kit, w, againstWall: p.Y <= 2); break;
+            case PropType.StoreShelf: StoreShelf(kit, w, againstWall: p.Y <= map.RoomCorner().Back); break;
             case PropType.LabDesk: LabDesk(kit, w); break;
             case PropType.Bed: Bed(kit, d); break;
             case PropType.Computer: BuildPc(kit, p.X, p.Y); break;
-            case PropType.LabMachine: LabMachine(kit, d, facesEast: p.X <= 1, facesWest: p.X + p.Width >= map.Width - 1); break;
+            case PropType.LabMachine: LabMachine(kit, d, facesEast: p.X <= map.RoomCorner().Left, facesWest: p.X + p.Width >= map.Width - 1); break;
             case PropType.Rug: Rug(kit, w, d, map.Interior == InteriorStyle.PokemonCenter); break;
             case PropType.Window: Window(kit, w); break;
             case PropType.Painting: kit.Card(3, 29, 32.5f, 40, 60, kit.Face("painting", 26, 20, PaintPainting)); break;
@@ -223,18 +226,19 @@ internal static class PropModels
         kit.Box(1, 31, 0, 14, 0, 52, top, front, side, side);
     }
 
-    private static void Table(KitBuilder kit, int w, bool home)
+    /// <summary>A table as wide as its tiles and as deep: one tile deep, or a square table of two by two.</summary>
+    private static void Table(KitBuilder kit, int w, int d, bool home)
     {
-        int tw = w - 6;
-        var top = kit.Face($"table.top.{tw}.{home}", tw, 22, c =>
+        int tw = w - 6, td = d - 10;
+        var top = kit.Face(td == 22 ? $"table.top.{tw}.{home}" : $"table.top.{tw}x{td}.{home}", tw, td, c =>
         {
             TopFace(c, WoodLight);
-            for (int y = 7; y < 20; y += 7) c.HLine(1, y, tw - 2, WoodLight.Dark);
+            for (int y = 7; y < td - 2; y += 7) c.HLine(1, y, tw - 2, WoodLight.Dark);
             if (home)
             {
                 // A lace runner down the middle
-                c.Rect(8, 5, tw - 16, 12, Rgb(250, 246, 236));
-                Pix.Border(c, 8, 5, tw - 16, 12, Rgb(226, 214, 196));
+                c.Rect(8, td / 2 - 6, tw - 16, 12, Rgb(250, 246, 236));
+                Pix.Border(c, 8, td / 2 - 6, tw - 16, 12, Rgb(226, 214, 196));
             }
             else
             {
@@ -249,12 +253,12 @@ internal static class PropModels
             }
         });
         var edge = kit.Face($"table.edge.{tw}", tw, 3, c => Edge(c, WoodLight));
-        var edgeSide = kit.Face("table.edge.side", 22, 3, c => Edge(c, Wood));
-        kit.Box(3, w - 3, 5, 27, 20, 23, top, edge, edgeSide, edgeSide);
+        var edgeSide = kit.Face(td == 22 ? "table.edge.side" : $"table.edge.side.{td}", td, 3, c => Edge(c, Wood));
+        kit.Box(3, w - 3, 5, d - 5, 20, 23, top, edge, edgeSide, edgeSide);
         foreach (int x in new[] { 5, w - 8 })
-            foreach (int z in new[] { 7, 22 })
+            foreach (int z in new[] { 7, d - 10 })
                 kit.Block("table.leg", WoodDark, x, x + 3, z, z + 3, 0, 20);
-        if (home) kit.Sprite(kit.Face("vase", 12, 16, PaintVase), w / 2f, 16, 23);
+        if (home) kit.Sprite(kit.Face("vase", 12, 16, PaintVase), w / 2f, d / 2f, 23);
     }
 
     private static void Chair(KitBuilder kit, Prop p, Map map)

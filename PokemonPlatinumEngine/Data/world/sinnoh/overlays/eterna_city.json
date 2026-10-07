@@ -5,15 +5,17 @@
   "architecture": "HalfTimber",
   "doors": [
     { "warp": 0, "map": "EternaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 1, "map": "EternaPokeMart", "x": 4, "y": 6, "facing": "Up" }
+    { "warp": 1, "map": "EternaPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    // The condominiums' ground floor, where a boy trades his Chatot for a Buizel (plan 06 · R12), built to the original's plan
+    { "warp": 4, "map": "EternaCondominiums1F", "x": 11, "y": 12, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
     { "warp": 8, "to": "route_206", "toWarp": 4, "bicycle": true },
     { "warp": 9, "to": "route_206", "toWarp": 5, "bicycle": true }
   ],
-  // The cycle shop, Team Galactic's building, the condominiums, the houses, the herb shop and the Gym have no rooms yet (plan 01 · M11, M9)
-  "locked": [ 2, 3, 4, 5, 6, 7, 10, 11 ],
+  // The cycle shop, Team Galactic's building, the houses, the herb shop and the Gym have no rooms yet (plan 01 · M11, M9)
+  "locked": [ 2, 3, 5, 6, 7, 10, 11 ],
   "people": {
     "pokemon_breeder_m": {
       "name": "Man",

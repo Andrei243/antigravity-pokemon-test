@@ -588,10 +588,11 @@ public sealed class WorldRenderer
             // that (a Gym) keeps the deepest room's distance and follows the player along its length (style guide,
             // "A room is seen whole; a hall is followed")
             var roomTarget = room.RoomCenter;
-            float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(map.Height, DeepestRoom) - 1) / 8f);
-            if (map.Height > DeepestRoom)
+            int depth = room.RoomDepth;
+            float distance = MapScene.IndoorDistance * Math.Max(1f, (Math.Min(depth, DeepestRoom) - 1) / 8f);
+            if (depth > DeepestRoom)
             {
-                float reach = (map.Height - DeepestRoom) / 2f;
+                float reach = (depth - DeepestRoom) / 2f;
                 roomTarget.Z = SnapToTexel(Math.Clamp(pz, roomTarget.Z - reach, roomTarget.Z + reach));
             }
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,

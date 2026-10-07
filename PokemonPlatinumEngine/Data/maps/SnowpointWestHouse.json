@@ -1,0 +1,112 @@
+{
+  "name": "SnowpointWestHouse",
+  "displayName": "Snowpoint City",
+  "bgmTrack": "sinnoh/snowpoint",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 353,
+      "targetY": 209,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_trainer_m",
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Some Pokémon only evolve when they change hands in a trade.",
+        "A new Trainer, a new home... I suppose a move like that changes anyone."
+      ]
+    },
+    {
+      "id": "mindy",
+      "name": "Mindy",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "script": "Gaspar"
+    }
+  ],
+  "wildEncounters": []
+}
