@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Data;
@@ -16,16 +17,32 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ PC boxes
 
+    private const float BoxCell = 116, BoxGap = 10;
+
     /// <summary>
-    /// The storage system in three columns: the party, the box (six slots by five under its name), and the
-    /// Pokémon under the cursor.
+    /// The storage system in three columns: the party, the box (its wallpaper, its name, six places by five), and
+    /// the Pokémon under the cursor or carried; over them the screen's menus and questions, and in place of it all
+    /// the keyboard while a box is being named.
     /// </summary>
     public static void DrawStorage(int sw, int sh, PCScreen pc, Party party, PcBoxes stored, float appear = 1f)
     {
+        var current = stored.Boxes[pc.Box];
+        if (pc.Naming is { } naming)
+        {
+            DrawBoxNaming(sw, sh, naming, current.Name, current.Wallpaper);
+            return;
+        }
+
         Backdrop(sw, sh);
         ScreenTitle("PC BOXES");
-        if (pc.Zone == StorageZone.BoxName) Hints(sw - Margin, 44, ("Left / Right", "Change box"), ("Esc", "Back"));
-        else Hints(sw - Margin, 44, ("Z", pc.Zone == StorageZone.Party ? "Deposit" : "Withdraw"), ("Esc", "Back"));
+        var under = pc.Under(party, stored);
+        if (pc.AskingRelease) Hints(sw - Margin, 44, ("Z", "Release"), ("Esc", "Keep it"));
+        else if (pc.Marking != null) Hints(sw - Margin, 44, ("Arrows", "Choose"), ("Z", "Mark"), ("Esc", "Back"));
+        else if (pc.Menu != null || pc.BoxMenu != null) Hints(sw - Margin, 44, ("Up / Down", "Choose"), ("Z", "Do it"), ("Esc", "Back"));
+        else if (pc.Held != null) Hints(sw - Margin, 44, ("Z", "Put down"), ("Esc", "Put back"));
+        else if (pc.Zone == StorageZone.BoxName) Hints(sw - Margin, 44, ("Left / Right", "Change box"), ("Z", "Box"), ("Esc", "Close"));
+        else if (under != null) Hints(sw - Margin, 44, ("Z", "Choose"), ("Esc", "Close"));
+        else Hints(sw - Margin, 44, ("Esc", "Close"));
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         float height = ContentBottom - ContentTop;
@@ -34,16 +51,17 @@ internal static partial class ModernUi
         var team = new Rectangle(Margin - slide, ContentTop, 500, height);
         Panel(team, 34);
         Label($"PARTY  {party.Count} / {Party.MaxSize}", team.X + 40, team.Y + 30);
+        Rectangle PartyCard(int i) => new(team.X + 20, team.Y + 66 + i * 136, team.Width - 40, 124);
         for (int i = 0; i < Party.MaxSize; i++)
         {
-            var r = new Rectangle(team.X + 20, team.Y + 66 + i * 136, team.Width - 40, 124);
+            var r = PartyCard(i);
+            bool selected = pc.Zone == StorageZone.Party && pc.PartyIndex == i;
             if (i >= party.Count)
             {
-                UiShapes.Shape(r, 26, SlotTop, SlotBottom, Rule, 3);
+                UiShapes.Shape(r, 26, SlotTop, SlotBottom, selected ? Selection : Rule, selected ? 5f : 3f);
                 continue;
             }
             var p = party.Members[i];
-            bool selected = pc.Zone == StorageZone.Party && pc.PartyIndex == i;
             Card(r, 26, selected);
             var c = new Vector2(r.X + 70, r.Y + r.Height / 2f);
             UiShapes.Circle(c, 50, Disc);
@@ -54,76 +72,267 @@ internal static partial class ModernUi
             HpBar(r.X + 136, r.Y + 78, r.Width - 136 - 28, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
         }
 
-        // ---- The box
+        // ---- The box: its wallpaper, its name over the places, which box it is, the places
         var box = new Rectangle(team.X + team.Width + Gutter + slide, ContentTop, 792, height);
         Panel(box, 34);
-        bool naming = pc.Zone == StorageZone.BoxName;
-        string name = stored.Boxes[pc.Box].Name.ToUpperInvariant();
+        // The lining is all translucent things over the wallpaper, which must stay as solid as it looks
+        BeginOpaque();
+        Wallpaper(new Rectangle(box.X + 12, box.Y + 12, box.Width - 24, box.Height - 24), current.Wallpaper);
+
+        bool onName = pc.Zone == StorageZone.BoxName;
+        string name = current.Name.ToUpperInvariant();
         float nameW = UiFonts.Measure(name, 44, UiWeight.Black);
-        var plate = new Rectangle(box.X + box.Width / 2f - 190, box.Y + 30, 380, 76);
-        if (naming)
+        var plate = new Rectangle(box.X + box.Width / 2f - 190, box.Y + 32, 380, 76);
+        if (onName)
         {
             UiShapes.Shadow(plate, 38, 18, new Vector2(0, 5), Selection with { A = 120 });
             UiShapes.Shape(plate, 38, Lighter(Selection, 0.14f), Darker(Selection, 0.06f), Darker(Selection, 0.3f), 3);
         }
-        else UiShapes.Shape(plate, 38, SlotTop, SlotBottom, Rule, 3);
-        UiFonts.DrawCentered(name, plate.X + (plate.Width - nameW) / 2f, plate.Y + plate.Height / 2f, 44, naming ? Color.White : Ink, UiWeight.Black);
-        var arrow = naming ? Selection : new Color(170, 180, 200, 255);
-        UiIcons.ArrowH(new Vector2(plate.X - 44, plate.Y + plate.Height / 2f), 22, -1, arrow);
-        UiIcons.ArrowH(new Vector2(plate.X + plate.Width + 44, plate.Y + plate.Height / 2f), 22, 1, arrow);
+        else
+        {
+            UiShapes.Shadow(plate, 38, 14, new Vector2(0, 5), ShadowColor);
+            UiShapes.Shape(plate, 38, SlotTop, SlotBottom, Rule, 3);
+        }
+        UiFonts.DrawCentered(name, plate.X + (plate.Width - nameW) / 2f, plate.Y + plate.Height / 2f, 44, onName ? Color.White : Ink, UiWeight.Black);
+        for (int side = -1; side <= 1; side += 2)
+        {
+            var at = new Vector2(side < 0 ? plate.X - 46 : plate.X + plate.Width + 46, plate.Y + plate.Height / 2f);
+            UiShapes.Circle(at, 28, new Color(255, 255, 255, 215));
+            UiIcons.ArrowH(at + new Vector2(side * 2, 0), 20, side, onName ? Selection : new Color(150, 162, 186, 255));
+        }
 
-        int inBox = stored.Boxes[pc.Box].Count;
-        string count = $"{inBox} / {PCScreen.BoxSize}";
-        UiFonts.DrawCentered(count, box.X + (box.Width - UiFonts.Measure(count, 24, UiWeight.Black)) / 2f, box.Y + 136, 24, Muted, UiWeight.Black);
+        // Eighteen dots: which box this is
+        const float dotStep = 20;
+        var dots = new Rectangle(box.X + box.Width / 2f - (dotStep * (PCScreen.BoxCount - 1)) / 2f - 18, plate.Y + plate.Height + 14, dotStep * (PCScreen.BoxCount - 1) + 36, 24);
+        UiShapes.Fill(dots, 12, new Color(255, 255, 255, 190));
+        for (int b = 0; b < PCScreen.BoxCount; b++)
+        {
+            var c = new Vector2(dots.X + 18 + b * dotStep, dots.Y + dots.Height / 2f);
+            if (b == pc.Box) UiShapes.Circle(c, 6.5f, Selection);
+            else UiShapes.Circle(c, 4.5f, new Color(Frame.R, Frame.G, Frame.B, (byte)110));
+        }
 
-        const float cell = 116, gap = 10;
-        float gridX = box.X + (box.Width - (cell * PCScreen.Columns + gap * (PCScreen.Columns - 1))) / 2f, gridY = box.Y + 176;
+        float gridX = box.X + (box.Width - (BoxCell * PCScreen.Columns + BoxGap * (PCScreen.Columns - 1))) / 2f, gridY = box.Y + 164;
+        Rectangle CellRect(int i) => new(gridX + i % PCScreen.Columns * (BoxCell + BoxGap), gridY + i / PCScreen.Columns * (BoxCell + BoxGap), BoxCell, BoxCell);
         for (int i = 0; i < PCScreen.BoxSize; i++)
         {
-            var r = new Rectangle(gridX + i % PCScreen.Columns * (cell + gap), gridY + i / PCScreen.Columns * (cell + gap), cell, cell);
+            var r = CellRect(i);
             bool selected = pc.Zone == StorageZone.Box && pc.Cell == i;
-            if (selected) UiShapes.Shadow(r, 24, 22, Vector2.Zero, Selection with { A = 190 });
-            UiShapes.Shape(r, 24, SlotTop, SlotBottom, selected ? Selection : Rule, selected ? 6f : 3f);
-            if (stored[pc.Box, i] is not { } p) continue;
-            PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), new Vector2(r.X + cell / 2f, r.Y + cell / 2f - 2), 2, Hop(selected) * 2);
+            if (selected)
+            {
+                UiShapes.Shadow(r, 24, 22, Vector2.Zero, Selection with { A = 190 });
+                UiShapes.Shape(r, 24, new Color(255, 255, 255, 170), new Color(255, 255, 255, 140), Selection, 6f);
+            }
+            else UiShapes.Shape(r, 24, new Color(255, 255, 255, 105), new Color(255, 255, 255, 80), new Color(255, 255, 255, 160), 3f);
+            if (current.Slots[i] is not { } p) continue;
+            bool lifted = selected && pc.Held != null;
+            PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), new Vector2(r.X + BoxCell / 2f, r.Y + BoxCell / 2f - 2), 2,
+                lifted ? 0 : Hop(selected) * 2, lifted ? new Color(255, 255, 255, 150) : null);
         }
 
-        // ---- The Pokémon under the cursor
+        // How many it holds and its wallpaper, under the places
+        float tagY = gridY + PCScreen.Rows * (BoxCell + BoxGap) + 12;
+        var tagInk = Frame with { A = 225 };
+        Tag(gridX, tagY, $"{current.Count} / {PCScreen.BoxSize}", tagInk, 44);
+        string paper = PcBoxes.WallpaperNames[Math.Clamp(current.Wallpaper, 0, PcBoxes.WallpaperNames.Count - 1)].ToUpperInvariant();
+        float paperW = UiFonts.Measure(paper, 44 * 0.58f, UiWeight.Black) + 44 * 0.9f;
+        float gridRight = gridX + BoxCell * PCScreen.Columns + BoxGap * (PCScreen.Columns - 1);
+        Tag(gridRight - paperW, tagY, paper, tagInk, 44);
+        EndOpaque();
+
+        // ---- The Pokémon under the cursor, or the one carried
         var detail = new Rectangle(box.X + box.Width + Gutter + slide, ContentTop, sw - Margin - (box.X + box.Width + Gutter + slide), height);
         Panel(detail, 34);
-        if (pc.Under(party, stored) is not { } shown)
+        if ((pc.Held ?? under) is { } shown) StoredPokemon(detail, shown);
+        else
         {
-            string note = naming ? "Left and right change box." : "An empty slot.";
+            string note = onName ? "Left and right change box." : "An empty place.";
             UiFonts.DrawCentered(note, detail.X + (detail.Width - UiFonts.Measure(note, 26, UiWeight.ExtraBold)) / 2f, detail.Y + detail.Height / 2f, 26, Muted, UiWeight.ExtraBold);
-            return;
         }
 
-        var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 40 + 150);
-        BallDisc(disc, 150);
-        PixelArt(PixelArtGenerator.GetPokemonSprite(shown.ModelName, isBack: false), disc, 2);
-        float x = detail.X + 36, y = detail.Y + 376;
-        NameWithGender(shown, x, y, 40);
-        Level(detail.X + detail.Width - 36, y, shown.Level, 34);
-        float tx = TypePills(x, y + 36, shown, 36);
-        StatusPill(tx + 2, y + 36, shown.IsFainted ? StatusCondition.Faint : shown.Status, 36);
-        HpBar(x, y + 96, detail.Width - 72, 22, (float)shown.CurrentHP / Math.Max(1, shown.MaxHP));
-        string hp = $"{shown.CurrentHP} / {shown.MaxHP}";
-        UiFonts.DrawCentered(hp, detail.X + detail.Width - 36 - UiFonts.Measure(hp, 26, UiWeight.Black), y + 142, 26, Ink, UiWeight.Black);
-        UiFonts.DrawCentered(shown.Nature.ToString(), x, y + 142, 26, Muted, UiWeight.ExtraBold);
+        // ---- Where the cursor is, for whatever goes with it
+        Rectangle cursor = pc.Zone switch
+        {
+            StorageZone.Party => PartyCard(Math.Clamp(pc.PartyIndex, 0, Party.MaxSize - 1)),
+            StorageZone.Box => CellRect(pc.Cell),
+            _ => plate
+        };
 
-        UiShapes.Fill(new Rectangle(x, y + 176, detail.Width - 72, 3), 1.5f, Rule);
-        Label("MOVES", x, y + 196);
+        // The Pokémon carried, lifted over the place under the cursor
+        if (pc.Held is { } held)
+        {
+            var spot = pc.Zone switch
+            {
+                StorageZone.Party => new Vector2(cursor.X + 70, cursor.Y + cursor.Height / 2f),
+                StorageZone.Box => new Vector2(cursor.X + cursor.Width / 2f, cursor.Y + cursor.Height / 2f),
+                _ => new Vector2(plate.X + plate.Width / 2f, plate.Y + plate.Height + 40)
+            };
+            BeginOpaque();
+            UiShapes.Glow(spot + new Vector2(0, 30), 38, 11, new Color(10, 16, 40, 110));
+            PixelArt(PixelArtGenerator.GetPokemonIcon(held.ModelName), spot - new Vector2(0, 46), 2, Hop(false) * 2);
+            EndOpaque();
+        }
+
+        // ---- The menus, beside the cursor on the side with more room
+        float Beside(float width) => pc.Zone == StorageZone.Party || (pc.Zone == StorageZone.Box && pc.Cell % PCScreen.Columns < PCScreen.Columns / 2)
+            ? cursor.X + cursor.Width + 16
+            : cursor.X - 16 - width;
+        float Within(float y, float h) => Math.Clamp(y, ContentTop, ContentBottom - h);
+
+        if (pc.Menu is { } menu)
+        {
+            var rows = new List<string>();
+            foreach (var action in menu) rows.Add(PcActionLabel(action));
+            MenuPanel(Beside(340), Within(cursor.Y - 8, MenuPanelHeight(rows.Count)), rows, pc.MenuIndex);
+        }
+        else if (pc.BoxMenu is { } boxMenu)
+        {
+            var rows = new List<string>();
+            foreach (var action in boxMenu) rows.Add(action switch { PcBoxAction.Name => "NAME", PcBoxAction.Wallpaper => "WALLPAPER", _ => "CANCEL" });
+            MenuPanel(plate.X + plate.Width / 2f - 170, plate.Y + plate.Height + 16, rows, pc.MenuIndex);
+        }
+        else if (pc.Marking is { } marks)
+        {
+            float width = MarksPanelWidth;
+            MarksPanel(new Vector2(Beside(width), Within(cursor.Y - 8, MarksPanelHeight)), marks, pc.MarkIndex);
+        }
+
+        if (pc.AskingRelease && under != null)
+            Prompt(sw, sh, $"Release {under.DisplayName}?", "Once it goes back to the wild, it won't come back to you.",
+                new[] { ("RELEASE  (Z)", Red), ("KEEP IT  (ESC)", Blue) }, -1);
+    }
+
+    private static string PcActionLabel(PcAction action) => action switch
+    {
+        PcAction.Move => "MOVE",
+        PcAction.Withdraw => "WITHDRAW",
+        PcAction.Store => "STORE",
+        PcAction.Mark => "MARK",
+        PcAction.Release => "RELEASE",
+        _ => "CANCEL"
+    };
+
+    /// <summary>
+    /// A stored Pokémon told in the detail column: its sprite on a disc, its marks, name, level, types and condition,
+    /// HP and nature, moves, where and when it was met, and what it holds.
+    /// </summary>
+    private static void StoredPokemon(Rectangle detail, Pokemon shown)
+    {
+        var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 24 + 112);
+        BallDisc(disc, 112);
+        PixelArt(PixelArtGenerator.GetPokemonSprite(shown.ModelName, isBack: false), disc, 2);
+
+        // The six marks, the ones set in Ink
+        const float markStep = 42;
+        for (int m = 0; m < MarkNames.Length; m++)
+        {
+            bool set = (shown.Marks & (1 << m)) != 0;
+            MarkShape(new Vector2(detail.X + detail.Width / 2f + (m - 2.5f) * markStep, detail.Y + 268), 24, m, set ? Ink : Rule);
+        }
+
+        float x = detail.X + 36, y = detail.Y;
+        float wide = detail.Width - 72;
+        NameWithGender(shown, x, y + 318, 38);
+        Level(detail.X + detail.Width - 36, y + 318, shown.Level, 32);
+        float tx = TypePills(x, y + 344, shown, 34);
+        StatusPill(tx + 2, y + 344, shown.IsFainted ? StatusCondition.Faint : shown.Status, 34);
+        HpBar(x, y + 394, wide, 22, (float)shown.CurrentHP / Math.Max(1, shown.MaxHP));
+        string hp = $"{shown.CurrentHP} / {shown.MaxHP}";
+        UiFonts.DrawCentered(hp, detail.X + detail.Width - 36 - UiFonts.Measure(hp, 26, UiWeight.Black), y + 442, 26, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(shown.Nature.ToString(), x, y + 442, 26, Muted, UiWeight.ExtraBold);
+
+        UiShapes.Fill(new Rectangle(x, y + 470, wide, 3), 1.5f, Rule);
+        Label("MOVES", x, y + 486);
         for (int i = 0; i < shown.Moves.Count && i < 4; i++)
         {
-            float my = y + 244 + i * 46;
-            UiShapes.Circle(new Vector2(x + 10, my), 10, Palette.GetTypeColor(shown.Moves[i].Type.ToString()));
-            UiFonts.DrawCentered(shown.Moves[i].Name, x + 34, my, 28, Ink, UiWeight.ExtraBold);
+            float my = y + 530 + i * 40;
+            UiShapes.Circle(new Vector2(x + 10, my), 9, Palette.GetTypeColor(shown.Moves[i].Type.ToString()));
+            UiFonts.DrawCentered(shown.Moves[i].Name, x + 32, my, 26, Ink, UiWeight.ExtraBold);
         }
-        if (shown.HeldItem is { } held)
+
+        if (shown.MetLocation != null || shown.HeldItem != null) UiShapes.Fill(new Rectangle(x, y + 680, wide, 3), 1.5f, Rule);
+        if (shown.MetLocation is { } place)
         {
-            Label("HOLDING", x, y + 436);
-            UiFonts.Draw(held.Name, x, y + 460, 28, Ink, UiWeight.ExtraBold);
+            Label(shown.MetDate is { } day ? $"MET  {day.ToString("d MMM yyyy", CultureInfo.InvariantCulture).ToUpperInvariant()}" : "MET", x, y + 696);
+            var lines = Wrap($"Met in {place} at Lv. {shown.MetLevel}.", wide, 26, UiWeight.ExtraBold);
+            for (int i = 0; i < lines.Count && i < 2; i++) UiFonts.Draw(lines[i], x, y + 722 + i * 34, 26, Ink, UiWeight.ExtraBold);
         }
+        if (shown.HeldItem is { } item)
+        {
+            Label("HOLDING", x, y + 806);
+            UiFonts.Draw(item.Name, x, y + 830, 28, Ink, UiWeight.ExtraBold);
+        }
+    }
+
+    private const float MarkKey = 72, MarkGap = 12, MarksPanelWidth = 24 * 2 + MarkKey * 6 + MarkGap * 5, MarksPanelHeight = 24 + 40 + MarkKey + 16 + 62 + 22;
+
+    /// <summary>The marks being chosen: the six on keys, those set tinted, the one under the cursor ringed, then OK.</summary>
+    private static void MarksPanel(Vector2 at, Markings marks, int cursor)
+    {
+        var panel = new Rectangle(at.X, at.Y, MarksPanelWidth, MarksPanelHeight);
+        Panel(panel, 30);
+        UiFonts.DrawCentered("MARKS", panel.X + 28, panel.Y + 40, 26, Ink, UiWeight.Black);
+        int count = 0;
+        for (int m = 0; m < MarkNames.Length; m++) if (((int)marks & (1 << m)) != 0) count++;
+        string set = count == 0 ? "None set" : $"{count} set";
+        UiFonts.DrawCentered(set, panel.X + panel.Width - 28 - UiFonts.Measure(set, 22, UiWeight.ExtraBold), panel.Y + 40, 22, Muted, UiWeight.ExtraBold);
+
+        for (int m = 0; m < MarkNames.Length; m++)
+        {
+            var key = new Rectangle(panel.X + 24 + m * (MarkKey + MarkGap), panel.Y + 64, MarkKey, MarkKey);
+            var ring = new Rectangle(key.X - 6, key.Y - 6, key.Width + 12, key.Height + 12);
+            if (cursor == m) UiShapes.Shadow(ring, 26, 14, Vector2.Zero, Selection with { A = 110 });
+            bool on = ((int)marks & (1 << m)) != 0;
+            if (on) UiShapes.Shape(key, 20, Lighter(Selection, 0.74f), Lighter(Selection, 0.62f), Lighter(Selection, 0.3f), 3);
+            else UiShapes.Shape(key, 20, SlotTop, SlotBottom, Rule, 3);
+            MarkShape(new Vector2(key.X + MarkKey / 2f, key.Y + MarkKey / 2f), 36, m, on ? Ink : new Color(186, 194, 212, 255));
+            if (cursor == m) UiShapes.Shape(ring, 26, Selection with { A = 0 }, Selection with { A = 0 }, Selection, 5);
+        }
+
+        var ok = new Rectangle(panel.X + 14, panel.Y + 64 + MarkKey + 16, panel.Width - 28, 62);
+        float okW = UiFonts.Measure("OK", 32, UiWeight.Black);
+        ListRow(ok, cursor >= MarkNames.Length, "OK", nameX: (ok.Width - okW) / 2f, size: 32);
+    }
+
+    /// <summary>The keyboard for a box's name, with the box's wallpaper and name on the left where a portrait would be.</summary>
+    private static void DrawBoxNaming(int sw, int sh, NameEntry entry, string boxName, int wallpaper)
+    {
+        Backdrop(sw, sh);
+        ScreenTitle("BOX NAME");
+        Hints(sw - Margin, 44, ("Z", "Pick"), ("X", "Delete"), ("Enter", "To OK"));
+
+        var who = new Rectangle(Margin, ContentTop, 500, ContentBottom - ContentTop);
+        Panel(who, 34);
+        var plate = new Rectangle(who.X + 50, who.Y + 50, who.Width - 100, 470);
+        UiShapes.Shape(plate, 30, Disc, Disc, Rule, 4);
+        float paperH = plate.Height - 20, paperW = paperH * BoxWallpapers.Width / BoxWallpapers.Height;
+        Wallpaper(new Rectangle(plate.X + (plate.Width - paperW) / 2f, plate.Y + 10, paperW, paperH), wallpaper);
+        string shown = boxName.ToUpperInvariant();
+        var tag = new Rectangle(plate.X + 40, plate.Y + 34, plate.Width - 80, 64);
+        UiShapes.Shadow(tag, 32, 12, new Vector2(0, 4), ShadowColor);
+        UiShapes.Shape(tag, 32, SlotTop, SlotBottom, Rule, 3);
+        UiFonts.DrawCentered(shown, tag.X + (tag.Width - UiFonts.Measure(shown, 34, UiWeight.Black)) / 2f, tag.Y + tag.Height / 2f, 34, Ink, UiWeight.Black);
+        DrawWrapped($"Eight letters at most. Leave it empty to keep the name {boxName}.", who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
+            28, Muted, 40, UiWeight.ExtraBold);
+
+        NameBoard(new Rectangle(who.X + who.Width + Gutter, ContentTop, sw - Margin - (who.X + who.Width + Gutter), ContentBottom - ContentTop), entry);
+    }
+
+    // ------------------------------------------------------------------ wallpapers
+
+    private static readonly Dictionary<int, Texture2D> wallpapers = new();
+
+    /// <summary>A box's wallpaper over a rectangle (painted the first time it is shown, then kept), smoothed.</summary>
+    public static void Wallpaper(Rectangle r, int index)
+    {
+        index = Math.Clamp(index, 0, PcBoxes.WallpaperNames.Count - 1);
+        if (!wallpapers.TryGetValue(index, out var texture))
+        {
+            texture = BoxWallpapers.Paint(index).ToTexture();
+            Raylib.SetTextureFilter(texture, TextureFilter.Bilinear);
+            wallpapers[index] = texture;
+        }
+        Raylib.DrawTexturePro(texture, new Rectangle(0, 0, texture.Width, texture.Height), r, Vector2.Zero, 0f, Color.White);
     }
 
     // ------------------------------------------------------------------ the choice of a partner

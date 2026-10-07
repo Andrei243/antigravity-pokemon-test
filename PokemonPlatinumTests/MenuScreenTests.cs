@@ -1068,6 +1068,83 @@ public class MenuScreenTests
         Assert.Equal(1, back.Count);
     }
 
+    /// <summary>
+    /// Style guide, "Box wallpapers": the twenty-four are painted in code, the same every time, each its own, and quiet
+    /// enough for the icons to read on them: no pixel darker than 0.4 in lightness, none more than 0.36 from the rest.
+    /// </summary>
+    [Fact]
+    public void EveryWallpaperIsItsOwnAndQuietEnoughForTheIcons()
+    {
+        static Color[] Pixels(PixelCanvas canvas)
+        {
+            var pixels = new Color[canvas.Width * canvas.Height];
+            for (int y = 0; y < canvas.Height; y++)
+                for (int x = 0; x < canvas.Width; x++) pixels[y * canvas.Width + x] = canvas.Get(x, y);
+            return pixels;
+        }
+
+        Assert.Equal(24, PcBoxes.WallpaperNames.Count);
+        var painted = new List<Color[]>();
+        for (int i = 0; i < PcBoxes.WallpaperNames.Count; i++)
+        {
+            var pixels = Pixels(BoxWallpapers.Paint(i));
+            Assert.Equal(pixels, Pixels(BoxWallpapers.Paint(i)));
+
+            double darkest = 1, lightest = 0;
+            foreach (var c in pixels)
+            {
+                if (c.A < 255) continue;
+                double lightness = (0.2126 * c.R + 0.7152 * c.G + 0.0722 * c.B) / 255;
+                darkest = Math.Min(darkest, lightness);
+                lightest = Math.Max(lightest, lightness);
+            }
+            string name = PcBoxes.WallpaperNames[i];
+            Assert.True(darkest >= 0.4, $"{name} is too dark ({darkest:F3})");
+            Assert.True(lightest - darkest <= 0.36, $"{name} is too loud ({darkest:F3} to {lightest:F3})");
+
+            // Its own: most of it differs from every other
+            foreach (var other in painted)
+            {
+                int differ = 0;
+                for (int p = 0; p < pixels.Length; p++)
+                    if (Math.Abs(pixels[p].R - other[p].R) + Math.Abs(pixels[p].G - other[p].G) + Math.Abs(pixels[p].B - other[p].B) > 12) differ++;
+                Assert.True(differ > pixels.Length / 4, $"{name} looks like an earlier wallpaper");
+            }
+            painted.Add(pixels);
+
+            // The corners are rounded off: the lining's corner is clear, its middle whole
+            Assert.Equal(0, pixels[0].A);
+            Assert.Equal(255, pixels[pixels.Length / 2].A);
+        }
+    }
+
+    [Fact]
+    public void EachColourOfTheTrainerCardIsItsOwnAndTheMarksAreSix()
+    {
+        // Style guide, "Trainer Card": slate without a Pokédex, then teal, cobalt, bronze, silver, gold and black
+        var colours = Enum.GetValues<TrainerCardRules.CardColour>().Select(ModernUi.CardColor).ToList();
+        Assert.Equal(7, colours.Count);
+        Assert.Equal(colours.Count, colours.Distinct().Count());
+
+        // The marks the PC draws are the six the boxes keep, in their order
+        Assert.Equal(Enum.GetValues<Markings>().Length - 1, ModernUi.MarkNames.Length);
+        for (int m = 0; m < ModernUi.MarkNames.Length; m++) Assert.Equal(ModernUi.MarkNames[m], ((Markings)(1 << m)).ToString());
+    }
+
+    [Fact]
+    public void TheTrainerCardTurnsOverAndOpensOnItsFront()
+    {
+        var card = new TrainerCardScreen();
+        card.Open();
+        Assert.False(card.ShowingBack);
+        card.Flip();
+        Assert.True(card.ShowingBack);
+        // Opened again, it shows its front
+        card.Close();
+        card.Open();
+        Assert.False(card.ShowingBack);
+    }
+
     // ------------------------------------------------------------------ the choice of a partner
 
     [Fact]

@@ -1213,7 +1213,25 @@ if (Run("menus"))
     var handle = T.GetMethod("HandleStartMenuChoice", Private) ?? T.GetMethod("HandleStartMenu", Private);
     handle!.Invoke(engine, new object[] { StartMenuChoice.Trainer });
     Frames(40); Shot("28_trainer_card");
-    ((TrainerCardScreen)Get("trainerCardScreen")).Close();
+    // Turned over (plan 06 · R12): halfway, then its back
+    var trainerCard = (TrainerCardScreen)Get("trainerCardScreen");
+    trainerCard.Flip();
+    Frames(6); Shot("28a_trainer_card_turning");
+    Frames(30); Shot("28b_trainer_card_back");
+    trainerCard.Close();
+    // Another colour: a team in the Hall of Fame is the first star (cobalt), with a score and a debut on the back
+    var scoreBefore = Get("trainerScore");
+    var fameBefore = Get("hallOfFame");
+    var fame = new HallOfFame();
+    fame.Enter(party, p => ("Lucas", 12345), new DateTime(2026, 10, 7, 14, 32, 0));
+    Set("hallOfFame", fame);
+    Set("trainerScore", 2468);
+    handle.Invoke(engine, new object[] { StartMenuChoice.Trainer });
+    Frames(40); Shot("28c_trainer_card_cobalt");
+    trainerCard.Flip();
+    Frames(30); Shot("28d_trainer_card_cobalt_back");
+    trainerCard.Close();
+    Set("trainerScore", scoreBefore);
     ((StoryState)Get("story")).SetBadges(0);
 
     // Saving: the question over the field, and the moment after
@@ -1261,8 +1279,112 @@ if (Run("menus"))
     Frames(4); Shot("30b_pc_in_the_box");
     pc.Move(0, -1, party.Count); pc.Move(0, -1, party.Count);
     Frames(4); Shot("30c_pc_box_name");
+    // Plan 06 · R12: the box's own menu, two of its wallpapers, a Pokémon's menu, one carried, its marks and where
+    // it was met, the question before a release, and the box's name typed anew
+    var bidoof = boxed[0, 1]!;
+    bidoof.Met("Route 201", new DateTime(2026, 6, 1));
+    bidoof.HeldItem = ItemDatabase.Get("Oran Berry");
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30d_pc_box_menu");
+    pc.MenuIndex = 1;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30e_pc_wallpaper_city");
+    boxed.UnlockedWallpapers = 0xFF;
+    boxed.Boxes[0].Wallpaper = PcBoxes.WallpaperNames.Count - 1;
+    pc.Move(0, 1, party.Count);
+    Frames(4); Shot("30f_pc_wallpaper_galactic");
+    boxed.Boxes[0].Wallpaper = 0;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30g_pc_menu");
+    pc.Choose(PcAction.Move, party, boxed, engine.ShowNotification);
+    pc.Move(0, 1, party.Count); pc.Move(0, 1, party.Count);
+    Frames(4); Shot("30h_pc_carrying");
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Choose(PcAction.Mark, party, boxed, engine.ShowNotification);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    for (int i = 0; i < 3; i++) pc.Move(1, 0, party.Count);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Move(1, 0, party.Count);
+    Frames(4); Shot("30i_pc_marks");
+    pc.MarkIndex = 6;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    Frames(4); Shot("30j_pc_marked");
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.Choose(PcAction.Release, party, boxed, engine.ShowNotification);
+    Frames(20); Shot("30k_pc_release");
+    pc.Cancel(party, boxed);
+    for (int i = 0; i < 3; i++) pc.Move(0, -1, party.Count);
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    pc.MenuIndex = 0;
+    pc.Confirm(party, boxed, engine.ShowNotification);
+    var naming = pc.Naming!;
+    while (naming.Backspace()) { }
+    foreach (char c in "Fav") naming.Type(c);
+    naming.Move(3, 1);
+    Frames(4); Shot("30l_pc_naming");
+    naming.Type('s');
+    pc.FinishNaming(boxed, naming.Result(boxed.Boxes[0].Name));
+    Frames(4); Shot("30m_pc_named");
     pc.Close();
     Set("pcBoxStorage", new PcBoxes());
+
+    // The PC's Hall of Fame (plan 06 · R12): two teams, the newest first; a Pokémon of it, its moves, the older team
+    var champions = new Party();
+    foreach (var (species, level, nickname) in new[]
+             {
+                 ("Torterra", 52, "Bramble"), ("Staraptor", 50, ""), ("Luxray", 49, "Volt"), ("Gastrodon", 48, ""), ("Lucario", 51, ""),
+                 ("Garchomp", 54, "")
+             })
+    {
+        var member = new Pokemon(PokemonDatabase.Get(species)!, level);
+        if (nickname.Length > 0) member.Nickname = nickname;
+        champions.Add(member);
+    }
+    champions.Members[4].IsShiny = true;
+    fame.Enter(champions, p => ("Lucas", 12345), new DateTime(2026, 10, 21));
+    var famous = typeof(GameEngine).Assembly.GetType("PokemonPlatinumEngine.Graphics.PokemonSprites")!;
+    foreach (var member in champions.Members.Concat(party.Members)) famous.GetMethod("Request")!.Invoke(null, new object[] { member.ModelName });
+    famous.GetMethod("Flush")!.Invoke(null, new[] { Get("renderContext") });
+    var hallOfFame = (HallOfFameScreen)Get("hallOfFameScreen");
+    Set("currentState", GameState.HallOfFame);
+    hallOfFame.Open();
+    Frames(30); Shot("30n_hall_of_fame");
+    hallOfFame.Move(0, 1, fame); hallOfFame.Move(0, 1, fame); hallOfFame.Move(0, 1, fame); hallOfFame.Move(0, 1, fame);
+    Frames(4); Shot("30o_hall_of_fame_shiny");
+    hallOfFame.Turn();
+    Frames(4); Shot("30p_hall_of_fame_moves");
+    hallOfFame.Move(1, 0, fame);
+    hallOfFame.Turn();
+    Frames(4); Shot("30q_hall_of_fame_first_team");
+    hallOfFame.Close();
+    Set("hallOfFame", fameBefore);
+
+    // The Journal (plan 06 · R12): two days, the newest first, with a Pokémon caught and a trainer beaten
+    var journalBefore = Get("journal");
+    var journal = new Journal();
+    journal.TakenUp(new DateTime(2026, 6, 1), "Twinleaf Town");
+    journal.Tell(new JournalEvent(JournalEventKind.LeftResearchLab));
+    journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, "Sandgem Town"));
+    journal.BeatTrainer("Youngster Tristan", "Route 202");
+    journal.TakenUp(new DateTime(2026, 6, 3), "Jubilife City");
+    journal.Tell(new JournalEvent(JournalEventKind.ShoppedAtMart));
+    journal.Tell(new JournalEvent(JournalEventKind.ItemWasObtained, "the Pokétch"));
+    journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, "Oreburgh City"));
+    journal.Caught("Starly", "Route 203");
+    journal.BeatTrainer("Rival " + PlayerIdentity.RivalName, "Route 203");
+    famous.GetMethod("Request")!.Invoke(null, new object[] { "Starly" });
+    famous.GetMethod("Flush")!.Invoke(null, new[] { Get("renderContext") });
+    Set("journal", journal);
+    Set("currentState", GameState.Journal);
+    var journalScreen = (JournalScreen)Get("journalScreen");
+    journalScreen.Open();
+    Frames(30); Shot("22j_journal");
+    journalScreen.Turn(1, journal);
+    Frames(4); Shot("22k_journal_older");
+    journalScreen.Close();
+    Set("journal", journalBefore);
+    Set("currentState", GameState.Overworld);
 
     // The battle's panels for switching and for the bag
     var mb = StartBattle("Shinx", 5);
