@@ -936,4 +936,12 @@ internal static partial class PokemonModels
     private static PokeBuilder NecrozmaUltra() => NecrozmaBuild(true);
 
     private static PokeBuilder MagearnaOriginal() => MagearnaBuild(true, false);
+
+    // ------------------------------------------------------------------ Cramorant's catches and the Low Key Toxtricity (their builds in PokemonModels.Galar2.cs)
+
+    private static PokeBuilder CramorantGulping() => CramorantBuild(1);
+
+    private static PokeBuilder CramorantGorging() => CramorantBuild(2);
+
+    private static PokeBuilder ToxtricityLowKey() => ToxtricityBuild(true, false);
 }

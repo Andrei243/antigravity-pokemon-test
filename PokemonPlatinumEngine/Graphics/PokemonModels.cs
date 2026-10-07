@@ -632,7 +632,11 @@ internal static partial class PokemonModels
         "Heatran", "Regigigas", "Cresselia", "Phione", "Darkrai", "Shaymin", "Arceus",
         // Galar's first batch, Grookey to Eldegoss
         "Grookey", "Thwackey", "Rillaboom", "Scorbunny", "Raboot", "Cinderace", "Sobble", "Drizzile", "Inteleon", "Skwovet", "Greedent",
-        "Rookidee", "Corvisquire", "Corviknight", "Blipbug", "Dottler", "Orbeetle", "Nickit", "Thievul", "Gossifleur", "Eldegoss"
+        "Rookidee", "Corvisquire", "Corviknight", "Blipbug", "Dottler", "Orbeetle", "Nickit", "Thievul", "Gossifleur", "Eldegoss",
+        // Galar's second batch, Wooloo to Polteageist
+        "Wooloo", "Dubwool", "Chewtle", "Drednaw", "Yamper", "Boltund", "Rolycoly", "Carkol", "Coalossal", "Applin", "Flapple", "Appletun",
+        "Silicobra", "Sandaconda", "Cramorant", "Arrokuda", "Barraskewda", "Toxel", "Toxtricity", "Sizzlipede", "Centiskorch", "Clobbopus",
+        "Grapploct", "Sinistea", "Polteageist"
     };
 
     /// <summary>
@@ -677,6 +681,7 @@ internal static partial class PokemonModels
         "Decidueye-Hisui", "Oricorio-Pom-Pom", "Oricorio-Pau", "Oricorio-Sensu", "Lycanroc-Midnight", "Lycanroc-Dusk",
         "Wishiwashi-School", "Silvally-Fighting", "Silvally-Flying", "Silvally-Poison", "Silvally-Ground", "Silvally-Rock", "Silvally-Bug", "Silvally-Ghost", "Silvally-Steel", "Silvally-Fire", "Silvally-Water", "Silvally-Grass", "Silvally-Electric", "Silvally-Psychic", "Silvally-Ice", "Silvally-Dragon", "Silvally-Dark", "Silvally-Fairy", "Minior-Red", "Minior-Orange", "Minior-Yellow", "Minior-Green", "Minior-Blue", "Minior-Indigo", "Minior-Violet", "Mimikyu-Busted",
         "Necrozma-Dusk", "Necrozma-Dawn", "Necrozma-Ultra", "Magearna-Original",
+        "Cramorant-Gulping", "Cramorant-Gorging", "Toxtricity-Low-Key",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -689,20 +694,24 @@ internal static partial class PokemonModels
         "Zeraora-Mega",
         "Venusaur-Gmax", "Charizard-Gmax", "Blastoise-Gmax", "Butterfree-Gmax",
         "Pikachu-Gmax", "Meowth-Gmax", "Machamp-Gmax", "Gengar-Gmax", "Kingler-Gmax", "Lapras-Gmax", "Eevee-Gmax", "Snorlax-Gmax", "Garbodor-Gmax",
-        "Melmetal-Gmax", "Rillaboom-Gmax", "Cinderace-Gmax", "Inteleon-Gmax", "Corviknight-Gmax", "Orbeetle-Gmax",
+        "Melmetal-Gmax", "Rillaboom-Gmax", "Cinderace-Gmax", "Inteleon-Gmax", "Corviknight-Gmax", "Orbeetle-Gmax", "Drednaw-Gmax", "Coalossal-Gmax",
+        "Flapple-Gmax", "Sandaconda-Gmax", "Toxtricity-Amped-Gmax", "Centiskorch-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
         "Pikachu-Cosplay", "Pichu-Spiky-Eared"
     };
 
     /// <summary>
-    /// Forms that look just like another form of their species rather than like the species itself, and show that
-    /// form's sculpt: Zygarde's 10% Forme with Power Construct is the 10% Forme to look at (with Power Construct, the
-    /// 50% Forme is the species, so it needs no entry).
+    /// Forms that look just like another form rather than like their species itself, and show that form's sculpt:
+    /// Zygarde's 10% Forme with Power Construct is the 10% Forme to look at (with Power Construct, the 50% Forme is the
+    /// species, so it needs no entry); the Gigantamax Appletun is the same great apple as the Gigantamax Flapple, and
+    /// the Low Key Toxtricity's Gigantamax form the same as the Amped one's.
     /// </summary>
     internal static readonly Dictionary<string, string> LooksLike = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["Zygarde-10-Power-Construct"] = "Zygarde-10"
+        ["Zygarde-10-Power-Construct"] = "Zygarde-10",
+        ["Appletun-Gmax"] = "Flapple-Gmax",
+        ["Toxtricity-Low-Key-Gmax"] = "Toxtricity-Amped-Gmax"
     };
 
     /// <summary>Pikachu's caps and costumes among <see cref="Forms"/>, in capitals as the sculptor is asked for them.</summary>
@@ -1629,6 +1638,31 @@ internal static partial class PokemonModels
         "THIEVUL" => Thievul(),
         "GOSSIFLEUR" => Gossifleur(),
         "ELDEGOSS" => Eldegoss(),
+        "WOOLOO" => Wooloo(),
+        "DUBWOOL" => Dubwool(),
+        "CHEWTLE" => Chewtle(),
+        "DREDNAW" => Drednaw(),
+        "YAMPER" => Yamper(),
+        "BOLTUND" => Boltund(),
+        "ROLYCOLY" => Rolycoly(),
+        "CARKOL" => Carkol(),
+        "COALOSSAL" => Coalossal(),
+        "APPLIN" => Applin(),
+        "FLAPPLE" => Flapple(),
+        "APPLETUN" => Appletun(),
+        "SILICOBRA" => Silicobra(),
+        "SANDACONDA" => Sandaconda(),
+        "CRAMORANT" => Cramorant(),
+        "ARROKUDA" => Arrokuda(),
+        "BARRASKEWDA" => Barraskewda(),
+        "TOXEL" => Toxel(),
+        "TOXTRICITY" => Toxtricity(),
+        "SIZZLIPEDE" => Sizzlipede(),
+        "CENTISKORCH" => Centiskorch(),
+        "CLOBBOPUS" => Clobbopus(),
+        "GRAPPLOCT" => Grapploct(),
+        "SINISTEA" => Sinistea(),
+        "POLTEAGEIST" => Polteageist(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -1778,6 +1812,9 @@ internal static partial class PokemonModels
         "NECROZMA-DAWN" => NecrozmaDawn(),
         "NECROZMA-ULTRA" => NecrozmaUltra(),
         "MAGEARNA-ORIGINAL" => MagearnaOriginal(),
+        "CRAMORANT-GULPING" => CramorantGulping(),
+        "CRAMORANT-GORGING" => CramorantGorging(),
+        "TOXTRICITY-LOW-KEY" => ToxtricityLowKey(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
@@ -1891,6 +1928,12 @@ internal static partial class PokemonModels
         "INTELEON-GMAX" => InteleonGmax(),
         "CORVIKNIGHT-GMAX" => CorviknightGmax(),
         "ORBEETLE-GMAX" => OrbeetleGmax(),
+        "DREDNAW-GMAX" => DrednawGmax(),
+        "COALOSSAL-GMAX" => CoalossalGmax(),
+        "FLAPPLE-GMAX" => FlappleGmax(),
+        "SANDACONDA-GMAX" => SandacondaGmax(),
+        "TOXTRICITY-AMPED-GMAX" => ToxtricityAmpedGmax(),
+        "CENTISKORCH-GMAX" => CentiskorchGmax(),
         "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A form that looks just like another form of its species shows that form's sculpt

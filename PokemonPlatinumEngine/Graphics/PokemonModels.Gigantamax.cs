@@ -517,4 +517,18 @@ internal static partial class PokemonModels
     private static PokeBuilder CorviknightGmax() => CorviknightBuild(true);
 
     private static PokeBuilder OrbeetleGmax() => OrbeetleBuild(true);
+
+    // ------------------------------------------------------------------ Galar's second batch's: Drednaw, Coalossal, Flapple (and Appletun, which looks the same), Sandaconda, Toxtricity (both forms look the same) and Centiskorch (their builds in PokemonModels.Galar2.cs)
+
+    private static PokeBuilder DrednawGmax() => DrednawBuild(true);
+
+    private static PokeBuilder CoalossalGmax() => CoalossalBuild(true);
+
+    private static PokeBuilder FlappleGmax() => FlappleBuild(true);
+
+    private static PokeBuilder SandacondaGmax() => SandacondaBuild(true);
+
+    private static PokeBuilder ToxtricityAmpedGmax() => ToxtricityBuild(false, true);
+
+    private static PokeBuilder CentiskorchGmax() => CentiskorchBuild(true);
 }
