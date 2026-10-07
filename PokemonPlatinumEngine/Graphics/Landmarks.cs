@@ -64,8 +64,10 @@ internal static class Landmarks
             {
                 bool grand = prop.Width >= 3;
                 float cx = w / 2f, cz = d / 2f + 4;
-                kit.Block("statue.plinth", Stone, cx - 22, cx + 22, cz - 16, cz + 16, 0, 8);
-                kit.Block("statue.plinth2", PaleStone, cx - 15, cx + 15, cz - 10, cz + 10, 8, grand ? 22 : 14);
+                // A plinth no wider than its tiles: a Gym's statue by the door has one tile (plan 02 · S5)
+                float plinth = MathF.Min(22, w / 2f - 2), top = MathF.Min(15, plinth - 7);
+                kit.Block("statue.plinth", Stone, cx - plinth, cx + plinth, cz - 16, cz + 16, 0, 8);
+                kit.Block("statue.plinth2", PaleStone, cx - top, cx + top, cz - 10, cz + 10, 8, grand ? 22 : 14);
                 kit.Sprite(kit.Face(grand ? "statue.figure" : "statue.small", grand ? 40 : 28, grand ? 52 : 36, c => PaintStatue(c)), cx, cz, grand ? 22 : 14);
                 return true;
             }
