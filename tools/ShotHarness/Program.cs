@@ -3622,7 +3622,13 @@ if (mode == "jubilife")
         bool fromAnotherMap = (Map)Get("currentMap") != sinnoh;
         At("Sinnoh", x - dx, y - dy, way);
         // Out of a room the game comes back by a door, which brings back whoever a script hid on the map before
-        if (fromAnotherMap) T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
+        // (and runs the place's own arrival script, which is let finish before the step it is waiting for)
+        if (fromAnotherMap)
+        {
+            T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
+            Frames(2);
+            Until(() => !engine.ScriptRunning, "the arrival's own script", 120);
+        }
         engine.Steering = (way, false);
         Until(() => engine.ScriptRunning, $"the scene at {x},{y}", 120);
         engine.Steering = null;
