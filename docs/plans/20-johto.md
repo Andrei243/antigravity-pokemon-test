@@ -99,7 +99,7 @@ Written 2026-10-06, before any session.
 
 ### J11 · Chapter 4: the Lake of Rage to the Rising Badge
 - The red Gyarados and Lance, the Rocket Hideout with its tag battle beside Lance (plan 06 · R9's `battle a and b with c`, done), Whirlpool from Lance, Pryce and the Glacier Badge, the Radio Tower taken (the Underground's disguise, the Director, Petrel, the executives, `FLAG_BEAT_RADIO_TOWER_ROCKETS`) and the Rainbow Wing, the Ice Path, Clair, the Dragon's Den's questions and the Rising Badge, the Kimono Girls' five battles and Ho-Oh at the Bell Tower (its theme from plan 05 · A6, a battle that can't be fled: `wildbattle … nofleeing`), Lugia in the Whirl Islands after (HeartGold hands out the second bird's wing in Kanto; here it comes in Johto after Ho-Oh, so J15 stays optional: a rulings row).
-- Tests: the story walk; Ho-Oh and Lugia are met once each and come back if beaten (a stationary kind beside plan 06 · R13's roamers in `Models/Roamers.cs`); the five battles run without a heal between.
+- Tests: the story walk; Ho-Oh and Lugia are met once each and come back if beaten (a stationary kind beside plan 06 · R13's roamers in `Overworld/Roamers.cs`); the five battles run without a heal between.
 - Shots: `jst10_gyarados`, `jst11_radio_tower`, `jst12_bell_tower`.
 - **Done when** the walk ends with eight badges and Ho-Oh caught or fled from.
 

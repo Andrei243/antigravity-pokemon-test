@@ -430,6 +430,7 @@ public partial class GameEngine
         if (cast.Caught is { } fish)
         {
             player.Encounters.Reset();
+            hooked = true;
             StartWildBattle(fish);
         }
     }

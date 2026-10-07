@@ -1482,7 +1482,8 @@ public partial class GameEngine
     /// </summary>
     private Battle.Sim.BattleConditions BattleConditionsHere() => new()
     {
-        Terrain = TerrainAt(currentMap, player.GridX, player.GridY),
+        // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
+        Terrain = hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(currentMap, player.GridX, player.GridY),
         Night = GameClock.IsNight,
         HasCaught = species => playerPokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(currentMap.WeatherAt(player.GridX, player.GridY)),

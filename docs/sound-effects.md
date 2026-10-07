@@ -30,7 +30,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 |---|---|---|
 | `bump` | `SEQ_SE_DP_WALL_HIT` | Walking into something. |
 | `ledge` | `SEQ_SE_DP_DANSA4` | Hopping down a ledge. |
-| `grass` | `SEQ_SE_DP_KUSA` | A step through very tall grass (the original makes no sound in ordinary tall grass). |
+| `grass` | `SEQ_SE_DP_KUSA` | A step through very tall grass (the original makes no sound in ordinary tall grass); the Poké Radar setting its patches shaking (plan 06 · R13; the original starts the radar's own theme instead, `SEQ_KUSAGASA`, which is plan 05's). |
 | `step_snow` | `SEQ_SE_PL_YUKI` | A step in snow. |
 | `step_puddle` | `SEQ_SE_DP_FOOT3_0` | A step through a puddle. |
 | `step_shallows` | `SEQ_SE_DP_FOOT3_1` | A step through ankle-deep water. |
@@ -75,7 +75,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `hit_weak` | `SEQ_SE_DP_KOUKA_L` | A not very effective hit lands. |
 | `stat_up` | — | A stat rises. |
 | `stat_down` | — | A stat falls. |
-| `status_poison` | — | Poisoned, or badly poisoned. |
+| `status_poison` | — | Poisoned, or badly poisoned; poison biting in the field, every fourth step (plan 06 · R13; the original's `SEQ_SE_DP_DOKU2`). |
 | `status_burn` | — | Burned. |
 | `status_paralysis` | — | Paralysed. |
 | `status_sleep` | — | Fallen asleep. |

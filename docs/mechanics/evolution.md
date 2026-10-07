@@ -119,7 +119,7 @@ A **Linking Cord** used on a Pokémon counts as a trade (Legends: Arceus). It is
 | Fainting to a foe 30 or more levels above | −5 | −5 | −10 | Yes |
 | Beating a Gym Leader, the Elite Four or the Champion | +3 | +2 | +1 | With the gyms (plan 02) |
 | Learning a TM or HM | +1 | +1 | 0 | With TMs (plan 06 · R11) |
-| Surviving poison in the field | −5 | −5 | −10 | With field poison (plan 06 · R13) |
+| Surviving poison in the field | −5 | −5 | −10 | Yes (plan 06 · R13) |
 | Winning a contest | +3 | +2 | +1 | With contests (plan 06 · R17) |
 
 Gains are one higher for a Pokémon caught in a Luxury Ball and ×1.5 for one holding a Soothe Bell. Items with their own friendship numbers (vitamins, herbs, EV berries) go through `FriendshipRules.Change`; the bonus for being where the Pokémon was met waits for met locations (plan 07 · O2). A traded Pokémon starts over at its species' base friendship.

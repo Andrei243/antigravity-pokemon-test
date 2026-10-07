@@ -27,6 +27,9 @@ public partial class GameEngine
     // tree's): only then do the roamers and the Poké Radar hear how it ended (FieldTask_WildEncounter)
     private bool fieldEncounter;
 
+    // Whether the battle under way was hooked on a rod, and so is fought on the water (plan 06 · R13)
+    private bool hooked;
+
     // The moment, as the player's steps ask for it
     private Func<EncounterMoment?>? momentOf;
 
@@ -87,6 +90,10 @@ public partial class GameEngine
     private const float PoisonFlashSeconds = 0.4f;
     private float poisonFlash;
 
+    // How high a honey tree's leaves are shaken from: the foot of its crown, in texels of its card (Landmarks' honey
+    // tree), which the field stretches upright like every card
+    private const float CrownTexels = 56f;
+
     // How often the Poké Radar's patches and a honey tree that Pokémon have come to stir, by the field's own clock
     private const double StirEvery = 0.6;
     private double nextStir;
@@ -99,6 +106,9 @@ public partial class GameEngine
     {
         if (poisonFlash > 0f) poisonFlash = Math.Max(0f, poisonFlash - dt);
         var life = world.Life;
+        world.Stirring.Clear();
+        foreach (var patch in radar.Patches.Where(p => p.Active))
+            world.Stirring.Add((patch.X, patch.Y, patch.Shake == PatchShake.Hard));
         if (life.Now < nextStir) return;
         nextStir = life.Now + StirEvery;
         foreach (var patch in radar.Patches.Where(p => p.Active))
@@ -109,7 +119,7 @@ public partial class GameEngine
             if (tree.Type != PropType.HoneyTree || Math.Abs(tree.X - px) > 12 || Math.Abs(tree.Y - py) > 9) continue;
             int x = tree.X + tree.Width / 2, y = tree.Y + tree.Depth - 1;
             if (HoneyTrees.IdOf(currentMap.AreaAt(x, y)?.Key) is { } id && HoneyTrees.Shaking(encounters.Trees[id]))
-                life.ShakeTree(currentMap, x, y, Math.Max(1f, tree.Height * 0.6f), encounters.Trees[id].Shakes);
+                life.ShakeTree(currentMap, x, y, CrownTexels / 32f * Graphics.MapScene.VerticalScaleOf(currentMap), encounters.Trees[id].Shakes);
         }
     }
 
@@ -148,7 +158,7 @@ public partial class GameEngine
     private void EncountersAfterBattle(BattleEngine fought, bool defeat)
     {
         bool field = fieldEncounter;
-        fieldEncounter = false;
+        fieldEncounter = hooked = false;
         if (!field) return;
         bool won = fought.Result == BattleResult.PlayerVictory, caught = fought.Result == BattleResult.EnemyCaught;
         if (!defeat && fought.EnemyPokemon is { } foe && fought.Kind is BattleKind.Normal or BattleKind.Roamer)
