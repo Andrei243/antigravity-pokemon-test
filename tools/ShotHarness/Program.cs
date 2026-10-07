@@ -3619,7 +3619,10 @@ if (mode == "jubilife")
     void StepOnto(int x, int y, Direction way)
     {
         var (dx, dy) = way switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+        bool fromAnotherMap = (Map)Get("currentMap") != sinnoh;
         At("Sinnoh", x - dx, y - dy, way);
+        // Out of a room the game comes back by a door, which brings back whoever a script hid on the map before
+        if (fromAnotherMap) T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
         engine.Steering = (way, false);
         Until(() => engine.ScriptRunning, $"the scene at {x},{y}", 120);
         engine.Steering = null;
