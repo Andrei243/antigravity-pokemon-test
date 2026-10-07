@@ -11,6 +11,20 @@
 # (docs/mechanics/rulings.md, "The first chapter").
 
 
+# Back on the road while the briefcase waits (VAR_FOLLOWER_RIVAL_STATE 1). The professor, the assistant and the
+# briefcase are there: a game saved before the scene cleared their flags (it only showed them) had lost them at the
+# first door, and finds them again here. And the rival stands beside the briefcase, as at the end of the scene:
+# whoever comes to a map again stands where the import puts them, and his own tile is the one in front of the
+# briefcase, which his back hid from the player.
+script OnEnter
+  if var VAR_FOLLOWER_RIVAL_STATE != 1 end
+  clearflag FLAG_HIDE_ROUTE_201_PROF_ROWAN
+  clearflag FLAG_HIDE_ROUTE_201_COUNTERPART
+  clearflag FLAG_HIDE_ROUTE_201_BRIEFCASE
+  place rival 113 855 left
+  end
+
+
 # The rival's trigger at the top of the road out of Twinleaf Town (the original's trigger 2).
 script RowanAppears
   face rival player
@@ -23,6 +37,9 @@ script RowanAppears
   speaker "???"
   say "Wait! Stay right where you are!"
   music "common/rowan"
+  # Each of the three is cleared off its flag as well as shown, as the original does (ClearFlag, then AddObject):
+  # shown alone, they were gone again the next time the player came out of a door, the briefcase with them
+  clearflag FLAG_HIDE_ROUTE_201_PROF_ROWAN
   show prof_rowan
   walk prof_rowan right 4 down 1
   face rival prof_rowan
@@ -59,28 +76,48 @@ label Agreed
   say "...You would speak up for your friend. Very well. I will trust you both with a Pokémon."
   say "But promise me you will never be so reckless again. Now, where has my briefcase got to...?"
   music "common/assistant"
+  clearflag FLAG_HIDE_ROUTE_201_COUNTERPART
   show counterpart
   walk counterpart right 3 fast
   speaker "{assistant}"
   say "Professor! You left your briefcase by the lake! ...Wait. Are you giving those Pokémon to these two?"
   speaker "Prof. Rowan"
   say "I am. Today is the day these two set out."
+  clearflag FLAG_HIDE_ROUTE_201_BRIEFCASE
   show briefcase
   say "{player}, the Pokémon are in that briefcase. Open it and choose the one you want."
   speaker "{rival}"
   say "Whoa, for real? You go first, {player}! I'll take whichever's left. Well, the best one that's left!"
+  # He steps aside: from where he stood his back hid the briefcase, the tile behind him, from the player
+  walk rival right 1
   face rival left
   music area
   setvar VAR_FOLLOWER_RIVAL_STATE 1
   end
 
 
-# Walking off while the briefcase waits (the original's trigger 4, twice).
+# Walking off while the briefcase waits (the original's trigger 4, twice, toward the grass; and ours on the other
+# ways out, overlays/route_201.json: the grass's edge north of it, the road to the lake and the road home). Nobody
+# leaves here without a Pokémon.
 script ChooseFirst
   face rival player
   speaker "{rival}"
   say "Hey, where are you going? Open the briefcase and pick your Pokémon first!"
   walk player left 1
+  end
+
+script ChooseFirstWest
+  face rival player
+  speaker "{rival}"
+  say "Hey, the lake can wait! Open the briefcase and pick your Pokémon first!"
+  walk player right 1
+  end
+
+script ChooseFirstSouth
+  face rival player
+  speaker "{rival}"
+  say "Whoa, you're not going home now, are you? Pick your Pokémon from the briefcase first!"
+  walk player up 1
   end
 
 

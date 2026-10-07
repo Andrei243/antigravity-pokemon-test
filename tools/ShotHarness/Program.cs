@@ -4980,6 +4980,14 @@ if (mode == "opening")
     Until(() => engine.Choice.IsOpen, "the professor's question"); Frames(20); Shot("op07_route201_do_you_love_pokemon");
     ReadTo("Open it and choose"); Frames(10); Shot("op08_route201_the_briefcase");
     ReadTo(null);
+    // The rival has stepped aside, and the briefcase waits in view; and it is still there, in view, for a player who
+    // went off through a door and came back (the game's own arrival on a map, as a warp brings one)
+    Frames(30); Shot("op08b_route201_the_briefcase_waits");
+    var road = ((Player)Get("player")).GridX;
+    At("Sinnoh", road, 857, Direction.Up);
+    T.GetMethod("ArriveOnMap", Private)!.Invoke(engine, null);
+    Frames(30); Shot("op08c_route201_the_briefcase_after_a_door");
+    Console.WriteLine($"route 201: briefcase on the map {sinnoh.NPCs.Any(n => n.Key == "briefcase")}, rival at {sinnoh.NPCs.Where(n => n.Key == "rival" && n.GridY > 840 && n.GridY < 860).Select(n => (n.GridX, n.GridY)).FirstOrDefault()}");
 
     // ---- the briefcase: the three Pokémon
     var briefcase = sinnoh.NPCs.First(n => n.Key == "briefcase");

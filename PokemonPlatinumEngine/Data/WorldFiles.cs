@@ -644,12 +644,23 @@ public sealed class OverlayPassage
     public bool Bicycle { get; set; }
 }
 
-/// <summary>One of an area's triggers given its script: the name of one in the area's script file, or a common one.</summary>
+/// <summary>
+/// One of an area's triggers given its script: the name of one in the area's script file, or a common one. It is the
+/// original's trigger by its number (<see cref="Trigger"/>), or one of our own where the original has none: its tiles
+/// (<see cref="X"/>, <see cref="Z"/>, <see cref="Width"/>, <see cref="Depth"/>, in tiles of the map) and the variable
+/// and value it waits for, as an area file's are written.
+/// </summary>
 [JsonConverter(typeof(OneLine<OverlayTrigger>))]
 public sealed class OverlayTrigger
 {
-    public int Trigger { get; set; }
+    public int? Trigger { get; set; }
     public string Script { get; set; } = "";
+    public int? X { get; set; }
+    public int? Z { get; set; }
+    public int Width { get; set; } = 1;
+    public int Depth { get; set; } = 1;
+    public string? Variable { get; set; }
+    public int Value { get; set; }
 }
 
 /// <summary>A tile of an imported area that leads onto a hand-made map.</summary>

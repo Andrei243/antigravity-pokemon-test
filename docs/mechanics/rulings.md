@@ -430,6 +430,12 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 - **The professor and the Pokédex ask until they hear yes**, as the original's questions loop; the rival asks for his battle the same way.
 - **The assistant's first Pokémon** is the one of the three neither child took.
 
+**Our own choices** (2026-10-07, after a game left the briefcase unseen and went on with no Pokémon)
+
+- **Nobody leaves the briefcase without a Pokémon.** The original turns the player back from two tiles at the grass's edge while the briefcase waits; here the whole of the grass's edge, the road west to the lake and the road home do so too (triggers of our own in `overlays/route_201.json`).
+- **The rival steps aside** at the end of the professor's scene, and stands there again whenever the player comes back to the road while the briefcase waits. His own tile is the one in front of it, and from the field's steep camera his back hid it.
+- **No battle is started without a Pokémon able to fight**, from the grass, a trainer's eyes or a script: a script's battle says why and ends the script there (`IScriptHost.CanBattle`). The original never meets the case; here it ended the game.
+
 **Stand-ins for what this game lacks**
 
 | What | The original | Here | Why |

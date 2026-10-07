@@ -180,7 +180,8 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
   },
   "signs": { "map_signpost": "Twinleaf Town\nFresh and free! The town where journeys begin." },
   "signScripts": { "trainer_tips_signpost": "TrainerTips" },   // optional: signs that run a script of the area's file
-  "triggers": [ { "trigger": 0, "script": "RivalStopsYou" } ], // optional: the area's triggers that have a script, by number
+  "triggers": [ { "trigger": 0, "script": "RivalStopsYou" } ], // optional: the area's triggers that have a script, by number,
+                                      // or ours: { "x", "z", "width", "depth", "variable", "value", "script" } in tiles of the map
   "read": { "4": "Door" },            // optional: things read in the ground (a door, a statue) by the original's script number
   "npcs": [ … ],                      // people of our own, as in a map file, in tiles of the map
   "props": [ { "type": "LampPost", "x": 109, "y": 876, "width": 1, "depth": 1 } ]

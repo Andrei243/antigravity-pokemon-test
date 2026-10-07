@@ -737,6 +737,39 @@ public class ScriptTests
         Assert.False(trainer.HasBattled);
     }
 
+    /// <summary>
+    /// A battle with no Pokémon of the player's able to fight is never started: a line says why and the script ends
+    /// there, the trainer still unbeaten and whatever came after the battle still to come. A game whose first Pokémon
+    /// went missing battled anyway, and every battle ended the game.
+    /// </summary>
+    [Fact]
+    public void NoBattleIsStartedWithoutAPokemonToFightIt()
+    {
+        var trainer = Trainer();
+        var (runner, host) = Ready(BattleScript, subject: trainer);
+        host.NeedsPokemon = true;
+        runner.RunToEnd();
+
+        Assert.Equal(new[] { "Let's battle!", $"{host.PlayerName} has no Pokémon that can battle!" }, Said(host));
+        Assert.DoesNotContain(host.Log, l => l.StartsWith("battle"));
+        Assert.False(host.Story.Has("FLAG_AFTER_THE_BATTLE"));
+        Assert.False(host.Story.HasDefeated("tester"));
+        Assert.False(runner.EndedInDefeat);
+
+        // A wild Pokémon put in the player's way waits too, and is met once the player has a Pokémon
+        const string wild = "script S\n wildbattle \"Starly\" 2\n setflag FLAG_MET";
+        var alone = Run(wild, h => h.NeedsPokemon = true);
+        Assert.DoesNotContain(alone.Log, l => l.StartsWith("wildbattle"));
+        Assert.False(alone.Story.Has("FLAG_MET"));
+        var withOne = Run(wild, h =>
+        {
+            h.NeedsPokemon = true;
+            h.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 5));
+        });
+        Assert.Contains(withOne.Log, l => l.StartsWith("wildbattle Starly 2"));
+        Assert.True(withOne.Story.Has("FLAG_MET"));
+    }
+
     [Fact]
     public void ABattleThatMayBeLostGoesOnEitherWay()
     {
