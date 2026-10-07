@@ -55,8 +55,8 @@ public class EternaTests
         Assert.False(game.Fires("CynthiaCut"));
         Assert.False(game.Fires("BlockWest"));
         Assert.False(game.Fires("BlockSouth"));
-        // The Gym's door waits for the Gym (plan 01 · M9); the building's door is shut by the tree before it
-        Assert.Null(game.Map.GetWarpAt(312, 562));
+        // The Gym's door leads in (plan 01 · M9), with Gardenia before it; the building's door is shut by the tree before it
+        Assert.Equal("EternaGym", game.Map.GetWarpAt(312, 562)!.TargetMap);
         Assert.NotNull(game.Present("cut_tree_2", "eterna_city"));
         Assert.Equal("TeamGalacticEternaBuilding1F", game.Map.GetWarpAt(305, 519)!.TargetMap);
     }
