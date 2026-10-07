@@ -163,6 +163,9 @@ public sealed class ScriptLibrary
                     case Op.Battle when i.PartnerById && TrainerDatabase.Get(i.Partner) == null:
                         Wrong(i, $"there is no trainer '{i.Partner}'");
                         break;
+                    case Op.Defeat when TrainerDatabase.Get(i.Name) == null:
+                        Wrong(i, $"there is no trainer '{i.Name}'");
+                        break;
                     case Op.Battle when i.AsTrainer.Length > 0 && TrainerDatabase.Get(i.AsTrainer) == null:
                         Wrong(i, $"there is no trainer '{i.AsTrainer}'");
                         break;

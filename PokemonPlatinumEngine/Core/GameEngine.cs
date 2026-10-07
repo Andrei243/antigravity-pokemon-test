@@ -788,6 +788,7 @@ public partial class GameEngine
     {
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
+        KeepPuzzleInForce(dt);
         KeepTheClock();
         SlideBoulders(dt);
         poketchView.Update(dt);
@@ -803,6 +804,9 @@ public partial class GameEngine
             UpdateScript(dt);
             return;
         }
+
+        // A Gym's puzzle has the field for a moment: a punching bag on its run (plan 01 · M9)
+        if (PuzzleHoldsField) return;
 
         // A rod is out: the keys are the rod's until it is put away
         if (fishing != null)
@@ -1159,6 +1163,8 @@ public partial class GameEngine
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);
         }
+        // A punching bag of the Veilstone Gym is kicked, not spoken to (plan 01 · M9)
+        if (npc != null && TryKickBag(npc)) return;
         if (npc != null)
         {
             // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is

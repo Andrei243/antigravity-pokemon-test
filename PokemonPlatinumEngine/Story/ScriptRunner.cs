@@ -314,6 +314,21 @@ public sealed class ScriptRunner
             case Op.Turnback:
                 host.Turnback();
                 break;
+            // SetTrainerFlag: a Gym's trainers count as beaten once its Leader is (plan 01 · M9)
+            case Op.Defeat:
+                story.Defeat(i.Name);
+                host.Defeat(i.Name);
+                break;
+            // AdvanceEternaGymClock: the clock turns on to its next time; RESULT is 1 when it turned, 2 when a
+            // fountain drained with it too, 0 once the Leader is beaten and there is no further time
+            case Op.FlowerClock:
+            {
+                int from = story.Var(EternaClock.StateVar);
+                Result = EternaClock.Advance(story) ? (EternaClock.HasWater(from, true) != EternaClock.HasWater(from + 1, true)
+                    || EternaClock.HasWater(from, false) != EternaClock.HasWater(from + 1, false) ? 2 : 1) : 0;
+                if (Result > 0) host.TurnClock(from, from + 1);
+                break;
+            }
             case Op.Partner:
                 if (i.Option)
                 {

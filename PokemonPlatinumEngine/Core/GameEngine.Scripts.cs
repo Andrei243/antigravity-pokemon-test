@@ -143,6 +143,8 @@ public partial class GameEngine
         wandering.Clear();
         Wandering.SendHome(currentMap);
         KeepPartnerAlong();
+        // A Gym's puzzle is laid out afresh, as the original's room scripts do as the player comes in (plan 01 · M9)
+        ArrivePuzzle();
         arrived = true;
     }
 
@@ -172,7 +174,9 @@ public partial class GameEngine
     private static readonly Dictionary<string, (string Town, Badge Badge)> Gyms = new()
     {
         ["OreburghGym"] = ("Oreburgh", Badge.Coal),
-        ["EternaGym"] = ("Eterna", Badge.Forest)
+        ["EternaGym"] = ("Eterna", Badge.Forest),
+        ["HearthomeGym"] = ("Hearthome", Badge.Relic),
+        ["VeilstoneGym"] = ("Veilstone", Badge.Cobble)
     };
 
     /// <summary>
@@ -626,7 +630,7 @@ public partial class GameEngine
     // ------------------------------------------------------------------ the host
 
     /// <summary>The game as a script sees it.</summary>
-    private sealed class FieldHost : IScriptHost
+    private sealed partial class FieldHost : IScriptHost
     {
         private readonly GameEngine game;
 
@@ -729,7 +733,7 @@ public partial class GameEngine
         // ---- what the script waits for
 
         public bool Busy => game.currentState != GameState.Overworld || game.dialogue.IsActive || game.scriptFade.IsMoving || game.cutIn != null
-            || game.fieldMoveStep;
+            || game.fieldMoveStep || game.PuzzleMoving;
 
         public void Say(string? speaker, IReadOnlyList<string> lines)
         {

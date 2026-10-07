@@ -105,6 +105,14 @@ public enum PropType
     /// <summary>The dark a rift casts on the ground below it: the way down into the Distortion World.</summary>
     RiftShadow,
 
+    // The Gyms' puzzles (plan 01 · M9): things of the map, like the obstacles, drawn as cards (GymArt)
+    /// <summary>The Veilstone Gym's punching bag, which a kick sends along its track.</summary>
+    PunchingBag,
+    /// <summary>A stack of tyres in the Veilstone Gym's way, knocked down by a punching bag.</summary>
+    TireStack,
+    /// <summary>A post in the way out of the Hearthome Gym's Leader's room, gone once she is beaten.</summary>
+    Bollard,
+
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
     Window,

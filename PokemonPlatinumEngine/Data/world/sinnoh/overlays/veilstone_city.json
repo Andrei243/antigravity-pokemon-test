@@ -4,7 +4,9 @@
   "trees": "Round",
   "architecture": "Stone",
   "doors": [
-    { "warp": 10, "map": "VeilstonePokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+    { "warp": 10, "map": "VeilstonePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    // Maylene's Gym and its punching bags, built to the original's plan (plan 01 · M9)
+    { "warp": 13, "map": "VeilstoneGym", "x": 12, "y": 30, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -13,8 +15,8 @@
     { "warp": 11, "to": "route_214", "toWarp": 0 },
     { "warp": 12, "to": "route_214", "toWarp": 1 }
   ],
-  // The Game Corner, the Department Store, the warehouse, the prize exchange, the houses, the Gym and the Galactic building have no rooms yet (plan 01 · M11, M9)
-  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15, 16 ],
+  // The Game Corner, the Department Store, the warehouse, the prize exchange, the houses and the Galactic building have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 16 ],
   "people": {
     "guitarist_1": {
       "name": "Guitarist",

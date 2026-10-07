@@ -1,0 +1,47 @@
+# The Hearthome Gym's entrance (plan 01 · M9), rebuilt to the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_hearthome_city_gym_entrance_room.s).
+#
+# The door in the back wall leads into the first of two dark rooms; in each, one door leads on and the others back
+# here, and the sign of the right one is shown somewhere on the floor (the game's own rule, HearthomeDoors). The pad
+# by the door is the way back from Fantina's room.
+
+
+# The first time the player comes in, the guide comes over to explain (VAR_HAS_ENTERED_HEARTHOME_GYM_BEFORE)
+script OnEnter
+  if var VAR_HAS_ENTERED_HEARTHOME_GYM_BEFORE != 0 end
+  emote gym_guide exclaim
+  walk gym_guide left 1 down 1
+  speaker "Gym Guide"
+  say "Hey, champ in the making! Welcome to the Hearthome Gym! Fair warning: it's pitch dark in there."
+  say "Every room has a few doors, and only one of them goes on. Somewhere on the floor is a sign that matches the right door."
+  say "Find the sign, pick the door that wears it, and you'll get to Fantina. Pick wrong, and it's back to the start!"
+  walk gym_guide up 1 right 1
+  face gym_guide down
+  setvar VAR_HAS_ENTERED_HEARTHOME_GYM_BEFORE 1
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge relic goto Won
+  ask "Want to hear how this Gym works one more time?"
+  if no goto Encourage
+  say "In each dark room, look for a sign on the floor. It's a shape, and one of the doors in the back wall has the same shape."
+  say "That door goes on. Every other door brings you straight back here. And Fantina's Ghost types hate Dark and Ghost moves!"
+  end
+label Encourage
+  say "Right, then! Off you go, and keep your eyes open in there!"
+  end
+label Won
+  say "{player}! You found your way through the dark and beat Fantina! What a performance!"
+  end
+
+
+script GymStatue
+  speaker none
+  if badge relic goto Won
+  say "HEARTHOME CITY POKéMON GYM. Leader: Fantina. Certified Trainers: {rival}"
+  end
+label Won
+  say "HEARTHOME CITY POKéMON GYM. Leader: Fantina. Certified Trainers: {rival}, {player}"
+  end

@@ -191,6 +191,10 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Heal, Line = line };
             case "turnback":
                 return new Instruction { Op = Op.Turnback, Line = line };
+            case "defeat":
+                return new Instruction { Op = Op.Defeat, Line = line, Name = r.Text("a trainer's id") };
+            case "flowerclock":
+                return new Instruction { Op = Op.FlowerClock, Line = line };
             case "partner":
             {
                 if (r.PeekWord("off"))

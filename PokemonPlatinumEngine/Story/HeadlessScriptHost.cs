@@ -385,6 +385,21 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Map != null) TurnbackChose = TurnbackCave.Reaim(Map, PlayerTile.X, PlayerTile.Y, Story, Rng);
     }
 
+    public void Defeat(string trainerId)
+    {
+        Log.Add($"defeat {trainerId}");
+        if (Map == null) return;
+        foreach (var npc in Map.Everyone)
+            if (npc.TrainerData?.Id == trainerId) npc.HasBattled = true;
+    }
+
+    public void TurnClock(int from, int to)
+    {
+        Log.Add($"flowerclock {from} {to}");
+        // The clock is at rest at once: the map's tiles follow the story's new state
+        if (Map?.Puzzle is EternaClock clock) clock.Apply(Map, Story);
+    }
+
     /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>
     public NPC? Travelling { get; private set; }
     public string? Partner { get; private set; }

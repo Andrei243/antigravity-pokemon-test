@@ -1,0 +1,70 @@
+# The Veilstone Gym (plan 01 · M9), rebuilt to the original's plan. docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_veilstone_city_gym.s).
+#
+# A dojo with two rings, where punching bags hang on tracks: a kick sends a bag along its track until something
+# stops it, and a bag that runs into a stack of tyres knocks it down (the game's own rule, VeilstoneBags; no script).
+# The bags and the tyres are back where they were each time the player comes in. Maylene gives the Cobble Badge and
+# TM60, and her Badge sets off what happens next in the city: the assistant needs help by the warehouse
+# (VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE, FLAG_HIDE_VEILSTONE_COUNTERPART), whose guards will battle now
+# (VAR_VEILSTONE_WAREHOUSE_GUARDS_FIGHTABLE), and Looker leaves the Game Corner (FLAG_HIDE_GAME_CORNER_LOOKER), all
+# for plan 02 · S8.
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge cobble goto Won
+  say "Hey there, champ in the making! Welcome to the Veilstone Gym!"
+  say "Maylene trains with Fighting types. Flying and Psychic moves will knock them for six."
+  say "See those punching bags? Give one a kick and it flies along its track. Clear the stacks of tyres out of your way with them!"
+  end
+label Won
+  say "{player}, you beat Maylene! That was a fight worth watching."
+  end
+
+
+script GymStatue
+  speaker none
+  if badge cobble goto Won
+  say "VEILSTONE CITY POKéMON GYM. Leader: Maylene. Certified Trainers: {rival}"
+  end
+label Won
+  say "VEILSTONE CITY POKéMON GYM. Leader: Maylene. Certified Trainers: {rival}, {player}"
+  end
+
+
+# The three scrolls over the dais
+script Poster
+  speaker none
+  sayown
+  end
+
+
+script Maylene
+  speaker "Maylene"
+  if badge cobble goto Won
+  say "I'm Maylene, the Leader of this Gym. My Pokémon and I train together every single day."
+  say "I don't hold anything back, and I won't today. Let's begin!"
+  battle self as "leader_maylene"
+  say "I lost... You and your Pokémon are strong together. I'm glad I fought you."
+  givebadge cobble
+  text "{player} received the Cobble Badge from Maylene!"
+  defeat "black_belt_colby"
+  defeat "black_belt_darren"
+  defeat "black_belt_rafael"
+  defeat "black_belt_jeffery"
+  setflag FLAG_HIDE_GAME_CORNER_LOOKER
+  clearflag FLAG_HIDE_VEILSTONE_COUNTERPART
+  setvar VAR_VEILSTONE_WAREHOUSE_GUARDS_FIGHTABLE 1
+  setvar VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE 1
+  say "With the Cobble Badge, Pokémon up to level 50 will do as you say, even ones from trades."
+  say "And you can use Fly outside of battle, to go straight back to any town you've been to."
+label Tm
+  say "Please take this as well."
+  give "TM60"
+  setflag FLAG_RECEIVED_MAYLENE_TM60
+  say "TM60 is Drain Punch. The damage it does heals the Pokémon that throws it. It's a move I trust."
+  end
+label Won
+  if not flag FLAG_RECEIVED_MAYLENE_TM60 goto Tm
+  say "{player}... I'll keep training too. The next time we meet, I'll be stronger!"
+  end

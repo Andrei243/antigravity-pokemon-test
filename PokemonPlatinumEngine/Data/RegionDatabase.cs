@@ -127,6 +127,8 @@ public static class RegionDatabase
                 // Plan 01 · M8, part 2: the Distortion World, a floor to a map, and the room Turnback Cave's portal leads to
                 "DistortionWorld1F", "DistortionWorldB1F", "DistortionWorldB2F", "DistortionWorldB3F", "DistortionWorldB4F",
                 "DistortionWorldB5F", "DistortionWorldB6F", "DistortionWorldB7F", "DistortionWorldGiratinaRoom", "DistortionWorldTurnbackCaveRoom",
+                // Plan 01 · M9, part 1: the Gyms rebuilt to the original's plans, with their puzzles
+                "EternaGym", "HearthomeGym", "HearthomeGymRoom1", "HearthomeGymRoom2", "HearthomeGymLeaderRoom", "VeilstoneGym",
                 // Rooms, still made by hand (plan 01 · M11)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "TrainersSchool", "PoketchCompany",
