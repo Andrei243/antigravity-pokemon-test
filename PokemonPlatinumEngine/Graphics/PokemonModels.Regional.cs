@@ -944,4 +944,22 @@ internal static partial class PokemonModels
     private static PokeBuilder CramorantGorging() => CramorantBuild(2);
 
     private static PokeBuilder ToxtricityLowKey() => ToxtricityBuild(true, false);
+
+    // ------------------------------------------------------------------ Alcremie's creams and sweets, Eiscue's Noice Face, the female Indeedee and the Hangry Morpeko (their builds in PokemonModels.Galar3.cs)
+
+    /// <summary>Alcremie of the cream and sweet a form names (ALCREMIE-RUBY-SWIRL-STAR-SWEET), or null for a name that names none.</summary>
+    private static PokeBuilder? AlcremieForm(string form)
+    {
+        for (int cream = 0; cream < AlcremieCreams.Length; cream++)
+            for (int sweet = 0; sweet < AlcremieSweets.Length; sweet++)
+                if (("ALCREMIE-" + AlcremieCreams[cream].Name + "-" + AlcremieSweets[sweet] + "-SWEET").Equals(form, StringComparison.OrdinalIgnoreCase) && (cream, sweet) != (0, 0))
+                    return AlcremieBuild(cream, sweet);
+        return null;
+    }
+
+    private static PokeBuilder EiscueNoice() => EiscueBuild(true);
+
+    private static PokeBuilder IndeedeeFemale() => IndeedeeBuild(true);
+
+    private static PokeBuilder MorpekoHangry() => MorpekoBuild(true);
 }

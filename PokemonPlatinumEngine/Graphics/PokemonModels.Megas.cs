@@ -1799,4 +1799,8 @@ internal static partial class PokemonModels
     private static PokeBuilder MagearnaOriginalMega() => MagearnaBuild(true, true);
 
     private static PokeBuilder ZeraoraMega() => ZeraoraBuild(true);
+
+    // ------------------------------------------------------------------ Galar's Megas (their builds in PokemonModels.Galar3.cs)
+
+    private static PokeBuilder FalinksMega() => FalinksMegaBuild();
 }
