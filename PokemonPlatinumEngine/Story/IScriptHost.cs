@@ -145,6 +145,19 @@ public interface IScriptHost
     void Turnback();
 
     /// <summary>
+    /// A trainer counts as beaten from now on, with no battle (the original's <c>SetTrainerFlag</c>, plan 01 · M9): a
+    /// Gym's trainers once its Leader is. The story has noted it already; whoever carries the trainer is marked.
+    /// </summary>
+    void Defeat(string trainerId);
+
+    /// <summary>
+    /// The Eterna Gym's flower clock turns from the time of one state to the next's, with the camera on it, and a
+    /// fountain drains where the new state says so (<see cref="EternaClock.Turn"/>). The story's state has moved on
+    /// already; the script waits while the clock turns (<see cref="Busy"/>).
+    /// </summary>
+    void TurnClock(int from, int to);
+
+    /// <summary>
     /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
     /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
     /// stop.

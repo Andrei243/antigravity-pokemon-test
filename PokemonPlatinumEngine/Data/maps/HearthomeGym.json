@@ -1,0 +1,110 @@
+{
+  "name": "HearthomeGym",
+  "displayName": "Hearthome Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ghost",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#_______#####",
+    "#_______#####",
+    "#_______#####",
+    "#_______#####",
+    "####D########"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "####.########",
+    "#...........#",
+    "#...........#",
+    "#.......#####",
+    "#.#...#.#####",
+    "#.......#####",
+    "#.......#####",
+    "####.########"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 6,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymRoom1",
+      "targetX": 8,
+      "targetY": 10,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "HearthomeGymLeaderRoom",
+      "targetX": 14,
+      "targetY": 3,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 499,
+      "targetY": 698,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 6,
+      "text": "HEARTHOME CITY POKéMON GYM\nLeader: Fantina",
+      "script": "GymStatue"
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "text": "HEARTHOME CITY POKéMON GYM\nLeader: Fantina",
+      "script": "GymStatue"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 6,
+      "facing": "Down",
+      "script": "GymGuide"
+    }
+  ],
+  "wildEncounters": []
+}

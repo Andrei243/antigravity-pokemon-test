@@ -158,6 +158,8 @@ public class ScriptTests
           safari start
           safari end
           turnback
+          defeat "lass_caroline"
+          flowerclock
           partner cheryl "cheryl_eterna_forest"
           partner off
           choosepokemon
@@ -990,6 +992,8 @@ public class ScriptTests
         public bool Teleport() => true;
         public bool Escape() => true;
         public void Turnback() { }
+        public void Defeat(string trainerId) { }
+        public void TurnClock(int from, int to) { }
         public void TravelWith(NPC? who, string? trainerId) { }
         public string? Partner => null;
         public bool Trade(string trade, int slot) => false;

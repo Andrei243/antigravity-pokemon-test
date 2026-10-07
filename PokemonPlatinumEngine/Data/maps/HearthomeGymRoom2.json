@@ -1,0 +1,201 @@
+{
+  "name": "HearthomeGymRoom2",
+  "displayName": "Hearthome Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ghost",
+  "puzzle": "HearthomeRoom2",
+  "width": 29,
+  "height": 24,
+  "ground": [
+    "#############################",
+    "#############################",
+    "#############################",
+    "#_#___#____#____#____#____#_#",
+    "#_##__###__#___####__###_##_#",
+    "#_#__##___###___#___##____#_#",
+    "#___________________________#",
+    "#_#####_______#_______#####_#",
+    "#___#_________#_________#___#",
+    "#___#__####_##########__#___#",
+    "#________#____#____#________#",
+    "####_###_#____#____#_###____#",
+    "#___________________________#",
+    "#_____###__###_###__###_#___#",
+    "#_______________________#___#",
+    "#_______####_____####_#######",
+    "#_________#___#___#_____#___#",
+    "#_________#___#___#_____#___#",
+    "#___________######__________#",
+    "########______#______########",
+    "########_###__#__###_########",
+    "########__#_______#__########",
+    "########_____________########",
+    "##############D##############"
+  ],
+  "solid": [
+    "#############################",
+    "#############################",
+    "####.####.####.####.####.####",
+    "#.#...#....#....#....#....#.#",
+    "#.##..###..#...####..###.##.#",
+    "#.#..##...###...#...##....#.#",
+    "#...........................#",
+    "#.#####.......#.......#####.#",
+    "#...#.........#.........#...#",
+    "#...#..####.##########..#...#",
+    "#........#....#....#........#",
+    "####.###.#....#....#.###....#",
+    "#...........................#",
+    "#.....###..###.###..###.#...#",
+    "#.......................#...#",
+    "#.......####.....####.#######",
+    "#.........#...#...#.....#...#",
+    "#.........#...#...#.....#...#",
+    "#...........######..........#",
+    "########......#......########",
+    "########.###..#..###.########",
+    "########..#.......#..########",
+    "########.............########",
+    "##############.##############"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymLeaderRoom",
+      "targetX": 4,
+      "targetY": 13,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 9,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymLeaderRoom",
+      "targetX": 4,
+      "targetY": 13,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymLeaderRoom",
+      "targetX": 4,
+      "targetY": 13,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 19,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymLeaderRoom",
+      "targetX": 4,
+      "targetY": 13,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 24,
+      "sourceY": 2,
+      "targetMap": "HearthomeGymLeaderRoom",
+      "targetX": 4,
+      "targetY": 13,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 14,
+      "sourceY": 23,
+      "targetMap": "HearthomeGym",
+      "targetX": 4,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "school_kid_mackenzie",
+      "name": "Mackenzie",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 15,
+      "facing": "Right",
+      "trainer": {
+        "id": "school_kid_mackenzie",
+        "name": "Mackenzie",
+        "trainerClass": "School Kid",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "School Kid Mackenzie: There's a sign on the floor somewhere in here. It matches one of the doors!",
+        "dialogueAfter": "School Kid Mackenzie: I shouldn't have told you about the sign, should I...",
+        "sightRange": 2
+      },
+      "movement": "wander_around",
+      "rangeX": 2,
+      "rangeZ": 2
+    },
+    {
+      "id": "ace_trainer_allen",
+      "name": "Allen",
+      "npcType": "Youngster",
+      "x": 18,
+      "y": 7,
+      "facing": "Right",
+      "trainer": {
+        "id": "ace_trainer_allen",
+        "name": "Allen",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Allen: Only the Trainers who keep their heads in the dark ever reach Fantina.",
+        "dialogueAfter": "Ace Trainer Allen: You kept yours. Now look for the sign that shows the way.",
+        "sightRange": 2
+      },
+      "movement": "wander_around",
+      "rangeX": 3
+    },
+    {
+      "id": "school_kid_chance",
+      "name": "Chance",
+      "npcType": "Youngster",
+      "x": 21,
+      "y": 17,
+      "facing": "Left",
+      "trainer": {
+        "id": "school_kid_chance",
+        "name": "Chance",
+        "trainerClass": "School Kid",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "School Kid Chance: Boo! Ha, did I scare you?",
+        "dialogueAfter": "School Kid Chance: You weren't scared at all. That's no fun.",
+        "sightRange": 2
+      },
+      "movement": "wander_around",
+      "rangeX": 3,
+      "rangeZ": 3
+    },
+    {
+      "id": "ace_trainer_catherine",
+      "name": "Catherine",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 9,
+      "facing": "Down",
+      "trainer": {
+        "id": "ace_trainer_catherine",
+        "name": "Catherine",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Catherine: The wrong door takes you right back to the start. Don't make the same mistake with me!",
+        "dialogueAfter": "Ace Trainer Catherine: Well fought. I hope you choose your door as well as you chose your moves.",
+        "sightRange": 2
+      },
+      "movement": "wander_around",
+      "rangeZ": 3
+    }
+  ],
+  "wildEncounters": []
+}

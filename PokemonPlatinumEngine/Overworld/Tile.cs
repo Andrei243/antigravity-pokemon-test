@@ -176,7 +176,12 @@ public enum InteriorStyle
     House,
     PokemonCenter,
     PokeMart,
-    Lab
+    Lab,
+    /// <summary>
+    /// A Gym rebuilt to the original's plan (plan 01 · M9): its floor is the ground its tiles say (a lawn, flowers,
+    /// paths, earth, a hall's own tiles) and its walls are in its leader's colours (<see cref="Map.ArenaType"/>).
+    /// </summary>
+    Gym
 }
 
 public class Warp

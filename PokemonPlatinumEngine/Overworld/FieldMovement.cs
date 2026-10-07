@@ -219,6 +219,15 @@ public static class FieldMovement
             return new FieldStep(StepKind.Hop, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
         }
 
+        // The tip of the Eterna Gym's hour hand is hopped over along the hand, either way, like a ledge
+        // (DynamicMapFeatures_WillPlayerJumpEternaGymClock, plan 01 · M9)
+        if (map.Puzzle?.HopsOver(nx, ny, dir) == true)
+        {
+            int lx = nx + dx, ly = ny + dy;
+            if (walker.Mode != TravelMode.OnFoot || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
+            return new FieldStep(StepKind.Hop, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
+        }
+
         // A gap in the Distortion World is jumped the way its tile says, over it and the tile beyond, to the third
         // tile on (PlayerAvatar_WillJumpTwiceDistortion); from any other side it is the drop it is
         if (LongJumpDirection(there) is { } across)

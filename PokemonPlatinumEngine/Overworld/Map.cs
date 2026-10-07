@@ -166,6 +166,12 @@ public class Map
     /// </summary>
     public bool FogLifted { get; set; }
 
+    /// <summary>
+    /// The Gym's puzzle, for a Gym rebuilt to the original's plan (plan 01 · M9): the flower clock, the dark rooms'
+    /// doors, the punching bags, the water. Null everywhere else.
+    /// </summary>
+    public GymPuzzle? Puzzle { get; set; }
+
     // ------------------------------------------------------------------ areas of a large map
 
     private MapArea?[]? areaGrid;

@@ -190,6 +190,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `battle rival as "rival_route_201_turtwig"` | Someone of the map fights with a team of Platinum's data, and is that trainer from then on (who they think like, their items, their prize money): the rival, whose team hangs on the player's starter (plan 02 · S4). A trainer of the `Rival` class is called `{rival}`. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
+| `defeat "lass_caroline"` | A trainer of Platinum's data counts as beaten without a battle, in this game and every save of it, and whoever carries that trainer on any map stops wanting to battle: a Leader's script does it for the trainers of the Gym once the Badge is won (the original's `SetTrainerFlag`, plan 01 · M9). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
 
 ### People and the field
@@ -229,6 +230,14 @@ Plan 06 · R12.
 |---|---|
 | `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). |
 | `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written and its screen shows. |
+
+### Gyms
+
+Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymPuzzle`): the Hearthome Gym's doors are chosen and the Veilstone Gym's bags and tyres laid out as the player comes in, and a bag is kicked by facing it and pressing the button, all with no script. What a script does to a puzzle is here.
+
+| Command | What it does |
+|---|---|
+| `flowerclock` | Turns the Eterna Gym's flower clock on to its next time (`VAR_ETERNA_GYM_FLOWER_CLOCK_STATE`, the original's `AdvanceEternaGymClock`; `EternaClock`) and waits while its hands turn and a fountain drains, the camera on them; `camera release` brings it back. `RESULT` is 0 where the clock is at its last time already, 1 when it turned, 2 when a fountain drained too. |
 
 ### Field moves and key items
 

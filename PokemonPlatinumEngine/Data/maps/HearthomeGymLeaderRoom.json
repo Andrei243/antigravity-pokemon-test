@@ -1,0 +1,110 @@
+{
+  "name": "HearthomeGymLeaderRoom",
+  "displayName": "Hearthome Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ghost",
+  "width": 16,
+  "height": 15,
+  "ground": [
+    "################",
+    "################",
+    "################",
+    "#############__#",
+    "#############__#",
+    "#############__#",
+    "#############__#",
+    "#############__#",
+    "#_______#####__#",
+    "#______________#",
+    "#______________#",
+    "#_______########",
+    "#_______########",
+    "##_____#########",
+    "####D###########"
+  ],
+  "solid": [
+    "################",
+    "################",
+    "################",
+    "#############..#",
+    "#############..#",
+    "#############..#",
+    "#############..#",
+    "#############..#",
+    "##.....######..#",
+    "#..............#",
+    "#..............#",
+    "#.......########",
+    "#.......########",
+    "##.....#########",
+    "####.###########"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 14,
+      "sourceY": 3,
+      "targetMap": "HearthomeGym",
+      "targetX": 11,
+      "targetY": 3,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 14,
+      "targetMap": "HearthomeGym",
+      "targetX": 4,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "fantina",
+      "name": "Fantina",
+      "npcType": "Fantina",
+      "x": 4,
+      "y": 10,
+      "facing": "Down",
+      "script": "Fantina"
+    },
+    {
+      "id": "bollard_1",
+      "name": "Bollard",
+      "npcType": "Bollard",
+      "x": 8,
+      "y": 10,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_HEARTHOME_CITY_GYM_BOLLARDS"
+    },
+    {
+      "id": "bollard_2",
+      "name": "Bollard",
+      "npcType": "Bollard",
+      "x": 8,
+      "y": 9,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_HEARTHOME_CITY_GYM_BOLLARDS"
+    }
+  ],
+  "wildEncounters": []
+}

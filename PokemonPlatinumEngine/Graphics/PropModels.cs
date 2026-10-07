@@ -47,6 +47,9 @@ internal static class PropModels
         int w = p.Width * 32, d = p.Depth * 32;
         switch (p.Type)
         {
+            // What has no furniture of its own is built as the towns build it: a Gym rebuilt to the original's plan
+            // (plan 01 · M9) has hedges, trees in tubs, fountains and flower beds
+            default: Landmarks.Add(kit, map, p, new MeshBuilder()); break;
             case PropType.Table: Table(kit, w, d, map.Interior == InteriorStyle.House); break;
             case PropType.Chair: Chair(kit, p, map); break;
             case PropType.Sofa: Sofa(kit, p, map, w, d); break;

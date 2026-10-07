@@ -1,0 +1,64 @@
+# Fantina's room in the Hearthome Gym (plan 01 · M9), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_hearthome_city_gym_leader_room.s).
+#
+# Fantina twirls round twice before she speaks. Beaten, she gives the Relic Badge and TM65, and the bollards on the
+# way to the pad back to the entrance are taken away (FLAG_HIDE_HEARTHOME_CITY_GYM_BOLLARDS). Her Badge opens the
+# road east: the gate to Route 209 lets the player through and the rival waits there (VAR_ROUTE_209_GATE_TO_
+# HEARTHOME_CITY_STATE, FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE, FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL),
+# for plan 02 · S7.
+
+
+script Fantina
+  call Twirl
+  speaker "Fantina"
+  if badge relic goto Won
+  say "Bonjour! I am Fantina, the Leader of this Gym, and my Ghost Pokémon and I, we dance in the dark."
+  say "You found the right doors, so you have good eyes and a good heart. Now, let us see you dance with us!"
+  battle self as "leader_fantina"
+  say "Magnifique! You are so very strong. I lost, but it was a beautiful battle."
+  givebadge relic
+  text "{player} received the Relic Badge from Fantina!"
+  defeat "camper_drew"
+  defeat "ace_trainer_allen"
+  defeat "ace_trainer_catherine"
+  defeat "lass_molly"
+  defeat "picnicker_cheyenne"
+  defeat "school_kid_chance"
+  defeat "school_kid_mackenzie"
+  defeat "youngster_donny"
+  setflag FLAG_HIDE_HEARTHOME_CITY_GYM_BOLLARDS
+  setvar VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 1
+  setflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE
+  clearflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
+  say "The Relic Badge lets you use Defog outside of battle. It blows away the fog that hides the way."
+label Tm
+  say "And this is for you. A move my Ghost Pokémon adore."
+  give "TM65"
+  setflag FLAG_RECEIVED_FANTINA_TM65
+  say "TM65 is Shadow Claw. It strikes from the shadows, and it finds the weak spot more often than most."
+  end
+label Won
+  if not flag FLAG_RECEIVED_FANTINA_TM65 goto Tm
+  say "Ah, {player}! You are always welcome to come and dance with us again."
+  end
+
+# Twice round, ending where she started (HearthomeGym_Movement_FantinaSpin...)
+script Twirl
+  face self left
+  wait 0.13
+  face self up
+  wait 0.13
+  face self right
+  wait 0.13
+  face self down
+  wait 0.13
+  face self left
+  wait 0.13
+  face self up
+  wait 0.13
+  face self right
+  wait 0.13
+  face self down
+  wait 0.13
+  face self player
+  return

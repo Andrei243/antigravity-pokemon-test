@@ -4,6 +4,8 @@
   "trees": "Pine",
   "architecture": "HalfTimber",
   "doors": [
+    // Gardenia's Gym and its flower clock, built to the original's plan (plan 01 · M9)
+    { "warp": 10, "map": "EternaGym", "x": 11, "y": 27, "facing": "Up" },
     { "warp": 0, "map": "EternaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 1, "map": "EternaPokeMart", "x": 4, "y": 6, "facing": "Up" },
     // The condominiums' ground floor, where a boy trades his Chatot for a Buizel (plan 06 · R12), built to the original's plan
@@ -14,8 +16,8 @@
     { "warp": 8, "to": "route_206", "toWarp": 4, "bicycle": true },
     { "warp": 9, "to": "route_206", "toWarp": 5, "bicycle": true }
   ],
-  // The cycle shop, Team Galactic's building, the houses, the herb shop and the Gym have no rooms yet (plan 01 · M11, M9)
-  "locked": [ 2, 3, 5, 6, 7, 10, 11 ],
+  // The cycle shop, Team Galactic's building, the houses and the herb shop have no rooms yet (plan 01 · M11)
+  "locked": [ 2, 3, 5, 6, 7, 11 ],
   "people": {
     "pokemon_breeder_m": {
       "name": "Man",
