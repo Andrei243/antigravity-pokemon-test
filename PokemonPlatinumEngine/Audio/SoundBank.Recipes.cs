@@ -42,6 +42,7 @@ public static partial class SoundBank
         Add("save", SoundGroup.Field, "SEQ_SE_DP_SAVE", "The game is saved.");
         Add("pc_on", SoundGroup.Field, "SEQ_SE_DP_PC_LOGIN", "A PC is switched on.");
         Add("pc_off", SoundGroup.Field, "SEQ_SE_DP_PC_LOGOFF", "A PC is switched off.");
+        Add("vs_seeker", SoundGroup.Field, "SE_DP_VS_SEEKER_BEEP_sseq", "The Vs. Seeker is used: it searches for trainers who want a rematch.");
         Add("heal", SoundGroup.Field, "SEQ_SE_DP_KAIFUKU", "A medicine used from the bag, HP restored in battle.");
         Add("levelup", SoundGroup.Menu, null, "A Pokédex completed, an evolution done: a bright arpeggio.");
         Add("bike_bell", SoundGroup.Field, "SEQ_SE_DP_JITENSYA", "Getting on the Bicycle (waits for the Bicycle, plan 02 · S2).");
@@ -264,6 +265,12 @@ public static partial class SoundBank
                 d.Tone(0, 0.4f, Wave.Sine, 120f, 120f, 0.15f, 0.2f, 1f);
                 d.Notes(0.04f, 0.06f, 0.09f, Wave.Pulse, Pitches(72, 79, 84, 88), 0.35f, 0.05f, 1.4f, 0.25f);
                 return Finish(d.S, 0.36f);
+            case "vs_seeker":
+                // A radar's sweep: three quick pulses rising, then a long ping that fades
+                d = new SoundDesign(0.9f);
+                d.Notes(0, 0.07f, 0.06f, Wave.Pulse, Pitches(84, 88, 91), 0.32f, 0.03f, 1.6f, 0.25f);
+                d.Bell(0.26f, 0.6f, N(96), 2f, 1.2f, 0.35f);
+                return Finish(d.S, 0.34f);
             case "pc_off":
                 d = new SoundDesign(0.36f);
                 d.Notes(0, 0.06f, 0.09f, Wave.Pulse, Pitches(88, 84, 79), 0.35f, 0.05f, 1.4f, 0.25f);

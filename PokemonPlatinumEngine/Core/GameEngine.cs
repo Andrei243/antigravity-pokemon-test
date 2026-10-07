@@ -34,6 +34,10 @@ public enum GameState
     Intro,
     /// <summary>Fly's map of the towns to fly to (plan 02 · S2).</summary>
     FlyMap,
+    /// <summary>The PC's Hall of Fame (plan 06 · R12).</summary>
+    HallOfFame,
+    /// <summary>The Journal's pages (plan 06 · R12).</summary>
+    Journal,
     Transition
 }
 
@@ -125,6 +129,18 @@ public partial class GameEngine
     private int playerMoney = 3000;
     private float playTime = 0f;
     private int trainerId;
+
+    /// <summary>The Trainer Card's score (plan 06 · R12, <see cref="TrainerScore"/>), and the badges it has counted.</summary>
+    private int trainerScore, scoredBadges;
+
+    /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
+    private HallOfFame hallOfFame = new();
+    private readonly HallOfFameScreen hallOfFameScreen = new();
+
+    /// <summary>The Journal's pages (plan 06 · R12) and the screen that shows them.</summary>
+    private Journal journal = new();
+    private readonly JournalScreen journalScreen = new();
+    private float rematchSpin;
     private DateTime? adventureStarted;
 
     /// <summary>What the story remembers: flags, variables, trainers beaten, items taken, the badges, the starters (plan 02 · S1).</summary>
@@ -241,8 +257,12 @@ public partial class GameEngine
         PlayerIdentity.SetRival(rival);
         trainerId = fieldRandom.Next(0, 65536);
         adventureStarted = DateTime.Now;
+        trainerScore = scoredBadges = 0;
+        hallOfFame = new HallOfFame();
+        journal = new Journal();
 
         InitializeNewGame();
+        journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
     }
 
@@ -257,7 +277,15 @@ public partial class GameEngine
         }
 
         ApplySaveData(save);
+        // The Journal opens by itself on a game left two days or more (Journal_CheckOpenOnContinue), and today's page is begun
+        bool showJournal = playerInventory.GetQuantity(ItemDatabase.Get("Journal")!) > 0 && journal.OpensOnContinue(GameClock.Today);
+        journal.TakenUp(GameClock.Today, PlaceName());
         EnterGame();
+        if (showJournal)
+        {
+            stateAfterTransition = GameState.Journal;
+            journalScreen.Open();
+        }
     }
 
     /// <summary>Fades in on the field from the black the title screen left behind.</summary>
@@ -392,6 +420,11 @@ public partial class GameEngine
         // A save from before the card had a number gets one now, and keeps it
         trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
         adventureStarted = save.Started;
+        trainerScore = save.TrainerScore;
+        hallOfFame = new HallOfFame();
+        hallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
+        journal = new Journal();
+        journal.Restore(save.Journal);
     }
 
     /// <summary>The game as it stands, as a save.</summary>
@@ -407,6 +440,11 @@ public partial class GameEngine
             RivalName = PlayerIdentity.RivalName,
             TrainerId = trainerId,
             Started = adventureStarted,
+            TrainerScore = trainerScore,
+            HallOfFameTotal = hallOfFame.Total,
+            HallOfFameDebut = hallOfFame.Debut,
+            HallOfFame = hallOfFame.Entries.Select(SavedHallOfFameEntry.From).ToList(),
+            Journal = journal.All.ToList(),
             Rules = Ruleset.Current.Preset,
             CurrentMapName = currentMap.Name,
             PlayerGridX = player.GridX,
@@ -475,6 +513,14 @@ public partial class GameEngine
                 Weathers.LandsABeat(currentMap.WeatherAt(player.GridX, player.GridY)));
             player.TickBubble(dt);
             foreach (var npc in currentMap.NPCs) npc.TickBubble(dt);
+            // A trainer waiting for a rematch spins where they stand (MOVEMENT_TYPE_VS_SEEKER_SPIN)
+            rematchSpin += dt;
+            if (rematchSpin >= 0.25f)
+            {
+                rematchSpin = 0f;
+                foreach (var npc in currentMap.NPCs.Where(n => n.ReadyForRematch && !runner.IsRunning))
+                    npc.Facing = npc.Facing switch { Direction.Down => Direction.Left, Direction.Left => Direction.Up, Direction.Up => Direction.Right, _ => Direction.Down };
+            }
         }
 
         UpdateAmbience();
@@ -570,7 +616,12 @@ public partial class GameEngine
             case GameState.PartyMenu:
                 partyScreen.Update(playerParty, dt);
                 if (partyScreen.TakeFieldMove() is var (move, index)) UseFieldMoveFromMenu(move, index);
-                else if (!partyScreen.IsActive) currentState = GameState.Overworld;
+                else if (!partyScreen.IsActive)
+                {
+                    // A script that asked for a Pokémon to be chosen hears which
+                    if (partyScreen.Choosing) scriptAnswer = partyScreen.Chosen;
+                    currentState = GameState.Overworld;
+                }
                 break;
             case GameState.FlyMap:
                 flyScreen.Update(dt);
@@ -622,6 +673,7 @@ public partial class GameEngine
                 var chosen = starterSelectScreen.Update(dt);
                 if (chosen != null)
                 {
+                    chosen.Met(PlaceName(), GameClock.Today);
                     playerParty.Add(chosen);
                     playerPokedex.RegisterSeen(chosen.Species.DexNumber);
                     playerPokedex.RegisterCaught(chosen.Species.DexNumber);
@@ -633,11 +685,28 @@ public partial class GameEngine
                 break;
             case GameState.Shop:
                 shopScreen.Update(playerInventory, ref playerMoney, ShowNotification, dt);
-                if (!shopScreen.IsActive) currentState = GameState.Overworld;
+                if (!shopScreen.IsActive)
+                {
+                    // What the visit came to is a line of the Journal (shop_menu.c)
+                    if (ShopLine(shopScreen.Purchases, shopScreen.UnitsSold) is { } line) journal.Tell(new JournalEvent(line));
+                    currentState = GameState.Overworld;
+                }
+                break;
+            case GameState.Journal:
+                journalScreen.Update(journal, dt);
+                if (!journalScreen.IsActive) currentState = GameState.Overworld;
+                break;
+            case GameState.HallOfFame:
+                hallOfFameScreen.Update(hallOfFame, dt);
+                if (!hallOfFameScreen.IsActive) currentState = GameState.Overworld;
                 break;
             case GameState.PCStorage:
                 pcScreen.Update(playerParty, pcBoxStorage, ShowNotification, dt);
-                if (!pcScreen.IsActive) currentState = GameState.Overworld;
+                if (!pcScreen.IsActive)
+                {
+                    if (pcScreen.Changed) journal.Tell(new JournalEvent(JournalEventKind.UsedPcBox));
+                    currentState = GameState.Overworld;
+                }
                 break;
             case GameState.Options:
                 if (optionsScreen.Update(Settings))
@@ -814,6 +883,8 @@ public partial class GameEngine
         }
         if (playerParty.Count > 0) Evolution.CountStep(playerParty.Members[0]);
         poketch.Step();
+        // The Vs. Seeker charges in the bag, and the rematches it found end after a hundred steps (plan 06 · R12)
+        if (VsSeeker.Step(story, playerInventory.GetQuantity(ItemDatabase.Get(VsSeeker.Item)!) > 0)) StopRematches(Direction.Down);
         // Riding out onto the water or back onto land, or getting on or off the bicycle, changes the music
         if (player.Mode != musicTravel) PlayFieldMusic();
         bool entered = EnterArea();
@@ -844,6 +915,9 @@ public partial class GameEngine
     /// up the new place's name and its music, as arriving through a door does.
     /// </summary>
     /// <returns>True when the place walked into has a script of its own, which has been started.</returns>
+    /// <summary>The name of the place the player stands in, with whoever it names filled in: where a Pokémon met here was met.</summary>
+    private string PlaceName() => PlayerIdentity.Fill(currentMap.DisplayNameAt(player.GridX, player.GridY));
+
     private bool EnterArea()
     {
         var area = currentMap.AreaAt(player.GridX, player.GridY);
@@ -1263,6 +1337,7 @@ public partial class GameEngine
                 Inventory = bag,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
+                Place = PlaceName(),
                 WildPokemon = new List<Pokemon> { wildPkmn },
                 Conditions = BattleConditionsHere(),
                 Kind = kind,
@@ -1402,6 +1477,7 @@ public partial class GameEngine
                 Inventory = playerInventory,
                 Pokedex = playerPokedex,
                 PcStorage = pcBoxStorage,
+                Place = PlaceName(),
                 Format = trainer.DoubleBattle || trainers.Count > 1 || partner != null ? BattleFormat.Double : BattleFormat.Single,
                 Trainers = trainers,
                 Partner = partner,
@@ -1453,6 +1529,7 @@ public partial class GameEngine
     private void EndBattle()
     {
         bool isDefeat = battle?.Result == BattleResult.PlayerDefeat;
+        ScoreBattle();
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && runner.IsRunning && battleMayBeLost;
         battleMayBeLost = false;
@@ -1486,6 +1563,81 @@ public partial class GameEngine
                 if (safari.OutOfBalls) StartScript(FieldScripts.SafariOutOfBalls);
             }
         });
+    }
+
+    /// <summary>The trainers who were waiting for a rematch give up (the original turns them to look about).</summary>
+    private void StopRematches(Direction facing)
+    {
+        foreach (var npc in currentMap.Everyone.Where(n => n.ReadyForRematch))
+        {
+            npc.ReadyForRematch = false;
+            npc.Facing = facing;
+        }
+    }
+
+    /// <summary>The Journal's line for a visit to a Mart: bought and sold, bought plenty, sold plenty, bought, sold, or nothing.</summary>
+    public static JournalEventKind? ShopLine(int purchases, int unitsSold) =>
+        purchases > 0 && unitsSold > 0 ? JournalEventKind.BusinessAtMart
+        : purchases > 1 ? JournalEventKind.LotsOfShopping
+        : unitsSold > 1 ? JournalEventKind.SoldALot
+        : purchases > 0 ? JournalEventKind.ShoppedAtMart
+        : unitsSold > 0 ? JournalEventKind.SoldALittle
+        : null;
+
+    /// <summary>What the Trainer Card shows now: who the player is, what they have, and its colour by what they have done.</summary>
+    private TrainerCardInfo TrainerCardNow()
+    {
+        bool famous = hallOfFame.Total > 0 || RegionDatabase.All.Any(r => story.Has(r.StoryCompleteFlag));
+        int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(playerPokedex.CaughtSpecies), 0, false, 0);
+        return new TrainerCardInfo(playerName, trainerId, playerMoney, playerPokedex.SeenCount, playerPokedex.CaughtCount, playTime,
+            story.BadgeMask, adventureStarted)
+        {
+            Score = trainerScore,
+            Stars = stars,
+            Colour = TrainerCardRules.Colour(story.Has(StoryState.PokedexFlag), stars),
+            HallOfFameDebut = hallOfFame.Debut
+        };
+    }
+
+    /// <summary>
+    /// What a battle writes in the Journal (encounter.c, UpdateJournal): a Gym Leader, one of the Elite Four or the
+    /// Champion beaten has a line of their own; any other trainer is the day's trainer; a Pokémon caught is the day's
+    /// Pokémon, and so is one knocked out once five have been in one place.
+    /// </summary>
+    private void NoteBattle()
+    {
+        if (battle == null) return;
+        string place = PlaceName();
+        if (battle.Result == BattleResult.PlayerVictory && battle.IsTrainerBattle)
+        {
+            var foe = battle.Trainers[0];
+            if (foe.TrainerClass == "Leader") journal.Tell(new JournalEvent(JournalEventKind.BeatGymLeader, foe.Name));
+            else if (foe.TrainerClass == "Elite Four") journal.Tell(new JournalEvent(JournalEventKind.BeatEliteFourMember, foe.Name));
+            else if (foe.TrainerClass == "Champion") journal.Tell(new JournalEvent(JournalEventKind.BeatChampion, foe.Name));
+            else journal.BeatTrainer(PlayerIdentity.Fill(foe.FullTitle), place);
+        }
+        else if (battle.Result == BattleResult.EnemyCaught && battle.Caught is { } caught) journal.Caught(caught.Species.Name, place);
+        else if (battle.Result == BattleResult.PlayerVictory && battle.EnemyPokemon is { } wild) journal.Defeated(wild.Species.Name, place);
+    }
+
+    /// <summary>
+    /// What a battle adds to the Trainer Card's score (the original's <c>GameRecords_IncrementTrainerScore</c>): a won
+    /// trainer battle, a wild Pokémon knocked out, or one caught (more for one of the National Pokédex than of
+    /// Sinnoh's, and twenty for a species never caught before).
+    /// </summary>
+    private void ScoreBattle()
+    {
+        if (battle == null || battle.Kind == BattleKind.CatchingLesson) return;
+        NoteBattle();
+        int points = battle.Result switch
+        {
+            BattleResult.PlayerVictory => battle.IsTrainerBattle ? TrainerScore.WonTrainerBattle : TrainerScore.WonWildBattle,
+            BattleResult.EnemyCaught when battle.Caught is { } caught =>
+                (caught.Species.SinnohNumber != null ? TrainerScore.CaughtRegional : TrainerScore.CaughtNational)
+                + (battle.CaughtNewSpecies ? TrainerScore.CaughtNewSpecies : 0),
+            _ => 0
+        };
+        trainerScore = TrainerScore.Add(trainerScore, points);
     }
 
     /// <summary>
@@ -1647,8 +1799,7 @@ public partial class GameEngine
                 pokedexScreen.Draw(VirtualWidth, VirtualHeight, playerPokedex);
                 break;
             case GameState.TrainerCard:
-                trainerCardScreen.Draw(VirtualWidth, VirtualHeight, new TrainerCardInfo(playerName, trainerId, playerMoney,
-                    playerPokedex.SeenCount, playerPokedex.CaughtCount, playTime, story.BadgeMask, adventureStarted));
+                trainerCardScreen.Draw(VirtualWidth, VirtualHeight, TrainerCardNow());
                 break;
             case GameState.SaveMenu:
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
@@ -1662,6 +1813,12 @@ public partial class GameEngine
                 break;
             case GameState.Shop:
                 shopScreen.Draw(VirtualWidth, VirtualHeight, playerMoney, playerInventory);
+                break;
+            case GameState.HallOfFame:
+                hallOfFameScreen.Draw(VirtualWidth, VirtualHeight, hallOfFame);
+                break;
+            case GameState.Journal:
+                journalScreen.Draw(VirtualWidth, VirtualHeight, journal);
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);

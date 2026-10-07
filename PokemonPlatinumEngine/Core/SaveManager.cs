@@ -110,6 +110,17 @@ public class SaveData
     /// <summary>The PC as saves before plan 06 · R12 kept it: one list, laid out thirty to a box as it loads.</summary>
     public List<SavedPokemonData> BoxStorage { get; set; } = new();
 
+    /// <summary>The Trainer Card's score (plan 06 · R12).</summary>
+    public int TrainerScore { get; set; }
+
+    /// <summary>The Hall of Fame (plan 06 · R12): how many teams have entered, when the first did, and the last thirty.</summary>
+    public int HallOfFameTotal { get; set; }
+    public DateTime? HallOfFameDebut { get; set; }
+    public List<SavedHallOfFameEntry> HallOfFame { get; set; } = new();
+
+    /// <summary>The Journal's pages, newest first (plan 06 · R12).</summary>
+    public List<JournalPage> Journal { get; set; } = new();
+
     /// <summary>The PC's boxes, each Pokémon in its place (plan 06 · R12); null in a save from before.</summary>
     public SavedBoxes? Boxes { get; set; }
     public List<SavedItemData> Inventory { get; set; } = new();
@@ -413,4 +424,14 @@ public class SavedBoxedPokemon
 {
     public int Slot { get; set; }
     public SavedPokemonData Pokemon { get; set; } = new();
+}
+
+/// <summary>A team of the Hall of Fame in a save (plan 06 · R12).</summary>
+public class SavedHallOfFameEntry
+{
+    public DateTime Date { get; set; }
+    public List<HallOfFameMember> Team { get; set; } = new();
+
+    public static SavedHallOfFameEntry From(HallOfFameEntry entry) => new() { Date = entry.Date, Team = entry.Team.ToList() };
+    public HallOfFameEntry ToEntry() => new(Date, Team);
 }

@@ -44,6 +44,9 @@ public class PCScreen
     public Pokemon? Held { get; private set; }
     public (StorageZone Zone, int Box, int Index) HeldFrom { get; private set; }
 
+    /// <summary>Whether a Pokémon was stored, moved or released this time (the Journal's line, plan 06 · R12).</summary>
+    public bool Changed { get; private set; }
+
     /// <summary>The menu of what to do with the Pokémon under the cursor, while it is open.</summary>
     public IReadOnlyList<PcAction>? Menu { get; private set; }
     public int MenuIndex { get; set; }
@@ -70,6 +73,7 @@ public class PCScreen
         // The PC opens on the box it was last left on
         Box = pc?.CurrentBox ?? 0;
         Held = null;
+        Changed = false;
         CloseMenus();
         openAge = 0f;
         AudioManager.PlaySound("pc_on");
@@ -283,6 +287,7 @@ public class PCScreen
                 for (int i = 0; i < BoxCount && pc.Boxes[box].Count >= BoxSize; i++) box = (box + 1) % BoxCount;
                 int slot = Array.IndexOf(pc.Boxes[box].Slots, null);
                 pc.Deposit(party, PartyIndex, box, slot);
+                Changed = true;
                 Box = box;
                 PartyIndex = Math.Max(0, Math.Min(PartyIndex, party.Count - 1));
                 AudioManager.PlaySound("select");
@@ -307,6 +312,7 @@ public class PCScreen
         switch (pc.Release(pokemon, party))
         {
             case ReleaseOutcome.Released:
+                Changed = true;
                 PartyIndex = Math.Max(0, Math.Min(PartyIndex, party.Count - 1));
                 onNotification($"{pokemon.DisplayName} was released outside. Bye-bye, {pokemon.DisplayName}!");
                 break;
@@ -368,6 +374,7 @@ public class PCScreen
     private void PutDown(Party party, PcBoxes pc, Action<string> onNotification)
     {
         var held = Held!;
+        Changed = true;
         if (Zone == StorageZone.BoxName) return;
         if (Zone == StorageZone.Party)
         {

@@ -158,6 +158,10 @@ public class ScriptTests
           safari start
           safari end
           turnback
+          choosepokemon
+          trade kazza
+          halloffame
+          pc halloffame
           music "sinnoh/jubilife"
           music area
           music stop
@@ -204,6 +208,7 @@ public class ScriptTests
               if result != 1 end
               if defeated self end
               if defeated "roark" end
+              if rematch self end
               if taken "item_potion" end
               if starter "Piplup" end
               if money >= 500 end
@@ -971,6 +976,9 @@ public class ScriptTests
         public bool Teleport() => true;
         public bool Escape() => true;
         public void Turnback() { }
+        public bool Trade(string trade, int slot) => false;
+        public void EnterHallOfFame() { }
+        public void Note(JournalEvent line) { }
         public bool SweetScent() => false;
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }

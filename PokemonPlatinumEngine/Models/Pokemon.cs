@@ -380,6 +380,14 @@ public class Pokemon
     /// <summary>The day it was met (the game's own day, <see cref="Core.GameClock.Today"/>).</summary>
     public DateTime? MetDate { get; set; }
 
+    /// <summary>Notes where, on what day and at what level it was met, as catching it or being given it does.</summary>
+    public void Met(string? place, DateTime day)
+    {
+        MetLocation = place;
+        MetLevel = Level;
+        MetDate = day.Date;
+    }
+
     /// <summary>
     /// The language of the game it came from, when not this one's (plan 06 · R12): a Pokémon from abroad gains 1.7
     /// times the EXP instead of 1.5. Null for one of this game's language.

@@ -192,12 +192,15 @@ public static class ScriptParser
                 string who = r.Who();
                 if (who == "player") throw r.Error("the player can't be battled");
                 // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
-                bool mayLose = false, byId = false, first = false;
+                bool mayLose = false, byId = false, first = false, rematch = false;
                 string second = "", partner = "", asTrainer = "";
                 while (r.More)
                 {
-                    switch (r.OneOf("canlose", "first", "and", "with", "as"))
+                    switch (r.OneOf("canlose", "first", "and", "with", "as", "rematch"))
                     {
+                        case "rematch":
+                            rematch = true;
+                            break;
                         case "as":
                             asTrainer = r.Text("a trainer's id");
                             break;
@@ -218,7 +221,7 @@ public static class ScriptParser
                             break;
                     }
                 }
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer };
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch };
             }
             case "wildbattle":
             case "catchinglesson":
@@ -349,9 +352,20 @@ public static class ScriptParser
             case "shop":
                 return new Instruction { Op = Op.Shop, Line = line, Name = r.More ? r.Text("a counter's key") : "" };
             case "pc":
-                return new Instruction { Op = Op.Pc, Line = line };
+                // "pc halloffame" opens the Hall of Fame's records instead of the boxes (plan 06 · R12)
+                return new Instruction { Op = Op.Pc, Line = line, Name = r.More ? r.OneOf("halloffame") : "" };
+            case "halloffame":
+                return new Instruction { Op = Op.HallOfFame, Line = line };
             case "travel":
                 return new Instruction { Op = Op.Travel, Line = line };
+            case "choosepokemon":
+                return new Instruction { Op = Op.ChoosePokemon, Line = line };
+            case "trade":
+            {
+                string trade = r.Word("a trade");
+                if (Models.NpcTrades.Get(trade) == null) throw r.Error($"'{trade}' is no trade (NpcTrades)");
+                return new Instruction { Op = Op.Trade, Line = line, Name = trade };
+            }
 
             case "script":
             case "label":
@@ -413,6 +427,8 @@ public static class ScriptParser
                 return Counted(Query.Result);
             case "defeated":
                 return new Condition { Query = Query.Defeated, Negated = negated, Name = r.Text("a trainer's id, or self") };
+            case "rematch":
+                return new Condition { Query = Query.Rematch, Negated = negated, Name = r.Text("self") };
             case "taken":
                 return new Condition { Query = Query.Taken, Negated = negated, Name = r.Text("an item's id") };
             case "starter":

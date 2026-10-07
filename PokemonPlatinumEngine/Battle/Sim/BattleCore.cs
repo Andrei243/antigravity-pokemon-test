@@ -1013,7 +1013,7 @@ public sealed partial class BattleCore : IBattleContext
                 }
                 bool past = p.Species.LevelEvolution is { } next && p.Level >= next.Level;
                 int exp = Formulas.ScaledExp(foe.BaseExpYield, foe.Level, p.Level, fought.Contains(p), traded,
-                    p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, past);
+                    p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, past, foreign: p.Language != null);
                 Give(p, exp, traded, foe);
             }
             return;
@@ -1029,7 +1029,7 @@ public sealed partial class BattleCore : IBattleContext
             int part = (fought.Contains(p) ? share : 0) + (holders.Contains(p) ? shared : 0);
             if (part == 0) continue;
             bool traded = Obedience.IsOutsider(p, Conditions.Player);
-            Give(p, Formulas.ExpFor(part, p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, IsTrainerBattle, traded), traded, foe);
+            Give(p, Formulas.ExpFor(part, p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, IsTrainerBattle, traded, foreign: p.Language != null), traded, foe);
         }
     }
 

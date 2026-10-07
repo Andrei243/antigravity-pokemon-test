@@ -117,6 +117,9 @@ public partial class GameEngine
     {
         if (!startOver && presenceRevision == story.Revision) return;
         presenceRevision = story.Revision;
+        // Each badge won adds to the Trainer Card's score; a loaded save has counted its own already
+        if (startOver) scoredBadges = story.BadgeCount;
+        for (; scoredBadges < story.BadgeCount; scoredBadges++) trainerScore = TrainerScore.Add(trainerScore, TrainerScore.Badge);
         // A place the story reveals is in the map from then on, and drawn again (the Spring Path, plan 01 · M8)
         foreach (var (map, place) in MapDatabase.ApplyHiddenPlaces(story.Var))
             world?.Forget(map, place.X, place.Y, place.Width, place.Height);
@@ -138,6 +141,35 @@ public partial class GameEngine
         arrived = true;
     }
 
+    // Where the player was before the place they have come to: what the Journal says of leaving it
+    private string leftMap = "", leftPlace = "";
+    private bool leftCave;
+
+    /// <summary>
+    /// The Journal's lines for leaving a place (plan 06 · R12; the original's map transitions): out of a cave into
+    /// the open, out of home or the professor's lab, and into a Gym without its Badge.
+    /// </summary>
+    private void NoteLeaving(bool cave)
+    {
+        bool outdoors = !cave && currentMap.IsStreamed && currentMap.Name == "Sinnoh";
+        if (leftCave && outdoors) journal.Tell(new JournalEvent(JournalEventKind.LeftCave, leftPlace));
+        if (leftMap == "PlayerHouse" && outdoors) journal.Tell(new JournalEvent(JournalEventKind.RestedAtHome));
+        if (leftMap == "RowanLab" && outdoors) journal.Tell(new JournalEvent(JournalEventKind.LeftResearchLab));
+        if (Gyms.TryGetValue(currentMap.Name, out var gym) && leftMap == "Sinnoh" && !story.HasBadge(gym.Badge))
+            journal.Tell(new JournalEvent(JournalEventKind.GymWasTooTough, gym.Town));
+        journal.ChangedPlace();
+        leftMap = currentMap.Name;
+        leftPlace = PlaceName();
+        leftCave = cave;
+    }
+
+    /// <summary>The Gyms built so far, by their room: the town and the Badge (the original's <c>sGymsInfo</c>).</summary>
+    private static readonly Dictionary<string, (string Town, Badge Badge)> Gyms = new()
+    {
+        ["OreburghGym"] = ("Oreburgh", Badge.Coal),
+        ["EternaGym"] = ("Eterna", Badge.Forest)
+    };
+
     /// <summary>
     /// The player has come to another place, by a warp or a step into another area: what lasted only while they
     /// stayed is forgotten (plan 02 · S2), as the original does when the map's header changes: the place's local
@@ -147,6 +179,10 @@ public partial class GameEngine
     private void ChangePlace()
     {
         bool cave = currentMap.AreaAt(player.GridX, player.GridY)?.IsCave ?? currentMap.IsCave;
+        NoteLeaving(cave);
+        // Going anywhere else ends the rematches the Vs. Seeker found (FieldMapChange_UpdateGameData)
+        VsSeeker.Reset(story);
+        foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) foreach (var npc in map.Everyone) npc.ReadyForRematch = false;
         FieldMoveRules.LeavePlace(story, cave);
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (player.Mode == TravelMode.Cycling && !currentMap.BikeAllowedAt(player.GridX, player.GridY)) player.SetCycling(false);
@@ -212,7 +248,39 @@ public partial class GameEngine
     private void NoteArrival()
     {
         if (currentMap.AreaAt(player.GridX, player.GridY)?.Key is { } key && SpawnLocations.ArrivedIn(key) is { } town)
+        {
+            // A town come to for the first time is a line of the Journal (field_map_change_flags.c)
+            if (!story.Has(town.ArrivalFlag)) journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, PlaceName()));
             story.Set(town.ArrivalFlag);
+        }
+    }
+
+    /// <summary>
+    /// The Vs. Seeker used (plan 06 · R12): on the open map, with its battery full, every trainer in range not yet
+    /// beaten shows a "!", and those beaten who want a rematch spin with a "!!".
+    /// </summary>
+    private void UseVsSeeker()
+    {
+        bool outdoors = currentMap.Name == "Sinnoh" && !(currentMap.AreaAt(player.GridX, player.GridY)?.IsCave ?? false);
+        switch (VsSeeker.Use(currentMap, player.GridX, player.GridY, outdoors, story, Dice.Shared, out var ready, out var notYet))
+        {
+            case VsSeekerResult.NotCharged:
+                ShowNotification($"The battery isn't charged enough. {VsSeeker.FullBattery - story.Var(VsSeeker.Battery)} steps to go!");
+                AudioManager.PlaySound("error");
+                return;
+            case VsSeekerResult.NoTrainers:
+                ShowNotification("There are no Trainers in range who want to battle.");
+                AudioManager.PlaySound("error");
+                return;
+        }
+        AudioManager.PlaySound("vs_seeker");
+        foreach (var npc in notYet) npc.ShowBubble(EmoteBubble.Exclaim, 1.2f);
+        foreach (var npc in ready)
+        {
+            npc.Facing = Direction.Down;
+            npc.ShowBubble(EmoteBubble.Exclaim, 1.6f);
+        }
+        if (ready.Count == 0 && notYet.Count == 0) ShowNotification("No Trainers are ready for a rematch yet.");
     }
 
     /// <summary>
@@ -222,6 +290,17 @@ public partial class GameEngine
     private void UseFieldItem(ItemData item)
     {
         int x = player.GridX, y = player.GridY;
+        if (item.FieldUse == "Journal")
+        {
+            currentState = GameState.Journal;
+            journalScreen.Open();
+            return;
+        }
+        if (item.FieldUse == "VsSeeker")
+        {
+            UseVsSeeker();
+            return;
+        }
         if (item.FieldUse == "Bicycle")
         {
             var check = BicycleRules.Check(currentMap, x, y, player.Mode, story.Has(BicycleRules.OnCyclingRoadFlag));
@@ -687,6 +766,14 @@ public partial class GameEngine
                     game.shopScreen.Open(game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY),
                         MartDatabase.Stock(counter ?? subject?.Mart, game.story.BadgeCount));
                     break;
+                case ScriptScreen.HallOfFame:
+                    game.currentState = GameState.HallOfFame;
+                    game.hallOfFameScreen.Open();
+                    break;
+                case ScriptScreen.ChoosePokemon:
+                    game.currentState = GameState.PartyMenu;
+                    game.partyScreen.OpenToChoose();
+                    break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
@@ -704,10 +791,27 @@ public partial class GameEngine
             }
         }
 
+        public void EnterHallOfFame()
+        {
+            game.hallOfFame.Enter(game.playerParty, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.trainerId), DateTime.Now);
+            game.trainerScore = TrainerScore.Add(game.trainerScore, TrainerScore.HallOfFame);
+        }
+
+        public bool Trade(string trade, int slot)
+        {
+            if (NpcTrades.Get(trade) is not { } t || NpcTrades.Trade(t, game.playerParty, slot, GameClock.Today) is not { } received) return false;
+            game.playerPokedex.RegisterSeen(received.Species.DexNumber);
+            game.playerPokedex.RegisterCaught(received.Species.DexNumber);
+            AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
+            return true;
+        }
+
         public bool GivePokemon(Pokemon pokemon)
         {
             game.playerPokedex.RegisterSeen(pokemon.Species.DexNumber);
             game.playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
+            // A gift is met where it is given (Pokemon_GiveMonFromScript)
+            pokemon.Met(game.PlaceName(), GameClock.Today);
             if (game.playerParty.Add(pokemon)) return true;
             game.pcBoxStorage.Store(pokemon);
             return false;
@@ -719,7 +823,13 @@ public partial class GameEngine
 
         // ---- field moves
 
-        public void UseMove(FieldMove move, Pokemon user, NPC? subject) => game.StartCutIn(move, user, subject);
+        public void UseMove(FieldMove move, Pokemon user, NPC? subject)
+        {
+            game.journal.Tell(new JournalEvent(JournalEventKind.UsedFieldMove, FieldMoveRules.MoveName(move)));
+            game.StartCutIn(move, user, subject);
+        }
+
+        public void Note(JournalEvent line) => game.journal.Tell(line);
 
         public bool Surf()
         {

@@ -182,8 +182,14 @@ script Trainer
   battle self
   end
 label Beaten
+  # The Vs. Seeker found them wanting a rematch (plan 06 · R12): the team of the level the story has reached
+  if rematch self goto Rematch
   trainerline after
   if result == 0 sayown
+  end
+label Rematch
+  trainerline before
+  battle self rematch
   end
 
 

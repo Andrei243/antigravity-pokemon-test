@@ -116,7 +116,12 @@ public partial class BattleEngine
 
     private readonly BattleCore core;
     private readonly BattleMirror mirror = new();
+    /// <summary>The Pokémon the player caught, and whether its species had never been caught before (the card's score).</summary>
+    public Pokemon? Caught { get; private set; }
+    public bool CaughtNewSpecies { get; private set; }
+
     private readonly PcBoxes? pcBoxStorage;
+    private readonly string? place;
     private readonly List<Pokemon> leveledUpPokemon = new();
 
     // What is still to be shown: lines that wait to be read, and things that happen between them
@@ -160,6 +165,7 @@ public partial class BattleEngine
         PlayerInventory = setup.Inventory;
         Pokedex = setup.Pokedex;
         pcBoxStorage = setup.PcStorage;
+        place = setup.Place;
         Trainers = setup.Trainers;
 
         Kind = setup.Kind;
@@ -529,9 +535,13 @@ public partial class BattleEngine
                 AudioManager.PlayMusic(MusicRole.VictoryWild);
                 // The catching lesson's catch is the assistant's: neither the player's Pokédex nor their team hears of it
                 if (Kind == BattleKind.CatchingLesson) break;
+                CaughtNewSpecies = !Pokedex.IsCaught(mine.Species.DexNumber);
+                Caught = mine;
                 Pokedex.RegisterCaught(mine.Species.DexNumber);
                 mine.ResetStatStages();
                 mine.Ball = caught.Ball;
+                // Where, when and at what level it was met (Pokemon_SetCatchData)
+                mine.Met(place, GameClock.Today);
                 if (caught.ToBox) pcBoxStorage?.Store(mine);
                 else PlayerParty.Add(mine);
                 break;

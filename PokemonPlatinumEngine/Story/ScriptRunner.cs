@@ -259,6 +259,8 @@ public sealed class ScriptRunner
                 host.Bag.AddItem(item, count);
                 lastItem = item.Name;
                 host.Fanfare(FanfareFor(item));
+                // A ball picked up off the ground is a line of the Journal (scripts_visible_items.s); a gift or a hidden find isn't
+                if (i.Op == Op.Find && Subject?.IsItemBall == true) host.Note(new JournalEvent(JournalEventKind.ItemWasObtained, item.Name));
                 string verb = i.Op == Op.Find ? "found" : "received";
                 var lines = new List<string> { count == 1 ? $"{{player}} {verb} the {item.Name}!" : $"{{player}} {verb} {count} × {item.Name}!" };
                 // A TM or an HM says what it holds
@@ -337,6 +339,24 @@ public sealed class ScriptRunner
                     partner = beside.TrainerData ?? throw Wrong(i, $"{beside.Name} is no trainer and can't battle beside the player");
                 }
                 bool mayLose = i.Option;
+                // A rematch the Vs. Seeker found: the trainer brings the team of the level the story has reached, for
+                // this battle, and stops waiting for one (VsSeeker_GetRematchTrainerID, SetMoveCodeForFacingDirection)
+                var own = foe.TrainerData;
+                if (i.Rematch && own != null && TrainerDatabase.Get(own.Id) is { } ownRecord && VsSeeker.RematchTeam(ownRecord, story) is { } rematchId
+                    && TrainerDatabase.Get(rematchId) is { } rematch)
+                {
+                    var team = new Trainer { Id = rematch.Id, Name = own.Name, TrainerClass = own.TrainerClass, DialogueBefore = own.DialogueBefore, DialogueAfter = own.DialogueAfter };
+                    TrainerDatabase.Fill(team, rematch);
+                    foe.TrainerData = team;
+                    foe.ReadyForRematch = false;
+                    host.Battle(foe, second, partner, mayLose, i.FirstBattle);
+                    afterBusy = () =>
+                    {
+                        foe.TrainerData = own;
+                        AfterBattle(mayLose);
+                    };
+                    break;
+                }
                 host.Battle(foe, second, partner, mayLose, i.FirstBattle);
                 afterBusy = () => AfterBattle(mayLose);
                 break;
@@ -455,11 +475,22 @@ public sealed class ScriptRunner
                 host.Open(ScriptScreen.Shop, Subject, i.Name.Length > 0 ? i.Name : null);
                 break;
             case Op.Pc:
-                host.Open(ScriptScreen.Pc, Subject);
+                host.Open(i.Name == "halloffame" ? ScriptScreen.HallOfFame : ScriptScreen.Pc, Subject);
+                break;
+            case Op.HallOfFame:
+                host.EnterHallOfFame();
                 break;
             case Op.Travel:
                 host.Open(ScriptScreen.Travel, Subject);
                 afterBusy = () => Result = host.Answer;
+                break;
+            case Op.ChoosePokemon:
+                host.Open(ScriptScreen.ChoosePokemon, Subject);
+                afterBusy = () => Result = host.Answer;
+                break;
+            case Op.Trade:
+                // The Pokémon chosen last (choosepokemon's RESULT) for the trade's: 1 if it was the one asked for
+                Result = host.Trade(i.Name, Result) ? 1 : 0;
                 break;
 
             default:
@@ -569,6 +600,7 @@ public sealed class ScriptRunner
             Query.Lost => lastOutcome == BattleOutcome.Lost,
             Query.Result => Condition.Holds(Result, c.Compare, c.Number),
             Query.Defeated => c.Name == "self" ? SubjectDefeated(at) : story.HasDefeated(c.Name),
+            Query.Rematch => (Subject ?? throw Wrong(at, "'rematch self' needs someone the script belongs to")).ReadyForRematch,
             Query.Taken => story.HasTaken(c.Name),
             Query.Starter => story.PlayerStarter == c.Name,
             Query.Money => Condition.Holds(host.Money, c.Compare, c.Number),

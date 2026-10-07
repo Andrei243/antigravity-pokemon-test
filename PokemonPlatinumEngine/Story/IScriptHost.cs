@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Story;
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -97,6 +97,18 @@ public interface IScriptHost
     /// 2); the way to another region sets it to 1 where there is one from here and 0 where there is none.
     /// </summary>
     void Open(ScriptScreen screen, NPC? subject, string? counter = null);
+
+    /// <summary>
+    /// Trades the team's Pokémon at <paramref name="slot"/> for the given trade's (<see cref="NpcTrades"/>): false,
+    /// with nothing changed, when it isn't the species the trade asks for.
+    /// </summary>
+    bool Trade(string trade, int slot);
+
+    /// <summary>Writes a line in the Journal (plan 06 · R12).</summary>
+    void Note(JournalEvent line);
+
+    /// <summary>Enters the team into the Hall of Fame (<see cref="Models.HallOfFame"/>) on this day.</summary>
+    void EnterHallOfFame();
 
     /// <summary>Adds a Pokémon to the team, or to the PC when the team is full; true if it went to the team.</summary>
     bool GivePokemon(Pokemon pokemon);

@@ -85,7 +85,41 @@ public sealed partial class Importer
             t.PrizeMoney = last * 4 * prizeMul.GetValueOrDefault(classConstant) * (t.DoubleBattle ? 2 : 1);
             trainers.Add(t);
         }
+        AddRematches(trainers);
         return trainers;
+    }
+
+    /// <summary>
+    /// The Vs. Seeker's rematch table (plan 06 · R12; <c>gVsSeekerRematchData</c> in <c>src/overlay005/vs_seeker.c</c>):
+    /// for each trainer who can be battled again, the team of each of the five levels the Vs. Seeker unlocks, a
+    /// level with none of its own left out (<c>_</c>, null here) and the row ending where the original's does. A
+    /// trainer whose row is <c>NoUniqueRematches</c> battles again with the same team (one level, its own id).
+    /// </summary>
+    private void AddRematches(List<TrainerRecord> trainers)
+    {
+        string text = decomp.Source("overlay005", "vs_seeker.c");
+        // The rows, from inside the array's own brace to its end
+        int start = text.IndexOf('{', text.IndexOf("gVsSeekerRematchData[]", StringComparison.Ordinal)) + 1;
+        string table = text[start..text.IndexOf("};", start, StringComparison.Ordinal)];
+        var byId = trainers.ToDictionary(t => t.Id);
+        static string Id(string constant) => constant["TRAINER_".Length..].ToLowerInvariant();
+        foreach (Match row in Regex.Matches(table, @"NoUniqueRematches\((TRAINER_\w+)\)|\{([^}]*)\}"))
+        {
+            List<string?> levels;
+            string first;
+            if (row.Groups[1].Success)
+            {
+                first = Id(row.Groups[1].Value);
+                levels = new List<string?> { first };
+            }
+            else
+            {
+                var cells = row.Groups[2].Value.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+                first = Id(cells[0]);
+                levels = cells.Skip(1).TakeWhile(c => c != "VS_SEEKER_REMATCH_DATA_END").Select(c => c == "_" ? null : Id(c)).ToList();
+            }
+            if (byId.TryGetValue(first, out var trainer)) trainer.Rematches = levels;
+        }
     }
 
     /// <summary>A table of the original's indexed by trainer class (<c>[TRAINER_CLASS_X] = value,</c>).</summary>

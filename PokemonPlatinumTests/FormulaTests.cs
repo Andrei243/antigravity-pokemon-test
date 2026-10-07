@@ -113,6 +113,11 @@ public class FormulaTests
         Assert.Equal(247, Formulas.ExpFor(165, luckyEgg: true, trainerBattle: false));
         Assert.Equal(247, Formulas.ExpFor(165, luckyEgg: false, trainerBattle: true));
         Assert.Equal(370, Formulas.ExpFor(165, luckyEgg: true, trainerBattle: true));
+        // Another trainer's Pokémon, last: 370 × 150 / 100 = 555; from a game in another language 370 × 170 / 100 = 629
+        Assert.Equal(555, Formulas.ExpFor(165, luckyEgg: true, trainerBattle: true, traded: true));
+        Assert.Equal(629, Formulas.ExpFor(165, luckyEgg: true, trainerBattle: true, traded: true, foreign: true));
+        // The language counts only for a traded Pokémon (BtlCmd_CalcExpGain asks it after the OT check)
+        Assert.Equal(370, Formulas.ExpFor(165, luckyEgg: true, trainerBattle: true, foreign: true));
     }
 
     [Fact]

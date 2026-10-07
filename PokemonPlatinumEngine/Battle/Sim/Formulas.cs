@@ -134,14 +134,14 @@ public static class Formulas
 
     /// <summary>
     /// What one Pokémon gets of it: half as much again with a Lucky Egg, again from a trainer's Pokémon, and again
-    /// for a Pokémon that came from another trainer (<c>BattleSystem_PokemonIsOT</c>; seven tenths more for one
-    /// from a game in another language, which this game has none of).
+    /// for a Pokémon that came from another trainer (<c>BattleSystem_PokemonIsOT</c>), or seven tenths more for one
+    /// from a game in another language (plan 06 · R12: the Meister's Magikarp), each step rounded down.
     /// </summary>
-    public static int ExpFor(int share, bool luckyEgg, bool trainerBattle, bool traded = false)
+    public static int ExpFor(int share, bool luckyEgg, bool trainerBattle, bool traded = false, bool foreign = false)
     {
         if (luckyEgg) share = share * 150 / 100;
         if (trainerBattle) share = share * 150 / 100;
-        if (traded) share = share * 150 / 100;
+        if (traded) share = share * (foreign ? 170 : 150) / 100;
         return share;
     }
 
@@ -151,11 +151,11 @@ public static class Formulas
     /// plus one; then half as much again for one from another trainer, again with a Lucky Egg, and a fifth more
     /// for one past the level it would evolve at. Each step is rounded down.
     /// </summary>
-    public static int ScaledExp(int baseExp, int foeLevel, int level, bool fought, bool traded, bool luckyEgg, bool pastEvolution)
+    public static int ScaledExp(int baseExp, int foeLevel, int level, bool fought, bool traded, bool luckyEgg, bool pastEvolution, bool foreign = false)
     {
         double scale = Math.Pow((2.0 * foeLevel + 10) / (foeLevel + level + 10), 2.5);
         int exp = (int)Math.Floor(baseExp * foeLevel / 5.0 / (fought ? 1 : 2) * scale) + 1;
-        if (traded) exp = exp * 150 / 100;
+        if (traded) exp = exp * (foreign ? 170 : 150) / 100;
         if (luckyEgg) exp = exp * 150 / 100;
         if (pastEvolution) exp = exp * 120 / 100;
         return exp;

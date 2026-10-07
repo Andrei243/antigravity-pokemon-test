@@ -48,6 +48,12 @@ public class NPC
     }
     public bool HasBattled { get; set; } = false;
 
+    /// <summary>
+    /// A trainer the Vs. Seeker found wanting a rematch (plan 06 · R12): spins where they stand until spoken to, a
+    /// hundred steps go by or the player goes somewhere else. Never saved, as in the original.
+    /// </summary>
+    public bool ReadyForRematch { get; set; }
+
     // Walking (a trainer stepping up to the player): the grid position is where the current step ends
     public float StepOffsetX { get; set; }
     public float StepOffsetY { get; set; }

@@ -40,6 +40,9 @@ public sealed class BattleSetup
     /// <summary>Where caught Pokémon go when the party is full.</summary>
     public PcBoxes? PcStorage { get; init; }
 
+    /// <summary>The name of the place it is fought in: where a Pokémon caught in it was met (plan 06 · R12).</summary>
+    public string? Place { get; init; }
+
     public BattleFormat Format { get; init; } = BattleFormat.Single;
 
     /// <summary>The wild Pokémon met (one, or two in a wild double battle). Empty in trainer battles.</summary>

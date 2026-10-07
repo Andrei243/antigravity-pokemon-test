@@ -238,12 +238,17 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public BattleOutcome Outcome { get; private set; }
 
+    /// <summary>The place of the team's Pokémon chosen when a script asks for one (<c>choosepokemon</c>); 255 backs out.</summary>
+    public int PokemonChoice { get; set; }
+
     public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
     {
         Shown("open a screen");
         Waits();
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}" : $"open {screen}");
         Answer = 0;
+        // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
+        if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
@@ -254,8 +259,35 @@ public sealed class HeadlessScriptHost : IScriptHost
         Answer = choice;
     }
 
+    /// <summary>The Hall of Fame the script entered teams into.</summary>
+    public HallOfFame HallOfFame { get; } = new();
+
+    /// <summary>The Journal the script wrote in.</summary>
+    public Journal Journal { get; } = new();
+
+    public void Note(JournalEvent line)
+    {
+        if (Journal.Today == null) Journal.TakenUp(GameClock.Today, "");
+        Journal.Tell(line);
+        Log.Add($"journal {line.Kind} {line.Subject}");
+    }
+
+    public void EnterHallOfFame()
+    {
+        HallOfFame.Enter(Party, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (PlayerName, 0), GameClock.Today);
+        Log.Add("halloffame");
+    }
+
+    public bool Trade(string trade, int slot)
+    {
+        bool done = NpcTrades.Get(trade) is { } t && NpcTrades.Trade(t, Party, slot, GameClock.Today) != null;
+        Log.Add($"trade {trade} {(done ? "done" : "refused")}");
+        return done;
+    }
+
     public bool GivePokemon(Pokemon pokemon)
     {
+        pokemon.Met(Map?.DisplayNameAt(PlayerTile.X, PlayerTile.Y), GameClock.Today);
         if (Party.Add(pokemon)) return true;
         Box.Add(pokemon);
         return false;
