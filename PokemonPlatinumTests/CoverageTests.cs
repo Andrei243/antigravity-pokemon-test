@@ -58,7 +58,7 @@ public class CoverageTests
         // All 123 since plan 06 · R7
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(0, n.LaterAbilitiesRun, "later abilities with an effect");
-        AtLeast(297, n.PlatinumItemsFully, "Platinum's items that work");
+        AtLeast(299, n.PlatinumItemsFully, "Platinum's items that work");
         AtLeast(350, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         AtLeast(0, n.SpecialMovesRun, "Z-Moves and Max Moves run");

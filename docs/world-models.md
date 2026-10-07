@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-176 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+179 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -98,7 +98,8 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d11s01` | a great standing stone of Amity Square | a prop: Outcrop |  | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
 | `d16_o01` | lava on Stark Mountain's flank | nothing of its own: the ground under it draws it | M10 | 7.0 × 8.0 × 0.0 | 2 | Stark Mountain |
 | `d16_o02` | the mouth of Stark Mountain | a prop: Outcrop | M10 | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
-| `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 2 | Solaceon Ruins |
+| `d20_o01b` | the pillar in the middle of Turnback Cave's pillar room | a prop: Column |  | 1.8 × 1.8 × 4.6 | 1 | Turnback Cave |
+| `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 5 | Solaceon Ruins, Turnback Cave |
 | `d23_yane` | the Mansion's back, over the Trophy Garden | a building: Mansion |  | 32.0 × 5.5 × 4.8 | 1 | Trophy Garden |
 | `d24_o01` | the tower of a lift between the levels of Iron Island's tunnels | a prop: Headframe |  | 3.0 × 2.8 × 8.5 | 3 | Iron Island |
 | `d2_s01` | a wind turbine | a prop: WindTurbine |  | 2.8 × 5.4 × 8.3 | 3 | Valley Windworks |
@@ -148,6 +149,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
 | `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 12 | Lake Acuity, Lake Valor, Lake Verity |
+| `l_lake_l4` | the surface of a lake | nothing of its own: the ground under it draws it |  | 20.0 × 16.0 × 0.0 | 1 | Sendoff Spring |
 | `lift_base01` | the platform at the foot of a lift on Iron Island | a prop: LiftBase |  | 3.0 × 2.3 × 0.9 | 2 | Iron Island |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |
 | `pc` | a Pokémon Center | a building: PokemonCenter |  | 5.2 × 3.6 × 3.9 | 16 | Canalave City, Celestic Town, Eterna City and 13 more |
@@ -193,8 +195,9 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `wfall3_4dun` | a waterfall in a cave (Victory Road) | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 4.6 | 2 | Victory Road |
 | `wfall3_5` | a waterfall | nothing of its own: the ground under it draws it |  | 3.0 × 0.8 × 5.6 | 1 | Route 208 |
 | `wfall7_4dun` | a waterfall in a cave (Mt. Coronet's fourth floor) | nothing of its own: the ground under it draws it |  | 7.0 × 0.8 × 4.6 | 1 | Mt. Coronet |
+| `yabu_ana_in` | the rift in the floor of Giratina's room in Turnback Cave | nothing of its own: the ground under it draws it |  | 2.0 × 2.0 × 0.0 | 1 | Turnback Cave |
 
 ## In numbers
 
-- 88 models are buildings, of 26 kinds; 62 are props; 13 are doors.
+- 88 models are buildings, of 26 kinds; 63 are props; 13 are doors.
 - 21 have a stand-in for now: 14 until M10, 7 until M8.

@@ -245,6 +245,8 @@ public static class WorldModels
         // ---------------------------------------------------------------- places of their own
         Thing("d11s01", PropType.Outcrop, "a great standing stone of Amity Square"),
         Thing("d20_o03", PropType.Outcrop, "a block of carved stone in the Solaceon Ruins"),
+        Thing("d20_o01b", PropType.Column, "the pillar in the middle of Turnback Cave's pillar room"),
+        Ground("yabu_ana_in", "the rift in the floor of Giratina's room in Turnback Cave"),
         Thing("d11_o01a", PropType.Bench, "a bench in Amity Square"),
         Thing("d11_o01b", PropType.Bench, "a bench in Amity Square"),
         Thing("d11_o02a", PropType.FlowerBed, "a flower bed of Amity Square"),
