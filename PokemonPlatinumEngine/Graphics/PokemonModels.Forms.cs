@@ -10,7 +10,8 @@ namespace PokemonPlatinumEngine.Graphics;
 // Rotom's five appliances, Giratina's Origin Forme, Burmy's and Wormadam's sandy and trash cloaks, Shellos's and
 // Gastrodon's East Sea colours, Cherrim in the sun and Unown's other letters; and those it gives the popular species
 // from outside its Pokédex, hand-built since: Castform's weathers and Deoxys's formes (their builds in
-// PokemonModels.Hoenn3.cs). Each is our own sculpt after the design.
+// PokemonModels.Hoenn3.cs), Shaymin's Sky Forme and Arceus's types (Arceus's build in PokemonModels.Sinnoh5.cs).
+// Each is our own sculpt after the design.
 internal static partial class PokemonModels
 {
     /// <summary>What Burmy has wrapped round itself, and what Wormadam's gown grew from.</summary>
@@ -533,4 +534,62 @@ internal static partial class PokemonModels
     private static PokeBuilder DeoxysDefense() => DeoxysBuild(2);
 
     private static PokeBuilder DeoxysSpeed() => DeoxysBuild(3);
+
+    // ------------------------------------------------------------------ Shaymin's Sky Forme
+
+    /// <summary>
+    /// Shaymin in its Sky Forme: a slender little white deer, its legs green from the knee, a tuft of green on its
+    /// crown, great white ears spread from the sides of its head like wings of feathers, a scarf of two red leaves round
+    /// its neck, green eyes and a short white tail.
+    /// </summary>
+    private static PokeBuilder ShayminSky()
+    {
+        var b = new PokeBuilder("Shaymin-Sky", 0.6f, BodyPlan.Quadruped, V(0, 0.27f, 0)) { Coat = Fur };
+        var white = Rgb(240, 242, 244);
+        var green = Rgb(112, 192, 92);
+        var red = Rgb(214, 70, 64);
+        BeastLegs(b, 0.04f, 0.25f, 0.07f, -0.08f, 0.026f, white, green, green);
+        var bc = V(0, 0.27f, -0.005f);
+        b.Ell(Body, bc, V(0.065f, 0.06f, 0.11f), white);
+        var neck = bc + V(0, 0.12f, 0.1f);
+        b.Limb(Body, bc + V(0, 0.03f, 0.07f), neck, 0.04f, 0.032f, white);
+        // The scarf: a band of red round the neck and two red leaves fluttering from it to one side
+        b.Ell(Body, bc + V(0, 0.075f, 0.085f), V(0.044f, 0.018f, 0.04f), red, V(-30f, 0, 0), blend: 0.01f);
+        var knot = bc + V(0.035f, 0.07f, 0.09f);
+        Frond(b, Body, knot, knot + V(0.09f, -0.03f, -0.03f), 0.022f, red, V(0, 1f, 0.3f), 0.25f, Leaf);
+        Frond(b, Body, knot, knot + V(0.08f, 0.02f, -0.07f), 0.02f, red, V(0, 1f, 0.3f), 0.25f, Leaf);
+        int head = b.Head(neck);
+        var c = neck + V(0, 0.05f, 0.01f);
+        var r = V(0.048f, 0.048f, 0.05f);
+        b.Ell(head, c, r, white);
+        b.Ell(head, c + V(0, -0.015f, 0.045f), V(0.026f, 0.022f, 0.03f), white, blend: 0.02f);
+        b.Mark(head, c + V(0, -0.008f, 0.075f), V(0, 0.2f, 1f), 0.007f, 0.005f, Rgb(50, 50, 56));
+        // The tuft of green on its crown
+        foreach (var (x, up, back) in new[] { (-0.02f, 0.06f, 0.03f), (0f, 0.075f, 0.01f), (0.02f, 0.06f, 0.03f), (0f, 0.05f, 0.06f) })
+            b.Spike(head, c + V(x, 0.035f, -0.01f), c + V(x * 2f, 0.035f + up, -0.01f - back), 0.022f, green, 0.55f, Leaf);
+        PokeBuilder.Both(s =>
+        {
+            // The ears: broad white fans spread out and up, cut into three feathered points
+            var root = c + V(0.035f * s, 0.02f, -0.015f);
+            int ear = b.Ear(head, s, root);
+            Frond(b, ear, root, root + V(0.12f * s, 0.05f, -0.03f), 0.04f, white, V(0, 0.4f, 1f), 0.2f);
+            foreach (var d in new[] { V(0.17f * s, 0.11f, -0.04f), V(0.19f * s, 0.05f, -0.04f), V(0.16f * s, -0.01f, -0.03f) })
+                Blade(b, ear, root + V(0.08f * s, 0.035f, -0.02f), root + d, 0.022f, white, V(0, 0.4f, 1f));
+            var at = Out(c, r, default, V(0.55f * s, 0.2f, 0.8f));
+            b.Eye(head, at, Outward(c, r, at), 0.012f, Rgb(64, 170, 96));
+        });
+        int tail = b.Tail(bc + V(0, 0.02f, -0.1f));
+        foreach (float x in new[] { -0.02f, 0f, 0.02f })
+            b.Spike(tail, bc + V(0, 0.02f, -0.09f), bc + V(x * 2f, 0.06f, -0.17f), 0.022f, white, 0.6f);
+        return b;
+    }
+
+    // ------------------------------------------------------------------ Arceus's types (its build and its plates in PokemonModels.Sinnoh5.cs)
+
+    /// <summary>Arceus holding the plate of one type, from the form's name (ARCEUS-FIRE), or null for a name that names no plate.</summary>
+    private static PokeBuilder? ArceusForm(string form)
+    {
+        int i = Array.FindIndex(ArceusPlates, p => p.Type != null && ("ARCEUS-" + p.Type).Equals(form, StringComparison.OrdinalIgnoreCase));
+        return i < 0 ? null : ArceusBuild(i);
+    }
 }
