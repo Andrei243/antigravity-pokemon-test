@@ -908,4 +908,22 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Alola's forms (their builds in PokemonModels.Alola1.cs)
 
     private static PokeBuilder DecidueyeHisui() => DecidueyeBuild(true);
+
+    // ------------------------------------------------------------------ Alola's second batch's forms (their builds in PokemonModels.Alola2.cs)
+
+    /// <summary>Silvally carrying one of its memories, from the form's name (SILVALLY-FIRE), or null for a type it has no memory of.</summary>
+    private static PokeBuilder? SilvallyForm(string form)
+    {
+        int i = Array.FindIndex(SilvallyMemories, m => m.Type != null && ("SILVALLY-" + m.Type).Equals(form, StringComparison.OrdinalIgnoreCase));
+        return i < 0 ? null : SilvallyBuild(i);
+    }
+
+    /// <summary>Minior's core of one colour, from the form's name (MINIOR-RED), or null for a meteor, which looks like Minior whatever its core.</summary>
+    private static PokeBuilder? MiniorForm(string form)
+    {
+        int i = Array.FindIndex(MiniorCores, m => ("MINIOR-" + m.Name).Equals(form, StringComparison.OrdinalIgnoreCase));
+        return i < 0 ? null : MiniorBuild(i);
+    }
+
+    private static PokeBuilder MimikyuBusted() => MimikyuBuild(true);
 }

@@ -1779,4 +1779,10 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Alola's Megas (their builds in PokemonModels.Alola1.cs)
 
     private static PokeBuilder CrabominableMega() => CrabominableBuild(true);
+
+    // ------------------------------------------------------------------ Alola's second batch's Megas (their builds in PokemonModels.Alola2.cs)
+
+    private static PokeBuilder GolisopodMega() => GolisopodBuild(true);
+
+    private static PokeBuilder DrampaMega() => DrampaBuild(true);
 }
