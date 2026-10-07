@@ -396,11 +396,13 @@ public class GymTests
                 if (HearthomeDoors.ClueMayLie(number, x, y)) Assert.False(map.IsSolid(x, y), $"{name}: the sign may lie on ({x}, {y})");
 
         var chosen = new HashSet<HearthomeDoors.Sign>();
+        var clues = new HashSet<(int, int)>();
         for (int seed = 0; seed < 60; seed++)
         {
             rooms.Arrive(map, story, new System.Random(seed));
             var correct = rooms.Correct!.Value;
             chosen.Add(correct);
+            clues.Add(rooms.Clue);
             Assert.True(HearthomeDoors.ClueMayLie(number, rooms.Clue.X, rooms.Clue.Y));
             Assert.DoesNotContain(map.NPCs, n => (n.GridX, n.GridY) == rooms.Clue);
             foreach (var (sign, x, y) in rooms.Doors)
@@ -410,8 +412,9 @@ public class GymTests
                 else Assert.Equal((HearthomeDoors.Entrance, 4, 3, Direction.Down), (warp.TargetMap, warp.TargetX, warp.TargetY, warp.TargetFacing));
             }
         }
-        // Every door is the way on some of the time
+        // Every door is the way on some of the time, and the sign lies all over the room
         Assert.Equal(rooms.Doors.Count, chosen.Count);
+        Assert.True(clues.Count > 20, $"the sign lay on only {clues.Count} tiles");
 
         // Every door can be walked up to from the way in
         var reach = Reach(map, map.Warps.Single(w => w.TargetMap == HearthomeDoors.Entrance && w.SourceY == map.Height - 1).SourceX, map.Height - 2);

@@ -249,7 +249,7 @@
     {
       "id": "black_belt_colby",
       "name": "Colby",
-      "npcType": "Youngster",
+      "npcType": "BlackBelt",
       "x": 15,
       "y": 23,
       "facing": "Right",
@@ -268,7 +268,7 @@
     {
       "id": "black_belt_darren",
       "name": "Darren",
-      "npcType": "Youngster",
+      "npcType": "BlackBelt",
       "x": 16,
       "y": 14,
       "facing": "Left",
@@ -287,7 +287,7 @@
     {
       "id": "black_belt_jeffery",
       "name": "Jeffery",
-      "npcType": "Youngster",
+      "npcType": "BlackBelt",
       "x": 2,
       "y": 9,
       "facing": "Down",
@@ -306,7 +306,7 @@
     {
       "id": "black_belt_rafael",
       "name": "Rafael",
-      "npcType": "Youngster",
+      "npcType": "BlackBelt",
       "x": 11,
       "y": 13,
       "facing": "Down",

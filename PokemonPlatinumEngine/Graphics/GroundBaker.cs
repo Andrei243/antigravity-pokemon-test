@@ -31,13 +31,14 @@ internal static class GroundBaker
         if (map.Interior == InteriorStyle.Gym)
         {
             // A Gym's floor is the ground its tiles say, as the field's is (lawn, flowers, paths, earth), and its hall's
-            // own tiles where its tiles are floor (style guide, "Gyms")
+            // own tiles where its tiles are floor, wall or door (a wall's shows at the foot of an inner wall with no face
+            // to the south, a door's round the exit mat; style guide, "Gyms")
             c = PixelGround.Bake(map, new TileWindow(0, 0, map.Width, map.Height), pad: 0, worldSeeds: false, out _);
             var hall = HallTiles(map.ArenaType);
             for (int ty = 0; ty < map.Height; ty++)
                 for (int tx = 0; tx < map.Width; tx++)
                 {
-                    if (map.GetGroundTile(tx, ty) != TileType.Floor) continue;
+                    if (map.GetGroundTile(tx, ty) is not (TileType.Floor or TileType.Wall or TileType.Door)) continue;
                     for (int y = 0; y < ArtTile; y++)
                         for (int x = 0; x < ArtTile; x++)
                             c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, HallTexel(hall, tx * ArtTile + x, ty * ArtTile + y));

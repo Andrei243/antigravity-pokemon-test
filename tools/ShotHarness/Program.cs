@@ -2061,8 +2061,15 @@ if (mode == "gyms")
             if (fight.HUD.MenuState == BattleMenuState.Main)
             {
                 foreach (var foe in fight.EnemyParty.Members) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                // A Gym is a long run of battles: the lead's moves never run dry, and it uses the first that touches
+                // the foe (Close Combat does nothing to a Ghost)
+                var lead = fight.PlayerPokemon;
+                foreach (var move in lead.Moves) move.CurrentPP = move.MaxPP;
+                var target = fight.EnemyPokemon;
+                int pick = lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status
+                    && TypeChart.GetEffectiveness(m.Data.Type, target.PrimaryType, target.SecondaryType) > 0f);
                 fight.SelectMainMenuOption(0);
-                fight.SelectMove(0);
+                fight.SelectMove(Math.Max(0, pick));
                 if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
             }
             else Confirm(fight);
@@ -2105,8 +2112,13 @@ if (mode == "gyms")
         interact.Invoke(engine, null);
     }
     object? Field(string name) => T.GetField(name, Private)!.GetValue(engine);
+    // `gyms eterna veilstone hearthome`: only the Gyms named
+    var only = args.Length > 2 ? args[2..] : null;
+    bool Want(string gym) => only == null || only.Contains(gym);
 
     // ---- the Eterna Gym: the flower clock
+    if (Want("eterna"))
+    {
     Enter("EternaGym", 11, 27);
     Frames(20); Shot("g01_eterna_door");
     At("EternaGym", 11, 19, Direction.Up); Frames(4); Shot("g02_eterna_clock_at_twenty_five_past_seven");
@@ -2137,6 +2149,7 @@ if (mode == "gyms")
     ReadOn();
     At("EternaGym", 11, 20, Direction.Up); Frames(4); Shot("g12_eterna_half_past_twelve");
     Console.WriteLine($"eterna: Forest Badge {story.HasBadge(Badge.Forest)}, clock {story.Var(EternaClock.StateVar)}, TM86 {((Inventory)Get("playerInventory")).GetQuantity(ItemDatabase.Get("TM86")!)}");
+    }
 
     Map Here() => (Map)Get("currentMap");
     // Walks one way until the player is somewhere else (through a door) and the fade has opened again
@@ -2152,6 +2165,8 @@ if (mode == "gyms")
     }
 
     // ---- the Veilstone Gym: the punching bags
+    if (Want("veilstone"))
+    {
     Enter("VeilstoneGym", 12, 30);
     Frames(20); Shot("g21_veilstone_door");
     // A black belt's battle, then the rest kept from walking up while the bags are kicked
@@ -2190,8 +2205,11 @@ if (mode == "gyms")
     IntoBattle("Maylene's battle"); Shot("g28_veilstone_battle_maylene");
     ReadOn();
     Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge(Badge.Cobble)}, TM60 {((Inventory)Get("playerInventory")).GetQuantity(ItemDatabase.Get("TM60")!)}");
+    }
 
     // ---- the Hearthome Gym: the dark rooms and their doors
+    if (Want("hearthome"))
+    {
     At("HearthomeGym", 4, 8, Direction.Up);
     arrive.Invoke(engine, null);
     ReadOn(() => Box().IsActive, 600); Box().FinishLine(); Frames(4); Shot("g31_hearthome_guide");
@@ -2202,8 +2220,14 @@ if (mode == "gyms")
     Shot("g33_hearthome_first_room");
     HearthomeDoors Doors() => (HearthomeDoors)Here().Puzzle!;
     Console.WriteLine($"hearthome: first room {Here().Name}, the way on is the {Doors().Correct}, its sign at {Doors().Clue}");
+    // Seen from beside it: something small right behind the player is behind their head
+    void Beside((int X, int Y) spot)
+    {
+        bool west = Here().IsWalkable(spot.X - 1, spot.Y);
+        At(Here().Name, spot.X + (west ? -1 : 1), spot.Y, west ? Direction.Right : Direction.Left);
+    }
     var clue = Doors().Clue;
-    At(Here().Name, clue.X, clue.Y + 1, Direction.Up); Frames(4); Shot("g34_hearthome_the_sign_on_the_floor");
+    Beside(clue); Frames(4); Shot("g34_hearthome_the_sign_on_the_floor");
     TalkFrom(Here().Name, "lass_molly", 5, 7, Direction.Left);
     IntoBattle("Molly's battle"); Shot("g35_hearthome_battle");
     ReadOn();
@@ -2221,7 +2245,7 @@ if (mode == "gyms")
     WalkInto(Direction.Up);
     Shot("g38_hearthome_second_room");
     clue = Doors().Clue;
-    At(Here().Name, clue.X, clue.Y + 1, Direction.Up); Frames(4); Shot("g39_hearthome_second_sign");
+    Beside(clue); Frames(4); Shot("g39_hearthome_second_sign");
     Console.WriteLine($"hearthome: second room, the way on is the {Doors().Correct}, its sign at {clue}");
     right = Doors().Doors.First(d => d.Sign == Doors().Correct);
     At(Here().Name, right.X, 3, Direction.Up);
@@ -2236,6 +2260,7 @@ if (mode == "gyms")
     Console.WriteLine($"hearthome: Relic Badge {story.HasBadge(Badge.Relic)}, TM65 {((Inventory)Get("playerInventory")).GetQuantity(ItemDatabase.Get("TM65")!)}, bollards {Here().NPCs.Count(n => n.Key.StartsWith("bollard"))}");
     Enter("HearthomeGymRoom1", 8, 10);
     Frames(4); Shot("g45_hearthome_first_room_after_the_badge");
+    }
 }
 
 // ---------------------------------------------------------------- the imported world (plan 01 · M2)

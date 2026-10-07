@@ -56,13 +56,6 @@
       "y": 8,
       "width": 1,
       "depth": 1
-    },
-    {
-      "type": "WallEmblem",
-      "x": 4,
-      "y": 7,
-      "width": 1,
-      "depth": 1
     }
   ],
   "warps": [

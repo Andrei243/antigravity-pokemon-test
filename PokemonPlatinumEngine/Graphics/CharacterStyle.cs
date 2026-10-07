@@ -158,6 +158,14 @@ internal sealed class CharacterStyle
             Bottom = new(64, 104, 196, 255), Shorts = true, Shoes = new(240, 206, 178, 255),
             Eyes = new(150, 70, 100, 255), Height = 0.96f, Lashes = true, Blush = true
         },
+        // Her black belts: close-cropped dark hair, a white training jacket and trousers, the black belt, bare feet
+        "BLACKBELT" => new CharacterStyle
+        {
+            HairColor = new(44, 40, 46, 255), Hair = HairCut.Short,
+            Top = new(244, 244, 240, 255), Accent = new(36, 34, 40, 255),
+            Bottom = new(236, 236, 230, 255), Shoes = new(222, 172, 132, 255),
+            Eyes = new(60, 50, 44, 255), Height = 1.06f, Build = BodyBuild.Adult, BushyBrows = true
+        },
         // Team Galactic's grunts (plan 02 · S5): our own take, teal hair cut in a bowl and a pale grey uniform with a
         // dark collar
         "GRUNT" => new CharacterStyle
