@@ -1,0 +1,11 @@
+global using System.Numerics;
+global using Raylib_cs;
+global using PokemonPlatinumEngine.Battle;
+global using PokemonPlatinumEngine.Battle.Sim;
+global using PokemonPlatinumEngine.Core;
+global using PokemonPlatinumEngine.Data;
+global using PokemonPlatinumEngine.Graphics;
+global using PokemonPlatinumEngine.Models;
+global using PokemonPlatinumEngine.Overworld;
+global using PokemonPlatinumEngine.Story;
+global using PokemonPlatinumEngine.UI;
