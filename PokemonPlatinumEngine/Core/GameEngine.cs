@@ -445,7 +445,7 @@ public partial class GameEngine
         // The story as the save has it, brought up to date if an older game wrote it; then everyone where it puts them
         runner.Abort();
         story.Restore(save.ToStory());
-        StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts);
+        StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 

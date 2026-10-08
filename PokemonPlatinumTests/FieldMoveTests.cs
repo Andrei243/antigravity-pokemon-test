@@ -91,7 +91,7 @@ public class FieldMoveTests
     // ------------------------------------------------------------------ the obstacles
 
     /// <summary>An obstacle faced, its script played with the team given, and the map's people put where its flags say.</summary>
-    private static (HeadlessScriptHost Host, Map Map, NPC Thing) Face(PropType kind, Pokemon? pokemon, Badge? badge, int answer = 0)
+    private static (HeadlessScriptHost Host, Map Map, NPC Thing) Face(PropType kind, Pokemon? pokemon, Badge? badge, int answer = 0, Action<HeadlessScriptHost>? setUp = null)
     {
         var map = new Map(5, 5) { Name = "Obstacle" };
         var thing = map.AddObstacle(kind, 2, 1);
@@ -100,6 +100,7 @@ public class FieldMoveTests
         host.Party.Add(pokemon ?? Knowing("Tackle"));
         if (badge is { } b) host.Story.GiveBadge(b);
         host.Answers.Enqueue(answer);
+        setUp?.Invoke(host);
         var runner = new ScriptRunner(ScriptLibrary.Default, host);
         runner.Start(ScriptLibrary.Default.Find(FieldScripts.For(thing)!)!, thing);
         runner.RunToEnd();
@@ -133,6 +134,27 @@ public class FieldMoveTests
         Assert.Contains(cut.Transcript, t => t.Text == $"Bibarel used {move}!");
         Assert.True(cut.Story.Has(gone.HiddenBy!));
         Assert.DoesNotContain(gone, map2.NPCs);
+    }
+
+    [Fact]
+    public void ACrackedRockSaysWhatTheWayOnIsWaitingFor()
+    {
+        // The Ravaged Path's rocks shut the way north to Floaroma Town: whoever can't break them yet is told why
+        string Says(Pokemon pokemon, Badge? badge, bool hm = false)
+        {
+            var (host, _, _) = Face(PropType.CrackedRock, pokemon, badge, setUp: h => { if (hm) h.Bag.AddItem(ItemDatabase.Get("HM06")!); });
+            Assert.Empty(host.Asked);
+            return Assert.Single(host.Transcript).Text;
+        }
+        // Before Oreburgh's Gym: the Badge
+        Assert.Contains("Oreburgh's Gym Badge", Says(Knowing("Tackle"), null));
+        // The move known, the Badge not won: Rock Smash isn't used outside battle until then
+        Assert.Contains("not outside battle until Oreburgh's Gym Badge", Says(Knowing("Rock Smash"), null));
+        // The HM in the bag and nobody taught it: teach it
+        Assert.Contains("HM06", Says(Knowing("Tackle"), Badge.Coal, hm: true));
+        Assert.Contains("HM06", Says(Knowing("Tackle"), null, hm: true));
+        // The Badge and neither: a Pokémon that knows the move
+        Assert.Contains("knows Rock Smash", Says(Knowing("Tackle"), Badge.Coal));
     }
 
     [Fact]

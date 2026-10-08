@@ -241,18 +241,30 @@ script UseCut
   end
 
 
-# A rock full of cracks. Rock Smash breaks it, with the Coal Badge.
+# A rock full of cracks. Rock Smash breaks it, with the Coal Badge. It stands in the Ravaged Path's way north, so a
+# player who can't break it yet is told what is missing: the move, the HM that teaches it, or the Badge.
 script Rock
   speaker none
   if not knows "Rock Smash" goto Cannot
-  if not badge coal goto Cannot
+  if not badge coal goto NoBadge
   ask "The rock is riddled with cracks. Use Rock Smash?"
   if no end
   usemove "Rock Smash"
   setflag own
   end
+label NoBadge
+  text "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until Oreburgh's Gym Badge is won."
+  end
 label Cannot
-  text "The rock is riddled with cracks. A hard enough blow might break it apart."
+  if item "HM06" goto Teach
+  if not badge coal goto Early
+  text "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
+  end
+label Teach
+  text "The rock is riddled with cracks. A Pokémon taught Rock Smash with HM06 could break it apart."
+  end
+label Early
+  text "The rock is riddled with cracks. A hard enough blow might break it apart, once Oreburgh's Gym Badge is won."
   end
 
 script UseRockSmash

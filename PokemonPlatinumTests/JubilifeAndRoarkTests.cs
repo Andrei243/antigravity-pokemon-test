@@ -214,6 +214,41 @@ public class JubilifeAndRoarkTests
         StoryMigration.Upgrade(story, 3, Array.Empty<Pokemon>(), Scripts);
         Assert.False(story.Has("FLAG_HIDE_JUBILIFE_ROWAN"));
         Assert.True(story.Has("FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_ITEM"));
-        Assert.Equal(4, StoryState.CurrentVersion);
+    }
+
+    [Fact]
+    public void ASaveThatWonTheCoalBadgeBeforeTheHikerStoodInTheGateHasRockSmash()
+    {
+        // Version 4 and older: a save that beat Roark before Oreburgh Gate's hiker gave out HM06 never passed him
+        // with it, and the Ravaged Path's cracked rocks would shut it out of the north. The Badge says it has been by.
+        var hm = ItemDatabase.Get("HM06")!;
+        var story = new StoryState();
+        story.GiveBadge(Badge.Coal);
+        var bag = new Inventory();
+        StoryMigration.Upgrade(story, 4, Array.Empty<Pokemon>(), Scripts, bag);
+        Assert.Equal(1, bag.GetQuantity(hm));
+        Assert.True(story.Has(StoryMigration.ReceivedRockSmashFlag));
+        Assert.Equal(2, story.Var("VAR_OREBURGH_GATE_1F_HIKER_STATE"));
+
+        // Without the Badge it still has the hiker to pass on the way to Oreburgh
+        var early = new StoryState();
+        var none = new Inventory();
+        StoryMigration.Upgrade(early, 4, Array.Empty<Pokemon>(), Scripts, none);
+        Assert.Equal(0, none.GetQuantity(hm));
+        Assert.False(early.Has(StoryMigration.ReceivedRockSmashFlag));
+
+        // One the hiker already gave it to has nothing more; and a save of today is left as it is
+        var given = new StoryState();
+        given.GiveBadge(Badge.Coal);
+        given.Set(StoryMigration.ReceivedRockSmashFlag);
+        var one = new Inventory();
+        one.AddItem(hm);
+        StoryMigration.Upgrade(given, 4, Array.Empty<Pokemon>(), Scripts, one);
+        Assert.Equal(1, one.GetQuantity(hm));
+        var today = new StoryState();
+        today.GiveBadge(Badge.Coal);
+        StoryMigration.Upgrade(today, StoryState.CurrentVersion, Array.Empty<Pokemon>(), Scripts, new Inventory());
+        Assert.False(today.Has(StoryMigration.ReceivedRockSmashFlag));
+        Assert.Equal(5, StoryState.CurrentVersion);
     }
 }
