@@ -372,7 +372,35 @@ public static class WorldMapBuilder
         for (int z = 0; z < h; z++)
             for (int x = 0; x < w; x++)
                 if (!map.IsSolid(x, z) && !reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveWall, isSolid: true);
+        OpenWaysOut(map, entrances);
         RaiseRock(map, IsRock);
+    }
+
+    /// <summary>
+    /// A cave's ways out, seen from inside: the original leaves the cave by a mat at the floor's edge (<c>Exit…</c>),
+    /// walked off into the rock, and paints the rock past it as the dark of a passage. That tile is the mouth's dark
+    /// here too, at the mat's height, so it stays a hollow under the rock round it instead of a wall like the rest.
+    /// </summary>
+    private static void OpenWaysOut(Map map, HashSet<(int X, int Z)> entrances)
+    {
+        foreach (var (x, z) in entrances)
+        {
+            if (!map.InBounds(x, z) || map.IsSolid(x, z)) continue;
+            Direction? way = map.BehaviourAt(x, z) switch
+            {
+                TileBehavior.ExitNorth => Direction.Up,
+                TileBehavior.ExitSouth => Direction.Down,
+                TileBehavior.ExitWest => Direction.Left,
+                TileBehavior.ExitEast => Direction.Right,
+                _ => null
+            };
+            if (way is not { } out_) continue;
+            var (dx, dz) = FieldMovement.Delta(out_);
+            int bx = x + dx, bz = z + dz;
+            if (!map.InBounds(bx, bz) || map.GetGroundTile(bx, bz) != TileType.CaveWall) continue;
+            map.SetGroundTile(bx, bz, TileType.CaveMouth, isSolid: true);
+            map.SetHeight(bx, bz, map.HeightAt(x, z));
+        }
     }
 
     /// <summary>How far below the islands of the Distortion World the drop under them is drawn, in tiles: the depth of their undersides.</summary>

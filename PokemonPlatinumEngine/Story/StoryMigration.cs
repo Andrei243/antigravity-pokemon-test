@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Story;
@@ -35,15 +36,33 @@ public static class StoryMigration
 
     /// <summary>
     /// Brings a loaded save's story up to today's. <paramref name="savedVersion"/> is the save's
-    /// <c>StoryVersion</c>; <paramref name="owned"/> is every Pokémon the player has, on the team and in the PC.
+    /// <c>StoryVersion</c>; <paramref name="owned"/> is every Pokémon the player has, on the team and in the PC, and
+    /// <paramref name="bag"/> the player's bag, for what a step hands over.
     /// </summary>
-    public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts)
+    public static void Upgrade(StoryState story, int savedVersion, IEnumerable<Pokemon> owned, ScriptLibrary scripts, Inventory? bag = null)
     {
         if (savedVersion < 1) FromBeforeTheStory(story, owned, scripts);
         if (savedVersion < 2) PastTheOpening(story, scripts);
         if (savedVersion < 3) Run(story, scripts, ScriptLibrary.ChapterTwo);
         else if (savedVersion < 4) Run(story, scripts, ScriptLibrary.ChapterThree);
         if (savedVersion < 4) RenameTrainers(story);
+        if (savedVersion < 5) HandOverRockSmash(story, bag);
+    }
+
+    /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>
+    public const string ReceivedRockSmashFlag = "FLAG_RECEIVED_HM06";
+
+    /// <summary>
+    /// Version 4, a save that won the Coal Badge before Oreburgh Gate's hiker gave out HM06 (plan 02 · S5): it went
+    /// through the Gate when nobody stood there, so it has no Rock Smash, and the Ravaged Path's cracked rocks shut
+    /// the way north to Floaroma Town and Eterna City. The Badge says it has been past him, so it has the HM now.
+    /// </summary>
+    private static void HandOverRockSmash(StoryState story, Inventory? bag)
+    {
+        if (!story.HasBadge(Badge.Coal) || story.Has(ReceivedRockSmashFlag)) return;
+        if (ItemDatabase.Get("HM06") is { } hm && bag != null && bag.GetQuantity(hm) == 0) bag.AddItem(hm);
+        story.Set(ReceivedRockSmashFlag);
+        story.SetVar("VAR_OREBURGH_GATE_1F_HIKER_STATE", 2);
     }
 
     /// <summary>
