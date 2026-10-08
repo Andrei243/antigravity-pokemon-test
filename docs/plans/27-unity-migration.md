@@ -2,7 +2,7 @@
 
 **Goal**: the game runs in the Unity editor and builds as a Unity player, with every rule, every piece of data and every generated asset it has today, and the roadmap in `docs/plans/` carries on from there. Unreal is not considered: it is C++ and Blueprints, so nothing of the 138,000 lines of C# would carry over (the C# bridges for Unreal are community projects, not supported by Epic).
 
-Written 2026-10-08, before any session, at the user's request. It uses the same shape as the other plans: where we are, design, sessions, decisions to take. Numbers below were measured on `main` at `aa872be` (8 October 2026).
+Written 2026-10-08, before any session, at the user's request. **Deferred**: the same day the user decided to leave the move until the end of the project, after the roadmap's other plans; nothing here starts before then, and the numbers below should be measured again when it does. It uses the same shape as the other plans: where we are, design, sessions, decisions to take. Numbers below were measured on `main` at `aa872be` (8 October 2026).
 
 ## Where we are
 
