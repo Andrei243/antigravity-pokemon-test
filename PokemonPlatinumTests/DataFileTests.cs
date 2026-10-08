@@ -322,7 +322,12 @@ public class DataFileTests
     {
         MapDatabase.Initialize();
         var names = MapDatabase.MapNames.ToList();
-        Assert.Equal(143, names.Count); // 51 rooms and 90 maps of the imported world in Sinnoh, 2 hand-made maps in Kanto
+        // Every file of Data/maps is a map, and the imported world adds its own. Floors, not counts: sessions that run
+        // side by side each add rooms, and two that each wrote the count they made broke the merge (plan 16 · T16)
+        var files = Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json").Select(Path.GetFileNameWithoutExtension).ToList();
+        Assert.All(files, file => Assert.Contains(file, names));
+        Assert.True(files.Count >= 53, $"only {files.Count} map files: 51 rooms in Sinnoh and 2 hand-made maps in Kanto, at least");
+        Assert.True(names.Count - files.Count >= 90, $"only {names.Count - files.Count} maps of the imported world");
         Assert.Contains("Sinnoh", names);
         Assert.Contains("PlayerHouse", names);
 

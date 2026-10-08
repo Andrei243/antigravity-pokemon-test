@@ -249,6 +249,6 @@ public class JubilifeAndRoarkTests
         today.GiveBadge(Badge.Coal);
         StoryMigration.Upgrade(today, StoryState.CurrentVersion, Array.Empty<Pokemon>(), Scripts, new Inventory());
         Assert.False(today.Has(StoryMigration.ReceivedRockSmashFlag));
-        Assert.Equal(5, StoryState.CurrentVersion);
+        Assert.True(StoryState.CurrentVersion >= 5);
     }
 }

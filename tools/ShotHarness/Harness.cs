@@ -262,6 +262,10 @@ partial class Harness
     // A scene's frame time, then the same frames with the profiler on: each pass's share of the frame, and the meshes
     // and triangles it draws. `frozen` draws one moment over and over (a move's effect at its height, a camera's
     // close-up), which the game's own clock would move on from.
+    // What `profile` measured, scene by scene, written to profile.json as the mode ends (Timings.cs)
+    readonly ProfileRun profileRun = new();
+    string profilePreset = "";
+
     void Profile(string label, int frames = 240, bool frozen = false)
     {
         // SHOTS_ONLY=battle,route measures only the scenes whose name has one of those words in it
@@ -269,15 +273,41 @@ partial class Harness
         if (only.Length > 0 && !only.Any(word => label.Contains(word, StringComparison.OrdinalIgnoreCase))) return;
         void One() { if (!frozen) { FrameClock.Fixed = ++tick / 60.0; engine.Update(1f / 60f); } engine.Draw(); }
         for (int i = 0; i < 20; i++) One();
+        var times = new List<double>(frames);
         var sw = System.Diagnostics.Stopwatch.StartNew();
-        for (int i = 0; i < frames; i++) One();
-        double plain = sw.Elapsed.TotalMilliseconds / frames;
+        double then = 0;
+        for (int i = 0; i < frames; i++)
+        {
+            One();
+            double now = sw.Elapsed.TotalMilliseconds;
+            times.Add(now - then);
+            then = now;
+        }
+        double plain = then / frames;
         FrameProfiler.Enabled = true;
         for (int i = 0; i < 5; i++) One();
         FrameProfiler.Reset();
-        for (int i = 0; i < frames / 2; i++) One();
+        var passes = Enum.GetValues<FrameSection>().ToDictionary(s => s, _ => new List<double>());
+        for (int i = 0; i < frames / 2; i++)
+        {
+            One();
+            foreach (var (section, list) in passes) list.Add(FrameProfiler.LastFrame(section));
+        }
         FrameProfiler.Enabled = false;
-        Console.WriteLine($"{label}: {plain:F2} ms/frame");
+        times.Sort();
+        double Median(List<double> sorted) => ProfileRun.Percentile(sorted, 0.5);
+        var scene = new ProfileScene
+        {
+            Preset = profilePreset, Name = label, Mean = plain,
+            Median = Median(times), P10 = ProfileRun.Percentile(times, 0.1), P90 = ProfileRun.Percentile(times, 0.9),
+        };
+        foreach (var (section, list) in passes)
+        {
+            list.Sort();
+            scene.Passes[section.ToString().ToLowerInvariant()] = Median(list);
+        }
+        profileRun.Scenes.Add(scene);
+        Console.WriteLine($"{label}: {plain:F2} ms/frame (median {scene.Median:F2}, 10% {scene.P10:F2}, 90% {scene.P90:F2})");
         Console.WriteLine($"    {FrameProfiler.Report()}");
     }
 

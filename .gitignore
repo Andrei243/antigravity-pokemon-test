@@ -13,6 +13,8 @@ TestResults/
 # Local game saves
 savegame.json
 settings.json
+# (but not Claude Code's project settings, which run tools/dev/session-start.sh: plan 16 · T16)
+!.claude/settings.json
 
 # Hand-made art that replaces generated art (plan 04: overrides/sprites, overrides/models)
 overrides/

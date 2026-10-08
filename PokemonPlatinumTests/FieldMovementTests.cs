@@ -862,7 +862,7 @@ public class FieldMovementTests
         var all = Enum.GetValues<TileBehavior>();
         var ruled = all.Where(b => TileBehaviors.InGame(b).Support == BehaviourSupport.Ruled).ToHashSet();
         var waiting = all.Where(b => TileBehaviors.InGame(b).Support == BehaviourSupport.Waiting).ToHashSet();
-        Assert.Equal(41, ruled.Count);
+        Assert.True(ruled.Count >= 41, $"only {ruled.Count} behaviours with a rule");
         Assert.All(all, b => Assert.False(string.IsNullOrWhiteSpace(TileBehaviors.InGame(b).Note)));
 
         // Plain: ground like any other as far as a step goes, where only the blocked flag and the height matter

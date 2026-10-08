@@ -8,9 +8,9 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>
-/// Keeps meshed SDF models on disk (<c>cache/models</c> next to the executable), named after the model and a hash
-/// of everything that shapes it, so a model is only meshed again after it changes. A missing or unreadable file
-/// just means meshing again.
+/// Keeps meshed SDF models on disk (<c>cache/models</c> next to the executable, or the shared folder
+/// <see cref="CacheFolders"/> names), named after the model and a hash of everything that shapes it, so a model is
+/// only meshed again after it changes. A missing or unreadable file just means meshing again.
 /// </summary>
 internal static class SdfCache
 {
@@ -21,7 +21,7 @@ internal static class SdfCache
 
     public static bool Enabled { get; set; } = true;
 
-    public static string Folder { get; set; } = Path.Combine(AppContext.BaseDirectory, "cache", "models");
+    public static string Folder { get; set; } = CacheFolders.Models;
 
     public static SdfMesh Get(SdfModel model, float cell, float iso = 0f)
     {
@@ -35,18 +35,11 @@ internal static class SdfCache
         }
 
         var mesh = SdfMesher.Mesh(model, cell, iso);
+        // Older versions of the same model are of no more use, unless another tree shares the folder
         if (Enabled)
-        {
-            try
-            {
-                Directory.CreateDirectory(Folder);
-                // Older versions of the same model are of no more use
-                foreach (var old in Directory.GetFiles(Folder, $"{name}-*.mesh"))
-                    if (!old.EndsWith(key + ".mesh", StringComparison.Ordinal) && (iso != 0f || !old.Contains("-shell-"))) File.Delete(old);
-                Write(path, mesh);
-            }
-            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
-        }
+            CacheFolders.Write(path, stream => Write(stream, mesh),
+                () => Array.FindAll(Directory.GetFiles(Folder, $"{name}-*.mesh"), old => iso != 0f || !old.Contains("-shell-")),
+                CacheFolders.Prunes);
         return mesh;
     }
 
@@ -66,7 +59,13 @@ internal static class SdfCache
 
     public static void Write(string path, SdfMesh m)
     {
-        using var w = new BinaryWriter(File.Create(path));
+        using var stream = File.Create(path);
+        Write(stream, m);
+    }
+
+    public static void Write(Stream stream, SdfMesh m)
+    {
+        using var w = new BinaryWriter(stream, Encoding.UTF8, leaveOpen: true);
         w.Write(Magic);
         w.Write(Version);
         w.Write(m.VertexCount);

@@ -82,9 +82,10 @@ static class Compare
     // seeds the game's chance and counts its own clock, so two runs of the same code draw the same pictures and any
     // shot listed here was changed by the code. It prints the shots that differ, the most changed first, and writes a
     // board for each (`diff_<name>`: the other run's shot, this one's, and their difference made eight times stronger).
+    // It exits with 1 when a shot differs or is in one folder only, and with 0 when the two runs drew the same.
     public static void Diff(string[] args, string outDir, string startDir)
     {
-        if (args.Length < 3) { Console.WriteLine("usage: <dir> diff <other dir>"); return; }
+        if (args.Length < 3) { Console.WriteLine("usage: <dir> diff <other dir>"); Environment.ExitCode = 2; return; }
         string otherDir = Path.GetFullPath(args[2], startDir);
         static string NameOf(string path) => Path.GetFileNameWithoutExtension(path);
         bool Compared(string name) => !name.StartsWith("compare_") && !name.StartsWith("diff_") && !name.StartsWith("crop_") && !name.StartsWith("contact_");
@@ -157,6 +158,8 @@ static class Compare
         var onlyTheirs = theirs.Except(mine).OrderBy(n => n, StringComparer.Ordinal).ToList();
         if (onlyMine.Count > 0) Console.WriteLine($"only here ({onlyMine.Count}): {string.Join(", ", onlyMine)}");
         if (onlyTheirs.Count > 0) Console.WriteLine($"only in the other ({onlyTheirs.Count}): {string.Join(", ", onlyTheirs)}");
+        // Scripts read the answer: 1 when any shot moved, appeared or went (tools/dev/baseline.sh, bisect.sh, CI)
+        if (changed.Count > 0 || onlyMine.Count > 0 || onlyTheirs.Count > 0) Environment.ExitCode = 1;
         return;
     }
 }

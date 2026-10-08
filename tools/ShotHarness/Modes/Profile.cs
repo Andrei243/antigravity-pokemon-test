@@ -3,10 +3,13 @@ partial class Harness
     // ---------------------------------------------------------------- where the time goes (plan 04 · G11)
 
     // Not part of `all`: the heaviest scenes of the game, each timed and then taken apart by the profiler. Run it by
-    // itself, with nothing else running, and with SHOTS_WINDOW=3840x2160 for the game as it is full screen.
+    // itself, with nothing else running, and with SHOTS_WINDOW=3840x2160 for the game as it is full screen. Each
+    // scene's median, spread and passes go to profile.json, which `ab` compares (tools/dev/ab.sh runs the three).
     public void ProfileMode()
     {
-        Console.WriteLine($"window {Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
+        profileRun.Renderer = Gl.Renderer();
+        profileRun.Window = $"{Raylib.GetScreenWidth()}x{Raylib.GetScreenHeight()}";
+        Console.WriteLine($"window {profileRun.Window}, renderer {profileRun.Renderer ?? "unknown"}, preset {engine.Settings.Quality}, profiler waits for the GPU: {FrameProfiler.WaitsForGpu}");
         Console.WriteLine($"start-up: {startMs:F0} ms to initialise the engine");
         // Arriving somewhere new: its chunks baked and uploaded behind the fade
         var fieldRenderer = game.World;
@@ -24,6 +27,7 @@ partial class Harness
         foreach (string preset in presets)
         {
             engine.Settings.Quality = Enum.Parse<GraphicsQuality>(preset);
+            profilePreset = preset;
             engine.Settings.TimeOfDay = TimeOfDay.Day;
             engine.ApplySettings(window: false);
             Console.WriteLine($"--- {preset}");
@@ -119,5 +123,8 @@ partial class Harness
         }
         engine.Settings.Quality = GraphicsQuality.High;
         engine.ApplySettings(window: false);
+        // What tools/dev/ab.sh hands to `ab`
+        profileRun.Save(Path.Combine(outDir, "profile.json"));
+        Console.WriteLine("wrote profile.json");
     }
 }

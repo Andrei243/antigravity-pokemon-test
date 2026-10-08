@@ -14,7 +14,10 @@ internal static unsafe class Gl
     private const uint TextureCompareMode = 0x884C, TextureCompareFunc = 0x884D;
     private const int CompareRefToTexture = 0x884E, Lequal = 0x0203, Linear = 0x2601;
 
+    private const uint RendererName = 0x1F01;
+
     private static delegate* unmanaged<void> finish;
+    private static delegate* unmanaged<uint, byte*> getString;
     private static delegate* unmanaged<uint, uint, void> bindTexture;
     private static delegate* unmanaged<uint, uint, int, void> texParameteri;
     private static bool looked;
@@ -29,6 +32,7 @@ internal static unsafe class Gl
             if (NativeLibrary.TryGetExport(library, "glFinish", out var f)) finish = (delegate* unmanaged<void>)f;
             if (NativeLibrary.TryGetExport(library, "glBindTexture", out var b)) bindTexture = (delegate* unmanaged<uint, uint, void>)b;
             if (NativeLibrary.TryGetExport(library, "glTexParameteri", out var t)) texParameteri = (delegate* unmanaged<uint, uint, int, void>)t;
+            if (NativeLibrary.TryGetExport(library, "glGetString", out var g)) getString = (delegate* unmanaged<uint, byte*>)g;
             break;
         }
     }
@@ -48,6 +52,18 @@ internal static unsafe class Gl
     {
         Look();
         if (finish != null) finish();
+    }
+
+    /// <summary>
+    /// The name the driver gives the renderer (a graphics card's, or "llvmpipe" for Mesa's software one), or null
+    /// where it can't be asked. Only asked while a window is open.
+    /// </summary>
+    public static string? Renderer()
+    {
+        Look();
+        if (getString == null) return null;
+        byte* name = getString(RendererName);
+        return name == null ? null : Marshal.PtrToStringUTF8((nint)name);
     }
 
     /// <summary>
