@@ -1,0 +1,11 @@
+{
+  // Plan 16 · T16: a container that builds, tests and shoots, for Codespaces or a local container. The harness
+  // draws with Mesa's software renderer under a virtual X server (tools/dev/shots.sh).
+  "name": "Pokemon Platinum",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "postCreateCommand": "sudo apt-get update -q && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q xvfb xauth libgl1 libgl1-mesa-dri libglx-mesa0 libx11-6 libxcursor1 libxrandr2 libxinerama1 libxi6 && bash tools/dev/session-start.sh",
+  "containerEnv": {
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "DOTNET_NOLOGO": "1"
+  }
+}

@@ -50,6 +50,8 @@ public static class FrameProfiler
     private static readonly double[] total = new double[SectionCount];
     private static readonly long[] draws = new long[SectionCount];
     private static readonly long[] triangles = new long[SectionCount];
+    private static readonly double[] current = new double[SectionCount];
+    private static readonly double[] lastFrame = new double[SectionCount];
     private static long pendingDraws, pendingTriangles;
     private static double last;
 
@@ -62,6 +64,8 @@ public static class FrameProfiler
         Array.Clear(total);
         Array.Clear(draws);
         Array.Clear(triangles);
+        Array.Clear(current);
+        Array.Clear(lastFrame);
         pendingDraws = pendingTriangles = 0;
         Frames = 0;
         clock.Restart();
@@ -90,6 +94,7 @@ public static class FrameProfiler
     {
         int i = (int)section;
         total[i] += now - last;
+        current[i] += now - last;
         draws[i] += pendingDraws;
         triangles[i] += pendingTriangles;
         pendingDraws = pendingTriangles = 0;
@@ -99,8 +104,14 @@ public static class FrameProfiler
     /// <summary>The frame is over.</summary>
     public static void EndFrame()
     {
-        if (Enabled) Frames++;
+        if (!Enabled) return;
+        Frames++;
+        Array.Copy(current, lastFrame, SectionCount);
+        Array.Clear(current);
     }
+
+    /// <summary>A section's milliseconds in the last frame measured: for medians over frames (the harness's <c>profile.json</c>).</summary>
+    public static double LastFrame(FrameSection section) => lastFrame[(int)section];
 
     /// <summary>A mesh was drawn.</summary>
     public static void Count(int triangleCount)

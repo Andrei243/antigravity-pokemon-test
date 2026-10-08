@@ -11,7 +11,8 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> encounters         wild Pokémon beyond the tables: the Poké Radar, a honey tree, poison, swarms, a roamer, Feebas
 //   dotnet run --project tools/ShotHarness -- <output dir> eterna             the third chapter's second half: Eterna City, Team Galactic's building, the Bicycle
 //   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
-//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel
+//   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
+//   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
 //   dotnet run --project tools/ShotHarness -- <dir> crop <shot> <x> <y> <width> <height> <scale> [other dir ...]   a rectangle of a shot, enlarged
 //
@@ -25,7 +26,7 @@ string startDir = Environment.CurrentDirectory;
 string outDir = Path.GetFullPath(args.Length > 0 ? args[0] : "shots");
 string mode = args.Length > 1 ? args[1] : "all";
 
-if (mode != "crop")
+if (mode != "crop" && mode != "ab")
 {
     Directory.CreateDirectory(outDir);
     Environment.CurrentDirectory = outDir;
@@ -35,6 +36,7 @@ if (mode != "crop")
 if (mode == "contact") { Compare.Contact(args, outDir); return; }
 if (mode == "crop") { Compare.Crop(args, startDir); return; }
 if (mode == "diff") { Compare.Diff(args, outDir, startDir); return; }
+if (mode == "ab") { Timings.Ab(args, startDir); return; }
 
 Raylib.SetTraceLogLevel(TraceLogLevel.Warning);
 Raylib.SetConfigFlags(ConfigFlags.HiddenWindow);

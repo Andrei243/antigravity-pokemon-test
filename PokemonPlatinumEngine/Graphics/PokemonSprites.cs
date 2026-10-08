@@ -123,9 +123,9 @@ internal static class PokemonSprites
     /// <summary>
     /// Where baked sprites are kept between runs (plan 03 · D5): three PNGs per species, named after it and a
     /// signature of its model, so a sprite is only baked again after its model changes. A missing or unreadable file
-    /// just means baking again.
+    /// just means baking again. Beside the executable, or in the shared folder <see cref="CacheFolders"/> names.
     /// </summary>
-    public static string CacheFolder { get; set; } = Path.Combine(AppContext.BaseDirectory, "cache", "sprites");
+    public static string CacheFolder { get; set; } = CacheFolders.Sprites;
 
     public static bool CacheEnabled { get; set; } = true;
 
@@ -246,17 +246,11 @@ internal static class PokemonSprites
             var canvas = Bake(context, model, view, view == SpriteView.Icon ? bakeSmall : bakeBig, hull: view != SpriteView.Icon);
             Keep(name, view, canvas.ToTexture());
             if (!CacheEnabled) continue;
-            try
-            {
-                Directory.CreateDirectory(CacheFolder);
-                string file = FileOf(name, view, signature);
-                // Older bakes of the same sprite are of no more use
-                string stem = Path.GetFileName(file)[..^(signature.Length + 4)];
-                foreach (var old in Directory.GetFiles(CacheFolder, stem + "*.png"))
-                    if (!old.Equals(file, StringComparison.Ordinal)) File.Delete(old);
-                File.WriteAllBytes(file, PngWriter.Encode(canvas));
-            }
-            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+            string file = FileOf(name, view, signature);
+            // Older bakes of the same sprite are of no more use, unless another tree shares the folder
+            string stem = Path.GetFileName(file)[..^(signature.Length + 4)];
+            var png = PngWriter.Encode(canvas);
+            CacheFolders.Write(file, stream => stream.Write(png), () => Directory.GetFiles(CacheFolder, stem + "*.png"), CacheFolders.Prunes);
         }
     }
 
