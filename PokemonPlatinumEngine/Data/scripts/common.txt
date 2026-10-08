@@ -108,6 +108,13 @@ script Talk
   end
 
 
+# A Pokémon standing in the field (plan 10 · F1): it cries, then says its lines, if it has any.
+script Pokemon
+  cry own
+  sayown
+  end
+
+
 # A signboard: its text, under the word "Sign".
 script Sign
   speaker "Sign"

@@ -19,7 +19,7 @@ About 350 sittings are left, some twenty of them marked optional.
 | 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
 | 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
 | 09 · Looks | — | 15 | |
-| 10 · Companions | — | 12 | F8 optional |
+| 10 · Companions | F1 | 11 | F8 optional |
 | 11 · People | — | 13 | 25 looks already sit in `CharacterStyle`'s switch, to move into C1's table |
 | 12 · Quality of life | — | 30 | |
 | 13 · Ways to play | — | 26 | V11, V14, V25 optional |

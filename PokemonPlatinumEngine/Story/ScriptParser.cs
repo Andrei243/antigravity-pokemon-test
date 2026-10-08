@@ -366,6 +366,12 @@ public static class ScriptParser
             case "sound":
                 return new Instruction { Op = Op.Sound, Line = line, Name = r.Text("a sound's name") };
             case "cry":
+                // The Pokémon the script belongs to cries (plan 10 · F1)
+                if (r.PeekIs("own"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Cry, Line = line, Own = true };
+                }
                 return new Instruction { Op = Op.Cry, Line = line, Name = r.Text("a species' name") };
 
             case "starter":

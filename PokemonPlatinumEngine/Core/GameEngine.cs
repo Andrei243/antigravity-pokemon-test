@@ -223,10 +223,13 @@ public partial class GameEngine
         LoadScripts();
 
         // Every character the maps use (those a flag hides for now too), sculpted and meshed in the background while the title screen plays
-        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => !n.IsThing).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
+        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => !n.IsThing && !n.IsPokemon).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
         // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonModels.Preloaded.ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
+        // The Pokémon that stand in the field (plan 10 · F1), whose sprites are baked from their models when first in view
+        foreach (var species in MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => n.IsPokemon).Select(n => n.Species!).Distinct())
+            PokemonModels.Request(species);
         // And the balls the battles throw
         BattleBall.Preload("Poké Ball", "Great Ball", "Ultra Ball", "Master Ball");
 

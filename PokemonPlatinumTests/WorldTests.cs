@@ -140,8 +140,10 @@ public class WorldTests
             var ids = file.Objects.Select(o => o.Id).ToHashSet();
             foreach (string person in overlay.People?.Keys ?? Enumerable.Empty<string>())
                 Assert.True(ids.Contains(person), $"{key}: the overlay gives lines to '{person}', and nobody in the area is called that");
+            // (A Pokémon cries when spoken to, if nothing else: plan 10 · F1)
             foreach (var (id, person) in overlay.People ?? new())
-                Assert.True(person.Dialog?.Count > 0 || person.Trainer != null || person.IsStarterBriefcase == true || person.Script != null, $"{key}: {id} has nothing to say");
+                Assert.True(person.Dialog?.Count > 0 || person.Trainer != null || person.IsStarterBriefcase == true || person.Script != null
+                    || person.NpcType == null && WorldMapBuilder.SpeciesFor(file.Objects.First(o => o.Id == id).Looks) != null, $"{key}: {id} has nothing to say");
 
             foreach (string held in overlay.HeldBack ?? new())
                 Assert.True(ids.Contains(held), $"{key}: the overlay holds back '{held}', and nothing in the area is called that");
@@ -412,8 +414,9 @@ public class WorldTests
                 Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit
                     || npc.HiddenBy != null, $"{who} stands on a warp");
                 Assert.Single(map.NPCs, n => (n.GridX, n.GridY) == (npc.GridX, npc.GridY) && !(n.HiddenBy is { } h && WorldWalk.HiddenAtStart.Value.Contains(h)));
-                Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY), $"{who} can't be walked up to");
-                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing, $"{who} has nothing to say");
+                // (A Pokémon with nothing to say may stand out of reach, in a pen: Solaceon's Day Care farm, plan 10 · F1)
+                Assert.True(CanTalkTo(map, reach, npc.GridX, npc.GridY) || npc.IsPokemon && npc.DialogLines.Count == 0, $"{who} can't be walked up to");
+                Assert.True(npc.DialogLines.Count > 0 || npc.IsTrainer || npc.IsStarterBriefcase || npc.Script != null || npc.IsThing || npc.IsPokemon, $"{who} has nothing to say");
             }
 
             // Signs and mailboxes can be read from a tile beside them

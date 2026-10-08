@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.Graphics;
 internal static class PokemonAnimation
 {
     /// <summary>Radians per second of the idle loop: one breath every 1.7 s at tempo 1.</summary>
-    private const float Beat = MathF.Tau / 1.7f;
+    internal const float Beat = MathF.Tau / 1.7f;
 
     /// <summary>Which eyes the pose shows.</summary>
     public static EyeState EyesOf(PokePose p)

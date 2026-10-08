@@ -96,6 +96,20 @@ public class NPC
 
     public bool IsItemBall => NpcType == ItemBallType;
 
+    // ---- Pokémon standing in the field (plan 10 · F1)
+
+    /// <summary>
+    /// The <see cref="NpcType"/> of a Pokémon that is an object of the map, as the original's are (the mine's Machop, the
+    /// Windworks' Drifloon): drawn as its species' field sprite (<see cref="Graphics.FieldSprites"/>), in the way like a
+    /// person, and spoken to through its own script or the common <c>Pokemon</c> (its cry, then its lines).
+    /// </summary>
+    public const string PokemonType = "Pokemon";
+
+    /// <summary>For a Pokémon of the map: its species, or a form by the name <see cref="Models.Pokemon.ModelName"/> gives it.</summary>
+    public string? Species { get; set; }
+
+    public bool IsPokemon => NpcType == PokemonType;
+
     // ---- Obstacles a field move clears (plan 02 · S2)
 
     /// <summary>

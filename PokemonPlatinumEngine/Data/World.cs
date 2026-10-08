@@ -1326,6 +1326,31 @@ public static class WorldMapBuilder
         _ => "Trainer"
     };
 
+    /// <summary>
+    /// The species (or form) one of the original's objects is, by the name of its looks, where it is a Pokémon
+    /// standing in the field (plan 10 · F1): the mine's Machop, the Windworks' Drifloon, the lake guardians. Null for
+    /// anyone and anything else. A trainer is never a Pokémon, whatever looks they wear (Route 209's Poké Kid).
+    /// </summary>
+    public static string? SpeciesFor(string looks) => looks switch
+    {
+        "machop" => "Machop",
+        "drifloon" => "Drifloon",
+        "pachirisu" => "Pachirisu",
+        "buneary" => "Buneary",
+        "happiny" => "Happiny",
+        "pikachu" => "Pikachu",
+        "clefairy" => "Clefairy",
+        "croagunk" => "Croagunk",
+        "psyduck" => "Psyduck",
+        "starly" => "Starly",
+        "uxie" => "Uxie",
+        "mesprit" => "Mesprit",
+        "azelf" => "Azelf",
+        "giratina_altered" => "Giratina",
+        "giratina_origin" => "Giratina-Origin",
+        _ => null
+    };
+
     private static bool IsSignpost(string looks) => looks is "map_signpost" or "arrow_signpost" or "signboard" or "trainer_tips_signpost" or "gym_signpost";
 
     /// <summary>
@@ -1413,11 +1438,14 @@ public static class WorldMapBuilder
 
             // People appear only once the game says who they are
             if (overlay?.People == null || !overlay.People.TryGetValue(o.Id, out var person)) continue;
+            // A Pokémon of the original's stands as itself, unless the overlay makes someone else of it (plan 10 · F1)
+            string? species = person.NpcType == null && person.Trainer == null ? SpeciesFor(o.Looks) : null;
             var npc = MapFile.BuildNpc(new MapFile.NpcRecord
             {
                 Id = person.Id ?? person.Trainer?.Id,
                 Name = person.Name,
-                NpcType = person.NpcType ?? CharacterFor(o.Looks),
+                NpcType = person.NpcType ?? (species != null ? NPC.PokemonType : CharacterFor(o.Looks)),
+                Species = species,
                 X = o.X,
                 Y = o.Z,
                 Facing = FacingOf(o.Facing),

@@ -508,7 +508,7 @@ public sealed class ScriptRunner
                 host.Sound(i.Name);
                 break;
             case Op.Cry:
-                host.Cry(i.Name);
+                host.Cry(i.Own ? Subject?.Species ?? throw Wrong(i, "this script belongs to no Pokémon, so it has no cry of its own") : i.Name);
                 break;
 
             case Op.Starter:

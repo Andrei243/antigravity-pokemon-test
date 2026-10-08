@@ -28,6 +28,8 @@ that exists, every script to something that starts it, and plays each to its end
 - **Picking an item up.** An item lying in its ball is someone of the map (`npcType` "ItemBall") and runs
   `ItemBall` when spoken to; something hidden in the ground runs `HiddenItem` when the player looks at its tile
   and it hasn't been found. Both are two lines long: `setflag own`, `find own`.
+- **Talking to a Pokémon.** A Pokémon standing in the field (`npcType` "Pokemon", plan 10 · F1: the mine's
+  Machop) runs its own script, or `Pokemon`: `cry own`, then `sayown`.
 - **Reading a signboard.** `Sign`, or the script the sign names (`"script"` on a map file's signboard,
   `signScripts` in an overlay).
 - **Stepping onto a trigger.** A rectangle of tiles with a script and, usually, a story variable and the value it
@@ -215,7 +217,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `music "sinnoh/jubilife"`, `music area`, `music stop` | A song, the place's own theme again, silence. |
 | `fanfare heal` / `item` / `pokemon` / `levelup` / `keyitem` / `tm` / `badge` / `evolution` | `give` and `find` play the fanfare of the item's kind themselves (a TM's, a key item's, or the item's), and `givebadge` the badge's. |
 | `sound "select"` | One of the game's sound effects (`AudioManager.SoundNames`; [`sound-effects.md`](sound-effects.md) lists them). |
-| `cry "Shinx"`, `cry "Giratina-Origin"` | A Pokémon met in the field cries: a species, or a form by its name, with the original's field echo (`CryMode.FieldEvent`). |
+| `cry "Shinx"`, `cry "Giratina-Origin"`, `cry own` | A Pokémon met in the field cries: a species, or a form by its name, with the original's field echo (`CryMode.FieldEvent`). `cry own` is the cry of the Pokémon the script belongs to (a Pokémon standing in the field, `NPC.Species`; plan 10 · F1). |
 
 ### The screens that exist
 

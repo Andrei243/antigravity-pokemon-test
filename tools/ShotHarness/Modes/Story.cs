@@ -229,5 +229,21 @@ partial class Harness
         ReadOn();
         Talk(); Frames(4);
         Console.WriteLine($"hidden: {secret.Item} at {spot.X},{spot.Y}: in the bag {bag.GetQuantity(ItemDatabase.Get(secret.Item)!)}, its flag {story.Has(secret.Flag)}, found again {Box().IsActive}");
+
+        // ---- Pokémon standing in the field (plan 10 · F1): a Machop at the mine's coal face, spoken to, and the
+        // three that work the yard in Oreburgh City
+        var mine = MapDatabase.Get("OreburghMineB2F");
+        var machop = mine.NPCs.First(n => n.Key == "machop_2");
+        stand = Beside(mine, machop.GridX, machop.GridY);
+        At("OreburghMineB2F", stand.X, stand.Y, stand.Facing);
+        Frames(6); Shot("st35_machop_in_the_mine");
+        ShotCrop("st35b_machop_close", 760, 390, 400, 300, 4);
+        Talk(); Whole(); Shot("st36_machop_speaks");
+        ReadOn();
+        Console.WriteLine($"machop: a {machop.Species} at {machop.GridX},{machop.GridY}, facing {machop.Facing}, script running {engine.ScriptRunning}");
+        var yard = sinnoh.FindPerson("machop_2", "oreburgh_city")!;
+        stand = Beside(sinnoh, yard.GridX, yard.GridY);
+        At("Sinnoh", stand.X, stand.Y, stand.Facing);
+        Frames(6); Shot("st37_machop_in_the_yard");
     }
 }

@@ -90,6 +90,8 @@ partial class Harness
         }
         if (walker.Mode != TravelMode.Surfing || engine.ScriptRunning) Console.WriteLine("  !! never happened: the ride out onto the pond");
         Frames(5); Shot("l06c_splash_riding_out"); ShotCrop("l06d_splash_native", 640, 380, 640, 360, 2);
+        // On the water, the player rides the Pokémon whose Surf it was (plan 10 · F1)
+        Walk(Direction.Right, 1); Frames(4); Shot("l06e_surfer_on_its_own_pokemon"); ShotCrop("l06f_surfer_native", 640, 380, 640, 360, 2);
         swimmer.Moves.Remove(surf);
         story.SetBadges(badges);
         walker.SetMode(TravelMode.OnFoot);
