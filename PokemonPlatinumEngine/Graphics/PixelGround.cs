@@ -71,6 +71,9 @@ internal static class PixelGround
         new(TileType.DistortionGround, new(122, 112, 138, 255), new(136, 126, 152, 255), new(84, 74, 100, 255), new(100, 90, 118, 255), 82)
     };
 
+    // The floor of a cave: what lies under its rock and its ways out where neither covers a texel
+    private static readonly Color CaveFloorBase = Kinds.First(k => k.Type == TileType.CaveFloor).Base;
+
     // A slab set into an island of the Distortion World where a way somewhere is
     private static readonly Color Slab = new(170, 162, 188, 255);
     private static readonly Color SlabLight = new(204, 198, 218, 255);
@@ -196,8 +199,9 @@ internal static class PixelGround
                 int i = y * w + x;
                 float gx = x / (float)T + seedX, gy = y / (float)T + seedY;
 
-                // Lawn: flat base with clean-edged lighter patches (in the Distortion World, its stone)
-                var col = nothing ? Kinds[^1].Base : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
+                // Lawn: flat base with clean-edged lighter patches (in the Distortion World, its stone; in a cave, its
+                // floor, which shows where the rounded corners of the rock and of a way out leave a gap between them)
+                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
                 if (forest != null && forest[i] >= 0.5f) col = Forest;
                 if (tall != null && tall[i] >= 0.5f) col = TallGround;
 

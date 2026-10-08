@@ -242,8 +242,24 @@ public class SouthWestTests
         }
         Assert.True(mouths >= 20, $"only {mouths} tiles of cave mouth on the map");
 
-        // Inside a cave there is no such thing: a way out is floor, and rock round it
-        Assert.All(Caves, name => Assert.DoesNotContain(Tiles(BuiltMaps.Value[name]), t => BuiltMaps.Value[name].GetGroundTile(t.X, t.Y) == TileType.CaveMouth));
+        // Inside a cave the dark lies only on the rock just past a way out, at the mat's height: the Ravaged Path's
+        // north exit, which looked like more wall, is a gap in it
+        foreach (string name in Caves)
+        {
+            var cave = BuiltMaps.Value[name];
+            foreach (var (x, y) in Tiles(cave).Where(t => cave.GetGroundTile(t.X, t.Y) == TileType.CaveMouth))
+            {
+                Assert.True(cave.IsSolid(x, y), $"{name}: the dark at ({x},{y}) can be walked on");
+                var mat = new[] { (0, -1, TileBehavior.ExitSouth), (0, 1, TileBehavior.ExitNorth), (-1, 0, TileBehavior.ExitEast), (1, 0, TileBehavior.ExitWest) }
+                    .Select(n => (X: x + n.Item1, Y: y + n.Item2, Way: n.Item3))
+                    .FirstOrDefault(n => cave.InBounds(n.X, n.Y) && cave.BehaviourAt(n.X, n.Y) == n.Way && cave.GetWarpAt(n.X, n.Y) != null);
+                Assert.True(mat != default, $"{name}: the dark at ({x},{y}) lies past no way out");
+                Assert.Equal(cave.HeightAt(mat.X, mat.Y), cave.HeightAt(x, y));
+            }
+        }
+        var ravaged = BuiltMaps.Value["RavagedPath"];
+        Assert.Equal((TileType.CaveMouth, true), (ravaged.GetGroundTile(28, 45), ravaged.IsSolid(28, 45)));
+        Assert.Equal(TileType.CaveMouth, ravaged.GetGroundTile(19, 51));
 
         // Floaroma's way into its meadow is no cave
         Assert.Equal("FloaromaMeadow", map.GetWarpAt(180, 612)!.TargetMap);
