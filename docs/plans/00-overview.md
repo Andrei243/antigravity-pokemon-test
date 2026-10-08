@@ -25,7 +25,7 @@ About 350 sittings are left, some twenty of them marked optional.
 | 13 · Ways to play | — | 26 | V11, V14, V25 optional |
 | 14 · Battle formats | — | 15 | B2, B13 optional |
 | 15 · Side activities | — | 8 | E6–E8 optional |
-| 16 · Tooling and shipping | — (a CI build-and-test workflow exists) | 24 | |
+| 16 · Tooling and shipping | T5 (and a CI build-and-test workflow) | 23 | |
 | 17 · Localisation | — | 6 | only if a second language is wanted |
 | 18 · Other regions | — | 10 | |
 | 19 · Kanto | — | 9 | |
