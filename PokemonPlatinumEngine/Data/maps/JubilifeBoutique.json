@@ -29,17 +29,83 @@
     "#####.#####"
   ],
   "props": [
-    { "type": "Wardrobe", "x": 1, "y": 2, "width": 1, "depth": 1 },
-    { "type": "Wardrobe", "x": 2, "y": 2, "width": 1, "depth": 1 },
-    { "type": "Wardrobe", "x": 8, "y": 2, "width": 1, "depth": 1 },
-    { "type": "Wardrobe", "x": 9, "y": 2, "width": 1, "depth": 1 },
-    { "type": "Counter", "x": 3, "y": 3, "width": 5, "depth": 1 },
-    { "type": "ClothesRack", "x": 1, "y": 5, "width": 2, "depth": 1 },
-    { "type": "ClothesRack", "x": 8, "y": 5, "width": 2, "depth": 1 },
-    { "type": "Rug", "x": 4, "y": 5, "width": 3, "depth": 2 },
-    { "type": "Plant", "x": 1, "y": 7, "width": 1, "depth": 1 },
-    { "type": "Plant", "x": 9, "y": 7, "width": 1, "depth": 1 },
-    { "type": "Painting", "x": 5, "y": 1, "width": 1, "depth": 1 }
+    {
+      "type": "Wardrobe",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 1,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 8,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    }
   ],
   "warps": [
     {
