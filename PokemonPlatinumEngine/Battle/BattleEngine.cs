@@ -598,8 +598,8 @@ public partial class BattleEngine
         HandleMenuInput();
     }
 
-    /// <summary>The message currently on screen.</summary>
-    public string CurrentMessage => currentMessage;
+    /// <summary>The message currently on screen. A tool may set it to show a line the log did not say (the harness's critical hit).</summary>
+    public string CurrentMessage { get => currentMessage; internal set => currentMessage = value; }
 
     /// <summary>A message is on screen waiting to be dismissed, or a question about a move to learn waits for its answer.</summary>
     public bool IsWaitingForConfirm => waitingForMessageConfirm || IsLearningMove;

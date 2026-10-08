@@ -35,6 +35,14 @@ public class Player
     public bool IsMoving { get; private set; }
     public bool IsRunning { get; private set; }
 
+    /// <summary>Holds the 3D model in a pose of its walk for a picture (the screenshot harness), as <see cref="Update"/> would leave it.</summary>
+    internal void Pose(float walk, float blend, bool running)
+    {
+        WalkCycle = walk;
+        WalkBlend = blend;
+        IsRunning = running;
+    }
+
     /// <summary>In the air: over a ledge, or between the shore and the Pokémon that carries the player on water.</summary>
     public bool IsHoppingLedge { get; private set; }
 
