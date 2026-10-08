@@ -34,6 +34,10 @@ public enum PropType
     Bicycle,
     /// <summary>A waste bin.</summary>
     TrashCan,
+    /// <summary>A tall wooden wardrobe against the wall: where the player changes clothes at home (plan 11 · C10).</summary>
+    Wardrobe,
+    /// <summary>A rail of clothes on hangers, as wide as its tiles: what a boutique shows (plan 11 · C10).</summary>
+    ClothesRack,
 
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,

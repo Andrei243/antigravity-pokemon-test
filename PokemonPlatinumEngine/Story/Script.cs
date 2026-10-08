@@ -36,6 +36,8 @@ public enum Op
     Music, Fanfare, Sound, Cry,
     // The screens that exist
     Starter, Shop, Pc, Travel,
+    // The wardrobe and the boutiques (plan 11 · C10)
+    Wardrobe,
     // The trainer tools (plan 06 · R12)
     ChoosePokemon, Trade, HallOfFame,
     // Wild Pokémon (plan 06 · R13)

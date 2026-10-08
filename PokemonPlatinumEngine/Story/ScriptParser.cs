@@ -370,6 +370,8 @@ public static class ScriptParser
 
             case "starter":
                 return new Instruction { Op = Op.Starter, Line = line };
+            case "wardrobe":
+                return new Instruction { Op = Op.Wardrobe, Line = line, Name = r.More ? r.Text("a boutique's key") : "" };
             case "shop":
                 return new Instruction { Op = Op.Shop, Line = line, Name = r.More ? r.Text("a counter's key") : "" };
             case "pc":

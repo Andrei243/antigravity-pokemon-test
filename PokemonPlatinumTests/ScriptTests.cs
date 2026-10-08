@@ -174,6 +174,7 @@ public class ScriptTests
           cry "Giratina-Origin"
           starter
           shop
+          wardrobe "jubilife"
           pc
           travel
           honeytree status

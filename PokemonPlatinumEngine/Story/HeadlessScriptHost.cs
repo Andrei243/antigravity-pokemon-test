@@ -265,7 +265,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         Shown("open a screen");
         Waits();
-        Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}" : $"open {screen}");
+        Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}"
+            : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
+            : $"open {screen}");
         Answer = 0;
         // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
         if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
