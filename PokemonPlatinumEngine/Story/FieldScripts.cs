@@ -23,6 +23,9 @@ public static class FieldScripts
     public const string ItemBall = "common.ItemBall";
     public const string HiddenItem = "common.HiddenItem";
 
+    /// <summary>A Pokémon standing in the field (plan 10 · F1): its cry, then its lines.</summary>
+    public const string Pokemon = "common.Pokemon";
+
     // Field moves (plan 02 · S2): what an obstacle, the water, a waterfall and a rock face run when faced
     public const string CutTree = "common.CutTree";
     public const string Rock = "common.Rock";
@@ -73,6 +76,7 @@ public static class FieldScripts
     {
         if (!string.IsNullOrEmpty(npc.Script)) return npc.Script;
         if (npc.IsItemBall) return ItemBall;
+        if (npc.IsPokemon) return Pokemon;
         if (npc.Obstacle is { } obstacle)
             return obstacle switch { PropType.CutTree => CutTree, PropType.CrackedRock => Rock, _ => Boulder };
         if (npc.IsStarterBriefcase) return Briefcase;

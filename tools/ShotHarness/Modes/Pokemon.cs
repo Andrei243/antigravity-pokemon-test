@@ -24,6 +24,10 @@ partial class Harness
                 Raylib.ImageDrawText(ref board, named[i], 6, i * Box + 6, 20, new Color(30, 30, 40, 255));
             }
             Save(board, "91_turntables");
+
+            // Their field sprites (plan 10 · F1): the four facings, two idle frames each, enlarged
+            foreach (var species in named)
+                if (Wanted("97_field_" + species.ToLowerInvariant())) Save(FieldSprites.Sheet(context, species, 6), "97_field_" + species.ToLowerInvariant());
         }
 
         // Turntables: front, three-quarter, side and back, for every model and each body plan's sample

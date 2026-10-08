@@ -16,6 +16,10 @@
   // The boy who takes the player to the Gym, and the rival on the way out once the Badge is won (plan 02 · S5)
   "triggers": [ { "trigger": 0, "script": "ToTheGym" }, { "trigger": 1, "script": "RivalOnTheWayOut" } ],
   "people": {
+    // The Machop that work the mine's yard (plan 10 · F1)
+    "machop_1": { "name": "Machop", "dialog": [ "Ma-ma-MACHOP!" ] },
+    "machop_2": { "name": "Machop", "dialog": [ "Hrrngh... Chop! Choooop!" ] },
+    "machop_3": { "name": "Machop", "dialog": [ "Machop! Chop, chop!" ] },
     "rival": { "name": "{rival}", "script": "Rival" },
     "youngster": { "name": "Boy", "script": "Youngster" },
     "guitarist": {

@@ -448,6 +448,9 @@ public partial class GameEngine
     /// <summary>What the field moves left in force, as the map and the player see it: boulders that can be pushed, a cave lit, fog lifted.</summary>
     private void KeepFieldMovesInForce()
     {
+        // On the water after a save is loaded, nobody has said whose Surf it was: the first of the team who knows it
+        if (player.Mount != null && player.Carrier == null)
+            player.Carrier = playerParty.Members.FirstOrDefault(p => p.Moves.Any(m => m.Name == "Surf"))?.ModelName;
         player.PushesBoulders = story.Has(FieldMoveRules.StrengthFlag);
         player.HasRunningShoes = story.Has(StoryState.RunningShoesFlag);
         currentMap.Lit = story.Has(FieldMoveRules.FlashFlag);
@@ -891,6 +894,8 @@ public partial class GameEngine
         public void UseMove(FieldMove move, Pokemon user, NPC? subject)
         {
             game.journal.Tell(new JournalEvent(JournalEventKind.UsedFieldMove, FieldMoveRules.MoveName(move)));
+            // Whose Surf it is carries the player (plan 10 · F1)
+            if (move == FieldMove.Surf) game.player.Carrier = user.ModelName;
             game.StartCutIn(move, user, subject);
         }
 

@@ -2,6 +2,10 @@
   "area": "oreburgh_mine_b2f",
   "bgmTrack": "sinnoh/mine",
   "people": {
+    // The miners' Machop at the coal face (plan 10 · F1): each cries and says its own word
+    "machop_1": { "name": "Machop", "dialog": [ "Maaa... CHOP!", "It's carrying a lump of coal nearly as big as itself." ] },
+    "machop_2": { "name": "Machop", "dialog": [ "Chop-chop! Machop!" ] },
+    "machop_3": { "name": "Machop", "dialog": [ "Hup! Hup! Chooop!" ] },
     // Roark at work, until he goes back to his Gym (plan 02 · S5, scripts/oreburgh_mine_b2f.txt)
     "roark": { "name": "Roark", "script": "Roark" },
     "worker": {

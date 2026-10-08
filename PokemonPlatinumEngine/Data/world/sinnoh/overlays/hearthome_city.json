@@ -25,6 +25,8 @@
   // The Contest Hall, the houses, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11)
   "locked": [ 2, 6, 7, 9, 10, 12, 13 ],
   "people": {
+    // The Pachirisu of the woman by the square's gate (plan 10 · F1); the Buneary waits for its scene (plan 02 · S7)
+    "pachirisu": { "name": "Pachirisu", "dialog": [ "Chipa! Chipa-chii!" ] },
     // In Platinum he offers to walk the player to the Contest Hall; the walk is plan 02's (S7)
     "fisherman": {
       "name": "Fisherman",

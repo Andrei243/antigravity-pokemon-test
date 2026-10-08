@@ -32,6 +32,8 @@ partial class Harness
         // People who move about of their own accord would stand elsewhere in every shot: they stay put but where a mode
         // shows them moving (plan 02 · S6)
         engine.PeopleStayPut = true;
+        // A Pokémon standing in the field waits for its sprite rather than showing a Poké Ball for a few frames (plan 10 · F1)
+        FieldSprites.Patient = true;
         startMs = startClock.Elapsed.TotalMilliseconds;
 
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)

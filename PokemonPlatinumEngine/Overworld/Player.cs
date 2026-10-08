@@ -220,6 +220,12 @@ public class Player
     }
 
     /// <summary>
+    /// The Pokémon that carries the player on the water, by the name its model goes by (<see cref="Models.Pokemon.ModelName"/>):
+    /// the one whose Surf was used (plan 10 · F1). Null draws the swimmer every Pokémon shares.
+    /// </summary>
+    public string? Carrier { get; set; }
+
+    /// <summary>
     /// How far onto the Pokémon's back the player is: 1 while surfing, rising from 0 through the hop onto it
     /// and falling back to 0 through the hop off it.
     /// </summary>

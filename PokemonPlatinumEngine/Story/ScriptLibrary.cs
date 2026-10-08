@@ -154,7 +154,7 @@ public sealed class ScriptLibrary
                     case Op.Give or Op.Find or Op.AddItem or Op.Take when !i.Own && ItemDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no item '{i.Name}'");
                         break;
-                    case Op.Cry when PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
+                    case Op.Cry when !i.Own && PokemonDatabase.Get(i.Name) == null && PokemonDatabase.SpeciesOfForm(i.Name) == null:
                         Wrong(i, $"there is no species or form '{i.Name}'");
                         break;
                     case Op.GivePokemon or Op.WildBattle or Op.CatchingLesson when PokemonDatabase.Get(i.Name) == null:

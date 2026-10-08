@@ -16,6 +16,8 @@
   "locked": [ 0, 3, 4, 5, 6, 9, 10 ],
   // Sailor Eldritch, who sails trainers to Iron Island, is written with the ferry
   "people": {
+    // The Psyduck watching the boats (plan 10 · F1)
+    "psyduck": { "name": "Psyduck", "dialog": [ "Psy...? Psyduck?" ] },
     // He sails the player to Iron Island and back (scripts/canalave_city.txt)
     "sailor_eldritch": { "name": "Sailor Eldritch", "script": "Ferry" },
     "collector": {

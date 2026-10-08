@@ -172,6 +172,7 @@ public class ScriptTests
           fanfare item
           sound "select"
           cry "Giratina-Origin"
+          cry own
           starter
           shop
           wardrobe "jubilife"
@@ -615,6 +616,30 @@ public class ScriptTests
         var alone = new ScriptRunner(finding, new HeadlessScriptHost());
         alone.Start(finding.All.Single());
         Assert.Equal("test.txt(2): this script has no item of its own: no item ball and no hidden item started it.", Assert.Throws<ScriptException>(() => alone.RunToEnd()).Message);
+    }
+
+    [Fact]
+    public void APokemonOfTheMapCriesAsItself()
+    {
+        // The mine's Machop: its cry, then its lines (plan 10 · F1)
+        var machop = new NPC { NpcType = NPC.PokemonType, Name = "Machop", Species = "Machop", DialogLines = { "Maaa... CHOP!" } };
+        var host = new HeadlessScriptHost();
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        Assert.Equal(FieldScripts.Pokemon, FieldScripts.For(machop));
+        runner.Start(ScriptLibrary.Default.Find(FieldScripts.Pokemon)!, machop);
+        runner.RunToEnd();
+        Assert.Contains("cry Machop", host.Log);
+        Assert.Equal("Maaa... CHOP!", Assert.Single(host.Transcript).Text);
+
+        // A form cries as its form; a script that belongs to nobody has no cry of its own
+        var origin = new NPC { NpcType = NPC.PokemonType, Name = "Giratina", Species = "Giratina-Origin" };
+        runner.Start(ScriptLibrary.Default.Find(FieldScripts.Pokemon)!, origin);
+        runner.RunToEnd();
+        Assert.Contains("cry Giratina-Origin", host.Log);
+        var crying = ScriptLibrary.FromSources(("test", "script S\n cry own"));
+        var alone = new ScriptRunner(crying, new HeadlessScriptHost());
+        alone.Start(crying.All.Single(), Trainer());
+        Assert.Contains("no cry of its own", Assert.Throws<ScriptException>(() => alone.RunToEnd()).Message);
     }
 
     [Fact]

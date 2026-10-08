@@ -442,6 +442,8 @@ public sealed class WorldRenderer
         VerticalScale = vs;
         GatherActors(map, player, px, pz, groundY, lift, time);
         foreach (var actor in actors) CharacterSprites.Prepare(context, actor.Rig, actor.Pose, actor.Yaw);
+        foreach (var p in pokemon) FieldSprites.Prepare(context, p.Name, p.Facing, ref fieldBakes);
+        fieldBakes = 1;
 
         // Grass leans away from everyone on the map (set after the sprite bakes, which clear it)
         walkerFeet.Clear();
@@ -472,6 +474,7 @@ public sealed class WorldRenderer
         gymPieces.DrawDepth(map);
         DrawActors(CharacterPass.Depth);
         DrawThings(CharacterPass.Depth);
+        DrawPokemon(CharacterPass.Depth);
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
@@ -513,6 +516,7 @@ public sealed class WorldRenderer
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
         DrawThings(CharacterPass.Color);
+        DrawPokemon(CharacterPass.Color);
         DrawActors(CharacterPass.Color);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
@@ -818,17 +822,33 @@ public sealed class WorldRenderer
 
     private float SinkAt(Map map, float x, float z) => Rows(SinkRows(map.BehaviourAt((int)MathF.Floor(x), (int)MathF.Floor(z))));
 
-    // The Pokémon the player rides on water, when there is one to draw
-    private (Vector3 At, float Yaw)? mount;
+    // The Pokémon the player rides on water, when there is one to draw: the swimmer every Pokémon shares, or the
+    // carrier's own field sprite (plan 10 · F1)
+    private (Vector3 At, float Yaw, FieldSprites.Strip? Own)? mount;
+
+    // The Pokémon standing in the field in view (plan 10 · F1), and how many field sprites a frame may still bake
+    private readonly List<(Vector3 At, string Name, int Facing, int Frame)> pokemon = new();
+    private int fieldBakes = 1;
 
     private void GatherActors(Map map, Player? player, float px, float pz, float groundY, float lift, float time)
     {
         actors.Clear();
         mount = null;
         things.Clear();
+        pokemon.Clear();
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
+            if (npc is { IsPokemon: true, Species: { } species })
+            {
+                // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two
+                float sx = npc.DrawX + 0.5f, sz = npc.DrawY + 0.5f;
+                float hop = npc.WalkBlend >= 0.5f && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f ? Rows(2f) : 0f;
+                float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz);
+                pokemon.Add((new Vector3(sx, ground + hop, sz), species, CharacterSprites.FacingIndex(Player.YawOf(npc.Facing)),
+                    FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f)));
+                continue;
+            }
             if (npc.IsThing)
             {
                 // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of
@@ -863,19 +883,36 @@ public sealed class WorldRenderer
             Time = time,
             Blink = IsBlinking(time, 0.37f)
         };
-        // On the water the player sits on a Pokémon's back, and the two bob together, a texel up and a texel down
+        // On the water the player sits on a Pokémon's back, and the two bob together, a texel up and a texel down.
+        // The Pokémon is the one whose Surf it is, once its field sprite is ready (plan 10 · F1); the swimmer every
+        // Pokémon shares stands in meanwhile
         float saddle = player.Saddle;
         float bob = player.Mount != null && MathF.Floor(time * 2.4f) % 2f == 0f ? Rows(1f) : 0f;
-        float feet = groundY + lift + Rows(SurfMount.Seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle);
+        FieldSprites.Strip? carrier = null;
+        if (player.Mount != null && player.Carrier is { } carried)
+        {
+            int facing = CharacterSprites.FacingIndex(player.Yaw);
+            FieldSprites.Prepare(context, carried, facing, ref fieldBakes);
+            carrier = FieldSprites.Get(carried, facing);
+        }
+        float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
+        float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle);
         actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px, feet, pz), player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)
         {
             float mx = ridden.X + 0.5f, mz = ridden.Y + 0.5f;
             // A little nearer the camera than its rider, so its back covers the rider's shoes
-            mount = (new Vector3(mx, Relief.At(map, mx, mz) + bob - Rows(2f), mz + 0.06f), player.Yaw);
+            float sunk = carrier != null ? CarrierSunk(carrier) + FieldSprites.FootRows : 2f;
+            mount = (new Vector3(mx, Relief.At(map, mx, mz) + bob - Rows(sunk), mz + 0.06f), player.Yaw, carrier);
         }
     }
+
+    /// <summary>How many rows of a Pokémon's field sprite are under the water while it carries someone: a fifth of it.</summary>
+    internal static int CarrierSunk(FieldSprites.Strip carrier) => (int)MathF.Round(carrier.Rows * 0.2f);
+
+    /// <summary>How many rows above the water its rider's feet are lifted: a little over half of what shows of it.</summary>
+    internal static int CarrierSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - CarrierSunk(carrier)) * 0.55f);
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
 
@@ -910,7 +947,27 @@ public sealed class WorldRenderer
     {
         foreach (var actor in actors)
             CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
-        if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);
+        if (mount is { Own: { } own } carried)
+            CharacterSprites.DrawCard(own.Frames[0], carried.At, VerticalScale, pass);
+        else if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);
+    }
+
+    /// <summary>
+    /// The Pokémon standing in the field: each its field sprite, its lowest point on the ground, or a Poké Ball while
+    /// the sprite isn't ready (plan 10 · F1).
+    /// </summary>
+    private void DrawPokemon(CharacterPass pass)
+    {
+        foreach (var (at, name, facing, frame) in pokemon)
+        {
+            if (FieldSprites.Get(name, facing) is { } strip)
+            {
+                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows), 0), VerticalScale, pass);
+                continue;
+            }
+            if (!thingCards.TryGetValue(PropType.Mailbox, out var ball)) thingCards[PropType.Mailbox] = ball = CharacterSprites.MakeCard(context, ThingCards.Paint(PropType.Mailbox));
+            CharacterSprites.DrawCard(ball, at, VerticalScale, pass);
+        }
     }
 
     /// <summary>
@@ -1152,7 +1209,7 @@ public sealed class WorldRenderer
             // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
             if (!npc.IsPCTerminal && InSight(npc))
                 Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
-                    npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : 1f);
+                    npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : npc.IsPokemon ? 0.75f : 1f);
         }
         if (withPlayer) Blob(px, pz + 0.02f, playerGround, 1f - Math.Clamp(lift * 0.8f, 0f, 0.5f));
 

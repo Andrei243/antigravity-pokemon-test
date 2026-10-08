@@ -150,6 +150,12 @@ public sealed class MapFile
         /// </summary>
         public string? Item { get; set; }
         public int? Count { get; set; }
+
+        /// <summary>
+        /// For a Pokémon standing in the field (<c>npcType</c> "Pokemon", plan 10 · F1): its species, or a form by its
+        /// name (<c>Machop</c>, <c>Rotom-Wash</c>).
+        /// </summary>
+        public string? Species { get; set; }
         public TrainerRecord? Trainer { get; set; }
 
         /// <summary>
@@ -282,7 +288,8 @@ public sealed class MapFile
             HiddenBy = n.HiddenBy,
             ShownBy = n.ShownBy,
             Item = n.Item,
-            ItemCount = n.Count ?? 1
+            ItemCount = n.Count ?? 1,
+            Species = n.Species
         };
         if (n.Id != null) npc.Id = n.Id;
         if (n.Movement != null) npc.Movement = PersonMovement.Parse(n.Movement, n.RangeX ?? 0, n.RangeZ ?? 0, n.X, n.Y, n.Facing);
@@ -291,6 +298,13 @@ public sealed class MapFile
             if (!npc.IsItemBall) throw new InvalidDataException($"Map {mapName}: {n.Name} holds an item and is no item ball (npcType \"{NPC.ItemBallType}\").");
             if (npc.Item == null || ItemDatabase.Get(npc.Item) == null) throw new InvalidDataException($"Map {mapName}: the item ball at {n.X},{n.Y} holds '{npc.Item}', which is no item.");
             if (string.IsNullOrEmpty(npc.HiddenBy)) throw new InvalidDataException($"Map {mapName}: the {npc.Item} at {n.X},{n.Y} has no hiddenBy flag, so it would come back.");
+        }
+
+        if (npc.IsPokemon || npc.Species != null)
+        {
+            if (!npc.IsPokemon) throw new InvalidDataException($"Map {mapName}: {n.Name} names a species and is no Pokémon (npcType \"{NPC.PokemonType}\").");
+            if (npc.Species == null || (PokemonDatabase.Get(npc.Species) == null && PokemonDatabase.SpeciesOfForm(npc.Species) == null))
+                throw new InvalidDataException($"Map {mapName}: the Pokémon at {n.X},{n.Y} is '{npc.Species}', which is no species or form.");
         }
 
         if (n.Trainer is { } t)
@@ -429,6 +443,7 @@ public sealed class MapFile
         ShownBy = npc.ShownBy,
         Item = npc.Item,
         Count = npc.Item != null && npc.ItemCount > 1 ? npc.ItemCount : null,
+        Species = npc.Species,
         Movement = npc.Movement?.Source is { Length: > 0 } moves ? moves : null,
         RangeX = npc.Movement is { RangeX: > 0 } mx ? mx.RangeX : null,
         RangeZ = npc.Movement is { RangeZ: > 0 } mz ? mz.RangeZ : null,

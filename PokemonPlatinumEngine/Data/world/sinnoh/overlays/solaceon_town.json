@@ -13,6 +13,10 @@
   // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 02)
   "heldBack": [ "item_rare_candy" ],
   "people": {
+    // The Pokémon of the Day Care's farm (plan 10 · F1), in their pen: out of reach and with nothing to say, as in Platinum
+    "buneary_1": { "name": "Buneary" },
+    "buneary_2": { "name": "Buneary" },
+    "pachirisu": { "name": "Pachirisu" },
     "rancher_1": {
       "name": "Rancher",
       "dialog": [

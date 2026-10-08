@@ -756,6 +756,8 @@ public class StoryTests
             {
                 FieldScripts.ItemBall => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.ItemBallType, Name = "Potion", Item = "Potion", HiddenBy = "FLAG_OBTAINED_TEST_POTION" }),
                 FieldScripts.HiddenItem => EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"),
+                // A Pokémon standing in the field cries as itself (plan 10 · F1)
+                FieldScripts.Pokemon => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.PokemonType, Name = "Machop", Species = "Machop" }, new[] { "Machop!" }),
                 _ when fieldMove => EveryWayThrough(script, new Map(8, 8), obstacle, before: KnowsEveryFieldMove),
                 // Two trainers who came together, beside whoever travels with the player and without anyone
                 FieldScripts.TrainerPair => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), pair: AnyTrainer())
