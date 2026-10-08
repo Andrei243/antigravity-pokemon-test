@@ -44,17 +44,27 @@ public static class PlayerIdentity
 
     public static PlayerLook Other(PlayerLook look) => look == PlayerLook.Girl ? PlayerLook.Boy : PlayerLook.Girl;
 
-    /// <summary>The player's own character type.</summary>
-    public static string Character => CharacterOf(Look);
+    /// <summary>
+    /// What the player wears (plan 11 · C9): set as a game begins or loads and when the wardrobe closes. Only drawing
+    /// reads it, through <see cref="Character"/>.
+    /// </summary>
+    public static Outfit Outfit { get; private set; } = Outfit.Own;
+
+    public static void SetOutfit(Outfit? outfit) => Outfit = outfit ?? Outfit.Own;
+
+    /// <summary>The player's own character type, dressed in their outfit (the plain look's when nothing is chosen).</summary>
+    public static string Character => Outfit.Dress(CharacterOf(Look), Outfit);
 
     /// <summary>The professor's assistant: the one the player isn't.</summary>
     public static string AssistantName => DefaultName(Other(Look));
 
     /// <summary>
     /// The character type a person of the maps is drawn as: the assistant is whichever character the player
-    /// isn't, the player's own type follows their look, anyone else is themselves.
+    /// isn't, the player's own type follows their look (and, for the game's own player, their outfit), anyone else
+    /// is themselves.
     /// </summary>
-    public static string CharacterFor(string npcType) => CharacterFor(npcType, Look);
+    public static string CharacterFor(string npcType) =>
+        npcType.Equals("Player", StringComparison.OrdinalIgnoreCase) ? Character : CharacterFor(npcType, Look);
 
     public static string CharacterFor(string npcType, PlayerLook look) =>
         npcType.Equals("Assistant", StringComparison.OrdinalIgnoreCase) ? CharacterOf(Other(look))

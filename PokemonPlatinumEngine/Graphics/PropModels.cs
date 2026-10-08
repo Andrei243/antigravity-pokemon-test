@@ -90,6 +90,9 @@ internal static class PropModels
             case PropType.SideStairsDown: SideStairsDown(kit, w, d); break;
             case PropType.Bicycle: kit.Sprite(kit.Face("bicycle", 58, 36, PaintBicycle), w / 2f, d / 2f + 10); break;
             case PropType.TrashCan: TrashCan(kit); break;
+            // The wardrobe at home and a boutique's rails (plan 11 · C10)
+            case PropType.Wardrobe: Wardrobe(kit); break;
+            case PropType.ClothesRack: kit.Sprite(kit.Face($"clothesrack.{w}", w - 4, 44, c => PaintClothesRack(c, w - 4)), w / 2f, d / 2f + 4); break;
             case PropType.Crates: Boxes(kit, p); break;
         }
     }
@@ -160,6 +163,83 @@ internal static class PropModels
         foreach (int x in new[] { 2, w / 2 - 1, w - 3 })
             kit.Block("sidestairs.post", Dark, x, x + 2, z1, z1 + 2, 0, 16);
         kit.Block("sidestairs.post", Dark, w - 2, w, z0, z0 + 2, 0, 16);
+    }
+
+    /// <summary>
+    /// A tall wardrobe of dark wood, a tile wide and half a tile deep against the wall: two doors with brass knobs under
+    /// a moulded top, and a drawer across its foot.
+    /// </summary>
+    private static void Wardrobe(KitBuilder kit)
+    {
+        const int h = 60;
+        var front = kit.Face("wardrobe.front", 30, h, c =>
+        {
+            Pix.Raised(c, 0, 0, 30, h, WoodDark);
+            // The cornice and the plinth
+            c.Rect(0, 0, 30, 4, Wood.Base);
+            c.HLine(0, 0, 30, Wood.Light);
+            c.HLine(0, 4, 30, WoodDark.Dark);
+            // The two doors, panelled, with a gap between them
+            foreach (int x0 in new[] { 2, 16 })
+            {
+                Pix.Raised(c, x0, 6, 12, h - 20, Wood);
+                c.Rect(x0 + 2, 9, 8, h - 26, WoodDark.Base);
+                c.HLine(x0 + 2, 9, 8, WoodDark.Dark);
+                c.VLine(x0 + 2, 9, h - 26, WoodDark.Dark);
+            }
+            c.VLine(15, 6, h - 20, WoodDark.Dark);
+            // The knobs
+            foreach (int x in new[] { 12, 17 })
+            {
+                c.Rect(x, h / 2 - 4, 2, 2, Rgb(232, 196, 96));
+                c.Set(x, h / 2 - 4, Rgb(252, 236, 170));
+            }
+            // The drawer at the foot
+            Pix.Raised(c, 2, h - 12, 26, 9, Wood);
+            c.Rect(13, h - 8, 4, 1, Rgb(232, 196, 96));
+        });
+        var top = kit.Face("wardrobe.top", 30, 15, c => TopFace(c, Wood));
+        var side = kit.Face("wardrobe.side", 15, h, c => Pix.Raised(c, 0, 0, 15, h, WoodDark));
+        kit.Box(1, 31, 0, 15, 0, h, top, front, side, side);
+    }
+
+    /// <summary>
+    /// A rail of clothes, side on, <paramref name="w"/> wide and 44 high: a chrome rail on two posts with feet, and
+    /// shirts, jackets and dresses in many colours hanging from it on their hangers.
+    /// </summary>
+    public static void PaintClothesRack(PixelCanvas c, int w)
+    {
+        var chrome = Tone.Of(196, 202, 218);
+        // The posts and their feet, the rail across the top
+        foreach (int x in new[] { 1, w - 3 })
+        {
+            c.Rect(x, 4, 2, 38, chrome.Base);
+            c.VLine(x, 4, 38, chrome.Light);
+            c.Rect(x - 1, 41, 4, 2, chrome.Dark);
+        }
+        c.Rect(1, 3, w - 2, 2, chrome.Base);
+        c.HLine(1, 3, w - 2, chrome.Light);
+
+        // The garments, each a shape of its own a little apart from the next; colours and shapes taken in turn
+        Color[] cloth = { Rgb(214, 60, 64), Rgb(62, 110, 208), Rgb(246, 200, 60), Rgb(78, 156, 96), Rgb(236, 136, 168), Rgb(46, 46, 58), Rgb(244, 244, 246), Rgb(140, 84, 160) };
+        int n = Math.Max(1, (w - 8) / 7);
+        for (int i = 0; i < n; i++)
+        {
+            int x = 5 + i * 7;
+            var col = cloth[(i * 3 + w / 32) % cloth.Length];
+            var shade = PixelCanvas.Shadow(col, 0.28f);
+            // The hanger's hook and shoulders
+            c.Set(x + 3, 5, chrome.Dark);
+            c.HLine(x + 1, 6, 5, chrome.Dark);
+            int length = (i % 3) switch { 0 => 18, 1 => 24, _ => 14 };
+            c.Rect(x, 7, 7, length, col);
+            c.VLine(x + 6, 7, length, shade);
+            c.HLine(x, 7 + length - 1, 7, shade);
+            c.VLine(x, 7, length, PixelCanvas.Light1(col, 0.3f));
+            // A collar on the shirts, a seam down a dress
+            if (i % 3 == 0) { c.Set(x + 2, 7, Rgb(250, 250, 252)); c.Set(x + 4, 7, Rgb(250, 250, 252)); }
+            else if (i % 3 == 1) c.VLine(x + 3, 9, length - 3, shade);
+        }
     }
 
     /// <summary>A bicycle standing on its kickstand, side on: a sprite 58 by 36.</summary>

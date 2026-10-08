@@ -30,6 +30,15 @@ public class SaveData
     /// <summary>The rival's name, given in the introduction (plan 02 · S4). Older saves call him by his own.</summary>
     public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
 
+    /// <summary>
+    /// What the player wears (plan 11 · C9): a garment of <c>clothes.json</c> in each slot or the look's own. Null in
+    /// older saves and where nothing was ever changed: the look's own clothes.
+    /// </summary>
+    public Outfit? Outfit { get; set; }
+
+    /// <summary>The garments bought at a boutique, by id. Null in older saves: nothing bought.</summary>
+    public List<string>? Wardrobe { get; set; }
+
     /// <summary>The number on the Trainer Card, drawn when the game began. 0 in older saves: one is drawn on loading.</summary>
     public int TrainerId { get; set; }
 

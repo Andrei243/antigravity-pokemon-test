@@ -18,7 +18,7 @@
   "solid": [
     "#########",
     "#########",
-    "###.#..##",
+    "#####..##",
     "##......#",
     "#.......#",
     "#.......#",
@@ -75,8 +75,15 @@
       "depth": 1
     },
     {
-      "type": "Clock",
+      "type": "Wardrobe",
       "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 2,
       "y": 1,
       "width": 1,
       "depth": 1
@@ -97,6 +104,12 @@
       "x": 4,
       "y": 2,
       "text": "A cartoon about a Pokémon who loves to sleep is on. Mom bought this television for the room."
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "text": "It's your wardrobe. All your clothes are in here.",
+      "script": "Wardrobe"
     },
     {
       "x": 2,

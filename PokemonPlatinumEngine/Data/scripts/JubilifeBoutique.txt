@@ -1,0 +1,13 @@
+# Jubilife City's boutique (plan 11 · C10). docs/scripts.md describes the language. Platinum has no boutique: the
+# shop, its clerk and its lines are our own, in the southwest house the original fills with townsfolk alone.
+
+
+# The clerk behind the counter: the boutique's stock, tried on and bought on the wardrobe screen.
+script Clerk
+  speaker "Clerk"
+  say "Welcome to the Jubilife Boutique! Hats, tops, bottoms, shoes and bags, all in the latest Sinnoh styles."
+  say "Try on anything you like. Whatever you buy is yours to keep, and you can change into it at home whenever you wish."
+  wardrobe "jubilife"
+  speaker "Clerk"
+  say "Thank you for stopping by! Do come again."
+  end

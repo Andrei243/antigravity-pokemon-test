@@ -518,6 +518,9 @@ public sealed class ScriptRunner
             case Op.Shop:
                 host.Open(ScriptScreen.Shop, Subject, i.Name.Length > 0 ? i.Name : null);
                 break;
+            case Op.Wardrobe:
+                host.Open(ScriptScreen.Wardrobe, Subject, i.Name.Length > 0 ? i.Name : null);
+                break;
             case Op.Pc:
                 host.Open(i.Name == "halloffame" ? ScriptScreen.HallOfFame : ScriptScreen.Pc, Subject);
                 break;

@@ -37,3 +37,10 @@ script RivalRushesIn
   music area
   setvar VAR_PLAYER_HOUSE_RIVAL_STATE 1
   end
+
+
+# The wardrobe by the bed (plan 11 · C10): the clothes owned, changed for nothing.
+script Wardrobe
+  sayown
+  wardrobe
+  end

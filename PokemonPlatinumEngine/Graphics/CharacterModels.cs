@@ -152,6 +152,38 @@ internal static class CharacterModels
         return rig;
     }
 
+    /// <summary>
+    /// The rig for a character type if it is ready, without ever waiting: one not built yet is started in the
+    /// background and null comes back until it is (the wardrobe's figure, which changes with the cursor).
+    /// </summary>
+    public static CharacterRig? TryGet(string npcType, FieldShaders shaders)
+    {
+        if (Cache.TryGetValue(npcType, out var rig) && rig.Uploaded) return rig;
+        var building = Building.GetOrAdd(npcType, t => Task.Run(() => Build(t)));
+        return building.IsCompletedSuccessfully ? Get(npcType, shaders) : null;
+    }
+
+    /// <summary>
+    /// Lets go of a character type's rig (an outfit tried on and not kept): its meshes leave the graphics card and
+    /// it is built again (from the mesh cache) if it is asked for later. Its baked sprites stay, keyed by the old rig.
+    /// </summary>
+    public static unsafe void Forget(string npcType)
+    {
+        if (Building.TryRemove(npcType, out var building) && !building.IsCompleted) return;
+        if (!Cache.Remove(npcType, out var rig) || !rig.Uploaded) return;
+        rig.Body?.Unload();
+        rig.Outline?.Unload();
+        rig.FaceModel?.Unload();
+        foreach (var material in rig.FaceMaterials)
+        {
+            Raylib.UnloadTexture(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
+            Raylib.MemFree(material.Maps);
+        }
+        rig.Body = rig.Outline = rig.FaceModel = null;
+        rig.FaceMaterials = Array.Empty<Material>();
+        rig.Uploaded = false;
+    }
+
     /// <summary>CPU-side model only (no GPU needed).</summary>
     public static CharacterRig Build(string npcType)
     {

@@ -172,6 +172,9 @@ public sealed class ScriptLibrary
                     case Op.Shop when i.Name.Length > 0 && !MartDatabase.Specialties.ContainsKey(i.Name):
                         Wrong(i, $"there is no counter '{i.Name}'");
                         break;
+                    case Op.Wardrobe when i.Name.Length > 0 && !ClothingDatabase.Boutiques.ContainsKey(i.Name):
+                        Wrong(i, $"there is no boutique '{i.Name}'");
+                        break;
                     case Op.Warp when mapExists != null && !mapExists(i.Name):
                         Wrong(i, $"there is no map '{i.Name}'");
                         break;

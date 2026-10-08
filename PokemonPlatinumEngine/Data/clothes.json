@@ -1,0 +1,49 @@
+{
+  // The clothes the player can wear (Data/ClothingDatabase.cs; docs/data-files.md, "Clothes"). Our own: Platinum has
+  // no boutique. A colour is #rrggbb; a hat or a bag with no colour is none at all; a garment that costs nothing is
+  // everyone's from the start. Ids are lowercase words joined by underscores (no dots: an outfit's key joins them).
+  "garments": [
+    { "id": "no_hat", "name": "No Hat", "slot": "Hat", "price": 0, "description": "Let your hair breathe." },
+    { "id": "navy_beret", "name": "Navy Beret", "slot": "Hat", "price": 1000, "hat": "Beret", "color": "#3a4a86", "accent": "#f2f2f6", "description": "A soft knit beret in deep navy with a white band." },
+    { "id": "mint_beret", "name": "Mint Beret", "slot": "Hat", "price": 1000, "hat": "Beret", "color": "#8cd8b8", "accent": "#f6f6f8", "description": "A pale mint beret for sunny days." },
+    { "id": "plum_beret", "name": "Plum Beret", "slot": "Hat", "price": 1000, "hat": "Beret", "color": "#8a4c8e", "accent": "#f0c84a", "description": "A plum beret with a golden band." },
+    { "id": "red_cap", "name": "Red Cap", "slot": "Hat", "price": 800, "hat": "Cap", "color": "#dc3c3c", "accent": "#f6f6f8", "description": "A classic red cap. Every trainer needs one." },
+    { "id": "blue_cap", "name": "Blue Cap", "slot": "Hat", "price": 800, "hat": "Cap", "color": "#3e6ed0", "accent": "#f6d24a", "description": "A bright blue cap with a yellow brim." },
+    { "id": "black_cap", "name": "Black Cap", "slot": "Hat", "price": 800, "hat": "Cap", "color": "#2c2c36", "accent": "#e84848", "description": "A black cap with a red brim, for the cool and quiet." },
+
+    { "id": "striped_tee", "name": "Striped Tee", "slot": "Top", "price": 1200, "color": "#f6f6f8", "accent": "#3e6ed0", "shortSleeves": true, "stripes": true, "description": "A white tee with blue stripes. Light and easy." },
+    { "id": "sunny_tee", "name": "Sunny Tee", "slot": "Top", "price": 1000, "color": "#f6c83c", "accent": "#f8f4ea", "shortSleeves": true, "description": "A sunflower-yellow tee." },
+    { "id": "red_jacket", "name": "Red Jacket", "slot": "Top", "price": 2400, "color": "#d23c40", "accent": "#f4f4f6", "description": "A red zip-up jacket with a white collar." },
+    { "id": "forest_hoodie", "name": "Forest Hoodie", "slot": "Top", "price": 1800, "color": "#4e8c5a", "accent": "#26603c", "description": "A leaf-green hoodie, warm enough for Eterna Forest." },
+    { "id": "black_jacket", "name": "Black Jacket", "slot": "Top", "price": 2400, "color": "#2e2e3a", "accent": "#c8cad6", "description": "A black jacket with a grey collar." },
+    { "id": "winter_coat", "name": "Winter Coat", "slot": "Top", "price": 3600, "color": "#2e4e88", "accent": "#f4ecd8", "coat": true, "scarf": true, "description": "A long navy coat and a cream scarf, for the snow up north." },
+    { "id": "rose_coat", "name": "Rose Coat", "slot": "Top", "price": 3600, "color": "#e88aa8", "accent": "#fafafa", "coat": true, "scarf": true, "description": "A long rose-pink coat with a white scarf." },
+
+    { "id": "denim_jeans", "name": "Denim Jeans", "slot": "Bottoms", "price": 1500, "color": "#3c5a92", "description": "Sturdy blue jeans." },
+    { "id": "black_trousers", "name": "Black Trousers", "slot": "Bottoms", "price": 1500, "color": "#2a2a34", "description": "Smart black trousers." },
+    { "id": "khaki_shorts", "name": "Khaki Shorts", "slot": "Bottoms", "price": 1000, "color": "#b8a070", "shorts": true, "description": "Shorts for long walks in the sun." },
+    { "id": "red_skirt", "name": "Red Skirt", "slot": "Bottoms", "price": 1500, "color": "#c83c48", "skirt": true, "description": "A pleated red skirt." },
+    { "id": "navy_skirt", "name": "Navy Skirt", "slot": "Bottoms", "price": 1500, "color": "#34406e", "skirt": true, "description": "A pleated navy skirt." },
+
+    { "id": "white_sneakers", "name": "White Sneakers", "slot": "Shoes", "price": 1200, "color": "#f2f2f4", "accent": "#9a9cac", "description": "Clean white sneakers." },
+    { "id": "red_sneakers", "name": "Red Sneakers", "slot": "Shoes", "price": 1200, "color": "#d83c3c", "accent": "#f4f0e8", "description": "Fast-looking red sneakers." },
+    { "id": "green_runners", "name": "Green Runners", "slot": "Shoes", "price": 1200, "color": "#4ab070", "accent": "#f4f0e8", "description": "Light green running shoes." },
+    { "id": "black_boots", "name": "Black Boots", "slot": "Shoes", "price": 1800, "color": "#2a2830", "accent": "#5a5864", "description": "Tough black boots for rough roads." },
+
+    { "id": "no_bag", "name": "No Bag", "slot": "Bag", "price": 0, "description": "Travel light." },
+    { "id": "blue_backpack", "name": "Blue Backpack", "slot": "Bag", "price": 2000, "color": "#4a7ad8", "description": "A roomy blue backpack." },
+    { "id": "green_backpack", "name": "Green Backpack", "slot": "Bag", "price": 2000, "color": "#58a868", "description": "A green backpack, the colour of Route 201." },
+    { "id": "black_backpack", "name": "Black Backpack", "slot": "Bag", "price": 2000, "color": "#30303a", "description": "A black backpack that goes with anything." },
+    { "id": "pink_backpack", "name": "Pink Backpack", "slot": "Bag", "price": 2000, "color": "#ee88aa", "description": "A pink backpack, cute and practical." }
+  ],
+  "boutiques": {
+    // Jubilife City's boutique, in the building the original never used (Data/maps/JubilifeBoutique.json)
+    "jubilife": [
+      "navy_beret", "mint_beret", "plum_beret", "red_cap", "blue_cap", "black_cap",
+      "striped_tee", "sunny_tee", "red_jacket", "forest_hoodie", "black_jacket", "winter_coat", "rose_coat",
+      "denim_jeans", "black_trousers", "khaki_shorts", "red_skirt", "navy_skirt",
+      "white_sneakers", "red_sneakers", "green_runners", "black_boots",
+      "blue_backpack", "green_backpack", "black_backpack", "pink_backpack"
+    ]
+  }
+}

@@ -12,6 +12,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 | `items.json` | `ItemDatabase` | A list of `ItemData`. Platinum's items keep their Generation 4 ids; later items are 1000 plus their PokeAPI id, and items made for this game are 9000 and up. `effectValue` is HP restored (9999 for all of it), the share of HP a revive restores, or a ball's catch multiplier × 10; a `HealStatus` item with no `healsStatus` cures any status. `holdEffect` names what the item does when held (from the decompilation) and `teachesMove` the move of a TM or HM, whose `description` the importer writes from that move. What held items do in battle is in `Battle/Effects/HeldItemEffects.cs`, and `DataFileTests` checks that each of those exists here. The rest of Platinum's item table is here too, for the sessions that write its rules (plan 06 · R8, R11), with the decompilation's own names: `holdParam` (the number that goes with the hold effect), `flingPower` and `flingEffect`, `naturalGiftPower` and `naturalGiftType`, `pluckEffect`, `cantBeTossed`, `canBeRegistered`, `fieldUse` and `battleUse` (how the bag and the battle use it: `Healing`, `TmHm`, `Berry`, `EvoStone`, `PokeBall`…), `use` (what using it changes: `hpRestored`, `healPoison`, `ppRestored`, `atkEVs`, `friendshipLow`…; a flag is 1), `battlePocket` (which of the battle bag's four pockets shows it: `RecoverHp`, `RecoverStatus`, `PokeBalls`, `BattleItems`, the original's `BATTLE_POCKET_MASK_*`, plan 06 · R11) and `effectParam` (the table's number for an item with no hold effect: a Repel's steps). A Mega Stone has `megaStone` (`species`, `form`, and `heldByForm` when only one form of the species can use it) and a Z-Crystal `zCrystal` (`type`, or `move`, `from` and `users` for one species' own); the few of them only Pokémon Showdown lists have ids from 5000. |
 | `trainers.json` | `TrainerDatabase` | Platinum's 927 trainers (plan 06 · R9), from the decompilation's `res/trainers/data`: `id` (the constant without `TRAINER_`, lower case), `name`, `class`, `ai` (the routines of the AI script it thinks with, `AiFlags` by name), `items` (up to four it uses in battle), `doubleBattle`, `prizeMoney` (the last Pokémon's level × 4 × the class's multiplier, doubled in a double battle) and `party`: each Pokémon's `species`, `form`, `level`, `ivScale` (its IVs as a share of 255), `personality` (worked out as the original's `TrainerData_BuildParty` does; its nature, gender and ability follow from it), `item` and `moves` (null: what its level taught it). Never what a trainer says. A trainer of the imported world whose overlay names the same team, or none, takes this one (`TrainerDatabase.Fill`). |
 | `marts.json` | `MartDatabase` | The Poké Marts' stock (plan 06 · R11), from the decompilation's `include/data/mart_items.h`: `common`, the items every Mart's first counter sells, each with the `badges` it needs (the original's step: 1 with none, 2 with one or two, 3 with three or four, 4 with five or six, 5 with seven, 6 with eight), and `specialties`, each town's own counter by its key (`jubilife`, `veilstone_2f_mid`, `pokemon_league`…), sold whatever the badges. A clerk sells a counter's goods with `"mart": "<key>"`, or a script with `shop "<key>"`. |
+| `clothes.json` | `ClothingDatabase` | The garments the player can wear and the boutiques that sell them (plan 11 · C9, C10); hand-written, see "Clothes" below. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per hand-made map; the file name must match its `name`. |
 | `world/<region>/…` | `World`, then `MapDatabase` | The imported world of a region: `world.json` (what is built), generated `matrices/`, `chunks/` and `areas/`, and hand-written `overlays/`. `WorldMapBuilder` makes one `Map` of each matrix `world.json` lists. |
 | `music/<folder>/<name>.mml` | `MusicLibrary` | Songs in a small text format, one folder per region plus `common`; see `docs/music-format.md`. |
@@ -376,6 +377,31 @@ Platinum's weather calendar (`sYearlyWeather` in the original's `src/field_overw
 ```
 
 An area whose header names one of the places takes its weather from the row of today's date (`MapArea.WeatherOn`, by the computer's clock as the original goes by the console's). The table has a row for the 29th of February, so in any other year the days from March on are counted one further (`Weathers.CalendarDay`, as `FieldSystem_GetWeather` does).
+
+## Clothes
+
+`Data/clothes.json` (`ClothingDatabase`) is every garment the player can wear and every boutique that sells them (plan 11 · C9, C10). It is hand-written, not imported.
+
+```json
+{
+  "garments": [
+    { "id": "red_cap", "name": "Red Cap", "slot": "Hat", "price": 800, "hat": "Cap",
+      "color": "#dc3c3c", "accent": "#f6f6f8", "description": "..." },
+    { "id": "winter_coat", "name": "Winter Coat", "slot": "Top", "price": 3600,
+      "color": "#2e4e88", "accent": "#f4ecd8", "coat": true, "scarf": true, "description": "..." },
+    { "id": "no_hat", "name": "No Hat", "slot": "Hat", "price": 0 }
+  ],
+  "boutiques": { "jubilife": [ "navy_beret", "red_cap", "..." ] }
+}
+```
+
+- `slot` is `Hat`, `Top`, `Bottoms`, `Shoes` or `Bag` (`ClothingSlot`). A garment changes only its own slot's fields of the look's `CharacterStyle` (`CharacterStyle.Dressed`); the build, the face and the hair stay the look's.
+- `color` is the garment's main colour and `accent` its second (a hat's band, a top's sleeves or stripes, a shoe's sole, a bag's flap). A garment with no `color` takes the slot's part off (`No Hat`, `No Bag`).
+- What a slot's garment may say: a hat its shape (`Beret` or `Cap`); a top `coat` (long, over the hips), `shortSleeves`, `stripes` (in the accent) and `scarf` (in the accent); bottoms `skirt` or `shorts`.
+- `price` is in the game's money; a price of 0 is free, owned from the start.
+- A boutique (`boutiques`) is a counter's key and the garments it sells, in the order its rows show them. A script opens it with `wardrobe "<key>"`; `wardrobe` alone opens the player's own clothes at home.
+
+What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each slot, or nothing for the look's own. It is saved as `SaveData.Outfit` with the garments bought (`SaveData.Wardrobe`); a save without them loads in the look's own clothes. A character dressed in an outfit is named `PLAYER@<hat>.<top>.<bottoms>.<shoes>.<bag>` (a dash for the look's own), so its rig, sprites and mesh cache follow the outfit, and an outfit with nothing chosen is plain `PLAYER` or `DAWN`.
 
 ## Sound map
 

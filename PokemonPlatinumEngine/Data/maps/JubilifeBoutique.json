@@ -1,0 +1,143 @@
+{
+  "name": "JubilifeBoutique",
+  "displayName": "Jubilife Boutique",
+  "bgmTrack": "common/pokemart",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###.....###",
+    "#..#####..#",
+    "#.........#",
+    "###.....###",
+    "#.........#",
+    "##.......##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Wardrobe",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Wardrobe",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 1,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "ClothesRack",
+      "x": 8,
+      "y": 5,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 140,
+      "targetY": 789,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Clerk",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "script": "Clerk"
+    },
+    {
+      "name": "Lass",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "Lass: I can never decide between the caps and the berets.",
+        "Maybe I'll just get both. A Trainer has to look the part!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

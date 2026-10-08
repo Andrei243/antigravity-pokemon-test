@@ -95,6 +95,14 @@ Written 2026-10-06, before any session.
 - Harness: `37_turntable_player_<set>` and `37_turntable_dawn_<set>` for every set, `39_faces_player_<skin>` for the six tones; the `lineup` diff is otherwise empty.
 - **Done when** a new game with nothing chosen draws the same pictures and every set holds up on both builds.
 
+**Done ahead of C1 (2026-10-08, at the user's asking), in a smaller shape than C9 and C10 describe.** The user asked for clothes bought in a shop in a Sinnoh town, so the outfit came before the table of looks. What was built instead of the plan above:
+- The outfit is a garment per slot (hat, top, bottoms, shoes, bag), not a set, and holds no skin, hair or eyes: `Outfit` in `Core/Outfit.cs` and the garments in `Data/clothes.json` (`ClothingDatabase`; `docs/data-files.md`, "Clothes"). A garment changes only its slot's fields of the look's `CharacterStyle` (`CharacterStyle.Dressed`).
+- No registry and no hash: a dressed character's name carries the outfit itself (`PLAYER@red_cap.-.-.-.-`, `Outfit.Dress`, read back by `CharacterStyle.For`), and the plain look's name is the outfit with nothing chosen, which keeps such a game byte for byte today's.
+- `SaveData.Outfit` and `SaveData.Wardrobe` (the garments bought), `Models/Wardrobe.cs` (owning, wearing, buying), `WardrobeScreen` and `ModernUi.Wardrobe.cs` (style guide, "Menu screens"), `GameState.Wardrobe`, `ScriptScreen.Wardrobe` and `wardrobe ["boutique"]`.
+- At home it is a wardrobe in the bedroom (`PropType.Wardrobe`, a signboard script in `PlayerHouse2F.txt`), not a mirror.
+- The boutique is a room of its own in Jubilife City for now, `JubilifeBoutique`, behind the south-west house's door (warp 9 of `jubilife_city.json`; the original's house there holds no one the story needs). When plan 01 · M11 opens the Veilstone Department Store's floors, the counter can move there and the house go back to the original's people.
+- Not done: the introduction's `ChooseOutfit` (decision 3), skin and hair (decision 4's free changes) and the sets. The harness's `boutique` mode shoots the boutique, the screen and six outfits' turntables (`bq*`).
+
 ### C10 · Choosing it: the introduction and the boutique
 - `IntroPhase.ChooseOutfit` and its `IntroLook`; `WardrobeScreen`, `ModernUi.Wardrobe.cs`, `GameState.Wardrobe`, `ScriptScreen.Wardrobe`, the `wardrobe` command (parser, runner, both hosts, `docs/scripts.md`, `EveryCommand`); the mirror in `PlayerHouse2F.json` with its script; the boutique's clerk and stock in the Department Store's overlay when M11 opens its floors (until then the mirror alone). Style guide, "Menu screens" and "The new-game introduction" first.
 - Tests: the introduction played through with nothing chosen ends in today's look; with choices, in that outfit; the screen's cursor, prices and ownership (a set bought once, worn at no cost after); the headless host opens the screen and records it.
@@ -160,8 +168,8 @@ Written 2026-10-06, before any session.
 - [ ] C6 The named cast of the second half
 - [ ] C7 Sitting, lying and the look-around
 - [ ] C8 Swimming and fishing
-- [ ] C9 The outfit in the save and on the player
-- [ ] C10 Choosing it: the introduction and the boutique
+- [~] C9 The outfit in the save and on the player (clothes by slot, done early; see the note under C9)
+- [~] C10 Choosing it: the introduction and the boutique (the wardrobe and a Jubilife boutique; the introduction not yet)
 - [ ] C11 Gestures and faces on cue
 - [ ] C12 Trainers who speak in battle: the moments and the lines
 - [ ] C13 Trainers who speak in battle: back on the platform

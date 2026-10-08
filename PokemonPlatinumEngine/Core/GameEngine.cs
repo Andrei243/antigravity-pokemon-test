@@ -38,6 +38,8 @@ public enum GameState
     HallOfFame,
     /// <summary>The Journal's pages (plan 06 · R12).</summary>
     Journal,
+    /// <summary>The wardrobe at home, or a boutique's (plan 11 · C10).</summary>
+    Wardrobe,
     Transition
 }
 
@@ -100,6 +102,10 @@ public partial class GameEngine
     private readonly TrainerCardScreen trainerCardScreen = new();
     private readonly StarterSelectScreen starterSelectScreen = new();
     private readonly ShopScreen shopScreen = new();
+    private readonly WardrobeScreen wardrobeScreen = new();
+
+    /// <summary>The clothes the player owns and wears (plan 11 · C9).</summary>
+    private readonly Wardrobe wardrobe = new();
     private readonly PCScreen pcScreen = new();
     private readonly OptionsScreen optionsScreen = new();
     private readonly SaveScreen saveScreen = new();
@@ -278,6 +284,8 @@ public partial class GameEngine
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
         PlayerIdentity.SetRival(rival);
+        wardrobe.Clear();
+        PlayerIdentity.SetOutfit(wardrobe.Worn);
         trainerId = fieldRandom.Next(0, 65536);
         adventureStarted = DateTime.Now;
         trainerScore = scoredBadges = 0;
@@ -445,6 +453,10 @@ public partial class GameEngine
         playTime = save.PlayTimeSeconds;
         PlayerIdentity.Set(save.PlayerName, save.Look);
         PlayerIdentity.SetRival(save.RivalName);
+        // What the player wears: a save from before the wardrobe is the look's own clothes
+        wardrobe.Restore(save.Outfit, save.Wardrobe);
+        PlayerIdentity.SetOutfit(wardrobe.Worn);
+        CharacterModels.Preload(new[] { PlayerIdentity.Character });
         // A save from before the card had a number gets one now, and keeps it
         trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
         adventureStarted = save.Started;
@@ -474,6 +486,8 @@ public partial class GameEngine
             PlayerName = playerName,
             Look = PlayerIdentity.Look,
             RivalName = PlayerIdentity.RivalName,
+            Outfit = wardrobe.Worn.IsOwn ? null : wardrobe.Worn,
+            Wardrobe = wardrobe.Owned.Count > 0 ? wardrobe.Owned.ToList() : null,
             TrainerId = trainerId,
             Started = adventureStarted,
             TrainerScore = trainerScore,
@@ -730,6 +744,16 @@ public partial class GameEngine
                 {
                     // What the visit came to is a line of the Journal (shop_menu.c)
                     if (ShopLine(shopScreen.Purchases, shopScreen.UnitsSold) is { } line) journal.Tell(new JournalEvent(line));
+                    currentState = GameState.Overworld;
+                }
+                break;
+            case GameState.Wardrobe:
+                wardrobeScreen.Update(ref playerMoney, ShowNotification, dt);
+                if (!wardrobeScreen.IsActive)
+                {
+                    // The field and the battle draw the player as the outfit names them; what was only tried on is let go
+                    PlayerIdentity.SetOutfit(wardrobe.Worn);
+                    foreach (string tried in wardrobeScreen.TakeTried()) CharacterModels.Forget(tried);
                     currentState = GameState.Overworld;
                 }
                 break;
@@ -1949,6 +1973,10 @@ public partial class GameEngine
         {
             introScreen.Render(renderContext);
         }
+        else if (scene == GameState.Wardrobe)
+        {
+            wardrobeScreen.Render(renderContext);
+        }
         // (The field and the battle have told the profiler of their own passes; this takes whatever else was rendered)
         FrameProfiler.Lap(FrameSection.Scene);
 
@@ -2014,6 +2042,9 @@ public partial class GameEngine
                 break;
             case GameState.Shop:
                 shopScreen.Draw(VirtualWidth, VirtualHeight, playerMoney, playerInventory);
+                break;
+            case GameState.Wardrobe:
+                wardrobeScreen.Draw(VirtualWidth, VirtualHeight, playerMoney);
                 break;
             case GameState.HallOfFame:
                 hallOfFameScreen.Draw(VirtualWidth, VirtualHeight, hallOfFame);

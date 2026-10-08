@@ -219,7 +219,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 
 ### The screens that exist
 
-`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `travel` (the way to the
+`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `wardrobe` (the player's clothes, slot by slot, changed for nothing: the bedroom's wardrobe; plan 11 · C10; `wardrobe "jubilife"` is a boutique of `clothes.json`, whose stock is tried on and bought with a yes), `travel` (the way to the
 next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here).
 
 ### The trainer tools

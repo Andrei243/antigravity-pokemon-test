@@ -40,7 +40,66 @@ internal sealed class CharacterStyle
     /// <summary>Relative size: adults stand a little taller than the kids.</summary>
     public float Height = 1f;
 
-    public static CharacterStyle For(string npcType) => npcType.ToUpperInvariant() switch
+    /// <summary>
+    /// The style of a character type. A type dressed in an outfit (<c>PLAYER@red_cap.-.-.-.-</c>,
+    /// <see cref="Core.Outfit.Dress"/>) is its look's style with the outfit's garments put on (<see cref="Dressed"/>).
+    /// </summary>
+    public static CharacterStyle For(string npcType)
+    {
+        var (character, outfit) = Core.Outfit.Undress(npcType);
+        return outfit == null ? Look(character) : Dressed(Look(character), outfit);
+    }
+
+    /// <summary>
+    /// <paramref name="look"/> with the outfit's garments put on: each changes only what its slot covers (a hat its
+    /// kind and colours, a top its colours and shape, and so on), so the body, the hair, the face and the slots left
+    /// to the look's own clothes stay as they are. Garments the data doesn't know are left off.
+    /// </summary>
+    public static CharacterStyle Dressed(CharacterStyle look, Core.Outfit outfit)
+    {
+        var s = look.Clone();
+        foreach (var (slot, id) in outfit.Garments())
+        {
+            if (Data.ClothingDatabase.Get(id) is not { } g || g.Slot != slot) continue;
+            switch (slot)
+            {
+                case Core.ClothingSlot.Hat:
+                    if (g.IsNothing) { s.Hat = Headwear.None; break; }
+                    s.Hat = Enum.TryParse<Headwear>(g.Hat, true, out var hat) && hat != Headwear.None ? hat : Headwear.Cap;
+                    s.HatColor = ColorOf(g.Color!);
+                    s.HatBand = g.Accent != null ? ColorOf(g.Accent) : Color.White;
+                    break;
+                case Core.ClothingSlot.Top:
+                    s.Top = ColorOf(g.Color ?? "#f0f0f0");
+                    s.Accent = g.Accent != null ? ColorOf(g.Accent) : s.Top;
+                    (s.Coat, s.ShortSleeves, s.Stripes, s.Scarf) = (g.Coat, g.ShortSleeves, g.Stripes, g.Scarf);
+                    break;
+                case Core.ClothingSlot.Bottoms:
+                    s.Bottom = ColorOf(g.Color ?? "#40404c");
+                    (s.Skirt, s.Shorts) = (g.Skirt, g.Shorts && !g.Skirt);
+                    break;
+                case Core.ClothingSlot.Shoes:
+                    s.Shoes = ColorOf(g.Color ?? "#404040");
+                    s.Sole = g.Accent != null ? ColorOf(g.Accent) : null;
+                    break;
+                case Core.ClothingSlot.Bag:
+                    s.Bag = g.IsNothing ? null : ColorOf(g.Color!);
+                    break;
+            }
+        }
+        return s;
+    }
+
+    /// <summary>A copy to change without changing this one.</summary>
+    public CharacterStyle Clone() => (CharacterStyle)MemberwiseClone();
+
+    private static Color ColorOf(string hex)
+    {
+        var (r, g, b) = Data.Garment.Rgb(hex);
+        return new Color(r, g, b, (byte)255);
+    }
+
+    private static CharacterStyle Look(string npcType) => npcType.ToUpperInvariant() switch
     {
         "PLAYER" or "TRAINER" or "LUCAS" => new CharacterStyle
         {

@@ -825,6 +825,12 @@ public partial class GameEngine
                     game.shopScreen.Open(game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY),
                         MartDatabase.Stock(counter ?? subject?.Mart, game.story.BadgeCount));
                     break;
+                case ScriptScreen.Wardrobe:
+                    // At home the clothes owned; at a boutique its stock as well, headed with the place's name
+                    game.currentState = GameState.Wardrobe;
+                    game.wardrobeScreen.Open(game.wardrobe, counter != null ? ClothingDatabase.Stock(counter) : null,
+                        counter != null ? game.currentMap.DisplayNameAt(game.player.GridX, game.player.GridY) : null);
+                    break;
                 case ScriptScreen.HallOfFame:
                     game.currentState = GameState.HallOfFame;
                     game.hallOfFameScreen.Open();
