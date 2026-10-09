@@ -47,6 +47,7 @@ public static class StoryMigration
         else if (savedVersion < 4) Run(story, scripts, ScriptLibrary.ChapterThree);
         if (savedVersion < 4) RenameTrainers(story);
         if (savedVersion < 5) HandOverRockSmash(story, bag);
+        if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>
@@ -76,9 +77,24 @@ public static class StoryMigration
         ["trainer_kelsey"] = "battle_girl_kelsey", ["trainer_karina"] = "picnicker_karina"
     };
 
-    private static void RenameTrainers(StoryState story)
+    /// <summary>
+    /// Version 6: the south-west's trainers (Routes 202 to 204, Oreburgh Gate and the mine) had ids of our own too,
+    /// until their overlays gave their lines alone and the table everything else, its ids included (plan 08 · P7).
+    /// </summary>
+    private static readonly Dictionary<string, string> SouthWestTrainers = new()
     {
-        foreach (var (old, now) in RenamedTrainers)
+        ["trainer_tristan"] = "youngster_tristan", ["trainer_natalie"] = "lass_natalie", ["trainer_logan"] = "youngster_logan",
+        ["trainer_michael"] = "youngster_michael", ["trainer_dallas"] = "youngster_dallas", ["trainer_sebastian"] = "youngster_sebastian",
+        ["trainer_madeline"] = "lass_madeline", ["trainer_kaitlin"] = "lass_kaitlin", ["trainer_taylor"] = "aroma_lady_taylor",
+        ["trainer_brandon"] = "bug_catcher_brandon", ["trainer_liv_and_liz"] = "twins_liv_and_liz", ["trainer_sarah"] = "lass_sarah",
+        ["trainer_tyler"] = "youngster_tyler", ["trainer_samantha"] = "lass_samantha", ["trainer_curtis"] = "camper_curtis",
+        ["trainer_diana"] = "picnicker_diana", ["trainer_grant"] = "veteran_grant", ["trainer_colin"] = "worker_colin",
+        ["trainer_mason"] = "worker_mason"
+    };
+
+    private static void RenameTrainers(StoryState story, IReadOnlyDictionary<string, string>? renamed = null)
+    {
+        foreach (var (old, now) in renamed ?? RenamedTrainers)
             if (story.HasDefeated(old)) story.Defeat(now);
     }
 

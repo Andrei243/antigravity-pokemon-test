@@ -48,6 +48,14 @@ Written 2026-10-06, before any session.
 - Harness: the `lineup`, `battle`, `world` and `story` diffs against a run before are empty.
 - **Done when** nothing drawn has changed and every look, type and class resolves through one table.
 
+**Done (2026-10-09).** Decision 1 taken as recommended (a data file). What was built, and where it differs from the above:
+- `Data/characters.json` holds 25 looks, not fifteen (plan 02's chapters had added Cyrus, Roark, Fantina, Maylene, the black belts, the grunts, Mars, Charon, Cynthia, Gardenia, Jupiter and the scientist to the switch since this plan was written), under lower-case names matched without regard to case, plus a `same` block (`trainer` and `lucas` are the boy). `CharacterStyles` is an instance with a `Default` read from the file and `Parse` for the tests' own tables; `Get`, `Has`, `Names`, `CharacterFor` (the old folding, now the file's `fallbacks` and `fallback`), `OfClass` and `InBattle` (`OfClass ?? look ?? class`). A look's fields are `CharacterStyle`'s own, read straight into it; an unknown field is an error.
+- Proof that nothing drawn moved: for all 25 looks, the two aliases and three names that fall to the default, every field of the style and a hash of the sculpt's `SdfModel.Describe()` were dumped before and after: identical. In the field no person changes either: of the open areas' people placed with no `npcType`, none has a look the table now names that the old switch folded elsewhere (Cynthia, Gardenia, Mars, Jupiter and Maylene's objects are placed with their type, or not placed).
+- What does change, as this plan's design means it to: in battle a trainer of a class that names nobody (Leader, Elite Four, Champion, Commander, Galactic Boss, Pokémon Trainer, the Frontier Brains) now stands as the person who carries them (Roark as Roark, not the plain default), and the `Galactic` and `Black Belt` classes as the grunt and the black belt. A class with no look yet (Hiker and 55 more) stands in the plain default as before. A harness battle's trainer has no person, so its class is drawn as before.
+- `Trainer.Look` is set by `StartTrainerBattle` from the person it battles through (every way a script hands a team over goes through it), not by `MapFile.BuildNpc`; the battle's rigs are preloaded there, behind the fade.
+- The preload: start-up builds only the introduction's three; `GameEngine.KeepCharactersNear` builds the looks of everyone within 64 tiles of the player (on entering the game, on every warp, and whenever a step crosses into another chunk), and on a warp `CharacterModels.Trim` lets go of every other rig with the sprites baked from it (`CharacterSprites.Forget`). Not measured with `profile` (a cloud session's milliseconds mean nothing).
+- Tests: `CharacterTableTests` (the boy and the girl field by field, the file's own consistency, unknown fields, every person of the open areas resolving with the thirteen who still stand as the boy pinned, every class of the data and the sound map standing as something with the 56 still plain as a ceiling, the gender pick, a Leader's battle standing the person, `Trim`); `PokemonTests`' trainer test reads the class's look (`youngster`). The harness diffs were not run in the cloud; the dumps above stand for them.
+
 ### C2 · Parts I and the trainers of the open areas
 - The kit: bowl, bun, ponytail, curls, bald; helmet, hard hat, beanie, bandana, headband; glasses, a beard; the `Little` build. Style guide "Characters" first.
 - Twenty-one looks: `school_kid_m`, `school_kid_f`, `bug_catcher`, `camper`, `picnicker`, `twin`, `kid_with_nds`, `hiker`, `worker`, `grunt_m`, `grunt_f`, `cyclist_m`, `cyclist_f`, `battle_girl`, `ace_trainer_m`, `ace_trainer_f`, and the centre's (open since plan 01 · M6) `black_belt`, `psychic`, `ninja_boy`, `ruin_maniac`, `artist`; `WorldMapBuilder.CharacterFor` stops folding them and `classes` names them. The grunts' uniform carries a Galactic mark of our own, the one plan 09 · L13's way into their battles shows (decision 6 there), painted by one GPU-free painter whichever session comes first.
@@ -160,7 +168,7 @@ Written 2026-10-06, before any session.
 
 ## Status
 
-- [ ] C1 The table and one name for a person
+- [x] C1 The table and one name for a person
 - [ ] C2 Parts I and the trainers of the open areas
 - [ ] C3 Parts II and the rest of the open areas' people
 - [ ] C4 The rest of Platinum's classes

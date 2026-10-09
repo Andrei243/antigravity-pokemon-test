@@ -13,9 +13,6 @@
     "pi_carlos": {
       "name": "Carlos",
       "trainer": {
-        "id": "pi_carlos",
-        "name": "Carlos",
-        "trainerClass": "PI",
         "dialogueBefore": "PI Carlos: I'm a private investigator. And you, unless I'm much mistaken, are a trainer!",
         "dialogueAfter": "PI Carlos: My conclusion: I've lost. Case closed."
       }
@@ -23,9 +20,6 @@
     "collector_douglas": {
       "name": "Douglas",
       "trainer": {
-        "id": "collector_douglas",
-        "name": "Douglas",
-        "trainerClass": "Collector",
         "dialogueBefore": "Collector Douglas: Three of Eevee's evolutions, and every one of them mine! Feast your eyes!",
         "dialogueAfter": "Collector Douglas: I'll just have to collect the rest of them. Then you'll see!"
       }
@@ -33,9 +27,6 @@
     "collector_brady": {
       "name": "Brady",
       "trainer": {
-        "id": "collector_brady",
-        "name": "Brady",
-        "trainerClass": "Collector",
         "dialogueBefore": "Collector Brady: I've gathered rare Pokémon from every corner of Sinnoh. Six of them! Want to see?",
         "dialogueAfter": "Collector Brady: Collecting them is one thing. Training them is another thing entirely."
       }
@@ -43,9 +34,6 @@
     "ruin_maniac_bryan": {
       "name": "Bryan",
       "trainer": {
-        "id": "ruin_maniac_bryan",
-        "name": "Bryan",
-        "trainerClass": "Ruin Maniac",
         "dialogueBefore": "Ruin Maniac Bryan: The rocks round here hide all sorts of old secrets. Don't you go digging before I do!",
         "dialogueAfter": "Ruin Maniac Bryan: Old stones I understand. Battles, not so much."
       }
@@ -53,9 +41,6 @@
     "ruin_maniac_ronald": {
       "name": "Ronald",
       "trainer": {
-        "id": "ruin_maniac_ronald",
-        "name": "Ronald",
-        "trainerClass": "Ruin Maniac",
         "dialogueBefore": "Ruin Maniac Ronald: My Shieldon was brought back from a fossil. A living piece of history!",
         "dialogueAfter": "Ruin Maniac Ronald: Have a rest, Shieldon. You've waited this long, after all."
       }
@@ -63,9 +48,6 @@
     "collector_jamal": {
       "name": "Jamal",
       "trainer": {
-        "id": "collector_jamal",
-        "name": "Jamal",
-        "trainerClass": "Collector",
         "dialogueBefore": "Collector Jamal: Porygon was made by people, not born. That makes it the rarest of the rare!",
         "dialogueAfter": "Collector Jamal: Even the rarest Pokémon loses sometimes, it turns out."
       }
@@ -73,9 +55,6 @@
     "beauty_devon": {
       "name": "Devon",
       "trainer": {
-        "id": "beauty_devon",
-        "name": "Devon",
-        "trainerClass": "Beauty",
         "dialogueBefore": "Beauty Devon: Three Wormadam in three different cloaks. Fashion is a battle too, you know!",
         "dialogueAfter": "Beauty Devon: Out-dressed and out-battled. What a day."
       }
@@ -83,9 +62,6 @@
     "psychic_mitchell": {
       "name": "Mitchell",
       "trainer": {
-        "id": "psychic_mitchell",
-        "name": "Mitchell",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Mitchell: I knew you were coming before you'd even left Veilstone City.",
         "dialogueAfter": "Psychic Mitchell: That, though... that I didn't see coming."
       }
@@ -93,9 +69,6 @@
     "psychic_abigail": {
       "name": "Abigail",
       "trainer": {
-        "id": "psychic_abigail",
-        "name": "Abigail",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Abigail: My mind and my Pokémon's minds are one. Can you keep up with all of us?",
         "dialogueAfter": "Psychic Abigail: Your thoughts moved too fast for us to read."
       }

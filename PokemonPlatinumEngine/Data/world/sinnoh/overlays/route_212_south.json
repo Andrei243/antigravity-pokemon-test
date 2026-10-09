@@ -31,9 +31,6 @@
     "fisherman_juan": {
       "name": "Juan",
       "trainer": {
-        "id": "fisherman_juan",
-        "name": "Juan",
-        "trainerClass": "Fisherman",
         "dialogueBefore": "Fisherman Juan: The fish bite best in the rain, and so do I. Let's battle!",
         "dialogueAfter": "Fisherman Juan: Soaked to the skin and beaten as well. Still, the fishing's good."
       }
@@ -41,9 +38,6 @@
     "fisherman_josh": {
       "name": "Josh",
       "trainer": {
-        "id": "fisherman_josh",
-        "name": "Josh",
-        "trainerClass": "Fisherman",
         "dialogueBefore": "Fisherman Josh: Two Goldeen on a single line, that's my record! Want to meet them?",
         "dialogueAfter": "Fisherman Josh: Back into the water with you both. You've done your best."
       }
@@ -51,9 +45,6 @@
     "fisherman_travis": {
       "name": "Travis",
       "trainer": {
-        "id": "fisherman_travis",
-        "name": "Travis",
-        "trainerClass": "Fisherman",
         "dialogueBefore": "Fisherman Travis: Hey! You splashed right past my float. Now you owe me a battle!",
         "dialogueAfter": "Fisherman Travis: All right, all right. I'll go and find a quieter pond."
       }
@@ -61,9 +52,6 @@
     "ranger_taylor": {
       "name": "Taylor",
       "trainer": {
-        "id": "ranger_taylor",
-        "name": "Taylor",
-        "trainerClass": "Pokémon Ranger",
         "dialogueBefore": "Pokémon Ranger Taylor: Rangers look after Pokémon and the places they live. Let's see how you look after yours!",
         "dialogueAfter": "Pokémon Ranger Taylor: Your Pokémon trust you. That much is plain to see."
       }
@@ -71,9 +59,6 @@
     "ranger_allison": {
       "name": "Allison",
       "trainer": {
-        "id": "ranger_allison",
-        "name": "Allison",
-        "trainerClass": "Pokémon Ranger",
         "dialogueBefore": "Pokémon Ranger Allison: I patrol this marsh in all weathers. A bit of rain never stopped a Ranger!",
         "dialogueAfter": "Pokémon Ranger Allison: Well! That's going in my patrol report."
       }
@@ -81,9 +66,6 @@
     "ranger_jeffrey": {
       "name": "Jeffrey",
       "trainer": {
-        "id": "ranger_jeffrey",
-        "name": "Jeffrey",
-        "trainerClass": "Pokémon Ranger",
         "dialogueBefore": "Pokémon Ranger Jeffrey: Halt! Every trainer on this road gets a Ranger's inspection.",
         "dialogueAfter": "Pokémon Ranger Jeffrey: Inspection passed, with flying colours."
       }
@@ -91,9 +73,6 @@
     "policeman_danny": {
       "name": "Danny",
       "trainer": {
-        "id": "policeman_danny",
-        "name": "Danny",
-        "trainerClass": "Policeman",
         "dialogueBefore": "Policeman Danny: Hold it there! Routine check. I'll need a look at your Pokémon, in battle.",
         "dialogueAfter": "Policeman Danny: All in order. Mind how you go on these wet roads."
       }
@@ -101,9 +80,6 @@
     "scientist_stefano": {
       "name": "Stefano",
       "trainer": {
-        "id": "scientist_stefano",
-        "name": "Stefano",
-        "trainerClass": "Scientist",
         "dialogueBefore": "Scientist Stefano: I study how Pokémon battle in the rain. You'll make an excellent subject!",
         "dialogueAfter": "Scientist Stefano: Remarkable. I must write this down before the ink runs."
       }
@@ -111,9 +87,6 @@
     "collector_dean": {
       "name": "Dean",
       "trainer": {
-        "id": "collector_dean",
-        "name": "Dean",
-        "trainerClass": "Collector",
         "dialogueBefore": "Collector Dean: Behold my pride and joy: one Pokémon of the sun and one of the moon!",
         "dialogueAfter": "Collector Dean: The sun and the moon, both beaten at once... I shall go and polish their Poké Balls."
       }
@@ -121,9 +94,6 @@
     "scientist_shaun": {
       "name": "Shaun",
       "trainer": {
-        "id": "scientist_shaun",
-        "name": "Shaun",
-        "trainerClass": "Scientist",
         "dialogueBefore": "Scientist Shaun: Does a Magnemite rust in the rain? An experiment is in order!",
         "dialogueAfter": "Scientist Shaun: Hypothesis: you are the stronger trainer. Result: confirmed."
       }
@@ -131,9 +101,6 @@
     "parasol_lady_alexa": {
       "name": "Alexa",
       "trainer": {
-        "id": "parasol_lady_alexa",
-        "name": "Alexa",
-        "trainerClass": "Parasol Lady",
         "dialogueBefore": "Parasol Lady Alexa: Pitter-patter, pitter-patter. What could be nicer than a battle in the rain?",
         "dialogueAfter": "Parasol Lady Alexa: Well, my parasol kept me dry, at least."
       }
@@ -141,9 +108,6 @@
     "parasol_lady_sabrina": {
       "name": "Sabrina",
       "trainer": {
-        "id": "parasol_lady_sabrina",
-        "name": "Sabrina",
-        "trainerClass": "Parasol Lady",
         "dialogueBefore": "Parasol Lady Sabrina: My Wooper jumps in every puddle it finds. Shall we make a splash too?",
         "dialogueAfter": "Parasol Lady Sabrina: Oh, how very drippy of me. Off you go, then."
       }

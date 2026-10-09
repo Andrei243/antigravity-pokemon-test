@@ -1298,33 +1298,11 @@ public static class WorldMapBuilder
 
     // ---------------------------------------------------------------- people, signs, doors
 
-    /// <summary>Which of our characters plays one of the original's people, by the name of their looks.</summary>
-    public static string CharacterFor(string looks) => looks switch
-    {
-        "barry" => "Rival",
-        "prof_rowan" => "Rowan",
-        "mom" => "Mom",
-        "nurse" or "pokecenter_nurse" => "Nurse",
-        "var_0" or "lass" or "school_kid_f" or "twin" or "picnicker" or "little_girl" or "battle_girl" or "ace_trainer_f" or "cyclist_f" => "Lass",
-        "youngster" or "school_kid_m" or "guitarist" or "bug_catcher" or "camper" or "little_boy" or "kid_with_nds" or "cyclist_m"
-            or "ace_trainer_m" => "Youngster",
-        "pokemon_breeder_f" or "beauty" or "lady" or "aroma_lady" or "parasol_lady" or "socialite" or "middle_aged_woman" or "old_woman"
-            or "pokefan_f" => "Lady",
-        "collector" or "gentleman" or "old_man" or "rich_boy" or "scientist_m" or "middle_aged_man" or "expert_m" or "hiker" or "worker"
-            or "pokefan_m" => "Gentleman",
-        // The centre of Sinnoh's people (plan 01 · M6), as the nearest of the characters there are
-        "fisherman" or "pokemon_breeder_m" or "black_belt" or "ruin_maniac" or "artist" or "rancher" or "gym_guide" => "Gentleman",
-        "jogger" or "ninja_boy" or "psychic" => "Youngster",
-        "cowgirl" or "idol" or "receptionist" => "Lass",
-        "cashier_m" or "cashier_f" or "clerk" or "waiter" => "Clerk",
-        "clown" => "Clown",
-        "looker" => "Looker",
-        "cyrus" => "Cyrus",
-        "roark" => "Roark",
-        "grunt_m" or "grunt_f" => "Grunt",
-        "briefcase" => "StarterBriefcase",
-        _ => "Trainer"
-    };
+    /// <summary>
+    /// Which of our looks plays one of the original's people, by the name of their looks: their own when
+    /// <c>Data/characters.json</c> has it, else the one it stands as for now (plan 11 · C1, <see cref="CharacterStyles.CharacterFor"/>).
+    /// </summary>
+    public static string CharacterFor(string looks) => CharacterStyles.Default.CharacterFor(looks);
 
     /// <summary>
     /// The species (or form) one of the original's objects is, by the name of its looks, where it is a Pokémon
@@ -1440,9 +1418,24 @@ public static class WorldMapBuilder
             if (overlay?.People == null || !overlay.People.TryGetValue(o.Id, out var person)) continue;
             // A Pokémon of the original's stands as itself, unless the overlay makes someone else of it (plan 10 · F1)
             string? species = person.NpcType == null && person.Trainer == null ? SpeciesFor(o.Looks) : null;
+            // A trainer is the table's, by the id its object's script gives (TRAINER_YOUNGSTER_TRISTAN), or the one the
+            // overlay names for someone a script battles; the overlay gives their lines alone (plan 08 · P7)
+            MapFile.TrainerRecord? trainer = null;
+            if (person.Trainer is { } lines)
+            {
+                var record = TrainerDatabase.Get(o.Script) ?? TrainerDatabase.Get(lines.Id)
+                    ?? throw new InvalidDataException($"{key}: {o.Id} battles, and neither its script '{o.Script}' nor the overlay names a trainer of trainers.json");
+                // Name and class left to the table, which Fill gives a trainer whose map wrote no team
+                trainer = new MapFile.TrainerRecord
+                {
+                    Id = record.Id, Name = "", DialogueBefore = lines.DialogueBefore, DialogueAfter = lines.DialogueAfter,
+                    // How far they see is the original's own number; nought for someone it never set watching
+                    SightRange = o.Sight ?? 0
+                };
+            }
             var npc = MapFile.BuildNpc(new MapFile.NpcRecord
             {
-                Id = person.Id ?? person.Trainer?.Id,
+                Id = person.Id ?? trainer?.Id,
                 Name = person.Name,
                 NpcType = person.NpcType ?? (species != null ? NPC.PokemonType : CharacterFor(o.Looks)),
                 Species = species,
@@ -1455,7 +1448,7 @@ public static class WorldMapBuilder
                 // The flag that hides them is the original's own unless the overlay says otherwise
                 HiddenBy = person.HiddenBy is { } hiddenBy ? (hiddenBy.Length > 0 ? hiddenBy : null) : o.HiddenBy,
                 ShownBy = person.ShownBy,
-                Trainer = person.Trainer,
+                Trainer = trainer,
                 Item = person.Item
             }, map.Name);
             // Someone the original stands on a bridge's deck stands there, over whoever walks under it
@@ -1465,10 +1458,6 @@ public static class WorldMapBuilder
             npc.ScriptFile = key;
             // How they move about of their own accord, within the original's range round where they stand (plan 02 · S6)
             if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
-            // How far a trainer sees is the original's own number
-            if (npc.TrainerData != null && o.Sight is { } sight) npc.TrainerData.SightRange = sight;
-            // How it thinks, what it carries and its team are Platinum's (plan 06 · R9)
-            if (npc.TrainerData != null && TrainerDatabase.Get(o.Script) is { } platinum) TrainerDatabase.Fill(npc.TrainerData, platinum);
             map.NPCs.Add(npc);
         }
 

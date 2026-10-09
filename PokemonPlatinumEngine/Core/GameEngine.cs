@@ -222,8 +222,9 @@ public partial class GameEngine
         MapDatabase.Initialize();
         LoadScripts();
 
-        // Every character the maps use (those a flag hides for now too), sculpted and meshed in the background while the title screen plays
-        CharacterModels.Preload(MapDatabase.MapNames.SelectMany(n => MapDatabase.Get(n).Everyone).Where(n => !n.IsThing && !n.IsPokemon).Select(n => PlayerIdentity.CharacterFor(n.NpcType, PlayerLook.Boy)).Append("PLAYER").Append("DAWN").Append("ROWAN"));
+        // The characters of the introduction, sculpted and meshed in the background while the title screen plays; the
+        // people of the field are made ready where the player is (KeepCharactersNear, plan 11 · C1)
+        CharacterModels.Preload(new[] { "PLAYER", "DAWN", "ROWAN" });
         // The Pokémon models of the story's opening too, meshed side by side; the menu sprites below wait for each one
         var modelled = PokemonModels.Preloaded.ToList();
         PokemonModels.Preload(modelled.Append(PokemonSprites.Fallback));
@@ -330,6 +331,7 @@ public partial class GameEngine
         arrived = true;
         scriptFade.Clear();
         startMenu.PlayerName = playerName;
+        KeepCharactersNear(trim: false);
         PlayAreaMusic(currentMap, player.GridX, player.GridY);
         AnnounceLocation();
 
@@ -981,8 +983,32 @@ public partial class GameEngine
     /// After each step: the party walks along (Platinum raises friendship every 128 steps, and the Pokémon at
     /// the head of the party counts its steps for the evolutions that ask for a long walk), then trainers look.
     /// </summary>
+    // Where the people round the player were last made ready: the map and the chunk (plan 11 · C1)
+    private (string Map, int X, int Y) charactersReadyAt;
+
+    /// <summary>How far from the player people's looks are made ready, in tiles: two chunks, well beyond what is in view.</summary>
+    private const int CharacterReach = 64;
+
+    /// <summary>
+    /// Starts building, in the background, the looks of everyone within reach of the player (those a flag hides for
+    /// now too) and the player's own, so none holds up a frame as it comes into sight (plan 11 · C1). On a warp
+    /// (<paramref name="trim"/>), every other look's rig is let go: the map left behind is behind a fade.
+    /// </summary>
+    private void KeepCharactersNear(bool trim)
+    {
+        charactersReadyAt = (currentMap.Name, player.GridX >> 5, player.GridY >> 5);
+        var looks = currentMap.Everyone
+            .Where(n => !n.IsThing && !n.IsPokemon && Math.Abs(n.GridX - player.GridX) <= CharacterReach && Math.Abs(n.GridY - player.GridY) <= CharacterReach)
+            .Select(n => PlayerIdentity.CharacterFor(n.NpcType))
+            .Append(PlayerIdentity.Character).Append("PLAYER").Append("DAWN")
+            .ToList();
+        if (trim) CharacterModels.Trim(looks);
+        CharacterModels.Preload(looks);
+    }
+
     private bool OnStep()
     {
+        if (charactersReadyAt != (currentMap.Name, player.GridX >> 5, player.GridY >> 5)) KeepCharactersNear(trim: false);
         if (++friendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
             friendshipSteps = 0;

@@ -15,9 +15,6 @@
     "camper_anthony": {
       "name": "Anthony",
       "trainer": {
-        "id": "camper_anthony",
-        "name": "Anthony",
-        "trainerClass": "Camper",
         "dialogueBefore": "Camper Anthony: My Chimchar's flame keeps our camp warm at night. It'll warm you up too!",
         "dialogueAfter": "Camper Anthony: Burnt out! Chimchar and I will stick to boiling the kettle."
       }
@@ -25,9 +22,6 @@
     "picnicker_lauren": {
       "name": "Lauren",
       "trainer": {
-        "id": "picnicker_lauren",
-        "name": "Lauren",
-        "trainerClass": "Picnicker",
         "dialogueBefore": "Picnicker Lauren: Pachirisu ate half our picnic, so it's bursting with energy. Watch out!",
         "dialogueAfter": "Picnicker Lauren: All that energy, and it still lost. I think it's ready for a nap now."
       }
@@ -35,9 +29,6 @@
     "youngster_austin": {
       "name": "Austin",
       "trainer": {
-        "id": "youngster_austin",
-        "name": "Austin",
-        "trainerClass": "Youngster",
         "dialogueBefore": "Youngster Austin: I've been training up and down this road all week. Time to see if it worked!",
         "dialogueAfter": "Youngster Austin: A whole week, and that's all it got me? Back to the start of the road, then."
       }
@@ -45,9 +36,6 @@
     "hiker_justin": {
       "name": "Justin",
       "trainer": {
-        "id": "hiker_justin",
-        "name": "Justin",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Justin: Mt. Coronet's just ahead. I always warm up with a battle before the climb!",
         "dialogueAfter": "Hiker Justin: Warmed up? I'm worn out! I'll take the mountain slowly today."
       }
@@ -55,9 +43,6 @@
     "hiker_kevin": {
       "name": "Kevin",
       "trainer": {
-        "id": "hiker_kevin",
-        "name": "Kevin",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Kevin: Rocks, rocks and more rocks! I bring my whole collection wherever I go!",
         "dialogueAfter": "Hiker Kevin: My rucksack feels heavier after a loss. Must be all those Geodude."
       }
@@ -65,9 +50,6 @@
     "battle_girl_helen": {
       "name": "Helen",
       "trainer": {
-        "id": "battle_girl_helen",
-        "name": "Helen",
-        "trainerClass": "Battle Girl",
         "dialogueBefore": "Battle Girl Helen: I run this road morning and night to strengthen my legs. Let's see if my Pokémon are as strong!",
         "dialogueAfter": "Battle Girl Helen: My legs are ready, but my Pokémon aren't. Back to training, all of us!"
       }

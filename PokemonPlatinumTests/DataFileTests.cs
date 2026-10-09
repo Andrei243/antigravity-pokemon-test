@@ -337,7 +337,7 @@ public class DataFileTests
         Assert.Null(town.AreaAt(5, 5));
         Assert.Equal("Pallet Town", town.DisplayNameAt(5, 5));
 
-        var tristan = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
+        var tristan = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "youngster_tristan");
         Assert.True(tristan.IsTrainer);
         Assert.Equal("Starly", tristan.TrainerData!.Party.Members.Single().Species.Name);
         Assert.Equal(5, tristan.TrainerData.Party.Members[0].Level);
@@ -373,9 +373,9 @@ public class DataFileTests
     public void TestMapsReloadWithFreshTrainers()
     {
         MapDatabase.Initialize();
-        var first = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
+        var first = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "youngster_tristan");
         MapDatabase.Initialize();
-        var second = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "trainer_tristan");
+        var second = MapDatabase.Get("Sinnoh").NPCs.Single(n => n.Id == "youngster_tristan");
         Assert.NotSame(first, second);
         Assert.NotSame(first.TrainerData!.Party, second.TrainerData!.Party);
     }

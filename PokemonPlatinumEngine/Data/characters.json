@@ -1,0 +1,134 @@
+// Every look a person can have (plan 11 · C1; the format is in docs/data-files.md, "Characters"). Each is our own
+// design after the character; nothing is taken from the games. Names are matched without regard to case.
+{
+  "looks": {
+    // The boy the player can be (and the assistant when they are the girl); trainer and lucas are the same look
+    "player": { "hairColor": "#46384e", "hat": "Beret", "hatColor": "#dc383c", "hatBand": "#f6f6fa", "top": "#3a4e8a", "accent": "#ec4646", "bottom": "#303246", "shoes": "#c8463c", "bag": "#f2c446", "sole": "#f0ece4", "blush": true, "scarf": true },
+    // The girl the player can be instead (and the professor's assistant when they aren't): our own take on Platinum's winter clothes, a white knitted hat, a long pink coat, a white scarf and pink boots
+    "dawn": { "hairColor": "#363e68", "hair": "Long", "hat": "Beret", "hatColor": "#f8f8fc", "hatBand": "#ee7c9c", "top": "#e25476", "accent": "#f8f8fc", "bottom": "#e25476", "shoes": "#ee7c9c", "eyes": "#46568c", "skirt": true, "coat": true, "bag": "#faf6ec", "sole": "#f4f0ec", "lashes": true, "blush": true, "scarf": true },
+    "rival": { "hairColor": "#fad450", "hair": "Spiky", "top": "#f48434", "accent": "#48b068", "bottom": "#3a466c", "shoes": "#ececf0", "eyes": "#604628", "stripes": true, "sole": "#9696a6", "blush": true, "scarf": true },
+    "rowan": { "hairColor": "#bec2d2", "hair": "Swept", "top": "#7e5c42", "accent": "#ececf2", "bottom": "#544238", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "bushyBrows": true, "height": 1.04 },
+    "nurse": { "hairColor": "#f896be", "hair": "Long", "hat": "NurseCap", "hatBand": "#e84860", "top": "#fcfcff", "accent": "#f8aac8", "bottom": "#f8aac8", "shoes": "#f8f8fc", "eyes": "#4678c8", "skirt": true, "build": "Adult", "lashes": true, "blush": true },
+    "mom": { "hairColor": "#b0543c", "hair": "Long", "top": "#f6a678", "accent": "#fcf4e8", "bottom": "#7860b0", "shoes": "#78463c", "skirt": true, "build": "Adult", "lashes": true },
+    "lady": { "hairColor": "#f4ce68", "hair": "Long", "top": "#76ba84", "accent": "#fcf8ec", "bottom": "#608c6e", "shoes": "#6e4c3c", "skirt": true, "build": "Adult", "lashes": true },
+    "clerk": { "hairColor": "#604030", "top": "#4c84de", "accent": "#f6f6fa", "bottom": "#383c50", "stripes": true, "build": "Adult", "height": 0.98 },
+    "youngster": { "hairColor": "#54382c", "hat": "Cap", "hatColor": "#fac83c", "hatBand": "#3c6ec8", "top": "#fafafc", "accent": "#3c6ec8", "bottom": "#4068be", "shoes": "#dc4840", "shorts": true, "stripes": true, "shortSleeves": true, "sole": "#f4f0e8", "blush": true },
+    "lass": { "hairColor": "#603c34", "hair": "Long", "top": "#ec6884", "accent": "#fcf0f4", "bottom": "#485ca8", "shoes": "#543834", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true },
+    "clown": { "hairColor": "#ec483c", "hair": "Spiky", "top": "#fad640", "accent": "#ec483c", "bottom": "#4678dc", "shoes": "#ec483c", "stripes": true, "build": "Adult" },
+    "looker": { "hairColor": "#3a2e2c", "hair": "Swept", "top": "#c4a876", "accent": "#544640", "bottom": "#46424a", "shoes": "#342a28", "coat": true, "build": "Adult", "height": 1.04 },
+    // The leader of Team Galactic, met by the shore of Lake Verity (plan 02 · S4): our own take, a tall man with spiky blue hair in a long grey coat with a dark collar
+    "cyrus": { "hairColor": "#425c9c", "hair": "Spiky", "top": "#848896", "accent": "#383a4a", "bottom": "#3c3e4e", "shoes": "#2c2c36", "eyes": "#2c3046", "coat": true, "build": "Adult", "height": 1.1 },
+    // Oreburgh's Gym Leader (plan 02 · S5): our own take, a young miner with red hair under a yellow safety helmet, in a work coat and jeans
+    "roark": { "hairColor": "#aa4232", "hair": "Spiky", "hat": "Cap", "hatColor": "#f6c43e", "hatBand": "#785c38", "top": "#707462", "accent": "#46483e", "bottom": "#3a4a74", "shoes": "#5c3e2c", "coat": true, "build": "Adult", "height": 1.04 },
+    // The Leaders of the Gyms rebuilt in plan 01 · M9, each our own take. Hearthome's: long violet hair and a long gown in purples, a dancer's
+    "fantina": { "hairColor": "#824e9c", "hair": "Long", "top": "#764896", "accent": "#dcc4ec", "bottom": "#603880", "shoes": "#402850", "eyes": "#6e3c82", "skirt": true, "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    // Veilstone's: short pink hair, a fighter's white top with a blue sash, and bare feet
+    "maylene": { "hairColor": "#ec84a8", "top": "#f6f6fa", "accent": "#4068c4", "bottom": "#4068c4", "shoes": "#f0ceb2", "eyes": "#964664", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true, "height": 0.96 },
+    // Her black belts: close-cropped dark hair, a white training jacket and trousers, the black belt, bare feet
+    "blackbelt": { "hairColor": "#2c282e", "top": "#f4f4f0", "accent": "#242228", "bottom": "#ecece6", "shoes": "#deac84", "eyes": "#3c322c", "build": "Adult", "bushyBrows": true, "height": 1.06 },
+    // Team Galactic's grunts (plan 02 · S5): our own take, teal hair cut in a bowl and a pale grey uniform with a dark collar
+    "grunt": { "hairColor": "#40969e", "top": "#d0d4de", "accent": "#383c50", "bottom": "#969cac", "shoes": "#343642", "build": "Adult" },
+    // Team Galactic's Commander met at the Valley Windworks (plan 02 · S6): our own take, short crimson hair and the team's pale uniform, its dark collar and a short grey skirt
+    "mars": { "hairColor": "#c43646", "top": "#dee0e8", "accent": "#383c50", "bottom": "#848a9c", "shoes": "#343642", "eyes": "#963246", "skirt": true, "build": "Adult", "sole": "#c8cad4", "lashes": true },
+    // The team's old scientist (plan 02 · S6): our own take, a short man with thin grey hair in a long white lab coat
+    "charon": { "hairColor": "#b2b4be", "hair": "Swept", "top": "#eceef4", "accent": "#54566c", "bottom": "#4c4e60", "shoes": "#342a28", "coat": true, "build": "Adult", "height": 0.94 },
+    // Plan 02 · S6, Eterna City. A Trainer studying Sinnoh's myths, met by the Team Galactic building: our own take, long golden hair and a long black coat with a pale grey collar over black trousers
+    "cynthia": { "hairColor": "#f6dc78", "hair": "Long", "top": "#2c2a34", "accent": "#c4c6d2", "bottom": "#282630", "shoes": "#1e1c24", "eyes": "#463c32", "coat": true, "build": "Adult", "sole": "#5a5864", "lashes": true, "height": 1.06 },
+    // Eterna's Gym Leader, at her Gym's door and later in Eterna Forest: our own take, short russet hair, a leaf-green jacket with a darker collar, dark shorts and brown boots
+    "gardenia": { "hairColor": "#ba5634", "top": "#54a05a", "accent": "#26623c", "bottom": "#34303c", "shoes": "#7a5034", "eyes": "#4a7846", "shorts": true, "build": "Adult", "sole": "#463228", "lashes": true, "blush": true },
+    // Team Galactic's Commander in the Eterna building: our own take, violet hair cut in a bob and the team's pale uniform with its dark collar and a short dark skirt
+    "jupiter": { "hairColor": "#7e48a0", "top": "#dee0e8", "accent": "#383c50", "bottom": "#46485c", "shoes": "#343642", "eyes": "#6e3e8c", "skirt": true, "build": "Adult", "sole": "#c8cad4", "lashes": true, "height": 1.02 },
+    // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
+    "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
+    "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
+  },
+  // Names that are another look
+  "same": { "trainer": "player", "lucas": "player" },
+  // The original's object looks (OBJ_EVENT_GFX_*, as the map importer names them) that have no look of their own yet,
+  // and the look of ours each stands as until it has; a look of the table is never folded, and anything else stands
+  // as the boy ("fallback"). Plan 11 · C2 to C4 make the rest and take their lines out of here.
+  "fallbacks": {
+    "barry": "Rival",
+    "prof_rowan": "Rowan",
+    "pokecenter_nurse": "Nurse",
+    "var_0": "Lass",
+    "school_kid_f": "Lass",
+    "twin": "Lass",
+    "picnicker": "Lass",
+    "little_girl": "Lass",
+    "battle_girl": "Lass",
+    "ace_trainer_f": "Lass",
+    "cyclist_f": "Lass",
+    "school_kid_m": "Youngster",
+    "guitarist": "Youngster",
+    "bug_catcher": "Youngster",
+    "camper": "Youngster",
+    "little_boy": "Youngster",
+    "kid_with_nds": "Youngster",
+    "cyclist_m": "Youngster",
+    "ace_trainer_m": "Youngster",
+    "pokemon_breeder_f": "Lady",
+    "beauty": "Lady",
+    "aroma_lady": "Lady",
+    "parasol_lady": "Lady",
+    "socialite": "Lady",
+    "middle_aged_woman": "Lady",
+    "old_woman": "Lady",
+    "pokefan_f": "Lady",
+    "collector": "Gentleman",
+    "old_man": "Gentleman",
+    "rich_boy": "Gentleman",
+    "scientist_m": "Gentleman",
+    "middle_aged_man": "Gentleman",
+    "expert_m": "Gentleman",
+    "hiker": "Gentleman",
+    "worker": "Gentleman",
+    "pokefan_m": "Gentleman",
+    "fisherman": "Gentleman",
+    "pokemon_breeder_m": "Gentleman",
+    "black_belt": "Gentleman",
+    "ruin_maniac": "Gentleman",
+    "artist": "Gentleman",
+    "rancher": "Gentleman",
+    "gym_guide": "Gentleman",
+    "jogger": "Youngster",
+    "ninja_boy": "Youngster",
+    "psychic": "Youngster",
+    "cowgirl": "Lass",
+    "idol": "Lass",
+    "receptionist": "Lass",
+    "cashier_m": "Clerk",
+    "cashier_f": "Clerk",
+    "waiter": "Clerk",
+    "grunt_m": "Grunt",
+    "grunt_f": "Grunt",
+    "briefcase": "StarterBriefcase"
+  },
+  "fallback": "Trainer",
+  // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
+  // wears; several looks are picked between by the person's own (the first if theirs isn't one). Null is a class
+  // that names nobody in particular: the person's own look stands. A class not named here is drawn in the plain
+  // default until plan 11 · C2 to C4 give it a look.
+  "classes": {
+    "Youngster": "youngster",
+    "Lass": "lass",
+    "Lady": "lady",
+    "Gentleman": "gentleman",
+    "Clown": "clown",
+    "Scientist": "scientist",
+    "Black Belt": "blackbelt",
+    "Galactic": "grunt",
+    "Rival": "rival",
+    "Leader": null,
+    "Elite Four": null,
+    "Champion": null,
+    "Commander": null,
+    "Galactic Boss": null,
+    "Pokémon Trainer": null,
+    "Arcade Star": null,
+    "Castle Valet": null,
+    "Factory Head": null,
+    "Hall Matron": null,
+    "Tower Tycoon": null
+  }
+}

@@ -411,32 +411,33 @@ public class SouthWestTests
         Trainer Named(string id) => all.First(t => t.Key.StartsWith(id + "/", StringComparison.Ordinal)).Value;
 
         // The original's ranges (the first number an object keeps in its event), not one for everybody
-        Assert.Equal(5, Named("trainer_sebastian").SightRange);
-        Assert.Equal(1, Named("trainer_kaitlin").SightRange);
-        Assert.Equal(5, Named("trainer_tristan").SightRange);
+        Assert.Equal(5, Named("youngster_sebastian").SightRange);
+        Assert.Equal(1, Named("lass_kaitlin").SightRange);
+        Assert.Equal(5, Named("youngster_tristan").SightRange);
         // The miners look at their work: they battle when spoken to
-        Assert.Equal(0, Named("trainer_colin").SightRange);
-        Assert.Equal(0, Named("trainer_mason").SightRange);
+        Assert.Equal(0, Named("worker_colin").SightRange);
+        Assert.Equal(0, Named("worker_mason").SightRange);
 
         // Teams by species and level, and moves where the trainer chose them (res/trainers/data in the decompilation)
-        var sebastian = Named("trainer_sebastian");
+        var sebastian = Named("youngster_sebastian");
         Assert.Equal(("Machop", 8), (sebastian.Party.Members[0].Species.Name, sebastian.Party.Members[0].Level));
         Assert.Equal(new[] { "Low Kick", "Leer" }, sebastian.Party.Members[0].Moves.Select(m => m.Name));
-        var grant = Named("trainer_grant");
+        var grant = Named("veteran_grant");
         Assert.Equal(new[] { "Riolu", "Staraptor", "Graveler" }, grant.Party.Members.Select(p => p.Species.Name));
         Assert.All(grant.Party.Members, p => Assert.Equal((34, 4), (p.Level, p.Moves.Count)));
 
         // Prize money is Platinum's: the last Pokémon's level, four times over, by the class's rate
         Assert.Equal(8 * 4 * 4, sebastian.PrizeMoney);              // Youngster 4
         Assert.Equal(34 * 4 * 20, grant.PrizeMoney);                // Veteran 20
-        Assert.Equal(8 * 4 * 10, Named("trainer_colin").PrizeMoney); // Worker 10
-        Assert.Equal(11 * 4 * 8, Named("trainer_taylor").PrizeMoney); // Aroma Lady 8
-        Assert.Equal(11 * 4 * 4 * 2, Named("trainer_liv_and_liz").PrizeMoney);   // Twins 4, doubled for two at a time
+        Assert.Equal(8 * 4 * 10, Named("worker_colin").PrizeMoney); // Worker 10
+        Assert.Equal(11 * 4 * 8, Named("aroma_lady_taylor").PrizeMoney); // Aroma Lady 8
+        Assert.Equal(11 * 4 * 4 * 2, Named("twins_liv_and_liz").PrizeMoney);   // Twins 4, doubled for two at a time
 
-        // A trainer with chosen moves is written back out with them
-        var written = MapFile.FromMap(new Map(4, 4) { Name = "T", NPCs = { Overworld.NPCs.First(n => n.TrainerData?.Id == "trainer_sebastian") } });
-        Assert.Equal(new[] { "Low Kick", "Leer" }, written.Npcs.Single().Trainer!.Party.Single().Moves);
-        Assert.Null(MapFile.FromMap(new Map(4, 4) { Name = "T", NPCs = { Overworld.NPCs.First(n => n.TrainerData?.Id == "trainer_dallas") } }).Npcs.Single().Trainer!.Party.Single().Moves);
+        // A trainer of the world is written back out by id, the team left to the table (plan 08 · P7), and read back
+        // with the same chosen moves
+        var written = MapFile.FromMap(new Map(4, 4) { Name = "T", NPCs = { Overworld.NPCs.First(n => n.TrainerData?.Id == "youngster_sebastian") } });
+        Assert.Empty(written.Npcs.Single().Trainer!.Party);
+        Assert.Equal(new[] { "Low Kick", "Leer" }, written.ToMap().NPCs.Single().TrainerData!.Party.Members.Single().Moves.Select(m => m.Name));
     }
 
     [Fact]

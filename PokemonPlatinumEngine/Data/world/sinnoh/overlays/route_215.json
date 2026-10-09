@@ -20,9 +20,6 @@
     "black_belt_derek": {
       "name": "Derek",
       "trainer": {
-        "id": "black_belt_derek",
-        "name": "Derek",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Derek: Rain only makes training harder, and harder is better! Battle me!",
         "dialogueAfter": "Black Belt Derek: Soaked through and beaten. At least the soaking was good training."
       }
@@ -30,9 +27,6 @@
     "black_belt_gregory": {
       "name": "Gregory",
       "trainer": {
-        "id": "black_belt_gregory",
-        "name": "Gregory",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Gregory: My Machop and I train as one. Let's see you handle all three of them!",
         "dialogueAfter": "Black Belt Gregory: Three of them, and not one could land the blow that mattered. Back to training!"
       }
@@ -40,9 +34,6 @@
     "black_belt_nathaniel": {
       "name": "Nathaniel",
       "trainer": {
-        "id": "black_belt_nathaniel",
-        "name": "Nathaniel",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Nathaniel: Fists up! A real fighter never turns down a challenge!",
         "dialogueAfter": "Black Belt Nathaniel: Hmph. A hundred more push-ups in the puddles for me."
       }
@@ -50,9 +41,6 @@
     "ruin_maniac_calvin": {
       "name": "Calvin",
       "trainer": {
-        "id": "ruin_maniac_calvin",
-        "name": "Calvin",
-        "trainerClass": "Ruin Maniac",
         "dialogueBefore": "Ruin Maniac Calvin: I'm off to Celestic Town to study its ruins. You'll make a nice break on the way!",
         "dialogueAfter": "Ruin Maniac Calvin: I'll leave the battling to you and get back to my old stones."
       }
@@ -60,9 +48,6 @@
     "ace_trainer_dennis": {
       "name": "Dennis",
       "trainer": {
-        "id": "ace_trainer_dennis",
-        "name": "Dennis",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Dennis: Battling in the rain is all part of my training. Ready to get wet?",
         "dialogueAfter": "Ace Trainer Dennis: You'd do well anywhere, rain or shine."
       }
@@ -70,9 +55,6 @@
     "ace_trainer_maya": {
       "name": "Maya",
       "trainer": {
-        "id": "ace_trainer_maya",
-        "name": "Maya",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Maya: Rain is good for the flowers, and for my team too! Here we go!",
         "dialogueAfter": "Ace Trainer Maya: I'll dry off, think it over and come back stronger."
       }

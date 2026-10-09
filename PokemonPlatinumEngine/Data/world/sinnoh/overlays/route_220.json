@@ -6,9 +6,6 @@
     "swimmer_erik": {
       "name": "Erik",
       "trainer": {
-        "id": "swimmer_erik",
-        "name": "Erik",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Erik: The open sea is my gym! I swim the length of this route every morning.",
         "dialogueAfter": "Swimmer Erik: Sunk without a trace. Another lap should clear my head."
       }
@@ -16,9 +13,6 @@
     "swimmer_vincent": {
       "name": "Vincent",
       "trainer": {
-        "id": "swimmer_vincent",
-        "name": "Vincent",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Vincent: You ride, I swim. Let's see whose Pokémon are quicker in the water!",
         "dialogueAfter": "Swimmer Vincent: My arms are tired, and so are my Pokémon. You win this one."
       }
@@ -26,9 +20,6 @@
     "swimmer_jessica": {
       "name": "Jessica",
       "trainer": {
-        "id": "swimmer_jessica",
-        "name": "Jessica",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Jessica: My Goldeen follow me in a line wherever I swim. Aren't they lovely?",
         "dialogueAfter": "Swimmer Jessica: Lovely isn't enough, is it? Come on, everyone, more practice."
       }
@@ -36,9 +27,6 @@
     "swimmer_erica": {
       "name": "Erica",
       "trainer": {
-        "id": "swimmer_erica",
-        "name": "Erica",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Erica: Finneon's tail glows after dark. Swimming with it at night is like carrying a lantern!",
         "dialogueAfter": "Swimmer Erica: We'll just float here a while and get our breath back."
       }
@@ -46,9 +34,6 @@
     "swimmer_adrian": {
       "name": "Adrian",
       "trainer": {
-        "id": "swimmer_adrian",
-        "name": "Adrian",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Adrian: Watch out for Tentacool in these waters. They sting! ...Like this!",
         "dialogueAfter": "Swimmer Adrian: Stung right back. Fair's fair, I suppose."
       }
@@ -56,9 +41,6 @@
     "swimmer_katelyn": {
       "name": "Katelyn",
       "trainer": {
-        "id": "swimmer_katelyn",
-        "name": "Katelyn",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Katelyn: Sun, sea and a battle. What more could anyone ask for?",
         "dialogueAfter": "Swimmer Katelyn: A win, maybe. A win would have been nice."
       }
@@ -66,9 +48,6 @@
     "swimmer_claire": {
       "name": "Claire",
       "trainer": {
-        "id": "swimmer_claire",
-        "name": "Claire",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Claire: Floatzel and I race each other out here. It always wins, but I'm catching up!",
         "dialogueAfter": "Swimmer Claire: Beaten by you as well. I really must swim faster."
       }

@@ -13,11 +13,6 @@
     "lass_sarah": {
       "name": "Sarah",
       "trainer": {
-        "id": "trainer_sarah",
-        "name": "Sarah",
-        "trainerClass": "Lass",
-        "party": [ { "species": "Shinx", "level": 7 } ],
-        "prizeMoney": 112,
         "dialogueBefore": "Lass Sarah: Oh, you don't look so tough. Shall we have a go?",
         "dialogueAfter": "Lass Sarah: That was mean! I've only just started training, you know."
       }
@@ -25,11 +20,6 @@
     "youngster_tyler": {
       "name": "Tyler",
       "trainer": {
-        "id": "trainer_tyler",
-        "name": "Tyler",
-        "trainerClass": "Youngster",
-        "party": [ { "species": "Magikarp", "level": 8 } ],
-        "prizeMoney": 128,
         "dialogueBefore": "Youngster Tyler: My dad gave me this Magikarp. You don't stand a chance!",
         "dialogueAfter": "Youngster Tyler: Who gave you your first Pokémon? You never forget that one, do you?"
       }
@@ -37,11 +27,6 @@
     "lass_samantha": {
       "name": "Samantha",
       "trainer": {
-        "id": "trainer_samantha",
-        "name": "Samantha",
-        "trainerClass": "Lass",
-        "party": [ { "species": "Budew", "level": 7 } ],
-        "prizeMoney": 112,
         "dialogueBefore": "Lass Samantha: Excuse me. Would you mind terribly having a battle with me?",
         "dialogueAfter": "Lass Samantha: You're so strong... Perhaps a Berry for my Pokémon to hold would have saved us."
       }

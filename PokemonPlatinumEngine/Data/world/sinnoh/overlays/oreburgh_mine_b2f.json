@@ -19,11 +19,6 @@
     "worker_colin": {
       "name": "Colin",
       "trainer": {
-        "id": "trainer_colin",
-        "name": "Colin",
-        "trainerClass": "Worker",
-        "party": [ { "species": "Geodude", "level": 6 }, { "species": "Machop", "level": 8 } ],
-        "prizeMoney": 320,
         "dialogueBefore": "Worker Colin: Go on, then. A quick one while I'm on my break!",
         "dialogueAfter": "Worker Colin: Back to it. I tell you, I'd sooner be out on the road with my Pokémon, like you."
       }
@@ -31,11 +26,6 @@
     "worker_mason": {
       "name": "Mason",
       "trainer": {
-        "id": "trainer_mason",
-        "name": "Mason",
-        "trainerClass": "Worker",
-        "party": [ { "species": "Geodude", "level": 9 } ],
-        "prizeMoney": 360,
         "dialogueBefore": "Worker Mason: Keep it quiet, but I brought my Pokémon to work with me today!",
         "dialogueAfter": "Worker Mason: Well, aren't you something! Right. Back to the coal, me and my partner."
       }

@@ -140,6 +140,13 @@ Done by plan 06 · R9 on 2026-10-06, as this plan was written: `tools/DataImport
 - Shots: `world` and `story` unchanged but for the trainers whose overlay team differed from the original's (compare the two trees field mode by field mode, as CLAUDE.md says for a change to the world's people).
 - **Done when** no overlay of the imported world carries a team, a class, a name or an id, an older save keeps every trainer it had beaten, and plan 02's next chapter adds a route's trainers by writing their lines alone.
 
+**Done (2026-10-09).** By then there were 40 overlays with 241 trainers (plan 01 · M7 and M8 had added the rest) and 19 made-up ids in the south-west (Route 205's eight had been renamed by plan 02 · S6's story version 4). What was built:
+- An overlay's `trainer` block is a type of its own, `OverlayTrainer` (`Data/WorldFiles.cs`): `dialogueBefore`, `dialogueAfter`, and an `id` only for someone a script battles whose object names no trainer (Jubilife City's two grunts, whose objects' script is 0). `WorldMapBuilder.PlaceEvents` finds the record by the object's script (`TRAINER_YOUNGSTER_TRISTAN`), or that id, and hands `MapFile.BuildNpc` a record with the table's id, no name, no class and no team, which `TrainerDatabase.Fill` fills as it always filled a block with no team; a trainer neither names fails to load, with the area named. The sight is the object's, nought where it has none (the grunts, whose block said 0). `MapFile.TrainerRecord` is unchanged for the hand-made maps.
+- No team changed: every one of the 22 hand-typed parties had the table's species and levels, and `Fill` had already rebuilt them from the table; the `moves` they listed were never read. So the shots should not move; the harness was not run in the cloud.
+- Story version 6 renames the 19 ids in a save's beaten trainers (`StoryMigration.SouthWestTrainers`, beside version 4's Route 205 list).
+- A world trainer written back out by `MapFile.FromMap` now has no party (it is `FromPlatinum`), so `SouthWestTests` reads Sebastian's chosen moves back through `ToMap` instead.
+- Tests: `OverlayTrainerTests` (no overlay field but the lines and the scripted id; every trainer of every streamed map is the table's in id, class, name, items, team and chosen moves; a version-5 save with `trainer_tristan` beaten has `youngster_tristan` beaten; a hand-typed team on a hand-made map wins); the ids in `SouthWestTests`, `PokemonTests` and `DataFileTests` follow.
+
 ### P8 · Furniture and the programmes
 - `FieldScripts.ForFurniture`, the furniture check in `TryInteract`, `Map.TileScripts` and a map file's `tileScripts`, the four common scripts; `Broadcasts`; the `broadcast` op with its row, cases and `EveryCommand` line.
 - Tests: facing a TV runs `common.Television`, a shelf `common.Bookshelf`, and a `TrashCan` or `TownMap` tile on a map of the test's own its script; a tile with its own script wins; a programme on a known save gives known lines under a seeded `Dice`.
@@ -265,7 +272,7 @@ Done by plan 06 · R9 on 2026-10-06, as this plan was written: `tools/DataImport
 - [ ] P4 The move pages and the other doors
 - [ ] P5 The level-up panel
 - [x] P6 The trainer table imported (done by plan 06 · R9, 2026-10-06)
-- [ ] P7 The overlays read from the table alone
+- [x] P7 The overlays read from the table alone
 - [ ] P8 Furniture and the programmes
 - [ ] P9 Phrases, interviews and reporters
 - [ ] P10 The Vs. Recorder's file

@@ -5,9 +5,6 @@
     "camper_diego": {
       "name": "Diego",
       "trainer": {
-        "id": "camper_diego",
-        "name": "Diego",
-        "trainerClass": "Camper",
         "dialogueBefore": "Camper Diego: My Aipom scouts ahead with that clever tail of its. Let's see how it battles!",
         "dialogueAfter": "Camper Diego: Aipom's tail is better at pointing the way than at fighting, it seems."
       }
@@ -15,9 +12,6 @@
     "picnicker_tori": {
       "name": "Tori",
       "trainer": {
-        "id": "picnicker_tori",
-        "name": "Tori",
-        "trainerClass": "Picnicker",
         "dialogueBefore": "Picnicker Tori: Psyduck has had a headache ever since we came underground. Maybe a battle will shake it off!",
         "dialogueAfter": "Picnicker Tori: It's still holding its head. I think we both need some daylight."
       }
@@ -25,9 +19,6 @@
     "lass_cassidy": {
       "name": "Cassidy",
       "trainer": {
-        "id": "lass_cassidy",
-        "name": "Cassidy",
-        "trainerClass": "Lass",
         "dialogueBefore": "Lass Cassidy: Buneary's ears pick up every footstep in the dark. It heard you coming ages ago!",
         "dialogueAfter": "Lass Cassidy: Buneary heard you coming, but it couldn't stop you. Oh well!"
       }
@@ -35,9 +26,6 @@
     "youngster_wayne": {
       "name": "Wayne",
       "trainer": {
-        "id": "youngster_wayne",
-        "name": "Wayne",
-        "trainerClass": "Youngster",
         "dialogueBefore": "Youngster Wayne: Ponyta's mane is my lantern down here, and it battles too!",
         "dialogueAfter": "Youngster Wayne: Keep a light with you in here. Without one, every tunnel looks the same."
       }
@@ -45,9 +33,6 @@
     "hiker_reginald": {
       "name": "Reginald",
       "trainer": {
-        "id": "hiker_reginald",
-        "name": "Reginald",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Reginald: My two Geodude roll along behind me like a pair of boulders. Stand aside, or battle!",
         "dialogueAfter": "Hiker Reginald: Rolled flat! You've a sturdy team there."
       }
@@ -55,9 +40,6 @@
     "hiker_lorenzo": {
       "name": "Lorenzo",
       "trainer": {
-        "id": "hiker_lorenzo",
-        "name": "Lorenzo",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Lorenzo: Onix bores through rock as if it were cheese. Let's see it go through you!",
         "dialogueAfter": "Hiker Lorenzo: Not through you, it seems. You're made of sterner stuff than rock."
       }
@@ -65,9 +47,6 @@
     "picnicker_ana": {
       "name": "Ana",
       "trainer": {
-        "id": "picnicker_ana",
-        "name": "Ana",
-        "trainerClass": "Picnicker",
         "dialogueBefore": "Picnicker Ana: Hoothoot sees just fine in the dark. It spotted you long before I did!",
         "dialogueAfter": "Picnicker Ana: Hoothoot's bobbing its head like a clock. It's telling me it's time we went home."
       }
@@ -75,9 +54,6 @@
     "camper_parker": {
       "name": "Parker",
       "trainer": {
-        "id": "camper_parker",
-        "name": "Parker",
-        "trainerClass": "Camper",
         "dialogueBefore": "Camper Parker: I came in here exploring, and look, I've found a challenger! Buizel, Shinx, let's go!",
         "dialogueAfter": "Camper Parker: Exploring's easier than battling. I'll go back to drawing my map."
       }
@@ -85,9 +61,6 @@
     "collector_terry": {
       "name": "Terry",
       "trainer": {
-        "id": "collector_terry",
-        "name": "Terry",
-        "trainerClass": "Collector",
         "dialogueBefore": "Collector Terry: See my Gible? I found it in this very cave. Isn't it rare? Now watch what it can do!",
         "dialogueAfter": "Collector Terry: Rare isn't the same as strong, I suppose. I'll keep polishing its scales."
       }
@@ -95,9 +68,6 @@
     "ruin_maniac_gerald": {
       "name": "Gerald",
       "trainer": {
-        "id": "ruin_maniac_gerald",
-        "name": "Gerald",
-        "trainerClass": "Ruin Maniac",
         "dialogueBefore": "Ruin Maniac Gerald: A cave this deep must hide something ancient. While I search, how about a battle?",
         "dialogueAfter": "Ruin Maniac Gerald: Beaten! Still, I'll keep digging. Something old is down here, I can feel it."
       }

@@ -676,6 +676,24 @@ public sealed class OverlayExit
 }
 
 /// <summary>Who one of the original's people is in our game. They stand where the area file puts them.</summary>
+/// <summary>
+/// A trainer of the imported world (plan 08 · P7): what they say before and after the battle, in our own words. Their
+/// id, name, class, team, prize money and items are the trainer table's alone (<c>trainers.json</c>,
+/// <see cref="TrainerDatabase.Fill"/>), found by the id the area file's object gives as its script, and how far they
+/// see is the area file's (<see cref="AreaObject.Sight"/>).
+/// </summary>
+public sealed class OverlayTrainer
+{
+    /// <summary>
+    /// Only for someone a script battles whose object in the area file names no trainer of its own (Jubilife City's
+    /// grunts): the table's id.
+    /// </summary>
+    public string? Id { get; set; }
+
+    public string DialogueBefore { get; set; } = string.Empty;
+    public string DialogueAfter { get; set; } = string.Empty;
+}
+
 public sealed class OverlayPerson
 {
     /// <summary>Only for people other data refers to (a trainer's id is their trainer record's).</summary>
@@ -698,7 +716,9 @@ public sealed class OverlayPerson
 
     /// <summary>A story flag they wait for: they are on the map only while it is set.</summary>
     public string? ShownBy { get; set; }
-    public MapFile.TrainerRecord? Trainer { get; set; }
+
+    /// <summary>Someone who battles: their lines, and nothing else, since who they are is Platinum's (plan 08 · P7).</summary>
+    public OverlayTrainer? Trainer { get; set; }
 
     /// <summary>For an item ball the overlay places itself (one whose script says what is in it): the item it holds.</summary>
     public string? Item { get; set; }

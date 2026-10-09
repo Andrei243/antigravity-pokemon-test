@@ -20,9 +20,6 @@
     "skier_shawn": {
       "name": "Shawn",
       "trainer": {
-        "id": "skier_shawn",
-        "name": "Shawn",
-        "trainerClass": "Skier",
         "dialogueBefore": "Skier Shawn: Three Snover, all ready to bury you in snow! Here we go!",
         "dialogueAfter": "Skier Shawn: All three of them buried instead. Under their own snow!"
       }
@@ -30,9 +27,6 @@
     "skier_lexie": {
       "name": "Lexie",
       "trainer": {
-        "id": "skier_lexie",
-        "name": "Lexie",
-        "trainerClass": "Skier",
         "dialogueBefore": "Skier Lexie: My Eevee grew into a Glaceon right here, beside the rock covered in ice! Want to see how strong it is?",
         "dialogueAfter": "Skier Lexie: Even beaten, my Glaceon sparkles like fresh frost."
       }
@@ -40,9 +34,6 @@
     "skier_bjorn": {
       "name": "Bjorn",
       "trainer": {
-        "id": "skier_bjorn",
-        "name": "Bjorn",
-        "trainerClass": "Skier",
         "dialogueBefore": "Skier Bjorn: Snow in my face and the wind at my back! Quick, battle me before I freeze solid!",
         "dialogueAfter": "Skier Bjorn: Now I'm frozen solid and beaten."
       }
@@ -50,9 +41,6 @@
     "skier_madison": {
       "name": "Madison",
       "trainer": {
-        "id": "skier_madison",
-        "name": "Madison",
-        "trainerClass": "Skier",
         "dialogueBefore": "Skier Madison: Round and round I go in the snow! Try not to get dizzy watching me!",
         "dialogueAfter": "Skier Madison: Whoa... now I'm the dizzy one."
       }
@@ -60,9 +48,6 @@
     "ninja_boy_matthew": {
       "name": "Matthew",
       "trainer": {
-        "id": "ninja_boy_matthew",
-        "name": "Matthew",
-        "trainerClass": "Ninja Boy",
         "dialogueBefore": "Ninja Boy Matthew: That snowdrift you nearly trod on? It was me! Battle!",
         "dialogueAfter": "Ninja Boy Matthew: Hiding in the snow is really, really cold."
       }
@@ -70,9 +55,6 @@
     "ninja_boy_ethan": {
       "name": "Ethan",
       "trainer": {
-        "id": "ninja_boy_ethan",
-        "name": "Ethan",
-        "trainerClass": "Ninja Boy",
         "dialogueBefore": "Ninja Boy Ethan: Brrr! I've been lying under the snow for hours, waiting for someone to come by!",
         "dialogueAfter": "Ninja Boy Ethan: All that waiting, and over so quickly. Achoo!"
       }
@@ -80,9 +62,6 @@
     "black_belt_luke": {
       "name": "Luke",
       "trainer": {
-        "id": "black_belt_luke",
-        "name": "Luke",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Luke: Training in a blizzard toughens the body and the spirit! Face me!",
         "dialogueAfter": "Black Belt Luke: My body is tough enough. My spirit needs more work."
       }
@@ -90,9 +69,6 @@
     "ace_trainer_dalton": {
       "name": "Dalton",
       "trainer": {
-        "id": "ace_trainer_dalton",
-        "name": "Dalton",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Dalton: Lightning and fire: just the pair for a frozen road. Let's warm things up!",
         "dialogueAfter": "Ace Trainer Dalton: Not even fire could thaw a loss like that."
       }
@@ -100,9 +76,6 @@
     "ace_trainer_olivia": {
       "name": "Olivia",
       "trainer": {
-        "id": "ace_trainer_olivia",
-        "name": "Olivia",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Olivia: It's a long trudge through the snow to the lake. A battle will keep me going!",
         "dialogueAfter": "Ace Trainer Olivia: That was worth stopping for. Now, on to the lake!"
       }

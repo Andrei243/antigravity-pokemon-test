@@ -17,9 +17,6 @@
     "ninja_boy_fabian": {
       "name": "Fabian",
       "trainer": {
-        "id": "ninja_boy_fabian",
-        "name": "Fabian",
-        "trainerClass": "Ninja Boy",
         "dialogueBefore": "Ninja Boy Fabian: Ha! You walked right past me. A ninja hides where nobody thinks to look!",
         "dialogueAfter": "Ninja Boy Fabian: Next time I'll hide in taller grass. Much taller."
       }
@@ -27,9 +24,6 @@
     "ninja_boy_brennan": {
       "name": "Brennan",
       "trainer": {
-        "id": "ninja_boy_brennan",
-        "name": "Brennan",
-        "trainerClass": "Ninja Boy",
         "dialogueBefore": "Ninja Boy Brennan: The grass rustled, and you never guessed it was me!",
         "dialogueAfter": "Ninja Boy Brennan: My hiding is perfect. It's my battling that needs work."
       }
@@ -37,9 +31,6 @@
     "ninja_boy_bruce": {
       "name": "Bruce",
       "trainer": {
-        "id": "ninja_boy_bruce",
-        "name": "Bruce",
-        "trainerClass": "Ninja Boy",
         "dialogueBefore": "Ninja Boy Bruce: Surprise! A ninja's first lesson: always spring from the grass!",
         "dialogueAfter": "Ninja Boy Bruce: A ninja's second lesson is losing with dignity. I'm still working on that one."
       }
@@ -48,9 +39,6 @@
     "twin_teri": {
       "name": "Teri",
       "trainer": {
-        "id": "twins_teri_and_tia",
-        "name": "Teri & Tia",
-        "trainerClass": "Twins",
         "dialogueBefore": "Teri: Tia and I picked the sweetest Pokémon we could find. Want to see them?",
         "dialogueAfter": "Teri: Being sweet isn't enough on its own, is it, Tia?"
       }
@@ -58,9 +46,6 @@
     "twin_tia": {
       "name": "Tia",
       "trainer": {
-        "id": "twins_teri_and_tia",
-        "name": "Teri & Tia",
-        "trainerClass": "Twins",
         "dialogueBefore": "Tia: Two of us, two Pokémon! You won't know which way to look!",
         "dialogueAfter": "Tia: We'll train them to be sweet AND strong, Teri."
       }
@@ -68,9 +53,6 @@
     "breeder_kahlil": {
       "name": "Kahlil",
       "trainer": {
-        "id": "breeder_kahlil",
-        "name": "Kahlil",
-        "trainerClass": "Pokémon Breeder",
         "dialogueBefore": "Pokémon Breeder Kahlil: Baby Pokémon are small, but never take them lightly. Watch!",
         "dialogueAfter": "Pokémon Breeder Kahlil: They'll grow and evolve one day. Then we'll see who wins."
       }
@@ -78,9 +60,6 @@
     "breeder_amber": {
       "name": "Amber",
       "trainer": {
-        "id": "breeder_amber",
-        "name": "Amber",
-        "trainerClass": "Pokémon Breeder",
         "dialogueBefore": "Pokémon Breeder Amber: I looked after their Eggs myself, and now they're ready for a real battle!",
         "dialogueAfter": "Pokémon Breeder Amber: There, there. You were all very brave."
       }
@@ -89,9 +68,6 @@
     "belle_ava": {
       "name": "Ava",
       "trainer": {
-        "id": "belle_and_pa_ava_and_matt",
-        "name": "Ava & Matt",
-        "trainerClass": "Belle & Pa",
         "dialogueBefore": "Ava: Pa and I ride out along this road every day. Fancy a battle at a gallop?",
         "dialogueAfter": "Ava: We'll ride home at a walk, then. Won't we, Pa?"
       }
@@ -99,9 +75,6 @@
     "pa_matt": {
       "name": "Matt",
       "trainer": {
-        "id": "belle_and_pa_ava_and_matt",
-        "name": "Ava & Matt",
-        "trainerClass": "Belle & Pa",
         "dialogueBefore": "Matt: We've raised Ponyta on our farm for years, Ava and I. Here we come!",
         "dialogueAfter": "Matt: Well, I'll be. You handled that like an old hand."
       }
@@ -109,9 +82,6 @@
     "rancher_marco": {
       "name": "Marco",
       "trainer": {
-        "id": "rancher_marco",
-        "name": "Marco",
-        "trainerClass": "Rancher",
         "dialogueBefore": "Rancher Marco: On a farm, a good Ponyta is worth ten tractors. Let me show you why!",
         "dialogueAfter": "Rancher Marco: Ha! My Ponyta needs a few more laps of the field, I reckon."
       }

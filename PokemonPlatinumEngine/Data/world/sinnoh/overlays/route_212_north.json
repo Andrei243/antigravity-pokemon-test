@@ -28,9 +28,6 @@
     "rich_boy_jason": {
       "name": "Jason",
       "trainer": {
-        "id": "rich_boy_jason",
-        "name": "Jason",
-        "trainerClass": "Rich Boy",
         "dialogueBefore": "Rich Boy Jason: My Prinplup has its own pool and its own coach. Can your Pokémon say the same?",
         "dialogueAfter": "Rich Boy Jason: Clearly I'll need to hire a better coach."
       }
@@ -38,9 +35,6 @@
     "lady_melissa": {
       "name": "Melissa",
       "trainer": {
-        "id": "lady_melissa",
-        "name": "Melissa",
-        "trainerClass": "Lady",
         "dialogueBefore": "Lady Melissa: Oh, a visitor! Shall we have a little battle while the tea is brewing?",
         "dialogueAfter": "Lady Melissa: Goodness me. The tea has gone quite cold."
       }
@@ -48,9 +42,6 @@
     "gentleman_jeremy": {
       "name": "Jeremy",
       "trainer": {
-        "id": "gentleman_jeremy",
-        "name": "Jeremy",
-        "trainerClass": "Gentleman",
         "dialogueBefore": "Gentleman Jeremy: My Chatot repeats everything it hears, so do mind your language while we battle.",
         "dialogueAfter": "Gentleman Jeremy: Chatot, I beg you, don't repeat what I just said."
       }
@@ -58,9 +49,6 @@
     "socialite_reina": {
       "name": "Reina",
       "trainer": {
-        "id": "socialite_reina",
-        "name": "Reina",
-        "trainerClass": "Socialite",
         "dialogueBefore": "Socialite Reina: A battle, darling? How wonderfully unexpected! Roselia, do the honours.",
         "dialogueAfter": "Socialite Reina: How simply dreadful. I must sit down."
       }
@@ -68,9 +56,6 @@
     "policeman_bobby": {
       "name": "Bobby",
       "trainer": {
-        "id": "policeman_bobby",
-        "name": "Bobby",
-        "trainerClass": "Policeman",
         "dialogueBefore": "Policeman Bobby: Stop right there! I'll have to see what your Pokémon are made of.",
         "dialogueAfter": "Policeman Bobby: Very good. Carry on, and stay out of trouble."
       }
@@ -78,9 +63,6 @@
     "policeman_alex": {
       "name": "Alex",
       "trainer": {
-        "id": "policeman_alex",
-        "name": "Alex",
-        "trainerClass": "Policeman",
         "dialogueBefore": "Policeman Alex: I keep watch over the mansion. Nobody walks past me without a battle!",
         "dialogueAfter": "Policeman Alex: You may pass. Keep to the road, please."
       }
@@ -88,9 +70,6 @@
     "policeman_dylan": {
       "name": "Dylan",
       "trainer": {
-        "id": "policeman_dylan",
-        "name": "Dylan",
-        "trainerClass": "Policeman",
         "dialogueBefore": "Policeman Dylan: Up and down, up and down, all shift long. At last, something happens!",
         "dialogueAfter": "Policeman Dylan: Right. Back to walking up and down."
       }
@@ -98,9 +77,6 @@
     "policeman_caleb": {
       "name": "Caleb",
       "trainer": {
-        "id": "policeman_caleb",
-        "name": "Caleb",
-        "trainerClass": "Policeman",
         "dialogueBefore": "Policeman Caleb: Hold it! I'll need to see your Trainer Card. And your Pokémon, in battle.",
         "dialogueAfter": "Policeman Caleb: Everything seems to be in order. On your way."
       }

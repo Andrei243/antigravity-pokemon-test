@@ -148,6 +148,8 @@ public partial class GameEngine
         KeepPartnerAlong();
         // A Gym's puzzle is laid out afresh, as the original's room scripts do as the player comes in (plan 01 · M9)
         ArrivePuzzle();
+        // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
+        KeepCharactersNear(trim: true);
         arrived = true;
     }
 

@@ -335,7 +335,7 @@ public class PokemonTests
         Assert.Equal(80, logan.PrizeMoney);
 
         // The twins of Route 204 are two people and one trainer, who battles two Pokémon at a time
-        var twins = trainers.Where(t => t.TrainerData!.Id == "trainer_liv_and_liz").ToList();
+        var twins = trainers.Where(t => t.TrainerData!.Id == "twins_liv_and_liz").ToList();
         Assert.Equal(new[] { "Liv", "Liz" }, twins.Select(t => t.Name).OrderBy(n => n));
         Assert.All(twins, t => Assert.True(t.TrainerData!.DoubleBattle));
     }
@@ -353,9 +353,9 @@ public class PokemonTests
 
         Assert.Empty(MapDatabase.DefeatedTrainerIds());
         var sinnoh = MapDatabase.Get("Sinnoh");
-        sinnoh.NPCs.Single(n => n.Id == "trainer_tristan").HasBattled = true;
+        sinnoh.NPCs.Single(n => n.Id == "youngster_tristan").HasBattled = true;
         var save = new PokemonPlatinumEngine.Core.SaveData { DefeatedTrainers = MapDatabase.DefeatedTrainerIds() };
-        Assert.Equal(new[] { "trainer_tristan" }, save.DefeatedTrainers);
+        Assert.Equal(new[] { "youngster_tristan" }, save.DefeatedTrainers);
         string json = System.Text.Json.JsonSerializer.Serialize(save);
 
         // The game starts again with everyone waiting, then the save is loaded
@@ -366,9 +366,9 @@ public class PokemonTests
 
         var loaded = System.Text.Json.JsonSerializer.Deserialize<PokemonPlatinumEngine.Core.SaveData>(json)!;
         MapDatabase.RestoreDefeatedTrainers(loaded.DefeatedTrainers);
-        Assert.True(route.NPCs.Single(n => n.Id == "trainer_tristan").HasBattled);
+        Assert.True(route.NPCs.Single(n => n.Id == "youngster_tristan").HasBattled);
         Assert.Null(TrainerApproach.FindSpotter(route, 166, 815));
-        Assert.All(route.NPCs.Where(n => n.IsTrainer && n.Id != "trainer_tristan"), n => Assert.False(n.HasBattled));
+        Assert.All(route.NPCs.Where(n => n.IsTrainer && n.Id != "youngster_tristan"), n => Assert.False(n.HasBattled));
 
         // A save from before trainers were recorded still loads: nobody has been beaten
         Assert.Empty(System.Text.Json.JsonSerializer.Deserialize<PokemonPlatinumEngine.Core.SaveData>("{}")!.DefeatedTrainers);
@@ -499,8 +499,8 @@ public class PokemonTests
         trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 4));
         var battle = new BattleEngine(party, trainer.Party.Members[0], new Inventory(), new Pokedex(), trainer);
 
-        // Both trainers stand on their platforms until the Pokémon come out
-        Assert.Equal("Youngster", battle.Anim.EnemyTrainer);
+        // Both trainers stand on their platforms until the Pokémon come out, the foe as the look of their class
+        Assert.Equal("youngster", battle.Anim.EnemyTrainer);
         Assert.False(battle.Anim.Enemy.Present);
 
         battle.ConfirmMessage();

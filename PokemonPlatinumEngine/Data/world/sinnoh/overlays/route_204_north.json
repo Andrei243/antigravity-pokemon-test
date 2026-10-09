@@ -21,11 +21,6 @@
     "aroma_lady_taylor": {
       "name": "Taylor",
       "trainer": {
-        "id": "trainer_taylor",
-        "name": "Taylor",
-        "trainerClass": "Aroma Lady",
-        "party": [ { "species": "Budew", "level": 9 }, { "species": "Cherubi", "level": 11 } ],
-        "prizeMoney": 352,
         "dialogueBefore": "Aroma Lady Taylor: The scent of the flowers brought you this way too? Let's see what sort of trainer you are.",
         "dialogueAfter": "Aroma Lady Taylor: A strong one, it turns out. Follow the scent north and you'll come to Floaroma Town."
       }
@@ -33,14 +28,6 @@
     "bug_catcher_brandon": {
       "name": "Brandon",
       "trainer": {
-        "id": "trainer_brandon",
-        "name": "Brandon",
-        "trainerClass": "Bug Catcher",
-        "party": [
-          { "species": "Wurmple", "level": 10, "moves": [ "Tackle", "String Shot", "Poison Sting" ] },
-          { "species": "Kricketot", "level": 11, "moves": [ "Bide" ] }
-        ],
-        "prizeMoney": 176,
         "dialogueBefore": "Bug Catcher Brandon: Hey, hey! Come and look at my Bug Pokémon!",
         "dialogueAfter": "Bug Catcher Brandon: They grow up fast, they poison, they paralyse, and they're cute. Bugs are the best, honest!"
       }
@@ -49,12 +36,6 @@
     "twin_liv": {
       "name": "Liv",
       "trainer": {
-        "id": "trainer_liv_and_liz",
-        "name": "Liv & Liz",
-        "trainerClass": "Twins",
-        "party": [ { "species": "Pachirisu", "level": 11 }, { "species": "Pachirisu", "level": 11 } ],
-        "prizeMoney": 352,
-        "doubleBattle": true,
         "dialogueBefore": "Liv: We can beat this one in a single turn. Can't we, Liz?",
         "dialogueAfter": "Liv: ...This trainer is going to tell everybody about it, Liz."
       }
@@ -62,12 +43,6 @@
     "twin_liz": {
       "name": "Liz",
       "trainer": {
-        "id": "trainer_liv_and_liz",
-        "name": "Liv & Liz",
-        "trainerClass": "Twins",
-        "party": [ { "species": "Pachirisu", "level": 11 }, { "species": "Pachirisu", "level": 11 } ],
-        "prizeMoney": 352,
-        "doubleBattle": true,
         "dialogueBefore": "Liz: We're the best in our whole class!",
         "dialogueAfter": "Liz: ...This trainer looks much too pleased about it, Liv."
       }

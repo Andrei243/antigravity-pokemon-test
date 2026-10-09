@@ -5,9 +5,6 @@
     "ruin_maniac_karl": {
       "name": "Karl",
       "trainer": {
-        "id": "ruin_maniac_karl",
-        "name": "Karl",
-        "trainerClass": "Ruin Maniac",
         "dialogueBefore": "Ruin Maniac Karl: These ruins are full of secrets, and I mean to find them before you do!",
         "dialogueAfter": "Ruin Maniac Karl: The Unown on these walls are letters, you know. Read them in order and they spell out words."
       }

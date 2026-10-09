@@ -15,9 +15,6 @@
     "bird_keeper_katherine": {
       "name": "Katherine",
       "trainer": {
-        "id": "bird_keeper_katherine",
-        "name": "Katherine",
-        "trainerClass": "Bird Keeper",
         "dialogueBefore": "Bird Keeper Katherine: My Noctowl spotted you long before you reached this slope. Let's battle!",
         "dialogueAfter": "Bird Keeper Katherine: It saw you coming. It just couldn't keep up with you."
       }
@@ -25,9 +22,6 @@
     "ninja_boy_nick": {
       "name": "Nick",
       "trainer": {
-        "id": "ninja_boy_nick",
-        "name": "Nick",
-        "trainerClass": "Ninja Boy",
         "dialogueBefore": "Ninja Boy Nick: A talking rock? No, a ninja! And a ninja never refuses a battle!",
         "dialogueAfter": "Ninja Boy Nick: Back to sitting very still and being a boulder, then."
       }
@@ -35,9 +29,6 @@
     "black_belt_sean": {
       "name": "Sean",
       "trainer": {
-        "id": "black_belt_sean",
-        "name": "Sean",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Sean: Up and down this slope all day long, that's my training. You'll be my rest stop!",
         "dialogueAfter": "Black Belt Sean: Some rest stop. I'm more worn out than when I started."
       }
@@ -45,9 +36,6 @@
     "ruin_maniac_harry": {
       "name": "Harry",
       "trainer": {
-        "id": "ruin_maniac_harry",
-        "name": "Harry",
-        "trainerClass": "Ruin Maniac",
         "dialogueBefore": "Ruin Maniac Harry: Bronzor were first dug up in ancient ruins, you know. I've three! Care to see them?",
         "dialogueAfter": "Ruin Maniac Harry: All three of them, polished off like old mirrors in a museum."
       }
