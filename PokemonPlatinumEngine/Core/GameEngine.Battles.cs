@@ -283,6 +283,11 @@ public partial class GameEngine
         // Two trainers at once (a tag battle's foes), each with a team of their own
         var trainers = new List<Trainer> { trainer };
         if (secondNpc?.TrainerData is { } second) trainers.Add(second);
+        // Each is drawn on the platform as their class, or as the person who carries them where the class names
+        // nobody in particular (plan 11 · C1), whose rig is built behind the fade
+        trainer.Look = trainerNpc.NpcType;
+        if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
+        CharacterModels.Preload(trainers.Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, PlayerIdentity.CharacterFor(t.Look!))));
 
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 
@@ -153,6 +154,20 @@ internal static class CharacterSprites
         baked = new Baked(tex, RenderContext.MaterialFor(context.Shaders.Sprite, tex), RenderContext.MaterialFor(context.Shaders.Depth, tex));
         Cache[key] = baked;
         return baked;
+    }
+
+    /// <summary>Frees every frame baked from this rig (<see cref="CharacterModels.Trim"/>): a rig built again is another rig, whose frames are baked afresh.</summary>
+    public static unsafe void Forget(CharacterRig rig)
+    {
+        foreach (var key in Cache.Keys.Where(k => k.Rig == rig).ToList())
+        {
+            var baked = Cache[key];
+            Cache.Remove(key);
+            Raylib.UnloadTexture(baked.Texture);
+            // Never UnloadMaterial: it would free the shared shaders the materials point at
+            Raylib.MemFree(baked.Color.Maps);
+            Raylib.MemFree(baked.Depth.Maps);
+        }
     }
 
     private static PixelCanvas? LoadOverride(SpriteKey key)

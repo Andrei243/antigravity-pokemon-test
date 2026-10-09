@@ -36,6 +36,7 @@ internal sealed class BattleMirror
         // The rival's data names him "{rival}": the battle calls him what the player did
         Name = PlayerIdentity.Fill(trainer.Name),
         TrainerClass = trainer.TrainerClass,
+        Look = trainer.Look,
         Party = Copy(trainer.Party),
         PrizeMoney = trainer.PrizeMoney,
         DoubleBattle = trainer.DoubleBattle,

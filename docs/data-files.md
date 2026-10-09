@@ -12,6 +12,7 @@ The game's species, moves, abilities, items and maps live as JSON in `PokemonPla
 | `items.json` | `ItemDatabase` | A list of `ItemData`. Platinum's items keep their Generation 4 ids; later items are 1000 plus their PokeAPI id, and items made for this game are 9000 and up. `effectValue` is HP restored (9999 for all of it), the share of HP a revive restores, or a ball's catch multiplier × 10; a `HealStatus` item with no `healsStatus` cures any status. `holdEffect` names what the item does when held (from the decompilation) and `teachesMove` the move of a TM or HM, whose `description` the importer writes from that move. What held items do in battle is in `Battle/Effects/HeldItemEffects.cs`, and `DataFileTests` checks that each of those exists here. The rest of Platinum's item table is here too, for the sessions that write its rules (plan 06 · R8, R11), with the decompilation's own names: `holdParam` (the number that goes with the hold effect), `flingPower` and `flingEffect`, `naturalGiftPower` and `naturalGiftType`, `pluckEffect`, `cantBeTossed`, `canBeRegistered`, `fieldUse` and `battleUse` (how the bag and the battle use it: `Healing`, `TmHm`, `Berry`, `EvoStone`, `PokeBall`…), `use` (what using it changes: `hpRestored`, `healPoison`, `ppRestored`, `atkEVs`, `friendshipLow`…; a flag is 1), `battlePocket` (which of the battle bag's four pockets shows it: `RecoverHp`, `RecoverStatus`, `PokeBalls`, `BattleItems`, the original's `BATTLE_POCKET_MASK_*`, plan 06 · R11) and `effectParam` (the table's number for an item with no hold effect: a Repel's steps). A Mega Stone has `megaStone` (`species`, `form`, and `heldByForm` when only one form of the species can use it) and a Z-Crystal `zCrystal` (`type`, or `move`, `from` and `users` for one species' own); the few of them only Pokémon Showdown lists have ids from 5000. |
 | `trainers.json` | `TrainerDatabase` | Platinum's 927 trainers (plan 06 · R9), from the decompilation's `res/trainers/data`: `id` (the constant without `TRAINER_`, lower case), `name`, `class`, `ai` (the routines of the AI script it thinks with, `AiFlags` by name), `items` (up to four it uses in battle), `doubleBattle`, `prizeMoney` (the last Pokémon's level × 4 × the class's multiplier, doubled in a double battle) and `party`: each Pokémon's `species`, `form`, `level`, `ivScale` (its IVs as a share of 255), `personality` (worked out as the original's `TrainerData_BuildParty` does; its nature, gender and ability follow from it), `item` and `moves` (null: what its level taught it). Never what a trainer says. A trainer of the imported world whose overlay names the same team, or none, takes this one (`TrainerDatabase.Fill`). |
 | `marts.json` | `MartDatabase` | The Poké Marts' stock (plan 06 · R11), from the decompilation's `include/data/mart_items.h`: `common`, the items every Mart's first counter sells, each with the `badges` it needs (the original's step: 1 with none, 2 with one or two, 3 with three or four, 4 with five or six, 5 with seven, 6 with eight), and `specialties`, each town's own counter by its key (`jubilife`, `veilstone_2f_mid`, `pokemon_league`…), sold whatever the badges. A clerk sells a counter's goods with `"mart": "<key>"`, or a script with `shop "<key>"`. |
+| `characters.json` | `CharacterStyles` | Every look a person can have, the original's object looks that stand as one of ours for now, and the look of each trainer class in battle (plan 11 · C1); hand-written, see "Characters" below. |
 | `clothes.json` | `ClothingDatabase` | The garments the player can wear and the boutiques that sell them (plan 11 · C9, C10); hand-written, see "Clothes" below. |
 | `maps/<Name>.json` | `MapDatabase` | One `MapFile` per hand-made map; the file name must match its `name`. |
 | `world/<region>/…` | `World`, then `MapDatabase` | The imported world of a region: `world.json` (what is built), generated `matrices/`, `chunks/` and `areas/`, and hand-written `overlays/`. `WorldMapBuilder` makes one `Map` of each matrix `world.json` lists. |
@@ -379,6 +380,31 @@ Platinum's weather calendar (`sYearlyWeather` in the original's `src/field_overw
 ```
 
 An area whose header names one of the places takes its weather from the row of today's date (`MapArea.WeatherOn`, by the computer's clock as the original goes by the console's). The table has a row for the 29th of February, so in any other year the days from March on are counted one further (`Weathers.CalendarDay`, as `FieldSystem_GetWeather` does).
+
+## Characters
+
+`Data/characters.json` (`CharacterStyles`, GPU-free) is the table of looks (plan 11 · C1): one name for a person in the field, in battle and in the files. It is hand-written; every look is our own design after the character.
+
+```json
+{
+  "looks": {
+    "lass": { "hairColor": "#603c34", "hair": "Long", "top": "#ec6884", "accent": "#fcf0f4", "bottom": "#485ca8",
+              "shoes": "#543834", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true },
+    "rowan": { "hairColor": "#bec2d2", "hair": "Swept", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 }
+  },
+  "same": { "trainer": "player", "lucas": "player" },
+  "fallbacks": { "barry": "Rival", "school_kid_f": "Lass", "hiker": "Gentleman", "briefcase": "StarterBriefcase" },
+  "fallback": "Trainer",
+  "classes": { "Lass": "lass", "Galactic": "grunt", "Leader": null, "Ace Trainer": [ "ace_trainer_m", "ace_trainer_f" ] }
+}
+```
+
+- `looks`: a look by its name, matched without regard to case (a map's `"npcType": "Lass"` is the file's `lass`). Its fields are `CharacterStyle`'s, camelCase, each left out where it is the plain default (`Graphics/CharacterStyle.cs`): `skin`, `hairColor`, `hatColor`, `hatBand`, `top`, `accent`, `bottom`, `shoes`, `eyes`, `sole` and `bag` are colours written `#rrggbb` (no `bag` is no bag, no `sole` the shoes' own colour darker); `hair` is `Short`, `Spiky`, `Long` or `Swept` (`HairCut`), `hat` `None`, `Beret`, `Cap` or `NurseCap` (`Headwear`), `build` `Kid` or `Adult` (`BodyBuild`) and `height` a scale (1 the kids'); `skirt`, `shorts`, `mustache`, `stripes`, `coat`, `shortSleeves`, `scarf`, `bushyBrows`, `lashes` and `blush` are switches. A field the kit doesn't have is an error, not a look left plain. A name the table doesn't have is the plain default (a green shirt, short brown hair, a child's build). New parts of the kit (a hair cut, a hat, a build) are code in `CharacterModels` and a value here.
+- `same`: names that are another look (`TRAINER` and `LUCAS` are the boy).
+- `fallbacks`: the original's object looks (`OBJ_EVENT_GFX_*` as the map importer names them, the `looks` of an area file's objects) that have no look of their own yet, and the look each stands as until it has. `WorldMapBuilder.CharacterFor` gives a person their own look when the table has it, else this, else `fallback` (the boy). Plan 11 · C2 to C4 draw the rest and take their lines out of here; `CharacterTableTests` lists the people of the open areas who still stand as the boy.
+- `classes`: the look a trainer class stands in on the battle's platform, as the original shows the class whatever look the person wears in the field (an Aroma Lady stands as a Breeder). Several looks are picked between by the person's own (`Trainer.Look`, their `npcType`), the first for anyone else; `null` is a class that names nobody in particular ("Leader", "Commander", "Champion"), whose person's own look stands. A class not named here stands in the plain default until it has a look (`CharacterStyles.InBattle`).
+
+The engine builds the rigs of the people within two chunks of the player in the background as they come near, and on a warp lets go of every other (`CharacterModels.Trim`); the disk cache keeps the meshes.
 
 ## Clothes
 

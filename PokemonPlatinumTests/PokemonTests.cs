@@ -499,8 +499,8 @@ public class PokemonTests
         trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Starly")!, 4));
         var battle = new BattleEngine(party, trainer.Party.Members[0], new Inventory(), new Pokedex(), trainer);
 
-        // Both trainers stand on their platforms until the Pokémon come out
-        Assert.Equal("Youngster", battle.Anim.EnemyTrainer);
+        // Both trainers stand on their platforms until the Pokémon come out, the foe as the look of their class
+        Assert.Equal("youngster", battle.Anim.EnemyTrainer);
         Assert.False(battle.Anim.Enemy.Present);
 
         battle.ConfirmMessage();

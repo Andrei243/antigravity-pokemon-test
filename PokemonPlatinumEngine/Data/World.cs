@@ -1298,33 +1298,11 @@ public static class WorldMapBuilder
 
     // ---------------------------------------------------------------- people, signs, doors
 
-    /// <summary>Which of our characters plays one of the original's people, by the name of their looks.</summary>
-    public static string CharacterFor(string looks) => looks switch
-    {
-        "barry" => "Rival",
-        "prof_rowan" => "Rowan",
-        "mom" => "Mom",
-        "nurse" or "pokecenter_nurse" => "Nurse",
-        "var_0" or "lass" or "school_kid_f" or "twin" or "picnicker" or "little_girl" or "battle_girl" or "ace_trainer_f" or "cyclist_f" => "Lass",
-        "youngster" or "school_kid_m" or "guitarist" or "bug_catcher" or "camper" or "little_boy" or "kid_with_nds" or "cyclist_m"
-            or "ace_trainer_m" => "Youngster",
-        "pokemon_breeder_f" or "beauty" or "lady" or "aroma_lady" or "parasol_lady" or "socialite" or "middle_aged_woman" or "old_woman"
-            or "pokefan_f" => "Lady",
-        "collector" or "gentleman" or "old_man" or "rich_boy" or "scientist_m" or "middle_aged_man" or "expert_m" or "hiker" or "worker"
-            or "pokefan_m" => "Gentleman",
-        // The centre of Sinnoh's people (plan 01 · M6), as the nearest of the characters there are
-        "fisherman" or "pokemon_breeder_m" or "black_belt" or "ruin_maniac" or "artist" or "rancher" or "gym_guide" => "Gentleman",
-        "jogger" or "ninja_boy" or "psychic" => "Youngster",
-        "cowgirl" or "idol" or "receptionist" => "Lass",
-        "cashier_m" or "cashier_f" or "clerk" or "waiter" => "Clerk",
-        "clown" => "Clown",
-        "looker" => "Looker",
-        "cyrus" => "Cyrus",
-        "roark" => "Roark",
-        "grunt_m" or "grunt_f" => "Grunt",
-        "briefcase" => "StarterBriefcase",
-        _ => "Trainer"
-    };
+    /// <summary>
+    /// Which of our looks plays one of the original's people, by the name of their looks: their own when
+    /// <c>Data/characters.json</c> has it, else the one it stands as for now (plan 11 · C1, <see cref="CharacterStyles.CharacterFor"/>).
+    /// </summary>
+    public static string CharacterFor(string looks) => CharacterStyles.Default.CharacterFor(looks);
 
     /// <summary>
     /// The species (or form) one of the original's objects is, by the name of its looks, where it is a Pokémon

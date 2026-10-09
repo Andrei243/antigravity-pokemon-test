@@ -29,5 +29,12 @@ public class Trainer
     /// </summary>
     public bool FromPlatinum { get; set; }
 
+    /// <summary>
+    /// The look of the person who carries the trainer in the field (their <c>npcType</c>), or null where nobody does
+    /// (plan 11 · C1). The battle draws the class's look, and this where the class names nobody in particular (a
+    /// Leader, a Commander) or has a look for each of two people (<see cref="Data.CharacterStyles.OfClass"/>).
+    /// </summary>
+    public string? Look { get; set; }
+
     public string FullTitle => $"{TrainerClass} {Name}";
 }

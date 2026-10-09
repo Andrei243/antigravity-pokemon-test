@@ -368,14 +368,24 @@ public partial class BattleEngine
         }
     }
 
+    /// <summary>
+    /// The look a trainer stands on the platform in (plan 11 · C1): their class's, as the original shows the class,
+    /// or the look of the person who carries them where the class names nobody in particular (a Leader).
+    /// </summary>
+    private string LookOf(string trainerClass, int index)
+    {
+        string? look = index < Trainers.Count && Trainers[index].Look is { } own ? PlayerIdentity.CharacterFor(own) : null;
+        return CharacterStyles.Default.InBattle(trainerClass, look);
+    }
+
     /// <summary>One thing the log says happened, as the screen shows it.</summary>
     private void Show(BattleEvent happening)
     {
         switch (happening)
         {
             case TrainersStand trainers:
-                Anim.EnemyTrainer = trainers.First;
-                if (trainers.Second != null) Anim.EnemyTrainer2 = trainers.Second;
+                Anim.EnemyTrainer = LookOf(trainers.First, 0);
+                if (trainers.Second != null) Anim.EnemyTrainer2 = LookOf(trainers.Second, 1);
                 break;
             case Seen seen:
                 if (Kind != BattleKind.CatchingLesson) Pokedex.RegisterSeen(seen.Species.DexNumber);

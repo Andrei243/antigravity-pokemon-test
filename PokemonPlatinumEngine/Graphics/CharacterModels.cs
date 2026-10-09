@@ -184,6 +184,30 @@ internal static class CharacterModels
         rig.Uploaded = false;
     }
 
+    /// <summary>
+    /// Lets go of every rig but these character types' (plan 11 · C1): a rig and its shell are some 40,000 vertices,
+    /// and a table of a hundred looks can't all stay on the graphics card. The engine keeps the people of the place the
+    /// player has come to, the player's and the assistant's; what is let go is meshed again from the disk cache if it is
+    /// asked for later, and its baked sprites go with it. A rig still being built is left to finish.
+    /// </summary>
+    public static void Trim(IEnumerable<string> keep)
+    {
+        var kept = new HashSet<string>(keep, StringComparer.OrdinalIgnoreCase);
+        foreach (var type in Cache.Keys.Where(t => !kept.Contains(t)).ToList())
+        {
+            if (Cache[type] is { Uploaded: true } rig) CharacterSprites.Forget(rig);
+            Forget(type);
+        }
+        foreach (var (type, building) in Building.Where(b => !kept.Contains(b.Key) && b.Value.IsCompleted).ToList())
+            Building.TryRemove(type, out _);
+    }
+
+    /// <summary>The character types built or being built: what <see cref="Trim"/> has left (the tests' window into it).</summary>
+    internal static IEnumerable<string> Held => Cache.Keys.Concat(Building.Keys).Distinct(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>True once a character type's rig is built (on the graphics card or ready to go there).</summary>
+    internal static bool Built(string npcType) => Cache.ContainsKey(npcType) || (Building.TryGetValue(npcType, out var b) && b.IsCompleted);
+
     /// <summary>CPU-side model only (no GPU needed).</summary>
     public static CharacterRig Build(string npcType)
     {
