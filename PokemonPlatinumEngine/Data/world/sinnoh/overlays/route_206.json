@@ -29,9 +29,6 @@
     "cyclist_axel": {
       "name": "Axel",
       "trainer": {
-        "id": "cyclist_axel",
-        "name": "Axel",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist Axel: Brakes are for people who don't want to battle! Pikachu, go!",
         "dialogueAfter": "Cyclist Axel: Maybe I should have used the brakes after all. Ride safely, won't you?"
       }
@@ -39,9 +36,6 @@
     "cyclist_megan": {
       "name": "Megan",
       "trainer": {
-        "id": "cyclist_megan",
-        "name": "Megan",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist Megan: My Staravia races me along this bridge every day. Today it can race you!",
         "dialogueAfter": "Cyclist Megan: At least Staravia is still faster than both of us. That's something."
       }
@@ -49,9 +43,6 @@
     "cyclist_james": {
       "name": "James",
       "trainer": {
-        "id": "cyclist_james",
-        "name": "James",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist James: My Ponyta gallops beside my front wheel all the way down the road. Can you keep up?",
         "dialogueAfter": "Cyclist James: Outpaced! Ponyta's mane is still flickering from the effort."
       }
@@ -59,9 +50,6 @@
     "cyclist_nicole": {
       "name": "Nicole",
       "trainer": {
-        "id": "cyclist_nicole",
-        "name": "Nicole",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist Nicole: One Starly, two Starly, three Starly! Count them as they fly at you!",
         "dialogueAfter": "Cyclist Nicole: They'll be Staravia one day, all three of them. Then we'll see!"
       }
@@ -69,9 +57,6 @@
     "cyclist_john": {
       "name": "John",
       "trainer": {
-        "id": "cyclist_john",
-        "name": "John",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist John: I ride this road from end to end every morning, and you're in my lane!",
         "dialogueAfter": "Cyclist John: All right, all right. The road's wide enough for the two of us."
       }
@@ -79,9 +64,6 @@
     "cyclist_kayla": {
       "name": "Kayla",
       "trainer": {
-        "id": "cyclist_kayla",
-        "name": "Kayla",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist Kayla: Hold it right there! Let's see whose Pokémon is quicker off the mark!",
         "dialogueAfter": "Cyclist Kayla: Yours, it seems. My Pikachu wants a rematch already."
       }
@@ -89,9 +71,6 @@
     "cyclist_ryan": {
       "name": "Ryan",
       "trainer": {
-        "id": "cyclist_ryan",
-        "name": "Ryan",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist Ryan: My Shinx gives off sparks every time we go over a bump. Want to feel one?",
         "dialogueAfter": "Cyclist Ryan: Ow, my hair's standing on end. Was that your doing or Shinx's?"
       }
@@ -99,9 +78,6 @@
     "cyclist_rachel": {
       "name": "Rachel",
       "trainer": {
-        "id": "cyclist_rachel",
-        "name": "Rachel",
-        "trainerClass": "Cyclist",
         "dialogueBefore": "Cyclist Rachel: The gate's just ahead, but a battle comes first! My Pokémon are raring to go!",
         "dialogueAfter": "Cyclist Rachel: That was over quickly. I'd better pump up my tyres and try again."
       }
@@ -109,9 +85,6 @@
     "hiker_theodore": {
       "name": "Theodore",
       "trainer": {
-        "id": "hiker_theodore",
-        "name": "Theodore",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Theodore: Bikes rattle over that bridge all day, but down here it's just me and my Onix. Let's rumble!",
         "dialogueAfter": "Hiker Theodore: Hah! You hit like a rockfall. My Onix needs a lie-down."
       }

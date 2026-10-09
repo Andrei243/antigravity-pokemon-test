@@ -22,9 +22,6 @@
     "bug_catcher_jack": {
       "name": "Jack",
       "trainer": {
-        "id": "bug_catcher_jack",
-        "name": "Jack",
-        "trainerClass": "Bug Catcher",
         "dialogueBefore": "Bug Catcher Jack: This forest is my back garden! Want to see what I found in it?",
         "dialogueAfter": "Bug Catcher Jack: My Beautifly started out as a little Wurmple. Raising it was worth every minute."
       }
@@ -32,9 +29,6 @@
     "lass_briana": {
       "name": "Briana",
       "trainer": {
-        "id": "lass_briana",
-        "name": "Briana",
-        "trainerClass": "Lass",
         "dialogueBefore": "Lass Briana: It's so gloomy under these trees! A battle will cheer me up.",
         "dialogueAfter": "Lass Briana: I only came in for a short walk, and somehow I'm still walking. Which way is out?"
       }
@@ -42,9 +36,6 @@
     "psychic_lindsey": {
       "name": "Lindsey",
       "trainer": {
-        "id": "psychic_lindsey",
-        "name": "Lindsey",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Lindsey: I saw you coming long before you came round the bend. Shall I tell you how this ends?",
         "dialogueAfter": "Psychic Lindsey: ...That isn't the ending I saw. I must have been looking at somebody else's."
       }
@@ -52,9 +43,6 @@
     "psychic_elijah": {
       "name": "Elijah",
       "trainer": {
-        "id": "psychic_elijah",
-        "name": "Elijah",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Elijah: The trees murmur, if you listen with your mind. They told me you were on your way.",
         "dialogueAfter": "Psychic Elijah: The trees never said I'd lose. Too polite, I expect."
       }
@@ -62,9 +50,6 @@
     "psychic_kody": {
       "name": "Kody",
       "trainer": {
-        "id": "psychic_kody",
-        "name": "Kody",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Kody: I come into the forest to train my mind. You turning up is part of the training.",
         "dialogueAfter": "Psychic Kody: My concentration has gone. I'll sit under a tree and start again from the beginning."
       }
@@ -72,9 +57,6 @@
     "psychic_rachael": {
       "name": "Rachael",
       "trainer": {
-        "id": "psychic_rachael",
-        "name": "Rachael",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Rachael: My Psyduck has one of its headaches. That's when its powers come out!",
         "dialogueAfter": "Psychic Rachael: Its headache has gone, and its powers went with it. Poor thing."
       }
@@ -82,9 +64,6 @@
     "bug_catcher_phillip": {
       "name": "Phillip",
       "trainer": {
-        "id": "bug_catcher_phillip",
-        "name": "Phillip",
-        "trainerClass": "Bug Catcher",
         "dialogueBefore": "Bug Catcher Phillip: Everybody wants a Beautifly. Not me! I raised a Dustox, and I'm proud of it.",
         "dialogueAfter": "Bug Catcher Phillip: My Dustox flies to the lamps every evening. Mum says it's not allowed in the kitchen."
       }
@@ -92,9 +71,6 @@
     "bug_catcher_donald": {
       "name": "Donald",
       "trainer": {
-        "id": "bug_catcher_donald",
-        "name": "Donald",
-        "trainerClass": "Bug Catcher",
         "dialogueBefore": "Bug Catcher Donald: My Burmy dress in leaves from this very forest. Smart, aren't they?",
         "dialogueAfter": "Bug Catcher Donald: Battle a Burmy in a cave or among buildings and it makes itself a new cloak. I want all three!"
       }

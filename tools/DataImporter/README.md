@@ -3,6 +3,7 @@
 Rebuilds the game's data files from public sources:
 
 - `PokemonPlatinumEngine/Data/species.json`, `moves.json`, `abilities.json` and `items.json`
+- `PokemonPlatinumEngine/Data/trainers.json`, Platinum's 927 trainers (plan 06 · R9), and `marts.json`, its Marts' stock
 - `docs/mechanics/coverage.md`, the report of what the battle engine runs and what is still to write
 
 ```bash
@@ -23,6 +24,7 @@ The run is deterministic: the same sources and overrides give the same files, so
 | The Sinnoh Pokédex: each species' regional number | the decompilation (`res/pokemon/sinnoh_pokedex.json`, whose first entry is a placeholder) |
 | Names (in their modern spelling), categories, generations, legendary and mythical flags, heights, weights, egg groups, colours, shapes, hidden abilities, punch/sound/bite/pulse/ball/powder/dance flags | [PokeAPI](https://github.com/PokeAPI/pokeapi)'s CSV files (`data/v2/csv`) |
 | Species 494–1025, moves 468 on, abilities 124 on, items after Generation 4 | PokeAPI: each species' default form with its newest learnset (Scarlet and Violet first) and current values |
+| Trainers: each one's name, class, AI flags, items, double flag and team (species, form, level, IV scale, personality, held item, chosen moves) | the decompilation (`res/trainers/data/<trainer>.json`, `Importer.Trainers.cs`); never what a trainer says. The prize money is the class's multiplier (`include/data/trainer_class_prize_mul.h`) times the last Pokémon's level times four, doubled in a double battle. The imported world's trainers are these alone: an overlay gives them our lines (plan 08 · P7) |
 | Descriptions of moves, abilities and items | PokeAPI's short effect texts (written by PokeAPI's contributors, not taken from the games) |
 | Descriptions of TMs and HMs | written here from the move Platinum's machine teaches: "Teaches Focus Punch to a compatible Pokémon." and that move's own description. PokeAPI's text for a machine names the move a later generation gave it (Hone Claws for TM01) |
 | Pokédex entries | generated from the data in our own words |

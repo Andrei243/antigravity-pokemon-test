@@ -28,9 +28,6 @@
     "camper_jacob": {
       "name": "Jacob",
       "trainer": {
-        "id": "camper_jacob",
-        "name": "Jacob",
-        "trainerClass": "Camper",
         "dialogueBefore": "Camper Jacob: I'm heading into Eterna Forest. How about a battle before I go?",
         "dialogueAfter": "Camper Jacob: They say the Pokémon in the forest are tougher than this. I'd better get ready."
       }
@@ -38,9 +35,6 @@
     "hiker_daniel": {
       "name": "Daniel",
       "trainer": {
-        "id": "hiker_daniel",
-        "name": "Daniel",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Daniel: Not a mountain in sight, and here I am in my boots. Gahaha! Come on, then!",
         "dialogueAfter": "Hiker Daniel: Now that cleared the head! You find the same Pokémon in the oddest places, you know."
       }
@@ -48,9 +42,6 @@
     "aroma_lady_elizabeth": {
       "name": "Elizabeth",
       "trainer": {
-        "id": "aroma_lady_elizabeth",
-        "name": "Elizabeth",
-        "trainerClass": "Aroma Lady",
         "dialogueBefore": "Aroma Lady Elizabeth: I adore a Pokémon with a sweet scent. Here, come and smell this one!",
         "dialogueAfter": "Aroma Lady Elizabeth: Plant enough Berries and you can live in sweet scents all year round."
       }
@@ -58,9 +49,6 @@
     "camper_zackary": {
       "name": "Zackary",
       "trainer": {
-        "id": "camper_zackary",
-        "name": "Zackary",
-        "trainerClass": "Camper",
         "dialogueBefore": "Camper Zackary: It's a long road from Floaroma to Eterna City. A battle will shorten it!",
         "dialogueAfter": "Camper Zackary: Camping out with your Pokémon. Have you any idea how good that is?"
       }
@@ -68,9 +56,6 @@
     "picnicker_siena": {
       "name": "Siena",
       "trainer": {
-        "id": "picnicker_siena",
-        "name": "Siena",
-        "trainerClass": "Picnicker",
         "dialogueBefore": "Picnicker Siena: I wonder which Pokémon live round here. Shall we find out?",
         "dialogueAfter": "Picnicker Siena: I know lots about Pokémon! Some are male, some are female, and some are neither."
       }
@@ -78,9 +63,6 @@
     "hiker_nicholas": {
       "name": "Nicholas",
       "trainer": {
-        "id": "hiker_nicholas",
-        "name": "Nicholas",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Nicholas: I've lost my way. Here, of all places...",
         "dialogueAfter": "Hiker Nicholas: I spent so long lost in the mountains that I turned into a hiker."
       }
@@ -88,9 +70,6 @@
     "battle_girl_kelsey": {
       "name": "Kelsey",
       "trainer": {
-        "id": "battle_girl_kelsey",
-        "name": "Kelsey",
-        "trainerClass": "Battle Girl",
         "dialogueBefore": "Battle Girl Kelsey: Hi-yah! I'm not holding anything back!",
         "dialogueAfter": "Battle Girl Kelsey: Hi-yah! You showed me how far I have to go. Thank you!"
       }
@@ -98,9 +77,6 @@
     "picnicker_karina": {
       "name": "Karina",
       "trainer": {
-        "id": "picnicker_karina",
-        "name": "Karina",
-        "trainerClass": "Picnicker",
         "dialogueBefore": "Picnicker Karina: Hmm, I don't know. Shall I play with you for a bit?",
         "dialogueAfter": "Picnicker Karina: Stand quite still and listen. Can you hear the Pokémon calling?"
       }

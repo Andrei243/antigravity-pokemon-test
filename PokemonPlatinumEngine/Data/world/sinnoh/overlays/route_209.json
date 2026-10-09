@@ -30,9 +30,6 @@
     "breeder_albert": {
       "name": "Albert",
       "trainer": {
-        "id": "breeder_albert",
-        "name": "Albert",
-        "trainerClass": "Pokémon Breeder",
         "dialogueBefore": "Pokémon Breeder Albert: I've raised these little ones since the day they hatched. Let's see how they've grown!",
         "dialogueAfter": "Pokémon Breeder Albert: They're still young. Every battle teaches them something, win or lose."
       }
@@ -40,9 +37,6 @@
     "breeder_jennifer": {
       "name": "Jennifer",
       "trainer": {
-        "id": "breeder_jennifer",
-        "name": "Jennifer",
-        "trainerClass": "Pokémon Breeder",
         "dialogueBefore": "Pokémon Breeder Jennifer: Don't be fooled by their size. My babies are tougher than they look!",
         "dialogueAfter": "Pokémon Breeder Jennifer: Back home for a nap, all of you. You've more than earned it."
       }
@@ -50,9 +44,6 @@
     "cowgirl_shelley": {
       "name": "Shelley",
       "trainer": {
-        "id": "cowgirl_shelley",
-        "name": "Shelley",
-        "trainerClass": "Cowgirl",
         "dialogueBefore": "Cowgirl Shelley: Easy now... My Ponyta's been itching for a gallop all day. Let's go!",
         "dialogueAfter": "Cowgirl Shelley: Whoa there! Looks like we bit off more than we could chew."
       }
@@ -62,9 +53,6 @@
       "name": "Danielle",
       "npcType": "Lass",
       "trainer": {
-        "id": "poke_kid_danielle",
-        "name": "Danielle",
-        "trainerClass": "Poké Kid",
         "dialogueBefore": "Poké Kid Danielle: My Pichu is my very best friend! Will you battle us?",
         "dialogueAfter": "Poké Kid Danielle: Are you all right, Pichu? We'll be stronger next time, I promise!"
       }
@@ -73,9 +61,6 @@
     "twin_emma": {
       "name": "Emma",
       "trainer": {
-        "id": "twins_emma_and_lil",
-        "name": "Emma & Lil",
-        "trainerClass": "Twins",
         "dialogueBefore": "Emma: Lil and I do everything together. Battles too!",
         "dialogueAfter": "Emma: Well, at least we lost together, Lil."
       }
@@ -83,9 +68,6 @@
     "twin_lil": {
       "name": "Lil",
       "trainer": {
-        "id": "twins_emma_and_lil",
-        "name": "Emma & Lil",
-        "trainerClass": "Twins",
         "dialogueBefore": "Lil: Two of us and two of our Pokémon. That's fair, isn't it?",
         "dialogueAfter": "Lil: Emma, I think we need a bit more practice."
       }
@@ -94,9 +76,6 @@
     "young_couple_trainer_sue": {
       "name": "Sue",
       "trainer": {
-        "id": "young_couple_ty_and_sue",
-        "name": "Ty & Sue",
-        "trainerClass": "Young Couple",
         "dialogueBefore": "Sue: We're out for a walk together, and you want a battle? Oh, go on then!",
         "dialogueAfter": "Sue: Never mind, Ty. It was still a lovely afternoon."
       }
@@ -104,9 +83,6 @@
     "young_couple_trainer_ty": {
       "name": "Ty",
       "trainer": {
-        "id": "young_couple_ty_and_sue",
-        "name": "Ty & Sue",
-        "trainerClass": "Young Couple",
         "dialogueBefore": "Ty: Sue and I make a brilliant team. Watch this!",
         "dialogueAfter": "Ty: And I so wanted to look good in front of Sue..."
       }

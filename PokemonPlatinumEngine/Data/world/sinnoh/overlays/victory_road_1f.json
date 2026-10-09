@@ -8,9 +8,6 @@
     "psychic_bryce": {
       "name": "Bryce",
       "trainer": {
-        "id": "psychic_bryce",
-        "name": "Bryce",
-        "trainerClass": "Psychic",
         "dialogueBefore": "Psychic Bryce: I foresaw a trainer coming through this cave today. How our battle ends, I haven't seen... yet.",
         "dialogueAfter": "Psychic Bryce: Ah. Now I see it clearly. I lost."
       }
@@ -18,9 +15,6 @@
     "black_belt_miles": {
       "name": "Miles",
       "trainer": {
-        "id": "black_belt_miles",
-        "name": "Miles",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Miles: Victory Road is the finest training ground in Sinnoh! One more bout before I climb on!",
         "dialogueAfter": "Black Belt Miles: Four arms, and not one of them fast enough. More training!"
       }
@@ -28,9 +22,6 @@
     "bird_keeper_hana": {
       "name": "Hana",
       "trainer": {
-        "id": "bird_keeper_hana",
-        "name": "Hana",
-        "trainerClass": "Bird Keeper",
         "dialogueBefore": "Bird Keeper Hana: Even in a cave, my birds always find their way. Let's see if you can find yours!",
         "dialogueAfter": "Bird Keeper Hana: You'll find your way to the League. I'm sure of it."
       }
@@ -38,9 +29,6 @@
     "ace_trainer_mariah": {
       "name": "Mariah",
       "trainer": {
-        "id": "ace_trainer_mariah",
-        "name": "Mariah",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Mariah: Everyone in Victory Road has eight Badges. Don't go thinking you're special!",
         "dialogueAfter": "Ace Trainer Mariah: ...All right. Maybe you're a little bit special."
       }
@@ -48,9 +36,6 @@
     "veteran_edgar": {
       "name": "Edgar",
       "trainer": {
-        "id": "veteran_edgar",
-        "name": "Edgar",
-        "trainerClass": "Veteran",
         "dialogueBefore": "Veteran Edgar: I've walked this road more times than I can count, and never reached its end. Show me how it's done!",
         "dialogueAfter": "Veteran Edgar: So that's how. Perhaps this will be my year after all."
       }
@@ -58,9 +43,6 @@
     "dragon_tamer_clinton": {
       "name": "Clinton",
       "trainer": {
-        "id": "dragon_tamer_clinton",
-        "name": "Clinton",
-        "trainerClass": "Dragon Tamer",
         "dialogueBefore": "Dragon Tamer Clinton: My dragons have grown up in these caves. Soon they'll be ready to fly!",
         "dialogueAfter": "Dragon Tamer Clinton: Not ready yet, then. Neither am I."
       }

@@ -5,9 +5,6 @@
     "ace_trainer_omar": {
       "name": "Omar",
       "trainer": {
-        "id": "ace_trainer_omar",
-        "name": "Omar",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Omar: Only trainers who've beaten every Gym get this far. Let's see what your eight Badges are worth!",
         "dialogueAfter": "Ace Trainer Omar: Worth a great deal, clearly."
       }
@@ -15,9 +12,6 @@
     "ace_trainer_sydney": {
       "name": "Sydney",
       "trainer": {
-        "id": "ace_trainer_sydney",
-        "name": "Sydney",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Sydney: The Elite Four are waiting just past this cave, and I mean to reach them first!",
         "dialogueAfter": "Ace Trainer Sydney: You go on ahead. I'll catch you up."
       }
@@ -25,9 +19,6 @@
     "veteran_clayton": {
       "name": "Clayton",
       "trainer": {
-        "id": "veteran_clayton",
-        "name": "Clayton",
-        "trainerClass": "Veteran",
         "dialogueBefore": "Veteran Clayton: You youngsters race through Victory Road. Slow down and battle an old hand!",
         "dialogueAfter": "Veteran Clayton: You're in a hurry for good reason, I see."
       }
@@ -36,9 +27,6 @@
     "double_team_trainer_al": {
       "name": "Al",
       "trainer": {
-        "id": "double_team_al_and_kay",
-        "name": "Al & Kay",
-        "trainerClass": "Double Team",
         "dialogueBefore": "Al: Kay and I have climbed all of Victory Road side by side. We battle side by side too!",
         "dialogueAfter": "Al: Back down to the bottom and up again, Kay?"
       }
@@ -46,9 +34,6 @@
     "double_team_trainer_kay": {
       "name": "Kay",
       "trainer": {
-        "id": "double_team_al_and_kay",
-        "name": "Al & Kay",
-        "trainerClass": "Double Team",
         "dialogueBefore": "Kay: Two against two! Let's see how good your teamwork is!",
         "dialogueAfter": "Kay: Our teamwork needs some work, Al."
       }

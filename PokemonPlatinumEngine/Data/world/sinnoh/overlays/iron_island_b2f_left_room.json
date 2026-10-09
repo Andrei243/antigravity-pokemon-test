@@ -12,9 +12,6 @@
     "hiker_damon": {
       "name": "Damon",
       "trainer": {
-        "id": "hiker_damon",
-        "name": "Damon",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Damon: These tunnels were dug by hand, you know. I come down here to feel the rock all round me.",
         "dialogueAfter": "Hiker Damon: I thought we were as tough as this island's iron. Not tough enough, it seems."
       }
@@ -22,9 +19,6 @@
     "hiker_maurice": {
       "name": "Maurice",
       "trainer": {
-        "id": "hiker_maurice",
-        "name": "Maurice",
-        "trainerClass": "Hiker",
         "dialogueBefore": "Hiker Maurice: Heave-ho! My Pokémon are every bit as tough as the rock we're standing in!",
         "dialogueAfter": "Hiker Maurice: Crumbled like old shale. You've got real grit, you have."
       }
@@ -32,9 +26,6 @@
     "black_belt_kendal": {
       "name": "Kendal",
       "trainer": {
-        "id": "black_belt_kendal",
-        "name": "Kendal",
-        "trainerClass": "Black Belt",
         "dialogueBefore": "Black Belt Kendal: I train in the deepest tunnels, where nobody can hear me shout. Hyaah!",
         "dialogueAfter": "Black Belt Kendal: Even down here, there's someone stronger. Back to my training."
       }
@@ -42,9 +33,6 @@
     "battle_girl_tyler": {
       "name": "Tyler",
       "trainer": {
-        "id": "battle_girl_tyler",
-        "name": "Tyler",
-        "trainerClass": "Battle Girl",
         "dialogueBefore": "Battle Girl Tyler: Breathe in... breathe out... Medicham and I are ready. Are you?",
         "dialogueAfter": "Battle Girl Tyler: My focus slipped. A real fighter stays calm, win or lose."
       }
@@ -52,9 +40,6 @@
     "worker_brendon": {
       "name": "Brendon",
       "trainer": {
-        "id": "worker_brendon",
-        "name": "Brendon",
-        "trainerClass": "Worker",
         "dialogueBefore": "Worker Brendon: The mine's closed, but my crew still come down to look at the old seams. And to battle!",
         "dialogueAfter": "Worker Brendon: You hit like a pickaxe. My Pokémon need a tea break."
       }
@@ -62,9 +47,6 @@
     "worker_quentin": {
       "name": "Quentin",
       "trainer": {
-        "id": "worker_quentin",
-        "name": "Quentin",
-        "trainerClass": "Worker",
         "dialogueBefore": "Worker Quentin: Mind your head down here! And mind your Pokémon, because here we come!",
         "dialogueAfter": "Worker Quentin: Knocked flat. Good thing I kept my helmet on."
       }
@@ -72,9 +54,6 @@
     "ace_trainer_jonah": {
       "name": "Jonah",
       "trainer": {
-        "id": "ace_trainer_jonah",
-        "name": "Jonah",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Jonah: They say this island teems with Steel-type Pokémon. I came to test my team against them, and against you!",
         "dialogueAfter": "Ace Trainer Jonah: I've a long way to go yet. That's what makes the trip worth it."
       }
@@ -82,9 +61,6 @@
     "ace_trainer_brenda": {
       "name": "Brenda",
       "trainer": {
-        "id": "ace_trainer_brenda",
-        "name": "Brenda",
-        "trainerClass": "Ace Trainer",
         "dialogueBefore": "Ace Trainer Brenda: Nobody comes this deep by accident. Let's see what you're made of!",
         "dialogueAfter": "Ace Trainer Brenda: So that's how it's done. I'll remember that."
       }

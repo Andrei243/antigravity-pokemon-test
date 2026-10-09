@@ -8,11 +8,6 @@
     "camper_curtis": {
       "name": "Curtis",
       "trainer": {
-        "id": "trainer_curtis",
-        "name": "Curtis",
-        "trainerClass": "Camper",
-        "party": [ { "species": "Starly", "level": 7 }, { "species": "Shinx", "level": 7 } ],
-        "prizeMoney": 112,
         "dialogueBefore": "Camper Curtis: A trainer takes a challenge wherever it finds him. Even in a tunnel!",
         "dialogueAfter": "Camper Curtis: Careful in caves. Wild Pokémon turn up anywhere in here, not only in grass."
       }
@@ -20,11 +15,6 @@
     "picnicker_diana": {
       "name": "Diana",
       "trainer": {
-        "id": "trainer_diana",
-        "name": "Diana",
-        "trainerClass": "Picnicker",
-        "party": [ { "species": "Bidoof", "level": 9 } ],
-        "prizeMoney": 144,
         "dialogueBefore": "Picnicker Diana: I made it all the way through the cave! Let's have a battle to celebrate!",
         "dialogueAfter": "Picnicker Diana: Well... I suppose losing is something to remember the day by, too."
       }

@@ -37,9 +37,6 @@
     "swimmer_sheltin": {
       "name": "Sheltin",
       "trainer": {
-        "id": "swimmer_sheltin",
-        "name": "Sheltin",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Sheltin: Out here, the sea belongs to me and my Pokémon. Let's see you keep your head above water!",
         "dialogueAfter": "Swimmer Sheltin: Washed up on the shore... I'd better swim a few more lengths."
       }
@@ -47,9 +44,6 @@
     "swimmer_evan": {
       "name": "Evan",
       "trainer": {
-        "id": "swimmer_evan",
-        "name": "Evan",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Evan: Race you to the rocks! Or we could just battle. Battling's quicker.",
         "dialogueAfter": "Swimmer Evan: I'd have done better in the race."
       }
@@ -57,9 +51,6 @@
     "swimmer_mary": {
       "name": "Mary",
       "trainer": {
-        "id": "swimmer_mary",
-        "name": "Mary",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Mary: The water's lovely and warm today. Fancy a battle while you're out here?",
         "dialogueAfter": "Swimmer Mary: Brr! Losing gives me goose bumps."
       }
@@ -67,9 +58,6 @@
     "swimmer_haley": {
       "name": "Haley",
       "trainer": {
-        "id": "swimmer_haley",
-        "name": "Haley",
-        "trainerClass": "Swimmer",
         "dialogueBefore": "Swimmer Haley: Up and down I swim, until a trainer comes along. And here you are!",
         "dialogueAfter": "Swimmer Haley: Oh well. Back to my lengths, then."
       }
@@ -77,9 +65,6 @@
     "tuber_jared": {
       "name": "Jared",
       "trainer": {
-        "id": "tuber_jared",
-        "name": "Jared",
-        "trainerClass": "Tuber",
         "dialogueBefore": "Tuber Jared: My rubber ring keeps me floating all day long. Let's battle!",
         "dialogueAfter": "Tuber Jared: Glub... I'm going back to the shallow end."
       }
@@ -87,9 +72,6 @@
     "tuber_chelsea": {
       "name": "Chelsea",
       "trainer": {
-        "id": "tuber_chelsea",
-        "name": "Chelsea",
-        "trainerClass": "Tuber",
         "dialogueBefore": "Tuber Chelsea: Mummy says I can play on the beach until teatime. Battle with me!",
         "dialogueAfter": "Tuber Chelsea: Never mind. Marill and I are going to build a sandcastle instead."
       }
@@ -97,9 +79,6 @@
     "beauty_cyndy": {
       "name": "Cyndy",
       "trainer": {
-        "id": "beauty_cyndy",
-        "name": "Cyndy",
-        "trainerClass": "Beauty",
         "dialogueBefore": "Beauty Cyndy: A day by the sea is good for the skin, and a battle is good for the spirit!",
         "dialogueAfter": "Beauty Cyndy: I came here to relax, and now look at me. Time to lie in the sun a while."
       }
@@ -107,9 +86,6 @@
     "fisherman_kenneth": {
       "name": "Kenneth",
       "trainer": {
-        "id": "fisherman_kenneth",
-        "name": "Kenneth",
-        "trainerClass": "Fisherman",
         "dialogueBefore": "Fisherman Kenneth: Something's tugging at my line... Oh, it's only you. A battle it is, then!",
         "dialogueAfter": "Fisherman Kenneth: Off you go. You've scared all the fish away anyway."
       }
@@ -117,9 +93,6 @@
     "sailor_paul": {
       "name": "Paul",
       "trainer": {
-        "id": "sailor_paul",
-        "name": "Paul",
-        "trainerClass": "Sailor",
         "dialogueBefore": "Sailor Paul: Ahoy there! Every sailor worth his salt needs a strong arm. Let's test yours!",
         "dialogueAfter": "Sailor Paul: Blow me down! You'd make a fine deckhand."
       }

@@ -107,11 +107,11 @@ What a person does when spoken to is a script (`docs/scripts.md`). Left to thems
 
 **Items on the ground.** An item to pick up is a person of the map whose `npcType` is `ItemBall`, with the `item` it holds (a name from `items.json`), a `count` when it is more than one, and a `hiddenBy` flag of its own: picking it up sets that flag, which is what takes the ball off the map and keeps it off in every game saved afterwards. A file whose ball has no flag, or an item that isn't one, doesn't load. `hiddenItems` are items nobody can see, found by looking at their tile: the tile, the `item`, a `count` when more than one, and the `flag` set once it has been found. In the imported world nothing of this is written by hand: the balls and the hidden items of an open area are there by themselves, from its area file.
 
-A trainer carries a `trainer` block:
+A trainer carries a `trainer` block. On a hand-made map it says everything; in an overlay of the imported world it is the lines alone (plan 08 · P7, below):
 
 ```json
 "trainer": {
-  "id": "trainer_tristan",
+  "id": "youngster_tristan",
   "name": "Tristan",
   "trainerClass": "Youngster",
   "party": [ { "species": "Starly", "level": 5 }, { "species": "Burmy", "level": 5, "moves": [ "Tackle" ] } ],
@@ -123,7 +123,9 @@ A trainer carries a `trainer` block:
 }
 ```
 
-A trainer whose `id` is one of Platinum's in `trainers.json` (`youngster_darius`) and whose `party` is empty takes its team, its mind, its items and its prize money from there, so a room's Gym trainers write only their id and their lines (plan 02 · S5). The trainer's `id` is what the save file records once they are beaten, so don't change it for a trainer who is already in the game. Party Pokémon are rolled fresh (gender, nature, moves for their level) every time the maps load; `moves` is for a Pokémon whose trainer chose them (Platinum's own trainer data does for some) and is left out otherwise. `prizeMoney` is Platinum's: the level of the last Pokémon, four times over, by the rate of the trainer's class (`include/data/trainer_class_prize_mul.h` in the decompilation), and twice that for a double battle. `doubleBattle` (left out when false) sends two Pokémon out at a time, when the player has two that can fight; two people may carry the same trainer with the same `id` (a pair of twins), and beating one beats both. On a map of the imported world `sightRange` is the original's own, from the area's file, whatever the overlay says.
+A trainer whose `id` is one of Platinum's in `trainers.json` (`youngster_darius`) and whose `party` is empty takes its team, its mind, its items and its prize money from there, so a room's Gym trainers write only their id and their lines (plan 02 · S5). The trainer's `id` is what the save file records once they are beaten, so don't change it for a trainer who is already in the game. Party Pokémon are rolled fresh (gender, nature, moves for their level) every time the maps load; `moves` is for a Pokémon whose trainer chose them (Platinum's own trainer data does for some) and is left out otherwise. `prizeMoney` is Platinum's: the level of the last Pokémon, four times over, by the rate of the trainer's class (`include/data/trainer_class_prize_mul.h` in the decompilation), and twice that for a double battle. `doubleBattle` (left out when false) sends two Pokémon out at a time, when the player has two that can fight; two people may carry the same trainer with the same `id` (a pair of twins), and beating one beats both. 
+
+In an overlay of the imported world (plan 08 · P7) the block is the trainer's lines and nothing else: `{ "dialogueBefore": "…", "dialogueAfter": "…" }`. Who the trainer is (the `id`, which is the table's: `youngster_tristan`; the name, the class, the team, the items, the prize money and whether they battle two at a time) is `trainers.json`'s alone, found by the trainer the area file's object names as its script (`TRAINER_YOUNGSTER_TRISTAN`), and how far they see is the object's `sight` (none: they battle only when spoken to or by a script). An `id` is given only for someone a script battles whose object names no trainer (Jubilife City's grunts: `galactic_grunt_jubilife_city_1`). `OverlayTrainerTests` holds that no overlay writes anything else and that every trainer of the world is the table's.
 
 `MapFile.FromMap` turns a `Map` back into a file, and `DataFileTests` checks that every map file loads and writes back out unchanged, so a generated file must use the same layout `GameDataFiles.Serialize` writes.
 
@@ -180,7 +182,7 @@ Each entry of `maps` becomes one `Map` named `name`, as large as its matrix (mat
   "heldBack": [ "item_rare_candy" ],  // optional: objects of the area file left out for now
   "people": {
     "guitarist": { "name": "Guitarist", "dialog": [ "Route 201 is straight up this road." ] },
-    "youngster_tristan": { "name": "Tristan", "trainer": { "id": "trainer_tristan", … } }
+    "youngster_tristan": { "name": "Tristan", "trainer": { "dialogueBefore": "…", "dialogueAfter": "…" } }
   },
   "signs": { "map_signpost": "Twinleaf Town\nFresh and free! The town where journeys begin." },
   "signScripts": { "trainer_tips_signpost": "TrainerTips" },   // optional: signs that run a script of the area's file

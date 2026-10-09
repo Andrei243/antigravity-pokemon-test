@@ -6,11 +6,6 @@
     "youngster_tristan": {
       "name": "Tristan",
       "trainer": {
-        "id": "trainer_tristan",
-        "name": "Tristan",
-        "trainerClass": "Youngster",
-        "party": [ { "species": "Starly", "level": 5 } ],
-        "prizeMoney": 80,
         "dialogueBefore": "Youngster Tristan: Our eyes met! That means we have to battle!",
         "dialogueAfter": "Youngster Tristan: Aww, my Starly fought hard! You're really tough!"
       }
@@ -18,11 +13,6 @@
     "lass_natalie": {
       "name": "Natalie",
       "trainer": {
-        "id": "trainer_natalie",
-        "name": "Natalie",
-        "trainerClass": "Lass",
-        "party": [ { "species": "Bidoof", "level": 5 } ],
-        "prizeMoney": 80,
         "dialogueBefore": "Lass Natalie: I spy a trainer! That means a battle, please!",
         "dialogueAfter": "Lass Natalie: Wow, you're strong! Jubilife City is just up the road."
       }
@@ -30,11 +20,6 @@
     "youngster_logan": {
       "name": "Logan",
       "trainer": {
-        "id": "trainer_logan",
-        "name": "Logan",
-        "trainerClass": "Youngster",
-        "party": [ { "species": "Burmy", "level": 5, "moves": [ "Tackle" ] } ],
-        "prizeMoney": 80,
         "dialogueBefore": "Youngster Logan: A battle! Come on! I warn you, though, I'm going to win!",
         "dialogueAfter": "Youngster Logan: You beat me? That was fun all the same. I'm going to battle everybody!"
       }

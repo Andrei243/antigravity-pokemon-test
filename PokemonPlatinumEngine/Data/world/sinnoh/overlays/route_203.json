@@ -16,11 +16,6 @@
     "youngster_michael": {
       "name": "Michael",
       "trainer": {
-        "id": "trainer_michael",
-        "name": "Michael",
-        "trainerClass": "Youngster",
-        "party": [ { "species": "Kricketot", "level": 7 }, { "species": "Zubat", "level": 6 } ],
-        "prizeMoney": 96,
         "dialogueBefore": "Youngster Michael: My Pokémon are what get me out of bed in the morning! Go, both of you!",
         "dialogueAfter": "Youngster Michael: Through the grass, or past the trainers? I can never make up my mind which is worse."
       }
@@ -28,11 +23,6 @@
     "youngster_dallas": {
       "name": "Dallas",
       "trainer": {
-        "id": "trainer_dallas",
-        "name": "Dallas",
-        "trainerClass": "Youngster",
-        "party": [ { "species": "Shinx", "level": 8 } ],
-        "prizeMoney": 128,
         "dialogueBefore": "Youngster Dallas: Me and my Shinx go everywhere together. Nothing comes between us!",
         "dialogueAfter": "Youngster Dallas: I'm not sore about it. We'll just have to get tougher, the two of us."
       }
@@ -40,11 +30,6 @@
     "youngster_sebastian": {
       "name": "Sebastian",
       "trainer": {
-        "id": "trainer_sebastian",
-        "name": "Sebastian",
-        "trainerClass": "Youngster",
-        "party": [ { "species": "Machop", "level": 8, "moves": [ "Low Kick", "Leer" ] } ],
-        "prizeMoney": 128,
         "dialogueBefore": "Youngster Sebastian: I'm on my way to challenge the Gym. You'll do for a warm-up!",
         "dialogueAfter": "Youngster Sebastian: So I'm not ready for the Gym yet. Good thing I found out here."
       }
@@ -52,11 +37,6 @@
     "lass_madeline": {
       "name": "Madeline",
       "trainer": {
-        "id": "trainer_madeline",
-        "name": "Madeline",
-        "trainerClass": "Lass",
-        "party": [ { "species": "Psyduck", "level": 8 } ],
-        "prizeMoney": 128,
         "dialogueBefore": "Lass Madeline: Look what the Gym Leader in Oreburgh City gave me! Want to see how I won it?",
         "dialogueAfter": "Lass Madeline: I'm going to collect every Badge there is. They're so shiny!"
       }
@@ -64,16 +44,6 @@
     "lass_kaitlin": {
       "name": "Kaitlin",
       "trainer": {
-        "id": "trainer_kaitlin",
-        "name": "Kaitlin",
-        "trainerClass": "Lass",
-        "party": [
-          { "species": "Bidoof", "level": 4 },
-          { "species": "Budew", "level": 4 },
-          { "species": "Starly", "level": 4 },
-          { "species": "Abra", "level": 4 }
-        ],
-        "prizeMoney": 64,
         "dialogueBefore": "Lass Kaitlin: I was looking for Pokémon, and I found a trainer instead!",
         "dialogueAfter": "Lass Kaitlin: I just keep walking through the grass until the one I want jumps out."
       }
