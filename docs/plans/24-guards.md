@@ -46,6 +46,13 @@ Written 2026-10-06, before any session.
 - Tests: `ArchitectureTests`, whose checker is also run over a few offending methods of the test assembly, so a rule that finds nothing in the engine is seen to work. Shots: `title` diffed before and after is empty (the gradient's uniforms are unchanged); `menus` and `intro` list only the shots that show a date, now the harness's fixed day.
 - **Done when** a `new Random()` in `BattleCore`, a `Raylib.GetTime()` in a screen or a raylib type in `Story` fails the build or the tests with the rule named, and the diploma and the Trainer Card draw the same picture every day.
 
+**Done (2026-10-10).** Decision 1 taken as recommended (`Microsoft.CodeAnalysis.BannedApiAnalyzers` 4.14.0, build-time only). What was built, and where it differs from the above:
+- `BannedSymbols.txt` bans the list above (both overloads of `GetShaderLocation`, and `string.GetHashCode(StringComparison)` beside the plain one); every ban was seen to fail the build in a file written for it and removed. The allowed places are four, not six: `UiShapes`, `UiFonts` and `SkinnedModel` now ask `FieldShaders.Location` for their uniforms, so it is the one reader of the driver, and the gradient's four locations are kept like every other.
+- `Core/WallClock.cs` is written now, to plan 15 · E3's description (`Local`, `UtcNow`, `Fixed`): it is the one reader of `DateTime`'s clock, and `GameClock`'s hour, date and moment read through it, so `GameClock.cs` needs no exception. The harness fixes it at noon of `FixedDate`'s day. E3 keeps what it adds beyond (`SaveData.LastSaved`).
+- The breaks: the diploma's day and `adventureStarted` read `GameClock.Today`; `PoketchView.Clock` is `GameClock.Clock()`; the Hall of Fame's moment, which this plan missed (the overview found it), reads `GameClock.Moment`.
+- `ArchitectureTests` found three things the plan's survey predates: the trainer AI's stand-in generator for its damage sums (`AiThinking.NoDraws`, a `new Random(0)` it never draws from) is now a `BattleRandom`; `Data.CharacterStyles` (plan 11 · C1) reads and writes `Color`, so the rule allows a `Color`, a value of four bytes; and two readers in `Graphics` ask `Map.HeightAt` as a rule's input, not to place anything (the Pastoria Gym's rafts and water, the Canalave Gym's floors in view), named with their reasons in `ArchitectureTests.WalkedHeights`. The probes are in `ArchitectureProbes.cs`.
+- Not run: the `title`, `menus` and `intro` shots (a cloud session; the uniforms' values are unchanged, and the dates now come from the harness's fixed day).
+
 ### X2 · Golden battles and trainer teams
 - `PokemonPlatinumTests/Golden/GoldenFile.cs`: the check, the `GOLDEN=accept` switch and the `.received.txt`; the repository lookup of `CoverageTests` and `SoundTests` moves into a shared `Repository.Root`; `.gitignore` gains `*.received.txt`.
 - `Golden/BattleText.cs`: a log as text, an event to a line, a `Said` with its `Shows` and `OnImpact` indented under it, a `Place` as `P0` or `E1`, a `Pokemon` as its side, party position and species (`mine#2 Luxio`), a species by name. `BattleCoreTests.Written` gives way to it.
@@ -118,7 +125,7 @@ Written 2026-10-06, before any session.
 
 ## Status
 
-- [ ] X1 The rules as build errors
+- [x] X1 The rules as build errors
 - [ ] X2 Golden battles and trainer teams
 - [ ] X3 Golden scripts and saves of every version
 - [ ] X4 Strict loading and schemas
