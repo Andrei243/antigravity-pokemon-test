@@ -13,6 +13,14 @@
     { "warp": 2, "to": "hearthome_city", "toWarp": 3 },
     { "warp": 3, "to": "hearthome_city", "toWarp": 4 }
   ],
+  // The receptionists let in only a Trainer with a Pokémon of the kinds the square allows, and see them out again
+  // (plan 02 · S7; the stroll itself is plan 06 · R16's): the original's triggers by each gate's counter
+  "triggers": [
+    { "trigger": 0, "script": "WestGate" },
+    { "trigger": 1, "script": "Leave" },
+    { "trigger": 2, "script": "EastGate" },
+    { "trigger": 3, "script": "Leave" }
+  ],
   "people": {
     // The Pokémon their trainers walk here (plan 10 · F1); the Happiny stays held back with its trainer
     "drifloon": { "name": "Drifloon", "dialog": [ "Fuwaaa..." ] },

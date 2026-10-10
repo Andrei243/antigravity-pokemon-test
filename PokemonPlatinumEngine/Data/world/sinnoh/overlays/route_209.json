@@ -9,8 +9,8 @@
   ],
   // The Lost Tower is a building's floors (plan 01 · M11)
   "locked": [ 2 ],
-  // Joggers Richard and Raul battle in the morning and only jog past at other times: the original's arrival script
-  // swaps them by their FLAG_HIDE_ROUTE_209_JOGGER_* flags, so all four objects wait for that script (plan 02 · S7)
+  // The Hallowed Tower's four stones (the original's script 2) run its script when faced (plan 08 · P12)
+  "read": { "2": "HallowedTower" },
   "people": {
     "pokefan_m": {
       "name": "Man",
@@ -19,14 +19,26 @@
         "People climb it to remember Pokémon who are no longer with them. Go quietly, if you go in."
       ]
     },
-    // In Platinum he gives away the Good Rod; the gift is plan 02's (S7)
-    "fisherman": {
-      "name": "Fisherman",
-      "dialog": [
-        "There's water all along this route, and plenty living in it.",
-        "With a good rod in your hand, you'd be amazed what bites."
-      ]
+    // He gives away the Good Rod (plan 02 · S7)
+    "fisherman": { "name": "Fisherman", "script": "Fisherman" },
+    // Joggers Richard and Raul battle in the morning and only jog past at other times: the route's arrival script
+    // swaps each pair of objects by their FLAG_HIDE_ROUTE_209_JOGGER_* flags, as the original's does (plan 02 · S7)
+    "jogger_richard": {
+      "name": "Richard",
+      "trainer": {
+        "dialogueBefore": "Jogger Richard: Morning! Nothing wakes a Pokémon up like a run and a battle. Ready?",
+        "dialogueAfter": "Jogger Richard: Out of breath and out of Pokémon. I'll do another lap to get over it."
+      }
     },
+    "jogger_raul": {
+      "name": "Raul",
+      "trainer": {
+        "dialogueBefore": "Jogger Raul: Keep up, keep up! A battle on the move is the best kind!",
+        "dialogueAfter": "Jogger Raul: Huff... huff... You're quicker than you look."
+      }
+    },
+    "jogger_richard_no_battle": { "name": "Jogger", "script": "JoggerRichard" },
+    "jogger_raul_no_battle": { "name": "Jogger", "script": "JoggerRaul" },
     "breeder_albert": {
       "name": "Albert",
       "trainer": {

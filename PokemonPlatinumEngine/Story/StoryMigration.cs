@@ -48,6 +48,9 @@ public static class StoryMigration
         if (savedVersion < 4) RenameTrainers(story);
         if (savedVersion < 5) HandOverRockSmash(story, bag);
         if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
+        // Version 7 (plan 02 · S7): a save from before Hearthome's and Solaceon's chapter is given ChapterFour, which
+        // the chain above has already run for a save older than version 4
+        if (savedVersion is >= 4 and < 7) Run(story, scripts, ScriptLibrary.ChapterFour);
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>

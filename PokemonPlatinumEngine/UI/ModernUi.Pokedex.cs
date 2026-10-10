@@ -194,7 +194,7 @@ internal static partial class ModernUi
         float bottom = detail.Y + detail.Height - 44;
         for (int i = 0; i < places.Count; i++)
         {
-            var lines = Wrap(WaysOf(places[i].Ways), room, 22);
+            var lines = Wrap(places[i].How ?? WaysOf(places[i].Ways), room, 22);
             float need = 34 + lines.Count * 28 + 14;
             if (ly + need > bottom)
             {

@@ -1,4 +1,6 @@
 {
   "area": "solaceon_ruins_room_1",
-  "bgmTrack": "sinnoh/forest"
+  "bgmTrack": "sinnoh/forest",
+  // The Unown inscription on the north wall (the original's script 2) is read when faced (plan 02 · S7)
+  "read": { "2": "Inscription" }
 }

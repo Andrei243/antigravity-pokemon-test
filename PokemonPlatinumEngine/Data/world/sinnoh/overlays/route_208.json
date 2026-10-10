@@ -10,14 +10,8 @@
   // The house on the route has no room yet (plan 01 · M11)
   "locked": [ 2 ],
   "people": {
-    // In Platinum he hands over the Odd Keystone; the gift is plan 02's (S5)
-    "black_belt": {
-      "name": "Black Belt",
-      "dialog": [
-        "I dug up an odd stone on my travels. It's heavier than it looks, and it turns cold at night.",
-        "There's a little tower of stones on Route 209 with one missing. I wonder if this one belongs there."
-      ]
-    },
+    // He hands over the Odd Keystone, which the Hallowed Tower on Route 209 is missing (plan 02 · S7, plan 08 · P12)
+    "black_belt": { "name": "Black Belt", "script": "BlackBelt" },
     "hiker_robert": {
       "name": "Robert",
       "trainer": {

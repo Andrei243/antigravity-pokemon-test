@@ -1,0 +1,72 @@
+# Solaceon Town (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_solaceon_town.s).
+#
+# Coming up from Route 209, the rival dashes down from the north, full of something he saw in the Solaceon Ruins,
+# tells the player to go and look, and dashes off again. The Ruin Maniac gives a Pokétch app to a Trainer who has
+# seen fifty kinds of Pokémon. VAR_SOLACEON_TOWN_STATE: 1 once the rival has been.
+
+
+# The south end of town (the original's trigger 12, a row seven tiles wide at y 669, state 0): the rival runs down
+# to the player from the north.
+script Rival
+  emote player exclaim
+  music "common/rival"
+  if var PLAYER_X == 557 place rival 557 661 down
+  if var PLAYER_X == 558 place rival 558 661 down
+  if var PLAYER_X == 559 place rival 559 661 down
+  if var PLAYER_X == 560 place rival 560 661 down
+  if var PLAYER_X == 561 place rival 561 661 down
+  if var PLAYER_X == 562 place rival 562 661 down
+  if var PLAYER_X == 563 place rival 563 661 down
+  clearflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
+  show rival
+  face player up
+  walk rival down 7 fast
+  speaker "{rival}"
+  say "Yahoo! {player}! Just the person I wanted to see!"
+  face rival left
+  wait 0.25
+  face rival right
+  wait 0.25
+  face rival down
+  say "There are these ruins on the east side of town, right? I went in, and I saw something SO cool in there!"
+  emote rival exclaim
+  say "Go and check out the Solaceon Ruins, {player}! You'll see what I mean! I'm off to Veilstone City!"
+  walk rival up 7 fast
+  hide rival
+  setflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
+  music area
+  setvar VAR_SOLACEON_TOWN_STATE 1
+  end
+
+
+# The Ruin Maniac (the original's script 6) gives the Pokémon History app to a Trainer who has seen fifty kinds of
+# the Sinnoh Pokédex's Pokémon.
+script RuinManiac
+  speaker "Ruin Maniac"
+  if flag FLAG_RECEIVED_SOLACEON_POKEMON_HISTORY goto Given
+  if not poketch goto NotYet
+  if var DEX_SEEN < 50 goto NotYet
+  say "You've met fifty kinds of Pokémon? Then you're a Trainer worth knowing! Here, a little something for your Pokétch."
+  poketchapp PokemonHistory
+  setflag FLAG_RECEIVED_SOLACEON_POKEMON_HISTORY
+  fanfare keyitem
+  text "The Pokémon History app was added to the Pokétch!"
+  end
+label NotYet
+  say "I give a Pokétch app to Trainers who know their Pokémon. Come back once you've met fifty kinds of them!"
+  end
+label Given
+  say "Every Pokémon has a history of its own: where you met it, and when. Treasure it!"
+  end
+
+
+# The cowgirl by the Day Care (the original's script 2) has something new to say once the Relic Badge is won.
+script Cowgirl
+  speaker "Cowgirl"
+  if badge relic goto Tour
+  say "Take it easy while you're here. Solaceon is a place for taking things easy."
+  end
+label Tour
+  say "You've won a Badge in Hearthome? Then take a tour round the ruins at the east end of town. They're full of Unown!"
+  end

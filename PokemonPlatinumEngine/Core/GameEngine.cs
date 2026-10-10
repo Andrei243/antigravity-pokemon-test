@@ -529,6 +529,7 @@ public partial class GameEngine
             StoryVersion = StoryState.CurrentVersion,
             StoryVariables = told.Variables,
             TakenItems = told.TakenItems,
+            GreetedPeople = told.Greeted ?? new List<string>(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = playerMoney,
@@ -1245,6 +1246,8 @@ public partial class GameEngine
             // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is
             if (npc.IsTrainer) npc.LeavePost();
             if (!npc.IsThing) npc.FaceTowards(player.GridX, player.GridY);
+            // Everyone spoken to is counted once: what the Hallowed Tower's Spiritomb waits for (plan 08 · P12)
+            if (FieldScripts.GreetingOf(currentMap, npc) is { } person) story.Greet(person);
 
             // What happens next is theirs to say: their own script, or the common one for what they are
             // (a nurse, a clerk, a PC, the briefcase, a trainer, someone with lines)

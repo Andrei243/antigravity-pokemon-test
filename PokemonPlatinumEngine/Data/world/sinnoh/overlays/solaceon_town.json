@@ -12,7 +12,11 @@
   "locked": [ 0, 1, 2, 3, 4, 7 ],
   // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 02)
   "heldBack": [ "item_rare_candy" ],
+  // The rival runs down to the player at the south end of town (plan 02 · S7)
+  "triggers": [ { "trigger": 0, "script": "Rival" } ],
   "people": {
+    // He comes with his scene and goes with it (FLAG_HIDE_SOLACEON_TOWN_RIVAL)
+    "rival": { "name": "{rival}", "still": true, "dialog": [ "Come on, {player}, keep up! I've got places to be!" ] },
     // The Pokémon of the Day Care's farm (plan 10 · F1), in their pen: out of reach and with nothing to say, as in Platinum
     "buneary_1": { "name": "Buneary" },
     "buneary_2": { "name": "Buneary" },
@@ -24,13 +28,8 @@
         "Air like this, you don't get in the big cities. It's the grass and the open sky that do it."
       ]
     },
-    "cowgirl_1": {
-      "name": "Cowgirl",
-      "dialog": [
-        "Welcome to Solaceon Town! Nothing here is in a hurry, and we like it that way.",
-        "Have a wander round. The old ruins at the east end of town are well worth a look."
-      ]
-    },
+    // Something new to say once the Relic Badge is won (plan 02 · S7)
+    "cowgirl_1": { "name": "Cowgirl", "script": "Cowgirl" },
     "twin": {
       "name": "Girl",
       "dialog": [
@@ -52,14 +51,8 @@
         "Then folk started bringing their Pokémon to the Day Care, and a town grew up round it."
       ]
     },
-    // In Platinum he gives a Pokétch app to trainers who have met many Pokémon; the gift is plan 02's (S7)
-    "ruin_maniac": {
-      "name": "Ruin Maniac",
-      "dialog": [
-        "Old stones tell the story of the people who came before us.",
-        "Pokémon have stories too: where you first met each one, and when. Never forget yours!"
-      ]
-    },
+    // He gives the Pokémon History app to a Trainer who has seen fifty kinds of Pokémon (plan 02 · S7)
+    "ruin_maniac": { "name": "Ruin Maniac", "script": "RuinManiac" },
     // The Day Care, and the Eggs that turn up there, wait for its rooms (plan 01 · M11)
     "day_care_man": {
       "name": "Old Man",

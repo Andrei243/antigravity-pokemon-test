@@ -28,6 +28,12 @@ public sealed class HeadlessScriptHost : IScriptHost
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }
+
+    /// <summary>The time of day a script asks after (<c>if time ...</c>): the day, unless a test sets another.</summary>
+    public TimeOfDay TimeOfDay { get; set; } = TimeOfDay.Day;
+
+    /// <summary>How many kinds the Sinnoh Pokédex has seen (<c>DEX_SEEN</c>): none, unless a test says.</summary>
+    public int DexSeen { get; set; }
     public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
 
     /// <summary>Where Pokémon go when the team is full.</summary>

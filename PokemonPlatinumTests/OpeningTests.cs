@@ -42,7 +42,7 @@ public class OpeningTests
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
 
         public int Starter { get; init; }
-        public BattleOutcome Fight { get; init; } = BattleOutcome.Won;
+        public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public const string Rival = "Kit";
 
         public Game(int starter = 0, BattleOutcome fight = BattleOutcome.Won)
@@ -83,22 +83,26 @@ public class OpeningTests
             Arrive(warp.TargetMap, warp.TargetX, warp.TargetY);
         }
 
-        private StepTrigger TriggerOf(string script) =>
-            Map.Triggers.First(t => t.Script == script);
+        /// <summary>A map of the game, as it stands, without coming to it.</summary>
+        public Map MapNamed(string name) => maps[name];
+
+        /// <summary>The trigger that starts a script, of a place if given: the map of Sinnoh has a rival's in more than one town.</summary>
+        private StepTrigger TriggerOf(string script, string? place = null) =>
+            Map.Triggers.First(t => t.Script == script && (place == null || t.ScriptFile == place));
 
         /// <summary>A step onto the trigger that starts a script, which must start it now.</summary>
-        public HeadlessScriptHost Step(string script)
+        public HeadlessScriptHost Step(string script, string? place = null)
         {
-            var trigger = TriggerOf(script);
+            var trigger = TriggerOf(script, place);
             Tile = (trigger.X, trigger.Y);
             Assert.Same(trigger, FieldScripts.TriggerAt(Map, trigger.X, trigger.Y, Story));
             return Play(Scripts.Find(trigger.Script, trigger.ScriptFile ?? Map.Name)!);
         }
 
         /// <summary>Whether a step onto a script's trigger would start it now.</summary>
-        public bool Fires(string script)
+        public bool Fires(string script, string? place = null)
         {
-            var trigger = TriggerOf(script);
+            var trigger = TriggerOf(script, place);
             return FieldScripts.TriggerAt(Map, trigger.X, trigger.Y, Story) == trigger;
         }
 

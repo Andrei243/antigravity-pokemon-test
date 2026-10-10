@@ -2,13 +2,7 @@
   "area": "solaceon_ruins_room_2",
   "bgmTrack": "sinnoh/forest",
   "people": {
-    // In Platinum he gives a Green Shard for a look at HM05, once the player has found it; the trade is plan 02's (S7)
-    "hiker": {
-      "name": "Hiker",
-      "dialog": [
-        "They say a Hidden Machine is tucked away somewhere in these ruins. Defog, it's called.",
-        "I've been round and round these rooms all day. Every one of them looks the same!"
-      ]
-    }
+    // He asks to borrow HM05 once the player has found it, and gives a Green Shard for the loan (plan 02 · S7)
+    "hiker": { "name": "Hiker", "script": "Hiker" }
   }
 }

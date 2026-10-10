@@ -1,0 +1,164 @@
+# Hearthome City (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_hearthome_city.s, scripts_route_209_gate_to_hearthome_city.s).
+#
+# Coming in from Route 208, a Buneary on the run nearly knocks the player over, and its trainer Keira comes after it.
+# Fantina is away at the Contest Hall, so her Gym's guide stands at its door saying so, until she has been met there
+# (scripts/ContestHallLobby.txt sets FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE). Two people chatting in the way keep the road
+# to Route 209 shut until her Badge is won, and then the rival waits at its gate.
+# VAR_HEARTHOME_CITY_STATE: 1 Keira met. VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE: 1 the Relic Badge won (set by
+# the Gym's own script, HearthomeGymLeaderRoom.txt), 2 the rival battled.
+
+
+# The way in from Route 208 (the original's trigger 0, a column five tiles deep at x 461, state 0): Buneary dashes
+# up from the east and stops at the player's feet; Keira comes running after it, puts it back in its ball and says
+# who she is. The two start from the original's x 471 on the player's row; on the row where a lamp stands at x 471
+# they run along the row below and step up at the end.
+script Keira
+  emote player exclaim
+  if var PLAYER_Y == 725 place buneary 471 725 left
+  if var PLAYER_Y == 726 place buneary 471 726 left
+  if var PLAYER_Y == 727 place buneary 471 727 left
+  if var PLAYER_Y == 728 place buneary 471 729 left
+  if var PLAYER_Y == 729 place buneary 471 729 left
+  clearflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
+  show buneary
+  walk buneary left 9 fast
+  if var PLAYER_Y == 728 walk buneary up 1 fast
+  face buneary left
+  cry "Buneary"
+  if var PLAYER_Y == 725 place keira 471 725 left
+  if var PLAYER_Y == 726 place keira 471 726 left
+  if var PLAYER_Y == 727 place keira 471 727 left
+  if var PLAYER_Y == 728 place keira 471 729 left
+  if var PLAYER_Y == 729 place keira 471 729 left
+  clearflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
+  show keira
+  walk keira left 8 fast
+  if var PLAYER_Y == 728 walk keira up 1 fast
+  face keira left
+  face player right
+  speaker "Girl"
+  say "Oh, thank goodness! You stopped it! My Buneary got so excited about the city, it just ran and ran!"
+  say "You naughty thing! Back in your ball, right now."
+  cry "Buneary"
+  hide buneary
+  setflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
+  speaker "Keira"
+  say "I'm Keira. We're here for the contests! It was so nice of you to catch my Buneary. Thank you!"
+  if var PLAYER_Y == 728 walk keira down 1
+  walk keira right 8
+  hide keira
+  setflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
+  setvar VAR_HEARTHOME_CITY_STATE 1
+  end
+
+
+# The fisherman by the fan club (the original's script 11) offers to show the way to the Contest Hall and walks the
+# player there, the long way round, once per visit to the city (the original's map-local flag).
+script Fisherman
+  speaker "Fisherman"
+  if flag FLAG_MAP_LOCAL_HEARTHOME_SHOWED_CONTEST_HALL goto Shown
+  ask "Here for the contests, are you? Shall I take you to the Contest Hall?"
+  if no goto NotNow
+  say "Splendid! This way, please. Follow me!"
+  wait 0.25
+  if facing up goto FromTheSouth
+  if facing down goto FromTheNorth
+  if facing left goto FromTheEast
+  # From the west, he steps round the player before setting off
+  walk self up 1 left 3 down 1
+  move self left 17 up 13 right 12 up 4
+  walk player left 19 up 13 right 12 up 3
+  goto There
+label FromTheSouth
+  move self left 20 up 13 right 12 up 4
+  walk player up 1 left 20 up 13 right 12 up 3
+  goto There
+label FromTheNorth
+  move self left 20 up 13 right 12 up 4
+  walk player down 1 left 20 up 13 right 12 up 3
+  goto There
+label FromTheEast
+  move self left 20 up 13 right 12 up 4
+  walk player left 21 up 13 right 12 up 3
+label There
+  waitmoves
+  face self down
+  face player up
+  setflag FLAG_MAP_LOCAL_HEARTHOME_SHOWED_CONTEST_HALL
+  say "Here we are: the Contest Hall! Pokémon from all over Sinnoh come to show off here. Enjoy yourself!"
+  end
+label NotNow
+  say "Oh, I do beg your pardon. It's just that I love showing people the way."
+  end
+label Shown
+  say "It makes me happy just to see Trainers heading for the Contest Hall."
+  end
+
+
+# Fantina's Gym Guide waits at her door while she is away at the Contest Hall (the original's script 31).
+script GymGuide
+  speaker "Gym Guide"
+  say "Hey there, champ in the making! Bad timing, I'm afraid. The Leader, Fantina, isn't in."
+  say "She's gone to the Contest Hall again. She adores contests! Try back once she's home."
+  end
+
+
+# The road to Route 209 is full of people chatting about the Day Care's Eggs until the Relic Badge
+# (FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE, set by Fantina's script).
+script EggChat
+  speaker "Man"
+  say "A couple at the Day Care found an Egg among the Pokémon they were minding! Nobody knows where it came from."
+  say "Isn't that the most extraordinary thing? We've been standing here talking about it for an hour."
+  end
+
+script EggChatHiker
+  speaker "Hiker"
+  say "Eggs at the Day Care, eh? I heard it happens over in Johto as well."
+  say "Sorry, are we in your way? We'll move along once we've got to the bottom of it."
+  end
+
+
+# A stand-in for the original's scene in the gate to Route 209 (whose room comes with plan 01 · M11): once Fantina's
+# Badge has called him (VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 1, FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
+# cleared), the rival waits beside the gate's door, and a step onto the column in front of it (a trigger of our own,
+# six tiles deep at x 503) brings him over for a battle with the team that hangs on the player's starter. Then he is
+# off through the gate.
+script Rival
+  emote rival exclaim
+  music "common/rival"
+  if var PLAYER_Y == 724 walk rival up 1
+  if var PLAYER_Y == 726 walk rival down 1
+  if var PLAYER_Y == 727 walk rival down 2
+  if var PLAYER_Y == 728 walk rival down 3
+  if var PLAYER_Y == 729 walk rival down 4
+  face rival left
+  face player right
+  speaker "{rival}"
+  say "Hey, {player}! You won the Relic Badge too? Then the stage is set. Let's get the show started!"
+  if starter "Turtwig" goto VsChimchar
+  if starter "Chimchar" goto VsPiplup
+  battle rival as "rival_route_209_piplup"
+  goto After
+label VsChimchar
+  battle rival as "rival_route_209_turtwig"
+  goto After
+label VsPiplup
+  battle rival as "rival_route_209_chimchar"
+label After
+  speaker "{rival}"
+  say "Argh! My whole strategy fell flat! I just need more practice, that's all. A LOT more practice!"
+  say "I'm off to Solaceon Town and beyond. See ya, {player}!"
+  # Back to the gate's door at 505,726, and in through it
+  if var PLAYER_Y == 724 walk rival down 2 fast
+  if var PLAYER_Y == 725 walk rival down 1 fast
+  if var PLAYER_Y == 727 walk rival up 1 fast
+  if var PLAYER_Y == 728 walk rival up 2 fast
+  if var PLAYER_Y == 729 walk rival up 3 fast
+  walk rival right 1 fast
+  sound "door_open"
+  hide rival
+  setflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
+  music area
+  setvar VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 2
+  end

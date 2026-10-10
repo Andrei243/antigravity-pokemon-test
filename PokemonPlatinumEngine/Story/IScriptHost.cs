@@ -43,6 +43,12 @@ public interface IScriptHost
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }
 
+    /// <summary>The time of day, as Platinum's five (<c>if time morning</c>, plan 02 · S7).</summary>
+    Core.TimeOfDay TimeOfDay => Core.GameClock.Now;
+
+    /// <summary>How many kinds the Sinnoh Pokédex has seen (the original's <c>GetLocalDexSeenCount</c>): <c>DEX_SEEN</c>.</summary>
+    int DexSeen => 0;
+
     // ------------------------------------------------------------------ the field
 
     /// <summary>

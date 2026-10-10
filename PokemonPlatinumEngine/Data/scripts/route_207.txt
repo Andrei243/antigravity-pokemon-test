@@ -1,0 +1,51 @@
+# Route 207 (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_207.s).
+#
+# Just before Mt. Coronet, the professor's assistant catches the player up with two things from the lab: a Vs. Seeker,
+# hidden in one hand or the other, and the Dowsing Machine for the Pokétch. VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE:
+# 1 once they have been given (Eterna City's bug catcher goes back to talking about the wind then).
+
+
+# The way into Mt. Coronet (the original's trigger 0, a column three tiles deep at x 340, state 0): the assistant
+# comes running along the road from the west, stops beside the player and holds out two closed hands.
+script Assistant
+  if var PLAYER_Y == 712 place counterpart 331 712 right
+  if var PLAYER_Y == 713 place counterpart 331 713 right
+  if var PLAYER_Y == 714 place counterpart 331 714 right
+  clearflag FLAG_HIDE_ROUTE_207_COUNTERPART
+  show counterpart
+  walk counterpart right 3
+  emote counterpart exclaim
+  music "common/assistant"
+  walk counterpart right 5
+  face player left
+  speaker "{assistant}"
+  say "{player}! Phew, I caught you before the mountain! The professor sent me after you with something."
+  choose "I've got it in one of my hands. Which one?" "Right" "Left"
+  say "Ta-da! A Vs. Seeker! Charge it up by walking, then use it, and Trainers you've already beaten will want a rematch."
+  setflag FLAG_UNLOCKED_VS_SEEKER_LVL_1
+  give "Vs. Seeker"
+  say "And this is for your Pokétch. You'll love it, I promise."
+  poketchapp DowsingMachine
+  fanfare keyitem
+  text "The Dowsing Machine was added to the Pokétch!"
+  speaker "{assistant}"
+  say "Tap it on the ground and it shows where hidden items are buried. Try it all over Sinnoh!"
+  say "Right, I'd better get back to the lab. Mt. Coronet is a maze inside, so don't get lost, {player}!"
+  walk counterpart left 8
+  hide counterpart
+  setflag FLAG_HIDE_ROUTE_207_COUNTERPART
+  music area
+  setvar VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE 1
+  end
+
+
+# The cyclist at the foot of the muddy slope (the original's script 4): the slope needs a Bicycle in its fast gear.
+script Cyclist
+  speaker "Cyclist"
+  if flag FLAG_RECEIVED_BICYCLE goto Bike
+  say "That muddy slope is far too slippery to walk up. You'll only slide straight back down."
+  end
+label Bike
+  say "Put your Bicycle in its fast gear, take a run at the slope and don't stop pedalling till you're at the top!"
+  end

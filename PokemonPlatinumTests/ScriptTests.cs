@@ -232,6 +232,7 @@ public class ScriptTests
               if pokerus end
               if safari end
               if partner end
+              if time morning end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

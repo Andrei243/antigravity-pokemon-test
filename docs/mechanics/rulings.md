@@ -535,7 +535,42 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Pokémon Team Galactic held | A Clefairy and a Buneary on the top floor, then the Clefairy in the cycle shop and the Buneary in the Pokémon Center | Not there; the flags that move them are set as the original sets them | A Pokémon can't stand in the field yet (plan 10) |
 | The Galactic lobby theme in the building | `SEQ_D_GINLOBBY` until Jupiter is beaten | Eterna's theme throughout | No lobby theme yet (plan 05) |
 | The Underground Man's missions and his PC | Six missions below ground; the PC's pages on flags, spheres and traps | The Explorer Kit, his offer and the first mission; the PC's notes in a line | The Underground is plan 06 · R16's |
-| The bug catcher at the west way out | Goes back to his line about the wind once the assistant has been met on Route 207 | Tells of the Cycling Road as long as the player has the Bicycle | Route 207's scene is plan 02 · S7's |
 | The Friendship Checker's woman | Reads out the first Pokémon's friendship on later visits | One line of her own after giving the app | A script can't ask a Pokémon's friendship yet; the app is kept and shown once the Pokétch runs it |
 | The Old Chateau | Its rooms, its ghosts and Rotom's television | Its door in the forest stays shut | Its rooms are plan 01 · M11's; nothing of the story happens inside |
 | Rotom's room in the building | Behind a wall on the ground floor that the Secret Key opens | The wall | The Secret Key is the post-game's |
+
+## The fourth chapter (2026-10-10, plan 02 · S7)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_207.s`, `scripts_wayward_cave_1f.s`, `scripts_follower_partners.s`, `scripts_mt_coronet_1f_south.s`, `scripts_route_208.s`, `scripts_hearthome_city.s`, `scripts_contest_hall_lobby.s`, `scripts_route_209_gate_to_hearthome_city.s`, `scripts_amity_square.s`, `scripts_route_209.s`, `scripts_solaceon_town.s`, `scripts_solaceon_ruins_room_1.s`, `_room_2.s`, `_room_7.s`, `scripts_route_210_south.s`, `scripts_init_new_game.s`)
+
+- **The assistant catches the player up on Route 207**, on the column before Mt. Coronet (trigger 0, state 0): the Vs. Seeker is in one of two closed hands and either hand gives it (`FLAG_UNLOCKED_VS_SEEKER_LVL_1`), then the Dowsing Machine for the Pokétch. From then on Eterna City's bug catcher at the west way out talks about the wind again.
+- **Mira is optional**, as in Platinum: found lost in Wayward Cave, she travels with the player as Cheryl does (`mira_wayward_cave`, healed after every battle not lost, two wild Pokémon at a time) and goes out ahead of them at the way out under Route 206. Left behind, she is lost again where she was first found (the original's map script).
+- **Cyrus waits in Mt. Coronet's first passage** and walks down to the player on its one-tile trigger; **the black belt on Route 208** gives the Odd Keystone to anyone who talks to him.
+- **Hearthome City**: Keira's Buneary runs up to the player on the column in from Route 208 (trigger 0, five tiles deep) and Keira after it. Fantina's Gym is closed by its guide at the door until Fantina has been met in the Contest Hall (`FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE`); two people chatting about the Day Care's Eggs block the road to Route 209 until the Relic Badge (`FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE`, set by the Gym's script). The fisherman by the fan club walks the player to the Contest Hall once per visit (a map-local flag).
+- **The Contest Hall's lobby** is the original's to the tile. The first time in, Keira is talking with the player's Mom, who was a contest star; Keira goes off to practise and Mom gives an outfit for the stage and leaves (`FLAG_CONTEST_HALL_VISITED`). Fantina, spoken to, twirls and goes back to her Gym.
+- **The rival battles after the Relic Badge** with the team named after the player's starter (`rival_route_209_<starter>`), and goes on to Solaceon Town; lost to, he stays where he is and the trigger stays.
+- **The joggers** (Route 209's Richard and Raul, Route 210's Wyatt) battle only in the morning; at other hours their other selves only jog by, swapped by their flags as the place is arrived at.
+- **The Ruin Maniac in Solaceon Town** gives the Pokémon History app once the Sinnoh Pokédex has seen fifty kinds (`GetLocalDexSeenCount`, `DEX_SEEN`).
+- **HM05 lies in the Solaceon Ruins** where Platinum puts it; the hiker in the second room asks to borrow it and gives a Green Shard (asked again until he is lent it, `FLAG_DID_NOT_LOAN_HM_DEFOG`). The Unown inscriptions are read from their stones.
+- **The Psyduck stay on Route 210** until the Secret Potion (plan 02 · S8 and S9 give it). Their scene is written already: the potion cures them, they wander off, and Cynthia comes up the road with the Old Charm for her grandmother (asked until the answer is yes).
+- **Amity Square lets in only a Trainer with one of its kinds**: before the National Pokédex, Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary, Happiny and the three starters' lines; the receptionist heals the team on the way in.
+- **The Hallowed Tower** (plan 08 · P12) is read from its four stones: without the Odd Keystone it is broken; with it, a yes sets the keystone in its gap (`VAR_HALLOWED_TOWER_STATE` 1); then it stirs at 8, 15, 22 and 29, and at 32 Spiritomb comes out at level 25. Won, caught or fled from, the tower is empty again (state 0); lost to, it waits.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Spiritomb's thirty-two | People spoken to in the Underground (`GetSpiritombCounter`), cleared once Spiritomb has come out (`ClearSpiritombCounter`) | Thirty-two different people spoken to anywhere in the field, each counted once (`StoryState.Greeted`, saved as `SaveData.GreetedPeople`, read as `GREETINGS`); not cleared, since only one Odd Keystone can be had until the Underground | The Underground is plan 06 · R16's (plan 08, decision 2) |
+| The rival at the gate to Route 209 | Inside the gate house, on a trigger across its room | Outside it in Hearthome City, beside its door, on a trigger of our own six tiles deep in front of it: he walks over, battles and goes in through the door | Gate houses are walked through until plan 01 · M11 builds their rooms |
+| Keira's thanks in the lobby | Glitter Powder, an accessory | A promise of a present next time | Accessories are plan 06 · R17's |
+| Mom's gift | A tuxedo or a dress for the contest stage | The line that gives it; nothing is kept | Contests and their costumes are plan 06 · R17's |
+| The contests | Entered at the three receptionists | "The stage is being made ready" | Plan 06 · R17 |
+| The rich boy's Poffin | A Mild Poffin to a Trainer with a Poffin Case | His line about the case | Poffins are plan 06 · R14's |
+| The stroll in Amity Square | The first Pokémon of a kind the square allows walks beside the player and finds Berries and accessories | The receptionists let the player in and see them out (`VAR_FOLLOWER_MON_ACTIVE`); the Pokémon stays in its ball | Pokémon following the player are plan 10 · F3 and F4, the stroll plan 06 · R16 |
+| Amity Square after the National Pokédex | A longer list of kinds | The Sinnoh list only | The National Pokédex is the post-game's (plan 02 · S15) |
+| The Dowsing Machine and the Pokémon History app | Apps of the Pokétch that work | Given and kept, not run | The Pokétch's other apps are plan 06 · R14b |
+| Whether the Ruin Maniac has given his app | The Pokétch is asked whether it has the app | A flag of our own, `FLAG_RECEIVED_SOLACEON_POKEMON_HISTORY` | A script can't ask the Pokétch for an app |
+| The Lost Tower | Five floors of graves, trainers and items, the top one in fog, where two old women give the Spell Tag and the Cleanse Tag once Defog has cleared it | Its door on Route 209 stays shut | Its floors need gravestones and a room's fog: plan 01 · M11 builds them with the other rooms (the original's plans are 15 by 16 tiles, stairs east and west) |
+| The Day Care in Solaceon Town | Minds two Pokémon; its Gym guide comes out once a Pokémon is left, with the Day-Care Checker app | Its door stays shut; the guide is hidden from the start, as the original hides him | Eggs and the Day Care are plan 06 · R15's, the room plan 01 · M11's |
+| Hearthome's other doors | The fan club, the Poffin house, the church, the houses | Shut | Plan 01 · M11 |
+| Mira's look | A girl of her own | A Lass's look (`characters.json`) | Her look is plan 11 · C5's |

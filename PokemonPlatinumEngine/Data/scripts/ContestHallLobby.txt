@@ -1,0 +1,164 @@
+# The Contest Hall's lobby in Hearthome City (plan 02 · S7), built to the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_contest_hall_lobby.s).
+#
+# The first time in, Keira from the street is talking with the player's own Mom, who turns out to be a contest star
+# of old: Keira goes off to practise and Mom gives the player something to wear on stage. Fantina, the Gym Leader,
+# is here for the contests; spoken to, she twirls and goes back to her Gym, and its guide leaves the Gym's door
+# (FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE). The contests themselves and their stage come with plan 06 · R17.
+# VAR_CONTEST_HALL_LOBBY_STATE: 1 once Keira has gone. FLAG_CONTEST_HALL_VISITED: the scene is over.
+
+
+script OnEnter
+  if var VAR_CONTEST_HALL_LOBBY_STATE != 0 end
+  if flag FLAG_CONTEST_HALL_VISITED end
+  face keira down
+  emote keira exclaim
+  speaker "Keira"
+  say "Oh! It's my hero from the street!"
+  face mom down
+  speaker "Mom"
+  say "Why, if it isn't {player}! Hello, dear!"
+  walk player up 2
+  face keira left
+  wait 0.2
+  face keira down
+  speaker "Keira"
+  say "Wait... Johanna is YOUR mom? The Johanna, the contest star everybody talks about?"
+  say "{player}, she never once said she had a child who was a Trainer! You never said she was your mom, either!"
+  say "Anyway, thank you again for catching my Buneary earlier. I'd love to give you something, but I've nothing with me."
+  say "Next time we meet, I'll have a present for you and your Pokémon, I promise!"
+  face keira left
+  face mom right
+  say "Johanna, I'll see you later! I'm going to practise until I'm perfect!"
+  move keira right 3 up 3 right 3 up 4
+  face player right
+  waitmoves
+  hide keira
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_KEIRA
+  setvar VAR_CONTEST_HALL_LOBBY_STATE 1
+  face mom down
+  face player up
+  speaker "Mom"
+  say "Surprised, dear? I used to stand on that stage myself, a long time ago. The old place hasn't changed a bit."
+  say "When you heard about Hearthome's contests, I thought you might come by. So I brought you something."
+  fanfare item
+  if girl goto Dress
+  text "{player} received a smart suit for the contest stage!"
+  goto Wear
+label Dress
+  text "{player} received a pretty dress for the contest stage!"
+label Wear
+  speaker "Mom"
+  say "Whenever you go on stage, wear it with pride. I'm sure it'll look wonderful on you."
+  say "Well, I'd better catch my bus home. Take care of yourself, {player}!"
+  wait 0.5
+  move mom left 1 down 2 right 1 down 1
+  wait 0.15
+  face player left
+  wait 0.25
+  face player down
+  waitmoves
+  sound "door_open"
+  hide mom
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_MOM
+  setflag FLAG_CONTEST_HALL_VISITED
+  end
+
+
+# Fantina, here for the contests (the original's script 11): she twirls once round, says she will wait for the
+# player at her Gym, and goes back to it. Her Gym's guide leaves its door.
+script Fantina
+  wait 0.5
+  face self left
+  wait 0.13
+  face self up
+  wait 0.13
+  face self right
+  wait 0.13
+  face self down
+  wait 0.13
+  face self player
+  speaker "Fantina"
+  say "Ah, bonjour! You have the look of a Trainer, yes? I am Fantina, the Leader of the Gym of Hearthome."
+  say "I come here to see the contests, they are so beautiful! But a challenger is more beautiful still."
+  say "I go back to my Gym now. I wait for you there, mon ami!"
+  if facing right goto FromTheWest
+  move self left 6 down 4
+  wait 0.25
+  face player left
+  waitmoves
+  goto Gone
+label FromTheWest
+  move self up 1 left 6 down 5
+  wait 0.5
+  face player up
+  wait 0.15
+  face player left
+  waitmoves
+label Gone
+  sound "door_open"
+  hide self
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
+  setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
+  end
+
+
+# The three counters, for the official contests, the link contests and practice (the original's common scripts
+# 9806 to 9808): the contests come with plan 06 · R17.
+script Receptionist
+  speaker "Receptionist"
+  say "Welcome to the Pokémon Contest Hall, where Pokémon show off their charms!"
+  say "I'm terribly sorry, but the stage is being made ready for the new season. Please come back another time!"
+  end
+
+
+# The Trainer by the sofas (the original's script 7).
+script AceTrainer
+  speaker "Trainer"
+  say "A Pokémon that's been fed plenty of Poffins comes over so much better on stage."
+  say "It isn't only battles that make a Pokémon shine, you know."
+  end
+
+
+# The clown by the table (the original's script 8).
+script Clown
+  speaker "Clown"
+  say "A contest comes in three parts, you see! First the look, then the dance, and last of all the acting!"
+  say "Win over the judges in all three, and the ribbon is yours. Ta-dah!"
+  end
+
+
+# The girl by the photo frames (the original's script 9).
+script SchoolKid
+  speaker "Girl"
+  say "The winners of the biggest contests get their photos put up in these frames!"
+  say "One day my Pokémon's picture is going to hang right here. Just you wait!"
+  end
+
+
+# The boy at the counter (the original's script 10) gives a Poffin to anyone with a Poffin Case; Poffins and their
+# case come with plan 06 · R14. The first time, he steps away from the counter.
+script RichBoy
+  speaker "Boy"
+  if flag FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY goto Practice
+  setflag FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+  say "You're entering contests too? Then you'll want Poffins for your Pokémon. Do you have a Poffin Case?"
+  say "No? Oh dear. Come back when you've got one, and I'll share one of mine with you."
+  if facing left goto FromTheEast
+  walk self right 8
+  face self down
+  end
+label FromTheEast
+  walk self down 1 right 8 up 1
+  face self down
+  end
+label Practice
+  say "Winning a contest takes practice, practice and more practice!"
+  end
+
+
+# The photo frames along the wall (the original's scripts 2 to 6): empty until a contest has a winner.
+script Frame
+  speaker none
+  sayown
+  end

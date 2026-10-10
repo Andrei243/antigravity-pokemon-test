@@ -11,7 +11,7 @@ About 350 sittings are left, some twenty of them marked optional.
 | Plan | Done | Left (sittings) | Notes |
 |---|---|---|---|
 | 01 · Sinnoh map | M1–M8, M9 part 1 | ~13 | M9's leftover (rooms with relief, Pastoria, Oreburgh rebuilt) had no owner: it is wave 1's |
-| 02 · Story | S1, S2, S4–S6 | ~13 | S7 to S15; S11 and S15 are more than one sitting |
+| 02 · Story | S1, S2, S4–S7 | ~12 | S8 to S15; S11 and S15 are more than one sitting |
 | 03 · National Pokédex | D1, D5–D11, every model batch to Klawf (950 hand-built) | 7 | the last 75 species (Paldea 3a–3c), D12 (three parts), D13 |
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
@@ -317,10 +317,6 @@ Each plan's next session fixes its own.
   - M12's Fly and its off-thread chunks were done by S2 and M2.
   - Its swarms and Trophy Garden came with 06 · R13.
   - M11 doesn't list the rooms the chapters and Gyms have built since.
-- **02**
-  - "Where we are" describes the old battles.
-  - The Vs. Seeker (R12) and the Poké Radar (R13) exist.
-  - Use the decompilation's scripts, not Bulbapedia, which blocks fetching.
 - **03**
   - No checkbox for the last Paldea batch.
   - "No EVs or forms yet".
@@ -340,7 +336,7 @@ Each plan's next session fixes its own.
 - **08**
   - P3's fields exist (R12).
   - P7 counts 30 overlays (now 40).
-  - P8 and P12 propose `Map.TileScripts`, which exists (an overlay's `read`).
+  - P8 proposes `Map.TileScripts`, which exists (an overlay's `read`, which P12 used).
   - P11's wait for the Vs. Recorder is over (S5).
   - P23 must build on R13's `EncounterSlots`.
 - **09**: L8's INFO toggle should give way to P19's FORMS page.

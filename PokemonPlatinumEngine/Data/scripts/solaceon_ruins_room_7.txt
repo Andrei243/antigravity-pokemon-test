@@ -1,0 +1,10 @@
+# The Solaceon Ruins, the deepest room (plan 02 · S7). docs/scripts.md describes the language; the words are our own,
+# on the original's beats (scripts_solaceon_ruins_room_7.s). HM05, Defog, lies here in its ball (the area file's).
+
+
+# The Unown inscription on the north wall (the original's script 1, on three tiles).
+script Inscription
+  speaker none
+  text "Unown letters are carved in the wall. They seem to say..."
+  text "EVERY LIFE TOUCHES OTHER LIVES. FROM THOSE MEETINGS, SOMETHING NEW IS BORN."
+  end

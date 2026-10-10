@@ -1,0 +1,93 @@
+# Route 210, south of the fog (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_route_210_south.s).
+#
+# Four Psyduck, all holding their heads, stand in the narrow way north and won't budge. Platinum moves them with
+# Cynthia's Secret Potion, which comes later in the story (plan 02 · S8 and S9 give it); its scene is written here
+# with the Psyduck's own, so that chapter only hands the potion over: the Psyduck are cured and wander off, and
+# Cynthia comes up the road to ask the player to take an Old Charm to her grandmother in Celestic Town.
+
+
+# Arriving (the original's OnTransition): Jogger Wyatt battles in the morning and only jogs by at other hours.
+script OnEnter
+  if time morning goto Battle
+  clearflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT
+  end
+label Battle
+  clearflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT_NO_BATTLE
+  end
+
+
+# Jogger Wyatt, when it isn't morning (the original's script 6).
+script JoggerWyatt
+  speaker "Jogger"
+  say "We'll keep on running, my Pokémon and I! Rain or shine, morning or night!"
+  end
+
+
+# The Psyduck in the way (the original's script 1, any of the four).
+script Psyduck
+  cry "Psyduck"
+  speaker none
+  if item "Secret Potion" goto Potion
+  text "The Psyduck are standing firm, holding their heads. They won't move an inch."
+  end
+label Potion
+  ask "The Psyduck all seem to have headaches. Use the Secret Potion?"
+  if no end
+  text "{player} used the Secret Potion!"
+  cry "Psyduck"
+  emote psyduck_3 exclaim
+  emote psyduck_4 exclaim
+  emote psyduck_2 exclaim
+  emote psyduck_1 exclaim
+  move psyduck_3 up 1
+  move psyduck_4 up 2
+  move psyduck_1 up 2
+  waitmoves
+  wait 0.6
+  move psyduck_3 up 8
+  move psyduck_4 up 8
+  move psyduck_1 up 8
+  move psyduck_2 up 2 fast
+  waitmoves
+  hide psyduck_1
+  hide psyduck_2
+  hide psyduck_3
+  hide psyduck_4
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK
+  wait 1.5
+  if var PLAYER_X == 560 place cynthia 560 596 up
+  if var PLAYER_X == 561 place cynthia 561 596 up
+  clearflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  show cynthia
+  walk cynthia up 7
+  face player down
+  speaker "Cynthia"
+  say "{player}, it was you! The Psyduck are well again. Thank you for using my grandmother's potion on them."
+  ask "May I ask one more favour? Would you take this Old Charm to my grandmother in Celestic Town?"
+  if yes goto Charm
+label Again
+  ask "Celestic Town is just past the fog, through Route 210 and Route 211. Will you take it to her?"
+  if no goto Again
+label Charm
+  give "Old Charm"
+  say "Thank you. My grandmother is the elder of Celestic Town. I'm counting on you!"
+  walk cynthia down 9
+  hide cynthia
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  setflag FLAG_USED_SECRETPOTION
+  end
+
+
+# The Trainer resting by the road (the original's script 3) gives TM51, Roost.
+script AceTrainer
+  speaker "Trainer"
+  if flag FLAG_RECEIVED_ROUTE_210_SOUTH_TM51 goto Given
+  say "You've come a long way. You should rest your feet now and then too. Here, have this."
+  give "TM51"
+  setflag FLAG_RECEIVED_ROUTE_210_SOUTH_TM51
+label Given
+  say "TM51 is Roost. A Pokémon that flies all day without landing would crash in the end, after all."
+  end

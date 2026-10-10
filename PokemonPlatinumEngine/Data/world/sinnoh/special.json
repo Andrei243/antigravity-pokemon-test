@@ -1,0 +1,17 @@
+// Where Pokémon are met in Sinnoh that no table of wild Pokémon lists (plan 08 · P12): each a place of its own,
+// where a script puts the Pokémon in the player's way. Written by hand: tools/MapImporter's --data never touches it.
+// Habitats reads it beside habitats.json, so the Pokédex's area page names the place (docs/data-files.md,
+// "special.json"). "cells" are chunks of the overworld, "x,y" each, as habitats.json's are.
+{
+  "places": [
+    // The Hallowed Tower on Route 209 (its stones at 566,713): once the Odd Keystone is set in it and the player has
+    // spoken to thirty-two people, Spiritomb comes out of it (scripts/route_209.txt, HallowedTower)
+    {
+      "species": "Spiritomb",
+      "name": "Hallowed Tower",
+      "area": "route_209",
+      "cells": "17,22",
+      "how": "Route 209 · Wakes at the Hallowed Tower once its keystone is set and many people have been met"
+    }
+  ]
+}
