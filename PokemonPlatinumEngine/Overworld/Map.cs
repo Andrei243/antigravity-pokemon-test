@@ -100,7 +100,8 @@ public class Map
     /// Where a room's floor begins: the first column and the first row with anything but wall on them, above the
     /// front wall's row. Its side wall stands west of the one and its back wall north of the other. The rooms made
     /// by hand begin at (1, 2); a room rebuilt to the original's plan begins where the original's floor does, so its
-    /// people stand on the original's tiles. Wall tiles inside that are the room's own inner walls.
+    /// people stand on the original's tiles. Wall tiles inside that are the room's own inner walls. A door in a side
+    /// wall (a gate house's) is part of that wall.
     /// </summary>
     public (int Left, int Back) RoomCorner()
     {
@@ -108,7 +109,7 @@ public class Map
         for (int y = 0; y < Height - 1; y++)
             for (int x = 0; x < Width; x++)
             {
-                if (groundLayer[y * Width + x] == TileType.Wall) continue;
+                if (groundLayer[y * Width + x] is TileType.Wall || x == 0 && groundLayer[y * Width + x] == TileType.Door) continue;
                 left = Math.Min(left, x);
                 back = Math.Min(back, y);
             }

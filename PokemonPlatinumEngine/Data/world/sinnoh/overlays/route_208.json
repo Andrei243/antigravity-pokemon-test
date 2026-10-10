@@ -11,13 +11,8 @@
   "locked": [ 2 ],
   "people": {
     // In Platinum he hands over the Odd Keystone; the gift is plan 02's (S5)
-    "black_belt": {
-      "name": "Black Belt",
-      "dialog": [
-        "I dug up an odd stone on my travels. It's heavier than it looks, and it turns cold at night.",
-        "There's a little tower of stones on Route 209 with one missing. I wonder if this one belongs there."
-      ]
-    },
+    // He gives the Odd Keystone (plan 02 · S7, scripts/route_208.txt)
+    "black_belt": { "name": "Black Belt", "script": "BlackBelt" },
     "hiker_robert": {
       "name": "Robert",
       "trainer": {

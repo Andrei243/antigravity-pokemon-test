@@ -4,7 +4,10 @@
   "trees": "Pine",
   // The ledges over the route's east end, with the Iron and the Timer Ball, are reached from Mt. Coronet's second
   // floor (warp 1, plan 01 · M8)
+  // Plan 02 · S7 (scripts/route_207.txt): the assistant with the Vs. Seeker and the Dowsing Machine (trigger 0)
+  "triggers": [ { "trigger": 0, "script": "Assistant" } ],
   "people": {
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "dialog": [ "The professor wanted you to have this. Good luck on the mountain!" ] },
     "cyclist_m": {
       "name": "Cyclist",
       "dialog": [

@@ -142,7 +142,9 @@ public static class RegionDatabase
                 "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding",
                 // Eterna City's rooms of plan 02 · S6: the cycle shop, the Underground Man's house and Team Galactic's building
                 "EternaCycleShop", "EternaUndergroundManHouse",
-                "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F"
+                "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F",
+                // Hearthome's rooms of plan 02 · S7: the Contest Hall's lobby and the gate to Route 209
+                "ContestHallLobby", "Route209GateToHearthomeCity"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

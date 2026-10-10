@@ -7,14 +7,17 @@
     { "warp": 5, "map": "HearthomePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 11, "map": "HearthomePokeMart", "x": 4, "y": 6, "facing": "Up" },
     // Fantina's Gym and its dark rooms, built to the original's plans (plan 01 · M9)
-    { "warp": 8, "map": "HearthomeGym", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 8, "map": "HearthomeGym", "x": 4, "y": 8, "facing": "Up" },
+    // The Contest Hall's lobby, built to the original's plan for Keira, the player's mother and Fantina (plan 02 · S7)
+    { "warp": 2, "map": "ContestHallLobby", "x": 16, "y": 13, "facing": "Up" },
+    // The gate to Route 209, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan
+    { "warp": 19, "map": "Route209GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" },
+    { "warp": 17, "map": "Route209GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
     { "warp": 14, "to": "route_208", "toWarp": 0 },
     { "warp": 18, "to": "route_208", "toWarp": 1 },
-    { "warp": 19, "to": "route_209", "toWarp": 0 },
-    { "warp": 17, "to": "route_209", "toWarp": 1 },
     { "warp": 0, "to": "amity_square", "toWarp": 0 },
     { "warp": 1, "to": "amity_square", "toWarp": 1 },
     { "warp": 3, "to": "amity_square", "toWarp": 2 },
@@ -22,18 +25,30 @@
     { "warp": 15, "to": "route_212_north", "toWarp": 0 },
     { "warp": 16, "to": "route_212_north", "toWarp": 1 }
   ],
-  // The Contest Hall, the houses, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11)
-  "locked": [ 2, 6, 7, 9, 10, 12, 13 ],
+  // The houses, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11)
+  "locked": [ 6, 7, 9, 10, 12, 13 ],
+  // Plan 02 · S7 (scripts/hearthome_city.txt): Keira's Buneary running into the player as they come from Route 208
+  // (trigger 0)
+  "triggers": [ { "trigger": 0, "script": "Buneary" } ],
   "people": {
-    // The Pachirisu of the woman by the square's gate (plan 10 · F1); the Buneary waits for its scene (plan 02 · S7)
+    // The Pachirisu of the woman by the square's gate (plan 10 · F1)
     "pachirisu": { "name": "Pachirisu", "dialog": [ "Chipa! Chipa-chii!" ] },
-    // In Platinum he offers to walk the player to the Contest Hall; the walk is plan 02's (S7)
-    "fisherman": {
-      "name": "Fisherman",
-      "dialog": [
-        "Here for the contests? The Contest Hall is the grand building at the top of the street.",
-        "I don't enter myself. I just go and cheer. The crowd's half the fun!"
-      ]
+    // Keira and her Buneary, who come running as the player first comes from Route 208 (plan 02 · S7)
+    "keira": { "name": "Keira", "npcType": "Lass", "dialog": [ "Buneary, wait for me!" ] },
+    "buneary": { "name": "Buneary" },
+    // He offers to walk the player to the Contest Hall (plan 02 · S7)
+    "fisherman": { "name": "Fisherman", "script": "Fisherman" },
+    // He keeps the Gym's door until Fantina, found in the Contest Hall, goes back to it (plan 02 · S7)
+    "gym_guide": { "name": "Gym Guide", "script": "GymGuide" },
+    // Two men talking eggs in the doorway of the gate to Route 209, in the way until Fantina is beaten (her Gym's
+    // script sets FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE)
+    "pokefan_m_2": {
+      "name": "Man",
+      "dialog": [ "The Day Care couple found an Egg on my Pokémon's account! I had no idea where it came from." ]
+    },
+    "hiker_2": {
+      "name": "Hiker",
+      "dialog": [ "Eggs turn up at the Day Care out in Johto as well, I hear. Pokémon are the same everywhere!" ]
     },
     "pokefan_m_1": {
       "name": "Man",

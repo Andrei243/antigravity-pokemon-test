@@ -28,9 +28,6 @@ public class CentreTests
     // Route 208 to Hearthome City and back, west to east
     [InlineData(447, 726, 455, 726, Direction.Right, "hearthome_city")]
     [InlineData(454, 726, 446, 726, Direction.Left, "route_208")]
-    // Hearthome City to Route 209 and back
-    [InlineData(505, 726, 513, 726, Direction.Right, "route_209")]
-    [InlineData(512, 727, 504, 727, Direction.Left, "hearthome_city")]
     // Eterna City down to the Cycling Road's north end, and back
     [InlineData(304, 569, 304, 577, Direction.Down, "route_206")]
     [InlineData(305, 576, 305, 568, Direction.Up, "eterna_city")]
@@ -104,9 +101,9 @@ public class CentreTests
     public void ADoorOfAPlaceNotBuiltYetStaysShut()
     {
         var map = Overworld;
-        // The Lost Tower, Hearthome's Contest Hall, Solaceon's Day Care (Mt. Coronet's upper floors, shut here until
-        // plan 01 · M8, are open, and Eterna's Gym since M9)
-        foreach (var (x, y) in new[] { (568, 680), (479, 691), (553, 645) })
+        // The Lost Tower, Hearthome's Foreign Building, Solaceon's Day Care (Mt. Coronet's upper floors, shut here until
+        // plan 01 · M8, are open, Eterna's Gym since M9 and Hearthome's Contest Hall since plan 02 · S7)
+        foreach (var (x, y) in new[] { (568, 680), (460, 709), (553, 645) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) leads nowhere and can be walked into");

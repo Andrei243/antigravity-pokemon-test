@@ -1,0 +1,85 @@
+# Wayward Cave (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_wayward_cave_1f.s, scripts_follower_partners.s).
+#
+# Mira is lost in the cave's hidden part, reached from under the Cycling Road. She asks to be taken to the way out
+# and walks behind the player as Platinum's "mira_wayward_cave", healing the team after every battle and battling
+# beside them; at the way out (the original's trigger 0, on the exit's own tile) she thanks the player and goes.
+# VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE: 0 not with her, 1 together, 2 parted.
+
+
+# Away from the cave without having seen her out, she waits where she first stood (the original's OnTransition)
+script OnEnter
+  if flag FLAG_TRAVELED_WITH_MIRA end
+  if partner end
+  setvar VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 0
+  place mira 72 13 down
+  end
+
+
+# Mira spoken to (the original's script 2): she asks to come along, then has three things to say on the way.
+script Mira
+  speaker "Mira"
+  if var VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE >= 1 goto Along
+  if flag FLAG_TALKED_TO_WAYWARD_CAVE_1F_MIRA goto Again
+  say "Oh! Hello... I'm Mira. I came in here exploring, and now every tunnel looks the same. I'm lost."
+  say "Please, could you take me to the way out? I'll keep your Pokémon healthy all the way, I promise!"
+  goto Together
+label Again
+  say "{player}... I like that name. Will you take me to the way out after all?"
+label Together
+  fanfare levelup
+  text "{player} decided to go with Mira."
+  setflag FLAG_TALKED_TO_WAYWARD_CAVE_1F_MIRA
+  setvar VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 1
+  speaker "Mira"
+  say "Thank you! My Kadabra will heal your Pokémon after every battle. And I can battle too, you'll see!"
+  partner mira "mira_wayward_cave"
+  end
+label Along
+  if var VAR_FOLLOWER_MIRA_TIMES_TALKED >= 2 goto Third
+  if var VAR_FOLLOWER_MIRA_TIMES_TALKED == 1 goto Second
+  say "I like moves that help, {player}. Moves that heal, and moves that show the way."
+  addvar VAR_FOLLOWER_MIRA_TIMES_TALKED 1
+  end
+label Second
+  say "It's so easy to get mixed up in here. Left, right, up, down... they all look alike!"
+  addvar VAR_FOLLOWER_MIRA_TIMES_TALKED 1
+  end
+label Third
+  say "Mira will be a Trainer like {player} one day. A really strong one. Just watch!"
+  end
+
+
+# The way out (trigger 0, on the exit's own tile, state 1): she sees daylight, thanks the player and goes ahead.
+script Exit
+  partner off
+  # She walks a step behind: east of a player who came west, north of one who came south
+  if facing left goto FromTheEast
+  place mira 41 52 down
+  face player up
+  emote mira exclaim
+  call Thanks
+  walk player right 1
+  face player left
+  walk mira down 1
+  goto Gone
+label FromTheEast
+  place mira 42 53 left
+  face player right
+  emote mira exclaim
+  call Thanks
+  walk player up 1
+  face player down
+  walk mira left 1
+label Gone
+  hide mira
+  setflag FLAG_HIDE_WAYWARD_CAVE_1F_MIRA
+  setflag FLAG_TRAVELED_WITH_MIRA
+  setvar VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 2
+  end
+
+script Thanks
+  speaker "Mira"
+  say "Oh! There's the way out! I can see the light! Thank you, {player}. You're really, really strong."
+  say "Mira is going to get strong too. Then we'll battle, OK? Bye-bye!"
+  return

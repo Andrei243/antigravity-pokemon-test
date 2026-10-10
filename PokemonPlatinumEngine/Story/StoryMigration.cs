@@ -52,6 +52,8 @@ public static class StoryMigration
         if (savedVersion < 7) Run(story, scripts, ScriptLibrary.TimedPeople);
         // Version 8: the Pokétch campaign's clowns gone after the north gate's battle, the third from Jubilife TV's door
         if (savedVersion < 8) Run(story, scripts, ScriptLibrary.CampaignOver);
+        // Version 9: the fourth chapter's people kept out of sight until their scenes (plan 02 · S7)
+        if (savedVersion < 9) Run(story, scripts, ScriptLibrary.ChapterFour);
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>

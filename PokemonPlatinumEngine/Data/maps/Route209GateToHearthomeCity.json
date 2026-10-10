@@ -1,0 +1,156 @@
+{
+  "name": "Route209GateToHearthomeCity",
+  "displayName": "Route 209",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "House",
+  "trees": "Round",
+  "width": 12,
+  "height": 13,
+  "ground": [
+    "############",
+    "############",
+    "############",
+    "##__####__##",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "D__________D",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "############"
+  ],
+  "solid": [
+    "############",
+    "############",
+    "############",
+    "##..####..##",
+    "#...####...#",
+    "#..........#",
+    "#..........#",
+    "............",
+    "#..........#",
+    "#..........#",
+    "##..####..##",
+    "##..####..##",
+    "############"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 4,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 10,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 4,
+      "y": 11,
+      "width": 4,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 7,
+      "targetMap": "Sinnoh",
+      "targetX": 504,
+      "targetY": 726,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 7,
+      "targetMap": "Sinnoh",
+      "targetX": 513,
+      "targetY": 726,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 4,
+      "text": "A map of Sinnoh. Hearthome City lies west of here, and Route 209 runs east toward Solaceon Town."
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "text": "A map of Sinnoh. Hearthome City lies west of here, and Route 209 runs east toward Solaceon Town."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "battle_girl",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "movement": "look_around",
+      "dialog": [
+        "Out on Route 209 there's a tiny tower of stones, all tumbled down.",
+        "Someone must have knocked it over. I wonder if it can ever be put right again?"
+      ]
+    },
+    {
+      "id": "rival",
+      "name": "{rival}",
+      "npcType": "Rival",
+      "x": 8,
+      "y": 7,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL"
+    }
+  ],
+  "wildEncounters": [],
+  "triggers": [
+    {
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 5,
+      "script": "Rival",
+      "variable": "VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE",
+      "value": 1
+    }
+  ]
+}

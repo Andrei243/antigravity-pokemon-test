@@ -535,7 +535,32 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Pokémon Team Galactic held | A Clefairy and a Buneary on the top floor, then the Clefairy in the cycle shop and the Buneary in the Pokémon Center | Not there; the flags that move them are set as the original sets them | A Pokémon can't stand in the field yet (plan 10) |
 | The Galactic lobby theme in the building | `SEQ_D_GINLOBBY` until Jupiter is beaten | Eterna's theme throughout | No lobby theme yet (plan 05) |
 | The Underground Man's missions and his PC | Six missions below ground; the PC's pages on flags, spheres and traps | The Explorer Kit, his offer and the first mission; the PC's notes in a line | The Underground is plan 06 · R16's |
-| The bug catcher at the west way out | Goes back to his line about the wind once the assistant has been met on Route 207 | Tells of the Cycling Road as long as the player has the Bicycle | Route 207's scene is plan 02 · S7's |
 | The Friendship Checker's woman | Reads out the first Pokémon's friendship on later visits | One line of her own after giving the app | A script can't ask a Pokémon's friendship yet; the app is kept and shown once the Pokétch runs it |
 | The Old Chateau | Its rooms, its ghosts and Rotom's television | Its door in the forest stays shut | Its rooms are plan 01 · M11's; nothing of the story happens inside |
 | Rotom's room in the building | Behind a wall on the ground floor that the Secret Key opens | The wall | The Secret Key is the post-game's |
+
+## The fourth chapter, first part (2026-10-10, plan 02 · S7)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_207.s`, `scripts_mt_coronet_1f_south.s`, `scripts_route_208.s`, `scripts_wayward_cave_1f.s`, `scripts_hearthome_city.s`, `scripts_contest_hall_lobby.s`, `scripts_route_209_gate_to_hearthome_city.s`, `scripts_hearthome_gym_leader_room.s`)
+
+- **The assistant comes to the foot of Mt. Coronet** on Route 207 the first time the player steps onto the original's trigger, with the Vs. Seeker from the professor and the Dowsing Machine for the Pokétch, after a guess at which hand holds it (either answer gets both). Eterna's bug catcher goes back to his line about the wind once she has been (`VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE` 1).
+- **Cyrus waits inside Mt. Coronet** at the first trigger of its southern hall, speaks of the mountain where Sinnoh began and goes off west.
+- **The black belt on Route 208 gives the Odd Keystone** once, as the original's does (`FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE`).
+- **Mira is optional**: she waits in Wayward Cave's first room, joins when spoken to and walks with the player; at the way out she thanks them and leaves for good (`FLAG_TRAVELED_WITH_MIRA`). A player who leaves without her finds her waiting where she stood.
+- **Keira's Buneary runs into the player** at the city's west edge, from whichever of the trigger's five tiles they stepped onto, and Keira comes after it. In the Contest Hall's lobby she meets the player's mother and goes off to rehearse.
+- **The fisherman walks the player to the Contest Hall** if asked, from whichever side they spoke to him.
+- **Fantina is at the Contest Hall**, not in her Gym, until she is spoken to: she twirls, says she will wait at the Gym, and leaves; the Gym's guide stops keeping its door (`FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE`).
+- **The road east is shut until Fantina is beaten**: two men talking about eggs stand in the doorway of the gate to Route 209 (`FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE`, set by her Gym's script), and the rival waits inside the gate to battle with the team that has the upper hand on the player's starter.
+- **Saves from before**: `common.ChapterFour` (story version 9) hides the chapter's people until their scenes; a save that already holds the Relic Badge also gets Fantina out of the lobby and the guide away from the Gym's door.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Keira's present | Glitter Powder for the player | Not given | No accessories yet (plan 06 · R17) |
+| The mother's gift | A dress or a tuxedo for contests | Not given | No Dress-Up yet (the contests, plan 06 · R17) |
+| The receptionists | Enter the player in a Super Contest | Say no contest is being held today | The contests are plan 06 · R17's |
+| The reporter in the lobby | Interviews the player | Hidden | No interviews yet (plan 08 · P9) |
+| Mira in the depths | Follows the player down into Wayward Cave's lower floor | Walks with the player on its first floor only | A follower stays on her own map (plan 02 · S6) |
+| Amity Square | Walking with a Pokémon, the gifts it finds | Its gates are passed through as before | Its rooms and walks are plan 01 · M11's |
+| The lobby's and the gate's furniture | The original's own models | Counters, a computer, plants, tables and benches of our kit, where its models stand | The kit has no contest booths yet |

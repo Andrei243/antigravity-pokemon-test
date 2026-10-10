@@ -38,6 +38,9 @@ public class OpeningTests
         public Map Map { get; private set; } = null!;
         public (int X, int Y) Tile { get; set; }
 
+        /// <summary>The way the player faces as the next script starts (a script may ask it: <c>if facing up</c>).</summary>
+        public Direction Facing { get; set; } = Direction.Down;
+
         /// <summary>Every script played, in order, each with the host it ran in.</summary>
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
 
@@ -125,6 +128,7 @@ public class OpeningTests
             {
                 Map = Map,
                 PlayerTile = Tile,
+                PlayerFacing = Facing,
                 MapNamed = name => maps.GetValueOrDefault(name),
                 StarterChoice = Starter,
                 RivalName = Rival,

@@ -64,6 +64,12 @@ internal static class GroundBaker
 
         for (int tx = 0; tx < map.Width; tx++)
             if (map.GetGroundTile(tx, map.Height - 1) == TileType.Door) ExitMat(c, tx * ArtTile, (map.Height - 1) * ArtTile, map.Interior);
+        // A gate house's doors are in its side walls: the mat lies on the floor inside each, pointing at it
+        for (int ty = 0; ty < map.Height - 1; ty++)
+        {
+            if (map.GetGroundTile(0, ty) == TileType.Door) ExitMat(c, ArtTile, ty * ArtTile, map.Interior, -1);
+            if (map.GetGroundTile(map.Width - 1, ty) == TileType.Door) ExitMat(c, (map.Width - 2) * ArtTile, ty * ArtTile, map.Interior, 1);
+        }
         return c;
     }
 
@@ -114,14 +120,24 @@ internal static class GroundBaker
         return lx == 15 || ly == 15 ? hall.Grout : lx == 0 || ly == 0 ? PixelCanvas.Light1(tile, 0.3f) : tile;
     }
 
-    /// <summary>The mat at a room's door, with an arrow pointing out.</summary>
-    private static void ExitMat(PixelCanvas c, int ox, int oy, InteriorStyle style)
+    /// <summary>The mat at a room's door, with an arrow pointing out: down through the front wall, or west (-1) or
+    /// east (1) through a side wall.</summary>
+    private static void ExitMat(PixelCanvas c, int ox, int oy, InteriorStyle style, int sideways = 0)
     {
         var mat = Tone.Of(style == InteriorStyle.PokeMart ? Rgb(80, 132, 220) : Rgb(212, 76, 76));
         c.Rect(ox + 2, oy + 3, 28, 24, mat.Deep);
         Pix.Raised(c, ox + 3, oy + 4, 26, 22, mat);
-        c.Rect(ox + 14, oy + 8, 4, 7, Color.White);
-        for (int i = 0; i < 5; i++) c.HLine(ox + 11 + i, oy + 15 + i, 10 - i * 2, Color.White);
+        if (sideways == 0)
+        {
+            c.Rect(ox + 14, oy + 8, 4, 7, Color.White);
+            for (int i = 0; i < 5; i++) c.HLine(ox + 11 + i, oy + 15 + i, 10 - i * 2, Color.White);
+            return;
+        }
+        // The same arrow turned on its side: a shaft of 7 by 4 and a head of five columns narrowing to its point
+        int shaft = sideways < 0 ? ox + 17 : ox + 8;
+        c.Rect(shaft, oy + 13, 7, 4, Color.White);
+        for (int i = 0; i < 5; i++)
+            c.Rect(sideways < 0 ? ox + 16 - i : ox + 15 + i, oy + 10 + i, 1, 10 - i * 2, Color.White);
     }
 
     // ------------------------------------------------------------------ walls

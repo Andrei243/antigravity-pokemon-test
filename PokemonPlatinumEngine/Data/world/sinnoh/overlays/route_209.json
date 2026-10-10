@@ -2,10 +2,10 @@
   "area": "route_209",
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "hearthome_city", "toWarp": 19 },
-    { "warp": 1, "to": "hearthome_city", "toWarp": 17 }
+  // The gate to Hearthome City, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan
+  "doors": [
+    { "warp": 0, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 1, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" }
   ],
   // The Lost Tower is a building's floors (plan 01 · M11)
   "locked": [ 2 ],
