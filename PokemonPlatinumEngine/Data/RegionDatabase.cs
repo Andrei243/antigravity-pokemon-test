@@ -156,7 +156,10 @@ public static class RegionDatabase
                 "PokemonDayCare",
                 // Plan 02 · S9: the cave of Celestic Town's ruins and the Fuego Ironworks' floor (matrices of the
                 // imported world), and the elder's house in Celestic Town, rebuilt to the original's plan
-                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse"
+                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse",
+                // Plan 02 · S10: Lake Valor drained, Valor Cavern and Lake Verity as Team Galactic holds it (matrices
+                // of the imported world), and the Canalave Library's three floors, rebuilt to the original's plans
+                "LakeValorDrained", "ValorCavern", "LakeVerityGalactic", "CanalaveLibrary1F", "CanalaveLibrary2F", "CanalaveLibrary3F"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

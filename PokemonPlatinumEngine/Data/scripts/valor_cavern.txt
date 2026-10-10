@@ -1,0 +1,33 @@
+# Valor Cavern (plan 02 · S10). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_valor_cavern.s).
+#
+# The cave on the island in the middle of Lake Valor, reached over the lake's dry bed once Team Galactic's bomb has
+# emptied it. Commander Saturn stands alone where the lake's Pokémon slept: it has been taken already. Spoken to, he
+# is reporting to himself that the mission goes to plan, notices the player and battles; beaten, he says Commander
+# Mars is at Lake Verity and leaves, and Team Galactic's grunts go from the lake with him
+# (FLAG_HIDE_LAKE_VALOR_GALACTIC, which the original's RemoveObject sets as it takes him away;
+# FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN, which turns Verity Lakefront's way in to the lake Team Galactic holds).
+#
+# Azelf itself is back in the cavern after the Distortion World (plan 02 · S13).
+
+
+script Saturn
+  speaker "Commander Saturn"
+  say "...The mission is proceeding without a hitch. The boss will be pleased with this."
+  face self player
+  emote self exclaim
+  wait 0.5
+  say "Hm? A visitor. You must be the child our grunts have been complaining about."
+  say "I am Saturn, a Commander of Team Galactic. You have come a long way to find an empty cave. The least I can do is see what all the fuss was about."
+  battle saturn as "commander_saturn_valor_cavern"
+  speaker "Commander Saturn"
+  say "...So that is why they complain. You are strong. And you are far too late."
+  say "The Pokémon of this lake is already ours. By now Mars will have what she went to Lake Verity for, as well."
+  say "Run there if you like. It will change nothing."
+  fade out
+  hide saturn
+  setflag FLAG_HIDE_LAKE_VALOR_GALACTIC
+  setflag FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN
+  setflag FLAG_ALT_MUSIC_LAKE_VALOR
+  fade in
+  end

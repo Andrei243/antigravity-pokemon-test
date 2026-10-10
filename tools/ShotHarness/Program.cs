@@ -16,6 +16,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> veilstone          the fifth chapter: Veilstone's warehouse and HM02, Pastoria's bomb, the chase to Valor Lakefront
 //   dotnet run --project tools/ShotHarness -- <output dir> celestic           the sixth chapter: the Psyduck and the Old Charm, Celestic's ruins, Cyrus and HM03, the sea, the rival in Canalave
 //   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
+//   dotnet run --project tools/ShotHarness -- <output dir> lakes              the seventh chapter: Riley and Iron Island, Canalave's library and the explosion, Saturn at Lake Valor, Mars at Lake Verity, the way north
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -107,6 +108,7 @@ if (mode == "boutique") h.BoutiqueMode();
 if (mode == "daycare") h.DayCareMode();
 if (mode == "cast") h.CastMode();
 if (mode == "export") h.ExportMode();
+if (mode == "lakes") h.LakesMode();
 
 h.Close();
 Raylib.CloseWindow();

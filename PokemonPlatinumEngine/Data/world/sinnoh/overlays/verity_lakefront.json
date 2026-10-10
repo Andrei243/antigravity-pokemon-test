@@ -9,6 +9,15 @@
       "dialog": [ "{rival}: Come on! The lake is right up there!" ] }
   ],
   "triggers": [ { "trigger": 0, "script": "IntoTheLake" } ],
+  // The way into the lake shares its tiles between two maps, as the original moves its warps by script: the lake as
+  // it is at the start (warps 0 and 1) until Commander Saturn is beaten in Valor Cavern, and the lake Team Galactic
+  // has come to (warps 2 and 3) from then on (plan 02 · S10)
+  "switches": [
+    { "warp": 0, "until": "FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN" },
+    { "warp": 1, "until": "FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN" },
+    { "warp": 2, "from": "FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN" },
+    { "warp": 3, "from": "FLAG_DEFEATED_COMMANDER_SATURN_VALOR_CAVERN" }
+  ],
   "signs": {
     "trainer_tips_signpost": "Lake Verity\nThey say a Pokémon of emotion sleeps at the bottom of this lake."
   }

@@ -87,6 +87,7 @@ public class OpeningTests
             Map = maps[name];
             Map.ForgetForced();
             Map.ApplyPresence(Story.Has);
+            Map.ApplyDoors(Story.Has);
             // As the engine does (GameEngine.ArriveOnMap): whoever moves of their own accord starts again from where
             // they first stood, so someone a scene walked off is back on their own tile (plan 02 · S9)
             Wandering.SendHome(Map);
@@ -160,7 +161,11 @@ public class OpeningTests
             Played.Add((script.FullName, host));
             Assert.Empty(host.Problems);
             // As the engine does whenever the story has moved: whoever a flag brings on or takes off comes or goes
-            foreach (var map in maps.Values.Distinct()) map.ApplyPresence(Story.Has);
+            foreach (var map in maps.Values.Distinct())
+            {
+                map.ApplyPresence(Story.Has);
+                map.ApplyDoors(Story.Has);
+            }
 
             Tile = host.PlayerTile;
             if (host.Log.LastOrDefault(l => l.StartsWith("warp ")) != null && host.Map is { } there)

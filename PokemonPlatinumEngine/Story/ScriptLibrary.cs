@@ -60,6 +60,10 @@ public sealed class ScriptLibrary
     /// called by <see cref="ChapterFive"/>, and run for a save from before.</summary>
     public const string ChapterSix = "common.ChapterSix";
 
+    /// <summary>Who the seventh chapter (plan 02 · S10, "Iron Island and the lakes") keeps out of sight until their
+    /// scenes: called by <see cref="ChapterSix"/>, and run for a save from before.</summary>
+    public const string ChapterSeven = "common.ChapterSeven";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

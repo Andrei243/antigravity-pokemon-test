@@ -7,9 +7,11 @@
   "evolutionSites": [ "Ice Rock" ],
   // The two houses have no rooms yet (plan 01 · M11)
   "locked": [ 0, 1 ],
-  // Maylene, who meets the player at the route's south end on her way to Snowpoint City (the original's trigger),
-  // comes with that chapter (plan 02 · S11)
+  // Maylene meets the player at the route's south end on her way to Snowpoint City (the original's trigger 0; plan 02 ·
+  // S10, scripts/route_217.txt)
+  "triggers": [ { "trigger": 0, "script": "Maylene" } ],
   "people": {
+    "maylene": { "name": "Maylene", "npcType": "Maylene", "dialog": [ "Maylene: Snowpoint City is just a little further!" ], "still": true },
     "snowpoint_npc_f": {
       "name": "Woman",
       "dialog": [

@@ -1,0 +1,27 @@
+{
+  "key": "valor_cavern",
+  "index": 316,
+  "name": "Valor Cavern",
+  "matrix": 106,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave3",
+  "dayMusic": "D_GINLOBBY",
+  "nightMusic": "D_GINLOBBY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 14, "z": 29, "to": "lake_valor_drained", "toWarp": 1 },
+    { "x": 14, "z": 29, "to": "lake_valor", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "azelf", "looks": "azelf", "movement": "look_south", "x": 16, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VALOR_CAVERN_AZELF", "script": "3" },
+    { "id": "saturn", "looks": "saturn", "movement": "look_north", "x": 14, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAKE_VALOR_GALACTIC", "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

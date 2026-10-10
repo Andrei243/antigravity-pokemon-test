@@ -1,0 +1,492 @@
+{
+  "name": "CanalaveLibrary3F",
+  "displayName": "Canalave Library",
+  "bgmTrack": "sinnoh/canalave",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 13,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#______##____________#",
+    "#______##____________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "######################",
+    "##...########....#####",
+    "#....####............#",
+    "#......##............#",
+    "#....................#",
+    "#..............#######",
+    "#..##..##..##..#######",
+    "#..##..##..##..#######",
+    "#....................#",
+    "#....................#",
+    "######################"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 5,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 15,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 16,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 20,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 15,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 16,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 20,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 15,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 16,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 20,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 11,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Painting",
+      "x": 14,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 3,
+      "targetMap": "CanalaveLibrary2F",
+      "targetX": 12,
+      "targetY": 4,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 9,
+      "y": 3,
+      "text": "A book: \"A Myth of Sinnoh\".",
+      "script": "SinnohMyth"
+    },
+    {
+      "x": 10,
+      "y": 3,
+      "text": "A book: \"A Myth of Sinnoh\".",
+      "script": "SinnohMyth"
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "text": "A book: \"The Mythology of the Sinnoh Region\".",
+      "script": "SinnohRegionsMythology"
+    },
+    {
+      "x": 12,
+      "y": 3,
+      "text": "A book: \"The Mythology of the Sinnoh Region\".",
+      "script": "SinnohRegionsMythology"
+    },
+    {
+      "x": 17,
+      "y": 3,
+      "text": "A book: \"Sinnoh's Myth\".",
+      "script": "SinnohsMyth"
+    },
+    {
+      "x": 18,
+      "y": 3,
+      "text": "A book: \"Sinnoh's Myth\".",
+      "script": "SinnohsMyth"
+    },
+    {
+      "x": 19,
+      "y": 3,
+      "text": "A book: \"Veilstone's Myth\".",
+      "script": "VeilstonesMyth"
+    },
+    {
+      "x": 20,
+      "y": 3,
+      "text": "A book: \"Veilstone's Myth\".",
+      "script": "VeilstonesMyth"
+    },
+    {
+      "x": 15,
+      "y": 7,
+      "text": "A book: \"The Original Story\".",
+      "script": "TheOriginalStory"
+    },
+    {
+      "x": 15,
+      "y": 8,
+      "text": "A book: \"The Original Story\".",
+      "script": "TheOriginalStory"
+    },
+    {
+      "x": 15,
+      "y": 9,
+      "text": "A book: \"The Original Story\".",
+      "script": "TheOriginalStory"
+    },
+    {
+      "x": 16,
+      "y": 7,
+      "text": "A book: \"The Original Story\".",
+      "script": "TheOriginalStory"
+    },
+    {
+      "x": 16,
+      "y": 9,
+      "text": "A book: \"The Original Story\".",
+      "script": "TheOriginalStory"
+    },
+    {
+      "x": 17,
+      "y": 7,
+      "text": "A book: \"A Horrific Myth\".",
+      "script": "HorrificMyth"
+    },
+    {
+      "x": 18,
+      "y": 7,
+      "text": "A book: \"A Horrific Myth\".",
+      "script": "HorrificMyth"
+    },
+    {
+      "x": 17,
+      "y": 9,
+      "text": "A book: \"A Horrific Myth\".",
+      "script": "HorrificMyth"
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "text": "A book: \"A Horrific Myth\".",
+      "script": "HorrificMyth"
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "text": "A book: \"Folk Stories of Sinnoh\".",
+      "script": "SinnohFolkStories"
+    },
+    {
+      "x": 20,
+      "y": 7,
+      "text": "A book: \"Folk Stories of Sinnoh\".",
+      "script": "SinnohFolkStories"
+    },
+    {
+      "x": 19,
+      "y": 9,
+      "text": "A book: \"Folk Stories of Sinnoh\".",
+      "script": "SinnohFolkStories"
+    },
+    {
+      "x": 20,
+      "y": 9,
+      "text": "A book: \"Folk Stories of Sinnoh\".",
+      "script": "SinnohFolkStories"
+    },
+    {
+      "x": 14,
+      "y": 2,
+      "text": "Canalave Library, third floor\nThe myths and folk tales of Sinnoh."
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 8,
+      "y": 5,
+      "text": "A television. It is showing the library's opening hours."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "scientist_f",
+      "name": "Scientist",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 5,
+      "facing": "Down",
+      "script": "Scientist",
+      "movement": "wander_around",
+      "rangeX": 1,
+      "rangeZ": 1
+    },
+    {
+      "id": "youngster",
+      "name": "Youngster",
+      "npcType": "Youngster",
+      "x": 3,
+      "y": 7,
+      "facing": "Down",
+      "script": "Youngster"
+    },
+    {
+      "id": "prof_rowan",
+      "name": "Prof. Rowan",
+      "npcType": "Rowan",
+      "x": 8,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Prof. Rowan: Hm. Are we all here?"
+      ],
+      "hiddenBy": "FLAG_HIDE_CANALAVE_LIBRARY_ROWAN"
+    },
+    {
+      "id": "counterpart",
+      "name": "{assistant}",
+      "npcType": "Assistant",
+      "x": 7,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "{assistant}: The professor has something important to tell us."
+      ],
+      "hiddenBy": "FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART"
+    },
+    {
+      "id": "rival",
+      "name": "{rival}",
+      "npcType": "Rival",
+      "x": 2,
+      "y": 3,
+      "facing": "Right",
+      "dialog": [
+        "{rival}: Come on, come on! The old man is waiting!"
+      ],
+      "hiddenBy": "FLAG_HIDE_CANALAVE_LIBRARY_RIVAL"
+    }
+  ],
+  "wildEncounters": []
+}

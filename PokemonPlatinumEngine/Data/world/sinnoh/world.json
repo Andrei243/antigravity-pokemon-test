@@ -112,7 +112,13 @@
     // Plan 02 · S9: the cave of Celestic Town's ruins, where the painting is (the original's m_shrine01), and the
     // floor of the Fuego Ironworks with its moving floors (m_dun0401, a dungeon of the original's as Iron Island's are)
     { "name": "CelesticTownCave", "matrix": 169, "area": "celestic_town_cave", "setting": "Cave" },
-    { "name": "FuegoIronworksBuilding", "matrix": 8, "area": "fuego_ironworks_building", "setting": "Cave" }
+    { "name": "FuegoIronworksBuilding", "matrix": 8, "area": "fuego_ironworks_building", "setting": "Cave" },
+    // Plan 02 · S10: Lake Valor as Team Galactic leaves it, its water gone (the map the lakefront leads to until the
+    // story fills the lake again), Valor Cavern in its middle, and Lake Verity as Team Galactic holds it (the map
+    // Verity Lakefront leads to once Commander Saturn is beaten)
+    { "name": "LakeValorDrained", "matrix": 104, "area": "lake_valor_drained", "trees": "Round" },
+    { "name": "ValorCavern", "matrix": 106, "area": "valor_cavern", "setting": "Cave" },
+    { "name": "LakeVerityGalactic", "matrix": 102, "area": "lake_verity", "trees": "Pine" }
   ],
   "areas": [
     "twinleaf_town",
@@ -262,6 +268,10 @@
     "distortion_world_turnback_cave_room",
     // Plan 02 · S9
     "celestic_town_cave",
-    "fuego_ironworks_building"
+    "fuego_ironworks_building",
+    // Plan 02 · S10
+    "lake_valor_drained",
+    "valor_cavern",
+    "lake_verity"
   ]
 }

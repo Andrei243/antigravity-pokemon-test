@@ -3,15 +3,8 @@
   "bgmTrack": "sinnoh/route210",
   "trees": "Pine",
   "people": {
-    // In Platinum he jumps when the player speaks to him and hands over TM77 (Psych Up); the gift waits for plan 02
-    "ace_trainer_m": {
-      "name": "Trainer",
-      "dialog": [
-        "I'm training to be so tough that nothing in the world can make me flinch.",
-        "...Whoa! Don't creep up on people like that!",
-        "Ahem. Do you know Psych Up? It copies every boost your foe has built up. Let them do the warming up for you!"
-      ]
-    },
+    // He jumps when the player speaks to him and hands over TM77, Psych Up (plan 02 · S10, scripts/route_211_east.txt)
+    "ace_trainer_m": { "name": "Trainer", "script": "PsychUp", "still": true },
     "bird_keeper_katherine": {
       "name": "Katherine",
       "trainer": {

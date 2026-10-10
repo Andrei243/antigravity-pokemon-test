@@ -1,0 +1,31 @@
+# The Canalave Library, first floor (plan 02 · S10), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_canalave_library_1f.s).
+#
+# The librarian behind her desk and a girl reading at the shelves, who both have something else to say once Lake Valor
+# has blown (FLAG_LAKE_VALOR_EXPLODED). Lucian of the Elite Four reads here after the Hall of Fame (the original's
+# FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN): plan 02 · S15.
+
+
+script Receptionist
+  speaker "Librarian"
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  say "Welcome to the Canalave Library. Three floors of books, and the oldest stories are at the top."
+  say "Please keep your voice down while you're with us."
+  end
+label After
+  say "Please keep your voice... Oh! That shriek just now? That wasn't me. It really wasn't!"
+  end
+
+
+script Lass
+  speaker "Lass"
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  say "......"
+  face self player
+  say "Shh! I'm in the middle of a chapter. Please don't disturb me."
+  face self up
+  end
+label After
+  face self player
+  say "I can't take in a single word any more. That tremor has left me all in a flutter!"
+  end

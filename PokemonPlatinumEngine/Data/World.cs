@@ -1349,6 +1349,7 @@ public static class WorldMapBuilder
         "croagunk" => "Croagunk",
         "psyduck" => "Psyduck",
         "starly" => "Starly",
+        "magikarp" => "Magikarp",
         "uxie" => "Uxie",
         "mesprit" => "Mesprit",
         "azelf" => "Azelf",
@@ -1573,6 +1574,13 @@ public static class WorldMapBuilder
 
             warp.SourceX = from.X;
             warp.SourceY = from.Z;
+            // A way the story switches: there until a flag or from it, and shut meanwhile (Map.ApplyDoors keeps it so)
+            if (overlay?.Switches?.FirstOrDefault(s => s.Warp == i) is { } switched)
+            {
+                warp.Until = switched.Until;
+                warp.From = switched.From;
+                warp.Shut = switched.From != null;
+            }
             map.Warps.Add(warp);
             // A door is a blocked tile in the world's data; here stepping onto it is what takes the warp
             if (map.GetGroundTile(from.X, from.Z) == TileType.Door) map.SetSolid(from.X, from.Z, false);

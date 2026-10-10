@@ -1,7 +1,12 @@
-# Iron Island (plan 01 · M7). docs/scripts.md describes the language; the lines are our own, on the original's
-# beats.
+# Iron Island (plan 01 · M7, plan 02 · S10). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_iron_island.s).
 #
 # The island's sailor takes the player back to Canalave City, to the pier by Sailor Eldritch's boat.
+#
+# Riley stands before the way into the island's tunnels (plan 02 · S10). Spoken to, he gives HM04 (Strength) whether or
+# not the player has Byron's Badge, says what the Badge has to do with it, and goes inside, where he waits two floors
+# down (iron_island_b2f_left_room.txt). The original's RemoveObject sets the flag that hides him, so he is gone from
+# the door for good (FLAG_HIDE_IRON_ISLAND_RILEY).
 
 script Ferry
   face self player
@@ -13,4 +18,26 @@ script Ferry
   end
 label Stay
   say "Take your time. I'll be here with the boat."
+  end
+
+
+# Riley before the tunnels' door (the original's script 3).
+script Riley
+  face self player
+  speaker "Riley"
+  say "Hello there. I don't think we've met. My name is Riley, and I'm a Trainer, same as you."
+  say "You've come to the island to train, {player}? Then here, a small gift from one Trainer to another."
+  give "HM04"
+  if badge mine goto Badge
+  say "That HM holds Strength. A Pokémon that knows it can push the heaviest boulders out of the way."
+  say "Outside of battle, though, it answers only to the Gym Badge of Canalave City. Something to aim for!"
+  goto In
+label Badge
+  say "That HM holds Strength. With Canalave's Gym Badge on you already, your Pokémon can shove boulders aside with it."
+  say "I'm going back inside to train. Come and find me down there, if you like."
+label In
+  face riley up
+  sound "stairs"
+  hide riley
+  setflag FLAG_HIDE_IRON_ISLAND_RILEY
   end

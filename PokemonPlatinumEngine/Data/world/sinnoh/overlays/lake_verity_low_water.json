@@ -3,9 +3,13 @@
   "bgmTrack": "sinnoh/lake",
   "trees": "Pine",
   // Lake Verity as it is until Team Galactic comes (plan 02 · S4): the man by the shore and the rival who came with
-  // the player (scripts/lake_verity_low_water.txt). The original's lake with Mars and her grunts, with Verity
-  // Cavern on its island, is the later chapter's (plan 02 · S10).
+  // the player (scripts/lake_verity_low_water.txt). The original's lake with Mars and her grunts is a map of its own
+  // (overlays/lake_verity.json, plan 02 · S10), which the lakefront leads to once Commander Saturn is beaten.
   "people": {
+    // The professor and the assistant, who come to look into the lake after the explosion at Lake Valor (plan 02 ·
+    // S10: Canalave's scene clears their flags) and find nothing yet
+    "prof_rowan": { "name": "Prof. Rowan", "script": "Rowan", "still": true },
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "script": "Assistant", "still": true },
     "cyrus": { "name": "Cyrus", "dialog": [ "......" ] },
     "rival": { "name": "{rival}", "dialog": [ "{rival}: The legendary Pokémon has to be around here somewhere!" ] }
   },

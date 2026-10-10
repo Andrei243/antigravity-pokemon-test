@@ -1,0 +1,44 @@
+{
+  "area": "lake_verity",
+  "bgmTrack": "sinnoh/lake",
+  "trees": "Pine",
+  // Verity Cavern on the island opens with the lake guardians' return (plan 02 · S13)
+  "locked": [ 0 ],
+  // Lake Verity as Team Galactic holds it (plan 02 · S10, scripts/lake_verity.txt): the professor held back by a grunt
+  // at the way in, four grunts in pairs along the shore, and Commander Mars at the water's edge with the assistant,
+  // whom she has beaten. Everyone of Team Galactic leaves with her (FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC).
+  "people": {
+    "prof_rowan": { "name": "Prof. Rowan", "script": "Rowan", "still": true },
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "script": "Assistant", "still": true },
+    "mars": { "name": "Mars", "npcType": "Mars", "script": "Mars", "still": true },
+    "grunt_m": { "name": "Grunt", "script": "Guard", "still": true },
+    "galactic_grunt_1": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Another one! First the old man, then the kid with the hat, and now you!",
+        "dialogueAfter": "Galactic Grunt: Go on, then. The Commander will sort you out."
+      }
+    },
+    "galactic_grunt_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: This lake belongs to Team Galactic today. Turn round and go home!",
+        "dialogueAfter": "Galactic Grunt: It's still ours. You just... walked through it."
+      }
+    },
+    "galactic_grunt_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Shh! The Commander is working. Nobody disturbs the Commander!",
+        "dialogueAfter": "Galactic Grunt: Well, that's her disturbed. I'm for it now."
+      }
+    },
+    "galactic_grunt_4": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Your friend didn't get past the Commander, and you won't get past me!",
+        "dialogueAfter": "Galactic Grunt: All right, you got past me. That was the easy part."
+      }
+    }
+  }
+}

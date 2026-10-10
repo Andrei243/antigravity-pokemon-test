@@ -1,0 +1,255 @@
+# The Canalave Library, third floor (plan 02 · S10), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_canalave_library_3f.s).
+#
+# The meeting (the original's OnFrame, VAR_CANALAVE_LIBRARY_STATE 1: set as the rival runs to the library after
+# Byron's Badge, canalave_city.txt). The rival waits at the head of the stairs and takes the player to the table where
+# the professor and the assistant sit; he tries to leave and is stared back into his place. The professor speaks of
+# his study of evolution and asks for help finding the Pokémon of Sinnoh's three lakes: the assistant goes with him to
+# Lake Verity, the rival to Lake Acuity, and Lake Valor is the player's. Then the building shakes: the television
+# reports an explosion at Lake Valor, and everyone goes outside (VAR_CANALAVE_CITY_STATE 4, VAR_CANALAVE_LIBRARY_STATE
+# 2, FLAG_LAKE_VALOR_EXPLODED; the cameramen who kept the lake shut are gone, FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN).
+#
+# The original's RemoveObject also sets the flag that hides whoever it takes away, so the three who leave are hidden
+# by their flags. The explosion is a rumble and a shake of the picture, and the television's report lines over a black
+# screen, until the story's effects are made (plan 09 · L11: the room shaking with its books, the television's own
+# picture). The books on the shelves are Sinnoh's myths, retold in our own words.
+
+
+script OnEnter
+  if var VAR_CANALAVE_LIBRARY_STATE != 1 end
+  call Meeting
+  end
+
+
+script Meeting
+  face rival player
+  speaker "{rival}"
+  say "{player}! Over here, over here! You're the last one in. As usual!"
+  # He leads the way round the stairwell to the table, and the player follows
+  move rival down 1 right 2 down 1 right 1 down 1 right 3 down 1 fast
+  wait 0.5
+  walk player down 1 right 1 down 1 right 1 down 1 right 2 down 1
+  waitmoves
+  face rival down
+  camera pan 9 8 0.8
+  wait 0.5
+  speaker "{rival}"
+  say "There you go, old man. One {player}, safely delivered. So that's me done, and I'll be heading off..."
+  walk rival up 1 fast
+  face rival down
+  speaker "Prof. Rowan"
+  say "......"
+  speaker "{rival}"
+  say "...OK, OK! I get it! Quit looking at me like that. I'm staying, all right?"
+  walk rival down 1
+  wait 0.2
+  music "common/rowan"
+  speaker "Prof. Rowan"
+  say "Good. Then we are all here at last."
+  walk prof_rowan right 1
+  face prof_rowan down
+  say "I have spent most of my life studying how Pokémon evolve. And the more I learn, the more mysteries I find."
+  say "Some Pokémon evolve, and some never do. What sets them apart? Could a Pokémon that never evolves be something older, something closer to where all Pokémon began?"
+  walk prof_rowan left 1
+  face prof_rowan up
+  say "Sinnoh has three great lakes: Verity, Valor and Acuity. Each is said to be the home of a Pokémon that nobody has ever caught."
+  say "If we could only see those Pokémon for ourselves, we might learn something about evolution that no book in this library can tell us. I want your help to find them."
+  speaker "{rival}"
+  say "Hold on a second! How come I never got a Pokédex from you?"
+  speaker "Prof. Rowan"
+  say "Because you ran out of my lab before I could hand you one. I have never seen anyone leave a room so quickly."
+  speaker "{assistant}"
+  if boy say "You can count on me, Professor!"
+  if girl say "You bet, Professor! I'm in."
+  speaker "Prof. Rowan"
+  say "Three lakes, then, and four of us. We shall split up and look into each of them on our own."
+  face prof_rowan left
+  face counterpart right
+  say "{assistant}. You will come with me to Lake Verity."
+  speaker "{assistant}"
+  if boy say "Lake Verity. Will do, Professor!"
+  if girl say "Yes, sir!"
+  face prof_rowan up
+  face counterpart up
+  speaker "Prof. Rowan"
+  say "{rival}. Lake Acuity is yours. The road there is the hardest of the three."
+  face rival right
+  speaker "{rival}"
+  say "Yeah, of course it is! The toughest lake for the toughest Trainer. Makes sense to me!"
+  face rival down
+  speaker "Prof. Rowan"
+  say "Which leaves Lake Valor for you, {player}. Now, when you get there, I want you to..."
+  # The explosion at Lake Valor, felt right across Sinnoh (plan 09 · L11 makes the room shake with its books)
+  music stop
+  sound "thunder_rumble"
+  camera shake 1.2
+  text "The whole library shook!"
+  speaker "Prof. Rowan"
+  say "...! Is everyone unharmed?"
+  speaker "{rival}"
+  say "Whoa! What was THAT all about?!"
+  walk rival up 1 fast
+  face player up
+  # The television's news (plan 09 · L11 gives it its own picture)
+  fade out 0.4
+  speaker "TV"
+  say "...and we break into this programme with news just in from the east of Sinnoh."
+  say "A tremendous explosion has been reported at Lake Valor. Witnesses speak of a flash, and of a blast felt as far away as Canalave City."
+  say "Nobody yet knows the cause. We will bring you more as we have it."
+  fade in
+  wait 0.25
+  face rival down
+  speaker "{rival}"
+  say "Did you hear that? An explosion! At a lake! One of OUR lakes!"
+  face player down
+  speaker "Prof. Rowan"
+  say "Outside, all of you. Quickly, now."
+  # The assistant and the rival run for the stairs, and the professor after them
+  move counterpart left 1 up 5 left 2 up 2
+  move prof_rowan right 1 up 4 left 5 up 2
+  camera release 0.8
+  walk rival left 4 up 3 fast
+  sound "stairs"
+  hide rival
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_RIVAL
+  waitmoves
+  hide counterpart
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART
+  face prof_rowan down
+  face player up
+  speaker "Prof. Rowan"
+  say "{player}, you had better come along too. Don't dawdle."
+  walk prof_rowan up 1
+  sound "stairs"
+  hide prof_rowan
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_ROWAN
+  music area
+  setvar VAR_CANALAVE_CITY_STATE 4
+  setvar VAR_CANALAVE_LIBRARY_STATE 2
+  setflag FLAG_LAKE_VALOR_EXPLODED
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN
+  clearflag FLAG_HIDE_CANALAVE_CITY_PROF_ROWAN
+  clearflag FLAG_HIDE_CANALAVE_CITY_COUNTERPART
+  clearflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+  return
+
+
+script Scientist
+  speaker "Scientist"
+  face self player
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  say "A book holds the memory of whoever wrote it. Reading one is like listening to somebody from long ago."
+  end
+label After
+  say "Was that an earthquake? Every shelf on this floor was swaying!"
+  end
+
+script Youngster
+  speaker "Youngster"
+  face self player
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  say "There's one book I'm after, and it's out on loan every single time I come. Every time!"
+  end
+label After
+  say "I've gone all wobbly... Is the floor still moving, or is that just me?"
+  end
+
+
+# The books (the original's scripts 5 to 11): each is read on a yes, and put back on a no.
+script SinnohMyth
+  speaker none
+  ask "It's a book called \"A Myth of Sinnoh\". Read it?"
+  if no goto Back
+  text "Long ago, when Sinnoh had only just been made, people and Pokémon lived their lives apart." "Apart, but not as strangers: each gave the other what it could spare, and each leaned on the other when times were hard."
+  text "One day a Pokémon said to all the rest: let us be close by whenever people have need of us. Let us show ourselves to them." "And that, the story goes, is why a Pokémon still comes out to meet whoever walks into the tall grass."
+  end
+label Back
+  call PutBack
+  end
+
+script SinnohRegionsMythology
+  speaker none
+  ask "It's a book called \"The Mythology of the Sinnoh Region\". Read it?"
+  if no goto Back
+  text "There were three Pokémon." "They plunged into the lakes: down and down, never once coming up for air."
+  text "Down past where the light gives out, down where no breath could last, until they came to rest on the very bottom." "And from the floor of each lake they rose again, bringing up with them the power to shape whole lands."
+  end
+label Back
+  call PutBack
+  end
+
+script SinnohsMyth
+  speaker none
+  ask "It's a book called \"Sinnoh's Myth\". Read it?"
+  if no goto Back
+  text "Never let your anger show, or ??? will come for you." "Never give yourself up to weeping, or ??? will draw near."
+  text "But where gladness comes as easily as breathing, there is happiness, and the hand of ??? rests on it as a blessing." "(Wherever a name was written, the ink has been rubbed away.)"
+  end
+label Back
+  call PutBack
+  end
+
+script VeilstonesMyth
+  speaker none
+  ask "It's a book called \"Veilstone's Myth\". Read it?"
+  if no goto Back
+  text "Long ago a young man of Veilstone owned a sword, and with it he hunted Pokémon: some for food, far more than he could ever eat, and many only because he could." "Whatever he had no use for, he threw away."
+  ask "Read on?"
+  if no goto Back
+  text "The next year not a single Pokémon was to be seen. The young man went looking, and a long way from home he found one at last." "He asked it why they had all hidden themselves away."
+  ask "Read on?"
+  if no goto Back
+  text "The Pokémon answered him quietly: carry that sword and harm us for nothing, and we will bare fang and claw against you. We do not wish it. But we must guard our own." "The young man broke his sword on the ground in front of it, to show that he had understood. And the Pokémon, seeing it, went away to a place nobody has ever found."
+  end
+label Back
+  call PutBack
+  end
+
+script TheOriginalStory
+  speaker none
+  ask "It's a book called \"The Original Story\". Read it?"
+  if no goto Back
+  text "At first there was nothing but a churning, shapeless chaos." "At the heart of it, where all things ran together into one, an Egg appeared. And out of the Egg, as it tumbled from that whirl, came the Original One."
+  ask "Read on?"
+  if no goto Back
+  text "Out of itself the Original One made two beings. Time began to turn. Space began to spread." "Out of itself again it made three living things. The two beings wished, and matter came to be. The three wished, and spirit came to be."
+  ask "Read on?"
+  if no goto Back
+  text "So the world was made." "And the Original One, its work done, fell into a sleep that nothing has broken since."
+  end
+label Back
+  call PutBack
+  end
+
+script HorrificMyth
+  speaker none
+  ask "It's a book called \"A Horrific Myth\". Read it?"
+  if no goto Back
+  text "Do not look into the Pokémon's eyes. In a moment you will have forgotten everything, even who you are." "You may try to go home. But how, with nothing left to remember?"
+  text "Do not dare lay a hand on the Pokémon. Within three days every feeling you ever had will have drained away." "Above all, do the Pokémon no harm. In five short years the one who did will be unable to move at all."
+  end
+label Back
+  call PutBack
+  end
+
+script SinnohFolkStories
+  speaker none
+  choose "It's a book called \"Folk Stories of Sinnoh\". Which story will you read?" "The first" "The second" "The third" "Put it back"
+  if result == 0 goto First
+  if result == 1 goto Second
+  if result == 2 goto Third
+  call PutBack
+  end
+label First
+  text "When you have caught a Pokémon from the sea or the stream to eat, pick its bones clean, and thank it for the meal." "When the bones are as clean as you can make them, give them back to the water they came from. The Pokémon will come back whole, and it all begins again."
+  end
+label Second
+  text "There was a Pokémon that lived in the forest. Deep among the trees it would slip out of its hide and sleep in the shape of a person." "And when it woke, that person would pull the hide back on and wander down to the villages as a Pokémon."
+  end
+label Third
+  text "There was a time when Pokémon and people were closer than they are now: a time when they sat down to eat at the same table." "In those days, they say, there was nothing to tell the one from the other."
+  end
+
+script PutBack
+  text "{player} put the book back on its shelf."
+  return

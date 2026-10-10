@@ -61,7 +61,16 @@ label Pokedex
   if flag FLAG_RECEIVED_PARCEL goto Rest
   goto Parcel
 label Rest
-  call Healer
+  # What the common Healer does (her own words, then the team is well), written out so that she can go on
+  sayown
+  heal
+  fanfare heal
+  # Plan 02 · S10: once Lake Valor has blown she asks after the tremor (in the original until the Distortion World is
+  # behind the player, VAR_EXITED_DISTORTION_WORLD_STATE 2: plan 02 · S12 adds that end to it)
+  if var VAR_CANALAVE_LIBRARY_STATE < 2 end
+  speaker "Mom"
+  say "{player}, is everything all right? The whole house shook a while ago, and the television won't say what it was."
+  say "You're mixed up in it somehow, aren't you? ...I thought so. Then be careful, and come home when it's done."
   end
 label Parcel
   speaker "Mom"

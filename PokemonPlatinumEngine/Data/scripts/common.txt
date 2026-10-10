@@ -143,6 +143,34 @@ script ChapterSix
   if badge mine goto Won
   setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
 label Won
+  call ChapterSeven
+  return
+
+
+# Who the seventh chapter (plan 02 · S10, "Iron Island and the lakes") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): the professor, the assistant and the sailor outside Canalave's
+# library, Lucian inside it (who reads there after the Hall of Fame), Azelf in Valor Cavern, the rival and Commander
+# Jupiter at Lake Acuity (the next chapter's, whose flags this one's scenes clear), Maylene on Route 217 and the grunt
+# who comes to Mt. Coronet's northern hall after Team Galactic's headquarters. The rival before the library's door and
+# the three at its table are shown by Byron's Badge (CanalaveGym.txt clears their flags), so a save that has the Badge
+# keeps them as the Gym left them. Called by ChapterSix, and run for a save from before (Story/StoryMigration.cs,
+# version 12). It may only set flags and variables, and ends in return.
+script ChapterSeven
+  setflag FLAG_HIDE_CANALAVE_CITY_COUNTERPART
+  setflag FLAG_HIDE_CANALAVE_CITY_PROF_ROWAN
+  setflag FLAG_HIDE_CANALAVE_CITY_SAILOR
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_1F_LUCIAN
+  setflag FLAG_HIDE_VALOR_CAVERN_AZELF
+  setflag FLAG_HIDE_LAKE_ACUITY_LOW_WATER_RIVAL
+  setflag FLAG_HIDE_LAKE_ACUITY_JUPITER
+  setflag FLAG_HIDE_ROUTE_217_MAYLENE
+  setflag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNT_F
+  if badge mine goto Won
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_LIBRARY
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_RIVAL
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART
+  setflag FLAG_HIDE_CANALAVE_LIBRARY_ROWAN
+label Won
   return
 
 

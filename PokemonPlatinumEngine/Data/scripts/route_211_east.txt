@@ -1,0 +1,18 @@
+# Route 211, east of Mt. Coronet (plan 02 · S10). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_route_211_east.s).
+
+
+# The trainer who is so tough that nothing startles him (the original's Route211East_AceTrainerM): TM77, Psych Up,
+# once.
+script PsychUp
+  if flag FLAG_RECEIVED_ROUTE_211_EAST_TM77 goto Given
+  say "I'm strong. Nothing in this world can make me flinch. Not wind, not thunder, not..."
+  face self player
+  emote self exclaim
+  say "WAAH! Don't creep up on people like that! ...Ahem. You saw nothing. Here, take this and forget about it."
+  give "TM77"
+  setflag FLAG_RECEIVED_ROUTE_211_EAST_TM77
+label Given
+  face self player
+  say "TM77 is Psych Up. It copies every boost your foe has built up for itself. Let them do the warming up for you!"
+  end
