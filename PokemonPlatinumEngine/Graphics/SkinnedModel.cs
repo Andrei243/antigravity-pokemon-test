@@ -150,7 +150,7 @@ internal sealed class SkinnedModel
         var shader = material.Shader;
         if (!BoneLocations.TryGetValue(shader.Id, out int location))
         {
-            location = Raylib.GetShaderLocation(shader, "bones");
+            location = FieldShaders.Location(shader, "bones");
             BoneLocations[shader.Id] = location;
         }
         if (location >= 0) Raylib.SetShaderValueV(shader, location, rows, ShaderUniformDataType.Vec4, count * 3);

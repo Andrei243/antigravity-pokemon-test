@@ -118,14 +118,6 @@ public sealed class PoketchView
 
     public void Update(float dt) => Shown = Math.Clamp(Shown + (Out ? dt : -dt) / SlideSeconds, 0f, 1f);
 
-    /// <summary>
-    /// The time the watch shows: the computer's clock, or, while the options fix the time of day, a set day at that
-    /// hour (so a tool's pictures are the same every run).
-    /// </summary>
-    public static DateTime Clock() => GameClock.Fixed == null
-        ? DateTime.Now
-        : new DateTime(2009, 3, 22).AddHours(GameClock.Hour);
-
     public void Draw(int sw, int sh, Poketch poketch, PoketchContext context)
     {
         if (Shown <= 0f || !poketch.Enabled) return;

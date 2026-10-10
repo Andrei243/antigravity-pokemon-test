@@ -147,10 +147,10 @@ void main()
         }
         static Vector4 V(Color c) => new(c.R / 255f, c.G / 255f, c.B / 255f, c.A / 255f);
         Raylib.BeginShaderMode(gradient);
-        Raylib.SetShaderValue(gradient, Raylib.GetShaderLocation(gradient, "top"), V(top), ShaderUniformDataType.Vec4);
-        Raylib.SetShaderValue(gradient, Raylib.GetShaderLocation(gradient, "bottom"), V(bottom), ShaderUniformDataType.Vec4);
-        Raylib.SetShaderValue(gradient, Raylib.GetShaderLocation(gradient, "span"), new Vector2(y + size * 0.2f, y + size * 0.92f), ShaderUniformDataType.Vec2);
-        Raylib.SetShaderValue(gradient, Raylib.GetShaderLocation(gradient, "shine"),
+        Raylib.SetShaderValue(gradient, Graphics.FieldShaders.Location(gradient, "top"), V(top), ShaderUniformDataType.Vec4);
+        Raylib.SetShaderValue(gradient, Graphics.FieldShaders.Location(gradient, "bottom"), V(bottom), ShaderUniformDataType.Vec4);
+        Raylib.SetShaderValue(gradient, Graphics.FieldShaders.Location(gradient, "span"), new Vector2(y + size * 0.2f, y + size * 0.92f), ShaderUniformDataType.Vec2);
+        Raylib.SetShaderValue(gradient, Graphics.FieldShaders.Location(gradient, "shine"),
             new Vector3(float.IsNaN(shineX) ? -1e6f : shineX, size * 0.35f, float.IsNaN(shineX) ? 0f : 0.55f), ShaderUniformDataType.Vec3);
         Raylib.DrawTextEx(Display, text, new Vector2(x, y), size, spacing, new Color(255, 255, 255, (int)(255 * Math.Clamp(alpha, 0f, 1f))));
         Raylib.EndShaderMode();

@@ -100,24 +100,24 @@ void main()
     {
         if (loaded) return;
         shader = Raylib.LoadShaderFromMemory(Vertex, Fragment);
-        locHalf = Raylib.GetShaderLocation(shader, "halfSize");
-        locRadius = Raylib.GetShaderLocation(shader, "radius");
-        locSkew = Raylib.GetShaderLocation(shader, "skew");
-        locTurn = Raylib.GetShaderLocation(shader, "turn");
-        locTop = Raylib.GetShaderLocation(shader, "colorTop");
-        locBottom = Raylib.GetShaderLocation(shader, "colorBottom");
-        locBorder = Raylib.GetShaderLocation(shader, "borderColor");
-        locBorderWidth = Raylib.GetShaderLocation(shader, "borderWidth");
-        locSoft = Raylib.GetShaderLocation(shader, "softness");
-        locAa = Raylib.GetShaderLocation(shader, "aa");
+        locHalf = Graphics.FieldShaders.Location(shader, "halfSize");
+        locRadius = Graphics.FieldShaders.Location(shader, "radius");
+        locSkew = Graphics.FieldShaders.Location(shader, "skew");
+        locTurn = Graphics.FieldShaders.Location(shader, "turn");
+        locTop = Graphics.FieldShaders.Location(shader, "colorTop");
+        locBottom = Graphics.FieldShaders.Location(shader, "colorBottom");
+        locBorder = Graphics.FieldShaders.Location(shader, "borderColor");
+        locBorderWidth = Graphics.FieldShaders.Location(shader, "borderWidth");
+        locSoft = Graphics.FieldShaders.Location(shader, "softness");
+        locAa = Graphics.FieldShaders.Location(shader, "aa");
 
         triangle = Raylib.LoadShaderFromMemory(Vertex, TriangleFragment);
-        locP0 = Raylib.GetShaderLocation(triangle, "p0");
-        locP1 = Raylib.GetShaderLocation(triangle, "p1");
-        locP2 = Raylib.GetShaderLocation(triangle, "p2");
-        locRounding = Raylib.GetShaderLocation(triangle, "rounding");
-        locTriColor = Raylib.GetShaderLocation(triangle, "color");
-        locTriSoft = Raylib.GetShaderLocation(triangle, "softness");
+        locP0 = Graphics.FieldShaders.Location(triangle, "p0");
+        locP1 = Graphics.FieldShaders.Location(triangle, "p1");
+        locP2 = Graphics.FieldShaders.Location(triangle, "p2");
+        locRounding = Graphics.FieldShaders.Location(triangle, "rounding");
+        locTriColor = Graphics.FieldShaders.Location(triangle, "color");
+        locTriSoft = Graphics.FieldShaders.Location(triangle, "softness");
         loaded = true;
     }
 

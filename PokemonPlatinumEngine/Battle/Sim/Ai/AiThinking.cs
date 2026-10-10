@@ -913,5 +913,5 @@ internal sealed partial class AiThinking
     }
 
     /// <summary>The damage worked out for the AI draws nothing (no critical hit, no roll): this stands in for a generator it never asks.</summary>
-    private static readonly Random NoDraws = new(0);
+    private static readonly Random NoDraws = new BattleRandom(0);
 }
