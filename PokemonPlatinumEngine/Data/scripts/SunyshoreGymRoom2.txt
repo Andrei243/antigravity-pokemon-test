@@ -1,0 +1,23 @@
+# The Sunyshore Gym's second room (plan 01 · M9, part 2c), rebuilt to the original's plan (scripts_sunyshore_city_gym_room_2.s).
+#
+# Two rows of gears, and two gears on edge whose bars are bridges at the height of the raised walkways while they lie
+# flat. The button on the lower gear by the door turns them all a quarter on; the two on the upper gears turn them a
+# quarter back.
+
+
+# SunyshoreGymRoom2_Init
+script OnEnter
+  setvar VAR_MAP_LOCAL_0x00 0
+  end
+
+
+# SunyshoreGymRoom2_BottomButton
+script BottomButton
+  gearbutton normal
+  end
+
+
+# SunyshoreGymRoom2_TopButtons
+script TopButtons
+  gearbutton reverse
+  end

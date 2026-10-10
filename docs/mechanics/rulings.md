@@ -442,6 +442,19 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | A save made with snowballs broken | The map's objects are saved, so a broken snowball stays broken | Every snowball is back after loading | The save keeps no map's things but its trainers and items; coming in again brings them back anyway |
 | The room's own script | Hides Candice in Snowpoint City if `FLAG_DUMMY_0x00EB` is set | Left out | Nothing sets that flag |
 
+**The Sunyshore Gym** (plan 01 · M9 2c)
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The gears' walkways | Closed by the room's table of regions for its state (`SunyshoreGym_DynamicMapFeaturesCheckCollision`), for the player's own steps only | The same (`SunyshoreGears.Refuses`, asked by `FieldMovement.Step`); a trainer's eyes and walk see the room's own grid, where every walkway is open, as the original's map objects do | |
+| The way they turn | 5.625 degrees a frame at thirty frames a second; the state changes as the button is pressed and the field waits for the gears | The same (`SunyshoreGears.Turn`); the field holds while they turn | |
+| A button | Every step onto it presses it (the room's coordinate events wait for a variable nothing changes) | The same | |
+| Coming in | By a room's door from the room before, its first state; by any other way in (the door from the room beyond), the state that leads back: two, one and nought (`PersistedMapFeatures_InitForSunyshoreGym`) | The same, by the row the player comes in on (`SunyshoreGears.ArriveAt`) | |
+| A save made in the Gym | The state is saved with the game's persisted features | It comes back as coming in from the room beyond lays it out | The save keeps no puzzle's state, as with the Canalave Gym's platforms |
+| The third room's top row | Four columns (7, 8, 14 and 15) are open in the collision grid but have no height plate under them, so the walker's height check stops anyone stepping onto them from the platforms either side | Solid | The same in play: nobody walks from one platform to the next past the puzzle |
+| The statues | Name the player once the Badge is won, and the rival too once `VAR_RIVAL_BEAT_SUNYSHORE_GYM` is set | The player only | The rival's scene in Sunyshore City, which sets the variable, is plan 02 · S13's; the statue's branch comes with it |
+| The floor's behaviour | `DYNAMIC_HEIGHT_COLLISION` (0x59) on most of the floor | Left out | It acts only under a dynamic height plate, and the Gym has none |
+
 ## The first chapter (2026-10-06, plan 02 · S4)
 
 **Platinum's rules, kept as they are** (`res/field/scripts/scripts_twinleaf_town*.s`, `scripts_route_201.s`, `scripts_verity_lakefront.s`, `scripts_lake_verity_low_water.s`, `scripts_sandgem_town*.s`, `scripts_route_202.s`, `src/field/field_system.c`'s `InitNewGame`)

@@ -28,21 +28,24 @@ public partial class GameEngine
         if (bagRun != null) PlayBagRun(dt);
         if (puzzle is PastoriaWater water) PlayWater(water, dt);
         if (puzzle is CanalaveLifts { Moving: not null } lifts) PlayLiftRide(lifts, dt);
+        if (puzzle is SunyshoreGears { Turning: not null } gears) PlayGears(gears, dt);
     }
 
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>
     private void ArrivePuzzle()
     {
         if (currentMap.Puzzle is not { } puzzle) return;
-        puzzle.Arrive(currentMap, story, Dice.Shared);
+        puzzle.ArriveAt(currentMap, story, Dice.Shared, player.GridX, player.GridY);
         puzzle.Apply(currentMap, story);
     }
 
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
-    private bool PuzzleMoving => clockTurn != null || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null };
+    private bool PuzzleMoving => clockTurn != null
+        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null };
 
     /// <summary>Whether a puzzle has the field to itself for now, as the original's tasks do: a punching bag on its run.</summary>
-    private bool PuzzleHoldsField => bagRun != null || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null };
+    private bool PuzzleHoldsField => bagRun != null
+        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null };
 
     // ------------------------------------------------------------------ the Veilstone Gym's punching bags
 
@@ -167,6 +170,11 @@ public partial class GameEngine
         if (lifts.Moving == null) AudioManager.PlaySound("lift_stop");
     }
 
+    // ------------------------------------------------------------------ the Sunyshore Gym's gears
+
+    /// <summary>The gears turn on to the state of the button pressed last (their grinding was heard as it was pressed).</summary>
+    private static void PlayGears(SunyshoreGears gears, float dt) => gears.Update(dt);
+
     private void PlayClockTurn(float dt)
     {
         var turn = clockTurn!;
@@ -205,6 +213,13 @@ public partial class GameEngine
             water.Press(button);
             AudioManager.PlaySound("select");
             if (water.Moving) AudioManager.PlaySound("surf");
+        }
+
+        public void PressGearButton(SunyshoreGears.Button kind)
+        {
+            if (game.currentMap.Puzzle is not SunyshoreGears gears) return;
+            gears.Press(kind);
+            AudioManager.PlaySound("gears");
         }
 
         public void TurnClock(int from, int to)

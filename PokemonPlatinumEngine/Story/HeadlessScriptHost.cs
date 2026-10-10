@@ -463,6 +463,17 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Map?.Puzzle is PastoriaWater water) water.Settle(button);
     }
 
+    public void PressGearButton(SunyshoreGears.Button kind)
+    {
+        Log.Add($"gearbutton {kind.ToString().ToLowerInvariant()}");
+        // The gears are in their new state at once
+        if (Map?.Puzzle is SunyshoreGears gears)
+        {
+            gears.Press(kind);
+            gears.Finish();
+        }
+    }
+
     /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>
     public NPC? Travelling { get; private set; }
     public string? Partner { get; private set; }

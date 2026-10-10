@@ -41,6 +41,11 @@ internal sealed class GymPieces
     // The Snowpoint Gym's: a snowball's card, drawn on the tile of each one standing
     private Piece? snowball;
 
+    // The Sunyshore Gym's: a gear of each shape, built on its hub with no turn; a button of each kind (its arrow's way
+    // round and whether it is a half turn); the doorways in the back wall are its still parts
+    private readonly Dictionary<SunyshoreGears.Shape, Piece> gears = new();
+    private readonly Dictionary<(int Sense, bool Half), Piece> gearButtons = new();
+
     /// <summary>The height the player stands at, for a puzzle that hides what is above them.</summary>
     private float viewer;
 
@@ -84,6 +89,31 @@ internal sealed class GymPieces
             // The sign of the door that leads on, standing where it was put this time
             if (map.Puzzle is HearthomeDoors { Correct: { } sign } doors && clues.TryGetValue(sign, out var clue))
                 yield return (clue, Matrix4x4.CreateTranslation(doors.Clue.X, 0f, doors.Clue.Y));
+            yield break;
+        }
+        if (map.Puzzle is SunyshoreGears turning)
+        {
+            if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
+            // Each gear on its hub as far round as it has turned: a flat one about the vertical (counter-clockwise from
+            // above), one on edge about the east-west line through its axle, half a tile under its bar's top
+            for (int i = 0; i < turning.RoomGears.Count; i++)
+            {
+                var g = turning.RoomGears[i];
+                if (!gears.TryGetValue(g.Shape, out var piece)) continue;
+                float angle = turning.AngleOf(i) * MathF.PI / 180f;
+                yield return g.OnEdge
+                    ? (piece, Matrix4x4.CreateRotationX(angle) * Matrix4x4.CreateTranslation(g.X + 0.5f, g.Walkway - 0.5f - map.GroundLevel, g.Y + 0.5f))
+                    : (piece, Matrix4x4.CreateRotationY(angle) * Matrix4x4.CreateTranslation(g.X + 0.5f, g.Walkway - map.GroundLevel, g.Y + 0.5f));
+            }
+            // The buttons stand still on their hubs, each showing the way its gear turns
+            foreach (var (x, y, kind) in SunyshoreGears.Buttons[turning.Room])
+            {
+                var gear = turning.RoomGears.FirstOrDefault(g => (g.X, g.Y) == (x, y));
+                if (gear == null) continue;
+                bool half = kind == SunyshoreGears.Button.Double;
+                if (gearButtons.TryGetValue((SunyshoreGears.Sense(gear, kind), half), out var button))
+                    yield return (button, Matrix4x4.CreateTranslation(x + 0.5f, gear.Walkway - map.GroundLevel, y + 0.5f));
+            }
             yield break;
         }
         if (map.Puzzle is CanalaveLifts lifts)
@@ -145,6 +175,7 @@ internal sealed class GymPieces
         if (map.Puzzle is EternaClock) BuildEterna(map);
         else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
+        else if (map.Puzzle is SunyshoreGears turning) BuildSunyshore(map, turning);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         return true;
@@ -688,6 +719,193 @@ internal sealed class GymPieces
         snowball = Make(kit);
     }
 
+    // ------------------------------------------------------------------ the Sunyshore Gym
+
+    /// <summary>A flat gear's measures in texels: its wheel across, the root of its teeth, its arms' half width and reach, their thickness.</summary>
+    private const int GearAcross = 86, GearRoot = 37, ArmHalf = 13, ArmReach = 80, DeckThick = 6;
+
+    /// <summary>
+    /// The Sunyshore Gym (style guide, "Gyms"): a piece for each shape of gear its room has, built on the hub with no
+    /// turn, which the puzzle's angle turns as it draws; a button of each kind; and a steel door on the back wall at
+    /// each way on to the next room. A flat gear is a toothed wheel lying a little under its walkways' tops, a dark boss on
+    /// its hub and a walkway two tiles long out of the hub for each arm its shape has; a gear on edge is a bar of the
+    /// same deck five tiles long and a tile thick on a dark axle, with a toothed drum at each end, built in true
+    /// proportions since it turns over.
+    /// </summary>
+    private void BuildSunyshore(Map map, SunyshoreGears puzzle)
+    {
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var kits = new Dictionary<SunyshoreGears.Shape, KitBuilder>();
+        foreach (var shape in puzzle.RoomGears.Select(g => g.Shape).Distinct())
+        {
+            bool alt = shape is SunyshoreGears.Shape.LAlt or SunyshoreGears.Shape.TAlt or SunyshoreGears.Shape.VerticalAlt;
+            kits[shape] = shape is SunyshoreGears.Shape.Vertical or SunyshoreGears.Shape.VerticalAlt
+                ? BuildBar(sheet, alt)
+                : BuildGear(sheet, vs, shape, alt);
+        }
+
+        var buttonKits = new Dictionary<(int, bool), KitBuilder>();
+        foreach (int sense in new[] { 1, -1 })
+            foreach (bool half in new[] { false, true })
+            {
+                var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+                var face = kit.Face($"gearbutton.{sense}.{half}", 24, 24, c => GymArt.PaintButton(c, sense, half));
+                kit.Decal(-12, 12, -12, 12, 2f * Texel * vs + 0.004f, face);
+                buttonKits[(sense, half)] = kit;
+            }
+
+        // The doorways: each warp in the back wall's own row, a door standing on the floor in front of it
+        var still = new KitBuilder(sheet, vs);
+        var back = map.RoomCorner().Back;
+        foreach (var warp in map.Warps.Where(w => w.SourceY == back - 1))
+        {
+            still.Origin = new Vector3(warp.SourceX, Relief.At(map, warp.SourceX + 0.5f, back + 0.5f), back);
+            var door = still.Face("powerdoor", 28, 50, GymArt.PaintPowerDoor);
+            still.Card(2, 30, 0.6f, 0, 50, door);
+        }
+
+        art = Upload(sheet);
+        foreach (var (shape, kit) in kits)
+            if (Make(kit) is { } piece) gears[shape] = piece;
+        foreach (var (key, kit) in buttonKits)
+            if (Make(kit) is { } piece) gearButtons[key] = piece;
+        stillParts = Make(still);
+    }
+
+    /// <summary>A flat gear of a shape on its hub, its arms pointing as the shape's do with no turn (north is -z).</summary>
+    private static KitBuilder BuildGear(ArtSheet sheet, float vs, SunyshoreGears.Shape shape, bool alt)
+    {
+        var tone = GymArt.GearTone(alt);
+        var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        // The wheel: its toothed face two texels under the walkways' tops, its rim eight deep round the roots of its teeth
+        var face = kit.Face($"gear.face.{alt}", GearAcross, GearAcross, c => GymArt.PaintGearFace(c, tone));
+        kit.Box(-GearAcross / 2f, GearAcross / 2f, -GearAcross / 2f, GearAcross / 2f, -2.5f, -2f, top: face);
+        var rim = kit.Face($"gear.rim.{alt}", 12, 8, c =>
+        {
+            for (int y = 0; y < c.Height; y++)
+                for (int x = 0; x < c.Width; x++)
+                    c.SetRaw(x, y, y == 0 ? tone.Light : y == c.Height - 1 ? tone.Dark : x % 6 < 3 ? tone.Base : PixelCanvas.Shadow(tone.Base, 0.25f));
+        });
+        const int segments = 24;
+        for (int k = 0; k < segments; k++)
+        {
+            float a0 = k * MathF.Tau / segments, a1 = (k + 1) * MathF.Tau / segments, am = (a0 + a1) / 2f;
+            var p0 = new Vector2(MathF.Cos(a0), MathF.Sin(a0)) * GearRoot;
+            var p1 = new Vector2(MathF.Cos(a1), MathF.Sin(a1)) * GearRoot;
+            Facet(kit, kit.At(p1.X, -10f, p1.Y), kit.At(p0.X, -10f, p0.Y), kit.At(p0.X, -2f, p0.Y), kit.At(p1.X, -2f, p1.Y), rim,
+                new Vector3(MathF.Cos(am), 0f, MathF.Sin(am)));
+        }
+
+        // The hub: a block of deck with the dark boss on it, the arms meeting at its sides
+        var hubTop = kit.Face("gear.hub", ArmHalf * 2, ArmHalf * 2, c =>
+        {
+            GymArt.PaintDeck(c, alongHeight: true);
+            var boss = new PixelCanvas(20, 20);
+            GymArt.PaintBoss(boss);
+            for (int y = 0; y < 20; y++)
+                for (int x = 0; x < 20; x++)
+                    if (boss.IsOpaque(x, y)) c.SetRaw(x + 3, y + 3, boss.Get(x, y));
+        });
+        var hubSide = kit.Face($"deck.side.{ArmHalf * 2}", ArmHalf * 2, DeckThick, GymArt.PaintDeckSide);
+        kit.Box(-ArmHalf, ArmHalf, -ArmHalf, ArmHalf, -DeckThick, 0, hubTop, hubSide, hubSide, hubSide, hubSide);
+
+        // The arms, each from the hub's side out two tiles past the hub's middle
+        int length = ArmReach - ArmHalf;
+        var alongZ = kit.Face($"deck.top.{ArmHalf * 2}x{length}", ArmHalf * 2, length, c => GymArt.PaintDeck(c, alongHeight: true));
+        var alongX = kit.Face($"deck.top.{length}x{ArmHalf * 2}", length, ArmHalf * 2, c => GymArt.PaintDeck(c, alongHeight: false));
+        var side = kit.Face($"deck.side.{length}", length, DeckThick, GymArt.PaintDeckSide);
+        var end = hubSide;
+        foreach (var arm in SunyshoreGears.ArmsOf(shape))
+            switch (arm)
+            {
+                case Data.Direction.Up:
+                    kit.Box(-ArmHalf, ArmHalf, -ArmReach, -ArmHalf, -DeckThick, 0, alongZ, null, side, side, end);
+                    break;
+                case Data.Direction.Down:
+                    kit.Box(-ArmHalf, ArmHalf, ArmHalf, ArmReach, -DeckThick, 0, alongZ, end, side, side, null);
+                    break;
+                case Data.Direction.Left:
+                    kit.Box(-ArmReach, -ArmHalf, -ArmHalf, ArmHalf, -DeckThick, 0, alongX, side, end, null, side);
+                    break;
+                default:
+                    kit.Box(ArmHalf, ArmReach, -ArmHalf, ArmHalf, -DeckThick, 0, alongX, side, null, end, side);
+                    break;
+            }
+        return kit;
+    }
+
+    /// <summary>
+    /// A gear on edge on its axle (the origin), its bar lying flat along the north-south line with no turn: the deck on
+    /// both faces, since a half turn brings the underside up, and the bar a tile thick so either face is at the walkway's
+    /// height half a tile over the axle. Built in true proportions (one texel up is a texel across), as it turns over.
+    /// </summary>
+    private static KitBuilder BuildBar(ArtSheet sheet, bool alt)
+    {
+        var tone = GymArt.GearTone(alt);
+        var kit = new KitBuilder(sheet, 1f) { Origin = Vector3.Zero };
+        const int half = 16, along = 80;
+        var deck = kit.Face($"bar.deck.{ArmHalf * 2}x{along * 2}", ArmHalf * 2, along * 2, c => GymArt.PaintDeck(c, alongHeight: true));
+        var side = kit.Face($"bar.side.{along * 2}x{half * 2}", along * 2, half * 2, c =>
+        {
+            GymArt.PaintDeckSide(c);
+            for (int y = 0; y < c.Height; y++)
+                for (int x = 0; x < c.Width; x++)
+                    if (y >= c.Height - 3) c.SetRaw(x, y, (x + y) % 8 < 4 ? new Color(236, 196, 60, 255) : new Color(40, 40, 48, 255));
+                    else if (y > 3 && x % 32 == 0) c.SetRaw(x, y, GymArt.Boss.Dark);
+        });
+        // Each end in hazard stripes, which a bar standing up shows at its top: a barrier, not a walkway
+        var endFace = kit.Face($"bar.end.{ArmHalf * 2}x{half * 2}", ArmHalf * 2, half * 2, GymArt.PaintHazard);
+        kit.Box(-ArmHalf, ArmHalf, -along, along, -half, half, deck, endFace, side, side, endFace);
+        // The underside, which a half turn brings up
+        Facet(kit, kit.At(-ArmHalf, -half, -along), kit.At(ArmHalf, -half, -along), kit.At(ArmHalf, -half, along), kit.At(-ArmHalf, -half, along), deck, -Vector3.UnitY);
+
+        // The axle through the bar's middle, and a toothed drum on each end of it
+        var axle = kit.Face("bar.axle", 8, 8, c => Pix.Raised(c, 0, 0, 8, 8, GymArt.Boss));
+        Prism(kit, -ArmHalf - 10, ArmHalf + 10, 5f, 8, axle, axle);
+        var rim = kit.Face($"bar.drum.{alt}", 8, 8, c =>
+        {
+            for (int y = 0; y < c.Height; y++)
+                for (int x = 0; x < c.Width; x++)
+                    c.SetRaw(x, y, y < 2 ? tone.Light : y >= 6 ? tone.Dark : tone.Base);
+        });
+        var cap = kit.Face($"bar.cap.{alt}", 40, 40, c => GymArt.PaintGearFace(c, tone));
+        Prism(kit, ArmHalf + 2, ArmHalf + 9, 20f, 16, rim, cap);
+        Prism(kit, -ArmHalf - 9, -ArmHalf - 2, 20f, 16, rim, cap);
+        return kit;
+    }
+
+    /// <summary>
+    /// A prism along the east-west line from <paramref name="x0"/> to <paramref name="x1"/> (texels), round the origin
+    /// at a radius: its sides in <paramref name="side"/> and each end a fan of <paramref name="end"/>, mapped as a disc.
+    /// </summary>
+    private static void Prism(KitBuilder kit, float x0, float x1, float radius, int sides, Art side, Art end)
+    {
+        for (int k = 0; k < sides; k++)
+        {
+            float b0 = k * MathF.Tau / sides, b1 = (k + 1) * MathF.Tau / sides, bm = (b0 + b1) / 2f;
+            float y0 = MathF.Cos(b0) * radius, z0 = MathF.Sin(b0) * radius, y1 = MathF.Cos(b1) * radius, z1 = MathF.Sin(b1) * radius;
+            Facet(kit, kit.At(x0, y0, z0), kit.At(x1, y0, z0), kit.At(x1, y1, z1), kit.At(x0, y1, z1), side, new Vector3(0f, MathF.Cos(bm), MathF.Sin(bm)));
+            foreach (var (x, outward) in new[] { (x0, -1f), (x1, 1f) })
+            {
+                var centre = new Vector2(end.Width / 2f, end.Height / 2f);
+                var t0 = centre + new Vector2(MathF.Cos(b0), MathF.Sin(b0)) * end.Width / 2f;
+                var t1 = centre + new Vector2(MathF.Cos(b1), MathF.Sin(b1)) * end.Width / 2f;
+                Vector3 a = kit.At(x, 0f, 0f), b = kit.At(x, y0, z0), c = kit.At(x, y1, z1);
+                var normal = new Vector3(outward, 0f, 0f);
+                if (Vector3.Dot(Vector3.Cross(b - a, c - a), normal) < 0f) kit.Tri(a, c, b, end, centre, t1, t0, normal);
+                else kit.Tri(a, b, c, end, centre, t0, t1, normal);
+            }
+        }
+    }
+
+    /// <summary>A quad of art facing outward whatever order its corners come in (mirrored where they are turned round).</summary>
+    private static void Facet(KitBuilder kit, Vector3 a, Vector3 b, Vector3 c, Vector3 d, Art art, Vector3 outward)
+    {
+        if (Vector3.Dot(Vector3.Cross(b - a, c - a), outward) < 0f) (a, b, c, d) = (b, a, d, c);
+        kit.Quad(a, b, c, d, art, Vector3.Normalize(outward));
+    }
+
     // ------------------------------------------------------------------ the GPU
 
     private Texture2D Upload(ArtSheet sheet)
@@ -731,6 +949,8 @@ internal sealed class GymPieces
         Array.Clear(decks);
         platforms.Clear();
         snowball = null;
+        gears.Clear();
+        gearButtons.Clear();
         rafts.Clear();
         clues.Clear();
     }

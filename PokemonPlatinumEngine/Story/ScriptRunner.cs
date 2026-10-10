@@ -344,6 +344,10 @@ public sealed class ScriptRunner
             case Op.PressButton:
                 host.PressButton(i.Name switch { "blue" => PastoriaWater.Button.Blue, "orange" => PastoriaWater.Button.Orange, _ => PastoriaWater.Button.Green });
                 break;
+            // PressSunyshoreGymButton: the Sunyshore Gym's gears turn on a quarter, back a quarter or on a half
+            case Op.GearButton:
+                host.PressGearButton(i.Name switch { "reverse" => SunyshoreGears.Button.Reverse, "double" => SunyshoreGears.Button.Double, _ => SunyshoreGears.Button.Normal });
+                break;
             case Op.Partner:
                 if (i.Option)
                 {

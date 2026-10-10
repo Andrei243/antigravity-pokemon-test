@@ -1,0 +1,196 @@
+{
+  "name": "SunyshoreGym",
+  "displayName": "Sunyshore Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Electric",
+  "puzzle": "SunyshoreGears1",
+  "width": 17,
+  "height": 16,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#VVVVV_____VVVVV#",
+    "#VVVVV_____VVVVV#",
+    "#VVVVV_____VVVVV#",
+    "#VVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVV#",
+    "#VVVVV__________#",
+    "#VVVVV__________#",
+    "#VVVVV__________#",
+    "#VVVVV__________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "######.....######",
+    "######.....######",
+    "######.....######",
+    "###.####.####.###",
+    "###.####.####.###",
+    "#...............#",
+    "###.####.####.###",
+    "###.####.####.###",
+    "######..........#",
+    "#######...#.....#",
+    "######..........#",
+    "######..........#",
+    "########.########"
+  ],
+  "heights": [
+    { "x": 8, "z": 2, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 3, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 3, "width": 5, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 11, "z": 3, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 4, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 4, "width": 5, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 11, "z": 4, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 5, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 5, "width": 5, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 11, "z": 5, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 6, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 6, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 6, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 6, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 6, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 6, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 6, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 7, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 7, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 7, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 7, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 7, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 7, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 7, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 8, "width": 15, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 9, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 9, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 9, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 9, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 9, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 9, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 9, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 10, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 10, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 10, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 10, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 10, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 10, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 10, "width": 2, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 11, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 11, "width": 10, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 12, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 12, "width": 10, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 13, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 13, "width": 10, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 14, "width": 5, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 14, "width": 10, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 15, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 6,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 10,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 15,
+      "targetMap": "Sinnoh",
+      "targetX": 845,
+      "targetY": 748,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "SunyshoreGymRoom2",
+      "targetX": 9,
+      "targetY": 21,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 6,
+      "y": 12,
+      "text": "SUNYSHORE CITY POKéMON GYM\nLeader: Volkner",
+      "script": "GymStatue"
+    },
+    {
+      "x": 10,
+      "y": 12,
+      "text": "SUNYSHORE CITY POKéMON GYM\nLeader: Volkner",
+      "script": "GymStatue"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 13,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "school_kid_tiera",
+      "name": "Tiera",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 4,
+      "facing": "Right",
+      "trainer": {
+        "id": "school_kid_tiera",
+        "name": "Tiera",
+        "trainerClass": "School Kid",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "School Kid Tiera: We learned all about electricity in class! Watch me put my homework into practice!",
+        "dialogueAfter": "School Kid Tiera: Short-circuited... I guess I'll have to study the gears some more.",
+        "sightRange": 4
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1,
+      "script": "Button",
+      "variable": "VAR_MAP_LOCAL_0x00",
+      "value": 0
+    },
+    {
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "depth": 1,
+      "script": "Button",
+      "variable": "VAR_MAP_LOCAL_0x00",
+      "value": 0
+    }
+  ],
+  "wildEncounters": []
+}

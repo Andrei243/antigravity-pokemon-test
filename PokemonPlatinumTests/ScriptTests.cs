@@ -162,6 +162,7 @@ public class ScriptTests
           defeat "lass_caroline"
           flowerclock
           pressbutton blue
+          gearbutton reverse
           partner cheryl "cheryl_eterna_forest"
           partner off
           choosepokemon
@@ -1074,6 +1075,7 @@ public class ScriptTests
         public void Defeat(string trainerId) { }
         public void TurnClock(int from, int to) { }
         public void PressButton(PastoriaWater.Button button) { }
+        public void PressGearButton(SunyshoreGears.Button kind) { }
         public void TravelWith(NPC? who, string? trainerId) { }
         public string? Partner => null;
         public bool Trade(string trade, int slot) => false;

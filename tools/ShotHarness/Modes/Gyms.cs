@@ -5,8 +5,8 @@ partial class Harness
     // The Gyms rebuilt to the original's plans with their puzzles (not part of `all`), each from its door, its puzzle
     // in its states, a trainer's battle starting and the Leader: the Eterna Gym's flower clock turning and its
     // fountains draining, the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the
-    // Pastoria Gym's water rising and falling, the Canalave Gym's lifts, the Snowpoint Gym's ice and snowballs. It wins
-    // every battle and prints what each puzzle left behind.
+    // Pastoria Gym's water rising and falling, the Canalave Gym's lifts, the Snowpoint Gym's ice and snowballs, the
+    // Sunyshore Gym's gears turning. It wins every battle and prints what each puzzle left behind.
     public void GymsMode()
     {
         var story = game.Story;
@@ -88,7 +88,7 @@ partial class Harness
             At(map, x, y, facing);
             game.Interact();
         }
-        // `gyms oreburgh eterna veilstone hearthome pastoria canalave snowpoint`: only the Gyms named
+        // `gyms oreburgh eterna veilstone hearthome pastoria canalave snowpoint sunyshore`: only the Gyms named
         var only = args.Length > 2 ? args[2..] : null;
         bool Want(string gym) => only == null || only.Contains(gym);
 
@@ -432,6 +432,62 @@ partial class Harness
         ReadOn();
         Console.WriteLine($"snowpoint: Icicle Badge {story.HasBadge(Badge.Icicle)}, TM72 {game.Bag.GetQuantity(ItemDatabase.Get("TM72")!)}, " +
             $"the grunts in Veilstone hidden {story.Has("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS")}");
+        }
+
+        // ---- the Sunyshore Gym: its gears and their walkways over the dark (last, so the Gyms before it roll their
+        // battles as they always have)
+        if (Want("sunyshore"))
+        {
+        SunyshoreGears Gears() => (SunyshoreGears)Here().Puzzle!;
+        // Onto a button by the field's own step from the tile before it: the room's trigger presses it and the gears turn
+        void Press(int x, int y, Direction way, string during, string after, double into = 0.25)
+        {
+            var (dx, dy) = FieldMovement.Delta(way);
+            At(Here().Name, x - dx, y - dy, way);
+            engine.Steering = (way, false);
+            Until(() => Gears().Turning != null, "the gears setting off", 120);
+            engine.Steering = null;
+            int from = Gears().Turning?.From ?? -1;
+            Skip(into); Shot(during);
+            Until(() => Gears().Turning == null && !engine.ScriptRunning, "the gears at rest", 240);
+            Frames(10); Shot(after);
+            Console.WriteLine($"sunyshore: {Here().Name} button at {x},{y} took the gears from state {from} to {Gears().State}");
+        }
+        Enter("SunyshoreGym", 8, 14);
+        Frames(20); Shot("g90_sunyshore_door");
+        Console.WriteLine($"sunyshore: in from the city, state {Gears().State}");
+        At("SunyshoreGym", 8, 11, Direction.Up); Frames(4); Shot("g91_sunyshore_the_first_gears");
+        // From the middle gear's east arm onto the east gear's hub: every gear turns a quarter on, each its own way
+        Press(13, 8, Direction.Right, "g92_sunyshore_the_gears_turning", "g93_sunyshore_a_quarter_on");
+        // The second room, with its gears on edge, from its door; the button by the door lays their bars flat
+        Enter("SunyshoreGymRoom2", 9, 21);
+        Frames(20); Shot("g94_sunyshore_the_second_room");
+        Press(6, 13, Direction.Up, "g95_sunyshore_the_bars_turning_over", "g96_sunyshore_the_bars_lying_flat", into: 0.3);
+        // Back into it from the third room: laid out to lead back to the door
+        At("SunyshoreGymRoom2", 9, 3, Direction.Down);
+        game.ArriveOnMap(); Frames(2); ReadOn();
+        Console.WriteLine($"sunyshore: back into the second room from the third, state {Gears().State}");
+        // The third room from its door, and the upper gears laid out to open the way to Volkner
+        Enter("SunyshoreGymRoom3", 11, 25);
+        Frames(20); Shot("g97_sunyshore_the_third_room");
+        Gears().Set(1);
+        At("SunyshoreGymRoom3", 11, 8, Direction.Up); Frames(4); Shot("g98_sunyshore_the_way_to_volkner");
+        // The last Gym of the mode's long run of battles: a Ground-type lead the Electric types can't touch goes into
+        // this one's battles, and fresh, or Volkner's Electivire outlasts an Infernape whose Close Combats have cost it
+        // its Defense (the battles before it are as they always were)
+        team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Garchomp")!, 65));
+        team.HealAll();
+        TalkFrom("SunyshoreGymRoom3", "ace_trainer_zachery", 20, 10, Direction.Right);
+        IntoBattle("Zachery's battle"); Shot("g99_sunyshore_battle_ace_trainer");
+        ReadOn();
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        team.HealAll();
+        TalkFrom("SunyshoreGymRoom3", "volkner", 11, 4, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Volkner")); Box().FinishLine(); Frames(4); Shot("g9a_sunyshore_volkner");
+        IntoBattle("Volkner's battle"); Shot("g9b_sunyshore_battle_volkner");
+        ReadOn();
+        Console.WriteLine($"sunyshore: Beacon Badge {story.HasBadge(Badge.Beacon)}, TM57 {game.Bag.GetQuantity(ItemDatabase.Get("TM57")!)}, " +
+            $"VAR_SUNYSHORE_CITY_STATE {story.Var("VAR_SUNYSHORE_CITY_STATE")}, FLAG_RECEIVED_VOLKNER_TM57 {story.Has("FLAG_RECEIVED_VOLKNER_TM57")}");
         }
     }
 }
