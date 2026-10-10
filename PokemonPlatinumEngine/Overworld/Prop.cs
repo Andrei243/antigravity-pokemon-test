@@ -135,6 +135,8 @@ public enum PropType
     TireStack,
     /// <summary>A post in the way out of the Hearthome Gym's Leader's room, gone once she is beaten.</summary>
     Bollard,
+    /// <summary>A great ball of packed snow on the Snowpoint Gym's ice, broken by sliding into it fast enough.</summary>
+    Snowball,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,

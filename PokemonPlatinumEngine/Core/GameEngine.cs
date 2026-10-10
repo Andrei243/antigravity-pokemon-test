@@ -843,6 +843,7 @@ public partial class GameEngine
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
         KeepPuzzleInForce(dt);
+        ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
         SlideBoulders(dt);
@@ -977,6 +978,8 @@ public partial class GameEngine
         player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) player.Advance(dt, currentMap, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
         else player.Update(dt, currentMap, StartWildBattle, HandleWarp, OnStep);
+        // A snowball the slide broke bursts as it happens (plan 01 · M9, part 2b)
+        ShatterSnowball();
 
         // The player has set off from a tile: whoever travels with them goes there next
         if (partner != null && currentMap.Follower == partner.Who)

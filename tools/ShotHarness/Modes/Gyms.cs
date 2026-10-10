@@ -5,8 +5,8 @@ partial class Harness
     // The Gyms rebuilt to the original's plans with their puzzles (not part of `all`), each from its door, its puzzle
     // in its states, a trainer's battle starting and the Leader: the Eterna Gym's flower clock turning and its
     // fountains draining, the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the
-    // Pastoria Gym's water rising and falling, the Canalave Gym's lifts. It wins every battle and prints what each puzzle
-    // left behind.
+    // Pastoria Gym's water rising and falling, the Canalave Gym's lifts, the Snowpoint Gym's ice and snowballs. It wins
+    // every battle and prints what each puzzle left behind.
     public void GymsMode()
     {
         var story = game.Story;
@@ -88,7 +88,7 @@ partial class Harness
             At(map, x, y, facing);
             game.Interact();
         }
-        // `gyms oreburgh eterna veilstone hearthome pastoria canalave`: only the Gyms named
+        // `gyms oreburgh eterna veilstone hearthome pastoria canalave snowpoint`: only the Gyms named
         var only = args.Length > 2 ? args[2..] : null;
         bool Want(string gym) => only == null || only.Contains(gym);
 
@@ -380,6 +380,58 @@ partial class Harness
         Console.WriteLine($"hearthome: Relic Badge {story.HasBadge(Badge.Relic)}, TM65 {game.Bag.GetQuantity(ItemDatabase.Get("TM65")!)}, bollards {Here().NPCs.Count(n => n.Key.StartsWith("bollard"))}");
         Enter("HearthomeGymRoom1", 8, 10);
         Frames(4); Shot("g45_hearthome_first_room_after_the_badge");
+        }
+
+        // ---- the Snowpoint Gym: its bowl of ice, and the snowballs a slide with speed smashes (last, so the Gyms before
+        // it roll their battles as they always have)
+        if (Want("snowpoint"))
+        {
+        Enter("SnowpointGym", 11, 28);
+        Frames(20); Shot("g80_snowpoint_door");
+        At("SnowpointGym", 11, 22, Direction.Up); Frames(4); Shot("g81_snowpoint_the_bowl");
+        // Lets the ice take the player once a step has put them on it, and waits for the slide to end
+        void SlideFrom(int x, int y, Direction way)
+        {
+            At("SnowpointGym", x, y, way); Frames(2);
+            engine.Steering = (way, false);
+            Until(() => game.Player.IsSliding, "the slide setting off", 120);
+            engine.Steering = null;
+        }
+        bool Stopped() => !game.Player.IsMoving && !game.Player.IsSliding;
+        var ball = Here().Everyone.Single(n => n.Key == "snowball_6");
+        // From the snow at (5, 11) a step east onto the slope: down into the ring with a speed in hand, through the
+        // snowball at (11, 11) and on to the step at (16, 11) (GymTests.ASlideWithSpeedSmashes...)
+        SlideFrom(5, 11, Direction.Right);
+        Until(() => game.Player.GridX >= 8, "the slide down into the ring", 120);
+        Shot("g82_snowpoint_sliding_with_speed");
+        Until(() => !Here().NPCs.Contains(ball), "the snowball breaking", 120);
+        Skip(0.15); Shot("g83_snowpoint_the_snowball_bursts");
+        Until(Stopped, "the slide ending", 240);
+        Frames(10); Shot("g84_snowpoint_through_its_place");
+        Console.WriteLine($"snowpoint: the slide ended at {game.Player.GridX},{game.Player.GridY}, snowball 6 {(Here().NPCs.Contains(ball) ? "standing" : "broken")}");
+        // Back west with no speed: down past where it stood, and a slip back off the slope climbing out of the ring
+        SlideFrom(16, 11, Direction.Left);
+        Until(() => game.Player.GridX == 6 && game.Player.Heading == (7, 11), "the slip back", 240);
+        Skip(0.2); Shot("g85_snowpoint_slipping_back");
+        Until(Stopped, "the slip ending", 240);
+        Console.WriteLine($"snowpoint: slipped back to {game.Player.GridX},{game.Player.GridY} facing {game.Player.Facing}");
+        // In again by the door: every snowball is back, and a slide with no speed stops at one
+        Enter("SnowpointGym", 11, 28);
+        SlideFrom(16, 11, Direction.Left);
+        Until(Stopped, "the slide stopping", 240);
+        Frames(6); Shot("g86_snowpoint_stopped_by_a_snowball");
+        Console.WriteLine($"snowpoint: in again, the slide stopped at {game.Player.GridX},{game.Player.GridY}, snowball 6 {(Here().NPCs.Contains(ball) ? "standing" : "broken")}");
+        TalkFrom("SnowpointGym", "ace_trainer_isaiah", 18, 16, Direction.Up);
+        IntoBattle("Isaiah's battle"); Shot("g87_snowpoint_battle_isaiah");
+        ReadOn();
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        At("SnowpointGym", 11, 5, Direction.Up); Frames(4); Shot("g88_snowpoint_below_the_dais");
+        TalkFrom("SnowpointGym", "candice", 11, 4, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("challenger")); Box().FinishLine(); Frames(4); Shot("g89_snowpoint_candice");
+        IntoBattle("Candice's battle"); Shot("g8a_snowpoint_battle_candice");
+        ReadOn();
+        Console.WriteLine($"snowpoint: Icicle Badge {story.HasBadge(Badge.Icicle)}, TM72 {game.Bag.GetQuantity(ItemDatabase.Get("TM72")!)}, " +
+            $"the grunts in Veilstone hidden {story.Has("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS")}");
         }
     }
 }

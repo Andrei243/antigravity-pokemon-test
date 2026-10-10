@@ -430,6 +430,18 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The floors' heights | Ten tiles apart, by the walker's height | The same; the floor someone is on is the nearest to their height (`CanalaveLifts.FloorOf`) | |
 | A save made on an upper floor | The platforms are laid out by the room's own script as the map loads | The same: they come back at their first ends | |
 
+**The Snowpoint Gym** (plan 01 · M9 2b)
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The ice's speed | Nought to three, one more for each tile sloping down the way the slider goes and one less for each sloping up, measured a quarter of a tile ahead of the tile's middle (`PlayerAvatar_CheckIceHeightChange`); stopped, it is gone | The same (`IceSlide`, `Player.IceSpeed`) | |
+| No speed left on the way up | The slider walks a tile back down slowly, facing up the slope, and stands; so does a slider stopped by something on the way up | The same, at a quarter of the ice's pace (the original's sixteen frames against its four) | |
+| The pace of a slide | A fast walk of four frames a tile at nought, three at one, two at two and three | Our run's eight tiles a second at nought, faster in the original's ratios (10.7, then 16) | The game's paces are its own; the ratios are the original's |
+| A slide into a ledge, a ramp or a climb | Any collision stops the slide | The slide goes on into whatever the step would do, as this game's ice always did | No ice of the open world lies against one; left as it was so nothing outside the Gym moves |
+| A snowball | Broken by a slide whose speed is one or more when it stands on the next tile (`ov5_021E06A8`); the slide goes on through its place; deleted until the map's objects are made again | The same (`IceSlide.Breaks`); back the next time the player comes in, as anything taken off a map is | |
+| A save made with snowballs broken | The map's objects are saved, so a broken snowball stays broken | Every snowball is back after loading | The save keeps no map's things but its trainers and items; coming in again brings them back anyway |
+| The room's own script | Hides Candice in Snowpoint City if `FLAG_DUMMY_0x00EB` is set | Left out | Nothing sets that flag |
+
 ## The first chapter (2026-10-06, plan 02 · S4)
 
 **Platinum's rules, kept as they are** (`res/field/scripts/scripts_twinleaf_town*.s`, `scripts_route_201.s`, `scripts_verity_lakefront.s`, `scripts_lake_verity_low_water.s`, `scripts_sandgem_town*.s`, `scripts_route_202.s`, `src/field/field_system.c`'s `InitNewGame`)

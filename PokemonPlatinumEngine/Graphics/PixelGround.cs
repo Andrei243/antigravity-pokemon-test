@@ -74,6 +74,9 @@ internal static class PixelGround
     // The floor of a cave: what lies under its rock and its ways out where neither covers a texel
     private static readonly Color CaveFloorBase = Kinds.First(k => k.Type == TileType.CaveFloor).Base;
 
+    // The ice of the Snowpoint Gym's floor, which is what lies under its snow and the hall's tiles (plan 01 · M9, part 2b)
+    private static readonly Color IceBase = Kinds.First(k => k.Type == TileType.Ice).Base;
+
     // A slab set into an island of the Distortion World where a way somewhere is
     private static readonly Color Slab = new(170, 162, 188, 255);
     private static readonly Color SlabLight = new(204, 198, 218, 255);
@@ -130,6 +133,8 @@ internal static class PixelGround
         // In a cave a ledge is a ridge of rock on the cave's floor, not of lawn. In the Distortion World the void is
         // never seen, so the islands' stone runs on into it, and their edges are where the undersides hang
         bool cave = map.IsCave, nothing = map.IsVoid;
+        // A Gym floored with ice (the Snowpoint Gym's) has ice under everything, as a cave has its floor
+        bool icy = map.Interior == InteriorStyle.Gym && map.ArenaType == Data.PokemonType.Ice;
         TileType? TypeAt(int tx, int ty)
         {
             var type = GroundBaker.TypeAt(map, tx + originX, ty + originY);
@@ -201,7 +206,7 @@ internal static class PixelGround
 
                 // Lawn: flat base with clean-edged lighter patches (in the Distortion World, its stone; in a cave, its
                 // floor, which shows where the rounded corners of the rock and of a way out leave a gap between them)
-                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
+                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : icy ? IceBase : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
                 if (forest != null && forest[i] >= 0.5f) col = Forest;
                 if (tall != null && tall[i] >= 0.5f) col = TallGround;
 

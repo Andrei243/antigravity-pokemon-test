@@ -63,6 +63,7 @@ public static partial class SoundBank
         Add("dowsing_ping", SoundGroup.Field, "SEQ_SE_DP_POKETCH_009", "The Dowsing Machine's touch: a ring spreading over the screen.");
         Add("lift", SoundGroup.Field, "SEQ_SE_DP_ELEBETA", "A platform of the Canalave Gym sets off with the player on it.");
         Add("lift_stop", SoundGroup.Field, "SEQ_SE_DP_KI_GASYAN", "The platform comes to its end and locks in place.");
+        Add("snowball", SoundGroup.Field, "SEQ_SE_DP_FW291", "A snowball of the Snowpoint Gym bursts as the player slides into it.");
         Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
         Add("thunder_rumble", SoundGroup.Field, "SEQ_SE_DP_T_KAMI", "Thunder rolling from further off, a second after the lightning (one strike of three).");
 
@@ -324,6 +325,14 @@ public static partial class SoundBank
                 d.Noise(0, 0.03f, Filter.Band, 3000f, 2400f, 0.7f, 4f, 0.05f, 2f);
                 d.Bell(0.01f, 0.3f, 820f, 2.76f, 2.5f, 0.18f, 6f);
                 d.Noise(0.12f, 0.015f, Filter.Band, 2600f, 2600f, 0.5f, 4f, 0.1f, 2f);
+                return Finish(d.S, 0.4f);
+            case "snowball":
+                // Packed snow bursting: a soft muffled thud, a crunch that falls away, and icy bits pattering down
+                d = new SoundDesign(0.5f, 0x5B0u);
+                d.Thump(0, 0.14f, 120f, 60f, 0.6f, 0.3f);
+                d.Noise(0, 0.22f, Filter.Band, 2600f, 700f, 0.8f, 1.1f, 0.005f, 2.2f);
+                d.Noise(0.02f, 0.3f, Filter.Low, 1800f, 500f, 0.35f, 0.8f, 0.02f, 1.6f, 22f, 0.5f);
+                d.Crackle(0.1f, 0.32f, 10, 3200f, 0.25f);
                 return Finish(d.S, 0.4f);
             case "boulder":
                 // A great weight dragged over stone: a rumble with a grinding stutter

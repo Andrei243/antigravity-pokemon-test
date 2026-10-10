@@ -240,7 +240,7 @@ public static class TileBehaviors
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
             => (BehaviourSupport.Ruled, "Climbed to its far end by a party that knows Rock Climb."),
         TileBehavior.Waterfall => (BehaviourSupport.Ruled, "Surfed up with Waterfall and down without; never sideways."),
-        TileBehavior.Ice => (BehaviourSupport.Ruled, "Whoever steps on it slides on until something stops them."),
+        TileBehavior.Ice => (BehaviourSupport.Ruled, "Whoever steps on it slides on until something stops them; down a slope the slide gathers speed and up one loses it, and a slide with speed breaks a snowball (IceSlide)."),
         TileBehavior.SlideEast or TileBehavior.SlideWest or TileBehavior.SlideNorth or TileBehavior.SlideSouth
             => (BehaviourSupport.Ruled, "Carries whoever steps on it along."),
         TileBehavior.River or TileBehavior.Sea

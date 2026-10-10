@@ -1,0 +1,477 @@
+{
+  "name": "SnowpointGym",
+  "displayName": "Snowpoint Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ice",
+  "width": 23,
+  "height": 30,
+  "ground": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "#iiii^iii_____iiiiiiii#",
+    "#iiiiiiii_____iiiiiiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#iiiiiiiiiiiiiiii^iiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#^iiiiiiiiiiiiiiiii^ii#",
+    "#iiiiiiiiiiiiiiiiiiiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#iiii^iiiiiiiiii^iiiii#",
+    "#iiiiiiiiiiiiiiiiiiiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#iiiiii^iiiii^iiiiiiii#",
+    "#iiiiiiiiiiiiiiiiiiiii#",
+    "#iiiiiiii^iiiii^iiiiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#iiiiiiiii^iiiiiiiiiii#",
+    "#iiiii^iiiiiiiiiiiiiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#iiiiiiiiiiiiiiiiiiiii#",
+    "#i^^iiiiiii^iiiiiiiiii#",
+    "#iiiiiiiiii^iiiiiiiiii#",
+    "#iiiiiiiiiiiiiiiiiiiii#",
+    "#iiiiiiiii___iiii^iiii#",
+    "#iiiiiiiii___iiiiiiiii#",
+    "#iiiiiiii_____iiiiiiii#",
+    "#iiiiiiii_____iiiiiiii#",
+    "###########D###########"
+  ],
+  "solid": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#..#...............#..#",
+    "#.....................#",
+    "#.....................#",
+    "#.....#.........#.....#",
+    "#.....................#",
+    "#.....................#",
+    "#........#...#........#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#........#...#........#",
+    "#.....................#",
+    "#.....................#",
+    "#.....#.........#.....#",
+    "#.....................#",
+    "#.....................#",
+    "#..#...............#..#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#........#...#........#",
+    "#.....................#",
+    "###########.###########"
+  ],
+  "heights": [
+    { "x": 14, "z": 5, "width": 1, "depth": 1, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 5, "width": 1, "depth": 1, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 7, "width": 1, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 19, "z": 7, "width": 1, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 19, "z": 23, "width": 1, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 23, "width": 1, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 10, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 16, "z": 10, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 16, "z": 20, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 20, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 17, "width": 1, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 17, "width": 1, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 13, "width": 1, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 13, "width": 1, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 2.625, "width": 1, "depth": 2.375, "height": 4, "slopeX": -1, "slopeZ": 0 },
+    { "x": 8, "z": 2.625, "width": 1, "depth": 2.375, "height": 3, "slopeX": 1, "slopeZ": 0 },
+    { "x": 9, "z": 5, "width": 5, "depth": 1, "height": 4, "slopeX": 0, "slopeZ": -1 },
+    { "x": 19, "z": 8, "width": 1, "depth": 15, "height": 2, "slopeX": 1, "slopeZ": 0 },
+    { "x": 3, "z": 8, "width": 1, "depth": 15, "height": 3, "slopeX": -1, "slopeZ": 0 },
+    { "x": 4, "z": 23, "width": 15, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 1 },
+    { "x": 4, "z": 7, "width": 15, "depth": 1, "height": 3, "slopeX": 0, "slopeZ": -1 },
+    { "x": 13, "z": 14, "width": 1, "depth": 3, "height": 0, "slopeX": 1, "slopeZ": 0 },
+    { "x": 9, "z": 14, "width": 1, "depth": 3, "height": 1, "slopeX": -1, "slopeZ": 0 },
+    { "x": 10, "z": 17, "width": 3, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 1 },
+    { "x": 10, "z": 13, "width": 3, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": -1 },
+    { "x": 16, "z": 11, "width": 1, "depth": 9, "height": 1, "slopeX": 1, "slopeZ": 0 },
+    { "x": 6, "z": 11, "width": 1, "depth": 9, "height": 2, "slopeX": -1, "slopeZ": 0 },
+    { "x": 7, "z": 20, "width": 9, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 1 },
+    { "x": 7, "z": 10, "width": 9, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": -1 },
+    { "x": 8, "z": 6, "width": 7, "depth": 1, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 17, "z": 8, "width": 2, "depth": 15, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 8, "width": 2, "depth": 15, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 21, "width": 11, "depth": 2, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 6, "z": 8, "width": 11, "depth": 2, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 11, "width": 2, "depth": 9, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 7, "z": 11, "width": 2, "depth": 9, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 18, "width": 5, "depth": 2, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 11, "width": 5, "depth": 2, "height": 1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 10, "z": 14, "width": 3, "depth": 3, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 9, "z": 2.625, "width": 5, "depth": 2.375, "height": 4, "slopeX": 0, "slopeZ": 0 },
+    { "x": 15, "z": 2.625, "width": 7, "depth": 4.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 2.625, "width": 7, "depth": 4.375, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 20, "z": 7, "width": 2, "depth": 22, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 3, "z": 24, "width": 17, "depth": 5, "height": 3, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 7, "width": 2, "depth": 22, "height": 3, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "behaviours": [
+    { "x": 5, "y": 3, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 11, "y": 5, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 17, "y": 6, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 11, "y": 7, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 1, "y": 8, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 19, "y": 8, "width": 1, "depth": 1, "behaviour": "BlockNorthAndSouth" },
+    { "x": 11, "y": 10, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 5, "y": 11, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 16, "y": 11, "width": 1, "depth": 1, "behaviour": "BlockNorthAndSouth" },
+    { "x": 11, "y": 13, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 7, "y": 14, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 13, "y": 14, "width": 1, "depth": 1, "behaviour": "BlockNorthAndSouth" },
+    { "x": 9, "y": 16, "width": 1, "depth": 1, "behaviour": "BlockNorthAndSouth" },
+    { "x": 15, "y": 16, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 11, "y": 17, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 10, "y": 18, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 6, "y": 19, "width": 1, "depth": 1, "behaviour": "BlockNorthAndSouth" },
+    { "x": 11, "y": 20, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 2, "y": 22, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 3, "y": 22, "width": 1, "depth": 1, "behaviour": "BlockNorthAndSouth" },
+    { "x": 11, "y": 22, "width": 1, "depth": 1, "behaviour": "None" },
+    { "x": 11, "y": 23, "width": 1, "depth": 1, "behaviour": "BlockEastAndWest" },
+    { "x": 17, "y": 25, "width": 1, "depth": 1, "behaviour": "None" }
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 9,
+      "y": 27,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 13,
+      "y": 27,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 29,
+      "targetMap": "Sinnoh",
+      "targetX": 367,
+      "targetY": 223,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 9,
+      "y": 27,
+      "text": "SNOWPOINT CITY POKéMON GYM\nLeader: Candice",
+      "script": "GymStatue"
+    },
+    {
+      "x": 13,
+      "y": 27,
+      "text": "SNOWPOINT CITY POKéMON GYM\nLeader: Candice",
+      "script": "GymStatue"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "candice",
+      "name": "Candice",
+      "npcType": "Lass",
+      "x": 11,
+      "y": 3,
+      "facing": "Down",
+      "script": "Candice"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 27,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "ace_trainer_anton",
+      "name": "Anton",
+      "npcType": "Youngster",
+      "x": 17,
+      "y": 3,
+      "facing": "Down",
+      "trainer": {
+        "id": "ace_trainer_anton",
+        "name": "Anton",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Anton: Up here by the dais the ice is at its slickest. Think you can keep your footing in a battle?",
+        "dialogueAfter": "Ace Trainer Anton: I slipped up... Nobody climbs to Candice without a running start from down below.",
+        "sightRange": 1
+      },
+      "movement": "look_south_and_east"
+    },
+    {
+      "id": "ace_trainer_savannah",
+      "name": "Savannah",
+      "npcType": "Lass",
+      "x": 21,
+      "y": 9,
+      "facing": "Left",
+      "trainer": {
+        "id": "ace_trainer_savannah",
+        "name": "Savannah",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Savannah: Kids in Snowpoint learn to slide before they learn to walk. Every slope here is a running start!",
+        "dialogueAfter": "Ace Trainer Savannah: Melted! You've got the ice figured out, haven't you?",
+        "sightRange": 1
+      },
+      "movement": "look_north_south_and_west"
+    },
+    {
+      "id": "ace_trainer_alicia",
+      "name": "Alicia",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "trainer": {
+        "id": "ace_trainer_alicia",
+        "name": "Alicia",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Alicia: My Sneasel skate over the ice without making a sound. Can you say the same?",
+        "dialogueAfter": "Ace Trainer Alicia: Hmph. Their claws were sharp, but your focus was sharper.",
+        "sightRange": 1
+      }
+    },
+    {
+      "id": "ace_trainer_isaiah",
+      "name": "Isaiah",
+      "npcType": "Youngster",
+      "x": 18,
+      "y": 15,
+      "facing": "Down",
+      "trainer": {
+        "id": "ace_trainer_isaiah",
+        "name": "Isaiah",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Isaiah: It takes speed to smash those snowballs. Speed, and a little nerve!",
+        "dialogueAfter": "Ace Trainer Isaiah: Bowled over! Remember: a slope down gives you speed, a slope up takes it away.",
+        "sightRange": 1
+      }
+    },
+    {
+      "id": "ace_trainer_brenna",
+      "name": "Brenna",
+      "npcType": "Lass",
+      "x": 5,
+      "y": 16,
+      "facing": "Up",
+      "trainer": {
+        "id": "ace_trainer_brenna",
+        "name": "Brenna",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Brenna: The middle of the Gym is its lowest point. Everything slides down to it sooner or later!",
+        "dialogueAfter": "Ace Trainer Brenna: This time I was the one who slid... Candice is waiting at the very top.",
+        "sightRange": 1
+      }
+    },
+    {
+      "id": "ace_trainer_sergio",
+      "name": "Sergio",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 13,
+      "facing": "Down",
+      "trainer": {
+        "id": "ace_trainer_sergio",
+        "name": "Sergio",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Sergio: Snow falls, snow piles up, and snow gets in your way. Just like me!",
+        "dialogueAfter": "Ace Trainer Sergio: What a blizzard of a battle! Keep sliding, you'll get there.",
+        "sightRange": 1
+      }
+    },
+    {
+      "id": "snowball_1",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 12,
+      "y": 18,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_2",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 10,
+      "y": 21,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_3",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 17,
+      "y": 19,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_4",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 11,
+      "y": 16,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_5",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 11,
+      "y": 14,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_6",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 11,
+      "y": 11,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_7",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 11,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_8",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 13,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_9",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 10,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_10",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 12,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_11",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 9,
+      "y": 4,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_12",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 13,
+      "y": 4,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_13",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 10,
+      "y": 15,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_14",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 17,
+      "y": 17,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_15",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 17,
+      "y": 18,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_16",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 17,
+      "y": 20,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_17",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 12,
+      "y": 21,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_18",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 9,
+      "y": 8,
+      "facing": "Up"
+    },
+    {
+      "id": "snowball_19",
+      "name": "Snowball",
+      "npcType": "Snowball",
+      "x": 20,
+      "y": 23,
+      "facing": "Up"
+    }
+  ],
+  "wildEncounters": []
+}
