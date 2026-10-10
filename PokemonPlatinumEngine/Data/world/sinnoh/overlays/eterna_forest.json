@@ -6,7 +6,7 @@
   // Cheryl joins at the way in from Route 205, waits if the player goes back out, and parts at the far side (plan 02 · S6)
   "triggers": [ { "trigger": 0, "script": "Join" }, { "trigger": 1, "script": "Wait" }, { "trigger": 2, "script": "Part" } ],
   "people": {
-    "cheryl": { "name": "Cheryl", "npcType": "Lady", "script": "Cheryl" },
+    "cheryl": { "name": "Cheryl", "script": "Cheryl" },
     // Eterna's Gym Leader by the trees before the Old Chateau, once her Badge is won (plan 02 · S6, part 2): the Gym's
     // script shows her, as the original's does (FLAG_HIDE_ETERNA_FOREST_GARDENIA)
     "gardenia": { "name": "Gardenia", "npcType": "Gardenia", "script": "Gardenia" },

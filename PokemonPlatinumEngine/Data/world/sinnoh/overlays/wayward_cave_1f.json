@@ -5,7 +5,7 @@
   // under the Cycling Road (trigger 0)
   "triggers": [ { "trigger": 0, "script": "Exit" } ],
   "people": {
-    "mira": { "name": "Mira", "npcType": "Lass", "script": "Mira" },
+    "mira": { "name": "Mira", "script": "Mira" },
     "camper_diego": {
       "name": "Diego",
       "trainer": {

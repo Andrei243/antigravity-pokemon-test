@@ -101,6 +101,47 @@ public class CharacterTableTests
         Assert.Equal((new Color(128, 64, 32, 255), HairCut.Spiky, BodyBuild.Adult, 1.1f), (hiker.Top, hiker.Hair, hiker.Build, hiker.Height));
     }
 
+    /// <summary>The named cast of the story's first half (plan 11 · C5): each a look of their own, under the name the world gives them.</summary>
+    public static readonly string[] FirstHalfCast =
+    {
+        "roark", "poketch_president", "mars", "jupiter", "cheryl", "gardenia", "cynthia", "mira", "fantina", "bebe", "maylene", "crasher_wake"
+    };
+
+    [Fact]
+    public void TheFirstHalfsNamedCastAreEachTheirOwnLook()
+    {
+        foreach (string look in FirstHalfCast)
+        {
+            Assert.True(Table.Has(look), $"{look} has no look");
+            Assert.False(Table.Fallbacks.ContainsKey(look), $"{look} still falls back");
+        }
+        // Each is told from every other look by hair, hat and clothes
+        var seen = new Dictionary<(Color, HairCut, Headwear, Color, Color, Color), string>();
+        foreach (string look in Table.Names)
+        {
+            var s = Table.Get(look);
+            var key = (s.HairColor, s.Hair, s.Hat, s.HatColor, s.Top, s.Bottom);
+            Assert.False(seen.TryGetValue(key, out var other), $"{look} looks just like {other}");
+            seen[key] = look;
+        }
+
+        // The world's objects resolve to them by their own looks, and the people of the rooms by their type
+        Assert.Equal("cheryl", WorldMapBuilder.CharacterFor("cheryl"));
+        Assert.Equal("mira", WorldMapBuilder.CharacterFor("mira"));
+        Assert.Equal("crasher_wake", WorldMapBuilder.CharacterFor("crasher_wake"));
+        foreach (var (key, id, look) in new[] { ("eterna_forest", "cheryl", "cheryl"), ("wayward_cave_1f", "mira", "mira"), ("jubilife_city", "poketch_co_president", "poketch_president") })
+        {
+            var person = Sinnoh.Value.Overlay(key)!.People[id];
+            string stands = person.NpcType ?? WorldMapBuilder.CharacterFor(Sinnoh.Value.Area(key)!.Objects.First(o => o.Id == id).Looks);
+            Assert.Equal(look, stands);
+        }
+        foreach (var (map, name, look) in new[] { ("PastoriaGym", "Crasher Wake", "crasher_wake"), ("PoketchCompany", "President", "poketch_president") })
+        {
+            var file = JsonSerializer.Deserialize<MapFile>(File.ReadAllText(GameDataFiles.PathOf($"maps/{map}.json")), GameDataFiles.Json)!;
+            Assert.Equal(look, file.Npcs.Single(n => n.Name == name).NpcType);
+        }
+    }
+
     /// <summary>
     /// Every person of the open areas resolves through the table: as a look of their own, or as the look their
     /// object stands as for now. Those who stand as the boy because nobody has drawn them yet are counted, and plan 11

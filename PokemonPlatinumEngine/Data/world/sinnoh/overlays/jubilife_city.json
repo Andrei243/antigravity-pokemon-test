@@ -42,7 +42,7 @@
       "dialog": [ "{assistant}: The professor's research is important. We can't let anyone take it!" ]
     },
     "looker": { "name": "Looker", "script": "Looker" },
-    "poketch_co_president": { "name": "President", "npcType": "Gentleman", "script": "PoketchCoPresident" },
+    "poketch_co_president": { "name": "President", "npcType": "poketch_president", "script": "PoketchCoPresident" },
     "prof_rowan": {
       "name": "Prof. Rowan",
       "dialog": [ "Prof. Rowan: Hmph. These people will not get one page of my research." ]

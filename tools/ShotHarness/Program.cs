@@ -95,6 +95,7 @@ if (mode == "windworks") h.WindworksMode();
 if (mode == "eterna") h.EternaMode();
 if (mode == "opening") h.OpeningMode();
 if (mode == "boutique") h.BoutiqueMode();
+if (mode == "cast") h.CastMode();
 if (mode == "export") h.ExportMode();
 
 h.Close();

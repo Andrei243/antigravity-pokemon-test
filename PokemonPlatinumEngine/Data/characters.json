@@ -38,6 +38,16 @@
     "gardenia": { "hairColor": "#ba5634", "top": "#54a05a", "accent": "#26623c", "bottom": "#34303c", "shoes": "#7a5034", "eyes": "#4a7846", "shorts": true, "build": "Adult", "sole": "#463228", "lashes": true, "blush": true },
     // Team Galactic's Commander in the Eterna building: our own take, violet hair cut in a bob and the team's pale uniform with its dark collar and a short dark skirt
     "jupiter": { "hairColor": "#7e48a0", "top": "#dee0e8", "accent": "#383c50", "bottom": "#46485c", "shoes": "#343642", "eyes": "#6e3e8c", "skirt": true, "build": "Adult", "sole": "#c8cad4", "lashes": true, "height": 1.02 },
+    // The named cast of the story's first half (plan 11 · C5), each our own take. The Pokétch Company's president (plan 02 · S5), who has no object of his own in the original: swept grey hair, a moustache and bushy brows, a navy suit and a red tie
+    "poketch_president": { "hairColor": "#a8a8b4", "hair": "Swept", "top": "#2e3a5e", "accent": "#d8343c", "bottom": "#2a3250", "shoes": "#2a2422", "eyes": "#3a3440", "mustache": true, "scarf": true, "coat": true, "build": "Adult", "bushyBrows": true, "height": 0.98 },
+    // Cheryl, who walks Eterna Forest with the player (plan 02 · S6): long chestnut hair, a peach blouse with a cream collar and a long green skirt
+    "cheryl": { "hairColor": "#7a4632", "hair": "Long", "top": "#f2ae84", "accent": "#fcf0e4", "bottom": "#5e8a4e", "shoes": "#6a4632", "eyes": "#5a3c2c", "skirt": true, "build": "Adult", "lashes": true, "blush": true, "height": 1.02 },
+    // Mira, lost in Wayward Cave (plan 02 · S7): a small girl with long pale-gold hair under a big orange bow, in a pink dress
+    "mira": { "hairColor": "#f0dc9c", "hair": "Long", "hat": "Bow", "hatColor": "#f08a3c", "hatBand": "#cc5a28", "top": "#f4a6c2", "accent": "#fcf2f6", "bottom": "#f4a6c2", "shoes": "#c8506e", "eyes": "#5a4a8a", "skirt": true, "shortSleeves": true, "lashes": true, "blush": true, "height": 0.88 },
+    // Bebe, who keeps Hearthome's Pokémon Storage System (plan 02 · S7), with no object of her own in the original: short dark hair, an orange cardigan over a cream top and a brown skirt
+    "bebe": { "hairColor": "#3a2c34", "top": "#ec8a3a", "accent": "#f6ecd6", "bottom": "#7a5640", "shoes": "#4a3430", "eyes": "#4a3a46", "skirt": true, "build": "Adult", "lashes": true, "blush": true, "height": 0.98 },
+    // Pastoria's Gym Leader (plan 02 · S8): a big wrestler in a blue mask with a yellow crest, bare-chested over blue trousers and yellow boots
+    "crasher_wake": { "skin": "#e4ae84", "hairColor": "#3a6ad0", "hat": "Mask", "hatColor": "#3a6ad0", "hatBand": "#f4c838", "top": "#e4ae84", "accent": "#e4ae84", "bottom": "#2e58b4", "shoes": "#f2c43c", "eyes": "#3c2c28", "build": "Adult", "height": 1.14 },
     // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
