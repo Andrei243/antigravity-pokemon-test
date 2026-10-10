@@ -1,0 +1,155 @@
+{
+  "name": "PokemonDayCare",
+  "displayName": "Pokémon Day Care",
+  "bgmTrack": "sinnoh/solaceon",
+  "interior": "House",
+  "trees": "Round",
+  "width": 18,
+  "height": 13,
+  "ground": [
+    "##################",
+    "##################",
+    "##################",
+    "#__________#_____#",
+    "#__________#_____#",
+    "#__________#_____#",
+    "#__________#_____#",
+    "#__________#_____#",
+    "#________________#",
+    "#________________#",
+    "#________________#",
+    "#________________#",
+    "#########D########"
+  ],
+  "solid": [
+    "##################",
+    "##################",
+    "##################",
+    "##..###....#.....#",
+    "#.....#....#.....#",
+    "#.....######.....#",
+    "#..........#.....#",
+    "#..........#.....#",
+    "#................#",
+    "#..#.............#",
+    "#................#",
+    "#................#",
+    "#########.########"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 7,
+      "y": 5,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 14,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 8,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 9,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 9,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 553,
+      "targetY": 646,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 11,
+      "y": 7,
+      "text": "Your Pokémon grow along with you on every road you travel. Stay the best of friends!\nThe Pokémon Day Care"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "text": "The PC's screen lists the Pokémon in the couple's care, with a note on how each one is getting on."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "day_care_lady",
+      "name": "Day-Care Lady",
+      "npcType": "Lady",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "script": "DayCareLady"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Day-Care Fan",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 9,
+      "facing": "Right",
+      "script": "AppFan",
+      "shownBy": "FLAG_STORED_POKEMON_AT_DAY_CARE"
+    }
+  ],
+  "wildEncounters": []
+}

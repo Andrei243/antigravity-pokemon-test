@@ -42,7 +42,8 @@ public sealed class HallOfFame
     {
         if (Total >= MostEver) return;
         Debut ??= now;
-        var team = party.Members.Select(p =>
+        // An Egg doesn't enter (the original leaves Eggs out of the record; plan 06 · R15)
+        var team = party.Members.Where(p => !p.IsEgg).Select(p =>
         {
             var (name, id) = trainerOf(p);
             return new HallOfFameMember(p.Species.Name, p.Form, p.Level, p.Nickname, p.Gender, p.IsShiny, p.Personality, name, id,
@@ -111,6 +112,9 @@ public static class TrainerScore
 
     /// <summary>A Poffin cooked alone (plan 06 · R14c; <c>TRAINER_SCORE_EVENT_UNK_12</c>).</summary>
     public const int CookedPoffin = 3;
+
+    /// <summary>An Egg hatched (plan 06 · R15; <c>TRAINER_SCORE_EVENT_UNK_15</c>, given by <c>Field_UpdateDaycare</c>).</summary>
+    public const int HatchedEgg = 7;
 
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }

@@ -123,6 +123,26 @@ script ChapterFive
   setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
   setflag FLAG_HIDE_ROUTE_212_BLOCKADE
 label Before
+  call ChapterSix
+  return
+
+
+# Who the sixth chapter (plan 02 · S9, "Celestic and the sea") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): Cynthia on Route 210 and in Celestic Town, Cyrus and the elder
+# in the ruins' cave (and Cynthia there, whose talk is the post-game's), the elder at home, and the rival on
+# Canalave City's bridge. A save that already has Byron's Badge has had the rival brought back by the Gym's script
+# (CanalaveGym.txt), so his flag is left as that left it. Called by ChapterFive, and run for a save from before
+# (Story/StoryMigration.cs, version 11). It may only set flags and variables, and ends in return.
+script ChapterSix
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  setflag FLAG_HIDE_CELESTIC_TOWN_CYNTHIA
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_ELDER
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA
+  setflag FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER
+  if badge mine goto Won
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+label Won
   return
 
 
@@ -749,3 +769,160 @@ script SwarmNews
 label Today
   say "Today there's a whole crowd of {swarm} on {swarmplace}!" "If you want to meet one, now's your chance, {player}!"
   end
+
+
+# An Egg of the team is about to hatch (plan 06 · R15; the original's common script 31, CommonScript_HatchEgg): an egg
+# cycle has ended with an Egg's cycles spent, and the field runs this. "Oh?", and its scene plays.
+script HatchEgg
+  speaker none
+  text "Oh?"
+  hatch
+  end
+
+
+# The Day-Care Man, outside the Pokémon Day Care in Solaceon Town (plan 06 · R15; DayCareCommon_Man, on the original's
+# beats in our own words): he hands over an Egg the couple found, or says how the Pokémon left with them are and how
+# well two of them get on.
+script DayCareMan
+  speaker "Day-Care Man"
+  daycare state
+  if result == 1 goto Egg
+  if result == 2 goto One
+  if result == 3 goto Two
+  say "I'm the Day-Care Man. My wife and I look after other Trainers' Pokémon for them." "If you'd like us to raise one of yours, have a word with her inside."
+  end
+label Egg
+  ask "Ah, there you are! We had a real surprise while we were minding your Pokémon. One of them had an Egg! Goodness knows where it came from, but it's yours. Will you take it?"
+  if yes goto TakeEgg
+  ask "Are you sure? I'll keep it myself, then. You really don't want it?"
+  if yes goto TakeEgg
+  say "Then I'll hang on to it. Thank you kindly!"
+  daycare keep
+  end
+label TakeEgg
+  if party >= 6 goto NoRoom
+  daycare egg
+  fanfare pokemon
+  text "{player} received the Egg from the Day-Care Man."
+  say "Look after it well, now."
+  end
+label NoRoom
+  say "Ah, but you've no room for it on your team just now. Come back once you've made some."
+  end
+label One
+  say "Ah, it's you! Good to see you. Your {daycare:0} is getting on just fine."
+  end
+label Two
+  say "Ah, it's you! Good to see you. Your {daycare:0} and {daycare:1} are both getting on just fine."
+  daycare compatibility
+  if result == 0 say "The two of them are as thick as thieves."
+  if result == 1 say "The two of them get along well enough."
+  if result == 2 say "The two of them don't seem to care for each other much."
+  if result == 3 say "The two of them would rather play with the other Pokémon than with each other."
+  end
+
+
+# The Day-Care Lady, at her counter inside (plan 06 · R15; DayCareCommon_Lady): she takes up to two Pokémon to raise,
+# which gain a point of EXP for every step the player takes, and gives them back for a fee of $100 and $100 more for
+# each level they grew. An Egg, or the last Pokémon able to fight, she won't take.
+script DayCareLady
+  speaker "Day-Care Lady"
+  daycare state
+  if result == 1 goto EggWaiting
+  if result == 2 goto One
+  if result == 3 goto Two
+  ask "Hello, dear. I'm the Day-Care Lady. We can raise Pokémon for you. Shall we look after one of yours?"
+  if yes goto Raise
+  say "Oh, never mind, then. Do come again."
+  end
+label Raise
+  daycare check
+  if result == 1 goto OnlyOne
+  if result == 2 goto JustOne
+  say "Which of your Pokémon shall we raise?"
+  choosepokemon
+  daycare leave
+  if result == 1 goto ComeAgain
+  if result == 2 goto MerelyAnEgg
+  if result == 3 goto NothingToBattle
+  setflag FLAG_STORED_POKEMON_AT_DAY_CARE
+  say "Lovely. We'll raise your {left} for a while. Come back for it later."
+  daycare state
+  if result == 3 end
+  ask "We can look after two Pokémon at once. Shall we raise another?"
+  if yes goto Raise
+label ComeAgain
+  say "Very good. Do come again."
+  end
+label MerelyAnEgg
+  say "Now, now. That's only an Egg, dear!"
+  end
+label NothingToBattle
+  say "If you leave that one with me, what would you battle with? Come back another time."
+  end
+label OnlyOne
+  say "Oh? But you've only the one Pokémon with you. You can't go off without a Pokémon! Come back another time."
+  end
+label JustOne
+  say "Now, now. If you leave that one with me, you'll be left with just the one." "You'd do better to catch a few more first, if you ask me."
+  end
+label EggWaiting
+  say "Ah, there you are! My husband has been looking for you."
+  end
+label One
+  say "Ah, it's you! Good to see you. Now, about your Pokémon..."
+  call Grown0
+  ask "We can look after two Pokémon at once. Shall we raise another?"
+  if yes goto Raise
+  ask "Would you like your Pokémon back?"
+  if yes goto TakeBack
+  goto ComeAgain
+label Two
+  say "Ah, it's you! Good to see you. Now, about your Pokémon..."
+  call Grown0
+  call Grown1
+  ask "Would you like your Pokémon back?"
+  if yes goto TakeBack
+  goto ComeAgain
+label TakeBack
+  if party >= 6 goto TeamFull
+  daycare state
+  if result == 2 goto TakeFirst
+  choose "Which Pokémon will you take back?" "{daycare:0}  Lv. {level:0}" "{daycare:1}  Lv. {level:1}" "Cancel"
+  if result == 1 goto TakeSecond
+  if result == 2 goto ComeAgain
+label TakeFirst
+  ask "If you'd like your {daycare:0} back, that will be ${fee:0}."
+  if no goto ComeAgain
+  daycare take 0
+  goto Taken
+label TakeSecond
+  ask "If you'd like your {daycare:1} back, that will be ${fee:1}."
+  if no goto ComeAgain
+  daycare take 1
+label Taken
+  if result == 1 goto Short
+  say "Splendid! Here's your Pokémon."
+  text "{player} took {taken} back from the Day-Care Lady."
+  daycare state
+  if result != 2 goto ComeAgain
+  ask "Would you like the other one back as well?"
+  if yes goto TakeBack
+  goto ComeAgain
+label Short
+  say "Oh dear. You haven't got enough money..."
+  end
+label TeamFull
+  say "Your team is full, dear. Make some room, then come and see me."
+  end
+
+# How far each of the two has grown by level since it was left (BufferDaycareGainedLevelsBySlot): said only when it has.
+script Grown0
+  daycare grown 0
+  if result > 0 say "By my reckoning, your {daycare:0} has grown by about {grown:0} levels."
+  return
+
+script Grown1
+  daycare grown 1
+  if result > 0 say "By my reckoning, your {daycare:1} has grown by about {grown:1} levels."
+  return

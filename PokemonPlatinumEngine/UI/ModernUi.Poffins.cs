@@ -300,7 +300,7 @@ internal static partial class ModernUi
         Panel(who, 34);
         var c = new Vector2(who.X + who.Width / 2f, who.Y + 230);
         BallDisc(c, 180);
-        var sprite = PixelArtGenerator.GetPokemonSprite(p.ModelName, isBack: false);
+        var sprite = PixelArtGenerator.SpriteOf(p);
         const int scale = 3;
         float hop = screen.Step == CaseStep.Eating ? MathF.Abs(MathF.Sin(screen.StepAge * 9f)) * 14f : 0f;
         Raylib.DrawTexturePro(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height),

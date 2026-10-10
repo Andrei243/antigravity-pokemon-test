@@ -1,0 +1,13 @@
+{
+  "area": "celestic_town_cave",
+  "bgmTrack": "sinnoh/celestic",
+  // The ancient painting on the back wall (plan 02 · S9, scripts/celestic_town_cave.txt)
+  "read": { "1": "Painting" },
+  // The elder and Cyrus come in after the player as the painting is first looked at, and stay on the tiles their
+  // objects give until Cyrus is beaten. Cynthia's talk about the painting is the post-game's (plan 02 · S15c: after
+  // Charon is arrested on Stark Mountain), so she isn't placed yet.
+  "people": {
+    "elder": { "name": "Elder", "npcType": "Lady", "script": "Elder" },
+    "cyrus": { "name": "Cyrus", "script": "Cyrus" }
+  }
+}

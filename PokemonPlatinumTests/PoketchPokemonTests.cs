@@ -372,6 +372,21 @@ public class PoketchPokemonTests
     }
 
     [Fact]
+    public void AnEggIsLeftOutOfTheMatchup()
+    {
+        // The app's team is read past MON_DATA_IS_EGG (matchup_checker/main.c; plan 06 · R15): with an Egg between
+        // them, the two Bidoof are the pair, and there is no third to change to
+        var egg = Breeding.GiftEgg(PokemonDatabase.Get("Togepi")!, 0, new Random(1), Ruleset.Platinum);
+        var rig = new Rig(Mon("Bidoof"), egg, Mon("Bidoof", Gender.Female, trainer: Someone));
+        var app = rig.Open<MatchupCheckerApp>(PoketchApp.MatchupChecker);
+        Assert.Equal(Gender.Female, app.RightPokemon(rig.Context)!.Gender);
+        app.Press(MatchupCheckerApp.ChangeLeft, rig.Context);
+        Assert.Equal(0, app.Left);
+        app.Press(MatchupCheckerApp.Check, rig.Context);
+        Assert.Equal(MatchupCheckerApp.Best, app.Result);
+    }
+
+    [Fact]
     public void TheBestMatchSwimsThreeStepsAndKisses()
     {
         var rig = new Rig(Mon("Bidoof"), Mon("Bidoof", Gender.Female, trainer: Someone));

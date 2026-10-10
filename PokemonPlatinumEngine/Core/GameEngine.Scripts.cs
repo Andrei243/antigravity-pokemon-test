@@ -184,7 +184,8 @@ public partial class GameEngine
         ["OreburghGym"] = ("Oreburgh", Badge.Coal),
         ["EternaGym"] = ("Eterna", Badge.Forest),
         ["HearthomeGym"] = ("Hearthome", Badge.Relic),
-        ["VeilstoneGym"] = ("Veilstone", Badge.Cobble)
+        ["VeilstoneGym"] = ("Veilstone", Badge.Cobble),
+        ["SunyshoreGym"] = ("Sunyshore", Badge.Beacon)
     };
 
     /// <summary>
@@ -1022,6 +1023,10 @@ public partial class GameEngine
         // ---- Poffins (plan 06 · R14c)
 
         public PoffinCase Poffins => game.poffinCase;
+
+        public DayCare DayCare => game.dayCare;
+
+        public bool Hatch() => game.HatchFirstEgg();
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

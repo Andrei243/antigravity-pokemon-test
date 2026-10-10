@@ -473,6 +473,7 @@ public class BattleCoreTests
         p.Nature = Nature.Jolly;
         p.IsShiny = true;
         p.Personality = 0xBEEF;
+        p.IsEgg = true;
         p.EvolutionProgress["uses:Rage Fist"] = 4;
         p.ReplaceMove(0, "Razor Leaf");
         p.Moves[1].CurrentPP = 2;

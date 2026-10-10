@@ -5,7 +5,8 @@ namespace MapImporter;
 
 /// <summary>
 /// A room of the original as text (<c>--room &lt;key&gt;</c>), for writing its map file by hand: the tiles that
-/// block and the behaviours that matter, the props with their models and tiles, and the events where they stand.
+/// block and the behaviours that matter, the height plates in tiles, the props with their models and tiles, and the
+/// events where they stand.
 /// The rooms the story needs before plan 01 · M11 imports the rest are written from this.
 /// </summary>
 public static class RoomPlan
@@ -52,6 +53,13 @@ public static class RoomPlan
                 }
                 foreach (var (b, c) in letters)
                     text.AppendLine($"  {c} = {(b < decomp.BehaviourNames.Count ? decomp.BehaviourNames[b] : b.ToString(CultureInfo.InvariantCulture))} (0x{b:X2}; upper case where it also blocks)");
+                // The height plates, in tiles from the chunk's north-west corner, as a room's map file writes them
+                foreach (var plate in land.Heights.Plates)
+                {
+                    var p = WorldWriter.ToPlate(plate);
+                    text.AppendLine(string.Create(CultureInfo.InvariantCulture,
+                        $"  plate x {p.X} z {p.Z} width {p.Width} depth {p.Depth} height {p.Height} slopeX {p.SlopeX} slopeZ {p.SlopeZ}"));
+                }
                 foreach (var prop in land.Props)
                 {
                     string name = prop.ModelId < decomp.PropModelFiles.Count ? decomp.PropModelFiles[prop.ModelId] : "#" + prop.ModelId;

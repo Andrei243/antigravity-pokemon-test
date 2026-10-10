@@ -30,6 +30,12 @@ public abstract class GymPuzzle
     /// </summary>
     public virtual void Arrive(Map map, StoryState story, Random rng) { }
 
+    /// <summary>
+    /// The same, for a puzzle laid out by where the player comes in (the Sunyshore Gym's rooms, by which door): the
+    /// player stands on (<paramref name="x"/>, <paramref name="y"/>). The rest are laid out the same from anywhere.
+    /// </summary>
+    public virtual void ArriveAt(Map map, StoryState story, Random rng, int x, int y) => Arrive(map, story, rng);
+
     /// <summary>Whether a step onto a tile, going a way, is a hop over it to the tile beyond (Eterna's hour hand).</summary>
     public virtual bool HopsOver(int x, int y, Direction dir) => false;
 
@@ -65,6 +71,9 @@ public abstract class GymPuzzle
         HearthomeDoors.Room2Name => new HearthomeDoors(2),
         PastoriaWater.PuzzleName => new PastoriaWater(),
         CanalaveLifts.PuzzleName => new CanalaveLifts(),
+        SunyshoreGears.Room1Name => new SunyshoreGears(0),
+        SunyshoreGears.Room2Name => new SunyshoreGears(1),
+        SunyshoreGears.Room3Name => new SunyshoreGears(2),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")
     };
 }

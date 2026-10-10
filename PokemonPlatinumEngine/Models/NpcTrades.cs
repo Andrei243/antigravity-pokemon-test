@@ -85,7 +85,8 @@ public static class NpcTrades
     {
         if (slot < 0 || slot >= party.Count) return null;
         var given = party.Members[slot];
-        if (given.Species.Name != trade.Wants) return null;
+        // An Egg is no species anyone asks for (GetPartyMonSpecies reads nothing from one; plan 06 · R15)
+        if (given.IsEgg || given.Species.Name != trade.Wants) return null;
         var received = Make(trade, given.Level, today);
         party.Members[slot] = received;
         return received;

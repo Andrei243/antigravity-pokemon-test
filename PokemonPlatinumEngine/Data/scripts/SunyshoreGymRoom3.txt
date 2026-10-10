@@ -1,0 +1,65 @@
+# The Sunyshore Gym's third room (plan 01 · M9, part 2c), rebuilt to the original's plan. The lines are our own, on the
+# original's beats (scripts_sunyshore_city_gym_room_3.s).
+#
+# Three rows of gears: the upper two high up by Volkner's platforms, the lowest down by the door, and four gears on edge
+# whose bars join the sides. The buttons on the upper gears turn them all a quarter on, those on the lower a half. Volkner
+# gives the Beacon Badge (Waterfall outside battle) and TM57, and his win lets the rival come running into Sunyshore
+# City (VAR_SUNYSHORE_CITY_STATE, for plan 02 · S13). He is drawn as a youngster until plan 11 · C6 makes his look.
+
+
+# SunyshoreGymRoom3_Init
+script OnEnter
+  setvar VAR_MAP_LOCAL_0x00 0
+  end
+
+
+# SunyshoreGymRoom3_TopButtons
+script TopButtons
+  gearbutton normal
+  end
+
+
+# SunyshoreGymRoom3_BottomButtons
+script BottomButtons
+  gearbutton double
+  end
+
+
+script Volkner
+  speaker "Volkner"
+  if badge beacon goto Won
+  say "...So. A challenger."
+  say "Every so often a Trainer makes it all the way up here. And every time, the battle bores me. I barely have to try."
+  say "...Sigh. I'm Volkner, the Leader of this Gym. People call me the strongest Gym Leader in Sinnoh, but..."
+  say "Whatever. Let's just get this over with."
+  say "Though I'd like it if you were the Trainer who reminds me what makes battling fun!"
+  battle self as "leader_volkner"
+  say "...Heh. Heheh. Hahaha!"
+  say "That was the most fun I've had battling in I don't know how long!"
+  say "And knowing you and your team will keep climbing higher... that's got me excited all over again."
+  say "This makes eight Gym Badges for you. You've more than earned it!"
+  givebadge beacon
+  text "{player} received the Beacon Badge from Volkner!"
+  defeat "ace_trainer_zachery"
+  defeat "ace_trainer_destiny"
+  defeat "guitarist_jerry"
+  defeat "guitarist_preston"
+  defeat "guitarist_lonnie"
+  defeat "poke_kid_meghan"
+  defeat "school_kid_forrest"
+  defeat "school_kid_tiera"
+  setvar VAR_SUNYSHORE_CITY_STATE 2
+  say "The Beacon Badge lets your Pokémon use Waterfall even outside of battle. You'll need it to reach the Pokémon League."
+  say "And with all eight Badges, every Pokémon you have will obey you, whatever its level."
+  say "Here. Take this as well."
+label Tm
+  give "TM57"
+  setflag FLAG_RECEIVED_VOLKNER_TM57
+  say "TM57 is Charge Beam. If it hits, it may raise your Pokémon's Special Attack. Pretty electrifying, right?"
+  end
+label Won
+  if not flag FLAG_RECEIVED_VOLKNER_TM57 goto Tm
+  say "Your next stop is the Pokémon League."
+  say "Cross the sea, then fight your way up through Victory Road."
+  say "Show the League how well you and your team know each other. Even the Elite Four will have to work to keep you back!"
+  end

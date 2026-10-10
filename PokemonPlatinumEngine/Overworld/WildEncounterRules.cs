@@ -17,7 +17,10 @@ public readonly record struct WildLead(string? Ability, int Level, Nature Nature
     int? RepelLevel = null, Flute Flute = Flute.None)
 {
     public static WildLead? Of(Party party) =>
-        party.Members.Count == 0 ? null : new WildLead(party.Members[0].AbilityName, party.Members[0].Level, party.Members[0].Nature, party.Members[0].Gender, party.Members[0].HeldItem?.HoldEffect);
+        party.Members.Count == 0 ? null
+        // An Egg at the head of the team brings no ability to bear (the original's isFirstMonEgg; plan 06 · R15)
+        : party.Members[0].IsEgg ? new WildLead(null, party.Members[0].Level, party.Members[0].Nature, party.Members[0].Gender)
+        : new WildLead(party.Members[0].AbilityName, party.Members[0].Level, party.Members[0].Nature, party.Members[0].Gender, party.Members[0].HeldItem?.HoldEffect);
 
     /// <summary>The lead with the bag's aids: the Repel's level from the first that can fight (<c>Party_FindFirstEligibleBattler</c>), and the flute.</summary>
     public static WildLead? Of(Party party, EncounterAids aids) => Of(party) is { } lead

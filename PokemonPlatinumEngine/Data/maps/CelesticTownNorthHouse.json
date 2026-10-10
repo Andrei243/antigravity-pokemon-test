@@ -1,0 +1,150 @@
+{
+  "name": "CelesticTownNorthHouse",
+  "displayName": "Celestic Town",
+  "bgmTrack": "sinnoh/celestic",
+  "interior": "House",
+  "trees": "Pine",
+  "width": 12,
+  "height": 10,
+  "ground": [
+    "############",
+    "############",
+    "############",
+    "############",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#__________#",
+    "#####D######"
+  ],
+  "solid": [
+    "############",
+    "############",
+    "############",
+    "############",
+    "##........##",
+    "#..........#",
+    "#...###....#",
+    "#..........#",
+    "#..........#",
+    "#####.######"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 4,
+      "y": 6,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Painting",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 463,
+      "targetY": 516,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 3,
+      "text": "A very old scroll hangs on the wall. It's hard to be sure, but it looks priceless."
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "text": "An old book lies open on the table. {player} read a little of it...\n\"When the first was born, wisdom woke in the people, and their lives grew richer.\"\n\"When the second was born, feeling woke in them: joy, and sorrow with it.\"\n\"When the third was born, will woke in them, and they rose to act...\""
+    }
+  ],
+  "npcs": [
+    {
+      "id": "expert_m",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 7,
+      "facing": "Down",
+      "script": "Mesprit"
+    },
+    {
+      "id": "elder",
+      "name": "Elder",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 6,
+      "facing": "Down",
+      "script": "Elder",
+      "hiddenBy": "FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER",
+      "movement": "wander_around",
+      "rangeX": 1
+    },
+    {
+      "id": "lass",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "My big sister studies the myths of Sinnoh.",
+        "She wants to know how people and Pokémon lived together back in the days of legend.",
+        "Was it different then, or just the same as now? That's what she's trying to find out."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

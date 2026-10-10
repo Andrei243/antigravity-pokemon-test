@@ -201,6 +201,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.FlowerClock, Line = line };
             case "pressbutton":
                 return new Instruction { Op = Op.PressButton, Line = line, Name = r.OneOf("blue", "green", "orange") };
+            case "gearbutton":
+                return new Instruction { Op = Op.GearButton, Line = line, Name = r.OneOf("normal", "reverse", "double") };
             case "partner":
             {
                 if (r.PeekWord("off"))
@@ -440,6 +442,21 @@ public static class ScriptParser
                 }
                 return new Instruction { Op = Op.Poffin, Line = line, Name = what, Numbers = numbers };
             }
+
+            // The Day Care and Eggs (plan 06 · R15): its state, whether a Pokémon may be left, leaving, the fee and taking
+            // back, the Egg handed over or kept, how the two get on; an Egg a person gives; an Egg hatching
+            case "daycare":
+            {
+                string what = r.OneOf("state", "check", "leave", "take", "grown", "egg", "keep", "compatibility");
+                if (what is not ("take" or "grown")) return new Instruction { Op = Op.DayCare, Line = line, Name = what };
+                int place = r.Int("a place of the Day Care, 0 or 1");
+                if (place is < 0 or >= Models.DayCare.Places) throw r.Error("the Day Care's places are 0 and 1");
+                return new Instruction { Op = Op.DayCare, Line = line, Name = what, Number = place };
+            }
+            case "giveegg":
+                return new Instruction { Op = Op.GiveEgg, Line = line, Name = r.Text("a species' name") };
+            case "hatch":
+                return new Instruction { Op = Op.Hatch, Line = line };
 
             case "script":
             case "label":

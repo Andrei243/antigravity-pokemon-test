@@ -129,6 +129,7 @@ public static class RegionDatabase
                 "DistortionWorldB5F", "DistortionWorldB6F", "DistortionWorldB7F", "DistortionWorldGiratinaRoom", "DistortionWorldTurnbackCaveRoom",
                 // Plan 01 · M9, part 1: the Gyms rebuilt to the original's plans, with their puzzles
                 "EternaGym", "HearthomeGym", "HearthomeGymRoom1", "HearthomeGymRoom2", "HearthomeGymLeaderRoom", "VeilstoneGym", "PastoriaGym", "CanalaveGym", "SnowpointGym",
+                "SunyshoreGym", "SunyshoreGymRoom2", "SunyshoreGymRoom3",
                 // Rooms, still made by hand (plan 01 · M11)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "JubilifeBoutique", "JubilifeTV1F", "TrainersSchool", "PoketchCompany",
@@ -150,7 +151,12 @@ public static class RegionDatabase
                 // Hearthome's Poffin House and Pokémon Fan Club (plan 06 · R14c)
                 "PoffinHouse", "HearthomeFanClub",
                 // Veilstone City's Galactic warehouse, where HM02 lies (plan 02 · S8)
-                "VeilstoneGalacticWarehouse"
+                "VeilstoneGalacticWarehouse",
+                // Solaceon Town's Pokémon Day Care, rebuilt to the original's plan (plan 06 · R15)
+                "PokemonDayCare",
+                // Plan 02 · S9: the cave of Celestic Town's ruins and the Fuego Ironworks' floor (matrices of the
+                // imported world), and the elder's house in Celestic Town, rebuilt to the original's plan
+                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

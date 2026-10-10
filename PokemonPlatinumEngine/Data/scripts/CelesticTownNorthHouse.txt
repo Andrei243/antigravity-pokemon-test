@@ -1,0 +1,35 @@
+# The elder's house in Celestic Town (plan 02 · S9), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_celestic_town_north_house.s).
+#
+# The elder is home once Cyrus has left the ruins (celestic_town_cave.txt clears
+# FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER). What she found in the shrine after the Hall of Fame (the Adamant and
+# Lustrous Orbs' passage, FLAG_UNLOCKED_DIALGA_PALKIA_SPEAR_PILLAR) is the post-game's (plan 02 · S15).
+
+
+# The old man by the table (the original's script 1).
+script Mesprit
+  speaker "Old Man"
+  say "Where are you from? ...Twinleaf Town, you say? Why, that's near Lake Verity."
+  say "They say the lake is home to Mesprit, the Being of Emotion. Perhaps it watches over you."
+  ask "Would you like to hear more about Mesprit?"
+  if no goto Not
+  say "Mesprit is the legendary Pokémon that stands for the heart's feelings."
+  say "Beside it are Uxie, the Being of Knowledge, and Azelf, the Being of Willpower."
+  say "The three are said to have strong, kind spirits, and their strength keeps Sinnoh in balance."
+  end
+label Not
+  say "Ha ha ha! No, I didn't think you would. It's a story from a very long time ago. No wonder it bores you."
+  end
+
+
+# The elder, home again (the original's script 2).
+script Elder
+  speaker "Elder"
+  if flag FLAG_FIRST_ARRIVAL_CANALAVE_CITY goto Oldest
+  say "Once one of your Pokémon knows Surf, you'll find you can reach all sorts of places you couldn't before."
+  say "You may be surprised where the water takes you."
+  end
+label Oldest
+  say "Celestic Town is the oldest town in all of Sinnoh. It was founded to honour Pokémon of the distant past."
+  say "Or so the story goes, at any rate..."
+  end

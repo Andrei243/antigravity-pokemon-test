@@ -127,10 +127,10 @@ public static class TrainerDatabase
     {
         var species = PokemonDatabase.Get(m.Species) ?? throw new InvalidOperationException($"No species called {m.Species}");
         int iv = m.IvScale * 31 / 255;
-        var pokemon = new Pokemon(species, m.Level, new Random((int)(m.Personality & 0x7FFFFFFF)), GenderOf(species, m.Personality), (Nature)(m.Personality % 25))
+        // OTID_NOT_SHINY: its first trainer's number is drawn until it isn't
+        var pokemon = new Pokemon(species, m.Level, m.Personality, new Random((int)(m.Personality & 0x7FFFFFFF)))
         {
             IsShiny = false,
-            Personality = m.Personality,
             IvHP = iv, IvAttack = iv, IvDefense = iv, IvSpAttack = iv, IvSpDefense = iv, IvSpeed = iv
         };
         if (m.Form != null) pokemon.ChangeForm(m.Form);
@@ -148,12 +148,5 @@ public static class TrainerDatabase
     }
 
     /// <summary>The original's gender from a personality: its last byte under the species' share of females (in 256ths) makes it female.</summary>
-    public static Gender GenderOf(PokemonSpecies species, uint personality)
-    {
-        if (species.IsGenderless) return Gender.Genderless;
-        int ratio = species.GenderRatio switch { 0 => 0, 8 => 254, var eighths => eighths * 32 - 1 };
-        if (ratio == 0) return Gender.Male;
-        if (ratio == 254) return Gender.Female;
-        return (personality & 0xFF) < ratio ? Gender.Female : Gender.Male;
-    }
+    public static Gender GenderOf(PokemonSpecies species, uint personality) => Personality.GenderOf(species, personality);
 }

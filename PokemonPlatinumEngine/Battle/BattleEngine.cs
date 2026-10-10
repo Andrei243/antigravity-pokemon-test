@@ -48,6 +48,13 @@ public partial class BattleEngine
     public Party? EnemyParty => OpponentTrainer?.Party;
 
     public bool IsTrainerBattle => Trainers.Count > 0;
+
+    /// <summary>
+    /// Whether a foe's HP box shows the caught mark: in a battle with no trainer, for a species the Pokédex has as
+    /// caught, as the original's health box draws its Poké Ball (<c>HEALTHBOX_INFO_CAUGHT_SPECIES</c>, never in a
+    /// trainer's battle; the Great Marsh and Pal Park show it too).
+    /// </summary>
+    public bool ShowsCaughtMark(Pokemon foe) => !IsTrainerBattle && Pokedex.IsCaught(foe.Species.DexNumber);
     public bool IsDouble => Format == BattleFormat.Double;
 
     /// <summary>The places on each side as the screen has them: one each in a single battle, two in a double.</summary>

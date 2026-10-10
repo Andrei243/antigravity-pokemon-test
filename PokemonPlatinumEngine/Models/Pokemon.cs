@@ -220,6 +220,19 @@ public class PokemonSpecies
     /// <summary>The moves Platinum's move tutors can teach it; null for none.</summary>
     public List<string>? TutorMoves { get; set; }
 
+    /// <summary>
+    /// The species an Egg it lays is (plan 06 · R15; the original's personal data <c>offspring</c>, which
+    /// <c>Pokemon_GetBaseSpeciesFromPersonalData</c> reads): the first of its line, the baby where there is one (Azurill
+    /// for Marill). Null for itself.
+    /// </summary>
+    public string? Offspring { get; set; }
+
+    /// <summary>
+    /// The moves an Egg of this species can hatch knowing when its father knows them (plan 06 · R15; the original's
+    /// <c>learnset.egg_moves</c>, and for a later species its newest game's). Null for none.
+    /// </summary>
+    public List<string>? EggMoves { get; set; }
+
     public List<EvolutionData>? Evolutions { get; set; }
 
     /// <summary>The abilities this species can have: one or two, in the order the game picks from.</summary>
@@ -480,7 +493,26 @@ public class Pokemon
 
     public List<Move> Moves { get; private set; } = new();
 
-    public string DisplayName => string.IsNullOrWhiteSpace(Nickname) ? Species.Name : Nickname;
+    public string DisplayName => IsEgg ? EggName : string.IsNullOrWhiteSpace(Nickname) ? Species.Name : Nickname;
+
+    /// <summary>What an Egg is called wherever it is named.</summary>
+    public const string EggName = "Egg";
+
+    /// <summary>
+    /// Whether it is still an Egg (plan 06 · R15; the original's <c>MON_DATA_IS_EGG</c>): its species is what will
+    /// hatch, and until then its <see cref="Friendship"/> counts the egg cycles left, as the original keeps them. An
+    /// Egg is never sent into battle, gains nothing, takes no item or move and is named <see cref="EggName"/>; it counts
+    /// as fainted for everything that asks who can fight (<see cref="IsFainted"/>). <see cref="Breeding"/> makes Eggs
+    /// and hatches them.
+    /// </summary>
+    public bool IsEgg { get; set; }
+
+    /// <summary>An Egg's cycles left before it hatches: its friendship, as the original keeps them (<c>Daycare_Update</c>).</summary>
+    public int EggCycles
+    {
+        get => IsEgg ? Friendship : 0;
+        set { if (IsEgg) Friendship = Math.Clamp(value, 0, 255); }
+    }
 
     /// <summary>
     /// The form it is in (plan 03 · D11): null for its species' own, else the name of one of
@@ -512,34 +544,53 @@ public class Pokemon
 
     /// <summary>The name its model and sprites are asked for by: its form's, or its species'.</summary>
     public string ModelName => Form ?? Species.Name;
-    public bool IsFainted => CurrentHP <= 0 || Status == StatusCondition.Faint;
+    /// <summary>Down and out, or an Egg: either way it can't be sent into battle or chosen to fight.</summary>
+    public bool IsFainted => IsEgg || CurrentHP <= 0 || Status == StatusCondition.Faint;
 
-    /// <param name="gender">The gender it must have (a wild Pokémon met with Cute Charm at the head of the party); left out, by its species' ratio.</param>
-    /// <param name="nature">The nature it must have (Synchronize); left out, any.</param>
+    /// <summary>
+    /// A new Pokémon as the original makes one (<c>Pokemon_InitWith</c>, plan 06 · R15): its personality is drawn
+    /// first and decides its nature, gender, ability and whether it is shiny (<see cref="Models.Personality"/>), against
+    /// the player's number (<see cref="Core.PlayerIdentity.Number"/>: a Pokémon met, given or hatched is shiny for the
+    /// trainer who has it); then its IVs, from two more draws of three each.
+    /// </summary>
+    /// <param name="gender">The gender it must have (a wild Pokémon met with Cute Charm at the head of the party): Cute Charm's built personality; left out, by the personality drawn.</param>
+    /// <param name="nature">The nature it must have (Synchronize): personalities are drawn until one gives it; left out, any.</param>
     public Pokemon(PokemonSpecies species, int level, Random? rng = null, Gender? gender = null, Nature? nature = null)
+        : this(species, level, 0u, rng ?? Core.Dice.New(), gender, nature, choose: true)
     {
-        rng ??= Core.Dice.New();
+    }
+
+    /// <summary>
+    /// A new Pokémon whose personality is given (a trainer's, a roamer's, an Egg's, the Poké Radar's sparkling one): its
+    /// nature, gender, ability and shininess are the personality's; the IVs are drawn from <paramref name="rng"/>.
+    /// </summary>
+    public Pokemon(PokemonSpecies species, int level, uint personality, Random? rng = null)
+        : this(species, level, personality, rng ?? Core.Dice.New(), null, null, choose: false)
+    {
+    }
+
+    private Pokemon(PokemonSpecies species, int level, uint personality, Random rng, Gender? gender, Nature? nature, bool choose)
+    {
         Species = species;
         Nickname = species.Name;
         Level = Math.Clamp(level, 1, 100);
-        // Both are drawn whether or not they are given, so the rest of the Pokémon is the same either way
-        var drawnGender = RollGender(species, rng);
-        var drawnNature = (Nature)rng.Next(Enum.GetValues<Nature>().Length);
-        Gender = gender ?? drawnGender;
+        Personality = choose ? Models.Personality.Choose(species, rng, gender, nature) : personality;
+        // A gender the species can't help having is its own whatever the personality (Cute Charm on one of them)
+        Gender = Models.Personality.GenderOf(species, Personality);
         Form = FormOfGender();
-        Nature = nature ?? drawnNature;
+        Nature = Models.Personality.NatureOf(Personality);
+        AbilityName = Models.Personality.AbilityOf(Abilities, Personality);
         // One in 8,192 by Platinum's rules, one in 4,096 by the modern ones (plan 06 · R10)
-        IsShiny = rng.Next(Ruleset.Current.ShinyOdds) == 0;
-        // One of its form's abilities, each as likely
-        AbilityName = Abilities.Count == 0 ? null : Abilities[rng.Next(Abilities.Count)];
+        IsShiny = Models.Personality.IsShiny(Core.PlayerIdentity.Number, Personality, Ruleset.Current.ShinyOdds);
 
-        IvHP = rng.Next(32);
-        IvAttack = rng.Next(32);
-        IvDefense = rng.Next(32);
-        IvSpAttack = rng.Next(32);
-        IvSpDefense = rng.Next(32);
-        IvSpeed = rng.Next(32);
-        Personality = RollPersonality(rng);
+        // The original's two draws of three IVs each: HP, Attack, Defense, then Speed, Sp. Atk, Sp. Def
+        int first = rng.Next(1 << 16), second = rng.Next(1 << 16);
+        IvHP = first & 31;
+        IvAttack = first >> 5 & 31;
+        IvDefense = first >> 10 & 31;
+        IvSpeed = second & 31;
+        IvSpAttack = second >> 5 & 31;
+        IvSpDefense = second >> 10 & 31;
         Friendship = species.BaseFriendship;
 
         CurrentExp = GetExpForLevel(Level, Species.GrowthRate);
@@ -598,6 +649,9 @@ public class Pokemon
     }
 
     public void CalculateStats() => RecalculateStats();
+
+    /// <summary>Puts it at a level without anything a level brings (the Day Care's growing, <see cref="DayCare.Grow"/>).</summary>
+    internal void LevelTo(int level) => Level = Math.Clamp(level, 1, 100);
 
     /// <summary>
     /// Works its stats out again and moves its HP by what its maximum moved (<c>Pokemon_CalcStats</c>): what the
@@ -937,6 +991,7 @@ public class Pokemon
         Species = other.Species;
         Form = other.Form;
         Nickname = other.Nickname;
+        IsEgg = other.IsEgg;
         Level = other.Level;
         Gender = other.Gender;
         Nature = other.Nature;

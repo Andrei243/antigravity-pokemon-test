@@ -10,8 +10,8 @@ About 350 sittings are left, some twenty of them marked optional.
 
 | Plan | Done | Left (sittings) | Notes |
 |---|---|---|---|
-| 01 · Sinnoh map | M1–M8, M9 parts 1, 1b, 2a and 2b | ~10 | M9 2c and 2d, M10, M11, M12 |
-| 02 · Story | S1, S2, S4–S8 | ~11 | S9 to S15; S11 and S15 are more than one sitting |
+| 01 · Sinnoh map | M1–M8, M9 parts 1, 1b, 2a, 2b and 2c | ~9 | M9 2d, M10, M11, M12 |
+| 02 · Story | S1, S2, S4–S9 | ~10 | S10 to S15; S11 and S15 are more than one sitting |
 | 03 · National Pokédex | D1, D5–D11, every model batch to Pecharunt (all 1,025 hand-built; Paldea 3a–3c) | 4 | D12 (three parts), D13 |
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
@@ -122,6 +122,7 @@ What each cell is, and why it stands where it does:
   - 24 · X2 holds Platinum's battles and teams in golden files before the rules lane changes them.
 - **Wave 4.**
   - R15 (breeding) takes nature and shininess from the personality, which changes every Pokémon made. X2's golden files are regenerated as it merges, and its outcome must say so.
+    *Done 2026-10-10.* X2's golden files don't exist yet (X2 is still open in wave 3), so there was nothing to regenerate: every Pokémon now takes two draws for its personality before its IVs, so every seeded draw after a Pokémon is made has moved (wild Pokémon's and gifts' natures, genders, abilities and stats, and with them the harness's battles and every later shot of `all`). X2 records the draws as R15 left them; a shot from before R15 is compared with one after by `baseline.sh`, mode by mode.
   - 11 · C6 makes the second half's named cast ahead of S10 (Riley, Byron, Saturn), S11 (Candice) and S13 (Volkner). C6's test that every class has a look waits for C4.
   - 24 · X3 keeps a save of every version and the scripts' golden walk. It is the most overdue of the guards.
   - 11 · C12 lets trainers speak in battle, so that from S10 on each chapter writes its bosses' lines; C12 also writes those S5 and S6 owe.
@@ -387,7 +388,7 @@ The main session starts one agent per cell of the wave, each in its own worktree
 - [ ] Wave 1 · 08 · P7, 01 · M9 1b, 06 · R14a, 11 · C1, 10 · F1, 16 · T16 (beside: Paldea 3b, done 2026-10-10)
 - [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10), 01 · M9 2a (done 2026-10-10), 06 · R14b (done 2026-10-10), 12 · Q10 (done 2026-10-10), 11 · C5 (done 2026-10-10), 24 · X1 (done 2026-10-10) (beside: Paldea 3c, done 2026-10-10)
 - [ ] Wave 3 · 02 · S8 (done 2026-10-10: Veilstone and Pastoria to the Secret Potion; it took the Secret Potion from S9, as the original orders it), 01 · M9 2b (done 2026-10-10), 06 · R14c (done 2026-10-10), 12 · Q11, 09 · L11, 24 · X2
-- [ ] Wave 4 · 02 · S9, 01 · M9 2c, 06 · R15, 11 · C12, 11 · C6, 24 · X3
+- [ ] Wave 4 · 02 · S9 (done 2026-10-10: Route 210's Psyduck and Cynthia's Old Charm to the rival on Canalave City's bridge; Celestic's ruins and the Fuego Ironworks' floor opened as maps of the imported world, two entries of `world.json` to merge by hand), 01 · M9 2c (done 2026-10-10), 06 · R15 (done 2026-10-10), 11 · C12, 11 · C6, 24 · X3
 - [ ] Wave 5 · 02 · S10, 01 · M9 2d, 06 · R17a, 25 · Y1, 11 · C11, 12 · Q1
 - [ ] Wave 6 · 02 · S11a, 01 · M10a, 06 · R17b, 08 · P5, 09 · L4, 16 · T8
 - [ ] Wave 7 · 02 · S11b, 01 · M10b, 06 · R16a, 25 · Y2, 09 · L13, 16 · T3

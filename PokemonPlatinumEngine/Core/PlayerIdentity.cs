@@ -23,6 +23,16 @@ public static class PlayerIdentity
     /// <summary>The rival's name, as the player gave it.</summary>
     public static string RivalName { get; private set; } = DefaultRivalName;
 
+    /// <summary>
+    /// The trainer's whole number (plan 06 · R15): the Trainer Card's ID in the low half and the hidden half the card
+    /// doesn't show in the high (the original's 32-bit <c>TrainerInfo_ID</c>). A Pokémon the player meets, is given or
+    /// hatches is shiny by its personality against this number (<see cref="Models.Personality"/>). Set as a game
+    /// begins or loads; nought until then, which is what tests (that must not set it) make their Pokémon against.
+    /// </summary>
+    public static uint Number { get; private set; }
+
+    public static void SetNumber(uint number) => Number = number;
+
     /// <summary>The rival's own name, when none is entered.</summary>
     public const string DefaultRivalName = "Barry";
 

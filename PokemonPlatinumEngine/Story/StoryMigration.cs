@@ -57,6 +57,38 @@ public static class StoryMigration
         // Version 10: the fifth chapter's (plan 02 · S8), and the gate to Route 212 opened for a save that has been to
         // Pastoria City, whose arrival lifts its television crew's blockade
         if (savedVersion < 10) ChapterFive(story, scripts);
+        // Version 11: the sixth chapter's (plan 02 · S9), the Old Charm for a save that cured the Psyduck before
+        // Cynthia came up the road after them, Route 218's blockade gone for a save that has been to Canalave City,
+        // and the Vs. Seeker's first level of rematches for a save that has the Vs. Seeker
+        if (savedVersion < 11) ChapterSix(story, scripts, bag);
+    }
+
+    /// <summary>The flag that first arriving in Canalave City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
+    public const string ArrivedInCanalaveFlag = "FLAG_FIRST_ARRIVAL_CANALAVE_CITY";
+
+    /// <summary>The flag the Psyduck on Route 210 leave by, once the Secret Potion has cured them (scripts/route_210_south.txt).</summary>
+    public const string PsyduckCuredFlag = "FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK";
+
+    /// <summary>
+    /// Version 11, a save from before the sixth chapter was written (plan 02 · S9): its people are hidden until their
+    /// scenes by <see cref="ScriptLibrary.ChapterSix"/>, which a new game runs too. A save whose Psyduck have gone
+    /// cured them before Cynthia came up the road after them with the Old Charm: it has her errand now, as if she had
+    /// (the charm in the bag and <c>FLAG_USED_SECRETPOTION</c>). Route 218's blockade before the Canalave gate, which
+    /// Cynthia's scene in Celestic Town lifts, is gone for a save that has already been to Canalave City, so it isn't
+    /// shut in. And the Vs. Seeker the assistant gave on Route 207 unlocks the first level of rematches, which that
+    /// scene didn't set until this chapter.
+    /// </summary>
+    private static void ChapterSix(StoryState story, ScriptLibrary scripts, Inventory? bag)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterSix);
+        if (story.Has(PsyduckCuredFlag) && !story.Has("FLAG_USED_SECRETPOTION") && !story.Has("FLAG_DELIVERED_OLD_CHARM"))
+        {
+            if (ItemDatabase.Get("Old Charm") is { } charm && bag != null && bag.GetQuantity(charm) == 0) bag.AddItem(charm);
+            story.Set("FLAG_USED_SECRETPOTION");
+        }
+        if (story.Has(ArrivedInCanalaveFlag)) story.Set("FLAG_HIDE_ROUTE_218_BLOCKADE");
+        if (ItemDatabase.Get(Overworld.VsSeeker.Item) is { } seeker && bag != null && bag.GetQuantity(seeker) > 0)
+            story.Set(Overworld.VsSeeker.LevelFlag(1));
     }
 
     /// <summary>The flag that first arriving in Pastoria City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>

@@ -321,7 +321,10 @@ public static class Evolution
     public static int Progress(Pokemon p, string key) => p.EvolutionProgress.GetValueOrDefault(key);
 
     /// <summary>A step walked at the head of the party.</summary>
-    public static void CountStep(Pokemon p) => Count(p, EvolutionMethod.LevelAfterSteps, _ => StepsKey);
+    public static void CountStep(Pokemon p)
+    {
+        if (!p.IsEgg) Count(p, EvolutionMethod.LevelAfterSteps, _ => StepsKey);
+    }
 
     /// <summary>A move used in battle.</summary>
     public static void CountMoveUse(Pokemon p, string move) =>

@@ -26,13 +26,15 @@
   // Plan 02 · S6 (scripts/eterna_city.txt): the rival running into the player and Cyrus at the statue (trigger 0),
   // Cynthia with HM01 before the Team Galactic building (triggers 3 and 6), and, once the Bicycle is had, the two
   // people who stop the player at the town's ways out until they also have an Explorer Kit (triggers 1 and 2).
-  // Cynthia's Egg (triggers 4 and 5) waits for eggs (plan 06 · R15).
+  // Cynthia's Togepi Egg (triggers 4 and 5, plan 06 · R15).
   "triggers": [
     { "trigger": 0, "script": "RivalAndCyrus" },
     { "trigger": 1, "script": "BlockSouth" },
     { "trigger": 2, "script": "BlockWest" },
     { "trigger": 3, "script": "CynthiaCut" },
-    { "trigger": 6, "script": "CynthiaCut" }
+    { "trigger": 6, "script": "CynthiaCut" },
+    { "trigger": 4, "script": "CynthiaEgg" },
+    { "trigger": 5, "script": "CynthiaWaits" }
   ],
   // The statue, its plate torn off
   "read": { "18": "Statue" },
@@ -40,7 +42,7 @@
     // The rival and Cynthia are only about in their scenes
     "rival": { "name": "{rival}", "dialog": [ "{player}! The statue's this way. Come on, come on!" ] },
     "cyrus": { "name": "Cyrus", "dialog": [ "......", "Time, space... and the Pokémon said to have made them. A myth worth looking into." ] },
-    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "dialog": [ "Good luck on your journey, {player}." ] },
+    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "script": "Cynthia" },
     "gardenia": { "name": "Gardenia", "npcType": "Gardenia", "script": "Gardenia" },
     "grunt_m_1": { "name": "Galactic Grunt", "script": "GruntStatue" },
     "grunt_m_2": { "name": "Galactic Grunt", "script": "GruntTough" },

@@ -339,6 +339,7 @@ public sealed partial class BattleCore
     private bool ItemWouldHelp(ItemData item, Pokemon target, Battler? where, Battler user, int moveIndex)
     {
         var use = item.Use ?? new Dictionary<string, int>();
+        if (target.IsEgg) return false;
         if (use.ContainsKey("revive")) return target.IsFainted;
         if (target.IsFainted) return false;
         if (use.ContainsKey("hpRestored") && target.CurrentHP < target.MaxHP) return true;

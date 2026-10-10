@@ -111,7 +111,8 @@ public class PartyScreen
     public static List<PartyAction> ActionsFor(Pokemon pokemon)
     {
         var actions = new List<PartyAction> { new(PartyActionKind.Summary) };
-        actions.AddRange(FieldMoveRules.Known(pokemon).Distinct().Select(m => new PartyAction(PartyActionKind.FieldMove, m)));
+        // An Egg knows no field moves it could use (plan 06 · R15)
+        if (!pokemon.IsEgg) actions.AddRange(FieldMoveRules.Known(pokemon).Distinct().Select(m => new PartyAction(PartyActionKind.FieldMove, m)));
         actions.Add(new PartyAction(PartyActionKind.Switch));
         actions.Add(new PartyAction(PartyActionKind.Cancel));
         return actions;
@@ -183,7 +184,7 @@ public class PartyScreen
                 ShowSummary = true;
                 SummaryPage = 0;
                 summaryAge = 0f;
-                AudioManager.PlayCry(party.Members[SelectedIndex]);
+                if (!party.Members[SelectedIndex].IsEgg) AudioManager.PlayCry(party.Members[SelectedIndex]);
                 break;
             case PartyActionKind.Switch:
                 SwapSourceIndex = SelectedIndex;

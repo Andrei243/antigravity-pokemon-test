@@ -66,6 +66,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it. |
 | `lift_stop` | `SEQ_SE_DP_KI_GASYAN` | The platform comes to its end and locks in place. |
 | `snowball` | `SEQ_SE_DP_FW291` | A snowball of the Snowpoint Gym bursts as the player slides into it fast enough (`ov5_021E06A8`). |
+| `gears` | `SEQ_SE_DP_GAGAGA` | The Sunyshore Gym's gears grind round as the player steps on a button on a hub (`SunyshoreGym_PressButton`). |
 | `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |
 | `thunder_rumble` | `SEQ_SE_DP_T_KAMI` | Thunder rolling from further off, a second after the lightning (one strike of three). |
 
@@ -77,9 +78,9 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `recall` | — | A Pokémon is called back into its ball. |
 | `run_away` | `SEQ_SE_DP_NIGERU` | Getting away from a wild Pokémon. |
 | `ball_throw` | `SEQ_SE_DP_NAGERU` | A ball thrown. |
-| `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball. |
+| `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball; each rock of an Egg about to hatch (plan 06 · R15). |
 | `ball_click` | `SEQ_SE_DP_GETTING` | The ball clicks shut: caught. |
-| `ball_break` | — | The ball bursts open: the Pokémon broke free. |
+| `ball_break` | — | The ball bursts open: the Pokémon broke free; an Egg breaks open as it hatches. |
 | `hit_normal` | `SEQ_SE_DP_KOUKA_M` | A hit lands. |
 | `hit_super` | `SEQ_SE_DP_KOUKA_H` | A super-effective hit lands. |
 | `hit_weak` | `SEQ_SE_DP_KOUKA_L` | A not very effective hit lands. |

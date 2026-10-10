@@ -54,7 +54,10 @@ In the `Ruleset` today, because the engine already runs these rules:
 | Effort in a stat | at most 255 | at most 252 |
 | A vitamin raises effort | up to 100 | up to the stat's limit |
 | A level-100 Pokémon | gains no effort from battles | still gains effort |
-| A shiny Pokémon | 1 in 8,192 | 1 in 4,096 |
+| A shiny Pokémon | 1 in 8,192: the personality's and the trainer's halves exclusive-or'd under 8 | 1 in 4,096: under 16 |
+| An Everstone in breeding (plan 06 · R15) | the mother's or Ditto's nature one time in two | the holder's nature, always, whichever parent |
+| The IVs an Egg inherits | three picks that can fall on the same stat; no item changes them | three different stats, five with a Destiny Knot, a Power item's from its holder |
+| The Masuda method | four more draws for a shiny personality | five more |
 
 The modern column's numbers for the rules R3 to R5 added (from the weather's length down) are the newest games' as we know them: the moves' own durations were read from Pokémon Showdown's move table, but its table of conditions (binding, the chance of protecting again) was not among the files fetched in R1. R19 checks every one of them against the source before the modern rules are signed off.
 
@@ -177,7 +180,7 @@ Our own choices in R7, where the original leaves room or this game is built diff
 - **Bugs of the original that are kept**, because they are how Platinum plays: Magnet Pull does nothing on the water (the code overwrites what it found), and Sticky Hold and Suction Cups do nothing for fishing (the doubling is computed and thrown away; there is no fishing here yet, R13).
 - **Arceus's shape after a battle**: a plate held makes Arceus take its shape as a battle begins, with a line the first time, and it keeps the shape afterwards. In the original the shape is set the moment the plate is given, in the bag; giving items there is R11's, which will set it at once.
 - **A Pokémon with no gender given Cute Charm** (which no species has) chooses nothing in the field, where the original stops with an error.
-- **Left for the session whose rule it is**: Compound Eyes making wild Pokémon hold items more often (wild Pokémon hold nothing yet: R13); Flame Body and Magma Armor hatching eggs sooner (R15); Gluttony for the berries that aren't in the engine yet (Lansat, Starf, Micle, Custap), an Embargo failing against a Quick Claw or Custap Berry that already went off, and Giratina's Origin Forme going back without its orb (R8); the reworked abilities of later generations (R27).
+- **Left for the session whose rule it is**: Compound Eyes making wild Pokémon hold items more often (wild Pokémon hold nothing yet: R13); Flame Body and Magma Armor hatching eggs sooner (R15; *done, 2026-10-10*); Gluttony for the berries that aren't in the engine yet (Lansat, Starf, Micle, Custap), an Embargo failing against a Quick Claw or Custap Berry that already went off, and Giratina's Origin Forme going back without its orb (R8); the reworked abilities of later generations (R27).
 - **Text**: every line is our own wording ("can't get going yet!", "finally got going!", "took the attack!", "shuddered!", "breaks the mold!").
 
 One thing R7 found in the battle's face, not in the rules: a choice handed over while lines were still being shown copied the screen's stale state over the rules' (only a tool could do it; the game's menus open after the last line). The face now never takes the screen's state while it is behind.
@@ -376,7 +379,6 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | --- | --- | --- | --- |
 | The Gracidea on Shaymin | Only one met at an event (its fateful-encounter mark) | Any Shaymin | No events in this game |
 | The +1 friendship for the place it was met | Given by items and events alike | Left out | Pokémon don't record where they were met yet |
-| Shininess | Drawn from the personality and the trainer's ID (1 in 8,192) | A draw of its own at the same odds (1 in 4,096 by the modern rules), and nothing shows it yet | Personalities don't decide everything they do in the original yet (R15, breeding, is where they matter) |
 | A cured Pokémon | A small face on its summary | Nothing | Our own interface: the PKRS tag shows only while it is carried |
 | The Distortion World's ground | Gives Burmy the sandy cloak | The trash cloak, as the League's rooms do | `BattleTerrain.Special` stands for all of them; the Distortion World is plan 01's |
 
@@ -441,6 +443,19 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | A snowball | Broken by a slide whose speed is one or more when it stands on the next tile (`ov5_021E06A8`); the slide goes on through its place; deleted until the map's objects are made again | The same (`IceSlide.Breaks`); back the next time the player comes in, as anything taken off a map is | |
 | A save made with snowballs broken | The map's objects are saved, so a broken snowball stays broken | Every snowball is back after loading | The save keeps no map's things but its trainers and items; coming in again brings them back anyway |
 | The room's own script | Hides Candice in Snowpoint City if `FLAG_DUMMY_0x00EB` is set | Left out | Nothing sets that flag |
+
+**The Sunyshore Gym** (plan 01 · M9 2c)
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The gears' walkways | Closed by the room's table of regions for its state (`SunyshoreGym_DynamicMapFeaturesCheckCollision`), for the player's own steps only | The same (`SunyshoreGears.Refuses`, asked by `FieldMovement.Step`); a trainer's eyes and walk see the room's own grid, where every walkway is open, as the original's map objects do | |
+| The way they turn | 5.625 degrees a frame at thirty frames a second; the state changes as the button is pressed and the field waits for the gears | The same (`SunyshoreGears.Turn`); the field holds while they turn | |
+| A button | Every step onto it presses it (the room's coordinate events wait for a variable nothing changes) | The same | |
+| Coming in | By a room's door from the room before, its first state; by any other way in (the door from the room beyond), the state that leads back: two, one and nought (`PersistedMapFeatures_InitForSunyshoreGym`) | The same, by the row the player comes in on (`SunyshoreGears.ArriveAt`) | |
+| A save made in the Gym | The state is saved with the game's persisted features | It comes back as coming in from the room beyond lays it out | The save keeps no puzzle's state, as with the Canalave Gym's platforms |
+| The third room's top row | Four columns (7, 8, 14 and 15) are open in the collision grid but have no height plate under them, so the walker's height check stops anyone stepping onto them from the platforms either side | Solid | The same in play: nobody walks from one platform to the next past the puzzle |
+| The statues | Name the player once the Badge is won, and the rival too once `VAR_RIVAL_BEAT_SUNYSHORE_GYM` is set | The player only | The rival's scene in Sunyshore City, which sets the variable, is plan 02 · S13's; the statue's branch comes with it |
+| The floor's behaviour | `DYNAMIC_HEIGHT_COLLISION` (0x59) on most of the floor | Left out | It acts only under a dynamic height plate, and the Gym has none |
 
 ## The first chapter (2026-10-06, plan 02 · S4)
 
@@ -552,7 +567,6 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 
 | What | The original | Here | Why |
 | --- | --- | --- | --- |
-| Cynthia's Egg | After Commander Jupiter, by the cycle shop: a Togepi Egg, and she waits there until the team has room or the player takes it | Not given; her two triggers (states 3 and 4) wait | There are no eggs yet (plan 06 · R15) |
 | The Pokémon Team Galactic held | A Clefairy and a Buneary on the top floor, then the Clefairy in the cycle shop and the Buneary in the Pokémon Center | Not there; the flags that move them are set as the original sets them | A Pokémon can't stand in the field yet (plan 10) |
 | The Galactic lobby theme in the building | `SEQ_D_GINLOBBY` until Jupiter is beaten | Eterna's theme throughout | No lobby theme yet (plan 05) |
 | The Underground Man's missions and his PC | Six missions below ground; the PC's pages on flags, spheres and traps | The Explorer Kit, his offer and the first mission; the PC's notes in a line | The Underground is plan 06 · R16's |
@@ -705,7 +719,6 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | --- | --- | --- | --- |
 | Touching the Friendship Checker | The stylus held down as long as the player likes, anywhere; a double tap is two taps of six frames or less | A touch holds the stylus where it fell for 1.5 s; the ground is six spots (the corners and the middles of the long sides); a second touch of the ground within 0.4 s of the first is the double tap | One screen and no touch: a cursor and a button (plan 06 · R14b's frame) |
 | The Friendship Checker's walk | Icons may wander partly past the screen's edges (−10 to 217, −22 to 183), collisions found at the moment within a frame | Icons stay on the screen with room for their hearts; collisions are found frame by frame | Our screen doesn't clip what is drawn on it; the difference can't be seen at sixty frames a second |
-| The Day-Care Checker | The Day Care's two Pokémon and its egg; a level with the steps walked there added (`DaycareMon_GiveExperience`) | Whatever the context's `DayCare` holds, the Pokémon's own level, and never an egg | The Day Care and breeding are plan 06 · R15; the context has no egg to read yet |
 | The Pokémon History's cries | Cries by species and form | A Pokémon of the species and form, level 1, made from the field's generator the first time it is touched | The app's `Cry` takes a Pokémon and the history keeps names |
 | Sounds | The Day-Care Checker's `DENSI12`; the Matchup Checker's `POKETCH_012` (a step), `013` (no match) and `014` (the best) | `poketch`; `poketch`, `poketch_beep` and `dowsing_ping` | The bank has none of them (`docs/sound-effects.md`) |
 | The Move Tester's chart | A table of its own, Platinum's | The game's own chart by the rules it is played by (`TypeChart`) | The same in a Platinum game; a modern game's Pokétch tells the modern chart |
@@ -745,3 +758,78 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The TV's Poffin corner | A reporter in the Poffin House and in the fan club, a programme of the Poffins cooked | The reporters are left out; nothing is broadcast | The TV is plan 08's |
 | The Poffin Case's look | Its own touch screen of flavour buttons and a list of names | The interface kit's tabs and rows | One screen and no touch |
 | Feeding | The party menu, then the summary's condition page, then a scene of the Pokémon eating | All in the case: the team's cards, the condition before, the line as it eats, the condition after with the change | The summary here is a page of the party menu |
+
+## Breeding and what a personality decides (2026-10-10, plan 06 · R15)
+
+**Platinum's rules, kept as they are** (`src/pokemon.c`, `src/overlay005/daycare.c`, `src/egg_hatch.c`, `src/overlay006/wild_encounters.c`, `src/trainer_data.c`, `src/scrcmd_daycare.c`, `src/scrcmd_party.c`, `src/unk_02092494.c`, `res/field/scripts/scripts_day_care_common.s`, `scripts_pokemon_day_care.s`, `scripts_common.s`, `scripts_eterna_city.s`)
+
+- **The personality decides** (`Pokemon_InitWith`, `sub_02073E18`): every Pokémon the game makes draws a personality first (two 16-bit draws, the first the low half); its nature is its remainder by 25, its gender its low byte against the species' share of females in 256ths (31, 63, 127, 191, 223; always one, always the other, or none), its ability the second of two when its bit 0 is set, and it is shiny when its two halves and its first trainer's two exclusive-or to under 8. Its IVs then come from two more draws, three five-bit stats each (HP, Attack, Defense; Speed, Sp. Atk, Sp. Def). Nature, gender and shininess are still kept beside the personality, so a save from before keeps what it had.
+- **Whose shininess**: a Pokémon met in the field, given, hatched or set roaming is shiny for the player's 32-bit number (the card's ID and the hidden half, `TrainerInfo_ID`; `PlayerIdentity.Number`); a trainer's never is (`OTID_NOT_SHINY`); a trade's comes with its own trainer and personality.
+- **Synchronize and Cute Charm** (`CreateWildMon`): a nature asked for is drawn for, personality after personality (`sub_02074044`); a gender asked for is built (`sub_02074128`): the nature itself for a female, and for a male the next multiple of 25 past the species' share plus the nature, which is why Platinum's Cute Charm Pokémon are shiny for some trainers far more often than for others. The Poké Radar's sparkling patch is a personality found shiny for the player (`Pokemon_FindShinyPersonality`), found again until it also gives Synchronize's nature or Cute Charm's gender (`CreateWildMonShinyWithGenderOrNature`).
+- **The Day Care** (`daycare.c`): two places; each step of the player's walks each Pokémon left a step, which it gains as a point of EXP when taken back, growing into the levels it reaches with each level's moves pushed in (the first move out when four are known) and no friendship for it. Taking one back costs 100 and 100 for each level grown. The Lady takes no Egg, not the player's only Pokémon (`CountPartyNonEggs`), not one that would leave the team and the boxes with only two able to fight between them (`CountAliveMonsAndBoxMons`), and not the last of the team able to fight; a Shaymin left goes back to its Land Forme.
+- **Getting on** (`BoxMon_GetPairDaycareCompatibilityScore`): never for the Undiscovered group, two Dittos, the same gender, no gender beside a Pokémon that isn't Ditto, or no shared egg group; with one Ditto 20 from one trainer and 50 from two; the same species 50 from one trainer and 70 from two; two species 20 and 50. Every 256th step of the second Pokémon, with no Egg waiting, a draw of a hundred against that number finds an Egg (`Daycare_Update`), whose personality is drawn there and then.
+- **The Egg's nature** (`Daycare_GetParentToInheritNature`, `Daycare_SetInheritedNature`): only the female's (or Ditto's, a coin between two Dittos) holding an Everstone, and then one time in two; personalities are drawn until one has that nature and isn't nought, at most 2,401 times. A personality of nought is no Egg at all, as in the original.
+- **The Egg's species** (`Egg_DetermineEggSpeciesAndParentSlots`, `Daycare_AlterEggSpeciesWithIncenseItem`): the first of the female's line (`offspring`), or of the one that isn't Ditto; Nidoran♀'s and Illumise's lines give Nidoran♂ and Volbeat when bit 15 of the personality is set; Manaphy gives Phione; and the nine incense babies (Wynaut, Azurill, Mime Jr., Bonsly, Munchlax, Mantyke, Budew, Happiny, Chingling) only when a parent holds their incense, the species they grow into otherwise. It takes the mother's form; beside a male, Ditto is the mother, so the male is the father.
+- **The Egg's IVs** (`Egg_InheritIVs`): random, then three picked from the six and taken from either parent on a coin. The original removes from its list the place of the draw rather than the stat drawn, so HP can only be the first pick, Defense only the first or second, and one stat can be picked two or three times: kept, as it is how Platinum breeds. No held item changes them in Platinum (the Power items' rule came with HeartGold and SoulSilver).
+- **The Egg's moves** (`Egg_BuildMoveset`): its species' moves at level 1, then the father's egg moves of its species, in his order; then his moves a TM or HM teaches that its species can learn by that machine; then the moves both parents know that its species learns by level. Each goes into a free place or pushes the first move out. A Pichu also knows Volt Tackle when a parent holds a Light Ball (`Egg_TryGiveVoltTackle`).
+- **The Masuda method** (`Egg_SetInitialData`): parents from games of different languages (`Pokemon.Language`), and a personality not shiny for the player, draw it again with the other generator (× 1,812,433,253 + 1) up to four times until one is.
+- **Eggs**: level 1, in a Poké Ball, met at level nought, their hatch cycles kept in their friendship (`MON_DATA_FRIENDSHIP`). An Egg is never sent into battle ("An Egg can't battle!"), takes no item, medicine or machine, gains no friendship from walking or EXP, uses no field move, eats no Poffin, enters no Hall of Fame and is wanted in no trade; at the head of the team it brings no ability to bear on the wild Pokémon met (`isFirstMonEgg`), the Pokétch's friendship and matchup checkers pass it by, and the lottery doesn't read its trainer's number.
+- **Egg cycles** (`Daycare_Update`, `Daycare_GetEggCycleLength`, `Party_GetEggCyclesToSubtract`): a cycle is 255 steps, or 230 on twelve days of the year (`sEggCycleSpecialDates`; its comment says New Year's Day but its number is the twelfth of January, and the number runs), counted on every step whether or not anything is at the Day Care. At its end each Egg of the team loses a cycle, two when a Pokémon of the team that isn't an Egg has Flame Body or Magma Armor (one when it has only one left); the first Egg found with none left hatches instead, and those after it wait for the next cycle. So an Egg of n cycles hatches after at most (n + 1) × 255 steps.
+- **Hatching** (`Egg_CreateHatchedMon`, `FieldTask_HatchEgg`): "Oh?", the scene, and the Pokémon its personality and IVs make at level 1, with the Egg's moves, friendship 120, its species' name, in a Poké Ball, met where it hatched at level nought; it goes into the Pokédex as caught and adds 7 to the Trainer Card's score (`TRAINER_SCORE_EVENT_UNK_15`).
+- **The couple's beats** (`DayCareCommon_Man`, `DayCareCommon_Lady`): the Man outside offers an Egg (twice; turned down twice, the couple keep it and it is gone), says how the Pokémon are and how well two get on in four sentences; the Lady inside raises one and asks about another, says how many levels each has grown, and gives one back for its fee (asking which when there are two, and whether the other too). Once a Pokémon has been left, a fan of the couple's waits by the table with the Day-Care Checker app.
+- **Cynthia's Egg** (`EternaCity_CoordEvent_CynthiaTryGiveEgg`): once Commander Jupiter is beaten, a step east at x 308 brings Cynthia up the street with a Togepi Egg (`GiveEgg`); turned down, or with six Pokémon, she waits by the cycle shop, asks again when spoken to, and stops the player stepping past her.
+
+**Our own choices**
+
+- The couple's, the fan's and Cynthia's lines, the Egg Watch's four sentences and the hatching scene are our own, on the original's beats. The Lady doesn't walk to the back of the Day Care to fetch a Pokémon.
+- An Egg counts as fainted for everything that asks who can fight (`Pokemon.IsFainted`), so the battle's rules and the field's checks pass it by without a check of their own; what would revive or heal it asks first whether it is an Egg.
+- A form carried down is found by name: the mother's form's suffix on the Egg's species (Wormadam-Sandy lays Burmy-Sandy), never a form taken for a battle.
+- An Egg is received from someone (`Pokemon.MetLocation`: "the Day-Care Couple", "Cynthia") until it hatches, when it is met where it hatched; the original keeps both.
+- The Egg's species of a later species is the first of its line by PokeAPI, and its egg moves the newest game's.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Mail held by a Pokémon left | Kept with it at the Day Care, and the Man remarks on the Mail | Nothing is said of Mail | Mail is plan 11's |
+| A Giratina holding the Griseous Orb | The Lady can't take the orb off it, and says so | Taken as it is | The PC's handling of the orb comes with plan 01 · M11's rooms |
+| A nickname for the hatched Pokémon | The naming screen is offered | Not offered, as none is offered for a Pokémon caught | No naming in the field yet (plan 12) |
+| Spinda's spots | Drawn from its personality | Every Spinda the same | Its model is one sculpt; spots by personality are plan 09's |
+| The modern rules' breeding | Egg moves from either parent, no TMs, the mother's ball, hidden abilities, the Oval Charm | Platinum's moves and ball; the Everstone, the Destiny Knot, the Power items and Masuda's five draws are the `Ruleset`'s | R19 and R28 bring the later items and abilities |
+
+## The sixth chapter (2026-10-10, plan 02 · S9)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_210_south.s`, `scripts_route_210_north.s`, `scripts_celestic_town.s`, `scripts_init_celestic_town.s`, `scripts_celestic_town_cave.s`, `scripts_celestic_town_north_house.s`, `scripts_fuego_ironworks_building.s`, `scripts_route_218.s`, `scripts_route_219.s`, `scripts_route_221.s`, `scripts_canalave_city.s`, `scripts_init_canalave_city.s`, `scripts_init_new_game.s`)
+
+- **Cynthia comes up Route 210 behind the player** once the Psyduck have gone, from the tile below whichever of the two the player faced them from, and asks until the answer is yes that the Old Charm be taken to her grandmother (`FLAG_USED_SECRETPOTION`). The Secret Potion isn't taken from the bag, as the original's script takes nothing.
+- **The trainer resting by the Café Cabin gives TM51** (Roost) once (`FLAG_RECEIVED_ROUTE_210_SOUTH_TM51`).
+- **Celestic Town's grunt asks first** whether the player means to get in his way; a no leaves him there. Beaten, he runs off past the player by the way the original's tables give for each side, the elder comes up from the south of town to stand beside the player and takes the Old Charm (`FLAG_DELIVERED_OLD_CHARM`), and the ruins' door is open.
+- **Cyrus is met in the ruins' cave**, as the painting is first read (`FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING`): the elder comes in to tell its legend, Cyrus after her. Said no, he shoves the player aside and stands before the painting, and spoken to he asks again; beaten, he goes, the elder gives **HM03** (Surf; the Fen Badge lets it be used outside battle) and goes home (`FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER` cleared), and Cynthia waits outside (`VAR_CELESTIC_TOWN_STATE` 1).
+- **Cynthia's word outside the ruins lifts Route 218's blockade** (`FLAG_HIDE_ROUTE_218_BLOCKADE`, state 2): a guitarist, a fisherman and their Clefairy and Pikachu, rehearsing a show before the gate to Canalave City, who take no notice of the player. Reaching Canalave City takes her away from Celestic Town (`FLAG_HIDE_CELESTIC_TOWN_CYNTHIA`, Canalave's `OnEnter`, as the original's OnTransition).
+- **Arriving in Celestic Town unlocks the Vs. Seeker's second level of rematches** (`FLAG_UNLOCKED_VS_SEEKER_LVL_2`), as the original's OnTransition does; and the assistant's Vs. Seeker on Route 207 now sets the first (`FLAG_UNLOCKED_VS_SEEKER_LVL_1`), which plan 02 · S7's scene had left out.
+- **The rival battles on Canalave City's bridge** as the player first crosses it (the original's trigger, a column of four tiles, `VAR_CANALAVE_CITY_STATE` 0), with the team that has the upper hand on the player's starter, tells the player to train on Iron Island and runs off (state 1). Byron's Badge brings him back outside the Gym (`CanalaveGym.txt` sets state 2 and clears his flag; the library's scene is plan 02 · S10's).
+- **The Fuego Ironworks has no Team Galactic in Platinum** (Diamond and Pearl's Commander Mars isn't there): Mr. Fuego gives his first visitor a Star Piece and trades a Shard of each colour for each Star Piece, ten at once for ten or more (`FLAG_RECEIVED_FUEGO_IRONWORKS_BUILDING_STAR_PIECE`, `FLAG_MR_FUEGO_ASKED_FOR_TRADE`); its workers battle with Platinum's teams, its floors move the walker as the original's do.
+- **Route 221's workers** stand at Pal Park's door until the National Pokédex, whose OnTransition hides them (plan 02 · S15, with Pal Park).
+- **Saves from before**: `common.ChapterSix` (story version 11) hides the chapter's people until their scenes (the rival's flag is left as Byron's script left it in a save with the Mine Badge). A save whose Psyduck were cured before this chapter, when Cynthia didn't come after them, is given her Old Charm and her errand; one that has been to Canalave City (`FLAG_FIRST_ARRIVAL_CANALAVE_CITY`) has Route 218's blockade gone, so it isn't shut in; one that holds the Vs. Seeker has its first level of rematches.
+
+**Our own choices**
+
+- **The ruins' cave and the ironworks' floor are maps of the imported world** (`CelesticTownCave`, matrix 169; `FuegoIronworksBuilding`, matrix 8; `world.json`'s `Cave` setting), the original's own plans with their warps, items, triggers and moving floors, drawn as caves until their places have looks of their own. The elder's house is a room rebuilt to the original's plan (`CelesticTownNorthHouse`), its book and its scroll read as signboards.
+- **A scene that waits for the player at a door** plays only where the original's OnFrame finds them: Cynthia's comes as the player steps out of the ruins' cave onto the tile before its door; anyone who came back to Celestic Town another way (Teleport out of the cave) finds her standing where she waits, with the blockade lifted all the same.
+- **Cyrus and the elder stand before the painting again** whenever the player comes back while Cyrus is still there (the cave's `OnEnter`), as the original lays its objects out afresh: a battle lost or a challenge refused doesn't leave them wherever the scene had walked them.
+- **The elder's warning on the road says nothing once the Old Charm is delivered**: the original's trigger would still tell of a spaceman long gone.
+- **Without the Old Charm** (a player who reached Celestic Town by Mt. Coronet, never meeting Cynthia on Route 210), the elder thanks the player and sends them to the ruins all the same, as the original's script, which takes the charm without asking, would.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The elder's look | An old woman of her own (`expert_f`) | The lady (`Lady`) | The second half's named cast is plan 11 · C6's, and the old woman's look plan 11 · C2–C4's |
+| The ruins' painting | A great painting on the cave's back wall | A slab of the cave's rock (`Outcrop`) where its model stands, read from the two tiles before it | No art for it yet |
+| The ironworks' floor | A factory floor of steel, with furnaces | Cave floor and rock, its crates and drums, the furnace a steel tower (`Headframe`) | No look of its own yet; the original builds it as one of its dungeons |
+| The Pokédex upgrade | The assistant's father in the gate between Route 218 and Canalave City shows male and female forms | Not there | The gate's room is plan 01 · M11's, and the Pokédex shows no genders yet |
+| The Old Rod | A fisherman in the gate between Jubilife City and Route 218 | Not given | The gate's room is plan 01 · M11's: the gates are walked through |
+| Cynthia before the painting | Her theory of the painting, after Charon's arrest on Stark Mountain | Not placed | Post-game (plan 02 · S15c) |
+| The elder's research | The Adamant and Lustrous Orbs' passage, after the Hall of Fame | Not there | Post-game (plan 02 · S15) |
+| Grandma Wilma's house and Celestic's other houses | Draco Meteor, the glasses shop | Doors shut | Plan 01 · M11 |
+| Z-Moves at Celestic Town | Not in Platinum | Left out | The later mechanics' beats wait for plan 06 · R21 (decision 06 · 2's default): it goes into `celestic_town_cave.txt` after Cyrus's battle |

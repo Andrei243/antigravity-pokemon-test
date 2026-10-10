@@ -101,9 +101,10 @@ public class CentreTests
     public void ADoorOfAPlaceNotBuiltYetStaysShut()
     {
         var map = Overworld;
-        // Hearthome's Foreign Building, Solaceon's Day Care (Mt. Coronet's upper floors, shut here until plan 01 · M8,
-        // are open, Eterna's Gym since M9, and Hearthome's Contest Hall and the Lost Tower since plan 02 · S7)
-        foreach (var (x, y) in new[] { (460, 709), (553, 645) })
+        // Hearthome's Foreign Building, Solaceon's north-east house (Mt. Coronet's upper floors, shut here until plan
+        // 01 · M8, are open, Eterna's Gym since M9, Hearthome's Contest Hall and the Lost Tower since plan 02 · S7, and
+        // Solaceon's Day Care since plan 06 · R15)
+        foreach (var (x, y) in new[] { (460, 709), (579, 648) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) leads nowhere and can be walked into");

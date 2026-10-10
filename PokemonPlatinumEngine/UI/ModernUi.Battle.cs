@@ -40,7 +40,7 @@ internal static partial class ModernUi
             {
                 var foe = anim[BattleSide.Enemy, slot];
                 float slide = BattleHUD.BoxSlide(anim, foe);
-                if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f);
+                if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f, battle.ShowsCaughtMark(foe.Shown!));
             }
             if (!CoversPlayerBox(hud.MenuState))
             {
@@ -56,7 +56,7 @@ internal static partial class ModernUi
         else
         {
             float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
-            if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty);
+            if (enemySlide >= 0f) EnemyBox(56 - 720 * enemySlide, 52, anim.Enemy, battle.EnemyParty, battle.ShowsCaughtMark(anim.Enemy.Shown!));
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
             // The team's cards cover the player's box while switching, and a question about a move to learn takes its place
             if (playerSlide >= 0f && !CoversPlayerBox(hud.MenuState)) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
@@ -116,7 +116,7 @@ internal static partial class ModernUi
     /// A double battle's HP box: name, level, status and HP bar (with the numbers and EXP for the player's). The
     /// Pokémon whose action is being chosen gets a glowing frame.
     /// </summary>
-    private static void CompactBox(float x, float y, CombatantView view, bool mine, bool turn, float skew)
+    private static void CompactBox(float x, float y, CombatantView view, bool mine, bool turn, float skew, bool caught = false)
     {
         var p = view.Shown!;
         var r = new Rectangle(x, y, 560, mine ? 116 : 104);
@@ -125,6 +125,7 @@ internal static partial class ModernUi
 
         float pad = mine ? 46 : 34;
         float nameW = NameWithGender(p, x + pad, y + 32, 30);
+        if (caught) nameW += CaughtMark(x + pad + nameW, y + 32, 30);
         StatusPill(x + pad + nameW + 12, y + 17, p.Status, 28);
         Level(x + r.Width - 40, y + 32, p.Level, 30);
         HpBar(x + pad, y + 62, r.Width - pad - 44, 20, view.DisplayedHp / Math.Max(1, p.MaxHP));
@@ -250,7 +251,7 @@ internal static partial class ModernUi
         return -1;
     }
 
-    private static void EnemyBox(float x, float y, CombatantView view, Party? trainerParty)
+    private static void EnemyBox(float x, float y, CombatantView view, Party? trainerParty, bool caught = false)
     {
         var p = view.Shown!;
         var r = new Rectangle(x, y, 580, 120);
@@ -279,9 +280,23 @@ internal static partial class ModernUi
 
         Panel(r, 22, skew: -0.2f);
         float nameW = NameWithGender(p, x + 38, y + 38, 36);
+        if (caught) nameW += CaughtMark(x + 38 + nameW, y + 38, 36);
         StatusPill(x + 38 + nameW + 14, y + 22, p.Status, 30);
         Level(x + r.Width - 46, y + 38, p.Level, 34);
         HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP));
+    }
+
+    /// <summary>
+    /// The caught mark after a wild foe's name (style guide, "Caught mark"): the bag's Poké Ball, 0.8× the name's
+    /// size, 12 after it, centred on the name's line. Gives how far the name's row now reaches.
+    /// </summary>
+    private static float CaughtMark(float afterName, float centerY, float size)
+    {
+        var ball = PixelArtGenerator.GetBallTexture("Poké Ball");
+        float d = size * 0.8f;
+        Raylib.DrawTexturePro(ball, new Rectangle(0, 0, ball.Width, ball.Height), new Rectangle(afterName + 12, centerY - d / 2, d, d),
+            Vector2.Zero, 0f, Color.White);
+        return 12 + d;
     }
 
     private static void PlayerBox(float x, float y, CombatantView view)
@@ -416,6 +431,8 @@ internal static partial class ModernUi
 
             float x = r.X + 184;
             NameWithGender(p, x, r.Y + 46, 34);
+            // An Egg is listed but can't battle (plan 06 · R15)
+            if (p.IsEgg) continue;
             Level(r.X + r.Width - 34, r.Y + 46, p.Level, 32);
             HpBar(x, r.Y + 76, r.Width - 184 - 34, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
             string hpText = $"{p.CurrentHP} / {p.MaxHP}";
@@ -550,6 +567,8 @@ internal static partial class ModernUi
             Portrait(new Vector2(r.X + 96, r.Y + r.Height / 2f), 68, p, 2, selected);
             float x = r.X + 184;
             NameWithGender(p, x, r.Y + 46, 34);
+            // An Egg is listed but can't battle (plan 06 · R15)
+            if (p.IsEgg) continue;
             Level(r.X + r.Width - 34, r.Y + 46, p.Level, 32);
             HpBar(x, r.Y + 76, r.Width - 184 - 34, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
             string hpText = $"{p.CurrentHP} / {p.MaxHP}";

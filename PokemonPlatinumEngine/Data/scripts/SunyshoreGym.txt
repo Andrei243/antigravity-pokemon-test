@@ -1,0 +1,48 @@
+# The Sunyshore Gym's first room (plan 01 · M9, part 2c), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_sunyshore_city_gym_room_1.s).
+#
+# Three rooms of gears over the dark, whose arms are the walkways (the game's own rule, SunyshoreGears). A button on a
+# gear's hub turns every gear of the room at once, each its own way: here a quarter turn on. Coming in from the city the
+# gears are in their first state; coming back from the second room, in the state that leads back (the engine lays them
+# out as the player comes in, as the original's InitPersistedMapFeaturesForSunyshoreGym does).
+
+
+# SunyshoreGymRoom1_Init: the buttons' variable is nought, so every step onto one presses it
+script OnEnter
+  setvar VAR_MAP_LOCAL_0x00 0
+  end
+
+
+# SunyshoreGymRoom1_Button: on the hubs of the gears at either end
+script Button
+  gearbutton normal
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge beacon goto Won
+  say "Hey there! How's it going, future Champ? Let me take a peek at your Badges."
+  say "One, two, three... Whoa! Seven already! Beat this Gym and the Pokémon League is next!"
+  say "Which means this is the last time I get to give you any advice. So listen up, one last time!"
+  say "The Gym Leader here is a master of Electric-type Pokémon!"
+  say "That's all I've got. The rest is up to you!"
+  end
+label Won
+  say "Oh! {player}! Did you beat the Gym Leader? Well, of course you did!"
+  say "But you know what? I'm not done being impressed yet. You and your Pokémon have so much more in you!"
+  say "Still, I'm proud of you. Eight Sinnoh Badges! Way to go, kiddo!"
+  end
+
+
+# The original names the certified trainers only once the Badge is won: the player, and the rival as well once he has won
+# it too (VAR_RIVAL_BEAT_SUNYSHORE_GYM), which his scene in Sunyshore City sets after the player's win. That scene is plan
+# 02 · S13's, and its branch of the statue comes with it.
+script GymStatue
+  speaker none
+  if badge beacon goto Won
+  say "SUNYSHORE CITY POKéMON GYM. Leader: Volkner"
+  end
+label Won
+  say "SUNYSHORE CITY POKéMON GYM. Leader: Volkner. Certified Trainers: {player}"
+  end

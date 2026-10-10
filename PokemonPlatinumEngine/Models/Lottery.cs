@@ -55,6 +55,8 @@ public static class Lottery
         Pokemon? winner = null;
         foreach (var p in pokemon)
         {
+            // An Egg's trainer isn't read (MON_DATA_IS_EGG)
+            if (p.IsEgg) continue;
             int id = (p.OriginalTrainer?.Id ?? playerId) & 0xffff;
             int matched = Matching(ticket, id);
             if (matched > best)

@@ -266,7 +266,8 @@ public partial class BattleEngine
         var chosen = PlayerParty.Members[partyIndex];
 
         string? refusal = null;
-        if (PlayerSlots.Any(b => b.Pokemon == chosen && !chosen.IsFainted)) refusal = $"{chosen.DisplayName} is already in battle!";
+        if (chosen.IsEgg) refusal = "An Egg can't battle!";
+        else if (PlayerSlots.Any(b => b.Pokemon == chosen && !chosen.IsFainted)) refusal = $"{chosen.DisplayName} is already in battle!";
         else if (chosen.IsFainted) refusal = $"{chosen.DisplayName} has no energy left to battle!";
         else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = $"{chosen.DisplayName} is already going in!";
 

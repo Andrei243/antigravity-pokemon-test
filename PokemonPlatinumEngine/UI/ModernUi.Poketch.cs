@@ -143,7 +143,7 @@ internal static partial class ModernUi
 
     private static Texture2D LcdIconTexture(string model)
     {
-        var icon = PixelArtGenerator.GetPokemonIcon(model);
+        var icon = model == Pokemon.EggName ? PixelArtGenerator.EggIcon : PixelArtGenerator.GetPokemonIcon(model);
         uint tones = (uint)(LcdInk.R << 24 | LcdInk.G << 16 | LcdMid.R << 8 | LcdMid.B);
         if (lcdIcons.TryGetValue((model, icon.Id, tones), out var known)) return known;
         var image = Raylib.LoadImageFromTexture(icon);
@@ -258,10 +258,11 @@ internal static partial class ModernUi
                 continue;
             }
             var p = party.Members[i];
-            var icon = LcdIconTexture(p.ModelName);
-            // A fainted Pokémon is drawn darker
-            var tint = p.IsFainted ? new Color(120, 120, 120, 255) : Color.White;
+            var icon = LcdIconTexture(p.IsEgg ? Pokemon.EggName : p.ModelName);
+            // A fainted Pokémon is drawn darker; an Egg has no hit points to show (plan 06 · R15)
+            var tint = p.IsFainted && !p.IsEgg ? new Color(120, 120, 120, 255) : Color.White;
             Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height), new Rectangle(cx + 8, cy, 80, 80), Vector2.Zero, 0f, tint);
+            if (p.IsEgg) continue;
             if (p.Status != StatusCondition.None && !p.IsFainted) LcdBlock(cx + 80, cy + 4, 1, 1, LcdInk);
 
             // The bar: an ink frame of blocks, filled in the middle green as far as the HP goes
