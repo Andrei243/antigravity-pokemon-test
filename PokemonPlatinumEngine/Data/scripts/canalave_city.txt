@@ -1,5 +1,5 @@
-# Canalave City (plan 01 · M7, plan 02 · S9). docs/scripts.md describes the language; the lines are our own, on the
-# original's beats (scripts_canalave_city.s).
+# Canalave City (plan 01 · M7, plan 02 · S9 and S10). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_canalave_city.s).
 #
 # Sailor Eldritch's boat at the pier takes the player across to Iron Island and back (the island's own sailor
 # sails back). In the original he also sails to Fullmoon and Newmoon Islands once the story has found reasons to
@@ -9,16 +9,102 @@
 # at x 47, VAR_CANALAVE_CITY_STATE 0), the rival comes running over it from the west, fresh from his own Gym Badge,
 # and battles with the team that has the upper hand on the player's starter; then he tells the player to train on
 # Iron Island and runs back over the bridge (state 1). He is shown for the scene alone: his flag still hides him, so
-# a battle lost leaves the bridge clear for the next try. Byron's Badge brings him back outside the Gym (CanalaveGym.txt
-# clears his flag and sets state 2), where he takes the player to the library: plan 02 · S10's scene.
+# a battle lost leaves the bridge clear for the next try.
+#
+# Plan 02 · S10, VAR_CANALAVE_CITY_STATE from there on:
+#   2  Byron's Badge is won (CanalaveGym.txt clears the rival's flags and the library's people's). As the player comes
+#      out of the Gym the rival, waiting at its door, calls them to the library and runs there (the original's OnFrame):
+#   3  the rival stands before the library's door (rival_library) and lets nobody in without HM04, which Riley gives
+#      on Iron Island (iron_island.txt); with it he goes in, and the meeting waits on the third floor
+#      (VAR_CANALAVE_LIBRARY_STATE 1, CanalaveLibrary3F.txt).
+#   4  Lake Valor has blown (FLAG_LAKE_VALOR_EXPLODED). As the player comes out of the library the professor, the
+#      assistant and the rival stand outside, a sailor brings the news, the rival runs off to Lake Acuity and the
+#      professor sends the player to Lake Valor (the original's second OnFrame):
+#   5  the professor and the assistant wait outside the library until the player has left town;
+#   6  they have gone to Lake Verity (lake_verity_low_water.txt).
+#
+# The original's RemoveObject also sets the flag that hides whoever it takes away, so everyone a scene here sends
+# off is hidden by their flag as well.
 
 
-# The original's OnTransition: Cynthia has left Celestic Town once the player is here, and the rival waits outside the
-# Gym after Byron.
+# The original's OnTransition (Cynthia has left Celestic Town once the player is here; the rival outside the library
+# after the explosion; the professor and the assistant gone on the next visit) and its two OnFrame scenes.
 script OnEnter
   setflag FLAG_HIDE_CELESTIC_TOWN_CYNTHIA
+  if var VAR_CANALAVE_CITY_STATE == 5 goto Gone
   if var VAR_CANALAVE_CITY_STATE == 1 place rival_bridge 39 733 up
-  if var VAR_CANALAVE_CITY_STATE == 2 place rival_bridge 39 733 up
+  if var VAR_CANALAVE_CITY_STATE == 2 goto OutsideTheGym
+  if var VAR_CANALAVE_CITY_STATE == 4 goto AfterTheExplosion
+  end
+label Gone
+  setflag FLAG_HIDE_CANALAVE_CITY_PROF_ROWAN
+  setflag FLAG_HIDE_CANALAVE_CITY_COUNTERPART
+  setvar VAR_CANALAVE_CITY_STATE 6
+  end
+label OutsideTheGym
+  place rival_bridge 39 733 up
+  # Out of the Gym's door he is waiting; anyone who came back some other way finds him gone to the library already
+  if var PLAYER_X != 39 goto ToTheLibraryQuietly
+  if var PLAYER_Y != 732 goto ToTheLibraryQuietly
+  music "common/rival"
+  speaker "{rival}"
+  say "{player}! Took you long enough! So you got Byron's Badge too, huh?"
+  say "Listen, the old professor's in town. He wants us at the library, and you know he hates waiting. Come on!"
+  move rival_bridge down 1 left 5 up 10 fast
+  wait 0.3
+  face player left
+  waitmoves
+  music area
+label ToTheLibraryQuietly
+  hide rival_bridge
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+  setvar VAR_CANALAVE_CITY_STATE 3
+  setvar VAR_CANALAVE_LIBRARY_STATE 1
+  end
+label AfterTheExplosion
+  place rival_bridge 37 721 down
+  if var PLAYER_X != 37 goto NewsQuietly
+  if var PLAYER_Y != 719 goto NewsQuietly
+  face prof_rowan down
+  speaker "Prof. Rowan"
+  say "Hmm... That was no ordinary tremor. The ground doesn't shake like that by itself."
+  # A sailor comes running up from the harbour with the news (two tiles nearer than the original stands him, so that
+  # the text box does not cover him)
+  clearflag FLAG_HIDE_CANALAVE_CITY_SAILOR
+  place sailor 43 725 left
+  show sailor
+  walk sailor left 5 up 4 fast
+  speaker "Sailor"
+  say "Have you heard? It's all over the harbour! There's been a huge explosion out east, at Lake Valor!"
+  say "They say the whole lake went up! I've got to tell the others!"
+  walk sailor down 4 right 9 fast
+  hide sailor
+  setflag FLAG_HIDE_CANALAVE_CITY_SAILOR
+  face rival_bridge up
+  speaker "{rival}"
+  say "An explosion at a lake? I've got a bad feeling about this. A really bad feeling!"
+  say "I'm going to Lake Acuity, right now! Whoever gets there last is paying the fine!"
+  walk rival_bridge down 3 right 9 fast
+  hide rival_bridge
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+  wait 0.3
+  face prof_rowan up
+  speaker "Prof. Rowan"
+  say "{rival} is as hasty as ever. But this time he is right to hurry."
+  say "{player}! I need you at Lake Valor. Find out what has happened there. I am counting on you."
+  face counterpart left
+  wait 0.25
+  speaker "{assistant}"
+  if boy say "{player}, you'll be all right, won't you? The professor and I are going to Lake Verity. Be careful!"
+  if girl say "I wonder what really happened out there... The professor and I will look into Lake Verity. Take care, {player}!"
+label NewsQuietly
+  setflag FLAG_HIDE_CANALAVE_CITY_SAILOR
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+  hide rival_bridge
+  setvar VAR_CANALAVE_CITY_STATE 5
+  clearflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_COUNTERPART
+  clearflag FLAG_HIDE_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+  clearflag FLAG_HIDE_LAKE_ACUITY_LOW_WATER_RIVAL
   end
 
 
@@ -62,6 +148,100 @@ label After
 script Rival
   speaker "{rival}"
   say "Go to Iron Island and toughen up! Seriously, that's what I did!"
+  end
+
+
+# The rival before the library's door (the original's script 25): nobody gets in without HM04 or a Pokémon that knows
+# Strength. With either he goes in ahead, and the door is clear.
+script RivalLibrary
+  speaker "{rival}"
+  if item "HM04" goto In
+  if knows "Strength" goto In
+  say "What? You haven't got the HM for Strength yet? Didn't I tell you to go and train on Iron Island?"
+  say "There's a guy over there handing it out. Go and get it, then come back. The professor can wait. Not for long, though!"
+  end
+label In
+  say "{player}! You're too slow! Everybody's waiting upstairs. Move it!"
+  face rival_library up
+  sound "door_open"
+  walk rival_library up 1
+  hide rival_library
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_LIBRARY
+  sound "door_close"
+  end
+
+
+# The professor and the assistant outside the library, once the explosion's news has come (the original's scripts 6
+# and 7).
+script Rowan
+  speaker "Prof. Rowan"
+  say "What is taking place at the lakes? Something is very wrong, and I mean to find out what."
+  say "Lake Valor lies east of Pastoria City, {player}. Go, and be careful."
+  end
+
+script Assistant
+  face self player
+  speaker "{assistant}"
+  if boy say "The professor and I are going to Lake Verity. It's right by home, so I know the way. You look after Lake Valor, {player}!"
+  if girl say "The professor and I will take Lake Verity. It's not far from Sandgem Town. Lake Valor is yours, {player}!"
+  end
+
+
+# The townspeople (the original's scripts 8 to 13): their own lines, and what they say of the tremor once Lake Valor has
+# blown.
+script Collector
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  sayown
+  end
+label After
+  say "That tremor just now was no earthquake. I've felt plenty of those, and none of them came with a bang."
+  end
+
+script Man
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  if not badge mine goto Own
+  if var VAR_CANALAVE_CITY_STATE >= 5 goto Own
+  say "A boy in a terrible hurry ran past me to the library just now. He kept stamping his feet by the door."
+  say "I do hope whoever he's waiting for turns up soon."
+  end
+label Own
+  sayown
+  end
+label After
+  say "What in the world was that tremor? The water in the canal jumped right out of its bed!"
+  end
+
+script AceTrainer
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  sayown
+  end
+label After
+  say "They're saying there was an explosion at Lake Valor. That's the other side of Sinnoh, and we felt it here!"
+  end
+
+script Lass
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  sayown
+  end
+label After
+  say "My Psyduck always knows when a storm is coming. But it never saw that tremor coming at all."
+  end
+
+script Psyduck
+  cry own
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  sayown
+  end
+label After
+  text "Psy! Psy-duck! Psyyy...?"
+  end
+
+script OldMan
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  sayown
+  end
+label After
+  say "An explosion, at a lake? What is there at a lake that could blow up? I don't like it one bit."
   end
 
 

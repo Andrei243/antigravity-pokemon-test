@@ -343,7 +343,8 @@ public class WorldTests
             string where = $"{name}: the warp at ({warp.SourceX},{warp.SourceY}) to {warp.TargetMap}";
             Assert.True(map.AreaAt(warp.SourceX, warp.SourceY)?.Open, $"{where} is outside the open areas");
             Assert.False(map.IsSolid(warp.SourceX, warp.SourceY), $"{where} can't be stepped on");
-            Assert.Single(map.Warps, w => (w.SourceX, w.SourceY) == (warp.SourceX, warp.SourceY));
+            // One way to a tile at a time: where two share it, the story has all but one shut (a lake's way in, plan 02 · S10)
+            Assert.Single(map.Warps, w => (w.SourceX, w.SourceY) == (warp.SourceX, warp.SourceY) && !w.Shut);
 
             Assert.True(MapDatabase.MapNames.Contains(warp.TargetMap), $"{where} leads to no map");
             var target = MapNamed(warp.TargetMap);
@@ -478,7 +479,8 @@ public class WorldTests
                 {
                     if (m.GetGroundTile(x, y) != TileType.TallGrass || m.AreaAt(x, y) is not { Open: true } area) continue;
                     // Lake Acuity before Team Galactic comes has grass and, by the original's own header, nothing living in it
-                    if (area.Key == "lake_acuity_low_water") continue;
+                    // and so has Lake Valor's bed, drained (plan 02 · S10)
+                    if (area.Key is "lake_acuity_low_water" or "lake_valor_drained") continue;
                     Assert.True(area.WildEncounters.Count > 0, $"{m.Name}: tall grass at ({x},{y}) in {area.Key}, where nothing lives");
                     if (m == map && area == route201) grass ??= (x, y);
                 }

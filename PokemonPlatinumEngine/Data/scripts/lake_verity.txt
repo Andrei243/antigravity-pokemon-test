@@ -1,0 +1,108 @@
+# Lake Verity as Team Galactic holds it (plan 02 · S10): the original's other map of the lake, which Verity Lakefront
+# leads to once Commander Saturn is beaten in Valor Cavern. docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_lake_verity.s).
+#
+# The professor stands just inside, held back by a grunt, and sends the player on as they come in (the original's
+# OnFrame, VAR_LAKE_VERITY_PROF_ROWAN_STATE 0). Four grunts stand in pairs along the shore. At the water's edge
+# Commander Mars has beaten the assistant; spoken to she battles, and beaten she says Team Galactic has all three of
+# the lakes' Pokémon now and leaves with her grunts. The professor comes up: the rival went to Lake Acuity alone.
+# That scene takes the two grunts out of Mt. Coronet's northern hall (the way to Route 216 and the north), and sets
+# Lake Acuity ready for Commander Jupiter (plan 02 · S11: VAR_LAKE_ACUITY_STATE 1, FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY,
+# which turns Acuity Lakefront's way in).
+#
+# The original's RemoveObject also sets the flag that hides whoever it takes away, so Team Galactic's people here are
+# hidden by their flag (FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC). The professor and the assistant stay until Lake Acuity's
+# scene sends them home.
+
+
+# The original's OnTransition (where the professor and the assistant stand) and OnFrame (the professor's call).
+script OnEnter
+  if flag FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY goto After
+  if var VAR_LAKE_VERITY_PROF_ROWAN_STATE == 0 goto Notice
+  place prof_rowan 46 51 down
+  end
+label After
+  place prof_rowan 50 37 left
+  place counterpart 50 39 left
+  end
+label Notice
+  place prof_rowan 46 50 up
+  face prof_rowan down
+  emote prof_rowan exclaim
+  walk prof_rowan down 1
+  face player prof_rowan
+  speaker "Prof. Rowan"
+  if boy say "{player}! You came! Team Galactic was here before us. {assistant} went on ahead to stop them, and she is facing them alone!"
+  if girl say "{player}! You came! Team Galactic was here before us. {assistant} went on ahead to stop them, and he is facing them alone!"
+  say "This lout won't let me pass. Go, {player}! Hurry!"
+  setvar VAR_LAKE_VERITY_PROF_ROWAN_STATE 1
+  end
+
+
+# The professor (the original's script 3).
+script Rowan
+  speaker "Prof. Rowan"
+  if flag FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY goto After
+  face prof_rowan right
+  say "How dare you! Have you people no idea what you are meddling with?"
+  face self player
+  say "{player}, never mind me. {assistant} needs your help, further along the shore. Go!"
+  end
+label After
+  face self player
+  say "Team Galactic has taken the Pokémon of two lakes already. And {rival} went to Lake Acuity alone..."
+  say "{player}, go to Lake Acuity. It lies in the far north, beyond Mt. Coronet and the snow of Route 217."
+  end
+
+
+# The grunt who holds the professor back (the original's script 7).
+script Guard
+  speaker "Galactic Grunt"
+  say "What's with this old-timer? He hasn't stopped shouting since we got here."
+  say "And now you. Go on, bother the Commander if you must. See how far it gets you."
+  end
+
+
+# The assistant (the original's script 4).
+script Assistant
+  face self player
+  speaker "{assistant}"
+  if flag FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY goto After
+  if boy say "{player}... I tried to stop her. I really tried. But I couldn't beat this person!"
+  if girl say "{player}! I lost to her. Only just, mind you! Only just!"
+  end
+label After
+  if boy say "{player}, what is Team Galactic doing? Taking Pokémon out of their lakes... It's horrible."
+  if girl say "What's Team Galactic up to, {player}? They can't just carry Pokémon off like that!"
+  end
+
+
+# Commander Mars (the original's script 6).
+script Mars
+  face self player
+  face counterpart right
+  speaker "Commander Mars"
+  say "Well, well! Look who it is. The brat from the Valley Windworks!"
+  say "You're too late, you know. The Pokémon of this lake is already on its way to the boss. But I do owe you one. Let's settle it!"
+  battle mars as "commander_mars_lake_verity"
+  speaker "Commander Mars"
+  say "Again?! I can't believe I lost to you again!"
+  say "Hmph. It doesn't matter. We're pulling out. There's nothing left here worth staying for."
+  say "Verity, Valor, and by now Acuity as well. Team Galactic has all three of the lakes' Pokémon. So long!"
+  fade out
+  hide mars
+  hide grunt_m
+  setflag FLAG_HIDE_LAKE_VERITY_TEAM_GALACTIC
+  setflag FLAG_ALT_MUSIC_LAKE_VERITY
+  face counterpart down
+  face player left
+  place prof_rowan 53 39 right
+  fade in
+  setflag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M
+  setflag FLAG_TEAM_GALACTIC_LEFT_LAKE_VERITY
+  clearflag FLAG_HIDE_LAKE_ACUITY_JUPITER
+  setvar VAR_LAKE_ACUITY_STATE 1
+  speaker "Prof. Rowan"
+  say "They are gone. Thank you, {player}. But all three lakes, she said..."
+  say "Then what is happening at Lake Acuity? {rival} went there alone. {player}, I must ask you to go after him."
+  end

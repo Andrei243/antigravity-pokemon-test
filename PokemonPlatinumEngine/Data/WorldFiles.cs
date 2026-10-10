@@ -572,6 +572,13 @@ public sealed class WorldOverlayFile
     /// <summary>Warps (by number) with nothing behind them yet: their doors stay shut.</summary>
     public List<int>? Locked { get; set; }
 
+    /// <summary>
+    /// Warps (by number) that are there only for part of the story (plan 02 · S10): where the original keeps two warps
+    /// on the same tiles and moves one of them away by script (a lakefront's way into the lake as it is before Team
+    /// Galactic comes, and into the lake as it is after), each says the flag it is there until, or from.
+    /// </summary>
+    public List<OverlaySwitch>? Switches { get; set; }
+
     /// <summary>Ways out the original doesn't have: onto a neighbouring map that isn't imported yet.</summary>
     public List<OverlayExit>? Exits { get; set; }
 
@@ -631,6 +638,17 @@ public sealed class OverlayDoor
 
     /// <summary>A story flag the door stays locked until (plan 02 · S6); left out for a door that is always open.</summary>
     public string? OpenedBy { get; set; }
+}
+
+/// <summary>
+/// One of an area's warps that the story switches (plan 02 · S10): there only until a flag is set, or only once it is.
+/// </summary>
+[JsonConverter(typeof(OneLine<OverlaySwitch>))]
+public sealed class OverlaySwitch
+{
+    public int Warp { get; set; }
+    public string? Until { get; set; }
+    public string? From { get; set; }
 }
 
 /// <summary>A warp into a gate house, and the warp of the area on its far side one comes out at.</summary>

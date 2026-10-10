@@ -5,7 +5,10 @@
   // The house has no rooms yet (plan 01 · M11)
   "locked": [ 0 ],
   "people": {
-    // He sails the player back to Canalave City (scripts/iron_island.txt); Riley waits for his chapter (plan 02)
-    "sailor": { "name": "Sailor", "script": "Ferry" }
+    // He sails the player back to Canalave City (scripts/iron_island.txt)
+    "sailor": { "name": "Sailor", "script": "Ferry" },
+    // Riley before the tunnels' door, who gives HM04 and goes in (plan 02 · S10). He stands as the clerk until he has
+    // a look of his own (plan 11 · C6)
+    "riley": { "name": "Riley", "npcType": "Clerk", "script": "Riley", "still": true }
   }
 }

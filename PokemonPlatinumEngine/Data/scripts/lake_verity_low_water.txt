@@ -46,3 +46,26 @@ script OnEnter
   setvar VAR_FOLLOWER_RIVAL_STATE 4
   setvar VAR_VISITED_LAKE_VERITY_WITH_RIVAL 1
   end
+
+
+# Plan 02 · S10: the professor and the assistant, come to look into the lake after the explosion at Lake Valor (the
+# original's scripts 4 and 5). They find nothing: Team Galactic comes to Lake Verity only once Commander Saturn is
+# beaten in Valor Cavern, and the lakefront leads to the lake's other map from then on (lake_verity.txt).
+script Rowan
+  face self player
+  speaker "Prof. Rowan"
+  if flag FLAG_TALKED_TO_LAKE_VERITY_LOW_WATER_PROF_ROWAN goto Again
+  setflag FLAG_TALKED_TO_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+  say "{player}? What brings you here? There is no sign of the lake's Pokémon. Not a ripple."
+  say "And how was Lake Valor? You have been there, I trust?"
+  end
+label Again
+  say "Well, {player}? How was Lake Valor? I should like to hear it from someone who has seen it."
+  end
+
+script Assistant
+  face self player
+  speaker "{assistant}"
+  if boy say "{player}! It's so quiet here, it's almost eerie. How was Lake Valor? Is it true what they said on the television?"
+  if girl say "Hey, {player}. Nothing's happened here yet. How's Lake Valor? Was it as bad as the news made out?"
+  end

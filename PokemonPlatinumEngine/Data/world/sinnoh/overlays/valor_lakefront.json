@@ -3,15 +3,41 @@
   "bgmTrack": "sinnoh/valor",
   "trees": "Round",
   "architecture": "Resort",
-  // The restaurant and the houses have no rooms yet (plan 01 · M11); the drained lake is the story's (plan 02)
-  "locked": [ 0, 1, 2, 3, 4 ],
+  // The restaurant and the houses have no rooms yet (plan 01 · M11)
+  "locked": [ 0, 1, 2 ],
+  // The way into the lake shares its tiles between two maps, as the original moves its warps by script: the lake Team
+  // Galactic drained (warps 3 and 4) until the story fills it again (FLAG_GALACTIC_LEFT_LAKE_VALOR, plan 02 · S13),
+  // and the lake as it was (warps 5 and 6) from then on
+  "switches": [
+    { "warp": 3, "until": "FLAG_GALACTIC_LEFT_LAKE_VALOR" },
+    { "warp": 4, "until": "FLAG_GALACTIC_LEFT_LAKE_VALOR" },
+    { "warp": 5, "from": "FLAG_GALACTIC_LEFT_LAKE_VALOR" },
+    { "warp": 6, "from": "FLAG_GALACTIC_LEFT_LAKE_VALOR" }
+  ],
   // The road east to Sunyshore City, closed after the city's blackout (plan 02 · S8, scripts/valor_lakefront.txt) until
   // the professor's lab sees to it (plan 02 · S13)
   "triggers": [ { "trigger": 0, "script": "BlockSunyshore" } ],
-  // The cameramen who keep the lake shut until the meeting in Canalave's library come with that scene (plan 02 · S10:
-  // FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN): a person in the way whom no script sends off would close the lake to
-  // everyone's walks
   "people": {
+    // The cameramen who keep the lake shut until the explosion (plan 02 · S10: the meeting in Canalave's library sets
+    // FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN, CanalaveLibrary3F.txt)
+    "cameraman_north": {
+      "name": "Cameraman",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [
+        "Sorry, nobody goes down to the lake while we're filming.",
+        "We've had the camera on that water for a week, and the Pokémon they talk about hasn't shown so much as a ripple."
+      ]
+    },
+    "cameraman_south": {
+      "name": "Cameraman",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [
+        "They say a legendary Pokémon sleeps in this lake. We mean to be the first to catch it on film!",
+        "So the lake is closed for now. You understand."
+      ]
+    },
     // The grunt who carried the Galactic Bomb, Cynthia and the rival (plan 02 · S8)
     "grunt_m": { "name": "Grunt", "script": "Grunt" },
     "cynthia": { "name": "Cynthia", "dialog": [ "Cynthia: The lake is closed to visitors just now. I wonder why?" ] },

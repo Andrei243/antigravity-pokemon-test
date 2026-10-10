@@ -45,10 +45,15 @@ internal static class WorldWalk
             var (map, x, y, mode, height, arrived) = queue.Dequeue();
 
             // Stepping onto a warp takes it; one is only ever stood on by arriving through another
-            if (!arrived && map.GetWarpAt(x, y) is { } warp)
+            if (!arrived && map.WarpsAt(x, y).Any())
             {
-                var onto = mapOf(warp.TargetMap);
-                Visit(onto, warp.TargetX, warp.TargetY, TravelMode.OnFoot, onto.HeightAt(warp.TargetX, warp.TargetY), arrived: true);
+                // Every way the tile leads at some point of the story: the way into a lake is one map before Team
+                // Galactic comes and another after (plan 02 · S10)
+                foreach (var warp in map.WarpsAt(x, y))
+                {
+                    var onto = mapOf(warp.TargetMap);
+                    Visit(onto, warp.TargetX, warp.TargetY, TravelMode.OnFoot, onto.HeightAt(warp.TargetX, warp.TargetY), arrived: true);
+                }
                 // A door of Turnback Cave is aimed as the player comes in, and can lead into any of its rooms
                 int door = TurnbackCave.IsPart(map.AreaAt(x, y)?.Key) ? IndexOf(TurnbackCave.Doors, (x, y)) : -1;
                 if (door >= 0)

@@ -482,12 +482,18 @@ public class Map
 
     /// <summary>
     /// Locks and unlocks the doors that wait for the story (<see cref="Warp.OpenedBy"/>): a locked door's tile stands
-    /// in the way like a wall, an open one is walked into as ever.
+    /// in the way like a wall, an open one is walked into as ever. And shuts the ways the story has moved on from or
+    /// has not yet come to (<see cref="Warp.Until"/>, <see cref="Warp.From"/>, plan 02 · S10), so that the other way
+    /// on their tile is the one taken.
     /// </summary>
     public void ApplyDoors(Func<string, bool> flagSet)
     {
         foreach (var warp in Warps)
+        {
             if (warp.OpenedBy is { } flag) SetSolid(warp.SourceX, warp.SourceY, !flagSet(flag));
+            if (warp.Until != null || warp.From != null)
+                warp.Shut = (warp.Until is { } until && flagSet(until)) || (warp.From is { } from && !flagSet(from));
+        }
     }
 
     /// <summary>Forgets who a script showed or hid by itself: from here on the flags decide again.</summary>
@@ -827,8 +833,14 @@ public class Map
 
     public Warp? GetWarpAt(int x, int y)
     {
-        return Warps.FirstOrDefault(w => w.SourceX == x && w.SourceY == y);
+        return Warps.FirstOrDefault(w => w.SourceX == x && w.SourceY == y && !w.Shut);
     }
+
+    /// <summary>
+    /// Every way a tile leads at some point of the story, shut or not: two warps share a tile where the place behind
+    /// it changes with the story (<see cref="Warp.Until"/>, <see cref="Warp.From"/>).
+    /// </summary>
+    public IEnumerable<Warp> WarpsAt(int x, int y) => Warps.Where(w => w.SourceX == x && w.SourceY == y);
 
     public string? GetSignboardAt(int x, int y)
     {

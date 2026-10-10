@@ -1,0 +1,17 @@
+# The Canalave Library, second floor (plan 02 · S10), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_canalave_library_2f.s).
+#
+# A boy among the stacks. The hiker who tells of the plates he found (the original's OnFrame, VAR_ARCEUS_EVENT_STATE 2)
+# belongs to an event the original gave out by distribution, and is left out.
+
+
+script SchoolKid
+  speaker "School Kid"
+  face self player
+  if flag FLAG_LAKE_VALOR_EXPLODED goto After
+  say "The books up on the third floor are ones even I can get through. Old stories, mostly."
+  say "They're short, and some of them are properly creepy. You should try one!"
+  end
+label After
+  say "Did you feel that tremor? That was wicked! The books nearly jumped off their shelves!"
+  end

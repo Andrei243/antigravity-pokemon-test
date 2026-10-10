@@ -1,0 +1,446 @@
+{
+  "name": "CanalaveLibrary1F",
+  "displayName": "Canalave Library",
+  "bgmTrack": "sinnoh/canalave",
+  "interior": "House",
+  "trees": "Round",
+  "width": 22,
+  "height": 13,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "######################",
+    "#______##____________#",
+    "#______##____________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "###########D##########"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "######################",
+    "######################",
+    "###########....#######",
+    "#......####..........#",
+    "#....................#",
+    "#####................#",
+    "#####....#...#####...#",
+    "#####....#...#...#...#",
+    "#.......##...#...#..##",
+    "#......###...#..##..##",
+    "###########.##########"
+  ],
+  "props": [
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 5,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 15,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 16,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 19,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 20,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 9,
+      "y": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 4,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 8,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Counter",
+      "x": 17,
+      "y": 9,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 8,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 8,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 20,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 16,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 11,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 37,
+      "targetY": 719,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 4,
+      "targetMap": "CanalaveLibrary2F",
+      "targetX": 3,
+      "targetY": 4,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 1,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 15,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 16,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 17,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 18,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 19,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 20,
+      "y": 4,
+      "text": "The shelves are crammed with books from the floor to the ceiling."
+    },
+    {
+      "x": 1,
+      "y": 7,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 3,
+      "y": 7,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 4,
+      "y": 7,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 4,
+      "y": 8,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 1,
+      "y": 9,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 2,
+      "y": 9,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 3,
+      "y": 9,
+      "text": "Row upon row of books, every one in its place."
+    },
+    {
+      "x": 4,
+      "y": 9,
+      "text": "Row upon row of books, every one in its place."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Librarian",
+      "npcType": "Lass",
+      "x": 14,
+      "y": 9,
+      "facing": "Left",
+      "script": "Receptionist"
+    },
+    {
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "Lass",
+      "x": 2,
+      "y": 5,
+      "facing": "Up",
+      "script": "Lass"
+    }
+  ],
+  "wildEncounters": []
+}

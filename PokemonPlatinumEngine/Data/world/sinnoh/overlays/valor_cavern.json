@@ -1,0 +1,15 @@
+{
+  "area": "valor_cavern",
+  "bgmTrack": "sinnoh/cave",
+  // The way out shares its tile between two maps, as the lakefront's way in does: the drained lake (warp 0) until the
+  // story fills it again, the lake as it was (warp 1) from then on (plan 02 · S13)
+  "switches": [
+    { "warp": 0, "until": "FLAG_GALACTIC_LEFT_LAKE_VALOR" },
+    { "warp": 1, "from": "FLAG_GALACTIC_LEFT_LAKE_VALOR" }
+  ],
+  // Commander Saturn, alone in the cavern Azelf was taken from (plan 02 · S10, scripts/valor_cavern.txt). He stands as
+  // a grunt until he has a look of his own (plan 11 · C6). Azelf comes back with plan 02 · S13.
+  "people": {
+    "saturn": { "name": "Saturn", "npcType": "Grunt", "script": "Saturn", "still": true }
+  }
+}

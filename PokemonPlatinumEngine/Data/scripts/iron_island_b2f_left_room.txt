@@ -1,0 +1,212 @@
+# Iron Island, the left room two floors down (plan 02 · S10). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_iron_island_b2f_left_room.s, scripts_follower_partners.s).
+#
+# Riley waits just inside the way in. As the player first walks up to him (the original's trigger at x 35, state 0) he
+# asks to team up: something is upsetting the island's Pokémon. He walks behind the player as Platinum's
+# "riley_iron_island", healing the team after every battle and battling beside them, and the room's trainers, who
+# stand in pairs, take on the two of them together. Turning back for the way out (the trigger at x 36, state 1) leaves
+# him where he first stood. At the far end two Team Galactic grunts stand before the lift (the trigger at x 21, or
+# either grunt spoken to): they have been stirring the Pokémon up, and battle the pair. Beaten, they run, and Riley
+# offers an Egg of a Riolu. Refused, he asks again; with no room in the team he waits by the lift until there is.
+#
+# VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE: 0 not with him, 1 together, 2 the grunts beaten.
+# The original's RemoveObject also sets the flag that hides whoever it takes away, so the grunts are hidden by theirs.
+
+
+# Away from the room, he waits where he first stood (the original's OnTransition); once the grunts are beaten he waits
+# by the lift with the Egg, until it has been taken.
+script OnEnter
+  if flag FLAG_RECEIVED_RIOLU_EGG_FROM_RILEY end
+  if var VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE == 2 goto ByTheLift
+  if partner end
+  setvar VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 0
+  place riley 34 3 up
+  end
+label ByTheLift
+  place riley 19 41 right
+  end
+
+
+# Walking up to him (trigger 0, a column of two tiles at x 35, state 0).
+script Join
+  face riley right
+  emote riley exclaim
+  if var PLAYER_Y == 2 walk riley up 1
+  face riley right
+  face player left
+  speaker "Riley"
+  if flag FLAG_TALKED_TO_IRON_ISLAND_B2F_LEFT_ROOM_RILEY goto Again
+  say "{player}! So you came down after all. I'm glad. Something isn't right on this island."
+  say "The Pokémon are restless, far more than they should be. I mean to find out why. Shall we team up, the two of us?"
+  goto Together
+label Again
+  say "Hi, {player}. Back again? Then let's team up after all."
+label Together
+  fanfare levelup
+  text "{player} decided to go with Riley."
+  setflag FLAG_TALKED_TO_IRON_ISLAND_B2F_LEFT_ROOM_RILEY
+  setvar VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 1
+  speaker "Riley"
+  say "I'll see to your Pokémon after every battle, so fight as hard as you like. Lead on!"
+  partner riley "riley_iron_island"
+  end
+
+
+# Turning back for the way out with him (trigger 1, a column of two tiles at x 36, state 1): he stays behind.
+script Leave
+  partner off
+  # He walks a step behind: west of a player who came east
+  if var PLAYER_Y == 2 place riley 35 2 right
+  if var PLAYER_Y == 3 place riley 35 3 right
+  face player left
+  speaker "Riley"
+  say "Heading back up? That's all right. I'd be glad if you came back, though. I'll keep looking round down here."
+  setvar VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 0
+  if var PLAYER_Y == 2 walk riley left 1 down 1
+  if var PLAYER_Y == 3 walk riley left 1
+  face riley left
+  end
+
+
+# Riley spoken to (the original's script 8): the Egg again if it couldn't be taken, a goodbye once the grunts are
+# beaten, and on the way four things to say.
+script Riley
+  face self player
+  speaker "Riley"
+  if flag FLAG_COULD_NOT_RECEIVE_RIOLU_EGG goto Egg
+  if var VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE == 2 goto Goodbye
+  if var VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE == 0 goto Waiting
+  if var VAR_FOLLOWER_RILEY_TIMES_TALKED >= 4 goto Fifth
+  if var VAR_FOLLOWER_RILEY_TIMES_TALKED == 3 goto Fourth
+  if var VAR_FOLLOWER_RILEY_TIMES_TALKED == 2 goto Third
+  if var VAR_FOLLOWER_RILEY_TIMES_TALKED == 1 goto Second
+  say "Two Trainers side by side can do what neither could alone. I think so, anyway. Don't you, {player}?"
+  addvar VAR_FOLLOWER_RILEY_TIMES_TALKED 1
+  end
+label Second
+  say "They dug iron ore out of this island for years. The seams gave out long ago, and the tunnels were left to the Pokémon."
+  addvar VAR_FOLLOWER_RILEY_TIMES_TALKED 1
+  end
+label Third
+  say "Have you met Byron, Canalave's Gym Leader? He comes here to train as well. He digs more than he battles, mind you."
+  addvar VAR_FOLLOWER_RILEY_TIMES_TALKED 1
+  end
+label Fourth
+  say "Steel against steel. Imagine the sparks! That's the kind of battle I'd cross the sea to watch."
+  addvar VAR_FOLLOWER_RILEY_TIMES_TALKED 1
+  end
+label Fifth
+  say "The Pokémon here are afraid of something. What is going on on this island?"
+  end
+label Waiting
+  say "I'm looking into what is upsetting the Pokémon here. Come and find me when you're ready to team up."
+  end
+label Goodbye
+  say "Look after that Egg, {player}. Let's meet again somewhere, and battle properly next time."
+  end
+label Egg
+  call EggOffer
+  end
+
+
+# The two grunts before the lift (trigger 3, a column of two tiles at x 21, state 1; or either of them spoken to).
+script Grunts
+  if var VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE != 1 goto Alone
+  partner off
+  # Riley, a step behind, comes up beside the player, and they face the grunts together on the tiles before them
+  if var PLAYER_X == 20 goto Close
+  if var PLAYER_Y == 41 goto South
+  place riley 22 40 left
+  move riley down 1 left 2
+  wait 0.5
+  walk player left 1
+  goto Lined
+label South
+  place riley 22 41 left
+  move riley up 1 left 2
+  wait 0.5
+  walk player left 1
+  goto Lined
+label Close
+  # Spoken to from right before them: he steps up into the other row
+  if var PLAYER_Y == 41 goto CloseSouth
+  place riley 21 40 left
+  walk riley down 1 left 1
+  goto Lined
+label CloseSouth
+  place riley 21 41 left
+  walk riley up 1 left 1
+label Lined
+  waitmoves
+  face riley left
+  face player left
+  speaker "Riley"
+  say "So it was you. You're the ones who have been frightening the Pokémon of this island!"
+  face grunt_m_west right
+  speaker "Galactic Grunt"
+  say "And what if we are? Team Galactic is taking every Pokémon on this rock, scared or not!"
+  face grunt_m_east right
+  say "They're no use to anybody down here in the dark. With us they'll help make a whole new world. Now clear off!"
+  face riley left
+  speaker "Riley"
+  say "{player}! We can't lose to people like these. Together, now!"
+  battle grunt_m_west and grunt_m_east with "riley_iron_island"
+  heal
+  setvar VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 2
+  face grunt_m_west down
+  speaker "Galactic Grunt"
+  say "Ugh! Two against two, and they flattened us! Let's beat it, partner!"
+  face grunt_m_east up
+  say "Don't look at us! We only do what we're told. Nobody tells grunts what the big plan is!"
+  fade out
+  hide grunt_m_west
+  hide grunt_m_east
+  setflag FLAG_HIDE_IRON_ISLAND_B2F_LEFT_ROOM_GRUNTS
+  fade in
+  # The player and Riley turn to each other
+  if var PLAYER_Y == 40 goto FacingSouth
+  face riley down
+  face player up
+  goto Offer
+label FacingSouth
+  face riley up
+  face player down
+label Offer
+  call EggOffer
+  end
+label Alone
+  speaker "Galactic Grunt"
+  say "What are you gawping at? This lift is Team Galactic's business. Clear off!"
+  end
+
+
+# The Egg (the original's WouldYouTakeEgg): asked until the answer is yes; with a full team he keeps it for later.
+script EggOffer
+  speaker "Riley"
+  say "Thank you, {player}. The Pokémon here will calm down now that those two have gone."
+label Ask
+  ask "I'd like you to have something. It's a Pokémon Egg. Will you take it?"
+  if no goto Refused
+  if party >= 6 goto NoRoom
+  fanfare pokemon
+  text "{player} received the Egg from Riley!"
+  say "Take the Pokémon that hatches from it to all sorts of places. It will grow up strong and kind for it."
+  giveegg "Riolu"
+  clearflag FLAG_COULD_NOT_RECEIVE_RIOLU_EGG
+  setflag FLAG_RECEIVED_RIOLU_EGG_FROM_RILEY
+  setvar VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 2
+  speaker "Riley"
+  say "I'll stay on the island a while and train some more. Let's meet again somewhere, {player}!"
+  fade out
+  hide riley
+  setflag FLAG_HIDE_IRON_ISLAND_B2F_LEFT_ROOM_RILEY
+  fade in
+  return
+label NoRoom
+  setflag FLAG_COULD_NOT_RECEIVE_RIOLU_EGG
+  setvar VAR_IRON_ISLAND_B2F_LEFT_ROOM_FOLLOWER_RILEY_STATE 2
+  say "Ah. Your team is full, so there's no room for an Egg. Make a space in it, and come and see me. I'll be right here."
+  return
+label Refused
+  say "Please. Think of it as a token of how well we fought together. I'd like you to have it."
+  goto Ask

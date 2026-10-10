@@ -1,0 +1,41 @@
+# Route 217 (plan 02 · S10). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_217.s).
+#
+# As the player first comes up the route from the south (the original's trigger 0, two tiles across the path at
+# 302 and 303, 376; VAR_ROUTE_217_STATE 0), Maylene catches them up from behind, barefoot in the snow: she is on her
+# way to Snowpoint City to see its Gym Leader, and goes on ahead. The original takes her out of her own Gym until the
+# Icicle Badge (FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE, which Acuity Lakefront clears again): the flag is set here as
+# the original sets it, though her Gym's own map doesn't read it yet. HM08 lies in its ball further up the route.
+
+
+script Maylene
+  clearflag FLAG_HIDE_ROUTE_217_MAYLENE
+  place maylene 305 383 up
+  show maylene
+  if var PLAYER_X == 303 goto East
+  walk maylene up 4 left 3 up 1
+  goto Met
+label East
+  walk maylene up 4 left 2 up 1
+label Met
+  emote maylene exclaim
+  speaker "Maylene"
+  say "Oh! {player}! It's you!"
+  face player down
+  walk maylene up 1
+  say "Brrr, it's freezing out here! I'm on my way to Snowpoint City. Their Gym Leader is a friend of mine, and we train together."
+  say "Running barefoot through the snow is good training too. That's what I keep telling my feet, anyway. See you there!"
+  if var PLAYER_X == 303 goto LeaveEast
+  move maylene right 1 up 3 right 2 up 9
+  goto Watch
+label LeaveEast
+  move maylene left 1 up 3 right 3 up 9
+label Watch
+  wait 0.6
+  face player up
+  waitmoves
+  hide maylene
+  setflag FLAG_HIDE_ROUTE_217_MAYLENE
+  setvar VAR_ROUTE_217_STATE 1
+  setflag FLAG_HIDE_VEILSTONE_CITY_GYM_MAYLENE
+  end

@@ -578,10 +578,12 @@ public class CelesticAndTheSeaTests
         game.Step("RivalOnTheBridge");
         // As the Gym's script leaves it (CanalaveGym.txt): his flag cleared, state 2
         Run(game, "canalave_city", "givebadge mine\n clearflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE\n setvar VAR_CANALAVE_CITY_STATE 2");
-        game.Arrive("Sinnoh", 55, 724);
-        var rival = game.Present("rival_bridge", "canalave_city")!;
-        Assert.Equal((39, 733), (rival.GridX, rival.GridY));
-        Assert.Contains("Iron Island", game.Talk("rival_bridge", "canalave_city").Transcript.Single().Text);
+        // Out of the Gym's door he is waiting, and calls the player to the library: the next chapter's scene (plan 02 ·
+        // S10, IronIslandAndTheLakesTests), which sends him there
+        game.Arrive("Sinnoh", 39, 732);
+        Assert.Contains(game.Last.Transcript, l => l.Speaker == OpeningTests.Game.Rival && l.Text.Contains("library"));
+        Assert.Equal(3, game.Story.Var("VAR_CANALAVE_CITY_STATE"));
+        Assert.Null(game.Present("rival_bridge", "canalave_city"));
     }
 
     // ------------------------------------------------------------------ the way through

@@ -269,7 +269,9 @@ public static class WorldModels
         Thing("t5_o01c", PropType.Outcrop, "the ancient painting at the back of Celestic Town's ruins, on a slab of the cave's rock"),
         Ground("d_mat01", "the mat inside the Fuego Ironworks' door: the floor draws it"),
         Thing("box03", PropType.Crates, "crates stacked on the Fuego Ironworks' floor"),
-        Thing("d04_s01", PropType.Headframe, "the furnace in the middle of the Fuego Ironworks' floor, a tower of steel as tall as its model")
+        Thing("d04_s01", PropType.Headframe, "the furnace in the middle of the Fuego Ironworks' floor, a tower of steel as tall as its model"),
+        // Plan 02 · S10: Lake Valor drained
+        Ground("bomb_mark", "the scorch the Galactic Bomb left on Lake Valor's bed: the lake bed's own ground stands for it")
     };
 
     private static readonly Dictionary<string, WorldModel> ByName = Table.ToDictionary(m => m.Name, StringComparer.Ordinal);

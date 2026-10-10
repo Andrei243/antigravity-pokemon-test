@@ -2,7 +2,7 @@
   "area": "lake_valor",
   "bgmTrack": "sinnoh/lake",
   "trees": "Round",
-  // Valor Cavern opens with its scene (plan 02). Warps 0 and 2 are the original's leftovers on the shore, which no
-  // way leads to: the way in and out is 3 and 4, as the drained lake's is
-  "locked": [ 0, 1, 2 ]
+  // Warps 0 and 2 are the original's leftovers on the shore, which no way leads to: the way in and out is 3 and 4, as
+  // the drained lake's is. Warp 1 is Valor Cavern's mouth on the island (plan 02 · S10 opened the cavern)
+  "locked": [ 0, 2 ]
 }

@@ -7,8 +7,33 @@
     { "x": 19, "z": 43, "map": "IronIslandB2FLeft", "toX": 19, "toY": 45, "facing": "Down" },
     { "x": 19, "z": 44, "map": "IronIslandB2FLeft", "toX": 19, "toY": 42, "facing": "Up" }
   ],
-  // Riley and the Team Galactic grunts here wait for the story (plan 02)
+  // Plan 02 · S10 (scripts/iron_island_b2f_left_room.txt): Riley asks to team up as the player walks up to him
+  // (trigger 0), stays behind if they turn back for the way out (trigger 1), and battles the two grunts before the
+  // lift beside the player (trigger 3). Trigger 2 is the lift's own, which the exits above stand in for
+  "triggers": [
+    { "trigger": 0, "script": "Join" },
+    { "trigger": 1, "script": "Leave" },
+    { "trigger": 3, "script": "Grunts" }
+  ],
   "people": {
+    // He stands as the clerk until he has a look of his own (plan 11 · C6)
+    "riley": { "name": "Riley", "npcType": "Clerk", "script": "Riley", "still": true },
+    "grunt_m_west": {
+      "name": "Grunt",
+      "script": "Grunts",
+      "still": true,
+      "trainer": { "id": "galactic_grunt_iron_island_1",
+        "dialogueBefore": "Galactic Grunt: Two of you? Then we'll take your Pokémon as well!",
+        "dialogueAfter": "Galactic Grunt: Nobody said there'd be Trainers down here..." }
+    },
+    "grunt_m_east": {
+      "name": "Grunt",
+      "script": "Grunts",
+      "still": true,
+      "trainer": { "id": "galactic_grunt_iron_island_2",
+        "dialogueBefore": "Galactic Grunt: You're in Team Galactic's way. Big mistake!",
+        "dialogueAfter": "Galactic Grunt: I want to go back to headquarters." }
+    },
     "hiker_damon": {
       "name": "Damon",
       "trainer": {

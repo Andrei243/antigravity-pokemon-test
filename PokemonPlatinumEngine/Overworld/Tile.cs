@@ -221,6 +221,25 @@ public class Warp
     /// </summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? OpenedBy { get; set; }
+
+    /// <summary>
+    /// A way that is there only until the story sets this flag (plan 02 · S10): the original moves a warp off its
+    /// tiles by script where two of them share the tiles (the way into a lake that is one map before Team Galactic
+    /// comes and another after). Null for a way that is always there.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Until { get; set; }
+
+    /// <summary>A way that is there only once the story has set this flag: the other of two that share their tiles.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? From { get; set; }
+
+    /// <summary>
+    /// Whether the story has this way shut for now (<see cref="Until"/>, <see cref="From"/>; kept up to date by
+    /// <see cref="Map.ApplyDoors"/>): nobody is taken through it, and the other way on its tile is the one taken.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Shut { get; set; }
 }
 
 /// <summary>

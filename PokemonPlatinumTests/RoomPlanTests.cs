@@ -43,8 +43,13 @@ public class RoomPlanTests
         // The elder's house in Celestic Town, plan 02 · S9
         new object[] { "CelesticTownNorthHouse", 1, 4, 5, 8 },
         // The League's Pokémon Center, with the door to the Elite Four, plan 01 · M9, part 2d: its nurse and clerks stand in row 1
-        new object[] { "PokemonLeagueNorthPokemonCenter", 1, 1, 11, 11 }
+        new object[] { "PokemonLeagueNorthPokemonCenter", 1, 1, 11, 11 },
+        // The Canalave Library's first floor, plan 02 · S10
+        new object[] { "CanalaveLibrary1F", 1, 4, 11, 11 }
     };
+
+    /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
+    internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
     internal static readonly string[] Gates = { "Route209GateToHearthomeCity" };
@@ -124,7 +129,15 @@ public class RoomPlanTests
         new object[] { "PokemonDayCare", "gym_guide", 4, 9, Direction.Right },
         new object[] { "CelesticTownNorthHouse", "expert_m", 8, 7, Direction.Down },
         new object[] { "CelesticTownNorthHouse", "elder", 2, 6, Direction.Down },
-        new object[] { "CelesticTownNorthHouse", "lass", 3, 4, Direction.Down }
+        new object[] { "CelesticTownNorthHouse", "lass", 3, 4, Direction.Down },
+        new object[] { "CanalaveLibrary1F", "receptionist", 14, 9, Direction.Left },
+        new object[] { "CanalaveLibrary1F", "lass", 2, 5, Direction.Up },
+        new object[] { "CanalaveLibrary2F", "school_kid_m", 11, 10, Direction.Down },
+        new object[] { "CanalaveLibrary3F", "scientist_f", 15, 5, Direction.Down },
+        new object[] { "CanalaveLibrary3F", "youngster", 3, 7, Direction.Down },
+        new object[] { "CanalaveLibrary3F", "prof_rowan", 8, 10, Direction.Up },
+        new object[] { "CanalaveLibrary3F", "counterpart", 7, 10, Direction.Up },
+        new object[] { "CanalaveLibrary3F", "rival", 2, 3, Direction.Right }
     };
 
     [Theory]
@@ -193,7 +206,7 @@ public class RoomPlanTests
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);
@@ -267,6 +280,39 @@ public class RoomPlanTests
         // The flights stand beside their warps: up to the west, down to the east
         Assert.Contains(lower.Props, p => p.Type == PropType.SideStairsUp && p.Covers(ux - 1, uy));
         Assert.Contains(upper.Props, p => p.Type == PropType.SideStairsDown && p.Covers(dx + 1, dy));
+    }
+
+    [Fact]
+    public void TheCanalaveLibrarysStairsJoinItsFloorsAsTheOriginalsDo()
+    {
+        // The original's warps: 1F (11, 4) to 2F (4, 4), 2F (11, 4) to 3F (4, 3); a flight climbing west below, a
+        // stairwell going down east above, and whoever takes them is put beside the stairs at the far end
+        foreach (var (below, ux, uy, above, dx, dy) in new[] { ("CanalaveLibrary1F", 11, 4, "CanalaveLibrary2F", 4, 4), ("CanalaveLibrary2F", 11, 4, "CanalaveLibrary3F", 4, 3) })
+        {
+            Map lower = Room(below), upper = Room(above);
+            var up = lower.GetWarpAt(ux, uy)!;
+            Assert.Equal((above, dx - 1, dy, Direction.Left), (up.TargetMap, up.TargetX, up.TargetY, up.TargetFacing));
+            var down = upper.GetWarpAt(dx, dy)!;
+            Assert.Equal((below, ux + 1, uy, Direction.Right), (down.TargetMap, down.TargetX, down.TargetY, down.TargetFacing));
+            Assert.True(upper.IsWalkable(dx - 1, dy));
+            Assert.True(lower.IsWalkable(ux + 1, uy));
+            Assert.Contains(lower.Props, p => p.Type == PropType.SideStairsUp && p.Covers(ux - 1, uy));
+            Assert.Contains(upper.Props, p => p.Type == PropType.SideStairsDown && p.Covers(dx + 1, dy));
+        }
+        // The upper floors begin where the original's do, and have no door
+        Assert.Equal((1, 4), Room("CanalaveLibrary2F").RoomCorner());
+        Assert.Equal((1, 3), Room("CanalaveLibrary3F").RoomCorner());
+        Assert.All(LibraryUpperFloors, name => Assert.DoesNotContain(Room(name).Warps, w => w.TargetMap == "Sinnoh"));
+        // The third floor's books are read where the original's are: seven of them, on twenty-one tiles
+        var top = Room("CanalaveLibrary3F");
+        Assert.Equal(7, top.SignScripts.Values.Distinct().Count());
+        Assert.Equal(21, top.SignScripts.Count);
+        Assert.Equal("SinnohMyth", top.SignScripts[(9, 3)]);
+        Assert.Equal("SinnohFolkStories", top.SignScripts[(20, 9)]);
+        // And its table stands between the tiles the meeting is held on
+        Assert.Contains(top.Props, p => p.Type == PropType.Table && p.Covers(7, 8) && p.Covers(8, 9));
+        Assert.True(top.IsWalkable(7, 7));
+        Assert.True(top.IsWalkable(8, 7));
     }
 
     /// <summary>The tiles one can walk to on a floor from a tile, without its stairs, whoever stands about.</summary>

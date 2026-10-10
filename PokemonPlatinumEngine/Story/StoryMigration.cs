@@ -61,6 +61,40 @@ public static class StoryMigration
         // Cynthia came up the road after them, Route 218's blockade gone for a save that has been to Canalave City,
         // and the Vs. Seeker's first level of rematches for a save that has the Vs. Seeker
         if (savedVersion < 11) ChapterSix(story, scripts, bag);
+        // Version 12: the seventh chapter's (plan 02 · S10), and Mt. Coronet's northern hall clear of Team Galactic's
+        // grunts, with Maylene past on Route 217, for a save that has already been to Snowpoint City
+        if (savedVersion < 12) ChapterSeven(story, scripts);
+    }
+
+    /// <summary>The flag that first arriving in Snowpoint City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
+    public const string ArrivedInSnowpointFlag = "FLAG_FIRST_ARRIVAL_SNOWPOINT_CITY";
+
+    /// <summary>The flag that takes Team Galactic's two grunts out of Mt. Coronet's northern hall (scripts/lake_verity.txt).</summary>
+    public const string CoronetGruntsGoneFlag = "FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M";
+
+    /// <summary>
+    /// Version 12, a save from before the seventh chapter was written (plan 02 · S10): its people are hidden until
+    /// their scenes by <see cref="ScriptLibrary.ChapterSeven"/>, which a new game runs too. A save that has Byron's Badge
+    /// keeps the library's people as his Gym's script left them.
+    /// </summary>
+    private static void ChapterSeven(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterSeven);
+        BeyondTheGrunts(story);
+    }
+
+    /// <summary>
+    /// Version 12 again: the two grunts the chapter stands across Mt. Coronet's northern hall, on the way to Route 216,
+    /// stay until Commander Mars is beaten at Lake Verity. A save that has already been to Snowpoint City, or holds
+    /// its Icicle Badge, walked that hall when nobody stood in it: for that save they have gone, so that it isn't shut
+    /// in the north or out of it, and Maylene, who catches the player up on Route 217 on her way to Snowpoint, has
+    /// long since gone by.
+    /// </summary>
+    private static void BeyondTheGrunts(StoryState story)
+    {
+        if (!story.Has(ArrivedInSnowpointFlag) && !story.HasBadge(Badge.Icicle)) return;
+        story.Set(CoronetGruntsGoneFlag);
+        if (story.Var("VAR_ROUTE_217_STATE") == 0) story.SetVar("VAR_ROUTE_217_STATE", 1);
     }
 
     /// <summary>The flag that first arriving in Canalave City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>

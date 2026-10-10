@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-183 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+184 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -18,6 +18,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | Model | What it is | In the game | Stand-in until | Size in tiles (w × d × h) | Uses | Where |
 |---|---|---|---|---|---:|---|
 | `board_d` | a billboard | a prop: Billboard |  | 1.5 × 0.4 × 2.5 | 1 | Route 215 |
+| `bomb_mark` | the scorch the Galactic Bomb left on Lake Valor's bed: the lake bed's own ground stands for it | nothing of its own: the ground under it draws it |  | 3.0 × 3.0 × 0.0 | 11 | Lake Valor |
 | `box02` | crates in the mine | a prop: Crates |  | 1.9 × 1.9 × 1.5 | 7 | Oreburgh Mine |
 | `box03` | crates stacked on the Fuego Ironworks' floor | a prop: Crates |  | 1.9 × 1.9 × 1.5 | 10 | Fuego Ironworks |
 | `c06_s01` | the Great Marsh's gate and lookout | a building: Hall, built as in Marsh, 2 storeys, signed MARSH |  | 6.4 × 7.6 × 6.1 | 2 | Great Marsh, Pastoria City |
@@ -151,7 +152,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `l2_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.9 | 7 | Route 213, Valor Lakefront |
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
-| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 12 | Lake Acuity, Lake Valor, Lake Verity |
+| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 16 | Lake Acuity, Lake Valor, Lake Verity |
 | `l_lake_l4` | the surface of a lake | nothing of its own: the ground under it draws it |  | 20.0 × 16.0 × 0.0 | 1 | Sendoff Spring |
 | `lift_base01` | the platform at the foot of a lift on Iron Island | a prop: LiftBase |  | 3.0 × 2.3 × 0.9 | 2 | Iron Island |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |

@@ -1,0 +1,30 @@
+# Mt. Coronet, the northern hall of its first floor (plan 02 · S10). docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_mt_coronet_1f_north_room_1.s).
+#
+# Two Team Galactic grunts stand side by side across the passage to the stairs down, which lead under the mountain
+# to Route 216 and the north. They talk between themselves about the fog below, and go only when Commander Mars is
+# beaten at Lake Verity (FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M, lake_verity.txt). The grunt who stands here
+# after Team Galactic's headquarters fall is plan 02 · S11's.
+
+
+script Grunts
+  face grunt_m_1 down
+  speaker "Galactic Grunt"
+  say "The fog down those stairs is thicker than soup. I couldn't see my own boots."
+  face grunt_m_2 up
+  say "Don't look at me. None of my Pokémon can use Defog. So here we stand, until somebody tells us otherwise."
+  face grunt_m_1 left
+  face grunt_m_2 left
+  say "And nobody gets past us in the meantime. That means you!"
+  end
+
+
+# Coming up the stairs from below while they still stand there: nobody gets north of them in a game of today, so
+# this is a save from before the chapter that was already on the far side. They have gone for it, or it would be
+# shut in the north (Story/StoryMigration.cs, version 12, does the same for a save that has reached Snowpoint City).
+script OnEnter
+  if flag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M end
+  if var PLAYER_X > 13 end
+  if var PLAYER_Y > 11 end
+  setflag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNTS_M
+  end

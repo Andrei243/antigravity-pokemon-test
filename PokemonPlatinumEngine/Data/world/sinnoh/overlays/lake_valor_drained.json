@@ -1,0 +1,75 @@
+{
+  "area": "lake_valor_drained",
+  "bgmTrack": "sinnoh/lake",
+  "trees": "Round",
+  // The TM25 ball lies on a shelf of the shore that only the water leads to: it waits for the lake as it was, whose
+  // own file has it too
+  "heldBack": [ "item_tm25" ],
+  // Lake Valor after Team Galactic's bomb (plan 02 · S10, scripts/lake_valor_drained.txt): the water is gone, the
+  // lake's Magikarp lie stranded on its bed, and Team Galactic's grunts stand about the way to the cavern in the
+  // middle. The grunts who only talk leave with Commander Saturn (FLAG_HIDE_LAKE_VALOR_GALACTIC); the three who battle
+  // stay, as the original's do.
+  "people": {
+    "grunt_m_1": {
+      "name": "Grunt",
+      "dialog": [ "Galactic Grunt: What do you want? There's nothing to see here. The Commander's busy in the cave, so run along!" ]
+    },
+    "grunt_f": {
+      "name": "Grunt",
+      "dialog": [
+        "Galactic Grunt: All that noise, all that water gone, and what's left? Magikarp. Heaps and heaps of Magikarp.",
+        "Useless things. They can't even flop in a straight line."
+      ]
+    },
+    "grunt_m_2": {
+      "name": "Grunt",
+      "dialog": [ "Galactic Grunt: That's one lake done. Next stop, Lake Verity! Commander Mars will have the place to herself by now." ]
+    },
+    "galactic_grunt_lake_valor_1": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: A kid? Out here? Whatever you came to see, you're not going to see it!",
+        "dialogueAfter": "Galactic Grunt: You're too late anyway. We've got what we came for."
+      }
+    },
+    "galactic_grunt_lake_valor_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: The Galactic Bomb did its job, and I'll do mine. Nobody gets near the cave!",
+        "dialogueAfter": "Galactic Grunt: Fine, go and look. See if the Commander is as easy as I was."
+      }
+    },
+    "galactic_grunt_lake_valor_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Galactic Grunt: Mind your feet! These Magikarp are everywhere. And mind me, while you're at it!",
+        "dialogueAfter": "Galactic Grunt: I slipped on a Magikarp. That's the only reason you won."
+      }
+    },
+    // The lake's Magikarp, left high and dry (plan 10 · F1: Pokémon that stand in the field). Six of them lie in the
+    // middle of a heap in the lake's north-west corner, where nobody can walk up to them: they have nothing to say
+    "magikarp_1": { "name": "Magikarp", "dialog": [ "Magikarp splashes in a puddle no deeper than its fins." ] },
+    "magikarp_2": { "name": "Magikarp", "dialog": [ "Magikarp gapes up at the sky, as if asking where its lake went." ] },
+    "magikarp_3": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_4": { "name": "Magikarp", "dialog": [ "Magikarp splashes in a puddle no deeper than its fins." ] },
+    "magikarp_5": { "name": "Magikarp" },
+    "magikarp_6": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_7": { "name": "Magikarp" },
+    "magikarp_8": { "name": "Magikarp", "dialog": [ "Magikarp gapes up at the sky, as if asking where its lake went." ] },
+    "magikarp_9": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_10": { "name": "Magikarp", "dialog": [ "Magikarp splashes in a puddle no deeper than its fins." ] },
+    "magikarp_11": { "name": "Magikarp" },
+    "magikarp_12": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_13": { "name": "Magikarp" },
+    "magikarp_14": { "name": "Magikarp" },
+    "magikarp_15": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_16": { "name": "Magikarp", "dialog": [ "Magikarp splashes in a puddle no deeper than its fins." ] },
+    "magikarp_17": { "name": "Magikarp", "dialog": [ "Magikarp gapes up at the sky, as if asking where its lake went." ] },
+    "magikarp_18": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_19": { "name": "Magikarp", "dialog": [ "Magikarp splashes in a puddle no deeper than its fins." ] },
+    "magikarp_20": { "name": "Magikarp", "dialog": [ "Magikarp gapes up at the sky, as if asking where its lake went." ] },
+    "magikarp_21": { "name": "Magikarp", "dialog": [ "Magikarp is flopping about where the water used to be." ] },
+    "magikarp_22": { "name": "Magikarp" },
+    "magikarp_23": { "name": "Magikarp", "dialog": [ "Magikarp gapes up at the sky, as if asking where its lake went." ] }
+  }
+}
