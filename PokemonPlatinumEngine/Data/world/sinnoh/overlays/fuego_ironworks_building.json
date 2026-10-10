@@ -1,0 +1,31 @@
+{
+  "area": "fuego_ironworks_building",
+  "bgmTrack": "sinnoh/mine",
+  // The Fuego Ironworks' floor (plan 02 · S9): the original's moving floors, its workers and Mr. Fuego, who gives a
+  // Star Piece and trades Shards for Star Pieces (scripts/fuego_ironworks_building.txt). Drawn as a cave, as the
+  // original's dungeons are here, until the ironworks has a look of its own.
+  "people": {
+    "mr_fuego": { "name": "Mr. Fuego", "script": "MrFuego", "still": true },
+    "worker_dillan": {
+      "name": "Dillan",
+      "trainer": {
+        "dialogueBefore": "Worker Dillan: Mind the moving floor! It'll carry you off before you know it. A battle, though? Now that I can do!",
+        "dialogueAfter": "Worker Dillan: Knocked flat. I'll blame the floor for that one."
+      }
+    },
+    "worker_holden": {
+      "name": "Holden",
+      "trainer": {
+        "dialogueBefore": "Worker Holden: Hot work in here. Let's see if your Pokémon can stand the heat!",
+        "dialogueAfter": "Worker Holden: Phew. I think I need to cool off."
+      }
+    },
+    "worker_conrad": {
+      "name": "Conrad",
+      "trainer": {
+        "dialogueBefore": "Worker Conrad: Iron's forged in fire, and so are Pokémon. Come on, then!",
+        "dialogueAfter": "Worker Conrad: Still a bit soft, my team. Back in the furnace with us."
+      }
+    }
+  }
+}

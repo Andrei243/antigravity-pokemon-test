@@ -1,0 +1,67 @@
+# The Fuego Ironworks' floor (plan 02 · S9). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_fuego_ironworks_building.s).
+#
+# Mr. Fuego gives a Star Piece to his first visitor (FLAG_RECEIVED_FUEGO_IRONWORKS_BUILDING_STAR_PIECE) and trades a
+# Shard of each colour for every Star Piece the player brings him, one at a time or ten at once
+# (FLAG_MR_FUEGO_ASKED_FOR_TRADE once he has offered). Platinum has no Team Galactic here.
+
+
+# The original's OnTransition.
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_FUEGO_IRONWORKS
+  end
+
+
+# Mr. Fuego (the original's script 2).
+script MrFuego
+  speaker "Mr. Fuego"
+  if flag FLAG_MR_FUEGO_ASKED_FOR_TRADE goto Again
+  if flag FLAG_RECEIVED_FUEGO_IRONWORKS_BUILDING_STAR_PIECE goto Offer
+  say "Well, hello there! I don't get many visitors way out here."
+  say "I put in those moving floors to make the ironworks run smoother. Did anyone thank me? They did not!"
+  say "Said the floors made them dizzy! ...Ah, but you didn't come all this way to hear me grumble. Here, a little something to remember us by!"
+  give "Star Piece"
+  setflag FLAG_RECEIVED_FUEGO_IRONWORKS_BUILDING_STAR_PIECE
+label Offer
+  if item "Star Piece" goto Ask
+  say "We make our iron by burning the impurities out of the ore, and all sorts of coloured Shards turn up along the way."
+  say "Bring me a Star Piece, and I'll trade you a Shard of every colour for it."
+  end
+label Ask
+  setflag FLAG_MR_FUEGO_ASKED_FOR_TRADE
+  say "We make our iron by burning the impurities out of the ore, and all sorts of coloured Shards turn up along the way."
+  ask "What do you say? I'll trade you a Shard of every colour for a Star Piece."
+  goto Answer
+label Again
+  if not item "Star Piece" goto NoPieces
+  ask "Interested? A Shard of every colour for a Star Piece?"
+label Answer
+  if no goto NotTrading
+  if item "Star Piece" >= 10 goto HowMany
+label One
+  take "Star Piece"
+  additem "Red Shard"
+  additem "Blue Shard"
+  additem "Yellow Shard"
+  additem "Green Shard"
+  goto Done
+label HowMany
+  choose "My, that's a lot of Star Pieces! Shall we trade ten of them?" "One" "Ten" "Never mind"
+  if result == 0 goto One
+  if result == 2 goto NotTrading
+  take "Star Piece" 10
+  additem "Red Shard" 10
+  additem "Blue Shard" 10
+  additem "Yellow Shard" 10
+  additem "Green Shard" 10
+label Done
+  fanfare item
+  say "There you go: red, blue, yellow and green! A Shard of every colour!"
+  say "This place would be nothing without iron. I'm grateful to the land every day for giving us the ore."
+  end
+label NotTrading
+  say "You're not trading?! Well, I never."
+  end
+label NoPieces
+  say "Got any Star Pieces? You can trade them for all sorts of Shards."
+  end

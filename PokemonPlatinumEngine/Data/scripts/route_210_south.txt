@@ -16,9 +16,12 @@ label Battle
 
 
 # The Psyduck across the road north (the original's script 1). They hold their heads and won't budge until the
-# SecretPotion cures them; then they go off and stay gone (FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK). Cynthia gives the
-# SecretPotion at Valor Lakefront (plan 02 · S8, valor_lakefront.txt); she comes up the road after they leave in the
-# next chapter (plan 02 · S9).
+# SecretPotion cures them; then they waddle off up the road and stay gone (FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK). Cynthia
+# gives the SecretPotion at Valor Lakefront (plan 02 · S8, valor_lakefront.txt). Once they have gone she comes up the
+# road behind the player (plan 02 · S9): the player can only face the Psyduck from the two tiles below them, and she
+# stops on the tile below that. She asks, until the answer is yes, that the Old Charm be taken to her grandmother, the
+# elder of Celestic Town (celestic_town.txt), and goes back the way she came (FLAG_USED_SECRETPOTION). The Secret
+# Potion stays in the bag, as in the original.
 script Psyduck
   cry "Psyduck"
   if item "Secret Potion" goto Potion
@@ -29,13 +32,62 @@ label Potion
   if no end
   text "{player} used the Secret Potion!" "The Psyduck's headaches seem to have cleared up!"
   cry "Psyduck"
-  emote psyduck_1 exclaim
-  emote psyduck_2 exclaim
-  emote psyduck_3 exclaim
-  emote psyduck_4 exclaim
+  emote psyduck_3 exclaim 0.5
+  emote psyduck_4 exclaim 0.5
+  emote psyduck_2 exclaim 0.5
+  emote psyduck_1 exclaim 0.5
+  # Off up the road they go, the ones at the back first
+  move psyduck_3 up 9
+  move psyduck_4 up 9
+  wait 0.3
+  move psyduck_1 up 9
+  move psyduck_2 up 9
+  waitmoves
   setflag FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK
-  hide psyduck_1
-  hide psyduck_2
   hide psyduck_3
   hide psyduck_4
+  hide psyduck_1
+  hide psyduck_2
+  wait 0.8
+  # Cynthia comes up the road behind the player (the original clears her flag and adds her)
+  if var PLAYER_X == 560 place cynthia 560 596 up
+  if var PLAYER_X != 560 place cynthia 561 596 up
+  clearflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  show cynthia
+  walk cynthia up 7
+  face player down
+  speaker "Cynthia"
+  say "So you used the Secret Potion I gave you. I'm glad it worked."
+  say "Psyduck are prone to terrible headaches, you know. Nobody has ever worked out what sets them off."
+  say "Oh, while I think of it... could I ask a big favour of you?"
+  say "I'd like you to take this Old Charm to my grandmother in Celestic Town."
+  say "There are some rare Pokémon living between here and there, so the trip should be worth your while."
+  ask "Will you take it to her for me?"
+label Ask
+  if yes goto Yes
+  say "I know it's a lot to ask. But I'd really like it to be you."
+  ask "Will you go to Celestic Town for me?"
+  goto Ask
+label Yes
+  give "Old Charm"
+  say "My grandmother has a rather commanding air about her. You'll know her the moment you see her."
+  say "She's the elder of Celestic Town. As for where it is, look at your Town Map. You can't miss it."
+  say "I'm counting on you! I'm sure we'll meet again along the way."
+  walk cynthia down 9
+  hide cynthia
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  setflag FLAG_USED_SECRETPOTION
+  end
+
+
+# The trainer resting by the café (the original's script 3) gives TM51, Roost, once (FLAG_RECEIVED_ROUTE_210_SOUTH_TM51).
+script Roost
+  speaker "Ace Trainer"
+  if flag FLAG_RECEIVED_ROUTE_210_SOUTH_TM51 goto Given
+  say "Whew! I'm taking a breather before the climb. If I were a bird Pokémon, you'd call this roosting. Ha ha!"
+  say "...You look like you could do with a rest yourself. Here, this one's for you."
+  give "TM51"
+  setflag FLAG_RECEIVED_ROUTE_210_SOUTH_TM51
+label Given
+  say "Even bird Pokémon need to land now and then. Nobody can stay up in the air forever!"
   end

@@ -9,8 +9,16 @@
     { "warp": 2, "to": "jubilife_city", "toWarp": 12 },
     { "warp": 3, "to": "jubilife_city", "toWarp": 13 }
   ],
-  // The blockade by the Canalave gate (a guitarist, a fisherman and their Pokémon) waits for the story (plan 02)
   "people": {
+    // The blockade before the Canalave gate (plan 02 · S9): a guitarist and a fisherman rehearsing a show with their
+    // Clefairy and Pikachu, until Cynthia has met the player in Celestic Town (FLAG_HIDE_ROUTE_218_BLOCKADE,
+    // scripts/celestic_town.txt). They only practise: nobody talks to the player (the original's EventMessage)
+    "guitarist": { "name": "Guitarist", "script": "Guitarist", "still": true },
+    "fisherman": { "name": "Fisherman", "script": "Fisherman", "still": true },
+    "clefairy_south": { "name": "Clefairy", "script": "ClefairySouth" },
+    "clefairy_north": { "name": "Clefairy", "script": "ClefairyNorth" },
+    "pikachu_south": { "name": "Pikachu", "script": "Pikachu" },
+    "pikachu_north": { "name": "Pikachu", "script": "Pikachu" },
     "guitarist_tony": {
       "name": "Tony",
       "trainer": {

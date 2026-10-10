@@ -1,0 +1,159 @@
+# The cave of Celestic Town's ruins (plan 02 · S9). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats (scripts_celestic_town_cave.s).
+#
+# The ancient painting is read from one of the two tiles before it (9, 3 or 10, 3). The first time, the elder comes
+# in after the player and tells its legend, and Cyrus comes in after her: he will destroy the painting, and asks the
+# player to stop him if they think him wrong. Said no, he shoves the player aside and stands before it; spoken to,
+# he asks again. Beaten, he leaves, and the elder gives HM03 (Surf) and goes home to her house in town
+# (CelesticTownNorthHouse.txt). Cynthia waits outside (VAR_CELESTIC_TOWN_STATE 1, celestic_town.txt).
+#
+# The original's RemoveObject also sets the flag that hides whoever it takes away, so Cyrus and the elder are hidden
+# by their flags once they go. Cynthia's own talk before the painting is the post-game's (plan 02 · S15c).
+
+
+# Coming in while Cyrus is still here (refused, or a battle lost): he stands before the painting and the elder beside
+# it, on their own tiles, as the original lays its objects out afresh.
+script OnEnter
+  if flag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS end
+  place cyrus 9 3 up
+  place elder 10 3 left
+  end
+
+
+# The painting (the original's script 1).
+script Painting
+  if flag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING goto Again
+  text "{player} looked closely at the ancient painting." "Strange shapes cover a whole stretch of the rock." "Three figures stand in a triangle... and at their heart, a sphere of light?" "What could it all mean?"
+  setflag FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
+  # The elder comes in after the player and stands beside them
+  clearflag FLAG_HIDE_CELESTIC_TOWN_CAVE_ELDER
+  place elder 4 11 up
+  show elder
+  if var PLAYER_X == 9 goto ElderFromTheWest
+  walk elder up 6 right 1 up 1 right 4 up 1
+  face player left
+  goto Legend
+label ElderFromTheWest
+  walk elder up 6 right 1 up 1 right 5 up 1
+  face player right
+label Legend
+  speaker "Elder"
+  say "As we tell it, the painting means this..."
+  say "Once there were two beings, so mighty that the people of the time took them for gods."
+  say "And there were three Pokémon whose power matched either of them. Those three held the two in balance, like the sides of a pyramid."
+  say "That is Sinnoh's ancient legend, as Celestic Town still tells it today."
+  speaker "???"
+  say "I would like to hear more of that legend, if you'll allow me."
+  face elder down
+  face player down
+  speaker "Elder"
+  say "And who might you be...?"
+  setflag FLAG_HIDE_CELESTIC_TOWN_ELDER
+  clearflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS
+  place cyrus 4 11 up
+  show cyrus
+  if var PLAYER_X == 9 walk cyrus up 6 right 1 up 1 right 5
+  if var PLAYER_X != 9 walk cyrus up 6 right 1 up 1 right 4
+  face cyrus up
+  speaker "Cyrus"
+  say "My name is Cyrus. I mean to put an end to pointless conflict and hostility. I am looking for the power to make an ideal world."
+  say "So answer me this. The world cannot change today because those three Pokémon keep it in balance. Is that what you are telling me?"
+  speaker "Elder"
+  say "I couldn't tell you. What I do know is that the world is in balance, and I'm quite content with it as it is."
+  say "Your question doesn't interest me."
+  speaker "Cyrus"
+  say "...So you plead ignorance. How pointless."
+  say "You fail to see that this world is incomplete. I will change it. And as a first step, I will destroy this painting you have guarded for so long."
+  say "A new world deserves a new legend in its place. Am I mistaken?"
+  ask "If you believe I am, then challenge me."
+  if yes goto Fight
+  say "...You choose to be a coward. A sensible choice. Stand aside, then, and watch me change the world."
+  # He shoves the player aside and stands before the painting himself
+  if var PLAYER_X == 9 goto ShoveWest
+  face elder right
+  walk cyrus right 1
+  move cyrus up 1
+  walk player right 1
+  waitmoves
+  face player left
+  end
+label ShoveWest
+  face elder left
+  walk cyrus left 1
+  move cyrus up 1
+  walk player left 1
+  waitmoves
+  face player right
+  end
+label Again
+  text "{player} looked closely at the ancient painting." "Strange shapes cover a whole stretch of the rock." "Three figures stand in a triangle... and at their heart, a sphere of light..."
+  end
+label Fight
+  call CyrusBattle
+  end
+
+
+# Cyrus before the painting (the original's script 2), once the player has stood aside.
+script Cyrus
+  speaker "Cyrus"
+  ask "Well? Am I mistaken? If you believe I am, then challenge me."
+  if no goto Coward
+  call CyrusBattle
+  end
+label Coward
+  say "...You choose to be a coward. A sensible choice. Stand aside, then, and watch me change the world."
+  end
+
+
+# The battle, and the elder's thanks: HM03.
+script CyrusBattle
+  speaker "Cyrus"
+  say "...I know you, Trainer. We met on Mt. Coronet. Why would you defend a world as incomplete as this?"
+  say "As the leader of Team Galactic, I will show you how wrong you are."
+  battle cyrus as "galactic_boss_cyrus_celestic_town_ruins"
+  clearflag FLAG_HIDE_CELESTIC_TOWN_CYNTHIA
+  setvar VAR_CELESTIC_TOWN_STATE 1
+  speaker "Cyrus"
+  say "...Remarkable. But your answers have told me what I needed to know, Elder."
+  say "If the beings of time and of space were brought together, nothing could stand in their way..."
+  wait 0.3
+  fade out
+  hide cyrus
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS
+  fade in
+  # The player and the elder turn to each other, from wherever the player stood to battle
+  if var PLAYER_X == 8 walk player right 1
+  if var PLAYER_X == 11 walk player left 1
+  if var PLAYER_Y == 4 walk player up 1
+  if var PLAYER_X == 9 goto FacingEast
+  face player left
+  face elder right
+  goto Gift
+label FacingEast
+  face player right
+  face elder left
+label Gift
+  speaker "Elder"
+  say "What a strange, strange man, talking such nonsense."
+  say "The time and space of Sinnoh are full of the memories and feelings of countless people and Pokémon. It's a wonderful world. Why would anyone want to change it?"
+  say "Oh, yes. I found something you might use. Take it. It was my granddaughter's, but she has no need of it now."
+  give "HM03"
+  setflag FLAG_HIDE_CELESTIC_TOWN_ELDER
+  clearflag FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER
+  say "Teach a Pokémon Surf, and it will carry you over lakes and the sea."
+  say "You've been a great help to this town. Think of that as our thanks."
+  if var PLAYER_X == 9 walk elder down 1 left 5 down 1 left 1 down 6
+  if var PLAYER_X != 9 walk elder down 1 left 4 down 1 left 1 down 6
+  face player down
+  hide elder
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_ELDER
+  return
+
+
+# The elder beside the painting while Cyrus stands before it (the original's script 3).
+script Elder
+  speaker "Elder"
+  say "We don't look after that painting simply because it's old."
+  say "We keep it for the memories it holds: a legacy of people and Pokémon beyond counting."
+  say "A man who can't understand that... what sort of world could he possibly dream of?"
+  end

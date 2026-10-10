@@ -4,10 +4,17 @@
   "trees": "Pine",
   "architecture": "HalfTimber",
   "doors": [
-    { "warp": 5, "map": "CelesticPokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+    { "warp": 5, "map": "CelesticPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    // The elder's house, rebuilt to the original's plan (plan 02 · S9)
+    { "warp": 0, "map": "CelesticTownNorthHouse", "x": 5, "y": 8, "facing": "Up" }
   ],
-  // The houses have no rooms yet (plan 01 · M11); the cave of the ruins opens with its scene (plan 02)
-  "locked": [ 0, 1, 2, 3, 4 ],
+  // The other houses have no rooms yet (plan 01 · M11). The cave of the ruins (warp 4) is open since its scene,
+  // plan 02 · S9: an area of its own, celestic_town_cave
+  "locked": [ 1, 2, 3 ],
+  // The elder's warning as the player first comes up the road (plan 02 · S9, scripts/celestic_town.txt)
+  "triggers": [ { "trigger": 0, "script": "ElderWarns" } ],
+  // The carvings either side of the ruins' door
+  "read": { "11": "EtchingDialga", "12": "EtchingPalkia" },
   "people": {
     "expert_m": {
       "name": "Old Man",
@@ -29,7 +36,12 @@
         "I climbed all the way up the mountain to see the old ruins here.",
         "The air is so still and clear. You can almost hear the past whispering."
       ]
-    }
+    },
+    // Team Galactic's grunt before the ruins' door, the elder (Cynthia's grandmother, an old woman's look until
+    // plan 11 gives her one of her own) and Cynthia once the ruins are quiet (plan 02 · S9)
+    "grunt_m": { "name": "Grunt", "script": "Grunt" },
+    "elder": { "name": "Elder", "npcType": "Lady", "script": "Elder" },
+    "cynthia": { "name": "Cynthia", "script": "Library" }
   },
   "signs": {
     "map_signpost": "Celestic Town\nWhere the mountains keep the stories of long ago."

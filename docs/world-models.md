@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-179 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+183 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -19,6 +19,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 |---|---|---|---|---|---:|---|
 | `board_d` | a billboard | a prop: Billboard |  | 1.5 × 0.4 × 2.5 | 1 | Route 215 |
 | `box02` | crates in the mine | a prop: Crates |  | 1.9 × 1.9 × 1.5 | 7 | Oreburgh Mine |
+| `box03` | crates stacked on the Fuego Ironworks' floor | a prop: Crates |  | 1.9 × 1.9 × 1.5 | 10 | Fuego Ironworks |
 | `c06_s01` | the Great Marsh's gate and lookout | a building: Hall, built as in Marsh, 2 storeys, signed MARSH |  | 6.4 × 7.6 × 6.1 | 2 | Great Marsh, Pastoria City |
 | `c06_s02` | a boat at its pier (Pastoria moors two side by side) | a prop: Boat |  | 8.5 × 5.6 × 2.4 | 5 | Fight Area, Pastoria City |
 | `c09_s02` | the ferry between Snowpoint City and the Fight Area | a prop: Boat |  | 9.4 × 5.2 × 2.6 | 2 | Fight Area, Snowpoint City |
@@ -86,11 +87,12 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c9_o02b` | a drift of snow banked against the storehouse | a prop: Snowdrift |  | 2.1 × 2.6 × 1.8 | 2 | Snowpoint City |
 | `c9_o03` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Snowpoint City |
 | `c9_s01` | Snowpoint Temple | a building: Temple |  | 11.0 × 8.0 × 5.9 | 1 | Snowpoint City |
-| `can01` | steel drums in the mine | a prop: Drums |  | 1.8 × 1.9 × 1.2 | 4 | Oreburgh Mine |
-| `can02` | steel drums on Iron Island | a prop: Drums |  | 0.8 × 0.9 × 1.2 | 28 | Iron Island |
+| `can01` | steel drums in the mine | a prop: Drums |  | 1.8 × 1.9 × 1.2 | 9 | Fuego Ironworks, Oreburgh Mine |
+| `can02` | steel drums on Iron Island | a prop: Drums |  | 0.8 × 0.9 × 1.2 | 29 | Fuego Ironworks, Iron Island |
 | `cy_slope` | a muddy slope only a Bicycle gets up: its own ground draws it | nothing of its own: the ground under it draws it |  | 1.0 × 2.0 × 2.0 | 14 | Route 207, Route 209, Route 210, Route 228 |
 | `cy_slope_dun` | a Bicycle's ramp in a cave: the run up to it draws it | nothing of its own: the ground under it draws it |  | 1.0 × 2.0 × 2.0 | 3 | Wayward Cave |
 | `d01_o1` | the mine's loading machine, with a conveyor down either side of the coal face | a building: Factory, 1 storeys |  | 21.0 × 9.4 × 4.6 | 1 | Oreburgh Mine |
+| `d04_s01` | the furnace in the middle of the Fuego Ironworks' floor, a tower of steel as tall as its model | a prop: Headframe |  | 3.0 × 3.0 × 4.1 | 1 | Fuego Ironworks |
 | `d11_o01a` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
 | `d11_o01b` | a bench in Amity Square | a prop: Bench |  | 1.0 × 1.8 × 1.1 | 3 | Amity Square |
 | `d11_o02a` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
@@ -137,6 +139,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d5_colum07x` | a fallen column of the Hall of Origin | a prop: Column |  | 5.2 × 3.0 × 4.9 | 4 | Hall of Origin |
 | `d6_o01` | the Great Marsh's tram on its rails | a prop: Tram |  | 4.2 × 8.2 × 0.9 | 6 | Great Marsh |
 | `d6_o02` | the Great Marsh's coin viewers | a prop: Binoculars |  | 0.8 × 0.6 × 1.4 | 6 | Great Marsh |
+| `d_mat01` | the mat inside the Fuego Ironworks' door: the floor draws it | nothing of its own: the ground under it draws it |  | 1.8 × 1.0 × 0.0 | 1 | Fuego Ironworks |
 | `fs` | a Poké Mart | a building: PokeMart |  | 4.2 × 2.8 × 3.2 | 12 | Canalave City, Eterna City, Fight Area and 9 more |
 | `fs_01` | Snowpoint's Poké Mart, under snow | a building: PokeMart, built as in Snow |  | 4.2 × 2.8 × 3.2 | 1 | Snowpoint City |
 | `funsui` | a fountain | a prop: Fountain |  | 4.1 × 3.6 × 2.9 | 3 | Jubilife City |
@@ -181,6 +184,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `t4_s01` | the Pokémon Day Care, with its fenced yard | a building: Shop, built as in Farm, signed DAY CARE |  | 12.2 × 23.7 × 5.3 | 1 | Solaceon Town |
 | `t5_o01` | a small shrine in Celestic Town | a building: Shrine |  | 3.0 × 2.0 × 2.0 | 1 | Celestic Town |
 | `t5_o01b` | a small shrine in Celestic Town | a building: Shrine |  | 3.0 × 2.0 × 2.0 | 1 | Celestic Town |
+| `t5_o01c` | the ancient painting at the back of Celestic Town's ruins, on a slab of the cave's rock | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 1 | Celestic Town |
 | `t5_s01` | the elder's house in Celestic Town | a building: House, built as in HalfTimber, 2 storeys |  | 7.6 × 4.0 × 6.7 | 1 | Celestic Town |
 | `t5_s02` | Celestic Town's shrine | a building: Shrine |  | 3.5 × 2.9 × 4.9 | 1 | Celestic Town |
 | `t6_h01` | a house of the Battle Zone | a building: House, built as in Resort |  | 4.7 × 3.1 × 3.5 | 10 | Fight Area, Resort Area, Route 225 and 4 more |
@@ -199,5 +203,5 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 
 ## In numbers
 
-- 88 models are buildings, of 26 kinds; 66 are props; 13 are doors.
+- 88 models are buildings, of 26 kinds; 69 are props; 13 are doors.
 - 14 have a stand-in for now: 14 until M10.

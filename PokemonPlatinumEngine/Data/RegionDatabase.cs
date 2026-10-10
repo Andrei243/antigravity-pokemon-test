@@ -150,7 +150,10 @@ public static class RegionDatabase
                 // Hearthome's Poffin House and Pokémon Fan Club (plan 06 · R14c)
                 "PoffinHouse", "HearthomeFanClub",
                 // Veilstone City's Galactic warehouse, where HM02 lies (plan 02 · S8)
-                "VeilstoneGalacticWarehouse"
+                "VeilstoneGalacticWarehouse",
+                // Plan 02 · S9: the cave of Celestic Town's ruins and the Fuego Ironworks' floor (matrices of the
+                // imported world), and the elder's house in Celestic Town, rebuilt to the original's plan
+                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

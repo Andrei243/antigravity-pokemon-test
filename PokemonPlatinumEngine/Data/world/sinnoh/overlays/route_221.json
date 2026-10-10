@@ -4,8 +4,11 @@
   "trees": "Round",
   // The house has no rooms yet (plan 01 · M11); Pal Park comes after the Hall of Fame (plan 01 · M10)
   "locked": [ 0, 1, 2 ],
-  // The two workers at Pal Park's door wait for the story (plan 02)
   "people": {
+    // The two workers at Pal Park's door, still setting it up (plan 02 · S9); they leave once the National Pokédex is
+    // the player's (the original's OnTransition, FLAG_HIDE_ROUTE_221_WORKER_WEST and _EAST: plan 02 · S15 with Pal Park)
+    "worker_west": { "name": "Worker", "dialog": [ "Pal Park isn't open yet. We're still getting everything ready." ] },
+    "worker_east": { "name": "Worker", "dialog": [ "We're getting Pal Park ready to open. Wonder what folks will get up to in there?" ] },
     "swimmer_dillon": {
       "name": "Dillon",
       "trainer": {

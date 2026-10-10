@@ -123,6 +123,26 @@ script ChapterFive
   setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
   setflag FLAG_HIDE_ROUTE_212_BLOCKADE
 label Before
+  call ChapterSix
+  return
+
+
+# Who the sixth chapter (plan 02 · S9, "Celestic and the sea") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): Cynthia on Route 210 and in Celestic Town, Cyrus and the elder
+# in the ruins' cave (and Cynthia there, whose talk is the post-game's), the elder at home, and the rival on
+# Canalave City's bridge. A save that already has Byron's Badge has had the rival brought back by the Gym's script
+# (CanalaveGym.txt), so his flag is left as that left it. Called by ChapterFive, and run for a save from before
+# (Story/StoryMigration.cs, version 11). It may only set flags and variables, and ends in return.
+script ChapterSix
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  setflag FLAG_HIDE_CELESTIC_TOWN_CYNTHIA
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYRUS
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_ELDER
+  setflag FLAG_HIDE_CELESTIC_TOWN_CAVE_CYNTHIA
+  setflag FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER
+  if badge mine goto Won
+  setflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+label Won
   return
 
 

@@ -56,6 +56,10 @@ public sealed class ScriptLibrary
     /// called by <see cref="ChapterFour"/>, and run for a save from before.</summary>
     public const string ChapterFive = "common.ChapterFive";
 
+    /// <summary>Who the sixth chapter (plan 02 · S9, "Celestic and the sea") keeps out of sight until their scenes:
+    /// called by <see cref="ChapterFive"/>, and run for a save from before.</summary>
+    public const string ChapterSix = "common.ChapterSix";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

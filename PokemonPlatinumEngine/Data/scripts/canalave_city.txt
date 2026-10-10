@@ -1,9 +1,69 @@
-# Canalave City (plan 01 · M7). docs/scripts.md describes the language; the lines are our own, on the original's
-# beats.
+# Canalave City (plan 01 · M7, plan 02 · S9). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_canalave_city.s).
 #
 # Sailor Eldritch's boat at the pier takes the player across to Iron Island and back (the island's own sailor
 # sails back). In the original he also sails to Fullmoon and Newmoon Islands once the story has found reasons to
 # go there (plan 02 and plan 01 · M10).
+#
+# Plan 02 · S9: crossing the bridge over the canal the first time (the original's trigger 0, a column of four tiles
+# at x 47, VAR_CANALAVE_CITY_STATE 0), the rival comes running over it from the west, fresh from his own Gym Badge,
+# and battles with the team that has the upper hand on the player's starter; then he tells the player to train on
+# Iron Island and runs back over the bridge (state 1). He is shown for the scene alone: his flag still hides him, so
+# a battle lost leaves the bridge clear for the next try. Byron's Badge brings him back outside the Gym (CanalaveGym.txt
+# clears his flag and sets state 2), where he takes the player to the library: plan 02 · S10's scene.
+
+
+# The original's OnTransition: Cynthia has left Celestic Town once the player is here, and the rival waits outside the
+# Gym after Byron.
+script OnEnter
+  setflag FLAG_HIDE_CELESTIC_TOWN_CYNTHIA
+  if var VAR_CANALAVE_CITY_STATE == 1 place rival_bridge 39 733 up
+  if var VAR_CANALAVE_CITY_STATE == 2 place rival_bridge 39 733 up
+  end
+
+
+# The rival on the bridge (trigger 0).
+script RivalOnTheBridge
+  if var PLAYER_Y == 723 place rival_bridge 38 723 right
+  if var PLAYER_Y == 724 place rival_bridge 38 724 right
+  if var PLAYER_Y == 725 place rival_bridge 38 725 right
+  if var PLAYER_Y == 726 place rival_bridge 38 726 right
+  show rival_bridge
+  walk rival_bridge right 4 fast
+  emote rival_bridge exclaim
+  music "common/rival"
+  walk rival_bridge right 4 fast
+  face player left
+  speaker "{rival}"
+  say "Whoa, close one! Hey, {player}! On your way to take on the Gym Leader past here, huh?"
+  say "Somebody's got to make sure you're up to it first. And that somebody is me! With the brand-new Badge I just won!"
+  if starter "Turtwig" goto VsTurtwig
+  if starter "Chimchar" goto VsChimchar
+  battle rival_bridge as "rival_canalave_city_piplup"
+  goto After
+label VsTurtwig
+  battle rival_bridge as "rival_canalave_city_turtwig"
+  goto After
+label VsChimchar
+  battle rival_bridge as "rival_canalave_city_chimchar"
+label After
+  speaker "{rival}"
+  say "Yeah, yeah. You're a bit better than me. Same as always."
+  say "But get this: guess who's going to take on the Pokémon League and be Champion? Right first time. It's me!"
+  say "Anyway, you should head over to Iron Island and toughen up some more. That's where I trained before the Gym!"
+  walk rival_bridge left 9 fast
+  hide rival_bridge
+  music area
+  setvar VAR_CANALAVE_CITY_STATE 1
+  end
+
+
+# The rival, outside the Gym after his battle (the original's script 3).
+script Rival
+  speaker "{rival}"
+  say "Go to Iron Island and toughen up! Seriously, that's what I did!"
+  end
+
 
 script Ferry
   face self player

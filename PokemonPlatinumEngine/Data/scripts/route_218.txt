@@ -1,0 +1,37 @@
+# Route 218 (plan 02 · S9). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_218.s).
+#
+# Before the gate to Canalave City a guitarist and a fisherman rehearse a show with two Clefairy and two Pikachu, and
+# the six of them fill the way to the gate. They take no notice of the player, who can't get past until Cynthia has
+# been met in Celestic Town: her scene sets FLAG_HIDE_ROUTE_218_BLOCKADE, which takes them all away (celestic_town.txt).
+
+
+# The guitarist (the original's script 3): he talks to his Clefairy, not to the player.
+script Guitarist
+  speaker "Guitarist"
+  say "And one, two, three, four... That's it, Clefairy! Sweeter! Give them a smile they'll never forget!"
+  end
+
+# The fisherman (the original's script 4), to his Pikachu.
+script Fisherman
+  speaker "Fisherman"
+  say "Pikachu! Keep up with the music! You've got to sparkle out there!"
+  end
+
+script ClefairySouth
+  cry "Clefairy"
+  speaker "Clefairy"
+  say "Fai-fai!"
+  end
+
+script ClefairyNorth
+  cry "Clefairy"
+  speaker "Clefairy"
+  say "Fai-fai-fai!"
+  end
+
+script Pikachu
+  cry "Pikachu"
+  speaker "Pikachu"
+  say "Pika-pikaaa!"
+  end

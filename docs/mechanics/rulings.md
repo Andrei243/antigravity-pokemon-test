@@ -745,3 +745,40 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The TV's Poffin corner | A reporter in the Poffin House and in the fan club, a programme of the Poffins cooked | The reporters are left out; nothing is broadcast | The TV is plan 08's |
 | The Poffin Case's look | Its own touch screen of flavour buttons and a list of names | The interface kit's tabs and rows | One screen and no touch |
 | Feeding | The party menu, then the summary's condition page, then a scene of the Pokémon eating | All in the case: the team's cards, the condition before, the line as it eats, the condition after with the change | The summary here is a page of the party menu |
+
+## The sixth chapter (2026-10-10, plan 02 · S9)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_210_south.s`, `scripts_route_210_north.s`, `scripts_celestic_town.s`, `scripts_init_celestic_town.s`, `scripts_celestic_town_cave.s`, `scripts_celestic_town_north_house.s`, `scripts_fuego_ironworks_building.s`, `scripts_route_218.s`, `scripts_route_219.s`, `scripts_route_221.s`, `scripts_canalave_city.s`, `scripts_init_canalave_city.s`, `scripts_init_new_game.s`)
+
+- **Cynthia comes up Route 210 behind the player** once the Psyduck have gone, from the tile below whichever of the two the player faced them from, and asks until the answer is yes that the Old Charm be taken to her grandmother (`FLAG_USED_SECRETPOTION`). The Secret Potion isn't taken from the bag, as the original's script takes nothing.
+- **The trainer resting by the Café Cabin gives TM51** (Roost) once (`FLAG_RECEIVED_ROUTE_210_SOUTH_TM51`).
+- **Celestic Town's grunt asks first** whether the player means to get in his way; a no leaves him there. Beaten, he runs off past the player by the way the original's tables give for each side, the elder comes up from the south of town to stand beside the player and takes the Old Charm (`FLAG_DELIVERED_OLD_CHARM`), and the ruins' door is open.
+- **Cyrus is met in the ruins' cave**, as the painting is first read (`FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING`): the elder comes in to tell its legend, Cyrus after her. Said no, he shoves the player aside and stands before the painting, and spoken to he asks again; beaten, he goes, the elder gives **HM03** (Surf; the Fen Badge lets it be used outside battle) and goes home (`FLAG_HIDE_CELESTIC_TOWN_NORTH_HOUSE_ELDER` cleared), and Cynthia waits outside (`VAR_CELESTIC_TOWN_STATE` 1).
+- **Cynthia's word outside the ruins lifts Route 218's blockade** (`FLAG_HIDE_ROUTE_218_BLOCKADE`, state 2): a guitarist, a fisherman and their Clefairy and Pikachu, rehearsing a show before the gate to Canalave City, who take no notice of the player. Reaching Canalave City takes her away from Celestic Town (`FLAG_HIDE_CELESTIC_TOWN_CYNTHIA`, Canalave's `OnEnter`, as the original's OnTransition).
+- **Arriving in Celestic Town unlocks the Vs. Seeker's second level of rematches** (`FLAG_UNLOCKED_VS_SEEKER_LVL_2`), as the original's OnTransition does; and the assistant's Vs. Seeker on Route 207 now sets the first (`FLAG_UNLOCKED_VS_SEEKER_LVL_1`), which plan 02 · S7's scene had left out.
+- **The rival battles on Canalave City's bridge** as the player first crosses it (the original's trigger, a column of four tiles, `VAR_CANALAVE_CITY_STATE` 0), with the team that has the upper hand on the player's starter, tells the player to train on Iron Island and runs off (state 1). Byron's Badge brings him back outside the Gym (`CanalaveGym.txt` sets state 2 and clears his flag; the library's scene is plan 02 · S10's).
+- **The Fuego Ironworks has no Team Galactic in Platinum** (Diamond and Pearl's Commander Mars isn't there): Mr. Fuego gives his first visitor a Star Piece and trades a Shard of each colour for each Star Piece, ten at once for ten or more (`FLAG_RECEIVED_FUEGO_IRONWORKS_BUILDING_STAR_PIECE`, `FLAG_MR_FUEGO_ASKED_FOR_TRADE`); its workers battle with Platinum's teams, its floors move the walker as the original's do.
+- **Route 221's workers** stand at Pal Park's door until the National Pokédex, whose OnTransition hides them (plan 02 · S15, with Pal Park).
+- **Saves from before**: `common.ChapterSix` (story version 11) hides the chapter's people until their scenes (the rival's flag is left as Byron's script left it in a save with the Mine Badge). A save whose Psyduck were cured before this chapter, when Cynthia didn't come after them, is given her Old Charm and her errand; one that has been to Canalave City (`FLAG_FIRST_ARRIVAL_CANALAVE_CITY`) has Route 218's blockade gone, so it isn't shut in; one that holds the Vs. Seeker has its first level of rematches.
+
+**Our own choices**
+
+- **The ruins' cave and the ironworks' floor are maps of the imported world** (`CelesticTownCave`, matrix 169; `FuegoIronworksBuilding`, matrix 8; `world.json`'s `Cave` setting), the original's own plans with their warps, items, triggers and moving floors, drawn as caves until their places have looks of their own. The elder's house is a room rebuilt to the original's plan (`CelesticTownNorthHouse`), its book and its scroll read as signboards.
+- **A scene that waits for the player at a door** plays only where the original's OnFrame finds them: Cynthia's comes as the player steps out of the ruins' cave onto the tile before its door; anyone who came back to Celestic Town another way (Teleport out of the cave) finds her standing where she waits, with the blockade lifted all the same.
+- **Cyrus and the elder stand before the painting again** whenever the player comes back while Cyrus is still there (the cave's `OnEnter`), as the original lays its objects out afresh: a battle lost or a challenge refused doesn't leave them wherever the scene had walked them.
+- **The elder's warning on the road says nothing once the Old Charm is delivered**: the original's trigger would still tell of a spaceman long gone.
+- **Without the Old Charm** (a player who reached Celestic Town by Mt. Coronet, never meeting Cynthia on Route 210), the elder thanks the player and sends them to the ruins all the same, as the original's script, which takes the charm without asking, would.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The elder's look | An old woman of her own (`expert_f`) | The lady (`Lady`) | The second half's named cast is plan 11 · C6's, and the old woman's look plan 11 · C2–C4's |
+| The ruins' painting | A great painting on the cave's back wall | A slab of the cave's rock (`Outcrop`) where its model stands, read from the two tiles before it | No art for it yet |
+| The ironworks' floor | A factory floor of steel, with furnaces | Cave floor and rock, its crates and drums, the furnace a steel tower (`Headframe`) | No look of its own yet; the original builds it as one of its dungeons |
+| The Pokédex upgrade | The assistant's father in the gate between Route 218 and Canalave City shows male and female forms | Not there | The gate's room is plan 01 · M11's, and the Pokédex shows no genders yet |
+| The Old Rod | A fisherman in the gate between Jubilife City and Route 218 | Not given | The gate's room is plan 01 · M11's: the gates are walked through |
+| Cynthia before the painting | Her theory of the painting, after Charon's arrest on Stark Mountain | Not placed | Post-game (plan 02 · S15c) |
+| The elder's research | The Adamant and Lustrous Orbs' passage, after the Hall of Fame | Not there | Post-game (plan 02 · S15) |
+| Grandma Wilma's house and Celestic's other houses | Draco Meteor, the glasses shop | Doors shut | Plan 01 · M11 |
+| Z-Moves at Celestic Town | Not in Platinum | Left out | The later mechanics' beats wait for plan 06 · R21 (decision 06 · 2's default): it goes into `celestic_town_cave.txt` after Cyrus's battle |
