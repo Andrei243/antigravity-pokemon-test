@@ -231,4 +231,69 @@ public class RoomPlanTests
                     Assert.Equal(whole.Get(x, PropModels.WallHeight - PropModels.InnerWallHeight + y), inner.Get(x, y));
         }
     }
+
+    // ------------------------------------------------------------------ rooms with relief (plan 01 · M9 1b)
+
+    [Fact]
+    public void OnlyTheRoomsRebuiltWithTheirReliefHaveAny()
+    {
+        // Every other hand-made map is flat, at the ground level, and does what its tiles' types say: it draws and is
+        // walked exactly as before rooms could have heights
+        var withRelief = new[] { "OreburghGym", "PastoriaGym" };
+        foreach (var path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
+        {
+            string name = Path.GetFileNameWithoutExtension(path);
+            var file = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, name + ".json"));
+            bool expected = withRelief.Contains(name);
+            Assert.True(expected == (file.Heights != null), name);
+            if (expected) continue;
+            Assert.True(file.Behaviours == null && file.Slopes == null && file.Decks == null && file.GroundLevel == null, name);
+            var map = file.ToMap();
+            Assert.False(map.HasRelief, name);
+            Assert.Equal(0f, map.GroundLevel);
+            for (int y = 0; y < map.Height; y++)
+                for (int x = 0; x < map.Width; x++)
+                    Assert.Null(map.OwnBehaviourAt(x, y));
+        }
+    }
+
+    [Fact]
+    public void AMapFilesReliefReadsBackAsItWasWritten()
+    {
+        var map = new Map(4, 3) { Name = "Relief" };
+        map.GroundLevel = 1f;
+        map.SetHeight(0, 0, 0f);
+        map.SetHeight(1, 0, 1f);
+        map.SetHeight(2, 0, 1.5f, 0f, -1f);
+        map.SetHeight(3, 0, 17.5f);
+        map.SetHeight(1, 1, 2f, 1f, 0f);
+        map.SetDeck(2, 2, 4f);
+        map.SetBehaviour(3, 2, TileBehavior.PastoriaGymMiddle);
+
+        var file = MapFile.FromMap(map);
+        Assert.Equal(new[] { "023z", "0400", "0000" }, file.Heights);
+        Assert.Equal(new[] { "..n.", ".e..", "...." }, file.Slopes);
+        Assert.Equal(new[] { "....", "....", "..8." }, file.Decks);
+        Assert.Equal(new[] { "........", "........", "......57" }, file.Behaviours);
+        Assert.Equal(1f, file.GroundLevel);
+
+        var back = GameDataFiles.Deserialize<MapFile>(GameDataFiles.Serialize(file)).ToMap();
+        Assert.True(back.HasRelief);
+        Assert.Equal(1f, back.GroundLevel);
+        Assert.Equal((1.5f, (0f, -1f)), (back.HeightAt(2, 0), back.SlopeAt(2, 0)));
+        Assert.Equal((2f, (1f, 0f)), (back.HeightAt(1, 1), back.SlopeAt(1, 1)));
+        Assert.Equal(17.5f, back.HeightAt(3, 0));
+        Assert.Equal(4f, back.DeckAt(2, 2));
+        Assert.Null(back.DeckAt(1, 1));
+        Assert.Equal(TileBehavior.PastoriaGymMiddle, back.BehaviourAt(3, 2));
+        Assert.Null(back.OwnBehaviourAt(0, 0));
+        Assert.Equal(GameDataFiles.Serialize(file), GameDataFiles.Serialize(MapFile.FromMap(back)));
+
+        // Heights are whole halves of a tile; a layer of the wrong size, or slopes with no heights, is told
+        Assert.Throws<System.ArgumentOutOfRangeException>(() => MapRelief.HeightCode(0.25f));
+        file.Heights = new() { "023z", "0400" };
+        Assert.Throws<InvalidDataException>(() => file.ToMap());
+        file.Heights = null;
+        Assert.Throws<InvalidDataException>(() => file.ToMap());
+    }
 }

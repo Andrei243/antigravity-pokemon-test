@@ -43,7 +43,9 @@ public enum Op
     // Wild Pokémon (plan 06 · R13)
     HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison,
     // The day's events, berries and the lottery (plan 06 · R14a)
-    Berry, ChooseItem, Lottery
+    Berry, ChooseItem, Lottery,
+    // The Pastoria Gym's water (plan 01 · M9 1b)
+    WaterButton
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

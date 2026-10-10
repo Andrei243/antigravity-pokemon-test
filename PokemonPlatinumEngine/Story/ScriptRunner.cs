@@ -579,6 +579,11 @@ public sealed class ScriptRunner
                 Result = slot >= 0 && slot < host.Party.Count && FieldPoison.TrySurvive(host.Party.Members[slot]) ? 1 : 0;
                 break;
             }
+            // PressPastoriaGymButton: the button of a colour goes down, the others come up, and the water moves to
+            // its height while the script waits
+            case Op.WaterButton:
+                host.PressWaterButton((PastoriaWater.Button)i.Number);
+                break;
 
             // The day's events, berries and the lottery (plan 06 · R14a)
             case Op.Berry:

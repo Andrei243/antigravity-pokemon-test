@@ -559,22 +559,35 @@ public class BuildingTests
         var map = MapDatabase.Get(mapName);
         if (!map.IsIndoors) return;
 
+        const float slack = 4 / 32f;
         foreach (var prop in map.Props)
         {
+            // A room's railings are built together, joined post to post (below)
+            if (prop.Type is PropType.Fence or PropType.LowWall) continue;
             var kit = new KitBuilder(new ArtSheet(), IndoorVS);
             PropModels.Build(kit, prop, map);
             Assert.True(kit.Solid.VertexCount + kit.Flat.VertexCount > 0, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} builds nothing");
 
             var (min, max) = (kit.Solid.VertexCount > 0 ? kit.Solid : kit.Flat).Bounds();
-            const float slack = 4 / 32f;
             Assert.True(min.X >= prop.X - slack && max.X <= prop.X + prop.Width + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is wider than its tiles");
-            Assert.True(max.Y <= PropModels.WallHeight / 32f * IndoorVS + 0.01f, $"{mapName}: the {prop.Type} is taller than the walls");
+            // On the floor of its own tiles, which in a room with relief has a height of its own (plan 01 · M9 1b)
+            float floor = Relief.At(map, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f);
+            Assert.True(max.Y - floor <= PropModels.WallHeight / 32f * IndoorVS + 0.01f, $"{mapName}: the {prop.Type} is taller than the walls");
             if (prop.IsSolid)
                 Assert.True(min.Z >= prop.Y - slack && max.Z <= prop.Y + prop.Depth + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is deeper than its tiles");
             else if (prop.Type != PropType.Rug)
                 // Things on the back wall hang on its face, two tiles in (more in a room rebuilt to the original's plan)
                 Assert.InRange(max.Z, map.RoomCorner().Back, map.RoomCorner().Back + 0.2f);
         }
+
+        var fences = map.Props.Where(p => p.Type is PropType.Fence or PropType.LowWall).ToList();
+        if (fences.Count == 0) return;
+        var railings = new KitBuilder(new ArtSheet(), IndoorVS);
+        OutdoorProps.RoomFences(railings, map);
+        Assert.True(railings.Solid.VertexCount > 0, $"{mapName}: its railings build nothing");
+        var (low, high) = railings.Solid.Bounds();
+        Assert.True(low.X >= fences.Min(p => p.X) - slack && high.X <= fences.Max(p => p.X + p.Width) + slack, $"{mapName}: its railings are wider than their tiles");
+        Assert.True(low.Z >= fences.Min(p => p.Y) - slack && high.Z <= fences.Max(p => p.Y + p.Depth) + slack, $"{mapName}: its railings are deeper than their tiles");
     }
 
     [Fact]

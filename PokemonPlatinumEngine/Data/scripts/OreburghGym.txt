@@ -1,8 +1,12 @@
-# The Oreburgh Gym (plan 02 · S5). docs/scripts.md describes the language; the lines are our own, on the original's
-# beats (scripts_oreburgh_city_gym.s).
+# The Oreburgh Gym (plan 02 · S5), rebuilt to the original's plan in plan 01 · M9 1b: a quarry in tiers, Roark on
+# the top one. docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_oreburgh_city_gym.s).
 #
 # Roark battles for the Coal Badge and gives TM76, Stealth Rock. His Badge sets off what comes next: Team Galactic
-# by Jubilife City's north gate, the assistant and the professor there, and the rival on the way out of town.
+# by Jubilife City's north gate, the assistant and the professor there, and the rival on the way out of town; and,
+# as the original's script does, it opens the Pokémon Center's basement (FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE) and
+# readies the Global Terminal's greeter and Looker's Pal Pad in Jubilife City (VAR_GTS_ACCESS_STATE,
+# VAR_JUBILIFE_LOOKER_PAL_PAD_STATE), which wait for their rooms and scenes.
 
 
 script Roark
@@ -19,6 +23,11 @@ script Roark
   text "{player} received the Coal Badge from Roark!"
   say "With it, Pokémon up to level 20 will obey you, even ones you got in a trade."
   say "And Rock Smash can be used outside battle now. Cracked rocks won't stand in your way."
+  defeat "youngster_jonathon"
+  defeat "youngster_darius"
+  setflag FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE
+  setvar VAR_GTS_ACCESS_STATE 1
+  setvar VAR_JUBILIFE_LOOKER_PAL_PAD_STATE 1
   setvar VAR_OREBURGH_CITY_STATE 2
   setvar VAR_JUBILIFE_CITY_STATE 3
   clearflag FLAG_HIDE_JUBILIFE_CITY_COUNTERPART
@@ -53,8 +62,8 @@ label Won
 script GymStatue
   speaker none
   if badge coal goto Won
-  say "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: (none yet)"
+  say "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: {rival}"
   end
 label Won
-  say "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: {player}"
+  say "OREBURGH CITY POKéMON GYM. Leader: Roark. Certified Trainers: {rival}, {player}"
   end

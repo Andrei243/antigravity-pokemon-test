@@ -48,6 +48,28 @@ public sealed class MapFile
     /// <summary>Optional overhead tiles; '-' means none.</summary>
     public List<string>? Overhead { get; set; }
 
+    // ------------------------------------------------------------------ relief (plan 01 · M9 1b)
+    // A room rebuilt to the original's plan can have its heights: a Gym's tiers, a pool. Left out, the map is flat
+    // and walked and drawn as it always was. Heights are in halves of a tile (MapRelief.HeightCode).
+
+    /// <summary>The height drawn at zero (the door's level of a room in tiers); left out for 0.</summary>
+    public float? GroundLevel { get; set; }
+
+    /// <summary>Each tile's height at its middle, in halves of a tile: '0'–'9' then 'a'–'z' (0 to 17.5 tiles).</summary>
+    public List<string>? Heights { get; set; }
+
+    /// <summary>Stairs: which way a tile rises by one tile across itself ('n', 's', 'e', 'w'), or '.' for flat.</summary>
+    public List<string>? Slopes { get; set; }
+
+    /// <summary>A bridge's deck over a tile, in halves of a tile as <see cref="Heights"/>, or '.' for none.</summary>
+    public List<string>? Decks { get; set; }
+
+    /// <summary>
+    /// The original's tile behaviours where a tile does more than its type implies: two hex digits a tile
+    /// (Platinum's value, <see cref="TileBehavior"/>), or ".." for what the type implies.
+    /// </summary>
+    public List<string>? Behaviours { get; set; }
+
     public List<PropRecord> Props { get; set; } = new();
 
     /// <summary>
@@ -226,6 +248,7 @@ public sealed class MapFile
                     map.SetOverheadTile(x, y, TileCodes.Parse(Overhead[y][x], Name));
             }
         }
+        MapRelief.Read(this, map);
 
         // The solid grid already includes furniture, so props are listed without marking tiles again
         foreach (var p in Props)
@@ -400,8 +423,9 @@ public sealed class MapFile
             overhead.Add(over.ToString());
         }
         if (anyOverhead) file.Overhead = overhead;
+        MapRelief.Write(map, file);
 
-        file.Props = map.Props.Select(p => new PropRecord { Type = p.Type, X = p.X, Y = p.Y, Width = p.Width, Depth = p.Depth }).ToList();
+        file.Props =map.Props.Select(p => new PropRecord { Type = p.Type, X = p.X, Y = p.Y, Width = p.Width, Depth = p.Depth }).ToList();
         if (map.BuildingKinds.Count > 0)
             file.Buildings = map.BuildingKinds.Select(kv => new BuildingRecord { X = kv.Key.X, Y = kv.Key.Y, Kind = kv.Value }).ToList();
         file.Warps = map.Warps.ToList();

@@ -236,5 +236,66 @@ partial class Harness
         Enter("HearthomeGymRoom1", 8, 10);
         Frames(4); Shot("g45_hearthome_first_room_after_the_badge");
         }
+
+        // ---- the Pastoria Gym: the water and its buttons (plan 01 · M9 1b)
+        if (Want("pastoria"))
+        {
+        PastoriaWater Water() => (PastoriaWater)Here().Puzzle!;
+        // Its trainers are kept from walking up while the water is shown at its heights
+        void QuietTrainers()
+        {
+            foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        }
+        // Steps onto a button from the tile beside it, as the game does: its trigger runs and the water moves
+        void Press(int x, int y, Direction from, string before, string during, string after)
+        {
+            var (dx, dy) = FieldMovement.Delta(from);
+            At("PastoriaGym", x - dx, y - dy, from);
+            Frames(4);
+            if (before.Length > 0) Shot(before);
+            engine.Steering = (from, false);
+            Until(() => Water().Rising != null, "a button pressed", 120);
+            engine.Steering = null;
+            Until(() => Water().Rising is { Flowing: true }, "the water moving", 120);
+            Skip(0.6); Shot(during);
+            Until(() => Water().Rising == null, "the water at rest", 600);
+            ReadOn();
+            Frames(10); Shot(after);
+            Console.WriteLine($"pastoria: the {Water().Pressed} button, the water at {Water().Height}");
+        }
+        Enter("PastoriaGym", 13, 42);
+        QuietTrainers();
+        Frames(20); Shot("g50_pastoria_door");
+        Console.WriteLine($"pastoria: came in with the {Water().Pressed} button pressed, the water at {Water().Height}");
+        At("PastoriaGym", 13, 35, Direction.Up); Frames(4); Shot("g51_pastoria_pool_at_its_middle");
+        Press(3, 34, Direction.Up, "g52_pastoria_orange_button", "g53_pastoria_water_falling", "g54_pastoria_water_let_out");
+        Press(3, 6, Direction.Up, "", "g55_pastoria_water_rising", "g56_pastoria_water_at_the_decks");
+        At("PastoriaGym", 13, 9, Direction.Up); Frames(4); Shot("g57_pastoria_floats_to_wake");
+        // Out on a float in the high water
+        At("PastoriaGym", 13, 7, Direction.Up); game.Player.SetHeight(PastoriaWater.High); Frames(4); Shot("g58_pastoria_on_a_float");
+        TalkFrom("PastoriaGym", "crasher_wake", 13, 5, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Wake")); Box().FinishLine(); Frames(4); Shot("g59_pastoria_wake");
+        IntoBattle("Wake's battle"); Shot("g60_pastoria_battle_wake");
+        ReadOn();
+        Console.WriteLine($"pastoria: Fen Badge {story.HasBadge(Badge.Fen)}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}, VAR_PASTORIA_CITY_STATE {story.Var("VAR_PASTORIA_CITY_STATE")}");
+        }
+
+        // ---- the Oreburgh Gym rebuilt to the original's plan: a quarry in tiers (plan 01 · M9 1b)
+        if (Want("oreburgh"))
+        {
+        Enter("OreburghGym", 5, 24);
+        Frames(20); Shot("g70_oreburgh_door");
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        At("OreburghGym", 5, 16, Direction.Up); Frames(4); Shot("g71_oreburgh_lowest_floor");
+        At("OreburghGym", 2, 17, Direction.Right); Frames(4); Shot("g72_oreburgh_the_bridge");
+        At("OreburghGym", 5, 12, Direction.Up); Frames(4); Shot("g73_oreburgh_second_tier");
+        At("OreburghGym", 5, 7, Direction.Up); Frames(4); Shot("g74_oreburgh_below_roark");
+        TalkFrom("OreburghGym", "roark", 5, 4, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Roark")); Box().FinishLine(); Frames(4); Shot("g75_oreburgh_roark");
+        IntoBattle("Roark's battle"); Shot("g76_oreburgh_battle_roark");
+        ReadOn();
+        Console.WriteLine($"oreburgh: Coal Badge {story.HasBadge(Badge.Coal)}, TM76 {game.Bag.GetQuantity(ItemDatabase.Get("TM76")!)}, " +
+            $"basement {story.Has("FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE")}, GTS {story.Var("VAR_GTS_ACCESS_STATE")}, Pal Pad {story.Var("VAR_JUBILIFE_LOOKER_PAL_PAD_STATE")}");
+        }
     }
 }

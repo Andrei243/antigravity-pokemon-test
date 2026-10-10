@@ -24,7 +24,9 @@ public static class ScriptParser
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
-    private static readonly Regex VariableName = new("^VAR_[A-Z0-9_]+$", RegexOptions.Compiled);
+    // The original's own names, and its local variables by their numbers as its scripts and area files write them
+    // (VAR_MAP_LOCAL_0x01, plan 01 · M9 1b)
+    private static readonly Regex VariableName = new("^VAR_(MAP_LOCAL_0x[0-9A-F]{2}|[A-Z0-9_]+)$", RegexOptions.Compiled);
 
     public const float EmoteSeconds = 0.9f, FadeSeconds = 0.4f, PanSeconds = 0.8f, ReleaseSeconds = 0.6f, ShakeSeconds = 0.5f;
 
@@ -418,6 +420,9 @@ public static class ScriptParser
                 return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch") };
             case "lottery":
                 return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("check", "boxed", "prize") };
+            // The Pastoria Gym's water (plan 01 · M9 1b)
+            case "waterbutton":
+                return new Instruction { Op = Op.WaterButton, Line = line, Number = (int)r.Enum<Overworld.PastoriaWater.Button>("a button's colour") };
 
             case "trade":
             {

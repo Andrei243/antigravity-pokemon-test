@@ -14,18 +14,26 @@ namespace PokemonPlatinumEngine.Graphics;
 /// </summary>
 internal sealed class GymPieces
 {
-    private sealed record Piece(Mesh Mesh, Material Main, Material Depth);
+    /// <param name="Shadows">Whether it casts a shadow: everything but water.</param>
+    private sealed record Piece(Mesh Mesh, Material Main, Material Depth, bool Shadows = true);
 
     private readonly FieldShaders shaders;
     private Map? builtFor;
     private Texture2D art;
     private readonly List<Piece> owned = new();
+    private readonly List<Texture2D> masks = new();
 
     // The Eterna Gym's pieces
     private Piece? minuteHand, hourHand, waterPool, stillParts;
 
     // The Hearthome Gym's: the doors and pads (still), and a sign for each door, shown where its clue lies
     private readonly Dictionary<HearthomeDoors.Sign, Piece> clues = new();
+
+    // The Pastoria Gym's: its water as the field's water shader draws it, with the shore of each of its two heights;
+    // the floats riding on it, by the floor they rest on; and each colour of button raised and pressed
+    private Piece? waterMiddle, waterHigh;
+    private readonly Dictionary<float, Piece> floats = new();
+    private readonly Dictionary<(PastoriaWater.Button, bool Down), Piece> buttons = new();
 
     public GymPieces(FieldShaders shaders) => this.shaders = shaders;
 
@@ -36,7 +44,8 @@ internal sealed class GymPieces
     public void DrawDepth(Map map)
     {
         if (!Ready(map)) return;
-        foreach (var (piece, transform) in Placed(map)) Raylib.DrawMesh(piece.Mesh, piece.Depth, Matrix4x4.Transpose(transform));
+        foreach (var (piece, transform) in Placed(map))
+            if (piece.Shadows) Raylib.DrawMesh(piece.Mesh, piece.Depth, Matrix4x4.Transpose(transform));
     }
 
     /// <summary>Draws the pieces of the map's puzzle, lit as the room is.</summary>
@@ -52,6 +61,22 @@ internal sealed class GymPieces
 
     private IEnumerable<(Piece Piece, Matrix4x4 Transform)> Placed(Map map)
     {
+        if (map.Puzzle is PastoriaWater water)
+        {
+            // The water at the height it is drawn at (moving while it rises and falls), nothing of it once let out
+            // to the bed; the floats on it or resting on their floor; each button raised, or pressed if its colour
+            // was pressed last
+            float level = water.Level - map.GroundLevel;
+            float bed = (GroundBaker.PoolBed(map) ?? map.GroundLevel) - map.GroundLevel;
+            var sheet = water.Level > PastoriaWater.Middle + 0.01f ? waterHigh : waterMiddle;
+            if (sheet != null && level > bed + 0.02f) yield return (sheet, Matrix4x4.CreateTranslation(0f, level + WaterLift, 0f));
+            foreach (var (floor, raft) in floats)
+                yield return (raft, Matrix4x4.CreateTranslation(0f, MathF.Max(level, floor) + WaterLift, 0f));
+            foreach (var (x, y, colour) in PastoriaWater.Buttons)
+                if (buttons.TryGetValue((colour, colour == water.Pressed), out var button))
+                    yield return (button, Matrix4x4.CreateTranslation(x, Relief.At(map, x + 0.5f, y + 0.5f), y));
+            yield break;
+        }
         if (map.Name.StartsWith(HearthomeDoors.Entrance, StringComparison.Ordinal))
         {
             if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
@@ -86,8 +111,84 @@ internal sealed class GymPieces
         Unload();
         builtFor = map;
         if (map.Puzzle is EternaClock) BuildEterna(map);
+        else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (hearthome) BuildHearthome(map);
         return true;
+    }
+
+    // ------------------------------------------------------------------ the Pastoria Gym
+
+    /// <summary>How far the water and the floats lie over the height the water stands at: a hair, so a deck level with it covers it.</summary>
+    private const float WaterLift = -0.004f;
+
+    /// <summary>
+    /// The Pastoria Gym's pieces (style guide, "Gyms": the water, the floats, the buttons): one sheet of the field's
+    /// water over the pool for each height it stands at (their shores differ), the floats that ride on it, and a
+    /// button of each colour raised and pressed.
+    /// </summary>
+    private void BuildPastoria(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+
+        // The floats, each a raft of planks a little above and below the water's line
+        var rafts = new Dictionary<float, KitBuilder>();
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                if (!PastoriaWater.IsFloat(map, x, y)) continue;
+                float floor = Relief.At(map, x + 0.5f, y + 0.5f);
+                if (!rafts.TryGetValue(floor, out var kit)) rafts[floor] = kit = new KitBuilder(sheet, vs);
+                kit.Origin = new Vector3(x, 0f, y);
+                int a = GymArt.FloatInset, b = T - GymArt.FloatInset;
+                var top = kit.Face("float.top", b - a, b - a, GymArt.PaintFloatTop);
+                var side = kit.Face("float.side", b - a, 4, GymArt.PaintFloatSide);
+                kit.Box(a, b, a, b, -2, 2, top, side, side, side);
+            }
+
+        // The buttons: a steel plate, and the button on it four texels proud, or pressed flush with it
+        var buttonKits = new Dictionary<(PastoriaWater.Button, bool), KitBuilder>();
+        foreach (var colour in Enum.GetValues<PastoriaWater.Button>())
+            foreach (bool down in new[] { false, true })
+            {
+                var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+                var plate = kit.Face("button.plate", 26, 26, GymArt.PaintButtonPlate);
+                var plateSide = kit.Face("button.plate.side", 26, 2, GymArt.PaintButtonPlate);
+                kit.Box(3, 29, 3, 29, 0, 2, plate, plateSide, plateSide, plateSide);
+                var top = kit.Face($"button.{colour}", 20, 20, c => GymArt.PaintButtonTop(c, colour));
+                var side = kit.Face($"button.{colour}.side", 20, 4, c => GymArt.PaintButtonSide(c, colour));
+                kit.Box(6, 26, 6, 26, 2, down ? 2.5f : 6, top, side, side, side);
+                buttonKits[(colour, down)] = kit;
+            }
+
+        art = Upload(sheet);
+        foreach (var (floor, kit) in rafts)
+            if (Make(kit) is { } piece) floats[floor] = piece;
+        foreach (var (key, kit) in buttonKits)
+            if (Make(kit) is { } piece) buttons[key] = piece;
+
+        // The water: one quad over the plate, its mask saying where the water shows at each of its two heights
+        waterMiddle = WaterSheet(map, PastoriaWater.Middle - map.GroundLevel);
+        waterHigh = WaterSheet(map, PastoriaWater.High - map.GroundLevel);
+    }
+
+    private Piece WaterSheet(Map map, float level)
+    {
+        var image = GymArt.PoolMask(map, level).ToImage();
+        var mask = Raylib.LoadTextureFromImage(image);
+        Raylib.UnloadImage(image);
+        Raylib.SetTextureFilter(mask, TextureFilter.Point);
+        Raylib.SetTextureWrap(mask, TextureWrap.Clamp);
+        masks.Add(mask);
+        float x0 = PastoriaWater.PlateX, z0 = PastoriaWater.PlateZ;
+        float x1 = x0 + PastoriaWater.PlateWidth, z1 = z0 + PastoriaWater.PlateDepth;
+        var quad = new MeshBuilder();
+        quad.Quad(new(x0, 0f, z1), new(x1, 0f, z1), new(x1, 0f, z0), new(x0, 0f, z0),
+            new(0, 1), new(1, 1), new(1, 0), new(0, 0), Color.White, Vector3.UnitY);
+        var piece = new Piece(quad.Upload(), RenderContext.MaterialFor(shaders.Water, mask), RenderContext.MaterialFor(shaders.Depth, mask), Shadows: false);
+        owned.Add(piece);
+        return piece;
     }
 
     // ------------------------------------------------------------------ the Hearthome Gym
@@ -426,8 +527,13 @@ internal sealed class GymPieces
         owned.Clear();
         if (art.Id != 0) Raylib.UnloadTexture(art);
         art = default;
+        foreach (var mask in masks) Raylib.UnloadTexture(mask);
+        masks.Clear();
         builtFor = null;
         minuteHand = hourHand = waterPool = stillParts = null;
         clues.Clear();
+        waterMiddle = waterHigh = null;
+        floats.Clear();
+        buttons.Clear();
     }
 }

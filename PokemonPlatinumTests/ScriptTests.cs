@@ -198,6 +198,7 @@ public class ScriptTests
           lottery check
           lottery boxed
           lottery prize
+          waterbutton blue
         script Other
           end
         """;
@@ -1068,6 +1069,7 @@ public class ScriptTests
         public void Turnback() { }
         public void Defeat(string trainerId) { }
         public void TurnClock(int from, int to) { }
+        public void PressWaterButton(PastoriaWater.Button button) { }
         public void TravelWith(NPC? who, string? trainerId) { }
         public string? Partner => null;
         public bool Trade(string trade, int slot) => false;

@@ -114,6 +114,10 @@ internal static class SceneTextures
     /// <summary>The face of a step in the ground under rock, snow or a cave's floor.</summary>
     public static Texture2D RockFace => Get("rock_face", NatureArt.RockFace, repeat: true);
 
+    /// <summary>The face of a step in a room's floor, in its hall's tiles (style guide, "Rooms": a room with relief).</summary>
+    public static Texture2D HallFace(Data.PokemonType? theme) =>
+        Get("hall_face_" + (theme?.ToString() ?? "plain"), () => GroundBaker.HallFace(theme), repeat: true);
+
     /// <summary>The underside of the Distortion World's islands, which ends in points of rock over the void.</summary>
     public static Texture2D IslandUnderside => Get("island_underside", NatureArt.IslandUnderside, repeat: true);
 

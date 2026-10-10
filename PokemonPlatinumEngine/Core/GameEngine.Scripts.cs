@@ -181,7 +181,8 @@ public partial class GameEngine
         ["OreburghGym"] = ("Oreburgh", Badge.Coal),
         ["EternaGym"] = ("Eterna", Badge.Forest),
         ["HearthomeGym"] = ("Hearthome", Badge.Relic),
-        ["VeilstoneGym"] = ("Veilstone", Badge.Cobble)
+        ["VeilstoneGym"] = ("Veilstone", Badge.Cobble),
+        ["PastoriaGym"] = ("Pastoria", Badge.Fen)
     };
 
     /// <summary>
