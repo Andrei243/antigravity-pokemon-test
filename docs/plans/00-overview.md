@@ -10,12 +10,12 @@ About 350 sittings are left, some twenty of them marked optional.
 
 | Plan | Done | Left (sittings) | Notes |
 |---|---|---|---|
-| 01 · Sinnoh map | M1–M9 | ~8 | M10, M11, M12 |
-| 02 · Story | S1, S2, S4–S10 | ~9 | S11 to S15; S11 and S15 are more than one sitting |
+| 01 · Sinnoh map | M1–M9, M10a | ~7 | M10b, M11, M12 |
+| 02 · Story | S1, S2, S4–S10, S11a | ~8 | S11b to S15; S15 is more than one sitting |
 | 03 · National Pokédex | D1, D5–D11, every model batch to Pecharunt (all 1,025 hand-built; Paldea 3a–3c) | 4 | D12 (three parts), D13 |
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
-| 06 · Game mechanics | R1–R15, R17a | ~21 | R16 and R18 are several sittings each; R17b is left of R17 |
+| 06 · Game mechanics | R1–R15, R17 | ~20 | R16 and R18 are several sittings each |
 | 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
 | 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
 | 09 · Looks | — | 15 | |
@@ -390,7 +390,7 @@ The main session starts one agent per cell of the wave, each in its own worktree
 - [ ] Wave 3 · 02 · S8 (done 2026-10-10: Veilstone and Pastoria to the Secret Potion; it took the Secret Potion from S9, as the original orders it), 01 · M9 2b (done 2026-10-10), 06 · R14c (done 2026-10-10), 12 · Q11, 09 · L11, 24 · X2
 - [ ] Wave 4 · 02 · S9 (done 2026-10-10: Route 210's Psyduck and Cynthia's Old Charm to the rival on Canalave City's bridge; Celestic's ruins and the Fuego Ironworks' floor opened as maps of the imported world, two entries of `world.json` to merge by hand), 01 · M9 2c (done 2026-10-10), 06 · R15 (done 2026-10-10), 11 · C12, 11 · C6, 24 · X3
 - [ ] Wave 5 · 02 · S10 (done 2026-10-10: Riley's HM04 on Iron Island to Maylene and HM08 on Route 217; the drained Lake Valor, Valor Cavern and the lake Team Galactic holds opened as maps of the imported world, three entries of `world.json`; story version 12), 01 · M9 2d (done 2026-10-10: the League's rooms and lifts to the Hall of Fame, whose scene, credits and the rival's battle before the door are S14's), 06 · R17a (done 2026-10-10: the Super Contests and `MoveData.Contest`), 25 · Y1, 11 · C11, 12 · Q1
-- [ ] Wave 6 · 02 · S11a, 01 · M10a, 06 · R17b, 08 · P5, 09 · L4, 16 · T8
+- [ ] Wave 6 · 02 · S11a (done 2026-10-10: the rival at Acuity Lakefront's rock face, Snowpoint City and Maylene, the scene at Lake Acuity, where Platinum has no battle with Jupiter; the lake Team Galactic leaves opened as a map of the imported world, one entry of `world.json`; story version 13), 01 · M10a (done 2026-10-10: the Fight, Survival and Resort Areas, Routes 224 to 230 and Victory Road's back rooms open, five of the fourteen stand-ins built; the ship from Snowpoint City is S15a's, and until it sails nobody comes there), 06 · R17b (done 2026-10-10: Ball Capsules, Seals and the ribbons, which finishes R17; the Ribbon Syndicate's two scripts wait for its room in the Resort Area, 01 · M10b or M11), 08 · P5, 09 · L4, 16 · T8
 - [ ] Wave 7 · 02 · S11b, 01 · M10b, 06 · R16a, 25 · Y2, 09 · L13, 16 · T3
 - [ ] Wave 8 · 02 · S12, 01 · M11a, 14 · B1, 25 · Y3, 09 · L12, 12 · Q2
 - [ ] Wave 9 · 02 · S13, 01 · M11b, 06 · R16b, 09 · L2, 09 · L15, 12 · Q20
