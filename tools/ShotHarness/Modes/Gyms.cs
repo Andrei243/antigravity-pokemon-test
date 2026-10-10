@@ -244,12 +244,13 @@ partial class Harness
         // The orange button lowers it: the water on its way down, and the pool drained
         StepOnto(3, 34);
         Skip(1.0); Shot("g63_pastoria_the_water_falling");
-        Until(() => !Pool().Moving, "the water at its level");
+        Until(() => !Pool().Moving, "the water at its level", 600);
         Frames(10); Shot("g64_pastoria_the_water_at_nought");
         Console.WriteLine($"pastoria: after the orange button the water is at {Pool().Level}");
         // The blue raises it to the top
         StepOnto(9, 24);
-        Until(() => !Pool().Moving, "the water at its level");
+        Until(() => Pool().Pressed == PastoriaWater.Button.Blue, "the blue button's script");
+        Until(() => !Pool().Moving, "the water at its level", 600);
         Frames(10); Shot("g65_pastoria_the_water_at_four");
         Console.WriteLine($"pastoria: after the blue button the water is at {Pool().Level}");
         TalkFrom("PastoriaGym", "sailor_damian", 7, 23, Direction.Up);

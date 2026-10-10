@@ -67,9 +67,10 @@ internal sealed class GymPieces
         }
         if (map.Puzzle is PastoriaWater pool)
         {
-            // The water a hair under its level, so a walkway at the same height shows over it; the rafts on it
+            // The water a hair over its level, so it still shows over the pool's floor once it is all the way down;
+            // the rafts on it
             float level = pool.Level - map.GroundLevel;
-            if (poolWater != null) yield return (poolWater, Matrix4x4.CreateTranslation(0f, level - 0.06f, 0f));
+            if (poolWater != null) yield return (poolWater, Matrix4x4.CreateTranslation(0f, level + 0.02f, 0f));
             if (raft != null)
                 foreach (var (x, y) in rafts) yield return (raft, Matrix4x4.CreateTranslation(x, level, y));
             foreach (var (x, y, colour) in PastoriaWater.Buttons)
@@ -432,15 +433,6 @@ internal sealed class GymPieces
         const int T = GroundBaker.ArtTile;
         var sheet = new ArtSheet();
         float vs = MapScene.VerticalScaleOf(map);
-        var water = new KitBuilder(sheet, vs);
-        var surface = water.Face("pool.water", T, T, PaintWater);
-        for (int y = PastoriaWater.Top; y < PastoriaWater.Top + PastoriaWater.Depth; y++)
-            for (int x = PastoriaWater.Left; x < PastoriaWater.Left + PastoriaWater.Width; x++)
-            {
-                water.Origin = new Vector3(x, 0f, y);
-                water.Decal(0, T, 0, T, 0f, surface);
-            }
-
         // A raft wherever the floating floor is what someone stands on: open floor lower than the floor can be, and
         // of none of the behaviours that keep walkers to a height or off the floor
         rafts.Clear();
@@ -448,6 +440,17 @@ internal sealed class GymPieces
             for (int x = PastoriaWater.Left; x < PastoriaWater.Left + PastoriaWater.Width; x++)
                 if (!map.IsSolid(x, y) && map.BehaviourAt(x, y) == TileBehavior.None && map.HeightAt(x, y) < 1.5f && map.DeckAt(x, y) == null)
                     rafts.Add((x, y));
+
+        // The water over the pool: its deep tiles and the rafts' own, so a walkway is never under it at any level
+        var water = new KitBuilder(sheet, vs);
+        var surface = water.Face("pool.water", T, T, PaintWater);
+        for (int y = PastoriaWater.Top; y < PastoriaWater.Top + PastoriaWater.Depth; y++)
+            for (int x = PastoriaWater.Left; x < PastoriaWater.Left + PastoriaWater.Width; x++)
+                if (!map.IsSolid(x, y) && (map.BehaviourAt(x, y) == TileBehavior.MovingFloor || rafts.Contains((x, y))))
+                {
+                    water.Origin = new Vector3(x, 0f, y);
+                    water.Decal(0, T, 0, T, 0f, surface);
+                }
         var planks = new KitBuilder(sheet, vs);
         planks.Block("raft", Raft, 1, T - 1, 1, T - 1, -3, 2);
         var deck = planks.Face("raft.deck", T - 4, T - 4, PaintRaft);
