@@ -64,6 +64,28 @@ public static class StoryMigration
         // Version 12: the seventh chapter's (plan 02 · S10), and Mt. Coronet's northern hall clear of Team Galactic's
         // grunts, with Maylene past on Route 217, for a save that has already been to Snowpoint City
         if (savedVersion < 12) ChapterSeven(story, scripts);
+        // Version 13: the eighth chapter's (plan 02 · S11, part a), and the rival gone from the head of Acuity
+        // Lakefront's rock face for a save that has already been past it to Snowpoint City
+        if (savedVersion < 13) ChapterEight(story, scripts);
+    }
+
+    /// <summary>The flag that takes the rival from the head of Acuity Lakefront's rock face (scripts/acuity_lakefront.txt).</summary>
+    public const string LakefrontRivalGoneFlag = "FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL";
+
+    /// <summary>
+    /// Version 13, a save from before the eighth chapter's first half was written (plan 02 · S11, part a): its people
+    /// are hidden until their scenes by <see cref="ScriptLibrary.ChapterEight"/>, which a new game runs too. The rival
+    /// stands at the head of Acuity Lakefront's rock face until the player first comes up the road from Route 217,
+    /// which nobody reaches Snowpoint City without doing. A save that has already been to Snowpoint City, or holds its
+    /// Icicle Badge, went by when nobody stood there: for that save he has called down and gone on to the lake, or it
+    /// would come back from the east with Rock Climb and find him standing where the climb ends.
+    /// </summary>
+    private static void ChapterEight(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterEight);
+        if (!story.Has(ArrivedInSnowpointFlag) && !story.HasBadge(Badge.Icicle)) return;
+        story.Set(LakefrontRivalGoneFlag);
+        if (story.Var("VAR_ACUITY_LAKEFRONT_STATE") == 0) story.SetVar("VAR_ACUITY_LAKEFRONT_STATE", 1);
     }
 
     /// <summary>The flag that first arriving in Snowpoint City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>

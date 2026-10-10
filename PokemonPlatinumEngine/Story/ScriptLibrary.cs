@@ -64,6 +64,10 @@ public sealed class ScriptLibrary
     /// scenes: called by <see cref="ChapterSix"/>, and run for a save from before.</summary>
     public const string ChapterSeven = "common.ChapterSeven";
 
+    /// <summary>Who the eighth chapter (plan 02 · S11, "Snowpoint and Galactic HQ") keeps out of sight until their
+    /// scenes: called by <see cref="ChapterSeven"/>, and run for a save from before.</summary>
+    public const string ChapterEight = "common.ChapterEight";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

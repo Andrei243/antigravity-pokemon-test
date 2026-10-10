@@ -120,6 +120,51 @@
       "y": 2,
       "facing": "Up",
       "isPCTerminal": true
+    },
+    {
+      "id": "maylene",
+      "name": "Maylene",
+      "npcType": "Maylene",
+      "x": 4,
+      "y": 4,
+      "facing": "Up",
+      "script": "Maylene",
+      "hiddenBy": "FLAG_HIDE_SNOWPOINT_CITY_POKECENTER_1F_MAYLENE"
+    },
+    {
+      "id": "lass",
+      "name": "Lass",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "There are Ice-type Pokémon everywhere you look around Snowpoint City.",
+        "Do you suppose they live inside the temple as well?"
+      ]
+    },
+    {
+      "id": "battle_girl",
+      "name": "Battle Girl",
+      "npcType": "Lady",
+      "x": 7,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Snow swallows up every sound. That's why this town is always so quiet."
+      ]
+    },
+    {
+      "id": "psyduck",
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "Psyduck: Gwa gwa? Gwaaa!"
+      ],
+      "species": "Psyduck"
     }
   ],
   "wildEncounters": []

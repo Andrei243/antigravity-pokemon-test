@@ -118,7 +118,10 @@
     // Verity Lakefront leads to once Commander Saturn is beaten)
     { "name": "LakeValorDrained", "matrix": 104, "area": "lake_valor_drained", "trees": "Round" },
     { "name": "ValorCavern", "matrix": 106, "area": "valor_cavern", "setting": "Cave" },
-    { "name": "LakeVerityGalactic", "matrix": 102, "area": "lake_verity", "trees": "Pine" }
+    { "name": "LakeVerityGalactic", "matrix": 102, "area": "lake_verity", "trees": "Pine" },
+    // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (the map Acuity Lakefront leads to once Commander
+    // Mars is beaten at Lake Verity, and for the rest of the game)
+    { "name": "LakeAcuityGalactic", "matrix": 108, "area": "lake_acuity", "trees": "Pine" }
   ],
   "areas": [
     "twinleaf_town",
@@ -272,6 +275,8 @@
     // Plan 02 · S10
     "lake_valor_drained",
     "valor_cavern",
-    "lake_verity"
+    "lake_verity",
+    // Plan 02 · S11, part a
+    "lake_acuity"
   ]
 }
