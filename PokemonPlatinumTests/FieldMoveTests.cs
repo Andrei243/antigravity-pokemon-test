@@ -712,7 +712,7 @@ public class FieldMoveTests
         poketch.Step();
         Assert.Equal(0, poketch.Steps);
 
-        // What the original's president hands over: four apps, three of which run so far
+        // The four apps of the Pokétch campaign
         var host = new HeadlessScriptHost { Map = new Map(4, 4) { Name = "Test" } };
         var library = ScriptLibrary.FromSources(("test", """
             script Gift
@@ -729,10 +729,11 @@ public class FieldMoveTests
         var given = host.Poketch;
         Assert.True(given.Enabled);
         Assert.Equal(4, given.Apps.Count);
-        Assert.Equal(new[] { PoketchApp.DigitalWatch, PoketchApp.Pedometer, PoketchApp.PartyStatus }, given.Shown);
+        Assert.Equal(new[] { PoketchApp.DigitalWatch, PoketchApp.Calculator, PoketchApp.Pedometer, PoketchApp.PartyStatus }, given.Shown);
         Assert.Equal(PoketchApp.DigitalWatch, given.Current);
         given.Next();
-        Assert.Equal(PoketchApp.Pedometer, given.Current);
+        Assert.Equal(PoketchApp.Calculator, given.Current);
+        given.Next();
         given.Next();
         given.Next();
         Assert.Equal(PoketchApp.DigitalWatch, given.Current);

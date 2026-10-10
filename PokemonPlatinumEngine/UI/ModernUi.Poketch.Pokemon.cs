@@ -11,24 +11,18 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>
 /// The Pokétch's apps about Pokémon (plan 06 · R14b; style guide, "The Pokétch"): the Friendship Checker, the Day-Care
 /// Checker, the Pokémon History, the Move Tester and the Matchup Checker. Everything is in the LCD's three tones and
-/// its blocks of 8; the Pokémon are their menu icons tinted to the screen, as the team's app draws them, and every
+/// its blocks of 8; the Pokémon are their menu icons in the screen's tones (<c>LcdIconTexture</c>), as the team's app draws them, and every
 /// other picture (hearts, the egg, the gender signs, the fish, the arrows, the marks) is a pattern of blocks of our own.
 /// </summary>
 internal static partial class ModernUi
 {
-    // The icons' tint: the middle tone a little more than halfway to the paper, as the team's app has it in green
-    private static Color PoketchIconTint => new(
-        (int)(LcdMid.R + (LcdPaper.R - LcdMid.R) * 0.6f),
-        (int)(LcdMid.G + (LcdPaper.G - LcdMid.G) * 0.6f),
-        (int)(LcdMid.B + (LcdPaper.B - LcdMid.B) * 0.6f), 255);
-
     /// <summary>A Pokémon's menu icon on the LCD, its top left on the block grid; turned to face right when asked.</summary>
     private static void LcdIcon(Rectangle screen, string model, float x, float y, float size, bool faceRight = false)
     {
-        var icon = PixelArtGenerator.GetPokemonIcon(model);
+        var icon = LcdIconTexture(model);
         float sx = screen.X + MathF.Round(x / Block) * Block, sy = screen.Y + MathF.Round(y / Block) * Block;
         var source = new Rectangle(0, 0, faceRight ? -icon.Width : icon.Width, icon.Height);
-        Raylib.DrawTexturePro(icon, source, new Rectangle(sx, sy, size, size), Vector2.Zero, 0f, PoketchIconTint);
+        Raylib.DrawTexturePro(icon, source, new Rectangle(sx, sy, size, size), Vector2.Zero, 0f, Color.White);
     }
 
     /// <summary>A picture of blocks: an X is a block in the colour, anything else is left alone; mirrored when asked.</summary>

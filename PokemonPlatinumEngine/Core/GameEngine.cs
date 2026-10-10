@@ -92,6 +92,7 @@ public partial class GameEngine
     // Where Dig and an Escape Rope lead out of the caves: outside the way the player went into them (the
     // original's exit location), saved with the game
     private MapSpot? exitSpot;
+    private (int, string?, bool) radarFollowed;
 
     // The key item kept on the item button (saved), a rod's cast under way, and whether the run button was down
     // last frame (on the Bicycle a press changes gear)
@@ -848,6 +849,12 @@ public partial class GameEngine
         poketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
         if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
+        // The radar's chains count toward the Trainer Counter's records whichever app is showing
+        if (poketch.Has(PoketchApp.TrainerCounter) && (radar.Count, radar.Species, radar.Active) != radarFollowed)
+        {
+            radarFollowed = (radar.Count, radar.Species, radar.Active);
+            TrainerCounterApp.Follow(poketch, radar);
+        }
         // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
         // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
         // anywhere else left people where they were until the next of those
@@ -1047,6 +1054,7 @@ public partial class GameEngine
         c.Map = currentMap;
         c.X = player?.GridX ?? 0;
         c.Y = player?.GridY ?? 0;
+        c.Outside = exitSpot is { } outside ? (outside.X, outside.Y) : null;
         c.Story = story;
         c.Pokedex = playerPokedex;
         c.Encounters = encounters;

@@ -1,3 +1,4 @@
+using System.Linq;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -44,7 +45,15 @@ partial class Harness
             var context = game.PoketchContext;
             Frames(4);
             Close(key);
-            if (view.TakeInHand(poketch, context))
+            if (Plays.TryGetValue(app, out var play))
+            {
+                // An app whose touches tell more than a first touch: played through its own buttons
+                view.TakeInHand(poketch, context);
+                play(this, poketch, context);
+                Close(key + "_touched");
+                view.LetGo();
+            }
+            else if (view.TakeInHand(poketch, context))
             {
                 view.Touch(poketch, context);
                 Frames(6);
@@ -64,4 +73,49 @@ partial class Harness
         view.Toggle(poketch);
         Frames(20);
     }
+}
+
+partial class Harness
+{
+    private static void Press(Harness h, Poketch poketch, PoketchContext context, params int[] buttons)
+    {
+        foreach (int b in buttons)
+        {
+            poketch.State!.Press(b, context);
+            h.Frames(3);
+        }
+    }
+
+    // What each app is shown doing when a first touch says too little
+    private static readonly System.Collections.Generic.Dictionary<PoketchApp, System.Action<Harness, Poketch, PoketchContext>> Plays = new()
+    {
+        // 12 + 34 =
+        [PoketchApp.Calculator] = (h, p, c) => Press(h, p, c, 1, 2, CalculatorApp.Plus, 3, 4, CalculatorApp.EqualsKey),
+        [PoketchApp.Counter] = (h, p, c) => Press(h, p, c, 0, 0, 0, 0, 0, 0, 0),
+        // The coin in the air, a third of a second after the throw
+        [PoketchApp.CoinToss] = (h, p, c) => { Press(h, p, c, 0); h.Frames(18); },
+        // The arrow at speed
+        [PoketchApp.Roulette] = (h, p, c) => { Press(h, p, c, RouletteApp.Start); h.Frames(60); },
+        // Set to 01:30 and started
+        [PoketchApp.KitchenTimer] = (h, p, c) => Press(h, p, c, KitchenTimerApp.MinutesOnesUp, KitchenTimerApp.SecondsTensUp,
+            KitchenTimerApp.SecondsTensUp, KitchenTimerApp.SecondsTensUp, KitchenTimerApp.Start),
+        [PoketchApp.MoveTester] = (h, p, c) => Press(h, p, c, MoveTesterApp.AttackUp, MoveTesterApp.AttackUp, MoveTesterApp.FirstUp, MoveTesterApp.FirstUp, MoveTesterApp.FirstUp, MoveTesterApp.FirstUp),
+        [PoketchApp.MatchupChecker] = (h, p, c) => { Press(h, p, c, MatchupCheckerApp.Check); h.Frames(90); },
+        [PoketchApp.ColorChanger] = (h, p, c) => { Press(h, p, c, 4); h.Frames(6); },
+        // The player walked up near a hidden item, and its tile touched
+        [PoketchApp.DowsingMachine] = (h, p, c) =>
+        {
+            var map = h.game.Map;
+            var (x, y) = (h.game.Player.GridX, h.game.Player.GridY);
+            var near = map.HiddenItems.Keys
+                .Where(t => map.AreaAt(t.X, t.Y) == map.AreaAt(t.X - 2, t.Y) && map.IsWalkable(t.X - 2, t.Y))
+                .OrderBy(t => System.Math.Abs(t.X - x) + System.Math.Abs(t.Y - y)).FirstOrDefault((-1, -1));
+            if (near.Item1 < 0) { System.Console.WriteLine("poketch: no hidden item near to dowse"); return; }
+            h.game.Place(map, near.Item1 - 2, near.Item2, Direction.Right);
+            h.Frames(4);
+            Press(h, p, h.game.PoketchContext, DowsingMachineApp.TileId(2, 0));
+            h.Frames(40);
+            System.Console.WriteLine($"poketch: dowsing from ({near.Item1 - 2}, {near.Item2}): {((DowsingMachineApp)p.State!).ShowingItems}");
+        },
+    };
 }

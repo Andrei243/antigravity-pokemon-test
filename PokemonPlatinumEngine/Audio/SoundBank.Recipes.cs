@@ -55,10 +55,10 @@ public static partial class SoundBank
         Add("fish_reel", SoundGroup.Field, null, "The line reeled in (waits for fishing).");
         Add("poketch", SoundGroup.Field, "SEQ_SE_DP_POKETCH_003", "A Pokétch button (waits for the Pokétch).");
         Add("poketch_count", SoundGroup.Field, "SEQ_SE_DP_POKETCH_010", "The Pokétch's Counter counts one more.");
-        Add("poketch_beep", SoundGroup.Field, "SEQ_SE_DP_BEEP", "A short beep of the Pokétch: the roulette stops, the kitchen timer is set going.");
+        Add("poketch_beep", SoundGroup.Field, "SEQ_SE_DP_BEEP", "The Pokétch's short beep for a button that can't be used now (the roulette or the kitchen timer at the wrong moment), and the link searcher done.");
         Add("coin_flip", SoundGroup.Field, "SEQ_SE_DP_DENSI09", "The Pokétch's coin is tossed.");
         Add("coin_land", SoundGroup.Field, "SEQ_SE_DP_DENSI10", "The Pokétch's coin lands.");
-        Add("roulette_spin", SoundGroup.Field, "SEQ_SE_DP_POKETCH_011", "The Pokétch's roulette sets off spinning.");
+        Add("roulette_spin", SoundGroup.Field, "SEQ_SE_DP_POKETCH_011", "The Pokétch's roulette comes to rest.");
         Add("timer_alarm", SoundGroup.Field, "SEQ_SE_DP_DENSI11", "The Pokétch's kitchen timer runs out.");
         Add("dowsing_ping", SoundGroup.Field, "SEQ_SE_DP_POKETCH_009", "The Dowsing Machine's touch: a ring spreading over the screen.");
         Add("lift", SoundGroup.Field, "SEQ_SE_DP_ELEBETA", "A platform of the Canalave Gym sets off with the player on it.");
@@ -378,7 +378,7 @@ public static partial class SoundBank
                 // A short click up, higher than the button's chirp
                 d = new SoundDesign(0.08f);
                 d.Tone(0, 0.05f, Wave.Pulse, N(103), N(103), 0.4f, 0.02f, 1.0f, duty: 0.25f);
-                return Finish(d.S, 0.3f);
+                return Finish(d.S, 0.34f);
             case "poketch_beep":
                 d = new SoundDesign(0.14f);
                 d.Tone(0, 0.12f, Wave.Pulse, N(93), N(93), 0.4f, 0.02f, 0.6f, duty: 0.5f);

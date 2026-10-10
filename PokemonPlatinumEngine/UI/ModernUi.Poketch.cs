@@ -136,6 +136,33 @@ internal static partial class ModernUi
     }
 
     /// <summary>A rectangle of blocks at a place on the screen given in blocks.</summary>
+    // A menu icon in the LCD's tones, by each pixel's brightness (the original's
+    // PoketchTask_LoadPokemonIconLuminancePalette): dark to the ink, the middle to the middle tone, light to the
+    // middle tone faintly, clear left clear; made once for each icon and set of tones
+    private static readonly System.Collections.Generic.Dictionary<(string, uint, uint), Texture2D> lcdIcons = new();
+
+    private static Texture2D LcdIconTexture(string model)
+    {
+        var icon = PixelArtGenerator.GetPokemonIcon(model);
+        uint tones = (uint)(LcdInk.R << 24 | LcdInk.G << 16 | LcdMid.R << 8 | LcdMid.B);
+        if (lcdIcons.TryGetValue((model, icon.Id, tones), out var known)) return known;
+        var image = Raylib.LoadImageFromTexture(icon);
+        Raylib.ImageFormat(ref image, PixelFormat.UncompressedR8G8B8A8);
+        var faint = new Color(LcdMid.R, LcdMid.G, LcdMid.B, (byte)90);
+        for (int y = 0; y < image.Height; y++)
+            for (int x = 0; x < image.Width; x++)
+            {
+                var c = Raylib.GetImageColor(image, x, y);
+                float light = (0.3f * c.R + 0.59f * c.G + 0.11f * c.B) / 255f;
+                var tone = c.A < 128 ? new Color(0, 0, 0, 0) : light < 0.3f ? LcdInk : light < 0.62f ? LcdMid : faint;
+                Raylib.ImageDrawPixel(ref image, x, y, tone);
+            }
+        var texture = Raylib.LoadTextureFromImage(image);
+        Raylib.UnloadImage(image);
+        lcdIcons[(model, icon.Id, tones)] = texture;
+        return texture;
+    }
+
     private static void LcdCells(Rectangle screen, int col, int row, int w, int h, Color c) =>
         LcdBlock(screen.X + col * Block, screen.Y + row * Block, w, h, c);
 
@@ -231,8 +258,9 @@ internal static partial class ModernUi
                 continue;
             }
             var p = party.Members[i];
-            var icon = PixelArtGenerator.GetPokemonIcon(p.ModelName);
-            var tint = p.IsFainted ? LcdInk : new Color(150, 186, 140, 255);
+            var icon = LcdIconTexture(p.ModelName);
+            // A fainted Pokémon is drawn darker
+            var tint = p.IsFainted ? new Color(120, 120, 120, 255) : Color.White;
             Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height), new Rectangle(cx + 8, cy, 80, 80), Vector2.Zero, 0f, tint);
             if (p.Status != StatusCondition.None && !p.IsFainted) LcdBlock(cx + 80, cy + 4, 1, 1, LcdInk);
 

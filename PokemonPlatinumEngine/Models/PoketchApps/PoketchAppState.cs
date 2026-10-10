@@ -34,6 +34,9 @@ public sealed class PoketchContext
     public int X { get; set; }
     public int Y { get; set; }
 
+    /// <summary>Off the map of Sinnoh, the tile of it the player last went in from (a cave's mouth, a door); null on it or before any.</summary>
+    public (int X, int Y)? Outside { get; set; }
+
     public StoryState? Story { get; set; }
     public Pokedex? Pokedex { get; set; }
 

@@ -50,7 +50,8 @@ public class SoundTests
             Assert.All(s, x => Assert.True(float.IsFinite(x)));
             // Thunder alone rolls on for seconds
             Assert.InRange(sound.Duration, 0.02, name.StartsWith("thunder") ? 3.5 : 1.0);
-            Assert.InRange(s.Max(MathF.Abs), 0.3f, 0.6f);
+            float peak = s.Max(MathF.Abs);
+            Assert.True(peak is >= 0.3f and <= 0.6f, $"{name} peaks at {peak}");
             Assert.True(Rms(s) > 0.02, $"{name} is nearly silent");
             // A sound's ends are rounded off, so it starts and stops without a click
             Assert.True(MathF.Abs(s[0]) < 0.02f && MathF.Abs(s[^1]) < 0.02f, $"{name} clicks");

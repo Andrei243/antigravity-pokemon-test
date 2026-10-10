@@ -33,13 +33,14 @@ public static class PoketchMap
 
     /// <summary>
     /// The cell the player is in (<c>PoketchMap_GetPlayerLocation</c>): their tile over 32 on the overworld. The
-    /// original falls back on the place the player last went in from off the main matrix; the Pokétch's context
-    /// doesn't carry that place, so off the overworld the player is nowhere on the map (null).
+    /// original falls back on the place the player last went in from off the main matrix, which the context carries
+    /// (<see cref="PoketchContext.Outside"/>); with none, the player is nowhere on the map (null).
     /// </summary>
     public static (int X, int Y)? PlayerCell(PoketchContext context)
     {
-        if (context.Map?.Name != Overworld) return null;
-        int x = context.X / 32, y = context.Y / 32;
+        (int X, int Y)? tile = context.Map?.Name == Overworld ? (context.X, context.Y) : context.Outside;
+        if (tile is not { } t) return null;
+        int x = t.X / 32, y = t.Y / 32;
         return OnMap(x, y) ? (x, y) : null;
     }
 

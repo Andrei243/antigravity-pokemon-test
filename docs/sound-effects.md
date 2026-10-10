@@ -57,10 +57,10 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `fish_reel` | — | The line reeled in: a Pokémon hooked in time. |
 | `poketch` | `SEQ_SE_DP_POKETCH_003` | The Pokétch put on the screen or away, its app changed, and most of its apps' buttons touched. |
 | `poketch_count` | `SEQ_SE_DP_POKETCH_010` | The Pokétch's Counter counts one more. |
-| `poketch_beep` | `SEQ_SE_DP_BEEP` | A short beep of the Pokétch: the roulette stops, the kitchen timer is set going. |
+| `poketch_beep` | `SEQ_SE_DP_BEEP` | The Pokétch's short beep for a button that can't be used now (the roulette or the kitchen timer at the wrong moment), and the link searcher done. |
 | `coin_flip` | `SEQ_SE_DP_DENSI09` | The Pokétch's coin is tossed. |
 | `coin_land` | `SEQ_SE_DP_DENSI10` | The Pokétch's coin lands. |
-| `roulette_spin` | `SEQ_SE_DP_POKETCH_011` | The Pokétch's roulette sets off spinning. |
+| `roulette_spin` | `SEQ_SE_DP_POKETCH_011` | The Pokétch's roulette comes to rest. |
 | `timer_alarm` | `SEQ_SE_DP_DENSI11` | The Pokétch's kitchen timer runs out. |
 | `dowsing_ping` | `SEQ_SE_DP_POKETCH_009` | The Dowsing Machine touched: a ring spreading over the screen. |
 | `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it. |
