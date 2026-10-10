@@ -1,0 +1,83 @@
+{
+  "area": "fight_area",
+  // The original's role is CITY11, which has no song yet (plan 05 · A6): Veilstone's stands in
+  "bgmTrack": "sinnoh/veilstone",
+  "trees": "Round",
+  "architecture": "Resort",
+  "doors": [
+    { "warp": 6, "map": "FightAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 7, "map": "FightAreaPokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The gate house to Route 225 is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "route_225", "toWarp": 0 },
+    { "warp": 1, "to": "route_225", "toWarp": 1 }
+  ],
+  // The gate to the Battle Frontier (plan 01 · M10, part b, and plan 06 · R18) and the two houses (plan 01 · M11)
+  "locked": [ 2, 3, 4, 5 ],
+  // The rival, Volkner, Flint, Palmer, Buck and the onlookers of their tag battle before the Frontier's gate, and the
+  // two trainers who keep the way to Route 225 shut until it is fought (ace_trainer_m_2 and black_belt_2, hidden by
+  // FLAG_HIDE_FIGHT_AREA_BLOCKADE), wait for the story (plan 02 · S15)
+  "people": {
+    "sailor_1": {
+      "name": "Sailor",
+      "npcType": "Gentleman",
+      "dialog": [
+        "Every port I put into has something I've never set eyes on. New people, new Pokémon, new trouble!",
+        "That's the thrill of the sea for you. This island has more of all three than most."
+      ]
+    },
+    // He gives away the Super Rod, once
+    "fisherman": { "name": "Fisherman", "script": "Fisherman" },
+    "pokemon_breeder_m": {
+      "name": "Pokémon Breeder",
+      "dialog": [
+        "This island is all crags and cliffs, with a volcano smoking away at the back of it.",
+        "Hard country to live in. That's why the Pokémon here grow up so strong, and the trainers with them."
+      ]
+    },
+    "ace_trainer_m_1": {
+      "name": "Ace Trainer",
+      "dialog": [
+        "Go through the gate to the north and you'll see the Battle Tower, standing over everything.",
+        "I look up at it every morning. It reminds me how far there still is to climb."
+      ]
+    },
+    "ace_trainer_f_1": {
+      "name": "Ace Trainer",
+      "dialog": [
+        "I've battled more trainers on this island than I can count, and no two of them fought alike.",
+        "That's what keeps me here. Just when I think I've seen everything, somebody shows me something new."
+      ]
+    },
+    "twin": {
+      "name": "Twin",
+      "dialog": [
+        "Sometimes people from the Elite Four come here on their days off! And Gym Leaders too!",
+        "I got one of them to sign my hat. I'm never, ever washing it."
+      ]
+    },
+    "battle_girl_1": {
+      "name": "Battle Girl",
+      "dialog": [
+        "I came over from another region, so half the Pokémon of Sinnoh are strangers to me.",
+        "I can't tell what they'll do until they've done it. Hi-yah! It keeps me on my toes!"
+      ]
+    },
+    // He sails back to Snowpoint City. The ship that brings the player here is its sailor's (plan 02 · S15)
+    "sailor_2": { "name": "Sailor", "npcType": "Gentleman", "script": "Ferry", "still": true },
+    "black_belt_1": {
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "dialog": [
+        "There is no end to growing tough! Beat one rival and a stronger one steps up behind him!",
+        "Hah! I wouldn't have it any other way!"
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Fight Area\nWhere trainers gather to test their strength.",
+    "arrow_signpost_rt_225": "Rt. 225\nNorth to the Survival Area.",
+    "arrow_signpost_battle_frontier": "Battle Frontier\nStraight ahead, through the gate."
+  }
+}

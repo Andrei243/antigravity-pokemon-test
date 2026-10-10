@@ -1,10 +1,11 @@
 {
   "area": "victory_road_1f",
   "bgmTrack": "sinnoh/victory_road",
-  // The back rooms (victory_road_1f_room_1 and on, to Route 224) open after the Hall of Fame (plan 01 · M10): their
-  // way in is closed until then. The collector who stands in it, telling trainers to aim for the League, waits with it,
-  // since he would stand in the closed way
+  // The back rooms (victory_road_1f_room_1 and on, to Route 224) are open since plan 01 · M10, part a. The collector
+  // stands in the way in, telling trainers to aim for the League, until the Hall of Fame has been entered: the floor's
+  // arrival script (victory_road_1f.txt) then sets the flag that hides him, as the original's does
   "people": {
+    "collector": { "name": "Collector", "script": "Collector", "still": true },
     "psychic_bryce": {
       "name": "Bryce",
       "trainer": {

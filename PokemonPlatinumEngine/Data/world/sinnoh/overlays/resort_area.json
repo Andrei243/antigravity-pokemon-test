@@ -1,0 +1,62 @@
+{
+  "area": "resort_area",
+  // The original's role is TOWN07, which has no song yet (plan 05 · A6): Sandgem Town's stands in
+  "bgmTrack": "sinnoh/sandgem",
+  "trees": "Round",
+  "architecture": "Resort",
+  "doors": [
+    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+  ],
+  // The Villa (plan 06 · R16b gives it to the player and furnishes it), the Ribbon Syndicate (plan 06 · R17b) and
+  // the house by the pond (plan 01 · M11)
+  "locked": [ 0, 1, 2 ],
+  // The boy who hands the Villa over (trigger 0) and the Villa's visitors, the professor and four Gym Leaders who
+  // wait at its door, come with the Villa (plan 06 · R16b)
+  "people": {
+    "beauty_1": {
+      "name": "Beauty",
+      "dialog": [
+        "I came a very long way to be here. Two ships, and a road full of trainers who would not let me by!",
+        "It was worth every step. I may never go home."
+      ]
+    },
+    "beauty_2": {
+      "name": "Beauty",
+      "dialog": [
+        "Nothing is too good for my Pokémon. The softest beds, the finest Poffins, a view of the water...",
+        "They have earned a holiday. So have I, for carrying all their luggage."
+      ]
+    },
+    "black_belt": {
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "dialog": [
+        "All these people lying about in the sun! Do they know what's under their feet?",
+        "Go down into the Underground and you can dig up all sorts of wonderful things. Now that's a holiday!"
+      ]
+    },
+    // In Platinum she speaks as to a fellow member once the player has joined the Ribbon Syndicate (plan 06 · R17b)
+    "ace_trainer_f": {
+      "name": "Ace Trainer",
+      "dialog": [
+        "The Ribbon Syndicate! Only the very finest people, with the very finest Pokémon, are let through its doors.",
+        "Oh, how I long to be a member. Ten Ribbons on one Pokémon, they say, and I have... three."
+      ]
+    },
+    // He stands in the pool behind the house, in water to his chest
+    "swimmer_m": {
+      "name": "Swimmer",
+      "npcType": "Youngster",
+      "still": true,
+      "dialog": [
+        "I've swum every stretch of water at the resort, and I'd swear something lurks at the bottom of that pond.",
+        "Something big, that never comes up. A fisherman with a good enough rod might find out what."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Resort Area\nA place of rest for trainers and their Pokémon.",
+    "signboard_ribbon_syndicate": "The Ribbon Syndicate\nMembers only.",
+    "signboard_villa": "The Villa"
+  }
+}

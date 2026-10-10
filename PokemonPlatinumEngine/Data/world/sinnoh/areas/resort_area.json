@@ -1,0 +1,85 @@
+{
+  "key": "resort_area",
+  "index": 457,
+  "name": "Resort Area",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "City",
+  "dayMusic": "TOWN07_D",
+  "nightMusic": "TOWN07_N",
+  "encounters": "resort_area",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Golduck", "level": 35, "maxLevel": 55 },
+    { "species": "Golduck", "level": 35, "maxLevel": 55 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 45 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 45 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 45 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 25, "maxLevel": 35 },
+    { "species": "Magikarp", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Magikarp", "level": 40, "maxLevel": 60 },
+    { "species": "Magikarp", "level": 30, "maxLevel": 70 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 80 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 90 },
+    { "species": "Magikarp", "level": 1, "maxLevel": 100 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 822, "z": 469, "to": "villa", "toWarp": 0 },
+    { "x": 810, "z": 455, "to": "resort_area_house", "toWarp": 0 },
+    { "x": 824, "z": 453, "to": "resort_area_ribbon_syndicate_1f", "toWarp": 0 },
+    { "x": 802, "z": 472, "to": "resort_area_pokecenter_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 805, "z": 451, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "signboard_ribbon_syndicate", "looks": "signboard", "movement": "none", "x": 813, "z": 457, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "item_nugget", "looks": "pokeball", "movement": "none", "x": 815, "z": 462, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_RESORT_AREA_NUGGET", "item": "Nugget", "script": "7232" },
+    { "id": "beauty_1", "looks": "beauty", "movement": "wander_around", "x": 806, "z": 458, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "1" },
+    { "id": "beauty_2", "looks": "beauty", "movement": "wander_around", "x": 822, "z": 459, "facing": 3, "rangeX": 3, "rangeZ": 0, "script": "2" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "wander_around", "x": 809, "z": 477, "facing": 0, "rangeX": 3, "rangeZ": 0, "script": "4" },
+    { "id": "ace_trainer_f", "looks": "ace_trainer_f", "movement": "wander_around", "x": 806, "z": 471, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "3" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 828, "z": 469, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 110, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 816, "z": 469, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 111, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 817, "z": 469, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 112, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 827, "z": 469, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 113, "script": "2800" },
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "look_south", "x": 816, "z": 455, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "signboard_villa", "looks": "signboard", "movement": "none", "x": 810, "z": 471, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "15" },
+    { "id": "school_kid_m", "looks": "school_kid_m", "movement": "look_west", "x": 816, "z": 473, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RESORT_AREA_SCHOOL_KID_M", "script": "0" },
+    { "id": "prof_rowan", "looks": "prof_rowan", "movement": "wander_around", "x": 821, "z": 473, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_AREA_PROF_ROWAN", "script": "9" },
+    { "id": "gardenia", "looks": "gardenia", "movement": "wander_around", "x": 822, "z": 473, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_AREA_GARDENIA", "script": "11" },
+    { "id": "byron", "looks": "byron", "movement": "wander_around", "x": 823, "z": 473, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_AREA_BYRON", "script": "13" },
+    { "id": "roark", "looks": "roark", "movement": "wander_around", "x": 822, "z": 472, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_AREA_ROARK", "script": "10" },
+    { "id": "maylene", "looks": "maylene", "movement": "wander_around", "x": 822, "z": 474, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_AREA_MAYLENE", "script": "12" }
+  ],
+  "signs": [
+    { "x": 822, "z": 473, "type": 2, "script": "8146", "item": "Nugget", "flag": "FLAG_OBTAINED_HIDDEN_RESORT_AREA_NUGGET", "range": 2 },
+    { "x": 822, "z": 445, "type": 2, "script": "8145", "item": "Thunder Stone", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_229_THUNDERSTONE", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 815, "z": 472, "width": 1, "depth": 3, "script": "8", "variable": "VAR_RESORT_AREA_STATE", "value": "0" }
+  ]
+}

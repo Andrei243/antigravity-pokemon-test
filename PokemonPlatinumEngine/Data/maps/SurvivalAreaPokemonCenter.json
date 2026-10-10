@@ -1,0 +1,159 @@
+{
+  "name": "SurvivalAreaPokemonCenter",
+  "displayName": "Pokémon Center",
+  "bgmTrack": "common/pokecenter",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#________P#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "##.....#.##",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "###.....###",
+    "#........##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 8,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "WallEmblem",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 659,
+      "targetY": 339,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Nurse Joy",
+      "npcType": "Nurse",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "isHealingNurse": true
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 9,
+      "y": 2,
+      "facing": "Up",
+      "isPCTerminal": true
+    },
+    {
+      "name": "Ace Trainer",
+      "npcType": "Youngster",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "Have you seen the building next door? Trainers of real standing meet there to battle.",
+        "Its door stays shut to anybody the owner does not know. One day he will wave me in."
+      ]
+    },
+    {
+      "name": "Veteran",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "Strong Pokémon are not enough out here.",
+        "A team wins when each of its moves covers for another. Coordination! That is the word to remember."
+      ]
+    },
+    {
+      "name": "Psychic",
+      "npcType": "Youngster",
+      "x": 4,
+      "y": 7,
+      "facing": "Up",
+      "dialog": [
+        "A Pokémon hatched from an Egg can know moves its kind never learns by itself.",
+        "Its parents shape it before it has so much as cracked the shell."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

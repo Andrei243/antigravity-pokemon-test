@@ -1,0 +1,110 @@
+{
+  "key": "route_229",
+  "index": 407,
+  "name": "Route 229",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Forest",
+  "dayMusic": "ROAD_BZA_D",
+  "nightMusic": "ROAD_BZA_N",
+  "encounters": "route_229",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Roselia", "level": 48 },
+    { "species": "Roselia", "level": 49 },
+    { "species": "Ledian", "level": 50 },
+    { "species": "Ledian", "level": 50 },
+    { "species": "Volbeat", "level": 49 },
+    { "species": "Illumise", "level": 49 },
+    { "species": "Pidgey", "level": 47 },
+    { "species": "Roselia", "level": 50 },
+    { "species": "Beautifly", "level": 48 },
+    { "species": "Dustox", "level": 48 },
+    { "species": "Beautifly", "level": 48 },
+    { "species": "Dustox", "level": 48 }
+  ],
+  "landRate": 30,
+  "day": [
+    "Pidgey",
+    "Pidgey"
+  ],
+  "night": [
+    "Ariados",
+    "Ariados"
+  ],
+  "swarm": [
+    "Pinsir",
+    "Pinsir"
+  ],
+  "radar": [
+    "Venomoth",
+    "Venomoth",
+    "Venonat",
+    "Venonat"
+  ],
+  "water": [
+    { "species": "Surskit", "level": 35, "maxLevel": 45 },
+    { "species": "Surskit", "level": 35, "maxLevel": 45 },
+    { "species": "Surskit", "level": 35, "maxLevel": 45 },
+    { "species": "Masquerain", "level": 35, "maxLevel": 55 },
+    { "species": "Masquerain", "level": 35, "maxLevel": 55 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Seaking", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 },
+    { "species": "Seaking", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [],
+  "objects": [
+    { "id": "cut_tree_1", "looks": "cut_tree", "movement": "none", "x": 820, "z": 439, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10000" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 800, "z": 434, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "wander_around", "x": 814, "z": 431, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "none", "x": 820, "z": 438, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10000" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "none", "x": 808, "z": 427, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10000" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "none", "x": 821, "z": 437, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10000" },
+    { "id": "cut_tree_5", "looks": "cut_tree", "movement": "none", "x": 826, "z": 437, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10000" },
+    { "id": "item_reaper_cloth", "looks": "pokeball", "movement": "none", "x": 816, "z": 426, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_229_REAPER_CLOTH", "item": "Reaper Cloth", "script": "7229" },
+    { "id": "item_full_restore", "looks": "pokeball", "movement": "none", "x": 828, "z": 420, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_229_FULL_RESTORE", "item": "Full Restore", "script": "7231" },
+    { "id": "item_protein", "looks": "pokeball", "movement": "none", "x": 828, "z": 438, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_229_PROTEIN", "item": "Protein", "script": "7230" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 810, "z": 434, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 106, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 811, "z": 434, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 107, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 812, "z": 434, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 108, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 813, "z": 434, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 109, "script": "2800" },
+    { "id": "ranger_deshawn", "looks": "ace_trainer_m", "movement": "look_north", "x": 829, "z": 433, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_RANGER_DESHAWN" },
+    { "id": "ace_trainer_felix", "looks": "ace_trainer_m", "movement": "look_west_and_east", "x": 796, "z": 432, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_FELIX" },
+    { "id": "ace_trainer_dana", "looks": "ace_trainer_f", "movement": "look_west", "x": 801, "z": 432, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_DANA" },
+    { "id": "ace_trainer_sandra", "looks": "ace_trainer_f", "movement": "look_south", "x": 820, "z": 418, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_SANDRA" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 805, "z": 451, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_RESORT_AREA", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 822, "z": 445, "type": 2, "script": "8145", "item": "Thunder Stone", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_229_THUNDERSTONE", "range": 2 }
+  ],
+  "triggers": []
+}

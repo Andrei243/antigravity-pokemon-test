@@ -78,7 +78,8 @@ public class WorldTests
         Assert.True(Sinnoh.IsOpen("eterna_city"));
         Assert.True(Sinnoh.IsOpen("veilstone_city"));
         Assert.True(Sinnoh.IsOpen("sunyshore_city"));
-        Assert.False(Sinnoh.IsOpen("route_224"));
+        Assert.True(Sinnoh.IsOpen("fight_area"));
+        Assert.False(Sinnoh.IsOpen("unused_battle_park"));
 
         foreach (string key in Sinnoh.Index.Areas)
         {
@@ -321,12 +322,11 @@ public class WorldTests
             Assert.True(closed == 0, $"{map.Name}: {closed} tiles outside the open areas can be walked on");
         }
 
-        // Route 224, in view from the Pokémon League's grounds, is such scenery until the Hall of Fame (plan 01 · M10):
-        // nobody stands in it, and there is no way in
-        var beyond = Overworld.AreaAt(27 * 32 + 16, 17 * 32 + 16)!;
-        Assert.Equal("route_224", beyond.Key);
-        Assert.False(beyond.Open);
-        Assert.DoesNotContain(Overworld.NPCs, n => Overworld.AreaAt(n.GridX, n.GridY) == beyond);
+        // Whatever is in view of the open areas without being open itself (Stark Mountain from Route 227, the Battle
+        // Frontier's gate from the Fight Area: plan 01 · M10, part b) is such scenery: nobody stands in it, and there is
+        // no way in
+        Assert.Contains(Overworld.Areas, a => !a.Open);
+        Assert.DoesNotContain(Overworld.NPCs, n => Overworld.AreaAt(n.GridX, n.GridY) is not { Open: true });
     }
 
     [Theory]

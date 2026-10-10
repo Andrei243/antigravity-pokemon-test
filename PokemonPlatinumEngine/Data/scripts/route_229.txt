@@ -1,0 +1,18 @@
+# Route 229 (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_route_229.s).
+#
+# The man by the pond (the original's script 1) is sure the player has walked off with the Nuggets he dropped, and
+# gives two of them away to be rid of the argument, once (FLAG_RECEIVED_ROUTE_229_NUGGET).
+
+script Pokefan
+  face self player
+  if flag FLAG_RECEIVED_ROUTE_229_NUGGET goto Mine
+  say "You! You've been picking things up off the ground round here, haven't you? I can tell by the look of you!"
+  say "Oh, don't make that face. Here. Let this settle it between us."
+  give "Nugget"
+  setflag FLAG_RECEIVED_ROUTE_229_NUGGET
+  say "Still sulking? Then take another, and let that be the end of it!"
+  give "Nugget"
+label Mine
+  say "Every Nugget you find lying about on this route is one of mine. I dropped the lot. Finders keepers, I suppose!"
+  end

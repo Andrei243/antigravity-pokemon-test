@@ -886,7 +886,7 @@ public sealed class WorldRenderer
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
             actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
-                new Vector3(nx, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz), nz), Player.YawOf(npc.Facing), pose));
+                new Vector3(nx, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading), nz), Player.YawOf(npc.Facing), pose));
         }
 
         if (player == null) return;

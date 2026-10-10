@@ -1,0 +1,111 @@
+{
+  "key": "route_227",
+  "index": 403,
+  "name": "Route 227",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "SlowAshfall",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "TOWN06_D",
+  "nightMusic": "TOWN06_N",
+  "encounters": "route_227",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Camerupt", "level": 53 },
+    { "species": "Rhydon", "level": 54 },
+    { "species": "Fearow", "level": 51 },
+    { "species": "Graveler", "level": 51 },
+    { "species": "Fearow", "level": 53 },
+    { "species": "Weezing", "level": 52 },
+    { "species": "Skarmory", "level": 53 },
+    { "species": "Graveler", "level": 53 },
+    { "species": "Numel", "level": 51 },
+    { "species": "Rhyhorn", "level": 52 },
+    { "species": "Numel", "level": 51 },
+    { "species": "Rhyhorn", "level": 52 }
+  ],
+  "landRate": 10,
+  "day": [
+    "Fearow",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Graveler"
+  ],
+  "swarm": [
+    "Spinda",
+    "Spinda"
+  ],
+  "radar": [
+    "Torkoal",
+    "Torkoal",
+    "Torkoal",
+    "Torkoal"
+  ],
+  "water": [
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
+    { "species": "Poliwag", "level": 35, "maxLevel": 45 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 740, "z": 302, "to": "route_227_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 755, "z": 314, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "item_charcoal", "looks": "pokeball", "movement": "none", "x": 759, "z": 283, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_227_CHARCOAL", "item": "Charcoal", "script": "7208" },
+    { "id": "item_zinc", "looks": "pokeball", "movement": "none", "x": 745, "z": 295, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_227_ZINC", "item": "Zinc", "script": "7209" },
+    { "id": "rival", "looks": "barry", "movement": "look_west", "x": 739, "z": 305, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_227_RIVAL", "script": "0" },
+    { "id": "crasher_wake", "looks": "crasher_wake", "movement": "look_east", "x": 738, "z": 305, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_227_CRASHER_WAKE", "script": "0" },
+    { "id": "ace_trainer_saul", "looks": "ace_trainer_m", "movement": "look_west", "x": 756, "z": 308, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_SAUL" },
+    { "id": "ranger_felicia", "looks": "ace_trainer_f", "movement": "look_north", "x": 747, "z": 311, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_RANGER_FELICIA" },
+    { "id": "black_belt_griffin", "looks": "black_belt", "movement": "look_south_and_east", "x": 764, "z": 266, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BLACK_BELT_GRIFFIN" },
+    { "id": "ace_trainer_mikayla", "looks": "ace_trainer_f", "movement": "look_west", "x": 752, "z": 295, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_MIKAYLA" },
+    { "id": "vent_1", "looks": "vent", "movement": "none", "x": 754, "z": 297, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_2", "looks": "vent", "movement": "none", "x": 754, "z": 296, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "buck", "looks": "buck", "movement": "look_north_and_west", "x": 758, "z": 275, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_227_BUCK", "script": "4" },
+    { "id": "item_yellow_shard", "looks": "pokeball", "movement": "none", "x": 751, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_227_YELLOW_SHARD", "item": "Yellow Shard", "script": "7307" }
+  ],
+  "signs": [
+    { "x": 741, "z": 264, "type": 2, "script": "8136", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_227_STAR_PIECE", "range": 2 },
+    { "x": 749, "z": 280, "type": 2, "script": "8137", "item": "Max Repel", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_227_MAX_REPEL", "range": 2 },
+    { "x": 744, "z": 326, "type": 2, "script": "8159", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_226_RARE_CANDY", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 738, "z": 306, "width": 2, "depth": 1, "script": "1", "variable": "VAR_ROUTE_227_WAKE_RIVAL_STATE", "value": "0" },
+    { "x": 758, "z": 277, "width": 1, "depth": 1, "script": "3", "variable": "VAR_ROUTE_227_BUCK_STATE", "value": "0" }
+  ]
+}

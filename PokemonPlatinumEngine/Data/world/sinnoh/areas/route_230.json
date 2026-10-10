@@ -1,0 +1,111 @@
+{
+  "key": "route_230",
+  "index": 471,
+  "name": "Route 230",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Water",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Water",
+  "dayMusic": "ROAD_BZA_D",
+  "nightMusic": "ROAD_BZA_N",
+  "encounters": "route_230",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pelipper", "level": 48 },
+    { "species": "Floatzel", "level": 48 },
+    { "species": "Bellsprout", "level": 47 },
+    { "species": "Bellsprout", "level": 47 },
+    { "species": "Roselia", "level": 49 },
+    { "species": "Pelipper", "level": 50 },
+    { "species": "Gloom", "level": 49 },
+    { "species": "Weepinbell", "level": 49 },
+    { "species": "Wingull", "level": 48 },
+    { "species": "Floatzel", "level": 50 },
+    { "species": "Wingull", "level": 48 },
+    { "species": "Floatzel", "level": 50 }
+  ],
+  "landRate": 30,
+  "day": [
+    "Bellsprout",
+    "Bellsprout"
+  ],
+  "night": [
+    "Oddish",
+    "Oddish"
+  ],
+  "swarm": [
+    "Corsola",
+    "Corsola"
+  ],
+  "radar": [
+    "Togepi",
+    "Togepi",
+    "Togepi",
+    "Togepi"
+  ],
+  "water": [
+    { "species": "Sealeo", "level": 35, "maxLevel": 55 },
+    { "species": "Pelipper", "level": 35, "maxLevel": 55 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 55 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 55 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 55 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Remoraid", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 40 },
+    { "species": "Octillery", "level": 20, "maxLevel": 50 },
+    { "species": "Wailord", "level": 40, "maxLevel": 55 },
+    { "species": "Wailord", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [],
+  "objects": [
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 710, "z": 425, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 716, "z": 419, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 725, "z": 428, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 729, "z": 431, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "item_rare_candy", "looks": "pokeball", "movement": "none", "x": 727, "z": 427, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_230_RARE_CANDY", "item": "Rare Candy", "script": "7233" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 684, "z": 420, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 114, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 685, "z": 420, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 115, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 686, "z": 420, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 116, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 687, "z": 420, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 117, "script": "2800" },
+    { "id": "swimmer_glenn", "looks": "swimmer_m", "movement": "walk_south_west_north_east", "x": 731, "z": 440, "facing": 1, "rangeX": 10, "rangeZ": 2, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_GLENN" },
+    { "id": "swimmer_joanna", "looks": "swimmer_f", "movement": "walk_east_south_north_west", "x": 734, "z": 433, "facing": 3, "rangeX": 13, "rangeZ": 6, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_JOANNA" },
+    { "id": "swimmer_kurt", "looks": "swimmer_m", "movement": "walk_east_south_west_north", "x": 750, "z": 430, "facing": 3, "rangeX": 1, "rangeZ": 8, "trainer": "normal", "sight": 4, "script": "TRAINER_SWIMMER_KURT" },
+    { "id": "swimmer_sophia", "looks": "swimmer_f", "movement": "wander_north_and_south", "x": 699, "z": 438, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_SWIMMER_SOPHIA" },
+    { "id": "swimmer_sam", "looks": "swimmer_m", "movement": "look_south", "x": 699, "z": 433, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_SWIMMER_SAM" },
+    { "id": "swimmer_mallory", "looks": "swimmer_f", "movement": "walk_back_and_forth", "x": 738, "z": 425, "facing": 3, "rangeX": 3, "rangeZ": 0, "trainer": "face_clockwise", "sight": 3, "script": "TRAINER_SWIMMER_MALLORY" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 680, "z": 429, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "none", "x": 682, "z": 430, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FIGHT_AREA_BLOCKADE", "script": "2" },
+    { "id": "rich_boy", "looks": "rich_boy", "movement": "none", "x": 682, "z": 431, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FIGHT_AREA_BLOCKADE", "script": "3" },
+    { "id": "item_blue_shard", "looks": "pokeball", "movement": "none", "x": 708, "z": 431, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_230_BLUE_SHARD", "item": "Blue Shard", "script": "7308" }
+  ],
+  "signs": [
+    { "x": 718, "z": 419, "type": 2, "script": "8147", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_230_ULTRA_BALL", "range": 2 },
+    { "x": 725, "z": 427, "type": 2, "script": "8148", "item": "Water Stone", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_230_WATER_STONE", "range": 2 }
+  ],
+  "triggers": []
+}

@@ -238,7 +238,22 @@ public class Map
 
     public string BgmTrackAt(int x, int y) => AreaAt(x, y)?.BgmTrack is { Length: > 0 } track ? track : BgmTrack;
 
-    public TreeStyle TreesAt(int x, int y) => AreaAt(x, y)?.Trees ?? Trees;
+    /// <summary>
+    /// The kind of tree on a tile: its area's, or, where the area names none (the forest that fills the world between
+    /// its places), the chunk's own (the Battle Zone's filler forest is broad-leaved, plan 01 · M10), or the map's.
+    /// </summary>
+    public TreeStyle TreesAt(int x, int y) =>
+        AreaAt(x, y)?.Trees ?? (chunkTrees != null && InBounds(x, y) ? chunkTrees[y / ChunkTiles * ChunkColumns + x / ChunkTiles] : null) ?? Trees;
+
+    private TreeStyle?[]? chunkTrees;
+
+    /// <summary>Says what kind of tree a chunk of scenery grows, where its area doesn't.</summary>
+    public void SetChunkTrees(int chunkX, int chunkY, TreeStyle trees)
+    {
+        if (chunkX < 0 || chunkY < 0 || chunkX >= ChunkColumns || chunkY >= ChunkRows) return;
+        chunkTrees ??= new TreeStyle?[ChunkColumns * ChunkRows];
+        chunkTrees[chunkY * ChunkColumns + chunkX] = trees;
+    }
 
     /// <summary>The weather of a small map as a whole (a map of the world has it by area: <see cref="WeatherAt"/>).</summary>
     public FieldWeather Weather { get; set; }

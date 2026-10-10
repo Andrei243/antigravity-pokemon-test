@@ -112,10 +112,10 @@ public static class WorldModels
         Built("t5_o01", BuildingKind.Shrine, "a small shrine in Celestic Town"),
         Built("t5_o01b", BuildingKind.Shrine, "a small shrine in Celestic Town"),
         House("t6_h01", Architecture.Resort, "a house of the Battle Zone"),
-        Built("t6_s01", BuildingKind.Shop, "the Battleground", Architecture.Resort, sign: "BATTLE", until: "M10"),
-        Built("t7_s01", BuildingKind.Hall, "the Ribbon Syndicate", Architecture.Resort, storeys: 2, sign: "RIBBONS", until: "M10"),
+        Built("t6_s01", BuildingKind.Shop, "the Battleground", Architecture.Resort, sign: "BATTLE"),
+        Built("t7_s01", BuildingKind.Hall, "the Ribbon Syndicate", Architecture.Resort, storeys: 2, sign: "RIBBONS"),
         House("t7_s02", Architecture.Resort, "the Villa"),
-        Built("t7_s03", BuildingKind.House, "a pavilion in the Resort Area", Architecture.Resort, until: "M10"),
+        Thing("t7_s03", PropType.Pool, "a swimming pool of the Resort Area, with its parasol"),
 
         // ---------------------------------------------------------------- Jubilife City
         Built("c1_b01a", BuildingKind.Apartments, "a block of flats with a way in", Architecture.City),
@@ -206,7 +206,7 @@ public static class WorldModels
         // ---------------------------------------------------------------- the Pokémon League and the Battle Zone
         Built("c10_s01", BuildingKind.League, "the Pokémon League", storeys: 3),
         Thing("c10_s02", PropType.LampPost, "a lantern on the League's steps"),
-        Thing("c11_o01", PropType.Hedge, "planting along the Fight Area's quay", until: "M10"),
+        Thing("c11_o01", PropType.Container, "a shipping container on the Fight Area's quay"),
         Built("d31_s01", BuildingKind.Tower, "the Battle Tower", until: "M10"),
         Built("d31_s02", BuildingKind.Hall, "a hall of the Battle Park", until: "M10"),
         Thing("d31_o01", PropType.LampPost, "a lantern of the Battle Park"),
@@ -215,7 +215,7 @@ public static class WorldModels
         Built("d32_s03", BuildingKind.Hall, "the Battle Factory", sign: "FACTORY", until: "M10"),
         Built("d32_s04", BuildingKind.Hall, "the Battle Arcade", sign: "ARCADE", until: "M10"),
         Built("d32_s05", BuildingKind.Warehouse, "a low building of the Battle Frontier", until: "M10"),
-        Built("d32_s06", BuildingKind.Warehouse, "a low building of the Fight Area", until: "M10"),
+        Thing("d32_s06", PropType.GrandFountain, "the fountain in each of the pools before the Battle Frontier's gate"),
         Ground("d16_o01", "lava on Stark Mountain's flank", until: "M10"),
         Thing("d16_o02", PropType.Outcrop, "the mouth of Stark Mountain", until: "M10"),
 

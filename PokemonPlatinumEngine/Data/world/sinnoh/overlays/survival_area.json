@@ -1,0 +1,52 @@
+{
+  "area": "survival_area",
+  // The original's role is CITY11, which has no song yet (plan 05 · A6): Veilstone's stands in
+  "bgmTrack": "sinnoh/veilstone",
+  "trees": "Round",
+  "architecture": "Resort",
+  "doors": [
+    { "warp": 3, "map": "SurvivalAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    { "warp": 4, "map": "SurvivalAreaPokeMart", "x": 4, "y": 6, "facing": "Up" }
+  ],
+  // The Battleground opens once the story has been to Stark Mountain (the original moves its warp away until
+  // FLAG_ARRESTED_CHARON_STARK_MOUNTAIN; plan 02 · S15), and the two houses have no rooms yet (plan 01 · M11)
+  "locked": [ 0, 1, 2 ],
+  // Buck, who shows the player his door on the way to Stark Mountain, and the rival, who trains here afterwards and
+  // battles at weekends, wait for the story (plan 02 · S15)
+  "people": {
+    "ruin_maniac": {
+      "name": "Ruin Maniac",
+      "dialog": [
+        "The rock round here keeps marvellous things. I've chipped out prints of creatures nobody has seen alive!",
+        "A day on this mountain beats a year in any museum."
+      ]
+    },
+    "battle_girl": {
+      "name": "Battle Girl",
+      "dialog": [
+        "Nobody comes to the Survival Area for the view. We come here to train!",
+        "Cliffs to climb, a volcano up the road and the strongest trainers in the land next door. Hi-yah! Perfect!"
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "I packed my Bag so full of items for the routes round here that I can hardly lift it.",
+        "I'm not taking a single one out, though. You'd be mad to set off from here without them!"
+      ]
+    },
+    "cameraman": {
+      "name": "Cameraman",
+      "npcType": "Gentleman",
+      "dialog": [
+        "I once filmed a red Gyarados! Biggest scoop of my life, and I've been after the next one ever since.",
+        "They say something stirs inside the volcano up north. If it shows itself, my camera will be rolling."
+      ]
+    }
+  },
+  "signs": {
+    "map_signpost": "Survival Area\nOnly the toughest stay."
+  },
+  // The Battleground's door, read where it stands (the original's script 7)
+  "read": { "7": "BattlegroundDoor" }
+}

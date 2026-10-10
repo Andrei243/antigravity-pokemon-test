@@ -1,0 +1,11 @@
+# The Survival Area (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_survival_area.s).
+#
+# The Battleground's door, read where it stands (the original's script 7). It stays shut until the story has been to
+# Stark Mountain: the original moves the door's warp away until FLAG_ARRESTED_CHARON_STARK_MOUNTAIN (plan 02 · S15
+# opens it, and brings Buck and the rival to its step).
+
+script BattlegroundDoor
+  text "The door is locked."
+  text "A plate beside it reads: \"Members only.\""
+  end

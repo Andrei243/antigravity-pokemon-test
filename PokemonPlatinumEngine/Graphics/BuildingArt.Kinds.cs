@@ -304,6 +304,14 @@ internal static partial class BuildingArt
     {
         Wall(c, PorchWall(s), 0, 0, c.Width, c.Height - BaseHeight, seed);
         Base(c, s, 0, c.Height - BaseHeight, c.Width);
+        // A veranda is glazed: a wide window in each bay of its front (its ends, a third as long, stay plain)
+        if (!s.Veranda || c.Width < Bay * 2 - Inset || c.Height < 40) return;
+        int bays = (c.Width + Inset) / Bay;
+        for (int i = 0; i < bays; i++)
+        {
+            int cx = c.Width * (2 * i + 1) / (2 * bays);
+            ShopWindow(c, cx, c.Height - 13, ArtSheet.PublicLight);
+        }
     }
 
     /// <summary>The front of the canopy between an open porch's sides: the accent colour, with the building's sign.</summary>
@@ -313,6 +321,26 @@ internal static partial class BuildingArt
         Pix.Raised(c, 0, 0, c.Width, c.Height, accent);
         c.HLine(1, c.Height - 2, c.Width - 2, accent.Dark);
         if (sign) Sign(c, s, c.Width / 2, 3, c.Height - 6, c.Width - 8);
+        if (sign && s.Veranda && s.SignText != null && Pix.TextWidth(s.SignText, 2) + 64 <= c.Width)
+        {
+            int reach = Pix.TextWidth(s.SignText, 2) / 2 + 18;
+            Rosette(c, c.Width / 2 - reach, c.Height / 2 - 1);
+            Rosette(c, c.Width / 2 + reach, c.Height / 2 - 1);
+        }
+    }
+
+    /// <summary>A prize rosette, 11 across with its tails: a gold disc ringed in white, two tails hanging from it.</summary>
+    private static void Rosette(PixelCanvas c, int cx, int cy)
+    {
+        var gold = Rgb(250, 210, 76);
+        var tail = Rgb(244, 244, 236);
+        c.Rect(cx - 3, cy + 3, 2, 6, tail);
+        c.Rect(cx + 1, cy + 3, 2, 6, tail);
+        c.Rect(cx - 3, cy + 8, 1, 1, PixelCanvas.Shadow(tail, 0.3f));
+        c.Rect(cx + 2, cy + 8, 1, 1, PixelCanvas.Shadow(tail, 0.3f));
+        Pix.Disc(c, cx - 5, cy - 5, 10, tail);
+        Pix.Disc(c, cx - 3, cy - 3, 6, gold);
+        c.Rect(cx - 1, cy - 1, 2, 2, PixelCanvas.Shadow(gold, 0.3f));
     }
 
     // ------------------------------------------------------------------ roofs of snow and of metal

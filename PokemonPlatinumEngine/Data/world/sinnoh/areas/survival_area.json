@@ -1,0 +1,43 @@
+{
+  "key": "survival_area",
+  "index": 450,
+  "name": "Survival Area",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "CITY11_D",
+  "nightMusic": "CITY11_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 652, "z": 338, "to": "battleground", "toWarp": 0 },
+    { "x": 655, "z": 348, "to": "survival_area_south_house", "toWarp": 0 },
+    { "x": 656, "z": 325, "to": "survival_area_north_house", "toWarp": 0 },
+    { "x": 659, "z": 338, "to": "survival_area_pokecenter_1f", "toWarp": 0 },
+    { "x": 663, "z": 338, "to": "survival_area_mart", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 646, "z": 338, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "vent_1", "looks": "vent", "movement": "none", "x": 660, "z": 327, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_2", "looks": "vent", "movement": "none", "x": 652, "z": 327, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "ruin_maniac", "looks": "ruin_maniac", "movement": "wander_around", "x": 659, "z": 350, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "3" },
+    { "id": "battle_girl", "looks": "battle_girl", "movement": "wander_around", "x": 652, "z": 341, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "2" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_around", "x": 667, "z": 338, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "arrow_signpost", "looks": "arrow_signpost", "movement": "none", "x": 679, "z": 340, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_ROUTE_226", "script": "65535" },
+    { "id": "cameraman", "looks": "cameraman", "movement": "wander_around", "x": 651, "z": 348, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "4" },
+    { "id": "buck", "looks": "buck", "movement": "look_south", "x": 652, "z": 339, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SURVIVAL_AREA_BUCK", "script": "6" },
+    { "id": "item_rare_candy", "looks": "pokeball", "movement": "none", "x": 662, "z": 335, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SURVIVAL_AREA_RARE_CANDY", "item": "Rare Candy", "script": "7314" },
+    { "id": "item_red_shard", "looks": "pokeball", "movement": "none", "x": 649, "z": 324, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SURVIVAL_AREA_RED_SHARD", "item": "Red Shard", "script": "7311" },
+    { "id": "rival", "looks": "barry", "movement": "none", "x": 651, "z": 339, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SURVIVAL_AREA_RIVAL", "script": "10" }
+  ],
+  "signs": [
+    { "x": 649, "z": 346, "type": 2, "script": "8131", "item": "PP Up", "flag": "FLAG_OBTAINED_HIDDEN_SURVIVAL_AREA_PP_UP", "range": 2 },
+    { "x": 652, "z": 338, "type": 0, "script": "7" }
+  ],
+  "triggers": []
+}

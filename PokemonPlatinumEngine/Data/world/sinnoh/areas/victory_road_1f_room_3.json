@@ -1,0 +1,59 @@
+{
+  "key": "victory_road_1f_room_3",
+  "index": 249,
+  "name": "Victory Road",
+  "matrix": 48,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_01",
+  "nightMusic": "D_01",
+  "encounters": "victory_road_1f_room_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 47 },
+    { "species": "Floatzel", "level": 47 },
+    { "species": "Graveler", "level": 49 },
+    { "species": "Onix", "level": 48 },
+    { "species": "Onix", "level": 50 },
+    { "species": "Floatzel", "level": 48 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Floatzel", "level": 49 },
+    { "species": "Steelix", "level": 50 },
+    { "species": "Gabite", "level": 50 },
+    { "species": "Steelix", "level": 50 },
+    { "species": "Gabite", "level": 50 }
+  ],
+  "landRate": 15,
+  "day": [
+    "Graveler",
+    "Onix"
+  ],
+  "night": [
+    "Golbat",
+    "Onix"
+  ],
+  "swarm": [
+    "Graveler",
+    "Floatzel"
+  ],
+  "radar": [
+    "Onix",
+    "Floatzel",
+    "Steelix",
+    "Gabite"
+  ],
+  "eastSea": true,
+  "warps": [
+    { "x": 12, "z": 16, "to": "victory_road_1f_room_2", "toWarp": 1 },
+    { "x": 29, "z": 16, "to": "route_224", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

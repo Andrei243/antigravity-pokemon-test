@@ -1,0 +1,42 @@
+{
+  "area": "route_229",
+  // The original's role is ROAD_BZA (Routes 228 to 230), which has no song yet (plan 05 · A6): Route 209's stands in
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  "architecture": "Resort",
+  "people": {
+    // He takes the player for someone who found his Nuggets, and gives two of them away
+    "pokefan_m": { "name": "Pokéfan", "script": "Pokefan" },
+    "ranger_deshawn": {
+      "name": "Deshawn",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Deshawn: A quiet wood, a still pond... and a ranger behind every tree. Halt!",
+        "dialogueAfter": "Pokémon Ranger Deshawn: Carry on. Mind the flower beds."
+      }
+    },
+    "ace_trainer_felix": {
+      "name": "Felix",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Felix: East or west, whichever way you're going, the road runs through me!",
+        "dialogueAfter": "Ace Trainer Felix: Right through me, as it turns out."
+      }
+    },
+    "ace_trainer_dana": {
+      "name": "Dana",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Dana: Everyone hurries past to the Resort Area. Nobody's on holiday until they've battled me!",
+        "dialogueAfter": "Ace Trainer Dana: Enjoy the resort. You've earned the rest."
+      }
+    },
+    "ace_trainer_sandra": {
+      "name": "Sandra",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Sandra: Earth, lightning and fire! I never did decide on a favourite, so I brought all three.",
+        "dialogueAfter": "Ace Trainer Sandra: All three, beaten one after another. At least that's fair."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": "Rt. 229\nSouth: Resort Area"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "key": "route_228",
+  "index": 406,
+  "name": "Route 228",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Sandstorm",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "ROAD_BZA_D",
+  "nightMusic": "ROAD_BZA_N",
+  "encounters": "route_228",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Dugtrio", "level": 51 },
+    { "species": "Cacturne", "level": 52 },
+    { "species": "Hippowdon", "level": 50 },
+    { "species": "Rhydon", "level": 50 },
+    { "species": "Rhydon", "level": 52 },
+    { "species": "Hippowdon", "level": 51 },
+    { "species": "Dugtrio", "level": 52 },
+    { "species": "Dugtrio", "level": 50 },
+    { "species": "Diglett", "level": 49 },
+    { "species": "Cacnea", "level": 50 },
+    { "species": "Diglett", "level": 49 },
+    { "species": "Cacnea", "level": 50 }
+  ],
+  "landRate": 10,
+  "day": [
+    "Hippowdon",
+    "Rhydon"
+  ],
+  "night": [
+    "Cacturne",
+    "Cacturne"
+  ],
+  "swarm": [
+    "Beldum",
+    "Beldum"
+  ],
+  "radar": [
+    "Rhydon",
+    "Hippowdon",
+    "Diglett",
+    "Cacnea"
+  ],
+  "water": [
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
+    { "species": "Poliwag", "level": 35, "maxLevel": 45 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
+    { "species": "Poliwhirl", "level": 35, "maxLevel": 55 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Whiscash", "level": 25, "maxLevel": 35 },
+    { "species": "Whiscash", "level": 25, "maxLevel": 35 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 774, "z": 331, "to": "route_228_gate_to_route_226", "toWarp": 1 },
+    { "x": 774, "z": 330, "to": "route_228_gate_to_route_226", "toWarp": 1 },
+    { "x": 789, "z": 356, "to": "route_228_north_house", "toWarp": 0 },
+    { "x": 775, "z": 386, "to": "route_228_south_house", "toWarp": 0 },
+    { "x": 785, "z": 340, "to": "route_228_rock_peak_ruins", "toWarp": 0 },
+    { "x": 785, "z": 340, "to": "rock_peak_ruins", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "arrow_signpost_rt_226", "looks": "arrow_signpost", "movement": "none", "x": 779, "z": 329, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "arrow_signpost_rt_229", "looks": "arrow_signpost", "movement": "none", "x": 786, "z": 406, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 793, "z": 372, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 781, "z": 352, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 782, "z": 352, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10001" },
+    { "id": "rock_smash_4", "looks": "rock_smash", "movement": "none", "x": 783, "z": 353, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10001" },
+    { "id": "item_protector", "looks": "pokeball", "movement": "none", "x": 786, "z": 333, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_228_PROTECTOR", "item": "Protector", "script": "7224" },
+    { "id": "item_iron", "looks": "pokeball", "movement": "none", "x": 796, "z": 346, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_228_IRON", "item": "Iron", "script": "7225" },
+    { "id": "item_shiny_stone", "looks": "pokeball", "movement": "none", "x": 794, "z": 385, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_228_SHINY_STONE", "item": "Shiny Stone", "script": "7226" },
+    { "id": "item_shed_shell", "looks": "pokeball", "movement": "none", "x": 780, "z": 345, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_228_SHED_SHELL", "item": "Shed Shell", "script": "7227" },
+    { "id": "item_tm37", "looks": "pokeball", "movement": "none", "x": 779, "z": 380, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_228_TM37", "item": "TM37", "script": "7228" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 779, "z": 389, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 102, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 782, "z": 389, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 103, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 780, "z": 389, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 104, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 781, "z": 389, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 105, "script": "2800" },
+    { "id": "ace_trainer_jose", "looks": "ace_trainer_m", "movement": "look_west_and_east", "x": 779, "z": 325, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_JOSE" },
+    { "id": "ace_trainer_moira", "looks": "ace_trainer_f", "movement": "look_west", "x": 773, "z": 346, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_MOIRA" },
+    { "id": "ranger_kyler", "looks": "ace_trainer_m", "movement": "look_west", "x": 789, "z": 375, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_RANGER_KYLER" },
+    { "id": "ranger_krista", "looks": "ace_trainer_f", "movement": "look_east", "x": 786, "z": 375, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_RANGER_KRISTA" },
+    { "id": "dragon_tamer_keegan", "looks": "ace_trainer_m", "movement": "look_south", "x": 796, "z": 327, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_DRAGON_TAMER_KEEGAN" },
+    { "id": "psychic_corbin", "looks": "psychic", "movement": "look_west", "x": 785, "z": 398, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_PSYCHIC_CORBIN" },
+    { "id": "ace_trainer_meagan", "looks": "ace_trainer_f", "movement": "look_west", "x": 795, "z": 394, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_MEAGAN" },
+    { "id": "black_belt_davon", "looks": "black_belt", "movement": "disguise_sand", "x": 776, "z": 338, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "view_all_directions", "sight": 1, "script": "TRAINER_BLACK_BELT_DAVON" },
+    { "id": "vent_1", "looks": "vent", "movement": "none", "x": 785, "z": 390, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_2", "looks": "vent", "movement": "none", "x": 786, "z": 390, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_3", "looks": "vent", "movement": "none", "x": 772, "z": 384, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" },
+    { "id": "vent_4", "looks": "vent", "movement": "none", "x": 773, "z": 384, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2027" }
+  ],
+  "signs": [
+    { "x": 793, "z": 402, "type": 2, "script": "8142", "item": "Calcium", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_228_CALCIUM", "range": 2 },
+    { "x": 774, "z": 357, "type": 2, "script": "8144", "item": "Full Restore", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_228_FULL_RESTORE", "range": 2 },
+    { "x": 781, "z": 365, "type": 2, "script": "8143", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_228_STAR_PIECE", "range": 2 },
+    { "x": 780, "z": 334, "type": 2, "script": "8205", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_228_RARE_CANDY", "range": 2 },
+    { "x": 778, "z": 326, "type": 2, "script": "8206", "item": "Max Repel", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_228_MAX_REPEL", "range": 2 },
+    { "x": 775, "z": 404, "type": 2, "script": "8207", "item": "PP Max", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_228_PP_MAX", "range": 2 }
+  ],
+  "triggers": []
+}

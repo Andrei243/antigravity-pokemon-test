@@ -1,0 +1,108 @@
+{
+  "area": "victory_road_1f_room_2",
+  "bgmTrack": "sinnoh/victory_road",
+  // The long back room of Victory Road (plan 01 · M10, part a). In Platinum Marley waits just inside, joins the
+  // player (triggers 0 to 2) and battles beside them against the room's trainers, who stand in pairs and see the
+  // player together; she and her tag battles are the story's (plan 02 · S15). Until then each pair battles one after
+  // the other
+  "people": {
+    "ace_trainer_micah": {
+      "name": "Micah",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Micah: Brandi and I have guarded this passage since the day it opened. Nobody has slipped between us yet!",
+        "dialogueAfter": "Ace Trainer Micah: Brandi! One got through!"
+      }
+    },
+    "ace_trainer_brandi": {
+      "name": "Brandi",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Brandi: Micah talks. I battle. Shall we?",
+        "dialogueAfter": "Ace Trainer Brandi: ...Micah will never let me hear the end of this."
+      }
+    },
+    "psychic_desiree": {
+      "name": "Desiree",
+      "trainer": {
+        "dialogueBefore": "Psychic Desiree: In the dark the mind sees furthest. I watched you come all the way from the door.",
+        "dialogueAfter": "Psychic Desiree: I saw you coming. I did not see you winning."
+      }
+    },
+    "psychic_landon": {
+      "name": "Landon",
+      "trainer": {
+        "dialogueBefore": "Psychic Landon: Desiree looks ahead, and I look into the here and now. Here and now, you battle me!",
+        "dialogueAfter": "Psychic Landon: The here and now has turned out badly."
+      }
+    },
+    "black_belt_eddie": {
+      "name": "Eddie",
+      "trainer": {
+        "dialogueBefore": "Black Belt Eddie: The old man and I spar in this cave from dawn till dusk! Fresh opponents are a treat!",
+        "dialogueAfter": "Black Belt Eddie: A treat! Even beaten, a treat!"
+      }
+    },
+    "veteran_terrell": {
+      "name": "Terrell",
+      "trainer": {
+        "dialogueBefore": "Veteran Terrell: The lad has the muscle and I have the years. Let me show you which counts for more.",
+        "dialogueAfter": "Veteran Terrell: Neither, against you. Well fought."
+      }
+    },
+    "ace_trainer_arthur": {
+      "name": "Arthur",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Arthur: Past here it's daylight and Route 224. You'll have to earn the fresh air!",
+        "dialogueAfter": "Ace Trainer Arthur: Earned. Breathe deep when you get out there."
+      }
+    },
+    "ace_trainer_clarice": {
+      "name": "Clarice",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Clarice: Poison, fire and steel. Arthur says my team makes no sense. Does it have to?",
+        "dialogueAfter": "Ace Trainer Clarice: Perhaps it does have to."
+      }
+    },
+    "psychic_deandre": {
+      "name": "Deandre",
+      "trainer": {
+        "dialogueBefore": "Psychic Deandre: Something followed me into this cave years ago, and never left my side. Would you like to meet it?",
+        "dialogueAfter": "Psychic Deandre: It liked you. That is rare."
+      }
+    },
+    "psychic_kendra": {
+      "name": "Kendra",
+      "trainer": {
+        "dialogueBefore": "Psychic Kendra: Did you hear a bell just now? No? Then it rang for you. Battle me!",
+        "dialogueAfter": "Psychic Kendra: The bell has stopped. So have I."
+      }
+    },
+    "bird_keeper_autumn": {
+      "name": "Autumn",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Autumn: My birds don't mind the dark. They were night birds long before I caught them!",
+        "dialogueAfter": "Bird Keeper Autumn: Even night birds have their off nights."
+      }
+    },
+    "dragon_tamer_joe": {
+      "name": "Joe",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Joe: A cave this deep is just where a dragon ought to live. I've brought two!",
+        "dialogueAfter": "Dragon Tamer Joe: Two dragons down. I'm going to need a deeper cave."
+      }
+    },
+    "black_belt_willie": {
+      "name": "Willie",
+      "trainer": {
+        "dialogueBefore": "Black Belt Willie: I punch this rock a thousand times a day! It hasn't broken yet! Will you?",
+        "dialogueAfter": "Black Belt Willie: You're harder than the rock!"
+      }
+    },
+    "veteran_brenden": {
+      "name": "Brenden",
+      "trainer": {
+        "dialogueBefore": "Veteran Brenden: Shell, scale and hide. My three have stood in this passage longer than you've been a trainer.",
+        "dialogueAfter": "Veteran Brenden: And now they'll stand aside. Go on through."
+      }
+    }
+  }
+}

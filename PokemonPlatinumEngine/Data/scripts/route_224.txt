@@ -1,0 +1,11 @@
+# Route 224 (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_route_224.s).
+#
+# The white rock at the route's end, read where it stands (the original's script 3). In Platinum Professor Oak has the
+# player write someone's name on it in thanks, which brings Shaymin and opens the Seabreak Path
+# (FLAG_WROTE_ON_ROUTE_224_TABLET): that scene is the story's (plan 02 · S15) and the path plan 01 · M10, part b's.
+
+script WhiteRock
+  text "A great white rock, worn smooth by the sea wind."
+  text "Its face is unmarked."
+  end

@@ -1,0 +1,148 @@
+{
+  "name": "ResortAreaPokemonCenter",
+  "displayName": "Pokémon Center",
+  "bgmTrack": "common/pokecenter",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#________P#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "##.....#.##",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "###.....###",
+    "#........##",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "HealingMachine",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 1,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 8,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 5,
+      "width": 3,
+      "depth": 2
+    },
+    {
+      "type": "WallEmblem",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 1,
+      "width": 2,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 802,
+      "targetY": 473,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Nurse Joy",
+      "npcType": "Nurse",
+      "x": 5,
+      "y": 2,
+      "facing": "Down",
+      "isHealingNurse": true
+    },
+    {
+      "name": "PC Terminal",
+      "npcType": "Trainer",
+      "x": 9,
+      "y": 2,
+      "facing": "Up",
+      "isPCTerminal": true
+    },
+    {
+      "name": "Rich Boy",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 5,
+      "facing": "Right",
+      "dialog": [
+        "Some Pokémon look just the same upside down as the right way up.",
+        "I stood on my head half the morning to be sure of it. Do try it yourself!"
+      ]
+    },
+    {
+      "name": "Idol",
+      "npcType": "Lass",
+      "x": 8,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Wherever I travel, whatever language people speak, everybody lights up at the word Pokémon.",
+        "Isn't that the most wonderful thing?"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

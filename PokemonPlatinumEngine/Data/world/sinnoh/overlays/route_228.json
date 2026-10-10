@@ -1,0 +1,78 @@
+{
+  "area": "route_228",
+  // The original's role is ROAD_BZA (Routes 228 to 230), which has no song yet (plan 05 · A6): Route 209's stands in
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The gate house to Route 226 is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "route_226", "toWarp": 2 },
+    { "warp": 1, "to": "route_226", "toWarp": 1 }
+  ],
+  // The two houses have no rooms yet (plan 01 · M11); the Rock Peak Ruins, two warps on one tile of which the
+  // original keeps one by whether Regigigas travels along, are the story's (plan 02 · S15)
+  "locked": [ 2, 3, 4, 5 ],
+  "people": {
+    "ace_trainer_jose": {
+      "name": "Jose",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Jose: Sand in your eyes already? It only gets worse from here. Let me toughen you up for it!",
+        "dialogueAfter": "Ace Trainer Jose: You'll manage the storm. It's me that needs toughening."
+      }
+    },
+    "ace_trainer_moira": {
+      "name": "Moira",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Moira: My Pokémon were raised in this sandstorm. They can't see you. They don't need to!",
+        "dialogueAfter": "Ace Trainer Moira: You saw us coming all the same."
+      }
+    },
+    "ranger_kyler": {
+      "name": "Kyler",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Kyler: The desert looks empty until you kneel down and look. Then it's all eyes!",
+        "dialogueAfter": "Pokémon Ranger Kyler: And every one of those eyes watched me lose."
+      }
+    },
+    "ranger_krista": {
+      "name": "Krista",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Krista: Kyler counts the Pokémon. I count the trainers who stray off the path. That's one!",
+        "dialogueAfter": "Pokémon Ranger Krista: One trainer, quite able to look after themselves. Noted."
+      }
+    },
+    "dragon_tamer_keegan": {
+      "name": "Keegan",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Keegan: Under this sand a dragon is waiting to hatch out of an ant-lion. Mine are nearly there!",
+        "dialogueAfter": "Dragon Tamer Keegan: Nearly. Back under the sand with us."
+      }
+    },
+    "psychic_corbin": {
+      "name": "Corbin",
+      "trainer": {
+        "dialogueBefore": "Psychic Corbin: I felt your footsteps through the sand a long way off. I have been ready for some time.",
+        "dialogueAfter": "Psychic Corbin: Being ready, I find, is not the same as being right."
+      }
+    },
+    "ace_trainer_meagan": {
+      "name": "Meagan",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Meagan: Guess what I brought to a desert? A snowstorm! Nobody ever sees it coming!",
+        "dialogueAfter": "Ace Trainer Meagan: You didn't so much as shiver."
+      }
+    },
+    // He lies buried in the sand until someone walks past
+    "black_belt_davon": {
+      "name": "Davon",
+      "trainer": {
+        "dialogueBefore": "Black Belt Davon: Hah! You never saw me! I've been lying under this sand since breakfast!",
+        "dialogueAfter": "Black Belt Davon: Beaten... and I've sand in my ears."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_rt_226": "Rt. 228\nWest: Rt. 226",
+    "arrow_signpost_rt_229": "Rt. 228\nSouth: Rt. 229"
+  }
+}
