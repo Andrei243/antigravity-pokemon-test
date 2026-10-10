@@ -19,8 +19,10 @@ public static class Dice
     public static void Seed(int? seed) => seeded = seed is { } s ? new Random(s) : null;
 
     /// <summary>A generator for something that keeps its own (a battle, a map, the field).</summary>
+#pragma warning disable RS0030 // the game's one source of unseeded chance
     public static Random New() => seeded != null ? new Random(seeded.Next()) : new Random();
 
     /// <summary>The generator for a single roll.</summary>
     public static Random Shared => seeded ?? Random.Shared;
+#pragma warning restore RS0030
 }

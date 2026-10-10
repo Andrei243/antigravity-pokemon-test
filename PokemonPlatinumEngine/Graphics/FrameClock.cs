@@ -13,5 +13,7 @@ public static class FrameClock
     /// <summary>The time a tool has set; null follows the real clock.</summary>
     public static double? Fixed { get; set; }
 
+#pragma warning disable RS0030 // the picture's one reader of raylib's clock
     public static double Now => Fixed ?? Raylib.GetTime();
+#pragma warning restore RS0030
 }

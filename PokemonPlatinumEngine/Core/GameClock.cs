@@ -33,7 +33,7 @@ public static class GameClock
         TimeOfDay.Day => 13.5f,
         TimeOfDay.Twilight => 18.5f,
         TimeOfDay.Night => 22f,
-        _ => (float)DateTime.Now.TimeOfDay.TotalHours
+        _ => (float)WallClock.Local.TimeOfDay.TotalHours
     };
 
     public static TimeOfDay Now => ForHour((int)Hour);
@@ -47,11 +47,17 @@ public static class GameClock
     /// Today's date, for what counts days (Pokérus, plan 06 · R10): the computer's, like the DS's real-time clock,
     /// unless a tool fixed it.
     /// </summary>
-    public static DateTime Today => FixedDate?.Date ?? DateTime.Today;
+    public static DateTime Today => FixedDate?.Date ?? WallClock.Local.Date;
 
     /// <summary>
     /// This moment, for what counts minutes (the honey trees, plan 06 · R13): today at the hour of the day. Fixed
     /// by a tool (a date and a time of day), it stands still.
     /// </summary>
-    public static DateTime Moment => Fixed == null && FixedDate == null ? DateTime.Now : Today.AddHours(Hour);
+    public static DateTime Moment => Fixed == null && FixedDate == null ? WallClock.Local : Today.AddHours(Hour);
+
+    /// <summary>
+    /// The time a clock in the game shows (the Pokétch's): the computer's, or, while the options fix the time of day,
+    /// a set day at that hour, so a tool's pictures are the same every run.
+    /// </summary>
+    public static DateTime Clock() => Fixed == null ? WallClock.Local : new DateTime(2009, 3, 22).AddHours(Hour);
 }

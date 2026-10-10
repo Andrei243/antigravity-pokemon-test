@@ -298,7 +298,7 @@ public partial class GameEngine
         wardrobe.Clear();
         PlayerIdentity.SetOutfit(wardrobe.Worn);
         trainerId = fieldRandom.Next(0, 65536);
-        adventureStarted = DateTime.Now;
+        adventureStarted = GameClock.Today;
         trainerScore = scoredBadges = 0;
         hallOfFame = new HallOfFame();
         journal = new Journal();
@@ -1068,7 +1068,7 @@ public partial class GameEngine
             Cry = p => AudioManager.PlayCry(p)
         };
         c.Party = playerParty;
-        c.Now = PoketchView.Clock();
+        c.Now = GameClock.Clock();
         c.Map = currentMap;
         c.X = player?.GridX ?? 0;
         c.Y = player?.GridY ?? 0;

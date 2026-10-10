@@ -884,7 +884,7 @@ public partial class GameEngine
 
         public void EnterHallOfFame()
         {
-            game.hallOfFame.Enter(game.playerParty, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.trainerId), DateTime.Now);
+            game.hallOfFame.Enter(game.playerParty, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.trainerId), GameClock.Moment);
             game.trainerScore = TrainerScore.Add(game.trainerScore, TrainerScore.HallOfFame);
         }
 
