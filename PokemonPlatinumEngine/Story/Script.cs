@@ -51,7 +51,9 @@ public enum Op
     // The Day Care and Eggs (plan 06 · R15)
     DayCare, GiveEgg, Hatch,
     // The Sunyshore Gym's gears (plan 01 · M9, part 2c)
-    GearButton
+    GearButton,
+    // The League's platform lifts (plan 01 · M9, part 2d)
+    PlatformLift
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -29,6 +29,7 @@ public partial class GameEngine
         if (puzzle is PastoriaWater water) PlayWater(water, dt);
         if (puzzle is CanalaveLifts { Moving: not null } lifts) PlayLiftRide(lifts, dt);
         if (puzzle is SunyshoreGears { Turning: not null } gears) PlayGears(gears, dt);
+        if (puzzle is LeagueLift { Moving: true } lift) PlayLeagueLift(lift, dt);
     }
 
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>
@@ -36,16 +37,21 @@ public partial class GameEngine
     {
         if (currentMap.Puzzle is not { } puzzle) return;
         puzzle.ArriveAt(currentMap, story, Dice.Shared, player.GridX, player.GridY);
+        // A League lift is laid out by the height the player stands at, which a save keeps (a game saved on the
+        // platform at the top comes back with it there)
+        if (puzzle is LeagueLift lift) lift.StandAt(player.HeightOn(currentMap));
         puzzle.Apply(currentMap, story);
     }
 
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
     private bool PuzzleMoving => clockTurn != null
-        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null };
+        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
+            or LeagueLift { Moving: true };
 
     /// <summary>Whether a puzzle has the field to itself for now, as the original's tasks do: a punching bag on its run.</summary>
     private bool PuzzleHoldsField => bagRun != null
-        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null };
+        || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
+            or LeagueLift { Moving: true };
 
     // ------------------------------------------------------------------ the Veilstone Gym's punching bags
 
@@ -175,6 +181,19 @@ public partial class GameEngine
     /// <summary>The gears turn on to the state of the button pressed last (their grinding was heard as it was pressed).</summary>
     private static void PlayGears(SunyshoreGears gears, float dt) => gears.Update(dt);
 
+    // ------------------------------------------------------------------ the League's platform lifts
+
+    /// <summary>
+    /// The platform rises up its shaft with the player standing on it (<c>FieldTask_PlatformLiftGoUp</c>, which holds
+    /// the player at the platform's height), and locks in place at the top with the original's clank.
+    /// </summary>
+    private void PlayLeagueLift(LeagueLift lift, float dt)
+    {
+        lift.Update(dt);
+        player.CarryTo(player.GridX, player.GridY, lift.Height, dt);
+        if (!lift.Moving) AudioManager.PlaySound("lift_stop");
+    }
+
     private void PlayClockTurn(float dt)
     {
         var turn = clockTurn!;
@@ -221,6 +240,15 @@ public partial class GameEngine
             gears.Press(kind);
             AudioManager.PlaySound("gears");
         }
+
+        public bool TriggerLift()
+        {
+            if (game.currentMap.Puzzle is not LeagueLift lift || !lift.Trigger()) return false;
+            AudioManager.PlaySound("lift");
+            return true;
+        }
+
+        public bool LiftNotUsed() => game.currentMap.Puzzle is not LeagueLift lift || lift.NotUsedWhenEntered;
 
         public void TurnClock(int from, int to)
         {

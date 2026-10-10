@@ -41,7 +41,9 @@ public class RoomPlanTests
         // Solaceon Town's Pokémon Day Care, plan 06 · R15
         new object[] { "PokemonDayCare", 1, 3, 9, 11 },
         // The elder's house in Celestic Town, plan 02 · S9
-        new object[] { "CelesticTownNorthHouse", 1, 4, 5, 8 }
+        new object[] { "CelesticTownNorthHouse", 1, 4, 5, 8 },
+        // The League's Pokémon Center, with the door to the Elite Four, plan 01 · M9, part 2d: its nurse and clerks stand in row 1
+        new object[] { "PokemonLeagueNorthPokemonCenter", 1, 1, 11, 11 }
     };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>

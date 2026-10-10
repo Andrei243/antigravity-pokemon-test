@@ -184,6 +184,21 @@ public enum InteriorStyle
     Gym
 }
 
+/// <summary>
+/// The look of a hall that isn't a Gym Leader's (plan 01 · M9, part 2d): a room of the League that has no type of
+/// its own. A room of <see cref="InteriorStyle.Gym"/> with one takes its floor tiles, its walls and the face its
+/// floors stand on from it, not from <see cref="Map.ArenaType"/> (style guide, "The League's rooms").
+/// </summary>
+public enum HallStyle
+{
+    /// <summary>The League's own stone: the passages between the rooms of the Elite Four, with their lifts.</summary>
+    League,
+    /// <summary>The Champion's room: white and gold.</summary>
+    Champion,
+    /// <summary>The Hall of Fame and the hallway to it: dark polished stone that mirrors whoever walks on it.</summary>
+    HallOfFame
+}
+
 public class Warp
 {
     public int SourceX { get; set; }

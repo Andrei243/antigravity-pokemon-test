@@ -63,8 +63,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `roulette_spin` | `SEQ_SE_DP_POKETCH_011` | The Pokétch's roulette comes to rest. |
 | `timer_alarm` | `SEQ_SE_DP_DENSI11` | The Pokétch's kitchen timer runs out. |
 | `dowsing_ping` | `SEQ_SE_DP_POKETCH_009` | The Dowsing Machine touched: a ring spreading over the screen. |
-| `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it. |
-| `lift_stop` | `SEQ_SE_DP_KI_GASYAN` | The platform comes to its end and locks in place. |
+| `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it; a platform lift of the League sets off up its shaft (the original's `SEQ_SE_DP_ELEBETA4`, plan 01 · M9 2d). |
+| `lift_stop` | `SEQ_SE_DP_KI_GASYAN` | The platform comes to its end and locks in place; in the League, also a door of the Elite Four's rooms coming down behind the challenger, and the door on opening once the room's master is beaten. |
 | `snowball` | `SEQ_SE_DP_FW291` | A snowball of the Snowpoint Gym bursts as the player slides into it fast enough (`ov5_021E06A8`). |
 | `gears` | `SEQ_SE_DP_GAGAGA` | The Sunyshore Gym's gears grind round as the player steps on a button on a hub (`SunyshoreGym_PressButton`). |
 | `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |

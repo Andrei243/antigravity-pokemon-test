@@ -1,0 +1,20 @@
+# The passage from Lucian's room to the Champion's room (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md
+# describes the language (scripts_pokemon_league_elevator_to_champion_room.s).
+#
+# A platform three tiles wide waits at the foot of a shaft five tiles high (the game's own rule, LeagueLift): stepping
+# onto its middle sets it off, once, and it never comes down again. There is no way back: the door behind is shut.
+
+
+# PokemonLeagueElevatorToChampionRoom_OnTransition: the trigger waits only while the platform stands at the foot
+script OnEnter
+  setvar VAR_MAP_LOCAL_0x00 0
+  platformlift check
+  if result == 0 setvar VAR_MAP_LOCAL_0x00 1
+  end
+
+
+# PokemonLeagueElevatorToChampionRoom_CoordEvent_PlatformLift
+script Lift
+  platformlift
+  setvar VAR_MAP_LOCAL_0x00 1
+  end

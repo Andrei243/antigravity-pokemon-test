@@ -264,6 +264,9 @@ public class Map
     /// <summary>For a gym or the League: the type the stage is themed on (in the League, null is the Champion's room).</summary>
     public PokemonType? ArenaType { get; set; }
 
+    /// <summary>The look of a hall with no type of its own (a room of the League, plan 01 · M9, part 2d); null for every other map.</summary>
+    public HallStyle? Hall { get; set; }
+
     /// <summary>
     /// The special places this map has that some Pokémon evolve at when they level up there: "Moss Rock",
     /// "Ice Rock", "Magnetic Field", "Stone Arch" (the names the evolutions in species.json use).

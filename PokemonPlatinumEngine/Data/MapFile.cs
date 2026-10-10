@@ -30,6 +30,9 @@ public sealed class MapFile
     /// <summary>For a gym or a room of the League: the type its stage is themed on.</summary>
     public PokemonType? ArenaType { get; set; }
 
+    /// <summary>The look of a hall that has no type of its own (<see cref="HallStyle"/>: the League's passages, the Champion's room, the Hall of Fame); left out otherwise.</summary>
+    public HallStyle? Hall { get; set; }
+
     /// <summary>Places some Pokémon evolve at (see <see cref="Map.EvolutionSites"/>); left out when there are none.</summary>
     public List<string>? EvolutionSites { get; set; }
 
@@ -234,6 +237,7 @@ public sealed class MapFile
             Architecture = Architecture ?? TownArchitecture.Timber,
             Arena = BattleArena,
             ArenaType = ArenaType,
+            Hall = Hall,
             EvolutionSites = EvolutionSites?.ToList() ?? new(),
             Puzzle = GymPuzzle.Create(Puzzle),
             Weather = Weather ?? FieldWeather.Clear
@@ -494,6 +498,7 @@ public sealed class MapFile
             Architecture = map.Architecture == TownArchitecture.Timber ? null : map.Architecture,
             BattleArena = map.Arena,
             ArenaType = map.ArenaType,
+            Hall = map.Hall,
             EvolutionSites = map.EvolutionSites.Count > 0 ? map.EvolutionSites.ToList() : null,
             Puzzle = map.Puzzle?.Name,
             Weather = map.Weather == FieldWeather.Clear ? null : map.Weather,

@@ -203,6 +203,9 @@ public static class ScriptParser
                 return new Instruction { Op = Op.PressButton, Line = line, Name = r.OneOf("blue", "green", "orange") };
             case "gearbutton":
                 return new Instruction { Op = Op.GearButton, Line = line, Name = r.OneOf("normal", "reverse", "double") };
+            case "platformlift":
+                // "platformlift check" asks; a bare "platformlift" sets the platform off
+                return new Instruction { Op = Op.PlatformLift, Line = line, Option = r.PeekWord("check") && r.OneOf("check") == "check" };
             case "partner":
             {
                 if (r.PeekWord("off"))

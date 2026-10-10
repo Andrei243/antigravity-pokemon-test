@@ -1,0 +1,36 @@
+# Lucian's room, the last of the Elite Four's (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_pokemon_league_lucian_room.s).
+#
+# As Aaron's room: the door shuts behind the challenger, and the door on to the Champion's passage opens once Lucian
+# is beaten. He is drawn as a gentleman until plan 11 makes his look; his rematch team waits for plan 02 · S15.
+
+
+# PokemonLeagueLucianRoom_OnFrame_EnterRoom, by the door's own flag (see Aaron's room)
+script OnEnter
+  if not flag FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_ENTRANCE_DOOR end
+  walk player up 2
+  sound "lift_stop"
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_ENTRANCE_DOOR
+  show entrance_door
+  end
+
+
+script Lucian
+  speaker "Lucian"
+  if flag FLAG_DEFEATED_LUCIAN goto Beaten
+  music "common/eye_elite_four"
+  say "...One moment, please. I'm at the last page of the chapter."
+  say "There. Thank you for waiting. I am Lucian, the last of the Elite Four, and I battle with Psychic Pokémon."
+  say "Three of my colleagues have already lost to you, so I know how this is likely to end. I intend to enjoy finding out all the same. Shall we?"
+  battle self as "elite_four_lucian"
+  setflag FLAG_DEFEATED_LUCIAN
+  sound "lift_stop"
+  setflag FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_EXIT_DOOR
+  hide exit_door
+  say "I see. So that is how it ends. Congratulations: you have beaten all four of us."
+  say "But there is one more room. The Champion is far stronger than any of us. Rest your mind a moment, then go through that door."
+  end
+label Beaten
+  say "I have a great many books left to read, and you have one battle left to fight."
+  say "The Champion is waiting beyond that door. Go on."
+  end

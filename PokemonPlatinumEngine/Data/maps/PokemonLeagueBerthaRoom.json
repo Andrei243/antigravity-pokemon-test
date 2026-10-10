@@ -1,0 +1,217 @@
+{
+  "name": "PokemonLeagueBerthaRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "sinnoh/pokemon_league",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Ground",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#RRRR,,,,,,,RRRR#",
+    "#RRRR,,,,,,,RRRR#",
+    "#RRRR,,,,,,,RRRR#",
+    "#RRRR,,,,,,,RRRR#",
+    "#RRRR,,,,,,,,,RR#",
+    "#RRRR,,,,,,,,,RR#",
+    "#RRR,,,,,,,,,RRR#",
+    "#RRRR,,,,,,,,RRR#",
+    "#,,,,,,,,,,,,,,,#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.........###",
+    "#####.........###",
+    "####.........####",
+    "#####........####",
+    "#####........####",
+    "#################"
+  ],
+  "heights": [
+    { "x": 1, "z": 3, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 3, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 3, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 4, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 4, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 4, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 5, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 5, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 5, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 6, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 6, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 6, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 7, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 7, "width": 9, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 7, "width": 2, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 8, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 8, "width": 9, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 14, "z": 8, "width": 2, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 9, "width": 3, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 4, "z": 9, "width": 9, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 9, "width": 3, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 10, "width": 4, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 10, "width": 8, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 13, "z": 10, "width": 3, "depth": 1, "height": 2, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 11, "width": 15, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 2, "width": 1, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "props": [
+    {
+      "type": "Boulder",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 3,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 15,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 14,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 4,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 13,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 14,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Boulder",
+      "x": 15,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueElevatorToFlintRoom",
+      "targetX": 4,
+      "targetY": 15,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "bertha",
+      "name": "Bertha",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Bertha"
+    },
+    {
+      "id": "entrance_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 12,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_BERTHA_ROOM_ENTRANCE_DOOR"
+    },
+    {
+      "id": "exit_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 2,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_BERTHA_ROOM_EXIT_DOOR"
+    }
+  ],
+  "wildEncounters": []
+}

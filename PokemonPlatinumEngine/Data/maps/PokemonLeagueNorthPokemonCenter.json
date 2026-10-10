@@ -4,110 +4,175 @@
   "bgmTrack": "common/pokecenter",
   "interior": "PokemonCenter",
   "trees": "Round",
-  "width": 11,
-  "height": 9,
+  "width": 22,
+  "height": 13,
   "ground": [
-    "###########",
-    "###########",
-    "#________P#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#_________#",
-    "#####D#####"
+    "######################",
+    "#_______P#####_______#",
+    "#________#####_______#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "###########D##########"
   ],
   "solid": [
-    "###########",
-    "###########",
-    "##.....#.##",
-    "#.######..#",
-    "#.#.......#",
-    "#.#.......#",
-    "###.....###",
-    "#........##",
-    "#####.#####"
+    "######################",
+    "####...########.....##",
+    "########.##.##########",
+    "#........#...#.......#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "#........#...#..####.#",
+    "#...............####.#",
+    "###..................#",
+    "###########.##########"
   ],
   "props": [
     {
       "type": "Counter",
-      "x": 3,
-      "y": 3,
-      "width": 5,
+      "x": 1,
+      "y": 2,
+      "width": 7,
       "depth": 1
     },
     {
       "type": "Counter",
-      "x": 2,
-      "y": 3,
+      "x": 1,
+      "y": 1,
       "width": 1,
-      "depth": 3
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 7,
+      "y": 1,
+      "width": 1,
+      "depth": 1
     },
     {
       "type": "HealingMachine",
-      "x": 7,
-      "y": 2,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Bench",
-      "x": 1,
-      "y": 6,
+      "x": 2,
+      "y": 1,
       "width": 2,
       "depth": 1
     },
     {
-      "type": "Bench",
-      "x": 8,
-      "y": 6,
-      "width": 2,
+      "type": "Counter",
+      "x": 14,
+      "y": 2,
+      "width": 7,
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 1,
-      "y": 2,
+      "type": "Counter",
+      "x": 14,
+      "y": 1,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Plant",
+      "type": "Counter",
+      "x": 20,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
       "x": 9,
-      "y": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 9,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 16,
+      "y": 9,
+      "width": 4,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 11,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Rug",
-      "x": 4,
-      "y": 5,
+      "x": 10,
+      "y": 4,
       "width": 3,
-      "depth": 2
+      "depth": 7
     },
     {
       "type": "WallEmblem",
       "x": 5,
-      "y": 1,
+      "y": 0,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Window",
-      "x": 2,
-      "y": 1,
-      "width": 2,
+      "type": "WallEmblem",
+      "x": 17,
+      "y": 0,
+      "width": 1,
       "depth": 1
     }
   ],
   "warps": [
     {
-      "sourceX": 5,
-      "sourceY": 8,
+      "sourceX": 11,
+      "sourceY": 12,
       "targetMap": "Sinnoh",
       "targetX": 847,
       "targetY": 560,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueElevatorToAaronRoom",
+      "targetX": 4,
+      "targetY": 15,
+      "targetFacing": "Up"
     }
   ],
   "signboards": [],
@@ -115,25 +180,25 @@
     {
       "name": "Nurse Joy",
       "npcType": "Nurse",
-      "x": 5,
-      "y": 2,
+      "x": 4,
+      "y": 1,
       "facing": "Down",
       "isHealingNurse": true
     },
     {
       "name": "PC Terminal",
       "npcType": "Trainer",
-      "x": 9,
-      "y": 2,
+      "x": 8,
+      "y": 1,
       "facing": "Up",
       "isPCTerminal": true
     },
     {
       "name": "Clerk",
       "npcType": "Clerk",
-      "x": 1,
-      "y": 4,
-      "facing": "Right",
+      "x": 16,
+      "y": 1,
+      "facing": "Down",
       "dialog": [
         "Clerk: Welcome! Stock up well before you take on the Elite Four."
       ],
@@ -142,9 +207,9 @@
     {
       "name": "Clerk",
       "npcType": "Clerk",
-      "x": 1,
-      "y": 5,
-      "facing": "Right",
+      "x": 17,
+      "y": 1,
+      "facing": "Down",
       "dialog": [
         "Clerk: Welcome! This counter keeps a few things for trainers who've come this far."
       ],
@@ -152,21 +217,31 @@
       "mart": "pokemon_league"
     },
     {
+      "id": "door_guard",
+      "name": "Guard",
+      "npcType": "Youngster",
+      "x": 11,
+      "y": 3,
+      "facing": "Down",
+      "script": "DoorGuard"
+    },
+    {
       "name": "Trainer",
       "npcType": "Lass",
-      "x": 2,
-      "y": 7,
+      "x": 6,
+      "y": 9,
       "facing": "Right",
       "dialog": [
         "Trainer: The Elite Four sent me back here again. That makes five times!",
         "Trainer: But I'm not giving up. I'll keep coming back until I've beaten every one of them."
-      ]
+      ],
+      "movement": "look_north_south_and_east"
     },
     {
       "name": "Guitarist",
       "npcType": "Youngster",
-      "x": 8,
-      "y": 5,
+      "x": 17,
+      "y": 8,
       "facing": "Up",
       "dialog": [
         "Guitarist: Everybody asks me what the Elite Four are like.",

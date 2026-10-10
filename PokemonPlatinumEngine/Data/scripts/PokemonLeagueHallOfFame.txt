@@ -1,0 +1,46 @@
+# The Hall of Fame (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_pokemon_league_hall_of_fame.s).
+#
+# THIS ROOM'S SCENE IS PLAN 02 · S14'S. What is here is the room's own arrival as far as the machine, and the smallest
+# end that leaves the game playable: the team is entered in the Hall of Fame (the game's own record and screen, plan 06
+# · R12), healed as the original's save heals it, the region counts as finished, and the player wakes at home. S14
+# replaces everything from "label Record" on with the scene itself: the professor's and Cynthia's words for a first
+# and for a later victory (GetLeagueVictories), the Poké Balls laid on the machine (PlayHallOfFameHealingAnimation),
+# each Pokémon shown in turn, the save, the credits, and the game beginning again from the player's room. It also
+# sets what PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars sets and nothing reads yet: the Vs. Seeker's
+# fourth level (FLAG_UNLOCKED_VS_SEEKER_LVL_4), the Spring Path with the National Pokédex, the Day Care's Gym guide,
+# the legendaries put back where they weren't caught (Dialga, Palkia, Heatran, Regigigas, Azelf, Uxie, the roamers),
+# VAR_PLAYER_HOUSE_POSTGAME_STATE, the assistant in Sandgem Town, the professor in Veilstone's store, Lucian in
+# Canalave's library and Cynthia gone from Celestic's ruins and Sendoff Spring.
+
+
+# PokemonLeagueHallOfFame_OnFrame_EnterHallOfFame
+script OnEnter
+  walk player up 8
+  face prof_rowan up
+  wait 0.5
+  face prof_rowan right
+  face prof_rowan down
+  face cynthia down
+  wait 0.5
+  speaker "Cynthia"
+  say "Welcome to the Hall of Fame, {player}."
+  walk player up 2
+  face prof_rowan up
+  face cynthia up
+  say "This machine keeps the name of every Champion, and of the Pokémon who won beside them. Go on: it's yours to use."
+label Record
+  heal
+  halloffame
+  pc halloffame
+  # ClearGame: the game is completed (Flint and Cynthia greet a returning Champion otherwise) and the region is done
+  setflag FLAG_GAME_COMPLETED
+  setflag SinnohHallOfFame
+  # PokemonLeagueHallOfFame_SetHallOfFameVictoryFlagsAndVars, the parts the game has: the Champion's room is as it
+  # was, and Giratina waits in Turnback Cave unless it was caught in the Distortion World
+  clearflag FLAG_ALT_MUSIC_CHAMPION_ROOM
+  if not flag FLAG_CAUGHT_GIRATINA clearflag FLAG_HIDE_TURNBACK_CAVE_GIRATINA_ROOM_GIRATINA
+  fade out 0.8
+  text "And so {player} entered the Hall of Fame, and went home to Twinleaf Town..."
+  warp "PlayerHouse2F" 4 4 up
+  end

@@ -1,0 +1,50 @@
+# The Champion's room (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_pokemon_league_champion_room.s).
+#
+# The whole room is one scene, played as the challenger comes in: four steps up to Cynthia, her greeting, the battle,
+# and then she steps aside, the challenger walks onto the platform behind her, it rises fifteen tiles to the gallery,
+# and six steps on is the door to the hallway of the Hall of Fame. Nobody walks here by themselves. A battle lost ends
+# it there, in the Pokémon Center, as every battle lost does.
+#
+# The original sets FLAG_ALT_MUSIC_CHAMPION_ROOM before the battle and clears it when the battle is lost; here it is
+# set once the battle is won, which comes to the same (a script ends where a battle is lost). The room has no song of
+# its own for after the battle yet (plan 05 · A6). Cynthia's rematch team waits for plan 02 · S15.
+
+
+# PokemonLeagueChampionRoom_OnFrame_EnterRoom. The original runs it while a local variable is nought, since its frame
+# table is asked every frame; here a place's script runs once as the player comes in, and nobody can save in this room.
+script OnEnter
+  walk player up 4
+  music "common/eye_champion"
+  speaker "Cynthia"
+  if flag FLAG_GAME_COMPLETED goto Again
+  say "So it's you, {player}. Somehow I thought it would be."
+  say "On Mt. Coronet, and in that world behind this one, you never once let go of your Pokémon, whatever stood in the way. I have wondered ever since how far that would carry you."
+  say "And here is the answer: all the way to this room. I couldn't be happier."
+  say "Then let me welcome you properly. I am Cynthia, Champion of the Pokémon League, and I accept your challenge!"
+  goto Fight
+label Again
+  say "Welcome back, {player}. I was hoping you would come."
+  say "A Champion's room is a quiet place, you know. There is nothing I look forward to more than a challenger worth every one of my Pokémon."
+  say "Come, then. As Champion of the Pokémon League, I accept your challenge!"
+label Fight
+  battle cynthia as "champion_cynthia"
+  setflag FLAG_ALT_MUSIC_CHAMPION_ROOM
+  say "...It has been a long time since I lost a battle. I had forgotten how it feels. It feels like the start of something."
+  setflag FLAG_DEFEATED_CYNTHIA
+  say "That was superb, {player}. You knew just when to change, just which move to choose. You and your Pokémon fought as one."
+  say "From this moment you are the Champion. Come with me. We'll take the lift."
+  # She steps aside, and the challenger walks onto the platform behind where she stood
+  walk cynthia left 1
+  face cynthia down
+  walk player up 6
+  face cynthia up
+  wait 1
+  platformlift
+  wait 1
+  setflag FLAG_HIDE_POKEMON_LEAGUE_HALLWAY_TO_HALL_OF_FAME_CYNTHIA
+  setflag FLAG_HIDE_POKEMON_LEAGUE_HALLWAY_TO_HALL_OF_FAME_PROF_ROWAN
+  walk player up 6
+  sound "stairs"
+  warp "PokemonLeagueHallwayToHallOfFame" 5 23 up
+  end

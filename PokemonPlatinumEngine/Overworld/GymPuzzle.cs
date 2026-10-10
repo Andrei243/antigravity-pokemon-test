@@ -74,6 +74,8 @@ public abstract class GymPuzzle
         SunyshoreGears.Room1Name => new SunyshoreGears(0),
         SunyshoreGears.Room2Name => new SunyshoreGears(1),
         SunyshoreGears.Room3Name => new SunyshoreGears(2),
+        // The League's platform lifts (plan 01 · M9, part 2d), one name to a shaft
+        _ when LeagueLift.IsName(name) => new LeagueLift(name),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")
     };
 }

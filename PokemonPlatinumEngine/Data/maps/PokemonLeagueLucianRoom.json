@@ -1,0 +1,112 @@
+{
+  "name": "PokemonLeagueLucianRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "sinnoh/pokemon_league",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Psychic",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "#...............#",
+    "#..#.........#..#",
+    "#..#.........#..#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#..#.........#..#",
+    "#..#.........#..#",
+    "#...............#",
+    "#################"
+  ],
+  "props": [
+    {
+      "type": "Column",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Column",
+      "x": 13,
+      "y": 4,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Column",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Column",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueElevatorToChampionRoom",
+      "targetX": 4,
+      "targetY": 23,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "lucian",
+      "name": "Lucian",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Lucian"
+    },
+    {
+      "id": "entrance_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 12,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_ENTRANCE_DOOR"
+    },
+    {
+      "id": "exit_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 2,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_EXIT_DOOR"
+    }
+  ],
+  "wildEncounters": []
+}
