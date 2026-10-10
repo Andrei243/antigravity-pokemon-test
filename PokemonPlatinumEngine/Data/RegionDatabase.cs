@@ -148,7 +148,9 @@ public static class RegionDatabase
                 // Route 209's Lost Tower, its five floors of graves (plan 02 · S7)
                 "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F",
                 // Hearthome's Poffin House and Pokémon Fan Club (plan 06 · R14c)
-                "PoffinHouse", "HearthomeFanClub"
+                "PoffinHouse", "HearthomeFanClub",
+                // Veilstone City's Galactic warehouse, where HM02 lies (plan 02 · S8)
+                "VeilstoneGalacticWarehouse"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

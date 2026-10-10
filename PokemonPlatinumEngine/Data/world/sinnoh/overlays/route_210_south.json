@@ -7,8 +7,8 @@
   // Jogger Wyatt battles in the morning and only jogs past at other times: the route's arrival script swaps him for
   // his double on the same tile by their FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT* flags (plan 06 · R14a)
   "people": {
-    // Four Psyduck with headaches stand across the road north (plan 02 · S7) until the SecretPotion cures them (S9);
-    // scripts/route_210_south.txt
+    // Four Psyduck with headaches stand across the road north (plan 02 · S7) until the SecretPotion cures them (Cynthia
+    // gives it at Valor Lakefront, S8); scripts/route_210_south.txt
     "psyduck_1": { "name": "Psyduck", "script": "Psyduck" },
     "psyduck_2": { "name": "Psyduck", "script": "Psyduck" },
     "psyduck_3": { "name": "Psyduck", "script": "Psyduck" },

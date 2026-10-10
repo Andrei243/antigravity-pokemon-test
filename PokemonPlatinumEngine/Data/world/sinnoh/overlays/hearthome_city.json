@@ -34,6 +34,15 @@
   // Plan 02 · S7 (scripts/hearthome_city.txt): Keira's Buneary running into the player as they come from Route 208
   // (trigger 0)
   "triggers": [ { "trigger": 0, "script": "Buneary" } ],
+  // The television crew who keep the gate to Route 212 shut until the player has been to Pastoria City from the other
+  // side (plan 02 · S8; Pastoria's arrival sets FLAG_HIDE_ROUTE_212_BLOCKADE, as the original's does). In the original
+  // they stand at the far end of the gate's room, which is plan 01 · M11's: here they stand in its doorway
+  "npcs": [
+    { "id": "route_212_reporter", "name": "Reporter", "npcType": "Lady", "x": 458, "y": 729, "facing": "Up", "hiddenBy": "FLAG_HIDE_ROUTE_212_BLOCKADE",
+      "dialog": [ "Sorry, the gate's closed for a little while. We're filming a programme down on Route 212!", "Come back once we've wrapped up, won't you?" ] },
+    { "id": "route_212_cameraman", "name": "Cameraman", "npcType": "Gentleman", "x": 459, "y": 729, "facing": "Up", "hiddenBy": "FLAG_HIDE_ROUTE_212_BLOCKADE",
+      "dialog": [ "Sorry, nobody gets through the gate for now. We're on location for a television shoot." ] }
+  ],
   "people": {
     // The Pachirisu of the woman by the square's gate (plan 10 · F1)
     "pachirisu": { "name": "Pachirisu", "dialog": [ "Chipa! Chipa-chii!" ] },

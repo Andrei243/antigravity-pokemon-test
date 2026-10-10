@@ -5,8 +5,33 @@
   "architecture": "Resort",
   // The restaurant and the houses have no rooms yet (plan 01 · M11); the drained lake is the story's (plan 02)
   "locked": [ 0, 1, 2, 3, 4 ],
-  // Everyone at the lakefront (the cameramen, the beauty and the collector, Cynthia and the rest) waits for the
-  // story's scenes by their FLAG_HIDE_VALOR_LAKEFRONT_* flags (plan 02)
+  // The road east to Sunyshore City, closed after the city's blackout (plan 02 · S8, scripts/valor_lakefront.txt) until
+  // the professor's lab sees to it (plan 02 · S13)
+  "triggers": [ { "trigger": 0, "script": "BlockSunyshore" } ],
+  // The cameramen who keep the lake shut until the meeting in Canalave's library come with that scene (plan 02 · S10:
+  // FLAG_HIDE_VALOR_LAKEFRONT_CAMERAMEN): a person in the way whom no script sends off would close the lake to
+  // everyone's walks
+  "people": {
+    // The grunt who carried the Galactic Bomb, Cynthia and the rival (plan 02 · S8)
+    "grunt_m": { "name": "Grunt", "script": "Grunt" },
+    "cynthia": { "name": "Cynthia", "dialog": [ "Cynthia: The lake is closed to visitors just now. I wonder why?" ] },
+    "rival": { "name": "{rival}", "dialog": [ "{rival}: Which way did that Galactic creep go?" ] },
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "Sorry, the road to Sunyshore City is shut.",
+        "They've had a blackout down there, and the crews are still working to get the lights back on."
+      ]
+    },
+    // In the original she gives a reward for the Suite Key she dropped, inside her cottage (plan 01 · M11)
+    "beauty": {
+      "name": "Beauty",
+      "dialog": [
+        "My suite key... it's gone! It must have slipped out of my pocket somewhere between here and the hotel.",
+        "A Pokétch that could sniff out lost things would come in very handy right now..."
+      ]
+    }
+  },
   "signs": {
     "signboard_seven_stars_restaurant": "Seven Stars Restaurant\nLakeside dining. Bring a partner: the house serves its battles two at a time."
   }

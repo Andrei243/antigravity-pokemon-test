@@ -90,6 +90,39 @@ script ChapterFour
   setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
   setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
 label Before
+  call ChapterFive
+  return
+
+
+# Who the fifth chapter (plan 02 · S8, "Veilstone and Pastoria") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): Crasher Wake and Looker in Veilstone, Looker in the Galactic
+# warehouse, the grunt with the Storage Key (plan 02 · S11), Crasher Wake and the Croagunk in Pastoria, the grunt and
+# Looker on Route 213 and Looker in the Hotel Grand Lake's lobby, Cynthia, the rival and the grunt at Valor
+# Lakefront, the beauty of the lakefront's cottage and the professor in the Department Store's basement. A save that
+# already has a Badge has been past what it brings: with Maylene's, Crasher Wake has come out of her Gym before it;
+# with Crasher Wake's, the rival has left his Gym's doorway and the television crew the gate to Route 212. Called by
+# ChapterFour, and run for a save from before (Story/StoryMigration.cs, version 10). It may only set flags and
+# variables, and ends in return.
+script ChapterFive
+  setflag FLAG_HIDE_VEILSTONE_CRASHER_WAKE
+  setflag FLAG_HIDE_VEILSTONE_CITY_LOOKER
+  setflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
+  setflag FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
+  setflag FLAG_HIDE_PASTORIA_CITY_CROAGUNK
+  setflag FLAG_HIDE_PASTORIA_CITY_CRASHER_WAKE
+  setflag FLAG_HIDE_ROUTE_213_GRUNT_M
+  setflag FLAG_HIDE_ROUTE_213_LOOKER
+  setflag FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_CYNTHIA
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_RIVAL
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_GRUNT_M
+  setflag FLAG_HIDE_GRAND_LAKE_VALOR_LAKEFRONT_EAST_HOUSE_BEAUTY
+  setflag FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
+  if badge cobble setvar VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE 1
+  if not badge fen goto Before
+  setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
+  setflag FLAG_HIDE_ROUTE_212_BLOCKADE
+label Before
   return
 
 

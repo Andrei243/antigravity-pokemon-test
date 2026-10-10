@@ -606,7 +606,43 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Unown inscriptions | Written in the Unown alphabet | Read out in letters | No Unown typeface yet |
 | The Lost Tower's music | A theme of its own | Route 209's | No song for it yet |
 | The Lost Tower's look | The original's tower models | A room of our kit with headstones and tombs where its graves stand | The kit has no tower interior yet |
-| Cynthia after the Psyduck | Comes up Route 210 and gives the Old Charm | Not yet | The Secret Potion and what follows are plan 02 · S9's |
+| Cynthia after the Psyduck | Comes up Route 210 and gives the Old Charm | Not yet | What follows the Psyduck is plan 02 · S9's (the Secret Potion came in S8, at Valor Lakefront) |
+
+## The fifth chapter (2026-10-10, plan 02 · S8)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_215.s`, `scripts_veilstone_city.s`, `scripts_veilstone_city_gym.s`, `scripts_veilstone_city_galactic_warehouse.s`, `scripts_pastoria_city.s`, `scripts_pastoria_city_gym.s`, `scripts_route_213.s`, `scripts_valor_lakefront.s`, `scripts_route_212_gate_to_hearthome_city.s`, `scripts_init_new_game.s`)
+
+- **The original's `RemoveObject` hides for good.** It sets the flag that hides whoever it takes off the map (`MapObject_SetFlagAndDeleteObject`), so everyone a scene of the original sends away is hidden by their flag here as well: the assistant after Crasher Wake's song (until Maylene's Badge clears it), the warehouse's three grunts together (`FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS`), the rival after his battle in Pastoria, the grunt who runs east to Route 213. Read without that, the original's scripts seem to leave the rival standing in the Pastoria Gym's doorway after his battle.
+- **The rival keeps Pastoria's Gym door while Crasher Wake is away** (`FLAG_HIDE_PASTORIA_CITY_RIVAL`, clear in a new game), saying the Leader has gone to Veilstone; he steps out of it once Looker has found HM02, and comes back down the street to battle at the door (`VAR_PASTORIA_CITY_STATE` 1, the warehouse's). So Crasher Wake can't be challenged before the warehouse, as in the original.
+- **The television crew keeps the gate between Hearthome City and Route 212 shut** until the player has come to Pastoria City from the other side, whose arrival lifts it (`FLAG_HIDE_ROUTE_212_BLOCKADE`, set by Pastoria's `OnEnter` every time, as the original's OnTransition does). Veilstone, and Route 214 and 213 after it, are the only way to Pastoria before.
+- **HM02 is an item in its ball** in the warehouse, picked up by the player after Looker has said to keep it, as in the original: it isn't handed over. The Dusk Stone lies behind the rusty door, which is plan 02 · S11's.
+- **The Secret Potion comes at Valor Lakefront, in this chapter**, from Cynthia once the grunt who carried the bomb is beaten there, as the original's order has it; plan 02's outline gave it to S9, which begins at the Psyduck.
+- **The road east to Sunyshore City is closed** by a man at Valor Lakefront who steps across it and turns the player back (`VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE` 0) until the professor's lab sees to it after the Distortion World (plan 02 · S13; the original's `scripts_sandgem_town_pokemon_research_lab.s`).
+- **Saves from before**: `common.ChapterFive` (story version 10) hides the chapter's people until their scenes. A save that already holds Maylene's Badge has had Crasher Wake come out of her Gym before it (`VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE` 1); one that holds Crasher Wake's, or has been to Pastoria City (`FLAG_FIRST_ARRIVAL_PASTORIA_CITY`), has seen the rival leave the Gym's doorway and the television crew leave the gate. The scenes the Badges' own scripts set going (the assistant's call for help, Crasher Wake coming out of his Gym) play as such a save next comes to the town.
+
+**Our own choices**
+
+- **The rival's battle in Pastoria is shown for the scene alone.** The original clears his flag for the battle and sets it again if the player loses; here his flag stays set and the scene shows him, so a battle lost leaves the Gym's doorway clear and the trigger waiting, whatever the field does with his place meanwhile.
+- **Crasher Wake leaves his Gym** while he is after the bomber (`FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE`, set as he comes out after the Fen Badge and cleared when Cynthia has given the Secret Potion). The Gym's map gives its Leader no flag of his own, so the Gym's arrival script sends him away (`PastoriaGym.txt`, `hide`), until lane 2 gives his map entry the flag.
+- **A scene played from where the player stands** follows the original's tile tables: the assistant from the warehouse's west, north or south (east of her is the gap between the guards, which nobody reaches before the scene), Crasher Wake to each of the four tiles before the Veilstone Gym, Looker on Route 213 and Cynthia and the rival at the lakefront to each side of the grunt, the man by the road to Sunyshore at each of its three tiles. The player's facing is read before anything turns them, since a scene's `face player` would change it.
+- **Pastoria's arrival scene puts the player at the Gym's door** before it plays, as the original's OnFrame finds them there: coming out of the Gym is the only way to state 3, but a save loaded elsewhere in town would otherwise watch the scene from a distance.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The bomb's sound | Its own explosion | Thunder (`thunder`) with the camera shaken | No explosion sound yet (plan 05) |
+| Crasher Wake's song | Lines of his own theme in the text box, with music notes | Our own verses, without the notes | The interface's font has no music note (Latin-1 only) |
+| Looker's music | A theme of his own as he arrives | The place's own | No song for him yet (plan 05) |
+| The television crew | In the gate's room, before its far door | In its doorway on Hearthome's side, our own people with the original's flag | The gate's room is plan 01 · M11's |
+| Looker in the Game Corner | Talks of Team Galactic's logo on the reels | Not there | The Game Corner's room is plan 06 · R16b's; Maylene's Badge sets his flag all the same |
+| Looker in the Hotel Grand Lake's lobby | Asks the player to search outside | His flag is set and cleared, nobody stands there | The hotel's lobby is plan 01 · M11's |
+| The Croagunk by Pastoria's board | Hops past now and then (one time in ten) | Left out (its flags are kept) | A Pokémon's walk past is a flourish no beat needs; plan 10 can bring it |
+| The beauty's Suite Key | Taken, and a reward in her cottage | She talks of the key she lost | Her cottage is plan 01 · M11's |
+| The meteorites | Change a Deoxys's forme | Are read | No command changes a Pokémon's form yet |
+| Maylene's Mega Evolution | Not in Platinum | Left out | The later mechanics' beats wait for plan 06 · R20 (decision 06 · 2's default): it goes into `VeilstoneGym.txt` after her battle |
+| The cameramen at Lake Valor | Keep the lake shut until the Canalave Library's meeting | Not placed | Placed with the scene that sends them off (plan 02 · S10), or nobody could reach the lake meanwhile |
+| Maniac Tunnel | The Ruin Maniac digs on as more Unown forms are seen | His short cave only | No count of the Unown forms seen yet (the Pokédex's forms) |
 
 ## The Pokétch's apps (2026-10-10, plan 06 · R14b)
 

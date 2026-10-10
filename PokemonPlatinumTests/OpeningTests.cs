@@ -47,6 +47,12 @@ public class OpeningTests
         /// <summary>How many species of the Sinnoh Pokédex the player has seen (a script may ask it: <c>SEEN</c>).</summary>
         public int Seen { get; set; }
 
+        /// <summary>Who the player is (a script may ask it: <c>if boy</c>); the boy unless a test says otherwise.</summary>
+        public PlayerLook Look { get; set; } = PlayerLook.Boy;
+
+        /// <summary>Answers for the next script's questions, in order (the first answer, yes, for any left over).</summary>
+        public Queue<int> Answers { get; } = new();
+
         /// <summary>Every script played, in order, each with the host it ran in.</summary>
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
 
@@ -141,8 +147,10 @@ public class OpeningTests
                 RivalName = Rival,
                 Fight = _ => Fight,
                 // As in the game, a chapter's battles are fought only with a Pokémon of the player's
-                NeedsPokemon = true
+                NeedsPokemon = true,
+                PlayerLook = Look
             };
+            while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
             runner.RunToEnd();

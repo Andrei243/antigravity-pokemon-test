@@ -13,6 +13,10 @@
   // Dr. Footstep's house and the hotel's houses have no rooms yet (plan 01 · M11)
   "locked": [ 2, 5, 6, 7 ],
   "people": {
+    // The grunt who set off the bomb in the Great Marsh, running from Pastoria City, and Looker after him (plan 02 · S8,
+    // scripts/route_213.txt)
+    "grunt_m": { "name": "Grunt", "script": "Grunt" },
+    "looker": { "name": "Looker", "dialog": [ "Looker: That bowl-haired fellow! Which way did he go?" ] },
     "fisherman": {
       "name": "Fisherman",
       "dialog": [

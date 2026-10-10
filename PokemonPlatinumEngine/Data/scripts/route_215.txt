@@ -1,4 +1,5 @@
-# Route 215 (plan 06 · R14a). docs/scripts.md describes the language.
+# Route 215 (plan 06 · R14a, plan 02 · S8). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_route_215.s).
 #
 # The original's arrival script: in the morning the joggers battle, and at any other time their doubles on the same
 # tiles only jog past. The swap is made as the player comes, so it holds until they come again.
@@ -16,4 +17,16 @@ label Battle
   clearflag FLAG_HIDE_ROUTE_215_JOGGER_CRAIG
   setflag FLAG_HIDE_ROUTE_215_JOGGER_SCOTT_NO_BATTLE
   setflag FLAG_HIDE_ROUTE_215_JOGGER_CRAIG_NO_BATTLE
+  end
+
+
+# The black belt in the rain by the road (the original's Route215_BlackBelt): TM66, Payback, once.
+script BlackBelt
+  if flag FLAG_RECEIVED_ROUTE_215_TM66 goto Given
+  say "Getting your own back: that's what Payback is all about. In a Pokémon battle, it's grand."
+  say "Try it on people, though, and nobody would ever stop squabbling. Leave it to your Pokémon. Take this!"
+  give "TM66"
+  setflag FLAG_RECEIVED_ROUTE_215_TM66
+label Given
+  say "Payback hits twice as hard if your Pokémon moves after its foe. Remember that!"
   end

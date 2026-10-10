@@ -35,7 +35,9 @@ public class RoomPlanTests
         new object[] { "LostTower1F", 1, 3, 7, 14 },
         // Hearthome City's Poffin House and Pokémon Fan Club, plan 06 · R14c
         new object[] { "PoffinHouse", 1, 3, 8, 13 },
-        new object[] { "HearthomeFanClub", 1, 3, 6, 17 }
+        new object[] { "HearthomeFanClub", 1, 3, 6, 17 },
+        // Veilstone City's Galactic warehouse, plan 02 · S8
+        new object[] { "VeilstoneGalacticWarehouse", 1, 3, 8, 11 }
     };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
@@ -110,7 +112,8 @@ public class RoomPlanTests
         new object[] { "HearthomeFanClub", "beauty", 2, 4, Direction.Down },
         new object[] { "HearthomeFanClub", "psyduck", 9, 5, Direction.Down },
         new object[] { "HearthomeFanClub", "buneary", 7, 13, Direction.Down },
-        new object[] { "HearthomeFanClub", "clefairy", 3, 11, Direction.Down }
+        new object[] { "HearthomeFanClub", "clefairy", 3, 11, Direction.Down },
+        new object[] { "VeilstoneGalacticWarehouse", "looker", 12, 8, Direction.Down }
     };
 
     [Theory]

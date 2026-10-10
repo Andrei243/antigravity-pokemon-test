@@ -52,6 +52,10 @@ public sealed class ScriptLibrary
     /// called by <see cref="ChapterThree"/>, and run for a save from before.</summary>
     public const string ChapterFour = "common.ChapterFour";
 
+    /// <summary>Who the fifth chapter (plan 02 · S8, "Veilstone and Pastoria") keeps out of sight until their scenes:
+    /// called by <see cref="ChapterFour"/>, and run for a save from before.</summary>
+    public const string ChapterFive = "common.ChapterFive";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;
