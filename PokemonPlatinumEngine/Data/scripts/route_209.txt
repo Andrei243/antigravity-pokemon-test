@@ -2,6 +2,23 @@
 # original's beats (scripts_route_209.s).
 
 
+# The original's arrival script: in the morning the joggers battle, and at any other time their doubles on the same
+# tiles only jog past (plan 06 · R14a). The swap is made as the player comes, so it holds until they come again.
+script OnEnter
+  if time morning goto Battle
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  end
+label Battle
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  end
+
+
 # The Hallowed Tower: the little tower of stones by the Lost Tower, read from any of its four tiles (the original's
 # script 2). Without the Odd Keystone it is a broken tower; with it, the player may set the stone in its gap
 # (VAR_HALLOWED_TOWER_STATE 1). From then the tower stirs as more people are spoken to (GREETINGS, our stand-in for the

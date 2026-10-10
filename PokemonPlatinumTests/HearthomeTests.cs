@@ -390,17 +390,17 @@ public class HearthomeTests
         var game = NewGame();
         game.Arrive("Sinnoh", 560, 680);
         Assert.Null(game.Present("rival", "solaceon_town"));
-        var trigger = game.Map.Triggers.Single(t => t.Script == "Rival" && t.Y == 669);
+        var trigger = game.Map.Triggers.Single(t => t.Script == "RivalInTown" && t.Y == 669);
         Assert.Equal((557, 7), (trigger.X, trigger.Width));
         game.Arrive("Sinnoh", x, 669);
-        var scene = game.Play(Scripts.Find("Rival", "solaceon_town")!);
+        var scene = game.Play(Scripts.Find("RivalInTown", "solaceon_town")!);
         // He came down the player's own column and went back up it
         var rival = game.Map.Everyone.First(n => n.Key == "rival" && n.GridY == 661 && n.GridX >= 557 && n.GridX <= 563);
         Assert.Equal(x, rival.GridX);
         Assert.Contains(scene.Transcript, l => l.Text.Contains("Defog"));
         Assert.Equal(1, game.Story.Var("VAR_SOLACEON_TOWN_STATE"));
         Assert.Null(game.Present("rival", "solaceon_town"));
-        Assert.False(game.Fires("Rival"));
+        Assert.False(game.Fires("RivalInTown"));
     }
 
     [Theory]

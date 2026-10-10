@@ -7,7 +7,7 @@
 # the Sinnoh Pokédex.
 
 
-script Rival
+script RivalInTown
   emote player exclaim
   music "common/rival"
   clearflag FLAG_HIDE_SOLACEON_TOWN_RIVAL

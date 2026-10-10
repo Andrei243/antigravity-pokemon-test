@@ -57,29 +57,42 @@ public sealed class World
         return File.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative) : null;
     }
 
+    // The files read so far are kept for everyone who asks: tests and the chunks' workers ask from several threads at
+    // once, so the caches are filled under one lock.
+    private readonly object reading = new();
+
     public WorldMatrixFile Matrix(int id)
     {
-        if (!matrices.TryGetValue(id, out var matrix))
-            matrices[id] = matrix = GameDataFiles.Load<WorldMatrixFile>(Path.Combine(folder, "matrices", $"{id:000}.json"));
-        return matrix;
+        lock (reading)
+        {
+            if (!matrices.TryGetValue(id, out var matrix))
+                matrices[id] = matrix = GameDataFiles.Load<WorldMatrixFile>(Path.Combine(folder, "matrices", $"{id:000}.json"));
+            return matrix;
+        }
     }
 
     /// <summary>A chunk, or null while its file isn't part of the game yet.</summary>
     public WorldChunkFile? Chunk(int id)
     {
-        if (!chunks.TryGetValue(id, out var chunk))
+        lock (reading)
         {
-            chunk = Optional<WorldChunkFile>(Path.Combine("chunks", $"{id:000}.json"));
-            chunk?.Validate();
-            chunks[id] = chunk;
+            if (!chunks.TryGetValue(id, out var chunk))
+            {
+                chunk = Optional<WorldChunkFile>(Path.Combine("chunks", $"{id:000}.json"));
+                chunk?.Validate();
+                chunks[id] = chunk;
+            }
+            return chunk;
         }
-        return chunk;
     }
 
     public WorldAreaFile? Area(string key)
     {
-        if (!areas.TryGetValue(key, out var area)) areas[key] = area = Optional<WorldAreaFile>(Path.Combine("areas", key + ".json"));
-        return area;
+        lock (reading)
+        {
+            if (!areas.TryGetValue(key, out var area)) areas[key] = area = Optional<WorldAreaFile>(Path.Combine("areas", key + ".json"));
+            return area;
+        }
     }
 
     /// <summary>
@@ -107,8 +120,11 @@ public sealed class World
 
     public WorldOverlayFile? Overlay(string key)
     {
-        if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"));
-        return overlay;
+        lock (reading)
+        {
+            if (!overlays.TryGetValue(key, out var overlay)) overlays[key] = overlay = Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"));
+            return overlay;
+        }
     }
 
     /// <summary>Whether an area is built: its people stand in it and the player can walk there.</summary>
