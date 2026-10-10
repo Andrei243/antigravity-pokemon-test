@@ -205,20 +205,23 @@ public class FormTests
         // fusions, Magearna's colours, Cramorant's catches, Toxtricity's Low Key Form, Alcremie's creams and sweets,
         // Eiscue's Noice Face, the female Indeedee, the Hangry Morpeko, the Crowned Sword and Shield, Eternatus's
         // Eternamax, Urshifu's Rapid Strike Style, Zarude's Dada, Calyrex's two riders, the Bloodmoon Ursaluna, the
-        // female Basculegion and Oinkologne, the Therian Enamorus). The few that look just like
+        // female Basculegion and Oinkologne, the Therian Enamorus, Koraidon's builds, Miraidon's modes, Ogerpon's masks,
+        // Terapagos's Terastal and Stellar Forms). The few that look just like
         // their species show its sculpt: Mothim's cloaks, the partner Pikachu and Eevee, Greninja's Battle Bond,
         // Scatterbug and Spewpa, whose pattern shows only once they are Vivillon, the 50% Zygarde with Power Construct,
-        // the Own Tempo Rockruff, Minior's meteors, whose cores don't show, and the antique Sinistea and Polteageist,
-        // whose mark is under their foot; and those that look just like another form show its
+        // the Own Tempo Rockruff, Minior's meteors, whose cores don't show, the antique Sinistea and Polteageist, the
+        // Artisan Poltchageist and the Masterpiece Sinistcha, whose mark is under their foot; and those that look just
+        // like another form show its
         // (PokemonModels.LooksLike): the 10% Zygarde with Power Construct the 10% Forme's, the Gigantamax Appletun the
         // Gigantamax Flapple's and the Low Key Toxtricity's Gigantamax form the Amped one's.
         var patterns = new[] { "Polar", "Tundra", "Continental", "Garden", "Elegant", "Meadow", "Modern", "Marine", "Archipelago", "High-Plains",
             "Sandstorm", "River", "Monsoon", "Savanna", "Sun", "Ocean", "Jungle", "Fancy", "Poke-Ball" };
         var sameLook = new[] { "Mothim-Sandy", "Mothim-Trash", "Pikachu-Starter", "Eevee-Starter", "Greninja-Battle-Bond", "Zygarde-10-Power-Construct",
-                "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo", "Appletun-Gmax", "Toxtricity-Low-Key-Gmax", "Sinistea-Antique", "Polteageist-Antique" }
+                "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo", "Appletun-Gmax", "Toxtricity-Low-Key-Gmax", "Sinistea-Antique", "Polteageist-Antique",
+                "Poltchageist-Artisan", "Sinistcha-Masterpiece" }
             .Concat(new[] { "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" }.Select(c => "Minior-" + c + "-Meteor"))
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
-        Assert.True(PokemonModels.Forms.Length >= 470, $"only {PokemonModels.Forms.Length} forms with a model of their own");
+        Assert.True(PokemonModels.Forms.Length >= 483, $"only {PokemonModels.Forms.Length} forms with a model of their own");
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {

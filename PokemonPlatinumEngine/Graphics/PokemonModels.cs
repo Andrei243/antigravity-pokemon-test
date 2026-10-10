@@ -659,7 +659,11 @@ internal static partial class PokemonModels
         // Paldea's fourth batch, Tatsugiri to Gholdengo
         "Tatsugiri", "Annihilape", "Clodsire", "Farigiraf", "Dudunsparce", "Kingambit",
         "Great Tusk", "Scream Tail", "Brute Bonnet", "Flutter Mane", "Slither Wing", "Sandy Shocks", "Iron Treads", "Iron Bundle", "Iron Hands",
-        "Iron Jugulis", "Iron Moth", "Iron Thorns", "Frigibax", "Arctibax", "Baxcalibur", "Gimmighoul", "Gholdengo"
+        "Iron Jugulis", "Iron Moth", "Iron Thorns", "Frigibax", "Arctibax", "Baxcalibur", "Gimmighoul", "Gholdengo",
+        // Paldea's last batch, Wo-Chien to Pecharunt
+        "Wo-Chien", "Chien-Pao", "Ting-Lu", "Chi-Yu", "Roaring Moon", "Iron Valiant", "Koraidon", "Miraidon", "Walking Wake", "Iron Leaves",
+        "Dipplin", "Poltchageist", "Sinistcha", "Okidogi", "Munkidori", "Fezandipiti", "Ogerpon", "Archaludon", "Hydrapple", "Gouging Fire",
+        "Raging Bolt", "Iron Boulder", "Iron Crown", "Terapagos", "Pecharunt"
     };
 
     /// <summary>
@@ -667,8 +671,9 @@ internal static partial class PokemonModels
     /// appliances, Giratina's Origin Forme, the cloaks, the East Sea, Cherrim in the sun, Unown's letters, Castform's
     /// weathers, Deoxys's formes, Shaymin's Sky Forme, Arceus's types) and the later games' (the regional forms, Dialga's and Palkia's Origin Formes, Basculin's
     /// stripes, Darmanitan's Zen Modes, Deerling's and Sawsbuck's seasons, the female Frillish and Jellicent, the Therian Formes, Kyurem's fusions, Keldeo's Resolute Form, Meloetta's Pirouette Forme, Genesect's drives, the Megas, the Primal Kyogre and Groudon, the Gigantamax forms, Pikachu's caps and
-    /// costumes, the spiky-eared Pichu). The few that look just like their species (Mothim's cloaks, the partner Pikachu
-    /// and Eevee) show its model.
+    /// costumes, the spiky-eared Pichu, Koraidon's builds, Miraidon's modes, Ogerpon's masks, Terapagos's Terastal and
+    /// Stellar Forms). The few that look just like their species (Mothim's cloaks, the partner Pikachu and Eevee, the
+    /// Artisan Poltchageist and the Masterpiece Sinistcha) show its model.
     /// </summary>
     public static readonly string[] Forms =
     {
@@ -727,6 +732,9 @@ internal static partial class PokemonModels
         "Maushold-Family-Of-Three", "Squawkabilly-Blue-Plumage", "Squawkabilly-Yellow-Plumage", "Squawkabilly-White-Plumage",
         "Palafin-Hero",
         "Tatsugiri-Droopy", "Tatsugiri-Stretchy", "Dudunsparce-Three-Segment", "Gimmighoul-Roaming",
+        "Koraidon-Limited-Build", "Koraidon-Sprinting-Build", "Koraidon-Swimming-Build", "Koraidon-Gliding-Build",
+        "Miraidon-Low-Power-Mode", "Miraidon-Drive-Mode", "Miraidon-Aquatic-Mode", "Miraidon-Glide-Mode",
+        "Ogerpon-Wellspring-Mask", "Ogerpon-Hearthflame-Mask", "Ogerpon-Cornerstone-Mask", "Terapagos-Terastal", "Terapagos-Stellar",
         "Venusaur-Mega", "Charizard-Mega-X", "Charizard-Mega-Y", "Blastoise-Mega", "Beedrill-Mega", "Pidgeot-Mega",
         "Raichu-Mega-X", "Raichu-Mega-Y", "Clefable-Mega", "Alakazam-Mega", "Victreebel-Mega", "Slowbro-Mega", "Gengar-Mega",
         "Kangaskhan-Mega", "Starmie-Mega", "Pinsir-Mega", "Gyarados-Mega", "Aerodactyl-Mega", "Dragonite-Mega", "Mewtwo-Mega-X",
@@ -1857,6 +1865,32 @@ internal static partial class PokemonModels
         "BAXCALIBUR" => Baxcalibur(),
         "GIMMIGHOUL" => Gimmighoul(),
         "GHOLDENGO" => Gholdengo(),
+        // Paldea's last batch (PokemonModels.Paldea5.cs)
+        "WO-CHIEN" => WoChien(),
+        "CHIEN-PAO" => ChienPao(),
+        "TING-LU" => TingLu(),
+        "CHI-YU" => ChiYu(),
+        "ROARING MOON" => RoaringMoon(),
+        "IRON VALIANT" => IronValiant(),
+        "KORAIDON" => Koraidon(),
+        "MIRAIDON" => Miraidon(),
+        "WALKING WAKE" => WalkingWake(),
+        "IRON LEAVES" => IronLeaves(),
+        "DIPPLIN" => Dipplin(),
+        "POLTCHAGEIST" => Poltchageist(),
+        "SINISTCHA" => Sinistcha(),
+        "OKIDOGI" => Okidogi(),
+        "MUNKIDORI" => Munkidori(),
+        "FEZANDIPITI" => Fezandipiti(),
+        "OGERPON" => Ogerpon(),
+        "ARCHALUDON" => Archaludon(),
+        "HYDRAPPLE" => Hydrapple(),
+        "GOUGING FIRE" => GougingFire(),
+        "RAGING BOLT" => RagingBolt(),
+        "IRON BOULDER" => IronBoulder(),
+        "IRON CROWN" => IronCrown(),
+        "TERAPAGOS" => Terapagos(),
+        "PECHARUNT" => Pecharunt(),
         // Platinum's own forms of its Sinnoh species (PokemonModels.Forms.cs)
         "ROTOM-HEAT" => RotomHeat(),
         "ROTOM-WASH" => RotomWash(),
@@ -2033,6 +2067,19 @@ internal static partial class PokemonModels
         "TATSUGIRI-STRETCHY" => TatsugiriStretchy(),
         "DUDUNSPARCE-THREE-SEGMENT" => DudunsparceThreeSegment(),
         "GIMMIGHOUL-ROAMING" => GimmighoulRoaming(),
+        "KORAIDON-LIMITED-BUILD" => KoraidonLimited(),
+        "KORAIDON-SPRINTING-BUILD" => KoraidonSprinting(),
+        "KORAIDON-SWIMMING-BUILD" => KoraidonSwimming(),
+        "KORAIDON-GLIDING-BUILD" => KoraidonGliding(),
+        "MIRAIDON-LOW-POWER-MODE" => MiraidonLowPower(),
+        "MIRAIDON-DRIVE-MODE" => MiraidonDrive(),
+        "MIRAIDON-AQUATIC-MODE" => MiraidonAquatic(),
+        "MIRAIDON-GLIDE-MODE" => MiraidonGlide(),
+        "OGERPON-WELLSPRING-MASK" => OgerponWellspring(),
+        "OGERPON-HEARTHFLAME-MASK" => OgerponHearthflame(),
+        "OGERPON-CORNERSTONE-MASK" => OgerponCornerstone(),
+        "TERAPAGOS-TERASTAL" => TerapagosTerastal(),
+        "TERAPAGOS-STELLAR" => TerapagosStellar(),
         // The Mega Evolutions (PokemonModels.Megas.cs)
         "VENUSAUR-MEGA" => VenusaurMega(),
         "CHARIZARD-MEGA-X" => CharizardMegaX(),
