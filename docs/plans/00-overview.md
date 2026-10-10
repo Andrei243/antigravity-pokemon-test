@@ -12,7 +12,7 @@ About 350 sittings are left, some twenty of them marked optional.
 |---|---|---|---|
 | 01 · Sinnoh map | M1–M8, M9 part 1 | ~13 | M9's leftover (rooms with relief, Pastoria, Oreburgh rebuilt) had no owner: it is wave 1's |
 | 02 · Story | S1, S2, S4–S6 | ~13 | S7 to S15; S11 and S15 are more than one sitting |
-| 03 · National Pokédex | D1, D5–D11, every model batch to Gholdengo (1,000 hand-built; Paldea 3a, 3b) | 5 | the last 25 species (Paldea 3c), D12 (three parts), D13 |
+| 03 · National Pokédex | D1, D5–D11, every model batch to Pecharunt (all 1,025 hand-built; Paldea 3a–3c) | 4 | D12 (three parts), D13 |
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
 | 06 · Game mechanics | R1–R13 | ~26 | R14, R16, R17 and R18 are several sittings each |
@@ -385,7 +385,7 @@ The main session starts one agent per cell of the wave, each in its own worktree
 
 - [ ] Wave 0 · 16 · T5 (beside: 03 · Paldea 3a, done 2026-10-10)
 - [ ] Wave 1 · 08 · P7, 01 · M9 1b, 06 · R14a, 11 · C1, 10 · F1, 16 · T16 (beside: Paldea 3b, done 2026-10-10)
-- [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10), 01 · M9 2a (done 2026-10-10), 06 · R14b (done 2026-10-10), 12 · Q10 (done 2026-10-10), 11 · C5 (done 2026-10-10), 24 · X1 (beside: Paldea 3c)
+- [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10), 01 · M9 2a (done 2026-10-10), 06 · R14b (done 2026-10-10), 12 · Q10 (done 2026-10-10), 11 · C5 (done 2026-10-10), 24 · X1 (beside: Paldea 3c, done 2026-10-10)
 - [ ] Wave 3 · 02 · S8, 01 · M9 2b, 06 · R14c, 12 · Q11, 09 · L11, 24 · X2
 - [ ] Wave 4 · 02 · S9, 01 · M9 2c, 06 · R15, 11 · C12, 11 · C6, 24 · X3
 - [ ] Wave 5 · 02 · S10, 01 · M9 2d, 06 · R17a, 25 · Y1, 11 · C11, 12 · Q1
