@@ -502,6 +502,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Girl, Negated = negated };
             case "poketch":
                 return new Condition { Query = Query.Poketch, Negated = negated };
+            case "poketchapp":
+                return new Condition { Query = Query.PoketchApp, Negated = negated, Name = r.Enum<Models.PoketchApp>("a Pokétch app").ToString() };
             case "pokerus":
                 return new Condition { Query = Query.Pokerus, Negated = negated };
             case "safari":

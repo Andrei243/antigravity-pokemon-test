@@ -89,6 +89,7 @@ if (h.Run("story")) h.StoryMode();
 if (mode == "fieldmoves") h.FieldMovesMode();
 if (mode == "encounters") h.EncountersMode();
 if (mode == "berries") h.BerriesMode();
+if (mode == "poketch") h.PoketchMode();
 if (mode == "jubilife") h.JubilifeMode();
 if (mode == "windworks") h.WindworksMode();
 if (mode == "eterna") h.EternaMode();

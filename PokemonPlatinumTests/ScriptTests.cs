@@ -235,6 +235,7 @@ public class ScriptTests
               if boy end
               if girl end
               if poketch end
+              if poketchapp MemoPad end
               if pokerus end
               if safari end
               if partner end

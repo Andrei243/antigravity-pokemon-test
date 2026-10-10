@@ -148,6 +148,7 @@ What an `if` can ask:
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `poketch` | The player has the Pokétch. |
+| `poketchapp MemoPad` | The app is on the Pokétch (the original's `CheckPoketchAppRegistered`). |
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
 | `safari` | A Safari Game is under way in the Great Marsh. |
 | `partner` | Someone travels with the player (`partner`, below). |

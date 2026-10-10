@@ -820,6 +820,8 @@ public sealed class ScriptRunner
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
             Query.Poketch => host.Poketch.Enabled,
+            // ScrCmd_CheckPoketchAppRegistered
+            Query.PoketchApp => host.Poketch.Has(Enum.Parse<PoketchApp>(c.Name)),
             Query.Safari => host.Safari.Active,
             Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
