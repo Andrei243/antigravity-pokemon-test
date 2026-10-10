@@ -26,7 +26,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c09_s02` | the ferry between Snowpoint City and the Fight Area | a prop: Boat |  | 9.4 × 5.2 × 2.6 | 2 | Fight Area, Snowpoint City |
 | `c10_s01` | the Pokémon League | a building: League, 3 storeys |  | 11.5 × 9.2 × 16.4 | 1 | Pokémon League |
 | `c10_s02` | a lantern on the League's steps | a prop: LampPost |  | 1.6 × 1.6 × 2.7 | 4 | Pokémon League |
-| `c11_o01` | planting along the Fight Area's quay | a prop: Hedge | M10 | 3.0 × 2.8 × 2.2 | 12 | Fight Area |
+| `c11_o01` | a shipping container on the Fight Area's quay | a prop: Container |  | 3.0 × 2.8 × 2.2 | 12 | Fight Area |
 | `c1_b01a` | a block of flats with a way in | a building: Apartments, built as in City |  | 5.2 × 4.0 × 6.3 | 3 | Jubilife City |
 | `c1_b01c` | a block of flats | a building: Apartments, built as in City |  | 4.4 × 5.4 × 6.3 | 6 | Jubilife City |
 | `c1_b02a` | the condominiums | a building: Apartments, built as in City |  | 5.4 × 4.4 × 8.1 | 2 | Eterna City, Jubilife City |
@@ -117,7 +117,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d32_s03` | the Battle Factory | a building: Hall, signed FACTORY | M10 | 14.5 × 17.3 × 12.3 | 1 | Battle Frontier |
 | `d32_s04` | the Battle Arcade | a building: Hall, signed ARCADE | M10 | 13.0 × 9.6 × 12.6 | 1 | Battle Frontier |
 | `d32_s05` | a low building of the Battle Frontier | a building: Warehouse | M10 | 7.9 × 4.8 × 2.4 | 2 | Battle Frontier |
-| `d32_s06` | a low building of the Fight Area | a building: Warehouse | M10 | 5.9 × 6.0 × 2.9 | 2 | Fight Area |
+| `d32_s06` | the fountain in each of the pools before the Battle Frontier's gate | a prop: GrandFountain |  | 5.9 × 6.0 × 2.9 | 2 | Fight Area |
 | `d3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.2 × 1.6 | 2 | Eterna Forest, Route 212 |
 | `d3_s01` | the Old Chateau, abandoned in Eterna Forest | a building: Mansion, 2 storeys |  | 11.5 × 5.3 × 5.3 | 1 | Eterna Forest |
 | `d4_s01` | the Fuego Ironworks | a building: Factory, signed IRONWORKS |  | 16.0 × 10.5 × 8.9 | 1 | Fuego Ironworks |
@@ -189,10 +189,10 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `t5_s01` | the elder's house in Celestic Town | a building: House, built as in HalfTimber, 2 storeys |  | 7.6 × 4.0 × 6.7 | 1 | Celestic Town |
 | `t5_s02` | Celestic Town's shrine | a building: Shrine |  | 3.5 × 2.9 × 4.9 | 1 | Celestic Town |
 | `t6_h01` | a house of the Battle Zone | a building: House, built as in Resort |  | 4.7 × 3.1 × 3.5 | 10 | Fight Area, Resort Area, Route 225 and 4 more |
-| `t6_s01` | the Battleground | a building: Shop, built as in Resort, signed BATTLE | M10 | 4.7 × 3.1 × 3.5 | 1 | Survival Area |
-| `t7_s01` | the Ribbon Syndicate | a building: Hall, built as in Resort, 2 storeys, signed RIBBONS | M10 | 9.8 × 5.9 × 6.4 | 1 | Resort Area |
+| `t6_s01` | the Battleground | a building: Shop, built as in Resort, signed BATTLE |  | 4.7 × 3.1 × 3.5 | 1 | Survival Area |
+| `t7_s01` | the Ribbon Syndicate | a building: Hall, built as in Resort, 2 storeys, signed RIBBONS |  | 9.8 × 5.9 × 6.4 | 1 | Resort Area |
 | `t7_s02` | the Villa | a building: House, built as in Resort |  | 7.7 × 4.0 × 3.4 | 1 | Resort Area |
-| `t7_s03` | a pavilion in the Resort Area | a building: House, built as in Resort | M10 | 4.5 × 4.3 × 3.4 | 2 | Resort Area |
+| `t7_s03` | a swimming pool of the Resort Area, with its parasol | a prop: Pool |  | 4.5 × 4.3 × 3.4 | 2 | Resort Area |
 | `treeeff` | a honey tree | a prop: HoneyTree |  | 2.2 × 2.1 × 2.6 | 21 | Eterna Forest, Floaroma Meadow, Fuego Ironworks and 15 more |
 | `wfall11_14` | a waterfall | nothing of its own: the ground under it draws it |  | 11.0 × 0.8 × 14.6 | 1 | Pokémon League |
 | `wfall16_5` | a waterfall | nothing of its own: the ground under it draws it |  | 16.0 × 0.8 × 5.6 | 1 | Pokémon League |
@@ -204,5 +204,5 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 
 ## In numbers
 
-- 88 models are buildings, of 26 kinds; 69 are props; 13 are doors.
-- 14 have a stand-in for now: 14 until M10.
+- 86 models are buildings, of 26 kinds; 71 are props; 13 are doors.
+- 9 have a stand-in for now: 9 until M10.

@@ -118,7 +118,11 @@
     // Verity Lakefront leads to once Commander Saturn is beaten)
     { "name": "LakeValorDrained", "matrix": 104, "area": "lake_valor_drained", "trees": "Round" },
     { "name": "ValorCavern", "matrix": 106, "area": "valor_cavern", "setting": "Cave" },
-    { "name": "LakeVerityGalactic", "matrix": 102, "area": "lake_verity", "trees": "Pine" }
+    { "name": "LakeVerityGalactic", "matrix": 102, "area": "lake_verity", "trees": "Pine" },
+    // Plan 01 · M10, part a: Victory Road's back rooms, the way through to Route 224 once the Hall of Fame is entered
+    { "name": "VictoryRoad1FRoom1", "matrix": 47, "area": "victory_road_1f_room_1", "setting": "Cave" },
+    { "name": "VictoryRoad1FRoom2", "matrix": 46, "area": "victory_road_1f_room_2", "setting": "Cave" },
+    { "name": "VictoryRoad1FRoom3", "matrix": 48, "area": "victory_road_1f_room_3", "setting": "Cave" }
   ],
   "areas": [
     "twinleaf_town",
@@ -272,6 +276,20 @@
     // Plan 02 · S10
     "lake_valor_drained",
     "valor_cavern",
-    "lake_verity"
+    "lake_verity",
+    // Plan 01 · M10, part a: the Battle Zone's towns and routes, and Route 224 behind Victory Road
+    "victory_road_1f_room_1",
+    "victory_road_1f_room_2",
+    "victory_road_1f_room_3",
+    "route_224",
+    "fight_area",
+    "route_225",
+    "survival_area",
+    "route_226",
+    "route_227",
+    "route_228",
+    "route_229",
+    "route_230",
+    "resort_area"
   ]
 }

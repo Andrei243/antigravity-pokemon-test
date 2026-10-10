@@ -1,0 +1,46 @@
+{
+  "area": "route_227",
+  // The original's role (Routes 225 to 227 and Stark Mountain's foot) has no song yet (plan 05 · A6): Routes 206 to
+  // 208's stands in
+  "bgmTrack": "sinnoh/route206",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The house by the road has no room yet (plan 01 · M11)
+  "locked": [ 0 ],
+  // The rival and Crasher Wake arguing at the foot of the road (trigger 0), and Buck, who asks the player to come up
+  // Stark Mountain with him (trigger 1), wait for the story (plan 02 · S15). The road's north end runs on to Stark
+  // Mountain, which is plan 01 · M10, part b's
+  "people": {
+    "ace_trainer_saul": {
+      "name": "Saul",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Saul: One Pokémon. That's all I carry up this road, and all I've ever needed!",
+        "dialogueAfter": "Ace Trainer Saul: ...Perhaps I'll think about a second."
+      }
+    },
+    "ranger_felicia": {
+      "name": "Felicia",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Felicia: Ash falls on everything up here, and still the grass comes through it. So do the Pokémon. So do I!",
+        "dialogueAfter": "Pokémon Ranger Felicia: You came through it best of all."
+      }
+    },
+    "black_belt_griffin": {
+      "name": "Griffin",
+      "trainer": {
+        "dialogueBefore": "Black Belt Griffin: I train at the mouth of a volcano! Hot rock under my feet, ash in my eyes! Nothing can shake me!",
+        "dialogueAfter": "Black Belt Griffin: Shaken! By a traveller! Back to the hot rocks!"
+      }
+    },
+    "ace_trainer_mikayla": {
+      "name": "Mikayla",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Mikayla: Tooth, claw and horn. My three have a sharp answer for everything. What's your question?",
+        "dialogueAfter": "Ace Trainer Mikayla: That was a question I hadn't an answer to."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": "Rt. 227\nNorth: Stark Mountain"
+  }
+}

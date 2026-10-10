@@ -1,0 +1,131 @@
+{
+  "key": "victory_road_1f_room_2",
+  "index": 247,
+  "name": "Victory Road",
+  "matrix": 46,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "Default",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_01",
+  "nightMusic": "D_01",
+  "encounters": "victory_road_1f_room_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Floatzel", "level": 48 },
+    { "species": "Azumarill", "level": 47 },
+    { "species": "Graveler", "level": 47 },
+    { "species": "Azumarill", "level": 49 },
+    { "species": "Dewgong", "level": 48 },
+    { "species": "Floatzel", "level": 50 },
+    { "species": "Golbat", "level": 50 },
+    { "species": "Graveler", "level": 49 },
+    { "species": "Dewgong", "level": 50 },
+    { "species": "Gabite", "level": 49 },
+    { "species": "Dewgong", "level": 50 },
+    { "species": "Gabite", "level": 49 }
+  ],
+  "landRate": 15,
+  "day": [
+    "Graveler",
+    "Azumarill"
+  ],
+  "night": [
+    "Golbat",
+    "Azumarill"
+  ],
+  "swarm": [
+    "Floatzel",
+    "Azumarill"
+  ],
+  "radar": [
+    "Dewgong",
+    "Floatzel",
+    "Dewgong",
+    "Gabite"
+  ],
+  "water": [
+    { "species": "Floatzel", "level": 35, "maxLevel": 55 },
+    { "species": "Dewgong", "level": 35, "maxLevel": 55 },
+    { "species": "Lapras", "level": 35, "maxLevel": 55 },
+    { "species": "Lapras", "level": 35, "maxLevel": 55 },
+    { "species": "Lapras", "level": 35, "maxLevel": 55 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 55,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 3, "z": 58, "to": "victory_road_1f_room_1", "toWarp": 1 },
+    { "x": 56, "z": 13, "to": "victory_road_1f_room_3", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_nugget", "looks": "pokeball", "movement": "none", "x": 44, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_1F_ROOM_2_NUGGET", "item": "Nugget", "script": "7193" },
+    { "id": "item_full_restore", "looks": "pokeball", "movement": "none", "x": 14, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_1F_ROOM_2_FULL_RESTORE", "item": "Full Restore", "script": "7191" },
+    { "id": "item_dusk_stone", "looks": "pokeball", "movement": "none", "x": 14, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_1F_ROOM_2_DUSK_STONE", "item": "Dusk Stone", "script": "7192" },
+    { "id": "item_leftovers", "looks": "pokeball", "movement": "none", "x": 27, "z": 60, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_OBTAINED_VICTORY_ROAD_1F_ROOM_2_LEFTOVERS", "item": "Leftovers", "script": "7197" },
+    { "id": "ace_trainer_micah", "looks": "ace_trainer_m", "movement": "look_west", "x": 10, "z": 47, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_MICAH" },
+    { "id": "ace_trainer_brandi", "looks": "ace_trainer_f", "movement": "look_east", "x": 6, "z": 47, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_BRANDI" },
+    { "id": "psychic_desiree", "looks": "psychic", "movement": "look_south", "x": 7, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_PSYCHIC_DESIREE" },
+    { "id": "psychic_landon", "looks": "psychic", "movement": "look_east", "x": 6, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PSYCHIC_LANDON" },
+    { "id": "black_belt_eddie", "looks": "black_belt", "movement": "look_north", "x": 16, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BLACK_BELT_EDDIE" },
+    { "id": "veteran_terrell", "looks": "expert_m", "movement": "look_south", "x": 16, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_VETERAN_TERRELL" },
+    { "id": "ace_trainer_arthur", "looks": "ace_trainer_m", "movement": "look_west", "x": 44, "z": 57, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_ACE_TRAINER_ARTHUR" },
+    { "id": "ace_trainer_clarice", "looks": "ace_trainer_f", "movement": "look_east", "x": 42, "z": 57, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_ACE_TRAINER_CLARICE" },
+    { "id": "psychic_deandre", "looks": "psychic", "movement": "look_west", "x": 38, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PSYCHIC_DEANDRE" },
+    { "id": "psychic_kendra", "looks": "psychic", "movement": "look_east", "x": 36, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PSYCHIC_KENDRA" },
+    { "id": "bird_keeper_autumn", "looks": "ace_trainer_f", "movement": "look_north", "x": 28, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIRD_KEEPER_AUTUMN" },
+    { "id": "dragon_tamer_joe", "looks": "ace_trainer_m", "movement": "look_south", "x": 28, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_DRAGON_TAMER_JOE" },
+    { "id": "black_belt_willie", "looks": "black_belt", "movement": "look_north", "x": 46, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BLACK_BELT_WILLIE" },
+    { "id": "veteran_brenden", "looks": "expert_m", "movement": "look_south", "x": 46, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_VETERAN_BRENDEN" },
+    { "id": "strength_boulder_1", "looks": "strength_boulder", "movement": "none", "x": 6, "z": 51, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10002" },
+    { "id": "strength_boulder_2", "looks": "strength_boulder", "movement": "none", "x": 7, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10002" },
+    { "id": "strength_boulder_3", "looks": "strength_boulder", "movement": "none", "x": 7, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10002" },
+    { "id": "strength_boulder_4", "looks": "strength_boulder", "movement": "none", "x": 7, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10002" },
+    { "id": "strength_boulder_5", "looks": "strength_boulder", "movement": "none", "x": 8, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10002" },
+    { "id": "strength_boulder_6", "looks": "strength_boulder", "movement": "none", "x": 10, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10002" },
+    { "id": "strength_boulder_7", "looks": "strength_boulder", "movement": "none", "x": 8, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_7", "script": "10002" },
+    { "id": "strength_boulder_8", "looks": "strength_boulder", "movement": "none", "x": 12, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10002" },
+    { "id": "strength_boulder_9", "looks": "strength_boulder", "movement": "none", "x": 12, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_9", "script": "10002" },
+    { "id": "strength_boulder_10", "looks": "strength_boulder", "movement": "none", "x": 21, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_10", "script": "10002" },
+    { "id": "marley", "looks": "marley", "movement": "look_east", "x": 7, "z": 58, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_HIDE_VICTORY_ROAD_1F_ROOM_2_MARLEY", "script": "9705" }
+  ],
+  "signs": [
+    { "x": 22, "z": 10, "type": 2, "script": "8123", "item": "Heart Scale", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_1F_ROOM_2_HEART_SCALE", "range": 2 },
+    { "x": 50, "z": 15, "type": 2, "script": "8122", "item": "HP Up", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_1F_ROOM_2_HP_UP", "range": 2 },
+    { "x": 30, "z": 20, "type": 2, "script": "8121", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_1F_ROOM_2_ULTRA_BALL_1", "range": 2 },
+    { "x": 40, "z": 41, "type": 2, "script": "8129", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_1F_ROOM_2_RARE_CANDY", "range": 2 },
+    { "x": 24, "z": 46, "type": 2, "script": "8128", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_VICTORY_ROAD_1F_ROOM_2_ULTRA_BALL_2", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 51, "z": 19, "width": 4, "depth": 1, "script": "3", "variable": "VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE", "value": "1" },
+    { "x": 4, "z": 55, "width": 1, "depth": 6, "script": "2", "variable": "VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE", "value": "1" },
+    { "x": 5, "z": 55, "width": 1, "depth": 6, "script": "1", "variable": "VAR_VICTORY_ROAD_1F_ROOM_2_FOLLOWER_MARLEY_STATE", "value": "0" }
+  ]
+}

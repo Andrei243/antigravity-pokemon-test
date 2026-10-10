@@ -71,6 +71,12 @@ internal sealed record BuildingStyle
     /// <summary>Storeys that step back on top of a flat roof, each smaller than the one below.</summary>
     public int Tiers { get; init; }
 
+    /// <summary>
+    /// An open porch is a veranda (the Ribbon Syndicate): its sides are glazed, a wide window to a bay, and its canopy
+    /// carries a rosette either side of the name.
+    /// </summary>
+    public bool Veranda { get; init; }
+
     public bool Pitched => Roof != RoofShape.Flat;
 
     /// <summary>Height of the walls in texels.</summary>

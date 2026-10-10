@@ -214,6 +214,8 @@ public static class WorldMapBuilder
         var blank = new List<(int X, int Z)>();
         // How many of each area's trees are broad-leaved and how many are pines, and how much of its ground is snow or green
         var trees = new Dictionary<MapArea, (int Broad, int Pine, int Snow, int Green)>();
+        // The chunks that have trees at all (a chunk of open sea or of bare rock has no say in what a forest beside it is)
+        var wooded = new HashSet<(int X, int Y)>();
         for (int cy = 0; cy < matrix.Height; cy++)
             for (int cx = 0; cx < matrix.Width; cx++)
             {
@@ -228,6 +230,7 @@ public static class WorldMapBuilder
                     models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, WorldModels.Of(prop.Name), area));
 
                 var count = trees.GetValueOrDefault(area);
+                var before = count;
                 foreach (string row in chunk.Cover)
                     foreach (char code in row)
                     {
@@ -237,6 +240,10 @@ public static class WorldMapBuilder
                         else if (code == TerrainCoverCodes.CodeOf(TerrainCover.Grass) || code == TerrainCoverCodes.CodeOf(TerrainCover.TallGrass)) count.Green++;
                     }
                 trees[area] = count;
+                if (count.Broad + count.Pine > before.Broad + before.Pine) wooded.Add((cx, cy));
+                // The forest that fills the world between its places is one area with no trees of its own: a chunk of it
+                // that is broad-leaved (the Battle Zone's filler, conttree3) grows round trees, whatever the rest grows
+                if (!area.Open && count.Broad - before.Broad > count.Pine - before.Pine) map.SetChunkTrees(cx, cy, TreeStyle.Round);
             }
         foreach (var (area, count) in trees)
         {
@@ -244,6 +251,19 @@ public static class WorldMapBuilder
             // Twinleaf Town has patches of snow and is not snow country; Snowpoint City is
             area.Snowbound = count.Snow > count.Green;
         }
+
+        // Where the world has no chunk at all there is forest too. Round the Battle Zone, where every chunk with trees
+        // beside such a cell grows round ones, it is that forest; anywhere a pine wood stands beside it, it stays one
+        TreeStyle? TreesOfChunk(int cx, int cy) => wooded.Contains((cx, cy)) ? map.TreesAt(cx * T, cy * T) : null;
+        if (!cave && !nothing)
+            for (int cy = 0; cy < matrix.Height; cy++)
+                for (int cx = 0; cx < matrix.Width; cx++)
+                {
+                    if (matrix.ChunkAt(cx, cy) != WorldMatrixFile.NoChunk && world.Chunk(matrix.ChunkAt(cx, cy)) != null) continue;
+                    var beside = new[] { (0, -1), (1, 0), (-1, 0), (0, 1), (-1, -1), (1, -1), (-1, 1), (1, 1) }
+                        .Select(d => TreesOfChunk(cx + d.Item1, cy + d.Item2)).OfType<TreeStyle>().ToList();
+                    if (beside.Count > 0 && beside.All(style => style == TreeStyle.Round)) map.SetChunkTrees(cx, cy, TreeStyle.Round);
+                }
 
         // The tiles that lead somewhere, in every area whose file the game has: a building's way in
         var entrances = new HashSet<(int X, int Z)>();
@@ -1125,10 +1145,27 @@ public static class WorldMapBuilder
                         else x0 = Math.Max(x0, (int)MathF.Ceiling(line - 0.5f));
                     }
                 }
+            // A ship moored at a pier keeps off its planks: the original's box reaches over the row of the pier the
+            // gangway lies on (the Fight Area's ferry), where people stand and walk
+            if (scenery.Prop == PropType.Boat)
+            {
+                bool Pier(int x, int z) => map.InBounds(x, z) && !Blocked(x, z) && map.GetGroundTile(x, z) == TileType.Planks;
+                bool RowOnPier(int z) => Enumerable.Range(x0, x1 - x0 + 1).Count(x => Pier(x, z)) * 2 > x1 - x0 + 1;
+                bool ColumnOnPier(int x) => Enumerable.Range(z0, z1 - z0 + 1).Count(z => Pier(x, z)) * 2 > z1 - z0 + 1;
+                while (z1 > z0 && RowOnPier(z0)) z0++;
+                while (z1 > z0 && RowOnPier(z1)) z1--;
+                while (x1 > x0 && ColumnOnPier(x0)) x0++;
+                while (x1 > x0 && ColumnOnPier(x1)) x1--;
+            }
             // A stack of rock in the sea stands on the rock the world blocks: Sunyshore's box lies two rows south of
             // its blocked tiles, over water a swimmer crosses. It takes the blocked tiles joined to those under its box
             if (scenery.Prop == PropType.SeaStack) (x0, z0, x1, z1) = BlockedRound(x0, z0, x1, z1, Blocked);
             if (!map.InBounds(x0, z0)) continue;
+            // A swimming pool is set in paving from edge to edge, so no lawn grows up through its water
+            if (scenery.Prop == PropType.Pool)
+                for (int z = z0; z <= z1; z++)
+                    for (int x = x0; x <= x1; x++)
+                        if (map.InBounds(x, z)) map.SetGroundTile(x, z, TileType.Paving, map.IsSolid(x, z));
             map.Props.Add(new Prop
             {
                 Type = scenery.Prop, X = x0, Y = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1,
@@ -1160,6 +1197,9 @@ public static class WorldMapBuilder
         }
         return (seen.Min(t => t.X), seen.Min(t => t.Z), seen.Max(t => t.X), seen.Max(t => t.Z));
     }
+
+    /// <summary>How many rows of a swimmer are under the water of a pool they stand in: to the chest.</summary>
+    public const int PoolDepth = 10;
 
     /// <summary>How far past its box a sea stack's blocked rock is looked for, in tiles.</summary>
     public const int BlockedReach = 3;
@@ -1502,6 +1542,13 @@ public static class WorldMapBuilder
             npc.ScriptFile = key;
             // How they move about of their own accord, within the original's range round where they stand (plan 02 · S6)
             if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
+            // Someone the original stands inside a thing that blocks the way (the swimmer in the Resort Area's pool) keeps
+            // their tile, where the overlay says they never leave it: they are what is in the way there
+            else if (map.IsSolid(o.X, o.Z) && map.Props.FirstOrDefault(p => p.Model.Length > 0 && p.Covers(o.X, o.Z)) is { } inside)
+            {
+                map.SetSolid(o.X, o.Z, false);
+                if (inside.Type == PropType.Pool) npc.Wading = PoolDepth;
+            }
             map.NPCs.Add(npc);
         }
 

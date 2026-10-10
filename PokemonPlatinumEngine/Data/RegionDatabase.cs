@@ -163,7 +163,11 @@ public static class RegionDatabase
                 "PokemonLeagueElevatorToChampionRoom", "PokemonLeagueChampionRoom", "PokemonLeagueHallwayToHallOfFame", "PokemonLeagueHallOfFame",
                 // Plan 02 · S10: Lake Valor drained, Valor Cavern and Lake Verity as Team Galactic holds it (matrices
                 // of the imported world), and the Canalave Library's three floors, rebuilt to the original's plans
-                "LakeValorDrained", "ValorCavern", "LakeVerityGalactic", "CanalaveLibrary1F", "CanalaveLibrary2F", "CanalaveLibrary3F"
+                "LakeValorDrained", "ValorCavern", "LakeVerityGalactic", "CanalaveLibrary1F", "CanalaveLibrary2F", "CanalaveLibrary3F",
+                // Plan 01 · M10, part a: Victory Road's back rooms (matrices of the imported world), and the Pokémon Centers
+                // and Marts of the Battle Zone's three towns
+                "VictoryRoad1FRoom1", "VictoryRoad1FRoom2", "VictoryRoad1FRoom3",
+                "FightAreaPokemonCenter", "FightAreaPokeMart", "SurvivalAreaPokemonCenter", "SurvivalAreaPokeMart", "ResortAreaPokemonCenter"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

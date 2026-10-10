@@ -1,0 +1,77 @@
+{
+  "area": "route_225",
+  // The original's role (Routes 225 to 227 and Stark Mountain's foot share it) has no song yet (plan 05 · A6):
+  // Routes 206 to 208's climb stands in
+  "bgmTrack": "sinnoh/route206",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The gate house to the Fight Area is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 0, "to": "fight_area", "toWarp": 0 },
+    { "warp": 1, "to": "fight_area", "toWarp": 1 }
+  ],
+  // The house halfway up has no room yet (plan 01 · M11)
+  "locked": [ 2 ],
+  "people": {
+    "ace_trainer_rodolfo": {
+      "name": "Rodolfo",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Rodolfo: Back and forth along this ledge, all day long. Nobody gets up the hill without going through me!",
+        "dialogueAfter": "Ace Trainer Rodolfo: Up you go, then. Mind the drop."
+      }
+    },
+    "ranger_ashlee": {
+      "name": "Ashlee",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Ashlee: Careful where you tread! These woods belong to the Pokémon. We're only passing through.",
+        "dialogueAfter": "Pokémon Ranger Ashlee: You fight hard and you fight fair. The woods can spare you a path."
+      }
+    },
+    "bird_keeper_audrey": {
+      "name": "Audrey",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Audrey: The sea wind climbs these cliffs and my birds ride it for hours. Come and see how high!",
+        "dialogueAfter": "Bird Keeper Audrey: Brought down to earth. It's a long way to fall."
+      }
+    },
+    "psychic_daisy": {
+      "name": "Daisy",
+      "trainer": {
+        "dialogueBefore": "Psychic Daisy: My Pokémon are slow. So slow! But they've already thought of everything you're about to do.",
+        "dialogueAfter": "Psychic Daisy: ...Everything except that."
+      }
+    },
+    "dragon_tamer_geoffrey": {
+      "name": "Geoffrey",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Geoffrey: Dragons don't obey just anybody. Mine obey me! Mostly!",
+        "dialogueAfter": "Dragon Tamer Geoffrey: Mostly wasn't enough today."
+      }
+    },
+    "ace_trainer_deanna": {
+      "name": "Deanna",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Deanna: The Survival Area is just over the rise. Let's find out whether you'd survive it!",
+        "dialogueAfter": "Ace Trainer Deanna: You'll do. Tell them Deanna sent you."
+      }
+    },
+    "ranger_dwayne": {
+      "name": "Dwayne",
+      "trainer": {
+        "dialogueBefore": "Pokémon Ranger Dwayne: I walk this whole wood twice a day, looking after every Pokémon in it. You're next on my round!",
+        "dialogueAfter": "Pokémon Ranger Dwayne: Nothing wrong with your team. I'll make a note of it."
+      }
+    },
+    "ace_trainer_quinn": {
+      "name": "Quinn",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Quinn: I've lost to everybody in the Battle Zone once. I don't lose to anybody twice. You're new, aren't you?",
+        "dialogueAfter": "Ace Trainer Quinn: That's once. Come back and try me again."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_fight_area": "Rt. 225\nSouth: Fight Area",
+    "arrow_signpost_surival_area": "Rt. 225\nEast: Survival Area"
+  }
+}

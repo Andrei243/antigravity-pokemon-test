@@ -1,0 +1,129 @@
+{
+  "key": "route_225",
+  "index": 400,
+  "name": "Route 225",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "TOWN06_D",
+  "nightMusic": "TOWN06_N",
+  "encounters": "route_225",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Machoke", "level": 48 },
+    { "species": "Graveler", "level": 49 },
+    { "species": "Fearow", "level": 48 },
+    { "species": "Fearow", "level": 50 },
+    { "species": "Fearow", "level": 49 },
+    { "species": "Raticate", "level": 50 },
+    { "species": "Machoke", "level": 50 },
+    { "species": "Raticate", "level": 49 },
+    { "species": "Spearow", "level": 47 },
+    { "species": "Rattata", "level": 47 },
+    { "species": "Spearow", "level": 47 },
+    { "species": "Rattata", "level": 47 }
+  ],
+  "landRate": 30,
+  "day": [
+    "Fearow",
+    "Fearow"
+  ],
+  "night": [
+    "Banette",
+    "Banette"
+  ],
+  "swarm": [
+    "Makuhita",
+    "Makuhita"
+  ],
+  "radar": [
+    "Primeape",
+    "Primeape",
+    "Mankey",
+    "Mankey"
+  ],
+  "water": [
+    { "species": "Golduck", "level": 35, "maxLevel": 55 },
+    { "species": "Golduck", "level": 35, "maxLevel": 55 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 45 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 45 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 45 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Barboach", "level": 15, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 },
+    { "species": "Barboach", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 630, "z": 413, "to": "route_225_gate_to_fight_area", "toWarp": 1 },
+    { "x": 631, "z": 413, "to": "route_225_gate_to_fight_area", "toWarp": 1 },
+    { "x": 617, "z": 368, "to": "route_225_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "arrow_signpost_fight_area", "looks": "arrow_signpost", "movement": "none", "x": 628, "z": 410, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "arrow_signpost_surival_area", "looks": "arrow_signpost", "movement": "none", "x": 630, "z": 330, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "item_razor_fang", "looks": "pokeball", "movement": "none", "x": 611, "z": 410, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_RAZOR_FANG", "item": "Razor Fang", "script": "7198" },
+    { "id": "item_rare_candy", "looks": "pokeball", "movement": "none", "x": 637, "z": 394, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_RARE_CANDY", "item": "Rare Candy", "script": "7199" },
+    { "id": "item_hp_up", "looks": "pokeball", "movement": "none", "x": 618, "z": 399, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_HP_UP", "item": "HP Up", "script": "7200" },
+    { "id": "item_lax_incense", "looks": "pokeball", "movement": "none", "x": 610, "z": 368, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_LAX_INCENSE", "item": "Lax Incense", "script": "7201" },
+    { "id": "item_dubious_disc", "looks": "pokeball", "movement": "none", "x": 610, "z": 350, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_DUBIOUS_DISC", "item": "Dubious Disc", "script": "7202" },
+    { "id": "item_dawn_stone", "looks": "pokeball", "movement": "none", "x": 628, "z": 321, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_DAWN_STONE", "item": "Dawn Stone", "script": "7203" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 610, "z": 337, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 97, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 613, "z": 337, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 96, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 611, "z": 337, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 95, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 612, "z": 337, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 94, "script": "2800" },
+    { "id": "item_revive", "looks": "pokeball", "movement": "none", "x": 611, "z": 388, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_REVIVE", "item": "Revive", "script": "7204" },
+    { "id": "cut_tree_1", "looks": "cut_tree", "movement": "none", "x": 632, "z": 394, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10000" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "none", "x": 632, "z": 395, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10000" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "none", "x": 613, "z": 368, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10000" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "none", "x": 613, "z": 369, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_4", "script": "10000" },
+    { "id": "cut_tree_5", "looks": "cut_tree", "movement": "none", "x": 614, "z": 339, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10000" },
+    { "id": "cut_tree_6", "looks": "cut_tree", "movement": "none", "x": 614, "z": 340, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10000" },
+    { "id": "ace_trainer_rodolfo", "looks": "ace_trainer_m", "movement": "walk_back_and_forth", "x": 612, "z": 377, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "face_sides", "sight": 2, "script": "TRAINER_ACE_TRAINER_RODOLFO" },
+    { "id": "ranger_ashlee", "looks": "ace_trainer_f", "movement": "look_south_and_east", "x": 628, "z": 392, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_RANGER_ASHLEE" },
+    { "id": "bird_keeper_audrey", "looks": "ace_trainer_f", "movement": "look_north", "x": 628, "z": 397, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_BIRD_KEEPER_AUDREY" },
+    { "id": "psychic_daisy", "looks": "psychic", "movement": "look_west", "x": 631, "z": 392, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_PSYCHIC_DAISY" },
+    { "id": "dragon_tamer_geoffrey", "looks": "ace_trainer_m", "movement": "look_west", "x": 627, "z": 322, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_DRAGON_TAMER_GEOFFREY" },
+    { "id": "ace_trainer_deanna", "looks": "ace_trainer_f", "movement": "look_east", "x": 619, "z": 340, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ACE_TRAINER_DEANNA" },
+    { "id": "map_signpost", "looks": "map_signpost", "movement": "none", "x": 646, "z": 338, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "MAP_HEADER_SURVIVAL_AREA", "script": "65535" },
+    { "id": "ranger_dwayne", "looks": "ace_trainer_m", "movement": "walk_east_south_north_west", "x": 612, "z": 397, "facing": 3, "rangeX": 2, "rangeZ": 6, "trainer": "normal", "sight": 2, "script": "TRAINER_RANGER_DWAYNE" },
+    { "id": "ace_trainer_quinn", "looks": "ace_trainer_m", "movement": "look_north", "x": 624, "z": 367, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_QUINN" },
+    { "id": "cut_tree_7", "looks": "cut_tree", "movement": "none", "x": 634, "z": 361, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_7", "script": "10000" },
+    { "id": "cut_tree_8", "looks": "cut_tree", "movement": "none", "x": 635, "z": 361, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10000" },
+    { "id": "item_green_shard", "looks": "pokeball", "movement": "none", "x": 630, "z": 338, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_225_GREEN_SHARD", "item": "Green Shard", "script": "7306" }
+  ],
+  "signs": [
+    { "x": 627, "z": 370, "type": 2, "script": "8130", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_225_RARE_CANDY", "range": 2 },
+    { "x": 636, "z": 389, "type": 2, "script": "8173", "item": "Big Mushroom", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_225_BIG_MUSHROOM", "range": 2 },
+    { "x": 614, "z": 373, "type": 2, "script": "8203", "item": "Leaf Stone", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_225_LEAF_STONE", "range": 2 },
+    { "x": 621, "z": 331, "type": 2, "script": "8204", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_225_ULTRA_BALL", "range": 2 }
+  ],
+  "triggers": []
+}

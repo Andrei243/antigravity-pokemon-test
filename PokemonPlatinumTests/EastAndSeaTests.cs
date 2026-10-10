@@ -301,7 +301,8 @@ public class EastAndSeaTests
 
         // The original moors Pastoria's two boats with boxes that overlap: each keeps its own side of the line between them
         var boats = Overworld.Props.Where(p => p.Type == PropType.Boat).ToList();
-        var pastoria = boats.Where(p => p.Model == "c06_s02").ToList();
+        // (the Fight Area's quay has three more of the model, plan 01 · M10)
+        var pastoria = boats.Where(p => p.Model == "c06_s02" && AreaKey(Overworld, p.X, p.Y) == "pastoria_city").ToList();
         Assert.Equal(2, pastoria.Count);
         Assert.All(boats, a => Assert.DoesNotContain(boats, b => !ReferenceEquals(a, b)
             && a.X < b.X + b.Width && b.X < a.X + a.Width && a.Y < b.Y + b.Depth && b.Y < a.Y + a.Depth));

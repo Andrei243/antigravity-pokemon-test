@@ -180,6 +180,15 @@ internal static class Landmarks
             case PropType.RiftShadow:
                 RiftShadow(kit, w, d);
                 return true;
+            case PropType.Container:
+                Container(kit, prop, w, d);
+                return true;
+            case PropType.GrandFountain:
+                GrandFountain(kit, w, d);
+                return true;
+            case PropType.Pool:
+                Pool(kit, w, d);
+                return true;
         }
         return false;
     }
@@ -1216,6 +1225,251 @@ internal static class Landmarks
         }
         c.Rect(mid - 2, 0, 4, 6, Rgb(236, 70, 70));
         Pix.Lit(c, mid - 2, 0, 4, 6, ArtSheet.PublicLight);
+        Pix.Outline(c);
+    }
+
+    // ------------------------------------------------------------------ the Battle Zone (plan 01 · M10)
+
+    /// <summary>The four colours a container comes in: rust, sea green, ochre and slate blue.</summary>
+    private static readonly Tone[] ContainerPaint =
+    {
+        Tone.Of(176, 84, 62, 206, 118, 90, 126, 56, 54),
+        Tone.Of(62, 138, 128, 98, 172, 158, 40, 98, 104),
+        Tone.Of(206, 160, 70, 232, 194, 108, 152, 112, 58),
+        Tone.Of(84, 110, 156, 118, 144, 186, 56, 76, 122)
+    };
+
+    /// <summary>How tall a container stands, in rows of art.</summary>
+    public const int ContainerRows = 62;
+
+    /// <summary>Which of the four colours a container standing on a tile is painted.</summary>
+    public static int ContainerPaintAt(int x, int y) => ((x * 7 + y * 13) % ContainerPaint.Length + ContainerPaint.Length) % ContainerPaint.Length;
+
+    /// <summary>
+    /// A shipping container (the Fight Area's quay): a box of corrugated steel as large as its tiles, in one of four
+    /// colours by where it stands, framed in a darker shade of itself with a casting at each corner. Its south end
+    /// has the doors.
+    /// </summary>
+    private static void Container(KitBuilder kit, Prop prop, int w, int d)
+    {
+        int paint = ContainerPaintAt(prop.X, prop.Y);
+        var tone = ContainerPaint[paint];
+        int x0 = 3, x1 = w - 3, z0 = 6, z1 = d - 4, h = ContainerRows;
+        var top = kit.Face($"container.top.{paint}.{x1 - x0}x{z1 - z0}", x1 - x0, z1 - z0, c => PaintContainerTop(c, tone));
+        var doors = kit.Face($"container.doors.{paint}.{x1 - x0}", x1 - x0, h, c => PaintContainerDoors(c, tone, ContainerMarks[paint]));
+        var side = kit.Face($"container.side.{paint}.{z1 - z0}", z1 - z0, h, c => PaintContainerSide(c, tone));
+        kit.Box(x0, x1, z0, z1, 0, h, top, doors, side, side);
+    }
+
+    /// <summary>A container's frame: a border three texels wide in the paint's dark, and a steel casting in each corner.</summary>
+    private static void ContainerFrame(PixelCanvas c, Tone tone)
+    {
+        int w = c.Width, h = c.Height;
+        for (int i = 0; i < 3; i++) Pix.Border(c, i, i, w - 2 * i, h - 2 * i, i == 0 ? tone.Deep : tone.Dark);
+        c.HLine(1, 1, w - 2, tone.Base);
+        foreach (var (cx, cy) in new[] { (0, 0), (w - 5, 0), (0, h - 5), (w - 5, h - 5) })
+        {
+            c.Rect(cx, cy, 5, 5, Iron.Base);
+            c.Rect(cx + 1, cy + 1, 3, 3, Iron.Light);
+            c.Rect(cx + 2, cy + 2, 1, 1, Iron.Dark);
+        }
+    }
+
+    /// <summary>A side of a container: upright ribs four texels apart, lit on their left and dark on their right.</summary>
+    public static void PaintContainerSide(PixelCanvas c, int paint) => PaintContainerSide(c, ContainerPaint[paint]);
+
+    private static void PaintContainerSide(PixelCanvas c, Tone tone)
+    {
+        int w = c.Width, h = c.Height;
+        for (int x = 0; x < w; x++)
+        {
+            int rib = x % 4;
+            c.VLine(x, 0, h, rib == 0 ? tone.Light : rib == 3 ? tone.Dark : tone.Base);
+        }
+        // The foot is scuffed and in the shade of the ribs above it
+        Pix.Shade(c, 0, h - 8, w, 8, 0.12f);
+        ContainerFrame(c, tone);
+    }
+
+    /// <summary>
+    /// The door end of a container: two leaves of the same ribbed steel, each with two locking bars from top to
+    /// bottom and a handle on its inner bar, a seam between them and stencilled letters on the left leaf.
+    /// </summary>
+    public static void PaintContainerDoors(PixelCanvas c, int paint) => PaintContainerDoors(c, ContainerPaint[paint], ContainerMarks[paint]);
+
+    /// <summary>What is stencilled on a container of each colour: the quay's letters and the line's.</summary>
+    private static readonly string[] ContainerMarks = { "FA RD", "FA SG", "FA OC", "FA SB" };
+
+    private static void PaintContainerDoors(PixelCanvas c, Tone tone, string text)
+    {
+        int w = c.Width, h = c.Height, mid = w / 2;
+        for (int x = 0; x < w; x++)
+        {
+            int rib = x % 8;
+            c.VLine(x, 0, h, rib == 0 ? tone.Light : rib == 7 ? tone.Dark : tone.Base);
+        }
+        Pix.Shade(c, 0, h - 8, w, 8, 0.12f);
+        c.VLine(mid - 1, 3, h - 6, tone.Deep);
+        c.VLine(mid, 3, h - 6, tone.Light);
+        foreach (int leaf in new[] { 0, 1 })
+        {
+            int lx0 = leaf == 0 ? 3 : mid + 1, lx1 = leaf == 0 ? mid - 1 : w - 3, span = lx1 - lx0;
+            foreach (int bar in new[] { lx0 + span / 3, lx0 + span * 2 / 3 })
+            {
+                c.VLine(bar, 5, h - 10, Steel.Light);
+                c.VLine(bar + 1, 5, h - 10, Steel.Dark);
+                // The cams that grip the frame, top and bottom, and a keeper halfway
+                c.Rect(bar - 1, 4, 4, 3, Steel.Base);
+                c.Rect(bar - 1, h - 8, 4, 3, Steel.Base);
+                c.Rect(bar - 1, h / 2 - 1, 4, 2, Steel.Dark);
+            }
+            // The handle, on the bar nearer the seam
+            int inner = leaf == 0 ? lx0 + span * 2 / 3 : lx0 + span / 3;
+            c.Rect(leaf == 0 ? inner - 7 : inner + 2, h * 3 / 5, 7, 2, Steel.Light);
+            c.Rect(leaf == 0 ? inner - 7 : inner + 8, h * 3 / 5, 1, 5, Steel.Base);
+        }
+        // Stencilled letters high on the left leaf, as every container carries
+        if (Pix.TextWidth(text) + 12 < mid)
+        {
+            int tx = 8, ty = 9;
+            c.Rect(tx - 2, ty - 2, Pix.TextWidth(text) + 4, Pix.TextHeight + 4, tone.Dark);
+            Pix.Text(c, tx, ty, text, Rgb(238, 238, 232));
+        }
+        ContainerFrame(c, tone);
+    }
+
+    /// <summary>A container's roof from above: ribs across it, lit along its south and west edges.</summary>
+    public static void PaintContainerTop(PixelCanvas c, int paint) => PaintContainerTop(c, ContainerPaint[paint]);
+
+    private static void PaintContainerTop(PixelCanvas c, Tone tone)
+    {
+        int w = c.Width, h = c.Height;
+        var roof = Tone.Of(PixelCanvas.Light1(tone.Base, 0.1f));
+        for (int x = 0; x < w; x++)
+        {
+            int rib = x % 8;
+            c.VLine(x, 0, h, rib == 0 ? roof.Light : rib == 7 ? roof.Dark : roof.Base);
+        }
+        ContainerFrame(c, tone);
+        c.HLine(5, h - 1, w - 10, tone.Light);
+        c.VLine(0, 5, h - 10, tone.Light);
+    }
+
+    /// <summary>
+    /// The fountain in a pool before the Battle Frontier's gate: a square plinth of pale stone standing in the
+    /// pool's water, a second step on it, and on that the town fountain's round basin and jet.
+    /// </summary>
+    private static void GrandFountain(KitBuilder kit, int w, int d)
+    {
+        // The plinth is the three tiles the world blocks in the middle of the model's box
+        float cx = w / 2f, cz = d / 2f;
+        float half = MathF.Min(46, MathF.Min(w, d) / 2f - 4);
+        kit.Block("grandfountain.plinth", Stone, cx - half, cx + half, cz - half + 4, cz + half, 0, 10);
+        float step = MathF.Round(half * 0.7f);
+        kit.Block("grandfountain.step", PaleStone, cx - step, cx + step, cz - step + 4, cz + step - 4, 10, 18);
+        int size = (int)(step * 2) - 6;
+        kit.Sprite(kit.Frames($"fountain.{size}", size, size * 3 / 4 + 22, MovingFrames, 6f, (c, frame) => PaintFountain(c, size, frame)), cx, cz + step - 8, 18);
+    }
+
+    private static readonly Tone PoolTile = Tone.Of(224, 226, 222, 244, 246, 242, 170, 176, 188);
+
+    /// <summary>How wide a pool's kerb is and how high it stands, in texels.</summary>
+    public const int PoolKerb = 6;
+
+    /// <summary>
+    /// A swimming pool of the Resort Area, as large as its tiles: a kerb of pale tiles round water in the pond's
+    /// blues, lane lines, a ladder at its south-east corner, and a parasol over a deckchair at its north-east.
+    /// </summary>
+    private static void Pool(KitBuilder kit, int w, int d)
+    {
+        int x0 = 4, x1 = w - 4, z0 = 6, z1 = d - 4;
+        var top = kit.Face($"pool.top.{x1 - x0}x{z1 - z0}", x1 - x0, z1 - z0, PaintPool);
+        var front = kit.Face($"pool.kerb.{x1 - x0}", x1 - x0, PoolKerb, PaintPoolKerb);
+        var side = kit.Face($"pool.kerb.{z1 - z0}", z1 - z0, PoolKerb, PaintPoolKerb);
+        kit.Box(x0, x1, z0, z1, 0, PoolKerb, top, front, side, side);
+        // The parasol stands on the kerb's north-east corner, its deckchair in its shade
+        kit.Sprite(kit.Face("pool.parasol", 46, 58, PaintParasol), x1 - 14, z0 + 8, PoolKerb);
+    }
+
+    /// <summary>The pool from above: its kerb of tiles, the water with the kerb's shade along its north and west, lane lines and a ladder.</summary>
+    public static void PaintPool(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height, kerb = PoolKerb;
+        // The kerb: square tiles six texels across with dark joints
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+                c.SetRaw(x, y, x % 6 == 5 || y % 6 == 5 ? PoolTile.Dark : x % 6 == 0 || y % 6 == 0 ? PoolTile.Light : PoolTile.Base);
+        int wx0 = kerb, wy0 = kerb, ww = w - 2 * kerb, wh = h - 2 * kerb;
+        c.Rect(wx0, wy0, ww, wh, Water);
+        // The kerb's shade lies on the water along its north and west sides; the far side catches the light
+        c.Rect(wx0, wy0, ww, 3, WaterDark);
+        c.Rect(wx0, wy0, 3, wh, WaterDark);
+        c.HLine(wx0 + 3, wy0 + wh - 1, ww - 3, WaterLight);
+        // Lane lines: pale dashes four texels long
+        for (int lane = 1; lane <= 3; lane++)
+        {
+            int lx = wx0 + ww * lane / 4;
+            for (int y = wy0 + 6; y + 4 < wy0 + wh - 4; y += 8) c.Rect(lx, y, 1, 4, WaterLight);
+        }
+        // Ripples
+        for (int i = 0; i < ww * wh / 260; i++)
+        {
+            int rx = wx0 + 5 + (i * 37 + 11) % Math.Max(1, ww - 12), ry = wy0 + 6 + (i * 23 + 7) % Math.Max(1, wh - 10);
+            c.Rect(rx, ry, 3, 1, WaterLight);
+        }
+        // The ladder: two steel rails over the kerb's south side near its east corner, and rungs into the water
+        int ladder = w - kerb - 14;
+        foreach (int rail in new[] { ladder, ladder + 6 })
+        {
+            c.Rect(rail, h - kerb - 8, 2, kerb + 6, Steel.Light);
+            c.Rect(rail + 1, h - kerb - 8, 1, kerb + 6, Steel.Dark);
+        }
+        for (int rung = h - kerb - 6; rung < h - kerb; rung += 3) c.HLine(ladder + 2, rung, 4, Steel.Base);
+        Pix.Border(c, 0, 0, w, h, PoolTile.Dark);
+        Pix.Border(c, wx0 - 1, wy0 - 1, ww + 2, wh + 2, PoolTile.Dark);
+    }
+
+    /// <summary>The kerb's upright face: one course of pale tiles.</summary>
+    public static void PaintPoolKerb(PixelCanvas c)
+    {
+        Pix.Raised(c, 0, 0, c.Width, c.Height, PoolTile);
+        for (int x = 5; x < c.Width; x += 6) c.VLine(x, 1, c.Height - 2, PoolTile.Dark);
+    }
+
+    /// <summary>
+    /// A parasol over a deckchair: eight gores, turquoise and white by turns, seen a little from above on a white
+    /// pole, and under it a chair of white slats with a turquoise towel.
+    /// </summary>
+    public static void PaintParasol(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        float cx = w / 2f;
+        // The deckchair: a sloping back and a seat on short legs
+        int seatY = h - 9;
+        c.Rect((int)cx - 15, seatY, 22, 3, WhiteWood.Base);
+        c.HLine((int)cx - 15, seatY, 22, WhiteWood.Light);
+        for (int i = 0; i < 9; i++) c.Rect((int)cx - 16 - i / 3, seatY - 1 - i, 3, 2, i % 3 == 0 ? WhiteWood.Dark : WhiteWood.Base);
+        c.Rect((int)cx - 13, seatY + 3, 2, 5, WhiteWood.Dark);
+        c.Rect((int)cx + 4, seatY + 3, 2, 5, WhiteWood.Dark);
+        c.Rect((int)cx - 8, seatY - 1, 10, 2, Turquoise.Base);
+        c.HLine((int)cx - 8, seatY - 1, 10, Turquoise.Light);
+        // The pole
+        c.Rect((int)cx + 1, 16, 2, h - 18, WhiteWood.Base);
+        c.VLine((int)cx + 2, 16, h - 18, WhiteWood.Dark);
+        // The canopy: a flattened dome, its gores fanning from the crown
+        float px = cx + 2, py = 15, rx = w / 2f - 3, ry = 13;
+        for (int y = 0; y < 30; y++)
+            for (int x = 0; x < w; x++)
+            {
+                float u = (x + 0.5f - px) / rx, v = (y + 0.5f - py) / ry;
+                if (u * u + v * v > 1f) continue;
+                // The underside shows as a darker lip along the near edge
+                bool lip = v > 0 && u * u + (v - 0.18f) * (v - 0.18f) / 0.72f > 1f;
+                int gore = (int)MathF.Floor((MathF.Atan2(v - 0.25f, u) + MathF.PI) / (MathF.PI / 4f));
+                var tone = gore % 2 == 0 ? Turquoise : WhiteWood;
+                c.Set(x, y, lip ? tone.Dark : v < -0.35f ? tone.Light : tone.Base);
+            }
+        c.Rect((int)px - 1, (int)(py - ry) - 2, 2, 3, WhiteWood.Light);
         Pix.Outline(c);
     }
 }

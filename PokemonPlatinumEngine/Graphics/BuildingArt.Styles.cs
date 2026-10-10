@@ -19,6 +19,9 @@ internal static partial class BuildingArt
     public static readonly Color MetalRoof = Rgb(150, 160, 176);
 
     private static readonly Color FlatGrey = Rgb(170, 176, 190);
+
+    /// <summary>The rose of the Ribbon Syndicate's roof and canopy (plan 01 · M10).</summary>
+    public static readonly Color RibbonRose = Rgb(214, 104, 150);
     private static readonly Color Teal = Rgb(52, 166, 138), Red = Rgb(214, 82, 66);
 
     private static Color TileRoof(TileType roof) => roof switch
@@ -48,7 +51,7 @@ internal static partial class BuildingArt
         "CONTEST" => Rgb(214, 92, 150),
         "PAL PARK" => Rgb(96, 168, 104),
         "MARSH" => Rgb(116, 156, 84),
-        "RIBBONS" => Rgb(64, 170, 180),
+        "RIBBONS" => RibbonRose,
         _ => Rgb(214, 170, 72)
     };
 
@@ -139,6 +142,12 @@ internal static partial class BuildingArt
                 ? block with { Accent = Rgb(214, 96, 72), Gear = RoofGear.Vents | RoofGear.Skylight }
                 : house.Pitched ? house with { Home = false, Portal = 52, Chimney = false } : block with { Accent = house.Accent },
             BuildingKind.Hotel => House(Architecture.Resort, null) with { Home = false, Portal = 52, GlassDoor = true },
+            // The Ribbon Syndicate is the Resort's white boards under a roof of its own rose, with a veranda across its front
+            BuildingKind.Hall when b.Sign == "RIBBONS" => House(Architecture.Resort, null) with
+            {
+                Home = false, Portal = 84, GlassDoor = true, Window = WindowKind.Shop, Shutters = false, Veranda = true,
+                RoofColor = RibbonRose, Accent = PixelCanvas.Shadow(RibbonRose, 0.1f)
+            },
             BuildingKind.Hall => shop with { RoofColor = HallColor(b.Sign), Accent = PixelCanvas.Shadow(HallColor(b.Sign), 0.1f), Portal = 84 },
             BuildingKind.Chapel => new BuildingStyle
             {

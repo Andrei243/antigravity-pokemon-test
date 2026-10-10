@@ -142,6 +142,14 @@ public enum PropType
     /// <summary>A door of the League's rooms (plan 01 · M9, part 2d): a thing of the map, drawn in its wall by the room's pieces.</summary>
     LeagueDoor,
 
+    // The Battle Zone (plan 01 · M10)
+    /// <summary>A shipping container of corrugated steel, as large as its model's tiles (the Fight Area's quay).</summary>
+    Container,
+    /// <summary>A fountain on a stepped plinth standing in a pool: a bowl, a jet and water falling from its rim (before the Battle Frontier's gate).</summary>
+    GrandFountain,
+    /// <summary>A swimming pool in a kerb of pale tiles, with a ladder, and a parasol over a deckchair beside it (the Resort Area).</summary>
+    Pool,
+
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
     Window,

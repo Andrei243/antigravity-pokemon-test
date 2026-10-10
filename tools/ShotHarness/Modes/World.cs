@@ -174,6 +174,9 @@ partial class Harness
 
         // The Distortion World and the north's last stand-ins (plan 01 · M8, part 2)
         DistortionMode();
+
+        // The Battle Zone's towns and routes, and Route 224 (plan 01 · M10, part a)
+        BattleZoneMode();
     }
 
     // The shortest way on foot between two tiles (ledges are walked round, as they must be going north)

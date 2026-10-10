@@ -1,0 +1,62 @@
+{
+  "area": "route_230",
+  // The original's role is ROAD_BZA (Routes 228 to 230), which has no song yet (plan 05 · A6): Route 209's stands in
+  "bgmTrack": "sinnoh/route209",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The fisherman and the rich boy who stand across the way in from the Fight Area until the tag battle before the
+  // Battle Frontier's gate is fought (hidden by FLAG_HIDE_FIGHT_AREA_BLOCKADE) wait for the story (plan 02 · S15)
+  "people": {
+    "swimmer_glenn": {
+      "name": "Glenn",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Swimmer Glenn: Round and round the bay I go. You're the first thing all day worth stopping for!",
+        "dialogueAfter": "Swimmer Glenn: Right. Round and round again."
+      }
+    },
+    "swimmer_joanna": {
+      "name": "Joanna",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Swimmer Joanna: I ride out here on my Lapras every morning. Race you! No? A battle, then!",
+        "dialogueAfter": "Swimmer Joanna: I ought to have held out for the race."
+      }
+    },
+    "swimmer_kurt": {
+      "name": "Kurt",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kurt: Careful, the rocks out here are thick with pincers! Most of them are mine!",
+        "dialogueAfter": "Swimmer Kurt: Nipped in the bud."
+      }
+    },
+    "swimmer_sophia": {
+      "name": "Sophia",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Swimmer Sophia: Up and down, up and down. The swell out here rocks me half to sleep. Wake me up!",
+        "dialogueAfter": "Swimmer Sophia: Wide awake now, thank you."
+      }
+    },
+    "swimmer_sam": {
+      "name": "Sam",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Swimmer Sam: The Resort Area's that way, the Fight Area's the other. I never could choose, so here I float!",
+        "dialogueAfter": "Swimmer Sam: The resort, then. I need a lie down."
+      }
+    },
+    "swimmer_mallory": {
+      "name": "Mallory",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Swimmer Mallory: My Pokémon skate over the water without so much as a ripple. Try to keep up!",
+        "dialogueAfter": "Swimmer Mallory: You made rather a splash."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost": "Rt. 230\nWest: Fight Area"
+  }
+}

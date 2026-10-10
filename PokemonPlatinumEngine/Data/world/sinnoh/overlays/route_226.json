@@ -1,0 +1,58 @@
+{
+  "area": "route_226",
+  // The original's role (Routes 225 to 227) has no song yet (plan 05 · A6): Routes 206 to 208's stands in
+  "bgmTrack": "sinnoh/route206",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The gate house to Route 228 is passed through; its rooms come with plan 01 · M11
+  "through": [
+    { "warp": 1, "to": "route_228", "toWarp": 1 },
+    { "warp": 2, "to": "route_228", "toWarp": 0 }
+  ],
+  // The house on the islet, whose owner trades away his Magikarp, has no room yet (plan 01 · M11; the trade is one of
+  // plan 06 · R12's)
+  "locked": [ 0 ],
+  "people": {
+    "swimmer_lydia": {
+      "name": "Lydia",
+      "npcType": "Lass",
+      "trainer": {
+        "dialogueBefore": "Swimmer Lydia: The water under these cliffs is warmer than it looks. The volcano heats it! Come on in!",
+        "dialogueAfter": "Swimmer Lydia: Brr. Losing takes the warmth right out of it."
+      }
+    },
+    "ace_trainer_graham": {
+      "name": "Graham",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Graham: One good punch settles most things. My Pokémon have been practising theirs all week!",
+        "dialogueAfter": "Ace Trainer Graham: Out for the count. Fair and square."
+      }
+    },
+    "bird_keeper_geneva": {
+      "name": "Geneva",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Geneva: My Xatu stared at the horizon all morning and wouldn't say why. Then you turned up!",
+        "dialogueAfter": "Bird Keeper Geneva: So that's what it saw coming. It might have warned me."
+      }
+    },
+    "dragon_tamer_stanley": {
+      "name": "Stanley",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Stanley: A little Dratini today, a mighty dragon tomorrow. Help me hurry it along!",
+        "dialogueAfter": "Dragon Tamer Stanley: Tomorrow's a while off yet, it seems."
+      }
+    },
+    "swimmer_wade": {
+      "name": "Wade",
+      "npcType": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Swimmer Wade: I swim with a shoal of Carvanha. They've only bitten me twice! Want to meet them?",
+        "dialogueAfter": "Swimmer Wade: Make that three times. They always sulk when we lose."
+      }
+    }
+  },
+  "signs": {
+    "arrow_signpost_survival_area": "Rt. 226\nWest: Survival Area",
+    "arrow_signpost_rt_227_rt_228": "Rt. 226\nNorth: Rt. 227\nEast: Rt. 228"
+  }
+}

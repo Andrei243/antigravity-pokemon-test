@@ -17,6 +17,12 @@ public class NPC
     /// M6). Null on the ground. Only someone at about that height runs into them or speaks to them.
     /// </summary>
     public float? Level { get; set; }
+
+    /// <summary>
+    /// How many rows of their sprite are under the surface of what they stand in: a swimmer in the Resort Area's pool
+    /// stands on its floor, in water to the chest (plan 01 · M10). Nought for anyone on dry ground.
+    /// </summary>
+    public int Wading { get; set; }
     public int GridY { get; set; }
     public Direction Facing { get; set; } = Direction.Down;
     public List<string> DialogLines { get; set; } = new();

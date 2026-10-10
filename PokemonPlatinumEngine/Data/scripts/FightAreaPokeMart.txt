@@ -1,0 +1,17 @@
+# The Fight Area's Poké Mart (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own,
+# on the original's beats (scripts_fight_area_mart.s).
+#
+# The lady by the shelves (the original's script 3) hands over a Scope Lens, once
+# (FLAG_RECEIVED_FIGHT_AREA_MART_SCOPE_LENS), and frets over what her Pokémon should hold ever after.
+
+script Socialite
+  face self player
+  speaker "Socialite"
+  if flag FLAG_RECEIVED_FIGHT_AREA_MART_SCOPE_LENS goto Dilemma
+  say "Tell me, what do you give your Pokémon to hold in battle? I simply cannot make up my mind."
+  say "I bought far too many of these. Do take one off my hands."
+  give "Scope Lens"
+  setflag FLAG_RECEIVED_FIGHT_AREA_MART_SCOPE_LENS
+label Dilemma
+  say "One item for each Pokémon, and so many to choose from! It is the same dilemma before every single battle."
+  end

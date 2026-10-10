@@ -1,0 +1,40 @@
+# The Fight Area (plan 01 · M10, part a). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_fight_area.s).
+#
+# The sailor on the pier takes the player back to Snowpoint City, to the quay beside the ship's own sailor there. The
+# way here is that sailor's, once the Hall of Fame has been entered (the original's SnowpointCity_SailorSSSpiral asks
+# FLAG_GAME_COMPLETED and lands the player at 623, 434, facing east): plan 02 · S15 writes it, with the rival's scene
+# that begins as the player steps ashore (FightArea_OnFrame_Rival) and the tag battle before the Battle Frontier's gate.
+
+script Ferry
+  face self player
+  ask "Heading back to the mainland? I can have you in Snowpoint City before the tea's gone cold."
+  if no goto Stay
+  say "Anchors aweigh, then! Wrap up warm: it's snowing where we're going."
+  sound "stairs"
+  warp "Sinnoh" 356 246 up
+  end
+label Stay
+  say "You'd sooner fly, I expect. Suit yourself! The ship's not going anywhere without me."
+  end
+
+
+# The fisherman by the water north of the quay (the original's script 8) gives away the Super Rod once
+# (FLAG_RECEIVED_SUPER_ROD), and after that only his advice.
+script Fisherman
+  face self player
+  if flag FLAG_RECEIVED_SUPER_ROD goto Advice
+  ask "The Super Rod! Now that is a rod. It hooks the big ones, out where the water's deep. Wouldn't you like one?"
+  if no goto Refused
+  say "I knew it! One angler can always tell another. Here, take this one."
+  give "Super Rod"
+  setflag FLAG_RECEIVED_SUPER_ROD
+  say "Go and try your luck! Any water will do, but the sea round this island is the place for it."
+  end
+label Refused
+  say "What? You don't care for fishing? ...I'll pretend I didn't hear that."
+  end
+label Advice
+  say "Here's an angler's advice: the same water gives up different Pokémon to a different rod."
+  say "So fish every pond three times over, with the Old Rod, the Good Rod and the Super Rod."
+  end

@@ -1,0 +1,124 @@
+{
+  "key": "route_224",
+  "index": 399,
+  "name": "Route 224",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "ROAD_F_D",
+  "nightMusic": "ROAD_F_N",
+  "encounters": "route_224",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Floatzel", "level": 50 },
+    { "species": "Roselia", "level": 50 },
+    { "species": "Bellsprout", "level": 49 },
+    { "species": "Bellsprout", "level": 49 },
+    { "species": "Pelipper", "level": 51 },
+    { "species": "Gastrodon", "level": 49 },
+    { "species": "Gloom", "level": 51 },
+    { "species": "Weepinbell", "level": 51 },
+    { "species": "Beautifly", "level": 52 },
+    { "species": "Dustox", "level": 52 },
+    { "species": "Beautifly", "level": 52 },
+    { "species": "Dustox", "level": 52 }
+  ],
+  "landRate": 30,
+  "day": [
+    "Bellsprout",
+    "Bellsprout"
+  ],
+  "night": [
+    "Oddish",
+    "Oddish"
+  ],
+  "swarm": [
+    "Natu",
+    "Natu"
+  ],
+  "radar": [
+    "Pelipper",
+    "Gastrodon",
+    "Beautifly",
+    "Dustox"
+  ],
+  "water": [
+    { "species": "Pelipper", "level": 35, "maxLevel": 55 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 55 },
+    { "species": "Gastrodon", "level": 35, "maxLevel": 55 },
+    { "species": "Gastrodon", "level": 35, "maxLevel": 55 },
+    { "species": "Gastrodon", "level": 35, "maxLevel": 55 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 4, "maxLevel": 6 },
+    { "species": "Magikarp", "level": 3, "maxLevel": 7 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 20 },
+    { "species": "Remoraid", "level": 15, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 },
+    { "species": "Remoraid", "level": 10, "maxLevel": 25 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Gyarados", "level": 30, "maxLevel": 55 },
+    { "species": "Octillery", "level": 30, "maxLevel": 40 },
+    { "species": "Luvdisc", "level": 20, "maxLevel": 30 },
+    { "species": "Octillery", "level": 40, "maxLevel": 55 },
+    { "species": "Octillery", "level": 40, "maxLevel": 55 }
+  ],
+  "superRodRate": 75,
+  "eastSea": true,
+  "warps": [
+    { "x": 878, "z": 560, "to": "victory_road_1f_room_3", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_razor_claw", "looks": "pokeball", "movement": "none", "x": 884, "z": 570, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_RAZOR_CLAW", "item": "Razor Claw", "script": "7194" },
+    { "id": "item_rare_candy", "looks": "pokeball", "movement": "none", "x": 869, "z": 530, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_RARE_CANDY", "item": "Rare Candy", "script": "7195" },
+    { "id": "item_destiny_knot", "looks": "pokeball", "movement": "none", "x": 907, "z": 509, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_DESTINY_KNOT", "item": "Destiny Knot", "script": "7196" },
+    { "id": "prof_oak", "looks": "prof_oak", "movement": "none", "x": 909, "z": 492, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_224_PROF_OAK", "script": "4" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 906, "z": 522, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 86, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 907, "z": 522, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 87, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 908, "z": 522, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 88, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 909, "z": 522, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 89, "script": "2800" },
+    { "id": "ace_trainer_ruben", "looks": "ace_trainer_m", "movement": "look_east", "x": 883, "z": 547, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_RUBEN" },
+    { "id": "psychic_maxwell", "looks": "psychic", "movement": "look_north", "x": 875, "z": 529, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_PSYCHIC_MAXWELL" },
+    { "id": "black_belt_carl", "looks": "black_belt", "movement": "walk_south_east_north_west", "x": 901, "z": 532, "facing": 3, "rangeX": 10, "rangeZ": 2, "trainer": "normal", "sight": 2, "script": "TRAINER_BLACK_BELT_CARL" },
+    { "id": "veteran_armando", "looks": "expert_m", "movement": "look_south_and_west", "x": 885, "z": 533, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_VETERAN_ARMANDO" },
+    { "id": "psychic_brittney", "looks": "psychic", "movement": "look_east", "x": 869, "z": 536, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_PSYCHIC_BRITTNEY" },
+    { "id": "ace_trainer_jamie", "looks": "ace_trainer_f", "movement": "look_west", "x": 915, "z": 518, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_ACE_TRAINER_JAMIE" },
+    { "id": "ruin_maniac_larry", "looks": "ruin_maniac", "movement": "look_east", "x": 913, "z": 522, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_RUIN_MANIAC_LARRY" },
+    { "id": "dragon_tamer_hayden", "looks": "ace_trainer_m", "movement": "rotate_clockwise", "x": 904, "z": 511, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_DRAGON_TAMER_HAYDEN" },
+    { "id": "shaymin", "looks": "shaymin", "movement": "none", "x": 911, "z": 480, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_224_SHAYMIN", "script": "0" },
+    { "id": "item_repeat_ball", "looks": "pokeball", "movement": "none", "x": 923, "z": 503, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_REPEAT_BALL", "item": "Repeat Ball", "script": "7303" },
+    { "id": "item_pp_max", "looks": "pokeball", "movement": "none", "x": 904, "z": 524, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_PP_MAX", "item": "PP Max", "script": "7304" },
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 914, "z": 509, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_ULTRA_BALL", "item": "Ultra Ball", "script": "7305" },
+    { "id": "item_upgrade", "looks": "pokeball", "movement": "none", "x": 877, "z": 541, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_ROUTE_224_UPGRADE", "item": "Upgrade", "script": "7302" },
+    { "id": "marley", "looks": "marley", "movement": "look_north", "x": 907, "z": 493, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_224_MARLEY", "script": "6" }
+  ],
+  "signs": [
+    { "x": 881, "z": 530, "type": 2, "script": "8124", "item": "Rare Candy", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_RARE_CANDY", "range": 2 },
+    { "x": 899, "z": 535, "type": 2, "script": "8125", "item": "Pearl", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_PEARL_1", "range": 2 },
+    { "x": 908, "z": 530, "type": 2, "script": "8126", "item": "Heart Scale", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_HEART_SCALE", "range": 2 },
+    { "x": 914, "z": 533, "type": 2, "script": "8127", "item": "Big Pearl", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_BIG_PEARL", "range": 2 },
+    { "x": 917, "z": 529, "type": 2, "script": "8170", "item": "Pearl", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_PEARL_2", "range": 2 },
+    { "x": 883, "z": 563, "type": 2, "script": "8171", "item": "Zinc", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_ZINC", "range": 2 },
+    { "x": 908, "z": 527, "type": 2, "script": "8172", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_224_ULTRA_BALL", "range": 2 },
+    { "x": 908, "z": 491, "type": 0, "script": "3" }
+  ],
+  "triggers": [
+    { "x": 903, "z": 496, "width": 1, "depth": 3, "script": "5", "variable": "VAR_ROUTE_224_STATE", "value": "1" }
+  ]
+}
