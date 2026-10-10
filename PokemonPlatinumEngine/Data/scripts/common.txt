@@ -186,6 +186,21 @@ script ChapterEight
   setflag FLAG_HIDE_ACUITY_CAVERN_UXIE
   setflag FLAG_HIDE_SNOWPOINT_CITY_CANDICE
   setflag FLAG_HIDE_SNOWPOINT_CITY_CYNTHIA
+  call Headquarters
+  return
+
+
+# The chapter's second half, Team Galactic's headquarters in Veilstone City (plan 02 · S11, part b), as the original's
+# new game has it: the grunt who lets the Storage Key fall comes to the terrace before the building only once
+# Commander Jupiter has been to Lake Acuity (lake_acuity.txt clears his flag), Cyrus comes onto the hall's dais only
+# for his speech (GalacticHQHall.txt), and Commander Saturn stands in the lobby only once it is all over (plan 02 ·
+# S12, S13). Called by ChapterEight, and run for a save from before (Story/StoryMigration.cs, version 14), which
+# shows the grunt again where the lake's scene has been played. It may only set flags and variables, and ends in
+# return.
+script Headquarters
+  setflag FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
+  setflag FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS
+  setflag FLAG_HIDE_GALACTIC_HQ_1F_SATURN
   return
 
 

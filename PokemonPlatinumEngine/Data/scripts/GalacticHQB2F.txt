@@ -1,0 +1,24 @@
+# Team Galactic's headquarters, the lower basement (plan 02 · S11, part b), rebuilt to the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_galactic_hq_b2f.s).
+#
+# The stairs from the warehouse come down into its long store rooms. The Galactic Key lies in a room at its north
+# end, behind a shutter that only the key itself opens (FLAG_HIDE_GALACTIC_HQ_B2F_DOOR): it is reached the long way
+# round, up through the building and down again by the stairs from the ground floor.
+
+
+# The shutter between the store rooms and the key's side (the original's script 3): it opens to the Galactic Key.
+script Door
+  speaker none
+  if item "Galactic Key" goto HasKey
+  say "The shutter is locked. It wants a special key."
+  end
+label HasKey
+  ask "The shutter is locked. It wants a special key. Use the Galactic Key?"
+  if no goto Leave
+  sound "door_slide"
+  hide galactic_hq_door_west
+  hide galactic_hq_door_east
+  setflag FLAG_HIDE_GALACTIC_HQ_B2F_DOOR
+  say "The shutter slid open."
+label Leave
+  end

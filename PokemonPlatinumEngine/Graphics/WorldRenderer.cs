@@ -461,7 +461,8 @@ public sealed class WorldRenderer
         shaders.SetWalkers(walkerFeet);
 
         // 1. Shadow map: depth of everything that casts shadows, seen from the sun (or moon)
-        var focus = room != null ? room.RoomCenter with { Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
+        // (a room's shadows are cast round its middle; a hall followed across its width takes them along)
+        var focus = room != null ? room.RoomCenter with { X = camera.Target.X, Y = 0 } : new Vector3(camera.Target.X, groundY, camera.Target.Z - 2f);
         var lightCamera = context.Shadows.LightCamera(focus, light.SunDirection, indoors ? 18f : 40f);
 
         FrameProfiler.Lap(FrameSection.Prepare);
@@ -696,6 +697,13 @@ public sealed class WorldRenderer
                 float reach = (depth - DeepestRoom) / 2f;
                 roomTarget.Z = SnapToTexel(Math.Clamp(pz, roomTarget.Z - reach, roomTarget.Z + reach));
             }
+            // A hall wider than the picture (the floors of Team Galactic's headquarters, plan 02 · S11) is followed
+            // across its width the same way, between its side walls
+            if (room.RoomWidth > WidestRoom)
+            {
+                float reach = (room.RoomWidth - HallInView) / 2f;
+                roomTarget.X = SnapToTexel(Math.Clamp(px, roomTarget.X - reach, roomTarget.X + reach));
+            }
             return new Camera3D(roomTarget + dir * distance, roomTarget, Vector3.UnitY,
                 MapScene.IndoorFovYDeg, CameraProjection.Perspective);
         }
@@ -720,6 +728,12 @@ public sealed class WorldRenderer
 
     /// <summary>The deepest room the camera frames whole: a deeper hall is followed along its length.</summary>
     public const int DeepestRoom = 14;
+
+    /// <summary>The widest room the camera frames whole, in tiles of floor: a wider hall is followed across its width.</summary>
+    public const int WidestRoom = 30;
+
+    /// <summary>How much of such a hall's width the picture holds at the deepest room's distance, in tiles.</summary>
+    public const int HallInView = 26;
 
     internal static float SnapToTexel(float v) => MathF.Round(v * CharacterSprites.TexelsPerUnit) / CharacterSprites.TexelsPerUnit;
 

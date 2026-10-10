@@ -173,6 +173,9 @@ public static class RegionDatabase
                 "FightAreaPokemonCenter", "FightAreaPokeMart", "SurvivalAreaPokemonCenter", "SurvivalAreaPokeMart", "ResortAreaPokemonCenter",
                 // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (a matrix of the imported world)
                 "LakeAcuityGalactic",
+                // Plan 02 · S11, part b: Team Galactic's headquarters in Veilstone City, floor by floor on the original's plans
+                "GalacticHQ1F", "GalacticHQ2F", "GalacticHQ3F", "GalacticHQ4F", "GalacticHQB1F", "GalacticHQB2F",
+                "GalacticHQHall", "GalacticHQLaboratory", "GalacticHQControlRoom",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

@@ -8,7 +8,12 @@
     // Maylene's Gym and its punching bags, built to the original's plan (plan 01 · M9)
     { "warp": 13, "map": "VeilstoneGym", "x": 12, "y": 30, "facing": "Up" },
     // Team Galactic's warehouse, built to the original's plan, where HM02 lies (plan 02 · S8)
-    { "warp": 4, "map": "VeilstoneGalacticWarehouse", "x": 8, "y": 11, "facing": "Up" }
+    { "warp": 4, "map": "VeilstoneGalacticWarehouse", "x": 8, "y": 11, "facing": "Up" },
+    // The Galactic Veilstone Building's three doors, onto the exit mats of its ground floor (plan 02 · S11, part b):
+    // the lobby's two, and the room the way out of the headquarters ends in
+    { "warp": 14, "map": "GalacticHQ1F", "x": 8, "y": 22, "facing": "Up" },
+    { "warp": 15, "map": "GalacticHQ1F", "x": 29, "y": 22, "facing": "Up" },
+    { "warp": 16, "map": "GalacticHQ1F", "x": 42, "y": 22, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -18,8 +23,8 @@
     { "warp": 12, "to": "route_214", "toWarp": 1 }
   ],
   // The Game Corner (plan 06 · R16b), the Department Store, the prize exchange and the houses (plan 01 · M11) have no
-  // rooms yet, and the Galactic building waits for plan 02 · S11
-  "locked": [ 2, 3, 5, 6, 7, 8, 9, 14, 15, 16 ],
+  // rooms yet
+  "locked": [ 2, 3, 5, 6, 7, 8, 9 ],
   // Plan 02 · S8 (scripts/veilstone_city.txt): the warehouse's guards pushing the player back until Maylene's Badge
   // (trigger 0), and Crasher Wake coming out of the Gym (trigger 1)
   "triggers": [ { "trigger": 0, "script": "GruntsBlock" }, { "trigger": 1, "script": "CrasherWake" } ],
@@ -51,7 +56,11 @@
         "...once I've impressed the higher-ups. Which could take a while, to be honest."
       ]
     },
-    "looker": { "name": "Looker", "dialog": [ "Looker: That warehouse... I would very much like to see inside." ] },
+    // Looker, who takes the player into the warehouse (S8) and comes back with the Storage Key (S11, part b)
+    "looker": { "name": "Looker", "script": "Looker", "still": true },
+    // The grunt who lets the Storage Key fall, on the terrace before the Galactic building from Lake Acuity on (plan
+    // 02 · S11, part b); a scene counts on finding him on his tile
+    "grunt_m_storage_key": { "name": "Grunt", "script": "GruntStorageKey", "still": true },
     "guitarist_1": {
       "name": "Guitarist",
       "dialog": [

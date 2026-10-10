@@ -1,0 +1,96 @@
+# Team Galactic's headquarters, the hall (plan 02 · S11, part b), rebuilt to the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_galactic_hq_hall.s).
+#
+# The hall where Cyrus speaks to Team Galactic, reached by two warp panels of the second floor. Its grunts stand in
+# ranks across the middle of it, so the panel in the west wall leads nowhere while they are there; the one in the east
+# brings the player down a passage to where Looker is watching from the back (the original's trigger, a column of two
+# tiles; VAR_GALACTIC_HQ_HALL_STATE). He waves the player over, Cyrus comes onto the dais by the panel from his own
+# floor, speaks of the unfinished world he hates and the new one Team Galactic now has the power to make, and goes as
+# he came (the player watches from beside Looker, where the original stands them a tile south of him: under the text
+# box, in this game's picture). The grunts file out to their posts (FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS), and Looker, who makes the matter
+# the International Police's, goes off by the west panel (FLAG_HIDE_GALACTIC_HQ_HALL_LOOKER). The original's
+# RemoveObject sets those flags and Cyrus's (FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS) as it takes each away.
+#
+# The original moves its camera up the hall behind a fade and plays a fanfare of the crowd at each part of the
+# speech; here the camera goes to the dais and the hall shakes with the roar (the story's effects: plan 09 · L11).
+
+
+# Arriving: Looker is back where he watches from until the speech has been heard.
+script OnEnter
+  if var VAR_GALACTIC_HQ_HALL_STATE == 0 place looker 19 12 left
+  end
+
+
+# Down the passage to the back of the hall (the original's coordinate event).
+script Speech
+  face looker right
+  emote looker exclaim
+  speaker "Looker"
+  say "Psst! Here! Over here, my friend!"
+  say "All of Team Galactic, gathered in a single hall... What can it mean?"
+  face looker left
+  # The player comes to stand beside him (the original puts them a tile south of him, which here is under the text)
+  if var PLAYER_Y == 13 walk player up 1
+  face player left
+  camera pan 13 8 0.8
+  wait 0.6
+  clearflag FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS
+  place cyrus 17 3 down
+  show cyrus
+  sound "warp"
+  walk cyrus down 3 left 4 down 1
+  wait 0.8
+  speaker "Cyrus"
+  say "Members of Team Galactic! Hear me! I stand before you today as Cyrus."
+  say "This world of ours is a crude thing. In a word: unfinished. To live in it has always been a struggle, and it always will be."
+  say "We humans are just as unfinished, and so are Pokémon. Because there is so much we lack, we fight, and we hurt one another... It is ugly."
+  say "I hate it. That nothing is whole, that none of us is whole: I hate it with everything I am."
+  say "The world ought to be whole. The world must change."
+  camera shake 0.4
+  wait 0.8
+  say "Then who will change it? I will. I, Cyrus, and Team Galactic. Yes: every one of you."
+  say "Together we dug through the myths and laid their secrets bare. Together we took the Pokémon of legend."
+  say "And now Team Galactic holds the energy to change the world! The power of our dream is in our hands!"
+  wait 0.8
+  say "Understand me, all of you! The world I have dreamed of for so long is about to become real."
+  say "Those of you who go to Mt. Coronet, and those who stay behind: our tasks may differ, but our hearts beat as one."
+  say "Glory to Team Galactic!"
+  camera shake 0.6
+  wait 0.4
+  speaker "Galactic Grunts"
+  say "RAAAAAH!!"
+  speaker "Galactic Grunt"
+  say "Master Cyrus! There's nobody like him!"
+  wait 0.4
+  walk cyrus up 1 right 4 up 3
+  sound "warp"
+  hide cyrus
+  setflag FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS
+  fade out
+  camera release 0.1
+  setflag FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS
+  face looker right
+  face player left
+  wait 0.3
+  fade in
+  wait 0.4
+  speaker "Looker"
+  say "...Phew. So that was Cyrus, the boss of Team Galactic. Quite a performance, no? And the man is only twenty-seven!"
+  say "But a new world, made for Team Galactic and for nobody else? It is absurd. My head, it spins."
+  say "This \"new world\": what is it? This \"unfinished\" world: what is that?"
+  say "Very well. To look into such things is the work of the International Police. And I am of the International Police, in good standing. So the work is mine."
+  say "Here we part, my friend. Take every care!"
+  walk looker left 1
+  face player left
+  face looker up
+  wait 0.3
+  face looker down
+  wait 0.2
+  face looker left
+  wait 0.3
+  walk looker left 17 fast
+  sound "warp"
+  hide looker
+  setflag FLAG_HIDE_GALACTIC_HQ_HALL_LOOKER
+  setvar VAR_GALACTIC_HQ_HALL_STATE 1
+  end

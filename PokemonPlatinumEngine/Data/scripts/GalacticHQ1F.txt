@@ -1,0 +1,92 @@
+# Team Galactic's headquarters in Veilstone City, the ground floor (plan 02 · S11, part b), rebuilt to the original's
+# plan. docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_galactic_hq_1f.s).
+#
+# The building's three doors are open from the start, as the original's are. The two on the west lead into the lobby,
+# where a receptionist and three members talk and a shutter keeps the stairs behind it until the Galactic Key
+# (FLAG_HIDE_GALACTIC_HQ_1F_DOOR). The third leads into a room with nothing but a green pad in it: the way out of
+# the headquarters ends there (the fourth floor's green panel), and it carries nobody the other way. Everything else
+# on this floor is reached from the basement or by warp panel: the way in is the warehouse's.
+#
+# What the lobby's four say changes once Team Galactic has left Lake Valor for good (the original asks
+# FLAG_GALACTIC_LEFT_LAKE_VALOR, which is set after the Distortion World). Nothing sets that flag yet, so each
+# script here says its first lines only, and the lines for afterwards are written beside it for the session that
+# sets the flag (plan 02 · S12 or S13) to put behind an `if flag`. Commander Saturn stands in the lobby from then on
+# (FLAG_HIDE_GALACTIC_HQ_1F_SATURN, which Sendoff Spring clears).
+
+
+# The original's OnTransition.
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_GALACTIC_HQ
+  end
+
+
+# The receptionist behind her counter (the original's script 2).
+# Afterwards: "Welcome to Team Galactic's headq... Ahem. Welcome to the Galactic Veilstone Building." "Whether it's for
+# the better or the worse I couldn't tell you, but nothing whatever is planned for today."
+script Receptionist
+  speaker "Receptionist"
+  say "Welcome to Team Galactic's headq... Ahem. Welcome to the Galactic Veilstone Building."
+  say "We study the energy of the cosmos here. Power without end, enough for everybody! Wouldn't that be something?"
+  end
+
+
+# The scientist in the lobby (script 5).
+# Afterwards: "This is where Team Galactic works. On what, now? On our dream, I suppose." "A wonderful new world... Not
+# that anybody has told me how."
+script Scientist
+  say "Team Galactic's research goes on day and night in this building."
+  say "New sources of energy: that is what we are after."
+  end
+
+
+# The grunt who wanders the lobby (script 3).
+# Afterwards: the same boast, and then "...That's how we did things, anyway. There's nothing left to take now."
+script GruntM
+  say "Whatever can be taken, Team Galactic takes! Whatever isn't needed, Team Galactic throws out!"
+  say "That's how we do things!"
+  end
+
+
+# The grunt in the lobby's corner (script 4).
+# Afterwards: "Where has our boss got to, I wonder..."
+script GruntF2
+  say "You? You're far too young for us."
+  say "Come back when you've done some growing."
+  end
+
+
+# Commander Saturn, in the lobby once it is all over (script 8).
+script Saturn
+  speaker "Saturn"
+  say "So. It's you. I heard what happened on Spear Pillar."
+  say "Master Cyrus despised the heart for being unfinished. And yet it was hearts he stirred, with every speech he gave, to make people follow him."
+  say "The thing he hated most was the tool he used. I found that fascinating. I wanted to see where he would take it, and I did, at his side."
+  say "It's over now. A world with no heart in it... Who would want such a thing?"
+  say "So what becomes of Team Galactic? I have learned this much: going to extremes solves nothing."
+  say "Perhaps we really should look for new sources of energy. Instead of only saying so in our advertisements."
+  end
+
+
+# The shutter before the stairs (script 6): it opens to the Galactic Key, for good.
+script Door
+  speaker none
+  if item "Galactic Key" goto HasKey
+  say "The shutter is locked. It wants a special key."
+  end
+label HasKey
+  ask "The shutter is locked. It wants a special key. Use the Galactic Key?"
+  if no goto Leave
+  sound "door_slide"
+  hide galactic_hq_door_west
+  hide galactic_hq_door_east
+  setflag FLAG_HIDE_GALACTIC_HQ_1F_DOOR
+  say "The shutter slid open."
+label Leave
+  end
+
+# The creed on the wall, read with no name on the box.
+script Notice
+  speaker none
+  sayown
+  end

@@ -7,6 +7,14 @@
 # the player to keep it, and has overheard in the Game Corner that Team Galactic has sent something to Pastoria City
 # (VAR_PASTORIA_CITY_STATE 1, which brings the rival there). He waits in here until the explosion in Pastoria
 # (FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER).
+#
+# Plan 02 · S11, part b: the door is the original's, two leaves across the corridor (the map file's
+# galactic_hq_door_west and _east, behind FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_GALACTIC_HQ_DOOR), and behind it
+# the stairs go down to the headquarters' basement (GalacticHQB2F). Once Looker has the Storage Key and the player has
+# agreed to go in with him (veilstone_city.txt, VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 3), a step up to the door
+# (the original's trigger, the two tiles before it) brings him in behind the player: he unlocks it, goes on ahead down
+# the stairs and is gone from Veilstone City (state 4). The player never holds the key in Platinum; the branch of the
+# original's door script that asks to use it is Diamond and Pearl's, and nothing gives the item.
 
 
 # The original's OnTransition (Looker by the door until he has looked round) and OnFrame (state 1).
@@ -40,6 +48,62 @@ label WithLooker
   say "Well. The warehouse has told us little. Never mind."
   say "In the Game Corner, I caught a whisper: a crate of Team Galactic's has gone off to Pastoria City."
   say "What is in it, I cannot say. But my nose for trouble, it is twitching."
+  end
+
+
+# The door, read while it stands (the original's script 1, without the key nobody is given).
+script Door
+  speaker none
+  say "Rust has crept all over this heavy door. It won't open without some special key."
+  end
+
+
+# Up to the door with Looker's word given (the original's coordinate event, a row of two tiles): he comes in by the
+# way the player did, round them to the tile beside theirs, and opens the door.
+script LookerOpensDoor
+  clearflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
+  place looker 8 11 up
+  show looker
+  if var PLAYER_X == 9 goto BesideOnTheWest
+  walk looker up 2 right 1 up 1
+  face looker left
+  face player right
+  goto Opens
+label BesideOnTheWest
+  walk looker up 3
+  face looker right
+  face player left
+label Opens
+  speaker "Looker"
+  say "Ah, there you are! I have kept you waiting."
+  face looker up
+  say "Now, the Storage Key that Team Galactic so kindly let fall... In it goes, and..."
+  sound "door_slide"
+  hide galactic_hq_door_west
+  hide galactic_hq_door_east
+  setflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_GALACTIC_HQ_DOOR
+  setflag FLAG_USED_STORAGE_KEY
+  wait 0.3
+  say "...clunk! There! It is open!"
+  face looker player
+  say "I go on ahead, my friend. Do not put yourself in the way of harm!"
+  face player up
+  walk looker up 5
+  face looker left
+  wait 0.2
+  face looker right
+  wait 0.3
+  if var PLAYER_X == 9 goto DownFromTheWest
+  walk looker right 4 fast
+  goto Gone
+label DownFromTheWest
+  walk looker right 5 fast
+label Gone
+  sound "stairs"
+  hide looker
+  setflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
+  setflag FLAG_HIDE_VEILSTONE_CITY_LOOKER
+  setvar VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 4
   end
 
 

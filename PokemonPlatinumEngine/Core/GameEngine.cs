@@ -86,6 +86,10 @@ public partial class GameEngine
 
     // The player came through a warp, onto the tile in front of it: a trigger there starts as a step onto it would
     private bool steppedOutOfWarp;
+
+    // Someone carried by a warp panel (plan 02 · S11, part b; Overworld/WarpPanels): the warp, the way they faced as
+    // they stepped on, how long they have turned, and whether the picture has opened on the far panel yet
+    private (Warp Warp, Direction Facing, float Clock, bool Arrived)? panelRide;
     private readonly List<NPC> battleTrainers = new();
 
     // How the player was travelling when the field's music was last chosen, and whether a trainer's eye theme is on
@@ -931,6 +935,13 @@ public partial class GameEngine
         // Whoever travels with the player keeps up, whatever else has the field
         partner?.Update(dt, player.Stride);
 
+        // A warp panel has the player: they turn on the spot until the picture closes, and again as it opens
+        if (panelRide != null)
+        {
+            RideThePanel(dt);
+            return;
+        }
+
         // A script has the field: the keys do nothing until it ends, and people moving of their own accord only
         // finish the step they are on
         if (runner.IsRunning)
@@ -1447,10 +1458,16 @@ public partial class GameEngine
         }
         NoteTheWayIn(warp);
 
-        // A door has made its own sound as it opened; any other way through is the original's footsteps on stairs,
-        // and a warp panel its own
-        if (WorldRenderer.DoorPlace(currentMap, warp.SourceX, warp.SourceY) == null)
-            AudioManager.PlaySound(currentMap.BehaviourAt(warp.SourceX, warp.SourceY) == TileBehavior.WarpPanel ? "warp" : "stairs");
+        // A warp panel carries whoever ends a step on it: they turn where they stand, and the picture closes on that
+        if (WarpPanels.Carries(currentMap, warp))
+        {
+            AudioManager.PlaySound("warp");
+            panelRide = (warp, player.Facing, 0f, false);
+            return;
+        }
+
+        // A door has made its own sound as it opened; any other way through is the original's footsteps on stairs
+        if (WorldRenderer.DoorPlace(currentMap, warp.SourceX, warp.SourceY) == null) AudioManager.PlaySound("stairs");
         // The music fades with the screen, so a building with its own theme starts as the door opens on it
         PlayAreaMusic(MapDatabase.Get(warp.TargetMap), warp.TargetX, warp.TargetY);
         StartTransition(GameState.Overworld, () =>
@@ -1469,6 +1486,42 @@ public partial class GameEngine
             int doorX = warp.TargetX - dx, doorY = warp.TargetY - dy;
             if (!currentMap.IsIndoors && WorldRenderer.DoorPlace(currentMap, doorX, doorY) != null)
                 world.Life.LeaveDoor(currentMap, doorX, doorY);
+        });
+    }
+
+    /// <summary>
+    /// A warp panel's ride (the original's warp animation; <see cref="WarpPanels"/>): the player turns on the spot,
+    /// the picture closes, and on the far panel they turn on a moment and come to rest facing as they did when they
+    /// stepped on. Arriving is no step: nothing on the far tile starts, and the panel there carries nobody back.
+    /// </summary>
+    private void RideThePanel(float dt)
+    {
+        var (warp, facing, clock, arrived) = panelRide!.Value;
+        clock += dt;
+        panelRide = (warp, facing, clock, arrived);
+        if (arrived)
+        {
+            // The spin goes on from where the dark took it, and ends the way the traveller faced
+            player.Facing = WarpPanels.Spin(facing, WarpPanels.SpinUp + clock);
+            if (clock < WarpPanels.SpinDown) return;
+            player.Facing = facing;
+            panelRide = null;
+            return;
+        }
+        player.Facing = WarpPanels.Spin(facing, clock);
+        if (clock < WarpPanels.SpinUp) return;
+
+        PlayAreaMusic(MapDatabase.Get(warp.TargetMap), warp.TargetX, warp.TargetY);
+        var from = currentMap;
+        StartTransition(GameState.Overworld, () =>
+        {
+            var (x, y, way) = WarpPanels.Arrival(from, warp, facing);
+            currentMap = MapDatabase.Get(warp.TargetMap);
+            player.SetPosition(x, y, way);
+            ArriveOnMap();
+            AnnounceLocation();
+            world.Life.Clear();
+            panelRide = (warp, facing, 0f, true);
         });
     }
 

@@ -1,0 +1,270 @@
+{
+  "name": "GalacticHQLaboratory",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 41,
+  "height": 16,
+  "ground": [
+    "#########################################",
+    "#########################################",
+    "#########################################",
+    "#################################_______#",
+    "#################################_______#",
+    "#################################_______#",
+    "#################################_______#",
+    "#################################_______#",
+    "#_______________________________________#",
+    "#_______________________________________#",
+    "#_______________________________________#",
+    "#_______________________________________#",
+    "#_______________________________________#",
+    "#_______________________________________#",
+    "#_______________________________________#",
+    "#########################################"
+  ],
+  "solid": [
+    "#########################################",
+    "#########################################",
+    "####################################.####",
+    "#################################.......#",
+    "#################################.......#",
+    "#################################.......#",
+    "#################################.......#",
+    "#################################.......#",
+    "#..###....##.....##..##..##..##.........#",
+    "#.........##.....##..##..##..##.........#",
+    "#.......................................#",
+    "#.......................................#",
+    "#............##..##..##..##..##.........#",
+    "#............##..##..##..##..##.........#",
+    "#............##..##..##..##..##.........#",
+    "#########################################"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 11, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "Tank",
+      "x": 29,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 29,
+      "y": 13,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 25,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 25,
+      "y": 13,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 21,
+      "y": 13,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 21,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 17,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 17,
+      "y": 13,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 13,
+      "y": 13,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 10,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 1,
+      "sourceY": 11,
+      "targetMap": "GalacticHQ4F",
+      "targetX": 22,
+      "targetY": 3,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 36,
+      "sourceY": 2,
+      "targetMap": "GalacticHQControlRoom",
+      "targetX": 8,
+      "targetY": 13,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 11,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 17,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 18,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 21,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 22,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 25,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 26,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 29,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    },
+    {
+      "x": 30,
+      "y": 9,
+      "text": "Something hangs in the green fluid, perfectly still.",
+      "script": "Notice"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "scientist_m",
+      "name": "Scientist",
+      "npcType": "Scientist",
+      "x": 8,
+      "y": 13,
+      "facing": "Left",
+      "dialog": [
+        "I feel sick about what we did. That experiment went much too far.",
+        "Whatever Master Cyrus means to do next, I don't know that I can stomach it."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "movement": "wander_around",
+      "rangeX": 2
+    },
+    {
+      "id": "scientist_f",
+      "name": "Scientist",
+      "npcType": "Scientist",
+      "x": 36,
+      "y": 10,
+      "facing": "Left",
+      "dialog": [
+        "Urgh... I can't bring myself to talk about it.",
+        "But that thing we made... What does he want it for?"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "movement": "wander_around",
+      "rangeZ": 3
+    },
+    {
+      "name": "Full Restore",
+      "npcType": "ItemBall",
+      "x": 6,
+      "y": 8,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_GALACTIC_HQ_LABORATORY_FULL_RESTORE",
+      "item": "Full Restore"
+    }
+  ],
+  "wildEncounters": []
+}

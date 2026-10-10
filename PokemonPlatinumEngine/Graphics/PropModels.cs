@@ -100,7 +100,44 @@ internal static class PropModels
             case PropType.Crates: Boxes(kit, p); break;
             // The Poffin House's tables (plan 06 · R14c)
             case PropType.CookingTable: CookingTable(kit, w, d); break;
+            // Team Galactic's headquarters (plan 02 · S11, part b): the warp panels in its floors and the laboratory's tanks
+            case PropType.WarpPanel: WarpPanel(kit, wayOut: false); break;
+            case PropType.WarpPanelOut: WarpPanel(kit, wayOut: true); break;
+            case PropType.Tank: Tank(kit, w, d); break;
         }
+    }
+
+    /// <summary>
+    /// A warp panel (style guide, "Rooms": Team Galactic's rooms): a plate set into the middle of its tile, a texel
+    /// proud of the floor, lit teal, or green for the way out.
+    /// </summary>
+    private static void WarpPanel(KitBuilder kit, bool wayOut)
+    {
+        const int s = GalacticArt.PanelSize, at = (32 - s) / 2;
+        var top = kit.Face(wayOut ? "warppanel.out" : "warppanel", s, s, c => GalacticArt.PaintPanel(c, wayOut));
+        var edge = kit.Face("warppanel.edge", s, 1, GalacticArt.PaintPanelEdge);
+        kit.Box(at, at + s, at, at + s, 0, 1, top, edge);
+    }
+
+    /// <summary>
+    /// A tank of the laboratory on its tiles (two by two): a steel foot, a cylinder of glass seen as three faces with
+    /// the fluid and what hangs in it, and a steel cap.
+    /// </summary>
+    private static void Tank(KitBuilder kit, int w, int d)
+    {
+        const int foot = GalacticArt.TankFoot, glass = GalacticArt.TankGlass, cap = GalacticArt.TankCap;
+        int tw = w - 8, td = d - 8;
+        float x0 = 4, x1 = w - 4, z0 = 4, z1 = d - 4;
+        var bandFront = kit.Face($"tank.band.{tw}x{foot}", tw, foot, GalacticArt.PaintTankBand);
+        var bandSide = kit.Face($"tank.band.{td}x{foot}", td, foot, GalacticArt.PaintTankBand);
+        kit.Box(x0, x1, z0, z1, 0, foot, null, bandFront, bandSide, bandSide);
+        var front = kit.Face($"tank.glass.front.{tw - 4}", tw - 4, glass, c => GalacticArt.PaintTankGlass(c, front: true));
+        var side = kit.Face($"tank.glass.side.{td - 4}", td - 4, glass, c => GalacticArt.PaintTankGlass(c, front: false));
+        kit.Box(x0 + 2, x1 - 2, z0 + 2, z1 - 2, foot, foot + glass, null, front, side, side);
+        var capFront = kit.Face($"tank.cap.{tw}x{cap}", tw, cap, GalacticArt.PaintTankBand);
+        var capSide = kit.Face($"tank.cap.{td}x{cap}", td, cap, GalacticArt.PaintTankBand);
+        var top = kit.Face($"tank.top.{tw}x{td}", tw, td, GalacticArt.PaintTankTop);
+        kit.Box(x0, x1, z0, z1, foot + glass, foot + glass + cap, top, capFront, capSide, capSide);
     }
 
     /// <summary>

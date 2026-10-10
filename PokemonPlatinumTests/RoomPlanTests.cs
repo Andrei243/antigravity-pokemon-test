@@ -67,6 +67,14 @@ public class RoomPlanTests
     /// down at the east end (the original's <c>StairsEast</c> and <c>StairsWest</c>).</summary>
     internal static readonly string[] LostTower = { "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F" };
 
+    /// <summary>Team Galactic's headquarters in Veilstone City (plan 02 · S11, part b): nine rooms on the original's plans,
+    /// joined by stairs and warp panels; only the ground floor has doors, three of them (<c>GalacticHeadquartersTests</c>).</summary>
+    internal static readonly string[] GalacticHeadquarters =
+    {
+        "GalacticHQ1F", "GalacticHQ2F", "GalacticHQ3F", "GalacticHQ4F", "GalacticHQB1F", "GalacticHQB2F",
+        "GalacticHQHall", "GalacticHQLaboratory", "GalacticHQControlRoom",
+    };
+
     // The original's people (res/field/events/events_<map>.json of the decompilation): local id, tile, facing
     public static IEnumerable<object[]> People => new[]
     {
@@ -150,6 +158,47 @@ public class RoomPlanTests
         new object[] { "SunyshoreMarket", "sailor", 8, 9, Direction.Down },
         new object[] { "SunyshoreCityNortheastHouse", "julia", 3, 5, Direction.Down },
         new object[] { "FootstepHouse", "dr_footstep", 5, 6, Direction.Down },
+        // Team Galactic's headquarters and the warehouse's door, plan 02 · S11, part b
+        new object[] { "VeilstoneGalacticWarehouse", "galactic_hq_door_west", 8, 7, Direction.Down },
+        new object[] { "VeilstoneGalacticWarehouse", "galactic_hq_door_east", 9, 7, Direction.Down },
+        new object[] { "GalacticHQ1F", "grunt_f_1", 29, 15, Direction.Down },
+        new object[] { "GalacticHQ1F", "scientist_m_1", 11, 18, Direction.Down },
+        new object[] { "GalacticHQ1F", "galactic_grunt", 41, 7, Direction.Down },
+        new object[] { "GalacticHQ1F", "scientist_fredrick", 17, 6, Direction.Right },
+        new object[] { "GalacticHQ1F", "galactic_hq_door_west", 22, 18, Direction.Down },
+        new object[] { "GalacticHQ1F", "galactic_hq_door_east", 23, 18, Direction.Down },
+        new object[] { "GalacticHQ1F", "grunt_f_2", 2, 19, Direction.Down },
+        new object[] { "GalacticHQ1F", "grunt_m", 19, 21, Direction.Left },
+        new object[] { "GalacticHQ1F", "saturn", 33, 19, Direction.Left },
+        new object[] { "GalacticHQ2F", "galactic_grunt_1", 10, 6, Direction.Up },
+        new object[] { "GalacticHQ2F", "galactic_grunt_2", 21, 16, Direction.Up },
+        new object[] { "GalacticHQ2F", "galactic_grunt_3", 26, 16, Direction.Left },
+        new object[] { "GalacticHQ2F", "scientist_darrius", 32, 6, Direction.Up },
+        new object[] { "GalacticHQ3F", "grunt_m", 15, 6, Direction.Down },
+        new object[] { "GalacticHQ3F", "galactic_grunt_1", 4, 6, Direction.Up },
+        new object[] { "GalacticHQ3F", "galactic_grunt_2", 9, 20, Direction.Right },
+        new object[] { "GalacticHQ3F", "galactic_grunt_3", 42, 7, Direction.Up },
+        new object[] { "GalacticHQ3F", "galactic_grunt_4", 42, 3, Direction.Down },
+        new object[] { "GalacticHQ3F", "galactic_hq_door_west", 27, 19, Direction.Down },
+        new object[] { "GalacticHQ3F", "galactic_hq_door_east", 28, 19, Direction.Down },
+        new object[] { "GalacticHQ4F", "cyrus", 8, 8, Direction.Up },
+        new object[] { "GalacticHQ4F", "galactic_hq_door_west", 8, 14, Direction.Down },
+        new object[] { "GalacticHQ4F", "galactic_hq_door_east", 9, 14, Direction.Down },
+        new object[] { "GalacticHQ4F", "bollard_west", 18, 14, Direction.Down },
+        new object[] { "GalacticHQ4F", "bollard_east", 19, 14, Direction.Down },
+        new object[] { "GalacticHQB1F", "grunt_m", 5, 7, Direction.Down },
+        new object[] { "GalacticHQB2F", "grunt_m", 26, 5, Direction.Down },
+        new object[] { "GalacticHQB2F", "scientist_m", 8, 10, Direction.Down },
+        new object[] { "GalacticHQB2F", "galactic_grunt_1", 40, 15, Direction.Left },
+        new object[] { "GalacticHQB2F", "galactic_grunt_2", 71, 10, Direction.Down },
+        new object[] { "GalacticHQB2F", "galactic_hq_door_west", 14, 8, Direction.Down },
+        new object[] { "GalacticHQB2F", "galactic_hq_door_east", 15, 8, Direction.Down },
+        new object[] { "GalacticHQHall", "looker", 19, 12, Direction.Left },
+        new object[] { "GalacticHQHall", "cyrus", 17, 3, Direction.Down },
+        new object[] { "GalacticHQLaboratory", "scientist_m", 8, 13, Direction.Left },
+        new object[] { "GalacticHQLaboratory", "scientist_f", 36, 10, Direction.Left },
+        new object[] { "GalacticHQControlRoom", "saturn", 8, 6, Direction.Up },
+        new object[] { "GalacticHQControlRoom", "charon", 7, 6, Direction.Up },
     };
 
     [Theory]
@@ -218,7 +267,7 @@ public class RoomPlanTests
     [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).Concat(LibraryUpperFloors).Concat(GalacticHeadquarters).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);

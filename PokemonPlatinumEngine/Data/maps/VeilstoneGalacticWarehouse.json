@@ -14,7 +14,7 @@
     "#____#__________#",
     "#____###__#######",
     "#____###__#######",
-    "#____############",
+    "#____###__#######",
     "#_______________#",
     "#_______________#",
     "#_______________#",
@@ -29,7 +29,7 @@
     "####.##.......###",
     "####.###..#######",
     "#....###..#######",
-    "#....############",
+    "#....###..#######",
     "####......##..###",
     "####......##..###",
     "#...............#",
@@ -94,20 +94,6 @@
       "depth": 1
     },
     {
-      "type": "LabMachine",
-      "x": 14,
-      "y": 3,
-      "width": 1,
-      "depth": 2
-    },
-    {
-      "type": "LabMachine",
-      "x": 15,
-      "y": 3,
-      "width": 1,
-      "depth": 2
-    },
-    {
       "type": "Window",
       "x": 3,
       "y": 2,
@@ -120,6 +106,13 @@
       "y": 2,
       "width": 1,
       "depth": 1
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 14,
+      "y": 3,
+      "width": 2,
+      "depth": 2
     }
   ],
   "warps": [
@@ -130,20 +123,17 @@
       "targetX": 701,
       "targetY": 592,
       "targetFacing": "Down"
-    }
-  ],
-  "signboards": [
-    {
-      "x": 8,
-      "y": 7,
-      "text": "Rust has crept all over this heavy door. It won't open without some special key."
     },
     {
-      "x": 9,
-      "y": 7,
-      "text": "Rust has crept all over this heavy door. It won't open without some special key."
+      "sourceX": 13,
+      "sourceY": 3,
+      "targetMap": "GalacticHQB2F",
+      "targetX": 4,
+      "targetY": 16,
+      "targetFacing": "Right"
     }
   ],
+  "signboards": [],
   "npcs": [
     {
       "id": "looker",
@@ -172,6 +162,37 @@
       "facing": "Down",
       "hiddenBy": "FLAG_OBTAINED_VEILSTONE_CITY_GALACTIC_WAREHOUSE_HM02",
       "item": "HM02"
+    },
+    {
+      "id": "galactic_hq_door_west",
+      "name": "Door",
+      "npcType": "GalacticDoor",
+      "x": 8,
+      "y": 7,
+      "facing": "Down",
+      "script": "Door",
+      "hiddenBy": "FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_GALACTIC_HQ_DOOR"
+    },
+    {
+      "id": "galactic_hq_door_east",
+      "name": "Door",
+      "npcType": "GalacticDoor",
+      "x": 9,
+      "y": 7,
+      "facing": "Down",
+      "script": "Door",
+      "hiddenBy": "FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_GALACTIC_HQ_DOOR"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 8,
+      "y": 8,
+      "width": 2,
+      "depth": 1,
+      "script": "LookerOpensDoor",
+      "variable": "VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE",
+      "value": 3
     }
   ],
   "wildEncounters": []

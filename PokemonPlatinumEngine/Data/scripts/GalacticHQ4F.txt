@@ -1,0 +1,124 @@
+# Team Galactic's headquarters, the fourth floor (plan 02 · S11, part b), rebuilt to the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_galactic_hq_4f.s).
+#
+# Cyrus's own floor. The stairs come up into a room in its south-west corner, and a shutter the Galactic Key opens
+# (FLAG_HIDE_GALACTIC_HQ_4F_DOOR) shuts the corridor from there to his room. Stepping out of that corridor (the
+# original's trigger, a row of two tiles; VAR_GALACTIC_HQ_4F_STATE) turns him from his desk: his speech in the hall
+# was a lie told to his own people, the three Pokémon of the lakes are of no more use to him, and whoever comes for
+# them out of pity will be made to regret it. Beaten, he hands over a Master Ball, points to the warp panel that
+# leads to the laboratory, and leaves for Mt. Coronet (FLAG_HIDE_GALACTIC_HQ_4F_CYRUS, which the original's
+# RemoveObject sets).
+#
+# From his room one panel leads to the dais of the hall and another to the laboratory. The corridor in the east,
+# which leads to the green panel and out of the building, is shut by two bollards until Team Galactic has gone
+# (FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC, GalacticHQControlRoom.txt).
+
+
+# Arriving: until he has been beaten Cyrus is at his desk, wherever a battle lost left him standing.
+script OnEnter
+  if var VAR_GALACTIC_HQ_4F_STATE == 0 place cyrus 8 8 up
+  end
+
+
+# Out of the corridor into Cyrus's room (the original's coordinate event), or Cyrus spoken to.
+script Cyrus
+  face cyrus down
+  speaker "Cyrus"
+  say "...So. You have come. You will have heard what I told them in the hall."
+  say "Heh. A lie, naturally. Oh, I mean to make a new world, that much is true. But not for the likes of Team Galactic."
+  say "A whole new world for myself alone: nothing less could ever be complete, or perfect."
+  say "You have met my followers. Every one of them is as useless and as unfinished as the last. You know that as well as I do."
+  walk cyrus down 1
+  say "I know what brings you here. It is written all over you. Uxie, Mesprit and Azelf. You want them saved."
+  say "I have no further need of them. I am finished with them. If your heart aches so, take them. It spares me the trouble of disposing of them."
+  say "And yet you are a remarkable specimen. Those Pokémon are nothing to you, and still you come all this way for them. Out of pity?"
+  say "Pity. Compassion. What pointless things to feel. They make no sense, and they come from the weakest part of a person: the heart."
+  say "It was nothing but sentiment that brought you here. I will make you regret listening to it!"
+  if var PLAYER_X == 9 goto ToTheEastTile
+  if var PLAYER_Y == 11 walk cyrus down 1
+  goto Battle
+label ToTheEastTile
+  if var PLAYER_Y == 11 walk cyrus down 1 right 1
+  face cyrus down
+label Battle
+  face cyrus player
+  face player cyrus
+  battle cyrus as "galactic_boss_cyrus_galactic_hq"
+  speaker "Cyrus"
+  say "I see. You are strong, and the root of that strength is the compassion you feel for Pokémon."
+  say "What a waste. Feelings like that are illusions, and like every illusion they fade with the years, until death puts an end to them."
+  say "That is why I threw all of mine away. ...But never mind. You will never understand the place I stand in."
+  say "Still, you came here alone, and that takes courage as well as strength. This is your reward."
+  give "Master Ball"
+  speaker "Cyrus"
+  say "The Master Ball is the best Poké Ball there is. It catches any wild Pokémon, without fail."
+  say "I have no use for it. Trainers like you make friends and partners of Pokémon. The others in Team Galactic use them as tools."
+  say "I do neither. I make the power of Pokémon my own."
+  if var PLAYER_Y != 11 goto Leaves
+  walk cyrus up 1 right 4 up 3
+  face cyrus down
+  face player cyrus
+label Leaves
+  say "If you want to save the Pokémon of the lakes, the warp panel ahead will take you to them."
+  say "I am going to Mt. Coronet. At the summit of that mountain, what I am owed is waiting."
+  say "That is where I will make my new world..."
+  if var PLAYER_Y != 11 goto Gone
+  # Along the room and up to the panel in its north-east corner
+  if var PLAYER_X == 8 walk cyrus right 10 up 3
+  if var PLAYER_X == 9 walk cyrus right 9 up 3
+label Gone
+  sound "warp"
+  hide cyrus
+  setflag FLAG_HIDE_GALACTIC_HQ_4F_CYRUS
+  setvar VAR_GALACTIC_HQ_4F_STATE 1
+  end
+
+
+# The shutter across the corridor to Cyrus's room (the original's script 2): it opens to the Galactic Key.
+script Door
+  speaker none
+  if item "Galactic Key" goto HasKey
+  say "The shutter is locked. It wants a special key."
+  end
+label HasKey
+  ask "The shutter is locked. It wants a special key. Use the Galactic Key?"
+  if no goto Leave
+  sound "door_slide"
+  hide galactic_hq_door_west
+  hide galactic_hq_door_east
+  setflag FLAG_HIDE_GALACTIC_HQ_4F_DOOR
+  say "The shutter slid open."
+label Leave
+  end
+
+
+# Team Galactic's reports, on the machine in the west wall (the original's script 4). One report to a reading: the
+# original's menu comes round again after each, and here the machine is simply read again.
+script Reports
+  speaker none
+  choose "Team Galactic's reports. Read which one?" "The beginning of space" "The Pokémon of the myths" "The Red Chain" "None of them"
+  if result == 0 goto Space
+  if result == 1 goto Myths
+  if result == 2 goto Chain
+  end
+label Space
+  say "\"Some hold that the universe began in one vast explosion. Sinnoh, it seems, was made the same way, in a time before memory.\""
+  say "\"What set it off was the power of a Pokémon: the one the old stories worship as a god. We have no need to catch that Pokémon. What we need is its power...\""
+  say "The entry stops there."
+  end
+label Myths
+  say "\"The Pokémon of the myths made Sinnoh by its own power. Shut inside a Poké Ball, it could never use that power to the full.\""
+  say "\"Bound by the Red Chain, though, it could be made to use every bit of it, as we see fit...\""
+  say "The entry stops there."
+  end
+label Chain
+  say "\"The Pokémon of the three lakes and the Pokémon of Mt. Coronet are tied to one another. Take the three from their lakes, and the one in the mountain is loosed.\""
+  say "\"From the three, crystals can be drawn, and of those crystals a Red Chain can be made. With that chain the Pokémon of the myths can be called up and bound to our will...\""
+  say "The entry stops there."
+  end
+
+# The sign about the warp panels, read with no name on the box.
+script Notice
+  speaker none
+  sayown
+  end
