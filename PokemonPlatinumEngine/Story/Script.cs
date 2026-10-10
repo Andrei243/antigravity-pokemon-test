@@ -47,7 +47,9 @@ public enum Op
     // The day's events and the berry patches (plan 06 · R14a)
     Lottery, Berry, ChooseItem,
     // Poffins (plan 06 · R14c)
-    Poffin
+    Poffin,
+    // The Day Care and Eggs (plan 06 · R15)
+    DayCare, GiveEgg, Hatch
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

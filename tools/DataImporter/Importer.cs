@@ -507,6 +507,12 @@ public sealed partial class Importer
         var tutored = d.GetProperty("learnset").GetProperty("by_tutor").EnumerateArray()
             .Select(m => api.MoveName(moveConstants.IndexOf(m.GetString()!))).ToList();
         s.TutorMoves = tutored.Count > 0 ? tutored : null;
+        // What an Egg is born knowing from its father, and what species an Egg of it is (plan 06 · R15)
+        var eggMoves = d.GetProperty("learnset").TryGetProperty("egg_moves", out var egg)
+            ? egg.EnumerateArray().Select(m => api.MoveName(moveConstants.IndexOf(m.GetString()!))).ToList() : new();
+        s.EggMoves = eggMoves.Count > 0 ? eggMoves : null;
+        if (d.TryGetProperty("offspring", out var offspring) && speciesConstants.IndexOf(offspring.GetString()!) is var child && child > 0 && child != dex)
+            s.Offspring = api.SpeciesName(child);
 
         var evolutions = d.GetProperty("evolutions").EnumerateArray().Select(PlatinumEvolution).ToList();
         s.Evolutions = evolutions.Count > 0 ? evolutions : null;
@@ -609,6 +615,11 @@ public sealed partial class Importer
         s.Abilities = AbilitiesOf(pid).Where(a => !a.Hidden).Select(a => a.Name).Distinct().ToList();
         s.WildItems = LaterWildItems(pid);
         s.Learnset = LaterLearnset(pid);
+        s.EggMoves = LaterEggMoves(pid);
+        // An Egg of it is the first of its line (plan 06 · R15)
+        int first = dex;
+        while (api.Species[first].IntOrNull("evolves_from_species_id") is { } from && from >= 1) first = from;
+        if (first != dex) s.Offspring = api.SpeciesName(first);
         var evolutions = LaterEvolutionsOf(dex);
         s.Evolutions = evolutions.Count > 0 ? evolutions : null;
         return s;
@@ -677,6 +688,24 @@ public sealed partial class Importer
     }
 
     private Dictionary<int, List<CsvRow>>? levelUp;
+
+    /// <summary>A later species' egg moves (plan 06 · R15), from the newest game PokeAPI gives them for, in its order.</summary>
+    private List<string>? LaterEggMoves(int pokemonId)
+    {
+        eggMoveRows ??= api.Table("pokemon_moves").Where(r => r.Int("pokemon_move_method_id") == 2)
+            .GroupBy(r => r.Int("pokemon_id")).ToDictionary(g => g.Key, g => g.ToList());
+        var rows = eggMoveRows.GetValueOrDefault(pokemonId) ?? new();
+        foreach (int vg in LearnsetVersionGroups)
+        {
+            var learned = rows.Where(r => r.Int("version_group_id") == vg).ToList();
+            if (learned.Count == 0) continue;
+            return learned.OrderBy(r => r.IntOrNull("order") ?? 0).ThenBy(r => r.Int("move_id"))
+                .Select(r => api.MoveName(r.Int("move_id"))).Distinct().ToList();
+        }
+        return null;
+    }
+
+    private Dictionary<int, List<CsvRow>>? eggMoveRows;
 
     /// <summary>
     /// The TMs, HMs and tutor moves of the species after Platinum (plan 06 · R11): each Platinum machine whose move

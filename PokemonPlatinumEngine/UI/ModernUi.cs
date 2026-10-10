@@ -128,7 +128,8 @@ internal static partial class ModernUi
     {
         UiFonts.DrawCentered(p.DisplayName, x, centerY, size, Ink, UiWeight.Black);
         float w = UiFonts.Measure(p.DisplayName, size, UiWeight.Black);
-        if (p.Gender is not (Gender.Male or Gender.Female)) return w;
+        // An Egg shows no gender (plan 06 · R15)
+        if (p.IsEgg || p.Gender is not (Gender.Male or Gender.Female)) return w;
         UiIcons.GenderMark(new Vector2(x + w + size * 0.5f, centerY), size * 0.74f, p.Gender);
         return w + size * 0.9f;
     }
@@ -209,12 +210,13 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(c.X - radius, c.Y - 3, radius * 2, 6), 3, Rule);
         UiShapes.Circle(c, radius * 0.27f, Rule);
         UiShapes.Circle(c, radius * 0.18f, new Color(226, 234, 246, 255));
-        var icon = PixelArtGenerator.GetPokemonIcon(p.ModelName);
+        var icon = PixelArtGenerator.IconOf(p);
         float t = (float)FrameClock.Now;
-        int hop = p.IsFainted ? 0 : selected ? ((int)(t / 0.16f) % 2) * 3 * scale : ((int)(t / 0.4f) % 2) * scale;
+        // An Egg sits still but for a slow rock (plan 06 · R15)
+        int hop = p.IsEgg ? ((int)(t / 0.8f) % 2) * scale : p.IsFainted ? 0 : selected ? ((int)(t / 0.16f) % 2) * 3 * scale : ((int)(t / 0.4f) % 2) * scale;
         Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
             new Rectangle(MathF.Round(c.X - icon.Width * scale / 2f), MathF.Round(c.Y - icon.Height * scale / 2f - 1.5f * scale - hop), icon.Width * scale, icon.Height * scale),
-            Vector2.Zero, 0, p.IsFainted ? new Color(170, 170, 190, 255) : Color.White);
+            Vector2.Zero, 0, p.IsFainted && !p.IsEgg ? new Color(170, 170, 190, 255) : Color.White);
     }
 
     // ------------------------------------------------------------------ text

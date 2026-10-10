@@ -235,4 +235,15 @@ public interface IScriptHost
 
     /// <summary>The player's Poffin Case.</summary>
     PoffinCase Poffins { get; }
+
+    // ------------------------------------------------------------------ the Day Care and Eggs (plan 06 · R15)
+
+    /// <summary>Solaceon Town's Day Care.</summary>
+    DayCare DayCare { get; }
+
+    /// <summary>
+    /// Hatches the team's first Egg with no cycles left (<c>HatchEgg</c>): its scene plays and the script waits for it
+    /// (<see cref="Busy"/>); then the Pokémon is in the Pokédex. False when no Egg is ready.
+    /// </summary>
+    bool Hatch();
 }

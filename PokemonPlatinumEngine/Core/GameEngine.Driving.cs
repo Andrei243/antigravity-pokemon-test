@@ -53,6 +53,7 @@ public partial class GameEngine
         public SpecialEncounters Encounters => game.encounters;
         public BerryPatches Berries => game.berries;
         public PoffinCase Poffins => game.poffinCase;
+        public DayCare DayCare => game.dayCare;
         public RadarChain Radar => game.radar;
         public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }
 
@@ -88,6 +89,7 @@ public partial class GameEngine
         public FlyScreen FlyScreen => game.flyScreen;
         public PoffinCookingScreen Cooking => game.cookingScreen;
         public PoffinCaseScreen PoffinCaseScreen => game.poffinCaseScreen;
+        public HatchScreen Hatch => game.hatchScreen;
         public PoketchView PoketchView => game.poketchView;
         public PoketchContext PoketchContext => game.PoketchNow();
 
@@ -114,5 +116,7 @@ public partial class GameEngine
         public void UseFieldItem(ItemData item) => game.UseFieldItem(item);
         public EncounterMoment EncounterMomentNow() => game.EncounterMomentNow();
         public void KeepPartnerAlong() => game.KeepPartnerAlong();
+        /// <summary>The Day Care's part of a step (plan 06 · R15): the couple walk it, and an Egg may be ready to hatch.</summary>
+        public bool DayCareStep() => game.DayCareStep();
     }
 }

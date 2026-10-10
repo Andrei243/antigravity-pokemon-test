@@ -79,7 +79,8 @@ public static class ItemUse
     /// </summary>
     public static bool WouldHelp(ItemData item, Pokemon p, int moveSlot = 0, Ruleset? rules = null)
     {
-        if (!IsUsedOnPokemon(item)) return false;
+        // Nothing is used on an Egg (plan 06 · R15)
+        if (!IsUsedOnPokemon(item) || p.IsEgg) return false;
         if (Heals(item, p.Status)) return true;
 
         if ((Has(item, "revive") || Has(item, "reviveAll")) && !Has(item, "levelUp"))
@@ -108,6 +109,7 @@ public static class ItemUse
     /// </summary>
     public static ItemUseResult Apply(ItemData item, Pokemon p, int moveSlot = 0, Ruleset? rules = null)
     {
+        if (p.IsEgg) return ItemUseResult.Nothing;
         if (!WouldHelp(item, p, moveSlot, rules)) return ItemUseResult.Nothing;
         string name = p.DisplayName;
 
@@ -244,7 +246,7 @@ public static class ItemUse
     public static List<string> ReviveAll(ItemData item, Party party)
     {
         var revived = new List<string>();
-        foreach (var p in party.Members.Where(p => p.IsFainted))
+        foreach (var p in party.Members.Where(p => p.IsFainted && !p.IsEgg))
         {
             p.Revive(Restored(0, p.MaxHP, Num(item, "hpRestored")));
             revived.Add(p.DisplayName);

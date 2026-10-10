@@ -6,12 +6,16 @@
 # Gym's door. Once Commander Jupiter is beaten in the building (3, scripts/TeamGalacticEternaBuilding4F.txt), the
 # cycle shop's manager gives the Bicycle, and from then until the player also has the Underground Man's Explorer Kit
 # two people stop them at the town's ways out west and south (VAR_ETERNA_CITY_BLOCK_EXITS_STATE 1).
-# Cynthia's Togepi Egg (states 3 to 5, the original's triggers 4 and 5) waits for eggs (plan 06 · R15).
+# Once Jupiter is beaten (3), Cynthia catches the player up on the street by the cycle shop and offers a Togepi Egg
+# (plan 06 · R15; the original's trigger 4): taken, she goes (5); turned down, or with the team full, she waits there
+# (4), asks again when spoken to, and stops the player stepping past her (trigger 5).
 
 
 # Arriving (the original's OnTransition): with the Bicycle and the Explorer Kit both in the bag, nobody stops the player
 # at the ways out any more.
 script OnEnter
+  # Cynthia still waits with her Egg by the cycle shop (the original's SetCynthiaPositionForGiveEgg)
+  if var VAR_ETERNA_CITY_STATE == 4 place cynthia 307 541 right
   if var VAR_ETERNA_CITY_BLOCK_EXITS_STATE != 1 end
   if not item "Bicycle" end
   if not item "Explorer Kit" end
@@ -309,4 +313,80 @@ script BlockSouth
   if var PLAYER_X == 307 walk pokemon_breeder_f_2 left 4
   face pokemon_breeder_f_2 right
   walk player up 1
+  end
+
+
+# Cynthia's Egg (plan 06 · R15; the original's trigger 4, a column at x 308 while VAR_ETERNA_CITY_STATE is 3): she comes
+# up the street from the south, catches the player up and offers a Pokémon Egg (scripts_eterna_city.s,
+# EternaCity_CoordEvent_CynthiaTryGiveEgg).
+script CynthiaEgg
+  clearflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
+  if var PLAYER_Y == 541 place cynthia 304 549 up
+  if var PLAYER_Y == 542 place cynthia 304 550 up
+  if var PLAYER_Y == 543 place cynthia 304 551 up
+  if var PLAYER_Y == 544 place cynthia 304 552 up
+  if var PLAYER_Y == 545 place cynthia 304 553 up
+  show cynthia
+  walk cynthia up 3
+  emote cynthia exclaim
+  walk cynthia up 5 right 3
+  face player left
+  speaker "Cynthia"
+  call CynthiaOffer
+  if var VAR_ETERNA_CITY_STATE != 5 end
+  walk cynthia left 3 down 9
+  call CynthiaGone
+  end
+
+# Spoken to while she waits with the Egg (the original's script 28): she asks again, and goes once it is taken, round
+# the player if they stand west of her.
+script Cynthia
+  if var VAR_ETERNA_CITY_STATE != 4 goto Luck
+  call CynthiaOffer
+  if var VAR_ETERNA_CITY_STATE != 5 end
+  if facing right goto Round
+  walk cynthia left 3 down 9
+  call CynthiaGone
+  end
+label Round
+  walk cynthia down 1 left 3 down 8
+  call CynthiaGone
+  end
+label Luck
+  say "Good luck on your journey, {player}."
+  end
+
+script CynthiaOffer
+  speaker "Cynthia"
+  ask "Oh, there you are! I was hoping to find you. I have something nice for you: a Pokémon Egg. Will you take it?"
+  if no goto Refused
+  if party >= 6 goto NoRoom
+  fanfare pokemon
+  giveegg "Togepi"
+  say "That's wonderful! I'm sure the Pokémon inside is happy about it too."
+  say "Keep the Egg with you, in your party. A Pokémon will hatch from it while you travel." "I'd be glad to think it might fill another page of your Pokédex. See you again!"
+  setvar VAR_ETERNA_CITY_STATE 5
+  return
+label NoRoom
+  say "Oh? You have six Pokémon with you already. There's no room for an Egg." "Put one in a PC Box at the Pokémon Center first. I'll wait right here, and give you the Egg when you've made room."
+  setvar VAR_ETERNA_CITY_STATE 4
+  return
+label Refused
+  say "Oh...? You mustn't feel you have to." "Filling the pages of a Pokédex is hard work, isn't it? I only wanted to lend you a little hand, that's all."
+  setvar VAR_ETERNA_CITY_STATE 4
+  return
+
+script CynthiaGone
+  face player left
+  hide cynthia
+  setflag FLAG_HIDE_ETERNA_CITY_CYNTHIA
+  return
+
+# A step east past Cynthia while she waits with the Egg (the original's trigger 5, a column at x 309 in state 4): she
+# turns to the player and they step back.
+script CynthiaWaits
+  face cynthia right
+  speaker "Cynthia"
+  say "Oh, wait! Please don't go without this Pokémon Egg. I'd really like you to have it."
+  walk player left 1
   end

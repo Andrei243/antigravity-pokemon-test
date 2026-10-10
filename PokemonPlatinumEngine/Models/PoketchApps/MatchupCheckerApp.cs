@@ -82,20 +82,23 @@ public sealed class MatchupCheckerApp : PoketchAppState
     public bool Busy => running != null;
 
     /// <summary>Whether the check button is shown pressed in: while a check runs, or for good with no pair to check.</summary>
-    public bool CheckPressed(PoketchContext context) => Busy || context.Party.Count <= 1;
+    public bool CheckPressed(PoketchContext context) => Busy || Team(context).Count <= 1;
 
     public override IReadOnlyList<PoketchButton> Buttons(PoketchContext context) => buttons;
 
     /// <summary>The Pokémon on one side, or null with none there.</summary>
     public Pokemon? LeftPokemon(PoketchContext context) => At(context, Left);
-    public Pokemon? RightPokemon(PoketchContext context) => context.Party.Count > 1 ? At(context, Right) : null;
+    public Pokemon? RightPokemon(PoketchContext context) => Team(context).Count > 1 ? At(context, Right) : null;
 
-    private static Pokemon? At(PoketchContext context, int i) => i >= 0 && i < context.Party.Count ? context.Party.Members[i] : null;
+    private static Pokemon? At(PoketchContext context, int i) => i >= 0 && i < Team(context).Count ? Team(context)[i] : null;
+
+    // The team as the app counts it: its Pokémon that aren't Eggs (the original's matchup data skips them)
+    private static List<Pokemon> Team(PoketchContext context) => context.Party.Members.Where(p => !p.IsEgg).ToList();
 
     // A team that has shrunk since the app came up keeps the two within it
     private void KeepInTeam(PoketchContext context)
     {
-        int count = context.Party.Count;
+        int count = Team(context).Count;
         if (Left >= count) Left = 0;
         if (Right >= count || Right == Left) Right = count > 1 ? (Left == 0 ? 1 : 0) : 0;
     }
@@ -104,19 +107,19 @@ public sealed class MatchupCheckerApp : PoketchAppState
     {
         if (Busy) return;
         KeepInTeam(context);
-        int count = context.Party.Count;
+        int count = Team(context).Count;
         switch (button)
         {
             case ChangeLeft:
                 // UpdateLeftMon: the next of the team, past the one on the right; only with more than two
                 if (count <= 2) return;
                 do Left = (Left + 1) % count; while (Left == Right);
-                Changed(context, context.Party.Members[Left]);
+                Changed(context, Team(context)[Left]);
                 break;
             case ChangeRight:
                 if (count <= 2) return;
                 do Right = (Right + 1) % count; while (Right == Left);
-                Changed(context, context.Party.Members[Right]);
+                Changed(context, Team(context)[Right]);
                 break;
             case Check:
                 if (count <= 1)
@@ -125,7 +128,7 @@ public sealed class MatchupCheckerApp : PoketchAppState
                     return;
                 }
                 context.Sound("poketch_count");
-                Result = Level(context.Party.Members[Left], context.Party.Members[Right]);
+                Result = Level(Team(context)[Left], Team(context)[Right]);
                 Reset();
                 running = sequences[Result.Value];
                 step = 0;
@@ -213,22 +216,6 @@ public sealed class MatchupCheckerApp : PoketchAppState
     /// trainers, <see cref="Good"/> for the same species from one or two species from two, <see cref="Poor"/> for
     /// two species from one. The egg groups are the species' own, whatever its form, as the original reads them.
     /// </summary>
-    public static int Level(Pokemon a, Pokemon b)
-    {
-        var groupsA = a.Species.EggGroups ?? new List<string>();
-        var groupsB = b.Species.EggGroups ?? new List<string>();
-        string firstA = groupsA.FirstOrDefault() ?? Undiscovered, firstB = groupsB.FirstOrDefault() ?? Undiscovered;
-        bool sameTrainer = a.OriginalTrainer?.Id == b.OriginalTrainer?.Id;
+    public static int Level(Pokemon a, Pokemon b) => Breeding.Level(Breeding.Compatibility(a, b));
 
-        if (firstA == Undiscovered || firstB == Undiscovered) return None;
-        if (firstA == Ditto && firstB == Ditto) return None;
-        if (firstA == Ditto || firstB == Ditto) return sameTrainer ? Poor : Good;
-        if (a.Gender == b.Gender) return None;
-        if (a.Gender == Gender.Genderless || b.Gender == Gender.Genderless) return None;
-        if (!groupsA.Intersect(groupsB).Any()) return None;
-        if (a.Species == b.Species) return sameTrainer ? Good : Best;
-        return sameTrainer ? Poor : Good;
-    }
-
-    private const string Undiscovered = "Undiscovered", Ditto = "Ditto";
 }

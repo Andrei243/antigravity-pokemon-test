@@ -37,7 +37,9 @@ public class RoomPlanTests
         new object[] { "PoffinHouse", 1, 3, 8, 13 },
         new object[] { "HearthomeFanClub", 1, 3, 6, 17 },
         // Veilstone City's Galactic warehouse, plan 02 · S8
-        new object[] { "VeilstoneGalacticWarehouse", 1, 3, 8, 11 }
+        new object[] { "VeilstoneGalacticWarehouse", 1, 3, 8, 11 },
+        // Solaceon Town's Pokémon Day Care, plan 06 · R15
+        new object[] { "PokemonDayCare", 1, 3, 9, 11 }
     };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
@@ -113,7 +115,9 @@ public class RoomPlanTests
         new object[] { "HearthomeFanClub", "psyduck", 9, 5, Direction.Down },
         new object[] { "HearthomeFanClub", "buneary", 7, 13, Direction.Down },
         new object[] { "HearthomeFanClub", "clefairy", 3, 11, Direction.Down },
-        new object[] { "VeilstoneGalacticWarehouse", "looker", 12, 8, Direction.Down }
+        new object[] { "VeilstoneGalacticWarehouse", "looker", 12, 8, Direction.Down },
+        new object[] { "PokemonDayCare", "day_care_lady", 9, 4, Direction.Down },
+        new object[] { "PokemonDayCare", "gym_guide", 4, 9, Direction.Right }
     };
 
     [Theory]

@@ -101,6 +101,22 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// </summary>
     public PoffinCase Poffins { get; } = new();
 
+    /// <summary>The Day Care (plan 06 · R15), empty unless a test fills it.</summary>
+    public DayCare DayCare { get; } = new();
+
+    /// <summary>The Pokémon hatched so far by <c>hatch</c>, in order: here an Egg hatches at once, with no scene.</summary>
+    public List<Pokemon> Hatched { get; } = new();
+
+    public bool Hatch()
+    {
+        Shown("hatch an Egg");
+        if (Party.Members.FirstOrDefault(p => p.IsEgg && p.EggCycles == 0) is not { } egg) return false;
+        Breeding.Hatch(egg, Map?.DisplayNameAt(PlayerTile.X, PlayerTile.Y), GameClock.Today);
+        Hatched.Add(egg);
+        Log.Add($"hatch {egg.Species.Name}");
+        return true;
+    }
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 

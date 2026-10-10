@@ -5,11 +5,13 @@
   "architecture": "Farm",
   "doors": [
     { "warp": 5, "map": "SolaceonPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 6, "map": "SolaceonPokeMart", "x": 4, "y": 6, "facing": "Up" }
+    { "warp": 6, "map": "SolaceonPokeMart", "x": 4, "y": 6, "facing": "Up" },
+    // The Pokémon Day Care, rebuilt to the original's plan (plan 06 · R15)
+    { "warp": 0, "map": "PokemonDayCare", "x": 9, "y": 11, "facing": "Up" }
   ],
-  // The Day Care, the houses and the Pokémon News Press have no rooms yet (plan 01 · M11); the room of the ruins
-  // Maniac Tunnel leads to opens with the tunnel (plan 02: the Ruin Maniac digs it once enough Unown have been seen)
-  "locked": [ 0, 1, 2, 3, 4, 7 ],
+  // The houses and the Pokémon News Press have no rooms yet (plan 01 · M11); the room of the ruins Maniac Tunnel
+  // leads to opens with the tunnel (plan 02: the Ruin Maniac digs it once enough Unown have been seen)
+  "locked": [ 1, 2, 3, 4, 7 ],
   // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 02)
   "heldBack": [ "item_rare_candy" ],
   // Plan 02 · S7 (scripts/solaceon_town.txt): the rival coming down the street as the player first arrives (trigger 0)
@@ -58,14 +60,8 @@
     "ruin_maniac": { "name": "Ruin Maniac", "script": "RuinManiac" },
     // He comes running down the street as the player first walks into town (plan 02 · S7)
     "rival": { "name": "{rival}", "dialog": [ "The ruins are amazing, {player}. Go and see!" ] },
-    // The Day Care, and the Eggs that turn up there, wait for its rooms (plan 01 · M11)
-    "day_care_man": {
-      "name": "Old Man",
-      "dialog": [
-        "My wife and I look after other trainers' Pokémon, here at the Day Care.",
-        "We've no room for any more just now, I'm afraid. Do come back another time!"
-      ]
-    }
+    // The Day-Care Man (plan 06 · R15, common.DayCareMan): he hands over the Eggs the couple find
+    "day_care_man": { "name": "Day-Care Man", "script": "DayCareMan" }
   },
   "signs": {
     "map_signpost": "Solaceon Town\nWhere the days pass gently among fields and old stones.",

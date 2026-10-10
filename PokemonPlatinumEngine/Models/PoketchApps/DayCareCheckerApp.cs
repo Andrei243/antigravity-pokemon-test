@@ -10,8 +10,8 @@ namespace PokemonPlatinumEngine.Models.PoketchApps;
 /// is read as the app comes up and again each time the screen is touched (<c>LoadDaycareSummary</c>), the picture
 /// coming back through a mosaic that clears in 40 frames (<c>Task_ReloadDaycareState</c>).
 ///
-/// The Pokémon come from <see cref="PoketchContext.DayCare"/>, empty until breeding (plan 06 · R15); a level shown is
-/// the Pokémon's own until the Day Care counts the steps it has walked.
+/// The Pokémon come from <see cref="PoketchContext.DayCare"/> (plan 06 · R15), each at the level its steps there have
+/// brought it to (<see cref="PoketchContext.DayCareLevels"/>).
 /// </summary>
 public sealed class DayCareCheckerApp : PoketchAppState
 {
@@ -34,10 +34,12 @@ public sealed class DayCareCheckerApp : PoketchAppState
     /// <summary>The Pokémon shown, none to two, as last read.</summary>
     public IReadOnlyList<Pokemon> Shown => shown;
 
-    /// <summary>
-    /// Whether an egg is shown between them (<c>Daycare_HasEgg</c>). The context has no egg to read yet (plan 06 ·
-    /// R15), so none ever is.
-    /// </summary>
+    /// <summary>The level each is shown at, as last read: the level its steps at the Day Care have brought it to.</summary>
+    public IReadOnlyList<int> Levels => levels;
+
+    private readonly List<int> levels = new();
+
+    /// <summary>Whether an egg is shown between them (<c>Daycare_HasEgg</c>).</summary>
     public bool HasEgg { get; private set; }
 
     /// <summary>How coarse the picture is while it comes back, <see cref="MosaicStart"/> down to nought (none).</summary>
@@ -61,7 +63,9 @@ public sealed class DayCareCheckerApp : PoketchAppState
         read = true;
         shown.Clear();
         shown.AddRange(context.DayCare.Take(2));
-        HasEgg = false;
+        levels.Clear();
+        for (int i = 0; i < shown.Count; i++) levels.Add(i < context.DayCareLevels.Count ? context.DayCareLevels[i] : LevelOf(shown[i]));
+        HasEgg = context.DayCareEgg;
     }
 
     public override void Press(int button, PoketchContext context)

@@ -37,10 +37,11 @@ public partial class GameEngine
         var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
         Random rng = fieldRandom;
         int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
-        // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize)
-        var wild = new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
-        // A Poké Radar patch's sparkle
-        if (entry.Shiny) wild.IsShiny = true;
+        // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize); a Poké
+        // Radar patch's sparkle is a personality found shiny for the player (plan 06 · R15)
+        var wild = entry.Shiny
+            ? new Pokemon(wildSpecies, lvl, Personality.ShinyWith(wildSpecies, PlayerIdentity.Number, rng, entry.Gender, entry.Nature), rng)
+            : new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         var area = currentMap.AreaAt(player.GridX, player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);

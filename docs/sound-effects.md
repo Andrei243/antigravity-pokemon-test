@@ -77,9 +77,9 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `recall` | — | A Pokémon is called back into its ball. |
 | `run_away` | `SEQ_SE_DP_NIGERU` | Getting away from a wild Pokémon. |
 | `ball_throw` | `SEQ_SE_DP_NAGERU` | A ball thrown. |
-| `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball. |
+| `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball; each rock of an Egg about to hatch (plan 06 · R15). |
 | `ball_click` | `SEQ_SE_DP_GETTING` | The ball clicks shut: caught. |
-| `ball_break` | — | The ball bursts open: the Pokémon broke free. |
+| `ball_break` | — | The ball bursts open: the Pokémon broke free; an Egg breaks open as it hatches. |
 | `hit_normal` | `SEQ_SE_DP_KOUKA_M` | A hit lands. |
 | `hit_super` | `SEQ_SE_DP_KOUKA_H` | A super-effective hit lands. |
 | `hit_weak` | `SEQ_SE_DP_KOUKA_L` | A not very effective hit lands. |

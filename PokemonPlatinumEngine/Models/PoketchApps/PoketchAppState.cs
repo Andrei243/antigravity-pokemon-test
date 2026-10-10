@@ -49,8 +49,17 @@ public sealed class PoketchContext
     /// <summary>Sinnoh's berry patches.</summary>
     public BerryPatches? Berries { get; set; }
 
-    /// <summary>The Pokémon left at the Day Care, none to two (breeding is plan 06 · R15; empty until then).</summary>
+    /// <summary>The Pokémon left at the Day Care, none to two (plan 06 · R15).</summary>
     public IReadOnlyList<Pokemon> DayCare { get; set; } = Array.Empty<Pokemon>();
+
+    /// <summary>
+    /// The levels they have grown to with their steps (<c>DaycareMon_GiveExperience</c>), in the same order; empty
+    /// shows their own.
+    /// </summary>
+    public IReadOnlyList<int> DayCareLevels { get; set; } = Array.Empty<int>();
+
+    /// <summary>Whether the couple have an Egg waiting (<c>Daycare_HasEgg</c>).</summary>
+    public bool DayCareEgg { get; set; }
 
     /// <summary>Whatever an app leaves to chance (a coin, a roulette): the field's generator.</summary>
     public Random Rng { get; set; } = new(0);

@@ -431,6 +431,8 @@ internal static partial class ModernUi
 
             float x = r.X + 184;
             NameWithGender(p, x, r.Y + 46, 34);
+            // An Egg is listed but can't battle (plan 06 · R15)
+            if (p.IsEgg) continue;
             Level(r.X + r.Width - 34, r.Y + 46, p.Level, 32);
             HpBar(x, r.Y + 76, r.Width - 184 - 34, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
             string hpText = $"{p.CurrentHP} / {p.MaxHP}";
@@ -565,6 +567,8 @@ internal static partial class ModernUi
             Portrait(new Vector2(r.X + 96, r.Y + r.Height / 2f), 68, p, 2, selected);
             float x = r.X + 184;
             NameWithGender(p, x, r.Y + 46, 34);
+            // An Egg is listed but can't battle (plan 06 · R15)
+            if (p.IsEgg) continue;
             Level(r.X + r.Width - 34, r.Y + 46, p.Level, 32);
             HpBar(x, r.Y + 76, r.Width - 184 - 34, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
             string hpText = $"{p.CurrentHP} / {p.MaxHP}";

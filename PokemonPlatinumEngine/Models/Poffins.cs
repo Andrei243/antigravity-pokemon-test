@@ -219,7 +219,7 @@ public static class Poffins
     /// Whether the Pokémon will eat a Poffin: not once its sheen is full (<c>TryFeedPoffin</c>: "won't eat any
     /// more"), however much room its five qualities have.
     /// </summary>
-    public static bool WouldEat(Pokemon p) => p.Sheen < MaxCondition;
+    public static bool WouldEat(Pokemon p) => !p.IsEgg && p.Sheen < MaxCondition;
 
     /// <summary>
     /// What eating the Poffin does (<c>PoffinCase_UpdateMonContestStats</c>): each flavour is added to its quality and

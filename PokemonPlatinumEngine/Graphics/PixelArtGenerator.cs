@@ -39,6 +39,63 @@ public static class PixelArtGenerator
     public static Texture2D GetPokemonIcon(string name) =>
         PokemonSprites.GetBaked(name, SpriteView.Icon) ?? PokemonSprites.GetBaked(PokemonSprites.Fallback, SpriteView.Icon) ?? SceneTextures.White;
 
+    /// <summary>A Pokémon's menu icon, or an Egg's while it is one (plan 06 · R15).</summary>
+    public static Texture2D IconOf(Pokemon p) => p.IsEgg ? EggIcon : GetPokemonIcon(p.ModelName);
+
+    /// <summary>An Egg's menu icon (<see cref="EggArt"/>).</summary>
+    public static Texture2D EggIcon => Cached("egg_icon", () => EggArt(PokemonSprites.IconSize).ToTexture());
+
+    /// <summary>A Pokémon's front sprite, or an Egg's while it is one (plan 06 · R15).</summary>
+    public static Texture2D SpriteOf(Pokemon p, bool isBack = false) =>
+        p.IsEgg ? Cached("egg_sprite", () => EggArt(PokemonSprites.Size).ToTexture()) : GetPokemonSprite(p.ModelName, isBack);
+
+    /// <summary>
+    /// An Egg in pixels (plan 06 · R15; style guide, "Eggs"), at the size of the menu sprites and icons: a cream shell
+    /// with green spots and a shine, outlined like the baked Pokémon, standing on the canvas's floor.
+    /// </summary>
+    internal static PixelCanvas EggArt(int size)
+    {
+        var c = new PixelCanvas(size, size);
+        float h = size * 0.62f, w = h * 0.74f;
+        float cx = size / 2f, foot = size * 0.84f;
+        var shell = new Color(246, 236, 210, 255);
+        var shade = new Color(222, 204, 168, 255);
+        var spot = new Color(104, 178, 136, 255);
+        var spotShade = new Color(84, 150, 116, 255);
+        // Whether a texel is in the shell's shade: a crescent along its lower right, its edge following the outline
+        // (the shell is lit from the upper left), or null outside the shell
+        bool? Shaded(int x, int y)
+        {
+            // The egg's measure: u across from its middle, v up from its foot, both in heights
+            float u = (x + 0.5f - cx) / h, v = (foot - (y + 0.5f)) / h;
+            float up = (v - 0.5f) * 2f;
+            if (up is < -1f or > 1f) return null;
+            float half = w / h / 2f * MathF.Sqrt(1f - up * up) * (1f - 0.17f * up);
+            if (MathF.Abs(u) > half) return null;
+            float across = half > 0f ? u / half : 0f;
+            return -across * 0.75f + up * 0.45f < -0.42f;
+        }
+        for (int y = 0; y < size; y++)
+            for (int x = 0; x < size; x++)
+                if (Shaded(x, y) is { } dark) c.SetRaw(x, y, dark ? shade : shell);
+        foreach (var (sx, sy, sr) in new[] { (-0.17f, 0.30f, 0.075f), (0.12f, 0.22f, 0.06f), (0.02f, 0.46f, 0.085f), (-0.08f, 0.62f, 0.055f), (0.16f, 0.58f, 0.05f) })
+        {
+            float px = cx + sx * h, py = foot - sy * h, r = Math.Max(1.5f, sr * h);
+            for (int y = (int)(py - r - 1); y <= (int)(py + r + 1); y++)
+                for (int x = (int)(px - r - 1); x <= (int)(px + r + 1); x++)
+                    if (Shaded(x, y) is { } dark && (x + 0.5f - px) * (x + 0.5f - px) + (y + 0.5f - py) * (y + 0.5f - py) <= r * r)
+                        c.SetRaw(x, y, dark ? spotShade : spot);
+        }
+        // The shine
+        float shineX = cx - 0.16f * h, shineY = foot - 0.78f * h, shineR = Math.Max(1f, 0.055f * h);
+        for (int y = (int)(shineY - shineR); y <= (int)(shineY + shineR); y++)
+            for (int x = (int)(shineX - shineR); x <= (int)(shineX + shineR); x++)
+                if (c.IsOpaque(x, y) && (x + 0.5f - shineX) * (x + 0.5f - shineX) + (y + 0.5f - shineY) * (y + 0.5f - shineY) <= shineR * shineR)
+                    c.SetRaw(x, y, new Color(255, 255, 250, 255));
+        c.OutlinePass(innerSeams: false);
+        return c;
+    }
+
     /// <summary>
     /// 40x40 icon of an item (20x20 art at 2x), like the bag icons of the main games: the ball itself for Poké
     /// Balls, a spray bottle for medicine (its colour says which), a crystal for a Revive, a disc in its move's

@@ -142,7 +142,8 @@ public sealed class FriendshipCheckerApp : PoketchAppState
     {
         started = true;
         walkers.Clear();
-        foreach (var p in context.Party.Members)
+        // An Egg isn't one of those that walk about (plan 06 · R15)
+        foreach (var p in context.Party.Members.Where(p => !p.IsEgg))
         {
             if (walkers.Count >= Party.MaxSize) break;
             var (feeling, intensity) = FeelingOf(p.Friendship);

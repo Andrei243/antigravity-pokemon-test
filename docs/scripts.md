@@ -118,8 +118,11 @@ name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{r
 `{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
 variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
 `{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{ticket}` the Lottery Corner's number of the day and
-`{winner}` the Pokémon whose ID number the last `lottery draw` matched (plan 06 · R14a), and `{berry}`, `{yield}` and
-`{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them.
+`{winner}` the Pokémon whose ID number the last `lottery draw` matched (plan 06 · R14a), `{berry}`, `{yield}` and
+`{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them, and (plan 06 ·
+R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care, `{level:N}` the level its steps there
+have brought it to, `{grown:N}` the levels it has grown and `{fee:N}` what taking it back costs, `{left}` the Pokémon
+last left there and `{taken}` the one last taken back.
 
 ### Where a script goes
 
@@ -252,6 +255,26 @@ original's rules (`Models/Poffins.cs`, `Models/PoffinPot.cs`). One command, as t
 | `poffin cook` | The cooking: the bag opens on its berries, the berry chosen goes into the pot, the three stages are stirred, the Poffin goes into the case, and "Cook another?" opens the bag again, until the player stops (backing out of the bag, or NO). The script waits for all of it. |
 | `poffin room` | `RESULT` is 1 while the case has room for another Poffin, 0 when it is full. |
 | `poffin give 60 30 30 30 30 40` | A Poffin of these five flavours (spicy, dry, sweet, bitter, sour) and this smoothness goes into the case without a word, made as the pot makes one (`Poffins.Make`: its kind, Mild from 50). `RESULT` is its kind's number in the original's list (`PoffinType`), or 65535 when the case was full. The words and the fanfare are the script's. |
+
+### The Day Care and Eggs
+
+Plan 06 · R15. Solaceon Town's Day Care is `Models/DayCare.cs` (two places, their steps, the Egg the couple find,
+the egg cycle under way; saved) and the rules of Eggs `Models/Breeding.cs`, both by the original's
+`src/overlay005/daycare.c`. One command for the Day Care, as the original's dozen day-care commands, and two for Eggs.
+The couple's scripts are `common.DayCareMan` and `common.DayCareLady`.
+
+| Command | What it does |
+|---|---|
+| `daycare state` | `RESULT` is the Day Care's state (`GetDaycareState`): 0 empty, 1 an Egg waiting, 2 one Pokémon, 3 two. |
+| `daycare check` | Whether the player may leave a Pokémon at all: `RESULT` 1 when only one Pokémon of the team isn't an Egg (`CountPartyNonEggs`), 2 when the team's Pokémon able to fight and the boxes' come to two (`CountAliveMonsAndBoxMons`), else 0. |
+| `daycare leave` | Leaves the Pokémon last chosen with `choosepokemon` in the first free place (`StorePartyMonIntoDaycare`), and it cries; `{left}` names it. `RESULT` 0 when it was left, 1 when none was chosen, 2 when it is an Egg, 3 when it is the last that can fight, 4 when the Day Care is full. |
+| `daycare take 0` | Gives the Pokémon in a place back for its fee, grown by its steps (`MoveMonToPartyFromDaycareSlot`), and it cries; `{taken}` names it. `RESULT` 0 when it was taken back, 1 when the player is short of the fee, 2 when the team is full, 3 when nobody is there. |
+| `daycare grown 0` | `RESULT` is the levels the Pokémon in a place has grown (`BufferDaycareGainedLevelsBySlot`). |
+| `daycare egg` | The Egg the couple found goes onto the team, received from the Day-Care Couple (`GiveEggFromDaycare`). `RESULT` 1, or 0 with no Egg or no room. The words and the fanfare are the script's. |
+| `daycare keep` | The Egg turned down: the couple keep it, and nobody sees it again (`ResetDaycarePersonalityAndStepCounter`). |
+| `daycare compatibility` | `RESULT` is how well the two get on (`GetDaycareCompatibilityLevel`): 0 very well, 1 well, 2 not much, 3 not at all. |
+| `giveegg "Togepi"` | An Egg of a species onto the team (`GiveEgg`: Cynthia's Togepi, Riley's Riolu), received from the script's speaker. `RESULT` 1, or 0 when the team is full and nothing was given. The words and the fanfare are the script's. |
+| `hatch` | The team's first Egg with no cycles left hatches in its scene (`HatchEgg`; `UI/HatchScreen.cs`) and goes into the Pokédex; the script waits for it. `RESULT` 0 when no Egg is ready. The field runs `common.HatchEgg` when an egg cycle finds one. |
 
 ### Gyms
 

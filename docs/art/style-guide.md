@@ -717,6 +717,24 @@ Whoever the player isn't is the professor's assistant, with the other default na
 - Shown at whole-number scales only (party icons at 4×), point-filtered.
 - Icons hop like the main games: the selected one 3 sprite-pixels every 0.16 s, the others 1 sprite-pixel every 0.4 s; fainted ones stay still.
 
+### Eggs
+
+An Egg (plan 06 · R15) is our own: a cream shell (246, 236, 210) shaded in a crescent along its lower right (222, 206, 172), whose edge follows the outline, five mint-green spots (104, 178, 136) and a white shine on its upper left, an egg's shape (an ellipse narrowed toward its top), standing on the floor of its canvas.
+
+- In menus it is pixel art like the baked sprites (`PixelArtGenerator.EggArt`): a 48-px icon and a 128-px sprite with the same one-texel outline, at the same whole-number scales. It rocks once every 0.8 s by one sprite-pixel instead of hopping, and is never dimmed for being unable to fight.
+- On the team's card it shows its name, Egg, with no gender, level, types or HP, and a muted "Waiting to hatch". In battle's lists it shows its name alone. Its summary has the left panel (the Egg on its disc, "A Pokémon Egg", who it was received from and on what day) and on the right THE EGG WATCH: one of four sentences by the cycles left (five or fewer, ten, forty, more). The PC's detail column shows the same sentence under its name.
+- The Pokétch's apps show its icon in the LCD's tones, with no HP bar.
+
+### Hatching
+
+An Egg hatches on the evolution scene's stage (`EvolutionStage`): the dark hall, its pool of light and the slow rays, the glow rising as the Egg breaks.
+
+- The Egg is drawn large and smooth (`ModernUi.HatchEgg`): the menus' shell, spots and shine as vector shapes, 400 units tall, standing on the pool of light with a soft shadow under it, outlined in ink.
+- It rocks three times about its foot over 3.2 s, each swing quick and dying away, each stronger than the last (0.10, 0.16, 0.22 radians), with the ball's wobble sound as each comes back to rest.
+- Then for 1.5 s it shakes fast while ink cracks run across its upper half from left to right, and a second crack branches up from the middle; it swells a little and turns white at the end.
+- A white flash fills the screen as it breaks (0.55 s): the Pokémon is there, drawn as the evolution scene draws its new shape, in white, which drains from it over 1.2 s as it cries.
+- "X hatched from the Egg!" in the dialogue panel, with the fanfare of a Pokémon received. No nickname is asked, as none is when one is caught.
+
 ### Badges
 
 - Eight round medallions in gym order (`ModernUi.Badge`), each in its gym's colour with a simple white mark; our own designs, not the games' badge art.

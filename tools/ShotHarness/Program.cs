@@ -11,6 +11,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> encounters         wild Pokémon beyond the tables: the Poké Radar, a honey tree, poison, swarms, a roamer, Feebas
 //   dotnet run --project tools/ShotHarness -- <output dir> berries            berry patches in each stage, a patch picked, and the Lottery Corner
 //   dotnet run --project tools/ShotHarness -- <output dir> poffins            the Poffin House's pot at each stage, the Poffin Case, a Poffin fed, the condition
+//   dotnet run --project tools/ShotHarness -- <output dir> daycare            the Day Care and its couple, an Egg found, on the team and hatching, Cynthia's Egg
 //   dotnet run --project tools/ShotHarness -- <output dir> eterna             the third chapter's second half: Eterna City, Team Galactic's building, the Bicycle
 //   dotnet run --project tools/ShotHarness -- <output dir> veilstone          the fifth chapter: Veilstone's warehouse and HM02, Pastoria's bomb, the chase to Valor Lakefront
 //   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
@@ -101,6 +102,7 @@ if (mode == "eterna") h.EternaMode();
 if (mode == "veilstone") h.VeilstoneMode();
 if (mode == "opening") h.OpeningMode();
 if (mode == "boutique") h.BoutiqueMode();
+if (mode == "daycare") h.DayCareMode();
 if (mode == "cast") h.CastMode();
 if (mode == "export") h.ExportMode();
 

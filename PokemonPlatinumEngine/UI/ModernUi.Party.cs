@@ -91,6 +91,13 @@ internal static partial class ModernUi
     {
         Card(r, 34, selected || swapping, swapping ? Gold : Selection);
         Portrait(new Vector2(r.X + 136, r.Y + r.Height / 2f), 96, p, 4, selected);
+        // An Egg has no level, types or hit points to show (plan 06 · R15)
+        if (p.IsEgg)
+        {
+            NameWithGender(p, r.X + 264, r.Y + 58, 42);
+            UiFonts.DrawCentered("Waiting to hatch", r.X + 264, r.Y + 112, 30, Muted, UiWeight.ExtraBold);
+            return;
+        }
 
         float x = r.X + 264;
         NameWithGender(p, x, r.Y + 58, 42);
@@ -135,6 +142,11 @@ internal static partial class ModernUi
         else Hints(sw - 64, 44, ("Esc", "Back"));
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
+        if (p.IsEgg)
+        {
+            EggSummary(p, index, count, slide);
+            return;
+        }
 
         // ---- Who it is
         var who = new Rectangle(64 - slide, 132, 600, 900);
@@ -147,7 +159,7 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(c.X - 204, c.Y - 4, 408, 8), 4, Rule);
         UiShapes.Circle(c, 56, Rule);
         UiShapes.Circle(c, 38, new Color(226, 234, 246, 255));
-        var sprite = PixelArtGenerator.GetPokemonSprite(p.ModelName, isBack: false);
+        var sprite = PixelArtGenerator.SpriteOf(p);
         const int scale = 3;
         Raylib.DrawTexturePro(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height),
             new Rectangle(MathF.Round(c.X - sprite.Width * scale / 2f), MathF.Round(c.Y - sprite.Height * scale / 2f), sprite.Width * scale, sprite.Height * scale),
@@ -229,5 +241,45 @@ internal static partial class ModernUi
             string pp = $"{move.CurrentPP} / {move.MaxPP}";
             UiFonts.DrawCentered(pp, moves.X + moves.Width - 44 - UiFonts.Measure(pp, 30, UiWeight.Black), cy, 30, move.CurrentPP > 0 ? Ink : Red, UiWeight.Black);
         }
+    }
+
+    /// <summary>
+    /// An Egg's summary (plan 06 · R15): no number, level, stats or moves, as the original shows none, but the Egg, where
+    /// it came from, and the Egg Watch's word on how near it is to hatching.
+    /// </summary>
+    private static void EggSummary(Pokemon egg, int index, int count, float slide)
+    {
+        var who = new Rectangle(64 - slide, 132, 600, 900);
+        Panel(who, 34);
+        var c = new Vector2(who.X + who.Width / 2f, who.Y + 300);
+        UiShapes.Circle(c, 204, new Color(226, 234, 246, 255));
+        var sprite = PixelArtGenerator.SpriteOf(egg);
+        const int scale = 3;
+        Raylib.DrawTexturePro(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height),
+            new Rectangle(MathF.Round(c.X - sprite.Width * scale / 2f), MathF.Round(c.Y - sprite.Height * scale / 2f), sprite.Width * scale, sprite.Height * scale),
+            Vector2.Zero, 0f, Color.White);
+        if (count > 1)
+        {
+            string place = $"{index + 1} / {count}";
+            UiFonts.DrawCentered(place, who.X + who.Width - 44 - UiFonts.Measure(place, 24, UiWeight.Black), who.Y + 494, 24, Muted, UiWeight.Black);
+        }
+        float x = who.X + 44;
+        NameWithGender(egg, x, who.Y + 568, 52);
+        UiFonts.Draw("A Pokémon Egg", x, who.Y + 606, 28, Muted, UiWeight.ExtraBold);
+        UiShapes.Fill(new Rectangle(x, who.Y + 662, who.Width - 88, 3), 1.5f, Rule);
+        if (egg.MetLocation != null)
+        {
+            Label("RECEIVED FROM", x, who.Y + 692);
+            UiFonts.Draw(egg.MetLocation, x, who.Y + 716, 34, Ink, UiWeight.Black);
+        }
+        if (egg.MetDate is { } day)
+        {
+            Label("ON", x, who.Y + 784);
+            UiFonts.Draw(day.ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture), x, who.Y + 808, 34, Ink, UiWeight.Black);
+        }
+
+        var watch = new Rectangle(696 + slide, 132, 1160, 400);
+        Panel(watch, 34);
+        EggWatch(watch, egg);
     }
 }

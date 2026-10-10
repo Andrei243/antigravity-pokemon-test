@@ -44,6 +44,8 @@ public enum GameState
     /// <summary>The pot at the Poffin House, and the Poffin Case (plan 06 · R14c).</summary>
     PoffinCooking,
     PoffinCase,
+    /// <summary>An Egg hatching (plan 06 · R15).</summary>
+    Hatch,
     Transition
 }
 
@@ -298,6 +300,9 @@ public partial class GameEngine
         wardrobe.Clear();
         PlayerIdentity.SetOutfit(wardrobe.Worn);
         trainerId = fieldRandom.Next(0, 65536);
+        // Whose Pokémon are shiny for whom: the card's number and its hidden half (plan 06 · R15)
+        KeepTrainerNumber();
+        dayCare.Clear();
         adventureStarted = GameClock.Today;
         trainerScore = scoredBadges = 0;
         hallOfFame = new HallOfFame();
@@ -474,6 +479,9 @@ public partial class GameEngine
         CharacterModels.Preload(new[] { PlayerIdentity.Character });
         // A save from before the card had a number gets one now, and keeps it
         trainerId = save.TrainerId != 0 ? save.TrainerId : fieldRandom.Next(1, 65536);
+        KeepTrainerNumber();
+        // The Day Care as it was left (plan 06 · R15): an older save's is empty
+        DayCareSave.Restore(save.DayCare, dayCare);
         adventureStarted = save.Started;
         trainerScore = save.TrainerScore;
         hallOfFame = new HallOfFame();
@@ -528,6 +536,7 @@ public partial class GameEngine
             Encounters = encounters,
             Berries = berries,
             Poffins = poffinCase.Count > 0 ? poffinCase.All.ToList() : null,
+            DayCare = DayCareSave.From(dayCare),
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(pcBoxStorage),
@@ -737,6 +746,10 @@ public partial class GameEngine
                 evolutionScreen.Update(dt);
                 if (!evolutionScreen.IsActive) FinishEvolution();
                 break;
+            case GameState.Hatch:
+                hatchScreen.Update(dt);
+                if (!hatchScreen.IsActive) FinishHatch();
+                break;
             case GameState.PokedexMenu:
                 pokedexScreen.Update(dt);
                 if (!pokedexScreen.IsActive) currentState = GameState.Overworld;
@@ -835,7 +848,7 @@ public partial class GameEngine
     private void UpdateAmbience()
     {
         bool heard = gameStarted && currentMap != null && player != null
-            && currentState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution);
+            && currentState is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch);
         if (!heard)
         {
             if (fieldAmbience.Count > 0) fieldAmbience = new List<AmbienceLayer>();
@@ -1082,6 +1095,10 @@ public partial class GameEngine
         c.Radar = radar;
         c.Berries = berries;
         c.Rng = fieldRandom;
+        // The Day Care's two, at the levels their steps have brought them to, and whether an Egg waits (plan 06 · R15)
+        c.DayCare = dayCare.Left;
+        c.DayCareLevels = Enumerable.Range(0, DayCare.Places).Where(i => dayCare[i] != null).Select(dayCare.LevelNow).ToList();
+        c.DayCareEgg = dayCare.HasEgg;
         return c;
     }
 
@@ -1123,6 +1140,8 @@ public partial class GameEngine
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
         if (safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
+        // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
+        if (DayCareStep()) return true;
         // A Repel's last step says it has worn off (Repel_UpdateSteps, plan 06 · R11)
         if (encounterAids.Step() && StartScript(FieldScripts.RepelWoreOff)) return true;
 
@@ -1734,6 +1753,10 @@ public partial class GameEngine
         {
             evolutionScreen.Render(renderContext);
         }
+        else if (scene == GameState.Hatch)
+        {
+            hatchScreen.Render(renderContext);
+        }
         else if (scene == GameState.Intro)
         {
             introScreen.Render(renderContext);
@@ -1789,6 +1812,9 @@ public partial class GameEngine
             case GameState.Evolution:
                 evolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
+            case GameState.Hatch:
+                hatchScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
             case GameState.PokedexMenu:
                 pokedexScreen.Draw(VirtualWidth, VirtualHeight, playerPokedex);
                 break;
@@ -1837,6 +1863,7 @@ public partial class GameEngine
                     DrawScriptFade();
                 }
                 else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
                 break;
         }

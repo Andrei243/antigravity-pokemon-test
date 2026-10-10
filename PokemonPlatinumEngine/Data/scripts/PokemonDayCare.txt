@@ -1,0 +1,16 @@
+# Solaceon Town's Pokémon Day Care (plan 06 · R15). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_pokemon_day_care.s). The Day-Care Lady at her counter runs common.DayCareLady.
+#
+# Once the player has left a Pokémon with the couple (FLAG_STORED_POKEMON_AT_DAY_CARE), a fan of theirs waits by the
+# table and shares the Pokétch Company's Day-Care Checker app, which shows the two left here and any Egg they found.
+
+
+script AppFan
+  if poketchapp DayCareChecker goto Have
+  say "Are you a fan of the Day-Care couple too? I've got hold of something rather handy." "It's the Pokétch Company's newest app, made with the couple's help. Here, you have it!"
+  poketchapp DayCareChecker
+  text "{player}'s Pokétch now has the Day-Care Checker app!"
+  end
+label Have
+  say "With the Day-Care Checker you can see how the Pokémon you left here are getting on, wherever you are." "As for me, I can't bring myself to leave mine with them... So here I stay."
+  end
