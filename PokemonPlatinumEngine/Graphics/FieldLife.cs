@@ -30,9 +30,9 @@ internal sealed class FieldLife
     public const int Cell = 16, Columns = 8;
 
     // Cells of the atlas
-    public const int Print = 0, Puff = 1, Leaf = 4, Ring = 6, Drop = 9, Fleck = 10;
+    public const int Print = 0, Puff = 1, Leaf = 4, Ring = 6, Drop = 9, Fleck = 10, Star = 12;
 
-    public const float PrintStays = 3f, PrintFades = 3f, PuffTime = 0.36f, LeafTime = 0.5f, RingTime = 0.7f, DropTime = 0.3f, FleckTime = 0.3f;
+    public const float PrintStays = 3f, PrintFades = 3f, PuffTime = 0.36f, LeafTime = 0.5f, RingTime = 0.7f, DropTime = 0.3f, FleckTime = 0.3f, StarTime = 1.5f;
     public const float DoorOpens = 0.2f, DoorLingers = 0.4f;
 
     /// <summary>How often rain lands: this many times a second, a few drops each time (<see cref="Weathers.LandsABeat"/>).</summary>
@@ -41,7 +41,7 @@ internal sealed class FieldLife
     /// <summary>The stretch of ground rain is seen landing on, in tiles, round the middle of the view.</summary>
     public const float RainWidth = 24f, RainDepth = 16f;
 
-    private enum Kind { Print, Puff, Leaf, Ring, Drop, Fleck }
+    private enum Kind { Print, Puff, Leaf, Ring, Drop, Fleck, Star }
 
     private readonly record struct Piece(Kind Kind, Vector3 At, double Born, Color Tint, int Turn, float Seed, float Size);
 
@@ -78,6 +78,7 @@ internal sealed class FieldLife
         Kind.Leaf => LeafTime,
         Kind.Ring => RingTime,
         Kind.Fleck => FleckTime,
+        Kind.Star => StarTime,
         _ => DropTime
     };
 
@@ -241,6 +242,24 @@ internal sealed class FieldLife
     }
 
     /// <summary>
+    /// Something answers the Underground's radar at a tile (plan 06 · R16a): glints over it one after another, in the
+    /// colour of what it is, for a second and a half: a star blinking over it, rings spreading under it.
+    /// </summary>
+    public void Glint(Map map, int x, int y, Color tint)
+    {
+        if (!map.InBounds(x, y)) return;
+        float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
+        // A star blinking over the tile, three rings spreading under it one after another, and sparks hopping off it
+        pieces.Add(new Piece(Kind.Star, new Vector3(cx, ground + 0.45f, cz + 0.1f), Now, tint, 0, 0f, 1f));
+        for (int i = 0; i < 3; i++) pieces.Add(new Piece(Kind.Ring, new Vector3(cx, ground + 0.02f, cz), Now + i * 0.35, tint, 0, 0f, 2.2f));
+        for (int i = 0; i < 5; i++)
+        {
+            float side = i % 2 == 0 ? -0.22f : 0.22f;
+            pieces.Add(new Piece(Kind.Drop, new Vector3(cx + side, ground + 0.3f, cz + 0.15f), Now + i * 0.28, tint, 0, -side * 0.5f, 1.8f));
+        }
+    }
+
+    /// <summary>
     /// A honey tree shakes with what the honey drew to it (plan 06 · R13): leaves shaken loose from its crown, more
     /// the harder it shakes.
     /// </summary>
@@ -345,6 +364,14 @@ internal sealed class FieldLife
                     // Those to one side start flat and those to the other turned, and each turns over as it tops its arc
                     int frame = ((a < 0.5f ? 0 : 1) + (p.Seed > 0f ? 1 : 0)) % 2;
                     upright.Add(new LifeQuad(p.At + new Vector3(along, up, 0), 0.5f, 0.5f, Leaf + frame, p.Tint with { A = a > 0.8f ? (byte)170 : (byte)255 }));
+                    break;
+                }
+                case Kind.Star:
+                {
+                    // It blinks, lit two beats of three, and rises a texel at a time
+                    if ((int)(age / 0.125f) % 3 == 2) break;
+                    float up = MathF.Floor(age * 8f) * texel;
+                    upright.Add(new LifeQuad(p.At + new Vector3(0, up, 0), 0.5f, 0.5f, Star, p.Tint with { A = age > StarTime * 0.75f ? (byte)170 : (byte)255 }));
                     break;
                 }
                 default:
@@ -613,7 +640,7 @@ internal static class LifeArt
     /// <summary>
     /// The atlas of effect cells, 16 texels each, eight to a row, in white and greys so each is tinted when
     /// drawn: a shoe print, three frames of a puff, a leaf flat and turned over, three frames of a ring, a drop,
-    /// and the two frames of a raindrop landing.
+    /// the two frames of a raindrop landing, and a star.
     /// </summary>
     public static PixelCanvas Atlas()
     {
@@ -699,6 +726,13 @@ internal static class LifeArt
         c.Rect(gx + 10, gy + 6, 1, 1, white);
         c.Rect(gx + 7, gy + 5, 2, 1, white);
         c.Rect(gx + 7, gy + 10, 2, 1, grey);
+
+        // A glint: a four-pointed star, for what answers the Underground's radar
+        var (sx, sy) = Origin(FieldLife.Star);
+        c.Rect(sx + 7, sy + 2, 2, 12, white);
+        c.Rect(sx + 2, sy + 7, 12, 2, white);
+        c.Rect(sx + 6, sy + 5, 4, 6, white);
+        c.Rect(sx + 5, sy + 6, 6, 4, white);
         return c;
     }
 

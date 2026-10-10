@@ -292,7 +292,17 @@ public static class WorldMapBuilder
         var parts = PlaceModels(world, entry.Matrix, map, models, under, unnamed, entrances);
         if (cave)
         {
-            CaveRock(map, vague, entrances);
+            // A cave nothing leads into (the Underground) names the tiles it is come to by
+            var ways = entrances;
+            if (entry.Arrivals != null || entry.ArrivalsInEveryChunk != null)
+            {
+                ways = new HashSet<(int X, int Z)>(entrances);
+                foreach (int[] a in entry.Arrivals ?? new List<int[]>()) ways.Add((a[0], a[1]));
+                foreach (int[] a in entry.ArrivalsInEveryChunk ?? new List<int[]>())
+                    for (int cz = 0; cz * Map.ChunkTiles < map.Height; cz++)
+                        for (int cx = 0; cx * Map.ChunkTiles < map.Width; cx++) ways.Add((cx * Map.ChunkTiles + a[0], cz * Map.ChunkTiles + a[1]));
+            }
+            CaveRock(map, vague, ways);
         }
         else if (nothing)
         {
@@ -689,7 +699,7 @@ public static class WorldMapBuilder
         var area = new MapArea
         {
             Key = key,
-            DisplayName = file?.Name ?? "",
+            DisplayName = overlay?.Name ?? file?.Name ?? "",
             BgmTrack = overlay?.BgmTrack ?? "",
             Open = file != null && world.IsOpen(key),
             Weather = Weathers.Of(file?.Weather),
@@ -1517,14 +1527,16 @@ public static class WorldMapBuilder
                     SightRange = o.Sight ?? 0
                 };
             }
+            // Where they stand is the area file's, unless the overlay says where (the Underground's hikers)
+            int px = person.At is { Length: 2 } ? person.At[0] : o.X, pz = person.At is { Length: 2 } ? person.At[1] : o.Z;
             var npc = MapFile.BuildNpc(new MapFile.NpcRecord
             {
                 Id = person.Id ?? trainer?.Id,
                 Name = person.Name,
                 NpcType = person.NpcType ?? (species != null ? NPC.PokemonType : CharacterFor(o.Looks)),
                 Species = species,
-                X = o.X,
-                Y = o.Z,
+                X = px,
+                Y = pz,
                 Facing = FacingOf(o.Facing),
                 Dialog = person.Dialog,
                 IsStarterBriefcase = person.IsStarterBriefcase,
@@ -1544,9 +1556,9 @@ public static class WorldMapBuilder
             if (!person.Still) npc.Movement = PersonMovement.Parse(o.Movement, o.RangeX, o.RangeZ, o.X, o.Z, npc.Facing);
             // Someone the original stands inside a thing that blocks the way (the swimmer in the Resort Area's pool) keeps
             // their tile, where the overlay says they never leave it: they are what is in the way there
-            else if (map.IsSolid(o.X, o.Z) && map.Props.FirstOrDefault(p => p.Model.Length > 0 && p.Covers(o.X, o.Z)) is { } inside)
+            else if (map.IsSolid(px, pz) && map.Props.FirstOrDefault(p => p.Model.Length > 0 && p.Covers(px, pz)) is { } inside)
             {
-                map.SetSolid(o.X, o.Z, false);
+                map.SetSolid(px, pz, false);
                 if (inside.Type == PropType.Pool) npc.Wading = PoolDepth;
             }
             map.NPCs.Add(npc);

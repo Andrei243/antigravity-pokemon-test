@@ -710,6 +710,11 @@ public sealed class ScriptRunner
                 Ribbon(i);
                 break;
 
+            // The Underground (plan 06 · R16a)
+            case Op.Underground:
+                Underground(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -877,6 +882,50 @@ public sealed class ScriptRunner
                 break;
         }
     }
+
+    /// <summary>
+    /// The Underground's commands (plan 06 · R16a), on the original's (<c>GiveTrap</c>, <c>GiveSphere</c>,
+    /// <c>SendGoodToPC</c>, <c>CheckHasRoomForGoodsInPC</c>, <c>GetCapturedFlagCount</c>): <c>give trap</c>, <c>give
+    /// sphere</c> and <c>give good</c> put one into the Underground's bag, or a good into the base's PC, without a word
+    /// (RESULT 1, or 0 with no room; <c>{thing}</c> names it); <c>room</c> is 1 while the PC has room for a good;
+    /// <c>flags</c> the flags brought home. The rest happen in the tunnels and are the host's: <c>down</c> and
+    /// <c>up</c>, <c>mine</c> (the wall ahead dug at, the script waiting), <c>hiker</c>, <c>pc</c> and <c>bag</c> (their
+    /// screens), <c>cantake</c> and <c>takeflag</c> (another digger's flag), <c>home</c> (the flag carried put on the
+    /// player's own PC: 0 none, 1 brought home, 2 and the base's flag is a better one).
+    /// </summary>
+    private void Underground(Instruction i)
+    {
+        var state = host.Underground;
+        switch (i.Name)
+        {
+            case "give" when i.Other == "sphere":
+            {
+                var kind = Enum.Parse<Data.SphereKind>(i.Partner, ignoreCase: true);
+                lastThing = Data.UndergroundDatabase.SphereName(kind);
+                Result = state.TryAddSphere(kind, i.Number) ? 1 : 0;
+                break;
+            }
+            case "give" when i.Other == "trap":
+                lastThing = Data.UndergroundDatabase.TrapName(Data.UndergroundDatabase.TrapId(i.Partner));
+                Result = state.TryAddTrap(Data.UndergroundDatabase.TrapId(i.Partner)) ? 1 : 0;
+                break;
+            case "give":
+                lastThing = Data.UndergroundDatabase.GoodName(Data.UndergroundDatabase.GoodId(i.Partner));
+                Result = state.TryAddPcGood(Data.UndergroundDatabase.GoodId(i.Partner)) ? 1 : 0;
+                break;
+            case "room":
+                Result = state.PcGoods.Count < Models.Underground.UndergroundState.MaxPcGoods ? 1 : 0;
+                break;
+            case "flags":
+                Result = state.Records.FlagsCaptured;
+                break;
+            default:
+                Result = host.UndergroundAct(i.Name, Subject);
+                break;
+        }
+    }
+
+    private string lastThing = "";
 
     /// <summary>
     /// The Seals' commands (plan 06 · R17b), on the original's (<c>GiveOrTakeSeal</c>, <c>CountUniqueSealsInSealCase</c>,
@@ -1295,6 +1344,9 @@ public sealed class ScriptRunner
             "seal" => lastSeal,
             "seals" => lastSeals.ToString(),
             "wearer" => lastWearer,
+            // The Underground (plan 06 · R16a): what was last given, and whose base or flag it is
+            "thing" => lastThing,
+            "digger" => host.DiggerName,
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };

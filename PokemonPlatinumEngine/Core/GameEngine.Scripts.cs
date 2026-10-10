@@ -151,6 +151,14 @@ public partial class GameEngine
         KeepPartnerAlong();
         // A Gym's puzzle is laid out afresh, as the original's room scripts do as the player comes in (plan 01 · M9)
         ArrivePuzzle();
+        // The tunnels are laid out as the player comes to them (plan 06 · R16a)
+        if (IsUnderground) ArriveUnderground();
+        // A flag carried and a trap sprung stay below, however the player leaves
+        else if (underground.HeldFlag != null || trap != null)
+        {
+            underground.HeldFlag = null;
+            trap = null;
+        }
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
         KeepCharactersNear(trim: true);
         arrived = true;
@@ -357,6 +365,12 @@ public partial class GameEngine
         if (item.FieldUse == "VsSeeker")
         {
             UseVsSeeker();
+            return;
+        }
+        // The Explorer Kit: down into the Underground, and below ground its own bag (plan 06 · R16a)
+        if (item.FieldUse == "ExplorerKit")
+        {
+            UseExplorerKit();
             return;
         }
         if (item.FieldUse == "PokeRadar")
@@ -1060,6 +1074,12 @@ public partial class GameEngine
 
         public SealCase SealCase => game.sealCase;
         public Models.SuperContests.ContestRecords ContestRecords => game.contestRecords;
+
+        // ---- The Underground (plan 06 · R16a)
+
+        public Models.Underground.UndergroundState Underground => game.underground;
+        public int UndergroundAct(string what, NPC? subject) => game.UndergroundAct(what, subject);
+        public string DiggerName => game.DiggerName;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

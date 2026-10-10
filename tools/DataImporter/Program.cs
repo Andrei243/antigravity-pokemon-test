@@ -56,6 +56,7 @@ var contests = importer.Contests();
 contests.Backdrops = importer.Backdrops();
 var seals = importer.Seals();
 var ribbons = importer.Ribbons();
+var underground = importer.Underground(items.Select(i => i.Name).ToHashSet());
 
 Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
@@ -71,6 +72,7 @@ Write(Path.Combine(outDir, MartDatabase.FileName), GameDataFiles.Serialize(marts
 Write(Path.Combine(outDir, SuperContestDatabase.FileName), GameDataFiles.Serialize(contests));
 Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals));
 Write(Path.Combine(outDir, RibbonDatabase.FileName), GameDataFiles.Serialize(ribbons));
+Write(Path.Combine(outDir, UndergroundDatabase.FileName), GameDataFiles.Serialize(underground));
 Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items));
 Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities, {items.Count} items and {trainers.Count} trainers in {outDir}");
 return 0;

@@ -608,6 +608,8 @@ public class StoryTests
         started.Add(FieldScripts.HatchEgg);
         // The Ribbon Syndicate's doorkeeper and cashier, whose room is in the Resort Area (plan 06 · R17b; plan 01 · M10's)
         started.UnionWith(new[] { FieldScripts.RibbonSyndicateEntry, FieldScripts.RibbonSyndicateCashier });
+        // The Underground (plan 06 · R16a): a wall that holds something, a base's PC and the bag's way up, which the game starts
+        started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.UndergroundScripts.Select(name => Scripts.Find(name, "underground")!.FullName));
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
@@ -639,7 +641,9 @@ public class StoryTests
         // a town's first arrival, which the game sets as the player comes (SpawnLocations: the elder's house in Celestic
         // Town asks Canalave City's, plan 02 · S9)
         var known = Scripts.FlagsWritten.Concat(RegionDatabase.All.Select(r => r.StoryCompleteFlag))
-            .Concat(SpawnLocations.All.Select(s => s.ArrivalFlag)).ToHashSet();
+            .Concat(SpawnLocations.All.Select(s => s.ArrivalFlag))
+            // What the Underground Man's missions wait for is set by the game as each thing is done below (plan 06 · R16a)
+            .Concat(PokemonPlatinumEngine.Core.GameEngine.UndergroundMissionFlags).ToHashSet();
         Assert.DoesNotContain(Scripts.FlagsRead, f => !known.Contains(f));
         Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v));
     }

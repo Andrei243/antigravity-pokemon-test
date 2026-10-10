@@ -548,6 +548,18 @@ public sealed class WorldMapEntry
 
     /// <summary>What the map is when nothing else is said: open country under the sky, or the inside of a cave.</summary>
     public MapSetting Setting { get; set; } = MapSetting.Outdoors;
+
+    /// <summary>
+    /// Tiles a cave is come to by other than a warp (plan 06 · R16a: the Underground, which only the Explorer Kit leads
+    /// into): its floor is found from them as it is from a way in.
+    /// </summary>
+    public List<int[]>? Arrivals { get; set; }
+
+    /// <summary>
+    /// Tiles of every chunk the map is come to by, as <see cref="Arrivals"/> (the Underground: whoever digs down lands
+    /// on one of four tiles of the chunk below, and its tunnels are several systems that don't join one another).
+    /// </summary>
+    public List<int[]>? ArrivalsInEveryChunk { get; set; }
 }
 
 /// <summary>
@@ -559,6 +571,8 @@ public sealed class WorldOverlayFile
 {
     public string Area { get; set; } = "";
     public string? BgmTrack { get; set; }
+    /// <summary>What the place is called, where the original gives its map no name of its own (the Underground).</summary>
+    public string? Name { get; set; }
     public TreeStyle? Trees { get; set; }
     /// <summary>How its fences and walls are built, where no building says (a building follows its model).</summary>
     public TownArchitecture? Architecture { get; set; }
@@ -750,6 +764,12 @@ public sealed class OverlayPerson
     /// from a tile it counts on.
     /// </summary>
     public bool Still { get; set; }
+
+    /// <summary>
+    /// The tile they stand on, where it isn't the one the area's file gives them (plan 06 · R16a: the Underground's
+    /// hikers, whom the original stands by a table of its own code as the map is come to).
+    /// </summary>
+    public int[]? At { get; set; }
 }
 
 /// <summary>A tile that leads elsewhere: to the warp numbered <see cref="ToWarp"/> of the area <see cref="To"/>.</summary>

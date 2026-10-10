@@ -52,6 +52,10 @@ public enum GameState
     SealCase,
     SealShop,
     FashionCase,
+    /// <summary>The Underground (plan 06 · R16a): the wall's game, the lists of the bag below ground, a hiker's trade and the base's PC, and the base decorated.</summary>
+    Mining,
+    Underground,
+    Decoration,
     Transition
 }
 
@@ -287,6 +291,7 @@ public partial class GameEngine
         poffinCase.Clear();
         fashionCase.Load(null);
         sealCase.Load(null);
+        LoadUnderground(null);
         contestRecords.Load(null);
         contestOutcome = null;
         radar.Clear();
@@ -436,6 +441,7 @@ public partial class GameEngine
         fashionCase.Load(save.FashionCase, save.Backdrops);
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) fashionCase.Add("Glitter Powder");
         sealCase.Load(save.SealCase);
+        LoadUnderground(save.Underground);
         contestRecords.Load(save.ContestRecords);
         contestOutcome = null;
         radar.Clear();
@@ -513,6 +519,8 @@ public partial class GameEngine
             partner = new Follower(along, partnerId);
             KeepPartnerAlong();
         }
+        // A game saved below ground finds the tunnels laid out as it left them (plan 06 · R16a)
+        if (IsUnderground) ArriveUnderground();
     }
 
     /// <summary>The game as it stands, as a save.</summary>
@@ -556,6 +564,7 @@ public partial class GameEngine
             FashionCase = fashionCase.ToSave(),
             Backdrops = fashionCase.Backdrops.Count > 0 ? fashionCase.BackdropsToSave() : null,
             SealCase = sealCase.Total > 0 ? sealCase.ToSave() : null,
+            Underground = underground,
             ContestRecords = contestRecords.IsEmpty ? null : contestRecords,
             DayCare = DayCareSave.From(dayCare),
             WorldVersion = SaveData.CurrentWorld,
@@ -843,6 +852,15 @@ public partial class GameEngine
             case GameState.FashionCase:
                 UpdateFashionCase(dt);
                 break;
+            case GameState.Mining:
+                UpdateMining(dt);
+                break;
+            case GameState.Underground:
+                UpdateUndergroundScreen(dt);
+                break;
+            case GameState.Decoration:
+                UpdateDecoration(dt);
+                break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
                 if (!journalScreen.IsActive) currentState = GameState.Overworld;
@@ -950,6 +968,13 @@ public partial class GameEngine
             return;
         }
 
+        // A trap of the Underground has the player until they are free of it (plan 06 · R16a)
+        if (trap != null && !arrived)
+        {
+            UpdateTrap(dt);
+            return;
+        }
+
         // The place just come to runs its own script first, if it has one
         if (arrived)
         {
@@ -1028,6 +1053,9 @@ public partial class GameEngine
 
         // On the Bicycle the run button changes gear (the original's B button)
         bool runDown = InputManager.IsActionDown(GameAction.Run);
+        // Below ground the run button pressed while standing still sends out the radar's pulse (the original's touch on
+        // the lower screen; plan 06 · R16a). Held on the move it runs, as the original's B does there
+        if (IsUnderground && !InTheBase && runDown && !runWasDown && !player.IsMoving) PulseRadar();
         if (player.Mode == TravelMode.Cycling && runDown && !runWasDown)
         {
             player.FastGear = !player.FastGear;
@@ -1153,6 +1181,8 @@ public partial class GameEngine
     private bool OnStep()
     {
         if (charactersReadyAt != (currentMap.Name, player.GridX >> 5, player.GridY >> 5)) KeepCharactersNear(trim: false);
+        // A step below ground: a base's way in or out, a trap (plan 06 · R16a)
+        if (IsUnderground && UndergroundStep()) return true;
         if (++friendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
             friendshipSteps = 0;
@@ -1403,6 +1433,9 @@ public partial class GameEngine
             // (a nurse, a clerk, a PC, the briefcase, a trainer, someone with lines)
             if (FieldScripts.For(npc) is { } theirs && StartScript(theirs, npc)) return;
         }
+
+        // Below ground: the wall ahead, a trap or a Sphere in the floor, the base's PC and goods (plan 06 · R16a)
+        if (TryInteractUnderground(targetX, targetY)) return;
 
         // A signboard is read, or runs the script it has
         var sign = currentMap.GetSignboardAt(targetX, targetY);
@@ -1824,6 +1857,7 @@ public partial class GameEngine
             case GameState.Dialogue:
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
                 DrawPoisonFlash();
+                DrawTrap();
                 // A script's black screen covers the field and leaves the text over it
                 DrawScriptFade();
                 DrawCutIn();
@@ -1898,6 +1932,15 @@ public partial class GameEngine
                 break;
             case GameState.FashionCase:
                 fashionScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Mining:
+                miningScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Underground:
+                undergroundScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Decoration:
+                decorationScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);

@@ -279,6 +279,21 @@ public interface IScriptHost
     /// <summary>The contests the player has entered and won, and the winners' photographs in the Contest Hall's frames.</summary>
     Models.SuperContests.ContestRecords ContestRecords { get; }
 
+    // ------------------------------------------------------------------ the Underground (plan 06 · R16a)
+
+    /// <summary>What the game keeps of the Underground: its bag and PC, what lies buried, the base, the records.</summary>
+    Models.Underground.UndergroundState Underground { get; }
+
+    /// <summary>
+    /// What the Underground's commands do where the player stands (<c>underground down</c>, <c>up</c>, <c>mine</c>,
+    /// <c>hiker</c>, <c>pc</c>, <c>bag</c>, <c>cantake</c>, <c>takeflag</c>, <c>home</c>); the number is the script's
+    /// RESULT. A screen it opens keeps the script waiting (<see cref="Busy"/>).
+    /// </summary>
+    int UndergroundAct(string what, NPC? subject);
+
+    /// <summary>Whose base the player is in, or whose flag they carry: <c>{digger}</c> in a line.</summary>
+    string DiggerName { get; }
+
     /// <summary>
     /// Hatches the team's first Egg with no cycles left (<c>HatchEgg</c>): its scene plays and the script waits for it
     /// (<see cref="Busy"/>); then the Pokémon is in the Pokédex. False when no Egg is ready.

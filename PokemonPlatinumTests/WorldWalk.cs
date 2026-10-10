@@ -66,6 +66,17 @@ internal static class WorldWalk
                 continue;
             }
 
+            // The Explorer Kit leads down from anywhere the region's own map is walked (plan 06 · R16a): onto the tile of
+            // the Underground under the chunk stood in. Its tunnels are several systems that don't join one another
+            if (map.Name == "Sinnoh" && mode == TravelMode.OnFoot && y >= 6 * Map.ChunkTiles && x >= Map.ChunkTiles
+                && map.DeckAt(x, y) == null && map.BehaviourAt(x, y) != TileBehavior.NoExplorerKit)
+            {
+                var (bx, bz) = PokemonPlatinumEngine.Models.Underground.UndergroundField.Below(x, y);
+                var below = mapOf("Underground");
+                if (below.Name == "Underground" && below.InBounds(bx, bz) && !below.IsSolid(bx, bz))
+                    Visit(below, bx, bz, TravelMode.OnFoot, below.HeightAt(bx, bz), arrived: true);
+            }
+
             // A platform of the League's (plan 01 · M9, part 2d) carries whoever steps onto it at the foot of its
             // shaft up to the top, once
             if (map.Puzzle is LeagueLift lift && lift.Covers(x, y) && MathF.Abs(height - lift.Where.Bottom) < 0.01f)

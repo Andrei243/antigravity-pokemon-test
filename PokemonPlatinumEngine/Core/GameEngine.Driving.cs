@@ -62,6 +62,22 @@ public partial class GameEngine
         /// <summary>The Seal Case, its screens, the Fashion Case's viewer and the contests' records (plan 06 · R17b).</summary>
         public SealCase SealCase => game.sealCase;
         public SealCaseScreen BallCapsules => game.sealCaseScreen;
+
+        /// <summary>The Underground (plan 06 · R16a): its state and rules, its screens, the trap that has the player, and the game's own ways down and up.</summary>
+        public Models.Underground.UndergroundState Underground => game.underground;
+        public Models.Underground.UndergroundField Tunnels => game.Tunnels;
+        public MiningScreen Mining => game.miningScreen;
+        public UndergroundScreen UndergroundLists => game.undergroundScreen;
+        public DecorationScreen Decoration => game.decorationScreen;
+        public Models.Underground.TrapEffect? Trap => game.trap;
+        public IReadOnlyList<Models.Underground.Digger> Diggers => game.diggers;
+        public void GoUnderground() => game.GoUnderground();
+        public void ComeUp() => game.ComeUp();
+        public void PulseRadar() => game.PulseRadar();
+        public void OpenUndergroundBag(int tab = 0) => game.OpenUndergroundBag(tab);
+        public void SpringTrap(int trap) => game.SpringTrap(trap);
+        public void OpenBaseDecoration() => game.OpenDecoration();
+        public void UseDiggerDrill(int slot) => game.UseDiggerDrill(slot);
         public SealShopScreen SealShop => game.sealShopScreen;
         public FashionCaseScreen FashionCaseScreen => game.fashionScreen;
         public Models.SuperContests.ContestRecords ContestRecords => game.contestRecords;

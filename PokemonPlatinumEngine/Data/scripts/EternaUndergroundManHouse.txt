@@ -1,14 +1,17 @@
-# The Underground Man's house in Eterna City (plan 02 · S6). docs/scripts.md describes the language; the lines are our
-# own, on the original's beats (scripts_eterna_city_underground_man_house.s).
+# The Underground Man's house in Eterna City (plan 02 · S6; his missions, plan 06 · R16a). docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_eterna_city_underground_man_house.s).
 #
 # The Underground Man gives the Explorer Kit (FLAG_RECEIVED_EXPLORER_KIT) and offers to teach the player
-# (FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR), starting with a trip below ground. The Underground itself, his later
-# missions and the PC's pages are plan 06 · R16's.
+# (FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR). He teaches by missions, one at a time (VAR_CURRENT_UNDERGROUND_MISSION,
+# 0 to 9): each is set (FLAG_HAS_ACTIVE_UNDERGROUND_MISSION), done below ground (a flag of the game's own each), and
+# rewarded here. The last four ask for flags brought home from other diggers' bases: the original's were other
+# players' (docs/mechanics/rulings.md, "The Underground").
 
 
 # The Underground Man (the original's script 1).
 script UndergroundMan
   speaker "Underground Man"
+  if var VAR_CURRENT_UNDERGROUND_MISSION >= 9 goto Master
   if flag FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR goto Mission
   if flag FLAG_RECEIVED_EXPLORER_KIT goto Offer
   say "Yes, it's me! The first man ever to go down below and dig himself a tunnel!"
@@ -16,6 +19,7 @@ script UndergroundMan
   say "Mind you keep your side of the bargain and make good use of it!"
   give "Explorer Kit"
   setflag FLAG_RECEIVED_EXPLORER_KIT
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
   speaker "Underground Man"
   say "That Explorer Kit will take you straight down into the Underground. Just use it, and there you are!"
   say "Down there is a whole other world. You can do all sorts of things!"
@@ -23,15 +27,231 @@ label Offer
   ask "So how about it? Shall I teach you everything it takes to be a real spelunker?"
   if no goto Refused
   setflag FLAG_ACCEPTED_UNDERGROUND_MAN_AS_MENTOR
-  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
-  say "Ha! That's what I like to hear! I'll teach you with missions, one at a time."
 label Mission
-  say "Your first: go down into the Underground. Nothing to it. Use your Explorer Kit, out of doors and not in a cave."
-  say "Manage that, and I'll set you your next test."
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 0 goto GoDown
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 1 goto DigUp
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 2 goto Bury
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 3 goto MakeBase
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 4 goto Decorate
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 5 goto OneFlag
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 6 goto ThreeFlags
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 7 goto TenFlags
+  if var VAR_CURRENT_UNDERGROUND_MISSION == 8 goto FiftyFlags
+label Master
+  say "Outstanding, the lot of it! I've nothing left to teach you."
+  say "From this day on, you're the master spelunker!"
   end
 label Refused
   say "Ah... I'd hoped to show a young one like you all the wonders of the tunnels."
   say "But I can't make you, can I? Sigh... It does get lonely down here sometimes."
+  end
+
+# The first mission: go down.
+label GoDown
+  if not flag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION goto GoDownSet
+  if not flag FLAG_ENTERED_UNDERGROUND goto GoDownWaiting
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 1
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "Aha! You've been down in the tunnels, I can tell by your boots! Well done! Take these."
+  underground give trap "Move Trap (Up)"
+  underground give trap "Bubble Trap"
+  underground give trap "Leaf Trap"
+  fanfare item
+  text "{player} was handed a Move Trap, a Bubble Trap and a Leaf Trap!"
+  speaker "Underground Man"
+  say "Traps, those are. Whoever treads on one sets it off. Lay them in the tunnels and see who comes along!"
+  say "Come and speak to me again for your next mission."
+  end
+label GoDownSet
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "Ha! That's what I like to hear! I'll teach you with missions, one at a time."
+  say "Your first: go down into the Underground. Nothing to it. Use your Explorer Kit, out of doors and not in a cave."
+  say "Manage that, and I'll set you your next test."
+  end
+label GoDownWaiting
+  say "Not been down yet? All it takes is your Explorer Kit!"
+  say "Out of doors, mind. It's no use inside a house, or in a cave. Off you go!"
+  end
+
+# The second: dig something out of a wall.
+label DigUp
+  if not flag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION goto DigUpSet
+  if not flag FLAG_DIGGING_FOR_FOSSILS goto DigUpWaiting
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 2
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "There! You've been at a wall, just as I asked! Good work! Your reward."
+  underground give sphere prism 1
+  underground give sphere red 1
+  underground give sphere blue 1
+  fanfare item
+  text "{player} was handed a Prism Sphere, a Red Sphere and a Blue Sphere!"
+  speaker "Underground Man"
+  say "The walls down there are full of things. Fossils and stones you can carry up to the surface with you."
+  say "Spheres stay below. They're gems, and down there they pass for money. Come back for your next mission."
+  end
+label DigUpSet
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "Well? Big and empty, was it? That's only because you don't know where to look yet!"
+  say "The tunnels hide a great deal the eye can't see. Your next test: dig some Treasure or a Sphere out of a wall."
+  end
+label DigUpWaiting
+  say "Nothing found yet? Send out your radar's pulse as you go, and watch the walls for a glint."
+  say "Stand right before the glint, face the wall, and dig!"
+  end
+
+# The third: bury a Sphere.
+label Bury
+  if not flag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION goto BurySet
+  if not flag FLAG_SPHERE_ACQUIRED goto BuryWaiting
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 3
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "Good, good! Your Spheres are in the ground! Next time you go down, they'll be the bigger for it."
+  say "Only don't forget where you put them! Here, your reward."
+  underground give trap "Digger Drill"
+  fanfare item
+  text "{player} was handed a Digger Drill!"
+  speaker "Underground Man"
+  say "You'll have met the hikers down there. Sphere collectors, every one. They'll swap you things for a good big Sphere."
+  say "Come back for your next mission."
+  end
+label BurySet
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "I'm not done with you yet! Next, those Spheres. Peculiar things, they are."
+  say "Bury one in the floor of a tunnel and it grows, a little every day. So: go and bury the Spheres I gave you."
+  end
+label BuryWaiting
+  say "Still carrying them? Afraid you'll lose them? No fear of that! A Sphere goes in easily and comes out as easily."
+  say "Just remember the spot. The Underground is a big place."
+  end
+
+# The fourth: make a secret base.
+label MakeBase
+  if not flag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION goto MakeBaseSet
+  if not flag FLAG_CREATED_SECRET_BASE goto MakeBaseWaiting
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 4
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "A Secret Base of your own! Splendid! I wondered if I was asking too much, and here you are. Your reward!"
+  underground give good "Plain Table"
+  underground give good "Wooden Chair"
+  underground give good "Small Bookshelf"
+  underground give good "Buneary Doll"
+  fanfare item
+  text "A Plain Table, a Wooden Chair, a Small Bookshelf and a Buneary Doll were sent to the PC in {player}'s base!"
+  speaker "Underground Man"
+  say "A Digger Drill is good for one base, mind. To move house you'll want another, and a hiker will swap you one for a Sphere."
+  say "Come back for your next mission."
+  end
+label MakeBaseSet
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "Tired of going down and coming up again? We're not finished! Next comes a Secret Base, a place of your own down there."
+  say "The Digger Drill I gave you is all it takes. Go below and make yourself a base!"
+  end
+label MakeBaseWaiting
+  say "Stuck on the drill? It's in among your Traps. Stand facing a good solid wall and use it. That's all there is to it."
+  end
+
+# The fifth: decorate it.
+label Decorate
+  if not flag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION goto DecorateSet
+  if not flag FLAG_DECORATED_SECRET_BASE goto DecorateWaiting
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 5
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  clearflag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD
+  say "And you've made the place your own! I knew I saw a spelunker in you. This one is for your base."
+  if starter "Chimchar" underground give good "Chimchar Doll"
+  if starter "Turtwig" underground give good "Turtwig Doll"
+  if starter "Piplup" underground give good "Piplup Doll"
+  fanfare item
+  text "A {starter} Doll was sent to the PC in {player}'s base!"
+  speaker "Underground Man"
+  say "There are ways to come by more goods. Grow your Spheres, and swap them with the hikers."
+  end
+label DecorateSet
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "You've seen it through to the end! This is my last test. That base of yours: bare as a rock, isn't it?"
+  say "So make it yours! Use the PC in your base, and put out the goods I sent you."
+  end
+label DecorateWaiting
+  say "Have I stumped you at last? The PC in your base is where it's done. DECORATE, then carry each thing where you'd have it."
+  end
+
+# One more thing: a flag from another digger's base.
+label OneFlag
+  if not flag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION goto OneFlagSet
+  if not flag FLAG_DELIVERED_STOLEN_FLAG goto OneFlagWaiting
+  if flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Ah! This is yours, I believe!"
+  if not flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Don't tell me... you've brought a flag home! Then the first of your big boulders can go. Put it away like any piece of furniture. Your reward!"
+  underground room
+  if result == 0 goto PcFull
+  underground give good "Pretty Gem"
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 6
+  clearflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  clearflag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD
+  fanfare item
+  text "A Pretty Gem was sent to the PC in {player}'s base!"
+  speaker "Underground Man"
+  say "There truly is nothing more I can teach you. To clear more boulders and put out more goods, keep bringing flags home."
+  say "Become the master spelunker, for my sake!"
+  end
+label OneFlagSet
+  setflag FLAG_HAS_ACTIVE_UNDERGROUND_MISSION
+  say "I've taught you all I know... but if you insist, there is one thing more."
+  say "Those big boulders cluttering your base. There is a way to shift them. It isn't for the faint of heart, mind..."
+  emote self dots 1.2
+  wait 1.2
+  say "...Very well! You're a born spelunker, so I'll tell you. Others dig down there too, and every one has a base with a flag on its PC."
+  say "Find one of their bases, take the flag, and carry it home to your own PC. Your base grows with every flag you bring back."
+  end
+label OneFlagWaiting
+  say "My spelunker! Found another digger's base yet? Each day brings new ones to the tunnels."
+  say "Bring a flag home to your own PC, then come and tell me!"
+  end
+
+label ThreeFlags
+  underground flags
+  if result < 3 goto MoreFlags
+  if flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Ah! This is yours, I believe!"
+  if not flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Three flags brought home! Well done! Your reward!"
+  underground room
+  if result == 0 goto PcFull
+  underground give good "Shiny Gem"
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 7
+  clearflag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD
+  fanfare item
+  text "A Shiny Gem was sent to the PC in {player}'s base!"
+  end
+label TenFlags
+  underground flags
+  if result < 10 goto MoreFlags
+  if flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Ah! This is yours, I believe!"
+  if not flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Ten flags brought home! Well done indeed! Your reward!"
+  underground room
+  if result == 0 goto PcFull
+  underground give good "Mystic Gem"
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 8
+  clearflag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD
+  fanfare item
+  text "A Mystic Gem was sent to the PC in {player}'s base!"
+  end
+label FiftyFlags
+  underground flags
+  if result < 50 goto MoreFlags
+  if flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Ah! This is yours, I believe!"
+  if not flag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD say "Oh! Oh, my word! Fifty flags! Magnificent! Your reward!"
+  underground room
+  if result == 0 goto PcFull
+  underground give good "Glitter Gem"
+  setvar VAR_CURRENT_UNDERGROUND_MISSION 9
+  clearflag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD
+  fanfare item
+  text "A Glitter Gem was sent to the PC in {player}'s base!"
+  end
+label MoreFlags
+  say "Off below again, my spelunker? The tunnels are wide, and there's always another digger's base to be found."
+  end
+label PcFull
+  setflag FLAG_COULD_NOT_RECEIVE_UNDERGROUND_MAN_REWARD
+  say "Oh? The PC in your base seems to be full. Throw a thing or two away, then come and see me again."
   end
 
 
@@ -51,8 +271,14 @@ label Again
   end
 
 
-# The house's PC (the original's script 5): what it says of the Underground.
+# The house's PC (the original's script 5): a page on the Underground under each of five headings.
 script PC
   speaker none
-  sayown
+  text "\"A Shortcut to the Underground\" is on the screen."
+  choose "Which heading will you read?" "FLAGS" "SPHERES" "TRAPS" "GOODS" "TREASURES" "EXIT"
+  if result == 0 text "FLAGS: Every Secret Base has a flag on its PC. Take another digger's flag and carry it to your own PC, and your base is the better for it."
+  if result == 1 text "SPHERES: Bright stones dug out of the tunnels' walls. The hikers below take them like money, for goods and for traps. Buried in the floor, a Sphere grows day by day."
+  if result == 2 text "TRAPS: Things laid under the tunnels' floor for the unwary. Some have to be blown away, and some cleared by hand."
+  if result == 3 text "GOODS: Furniture and ornaments for a Secret Base. The hikers swap them for Spheres."
+  if result == 4 text "TREASURES: Rare things that turn up as you dig. Put in the bag below ground, they can be carried up to the surface."
   end

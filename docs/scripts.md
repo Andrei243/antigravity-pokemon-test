@@ -55,6 +55,10 @@ that exists, every script to something that starts it, and plays each to its end
 - **Wild Pokémon** (plan 06 · R13). A honey tree faced from the south runs `HoneyTree` (it has no person of its own:
   the tree is a prop, found by its place, `HoneyTrees.Faced`); poison that leaves a Pokémon with one hit point in
   the field runs `PoisonSurvived`. `SwarmNews` is the assistant's sister's, for when her house is built.
+- **The Underground** (plan 06 · R16a). The game starts four scripts of `underground.txt` itself: `Wall` when the
+  player faces a wall that holds something and presses the button, `BasePC` and `DiggerPC` at the PC of the
+  player's own base and of another digger's, and `GoUp` from the last tab of the bag below ground. The hikers'
+  are their own (`HikerGoods`, `HikerTraps`, `HikerTreasures`), and Roark's welcome is the place's `OnEnter`.
 - **A gate onto the Cycling Road on foot.** A warp marked for riders only (an overlay's passage with
   `"bicycle": true`) runs `CyclistsOnly` instead of being taken.
 - **Waking up after a lost battle** (plan 06 · R10). The player comes round in the Pokémon Center last gone into,
@@ -375,6 +379,31 @@ of the team that is no Egg, as the original's givers all are.
 `{seal}` is the Seal last given and `{seals}` how many of it, `{wearer}` the Pokémon the last `ribbon` command or
 `seal unown` was about, and `{ribbon}` the ribbon the last `ribbon` command named (the last contest's until one does).
 `halloffame` gives every Pokémon of the team that is no Egg the Sinnoh Champ Ribbon as it records the team.
+
+### The Underground
+
+Plan 06 · R16a; `docs/mechanics/rulings.md`, "The Underground". What the player has below ground is the
+`UndergroundState` (saved): the bag's Spheres, traps, goods and treasures, the base and its PC, the records.
+
+| Command | What it does |
+|---|---|
+| `underground give trap "Bubble Trap"` | A trap into the bag below ground, without a word: `RESULT` 1, or 0 with forty already. The name is the trap's own, or the original's constant (`TRAP_BUBBLE`). |
+| `underground give sphere red [12]` | A Sphere of a kind (`prism`, `pale`, `red`, `blue`, `green`) and a size (1 if left out) into the bag below ground: `RESULT` 1, or 0 with forty already. |
+| `underground give good "Plain Table"` | A good into the PC of the player's base (whether there is a base yet or not): `RESULT` 1, or 0 with two hundred there. |
+| `underground room` | `RESULT` 1 while the base's PC has room for another good. |
+| `underground flags` | `RESULT` is how many flags the player has brought home. |
+| `underground down` | Down through the ground where the player stands, as the Explorer Kit goes: `RESULT` 0 where it can't be used. |
+| `underground up` | Back up to where the player went down. |
+| `underground mine` | Opens the game of the wall ahead, and the script waits until it is over: `RESULT` 0 if the wall holds nothing. |
+| `underground hiker` | Opens the trade of the hiker whose script this is, and the script waits. |
+| `underground pc` | Opens the lists of the player's base's PC, and the script waits. |
+| `underground bag` | Opens the bag below ground, and the script waits. |
+| `underground cantake` | `RESULT` 1 when the flag of the digger whose base the player is in can be taken: no flag is being carried, and theirs wasn't taken today. |
+| `underground takeflag` | Takes it: `RESULT` 1 when it was taken. |
+| `underground home` | Puts a flag being carried up on the player's own PC: `RESULT` 0 with none carried, 1 put up, 2 put up and the base's own flag bettered by it. |
+
+`{thing}` is what the last `underground give` gave, and `{digger}` the digger whose base the player is in, whose
+flag is carried, or whose was last brought home.
 
 ## Who is on the map
 

@@ -22,6 +22,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> lakes              the seventh chapter: Riley and Iron Island, Canalave's library and the explosion, Saturn at Lake Valor, Mars at Lake Verity, the way north
 //   dotnet run --project tools/ShotHarness -- <output dir> battlezone [Map,x,y[,night] ...]   the Battle Zone's towns and routes and Route 224 (the end of `world`); given places, a shot of each instead
 //   dotnet run --project tools/ShotHarness -- <output dir> snowpoint          the eighth chapter's first half: the rival at Acuity Lakefront, Snowpoint City, Maylene, Candice's Badge, Rock Climb, Jupiter at Lake Acuity
+//   dotnet run --project tools/ShotHarness -- <output dir> underground        the Underground: the way down, a wall dug through, every trap, a Sphere buried, the hikers, the secret base and its decorating, a flag brought home
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
 //   dotnet run --project tools/ShotHarness -- <dir> ab <before> <after> <before again>   three runs of `profile` compared (tools/dev/ab.sh)
 //   dotnet run --project tools/ShotHarness -- <dir> contact [prefix]          every shot of a run on sheets of twenty
@@ -119,6 +120,7 @@ if (mode == "league") h.LeagueMode();
 if (mode == "lakes") h.LakesMode();
 if (mode == "battlezone") h.BattleZoneMode();
 if (mode == "snowpoint") h.SnowpointMode();
+if (mode == "underground") h.UndergroundMode();
 
 h.Close();
 Raylib.CloseWindow();

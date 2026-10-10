@@ -122,5 +122,11 @@ public static class TrainerScore
     /// <summary>A Ball Capsule changed and kept (plan 06 · R17b; <c>TRAINER_SCORE_EVENT_UNK_06</c>, the capsule screen's CONFIRM).</summary>
     public const int MadeCapsule = 2;
 
+    /// <summary>
+    /// The Underground (plan 06 · R16a; <c>TRAINER_SCORE_EVENT_UNDERGROUND_…</c>): going down, every hundredth step
+    /// below, a wall dug out whole, a secret base made or moved, a flag brought home.
+    /// </summary>
+    public const int WentUnderground = 1, UndergroundSteps = 1, UncoveredWall = 2, NewSecretBase = 3, CapturedFlag = 30;
+
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }
