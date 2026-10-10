@@ -152,7 +152,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `l2_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.1 × 1.9 | 7 | Route 213, Valor Lakefront |
 | `l2_s01` | the restaurant at Valor Lakefront | a building: Shop, built as in Resort, 2 storeys, signed DINER |  | 5.8 × 3.9 × 5.7 | 1 | Valor Lakefront |
 | `l2_s02a` | a cottage of the Hotel Grand Lake | a building: House, built as in Resort |  | 4.5 × 3.4 × 5.0 | 5 | Route 213, Valor Lakefront |
-| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 16 | Lake Acuity, Lake Valor, Lake Verity |
+| `l_lake` | the surface of a lake | nothing of its own: the ground under it draws it |  | 32.0 × 32.0 × 0.0 | 20 | Lake Acuity, Lake Valor, Lake Verity |
 | `l_lake_l4` | the surface of a lake | nothing of its own: the ground under it draws it |  | 20.0 × 16.0 × 0.0 | 1 | Sendoff Spring |
 | `lift_base01` | the platform at the foot of a lift on Iron Island | a prop: LiftBase |  | 3.0 × 2.3 × 0.9 | 2 | Iron Island |
 | `p_door` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.0 × 1.8 | 38 | Canalave City, Celestic Town, Eterna City and 15 more |
