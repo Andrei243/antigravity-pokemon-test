@@ -1,0 +1,31 @@
+# Mt. Coronet, the way in from Route 207 (plan 02 · S7). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_mt_coronet_1f_south.s).
+#
+# A step into the hall (the original's trigger 0): Cyrus comes down from the north, speaks of the mountain as the place
+# where Sinnoh began and of the world that came to be, and goes off west. VAR_MT_CORONET_1F_SOUTH_STATE 1 once he has.
+
+
+script Cyrus
+  face player up
+  walk cyrus down 6
+  face cyrus left
+  face player right
+  speaker "Cyrus"
+  say "We meet again. Do you know what this mountain is? It is said that Sinnoh began here, at Mt. Coronet."
+  face cyrus up
+  wait 0.3
+  face player up
+  wait 0.2
+  face player right
+  say "In a world that had only just been made, time began to flow and space began to spread. Everything was new."
+  face cyrus left
+  say "And what became of that world? It filled with conflict and with spirit, and it was never made whole. A pity."
+  walk player down 1
+  face player up
+  wait 0.3
+  face player left
+  walk cyrus left 10
+  hide cyrus
+  setflag FLAG_HIDE_MT_CORONET_1F_SOUTH_CYRUS
+  setvar VAR_MT_CORONET_1F_SOUTH_STATE 1
+  end

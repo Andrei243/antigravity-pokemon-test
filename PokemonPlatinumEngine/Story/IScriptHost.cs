@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Story;
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -39,6 +39,9 @@ public interface IScriptHost
 
     /// <summary>The Great Marsh's Safari Game, while one is under way (plan 01 · M7).</summary>
     SafariGame Safari { get; }
+
+    /// <summary>How many species of the Sinnoh Pokédex the player has seen (the original's <c>GetLocalDexSeenCount</c>).</summary>
+    int SeenInSinnoh { get; }
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }
@@ -164,6 +167,12 @@ public interface IScriptHost
     void TurnClock(int from, int to);
 
     /// <summary>
+    /// A button of the Pastoria Gym is stepped on (<c>PressPastoriaGymButton</c>): the water and the floor on it set off
+    /// for its colour's level; the script waits while they move (<see cref="Busy"/>).
+    /// </summary>
+    void PressButton(PastoriaWater.Button button);
+
+    /// <summary>
     /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
     /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
     /// stop.
@@ -202,4 +211,23 @@ public interface IScriptHost
 
     /// <summary>Where a script's own draws come from: a honey tree slathered, a Trophy Garden Pokémon, a roamer set loose.</summary>
     System.Random Chance { get; }
+
+    // ------------------------------------------------------------------ the clock (plan 06 · R14a)
+
+    /// <summary>The time of day now, one of Platinum's five (<see cref="GameClock.Now"/>).</summary>
+    TimeOfDay TimeOfDay { get; }
+
+    /// <summary>The day of the week today (<see cref="GameClock.Today"/>).</summary>
+    System.DayOfWeek Weekday { get; }
+
+    /// <summary>Every Pokémon in the PC's boxes, box by box and place by place (the lottery's draw reads them).</summary>
+    IEnumerable<Pokemon> Boxed { get; }
+
+    // ------------------------------------------------------------------ berry patches (plan 06 · R14a)
+
+    /// <summary>Sinnoh's berry patches.</summary>
+    BerryPatches Berries { get; }
+
+    /// <summary>The item the bag chose last for <c>chooseitem</c> (<see cref="ScriptScreen.ChooseItem"/>); null for none.</summary>
+    string? ChosenItem { get; }
 }

@@ -20,11 +20,12 @@ namespace PokemonPlatinumEngine.Story;
 public static class ScriptParser
 {
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
-    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT" };
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN" };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
-    private static readonly Regex VariableName = new("^VAR_[A-Z0-9_]+$", RegexOptions.Compiled);
+    // The original's own local variables keep its spelling (VAR_MAP_LOCAL_0x01), which its coordinate events name too
+    private static readonly Regex VariableName = new("^(VAR_[A-Z0-9_]+|VAR_MAP_LOCAL_0x[0-9A-F]{2})$", RegexOptions.Compiled);
 
     public const float EmoteSeconds = 0.9f, FadeSeconds = 0.4f, PanSeconds = 0.8f, ReleaseSeconds = 0.6f, ShakeSeconds = 0.5f;
 
@@ -189,12 +190,17 @@ public static class ScriptParser
             }
             case "heal":
                 return new Instruction { Op = Op.Heal, Line = line };
+            case "greetings":
+                r.OneOf("clear");
+                return new Instruction { Op = Op.ClearGreetings, Line = line };
             case "turnback":
                 return new Instruction { Op = Op.Turnback, Line = line };
             case "defeat":
                 return new Instruction { Op = Op.Defeat, Line = line, Name = r.Text("a trainer's id") };
             case "flowerclock":
                 return new Instruction { Op = Op.FlowerClock, Line = line };
+            case "pressbutton":
+                return new Instruction { Op = Op.PressButton, Line = line, Name = r.OneOf("blue", "green", "orange") };
             case "partner":
             {
                 if (r.PeekWord("off"))
@@ -392,6 +398,12 @@ public static class ScriptParser
             // Wild Pokémon (plan 06 · R13)
             case "honeytree":
                 return new Instruction { Op = Op.HoneyTree, Line = line, Name = r.OneOf("status", "slather", "battle") };
+            case "lottery":
+                return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
+            case "berry":
+                return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches") };
+            case "chooseitem":
+                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch") };
             case "swarms":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Swarms, Line = line };
@@ -490,12 +502,18 @@ public static class ScriptParser
                 return new Condition { Query = Query.Girl, Negated = negated };
             case "poketch":
                 return new Condition { Query = Query.Poketch, Negated = negated };
+            case "poketchapp":
+                return new Condition { Query = Query.PoketchApp, Negated = negated, Name = r.Enum<Models.PoketchApp>("a Pokétch app").ToString() };
             case "pokerus":
                 return new Condition { Query = Query.Pokerus, Negated = negated };
             case "safari":
                 return new Condition { Query = Query.Safari, Negated = negated };
             case "partner":
                 return new Condition { Query = Query.Partner, Negated = negated };
+            case "time":
+                return new Condition { Query = Query.Time, Negated = negated, Name = r.Enum<Core.TimeOfDay>("a time of day").ToString() };
+            case "weekday":
+                return new Condition { Query = Query.Weekday, Negated = negated, Name = r.Enum<System.DayOfWeek>("a day of the week").ToString() };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

@@ -5,7 +5,8 @@ partial class Harness
     // The Gyms rebuilt to the original's plans with their puzzles (not part of `all`), each from its door, its puzzle
     // in its states, a trainer's battle starting and the Leader: the Eterna Gym's flower clock turning and its
     // fountains draining, the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the
-    // Pastoria Gym's water rising and falling. It wins every battle and prints what each puzzle left behind.
+    // Pastoria Gym's water rising and falling, the Canalave Gym's lifts. It wins every battle and prints what each puzzle
+    // left behind.
     public void GymsMode()
     {
         var story = game.Story;
@@ -87,9 +88,39 @@ partial class Harness
             At(map, x, y, facing);
             game.Interact();
         }
-        // `gyms eterna veilstone hearthome`: only the Gyms named
+        // `gyms oreburgh eterna veilstone hearthome pastoria canalave`: only the Gyms named
         var only = args.Length > 2 ? args[2..] : null;
         bool Want(string gym) => only == null || only.Contains(gym);
+
+        // ---- the Oreburgh Gym: its tiers of rock, rebuilt to the original's heights
+        if (Want("oreburgh"))
+        {
+        Enter("OreburghGym", 5, 24);
+        Frames(20); Shot("g50_oreburgh_door");
+        At("OreburghGym", 5, 19, Direction.Up); Frames(4); Shot("g51_oreburgh_the_pit_and_the_bridge");
+        TalkFrom("OreburghGym", "youngster_jonathon", 5, 18, Direction.Left);
+        IntoBattle("Jonathon's battle"); Shot("g52_oreburgh_battle_jonathon");
+        ReadOn();
+        At("OreburghGym", 2, 18, Direction.Up); Frames(4); Shot("g53_oreburgh_up_the_west_stairs");
+        // Onto the bridge from the west tier, by the field's own steps (placed on its tile, the player would stand in the pit under it)
+        At("OreburghGym", 3, 17, Direction.Right); Frames(2);
+        engine.Steering = (Direction.Right, false); Frames(30); engine.Steering = null; Frames(10);
+        Console.WriteLine($"oreburgh: on the bridge at {game.Player.GridX},{game.Player.GridY}, height {game.Player.HeightOn(game.Map)}");
+        Shot("g54_oreburgh_on_the_bridge");
+        TalkFrom("OreburghGym", "youngster_darius", 6, 11, Direction.Right);
+        IntoBattle("Darius's battle");
+        ReadOn();
+        At("OreburghGym", 5, 9, Direction.Up); Frames(4); Shot("g55_oreburgh_below_the_dais");
+        var rock = game.Map;
+        Console.WriteLine($"oreburgh: heights at the door {rock.HeightAt(5, 24)}, the pit {rock.HeightAt(3, 16)}, the bridge {rock.DeckAt(5, 17)}, " +
+            $"the second tier {rock.HeightAt(5, 10)}, the dais {rock.HeightAt(5, 4)}");
+        TalkFrom("OreburghGym", "roark", 5, 4, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Roark")); Box().FinishLine(); Frames(4); Shot("g56_oreburgh_roark");
+        IntoBattle("Roark's battle"); Shot("g57_oreburgh_battle_roark");
+        ReadOn();
+        At("OreburghGym", 5, 21, Direction.Up); Frames(4); Shot("g58_oreburgh_from_the_mat");
+        Console.WriteLine($"oreburgh: Coal Badge {story.HasBadge(Badge.Coal)}");
+        }
 
         // ---- the Eterna Gym: the flower clock
         if (Want("eterna"))
@@ -180,6 +211,120 @@ partial class Harness
         IntoBattle("Maylene's battle"); Shot("g28_veilstone_battle_maylene");
         ReadOn();
         Console.WriteLine($"veilstone: Cobble Badge {story.HasBadge(Badge.Cobble)}, TM60 {game.Bag.GetQuantity(ItemDatabase.Get("TM60")!)}");
+        }
+
+        // ---- the Pastoria Gym: the water and its buttons
+        if (Want("pastoria"))
+        {
+        Enter("PastoriaGym", 13, 41);
+        Frames(20); Shot("g60_pastoria_door");
+        PastoriaWater Pool() => (PastoriaWater)Here().Puzzle!;
+        // Onto a button by the field's own step, from whichever side a step reaches it; the room's trigger presses it
+        void StepOnto(int x, int y)
+        {
+            foreach (var way in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var (dx, dy) = FieldMovement.Delta(way);
+                int fx = x - dx, fy = y - dy;
+                if (!Here().IsWalkable(fx, fy)) continue;
+                var step = FieldMovement.Step(Here(), fx, fy, way, new Walker(TravelMode.OnFoot, Here().HeightAt(fx, fy)));
+                if (!step.Moves || (step.X, step.Y) != (x, y)) continue;
+                At("PastoriaGym", fx, fy, way); Frames(2);
+                engine.Steering = (way, false);
+                Until(() => game.Player.GridX == x && game.Player.GridY == y, "the step onto the button", 120);
+                engine.Steering = null;
+                return;
+            }
+            Console.WriteLine($"  !! no step onto the button at {x},{y}");
+        }
+        At("PastoriaGym", 13, 36, Direction.Up); Frames(4); Shot("g61_pastoria_the_water_at_two");
+        // Up onto the floating floor: the middle ground, then a raft carried at the water's height
+        engine.Steering = (Direction.Up, false); Frames(40); engine.Steering = null; Frames(6);
+        Console.WriteLine($"pastoria: afloat at {game.Player.GridX},{game.Player.GridY}, height {game.Player.HeightOn(Here())}");
+        Shot("g62_pastoria_on_a_raft");
+        // The orange button lowers it: the water on its way down, and the pool drained
+        StepOnto(3, 34);
+        Skip(1.0); Shot("g63_pastoria_the_water_falling");
+        Until(() => !Pool().Moving, "the water at its level", 600);
+        Frames(10); Shot("g64_pastoria_the_water_at_nought");
+        Console.WriteLine($"pastoria: after the orange button the water is at {Pool().Level}");
+        // The blue raises it to the top
+        StepOnto(9, 24);
+        Until(() => Pool().Pressed == PastoriaWater.Button.Blue, "the blue button's script");
+        Until(() => !Pool().Moving, "the water at its level", 600);
+        Frames(10); Shot("g65_pastoria_the_water_at_four");
+        Console.WriteLine($"pastoria: after the blue button the water is at {Pool().Level}");
+        TalkFrom("PastoriaGym", "sailor_damian", 7, 23, Direction.Up);
+        IntoBattle("Damian's battle"); Shot("g66_pastoria_battle_sailor");
+        ReadOn();
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        Pool().Settle(PastoriaWater.Button.Blue);
+        At("PastoriaGym", 12, 5, Direction.Up); Frames(4); Shot("g67_pastoria_by_wake");
+        TalkFrom("PastoriaGym", "crasher_wake", 13, 5, Direction.Up);
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Wake")); Box().FinishLine(); Frames(4); Shot("g68_pastoria_wake");
+        IntoBattle("Wake's battle"); Shot("g69_pastoria_battle_wake");
+        ReadOn();
+        Console.WriteLine($"pastoria: Fen Badge {story.HasBadge(Badge.Fen)}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}");
+        }
+
+        // ---- the Canalave Gym: its floors and lifts
+        if (Want("canalave"))
+        {
+        Enter("CanalaveGym", 16, 26);
+        Frames(20); Shot("g70_canalave_door");
+        CanalaveLifts Lifts() => (CanalaveLifts)Here().Puzzle!;
+        // Somewhere open on a floor, the nearest to a tile, and the player put there at the floor's height
+        void OnFloor(int floor, int x, int y, Direction facing)
+        {
+            var best = (X: x, Y: y);
+            int far = int.MaxValue;
+            for (int ty = 0; ty < Here().Height; ty++)
+                for (int tx = 0; tx < Here().Width; tx++)
+                    if (Lifts().FloorAt(tx, ty, floor * CanalaveLifts.FloorSpacing) != null || floor == 0 && !CanalaveLifts.Closed(0, tx, ty))
+                        if (Math.Abs(tx - x) + Math.Abs(ty - y) < far) { far = Math.Abs(tx - x) + Math.Abs(ty - y); best = (tx, ty); }
+            At("CanalaveGym", best.X, best.Y, facing);
+            game.Player.SetHeight(floor * CanalaveLifts.FloorSpacing);
+            Frames(4);
+        }
+        // Onto a platform by the field's own step: it sets off with the player on it
+        void Ride(int index, string during, string after)
+        {
+            var at = Lifts().Where(index);
+            foreach (var way in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var (dx, dy) = FieldMovement.Delta(way);
+                int fx = at.X - dx, fy = at.Y - dy;
+                var step = FieldMovement.Step(Here(), fx, fy, way, new Walker(TravelMode.OnFoot, at.H));
+                if (!step.Moves || (step.X, step.Y) != (at.X, at.Y)) continue;
+                At("CanalaveGym", fx, fy, way);
+                game.Player.SetHeight(at.H);
+                Frames(2);
+                engine.Steering = (way, false);
+                Until(() => Lifts().Moving != null, "the platform setting off", 120);
+                engine.Steering = null;
+                Skip(0.4); Shot(during);
+                Until(() => Lifts().Moving == null, "the platform at its end", 600);
+                Frames(10); Shot(after);
+                Console.WriteLine($"canalave: platform {index} took the player to {game.Player.GridX},{game.Player.GridY} at height {game.Player.HeightOn(Here())}");
+                return;
+            }
+            Console.WriteLine($"  !! no step onto platform {index} at {at}");
+        }
+        Ride(0, "g71_canalave_the_shaft_rising", "g72_canalave_the_top_floor");
+        OnFloor(1, 14, 5, Direction.Up); Shot("g73_canalave_the_first_floor");
+        OnFloor(2, 16, 14, Direction.Up); Shot("g74_canalave_the_second_floor");
+        Ride(14, "g75_canalave_a_cart_running", "g76_canalave_the_cart_at_its_end");
+        OnFloor(0, 16, 14, Direction.Up); Shot("g77_canalave_the_ground_floor");
+        TalkFrom("CanalaveGym", "worker_gary", 22, 17, Direction.Up);
+        IntoBattle("Gary's battle"); Shot("g78_canalave_battle_worker");
+        ReadOn();
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        At("CanalaveGym", 16, 4, Direction.Up); game.Player.SetHeight(30f); Frames(4);
+        game.Interact();
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Byron")); Box().FinishLine(); Frames(4); Shot("g79_canalave_byron");
+        IntoBattle("Byron's battle"); Shot("g7a_canalave_battle_byron");
+        ReadOn();
+        Console.WriteLine($"canalave: Mine Badge {story.HasBadge(Badge.Mine)}, TM91 {game.Bag.GetQuantity(ItemDatabase.Get("TM91")!)}");
         }
 
         // ---- the Hearthome Gym: the dark rooms and their doors

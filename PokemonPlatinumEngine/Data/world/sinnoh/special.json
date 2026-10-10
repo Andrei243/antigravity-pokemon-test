@@ -1,0 +1,8 @@
+{
+  // Hand-written (plan 08 · P12), never by the importer: the Pokémon no table lists, where they are met and how, for
+  // the Pokédex's area page beside habitats.json. Cells are chunks of the overworld, as there.
+  "map": [],
+  "areas": [
+    { "key": "route_209", "name": "Route 209", "cells": "17,22", "special": [ "Spiritomb" ], "how": "The Hallowed Tower" }
+  ]
+}

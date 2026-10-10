@@ -114,7 +114,8 @@ public partial class GameEngine
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
-                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0
+                SpecialBalls = kind == BattleKind.Safari ? safari.Balls : 0,
+                MoveHints = MoveHintsOn
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
             // terrain gives both the same platforms), whatever ground the player cast from
@@ -306,7 +307,8 @@ public partial class GameEngine
                 Trainers = trainers,
                 Partner = partner,
                 FirstBattle = firstBattle,
-                Conditions = BattleConditionsHere()
+                Conditions = BattleConditionsHere(),
+                MoveHints = MoveHintsOn
             });
             battleRenderer.SetArena(currentMap, player.GridX, player.GridY);
             battleTrainers.Clear();
@@ -315,6 +317,9 @@ public partial class GameEngine
         }, SceneTransition.ForBattle(trainer: true, trainer.TrainerClass.Contains("Leader", StringComparison.OrdinalIgnoreCase),
             trainer.Party.Members[0].Level, LeadLevel()));
     }
+
+    /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>
+    private bool MoveHintsOn => Settings.MoveHints.Holds(Ruleset.Current.Preset);
 
     /// <summary>
     /// Starts building the models a battle will show (the foes and the whole team, who may be sent out), so they are

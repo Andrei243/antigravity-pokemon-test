@@ -100,7 +100,8 @@ public class Map
     /// Where a room's floor begins: the first column and the first row with anything but wall on them, above the
     /// front wall's row. Its side wall stands west of the one and its back wall north of the other. The rooms made
     /// by hand begin at (1, 2); a room rebuilt to the original's plan begins where the original's floor does, so its
-    /// people stand on the original's tiles. Wall tiles inside that are the room's own inner walls.
+    /// people stand on the original's tiles. Wall tiles inside that are the room's own inner walls. A door in a side
+    /// wall (a gate house's) is part of that wall.
     /// </summary>
     public (int Left, int Back) RoomCorner()
     {
@@ -108,7 +109,7 @@ public class Map
         for (int y = 0; y < Height - 1; y++)
             for (int x = 0; x < Width; x++)
             {
-                if (groundLayer[y * Width + x] == TileType.Wall) continue;
+                if (groundLayer[y * Width + x] is TileType.Wall || x == 0 && groundLayer[y * Width + x] == TileType.Door) continue;
                 left = Math.Min(left, x);
                 back = Math.Min(back, y);
             }
@@ -242,10 +243,10 @@ public class Map
     /// <summary>The weather of a small map as a whole (a map of the world has it by area: <see cref="WeatherAt"/>).</summary>
     public FieldWeather Weather { get; set; }
 
-    /// <summary>What falls or hangs in the air over a tile; rooms have no weather, and in a cave only fog hangs.</summary>
+    /// <summary>What falls or hangs in the air over a tile; in a room and a cave only fog hangs (the Lost Tower's top floor).</summary>
     public FieldWeather WeatherAt(int x, int y)
     {
-        if (IsIndoors) return FieldWeather.Clear;
+        if (IsIndoors) return Weather == FieldWeather.Fog && !FogLifted ? FieldWeather.Fog : FieldWeather.Clear;
         // The calendar follows the computer's date, as the original follows the DS's
         var weather = AreaAt(x, y) is { } area ? area.WeatherOn(Core.GameClock.Today) : Weather;
         if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;
@@ -302,6 +303,12 @@ public class Map
     /// leads (see <see cref="MapStructures.FindBuildings"/>).
     /// </summary>
     public Dictionary<(int X, int Y), BuildingKind> BuildingKinds { get; } = new();
+
+    /// <summary>The plates a hand-made map's heights were laid from (<see cref="MapFile.LayHeights"/>), kept so its file is written back as it was.</summary>
+    public List<HeightPlate> Plates { get; } = new();
+
+    /// <summary>The behaviours a hand-made map's file gives its tiles beyond what their look says, kept so the file is written back as it was.</summary>
+    public List<MapFile.BehaviourRecord> BehaviourPatches { get; } = new();
     public int Width { get; }
     public int Height { get; }
 
@@ -429,6 +436,17 @@ public class Map
         float ground = HeightAt(x, y);
         if (DeckAt(x, y) is { } deck && MathF.Abs(deck - from) < MathF.Abs(ground - from)) return (deck, true);
         return (ground, false);
+    }
+
+    /// <summary>
+    /// The height someone coming onto a tile from a height stands at: the ground or a bridge's deck, or a floor a Gym's
+    /// puzzle lays over the tile where that is what carries them (the Canalave Gym's floors; <see cref="FieldMovement.Step"/>'s rule).
+    /// </summary>
+    public float FootingAt(int x, int y, float from)
+    {
+        var (height, _) = SurfaceAt(x, y, from);
+        if (Puzzle?.FloorAt(x, y, from) is { } floor && floor > height && MathF.Abs(floor - from) < MathF.Abs(height - from)) return floor;
+        return height;
     }
 
     public List<NPC> NPCs { get; } = new();

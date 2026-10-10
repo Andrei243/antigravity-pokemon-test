@@ -32,11 +32,20 @@ public class OpeningTests
     {
         private readonly Dictionary<string, Map> maps = new(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>Every map of this game, by name.</summary>
+        public IReadOnlyDictionary<string, Map> Maps => maps;
+
         public StoryState Story { get; } = new();
         public Party Party { get; } = new();
         public Inventory Bag { get; } = new();
         public Map Map { get; private set; } = null!;
         public (int X, int Y) Tile { get; set; }
+
+        /// <summary>The way the player faces as the next script starts (a script may ask it: <c>if facing up</c>).</summary>
+        public Direction Facing { get; set; } = Direction.Down;
+
+        /// <summary>How many species of the Sinnoh Pokédex the player has seen (a script may ask it: <c>SEEN</c>).</summary>
+        public int Seen { get; set; }
 
         /// <summary>Every script played, in order, each with the host it ran in.</summary>
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
@@ -125,6 +134,8 @@ public class OpeningTests
             {
                 Map = Map,
                 PlayerTile = Tile,
+                PlayerFacing = Facing,
+                SeenInSinnoh = Seen,
                 MapNamed = name => maps.GetValueOrDefault(name),
                 StarterChoice = Starter,
                 RivalName = Rival,

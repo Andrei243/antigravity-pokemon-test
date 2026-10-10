@@ -8,6 +8,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.PoketchApps;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
@@ -91,6 +92,7 @@ public partial class GameEngine
     // Where Dig and an Escape Rope lead out of the caves: outside the way the player went into them (the
     // original's exit location), saved with the game
     private MapSpot? exitSpot;
+    private (int, string?, bool) radarFollowed;
 
     // The key item kept on the item button (saved), a rod's cast under way, and whether the run button was down
     // last frame (on the Bicycle a press changes gear)
@@ -270,6 +272,7 @@ public partial class GameEngine
         encounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
         encounters = SpecialEncounters.NewGame(fieldRandom);
+        berries = BerryPatches.NewGame();
         radar.Clear();
         registeredItem = null;
         exitSpot = null;
@@ -408,6 +411,7 @@ public partial class GameEngine
         // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
         // game come back to sends every roamer anywhere (the original's continue task)
         encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
+        berries = save.Berries ?? BerryPatches.NewGame();
         radar.Clear();
         Roamers.Scatter(encounters, fieldRandom);
 
@@ -451,6 +455,7 @@ public partial class GameEngine
         runner.Abort();
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
+        story.RestoreGreetings(save.GreetedPeople);
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -516,6 +521,7 @@ public partial class GameEngine
             Poketch = poketch.Save(),
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             Encounters = encounters,
+            Berries = berries,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(pcBoxStorage),
@@ -529,6 +535,7 @@ public partial class GameEngine
             StoryVersion = StoryState.CurrentVersion,
             StoryVariables = told.Variables,
             TakenItems = told.TakenItems,
+            GreetedPeople = story.Greeted.Order(StringComparer.Ordinal).ToList(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = playerMoney,
@@ -701,6 +708,13 @@ public partial class GameEngine
                 bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
                 registeredItem = bagScreen.Registered;
                 if (bagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
+                else if (!bagScreen.IsActive && bagScreen.TakePick(out var picked))
+                {
+                    // A script that asked for an item hears which (plan 06 · R14a)
+                    scriptItem = picked?.Name;
+                    scriptAnswer = picked != null ? 1 : 0;
+                    currentState = GameState.Overworld;
+                }
                 else if (!bagScreen.IsActive)
                 {
                     currentState = GameState.Overworld;
@@ -830,8 +844,17 @@ public partial class GameEngine
         KeepFieldMovesInForce();
         KeepPuzzleInForce(dt);
         KeepTheClock();
+        KeepBerriesInView();
         SlideBoulders(dt);
         poketchView.Update(dt);
+        // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
+        if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
+        // The radar's chains count toward the Trainer Counter's records whichever app is showing
+        if (poketch.Has(PoketchApp.TrainerCounter) && (radar.Count, radar.Species, radar.Active) != radarFollowed)
+        {
+            radarFollowed = (radar.Count, radar.Species, radar.Active);
+            TrainerCounterApp.Follow(poketch, radar);
+        }
         // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
         // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
         // anywhere else left people where they were until the next of those
@@ -907,6 +930,13 @@ public partial class GameEngine
             return;
         }
 
+        // The Pokétch in hand: the arrows and buttons are its, and the player stands still
+        if (poketchView.InHand)
+        {
+            UpdatePoketchInHand(dt);
+            return;
+        }
+
         if (InputManager.IsActionPressed(GameAction.Menu))
         {
             startMenu.HasPokedex = story.Has(StoryState.PokedexFlag);
@@ -918,6 +948,7 @@ public partial class GameEngine
         // The Pokétch comes out or goes away; its side button changes the app
         if (InputManager.IsActionPressed(GameAction.Poketch)) poketchView.Toggle(poketch);
         if (InputManager.IsActionPressed(GameAction.PoketchApp)) poketchView.NextApp(poketch);
+        if (InputManager.IsActionPressed(GameAction.PoketchTouch) && !player.IsMoving && poketchView.TakeInHand(poketch, PoketchNow())) return;
 
         // The key item kept on the item button (the original's Y button)
         if (InputManager.IsActionPressed(GameAction.Item) && !player.IsMoving)
@@ -1006,6 +1037,45 @@ public partial class GameEngine
         CharacterModels.Preload(looks);
     }
 
+    private readonly HeldKey poketchAcross = new(), poketchDown = new();
+    private PoketchContext? poketchContext;
+
+    /// <summary>What the Pokétch's apps read of the game this frame (plan 06 · R14b).</summary>
+    internal PoketchContext PoketchNow()
+    {
+        var c = poketchContext ??= new PoketchContext
+        {
+            Poketch = poketch,
+            Sound = name => AudioManager.PlaySound(name),
+            Cry = p => AudioManager.PlayCry(p)
+        };
+        c.Party = playerParty;
+        c.Now = PoketchView.Clock();
+        c.Map = currentMap;
+        c.X = player?.GridX ?? 0;
+        c.Y = player?.GridY ?? 0;
+        c.Outside = exitSpot is { } outside ? (outside.X, outside.Y) : null;
+        c.Story = story;
+        c.Pokedex = playerPokedex;
+        c.Encounters = encounters;
+        c.Radar = radar;
+        c.Berries = berries;
+        c.Rng = fieldRandom;
+        return c;
+    }
+
+    /// <summary>The Pokétch in the player's hand: the arrows move its cursor (held, they go on), confirm touches, cancel lets go.</summary>
+    private void UpdatePoketchInHand(float dt)
+    {
+        var context = PoketchNow();
+        int across = poketchAcross.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right), InputManager.Axis(GameAction.Left, GameAction.Right, held: true));
+        int down = poketchDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down), InputManager.Axis(GameAction.Up, GameAction.Down, held: true));
+        for (int i = 0; i < Math.Abs(across); i++) poketchView.MoveCursor(poketch, context, Math.Sign(across), 0);
+        for (int i = 0; i < Math.Abs(down); i++) poketchView.MoveCursor(poketch, context, 0, Math.Sign(down));
+        if (InputManager.IsActionPressed(GameAction.Confirm)) poketchView.Touch(poketch, context);
+        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.PoketchTouch)) poketchView.LetGo();
+    }
+
     private bool OnStep()
     {
         if (charactersReadyAt != (currentMap.Name, player.GridX >> 5, player.GridY >> 5)) KeepCharactersNear(trim: false);
@@ -1026,6 +1096,8 @@ public partial class GameEngine
         // onto it, dust where they came down from a hop
         StepLeavesItsMark();
 
+        // A step onto one of the Canalave Gym's platforms is a ride, and nothing more (plan 01 · M9)
+        if (TryRideLift()) return true;
         // Poison bites every fourth step, the Poké Radar charges and its patches out of sight go still (plan 06 · R13)
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
@@ -1190,7 +1262,7 @@ public partial class GameEngine
     {
         // Nobody challenges a player with no Pokémon able to fight (StartWildBattle says why)
         if (!playerParty.HasUsablePokemon) return false;
-        var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY);
+        var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, height: player.HeightOn(currentMap));
         if (trainer == null) return false;
 
         wandering.Settle(trainer);
@@ -1198,7 +1270,7 @@ public partial class GameEngine
         // Two trainers who see the player at once come together (APPROACH_TYPE_VS2): two against one when the
         // player has two Pokémon able to fight, or against the player and whoever travels with them
         pairApproach = null;
-        if (TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, except: trainer) is { } second
+        if (TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, except: trainer, height: player.HeightOn(currentMap)) is { } second
             && (partner != null || playerParty.Members.Count(p => !p.IsFainted) >= 2))
         {
             wandering.Settle(second);
@@ -1215,6 +1287,9 @@ public partial class GameEngine
 
     /// <summary>A trainer who came up to the player says their piece and battles: their own script, or the common one for trainers.</summary>
     private void ChallengeTrainer(NPC npc) => StartScript(FieldScripts.For(npc) ?? FieldScripts.Trainer, npc);
+
+    /// <summary>Who someone is for <see cref="StoryState.Greet"/>: their place and their key, the same in every game.</summary>
+    internal static string GreetingKey(Map map, NPC npc) => $"{npc.ScriptFile ?? map.Name}.{npc.Key ?? npc.Name}";
 
     private void TryInteract()
     {
@@ -1233,7 +1308,7 @@ public partial class GameEngine
         // Check NPC interaction; reception and shop counters can be talked across
         // Someone on a bridge's deck is out of reach from the ground under it
         float standing = player.HeightOn(currentMap);
-        var npc = currentMap.NpcIn(targetX, targetY, currentMap.SurfaceAt(targetX, targetY, standing).Height);
+        var npc = currentMap.NpcIn(targetX, targetY, currentMap.FootingAt(targetX, targetY, standing));
         if (npc == null && currentMap.IsCounter(targetX, targetY))
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);
@@ -1245,6 +1320,8 @@ public partial class GameEngine
             // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is
             if (npc.IsTrainer) npc.LeavePost();
             if (!npc.IsThing) npc.FaceTowards(player.GridX, player.GridY);
+            // Someone spoken to counts toward the Hallowed Tower's stirring, once each (plan 08 · P12)
+            if (!npc.IsThing && !npc.IsPokemon) story.Greet(GreetingKey(currentMap, npc));
 
             // What happens next is theirs to say: their own script, or the common one for what they are
             // (a nurse, a clerk, a PC, the briefcase, a trainer, someone with lines)
@@ -1495,7 +1572,11 @@ public partial class GameEngine
             else if (foe.TrainerClass == "Champion") journal.Tell(new JournalEvent(JournalEventKind.BeatChampion, foe.Name));
             else journal.BeatTrainer(PlayerIdentity.Fill(foe.FullTitle), place);
         }
-        else if (battle.Result == BattleResult.EnemyCaught && battle.Caught is { } caught) journal.Caught(caught.Species.Name, place);
+        else if (battle.Result == BattleResult.EnemyCaught && battle.Caught is { } caught)
+        {
+            journal.Caught(caught.Species.Name, place);
+            poketch.Remember(caught);
+        }
         else if (battle.Result == BattleResult.PlayerVictory && battle.EnemyPokemon is { } wild) journal.Defeated(wild.Species.Name, place);
     }
 
@@ -1663,7 +1744,7 @@ public partial class GameEngine
                 DrawScriptFade();
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
-                if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, playerParty);
+                if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();

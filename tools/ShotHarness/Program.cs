@@ -9,6 +9,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> profile            where a frame goes: the heavy scenes timed, then taken apart pass by pass
 //   dotnet run --project tools/ShotHarness -- <output dir> opening            the first chapter's scenes, played by its own scripts
 //   dotnet run --project tools/ShotHarness -- <output dir> encounters         wild Pokémon beyond the tables: the Poké Radar, a honey tree, poison, swarms, a roamer, Feebas
+//   dotnet run --project tools/ShotHarness -- <output dir> berries            berry patches in each stage, a patch picked, and the Lottery Corner
 //   dotnet run --project tools/ShotHarness -- <output dir> eterna             the third chapter's second half: Eterna City, Team Galactic's building, the Bicycle
 //   dotnet run --project tools/ShotHarness -- <output dir> distortion         the Distortion World's floors and the north's last landmarks (the end of `world`)
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
@@ -87,6 +88,8 @@ if (h.Run("sheets")) h.SheetsMode();
 if (h.Run("story")) h.StoryMode();
 if (mode == "fieldmoves") h.FieldMovesMode();
 if (mode == "encounters") h.EncountersMode();
+if (mode == "berries") h.BerriesMode();
+if (mode == "poketch") h.PoketchMode();
 if (mode == "jubilife") h.JubilifeMode();
 if (mode == "windworks") h.WindworksMode();
 if (mode == "eterna") h.EternaMode();

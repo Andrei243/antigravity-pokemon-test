@@ -1,0 +1,96 @@
+# The Pastoria Gym (plan 01 · M9), rebuilt to the original's plan. docs/scripts.md describes the language; the lines
+# are our own, on the original's beats (scripts_pastoria_city_gym.s).
+#
+# A pool with walkways at three heights and a floor that floats on the water. A button of each colour sets the water's
+# level as the player steps on it: blue raises it to the top, green to the middle, orange lowers it to the bottom
+# (the game's own rule, PastoriaWater). The water is at the middle, the green down, each time the player comes in.
+# Crasher Wake gives the Fen Badge and TM55, and his Badge sends Team Galactic's grunt away from the city
+# (FLAG_HIDE_PASTORIA_CITY_GRUNT_M, VAR_PASTORIA_CITY_STATE, for plan 02 · S8).
+
+
+# PastoriaGym_Init: the green is down, so stepping on a green button does nothing until another has been pressed
+script OnEnter
+  setvar VAR_MAP_LOCAL_0x01 0
+  setvar VAR_MAP_LOCAL_0x02 1
+  setvar VAR_MAP_LOCAL_0x03 0
+  end
+
+
+script BlueButton
+  pressbutton blue
+  setvar VAR_MAP_LOCAL_0x01 1
+  setvar VAR_MAP_LOCAL_0x02 0
+  setvar VAR_MAP_LOCAL_0x03 0
+  end
+
+
+script GreenButton
+  pressbutton green
+  setvar VAR_MAP_LOCAL_0x01 0
+  setvar VAR_MAP_LOCAL_0x02 1
+  setvar VAR_MAP_LOCAL_0x03 0
+  end
+
+
+# The original's scripts call it the yellow button
+script OrangeButton
+  pressbutton orange
+  setvar VAR_MAP_LOCAL_0x01 0
+  setvar VAR_MAP_LOCAL_0x02 0
+  setvar VAR_MAP_LOCAL_0x03 1
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge fen goto Won
+  say "Hey there, champ in the making! Welcome to the Pastoria Gym!"
+  say "Crasher Wake uses Water types. Grass and Electric moves will make a real splash against them."
+  say "See the buttons on the walkways? Step on one and the water rises or falls. Some paths only show up at the right level!"
+  end
+label Won
+  say "{player}, you beat Crasher Wake! Now that's what I call riding the wave!"
+  end
+
+
+script GymStatue
+  speaker none
+  if badge fen goto Won
+  say "PASTORIA CITY POKéMON GYM. Leader: Crasher Wake. Certified Trainers: {rival}"
+  end
+label Won
+  say "PASTORIA CITY POKéMON GYM. Leader: Crasher Wake. Certified Trainers: {rival}, {player}"
+  end
+
+
+script Wake
+  speaker "Crasher Wake"
+  if badge fen goto Won
+  say "Wahahaha! I am the masked marvel of the marsh! I am Crasher Wake!"
+  say "My Water-type Pokémon and I crash through anything like a wave on the rocks!"
+  say "Let's see if you can stand up to the tide! Here I come!"
+  battle self as "leader_wake"
+  say "Glub... What a battle! You rode out every wave I threw at you!"
+  givebadge fen
+  text "{player} received the Fen Badge from Crasher Wake!"
+  defeat "fisherman_erick"
+  defeat "sailor_damian"
+  defeat "fisherman_walter"
+  defeat "sailor_samson"
+  defeat "tuber_jacky"
+  defeat "tuber_caitlyn"
+  setvar VAR_PASTORIA_CITY_STATE 3
+  setflag FLAG_HIDE_PASTORIA_CITY_GRUNT_M
+  setflag FLAG_BLOCK_PASTORIA_CITY_CROAGUNK_EVENT
+  say "With the Fen Badge, Pokémon up to level 60 will listen to you, even traded ones."
+  say "And you can use Surf outside of battle now. Ride the waves anywhere you like!"
+label Tm
+  say "And take this! A souvenir from a Leader who never holds back!"
+  give "TM55"
+  setflag FLAG_RECEIVED_WAKE_TM55
+  say "TM55 is Brine. It hits twice as hard when the foe is down to half its health or less. Finish them with a splash!"
+  end
+label Won
+  if not flag FLAG_RECEIVED_WAKE_TM55 goto Tm
+  say "Wahaha! The next time we meet, my waves will be even bigger! Count on it!"
+  end

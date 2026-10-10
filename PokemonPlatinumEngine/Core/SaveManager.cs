@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Core;
 
@@ -103,6 +104,9 @@ public class SaveData
     /// </summary>
     public SpecialEncounters? Encounters { get; set; }
 
+    /// <summary>The berry patches (plan 06 · R14a). Null in older saves, which are given the new game's.</summary>
+    public BerryPatches? Berries { get; set; }
+
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
@@ -172,6 +176,9 @@ public class SaveData
 
     /// <summary>The items picked up off the ground and the hidden ones found, by their ids.</summary>
     public List<string> TakenItems { get; set; } = new();
+
+    /// <summary>The people spoken to since the Hallowed Tower last stirred (plan 08 · P12; <c>StoryState.Greeted</c>).</summary>
+    public List<string> GreetedPeople { get; set; } = new();
 
     /// <summary>The species taken from the professor's briefcase, and the one the rival took; null until then.</summary>
     public string? PlayerStarter { get; set; }

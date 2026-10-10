@@ -2,16 +2,46 @@
   "area": "route_209",
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
-  // Gate houses are passed through; their rooms come with plan 01 · M11
-  "through": [
-    { "warp": 0, "to": "hearthome_city", "toWarp": 19 },
-    { "warp": 1, "to": "hearthome_city", "toWarp": 17 }
+  // The gate to Hearthome City, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan,
+  // and the Lost Tower's five floors of graves (plan 02 · S7)
+  "doors": [
+    { "warp": 0, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 1, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 2, "map": "LostTower1F", "x": 7, "y": 14, "facing": "Up" }
   ],
-  // The Lost Tower is a building's floors (plan 01 · M11)
-  "locked": [ 2 ],
-  // Joggers Richard and Raul battle in the morning and only jog past at other times: the original's arrival script
-  // swaps them by their FLAG_HIDE_ROUTE_209_JOGGER_* flags, so all four objects wait for that script (plan 02 · S7)
+  // The Hallowed Tower, read from its four tiles (the original's script 2): the Odd Keystone and Spiritomb (plan 08 · P12)
+  "read": { "2": "HallowedTower" },
+  // Joggers Richard and Raul battle in the morning and only jog past at other times: the route's arrival script swaps
+  // each of them for his double on the same tile by their FLAG_HIDE_ROUTE_209_JOGGER_* flags (plan 06 · R14a)
   "people": {
+    "jogger_richard": {
+      "name": "Richard",
+      "trainer": {
+        "dialogueBefore": "Jogger Richard: A morning run and a morning battle. Best way to start the day!",
+        "dialogueAfter": "Jogger Richard: Phew! I'm more out of breath from that than from the run."
+      }
+    },
+    "jogger_raul": {
+      "name": "Raul",
+      "trainer": {
+        "dialogueBefore": "Jogger Raul: Up with the sun and ready to go! Keep pace with me if you can!",
+        "dialogueAfter": "Jogger Raul: You win. I'll run it off."
+      }
+    },
+    "jogger_richard_no_battle": {
+      "name": "Jogger",
+      "dialog": [
+        "Huff... huff... Can't stop now, I'm keeping my pace!",
+        "Catch me first thing in the morning. That's when I've got the breath to battle."
+      ]
+    },
+    "jogger_raul_no_battle": {
+      "name": "Jogger",
+      "dialog": [
+        "My run's nearly done for the day. My legs have nothing left for a battle.",
+        "Mornings! I'm full of beans in the mornings."
+      ]
+    },
     "pokefan_m": {
       "name": "Man",
       "dialog": [
@@ -19,14 +49,8 @@
         "People climb it to remember Pokémon who are no longer with them. Go quietly, if you go in."
       ]
     },
-    // In Platinum he gives away the Good Rod; the gift is plan 02's (S7)
-    "fisherman": {
-      "name": "Fisherman",
-      "dialog": [
-        "There's water all along this route, and plenty living in it.",
-        "With a good rod in your hand, you'd be amazed what bites."
-      ]
-    },
+    // He gives away the Good Rod (plan 02 · S7)
+    "fisherman": { "name": "Fisherman", "script": "Fisherman" },
     "breeder_albert": {
       "name": "Albert",
       "trainer": {

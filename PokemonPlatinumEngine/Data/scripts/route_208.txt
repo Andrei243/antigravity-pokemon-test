@@ -1,0 +1,16 @@
+# Route 208 (plan 02 · S7, for plan 08 · P12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_route_208.s).
+
+
+# The black belt by the Berry Master's fence (the original's script 4) has no use for the odd stone he dug up, and
+# gives it to the player once (FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE). Its place is the tower of stones on Route 209.
+script BlackBelt
+  if flag FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE goto Given
+  say "I dug up an odd stone on my travels. It's heavier than it looks, and it turns cold at night."
+  say "It gives me the shivers. Go on, you have it!"
+  give "Odd Keystone"
+  setflag FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE
+  speaker self
+label Given
+  say "There's a little tower of stones on Route 209 with one missing. If you ask me, that stone belongs there."
+  end

@@ -111,6 +111,8 @@ Written 2026-10-06, before any session.
 - Tests in `BattlePresentationTests`: the hint equals `Effectiveness` for every type pair and matches the `HitSounded` the turn produces; a status move and a species met for the first time show nothing; under `Rules` a Platinum game shows nothing and a Modern one does. Shots: `battle` with the hints on (`23g_battle_hints`), `look_12_help`.
 - **Done when** a Modern game says "Super effective" before the choice and a Platinum game with the defaults is unchanged by `diff`.
 
+*Outcome of Q10 (2026-10-10).* `RulesDefault` (`Off`, `Rules`, `On`, in `Core/GameSettings.cs`, with `Holds(RulesPreset)`) is the three-way value the later rows take; its first row is `MoveHints`, `Rules` by default, so a Platinum game shows nothing and a Modern one shows the hints. The battle is told by `BattleSetup.MoveHints` (the engine's `MoveHintsOn`, never read by the rules); `BattleEngine.HintFor(move, target)` gives a `MoveHint` (`Battle/MoveHint.cs`) from `DamageCalculator.Effectiveness` on the core's own battlers and rules, nothing for a status move, an empty place or a species the Pokédex hadn't seen when the battle began (noted in the constructor before the log plays). The pill is hung on the top edge of each move card (two foes' in a double battle, as they stand) and of each target card (`ModernUi.HintPill`, style guide "Battle panels"). The HELP row ends the options and opens `HelpScreen` over them: the type chart of the game's rules as a grid of signed pills with a cursor that says each cell in words, the controls read from `InputManager.Bindings` (the keys are a table now, the same that `IsActionPressed` reads), and four notes of our own. A move whose type changes in battle (Hidden Power, Weather Ball, Judgment, Natural Gift, Normalize) is hinted by its listed type, as the move card names it. Shots: `menus` ends in `23g_battle_hints`, `doubles` in `9k_double_hints_moves` and `9l_double_hints_target`, `look` in `look_12_options_hints`, `look_12_help`, `look_12b_help_controls`, `look_12c_help_notes`; each is taken after every older shot of its mode, so none of those moved, except `look_8_options`, whose scroll bar is shorter for the two new rows.
+
 ### Q11 · The information panel
 - The style guide's "Battle panels" first (the sheet, the strip, and the `Item` action that opens them). `AbilityShown` and `ItemShown` in the core where the original names them, and `AiMemory` reading them; `BattleInfo` and the `Revealed` set; `BattleMenuState.Info`, the sheet and the field strip; the harness's `ToMainMenu` unchanged.
 - Tests: the lines after a turn of Sandstorm, Reflect, Spikes and Swords Dance read as expected; a foe's Leftovers is on the sheet only after it has gone off; `ARecordedBattleReplaysTheSame` still holds with the new events, and `TrainerAiTests` with `AiMemory` reading them. Shots: `battle` with the panel open in a single and a double (`23h_battle_info_*`).
@@ -286,7 +288,7 @@ Written 2026-10-06, before any session.
 - [ ] Q7 The pointer in battle and the field
 - [ ] Q8 Seeing
 - [ ] Q9 Light, motion, sound and holding
-- [ ] Q10 What a move will do, and HELP
+- [x] Q10 What a move will do, and HELP (2026-10-10)
 - [ ] Q11 The information panel
 - [ ] Q12 Auto-battle
 - [ ] Q13 Boxes anywhere and a sorted bag

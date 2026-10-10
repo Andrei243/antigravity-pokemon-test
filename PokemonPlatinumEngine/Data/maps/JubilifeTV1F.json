@@ -1,0 +1,140 @@
+{
+  "name": "JubilifeTV1F",
+  "displayName": "Jubilife TV",
+  "bgmTrack": "sinnoh/jubilife",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 13,
+  "height": 9,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#....###....#",
+    "#####...#####",
+    "#...........#",
+    "#...........#",
+    "#.##.....##.#",
+    "##.........##",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 3,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 3,
+      "width": 4,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 9,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 8,
+      "targetMap": "Sinnoh",
+      "targetX": 164,
+      "targetY": 752,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Lottery Clerk",
+      "npcType": "Clerk",
+      "x": 3,
+      "y": 2,
+      "facing": "Down",
+      "script": "LotteryClerk"
+    },
+    {
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 9,
+      "y": 2,
+      "facing": "Down",
+      "dialog": [
+        "Receptionist: Welcome to Jubilife TV! The studios upstairs are closed to visitors today, I'm afraid.",
+        "Do try the Lottery Corner while you're here. Someone wins something nearly every day!"
+      ]
+    },
+    {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 6,
+      "y": 5,
+      "facing": "Up",
+      "dialog": [
+        "Gentleman: I come in every day to check my lucky number. My Pokémon came from all over Sinnoh, you see.",
+        "The more different ID numbers you have among your Pokémon, the better your chances. Trading helps!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -377,9 +377,9 @@ public class SouthWestTests
         // The Trainers' School is entered the same way, and is open
         Assert.Equal("TrainersSchool", map.GetWarpAt(168, 776)!.TargetMap);
         Assert.False(map.IsSolid(168, 776));
-        // The Lost Tower's rooms aren't built: its way in on Route 209 is shut (plan 01 · M11)
-        Assert.Null(map.GetWarpAt(568, 680));
-        Assert.True(map.IsSolid(568, 680));
+        // The Lost Tower's rooms are built (plan 02 · S7): its way in on Route 209 is open
+        Assert.Equal("LostTower1F", map.GetWarpAt(568, 680)!.TargetMap);
+        Assert.False(map.IsSolid(568, 680));
         // Eterna Forest is (plan 01 · M6): Route 205 leads into it
         Assert.Equal("EternaForest", map.GetWarpAt(206, 581)!.TargetMap);
     }

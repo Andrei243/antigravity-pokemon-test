@@ -1,0 +1,178 @@
+{
+  "name": "LostTower5F",
+  "displayName": "Lost Tower",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "Lab",
+  "trees": "Round",
+  "weather": "Fog",
+  "encounterRate": 10,
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#______##_____#",
+    "#______##_____#",
+    "#_____________#",
+    "#_____________#",
+    "#_####___####_#",
+    "#_#_________#_#",
+    "#_#_________#_#",
+    "#_#_________#_#",
+    "#_#_________#_#",
+    "#_#_________#_#",
+    "#_#_________#_#",
+    "#_#_________#_#",
+    "###############"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#......####...#",
+    "#......####...#",
+    "#.............#",
+    "#.............#",
+    "#.####...####.#",
+    "#.#.........#.#",
+    "#.#.........#.#",
+    "#.#.........#.#",
+    "#.#....##...#.#",
+    "#.#.........#.#",
+    "#.#.........#.#",
+    "#.#.........#.#",
+    "###############"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 13, "depth": 12, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Headstone",
+      "x": 8,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "LostTower4F",
+      "targetX": 3,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "old_woman_1",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 7,
+      "y": 9,
+      "facing": "Down",
+      "script": "OldWoman1"
+    },
+    {
+      "id": "old_woman_2",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 9,
+      "facing": "Down",
+      "script": "OldWoman2"
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 20
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 5
+    },
+    {
+      "speciesName": "Golbat",
+      "minLevel": 22,
+      "maxLevel": 22,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 22,
+      "maxLevel": 22,
+      "weight": 4
+    },
+    {
+      "speciesName": "Golbat",
+      "minLevel": 22,
+      "maxLevel": 22,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 22,
+      "maxLevel": 22,
+      "weight": 1
+    },
+    {
+      "speciesName": "Golbat",
+      "minLevel": 22,
+      "maxLevel": 22,
+      "weight": 1
+    }
+  ]
+}

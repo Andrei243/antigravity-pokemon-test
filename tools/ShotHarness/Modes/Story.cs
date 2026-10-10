@@ -245,5 +245,19 @@ partial class Harness
         stand = Beside(sinnoh, yard.GridX, yard.GridY);
         At("Sinnoh", stand.X, stand.Y, stand.Facing);
         Frames(6); Shot("st37_machop_in_the_yard");
+
+        // ---- Route 209's Hallowed Tower (plan 08 · P12): broken, the Odd Keystone set in it, and stirring once enough
+        // people have been spoken to
+        var tower = sinnoh.TileScripts.Where(kv => kv.Value == "HallowedTower").Select(kv => kv.Key).OrderBy(t => t.Y).ThenBy(t => t.X).Last();
+        At("Sinnoh", tower.X, tower.Y + 1, Direction.Up);
+        Frames(6); Shot("st38_hallowed_tower");
+        bag.AddItem(ItemDatabase.Get("Odd Keystone")!);
+        Talk(); Whole(); Until(() => engine.Choice.IsOpen, "the keystone's question"); Frames(20); Shot("st39_hallowed_tower_keystone");
+        engine.Choice.Confirm(); Frames(20);
+        ReadOn();
+        for (int i = 0; i < 29; i++) story.Greet($"harness/person_{i}");
+        Talk(); Whole(); Shot("st40_hallowed_tower_stirs");
+        ReadOn();
+        Console.WriteLine($"hallowed tower: state {story.Var("VAR_HALLOWED_TOWER_STATE")}, keystones {bag.GetQuantity(ItemDatabase.Get("Odd Keystone")!)}, greetings {story.Greetings}");
     }
 }

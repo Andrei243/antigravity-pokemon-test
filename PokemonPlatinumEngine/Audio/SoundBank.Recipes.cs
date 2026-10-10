@@ -54,6 +54,15 @@ public static partial class SoundBank
         Add("fish_bite", SoundGroup.Field, "SEQ_SE_DP_FW104", "Something bites (waits for fishing).");
         Add("fish_reel", SoundGroup.Field, null, "The line reeled in (waits for fishing).");
         Add("poketch", SoundGroup.Field, "SEQ_SE_DP_POKETCH_003", "A Pokétch button (waits for the Pokétch).");
+        Add("poketch_count", SoundGroup.Field, "SEQ_SE_DP_POKETCH_010", "The Pokétch's Counter counts one more.");
+        Add("poketch_beep", SoundGroup.Field, "SEQ_SE_DP_BEEP", "The Pokétch's short beep for a button that can't be used now (the roulette or the kitchen timer at the wrong moment), and the link searcher done.");
+        Add("coin_flip", SoundGroup.Field, "SEQ_SE_DP_DENSI09", "The Pokétch's coin is tossed.");
+        Add("coin_land", SoundGroup.Field, "SEQ_SE_DP_DENSI10", "The Pokétch's coin lands.");
+        Add("roulette_spin", SoundGroup.Field, "SEQ_SE_DP_POKETCH_011", "The Pokétch's roulette comes to rest.");
+        Add("timer_alarm", SoundGroup.Field, "SEQ_SE_DP_DENSI11", "The Pokétch's kitchen timer runs out.");
+        Add("dowsing_ping", SoundGroup.Field, "SEQ_SE_DP_POKETCH_009", "The Dowsing Machine's touch: a ring spreading over the screen.");
+        Add("lift", SoundGroup.Field, "SEQ_SE_DP_ELEBETA", "A platform of the Canalave Gym sets off with the player on it.");
+        Add("lift_stop", SoundGroup.Field, "SEQ_SE_DP_KI_GASYAN", "The platform comes to its end and locks in place.");
         Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
         Add("thunder_rumble", SoundGroup.Field, "SEQ_SE_DP_T_KAMI", "Thunder rolling from further off, a second after the lightning (one strike of three).");
 
@@ -301,6 +310,21 @@ public static partial class SoundBank
                 d.Noise(0.06f, 0.015f, Filter.Band, 2600f, 2600f, 0.8f, 5f, 0.1f, 2f);
                 d.Crackle(0.08f, 0.09f, 6, 1800f, 0.35f, even: true);
                 return Finish(d.S, 0.34f);
+            case "lift":
+                // A motor winding up under a steel deck: a low hum that rises and a rattle of the cables
+                d = new SoundDesign(0.7f, 0x11Fu);
+                d.Tone(0, 0.68f, Wave.Triangle, 70f, 120f, 0.45f, 0.12f, 1.2f, vibratoHz: 24f, vibratoDepth: 0.04f);
+                d.Tone(0, 0.68f, Wave.Sine, 140f, 240f, 0.2f, 0.12f, 1.4f);
+                d.Noise(0, 0.66f, Filter.Band, 600f, 900f, 0.3f, 0.9f, 0.1f, 1.2f, 30f, 0.4f);
+                return Finish(d.S, 0.36f);
+            case "lift_stop":
+                // Steel meets steel: a heavy clank and the catch dropping into place
+                d = new SoundDesign(0.4f, 0x5A5u);
+                d.Thump(0, 0.18f, 180f, 80f, 0.8f, 0.5f);
+                d.Noise(0, 0.03f, Filter.Band, 3000f, 2400f, 0.7f, 4f, 0.05f, 2f);
+                d.Bell(0.01f, 0.3f, 820f, 2.76f, 2.5f, 0.18f, 6f);
+                d.Noise(0.12f, 0.015f, Filter.Band, 2600f, 2600f, 0.5f, 4f, 0.1f, 2f);
+                return Finish(d.S, 0.4f);
             case "boulder":
                 // A great weight dragged over stone: a rumble with a grinding stutter
                 d = new SoundDesign(0.6f, 0xB0u);
@@ -350,6 +374,42 @@ public static partial class SoundBank
                 d.Tone(0.055f, 0.06f, Wave.Pulse, N(100), N(100), 0.4f, 0.03f, 1.2f, duty: 0.5f);
                 return Finish(d.S, 0.3f);
 
+            case "poketch_count":
+                // A short click up, higher than the button's chirp
+                d = new SoundDesign(0.08f);
+                d.Tone(0, 0.05f, Wave.Pulse, N(103), N(103), 0.4f, 0.02f, 1.0f, duty: 0.25f);
+                return Finish(d.S, 0.34f);
+            case "poketch_beep":
+                d = new SoundDesign(0.14f);
+                d.Tone(0, 0.12f, Wave.Pulse, N(93), N(93), 0.4f, 0.02f, 0.6f, duty: 0.5f);
+                return Finish(d.S, 0.3f);
+            case "coin_flip":
+                // A rising run of blips: the coin spinning up
+                d = new SoundDesign(0.3f);
+                d.Notes(0, 0.04f, 0.035f, Wave.Pulse, new[] { N(84), N(88), N(91), N(96), N(100), N(103) }, 0.35f, 0.02f, 1.2f, 0.25f);
+                return Finish(d.S, 0.3f);
+            case "coin_land":
+                d = new SoundDesign(0.22f);
+                d.Tone(0, 0.08f, Wave.Pulse, N(91), N(91), 0.4f, 0.02f, 1.0f, duty: 0.5f);
+                d.Tone(0.09f, 0.12f, Wave.Pulse, N(96), N(96), 0.4f, 0.02f, 1.4f, duty: 0.5f);
+                return Finish(d.S, 0.3f);
+            case "roulette_spin":
+                // A falling and rising whirr of blips
+                d = new SoundDesign(0.4f);
+                for (int k = 0; k < 10; k++) d.Tone(k * 0.035f, 0.03f, Wave.Pulse, N(88 + (k % 4) * 3), N(88 + (k % 4) * 3), 0.3f, 0.02f, 1.0f, duty: 0.25f);
+                return Finish(d.S, 0.3f);
+            case "timer_alarm":
+                // Two bursts of quick beeps, as a kitchen timer rings
+                d = new SoundDesign(0.9f);
+                for (int burst = 0; burst < 2; burst++)
+                    for (int k = 0; k < 4; k++) d.Tone(burst * 0.45f + k * 0.08f, 0.05f, Wave.Pulse, N(100), N(100), 0.4f, 0.02f, 0.8f, duty: 0.5f);
+                return Finish(d.S, 0.35f);
+            case "dowsing_ping":
+                // A soft sonar ping, falling away
+                d = new SoundDesign(0.5f);
+                d.Tone(0, 0.45f, Wave.Sine, N(96), N(91), 0.5f, 0.01f, 2.4f);
+                d.Tone(0, 0.2f, Wave.Pulse, N(96), N(96), 0.15f, 0.01f, 2.0f, duty: 0.5f);
+                return Finish(d.S, 0.3f);
             // ---------------------------------------------------------------- battles
             case "send_out":
                 // The ball pops open in a puff of light: a burst of air, a rising tone, a sparkle

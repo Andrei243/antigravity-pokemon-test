@@ -1,7 +1,11 @@
 {
   "area": "wayward_cave_1f",
   "bgmTrack": "sinnoh/cave",
+  // Plan 02 · S7 (scripts/wayward_cave_1f.txt): Mira, lost in the hidden part, walks with the player to the way out
+  // under the Cycling Road (trigger 0)
+  "triggers": [ { "trigger": 0, "script": "Exit" } ],
   "people": {
+    "mira": { "name": "Mira", "npcType": "Lass", "script": "Mira" },
     "camper_diego": {
       "name": "Diego",
       "trainer": {

@@ -1,0 +1,31 @@
+# A room of the Solaceon Ruins (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_solaceon_ruins_room_2.s).
+#
+# The hiker has been looking for HM05, which lies deeper in the ruins. Once the player has it he asks to borrow it
+# and gives a Green Shard for the favour (FLAG_RECEIVED_SOLACEON_RUINS_ROOM_2_GREEN_SHARD); turned down, he asks again
+# straight away the next time (FLAG_DID_NOT_LOAN_HM_DEFOG). The HM stays the player's, as in the original.
+
+
+script Hiker
+  if flag FLAG_RECEIVED_SOLACEON_RUINS_ROOM_2_GREEN_SHARD goto Thanks
+  if flag FLAG_DID_NOT_LOAN_HM_DEFOG goto Ask
+  if item "HM05" goto Found
+  say "They say a Hidden Machine called Defog is tucked away somewhere in these ruins." "I've been round and round these rooms all day. Every one of them looks the same!"
+  end
+label Found
+  say "They say a Hidden Machine called Defog is tucked away somewhere in these ruins..."
+label Ask
+  emote hiker exclaim
+  ask "Wait, you've got it? That's HM05! Would you let me borrow it, just for a moment?"
+  if no goto Refused
+  say "You're a lifesaver! Here, take this for your trouble."
+  give "Green Shard"
+  setflag FLAG_RECEIVED_SOLACEON_RUINS_ROOM_2_GREEN_SHARD
+  end
+label Refused
+  setflag FLAG_DID_NOT_LOAN_HM_DEFOG
+  say "Aw, come on. It's not as if an HM wears out when you lend it!"
+  end
+label Thanks
+  say "Defog, at last! Now no fog in Sinnoh can stand in my way."
+  end

@@ -568,7 +568,9 @@ public class BuildingTests
             var (min, max) = (kit.Solid.VertexCount > 0 ? kit.Solid : kit.Flat).Bounds();
             const float slack = 4 / 32f;
             Assert.True(min.X >= prop.X - slack && max.X <= prop.X + prop.Width + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is wider than its tiles");
-            Assert.True(max.Y <= PropModels.WallHeight / 32f * IndoorVS + 0.01f, $"{mapName}: the {prop.Type} is taller than the walls");
+            // A room with relief stands each piece on the floor under it (the Oreburgh Gym's emblem on the dais)
+            float foot = Relief.At(map, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f);
+            Assert.True(max.Y - foot <= PropModels.WallHeight / 32f * IndoorVS + 0.01f, $"{mapName}: the {prop.Type} is taller than the walls");
             if (prop.IsSolid)
                 Assert.True(min.Z >= prop.Y - slack && max.Z <= prop.Y + prop.Depth + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is deeper than its tiles");
             else if (prop.Type != PropType.Rug)

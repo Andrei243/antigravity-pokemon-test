@@ -6,6 +6,7 @@
 //   dotnet run --project tools/MapImporter -- --decomp <dir>    read an existing pokeplatinum checkout
 //   dotnet run --project tools/MapImporter -- --quick           the mosaics and reports only: no per-chunk or per-area pictures, no world files
 //   dotnet run --project tools/MapImporter -- --data            only rewrite the game's own world files (PokemonPlatinumEngine/Data/world/sinnoh)
+//   dotnet run --project tools/MapImporter -- --room <key>      print a room of the original as text, to write its map file from
 
 using System.Diagnostics;
 using System.Globalization;
@@ -29,6 +30,12 @@ var decomp = new DecompMaps(decompDir);
 var world = new WorldWriter(decomp);
 var byBehaviour = new Renders(decomp);
 var byCover = new Renders(decomp) { CoverOf = world.CoverOf };
+
+if (Arg("--room") is { } room)
+{
+    Console.Write(RoomPlan.Describe(decomp, room));
+    return 0;
+}
 
 if (args.Contains("--data"))
 {

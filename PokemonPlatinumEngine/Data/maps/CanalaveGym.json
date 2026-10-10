@@ -1,0 +1,268 @@
+{
+  "name": "CanalaveGym",
+  "displayName": "Canalave Gym",
+  "bgmTrack": "common/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Steel",
+  "puzzle": "CanalaveLifts",
+  "width": 32,
+  "height": 28,
+  "ground": [
+    "################################",
+    "################################",
+    "################################",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#",
+    "#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#",
+    "#VVVVV___V_________________VVVV#",
+    "#VVVVV___V_________________VVVV#",
+    "#VVVVV___V_________________VVVV#",
+    "#VVVVV___VVVVVVVVVVVVVVVVVVVVVV#",
+    "#VVVVV___________V_________VVVV#",
+    "#VVVVV___________V_________VVVV#",
+    "#VVVVV___________V_________VVVV#",
+    "#VVVVV___________V_________VVVV#",
+    "#VVVVV_____________________VVVV#",
+    "#VVVVV_____________________VVVV#",
+    "#VVVVV___VVVVVVVVVVV_______VVVV#",
+    "#VVVVV_____________V_______VVVV#",
+    "#VVVVV_____________VVVVV___VVVV#",
+    "#VVVVV_____________V___V___V___#",
+    "#VVVVV_____________V___V___V___#",
+    "#VVVVV_____________V___V___V___#",
+    "#VVVVV_____________V___VVVVV___#",
+    "#VVVVV_____________V___________#",
+    "#VVVVV_____________V___________#",
+    "################D###############"
+  ],
+  "solid": [
+    "################################",
+    "################################",
+    "################################",
+    "#..#.....#............#........#",
+    "#..#...........................#",
+    "#..#.....#............#........#",
+    "#..#.....#...#........#........#",
+    "#..#.....#...#........#....#...#",
+    "#........#.................#...#",
+    "#........#.................#...#",
+    "#........#.................#...#",
+    "##.#.....#...###########.#.#...#",
+    "#................#.............#",
+    "#................#.............#",
+    "#................#.............#",
+    "#................#.............#",
+    "#..........................##..#",
+    "#..........................#...#",
+    "##.###...###########.......#...#",
+    "##.###.............#.......#...#",
+    "#..................#####...#...#",
+    "#..................#...#...#...#",
+    "#..###.................#...#...#",
+    "#..................#...#...#...#",
+    "#..................#....#......#",
+    "#.............#...##...........#",
+    "#..................#...........#",
+    "################.###############"
+  ],
+  "heights": [
+    { "x": 0, "z": 0, "width": 32, "depth": 28, "height": 0, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 14,
+      "y": 25,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 18,
+      "y": 25,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 16,
+      "sourceY": 27,
+      "targetMap": "Sinnoh",
+      "targetX": 39,
+      "targetY": 732,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 14,
+      "y": 25,
+      "text": "CANALAVE CITY POKéMON GYM\nLeader: Byron",
+      "script": "GymStatue"
+    },
+    {
+      "x": 18,
+      "y": 25,
+      "text": "CANALAVE CITY POKéMON GYM\nLeader: Byron",
+      "script": "GymStatue"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "byron",
+      "name": "Byron",
+      "npcType": "Gentleman",
+      "x": 16,
+      "y": 3,
+      "facing": "Down",
+      "script": "Byron",
+      "level": 30
+    },
+    {
+      "id": "gym_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 15,
+      "y": 25,
+      "facing": "Down",
+      "script": "GymGuide"
+    },
+    {
+      "id": "worker_gerardo",
+      "name": "Gerardo",
+      "npcType": "Gentleman",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "trainer": {
+        "id": "worker_gerardo",
+        "name": "Gerardo",
+        "trainerClass": "Worker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Worker Gerardo: These platforms were built to carry steel beams. Let's see if they can carry you!",
+        "dialogueAfter": "Worker Gerardo: Knocked clean off my feet... Mind the edge on your way up.",
+        "sightRange": 1
+      },
+      "level": 20
+    },
+    {
+      "id": "worker_jackson",
+      "name": "Jackson",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 3,
+      "facing": "Down",
+      "trainer": {
+        "id": "worker_jackson",
+        "name": "Jackson",
+        "trainerClass": "Worker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Worker Jackson: We bolted every one of these lifts together ourselves. Sturdy, eh? So are my Pokémon!",
+        "dialogueAfter": "Worker Jackson: Rattled loose! A lift only goes where it goes, so choose the one you step on.",
+        "sightRange": 2
+      },
+      "level": 10
+    },
+    {
+      "id": "worker_gary",
+      "name": "Gary",
+      "npcType": "Gentleman",
+      "x": 22,
+      "y": 16,
+      "facing": "Down",
+      "trainer": {
+        "id": "worker_gary",
+        "name": "Gary",
+        "trainerClass": "Worker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Worker Gary: Hard hat on, Pokémon out! Safety first, battle second!",
+        "dialogueAfter": "Worker Gary: If that wasn't an accident on the job, I don't know what is.",
+        "sightRange": 4
+      },
+      "movement": "look_north_and_south"
+    },
+    {
+      "id": "black_belt_david",
+      "name": "David",
+      "npcType": "BlackBelt",
+      "x": 24,
+      "y": 3,
+      "facing": "Down",
+      "trainer": {
+        "id": "black_belt_david",
+        "name": "David",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt David: I train up here, where the steel is cold and the drop is long!",
+        "dialogueAfter": "Black Belt David: My stance cracked like cast iron...",
+        "sightRange": 1
+      },
+      "level": 20
+    },
+    {
+      "id": "black_belt_ricky",
+      "name": "Ricky",
+      "npcType": "BlackBelt",
+      "x": 9,
+      "y": 17,
+      "facing": "Left",
+      "trainer": {
+        "id": "black_belt_ricky",
+        "name": "Ricky",
+        "trainerClass": "Black Belt",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Black Belt Ricky: Steel types shrug off my punches. Will yours?",
+        "dialogueAfter": "Black Belt Ricky: Even steel bends if you push hard enough. Today it was me.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "ace_trainer_cesar",
+      "name": "Cesar",
+      "npcType": "Youngster",
+      "x": 27,
+      "y": 25,
+      "facing": "Down",
+      "trainer": {
+        "id": "ace_trainer_cesar",
+        "name": "Cesar",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Cesar: Byron only meets Trainers who can find their own way up. Prove you belong!",
+        "dialogueAfter": "Ace Trainer Cesar: You belong, all right. Up you go.",
+        "sightRange": 2
+      }
+    },
+    {
+      "id": "ace_trainer_breanna",
+      "name": "Breanna",
+      "npcType": "Lass",
+      "x": 27,
+      "y": 5,
+      "facing": "Right",
+      "trainer": {
+        "id": "ace_trainer_breanna",
+        "name": "Breanna",
+        "trainerClass": "Ace Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Ace Trainer Breanna: My Bronzor ring like bells when they battle. Shall we make some noise?",
+        "dialogueAfter": "Ace Trainer Breanna: Not one note out of tune. Impressive.",
+        "sightRange": 3
+      },
+      "level": 10
+    }
+  ],
+  "wildEncounters": []
+}

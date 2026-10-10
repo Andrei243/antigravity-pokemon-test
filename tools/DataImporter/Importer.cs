@@ -1304,6 +1304,22 @@ public sealed partial class Importer
             }
             if (use.Count > 0) item.Use = use;
         }
+        // A berry's growing and its taste (plan 06 · R14a): numbers only
+        if (d.TryGetProperty("berryData", out var berry) && berry.ValueKind == JsonValueKind.Object)
+            item.Berry = new BerryData
+            {
+                Size = berry.GetProperty("size").GetInt32(),
+                Firmness = Names.Pascal(berry.GetProperty("firmness").GetString()!, "FIRMNESS_"),
+                BaseYield = berry.GetProperty("baseYield").GetInt32(),
+                StageDuration = berry.GetProperty("stageDuration").GetInt32(),
+                MoistureDrainRate = berry.GetProperty("moistureDrainRate").GetInt32(),
+                Spiciness = berry.GetProperty("spiciness").GetInt32(),
+                Dryness = berry.GetProperty("dryness").GetInt32(),
+                Sweetness = berry.GetProperty("sweetness").GetInt32(),
+                Bitterness = berry.GetProperty("bitterness").GetInt32(),
+                Sourness = berry.GetProperty("sourness").GetInt32(),
+                Smoothness = berry.GetProperty("smoothness").GetInt32()
+            };
         return item;
     }
 

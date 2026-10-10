@@ -428,6 +428,10 @@ public sealed class HabitatArea
     public List<string>? OldRod { get; set; }
     public List<string>? GoodRod { get; set; }
     public List<string>? SuperRod { get; set; }
+
+    /// <summary>In the hand-written special file only (plan 08 · P12): the species met here in a way of their own, and that way in words.</summary>
+    public List<string>? Special { get; set; }
+    public string? How { get; set; }
 }
 
 /// <summary>
@@ -771,6 +775,9 @@ public sealed class AreaObject
     /// <summary>For an item lying in its ball: the item, by the game's name for it, and how many when more than one.</summary>
     public string? Item { get; set; }
     public int? Count { get; set; }
+
+    /// <summary>For a patch of soft soil: its number among the save's 128 berry patches (plan 06 · R14a).</summary>
+    public int? Patch { get; set; }
 
     public string Script { get; set; } = "";
 }

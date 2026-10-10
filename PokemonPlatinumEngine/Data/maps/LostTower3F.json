@@ -1,0 +1,380 @@
+{
+  "name": "LostTower3F",
+  "displayName": "Lost Tower",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "Lab",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#______##_____#",
+    "#______##_____#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "###############"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#....######...#",
+    "#.#..######...#",
+    "##.....#......#",
+    "#...##..##..###",
+    "#..###.###..###",
+    "#.##.#...##...#",
+    "#......#####.##",
+    "#..#...##.....#",
+    "###.##.##.#.###",
+    "###.##..##..###",
+    "#.......###...#",
+    "#...#.........#",
+    "###############"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 13, "depth": 12, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Headstone",
+      "x": 10,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 10,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 8,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 2,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 3,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 4,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Tomb",
+      "x": 12,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 12,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 8,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 4,
+      "y": 6,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 4,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 1,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 8,
+      "y": 12,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 7,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 9,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 5,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 3,
+      "targetMap": "LostTower4F",
+      "targetX": 12,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "LostTower2F",
+      "targetX": 3,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Revive",
+      "npcType": "ItemBall",
+      "x": 1,
+      "y": 13,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_ROUTE_209_LOST_TOWER_3F_REVIVE",
+      "item": "Revive"
+    },
+    {
+      "id": "pokefan_leonard",
+      "name": "Leonard",
+      "npcType": "Gentleman",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "trainer": {
+        "id": "pokefan_leonard",
+        "name": "Leonard",
+        "trainerClass": "Pokéfan",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Poké Fan Leonard: I bring my Pikachu family up here every year. Let's show you what they can do!",
+        "dialogueAfter": "Poké Fan Leonard: Ah, well. They tried their very best, and that's what counts.",
+        "sightRange": 1
+      }
+    },
+    {
+      "id": "roughneck_kirby",
+      "name": "Kirby",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 14,
+      "facing": "Right",
+      "trainer": {
+        "id": "roughneck_kirby",
+        "name": "Kirby",
+        "trainerClass": "Roughneck",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Roughneck Kirby: What, you think a tough guy can't come up here and pay his respects? Battle me!",
+        "dialogueAfter": "Roughneck Kirby: All right, all right. You win. Keep your voice down, though.",
+        "sightRange": 2
+      }
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 20
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 1
+    },
+    {
+      "speciesName": "Golbat",
+      "minLevel": 21,
+      "maxLevel": 21,
+      "weight": 1
+    }
+  ]
+}

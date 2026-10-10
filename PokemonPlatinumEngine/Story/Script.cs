@@ -16,6 +16,8 @@ public enum Op
     SetFlag, ClearFlag, SetVar, AddVar,
     // What the player is given, finds and has taken back
     Give, Find, AddItem, Take, GivePokemon, GiveBadge, GiveMoney, TakeMoney, Heal,
+    // The Hallowed Tower's count of people spoken to (plan 08 · P12)
+    ClearGreetings,
     // Battles
     Battle, WildBattle, CatchingLesson,
     // People and the field
@@ -31,7 +33,7 @@ public enum Op
     // Someone travelling with the player (plan 02 · S6)
     Partner,
     // The Gyms (plan 01 · M9): a trainer beaten without a battle, and the Eterna Gym's flower clock
-    Defeat, FlowerClock,
+    Defeat, FlowerClock, PressButton,
     // Sound
     Music, Fanfare, Sound, Cry,
     // The screens that exist
@@ -41,7 +43,9 @@ public enum Op
     // The trainer tools (plan 06 · R12)
     ChoosePokemon, Trade, HallOfFame,
     // Wild Pokémon (plan 06 · R13)
-    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison
+    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison,
+    // The day's events and the berry patches (plan 06 · R14a)
+    Lottery, Berry, ChooseItem
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -50,7 +54,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch, Partner
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, PoketchApp, Pokerus, Safari, Rematch, Partner, Time, Weekday
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

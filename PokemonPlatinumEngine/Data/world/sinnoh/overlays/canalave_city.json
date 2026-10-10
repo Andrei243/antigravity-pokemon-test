@@ -5,15 +5,16 @@
   "architecture": "Harbour",
   "doors": [
     { "warp": 1, "map": "CanalavePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
-    { "warp": 2, "map": "CanalavePokeMart", "x": 4, "y": 6, "facing": "Up" }
+    { "warp": 2, "map": "CanalavePokeMart", "x": 4, "y": 6, "facing": "Up" },
+    { "warp": 0, "map": "CanalaveGym", "x": 16, "y": 26, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
     { "warp": 7, "to": "route_218", "toWarp": 0 },
     { "warp": 8, "to": "route_218", "toWarp": 1 }
   ],
-  // The Gym, the library, the inn and the houses have no rooms yet (plan 01 · M11, M9)
-  "locked": [ 0, 3, 4, 5, 6, 9, 10 ],
+  // The library, the inn and the houses have no rooms yet (plan 01 · M11)
+  "locked": [ 3, 4, 5, 6, 9, 10 ],
   // Sailor Eldritch, who sails trainers to Iron Island, is written with the ferry
   "people": {
     // The Psyduck watching the boats (plan 10 · F1)

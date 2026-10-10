@@ -1,0 +1,346 @@
+{
+  "name": "ContestHallLobby",
+  "displayName": "Contest Hall",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 32,
+  "height": 15,
+  "ground": [
+    "################################",
+    "################################",
+    "################################",
+    "#______________________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "############___________________#",
+    "############___________________#",
+    "############___________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "################D###############"
+  ],
+  "solid": [
+    "################################",
+    "################################",
+    "################################",
+    "####.....#.##.#.....#....#....##",
+    "#..#.....#....#.....#....#....##",
+    "#..#######....#######....#######",
+    "#..............................#",
+    "#..............................#",
+    "#.............................##",
+    "############..................##",
+    "############...........##......#",
+    "############...........##.....##",
+    "#.............................##",
+    "#..............................#",
+    "################.###############"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 5,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 5,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 20,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 25,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 25,
+      "y": 5,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 30,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 30,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 30,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 30,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 30,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 23,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Rug",
+      "x": 16,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 16,
+      "sourceY": 14,
+      "targetMap": "Sinnoh",
+      "targetX": 479,
+      "targetY": 692,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 9,
+      "y": 5,
+      "text": "Pokémon Super Contests\nShow off your Pokémon's look, its dance and its moves, and win a ribbon to remember!"
+    },
+    {
+      "x": 2,
+      "y": 11,
+      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+    },
+    {
+      "x": 4,
+      "y": 11,
+      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+    },
+    {
+      "x": 6,
+      "y": 11,
+      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+    },
+    {
+      "x": 10,
+      "y": 11,
+      "text": "Photographs of the Master Rank's winners line the board, each Pokémon striking its proudest pose."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist_link",
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "receptionist_official",
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "x": 16,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "receptionist_practice",
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "x": 27,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "ace_trainer_f",
+      "name": "Woman",
+      "npcType": "Lass",
+      "x": 28,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "A Pokémon that eats well looks its best on stage. Sweet treats bring out the cute in it, they say.",
+        "Next time, I'm baking for mine before we go on!"
+      ]
+    },
+    {
+      "id": "clown",
+      "name": "Clown",
+      "npcType": "Clown",
+      "x": 25,
+      "y": 10,
+      "facing": "Down",
+      "dialog": [
+        "A contest isn't one thing, you know! First the look, then the dance, then the moves.",
+        "A Pokémon has to shine at all three to take the ribbon."
+      ],
+      "movement": "look_south_west_and_east"
+    },
+    {
+      "id": "school_kid_f",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 13,
+      "facing": "Left",
+      "dialog": [
+        "The winners' photos go up on the boards here. Look at them all!",
+        "One day mine will be up there too."
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
+    },
+    {
+      "id": "rich_boy",
+      "name": "Boy",
+      "npcType": "Gentleman",
+      "x": 16,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "It takes practice to win a contest. Lots and lots of practice.",
+        "I've been practising my bow for a week."
+      ]
+    },
+    {
+      "id": "mom",
+      "name": "Mom",
+      "npcType": "Mom",
+      "x": 16,
+      "y": 10,
+      "facing": "Right",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_MOM"
+    },
+    {
+      "id": "keira",
+      "name": "Keira",
+      "npcType": "Lass",
+      "x": 17,
+      "y": 10,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_KEIRA"
+    },
+    {
+      "id": "reporter",
+      "name": "Reporter",
+      "npcType": "Lass",
+      "x": 18,
+      "y": 13,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_REPORTER"
+    },
+    {
+      "id": "fantina",
+      "name": "Fantina",
+      "npcType": "Fantina",
+      "x": 22,
+      "y": 9,
+      "facing": "Left",
+      "script": "Fantina",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA",
+      "movement": "look_south_and_west"
+    }
+  ],
+  "wildEncounters": []
+}

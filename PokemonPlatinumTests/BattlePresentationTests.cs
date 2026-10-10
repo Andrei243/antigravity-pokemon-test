@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.UI;
 using Xunit;
 
 namespace PokemonPlatinumTests;
@@ -713,5 +716,136 @@ public class BattlePresentationTests
         piplup.CurrentHP = 0;
         Tick(battle, 3f);
         Assert.False(battle.PlayerInDanger);
+    }
+    // ------------------------------------------------------------------ move hints (plan 12 · Q10)
+
+    /// <summary>A wild battle with the hints on or off, its foe seen before it began or not, played to the first choice.</summary>
+    private static BattleEngine Hinted(Pokemon mine, Pokemon foe, bool seen = true, bool hints = true)
+    {
+        var party = new Party();
+        party.Add(mine);
+        var dex = new Pokedex();
+        if (seen) dex.RegisterSeen(foe.Species.DexNumber);
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = party, Inventory = new Inventory(), Pokedex = dex, WildPokemon = new List<Pokemon> { foe },
+            Random = Scenario.Steady(), Rules = Ruleset.Platinum, MoveHints = hints
+        });
+        Scenario.Settle(battle);
+        return battle;
+    }
+
+    [Fact]
+    public void TheHintIsTheTypeChartsAnswerForEveryPairOfTypes()
+    {
+        var types = Enum.GetValues<PokemonType>();
+        var moves = types.ToDictionary(t => t, t => new Move(MoveDatabase.GetAll().First(m => m.Type == t && m.Category != MoveCategory.Status)));
+        foreach (var defending in types)
+        {
+            var species = PokemonDatabase.GetAll().First(s => s.PrimaryType == defending && s.SecondaryType == null);
+            var battle = Hinted(Scenario.Mon("Piplup", 20, "Pound"), Scenario.Mon(species.Name, 20));
+            foreach (var attacking in types)
+            {
+                var expected = MoveHints.Of(TypeChart.GetEffectiveness(attacking, defending, null, Ruleset.Platinum));
+                Assert.True(expected == battle.HintFor(moves[attacking], battle.EnemySlots[0]), $"{attacking} against {species.Name}");
+            }
+        }
+        // Two types multiply: Water against Rock and Ground is four times, and still says super effective
+        var geodude = Hinted(Scenario.Mon("Piplup", 20, "Bubble"), Scenario.Mon("Geodude", 20));
+        Assert.Equal(MoveHint.SuperEffective, geodude.HintFor(geodude.PlayerPokemon.Moves[0], geodude.EnemySlots[0]));
+    }
+
+    [Theory]
+    [InlineData("Geodude", "Bubble", MoveHint.SuperEffective)]
+    [InlineData("Turtwig", "Bubble", MoveHint.NotVeryEffective)]
+    [InlineData("Bidoof", "Bubble", MoveHint.Neutral)]
+    public void TheHintSaysWhatTheHitThenSounds(string foe, string move, MoveHint hint)
+    {
+        var battle = Hinted(Scenario.Mon("Piplup", 20, move), Scenario.Mon(foe, 20));
+        Assert.Equal(hint, battle.HintFor(battle.PlayerPokemon.Moves[0], battle.EnemySlots[0]));
+
+        int before = battle.Core.Log.Count;
+        Scenario.Turn(battle);
+        var sounded = battle.Core.Log.Skip(before).SelectMany(e => e is Said said ? said.Shows.Concat(said.OnImpact).Prepend(e) : new[] { e })
+            .OfType<HitSounded>().First();
+        Assert.Equal(hint == MoveHint.SuperEffective, sounded.SuperEffective);
+        Assert.Equal(hint == MoveHint.NotVeryEffective, sounded.NotVeryEffective);
+    }
+
+    [Fact]
+    public void AStatusMoveANewSpeciesAndHintsTurnedOffShowNothing()
+    {
+        var battle = Hinted(Scenario.Mon("Piplup", 20, "Bubble", "Growl"), Scenario.Mon("Geodude", 20));
+        Assert.Equal(MoveHint.SuperEffective, battle.HintFor(battle.PlayerPokemon.Moves[0], battle.EnemySlots[0]));
+        Assert.Equal(MoveHint.None, battle.HintFor(battle.PlayerPokemon.Moves[1], battle.EnemySlots[0]));
+
+        // Met for the first time: the battle registers it as seen, but it was new when the battle began
+        var unseen = Hinted(Scenario.Mon("Piplup", 20, "Bubble"), Scenario.Mon("Geodude", 20), seen: false);
+        Assert.True(unseen.Pokedex.IsSeen(PokemonDatabase.Get("Geodude")!.DexNumber));
+        Assert.Equal(MoveHint.None, unseen.HintFor(unseen.PlayerPokemon.Moves[0], unseen.EnemySlots[0]));
+
+        var off = Hinted(Scenario.Mon("Piplup", 20, "Bubble"), Scenario.Mon("Geodude", 20), hints: false);
+        Assert.False(off.ShowsMoveHints);
+        Assert.Equal(MoveHint.None, off.HintFor(off.PlayerPokemon.Moves[0], off.EnemySlots[0]));
+    }
+
+    [Fact]
+    public void UnderRulesAPlatinumGameShowsNoHintsAndAModernOneDoes()
+    {
+        Assert.Equal(RulesDefault.Rules, new GameSettings().MoveHints);
+        Assert.False(RulesDefault.Rules.Holds(RulesPreset.Platinum));
+        Assert.True(RulesDefault.Rules.Holds(RulesPreset.Modern));
+        Assert.False(RulesDefault.Off.Holds(RulesPreset.Modern));
+        Assert.True(RulesDefault.On.Holds(RulesPreset.Platinum));
+
+        // The row goes round its three values
+        var settings = new GameSettings();
+        OptionsScreen.Change(settings, OptionRow.MoveHints, 1);
+        Assert.Equal(RulesDefault.On, settings.MoveHints);
+        OptionsScreen.Change(settings, OptionRow.MoveHints, 1);
+        Assert.Equal(RulesDefault.Off, settings.MoveHints);
+    }
+
+    [Fact]
+    public void TheHelpPagesOpenFromTheOptionsAndWalkTheChart()
+    {
+        var options = new OptionsScreen();
+        options.Open();
+        while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != OptionRow.Help) options.Move(1);
+        options.Confirm();
+        var help = options.Help;
+        Assert.True(help.IsActive);
+        Assert.Equal(HelpPage.Types, help.Page);
+        Assert.Equal("Super effective", help.Describe().Headline);
+
+        // Fire against Water, then up to the top row and onto the tabs, across to the controls and back down
+        help.Move(-1, 0);
+        Assert.Equal("Not very effective", help.Describe().Headline);
+        for (int i = 0; i < 2; i++) help.Move(0, -1);
+        Assert.True(help.OnTabs);
+        help.Move(1, 0);
+        Assert.Equal(HelpPage.Controls, help.Page);
+        help.Move(-1, 0);
+        help.Move(0, 1);
+        Assert.False(help.OnTabs);
+        Assert.Equal(PokemonType.Normal, HelpScreen.Types[help.Attack]);
+
+        // Every cell is the chart's answer, Normal against Ghost has no effect
+        Assert.Equal(MoveHint.NoEffect, HelpScreen.Hint(PokemonType.Normal, PokemonType.Ghost));
+        help.Cancel();
+        Assert.False(help.IsActive);
+        Assert.True(options.IsActive);
+    }
+
+    [Fact]
+    public void TheControlsPageListsEveryActionsBinding()
+    {
+        var actions = Enum.GetValues<GameAction>();
+        Assert.Equal(actions.Length, InputManager.Bindings.Length);
+        for (int i = 0; i < actions.Length; i++)
+        {
+            Assert.Equal(actions[i], InputManager.Bindings[i].Action);
+            Assert.NotEmpty(InputManager.Bindings[i].Keys);
+        }
     }
 }

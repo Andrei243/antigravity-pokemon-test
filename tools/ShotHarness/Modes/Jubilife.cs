@@ -166,8 +166,8 @@ partial class Harness
         ReadTo(null);
 
         // ---- the Gym: inside, its Leader, the Badge
-        At("OreburghGym", 5, 23, Direction.Up); Frames(40); Shot("j17_gym_inside");
-        At("OreburghGym", 5, 13, Direction.Up); Frames(30); Shot("j18_gym_the_rocks");
+        At("OreburghGym", 5, 24, Direction.Up); Frames(40); Shot("j17_gym_inside");
+        At("OreburghGym", 9, 12, Direction.Up); Frames(30); Shot("j18_gym_the_rocks");
         TalkTo("OreburghGym", "roark");
         ReadTo("I'm Roark"); Frames(10); Shot("j19_gym_roark");
         IntoBattle("Roark's battle");

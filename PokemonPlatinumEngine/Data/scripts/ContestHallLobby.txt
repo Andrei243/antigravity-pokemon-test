@@ -1,0 +1,84 @@
+# The Contest Hall's lobby in Hearthome City (plan 02 · S7), rebuilt to the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_contest_hall_lobby.s).
+#
+# The first time in (VAR_CONTEST_HALL_LOBBY_STATE 0), Keira, whose Buneary the player caught at the city's edge, is
+# talking with the player's mother, who taught her contests; she thanks the player and goes in to rehearse, and the
+# mother, once a contest star herself, tells the player so and goes home. Fantina waits by the tables: spoken to, she
+# twirls and goes back to her Gym, and its guide stops barring the door (FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE).
+
+
+script OnEnter
+  if var VAR_CONTEST_HALL_LOBBY_STATE != 0 end
+  face keira down
+  emote keira exclaim
+  speaker "Keira"
+  say "Oh! It's you! The one who caught my Buneary!"
+  face mom down
+  speaker "Mom"
+  say "Why, {player}! Fancy seeing you here!"
+  walk player up 2
+  face keira left
+  wait 0.2
+  face keira down
+  speaker "Keira"
+  say "Wait... {player}? Johanna, this is your child?"
+  say "Your mom is the one who taught me everything about contests, {player}! She never said she had a Trainer in the family!"
+  say "And thank you again for earlier. If Buneary had run off for good, I don't know what I'd have done."
+  face keira mom
+  face mom keira
+  say "I'd better go and rehearse. See you, Johanna!"
+  face player right
+  walk keira right 3 up 3 right 3 up 4
+  hide keira
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_KEIRA
+  setvar VAR_CONTEST_HALL_LOBBY_STATE 1
+  face mom down
+  face player up
+  speaker "Mom"
+  say "Surprised? Before you were born, your mom was on that stage every week. I still come to cheer on the young ones."
+  say "Contests are a whole other way to shine with your Pokémon. Who knows? One day it might be your turn up there."
+  say "Well, I'll be getting home. Take care of yourself and your Pokémon, {player}!"
+  face player left
+  walk mom left 1 down 2 right 1 down 1
+  sound "stairs"
+  hide mom
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_MOM
+  setflag FLAG_CONTEST_HALL_VISITED
+  end
+
+
+# The receptionists of the three booths (the original's common contest scripts): the contests themselves are not held
+# in this game yet, so they welcome the player and say so.
+script Receptionist
+  say "Welcome to the Pokémon Contest Hall! I'm afraid the Super Contests are not being held today."
+  say "We hope to see you and your Pokémon on our stage another time!"
+  end
+
+
+# Fantina by the tables (the original's script 11): a twirl, a word, and she goes back to her Gym.
+script Fantina
+  speaker "Fantina"
+  wait 0.5
+  face fantina left
+  wait 0.15
+  face fantina up
+  wait 0.15
+  face fantina right
+  wait 0.15
+  face fantina down
+  wait 0.15
+  face fantina player
+  say "Ah, bonjour! You have the look of a Trainer about you. You want to battle Fantina, oui?"
+  say "I come here to see the contests. The Pokémon, so graceful! But for you, I go back to my Gym."
+  say "I wait for you there. Come, and we shall dance, my Ghost Pokémon and yours!"
+  if facing right goto FromTheWest
+  walk fantina left 6 down 4
+  goto Gone
+label FromTheWest
+  walk fantina up 1 left 6 down 5
+label Gone
+  sound "stairs"
+  hide fantina
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
+  setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
+  end

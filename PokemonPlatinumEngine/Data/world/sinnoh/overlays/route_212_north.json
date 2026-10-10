@@ -8,8 +8,8 @@
     { "warp": 1, "to": "hearthome_city", "toWarp": 16 },
     { "warp": 2, "to": "trophy_garden", "toWarp": 0 }
   ],
-  // The policemen battle only at night in the original, where their doubles without a battle (policeman_*_no_battle,
-  // on the same tiles) stand by day: only the trainers are written here
+  // The policemen battle only at night: by day their doubles without a battle (policeman_*_no_battle, on the same
+  // tiles) stand there instead, swapped by the route's arrival script (plan 06 · R14a)
   "people": {
     "youngster": {
       "name": "Boy",
@@ -53,12 +53,26 @@
         "dialogueAfter": "Socialite Reina: How simply dreadful. I must sit down."
       }
     },
+    "policeman_bobby_no_battle": {
+      "name": "Policeman",
+      "dialog": [
+        "All quiet. The mansion's owner likes us to keep an eye on things by day.",
+        "After dark is when I check every trainer who passes."
+      ]
+    },
     "policeman_bobby": {
       "name": "Bobby",
       "trainer": {
         "dialogueBefore": "Policeman Bobby: Stop right there! I'll have to see what your Pokémon are made of.",
         "dialogueAfter": "Policeman Bobby: Very good. Carry on, and stay out of trouble."
       }
+    },
+    "policeman_alex_no_battle": {
+      "name": "Policeman",
+      "dialog": [
+        "Nice day for a walk, isn't it? Keep to the road.",
+        "Come nightfall, I'll want to see what your Pokémon can do."
+      ]
     },
     "policeman_alex": {
       "name": "Alex",
@@ -67,12 +81,26 @@
         "dialogueAfter": "Policeman Alex: You may pass. Keep to the road, please."
       }
     },
+    "policeman_dylan_no_battle": {
+      "name": "Policeman",
+      "dialog": [
+        "Up and down, up and down. Nothing much happens on this road in daylight.",
+        "Things get livelier once the sun goes down."
+      ]
+    },
     "policeman_dylan": {
       "name": "Dylan",
       "trainer": {
         "dialogueBefore": "Policeman Dylan: Up and down, up and down, all shift long. At last, something happens!",
         "dialogueAfter": "Policeman Dylan: Right. Back to walking up and down."
       }
+    },
+    "policeman_caleb_no_battle": {
+      "name": "Policeman",
+      "dialog": [
+        "Good day to you. Nothing to report here.",
+        "At night I stop every trainer I see. Just so you know!"
+      ]
     },
     "policeman_caleb": {
       "name": "Caleb",

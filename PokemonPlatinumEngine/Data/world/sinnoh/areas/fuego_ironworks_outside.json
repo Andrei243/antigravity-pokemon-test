@@ -86,10 +86,10 @@
     { "x": 170, "z": 587, "to": "fuego_ironworks_building", "toWarp": 0 }
   ],
   "objects": [
-    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 168, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
-    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 169, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
-    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 170, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
-    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 171, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2800" },
+    { "id": "berry_soil_1", "looks": "berry_soil", "movement": "berry_soil", "x": 168, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 10, "script": "2800" },
+    { "id": "berry_soil_2", "looks": "berry_soil", "movement": "berry_soil", "x": 169, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 11, "script": "2800" },
+    { "id": "berry_soil_3", "looks": "berry_soil", "movement": "berry_soil", "x": 170, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 12, "script": "2800" },
+    { "id": "berry_soil_4", "looks": "berry_soil", "movement": "berry_soil", "x": 171, "z": 594, "facing": 0, "rangeX": 0, "rangeZ": 0, "patch": 13, "script": "2800" },
     { "id": "signboard", "looks": "signboard", "movement": "none", "x": 172, "z": 588, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" }
   ],
   "signs": [

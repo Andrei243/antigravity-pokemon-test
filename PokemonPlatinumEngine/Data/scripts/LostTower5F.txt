@@ -1,0 +1,40 @@
+# The Lost Tower's top floor (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_route_209_lost_tower_5f.s).
+#
+# The floor is lost in fog until Defog clears it (the room's weather, FLAG_DEFOG_ACTIVE while the player stays). The
+# two old women by the graves can't see who is there until then; once it has been cleared before them
+# (FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F) the one gives the Spell Tag and the other the Cleanse Tag, once each.
+
+
+script OldWoman1
+  if flag FLAG_DEFOG_ACTIVE goto Cleared
+  if not flag FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F goto Fog
+label Cleared
+  setflag FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F
+  if flag FLAG_RECEIVED_ROUTE_209_LOST_TOWER_5F_SPELL_TAG goto Gave
+  say "Oh! The fog has gone, and there you are. It must have been you who cleared it." "Take this. It's a little thanks from an old woman."
+  give "Spell Tag"
+  setflag FLAG_RECEIVED_ROUTE_209_LOST_TOWER_5F_SPELL_TAG
+label Gave
+  say "Fantina of the Hearthome Gym comes up here often, you know." "She says the Ghost-type Pokémon here are like old friends to her."
+  end
+label Fog
+  say "Is somebody there? This fog is so thick I can't see my own hand."
+  end
+
+
+script OldWoman2
+  if flag FLAG_DEFOG_ACTIVE goto Cleared
+  if not flag FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F goto Fog
+label Cleared
+  setflag FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F
+  if flag FLAG_RECEIVED_ROUTE_209_LOST_TOWER_5F_CLEANSE_TAG goto Gave
+  say "My, how clear it is now! I can see every stone." "Here. Something to keep you safe on your travels."
+  give "Cleanse Tag"
+  setflag FLAG_RECEIVED_ROUTE_209_LOST_TOWER_5F_CLEANSE_TAG
+label Gave
+  say "The Pokémon who rest here are at peace." "I come up to keep them company, and they keep me company in turn."
+  end
+label Fog
+  say "Ohh... Who's there? I can hardly see a thing in this fog."
+  end

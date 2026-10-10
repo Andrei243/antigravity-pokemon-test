@@ -1,0 +1,112 @@
+# Hearthome City (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_hearthome_city.s).
+#
+# Coming in from Route 208 (the original's trigger 0, a column five tiles deep at x 461, VAR_HEARTHOME_CITY_STATE 0),
+# a Buneary comes racing down the street into the player, and its trainer Keira after it. The fisherman by the
+# fountain walks the player to the Contest Hall, where Fantina is (ContestHallLobby.txt); until she has gone back to
+# her Gym, its guide keeps the door.
+
+
+script Buneary
+  emote player exclaim
+  # They come from the east, level with the player (the original's SetObjectEventPos 471, z)
+  if var PLAYER_Y == 725 call From725
+  if var PLAYER_Y == 726 call From726
+  if var PLAYER_Y == 727 call From727
+  if var PLAYER_Y == 728 call From728
+  if var PLAYER_Y == 729 call From729
+  clearflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
+  clearflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
+  show keira
+  show buneary
+  face player right
+  walk buneary left 9 fast
+  cry "Buneary"
+  walk keira left 8 fast
+  speaker "Keira"
+  say "Oh, thank goodness! You stopped it! Buneary just took off, and I couldn't keep up!"
+  say "That's enough running about for today, Buneary. Back in your ball!"
+  cry "Buneary"
+  hide buneary
+  say "Phew... I'm Keira. Thank you so much! I'd have been chasing it all over Hearthome."
+  say "I have to get to the Contest Hall. Bye now!"
+  walk keira right 8
+  hide keira
+  setflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
+  setflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
+  setvar VAR_HEARTHOME_CITY_STATE 1
+  end
+
+script From725
+  place keira 471 725 left
+  place buneary 471 725 left
+  return
+
+script From726
+  place keira 471 726 left
+  place buneary 471 726 left
+  return
+
+script From727
+  place keira 471 727 left
+  place buneary 471 727 left
+  return
+
+script From728
+  place keira 471 728 left
+  place buneary 471 728 left
+  return
+
+script From729
+  place keira 471 729 left
+  place buneary 471 729 left
+  return
+
+
+# The fisherman by the fountain (the original's script 11): he offers to take the player to the Contest Hall, and
+# walks them there round the square. Once there (a local flag, for this visit), he is glad to have helped.
+script Fisherman
+  if flag FLAG_MAP_LOCAL_HEARTHOME_CITY_SHOWN_THE_WAY goto Happy
+  ask "Visiting Hearthome? Would you like me to show you to the Contest Hall?"
+  if no goto Sorry
+  say "Splendid! Follow me, please."
+  wait 0.25
+  if facing up goto North
+  if facing down goto South
+  if facing left goto West
+  # The player stands west of him, in the way: he steps round them first
+  move fisherman up 1 left 2 down 1 left 18 up 13 right 12 up 4
+  wait 1.0
+  walk player left 19 up 13 right 12 up 3
+  goto There
+label North
+  move fisherman left 20 up 13 right 12 up 4
+  walk player up 1 left 20 up 13 right 12 up 3
+  goto There
+label South
+  move fisherman left 20 up 13 right 12 up 4
+  walk player down 1 left 20 up 13 right 12 up 3
+  goto There
+label West
+  move fisherman left 20 up 13 right 12 up 4
+  walk player left 1 left 20 up 13 right 12 up 3
+label There
+  waitmoves
+  face fisherman down
+  setflag FLAG_MAP_LOCAL_HEARTHOME_CITY_SHOWN_THE_WAY
+  say "Here we are: the Contest Hall! Trainers come from all over Sinnoh to show their Pokémon off on its stage."
+  end
+label Sorry
+  say "Oh, my apologies. Off you go, then, and enjoy Hearthome!"
+  end
+label Happy
+  say "Showing visitors round my city makes me happy. Enjoy yourself!"
+  end
+
+
+# The guide before the Gym's door (the original's script 31), until Fantina goes back to it from the Contest Hall.
+script GymGuide
+  speaker "Gym Guide"
+  say "Hey there, champ in the making! Here to take on Fantina? Bad timing, I'm afraid. She's out."
+  say "When she's not in her Gym, you'll usually find her at the Contest Hall, watching the Pokémon on stage. Try there!"
+  end
