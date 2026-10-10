@@ -48,10 +48,12 @@ Raylib.InitWindow(int.Parse(windowSize[0]), int.Parse(windowSize[1]), "shots");
 
 // Two runs draw the same pictures: the game's chance is seeded, the clock its small motions keep time by is the
 // harness's own count of frames, and the day is fixed (the weather calendar and Pokérus's days follow the date): the
-// first of June, when it rains on Route 212's south and Route 213 is clear
+// first of June, when it rains on Route 212's south and Route 213 is clear, at noon on the wall clock (the hour of
+// a game whose options follow the clock, the Hall of Fame's moment)
 Dice.Seed(20261004);
 FrameClock.Fixed = 0;
 GameClock.FixedDate = new DateTime(2026, 6, 1);
+WallClock.Fixed = new DateTime(2026, 6, 1, 12, 0, 0);
 
 var h = new Harness(args, mode, outDir, startDir);
 

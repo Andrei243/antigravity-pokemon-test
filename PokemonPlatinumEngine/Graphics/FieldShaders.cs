@@ -1089,7 +1089,9 @@ void main()
     {
         if (!Locations.TryGetValue((shader.Id, name), out int location))
         {
+#pragma warning disable RS0030 // the one place that asks the driver where a uniform is (CLAUDE.md: locations are kept)
             location = Raylib.GetShaderLocation(shader, name);
+#pragma warning restore RS0030
             Locations[(shader.Id, name)] = location;
         }
         return location;

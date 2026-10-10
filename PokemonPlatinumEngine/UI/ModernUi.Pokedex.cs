@@ -424,7 +424,7 @@ internal static partial class ModernUi
         var lines = Wrap(line, 900, 32, UiWeight.ExtraBold);
         for (int i = 0; i < lines.Count; i++) Centred(lines[i], r.Y + 400 + i * 46, 32, Ink, UiWeight.ExtraBold);
 
-        string day = DateTime.Now.ToString("d MMMM yyyy", CultureInfo.InvariantCulture);
+        string day = GameClock.Today.ToString("d MMMM yyyy", CultureInfo.InvariantCulture);
         UiFonts.Draw(day, r.X + 92, r.Y + r.Height - 120, 28, Muted, UiWeight.ExtraBold);
 
         // The seal: a gold medallion with the Pokédex's sign
