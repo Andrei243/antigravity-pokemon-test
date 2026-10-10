@@ -5,7 +5,8 @@ partial class Harness
     // The Gyms rebuilt to the original's plans with their puzzles (not part of `all`), each from its door, its puzzle
     // in its states, a trainer's battle starting and the Leader: the Eterna Gym's flower clock turning and its
     // fountains draining, the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the
-    // Pastoria Gym's water rising and falling. It wins every battle and prints what each puzzle left behind.
+    // Pastoria Gym's water rising and falling, the Canalave Gym's lifts. It wins every battle and prints what each puzzle
+    // left behind.
     public void GymsMode()
     {
         var story = game.Story;
@@ -87,7 +88,7 @@ partial class Harness
             At(map, x, y, facing);
             game.Interact();
         }
-        // `gyms oreburgh eterna veilstone hearthome pastoria`: only the Gyms named
+        // `gyms oreburgh eterna veilstone hearthome pastoria canalave`: only the Gyms named
         var only = args.Length > 2 ? args[2..] : null;
         bool Want(string gym) => only == null || only.Contains(gym);
 
@@ -264,6 +265,66 @@ partial class Harness
         IntoBattle("Wake's battle"); Shot("g69_pastoria_battle_wake");
         ReadOn();
         Console.WriteLine($"pastoria: Fen Badge {story.HasBadge(Badge.Fen)}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}");
+        }
+
+        // ---- the Canalave Gym: its floors and lifts
+        if (Want("canalave"))
+        {
+        Enter("CanalaveGym", 16, 26);
+        Frames(20); Shot("g70_canalave_door");
+        CanalaveLifts Lifts() => (CanalaveLifts)Here().Puzzle!;
+        // Somewhere open on a floor, the nearest to a tile, and the player put there at the floor's height
+        void OnFloor(int floor, int x, int y, Direction facing)
+        {
+            var best = (X: x, Y: y);
+            int far = int.MaxValue;
+            for (int ty = 0; ty < Here().Height; ty++)
+                for (int tx = 0; tx < Here().Width; tx++)
+                    if (Lifts().FloorAt(tx, ty, floor * CanalaveLifts.FloorSpacing) != null || floor == 0 && !CanalaveLifts.Closed(0, tx, ty))
+                        if (Math.Abs(tx - x) + Math.Abs(ty - y) < far) { far = Math.Abs(tx - x) + Math.Abs(ty - y); best = (tx, ty); }
+            At("CanalaveGym", best.X, best.Y, facing);
+            game.Player.SetHeight(floor * CanalaveLifts.FloorSpacing);
+            Frames(4);
+        }
+        // Onto a platform by the field's own step: it sets off with the player on it
+        void Ride(int index, string during, string after)
+        {
+            var at = Lifts().Where(index);
+            foreach (var way in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var (dx, dy) = FieldMovement.Delta(way);
+                int fx = at.X - dx, fy = at.Y - dy;
+                var step = FieldMovement.Step(Here(), fx, fy, way, new Walker(TravelMode.OnFoot, at.H));
+                if (!step.Moves || (step.X, step.Y) != (at.X, at.Y)) continue;
+                At("CanalaveGym", fx, fy, way);
+                game.Player.SetHeight(at.H);
+                Frames(2);
+                engine.Steering = (way, false);
+                Until(() => Lifts().Moving != null, "the platform setting off", 120);
+                engine.Steering = null;
+                Skip(0.4); Shot(during);
+                Until(() => Lifts().Moving == null, "the platform at its end", 600);
+                Frames(10); Shot(after);
+                Console.WriteLine($"canalave: platform {index} took the player to {game.Player.GridX},{game.Player.GridY} at height {game.Player.HeightOn(Here())}");
+                return;
+            }
+            Console.WriteLine($"  !! no step onto platform {index} at {at}");
+        }
+        Ride(0, "g71_canalave_the_shaft_rising", "g72_canalave_the_top_floor");
+        OnFloor(1, 14, 5, Direction.Up); Shot("g73_canalave_the_first_floor");
+        OnFloor(2, 16, 14, Direction.Up); Shot("g74_canalave_the_second_floor");
+        Ride(14, "g75_canalave_a_cart_running", "g76_canalave_the_cart_at_its_end");
+        OnFloor(0, 16, 14, Direction.Up); Shot("g77_canalave_the_ground_floor");
+        TalkFrom("CanalaveGym", "worker_gary", 22, 17, Direction.Up);
+        IntoBattle("Gary's battle"); Shot("g78_canalave_battle_worker");
+        ReadOn();
+        foreach (var npc in Here().Everyone.Where(n => n.IsTrainer)) { npc.HasBattled = true; story.Defeat(npc.TrainerData?.Id ?? npc.Key); }
+        At("CanalaveGym", 16, 4, Direction.Up); game.Player.SetHeight(30f); Frames(4);
+        game.Interact();
+        ReadOn(() => Box().IsActive && Box().CurrentLine.Contains("Byron")); Box().FinishLine(); Frames(4); Shot("g79_canalave_byron");
+        IntoBattle("Byron's battle"); Shot("g7a_canalave_battle_byron");
+        ReadOn();
+        Console.WriteLine($"canalave: Mine Badge {story.HasBadge(Badge.Mine)}, TM91 {game.Bag.GetQuantity(ItemDatabase.Get("TM91")!)}");
         }
 
         // ---- the Hearthome Gym: the dark rooms and their doors

@@ -417,9 +417,18 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Safari Game's gate | A counter in the observatory gate's room asks before the marsh | Asked as the player comes out into the marsh, which sends them back out on a no | The gate's rooms come with plan 01 · M11; until then it is walked through |
 | The marsh's binoculars | The day's species shown through the coin viewers; the tram rides between the areas | The day's species are met (plan 06 · R13); the viewers and the tram stand there and do nothing yet | Plan 02's scripts |
 | Retiring from the game | The menu offers to end it early | Walk out through the gate | No field menu entry for it yet |
-| Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | No moving platforms yet (the Canalave Gym's lifts, plan 01 · M9, are the first to need them) |
+| Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | Moving platforms came with the Canalave Gym's lifts (plan 01 · M9 2a, `CanalaveLifts`); Iron Island's could ride them too, once its levels are one map |
 | Sailor Eldritch's boat | Sails to Iron Island, and to Fullmoon and Newmoon Islands when the story sends the player there | Iron Island and back | The two islands are plan 01 · M10's |
 | Maniac Tunnel | Dug once enough kinds of Unown are seen | Not open; Solaceon's Rare Candy beyond it is held back | The Ruin Maniac's digging is the story's (plan 02 · S8) |
+
+
+**The Canalave Gym** (plan 01 · M9 2a)
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| An empty slot | A platform's place on a floor above the ground is open in that floor's collision map whether or not the platform is there; the floor's model covers it | A slot is walked only while its platform stands there; where it has gone, the floor has a hole | Nobody walks on the air, and the picture shows the hole |
+| The floors' heights | Ten tiles apart, by the walker's height | The same; the floor someone is on is the nearest to their height (`CanalaveLifts.FloorOf`) | |
+| A save made on an upper floor | The platforms are laid out by the room's own script as the map loads | The same: they come back at their first ends | |
 
 ## The first chapter (2026-10-06, plan 02 · S4)
 

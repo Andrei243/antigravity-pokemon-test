@@ -277,7 +277,7 @@ public static class FieldMovement
         // A floor a Gym's puzzle lays over the tile (the Pastoria Gym's water) carries whoever it is above the room's
         // own plate for and nearer to, the plate winning a tie (TerrainCollisionManager's height from a dynamic plate)
         bool afloat = false;
-        if (map.Puzzle?.FloorAt(nx, ny) is { } floor && floor > height && MathF.Abs(floor - walker.Height) < MathF.Abs(height - walker.Height))
+        if (map.Puzzle?.FloorAt(nx, ny, walker.Height) is { } floor && floor > height && MathF.Abs(floor - walker.Height) < MathF.Abs(height - walker.Height))
         {
             (height, onDeck, afloat) = (floor, false, true);
         }

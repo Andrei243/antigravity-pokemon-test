@@ -108,7 +108,7 @@ internal static class GroundBaker
         PokemonType.Water => (Rgb(234, 242, 248), Rgb(206, 226, 240), Rgb(150, 182, 210)),
         // The Hearthome Gym's halls: dark slate in purple and plum
         PokemonType.Ghost => (Rgb(92, 78, 118), Rgb(80, 66, 104), Rgb(52, 42, 70)),
-        PokemonType.Rock => (Rgb(176, 160, 142), Rgb(162, 146, 128), Rgb(118, 104, 92)),
+        PokemonType.Rock or PokemonType.Steel => (Rgb(176, 160, 142), Rgb(162, 146, 128), Rgb(118, 104, 92)),
         _ => (Rgb(236, 232, 214), Rgb(222, 216, 196), Rgb(172, 164, 140))
     };
 
@@ -206,6 +206,8 @@ internal static class GroundBaker
         PokemonType.Fighting => (Rgb(240, 226, 196), Rgb(224, 206, 170), Tone.Of(150, 98, 60), Tone.Of(196, 146, 96), Tone.Of(104, 66, 44)),
         PokemonType.Water => (Rgb(214, 234, 248), Rgb(188, 218, 242), Tone.Of(70, 130, 200), Tone.Of(248, 250, 254), Tone.Of(44, 88, 150)),
         PokemonType.Rock => (Rgb(196, 186, 170), Rgb(178, 168, 152), Tone.Of(132, 108, 86), Tone.Of(214, 206, 192), Tone.Of(94, 76, 62)),
+        // Canalave's mine shaft: steel sheeting over a wainscot painted red
+        PokemonType.Steel => (Rgb(164, 170, 182), Rgb(146, 152, 166), Tone.Of(176, 58, 50), Tone.Of(214, 220, 228), Tone.Of(90, 94, 106)),
         _ => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128))
     };
 

@@ -54,6 +54,8 @@ public static partial class SoundBank
         Add("fish_bite", SoundGroup.Field, "SEQ_SE_DP_FW104", "Something bites (waits for fishing).");
         Add("fish_reel", SoundGroup.Field, null, "The line reeled in (waits for fishing).");
         Add("poketch", SoundGroup.Field, "SEQ_SE_DP_POKETCH_003", "A Pokétch button (waits for the Pokétch).");
+        Add("lift", SoundGroup.Field, "SEQ_SE_DP_ELEBETA", "A platform of the Canalave Gym sets off with the player on it.");
+        Add("lift_stop", SoundGroup.Field, "SEQ_SE_DP_KI_GASYAN", "The platform comes to its end and locks in place.");
         Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
         Add("thunder_rumble", SoundGroup.Field, "SEQ_SE_DP_T_KAMI", "Thunder rolling from further off, a second after the lightning (one strike of three).");
 
@@ -301,6 +303,21 @@ public static partial class SoundBank
                 d.Noise(0.06f, 0.015f, Filter.Band, 2600f, 2600f, 0.8f, 5f, 0.1f, 2f);
                 d.Crackle(0.08f, 0.09f, 6, 1800f, 0.35f, even: true);
                 return Finish(d.S, 0.34f);
+            case "lift":
+                // A motor winding up under a steel deck: a low hum that rises and a rattle of the cables
+                d = new SoundDesign(0.7f, 0x11Fu);
+                d.Tone(0, 0.68f, Wave.Triangle, 70f, 120f, 0.45f, 0.12f, 1.2f, vibratoHz: 24f, vibratoDepth: 0.04f);
+                d.Tone(0, 0.68f, Wave.Sine, 140f, 240f, 0.2f, 0.12f, 1.4f);
+                d.Noise(0, 0.66f, Filter.Band, 600f, 900f, 0.3f, 0.9f, 0.1f, 1.2f, 30f, 0.4f);
+                return Finish(d.S, 0.36f);
+            case "lift_stop":
+                // Steel meets steel: a heavy clank and the catch dropping into place
+                d = new SoundDesign(0.4f, 0x5A5u);
+                d.Thump(0, 0.18f, 180f, 80f, 0.8f, 0.5f);
+                d.Noise(0, 0.03f, Filter.Band, 3000f, 2400f, 0.7f, 4f, 0.05f, 2f);
+                d.Bell(0.01f, 0.3f, 820f, 2.76f, 2.5f, 0.18f, 6f);
+                d.Noise(0.12f, 0.015f, Filter.Band, 2600f, 2600f, 0.5f, 4f, 0.1f, 2f);
+                return Finish(d.S, 0.4f);
             case "boulder":
                 // A great weight dragged over stone: a rumble with a grinding stutter
                 d = new SoundDesign(0.6f, 0xB0u);

@@ -1039,6 +1039,8 @@ public partial class GameEngine
         // onto it, dust where they came down from a hop
         StepLeavesItsMark();
 
+        // A step onto one of the Canalave Gym's platforms is a ride, and nothing more (plan 01 · M9)
+        if (TryRideLift()) return true;
         // Poison bites every fourth step, the Poké Radar charges and its patches out of sight go still (plan 06 · R13)
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
@@ -1203,7 +1205,7 @@ public partial class GameEngine
     {
         // Nobody challenges a player with no Pokémon able to fight (StartWildBattle says why)
         if (!playerParty.HasUsablePokemon) return false;
-        var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY);
+        var trainer = TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, height: player.HeightOn(currentMap));
         if (trainer == null) return false;
 
         wandering.Settle(trainer);
@@ -1211,7 +1213,7 @@ public partial class GameEngine
         // Two trainers who see the player at once come together (APPROACH_TYPE_VS2): two against one when the
         // player has two Pokémon able to fight, or against the player and whoever travels with them
         pairApproach = null;
-        if (TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, except: trainer) is { } second
+        if (TrainerApproach.FindSpotter(currentMap, player.GridX, player.GridY, except: trainer, height: player.HeightOn(currentMap)) is { } second
             && (partner != null || playerParty.Members.Count(p => !p.IsFainted) >= 2))
         {
             wandering.Settle(second);
@@ -1249,7 +1251,7 @@ public partial class GameEngine
         // Check NPC interaction; reception and shop counters can be talked across
         // Someone on a bridge's deck is out of reach from the ground under it
         float standing = player.HeightOn(currentMap);
-        var npc = currentMap.NpcIn(targetX, targetY, currentMap.SurfaceAt(targetX, targetY, standing).Height);
+        var npc = currentMap.NpcIn(targetX, targetY, currentMap.FootingAt(targetX, targetY, standing));
         if (npc == null && currentMap.IsCounter(targetX, targetY))
         {
             npc = currentMap.GetNpcAt(targetX + dx, targetY + dy);

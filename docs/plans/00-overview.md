@@ -385,7 +385,7 @@ The main session starts one agent per cell of the wave, each in its own worktree
 
 - [ ] Wave 0 · 16 · T5 (beside: 03 · Paldea 3a, done 2026-10-10)
 - [ ] Wave 1 · 08 · P7, 01 · M9 1b, 06 · R14a, 11 · C1, 10 · F1, 16 · T16 (beside: Paldea 3b, done 2026-10-10)
-- [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10), 01 · M9 2a, 06 · R14b, 12 · Q10, 11 · C5, 24 · X1 (beside: Paldea 3c)
+- [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10), 01 · M9 2a (done 2026-10-10), 06 · R14b, 12 · Q10, 11 · C5, 24 · X1 (beside: Paldea 3c)
 - [ ] Wave 3 · 02 · S8, 01 · M9 2b, 06 · R14c, 12 · Q11, 09 · L11, 24 · X2
 - [ ] Wave 4 · 02 · S9, 01 · M9 2c, 06 · R15, 11 · C12, 11 · C6, 24 · X3
 - [ ] Wave 5 · 02 · S10, 01 · M9 2d, 06 · R17a, 25 · Y1, 11 · C11, 12 · Q1

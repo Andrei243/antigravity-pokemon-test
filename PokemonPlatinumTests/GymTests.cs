@@ -13,7 +13,8 @@ namespace PokemonPlatinumTests;
 /// <summary>
 /// The Gyms of plan 01 · M9, part 1, each on the original's plan with its puzzle as the original's gym code makes it
 /// work (<c>src/overlay008/gym_features.c</c>) and its Leader's script played through: the Eterna Gym's flower clock,
-/// the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the Pastoria Gym's water.
+/// the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the Pastoria Gym's water, and of
+/// part 2 the Canalave Gym's lifts.
 /// </summary>
 [Collection("MapDatabase")]
 public class GymTests
@@ -59,6 +60,7 @@ public class GymTests
     {
         new object[] { "OreburghGym", 1, 3, 5, 24, "Sinnoh" },
         new object[] { "PastoriaGym", 1, 2, 13, 41, "Sinnoh" },
+        new object[] { "CanalaveGym", 1, 3, 16, 26, "Sinnoh" },
         new object[] { "EternaGym", 1, 3, 11, 27, "Sinnoh" },
         new object[] { "VeilstoneGym", 1, 3, 12, 30, "Sinnoh" },
         new object[] { "HearthomeGym", 1, 3, 4, 8, "Sinnoh" },
@@ -80,6 +82,15 @@ public class GymTests
         new object[] { "PastoriaGym", "fisherman_erick", 19, 18, Direction.Left },
         new object[] { "PastoriaGym", "fisherman_walter", 9, 11, Direction.Down },
         new object[] { "OreburghGym", "gym_guide", 6, 23, Direction.Down },
+        new object[] { "CanalaveGym", "byron", 16, 3, Direction.Down },
+        new object[] { "CanalaveGym", "gym_guide", 15, 25, Direction.Down },
+        new object[] { "CanalaveGym", "worker_gerardo", 8, 3, Direction.Down },
+        new object[] { "CanalaveGym", "worker_jackson", 14, 3, Direction.Down },
+        new object[] { "CanalaveGym", "worker_gary", 22, 16, Direction.Down },
+        new object[] { "CanalaveGym", "black_belt_david", 24, 3, Direction.Down },
+        new object[] { "CanalaveGym", "black_belt_ricky", 9, 17, Direction.Left },
+        new object[] { "CanalaveGym", "ace_trainer_cesar", 27, 25, Direction.Down },
+        new object[] { "CanalaveGym", "ace_trainer_breanna", 27, 5, Direction.Right },
         new object[] { "OreburghGym", "youngster_jonathon", 4, 18, Direction.Right },
         new object[] { "OreburghGym", "youngster_darius", 7, 11, Direction.Left },
         new object[] { "EternaGym", "gym_guide", 9, 25, Direction.Down },
@@ -690,6 +701,161 @@ public class GymTests
         Assert.DoesNotContain(game.Talk("fantina").Log, l => l.StartsWith("battle"));
     }
 
+    // ------------------------------------------------------------------ the Canalave Gym
+
+    /// <summary>
+    /// Every place someone on foot can come to in the Canalave Gym from a tile, riding the platforms as they go: the
+    /// tile, the floor's height and which end each platform stands at (a bit each), by the field's own rules with the
+    /// lifts'. Each ride ends at the platform's other end with its bit turned over.
+    /// </summary>
+    private static Dictionary<(int X, int Y, int Height, int Ends), (int X, int Y, int Height, int Ends)?> RideThrough(Map map, int x, int y)
+    {
+        var lifts = (CanalaveLifts)map.Puzzle!;
+        lifts.Reset();
+        int ends = 0;
+        for (int i = 0; i < CanalaveLifts.Platforms.Length; i++)
+            if (lifts.AtB(i)) ends |= 1 << i;
+        var start = (x, y, 0, ends);
+        var from = new Dictionary<(int X, int Y, int Height, int Ends), (int X, int Y, int Height, int Ends)?> { [start] = null };
+        var queue = new Queue<(int X, int Y, int Height, int Ends)>();
+        queue.Enqueue(start);
+        while (queue.Count > 0)
+        {
+            var here = queue.Dequeue();
+            for (int i = 0; i < CanalaveLifts.Platforms.Length; i++) lifts.Set(i, (here.Ends & (1 << i)) != 0);
+            foreach (var dir in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var step = FieldMovement.Step(map, here.X, here.Y, dir, new Walker(TravelMode.OnFoot, here.Height));
+                if (!step.Moves) continue;
+                var next = (step.X, step.Y, (int)MathF.Round(step.Height), here.Ends);
+                if (lifts.PlatformAt(step.X, step.Y, step.Height) is { } platform)
+                {
+                    lifts.Set(platform, !lifts.AtB(platform));
+                    var end = lifts.Where(platform);
+                    next = (end.X, end.Y, end.H, here.Ends ^ (1 << platform));
+                    lifts.Set(platform, !lifts.AtB(platform));
+                }
+                if (from.TryAdd(next, here)) queue.Enqueue(next);
+            }
+        }
+        lifts.Reset();
+        return from;
+    }
+
+    [Fact]
+    public void TheCanalaveGymsLiftsLeadFromTheDoorToByronPastEveryTrainer()
+    {
+        var map = Room("CanalaveGym");
+        Assert.IsType<CanalaveLifts>(map.Puzzle);
+        var ways = RideThrough(map, 16, 26);
+        // Everyone can be walked up to on their own floor
+        foreach (var who in map.Everyone.Where(n => n.IsTrainer || n.Key is "byron" or "gym_guide"))
+        {
+            int level = (int)(who.Level ?? 0f);
+            Assert.True(ways.Keys.Any(k => k.Height == level && System.Math.Abs(k.X - who.GridX) + System.Math.Abs(k.Y - who.GridY) == 1),
+                $"{who.Key} can't be walked up to");
+        }
+        // Byron's floor is the top, and the way there takes more than one ride
+        var byron = map.Everyone.Single(n => n.Key == "byron");
+        Assert.Equal(30f, byron.Level);
+        var beside = ways.Keys.First(k => k.Height == 30 && (k.X, k.Y) == (byron.GridX, byron.GridY + 1));
+        int rides = 0;
+        for (var at = ((int X, int Y, int Height, int Ends)?)beside; at is { } a; at = ways[a])
+            if (ways[a] is { } before && before.Ends != a.Ends) rides++;
+        Assert.True(rides >= 2, $"Byron is reached in {rides} ride(s)");
+        // Nobody walks off a floor's edge onto the one below: a step is refused where the floor's map closes the tile
+        Assert.DoesNotContain(ways.Keys, k => k.Height > 0 && CanalaveLifts.Closed(k.Height / CanalaveLifts.FloorSpacing, k.X, k.Y));
+    }
+
+    [Fact]
+    public void ACanalavePlatformCarriesTheWalkerToItsOtherEndAtTheOriginalsSpeed()
+    {
+        var lifts = new CanalaveLifts();
+        // The red shaft from the ground to the top: 30 tiles at a tile every two frames at thirty a second
+        Assert.Equal(0, lifts.PlatformAt(16, 9, 0f));
+        Assert.Null(lifts.PlatformAt(16, 9, 30f));
+        var ride = lifts.Board(0);
+        Assert.Equal(((16, 0, 9), (16, 30, 9)), (ride.From, ride.To));
+        Assert.Equal(2f, ride.Duration, 3);
+        lifts.Update(1f);
+        Assert.Equal(15f, lifts.Moving!.Now.H, 3);
+        // On its way it carries whoever is at its height over its own tile, and nobody at a floor's height
+        Assert.Equal(15f, lifts.FloorAt(16, 9, 15f));
+        Assert.Null(lifts.FloorAt(16, 9, 0f));
+        lifts.Update(1f);
+        Assert.Null(lifts.Moving);
+        Assert.True(lifts.AtB(0));
+        Assert.Equal(0, lifts.PlatformAt(16, 9, 30f));
+        // Coming in lays every platform out at its first end again
+        lifts.Arrive(Room("CanalaveGym"), new StoryState(), new System.Random(0));
+        Assert.False(lifts.AtB(0));
+        Assert.True(lifts.AtB(6));
+    }
+
+    [Fact]
+    public void ACanalaveFloorHasAHoleWhereItsPlatformHasGone()
+    {
+        var lifts = new CanalaveLifts();
+        // The lift at (5, 26) between the first floor and the second starts at the first: the second has a hole there
+        Assert.Equal(10f, lifts.FloorAt(5, 26, 10f));
+        Assert.True(lifts.EmptySlot(2, 5, 26));
+        Assert.Null(lifts.FloorAt(5, 26, 20f));
+        Assert.True(lifts.Refuses(null!, 5, 26, 20f, false));
+        lifts.Set(9, true);
+        Assert.False(lifts.EmptySlot(2, 5, 26));
+        Assert.True(lifts.EmptySlot(1, 5, 26));
+        Assert.Equal(20f, lifts.FloorAt(5, 26, 20f));
+        // The ground keeps its own floor everywhere its map is open, whatever stands above
+        Assert.False(lifts.EmptySlot(0, 16, 9));
+        Assert.Null(lifts.FloorAt(16, 26, 0f));
+        Assert.Equal(0, CanalaveLifts.FloorOf(4f));
+        Assert.Equal(1, CanalaveLifts.FloorOf(6f));
+        Assert.Equal(3, CanalaveLifts.FloorOf(40f));
+    }
+
+    [Fact]
+    public void TheCanalaveGymShowsOnlyTheFloorsUpToTheViewersAndTrainersLookAlongTheirOwn()
+    {
+        // A floor shows once the viewer has risen a tile toward it (CanalaveGym_UpdateVisibleProps)
+        Assert.True(CanalaveLifts.ShownFrom(0, 0f));
+        Assert.False(CanalaveLifts.ShownFrom(1, 0f));
+        Assert.True(CanalaveLifts.ShownFrom(1, 1f));
+        Assert.False(CanalaveLifts.ShownFrom(2, 10f));
+        Assert.True(CanalaveLifts.ShownFrom(2, 11f));
+        Assert.True(CanalaveLifts.ShownFrom(3, 30f));
+        var map = Room("CanalaveGym");
+        Assert.True(map.Puzzle!.Hides(30f, 0f));
+        Assert.False(map.Puzzle.Hides(10f, 20f));
+        // A trainer of the first floor doesn't see the player on the ground under them
+        var jackson = map.Everyone.Single(n => n.Key == "worker_jackson");
+        Assert.Equal(10f, jackson.Level);
+        Assert.False(TrainerApproach.CanSee(map, jackson, jackson.GridX, jackson.GridY + 1, 0f));
+        Assert.True(TrainerApproach.CanSee(map, jackson, jackson.GridX, jackson.GridY + 1, 10f));
+    }
+
+    [Fact]
+    public void TheCanalaveGymPlaysThroughToTheMineBadge()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Infernape")!, 50));
+        game.Arrive("CanalaveGym", 16, 26);
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("lifts"));
+        Assert.Contains(game.Talk("worker_gary").Log, l => l.StartsWith("battle worker_gary Won"));
+
+        var gym = game.Talk("byron");
+        Assert.Contains("battle leader_byron Won", gym.Log);
+        Assert.True(game.Story.HasBadge(Badge.Mine));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM91")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_BYRON_TM91"));
+        Assert.Equal(2, game.Story.Var("VAR_CANALAVE_CITY_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN"));
+        Assert.False(game.Story.Has("FLAG_HIDE_CANALAVE_LIBRARY_ROWAN"));
+        // His trainers count as beaten, those not yet fought too
+        Assert.DoesNotContain(game.Talk("black_belt_ricky").Log, l => l.StartsWith("battle"));
+        Assert.DoesNotContain(game.Talk("byron").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM91")!));
+    }
+
     // ------------------------------------------------------------------ the doors from the cities
 
     [Theory]
@@ -698,6 +864,7 @@ public class GymTests
     [InlineData("EternaGym")]
     [InlineData("VeilstoneGym")]
     [InlineData("HearthomeGym")]
+    [InlineData("CanalaveGym")]
     public void EachGymsDoorLeadsInFromItsCityAndBackOut(string gym)
     {
         var world = MapDatabase.Get("Sinnoh");

@@ -438,6 +438,17 @@ public class Map
         return (ground, false);
     }
 
+    /// <summary>
+    /// The height someone coming onto a tile from a height stands at: the ground or a bridge's deck, or a floor a Gym's
+    /// puzzle lays over the tile where that is what carries them (the Canalave Gym's floors; <see cref="FieldMovement.Step"/>'s rule).
+    /// </summary>
+    public float FootingAt(int x, int y, float from)
+    {
+        var (height, _) = SurfaceAt(x, y, from);
+        if (Puzzle?.FloorAt(x, y, from) is { } floor && floor > height && MathF.Abs(floor - from) < MathF.Abs(height - from)) return floor;
+        return height;
+    }
+
     public List<NPC> NPCs { get; } = new();
 
     /// <summary>

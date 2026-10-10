@@ -118,7 +118,7 @@ public sealed class PastoriaWater : GymPuzzle
         if (Level == target) Floor = target;
     }
 
-    public override float? FloorAt(int x, int y) => Covers(x, y) ? Floor : null;
+    public override float? FloorAt(int x, int y, float near) => Covers(x, y) ? Floor : null;
 
     public override bool Refuses(Map map, int x, int y, float from, bool afloat)
     {

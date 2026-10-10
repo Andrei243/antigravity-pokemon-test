@@ -34,21 +34,30 @@ internal sealed class GymPieces
     // The Hearthome Gym's: the doors and pads (still), and a sign for each door, shown where its clue lies
     private readonly Dictionary<HearthomeDoors.Sign, Piece> clues = new();
 
+    // The Canalave Gym's: each floor's deck of grating (with the carts' rails), and a platform of each kind
+    private readonly Piece?[] decks = new Piece?[CanalaveLifts.Floors];
+    private readonly Dictionary<CanalaveLifts.Kind, Piece> platforms = new();
+
+    /// <summary>The height the player stands at, for a puzzle that hides what is above them.</summary>
+    private float viewer;
+
     public GymPieces(FieldShaders shaders) => this.shaders = shaders;
 
     /// <summary>The hands' and the water's lift above the floor, in texels of art.</summary>
     private const int HandTop = 2, TipTop = 9;
 
     /// <summary>Draws the pieces of the map's puzzle into the shadow map.</summary>
-    public void DrawDepth(Map map)
+    public void DrawDepth(Map map, float viewer = 0f)
     {
+        this.viewer = viewer;
         if (!Ready(map)) return;
         foreach (var (piece, transform) in Placed(map)) Raylib.DrawMesh(piece.Mesh, piece.Depth, Matrix4x4.Transpose(transform));
     }
 
     /// <summary>Draws the pieces of the map's puzzle, lit as the room is.</summary>
-    public void Draw(Map map)
+    public void Draw(Map map, float viewer = 0f)
     {
+        this.viewer = viewer;
         if (!Ready(map)) return;
         foreach (var (piece, transform) in Placed(map))
         {
@@ -65,6 +74,22 @@ internal sealed class GymPieces
             // The sign of the door that leads on, standing where it was put this time
             if (map.Puzzle is HearthomeDoors { Correct: { } sign } doors && clues.TryGetValue(sign, out var clue))
                 yield return (clue, Matrix4x4.CreateTranslation(doors.Clue.X, 0f, doors.Clue.Y));
+            yield break;
+        }
+        if (map.Puzzle is CanalaveLifts lifts)
+        {
+            // Each floor above the ground once the viewer has risen toward it, and the platforms on the floors shown;
+            // the one carrying the player wherever it is on its way
+            for (int f = 1; f < CanalaveLifts.Floors; f++)
+                if (decks[f] is { } deck && CanalaveLifts.ShownFrom(f, viewer))
+                    yield return (deck, Matrix4x4.CreateTranslation(0f, f * CanalaveLifts.FloorSpacing - map.GroundLevel, 0f));
+            for (int i = 0; i < CanalaveLifts.Platforms.Length; i++)
+            {
+                var (x, h, y) = lifts.Moving is { } ride && ride.Index == i ? ride.Now : lifts.Where(i);
+                if (lifts.Moving?.Index != i && !CanalaveLifts.ShownFrom(CanalaveLifts.FloorOf(h), viewer)) continue;
+                if (platforms.TryGetValue(CanalaveLifts.Platforms[i].Kind, out var platform))
+                    yield return (platform, Matrix4x4.CreateTranslation(x, h - map.GroundLevel, y));
+            }
             yield break;
         }
         if (map.Puzzle is PastoriaWater pool)
@@ -108,6 +133,7 @@ internal sealed class GymPieces
         builtFor = map;
         if (map.Puzzle is EternaClock) BuildEterna(map);
         else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
+        else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
         else if (hearthome) BuildHearthome(map);
         return true;
     }
@@ -512,6 +538,127 @@ internal sealed class GymPieces
             }
     }
 
+    // ------------------------------------------------------------------ the Canalave Gym
+
+    private static readonly Tone Grating = Tone.Of(150, 156, 166, 196, 202, 212, 96, 100, 112);
+    private static readonly Tone RailTone = Tone.Of(62, 64, 74, 92, 94, 106, 40, 42, 50);
+    private static readonly Tone LiftRed = Tone.Of(196, 58, 50, 228, 102, 88, 132, 36, 34);
+    private static readonly Tone CartYellow = Tone.Of(236, 196, 60, 250, 226, 120, 176, 136, 34);
+
+    /// <summary>
+    /// The Canalave Gym (style guide, "Gyms"): a deck of steel grating for each floor above the ground, over every
+    /// tile its map lets one walk but a platform's place, with its edges where the deck ends and the rails of the
+    /// carts that run along it; and a platform of each kind, a plate six texels deep standing two over its floor.
+    /// </summary>
+    private void BuildCanalave(Map map)
+    {
+        const int T = GroundBaker.ArtTile, Thick = 6, Rise = 2;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var top = sheet.Paint("grating.top", T, T, PaintGrating);
+        var edge = sheet.Paint("grating.edge", T, Thick, c => Pix.Raised(c, 0, 0, T, Thick, Grating));
+        var kits = new KitBuilder?[CanalaveLifts.Floors];
+        for (int f = 1; f < CanalaveLifts.Floors; f++)
+        {
+            int floor = f;
+            bool Deck(int x, int y) => map.InBounds(x, y) && !CanalaveLifts.Closed(floor, x, y) && !IsSlot(floor, x, y);
+            var kit = kits[f] = new KitBuilder(sheet, vs);
+            for (int y = 0; y < map.Height; y++)
+                for (int x = 0; x < map.Width; x++)
+                {
+                    if (!Deck(x, y)) continue;
+                    kit.Origin = new Vector3(x, 0f, y);
+                    kit.Box(0, T, 0, T, -Thick, 0, top, Deck(x, y + 1) ? null : edge, Deck(x - 1, y) ? null : edge, Deck(x + 1, y) ? null : edge);
+                }
+            // The carts' rails, a dark beam along each side of the whole track, under the cart's plate
+            foreach (var p in CanalaveLifts.Platforms)
+            {
+                if (p.Vertical || p.A.H != f * CanalaveLifts.FloorSpacing) continue;
+                kit.Origin = new Vector3(Math.Min(p.A.X, p.B.X), 0f, Math.Min(p.A.Y, p.B.Y));
+                int across = (Math.Abs(p.B.X - p.A.X) + 1) * T, down = (Math.Abs(p.B.Y - p.A.Y) + 1) * T;
+                if (p.Kind == CanalaveLifts.Kind.EastWest)
+                {
+                    kit.Block("rail", RailTone, 0, across, 3, 6, -Thick, -1);
+                    kit.Block("rail", RailTone, 0, across, T - 6, T - 3, -Thick, -1);
+                }
+                else
+                {
+                    kit.Block("rail", RailTone, 3, 6, 0, down, -Thick, -1);
+                    kit.Block("rail", RailTone, T - 6, T - 3, 0, down, -Thick, -1);
+                }
+            }
+        }
+
+        var plates = new Dictionary<CanalaveLifts.Kind, KitBuilder>();
+        foreach (var kind in Enum.GetValues<CanalaveLifts.Kind>())
+        {
+            var kit = new KitBuilder(sheet, vs);
+            var tone = kind is CanalaveLifts.Kind.Lift or CanalaveLifts.Kind.Shaft ? LiftRed : CartYellow;
+            var face = kit.Face($"platform.{kind}", T - 2, T - 2, c => PaintPlatform(c, kind));
+            var side = kit.Face($"platform.{kind}.side", T - 2, Thick, c => Pix.Raised(c, 0, 0, T - 2, Thick, tone));
+            kit.Box(1, T - 1, 1, T - 1, Rise - Thick, Rise, face, side, side, side);
+            plates[kind] = kit;
+        }
+
+        art = Upload(sheet);
+        for (int f = 1; f < CanalaveLifts.Floors; f++)
+            if (kits[f] is { } kit) decks[f] = Make(kit);
+        foreach (var (kind, kit) in plates)
+            if (Make(kit) is { } piece) platforms[kind] = piece;
+    }
+
+    /// <summary>Whether a tile is a platform's place on a floor: the platform draws it, and the deck leaves it open.</summary>
+    private static bool IsSlot(int floor, int x, int y)
+    {
+        foreach (var p in CanalaveLifts.Platforms)
+            foreach (var end in new[] { p.A, p.B })
+                if (end.X == x && end.Y == y && end.H == floor * CanalaveLifts.FloorSpacing) return true;
+        return false;
+    }
+
+    private static void PaintGrating(PixelCanvas c)
+    {
+        // Plates of steel with a slot every four texels, a light edge at the top and the left
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                var col = x == 0 || y == 0 ? Grating.Light : x % 4 == 3 || y % 4 == 3 ? Grating.Dark : Grating.Base;
+                c.SetRaw(x, y, col);
+            }
+    }
+
+    private static void PaintPlatform(PixelCanvas c, CanalaveLifts.Kind kind)
+    {
+        int w = c.Width, h = c.Height;
+        var black = new Color(36, 34, 40, 255);
+        if (kind is CanalaveLifts.Kind.Lift or CanalaveLifts.Kind.Shaft)
+        {
+            // A red plate in a yellow band with black stripes running across it at a slant
+            for (int y = 0; y < h; y++)
+                for (int x = 0; x < w; x++)
+                {
+                    bool band = x < 4 || y < 4 || x >= w - 4 || y >= h - 4;
+                    var col = band ? ((x + y) % 6 < 3 ? CartYellow.Base : black)
+                        : x == 4 || y == 4 ? LiftRed.Light : x == w - 5 || y == h - 5 ? LiftRed.Dark : LiftRed.Base;
+                    c.SetRaw(x, y, col);
+                }
+            return;
+        }
+        // A yellow plate with two dark arrows pointing the ways the cart runs
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+                c.SetRaw(x, y, x == 0 || y == 0 ? CartYellow.Light : x == w - 1 || y == h - 1 ? CartYellow.Dark : CartYellow.Base);
+        bool across = kind == CanalaveLifts.Kind.EastWest;
+        for (int i = 0; i < 7; i++)
+            for (int j = -i; j <= i; j++)
+            {
+                // A triangle 7 deep, its point toward each end, a texel and a half from the edge
+                int a = 3 + i, b = h / 2 + j;
+                if (across) { c.SetRaw(a, b, black); c.SetRaw(w - 1 - a, b, black); }
+                else { c.SetRaw(b, a, black); c.SetRaw(b, h - 1 - a, black); }
+            }
+    }
+
     // ------------------------------------------------------------------ the GPU
 
     private Texture2D Upload(ArtSheet sheet)
@@ -552,6 +699,8 @@ internal sealed class GymPieces
         minuteHand = hourHand = waterPool = stillParts = raft = null;
         poolWater.Clear();
         buttons.Clear();
+        Array.Clear(decks);
+        platforms.Clear();
         rafts.Clear();
         clues.Clear();
     }

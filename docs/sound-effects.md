@@ -56,6 +56,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `fish_bite` | `SEQ_SE_DP_FW104` | Something bites, with the "!" over the player. |
 | `fish_reel` | — | The line reeled in: a Pokémon hooked in time. |
 | `poketch` | `SEQ_SE_DP_POKETCH_003` | The Pokétch put on the screen or away, and its app changed. |
+| `lift` | `SEQ_SE_DP_ELEBETA` | A platform of the Canalave Gym sets off with the player on it. |
+| `lift_stop` | `SEQ_SE_DP_KI_GASYAN` | The platform comes to its end and locks in place. |
 | `thunder` | `SEQ_SE_DP_T_KAMI2` | Thunder cracking close, a fifth of a second after a storm's lightning (two strikes of three, as the original's storm chooses). |
 | `thunder_rumble` | `SEQ_SE_DP_T_KAMI` | Thunder rolling from further off, a second after the lightning (one strike of three). |
 

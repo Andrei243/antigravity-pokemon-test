@@ -206,6 +206,20 @@ public class Player
     public void SetHeight(float standing) => height = standing;
 
     /// <summary>
+    /// Carried by something moving under the player (the Canalave Gym's platforms, plan 01 · M9): stands still on it
+    /// wherever it has got to, in tiles, at its height, and is on the tile it is over.
+    /// </summary>
+    public void CarryTo(float x, float y, float standing, float dt)
+    {
+        PixelX = x * TileSize;
+        PixelY = y * TileSize;
+        GridX = targetGridX = (int)MathF.Round(x);
+        GridY = targetGridY = (int)MathF.Round(y);
+        height = standing;
+        StandStill(dt);
+    }
+
+    /// <summary>
     /// Where the Pokémon the player rides on water is, in tiles, or null on land: under the player while
     /// surfing, and waiting on its tile of water while the player hops onto it or off it.
     /// </summary>

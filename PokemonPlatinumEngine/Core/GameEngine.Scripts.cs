@@ -244,7 +244,7 @@ public partial class GameEngine
         // Cut, Rock Smash and Strength act on the obstacle in front, which is whose script it is
         var (dx, dy) = FieldMovement.Delta(player.Facing);
         int ax = player.GridX + dx, ay = player.GridY + dy;
-        NPC? subject = currentMap.InBounds(ax, ay) ? currentMap.NpcIn(ax, ay, currentMap.SurfaceAt(ax, ay, player.HeightOn(currentMap)).Height) : null;
+        NPC? subject = currentMap.InBounds(ax, ay) ? currentMap.NpcIn(ax, ay, currentMap.FootingAt(ax, ay, player.HeightOn(currentMap))) : null;
         StartScript(FieldScripts.FromMenu(move)!, subject is { IsObstacle: true } ? subject : null, pokemon: user);
     }
 

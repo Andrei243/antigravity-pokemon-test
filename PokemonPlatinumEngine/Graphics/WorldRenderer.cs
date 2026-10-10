@@ -36,6 +36,7 @@ public sealed class WorldRenderer
 
     // What moves in a Gym's puzzle (plan 01 · M9): the clock's hands, the fountains' water
     private readonly GymPieces gymPieces;
+    private float viewer;
 
     private MapScene GetScene(Map map)
     {
@@ -376,6 +377,8 @@ public sealed class WorldRenderer
         float lift = player != null ? player.HopHeight / Player.TileSize : 0f;
         // The ground under the view's middle: the deck or the hillside the player is on (zero on flat maps)
         float groundY = player != null ? Relief.Under(map, px, pz, player.HeightOn(map)) : Relief.At(map, px, pz);
+        // The height the player stands at: a Gym's floors above it are hidden (the Canalave Gym's)
+        viewer = player?.HeightOn(map) ?? 0f;
         // A room is one scene and the camera looks at its middle; outdoors the camera follows the player
         var room = indoors ? GetScene(map) : null;
 
@@ -471,7 +474,7 @@ public sealed class WorldRenderer
         Rlgl.DisableBackfaceCulling();
         foreach (var scene in scenes)
             if (Reaches(scene, casters)) scene.DrawDepth(casters);
-        gymPieces.DrawDepth(map);
+        gymPieces.DrawDepth(map, viewer);
         DrawActors(CharacterPass.Depth);
         DrawThings(CharacterPass.Depth);
         DrawPokemon(CharacterPass.Depth);
@@ -502,7 +505,7 @@ public sealed class WorldRenderer
 
         foreach (var scene in scenes)
             if (Reaches(scene, view)) scene.Draw(view);
-        gymPieces.Draw(map);
+        gymPieces.Draw(map, viewer);
         // In a room the light on the floor is daylight; outdoors it is lamplight, which only shows once it is dark
         // (squared, so pools stay faint while the lamps are coming on at twilight)
         foreach (var scene in scenes)
@@ -842,6 +845,7 @@ public sealed class WorldRenderer
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
+            if (map.Puzzle?.Hides(npc.Level ?? map.HeightAt(npc.GridX, npc.GridY), viewer) == true) continue;
             if (npc is { IsPokemon: true, Species: { } species })
             {
                 // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two
