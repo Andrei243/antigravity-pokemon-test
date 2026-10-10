@@ -1803,4 +1803,10 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Galar's Megas (their builds in PokemonModels.Galar3.cs)
 
     private static PokeBuilder FalinksMega() => FalinksMegaBuild();
+
+    // ------------------------------------------------------------------ Paldea's Megas (their builds in PokemonModels.Paldea3.cs)
+
+    private static PokeBuilder ScovillainMega() => ScovillainBuild(true);
+
+    private static PokeBuilder GlimmoraMega() => GlimmoraMegaBuild();
 }

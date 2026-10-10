@@ -7,122 +7,12 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 // Popular species from outside the Sinnoh Pokédex (plan 03, decision 3), Paldea's fourth batch in National Pokédex
-// order: Veluza (976) to Gholdengo (1000), with Tatsugiri's three looks and their Megas, Dudunsparce's Three-Segment
-// Form, Baxcalibur's Mega and Gimmighoul's Roaming Form beside their species. Helpers shared with the earlier batches
-// are in the files of those batches, PokemonModels.Sinnoh1.cs to PokemonModels.Paldea3.cs.
+// order: Tatsugiri (978) to Gholdengo (1000), with Tatsugiri's three looks and their Megas, Dudunsparce's Three-Segment
+// Form, Baxcalibur's Mega and Gimmighoul's Roaming Form beside their species (Veluza and Dondozo, 976 and 977, are in
+// PokemonModels.Paldea3.cs). Helpers shared with the earlier batches are in the files of those batches,
+// PokemonModels.Sinnoh1.cs to PokemonModels.Paldea3.cs.
 internal static partial class PokemonModels
 {
-    // ------------------------------------------------------------------ Veluza
-
-    private static readonly Color VeluzaGrey = Rgb(158, 166, 182);
-    private static readonly Color VeluzaDark = Rgb(96, 102, 126);
-    private static readonly Color VeluzaPink = Rgb(240, 164, 162);
-    private static readonly Color VeluzaPale = Rgb(232, 236, 244);
-
-    /// <summary>Veluza: a long, lean fish of silver grey with the pink of a fillet showing down its belly, a pale line along each side, a pointed snout, a blade of a crest swept back from its head and a tall blade of a dorsal fin behind it, both tipped pink, long pectoral fins hanging like arms, a forked tail and stern yellow eyes.</summary>
-    private static PokeBuilder Veluza()
-    {
-        var b = new PokeBuilder("Veluza", 0.85f, BodyPlan.Fish, V(0, 0.32f, -0.04f)) { Coat = Scales }.Hover();
-        var bc = V(0, 0.32f, -0.04f);
-        var br = V(0.065f, 0.085f, 0.25f);
-        b.Ell(Body, bc, br, VeluzaGrey);
-        // The flesh showing pink down its belly like a fillet, and a pale line along each side
-        b.PaintEll(Body, bc + V(0, -0.055f, 0.03f), V(0.07f, 0.045f, 0.23f), VeluzaPink);
-        b.PaintEll(Body, bc + V(0, 0.012f, -0.02f), V(0.07f, 0.007f, 0.2f), VeluzaPale, soft: 0.005f);
-        // The tall dorsal fin, a blade swept back and tipped pink
-        int dorsal = b.Part("dorsal", Body, bc + V(0, 0.08f, 0.02f), PokeRole.Fin);
-        var finRoot = bc + V(0, 0.07f, 0.04f);
-        var finTip = bc + V(0, 0.19f, -0.14f);
-        Blade(b, dorsal, finRoot, finTip, 0.05f, VeluzaDark, V(1f, 0, 0), 0.22f);
-        b.PaintEll(dorsal, finTip + V(0, -0.012f, 0.012f), V(0.02f, 0.035f, 0.035f), VeluzaPink, soft: 0.006f);
-        // A small fin under its belly behind
-        Blade(b, Body, bc + V(0, -0.07f, -0.1f), bc + V(0, -0.13f, -0.16f), 0.025f, VeluzaDark, V(1f, 0, 0), 0.25f);
-        // The long pectoral fins hanging like arms, pink at their ends
-        PokeBuilder.Both(s =>
-        {
-            int fin = b.Part(s < 0 ? "finL" : "finR", Body, bc + V(0.055f * s, -0.03f, 0.1f), PokeRole.Fin, s, s);
-            Blade(b, fin, bc + V(0.05f * s, -0.03f, 0.1f), bc + V(0.16f * s, -0.11f, 0.0f), 0.03f, VeluzaGrey, V(0.3f * s, 1f, 0), 0.25f);
-            b.PaintEll(fin, bc + V(0.145f * s, -0.1f, 0.012f), V(0.03f, 0.03f, 0.03f), VeluzaPink, soft: 0.006f);
-        });
-        // The forked tail
-        int tail = b.Tail(bc + V(0, 0, -0.22f));
-        b.Limb(tail, bc + V(0, 0, -0.2f), bc + V(0, 0.01f, -0.31f), 0.035f, 0.02f, VeluzaGrey);
-        var fork = bc + V(0, 0.01f, -0.3f);
-        Blade(b, tail, fork, fork + V(0, 0.11f, -0.1f), 0.04f, VeluzaDark, V(1f, 0, 0), 0.22f);
-        Blade(b, tail, fork, fork + V(0, -0.09f, -0.09f), 0.036f, VeluzaDark, V(1f, 0, 0), 0.22f);
-        int head = b.Head(bc + V(0, 0.01f, 0.2f));
-        var c = bc + V(0, 0.015f, 0.25f);
-        var r = V(0.065f, 0.075f, 0.085f);
-        b.Ell(head, c, r, VeluzaGrey);
-        b.PaintEll(head, c + V(0, -0.05f, 0.02f), V(0.07f, 0.035f, 0.08f), VeluzaPale);
-        // The pointed snout, a thin dark mouth along it
-        b.Spike(head, c + V(0, -0.03f, 0.05f), c + V(0, -0.04f, 0.17f), 0.03f, VeluzaGrey, 0.8f);
-        b.PaintEll(head, c + V(0, -0.038f, 0.12f), V(0.05f, 0.004f, 0.06f), VeluzaDark, soft: 0.005f);
-        // The crest swept back from its head like a blade, tipped pink
-        var crestTip = c + V(0, 0.16f, -0.12f);
-        Blade(b, head, c + V(0, 0.06f, 0.02f), crestTip, 0.045f, VeluzaDark, V(1f, 0, 0), 0.24f);
-        b.PaintEll(head, crestTip + V(0, -0.012f, 0.012f), V(0.02f, 0.03f, 0.03f), VeluzaPink, soft: 0.006f);
-        PokeBuilder.Both(s =>
-        {
-            var at = On(c, r, c.X + 0.045f * s, c.Y + 0.025f);
-            b.Eye(head, at, Outward(c, r, at), 0.016f, Rgb(250, 210, 70), glare: true);
-        });
-        return Lift(b);
-    }
-
-    // ------------------------------------------------------------------ Dondozo
-
-    private static readonly Color DozoBlue = Rgb(66, 88, 140);
-    private static readonly Color DozoPale = Rgb(178, 198, 226);
-    private static readonly Color DozoLip = Rgb(240, 212, 126);
-    private static readonly Color DozoMouth = Rgb(48, 38, 56);
-
-    /// <summary>Dondozo: a vast catfish of dark blue, pale beneath and spotted pale over its back, its head broad and flat with tiny dull eyes on top and a huge mouth across the whole front of it over a lower jaw lipped yellow, two thick yellow barbels drooping and curling from the corners of its mouth, small fins at its sides and back and a tall split tail.</summary>
-    private static PokeBuilder Dondozo()
-    {
-        var b = new PokeBuilder("Dondozo", 1f, BodyPlan.Fish, V(0, 0.3f, -0.1f)) { Coat = Scales }.Hover();
-        var bc = V(0, 0.3f, -0.1f);
-        var br = V(0.26f, 0.22f, 0.36f);
-        b.Ell(Body, bc, br, DozoBlue);
-        b.PaintEll(Body, bc + V(0, -0.16f, 0.05f), V(0.24f, 0.1f, 0.36f), DozoPale);
-        foreach (var d in new[] { V(0.4f, 1f, 0.1f), V(-0.35f, 1f, -0.25f), V(0.2f, 1f, -0.55f), V(-0.12f, 1f, 0.35f), V(-0.6f, 0.75f, 0.2f), V(0.6f, 0.75f, -0.3f) })
-            b.PaintEll(Body, Out(bc, br, default, d), V(0.036f, 0.03f, 0.036f), DozoPale, soft: 0.01f);
-        // The fins: one at each side, a small one on its back, and the tail split up and down
-        PokeBuilder.Both(s =>
-        {
-            int fin = b.Part(s < 0 ? "finL" : "finR", Body, bc + V(0.22f * s, -0.1f, 0.12f), PokeRole.Fin, s, s);
-            Frond(b, fin, bc + V(0.2f * s, -0.1f, 0.12f), bc + V(0.4f * s, -0.18f, 0.02f), 0.08f, DozoBlue, V(0.3f * s, 1f, 0), 0.25f);
-        });
-        int dorsal = b.Part("dorsal", Body, bc + V(0, 0.2f, -0.05f), PokeRole.Fin);
-        Frond(b, dorsal, bc + V(0, 0.18f, 0f), bc + V(0, 0.28f, -0.16f), 0.06f, DozoBlue, V(1f, 0, 0), 0.25f);
-        int tail = b.Tail(bc + V(0, 0, -0.32f));
-        b.Limb(tail, bc + V(0, 0, -0.3f), bc + V(0, 0.02f, -0.48f), 0.12f, 0.06f, DozoBlue);
-        PokeBuilder.Both(s => Frond(b, tail, bc + V(0, 0.02f, -0.46f), bc + V(0, 0.02f + 0.15f * s, -0.62f), 0.09f, DozoBlue, V(1f, 0, 0), 0.25f));
-        // The great flat head, the dark line of its mouth across the front
-        int head = b.Head(bc + V(0, 0, 0.25f));
-        var c = V(0, 0.3f, 0.28f);
-        var r = V(0.3f, 0.2f, 0.22f);
-        b.Ell(head, c, r, DozoBlue, blend: 0.05f);
-        b.PaintEll(head, c + V(0, -0.085f, 0.17f), V(0.3f, 0.014f, 0.08f), DozoMouth, soft: 0.008f);
-        // The lower jaw, lipped yellow and pale under
-        int jaw = b.Jaw(head, c + V(0, -0.1f, -0.05f));
-        b.Ell(jaw, c + V(0, -0.13f, 0.04f), V(0.27f, 0.08f, 0.19f), DozoBlue, blend: 0.02f);
-        b.PaintEll(jaw, c + V(0, -0.11f, 0.2f), V(0.27f, 0.05f, 0.06f), DozoLip);
-        b.PaintEll(jaw, c + V(0, -0.2f, 0.02f), V(0.24f, 0.05f, 0.18f), DozoPale);
-        PokeBuilder.Both(s =>
-        {
-            // A thick barbel drooping from each corner of its mouth and curling forward at its end
-            var root = c + V(0.2f * s, -0.06f, 0.14f);
-            int barbel = b.Ear(head, s, root);
-            var path = Smooth(3, root, c + V(0.3f * s, -0.08f, 0.2f), c + V(0.36f * s, -0.18f, 0.2f), c + V(0.33f * s, -0.25f, 0.25f));
-            b.Tube(barbel, path, 0.03f, 0.018f, DozoLip, blend: 0f);
-            // The small dull eyes up on top of its head
-            var at = Out(c, r, default, V(0.55f * s, 0.55f, 0.6f));
-            b.Eye(head, at, Outward(c, r, at), 0.026f, sclera: true, pupil: Rgb(30, 30, 40));
-        });
-        return Lift(b);
-    }
-
     // ------------------------------------------------------------------ Tatsugiri
 
     /// <summary>Tatsugiri's three looks: their names, the colour of the slice of fish over their backs, its pale lines and its dark parts.</summary>

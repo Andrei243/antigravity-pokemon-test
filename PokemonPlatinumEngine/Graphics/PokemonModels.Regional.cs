@@ -1000,4 +1000,8 @@ internal static partial class PokemonModels
     private static PokeBuilder SquawkabillyYellow() => SquawkabillyBuild("Yellow");
 
     private static PokeBuilder SquawkabillyWhite() => SquawkabillyBuild("White");
+
+    // ------------------------------------------------------------------ Palafin's Hero Form (its build in PokemonModels.Paldea3.cs)
+
+    private static PokeBuilder PalafinHero() => PalafinHeroBuild();
 }
