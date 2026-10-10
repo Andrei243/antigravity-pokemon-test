@@ -20,7 +20,7 @@ About 350 sittings are left, some twenty of them marked optional.
 | 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
 | 09 · Looks | — | 15 | |
 | 10 · Companions | F1 | 11 | F8 optional |
-| 11 · People | C1, C5, C9, C10 | 9 | the looks are a table, `characters.json` |
+| 11 · People | C1, C5 (C9, C10 in part) | 11 | the looks are a table, `characters.json` |
 | 12 · Quality of life | — | 30 | |
 | 13 · Ways to play | — | 26 | V11, V14, V25 optional |
 | 14 · Battle formats | — | 15 | B2, B13 optional |
