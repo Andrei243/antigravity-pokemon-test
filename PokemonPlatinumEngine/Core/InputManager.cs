@@ -15,7 +15,8 @@ public enum GameAction
     Run,      // Hold B / Shift
     Item,     // Y button: the registered key item (C)
     Poketch,  // The Pokétch, the handheld's lower screen: out or away (P)
-    PoketchApp // The Pokétch's side button: the next app (O)
+    PoketchApp, // The Pokétch's side button: the next app (O)
+    PoketchTouch // The Pokétch taken in hand to touch its screen, and let go (I)
 }
 
 public static class InputManager
@@ -35,6 +36,7 @@ public static class InputManager
             GameAction.Item => Raylib.IsKeyPressed(KeyboardKey.C) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceLeft),
             GameAction.Poketch => Raylib.IsKeyPressed(KeyboardKey.P) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceUp),
             GameAction.PoketchApp => Raylib.IsKeyPressed(KeyboardKey.O) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightTrigger1),
+            GameAction.PoketchTouch => Raylib.IsKeyPressed(KeyboardKey.I) || Raylib.IsGamepadButtonPressed(0, GamepadButton.LeftTrigger1),
             _ => false
         };
     }
@@ -54,6 +56,7 @@ public static class InputManager
             GameAction.Item => Raylib.IsKeyDown(KeyboardKey.C) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceLeft),
             GameAction.Poketch => Raylib.IsKeyDown(KeyboardKey.P) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceUp),
             GameAction.PoketchApp => Raylib.IsKeyDown(KeyboardKey.O) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightTrigger1),
+            GameAction.PoketchTouch => Raylib.IsKeyDown(KeyboardKey.I) || Raylib.IsGamepadButtonDown(0, GamepadButton.LeftTrigger1),
             _ => false
         };
     }

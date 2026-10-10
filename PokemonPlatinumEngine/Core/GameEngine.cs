@@ -8,6 +8,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.PoketchApps;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
@@ -845,6 +846,8 @@ public partial class GameEngine
         KeepBerriesInView();
         SlideBoulders(dt);
         poketchView.Update(dt);
+        // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
+        if (poketch.Enabled) poketch.State?.Update(dt, PoketchNow());
         // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a
         // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
         // anywhere else left people where they were until the next of those
@@ -920,6 +923,13 @@ public partial class GameEngine
             return;
         }
 
+        // The Pokétch in hand: the arrows and buttons are its, and the player stands still
+        if (poketchView.InHand)
+        {
+            UpdatePoketchInHand(dt);
+            return;
+        }
+
         if (InputManager.IsActionPressed(GameAction.Menu))
         {
             startMenu.HasPokedex = story.Has(StoryState.PokedexFlag);
@@ -931,6 +941,7 @@ public partial class GameEngine
         // The Pokétch comes out or goes away; its side button changes the app
         if (InputManager.IsActionPressed(GameAction.Poketch)) poketchView.Toggle(poketch);
         if (InputManager.IsActionPressed(GameAction.PoketchApp)) poketchView.NextApp(poketch);
+        if (InputManager.IsActionPressed(GameAction.PoketchTouch) && !player.IsMoving && poketchView.TakeInHand(poketch, PoketchNow())) return;
 
         // The key item kept on the item button (the original's Y button)
         if (InputManager.IsActionPressed(GameAction.Item) && !player.IsMoving)
@@ -1017,6 +1028,44 @@ public partial class GameEngine
             .ToList();
         if (trim) CharacterModels.Trim(looks);
         CharacterModels.Preload(looks);
+    }
+
+    private readonly HeldKey poketchAcross = new(), poketchDown = new();
+    private PoketchContext? poketchContext;
+
+    /// <summary>What the Pokétch's apps read of the game this frame (plan 06 · R14b).</summary>
+    internal PoketchContext PoketchNow()
+    {
+        var c = poketchContext ??= new PoketchContext
+        {
+            Poketch = poketch,
+            Sound = name => AudioManager.PlaySound(name),
+            Cry = p => AudioManager.PlayCry(p)
+        };
+        c.Party = playerParty;
+        c.Now = PoketchView.Clock();
+        c.Map = currentMap;
+        c.X = player?.GridX ?? 0;
+        c.Y = player?.GridY ?? 0;
+        c.Story = story;
+        c.Pokedex = playerPokedex;
+        c.Encounters = encounters;
+        c.Radar = radar;
+        c.Berries = berries;
+        c.Rng = fieldRandom;
+        return c;
+    }
+
+    /// <summary>The Pokétch in the player's hand: the arrows move its cursor (held, they go on), confirm touches, cancel lets go.</summary>
+    private void UpdatePoketchInHand(float dt)
+    {
+        var context = PoketchNow();
+        int across = poketchAcross.Advance(dt, InputManager.Axis(GameAction.Left, GameAction.Right), InputManager.Axis(GameAction.Left, GameAction.Right, held: true));
+        int down = poketchDown.Advance(dt, InputManager.Axis(GameAction.Up, GameAction.Down), InputManager.Axis(GameAction.Up, GameAction.Down, held: true));
+        for (int i = 0; i < Math.Abs(across); i++) poketchView.MoveCursor(poketch, context, Math.Sign(across), 0);
+        for (int i = 0; i < Math.Abs(down); i++) poketchView.MoveCursor(poketch, context, 0, Math.Sign(down));
+        if (InputManager.IsActionPressed(GameAction.Confirm)) poketchView.Touch(poketch, context);
+        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.PoketchTouch)) poketchView.LetGo();
     }
 
     private bool OnStep()
@@ -1515,7 +1564,11 @@ public partial class GameEngine
             else if (foe.TrainerClass == "Champion") journal.Tell(new JournalEvent(JournalEventKind.BeatChampion, foe.Name));
             else journal.BeatTrainer(PlayerIdentity.Fill(foe.FullTitle), place);
         }
-        else if (battle.Result == BattleResult.EnemyCaught && battle.Caught is { } caught) journal.Caught(caught.Species.Name, place);
+        else if (battle.Result == BattleResult.EnemyCaught && battle.Caught is { } caught)
+        {
+            journal.Caught(caught.Species.Name, place);
+            poketch.Remember(caught);
+        }
         else if (battle.Result == BattleResult.PlayerVictory && battle.EnemyPokemon is { } wild) journal.Defeated(wild.Species.Name, place);
     }
 
@@ -1683,7 +1736,7 @@ public partial class GameEngine
                 DrawScriptFade();
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
-                if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, playerParty);
+                if (currentState == GameState.Overworld && !startMenu.IsActive && !ScriptRunning) poketchView.Draw(VirtualWidth, VirtualHeight, poketch, PoketchNow());
                 if (safari.Active) ModernUi.SafariCount(VirtualWidth, safari.Balls, safari.Steps);
                 dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();

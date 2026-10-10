@@ -5,19 +5,43 @@ using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.PoketchApps;
 using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
-/// <summary>The Pokétch over the field (style guide, "The Pokétch"): a watch's body and an LCD of our own, its apps drawn in blocks.</summary>
+/// <summary>
+/// The Pokétch over the field (style guide, "The Pokétch"): a watch's body and an LCD of our own, its apps drawn in
+/// blocks of 8 on the screen's 45 by 37 (<see cref="PoketchAppState.Columns"/>). Each app's drawing is a method of
+/// its own, in this file or in <c>ModernUi.Poketch.Toys.cs</c>, <c>.Pokemon.cs</c>, <c>.Map.cs</c> and
+/// <c>.Time.cs</c>; the cursor that touches its buttons is drawn here, over them.
+/// </summary>
 internal static partial class ModernUi
 {
-    // The LCD's three greens and the size of its blocks
-    private static readonly Color LcdPaper = new(176, 204, 160, 255), LcdInk = new(40, 62, 48, 255), LcdMid = new(112, 146, 104, 255);
+    // The LCD's three tones (paper, ink and the middle one between) in each of the Color Changer's eight colours:
+    // green (the Pokétch's own), yellow, orange, red, purple, blue, teal and white
+    private static readonly Color[][] LcdColors =
+    {
+        new Color[] { new(176, 204, 160, 255), new(40, 62, 48, 255), new(112, 146, 104, 255) },
+        new Color[] { new(214, 206, 138, 255), new(70, 60, 24, 255), new(156, 146, 82, 255) },
+        new Color[] { new(226, 180, 128, 255), new(82, 44, 20, 255), new(170, 118, 72, 255) },
+        new Color[] { new(222, 152, 146, 255), new(84, 30, 32, 255), new(166, 92, 90, 255) },
+        new Color[] { new(192, 166, 212, 255), new(56, 36, 78, 255), new(134, 108, 158, 255) },
+        new Color[] { new(156, 186, 220, 255), new(28, 46, 84, 255), new(96, 124, 168, 255) },
+        new Color[] { new(146, 204, 196, 255), new(24, 66, 64, 255), new(88, 146, 140, 255) },
+        new Color[] { new(216, 218, 214, 255), new(48, 50, 52, 255), new(140, 142, 140, 255) },
+    };
+
+    // The tones the screen is drawn in now, set from the Pokétch's colour as each frame begins
+    private static Color LcdPaper = LcdColors[0][0], LcdInk = LcdColors[0][1], LcdMid = LcdColors[0][2];
     private const int Block = 8;
 
+    /// <summary>The paper, ink and middle tone of one of the eight colours (the Color Changer draws its swatches with them).</summary>
+    internal static Color[] LcdTones(int color) => LcdColors[Math.Clamp(color, 0, LcdColors.Length - 1)];
+
+    /// <param name="cursor">The button the cursor is on while the Pokétch is in the player's hand; null otherwise.</param>
     /// <param name="shown">0 put away to 1 out: the watch slides up from below the screen's edge.</param>
-    public static void DrawPoketch(int sw, int sh, Poketch poketch, Party party, DateTime now, float shown)
+    public static void DrawPoketch(int sw, int sh, Poketch poketch, PoketchContext context, PoketchButton? cursor, float shown)
     {
         const float width = 456, height = 368;
         var body = new Rectangle(sw - 32 - width, sh - 32 - height + (1f - shown) * (height + 48), width, height);
@@ -26,25 +50,110 @@ internal static partial class ModernUi
         // The side button that changes the app
         UiShapes.Shape(new Rectangle(body.X + body.Width - 6, body.Y + 120, 18, 92), 9, Lighter(Frame, 0.2f), Darker(Frame, 0.1f));
 
+        var tones = LcdTones(poketch.ScreenColor);
+        LcdPaper = tones[0];
+        LcdInk = tones[1];
+        LcdMid = tones[2];
+        var state = poketch.State;
+        // The digital watch's backlight: the paper lit up, a quarter of the way to white
+        if (state is DigitalWatchApp { Backlight: true }) LcdPaper = Lighter(LcdPaper, 0.25f);
+
         var screen = new Rectangle(body.X + 40, body.Y + 36, 360, 296);
         Raylib.DrawRectangleRec(screen, LcdPaper);
         Raylib.DrawRectangleLinesEx(screen, 4, Darker(Frame, 0.25f));
 
-        switch (poketch.Current)
+        switch (state)
         {
-            case PoketchApp.DigitalWatch:
-                DigitalWatch(screen, now);
+            case DigitalWatchApp:
+                DigitalWatch(screen, context.Now);
                 break;
-            case PoketchApp.Pedometer:
-                Pedometer(screen, poketch.Steps);
+            case PedometerApp pedometer:
+                Pedometer(screen, poketch.Steps, pedometer);
                 break;
-            case PoketchApp.PartyStatus:
-                PartyStatus(screen, party);
+            case PartyStatusApp party:
+                PartyStatus(screen, context.Party, party);
                 break;
-            default:
+            case null:
                 UiFonts.DrawCentered("No apps yet.", screen.X + 40, screen.Y + screen.Height / 2f, 28, LcdInk, UiWeight.Black);
                 break;
+            default:
+                DrawPoketchApp(screen, state, context);
+                break;
         }
+
+        if (cursor is { } c) PoketchCursor(screen, c);
+    }
+
+    /// <summary>
+    /// The apps drawn in the other files, by their state: each group's file has a method for each of its apps.
+    /// </summary>
+    private static void DrawPoketchApp(Rectangle screen, PoketchAppState state, PoketchContext context)
+    {
+        switch (state)
+        {
+            case CalculatorApp app: PoketchCalculator(screen, app, context); break;
+            case MemoPadApp app: PoketchMemoPad(screen, app, context); break;
+            case CounterApp app: PoketchCounter(screen, app, context); break;
+            case CoinTossApp app: PoketchCoinToss(screen, app, context); break;
+            case RouletteApp app: PoketchRoulette(screen, app, context); break;
+            case DotArtApp app: PoketchDotArt(screen, app, context); break;
+            case ColorChangerApp app: PoketchColorChanger(screen, app, context); break;
+            case KitchenTimerApp app: PoketchKitchenTimer(screen, app, context); break;
+            case FriendshipCheckerApp app: PoketchFriendshipChecker(screen, app, context); break;
+            case DayCareCheckerApp app: PoketchDayCareChecker(screen, app, context); break;
+            case PokemonHistoryApp app: PoketchPokemonHistory(screen, app, context); break;
+            case MoveTesterApp app: PoketchMoveTester(screen, app, context); break;
+            case MatchupCheckerApp app: PoketchMatchupChecker(screen, app, context); break;
+            case DowsingMachineApp app: PoketchDowsingMachine(screen, app, context); break;
+            case BerrySearcherApp app: PoketchBerrySearcher(screen, app, context); break;
+            case MarkingMapApp app: PoketchMarkingMap(screen, app, context); break;
+            case TrainerCounterApp app: PoketchTrainerCounter(screen, app, context); break;
+            case AnalogWatchApp app: PoketchAnalogWatch(screen, app, context); break;
+            case CalendarApp app: PoketchCalendar(screen, app, context); break;
+            case LinkSearcherApp app: PoketchLinkSearcher(screen, app, context); break;
+        }
+    }
+
+    /// <summary>
+    /// The cursor that stands for the stylus: four corners of ink a block thick round the button it is on, a
+    /// block outside it (inside the screen's edge), so whatever is drawn on the button still shows.
+    /// </summary>
+    private static void PoketchCursor(Rectangle screen, PoketchButton b)
+    {
+        int x0 = Math.Max(0, b.X - 1), y0 = Math.Max(0, b.Y - 1);
+        int x1 = Math.Min(PoketchAppState.Columns - 1, b.X + b.W), y1 = Math.Min(PoketchAppState.Rows - 1, b.Y + b.H);
+        float X(int c) => screen.X + c * Block;
+        float Y(int r) => screen.Y + r * Block;
+        int arm = Math.Max(1, Math.Min(3, Math.Min(x1 - x0, y1 - y0) / 3));
+        LcdBlock(X(x0), Y(y0), arm, 1, LcdInk);
+        LcdBlock(X(x0), Y(y0), 1, arm, LcdInk);
+        LcdBlock(X(x1 - arm + 1), Y(y0), arm, 1, LcdInk);
+        LcdBlock(X(x1), Y(y0), 1, arm, LcdInk);
+        LcdBlock(X(x0), Y(y1), arm, 1, LcdInk);
+        LcdBlock(X(x0), Y(y1 - arm + 1), 1, arm, LcdInk);
+        LcdBlock(X(x1 - arm + 1), Y(y1), arm, 1, LcdInk);
+        LcdBlock(X(x1), Y(y1 - arm + 1), 1, arm, LcdInk);
+    }
+
+    /// <summary>A rectangle of blocks at a place on the screen given in blocks.</summary>
+    private static void LcdCells(Rectangle screen, int col, int row, int w, int h, Color c) =>
+        LcdBlock(screen.X + col * Block, screen.Y + row * Block, w, h, c);
+
+    /// <summary>A button's frame drawn in blocks: an ink outline a block thick, the middle tone inside while pressed.</summary>
+    private static void LcdButton(Rectangle screen, PoketchButton b, bool pressed = false)
+    {
+        LcdCells(screen, b.X, b.Y, b.W, 1, LcdInk);
+        LcdCells(screen, b.X, b.Y + b.H - 1, b.W, 1, LcdInk);
+        LcdCells(screen, b.X, b.Y, 1, b.H, LcdInk);
+        LcdCells(screen, b.X + b.W - 1, b.Y, 1, b.H, LcdInk);
+        if (pressed && b.W > 2 && b.H > 2) LcdCells(screen, b.X + 1, b.Y + 1, b.W - 2, b.H - 2, LcdMid);
+    }
+
+    /// <summary>Text on the LCD, centred on a column of blocks, in the ink.</summary>
+    private static void LcdText(Rectangle screen, string text, float centreCol, int row, int size = 28, Color? color = null)
+    {
+        float w = UiFonts.Measure(text, size, UiWeight.Black);
+        UiFonts.DrawCentered(text, screen.X + centreCol * Block - w / 2f, screen.Y + row * Block + size / 2f, size, color ?? LcdInk, UiWeight.Black);
     }
 
     private static void LcdBlock(float x, float y, int w, int h, Color c) => Raylib.DrawRectangleRec(new Rectangle(x, y, w * Block, h * Block), c);
@@ -93,8 +202,8 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(day, screen.X + (screen.Width - w) / 2f, screen.Y + 240, 28, LcdInk, UiWeight.Black);
     }
 
-    /// <summary>The pedometer: the steps taken, in five figures.</summary>
-    private static void Pedometer(Rectangle screen, int steps)
+    /// <summary>The pedometer: the steps taken, in five figures, and the button that resets them.</summary>
+    private static void Pedometer(Rectangle screen, int steps, PedometerApp app)
     {
         const float digit = 7 * Block, gap = Block;
         float total = 5 * digit + 4 * gap;
@@ -102,15 +211,20 @@ internal static partial class ModernUi
         string figures = Math.Clamp(steps, 0, Poketch.MostSteps).ToString("D5");
         for (int i = 0; i < figures.Length; i++) SegmentDigit(x + i * (digit + gap), y, figures[i] - '0');
         float w = UiFonts.Measure("STEPS", 28, UiWeight.Black);
-        UiFonts.DrawCentered("STEPS", screen.X + (screen.Width - w) / 2f, screen.Y + 232, 28, LcdInk, UiWeight.Black);
+        UiFonts.DrawCentered("STEPS", screen.X + (screen.Width - w) / 2f, screen.Y + 196, 28, LcdInk, UiWeight.Black);
+        LcdButton(screen, PedometerApp.Reset, app.PressedFor > 0f);
+        LcdText(screen, "RESET", PedometerApp.Reset.CentreX, PedometerApp.Reset.Y + 1, 24);
     }
 
     /// <summary>The team: two rows of three, each icon over a bar of its HP; a fainted one dark, a status marked.</summary>
-    private static void PartyStatus(Rectangle screen, Party party)
+    private static void PartyStatus(Rectangle screen, Party party, PartyStatusApp app)
     {
         for (int i = 0; i < Party.MaxSize; i++)
         {
-            float cx = screen.X + 24 + (i % 3) * 112, cy = screen.Y + 24 + (i / 3) * 136;
+            var slot = PartyStatusApp.Slot(i);
+            float cx = screen.X + slot.X * Block, cy = screen.Y + slot.Y * Block;
+            // A Pokémon touched hops, two blocks up and down, in whole blocks
+            cy -= Block * MathF.Round(2f * MathF.Sin(MathF.PI * app.Hop(i)));
             if (i >= party.Count)
             {
                 LcdBlock(cx + 32, cy + 40, 4, 1, LcdMid);

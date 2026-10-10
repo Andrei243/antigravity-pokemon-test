@@ -883,6 +883,7 @@ public partial class GameEngine
             if (NpcTrades.Get(trade) is not { } t || NpcTrades.Trade(t, game.playerParty, slot, GameClock.Today) is not { } received) return false;
             game.playerPokedex.RegisterSeen(received.Species.DexNumber);
             game.playerPokedex.RegisterCaught(received.Species.DexNumber);
+            game.poketch.Remember(received);
             AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
             return true;
         }
@@ -893,6 +894,7 @@ public partial class GameEngine
             game.playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
             // A gift is met where it is given (Pokemon_GiveMonFromScript)
             pokemon.Met(game.PlaceName(), GameClock.Today);
+            game.poketch.Remember(pokemon);
             if (game.playerParty.Add(pokemon)) return true;
             game.pcBoxStorage.Store(pokemon);
             return false;

@@ -54,6 +54,13 @@ public static partial class SoundBank
         Add("fish_bite", SoundGroup.Field, "SEQ_SE_DP_FW104", "Something bites (waits for fishing).");
         Add("fish_reel", SoundGroup.Field, null, "The line reeled in (waits for fishing).");
         Add("poketch", SoundGroup.Field, "SEQ_SE_DP_POKETCH_003", "A Pokétch button (waits for the Pokétch).");
+        Add("poketch_count", SoundGroup.Field, "SEQ_SE_DP_POKETCH_010", "The Pokétch's Counter counts one more.");
+        Add("poketch_beep", SoundGroup.Field, "SEQ_SE_DP_BEEP", "A short beep of the Pokétch: the roulette stops, the kitchen timer is set going.");
+        Add("coin_flip", SoundGroup.Field, "SEQ_SE_DP_DENSI09", "The Pokétch's coin is tossed.");
+        Add("coin_land", SoundGroup.Field, "SEQ_SE_DP_DENSI10", "The Pokétch's coin lands.");
+        Add("roulette_spin", SoundGroup.Field, "SEQ_SE_DP_POKETCH_011", "The Pokétch's roulette sets off spinning.");
+        Add("timer_alarm", SoundGroup.Field, "SEQ_SE_DP_DENSI11", "The Pokétch's kitchen timer runs out.");
+        Add("dowsing_ping", SoundGroup.Field, "SEQ_SE_DP_POKETCH_009", "The Dowsing Machine's touch: a ring spreading over the screen.");
         Add("lift", SoundGroup.Field, "SEQ_SE_DP_ELEBETA", "A platform of the Canalave Gym sets off with the player on it.");
         Add("lift_stop", SoundGroup.Field, "SEQ_SE_DP_KI_GASYAN", "The platform comes to its end and locks in place.");
         Add("thunder", SoundGroup.Field, "SEQ_SE_DP_T_KAMI2", "Thunder cracking close, just after a storm's lightning (two strikes of three).");
@@ -367,6 +374,42 @@ public static partial class SoundBank
                 d.Tone(0.055f, 0.06f, Wave.Pulse, N(100), N(100), 0.4f, 0.03f, 1.2f, duty: 0.5f);
                 return Finish(d.S, 0.3f);
 
+            case "poketch_count":
+                // A short click up, higher than the button's chirp
+                d = new SoundDesign(0.08f);
+                d.Tone(0, 0.05f, Wave.Pulse, N(103), N(103), 0.4f, 0.02f, 1.0f, duty: 0.25f);
+                return Finish(d.S, 0.3f);
+            case "poketch_beep":
+                d = new SoundDesign(0.14f);
+                d.Tone(0, 0.12f, Wave.Pulse, N(93), N(93), 0.4f, 0.02f, 0.6f, duty: 0.5f);
+                return Finish(d.S, 0.3f);
+            case "coin_flip":
+                // A rising run of blips: the coin spinning up
+                d = new SoundDesign(0.3f);
+                d.Notes(0, 0.04f, 0.035f, Wave.Pulse, new[] { N(84), N(88), N(91), N(96), N(100), N(103) }, 0.35f, 0.02f, 1.2f, 0.25f);
+                return Finish(d.S, 0.3f);
+            case "coin_land":
+                d = new SoundDesign(0.22f);
+                d.Tone(0, 0.08f, Wave.Pulse, N(91), N(91), 0.4f, 0.02f, 1.0f, duty: 0.5f);
+                d.Tone(0.09f, 0.12f, Wave.Pulse, N(96), N(96), 0.4f, 0.02f, 1.4f, duty: 0.5f);
+                return Finish(d.S, 0.3f);
+            case "roulette_spin":
+                // A falling and rising whirr of blips
+                d = new SoundDesign(0.4f);
+                for (int k = 0; k < 10; k++) d.Tone(k * 0.035f, 0.03f, Wave.Pulse, N(88 + (k % 4) * 3), N(88 + (k % 4) * 3), 0.3f, 0.02f, 1.0f, duty: 0.25f);
+                return Finish(d.S, 0.3f);
+            case "timer_alarm":
+                // Two bursts of quick beeps, as a kitchen timer rings
+                d = new SoundDesign(0.9f);
+                for (int burst = 0; burst < 2; burst++)
+                    for (int k = 0; k < 4; k++) d.Tone(burst * 0.45f + k * 0.08f, 0.05f, Wave.Pulse, N(100), N(100), 0.4f, 0.02f, 0.8f, duty: 0.5f);
+                return Finish(d.S, 0.35f);
+            case "dowsing_ping":
+                // A soft sonar ping, falling away
+                d = new SoundDesign(0.5f);
+                d.Tone(0, 0.45f, Wave.Sine, N(96), N(91), 0.5f, 0.01f, 2.4f);
+                d.Tone(0, 0.2f, Wave.Pulse, N(96), N(96), 0.15f, 0.01f, 2.0f, duty: 0.5f);
+                return Finish(d.S, 0.3f);
             // ---------------------------------------------------------------- battles
             case "send_out":
                 // The ball pops open in a puff of light: a burst of air, a rising tone, a sparkle

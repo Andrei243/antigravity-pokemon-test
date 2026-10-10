@@ -3,6 +3,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.PoketchApps;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 using PokemonPlatinumEngine.UI;
@@ -85,6 +86,7 @@ public partial class GameEngine
         public WardrobeScreen WardrobeScreen => game.wardrobeScreen;
         public FlyScreen FlyScreen => game.flyScreen;
         public PoketchView PoketchView => game.poketchView;
+        public PoketchContext PoketchContext => game.PoketchNow();
 
         // ------------------------------------------------------------ the game's own steps
 
