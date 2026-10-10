@@ -4,11 +4,12 @@
 # A grunt guards the door. Beaten, he locks himself in with his key; the other key is the one the meadow's grunts
 # dropped, and with it the door opens (FLAG_UNLOCKED_VALLEY_WINDWORKS_DOOR, which the door waits for). Coming out
 # after Commander Mars, the player meets Looker, who looks inside and says where Team Galactic is based.
-# VAR_VALLEY_WINDWORKS_LOOKER_STATE: 1 waiting outside, 2 gone. The Drifloon of Fridays waits for a Pokémon that can
-# stand in the field.
+# VAR_VALLEY_WINDWORKS_LOOKER_STATE: 1 waiting outside, 2 gone. Once the works are free (VAR_VALLEY_WINDWORKS_STATE 2), a
+# Drifloon comes to the gate every Friday until it has been battled that day (plan 06 · R14a).
 
 
 script OnEnter
+  call DrifloonToday
   if var VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE == 2 setvar VAR_VALLEY_WINDWORKS_TEAM_GALACTIC_STATE 3
   if var VAR_VALLEY_WINDWORKS_LOOKER_STATE == 1 goto Looker
   end
@@ -42,6 +43,26 @@ label Looker
   hide looker
   setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_LOOKER
   setvar VAR_VALLEY_WINDWORKS_LOOKER_STATE 2
+  end
+
+
+# The original's OnTransition: the Drifloon is there on a Friday, once the works are free, unless it was battled today.
+script DrifloonToday
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  if var VAR_VALLEY_WINDWORKS_STATE < 2 return
+  if flag FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON return
+  if not weekday friday return
+  clearflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  return
+
+
+# The Drifloon (the original's script 6): a battle with it, gone for the day unless the player lost.
+script Drifloon
+  cry own
+  text "Fuwaaah!"
+  wildbattle "Drifloon" 15
+  hide self
+  setflag FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
   end
 
 

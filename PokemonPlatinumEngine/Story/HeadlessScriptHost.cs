@@ -76,6 +76,14 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public Random Chance => Rng;
 
+    /// <summary>The time of day and the day of the week the script sees (plan 06 · R14a): a weekday morning unless a test says.</summary>
+    public TimeOfDay TimeOfDay { get; set; } = TimeOfDay.Morning;
+    public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
+
+    /// <summary>The Pokémon in the PC's boxes the lottery reads; none unless a test puts some there.</summary>
+    public List<Pokemon> Boxes { get; } = new();
+    public IEnumerable<Pokemon> Boxed => Boxes;
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 

@@ -1,0 +1,16 @@
+# Route 222 (plan 06 · R14a). docs/scripts.md describes the language.
+#
+# The original's arrival script: at night the policemen battle, and from morning to twilight their doubles on the
+# same tiles only keep watch. The swap is made as the player comes, so it holds until they come again.
+
+
+script OnEnter
+  if time night goto Battle
+  if time latenight goto Battle
+  clearflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS
+  end
+label Battle
+  clearflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS
+  setflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS_NO_BATTLE
+  end

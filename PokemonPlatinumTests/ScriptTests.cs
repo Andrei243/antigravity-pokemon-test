@@ -185,6 +185,8 @@ public class ScriptTests
           trophygarden
           roamer start "Mesprit"
           survivepoison VAR_A
+          lottery draw
+          lottery boxed
         script Other
           end
         """;
@@ -232,6 +234,8 @@ public class ScriptTests
               if pokerus end
               if safari end
               if partner end
+              if time morning end
+              if weekday friday end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -1020,6 +1024,9 @@ public class ScriptTests
         public SpecialEncounters Encounters => inner.Encounters;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
+        public TimeOfDay TimeOfDay => inner.TimeOfDay;
+        public DayOfWeek Weekday => inner.Weekday;
+        public IEnumerable<Pokemon> Boxed => inner.Boxed;
         public Random Chance => inner.Chance;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;

@@ -4,9 +4,23 @@
   "trees": "Round",
   // Café Cabin has no rooms yet (plan 01 · M11)
   "locked": [ 0 ],
-  // Jogger Wyatt battles at some hours and only jogs past at others: the original's arrival script swaps the two
-  // objects by their FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT* flags, so both wait for that script (plan 02)
+  // Jogger Wyatt battles in the morning and only jogs past at other times: the route's arrival script swaps him for
+  // his double on the same tile by their FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT* flags (plan 06 · R14a)
   "people": {
+    "jogger_wyatt": {
+      "name": "Wyatt",
+      "trainer": {
+        "dialogueBefore": "Jogger Wyatt: Running uphill in the morning gets the heart going. So does a battle!",
+        "dialogueAfter": "Jogger Wyatt: Downhill from here, then. In more ways than one."
+      }
+    },
+    "jogger_wyatt_no_battle": {
+      "name": "Jogger",
+      "dialog": [
+        "One more lap and I'm done for the day. Sorry, no battles!",
+        "Come back in the morning, when I'm fresh."
+      ]
+    },
     "ace_trainer_f": {
       "name": "Trainer",
       "dialog": [

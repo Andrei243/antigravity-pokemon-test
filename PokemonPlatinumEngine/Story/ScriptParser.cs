@@ -392,6 +392,8 @@ public static class ScriptParser
             // Wild Pokémon (plan 06 · R13)
             case "honeytree":
                 return new Instruction { Op = Op.HoneyTree, Line = line, Name = r.OneOf("status", "slather", "battle") };
+            case "lottery":
+                return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
             case "swarms":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Swarms, Line = line };
@@ -496,6 +498,10 @@ public static class ScriptParser
                 return new Condition { Query = Query.Safari, Negated = negated };
             case "partner":
                 return new Condition { Query = Query.Partner, Negated = negated };
+            case "time":
+                return new Condition { Query = Query.Time, Negated = negated, Name = r.Enum<Core.TimeOfDay>("a time of day").ToString() };
+            case "weekday":
+                return new Condition { Query = Query.Weekday, Negated = negated, Name = r.Enum<System.DayOfWeek>("a day of the week").ToString() };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

@@ -1,0 +1,73 @@
+# Jubilife TV's lobby (plan 06 · R14a), made by hand until plan 01 · M11 builds the station's floors. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_jubilife_tv_1f.s).
+#
+# The Lottery Corner: once a day the clerk reads out the day's number (Models/Lottery.cs) and matches it, digit by
+# digit from the right, against the ID numbers of the player's Pokémon, on the team and in the boxes. The more digits
+# match, the better the prize: one an Ultra Ball, two a PP Up, three an Exp. Share, four a Max Revive, all five a
+# Master Ball. FLAG_DAILY_CHECKED_LUCKY_NUMBER is cleared each new day.
+
+
+script LotteryClerk
+  speaker "Lottery Clerk"
+  if flag FLAG_DAILY_CHECKED_LUCKY_NUMBER goto Tomorrow
+  say "Hello, and welcome to the Jubilife TV Lottery Corner!"
+  say "Every day we draw a lucky number. If it matches the ID number of any of your Pokémon, you win a prize!"
+  ask "Shall I check today's number against your Pokémon?"
+  if no goto Later
+  setflag FLAG_DAILY_CHECKED_LUCKY_NUMBER
+  say "Today's lucky number is {ticket}! Now then, let me look through your Pokémon's ID numbers..."
+  lottery draw
+  if result == 5 goto Five
+  if result == 4 goto Four
+  if result == 3 goto Three
+  if result == 2 goto Two
+  if result == 1 goto One
+  say "Oh dear... Not a single digit matched today."
+  say "Every day brings a new number, though. Do come back tomorrow!"
+  end
+label One
+  call Whose
+  say "The last digit is a match! That wins you our fifth prize."
+  give "Ultra Ball"
+  goto Thanks
+label Two
+  call Whose
+  say "The last two digits are a match! That wins you our fourth prize."
+  give "PP Up"
+  goto Thanks
+label Three
+  call Whose
+  say "The last three digits are a match! That wins you our third prize."
+  give "Exp. Share"
+  goto Thanks
+label Four
+  call Whose
+  say "The last four digits are a match! That wins you our second prize!"
+  give "Max Revive"
+  goto Thanks
+label Five
+  call Whose
+  say "All five digits are a match! Incredible! That wins you our first prize!"
+  give "Master Ball"
+  goto Thanks
+label Thanks
+  speaker "Lottery Clerk"
+  say "Congratulations! Do try your luck again tomorrow."
+  end
+label Tomorrow
+  say "Today's draw is done, I'm afraid. A new lucky number comes up tomorrow!"
+  end
+label Later
+  say "Of course. Come back whenever you feel lucky!"
+  end
+
+
+# Whose ID number won: on the team, or in the boxes.
+script Whose
+  lottery boxed
+  if result == 1 goto Boxed
+  say "Oh! The ID number of {winner}, on your team, matches!"
+  return
+label Boxed
+  say "Oh! The ID number of {winner}, in your PC Boxes, matches!"
+  return

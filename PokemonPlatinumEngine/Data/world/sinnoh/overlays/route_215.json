@@ -7,9 +7,37 @@
     { "warp": 0, "to": "veilstone_city", "toWarp": 0 },
     { "warp": 1, "to": "veilstone_city", "toWarp": 1 }
   ],
-  // Joggers Scott and Craig battle at some hours and only jog past at others: the original's arrival script swaps
-  // each pair of objects by their FLAG_HIDE_ROUTE_215_JOGGER_* flags, so all four wait for that script (plan 02)
+  // Joggers Scott and Craig battle in the morning and only jog past at other times: the route's arrival script swaps
+  // each of them for his double on the same tile by their FLAG_HIDE_ROUTE_215_JOGGER_* flags (plan 06 · R14a)
   "people": {
+    "jogger_scott": {
+      "name": "Scott",
+      "trainer": {
+        "dialogueBefore": "Jogger Scott: Rain or shine, I run every morning. And I battle whoever I pass!",
+        "dialogueAfter": "Jogger Scott: Beaten and soaked. Same time tomorrow?"
+      }
+    },
+    "jogger_craig": {
+      "name": "Craig",
+      "trainer": {
+        "dialogueBefore": "Jogger Craig: My Pokémon run with me every morning. Let's see if it shows!",
+        "dialogueAfter": "Jogger Craig: We'll add another lap to tomorrow's run."
+      }
+    },
+    "jogger_scott_no_battle": {
+      "name": "Jogger",
+      "dialog": [
+        "I'm just warming down after my run. No battles now, I'm afraid.",
+        "In the morning I'll take on anyone!"
+      ]
+    },
+    "jogger_craig_no_battle": {
+      "name": "Jogger",
+      "dialog": [
+        "Splash, splash, splash... Running in the rain is harder than it looks.",
+        "If you want a battle, find me in the morning. That's when I'm at my best."
+      ]
+    },
     "black_belt": {
       "name": "Black Belt",
       "dialog": [

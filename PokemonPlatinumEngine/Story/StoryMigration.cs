@@ -48,6 +48,8 @@ public static class StoryMigration
         if (savedVersion < 4) RenameTrainers(story);
         if (savedVersion < 5) HandOverRockSmash(story, bag);
         if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
+        // Version 7: the people who come and go with the clock, and the Windworks' Drifloon (plan 06 · R14a)
+        if (savedVersion < 7) Run(story, scripts, ScriptLibrary.TimedPeople);
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>

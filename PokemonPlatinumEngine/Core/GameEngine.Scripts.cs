@@ -986,6 +986,14 @@ public partial class GameEngine
 
         public Random Chance => game.fieldRandom;
 
+        // ---- the clock (plan 06 · R14a)
+
+        public TimeOfDay TimeOfDay => GameClock.Now;
+
+        public DayOfWeek Weekday => GameClock.Today.DayOfWeek;
+
+        public IEnumerable<Pokemon> Boxed => game.pcBoxStorage.All;
+
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)
         {

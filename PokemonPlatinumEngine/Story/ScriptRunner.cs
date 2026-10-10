@@ -42,6 +42,10 @@ public sealed class ScriptRunner
     private Action? afterBusy;
     private BattleOutcome lastOutcome;
     private string lastItem = "";
+
+    // The last lottery drawn, and the day's ticket (plan 06 · R14a)
+    private Models.Lottery.Draw lottery;
+    private int Ticket => Models.Lottery.TicketOf(host.Encounters.DailyNumber);
     private (string Item, int Count)? ownItem;
     private string? ownFlag;
     private Pokemon? ownPokemon;
@@ -583,6 +587,17 @@ public sealed class ScriptRunner
                 break;
             }
 
+            // The Lottery Corner (plan 06 · R14a): RESULT is the digits the day's ticket matched, or whether the
+            // Pokémon that matched them is in the boxes
+            case Op.Lottery:
+                if (i.Name == "draw")
+                {
+                    lottery = Models.Lottery.Check(Ticket, (int)(host.TrainerNumber & 0xffff), host.Party.Members, host.Boxed);
+                    Result = lottery.Digits;
+                }
+                else Result = lottery.InBox ? 1 : 0;
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -717,6 +732,9 @@ public sealed class ScriptRunner
             Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
+            // GetTimeOfDay and GetDayOfWeek (plan 06 · R14a)
+            Query.Time => host.TimeOfDay.ToString() == c.Name,
+            Query.Weekday => host.Weekday.ToString() == c.Name,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -760,6 +778,9 @@ public sealed class ScriptRunner
             "swarm" => Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "trophygarden" => TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden) ?? "",
+            // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
+            "ticket" => Ticket.ToString("D5"),
+            "winner" => lottery.Winner?.DisplayName ?? "",
             _ => match.Value
         };
     }) : text;

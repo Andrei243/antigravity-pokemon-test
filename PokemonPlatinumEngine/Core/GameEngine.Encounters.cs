@@ -167,16 +167,13 @@ public partial class GameEngine
     }
 
     /// <summary>
-    /// The clock's part (<c>FieldSystem_HandleDailyEvents</c> and the minutes after it): each new day moves the day's
-    /// number on and clears the story's daily flags, and the honey trees count the minutes.
+    /// The clock's part (<c>FieldSystem_HandleDailyEvents</c> and the minutes after it): each new day brings the day's
+    /// events (<see cref="DailyEvents"/>: the daily flags, the day's number, the hidden items that come back), and the
+    /// honey trees count the minutes.
     /// </summary>
     private void KeepTheEncounterClock(int daysPassed)
     {
-        if (daysPassed > 0)
-        {
-            encounters.DaysPass(daysPassed);
-            story.ClearDaily();
-        }
+        if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, story, encounters, PlaceKey(), fieldRandom);
         encounters.ClockTo(GameClock.Moment);
     }
 }

@@ -41,7 +41,9 @@ public enum Op
     // The trainer tools (plan 06 · R12)
     ChoosePokemon, Trade, HallOfFame,
     // Wild Pokémon (plan 06 · R13)
-    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison
+    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison,
+    // The day's events (plan 06 · R14a)
+    Lottery
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -50,7 +52,7 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch, Partner
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch, Partner, Time, Weekday
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

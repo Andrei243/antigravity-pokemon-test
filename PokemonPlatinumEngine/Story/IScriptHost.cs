@@ -202,4 +202,15 @@ public interface IScriptHost
 
     /// <summary>Where a script's own draws come from: a honey tree slathered, a Trophy Garden Pokémon, a roamer set loose.</summary>
     System.Random Chance { get; }
+
+    // ------------------------------------------------------------------ the clock (plan 06 · R14a)
+
+    /// <summary>The time of day now, one of Platinum's five (<see cref="GameClock.Now"/>).</summary>
+    TimeOfDay TimeOfDay { get; }
+
+    /// <summary>The day of the week today (<see cref="GameClock.Today"/>).</summary>
+    System.DayOfWeek Weekday { get; }
+
+    /// <summary>Every Pokémon in the PC's boxes, box by box and place by place (the lottery's draw reads them).</summary>
+    IEnumerable<Pokemon> Boxed { get; }
 }
