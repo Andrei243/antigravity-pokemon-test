@@ -159,6 +159,10 @@ public sealed class World
         // What the story reveals later is built like the rest, and the map keeps a copy of it to put back
         foreach (var hidden in Index.Hidden)
             maps.FirstOrDefault(m => m.Name == hidden.Map)?.AddHiddenPlace(hidden.Var, hidden.Value, hidden.ChunkX, hidden.ChunkY, hidden.ChunksWide, hidden.ChunksHigh);
+        // Chunks the story swaps for others are built a second time by themselves, and the map keeps both grounds
+        foreach (var swap in Index.Swaps)
+            if (maps.FirstOrDefault(m => m.Name == swap.Map) is { } map && Index.Maps.FirstOrDefault(e => e.Name == swap.Map) is { } entry)
+                map.AddSwappedPlace(swap.Var, swap.Value, swap.Cells.Select(c => (c.ChunkX, c.ChunkY)), WorldMapBuilder.BuildSwapped(this, entry, swap));
         // Turnback Cave's doors are aimed as the player comes into each room: they learn here where each door leads
         foreach (string area in TurnbackCave.Everywhere)
             for (int door = 0; door < TurnbackCave.Doors.Count; door++)
@@ -180,9 +184,29 @@ public static class WorldMapBuilder
     /// <summary>The height of Sinnoh's lowlands in the original's data, in tiles: its sea lies half a tile lower.</summary>
     public const float GroundLevel = 1f;
 
-    public static Map Build(World world, WorldMapEntry entry)
+    public static Map Build(World world, WorldMapEntry entry) => Build(world, entry, null);
+
+    /// <summary>
+    /// A map as it is round a swap's chunks once they lie in their cells (plan 01 · M10, part b; <see cref="WorldSwap"/>):
+    /// built as ever from those chunks and the ring of chunks round them, which are the ground beside them, with
+    /// forest everywhere else and nobody on it. <see cref="Map.AddSwappedPlace"/> copies the swapped cells' ground
+    /// from it, and it is let go.
+    /// </summary>
+    public static Map BuildSwapped(World world, WorldMapEntry entry, WorldSwap swap)
+    {
+        foreach (var cell in swap.Cells)
+            if (world.Chunk(cell.Chunk) == null)
+                throw new InvalidDataException($"{World.IndexFile} swaps chunk {cell.Chunk} into {entry.Name}, and the game has no file of it: run tools/MapImporter with --data.");
+        return Build(world, entry, swap);
+    }
+
+    private static Map Build(World world, WorldMapEntry entry, WorldSwap? swap)
     {
         var matrix = world.Matrix(entry.Matrix);
+        // A swap is built by itself: its chunks in their cells, and the chunks beside them as they are
+        bool Built(int cx, int cy) => swap == null || swap.Cells.Any(c => Math.Abs(c.ChunkX - cx) <= 1 && Math.Abs(c.ChunkY - cy) <= 1);
+        int ChunkOf(int cx, int cy) =>
+            swap?.Cells.FirstOrDefault(c => c.ChunkX == cx && c.ChunkY == cy) is { } swapped ? swapped.Chunk : Built(cx, cy) ? matrix.ChunkAt(cx, cy) : WorldMatrixFile.NoChunk;
         bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void;
         var map = new Map(matrix.Width * T, matrix.Height * T)
         {
@@ -223,7 +247,7 @@ public static class WorldMapBuilder
                 if (!areas.TryGetValue(key, out var area)) areas[key] = area = AreaOf(world, key);
                 map.SetArea(cx, cy, area);
 
-                int id = matrix.ChunkAt(cx, cy);
+                int id = ChunkOf(cx, cy);
                 if (id == WorldMatrixFile.NoChunk || world.Chunk(id) is not { } chunk) continue;
                 PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank);
                 foreach (var prop in chunk.Props)
@@ -259,7 +283,7 @@ public static class WorldMapBuilder
             for (int cy = 0; cy < matrix.Height; cy++)
                 for (int cx = 0; cx < matrix.Width; cx++)
                 {
-                    if (matrix.ChunkAt(cx, cy) != WorldMatrixFile.NoChunk && world.Chunk(matrix.ChunkAt(cx, cy)) != null) continue;
+                    if (ChunkOf(cx, cy) != WorldMatrixFile.NoChunk && world.Chunk(ChunkOf(cx, cy)) != null) continue;
                     var beside = new[] { (0, -1), (1, 0), (-1, 0), (0, 1), (-1, -1), (1, -1), (-1, 1), (1, 1) }
                         .Select(d => TreesOfChunk(cx + d.Item1, cy + d.Item2)).OfType<TreeStyle>().ToList();
                     if (beside.Count > 0 && beside.All(style => style == TreeStyle.Round)) map.SetChunkTrees(cx, cy, TreeStyle.Round);
@@ -304,11 +328,21 @@ public static class WorldMapBuilder
             // Route 205's bridge): open ground there with no way in on it or beside it is the ground round it
             foreach (var (x, z) in OpenMouthsLeadingNowhere(map, entrances)) vague.Add((x, z));
             foreach (var (x, z) in vague) under[z * map.Width + x] = true;
-            foreach (var (x, z) in vague) map.SetGroundTile(x, z, GroundLike(map, x, z, under), map.IsSolid(x, z));
+            foreach (var (x, z) in vague)
+            {
+                var like = GroundLike(map, x, z, under);
+                // Open ground that does nothing at all is never water: beside a canal it is the walkway over it, which the
+                // original builds into the ground's own model (the Battle Frontier's bridges, plan 01 · M10, part b)
+                if (like == TileType.Water && !map.IsSolid(x, z) && map.BehaviourAt(x, z) == TileBehavior.None) like = GroundLike(map, x, z, under, dry: true);
+                map.SetGroundTile(x, z, like, map.IsSolid(x, z));
+            }
             BareRock(map, blank);
             StreetLamps(map, under);
             // The mouth of a cave is no rock: it stays at the level of the ground, a dark hollow under the rock round it
             RaiseRock(map, (x, z) => map.GetGroundTile(x, z) == TileType.Rock && map.IsSolid(x, z));
+            // A pool of lava lies level in the rock it has melted into (plan 01 · M10, part b): the rock under it is flat,
+            // at the height of the lowest of its tiles, so the rock round it stands up as its rim
+            foreach (var lava in map.Props.Where(p => p.Type == PropType.Lava)) Level(map, lava);
         }
 
         // A town's fences and walls are built like its houses, where its overlay doesn't say
@@ -318,7 +352,7 @@ public static class WorldMapBuilder
 
         RocksInWater(map);
         foreach (var (key, area) in areas)
-            if (area.Open) PlaceEvents(world, map, key, area);
+            if (area.Open) PlaceEvents(world, map, key, area, people: swap == null);
         // In the Distortion World a way somewhere is a slab set into the island
         if (nothing)
             foreach (var warp in map.Warps)
@@ -330,6 +364,19 @@ public static class WorldMapBuilder
         return map;
     }
 
+    /// <summary>Makes the ground under a prop flat, at the height of the lowest tile it covers.</summary>
+    private static void Level(Map map, Prop prop)
+    {
+        float low = float.MaxValue;
+        for (int z = prop.Y; z < prop.Y + prop.Depth; z++)
+            for (int x = prop.X; x < prop.X + prop.Width; x++)
+                if (map.InBounds(x, z)) low = MathF.Min(low, map.HeightAt(x, z));
+        if (low == float.MaxValue) return;
+        for (int z = prop.Y; z < prop.Y + prop.Depth; z++)
+            for (int x = prop.X; x < prop.X + prop.Width; x++)
+                if (map.InBounds(x, z)) map.SetHeight(x, z, low);
+    }
+
     /// <summary>The field's camera for one of the original's camera names; anything this game has no own camera for is the default.</summary>
     public static FieldCamera CameraOf(string? name) => name switch
     {
@@ -337,6 +384,7 @@ public static class WorldMapBuilder
         "ZoomedIn" => FieldCamera.ZoomedIn,
         // The north face's camera is the overworld's to within a hundredth of a degree (CAMERA_TYPE_MT_CORONET_EXT_NORTH)
         "MtCoronetExtSouth" => FieldCamera.CoronetSouth,
+        "StarkMountainRoom2" => FieldCamera.StarkMountain,
         _ => FieldCamera.Default
     };
 
@@ -696,6 +744,7 @@ public static class WorldMapBuilder
             Calendar = file?.Weather is { } named && world.Calendar.TryGetValue(named, out var days) ? days : null,
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
+            Climate = overlay?.Climate ?? AreaClimate.Temperate,
             Arena = overlay?.BattleArena,
             BattleBackground = file?.BattleBackground ?? "",
             Kind = file?.Kind ?? "",
@@ -792,6 +841,10 @@ public static class WorldMapBuilder
             TerrainCover.ForestMouth => (TileType.ForestMouth, solid, null),
             TerrainCover.Snow => (TileType.Snow, solid, null),
             TerrainCover.Ice => (TileType.Ice, solid, null),
+            // Water that is walked and does nothing at all, neither surfed nor waded: a walkway the original lays over a
+            // canal as part of the ground's own model (the Battle Frontier's, plan 01 · M10, part b). Shallows have a
+            // behaviour of their own
+            TerrainCover.Water when !solid && behaviour == TileBehavior.None => (TileType.Paving, false, null),
             TerrainCover.Water => (TileType.Water, solid, null),
             // A rock face is bare rock nobody walks on; the drop beside it comes from the heights
             TerrainCover.Cliff => (TileType.Rock, true, null),
@@ -917,6 +970,9 @@ public static class WorldMapBuilder
     {
         /// <summary>The blocked tiles (their x) of an entrance on the row before the front wall.</summary>
         public List<int> Porch { get; } = new();
+
+        /// <summary>A low platform before a building whose doors are reached along a passage (<see cref="WorldModel.Hollow"/>), not a wing with walls and a roof.</summary>
+        public bool Forecourt { get; init; }
     }
 
     /// <summary>Towns whose yards are fenced in wood; elsewhere what a model leaves standing about is a low wall.</summary>
@@ -978,10 +1034,85 @@ public static class WorldMapBuilder
     }
 
     /// <summary>
+    /// The open tiles under a building's box that no way leads out of: each patch of open ground there which stays
+    /// within two tiles of the box, however one walks it. A passage that runs out into the grounds is no such patch.
+    /// </summary>
+    private static List<(int X, int Z)> Enclosed(Map map, Placed model, Func<int, int, bool> blocked)
+    {
+        int x0 = (int)MathF.Floor(model.X), x1 = (int)MathF.Floor(model.X1), z0 = (int)MathF.Floor(model.Z), z1 = (int)MathF.Floor(model.Z1);
+        var seen = new HashSet<(int X, int Z)>();
+        var enclosed = new List<(int X, int Z)>();
+        for (int z = z0; z <= z1; z++)
+            for (int x = x0; x <= x1; x++)
+            {
+                if (!map.InBounds(x, z) || !model.Covers(x, z) || blocked(x, z) || !seen.Add((x, z))) continue;
+                var patch = new List<(int X, int Z)>();
+                var open = new Queue<(int X, int Z)>();
+                open.Enqueue((x, z));
+                bool leadsOut = false;
+                while (open.Count > 0)
+                {
+                    var (cx, cz) = open.Dequeue();
+                    patch.Add((cx, cz));
+                    foreach (var (dx, dz) in new[] { (0, -1), (1, 0), (-1, 0), (0, 1) })
+                    {
+                        int nx = cx + dx, nz = cz + dz;
+                        if (!map.InBounds(nx, nz) || blocked(nx, nz)) continue;
+                        if (nx < x0 - 2 || nx > x1 + 2 || nz < z0 - 2 || nz > z1 + 2) { leadsOut = true; continue; }
+                        if (seen.Add((nx, nz))) open.Enqueue((nx, nz));
+                    }
+                }
+                if (!leadsOut) enclosed.AddRange(patch.Where(t => model.Covers(t.X, t.Z)));
+            }
+        return enclosed;
+    }
+
+    /// <summary>
+    /// The largest rectangle of a building's tiles that ends on the row before its passage and holds the tile behind
+    /// one of its doors: the building proper, with its doors in its front.
+    /// </summary>
+    private static (int X0, int Z0, int X1, int Z1)? FrontBlock(List<(int X, int Z)> tiles, int front, HashSet<(int X, int Z)> entrances)
+    {
+        var set = tiles.ToHashSet();
+        (int X0, int Z0, int X1, int Z1)? best = null;
+        int bestArea = 0;
+        foreach (var (ax, _) in tiles.Where(t => t.Z == front && entrances.Contains((t.X, front + 1))))
+        {
+            int x0 = int.MinValue, x1 = int.MaxValue;
+            for (int z = front; set.Contains((ax, z)); z--)
+            {
+                int left = ax, right = ax;
+                while (set.Contains((left - 1, z))) left--;
+                while (set.Contains((right + 1, z))) right++;
+                x0 = Math.Max(x0, left);
+                x1 = Math.Min(x1, right);
+                int area = (x1 - x0 + 1) * (front - z + 1);
+                if (x1 > x0 && z < front && area > bestArea)
+                {
+                    bestArea = area;
+                    best = (x0, z, x1, front);
+                }
+            }
+        }
+        return best;
+    }
+
+    /// <summary>The first row, from the north, on which a way into a building lies under or beside its box; null if it has none.</summary>
+    private static int? PassageRow(Placed model, HashSet<(int X, int Z)> entrances)
+    {
+        int x0 = (int)MathF.Floor(model.X) - 1, x1 = (int)MathF.Floor(model.X1) + 1, z0 = (int)MathF.Floor(model.Z), z1 = (int)MathF.Floor(model.Z1);
+        int? row = null;
+        foreach (var (x, z) in entrances)
+            if (x >= x0 && x <= x1 && z >= z0 && z <= z1 && (row == null || z < row)) row = z;
+        return row;
+    }
+
+    /// <summary>
     /// The ground a tile under a model takes: that of the nearest tile round it which no model stands on, so a
     /// lamp in a paved street stands on paving and a ship in the harbour on water.
     /// </summary>
-    private static TileType GroundLike(Map map, int x, int z, bool[] under, bool[]? unnamed = null)
+    /// <param name="dry">Whether water round the tile is passed over: the tile is walked, so it lies on something.</param>
+    private static TileType GroundLike(Map map, int x, int z, bool[] under, bool[]? unnamed = null, bool dry = false)
     {
         for (int reach = 1; reach <= 4; reach++)
         {
@@ -992,6 +1123,7 @@ public static class WorldMapBuilder
             {
                 int nx = x + dx, nz = z + dz;
                 if (!map.InBounds(nx, nz) || under[nz * map.Width + nx] || unnamed?[nz * map.Width + nx] == true) continue;
+                if (dry && map.GetGroundTile(nx, nz) == TileType.Water) continue;
                 switch (map.GetGroundTile(nx, nz))
                 {
                     case TileType.Path or TileType.Paving or TileType.Sand or TileType.Snow or TileType.Dirt or TileType.Rock or TileType.Water
@@ -1026,6 +1158,15 @@ public static class WorldMapBuilder
                 for (int x = (int)MathF.Floor(model.X); x <= (int)MathF.Floor(model.X1); x++)
                     if (map.InBounds(x, z) && model.Covers(x, z) && Blocked(x, z) && !owner.ContainsKey((x, z))) owner[(x, z)] = model;
 
+        // A building whose outline alone the original blocks (the Battle Frontier's halls, plan 01 · M10, part b) has
+        // its inside too: the open tiles under its box that no way leads out of are its own, and blocked from here on
+        foreach (var model in models.Where(m => m.Model is { Role: ModelRole.Building, Hollow: true }))
+            foreach (var (x, z) in Enclosed(map, model, Blocked))
+            {
+                owner.TryAdd((x, z), model);
+                map.SetSolid(x, z, true);
+            }
+
         foreach (var (x, z) in owner.Keys) under[z * map.Width + x] = true;
         // What the ground's cover guessed at such a tile (a boulder, a fence) gives way to the model
         map.Props.RemoveAll(prop => prop.Type is PropType.Boulder or PropType.Fence && owner.ContainsKey((prop.X, prop.Y)));
@@ -1041,8 +1182,35 @@ public static class WorldMapBuilder
             var (model, tiles) = group;
             if (!model.IsBuilding) continue;
 
+            // Such a building's doors are reached along a passage between its wings. What it blocks from the passage's
+            // first row south is a low forecourt, so the way in stays in sight, and the building stands north of it
+            int? front = null;
+            if (model.Model?.Hollow == true && PassageRow(model, entrances) is { } passage)
+            {
+                front = passage - 1;
+                foreach (var r in Rectangles(tiles.Where(t => t.Z >= passage)))
+                {
+                    parts.Add(new Part(model, r.X0, r.Z0, r.X1, r.Z1, Annex: true) { Forecourt = true });
+                    for (int z = r.Z0; z <= r.Z1; z++)
+                        for (int x = r.X0; x <= r.X1; x++)
+                        {
+                            if (!map.InBounds(x, z)) continue;
+                            inPart.Add((x, z));
+                            map.SetGroundTile(x, z, z == r.Z1 ? TileType.Wall : TileType.RoofRed, isSolid: true);
+                        }
+                }
+                tiles = tiles.Where(t => t.Z < passage).ToList();
+                if (tiles.Count == 0) continue;
+            }
+
             var blocks = new List<(int X0, int Z0, int X1, int Z1)>();
             var thin = new HashSet<(int X, int Z)>();
+            // The building proper is the largest block that ends on the row before the passage with a door behind it
+            if (front is { } row0 && FrontBlock(tiles, row0, entrances) is { } whole)
+            {
+                blocks.Add(whole);
+                tiles = tiles.Where(t => t.X < whole.X0 || t.X > whole.X1 || t.Z < whole.Z0 || t.Z > whole.Z1).ToList();
+            }
             foreach (var r in Rectangles(tiles))
             {
                 if (r.X1 > r.X0 && r.Z1 > r.Z0) { blocks.Add(r); continue; }
@@ -1339,6 +1507,7 @@ public static class WorldMapBuilder
             Sign = part.Annex ? null : model?.Sign,
             Theme = kind == BuildingKind.Gym ? WorldModels.GymTheme(part.Of.Area.Key) : null,
             Annex = part.Annex,
+            Forecourt = part.Forecourt,
             Height = part.Annex ? 0f : part.Of.Prop.Height
         };
         if (part.Annex) return info;
@@ -1426,7 +1595,11 @@ public static class WorldMapBuilder
         _ => Direction.Down
     };
 
-    private static void PlaceEvents(World world, Map map, string key, MapArea area)
+    /// <param name="people">
+    /// False for a map built only for its ground (<see cref="BuildSwapped"/>): what the events do to the tiles is done
+    /// (a signpost's, a door's, a way in that leads nowhere), and nobody is made to stand there.
+    /// </param>
+    private static void PlaceEvents(World world, Map map, string key, MapArea area, bool people = true)
     {
         var file = world.Area(key)!;
         var overlay = world.Overlay(key);
@@ -1457,6 +1630,14 @@ public static class WorldMapBuilder
             }
             // An obstacle is an object of the map, as the original's is (plan 02 · S2): cleared by its field move, it
             // stays gone by its own flag, which is local to its area and cleared when the player leaves it
+            if (!people)
+            {
+                // Only the tile someone who never leaves it keeps open inside a thing that blocks the way (below)
+                if (overlay?.People?.GetValueOrDefault(o.Id) is { Still: true } && ObstacleFor(o.Looks) == null && o.Patch == null && o.Item == null
+                    && map.IsSolid(o.X, o.Z) && map.Props.Any(p => p.Model.Length > 0 && p.Covers(o.X, o.Z)))
+                    map.SetSolid(o.X, o.Z, false);
+                continue;
+            }
             if (ObstacleFor(o.Looks) is { } obstacle)
             {
                 var thing = map.AddObstacle(obstacle, o.X, o.Z);
@@ -1552,7 +1733,7 @@ public static class WorldMapBuilder
             map.NPCs.Add(npc);
         }
 
-        foreach (var record in overlay?.Npcs ?? new())
+        foreach (var record in people ? overlay?.Npcs ?? new() : new())
         {
             var npc = MapFile.BuildNpc(record, map.Name);
             npc.ScriptFile = key;
@@ -1596,7 +1777,15 @@ public static class WorldMapBuilder
                 Variable = t.Variable.Length > 0 ? t.Variable : null, Value = value
             });
         }
-        foreach (var prop in overlay?.Props ?? new()) map.AddProp(prop.Type, prop.X, prop.Y, prop.Width, prop.Depth);
+        foreach (var prop in overlay?.Props ?? new())
+        {
+            var placed = map.AddProp(prop.Type, prop.X, prop.Y, prop.Width, prop.Depth);
+            // Whoever never leaves a thing the overlay lays down (the attendant inside a booth of the Battle Frontier,
+            // plan 01 · M10, part b) keeps their tile, as someone inside a model of the world does: they are what is in
+            // the way there
+            foreach (var o in file.Objects)
+                if (placed.Covers(o.X, o.Z) && overlay?.People?.GetValueOrDefault(o.Id) is { Still: true }) map.SetSolid(o.X, o.Z, false);
+        }
 
         for (int i = 0; i < file.Warps.Count; i++)
         {
@@ -1651,6 +1840,17 @@ public static class WorldMapBuilder
         if (!world.IsOpen(area) || world.MapOf(area) is not { } onto || world.Area(area) is not { } target || toWarp >= target.Warps.Count) return null;
         var to = target.Warps[toWarp];
         var (x, z, facing) = Arrival(world.BehaviourAt(target.Matrix, to.X, to.Z), to.X, to.Z);
+        // Stairs in a passage that runs past them (Snowpoint Temple's, plan 01 · M10, part b: blocked to the east and
+        // the west, walked off to the north or the south) put whoever comes up them down in the passage: the original
+        // leaves the player on the stairs' own tile, which here would take the warp again
+        bool Blocked(int tx, int tz) => world.ChunkAt(target.Matrix, tx, tz) is not { } at || at.Chunk.SolidAt(at.X, at.Z);
+        if (world.BehaviourAt(target.Matrix, to.X, to.Z) is TileBehavior.StairsEast or TileBehavior.StairsWest && Blocked(x, z))
+            foreach (var (dx, dz, way) in new[] { (0, 1, Direction.Down), (0, -1, Direction.Up), (-1, 0, Direction.Left), (1, 0, Direction.Right) })
+                if (!Blocked(to.X + dx, to.Z + dz))
+                {
+                    (x, z, facing) = (to.X + dx, to.Z + dz, way);
+                    break;
+                }
         return new Warp { TargetMap = onto.Name, TargetX = x, TargetY = z, TargetFacing = facing };
     }
 

@@ -1,0 +1,69 @@
+{
+  "key": "stark_mountain_outside",
+  "index": 262,
+  "name": "Stark Mountain",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "SlowAshfall",
+  "camera": "Default",
+  "battleBackground": "Mountain",
+  "dayMusic": "TOWN06_D",
+  "nightMusic": "TOWN06_N",
+  "encounters": "stark_mountain_outside",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Camerupt", "level": 53 },
+    { "species": "Rhydon", "level": 54 },
+    { "species": "Fearow", "level": 51 },
+    { "species": "Graveler", "level": 51 },
+    { "species": "Fearow", "level": 53 },
+    { "species": "Weezing", "level": 52 },
+    { "species": "Skarmory", "level": 53 },
+    { "species": "Graveler", "level": 53 },
+    { "species": "Numel", "level": 51 },
+    { "species": "Rhyhorn", "level": 52 },
+    { "species": "Numel", "level": 51 },
+    { "species": "Rhyhorn", "level": 52 }
+  ],
+  "landRate": 10,
+  "day": [
+    "Fearow",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Graveler"
+  ],
+  "swarm": [
+    "Camerupt",
+    "Rhydon"
+  ],
+  "radar": [
+    "Torkoal",
+    "Torkoal",
+    "Torkoal",
+    "Torkoal"
+  ],
+  "eastSea": true,
+  "warps": [
+    { "x": 750, "z": 231, "to": "stark_mountain_room_1", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_life_orb", "looks": "pokeball", "movement": "none", "x": 740, "z": 248, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_OUTSIDE_LIFE_ORB", "item": "Life Orb", "script": "7211" },
+    { "id": "item_max_elixir", "looks": "pokeball", "movement": "none", "x": 762, "z": 232, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_OUTSIDE_MAX_ELIXIR", "item": "Max Elixir", "script": "7210" },
+    { "id": "dragon_tamer_darien", "looks": "ace_trainer_m", "movement": "look_west_and_east", "x": 749, "z": 248, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_DRAGON_TAMER_DARIEN" },
+    { "id": "signboard", "looks": "signboard", "movement": "none", "x": 748, "z": 232, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "looker", "looks": "looker", "movement": "look_south", "x": 751, "z": 232, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER", "script": "0" },
+    { "id": "buck", "looks": "buck", "movement": "look_east", "x": 750, "z": 233, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK", "script": "0" },
+    { "id": "grunt_m_1", "looks": "grunt_m", "movement": "look_north", "x": 742, "z": 232, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS", "script": "0" },
+    { "id": "grunt_m_2", "looks": "grunt_m", "movement": "look_north", "x": 742, "z": 233, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 752, "z": 235, "width": 1, "depth": 1, "script": "3", "variable": "VAR_STARK_MOUNTAIN_OUTSIDE_STATE", "value": "0" }
+  ]
+}

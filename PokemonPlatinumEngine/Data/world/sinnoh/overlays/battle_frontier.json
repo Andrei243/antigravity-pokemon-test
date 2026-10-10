@@ -1,0 +1,192 @@
+{
+  "area": "battle_frontier",
+  // The original's role is CITY11, which has no song yet (plan 05 · A6): Veilstone's stands in, as in the Fight Area
+  "bgmTrack": "sinnoh/veilstone",
+  "trees": "Round",
+  "architecture": "Resort",
+  // The gate house to the Fight Area is passed through; its rooms, with the attendants who explain each hall, come
+  // with plan 01 · M11
+  "through": [
+    { "warp": 10, "to": "fight_area", "toWarp": 2 },
+    { "warp": 11, "to": "fight_area", "toWarp": 3 }
+  ],
+  // The five facilities stand shut until their insides are built (plan 06 · R18): the Battle Tower's two doors
+  // (0, 1), the Battle Factory's (2, 3, and 12 inside its porch), the Battle Hall's (4, 5, 13), the Battle Castle's
+  // (6, 7, 15) and the Battle Arcade's (8, 9, 14). The four triggers before the inner doors, which walk the player in
+  // (the original's scripts 34 to 37), are theirs too
+  "locked": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15 ],
+  // The reporter who interviews whoever has a streak to talk about (hidden by FLAG_HIDE_BATTLE_FRONTIER_REPORTER,
+  // moved about by the place's own arrival script) waits for the television programmes (plan 08)
+  "people": {
+    "ninja_boy": {
+      "name": "Ninja Boy",
+      "dialog": [
+        "Look how high the Battle Tower goes! That's no accident.",
+        "The higher it stands, the harder it is to get to the top. It's a dare, built out of bricks."
+      ]
+    },
+    "black_belt": {
+      "name": "Black Belt",
+      "npcType": "BlackBelt",
+      "dialog": [
+        "Every hall of the Frontier has a way in for two.",
+        "Bring a friend you trust and take it on side by side! Hah!"
+      ]
+    },
+    "idol": {
+      "name": "Idol",
+      "dialog": [
+        "Looking sweet and singing in tune won't keep an idol on the stage for ever.",
+        "So I'm studying battles. If I know my Pokémon, the people who love Pokémon will come to see me too!"
+      ]
+    },
+    "ace_trainer_snow_f": {
+      "name": "Ace Trainer",
+      "npcType": "Lass",
+      "dialog": [
+        "The best trainers in the world come here, and every battle is all or nothing.",
+        "I've never been so frightened, and I've never been so wide awake."
+      ]
+    },
+    "twin": {
+      "name": "Twin",
+      "dialog": [
+        "Do you know who matters most in the Battle Castle? A lady!",
+        "A real lady, I mean. Like a princess!"
+      ]
+    },
+    "parasol_lady": {
+      "name": "Parasol Lady",
+      "dialog": [
+        "What do I like best about being a trainer?",
+        "That whatever happens, my Pokémon are there beside me. That's all, and it's everything."
+      ]
+    },
+    "expert_m": {
+      "name": "Old Man",
+      "dialog": [ "There's a story behind every Pokémon, if you take the time to hear it. Isn't that so, my dear?" ]
+    },
+    "expert_f": {
+      "name": "Old Lady",
+      "npcType": "Lady",
+      "dialog": [
+        "We've been side by side for a great many years, he and I, like a Pokémon and its trainer.",
+        "One day we shall be parted. Until that day I mean to treasure every hour, dearest."
+      ]
+    },
+    "waitress": {
+      "name": "Maid",
+      "npcType": "Lass",
+      "dialog": [
+        "People expect a great deal of a maid. Cooking, cleaning, the laundry...",
+        "And being a dab hand at training Pokémon on top of it all!"
+      ]
+    },
+    "cowgirl": {
+      "name": "Cowgirl",
+      "dialog": [
+        "To be strong is to be weak, and to be weak is to be strong. Somebody told me that when I was small.",
+        "I still haven't the faintest idea what it means."
+      ]
+    },
+    "roughneck": {
+      "name": "Roughneck",
+      "npcType": "Youngster",
+      "dialog": [
+        "Some people love a battle right down to the soles of their boots.",
+        "Have a look round you. That's every last one of this lot."
+      ]
+    },
+    "pokefan_m": {
+      "name": "Pokéfan",
+      "dialog": [
+        "How many years is it now since I met my first Pokémon? I've lost count.",
+        "And you? How long have you and yours been together?"
+      ]
+    },
+    "collector": {
+      "name": "Collector",
+      "dialog": [
+        "A trainer calls for a move without a moment's doubt, because the trainer trusts the Pokémon.",
+        "And the Pokémon gives the move all it has, to pay that trust back. Obvious, yes. It's still the whole of it."
+      ]
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "I go into every battle as though it were my last. To walk in ready to lose is unforgivable.",
+        "And yet nobody wins for ever. A good trainer takes the lesson and leaves the loss behind."
+      ]
+    },
+    "ace_trainer_m_2": {
+      "name": "Ace Trainer",
+      "dialog": [
+        "The type! The moves! What it holds!",
+        "If you mean to be the best here, there's not one detail you can let slide."
+      ]
+    },
+    "picnicker": {
+      "name": "Picnicker",
+      "dialog": [
+        "When I lose, the first thing I do is look for something to blame. Bad luck, or the other trainer, or my own Pokémon.",
+        "I know that's wrong. I won't get any better until I stop doing it."
+      ]
+    },
+    "pokemon_breeder_f": {
+      "name": "Pokémon Breeder",
+      "dialog": [
+        "There are five halls in the Battle Frontier, and at each of them you can win your way up to its master.",
+        "They're called the Frontier Brains. Tough doesn't begin to cover it!"
+      ]
+    },
+    "ace_trainer_m_1": {
+      "name": "Ace Trainer",
+      "dialog": [ "It's nothing you haven't heard before, but there's no end to what there is to learn about Pokémon." ]
+    },
+    "school_kid_m": {
+      "name": "School Kid",
+      "dialog": [
+        "At the Battle Factory you fight with Pokémon they lend you, and you have to keep on winning with them.",
+        "It tests what you know, not what you own. Just the place for a student like me!"
+      ]
+    },
+    "fisherman": {
+      "name": "Fisherman",
+      "dialog": [
+        "The Battle Hall, that's the one for me.",
+        "In there even the Magikarp I pulled out of a pond has a chance of being number one!"
+      ]
+    },
+    "tuber_m": {
+      "name": "Tuber",
+      "npcType": "Youngster",
+      "dialog": [ "Life goes up and life goes down. I've got my rubber ring, so I just bob along on top." ]
+    },
+    // The Exchange Service Corner's two booths trade Battle Points for prizes, and the third sells scratch-off cards
+    // for them: all three open with the Battle Points (plan 06 · R18, part a). Until then they say so
+    "attendant_southwest": { "name": "Attendant", "npcType": "Clerk", "script": "ExchangeCorner", "still": true },
+    "attendant_southeast": { "name": "Attendant", "npcType": "Clerk", "script": "ExchangeCorner", "still": true },
+    "attendant_northwest": { "name": "Attendant", "npcType": "Clerk", "script": "ScratchCards", "still": true }
+  },
+  "signs": {
+    "trainer_tips_signpost_battle_tower": "Battle Tower\nNever lose! Keep on winning!",
+    "trainer_tips_signpost_battle_hall": "Battle Hall\nLet each Pokémon aim for the top.",
+    "trainer_tips_signpost_battle_castle": "Battle Castle\nRule your battles with Castle Points.",
+    "trainer_tips_signpost_battle_arcade": "Battle Arcade\nWhere chance sways every battle.",
+    "trainer_tips_signpost_battle_factory": "Battle Factory\nWin in a row with rental Pokémon."
+  },
+  // The two statues before the gate and the model of the Frontier in the middle of the plaza, read by facing them
+  // (the original's scripts 31 to 33)
+  "read": { "31": "StatueWest", "32": "StatueEast", "33": "ScaleModel" },
+  // What stands on the plaza with no model of its own (the names of the ground's textures say what and where:
+  // bf_shop1, bf_mini1, bf_zou): the Exchange Service Corner's three booths, each round its attendant, the model of
+  // the Frontier in the fourth corner, and the two statues before the gate
+  "props": [
+    { "type": "Booth", "x": 44, "y": 36, "width": 3, "depth": 3 },
+    { "type": "Booth", "x": 44, "y": 42, "width": 3, "depth": 3 },
+    { "type": "Booth", "x": 51, "y": 42, "width": 3, "depth": 3 },
+    { "type": "ScaleModel", "x": 50, "y": 36, "width": 4, "depth": 4 },
+    { "type": "TrainerStatue", "x": 46, "y": 48, "width": 2, "depth": 2 },
+    { "type": "TrainerStatue", "x": 50, "y": 48, "width": 2, "depth": 2 }
+  ]
+}

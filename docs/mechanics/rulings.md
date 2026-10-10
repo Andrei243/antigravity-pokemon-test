@@ -1060,3 +1060,29 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Acuity Cavern and Uxie | Uxie waits in the cavern after the Distortion World | The cavern's mouth is shut | Plan 02 · S13 |
 | The professor in his lab | Hidden and shown by `FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN` | The flag is cleared as the original clears it; the lab's room keeps him at his desk whatever it says | The lab's later scenes are plan 02 · S12 and S13's |
 | The move tutor's house, the Pokémon Center's other floors | A hiker teaches moves for shards; the upper and lower floors | Door shut; no such floors | Plan 01 · M11 |
+
+## The rest of the post-game (2026-10-11, plan 01 · M10, part b)
+
+Stark Mountain, Snowpoint Temple, Fullmoon and Newmoon Island, the Seabreak Path, Flower Paradise, the Battle Frontier's grounds and the Ribbon Syndicate's ground floor. The places are the original's, tile for tile; what follows is where this game does something else for now.
+
+- **The Seabreak Path is revealed by its variable alone.** The original's `MapMatrix_RevealSeabreakPath` writes four other chunks into Route 224's cells of the matrix while `VAR_HIDDEN_LOCATION_SEABREAK_PATH` holds 0x1028, and so does this game (`world.json`'s `swaps`, `Map.ApplySwappedPlaces`). Nothing sets the variable: the scene that does (Oak's Letter on Route 224) belongs to an event gift.
+- **Arriving on an island puts it on the maps**, as the original's `EnableHiddenLocation` does: `VAR_HIDDEN_LOCATION_FULL_MOON_ISLAND` takes 0x0208 and `VAR_HIDDEN_LOCATION_NEW_MOON_ISLAND` 0x0229. Nothing reads them until the Town Map (plan 01 · M12).
+- **The Ribbon Syndicate's door is kept inside**, as the original's is: the room's arrival script counts the team's ribbons, and whoever has fewer than ten is told so and put back on the tile before the door, facing south (the original's `Warp MAP_HEADER_RESORT_AREA, 824, 454, DIR_SOUTH`). A member finds the hostess one tile to the east. This supersedes the rows of "Ball Capsules, Seals and ribbons" that say the two scripts are started by nobody.
+- **Snowpoint Temple's doors stay shut** until the story opens them, where the original keeps them open behind its guard and her trigger (`VAR_SNOWPOINT_CITY_STATE` 0): the eighth chapter has them so, and nobody is in the temple before the Hall of Fame either way.
+- **What glows on Stark Mountain** glows at every hour, by the place's climate (style guide, "Climates"): this game's own look, which the original has none of.
+
+| What | The original | Here, for now | Until |
+|---|---|---|---|
+| Buck, Looker, Commanders Mars and Jupiter, Charon and their grunts, Heatran, the Magma Stone | Stark Mountain's story from its foot to its last room | In the area files under their flags; not on the maps. The last room is empty | Plan 02 · S15a |
+| Regigigas | Stands in the temple's lowest floor and wakes for whoever brings Regirock, Regice and Registeel | In the area file under its flag; not on the map | Plan 02 · S15 |
+| Cresselia and the Lunar Wing, Darkrai, Shaymin | Each on its island or in its meadow, for the story or an event gift | In the area files under their flags; not on the maps. The Lunar Wing is held back | Plan 02 · S15b, the event gifts' session |
+| The ships to the islands | Canalave's sailor takes the player to Fullmoon Island during the sailor's son's nightmare, and the Harbor Inn's bed to Newmoon Island | The islands' own sailors sail back; nobody sails out | Plan 02 · S15b |
+| Newmoon Island's sailor | Away while the dream lasts (`FLAG_HIDE_NEWMOON_ISLAND_SAILOR`) | Always there | The event gifts' session |
+| The Battle Frontier's five facilities | The Battle Tower, Factory, Hall, Castle and Arcade behind their doors | Buildings seen from outside; their fourteen ways in are shut | Plan 06 · R18 |
+| The Exchange Service Corner | Two booths trade Battle Points for prizes, a third sells scratch-off cards for them | The three attendants say they wait for the halls to open | Plan 06 · R18a |
+| The gate house to the Battle Frontier | A room with a receptionist | Walked through | Plan 01 · M11 |
+| The Frontier's reporter | Moved about the grounds by the arrival script for the television's programme | Not placed | Plan 08 |
+| The Ribbon Syndicate's upper floor | A spa: once a day the first of the team that is no Egg grows friendlier (+30 five times in a hundred, +10 twenty-five, +5 otherwise), reached by a lift | The lift's door says it is shut today | Plan 01 · M11 |
+| Stark Mountain's, the temple's, the islands' and the Frontier's themes | `TOWN06`, `D_06`, `D_02`, `D_03`, `CITY11` | Route 206's, Victory Road's, the forest's, Turnback Cave's and Veilstone's play | Plan 05 · A6 |
+| The looks of the sailors, the Frontier's attendants and its visitors | Their own object looks | Looks of ours by `npcType` (a gentleman, a clerk, a lass…) | Plan 11 |
+| The woods' weather | Header values 23 and 26 to 30, which the decompilation doesn't name | Clear | Whoever names them |

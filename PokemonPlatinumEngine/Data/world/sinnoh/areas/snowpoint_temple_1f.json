@@ -1,0 +1,62 @@
+{
+  "key": "snowpoint_temple_1f",
+  "index": 278,
+  "name": "Snowpoint Temple",
+  "matrix": 68,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "encounters": "snowpoint_temple_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 47 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Golbat", "level": 50 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Sneasel", "level": 49 },
+    { "species": "Smoochum", "level": 47 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Smoochum", "level": 49 },
+    { "species": "Golbat", "level": 47 },
+    { "species": "Smoochum", "level": 49 },
+    { "species": "Golbat", "level": 47 }
+  ],
+  "landRate": 5,
+  "day": [
+    "Golbat",
+    "Golbat"
+  ],
+  "night": [
+    "Golbat",
+    "Golbat"
+  ],
+  "swarm": [
+    "Golbat",
+    "Golbat"
+  ],
+  "radar": [
+    "Golbat",
+    "Sneasel",
+    "Smoochum",
+    "Golbat"
+  ],
+  "warps": [
+    { "x": 8, "z": 13, "to": "snowpoint_city", "toWarp": 2 },
+    { "x": 14, "z": 3, "to": "snowpoint_temple_b1f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 7, "z": 6, "type": 0, "script": "2" },
+    { "x": 8, "z": 6, "type": 0, "script": "2" },
+    { "x": 9, "z": 6, "type": 0, "script": "2" }
+  ],
+  "triggers": []
+}

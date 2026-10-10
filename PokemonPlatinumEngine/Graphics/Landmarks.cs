@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// world and as large as that model's tiles. Small things are sprites on upright cards like the street
 /// furniture; ships, hedges and columns are boxes with every face painted. No GPU calls.
 /// </summary>
-internal static class Landmarks
+internal static partial class Landmarks
 {
     private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
 
@@ -188,6 +188,25 @@ internal static class Landmarks
                 return true;
             case PropType.Pool:
                 Pool(kit, w, d);
+                return true;
+            // The post-game's places (plan 01 · M10, part b; Landmarks.PostGame.cs)
+            case PropType.Lava:
+                Lava(kit, w, d);
+                return true;
+            case PropType.Crater:
+                Crater(kit, prop, w, d);
+                return true;
+            case PropType.Booth:
+                Booth(kit, map, prop, w, d);
+                return true;
+            case PropType.ScaleModel:
+                ScaleModel(kit, w, d);
+                return true;
+            case PropType.TrainerStatue:
+                TrainerStatue(kit, w, d);
+                return true;
+            case PropType.Colossus:
+                Colossus(kit, w, d);
                 return true;
         }
         return false;

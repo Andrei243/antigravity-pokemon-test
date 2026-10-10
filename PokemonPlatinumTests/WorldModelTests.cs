@@ -492,7 +492,8 @@ public class WorldModelTests
                 Assert.True(kit.Solid.VertexCount > 0, $"{what} draws nothing");
                 AssertClean(kit.Sheet, what);
                 var (min, max) = kit.Solid.Bounds();
-                Assert.True(min.Y > -0.2f && max.Y > 0.3f, $"{what} lies between {min.Y} and {max.Y}");
+                // (Lava lies in the rock, a sheet a hair above it: the one prop that doesn't stand up)
+                Assert.True(min.Y > -0.2f && max.Y > (model.Prop == PropType.Lava ? 0.05f : 0.3f), $"{what} lies between {min.Y} and {max.Y}");
                 Assert.True(min.X > 3 - 1.6f && max.X < 3 + w + 1.6f, $"{what} reaches from {min.X} to {max.X}, far outside its tiles");
             }
         }

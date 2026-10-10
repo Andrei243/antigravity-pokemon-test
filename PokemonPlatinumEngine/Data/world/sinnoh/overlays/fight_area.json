@@ -8,13 +8,16 @@
     { "warp": 6, "map": "FightAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     { "warp": 7, "map": "FightAreaPokeMart", "x": 4, "y": 6, "facing": "Up" }
   ],
-  // The gate house to Route 225 is passed through; its rooms come with plan 01 · M11
+  // The gate houses to Route 225 and to the Battle Frontier (plan 01 · M10, part b) are passed through; their rooms
+  // come with plan 01 · M11
   "through": [
     { "warp": 0, "to": "route_225", "toWarp": 0 },
-    { "warp": 1, "to": "route_225", "toWarp": 1 }
+    { "warp": 1, "to": "route_225", "toWarp": 1 },
+    { "warp": 2, "to": "battle_frontier", "toWarp": 10 },
+    { "warp": 3, "to": "battle_frontier", "toWarp": 11 }
   ],
-  // The gate to the Battle Frontier (plan 01 · M10, part b, and plan 06 · R18) and the two houses (plan 01 · M11)
-  "locked": [ 2, 3, 4, 5 ],
+  // The two houses (plan 01 · M11)
+  "locked": [ 4, 5 ],
   // The rival, Volkner, Flint, Palmer, Buck and the onlookers of their tag battle before the Frontier's gate, and the
   // two trainers who keep the way to Route 225 shut until it is fought (ace_trainer_m_2 and black_belt_2, hidden by
   // FLAG_HIDE_FIGHT_AREA_BLOCKADE), wait for the story (plan 02 · S15)

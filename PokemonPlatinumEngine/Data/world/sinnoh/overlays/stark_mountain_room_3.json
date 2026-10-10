@@ -1,0 +1,16 @@
+{
+  "area": "stark_mountain_room_3",
+  "climate": "Volcanic",
+  // D_06, as the rooms before it: Victory Road's stands in (plan 05 · A6)
+  "bgmTrack": "sinnoh/victory_road",
+  // The mountain's heart (plan 01 · M10, part b): a short hall with the Magma Stone's place at its head. Everyone in
+  // it is the story's (plan 02 · S15, part b): Charon and his grunts, Looker and his Croagunk, the two policemen,
+  // Buck, and Heatran, which waits at the head of the hall for whoever takes the stone away again (hidden by
+  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN).
+  //
+  // Two of the scene's things have the looks of an obstacle, and would stand here as a boulder to push and a rock to
+  // smash if they were laid out with the rest: the Magma Stone itself (hidden by
+  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_MAGMA_STONE) and the cracked rock Looker hides as (hidden by
+  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_ROCK_SMASH_LOOKER). They are held back until the scene that owns them
+  "heldBack": [ "magma_stone", "rock_smash_looker" ]
+}

@@ -59,10 +59,6 @@ public class BattleZoneTests
         Assert.Equal("Fight Area", Overworld.DisplayNameAt(647, 431));
         Assert.Equal("Survival Area", Overworld.DisplayNameAt(659, 340));
         Assert.Equal("Resort Area", Overworld.DisplayNameAt(802, 474));
-
-        // Stark Mountain, the Battle Frontier and the Seabreak Path are part b's: scenery still
-        foreach (string later in new[] { "stark_mountain_outside", "seabreak_path", "battle_frontier" })
-            Assert.False(Sinnoh.IsOpen(later), later);
     }
 
     [Fact]
@@ -89,7 +85,7 @@ public class BattleZoneTests
         }
         Assert.True(missed.Count == 0, "Out of reach: " + string.Join("; ", missed));
 
-        // Nobody walks out of what is built: the island's other places are part b's
+        // Nobody walks out of what is built (the island's other places are part b's, PostGameTests)
         Assert.All(reached[Overworld], t => Assert.True(Overworld.AreaAt(t.X, t.Y)!.Open));
     }
 
@@ -98,7 +94,7 @@ public class BattleZoneTests
     {
         var map = Overworld;
         // Where the original's TakeShipFromSnowpoint puts the player down, facing east: on the pier's planks
-        var landing = Assert.Single(WorldWalk.StoryArrivals, s => s.Map == "Sinnoh");
+        var landing = Assert.Single(WorldWalk.StoryArrivals, s => s.Map == "Sinnoh" && AreaKey(map, s.X, s.Y) == "fight_area");
         Assert.Equal((623, 434, Direction.Right), (landing.X, landing.Y, landing.Facing));
         Assert.Equal("fight_area", AreaKey(map, landing.X, landing.Y));
         Assert.Equal(TileType.Planks, map.GetGroundTile(landing.X, landing.Y));
@@ -232,9 +228,9 @@ public class BattleZoneTests
     public void TheDoorsOfWhatIsNotBuiltYetStayShut()
     {
         var map = Overworld;
-        // The Battle Frontier's gate (part b), the Battleground (the story's), the Villa (plan 06 · R16b), the Ribbon
-        // Syndicate (plan 06 · R17b) and the Rock Peak Ruins (the story's)
-        foreach (var (x, y) in new[] { (654, 423), (655, 423), (652, 338), (822, 469), (824, 453), (785, 340) })
+        // The Battleground (the story's), the Villa (plan 06 · R16b) and the Rock Peak Ruins (the story's). The Battle
+        // Frontier's gate and the Ribbon Syndicate's door are open since part b (PostGameTests)
+        foreach (var (x, y) in new[] { (652, 338), (822, 469), (785, 340) })
         {
             Assert.Null(map.GetWarpAt(x, y));
             Assert.True(map.IsSolid(x, y), $"the way in at ({x},{y}) can be walked into");
@@ -378,9 +374,8 @@ public class BattleZoneTests
         var map = Overworld;
         foreach (string model in new[] { "c11_o01", "d32_s06", "t6_s01", "t7_s01", "t7_s03" })
             Assert.Null(WorldModels.Of(model)!.StandInUntil);
-        // Part b's stay named: Stark Mountain's two and the Battle Frontier's
-        Assert.All(WorldModels.All.Where(m => m.StandInUntil != null), m => Assert.Equal("M10", m.StandInUntil));
-        Assert.All(new[] { "d16_o01", "d16_o02", "d31_s01", "d32_s01" }, model => Assert.NotNull(WorldModels.Of(model)!.StandInUntil));
+        // Part b built the rest, Stark Mountain's two and the Battle Frontier's: no model has a stand-in any more
+        Assert.DoesNotContain(WorldModels.All, m => m.StandInUntil != null);
 
         // The Fight Area's quay is stacked with containers, in more than one colour, each on the tiles its model blocks
         var containers = map.Props.Where(p => p.Type == PropType.Container).ToList();

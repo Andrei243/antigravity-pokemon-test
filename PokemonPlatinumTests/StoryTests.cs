@@ -606,8 +606,6 @@ public class StoryTests
         started.Add(FieldScripts.TrainerPair);
         // An Egg hatching at the end of a step (plan 06 · R15)
         started.Add(FieldScripts.HatchEgg);
-        // The Ribbon Syndicate's doorkeeper and cashier, whose room is in the Resort Area (plan 06 · R17b; plan 01 · M10's)
-        started.UnionWith(new[] { FieldScripts.RibbonSyndicateEntry, FieldScripts.RibbonSyndicateCashier });
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {

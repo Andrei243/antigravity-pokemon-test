@@ -126,6 +126,10 @@ public partial class GameEngine
         // A place the story reveals is in the map from then on, and drawn again (the Spring Path, plan 01 · M8)
         foreach (var (map, place) in MapDatabase.ApplyHiddenPlaces(story.Var))
             world?.Forget(map, place.X, place.Y, place.Width, place.Height);
+        // And so are chunks the story swaps for others (Route 224's, which open the way onto the Seabreak Path, plan 01 · M10)
+        foreach (var (map, place) in MapDatabase.ApplySwappedPlaces(story.Var))
+            foreach (var (cx, cy) in place.Cells)
+                world?.Forget(map, cx * Map.ChunkTiles, cy * Map.ChunkTiles, Map.ChunkTiles, Map.ChunkTiles);
         MapDatabase.ApplyPresence(story.Has, forget: startOver);
     }
 

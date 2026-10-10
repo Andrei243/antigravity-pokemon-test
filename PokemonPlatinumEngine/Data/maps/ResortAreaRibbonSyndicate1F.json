@@ -1,0 +1,453 @@
+{
+  "name": "ResortAreaRibbonSyndicate1F",
+  "displayName": "Ribbon Syndicate",
+  "bgmTrack": "sinnoh/sandgem",
+  "interior": "House",
+  "trees": "Round",
+  "width": 30,
+  "height": 17,
+  "ground": [
+    "##############################",
+    "##############################",
+    "##############################",
+    "#____________________________#",
+    "#____________________________#",
+    "#____________________________#",
+    "#____________________________#",
+    "####___##____________________#",
+    "####___##____________________#",
+    "####___##____________________#",
+    "#_______#____________________#",
+    "#_______#____________________#",
+    "#_______#____________________#",
+    "#_______#____________________#",
+    "#_______#____________________#",
+    "#_______#____________________#",
+    "###############D##############"
+  ],
+  "solid": [
+    "##############################",
+    "##############################",
+    "##############################",
+    "####...###.#.......#...#######",
+    "#..........#.......#.........#",
+    "#..........#########.........#",
+    "#............................#",
+    "####...##....................#",
+    "####...##............######..#",
+    "####...##............######..#",
+    "####...##....#...#...#....#..#",
+    "#.......#....#...#...#....#..#",
+    "#..###..#............#....#..#",
+    "#..###..#....#...#...######..#",
+    "#..###..#....#...#...........#",
+    "#.......#....................#",
+    "###############.##############"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Counter",
+      "x": 11,
+      "y": 5,
+      "width": 9,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 23,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 24,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 25,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 26,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 27,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 28,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Column",
+      "x": 17,
+      "y": 10,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Column",
+      "x": 13,
+      "y": 13,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Column",
+      "x": 17,
+      "y": 13,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "StoreShelf",
+      "x": 21,
+      "y": 8,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 21,
+      "y": 9,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 21,
+      "y": 10,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Table",
+      "x": 26,
+      "y": 10,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "StoreShelf",
+      "x": 21,
+      "y": 13,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 22,
+      "y": 10,
+      "width": 4,
+      "depth": 3
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 12,
+      "width": 3,
+      "depth": 3
+    },
+    {
+      "type": "Rug",
+      "x": 2,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 15,
+      "y": 15,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 15,
+      "sourceY": 16,
+      "targetMap": "Sinnoh",
+      "targetX": 824,
+      "targetY": 454,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 5,
+      "y": 2,
+      "text": "The lift to the floor above. Its doors are shut today."
+    },
+    {
+      "x": 21,
+      "y": 9,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 21,
+      "y": 13,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 22,
+      "y": 9,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 22,
+      "y": 13,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 23,
+      "y": 9,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 23,
+      "y": 13,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 24,
+      "y": 9,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 24,
+      "y": 13,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 25,
+      "y": 9,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 25,
+      "y": 13,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 26,
+      "y": 9,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 26,
+      "y": 13,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 21,
+      "y": 10,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 26,
+      "y": 10,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 21,
+      "y": 11,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 26,
+      "y": 11,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 21,
+      "y": 12,
+      "text": "Ribbons of every colour, each in a case of its own."
+    },
+    {
+      "x": 26,
+      "y": 12,
+      "text": "Ribbons of every colour, each in a case of its own."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "beauty",
+      "name": "Hostess",
+      "npcType": "Lady",
+      "x": 15,
+      "y": 14,
+      "facing": "Down",
+      "script": "Hostess"
+    },
+    {
+      "id": "cashier_f",
+      "name": "Cashier",
+      "npcType": "Clerk",
+      "x": 15,
+      "y": 4,
+      "facing": "Down",
+      "script": "RibbonSyndicateCashier"
+    },
+    {
+      "id": "middle_aged_woman",
+      "name": "Member",
+      "npcType": "Lady",
+      "x": 23,
+      "y": 5,
+      "facing": "Down",
+      "script": "Member",
+      "movement": "wander_around",
+      "rangeX": 2,
+      "rangeZ": 1
+    },
+    {
+      "id": "lady",
+      "name": "Lady",
+      "npcType": "Lady",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "script": "Lady"
+    },
+    {
+      "id": "skitty",
+      "name": "Skitty",
+      "npcType": "Pokemon",
+      "x": 10,
+      "y": 11,
+      "facing": "Down",
+      "dialog": [
+        "Mya-ow!"
+      ],
+      "species": "Skitty"
+    },
+    {
+      "id": "psyduck",
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "x": 25,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Psy? Duck..."
+      ],
+      "species": "Psyduck"
+    }
+  ],
+  "wildEncounters": []
+}

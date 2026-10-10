@@ -1,0 +1,103 @@
+{
+  "key": "stark_mountain_room_2",
+  "index": 264,
+  "name": "Stark Mountain",
+  "matrix": 58,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "28",
+  "camera": "StarkMountainRoom2",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_06",
+  "nightMusic": "D_06",
+  "encounters": "stark_mountain_room_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Magcargo", "level": 53 },
+    { "species": "Magcargo", "level": 55 },
+    { "species": "Golbat", "level": 53 },
+    { "species": "Graveler", "level": 52 },
+    { "species": "Rhydon", "level": 55 },
+    { "species": "Weezing", "level": 54 },
+    { "species": "Weezing", "level": 52 },
+    { "species": "Graveler", "level": 54 },
+    { "species": "Slugma", "level": 53 },
+    { "species": "Koffing", "level": 53 },
+    { "species": "Slugma", "level": 53 },
+    { "species": "Koffing", "level": 53 }
+  ],
+  "landRate": 10,
+  "day": [
+    "Golbat",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Graveler"
+  ],
+  "swarm": [
+    "Magcargo",
+    "Magcargo"
+  ],
+  "radar": [
+    "Rhydon",
+    "Weezing",
+    "Slugma",
+    "Koffing"
+  ],
+  "eastSea": true,
+  "warps": [
+    { "x": 47, "z": 2, "to": "stark_mountain_room_3", "toWarp": 0 },
+    { "x": 42, "z": 86, "to": "stark_mountain_room_1", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 43, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "strength_boulder_1", "looks": "strength_boulder", "movement": "none", "x": 20, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_24", "script": "10002" },
+    { "id": "strength_boulder_2", "looks": "strength_boulder", "movement": "none", "x": 29, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_23", "script": "10002" },
+    { "id": "strength_boulder_3", "looks": "strength_boulder", "movement": "none", "x": 53, "z": 52, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_25", "script": "10002" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 60, "z": 53, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10001" },
+    { "id": "rock_smash_3", "looks": "rock_smash", "movement": "none", "x": 41, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_20", "script": "10001" },
+    { "id": "item_tm50", "looks": "pokeball", "movement": "none", "x": 11, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_TM50", "item": "TM50", "script": "7216" },
+    { "id": "item_calcium", "looks": "pokeball", "movement": "none", "x": 49, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_CALCIUM", "item": "Calcium", "script": "7223" },
+    { "id": "item_max_revive", "looks": "pokeball", "movement": "none", "x": 54, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_MAX_REVIVE", "item": "Max Revive", "script": "7222" },
+    { "id": "item_rare_candy", "looks": "pokeball", "movement": "none", "x": 12, "z": 76, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_RARE_CANDY", "item": "Rare Candy", "script": "7220" },
+    { "id": "item_iron_ball", "looks": "pokeball", "movement": "none", "x": 56, "z": 77, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_IRON_BALL", "item": "Iron Ball", "script": "7217" },
+    { "id": "item_max_elixir", "looks": "pokeball", "movement": "none", "x": 69, "z": 55, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_MAX_ELIXIR", "item": "Max Elixir", "script": "7218" },
+    { "id": "item_nugget", "looks": "pokeball", "movement": "none", "x": 92, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_NUGGET", "item": "Nugget", "script": "7219" },
+    { "id": "item_ultra_ball", "looks": "pokeball", "movement": "none", "x": 38, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_2_ULTRA_BALL", "item": "Ultra Ball", "script": "7221" },
+    { "id": "buck", "looks": "buck", "movement": "look_north", "x": 42, "z": 68, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK", "script": "9703" },
+    { "id": "ace_trainer_keenan", "looks": "ace_trainer_m", "movement": "look_south", "x": 31, "z": 73, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_KEENAN" },
+    { "id": "ace_trainer_kassandra", "looks": "ace_trainer_f", "movement": "look_west", "x": 33, "z": 76, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ACE_TRAINER_KASSANDRA" },
+    { "id": "ace_trainer_skylar", "looks": "ace_trainer_m", "movement": "look_east", "x": 52, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ACE_TRAINER_SKYLAR" },
+    { "id": "ace_trainer_natasha", "looks": "ace_trainer_f", "movement": "look_west", "x": 54, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ACE_TRAINER_NATASHA" },
+    { "id": "psychic_chelsey", "looks": "psychic", "movement": "look_west", "x": 86, "z": 75, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_PSYCHIC_CHELSEY" },
+    { "id": "psychic_sterling", "looks": "psychic", "movement": "look_east", "x": 83, "z": 75, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_PSYCHIC_STERLING" },
+    { "id": "bird_keeper_krystal", "looks": "ace_trainer_f", "movement": "look_south", "x": 48, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BIRD_KEEPER_KRYSTAL" },
+    { "id": "black_belt_ray", "looks": "black_belt", "movement": "look_north", "x": 48, "z": 57, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BLACK_BELT_RAY" },
+    { "id": "ace_trainer_stefan", "looks": "ace_trainer_m", "movement": "look_west", "x": 13, "z": 36, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_STEFAN" },
+    { "id": "ace_trainer_jasmin", "looks": "ace_trainer_f", "movement": "look_east", "x": 9, "z": 36, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ACE_TRAINER_JASMIN" },
+    { "id": "dragon_tamer_drake", "looks": "ace_trainer_m", "movement": "look_east", "x": 15, "z": 22, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_DRAGON_TAMER_DRAKE" },
+    { "id": "black_belt_jarrett", "looks": "black_belt", "movement": "look_west", "x": 17, "z": 22, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_BLACK_BELT_JARRETT" },
+    { "id": "ace_trainer_abel", "looks": "ace_trainer_m", "movement": "look_south", "x": 77, "z": 64, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ACE_TRAINER_ABEL" },
+    { "id": "ace_trainer_monique", "looks": "ace_trainer_f", "movement": "look_north", "x": 77, "z": 66, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ACE_TRAINER_MONIQUE" },
+    { "id": "veteran_harlan", "looks": "expert_m", "movement": "look_east", "x": 62, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_VETERAN_HARLAN" },
+    { "id": "dragon_tamer_kenny", "looks": "ace_trainer_m", "movement": "look_north", "x": 67, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_DRAGON_TAMER_KENNY" }
+  ],
+  "signs": [
+    { "x": 85, "z": 49, "type": 2, "script": "8140", "item": "Stardust", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_STARDUST", "range": 2 },
+    { "x": 73, "z": 15, "type": 2, "script": "8141", "item": "Iron", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_IRON", "range": 2 },
+    { "x": 5, "z": 48, "type": 2, "script": "8139", "item": "Flame Plate", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_FLAME_PLATE", "range": 0 },
+    { "x": 51, "z": 77, "type": 2, "script": "8175", "item": "Max Revive", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_MAX_REVIVE", "range": 2 },
+    { "x": 53, "z": 39, "type": 2, "script": "8176", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_STAR_PIECE", "range": 2 },
+    { "x": 18, "z": 73, "type": 2, "script": "8177", "item": "Ultra Ball", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_ULTRA_BALL", "range": 2 },
+    { "x": 14, "z": 13, "type": 2, "script": "8268", "item": "Fire Stone", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_2_FIRE_STONE", "range": 2 }
+  ],
+  "triggers": [
+    { "x": 42, "z": 69, "width": 1, "depth": 1, "script": "1", "variable": "VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE", "value": "0" },
+    { "x": 42, "z": 70, "width": 1, "depth": 1, "script": "2", "variable": "VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE", "value": "1" },
+    { "x": 47, "z": 3, "width": 1, "depth": 1, "script": "3", "variable": "VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE", "value": "1" }
+  ]
+}

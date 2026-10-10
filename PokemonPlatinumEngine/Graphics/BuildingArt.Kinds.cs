@@ -482,6 +482,30 @@ internal static partial class BuildingArt
         c.HLine(0, h - 1, w, Iron.Dark);
     }
 
+    /// <summary>
+    /// The top of a hall's forecourt (the Battle Frontier): slabs of pale stone sixteen texels square with dark
+    /// joints, inside a kerb four texels wide that is lit along its south and west edges.
+    /// </summary>
+    public static void PaintForecourtTop(PixelCanvas c)
+    {
+        int w = c.Width, h = c.Height;
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+                c.SetRaw(x, y, x % 16 == 15 || y % 16 == 15 ? PaleStone.Dark : x % 16 == 0 || y % 16 == 0 ? PaleStone.Light : PaleStone.Base);
+        Pix.Raised(c, 0, 0, w, 4, StoneAlt);
+        Pix.Raised(c, 0, h - 4, w, 4, StoneAlt);
+        Pix.Raised(c, 0, 0, 4, h, StoneAlt);
+        Pix.Raised(c, w - 4, 0, 4, h, StoneAlt);
+    }
+
+    /// <summary>A face of a hall's forecourt: one course of cut stone, a joint every sixteen texels, a ledge along its top.</summary>
+    public static void PaintForecourtFace(PixelCanvas c)
+    {
+        Pix.Raised(c, 0, 0, c.Width, c.Height, StoneAlt);
+        for (int x = 15; x < c.Width; x += 16) c.VLine(x, 3, c.Height - 4, StoneAlt.Dark);
+        c.HLine(0, 2, c.Width, StoneAlt.Dark);
+    }
+
     /// <summary>The top of a tier or a gallery seen from above: the ledge's stone with a light south and west edge.</summary>
     public static void PaintTierTop(PixelCanvas c, BuildingStyle s)
     {

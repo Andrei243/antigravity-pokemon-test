@@ -27,6 +27,10 @@ public static partial class MapDatabase
     public static List<(Map Map, Map.HiddenPlace Place)> ApplyHiddenPlaces(System.Func<string, int> variable) =>
         Maps.Values.SelectMany(map => map.ApplyHiddenPlaces(variable).Select(place => (map, place))).ToList();
 
+    /// <summary>Lays down the chunks the story says are there, on every map that swaps any (<see cref="Map.ApplySwappedPlaces"/>); what changed.</summary>
+    public static List<(Map Map, Map.SwappedPlace Place)> ApplySwappedPlaces(System.Func<string, int> variable) =>
+        Maps.Values.SelectMany(map => map.ApplySwappedPlaces(variable).Select(place => (map, place))).ToList();
+
     public static void ApplyPresence(System.Func<string, bool> flagSet, bool forget = false)
     {
         foreach (var map in Maps.Values)

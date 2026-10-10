@@ -1,0 +1,8 @@
+{
+  "area": "flower_paradise",
+  // TOWN03, Floaroma Town's role
+  "bgmTrack": "sinnoh/floaroma"
+  // The meadow at the end of the Seabreak Path (plan 01 · M10, part b). Shaymin waits in its middle for whoever
+  // carries Oak's Letter (hidden by FLAG_HIDE_FLOWER_PARADISE_SHAYMIN, which the place's own arrival script sets
+  // and clears in the original): a gift of the original's events, placed by the session that brings them
+}

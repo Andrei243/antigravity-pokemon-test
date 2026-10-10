@@ -514,6 +514,36 @@ public sealed class WorldIndexFile
 
     /// <summary>Parts of a map the original leaves out until the story reveals them (plan 01 · M8: the Spring Path).</summary>
     public List<WorldHiddenPlace> Hidden { get; set; } = new();
+
+    /// <summary>
+    /// Chunks of a map the original puts others in place of once the story reveals a place (plan 01 · M10, part b:
+    /// Route 224's four, which open the way onto the Seabreak Path).
+    /// </summary>
+    public List<WorldSwap> Swaps { get; set; } = new();
+}
+
+/// <summary>
+/// Chunks of a map that are others once a story variable holds the original's number for a place
+/// (<see cref="Overworld.Map.SwappedPlace"/>): the original writes other chunks into those cells of the matrix as the
+/// map loads (<c>MapMatrix_RevealSeabreakPath</c>). The areas, their people, warps and signs stay as they are: only
+/// the ground and what stands on it changes. <c>tools/MapImporter --data</c> writes the chunks named here too, though
+/// no matrix holds them.
+/// </summary>
+public sealed class WorldSwap
+{
+    public string Map { get; set; } = "Sinnoh";
+    public string Var { get; set; } = "";
+    public int Value { get; set; }
+    public List<WorldSwapCell> Cells { get; set; } = new();
+}
+
+/// <summary>One cell of a matrix, by its column and row, and the chunk that lies there once the swap is made.</summary>
+[JsonConverter(typeof(OneLine<WorldSwapCell>))]
+public sealed class WorldSwapCell
+{
+    public int ChunkX { get; set; }
+    public int ChunkY { get; set; }
+    public int Chunk { get; set; }
 }
 
 /// <summary>
@@ -562,6 +592,12 @@ public sealed class WorldOverlayFile
     public TreeStyle? Trees { get; set; }
     /// <summary>How its fences and walls are built, where no building says (a building follows its model).</summary>
     public TownArchitecture? Architecture { get; set; }
+
+    /// <summary>
+    /// What the air of the place does to its light (plan 01 · M10, part b; style guide, "Climates"): <c>Volcanic</c> on and
+    /// in Stark Mountain, <c>Frozen</c> in Snowpoint Temple. Left out, the hour and the weather alone light it.
+    /// </summary>
+    public AreaClimate? Climate { get; set; }
 
     public BattleArena? BattleArena { get; set; }
     public List<string>? EvolutionSites { get; set; }

@@ -1,0 +1,26 @@
+{
+  "key": "newmoon_island_forest",
+  "index": 321,
+  "name": "Newmoon Island",
+  "matrix": 110,
+  "kind": "Cave",
+  "sign": "Forest",
+  "weather": "23",
+  "camera": "ZoomedIn",
+  "battleBackground": "Forest",
+  "dayMusic": "D_03",
+  "nightMusic": "D_03",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 21, "to": "newmoon_island", "toWarp": 0 },
+    { "x": 17, "z": 21, "to": "newmoon_island", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "darkrai", "looks": "darkrai", "movement": "look_south", "x": 16, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI", "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

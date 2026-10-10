@@ -1,0 +1,10 @@
+{
+  "area": "stark_mountain_room_1",
+  "climate": "Volcanic",
+  // The original's role is D_06, Stark Mountain's own, which has no song yet (plan 05 · A6): Victory Road's stands in
+  "bgmTrack": "sinnoh/victory_road"
+  // The first room inside the mountain (plan 01 · M10, part b): boulders, a cracked rock and four items in their
+  // balls, with nobody of its own. Commanders Mars and Jupiter, Charon and two grunts of Team Galactic stand before
+  // the way in until their scene (hidden by FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC): they wait for the story
+  // (plan 02 · S15, part b)
+}

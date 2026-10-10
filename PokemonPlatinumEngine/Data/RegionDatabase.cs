@@ -173,6 +173,11 @@ public static class RegionDatabase
                 "FightAreaPokemonCenter", "FightAreaPokeMart", "SurvivalAreaPokemonCenter", "SurvivalAreaPokeMart", "ResortAreaPokemonCenter",
                 // Plan 02 · S11, part a: Lake Acuity as Team Galactic leaves it (a matrix of the imported world)
                 "LakeAcuityGalactic",
+                // Plan 01 · M10, part b: Stark Mountain's rooms, Snowpoint Temple's floors, the islands' forests and the
+                // Battle Frontier (matrices of the imported world), and the Ribbon Syndicate's ground floor
+                "StarkMountainRoom1", "StarkMountainRoom2", "StarkMountainRoom3",
+                "SnowpointTemple1F", "SnowpointTempleB1F", "SnowpointTempleB2F", "SnowpointTempleB3F", "SnowpointTempleB4F", "SnowpointTempleB5F",
+                "FullmoonIslandForest", "NewmoonIslandForest", "BattleFrontier", "ResortAreaRibbonSyndicate1F",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

@@ -1,0 +1,27 @@
+{
+  "key": "fullmoon_island_forest",
+  "index": 261,
+  "name": "Fullmoon Island",
+  "matrix": 53,
+  "kind": "Cave",
+  "sign": "Forest",
+  "weather": "23",
+  "camera": "ZoomedIn",
+  "battleBackground": "Forest",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 21, "to": "fullmoon_island", "toWarp": 0 },
+    { "x": 17, "z": 21, "to": "fullmoon_island", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "cresselia", "looks": "cresselia", "movement": "none", "x": 16, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA", "script": "2" },
+    { "id": "item_lunar_wing", "looks": "pokeball", "movement": "none", "x": 16, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 1, "hiddenBy": "FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING", "item": "Lunar Wing", "script": "7092" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -5,11 +5,12 @@
   "trees": "Round",
   "architecture": "Resort",
   "doors": [
-    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" }
+    { "warp": 3, "map": "ResortAreaPokemonCenter", "x": 5, "y": 7, "facing": "Up" },
+    // The Ribbon Syndicate's ground floor (plan 01 · M10, part b): its hostess asks for the team's ribbons inside
+    { "warp": 2, "map": "ResortAreaRibbonSyndicate1F", "x": 15, "y": 15, "facing": "Up" }
   ],
-  // The Villa (plan 06 · R16b gives it to the player and furnishes it), the Ribbon Syndicate (plan 06 · R17b) and
-  // the house by the pond (plan 01 · M11)
-  "locked": [ 0, 1, 2 ],
+  // The Villa (plan 06 · R16b gives it to the player and furnishes it) and the house by the pond (plan 01 · M11)
+  "locked": [ 0, 1 ],
   // The boy who hands the Villa over (trigger 0) and the Villa's visitors, the professor and four Gym Leaders who
   // wait at its door, come with the Villa (plan 06 · R16b)
   "people": {

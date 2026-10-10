@@ -1,0 +1,13 @@
+# Snowpoint Temple's hall (plan 01 · M10, part b). docs/scripts.md describes the language; the lines are our own, on
+# the original's beats (scripts_snowpoint_temple_1f.s).
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_SNOWPOINT_TEMPLE
+  end
+
+
+# The statue before the stairs down, read from any of the three tiles in front of it (the original's script 2).
+script Statue
+  text "A statue of a Pokémon, taller than the door."
+  text "Cold comes off the stone, and something more than cold: the sense of a great strength asleep."
+  end

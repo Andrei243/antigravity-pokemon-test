@@ -1,0 +1,9 @@
+{
+  "area": "newmoon_island_forest",
+  // D_03, the role Turnback Cave has
+  "bgmTrack": "sinnoh/turnback_cave"
+  // The clearing in the island's wood (plan 01 · M10, part b): bare rock round a dark pool. Darkrai stands there
+  // for whoever comes by the Harbor Inn's dream with a Member Card (hidden by
+  // FLAG_HIDE_NEWMOON_ISLAND_FOREST_DARKRAI, which the place's own arrival script sets and clears in the
+  // original): a gift of the original's events, placed by the session that brings them
+}

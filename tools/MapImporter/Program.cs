@@ -7,6 +7,7 @@
 //   dotnet run --project tools/MapImporter -- --quick           the mosaics and reports only: no per-chunk or per-area pictures, no world files
 //   dotnet run --project tools/MapImporter -- --data            only rewrite the game's own world files (PokemonPlatinumEngine/Data/world/sinnoh)
 //   dotnet run --project tools/MapImporter -- --room <key>      print a room of the original as text, to write its map file from
+//   dotnet run --project tools/MapImporter -- --chunk <id>      print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
 using System.Diagnostics;
 using System.Globalization;
@@ -34,6 +35,12 @@ var byCover = new Renders(decomp) { CoverOf = world.CoverOf };
 if (Arg("--room") is { } room)
 {
     Console.Write(RoomPlan.Describe(decomp, room));
+    return 0;
+}
+
+if (Arg("--chunk") is { } chunkArg)
+{
+    Console.Write(ChunkTextures(decomp.Land(int.Parse(chunkArg, CultureInfo.InvariantCulture))));
     return 0;
 }
 
@@ -118,6 +125,35 @@ string? Arg(string name)
 {
     int i = Array.IndexOf(args, name);
     return i >= 0 && i + 1 < args.Length ? args[i + 1] : null;
+}
+
+// The texture named over each tile of a chunk: the ground's, and what stands over it where that differs. A letter to
+// a name, capital where the tile is blocked; the names with the kind of ground Cover.cs sorts each into.
+static string ChunkTextures(LandData land)
+{
+    var text = new System.Text.StringBuilder();
+    var layers = land.ReadTerrain()?.LayersOver(land.Heights);
+    if (layers == null) return "The chunk has no terrain model." + Environment.NewLine;
+    const string letters = "abcdefghijklmnopqrstuvwxyz0123456789";
+    foreach (var (title, names) in new[] { ("ground", layers.Ground), ("above", layers.Above) })
+    {
+        var codes = names.Where(n => n != null).Distinct().OrderBy(n => n, StringComparer.Ordinal).Select((n, i) => (Name: n!, Code: letters[i % letters.Length])).ToList();
+        text.Append(title).AppendLine(" (a capital letter is a blocked tile, '.' nothing drawn, '#' nothing drawn and blocked)");
+        for (int z = 0; z < LandData.Tiles; z++)
+        {
+            for (int x = 0; x < LandData.Tiles; x++)
+            {
+                string? name = names[z * LandData.Tiles + x];
+                bool solid = land.Solid(x, z);
+                char code = name == null ? (solid ? '#' : '.') : codes.First(c => c.Name == name).Code;
+                text.Append(name != null && solid ? char.ToUpperInvariant(code) : code);
+            }
+            text.AppendLine();
+        }
+        foreach (var (name, code) in codes)
+            text.AppendLine($"  {code} {name}: {(Cover.OfTexture(name, out bool known) is { } cover ? cover.ToString() : known ? "(nothing)" : "NOT SORTED")}");
+    }
+    return text.ToString();
 }
 
 static string FindRepo()

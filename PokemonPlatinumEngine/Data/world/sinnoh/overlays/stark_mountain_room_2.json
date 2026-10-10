@@ -1,0 +1,124 @@
+{
+  "area": "stark_mountain_room_2",
+  "climate": "Volcanic",
+  // D_06, as the first room: Victory Road's stands in (plan 05 · A6)
+  "bgmTrack": "sinnoh/victory_road",
+  // The great room inside the mountain (plan 01 · M10, part b). Buck, who waits at its foot and walks it with the
+  // player (triggers 0 to 2, VAR_STARK_MOUNTAIN_ROOM_2_FOLLOWER_BUCK_STATE; hidden by
+  // FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK), is the story's (plan 02 · S15, part b). Its trainers stand in pairs that
+  // face one another, and with Buck along two who see the player at once battle side by side
+  "people": {
+    "ace_trainer_keenan": {
+      "name": "Keenan",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Keenan: My shoes are melting and I couldn't care less. Battle me!",
+        "dialogueAfter": "Ace Trainer Keenan: Now I care about the shoes."
+      }
+    },
+    "ace_trainer_kassandra": {
+      "name": "Kassandra",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kassandra: Anyone who has come this far into the mountain is worth my time. Show me!",
+        "dialogueAfter": "Ace Trainer Kassandra: Worth every minute. Go on, the way only gets hotter."
+      }
+    },
+    "ace_trainer_skylar": {
+      "name": "Skylar",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Skylar: Natasha and I have been staring each other down for an hour. You'll do for a warm-up!",
+        "dialogueAfter": "Ace Trainer Skylar: Some warm-up. I'm cooked."
+      }
+    },
+    "ace_trainer_natasha": {
+      "name": "Natasha",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Natasha: Skylar blinked first, whatever he tells you. Now let me see whether you blink.",
+        "dialogueAfter": "Ace Trainer Natasha: Not once. I'm impressed."
+      }
+    },
+    "psychic_chelsey": {
+      "name": "Chelsey",
+      "trainer": {
+        "dialogueBefore": "Psychic Chelsey: The moon is a long way from here, and still it pulls on my Pokémon. Can you feel it?",
+        "dialogueAfter": "Psychic Chelsey: You felt nothing at all, did you? How restful that must be."
+      }
+    },
+    "psychic_sterling": {
+      "name": "Sterling",
+      "trainer": {
+        "dialogueBefore": "Psychic Sterling: The sun and this mountain burn with the same fire. So does my team!",
+        "dialogueAfter": "Psychic Sterling: Burnt out. It happens to suns too, I'm told."
+      }
+    },
+    "bird_keeper_krystal": {
+      "name": "Krystal",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Krystal: Hot air rises, and my birds ride it right up to the roof of the cave. Watch them dive!",
+        "dialogueAfter": "Bird Keeper Krystal: They dived. You were just somewhere else when they landed."
+      }
+    },
+    "black_belt_ray": {
+      "name": "Ray",
+      "trainer": {
+        "dialogueBefore": "Black Belt Ray: I do my push-ups on the hot rock. A thousand a day! Feel the difference!",
+        "dialogueAfter": "Black Belt Ray: Two thousand a day, starting tomorrow."
+      }
+    },
+    "ace_trainer_stefan": {
+      "name": "Stefan",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Stefan: Nobody gets past the pair of us without a battle. Me first!",
+        "dialogueAfter": "Ace Trainer Stefan: Past me, then. Jasmin won't be so easy."
+      }
+    },
+    "ace_trainer_jasmin": {
+      "name": "Jasmin",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Jasmin: One Pokémon is all I brought down here. It has never needed help yet.",
+        "dialogueAfter": "Ace Trainer Jasmin: Today it needed help. I'll remember that."
+      }
+    },
+    "dragon_tamer_drake": {
+      "name": "Drake",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Drake: My dragons are young yet, and the heat of this mountain is what will bring them on!",
+        "dialogueAfter": "Dragon Tamer Drake: Not grown enough. Another summer in here should do it."
+      }
+    },
+    "black_belt_jarrett": {
+      "name": "Jarrett",
+      "trainer": {
+        "dialogueBefore": "Black Belt Jarrett: Four arms against however many you've brought. I like those odds!",
+        "dialogueAfter": "Black Belt Jarrett: I should have counted first."
+      }
+    },
+    "ace_trainer_abel": {
+      "name": "Abel",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Abel: I brought ice into a volcano, and it hasn't melted yet. That's how tough my team is!",
+        "dialogueAfter": "Ace Trainer Abel: It melted. I ought to have seen that coming."
+      }
+    },
+    "ace_trainer_monique": {
+      "name": "Monique",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Monique: Abel talks. I battle. Shall we?",
+        "dialogueAfter": "Ace Trainer Monique: Short and to the point. I can respect that, even losing."
+      }
+    },
+    "veteran_harlan": {
+      "name": "Harlan",
+      "trainer": {
+        "dialogueBefore": "Veteran Harlan: I saw you coming from the far end of the ledge. An old trainer misses very little.",
+        "dialogueAfter": "Veteran Harlan: I saw the loss coming too, a little later than I'd have liked."
+      }
+    },
+    "dragon_tamer_kenny": {
+      "name": "Kenny",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Kenny: They say a Pokémon sleeps in the heart of this mountain. Mine are wide awake!",
+        "dialogueAfter": "Dragon Tamer Kenny: Wide awake, and flat on their backs."
+      }
+    }
+  }
+}

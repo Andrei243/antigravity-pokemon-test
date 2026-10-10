@@ -1,0 +1,35 @@
+{
+  "key": "stark_mountain_room_3",
+  "index": 265,
+  "name": "Stark Mountain",
+  "matrix": 59,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "28",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_06",
+  "nightMusic": "D_06",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 17, "to": "stark_mountain_room_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "croagunk", "looks": "croagunk", "movement": "look_west", "x": 9, "z": 13, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_CROAGUNK", "script": "0" },
+    { "id": "heatran", "looks": "heatran", "movement": "look_south", "x": 7, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_HEATRAN", "script": "4" },
+    { "id": "buck", "looks": "buck", "movement": "look_north", "x": 6, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_BUCK", "script": "0" },
+    { "id": "magma_stone", "looks": "strength_boulder", "movement": "look_south", "x": 7, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_MAGMA_STONE", "script": "0" },
+    { "id": "looker", "looks": "looker", "movement": "look_west", "x": 10, "z": 13, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_LOOKER", "script": "0" },
+    { "id": "charon", "looks": "charon", "movement": "look_south", "x": 7, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_TEAM_GALACTIC", "script": "0" },
+    { "id": "rock_smash_looker", "looks": "rock_smash", "movement": "look_west", "x": 10, "z": 13, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_ROCK_SMASH_LOOKER", "script": "0" },
+    { "id": "policeman_1", "looks": "policeman", "movement": "look_north", "x": 7, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN", "script": "0" },
+    { "id": "policeman_2", "looks": "policeman", "movement": "look_north", "x": 7, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN", "script": "0" },
+    { "id": "grunt_m_1", "looks": "grunt_m", "movement": "look_south", "x": 6, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_TEAM_GALACTIC", "script": "0" },
+    { "id": "grunt_m_2", "looks": "grunt_m", "movement": "look_south", "x": 8, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_TEAM_GALACTIC", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

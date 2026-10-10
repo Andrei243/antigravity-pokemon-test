@@ -1,0 +1,61 @@
+{
+  "key": "snowpoint_temple_b4f",
+  "index": 282,
+  "name": "Snowpoint Temple",
+  "matrix": 72,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "encounters": "snowpoint_temple_b4f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 47 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Golbat", "level": 50 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Sneasel", "level": 51 },
+    { "species": "Jynx", "level": 49 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Jynx", "level": 51 },
+    { "species": "Golbat", "level": 47 },
+    { "species": "Jynx", "level": 51 },
+    { "species": "Golbat", "level": 47 }
+  ],
+  "landRate": 5,
+  "day": [
+    "Golbat",
+    "Golbat"
+  ],
+  "night": [
+    "Golbat",
+    "Golbat"
+  ],
+  "swarm": [
+    "Golbat",
+    "Golbat"
+  ],
+  "radar": [
+    "Golbat",
+    "Sneasel",
+    "Jynx",
+    "Golbat"
+  ],
+  "warps": [
+    { "x": 6, "z": 3, "to": "snowpoint_temple_b3f", "toWarp": 1 },
+    { "x": 14, "z": 3, "to": "snowpoint_temple_b5f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_full_heal", "looks": "pokeball", "movement": "none", "x": 11, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SNOWPOINT_TEMPLE_B4F_FULL_HEAL", "item": "Full Heal", "script": "7243" },
+    { "id": "strength_boulder_1", "looks": "strength_boulder", "movement": "none", "x": 5, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10002" }
+  ],
+  "signs": [],
+  "triggers": []
+}

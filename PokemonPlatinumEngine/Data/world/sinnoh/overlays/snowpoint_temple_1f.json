@@ -1,0 +1,9 @@
+{
+  "area": "snowpoint_temple_1f",
+  "climate": "Frozen",
+  // D_02, the role Eterna Forest has: the same hush under the snow
+  "bgmTrack": "sinnoh/forest",
+  // The temple's hall (plan 01 · M10, part b): six pillars and the statue of a Pokémon before the stairs down, read
+  // from any of the three tiles before it (the original's script 2). Nobody stands in it
+  "read": { "2": "Statue" }
+}

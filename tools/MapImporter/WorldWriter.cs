@@ -557,6 +557,9 @@ public sealed class WorldWriter
                         for (int nx = Math.Max(0, x - 1); nx <= Math.Min(matrix.Width - 1, x + 1); nx++)
                             if (matrix.LandAt(nx, ny) is var land and not MapImporter.Matrix.NoLand) chunks.Add(land);
                 }
+            // Chunks the story swaps into the map later lie in no matrix (plan 01 · M10, part b: the Seabreak Path's reveal)
+            foreach (var swap in index.Swaps.Where(s => s.Map == entry.Name))
+                foreach (var cell in swap.Cells) chunks.Add(cell.Chunk);
             foreach (int id in chunks) Write("chunks", id.ToString("000", CultureInfo.InvariantCulture), Chunk(id));
         }
 

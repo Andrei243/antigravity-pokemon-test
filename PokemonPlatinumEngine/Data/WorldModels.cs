@@ -49,6 +49,14 @@ public sealed record WorldModel(string Name, ModelRole Role)
     /// </summary>
     public string? StandInUntil { get; init; }
 
+    /// <summary>
+    /// For a building whose outline alone the original blocks, with its doors at the end of a passage between its
+    /// wings (the Battle Frontier's four halls, plan 01 · M10, part b): the open ground shut in under its box is the
+    /// building's too, the building stands north of the passage, and what it blocks from the passage south is a low
+    /// forecourt, so the way in stays in sight (<c>WorldMapBuilder.PlaceModels</c>).
+    /// </summary>
+    public bool Hollow { get; init; }
+
     /// <summary>What it is, in a few words.</summary>
     public string What { get; init; } = "";
 }
@@ -207,17 +215,19 @@ public static class WorldModels
         Built("c10_s01", BuildingKind.League, "the Pokémon League", storeys: 3),
         Thing("c10_s02", PropType.LampPost, "a lantern on the League's steps"),
         Thing("c11_o01", PropType.Container, "a shipping container on the Fight Area's quay"),
-        Built("d31_s01", BuildingKind.Tower, "the Battle Tower", until: "M10"),
-        Built("d31_s02", BuildingKind.Hall, "a hall of the Battle Park", until: "M10"),
+        // The Battle Frontier's five facilities, each with a look of its own (plan 01 · M10, part b; style guide, "The
+        // Battle Frontier"), told apart by the name over the door
+        Built("d31_s01", BuildingKind.Tower, "the Battle Tower", sign: "TOWER"),
+        Built("d31_s02", BuildingKind.Hall, "a hall of the Battle Park, the Battle Frontier's forerunner, which Platinum leaves out", storeys: 2, sign: "FACTORY"),
         Thing("d31_o01", PropType.LampPost, "a lantern of the Battle Park"),
-        Built("d32_s01", BuildingKind.Hall, "the Battle Castle", sign: "CASTLE", until: "M10"),
-        Built("d32_s02", BuildingKind.Hall, "the Battle Hall", sign: "HALL", until: "M10"),
-        Built("d32_s03", BuildingKind.Hall, "the Battle Factory", sign: "FACTORY", until: "M10"),
-        Built("d32_s04", BuildingKind.Hall, "the Battle Arcade", sign: "ARCADE", until: "M10"),
-        Built("d32_s05", BuildingKind.Warehouse, "a low building of the Battle Frontier", until: "M10"),
+        Built("d32_s01", BuildingKind.Hall, "the Battle Castle", storeys: 3, sign: "CASTLE") with { Hollow = true },
+        Built("d32_s02", BuildingKind.Hall, "the Battle Hall", storeys: 2, sign: "HALL") with { Hollow = true },
+        Built("d32_s03", BuildingKind.Hall, "the Battle Factory", storeys: 3, sign: "FACTORY") with { Hollow = true },
+        Built("d32_s04", BuildingKind.Hall, "the Battle Arcade", storeys: 3, sign: "ARCADE") with { Hollow = true },
+        Built("d32_s05", BuildingKind.Gate, "a lodge beside the Battle Frontier's gate"),
         Thing("d32_s06", PropType.GrandFountain, "the fountain in each of the pools before the Battle Frontier's gate"),
-        Ground("d16_o01", "lava on Stark Mountain's flank", until: "M10"),
-        Thing("d16_o02", PropType.Outcrop, "the mouth of Stark Mountain", until: "M10"),
+        Thing("d16_o01", PropType.Lava, "a pool of lava on Stark Mountain's flank"),
+        Thing("d16_o02", PropType.Crater, "the mouth of Stark Mountain, and the smoke over it"),
 
         // ---------------------------------------------------------------- along the routes
         Built("d2_s02", BuildingKind.Factory, "the Valley Windworks", sign: "WINDWORKS"),
@@ -246,6 +256,8 @@ public static class WorldModels
         Thing("d11s01", PropType.Outcrop, "a great standing stone of Amity Square"),
         Thing("d20_o03", PropType.Outcrop, "a block of carved stone in the Solaceon Ruins"),
         Thing("d20_o01b", PropType.Column, "the pillar in the middle of Turnback Cave's pillar room"),
+        Thing("d20_o01", PropType.Column, "a pillar of Snowpoint Temple"),
+        Thing("d20_o02", PropType.Colossus, "the statue of a Pokémon in Snowpoint Temple's hall"),
         Ground("yabu_ana_in", "the rift in the floor of Giratina's room in Turnback Cave"),
         Thing("d11_o01a", PropType.Bench, "a bench in Amity Square"),
         Thing("d11_o01b", PropType.Bench, "a bench in Amity Square"),

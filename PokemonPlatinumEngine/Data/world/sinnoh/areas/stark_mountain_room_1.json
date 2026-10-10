@@ -1,0 +1,79 @@
+{
+  "key": "stark_mountain_room_1",
+  "index": 263,
+  "name": "Stark Mountain",
+  "matrix": 57,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "28",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_06",
+  "nightMusic": "D_06",
+  "encounters": "stark_mountain_room_1",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Magcargo", "level": 54 },
+    { "species": "Rhydon", "level": 54 },
+    { "species": "Golbat", "level": 52 },
+    { "species": "Graveler", "level": 51 },
+    { "species": "Golbat", "level": 52 },
+    { "species": "Weezing", "level": 53 },
+    { "species": "Weezing", "level": 51 },
+    { "species": "Graveler", "level": 53 },
+    { "species": "Slugma", "level": 52 },
+    { "species": "Rhyhorn", "level": 52 },
+    { "species": "Slugma", "level": 52 },
+    { "species": "Rhyhorn", "level": 52 }
+  ],
+  "landRate": 10,
+  "day": [
+    "Golbat",
+    "Graveler"
+  ],
+  "night": [
+    "Golbat",
+    "Graveler"
+  ],
+  "swarm": [
+    "Magcargo",
+    "Rhydon"
+  ],
+  "radar": [
+    "Golbat",
+    "Weezing",
+    "Slugma",
+    "Rhyhorn"
+  ],
+  "eastSea": true,
+  "warps": [
+    { "x": 20, "z": 29, "to": "stark_mountain_outside", "toWarp": 0 },
+    { "x": 17, "z": 2, "to": "stark_mountain_room_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "mars", "looks": "mars", "movement": "look_south", "x": 20, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC", "script": "0" },
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 11, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" },
+    { "id": "strength_boulder_1", "looks": "strength_boulder", "movement": "none", "x": 15, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_5", "script": "10002" },
+    { "id": "strength_boulder_2", "looks": "strength_boulder", "movement": "none", "x": 18, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_3", "script": "10002" },
+    { "id": "jupiter", "looks": "jupiter", "movement": "look_south", "x": 21, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC", "script": "0" },
+    { "id": "strength_boulder_3", "looks": "strength_boulder", "movement": "none", "x": 26, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_6", "script": "10002" },
+    { "id": "strength_boulder_4", "looks": "strength_boulder", "movement": "none", "x": 26, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_7", "script": "10002" },
+    { "id": "strength_boulder_5", "looks": "strength_boulder", "movement": "none", "x": 26, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_8", "script": "10002" },
+    { "id": "strength_boulder_6", "looks": "strength_boulder", "movement": "none", "x": 27, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_9", "script": "10002" },
+    { "id": "strength_boulder_7", "looks": "strength_boulder", "movement": "none", "x": 18, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_10", "script": "10002" },
+    { "id": "item_full_heal", "looks": "pokeball", "movement": "none", "x": 6, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_1_FULL_HEAL", "item": "Full Heal", "script": "7212" },
+    { "id": "item_escape_rope", "looks": "pokeball", "movement": "none", "x": 8, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_1_ESCAPE_ROPE", "item": "Escape Rope", "script": "7213" },
+    { "id": "item_pp_up", "looks": "pokeball", "movement": "none", "x": 33, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_1_PP_UP", "item": "PP Up", "script": "7214" },
+    { "id": "item_full_restore", "looks": "pokeball", "movement": "none", "x": 25, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_STARK_MOUNTAIN_ROOM_1_FULL_RESTORE", "item": "Full Restore", "script": "7215" },
+    { "id": "charon", "looks": "charon", "movement": "look_south", "x": 20, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC", "script": "0" },
+    { "id": "grunt_m_1", "looks": "grunt_m", "movement": "look_south", "x": 19, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC", "script": "0" },
+    { "id": "grunt_m_2", "looks": "grunt_m", "movement": "look_south", "x": 21, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_STARK_MOUNTAIN_ROOM_1_TEAM_GALACTIC", "script": "0" }
+  ],
+  "signs": [
+    { "x": 25, "z": 4, "type": 2, "script": "8138", "item": "Star Piece", "flag": "FLAG_OBTAINED_HIDDEN_STARK_MOUNTAIN_ROOM_1_STAR_PIECE", "range": 2 }
+  ],
+  "triggers": []
+}
