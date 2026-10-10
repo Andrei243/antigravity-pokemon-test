@@ -45,7 +45,8 @@ partial class Harness
             }
             Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
         }
-        // A battle won: every foe brought down to 1 HP and struck
+        // A battle won: every foe brought down to 1 HP and struck, the player's own team kept well (the Gyms follow one
+        // another with no Pokémon Center between, and a fainted lead would leave the battle asking for another)
         void Win()
         {
             var fight = game.Battle;
@@ -53,6 +54,7 @@ partial class Harness
             {
                 if (fight.HUD.MenuState == BattleMenuState.Main)
                 {
+                    foreach (var mine in team.Members.Where(p => p.CurrentHP > 0)) { mine.CurrentHP = mine.MaxHP; mine.Status = StatusCondition.None; }
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                     foreach (var wild in fight.Core.EnemySlots.Where(b => b.Pokemon != null)) wild.Pokemon!.CurrentHP = Math.Min(wild.Pokemon.CurrentHP, 1);
                     fight.SelectMainMenuOption(0);

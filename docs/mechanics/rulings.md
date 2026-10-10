@@ -640,6 +640,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Croagunk by Pastoria's board | Hops past now and then (one time in ten) | Left out (its flags are kept) | A Pokémon's walk past is a flourish no beat needs; plan 10 can bring it |
 | The beauty's Suite Key | Taken, and a reward in her cottage | She talks of the key she lost | Her cottage is plan 01 · M11's |
 | The meteorites | Change a Deoxys's forme | Are read | No command changes a Pokémon's form yet |
+| The warehouse's rusty door | A door in the wall between the hall and the back room | The wall itself, with the door's line read on its two tiles | The room renderer draws no door inside a room, only the way out |
 | Maylene's Mega Evolution | Not in Platinum | Left out | The later mechanics' beats wait for plan 06 · R20 (decision 06 · 2's default): it goes into `VeilstoneGym.txt` after her battle |
 | The cameramen at Lake Valor | Keep the lake shut until the Canalave Library's meeting | Not placed | Placed with the scene that sends them off (plan 02 · S10), or nobody could reach the lake meanwhile |
 | Maniac Tunnel | The Ruin Maniac digs on as more Unown forms are seen | His short cave only | No count of the Unown forms seen yet (the Pokédex's forms) |
