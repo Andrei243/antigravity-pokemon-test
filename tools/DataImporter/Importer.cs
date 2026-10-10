@@ -95,6 +95,7 @@ public sealed partial class Importer
                 | LaterFlags(flags.GetValueOrDefault(id));
             MoveEffects.Gen4(m, effect, chance);
             m.BattleEffect = Names.Pascal(effect, "");
+            m.Contest = ContestOf(d);
             m.Modern = ModernValues(m, row);
             moves.Add(m);
         }

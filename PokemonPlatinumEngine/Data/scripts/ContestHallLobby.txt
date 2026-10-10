@@ -3,11 +3,15 @@
 #
 # The first time in (VAR_CONTEST_HALL_LOBBY_STATE 0), Keira, whose Buneary the player caught at the city's edge, is
 # talking with the player's mother, who taught her contests; she thanks the player and goes in to rehearse, and the
-# mother, once a contest star herself, tells the player so and goes home. Fantina waits by the tables: spoken to, she
-# twirls and goes back to her Gym, and its guide stops barring the door (FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE).
+# mother, once a contest star herself, tells the player so and goes home. Keira's thanks are a Glitter Powder, the
+# Fashion Case's first Accessory (plan 06 · R17a; the original's Common_GiveAccessory). Fantina waits by the tables: spoken to, she
+# twirls and goes back to her Gym, and its guide stops barring the door (FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE). The boy who
+# stood before the middle counter stands aside for good once spoken to (the original's
+# Contests_TryMoveRichBoyAwayFromReceptionist, on every arrival).
 
 
 script OnEnter
+  if flag FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY place rich_boy 24 6 down
   if var VAR_CONTEST_HALL_LOBBY_STATE != 0 end
   face keira down
   emote keira exclaim
@@ -24,6 +28,10 @@ script OnEnter
   say "Wait... {player}? Johanna, this is your child?"
   say "Your mom is the one who taught me everything about contests, {player}! She never said she had a Trainer in the family!"
   say "And thank you again for earlier. If Buneary had run off for good, I don't know what I'd have done."
+  say "Here, take this. It's not much, but it's a start for your Fashion Case."
+  giveaccessory "Glitter Powder"
+  speaker "Keira"
+  say "Put Accessories like that on a Pokémon before a contest, and the judges take notice!"
   face keira mom
   face mom keira
   say "I'd better go and rehearse. See you, Johanna!"
@@ -47,12 +55,175 @@ script OnEnter
   end
 
 
-# The receptionists of the three booths (the original's common contest scripts): the contests themselves are not held
-# in this game yet, so they welcome the player and say so.
-script Receptionist
-  say "Welcome to the Pokémon Contest Hall! I'm afraid the Super Contests are not being held today."
-  say "We hope to see you and your Pokémon on our stage another time!"
+# The receptionists of the three booths (plan 06 · R17a; the original's common contest scripts, scripts_contests.s):
+# the middle counter holds the Super Contests, the right one the practice rounds, and the left one would hold the
+# contests with friends (plan 07). The player's change into a tuxedo or a dress and the walk through the stage's own
+# room are left for the sessions that build them; the contest itself is the game's screen (supercontest enter). An
+# explanation ends the talk where the original goes back to its menu: the tests play every way through a script, and
+# menus that lead back to menus are hundreds of ways.
+script ReceptionistOfficial
+  supercontest mode official
+  say "Welcome to the Pokémon Contest Hall! This is the counter for the Super Contests."
+label Ask
+  choose "Would you like to enter a Pokémon in a contest?" "ENTER" "INFO" "EXIT"
+  if result == 0 goto Rank
+  if result == 1 goto Info
+label Bye
+  say "We look forward to seeing you and your Pokémon on our stage!"
   end
+label Info
+  choose "What would you like to know?" "THE BASICS" "THE CONTESTS" "THE RANKS" "CANCEL"
+  if result == 0 goto Basics
+  if result == 1 goto Kinds
+  if result == 2 goto Ranks
+  goto Bye
+label Kinds
+  say "There are five contests, one for each quality a Pokémon can show: Cool, Beauty, Cute, Smart and Tough."
+  say "Enter the one your Pokémon's condition suits best. Poffins are what raise a Pokémon's condition."
+  goto Told
+label Ranks
+  say "There are four ranks: Normal, Great, Ultra and Master. Any Pokémon may enter the Normal Rank."
+  say "To go on to a higher rank, a Pokémon must have won the rank under it in the same contest."
+  goto Told
+label Basics
+  choose "Which part shall I explain?" "A CONTEST" "VISUAL" "DANCE" "ACTING" "CANCEL"
+  if result == 0 goto Whole
+  if result == 1 goto Visual
+  if result == 2 goto Dance
+  if result == 3 goto Acting
+  goto Bye
+label Whole
+  say "Four Pokémon take the stage and are judged three times: on their looks, on their dancing and on their moves."
+  say "The three count the same. Whoever does best over all three wins the contest's ribbon."
+  goto Told
+label Visual
+  say "In the Visual Competition a Pokémon is judged on its condition and on how it is dressed up."
+  say "You are given a theme and sixty seconds to put Accessories from your Fashion Case on your Pokémon. The better they fit the theme, the better the score."
+  goto Told
+label Dance
+  say "In the Dance Competition each Pokémon leads in turn. The leader makes up steps on the beat, and the others repeat them half a bar later."
+  say "A step right on the beat scores most. The wrong step scores nothing at all."
+  goto Told
+label Acting
+  say "In the Acting Competition each Pokémon shows a move to one of three judges, four turns running. No move may be shown twice in a row."
+  say "A judge gives more to a Pokémon the fewer others chose them. A move of the contest's own quality raises the judge's voltage, and filling it up earns a bonus."
+  goto Told
+label Told
+  say "Come and see me again whenever you'd like to hear more, or to enter!"
+  end
+label Rank
+  choose "Which rank will you enter?" "NORMAL RANK" "GREAT RANK" "ULTRA RANK" "MASTER RANK" "EXIT"
+  if result == 4 goto Bye
+  if result == 0 supercontest rank normal
+  if result == 1 supercontest rank great
+  if result == 2 supercontest rank ultra
+  if result == 3 supercontest rank master
+  call ChooseQuality
+  if result == 5 goto Bye
+label Choose
+  say "Which Pokémon will you enter? Please choose one."
+  choosepokemon
+  if result == 255 goto Cancel
+  supercontest check
+  if result == 0 goto Accepted
+  call NotThatOne
+label Cancel
+  ask "Will you cancel your entry?"
+  if yes goto Bye
+  goto Choose
+label Accepted
+  say "{contestant} has been entered! You are entry number 4."
+  say "The contest is about to begin. Right this way, please!"
+  supercontest enter
+  if result != 0 goto Thanks
+  supercontest prize
+  if result == 0 goto Thanks
+  say "Congratulations on your win! Please accept this prize from the Contest Hall."
+  fanfare item
+  text "{player} received the {accessory}!"
+  text "{player} put it away in the Fashion Case."
+label Thanks
+  say "Thank you for taking part. We hope to see you again soon!"
+  end
+
+
+# Which of the five contests (the original's Contests_OfficialContestTypeMenu): RESULT 5 backs out
+script ChooseQuality
+  choose "Which contest will you enter?" "COOL" "BEAUTY" "CUTE" "SMART" "TOUGH" "EXIT"
+  if result == 0 supercontest category cool
+  if result == 1 supercontest category beauty
+  if result == 2 supercontest category cute
+  if result == 3 supercontest category smart
+  if result == 4 supercontest category tough
+  return
+
+
+# Why the Pokémon chosen may not enter (the party screen's "NOT ABLE" in the original)
+script NotThatOne
+  if result == 2 say "An Egg can't go on stage, and neither can a Pokémon that has fainted."
+  if result == 3 say "That Pokémon hasn't won the rank under this one in this contest yet."
+  if result == 4 say "A Pokémon needs two moves at least to enter: no move may be shown twice in a row."
+  return
+
+
+# The practice counter (Contests_ReceptionistPracticeContest): one round held for itself, at the Normal Rank, for no
+# ribbon; the dance asks no quality (the original holds it as a Cool one)
+script ReceptionistPractice
+  supercontest rank normal
+  say "Welcome! This is the counter for practice. Here a Pokémon can try one part of a contest by itself."
+label Ask
+  choose "Would you like to practise?" "PRACTICE" "INFO" "EXIT"
+  if result == 0 goto Which
+  if result == 1 goto Info
+label Bye
+  say "Come by whenever you'd like to practise!"
+  end
+label Info
+  say "A practice round is one part of a contest held by itself: the dressing up, the dance or the acting."
+  say "It wins no ribbon, and any Pokémon may try it as often as it likes."
+  goto Ask
+label Which
+  choose "Which part will you practise?" "VISUAL" "DANCE" "ACTING" "CANCEL"
+  if result == 3 goto Bye
+  if result == 1 goto DancePractice
+  if result == 0 supercontest mode visual
+  if result == 2 supercontest mode acting
+  call ChooseQuality
+  if result == 5 goto Bye
+  goto Choose
+label DancePractice
+  supercontest mode dance
+  supercontest category cool
+label Choose
+  say "Which Pokémon will practise? Please choose one."
+  choosepokemon
+  if result == 255 goto Bye
+  supercontest check
+  if result == 0 goto Accepted
+  call NotThatOne
+  ask "Will you give up the practice?"
+  if yes goto Bye
+  goto Choose
+label Accepted
+  say "{contestant} it is. Right this way, please!"
+label Again
+  supercontest enter
+  if result > 1 goto Poorly
+  choose "Well done! That went nicely. Would you like to practise again?" "NO, THANKS" "ONCE MORE"
+  if result == 1 goto Again
+  goto Bye
+label Poorly
+  choose "It takes a little getting used to. Would you like to practise again?" "NO, THANKS" "ONCE MORE"
+  if result == 1 goto Again
+  goto Bye
+
+
+# The counter for contests with friends (Contests_ReceptionistLinkContest): no link play in this game yet (plan 07)
+script ReceptionistLink
+  say "Welcome! This is the counter for Link Contests, where friends bring their Pokémon to one stage."
+  say "I'm afraid no Link Contests are being held for now. The counter in the middle holds Super Contests every day!"
+  end
+
 
 
 # Fantina by the tables (the original's script 11): a twirl, a word, and she goes back to her Gym.

@@ -53,6 +53,19 @@ public sealed class Decomp
     /// <summary>A file of the original's C source (the Vs. Seeker's rematch table).</summary>
     public string Source(params string[] parts) => File.ReadAllText(Path.Combine(new[] { root, "src" }.Concat(parts).ToArray()));
 
+    /// <summary>A file of the original as it is (the contests' archive of tables, plan 06 · R17a).</summary>
+    public byte[] Bytes(params string[] parts) => File.ReadAllBytes(Path.Combine(new[] { root }.Concat(parts).ToArray()));
+
+    /// <summary>
+    /// A bank of the original's names (<c>res/text/&lt;bank&gt;.json</c>) in order, an empty string where the bank has no
+    /// text: the importer reads names from these (contestants, judges, accessories, themes), never a line anyone says.
+    /// </summary>
+    public List<string> Messages(string bank) =>
+        Read("res", "text", bank + ".json").GetProperty("messages").EnumerateArray().Select(m =>
+            !m.TryGetProperty("en_US", out var text) ? ""
+            : text.ValueKind == JsonValueKind.Array ? string.Concat(text.EnumerateArray().Select(l => l.GetString()))
+            : text.GetString() ?? "").ToList();
+
     private static string Folder(string constant, string prefix) => constant[prefix.Length..].ToLowerInvariant();
 
     private JsonElement Read(params string[] parts) => Parse(Path.Combine(new[] { root }.Concat(parts).ToArray()));

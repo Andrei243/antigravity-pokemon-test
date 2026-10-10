@@ -458,6 +458,28 @@ public static class ScriptParser
             case "hatch":
                 return new Instruction { Op = Op.Hatch, Line = line };
 
+            // The Super Contests (plan 06 · R17a): the rank, the quality and what is held are set, the Pokémon chosen is
+            // checked, the contest is held, and what a win gave is asked; an accessory for the Fashion Case
+            case "supercontest":
+            {
+                string what = r.OneOf("rank", "category", "mode", "check", "enter", "ribbon", "prize");
+                string value = what switch
+                {
+                    "rank" => r.OneOf("normal", "great", "ultra", "master"),
+                    "category" => r.OneOf("cool", "beauty", "cute", "smart", "tough"),
+                    "mode" => r.OneOf("official", "visual", "dance", "acting"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.SuperContest, Line = line, Name = what, Other = value };
+            }
+            case "giveaccessory":
+            {
+                string accessory = r.Text("an accessory's name");
+                int count = r.More ? r.Int("how many") : 1;
+                if (count < 1) throw r.Error("an accessory is given one at a time at least");
+                return new Instruction { Op = Op.GiveAccessory, Line = line, Name = accessory, Number = count };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

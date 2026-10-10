@@ -1026,6 +1026,14 @@ public partial class GameEngine
 
         public DayCare DayCare => game.dayCare;
 
+        // ---- the Super Contests (plan 06 · R17a)
+
+        public Models.SuperContests.FashionCase FashionCase => game.fashionCase;
+        public Models.SuperContests.ContestOutcome? ContestOutcome => game.contestOutcome;
+
+        public void HoldContest(int slot, ContestStat category, Models.SuperContests.ContestRank rank, Models.SuperContests.ContestMode mode) =>
+            game.HoldContest(slot, category, rank, mode);
+
         public bool Hatch() => game.HatchFirstEgg();
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them

@@ -247,6 +247,20 @@ public interface IScriptHost
     /// <summary>Solaceon Town's Day Care.</summary>
     DayCare DayCare { get; }
 
+    // ------------------------------------------------------------------ the Super Contests (plan 06 · R17a)
+
+    /// <summary>The player's Fashion Case.</summary>
+    Models.SuperContests.FashionCase FashionCase { get; }
+
+    /// <summary>
+    /// Holds a Super Contest for the team's Pokémon at a place (<c>supercontest enter</c>): its screen plays and the
+    /// script waits for it; afterwards <see cref="ContestOutcome"/> says how it came out.
+    /// </summary>
+    void HoldContest(int slot, ContestStat category, Models.SuperContests.ContestRank rank, Models.SuperContests.ContestMode mode);
+
+    /// <summary>How the last contest held came out; null before any.</summary>
+    Models.SuperContests.ContestOutcome? ContestOutcome { get; }
+
     /// <summary>
     /// Hatches the team's first Egg with no cycles left (<c>HatchEgg</c>): its scene plays and the script waits for it
     /// (<see cref="Busy"/>); then the Pokémon is in the Pokédex. False when no Egg is ready.

@@ -104,6 +104,24 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>The Day Care (plan 06 · R15), empty unless a test fills it.</summary>
     public DayCare DayCare { get; } = new();
 
+    /// <summary>The Fashion Case (plan 06 · R17a), empty unless a test or a script fills it.</summary>
+    public Models.SuperContests.FashionCase FashionCase { get; } = new();
+
+    /// <summary>
+    /// The place a contest held here comes out at (plan 06 · R17a), 0 for a win: no screen plays, the place is the
+    /// test's to say, and what a contest leaves is left as the game leaves it (<see cref="Models.SuperContests.ContestAwards.Conclude"/>).
+    /// </summary>
+    public int ContestPlacement { get; set; }
+    public Models.SuperContests.ContestOutcome? ContestOutcome { get; private set; }
+
+    public void HoldContest(int slot, ContestStat category, Models.SuperContests.ContestRank rank, Models.SuperContests.ContestMode mode)
+    {
+        Shown("hold a contest");
+        Waits();
+        ContestOutcome = Models.SuperContests.ContestAwards.Conclude(Party.Members[slot], category, rank, mode, ContestPlacement, FashionCase);
+        Log.Add($"supercontest {rank} {category} {mode} {Party.Members[slot].Species.Name} {ContestPlacement}");
+    }
+
     /// <summary>The Pokémon hatched so far by <c>hatch</c>, in order: here an Egg hatches at once, with no scene.</summary>
     public List<Pokemon> Hatched { get; } = new();
 

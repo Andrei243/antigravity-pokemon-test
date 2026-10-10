@@ -232,7 +232,7 @@
       "x": 5,
       "y": 4,
       "facing": "Down",
-      "script": "Receptionist"
+      "script": "ReceptionistLink"
     },
     {
       "id": "receptionist_official",
@@ -241,7 +241,7 @@
       "x": 16,
       "y": 4,
       "facing": "Down",
-      "script": "Receptionist"
+      "script": "ReceptionistOfficial"
     },
     {
       "id": "receptionist_practice",
@@ -250,7 +250,7 @@
       "x": 27,
       "y": 4,
       "facing": "Down",
-      "script": "Receptionist"
+      "script": "ReceptionistPractice"
     },
     {
       "id": "ace_trainer_f",

@@ -11,6 +11,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -27,6 +31,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 75
   },
@@ -43,6 +51,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -59,6 +71,10 @@
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -74,6 +90,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -90,6 +110,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "IncreasePrizeMoney",
     "battleEffect": "IncreasePrizeMoney",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -107,6 +131,10 @@
     "statusChancePercent": 10,
     "flags": "Contact, Punch, Protect, Mirror",
     "battleEffect": "BurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 130
   },
@@ -124,6 +152,10 @@
     "statusChancePercent": 10,
     "flags": "Contact, Punch, Protect, Mirror",
     "battleEffect": "FreezeHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 130
   },
@@ -141,6 +173,10 @@
     "statusChancePercent": 10,
     "flags": "Contact, Punch, Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 130
   },
@@ -156,6 +192,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -171,6 +211,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 110
   },
@@ -187,6 +231,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "OneHitKo",
     "battleEffect": "OneHitKo",
+    "contest": {
+      "type": "Cool",
+      "effect": "AllSameJudge"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -205,6 +253,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "ChargeTurnHighCrit",
     "battleEffect": "ChargeTurnHighCrit",
+    "contest": {
+      "type": "Cool",
+      "effect": "UniqueJudge"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -225,6 +277,10 @@
     "target": "User",
     "flags": "Dance, Snatch",
     "battleEffect": "AtkUp2",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -244,6 +300,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -260,6 +320,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageFlyOrBounce",
     "battleEffect": "DoubleDamageFlyOrBounce",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -275,6 +339,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -292,6 +360,10 @@
     "flags": "Protect, Mirror",
     "effect": "ForceSwitch",
     "battleEffect": "ForceSwitch",
+    "contest": {
+      "type": "Smart",
+      "effect": "AllSameJudge"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -315,6 +387,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Fly",
     "battleEffect": "Fly",
+    "contest": {
+      "type": "Smart",
+      "effect": "UniqueJudge"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -331,6 +407,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
     "battleEffect": "BindHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -349,6 +429,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -364,6 +448,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -385,6 +473,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "FlinchMinimizeDoubleHit",
     "battleEffect": "FlinchMinimizeDoubleHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -401,6 +493,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitTwice",
     "battleEffect": "HitTwice",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 80
   },
@@ -416,6 +512,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -432,6 +532,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "CrashOnMiss",
     "battleEffect": "CrashOnMiss",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 180,
     "maxPower": 90,
     "modern": {
@@ -452,6 +556,10 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 80
   },
@@ -470,6 +578,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AccDown",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -490,6 +602,10 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -505,6 +621,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -521,6 +641,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -537,6 +661,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "OneHitKo",
     "battleEffect": "OneHitKo",
+    "contest": {
+      "type": "Cool",
+      "effect": "AllSameJudge"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -552,6 +680,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -573,6 +705,10 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -589,6 +725,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
     "battleEffect": "BindHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -608,6 +748,10 @@
     "recoilPercent": 25,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilQuarter",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -625,6 +769,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
     "battleEffect": "ContinueAndConfuseSelf",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -645,6 +793,10 @@
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilThird",
+    "contest": {
+      "type": "Tough",
+      "effect": "AllSameJudge"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -664,6 +816,10 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "DefDown",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -685,6 +841,10 @@
     "statusChancePercent": 30,
     "flags": "Protect, Mirror",
     "battleEffect": "PoisonHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zPower": 100,
     "maxPower": 70
   },
@@ -703,6 +863,10 @@
     "flags": "Protect, Mirror",
     "effect": "PoisonMultiHit",
     "battleEffect": "PoisonMultiHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -719,6 +883,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -742,6 +910,10 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "DefDown",
+    "contest": {
+      "type": "Cool",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -762,6 +934,10 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Bite, Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -781,6 +957,10 @@
     "target": "AllFoes",
     "flags": "Sound, Protect, Reflectable, Mirror",
     "battleEffect": "AtkDown",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -802,6 +982,10 @@
     "flags": "Sound, Protect, Mirror",
     "effect": "ForceSwitch",
     "battleEffect": "ForceSwitch",
+    "contest": {
+      "type": "Cool",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -826,6 +1010,10 @@
     "statusChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -846,6 +1034,10 @@
     "confuseChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
     "battleEffect": "StatusConfuse",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -866,6 +1058,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "20DamageFlat",
     "battleEffect": "20DamageFlat",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -882,6 +1078,10 @@
     "flags": "Protect, Mirror",
     "effect": "Disable",
     "battleEffect": "Disable",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -905,6 +1105,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 70
   },
@@ -922,6 +1126,10 @@
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "BurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -939,6 +1147,10 @@
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "BurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -959,6 +1171,10 @@
     "flags": "Snatch",
     "effect": "PreventStatReduction",
     "battleEffect": "PreventStatReduction",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -975,6 +1191,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cute",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -990,6 +1210,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1010,6 +1234,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageDive",
     "battleEffect": "DoubleDamageDive",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -1030,6 +1258,10 @@
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "FreezeHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -1052,6 +1284,10 @@
     "flags": "Protect, Mirror",
     "effect": "Blizzard",
     "battleEffect": "Blizzard",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1071,6 +1307,10 @@
     "confuseChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -1089,6 +1329,10 @@
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpeedHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LastNextTurn"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -1107,6 +1351,10 @@
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "LowerAttackHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -1123,6 +1371,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Cool",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -1138,6 +1390,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -1153,6 +1409,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -1169,6 +1429,10 @@
     "recoilPercent": 25,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilQuarter",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 90,
     "modern": {
@@ -1188,6 +1452,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithWeight",
     "battleEffect": "IncreasePowerWithWeight",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 100
   },
@@ -1205,6 +1473,10 @@
     "flags": "Contact",
     "effect": "Counter",
     "battleEffect": "Counter",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 100,
     "maxPower": 75
   },
@@ -1221,6 +1493,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "LevelDamageFlat",
     "battleEffect": "LevelDamageFlat",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 75
   },
@@ -1236,6 +1512,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -1252,6 +1532,10 @@
     "drainPercent": 50,
     "flags": "Protect, Mirror",
     "battleEffect": "RecoverHalfDamageDealt",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -1268,6 +1552,10 @@
     "drainPercent": 50,
     "flags": "Protect, Mirror",
     "battleEffect": "RecoverHalfDamageDealt",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 120,
     "maxPower": 90
   },
@@ -1284,6 +1572,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StatusLeechSeed",
     "battleEffect": "StatusLeechSeed",
+    "contest": {
+      "type": "Smart",
+      "effect": "HighScoreLaterTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1305,6 +1597,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpAtkUp",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -1329,6 +1625,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 110
   },
@@ -1345,6 +1645,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "SkipChargeTurnInSun",
     "battleEffect": "SkipChargeTurnInSun",
+    "contest": {
+      "type": "Cool",
+      "effect": "UniqueJudge"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -1362,6 +1666,10 @@
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
     "battleEffect": "StatusPoison",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -1383,6 +1691,10 @@
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
     "battleEffect": "StatusParalyze",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -1404,6 +1716,10 @@
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -1425,6 +1741,10 @@
     "flags": "Contact, Dance, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
     "battleEffect": "ContinueAndConfuseSelf",
+    "contest": {
+      "type": "Beauty",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -1448,6 +1768,10 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "SpeedDown",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -1468,6 +1792,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "40DamageFlat",
     "battleEffect": "40DamageFlat",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -1484,6 +1812,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
     "battleEffect": "BindHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -1505,6 +1837,10 @@
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -1522,6 +1858,10 @@
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -1542,6 +1882,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusParalyze",
+    "contest": {
+      "type": "Cool",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -1567,6 +1911,10 @@
     "flags": "Protect, Mirror",
     "effect": "Thunder",
     "battleEffect": "Thunder",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -1585,6 +1933,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -1602,6 +1954,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoubleDamageDig",
     "battleEffect": "DoubleDamageDig",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -1618,6 +1974,10 @@
     "flags": "Protect, Mirror",
     "effect": "OneHitKo",
     "battleEffect": "OneHitKo",
+    "contest": {
+      "type": "Tough",
+      "effect": "AllSameJudge"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -1634,6 +1994,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Dig",
     "battleEffect": "Dig",
+    "contest": {
+      "type": "Smart",
+      "effect": "UniqueJudge"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -1651,6 +2015,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusBadlyPoison",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -1674,6 +2042,10 @@
     "confuseChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -1692,6 +2064,10 @@
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -1709,6 +2085,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -1733,6 +2113,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "AtkUp",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -1757,6 +2141,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpeedUp2",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1774,6 +2162,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -1790,6 +2182,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RaiseAtkWhenHit",
     "battleEffect": "RaiseAtkWhenHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -1806,6 +2202,10 @@
     "target": "User",
     "effect": "FleeFromWildBattle",
     "battleEffect": "FleeFromWildBattle",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "effect": "Heal"
     },
@@ -1826,6 +2226,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "LevelDamageFlat",
     "battleEffect": "LevelDamageFlat",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -1842,6 +2246,10 @@
     "flags": "Protect",
     "effect": "CopyMoveForBattle",
     "battleEffect": "CopyMoveForBattle",
+    "contest": {
+      "type": "Cute",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -1864,6 +2272,10 @@
     "statChangeChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
     "battleEffect": "DefDown2",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -1888,6 +2300,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "EvaUp",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -1906,6 +2322,10 @@
     "flags": "Snatch",
     "healPercent": 50,
     "battleEffect": "RestoreHalfHp",
+    "contest": {
+      "type": "Smart",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -1930,6 +2350,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefUp",
+    "contest": {
+      "type": "Tough",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -1955,6 +2379,10 @@
     "flags": "Snatch",
     "effect": "EvaUp2Minimize",
     "battleEffect": "EvaUp2Minimize",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -1977,6 +2405,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AccDown",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -1997,6 +2429,10 @@
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusConfuse",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -2021,6 +2457,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefUp",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -2046,6 +2486,10 @@
     "flags": "Snatch",
     "effect": "DefUpDoubleRolloutPower",
     "battleEffect": "DefUpDoubleRolloutPower",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -2070,6 +2514,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefUp2",
+    "contest": {
+      "type": "Cool",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2091,6 +2539,10 @@
     "flags": "Snatch",
     "effect": "SetLightScreen",
     "battleEffect": "SetLightScreen",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -2111,6 +2563,10 @@
     "target": "Field",
     "effect": "ResetStatChanges",
     "battleEffect": "ResetStatChanges",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -2129,6 +2585,10 @@
     "flags": "Snatch",
     "effect": "SetReflect",
     "battleEffect": "SetReflect",
+    "contest": {
+      "type": "Smart",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -2150,6 +2610,10 @@
     "flags": "Snatch",
     "effect": "CritUp2",
     "battleEffect": "CritUp2",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -2172,6 +2636,10 @@
     "flags": "Contact, Protect, KingsRock",
     "effect": "Bide",
     "battleEffect": "Bide",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -2186,7 +2654,11 @@
     "maxPP": 10,
     "description": "Randomly selects and uses any move in the game.",
     "effect": "CallRandomMove",
-    "battleEffect": "CallRandomMove"
+    "battleEffect": "CallRandomMove",
+    "contest": {
+      "type": "Cute",
+      "effect": "RandomOrder"
+    }
   },
   {
     "id": 119,
@@ -2200,6 +2672,10 @@
     "description": "Uses the target's last used move.",
     "effect": "CopyMove",
     "battleEffect": "CopyMove",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleFinalAct"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -2221,6 +2697,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HalveDefense",
     "battleEffect": "HalveDefense",
+    "contest": {
+      "type": "Beauty",
+      "effect": "AllSameJudge"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -2236,6 +2716,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -2253,6 +2737,10 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2273,6 +2761,10 @@
     "statusChancePercent": 40,
     "flags": "Protect, Mirror",
     "battleEffect": "PoisonHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 70,
     "modern": {
@@ -2293,6 +2785,10 @@
     "statusChancePercent": 30,
     "flags": "Protect, Mirror",
     "battleEffect": "PoisonHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 85
   },
@@ -2309,6 +2805,10 @@
     "flinchChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -2326,6 +2826,10 @@
     "statusChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "BurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 185,
     "maxPower": 140,
     "modern": {
@@ -2345,6 +2849,10 @@
     "flinchChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -2361,6 +2869,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "BindHit",
     "battleEffect": "BindHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2381,6 +2893,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -2398,6 +2914,10 @@
     "effect": "ChargeTurnDefUp",
     "effectChance": 100,
     "battleEffect": "ChargeTurnDefUp",
+    "contest": {
+      "type": "Tough",
+      "effect": "UniqueJudge"
+    },
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -2418,6 +2938,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -2436,6 +2960,10 @@
     "statChangeChancePercent": 10,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "LowerSpeedHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -2456,6 +2984,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpDefUp2",
+    "contest": {
+      "type": "Cute",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -2475,6 +3007,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AccDown",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -2496,6 +3032,10 @@
     "flags": "Snatch",
     "healPercent": 50,
     "battleEffect": "RestoreHalfHp",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2516,6 +3056,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "CrashOnMiss",
     "battleEffect": "CrashOnMiss",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 195,
     "maxPower": 95,
     "modern": {
@@ -2537,6 +3081,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusParalyze",
+    "contest": {
+      "type": "Tough",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -2560,6 +3108,10 @@
     "flags": "Protect, Mirror",
     "effect": "RecoverDamageSleep",
     "battleEffect": "RecoverDamageSleep",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -2577,6 +3129,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusPoison",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -2600,6 +3156,10 @@
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -2616,6 +3176,10 @@
     "drainPercent": 50,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "RecoverHalfDamageDealt",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -2637,6 +3201,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Beauty",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -2659,6 +3227,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "ChargeTurnHighCritFlinch",
     "battleEffect": "ChargeTurnHighCritFlinch",
+    "contest": {
+      "type": "Cool",
+      "effect": "UniqueJudge"
+    },
     "zPower": 200,
     "maxPower": 140
   },
@@ -2674,6 +3246,10 @@
     "description": "User becomes a copy of the target until it leaves battle.",
     "effect": "Transform",
     "battleEffect": "Transform",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -2694,6 +3270,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpeedHit",
+    "contest": {
+      "type": "Cute",
+      "effect": "LastNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -2713,6 +3293,10 @@
     "confuseChancePercent": 20,
     "flags": "Contact, Punch, Protect, Mirror",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -2730,6 +3314,10 @@
     "statusChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -2749,6 +3337,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AccDown",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -2769,6 +3361,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RandomDamage1To150Level",
     "battleEffect": "RandomDamage1To150Level",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -2788,6 +3384,10 @@
     "target": "User",
     "effect": "DoNothing",
     "battleEffect": "DoNothing",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -2812,6 +3412,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefUp2",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2832,6 +3436,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130,
     "modern": {
@@ -2853,6 +3461,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HalveDefense",
     "battleEffect": "HalveDefense",
+    "contest": {
+      "type": "Beauty",
+      "effect": "AllSameJudge"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -2869,6 +3481,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -2885,6 +3501,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "HitTwice",
     "battleEffect": "HitTwice",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 130
   },
@@ -2902,6 +3522,10 @@
     "flags": "Snatch",
     "effect": "Rest",
     "battleEffect": "Rest",
+    "contest": {
+      "type": "Cute",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -2923,6 +3547,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 130
   },
@@ -2939,6 +3567,10 @@
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -2959,6 +3591,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "AtkUp",
+    "contest": {
+      "type": "Cute",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -2979,6 +3615,10 @@
     "target": "User",
     "effect": "Conversion",
     "battleEffect": "Conversion",
+    "contest": {
+      "type": "Beauty",
+      "effect": "PityPoints"
+    },
     "zBonus": {
       "stats": [
         "Attack",
@@ -3004,6 +3644,10 @@
     "effect": "TriAttack",
     "effectChance": 20,
     "battleEffect": "TriAttack",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -3020,6 +3664,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "HalveHp",
     "battleEffect": "HalveHp",
+    "contest": {
+      "type": "Tough",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -3036,6 +3684,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -3053,6 +3705,10 @@
     "flags": "Snatch",
     "effect": "SetSubstitute",
     "battleEffect": "SetSubstitute",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3069,7 +3725,11 @@
     "description": "User takes 1/4 its max HP in recoil.",
     "flags": "Contact, Protect, KingsRock",
     "effect": "Struggle",
-    "battleEffect": "Struggle"
+    "battleEffect": "Struggle",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    }
   },
   {
     "id": 166,
@@ -3083,6 +3743,10 @@
     "description": "Permanently becomes the target's last used move.",
     "effect": "LearnMovePermanent",
     "battleEffect": "LearnMovePermanent",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zBonus": {
       "stats": [
         "Attack",
@@ -3107,6 +3771,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitThreeTimes",
     "battleEffect": "HitThreeTimes",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 120,
     "maxPower": 80
   },
@@ -3123,6 +3791,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "StealHeldItem",
     "battleEffect": "StealHeldItem",
+    "contest": {
+      "type": "Tough",
+      "effect": "StealVoltage"
+    },
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -3143,6 +3815,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
     "battleEffect": "PreventEscape",
+    "contest": {
+      "type": "Smart",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -3163,6 +3839,10 @@
     "flags": "Protect, Mirror",
     "effect": "NextAttackAlwaysHits",
     "battleEffect": "NextAttackAlwaysHits",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3183,6 +3863,10 @@
     "flags": "Protect, Mirror",
     "effect": "StatusNightmare",
     "battleEffect": "StatusNightmare",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3205,6 +3889,10 @@
     "flags": "Contact, Protect, Mirror",
     "thawsUser": true,
     "battleEffect": "ThawAndBurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -3222,6 +3910,10 @@
     "effect": "DamageWhileAsleep",
     "effectChance": 30,
     "battleEffect": "DamageWhileAsleep",
+    "contest": {
+      "type": "Cute",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -3240,6 +3932,10 @@
     "description": "Ghosts pay half their max HP to hurt the target every turn. Others decrease Speed but raise Attack and Defense.",
     "effect": "Curse",
     "battleEffect": "Curse",
+    "contest": {
+      "type": "Tough",
+      "effect": "HighScoreLaterTurn"
+    },
     "zBonus": {
       "effect": "Curse"
     }
@@ -3257,6 +3953,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithLessHp",
     "battleEffect": "IncreasePowerWithLessHp",
+    "contest": {
+      "type": "Cute",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -3273,6 +3973,10 @@
     "target": "User",
     "effect": "Conversion2",
     "battleEffect": "Conversion2",
+    "contest": {
+      "type": "Beauty",
+      "effect": "PityPoints"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -3290,6 +3994,10 @@
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -3308,6 +4016,10 @@
     "statChangeChancePercent": 100,
     "flags": "Powder, Protect, Reflectable, Mirror",
     "battleEffect": "SpeedDown2",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3328,6 +4040,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithLessHp",
     "battleEffect": "IncreasePowerWithLessHp",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 160,
     "maxPower": 100
   },
@@ -3344,6 +4060,10 @@
     "flags": "Protect, Mirror",
     "effect": "DecreaseLastMovePp",
     "battleEffect": "DecreaseLastMovePp",
+    "contest": {
+      "type": "Tough",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -3363,6 +4083,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "battleEffect": "FreezeHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -3380,6 +4104,10 @@
     "target": "User",
     "effect": "Protect",
     "battleEffect": "Protect",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3400,6 +4128,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 70
   },
@@ -3418,6 +4150,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "SpeedDown2",
+    "contest": {
+      "type": "Tough",
+      "effect": "LastNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -3440,6 +4176,10 @@
     "description": "Never misses.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Smart",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -3456,6 +4196,10 @@
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusConfuse",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -3480,6 +4224,10 @@
     "flags": "Snatch",
     "effect": "MaxAtkLoseHalfMaxHp",
     "battleEffect": "MaxAtkLoseHalfMaxHp",
+    "contest": {
+      "type": "Cute",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -3498,6 +4246,10 @@
     "statusChancePercent": 30,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "PoisonHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 90
   },
@@ -3516,6 +4268,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror",
     "battleEffect": "LowerAccuracyHit",
+    "contest": {
+      "type": "Cute",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -3534,6 +4290,10 @@
     "statChangeChancePercent": 50,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "LowerAccuracyHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -3550,6 +4310,10 @@
     "target": "FoeSide",
     "effect": "SetSpikes",
     "battleEffect": "SetSpikes",
+    "contest": {
+      "type": "Smart",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -3571,6 +4335,10 @@
     "statusChancePercent": 100,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -3587,6 +4355,10 @@
     "flags": "Protect, Mirror",
     "effect": "Foresight",
     "battleEffect": "Foresight",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "effect": "Crit2"
     }
@@ -3604,6 +4376,10 @@
     "target": "User",
     "effect": "KoMonThatDefeatedUser",
     "battleEffect": "KoMonThatDefeatedUser",
+    "contest": {
+      "type": "Smart",
+      "effect": "AllSameJudge"
+    },
     "zBonus": {
       "effect": "Redirect"
     }
@@ -3622,6 +4398,10 @@
     "flags": "Sound",
     "effect": "AllFaint3Turns",
     "battleEffect": "AllFaint3Turns",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3642,6 +4422,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpeedHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LastNextTurn"
+    },
     "zPower": 100,
     "maxPower": 110
   },
@@ -3659,6 +4443,10 @@
     "target": "User",
     "effect": "Protect",
     "battleEffect": "Protect",
+    "contest": {
+      "type": "Cool",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -3682,6 +4470,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -3701,6 +4493,10 @@
     "flags": "Protect, Mirror",
     "effect": "NextAttackAlwaysHits",
     "battleEffect": "NextAttackAlwaysHits",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -3722,6 +4518,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "ContinueAndConfuseSelf",
     "battleEffect": "ContinueAndConfuseSelf",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -3741,6 +4541,10 @@
     "target": "Field",
     "effect": "WeatherSandstorm",
     "battleEffect": "WeatherSandstorm",
+    "contest": {
+      "type": "Tough",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -3761,6 +4565,10 @@
     "drainPercent": 50,
     "flags": "Protect, Mirror",
     "battleEffect": "RecoverHalfDamageDealt",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -3781,6 +4589,10 @@
     "target": "User",
     "effect": "SurviveWith1Hp",
     "battleEffect": "SurviveWith1Hp",
+    "contest": {
+      "type": "Tough",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3803,6 +4615,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AtkDown2",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -3826,6 +4642,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurnLockInto",
     "battleEffect": "DoublePowerEachTurnLockInto",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -3842,6 +4662,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "LeaveWith1Hp",
     "battleEffect": "LeaveWith1Hp",
+    "contest": {
+      "type": "Cool",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -3861,6 +4685,10 @@
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AtkUp2StatusConfusion",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3882,6 +4710,10 @@
     "flags": "Snatch",
     "healPercent": 50,
     "battleEffect": "RestoreHalfHp",
+    "contest": {
+      "type": "Cute",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -3903,6 +4735,10 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -3919,6 +4755,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurn",
     "battleEffect": "DoublePowerEachTurn",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -3941,6 +4781,10 @@
     "statChangeChancePercent": 10,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RaiseDefHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -3957,6 +4801,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
     "battleEffect": "PreventEscape",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -3977,6 +4825,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "Infatuate",
     "battleEffect": "Infatuate",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -3993,6 +4845,10 @@
     "description": "Randomly uses one of the user's other three moves. Only works if the user is sleeping.",
     "effect": "UseRandomLearnedMoveSleep",
     "battleEffect": "UseRandomLearnedMoveSleep",
+    "contest": {
+      "type": "Cute",
+      "effect": "Basic"
+    },
     "zBonus": {
       "effect": "Crit2"
     }
@@ -4011,6 +4867,10 @@
     "flags": "Sound, Snatch",
     "effect": "CurePartyStatus",
     "battleEffect": "CurePartyStatus",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -4028,6 +4888,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnFriendship",
     "battleEffect": "PowerBasedOnFriendship",
+    "contest": {
+      "type": "Cute",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -4044,6 +4908,10 @@
     "flags": "Protect, Mirror",
     "effect": "RandomPowerMaybeHeal",
     "battleEffect": "RandomPowerMaybeHeal",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -4060,6 +4928,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnLowFriendship",
     "battleEffect": "PowerBasedOnLowFriendship",
+    "contest": {
+      "type": "Cute",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -4077,6 +4949,10 @@
     "flags": "Snatch",
     "effect": "PreventStatus",
     "battleEffect": "PreventStatus",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -4097,6 +4973,10 @@
     "flags": "Protect, Mirror",
     "effect": "AverageHp",
     "battleEffect": "AverageHp",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -4119,6 +4999,10 @@
     "flags": "Protect, Mirror",
     "thawsUser": true,
     "battleEffect": "ThawAndBurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -4136,6 +5020,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Psywave",
     "battleEffect": "Psywave",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 140
   },
@@ -4152,6 +5040,10 @@
     "confuseChancePercent": 100,
     "flags": "Contact, Punch, Protect, Mirror",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 180,
     "maxPower": 90
   },
@@ -4167,6 +5059,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -4184,6 +5080,10 @@
     "statusChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -4200,6 +5100,10 @@
     "target": "User",
     "effect": "PassStatsAndStatus",
     "battleEffect": "PassStatsAndStatus",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4217,6 +5121,10 @@
     "flags": "Protect, Mirror",
     "effect": "Encore",
     "battleEffect": "Encore",
+    "contest": {
+      "type": "Cute",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -4237,6 +5145,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "HitBeforeSwitch",
     "battleEffect": "HitBeforeSwitch",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -4253,6 +5165,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RemoveHazardsAndBinding",
     "battleEffect": "RemoveHazardsAndBinding",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -4275,6 +5191,10 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "EvaDown",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -4297,6 +5217,10 @@
     "statChangeChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "LowerDefenseHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -4316,6 +5240,10 @@
     "statChangeChancePercent": 10,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "RaiseAttackHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -4332,6 +5260,10 @@
     "description": "Never misses.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "PriorityNeg1BypassAccuracy",
+    "contest": {
+      "type": "Cool",
+      "effect": "LastNextTurn"
+    },
     "zPower": 140,
     "maxPower": 85
   },
@@ -4350,6 +5282,10 @@
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
     "battleEffect": "HealHalfMoreInSun",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4369,6 +5305,10 @@
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
     "battleEffect": "HealHalfMoreInSun",
+    "contest": {
+      "type": "Smart",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4388,6 +5328,10 @@
     "healPercent": 50,
     "effect": "HealHalfMoreInSun",
     "battleEffect": "HealHalfMoreInSun",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -4408,6 +5352,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RandomPowerBasedOnIvs",
     "battleEffect": "RandomPowerBasedOnIvs",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -4427,6 +5375,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 180,
     "maxPower": 90
   },
@@ -4445,6 +5397,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "FlinchDoubleDamageFlyOrBounce",
     "battleEffect": "FlinchDoubleDamageFlyOrBounce",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -4461,6 +5417,10 @@
     "target": "Field",
     "effect": "WeatherRain",
     "battleEffect": "WeatherRain",
+    "contest": {
+      "type": "Tough",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -4481,6 +5441,10 @@
     "target": "Field",
     "effect": "WeatherSun",
     "battleEffect": "WeatherSun",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -4503,6 +5467,10 @@
     "statChangeChancePercent": 20,
     "flags": "Contact, Bite, Protect, Mirror",
     "battleEffect": "LowerDefenseHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -4519,6 +5487,10 @@
     "description": "Inflicts twice the damage the user received from the last special hit it took.",
     "effect": "MirrorCoat",
     "battleEffect": "MirrorCoat",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -4535,6 +5507,10 @@
     "flags": "Snatch",
     "effect": "CopyStatChanges",
     "battleEffect": "CopyStatChanges",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -4552,6 +5528,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -4580,6 +5560,10 @@
     ],
     "flags": "Protect, Mirror",
     "battleEffect": "RaiseAllStatsHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -4598,6 +5582,10 @@
     "statChangeChancePercent": 20,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -4613,6 +5601,10 @@
     "description": "Hits the target two turns later.",
     "effect": "HitIn3Turns",
     "battleEffect": "HitIn3Turns",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140,
     "modern": {
@@ -4636,6 +5628,10 @@
     "statChangeChancePercent": 50,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "LowerDefenseHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 100,
     "maxPower": 70
   },
@@ -4652,6 +5648,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Whirlpool",
     "battleEffect": "Whirlpool",
+    "contest": {
+      "type": "Beauty",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -4672,6 +5672,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BeatUp",
     "battleEffect": "BeatUp",
+    "contest": {
+      "type": "Smart",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 100,
     "modern": {
@@ -4693,6 +5697,10 @@
     "effect": "AlwaysFlinchFirstTurnOnly",
     "effectChance": 100,
     "battleEffect": "AlwaysFlinchFirstTurnOnly",
+    "contest": {
+      "type": "Cute",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -4713,6 +5721,10 @@
     "flags": "Sound, Protect, Mirror, KingsRock",
     "effect": "Uproar",
     "battleEffect": "Uproar",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowersVoltage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -4733,6 +5745,10 @@
     "flags": "Snatch",
     "effect": "Stockpile",
     "battleEffect": "Stockpile",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -4750,6 +5766,10 @@
     "flags": "Protect, KingsRock",
     "effect": "SpitUp",
     "battleEffect": "SpitUp",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -4767,6 +5787,10 @@
     "flags": "Snatch",
     "effect": "Swallow",
     "battleEffect": "Swallow",
+    "contest": {
+      "type": "Tough",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -4786,6 +5810,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror",
     "battleEffect": "BurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -4806,6 +5834,10 @@
     "flags": "Protect",
     "effect": "WeatherHail",
     "battleEffect": "WeatherHail",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -4826,6 +5858,10 @@
     "flags": "Protect, Mirror",
     "effect": "Torment",
     "battleEffect": "Torment",
+    "contest": {
+      "type": "Tough",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -4849,6 +5885,10 @@
     "confuseChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "SpAtkUpCauseConfusion",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -4870,6 +5910,10 @@
     "statusChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusBurn",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -4893,6 +5937,10 @@
     "flags": "Protect, Mirror",
     "effect": "FaintAndAtkSpAtkDown2",
     "battleEffect": "FaintAndAtkSpAtkDown2",
+    "contest": {
+      "type": "Tough",
+      "effect": "AllSameJudge"
+    },
     "zBonus": {
       "effect": "HealReplacement"
     }
@@ -4910,6 +5958,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "DoublePowerWhenStatused",
     "battleEffect": "DoublePowerWhenStatused",
+    "contest": {
+      "type": "Cute",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -4927,6 +5979,10 @@
     "flags": "Contact, Punch, Protect",
     "effect": "HitLastWhiffIfHit",
     "battleEffect": "HitLastWhiffIfHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "UniqueJudge"
+    },
     "zPower": 200,
     "maxPower": 100
   },
@@ -4943,6 +5999,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "DoublePowerAndCureParalysis",
     "battleEffect": "DoublePowerAndCureParalysis",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 140,
     "maxPower": 120,
     "modern": {
@@ -4963,6 +6023,10 @@
     "target": "User",
     "effect": "MakeGlobalTarget",
     "battleEffect": "MakeGlobalTarget",
+    "contest": {
+      "type": "Cute",
+      "effect": "RandomOrder"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -4981,7 +6045,11 @@
     "maxPP": 20,
     "description": "Uses a move which depends upon the terrain.",
     "effect": "NaturePower",
-    "battleEffect": "NaturePower"
+    "battleEffect": "NaturePower",
+    "contest": {
+      "type": "Beauty",
+      "effect": "RandomOrder"
+    }
   },
   {
     "id": 268,
@@ -5001,6 +6069,10 @@
     "flags": "Snatch",
     "effect": "SpDefUpDoubleElectricPower",
     "battleEffect": "SpDefUpDoubleElectricPower",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5021,6 +6093,10 @@
     "flags": "Protect, Mirror",
     "effect": "Taunt",
     "battleEffect": "Taunt",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -5042,6 +6118,10 @@
     "target": "Ally",
     "effect": "BoostAllyPowerBy50Percent",
     "battleEffect": "BoostAllyPowerBy50Percent",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -5059,6 +6139,10 @@
     "flags": "Protect, Mirror",
     "effect": "SwitchHeldItems",
     "battleEffect": "SwitchHeldItems",
+    "contest": {
+      "type": "Smart",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -5078,6 +6162,10 @@
     "description": "Copies the target's ability.",
     "effect": "CopyAbility",
     "battleEffect": "CopyAbility",
+    "contest": {
+      "type": "Cute",
+      "effect": "PityPoints"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -5098,6 +6186,10 @@
     "target": "User",
     "effect": "HealIn3Turns",
     "battleEffect": "HealIn3Turns",
+    "contest": {
+      "type": "Cute",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5116,7 +6208,11 @@
     "maxPP": 20,
     "description": "Randomly selects and uses one of the trainer's other Pokémon's moves.",
     "effect": "UseRandomAllyMove",
-    "battleEffect": "UseRandomAllyMove"
+    "battleEffect": "UseRandomAllyMove",
+    "contest": {
+      "type": "Cute",
+      "effect": "RandomOrder"
+    }
   },
   {
     "id": 275,
@@ -5132,6 +6228,10 @@
     "flags": "Snatch",
     "effect": "GroundTrapUserContinuousHeal",
     "battleEffect": "GroundTrapUserContinuousHeal",
+    "contest": {
+      "type": "Smart",
+      "effect": "HighScoreLaterTurn"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5158,6 +6258,10 @@
     ],
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "LowerOwnAtkAndDef",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 95
   },
@@ -5174,6 +6278,10 @@
     "description": "Reflects back the first effect move used on the user this turn.",
     "effect": "ApplyMagicCoat",
     "battleEffect": "ApplyMagicCoat",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleFinalAct"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5194,6 +6302,10 @@
     "target": "User",
     "effect": "Recycle",
     "battleEffect": "Recycle",
+    "contest": {
+      "type": "Smart",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -5215,6 +6327,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfHit",
     "battleEffect": "DoublePowerIfHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 120,
     "maxPower": 80
   },
@@ -5231,6 +6347,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RemoveScreens",
     "battleEffect": "RemoveScreens",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 90
   },
@@ -5247,6 +6367,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "StatusSleepNextTurn",
     "battleEffect": "StatusSleepNextTurn",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -5267,6 +6391,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "RemoveHeldItem",
     "battleEffect": "RemoveHeldItem",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120,
     "modern": {
@@ -5286,6 +6414,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "SetHpEqualToUser",
     "battleEffect": "SetHpEqualToUser",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -5303,6 +6435,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DecreasePowerWithLessUserHp",
     "battleEffect": "DecreasePowerWithLessUserHp",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -5319,6 +6455,10 @@
     "flags": "Protect, Mirror",
     "effect": "SwitchAbilities",
     "battleEffect": "SwitchAbilities",
+    "contest": {
+      "type": "Smart",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -5339,6 +6479,10 @@
     "target": "User",
     "effect": "MakeSharedMovesUnuseable",
     "battleEffect": "MakeSharedMovesUnuseable",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5360,6 +6504,10 @@
     "flags": "Snatch",
     "effect": "HealStatus",
     "battleEffect": "HealStatus",
+    "contest": {
+      "type": "Cute",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -5377,6 +6525,10 @@
     "target": "User",
     "effect": "RemoveAllPpOnDefeat",
     "battleEffect": "RemoveAllPpOnDefeat",
+    "contest": {
+      "type": "Tough",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "effect": "Redirect"
     }
@@ -5394,6 +6546,10 @@
     "description": "Steals the target's move, if it's self-targeted.",
     "effect": "StealStatusMove",
     "battleEffect": "StealStatusMove",
+    "contest": {
+      "type": "Smart",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -5415,6 +6571,10 @@
     "effect": "SecretPower",
     "effectChance": 30,
     "battleEffect": "SecretPower",
+    "contest": {
+      "type": "Smart",
+      "effect": "RandomOrder"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -5431,6 +6591,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Dive",
     "battleEffect": "Dive",
+    "contest": {
+      "type": "Beauty",
+      "effect": "UniqueJudge"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -5447,6 +6611,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 70
   },
@@ -5464,6 +6632,10 @@
     "flags": "Snatch",
     "effect": "Camouflage",
     "battleEffect": "Camouflage",
+    "contest": {
+      "type": "Smart",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -5488,6 +6660,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpAtkUp2",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -5507,6 +6683,10 @@
     "statChangeChancePercent": 50,
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5528,6 +6708,10 @@
     "statChangeChancePercent": 50,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "LowerSpAtkHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5549,6 +6733,10 @@
     "statChangeChancePercent": 100,
     "flags": "Dance, Protect, Reflectable, Mirror",
     "battleEffect": "AtkDown2",
+    "contest": {
+      "type": "Beauty",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -5570,6 +6758,10 @@
     "target": "AllOthers",
     "flags": "Dance, Protect, Mirror",
     "battleEffect": "ConfuseAll",
+    "contest": {
+      "type": "Cute",
+      "effect": "RandomOrder"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -5592,6 +6784,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "HighCriticalBurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -5608,6 +6804,10 @@
     "target": "Field",
     "effect": "HalveElectricDamage",
     "battleEffect": "HalveElectricDamage",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -5628,6 +6828,10 @@
     "flags": "Contact, Ballistic, Protect, Mirror, KingsRock",
     "effect": "DoublePowerEachTurnLockInto",
     "battleEffect": "DoublePowerEachTurnLockInto",
+    "contest": {
+      "type": "Beauty",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -5644,6 +6848,10 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -5661,6 +6869,10 @@
     "flags": "Snatch",
     "healPercent": 50,
     "battleEffect": "RestoreHalfHp",
+    "contest": {
+      "type": "Cute",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -5681,6 +6893,10 @@
     "target": "AllFoes",
     "flags": "Sound, Protect, Mirror",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -5698,6 +6914,10 @@
     "statusChancePercent": 30,
     "flags": "Contact, Bite, Protect, Mirror",
     "battleEffect": "BadlyPoisonHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 100,
     "maxPower": 75
   },
@@ -5716,6 +6936,10 @@
     "statChangeChancePercent": 50,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "LowerDefenseHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 130
   },
@@ -5732,6 +6956,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Beauty",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -5748,6 +6976,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Beauty",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -5767,6 +6999,10 @@
     "statChangeChancePercent": 20,
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "RaiseAttackHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -5787,6 +7023,10 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -5803,6 +7043,10 @@
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "ChangeTypeWithWeather",
     "battleEffect": "ChangeTypeWithWeather",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -5820,6 +7064,10 @@
     "flags": "Snatch",
     "effect": "CurePartyStatus",
     "battleEffect": "CurePartyStatus",
+    "contest": {
+      "type": "Smart",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "Heal"
     }
@@ -5839,6 +7087,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "SpDefDown2",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -5860,6 +7112,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -5882,6 +7138,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "UserSpAtkDown2",
+    "contest": {
+      "type": "Beauty",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -5901,6 +7161,10 @@
     "flags": "Protect, Mirror",
     "effect": "Foresight",
     "battleEffect": "Foresight",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -5923,6 +7187,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror",
     "battleEffect": "LowerSpeedHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "LastNextTurn"
+    },
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -5953,6 +7221,10 @@
     ],
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "RaiseAllStatsHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -5971,6 +7243,10 @@
     "statChangeChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
     "battleEffect": "SpDefDown2",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowersVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -5992,6 +7268,10 @@
     "statusChancePercent": 100,
     "flags": "Sound, Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -6017,6 +7297,10 @@
     ],
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "AtkDefDown",
+    "contest": {
+      "type": "Cute",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -6044,6 +7328,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefSpdUp",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -6065,6 +7353,10 @@
     "flags": "Protect, Mirror",
     "effect": "DecreasePowerWithLessUserHp",
     "battleEffect": "DecreasePowerWithLessUserHp",
+    "contest": {
+      "type": "Beauty",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -6081,6 +7373,10 @@
     "confuseChancePercent": 10,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 140,
     "maxPower": 130
   },
@@ -6096,6 +7392,10 @@
     "description": "Never misses.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -6112,6 +7412,10 @@
     "flinchChancePercent": 10,
     "flags": "Protect, Mirror",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -6131,6 +7435,10 @@
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "effect": "HitFly",
     "battleEffect": "HitFly",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 90
   },
@@ -6147,6 +7455,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
     "battleEffect": "BindHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -6167,6 +7479,10 @@
     "flags": "Protect, Mirror",
     "effect": "OneHitKo",
     "battleEffect": "OneHitKo",
+    "contest": {
+      "type": "Beauty",
+      "effect": "AllSameJudge"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -6186,6 +7502,10 @@
     "target": "AllFoes",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "LowerAccuracyHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -6205,6 +7525,10 @@
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -6223,6 +7547,10 @@
     "description": "Never misses.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -6239,6 +7567,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -6262,6 +7594,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefUp2",
+    "contest": {
+      "type": "Tough",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -6279,6 +7615,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "PreventEscape",
     "battleEffect": "PreventEscape",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -6303,6 +7643,10 @@
     "target": "User",
     "flags": "Sound, Snatch",
     "battleEffect": "AtkUp",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -6322,6 +7666,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -6338,6 +7686,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Cool",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -6361,6 +7713,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "AtkDefUp",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -6383,6 +7739,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "Bounce",
     "battleEffect": "Bounce",
+    "contest": {
+      "type": "Cute",
+      "effect": "UniqueJudge"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -6401,6 +7761,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "LowerSpeedHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "LastNextTurn"
+    },
     "zPower": 100,
     "maxPower": 110
   },
@@ -6419,6 +7783,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCriticalPoisonHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 100,
     "maxPower": 75
   },
@@ -6435,6 +7803,10 @@
     "flags": "Contact, Protect, Mirror",
     "effect": "StealHeldItem",
     "battleEffect": "StealHeldItem",
+    "contest": {
+      "type": "Cute",
+      "effect": "StealVoltage"
+    },
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -6457,6 +7829,10 @@
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -6472,6 +7848,10 @@
     "description": "Never misses.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -6488,6 +7868,10 @@
     "target": "Field",
     "effect": "HalveFireDamage",
     "battleEffect": "HalveFireDamage",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -6515,6 +7899,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpAtkSpDefUp",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -6532,6 +7920,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -6555,6 +7947,10 @@
     "target": "User",
     "flags": "Dance, Snatch",
     "battleEffect": "AtkSpdUp",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -6572,6 +7968,10 @@
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "MultiHit",
     "battleEffect": "MultiHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -6590,6 +7990,10 @@
     "description": "Never misses.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -6606,6 +8010,10 @@
     "confuseChancePercent": 20,
     "flags": "Pulse, Protect, Mirror, KingsRock",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -6621,6 +8029,10 @@
     "description": "Hits the target two turns later.",
     "effect": "HitIn3Turns",
     "battleEffect": "HitIn3Turns",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 200,
     "maxPower": 140,
     "modern": {
@@ -6644,6 +8056,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "UserSpAtkDown2",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 140
   },
@@ -6662,6 +8078,10 @@
     "healPercent": 50,
     "effect": "HealHalfRemoveFlyingType",
     "battleEffect": "HealHalfRemoveFlyingType",
+    "contest": {
+      "type": "Cool",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -6682,6 +8102,10 @@
     "target": "Field",
     "effect": "Gravity",
     "battleEffect": "Gravity",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6702,6 +8126,10 @@
     "flags": "Protect, Mirror",
     "effect": "IgnoreEvationRemoveDarkImmune",
     "battleEffect": "IgnoreEvationRemoveDarkImmune",
+    "contest": {
+      "type": "Cute",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -6722,6 +8150,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerHealSleep",
     "battleEffect": "DoublePowerHealSleep",
+    "contest": {
+      "type": "Smart",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 140,
     "maxPower": 85,
     "modern": {
@@ -6744,6 +8176,10 @@
     "statChangeChancePercent": 100,
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "SpeedDownHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "LastNextTurn"
+    },
     "zPower": 180,
     "maxPower": 90
   },
@@ -6760,6 +8196,10 @@
     "flags": "Contact, Ballistic, Protect, Mirror, KingsRock",
     "effect": "PowerBasedOnLowSpeed",
     "battleEffect": "PowerBasedOnLowSpeed",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -6775,7 +8215,11 @@
     "description": "User faints. Its replacement has its HP fully restored and any major status effect removed.",
     "target": "User",
     "effect": "FaintAndFullHealNextMon",
-    "battleEffect": "FaintAndFullHealNextMon"
+    "battleEffect": "FaintAndFullHealNextMon",
+    "contest": {
+      "type": "Cute",
+      "effect": "Voltage"
+    }
   },
   {
     "id": 362,
@@ -6790,6 +8234,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "DoublePowerWhenBelowHalf",
     "battleEffect": "DoublePowerWhenBelowHalf",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -6806,6 +8254,10 @@
     "flags": "Protect, Mirror",
     "effect": "NaturalGift",
     "battleEffect": "NaturalGift",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -6822,6 +8274,10 @@
     "description": "Hits through Protect and Detect.",
     "effect": "RemoveProtect",
     "battleEffect": "RemoveProtect",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 100,
     "maxPower": 90,
     "modern": {
@@ -6841,6 +8297,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "EatBerry",
     "battleEffect": "EatBerry",
+    "contest": {
+      "type": "Cute",
+      "effect": "StealVoltage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -6858,6 +8318,10 @@
     "flags": "Snatch",
     "effect": "DoubleSpeed3Turns",
     "battleEffect": "DoubleSpeed3Turns",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "effect": "Crit2"
     },
@@ -6879,6 +8343,10 @@
     "flags": "Snatch",
     "effect": "RandomStatUp2",
     "battleEffect": "RandomStatUp2",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "Crit2"
     }
@@ -6896,6 +8364,10 @@
     "flags": "Mirror",
     "effect": "MetalBurst",
     "battleEffect": "MetalBurst",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -6912,6 +8384,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "SwitchHit",
     "battleEffect": "SwitchHit",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowVoltageAdvantage"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -6934,6 +8410,10 @@
     ],
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "DefSpdDownHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 190,
     "maxPower": 95
   },
@@ -6950,6 +8430,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfMovingSecond",
     "battleEffect": "DoublePowerIfMovingSecond",
+    "contest": {
+      "type": "Cool",
+      "effect": "UniqueJudge"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -6966,6 +8450,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfTargetHit",
     "battleEffect": "DoublePowerIfTargetHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 120,
     "maxPower": 110,
     "modern": {
@@ -6985,6 +8473,10 @@
     "flags": "Protect, Mirror",
     "effect": "PreventItemUse",
     "battleEffect": "PreventItemUse",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -7005,6 +8497,10 @@
     "flags": "Protect, Mirror",
     "effect": "Fling",
     "battleEffect": "Fling",
+    "contest": {
+      "type": "Tough",
+      "effect": "PityPoints"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -7021,6 +8517,10 @@
     "flags": "Protect, Mirror",
     "effect": "TransferStatus",
     "battleEffect": "TransferStatus",
+    "contest": {
+      "type": "Cool",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -7044,6 +8544,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HigherPowerWhenLowPp",
     "battleEffect": "HigherPowerWhenLowPp",
+    "contest": {
+      "type": "Cool",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -7061,6 +8565,10 @@
     "flags": "Protect, Mirror",
     "effect": "PreventHealing",
     "battleEffect": "PreventHealing",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "SpAttack"
@@ -7081,6 +8589,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreHp",
     "battleEffect": "IncreasePowerWithMoreHp",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -7097,6 +8609,10 @@
     "target": "User",
     "effect": "SwapAtkDef",
     "battleEffect": "SwapAtkDef",
+    "contest": {
+      "type": "Cool",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Attack"
@@ -7117,6 +8633,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SupressAbility",
     "battleEffect": "SupressAbility",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -7137,6 +8657,10 @@
     "target": "UserSide",
     "effect": "PreventCrits",
     "battleEffect": "PreventCrits",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -7157,6 +8681,10 @@
     "flags": "Protect",
     "effect": "UseMoveFirst",
     "battleEffect": "UseMoveFirst",
+    "contest": {
+      "type": "Cute",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -7176,6 +8704,10 @@
     "description": "Uses the target's last used move.",
     "effect": "UseLastUsedMove",
     "battleEffect": "UseLastUsedMove",
+    "contest": {
+      "type": "Cool",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -7196,6 +8728,10 @@
     "flags": "Protect, Mirror",
     "effect": "SwapAtkSpAtkStatChanges",
     "battleEffect": "SwapAtkSpAtkStatChanges",
+    "contest": {
+      "type": "Beauty",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -7216,6 +8752,10 @@
     "flags": "Protect, Mirror",
     "effect": "SwapDefSpDefStatChanges",
     "battleEffect": "SwapDefSpDefStatChanges",
+    "contest": {
+      "type": "Cute",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -7236,6 +8776,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreStatUp",
     "battleEffect": "IncreasePowerWithMoreStatUp",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -7252,6 +8796,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "FailIfNotUsedAllOtherMoves",
     "battleEffect": "FailIfNotUsedAllOtherMoves",
+    "contest": {
+      "type": "Cute",
+      "effect": "HighScoreLaterTurn"
+    },
     "zPower": 200,
     "maxPower": 140,
     "modern": {
@@ -7271,6 +8819,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SetAbilityToInsomnia",
     "battleEffect": "SetAbilityToInsomnia",
+    "contest": {
+      "type": "Beauty",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -7292,6 +8844,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitFirstIfTargetAttacking",
     "battleEffect": "HitFirstIfTargetAttacking",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 140,
     "maxPower": 120,
     "modern": {
@@ -7311,6 +8867,10 @@
     "target": "FoeSide",
     "effect": "ToxicSpikes",
     "battleEffect": "ToxicSpikes",
+    "contest": {
+      "type": "Smart",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -7331,6 +8891,10 @@
     "flags": "Protect, Mirror",
     "effect": "SwapStatChanges",
     "battleEffect": "SwapStatChanges",
+    "contest": {
+      "type": "Cool",
+      "effect": "LowVoltageAdvantage"
+    },
     "zBonus": {
       "effect": "Crit2"
     }
@@ -7348,6 +8912,10 @@
     "target": "User",
     "effect": "RestoreHpEveryTurn",
     "battleEffect": "RestoreHpEveryTurn",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -7368,6 +8936,10 @@
     "target": "User",
     "effect": "GiveGroundImmunity",
     "battleEffect": "GiveGroundImmunity",
+    "contest": {
+      "type": "Cute",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Evasion"
@@ -7391,6 +8963,10 @@
     "flags": "Contact, Protect, Mirror",
     "thawsUser": true,
     "battleEffect": "RecoilBurnHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -7408,6 +8984,10 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 80
   },
@@ -7423,6 +9003,10 @@
     "description": "Never misses.",
     "flags": "Pulse, Ballistic, Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 90,
     "modern": {
@@ -7446,6 +9030,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpeedUp2",
+    "contest": {
+      "type": "Tough",
+      "effect": "FirstNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -7464,6 +9052,10 @@
     "statusChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "PoisonHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 160,
     "maxPower": 90
   },
@@ -7480,6 +9072,10 @@
     "flinchChancePercent": 20,
     "flags": "Pulse, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -7496,6 +9092,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -7511,6 +9111,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Cute",
+      "effect": "Basic"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -7526,6 +9130,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -7542,6 +9150,10 @@
     "flinchChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 130,
     "modern": {
@@ -7560,6 +9172,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -7578,6 +9194,10 @@
     "statChangeChancePercent": 10,
     "flags": "Sound, Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Cute",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -7593,6 +9213,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Pulse, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -7612,6 +9236,10 @@
     "flinchChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -7627,6 +9255,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 160,
     "maxPower": 130,
     "modern": {
@@ -7646,6 +9278,10 @@
     "drainPercent": 50,
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "RecoverHalfDamageDealt",
+    "contest": {
+      "type": "Beauty",
+      "effect": "TwoVoltageInARowAdvantage"
+    },
     "zPower": 140,
     "maxPower": 90,
     "modern": {
@@ -7666,6 +9302,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 70
   },
@@ -7684,6 +9324,10 @@
     "statChangeChancePercent": 10,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 95
   },
@@ -7702,6 +9346,10 @@
     "statChangeChancePercent": 10,
     "flags": "Ballistic, Protect, Mirror",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130,
     "modern": {
@@ -7721,6 +9369,10 @@
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilThird",
+    "contest": {
+      "type": "Cute",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -7739,6 +9391,10 @@
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -7755,6 +9411,10 @@
     "flags": "Protect, Mirror",
     "effect": "SwitchHeldItems",
     "battleEffect": "SwitchHeldItems",
+    "contest": {
+      "type": "Cool",
+      "effect": "StealVoltage"
+    },
     "zBonus": {
       "stats": [
         "Speed"
@@ -7775,6 +9435,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Beauty",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -7795,6 +9459,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "SpAtkUp2",
+    "contest": {
+      "type": "Cute",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -7812,6 +9480,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Punch, Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -7829,6 +9501,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "DoublePowerIfHit",
     "battleEffect": "DoublePowerIfHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -7845,6 +9521,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -7861,6 +9541,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cute",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -7879,6 +9563,10 @@
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchParalyzeHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -7897,6 +9585,10 @@
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchFreezeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -7915,6 +9607,10 @@
     "flinchChancePercent": 10,
     "flags": "Contact, Bite, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchBurnHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -7931,6 +9627,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -7949,6 +9649,10 @@
     "statChangeChancePercent": 30,
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "battleEffect": "LowerAccuracyHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -7965,6 +9669,10 @@
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -7981,6 +9689,10 @@
     "flinchChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -7999,6 +9711,10 @@
     "statChangeChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "LowerAccuracyHit",
+    "contest": {
+      "type": "Cute",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 120,
     "maxPower": 120
   },
@@ -8017,6 +9733,10 @@
     "statChangeChancePercent": 10,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "LowerSpDefHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -8033,6 +9753,10 @@
     "confuseChancePercent": 20,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "ConfuseHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -8049,6 +9773,10 @@
     "flags": "Protect, Mirror",
     "effect": "RemoveHazardsScreensEvaDown",
     "battleEffect": "RemoveHazardsScreensEvaDown",
+    "contest": {
+      "type": "Beauty",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -8071,6 +9799,10 @@
     "flags": "Mirror",
     "effect": "TrickRoom",
     "battleEffect": "TrickRoom",
+    "contest": {
+      "type": "Cute",
+      "effect": "RandomOrder"
+    },
     "zBonus": {
       "stats": [
         "Accuracy"
@@ -8094,6 +9826,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "UserSpAtkDown2",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -8115,6 +9851,10 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "ParalyzeHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -8133,6 +9873,10 @@
     "target": "AllOthers",
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "BurnHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -8152,6 +9896,10 @@
     "statChangeChancePercent": 100,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "UserSpAtkDown2",
+    "contest": {
+      "type": "Cute",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 195,
     "maxPower": 140,
     "modern": {
@@ -8170,6 +9918,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Hit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Basic"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -8186,6 +9938,10 @@
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Tough",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -8204,6 +9960,10 @@
     "critStage": 1,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "HighCriticalPoisonHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 140,
     "maxPower": 85
   },
@@ -8221,6 +9981,10 @@
     "statusChancePercent": 30,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "PoisonHit",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 190,
     "maxPower": 95,
     "modern": {
@@ -8240,6 +10004,10 @@
     "flinchChancePercent": 30,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "FlinchHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -8255,6 +10023,10 @@
     "description": "Never misses.",
     "flags": "Ballistic, Protect, Mirror, KingsRock",
     "battleEffect": "BypassAccuracy",
+    "contest": {
+      "type": "Cool",
+      "effect": "Basic"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -8271,6 +10043,10 @@
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Tough",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -8288,6 +10064,10 @@
     "flags": "Protect, Reflectable, Mirror",
     "effect": "SpAtkDown2OppositeGender",
     "battleEffect": "SpAtkDown2OppositeGender",
+    "contest": {
+      "type": "Beauty",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "stats": [
         "SpDefense"
@@ -8308,6 +10088,10 @@
     "target": "FoeSide",
     "effect": "StealthRock",
     "battleEffect": "StealthRock",
+    "contest": {
+      "type": "Cool",
+      "effect": "SuppressVoltage"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -8328,6 +10112,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithWeight",
     "battleEffect": "IncreasePowerWithWeight",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 160,
     "maxPower": 130
   },
@@ -8344,6 +10132,10 @@
     "flags": "Sound, Protect",
     "effect": "Chatter",
     "battleEffect": "Chatter",
+    "contest": {
+      "type": "Smart",
+      "effect": "PityPoints"
+    },
     "zPower": 120,
     "maxPower": 120,
     "modern": {
@@ -8363,6 +10155,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "Judgement",
     "battleEffect": "Judgement",
+    "contest": {
+      "type": "Smart",
+      "effect": "RandomOrder"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -8379,6 +10175,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "EatBerry",
     "battleEffect": "EatBerry",
+    "contest": {
+      "type": "Tough",
+      "effect": "StealVoltage"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -8398,6 +10198,10 @@
     "statChangeChancePercent": 70,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "RaiseSpAtkHit",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstPerformanceAdvantage"
+    },
     "zPower": 100,
     "maxPower": 100
   },
@@ -8414,6 +10218,10 @@
     "recoilPercent": 33,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilThird",
+    "contest": {
+      "type": "Tough",
+      "effect": "FinalPerformanceAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -8430,6 +10238,10 @@
     "description": "Inflicts regular damage with no additional effect.",
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "Priority1",
+    "contest": {
+      "type": "Beauty",
+      "effect": "FirstNextTurn"
+    },
     "zPower": 100,
     "maxPower": 90
   },
@@ -8446,6 +10258,10 @@
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Smart",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 175,
     "maxPower": 130
   },
@@ -8469,6 +10285,10 @@
     "target": "User",
     "flags": "Snatch",
     "battleEffect": "DefSpdUp",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleNextTurn"
+    },
     "zBonus": {
       "stats": [
         "Defense"
@@ -8490,6 +10310,10 @@
     "flags": "Snatch",
     "healPercent": 50,
     "battleEffect": "RestoreHalfHp",
+    "contest": {
+      "type": "Smart",
+      "effect": "Voltage"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     }
@@ -8507,6 +10331,10 @@
     "recoilPercent": 50,
     "flags": "Contact, Protect, Mirror, KingsRock",
     "battleEffect": "RecoilHalf",
+    "contest": {
+      "type": "Tough",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -8523,6 +10351,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "HitTwice",
     "battleEffect": "HitTwice",
+    "contest": {
+      "type": "Smart",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 140,
     "maxPower": 120
   },
@@ -8539,6 +10371,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "RechargeAfter",
     "battleEffect": "RechargeAfter",
+    "contest": {
+      "type": "Cool",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 200,
     "maxPower": 150
   },
@@ -8555,6 +10391,10 @@
     "critStage": 1,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "HighCritical",
+    "contest": {
+      "type": "Tough",
+      "effect": "TwoHeartsWhenVoltageUp"
+    },
     "zPower": 180,
     "maxPower": 130
   },
@@ -8571,7 +10411,11 @@
     "target": "User",
     "flags": "Dance",
     "effect": "FaintFullRestoreNextMon",
-    "battleEffect": "FaintFullRestoreNextMon"
+    "battleEffect": "FaintFullRestoreNextMon",
+    "contest": {
+      "type": "Beauty",
+      "effect": "Voltage"
+    }
   },
   {
     "id": 462,
@@ -8586,6 +10430,10 @@
     "flags": "Contact, Protect, Mirror, KingsRock",
     "effect": "IncreasePowerWithMoreHp",
     "battleEffect": "IncreasePowerWithMoreHp",
+    "contest": {
+      "type": "Tough",
+      "effect": "DoubleFinalAct"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -8602,6 +10450,10 @@
     "flags": "Protect, Mirror, KingsRock",
     "effect": "BindHit",
     "battleEffect": "BindHit",
+    "contest": {
+      "type": "Tough",
+      "effect": "ConsecutiveUse"
+    },
     "zPower": 180,
     "maxPower": 130,
     "modern": {
@@ -8624,6 +10476,10 @@
     "target": "AllFoes",
     "flags": "Protect, Reflectable, Mirror",
     "battleEffect": "StatusSleep",
+    "contest": {
+      "type": "Smart",
+      "effect": "NoVoltageDown"
+    },
     "zBonus": {
       "effect": "ClearNegativeBoost"
     },
@@ -8646,6 +10502,10 @@
     "statChangeChancePercent": 40,
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "LowerSpDef2Hit",
+    "contest": {
+      "type": "Cool",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
@@ -8671,6 +10531,10 @@
     ],
     "flags": "Protect, Mirror, KingsRock",
     "battleEffect": "RaiseAllStatsHit",
+    "contest": {
+      "type": "Smart",
+      "effect": "DoubleNextTurn"
+    },
     "zPower": 120,
     "maxPower": 110
   },
@@ -8687,6 +10551,10 @@
     "flags": "Contact, Mirror, KingsRock",
     "effect": "ShadowForce",
     "battleEffect": "ShadowForce",
+    "contest": {
+      "type": "Smart",
+      "effect": "MaxVoltageAdvantage"
+    },
     "zPower": 190,
     "maxPower": 140
   },
