@@ -46,6 +46,14 @@ internal sealed class GymPieces
     private readonly Dictionary<SunyshoreGears.Shape, Piece> gears = new();
     private readonly Dictionary<(int Sense, bool Half), Piece> gearButtons = new();
 
+    // The League's rooms (plan 01 · M9, part 2d): what stands still (carpets, rails, piers, the machine, the Pokémon
+    // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
+    // and the lava's frames
+    private bool league;
+    private Piece? doorShut, doorOpen, gate, liftPlatform;
+    private readonly List<Piece> lava = new();
+    private readonly List<(int X, int Y)> doorways = new();
+
     /// <summary>The height the player stands at, for a puzzle that hides what is above them.</summary>
     private float viewer;
 
@@ -76,6 +84,31 @@ internal sealed class GymPieces
 
     private IEnumerable<(Piece Piece, Matrix4x4 Transform)> Placed(Map map)
     {
+        if (league)
+        {
+            if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
+            // Each way on in the back wall: shut while its door stands on the map, open once it is gone
+            int back = map.RoomCorner().Back;
+            foreach (var (x, y) in doorways)
+            {
+                bool shut = false;
+                foreach (var npc in map.NPCs)
+                    if (npc.IsLeagueDoor && npc.GridX == x && npc.GridY == y) shut = true;
+                if ((shut ? doorShut : doorOpen) is { } door)
+                    yield return (door, Matrix4x4.CreateTranslation(x, Relief.At(map, x + 0.5f, back + 0.5f), back));
+            }
+            // The door behind the challenger: a gate across the front wall's kerb, there once it has shut
+            if (gate != null)
+                foreach (var npc in map.NPCs)
+                    if (npc.IsLeagueDoor && npc.GridY == map.Height - 1)
+                        yield return (gate, Matrix4x4.CreateTranslation(npc.GridX, Relief.At(map, npc.GridX + 0.5f, map.Height - 1.5f), map.Height - 1));
+            if (liftPlatform != null && map.Puzzle is LeagueLift lift)
+                yield return (liftPlatform, Matrix4x4.CreateTranslation(lift.Where.X, lift.Height - map.GroundLevel, lift.Where.Z));
+            // The lava drifts: four frames, three a second
+            if (lava.Count > 0)
+                yield return (lava[(int)((long)(FrameClock.Now * LavaFramesPerSecond) % lava.Count)], Matrix4x4.CreateTranslation(0f, LavaLevel - map.GroundLevel, 0f));
+            yield break;
+        }
         if (snowball != null)
         {
             // The snowballs still standing, each on its tile; a broken one is off the map until the player comes in again
@@ -168,11 +201,13 @@ internal sealed class GymPieces
     {
         bool hearthome = map.Name.StartsWith(HearthomeDoors.Entrance, StringComparison.Ordinal) && map.IsIndoors;
         bool snowy = map.Puzzle == null && map.IsIndoors && map.Everyone.Any(n => n.IsSnowball);
-        if (map.Puzzle == null && !hearthome && !snowy) return false;
+        bool leagueRoom = map.IsIndoors && map.Name.StartsWith(LeagueRooms, StringComparison.Ordinal);
+        if (map.Puzzle == null && !hearthome && !snowy && !leagueRoom) return false;
         if (builtFor == map) return true;
         Unload();
         builtFor = map;
-        if (map.Puzzle is EternaClock) BuildEterna(map);
+        if (leagueRoom) BuildLeague(map);
+        else if (map.Puzzle is EternaClock) BuildEterna(map);
         else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
         else if (map.Puzzle is SunyshoreGears turning) BuildSunyshore(map, turning);
@@ -906,6 +941,186 @@ internal sealed class GymPieces
         kit.Quad(a, b, c, d, art, Vector3.Normalize(outward));
     }
 
+    // ------------------------------------------------------------------ the League's rooms
+
+    /// <summary>The maps whose pieces these are: every room of the League, by its name.</summary>
+    public const string LeagueRooms = "PokemonLeague";
+
+    /// <summary>The lava's level under Flint's causeway, in tiles, and the pace of its frames.</summary>
+    public const float LavaLevel = -0.45f, LavaFramesPerSecond = 3f;
+
+    private static readonly Tone CarpetBlue = Tone.Of(48, 70, 150), CarpetCrimson = Tone.Of(170, 44, 56);
+
+    /// <summary>
+    /// A room of the League (style guide, "The League's rooms"): a door of the back wall, shut and open, placed at each
+    /// way on as the room's doors stand; the gate across the front wall; the platform of the room's lift and the rails
+    /// up its shaft; the lava under Flint's causeway; the carpets; the Champion's piers; the Hall of Fame's machine; and
+    /// in the Pokémon Center the block of wall the door to the Elite Four stands in.
+    /// </summary>
+    private void BuildLeague(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        league = true;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var (_, back) = map.RoomCorner();
+        var still = new KitBuilder(sheet, vs);
+
+        doorways.Clear();
+        foreach (var warp in map.Warps)
+            if (warp.SourceY == back - 1) doorways.Add((warp.SourceX, warp.SourceY));
+        var shutKit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        shutKit.Card(1, 31, 0.6f, 0, 56, shutKit.Face("league.door.shut", 30, 56, c => LeagueArt.PaintDoor(c, open: false)));
+        var openKit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        openKit.Card(1, 31, 0.6f, 0, 56, openKit.Face("league.door.open", 30, 56, c => LeagueArt.PaintDoor(c, open: true)));
+
+        // The gate stands on the kerb's line, twice as high, from two texels inside the room to the kerb's far side
+        var gateKit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        var gateFront = gateKit.Face("league.gate.front", 30, 16, LeagueArt.PaintGateFront);
+        gateKit.Box(1, T - 1, -2, 16, 0, 16, gateKit.Face("league.gate.top", 30, 18, LeagueArt.PaintGateTop), gateFront, null, null, gateFront);
+
+        KitBuilder? liftKit = null;
+        if (map.Puzzle is LeagueLift lift)
+        {
+            int w = LeagueLift.Width * T, d = LeagueLift.Depth * T;
+            liftKit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+            var side = liftKit.Face("league.lift.side", w - 2, 8, LeagueArt.PaintLiftSide);
+            var end = liftKit.Face("league.lift.end", d - 2, 8, LeagueArt.PaintLiftSide);
+            liftKit.Box(1, w - 1, 1, d - 1, -6, 2, liftKit.Face("league.lift.top", w - 2, d - 2, LeagueArt.PaintLiftTop), side, end, end);
+
+            // The rails: up the shaft's wall from the platform's corners to the floor above
+            int rows = (int)MathF.Round((lift.Where.Top - lift.Where.Bottom) * T / vs);
+            var rail = still.Face($"league.rail.{rows}", 4, rows, LeagueArt.PaintRail);
+            still.Origin = new Vector3(lift.Where.X, lift.Where.Bottom - map.GroundLevel, lift.Where.Z);
+            foreach (int x in new[] { -5, w + 1 })
+                still.Box(x, x + 4, 0, 3, 0, rows, null, rail, rail, rail);
+        }
+
+        // Lava over every void tile of a room of fire
+        var lavaKits = new List<KitBuilder>();
+        if (map.ArenaType == Data.PokemonType.Fire)
+            for (int frame = 0; frame < 4; frame++)
+            {
+                int f = frame;
+                var kit = new KitBuilder(sheet, vs);
+                for (int y = back; y < map.Height - 1; y++)
+                    for (int x = 1; x < map.Width - 1; x++)
+                    {
+                        if (map.GetGroundTile(x, y) != TileType.Void) continue;
+                        int qx = x % 2, qy = y % 2;
+                        kit.Origin = new Vector3(x, 0f, y);
+                        kit.Decal(0, T, 0, T, 0f, kit.Face($"league.lava.{f}.{qx}.{qy}", T, T, c => LeagueArt.PaintLava(c, f, qx, qy)));
+                    }
+                lavaKits.Add(kit);
+            }
+
+        switch (map.Hall)
+        {
+            case HallStyle.Champion:
+                // The carpet from the way in to the platform, and a pier on each of the room's four blocks
+                Carpet(still, map, CarpetBlue, 7, 10, 3, map.Height - 11);
+                for (int y = back; y < map.Height - 1; y++)
+                    for (int x = 1; x < map.Width - 1; x++)
+                        if (Blocked(map, x, y) && !Blocked(map, x - 1, y) && !Blocked(map, x, y - 1)) Pier(still, map, x, y);
+                break;
+            case HallStyle.HallOfFame when map.Warps.Count > 0:
+                Carpet(still, map, CarpetCrimson, 4, back, 3, map.Height - 1 - back);
+                break;
+            case HallStyle.HallOfFame:
+                Carpet(still, map, CarpetCrimson, 6, back + 2, 5, map.Height - 3 - back);
+                Machine(still, map, 7, back);
+                break;
+        }
+        if (map.Interior == InteriorStyle.PokemonCenter) CenterGate(still, map);
+
+        art = Upload(sheet);
+        stillParts = Make(still);
+        doorShut = Make(shutKit);
+        doorOpen = Make(openKit);
+        gate = Make(gateKit);
+        if (liftKit != null) liftPlatform = Make(liftKit);
+        foreach (var kit in lavaKits)
+            if (Make(kit) is { } piece) lava.Add(piece);
+    }
+
+    private static bool Blocked(Map map, int x, int y) => map.InBounds(x, y) && map.IsSolid(x, y) && map.GetGroundTile(x, y) == TileType.Floor;
+
+    /// <summary>A carpet over a rectangle of tiles, a texel above the floor: a stretch to each row, the first and the last with its border across.</summary>
+    private static void Carpet(KitBuilder kit, Map map, Tone field, int x, int y, int width, int depth)
+    {
+        const int T = GroundBaker.ArtTile;
+        for (int row = 0; row < depth; row++)
+        {
+            bool top = row == 0, bottom = row == depth - 1;
+            var art = kit.Face($"league.carpet.{field.Base.R}.{width}.{top}.{bottom}", width * T - 4, T, c => LeagueArt.PaintCarpet(c, field, top, bottom));
+            kit.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + row + 0.5f), y + row);
+            kit.Decal(2, width * T - 2, 0, T, 0.012f, art);
+        }
+    }
+
+    /// <summary>One of the Champion's piers, on the block of tiles whose north-west corner is given: marble, 76 texels high.</summary>
+    private static void Pier(KitBuilder kit, Map map, int x, int y)
+    {
+        const int T = GroundBaker.ArtTile, high = 76;
+        int wide = 1, deep = 1;
+        while (Blocked(map, x + wide, y)) wide++;
+        while (Blocked(map, x, y + deep)) deep++;
+        int w = wide * T - 10, d = deep * T - 14;
+        kit.Origin = new Vector3(x, Relief.At(map, x + wide / 2f, y + deep / 2f), y);
+        var front = kit.Face($"league.pier.{w}", w, high, LeagueArt.PaintPier);
+        var side = kit.Face($"league.pier.{d}", d, high, LeagueArt.PaintPier);
+        kit.Box(5, 5 + w, 8, 8 + d, 0, high, kit.Face($"league.pier.top.{w}x{d}", w, d, LeagueArt.PaintPierTop), front, side, side);
+    }
+
+    /// <summary>The Hall of Fame's machine against the back wall: a console three tiles wide and a screen behind it.</summary>
+    private static void Machine(KitBuilder kit, Map map, int x, int back)
+    {
+        kit.Origin = new Vector3(x, 0f, back);
+        var side = kit.Face("league.machine.side", 40, 20, c => Pix.Raised(c, 0, 0, c.Width, c.Height, LeagueArt.Steel));
+        kit.Box(8, 88, 18, 58, 0, 20, kit.Face("league.machine.top", 80, 40, LeagueArt.PaintConsoleTop),
+            kit.Face("league.machine.front", 80, 20, LeagueArt.PaintConsoleFront), side, side);
+        kit.Card(18, 78, 8, 24, 68, kit.Face("league.machine.screen", 60, 44, LeagueArt.PaintScreen));
+    }
+
+    /// <summary>
+    /// The block of the Pokémon Center's own wall that the door to the Elite Four stands in: the room's inner wall
+    /// tiles round the warp, built to the walls' full height, a pilaster of gold at each side of the door.
+    /// </summary>
+    private static void CenterGate(KitBuilder kit, Map map)
+    {
+        const int T = GroundBaker.ArtTile, wallH = PropModels.WallHeight;
+        var (_, back) = map.RoomCorner();
+        foreach (var warp in map.Warps)
+        {
+            int x = warp.SourceX, y = warp.SourceY;
+            if (y < back || y >= map.Height - 1 || map.GetGroundTile(x, y) != TileType.Wall) continue;
+            // The block: the run of wall tiles along the warp's row, and up to the back wall
+            int x0 = x, x1 = x;
+            while (map.GetGroundTile(x0 - 1, y) == TileType.Wall && x0 - 1 > 0) x0--;
+            while (map.GetGroundTile(x1 + 1, y) == TileType.Wall && x1 + 1 < map.Width - 1) x1++;
+            int w = (x1 - x0 + 1) * T, d = (y - back + 1) * T, door = (x - x0) * T + 1;
+            kit.Origin = new Vector3(x0, 0f, back);
+            var front = kit.Face($"league.gate.wall.{w}", w, wallH, c =>
+            {
+                GroundBaker.PaintWall(c, map.Interior);
+                var leaf = new PixelCanvas(30, 56);
+                LeagueArt.PaintDoor(leaf, open: true);
+                for (int py = 0; py < 56; py++)
+                    for (int px = 0; px < 30; px++)
+                        if (leaf.IsOpaque(px, py)) c.SetRaw(door + px, wallH - 56 + py, leaf.Get(px, py));
+                foreach (int px in new[] { door - 12, door + 34 })
+                {
+                    var column = new PixelCanvas(8, wallH - 6);
+                    LeagueArt.PaintPilaster(column);
+                    for (int cy = 0; cy < column.Height; cy++)
+                        for (int cx = 0; cx < 8; cx++) c.SetRaw(px + cx, 6 + cy, column.Get(cx, cy));
+                }
+            });
+            var side = kit.Face($"league.gate.side.{d}", d, wallH, c => GroundBaker.PaintWall(c, map.Interior));
+            kit.Box(0, w, 0, d, 0, wallH, kit.Face($"league.gate.top.{w}x{d}", w, d, GroundBaker.PaintWallTop), front, side, side);
+        }
+    }
+
     // ------------------------------------------------------------------ the GPU
 
     private Texture2D Upload(ArtSheet sheet)
@@ -949,6 +1164,10 @@ internal sealed class GymPieces
         Array.Clear(decks);
         platforms.Clear();
         snowball = null;
+        league = false;
+        doorShut = doorOpen = gate = liftPlatform = null;
+        lava.Clear();
+        doorways.Clear();
         gears.Clear();
         gearButtons.Clear();
         rafts.Clear();

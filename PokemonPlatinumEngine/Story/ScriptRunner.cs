@@ -358,6 +358,11 @@ public sealed class ScriptRunner
             case Op.GearButton:
                 host.PressGearButton(i.Name switch { "reverse" => SunyshoreGears.Button.Reverse, "double" => SunyshoreGears.Button.Double, _ => SunyshoreGears.Button.Normal });
                 break;
+            // TriggerPlatformLift: the League's platform sets off up its shaft with the player on it; with "check",
+            // CheckPlatformLiftNotUsedWhenEnteredMap: whether it stood at the foot as the player came in
+            case Op.PlatformLift:
+                Result = (i.Option ? host.LiftNotUsed() : host.TriggerLift()) ? 1 : 0;
+                break;
             case Op.Partner:
                 if (i.Option)
                 {

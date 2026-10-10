@@ -1,0 +1,143 @@
+{
+  "name": "PokemonLeagueHallwayToHallOfFame",
+  "displayName": "Pokémon League",
+  "bgmTrack": "sinnoh/pokemon_league",
+  "interior": "Gym",
+  "trees": "Round",
+  "hall": "HallOfFame",
+  "width": 11,
+  "height": 25,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "###########"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "#####.#####",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.#.....#.#",
+    "#.#.....#.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.#.....#.#",
+    "#.#.....#.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.#.....#.#",
+    "#.#.....#.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "###########"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 9, "depth": 21, "behaviour": "ShinyFloor" }
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 6,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 12,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 12,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 18,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Statue",
+      "x": 8,
+      "y": 18,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueHallOfFame",
+      "targetX": 8,
+      "targetY": 15,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "cynthia",
+      "name": "Cynthia",
+      "npcType": "Cynthia",
+      "x": 5,
+      "y": 22,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_HALLWAY_TO_HALL_OF_FAME_CYNTHIA"
+    },
+    {
+      "id": "prof_rowan",
+      "name": "Professor Rowan",
+      "npcType": "Rowan",
+      "x": 4,
+      "y": 22,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_HALLWAY_TO_HALL_OF_FAME_PROF_ROWAN"
+    }
+  ],
+  "wildEncounters": []
+}

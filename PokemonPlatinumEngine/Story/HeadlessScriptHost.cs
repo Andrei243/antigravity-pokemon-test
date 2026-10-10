@@ -508,6 +508,17 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
+    public bool TriggerLift()
+    {
+        Log.Add("platformlift");
+        // The platform is at the top at once, and the player on it stands at its height
+        if (Map?.Puzzle is not LeagueLift lift || !lift.Trigger()) return false;
+        lift.Finish();
+        return true;
+    }
+
+    public bool LiftNotUsed() => Map?.Puzzle is not LeagueLift lift || lift.NotUsedWhenEntered;
+
     /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>
     public NPC? Travelling { get; private set; }
     public string? Partner { get; private set; }

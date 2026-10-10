@@ -1,0 +1,54 @@
+# The hallway to the Hall of Fame (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_pokemon_league_hallway_to_hall_of_fame.s).
+#
+# One scene, played as the new Champion comes in: seventeen steps up the hall, Cynthia coming up on the right and the
+# professor on the left, their words, and all three through the door at the head of the hall. Both are off the map
+# until then (the Champion's room sets their flags as the player leaves it), and nobody walks here by themselves.
+
+
+# PokemonLeagueHallwayToHallOfFame_OnFrame_EnterHallOfFame
+script OnEnter
+  walk player up 17
+  wait 0.25
+  face player down
+  place cynthia 6 14 up
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_HALLWAY_TO_HALL_OF_FAME_CYNTHIA
+  show cynthia
+  walk cynthia up 8
+  face cynthia left
+  face player right
+  speaker "Cynthia"
+  say "The room at the end of this hall is the Hall of Fame. The Trainers who have beaten the League are remembered there, with the Pokémon who stood beside them."
+  place prof_rowan 4 14 up
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_HALLWAY_TO_HALL_OF_FAME_PROF_ROWAN
+  show prof_rowan
+  walk prof_rowan up 8
+  face prof_rowan right
+  face player left
+  speaker "Professor Rowan"
+  say "{player}! I watched your last battle from beginning to end. It was splendid. Truly splendid!"
+  face cynthia left
+  emote cynthia exclaim
+  speaker "Cynthia"
+  say "Professor Rowan! It's been far too long."
+  speaker "Professor Rowan"
+  say "Hm! So it has. {player}, when I handed you a Pokédex I hoped you would fill a few pages of it. I did not expect to be standing here. You have grown into a real Champion."
+  face cynthia left
+  speaker "Cynthia"
+  say "You haven't changed at all, Professor. I'm glad of it."
+  if girl goto Girl
+  say "Now, {player}. This way, young man: the Hall is waiting for you."
+  goto In
+label Girl
+  say "Now, {player}. This way, young lady: the Hall is waiting for you."
+label In
+  say "Professor, please come in with us."
+  walk cynthia up 2 left 1 up 2
+  hide cynthia
+  walk prof_rowan up 2 right 1 up 2
+  hide prof_rowan
+  face player up
+  walk player up 4
+  sound "stairs"
+  warp "PokemonLeagueHallOfFame" 8 15 up
+  end

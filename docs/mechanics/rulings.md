@@ -457,6 +457,32 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The statues | Name the player once the Badge is won, and the rival too once `VAR_RIVAL_BEAT_SUNYSHORE_GYM` is set | The player only | The rival's scene in Sunyshore City, which sets the variable, is plan 02 · S13's; the statue's branch comes with it |
 | The floor's behaviour | `DYNAMIC_HEIGHT_COLLISION` (0x59) on most of the floor | Left out | It acts only under a dynamic height plate, and the Gym has none |
 
+**The League's rooms** (plan 01 · M9 2d)
+
+**Platinum's rules, kept as they are** (`src/platform_lift.c`, `res/field/scripts/scripts_pokemon_league_*.s`, `res/field/events/events_pokemon_league_*.json`)
+
+- **There is no way back.** Each room is come into on a tile that carries no warp, and leads on by one door: from the Pokémon Center's door to the Hall of Fame the only ways out are to win and to lose. A battle lost wakes the player in the League's own Pokémon Center.
+- **The Pokémon Center makes the rooms ready**: every time the player comes into it, the four doors behind are open, the four doors on are shut and the Four have not been beaten (`FLAG_HIDE_POKEMON_LEAGUE_<WHO>_ROOM_ENTRANCE_DOOR` set, `…_EXIT_DOOR` and `FLAG_DEFEATED_<WHO>` cleared).
+- **A room of the Four**: the challenger walks two steps in and the door comes down behind; the door on is gone once the room's master is beaten. Cynthia's room, the hallway and the Hall of Fame are each one scene, played as the player comes in.
+- **A platform** is three tiles by two, rises two units of sixteen a frame at thirty frames a second (3.75 tiles a second), and never comes down: ten tiles to Aaron's room, five to Bertha's, Flint's, Lucian's and the Champion's, fifteen in the Champion's room. A passage's sets off when the player steps onto its middle tile, once.
+- **The Four's teams, their Full Restores and their minds** are `trainers.json`'s (`elite_four_aaron`, `_bertha`, `_flint`, `_lucian`, `champion_cynthia`).
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The guard at the door | Looks the Badges over and steps aside, whoever asks | Counts them, and stays where he is for fewer than eight | Nobody reaches the original's League without all eight (Victory Road needs Waterfall, and Waterfall the Beacon Badge); a game brought there some other way is told so instead of let through |
+| The way into a room of the Four | An open doorway in the room's south wall, which the door shuts before the player can act | Wall in the room's own grid; the door stands in it once it has shut | The same in play; the room's front wall is cut away to its kerb, as every room's is |
+| When a room's arrival plays | While a local variable is nought (the frame table is asked every frame) | For the Four, while the door behind is still open (its own flag); for Cynthia's room, the hallway and the Hall of Fame, once as the player comes in | A place's script runs once on arrival here, and a local variable is lost to a save made in the room, which would walk the player in again |
+| A platform's floor | The dynamic height plate takes the top's height once the platform has stopped; the player is held on it meanwhile | The floor is where the platform is (`LeagueLift.FloorAt`); the plate's own height (`Floor`) changes as the original's does | Nobody steps while it rises, and whoever stands on it is drawn at its height |
+| Where a platform stands as the player comes in | By the warp's row: at the foot from the bottom warp, at the top from any other; saved with the game | By the height the player stands at, which the save keeps | The same for both of the original's ways in; a game saved on a platform at the top comes back with it there |
+| `FLAG_ALT_MUSIC_CHAMPION_ROOM` | Set before Cynthia's battle, cleared when it is lost | Set once it is won | A script ends where a battle is lost; the room has no second song yet (plan 05 · A6) |
+| The Four's and Cynthia's rematch teams | Once Charon is arrested at Stark Mountain (`FLAG_ARRESTED_CHARON_STARK_MOUNTAIN`) | Not asked | The flag's scene is plan 02 · S15's, and the suite allows no flag read that nothing sets |
+| The Hall of Fame | The professor's and Cynthia's words, the Poké Balls on the machine, each Pokémon shown, the save, the credits, the game begun again at home, and the flags of `SetHallOfFameVictoryFlagsAndVars` | The walk to the machine, a welcome, then the team healed and entered (`halloffame`, `pc halloffame`), `FLAG_GAME_COMPLETED`, the region's story done, Giratina back in Turnback Cave unless caught, and a warp to the player's room | The scene is plan 02 · S14's: this is the smallest end that leaves the game playable (`scripts/PokemonLeagueHallOfFame.txt` lists what S14 adds) |
+| The rival before the door | His last battle, by a trigger in front of the guard | Not there | Plan 02 · S14's |
+| The Pokémon Center's PC | Set into the back wall's row at (8, 0), used from (8, 1) | A desk at (8, 1), used from (8, 2) | A room here has no floor in its back wall's row |
+| The Pokémon Center's stairs | An alcove south of the hall with the ways to the upper floor and the basement | Left out | Those floors are plan 01 · M11's |
+| The rooms' music | `SEQ_D_LEAGUE` in the passages and the rooms, another song in the Champion's room once she is beaten, `SEQ_BLD_DENDO` in the hallway and the Hall | The League's own theme (`sinnoh/pokemon_league`) everywhere | Plan 05 · A6 owes the three songs |
+| Flint's greeting | He runs on the spot between its halves, faster and faster | A start (the "!" over his head) and a beat | A person has no run on the spot yet |
+
 ## The first chapter (2026-10-06, plan 02 · S4)
 
 **Platinum's rules, kept as they are** (`res/field/scripts/scripts_twinleaf_town*.s`, `scripts_route_201.s`, `scripts_verity_lakefront.s`, `scripts_lake_verity_low_water.s`, `scripts_sandgem_town*.s`, `scripts_route_202.s`, `src/field/field_system.c`'s `InitNewGame`)

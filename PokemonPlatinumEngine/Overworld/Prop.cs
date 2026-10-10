@@ -139,6 +139,8 @@ public enum PropType
     Bollard,
     /// <summary>A great ball of packed snow on the Snowpoint Gym's ice, broken by sliding into it fast enough.</summary>
     Snowball,
+    /// <summary>A door of the League's rooms (plan 01 · M9, part 2d): a thing of the map, drawn in its wall by the room's pieces.</summary>
+    LeagueDoor,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,

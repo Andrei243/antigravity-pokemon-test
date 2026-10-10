@@ -854,6 +854,7 @@ internal sealed class MapScene
         kit.Origin = Vector3.Zero;
 
         var theme = Map.ArenaType;
+        var look = Map.Hall;
 
         // A room with relief (plan 01 · M9: the Oreburgh Gym's tiers) has its walls standing on its highest ground,
         // and under them, wherever the floor beside a wall is lower, the face of the ground from the floor up to it
@@ -869,8 +870,8 @@ internal sealed class MapScene
             Plinths(batches, lx, by, wallFoot);
         }
         kit.Origin = new Vector3(0, wallFoot, 0);
-        var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style, 0, theme));
-        var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme));
+        var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+        var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
         kit.Quad(kit.At(left, 0, back), kit.At(right, 0, back), kit.At(right, wallH, back), kit.At(left, wallH, back), backWall, KitBuilder.FrontNormal);
         kit.Quad(kit.At(left, 0, front), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, front), sideWall, Vector3.UnitX);
         kit.Quad(kit.At(right, 0, back), kit.At(right, 0, front), kit.At(right, wallH, front), kit.At(right, wallH, back), sideWall, -Vector3.UnitX);
@@ -912,7 +913,7 @@ internal sealed class MapScene
             for (int tx = lx; tx < w - 1; tx++)
             {
                 if (Map.GetGroundTile(tx, ty) != TileType.Wall) continue;
-                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH, theme));
+                inner ??= kit.Face("wall.inner", T, innerH, c => GroundBaker.PaintWall(c, style, wallH - innerH, theme, look));
                 bool n = Floor(tx, ty - 1), s = Floor(tx, ty + 1), wst = Floor(tx - 1, ty), e = Floor(tx + 1, ty);
                 var top = kit.Face($"wall.top.inner.{(n ? "n" : "")}{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T,
                     c => GroundBaker.PaintWallTop(c, n, s, wst, e));
@@ -953,10 +954,21 @@ internal sealed class MapScene
 
     /// <summary>
     /// The face a Gym's hall stands on where its leader's colours give it one of its own (style guide, "Gyms"): the
-    /// Sunyshore Gym's floors are decks of steel over the dark. Null for the rest, whose floors stand on earth.
+    /// Sunyshore Gym's floors are decks of steel over the dark, the League's stand on dressed stone. Null for the rest,
+    /// whose floors stand on earth.
     /// </summary>
-    private MeshBuilder? HallFace(MeshBatches batches) =>
-        Map.Interior == InteriorStyle.Gym && Map.ArenaType == Data.PokemonType.Electric ? batches.For(SceneTextures.PowerFace) : null;
+    private MeshBuilder? HallFace(MeshBatches batches)
+    {
+        if (Map.Interior != InteriorStyle.Gym) return null;
+        if (Map.ArenaType == Data.PokemonType.Electric) return batches.For(SceneTextures.PowerFace);
+        // The League's rooms stand on dressed stone: marble in the Champion's, basalt over Flint's lava, sandstone under
+        // Bertha's walls, slate in the passages
+        if (Map.Hall == HallStyle.Champion) return batches.For(SceneTextures.LeagueFace(LeagueArt.Stone.Marble));
+        if (Map.Hall != null) return batches.For(SceneTextures.LeagueFace(LeagueArt.Stone.Slate));
+        if (Map.Arena == BattleArena.League && Map.ArenaType == Data.PokemonType.Fire) return batches.For(SceneTextures.LeagueFace(LeagueArt.Stone.Basalt));
+        if (Map.Arena == BattleArena.League && Map.ArenaType == Data.PokemonType.Ground) return batches.For(SceneTextures.LeagueFace(LeagueArt.Stone.Sandstone));
+        return null;
+    }
 
     /// <summary>
     /// The ground's face under a room's back and side walls where the floor beside them lies lower than the walls'

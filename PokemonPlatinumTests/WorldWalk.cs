@@ -61,6 +61,11 @@ internal static class WorldWalk
                 continue;
             }
 
+            // A platform of the League's (plan 01 · M9, part 2d) carries whoever steps onto it at the foot of its
+            // shaft up to the top, once
+            if (map.Puzzle is LeagueLift lift && lift.Covers(x, y) && MathF.Abs(height - lift.Where.Bottom) < 0.01f)
+                Visit(map, x, y, mode, lift.Where.Top, arrived: false);
+
             // Every climb the field offers is taken: the player says yes to Waterfall and Rock Climb
             var walker = new Walker(mode, height, Moves: Everything, Climbing: true);
             foreach (var way in Ways)
@@ -100,6 +105,16 @@ internal static class WorldWalk
                          && (HiddenAtStart.Value.Contains(hiding) || HiddenByTheStory.Value.Contains(hiding))
                          && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // Someone whose own script walks them aside (the guard at the League's door, once he has seen the
+                // Badges) stands in the way only until then
+                else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { Script: { } aside } stepping && StepsAside(aside, stepping.ScriptFile ?? map.Name)
+                         && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
+                // A walkway of the Sunyshore Gym's gears that isn't there now is there once a button has turned them
+                // (GymTests searches the buttons; here every walkway counts as one that can be come to)
+                else if (step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears && mode == TravelMode.OnFoot
+                         && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // Someone who takes the player somewhere when spoken to (a ferry) is a way there too
                 else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { Script: { } name } person)
                     foreach (var sent in WarpsOf(name, person.ScriptFile))
@@ -129,6 +144,11 @@ internal static class WorldWalk
     private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file) =>
         PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything().Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)
         ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+
+    /// <summary>Whether a person's script walks them off their own tile (<c>walk self</c>).</summary>
+    internal static bool StepsAside(string script, string? file) =>
+        PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything()
+            .Any(i => i.Op == PokemonPlatinumEngine.Story.Op.Walk && i.Name == "self") == true;
 
     private static int IndexOf(IReadOnlyList<(int X, int Y)> tiles, (int X, int Y) tile)
     {

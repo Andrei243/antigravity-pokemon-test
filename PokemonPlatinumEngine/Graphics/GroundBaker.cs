@@ -34,7 +34,7 @@ internal static class GroundBaker
             // own tiles where its tiles are floor, wall or door (a wall's shows at the foot of an inner wall with no face
             // to the south, a door's round the exit mat; style guide, "Gyms")
             c = PixelGround.Bake(map, new TileWindow(0, 0, map.Width, map.Height), pad: 0, worldSeeds: false, out _);
-            var hall = HallTiles(map.ArenaType);
+            var hall = HallTiles(map.ArenaType, map.Hall);
             for (int ty = 0; ty < map.Height; ty++)
                 for (int tx = 0; tx < map.Width; tx++)
                 {
@@ -109,8 +109,23 @@ internal static class GroundBaker
     }
 
     /// <summary>The two tones of a Gym hall's floor tiles, in its leader's colours (style guide, "Gyms").</summary>
+    private static (Color A, Color B, Color Grout) HallTiles(PokemonType? theme, HallStyle? hall) => hall switch
+    {
+        // The League's rooms that have no type (style guide, "The League's rooms"): its own slate, the Champion's
+        // marble, the Hall of Fame's dark polished stone
+        HallStyle.League => (Rgb(128, 140, 172), Rgb(116, 128, 160), Rgb(76, 86, 116)),
+        HallStyle.Champion => (Rgb(228, 226, 216), Rgb(212, 210, 200), Rgb(168, 160, 140)),
+        HallStyle.HallOfFame => (Rgb(58, 60, 84), Rgb(50, 52, 76), Rgb(32, 34, 52)),
+        _ => HallTiles(theme)
+    };
+
     private static (Color A, Color B, Color Grout) HallTiles(PokemonType? theme) => theme switch
     {
+        // The rooms of the Elite Four: Aaron's mossy stone, Bertha's sandstone, Flint's basalt, Lucian's violet
+        PokemonType.Bug => (Rgb(150, 176, 120), Rgb(138, 164, 110), Rgb(96, 120, 80)),
+        PokemonType.Ground => (Rgb(214, 186, 140), Rgb(202, 172, 126), Rgb(150, 122, 86)),
+        PokemonType.Fire => (Rgb(92, 74, 78), Rgb(80, 64, 70), Rgb(50, 40, 46)),
+        PokemonType.Psychic => (Rgb(170, 140, 206), Rgb(156, 126, 194), Rgb(104, 80, 146)),
         // Veilstone's dojo: boards of pale wood; the Pastoria Gym's pool deck: white and pale blue
         PokemonType.Fighting => (Rgb(214, 172, 118), Rgb(200, 156, 104), Rgb(150, 108, 72)),
         PokemonType.Water => (Rgb(234, 242, 248), Rgb(206, 226, 240), Rgb(150, 182, 210)),
@@ -199,9 +214,12 @@ internal static class GroundBaker
     /// The same for a Gym, whose walls are in its leader's colours (<paramref name="theme"/>, the type its stage is
     /// themed on; style guide, "Gyms"): a greenhouse's green, a dark hall's violet, a dojo's wood, a pool's blue.
     /// </summary>
-    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from, PokemonType? theme)
+    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from, PokemonType? theme) => PaintWall(c, style, from, theme, null);
+
+    /// <summary>The same for a hall with a look of its own and no type (<paramref name="hall"/>: a room of the League; style guide, "The League's rooms").</summary>
+    public static void PaintWall(PixelCanvas c, InteriorStyle style, int from, PokemonType? theme, HallStyle? hall)
     {
-        var (paper, motif, wainscot, trim, skirting) = style == InteriorStyle.Gym ? GymWall(theme) : style switch
+        var (paper, motif, wainscot, trim, skirting) = style == InteriorStyle.Gym ? GymWall(theme, hall) : style switch
         {
             InteriorStyle.PokemonCenter => (Rgb(250, 242, 240), Rgb(242, 214, 216), Tone.Of(232, 108, 116), Tone.Of(248, 248, 250), Tone.Of(150, 70, 84)),
             InteriorStyle.PokeMart => (Rgb(234, 242, 250), Rgb(214, 226, 242), Tone.Of(76, 128, 216), Tone.Of(248, 248, 250), Tone.Of(52, 84, 150)),
@@ -239,8 +257,24 @@ internal static class GroundBaker
             }
     }
 
+    private static (Color Paper, Color Motif, Tone Wainscot, Tone Trim, Tone Skirting) GymWall(PokemonType? theme, HallStyle? hall) => hall switch
+    {
+        // The League's passages: navy with a motif and a rail of gold; the Champion's room: ivory and gold; the Hall of
+        // Fame and its hallway: midnight with gold over deep violet
+        HallStyle.League => (Rgb(58, 70, 112), Rgb(226, 190, 96), Tone.Of(84, 96, 138), Tone.Of(226, 190, 96), Tone.Of(38, 46, 76)),
+        HallStyle.Champion => (Rgb(236, 230, 212), Rgb(222, 190, 104), Tone.Of(206, 178, 110), Tone.Of(250, 246, 232), Tone.Of(150, 120, 60)),
+        HallStyle.HallOfFame => (Rgb(40, 44, 74), Rgb(214, 180, 92), Tone.Of(70, 60, 96), Tone.Of(214, 180, 92), Tone.Of(26, 26, 44)),
+        _ => GymWall(theme)
+    };
+
     private static (Color Paper, Color Motif, Tone Wainscot, Tone Trim, Tone Skirting) GymWall(PokemonType? theme) => theme switch
     {
+        // The rooms of the Elite Four: leaf green over bark, clay over terracotta, deep red and brass over charcoal,
+        // lilac over plum
+        PokemonType.Bug => (Rgb(196, 222, 170), Rgb(170, 204, 146), Tone.Of(126, 98, 64), Tone.Of(244, 246, 226), Tone.Of(84, 64, 44)),
+        PokemonType.Ground => (Rgb(222, 196, 150), Rgb(204, 174, 126), Tone.Of(170, 110, 70), Tone.Of(240, 226, 196), Tone.Of(110, 72, 48)),
+        PokemonType.Fire => (Rgb(122, 50, 46), Rgb(226, 128, 60), Tone.Of(70, 58, 64), Tone.Of(226, 150, 70), Tone.Of(40, 32, 38)),
+        PokemonType.Psychic => (Rgb(206, 186, 232), Rgb(236, 196, 238), Tone.Of(110, 76, 150), Tone.Of(246, 236, 250), Tone.Of(70, 48, 104)),
         // Eterna's greenhouse: pale green glass between white frames, over a wainscot of green-stained boards
         PokemonType.Grass => (Rgb(214, 238, 214), Rgb(190, 224, 192), Tone.Of(96, 156, 96), Tone.Of(250, 252, 248), Tone.Of(66, 112, 70)),
         PokemonType.Ghost => (Rgb(74, 58, 96), Rgb(96, 76, 124), Tone.Of(60, 44, 80), Tone.Of(148, 120, 176), Tone.Of(40, 30, 56)),

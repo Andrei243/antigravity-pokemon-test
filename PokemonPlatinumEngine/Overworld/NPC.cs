@@ -135,6 +135,13 @@ public class NPC
     /// <summary>The <see cref="NpcType"/>s of the things of the Gyms' puzzles: in the way like a person, drawn as a card.</summary>
     public const string PunchingBagType = "PunchingBag", TireStackType = "TireStack", BollardType = "Bollard", SnowballType = "Snowball";
 
+    /// <summary>
+    /// A door of a room of the League (plan 01 · M9, part 2d; the original's <c>OBJ_EVENT_GFX_ELITE_FOUR_ROOM_DOOR</c>):
+    /// a thing of the map that stands in a doorway while its flag lets it, shutting the way in behind the challenger
+    /// and the way on until the room's master is beaten. Drawn with the room's pieces (<c>GymPieces</c>), in its wall.
+    /// </summary>
+    public const string LeagueDoorType = "LeagueDoor";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -142,11 +149,15 @@ public class NPC
         TireStackType => PropType.TireStack,
         BollardType => PropType.Bollard,
         SnowballType => PropType.Snowball,
+        LeagueDoorType => PropType.LeagueDoor,
         _ => null
     };
 
     /// <summary>A snowball of the Snowpoint Gym (plan 01 · M9, part 2b), which someone sliding fast enough breaks (<see cref="IceSlide"/>).</summary>
     public bool IsSnowball => NpcType == SnowballType;
+
+    /// <summary>A door of the League's rooms (<see cref="LeagueDoorType"/>).</summary>
+    public bool IsLeagueDoor => NpcType == LeagueDoorType;
 
     /// <summary>The <see cref="NpcType"/> of an obstacle.</summary>
     public static string TypeOf(PropType obstacle) => obstacle switch

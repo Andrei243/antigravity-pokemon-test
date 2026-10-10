@@ -1,0 +1,175 @@
+{
+  "name": "PokemonLeagueAaronRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "sinnoh/pokemon_league",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Bug",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#..*.*..:..*....#",
+    "#......:::......#",
+    "#*.....:::.....*#",
+    "#...*..:::......#",
+    "#.......:..*...*#",
+    "#..*....:.......#",
+    "#.*.....:...*...#",
+    "#....*..:.....*.#",
+    "#.......:..*....#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "####............#",
+    "####.........#.##",
+    "###..........#.##",
+    "##...........#.##",
+    "#............#.##",
+    "#............#.##",
+    "###.............#",
+    "####............#",
+    "####............#",
+    "#################"
+  ],
+  "props": [
+    {
+      "type": "Hedge",
+      "x": 13,
+      "y": 4,
+      "width": 1,
+      "depth": 5
+    },
+    {
+      "type": "Topiary",
+      "x": 15,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 15,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 15,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 1,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 2,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Topiary",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueElevatorToBerthaRoom",
+      "targetX": 4,
+      "targetY": 15,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "aaron",
+      "name": "Aaron",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Aaron"
+    },
+    {
+      "id": "entrance_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 12,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_AARON_ROOM_ENTRANCE_DOOR"
+    },
+    {
+      "id": "exit_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 2,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_AARON_ROOM_EXIT_DOOR"
+    }
+  ],
+  "wildEncounters": []
+}

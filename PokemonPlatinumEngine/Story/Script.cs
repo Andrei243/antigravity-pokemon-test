@@ -53,7 +53,9 @@ public enum Op
     // The Sunyshore Gym's gears (plan 01 · M9, part 2c)
     GearButton,
     // The Super Contests and the Fashion Case (plan 06 · R17a)
-    SuperContest, GiveAccessory
+    SuperContest, GiveAccessory,
+    // The League's platform lifts (plan 01 · M9, part 2d)
+    PlatformLift
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

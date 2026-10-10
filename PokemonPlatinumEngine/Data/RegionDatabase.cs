@@ -156,7 +156,11 @@ public static class RegionDatabase
                 "PokemonDayCare",
                 // Plan 02 · S9: the cave of Celestic Town's ruins and the Fuego Ironworks' floor (matrices of the
                 // imported world), and the elder's house in Celestic Town, rebuilt to the original's plan
-                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse"
+                "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse",
+                // Plan 01 · M9, part 2d: the League's rooms on the original's plans, from the door behind the guard to the Hall of Fame
+                "PokemonLeagueElevatorToAaronRoom", "PokemonLeagueAaronRoom", "PokemonLeagueElevatorToBerthaRoom", "PokemonLeagueBerthaRoom",
+                "PokemonLeagueElevatorToFlintRoom", "PokemonLeagueFlintRoom", "PokemonLeagueElevatorToLucianRoom", "PokemonLeagueLucianRoom",
+                "PokemonLeagueElevatorToChampionRoom", "PokemonLeagueChampionRoom", "PokemonLeagueHallwayToHallOfFame", "PokemonLeagueHallOfFame"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

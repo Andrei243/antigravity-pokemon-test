@@ -214,6 +214,8 @@ public class ScriptTests
           supercontest ribbon
           supercontest prize
           giveaccessory "Glitter Powder"
+          platformlift
+          platformlift check
         script Other
           end
         """;
@@ -1099,6 +1101,8 @@ public class ScriptTests
         public void TurnClock(int from, int to) { }
         public void PressButton(PastoriaWater.Button button) { }
         public void PressGearButton(SunyshoreGears.Button kind) { }
+        public bool TriggerLift() => false;
+        public bool LiftNotUsed() => true;
         public void TravelWith(NPC? who, string? trainerId) { }
         public string? Partner => null;
         public bool Trade(string trade, int slot) => false;

@@ -25,6 +25,8 @@ internal static class SceneTextures
         ownerThread = Environment.CurrentManagedThreadId;
         _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace; _ = RockLedgeFace;
         _ = BankFace; _ = RockFace; _ = PowerFace; _ = Waterfall; _ = IslandUnderside;
+        _ = LeagueFace(LeagueArt.Stone.Slate); _ = LeagueFace(LeagueArt.Stone.Basalt); _ = LeagueFace(LeagueArt.Stone.Marble);
+        _ = LeagueFace(LeagueArt.Stone.Sandstone);
         _ = LightPool; _ = LampGlow; _ = WindowLight;
     }
 
@@ -116,6 +118,9 @@ internal static class SceneTextures
 
     /// <summary>The face of the Sunyshore Gym's steel decks over the dark (style guide, "Gyms").</summary>
     public static Texture2D PowerFace => Get("power_face", GymArt.PowerFace, repeat: true);
+
+    /// <summary>The face the floors of a room of the League stand on, in its stone (style guide, "The League's rooms").</summary>
+    public static Texture2D LeagueFace(LeagueArt.Stone stone) => Get($"league_face_{stone}", () => LeagueArt.Face(stone), repeat: true);
 
     /// <summary>The underside of the Distortion World's islands, which ends in points of rock over the void.</summary>
     public static Texture2D IslandUnderside => Get("island_underside", NatureArt.IslandUnderside, repeat: true);

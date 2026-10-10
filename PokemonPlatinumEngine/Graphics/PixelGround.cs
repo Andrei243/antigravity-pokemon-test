@@ -135,6 +135,9 @@ internal static class PixelGround
         bool cave = map.IsCave, nothing = map.IsVoid;
         // A Gym floored with ice (the Snowpoint Gym's) has ice under everything, as a cave has its floor
         bool icy = map.Interior == InteriorStyle.Gym && map.ArenaType == Data.PokemonType.Ice;
+        // And a hall floored with sand (Bertha's room of the League) has sand under everything: no lawn shows where the
+        // rounded corners of its rock meet
+        bool dusty = map.Interior == InteriorStyle.Gym && map.ArenaType == Data.PokemonType.Ground;
         TileType? TypeAt(int tx, int ty)
         {
             var type = GroundBaker.TypeAt(map, tx + originX, ty + originY);
@@ -206,7 +209,7 @@ internal static class PixelGround
 
                 // Lawn: flat base with clean-edged lighter patches (in the Distortion World, its stone; in a cave, its
                 // floor, which shows where the rounded corners of the rock and of a way out leave a gap between them)
-                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : icy ? IceBase : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
+                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : icy ? IceBase : dusty ? Sand : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
                 if (forest != null && forest[i] >= 0.5f) col = Forest;
                 if (tall != null && tall[i] >= 0.5f) col = TallGround;
 

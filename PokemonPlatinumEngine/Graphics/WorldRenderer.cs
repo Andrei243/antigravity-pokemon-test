@@ -865,7 +865,7 @@ public sealed class WorldRenderer
                 continue;
             }
             // A snowball of the Snowpoint Gym is a card of the scenery, drawn with the room's pieces (GymPieces)
-            if (npc.IsSnowball) continue;
+            if (npc.IsSnowball || npc.IsLeagueDoor) continue;
             if (npc.IsThing)
             {
                 // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of
@@ -1185,7 +1185,8 @@ public sealed class WorldRenderer
     /// </summary>
     private void DrawReflections(Map map, Camera3D camera)
     {
-        static bool Mirrors(TileBehavior b) => b is TileBehavior.Puddle or TileBehavior.StillPuddle;
+        // A puddle, and a polished floor (the Hall of Fame's and the hallway's to it, plan 01 · M9, part 2d)
+        static bool Mirrors(TileBehavior b) => b is TileBehavior.Puddle or TileBehavior.StillPuddle or TileBehavior.ShinyFloor;
         float pitchDeg = MapScene.PitchOf(map);
         Camera3D? straight = map.IsIndoors ? null : camera;
         bool any = false;

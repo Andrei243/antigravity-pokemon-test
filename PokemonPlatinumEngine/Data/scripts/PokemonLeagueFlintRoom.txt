@@ -1,0 +1,56 @@
+# Flint's room, the third of the Elite Four's (plan 01 · M9, part 2d), on the original's plan. docs/scripts.md describes
+# the language; the lines are our own, on the original's beats (scripts_pokemon_league_flint_room.s).
+#
+# As Aaron's room: the door shuts behind the challenger, and the door on to Lucian's passage opens once Flint is
+# beaten. He stamps on the spot between the two halves of his greeting, and has other words for a challenger who has
+# entered the Hall of Fame before (FLAG_GAME_COMPLETED, which the Hall of Fame's room sets). He is drawn as a
+# youngster until plan 11 makes his look; his rematch team waits for plan 02 · S15.
+
+
+# PokemonLeagueFlintRoom_OnFrame_EnterRoom, by the door's own flag (see Aaron's room)
+script OnEnter
+  if not flag FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_ENTRANCE_DOOR end
+  walk player up 2
+  sound "lift_stop"
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_ENTRANCE_DOOR
+  show entrance_door
+  end
+
+
+script Flint
+  speaker "Flint"
+  if flag FLAG_DEFEATED_FLINT goto Beaten
+  music "common/eye_elite_four"
+  if flag FLAG_GAME_COMPLETED goto Again
+  say "So you're the one. Volkner told me a Trainer had lit a fire under him again. The first in years! That was you, wasn't it?"
+  say "I owe you for that. He's my oldest friend, and I couldn't do it myself."
+  # PokemonLeagueFlintRoom_Movement_WalkFastInPlace: he runs on the spot, faster and faster (here a start and a beat)
+  emote self exclaim 0.8
+  wait 0.4
+  say "But that's that, and this is this! I'm Flint of the Elite Four, and my Fire Pokémon have been burning for a battle like this one."
+  say "Come at me with everything you have!"
+  goto Fight
+label Again
+  say "You again! Good! A Champion who keeps coming back to battle is my kind of Champion."
+  say "My fire hasn't gone down one bit since last time. Let's see about yours!"
+label Fight
+  battle self as "elite_four_flint"
+  setflag FLAG_DEFEATED_FLINT
+  sound "lift_stop"
+  setflag FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_EXIT_DOOR
+  hide exit_door
+  if flag FLAG_GAME_COMPLETED goto WonAgain
+  say "...Whew. Burned right down to the ashes. And it feels great!"
+  say "I can see what Volkner saw in you. Go on! One more of us, and then the Champion."
+  end
+label WonAgain
+  say "Burned out again! You only get hotter every time, don't you?"
+  say "Go on through. I'll be stoking the fire for the next time."
+  end
+label Beaten
+  if flag FLAG_GAME_COMPLETED goto BeatenAgain
+  say "The next room is Lucian's. He's quiet, and he's the strongest of the four of us. Don't let the books fool you."
+  end
+label BeatenAgain
+  say "Go on, Champion. Lucian's waiting, and he hates being kept from his reading."
+  end

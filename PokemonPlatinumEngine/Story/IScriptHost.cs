@@ -179,6 +179,16 @@ public interface IScriptHost
     void PressGearButton(SunyshoreGears.Button kind);
 
     /// <summary>
+    /// The platform of the room's shaft sets off for the top with the player on it (<c>TriggerPlatformLift</c>;
+    /// <see cref="LeagueLift"/>); the script waits while it rises (<see cref="Busy"/>). False where it is at the top
+    /// already, or the room has none.
+    /// </summary>
+    bool TriggerLift();
+
+    /// <summary>Whether the room's platform stood at the foot of its shaft as the player came in (<c>CheckPlatformLiftNotUsedWhenEnteredMap</c>).</summary>
+    bool LiftNotUsed();
+
+    /// <summary>
     /// Someone of the map starts travelling with the player, walking behind and battling beside them as the trainer
     /// of Platinum's data <paramref name="trainerId"/> (plan 02 · S6, <see cref="Follower"/>); null for both and they
     /// stop.

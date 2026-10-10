@@ -200,7 +200,8 @@ public class PokemonTests
         MapDatabase.Initialize();
         var map = MapDatabase.Get(mapName);
         Assert.Equal(mapName, map.Name);
-        Assert.NotEmpty(map.Warps);
+        // The Hall of Fame is the end of the way: nobody leaves it but by its own scene (plan 01 · M9, part 2d)
+        if (mapName != "PokemonLeagueHallOfFame") Assert.NotEmpty(map.Warps);
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
         if (map.IsStreamed) return;
@@ -223,9 +224,11 @@ public class PokemonTests
             Assert.True(map.IsWalkable(startX, startY), $"{mapName}: arrival tile ({startX},{startY}) is not walkable");
 
             // Flood fill; stepping onto a warp tile triggers it, so don't expand past one. Someone a story flag takes
-            // off the map isn't in the way for good (the bollards in Fantina's room, gone once she is beaten)
+            // off the map isn't in the way for good (the bollards in Fantina's room, gone once she is beaten), and nor is
+            // someone whose own script walks them aside (the guard at the League's door)
             bool Open(int x, int y) => map.IsWalkable(x, y) || !map.IsSolid(x, y)
-                && map.NPCs.Any(n => (n.GridX, n.GridY) == (x, y)) && map.NPCs.Where(n => (n.GridX, n.GridY) == (x, y)).All(n => n.HiddenBy != null);
+                && map.NPCs.Any(n => (n.GridX, n.GridY) == (x, y))
+                && map.NPCs.Where(n => (n.GridX, n.GridY) == (x, y)).All(n => n.HiddenBy != null || n.Script != null && WorldWalk.StepsAside(n.Script, n.ScriptFile ?? map.Name));
             var reached = new HashSet<(int, int)> { (startX, startY) };
             var queue = new Queue<(int X, int Y)>();
             queue.Enqueue((startX, startY));

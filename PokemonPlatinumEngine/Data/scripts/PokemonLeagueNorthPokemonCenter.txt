@@ -1,8 +1,61 @@
-# The Pokémon League's Pokémon Center (plan 01 · M8). docs/scripts.md describes the language.
+# The Pokémon League's Pokémon Center (plan 01 · M8), rebuilt to the original's plan with the door to the Elite Four
+# and its guard (plan 01 · M9, part 2d). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_pokemon_league_north_pokecenter_1f.s).
+#
+# The rival's battle in front of the door (the original's trigger on tiles 10 to 12 of row 4, by
+# VAR_RIVAL_BEAT_SUNYSHORE_GYM, and his object at 11, 11) is plan 02 · S14's.
 
 
-# Coming in lets Fly come here (the original's own first arrival, set by this room's script). The door guard and
-# the Elite Four's doors are plan 01 · M9's
+# PokemonLeagueNorthPokecenter1F_OnTransition. Coming in lets Fly come here, and puts the Elite Four's rooms back as
+# a challenger finds them: the doors behind open, the doors on shut, and all four waiting to battle again.
 script OnEnter
   setflag FLAG_FIRST_ARRIVAL_POKEMON_LEAGUE
+  setflag FLAG_HIDE_POKEMON_LEAGUE_AARON_ROOM_ENTRANCE_DOOR
+  setflag FLAG_HIDE_POKEMON_LEAGUE_BERTHA_ROOM_ENTRANCE_DOOR
+  setflag FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_ENTRANCE_DOOR
+  setflag FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_ENTRANCE_DOOR
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_AARON_ROOM_EXIT_DOOR
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_BERTHA_ROOM_EXIT_DOOR
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_EXIT_DOOR
+  clearflag FLAG_HIDE_POKEMON_LEAGUE_LUCIAN_ROOM_EXIT_DOOR
+  clearflag FLAG_DEFEATED_AARON
+  clearflag FLAG_DEFEATED_BERTHA
+  clearflag FLAG_DEFEATED_FLINT
+  clearflag FLAG_DEFEATED_LUCIAN
+  # PokemonLeagueNorthPokecenter1F_SetPositionDoorGuardAwayFromDoor
+  if flag FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY place door_guard 12 3 down
+  end
+
+
+# PokemonLeagueNorthPokecenter1F_DoorGuard: he looks the Badges over and steps out of the doorway, to the side away
+# from the player. The original asks nothing: nobody reaches its League without all eight (Victory Road needs
+# Waterfall, and Waterfall the Beacon Badge). Here he counts them, and stays where he is for fewer.
+script DoorGuard
+  speaker "Guard"
+  if flag FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY goto Moved
+  say "Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Sinnoh's Gym Badges goes through. Let me have a look at yours."
+  if badges < 8 goto Short
+  fanfare badge
+  if facing left goto FromTheEast
+  walk self right 1
+  if facing right goto FromTheWest
+  face self down
+  goto Away
+label FromTheWest
+  face self left
+  goto Away
+label FromTheEast
+  walk self left 1
+  face self right
+label Away
+  setflag FLAG_POKEMON_LEAGUE_DOOR_GUARD_MOVED_AWAY
+  say "All eight, and every one of them earned. You may go in."
+  say "Make sure your Pokémon are rested first. Once you are through that door there is no coming back until you have won, or lost."
+  end
+label Moved
+  say "You will face the Elite Four one after another, and then the Champion. Nobody will heal your Pokémon between the rooms but you."
+  say "Good luck in there."
+  end
+label Short
+  say "...You don't have all eight yet. I can't let you through. Come back when you have every Gym Badge in Sinnoh."
   end

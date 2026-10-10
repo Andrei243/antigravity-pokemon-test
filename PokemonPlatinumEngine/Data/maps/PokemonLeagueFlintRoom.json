@@ -1,0 +1,113 @@
+{
+  "name": "PokemonLeagueFlintRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "sinnoh/pokemon_league",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "arenaType": "Fire",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#VVVV_______VVVV#",
+    "#################"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "########.########",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#####.......#####",
+    "#################"
+  ],
+  "heights": [
+    { "x": 1, "z": 3, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 3, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 3, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 4, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 4, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 4, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 5, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 5, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 5, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 6, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 6, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 6, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 7, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 7, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 7, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 8, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 8, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 8, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 9, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 9, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 9, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 10, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 10, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 10, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 11, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 5, "z": 11, "width": 7, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 },
+    { "x": 12, "z": 11, "width": 4, "depth": 1, "height": -1, "slopeX": 0, "slopeZ": 0 },
+    { "x": 8, "z": 2, "width": 1, "depth": 1, "height": 0, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueElevatorToLucianRoom",
+      "targetX": 4,
+      "targetY": 15,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "flint",
+      "name": "Flint",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "script": "Flint"
+    },
+    {
+      "id": "entrance_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 12,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_ENTRANCE_DOOR"
+    },
+    {
+      "id": "exit_door",
+      "name": "Door",
+      "npcType": "LeagueDoor",
+      "x": 8,
+      "y": 2,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_POKEMON_LEAGUE_FLINT_ROOM_EXIT_DOOR"
+    }
+  ],
+  "wildEncounters": []
+}

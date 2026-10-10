@@ -281,6 +281,7 @@ public static class TileBehaviors
         TileBehavior.Puddle => (BehaviourSupport.Plain, "Walked through with a splash: a ring and two drops. A puddle's look, and whoever stands in it is mirrored."),
         TileBehavior.ShallowWater => (BehaviourSupport.Plain, "Walked through, leaving a ring on the water."),
         TileBehavior.StillPuddle => (BehaviourSupport.Plain, "Walked through. A puddle's look, and whoever stands in it is mirrored."),
+        TileBehavior.ShinyFloor => (BehaviourSupport.Plain, "Walked on; whoever stands on it is mirrored in the floor."),
         TileBehavior.Sand or TileBehavior.ShadedSnow => (BehaviourSupport.Plain, "Walked on; every step leaves a footprint that fades."),
         TileBehavior.Door => (BehaviourSupport.Plain, "A blocked tile until a warp opens it."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),

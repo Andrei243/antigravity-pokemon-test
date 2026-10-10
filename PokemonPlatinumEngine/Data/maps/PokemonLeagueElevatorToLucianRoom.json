@@ -1,0 +1,78 @@
+{
+  "name": "PokemonLeagueElevatorToLucianRoom",
+  "displayName": "Pokémon League",
+  "bgmTrack": "sinnoh/pokemon_league",
+  "interior": "Gym",
+  "trees": "Round",
+  "hall": "League",
+  "puzzle": "LeagueLiftLucian",
+  "width": 9,
+  "height": 17,
+  "ground": [
+    "#########",
+    "#########",
+    "#########",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#_______#",
+    "#########"
+  ],
+  "solid": [
+    "#########",
+    "#########",
+    "####.####",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#.......#",
+    "#########"
+  ],
+  "heights": [
+    { "x": 1, "z": 2, "width": 7, "depth": 9, "height": 5, "slopeX": 0, "slopeZ": 0 },
+    { "x": 1, "z": 11, "width": 7, "depth": 5, "height": 0, "slopeX": 0, "slopeZ": 0 }
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 2,
+      "targetMap": "PokemonLeagueLucianRoom",
+      "targetX": 8,
+      "targetY": 11,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [],
+  "triggers": [
+    {
+      "x": 4,
+      "y": 11,
+      "width": 1,
+      "depth": 1,
+      "script": "Lift",
+      "variable": "VAR_MAP_LOCAL_0x00",
+      "value": 0
+    }
+  ],
+  "wildEncounters": []
+}
