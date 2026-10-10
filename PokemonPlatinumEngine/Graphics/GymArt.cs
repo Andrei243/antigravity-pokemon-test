@@ -1,5 +1,6 @@
 using System;
 using Raylib_cs;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Graphics;
 
@@ -80,5 +81,109 @@ internal static class GymArt
         }
         c.Rect(2, 25, 12, 2, stone.Dark);
         Pix.Outline(c);
+    }
+
+    // ------------------------------------------------------------------ the Pastoria Gym (plan 01 · M9 1b)
+
+    /// <summary>Texels of a float's edge left round it on its tile, so the water shows between neighbouring floats.</summary>
+    public const int FloatInset = 2;
+
+    /// <summary>
+    /// The mask the field's water shader draws the Pastoria Gym's pool with when its surface is drawn at
+    /// <paramref name="level"/> (a drawn height): over the water's plate, at 32 texels a tile, every texel of a tile
+    /// whose floor lies under the surface somewhere, except where a float rides on it; red is the distance to the
+    /// shore in texels times <see cref="PixelGround.MaskScale"/>, as <see cref="PixelGround"/> bakes the field's.
+    /// </summary>
+    public static PixelCanvas PoolMask(Map map, float level)
+    {
+        const int T = GroundBaker.ArtTile;
+        int w = PastoriaWater.PlateWidth * T, h = PastoriaWater.PlateDepth * T;
+        var surface = new bool[w * h];
+        for (int ty = 0; ty < PastoriaWater.PlateDepth; ty++)
+            for (int tx = 0; tx < PastoriaWater.PlateWidth; tx++)
+            {
+                int mx = PastoriaWater.PlateX + tx, my = PastoriaWater.PlateZ + ty;
+                if (map.GetGroundTile(mx, my) == TileType.Wall) continue;
+                var (nw, ne, sw, se) = Relief.Corners(map, mx, my);
+                if (MathF.Min(MathF.Min(nw, ne), MathF.Min(sw, se)) >= level - 0.01f) continue;
+                bool raft = PastoriaWater.IsFloat(map, mx, my);
+                for (int y = 0; y < T; y++)
+                    for (int x = 0; x < T; x++)
+                    {
+                        bool under = raft && x >= FloatInset && x < T - FloatInset && y >= FloatInset && y < T - FloatInset;
+                        if (!under) surface[(ty * T + y) * w + tx * T + x] = true;
+                    }
+            }
+        var distance = PixelGround.ShoreDistance(surface, w, h);
+        var mask = new PixelCanvas(w, h);
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+            {
+                int i = y * w + x;
+                if (surface[i]) mask.SetRaw(x, y, new Color(Math.Min(252, (int)MathF.Round(distance[i] * PixelGround.MaskScale)), 0, 0, 255));
+            }
+        return mask;
+    }
+
+    private static readonly Tone FloatPlank = Tone.Of(178, 134, 92, 192, 150, 104, 126, 90, 62);
+    private static readonly Color FloatRim = Rgb(104, 74, 54);
+
+    /// <summary>The top of a float: a raft of planks laid across it, a groove between boards and a dark rim round it.</summary>
+    public static void PaintFloatTop(PixelCanvas c)
+    {
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                int board = y / 8;
+                var col = y % 8 == 7 ? FloatPlank.Dark : board % 3 == 1 ? FloatPlank.Light : FloatPlank.Base;
+                if (x == 0 || y == 0 || x == c.Width - 1 || y == c.Height - 1) col = FloatRim;
+                // A nail texel at each end of a board
+                if (y % 8 == 3 && (x == 2 || x == c.Width - 3)) col = FloatRim;
+                c.SetRaw(x, y, col);
+            }
+    }
+
+    /// <summary>A float's side, the depth of its raft: the boards' ends over its rim.</summary>
+    public static void PaintFloatSide(PixelCanvas c)
+    {
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+                c.SetRaw(x, y, y == c.Height - 1 ? FloatRim : y == 0 ? FloatPlank.Light : FloatPlank.Dark);
+    }
+
+    private static readonly Tone ButtonPlate = Tone.Of(196, 204, 216, 226, 232, 240, 140, 148, 166);
+
+    /// <summary>The steel plate a button sits on, 26 texels square with a dark edge.</summary>
+    public static void PaintButtonPlate(PixelCanvas c) => Pix.Raised(c, 0, 0, c.Width, c.Height, ButtonPlate);
+
+    /// <summary>A button's colours: its face and its light rim (style guide, "Gyms": the buttons).</summary>
+    public static (Color Face, Color Rim) ButtonColours(PastoriaWater.Button button) => button switch
+    {
+        PastoriaWater.Button.Blue => (Rgb(66, 120, 222), Rgb(130, 176, 246)),
+        PastoriaWater.Button.Green => (Rgb(70, 178, 96), Rgb(140, 222, 150)),
+        _ => (Rgb(236, 140, 48), Rgb(250, 196, 120))
+    };
+
+    /// <summary>A button's top, 20 texels square with its corners rounded off: its colour inside a light rim.</summary>
+    public static void PaintButtonTop(PixelCanvas c, PastoriaWater.Button button)
+    {
+        var (face, rim) = ButtonColours(button);
+        int w = c.Width, h = c.Height;
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+            {
+                // Corners cut off by two texels: the button reads as round from the field's camera
+                int cx = Math.Min(x, w - 1 - x), cy = Math.Min(y, h - 1 - y);
+                if (cx + cy < 2) continue;
+                bool edge = cx == 0 || cy == 0 || cx + cy == 2;
+                c.SetRaw(x, y, edge ? rim : face);
+            }
+    }
+
+    /// <summary>A button's side: its colour, darker.</summary>
+    public static void PaintButtonSide(PixelCanvas c, PastoriaWater.Button button)
+    {
+        var (face, _) = ButtonColours(button);
+        c.Fill(PixelCanvas.Shadow(face, 0.3f));
     }
 }

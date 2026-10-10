@@ -62,7 +62,10 @@ public class GymTests
         new object[] { "HearthomeGym", 1, 3, 4, 8, "Sinnoh" },
         new object[] { "HearthomeGymRoom1", 1, 3, 8, 10, "HearthomeGym" },
         new object[] { "HearthomeGymRoom2", 1, 3, 14, 22, "HearthomeGym" },
-        new object[] { "HearthomeGymLeaderRoom", 1, 3, 4, 13, "HearthomeGym" }
+        new object[] { "HearthomeGymLeaderRoom", 1, 3, 4, 13, "HearthomeGym" },
+        // Plan 01 · M9 1b
+        new object[] { "PastoriaGym", 1, 3, 13, 42, "Sinnoh" },
+        new object[] { "OreburghGym", 1, 3, 5, 24, "Sinnoh" }
     };
 
     // The original's people (res/field/events/events_<map>.json): local id, tile, facing
@@ -89,7 +92,20 @@ public class GymTests
         new object[] { "HearthomeGymRoom2", "ace_trainer_catherine", 11, 9, Direction.Down },
         new object[] { "HearthomeGymLeaderRoom", "fantina", 4, 10, Direction.Down },
         new object[] { "HearthomeGymLeaderRoom", "bollard_1", 8, 10, Direction.Up },
-        new object[] { "HearthomeGymLeaderRoom", "bollard_2", 8, 9, Direction.Up }
+        new object[] { "HearthomeGymLeaderRoom", "bollard_2", 8, 9, Direction.Up },
+        // Plan 01 · M9 1b (events_pastoria_city_gym.json, events_oreburgh_city_gym.json)
+        new object[] { "PastoriaGym", "crasher_wake", 13, 4, Direction.Down },
+        new object[] { "PastoriaGym", "gym_guide", 15, 40, Direction.Down },
+        new object[] { "PastoriaGym", "tuber_jacky", 11, 33, Direction.Down },
+        new object[] { "PastoriaGym", "sailor_damian", 7, 22, Direction.Down },
+        new object[] { "PastoriaGym", "tuber_caitlyn", 21, 33, Direction.Left },
+        new object[] { "PastoriaGym", "sailor_samson", 5, 8, Direction.Left },
+        new object[] { "PastoriaGym", "fisherman_erick", 19, 18, Direction.Left },
+        new object[] { "PastoriaGym", "fisherman_walter", 9, 11, Direction.Down },
+        new object[] { "OreburghGym", "roark", 5, 3, Direction.Down },
+        new object[] { "OreburghGym", "gym_guide", 6, 23, Direction.Down },
+        new object[] { "OreburghGym", "youngster_jonathon", 4, 18, Direction.Right },
+        new object[] { "OreburghGym", "youngster_darius", 7, 11, Direction.Left }
     };
 
     [Theory]
@@ -484,6 +500,8 @@ public class GymTests
     [InlineData("EternaGym")]
     [InlineData("VeilstoneGym")]
     [InlineData("HearthomeGym")]
+    [InlineData("PastoriaGym")]
+    [InlineData("OreburghGym")]
     public void EachGymsDoorLeadsInFromItsCityAndBackOut(string gym)
     {
         var world = MapDatabase.Get("Sinnoh");
@@ -496,5 +514,332 @@ public class GymTests
         // door until she is spoken to, plan 02 · S6)
         Assert.False(world.IsSolid(back.TargetX, back.TargetY));
         Assert.All(world.NPCs.Where(n => (n.GridX, n.GridY) == (back.TargetX, back.TargetY)), n => Assert.NotNull(n.HiddenBy));
+    }
+
+    // ------------------------------------------------------------------ the Pastoria Gym (plan 01 · M9 1b)
+
+    private static PastoriaWater WaterAt(Map map, PastoriaWater.Button button)
+    {
+        var water = (PastoriaWater)map.Puzzle!;
+        water.Press(button);
+        water.Settle();
+        return water;
+    }
+
+    private static int Count(Map map, TileBehavior behaviour)
+    {
+        int n = 0;
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+                if (map.BehaviourAt(x, y) == behaviour) n++;
+        return n;
+    }
+
+    [Fact]
+    public void ThePoolsWaterItsGatesAndItsFloatsAreTheOriginals()
+    {
+        // PastoriaGym_DynamicMapFeaturesInit: one plate from (1, 2), 25 wide and 38 deep; PASTORIA_WATER_HEIGHT_*: 0, 2 and 4
+        Assert.Equal((1, 2, 25, 38), (PastoriaWater.PlateX, PastoriaWater.PlateZ, PastoriaWater.PlateWidth, PastoriaWater.PlateDepth));
+        Assert.Equal((0f, 2f, 4f), (PastoriaWater.LevelOf(PastoriaWater.Button.Orange), PastoriaWater.LevelOf(PastoriaWater.Button.Green),
+            PastoriaWater.LevelOf(PastoriaWater.Button.Blue)));
+        var map = Room("PastoriaGym");
+        var water = Assert.IsType<PastoriaWater>(map.Puzzle);
+        // PersistedMapFeatures_InitForPastoriaGym: the green button pressed, the water at its middle
+        Assert.Equal((PastoriaWater.Button.Green, 2f, 2f), (water.Pressed, water.Height, water.Level));
+        // The original's behaviours: ten tiles of 0x56 and of 0x58, and the four of 0x57 inside the room (its other two
+        // are in the back wall); the decks at the door's level, four tiles over the pool's bed
+        Assert.Equal((10, 4, 10), (Count(map, TileBehavior.PastoriaGymHigh), Count(map, TileBehavior.PastoriaGymMiddle), Count(map, TileBehavior.PastoriaGymLow)));
+        Assert.True(Count(map, TileBehavior.MovingFloor) > 400);
+        Assert.Equal(4f, map.GroundLevel);
+        Assert.Equal((4f, 4f, 0f, 2f), (map.HeightAt(13, 42), map.HeightAt(13, 9), map.HeightAt(13, 7), map.HeightAt(13, 13)));
+
+        // PastoriaGym_DynamicMapFeaturesCheckCollision: each let on only from its own height, whatever the water does
+        Assert.Equal(false, water.Collides(map, 13, 8, 4f));
+        Assert.Equal(true, water.Collides(map, 13, 8, 2f));
+        Assert.Equal(false, water.Collides(map, 6, 8, 0f));
+        Assert.Equal(true, water.Collides(map, 6, 8, 4f));
+        Assert.Equal(false, water.Collides(map, 13, 33, 2f));
+        Assert.Equal(true, water.Collides(map, 13, 33, 4f));
+        Assert.Null(water.Collides(map, 13, 9, 4f));
+
+        // The floats: twenty, on the tiles where the original lets the player stand on the water
+        var floats = new List<(int, int)>();
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+                if (PastoriaWater.IsFloat(map, x, y)) floats.Add((x, y));
+        Assert.Equal(20, floats.Count);
+        Assert.Contains((13, 7), floats);
+        Assert.Contains((13, 8), floats);
+        Assert.Contains((1, 36), floats);
+        Assert.DoesNotContain((6, 8), floats);
+
+        // With the water at the decks a float is stood on at its height, and the pool round it can't be
+        WaterAt(map, PastoriaWater.Button.Blue);
+        Assert.Equal((4f, false, true), map.StandAt(13, 7, 4f));
+        var step = FieldMovement.Step(map, 13, 9, Direction.Up, new Walker(Height: 4f));
+        Assert.Equal((StepKind.Walk, 13, 8, 4f), (step.Kind, step.X, step.Y, step.Height));
+        Assert.Equal(StepKind.Walk, FieldMovement.Step(map, 13, 8, Direction.Up, new Walker(Height: 4f)).Kind);
+        Assert.Equal(Obstacle.Water, FieldMovement.Step(map, 13, 7, Direction.Left, new Walker(Height: 4f)).Obstacle);
+        // Half way down, the floats ride two tiles under the decks: a drop from them
+        WaterAt(map, PastoriaWater.Button.Green);
+        Assert.Equal(Obstacle.Cliff, FieldMovement.Step(map, 13, 9, Direction.Up, new Walker(Height: 4f)).Obstacle);
+        Assert.Equal((2f, false, true), map.StandAt(13, 34, 2f));
+        // Let out: a float rests on the bed and the bed is walked where the original lets it be
+        WaterAt(map, PastoriaWater.Button.Orange);
+        Assert.Equal((0f, false, false), map.StandAt(13, 7, 4f));
+        Assert.Equal(StepKind.Walk, FieldMovement.Step(map, 7, 9, Direction.Up, new Walker(Height: 0f)).Kind);
+        Assert.Equal(StepKind.Walk, FieldMovement.Step(map, 7, 8, Direction.Up, new Walker(Height: 0f)).Kind);
+    }
+
+    [Fact]
+    public void TheWaterMovesASixteenthOfATileAFrameAndIsWalkedOnlyOnceItIsThere()
+    {
+        var water = new PastoriaWater();
+        void Frames(PastoriaWater.Rise rise, int n)
+        {
+            for (int i = 0; i < n; i++) rise.Update(PastoriaWater.FrameSeconds + 1e-5f);
+        }
+
+        // Blue: the buttons, then two tiles up in 32 frames; the field walks the old height until it gets there
+        var rise = water.Press(PastoriaWater.Button.Blue);
+        Frames(rise, PastoriaWater.ButtonFrames);
+        Assert.Equal((2f, false), (water.Level, rise.Flowing));
+        Frames(rise, 16);
+        Assert.Equal((3f, 2f, true), (water.Level, water.Height, rise.Flowing));
+        Frames(rise, 16);
+        Assert.Equal(4f, water.Level);
+        Assert.Equal(2f, water.Height);
+        Frames(rise, 1);
+        Assert.True(rise.IsDone);
+        Assert.Equal((4f, 4f), (water.Level, water.Height));
+        Assert.Null(water.Rising);
+
+        // Green from the top lets it down to the middle; green at the middle moves nothing
+        rise = water.Press(PastoriaWater.Button.Green);
+        Frames(rise, PastoriaWater.ButtonFrames + 33);
+        Assert.True(rise.IsDone);
+        Assert.Equal(2f, water.Height);
+        rise = water.Press(PastoriaWater.Button.Green);
+        Frames(rise, PastoriaWater.ButtonFrames + 1);
+        Assert.True(rise.IsDone);
+        Assert.Equal(2f, water.Level);
+
+        // Orange lets it all out; coming in again by the door, the green is pressed and the water at its middle
+        rise = water.Press(PastoriaWater.Button.Orange);
+        Frames(rise, PastoriaWater.ButtonFrames + 33);
+        Assert.Equal((0f, PastoriaWater.Button.Orange), (water.Height, water.Pressed));
+        water.Arrive(Room("PastoriaGym"), new StoryState(), new System.Random(0));
+        Assert.Equal((2f, PastoriaWater.Button.Green), (water.Height, water.Pressed));
+    }
+
+    [Fact]
+    public void TheButtonsAreTheOriginalsCoordinateEvents()
+    {
+        // events_pastoria_city_gym.json: scripts 2 (blue), 3 (green) and 4 (orange), each while its own variable is 0
+        var map = Room("PastoriaGym");
+        Assert.Equal(PastoriaWater.Buttons.Length, map.Triggers.Count);
+        Assert.Equal((2, 4, 4), (PastoriaWater.Buttons.Count(b => b.Button == PastoriaWater.Button.Blue),
+            PastoriaWater.Buttons.Count(b => b.Button == PastoriaWater.Button.Green), PastoriaWater.Buttons.Count(b => b.Button == PastoriaWater.Button.Orange)));
+        foreach (var (x, y, button) in PastoriaWater.Buttons)
+        {
+            var trigger = Assert.Single(map.Triggers, t => t.X == x && t.Y == y);
+            Assert.Equal((button + "Button", PastoriaWater.VarOf(button), 0), (trigger.Script, trigger.Variable, trigger.Value));
+            Assert.NotNull(Scripts.Find(trigger.Script, "PastoriaGym"));
+        }
+    }
+
+    /// <summary>
+    /// The fewest buttons pressed on a walk from the Pastoria Gym's door to beside Crasher Wake, by the field's own
+    /// rules: steps cost nothing, a press one (each button's trigger runs while its colour isn't the one pressed
+    /// last). Null where there is no way; <paramref name="buttons"/> false keeps the water where it is.
+    /// </summary>
+    internal static int? FewestPresses(Map map, (int X, int Y) goal, bool buttons = true, HashSet<(int X, int Y)>? reached = null)
+    {
+        var water = (PastoriaWater)map.Puzzle!;
+        var start = (X: 13, Y: 42, H: 4f, Last: PastoriaWater.Button.Green);
+        var best = new Dictionary<(int, int, float, PastoriaWater.Button), int> { [start] = 0 };
+        var queue = new LinkedList<((int X, int Y, float H, PastoriaWater.Button Last) State, int Cost)>();
+        queue.AddFirst((start, 0));
+        int? found = null;
+        while (queue.Count > 0)
+        {
+            var (s, cost) = queue.First!.Value;
+            queue.RemoveFirst();
+            if (best[s] < cost) continue;
+            reached?.Add((s.X, s.Y));
+            if ((s.X, s.Y) == goal) { found ??= cost; continue; }
+            WaterAt(map, s.Last);
+            foreach (var dir in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var step = FieldMovement.Step(map, s.X, s.Y, dir, new Walker(Height: s.H));
+                if (!step.Moves) continue;
+                var last = s.Last;
+                if (buttons && PastoriaWater.Buttons.FirstOrDefault(b => (b.X, b.Y) == (step.X, step.Y)) is { Y: > 0 } button && button.Button != last)
+                    last = button.Button;
+                var next = (step.X, step.Y, step.Height, last);
+                int c = cost + (last != s.Last ? 1 : 0);
+                if (best.TryGetValue(next, out int known) && known <= c) continue;
+                best[next] = c;
+                if (c == cost) queue.AddFirst((next, c)); else queue.AddLast((next, c));
+            }
+        }
+        return found;
+    }
+
+    [Fact]
+    public void CrasherWakeIsReachedOnlyByTheButtonsInTheRightOrder()
+    {
+        // The original's rules on the original's floor (its plates, behaviours and buttons, checked against a search of
+        // the decompilation's own data as this room was rebuilt) take six presses at the least: orange, green, blue,
+        // green, orange, blue
+        var map = Room("PastoriaGym");
+        Assert.Equal(6, FewestPresses(map, (13, 5)));
+        // With the water left as it is at the door, the way to him is shut
+        Assert.Null(FewestPresses(map, (13, 5), buttons: false));
+
+        // And every trainer of the Gym can be walked up to on the way
+        var reached = new HashSet<(int X, int Y)>();
+        FewestPresses(map, (-1, -1), reached: reached);
+        foreach (var id in new[] { "tuber_jacky", "sailor_damian", "tuber_caitlyn", "sailor_samson", "fisherman_erick", "fisherman_walter", "crasher_wake" })
+            Assert.True(CanTalkTo(reached, map.Everyone.Single(n => n.Key == id)), id);
+    }
+
+    [Fact]
+    public void TheButtonsMoveTheWaterThroughTheRoomsScripts()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Arrive("PastoriaGym", 13, 42);
+        var water = (PastoriaWater)game.Map.Puzzle!;
+        // InitPersistedMapFeaturesForPastoriaGym and the room's own variables: the green is pressed
+        Assert.Equal((0, 1, 0), (game.Story.Var("VAR_MAP_LOCAL_0x01"), game.Story.Var("VAR_MAP_LOCAL_0x02"), game.Story.Var("VAR_MAP_LOCAL_0x03")));
+        Assert.False(game.Fires("GreenButton"));
+        Assert.True(game.Fires("BlueButton") && game.Fires("OrangeButton"));
+
+        var host = game.Step("BlueButton");
+        Assert.Contains("waterbutton blue", host.Log);
+        Assert.Equal((PastoriaWater.Button.Blue, 4f), (water.Pressed, water.Height));
+        Assert.False(game.Fires("BlueButton"));
+        Assert.True(game.Fires("GreenButton"));
+        game.Step("OrangeButton");
+        Assert.Equal(0f, water.Height);
+        Assert.Equal((0, 0, 1), (game.Story.Var("VAR_MAP_LOCAL_0x01"), game.Story.Var("VAR_MAP_LOCAL_0x02"), game.Story.Var("VAR_MAP_LOCAL_0x03")));
+    }
+
+    [Fact]
+    public void ThePastoriaGymPlaysThroughToTheFenBadge()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Luxray")!, 45));
+        game.Arrive("PastoriaGym", 13, 42);
+
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("button"));
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("Water types"));
+        foreach (var id in new[] { "tuber_jacky", "sailor_damian", "tuber_caitlyn", "sailor_samson", "fisherman_erick", "fisherman_walter" })
+        {
+            Assert.Contains(game.Talk(id).Log, l => l.StartsWith($"battle {id} Won"));
+            Assert.DoesNotContain(game.Talk(id).Log, l => l.StartsWith("battle"));
+        }
+
+        // Crasher Wake: the battle, the Fen Badge, TM55, his trainers counted as beaten, and what his script sets
+        var gym = game.Talk("crasher_wake");
+        Assert.Contains("battle leader_wake Won", gym.Log);
+        Assert.True(game.Story.HasBadge(Badge.Fen));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
+        Assert.Equal("Brine", ItemDatabase.Get("TM55")!.TeachesMove);
+        Assert.True(game.Story.Has("FLAG_RECEIVED_WAKE_TM55"));
+        Assert.Equal(3, game.Story.Var("VAR_PASTORIA_CITY_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_PASTORIA_CITY_GRUNT_M"));
+        Assert.True(game.Story.Has("FLAG_BLOCK_PASTORIA_CITY_CROAGUNK_EVENT"));
+        Assert.DoesNotContain(game.Talk("crasher_wake").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("beat Wake"));
+    }
+
+    [Fact]
+    public void AWakeBeatenFirstCountsHisTrainersAsBeaten()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Luxray")!, 45));
+        game.Arrive("PastoriaGym", 13, 42);
+        game.Talk("crasher_wake");
+        foreach (var id in new[] { "tuber_jacky", "sailor_damian", "tuber_caitlyn", "sailor_samson", "fisherman_erick", "fisherman_walter" })
+        {
+            Assert.True(game.Story.HasDefeated(id), id);
+            Assert.DoesNotContain(game.Talk(id).Log, l => l.StartsWith("battle"));
+        }
+    }
+
+    // ------------------------------------------------------------------ the Oreburgh Gym on the original's plan (M9 1b)
+
+    [Fact]
+    public void TheOreburghGymIsTheOriginalsQuarryInTiers()
+    {
+        var map = Room("OreburghGym");
+        Assert.Equal(InteriorStyle.Gym, map.Interior);
+        // The door's level, the middle tier two tiles up, the ledges three, Roark's four; stairs between them
+        Assert.Equal((0f, 0f, 2f, 3f, 4f), (map.HeightAt(5, 24), map.HeightAt(5, 16), map.HeightAt(5, 12), map.HeightAt(1, 7), map.HeightAt(5, 3)));
+        Assert.Equal((0f, -1f), map.SlopeAt(5, 6));
+        Assert.Equal(TileType.Stairs, map.GetGroundTile(5, 13));
+        // A bridge over the lowest floor, walked over and under
+        Assert.Equal(2f, map.DeckAt(5, 17));
+        Assert.Equal(0f, map.HeightAt(5, 17));
+        // The ledges' rails, where the dais and the pocket below it are only a tile from them
+        Assert.Equal((TileBehavior.BlockWest, TileBehavior.BlockEast), (map.BehaviourAt(3, 4), map.BehaviourAt(7, 4)));
+        Assert.Equal((TileBehavior.BlockEast, TileBehavior.BlockWest), (map.BehaviourAt(2, 9), map.BehaviourAt(8, 9)));
+        Assert.Equal(StepKind.Blocked, FieldMovement.Step(map, 2, 4, Direction.Right, new Walker(Height: 3f)).Kind);
+        // The statues by the door, read from the south; the trainers' sight is the original's
+        Assert.Equal("GymStatue", map.SignScripts[(3, 23)]);
+        Assert.Equal("GymStatue", map.SignScripts[(7, 23)]);
+        Assert.Equal(3, map.Everyone.Single(n => n.Key == "youngster_jonathon").TrainerData!.SightRange);
+        Assert.Equal(4, map.Everyone.Single(n => n.Key == "youngster_darius").TrainerData!.SightRange);
+
+        // From the door everyone can be walked up to, over the bridge and under it
+        var reach = Reach(map, 5, 24);
+        foreach (var id in new[] { "roark", "gym_guide", "youngster_jonathon", "youngster_darius" })
+            Assert.True(CanTalkTo(reach, map.Everyone.Single(n => n.Key == id)), id);
+        var over = FieldMovement.Step(map, 3, 17, Direction.Right, new Walker(Height: 2f));
+        Assert.Equal((4, 17, 2f), (over.X, over.Y, over.Height));
+        var under = FieldMovement.Step(map, 5, 16, Direction.Down, new Walker(Height: 0f));
+        Assert.Equal((5, 17, 0f), (under.X, under.Y, under.Height));
+    }
+
+    [Fact]
+    public void RoarksScriptSetsWhatTheOriginalsDoes()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Prinplup")!, 20));
+        game.Arrive("OreburghGym", 5, 24);
+        Assert.Contains(game.Talk("roark").Log, l => l.StartsWith("battle leader_roark Won"));
+        Assert.True(game.Story.HasBadge(Badge.Coal));
+        // Beside what plan 02 · S5's script set: the basement, the Global Terminal's greeter, Looker's Pal Pad
+        foreach (var flag in StoryMigration.RoarkFlags) Assert.True(game.Story.Has(flag), flag);
+        foreach (var variable in StoryMigration.RoarkVariables) Assert.Equal(1, game.Story.Var(variable));
+        Assert.True(game.Story.HasDefeated("youngster_jonathon") && game.Story.HasDefeated("youngster_darius"));
+        // The statue lists the rival, and the player too once the Badge is won
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("beat Roark"));
+    }
+
+    [Fact]
+    public void ASaveThatWonTheCoalBadgeBeforeIsGivenWhatRoarksScriptAlsoSets()
+    {
+        // Version 7 (plan 01 · M9 1b)
+        var story = new StoryState();
+        story.GiveBadge(Badge.Coal);
+        story.SetVar("VAR_JUBILIFE_LOOKER_PAL_PAD_STATE", 2);
+        StoryMigration.Upgrade(story, 6, System.Array.Empty<Pokemon>(), Scripts, new Inventory());
+        Assert.True(story.Has("FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE"));
+        Assert.Equal(1, story.Var("VAR_GTS_ACCESS_STATE"));
+        // A scene that moved a variable on is left where it is
+        Assert.Equal(2, story.Var("VAR_JUBILIFE_LOOKER_PAL_PAD_STATE"));
+
+        // Without the Badge nothing is set; a save of today is left as it is
+        var early = new StoryState();
+        StoryMigration.Upgrade(early, 6, System.Array.Empty<Pokemon>(), Scripts, new Inventory());
+        Assert.False(early.Has("FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE"));
+        var today = new StoryState();
+        today.GiveBadge(Badge.Coal);
+        StoryMigration.Upgrade(today, StoryState.CurrentVersion, System.Array.Empty<Pokemon>(), Scripts, new Inventory());
+        Assert.Equal(0, today.Var("VAR_GTS_ACCESS_STATE"));
+        Assert.True(StoryState.CurrentVersion >= 7);
     }
 }

@@ -35,13 +35,16 @@ internal static class GroundBaker
             // to the south, a door's round the exit mat; style guide, "Gyms")
             c = PixelGround.Bake(map, new TileWindow(0, 0, map.Width, map.Height), pad: 0, worldSeeds: false, out _);
             var hall = HallTiles(map.ArenaType);
+            // A pool's bed, its lowest floor, is laid in the pool's own deeper tiles (style guide, "Gyms": the pool)
+            float? bed = PoolBed(map);
             for (int ty = 0; ty < map.Height; ty++)
                 for (int tx = 0; tx < map.Width; tx++)
                 {
                     if (map.GetGroundTile(tx, ty) is not (TileType.Floor or TileType.Wall or TileType.Door)) continue;
+                    var tiles = bed is { } low && map.GetGroundTile(tx, ty) == TileType.Floor && map.HeightAt(tx, ty) <= low + 0.01f ? PoolBedTiles : hall;
                     for (int y = 0; y < ArtTile; y++)
                         for (int x = 0; x < ArtTile; x++)
-                            c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, HallTexel(hall, tx * ArtTile + x, ty * ArtTile + y));
+                            c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, HallTexel(tiles, tx * ArtTile + x, ty * ArtTile + y));
                 }
         }
         else
@@ -105,6 +108,43 @@ internal static class GroundBaker
         PokemonType.Rock => (Rgb(176, 160, 142), Rgb(162, 146, 128), Rgb(118, 104, 92)),
         _ => (Rgb(236, 232, 214), Rgb(222, 216, 196), Rgb(172, 164, 140))
     };
+
+    /// <summary>The tiles of a pool's bed (style guide, "Gyms": the pool).</summary>
+    private static readonly (Color A, Color B, Color Grout) PoolBedTiles = (Rgb(120, 176, 220), Rgb(104, 162, 212), Rgb(70, 124, 184));
+
+    /// <summary>The height of a Water Gym's pool bed (its room's lowest floor), or null for a room that has no pool.</summary>
+    internal static float? PoolBed(Map map)
+    {
+        if (map.Interior != InteriorStyle.Gym || map.ArenaType != Data.PokemonType.Water || !map.HasRelief) return null;
+        float low = float.MaxValue;
+        for (int ty = 0; ty < map.Height; ty++)
+            for (int tx = 0; tx < map.Width; tx++)
+                if (map.GetGroundTile(tx, ty) == TileType.Floor) low = MathF.Min(low, map.HeightAt(tx, ty));
+        return low < map.GroundLevel - 0.01f ? low : null;
+    }
+
+    /// <summary>
+    /// The face of a step in a room's floor (style guide, "Rooms": a room with relief): the hall's own tiles down it, a
+    /// light lip two texels deep and then squares of 16 in its two tones with their grout. 32 by
+    /// <see cref="NatureArt.FaceCap"/> + <see cref="NatureArt.FaceBody"/>; the body's tiles come round with it.
+    /// </summary>
+    public static PixelCanvas HallFace(PokemonType? theme)
+    {
+        var hall = HallTiles(theme);
+        var c = new PixelCanvas(ArtTile, NatureArt.FaceCap + NatureArt.FaceBody);
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                if (y < 2)
+                {
+                    c.SetRaw(x, y, PixelCanvas.Light1(hall.A, y == 0 ? 0.45f : 0.25f));
+                    continue;
+                }
+                // The tiles begin under the lip and repeat every 16 rows, which the body's 48 rows hold three times over
+                c.SetRaw(x, y, HallTexel(hall, x, y));
+            }
+        return c;
+    }
 
     private static Color HallTexel((Color A, Color B, Color Grout) hall, int x, int y)
     {

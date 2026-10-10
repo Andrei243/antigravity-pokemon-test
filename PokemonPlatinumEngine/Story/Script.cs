@@ -41,7 +41,9 @@ public enum Op
     // The trainer tools (plan 06 · R12)
     ChoosePokemon, Trade, HallOfFame,
     // Wild Pokémon (plan 06 · R13)
-    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison
+    HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison,
+    // The Pastoria Gym's water (plan 01 · M9 1b)
+    WaterButton
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

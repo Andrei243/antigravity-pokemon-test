@@ -26,6 +26,7 @@ public partial class GameEngine
         puzzle.Apply(currentMap, story);
         if (clockTurn != null) PlayClockTurn(dt);
         if (bagRun != null) PlayBagRun(dt);
+        if (puzzle is PastoriaWater { Rising: not null } water) PlayWaterRise(water, dt);
     }
 
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>
@@ -37,7 +38,23 @@ public partial class GameEngine
     }
 
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
-    private bool PuzzleMoving => clockTurn != null;
+    private bool PuzzleMoving => clockTurn != null || currentMap.Puzzle is PastoriaWater { Rising: not null };
+
+    // ------------------------------------------------------------------ the Pastoria Gym's water
+
+    // Whether the water was flowing last frame, for its sound
+    private bool waterFlowing;
+
+    /// <summary>The Pastoria Gym's water on its way to a button's height (<see cref="PastoriaWater.Rise"/>), with its sound.</summary>
+    private void PlayWaterRise(PastoriaWater water, float dt)
+    {
+        var rise = water.Rising!;
+        rise.Update(dt);
+        // The rush of water starts as the buttons have settled (the original's SEQ_SE_DP_FW056) and stops with it
+        if (rise.Flowing && !waterFlowing) AudioManager.PlaySound("surf");
+        waterFlowing = rise.Flowing;
+        if (rise.IsDone) waterFlowing = false;
+    }
 
     /// <summary>Whether a puzzle has the field to itself for now, as the original's tasks do: a punching bag on its run.</summary>
     private bool PuzzleHoldsField => bagRun != null;
@@ -156,6 +173,15 @@ public partial class GameEngine
             game.clockLook = null;
             game.clockTicks = 0;
             clock.Apply(game.currentMap, game.story);
+        }
+
+        public void PressWaterButton(PastoriaWater.Button button)
+        {
+            if (game.currentMap.Puzzle is not PastoriaWater water) return;
+            // The buttons go down and come up with a click, and the water follows (PastoriaGym_UpdateButtonAnimations)
+            AudioManager.PlaySound("select");
+            water.Press(button);
+            game.waterFlowing = false;
         }
     }
 }

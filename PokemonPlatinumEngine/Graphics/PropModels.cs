@@ -43,10 +43,13 @@ internal static class PropModels
 
     public static void Build(KitBuilder kit, Prop p, Map map)
     {
-        kit.Origin = new Vector3(p.X, 0, p.Y);
+        // On the floor it stands on, where the room has heights (plan 01 · M9 1b); at zero in a room without
+        kit.Origin = new Vector3(p.X, Relief.At(map, p.X + p.Width / 2f, p.Y + p.Depth / 2f), p.Y);
         int w = p.Width * 32, d = p.Depth * 32;
         switch (p.Type)
         {
+            // A room's railings are joined up together (OutdoorProps.RoomFences), not built one by one
+            case PropType.Fence or PropType.LowWall: break;
             // What has no furniture of its own is built as the towns build it: a Gym rebuilt to the original's plan
             // (plan 01 · M9) has hedges, trees in tubs, fountains and flower beds
             default: Landmarks.Add(kit, map, p, new MeshBuilder()); break;

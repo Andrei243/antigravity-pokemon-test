@@ -48,6 +48,26 @@ public static class StoryMigration
         if (savedVersion < 4) RenameTrainers(story);
         if (savedVersion < 5) HandOverRockSmash(story, bag);
         if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
+        if (savedVersion < 7) AfterRoark(story);
+    }
+
+    /// <summary>What Roark's script sets beside the Coal Badge (scripts_oreburgh_city_gym.s), which plan 02 · S5's didn't.</summary>
+    public static readonly string[] RoarkFlags = { "FLAG_HIDE_POKECENTER_BASEMENT_BLOCKADE" };
+
+    /// <summary>The variables Roark's script sets to 1 beside the Coal Badge: the Global Terminal's greeter and Looker's Pal Pad.</summary>
+    public static readonly string[] RoarkVariables = { "VAR_GTS_ACCESS_STATE", "VAR_JUBILIFE_LOOKER_PAL_PAD_STATE" };
+
+    /// <summary>
+    /// Version 7, plan 01 · M9 1b: Roark's script sets a flag and two variables the Oreburgh Gym of plan 02 · S5 left
+    /// out (the Pokémon Center's basement opens, the Global Terminal's greeter and Looker's Pal Pad wait in Jubilife
+    /// City). A save that won the Coal Badge before is given them now; a variable a later scene moved on is left as it is.
+    /// </summary>
+    private static void AfterRoark(StoryState story)
+    {
+        if (!story.HasBadge(Badge.Coal)) return;
+        foreach (var flag in RoarkFlags) story.Set(flag);
+        foreach (var variable in RoarkVariables)
+            if (story.Var(variable) < 1) story.SetVar(variable, 1);
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>

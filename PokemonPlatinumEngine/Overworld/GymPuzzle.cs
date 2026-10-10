@@ -33,6 +33,21 @@ public abstract class GymPuzzle
     /// <summary>Whether a step onto a tile, going a way, is a hop over it to the tile beyond (Eterna's hour hand).</summary>
     public virtual bool HopsOver(int x, int y, Direction dir) => false;
 
+    /// <summary>
+    /// The height of the water a tile lies under, where the puzzle has a plate of water whose height it moves (the
+    /// Pastoria Gym's, the original's <c>DynamicTerrainHeightManager</c>): whoever is nearer to it than to the floor
+    /// stands on it (<see cref="Map.StandAt"/>). Null for a tile outside it.
+    /// </summary>
+    public virtual float? WaterAt(int x, int y) => null;
+
+    /// <summary>
+    /// Whether the player, standing at a height, may step onto a tile, where the puzzle decides that instead of the
+    /// tile's own collision (the original's <c>DynamicMapFeatures_CheckCollision</c>, which is asked for the player
+    /// alone): true blocks the step, false lets it go on whatever the tile's blocked flag says, and null leaves it
+    /// to the tile.
+    /// </summary>
+    public virtual bool? Collides(Map map, int x, int y, float from) => null;
+
     /// <summary>The puzzle a map file names; null for none.</summary>
     public static GymPuzzle? Create(string? name) => name switch
     {
@@ -41,6 +56,7 @@ public abstract class GymPuzzle
         VeilstoneBags.PuzzleName => new VeilstoneBags(),
         HearthomeDoors.Room1Name => new HearthomeDoors(1),
         HearthomeDoors.Room2Name => new HearthomeDoors(2),
+        PastoriaWater.PuzzleName => new PastoriaWater(),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")
     };
 }

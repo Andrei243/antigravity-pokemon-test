@@ -78,13 +78,15 @@ internal static class Relief
 
     /// <summary>
     /// The drawn height under someone who stands at a point at a height the map knows them to be at: the deck
-    /// of a bridge if that is what they are on, the ground otherwise.
+    /// of a bridge if that is what they are on, a float on a Gym's water (the Pastoria Gym's), the ground otherwise.
     /// </summary>
     public static float Under(Map map, float x, float z, float standingHeight)
     {
         if (!map.HasRelief) return 0f;
         int tx = (int)MathF.Floor(x), ty = (int)MathF.Floor(z);
-        if (map.DeckAt(tx, ty) is { } deck && map.SurfaceAt(tx, ty, standingHeight).OnDeck) return deck - map.GroundLevel;
+        var (height, onDeck, onWater) = map.StandAt(tx, ty, standingHeight);
+        if (onWater) return height - map.GroundLevel;
+        if (onDeck && map.DeckAt(tx, ty) is { } deck) return deck - map.GroundLevel;
         return At(map, x, z);
     }
 

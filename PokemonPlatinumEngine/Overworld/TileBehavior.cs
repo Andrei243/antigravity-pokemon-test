@@ -145,10 +145,10 @@ public static class TileBehaviors
         [TileBehavior.BlockEastAndWest] = "A walkway closed on its east and west sides.",
         [TileBehavior.RockClimbNorthSouth] = "A rock face climbed north or south with Rock Climb.",
         [TileBehavior.RockClimbEastWest] = "A rock face climbed east or west with Rock Climb.",
-        [TileBehavior.PastoriaGymHigh] = "Pastoria Gym: the highest of its three tiers of floor; the water level decides which tiers can be walked.",
-        [TileBehavior.PastoriaGymMiddle] = "Pastoria Gym: the middle tier of floor.",
-        [TileBehavior.PastoriaGymLow] = "Pastoria Gym: the lowest tier of floor.",
-        [TileBehavior.MovingFloor] = "Ground whose height the game moves (lifts, the gyms' platforms and water); it blocks while the floor is elsewhere.",
+        [TileBehavior.PastoriaGymHigh] = "Pastoria Gym: a floor stepped onto only by someone standing at the bottom of the pool.",
+        [TileBehavior.PastoriaGymMiddle] = "Pastoria Gym: a floor stepped onto only by someone standing two tiles up, the walkways' height.",
+        [TileBehavior.PastoriaGymLow] = "Pastoria Gym: a floor stepped onto only by someone standing four tiles up, the decks' height.",
+        [TileBehavior.MovingFloor] = "Ground that can't be stood on from a Gym's moving water (the pool round the Pastoria Gym's floats); plain ground anywhere else.",
         [TileBehavior.LongLedgeNorth] = "A gap in the Distortion World, jumped northward to the third tile on.",
         [TileBehavior.LongLedgeSouth] = "A gap in the Distortion World, jumped southward to the third tile on.",
         [TileBehavior.LongLedgeWest] = "A gap in the Distortion World, jumped westward to the third tile on.",
@@ -265,8 +265,10 @@ public static class TileBehaviors
         TileBehavior.LongLedgeNorth or TileBehavior.LongLedgeSouth or TileBehavior.LongLedgeWest or TileBehavior.LongLedgeEast
             => (BehaviourSupport.Ruled, "A gap in the Distortion World: jumped the way it faces, over it and the tile past it to the third tile on, on foot; the drop it is from every other side (`FieldMovement.LongJumpDirection`)."),
         TileBehavior.BikeRampEast or TileBehavior.BikeRampWest => (BehaviourSupport.Ruled, "On a Bicycle going its way, jumped: three tiles on in top gear, one in low. A wall on foot (`FieldMovement.RampDirection`)."),
-        TileBehavior.PastoriaGymHigh or TileBehavior.PastoriaGymMiddle or TileBehavior.PastoriaGymLow or TileBehavior.MovingFloor
-            => (BehaviourSupport.Waiting, "Floors whose height the game moves (plan 01 · M9)."),
+        TileBehavior.PastoriaGymHigh or TileBehavior.PastoriaGymMiddle or TileBehavior.PastoriaGymLow
+            => (BehaviourSupport.Ruled, "Stepped onto only from its own height: the bottom, two tiles up or four (`PastoriaWater.Collides`, plan 01 · M9 1b)."),
+        TileBehavior.MovingFloor
+            => (BehaviourSupport.Ruled, "Blocks whoever would stand on the water of a Gym's puzzle there (`Map.StandAt`, `PastoriaWater`, plan 01 · M9 1b); elsewhere walked as plain ground. Canalave's and Sunyshore's own come with their Gyms (M9 part 2)."),
         TileBehavior.StairsEast or TileBehavior.StairsWest or TileBehavior.EntranceEast or TileBehavior.EntranceWest
             or TileBehavior.EntranceNorth or TileBehavior.EntranceSouth or TileBehavior.ExitEast or TileBehavior.ExitWest
             or TileBehavior.ExitNorth or TileBehavior.ExitSouth

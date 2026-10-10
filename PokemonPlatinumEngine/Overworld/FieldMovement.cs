@@ -271,11 +271,17 @@ public static class FieldMovement
             return new FieldStep(StepKind.Jump, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, PaceOn(here, walker), walker.Mode, Obstacle.None);
         }
 
-        if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
+        // A Gym's puzzle may decide a tile instead of its blocked flag (the Pastoria Gym's floors that are walked
+        // onto only from one height: DynamicMapFeatures_CheckCollision)
+        var gate = map.Puzzle?.Collides(map, nx, ny, walker.Height);
+        if (gate == true || (gate == null && map.IsSolid(nx, ny))) return No(Obstacle.Solid);
 
-        var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
+        var (height, onDeck, onWater) = map.StandAt(nx, ny, walker.Height);
         if (map.NpcIn(nx, ny, height) is { } someone && someone != map.Follower) return No(Obstacle.Person);
         if (MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
+        // Nobody stands on a puzzle's water where it has nothing to stand on: the pool round the Pastoria Gym's floats
+        // (TILE_BEHAVIOR_DYNAMIC_HEIGHT_COLLISION, TerrainCollisionManager_WillPlayerCollide)
+        if (onWater && gate == null && there == TileBehavior.MovingFloor) return No(Obstacle.Water);
         bool water = TileBehaviors.IsSurfable(there) && !onDeck;
 
         if (walker.Mode == TravelMode.Surfing)

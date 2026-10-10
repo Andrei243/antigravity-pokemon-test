@@ -879,8 +879,10 @@ public class FieldMovementTests
             AssertMoves(StepKind.Walk, 5, 4, Step(map, 4, 4, East, TravelMode.Cycling));
         }
 
-        // And every one with a rule does change something
-        foreach (var behaviour in ruled)
+        // And every one with a rule does change something; the Pastoria Gym's change a step only under its water, and
+        // GymTests holds them there (plan 01 · M9 1b)
+        var puzzles = new[] { TileBehavior.PastoriaGymHigh, TileBehavior.PastoriaGymMiddle, TileBehavior.PastoriaGymLow, TileBehavior.MovingFloor };
+        foreach (var behaviour in ruled.Except(puzzles))
         {
             map.SetBehaviour(5, 4, behaviour);
             bool changes = false;

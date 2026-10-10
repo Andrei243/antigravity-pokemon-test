@@ -142,7 +142,10 @@ public static class RegionDatabase
                 "OreburghNorthHouse1F", "EternaCondominiums1F", "SnowpointWestHouse", "ValleyWindworksBuilding",
                 // Eterna City's rooms of plan 02 · S6: the cycle shop, the Underground Man's house and Team Galactic's building
                 "EternaCycleShop", "EternaUndergroundManHouse",
-                "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F"
+                "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F",
+                // Plan 01 · M9 1b: the Pastoria Gym on the original's plan, its pool drawn with relief (the Oreburgh Gym,
+                // listed above, was rebuilt to its plan then too)
+                "PastoriaGym"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

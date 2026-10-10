@@ -344,6 +344,14 @@ public class Map
         };
     }
 
+    /// <summary>A tile's behaviour where it was given one of its own (<see cref="SetBehaviour"/>); null where it does what its type implies.</summary>
+    public TileBehavior? OwnBehaviourAt(int x, int y)
+    {
+        if (behaviours == null || !InBounds(x, y)) return null;
+        var own = behaviours[y * Width + x];
+        return own == Implied ? null : own;
+    }
+
     public void SetBehaviour(int x, int y, TileBehavior behaviour)
     {
         if (!InBounds(x, y)) return;
@@ -426,9 +434,25 @@ public class Map
     /// </summary>
     public (float Height, bool OnDeck) SurfaceAt(int x, int y, float from)
     {
+        var (height, onDeck, _) = StandAt(x, y, from);
+        return (height, onDeck);
+    }
+
+    /// <summary>
+    /// What someone coming from a height stands on at a tile, as <see cref="SurfaceAt"/>, and whether it is the water
+    /// of a Gym's puzzle that sets the height there (the Pastoria Gym's, <see cref="GymPuzzle.WaterAt"/>): the
+    /// original's <c>GetHeight</c> in <c>terrain_collision_manager.c</c>. Over the ground and a deck the nearer one
+    /// is chosen as ever; the water is stood on where it lies above that and is nearer still.
+    /// </summary>
+    public (float Height, bool OnDeck, bool OnWater) StandAt(int x, int y, float from)
+    {
         float ground = HeightAt(x, y);
-        if (DeckAt(x, y) is { } deck && MathF.Abs(deck - from) < MathF.Abs(ground - from)) return (deck, true);
-        return (ground, false);
+        float height = ground;
+        bool onDeck = false;
+        if (DeckAt(x, y) is { } deck && MathF.Abs(deck - from) < MathF.Abs(ground - from)) (height, onDeck) = (deck, true);
+        if (Puzzle?.WaterAt(x, y) is { } water && water > height && MathF.Abs(water - from) < MathF.Abs(height - from))
+            return (water, false, true);
+        return (height, onDeck, false);
     }
 
     public List<NPC> NPCs { get; } = new();

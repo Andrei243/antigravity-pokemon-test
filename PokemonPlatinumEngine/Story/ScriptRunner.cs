@@ -582,6 +582,11 @@ public sealed class ScriptRunner
                 Result = slot >= 0 && slot < host.Party.Count && FieldPoison.TrySurvive(host.Party.Members[slot]) ? 1 : 0;
                 break;
             }
+            // PressPastoriaGymButton: the button of a colour goes down, the others come up, and the water moves to
+            // its height while the script waits
+            case Op.WaterButton:
+                host.PressWaterButton((PastoriaWater.Button)i.Number);
+                break;
 
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");

@@ -157,7 +157,7 @@ What an `if` can ask:
 |---|---|
 | `setflag FLAG_X`, `clearflag FLAG_X` | Flags are named `FLAG_` and capitals, after the original's where it has one. |
 | `setflag own`, `clearflag own` | The script's own flag: the one that hides whoever it belongs to (an item's ball), or that says a hidden item has been found. Setting it is what makes the ball gone for good. |
-| `setvar VAR_X 2`, `addvar VAR_X 1` | Variables likewise (`VAR_`). One never set is 0. |
+| `setvar VAR_X 2`, `addvar VAR_X 1` | Variables likewise (`VAR_`). One never set is 0. A room's own variables keep the original's names, `VAR_MAP_LOCAL_0x01` and on (the Pastoria Gym's buttons). |
 
 A flag named `FLAG_MAP_LOCAL_...` lasts only while the player stays in its place, as the original's local flags
 do: it is cleared whenever the player comes to another area or through a warp (`StoryState.ClearLocal`). An
@@ -240,6 +240,7 @@ Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymP
 | Command | What it does |
 |---|---|
 | `flowerclock` | Turns the Eterna Gym's flower clock on to its next time (`VAR_ETERNA_GYM_FLOWER_CLOCK_STATE`, the original's `AdvanceEternaGymClock`; `EternaClock`) and waits while its hands turn and a fountain drains, the camera on them; `camera release` brings it back. `RESULT` is 0 where the clock is at its last time already, 1 when it turned, 2 when a fountain drained too. |
+| `waterbutton blue` | Presses a button of the Pastoria Gym (`blue`, `green` or `orange`; the original's `PressPastoriaGymButton`, `PastoriaWater`) and waits while it goes down and the pool's water moves to the button's height: blue four tiles up, to the decks, green two, orange to the bottom. A button is a trigger of the room, run while its colour's variable (`VAR_MAP_LOCAL_0x01` blue, `0x02` green, `0x03` orange) is 0; the script sets its own to 1 and the other two to 0, as the original's does. |
 
 ### Field moves and key items
 

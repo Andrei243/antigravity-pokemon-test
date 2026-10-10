@@ -47,7 +47,29 @@ internal static class OutdoorProps
         }
         foreach (var ((x, y), wall) in fenced)
             if (within.Contains(x, y)) Fence(kit, map, fenced, x, y, wall);
+        AddProps(kit, map, lamplight, within);
+    }
 
+    /// <summary>
+    /// The fences of a room (plan 01 · M9 1b: the railings round the Pastoria Gym's pool), joined up as the field's are
+    /// and white, standing on the floor of their tiles.
+    /// </summary>
+    public static void RoomFences(KitBuilder kit, Map map)
+    {
+        var fenced = new Dictionary<(int, int), bool>();
+        foreach (var prop in map.Props)
+        {
+            if (prop.Type is not (PropType.Fence or PropType.LowWall)) continue;
+            for (int y = prop.Y; y < prop.Y + prop.Depth; y++)
+                for (int x = prop.X; x < prop.X + prop.Width; x++)
+                    fenced[(x, y)] = prop.Type == PropType.LowWall || fenced.GetValueOrDefault((x, y));
+        }
+        foreach (var ((x, y), wall) in fenced) Fence(kit, map, fenced, x, y, wall, FenceKind.White);
+        kit.Origin = System.Numerics.Vector3.Zero;
+    }
+
+    private static void AddProps(KitBuilder kit, Map map, MeshBuilder lamplight, TileWindow within)
+    {
         foreach (var prop in map.Props)
         {
             if (!within.Contains(prop.X, prop.Y)) continue;
@@ -122,7 +144,8 @@ internal static class OutdoorProps
     /// too, so runs, corners and ends all come from the same rule. A low wall is a pier with an arm toward each
     /// such neighbour.
     /// </summary>
-    private static void Fence(KitBuilder kit, Map map, Dictionary<(int, int), bool> fenced, int x, int y, bool wall)
+    /// <param name="kind">The kind of fence, where it isn't the town's (a room's are white).</param>
+    private static void Fence(KitBuilder kit, Map map, Dictionary<(int, int), bool> fenced, int x, int y, bool wall, FenceKind? kind = null)
     {
         kit.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
         bool east = Joins(fenced, x, y, 1, 0), west = Joins(fenced, x, y, -1, 0), south = Joins(fenced, x, y, 0, 1), north = Joins(fenced, x, y, 0, -1);
@@ -137,7 +160,7 @@ internal static class OutdoorProps
             return;
         }
 
-        var kind = FenceOf(map.ArchitectureAt(x, y));
+        kind ??= FenceOf(map.ArchitectureAt(x, y));
         var tone = kind switch { FenceKind.White => FenceWhite, FenceKind.Iron => Iron, _ => FenceWood };
         string name = kind switch { FenceKind.White => "fence.white", FenceKind.Iron => "fence.iron", _ => "fence.wood" };
         // Iron railings are slighter than a wooden fence, and a little taller
