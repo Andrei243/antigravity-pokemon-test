@@ -274,6 +274,9 @@ public sealed class WorldWriter
                 HiddenBy = o.HiddenFlag is "0" or "" ? null : o.HiddenFlag,
                 Item = Lying(header, o)?.Item,
                 Count = Lying(header, o) is { Count: > 1 } several ? several.Count : null,
+                // A patch of soft soil is told which of the save's berry patches it is by its first datum, which
+                // the one in Floaroma Town without any leaves at nought
+                Patch = o.GraphicsId == "OBJ_EVENT_GFX_BERRY_SOIL" ? (o.Data.Count > 0 ? o.Data[0] : 0) : null,
                 Script = o.Script
             }).ToList(),
             Signs = events.Signs.Select(s => Sign(header, s)).Select(s => { s.X -= ox; s.Z -= oz; return s; }).ToList(),

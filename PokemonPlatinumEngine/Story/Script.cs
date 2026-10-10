@@ -42,8 +42,8 @@ public enum Op
     ChoosePokemon, Trade, HallOfFame,
     // Wild Pokémon (plan 06 · R13)
     HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison,
-    // The day's events (plan 06 · R14a)
-    Lottery
+    // The day's events and the berry patches (plan 06 · R14a)
+    Lottery, Berry, ChooseItem
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

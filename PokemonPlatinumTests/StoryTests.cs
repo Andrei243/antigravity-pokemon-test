@@ -770,6 +770,23 @@ public class StoryTests
                     host.Encounters.Trees[0].Group = 1;
                     if (honey > 0) host.Bag.AddItem(ItemDatabase.Get("Honey")!, honey);
                 }))).ToList(),
+                // A berry patch at each stage, mulched and not, faced from below or the side, with a bag of everything it
+                // can take or an empty one (plan 06 · R14a)
+                FieldScripts.BerryPatch => Enum.GetValues<BerryStage>().SelectMany(stage => new[] { false, true }.SelectMany(full => new[] { Direction.Up, Direction.Left }.SelectMany(facing =>
+                    new[] { Mulch.None, Mulch.Growth }.SelectMany(mulch => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.BerrySoilType, Name = "Soft soil", BerryPatch = 0 }, before: host =>
+                    {
+                        host.Berries = new BerryPatches();
+                        if (stage != BerryStage.None)
+                        {
+                            host.Berries[0].Berry = "Oran Berry";
+                            host.Berries[0].Stage = stage;
+                            host.Berries[0].Yield = stage == BerryStage.Fruit ? 3 : 0;
+                        }
+                        host.Berries[0].Mulch = mulch;
+                        host.PlayerFacing = facing;
+                        if (full)
+                            foreach (var item in new[] { "Pecha Berry", "Growth Mulch", "Sprayduck" }) host.Bag.AddItem(ItemDatabase.Get(item)!, 1);
+                    }))))).ToList(),
                 _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
             };
             if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)

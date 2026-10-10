@@ -807,6 +807,18 @@ public static class WorldMapBuilder
                 PlaceHeight(map, chunk, x, z, ox, oy, altitude, behaviour);
 
                 var (type, blocks, prop) = Look(cover, behaviour, solid);
+                // Soft soil is blocked by the patch that stands on it (an object of the area, plan 06 · R14a), not by
+                // the tile: its ground is the ground round it, and nothing grows on it but what is planted
+                if (behaviour == TileBehavior.BerrySoil)
+                {
+                    blocks = false;
+                    prop = null;
+                    if (cover is TerrainCover.Unknown or TerrainCover.Tree or TerrainCover.Broadleaf)
+                    {
+                        type = TileType.Grass;
+                        vague.Add((ox + x, oy + z));
+                    }
+                }
                 if (map.IsCave) (type, prop) = InACave(type, blocks, prop);
                 else if (map.IsVoid) (type, blocks, prop) = InTheVoid(cover, behaviour, solid, type, blocks, prop);
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
@@ -1394,6 +1406,21 @@ public static class WorldMapBuilder
                 thing.HiddenBy = o.HiddenBy is { } flag ? LocalFlag(flag, key) : null;
                 thing.Key = o.Id;
                 thing.ScriptFile = key;
+                continue;
+            }
+            // A patch of soft soil is the save's berry patch its object names (plan 06 · R14a)
+            if (o.Patch is { } patch)
+            {
+                map.NPCs.Add(new NPC
+                {
+                    Name = "Soft soil",
+                    NpcType = NPC.BerrySoilType,
+                    GridX = o.X,
+                    GridY = o.Z,
+                    BerryPatch = patch,
+                    Key = o.Id,
+                    ScriptFile = key
+                });
                 continue;
             }
             // An item in its ball lies where the original has it, and stays gone by the original's own flag

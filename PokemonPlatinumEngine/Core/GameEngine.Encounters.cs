@@ -175,5 +175,6 @@ public partial class GameEngine
     {
         if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, story, encounters, PlaceKey(), fieldRandom);
         encounters.ClockTo(GameClock.Moment);
+        berries.ClockTo(GameClock.Moment);
     }
 }

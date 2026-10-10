@@ -835,6 +835,7 @@ public sealed class WorldRenderer
         actors.Clear();
         mount = null;
         things.Clear();
+        berryPlants.Clear();
         pokemon.Clear();
         foreach (var npc in map.NPCs)
         {
@@ -847,6 +848,14 @@ public sealed class WorldRenderer
                 float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz);
                 pokemon.Add((new Vector3(sx, ground + hop, sz), species, CharacterSprites.FacingIndex(Player.YawOf(npc.Facing)),
                     FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f)));
+                continue;
+            }
+            if (npc.IsBerrySoil)
+            {
+                // A patch of soft soil and what grows in it, as the game last told it (plan 06 · R14a)
+                float bx = npc.DrawX + 0.5f, bz = npc.DrawY + 0.5f;
+                var (stage, berry, mulched) = npc.BerryLook;
+                berryPlants.Add((new Vector3(bx, Relief.At(map, bx, bz), bz), stage, berry, mulched));
                 continue;
             }
             if (npc.IsThing)
@@ -933,12 +942,22 @@ public sealed class WorldRenderer
     private readonly List<(Vector3 At, PropType Kind)> things = new();
     private readonly Dictionary<PropType, CharacterSprites.Card> thingCards = new();
 
+    // The berry patches in view, and a card for each look one has had (plan 06 · R14a)
+    private readonly List<(Vector3 At, BerryStage Stage, string? Berry, bool Mulched)> berryPlants = new();
+    private readonly Dictionary<string, CharacterSprites.Card> berryCards = new();
+
     /// <summary>The things on the ground: a card for each kind, lit and casting like the people.</summary>
     private void DrawThings(CharacterPass pass)
     {
         foreach (var (at, kind) in things)
         {
             if (!thingCards.TryGetValue(kind, out var card)) thingCards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind));
+            CharacterSprites.DrawCard(card, at, VerticalScale, pass);
+        }
+        foreach (var (at, stage, berry, mulched) in berryPlants)
+        {
+            string key = BerryArt.KeyOf(stage, berry, mulched);
+            if (!berryCards.TryGetValue(key, out var card)) berryCards[key] = card = CharacterSprites.MakeCard(context, BerryArt.Paint(stage, berry, mulched));
             CharacterSprites.DrawCard(card, at, VerticalScale, pass);
         }
     }

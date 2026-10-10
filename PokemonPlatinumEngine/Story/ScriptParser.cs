@@ -394,6 +394,10 @@ public static class ScriptParser
                 return new Instruction { Op = Op.HoneyTree, Line = line, Name = r.OneOf("status", "slather", "battle") };
             case "lottery":
                 return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
+            case "berry":
+                return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches") };
+            case "chooseitem":
+                return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch") };
             case "swarms":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Swarms, Line = line };

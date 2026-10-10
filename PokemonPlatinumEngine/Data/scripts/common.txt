@@ -143,6 +143,122 @@ script Sign
   end
 
 
+# A patch of soft soil (plan 06 · R14a), on the beats of the original's scripts_berry_tree_interaction.s: what grows
+# in it, a drink from the Sprayduck while it grows (standing south of it, facing it), its berries picked once it is
+# in fruit, and on bare soil mulch laid and a berry planted, both chosen from the bag. The soil is the script's own
+# (berry ..., Overworld/BerryPatches.cs).
+script BerryPatch
+  speaker none
+  sound "select"
+  berry status
+  if result == 1 goto Planted
+  if result == 2 goto Sprouted
+  if result == 3 goto Growing
+  if result == 4 goto Blooming
+  if result == 5 goto Fruit
+  berry mulched
+  if result == 1 goto Mulched
+  if not facing up goto Bare
+  berry mulches
+  if result == 1 goto Choose
+  berry berries
+  if result == 0 goto Bare
+  say "It's soft, crumbly soil, just right for planting."
+  goto OfferPlant
+label Bare
+  say "It's soft, crumbly soil."
+  end
+label Mulched
+  if not facing up goto MulchOnly
+  berry berries
+  if result == 0 goto MulchOnly
+  say "The soil has been covered with {mulch}."
+  goto OfferPlant
+label MulchOnly
+  say "The soil has been covered with {mulch}."
+  end
+label Choose
+  say "It's soft, crumbly soil, just right for planting."
+  berry berries
+  if result == 0 goto OfferMulch
+  choose "What would you like to do?" "Spread mulch" "Plant a Berry" "Leave it"
+  if result == 0 goto Mulch
+  if result == 1 goto Plant
+  end
+label OfferMulch
+  ask "Spread some mulch on the soil?"
+  if yes goto Mulch
+  end
+label Mulch
+  chooseitem mulch
+  if result == 0 end
+  berry mulch
+  berry berries
+  if result == 0 goto MulchSpread
+  say "{player} spread the {mulch} over the soil."
+  goto OfferPlant
+label MulchSpread
+  say "{player} spread the {mulch} over the soil."
+  end
+label OfferPlant
+  ask "Plant a Berry here?"
+  if no end
+label Plant
+  chooseitem berries
+  if result == 0 end
+  berry plant
+  say "{player} pressed one {berry} into the soft soil."
+  end
+label Planted
+  if not facing up goto PlantedOnly
+  if not item "Sprayduck" goto PlantedOnly
+  say "One {berry} was planted here."
+  goto OfferWater
+label PlantedOnly
+  say "One {berry} was planted here."
+  end
+label Sprouted
+  if not facing up goto SproutedOnly
+  if not item "Sprayduck" goto SproutedOnly
+  say "A little {berry} plant has pushed up through the soil."
+  goto OfferWater
+label SproutedOnly
+  say "A little {berry} plant has pushed up through the soil."
+  end
+label Growing
+  if not facing up goto GrowingOnly
+  if not item "Sprayduck" goto GrowingOnly
+  say "The {berry} plant is growing taller."
+  goto OfferWater
+label GrowingOnly
+  say "The {berry} plant is growing taller."
+  end
+label Blooming
+  if not facing up goto BloomingOnly
+  if not item "Sprayduck" goto BloomingOnly
+  say "The {berry} plant has burst into flower!"
+  goto OfferWater
+label BloomingOnly
+  say "The {berry} plant has burst into flower!"
+  end
+label OfferWater
+  ask "Give it some water?"
+  if no end
+  berry water
+  say "There you go. It looks pleased."
+  end
+label Fruit
+  ask "There are {yield} × {berry} here. Pick them?"
+  if no goto LeaveFruit
+  berry pick
+  fanfare item
+  say "{player} picked {yield} × {berry}!" "{player} put them away in the Berries pocket."
+  end
+label LeaveFruit
+  say "{player} left the {berry} on the plant."
+  end
+
+
 # An item lying on the ground in its ball. Its own flag is the one that hides the ball, so it is gone for good,
 # and what was in it is the player's.
 script ItemBall

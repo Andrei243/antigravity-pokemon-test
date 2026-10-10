@@ -31,6 +31,9 @@ public partial class GameEngine
     private int pendingCancel;
     private int scriptAnswer;
 
+    // The item the bag chose for a script's chooseitem (plan 06 · R14a)
+    private string? scriptItem;
+
     // What a script set going: people walking, the player walking, the screen gone black, the camera sent away
     private readonly List<NpcWalk> npcWalks = new();
     private PlayerWalk? playerWalk;
@@ -844,6 +847,13 @@ public partial class GameEngine
                     game.currentState = GameState.PartyMenu;
                     game.partyScreen.OpenToChoose();
                     break;
+                case ScriptScreen.ChooseItem:
+                    // A berry to plant or a mulch to lay (plan 06 · R14a): the bag, on that pocket
+                    game.scriptItem = null;
+                    game.currentState = GameState.BagMenu;
+                    game.bagScreen.Registered = game.registeredItem;
+                    game.bagScreen.OpenToPick(counter ?? "berries");
+                    break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
@@ -993,6 +1003,8 @@ public partial class GameEngine
         public DayOfWeek Weekday => GameClock.Today.DayOfWeek;
 
         public IEnumerable<Pokemon> Boxed => game.pcBoxStorage.All;
+        public BerryPatches Berries => game.berries;
+        public string? ChosenItem => game.scriptItem;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

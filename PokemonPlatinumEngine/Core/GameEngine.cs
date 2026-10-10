@@ -270,6 +270,7 @@ public partial class GameEngine
         encounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
         encounters = SpecialEncounters.NewGame(fieldRandom);
+        berries = BerryPatches.NewGame();
         radar.Clear();
         registeredItem = null;
         exitSpot = null;
@@ -408,6 +409,7 @@ public partial class GameEngine
         // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
         // game come back to sends every roamer anywhere (the original's continue task)
         encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
+        berries = save.Berries ?? BerryPatches.NewGame();
         radar.Clear();
         Roamers.Scatter(encounters, fieldRandom);
 
@@ -516,6 +518,7 @@ public partial class GameEngine
             Poketch = poketch.Save(),
             Safari = safari.Active ? new SafariSave(safari.Balls, safari.Steps) : null,
             Encounters = encounters,
+            Berries = berries,
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(pcBoxStorage),
@@ -701,6 +704,13 @@ public partial class GameEngine
                 bagScreen.Update(playerInventory, playerParty, ShowNotification, EvolutionContextNow(), dt);
                 registeredItem = bagScreen.Registered;
                 if (bagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
+                else if (!bagScreen.IsActive && bagScreen.TakePick(out var picked))
+                {
+                    // A script that asked for an item hears which (plan 06 · R14a)
+                    scriptItem = picked?.Name;
+                    scriptAnswer = picked != null ? 1 : 0;
+                    currentState = GameState.Overworld;
+                }
                 else if (!bagScreen.IsActive)
                 {
                     currentState = GameState.Overworld;
@@ -830,6 +840,7 @@ public partial class GameEngine
         KeepFieldMovesInForce();
         KeepPuzzleInForce(dt);
         KeepTheClock();
+        KeepBerriesInView();
         SlideBoulders(dt);
         poketchView.Update(dt);
         // Who is on the map follows the story's flags as soon as they change, whatever changed them (a script, a

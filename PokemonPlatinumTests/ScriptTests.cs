@@ -187,6 +187,8 @@ public class ScriptTests
           survivepoison VAR_A
           lottery draw
           lottery boxed
+          chooseitem berries
+          berry status
         script Other
           end
         """;
@@ -1022,6 +1024,8 @@ public class ScriptTests
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
         public SpecialEncounters Encounters => inner.Encounters;
+        public BerryPatches Berries => inner.Berries;
+        public string? ChosenItem => inner.ChosenItem;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Core;
 
@@ -102,6 +103,9 @@ public class SaveData
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>
     public SpecialEncounters? Encounters { get; set; }
+
+    /// <summary>The berry patches (plan 06 · R14a). Null in older saves, which are given the new game's.</summary>
+    public BerryPatches? Berries { get; set; }
 
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file

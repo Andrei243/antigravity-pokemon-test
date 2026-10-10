@@ -772,6 +772,9 @@ public sealed class AreaObject
     public string? Item { get; set; }
     public int? Count { get; set; }
 
+    /// <summary>For a patch of soft soil: its number among the save's 128 berry patches (plan 06 · R14a).</summary>
+    public int? Patch { get; set; }
+
     public string Script { get; set; } = "";
 }
 

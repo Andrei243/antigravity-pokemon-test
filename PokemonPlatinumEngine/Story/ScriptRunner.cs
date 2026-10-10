@@ -46,6 +46,10 @@ public sealed class ScriptRunner
     // The last lottery drawn, and the day's ticket (plan 06 · R14a)
     private Models.Lottery.Draw lottery;
     private int Ticket => Models.Lottery.TicketOf(host.Encounters.DailyNumber);
+
+    // What the patch of soil the script belongs to holds, as berry status and berry mulched last read it (plan 06 · R14a)
+    private string berryName = "", mulchName = "";
+    private int berryYield;
     private (string Item, int Count)? ownItem;
     private string? ownFlag;
     private Pokemon? ownPokemon;
@@ -573,6 +577,19 @@ public sealed class ScriptRunner
             case Op.Swarms:
                 host.Encounters.SwarmsOn = true;
                 break;
+
+            // Berry patches (plan 06 · R14a; scrcmd_berry.c)
+            case Op.Berry:
+                Berry(i);
+                break;
+            case Op.ChooseItem:
+                host.Open(ScriptScreen.ChooseItem, Subject, i.Name);
+                afterBusy = () =>
+                {
+                    Result = host.Answer;
+                    if (host.ChosenItem is { } chosen) lastItem = chosen;
+                };
+                break;
             case Op.TrophyGarden:
                 TrophyGardenRules.AddNew(host.Encounters, SpecialEncounterTables.Sinnoh.TrophyGarden, host.Chance);
                 break;
@@ -644,6 +661,72 @@ public sealed class ScriptRunner
         new($"{script?.File ?? "?"}.txt({at.Line}): {what}.");
 
     private ItemData ItemOf(Instruction i) => ItemDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no item '{i.Name}'");
+
+    /// <summary>
+    /// <c>berry ...</c>: what the patch of soil the script belongs to holds, and what is done to it. <c>status</c> is
+    /// its stage (0 bare to 5 in fruit) and fills <c>{berry}</c> and <c>{yield}</c>; <c>mulched</c> 1 when mulch is laid,
+    /// filling <c>{mulch}</c>; <c>water</c>; <c>plant</c> and <c>mulch</c> the item <c>chooseitem</c> chose, taken from
+    /// the bag; <c>pick</c> the berries into the bag, their number in RESULT; <c>berries</c> and <c>mulches</c> 1 when
+    /// the bag has a berry that grows, or a mulch.
+    /// </summary>
+    private void Berry(Instruction i)
+    {
+        var patches = host.Berries;
+        if (i.Name == "berries" || i.Name == "mulches")
+        {
+            string what = i.Name == "berries" ? "berries" : "mulch";
+            Result = host.Bag.AllItems.Any(s => s.Quantity > 0 && UI.BagScreen.Fits(what, s.Data)) ? 1 : 0;
+            return;
+        }
+        int id = Subject?.BerryPatch ?? throw Wrong(i, "this script belongs to no patch of soil");
+        var patch = patches[id];
+        switch (i.Name)
+        {
+            case "status":
+                Result = (int)patch.Stage;
+                berryName = patch.Berry ?? "";
+                berryYield = patch.Yield;
+                break;
+            case "mulched":
+                Result = patch.Mulch != Mulch.None ? 1 : 0;
+                mulchName = BerryPatches.NameOf(patch.Mulch) ?? "";
+                break;
+            case "water":
+                patches.Water(id);
+                break;
+            case "plant":
+            {
+                var berry = ItemDatabase.Get(lastItem);
+                if (berry?.Berry == null) throw Wrong(i, $"'{lastItem}' is no berry that grows");
+                if (patch.Stage != BerryStage.None) throw Wrong(i, "something grows here already");
+                host.Bag.RemoveItem(berry, 1);
+                patches.Plant(id, berry.Name);
+                berryName = berry.Name;
+                break;
+            }
+            case "mulch":
+            {
+                var mulch = BerryPatches.MulchOf(lastItem);
+                if (mulch == Mulch.None) throw Wrong(i, $"'{lastItem}' is no mulch");
+                host.Bag.RemoveItem(ItemDatabase.Get(lastItem)!, 1);
+                patches.LayMulch(id, mulch);
+                mulchName = lastItem;
+                break;
+            }
+            case "pick":
+            {
+                var (berry, count) = patches.Pick(id);
+                Result = 0;
+                if (berry == null || count <= 0 || ItemDatabase.Get(berry) is not { } item) break;
+                host.Bag.AddItem(item, count);
+                lastItem = item.Name;
+                berryName = item.Name;
+                berryYield = count;
+                Result = count;
+                break;
+            }
+        }
+    }
 
     /// <summary>The item a line gives and how many: the one it names, or the script's own.</summary>
     private (ItemData Item, int Count) Given(Instruction i)
@@ -769,6 +852,9 @@ public sealed class ScriptRunner
             "assistantstarter" => host.Story.AssistantStarter ?? "",
             "self" => Subject?.Name ?? "",
             "item" => lastItem,
+            "berry" => berryName,
+            "yield" => berryYield.ToString(),
+            "mulch" => mulchName,
             "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),

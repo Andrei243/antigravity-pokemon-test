@@ -153,11 +153,30 @@ public class NPC
         _ => throw new ArgumentException($"{obstacle} is no obstacle a field move clears.")
     };
 
+    // ---- Berry patches (plan 06 · R14a)
+
     /// <summary>
-    /// A thing rather than a person: an item's ball or an obstacle. It is drawn as a card, never as a character,
-    /// and never turns to face anyone.
+    /// The <see cref="NpcType"/> of a patch of soft soil, an object of the map as the original's is: in the way like a
+    /// person, drawn as the soil and whatever grows in it, and spoken to through <c>common.BerryPatch</c>.
     /// </summary>
-    public bool IsThing => IsItemBall || IsObstacle || GymThing != null;
+    public const string BerrySoilType = "BerrySoil";
+
+    /// <summary>For a patch of soft soil: which of the save's berry patches it is (<see cref="BerryPatches"/>).</summary>
+    public int? BerryPatch { get; set; }
+
+    public bool IsBerrySoil => NpcType == BerrySoilType;
+
+    /// <summary>
+    /// What a patch of soft soil shows, which the game keeps up to date from the patches (the stage, the berry and
+    /// whether mulch is laid); the renderer reads it and nothing else.
+    /// </summary>
+    public (BerryStage Stage, string? Berry, bool Mulched) BerryLook { get; set; }
+
+    /// <summary>
+    /// A thing rather than a person: an item's ball, an obstacle or a patch of soil. It is drawn as a card, never
+    /// as a character, and never turns to face anyone.
+    /// </summary>
+    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil;
 
     // ---- The story (plan 02 · S1)
 
