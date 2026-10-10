@@ -124,7 +124,7 @@ internal static partial class ModernUi
         {
             var p = app.Shown[i];
             int baseCol = i == 0 ? 1 : 23;
-            string figures = DayCareCheckerApp.Figures(DayCareCheckerApp.LevelOf(p));
+            string figures = DayCareCheckerApp.Figures(i < app.Levels.Count ? app.Levels[i] : DayCareCheckerApp.LevelOf(p));
             // Right-aligned in three places, as the original hides the hundreds and tens it doesn't need
             int start = baseCol + (3 - figures.Length) * 5;
             for (int d = 0; d < figures.Length; d++) LcdSmallDigit(screen, start + d * 5, 3, figures[d] - '0');

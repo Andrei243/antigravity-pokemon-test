@@ -178,6 +178,25 @@ public sealed class Ruleset
     /// </summary>
     public bool PoisonInTheField { get; private init; } = true;
 
+    /// <summary>
+    /// Whether an Everstone always hands its holder's nature down, whichever parent holds it (plan 06 · R15; from Black 2
+    /// and White 2). In Platinum only the mother's or Ditto's does, one time in two (<c>Daycare_GetParentToInheritNature</c>).
+    /// </summary>
+    public bool EverstoneAlwaysPassesNature { get; private init; }
+
+    /// <summary>
+    /// Whether an Egg's IVs are handed down the later way (plan 06 · R15): three different stats, five with a Destiny
+    /// Knot (Generation 6), a Power item's stat from its holder (from HeartGold and SoulSilver). Platinum's three picks
+    /// can fall on the same stat, and no item changes them (<c>Egg_InheritIVs</c>).
+    /// </summary>
+    public bool ModernInheritance { get; private init; }
+
+    /// <summary>
+    /// How many more times an Egg's personality is drawn for a shiny one when its parents come from games of different
+    /// languages (the Masuda method, plan 06 · R15): four in Platinum (<c>Egg_SetInitialData</c>), five from Generation 5.
+    /// </summary>
+    public int MasudaRerolls { get; private init; } = 4;
+
     private Ruleset(RulesPreset preset) => Preset = preset;
 
     public static Ruleset Platinum { get; } = new(RulesPreset.Platinum);
@@ -221,7 +240,10 @@ public sealed class Ruleset
         VitaminLimit = 252,
         EvsAtLevel100 = true,
         ShinyOdds = 4096,
-        PoisonInTheField = false
+        PoisonInTheField = false,
+        EverstoneAlwaysPassesNature = true,
+        ModernInheritance = true,
+        MasudaRerolls = 5
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

@@ -65,7 +65,7 @@ internal static partial class ModernUi
             Card(r, 26, selected);
             var c = new Vector2(r.X + 70, r.Y + r.Height / 2f);
             UiShapes.Circle(c, 50, Disc);
-            PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), c + new Vector2(0, -3), 2, Hop(selected, p.IsFainted) * 2,
+            PixelArt(PixelArtGenerator.IconOf(p), c + new Vector2(0, -3), 2, Hop(selected, p.IsFainted) * 2,
                 p.IsFainted ? new Color(170, 170, 190, 255) : Color.White);
             UiFonts.DrawCentered(p.DisplayName, r.X + 136, r.Y + 42, 32, Ink, UiWeight.Black);
             Level(r.X + r.Width - 28, r.Y + 42, p.Level, 30);
@@ -124,7 +124,7 @@ internal static partial class ModernUi
             else UiShapes.Shape(r, 24, new Color(255, 255, 255, 105), new Color(255, 255, 255, 80), new Color(255, 255, 255, 160), 3f);
             if (current.Slots[i] is not { } p) continue;
             bool lifted = selected && pc.Held != null;
-            PixelArt(PixelArtGenerator.GetPokemonIcon(p.ModelName), new Vector2(r.X + BoxCell / 2f, r.Y + BoxCell / 2f - 2), 2,
+            PixelArt(PixelArtGenerator.IconOf(p), new Vector2(r.X + BoxCell / 2f, r.Y + BoxCell / 2f - 2), 2,
                 lifted ? 0 : Hop(selected) * 2, lifted ? new Color(255, 255, 255, 150) : null);
         }
 
@@ -165,7 +165,7 @@ internal static partial class ModernUi
                 _ => new Vector2(plate.X + plate.Width / 2f, plate.Y + plate.Height + 40)
             };
             UiShapes.Glow(spot + new Vector2(0, 30), 38, 11, new Color(10, 16, 40, 110));
-            PixelArt(PixelArtGenerator.GetPokemonIcon(held.ModelName), spot - new Vector2(0, 46), 2, Hop(false) * 2);
+            PixelArt(PixelArtGenerator.IconOf(held), spot - new Vector2(0, 46), 2, Hop(false) * 2);
         }
 
         // ---- The menus, beside the cursor on the side with more room
@@ -215,7 +215,7 @@ internal static partial class ModernUi
     {
         var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 24 + 112);
         BallDisc(disc, 112);
-        PixelArt(PixelArtGenerator.GetPokemonSprite(shown.ModelName, isBack: false), disc, 2);
+        PixelArt(PixelArtGenerator.SpriteOf(shown), disc, 2);
 
         // The six marks, the ones set in Ink
         const float markStep = 42;
@@ -228,6 +228,13 @@ internal static partial class ModernUi
         float x = detail.X + 36, y = detail.Y;
         float wide = detail.Width - 72;
         NameWithGender(shown, x, y + 318, 38);
+        // An Egg tells only how near it is to hatching (plan 06 · R15)
+        if (shown.IsEgg)
+        {
+            var said = Wrap(Breeding.Watch(shown), wide, 26, UiWeight.ExtraBold);
+            for (int i = 0; i < said.Count && i < 4; i++) UiFonts.Draw(said[i], x, y + 352 + i * 34, 26, Ink, UiWeight.ExtraBold);
+            return;
+        }
         Level(detail.X + detail.Width - 36, y + 318, shown.Level, 32);
         float tx = TypePills(x, y + 344, shown, 34);
         StatusPill(tx + 2, y + 344, shown.IsFainted ? StatusCondition.Faint : shown.Status, 34);

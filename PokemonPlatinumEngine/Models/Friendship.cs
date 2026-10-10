@@ -58,6 +58,8 @@ public static class FriendshipRules
     public static void Apply(Pokemon p, FriendshipEvent e, Random? rng = null)
     {
         if (e == FriendshipEvent.WalkCycle && rng != null && rng.Next(2) == 0) return;
+        // An Egg's friendship counts its cycles, which nothing but the steps of a cycle moves (plan 06 · R15)
+        if (p.IsEgg) return;
         Change(p, ChangeFor(e));
     }
 
@@ -67,6 +69,7 @@ public static class FriendshipRules
     /// </summary>
     public static void Change(Pokemon p, (int Low, int Mid, int High) change)
     {
+        if (p.IsEgg) return;
         int delta = p.Friendship >= 200 ? change.High : p.Friendship >= 100 ? change.Mid : change.Low;
         if (delta > 0)
         {

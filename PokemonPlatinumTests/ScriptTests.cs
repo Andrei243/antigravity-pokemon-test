@@ -195,6 +195,16 @@ public class ScriptTests
           poffin cook
           poffin room
           poffin give 60 30 30 30 30 40
+          daycare state
+          daycare check
+          daycare leave
+          daycare take 1
+          daycare grown 0
+          daycare egg
+          daycare keep
+          daycare compatibility
+          giveegg "Togepi"
+          hatch
         script Other
           end
         """;
@@ -1035,6 +1045,8 @@ public class ScriptTests
         public BerryPatches Berries => inner.Berries;
         public string? ChosenItem => inner.ChosenItem;
         public PoffinCase Poffins => inner.Poffins;
+        public DayCare DayCare => inner.DayCare;
+        public bool Hatch() => inner.Hatch();
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

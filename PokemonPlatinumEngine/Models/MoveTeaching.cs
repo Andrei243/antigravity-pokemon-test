@@ -28,13 +28,13 @@ public static class MoveTeaching
     /// <summary>Whether a move is one an HM teaches (Cut, Fly, Surf, Strength, Defog, Rock Smash, Waterfall, Rock Climb).</summary>
     public static bool IsHmMove(string move) => HmMoves.Value.Contains(move);
 
-    /// <summary>Whether the Pokémon's species can learn what the machine teaches.</summary>
+    /// <summary>Whether the Pokémon's species can learn what the machine teaches (never an Egg, plan 06 · R15).</summary>
     public static bool CanLearn(Pokemon p, ItemData machine) =>
-        IsMachine(machine) && p.Species.TmMoves?.Contains(machine.Name) == true;
+        IsMachine(machine) && !p.IsEgg && p.Species.TmMoves?.Contains(machine.Name) == true;
 
     /// <summary>What the party shows beside the Pokémon for the machine.</summary>
     public static TeachAnswer Answer(Pokemon p, ItemData machine) =>
-        p.Knows(machine.TeachesMove!) ? TeachAnswer.Learned : CanLearn(p, machine) ? TeachAnswer.Able : TeachAnswer.NotAble;
+        p.IsEgg ? TeachAnswer.NotAble : p.Knows(machine.TeachesMove!) ? TeachAnswer.Learned : CanLearn(p, machine) ? TeachAnswer.Able : TeachAnswer.NotAble;
 
     /// <summary>Why the move in this place can't be forgotten to make room, or null when it can.</summary>
     public static string? WhyNotForget(Pokemon p, int slot) =>

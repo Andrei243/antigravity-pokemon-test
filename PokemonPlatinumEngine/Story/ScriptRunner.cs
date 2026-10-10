@@ -55,6 +55,9 @@ public sealed class ScriptRunner
     private Pokemon? ownPokemon;
     private string lastUser = "";
 
+    // The Pokémon last left at the Day Care and last taken back (plan 06 · R15)
+    private string lastLeft = "", lastTaken = "";
+
     public ScriptRunner(ScriptLibrary library, IScriptHost host)
     {
         this.library = library;
@@ -627,6 +630,31 @@ public sealed class ScriptRunner
                 Poffin(i);
                 break;
 
+            // The Day Care and Eggs (plan 06 · R15)
+            case Op.DayCare:
+                DayCare(i);
+                break;
+            case Op.GiveEgg:
+            {
+                // ScrCmd_GiveEgg: an Egg onto the team, received from whoever gives it; nothing when the team is full
+                var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
+                if (host.Party.IsFull)
+                {
+                    Result = 0;
+                    break;
+                }
+                var egg = Breeding.GiftEgg(species, host.TrainerNumber, host.Chance, Ruleset.Current);
+                egg.Met(PlayerIdentity.Fill(speaker ?? Subject?.Name ?? "a stranger"), Core.GameClock.Today);
+                egg.MetLevel = 0;
+                host.Party.Add(egg);
+                Result = 1;
+                break;
+            }
+            case Op.Hatch:
+                // HatchEgg: the team's first Egg with no cycles left hatches in its scene, which the script waits for
+                Result = host.Hatch() ? 1 : 0;
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -708,6 +736,90 @@ public sealed class ScriptRunner
                 Result = poffins.Add(made) ? (int)made.Type : 0xFFFF;
                 break;
             }
+        }
+    }
+
+    /// <summary>
+    /// The Day Care's commands (plan 06 · R15), as the original's day-care script commands: <c>state</c> is
+    /// <c>GetDaycareState</c> (0 empty, 1 an Egg waiting, 2 one Pokémon, 3 two); <c>check</c> whether the player may
+    /// leave one at all (1 with only one Pokémon that isn't an Egg, <c>CountPartyNonEggs</c>; 2 when the team's Pokémon
+    /// able to fight and the boxes' come to two, <c>CountAliveMonsAndBoxMons</c>; else 0); <c>leave</c> the Pokémon last
+    /// chosen with <c>choosepokemon</c> (0 left, crying, and <c>{left}</c> names it; 1 none chosen; 2 an Egg; 3 the last
+    /// that can fight; 4 the Day Care is full); <c>take N</c> the Pokémon in place N back for its fee (0 taken, crying,
+    /// <c>{taken}</c> names it; 1 the player is short of the fee; 2 the team is full; 3 nobody there); <c>grown N</c> the
+    /// levels the Pokémon in place N has grown (<c>BufferDaycareGainedLevelsBySlot</c>); <c>egg</c> the Egg
+    /// onto the team (1, or 0 with none or no room); <c>keep</c> the Egg turned down; <c>compatibility</c> how the two get
+    /// on, 0 best to 3 not at all. <c>{daycare:N}</c>, <c>{level:N}</c>, <c>{grown:N}</c> and <c>{fee:N}</c> name the
+    /// Pokémon in place N, the level its steps have brought it to, the levels it grew and what taking it back costs.
+    /// </summary>
+    private void DayCare(Instruction i)
+    {
+        var dayCare = host.DayCare;
+        var party = host.Party;
+        switch (i.Name)
+        {
+            case "state":
+                Result = (int)dayCare.State;
+                break;
+            case "check":
+            {
+                int notEggs = party.Members.Count(p => !p.IsEgg);
+                int able = party.Members.Count(p => !p.IsFainted) + host.Boxed.Count(p => !p.IsEgg);
+                Result = notEggs == 1 ? 1 : able == 2 ? 2 : 0;
+                break;
+            }
+            case "leave":
+            {
+                int slot = Result;
+                if (slot < 0 || slot >= party.Count) Result = 1;
+                else if (party.Members[slot].IsEgg) Result = 2;
+                else if (Models.DayCare.WhyNot(party, slot) == "last") Result = 3;
+                else if (dayCare.Count >= Models.DayCare.Places) Result = 4;
+                else
+                {
+                    var left = party.Members[slot];
+                    lastLeft = left.DisplayName;
+                    dayCare.Leave(party, slot);
+                    host.Cry(left.ModelName);
+                    Result = 0;
+                }
+                break;
+            }
+            case "take":
+            {
+                if (dayCare[i.Number] == null) Result = 3;
+                else if (party.IsFull) Result = 2;
+                else if (host.Money < dayCare.Fee(i.Number)) Result = 1;
+                else
+                {
+                    host.Money -= dayCare.Fee(i.Number);
+                    var taken = dayCare.TakeBack(party, i.Number)!;
+                    lastTaken = taken.DisplayName;
+                    host.Cry(taken.ModelName);
+                    Result = 0;
+                }
+                break;
+            }
+            case "egg":
+            {
+                var egg = dayCare.GiveEgg(party, host.TrainerNumber, host.Chance, Ruleset.Current);
+                if (egg != null)
+                {
+                    egg.Met(Models.Breeding.DayCareCouple, Core.GameClock.Today);
+                    egg.MetLevel = 0;
+                }
+                Result = egg != null ? 1 : 0;
+                break;
+            }
+            case "grown":
+                Result = dayCare.LevelsGained(i.Number);
+                break;
+            case "keep":
+                dayCare.KeepEgg();
+                break;
+            case "compatibility":
+                Result = Breeding.Level(dayCare.Compatibility);
+                break;
         }
     }
 
@@ -915,9 +1027,18 @@ public sealed class ScriptRunner
             // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
             "ticket" => Ticket.ToString("D5"),
             "winner" => lottery.Winner?.DisplayName ?? "",
+            // The Day Care's two by their places, and who was last left or taken back (plan 06 · R15)
+            "daycare" when DayCarePlace(argument) is { } at => host.DayCare[at]?.DisplayName ?? "",
+            "level" when DayCarePlace(argument) is { } at => host.DayCare.LevelNow(at).ToString(),
+            "grown" when DayCarePlace(argument) is { } at => host.DayCare.LevelsGained(at).ToString(),
+            "fee" when DayCarePlace(argument) is { } at => host.DayCare.Fee(at).ToString(),
+            "left" => lastLeft,
+            "taken" => lastTaken,
             _ => match.Value
         };
     }) : text;
+
+    private static int? DayCarePlace(string argument) => argument is "0" or "1" ? argument[0] - '0' : null;
 
     /// <summary>The fanfare an item is received to, as the original's: a TM or HM its own, a key item its own, anything else the item's.</summary>
     public static MusicRole FanfareFor(ItemData item) => item.Pocket switch

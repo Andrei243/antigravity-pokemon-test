@@ -1089,8 +1089,9 @@ public class BattleAbilityTests
     [Fact]
     public void AWildPokemonMetIsMadeWithWhatTheLeadChose()
     {
-        // The row met carries the level decided and the choices; the Pokémon made from it has them, and is
-        // otherwise the same Pokémon the same numbers would have made
+        // The row met carries the level decided and the choices; the Pokémon made from it has them, as its personality
+        // gives them (plan 06 · R15): Cute Charm's built personality (sub_02074088) with Synchronize's nature, so its
+        // ability too is the personality's
         var table = new[] { Row("Bidoof", 3, 10, to: 7) };
         var met = WildEncounterRules.Meet(table, false, Lead("Synchronize", nature: Nature.Timid), new Scripted(0, 2, 0))!;
         Assert.Equal((5, 5, Nature.Timid, null), (met.MinLevel, met.MaxLevel, met.Nature, met.Gender));
@@ -1098,9 +1099,9 @@ public class BattleAbilityTests
 
         var species = PokemonDatabase.Get("Bidoof")!;
         var chosen = new Pokemon(species, 5, new Random(7), gender: Gender.Female, nature: Nature.Timid);
-        var chance = new Pokemon(species, 5, new Random(7));
         Assert.Equal((Gender.Female, Nature.Timid), (chosen.Gender, chosen.Nature));
-        Assert.Equal((chance.IvHP, chance.IvAttack, chance.IvSpeed, chance.AbilityName, chance.IsShiny), (chosen.IvHP, chosen.IvAttack, chosen.IvSpeed, chosen.AbilityName, chosen.IsShiny));
+        Assert.Equal((Gender.Female, Nature.Timid), (Personality.GenderOf(species, chosen.Personality), Personality.NatureOf(chosen.Personality)));
+        Assert.Equal(Personality.AbilityOf(species.Abilities, chosen.Personality), chosen.AbilityName);
     }
 
     [Fact]

@@ -603,6 +603,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived, FieldScripts.SwarmNews });
         // Two trainers who saw the player at once (plan 02 · S6)
         started.Add(FieldScripts.TrainerPair);
+        // An Egg hatching at the end of a step (plan 06 · R15)
+        started.Add(FieldScripts.HatchEgg);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {

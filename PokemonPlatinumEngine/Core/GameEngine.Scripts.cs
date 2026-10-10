@@ -1023,6 +1023,10 @@ public partial class GameEngine
 
         public PoffinCase Poffins => game.poffinCase;
 
+        public DayCare DayCare => game.dayCare;
+
+        public bool Hatch() => game.HatchFirstEgg();
+
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)
         {

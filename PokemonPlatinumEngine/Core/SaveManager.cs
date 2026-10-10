@@ -110,6 +110,9 @@ public class SaveData
     /// <summary>The Poffin Case's Poffins in their places (plan 06 · R14c). Null when it is empty, and in older saves.</summary>
     public List<Poffin>? Poffins { get; set; }
 
+    /// <summary>Solaceon Town's Day Care (plan 06 · R15). Null while it is empty with no cycle under way, and in older saves.</summary>
+    public DayCareSave? DayCare { get; set; }
+
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
@@ -192,9 +195,51 @@ public class SaveData
         new(StoryFlags, StoryVariables, DefeatedTrainers, TakenItems, Badges, PlayerStarter, RivalStarter);
 }
 
+/// <summary>
+/// The Day Care as a save keeps it (plan 06 · R15): its places, each the Pokémon left and the steps walked since; the
+/// Egg found (its personality, nought for none) and the steps of the egg cycle under way.
+/// </summary>
+public sealed class DayCareSave
+{
+    public List<SavedDayCarePlace?> Places { get; set; } = new();
+    public uint Offspring { get; set; }
+    public int StepCounter { get; set; }
+
+    /// <summary>The Day Care as a save; null while there is nothing to keep.</summary>
+    public static DayCareSave? From(DayCare dayCare)
+    {
+        if (dayCare.Count == 0 && dayCare.Offspring == 0 && dayCare.StepCounter == 0) return null;
+        var save = new DayCareSave { Offspring = dayCare.Offspring, StepCounter = dayCare.StepCounter };
+        for (int i = 0; i < DayCare.Places; i++)
+            save.Places.Add(dayCare[i] is { } p ? new SavedDayCarePlace { Pokemon = SavedPokemonData.FromPokemon(p), Steps = dayCare.StepsOf(i) } : null);
+        return save;
+    }
+
+    /// <summary>Puts a saved Day Care back; null empties it.</summary>
+    public static void Restore(DayCareSave? save, DayCare dayCare)
+    {
+        if (save == null)
+        {
+            dayCare.Clear();
+            return;
+        }
+        dayCare.Restore(save.Places.Select(p => (p?.Pokemon?.ToPokemon(), p?.Steps ?? 0)).ToList(), save.Offspring, save.StepCounter);
+    }
+}
+
+public sealed class SavedDayCarePlace
+{
+    public SavedPokemonData? Pokemon { get; set; }
+    public int Steps { get; set; }
+}
+
 public class SavedPokemonData
 {
     public string SpeciesName { get; set; } = "Turtwig";
+
+    /// <summary>Still an Egg (plan 06 · R15): its friendship is the egg cycles it has left. Left out for a Pokémon.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool IsEgg { get; set; }
 
     /// <summary>The form it is in (plan 03 · D11); null for its species' own, and in saves from before forms.</summary>
     public string? Form { get; set; }
@@ -262,6 +307,7 @@ public class SavedPokemonData
         var saved = new SavedPokemonData
         {
             SpeciesName = p.Species.Name,
+            IsEgg = p.IsEgg,
             Form = p.Form,
             Nickname = p.Nickname,
             Level = p.Level,
@@ -348,6 +394,7 @@ public class SavedPokemonData
             MetDate = MetDate,
             Language = Language
         };
+        p.IsEgg = IsEgg;
         if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;
         if (Friendship is { } friendship) p.Friendship = friendship;

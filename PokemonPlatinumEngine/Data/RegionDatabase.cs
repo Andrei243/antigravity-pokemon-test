@@ -150,7 +150,9 @@ public static class RegionDatabase
                 // Hearthome's Poffin House and Pokémon Fan Club (plan 06 · R14c)
                 "PoffinHouse", "HearthomeFanClub",
                 // Veilstone City's Galactic warehouse, where HM02 lies (plan 02 · S8)
-                "VeilstoneGalacticWarehouse"
+                "VeilstoneGalacticWarehouse",
+                // Solaceon Town's Pokémon Day Care, rebuilt to the original's plan (plan 06 · R15)
+                "PokemonDayCare"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
