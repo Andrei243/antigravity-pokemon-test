@@ -67,6 +67,26 @@ public partial class BattleEngine
         PlayerSlots[0], PlayerSlots.ElementAtOrDefault(1)
     };
 
+    private readonly HashSet<int> seenBefore;
+
+    /// <summary>The move cards say how a move will do (plan 12 · Q10; <see cref="BattleSetup.MoveHints"/>).</summary>
+    public bool ShowsMoveHints { get; }
+
+    /// <summary>
+    /// What the move card says of <paramref name="move"/>, used by the Pokémon whose move is being chosen, against
+    /// <paramref name="target"/> (one of the screen's places): the matchup <see cref="DamageCalculator.Effectiveness"/>
+    /// gives on the rules' own battlers, which are the screen's whenever a menu is open; nothing for a status move,
+    /// an empty place, or a species the Pokédex hadn't seen before the battle.
+    /// </summary>
+    public MoveHint HintFor(Move move, Battler? target)
+    {
+        if (!ShowsMoveHints || move.Category == MoveCategory.Status) return MoveHint.None;
+        if (target?.Pokemon is not { IsFainted: false } foe || !seenBefore.Contains(foe.Species.DexNumber)) return MoveHint.None;
+        var user = core.At(MenuBattler.Place);
+        if (user.Pokemon == null) return MoveHint.None;
+        return MoveHints.Of(DamageCalculator.Effectiveness(user, core.At(target.Place), move, core.Rules));
+    }
+
     /// <summary>The keys that answer a menu: the A button, and Enter, which reads a battle's messages on as well.</summary>
     private static bool ConfirmPressed =>
         InputManager.IsActionPressed(GameAction.Confirm) || Raylib_cs.Raylib.IsKeyPressed(Raylib_cs.KeyboardKey.Enter);

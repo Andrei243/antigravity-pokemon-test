@@ -75,7 +75,7 @@ internal static partial class ModernUi
                     if (labels[i].Length > 0) Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
                 break;
             case BattleMenuState.Moves:
-                MoveMenu(hud, active);
+                MoveMenu(hud, active, battle);
                 break;
             case BattleMenuState.SelectTarget:
                 TargetMenu(hud, battle);
@@ -179,6 +179,12 @@ internal static partial class ModernUi
             if (choice < 0) UiShapes.Fill(r, 26, new Color(40, 40, 60, 60));
         }
 
+        // How the move will do against each place it can be aimed at, hung on the card's top edge (plan 12 · Q10)
+        if (battle.TargetingMove is { } aimed)
+            for (int i = 0; i < 4; i++)
+                if (places[i] is { } place && IndexOf(choices, place) >= 0)
+                    HintPill(48 + (i % 2) * 556 + 536 - 24, 836 + (i / 2) * 104, battle.HintFor(aimed, place), alignRight: true);
+
         var info = new Rectangle(1172, 836, 700, 200);
         Panel(info, 28);
         UiFonts.DrawCentered("TARGET", info.X + 44, info.Y + 44, 24, Muted, UiWeight.Black);
@@ -191,6 +197,51 @@ internal static partial class ModernUi
             if (target?.Pokemon != null)
                 UiFonts.DrawCentered($"at {target.Name}", info.X + 44, info.Y + 156, 28, Muted, UiWeight.ExtraBold);
         }
+    }
+
+    /// <summary>The colour of a hint's pill: green for a strong hit, gold for a weak one, muted for none.</summary>
+    public static Color HintColor(MoveHint hint) => hint switch
+    {
+        MoveHint.SuperEffective => Green,
+        MoveHint.NotVeryEffective => Gold,
+        _ => Muted
+    };
+
+    /// <summary>A hint's sign, about 2 × <paramref name="s"/> across: a triangle up, a triangle down, a cross.</summary>
+    public static void HintSign(MoveHint hint, Vector2 c, float s, Color color)
+    {
+        switch (hint)
+        {
+            case MoveHint.SuperEffective:
+                UiShapes.Triangle(c + new Vector2(0, -0.8f) * s, c + new Vector2(-0.9f, 0.7f) * s, c + new Vector2(0.9f, 0.7f) * s, color, 0.15f * s);
+                break;
+            case MoveHint.NotVeryEffective:
+                UiShapes.Triangle(c + new Vector2(-0.9f, -0.7f) * s, c + new Vector2(0, 0.8f) * s, c + new Vector2(0.9f, -0.7f) * s, color, 0.15f * s);
+                break;
+            case MoveHint.NoEffect:
+                UiShapes.Line(c + new Vector2(-0.7f, -0.7f) * s, c + new Vector2(0.7f, 0.7f) * s, 0.36f * s, color);
+                UiShapes.Line(c + new Vector2(-0.7f, 0.7f) * s, c + new Vector2(0.7f, -0.7f) * s, 0.36f * s, color);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// The hint pill (style guide, "Battle panels"): 28 tall, hung on a card's top edge at <paramref name="top"/>,
+    /// starting at <paramref name="x"/> or ending there; nothing for a hint that shows nothing. Returns its width.
+    /// </summary>
+    public static float HintPill(float x, float top, MoveHint hint, bool alignRight)
+    {
+        if (MoveHints.Words(hint) is not { } words) return 0f;
+        const float h = 28, size = 16;
+        float textW = UiFonts.Measure(words, size, UiWeight.Black);
+        float w = 14 + 16 + 8 + textW + 14;
+        var pill = new Rectangle(alignRight ? x - w : x, top - 12, w, h);
+        var color = HintColor(hint);
+        UiShapes.Shadow(pill, h / 2f, 10, new Vector2(0, 3), ShadowColor);
+        UiShapes.Shape(pill, h / 2f, Lighter(color, 0.1f), Darker(color, 0.08f), Darker(color, 0.3f), 2);
+        HintSign(hint, new Vector2(pill.X + 14 + 8, pill.Y + h / 2f), 7, Color.White);
+        UiFonts.DrawCentered(words, pill.X + 14 + 16 + 8, pill.Y + h / 2f, size, Color.White, UiWeight.Black);
+        return w;
     }
 
     private static int IndexOf(IReadOnlyList<Battler> list, Battler b)
@@ -276,7 +327,7 @@ internal static partial class ModernUi
         AdvanceArrow(r.X + r.Width - 64, r.Y + r.Height - 52);
     }
 
-    private static void MoveMenu(BattleHUD hud, Pokemon p)
+    private static void MoveMenu(BattleHUD hud, Pokemon p, BattleEngine battle)
     {
         for (int i = 0; i < 4; i++)
         {
@@ -303,6 +354,19 @@ internal static partial class ModernUi
             float pw = UiFonts.Measure(pp, 26, UiWeight.Black);
             UiFonts.DrawCentered(pp, r.X + r.Width - 30 - pw, r.Y + r.Height / 2f, 26, move.CurrentPP > 0 ? Ink : Red, UiWeight.Black);
             UiFonts.DrawCentered("PP", r.X + r.Width - 40 - pw - UiFonts.Measure("PP", 18, UiWeight.ExtraBold), r.Y + r.Height / 2f + 3, 18, Muted, UiWeight.ExtraBold);
+        }
+
+        // How each move will do, hung on its card's top edge: one foe's at the right, two foes' as they stand (plan 12 · Q10)
+        if (battle.ShowsMoveHints)
+        {
+            var left = battle.IsDouble ? battle.EnemySlots.ElementAtOrDefault(1) : null;
+            var right = battle.EnemySlots[0];
+            for (int i = 0; i < Math.Min(4, p.Moves.Count); i++)
+            {
+                var r = new Rectangle(48 + (i % 2) * 556, 848 + (i / 2) * 100, 536, 88);
+                if (left != null) HintPill(r.X + 150, r.Y, battle.HintFor(p.Moves[i], left), alignRight: false);
+                HintPill(r.X + r.Width - 24, r.Y, battle.HintFor(p.Moves[i], right), alignRight: true);
+            }
         }
 
         var info = new Rectangle(1172, 848, 700, 188);

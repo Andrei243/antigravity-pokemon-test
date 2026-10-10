@@ -195,6 +195,13 @@ public partial class BattleEngine
         PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();
         EnemySlots = core.EnemySlots.Select(OnScreen).ToList();
 
+        // The species the Pokédex knew before the battle: its Seen events register the foes as they appear, and a
+        // species met for the first time gets no hint (plan 12 · Q10, as Sun and Moon have it)
+        ShowsMoveHints = setup.MoveHints;
+        seenBefore = PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members))
+            .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>())
+            .Select(p => p.Species.DexNumber).Where(Pokedex.IsSeen).ToHashSet();
+
         // Every cry the battle may play, made on a worker before it is heard
         AudioManager.RequestCries(PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members)));
 

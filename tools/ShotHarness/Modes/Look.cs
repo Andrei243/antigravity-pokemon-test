@@ -45,6 +45,26 @@ partial class Harness
         ToMainMenu(game.Battle);
         Timing("battle");
 
+        // The help pages under OPTIONS and the move hints' row (plan 12 · Q10), last so that no shot before them moves
+        game.State = GameState.Options;
+        var options = game.Options;
+        options.Open();
+        while (Enum.GetValues<OptionRow>()[options.SelectedIndex] != OptionRow.MoveHints) options.Move(1);
+        Frames(1); Shot("look_12_options_hints");
+        options.Move(1);
+        options.Confirm();
+        Frames(1); Shot("look_12_help");
+        options.Help.Move(0, -1);
+        options.Help.Move(0, -1);
+        options.Help.Move(0, -1);
+        options.Help.Move(1, 0);
+        Frames(1); Shot("look_12b_help_controls");
+        options.Help.Move(1, 0);
+        Frames(1); Shot("look_12c_help_notes");
+        options.Help.Cancel();
+        options.Open();
+        game.State = GameState.Overworld;
+
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });
     }

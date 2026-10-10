@@ -26,6 +26,19 @@ public enum SpeakerMode { Stereo, Handheld }
 /// <summary>How fast written lines are typed out.</summary>
 public enum TextSpeed { Slow, Normal, Fast }
 
+/// <summary>
+/// A help the newest games made their default (plan 12): off, as the rules of the game in progress have it (a
+/// Platinum game goes without, a modern one has it), or on.
+/// </summary>
+public enum RulesDefault { Off, Rules, On }
+
+public static class RulesDefaults
+{
+    /// <summary>Whether the help is on in a game played by these rules.</summary>
+    public static bool Holds(this RulesDefault value, Data.RulesPreset preset) =>
+        value == RulesDefault.On || value == RulesDefault.Rules && preset == Data.RulesPreset.Modern;
+}
+
 /// <summary>Player options, kept in settings.json next to the save.</summary>
 public sealed class GameSettings
 {
@@ -68,6 +81,12 @@ public sealed class GameSettings
         TextSpeed.Fast => 120f,
         _ => 45f
     };
+
+    /// <summary>
+    /// Whether a damaging move's card says how it will do against a foe already seen (plan 12 · Q10): Sun and
+    /// Moon's way, so a modern game has it and a Platinum game doesn't unless the player asks.
+    /// </summary>
+    public RulesDefault MoveHints { get; set; } = RulesDefault.Rules;
 
     /// <summary>A fixed time of day, or null to follow the clock.</summary>
     public TimeOfDay? TimeOfDay { get; set; }
