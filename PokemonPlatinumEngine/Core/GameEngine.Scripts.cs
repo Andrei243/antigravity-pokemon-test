@@ -31,6 +31,9 @@ public partial class GameEngine
     private int pendingCancel;
     private int scriptAnswer;
 
+    // The item the bag chose for a script's chooseitem (plan 06 · R14a)
+    private string? scriptItem;
+
     // What a script set going: people walking, the player walking, the screen gone black, the camera sent away
     private readonly List<NpcWalk> npcWalks = new();
     private PlayerWalk? playerWalk;
@@ -241,7 +244,7 @@ public partial class GameEngine
         // Cut, Rock Smash and Strength act on the obstacle in front, which is whose script it is
         var (dx, dy) = FieldMovement.Delta(player.Facing);
         int ax = player.GridX + dx, ay = player.GridY + dy;
-        NPC? subject = currentMap.InBounds(ax, ay) ? currentMap.NpcIn(ax, ay, currentMap.SurfaceAt(ax, ay, player.HeightOn(currentMap)).Height) : null;
+        NPC? subject = currentMap.InBounds(ax, ay) ? currentMap.NpcIn(ax, ay, currentMap.FootingAt(ax, ay, player.HeightOn(currentMap))) : null;
         StartScript(FieldScripts.FromMenu(move)!, subject is { IsObstacle: true } ? subject : null, pokemon: user);
     }
 
@@ -686,6 +689,7 @@ public partial class GameEngine
         public Inventory Bag => game.playerInventory;
         public Poketch Poketch => game.poketch;
         public SafariGame Safari => game.safari;
+        public int SeenInSinnoh => game.playerPokedex.SeenIn(PokedexMode.Sinnoh);
 
         public int Money
         {
@@ -844,6 +848,13 @@ public partial class GameEngine
                     game.currentState = GameState.PartyMenu;
                     game.partyScreen.OpenToChoose();
                     break;
+                case ScriptScreen.ChooseItem:
+                    // A berry to plant or a mulch to lay (plan 06 · R14a): the bag, on that pocket
+                    game.scriptItem = null;
+                    game.currentState = GameState.BagMenu;
+                    game.bagScreen.Registered = game.registeredItem;
+                    game.bagScreen.OpenToPick(counter ?? "berries");
+                    break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
@@ -872,6 +883,7 @@ public partial class GameEngine
             if (NpcTrades.Get(trade) is not { } t || NpcTrades.Trade(t, game.playerParty, slot, GameClock.Today) is not { } received) return false;
             game.playerPokedex.RegisterSeen(received.Species.DexNumber);
             game.playerPokedex.RegisterCaught(received.Species.DexNumber);
+            game.poketch.Remember(received);
             AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
             return true;
         }
@@ -882,6 +894,7 @@ public partial class GameEngine
             game.playerPokedex.RegisterCaught(pokemon.Species.DexNumber);
             // A gift is met where it is given (Pokemon_GiveMonFromScript)
             pokemon.Met(game.PlaceName(), GameClock.Today);
+            game.poketch.Remember(pokemon);
             if (game.playerParty.Add(pokemon)) return true;
             game.pcBoxStorage.Store(pokemon);
             return false;
@@ -985,6 +998,16 @@ public partial class GameEngine
         public uint TrainerNumber => game.TrainerNumber;
 
         public Random Chance => game.fieldRandom;
+
+        // ---- the clock (plan 06 · R14a)
+
+        public TimeOfDay TimeOfDay => GameClock.Now;
+
+        public DayOfWeek Weekday => GameClock.Today.DayOfWeek;
+
+        public IEnumerable<Pokemon> Boxed => game.pcBoxStorage.All;
+        public BerryPatches Berries => game.berries;
+        public string? ChosenItem => game.scriptItem;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

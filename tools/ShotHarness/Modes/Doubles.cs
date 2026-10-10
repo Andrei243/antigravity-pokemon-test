@@ -114,6 +114,24 @@ partial class Harness
         Skip(130 / 60.0); Shot("9i_lesson_intro");
         for (int guard = 0; guard < 10 && !d.IsBattleOver; guard++) { Confirm(d); Skip(60 / 60.0); }
         Shot("9j_lesson_caught");
+
+        // The move hints in a double battle (plan 12 · Q10), last so that no shot before them moves: a hint for each
+        // foe on the move cards, and one on each card of the target menu
+        party.HealAll();
+        pokedex.RegisterSeen(PokemonDatabase.Get("Geodude")!.DexNumber);
+        pokedex.RegisterSeen(PokemonDatabase.Get("Gastly")!.DexNumber);
+        d = StartSpecial(new BattleSetup
+        {
+            PlayerParty = party, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Double, Random = new Random(5),
+            WildPokemon = new List<Pokemon> { new Pokemon(PokemonDatabase.Get("Geodude")!, 6), new Pokemon(PokemonDatabase.Get("Gastly")!, 6) },
+            MoveHints = true
+        });
+        Skip(130 / 60.0);
+        for (int guard = 0; guard < 8 && d.HUD.MenuState == BattleMenuState.Message; guard++) { Confirm(d); Skip(70 / 60.0); }
+        d.SelectMainMenuOption(0); Skip(2 / 60.0); Shot("9k_double_hints_moves");
+        int aimed = d.PlayerPokemon.Moves.FindIndex(m => m.Target == MoveTarget.Selected && m.Category != MoveCategory.Status);
+        d.HUD.MoveMenuIndex = Math.Max(0, aimed);
+        d.SelectMove(Math.Max(0, aimed)); Skip(2 / 60.0); Shot("9l_double_hints_target");
         Timing("double battle");
     }
 }

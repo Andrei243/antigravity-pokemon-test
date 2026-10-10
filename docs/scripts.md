@@ -117,7 +117,9 @@ name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{r
 `{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
 `{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
 variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
-`{trophygarden}` the Trophy Garden's newest (plan 06 · R13).
+`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{ticket}` the Lottery Corner's number of the day and
+`{winner}` the Pokémon whose ID number the last `lottery draw` matched (plan 06 · R14a), and `{berry}`, `{yield}` and
+`{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them.
 
 ### Where a script goes
 
@@ -134,7 +136,7 @@ What an `if` can ask:
 | Question | |
 |---|---|
 | `flag FLAG_X` | The flag is set. |
-| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`. |
+| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen). |
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
@@ -146,10 +148,13 @@ What an `if` can ask:
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
 | `poketch` | The player has the Pokétch. |
+| `poketchapp MemoPad` | The app is on the Pokétch (the original's `CheckPoketchAppRegistered`). |
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
 | `safari` | A Safari Game is under way in the Great Marsh. |
 | `partner` | Someone travels with the player (`partner`, below). |
 | `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
+| `time morning` | The time of day now: `morning`, `day`, `twilight`, `night` or `latenight` (`GameClock`, plan 06 · R14a). |
+| `weekday friday` | The day of the week today. |
 
 ### What the story remembers
 
@@ -178,6 +183,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `givebadge coal` | |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |
+| `greetings clear` | The count of people spoken to starts again from nought (plan 08 · P12; the original's `ClearSpiritombCounter`). The built-in variable `GREETINGS` is the count: everyone spoken to since, each once (`StoryState.Greeted`, saved). |
 
 ### Battles
 
@@ -221,7 +227,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 
 ### The screens that exist
 
-`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `wardrobe` (the player's clothes, slot by slot, changed for nothing: the bedroom's wardrobe; plan 11 · C10; `wardrobe "jubilife"` is a boutique of `clothes.json`, whose stock is tried on and bought with a yes), `travel` (the way to the
+`starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `chooseitem berries` and `chooseitem mulch` (the bag, at the pocket of berries or of items, to choose a berry that grows or a mulch: `RESULT` 1 and the item is the script's last, or 0 when none was chosen; plan 06 · R14a), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `wardrobe` (the player's clothes, slot by slot, changed for nothing: the bedroom's wardrobe; plan 11 · C10; `wardrobe "jubilife"` is a boutique of `clothes.json`, whose stock is tried on and bought with a yes), `travel` (the way to the
 next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here).
 
 ### The trainer tools
@@ -239,6 +245,7 @@ Plan 01 · M9. A Gym's puzzle is the room's own (`puzzle` in its map file, `GymP
 
 | Command | What it does |
 |---|---|
+| `pressbutton blue` | The Pastoria Gym's water sets off for the level of a button's colour, `blue` (four tiles), `green` (two) or `orange` (nought), and the script waits while it moves (the original's `PressPastoriaGymButton`; `PastoriaWater`). The room's coordinate events run it as the player steps on a button. |
 | `flowerclock` | Turns the Eterna Gym's flower clock on to its next time (`VAR_ETERNA_GYM_FLOWER_CLOCK_STATE`, the original's `AdvanceEternaGymClock`; `EternaClock`) and waits while its hands turn and a fountain drains, the camera on them; `camera release` brings it back. `RESULT` is 0 where the clock is at its last time already, 1 when it turned, 2 when a fountain drained too. |
 
 ### Field moves and key items
@@ -274,6 +281,15 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `swarms on` | Swarms begin (`SpecialEncounter_EnableSwarms`): from now on one place of 22 has one each day. |
 | `trophygarden` | Mr. Backlot brings one more Pokémon to the Trophy Garden (`TrophyGarden_AddNewMon`); `{trophygarden}` names it. |
 | `roamer start "Mesprit"` | Sets a roaming Pokémon loose (`RoamingPokemon_ActivateSlot`): Mesprit, Cresselia, Darkrai, Moltres, Zapdos or Articuno, made afresh at its level and full HP, somewhere at random. |
+| `lottery draw` | The Lottery Corner's draw (plan 06 · R14a; `Models/Lottery.cs`): `RESULT` is how many of the day's ticket's digits, from the right, match the ID number of the original trainer of a Pokémon on the team or in the boxes, at best (0 to 5); `{winner}` names it. |
+| `berry status` | The patch of soil the script belongs to (plan 06 · R14a; `Overworld/BerryPatches.cs`): `RESULT` is its stage, 0 bare, 1 planted, 2 sprouted, 3 growing, 4 in flower, 5 in fruit; `{berry}` and `{yield}` say what grows and how many. |
+| `berry mulched` | `RESULT` 1 when mulch is laid on the patch, and `{mulch}` names it. |
+| `berry berries` | `RESULT` 1 when the bag holds a berry that grows; `berry mulches` the same for a mulch. |
+| `berry mulch` | Lays the item last chosen with `chooseitem mulch` on the bare patch, taken from the bag. |
+| `berry plant` | Plants the berry last chosen with `chooseitem berries`, taken from the bag: wet soil, the best rating, growing at once. |
+| `berry water` | Waters the patch to the full. |
+| `berry pick` | Picks what is in fruit into the bag, leaving bare soil with no mulch; `RESULT` is how many. |
+| `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 
 ## Who is on the map

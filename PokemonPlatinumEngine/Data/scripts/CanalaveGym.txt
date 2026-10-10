@@ -1,0 +1,67 @@
+# The Canalave Gym (plan 01 · M9, part 2a), rebuilt to the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_canalave_city_gym.s).
+#
+# A mine shaft of four floors, ten tiles apart, joined by red lifts and by platforms that run on rails between two
+# ends (the game's own rule, CanalaveLifts): stepping onto one carries the player to its other end, and every one is
+# back where it starts each time the player comes in. Byron waits on the top floor. His Mine Badge lets Strength be
+# used outside battle; his win sends the rival and the professor to Canalave's library (plan 02 · S9).
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge mine goto Won
+  say "Hey, champ in the making! Welcome to the Canalave Gym!"
+  say "Byron uses Steel types. They shrug off most hits, but Fire, Fighting and Ground moves will rattle them."
+  say "The Gym is a mine shaft. Ride the lifts up and down and the carts side to side. Each one only goes back and forth between two stops!"
+  end
+label Won
+  say "{player}, you beat Byron! You came up through that shaft like a drill through rock!"
+  end
+
+
+script GymStatue
+  speaker none
+  if badge mine goto Won
+  say "CANALAVE CITY POKéMON GYM. Leader: Byron. Certified Trainers: {rival}"
+  end
+label Won
+  say "CANALAVE CITY POKéMON GYM. Leader: Byron. Certified Trainers: {rival}, {player}"
+  end
+
+
+script Byron
+  speaker "Byron"
+  if badge mine goto Won
+  say "Ho! You found your way up my shaft! I am Byron, Leader of this Gym, and father to Roark of Oreburgh."
+  say "My boy and I both dig deep, but where he loves the rock, I love the steel inside it."
+  say "Steel doesn't bend and doesn't break. Let's see if you can dent it!"
+  battle self as "leader_byron"
+  say "Hmm! Well struck! My steel gave way before your team's resolve."
+  givebadge mine
+  text "{player} received the Mine Badge from Byron!"
+  defeat "worker_gerardo"
+  defeat "worker_jackson"
+  defeat "worker_gary"
+  defeat "black_belt_david"
+  defeat "black_belt_ricky"
+  defeat "ace_trainer_cesar"
+  defeat "ace_trainer_breanna"
+  clearflag FLAG_HIDE_CANALAVE_CITY_RIVAL_BRIDGE
+  clearflag FLAG_HIDE_CANALAVE_CITY_RIVAL_LIBRARY
+  clearflag FLAG_HIDE_CANALAVE_LIBRARY_RIVAL
+  clearflag FLAG_HIDE_CANALAVE_LIBRARY_COUNTERPART
+  clearflag FLAG_HIDE_CANALAVE_LIBRARY_ROWAN
+  setvar VAR_CANALAVE_CITY_STATE 2
+  setflag FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN
+  say "With the Mine Badge, your Pokémon can use Strength outside of battle. Push the boulders out of your way!"
+label Tm
+  say "And this is for you. Steel's best answer to anything that comes at it!"
+  give "TM91"
+  setflag FLAG_RECEIVED_BYRON_TM91
+  say "TM91 is Flash Cannon. A beam of light off polished steel, and it may lower the foe's Special Defense."
+  end
+label Won
+  if not flag FLAG_RECEIVED_BYRON_TM91 goto Tm
+  say "Your friend {rival} came through here too, and left in a hurry for the library."
+  say "Go on, then! A Trainer who can dent steel shouldn't keep friends waiting."
+  end

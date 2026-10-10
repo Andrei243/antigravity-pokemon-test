@@ -23,6 +23,9 @@ public static class FieldScripts
     public const string ItemBall = "common.ItemBall";
     public const string HiddenItem = "common.HiddenItem";
 
+    /// <summary>A patch of soft soil (plan 06 · R14a): what grows in it, watered, mulched, planted or picked.</summary>
+    public const string BerryPatch = "common.BerryPatch";
+
     /// <summary>A Pokémon standing in the field (plan 10 · F1): its cry, then its lines.</summary>
     public const string Pokemon = "common.Pokemon";
 
@@ -76,6 +79,7 @@ public static class FieldScripts
     {
         if (!string.IsNullOrEmpty(npc.Script)) return npc.Script;
         if (npc.IsItemBall) return ItemBall;
+        if (npc.IsBerrySoil) return BerryPatch;
         if (npc.IsPokemon) return Pokemon;
         if (npc.Obstacle is { } obstacle)
             return obstacle switch { PropType.CutTree => CutTree, PropType.CrackedRock => Rock, _ => Boulder };

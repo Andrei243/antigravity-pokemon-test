@@ -218,7 +218,7 @@ public class FormTests
                 "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo", "Appletun-Gmax", "Toxtricity-Low-Key-Gmax", "Sinistea-Antique", "Polteageist-Antique" }
             .Concat(new[] { "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" }.Select(c => "Minior-" + c + "-Meteor"))
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
-        Assert.True(PokemonModels.Forms.Length >= 462, $"only {PokemonModels.Forms.Length} forms with a model of their own");
+        Assert.True(PokemonModels.Forms.Length >= 470, $"only {PokemonModels.Forms.Length} forms with a model of their own");
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
         {

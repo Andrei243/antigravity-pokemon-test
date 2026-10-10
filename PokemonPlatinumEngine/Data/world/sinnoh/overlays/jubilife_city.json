@@ -12,11 +12,13 @@
     { "warp": 5, "map": "PoketchCompany", "x": 5, "y": 7, "facing": "Up" },
     // Our boutique (plan 11 · C10) in the southwest house, whose people in the original only chat: when plan 01 · M11
     // builds Jubilife's houses to the original's plans, the boutique moves to a floor of the Veilstone Department Store
-    { "warp": 9, "map": "JubilifeBoutique", "x": 5, "y": 7, "facing": "Up" }
+    { "warp": 9, "map": "JubilifeBoutique", "x": 5, "y": 7, "facing": "Up" },
+    // Jubilife TV's lobby, made by hand for its Lottery Corner (plan 06 · R14a) until plan 01 · M11 builds its floors
+    { "warp": 3, "map": "JubilifeTV1F", "x": 6, "y": 7, "facing": "Up" }
   ],
-  // The condominiums, the Global Terminal, Jubilife TV and the south house have no rooms yet (plan 01 · M11); two
-  // houses the original never used
-  "locked": [ 0, 1, 3, 4, 10, 11 ],
+  // The condominiums, the Global Terminal and the south house have no rooms yet (plan 01 · M11); two houses the
+  // original never used
+  "locked": [ 0, 1, 4, 10, 11 ],
   // The gate house to Route 218 is passed through; its rooms come with plan 01 · M11
   "through": [
     { "warp": 12, "to": "route_218", "toWarp": 2 },

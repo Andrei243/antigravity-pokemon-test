@@ -183,7 +183,7 @@ partial class Harness
         var poketch = game.Poketch;
         var watch = game.PoketchView;
         poketch.Enabled = true;
-        foreach (var app in new[] { PoketchApp.DigitalWatch, PoketchApp.Calculator, PoketchApp.Pedometer, PoketchApp.PartyStatus }) poketch.Register(app);
+        foreach (var app in new[] { PoketchApp.DigitalWatch, PoketchApp.Pedometer, PoketchApp.PartyStatus }) poketch.Register(app);
         for (int i = 0; i < 1234; i++) poketch.Step();
         At("Sinnoh", 116, 888, Direction.Down);
         watch.Toggle(poketch); Frames(20); Shot("fm20_poketch_watch");

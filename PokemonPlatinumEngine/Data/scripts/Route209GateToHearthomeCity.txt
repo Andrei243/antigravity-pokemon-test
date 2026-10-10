@@ -1,0 +1,45 @@
+# The gate between Hearthome City and Route 209 (plan 02 · S7), rebuilt to the original's plan. docs/scripts.md
+# describes the language; the lines are our own, on the original's beats (scripts_route_209_gate_to_hearthome_city.s).
+#
+# Once Fantina is beaten (VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 1, her Gym's script), the rival waits in the
+# gate on the way east and challenges the player as they cross its middle (the original's trigger, a column five
+# tiles deep at x 5). VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 2 once he has battled.
+
+
+script Rival
+  emote rival exclaim
+  music "common/rival"
+  if var PLAYER_Y == 5 walk rival left 2 up 2 fast
+  if var PLAYER_Y == 6 walk rival left 2 up 1 fast
+  if var PLAYER_Y == 7 walk rival left 2 fast
+  if var PLAYER_Y == 8 walk rival left 2 down 1 fast
+  if var PLAYER_Y == 9 walk rival left 2 down 2 fast
+  face rival left
+  face player right
+  speaker "{rival}"
+  say "There you are, {player}! I heard you beat Fantina. So did I, obviously. Now it's time for the main event!"
+  say "Ladies and gentlemen, the show starts now! Let's see who's really been getting stronger!"
+  if starter "Turtwig" goto VsChimchar
+  if starter "Chimchar" goto VsPiplup
+  battle rival as "rival_route_209_piplup"
+  goto After
+label VsChimchar
+  battle rival as "rival_route_209_turtwig"
+  goto After
+label VsPiplup
+  battle rival as "rival_route_209_chimchar"
+label After
+  speaker "{rival}"
+  say "Argh! My plan was perfect! Why doesn't it ever work against you?!"
+  say "I'm off to Veilstone City. There's a Gym there with a Leader who fights hand to hand with her Pokémon. See ya!"
+  if var PLAYER_Y == 5 walk rival right 2 down 2 right 2 fast
+  if var PLAYER_Y == 6 walk rival right 2 down 1 right 2 fast
+  if var PLAYER_Y == 7 walk rival right 4 fast
+  if var PLAYER_Y == 8 walk rival right 2 up 1 right 2 fast
+  if var PLAYER_Y == 9 walk rival right 2 up 2 right 2 fast
+  sound "stairs"
+  hide rival
+  setflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
+  music area
+  setvar VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE 2
+  end

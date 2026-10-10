@@ -42,6 +42,14 @@ public sealed class ScriptRunner
     private Action? afterBusy;
     private BattleOutcome lastOutcome;
     private string lastItem = "";
+
+    // The last lottery drawn, and the day's ticket (plan 06 · R14a)
+    private Models.Lottery.Draw lottery;
+    private int Ticket => Models.Lottery.TicketOf(host.Encounters.DailyNumber);
+
+    // What the patch of soil the script belongs to holds, as berry status and berry mulched last read it (plan 06 · R14a)
+    private string berryName = "", mulchName = "";
+    private int berryYield;
     private (string Item, int Count)? ownItem;
     private string? ownFlag;
     private Pokemon? ownPokemon;
@@ -311,6 +319,9 @@ public sealed class ScriptRunner
             case Op.Heal:
                 host.Party.HealAll();
                 break;
+            case Op.ClearGreetings:
+                host.Story.ClearGreetings();
+                break;
             case Op.Turnback:
                 host.Turnback();
                 break;
@@ -329,6 +340,10 @@ public sealed class ScriptRunner
                 if (Result > 0) host.TurnClock(from, from + 1);
                 break;
             }
+            // PressPastoriaGymButton: the Pastoria Gym's water sets off for the level of a button's colour
+            case Op.PressButton:
+                host.PressButton(i.Name switch { "blue" => PastoriaWater.Button.Blue, "orange" => PastoriaWater.Button.Orange, _ => PastoriaWater.Button.Green });
+                break;
             case Op.Partner:
                 if (i.Option)
                 {
@@ -569,6 +584,19 @@ public sealed class ScriptRunner
             case Op.Swarms:
                 host.Encounters.SwarmsOn = true;
                 break;
+
+            // Berry patches (plan 06 · R14a; scrcmd_berry.c)
+            case Op.Berry:
+                Berry(i);
+                break;
+            case Op.ChooseItem:
+                host.Open(ScriptScreen.ChooseItem, Subject, i.Name);
+                afterBusy = () =>
+                {
+                    Result = host.Answer;
+                    if (host.ChosenItem is { } chosen) lastItem = chosen;
+                };
+                break;
             case Op.TrophyGarden:
                 TrophyGardenRules.AddNew(host.Encounters, SpecialEncounterTables.Sinnoh.TrophyGarden, host.Chance);
                 break;
@@ -582,6 +610,17 @@ public sealed class ScriptRunner
                 Result = slot >= 0 && slot < host.Party.Count && FieldPoison.TrySurvive(host.Party.Members[slot]) ? 1 : 0;
                 break;
             }
+
+            // The Lottery Corner (plan 06 · R14a): RESULT is the digits the day's ticket matched, or whether the
+            // Pokémon that matched them is in the boxes
+            case Op.Lottery:
+                if (i.Name == "draw")
+                {
+                    lottery = Models.Lottery.Check(Ticket, (int)(host.TrainerNumber & 0xffff), host.Party.Members, host.Boxed);
+                    Result = lottery.Digits;
+                }
+                else Result = lottery.InBox ? 1 : 0;
+                break;
 
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
@@ -629,6 +668,72 @@ public sealed class ScriptRunner
         new($"{script?.File ?? "?"}.txt({at.Line}): {what}.");
 
     private ItemData ItemOf(Instruction i) => ItemDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no item '{i.Name}'");
+
+    /// <summary>
+    /// <c>berry ...</c>: what the patch of soil the script belongs to holds, and what is done to it. <c>status</c> is
+    /// its stage (0 bare to 5 in fruit) and fills <c>{berry}</c> and <c>{yield}</c>; <c>mulched</c> 1 when mulch is laid,
+    /// filling <c>{mulch}</c>; <c>water</c>; <c>plant</c> and <c>mulch</c> the item <c>chooseitem</c> chose, taken from
+    /// the bag; <c>pick</c> the berries into the bag, their number in RESULT; <c>berries</c> and <c>mulches</c> 1 when
+    /// the bag has a berry that grows, or a mulch.
+    /// </summary>
+    private void Berry(Instruction i)
+    {
+        var patches = host.Berries;
+        if (i.Name == "berries" || i.Name == "mulches")
+        {
+            string what = i.Name == "berries" ? "berries" : "mulch";
+            Result = host.Bag.AllItems.Any(s => s.Quantity > 0 && UI.BagScreen.Fits(what, s.Data)) ? 1 : 0;
+            return;
+        }
+        int id = Subject?.BerryPatch ?? throw Wrong(i, "this script belongs to no patch of soil");
+        var patch = patches[id];
+        switch (i.Name)
+        {
+            case "status":
+                Result = (int)patch.Stage;
+                berryName = patch.Berry ?? "";
+                berryYield = patch.Yield;
+                break;
+            case "mulched":
+                Result = patch.Mulch != Mulch.None ? 1 : 0;
+                mulchName = BerryPatches.NameOf(patch.Mulch) ?? "";
+                break;
+            case "water":
+                patches.Water(id);
+                break;
+            case "plant":
+            {
+                var berry = ItemDatabase.Get(lastItem);
+                if (berry?.Berry == null) throw Wrong(i, $"'{lastItem}' is no berry that grows");
+                if (patch.Stage != BerryStage.None) throw Wrong(i, "something grows here already");
+                host.Bag.RemoveItem(berry, 1);
+                patches.Plant(id, berry.Name);
+                berryName = berry.Name;
+                break;
+            }
+            case "mulch":
+            {
+                var mulch = BerryPatches.MulchOf(lastItem);
+                if (mulch == Mulch.None) throw Wrong(i, $"'{lastItem}' is no mulch");
+                host.Bag.RemoveItem(ItemDatabase.Get(lastItem)!, 1);
+                patches.LayMulch(id, mulch);
+                mulchName = lastItem;
+                break;
+            }
+            case "pick":
+            {
+                var (berry, count) = patches.Pick(id);
+                Result = 0;
+                if (berry == null || count <= 0 || ItemDatabase.Get(berry) is not { } item) break;
+                host.Bag.AddItem(item, count);
+                lastItem = item.Name;
+                berryName = item.Name;
+                berryYield = count;
+                Result = count;
+                break;
+            }
+        }
+    }
 
     /// <summary>The item a line gives and how many: the one it names, or the script's own.</summary>
     private (ItemData Item, int Count) Given(Instruction i)
@@ -683,6 +788,8 @@ public sealed class ScriptRunner
         "MONEY" => host.Money,
         "PARTY_COUNT" => host.Party.Count,
         "BADGE_COUNT" => host.Story.BadgeCount,
+        "GREETINGS" => host.Story.Greetings,
+        "SEEN" => host.SeenInSinnoh,
         _ => host.Story.Var(variable)
     };
 
@@ -713,10 +820,15 @@ public sealed class ScriptRunner
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
             Query.Poketch => host.Poketch.Enabled,
+            // ScrCmd_CheckPoketchAppRegistered
+            Query.PoketchApp => host.Poketch.Has(Enum.Parse<PoketchApp>(c.Name)),
             Query.Safari => host.Safari.Active,
             Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
+            // GetTimeOfDay and GetDayOfWeek (plan 06 · R14a)
+            Query.Time => host.TimeOfDay.ToString() == c.Name,
+            Query.Weekday => host.Weekday.ToString() == c.Name,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -751,6 +863,9 @@ public sealed class ScriptRunner
             "assistantstarter" => host.Story.AssistantStarter ?? "",
             "self" => Subject?.Name ?? "",
             "item" => lastItem,
+            "berry" => berryName,
+            "yield" => berryYield.ToString(),
+            "mulch" => mulchName,
             "user" => lastUser,
             "money" => host.Money.ToString(),
             "result" => Result.ToString(),
@@ -760,6 +875,9 @@ public sealed class ScriptRunner
             "swarm" => Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "trophygarden" => TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden) ?? "",
+            // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
+            "ticket" => Ticket.ToString("D5"),
+            "winner" => lottery.Winner?.DisplayName ?? "",
             _ => match.Value
         };
     }) : text;

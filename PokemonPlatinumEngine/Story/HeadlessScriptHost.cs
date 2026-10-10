@@ -25,6 +25,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Inventory Bag { get; }
     public Poketch Poketch { get; } = new();
     public SafariGame Safari { get; } = new();
+    public int SeenInSinnoh { get; set; }
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }
@@ -75,6 +76,24 @@ public sealed class HeadlessScriptHost : IScriptHost
     public uint TrainerNumber { get; set; } = 12345;
 
     public Random Chance => Rng;
+
+    /// <summary>The time of day and the day of the week the script sees (plan 06 · R14a): a weekday morning unless a test says.</summary>
+    public TimeOfDay TimeOfDay { get; set; } = TimeOfDay.Morning;
+    public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
+
+    /// <summary>The Pokémon in the PC's boxes the lottery reads; none unless a test puts some there.</summary>
+    public List<Pokemon> Boxes { get; } = new();
+    public IEnumerable<Pokemon> Boxed => Boxes;
+
+    public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
+
+    /// <summary>
+    /// What the bag chooses when a script asks (<c>chooseitem</c>): the item named, or the first in the bag that fits;
+    /// an empty name backs out.
+    /// </summary>
+    public string? ItemChoice { get; set; }
+
+    public string? ChosenItem { get; private set; }
 
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
@@ -271,6 +290,15 @@ public sealed class HeadlessScriptHost : IScriptHost
         Answer = 0;
         // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
         if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
+        if (screen == ScriptScreen.ChooseItem)
+        {
+            string what = counter ?? "berries";
+            ChosenItem = ItemChoice is { } named
+                ? (named.Length > 0 && Bag.AllItems.Any(s => s.Name == named) ? named : null)
+                : Bag.AllItems.FirstOrDefault(s => UI.BagScreen.Fits(what, s.Data))?.Name;
+            Answer = ChosenItem != null ? 1 : 0;
+            Log[^1] = $"open {screen} {what} {ChosenItem ?? "none"}";
+        }
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
@@ -420,6 +448,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"flowerclock {from} {to}");
         // The clock is at rest at once: the map's tiles follow the story's new state
         if (Map?.Puzzle is EternaClock clock) clock.Apply(Map, Story);
+    }
+
+    public void PressButton(PastoriaWater.Button button)
+    {
+        Log.Add($"pressbutton {button.ToString().ToLowerInvariant()}");
+        // The water is at its level at once
+        if (Map?.Puzzle is PastoriaWater water) water.Settle(button);
     }
 
     /// <summary>Who travels with the player, and as which trainer (plan 02 · S6).</summary>

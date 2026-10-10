@@ -36,6 +36,12 @@ public sealed class MapFile
     /// <summary>A Gym's puzzle by its name (<see cref="GymPuzzle.Create"/>, plan 01 · M9); left out for a room without one.</summary>
     public string? Puzzle { get; set; }
 
+    /// <summary>The weather that hangs in a room (the Lost Tower's top floor's fog, plan 02 · S7); left out for none.</summary>
+    public FieldWeather? Weather { get; set; }
+
+    /// <summary>How often its wild Pokémon are met, the original's rate; left out for the default.</summary>
+    public int? EncounterRate { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -47,6 +53,15 @@ public sealed class MapFile
 
     /// <summary>Optional overhead tiles; '-' means none.</summary>
     public List<string>? Overhead { get; set; }
+
+    /// <summary>
+    /// The ground's heights, as plates of the world files (a room rebuilt to the original's plan with relief: the
+    /// Oreburgh Gym's tiers, plan 01 · M9), in tiles of the map; left out on a flat map. See <see cref="LayHeights"/>.
+    /// </summary>
+    public List<HeightPlate>? Heights { get; set; }
+
+    /// <summary>Tiles whose behaviour isn't the one their look gives (a side closed, a Gym's own floor); left out when there are none.</summary>
+    public List<BehaviourRecord>? Behaviours { get; set; }
 
     public List<PropRecord> Props { get; set; } = new();
 
@@ -81,6 +96,17 @@ public sealed class MapFile
         public int X { get; set; }
         public int Y { get; set; }
         public BuildingKind Kind { get; set; }
+    }
+
+    /// <summary>A rectangle of tiles given a behaviour of the original's (<see cref="TileBehavior"/>, by name).</summary>
+    [System.Text.Json.Serialization.JsonConverter(typeof(OneLine<BehaviourRecord>))]
+    public sealed class BehaviourRecord
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Width { get; set; } = 1;
+        public int Depth { get; set; } = 1;
+        public TileBehavior Behaviour { get; set; }
     }
 
     public sealed class SignRecord
@@ -166,6 +192,9 @@ public sealed class MapFile
         public string? Movement { get; set; }
         public int? RangeX { get; set; }
         public int? RangeZ { get; set; }
+
+        /// <summary>The height they stand at on a deck over the ground (<see cref="NPC.Level"/>); left out on the ground.</summary>
+        public float? Level { get; set; }
     }
 
     public sealed class TrainerRecord
@@ -206,8 +235,10 @@ public sealed class MapFile
             Arena = BattleArena,
             ArenaType = ArenaType,
             EvolutionSites = EvolutionSites?.ToList() ?? new(),
-            Puzzle = GymPuzzle.Create(Puzzle)
+            Puzzle = GymPuzzle.Create(Puzzle),
+            Weather = Weather ?? FieldWeather.Clear
         };
+        if (EncounterRate is { } rate) map.EncounterRate = rate;
 
         CheckRows(Ground, "ground");
         CheckRows(Solid, "solid");
@@ -225,6 +256,22 @@ public sealed class MapFile
                 if (Overhead != null && Overhead[y][x] != TileCodes.None)
                     map.SetOverheadTile(x, y, TileCodes.Parse(Overhead[y][x], Name));
             }
+        }
+
+        if (Heights is { Count: > 0 })
+        {
+            map.Plates.AddRange(Heights);
+            LayHeights(map, Heights);
+        }
+        foreach (var b in Behaviours ?? new())
+        {
+            map.BehaviourPatches.Add(b);
+            for (int y = b.Y; y < b.Y + b.Depth; y++)
+                for (int x = b.X; x < b.X + b.Width; x++)
+                {
+                    if (!map.InBounds(x, y)) throw new InvalidDataException($"Map {Name}: the behaviour {b.Behaviour} at {x},{y} is outside the map.");
+                    map.SetBehaviour(x, y, b.Behaviour);
+                }
         }
 
         // The solid grid already includes furniture, so props are listed without marking tiles again
@@ -266,6 +313,78 @@ public sealed class MapFile
         return map;
     }
 
+    /// <summary>
+    /// Lays a hand-made map's heights from its plates, as the world's chunks are laid (<c>PlaceHeight</c>): a tile
+    /// stands on the plate under its middle; where two lie three quarters of a tile or more apart the lower is the
+    /// ground and the upper a deck over it (the Oreburgh Gym's walkway over the way under it). A tile no plate covers
+    /// (the original's faces between tiers, the walls) takes the highest ground met looking along the four ways, so a
+    /// tier's edge is a face at the foot of the tier and the walls stand at the floor's height.
+    /// </summary>
+    public static void LayHeights(Map map, IReadOnlyList<HeightPlate> plates)
+    {
+        var laid = new bool[map.Width * map.Height];
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                float mx = x + 0.5f, mz = y + 0.5f;
+                HeightPlate? ground = null, upper = null;
+                foreach (var plate in plates)
+                {
+                    if (!plate.Contains(mx, mz)) continue;
+                    float h = plate.HeightAt(mx, mz);
+                    if (ground == null || h < ground.HeightAt(mx, mz)) ground = plate;
+                    if (upper == null || h > upper.HeightAt(mx, mz)) upper = plate;
+                }
+                if (ground == null) continue;
+                bool deck = upper!.HeightAt(mx, mz) - ground.HeightAt(mx, mz) >= 0.75f;
+                var stand = deck ? ground : upper;
+                map.SetHeight(x, y, stand.HeightAt(mx, mz), stand.SlopeX, stand.SlopeZ);
+                if (deck) map.SetDeck(x, y, upper.HeightAt(mx, mz));
+                laid[y * map.Width + x] = true;
+            }
+
+        // Each tile left takes the highest ground met looking straight along each of the four ways past tiles no
+        // plate covers (a ledge's face is as high as the tier it falls from); what that leaves, the ground beside it
+        var given = new List<(int X, int Y, float H)>();
+        for (int y = 0; y < map.Height; y++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                if (laid[y * map.Width + x]) continue;
+                float? highest = null;
+                foreach (var (dx, dy) in new[] { (0, -1), (0, 1), (-1, 0), (1, 0) })
+                {
+                    int nx = x + dx, ny = y + dy;
+                    while (map.InBounds(nx, ny) && !laid[ny * map.Width + nx]) (nx, ny) = (nx + dx, ny + dy);
+                    if (!map.InBounds(nx, ny)) continue;
+                    // Stairs are met at their near edge
+                    float h = map.HeightAt(nx, ny, 0.5f - dx * 0.5f, 0.5f - dy * 0.5f);
+                    if (highest == null || h > highest) highest = h;
+                }
+                if (highest is { } h0) given.Add((x, y, h0));
+            }
+        foreach (var (x, y, h) in given)
+        {
+            map.SetHeight(x, y, h);
+            laid[y * map.Width + x] = true;
+        }
+        for (bool more = true; more;)
+        {
+            more = false;
+            for (int y = 0; y < map.Height; y++)
+                for (int x = 0; x < map.Width; x++)
+                {
+                    if (laid[y * map.Width + x]) continue;
+                    foreach (var (dx, dy) in new[] { (0, -1), (0, 1), (-1, 0), (1, 0) })
+                        if (map.InBounds(x + dx, y + dy) && laid[(y + dy) * map.Width + x + dx])
+                        {
+                            map.SetHeight(x, y, map.HeightAt(x + dx, y + dy));
+                            laid[y * map.Width + x] = more = true;
+                            break;
+                        }
+                }
+        }
+    }
+
     /// <summary>A fresh person from their record: a trainer's Pokémon are rolled anew each time.</summary>
     internal static NPC BuildNpc(NpcRecord n, string mapName)
     {
@@ -289,7 +408,8 @@ public sealed class MapFile
             ShownBy = n.ShownBy,
             Item = n.Item,
             ItemCount = n.Count ?? 1,
-            Species = n.Species
+            Species = n.Species,
+            Level = n.Level
         };
         if (n.Id != null) npc.Id = n.Id;
         if (n.Movement != null) npc.Movement = PersonMovement.Parse(n.Movement, n.RangeX ?? 0, n.RangeZ ?? 0, n.X, n.Y, n.Facing);
@@ -376,6 +496,8 @@ public sealed class MapFile
             ArenaType = map.ArenaType,
             EvolutionSites = map.EvolutionSites.Count > 0 ? map.EvolutionSites.ToList() : null,
             Puzzle = map.Puzzle?.Name,
+            Weather = map.Weather == FieldWeather.Clear ? null : map.Weather,
+            EncounterRate = map.EncounterRate == new Map(1, 1).EncounterRate ? null : map.EncounterRate,
             Width = map.Width,
             Height = map.Height
         };
@@ -400,6 +522,9 @@ public sealed class MapFile
             overhead.Add(over.ToString());
         }
         if (anyOverhead) file.Overhead = overhead;
+
+        if (map.Plates.Count > 0) file.Heights = map.Plates.ToList();
+        if (map.BehaviourPatches.Count > 0) file.Behaviours = map.BehaviourPatches.ToList();
 
         file.Props = map.Props.Select(p => new PropRecord { Type = p.Type, X = p.X, Y = p.Y, Width = p.Width, Depth = p.Depth }).ToList();
         if (map.BuildingKinds.Count > 0)
@@ -447,6 +572,7 @@ public sealed class MapFile
         Movement = npc.Movement?.Source is { Length: > 0 } moves ? moves : null,
         RangeX = npc.Movement is { RangeX: > 0 } mx ? mx.RangeX : null,
         RangeZ = npc.Movement is { RangeZ: > 0 } mz ? mz.RangeZ : null,
+        Level = npc.Level,
         Trainer = npc.IsTrainer && npc.TrainerData is { } t ? new TrainerRecord
         {
             Id = t.Id,

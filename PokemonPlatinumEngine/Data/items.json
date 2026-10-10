@@ -1943,6 +1943,19 @@
     "battlePocket": "RecoverStatus",
     "use": {
       "healParalysis": 1
+    },
+    "berry": {
+      "size": 20,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 3,
+      "moistureDrainRate": 15,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 25
     }
   },
   {
@@ -1965,6 +1978,19 @@
     "battlePocket": "RecoverStatus",
     "use": {
       "healSleep": 1
+    },
+    "berry": {
+      "size": 80,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 3,
+      "moistureDrainRate": 15,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 25
     }
   },
   {
@@ -1987,6 +2013,19 @@
     "battlePocket": "RecoverStatus",
     "use": {
       "healPoison": 1
+    },
+    "berry": {
+      "size": 40,
+      "firmness": "VerySoft",
+      "baseYield": 1,
+      "stageDuration": 3,
+      "moistureDrainRate": 15,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 25
     }
   },
   {
@@ -2009,6 +2048,19 @@
     "battlePocket": "RecoverStatus",
     "use": {
       "healBurn": 1
+    },
+    "berry": {
+      "size": 32,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 3,
+      "moistureDrainRate": 15,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 25
     }
   },
   {
@@ -2031,6 +2083,19 @@
     "battlePocket": "RecoverStatus",
     "use": {
       "healFreeze": 1
+    },
+    "berry": {
+      "size": 50,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 3,
+      "moistureDrainRate": 15,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 25
     }
   },
   {
@@ -2054,6 +2119,19 @@
     "battlePocket": "RecoverPp",
     "use": {
       "ppRestored": 10
+    },
+    "berry": {
+      "size": 28,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 4,
+      "moistureDrainRate": 15,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 10,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2077,6 +2155,19 @@
     "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": 10
+    },
+    "berry": {
+      "size": 35,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 4,
+      "moistureDrainRate": 15,
+      "spiciness": 10,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2099,6 +2190,19 @@
     "battlePocket": "RecoverStatus",
     "use": {
       "healConfusion": 1
+    },
+    "berry": {
+      "size": 47,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 4,
+      "moistureDrainRate": 15,
+      "spiciness": 10,
+      "dryness": 10,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2126,6 +2230,19 @@
       "healFreeze": 1,
       "healParalysis": 1,
       "healConfusion": 1
+    },
+    "berry": {
+      "size": 34,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 12,
+      "moistureDrainRate": 8,
+      "spiciness": 10,
+      "dryness": 10,
+      "sweetness": 10,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 20
     }
   },
   {
@@ -2149,6 +2266,19 @@
     "battlePocket": "RecoverHp",
     "use": {
       "hpRestored": -3
+    },
+    "berry": {
+      "size": 95,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 7,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 10,
+      "bitterness": 10,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2168,7 +2298,20 @@
     "naturalGiftPower": 60,
     "naturalGiftType": "Bug",
     "pluckEffect": "HpRestoreSpicy",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 100,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 5,
+      "moistureDrainRate": 10,
+      "spiciness": 15,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 25
+    }
   },
   {
     "id": 160,
@@ -2187,7 +2330,20 @@
     "naturalGiftPower": 60,
     "naturalGiftType": "Rock",
     "pluckEffect": "HpRestoreDry",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 115,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 5,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 15,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 25
+    }
   },
   {
     "id": 161,
@@ -2206,7 +2362,20 @@
     "naturalGiftPower": 60,
     "naturalGiftType": "Ghost",
     "pluckEffect": "HpRestoreSweet",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 126,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 5,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 15,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 25
+    }
   },
   {
     "id": 162,
@@ -2225,7 +2394,20 @@
     "naturalGiftPower": 60,
     "naturalGiftType": "Dragon",
     "pluckEffect": "HpRestoreBitter",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 64,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 5,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 15,
+      "sourness": 0,
+      "smoothness": 25
+    }
   },
   {
     "id": 163,
@@ -2244,7 +2426,20 @@
     "naturalGiftPower": 60,
     "naturalGiftType": "Dark",
     "pluckEffect": "HpRestoreSour",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 223,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 5,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 15,
+      "smoothness": 25
+    }
   },
   {
     "id": 164,
@@ -2259,7 +2454,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Steel",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 120,
+      "firmness": "VeryHard",
+      "baseYield": 2,
+      "stageDuration": 2,
+      "moistureDrainRate": 35,
+      "spiciness": 10,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 20
+    }
   },
   {
     "id": 165,
@@ -2274,7 +2482,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Fire",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 108,
+      "firmness": "Soft",
+      "baseYield": 2,
+      "stageDuration": 2,
+      "moistureDrainRate": 35,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 20
+    }
   },
   {
     "id": 166,
@@ -2289,7 +2510,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Water",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 77,
+      "firmness": "VeryHard",
+      "baseYield": 2,
+      "stageDuration": 2,
+      "moistureDrainRate": 35,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 20
+    }
   },
   {
     "id": 167,
@@ -2304,7 +2538,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Electric",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 74,
+      "firmness": "SuperHard",
+      "baseYield": 2,
+      "stageDuration": 2,
+      "moistureDrainRate": 35,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 10,
+      "smoothness": 20
+    }
   },
   {
     "id": 168,
@@ -2319,7 +2566,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Grass",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 80,
+      "firmness": "Hard",
+      "baseYield": 2,
+      "stageDuration": 2,
+      "moistureDrainRate": 35,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 20
+    }
   },
   {
     "id": 169,
@@ -2340,6 +2600,19 @@
       "friendshipLow": 10,
       "friendshipMed": 5,
       "friendshipHigh": 2
+    },
+    "berry": {
+      "size": 135,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 8,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 20
     }
   },
   {
@@ -2361,6 +2634,19 @@
       "friendshipLow": 10,
       "friendshipMed": 5,
       "friendshipHigh": 2
+    },
+    "berry": {
+      "size": 150,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 8,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2382,6 +2668,19 @@
       "friendshipLow": 10,
       "friendshipMed": 5,
       "friendshipHigh": 2
+    },
+    "berry": {
+      "size": 110,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 8,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2403,6 +2702,19 @@
       "friendshipLow": 10,
       "friendshipMed": 5,
       "friendshipHigh": 2
+    },
+    "berry": {
+      "size": 162,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 8,
+      "spiciness": 10,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 20
     }
   },
   {
@@ -2424,6 +2736,19 @@
       "friendshipLow": 10,
       "friendshipMed": 5,
       "friendshipHigh": 2
+    },
+    "berry": {
+      "size": 149,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 8,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 20
     }
   },
   {
@@ -2445,6 +2770,19 @@
       "friendshipLow": 10,
       "friendshipMed": 5,
       "friendshipHigh": 2
+    },
+    "berry": {
+      "size": 200,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 8,
+      "moistureDrainRate": 8,
+      "spiciness": 20,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 30
     }
   },
   {
@@ -2460,7 +2798,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Bug",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 75,
+      "firmness": "Hard",
+      "baseYield": 2,
+      "stageDuration": 6,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 20,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 176,
@@ -2475,7 +2826,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Rock",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 140,
+      "firmness": "Hard",
+      "baseYield": 2,
+      "stageDuration": 6,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 20,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 177,
@@ -2490,7 +2854,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Ghost",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 226,
+      "firmness": "Soft",
+      "baseYield": 2,
+      "stageDuration": 6,
+      "moistureDrainRate": 10,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 20,
+      "sourness": 10,
+      "smoothness": 30
+    }
   },
   {
     "id": 178,
@@ -2505,7 +2882,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Dragon",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 285,
+      "firmness": "SuperHard",
+      "baseYield": 2,
+      "stageDuration": 6,
+      "moistureDrainRate": 10,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 20,
+      "smoothness": 30
+    }
   },
   {
     "id": 179,
@@ -2520,7 +2910,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Dark",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 133,
+      "firmness": "Soft",
+      "baseYield": 3,
+      "stageDuration": 15,
+      "moistureDrainRate": 8,
+      "spiciness": 30,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 180,
@@ -2535,7 +2938,20 @@
     "flingPower": 10,
     "naturalGiftPower": 70,
     "naturalGiftType": "Steel",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 244,
+      "firmness": "VerySoft",
+      "baseYield": 3,
+      "stageDuration": 15,
+      "moistureDrainRate": 8,
+      "spiciness": 0,
+      "dryness": 30,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 181,
@@ -2550,7 +2966,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Fire",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 250,
+      "firmness": "Soft",
+      "baseYield": 3,
+      "stageDuration": 15,
+      "moistureDrainRate": 8,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 30,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 182,
@@ -2565,7 +2994,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Water",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 280,
+      "firmness": "Hard",
+      "baseYield": 3,
+      "stageDuration": 15,
+      "moistureDrainRate": 8,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 30,
+      "sourness": 10,
+      "smoothness": 35
+    }
   },
   {
     "id": 183,
@@ -2580,7 +3022,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Electric",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 300,
+      "firmness": "VerySoft",
+      "baseYield": 3,
+      "stageDuration": 15,
+      "moistureDrainRate": 8,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 30,
+      "smoothness": 35
+    }
   },
   {
     "id": 184,
@@ -2596,7 +3051,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Fire",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 90,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 15,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 185,
@@ -2612,7 +3080,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Water",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 33,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 15,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 186,
@@ -2628,7 +3109,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Electric",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 250,
+      "firmness": "VerySoft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 15,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 30
+    }
   },
   {
     "id": 187,
@@ -2644,7 +3138,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Grass",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 156,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 15,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 188,
@@ -2660,7 +3167,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Ice",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 135,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 15,
+      "smoothness": 30
+    }
   },
   {
     "id": 189,
@@ -2676,7 +3196,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Fighting",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 77,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 15,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 190,
@@ -2692,7 +3225,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Poison",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 90,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 15,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 30
+    }
   },
   {
     "id": 191,
@@ -2708,7 +3254,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Ground",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 42,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 15,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 192,
@@ -2724,7 +3283,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Flying",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 278,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 15,
+      "sourness": 0,
+      "smoothness": 30
+    }
   },
   {
     "id": 193,
@@ -2740,7 +3312,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Psychic",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 252,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 15,
+      "smoothness": 30
+    }
   },
   {
     "id": 194,
@@ -2756,7 +3341,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Bug",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 42,
+      "firmness": "VerySoft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 20,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 10,
+      "smoothness": 35
+    }
   },
   {
     "id": 195,
@@ -2772,7 +3370,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Rock",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 28,
+      "firmness": "VerySoft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 10,
+      "dryness": 20,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 196,
@@ -2788,7 +3399,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Ghost",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 144,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 10,
+      "sweetness": 20,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 197,
@@ -2804,7 +3428,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Dragon",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 23,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 10,
+      "bitterness": 20,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 198,
@@ -2820,7 +3457,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Dark",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 39,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 10,
+      "sourness": 20,
+      "smoothness": 35
+    }
   },
   {
     "id": 199,
@@ -2836,7 +3486,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Steel",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 265,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 25,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 200,
@@ -2852,7 +3515,20 @@
     "flingPower": 10,
     "naturalGiftPower": 60,
     "naturalGiftType": "Normal",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 34,
+      "firmness": "VerySoft",
+      "baseYield": 1,
+      "stageDuration": 18,
+      "moistureDrainRate": 6,
+      "spiciness": 0,
+      "dryness": 25,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 35
+    }
   },
   {
     "id": 201,
@@ -2871,7 +3547,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Grass",
     "pluckEffect": "AtkUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 111,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 30,
+      "dryness": 10,
+      "sweetness": 30,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 40
+    }
   },
   {
     "id": 202,
@@ -2890,7 +3579,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Ice",
     "pluckEffect": "DefUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 33,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 0,
+      "dryness": 30,
+      "sweetness": 10,
+      "bitterness": 30,
+      "sourness": 0,
+      "smoothness": 40
+    }
   },
   {
     "id": 203,
@@ -2909,7 +3611,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Fighting",
     "pluckEffect": "SpeedUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 95,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 30,
+      "bitterness": 10,
+      "sourness": 30,
+      "smoothness": 40
+    }
   },
   {
     "id": 204,
@@ -2928,7 +3643,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Poison",
     "pluckEffect": "SpatkUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 237,
+      "firmness": "VeryHard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 30,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 30,
+      "sourness": 10,
+      "smoothness": 40
+    }
   },
   {
     "id": 205,
@@ -2947,7 +3675,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Ground",
     "pluckEffect": "SpdefUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 75,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 10,
+      "dryness": 30,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 30,
+      "smoothness": 40
+    }
   },
   {
     "id": 206,
@@ -2966,7 +3707,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Flying",
     "pluckEffect": "CritUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 97,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 30,
+      "dryness": 10,
+      "sweetness": 30,
+      "bitterness": 10,
+      "sourness": 30,
+      "smoothness": 50
+    }
   },
   {
     "id": 207,
@@ -2985,7 +3739,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Psychic",
     "pluckEffect": "RandomUp2",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 153,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 4,
+      "spiciness": 30,
+      "dryness": 10,
+      "sweetness": 30,
+      "bitterness": 10,
+      "sourness": 30,
+      "smoothness": 50
+    }
   },
   {
     "id": 208,
@@ -3002,7 +3769,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Bug",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 155,
+      "firmness": "Hard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 7,
+      "spiciness": 40,
+      "dryness": 10,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 60
+    }
   },
   {
     "id": 209,
@@ -3021,7 +3801,20 @@
     "naturalGiftPower": 80,
     "naturalGiftType": "Rock",
     "pluckEffect": "TempAccUp",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 41,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 7,
+      "spiciness": 0,
+      "dryness": 40,
+      "sweetness": 10,
+      "bitterness": 0,
+      "sourness": 0,
+      "smoothness": 60
+    }
   },
   {
     "id": 210,
@@ -3038,7 +3831,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Ghost",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 267,
+      "firmness": "SuperHard",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 7,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 40,
+      "bitterness": 10,
+      "sourness": 0,
+      "smoothness": 60
+    }
   },
   {
     "id": 211,
@@ -3055,7 +3861,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Dragon",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 33,
+      "firmness": "Soft",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 7,
+      "spiciness": 0,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 40,
+      "sourness": 10,
+      "smoothness": 60
+    }
   },
   {
     "id": 212,
@@ -3072,7 +3891,20 @@
     "flingPower": 10,
     "naturalGiftPower": 80,
     "naturalGiftType": "Dark",
-    "fieldUse": "Berry"
+    "fieldUse": "Berry",
+    "berry": {
+      "size": 52,
+      "firmness": "VerySoft",
+      "baseYield": 1,
+      "stageDuration": 24,
+      "moistureDrainRate": 7,
+      "spiciness": 10,
+      "dryness": 0,
+      "sweetness": 0,
+      "bitterness": 0,
+      "sourness": 40,
+      "smoothness": 60
+    }
   },
   {
     "id": 213,

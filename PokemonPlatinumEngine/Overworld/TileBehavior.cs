@@ -116,7 +116,7 @@ public static class TileBehaviors
         [TileBehavior.TallGrass] = "Tall grass.",
         [TileBehavior.VeryTallGrass] = "Grass taller than the walker; too thick to cycle through.",
         [TileBehavior.CaveFloor] = "The floor of a cave.",
-        [TileBehavior.OldChateauFloor] = "The floors of the Old Chateau, the only building with wild Pokémon in its rooms.",
+        [TileBehavior.OldChateauFloor] = "The floors of the Old Chateau and the Lost Tower, the buildings with wild Pokémon in their rooms.",
         [TileBehavior.MountainFloor] = "A rough floor without wild Pokémon of its own: the Underground's tunnels and parts of Eterna Forest and Victory Road.",
         [TileBehavior.River] = "Fresh water.",
         [TileBehavior.Waterfall] = "A waterfall: climbed with Waterfall; a surfer who enters from above is carried down.",

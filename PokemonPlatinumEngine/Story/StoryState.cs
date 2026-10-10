@@ -21,7 +21,7 @@ public sealed class StoryState
     /// How much of the story a save knows about. A save from before story state existed is 0; every chapter that
     /// needs older saves brought up to date raises it and adds a step to <see cref="Story.StoryMigration"/>.
     /// </summary>
-    public const int CurrentVersion = 6;
+    public const int CurrentVersion = 9;
 
     /// <summary>The Pokédex is the player's (the original's own flag, set as Rowan hands it over).</summary>
     public const string PokedexFlag = "FLAG_HAS_POKEDEX";
@@ -33,6 +33,7 @@ public sealed class StoryState
     private readonly Dictionary<string, int> variables = new(StringComparer.Ordinal);
     private readonly HashSet<string> defeated = new(StringComparer.Ordinal);
     private readonly HashSet<string> taken = new(StringComparer.Ordinal);
+    private readonly HashSet<string> greeted = new(StringComparer.Ordinal);
 
     /// <summary>Counts every change, so whoever shows the world can tell when to look again (who is hidden by a flag).</summary>
     public int Revision { get; private set; }
@@ -126,6 +127,32 @@ public sealed class StoryState
         if (taken.Add(itemId)) Revision++;
     }
 
+    // ------------------------------------------------------------------ greetings
+
+    /// <summary>
+    /// The people spoken to since the Hallowed Tower last stirred, each once, by their place and key (plan 08 · P12):
+    /// our stand-in for the original's Spiritomb counter, which counts people spoken to in the Underground. Scripts
+    /// read the count as <c>GREETINGS</c>; <c>greetings clear</c> starts it again, as the original's
+    /// <c>ClearSpiritombCounter</c> does.
+    /// </summary>
+    public IReadOnlyCollection<string> Greeted => greeted;
+
+    public int Greetings => greeted.Count;
+
+    public void Greet(string who)
+    {
+        if (who.Length > 0) greeted.Add(who);
+    }
+
+    public void ClearGreetings() => greeted.Clear();
+
+    /// <summary>The greetings a save kept (<c>SaveData.GreetedPeople</c>).</summary>
+    public void RestoreGreetings(IEnumerable<string> saved)
+    {
+        greeted.Clear();
+        foreach (string who in saved) Greet(who);
+    }
+
     // ------------------------------------------------------------------ badges
 
     /// <summary>The badges as the save and the Trainer Card keep them: one bit each, in <see cref="Badge"/>'s order.</summary>
@@ -196,6 +223,7 @@ public sealed class StoryState
         variables.Clear();
         defeated.Clear();
         taken.Clear();
+        greeted.Clear();
         BadgeMask = 0;
         PlayerStarter = RivalStarter = null;
         Revision++;

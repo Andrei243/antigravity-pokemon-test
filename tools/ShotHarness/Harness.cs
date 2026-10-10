@@ -365,7 +365,7 @@ partial class Harness
         return p;
     }
 
-    BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201", Random chance = null)
+    BattleEngine StartBattle(string foe, int level, Trainer trainer = null, string map = "Route201", Random chance = null, bool hints = false)
     {
         // On the map of Sinnoh the stage depends on where the battle starts: the area's trees, water within sight
         var (name, x, y) = Place(map, -1, -1);
@@ -374,9 +374,10 @@ partial class Harness
         if (trainer != null && trainer.Party.Count == 0) trainer.Party.Add(new Pokemon(PokemonDatabase.Get("Shinx")!, 5));
         var enemy = trainer?.Party.Members[0] ?? Meet(foe, level);
         // (A wild battle can be given its own chance, with the rolls a shot depends on fixed)
-        var b = chance == null
+        // (and the move cards can say how each move will do, plan 12 · Q10)
+        var b = chance == null && !hints
             ? new BattleEngine(party, enemy, inventory, pokedex, trainer)
-            : new BattleEngine(new BattleSetup { PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { enemy }, Random = chance });
+            : new BattleEngine(new BattleSetup { PlayerParty = party, Inventory = inventory, Pokedex = pokedex, WildPokemon = new List<Pokemon> { enemy }, Random = chance, MoveHints = hints });
         game.BattleRenderer.SetArena(game.Map, x, y);
         game.Battle = b;
         game.State = GameState.Battle;

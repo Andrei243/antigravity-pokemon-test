@@ -10,8 +10,8 @@
   ],
   // The house of the size contest and the Pikachu Fan Club have no rooms yet (plan 01 · M11)
   "locked": [ 2, 3 ],
-  // Policeman Thomas battles only at night in the original, where his double without a battle
-  // (policeman_thomas_no_battle, on the same tile) walks his beat by day: only the trainer is written here
+  // Policeman Thomas battles only at night: by day his double without a battle (policeman_thomas_no_battle, on the
+  // same tile) walks his beat instead, swapped by the route's arrival script (plan 06 · R14a)
   "people": {
     "fisherman": {
       "name": "Fisherman",
@@ -97,6 +97,13 @@
         "dialogueBefore": "Sailor Marc: Ahoy! My shipmate's a small one, but it rides the waves like a champion!",
         "dialogueAfter": "Sailor Marc: Small ones grow. Next time we meet, it'll have grown."
       }
+    },
+    "policeman_thomas_no_battle": {
+      "name": "Policeman",
+      "dialog": [
+        "Lovely day for the beach. Nobody gets into trouble in the sunshine.",
+        "At night, though, I keep a close watch on everyone."
+      ]
     },
     "policeman_thomas": {
       "name": "Thomas",

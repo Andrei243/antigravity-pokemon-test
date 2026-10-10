@@ -1,0 +1,10 @@
+# The Solaceon Ruins' first room (plan 02 · S7). docs/scripts.md describes the language.
+#
+# The wall at the back of the room is carved in Unown letters (the original's script 2, read from three tiles): the
+# way through the rooms below, corner by corner. The original writes it in the Unown alphabet; here it is read out.
+
+
+script Inscription
+  sound "select"
+  text "Unown letters are carved into the wall. They read:" "UPPER RIGHT, LOWER LEFT, UPPER RIGHT, UPPER LEFT, UPPER LEFT, LOWER LEFT"
+  end

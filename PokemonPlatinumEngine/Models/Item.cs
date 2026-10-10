@@ -87,6 +87,9 @@ public class ItemData
     /// </summary>
     public Dictionary<string, int>? Use { get; set; }
 
+    /// <summary>A berry's growing and its taste (plan 06 · R14a), from the original's <c>berryData</c>; null for anything else.</summary>
+    public BerryData? Berry { get; set; }
+
     // ---- The later mechanics' items
 
     /// <summary>A Mega Stone: the species it belongs to and the form it brings out.</summary>
@@ -94,6 +97,26 @@ public class ItemData
 
     /// <summary>A Z-Crystal: the type it is for, or the one species' move it turns into a Z-Move of its own.</summary>
     public ZCrystal? ZCrystal { get; set; }
+}
+
+/// <summary>
+/// What a berry is as a plant and as food (the original's <c>BerryData</c>): how long each stage of its growing takes
+/// in hours, how much water its soil loses an hour, how many berries a plant gives before its rating, its size in
+/// millimetres and firmness, and its five flavours and smoothness, which Poffins are made from (plan 06 · R14c).
+/// </summary>
+public class BerryData
+{
+    public int Size { get; set; }
+    public string Firmness { get; set; } = string.Empty;
+    public int BaseYield { get; set; }
+    public int StageDuration { get; set; }
+    public int MoistureDrainRate { get; set; }
+    public int Spiciness { get; set; }
+    public int Dryness { get; set; }
+    public int Sweetness { get; set; }
+    public int Bitterness { get; set; }
+    public int Sourness { get; set; }
+    public int Smoothness { get; set; }
 }
 
 public class MegaStone

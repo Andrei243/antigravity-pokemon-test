@@ -4,8 +4,8 @@
   "trees": "Round",
   // The house has no rooms yet (plan 01 · M11)
   "locked": [ 0 ],
-  // Policeman Danny battles only at night in the original, where his double without a battle
-  // (policeman_danny_no_battle, on the same tile) stands by day: only the trainer is written here
+  // Policeman Danny battles only at night: by day his double without a battle (policeman_danny_no_battle, on the
+  // same tile) stands there instead, swapped by the route's arrival script (plan 06 · R14a)
   "people": {
     "school_kid_m": {
       "name": "Schoolboy",
@@ -69,6 +69,13 @@
         "dialogueBefore": "Pokémon Ranger Jeffrey: Halt! Every trainer on this road gets a Ranger's inspection.",
         "dialogueAfter": "Pokémon Ranger Jeffrey: Inspection passed, with flying colours."
       }
+    },
+    "policeman_danny_no_battle": {
+      "name": "Policeman",
+      "dialog": [
+        "Night patrols are where the action is. By day, it's mostly giving directions.",
+        "Pastoria City is that way. Mind the puddles!"
+      ]
     },
     "policeman_danny": {
       "name": "Danny",

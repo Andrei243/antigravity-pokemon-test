@@ -417,9 +417,18 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Safari Game's gate | A counter in the observatory gate's room asks before the marsh | Asked as the player comes out into the marsh, which sends them back out on a no | The gate's rooms come with plan 01 · M11; until then it is walked through |
 | The marsh's binoculars | The day's species shown through the coin viewers; the tram rides between the areas | The day's species are met (plan 06 · R13); the viewers and the tram stand there and do nothing yet | Plan 02's scripts |
 | Retiring from the game | The menu offers to end it early | Walk out through the gate | No field menu entry for it yet |
-| Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | No moving platforms yet (the Canalave Gym's lifts, plan 01 · M9, are the first to need them) |
+| Iron Island's lifts | A platform rides between levels | Stepping onto it is a warp to the other level, through a fade | Moving platforms came with the Canalave Gym's lifts (plan 01 · M9 2a, `CanalaveLifts`); Iron Island's could ride them too, once its levels are one map |
 | Sailor Eldritch's boat | Sails to Iron Island, and to Fullmoon and Newmoon Islands when the story sends the player there | Iron Island and back | The two islands are plan 01 · M10's |
 | Maniac Tunnel | Dug once enough kinds of Unown are seen | Not open; Solaceon's Rare Candy beyond it is held back | The Ruin Maniac's digging is the story's (plan 02 · S8) |
+
+
+**The Canalave Gym** (plan 01 · M9 2a)
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| An empty slot | A platform's place on a floor above the ground is open in that floor's collision map whether or not the platform is there; the floor's model covers it | A slot is walked only while its platform stands there; where it has gone, the floor has a hole | Nobody walks on the air, and the picture shows the hole |
+| The floors' heights | Ten tiles apart, by the walker's height | The same; the floor someone is on is the nearest to their height (`CanalaveLifts.FloorOf`) | |
+| A save made on an upper floor | The platforms are laid out by the room's own script as the map loads | The same: they come back at their first ends | |
 
 ## The first chapter (2026-10-06, plan 02 · S4)
 
@@ -513,8 +522,8 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | --- | --- | --- | --- |
 | The pair of species a second game calls up | Slots 8 and 9 take two of the game in the DS's other slot | The table's own | No second game to read (plan 08's dual-slot stand-in) |
 | Who tells of swarms and of the Trophy Garden | The assistant's sister in her house in Sandgem Town; Mr. Backlot in his mansion, once a day | The common scripts are ready (`common.SwarmNews`, the `trophygarden` command) and nobody runs them yet | Their rooms are plan 01 · M11's |
-| The radar's chain records and its music | The longest chain kept, the radar's own theme while patches shake | Neither | Records are plan 08's; the theme is plan 05's |
-| Who is where | The Pokétch's marking map shows the roamers; the TV tells of swarms | Neither yet | The Pokétch's map is plan 06 · R14's, the TV plan 08's |
+| The radar's music | The radar's own theme while patches shake | Not yet (the chain records are the Pokétch's Trainer Counter's, plan 06 · R14b) | The theme is plan 05's |
+| Who is where | The Pokétch's marking map shows the roamers; the TV tells of swarms | The marking map (plan 06 · R14b); not the TV yet | The TV is plan 08's |
 | Poison by the modern rules | Generation 5 on: poison does nothing outside battle | So (`Ruleset.PoisonInTheField`) | The modern preset's ruling |
 
 ## The third chapter, second half (2026-10-07, plan 02 · S6)
@@ -535,7 +544,126 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Pokémon Team Galactic held | A Clefairy and a Buneary on the top floor, then the Clefairy in the cycle shop and the Buneary in the Pokémon Center | Not there; the flags that move them are set as the original sets them | A Pokémon can't stand in the field yet (plan 10) |
 | The Galactic lobby theme in the building | `SEQ_D_GINLOBBY` until Jupiter is beaten | Eterna's theme throughout | No lobby theme yet (plan 05) |
 | The Underground Man's missions and his PC | Six missions below ground; the PC's pages on flags, spheres and traps | The Explorer Kit, his offer and the first mission; the PC's notes in a line | The Underground is plan 06 · R16's |
-| The bug catcher at the west way out | Goes back to his line about the wind once the assistant has been met on Route 207 | Tells of the Cycling Road as long as the player has the Bicycle | Route 207's scene is plan 02 · S7's |
 | The Friendship Checker's woman | Reads out the first Pokémon's friendship on later visits | One line of her own after giving the app | A script can't ask a Pokémon's friendship yet; the app is kept and shown once the Pokétch runs it |
 | The Old Chateau | Its rooms, its ghosts and Rotom's television | Its door in the forest stays shut | Its rooms are plan 01 · M11's; nothing of the story happens inside |
 | Rotom's room in the building | Behind a wall on the ground floor that the Secret Key opens | The wall | The Secret Key is the post-game's |
+
+## The fourth chapter, first part (2026-10-10, plan 02 · S7)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_207.s`, `scripts_mt_coronet_1f_south.s`, `scripts_route_208.s`, `scripts_wayward_cave_1f.s`, `scripts_hearthome_city.s`, `scripts_contest_hall_lobby.s`, `scripts_route_209_gate_to_hearthome_city.s`, `scripts_hearthome_gym_leader_room.s`)
+
+- **The assistant comes to the foot of Mt. Coronet** on Route 207 the first time the player steps onto the original's trigger, with the Vs. Seeker from the professor and the Dowsing Machine for the Pokétch, after a guess at which hand holds it (either answer gets both). Eterna's bug catcher goes back to his line about the wind once she has been (`VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE` 1).
+- **Cyrus waits inside Mt. Coronet** at the first trigger of its southern hall, speaks of the mountain where Sinnoh began and goes off west.
+- **The black belt on Route 208 gives the Odd Keystone** once, as the original's does (`FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE`).
+- **Mira is optional**: she waits in Wayward Cave's first room, joins when spoken to and walks with the player; at the way out she thanks them and leaves for good (`FLAG_TRAVELED_WITH_MIRA`). A player who leaves without her finds her waiting where she stood.
+- **Keira's Buneary runs into the player** at the city's west edge, from whichever of the trigger's five tiles they stepped onto, and Keira comes after it. In the Contest Hall's lobby she meets the player's mother and goes off to rehearse.
+- **The fisherman walks the player to the Contest Hall** if asked, from whichever side they spoke to him.
+- **Fantina is at the Contest Hall**, not in her Gym, until she is spoken to: she twirls, says she will wait at the Gym, and leaves; the Gym's guide stops keeping its door (`FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE`).
+- **The road east is shut until Fantina is beaten**: two men talking about eggs stand in the doorway of the gate to Route 209 (`FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_BLOCKADE`, set by her Gym's script), and the rival waits inside the gate to battle with the team that has the upper hand on the player's starter.
+- **Saves from before**: `common.ChapterFour` (story version 9) hides the chapter's people until their scenes; a save that already holds the Relic Badge also gets Fantina out of the lobby and the guide away from the Gym's door.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Keira's present | Glitter Powder for the player | Not given | No accessories yet (plan 06 · R17) |
+| The mother's gift | A dress or a tuxedo for contests | Not given | No Dress-Up yet (the contests, plan 06 · R17) |
+| The receptionists | Enter the player in a Super Contest | Say no contest is being held today | The contests are plan 06 · R17's |
+| The reporter in the lobby | Interviews the player | Hidden | No interviews yet (plan 08 · P9) |
+| Mira in the depths | Follows the player down into Wayward Cave's lower floor | Walks with the player on its first floor only | A follower stays on her own map (plan 02 · S6) |
+| Amity Square | Walking with a Pokémon, the gifts it finds | Its gates are passed through as before | Its rooms and walks are plan 01 · M11's |
+| The lobby's and the gate's furniture | The original's own models | Counters, a computer, plants, tables and benches of our kit, where its models stand | The kit has no contest booths yet |
+
+## The fourth chapter, second part (2026-10-10, plan 02 · S7 and plan 08 · P12)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_209.s`, `scripts_route_209_lost_tower_5f.s`, `scripts_solaceon_town.s`, `scripts_solaceon_ruins_room_1.s`, `scripts_solaceon_ruins_room_2.s`, `scripts_solaceon_ruins_room_7.s`, `scripts_route_210_south.s`)
+
+- **The Hallowed Tower** is read from its four tiles. Without the Odd Keystone it is a broken tower; with it the player may set the stone in its gap (`VAR_HALLOWED_TOWER_STATE` 1). From then it stirs at eight, fifteen, twenty-two and twenty-nine people spoken to, and at thirty-two Spiritomb comes out of it (level 25). Once its battle is over, however it ended, the stone is spent and the count starts again (`ClearSpiritombCounter`).
+- **The fisherman on Route 209 gives the Good Rod** once, and after that explains how to fish.
+- **The Lost Tower** has five floors joined by stairs, wild Pokémon on every floor (the Old Chateau's floor behaviour, at the original's rate and slots), its trainers and items, and fog on the top floor that Defog lifts while the player stays. The two old women there give the Spell Tag and the Cleanse Tag once the fog has been cleared in front of them (`FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F`), and keep giving them after the fog has come back.
+- **The rival comes down Solaceon's street** the first time the player crosses the original's trigger from Route 209, says he found HM05 in the ruins and goes off north (`VAR_SOLACEON_TOWN_STATE` 1).
+- **The Ruin Maniac gives the Pokémon History app** to a trainer who has seen fifty species of the Sinnoh Pokédex.
+- **The hiker in the ruins** asks to borrow HM05 once the player has it and gives a Green Shard for it; the HM stays the player's. Turned down, he asks again at once the next time (`FLAG_DID_NOT_LOAN_HM_DEFOG`).
+- **The Psyduck stand across Route 210** until the Secret Potion cures their headaches; then they go for good (`FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK`).
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Spiritomb's count | People spoken to in the Underground (`VAR_SPIRITOMB_COUNTER`) | Different people spoken to anywhere, each counted once until Spiritomb appears (`StoryState.Greeted`, saved as `SaveData.GreetedPeople`) | No Underground yet (plan 06 · R16); plan 08's decision 2 |
+| The Unown inscriptions | Written in the Unown alphabet | Read out in letters | No Unown typeface yet |
+| The Lost Tower's music | A theme of its own | Route 209's | No song for it yet |
+| The Lost Tower's look | The original's tower models | A room of our kit with headstones and tombs where its graves stand | The kit has no tower interior yet |
+| Cynthia after the Psyduck | Comes up Route 210 and gives the Old Charm | Not yet | The Secret Potion and what follows are plan 02 · S9's |
+
+## The Pokétch's apps (2026-10-10, plan 06 · R14b)
+
+**The frame**
+
+- **Who gives what.** Every app Platinum gives runs. The Stopwatch and the Alarm Clock are in the original's list but given by nobody, so they stay in the list and never show (`Poketch.Runs`). The Pokétch Company's president gives the Memo Pad, the Marking Map, the Link Searcher and the Move Tester for the first, third, fifth and seventh Badge, one a visit, as the original's does (`PoketchCompany.President`). The other givers stand in rooms plan 01 · M11 builds (the Route 208 house, the Day Care, the Veilstone Department Store, the Celestic Town house, the Route 213 house, the Pastoria observatory gate, the Pal Park lobby and the Sunyshore house); until then they give nothing, and `if poketchapp X` is what their scripts will ask.
+- **The stylus is a cursor.** The original's lower screen is touched while the player walks; here the Pokétch is taken in hand (I): the player stands still, the arrows move a cursor from one of the app's buttons to the nearest that way, and confirm touches it. A drag, a held touch and a double tap are told in the apps' own rulings below.
+- **An app is made afresh each time it comes up**, as the original's task is, and keeps only what the original's save or Pokétch memory keeps (`Poketch.Recall`, `Keep`). It runs on while the Pokétch is put away, as the original's lower screen does.
+- **The Analog Watch's touch** lights the dial for half a second, our own length.
+- **The Link Searcher always finds nobody**: there is no wireless play yet (plan 07).
+
+**The toys** (`src/applications/poketch/calculator`, `memo_pad`, `counter`, `coin_toss`, `roulette`, `dot_art`, `color_changer`, `kitchen_timer`)
+
+- **A stroke is a row of touches.** The original's memo pad and roulette are drawn on with the stylus, a line followed from point to point (`UpdatePixelsOnPath`), on a page of 78 by 75 dots of two pixels. Here the Pokétch is touched with a cursor that moves a block at a time, so the page is 36 by 35 blocks (a dot of the original is about half a block) and each touch fills one block; the arrow keys held down walk the cursor on, so a line is a few presses. The memo pad's eraser rubs out two blocks by two, the original's four dots by four at this size (`ERASER_SIZE`), up and left of the block touched as the original's reaches mostly up and left of its point; the original rubs out only the single dot where a stroke begins, which a single touch can't tell apart from a stroke, so here every touch rubs out the whole square.
+- **The counter goes round.** At 9999 the next touch counts nought (`State_UpdateApp`: `if (++value > 9999) value = 0`), as the original's does; it doesn't stop at its most.
+- **What lasts between apps.** The counter's count, the coin's face and the kitchen timer are kept in the original's Pokétch memory (`PoketchMemory_Write32`), which holds one app's data and is forgotten whenever the side button chooses another app (`PoketchMemory_ResetActiveAppID`); it only carries an app over the lower screen being taken for something else (a battle, a menu). Here an app's state lives until another app is chosen (`Poketch.State`), which comes to the same. Only the dot art's picture is saved, as in the original (`Poketch.dotArtData`); the screen's colour is the Pokétch's own.
+- **The dot art is saved as it is drawn.** The original writes the picture back when the app closes and when the game is saved (`SaveDotArtGrid` from `Free` and `SaveCallback`); here each touch keeps it at once (`Poketch.Keep`), which gives the same picture at every save. It is kept as each dot's shade less one, row by row, where the original packs four dots to a byte.
+- **The dot art's second shade.** The original's four shades are four colours of the Pokétch's palette (`UpdateTilemap`: 4, 15, 8 and 1); the LCD here has three tones, so the second shade is the middle tone drawn faintly, as the unlit segments of a figure are.
+- **A frame is a thirtieth of a second.** The coin's flight, the roulette's arrow and the kitchen timer's rings are counted in the original's frames: its main loop waits two of the screen's refreshes a pass (`src/main.c`), so its tasks run thirty times a second. The coin rises to 85 pixels and lies still at its 74th frame (about 2.5 s), the arrow is up to speed in 37 frames and stops about 85 after STOP, and the timer rings every 8 frames.
+- **The roulette's one roll.** On STOP the original draws `MTRNG_Next() % 8` for a delay, but as written (`Task_RunSpinner`, state 3: `if (stopDelay == 0) stopDelay--; else next state`) only a roll of nought changes anything, by one frame more at speed. It is kept so; the roll is the field's generator (`PoketchContext.Rng`). Where the arrow stops is otherwise the player's timing.
+- **The kitchen timer's clock.** The original counts the time from the console's clock (`Timer_GetCurrentTimestamp`), so it runs on through anything; here it counts the frames' own time, which goes on while the Pokétch is put away and while the field is played (the engine updates the app on the screen every field frame), and the time set is still whole seconds counted down from START, pauses left out. In place of the original's character beating its hands as it rings, two bells of our own swing.
+- **The calculator's display.** Ten places don't fit at the size of the watch's figures (7 blocks wide), so the calculator has figures of its own, 3 blocks by 5; the error, which the original shows as a sign of its own in every place, is an "E" here. Its keys are labelled in the interface's font.
+- **The calculator's cry.** `PlayResultSpeciesCry` plays a cry for a whole part from 1 to 493 that is a Pokémon seen (by the Sinnoh Pokédex's numbers until the National Pokédex is had). The app hands `PoketchContext.Cry` a Pokémon of that species made for the purpose, on a generator of its own seeded with nought, so hearing a cry draws nothing from the field's chance.
+
+**The map apps: Platinum's rules, kept as they are** (`src/applications/poketch/dowsing_machine`, `berry_searcher`, `marking_map`, `trainer_counter`, `poketch_map.c`, `src/script_manager.c`, `src/pokeradar.c`, `src/overlay006/radar_chain_records.c`, `src/poketch.c`, `include/inlines.h`)
+
+- **The Dowsing Machine** (`FindNearbyHiddenItems`, `FieldSystem_GetNearbyHiddenItems`): the hidden items not yet found in the player's place within seven tiles either side, seven up and six down; tiles are 11 of its pixels apart, and an item is shown where it lies when the touch is within its own range of it (8, 24 or 48 pixels by the item's range 0, 1 or 2: its own tile only, within two tiles, within about four), at most eight; if none is, an item within 48 pixels makes the ring go on and on. A step stops the ring and the items.
+- **The Berry Searcher** (`GetReadyBerryPatches`): a cell for each patch that is growing (seen once) and in fruit, by the original's table of 118 cells; the patches after it in the same cell are passed over; 64 cells at most. It looks as it comes up and when touched, not in between.
+- **The Marking Map** (`State_Idle`, `UpdateMarkerPriorities`, `sDefaultMapMarkers`): six markers, starting in a row in the sea south of the mainland; a touch picks up the marker within eight pixels (here: the touched cell or one beside it), the one moved last first. The roamers on the loose are shown at the original's place for each of their 29 routes (`PoketchMap_GetPositionFromMapID`); the player's cell is their tile over 32 (`PoketchMap_GetPlayerLocation`).
+- **The Trainer Counter's records** (`GetLowestChainRecordSlot`, `TryReplaceLowestChainRecord`, `SortChainRecords`): three records; a chain takes the first empty one or the lowest as it begins and writes itself into it each time it grows past it, and the three are sorted best first, ties as the original's comparisons leave them. `RadarChainRecords_GetNumFilledSlots` asks the first record three times, so the records count as all filled or none; kept, with no effect a player can see, since only a record with a chain plays its cry.
+
+**The map apps: our own choices**
+
+- **The stylus is a cursor.** The Dowsing Machine is touched tile by tile (the original reads the touch to the pixel); the Marking Map's markers are picked up by touching their cell and put down by touching another, rather than dragged, and only onto the map (the original's can be dropped anywhere on the screen); both apps' every cell is a button, the cursor starting on the player's tile and on the map's middle. Picking a marker up and putting it down play the Pokétch's usual touch (`poketch`), which the original doesn't, so the cursor's touch is heard.
+- **The map is a block a chunk**, 30 by 25 blocks in the middle of the screen, read from the region's habitats file, as Fly and the Pokédex lay Sinnoh out; the original's own pixel places (a roamer's route, a hidden island, the default markers) are turned into cells by the inverse of its `mapPositionsX` and `mapPositionsY`, to the nearest cell. A few roamer routes land a cell off our chunks of the route (Route 204, 214, 217): the original's places are kept.
+- **What moves and how long** are our own timings: the Dowsing Machine's ring spreads in 0.6 s and its items blink for 0.8 s; the Berry Searcher's focus takes the original's 18 frames (six mosaic sizes, three frames each) as three steps of cells; the Trainer Counter's hop keeps the original's 16 frames and 24 pixels (five blocks).
+- **The Berry Searcher's refresh sound** is the Pokétch's usual touch (`poketch`) for the original's sound 1656.
+- **The Trainer Counter shows the chain as it is.** The original redraws the chain's count only when its species changes, which on the DS is enough because a battle (the only thing that grows a chain) tears the Pokétch down and builds it again; here the app stays up through a battle, so it reads the chain every frame.
+- **The Dowsing Machine looks in the player's own place** (`map.AreaAt`), as the original lists only its map header's events: on the map of Sinnoh, an item across an area's border isn't found.
+
+**The map apps: stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The radar's chain records | Kept in the save's special encounters, by the radar as the chain grows | Kept in the Pokétch's memory (`TrainerCounterApp.Follow`), which the engine calls whenever the chain changes, whichever app is showing | The radar's code and the save are outside the app |
+| The hidden places' variables | Set by the story (`SystemVars_SetHiddenLocationMagic`) | Read, nothing sets them yet | The scripts that reveal them are later chapters' |
+
+**The Pokémon apps: Platinum's rules, kept as they are** (`src/applications/poketch/friendship_checker/`, `daycare_checker/`, `pokemon_history/`, `move_tester/`, `matchup_checker/`, `src/overlay005/daycare.c`, `src/poketch.c`)
+
+- **The Friendship Checker** (`GetFriendshipLevel`, `Init`): friendship under 1, 35, 70, 150, 200 and 255 is level 0 to 5, and 255 level 6. Levels 0 to 2 dislike the player with an intensity of 3 to 1, level 3 neither, levels 4 to 6 like the player with 1 to 3. A Pokémon wanders at one pixel a frame in a direction drawn from the generator and never faster than three; touched, it cries, and one that doesn't dislike the player shows its intensity in hearts and stays under the stylus, one that does keeps still. The stylus on the ground within 48 pixels draws those that don't dislike the player and sends the others away, at 100, 150, 175 or 200 in a hundred of the walking pace by intensity, until it is 64 pixels off. Two that bump trade their speeds along the line between them and ignore the stylus for 20 frames; one bumping into a Pokémon showing its liking is turned back (or nudged off at a tenth of a pixel a step if it was standing). Two quick touches of the ground make everyone jump 20 pixels in 23 frames, with the Counter's sound.
+- **The Day-Care Checker** (`LoadDaycareSummary`, `SetLevelSprites`): the two Pokémon left, each with its level (at most 100; no hundreds under 100 and no tens under 10) and its gender's sign (none for a Pokémon with no gender), and an egg between them when the Day Care has one. It reads the Day Care as it comes up and again whenever it is touched, the picture coming back through ten steps of four frames.
+- **The Pokémon History** (`Poketch_PokemonHistoryEnqueue`): twelve Pokémon caught, hatched or given, added at the end and the first dropped when it is full; shown oldest first, four to a row; one touched cries.
+- **The Move Tester** (`GetExclamationCount`, `GetTypeAfterShift`): the move's type and the target's first type go round Platinum's seventeen in the original's order (Normal, Fire, Water, Electric, Grass, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel); the second goes to none past either end and from none to the first or last. The marks are none if either type takes nothing, else three, one more for each type weak to the move and one fewer for each that resists it; a second type the same as the first counts once. What was chosen is kept for next time.
+- **The Matchup Checker** (`BoxMon_GetPairDaycareCompatibilityScore`, `DaycareCompatibilityScoreToLevel`, `UpdateLeftMon`): two of the team, the first two to begin with; each side goes on through the team past the other's, and only with more than two. The answer is the Day Care's: never if either's first egg group is Undiscovered or both are Ditto; with one Ditto, a little from the same trainer and well from two; never for the same gender or one with none, or no egg group shared; then the best for the same species from two trainers, well for the same species from one or two species from two, a little for two species from one. The egg groups are the species', whatever its form. With fewer than two Pokémon the check beeps and does nothing.
+
+**The Pokémon apps: stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Touching the Friendship Checker | The stylus held down as long as the player likes, anywhere; a double tap is two taps of six frames or less | A touch holds the stylus where it fell for 1.5 s; the ground is six spots (the corners and the middles of the long sides); a second touch of the ground within 0.4 s of the first is the double tap | One screen and no touch: a cursor and a button (plan 06 · R14b's frame) |
+| The Friendship Checker's walk | Icons may wander partly past the screen's edges (−10 to 217, −22 to 183), collisions found at the moment within a frame | Icons stay on the screen with room for their hearts; collisions are found frame by frame | Our screen doesn't clip what is drawn on it; the difference can't be seen at sixty frames a second |
+| The Day-Care Checker | The Day Care's two Pokémon and its egg; a level with the steps walked there added (`DaycareMon_GiveExperience`) | Whatever the context's `DayCare` holds, the Pokémon's own level, and never an egg | The Day Care and breeding are plan 06 · R15; the context has no egg to read yet |
+| The Pokémon History's cries | Cries by species and form | A Pokémon of the species and form, level 1, made from the field's generator the first time it is touched | The app's `Cry` takes a Pokémon and the history keeps names |
+| Sounds | The Day-Care Checker's `DENSI12`; the Matchup Checker's `POKETCH_012` (a step), `013` (no match) and `014` (the best) | `poketch`; `poketch`, `poketch_beep` and `dowsing_ping` | The bank has none of them (`docs/sound-effects.md`) |
+| The Move Tester's chart | A table of its own, Platinum's | The game's own chart by the rules it is played by (`TypeChart`) | The same in a Platinum game; a modern game's Pokétch tells the modern chart |
+| The Matchup Checker's button | Checks on the stylus's release, nothing if it was dragged off | Checks as it is touched | No stylus to drag |
+
+**The Pokémon apps: our own choices**
+
+- The Move Tester's words for how well a move works are our own: IT HAS NO EFFECT, IT BARELY WORKS, NOT VERY EFFECTIVE, IT HITS NORMALLY, SUPER EFFECTIVE, EXTREMELY EFFECTIVE.
+- The Day-Care Checker's mosaic is a dissolve from the paper in cells of two blocks, fewer at each of the original's ten steps.
+- The fish, hearts, egg, gender signs, arrows and marks are block patterns of our own.

@@ -194,7 +194,7 @@ internal static partial class ModernUi
         float bottom = detail.Y + detail.Height - 44;
         for (int i = 0; i < places.Count; i++)
         {
-            var lines = Wrap(WaysOf(places[i].Ways), room, 22);
+            var lines = Wrap(WaysOf(places[i]), room, 22);
             float need = 34 + lines.Count * 28 + 14;
             if (ly + need > bottom)
             {
@@ -288,6 +288,14 @@ internal static partial class ModernUi
     /// <summary>A place's name from its key: <c>eterna_city</c> is Eterna City.</summary>
     public static string PlaceName(string key) => string.Join(' ', key.Split('_').Select(w =>
         w == "pokemon" ? "Pokémon" : w.Length == 0 ? w : char.ToUpperInvariant(w[0]) + w[1..]));
+
+    /// <summary>How a species is met in a place, in words, a way of its own (the Hallowed Tower) last.</summary>
+    public static string WaysOf(Habitat place)
+    {
+        string ways = WaysOf(place.Ways);
+        if (!place.Ways.HasFlag(HabitatWays.Special) || place.How == null) return ways;
+        return ways.Length == 0 ? place.How : ways + " · " + place.How;
+    }
 
     /// <summary>How a species is met in a place, in words: "Grass in the morning and at night · Surfing · Old and Good Rod".</summary>
     public static string WaysOf(HabitatWays ways)

@@ -26,6 +26,8 @@ public partial class GameEngine
         puzzle.Apply(currentMap, story);
         if (clockTurn != null) PlayClockTurn(dt);
         if (bagRun != null) PlayBagRun(dt);
+        if (puzzle is PastoriaWater water) PlayWater(water, dt);
+        if (puzzle is CanalaveLifts { Moving: not null } lifts) PlayLiftRide(lifts, dt);
     }
 
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>
@@ -37,10 +39,10 @@ public partial class GameEngine
     }
 
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
-    private bool PuzzleMoving => clockTurn != null;
+    private bool PuzzleMoving => clockTurn != null || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null };
 
     /// <summary>Whether a puzzle has the field to itself for now, as the original's tasks do: a punching bag on its run.</summary>
-    private bool PuzzleHoldsField => bagRun != null;
+    private bool PuzzleHoldsField => bagRun != null || currentMap.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null };
 
     // ------------------------------------------------------------------ the Veilstone Gym's punching bags
 
@@ -117,6 +119,41 @@ public partial class GameEngine
         bagRun = null;
     }
 
+    // ------------------------------------------------------------------ the Pastoria Gym's water
+
+    /// <summary>The water rises or falls to the level of the button pressed last, and goes quiet as it stops.</summary>
+    private static void PlayWater(PastoriaWater water, float dt)
+    {
+        bool moving = water.Moving;
+        water.Update(dt);
+        if (moving && !water.Moving) AudioManager.PlaySound("bump");
+    }
+
+    // ------------------------------------------------------------------ the Canalave Gym's lifts
+
+    /// <summary>
+    /// A step has ended on one of the Canalave Gym's platforms (<c>Field_ProcessStep</c>'s first check): it sets off for
+    /// its other end with the player on it, and nothing else of the step happens.
+    /// </summary>
+    private bool TryRideLift()
+    {
+        if (currentMap.Puzzle is not CanalaveLifts lifts || lifts.Moving != null) return false;
+        if (lifts.PlatformAt(player.GridX, player.GridY, player.HeightOn(currentMap)) is not { } index) return false;
+        lifts.Board(index);
+        AudioManager.PlaySound("lift");
+        return true;
+    }
+
+    /// <summary>The platform carries the player on, and clanks to a stop at its end.</summary>
+    private void PlayLiftRide(CanalaveLifts lifts, float dt)
+    {
+        var ride = lifts.Moving!;
+        lifts.Update(dt);
+        var (x, h, y) = ride.Now;
+        player.CarryTo(x, y, h, dt);
+        if (lifts.Moving == null) AudioManager.PlaySound("lift_stop");
+    }
+
     private void PlayClockTurn(float dt)
     {
         var turn = clockTurn!;
@@ -147,6 +184,14 @@ public partial class GameEngine
             foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get))
                 foreach (var npc in map.Everyone)
                     if (npc.TrainerData?.Id == trainerId) npc.HasBattled = true;
+        }
+
+        public void PressButton(PastoriaWater.Button button)
+        {
+            if (game.currentMap.Puzzle is not PastoriaWater water) return;
+            water.Press(button);
+            AudioManager.PlaySound("select");
+            if (water.Moving) AudioManager.PlaySound("surf");
         }
 
         public void TurnClock(int from, int to)

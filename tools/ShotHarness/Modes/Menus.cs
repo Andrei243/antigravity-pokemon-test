@@ -377,6 +377,15 @@ partial class Harness
         ToMainMenu(later);
         Frames(2); Shot("27_battle_later_generation");
 
+        // The move hints (plan 12 · Q10), last so that no shot before them moves: a Geodude seen before the battle,
+        // which a Grass move hits four times as hard and a Normal one half as hard
+        pokedex.RegisterSeen(PokemonDatabase.Get("Geodude")!.DexNumber);
+        var hinted = StartBattle("Geodude", 5, hints: true);
+        ToMainMenu(hinted);
+        hinted.HUD.MenuState = BattleMenuState.Moves;
+        Frames(2); Shot("23g_battle_hints");
+        ShotCrop("23g2_battle_hints_native", 40, 820, 1140, 230, 2);
+
         if (args.Length > 2)
             Boards(args[2], new[]
             {

@@ -15,48 +15,80 @@ public enum GameAction
     Run,      // Hold B / Shift
     Item,     // Y button: the registered key item (C)
     Poketch,  // The Pokétch, the handheld's lower screen: out or away (P)
-    PoketchApp // The Pokétch's side button: the next app (O)
+    PoketchApp, // The Pokétch's side button: the next app (O)
+    PoketchTouch // The Pokétch taken in hand to touch its screen, and let go (I)
 }
+
+/// <summary>An action's keys and the pad's button for it, with the name the help page gives it.</summary>
+public readonly record struct Binding(GameAction Action, string Name, KeyboardKey[] Keys, GamepadButton Pad);
 
 public static class InputManager
 {
+    /// <summary>Every action's keys and button: what the game reads and what the help page shows (plan 12 · Q10).</summary>
+    public static readonly Binding[] Bindings =
+    {
+        new(GameAction.Up, "Up", new[] { KeyboardKey.Up, KeyboardKey.W }, GamepadButton.LeftFaceUp),
+        new(GameAction.Down, "Down", new[] { KeyboardKey.Down, KeyboardKey.S }, GamepadButton.LeftFaceDown),
+        new(GameAction.Left, "Left", new[] { KeyboardKey.Left, KeyboardKey.A }, GamepadButton.LeftFaceLeft),
+        new(GameAction.Right, "Right", new[] { KeyboardKey.Right, KeyboardKey.D }, GamepadButton.LeftFaceRight),
+        new(GameAction.Confirm, "Confirm, talk, read", new[] { KeyboardKey.Z, KeyboardKey.Space }, GamepadButton.RightFaceDown),
+        new(GameAction.Cancel, "Back", new[] { KeyboardKey.X, KeyboardKey.Escape }, GamepadButton.RightFaceRight),
+        new(GameAction.Menu, "Menu", new[] { KeyboardKey.Enter, KeyboardKey.Tab }, GamepadButton.MiddleRight),
+        new(GameAction.Run, "Run (held)", new[] { KeyboardKey.LeftShift, KeyboardKey.X }, GamepadButton.RightFaceRight),
+        new(GameAction.Item, "Registered item", new[] { KeyboardKey.C }, GamepadButton.RightFaceLeft),
+        new(GameAction.Poketch, "Pokétch out or away", new[] { KeyboardKey.P }, GamepadButton.RightFaceUp),
+        new(GameAction.PoketchApp, "Next Pokétch app", new[] { KeyboardKey.O }, GamepadButton.RightTrigger1),
+        new(GameAction.PoketchTouch, "Touch the Pokétch", new[] { KeyboardKey.I }, GamepadButton.LeftTrigger1)
+    };
+
+    private static Binding Of(GameAction action) => Bindings[(int)action];
+
     public static bool IsActionPressed(GameAction action)
     {
-        return action switch
-        {
-            GameAction.Up => Raylib.IsKeyPressed(KeyboardKey.Up) || Raylib.IsKeyPressed(KeyboardKey.W) || Raylib.IsGamepadButtonPressed(0, GamepadButton.LeftFaceUp),
-            GameAction.Down => Raylib.IsKeyPressed(KeyboardKey.Down) || Raylib.IsKeyPressed(KeyboardKey.S) || Raylib.IsGamepadButtonPressed(0, GamepadButton.LeftFaceDown),
-            GameAction.Left => Raylib.IsKeyPressed(KeyboardKey.Left) || Raylib.IsKeyPressed(KeyboardKey.A) || Raylib.IsGamepadButtonPressed(0, GamepadButton.LeftFaceLeft),
-            GameAction.Right => Raylib.IsKeyPressed(KeyboardKey.Right) || Raylib.IsKeyPressed(KeyboardKey.D) || Raylib.IsGamepadButtonPressed(0, GamepadButton.LeftFaceRight),
-            GameAction.Confirm => Raylib.IsKeyPressed(KeyboardKey.Z) || Raylib.IsKeyPressed(KeyboardKey.Space) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceDown),
-            GameAction.Cancel => Raylib.IsKeyPressed(KeyboardKey.X) || Raylib.IsKeyPressed(KeyboardKey.Escape) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceRight),
-            GameAction.Menu => Raylib.IsKeyPressed(KeyboardKey.Enter) || Raylib.IsKeyPressed(KeyboardKey.Tab) || Raylib.IsGamepadButtonPressed(0, GamepadButton.MiddleRight),
-            GameAction.Run => Raylib.IsKeyDown(KeyboardKey.LeftShift) || Raylib.IsKeyDown(KeyboardKey.X) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceRight),
-            GameAction.Item => Raylib.IsKeyPressed(KeyboardKey.C) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceLeft),
-            GameAction.Poketch => Raylib.IsKeyPressed(KeyboardKey.P) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightFaceUp),
-            GameAction.PoketchApp => Raylib.IsKeyPressed(KeyboardKey.O) || Raylib.IsGamepadButtonPressed(0, GamepadButton.RightTrigger1),
-            _ => false
-        };
+        // Running is a key held, so it counts as pressed for as long as it is down
+        if (action == GameAction.Run) return IsActionDown(action);
+        var binding = Of(action);
+        foreach (var key in binding.Keys)
+            if (Raylib.IsKeyPressed(key)) return true;
+        return Raylib.IsGamepadButtonPressed(0, binding.Pad);
     }
 
     public static bool IsActionDown(GameAction action)
     {
-        return action switch
-        {
-            GameAction.Up => Raylib.IsKeyDown(KeyboardKey.Up) || Raylib.IsKeyDown(KeyboardKey.W) || Raylib.IsGamepadButtonDown(0, GamepadButton.LeftFaceUp),
-            GameAction.Down => Raylib.IsKeyDown(KeyboardKey.Down) || Raylib.IsKeyDown(KeyboardKey.S) || Raylib.IsGamepadButtonDown(0, GamepadButton.LeftFaceDown),
-            GameAction.Left => Raylib.IsKeyDown(KeyboardKey.Left) || Raylib.IsKeyDown(KeyboardKey.A) || Raylib.IsGamepadButtonDown(0, GamepadButton.LeftFaceLeft),
-            GameAction.Right => Raylib.IsKeyDown(KeyboardKey.Right) || Raylib.IsKeyDown(KeyboardKey.D) || Raylib.IsGamepadButtonDown(0, GamepadButton.LeftFaceRight),
-            GameAction.Confirm => Raylib.IsKeyDown(KeyboardKey.Z) || Raylib.IsKeyDown(KeyboardKey.Space) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceDown),
-            GameAction.Cancel => Raylib.IsKeyDown(KeyboardKey.X) || Raylib.IsKeyDown(KeyboardKey.Escape) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceRight),
-            GameAction.Menu => Raylib.IsKeyDown(KeyboardKey.Enter) || Raylib.IsKeyDown(KeyboardKey.Tab) || Raylib.IsGamepadButtonDown(0, GamepadButton.MiddleRight),
-            GameAction.Run => Raylib.IsKeyDown(KeyboardKey.LeftShift) || Raylib.IsKeyDown(KeyboardKey.X) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceRight),
-            GameAction.Item => Raylib.IsKeyDown(KeyboardKey.C) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceLeft),
-            GameAction.Poketch => Raylib.IsKeyDown(KeyboardKey.P) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightFaceUp),
-            GameAction.PoketchApp => Raylib.IsKeyDown(KeyboardKey.O) || Raylib.IsGamepadButtonDown(0, GamepadButton.RightTrigger1),
-            _ => false
-        };
+        var binding = Of(action);
+        foreach (var key in binding.Keys)
+            if (Raylib.IsKeyDown(key)) return true;
+        return Raylib.IsGamepadButtonDown(0, binding.Pad);
     }
+
+    /// <summary>A key's name as the help page writes it.</summary>
+    public static string KeyName(KeyboardKey key) => key switch
+    {
+        KeyboardKey.Escape => "Esc",
+        KeyboardKey.LeftShift => "Shift",
+        KeyboardKey.Up => "Up arrow",
+        KeyboardKey.Down => "Down arrow",
+        KeyboardKey.Left => "Left arrow",
+        KeyboardKey.Right => "Right arrow",
+        _ => key.ToString()
+    };
+
+    /// <summary>A pad's button as the help page writes it (the face buttons by where they lie, as on any pad).</summary>
+    public static string PadName(GamepadButton button) => button switch
+    {
+        GamepadButton.LeftFaceUp => "D-pad up",
+        GamepadButton.LeftFaceDown => "D-pad down",
+        GamepadButton.LeftFaceLeft => "D-pad left",
+        GamepadButton.LeftFaceRight => "D-pad right",
+        GamepadButton.RightFaceDown => "Bottom button",
+        GamepadButton.RightFaceRight => "Right button",
+        GamepadButton.RightFaceLeft => "Left button",
+        GamepadButton.RightFaceUp => "Top button",
+        GamepadButton.MiddleRight => "Start",
+        GamepadButton.RightTrigger1 => "R",
+        GamepadButton.LeftTrigger1 => "L",
+        _ => button.ToString()
+    };
 
     /// <summary>-1, 0 or 1 from two opposite actions: pressed this frame, or (<paramref name="held"/>) down now.</summary>
     public static int Axis(GameAction negative, GameAction positive, bool held = false)

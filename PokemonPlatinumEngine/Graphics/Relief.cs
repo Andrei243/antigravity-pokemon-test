@@ -85,6 +85,9 @@ internal static class Relief
         if (!map.HasRelief) return 0f;
         int tx = (int)MathF.Floor(x), ty = (int)MathF.Floor(z);
         if (map.DeckAt(tx, ty) is { } deck && map.SurfaceAt(tx, ty, standingHeight).OnDeck) return deck - map.GroundLevel;
+        // On a floor a Gym's puzzle lays (the Pastoria Gym's water), where it is what they stand at
+        if (map.Puzzle?.FloorAt(tx, ty, standingHeight) is { } floor && floor > map.HeightAt(tx, ty) + 0.25f && MathF.Abs(floor - standingHeight) < 0.25f)
+            return floor - map.GroundLevel;
         return At(map, x, z);
     }
 

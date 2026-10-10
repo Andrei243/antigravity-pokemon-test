@@ -41,21 +41,26 @@ public sealed class TrainerApproach
     }
 
     /// <summary>The first trainer still waiting for a battle who is looking at the tile, or null; one other than <paramref name="except"/>, when given.</summary>
-    public static NPC? FindSpotter(Map map, int x, int y, NPC? except = null) =>
-        map.NPCs.FirstOrDefault(n => n != except && n.IsTrainer && !n.HasBattled && n.TrainerData != null && CanSee(map, n, x, y)
+    public static NPC? FindSpotter(Map map, int x, int y, NPC? except = null, float? height = null) =>
+        map.NPCs.FirstOrDefault(n => n != except && n.IsTrainer && !n.HasBattled && n.TrainerData != null && CanSee(map, n, x, y, height)
             && (except?.TrainerData == null || n.TrainerData!.Id != except.TrainerData.Id));
 
     /// <summary>
     /// Trainers look straight ahead for as many tiles as their sight range, and not past anything they
-    /// couldn't walk through (walls, trees, ledges, other people).
+    /// couldn't walk through (walls, trees, ledges, other people). Given the height the player stands at, a trainer
+    /// on another of a Gym's floors doesn't see them (the Canalave Gym's, one over another), nor past what the puzzle
+    /// closes on their own.
     /// </summary>
-    public static bool CanSee(Map map, NPC npc, int x, int y)
+    public static bool CanSee(Map map, NPC npc, int x, int y, float? height = null)
     {
         var (sx, sy) = Step(npc.Facing);
         int range = npc.TrainerData?.SightRange ?? 0;
+        float level = npc.Level ?? map.HeightAt(npc.GridX, npc.GridY);
+        if (height is { } h && map.Puzzle?.Apart(level, h) == true) return false;
         for (int d = 1; d <= range; d++)
         {
             int tx = npc.GridX + sx * d, ty = npc.GridY + sy * d;
+            if (map.Puzzle?.BlocksSight(tx, ty, level) == true) return false;
             if (tx == x && ty == y) return true;
             if (!map.IsWalkable(tx, ty)) return false;
         }

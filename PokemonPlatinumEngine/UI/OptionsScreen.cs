@@ -10,14 +10,16 @@ namespace PokemonPlatinumEngine.UI;
 public enum OptionRow
 {
     TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
-    Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers
+    Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers,
+    MoveHints, Help
 }
 
 /// <summary>
 /// The options screen: text speed, graphics quality, window size, full screen, V-Sync, time of day, and the sound:
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
-/// the ambience) and the speakers it plays through. Changes apply at once; the caller saves the settings when the
-/// screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
+/// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints) and the HELP pages
+/// (<see cref="HelpScreen"/>), which open over the options. Changes apply at once; the caller saves the settings
+/// when the screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
 public class OptionsScreen
 {
@@ -32,11 +34,15 @@ public class OptionsScreen
     /// <summary>The first row in the window.</summary>
     public int FirstRow { get; private set; }
 
+    /// <summary>The help pages, open over the options while <see cref="HelpScreen.IsActive"/>.</summary>
+    public HelpScreen Help { get; } = new();
+
     public void Open()
     {
         IsActive = true;
         SelectedIndex = 0;
         FirstRow = 0;
+        Help.Close();
     }
 
     /// <summary>One step of the cursor up or down the rows, wrapping round; the window follows it.</summary>
@@ -51,6 +57,11 @@ public class OptionsScreen
     public bool Update(GameSettings settings)
     {
         if (!IsActive) return false;
+        if (Help.IsActive)
+        {
+            Help.Update();
+            return false;
+        }
 
         if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
         else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
@@ -58,6 +69,10 @@ public class OptionsScreen
         {
             IsActive = false;
             AudioManager.PlaySound("cancel");
+        }
+        else if (Rows[SelectedIndex] == OptionRow.Help)
+        {
+            if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
         }
         else
         {
@@ -71,6 +86,14 @@ public class OptionsScreen
             }
         }
         return false;
+    }
+
+    /// <summary>The A button on the row the cursor is on: HELP opens the help pages; any other row is changed by Update.</summary>
+    public void Confirm()
+    {
+        if (Rows[SelectedIndex] != OptionRow.Help) return;
+        Help.Open();
+        AudioManager.PlaySound("select");
     }
 
     /// <summary>Moves one setting to its next or previous value, wrapping round.</summary>
@@ -121,6 +144,9 @@ public class OptionsScreen
             case OptionRow.Speakers:
                 s.Speakers = s.Speakers == SpeakerMode.Stereo ? SpeakerMode.Handheld : SpeakerMode.Stereo;
                 break;
+            case OptionRow.MoveHints:
+                s.MoveHints = (RulesDefault)Wrap((int)s.MoveHints + step, 3);
+                break;
         }
     }
 
@@ -151,17 +177,43 @@ public class OptionsScreen
         OptionRow.SoundVolume => ("Sound effects", $"{s.SoundVolume}%", "How loud the sound effects play: menus, doors, footsteps, the moves in battle."),
         OptionRow.CryVolume => ("Cries", $"{s.CryVolume}%", "How loud the Pokémon's cries play."),
         OptionRow.AmbienceVolume => ("Ambience", $"{s.AmbienceVolume}%", "How loud the field's background sounds play: rain, wind, waterfalls, the sea, caves."),
-        _ => ("Speakers", s.Speakers == SpeakerMode.Handheld ? "Handheld" : "Stereo", s.Speakers == SpeakerMode.Handheld
+        OptionRow.Speakers => ("Speakers", s.Speakers == SpeakerMode.Handheld ? "Handheld" : "Stereo", s.Speakers == SpeakerMode.Handheld
             ? "Sounds as the handheld's own small speakers would: no deep bass, a narrow stereo and ten-bit sound."
-            : "Full sound, for speakers or headphones.")
+            : "Full sound, for speakers or headphones."),
+        OptionRow.MoveHints => ("Move hints", Value(s.MoveHints), "In battle, a move's card says whether it is super effective, not very effective or has no effect on a Pokémon you have seen before. "
+            + RulesLine(s.MoveHints, "shows them", "goes without")),
+        _ => ("Help", "Open", "The type chart, the controls and a few notes for the road.")
+    };
+
+    /// <summary>A three-way row's value (style guide, "Options").</summary>
+    private static string Value(RulesDefault value) => value switch
+    {
+        RulesDefault.Off => "Off",
+        RulesDefault.On => "On",
+        _ => "Rules"
+    };
+
+    /// <summary>What Rules gives in the game in progress, for a three-way row's help line.</summary>
+    private static string RulesLine(RulesDefault value, string modern, string platinum) => value switch
+    {
+        RulesDefault.Rules => Data.Ruleset.Current.Preset == Data.RulesPreset.Modern
+            ? $"Rules: this game is played by the modern rules, so it {modern}."
+            : $"Rules: this game is played by Platinum's rules, so it {platinum}.",
+        _ => "Rules follows the rules the game was begun under."
     };
 
     public void Draw(int sw, int sh, GameSettings settings)
     {
         if (!IsActive) return;
+        if (Help.IsActive)
+        {
+            Help.Draw(sw, sh);
+            return;
+        }
         ModernUi.Backdrop(sw, sh);
         ModernUi.ScreenTitle("OPTIONS");
-        ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
+        if (Rows[SelectedIndex] == OptionRow.Help) ModernUi.Hints(sw - 64, 44, ("Z", "Open"), ("Esc", "Back"));
+        else ModernUi.Hints(sw - 64, 44, ("Left / Right", "Change"), ("Esc", "Back"));
 
         const float pitch = 86, height = 78;
         bool scrolls = Rows.Length > VisibleRows;

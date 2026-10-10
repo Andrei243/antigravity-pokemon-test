@@ -224,11 +224,11 @@ label Kickstand
   end
 
 
-# At the west way out (the original's script 22). FLAG_RECEIVED_BICYCLE is set by the cycle shop's manager. The original
-# also goes back to the wind once the assistant has been met on Route 207 (VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE),
-# which is plan 02 · S7's scene.
+# At the west way out (the original's script 22). FLAG_RECEIVED_BICYCLE is set by the cycle shop's manager; once the
+# assistant has been met on Route 207 (VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE, plan 02 · S7) he is back to the wind.
 script BugCatcherBike
   speaker "Bug Catcher"
+  if var VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE >= 1 goto Wind
   if not flag FLAG_RECEIVED_BICYCLE goto Wind
   call BikeNews
   face self down

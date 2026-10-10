@@ -67,6 +67,60 @@ script ChapterThree
   setflag FLAG_HIDE_CYCLE_SHOP_CLEFAIRY
   setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_LOOKER
   setflag FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK
+  call TimedPeople
+  call ChapterFour
+  return
+
+
+# Who the fourth chapter (plan 02 · S7, "Hearthome and Solaceon") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): the assistant on Route 207, Keira and her Buneary, the rival in
+# the gate to Route 209 and in Solaceon Town, Cynthia on Route 210, the Contest Hall's reporter (who has no programme
+# to report for yet). A save that already has Fantina's Badge has met her in the Contest Hall: the guide before her
+# Gym's door has gone in. Called by ChapterThree, and run for a save from before (Story/StoryMigration.cs, version 9).
+# It may only set flags and variables, and ends in return.
+script ChapterFour
+  setflag FLAG_HIDE_ROUTE_207_COUNTERPART
+  setflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
+  setflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
+  setflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
+  setflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_REPORTER
+  if not badge relic goto Before
+  setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
+  setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
+label Before
+  return
+
+
+# Who comes and goes with the clock (plan 06 · R14a), as they stand before the player first comes to their place: the
+# joggers and policemen who battle only at some hours are off the map and their doubles on, and the Valley Windworks'
+# Drifloon is away. Each place's arrival script sets them for the hour (route_209.txt and the rest). Called by
+# ChapterThree, and run for a save from before (Story/StoryMigration.cs). It may only set flags and variables.
+script TimedPeople
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT
+  setflag FLAG_HIDE_ROUTE_215_JOGGER_SCOTT
+  setflag FLAG_HIDE_ROUTE_215_JOGGER_CRAIG
+  setflag FLAG_HIDE_ROUTE_212_SOUTH_POLICEMAN_DANNY
+  setflag FLAG_HIDE_ROUTE_212_NORTH_POLICEMAN_BOBBY
+  setflag FLAG_HIDE_ROUTE_212_NORTH_POLICEMAN_ALEX
+  setflag FLAG_HIDE_ROUTE_212_NORTH_POLICEMAN_DYLAN
+  setflag FLAG_HIDE_ROUTE_212_NORTH_POLICEMAN_CALEB
+  setflag FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS
+  setflag FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+  return
+
+
+# The Pokétch campaign's clowns, gone from Jubilife City once Team Galactic is beaten at its north gate (the
+# original's JubilifeCity_CollectorJubilifeTV): the third stands in front of Jubilife TV's door until then. Called by
+# that scene, and run for a save from before Jubilife TV opened (Story/StoryMigration.cs, version 8).
+script CampaignOver
+  if var VAR_JUBILIFE_CITY_STATE < 4 goto Before
+  setflag FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2
+  setflag FLAG_HIDE_JUBILIFE_CITY_CLOWN_3
+label Before
   return
 
 
@@ -119,6 +173,122 @@ script Pokemon
 script Sign
   speaker "Sign"
   sayown
+  end
+
+
+# A patch of soft soil (plan 06 · R14a), on the beats of the original's scripts_berry_tree_interaction.s: what grows
+# in it, a drink from the Sprayduck while it grows (standing south of it, facing it), its berries picked once it is
+# in fruit, and on bare soil mulch laid and a berry planted, both chosen from the bag. The soil is the script's own
+# (berry ..., Overworld/BerryPatches.cs).
+script BerryPatch
+  speaker none
+  sound "select"
+  berry status
+  if result == 1 goto Planted
+  if result == 2 goto Sprouted
+  if result == 3 goto Growing
+  if result == 4 goto Blooming
+  if result == 5 goto Fruit
+  berry mulched
+  if result == 1 goto Mulched
+  if not facing up goto Bare
+  berry mulches
+  if result == 1 goto Choose
+  berry berries
+  if result == 0 goto Bare
+  say "It's soft, crumbly soil, just right for planting."
+  goto OfferPlant
+label Bare
+  say "It's soft, crumbly soil."
+  end
+label Mulched
+  if not facing up goto MulchOnly
+  berry berries
+  if result == 0 goto MulchOnly
+  say "The soil has been covered with {mulch}."
+  goto OfferPlant
+label MulchOnly
+  say "The soil has been covered with {mulch}."
+  end
+label Choose
+  say "It's soft, crumbly soil, just right for planting."
+  berry berries
+  if result == 0 goto OfferMulch
+  choose "What would you like to do?" "Spread mulch" "Plant a Berry" "Leave it"
+  if result == 0 goto Mulch
+  if result == 1 goto Plant
+  end
+label OfferMulch
+  ask "Spread some mulch on the soil?"
+  if yes goto Mulch
+  end
+label Mulch
+  chooseitem mulch
+  if result == 0 end
+  berry mulch
+  berry berries
+  if result == 0 goto MulchSpread
+  say "{player} spread the {mulch} over the soil."
+  goto OfferPlant
+label MulchSpread
+  say "{player} spread the {mulch} over the soil."
+  end
+label OfferPlant
+  ask "Plant a Berry here?"
+  if no end
+label Plant
+  chooseitem berries
+  if result == 0 end
+  berry plant
+  say "{player} pressed one {berry} into the soft soil."
+  end
+label Planted
+  if not facing up goto PlantedOnly
+  if not item "Sprayduck" goto PlantedOnly
+  say "One {berry} was planted here."
+  goto OfferWater
+label PlantedOnly
+  say "One {berry} was planted here."
+  end
+label Sprouted
+  if not facing up goto SproutedOnly
+  if not item "Sprayduck" goto SproutedOnly
+  say "A little {berry} plant has pushed up through the soil."
+  goto OfferWater
+label SproutedOnly
+  say "A little {berry} plant has pushed up through the soil."
+  end
+label Growing
+  if not facing up goto GrowingOnly
+  if not item "Sprayduck" goto GrowingOnly
+  say "The {berry} plant is growing taller."
+  goto OfferWater
+label GrowingOnly
+  say "The {berry} plant is growing taller."
+  end
+label Blooming
+  if not facing up goto BloomingOnly
+  if not item "Sprayduck" goto BloomingOnly
+  say "The {berry} plant has burst into flower!"
+  goto OfferWater
+label BloomingOnly
+  say "The {berry} plant has burst into flower!"
+  end
+label OfferWater
+  ask "Give it some water?"
+  if no end
+  berry water
+  say "There you go. It looks pleased."
+  end
+label Fruit
+  ask "There are {yield} × {berry} here. Pick them?"
+  if no goto LeaveFruit
+  berry pick
+  fanfare item
+  say "{player} picked {yield} × {berry}!" "{player} put them away in the Berries pocket."
+  end
+label LeaveFruit
+  say "{player} left the {berry} on the plant."
   end
 
 

@@ -90,6 +90,12 @@ public sealed class BattleSetup
     /// <summary>The name the battle's lines give the player's side; left out, the player's (the catching lesson's is the assistant's).</summary>
     public string? PlayerName { get; init; }
 
+    /// <summary>
+    /// The move cards say how a damaging move will do against each foe already seen (plan 12 · Q10): presentation
+    /// only, never read by the rules.
+    /// </summary>
+    public bool MoveHints { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 }

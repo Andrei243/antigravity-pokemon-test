@@ -1,0 +1,212 @@
+{
+  "name": "LostTower1F",
+  "displayName": "Lost Tower",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "Lab",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#______##_____#",
+    "#______##_____#",
+    "#_____________#",
+    "#_____________#",
+    "#___#_____#___#",
+    "#___#_____#___#",
+    "#####_____#####",
+    "#___#_____#___#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#___#_____#___#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#....####.....#",
+    "#....####.....#",
+    "#.............#",
+    "#.#.........#.#",
+    "#...#.....#...#",
+    "#...#.....#...#",
+    "#####..#..#####",
+    "#...#.....#...#",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#...#.....#...#",
+    "#######.#######"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 13, "depth": 12, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 2,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 12,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 5,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 15,
+      "targetMap": "Sinnoh",
+      "targetX": 568,
+      "targetY": 681,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 3,
+      "targetMap": "LostTower2F",
+      "targetX": 12,
+      "targetY": 3,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_f_1",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 9,
+      "facing": "Down",
+      "dialog": [
+        "This is where the spirits of Pokémon rest. People come to remember the ones they've lost.",
+        "Please, go quietly on the stairs."
+      ]
+    },
+    {
+      "id": "pokemon_breeder_f_2",
+      "name": "Pokémon Breeder",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "This is the Lost Tower. Each floor is a little quieter than the one below it.",
+        "Something seems to hang over the very top, though. I've never been able to see through it."
+      ]
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 20
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 1
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 1
+    }
+  ]
+}

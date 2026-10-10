@@ -118,10 +118,7 @@
       "x": 5,
       "y": 2,
       "facing": "Down",
-      "dialog": [
-        "President: Ah, the young Trainer from the campaign! How is that Pokétch treating you?",
-        "President: Our engineers dream up new apps every day. We'll hand them out about town as they're ready!"
-      ],
+      "script": "President",
       "hiddenBy": "FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT"
     },
     {

@@ -33,6 +33,28 @@ public abstract class GymPuzzle
     /// <summary>Whether a step onto a tile, going a way, is a hop over it to the tile beyond (Eterna's hour hand).</summary>
     public virtual bool HopsOver(int x, int y, Direction dir) => false;
 
+    /// <summary>
+    /// The height of a floor the puzzle lays over a tile, apart from the room's own plates (the Pastoria Gym's water,
+    /// the original's dynamic height plates; the Canalave Gym's floors, the one nearest <paramref name="near"/>); null
+    /// where it lays none.
+    /// </summary>
+    public virtual float? FloorAt(int x, int y, float near) => null;
+
+    /// <summary>
+    /// Whether the puzzle closes a tile to someone stepping onto it from a height (<c>DynamicMapFeatures_CheckCollision</c>),
+    /// <paramref name="afloat"/> when the step would put them on the puzzle's floor (<see cref="FloorAt"/>).
+    /// </summary>
+    public virtual bool Refuses(Map map, int x, int y, float from, bool afloat) => false;
+
+    /// <summary>Whether a trainer standing at a height can't see past a tile (the Canalave Gym's floors).</summary>
+    public virtual bool BlocksSight(int x, int y, float level) => false;
+
+    /// <summary>Whether two heights are on different floors of the puzzle's, so a trainer on one doesn't see whoever is on the other.</summary>
+    public virtual bool Apart(float one, float other) => false;
+
+    /// <summary>Whether someone or something at a height is out of sight from the player's (the Canalave Gym's floors above).</summary>
+    public virtual bool Hides(float height, float viewer) => false;
+
     /// <summary>The puzzle a map file names; null for none.</summary>
     public static GymPuzzle? Create(string? name) => name switch
     {
@@ -41,6 +63,8 @@ public abstract class GymPuzzle
         VeilstoneBags.PuzzleName => new VeilstoneBags(),
         HearthomeDoors.Room1Name => new HearthomeDoors(1),
         HearthomeDoors.Room2Name => new HearthomeDoors(2),
+        PastoriaWater.PuzzleName => new PastoriaWater(),
+        CanalaveLifts.PuzzleName => new CanalaveLifts(),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")
     };
 }

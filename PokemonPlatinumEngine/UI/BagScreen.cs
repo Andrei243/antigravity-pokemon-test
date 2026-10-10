@@ -132,9 +132,42 @@ public class BagScreen
         return taken;
     }
 
+    // ---- an item chosen for a script (plan 06 · R14a: a berry to plant, a mulch to lay)
+
+    /// <summary>What a script has asked the bag to choose (<c>berries</c>, <c>mulch</c>); null while the bag is the player's own.</summary>
+    public string? PickingFor { get; private set; }
+
+    private ItemData? picked;
+    private bool pickClosed;
+
+    /// <summary>Opens the bag on the pocket of what a script asks for: A on an item that fits chooses it and closes the bag, B closes it with nothing.</summary>
+    public void OpenToPick(string what)
+    {
+        Open();
+        PickingFor = what;
+        CurrentPocket = what == "mulch" ? ItemPocket.Items : ItemPocket.Berries;
+    }
+
+    /// <summary>Whether an item is what a script asked for: a berry that grows, or a mulch.</summary>
+    public static bool Fits(string what, ItemData item) =>
+        what == "mulch" ? Overworld.BerryPatches.MulchOf(item.Name) != Overworld.Mulch.None : item.Berry != null;
+
+    /// <summary>Once the bag has closed on a script's choice: true, and the item chosen (null for none). Once.</summary>
+    public bool TakePick(out ItemData? item)
+    {
+        item = picked;
+        if (!pickClosed) return false;
+        pickClosed = false;
+        picked = null;
+        return true;
+    }
+
     public void Open()
     {
         IsActive = true;
+        PickingFor = null;
+        picked = null;
+        pickClosed = false;
         CurrentPocket = ItemPocket.Items;
         Array.Clear(cursors);
         Array.Clear(firsts);
@@ -150,6 +183,8 @@ public class BagScreen
 
     public void Close()
     {
+        if (PickingFor != null) pickClosed = true;
+        PickingFor = null;
         IsActive = false;
         Actions = null;
         choosingFor = null;
@@ -256,6 +291,20 @@ public class BagScreen
             AudioManager.PlaySound("select");
             onNotification(count == 1 ? $"Threw away the {item.Name}." : $"Threw away {count} × {item.Name}.");
             Follow(inventory.GetPocketItems(CurrentPocket).Count);
+            return;
+        }
+
+        if (PickingFor is { } what)
+        {
+            if (!Fits(what, item))
+            {
+                onNotification("That can't be used here.");
+                AudioManager.PlaySound("error");
+                return;
+            }
+            AudioManager.PlaySound("select");
+            Close();
+            picked = item;
             return;
         }
 

@@ -2,6 +2,11 @@
   "area": "mt_coronet_1f_south",
   "bgmTrack": "sinnoh/cave",
   // Magneton and Nosepass evolve anywhere inside Mt. Coronet, as the original's table of places says
-  "evolutionSites": [ "Magnetic Field" ]
-  // Its way up (warp 2) leads to the second floor since plan 01 · M8
+  "evolutionSites": [ "Magnetic Field" ],
+  // Its way up (warp 2) leads to the second floor since plan 01 · M8.
+  // Plan 02 · S7 (scripts/mt_coronet_1f_south.txt): Cyrus on the mountain where Sinnoh began (trigger 0)
+  "triggers": [ { "trigger": 0, "script": "Cyrus" } ],
+  "people": {
+    "cyrus": { "name": "Cyrus", "npcType": "Cyrus", "dialog": [ "..." ] }
+  }
 }

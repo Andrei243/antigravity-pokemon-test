@@ -42,7 +42,8 @@ public class PokemonModelTests
         ["Calyrex-Shadow"] = 4,
         ["Tandemaus"] = 4, ["Maushold"] = 8, ["Maushold-Family-Of-Three"] = 6, ["Nacli"] = 0, ["Naclstack"] = 0, ["Garganacl"] = 0, ["Charcadet"] = 1, ["Bramblin"] = 0,
         ["Brambleghast"] = 0, ["Scovillain"] = 4, ["Scovillain-Mega"] = 4, ["Wugtrio"] = 6, ["Orthworm"] = 0, ["Greavard"] = 0,
-        ["Houndstone"] = 0
+        ["Houndstone"] = 0,
+        ["Sandy Shocks"] = 3, ["Iron Jugulis"] = 6
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>

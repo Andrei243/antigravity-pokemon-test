@@ -41,6 +41,17 @@ public sealed class ScriptLibrary
     /// </summary>
     public const string ChapterThree = "common.ChapterThree";
 
+    /// <summary>
+    /// Who comes and goes with the clock, as they stand before their place's arrival script has run (plan 06 · R14a):
+    /// called by <see cref="ChapterThree"/>, and run for a save from before.
+    /// </summary>
+    public const string TimedPeople = "common.TimedPeople";
+    public const string CampaignOver = "common.CampaignOver";
+
+    /// <summary>Who the fourth chapter (plan 02 · S7, "Hearthome and Solaceon") keeps out of sight until their scenes:
+    /// called by <see cref="ChapterThree"/>, and run for a save from before.</summary>
+    public const string ChapterFour = "common.ChapterFour";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

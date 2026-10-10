@@ -1,0 +1,89 @@
+# Route 209 (plan 02 · S7 and plan 08 · P12). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_route_209.s).
+
+
+# The original's arrival script: in the morning the joggers battle, and at any other time their doubles on the same
+# tiles only jog past (plan 06 · R14a). The swap is made as the player comes, so it holds until they come again.
+script OnEnter
+  if time morning goto Battle
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  end
+label Battle
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  end
+
+
+# The Hallowed Tower: the little tower of stones by the Lost Tower, read from any of its four tiles (the original's
+# script 2). Without the Odd Keystone it is a broken tower; with it, the player may set the stone in its gap
+# (VAR_HALLOWED_TOWER_STATE 1). From then the tower stirs as more people are spoken to (GREETINGS, our stand-in for the
+# original's count of people spoken to in the Underground), and at thirty-two Spiritomb comes out of it. Once its
+# battle is over the stone is gone and the count starts again, as the original's ClearSpiritombCounter does.
+script HallowedTower
+  sound "select"
+  if var VAR_HALLOWED_TOWER_STATE == 1 goto Set
+  if not item "Odd Keystone" goto Broken
+  ask "There is a gap in the little tower of stones. Set the Odd Keystone in it?"
+  if no end
+  text "{player} set the Odd Keystone in the tower."
+  take "Odd Keystone"
+  setvar VAR_HALLOWED_TOWER_STATE 1
+  end
+label Broken
+  text "A little tower of stones. One of them is missing, and the rest lean round the gap."
+  end
+label Set
+  if var GREETINGS >= 32 goto Spiritomb
+  if var GREETINGS >= 29 goto Presence
+  if var GREETINGS >= 22 goto Shaking
+  if var GREETINGS >= 15 goto Crying
+  if var GREETINGS >= 8 goto Shifted
+  text "A little tower of stones, set up long ago. Nobody knows who set it up, or why."
+  end
+label Shifted
+  text "The stones of the tower seem to have moved a little since it was last looked at."
+  end
+label Crying
+  text "Something like a faint sobbing comes from between the stones..."
+  end
+label Shaking
+  text "The tower is trembling. Or is it only the wind?"
+  end
+label Presence
+  text "Someone is there, inside the tower. It can be felt more than seen."
+  end
+label Spiritomb
+  cry "Spiritomb"
+  text "Hoo-oooh..."
+  wildbattle "Spiritomb" 25
+  setvar VAR_HALLOWED_TOWER_STATE 0
+  greetings clear
+  end
+
+
+# The fisherman by the water (the original's script 5) gives away the Good Rod once (FLAG_RECEIVED_GOOD_ROD), and after
+# that offers to tell how to fish with it.
+script Fisherman
+  if flag FLAG_RECEIVED_GOOD_ROD goto Explain
+  ask "Fishing is all very well, but a Good Rod is something else again! Would you like one?"
+  if no goto Refused
+  say "Then this is yours. Look after it!"
+  give "Good Rod"
+  setflag FLAG_RECEIVED_GOOD_ROD
+label Explain
+  ask "Shall I tell you how to fish with the Good Rod?"
+  if no goto Battle
+  say "Stand facing the water and use the rod from your bag. When something bites, press the button straight away!"
+  say "Leave it too long and the Pokémon gets away with the bait."
+  end
+label Battle
+  say "Reel one in and you'll be battling it. Fishing's a battle of nerves before it's a battle of Pokémon!"
+  end
+label Refused
+  say "You don't like fishing? Well, there's no accounting for taste."
+  end

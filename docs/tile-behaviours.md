@@ -19,7 +19,7 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0x02` | `TallGrass` | Tall grass. | Walked on; wild Pokémon from the area's land table. | yes |  | 10,141 | 0 | 41 places |
 | `0x03` | `VeryTallGrass` | Grass taller than the walker; too thick to cycle through. | **Rule.** Wild Pokémon, more often than in tall grass; no Bicycles. | yes |  | 1,066 | 0 | Route 210, Route 214, Route 229 |
 | `0x08` | `CaveFloor` | The floor of a cave. | Walked on; wild Pokémon from the area's land table. | yes |  | 16,141 | 30 | 18 places |
-| `0x0B` | `OldChateauFloor` | The floors of the Old Chateau, the only building with wild Pokémon in its rooms. | Walked on; wild Pokémon from the area's land table. | yes |  | 1,260 | 0 | Old Chateau, Route 209 |
+| `0x0B` | `OldChateauFloor` | The floors of the Old Chateau and the Lost Tower, the buildings with wild Pokémon in their rooms. | Walked on; wild Pokémon from the area's land table. | yes |  | 1,260 | 0 | Old Chateau, Route 209 |
 | `0x0C` | `MountainFloor` | A rough floor without wild Pokémon of its own: the Underground's tunnels and parts of Eterna Forest and Victory Road. | Ground like any other: only the blocked flag and the height matter. |  |  | 6,781 | 1,172 | underground, Eterna Forest, Victory Road |
 | `0x10` | `River` | Fresh water. | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon. | yes | yes | 1,583 | 8 | 18 places |
 | `0x13` | `Waterfall` | A waterfall: climbed with Waterfall; a surfer who enters from above is carried down. | **Rule.** Surfed up with Waterfall and down without; never sideways. |  | yes | 55 | 33 | Pokémon League, Mt. Coronet, Victory Road and 3 more |

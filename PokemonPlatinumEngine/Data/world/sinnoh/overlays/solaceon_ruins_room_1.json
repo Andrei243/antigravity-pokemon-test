@@ -1,4 +1,6 @@
 {
   "area": "solaceon_ruins_room_1",
-  "bgmTrack": "sinnoh/forest"
+  "bgmTrack": "sinnoh/forest",
+  // The Unown letters on the back wall (plan 02 · S7, scripts/solaceon_ruins_room_1.txt)
+  "read": { "2": "Inscription" }
 }

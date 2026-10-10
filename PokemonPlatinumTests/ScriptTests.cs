@@ -122,6 +122,7 @@ public class ScriptTests
           givemoney 100
           takemoney 50
           heal
+          greetings clear
           battle self canlose
           battle self and twin with "cheryl_eterna_forest" canlose
           battle self with helper
@@ -160,6 +161,7 @@ public class ScriptTests
           turnback
           defeat "lass_caroline"
           flowerclock
+          pressbutton blue
           partner cheryl "cheryl_eterna_forest"
           partner off
           choosepokemon
@@ -185,6 +187,10 @@ public class ScriptTests
           trophygarden
           roamer start "Mesprit"
           survivepoison VAR_A
+          lottery draw
+          lottery boxed
+          chooseitem berries
+          berry status
         script Other
           end
         """;
@@ -229,9 +235,12 @@ public class ScriptTests
               if boy end
               if girl end
               if poketch end
+              if poketchapp MemoPad end
               if pokerus end
               if safari end
               if partner end
+              if time morning end
+              if weekday friday end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();
@@ -1017,9 +1026,15 @@ public class ScriptTests
         public Inventory Bag => inner.Bag;
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
+        public int SeenInSinnoh => inner.SeenInSinnoh;
         public SpecialEncounters Encounters => inner.Encounters;
+        public BerryPatches Berries => inner.Berries;
+        public string? ChosenItem => inner.ChosenItem;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
+        public TimeOfDay TimeOfDay => inner.TimeOfDay;
+        public DayOfWeek Weekday => inner.Weekday;
+        public IEnumerable<Pokemon> Boxed => inner.Boxed;
         public Random Chance => inner.Chance;
         public int Money { get => inner.Money; set => inner.Money = value; }
         public string PlayerName => inner.PlayerName;
@@ -1053,6 +1068,7 @@ public class ScriptTests
         public void Turnback() { }
         public void Defeat(string trainerId) { }
         public void TurnClock(int from, int to) { }
+        public void PressButton(PastoriaWater.Button button) { }
         public void TravelWith(NPC? who, string? trainerId) { }
         public string? Partner => null;
         public bool Trade(string trade, int slot) => false;

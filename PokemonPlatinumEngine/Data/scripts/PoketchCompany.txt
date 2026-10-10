@@ -1,0 +1,62 @@
+# The Pokétch Company (plan 06 · R14b). docs/scripts.md describes the language; the lines are our own, on the
+# original's beats (scripts_poketch_co_1f.s): the president hands out a new app for the first Gym Badge, the third,
+# the fifth and the seventh, one at a time and in that order, and after the last talks of the Poké Radar's ideas.
+
+
+script President
+  speaker "President"
+  say "Ah, the young Trainer from the campaign! I am the president of the Pokétch Company. How is that Pokétch treating you?"
+  if badges < 1 goto OneBadge
+  if not poketchapp MemoPad goto MemoPad
+  if badges < 3 goto ThreeBadges
+  if not poketchapp MarkingMap goto MarkingMap
+  if badges < 5 goto FiveBadges
+  if not poketchapp LinkSearcher goto LinkSearcher
+  if badges < 7 goto SevenBadges
+  if not poketchapp MoveTester goto MoveTester
+  if item "Poké Radar" goto Radar
+  say "People all over Sinnoh dream up apps of their own. Keep your eyes open, and your Pokétch will keep growing!"
+  end
+label MemoPad
+  say "And you've a Gym Badge! I've just finished a new app. Here, let me put it on for you."
+  poketchapp MemoPad
+  fanfare keyitem
+  text "The Memo Pad was added to the Pokétch!"
+  say "That's the Memo Pad. Jot down anything you like, and rub it out when you're done!"
+  end
+label MarkingMap
+  say "Three Gym Badges! Then you'll want this one. I've only just finished it."
+  poketchapp MarkingMap
+  fanfare keyitem
+  text "The Marking Map was added to the Pokétch!"
+  say "The Marking Map shows Sinnoh with marks you can put wherever you like. Some Pokémon that roam about show up on it too!"
+  end
+label LinkSearcher
+  say "Five Gym Badges! You've earned another of my apps."
+  poketchapp LinkSearcher
+  fanfare keyitem
+  text "The Link Searcher was added to the Pokétch!"
+  say "The Link Searcher tells you how many people near you are playing over a link. Handy for finding friends!"
+  end
+label MoveTester
+  say "Seven Gym Badges! Splendid! Here is my newest app."
+  poketchapp MoveTester
+  fanfare keyitem
+  text "The Move Tester was added to the Pokétch!"
+  say "With the Move Tester you can check how well a move of one type does against Pokémon of others."
+  end
+label OneBadge
+  say "Our engineers are always dreaming up new apps. Win a Gym Badge, and I'll have one ready for you!"
+  end
+label ThreeBadges
+  say "I'm hard at work on another app. Come back when you have three Gym Badges!"
+  end
+label FiveBadges
+  say "My next app is nearly done. Come back with five Gym Badges and it's yours!"
+  end
+label SevenBadges
+  say "I've one more app in the works. Win seven Gym Badges, and I'll give it to you!"
+  end
+label Radar
+  say "A Poké Radar! Hmm... perhaps I should ask people what apps they'd like next. What a thought!"
+  end

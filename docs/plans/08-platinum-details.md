@@ -277,7 +277,7 @@ Done by plan 06 · R9 on 2026-10-06, as this plan was written: `tools/DataImport
 - [ ] P9 Phrases, interviews and reporters
 - [ ] P10 The Vs. Recorder's file
 - [ ] P11 The replay viewer
-- [ ] P12 Spiritomb's tower
+- [x] P12 Spiritomb's tower (2026-10-10, with plan 02 · S7: the overlay's `read` puts the tower's four tiles in `Map.TileScripts`; `route_209.txt`, `StoryState.Greeted` and `GREETINGS`, `greetings clear`, `special.json` read by `Habitats` as `HabitatWays.Special` with its `How`; `HearthomeTests` holds every way through and the count; the stand-in is in `docs/mechanics/rulings.md`, "The fourth chapter, second part")
 - [ ] P13 The entries file and the Sinnoh Pokédex
 - [ ] P14 Entries: the rest of Kanto and Johto
 - [ ] P15 Entries: the rest of Hoenn, Sinnoh and Unova

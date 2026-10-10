@@ -1,0 +1,39 @@
+# Route 207 (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_207.s).
+#
+# At the foot of Mt. Coronet (the original's trigger 0, a column three tiles deep at x 340), the assistant comes running
+# up the route with a present from the professor: a guessing game of which hand, then the Vs. Seeker either way, and
+# the Dowsing Machine for the Pokétch. VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE: 0 not met, 1 met.
+
+
+script Assistant
+  # She comes up the route from the west, level with the player (the original's SetObjectEventPos 331, z)
+  if var PLAYER_Y == 712 place counterpart 331 712 right
+  if var PLAYER_Y == 713 place counterpart 331 713 right
+  if var PLAYER_Y == 714 place counterpart 331 714 right
+  clearflag FLAG_HIDE_ROUTE_207_COUNTERPART
+  show counterpart
+  emote counterpart exclaim
+  music "common/assistant"
+  walk counterpart right 8
+  face player left
+  speaker "{assistant}"
+  say "{player}! Phew, I caught you before the mountain. The professor asked me to bring you something."
+  choose "Here's a game first. Which hand do you think it's in?" "Right" "Left"
+  say "...Ha ha! It doesn't matter which, actually. You win either way!"
+  give "Vs. Seeker"
+  speaker "{assistant}"
+  say "It's a Vs. Seeker. Use it, and any trainer you've beaten who wants a rematch will let you know."
+  say "Oh, and one more thing, since you've got a Pokétch. Have this too!"
+  fanfare keyitem
+  poketchapp DowsingMachine
+  text "{player} added the Dowsing Machine app to the Pokétch!"
+  speaker "{assistant}"
+  say "It finds items hidden in the ground nearby. Tap it now and then on your way, and you'll be surprised what turns up!"
+  say "Right, I'm off back to the lab. Good luck on Mt. Coronet, {player}!"
+  walk counterpart left 8
+  hide counterpart
+  setflag FLAG_HIDE_ROUTE_207_COUNTERPART
+  music area
+  setvar VAR_ROUTE_207_COUNTERPART_TRIGGER_STATE 1
+  end
