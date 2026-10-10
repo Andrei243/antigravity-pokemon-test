@@ -12,7 +12,11 @@
     { "warp": 2, "map": "ContestHallLobby", "x": 16, "y": 13, "facing": "Up" },
     // The gate to Route 209, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan
     { "warp": 19, "map": "Route209GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" },
-    { "warp": 17, "map": "Route209GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" }
+    { "warp": 17, "map": "Route209GateToHearthomeCity", "x": 1, "y": 7, "facing": "Right" },
+    // The Poffin House and the Pokémon Fan Club, whose chairman gives the Poffin Case, built to the original's plans
+    // (plan 06 · R14c)
+    { "warp": 10, "map": "PoffinHouse", "x": 8, "y": 13, "facing": "Up" },
+    { "warp": 12, "map": "HearthomeFanClub", "x": 6, "y": 17, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -25,8 +29,8 @@
     { "warp": 15, "to": "route_212_north", "toWarp": 0 },
     { "warp": 16, "to": "route_212_north", "toWarp": 1 }
   ],
-  // The houses, the Foreign Building, the Poffin House and the fan club have no rooms yet (plan 01 · M11)
-  "locked": [ 6, 7, 9, 10, 12, 13 ],
+  // The houses and the Foreign Building have no rooms yet (plan 01 · M11)
+  "locked": [ 6, 7, 9, 13 ],
   // Plan 02 · S7 (scripts/hearthome_city.txt): Keira's Buneary running into the player as they come from Route 208
   // (trigger 0)
   "triggers": [ { "trigger": 0, "script": "Buneary" } ],

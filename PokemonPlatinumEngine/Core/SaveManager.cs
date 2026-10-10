@@ -107,6 +107,9 @@ public class SaveData
     /// <summary>The berry patches (plan 06 · R14a). Null in older saves, which are given the new game's.</summary>
     public BerryPatches? Berries { get; set; }
 
+    /// <summary>The Poffin Case's Poffins in their places (plan 06 · R14c). Null when it is empty, and in older saves.</summary>
+    public List<Poffin>? Poffins { get; set; }
+
     /// <summary>
     /// Which layout of the world the position refers to. Saves from before the import (0, also what a file
     /// without the field reads as) stood on hand-made maps that no longer exist; <see cref="Place"/> moves them.
@@ -224,7 +227,14 @@ public class SavedPokemonData
 
     /// <summary>Null in saves from before friendship: the species' base friendship is used.</summary>
     public int? Friendship { get; set; }
+
+    /// <summary>Its contest condition (plan 06 · R14c; Beauty was kept before it): 0 in saves from before Poffins.</summary>
+    public int Cool { get; set; }
     public int Beauty { get; set; }
+    public int Cute { get; set; }
+    public int Smart { get; set; }
+    public int Tough { get; set; }
+    public int Sheen { get; set; }
 
     /// <summary>Null in saves from before personality values: a new one is rolled.</summary>
     public uint? Personality { get; set; }
@@ -276,7 +286,12 @@ public class SavedPokemonData
             Ability = p.AbilityName,
             HeldItem = p.HeldItem?.Name,
             Friendship = p.Friendship,
+            Cool = p.Cool,
             Beauty = p.Beauty,
+            Cute = p.Cute,
+            Smart = p.Smart,
+            Tough = p.Tough,
+            Sheen = p.Sheen,
             Personality = p.Personality,
             Ball = p.Ball,
             OriginalTrainer = p.OriginalTrainer,
@@ -318,7 +333,12 @@ public class SavedPokemonData
             EvSpeed = EvSpeed,
             CurrentExp = CurrentExp,
             HeldItem = HeldItem != null ? ItemDatabase.Get(HeldItem) : null,
+            Cool = Cool,
             Beauty = Beauty,
+            Cute = Cute,
+            Smart = Smart,
+            Tough = Tough,
+            Sheen = Sheen,
             Ball = Ball,
             OriginalTrainer = OriginalTrainer,
             Pokerus = Pokerus,

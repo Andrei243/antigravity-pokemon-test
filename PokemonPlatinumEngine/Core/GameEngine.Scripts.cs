@@ -336,6 +336,12 @@ public partial class GameEngine
             journalScreen.Open();
             return;
         }
+        // The Poffin Case opened from the item button goes back to the field when it closes (UsePoffinCaseInField)
+        if (item.FieldUse == "PoffinCase")
+        {
+            OpenPoffinCase(fromBag: false);
+            return;
+        }
         if (item.FieldUse == "VsSeeker")
         {
             UseVsSeeker();
@@ -855,6 +861,10 @@ public partial class GameEngine
                     game.bagScreen.Registered = game.registeredItem;
                     game.bagScreen.OpenToPick(counter ?? "berries");
                     break;
+                case ScriptScreen.PoffinCooking:
+                    // The Poffin House's pot (plan 06 · R14c): the bag, to choose the first berry
+                    game.StartCooking();
+                    break;
                 case ScriptScreen.Pc:
                     game.currentState = GameState.PCStorage;
                     game.pcScreen.Open(game.pcBoxStorage);
@@ -1008,6 +1018,10 @@ public partial class GameEngine
         public IEnumerable<Pokemon> Boxed => game.pcBoxStorage.All;
         public BerryPatches Berries => game.berries;
         public string? ChosenItem => game.scriptItem;
+
+        // ---- Poffins (plan 06 · R14c)
+
+        public PoffinCase Poffins => game.poffinCase;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them
         public void Cry(string species)

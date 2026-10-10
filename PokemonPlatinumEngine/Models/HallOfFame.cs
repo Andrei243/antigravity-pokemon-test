@@ -109,5 +109,8 @@ public static class TrainerScore
     public const int WonWildBattle = 2, CaughtRegional = 2, CaughtNational = 3, WonTrainerBattle = 3,
         CaughtNewSpecies = 20, Badge = 30, HallOfFame = 35;
 
+    /// <summary>A Poffin cooked alone (plan 06 · R14c; <c>TRAINER_SCORE_EVENT_UNK_12</c>).</summary>
+    public const int CookedPoffin = 3;
+
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }

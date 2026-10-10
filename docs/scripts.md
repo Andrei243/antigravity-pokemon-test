@@ -136,7 +136,7 @@ What an `if` can ask:
 | Question | |
 |---|---|
 | `flag FLAG_X` | The flag is set. |
-| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen). |
+| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen), `LEAD_FRIENDSHIP` (the friendship of the first Pokémon of the team, 0 with none: the fan club's woman, plan 06 · R14c). |
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
@@ -228,7 +228,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 ### The screens that exist
 
 `starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `chooseitem berries` and `chooseitem mulch` (the bag, at the pocket of berries or of items, to choose a berry that grows or a mulch: `RESULT` 1 and the item is the script's last, or 0 when none was chosen; plan 06 · R14a), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `wardrobe` (the player's clothes, slot by slot, changed for nothing: the bedroom's wardrobe; plan 11 · C10; `wardrobe "jubilife"` is a boutique of `clothes.json`, whose stock is tried on and bought with a yes), `travel` (the way to the
-next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here).
+next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here), and the Poffin House's pot (`poffin cook`, below).
 
 ### The trainer tools
 
@@ -238,6 +238,20 @@ Plan 06 · R12.
 |---|---|
 | `trade kazza` | One of the original's trades with people of the game (`Models/NpcTrades.cs`): the Pokémon last chosen with `choosepokemon` goes, the trade's own comes, with its nickname, its trainer and its held item, and is met in a trade. `RESULT` is 1 when the one chosen was the species the trade asks for, and nothing changes hands otherwise. A traded Pokémon from a person never evolves by the trade (the original's `ScrCmd_TradeWithNpc` asks no evolution). |
 | `halloffame` | The team enters the Hall of Fame (`Models/HallOfFame.cs`): the entry is written and its screen shows. |
+
+### Poffins
+
+Plan 06 · R14c. Poffins are kept in the Poffin Case (`Models/PoffinCase.cs`, a hundred of them, saved), cooked at the
+Poffin House's pot (`UI/PoffinCookingScreen.cs`) and given to Pokémon from the case (the bag's OPEN), all by the
+original's rules (`Models/Poffins.cs`, `Models/PoffinPot.cs`). One command, as the original's `CheckCanCookPoffin`,
+`OpenPoffinCooking`, `CheckHasEmptyPoffinCaseSlot` and `GivePoffin` are four.
+
+| Command | What it does |
+|---|---|
+| `poffin check` | `RESULT` is 0 when the player can cook: 1 when the bag holds no berry, 2 when the case is full (the original's `CheckCanCookPoffin`). Whether the player has the case at all is the script's to ask (`if item "Poffin Case"`). |
+| `poffin cook` | The cooking: the bag opens on its berries, the berry chosen goes into the pot, the three stages are stirred, the Poffin goes into the case, and "Cook another?" opens the bag again, until the player stops (backing out of the bag, or NO). The script waits for all of it. |
+| `poffin room` | `RESULT` is 1 while the case has room for another Poffin, 0 when it is full. |
+| `poffin give 60 30 30 30 30 40` | A Poffin of these five flavours (spicy, dry, sweet, bitter, sour) and this smoothness goes into the case without a word, made as the pot makes one (`Poffins.Make`: its kind, Mild from 50). `RESULT` is its kind's number in the original's list (`PoffinType`), or 65535 when the case was full. The words and the fanfare are the script's. |
 
 ### Gyms
 

@@ -351,8 +351,27 @@ public class Pokemon
     /// <summary>How much it likes its trainer, 0 to 255 (see <see cref="FriendshipRules"/>); starts at the species' base value.</summary>
     public int Friendship { get; set; }
 
-    /// <summary>Contest condition, 0 to 255, raised by Poffins; Feebas evolves on it.</summary>
+    /// <summary>
+    /// The contest condition (plan 06 · R14c; the original's <c>MON_DATA_COOL</c> to <c>MON_DATA_SHEEN</c>): five
+    /// qualities and the sheen, each 0 to 255, raised by Poffins (<see cref="Poffins.Feed"/>). Feebas evolves on its
+    /// beauty; a Pokémon whose sheen is full eats no more.
+    /// </summary>
+    public int Cool { get; set; }
     public int Beauty { get; set; }
+    public int Cute { get; set; }
+    public int Smart { get; set; }
+    public int Tough { get; set; }
+    public int Sheen { get; set; }
+
+    /// <summary>One of the five qualities of its condition, by the original's order.</summary>
+    public int ConditionOf(ContestStat stat) => stat switch
+    {
+        ContestStat.Cool => Cool,
+        ContestStat.Beauty => Beauty,
+        ContestStat.Cute => Cute,
+        ContestStat.Smart => Smart,
+        _ => Tough
+    };
 
     /// <summary>A random number fixed for life, as in the games; Wurmple's evolution is read from it.</summary>
     public uint Personality { get; set; }
@@ -925,7 +944,12 @@ public class Pokemon
         AbilityName = other.AbilityName;
         HeldItem = other.HeldItem;
         Friendship = other.Friendship;
+        Cool = other.Cool;
         Beauty = other.Beauty;
+        Cute = other.Cute;
+        Smart = other.Smart;
+        Tough = other.Tough;
+        Sheen = other.Sheen;
         Personality = other.Personality;
         Ball = other.Ball;
         OriginalTrainer = other.OriginalTrainer;

@@ -193,7 +193,7 @@ public static class HeldItemEffects
     public static int PinchParam(Battler holder, int param) => holder.Ability?.Effect is { EatsBerriesEarly: true } ? Math.Max(1, param / 2) : Math.Max(1, param);
 }
 
-/// <summary>The five flavours of a berry, as a nature likes or dislikes them.</summary>
+/// <summary>The five flavours of a berry, as a nature likes or dislikes them, in the original's order (<c>constants/flavor.h</c>): a Poffin's flavour raises the quality of the contest condition in its own place (plan 06 · R14c).</summary>
 public enum Flavor { Spicy, Dry, Sweet, Bitter, Sour }
 
 /// <summary>An item with no hook of its own: its rule is a line of the formula or the core, or outside the battle (see <see cref="HeldItemEffects"/>).</summary>

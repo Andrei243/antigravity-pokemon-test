@@ -45,7 +45,9 @@ public enum Op
     // Wild Pokémon (plan 06 · R13)
     HoneyTree, Swarms, TrophyGarden, Roamer, SurvivePoison,
     // The day's events and the berry patches (plan 06 · R14a)
-    Lottery, Berry, ChooseItem
+    Lottery, Berry, ChooseItem,
+    // Poffins (plan 06 · R14c)
+    Poffin
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -124,6 +126,9 @@ public sealed class Instruction
     public int Y { get; init; }
     public float Seconds { get; init; }
     public Direction? Direction { get; init; }
+
+    /// <summary>Several numbers a line gives at once: a Poffin's five flavours and its smoothness (<c>poffin give</c>).</summary>
+    public IReadOnlyList<int> Numbers { get; init; } = Array.Empty<int>();
 
     /// <summary>The lines said, or a question followed by its answers.</summary>
     public IReadOnlyList<string> Lines { get; init; } = Array.Empty<string>();

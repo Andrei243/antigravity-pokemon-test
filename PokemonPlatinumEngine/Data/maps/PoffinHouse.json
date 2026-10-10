@@ -1,0 +1,240 @@
+{
+  "name": "PoffinHouse",
+  "displayName": "Poffin House",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "House",
+  "trees": "Round",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#####.......#####",
+    "#...............#",
+    "#...........##..#",
+    "#...........##..#",
+    "#...........##..#",
+    "#...##......##..#",
+    "#...##......##..#",
+    "#...........##..#",
+    "#...........##..#",
+    "##..........##..#",
+    "##..............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Fridge",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "TrashCan",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "CookingTable",
+      "x": 4,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "CookingTable",
+      "x": 12,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 7,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "CookingTable",
+      "x": 12,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Table",
+      "x": 12,
+      "y": 10,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "CookingTable",
+      "x": 12,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "Sinnoh",
+      "targetX": 472,
+      "targetY": 711,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "idol",
+      "name": "Idol",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "Idol",
+      "movement": "wander_around",
+      "rangeX": 2,
+      "rangeZ": 1
+    },
+    {
+      "id": "old_woman",
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "x": 11,
+      "y": 8,
+      "facing": "Down",
+      "script": "OldWoman"
+    },
+    {
+      "id": "old_man",
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 9,
+      "facing": "Up",
+      "script": "OldMan"
+    },
+    {
+      "id": "pokefan_f",
+      "name": "Cook",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 10,
+      "facing": "Down",
+      "script": "Cook"
+    },
+    {
+      "id": "school_kid_f",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 3,
+      "y": 8,
+      "facing": "Right",
+      "script": "SchoolKid"
+    }
+  ],
+  "wildEncounters": []
+}
