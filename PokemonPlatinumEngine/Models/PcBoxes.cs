@@ -172,6 +172,8 @@ public sealed class PcBoxes
         var pokemon = party.Members[index];
         if (CanBattle(pokemon) && party.Members.Count(CanBattle) < 2) return "That's your last Pokémon able to battle!";
         if (HoldsMail(pokemon)) return "Please remove the Mail first.";
+        // BoxText_DetachBallCapsule: a Pokémon goes into a box with a plain ball (plan 06 · R17b)
+        if (pokemon.CapsuleId != 0) return "Please take the Ball Capsule off first.";
         if (IsFull) return "The boxes are full.";
         return null;
     }

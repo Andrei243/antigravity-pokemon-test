@@ -62,6 +62,12 @@ public static class FieldScripts
     public const string UseHoney = "common.UseHoney";
     public const string PoisonSurvived = "common.PoisonSurvived";
     public const string SwarmNews = "common.SwarmNews";
+
+    /// <summary>
+    /// The Ribbon Syndicate's doorkeeper and cashier (plan 06 · R17b): their room stands in the Resort Area, which
+    /// plan 01 · M10 opens; its people run these two.
+    /// </summary>
+    public const string RibbonSyndicateEntry = "common.RibbonSyndicateEntry", RibbonSyndicateCashier = "common.RibbonSyndicateCashier";
     public const string SafariOutOfBalls = "common.SafariOutOfBalls";
 
     /// <summary>

@@ -1,0 +1,188 @@
+{
+  "name": "SunyshoreMarket",
+  "displayName": "Sunyshore Market",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "PokeMart",
+  "trees": "Round",
+  "width": 11,
+  "height": 14,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "###....####",
+    "#.##...#.##",
+    "#.#....#.##",
+    "#.#....#.##",
+    "#.#.......#",
+    "#......#..#",
+    "#..#...#..#",
+    "#..#...#..#",
+    "##.#....###",
+    "####......#",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "StoreShelf",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 4,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 4
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 9,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 8,
+      "y": 11,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 12,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 13,
+      "targetMap": "Sinnoh",
+      "targetX": 849,
+      "targetY": 763,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "pokemon_breeder_f",
+      "name": "Breeder",
+      "npcType": "Lady",
+      "x": 2,
+      "y": 9,
+      "facing": "Right",
+      "script": "EffortRibbonWoman"
+    },
+    {
+      "id": "pokefan_m",
+      "name": "Pokéfan",
+      "npcType": "Gentleman",
+      "x": 5,
+      "y": 8,
+      "facing": "Right",
+      "script": "PokefanM",
+      "movement": "look_around"
+    },
+    {
+      "id": "sailor",
+      "name": "Sailor",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 9,
+      "facing": "Down",
+      "script": "Sailor"
+    },
+    {
+      "id": "gym_guide",
+      "name": "Seal Merchant",
+      "npcType": "Gentleman",
+      "x": 1,
+      "y": 5,
+      "facing": "Right",
+      "script": "SealShop"
+    },
+    {
+      "id": "battle_girl",
+      "name": "Battle Girl",
+      "npcType": "Lass",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "BattleGirl",
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

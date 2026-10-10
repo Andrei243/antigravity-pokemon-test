@@ -335,12 +335,13 @@ internal static partial class ModernUi
     private static void CardBack(Rectangle card, TrainerCardInfo info, Color colour)
     {
         float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 166;
-        const float rowH = 108;
+        const float rowH = 88;
         var rows = new (string Caption, string Value)[]
         {
             ("HALL OF FAME DEBUT", info.HallOfFameDebut is { } debut ? debut.ToString("d MMMM yyyy   HH:mm", CultureInfo.InvariantCulture) : "—"),
             ("LINK BATTLES", $"{info.LinkWins} won,  {info.LinkLosses} lost"),
             ("LINK TRADES", info.LinkTrades.ToString()),
+            ("SUPER CONTESTS", $"{info.ContestsWon} won of {info.ContestsEntered}"),
             ("ADVENTURE STARTED", info.Started is { } day ? day.ToString("d MMMM yyyy", CultureInfo.InvariantCulture) : "—")
         };
         for (int i = 0; i < rows.Length; i++)

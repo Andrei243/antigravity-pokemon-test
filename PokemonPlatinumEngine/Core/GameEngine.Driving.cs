@@ -58,6 +58,15 @@ public partial class GameEngine
         public Models.SuperContests.FashionCase FashionCase => game.fashionCase;
         public SuperContestScreen SuperContest => game.contestScreen;
         public Models.SuperContests.ContestOutcome? ContestOutcome => game.contestOutcome;
+
+        /// <summary>The Seal Case, its screens, the Fashion Case's viewer and the contests' records (plan 06 · R17b).</summary>
+        public SealCase SealCase => game.sealCase;
+        public SealCaseScreen BallCapsules => game.sealCaseScreen;
+        public SealShopScreen SealShop => game.sealShopScreen;
+        public FashionCaseScreen FashionCaseScreen => game.fashionScreen;
+        public Models.SuperContests.ContestRecords ContestRecords => game.contestRecords;
+        public void OpenBallCapsules() => game.OpenBallCapsules(fromBag: false);
+        public void OpenFashionCase() => game.OpenFashionCase(fromBag: false);
         public DayCare DayCare => game.dayCare;
         public RadarChain Radar => game.radar;
         public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }

@@ -103,6 +103,9 @@ public sealed class ContestTheme
 public sealed class SuperContestData
 {
     public List<string> Accessories { get; set; } = new();
+
+    /// <summary>The eighteen backdrops' names, in the original's order (<c>contest_backdrop_names.json</c>; plan 06 · R17b).</summary>
+    public List<string> Backdrops { get; set; } = new();
     public List<ContestTheme> Themes { get; set; } = new();
     public List<ContestJudge> Judges { get; set; } = new();
     public List<ContestDressing> Dressings { get; set; } = new();
@@ -135,4 +138,11 @@ public static class SuperContestDatabase
     public static int Accessory(string name) => AccessoryIds.GetValueOrDefault(name, -1);
 
     public static string AccessoryName(int id) => id >= 0 && id < Data.Accessories.Count ? Data.Accessories[id] : "";
+
+    public static IReadOnlyList<string> Backdrops => Data.Backdrops;
+
+    /// <summary>A backdrop's number by its name, or -1.</summary>
+    public static int Backdrop(string name) => Data.Backdrops.FindIndex(b => string.Equals(b, name, StringComparison.OrdinalIgnoreCase));
+
+    public static string BackdropName(int id) => id >= 0 && id < Data.Backdrops.Count ? Data.Backdrops[id] : "";
 }

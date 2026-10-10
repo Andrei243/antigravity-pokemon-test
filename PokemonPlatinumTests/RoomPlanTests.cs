@@ -45,7 +45,12 @@ public class RoomPlanTests
         // The League's Pokémon Center, with the door to the Elite Four, plan 01 · M9, part 2d: its nurse and clerks stand in row 1
         new object[] { "PokemonLeagueNorthPokemonCenter", 1, 1, 11, 11 },
         // The Canalave Library's first floor, plan 02 · S10
-        new object[] { "CanalaveLibrary1F", 1, 4, 11, 11 }
+        new object[] { "CanalaveLibrary1F", 1, 4, 11, 11 },
+        // The Seal Case's house, the Sunyshore Market, Julia's house and Dr. Footstep's, plan 06 · R17b
+        new object[] { "SolaceonTownEastHouse", 1, 3, 4, 8 },
+        new object[] { "SunyshoreMarket", 1, 3, 5, 12 },
+        new object[] { "SunyshoreCityNortheastHouse", 1, 3, 4, 8 },
+        new object[] { "FootstepHouse", 1, 3, 4, 8 }
     };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
@@ -137,7 +142,14 @@ public class RoomPlanTests
         new object[] { "CanalaveLibrary3F", "youngster", 3, 7, Direction.Down },
         new object[] { "CanalaveLibrary3F", "prof_rowan", 8, 10, Direction.Up },
         new object[] { "CanalaveLibrary3F", "counterpart", 7, 10, Direction.Up },
-        new object[] { "CanalaveLibrary3F", "rival", 2, 3, Direction.Right }
+        new object[] { "CanalaveLibrary3F", "rival", 2, 3, Direction.Right },
+        new object[] { "SolaceonTownEastHouse", "ninja_boy", 5, 5, Direction.Left },
+        new object[] { "SolaceonTownEastHouse", "pokefan_f", 2, 5, Direction.Right },
+        new object[] { "SunyshoreMarket", "pokemon_breeder_f", 2, 9, Direction.Right },
+        new object[] { "SunyshoreMarket", "gym_guide", 1, 5, Direction.Right },
+        new object[] { "SunyshoreMarket", "sailor", 8, 9, Direction.Down },
+        new object[] { "SunyshoreCityNortheastHouse", "julia", 3, 5, Direction.Down },
+        new object[] { "FootstepHouse", "dr_footstep", 5, 6, Direction.Down }
     };
 
     [Theory]

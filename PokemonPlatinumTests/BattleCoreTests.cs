@@ -476,6 +476,8 @@ public class BattleCoreTests
         p.IsEgg = true;
         p.EvolutionProgress["uses:Rage Fist"] = 4;
         p.Ribbons.Add("RIBBON_COOL");
+        p.CapsuleId = 3;
+        p.Capsule = new BallCapsule(new[] { new BallSeal(SealDatabase.Seal("HEART_SEAL_A"), 180, 60) });
         p.ReplaceMove(0, "Razor Leaf");
         p.Moves[1].CurrentPP = 2;
         var keptMove = copy.Moves[1];

@@ -1,0 +1,135 @@
+{
+  "name": "SunyshoreCityNortheastHouse",
+  "displayName": "Sunyshore City",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "####...####",
+    "#.........#",
+    "#.#.....#.#",
+    "#.........#",
+    "##......#.#",
+    "##........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Television",
+      "x": 1,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 8,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 8,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Sinnoh",
+      "targetX": 883,
+      "targetY": 744,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "julia",
+      "name": "Julia",
+      "npcType": "Lady",
+      "x": 3,
+      "y": 5,
+      "facing": "Down",
+      "script": "Julia"
+    }
+  ],
+  "wildEncounters": []
+}

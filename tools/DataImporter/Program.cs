@@ -53,6 +53,9 @@ var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")
 importer.AddLaterMachines(species, items);
 var marts = importer.Marts();
 var contests = importer.Contests();
+contests.Backdrops = importer.Backdrops();
+var seals = importer.Seals();
+var ribbons = importer.Ribbons();
 
 Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
@@ -66,6 +69,8 @@ Write(Path.Combine(outDir, ItemDatabase.FileName), GameDataFiles.Serialize(items
 Write(Path.Combine(outDir, TrainerDatabase.FileName), GameDataFiles.Serialize(trainers));
 Write(Path.Combine(outDir, MartDatabase.FileName), GameDataFiles.Serialize(marts));
 Write(Path.Combine(outDir, SuperContestDatabase.FileName), GameDataFiles.Serialize(contests));
+Write(Path.Combine(outDir, SealDatabase.FileName), GameDataFiles.Serialize(seals));
+Write(Path.Combine(outDir, RibbonDatabase.FileName), GameDataFiles.Serialize(ribbons));
 Write(Coverage.ReportPath(repo), Coverage.Report(species, moves, abilities, items));
 Console.WriteLine($"{species.Count} species, {moves.Count} moves, {abilities.Count} abilities, {items.Count} items and {trainers.Count} trainers in {outDir}");
 return 0;

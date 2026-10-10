@@ -65,6 +65,8 @@
     "clown_1": { "name": "Clown", "script": "Clown1" },
     "clown_2": { "name": "Clown", "script": "Clown2" },
     "clown_3": { "name": "Clown", "script": "Clown3" },
+    // Jubilife TV's man, who comes up with the Fashion Case once Team Galactic has gone (plan 06 · R17b)
+    "collector": { "name": "TV Producer", "dialog": [ "The camera loves a Pokémon that is dressed for it. Remember that!" ] },
 
     "ace_trainer_f": {
       "name": "Trainer",

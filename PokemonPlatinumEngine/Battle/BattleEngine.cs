@@ -411,6 +411,9 @@ public partial class BattleEngine
                 if (entered.FromBall)
                 {
                     Anim.SendOut(entered.Place.Side, pokemon, entered.Place.Slot);
+                    // The Seals of its Ball Capsule burst as the ball opens (plan 06 · R17b): the screen's alone, the rules know nothing of it
+                    if (CapsuleRules.HasCapsule(pokemon) && pokemon.Capsule is { IsEmpty: false } capsule)
+                        Anim.SealBurst(entered.Place.Side, entered.Place.Slot, capsule);
                     After(BattleAnimator.SendOutBallTime, () => Sound("send_out", entered.Place.Side));
                     // It cries as it comes out of the ball: lower if it comes out hurt or ailing, as in the original
                     var mode = Cries.SendOutMode(pokemon);

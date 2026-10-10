@@ -1,0 +1,562 @@
+[
+  {
+    "id": "RIBBON_HOENN_CHAMPION",
+    "name": "Champion Ribbon",
+    "art": "hoenn_champion",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_COOL",
+    "name": "Cool Ribbon",
+    "art": "hoenn_contest",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_COOL_SUPER",
+    "name": "Cool Ribbon Super",
+    "art": "hoenn_contest_super",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_COOL_HYPER",
+    "name": "Cool Ribbon Hyper",
+    "art": "hoenn_contest_hyper",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_COOL_MASTER",
+    "name": "Cool Ribbon Master",
+    "art": "hoenn_contest_master",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_BEAUTY",
+    "name": "Beauty Ribbon",
+    "art": "hoenn_contest",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_BEAUTY_SUPER",
+    "name": "Beauty Ribbon Super",
+    "art": "hoenn_contest_super",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_BEAUTY_HYPER",
+    "name": "Beauty Ribbon Hyper",
+    "art": "hoenn_contest_hyper",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_BEAUTY_MASTER",
+    "name": "Beauty Ribbon Master",
+    "art": "hoenn_contest_master",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_CUTE",
+    "name": "Cute Ribbon",
+    "art": "hoenn_contest",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_CUTE_SUPER",
+    "name": "Cute Ribbon Super",
+    "art": "hoenn_contest_super",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_CUTE_HYPER",
+    "name": "Cute Ribbon Hyper",
+    "art": "hoenn_contest_hyper",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_CUTE_MASTER",
+    "name": "Cute Ribbon Master",
+    "art": "hoenn_contest_master",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_SMART",
+    "name": "Smart Ribbon",
+    "art": "hoenn_contest",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_SMART_SUPER",
+    "name": "Smart Ribbon Super",
+    "art": "hoenn_contest_super",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_SMART_HYPER",
+    "name": "Smart Ribbon Hyper",
+    "art": "hoenn_contest_hyper",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_SMART_MASTER",
+    "name": "Smart Ribbon Master",
+    "art": "hoenn_contest_master",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_TOUGH",
+    "name": "Tough Ribbon",
+    "art": "hoenn_contest",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_TOUGH_SUPER",
+    "name": "Tough Ribbon Super",
+    "art": "hoenn_contest_super",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_TOUGH_HYPER",
+    "name": "Tough Ribbon Hyper",
+    "art": "hoenn_contest_hyper",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_TOUGH_MASTER",
+    "name": "Tough Ribbon Master",
+    "art": "hoenn_contest_master",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_WINNING",
+    "name": "Winning Ribbon",
+    "art": "hoenn_winning",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_VICTORY",
+    "name": "Victory Ribbon",
+    "art": "hoenn_victory",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_ARTIST",
+    "name": "Artist Ribbon",
+    "art": "hoenn_artist",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_EFFORT",
+    "name": "Effort Ribbon",
+    "art": "hoenn_effort",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_MARINE",
+    "name": "Marine Ribbon",
+    "art": "hoenn_marine_land_sky",
+    "palette": 1,
+    "event": true
+  },
+  {
+    "id": "RIBBON_HOENN_LAND",
+    "name": "Land Ribbon",
+    "art": "hoenn_marine_land_sky",
+    "palette": 3,
+    "event": true
+  },
+  {
+    "id": "RIBBON_HOENN_SKY",
+    "name": "Sky Ribbon",
+    "art": "hoenn_marine_land_sky",
+    "palette": 4,
+    "event": true
+  },
+  {
+    "id": "RIBBON_HOENN_COUNTRY",
+    "name": "Country Ribbon",
+    "art": "hoenn_country_national",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_NATIONAL",
+    "name": "National Ribbon",
+    "art": "hoenn_country_national",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_EARTH",
+    "name": "Earth Ribbon",
+    "art": "hoenn_earth_world",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HOENN_WORLD",
+    "name": "World Ribbon",
+    "art": "hoenn_earth_world",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SINNOH_CHAMP",
+    "name": "Sinnoh Champ Ribbon",
+    "art": "sinnoh_champion",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_COOL",
+    "name": "Cool Ribbon",
+    "art": "sinnoh_contest",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_COOL_GREAT",
+    "name": "Cool Ribbon Great",
+    "art": "sinnoh_contest_great",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_COOL_ULTRA",
+    "name": "Cool Ribbon Ultra",
+    "art": "sinnoh_contest_ultra",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_COOL_MASTER",
+    "name": "Cool Ribbon Master",
+    "art": "sinnoh_contest_master",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_BEAUTY",
+    "name": "Beauty Ribbon",
+    "art": "sinnoh_contest",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_BEAUTY_GREAT",
+    "name": "Beauty Ribbon Great",
+    "art": "sinnoh_contest_great",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_BEAUTY_ULTRA",
+    "name": "Beauty Ribbon Ultra",
+    "art": "sinnoh_contest_ultra",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_BEAUTY_MASTER",
+    "name": "Beauty Ribbon Master",
+    "art": "sinnoh_contest_master",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_CUTE",
+    "name": "Cute Ribbon",
+    "art": "sinnoh_contest",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_CUTE_GREAT",
+    "name": "Cute Ribbon Great",
+    "art": "sinnoh_contest_great",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_CUTE_ULTRA",
+    "name": "Cute Ribbon Ultra",
+    "art": "sinnoh_contest_ultra",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_CUTE_MASTER",
+    "name": "Cute Ribbon Master",
+    "art": "sinnoh_contest_master",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SMART",
+    "name": "Smart Ribbon",
+    "art": "sinnoh_contest",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SMART_GREAT",
+    "name": "Smart Ribbon Great",
+    "art": "sinnoh_contest_great",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SMART_ULTRA",
+    "name": "Smart Ribbon Ultra",
+    "art": "sinnoh_contest_ultra",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SMART_MASTER",
+    "name": "Smart Ribbon Master",
+    "art": "sinnoh_contest_master",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_TOUGH",
+    "name": "Tough Ribbon",
+    "art": "sinnoh_contest",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_TOUGH_GREAT",
+    "name": "Tough Ribbon Great",
+    "art": "sinnoh_contest_great",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_TOUGH_ULTRA",
+    "name": "Tough Ribbon Ultra",
+    "art": "sinnoh_contest_ultra",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_TOUGH_MASTER",
+    "name": "Tough Ribbon Master",
+    "art": "sinnoh_contest_master",
+    "palette": 4,
+    "event": false
+  },
+  {
+    "id": "RIBBON_ABILITY",
+    "name": "Ability Ribbon",
+    "art": "ability",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_GREAT_ABILITY",
+    "name": "Great Ability Ribbon",
+    "art": "great_ability",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_DOUBLE_ABILITY",
+    "name": "Double Ability Ribbon",
+    "art": "double_ability",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_MULTI_ABILITY",
+    "name": "Multi Ability Ribbon",
+    "art": "multi_ability",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_PAIR_ABILITY",
+    "name": "Pair Ability Ribbon",
+    "art": "pair_ability",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_WORLD_ABILITY",
+    "name": "World Ability Ribbon",
+    "art": "world_ability",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_ALERT",
+    "name": "Alert Ribbon",
+    "art": "alert",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SHOCK",
+    "name": "Shock Ribbon",
+    "art": "shock",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_DOWNCAST",
+    "name": "Downcast Ribbon",
+    "art": "downcast",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_CARELESS",
+    "name": "Careless Ribbon",
+    "art": "careless",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_RELAX",
+    "name": "Relax Ribbon",
+    "art": "relax",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SNOOZE",
+    "name": "Snooze Ribbon",
+    "art": "snooze",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_SMILE",
+    "name": "Smile Ribbon",
+    "art": "smile",
+    "palette": 2,
+    "event": false
+  },
+  {
+    "id": "RIBBON_GORGEOUS",
+    "name": "Gorgeous Ribbon",
+    "art": "gorgeous",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_ROYAL",
+    "name": "Royal Ribbon",
+    "art": "royal",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_GORGEOUS_ROYAL",
+    "name": "Gorgeous Royal Ribbon",
+    "art": "gorgeous_royal",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_FOOTPRINT",
+    "name": "Footprint Ribbon",
+    "art": "footprint",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_RECORD",
+    "name": "Record Ribbon",
+    "art": "record",
+    "palette": 1,
+    "event": false
+  },
+  {
+    "id": "RIBBON_HISTORY",
+    "name": "History Ribbon",
+    "art": "history",
+    "palette": 3,
+    "event": false
+  },
+  {
+    "id": "RIBBON_LEGEND",
+    "name": "Legend Ribbon",
+    "art": "legend",
+    "palette": 0,
+    "event": false
+  },
+  {
+    "id": "RIBBON_RED",
+    "name": "Red Ribbon",
+    "art": "red",
+    "palette": 0,
+    "event": true
+  },
+  {
+    "id": "RIBBON_GREEN",
+    "name": "Green Ribbon",
+    "art": "green",
+    "palette": 3,
+    "event": true
+  },
+  {
+    "id": "RIBBON_BLUE",
+    "name": "Blue Ribbon",
+    "art": "blue",
+    "palette": 1,
+    "event": true
+  },
+  {
+    "id": "RIBBON_FESTIVAL",
+    "name": "Festival Ribbon",
+    "art": "festival",
+    "palette": 1,
+    "event": true
+  },
+  {
+    "id": "RIBBON_CARNIVAL",
+    "name": "Carnival Ribbon",
+    "art": "carnival",
+    "palette": 0,
+    "event": true
+  },
+  {
+    "id": "RIBBON_CLASSIC",
+    "name": "Classic Ribbon",
+    "art": "classic",
+    "palette": 1,
+    "event": true
+  },
+  {
+    "id": "RIBBON_PREMIER",
+    "name": "Premier Ribbon",
+    "art": "premier",
+    "palette": 0,
+    "event": true
+  }
+]

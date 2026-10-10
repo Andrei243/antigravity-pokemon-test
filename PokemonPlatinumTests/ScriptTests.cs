@@ -216,6 +216,21 @@ public class ScriptTests
           giveaccessory "Glitter Powder"
           platformlift
           platformlift check
+          supercontest photo
+          supercontest fashioncase
+          seal give "Heart Seal A" 2
+          seal first
+          seal unown
+          seal count
+          seal capsules
+          seal shop
+          ribbon give RIBBON_ALERT
+          ribbon has today
+          ribbon give offer
+          ribbon count
+          ribbon offer
+          ribbon effort
+          ribbon feeling
         script Other
           end
         """;
@@ -1061,6 +1076,8 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.SuperContests.FashionCase FashionCase => inner.FashionCase;
         public PokemonPlatinumEngine.Models.SuperContests.ContestOutcome? ContestOutcome => inner.ContestOutcome;
         public void HoldContest(int slot, ContestStat category, PokemonPlatinumEngine.Models.SuperContests.ContestRank rank, PokemonPlatinumEngine.Models.SuperContests.ContestMode mode) => inner.HoldContest(slot, category, rank, mode);
+        public SealCase SealCase => inner.SealCase;
+        public PokemonPlatinumEngine.Models.SuperContests.ContestRecords ContestRecords => inner.ContestRecords;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

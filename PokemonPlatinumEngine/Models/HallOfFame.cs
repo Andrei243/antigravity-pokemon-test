@@ -119,5 +119,8 @@ public static class TrainerScore
     /// <summary>A Super Contest won (plan 06 · R17a; <c>TRAINER_SCORE_EVENT_WIN_OFFICIAL_CONTEST</c>).</summary>
     public const int WonContest = 7;
 
+    /// <summary>A Ball Capsule changed and kept (plan 06 · R17b; <c>TRAINER_SCORE_EVENT_UNK_06</c>, the capsule screen's CONFIRM).</summary>
+    public const int MadeCapsule = 2;
+
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }

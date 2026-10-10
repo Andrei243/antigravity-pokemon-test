@@ -49,8 +49,22 @@ public class PartyScreen
     /// </summary>
     public bool ShowCondition { get; set; }
 
-    /// <summary>The summary's page: 0 the Pokémon, its stats and moves; 1 its condition.</summary>
+    /// <summary>The summary's page: 0 the Pokémon, its stats and moves; 1 its condition; 2 its ribbons (plan 06 · R17b).</summary>
     public int SummaryPage { get; private set; }
+
+    public const int StatsPage = 0, ConditionPage = 1, RibbonsPage = 2;
+
+    /// <summary>How many ribbons a row of the ribbons' page shows, and how many rows (the original shows four by three).</summary>
+    public const int RibbonColumns = 6, RibbonRows = 3;
+
+    /// <summary>
+    /// The ribbon under the cursor while the ribbons' page is looked through (the original's ribbon select, A on the
+    /// page), by its place among the Pokémon's own; -1 while the page only shows them.
+    /// </summary>
+    public int RibbonCursor { get; private set; } = -1;
+
+    /// <summary>The pages a summary turns through: the condition's only once the Contest Hall has been visited.</summary>
+    public IReadOnlyList<int> SummaryPages => ShowCondition ? new[] { StatsPage, ConditionPage, RibbonsPage } : new[] { StatsPage, RibbonsPage };
 
     /// <summary>The chosen Pokémon's menu while it is open, and the entry under its cursor.</summary>
     public IReadOnlyList<PartyAction>? Actions { get; private set; }
@@ -183,6 +197,7 @@ public class PartyScreen
             case PartyActionKind.Summary:
                 ShowSummary = true;
                 SummaryPage = 0;
+                RibbonCursor = -1;
                 summaryAge = 0f;
                 if (!party.Members[SelectedIndex].IsEgg) AudioManager.PlayCry(party.Members[SelectedIndex]);
                 break;
@@ -223,12 +238,44 @@ public class PartyScreen
         AudioManager.PlaySound("cursor");
     }
 
-    /// <summary>Turns the summary to its other page, where it has two (<see cref="ShowCondition"/>).</summary>
+    /// <summary>Turns the summary to its next page or the one before, round and round (<see cref="SummaryPages"/>).</summary>
     public void TurnSummaryPage(int dx)
     {
-        if (!ShowSummary || !ShowCondition || dx == 0) return;
-        SummaryPage = SummaryPage == 0 ? 1 : 0;
+        if (!ShowSummary || dx == 0) return;
+        var pages = SummaryPages;
+        int at = Math.Max(0, pages.ToList().IndexOf(SummaryPage));
+        SummaryPage = pages[UiNav.Wrap(at, Math.Sign(dx), pages.Count)];
+        RibbonCursor = -1;
         AudioManager.PlaySound("page");
+    }
+
+    /// <summary>
+    /// The confirm button on the ribbons' page (the original's A): the cursor comes up on the Pokémon's first ribbon,
+    /// and its name and what it is for are shown. False when the Pokémon has none, or another page is open.
+    /// </summary>
+    public bool SelectRibbons(Pokemon shown)
+    {
+        if (!ShowSummary || SummaryPage != RibbonsPage || shown.IsEgg || shown.Ribbons.Count == 0) return false;
+        RibbonCursor = 0;
+        AudioManager.PlaySound("select");
+        return true;
+    }
+
+    /// <summary>Stops looking through the ribbons (the original's B).</summary>
+    public void LeaveRibbons()
+    {
+        RibbonCursor = -1;
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>Moves the ribbons' cursor over their rows of <see cref="RibbonColumns"/>, round at the edges.</summary>
+    public void MoveRibbon(int dx, int dy, int count)
+    {
+        if (RibbonCursor < 0 || count <= 0 || (dx == 0 && dy == 0)) return;
+        int next = UiNav.Grid(Math.Min(RibbonCursor, count - 1), count, RibbonColumns, dx, dy);
+        if (next == RibbonCursor) return;
+        RibbonCursor = next;
+        AudioManager.PlaySound("cursor");
     }
 
     /// <summary>Moves the cursor over the two-column list, or to the next Pokémon while the summary is open.</summary>
@@ -240,6 +287,7 @@ public class PartyScreen
             : UiNav.Grid(SelectedIndex, count, 2, dx, dy);
         if (next == SelectedIndex) return;
         SelectedIndex = next;
+        RibbonCursor = -1;
         AudioManager.PlaySound("cursor");
     }
 
@@ -254,14 +302,23 @@ public class PartyScreen
 
         if (ShowSummary)
         {
+            var shown = SelectedIndex < party.Count ? party.Members[SelectedIndex] : null;
+            // Looking through the ribbons: the arrows move over them, and either button stops (plan 06 · R17b)
+            if (RibbonCursor >= 0 && shown != null)
+            {
+                if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm)) LeaveRibbons();
+                else MoveRibbon(dx, dy, shown.Ribbons.Count);
+                return;
+            }
+            if (InputManager.IsActionPressed(GameAction.Confirm) && shown != null && SelectRibbons(shown)) return;
             if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm))
             {
                 ShowSummary = false;
                 AudioManager.PlaySound("cancel");
             }
-            // With a condition page, left and right turn the page and up and down go through the team
-            else if (ShowCondition && dx != 0) TurnSummaryPage(dx);
-            else MoveCursor(ShowCondition ? 0 : dx, dy, party.Count);
+            // Left and right turn the page (an Egg's summary has the one), and up and down go through the team
+            else if (dx != 0 && shown is { IsEgg: false }) TurnSummaryPage(dx);
+            else MoveCursor(0, dy, party.Count);
             return;
         }
 
@@ -296,7 +353,7 @@ public class PartyScreen
         if (ShowSummary && SelectedIndex < party.Count)
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
-                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), ShowCondition ? SummaryPage : -1);
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor);
         }
         else
         {

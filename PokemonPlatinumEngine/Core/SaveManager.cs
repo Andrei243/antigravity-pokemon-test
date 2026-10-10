@@ -116,6 +116,15 @@ public class SaveData
     /// </summary>
     public Dictionary<string, int>? FashionCase { get; set; }
 
+    /// <summary>The Fashion Case's backdrops, by their names in the order they came (plan 06 · R17b). Null with none, and in older saves.</summary>
+    public List<string>? Backdrops { get; set; }
+
+    /// <summary>The Seal Case: its loose Seals and its twelve Ball Capsules (plan 06 · R17b). Null while it holds no Seal, and in older saves.</summary>
+    public SavedSealCase? SealCase { get; set; }
+
+    /// <summary>The Super Contests entered and won, and the winners' photographs (plan 06 · R17b). Null before any, and in older saves.</summary>
+    public Models.SuperContests.ContestRecords? ContestRecords { get; set; }
+
     /// <summary>Solaceon Town's Day Care (plan 06 · R15). Null while it is empty with no cycle under way, and in older saves.</summary>
     public DayCareSave? DayCare { get; set; }
 
@@ -309,6 +318,11 @@ public class SavedPokemonData
 
     /// <summary>The ribbons it has won (plan 06 · R17a), by the original's names; left out for one with none.</summary>
     public List<string>? Ribbons { get; set; }
+
+    /// <summary>The Ball Capsule on its ball (plan 06 · R17b): its number among the case's twelve and its Seals; left out for one with none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int CapsuleId { get; set; }
+    public List<string>? Capsule { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -357,7 +371,9 @@ public class SavedPokemonData
             MetDate = p.MetDate,
             Language = p.Language,
             EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null,
-            Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null
+            Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null,
+            CapsuleId = p.CapsuleId,
+            Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null
         };
 
         foreach (var m in p.Moves)
@@ -411,6 +427,11 @@ public class SavedPokemonData
         if (Personality is { } personality) p.Personality = personality;
         foreach (var (key, count) in EvolutionProgress ?? new()) p.EvolutionProgress[key] = count;
         if (Ribbons != null) p.Ribbons.UnionWith(Ribbons);
+        if (CapsuleId is > 0 and <= SealCase.Capsules)
+        {
+            p.CapsuleId = CapsuleId;
+            p.Capsule = BallCapsule.Parse(Capsule);
+        }
         p.RecalculateStats();
         p.CurrentHP = Math.Clamp(CurrentHP, 0, p.MaxHP);
         if (p.CurrentHP <= 0)

@@ -119,8 +119,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("hold a contest");
         Waits();
         ContestOutcome = Models.SuperContests.ContestAwards.Conclude(Party.Members[slot], category, rank, mode, ContestPlacement, FashionCase);
+        ContestRecords.Count(ContestOutcome, Party.Members[slot], Array.Empty<int>(), PlayerName, GameClock.Today);
         Log.Add($"supercontest {rank} {category} {mode} {Party.Members[slot].Species.Name} {ContestPlacement}");
     }
+
+    /// <summary>The Seal Case and the contests' records (plan 06 · R17b), empty unless a test or a script fills them.</summary>
+    public SealCase SealCase { get; } = new();
+    public Models.SuperContests.ContestRecords ContestRecords { get; } = new();
 
     /// <summary>The Pokémon hatched so far by <c>hatch</c>, in order: here an Egg hatches at once, with no scene.</summary>
     public List<Pokemon> Hatched { get; } = new();

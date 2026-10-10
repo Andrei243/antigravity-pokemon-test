@@ -1,0 +1,57 @@
+# The Sunyshore Market (plan 06 · R17b), rebuilt to the original's plan. docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_sunyshore_market.s).
+#
+# The Seal merchant sells seven Seals, and which seven depends on the day of the week (seal shop); he has nothing for
+# someone without a Seal Case. The woman by the stalls looks at the first of the team that is no Egg and gives it the
+# Effort Ribbon once its effort values are full.
+
+
+script SealShop
+  if not item "Seal Case" goto NoCase
+  say "Seals! Seals for your Ball Capsules! Come and see what the tide brought in today."
+  seal shop
+  end
+label NoCase
+  say "Seals for sale! ...Ah, but you've no Seal Case to put them in. There's a house in Solaceon Town that gives them away, I hear."
+  end
+
+
+script EffortRibbonWoman
+  ribbon has RIBBON_HOENN_EFFORT
+  if result == 1 goto Has
+  say "Oh? Your {wearer}..."
+  ribbon effort
+  if result == 0 goto NotYet
+  say "It has worked so very, very hard! It couldn't have put in more effort if it tried. That deserves a reward."
+  ribbon give RIBBON_HOENN_EFFORT
+  fanfare item
+  text "{player} received the {ribbon}!" "{player} put the {ribbon} on {wearer}."
+  end
+label NotYet
+  say "It could put in a little more effort, I think. Come and show me when it has given everything it has."
+  end
+label Has
+  say "That Effort Ribbon looks wonderful on your {wearer}. It wears its hard work proudly."
+  end
+
+
+script Sailor
+  say "Sunyshore's market is known up and down the coast for one thing: Seals. Nowhere else has so many."
+  end
+
+
+script PokefanM
+  say "Have you been to the Seal merchant's stall? He never has the same Seals two days running."
+  if weekday thursday goto Late
+  if weekday friday goto Late
+  if weekday saturday goto Late
+  say "The ones I'm after weren't out today. I'll be back later in the week."
+  end
+label Late
+  say "He came through with a different lot again today. I can't keep up!"
+  end
+
+
+script BattleGirl
+  say "I put my Pokémon's name on its Ball Capsule, a letter Seal at a time. Eight letters is all that fit, though."
+  end

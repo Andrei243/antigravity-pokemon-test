@@ -154,6 +154,9 @@ public static class RegionDatabase
                 "VeilstoneGalacticWarehouse",
                 // Solaceon Town's Pokémon Day Care, rebuilt to the original's plan (plan 06 · R15)
                 "PokemonDayCare",
+                // Plan 06 · R17b: the house of the Seal Case in Solaceon Town, the Sunyshore Market, Julia's house and
+                // Dr. Footstep's on Route 213, rebuilt to the original's plans
+                "SolaceonTownEastHouse", "SunyshoreMarket", "SunyshoreCityNortheastHouse", "FootstepHouse",
                 // Plan 02 · S9: the cave of Celestic Town's ruins and the Fuego Ironworks' floor (matrices of the
                 // imported world), and the elder's house in Celestic Town, rebuilt to the original's plan
                 "CelesticTownCave", "FuegoIronworksBuilding", "CelesticTownNorthHouse",

@@ -60,6 +60,13 @@ public sealed class TrainerPokemonRecord
 
     /// <summary>The moves the trainer chose for it; null when it knows what its level taught it.</summary>
     public List<string>? Moves { get; set; }
+
+    /// <summary>
+    /// The Ball Capsule its ball comes with (plan 06 · R17b; the original's <c>ball_seal</c>): a place of the trainers'
+    /// own capsules from 1 (<see cref="SealDatabase.TrainerCapsule"/>), 0 and left out for a plain ball.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public int BallSeal { get; set; }
 }
 
 /// <summary>Platinum's trainers, read from <c>Data/trainers.json</c> the first time one is asked for.</summary>
@@ -141,6 +148,12 @@ public static class TrainerDatabase
         {
             pokemon.Moves.Clear();
             foreach (string move in chosen) pokemon.Moves.Add(MoveDatabase.Create(move));
+        }
+        // Pokemon_SetBallSeal: the trainers' capsule goes on its ball as capsule number 1
+        if (SealDatabase.TrainerCapsule(m.BallSeal) is { } capsule)
+        {
+            pokemon.CapsuleId = 1;
+            pokemon.Capsule = capsule;
         }
         pokemon.RecalculateStats();
         pokemon.CurrentHP = pokemon.MaxHP;

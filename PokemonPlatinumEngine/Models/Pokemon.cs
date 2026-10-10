@@ -415,10 +415,19 @@ public class Pokemon
 
     /// <summary>
     /// The ribbons it has won (plan 06 · R17a), each by the original's name (<c>RIBBON_COOL</c>, <c>RIBBON_CUTE_GREAT</c>):
-    /// so far the twenty a Super Contest gives (<see cref="SuperContests.ContestRules.Ribbon"/>). Plan 06 · R17b keeps
-    /// the rest of Platinum's here and shows them.
+    /// any of Platinum's eighty (<see cref="RibbonRules"/>, plan 06 · R17b), which its summary shows on a page of
+    /// their own.
     /// </summary>
     public SortedSet<string> Ribbons { get; private set; } = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// The Ball Capsule on its ball (plan 06 · R17b; the original's <c>MON_DATA_BALL_CAPSULE_ID</c> and
+    /// <c>MON_DATA_BALL_CAPSULE</c>): the capsule's number among the Seal Case's twelve, from 1, or 0 for none, and a
+    /// copy of its Seals, which burst as the Pokémon is sent out in battle (<see cref="CapsuleRules"/>). A trainer's
+    /// Pokémon carries the number 1 and one of the trainers' own capsules. A Pokémon in a box has none.
+    /// </summary>
+    public int CapsuleId { get; set; }
+    public BallCapsule? Capsule { get; set; }
 
     /// <summary>
     /// Where it was met (plan 06 · R12): the name of the place, as the original writes the location's name, or a
@@ -1018,6 +1027,8 @@ public class Pokemon
         OriginalTrainer = other.OriginalTrainer;
         Pokerus = other.Pokerus;
         Marks = other.Marks;
+        CapsuleId = other.CapsuleId;
+        Capsule = other.Capsule;
         MetLocation = other.MetLocation;
         MetLevel = other.MetLevel;
         MetDate = other.MetDate;

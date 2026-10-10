@@ -1,0 +1,38 @@
+# Solaceon Town's east house (plan 06 · R17b), rebuilt to the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_solaceon_town_east_house.s).
+#
+# The mother gives the Seal Case with five Seals in it (one Heart Seal, two Star Seals, a Foamy Seal and a Song Seal,
+# each a draw) and says how Seals are used. Her boy, once the player has the case, gives ten Seals for the team's first
+# Unown, the letter of its own shape; not for the shape he was shown last this visit, nor once the player has
+# ninety-nine of the kind.
+
+
+script PokefanF
+  if flag FLAG_RECEIVED_SOLACEON_TOWN_EAST_HOUSE_SEAL_CASE goto Explain
+  say "Oh, a Trainer! You don't have a Seal Case, do you? I can tell by looking. Here, take this one. I've more than I'll ever use."
+  give "Seal Case"
+  setflag FLAG_RECEIVED_SOLACEON_TOWN_EAST_HOUSE_SEAL_CASE
+  say "And a case with nothing in it is a sad thing, so here are a few Seals to start you off."
+  seal first
+  fanfare item
+  text "{player} put the Seals away in the Seal Case."
+label Explain
+  say "Seals go on a Ball Capsule, and a Ball Capsule goes on a Poké Ball. When the Pokémon comes out in battle, out they all burst!"
+  say "You stick them on at a PC. Where you put each Seal changes how it goes off, so try them out."
+  end
+
+
+script NinjaBoy
+  if not flag FLAG_RECEIVED_SOLACEON_TOWN_EAST_HOUSE_SEAL_CASE goto NoCase
+  seal unown
+  if result == 1 goto Given
+  say "Show me an Unown and I'll give you Seals that look just like it! A different shape each time, mind."
+  end
+label Given
+  say "Whoa! That {wearer} looks just like my Seals! Here, these are the ones. Take them!"
+  fanfare item
+  text "{player} received {seals} × {seal}!" "{player} put them away in the Seal Case."
+  end
+label NoCase
+  say "I've got loads of Seals with letters on them. But you've nothing to keep them in... Go and talk to my mom!"
+  end

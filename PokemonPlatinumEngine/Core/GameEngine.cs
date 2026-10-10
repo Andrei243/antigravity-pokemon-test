@@ -48,6 +48,10 @@ public enum GameState
     Hatch,
     /// <summary>A Super Contest in the Contest Hall (plan 06 · R17a).</summary>
     SuperContest,
+    /// <summary>The Ball Capsules, the Seal merchant's stall, and the Fashion Case looked into or a winner's photograph (plan 06 · R17b).</summary>
+    SealCase,
+    SealShop,
+    FashionCase,
     Transition
 }
 
@@ -282,6 +286,8 @@ public partial class GameEngine
         berries = BerryPatches.NewGame();
         poffinCase.Clear();
         fashionCase.Load(null);
+        sealCase.Load(null);
+        contestRecords.Load(null);
         contestOutcome = null;
         radar.Clear();
         registeredItem = null;
@@ -427,8 +433,10 @@ public partial class GameEngine
         berries = save.Berries ?? BerryPatches.NewGame();
         poffinCase.Restore(save.Poffins);
         // A save from before the Fashion Case that has been through the Contest Hall's first scene is owed its Glitter Powder (plan 06 · R17a)
-        fashionCase.Load(save.FashionCase);
+        fashionCase.Load(save.FashionCase, save.Backdrops);
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) fashionCase.Add("Glitter Powder");
+        sealCase.Load(save.SealCase);
+        contestRecords.Load(save.ContestRecords);
         contestOutcome = null;
         radar.Clear();
         Roamers.Scatter(encounters, fieldRandom);
@@ -474,6 +482,7 @@ public partial class GameEngine
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
         story.RestoreGreetings(save.GreetedPeople);
+        OweTheFashionCase();
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -545,6 +554,9 @@ public partial class GameEngine
             Berries = berries,
             Poffins = poffinCase.Count > 0 ? poffinCase.All.ToList() : null,
             FashionCase = fashionCase.ToSave(),
+            Backdrops = fashionCase.Backdrops.Count > 0 ? fashionCase.BackdropsToSave() : null,
+            SealCase = sealCase.Total > 0 ? sealCase.ToSave() : null,
+            ContestRecords = contestRecords.IsEmpty ? null : contestRecords,
             DayCare = DayCareSave.From(dayCare),
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
@@ -747,6 +759,9 @@ public partial class GameEngine
                     if (bagScreen.TakeFieldUse() is { } usedHere)
                     {
                         if (usedHere.FieldUse == "PoffinCase") OpenPoffinCase(fromBag: true);
+                        // The Seal Case and the Fashion Case are looked into, and close back onto the bag (plan 06 · R17b)
+                        else if (usedHere.Name == BagScreen.SealCaseItem) OpenBallCapsules(fromBag: true);
+                        else if (usedHere.Name == BagScreen.FashionCaseItem) OpenFashionCase(fromBag: true);
                         else UseFieldItem(usedHere);
                     }
                 }
@@ -818,6 +833,15 @@ public partial class GameEngine
                 break;
             case GameState.SuperContest:
                 UpdateContest(dt);
+                break;
+            case GameState.SealCase:
+                UpdateBallCapsules(dt);
+                break;
+            case GameState.SealShop:
+                UpdateSealShop(dt);
+                break;
+            case GameState.FashionCase:
+                UpdateFashionCase(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1598,14 +1622,16 @@ public partial class GameEngine
     private TrainerCardInfo TrainerCardNow()
     {
         bool famous = hallOfFame.Total > 0 || RegionDatabase.All.Any(r => story.Has(r.StoryCompleteFlag));
-        int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(playerPokedex.CaughtSpecies), 0, false, 0);
+        int stars = TrainerCardRules.Level(famous, TrainerCardRules.NationalCaught(playerPokedex.CaughtSpecies), 0, IsContestMaster, 0);
         return new TrainerCardInfo(playerName, trainerId, playerMoney, playerPokedex.SeenCount, playerPokedex.CaughtCount, playTime,
             story.BadgeMask, adventureStarted)
         {
             Score = trainerScore,
             Stars = stars,
             Colour = TrainerCardRules.Colour(story.Has(StoryState.PokedexFlag), stars),
-            HallOfFameDebut = hallOfFame.Debut
+            HallOfFameDebut = hallOfFame.Debut,
+            ContestsEntered = contestRecords.Entered,
+            ContestsWon = contestRecords.Won
         };
     }
 
@@ -1863,6 +1889,15 @@ public partial class GameEngine
                 break;
             case GameState.SuperContest:
                 contestScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.SealCase:
+                sealCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.SealShop:
+                sealShopScreen.Draw(VirtualWidth, VirtualHeight, playerMoney);
+                break;
+            case GameState.FashionCase:
+                fashionScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);

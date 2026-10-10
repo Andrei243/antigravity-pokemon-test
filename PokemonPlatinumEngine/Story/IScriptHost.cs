@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Story;
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -270,6 +270,14 @@ public interface IScriptHost
 
     /// <summary>How the last contest held came out; null before any.</summary>
     Models.SuperContests.ContestOutcome? ContestOutcome { get; }
+
+    // ------------------------------------------------------------------ Ball Capsules, Seals and ribbons (plan 06 · R17b)
+
+    /// <summary>The player's Seal Case: its loose Seals and its twelve Ball Capsules.</summary>
+    SealCase SealCase { get; }
+
+    /// <summary>The contests the player has entered and won, and the winners' photographs in the Contest Hall's frames.</summary>
+    Models.SuperContests.ContestRecords ContestRecords { get; }
 
     /// <summary>
     /// Hatches the team's first Egg with no cycles left (<c>HatchEgg</c>): its scene plays and the script waits for it

@@ -55,7 +55,9 @@ public enum Op
     // The Super Contests and the Fashion Case (plan 06 · R17a)
     SuperContest, GiveAccessory,
     // The League's platform lifts (plan 01 · M9, part 2d)
-    PlatformLift
+    PlatformLift,
+    // Ball Capsules, Seals and ribbons (plan 06 · R17b)
+    Seal, Ribbon
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

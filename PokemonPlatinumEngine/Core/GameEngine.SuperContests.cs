@@ -58,6 +58,8 @@ public partial class GameEngine
         if (contestScreen.Contest is { } contest && contestOutcome is { } outcome)
         {
             scriptAnswer = outcome.Placement;
+            // The records and the winner's photograph (plan 06 · R17b; RECORD_SUPER_CONTEST_PARTICIPATIONS and its fellows)
+            contestRecords.Count(outcome, contest.Player.Pokemon, contestScreen.Worn, PlayerIdentity.Name, GameClock.Today);
             if (!contest.IsPractice)
             {
                 foreach (var rival in contest.Contestants.Where(c => !c.IsPlayer))

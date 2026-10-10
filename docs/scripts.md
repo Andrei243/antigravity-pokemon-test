@@ -345,9 +345,36 @@ Plan 06 · R17a. A Super Contest is held by `Models/SuperContests/` (the contest
 | `supercontest enter` | Holds the contest for the Pokémon checked, and the script waits for it. `RESULT` is the player's place, 0 for the winner (in a practice round, how many did better). A win has already given the ribbon, the friendship and the accessory. |
 | `supercontest ribbon` | `RESULT` 1 when that win gave a ribbon the Pokémon hadn't; `{ribbon}` names it. |
 | `supercontest prize` | `RESULT` 1 when that win put its accessory in the Fashion Case; `{accessory}` names it. |
+| `supercontest photo` | The photograph in the frame of the contest last named with `supercontest category` (plan 06 · R17b; `ContestPhotoHasData`): `RESULT` 1 and the photograph is shown, the script waiting until it is closed, or 0 for an empty frame. |
+| `supercontest fashioncase` | What comes with the Fashion Case (plan 06 · R17b; the original's Jubilife City scene): five draws among the six fluffs, five among the six feathers and moustaches after them, and three backdrops (the first, and two different ones of the eight after it). Without a word; the item is the script's to `give`. |
 | `giveaccessory "Glitter Powder" [2]` | An accessory (`contests.json`'s names) into the Fashion Case, with the item fanfare and the lines that say so. `RESULT` 1, or 0 and not a word when the case has no room for it (nine of a kind, one of the kinds that come alone). |
 
 `{contestant}` is the Pokémon checked for the contest, `{ribbon}` the ribbon the last contest gave, `{accessory}` the accessory last given or won.
+
+### Ball Capsules, Seals and ribbons
+
+Plan 06 · R17b; `docs/mechanics/rulings.md`, "Ball Capsules, Seals and ribbons". The Seal Case (`SealCase`, saved) holds
+the Seals and the twelve Ball Capsules; a Pokémon's ribbons are on the Pokémon. A ribbon's command is about the first
+of the team that is no Egg, as the original's givers all are.
+
+| Command | What it does |
+|---|---|
+| `seal give "Heart Seal A" [3]` | So many of a Seal (its name, or the original's constant, `HEART_SEAL_A`) into the Seal Case, without a word: `RESULT` 1, or 0 and none given where that would pass ninety-nine of the kind. `{seal}` and `{seals}` say which and how many. |
+| `seal first` | The five Seals that come with the Seal Case (a Heart, two Stars, a Foamy and a Song Seal, each drawn). `RESULT` is how many went in. |
+| `seal unown` | The Seals Solaceon Town's boy gives for the team's first Unown, ten of its shape's letter: `RESULT` 0 with no Unown; 1 given, with `{wearer}` the Unown and `{seal}`, `{seals}` what it brought; 2 for the shape he was shown last this visit, or a kind that is full. |
+| `seal count` | `RESULT` is how many kinds of Seal the player has. |
+| `seal capsules` | Opens the Ball Capsules, and the script waits until the screen is closed. |
+| `seal shop` | Opens the Seal merchant's stall with the day's seven Seals, and the script waits. |
+| `ribbon has RIBBON_FOOTPRINT` | `RESULT` 1 when the first of the team that is no Egg has the ribbon (the original's constant, or `today` for the ribbon of this day of the week, or `offer` for the one the Ribbon Syndicate offers it next). `{wearer}` names the Pokémon and `{ribbon}` the ribbon. |
+| `ribbon give RIBBON_FOOTPRINT` | Puts the ribbon on that Pokémon, without a word: `RESULT` 1 when it hadn't it. `today` and `offer` as above. |
+| `ribbon count` | `RESULT` is how many different ribbons the team shows between them (`CountPartyRibbons`). |
+| `ribbon offer` | `RESULT` is the price of the ribbon the Syndicate offers that Pokémon next (10000, 100000, 999999), 0 once it has all three; `{ribbon}` names it. |
+| `ribbon effort` | `RESULT` 1 when that Pokémon's effort values are full (510). |
+| `ribbon feeling` | How Dr. Footstep reads that Pokémon's friendship, `RESULT` 1 to 5 (5 at 255). |
+
+`{seal}` is the Seal last given and `{seals}` how many of it, `{wearer}` the Pokémon the last `ribbon` command or
+`seal unown` was about, and `{ribbon}` the ribbon the last `ribbon` command named (the last contest's until one does).
+`halloffame` gives every Pokémon of the team that is no Egg the Sinnoh Champ Ribbon as it records the team.
 
 ## Who is on the map
 

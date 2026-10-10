@@ -53,6 +53,9 @@ public sealed class Decomp
     /// <summary>A file of the original's C source (the Vs. Seeker's rematch table).</summary>
     public string Source(params string[] parts) => File.ReadAllText(Path.Combine(new[] { root, "src" }.Concat(parts).ToArray()));
 
+    /// <summary>A file of the original read as text (the trainers' Ball Capsules, plan 06 · R17b).</summary>
+    public string Text(params string[] parts) => File.ReadAllText(Path.Combine(new[] { root }.Concat(parts).ToArray()));
+
     /// <summary>A file of the original as it is (the contests' archive of tables, plan 06 · R17a).</summary>
     public byte[] Bytes(params string[] parts) => File.ReadAllBytes(Path.Combine(new[] { root }.Concat(parts).ToArray()));
 
@@ -65,6 +68,12 @@ public sealed class Decomp
             !m.TryGetProperty("en_US", out var text) ? ""
             : text.ValueKind == JsonValueKind.Array ? string.Concat(text.EnumerateArray().Select(l => l.GetString()))
             : text.GetString() ?? "").ToList();
+
+    /// <summary>A bank's names by the names its entries go by (<c>RibbonName_Text_Cool</c>), for a table that asks for them so.</summary>
+    public Dictionary<string, string> MessagesById(string bank) =>
+        Read("res", "text", bank + ".json").GetProperty("messages").EnumerateArray()
+            .Where(m => m.TryGetProperty("en_US", out var text) && text.ValueKind == JsonValueKind.String)
+            .ToDictionary(m => m.GetProperty("id").GetString()!, m => m.GetProperty("en_US").GetString()!);
 
     private static string Folder(string constant, string prefix) => constant[prefix.Length..].ToLowerInvariant();
 
