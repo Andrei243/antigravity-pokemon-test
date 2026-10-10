@@ -129,6 +129,19 @@ public partial class GameEngine
         if (moving && !water.Moving) AudioManager.PlaySound("bump");
     }
 
+    // ------------------------------------------------------------------ the Snowpoint Gym's snowballs
+
+    /// <summary>
+    /// A snowball the player slid into fast enough has broken (<see cref="IceSlide"/>, <c>ov5_021E06A8</c>): it bursts
+    /// into lumps of snow and a puff, with the original's crunch. It is back the next time the player comes in.
+    /// </summary>
+    private void ShatterSnowball()
+    {
+        if (player.TakeBroken() is not { } ball) return;
+        world.Life.GiveWay(currentMap, ball.GridX, ball.GridY, PropType.Snowball);
+        AudioManager.PlaySound("snowball");
+    }
+
     // ------------------------------------------------------------------ the Canalave Gym's lifts
 
     /// <summary>

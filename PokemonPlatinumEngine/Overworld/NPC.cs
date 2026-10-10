@@ -133,7 +133,7 @@ public class NPC
     // ---- Things of a Gym's puzzle (plan 01 · M9)
 
     /// <summary>The <see cref="NpcType"/>s of the things of the Gyms' puzzles: in the way like a person, drawn as a card.</summary>
-    public const string PunchingBagType = "PunchingBag", TireStackType = "TireStack", BollardType = "Bollard";
+    public const string PunchingBagType = "PunchingBag", TireStackType = "TireStack", BollardType = "Bollard", SnowballType = "Snowball";
 
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
@@ -141,8 +141,12 @@ public class NPC
         PunchingBagType => PropType.PunchingBag,
         TireStackType => PropType.TireStack,
         BollardType => PropType.Bollard,
+        SnowballType => PropType.Snowball,
         _ => null
     };
+
+    /// <summary>A snowball of the Snowpoint Gym (plan 01 · M9, part 2b), which someone sliding fast enough breaks (<see cref="IceSlide"/>).</summary>
+    public bool IsSnowball => NpcType == SnowballType;
 
     /// <summary>The <see cref="NpcType"/> of an obstacle.</summary>
     public static string TypeOf(PropType obstacle) => obstacle switch

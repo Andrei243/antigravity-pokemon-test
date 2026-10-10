@@ -43,6 +43,14 @@ internal static class GroundBaker
                         for (int x = 0; x < ArtTile; x++)
                             c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, HallTexel(hall, tx * ArtTile + x, ty * ArtTile + y));
                 }
+            // A slope of ice is streaked down its fall, so a ramp reads as one (the Snowpoint Gym's bowl)
+            for (int ty = 0; ty < map.Height; ty++)
+                for (int tx = 0; tx < map.Width; tx++)
+                {
+                    var (slopeX, slopeZ) = map.SlopeAt(tx, ty);
+                    if (map.GetGroundTile(tx, ty) == TileType.Ice && (slopeX != 0f || slopeZ != 0f))
+                        IceStreaks(c, tx, ty, alongX: MathF.Abs(slopeX) > MathF.Abs(slopeZ));
+                }
         }
         else
         {
@@ -109,8 +117,39 @@ internal static class GroundBaker
         // The Hearthome Gym's halls: dark slate in purple and plum
         PokemonType.Ghost => (Rgb(92, 78, 118), Rgb(80, 66, 104), Rgb(52, 42, 70)),
         PokemonType.Rock or PokemonType.Steel => (Rgb(176, 160, 142), Rgb(162, 146, 128), Rgb(118, 104, 92)),
+        // The Snowpoint Gym's: frosted tiles of pale blue
+        PokemonType.Ice => (Rgb(222, 234, 246), Rgb(206, 222, 240), Rgb(150, 176, 212)),
         _ => (Rgb(236, 232, 214), Rgb(222, 216, 196), Rgb(172, 164, 140))
     };
+
+    private static readonly Color Streak = Rgb(206, 232, 250), StreakShade = Rgb(124, 176, 222);
+
+    /// <summary>
+    /// Streaks down a slope of ice (style guide, "Gyms"): five light lines a texel wide along the way the slope falls,
+    /// six to twelve texels long, each with a blue line of shade beside it, placed by the tile's own seed.
+    /// </summary>
+    private static void IceStreaks(PixelCanvas c, int tx, int ty, bool alongX)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            int across = 3 + (int)(Hash(tx, ty, 700 + i) % 26), start = 2 + (int)(Hash(tx, ty, 710 + i) % 14);
+            int length = 6 + (int)(Hash(tx, ty, 720 + i) % 7);
+            for (int d = 0; d < length && start + d < ArtTile - 2; d++)
+            {
+                int ox = tx * ArtTile, oy = ty * ArtTile;
+                if (alongX)
+                {
+                    c.SetRaw(ox + start + d, oy + across, Streak);
+                    c.SetRaw(ox + start + d, oy + across + 1, StreakShade);
+                }
+                else
+                {
+                    c.SetRaw(ox + across, oy + start + d, Streak);
+                    c.SetRaw(ox + across + 1, oy + start + d, StreakShade);
+                }
+            }
+        }
+    }
 
     private static Color HallTexel((Color A, Color B, Color Grout) hall, int x, int y)
     {
@@ -208,6 +247,8 @@ internal static class GroundBaker
         PokemonType.Rock => (Rgb(196, 186, 170), Rgb(178, 168, 152), Tone.Of(132, 108, 86), Tone.Of(214, 206, 192), Tone.Of(94, 76, 62)),
         // Canalave's mine shaft: steel sheeting over a wainscot painted red
         PokemonType.Steel => (Rgb(164, 170, 182), Rgb(146, 152, 166), Tone.Of(176, 58, 50), Tone.Of(214, 220, 228), Tone.Of(90, 94, 106)),
+        // Snowpoint's: frost white over a wainscot of glacier blue
+        PokemonType.Ice => (Rgb(226, 236, 248), Rgb(204, 220, 242), Tone.Of(92, 142, 204), Tone.Of(244, 248, 254), Tone.Of(56, 92, 150)),
         _ => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128))
     };
 

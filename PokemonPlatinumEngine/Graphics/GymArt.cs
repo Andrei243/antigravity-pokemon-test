@@ -6,7 +6,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// <summary>
 /// Pixel art for the things of the Gyms' puzzles that stand in the way like people (plan 01 · M9; style guide,
 /// "Gyms"), each drawn as a card as the field's obstacles are: the Veilstone Gym's punching bags and stacks of tyres,
-/// and the Hearthome Gym's bollards. Outlined like the field's other sprites. No GPU calls.
+/// the Hearthome Gym's bollards and the Snowpoint Gym's snowballs. Outlined like the field's other sprites. No GPU calls.
 /// </summary>
 internal static class GymArt
 {
@@ -60,6 +60,36 @@ internal static class GymArt
         for (int x = 10; x < 20; x++) c.Set(x, 5, Rgb(24, 22, 32));
         for (int x = 8; x < 22; x++) c.Set(x, 6, Rgb(24, 22, 32));
         Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// A great ball of packed snow, 30 by 30: smooth and round, lit from the upper left (`204,230,255`, then `186,210,244`),
+    /// shaded blue toward the lower right (`148,182,232`) and deepest where it sits on the ice (`110,148,218`), with a few
+    /// sparkles on its lit side and a soft blue outline. Drawn as a card of the scenery (<see cref="GymPieces"/>), lit as
+    /// the ice it stands on, which brings it to about the brightness of the field's snow beside it, below white.
+    /// </summary>
+    public static void PaintSnowball(PixelCanvas c)
+    {
+        var light = Rgb(204, 230, 255);
+        var snow = Rgb(186, 210, 244);
+        var shade = Rgb(148, 182, 232);
+        var deep = Rgb(110, 148, 218);
+        const float cx = 15f, cy = 15f, r = 13.5f;
+        for (int y = 1; y < 30; y++)
+            for (int x = 1; x < 29; x++)
+            {
+                float u = (x + 0.5f - cx) / r, v = (y + 0.5f - cy) / r;
+                // Round, its foot flattened where it sits on the ice
+                if (u * u + v * v > 1f || y > 28) continue;
+                float lit = u * 0.7f + v * 0.9f;
+                var col = lit < -0.55f ? light : v > 0.8f || lit > 0.7f ? deep : lit > 0.15f ? shade : snow;
+                c.Set(x, y, col);
+            }
+        // Sparkles on the lit side
+        c.Set(9, 9, Rgb(226, 242, 255));
+        c.Set(10, 8, Rgb(226, 242, 255));
+        c.Set(13, 6, Rgb(226, 242, 255));
+        Pix.Outline(c, 0.3f);
     }
 
     /// <summary>A bollard of dark polished stone with a gilded cap, 16 by 28.</summary>

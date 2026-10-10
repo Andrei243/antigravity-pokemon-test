@@ -49,6 +49,26 @@ public class Player
     /// <summary>Carried by ice or a moving floor: moving without walking, whatever is pressed.</summary>
     public bool IsSliding { get; private set; }
 
+    /// <summary>
+    /// How fast the player slides on ice, nought to three: gathered going down its slopes and lost going up them,
+    /// gone once the slide stops (<see cref="IceSlide"/>, plan 01 · M9, part 2b).
+    /// </summary>
+    public int IceSpeed { get; private set; }
+
+    // The step under way is a slip back down an icy slope, after which the player stands
+    private bool slipping;
+
+    // A snowball the player slid into and broke, for the game to play its burst
+    private NPC? broken;
+
+    /// <summary>The snowball broken by sliding into it since this was last asked, once: the game plays its burst and its sound.</summary>
+    public NPC? TakeBroken()
+    {
+        var ball = broken;
+        broken = null;
+        return ball;
+    }
+
     /// <summary>How the player is getting about: on foot, on a Pokémon's back across water, or by Bicycle.</summary>
     public TravelMode Mode { get; private set; }
 
@@ -181,6 +201,8 @@ public class Player
         JustRodeOut = false;
         IsHoppingLedge = false;
         IsSliding = false;
+        IceSpeed = 0;
+        slipping = false;
         mounting = false;
         carried = null;
         pushed = null;
@@ -335,9 +357,13 @@ public class Player
         {
             // Ice and moving floors: the next step takes itself, and ends the slide if something is in the way
             carried = null;
-            var step = FieldMovement.Step(map, GridX, GridY, onward, WalkerOn(map) with { Running = false });
-            if (step.Moves) Begin(map, step, onward, sliding: true);
-            else IsSliding = false;
+            if (map.BehaviourAt(GridX, GridY) == TileBehavior.Ice) Slide(map, onward);
+            else
+            {
+                var step = FieldMovement.Step(map, GridX, GridY, onward, WalkerOn(map) with { Running = false });
+                if (step.Moves) Begin(map, step, onward, sliding: true);
+                else IsSliding = false;
+            }
         }
         else
         {
@@ -400,9 +426,13 @@ public class Player
         // A trainer's challenge comes before any wild Pokémon in the grass
         bool interrupted = onArrive != null && onArrive();
 
+        // Ice carries the player on, unless this was a slip back down its slope, after which they stand; off the ice,
+        // or stopped, the slide's speed is gone
         var underfoot = map.BehaviourAt(GridX, GridY);
-        carried = interrupted ? null : FieldMovement.Carries(underfoot, movingDir);
+        carried = interrupted || slipping ? null : FieldMovement.Carries(underfoot, movingDir);
         IsSliding = carried != null;
+        slipping = false;
+        if (carried == null || underfoot != TileBehavior.Ice) IceSpeed = 0;
 
         InTallGrass = map.IsTallGrass(GridX, GridY);
         if (InTallGrass) GrassRustleTimer = 0.2f;
@@ -476,10 +506,39 @@ public class Player
         Bump();
     }
 
-    private void Begin(Map map, FieldStep step, Direction dir, bool sliding = false)
+    /// <summary>
+    /// The next step on ice (<see cref="IceSlide"/>): a snowball ahead breaks if the slide is fast enough, then the
+    /// tile's tilt says whether the player slides on, faster or slower, slips back down, or stands.
+    /// </summary>
+    private void Slide(Map map, Direction onward)
+    {
+        if (IceSlide.Breaks(IceSpeed) && IceSlide.SnowballAhead(map, GridX, GridY, onward) is { } ball)
+        {
+            IceSlide.Break(map, ball);
+            broken = ball;
+        }
+        var next = IceSlide.From(map, GridX, GridY, onward, IceSpeed, WalkerOn(map) with { Running = false });
+        IceSpeed = next.Speed;
+        switch (next.Outcome)
+        {
+            case IceSlide.Outcome.Slide:
+                Begin(map, next.Step, onward, sliding: true, tilesPerSecond: IceSlide.TilesPerSecond(IceSpeed));
+                break;
+            case IceSlide.Outcome.SlipBack:
+                // Back down the slope still facing up it
+                Begin(map, next.Step, FieldMovement.Opposite(onward), sliding: true, tilesPerSecond: IceSlide.SlipTilesPerSecond);
+                slipping = true;
+                break;
+            default:
+                IsSliding = false;
+                break;
+        }
+    }
+
+    private void Begin(Map map, FieldStep step, Direction dir, bool sliding = false, float? tilesPerSecond = null)
     {
         int tiles = Math.Max(1, Math.Abs(step.X - GridX) + Math.Abs(step.Y - GridY));
-        float speed = FieldMovement.TilesPerSecond(sliding ? Pace.Fast : step.Pace);
+        float speed = tilesPerSecond ?? FieldMovement.TilesPerSecond(sliding ? Pace.Fast : step.Pace);
 
         targetGridX = step.X;
         targetGridY = step.Y;

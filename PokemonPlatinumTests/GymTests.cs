@@ -14,7 +14,7 @@ namespace PokemonPlatinumTests;
 /// The Gyms of plan 01 · M9, part 1, each on the original's plan with its puzzle as the original's gym code makes it
 /// work (<c>src/overlay008/gym_features.c</c>) and its Leader's script played through: the Eterna Gym's flower clock,
 /// the Hearthome Gym's dark rooms and their doors, the Veilstone Gym's punching bags, the Pastoria Gym's water, and of
-/// part 2 the Canalave Gym's lifts.
+/// part 2 the Canalave Gym's lifts and the Snowpoint Gym's ice and snowballs.
 /// </summary>
 [Collection("MapDatabase")]
 public class GymTests
@@ -61,6 +61,7 @@ public class GymTests
         new object[] { "OreburghGym", 1, 3, 5, 24, "Sinnoh" },
         new object[] { "PastoriaGym", 1, 2, 13, 41, "Sinnoh" },
         new object[] { "CanalaveGym", 1, 3, 16, 26, "Sinnoh" },
+        new object[] { "SnowpointGym", 1, 3, 11, 28, "Sinnoh" },
         new object[] { "EternaGym", 1, 3, 11, 27, "Sinnoh" },
         new object[] { "VeilstoneGym", 1, 3, 12, 30, "Sinnoh" },
         new object[] { "HearthomeGym", 1, 3, 4, 8, "Sinnoh" },
@@ -91,6 +92,17 @@ public class GymTests
         new object[] { "CanalaveGym", "black_belt_ricky", 9, 17, Direction.Left },
         new object[] { "CanalaveGym", "ace_trainer_cesar", 27, 25, Direction.Down },
         new object[] { "CanalaveGym", "ace_trainer_breanna", 27, 5, Direction.Right },
+        new object[] { "SnowpointGym", "candice", 11, 3, Direction.Down },
+        new object[] { "SnowpointGym", "gym_guide", 12, 27, Direction.Down },
+        new object[] { "SnowpointGym", "ace_trainer_anton", 17, 3, Direction.Down },
+        new object[] { "SnowpointGym", "ace_trainer_savannah", 21, 9, Direction.Left },
+        new object[] { "SnowpointGym", "ace_trainer_alicia", 3, 6, Direction.Right },
+        new object[] { "SnowpointGym", "ace_trainer_isaiah", 18, 15, Direction.Down },
+        new object[] { "SnowpointGym", "ace_trainer_brenna", 5, 16, Direction.Up },
+        new object[] { "SnowpointGym", "ace_trainer_sergio", 2, 13, Direction.Down },
+        new object[] { "SnowpointGym", "snowball_1", 12, 18, Direction.Up },
+        new object[] { "SnowpointGym", "snowball_6", 11, 11, Direction.Up },
+        new object[] { "SnowpointGym", "snowball_19", 20, 23, Direction.Up },
         new object[] { "OreburghGym", "youngster_jonathon", 4, 18, Direction.Right },
         new object[] { "OreburghGym", "youngster_darius", 7, 11, Direction.Left },
         new object[] { "EternaGym", "gym_guide", 9, 25, Direction.Down },
@@ -856,6 +868,268 @@ public class GymTests
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM91")!));
     }
 
+    // ------------------------------------------------------------------ the Snowpoint Gym
+
+    /// <summary>
+    /// The Snowpoint Gym is the original's bowl of ice (its land data's tiles, behaviours and height plates): the floor by
+    /// the door and the outer ring at three, each ring in a tile lower down to the middle at nought, joined by slopes of
+    /// ice, and Candice's dais at four. Snow stops a slide; the steps down the middle of each slope (the original's
+    /// behaviours 0x4A and 0x49) are snow that can't be left sideways; nineteen snowballs stand on the ice.
+    /// </summary>
+    [Fact]
+    public void TheSnowpointGymIsTheOriginalsBowlOfIce()
+    {
+        var map = Room("SnowpointGym");
+        Assert.True(map.HasRelief);
+        Assert.Null(map.Puzzle);
+        foreach (var (x, y, height) in new[] { (11, 28, 3f), (1, 24, 3f), (11, 21, 2f), (5, 15, 2f), (11, 18, 1f), (8, 15, 1f), (11, 15, 0f), (11, 4, 4f) })
+            Assert.Equal(height, map.HeightAt(x, y), 2);
+        // Going in from the outer ring is going down: the slope underfoot falls the way one goes, and rises the way back
+        Assert.Equal(IceSlide.Incline.Down, IceSlide.InclineOf(map, 11, 23, Direction.Up));
+        Assert.Equal(IceSlide.Incline.Up, IceSlide.InclineOf(map, 11, 23, Direction.Down));
+        Assert.Equal(IceSlide.Incline.Down, IceSlide.InclineOf(map, 3, 15, Direction.Right));
+        Assert.Equal(IceSlide.Incline.Down, IceSlide.InclineOf(map, 13, 15, Direction.Left));
+        Assert.Equal(IceSlide.Incline.Level, IceSlide.InclineOf(map, 11, 24, Direction.Up));
+        Assert.Equal(IceSlide.Incline.Level, IceSlide.InclineOf(map, 3, 15, Direction.Up));
+        // Candice's dais is climbed from the slopes round it
+        Assert.Equal(IceSlide.Incline.Up, IceSlide.InclineOf(map, 8, 3, Direction.Right));
+        Assert.Equal(IceSlide.Incline.Up, IceSlide.InclineOf(map, 12, 5, Direction.Up));
+
+        Assert.Equal(TileBehavior.Ice, map.BehaviourAt(11, 24));
+        Assert.Equal(TileType.Snow, map.GetGroundTile(17, 6));
+        Assert.Equal(TileBehavior.None, map.BehaviourAt(17, 6));
+        Assert.Equal(TileBehavior.BlockEastAndWest, map.BehaviourAt(11, 20));
+        Assert.Equal(TileBehavior.BlockNorthAndSouth, map.BehaviourAt(16, 11));
+        Assert.Equal(TileBehavior.None, map.BehaviourAt(11, 4));
+        Assert.True(map.IsSolid(3, 7) && map.IsSolid(9, 13) && map.IsSolid(9, 27));
+
+        var balls = map.Everyone.Where(n => n.IsSnowball).ToList();
+        Assert.Equal(19, balls.Count);
+        Assert.All(balls, b => Assert.True(b.IsThing && b.GymThing == PropType.Snowball && !map.IsSolid(b.GridX, b.GridY)));
+        Assert.Equal(Obstacle.Person, FieldMovement.Step(map, 11, 9, Direction.Up, new Walker(TravelMode.OnFoot, 2f)).Obstacle);
+    }
+
+    /// <summary>
+    /// The ice's speeds as the original's code keeps them (<c>PlayerAvatar_TileMove_Ice</c> and the two functions it
+    /// calls): a tile sloping down the way one goes adds a speed, up to three; one sloping up takes one away, and with
+    /// none left the slider slips a tile back; flat ice keeps the speed. Stopped, the speed is gone, and stopped on the
+    /// way up, the slider slips back too. Each speed has the original's frames to a tile.
+    /// </summary>
+    [Fact]
+    public void IceGathersSpeedDownItsSlopesAndLosesItUpThem()
+    {
+        var map = Room("SnowpointGym");
+        Walker At(int x, int y) => new(TravelMode.OnFoot, map.HeightAt(x, y));
+
+        // Down the slope from the outer ring at (3, 15): one speed more, and no more than three
+        var down = IceSlide.From(map, 3, 15, Direction.Right, 0, At(3, 15));
+        Assert.Equal((IceSlide.Outcome.Slide, 4, 15, 1), (down.Outcome, down.Step.X, down.Step.Y, down.Speed));
+        Assert.Equal(3, IceSlide.From(map, 3, 15, Direction.Right, 3, At(3, 15)).Speed);
+        // Flat ice keeps it
+        Assert.Equal(2, IceSlide.From(map, 4, 15, Direction.Right, 2, At(4, 15)).Speed);
+        // Up the same slope: a speed less, and with none it slips back a tile, back the way it came
+        var climb = IceSlide.From(map, 3, 15, Direction.Left, 2, At(3, 15));
+        Assert.Equal((IceSlide.Outcome.Slide, 2, 15, 1), (climb.Outcome, climb.Step.X, climb.Step.Y, climb.Speed));
+        var slip = IceSlide.From(map, 3, 15, Direction.Left, 0, At(3, 15));
+        Assert.Equal((IceSlide.Outcome.SlipBack, 4, 15, 0), (slip.Outcome, slip.Step.X, slip.Step.Y, slip.Speed));
+        // In the way of something on flat ice, it stops, speed gone; on the way up a slope, it slips back instead,
+        // whatever its speed (the snowball at (12, 21) above the slope at (12, 20))
+        var stop = IceSlide.From(map, 11, 9, Direction.Up, 2, At(11, 9));
+        Assert.Equal((IceSlide.Outcome.Stop, 0), (stop.Outcome, stop.Speed));
+        var blocked = IceSlide.From(map, 12, 20, Direction.Down, 3, At(12, 20));
+        Assert.Equal((IceSlide.Outcome.SlipBack, 12, 19, 0), (blocked.Outcome, blocked.Step.X, blocked.Step.Y, blocked.Speed));
+
+        // The original's frames a tile: four at nought, three at one, two at two and three, sixteen slipping back
+        Assert.Equal(new[] { 4, 3, 2, 2 }, Enumerable.Range(0, 4).Select(IceSlide.FramesATile).ToArray());
+        Assert.Equal(FieldMovement.TilesPerSecond(Pace.Fast), IceSlide.TilesPerSecond(0));
+        Assert.Equal(IceSlide.TilesPerSecond(0) * 2f, IceSlide.TilesPerSecond(3), 3);
+        Assert.Equal(IceSlide.TilesPerSecond(0) / 4f, IceSlide.SlipTilesPerSecond, 3);
+        // A snowball breaks before a slide of a speed of one or more
+        Assert.False(IceSlide.Breaks(0));
+        Assert.True(IceSlide.Breaks(1));
+    }
+
+    /// <summary>Holds a direction until the player has stopped on a tile again, as the field's walking tests do.</summary>
+    private static void Slide(Player player, Map map, Direction dir)
+    {
+        player.Facing = dir;
+        bool started = false;
+        for (int frame = 0; frame < 1200; frame++)
+        {
+            player.Advance(1f / 60f, map, started ? null : dir, false, _ => { }, _ => { });
+            started |= player.IsMoving;
+            if (started && !player.IsMoving && !player.IsSliding) return;
+            if (!started && frame > 2) return;
+        }
+    }
+
+    /// <summary>
+    /// The player plays the slides out: from the snow at (5, 11) a step onto the slope east of it slides down into the
+    /// next ring with a speed in hand, smashes the snowball at (11, 11) (<c>ov5_021E06A8</c>) and slides on through
+    /// its place to the step at (16, 11). Slid back west at no speed, the player goes down past the snowball's place and
+    /// slips back off the slope at the far side, still facing it. Coming in again brings the snowball back, and a slide
+    /// with no speed is stopped by it like by anything else.
+    /// </summary>
+    [Fact]
+    public void ASlideWithSpeedSmashesASnowballThatIsBackWhenThePlayerComesIn()
+    {
+        var map = Room("SnowpointGym");
+        var ball = map.Everyone.Single(n => n.Key == "snowball_6");
+        var player = new Player(5, 11);
+        player.SetHeight(map.HeightAt(5, 11));
+
+        Slide(player, map, Direction.Right);
+        Assert.Equal((16, 11), (player.GridX, player.GridY));
+        Assert.DoesNotContain(ball, map.NPCs);
+        Assert.Same(ball, player.TakeBroken());
+        Assert.Null(player.TakeBroken());
+        Assert.Equal(0, player.IceSpeed);
+
+        // Back west with no speed: down through the ring, and a slip back off the slope that climbs out of it
+        Slide(player, map, Direction.Left);
+        Assert.Equal((7, 11), (player.GridX, player.GridY));
+        Assert.Equal(Direction.Left, player.Facing);
+        Assert.False(player.IsSliding);
+
+        // Coming in again lays the map's things out afresh, as the engine does (ArriveOnMap), and the snowball is back
+        map.ForgetForced();
+        map.ApplyPresence(_ => false);
+        Assert.Contains(ball, map.NPCs);
+        Slide(player, map, Direction.Right);
+        Assert.Equal((10, 11), (player.GridX, player.GridY));
+        Assert.Contains(ball, map.NPCs);
+        Assert.Null(player.TakeBroken());
+    }
+
+    /// <summary>
+    /// Every place the player can come to stand in the Snowpoint Gym from a tile, and which snowballs the way there broke
+    /// (a bit each): a step each way from where they stand, and then the ice's own slide as the player plays it, a
+    /// snowball in front of a slide with speed breaking (unless <paramref name="breaking"/> is false). The trainers
+    /// stand where they are, as beaten.
+    /// </summary>
+    private static Dictionary<(int X, int Y, int Broken), (int X, int Y, int Broken)?> SlideThrough(Map map, int x, int y, bool breaking = true)
+    {
+        var balls = map.Everyone.Where(n => n.IsSnowball).ToList();
+        void Lay(int broken)
+        {
+            for (int i = 0; i < balls.Count; i++)
+            {
+                bool gone = (broken & (1 << i)) != 0, there = map.NPCs.Contains(balls[i]);
+                if (gone && there) IceSlide.Break(map, balls[i]);
+                else if (!gone && !there)
+                {
+                    map.Absent.Remove(balls[i]);
+                    map.NPCs.Add(balls[i]);
+                }
+            }
+        }
+        (int X, int Y, int Broken)? Move(int sx, int sy, int broken, Direction dir)
+        {
+            Lay(broken);
+            var step = FieldMovement.Step(map, sx, sy, dir, new Walker(TravelMode.OnFoot, map.HeightAt(sx, sy)));
+            if (!step.Moves || map.GetWarpAt(step.X, step.Y) != null) return null;
+            int cx = step.X, cy = step.Y, speed = 0;
+            float height = step.Height;
+            for (int guard = 0; guard < 100 && map.BehaviourAt(cx, cy) == TileBehavior.Ice; guard++)
+            {
+                if (breaking && IceSlide.Breaks(speed) && IceSlide.SnowballAhead(map, cx, cy, dir) is { } ball)
+                {
+                    broken |= 1 << balls.IndexOf(ball);
+                    IceSlide.Break(map, ball);
+                }
+                var next = IceSlide.From(map, cx, cy, dir, speed, new Walker(TravelMode.OnFoot, height));
+                speed = next.Speed;
+                if (next.Outcome == IceSlide.Outcome.Stop) break;
+                (cx, cy, height) = (next.Step.X, next.Step.Y, next.Step.Height);
+                if (next.Outcome == IceSlide.Outcome.SlipBack) break;
+            }
+            return (cx, cy, broken);
+        }
+
+        var start = (x, y, 0);
+        var from = new Dictionary<(int X, int Y, int Broken), (int X, int Y, int Broken)?> { [start] = null };
+        var queue = new Queue<(int X, int Y, int Broken)>();
+        queue.Enqueue(start);
+        while (queue.Count > 0)
+        {
+            var here = queue.Dequeue();
+            foreach (var dir in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+                if (Move(here.X, here.Y, here.Broken, dir) is { } next && from.TryAdd(next, here)) queue.Enqueue(next);
+        }
+        Lay(0);
+        return from;
+    }
+
+    [Fact]
+    public void TheSnowpointGymsIceLeadsFromTheDoorToCandiceByBreakingSnowballs()
+    {
+        var map = Room("SnowpointGym");
+        var ways = SlideThrough(map, 11, 28);
+        bool Beside(NPC who) => ways.Keys.Any(k => System.Math.Abs(k.X - who.GridX) + System.Math.Abs(k.Y - who.GridY) == 1);
+        foreach (var who in map.Everyone.Where(n => n.IsTrainer || n.Key is "candice" or "gym_guide"))
+            Assert.True(Beside(who), $"{who.Key} can't be walked up to");
+        Assert.DoesNotContain(ways.Keys, k => map.IsSolid(k.X, k.Y));
+        // Candice is reached only once snowballs have broken on the way
+        var candice = map.Everyone.Single(n => n.Key == "candice");
+        Assert.All(ways.Keys.Where(k => (k.X, k.Y) == (candice.GridX, candice.GridY + 1)), k => Assert.NotEqual(0, k.Broken));
+
+        // Without the snowballs ever breaking, nobody gets to her
+        var stuck = SlideThrough(map, 11, 28, breaking: false);
+        Assert.DoesNotContain(stuck.Keys, k => System.Math.Abs(k.X - candice.GridX) + System.Math.Abs(k.Y - candice.GridY) == 1);
+        Assert.Equal(19, map.NPCs.Count(n => n.IsSnowball));
+    }
+
+    /// <summary>
+    /// The style guide's ice floor: ice lies under everything (no lawn shows where rounded corners meet), the slopes are
+    /// streaked, and a snowball's card is a round ball of snow 30 by 30 that stays below white.
+    /// </summary>
+    [Fact]
+    public void TheSnowpointGymsFloorIsIceThroughAndItsSnowballsStayBelowWhite()
+    {
+        var map = Room("SnowpointGym");
+        var floor = PokemonPlatinumEngine.Graphics.GroundBaker.BakeInterior(map);
+        var lawn = new[] { new Raylib_cs.Color(104, 190, 98, 255), new Raylib_cs.Color(120, 200, 102, 255) };
+        for (int y = 0; y < floor.Height; y++)
+            for (int x = 0; x < floor.Width; x++)
+                Assert.DoesNotContain(floor.Get(x, y), lawn);
+        // A slope of ice has its streaks; flat ice has none
+        const int T = PokemonPlatinumEngine.Graphics.GroundBaker.ArtTile;
+        int Streaks(int tx, int ty) => Enumerable.Range(0, T * T).Count(i => floor.Get(tx * T + i % T, ty * T + i / T).Equals(new Raylib_cs.Color(206, 232, 250, 255)));
+        Assert.True(Streaks(3, 15) >= 20);
+        Assert.Equal(0, Streaks(4, 15));
+
+        var ball = PokemonPlatinumEngine.Graphics.ThingCards.Paint(PropType.Snowball);
+        Assert.Equal((30, 30), (ball.Width, ball.Height));
+        Assert.True(ball.IsOpaque(15, 15) && !ball.IsOpaque(1, 1) && !ball.IsOpaque(28, 1));
+        for (int y = 0; y < ball.Height; y++)
+            for (int x = 0; x < ball.Width; x++)
+                if (ball.IsOpaque(x, y)) Assert.True(ball.Get(x, y).R < 236 && ball.Get(x, y).G < 248, $"({x}, {y}) is too near white");
+    }
+
+    [Fact]
+    public void TheSnowpointGymPlaysThroughToTheIcicleBadge()
+    {
+        var game = new OpeningTests.Game(0);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Infernape")!, 50));
+        game.Arrive("SnowpointGym", 11, 28);
+        Assert.Contains(game.Talk("gym_guide").Transcript, l => l.Text.Contains("snowball"));
+        Assert.Contains(game.Talk("ace_trainer_isaiah").Log, l => l.StartsWith("battle ace_trainer_isaiah Won"));
+
+        var gym = game.Talk("candice");
+        Assert.Contains("battle leader_candice Won", gym.Log);
+        Assert.True(game.Story.HasBadge(Badge.Icicle));
+        Assert.Equal(Badge.Icicle, FieldMoveRules.BadgeFor(FieldMove.RockClimb));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM72")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_CANDICE_TM72"));
+        Assert.True(game.Story.Has("FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS"));
+        // Her trainers count as beaten, those not yet fought too
+        foreach (var id in new[] { "ace_trainer_sergio", "ace_trainer_isaiah", "ace_trainer_anton", "ace_trainer_savannah", "ace_trainer_alicia", "ace_trainer_brenna" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.DoesNotContain(game.Talk("ace_trainer_brenna").Log, l => l.StartsWith("battle"));
+        Assert.DoesNotContain(game.Talk("candice").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM72")!));
+    }
+
     // ------------------------------------------------------------------ the doors from the cities
 
     [Theory]
@@ -865,6 +1139,7 @@ public class GymTests
     [InlineData("VeilstoneGym")]
     [InlineData("HearthomeGym")]
     [InlineData("CanalaveGym")]
+    [InlineData("SnowpointGym")]
     public void EachGymsDoorLeadsInFromItsCityAndBackOut(string gym)
     {
         var world = MapDatabase.Get("Sinnoh");
