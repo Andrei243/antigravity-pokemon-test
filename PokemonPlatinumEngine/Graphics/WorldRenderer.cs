@@ -284,6 +284,12 @@ public sealed class WorldRenderer
     private double snowClock;
     private Map? snowMap;
 
+    // The same for a place's climate (a volcano's, a temple of ice's), with the climate last stood in
+    private float climateMix;
+    private double climateClock;
+    private Map? climateMap;
+    private AreaClimate climateNow;
+
     // The weather of the scene last rendered and how bright a pale thing is in its light, for the layer drawn over the picture
     private FieldWeather weather;
     private float weatherLight = 1f;
@@ -369,6 +375,16 @@ public sealed class WorldRenderer
         snowClock = now;
         snowMap = map;
         if (snowMix > 0f) rig = LightRig.Lerp(rig, ArtLook.Snowbound(rig), snowMix);
+        // A volcano's ash and heat and a temple's cold (style guide, "Climates") grade the light the same way, in the open
+        // and in a cave alike
+        var climate = player != null && !indoors && !map.IsVoid ? map.AreaAt(player.GridX, player.GridY)?.Climate ?? AreaClimate.Temperate : AreaClimate.Temperate;
+        bool graded = climate != AreaClimate.Temperate;
+        if (graded) climateNow = climate;
+        climateMix = map != climateMap ? (graded ? 1f : 0f)
+            : Math.Clamp(climateMix + (graded ? 1f : -1f) * (float)Math.Clamp(now - climateClock, 0, 1), 0f, 1f);
+        climateClock = now;
+        climateMap = map;
+        if (climateMix > 0f) rig = LightRig.Lerp(rig, ArtLook.InClimate(rig, climateNow, map.IsCave), climateMix);
         rig = ArtLook.Weathered(rig, weather);
         var light = rig.Light;
         weatherLight = Brightness(rig);
@@ -777,10 +793,16 @@ public sealed class WorldRenderer
         var view = new GroundRect(target.X - halfW - 2f, target.Z + farOff - 2f, target.X + halfW + 2f, target.Z + nearOff + 4f);
         if (map is { HasRelief: true })
         {
-            // A tile of height shows as far up the screen as six tenths of a tile of ground (the camera's pitch)
+            // A tile of height shows as far up the screen as six tenths of a tile of ground (the camera's pitch). The
+            // sight line along the view's top edge goes on north and down, so only lower ground north of that edge
+            // shows more of itself; the one along its bottom edge comes from the south and above, so only higher ground
+            // south of that edge rises into it. Each side asks only its own ground: high ground in the north must not
+            // widen the view to the south (the Battle Frontier's sunken plaza, between the Tower's terrace and the
+            // gate's, drew the terrace under the camera when the two were asked as one, plan 01 · M10)
             const int look = 10;
             float perTile = 1f / MathF.Tan(lens.PitchDeg * MathF.PI / 180f);
-            var (low, high) = Relief.Range(map, (int)view.MinX, (int)view.MinZ - look, (int)view.MaxX + 1, (int)view.MaxZ + look);
+            var (low, _) = Relief.Range(map, (int)view.MinX, (int)view.MinZ - look, (int)view.MaxX + 1, (int)view.MinZ + 1);
+            var (_, high) = Relief.Range(map, (int)view.MinX, (int)view.MaxZ, (int)view.MaxX + 1, (int)view.MaxZ + look);
             view = view with { MinZ = view.MinZ - MathF.Max(0f, groundY - low) * perTile, MaxZ = view.MaxZ + MathF.Max(0f, high - groundY) * perTile };
         }
         // A shadow is as long as its caster is tall, times how low the sun is, and falls away from the sun

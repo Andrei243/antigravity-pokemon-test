@@ -1,0 +1,11 @@
+{
+  "area": "fullmoon_island_forest",
+  // D_02, the role Eterna Forest has
+  "bgmTrack": "sinnoh/forest",
+  // The clearing in the island's wood (plan 01 · M10, part b), with its pool in the middle. Cresselia rests there
+  // until it is come upon (hidden by FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA) and is the story's (plan 02 · S15,
+  // part b). The Lunar Wing lies where it rested only once it has flown: the original hides the ball from the start
+  // of the game (FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING, set by its new game and cleared by Cresselia's
+  // script), so it is held back until that scene
+  "heldBack": [ "item_lunar_wing" ]
+}

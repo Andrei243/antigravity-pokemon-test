@@ -178,6 +178,11 @@ public static class RegionDatabase
                 "GalacticHQHall", "GalacticHQLaboratory", "GalacticHQControlRoom",
                 // Plan 06 · R16a: the Underground (a matrix of the imported world, come to by the Explorer Kit alone)
                 "Underground",
+                // Plan 01 · M10, part b: Stark Mountain's rooms, Snowpoint Temple's floors, the islands' forests and the
+                // Battle Frontier (matrices of the imported world), and the Ribbon Syndicate's ground floor
+                "StarkMountainRoom1", "StarkMountainRoom2", "StarkMountainRoom3",
+                "SnowpointTemple1F", "SnowpointTempleB1F", "SnowpointTempleB2F", "SnowpointTempleB3F", "SnowpointTempleB4F", "SnowpointTempleB5F",
+                "FullmoonIslandForest", "NewmoonIslandForest", "BattleFrontier", "ResortAreaRibbonSyndicate1F",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

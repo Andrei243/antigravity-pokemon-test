@@ -21,6 +21,17 @@ public static class Cover
         ("^dun_jump", TerrainCover.Steps),                       // the run up to a Bicycle's ramp
         ("shadow|kage", null),                                   // shadows painted over the ground
         ("^puddle", null),                                       // the behaviour already says puddle
+        // The Battle Frontier's grounds (plan 01 · M10, part b): its causeways over the pools and their parapets, its
+        // lawns, the floor before its gate and the emblem set into the plaza, its walls, its planting; and what
+        // stands on the plaza with no model of its own (the Exchange Service Corner's booths, the two statues, the
+        // model of the Frontier), whose tiles show the ground round them. The gate's canopy says nothing of the ground
+        ("^bf_hashi02", TerrainCover.Fence),
+        ("^bf_hashi|^flobby_yuka|^bf_symbol", TerrainCover.Paving),
+        ("^bf_shiba", TerrainCover.Grass),
+        ("^bf_hei|^flobby_kabe", TerrainCover.Fence),
+        ("^bf_ueki", TerrainCover.Broadleaf),
+        ("^bf_shop|^bf_zou|^bf_mini", TerrainCover.Building),
+        ("^bf_yane|^bf_hata", null),
         ("tree3|^bf_tree", TerrainCover.Broadleaf),              // the Battle Zone's forests
         ("tree|^plant\\d|^imped$", TerrainCover.Tree),           // trees, forest fill and the dark floor under it
         ("^wcliff$|^enccliff$", TerrainCover.Rock),              // rock that is walked on
@@ -73,8 +84,10 @@ public static class Cover
         _ => null
     };
 
+    // Building: something built that a texture names where no model stands (the Battle Frontier's booths and statues)
     private static bool Stands(TerrainCover cover) =>
-        cover is TerrainCover.Tree or TerrainCover.Broadleaf or TerrainCover.Cliff or TerrainCover.Boulder or TerrainCover.Fence or TerrainCover.Lamp;
+        cover is TerrainCover.Tree or TerrainCover.Broadleaf or TerrainCover.Cliff or TerrainCover.Boulder or TerrainCover.Fence or TerrainCover.Lamp
+            or TerrainCover.Building;
 
     /// <summary>The look of every tile of a chunk, row by row.</summary>
     public static TerrainCover[] Of(LandData land, Func<int, ModelInfo?> propModel)

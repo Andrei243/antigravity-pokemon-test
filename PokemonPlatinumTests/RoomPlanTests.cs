@@ -51,6 +51,8 @@ public class RoomPlanTests
         new object[] { "SunyshoreMarket", 1, 3, 5, 12 },
         new object[] { "SunyshoreCityNortheastHouse", 1, 3, 4, 8 },
         new object[] { "FootstepHouse", 1, 3, 4, 8 },
+        // The Ribbon Syndicate's ground floor in the Resort Area, plan 01 · M10, part b
+        new object[] { "ResortAreaRibbonSyndicate1F", 1, 3, 15, 15 },
     };
 
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
@@ -199,6 +201,12 @@ public class RoomPlanTests
         new object[] { "GalacticHQLaboratory", "scientist_f", 36, 10, Direction.Left },
         new object[] { "GalacticHQControlRoom", "saturn", 8, 6, Direction.Up },
         new object[] { "GalacticHQControlRoom", "charon", 7, 6, Direction.Up },
+        new object[] { "ResortAreaRibbonSyndicate1F", "beauty", 15, 14, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate1F", "cashier_f", 15, 4, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate1F", "middle_aged_woman", 23, 5, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate1F", "lady", 6, 13, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate1F", "skitty", 10, 11, Direction.Down },
+        new object[] { "ResortAreaRibbonSyndicate1F", "psyduck", 25, 6, Direction.Down },
     };
 
     [Theory]

@@ -74,6 +74,9 @@ public sealed class BuildingInfo
     /// <summary>A wing of a larger structure beside its main block: drawn plain, without an entrance.</summary>
     public bool Annex { get; init; }
 
+    /// <summary>A low platform of stone before a hall whose doors are reached along a passage (plan 01 · M10, part b): no walls, no roof.</summary>
+    public bool Forecourt { get; init; }
+
     /// <summary>How tall the original's model stands, in tiles; 0 when nothing says.</summary>
     public float Height { get; init; }
 

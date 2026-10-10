@@ -1,0 +1,13 @@
+{
+  "area": "fullmoon_island",
+  // D_02, the role Eterna Forest has
+  "bgmTrack": "sinnoh/forest",
+  // An islet in the sea north-west of Canalave City (plan 01 · M10, part b): a pier, a wood, and the way into the
+  // clearing in its middle. Nobody walks here: Sailor Eldritch's ship lands the player on the pier (39, 277, facing
+  // west: the original's TakeShipFromCanalave) once his son's nightmare has been told of, which is the story's (plan
+  // 02 · S15, part b). The island's own sailor sails back (scripts/fullmoon_island.txt). The pier's three bollards
+  // are things nothing draws yet
+  "people": {
+    "sailor": { "name": "Sailor", "npcType": "Gentleman", "script": "Ferry", "still": true }
+  }
+}

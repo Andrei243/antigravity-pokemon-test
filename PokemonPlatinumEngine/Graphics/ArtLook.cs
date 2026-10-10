@@ -250,6 +250,81 @@ internal static class ArtLook
         };
     }
 
+    /// <summary>
+    /// The light of a place with a climate of its own (plan 01 · M10, part b; style guide, "Climates"), laid over the
+    /// rig it would have had.
+    /// <para>A volcano in the open: ash hangs in the air, so the sun is dimmer and redder, the shade turns from violet
+    /// to umber, an ashen haze closes in, and what burns of itself (lava) glows by day as lamps do by night. Inside
+    /// it the rock is lit from below by its own heat: a red-orange bounce off the floor under a dull amber key.</para>
+    /// <para>A temple of ice: a pale, blue-white key, blue shade, a cyan bounce off the ice, colour drained a little,
+    /// and bloom only on what is brighter than the ice.</para>
+    /// </summary>
+    public static LightRig InClimate(LightRig rig, Overworld.AreaClimate climate, bool cave)
+    {
+        switch (climate)
+        {
+            case Overworld.AreaClimate.Volcanic when cave:
+                return rig with
+                {
+                    Light = new SceneLighting(rig.Light.SunDirection, V(0.66f, 0.47f, 0.34f), V(0.47f, 0.36f, 0.4f), V(0.54f, 0.3f, 0.2f)),
+                    Background = Rgb(30, 16, 18),
+                    FogColor = V(0.14f, 0.07f, 0.06f),
+                    LampGlow = VolcanicGlow,
+                    GlowColor = LavaGlow,
+                    Post = rig.Post with { Saturation = 1.02f, ShadowTint = V(1.08f, 0.86f, 0.9f), HighlightTint = V(1.1f, 0.98f, 0.84f) }
+                };
+            case Overworld.AreaClimate.Volcanic:
+                return rig with
+                {
+                    Light = rig.Light with
+                    {
+                        SunColor = rig.Light.SunColor * 0.82f * V(1.06f, 0.93f, 0.82f),
+                        SkyAmbient = rig.Light.SkyAmbient * V(1.04f, 0.95f, 0.9f),
+                        GroundAmbient = rig.Light.GroundAmbient * V(1.2f, 1f, 0.86f)
+                    },
+                    FogColor = Vector3.Lerp(rig.FogColor, V(0.5f, 0.44f, 0.42f), 0.7f),
+                    FogAmount = MathF.Min(0.9f, rig.FogAmount + 0.14f),
+                    FogNear = MathF.Min(rig.FogNear, 40f),
+                    FogFar = MathF.Min(rig.FogFar, 66f),
+                    CloudShade = 0f,
+                    // No brighter after dark, and in lava's own colour: at a lamp's full strength, lit by lamplight, it is pale
+                    LampGlow = VolcanicGlow,
+                    GlowColor = LavaGlow,
+                    Post = rig.Post with
+                    {
+                        Saturation = rig.Post.Saturation * 0.92f,
+                        ShadowTint = V(1.02f, 0.9f, 0.96f),
+                        HighlightTint = V(1.08f, 0.99f, 0.88f)
+                    }
+                };
+            case Overworld.AreaClimate.Frozen when cave:
+                return rig with
+                {
+                    Light = new SceneLighting(rig.Light.SunDirection, V(0.56f, 0.6f, 0.68f), V(0.42f, 0.5f, 0.66f), V(0.34f, 0.42f, 0.5f)),
+                    Background = Rgb(16, 22, 36),
+                    FogColor = V(0.07f, 0.09f, 0.14f),
+                    Post = rig.Post with
+                    {
+                        Saturation = rig.Post.Saturation * 0.9f,
+                        BloomThreshold = MathF.Max(rig.Post.BloomThreshold, 0.95f),
+                        BloomStrength = rig.Post.BloomStrength * 0.5f,
+                        ShadowTint = V(0.82f, 0.9f, 1.2f),
+                        HighlightTint = V(0.96f, 1f, 1.08f)
+                    }
+                };
+            case Overworld.AreaClimate.Frozen:
+                return Snowbound(rig);
+            default:
+                return rig;
+        }
+    }
+
+    /// <summary>How brightly lava burns in a volcano's light, by day and by night: the glow of what is marked as lit in the art.</summary>
+    public const float VolcanicGlow = 0.75f;
+
+    /// <summary>What glows in a volcano's light turns into this, as lit glass elsewhere turns into <see cref="Lamplight"/>: lava's orange.</summary>
+    public static readonly Vector3 LavaGlow = new(1f, 0.58f, 0.2f);
+
     public static LightRig BattleRig(float hour) => AtHour(hour, BattleRigFor);
 
     // ------------------------------------------------------------------ field (HD-2D)

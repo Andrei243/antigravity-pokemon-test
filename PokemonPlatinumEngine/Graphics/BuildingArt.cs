@@ -14,7 +14,13 @@ internal enum WindowKind { Cottage, Shop, Sash, Ribbon, Slit, Arched, None }
 internal enum SignKind { None, Center, Mart, Lab, School, Poketch, Tv, Globe, Text, Galactic }
 
 [Flags]
-internal enum RoofGear { None = 0, Vents = 1, Mast = 2, Dish = 4, Globe = 8, Skylight = 16, Stack = 32, Spikes = 64, Solar = 128, Spire = 256 }
+internal enum RoofGear
+{
+    None = 0, Vents = 1, Mast = 2, Dish = 4, Globe = 8, Skylight = 16, Stack = 32, Spikes = 64, Solar = 128, Spire = 256,
+    // The Battle Frontier (plan 01 · M10, part b): merlons along a flat roof's parapet, a turret at each front corner,
+    // and a lantern room that burns all night on top of a tower's last stage
+    Battlements = 512, Turrets = 1024, Beacon = 2048
+}
 
 /// <summary>How one building is put together: its wall material, roof, windows, door, sign and extras.</summary>
 internal sealed record BuildingStyle
@@ -76,6 +82,12 @@ internal sealed record BuildingStyle
     /// carries a rosette either side of the name.
     /// </summary>
     public bool Veranda { get; init; }
+
+    /// <summary>How wide a tower's shaft may stand on its ground stage, in texels; nought for the kit's three tiles.</summary>
+    public int Shaft { get; init; }
+
+    /// <summary>How many stages a tower's shaft has; nought for the kit's three (a lighthouse's two).</summary>
+    public int StageCount { get; init; }
 
     public bool Pitched => Roof != RoofShape.Flat;
 

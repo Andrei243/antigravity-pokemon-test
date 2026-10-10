@@ -197,12 +197,17 @@ public sealed class Report
         }
 
         var buildings = WorldModels.All.Where(m => m.Role == ModelRole.Building).ToList();
+        // Since plan 01 · M10, part b, every model has its look; the line names any that a later region's import adds
+        var standIns = WorldModels.All.Where(m => m.StandInUntil != null).ToList();
+        string waiting = standIns.Count == 0
+            ? "No model has a stand-in: each has a look of its own."
+            : $"{standIns.Count} have a stand-in for now: {string.Join(", ", standIns.GroupBy(m => m.StandInUntil).OrderBy(g => g.Key, StringComparer.Ordinal).Select(g => $"{g.Count()} until {g.Key}"))}.";
         text.Append(CultureInfo.InvariantCulture, $"""
 
             ## In numbers
 
             - {buildings.Count} models are buildings, of {buildings.Select(m => m.Kind).Distinct().Count()} kinds; {WorldModels.All.Count(m => m.Role == ModelRole.Scenery)} are props; {WorldModels.All.Count(m => m.Role == ModelRole.Door)} are doors.
-            - {WorldModels.All.Count(m => m.StandInUntil != null)} have a stand-in for now: {string.Join(", ", WorldModels.All.Where(m => m.StandInUntil != null).GroupBy(m => m.StandInUntil).OrderBy(g => g.Key, StringComparer.Ordinal).Select(g => $"{g.Count()} until {g.Key}"))}.
+            - {waiting}
 
             """);
         return text.ToString().ReplaceLineEndings("\n");

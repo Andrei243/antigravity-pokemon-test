@@ -1,0 +1,29 @@
+{
+  "key": "newmoon_island",
+  "index": 320,
+  "name": "Newmoon Island",
+  "matrix": 0,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "D_03",
+  "nightMusic": "D_03",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 137, "z": 268, "to": "newmoon_island_forest", "toWarp": 0 },
+    { "x": 138, "z": 268, "to": "newmoon_island_forest", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "none", "x": 151, "z": 277, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEWMOON_ISLAND_SAILOR", "script": "2" },
+    { "id": "bollard_1", "looks": "bollard", "movement": "none", "x": 151, "z": 278, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "bollard_2", "looks": "bollard", "movement": "none", "x": 151, "z": 276, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "bollard_3", "looks": "bollard", "movement": "none", "x": 151, "z": 275, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -149,6 +149,18 @@ public enum PropType
     GrandFountain,
     /// <summary>A swimming pool in a kerb of pale tiles, with a ladder, and a parasol over a deckchair beside it (the Resort Area).</summary>
     Pool,
+    /// <summary>A pool of lava lying in the rock, its crust drifting over the glow beneath (Stark Mountain's flank; part b).</summary>
+    Lava,
+    /// <summary>The mouth of a volcano: tiers of dark rock up to a rim, the glow in its throat and the smoke that rises from it (Stark Mountain).</summary>
+    Crater,
+    /// <summary>A stall with a counter on the side its attendant serves across, under a striped awning (the Battle Frontier's Exchange Service Corner).</summary>
+    Booth,
+    /// <summary>A model of the Battle Frontier on a table of stone, in the middle of its plaza.</summary>
+    ScaleModel,
+    /// <summary>A bronze of a trainer holding a Poké Ball high, on a plinth (before the Battle Frontier's gate).</summary>
+    TrainerStatue,
+    /// <summary>A giant of carved stone, taller than a door (the statue in Snowpoint Temple's hall).</summary>
+    Colossus,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,

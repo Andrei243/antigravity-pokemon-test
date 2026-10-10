@@ -1,0 +1,8 @@
+{
+  "area": "seabreak_path",
+  // TOWN03, Floaroma Town's role
+  "bgmTrack": "sinnoh/floaroma"
+  // A causeway of flowers three tiles wide, eight chunks long, between rock walls over the open sea (plan 01 · M10,
+  // part b). It is there from the start and joined to nothing: Route 224's chunks are swapped for those that lead
+  // onto it once VAR_HIDDEN_LOCATION_SEABREAK_PATH holds the original's number (world.json's swaps). Nobody stands on it
+}

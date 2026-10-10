@@ -1,0 +1,37 @@
+# The Battle Frontier's grounds (plan 01 · M10, part b). docs/scripts.md describes the language; the lines are our
+# own, on the original's beats (scripts_battle_frontier.s).
+#
+# The five facilities' doors are shut until their insides are built, and the Exchange Service Corner's three booths
+# wait for the Battle Points they deal in (plan 06 · R18): the attendants say so. The reporter whom the original's
+# arrival script moves about the grounds waits for the television programmes (plan 08).
+
+# The two booths that trade Battle Points for prizes (the original's scripts 23 and 25: PokeMartFrontier).
+script ExchangeCorner
+  face self player
+  say "Welcome to the Exchange Service Corner, where Battle Points are traded for prizes!"
+  say "The prizes are still being unpacked, I'm afraid. Do come back once the halls have opened their doors."
+  end
+
+
+# The third booth, which sells scratch-off cards for a Battle Point each (the original's common script 10490).
+script ScratchCards
+  face self player
+  say "Scratch-off cards! One Battle Point a card, and every card a chance at a prize."
+  say "...Or there will be, as soon as the cards come in. Try me again once the halls are open."
+  end
+
+
+# The statues either side of the way in from the gate (the original's scripts 31 and 32).
+script StatueWest
+  text "A statue of a trainer holding a Poké Ball high, with a Pokémon just caught inside it."
+  end
+
+script StatueEast
+  text "A plate on the statue's foot gives it a name: Proud of the Catch."
+  end
+
+
+# The model in the middle of the plaza (the original's script 33).
+script ScaleModel
+  text "A model of the whole Battle Frontier, small enough to walk round: the tower, the four halls and the plaza between them."
+  end

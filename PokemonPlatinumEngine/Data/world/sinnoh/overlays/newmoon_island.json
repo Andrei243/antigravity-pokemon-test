@@ -1,0 +1,14 @@
+{
+  "area": "newmoon_island",
+  // D_03, the role Turnback Cave has
+  "bgmTrack": "sinnoh/turnback_cave",
+  // An islet in the sea north-east of Canalave City (plan 01 · M10, part b), Fullmoon Island's twin under a darker
+  // sky. Nobody walks here: the dream in the Harbor Inn puts the player down on the pier (152, 277, facing south)
+  // and Sailor Eldritch's ship lands there afterwards, both by one of the original's event gifts, placed by the
+  // session that brings them. The island's sailor sails back (scripts/newmoon_island.txt); he is away while the
+  // dream lasts (FLAG_HIDE_NEWMOON_ISLAND_SAILOR, the original's own flag, which that session's arrival script sets
+  // and clears). The pier's three bollards are things nothing draws yet
+  "people": {
+    "sailor": { "name": "Sailor", "npcType": "Gentleman", "script": "Ferry", "still": true }
+  }
+}

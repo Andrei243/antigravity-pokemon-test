@@ -47,6 +47,12 @@ internal sealed class MapScene
     public const float CoronetSouthFovYDeg = 12.67f;
     public const float CoronetSouthDistance = 866.554f / 16f;
 
+    // The great room inside Stark Mountain: about as far off as the overworld's camera and far steeper, with a cave's
+    // wide lens, so more of its floor is in view (CAMERA_TYPE_STARK_MOUNTAIN_ROOM_2: 662.9 units, 70.47°, a 9.85° half FOV)
+    public const float StarkMountainPitchDeg = 70.47f;
+    public const float StarkMountainFovYDeg = 19.7f;
+    public const float StarkMountainDistance = 662.922f / 16f;
+
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
     public const float IndoorFovYDeg = 30f;
@@ -128,6 +134,7 @@ internal sealed class MapScene
             FieldCamera.Cave => new FieldView(CavePitchDeg, CaveFovYDeg, CaveDistance),
             FieldCamera.ZoomedIn => new FieldView(ZoomedPitchDeg, ZoomedFovYDeg, ZoomedDistance),
             FieldCamera.CoronetSouth => new FieldView(CoronetSouthPitchDeg, CoronetSouthFovYDeg, CoronetSouthDistance),
+            FieldCamera.StarkMountain => new FieldView(StarkMountainPitchDeg, StarkMountainFovYDeg, StarkMountainDistance),
             _ => FieldView.Outdoor
         };
     }
@@ -200,7 +207,12 @@ internal sealed class MapScene
         SceneTextures.Warm();
         if (map.IsIndoors) return;
         foreach (var b in BuildingsIn(map, chunk))
-            _ = SceneTextures.RoofTiles(BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0)).RoofColor);
+        {
+            var style = BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0));
+            _ = SceneTextures.RoofTiles(style.RoofColor);
+            // A castle's turrets are capped in its accent, not in its roof's colour
+            if (style.Gear.HasFlag(RoofGear.Turrets)) _ = SceneTextures.RoofTiles(style.Accent);
+        }
     }
 
     /// <summary>

@@ -1,0 +1,60 @@
+{
+  "key": "snowpoint_temple_b1f",
+  "index": 279,
+  "name": "Snowpoint Temple",
+  "matrix": 69,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "encounters": "snowpoint_temple_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 47 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Golbat", "level": 50 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Sneasel", "level": 49 },
+    { "species": "Jynx", "level": 47 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Jynx", "level": 49 },
+    { "species": "Golbat", "level": 47 },
+    { "species": "Jynx", "level": 49 },
+    { "species": "Golbat", "level": 47 }
+  ],
+  "landRate": 5,
+  "day": [
+    "Golbat",
+    "Golbat"
+  ],
+  "night": [
+    "Golbat",
+    "Golbat"
+  ],
+  "swarm": [
+    "Golbat",
+    "Golbat"
+  ],
+  "radar": [
+    "Golbat",
+    "Sneasel",
+    "Jynx",
+    "Golbat"
+  ],
+  "warps": [
+    { "x": 4, "z": 3, "to": "snowpoint_temple_1f", "toWarp": 1 },
+    { "x": 14, "z": 3, "to": "snowpoint_temple_b2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_calcium", "looks": "pokeball", "movement": "none", "x": 12, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OBTAINED_SNOWPOINT_TEMPLE_B1F_CALCIUM", "item": "Calcium", "script": "7242" }
+  ],
+  "signs": [],
+  "triggers": []
+}

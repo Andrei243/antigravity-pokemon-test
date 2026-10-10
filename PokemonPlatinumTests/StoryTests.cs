@@ -606,8 +606,6 @@ public class StoryTests
         started.Add(FieldScripts.TrainerPair);
         // An Egg hatching at the end of a step (plan 06 · R15)
         started.Add(FieldScripts.HatchEgg);
-        // The Ribbon Syndicate's doorkeeper and cashier, whose room is in the Resort Area (plan 06 · R17b; plan 01 · M10's)
-        started.UnionWith(new[] { FieldScripts.RibbonSyndicateEntry, FieldScripts.RibbonSyndicateCashier });
         // The Underground (plan 06 · R16a): a wall that holds something, a base's PC and the bag's way up, which the game starts
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.UndergroundScripts.Select(name => Scripts.Find(name, "underground")!.FullName));
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());

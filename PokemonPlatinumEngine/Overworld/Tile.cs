@@ -103,7 +103,22 @@ public enum FieldCamera
     /// <summary>515.5 units away, pitched 54.66°, 20.92° of view: Floaroma Meadow, Eterna Forest, Amity Square.</summary>
     ZoomedIn,
     /// <summary>866.6 units away, pitched 73.11°, 12.67° of view: the outside of Mt. Coronet's south face.</summary>
-    CoronetSouth
+    CoronetSouth,
+    /// <summary>662.9 units away, pitched 70.47°, 19.7° of view: the great room inside Stark Mountain, seen from high over it.</summary>
+    StarkMountain
+}
+
+/// <summary>
+/// What the air of a place does to its light, beyond the hour and the weather (plan 01 · M10, part b; style guide,
+/// "Climates"): a volcano's ash and heat, the cold of a temple of ice. Named by an area's overlay.
+/// </summary>
+public enum AreaClimate
+{
+    Temperate,
+    /// <summary>Stark Mountain: a sun dimmed and reddened by ash outdoors, rock lit from below by its own heat inside.</summary>
+    Volcanic,
+    /// <summary>Snowpoint Temple: stone and ice under a cold, blue light.</summary>
+    Frozen
 }
 
 /// <summary>Which kind of tree fills a map's forests: Sinnoh's layered pines or round broadleaf trees.</summary>

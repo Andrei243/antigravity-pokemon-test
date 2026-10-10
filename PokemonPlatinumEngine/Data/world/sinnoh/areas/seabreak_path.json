@@ -1,0 +1,21 @@
+{
+  "key": "seabreak_path",
+  "index": 472,
+  "name": "Seabreak Path",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Water",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Water",
+  "dayMusic": "TOWN03_D",
+  "nightMusic": "TOWN03_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

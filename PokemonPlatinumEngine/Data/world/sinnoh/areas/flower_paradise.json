@@ -1,0 +1,23 @@
+{
+  "key": "flower_paradise",
+  "index": 274,
+  "name": "Flower Paradise",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Park",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "TOWN03_D",
+  "nightMusic": "TOWN03_N",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [],
+  "objects": [
+    { "id": "shaymin", "looks": "shaymin", "movement": "none", "x": 911, "z": 203, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FLOWER_PARADISE_SHAYMIN", "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

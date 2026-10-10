@@ -1,0 +1,61 @@
+{
+  "key": "snowpoint_temple_b2f",
+  "index": 280,
+  "name": "Snowpoint Temple",
+  "matrix": 70,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "29",
+  "camera": "Cave",
+  "battleBackground": "Cave2",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "encounters": "snowpoint_temple_b2f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 47 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Golbat", "level": 50 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Sneasel", "level": 50 },
+    { "species": "Jynx", "level": 48 },
+    { "species": "Golbat", "level": 49 },
+    { "species": "Jynx", "level": 50 },
+    { "species": "Golbat", "level": 47 },
+    { "species": "Jynx", "level": 50 },
+    { "species": "Golbat", "level": 47 }
+  ],
+  "landRate": 5,
+  "day": [
+    "Golbat",
+    "Golbat"
+  ],
+  "night": [
+    "Golbat",
+    "Golbat"
+  ],
+  "swarm": [
+    "Golbat",
+    "Golbat"
+  ],
+  "radar": [
+    "Golbat",
+    "Sneasel",
+    "Jynx",
+    "Golbat"
+  ],
+  "warps": [
+    { "x": 6, "z": 3, "to": "snowpoint_temple_b1f", "toWarp": 1 },
+    { "x": 14, "z": 3, "to": "snowpoint_temple_b3f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rock_smash_1", "looks": "rock_smash", "movement": "none", "x": 4, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_1", "script": "10001" },
+    { "id": "rock_smash_2", "looks": "rock_smash", "movement": "none", "x": 9, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAP_LOCAL_HIDE_OBSTACLE_2", "script": "10001" }
+  ],
+  "signs": [],
+  "triggers": []
+}

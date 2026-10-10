@@ -1,0 +1,29 @@
+{
+  "key": "fullmoon_island",
+  "index": 260,
+  "name": "Fullmoon Island",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "Default",
+  "battleBackground": "Plain",
+  "dayMusic": "D_02",
+  "nightMusic": "D_02",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 53, "z": 268, "to": "fullmoon_island_forest", "toWarp": 0 },
+    { "x": 54, "z": 268, "to": "fullmoon_island_forest", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "none", "x": 40, "z": 277, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "bollard_1", "looks": "bollard", "movement": "none", "x": 40, "z": 276, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "bollard_2", "looks": "bollard", "movement": "none", "x": 40, "z": 275, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "bollard_3", "looks": "bollard", "movement": "none", "x": 40, "z": 278, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -11,6 +11,21 @@
   "hidden": [
     { "var": "VAR_HIDDEN_LOCATION_SPRING_PATH", "value": 786, "chunkX": 23, "chunkY": 21, "chunksWide": 2, "chunksHigh": 2 }
   ],
+  // Chunks the original puts others in place of once the story reveals a place (plan 01 · M10, part b): the Seabreak
+  // Path, north of Route 224. Four of the route's chunks are swapped for four that open the way onto it across the sea
+  // (MapMatrix_RevealSeabreakPath) once VAR_HIDDEN_LOCATION_SEABREAK_PATH holds the original's number for it (0x1028),
+  // which Oak's Letter read at the white rock sets
+  "swaps": [
+    {
+      "var": "VAR_HIDDEN_LOCATION_SEABREAK_PATH", "value": 4136,
+      "cells": [
+        { "chunkX": 28, "chunkY": 15, "chunk": 119 },
+        { "chunkX": 27, "chunkY": 16, "chunk": 120 },
+        { "chunkX": 28, "chunkY": 16, "chunk": 121 },
+        { "chunkX": 27, "chunkY": 17, "chunk": 122 }
+      ]
+    }
+  ],
   "maps": [
     { "name": "Sinnoh", "matrix": 0, "trees": "Pine" },
     { "name": "LakeVerity", "matrix": 101, "area": "lake_verity_low_water", "trees": "Pine" },
@@ -130,7 +145,21 @@
     // Explorer Kit, so the tiles it is come to by are named here: the mat of the secret base, and the four tiles of
     // every chunk that whoever digs down lands on (its tunnels are several systems that don't join one another)
     { "name": "Underground", "matrix": 2, "area": "underground", "setting": "Cave", "arrivals": [[15, 23]],
-      "arrivalsInEveryChunk": [[8, 8], [23, 8], [8, 23], [23, 23]] }
+      "arrivalsInEveryChunk": [[8, 8], [23, 8], [8, 23], [23, 23]] },
+    // Plan 01 · M10, part b: Stark Mountain's three rooms, Snowpoint Temple's six floors, the forests of Fullmoon and
+    // Newmoon Islands (a clearing each, looked at from near as Eterna Forest is) and the Battle Frontier's grounds
+    { "name": "StarkMountainRoom1", "matrix": 57, "area": "stark_mountain_room_1", "setting": "Cave" },
+    { "name": "StarkMountainRoom2", "matrix": 58, "area": "stark_mountain_room_2", "setting": "Cave" },
+    { "name": "StarkMountainRoom3", "matrix": 59, "area": "stark_mountain_room_3", "setting": "Cave" },
+    { "name": "SnowpointTemple1F", "matrix": 68, "area": "snowpoint_temple_1f", "setting": "Cave" },
+    { "name": "SnowpointTempleB1F", "matrix": 69, "area": "snowpoint_temple_b1f", "setting": "Cave" },
+    { "name": "SnowpointTempleB2F", "matrix": 70, "area": "snowpoint_temple_b2f", "setting": "Cave" },
+    { "name": "SnowpointTempleB3F", "matrix": 71, "area": "snowpoint_temple_b3f", "setting": "Cave" },
+    { "name": "SnowpointTempleB4F", "matrix": 72, "area": "snowpoint_temple_b4f", "setting": "Cave" },
+    { "name": "SnowpointTempleB5F", "matrix": 73, "area": "snowpoint_temple_b5f", "setting": "Cave" },
+    { "name": "FullmoonIslandForest", "matrix": 53, "area": "fullmoon_island_forest", "trees": "Pine" },
+    { "name": "NewmoonIslandForest", "matrix": 110, "area": "newmoon_island_forest", "trees": "Pine" },
+    { "name": "BattleFrontier", "matrix": 256, "area": "battle_frontier", "trees": "Round" }
   ],
   "areas": [
     "twinleaf_town",
@@ -302,6 +331,24 @@
     // Plan 02 · S11, part a
     "lake_acuity",
     // Plan 06 · R16a
-    "underground"
+    "underground",
+    // Plan 01 · M10, part b: the rest of the post-game
+    "stark_mountain_outside",
+    "stark_mountain_room_1",
+    "stark_mountain_room_2",
+    "stark_mountain_room_3",
+    "snowpoint_temple_1f",
+    "snowpoint_temple_b1f",
+    "snowpoint_temple_b2f",
+    "snowpoint_temple_b3f",
+    "snowpoint_temple_b4f",
+    "snowpoint_temple_b5f",
+    "fullmoon_island",
+    "fullmoon_island_forest",
+    "newmoon_island",
+    "newmoon_island_forest",
+    "seabreak_path",
+    "flower_paradise",
+    "battle_frontier"
   ]
 }

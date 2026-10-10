@@ -1,0 +1,10 @@
+# Stark Mountain's foot and mouth (plan 01 · M10, part b). docs/scripts.md describes the language
+# (scripts_stark_mountain_outside.s).
+#
+# Arriving sets what the original's does. The two grunts of Team Galactic who go in ahead of the player (the
+# original's trigger at 752, 235 while VAR_STARK_MOUNTAIN_OUTSIDE_STATE is 0) and Looker and Buck's parting once the
+# Magma Stone is back in its place are the story's (plan 02 · S15, part b).
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_STARK_MOUNTAIN_EXTERIOR
+  end

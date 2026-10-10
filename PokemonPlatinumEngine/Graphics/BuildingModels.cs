@@ -60,6 +60,11 @@ internal static class BuildingModels
     {
         kit.Origin = new Vector3(b.X0, baseY, b.Y0);
         string id = $"b{b.X0}_{b.Y0}";
+        if (b.Forecourt)
+        {
+            Forecourt(kit, b);
+            return;
+        }
         int x0 = BuildingArt.Inset, x1 = b.Width * BuildingArt.Bay - BuildingArt.Inset;
         // The back wall stands a tile inside the footprint, so the roof doesn't swallow the whole block
         int zB = BuildingArt.Bay, zF = b.Depth * BuildingArt.Bay;
@@ -108,6 +113,7 @@ internal static class BuildingModels
         }
         if (stages) Stages(kit, b, whole, targets, id, x0, x1, zB, zF, h);
         else if (s.Tiers > 0) Tiers(kit, b, s, id, x0, x1, zB, zF, h);
+        if (s.Gear.HasFlag(RoofGear.Turrets) && !b.Annex) Turrets(kit, s, targets, id, x0, x1, zF, h);
 
         var bays = BuildingArt.BaysOf(b);
         byte windows = BuildingArt.WindowLight(b, s);
@@ -135,6 +141,19 @@ internal static class BuildingModels
                 LightPool(kit, windowPools, cx, zF, 70, 66);
             }
         }
+    }
+
+    /// <summary>How high a hall's forecourt stands, in texels: low enough that whoever walks the passage behind it is seen.</summary>
+    public const int ForecourtHeight = 14;
+
+    /// <summary>A forecourt: a platform of cut stone over its tiles, paved on top (the Battle Frontier's halls).</summary>
+    private static void Forecourt(KitBuilder kit, BuildingInfo b)
+    {
+        int w = b.Width * BuildingArt.Bay, d = b.Depth * BuildingArt.Bay;
+        var top = kit.Face($"forecourt.top.{w}x{d}", w, d, BuildingArt.PaintForecourtTop);
+        var front = kit.Face($"forecourt.face.{w}", w, ForecourtHeight, BuildingArt.PaintForecourtFace);
+        var side = kit.Face($"forecourt.face.{d}", d, ForecourtHeight, BuildingArt.PaintForecourtFace);
+        kit.Box(0, w, 0, d, 0, ForecourtHeight, top, front, side, side);
     }
 
     /// <summary>The pitch of the Foreign Building's roof.</summary>
@@ -226,25 +245,29 @@ internal static class BuildingModels
     private static void Stages(KitBuilder kit, BuildingInfo b, BuildingStyle s, BuildingTargets targets, string id, int x0, int x1, int zB, int zF, int h)
     {
         bool lighthouse = b.Kind == BuildingKind.Lighthouse;
-        int count = lighthouse ? 2 : 3;
-        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150, 300);
+        // A great tower (the Battle Tower) has a shaft as wide as its style says, more stages, and stands taller
+        bool great = s.Shaft > 96;
+        bool beacon = lighthouse || s.Gear.HasFlag(RoofGear.Beacon);
+        int count = s.StageCount > 0 ? s.StageCount : lighthouse ? 2 : 3;
+        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150, great ? 380 : 300);
         const int lantern = 24, capRows = 30;
-        int rows = Math.Max(30, (total - h - (lighthouse ? lantern + 6 : 0)) / count);
+        int rows = Math.Max(30, (total - h - (beacon ? lantern + 6 : 0)) / count);
 
         // The shaft stands in the middle of the ground stage, no wider than three tiles and a little deeper than half
-        float width = MathF.Min(x1 - x0 - 16, 96), depthOf = MathF.Min(zF - zB - 4, 64);
+        float width = MathF.Min(x1 - x0 - 16, great ? s.Shaft : 96), depthOf = MathF.Min(zF - zB - 4, great ? s.Shaft * 0.62f : 64);
+        float stepIn = great ? MathF.Round(width / 7f) : 12, stepBack = great ? MathF.Round(depthOf / 7f) : 8;
         float cx = (x0 + x1) / 2f, cz = zB + (zF - zB) * 0.45f, y = h - 5;
         for (int i = 0; i < count; i++)
         {
             Stage(kit, s, $"{id}.stage{i}", cx - width / 2, cx + width / 2, cz - depthOf / 2, cz + depthOf / 2, y, y + rows,
                 lighthouse && i == 0 ? s.Accent : null);
             y += rows;
-            width = MathF.Max(40, width - 12);
-            depthOf = MathF.Max(24, depthOf - 8);
+            width = MathF.Max(40, width - stepIn);
+            depthOf = MathF.Max(24, depthOf - stepBack);
         }
-        width += 12; depthOf += 8;   // the size of the last stage
+        width += stepIn; depthOf += stepBack;   // the size of the last stage
 
-        if (lighthouse)
+        if (beacon)
         {
             // The gallery, then the lantern room, set in from it
             Stage(kit, s with { Window = WindowKind.None }, id + ".gallery", cx - width / 2 - 6, cx + width / 2 + 6, cz - depthOf / 2 - 4, cz + depthOf / 2 + 6, y, y + 6);
@@ -258,9 +281,14 @@ internal static class BuildingModels
         }
 
         // The cap: four slopes to a point, in the roof's own tiles
-        var tiles = targets.RoofTiles(s.RoofColor);
-        float capHeight = lighthouse ? capRows * 0.6f : capRows;
-        float ex0 = cx - width / 2 - 3, ex1 = cx + width / 2 + 3, ez0 = cz - depthOf / 2 - 3, ez1 = cz + depthOf / 2 + 3;
+        float capHeight = lighthouse ? capRows * 0.6f : great ? capRows * 1.5f : capRows;
+        Cap(kit, targets.RoofTiles(s.RoofColor), cx, cz, width + 6, depthOf + 6, y, capHeight);
+    }
+
+    /// <summary>A pointed cap of roof tiles: four slopes from a rectangle to a point over its middle.</summary>
+    private static void Cap(KitBuilder kit, MeshBuilder tiles, float cx, float cz, float width, float depthOf, float y, float capHeight)
+    {
+        float ex0 = cx - width / 2, ex1 = cx + width / 2, ez0 = cz - depthOf / 2, ez1 = cz + depthOf / 2;
         var apex = kit.At(cx, y + capHeight, cz);
         var white = Color.White;
         void Slope(Vector3 a, Vector3 c, Vector3 normal)
@@ -272,6 +300,24 @@ internal static class BuildingModels
         Slope(kit.At(ex1, y, ez0), kit.At(ex0, y, ez0), Vector3.Normalize(new Vector3(0, 0.6f, -1)));
         Slope(kit.At(ex0, y, ez0), kit.At(ex0, y, ez1), Vector3.Normalize(new Vector3(-1, 0.6f, 0)));
         Slope(kit.At(ex1, y, ez1), kit.At(ex1, y, ez0), Vector3.Normalize(new Vector3(1, 0.6f, 0)));
+    }
+
+    /// <summary>How wide a castle's turret is, how far it stands above the parapet and how tall its cap is, in texels.</summary>
+    public const int TurretSize = 30, TurretRise = 28, TurretCap = 26;
+
+    /// <summary>
+    /// A castle's turrets (the Battle Castle): a square tower at each front corner, standing a little proud of the
+    /// walls from the ground to above the parapet, with slit windows, under a pointed cap in the building's accent.
+    /// </summary>
+    private static void Turrets(KitBuilder kit, BuildingStyle s, BuildingTargets targets, string id, int x0, int x1, int zF, int h)
+    {
+        var body = s with { Window = WindowKind.Slit, Band = false };
+        foreach (float tx in new[] { x0 - 4f, x1 + 4f - TurretSize })
+        {
+            float z0 = zF - TurretSize + 6, top = h + TurretRise;
+            Stage(kit, body, $"{id}.turret", tx, tx + TurretSize, z0, z0 + TurretSize, 0, top);
+            Cap(kit, targets.RoofTiles(s.Accent), tx + TurretSize / 2f, z0 + TurretSize / 2f, TurretSize + 6, TurretSize + 6, top, TurretCap);
+        }
     }
 
     // ------------------------------------------------------------------ roofs
@@ -408,6 +454,18 @@ internal static class BuildingModels
         kit.Box(x0, x1, zB, zB + wall, roofY, h, top: Cap(w, wall), south: Inner(w));
         kit.Box(x0, x0 + wall, zB + wall, zF - wall, roofY, h, top: Cap(wall, d - 2 * wall), east: Inner(d - 2 * wall));
         kit.Box(x1 - wall, x1, zB + wall, zF - wall, roofY, h, top: Cap(wall, d - 2 * wall), west: Inner(d - 2 * wall));
+
+        // A castle's battlements: merlons eight texels wide and as far apart, seven rows above the parapet, along the
+        // front and both sides
+        if (s.Gear.HasFlag(RoofGear.Battlements))
+        {
+            for (int mx = x0; mx + 8 <= x1; mx += 16) kit.Block("merlon", BuildingArt.MerlonStone, mx, mx + 8, zF - wall, zF, h, h + 7);
+            for (int mz = zB + 8; mz + 8 <= zF - wall; mz += 16)
+            {
+                kit.Block("merlon.side", BuildingArt.MerlonStone, x0, x0 + wall, mz, mz + 8, h, h + 7);
+                kit.Block("merlon.side", BuildingArt.MerlonStone, x1 - wall, x1, mz, mz + 8, h, h + 7);
+            }
+        }
 
         // Equipment stands toward the back, where the camera sees the roof best
         float back = zB + wall + 6;

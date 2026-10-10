@@ -1,0 +1,52 @@
+# The Ribbon Syndicate's ground floor in the Resort Area (plan 01 · M10, part b), rebuilt to the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_resort_area_ribbon_syndicate_1f.s).
+#
+# The hostess stands on the tile inside the door. As the player comes in she asks for the team's ribbons
+# (common.RibbonSyndicateEntry, plan 06 · R17b: ten different ones between them, and the door is theirs for good,
+# FLAG_JOINED_RIBBON_SYNDICATE); whoever hasn't them is shown out, to the tile before the door. A member finds her a
+# step to the east, out of the way. The cashier behind the counter is common.RibbonSyndicateCashier. The lift in the
+# back wall goes to the spa on the floor above, which isn't built (docs/mechanics/rulings.md).
+
+
+# The original's OnTransition (the hostess beside the way for a member) and OnFrame_CheckEntry
+script OnEnter
+  if flag FLAG_JOINED_RIBBON_SYNDICATE goto Member
+  speaker "Hostess"
+  wait 0.3
+  call RibbonSyndicateEntry
+  if flag FLAG_JOINED_RIBBON_SYNDICATE goto Joined
+  wait 0.3
+  warp "Sinnoh" 824 454 down
+  end
+label Joined
+  face beauty left
+  walk beauty right 1
+  face beauty left
+  end
+label Member
+  place beauty 16 14 down
+  end
+
+
+script Hostess
+  speaker "Hostess"
+  say "{player}! We had so looked forward to seeing you again. Do make yourself at home."
+  end
+
+
+script Member
+  speaker "Member"
+  say "To belong here says something about a person. One does not simply walk in off the beach, you know."
+  end
+
+
+# She has one thing to say to a boy and another to a girl
+script Lady
+  speaker "Lady"
+  if girl goto Girl
+  say "I do wish gentlemen took more trouble over how they look. A fine Pokémon deserves a trainer fit to stand beside it."
+  end
+label Girl
+  say "A lady ought to be worth seeing beside her Pokémon. I have always said so, and I see that you agree."
+  end

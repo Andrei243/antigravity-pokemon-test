@@ -1,0 +1,22 @@
+{
+  "area": "stark_mountain_outside",
+  "climate": "Volcanic",
+  // The original's role is TOWN06, which Routes 225 to 227 share and which has no song yet (plan 05 · A6): Route
+  // 206's stands in
+  "bgmTrack": "sinnoh/route206",
+  "trees": "Round",
+  // Looker and Buck before the mountain's mouth, and the two grunts of Team Galactic who go in ahead of the player
+  // (trigger 0, while VAR_STARK_MOUNTAIN_OUTSIDE_STATE is 0), wait for the story (plan 02 · S15, part b)
+  "people": {
+    "dragon_tamer_darien": {
+      "name": "Darien",
+      "trainer": {
+        "dialogueBefore": "Dragon Tamer Darien: A dragon is at its best where the air is hottest. So this is where mine and I come to train!",
+        "dialogueAfter": "Dragon Tamer Darien: The ash got in its eyes. That's my story, and I'm keeping to it."
+      }
+    }
+  },
+  "signs": {
+    "signboard": "Stark Mountain\nThe mountain is awake. Go carefully."
+  }
+}

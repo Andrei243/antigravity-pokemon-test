@@ -1,0 +1,9 @@
+# Flower Paradise (plan 01 · M10, part b). docs/scripts.md describes the language (scripts_flower_paradise.s).
+#
+# Arriving sets what the original's does for the place itself. Shaymin, which the original's arrival shows only to
+# whoever carries Oak's Letter and has the National Pokédex (FLAG_HIDE_FLOWER_PARADISE_SHAYMIN), is one of its event
+# gifts: the session that brings them places it and writes its battle.
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_FLOWER_PARADISE
+  end

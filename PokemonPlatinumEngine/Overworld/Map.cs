@@ -36,6 +36,9 @@ public sealed class MapArea
     /// <summary>Snow country: more of its open ground is snow than lawn, so snow lies on its trees too.</summary>
     public bool Snowbound { get; set; }
 
+    /// <summary>What the air of the place does to its light (plan 01 · M10, part b): a volcano's ash and heat, a temple's cold.</summary>
+    public AreaClimate Climate { get; init; }
+
     public Architecture? Architecture { get; set; }
     public BattleArena? Arena { get; set; }
 
@@ -807,6 +810,127 @@ public class Map
         foreach (var kv in place.SignScripts) SignScripts[kv.Key] = kv.Value;
         foreach (var kv in place.TileScripts) TileScripts[kv.Key] = kv.Value;
         foreach (var kv in place.HiddenItems) HiddenItems[kv.Key] = kv.Value;
+    }
+
+    // ------------------------------------------------------------------ chunks the story swaps (plan 01 · M10, part b)
+
+    /// <summary>
+    /// Chunks of the map that are others once the story reveals a place: the original writes four other chunks into
+    /// Route 224's cells of the matrix (<c>MapMatrix_RevealSeabreakPath</c>) once a variable holds its number for the
+    /// Seabreak Path, and the way onto the path lies across the sea from then on. The map keeps both grounds of each
+    /// cell, as it was built and as it is after the swap (<see cref="AddSwappedPlace"/>), and
+    /// <see cref="ApplySwappedPlaces"/> lays down the one the story is at. The areas, and whoever and whatever the
+    /// areas' files stand there, are the same either way, as in the original, whose events know nothing of chunks.
+    /// </summary>
+    public sealed class SwappedPlace
+    {
+        public string Var { get; init; } = "";
+        public int Value { get; init; }
+
+        /// <summary>The cells swapped, by chunk column and row.</summary>
+        public IReadOnlyList<(int X, int Y)> Cells { get; init; } = Array.Empty<(int, int)>();
+
+        /// <summary>Whether the map shows the swapped chunks now.</summary>
+        public bool Swapped { get; internal set; }
+
+        internal ChunkGround[] Before = Array.Empty<ChunkGround>(), After = Array.Empty<ChunkGround>();
+
+        public bool Covers(int x, int y) => Cells.Contains((x / ChunkTiles, y / ChunkTiles));
+    }
+
+    /// <summary>The ground of one chunk and what stands on it by the world's models: what a swap changes.</summary>
+    internal sealed class ChunkGround
+    {
+        public TileType[] Ground = Array.Empty<TileType>();
+        public TileType?[] Overhead = Array.Empty<TileType?>();
+        public bool[] Solid = Array.Empty<bool>();
+        public TileBehavior[]? Behaviours;
+        public float[]? Heights, SlopesX, SlopesZ, Decks;
+        public List<Prop> Props = new();
+    }
+
+    public List<SwappedPlace> SwappedPlaces { get; } = new();
+
+    private ChunkGround CopyChunk(int chunkX, int chunkY)
+    {
+        int x0 = chunkX * ChunkTiles, y0 = chunkY * ChunkTiles;
+        int w = Math.Min(ChunkTiles, Width - x0), h = Math.Min(ChunkTiles, Height - y0);
+        T[] Copy<T>(T[] all)
+        {
+            var part = new T[w * h];
+            for (int y = 0; y < h; y++) Array.Copy(all, (y0 + y) * Width + x0, part, y * w, w);
+            return part;
+        }
+        return new ChunkGround
+        {
+            Ground = Copy(groundLayer), Overhead = Copy(overheadLayer), Solid = Copy(solidGrid),
+            Behaviours = behaviours != null ? Copy(behaviours) : null,
+            Heights = heights != null ? Copy(heights) : null,
+            SlopesX = slopesX != null ? Copy(slopesX) : null,
+            SlopesZ = slopesZ != null ? Copy(slopesZ) : null,
+            Decks = decks != null ? Copy(decks) : null,
+            Props = Props.Where(p => p.X >= x0 && p.Y >= y0 && p.X < x0 + w && p.Y < y0 + h).ToList()
+        };
+    }
+
+    private void PutChunk(int chunkX, int chunkY, ChunkGround from)
+    {
+        int x0 = chunkX * ChunkTiles, y0 = chunkY * ChunkTiles;
+        int w = Math.Min(ChunkTiles, Width - x0), h = Math.Min(ChunkTiles, Height - y0);
+        void Put<T>(T[]? part, T[]? all)
+        {
+            if (part == null || all == null) return;
+            for (int y = 0; y < h; y++) Array.Copy(part, y * w, all, (y0 + y) * Width + x0, w);
+        }
+        Put(from.Ground, groundLayer);
+        Put(from.Overhead, overheadLayer);
+        Put(from.Solid, solidGrid);
+        Put(from.Behaviours, behaviours);
+        Put(from.Heights, heights);
+        Put(from.SlopesX, slopesX);
+        Put(from.SlopesZ, slopesZ);
+        Put(from.Decks, decks);
+        Props.RemoveAll(p => p.X >= x0 && p.Y >= y0 && p.X < x0 + w && p.Y < y0 + h);
+        Props.AddRange(from.Props);
+    }
+
+    /// <summary>
+    /// Keeps both grounds of the cells given: this map's own, as it was built, and those of <paramref name="swapped"/>,
+    /// the same map built with the swap's chunks in those cells (<see cref="Data.WorldMapBuilder.BuildSwapped"/>). The
+    /// map goes on showing its own until <see cref="ApplySwappedPlaces"/> lays the others down. A building of the
+    /// world's models isn't swapped: a swap of chunks one stands on is refused.
+    /// </summary>
+    public SwappedPlace AddSwappedPlace(string variable, int value, IEnumerable<(int X, int Y)> cells, Map swapped)
+    {
+        if (swapped.Width != Width || swapped.Height != Height) throw new ArgumentException("The swapped map is not this map's size.", nameof(swapped));
+        var place = new SwappedPlace { Var = variable, Value = value, Cells = cells.ToList() };
+        foreach (var on in new[] { this, swapped })
+            if (on.PlacedBuildings?.Any(b => place.Covers(b.X0, b.Y0) || place.Covers(b.X1, b.Y1)) == true)
+                throw new InvalidOperationException($"{Name}: a building stands on chunks that {variable} swaps, which a swap doesn't carry.");
+        place.Before = place.Cells.Select(c => CopyChunk(c.X, c.Y)).ToArray();
+        place.After = place.Cells.Select(c => swapped.CopyChunk(c.X, c.Y)).ToArray();
+        SwappedPlaces.Add(place);
+        return place;
+    }
+
+    /// <summary>
+    /// Lays down, for each of the map's swapped places, the chunks the story's variables say are there. Returns the
+    /// places whose ground changed, so whatever was drawn of them can be made again.
+    /// </summary>
+    public List<SwappedPlace> ApplySwappedPlaces(Func<string, int> variable)
+    {
+        var changed = new List<SwappedPlace>();
+        foreach (var place in SwappedPlaces)
+        {
+            bool swap = variable(place.Var) == place.Value;
+            if (swap == place.Swapped) continue;
+            for (int i = 0; i < place.Cells.Count; i++)
+                PutChunk(place.Cells[i].X, place.Cells[i].Y, swap ? place.After[i] : place.Before[i]);
+            place.Swapped = swap;
+            BuildingCache = null;
+            changed.Add(place);
+        }
+        return changed;
     }
 
     public void SetSolid(int x, int y, bool isSolid)

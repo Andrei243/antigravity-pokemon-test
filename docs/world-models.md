@@ -5,7 +5,7 @@
 The original places models on its maps: a model's id and where it stands. The importer keeps each model's
 short name and the box it takes up, never its shape or its art, and the game puts something of its own in
 its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 models Sinnoh's maps use,
-184 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
+186 stand outdoors, or in a cave the game has opened, and are listed here (the rest are furniture, for plan 01 · M11).
 
 - A **building** stands on the tiles the world blocks under its model's box, cut into rectangles: each is
   a block with walls and a roof, and thin pieces before the front wall beside a way in are its porch. Its
@@ -38,7 +38,7 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `c1_s03` | the Global Terminal | a building: Terminal, 3 storeys |  | 10.3 × 7.1 × 22.8 | 1 | Jubilife City |
 | `c1_school` | the Trainers' School | a building: School |  | 8.9 × 3.8 × 7.2 | 1 | Jubilife City |
 | `c2_h01a` | a house of Canalave City | a building: House, built as in Harbour |  | 4.2 × 2.8 × 3.9 | 6 | Canalave City, Iron Island |
-| `c2_o02` | a ship at its pier | a prop: Boat |  | 5.6 × 8.7 × 2.4 | 6 | Canalave City, Fullmoon Island, Iron Island |
+| `c2_o02` | a ship at its pier | a prop: Boat |  | 5.6 × 8.7 × 2.4 | 7 | Canalave City, Fullmoon Island, Iron Island, Newmoon Island |
 | `c2_o04` | cargo on the quay | a prop: Crates |  | 1.9 × 1.5 × 1.1 | 2 | Canalave City |
 | `c2_s02` | Canalave Library | a building: Library, built as in Harbour, 3 storeys, signed LIBRARY |  | 5.5 × 4.4 × 7.3 | 1 | Canalave City |
 | `c2_s03a` | the west leaf of Canalave's drawbridge | a prop: Drawbridge |  | 7.3 × 6.5 × 4.6 | 1 | Canalave City |
@@ -99,9 +99,11 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d11_o02a` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.1 × 3.2 × 1.0 | 1 | Amity Square |
 | `d11_o02b` | a flower bed of Amity Square | a prop: FlowerBed |  | 2.2 × 3.2 × 1.0 | 1 | Amity Square |
 | `d11s01` | a great standing stone of Amity Square | a prop: Outcrop |  | 5.7 × 3.1 × 7.9 | 10 | Amity Square |
-| `d16_o01` | lava on Stark Mountain's flank | nothing of its own: the ground under it draws it | M10 | 7.0 × 8.0 × 0.0 | 2 | Stark Mountain |
-| `d16_o02` | the mouth of Stark Mountain | a prop: Outcrop | M10 | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
+| `d16_o01` | a pool of lava on Stark Mountain's flank | a prop: Lava |  | 7.0 × 8.0 × 0.0 | 2 | Stark Mountain |
+| `d16_o02` | the mouth of Stark Mountain, and the smoke over it | a prop: Crater |  | 16.7 × 15.8 × 22.6 | 1 | Stark Mountain |
+| `d20_o01` | a pillar of Snowpoint Temple | a prop: Column |  | 1.8 × 1.8 × 4.6 | 9 | Snowpoint Temple |
 | `d20_o01b` | the pillar in the middle of Turnback Cave's pillar room | a prop: Column |  | 1.8 × 1.8 × 4.6 | 1 | Turnback Cave |
+| `d20_o02` | the statue of a Pokémon in Snowpoint Temple's hall | a prop: Colossus |  | 3.0 × 2.1 × 4.7 | 1 | Snowpoint Temple |
 | `d20_o03` | a block of carved stone in the Solaceon Ruins | a prop: Outcrop |  | 4.0 × 2.0 × 2.0 | 5 | Solaceon Ruins, Turnback Cave |
 | `d23_yane` | the Mansion's back, over the Trophy Garden | a building: Mansion |  | 32.0 × 5.5 × 4.8 | 1 | Trophy Garden |
 | `d24_o01` | the tower of a lift between the levels of Iron Island's tunnels | a prop: Headframe |  | 3.0 × 2.8 × 8.5 | 3 | Iron Island |
@@ -110,13 +112,13 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 | `d2_s01b` | a wind turbine | a prop: WindTurbine |  | 2.4 × 4.7 × 7.9 | 2 | Valley Windworks |
 | `d2_s02` | the Valley Windworks | a building: Factory, signed WINDWORKS |  | 7.4 × 7.3 × 7.1 | 1 | Valley Windworks |
 | `d31_o01` | a lantern of the Battle Park | a prop: LampPost |  | 1.6 × 1.6 × 2.7 | 8 | Battle Park |
-| `d31_s01` | the Battle Tower | a building: Tower | M10 | 17.3 × 20.4 × 21.6 | 2 | Battle Frontier, Battle Park |
-| `d31_s02` | a hall of the Battle Park | a building: Hall | M10 | 16.8 × 18.8 × 10.0 | 1 | Battle Park |
-| `d32_s01` | the Battle Castle | a building: Hall, signed CASTLE | M10 | 15.1 × 11.8 × 13.5 | 1 | Battle Frontier |
-| `d32_s02` | the Battle Hall | a building: Hall, signed HALL | M10 | 16.7 × 18.0 × 14.7 | 1 | Battle Frontier |
-| `d32_s03` | the Battle Factory | a building: Hall, signed FACTORY | M10 | 14.5 × 17.3 × 12.3 | 1 | Battle Frontier |
-| `d32_s04` | the Battle Arcade | a building: Hall, signed ARCADE | M10 | 13.0 × 9.6 × 12.6 | 1 | Battle Frontier |
-| `d32_s05` | a low building of the Battle Frontier | a building: Warehouse | M10 | 7.9 × 4.8 × 2.4 | 2 | Battle Frontier |
+| `d31_s01` | the Battle Tower | a building: Tower, signed TOWER |  | 17.3 × 20.4 × 21.6 | 2 | Battle Frontier, Battle Park |
+| `d31_s02` | a hall of the Battle Park, the Battle Frontier's forerunner, which Platinum leaves out | a building: Hall, 2 storeys, signed FACTORY |  | 16.8 × 18.8 × 10.0 | 1 | Battle Park |
+| `d32_s01` | the Battle Castle | a building: Hall, 3 storeys, signed CASTLE |  | 15.1 × 11.8 × 13.5 | 1 | Battle Frontier |
+| `d32_s02` | the Battle Hall | a building: Hall, 2 storeys, signed HALL |  | 16.7 × 18.0 × 14.7 | 1 | Battle Frontier |
+| `d32_s03` | the Battle Factory | a building: Hall, 3 storeys, signed FACTORY |  | 14.5 × 17.3 × 12.3 | 1 | Battle Frontier |
+| `d32_s04` | the Battle Arcade | a building: Hall, 3 storeys, signed ARCADE |  | 13.0 × 9.6 × 12.6 | 1 | Battle Frontier |
+| `d32_s05` | a lodge beside the Battle Frontier's gate | a building: Gate |  | 7.9 × 4.8 × 2.4 | 2 | Battle Frontier |
 | `d32_s06` | the fountain in each of the pools before the Battle Frontier's gate | a prop: GrandFountain |  | 5.9 × 6.0 × 2.9 | 2 | Fight Area |
 | `d3_door1` | a door | nothing of its own: the building's art has its door |  | 1.2 × 0.2 × 1.6 | 2 | Eterna Forest, Route 212 |
 | `d3_s01` | the Old Chateau, abandoned in Eterna Forest | a building: Mansion, 2 storeys |  | 11.5 × 5.3 × 5.3 | 1 | Eterna Forest |
@@ -204,5 +206,5 @@ its place by that name. `Data/WorldModels.cs` is the catalogue: of the 360 model
 
 ## In numbers
 
-- 86 models are buildings, of 26 kinds; 71 are props; 13 are doors.
-- 9 have a stand-in for now: 9 until M10.
+- 86 models are buildings, of 26 kinds; 74 are props; 13 are doors.
+- No model has a stand-in: each has a look of its own.

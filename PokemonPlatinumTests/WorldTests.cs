@@ -434,7 +434,8 @@ public class WorldTests
             foreach (var prop in map.Props.Where(p => p.IsSolid && p.Model.Length == 0))
                 for (int y = prop.Y; y < prop.Y + prop.Depth; y++)
                     for (int x = prop.X; x < prop.X + prop.Width; x++)
-                        Assert.True(map.IsSolid(x, y), $"{map.Name}: the {prop.Type} at ({x},{y}) can be walked through");
+                        // (but for the tile of whoever never leaves it: a booth's attendant is what is in the way there)
+                        Assert.True(map.IsSolid(x, y) || map.NPCs.Any(n => (n.GridX, n.GridY) == (x, y) && n.Movement == null), $"{map.Name}: the {prop.Type} at ({x},{y}) can be walked through");
         }
         Assert.True(people >= 15, $"only {people} people in the world");
 

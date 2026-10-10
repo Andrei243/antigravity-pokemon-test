@@ -20,9 +20,16 @@ internal static partial class BuildingArt
 
     private static readonly Color FlatGrey = Rgb(170, 176, 190);
 
+    /// <summary>The stone of a castle's merlons: its wall's, a little paler where the light catches the parapet.</summary>
+    public static readonly Tone MerlonStone = Tone.Of(170, 166, 168, 198, 194, 192, 122, 118, 130);
+
     /// <summary>The rose of the Ribbon Syndicate's roof and canopy (plan 01 · M10).</summary>
     public static readonly Color RibbonRose = Rgb(214, 104, 150);
     private static readonly Color Teal = Rgb(52, 166, 138), Red = Rgb(214, 82, 66);
+
+    /// <summary>The Battle Frontier's colours (plan 01 · M10, part b): the Tower's blue, the Castle's violet, the Factory's orange, the Arcade's magenta, the Hall's gold.</summary>
+    public static readonly Color FrontierBlue = Rgb(58, 92, 170), CastleViolet = Rgb(124, 98, 170), FactoryOrange = Rgb(232, 140, 52),
+        ArcadeMagenta = Rgb(214, 92, 150), HallGold = Rgb(214, 170, 72);
 
     private static Color TileRoof(TileType roof) => roof switch
     {
@@ -130,6 +137,11 @@ internal static partial class BuildingArt
                 RoofColor = snowy ? SnowRoof : GymColor(b.Theme), Accent = PixelCanvas.Shadow(GymColor(b.Theme), 0.12f),
                 Sign = SignKind.Text, SignText = "GYM", Portal = 84
             },
+            // The lodges either side of the Battle Frontier's gate: pale stone under the Frontier's blue
+            BuildingKind.Gate when b.Model == "d32_s05" => new BuildingStyle
+            {
+                Wall = WallKind.PaleStone, Roof = RoofShape.Hip, RoofColor = FrontierBlue, Window = WindowKind.Shop, Accent = FrontierBlue
+            },
             BuildingKind.Gate => new BuildingStyle
             {
                 Wall = WallKind.Stone, Roof = RoofShape.Hip, RoofColor = Rgb(104, 146, 122), Window = WindowKind.Shop,
@@ -148,6 +160,29 @@ internal static partial class BuildingArt
                 Home = false, Portal = 84, GlassDoor = true, Window = WindowKind.Shop, Shutters = false, Veranda = true,
                 RoofColor = RibbonRose, Accent = PixelCanvas.Shadow(RibbonRose, 0.1f)
             },
+            // The Battle Frontier's four halls, each its own (style guide, "Kinds of building"): a keep of grey stone
+            // behind battlements with a turret at each front corner; a great hall of pale stone under gold; a works of
+            // sheet metal with its stacks and a band of orange; and a white hall of glass with a band of magenta
+            BuildingKind.Hall when b.Model == "d32_s01" => new BuildingStyle
+            {
+                Wall = WallKind.Stone, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 3, Window = WindowKind.Slit, Band = true,
+                Accent = CastleViolet, Gear = RoofGear.Battlements | RoofGear.Turrets
+            },
+            BuildingKind.Hall when b.Model == "d32_s02" => new BuildingStyle
+            {
+                Wall = WallKind.PaleStone, Roof = RoofShape.Hip, RoofColor = HallGold, Storeys = 2, Window = WindowKind.Arched, GlassDoor = true,
+                Portal = 84, Accent = PixelCanvas.Shadow(HallGold, 0.1f)
+            },
+            BuildingKind.Hall when b.Model is "d32_s03" or "d31_s02" => new BuildingStyle
+            {
+                // (Dark panels, not sheet metal: a ribbon of glass and a band across metal's ribs leave rows of lone texels)
+                Wall = WallKind.DarkPanel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 3, Window = WindowKind.Ribbon, SlidingDoor = true,
+                Band = true, Accent = FactoryOrange, Gear = RoofGear.Vents | RoofGear.Stack
+            },
+            BuildingKind.Hall when b.Model == "d32_s04" => block with
+            {
+                Storeys = 3, Window = WindowKind.Shop, Band = true, Accent = ArcadeMagenta, Gear = RoofGear.Skylight | RoofGear.Globe
+            },
             BuildingKind.Hall => shop with { RoofColor = HallColor(b.Sign), Accent = PixelCanvas.Shadow(HallColor(b.Sign), 0.1f), Portal = 84 },
             BuildingKind.Chapel => new BuildingStyle
             {
@@ -163,6 +198,13 @@ internal static partial class BuildingArt
             {
                 Wall = WallKind.Boards, Roof = RoofShape.Hip, RoofColor = Rgb(120, 74, 66), Window = WindowKind.None,
                 DeepEaves = true, Accent = Rgb(120, 74, 66)
+            },
+            // The Battle Tower: pale stone, four stages as wide as nine tiles stepping in, a band of the Frontier's blue
+            // round each and arched windows that burn all night, a lantern room on the last and a cap of blue slate
+            BuildingKind.Tower when b.Model == "d31_s01" => new BuildingStyle
+            {
+                Wall = WallKind.PaleStone, Roof = RoofShape.Flat, RoofColor = FrontierBlue, Window = WindowKind.Arched, GlassDoor = true,
+                Band = true, Accent = FrontierBlue, Shaft = 288, StageCount = 4, Gear = RoofGear.Beacon
             },
             BuildingKind.Tower => new BuildingStyle { Wall = WallKind.Stone, Roof = RoofShape.Flat, RoofColor = Rgb(92, 104, 140), Window = WindowKind.Slit, Accent = Rgb(92, 104, 140) },
             BuildingKind.Lighthouse => new BuildingStyle { Wall = WallKind.Stucco, Roof = RoofShape.Flat, RoofColor = Red, Window = WindowKind.Slit, Accent = Rgb(214, 72, 62) },

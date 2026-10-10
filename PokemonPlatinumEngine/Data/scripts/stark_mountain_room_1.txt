@@ -1,0 +1,10 @@
+# Stark Mountain's first room (plan 01 · M10, part b). docs/scripts.md describes the language
+# (scripts_stark_mountain_room_1.s).
+#
+# Arriving sets what the original's does for the place itself. The original's arrival also hides Buck on Route 227
+# (FLAG_HIDE_ROUTE_227_BUCK), and Commanders Mars and Jupiter battle whoever comes in while
+# VAR_STARK_MOUNTAIN_ROOM_1_STATE is 0: both are the story's (plan 02 · S15, part b).
+
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_STARK_MOUNTAIN_INTERIOR
+  end
