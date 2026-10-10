@@ -580,6 +580,7 @@ A frame must stay under 8 ms on High. In the harness's 1080p window after G11 (p
 - Prompts: a question over the dimmed screen, a muted line of explanation, and a row of buttons; the safe answer comes first and is the one highlighted.
 - Buttons: pills; gradient 18 % lighter at the top to 12 % darker at the bottom, border 35 % darker, a soft shine over the top 38 %. Selected: a 6 px white ring and a glow in the button's colour.
 - HP boxes: slanted sides (skew ±0.2), name + gender left, level right, HP bar under; the player's box adds HP numbers and an EXP line.
+- Caught mark: in a battle with no trainer, a foe whose species the Pokédex has as caught has a small Poké Ball (the bag's ball icon, 0.8× the name's size) 12 after its name and gender, before its status pill, in the single box and the double battle's compact boxes alike; never on a trainer's Pokémon nor on the player's side (Platinum's `HEALTHBOX_INFO_CAUGHT_SPECIES`).
 - HP bar: pill with an amber "HP" tag 2.3× its height.
 - Dialogue: wide panel near the bottom, speaker in a red pill tag on its top edge (so the line itself doesn't repeat the name), a bobbing red arrow when the line is complete.
 - Layout grid: 1920×1080 layout units (drawn at 4K), 48–64 margins, 24–32 gutters. Battle: opponent box top-left, player box right above the commands, prompt bottom-left, a large FIGHT button with BAG, POKÉMON and RUN stacked beside it.

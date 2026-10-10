@@ -33,6 +33,32 @@ public class BattlePresentationTests
         for (float t = 0f; t < seconds - 1e-4f; t += 1f / 60f) battle.Update(1f / 60f);
     }
 
+    // ------------------------------------------------------------------ the HP boxes
+
+    [Fact]
+    public void AWildFoeShowsTheCaughtMarkOnceItsSpeciesIsCaughtAndATrainersNever()
+    {
+        // The original's health box (HealthBox_DrawInfo): the Poké Ball for a caught species on an enemy box, never
+        // in a trainer's battle (BATTLE_TYPE_TRAINER), read from the Pokédex (BattleSystem_HasCaughtSpecies)
+        var dex = new Pokedex();
+        var party = new Party();
+        party.Add(new Pokemon(PokemonDatabase.Get("Piplup")!, 12, new Random(1)));
+        var bidoof = new Pokemon(PokemonDatabase.Get("Bidoof")!, 8, new Random(2));
+
+        var wild = new BattleEngine(party, bidoof, new Inventory(), dex);
+        Assert.False(wild.ShowsCaughtMark(wild.EnemyPokemon));
+        dex.RegisterSeen(bidoof.Species.DexNumber);
+        Assert.False(wild.ShowsCaughtMark(wild.EnemyPokemon));
+        dex.RegisterCaught(bidoof.Species.DexNumber);
+        Assert.True(wild.ShowsCaughtMark(wild.EnemyPokemon));
+
+        var trainerParty = new Party();
+        trainerParty.Add(new Pokemon(PokemonDatabase.Get("Bidoof")!, 8, new Random(3)));
+        var youngster = new Trainer { Name = "Tester", TrainerClass = "Youngster", Party = trainerParty };
+        var trainers = new BattleEngine(party, trainerParty.Members[0], new Inventory(), dex, youngster);
+        Assert.False(trainers.ShowsCaughtMark(trainers.EnemyPokemon));
+    }
+
     [Fact]
     public void ADamagingMoveCuesItsEffectFromTheUserToTheTarget()
     {
