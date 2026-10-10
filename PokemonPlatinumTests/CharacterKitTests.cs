@@ -17,7 +17,9 @@ public class CharacterKitTests
 
     public static readonly string[] Humans =
     {
-        "PLAYER", "RIVAL", "ROWAN", "NURSE", "MOM", "LADY", "CLERK", "YOUNGSTER", "LASS", "CLOWN", "LOOKER", "GENTLEMAN", "TRAINER"
+        "PLAYER", "RIVAL", "ROWAN", "NURSE", "MOM", "LADY", "CLERK", "YOUNGSTER", "LASS", "CLOWN", "LOOKER", "GENTLEMAN", "TRAINER",
+        // Plan 11 · C5's named cast
+        "POKETCH_PRESIDENT", "CHERYL", "MIRA", "BEBE", "CRASHER_WAKE"
     };
 
     public static IEnumerable<object[]> HumanTypes => Humans.Select(h => new object[] { h });
@@ -79,6 +81,8 @@ public class CharacterKitTests
     [InlineData("PLAYER")]
     [InlineData("NURSE")]
     [InlineData("YOUNGSTER")]
+    [InlineData("MIRA")]
+    [InlineData("CRASHER_WAKE")]
     public void EveryHatShowsOverTheHair(string type)
     {
         // The hair is built before the hat, so a hat set too close to the head disappears into it without a trace

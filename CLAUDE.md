@@ -29,6 +29,7 @@ dotnet run --project tools/ShotHarness -- <out dir> dex [--back] [species ...]  
 dotnet run --project tools/ShotHarness -- <out dir> export [species ...]              # species' models as .glb files, to refine in Blender and drop into overrides/models
 dotnet run --project tools/ShotHarness -- <out dir> pokemon [species ...]             # the named species' turntables on one board (91_turntables), for sculpting
 dotnet run --project tools/ShotHarness -- <out dir> versus <mine> <foe> [...]         # a wild battle for each pair (species or forms), the first leading the player's party
+dotnet run --project tools/ShotHarness -- <out dir> cast [look ...]                  # every look of characters.json turning, twenty to a board (56_cast_NN), and the named cast in battle (57_cast_battle_<look>)
 dotnet run --project tools/ShotHarness -- <out dir> conditions                        # a battle's passing states on screen: a flight, the platform empty and the Pokémon back; a move of several hits; a Ditto transformed
 dotnet run --project tools/ShotHarness -- <out dir> profile                           # where a frame goes: the heavy scenes timed and taken apart pass by pass
 dotnet run --project tools/ShotHarness -- <out dir> fieldmoves                        # the field moves at work: a tree cut, a boulder pushed, a cave lit, Fly, Surf, the Pokétch, a rod

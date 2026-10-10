@@ -484,6 +484,9 @@ internal static class CharacterModels
         const SurfaceMaterial Hair = SurfaceMaterial.Hair;
         var crown = new Vector3(0f, 0.86f, -0.5f);
 
+        // A wrestler's mask is a hood over the whole head: no lock of hair grows under it
+        if (s.Hat == Headwear.Mask) return;
+
         // Under a beret or a cap only the hair below its edge shows, so locks grow from there instead of the crown
         bool hatted = s.Hat is Headwear.Beret or Headwear.Cap;
         Vector3 Root(Vector3 to) => hatted ? Vector3.Normalize(new Vector3(to.X * 0.9f, 0.42f, to.Z == 0f ? -0.9f : MathF.Sign(to.Z) * 0.86f)) : crown;
@@ -608,6 +611,40 @@ internal static class CharacterModels
                 // The peak comes out of the crown's front edge, over the bangs
                 m.Ellipsoid(H + new Vector3(0, R * 0.6f, R * 1.0f), new Vector3(R * 0.8f, 0.024f, R * 0.62f), s.HatBand, HumanBones.Head, 0f, SurfaceMaterial.Plastic, Pitch(0.2f));
                 m.Sphere(at + new Vector3(0, R * 0.62f, -0.03f), 0.02f, Shade(s.HatColor, 0.88f), HumanBones.Head, 0.01f, SurfaceMaterial.Cloth);
+                break;
+            }
+            case Headwear.Bow:
+            {
+                // A big ribbon on the hair at the top of the back of the head: two loops tilted up and out round a
+                // knot, its face turned the way the head's surface faces there, and two short tails falling behind
+                var normal = Vector3.Normalize(new Vector3(0, 0.78f, -0.62f));
+                var knot = H + normal * (R * 1.22f);
+                var lie = Pitch(0.9f);
+                var up = Vector3.Transform(Vector3.UnitY, lie);
+                foreach (float side in new[] { 1f, -1f })
+                {
+                    var tilt = Quaternion.Concatenate(Quaternion.CreateFromAxisAngle(Vector3.UnitZ, side * 0.35f), lie);
+                    m.Ellipsoid(knot + new Vector3(side * R * 0.44f, 0, 0) + up * R * 0.1f, new Vector3(R * 0.42f, R * 0.25f, R * 0.12f),
+                        s.HatColor, HumanBones.Head, 0.02f, SurfaceMaterial.Cloth, tilt);
+                    m.Capsule(knot, knot + new Vector3(side * R * 0.28f, -R * 0.55f, -R * 0.42f), 0.034f, 0.024f, s.HatBand, HumanBones.Head, 0.01f, SurfaceMaterial.Cloth);
+                }
+                m.Ellipsoid(knot + normal * (R * 0.1f), new Vector3(R * 0.2f, R * 0.2f, R * 0.15f), s.HatBand, HumanBones.Head, 0f, SurfaceMaterial.Cloth, lie);
+                break;
+            }
+            case Headwear.Mask:
+            {
+                // A hood over the crown, the sides and the back down to the jaw, the face left bare (it reaches the
+                // forehead but not the eyes), and a crest in the band's colour from the brow to the nape
+                var c = H + new Vector3(0, R * 0.12f, -R * 0.12f);
+                var radii = new Vector3(R * 1.12f, R * 1.08f, R * 1.06f);
+                m.Ellipsoid(c, radii, s.HatColor, HumanBones.Head, 0.02f, SurfaceMaterial.Cloth);
+                Vector3 OnHood(float angle) => c + new Vector3(0, MathF.Cos(angle) * radii.Y, MathF.Sin(angle) * radii.Z);
+                const int Steps = 7;
+                for (int i = 0; i < Steps; i++)
+                {
+                    float a0 = 0.62f - i * (2.6f / Steps), a1 = 0.62f - (i + 1) * (2.6f / Steps);
+                    m.Capsule(OnHood(a0), OnHood(a1), 0.04f, 0.04f, s.HatBand, HumanBones.Head, 0f, SurfaceMaterial.Cloth);
+                }
                 break;
             }
             case Headwear.NurseCap:

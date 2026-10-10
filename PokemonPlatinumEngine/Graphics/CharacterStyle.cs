@@ -2,7 +2,7 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-internal enum Headwear { None, Beret, Cap, NurseCap }
+internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask }
 
 internal enum HairCut { Short, Spiky, Long, Swept }
 

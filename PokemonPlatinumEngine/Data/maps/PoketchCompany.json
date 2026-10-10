@@ -114,7 +114,7 @@
   "npcs": [
     {
       "name": "President",
-      "npcType": "Gentleman",
+      "npcType": "poketch_president",
       "x": 5,
       "y": 2,
       "facing": "Down",

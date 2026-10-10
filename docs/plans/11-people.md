@@ -80,6 +80,12 @@ Written 2026-10-06, before any session.
 - Tests and harness as C2 (`56_cast_*` boards, `57_cast_battle_roark`); the `story` mode's trainer scene gains Roark.
 - **Done when** the user knows each at a glance on the board.
 
+**Done (2026-10-10).** Plan 02's chapters had already made Roark, Mars, Jupiter, Gardenia, Cynthia, Fantina and Maylene (C1 moved them into the file as they were), so C5 made the five left:
+- `poketch_president` (swept grey hair, a moustache and bushy brows, a navy suit with a red tie), `cheryl` (long auburn hair, a peach top over a green skirt), `mira` (long pale-gold hair under a big orange bow, a pink dress, the smallest of them), `bebe` (short dark hair, an orange top over a brown skirt) and `crasher_wake` (a blue wrestling mask with a yellow crest, bare-chested over blue trousers and yellow boots, the tallest of them). Two new `Headwear`s carry the last two: `Bow` (two loops and two tails tied on the back of the head, its knot and tails in `hatBand`) and `Mask` (a hood over the whole head with a crest from brow to nape; no hair is built under it). Style guide, "Characters", first.
+- Cheryl and Mira are their objects' own names, so their overlays lose the `npcType` they carried (Eterna Forest, Wayward Cave). The president is `poketch_president` by `npcType`, in Jubilife City's overlay and in `PoketchCompany`; Crasher Wake is named in `PastoriaGym`. Bebe has no person placed yet (Hearthome's PC house is a room of plan 01 · M11), so her look waits in the file.
+- Harness: the `cast` mode (not part of `all`), `56_cast_NN` boards of every look (four views each, twenty to a board, or only the looks named) and `57_cast_battle_<look>` for the named cast who battle (the Leaders so far, Crasher Wake, Mars and Jupiter). The `story` mode's trainer scene was left without Roark: a person added there moves the seeded shots after it, and `57_cast_battle_roark` shows him.
+- Tests: `CharacterTableTests.TheFirstHalfsNamedCastAreEachTheirOwnLook` (each in the file, none falling back, no two alike in hair, hat, top and bottom, the overlays and map files naming them); the five in `CharacterKitTests`' humans (one smooth body, a sprite with a face), and Mira's bow and Crasher Wake's mask in `EveryHatShowsOverTheHair`.
+
 ### C6 · The named cast of the second half
 - S9 to S15: Saturn, Riley, Byron, Candice, Volkner, Jasmine, Marley, Buck, Charon, Aaron, Bertha, Flint, Lucian, Palmer, Teala, Professor Oak, and the Frontier Brains (Dahlia, Argenta, Thorton, Darach and Caitlin) for plan 06 · R18.
 - Tests and harness as C5; the fallback block and `CharacterFor`'s old folding are gone, and C4's test holds the named looks of the original's list in the table too.
@@ -172,7 +178,7 @@ Written 2026-10-06, before any session.
 - [ ] C2 Parts I and the trainers of the open areas
 - [ ] C3 Parts II and the rest of the open areas' people
 - [ ] C4 The rest of Platinum's classes
-- [ ] C5 The named cast of the first half of the story
+- [x] C5 The named cast of the first half of the story
 - [ ] C6 The named cast of the second half
 - [ ] C7 Sitting, lying and the look-around
 - [ ] C8 Swimming and fishing
