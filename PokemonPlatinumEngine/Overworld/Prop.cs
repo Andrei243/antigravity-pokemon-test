@@ -30,6 +30,14 @@ public enum PropType
     SideStairsUp,
     /// <summary>A stairwell at the side of a room going down eastward to the floor below, behind a rail: its warp is the tile west of its head.</summary>
     SideStairsDown,
+    /// <summary>The same flight turned round, climbing east: its warp is the tile west of its foot (the Lost Tower's, plan 02 · S7).</summary>
+    SideStairsUpEast,
+    /// <summary>The same stairwell turned round, going down westward: its warp is the tile east of its head (the Lost Tower's).</summary>
+    SideStairsDownWest,
+    /// <summary>A headstone, a tile wide: the Lost Tower's small graves (plan 02 · S7).</summary>
+    Headstone,
+    /// <summary>A tomb, two tiles each way: the Lost Tower's large graves.</summary>
+    Tomb,
     /// <summary>A bicycle on its stand, two tiles wide: what a cycle shop shows (Eterna City's, plan 02 · S6).</summary>
     Bicycle,
     /// <summary>A waste bin.</summary>

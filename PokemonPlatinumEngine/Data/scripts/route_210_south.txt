@@ -1,4 +1,4 @@
-# Route 210, south of the fog (plan 06 · R14a). docs/scripts.md describes the language.
+# Route 210, south of the fog (plan 06 · R14a, plan 02 · S7). docs/scripts.md describes the language.
 #
 # The original's arrival script: in the morning the joggers battle, and at any other time their doubles on the same
 # tiles only jog past. The swap is made as the player comes, so it holds until they come again.
@@ -12,4 +12,29 @@ script OnEnter
 label Battle
   clearflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT
   setflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT_NO_BATTLE
+  end
+
+
+# The Psyduck across the road north (the original's script 1). They hold their heads and won't budge until the
+# SecretPotion cures them; then they go off and stay gone (FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK). The SecretPotion, and
+# Cynthia, who comes up the road after they leave, are the next chapter's (plan 02 · S9).
+script Psyduck
+  cry "Psyduck"
+  if item "Secret Potion" goto Potion
+  text "The Psyduck are clutching their heads and won't budge an inch." "They don't look like they'll be moving any time soon."
+  end
+label Potion
+  ask "The Psyduck are clutching their heads and won't budge. Use the Secret Potion?"
+  if no end
+  text "{player} used the Secret Potion!" "The Psyduck's headaches seem to have cleared up!"
+  cry "Psyduck"
+  emote psyduck_1 exclaim
+  emote psyduck_2 exclaim
+  emote psyduck_3 exclaim
+  emote psyduck_4 exclaim
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK
+  hide psyduck_1
+  hide psyduck_2
+  hide psyduck_3
+  hide psyduck_4
   end

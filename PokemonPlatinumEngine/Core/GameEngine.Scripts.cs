@@ -689,6 +689,7 @@ public partial class GameEngine
         public Inventory Bag => game.playerInventory;
         public Poketch Poketch => game.poketch;
         public SafariGame Safari => game.safari;
+        public int SeenInSinnoh => game.playerPokedex.SeenIn(PokedexMode.Sinnoh);
 
         public int Money
         {

@@ -25,6 +25,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Inventory Bag { get; }
     public Poketch Poketch { get; } = new();
     public SafariGame Safari { get; } = new();
+    public int SeenInSinnoh { get; set; }
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }

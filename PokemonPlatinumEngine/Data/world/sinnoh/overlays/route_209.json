@@ -2,13 +2,15 @@
   "area": "route_209",
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
-  // The gate to Hearthome City, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan
+  // The gate to Hearthome City, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan,
+  // and the Lost Tower's five floors of graves (plan 02 · S7)
   "doors": [
     { "warp": 0, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" },
-    { "warp": 1, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" }
+    { "warp": 1, "map": "Route209GateToHearthomeCity", "x": 10, "y": 7, "facing": "Left" },
+    { "warp": 2, "map": "LostTower1F", "x": 7, "y": 14, "facing": "Up" }
   ],
-  // The Lost Tower is a building's floors (plan 01 · M11)
-  "locked": [ 2 ],
+  // The Hallowed Tower, read from its four tiles (the original's script 2): the Odd Keystone and Spiritomb (plan 08 · P12)
+  "read": { "2": "HallowedTower" },
   // Joggers Richard and Raul battle in the morning and only jog past at other times: the route's arrival script swaps
   // each of them for his double on the same tile by their FLAG_HIDE_ROUTE_209_JOGGER_* flags (plan 06 · R14a)
   "people": {
@@ -47,14 +49,8 @@
         "People climb it to remember Pokémon who are no longer with them. Go quietly, if you go in."
       ]
     },
-    // In Platinum he gives away the Good Rod; the gift is plan 02's (S7)
-    "fisherman": {
-      "name": "Fisherman",
-      "dialog": [
-        "There's water all along this route, and plenty living in it.",
-        "With a good rod in your hand, you'd be amazed what bites."
-      ]
-    },
+    // He gives away the Good Rod (plan 02 · S7)
+    "fisherman": { "name": "Fisherman", "script": "Fisherman" },
     "breeder_albert": {
       "name": "Albert",
       "trainer": {

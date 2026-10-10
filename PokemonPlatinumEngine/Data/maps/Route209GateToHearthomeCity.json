@@ -125,11 +125,11 @@
       "x": 9,
       "y": 4,
       "facing": "Down",
-      "movement": "look_around",
       "dialog": [
         "Out on Route 209 there's a tiny tower of stones, all tumbled down.",
         "Someone must have knocked it over. I wonder if it can ever be put right again?"
-      ]
+      ],
+      "movement": "look_around"
     },
     {
       "id": "rival",
@@ -141,7 +141,6 @@
       "hiddenBy": "FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL"
     }
   ],
-  "wildEncounters": [],
   "triggers": [
     {
       "x": 5,
@@ -152,5 +151,6 @@
       "variable": "VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE",
       "value": 1
     }
-  ]
+  ],
+  "wildEncounters": []
 }

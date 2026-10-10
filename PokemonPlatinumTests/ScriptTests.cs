@@ -122,6 +122,7 @@ public class ScriptTests
           givemoney 100
           takemoney 50
           heal
+          greetings clear
           battle self canlose
           battle self and twin with "cheryl_eterna_forest" canlose
           battle self with helper
@@ -1024,6 +1025,7 @@ public class ScriptTests
         public Inventory Bag => inner.Bag;
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
+        public int SeenInSinnoh => inner.SeenInSinnoh;
         public SpecialEncounters Encounters => inner.Encounters;
         public BerryPatches Berries => inner.Berries;
         public string? ChosenItem => inner.ChosenItem;

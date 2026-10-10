@@ -1,0 +1,56 @@
+# Solaceon Town (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_solaceon_town.s).
+#
+# The rival comes running down the street as the player first walks into town from Route 209 (the original's trigger,
+# a row seven tiles wide at y 669, while VAR_SOLACEON_TOWN_STATE is 0): he has been in the ruins, where he found HM05,
+# and goes off north again. The Ruin Maniac gives the Pokémon History app to a trainer who has seen fifty species of
+# the Sinnoh Pokédex.
+
+
+script Rival
+  emote player exclaim
+  music "common/rival"
+  clearflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
+  if var PLAYER_X == 557 place rival 557 661 down
+  if var PLAYER_X == 558 place rival 558 661 down
+  if var PLAYER_X == 559 place rival 559 661 down
+  if var PLAYER_X == 560 place rival 560 661 down
+  if var PLAYER_X == 561 place rival 561 661 down
+  if var PLAYER_X == 562 place rival 562 661 down
+  if var PLAYER_X == 563 place rival 563 661 down
+  show rival
+  face player up
+  walk rival down 7 fast
+  speaker "{rival}"
+  say "Woo-hoo!"
+  face rival left
+  wait 0.2
+  face rival right
+  wait 0.2
+  face rival down
+  say "Hey, {player}! I've got something brilliant. Since it's you, I'll let you have a look!"
+  emote rival exclaim
+  say "Huh? Wait a second... Where did they go? I had some Seals, and I never even stuck them on anything." "Oh, that's right. It's because I was in the ruins!"
+  say "The ruins here are amazing. You've got to go and see. I even found a Hidden Machine in there. Defog!" "Anyway, we'll battle another time. See you!"
+  walk rival up 7 fast
+  hide rival
+  setflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
+  music area
+  setvar VAR_SOLACEON_TOWN_STATE 1
+  end
+
+
+script RuinManiac
+  if flag FLAG_RECEIVED_POKETCH_POKEMON_HISTORY goto Gave
+  if var SEEN < 50 goto TooFew
+  say "Every Pokémon you meet becomes part of your story, and you part of theirs." "This is a Pokétch app called Pokémon History. It keeps a record of the Pokémon you've caught."
+  poketchapp PokemonHistory
+  setflag FLAG_RECEIVED_POKETCH_POKEMON_HISTORY
+  text "{player}'s Pokétch now has the Pokémon History app!"
+  end
+label TooFew
+  say "A travelling trainer, are you? Then how many kinds of Pokémon have you come across so far?" "Any trainer worth the name should have met fifty at least. If you haven't, go further and look harder!"
+  end
+label Gave
+  say "You have a history of your own, and so does every Pokémon." "Where the two cross, a new story begins."
+  end

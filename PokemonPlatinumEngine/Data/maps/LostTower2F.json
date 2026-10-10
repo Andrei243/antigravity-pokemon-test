@@ -1,0 +1,385 @@
+{
+  "name": "LostTower2F",
+  "displayName": "Lost Tower",
+  "bgmTrack": "sinnoh/route209",
+  "interior": "Lab",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#______##_____#",
+    "#______##_____#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "###############"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#....######...#",
+    "#....######...#",
+    "##..######...##",
+    "#....####.....#",
+    "#.##.###.##.###",
+    "#.##........###",
+    "#.##..#..##...#",
+    "#.##.###.##.###",
+    "#..######...###",
+    "#..###.##....##",
+    "#.........#...#",
+    "###...#.......#",
+    "###############"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 13, "depth": 12, "behaviour": "OldChateauFloor" }
+  ],
+  "props": [
+    {
+      "type": "Tomb",
+      "x": 12,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 12,
+      "y": 7,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 9,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 7,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 5,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 3,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 2,
+      "y": 9,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 2,
+      "y": 7,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 5,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tomb",
+      "x": 7,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Headstone",
+      "x": 13,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 6,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 5,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 2,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 4,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 5,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 9,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 10,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 9,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Headstone",
+      "x": 10,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 5,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 3,
+      "targetMap": "LostTower3F",
+      "targetX": 12,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "LostTower1F",
+      "targetX": 3,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "name": "Oval Stone",
+      "npcType": "ItemBall",
+      "x": 8,
+      "y": 7,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_ROUTE_209_LOST_TOWER_2F_OVAL_STONE",
+      "item": "Oval Stone"
+    },
+    {
+      "id": "youngster_oliver",
+      "name": "Oliver",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 10,
+      "facing": "Up",
+      "trainer": {
+        "id": "youngster_oliver",
+        "name": "Oliver",
+        "trainerClass": "Youngster",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Youngster Oliver: I came up here to say hello to my old pal. Now I'll show him how strong I've got!",
+        "dialogueAfter": "Youngster Oliver: I hope he wasn't watching that one.",
+        "sightRange": 2
+      }
+    }
+  ],
+  "hiddenItems": [
+    {
+      "x": 10,
+      "y": 13,
+      "item": "Honey",
+      "count": 3,
+      "flag": "FLAG_OBTAINED_HIDDEN_ROUTE_209_LOST_TOWER_2F_HONEY"
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Gastly",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 20
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 20
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 18,
+      "maxLevel": 18,
+      "weight": 10
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 17,
+      "maxLevel": 17,
+      "weight": 10
+    },
+    {
+      "speciesName": "Zubat",
+      "minLevel": 19,
+      "maxLevel": 19,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 5
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 4
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 1
+    },
+    {
+      "speciesName": "Gastly",
+      "minLevel": 20,
+      "maxLevel": 20,
+      "weight": 1
+    }
+  ]
+}

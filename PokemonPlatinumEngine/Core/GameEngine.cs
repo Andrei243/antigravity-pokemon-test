@@ -453,6 +453,7 @@ public partial class GameEngine
         runner.Abort();
         story.Restore(save.ToStory());
         StoryMigration.Upgrade(story, save.StoryVersion, playerParty.Members.Concat(pcBoxStorage.All), scripts, playerInventory);
+        story.RestoreGreetings(save.GreetedPeople);
         MapDatabase.RestoreDefeatedTrainers(story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -532,6 +533,7 @@ public partial class GameEngine
             StoryVersion = StoryState.CurrentVersion,
             StoryVariables = told.Variables,
             TakenItems = told.TakenItems,
+            GreetedPeople = story.Greeted.Order(StringComparer.Ordinal).ToList(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = playerMoney,
@@ -1227,6 +1229,9 @@ public partial class GameEngine
     /// <summary>A trainer who came up to the player says their piece and battles: their own script, or the common one for trainers.</summary>
     private void ChallengeTrainer(NPC npc) => StartScript(FieldScripts.For(npc) ?? FieldScripts.Trainer, npc);
 
+    /// <summary>Who someone is for <see cref="StoryState.Greet"/>: their place and their key, the same in every game.</summary>
+    internal static string GreetingKey(Map map, NPC npc) => $"{npc.ScriptFile ?? map.Name}.{npc.Key ?? npc.Name}";
+
     private void TryInteract()
     {
         int dx = 0, dy = 0;
@@ -1256,6 +1261,8 @@ public partial class GameEngine
             // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is
             if (npc.IsTrainer) npc.LeavePost();
             if (!npc.IsThing) npc.FaceTowards(player.GridX, player.GridY);
+            // Someone spoken to counts toward the Hallowed Tower's stirring, once each (plan 08 · P12)
+            if (!npc.IsThing && !npc.IsPokemon) story.Greet(GreetingKey(currentMap, npc));
 
             // What happens next is theirs to say: their own script, or the common one for what they are
             // (a nurse, a clerk, a PC, the briefcase, a trainer, someone with lines)

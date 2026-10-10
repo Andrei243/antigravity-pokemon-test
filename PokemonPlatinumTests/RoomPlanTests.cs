@@ -30,7 +30,9 @@ public class RoomPlanTests
         new object[] { "EternaUndergroundManHouse", 1, 3, 4, 8 },
         new object[] { "TeamGalacticEternaBuilding1F", 1, 6, 11, 15 },
         // Hearthome City's of plan 02 · S7, part 1
-        new object[] { "ContestHallLobby", 1, 3, 16, 13 }
+        new object[] { "ContestHallLobby", 1, 3, 16, 13 },
+        // Route 209's Lost Tower, plan 02 · S7, part 2
+        new object[] { "LostTower1F", 1, 3, 7, 14 }
     };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
@@ -39,6 +41,10 @@ public class RoomPlanTests
     /// <summary>The Team Galactic Eterna Building's upper floors: no door, only the stairs, and each cut in two (one
     /// staircase of each pair a trap that leads back down into the other part).</summary>
     internal static readonly string[] UpperFloors = { "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F" };
+
+    /// <summary>The Lost Tower's floors from the ground up: the stairs up at the west end of the back wall, the stairs
+    /// down at the east end (the original's <c>StairsEast</c> and <c>StairsWest</c>).</summary>
+    internal static readonly string[] LostTower = { "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F" };
 
     // The original's people (res/field/events/events_<map>.json of the decompilation): local id, tile, facing
     public static IEnumerable<object[]> People => new[]
@@ -86,7 +92,12 @@ public class RoomPlanTests
         new object[] { "ContestHallLobby", "fantina", 22, 9, Direction.Left },
         new object[] { "ContestHallLobby", "rich_boy", 16, 6, Direction.Up },
         new object[] { "Route209GateToHearthomeCity", "battle_girl", 9, 4, Direction.Down },
-        new object[] { "Route209GateToHearthomeCity", "rival", 8, 7, Direction.Left }
+        new object[] { "Route209GateToHearthomeCity", "rival", 8, 7, Direction.Left },
+        new object[] { "LostTower1F", "pokemon_breeder_f_1", 8, 9, Direction.Down },
+        new object[] { "LostTower1F", "pokemon_breeder_f_2", 2, 4, Direction.Right },
+        new object[] { "LostTower2F", "youngster_oliver", 8, 10, Direction.Up },
+        new object[] { "LostTower5F", "old_woman_1", 7, 9, Direction.Down },
+        new object[] { "LostTower5F", "old_woman_2", 8, 9, Direction.Down }
     };
 
     [Theory]
@@ -130,9 +141,32 @@ public class RoomPlanTests
     }
 
     [Fact]
+    public void TheLostTowersStairsJoinEachFloorToTheNextBesideTheStairs()
+    {
+        for (int i = 0; i < LostTower.Length - 1; i++)
+        {
+            Map below = Room(LostTower[i]), above = Room(LostTower[i + 1]);
+            var up = Assert.Single(below.Warps, w => w.TargetMap == above.Name);
+            var down = Assert.Single(above.Warps, w => w.TargetMap == below.Name);
+            // Each comes out beside the other's stairs, walking away from them
+            Assert.Equal((down.SourceX + 1, down.SourceY, Direction.Right), (up.TargetX, up.TargetY, up.TargetFacing));
+            Assert.Equal((up.SourceX - 1, up.SourceY, Direction.Left), (down.TargetX, down.TargetY, down.TargetFacing));
+            Assert.True(above.IsWalkable(up.TargetX, up.TargetY));
+            Assert.True(below.IsWalkable(down.TargetX, down.TargetY));
+            Assert.Contains(below.Props, p => p.Type == PropType.SideStairsUpEast && p.X == up.SourceX + 1);
+            Assert.Contains(above.Props, p => p.Type == PropType.SideStairsDownWest && p.X == down.SourceX - 2);
+        }
+        // Wild Pokémon live on every floor, and the top is lost in fog
+        Assert.All(LostTower, name => Assert.Equal(12, Room(name).WildEncounters.Count));
+        Assert.All(LostTower, name => Assert.Equal(TileBehavior.OldChateauFloor, Room(name).BehaviourAt(7, 6)));
+        Assert.Equal(FieldWeather.Fog, Room("LostTower5F").WeatherAt(7, 6));
+        Assert.Equal(FieldWeather.Clear, Room("LostTower4F").WeatherAt(7, 6));
+    }
+
+    [Fact]
     public void EveryOtherRoomBeginsWhereTheHandMadeOnesDo()
     {
-        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).ToHashSet();
+        var rebuilt = Plans.Select(p => (string)p[0]).Concat(UpperFloors).Concat(Gates).Concat(LostTower).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {
             string name = Path.GetFileNameWithoutExtension(path);

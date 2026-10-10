@@ -16,6 +16,8 @@ public enum Op
     SetFlag, ClearFlag, SetVar, AddVar,
     // What the player is given, finds and has taken back
     Give, Find, AddItem, Take, GivePokemon, GiveBadge, GiveMoney, TakeMoney, Heal,
+    // The Hallowed Tower's count of people spoken to (plan 08 · P12)
+    ClearGreetings,
     // Battles
     Battle, WildBattle, CatchingLesson,
     // People and the field

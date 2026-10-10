@@ -319,6 +319,9 @@ public sealed class ScriptRunner
             case Op.Heal:
                 host.Party.HealAll();
                 break;
+            case Op.ClearGreetings:
+                host.Story.ClearGreetings();
+                break;
             case Op.Turnback:
                 host.Turnback();
                 break;
@@ -785,6 +788,8 @@ public sealed class ScriptRunner
         "MONEY" => host.Money,
         "PARTY_COUNT" => host.Party.Count,
         "BADGE_COUNT" => host.Story.BadgeCount,
+        "GREETINGS" => host.Story.Greetings,
+        "SEEN" => host.SeenInSinnoh,
         _ => host.Story.Var(variable)
     };
 

@@ -272,6 +272,221 @@ public class HearthomeTests
         Assert.True(game.Fires("Rival"));
     }
 
+    /// <summary>Plays the Hallowed Tower's script, standing below one of its tiles.</summary>
+    private static HeadlessScriptHost ReadTheTower(OpeningTests.Game game)
+    {
+        var tile = game.Map.TileScripts.First(kv => kv.Value == "HallowedTower").Key;
+        game.Arrive("Sinnoh", tile.X, tile.Y + 1);
+        return game.Play(Scripts.Find("HallowedTower", "route_209")!);
+    }
+
+    [Fact]
+    public void TheHallowedTowerWaitsForTheOddKeystoneAndThirtyTwoPeopleSpokenTo()
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 700);
+        Assert.Equal(4, game.Map.TileScripts.Count(kv => kv.Value == "HallowedTower"));
+        Assert.Contains("missing", ReadTheTower(game).Transcript.Single().Text);
+
+        game.Bag.AddItem(ItemDatabase.Get("Odd Keystone")!);
+        var set = ReadTheTower(game);
+        Assert.Contains(set.Asked, a => a.Question.Contains("Odd Keystone"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Odd Keystone")!));
+        Assert.Equal(1, game.Story.Var("VAR_HALLOWED_TOWER_STATE"));
+
+        // Each person counts once, however often they are spoken to; thirty-one isn't enough
+        for (int i = 0; i < 31; i++) game.Story.Greet($"sinnoh/person_{i}");
+        game.Story.Greet("sinnoh/person_0");
+        Assert.Equal(31, game.Story.Greetings);
+        var stirring = ReadTheTower(game);
+        Assert.DoesNotContain(stirring.Log, l => l.StartsWith("wildbattle"));
+        Assert.Contains("inside the tower", stirring.Transcript.Single().Text);
+
+        game.Story.Greet("sinnoh/person_31");
+        var spiritomb = ReadTheTower(game);
+        Assert.Contains("cry Spiritomb", spiritomb.Log);
+        Assert.Contains("wildbattle Spiritomb 25 Won", spiritomb.Log);
+        // The stone is spent and the count starts again
+        Assert.Equal(0, game.Story.Var("VAR_HALLOWED_TOWER_STATE"));
+        Assert.Equal(0, game.Story.Greetings);
+        Assert.Contains("missing", ReadTheTower(game).Transcript.Single().Text);
+    }
+
+    [Theory]
+    [InlineData(0, "set up long ago")]
+    [InlineData(8, "moved a little")]
+    [InlineData(15, "sobbing")]
+    [InlineData(22, "trembling")]
+    [InlineData(29, "inside the tower")]
+    public void TheHallowedTowerStirsAsMorePeopleAreSpokenTo(int greetings, string words)
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 700);
+        game.Story.SetVar("VAR_HALLOWED_TOWER_STATE", 1);
+        for (int i = 0; i < greetings; i++) game.Story.Greet($"sinnoh/person_{i}");
+        Assert.Contains(words, ReadTheTower(game).Transcript.Single().Text);
+    }
+
+    [Fact]
+    public void SpiritombIsListedOnRoute209ByTheHallowedTower()
+    {
+        var spiritomb = Habitats.Sinnoh!.Of("Spiritomb");
+        var place = Assert.Single(spiritomb);
+        Assert.Equal("Route 209", place.Name);
+        Assert.True(place.Ways.HasFlag(HabitatWays.Special));
+        Assert.Equal("The Hallowed Tower", place.How);
+    }
+
+    [Fact]
+    public void TheFishermanOnRoute209GivesTheGoodRodOnce()
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 700);
+        game.Talk("fisherman", "route_209");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Good Rod")!));
+        game.Talk("fisherman", "route_209");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Good Rod")!));
+        Assert.Contains(game.Said, s => s.Text.Contains("press the button"));
+    }
+
+    [Fact]
+    public void TheLostTowersFloorsLeadUpToTheFogAndTheOldWomenGiveTheirTagsOnceItIsCleared()
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 700);
+        Assert.Equal("LostTower1F", game.Map.GetWarpAt(568, 680)!.TargetMap);
+        game.Arrive("LostTower1F", 7, 14);
+        foreach (string floor in new[] { "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F" }) game.Through(floor);
+        Assert.Equal("LostTower5F", game.Map.Name);
+        Assert.Equal(FieldWeather.Fog, game.Map.WeatherAt(7, 9));
+        game.Through("LostTower4F");
+        game.Through("LostTower5F");
+
+        game.Talk("old_woman_1");
+        Assert.Contains("fog", game.Said.Single().Text);
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Spell Tag")!));
+
+        // Defog lifts the room's fog while the player stays
+        game.Story.Set(FieldMoveRules.DefogFlag);
+        game.Map.FogLifted = true;
+        Assert.Equal(FieldWeather.Clear, game.Map.WeatherAt(7, 9));
+        game.Talk("old_woman_1");
+        game.Talk("old_woman_1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Spell Tag")!));
+        Assert.Contains("Fantina", game.Said[0].Text);
+
+        // Once cleared before her, the other gives her tag even after the fog has come back
+        game.Story.Unset(FieldMoveRules.DefogFlag);
+        game.Talk("old_woman_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Cleanse Tag")!));
+    }
+
+    [Theory]
+    [InlineData(557)]
+    [InlineData(560)]
+    [InlineData(563)]
+    public void TheRivalComesDownSolaceonsStreetOnceAsThePlayerFirstArrives(int x)
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 680);
+        Assert.Null(game.Present("rival", "solaceon_town"));
+        var trigger = game.Map.Triggers.Single(t => t.Script == "Rival" && t.Y == 669);
+        Assert.Equal((557, 7), (trigger.X, trigger.Width));
+        game.Arrive("Sinnoh", x, 669);
+        var scene = game.Play(Scripts.Find("Rival", "solaceon_town")!);
+        // He came down the player's own column and went back up it
+        var rival = game.Map.Everyone.First(n => n.Key == "rival" && n.GridY == 661 && n.GridX >= 557 && n.GridX <= 563);
+        Assert.Equal(x, rival.GridX);
+        Assert.Contains(scene.Transcript, l => l.Text.Contains("Defog"));
+        Assert.Equal(1, game.Story.Var("VAR_SOLACEON_TOWN_STATE"));
+        Assert.Null(game.Present("rival", "solaceon_town"));
+        Assert.False(game.Fires("Rival"));
+    }
+
+    [Theory]
+    [InlineData(49, false)]
+    [InlineData(50, true)]
+    public void TheRuinManiacGivesThePokemonHistoryAppForFiftySpeciesSeen(int seen, bool gives)
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 660);
+        game.Seen = seen;
+        var talk = game.Talk("ruin_maniac", "solaceon_town");
+        Assert.Equal(gives, talk.Poketch.Apps.Contains(PoketchApp.PokemonHistory));
+        Assert.Equal(gives, game.Story.Has("FLAG_RECEIVED_POKETCH_POKEMON_HISTORY"));
+        if (!gives) return;
+        game.Talk("ruin_maniac", "solaceon_town");
+        Assert.Contains("history", game.Said[0].Text);
+    }
+
+    [Fact]
+    public void TheHikerInTheRuinsTradesAGreenShardForALoanOfDefog()
+    {
+        var game = NewGame();
+        var room = game.Maps.Values.First(m => m.Everyone.Any(n => n.Key == "hiker" && m.ScriptFileAt(n.GridX, n.GridY) == "solaceon_ruins_room_2"));
+        var hiker = room.Everyone.First(n => n.Key == "hiker" && room.ScriptFileAt(n.GridX, n.GridY) == "solaceon_ruins_room_2");
+        game.Arrive(room.Name, hiker.GridX, hiker.GridY + 1);
+        game.Talk("hiker", "solaceon_ruins_room_2");
+        Assert.Empty(game.Last.Asked);
+
+        game.Bag.AddItem(ItemDatabase.Get("HM05")!);
+        game.Play(Scripts.Find("Hiker", "solaceon_ruins_room_2")!, hiker);
+        Assert.Contains(game.Last.Asked, a => a.Question.Contains("HM05"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Green Shard")!));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM05")!));
+        game.Play(Scripts.Find("Hiker", "solaceon_ruins_room_2")!, hiker);
+        Assert.Empty(game.Last.Asked);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Green Shard")!));
+    }
+
+    [Fact]
+    public void ThePsyduckStandAcrossRoute210UntilTheSecretPotion()
+    {
+        var game = NewGame();
+        game.Arrive("Sinnoh", 560, 590);
+        var psyduck = Enumerable.Range(1, 4).Select(i => game.Present($"psyduck_{i}", "route_210_south")).ToList();
+        Assert.All(psyduck, Assert.NotNull);
+        game.Talk("psyduck_1", "route_210_south");
+        Assert.Contains("won't budge", game.Said[0].Text);
+        Assert.False(game.Story.Has("FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK"));
+
+        game.Bag.AddItem(ItemDatabase.Get("Secret Potion")!);
+        game.Talk("psyduck_1", "route_210_south");
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK"));
+        Assert.All(Enumerable.Range(1, 4), i => Assert.Null(game.Present($"psyduck_{i}", "route_210_south")));
+    }
+
+    [Fact]
+    public void TheSolaceonRuinsInscriptionsAreReadFromTheirBackWalls()
+    {
+        var game = NewGame();
+        foreach (string room in new[] { "solaceon_ruins_room_1", "solaceon_ruins_room_7" })
+        {
+            game.Arrive("Sinnoh", 560, 660);
+            var map = game.Maps.Values.First(m => m.TileScripts.Any(kv => kv.Value == "Inscription" && m.ScriptFileAt(kv.Key.X, kv.Key.Y) == room));
+            Assert.Equal(3, map.TileScripts.Count(kv => kv.Value == "Inscription" && map.ScriptFileAt(kv.Key.X, kv.Key.Y) == room));
+            game.Play(Scripts.Find("Inscription", room)!);
+            Assert.Contains("Unown", game.Said[0].Text);
+        }
+    }
+
+    [Fact]
+    public void ASaveKeepsWhoThePlayerHasSpokenTo()
+    {
+        var story = new StoryState();
+        story.Greet("sinnoh/b");
+        story.Greet("sinnoh/a");
+        int revision = story.Revision;
+        story.Greet("sinnoh/a");
+        Assert.Equal(2, story.Greetings);
+        Assert.Equal(revision, story.Revision);
+        var loaded = new StoryState();
+        loaded.RestoreGreetings(story.Greeted);
+        Assert.Equal(2, loaded.Greetings);
+        story.Clear();
+        Assert.Equal(0, story.Greetings);
+    }
+
     [Fact]
     public void ASaveFromBeforeTheChapterHidesItsPeopleAndOpensFantinasDoorIfHerBadgeIsWon()
     {

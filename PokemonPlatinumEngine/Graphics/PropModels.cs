@@ -86,8 +86,12 @@ internal static class PropModels
                 break;
             // Eterna City's rooms (plan 02 · S6): the Team Galactic building's stairs at the sides of its floors, the
             // cycle shop's bicycles, a bin, and boxes stacked in a storeroom
-            case PropType.SideStairsUp: SideStairsUp(kit, w, d); break;
-            case PropType.SideStairsDown: SideStairsDown(kit, w, d); break;
+            case PropType.SideStairsUp: SideStairsUp(kit, w, d, east: false); break;
+            case PropType.SideStairsDown: SideStairsDown(kit, w, d, west: false); break;
+            case PropType.SideStairsUpEast: SideStairsUp(kit, w, d, east: true); break;
+            case PropType.SideStairsDownWest: SideStairsDown(kit, w, d, west: true); break;
+            case PropType.Headstone: kit.Sprite(kit.Face("headstone", 22, 30, PaintHeadstone), 16, 20); break;
+            case PropType.Tomb: kit.Sprite(kit.Face("tomb", 54, 50, PaintTomb), 32, 40); break;
             case PropType.Bicycle: kit.Sprite(kit.Face("bicycle", 58, 36, PaintBicycle), w / 2f, d / 2f + 10); break;
             case PropType.TrashCan: TrashCan(kit); break;
             // The wardrobe at home and a boutique's rails (plan 11 · C10)
@@ -102,45 +106,48 @@ internal static class PropModels
     /// <summary>
     /// Steel steps climbing west from the foot of the flight (its east end) to the floor above, the full depth of the
     /// prop, with a rail along their open south side: eight steps of the prop's width, the last just under the top of
-    /// the wall.
+    /// the wall. <paramref name="east"/> turns it round, climbing east from its west end (the Lost Tower's).
     /// </summary>
-    private static void SideStairsUp(KitBuilder kit, int w, int d)
+    private static void SideStairsUp(KitBuilder kit, int w, int d, bool east)
     {
         const int steps = 8, rise = 8;
         int run = w / steps, z0 = 2, z1 = d - 4;
-        var tread = kit.Face($"sidestairs.tread.{z1 - z0}", run, z1 - z0, c =>
+        var tread = kit.Face($"sidestairs.tread.{z1 - z0}{(east ? ".east" : "")}", run, z1 - z0, c =>
         {
             c.Rect(0, 0, run, c.Height, Steel.Base);
-            // A ribbed plate, light at the step's nosing on its east edge
+            // A ribbed plate, light at the step's nosing on the edge the flight is climbed from
             for (int y = 2; y < c.Height - 1; y += 4) c.HLine(1, y, run - 2, Steel.Dark);
-            c.VLine(run - 1, 0, c.Height, Steel.Light);
-            c.VLine(0, 0, c.Height, Steel.Dark);
+            c.VLine(east ? 0 : run - 1, 0, c.Height, Steel.Light);
+            c.VLine(east ? run - 1 : 0, 0, c.Height, Steel.Dark);
         });
         for (int i = 0; i < steps; i++)
         {
-            int x1 = w - i * run, top = (i + 1) * rise;
+            int x1 = east ? (i + 1) * run : w - i * run, top = (i + 1) * rise;
             var south = kit.Face($"sidestairs.south.{top}", run, top, c => Pix.Raised(c, 0, 0, run, top, Casing));
             var riser = kit.Face($"sidestairs.riser.{z1 - z0}x{top}", z1 - z0, top, c =>
             {
                 Pix.Raised(c, 0, 0, z1 - z0, top, Casing);
                 c.HLine(0, 0, z1 - z0, Steel.Light);
             });
-            kit.Box(x1 - run, x1, z0, z1, 0, top, tread, south, null, riser);
+            if (east) kit.Box(x1 - run, x1, z0, z1, 0, top, tread, south, riser, null);
+            else kit.Box(x1 - run, x1, z0, z1, 0, top, tread, south, null, riser);
             // The rail climbs with the steps along the open side
             kit.Block("sidestairs.rail", Dark, x1 - run, x1, z1, z1 + 2, top, top + 12);
         }
-        kit.Block("sidestairs.newel", Dark, w - 3, w, z1 - 1, z1 + 3, 0, rise + 18);
+        if (east) kit.Block("sidestairs.newel", Dark, 0, 3, z1 - 1, z1 + 3, 0, rise + 18);
+        else kit.Block("sidestairs.newel", Dark, w - 3, w, z1 - 1, z1 + 3, 0, rise + 18);
     }
 
     /// <summary>
     /// A stairwell going down eastward: a well in the floor whose steps sink into the dark the further east they go,
-    /// with a rail round its open sides and a post at each corner.
+    /// with a rail round its open sides and a post at each corner. <paramref name="west"/> turns it round, going down
+    /// westward from its head on the east (the Lost Tower's).
     /// </summary>
-    private static void SideStairsDown(KitBuilder kit, int w, int d)
+    private static void SideStairsDown(KitBuilder kit, int w, int d, bool west)
     {
         const int steps = 7;
         int z0 = 2, z1 = d - 4;
-        var well = kit.Face($"sidestairs.well.{w}x{z1 - z0}", w, z1 - z0, c =>
+        var well = kit.Face($"sidestairs.well.{w}x{z1 - z0}{(west ? ".west" : "")}", w, z1 - z0, c =>
         {
             int run = w / steps;
             for (int i = 0; i < steps; i++)
@@ -149,20 +156,22 @@ internal static class PropModels
                 float dark = 0.12f + 0.11f * i;
                 var tone = PixelCanvas.Mix(Steel.Base, Rgb(30, 32, 44), dark);
                 int x0 = i * run, x1 = i == steps - 1 ? w : x0 + run;
+                if (west) (x0, x1) = (w - x1, w - x0);
                 c.Rect(x0, 0, x1 - x0, c.Height, tone);
-                c.VLine(x0, 0, c.Height, PixelCanvas.Mix(Steel.Light, Rgb(30, 32, 44), dark));
-                for (int y = 3; y < c.Height - 1; y += 4) c.HLine(x0 + 2, y, x1 - x0 - 3, PixelCanvas.Shadow(tone, 0.25f));
+                c.VLine(west ? x1 - 1 : x0, 0, c.Height, PixelCanvas.Mix(Steel.Light, Rgb(30, 32, 44), dark));
+                for (int y = 3; y < c.Height - 1; y += 4) c.HLine(x0 + (west ? 1 : 2), y, x1 - x0 - 3, PixelCanvas.Shadow(tone, 0.25f));
             }
             c.HLine(0, 0, w, Dark.Dark);
             c.HLine(0, c.Height - 1, w, Dark.Dark);
         });
         kit.Decal(0, w, z0, z1, 0.004f, well);
-        // The rail along the south side and across the far end; the head of the stairs, on the west, is open
-        kit.Block("sidestairs.downrail", Dark, 2, w, z1, z1 + 2, 16, 19);
-        kit.Block("sidestairs.downrail.end", Dark, w - 2, w, z0, z1, 16, 19);
-        foreach (int x in new[] { 2, w / 2 - 1, w - 3 })
+        // The rail along the south side and across the far end; the head of the stairs is open
+        int far = west ? 0 : w - 2;
+        kit.Block("sidestairs.downrail", Dark, west ? 0 : 2, west ? w - 2 : w, z1, z1 + 2, 16, 19);
+        kit.Block("sidestairs.downrail.end", Dark, far, far + 2, z0, z1, 16, 19);
+        foreach (int x in west ? new[] { w - 4, w / 2 - 1, 1 } : new[] { 2, w / 2 - 1, w - 3 })
             kit.Block("sidestairs.post", Dark, x, x + 2, z1, z1 + 2, 0, 16);
-        kit.Block("sidestairs.post", Dark, w - 2, w, z0, z0 + 2, 0, 16);
+        kit.Block("sidestairs.post", Dark, far, far + 2, z0, z0 + 2, 0, 16);
     }
 
     /// <summary>
@@ -321,6 +330,52 @@ internal static class PropModels
     }
 
     /// <summary>A round bin of grey steel with a lid, waist high.</summary>
+    // ------------------------------------------------------------------ the Lost Tower's graves (plan 02 · S7)
+
+    private static readonly Tone Gravestone = Tone.Of(150, 150, 158, 184, 184, 192, 104, 104, 116);
+
+    /// <summary>Clears the corners of a stone's head so it reads as rounded: <paramref name="r"/> texels each way.</summary>
+    private static void RoundHead(PixelCanvas c, int x, int y, int w, int r)
+    {
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < r - i; j++)
+            {
+                c.SetRaw(x + j, y + i, default);
+                c.SetRaw(x + w - 1 - j, y + i, default);
+            }
+    }
+
+    /// <summary>A headstone: weathered grey stone with a rounded head, a darker rim and one carved line (style guide, the Lost Tower).</summary>
+    private static void PaintHeadstone(PixelCanvas c)
+    {
+        Pix.Raised(c, 1, 0, 20, 26, Gravestone);
+        RoundHead(c, 1, 0, 20, 5);
+        c.HLine(6, 10, 10, Gravestone.Dark);
+        c.HLine(6, 11, 10, Gravestone.Light);
+        // A plinth a little wider than the stone
+        Pix.Raised(c, 0, 25, 22, 5, Tone.Of(124, 124, 134));
+        Pix.Outline(c);
+    }
+
+    /// <summary>A tomb: a broad stone on a plinth, with a niche of flowers at its foot.</summary>
+    private static void PaintTomb(PixelCanvas c)
+    {
+        Pix.Raised(c, 7, 0, 40, 38, Gravestone);
+        RoundHead(c, 7, 0, 40, 8);
+        c.HLine(16, 12, 22, Gravestone.Dark);
+        c.HLine(16, 13, 22, Gravestone.Light);
+        c.HLine(19, 18, 16, Gravestone.Dark);
+        Pix.Raised(c, 0, 36, 54, 14, Tone.Of(124, 124, 134));
+        // The niche, and the flowers left in it
+        c.Rect(21, 28, 12, 8, Gravestone.Dark);
+        foreach (var (x, col) in new[] { (23, Rgb(232, 120, 150)), (26, Rgb(250, 236, 140)), (29, Rgb(200, 150, 232)) })
+        {
+            c.VLine(x + 1, 31, 5, LeafDark);
+            c.Rect(x, 29, 3, 2, col);
+        }
+        Pix.Outline(c);
+    }
+
     private static void TrashCan(KitBuilder kit)
     {
         var body = kit.Face("trashcan", 22, 30, c =>

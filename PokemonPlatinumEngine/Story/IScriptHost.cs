@@ -39,6 +39,9 @@ public interface IScriptHost
 
     /// <summary>The Great Marsh's Safari Game, while one is under way (plan 01 · M7).</summary>
     SafariGame Safari { get; }
+
+    /// <summary>How many species of the Sinnoh Pokédex the player has seen (the original's <c>GetLocalDexSeenCount</c>).</summary>
+    int SeenInSinnoh { get; }
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }

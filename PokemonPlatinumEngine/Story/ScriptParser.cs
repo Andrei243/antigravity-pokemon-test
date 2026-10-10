@@ -20,7 +20,7 @@ namespace PokemonPlatinumEngine.Story;
 public static class ScriptParser
 {
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
-    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT" };
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN" };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
@@ -190,6 +190,9 @@ public static class ScriptParser
             }
             case "heal":
                 return new Instruction { Op = Op.Heal, Line = line };
+            case "greetings":
+                r.OneOf("clear");
+                return new Instruction { Op = Op.ClearGreetings, Line = line };
             case "turnback":
                 return new Instruction { Op = Op.Turnback, Line = line };
             case "defeat":

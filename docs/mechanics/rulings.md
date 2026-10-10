@@ -564,3 +564,25 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Mira in the depths | Follows the player down into Wayward Cave's lower floor | Walks with the player on its first floor only | A follower stays on her own map (plan 02 · S6) |
 | Amity Square | Walking with a Pokémon, the gifts it finds | Its gates are passed through as before | Its rooms and walks are plan 01 · M11's |
 | The lobby's and the gate's furniture | The original's own models | Counters, a computer, plants, tables and benches of our kit, where its models stand | The kit has no contest booths yet |
+
+## The fourth chapter, second part (2026-10-10, plan 02 · S7 and plan 08 · P12)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_209.s`, `scripts_route_209_lost_tower_5f.s`, `scripts_solaceon_town.s`, `scripts_solaceon_ruins_room_1.s`, `scripts_solaceon_ruins_room_2.s`, `scripts_solaceon_ruins_room_7.s`, `scripts_route_210_south.s`)
+
+- **The Hallowed Tower** is read from its four tiles. Without the Odd Keystone it is a broken tower; with it the player may set the stone in its gap (`VAR_HALLOWED_TOWER_STATE` 1). From then it stirs at eight, fifteen, twenty-two and twenty-nine people spoken to, and at thirty-two Spiritomb comes out of it (level 25). Once its battle is over, however it ended, the stone is spent and the count starts again (`ClearSpiritombCounter`).
+- **The fisherman on Route 209 gives the Good Rod** once, and after that explains how to fish.
+- **The Lost Tower** has five floors joined by stairs, wild Pokémon on every floor (the Old Chateau's floor behaviour, at the original's rate and slots), its trainers and items, and fog on the top floor that Defog lifts while the player stays. The two old women there give the Spell Tag and the Cleanse Tag once the fog has been cleared in front of them (`FLAG_USED_DEFOG_IN_ROUTE_209_LOST_TOWER_5F`), and keep giving them after the fog has come back.
+- **The rival comes down Solaceon's street** the first time the player crosses the original's trigger from Route 209, says he found HM05 in the ruins and goes off north (`VAR_SOLACEON_TOWN_STATE` 1).
+- **The Ruin Maniac gives the Pokémon History app** to a trainer who has seen fifty species of the Sinnoh Pokédex.
+- **The hiker in the ruins** asks to borrow HM05 once the player has it and gives a Green Shard for it; the HM stays the player's. Turned down, he asks again at once the next time (`FLAG_DID_NOT_LOAN_HM_DEFOG`).
+- **The Psyduck stand across Route 210** until the Secret Potion cures their headaches; then they go for good (`FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK`).
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Spiritomb's count | People spoken to in the Underground (`VAR_SPIRITOMB_COUNTER`) | Different people spoken to anywhere, each counted once until Spiritomb appears (`StoryState.Greeted`, saved as `SaveData.GreetedPeople`) | No Underground yet (plan 06 · R16); plan 08's decision 2 |
+| The Unown inscriptions | Written in the Unown alphabet | Read out in letters | No Unown typeface yet |
+| The Lost Tower's music | A theme of its own | Route 209's | No song for it yet |
+| The Lost Tower's look | The original's tower models | A room of our kit with headstones and tombs where its graves stand | The kit has no tower interior yet |
+| Cynthia after the Psyduck | Comes up Route 210 and gives the Old Charm | Not yet | The Secret Potion and what follows are plan 02 · S9's |

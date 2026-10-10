@@ -271,11 +271,11 @@
       "x": 25,
       "y": 10,
       "facing": "Down",
-      "movement": "look_south_west_and_east",
       "dialog": [
         "A contest isn't one thing, you know! First the look, then the dance, then the moves.",
         "A Pokémon has to shine at all three to take the ribbon."
-      ]
+      ],
+      "movement": "look_south_west_and_east"
     },
     {
       "id": "school_kid_f",
@@ -284,12 +284,12 @@
       "x": 4,
       "y": 13,
       "facing": "Left",
-      "movement": "wander_west_and_east",
-      "rangeX": 1,
       "dialog": [
         "The winners' photos go up on the boards here. Look at them all!",
         "One day mine will be up there too."
-      ]
+      ],
+      "movement": "wander_west_and_east",
+      "rangeX": 1
     },
     {
       "id": "rich_boy",
@@ -337,9 +337,9 @@
       "x": 22,
       "y": 9,
       "facing": "Left",
-      "movement": "look_south_and_west",
+      "script": "Fantina",
       "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA",
-      "script": "Fantina"
+      "movement": "look_south_and_west"
     }
   ],
   "wildEncounters": []

@@ -63,11 +63,13 @@ public static class RoomPlan
 
         var events = decomp.Events(header.Events);
         foreach (var o in events.Objects)
-            text.AppendLine($"object {o.Id}: {o.GraphicsId} at {o.X},{o.Z} facing {o.InitialDir} moving {o.MovementType} script {o.Script} hidden by {o.HiddenFlag}");
+            text.AppendLine($"object {o.Id}: {o.GraphicsId} at {o.X},{o.Z} facing {o.InitialDir} moving {o.MovementType} script {o.Script} hidden by {o.HiddenFlag}"
+                + (decomp.VisibleItem(o.Script) is { } ball ? $" holds {ball.Item} x{ball.Count}" : ""));
         foreach (var w in events.Warps)
             text.AppendLine($"warp at {w.X},{w.Z} to {w.DestHeaderId} {w.DestWarpId}");
         foreach (var s in events.Signs)
-            text.AppendLine($"bg event type {s.Type} at {s.X},{s.Z} script {s.Script} facing {s.PlayerFacingDir}");
+            text.AppendLine($"bg event type {s.Type} at {s.X},{s.Z} script {s.Script} facing {s.PlayerFacingDir}"
+                + (decomp.HiddenItem(s.Script) is { } hidden ? $" hides {hidden.Item} x{hidden.Count} (range {hidden.Range}, {hidden.Flag})" : ""));
         foreach (var t in events.Triggers)
             text.AppendLine($"trigger at {t.X},{t.Z} {t.Width}x{t.Length} script {t.Script} when {t.Var}");
         return text.ToString();

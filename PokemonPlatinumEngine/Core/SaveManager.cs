@@ -177,6 +177,9 @@ public class SaveData
     /// <summary>The items picked up off the ground and the hidden ones found, by their ids.</summary>
     public List<string> TakenItems { get; set; } = new();
 
+    /// <summary>The people spoken to since the Hallowed Tower last stirred (plan 08 · P12; <c>StoryState.Greeted</c>).</summary>
+    public List<string> GreetedPeople { get; set; } = new();
+
     /// <summary>The species taken from the professor's briefcase, and the one the rival took; null until then.</summary>
     public string? PlayerStarter { get; set; }
     public string? RivalStarter { get; set; }

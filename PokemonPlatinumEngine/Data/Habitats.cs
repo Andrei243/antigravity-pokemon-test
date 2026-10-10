@@ -19,17 +19,24 @@ public enum HabitatWays
     OldRod = 16,
     GoodRod = 32,
     SuperRod = 64,
+    /// <summary>Met in a way of its own, which the habitat's <see cref="Habitat.How"/> tells (plan 08 · P12).</summary>
+    Special = 128,
     Grass = Morning | Day | Night,
     Fishing = OldRod | GoodRod | SuperRod
 }
 
 /// <summary>A place a species lives: the areas of one name (a cave's floors are one place), where it is on the map and how it is met there.</summary>
-public sealed record Habitat(string Name, IReadOnlyList<(int X, int Y)> Cells, HabitatWays Ways);
+public sealed record Habitat(string Name, IReadOnlyList<(int X, int Y)> Cells, HabitatWays Ways)
+{
+    /// <summary>How it is met where it is <see cref="HabitatWays.Special"/>: "The Hallowed Tower".</summary>
+    public string? How { get; init; }
+}
 
 /// <summary>
 /// Where each species lives in a region, for the Pokédex's area page (plan 03 · D10): read from the region's
 /// habitats file (<see cref="WorldHabitatsFile"/>), which <c>tools/MapImporter</c> writes for every area with wild
-/// Pokémon, open or not, with a coarse picture of the overworld to show them on.
+/// Pokémon, open or not, with a coarse picture of the overworld to show them on; and from the hand-written special
+/// file (<see cref="SpecialFileName"/>, plan 08 · P12) the Pokémon no table lists, met in a way of their own.
 /// </summary>
 public sealed class Habitats
 {
@@ -39,7 +46,10 @@ public sealed class Habitats
     public int Width { get; }
     public int Height { get; }
 
-    public Habitats(WorldHabitatsFile file)
+    /// <summary>The hand-written file beside the habitats file, which the importer never writes.</summary>
+    public const string SpecialFileName = "special.json";
+
+    public Habitats(WorldHabitatsFile file, WorldHabitatsFile? special = null)
     {
         map = file.Map.ToArray();
         Height = map.Length;
@@ -74,6 +84,14 @@ public sealed class Habitats
             if (!bySpecies.TryGetValue(species, out var list)) bySpecies[species] = list = new List<Habitat>();
             list.Add(new Habitat(name, cells.ToList(), w));
         }
+
+        // The Pokémon met in a way of their own, after the tables' places
+        foreach (var area in special?.Areas ?? new List<HabitatArea>())
+            foreach (string s in area.Special ?? new List<string>())
+            {
+                if (!bySpecies.TryGetValue(s, out var list)) bySpecies[s] = list = new List<Habitat>();
+                list.Add(new Habitat(area.Name, ParseCells(area.Cells), HabitatWays.Special) { How = area.How });
+            }
     }
 
     /// <summary>The places a species lives, in the order the region's areas come (empty if none).</summary>
@@ -116,7 +134,10 @@ public sealed class Habitats
             if (loaded) return sinnoh;
             loaded = true;
             string path = Path.Combine(World.Folder, "sinnoh", WorldHabitatsFile.FileName);
-            if (File.Exists(GameDataFiles.PathOf(path))) sinnoh = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path));
+            string special = Path.Combine(World.Folder, "sinnoh", SpecialFileName);
+            if (File.Exists(GameDataFiles.PathOf(path)))
+                sinnoh = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
+                    File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null);
             return sinnoh;
         }
     }

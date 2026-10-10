@@ -243,10 +243,10 @@ public class Map
     /// <summary>The weather of a small map as a whole (a map of the world has it by area: <see cref="WeatherAt"/>).</summary>
     public FieldWeather Weather { get; set; }
 
-    /// <summary>What falls or hangs in the air over a tile; rooms have no weather, and in a cave only fog hangs.</summary>
+    /// <summary>What falls or hangs in the air over a tile; in a room and a cave only fog hangs (the Lost Tower's top floor).</summary>
     public FieldWeather WeatherAt(int x, int y)
     {
-        if (IsIndoors) return FieldWeather.Clear;
+        if (IsIndoors) return Weather == FieldWeather.Fog && !FogLifted ? FieldWeather.Fog : FieldWeather.Clear;
         // The calendar follows the computer's date, as the original follows the DS's
         var weather = AreaAt(x, y) is { } area ? area.WeatherOn(Core.GameClock.Today) : Weather;
         if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;

@@ -12,6 +12,8 @@
   "locked": [ 0, 1, 2, 3, 4, 7 ],
   // The Rare Candy on the ledge over the ruins is reached through Maniac Tunnel (with the tunnel, plan 02)
   "heldBack": [ "item_rare_candy" ],
+  // Plan 02 · S7 (scripts/solaceon_town.txt): the rival coming down the street as the player first arrives (trigger 0)
+  "triggers": [ { "trigger": 0, "script": "Rival" } ],
   "people": {
     // The Pokémon of the Day Care's farm (plan 10 · F1), in their pen: out of reach and with nothing to say, as in Platinum
     "buneary_1": { "name": "Buneary" },
@@ -52,14 +54,10 @@
         "Then folk started bringing their Pokémon to the Day Care, and a town grew up round it."
       ]
     },
-    // In Platinum he gives a Pokétch app to trainers who have met many Pokémon; the gift is plan 02's (S7)
-    "ruin_maniac": {
-      "name": "Ruin Maniac",
-      "dialog": [
-        "Old stones tell the story of the people who came before us.",
-        "Pokémon have stories too: where you first met each one, and when. Never forget yours!"
-      ]
-    },
+    // He gives the Pokémon History app to a trainer who has seen fifty species (plan 02 · S7, scripts/solaceon_town.txt)
+    "ruin_maniac": { "name": "Ruin Maniac", "script": "RuinManiac" },
+    // He comes running down the street as the player first walks into town (plan 02 · S7)
+    "rival": { "name": "{rival}", "dialog": [ "The ruins are amazing, {player}. Go and see!" ] },
     // The Day Care, and the Eggs that turn up there, wait for its rooms (plan 01 · M11)
     "day_care_man": {
       "name": "Old Man",

@@ -144,7 +144,9 @@ public static class RegionDatabase
                 "EternaCycleShop", "EternaUndergroundManHouse",
                 "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F",
                 // Hearthome's rooms of plan 02 · S7: the Contest Hall's lobby and the gate to Route 209
-                "ContestHallLobby", "Route209GateToHearthomeCity"
+                "ContestHallLobby", "Route209GateToHearthomeCity",
+                // Route 209's Lost Tower, its five floors of graves (plan 02 · S7)
+                "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

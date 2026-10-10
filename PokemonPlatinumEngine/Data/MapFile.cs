@@ -36,6 +36,12 @@ public sealed class MapFile
     /// <summary>A Gym's puzzle by its name (<see cref="GymPuzzle.Create"/>, plan 01 · M9); left out for a room without one.</summary>
     public string? Puzzle { get; set; }
 
+    /// <summary>The weather that hangs in a room (the Lost Tower's top floor's fog, plan 02 · S7); left out for none.</summary>
+    public FieldWeather? Weather { get; set; }
+
+    /// <summary>How often its wild Pokémon are met, the original's rate; left out for the default.</summary>
+    public int? EncounterRate { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -229,8 +235,10 @@ public sealed class MapFile
             Arena = BattleArena,
             ArenaType = ArenaType,
             EvolutionSites = EvolutionSites?.ToList() ?? new(),
-            Puzzle = GymPuzzle.Create(Puzzle)
+            Puzzle = GymPuzzle.Create(Puzzle),
+            Weather = Weather ?? FieldWeather.Clear
         };
+        if (EncounterRate is { } rate) map.EncounterRate = rate;
 
         CheckRows(Ground, "ground");
         CheckRows(Solid, "solid");
@@ -488,6 +496,8 @@ public sealed class MapFile
             ArenaType = map.ArenaType,
             EvolutionSites = map.EvolutionSites.Count > 0 ? map.EvolutionSites.ToList() : null,
             Puzzle = map.Puzzle?.Name,
+            Weather = map.Weather == FieldWeather.Clear ? null : map.Weather,
+            EncounterRate = map.EncounterRate == new Map(1, 1).EncounterRate ? null : map.EncounterRate,
             Width = map.Width,
             Height = map.Height
         };

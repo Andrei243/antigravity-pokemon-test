@@ -428,6 +428,10 @@ public sealed class HabitatArea
     public List<string>? OldRod { get; set; }
     public List<string>? GoodRod { get; set; }
     public List<string>? SuperRod { get; set; }
+
+    /// <summary>In the hand-written special file only (plan 08 · P12): the species met here in a way of their own, and that way in words.</summary>
+    public List<string>? Special { get; set; }
+    public string? How { get; set; }
 }
 
 /// <summary>

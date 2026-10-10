@@ -136,7 +136,7 @@ What an `if` can ask:
 | Question | |
 |---|---|
 | `flag FLAG_X` | The flag is set. |
-| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`. |
+| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (the people spoken to, `greetings clear` below), `SEEN` (the species of the Sinnoh Pokédex seen). |
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
@@ -182,6 +182,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `givebadge coal` | |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |
+| `greetings clear` | The count of people spoken to starts again from nought (plan 08 · P12; the original's `ClearSpiritombCounter`). The built-in variable `GREETINGS` is the count: everyone spoken to since, each once (`StoryState.Greeted`, saved). |
 
 ### Battles
 
