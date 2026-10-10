@@ -145,7 +145,9 @@ public static class RegionDatabase
                 "TeamGalacticEternaBuilding1F", "TeamGalacticEternaBuilding2F", "TeamGalacticEternaBuilding3F", "TeamGalacticEternaBuilding4F",
                 // Plan 01 · M9 1b: the Pastoria Gym on the original's plan, its pool drawn with relief (the Oreburgh Gym,
                 // listed above, was rebuilt to its plan then too)
-                "PastoriaGym"
+                "PastoriaGym",
+                // Hearthome's Contest Hall lobby of plan 02 · S7
+                "ContestHallLobby"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

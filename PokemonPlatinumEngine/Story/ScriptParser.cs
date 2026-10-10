@@ -20,7 +20,7 @@ namespace PokemonPlatinumEngine.Story;
 public static class ScriptParser
 {
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
-    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT" };
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "DEX_SEEN" };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
@@ -517,6 +517,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Weekday, Negated = negated, Name = r.Enum<DayOfWeek>("a day of the week").ToString() };
             case "pocket":
                 return new Condition { Query = Query.Pocket, Negated = negated, Name = r.Enum<ItemPocket>("a pocket of the bag").ToString() };
+            case "time":
+                return new Condition { Query = Query.Time, Negated = negated, Name = r.Enum<Core.TimeOfDay>("a time of day").ToString() };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

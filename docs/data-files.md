@@ -150,6 +150,7 @@ What the game loads is in `PokemonPlatinumEngine/Data/world/sinnoh/`:
 | `habitats.json` | `dotnet run --project tools/MapImporter -- --data` | Where the region's wild Pokémon live, open areas or not, for the Pokédex's area page |
 | `calendar.json` | `dotnet run --project tools/MapImporter -- --data` | Platinum's weather calendar: the weather of five places for each day of the year |
 | `encounters.json` | `dotnet run --project tools/MapImporter -- --data` | The wild Pokémon that aren't in an area's own tables (plan 06 · R13): the honey trees', the Great Marsh's and the Trophy Garden's dailies, Feebas's lake and the places swarms come to |
+| `special.json` | hand | Where a Pokémon no table lists is met, for the Pokédex's area page (plan 08 · P12): Spiritomb at the Hallowed Tower |
 
 So opening an area is: add its key to `world.json`, run the importer with `--data`, write its overlay. `WorldTests` then checks that every chunk in view has its file, that every entry of the overlay points at something that exists, and that the area can be walked into and out of.
 
@@ -376,6 +377,21 @@ What the original keeps beside the areas' tables (its `encdata_ex` and the `res/
 ```
 
 `honeyTrees` is the six slots of each group a honey tree draws (`HoneyTrees`); `greatMarsh` the 32 species the six areas of the marsh draw their daily one from, `local` before the National Pokédex and `national` after (`GreatMarsh`); `trophyGarden` the sixteen Mr. Backlot can bring (`TrophyGardenRules`). `feebas` is the lake Feebas lives in: every tile of it in the original's own order (in tiles of the area's matrix), which the day's number cuts into four groups and picks one tile of each from (`Feebas`). `swarms` is the 22 places swarms come to, in the original's order, with each one's name and the species that swarms there, open or not, for what is told of the day's swarm (`Swarms`).
+
+### `special.json`
+
+The places where a Pokémon is met that no table of wild Pokémon lists, because a script puts it in the player's way (plan 08 · P12). Written by hand; the importer's `--data` never touches it. `Habitats` reads it beside `habitats.json`, after the tables' own places, so the Pokédex's area page shows the place on its map and says how the Pokémon is met.
+
+```json
+{
+  "places": [
+    { "species": "Spiritomb", "name": "Hallowed Tower", "area": "route_209", "cells": "17,22",
+      "how": "Route 209 · Wakes at the Hallowed Tower once its keystone is set and many people have been met" }
+  ]
+}
+```
+
+`cells` are chunks of the overworld, as `habitats.json`'s are; `how` is the line the area page shows in place of the ways a table's places are met by (`HabitatWays.Special`). `area` is the key of the place's area, for whoever needs to find it.
 
 ### `calendar.json`
 

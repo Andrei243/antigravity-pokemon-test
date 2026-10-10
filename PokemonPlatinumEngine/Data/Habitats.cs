@@ -19,17 +19,23 @@ public enum HabitatWays
     OldRod = 16,
     GoodRod = 32,
     SuperRod = 64,
+    /// <summary>Met in a way of its own that no table lists (plan 08 · P12): <see cref="Habitat.How"/> says how.</summary>
+    Special = 128,
     Grass = Morning | Day | Night,
     Fishing = OldRod | GoodRod | SuperRod
 }
 
-/// <summary>A place a species lives: the areas of one name (a cave's floors are one place), where it is on the map and how it is met there.</summary>
-public sealed record Habitat(string Name, IReadOnlyList<(int X, int Y)> Cells, HabitatWays Ways);
+/// <summary>
+/// A place a species lives: the areas of one name (a cave's floors are one place), where it is on the map and how it
+/// is met there; <paramref name="How"/> in words for a place no table lists (<see cref="HabitatWays.Special"/>).
+/// </summary>
+public sealed record Habitat(string Name, IReadOnlyList<(int X, int Y)> Cells, HabitatWays Ways, string? How = null);
 
 /// <summary>
 /// Where each species lives in a region, for the Pokédex's area page (plan 03 · D10): read from the region's
 /// habitats file (<see cref="WorldHabitatsFile"/>), which <c>tools/MapImporter</c> writes for every area with wild
-/// Pokémon, open or not, with a coarse picture of the overworld to show them on.
+/// Pokémon, open or not, with a coarse picture of the overworld to show them on, and from the hand-written file of
+/// the places no table lists (<see cref="WorldSpecialFile"/>, plan 08 · P12).
 /// </summary>
 public sealed class Habitats
 {
@@ -39,7 +45,7 @@ public sealed class Habitats
     public int Width { get; }
     public int Height { get; }
 
-    public Habitats(WorldHabitatsFile file)
+    public Habitats(WorldHabitatsFile file, WorldSpecialFile? special = null)
     {
         map = file.Map.ToArray();
         Height = map.Length;
@@ -73,6 +79,13 @@ public sealed class Habitats
         {
             if (!bySpecies.TryGetValue(species, out var list)) bySpecies[species] = list = new List<Habitat>();
             list.Add(new Habitat(name, cells.ToList(), w));
+        }
+
+        // The places of their own that no table lists (plan 08 · P12), after the tables' own
+        foreach (var place in special?.Places ?? new List<SpecialPlace>())
+        {
+            if (!bySpecies.TryGetValue(place.Species, out var list)) bySpecies[place.Species] = list = new List<Habitat>();
+            list.Add(new Habitat(place.Name, ParseCells(place.Cells), HabitatWays.Special, place.How));
         }
     }
 
@@ -116,7 +129,10 @@ public sealed class Habitats
             if (loaded) return sinnoh;
             loaded = true;
             string path = Path.Combine(World.Folder, "sinnoh", WorldHabitatsFile.FileName);
-            if (File.Exists(GameDataFiles.PathOf(path))) sinnoh = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path));
+            string special = Path.Combine(World.Folder, "sinnoh", WorldSpecialFile.FileName);
+            if (File.Exists(GameDataFiles.PathOf(path)))
+                sinnoh = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
+                    File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldSpecialFile>(special) : null);
             return sinnoh;
         }
     }

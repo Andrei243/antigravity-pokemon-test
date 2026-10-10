@@ -829,6 +829,10 @@ public sealed class ScriptRunner
         "MONEY" => host.Money,
         "PARTY_COUNT" => host.Party.Count,
         "BADGE_COUNT" => host.Story.BadgeCount,
+        // How many people the player has spoken to in the field (plan 08 · P12)
+        "GREETINGS" => host.Story.Greeted.Count,
+        // How many kinds the Sinnoh Pokédex has seen (GetLocalDexSeenCount; plan 02 · S7)
+        "DEX_SEEN" => host.DexSeen,
         _ => host.Story.Var(variable)
     };
 
@@ -861,6 +865,8 @@ public sealed class ScriptRunner
             Query.Poketch => host.Poketch.Enabled,
             Query.Safari => host.Safari.Active,
             Query.Partner => host.Partner != null,
+            // GetTimeOfDay: the morning's joggers on Routes 209 and 210 (plan 02 · S7)
+            Query.Time => host.TimeOfDay.ToString() == c.Name,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
             // GetDayOfWeek (plan 06 · R14a): the Valley Windworks' Drifloon comes on Fridays

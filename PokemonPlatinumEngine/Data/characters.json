@@ -96,6 +96,8 @@
     "psychic": "Youngster",
     "cowgirl": "Lass",
     "idol": "Lass",
+    // Mira in Wayward Cave (plan 02 · S7) until plan 11 · C5 makes her look
+    "mira": "Lass",
     "receptionist": "Lass",
     "cashier_m": "Clerk",
     "cashier_f": "Clerk",

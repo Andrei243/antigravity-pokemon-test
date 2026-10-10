@@ -1,0 +1,11 @@
+# The Solaceon Ruins, the first room (plan 02 · S7). docs/scripts.md describes the language; the words are our own, on
+# the original's beats (scripts_solaceon_ruins_room_1.s).
+
+
+# The Unown inscription on the north wall (the original's script 2, on three tiles): letters of the Unown, which say
+# which way to go.
+script Inscription
+  speaker none
+  text "Unown letters are carved in the wall. They seem to say..."
+  text "THE WAY ON LIES DOWN. KEEP TO THE STAIRS, AND THE STONES WILL LEAD YOU."
+  end

@@ -98,12 +98,12 @@ public class JubilifeAndRoarkTests
         Assert.Null(game.Present("poketch_co_president", "jubilife_city"));
 
         // Route 203: the rival battles with the team that hangs on the player's starter, and runs on
-        Assert.True(game.Fires("Rival"));
-        var rival = game.Step("Rival");
+        Assert.True(game.Fires("Rival", "route_203"));
+        var rival = game.Step("Rival", "route_203");
         string expected = mine switch { "Turtwig" => "rival_route_203_turtwig", "Chimchar" => "rival_route_203_chimchar", _ => "rival_route_203_piplup" };
         Assert.Contains($"battle {expected} Won", rival.Log);
         Assert.Equal(1, game.Story.Var("VAR_ROUTE_203_RIVAL_STATE"));
-        Assert.False(game.Fires("Rival"));
+        Assert.False(game.Fires("Rival", "route_203"));
 
         // Oreburgh Gate: the hiker gives HM06 as the player passes him, once
         game.Through("OreburghGate1F");

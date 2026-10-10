@@ -1,0 +1,66 @@
+# Amity Square (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_amity_square.s).
+#
+# The square is for strolling with a Pokémon, and only with one of the kinds its rules allow: the receptionists at
+# either way in turn back a Trainer who has none of them. With one, they ask whether the player would like a stroll,
+# heal the team and let the player through (VAR_FOLLOWER_MON_ACTIVE 1); on the way out they ask how it went (0).
+# The Pokémon walking at the player's side and what it finds on the paths are plan 06 · R16's, once Pokémon can
+# follow the player (plan 10 · F3 and F4); until then it stays in its ball, as docs/mechanics/rulings.md says.
+
+
+# The way in from the west gate (the original's trigger 0, state 0) and from the east gate (trigger 2, state 0).
+script WestGate
+  face player left
+  call Welcome
+  end
+
+script EastGate
+  face player right
+  call Welcome
+  end
+
+# AmitySquare_CheckPartyHasSpecies: the kinds of Pokémon the square allows before the National Pokédex
+script Welcome
+  speaker "Receptionist"
+  if has "Pikachu" goto Allowed
+  if has "Clefairy" goto Allowed
+  if has "Psyduck" goto Allowed
+  if has "Pachirisu" goto Allowed
+  if has "Drifloon" goto Allowed
+  if has "Buneary" goto Allowed
+  if has "Happiny" goto Allowed
+  if has "Turtwig" goto Allowed
+  if has "Grotle" goto Allowed
+  if has "Torterra" goto Allowed
+  if has "Chimchar" goto Allowed
+  if has "Monferno" goto Allowed
+  if has "Infernape" goto Allowed
+  if has "Piplup" goto Allowed
+  if has "Prinplup" goto Allowed
+  if has "Empoleon" goto Allowed
+  say "Welcome to Amity Square! The square is for strolling together with your Pokémon."
+  say "But only some kinds may come in: Pikachu, Clefairy, Psyduck, Pachirisu, Drifloon, Buneary and Happiny..."
+  say "...and Turtwig, Chimchar and Piplup, and the Pokémon they grow into. Do come back with one of them!"
+  walk player down 1
+  return
+label Allowed
+  ask "Welcome to Amity Square! Would you like to take a stroll here with your Pokémon?"
+  if no goto NotToday
+  heal
+  setvar VAR_FOLLOWER_MON_ACTIVE 1
+  say "Please enjoy your time together!"
+  walk player up 1
+  return
+label NotToday
+  say "I see. Please come back whenever you like."
+  walk player down 1
+  return
+
+
+# The way out at either gate (the original's triggers 1 and 3, state 1).
+script Leave
+  speaker "Receptionist"
+  setvar VAR_FOLLOWER_MON_ACTIVE 0
+  say "Did you enjoy your stroll? Please come again soon!"
+  walk player down 1
+  end

@@ -1,0 +1,91 @@
+# Wayward Cave (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_wayward_cave_1f.s, scripts_follower_partners.s).
+#
+# Deep in the dark of the cave a girl called Mira has lost her way. Spoken to, she asks to be taken to the way out
+# and walks behind (`partner`, as Cheryl does in Eterna Forest): the team is healed after every battle that isn't
+# lost, wild Pokémon come two at a time, and she battles beside the player as Platinum's "mira_wayward_cave". At the
+# way out under Route 206 she says thank you and goes out ahead of the player. It is all optional, as in Platinum.
+# VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE: 0 lost, 1 with the player, 2 out of the cave.
+
+
+# Away from the cave, she is lost again where she was first found (the original's OnTransition)
+script OnEnter
+  setflag FLAG_FIRST_ARRIVAL_WAYWARD_CAVE
+  if flag FLAG_TRAVELED_WITH_MIRA end
+  if partner end
+  setvar VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 0
+  place mira 72 13 down
+  end
+
+
+# Mira spoken to (the original's script 2). The first time she says who she is; whenever she is found again after
+# being left, she says she remembers the player's name.
+script Mira
+  speaker "Mira"
+  if var VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE >= 1 goto Along
+  if flag FLAG_TALKED_TO_WAYWARD_CAVE_1F_MIRA goto Again
+  say "Oh! A person! I'm Mira. I came in to train, and now every tunnel looks exactly the same..."
+  say "Would you take me to the way out? Please? My Pokémon will help you battle, I promise!"
+  goto Together
+label Again
+  say "{player}! I remembered your name. I said it over and over so I wouldn't forget it!"
+  say "Will you take me to the way out after all?"
+label Together
+  fanfare levelup
+  text "{player} decided to take Mira to the way out."
+  setflag FLAG_TALKED_TO_WAYWARD_CAVE_1F_MIRA
+  setvar VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 1
+  speaker "Mira"
+  say "Thank you! I'll keep your Pokémon healthy after every battle. Mira will try her very best!"
+  partner mira "mira_wayward_cave"
+  end
+# Spoken to on the way (the original's FollowerPartners_Mira): three things to say, the last again and again
+label Along
+  if var VAR_FOLLOWER_MIRA_TIMES_TALKED >= 2 goto Third
+  if var VAR_FOLLOWER_MIRA_TIMES_TALKED == 1 goto Second
+  say "My Pokémon knows lots of helpful moves. Helpful moves are the best kind, I think, {player}."
+  addvar VAR_FOLLOWER_MIRA_TIMES_TALKED 1
+  end
+label Second
+  say "Caves are so easy to get muddled in. Left, right, up, down... they all look the same!"
+  addvar VAR_FOLLOWER_MIRA_TIMES_TALKED 1
+  end
+label Third
+  say "Mira will be strong one day, just like you, {player}. You'll see!"
+  end
+
+
+# The way out under Route 206 (the original's trigger 0, on the exit's own tile, state 1): she spots daylight, thanks
+# the player and goes out ahead of them. The player stays in the cave, a step aside.
+script Exit
+  partner off
+  if facing left goto FromTheEast
+  # Down onto the tile from the passage above: she is a step behind, to the north
+  place mira 41 52 down
+  face player up
+  emote mira exclaim
+  call ThereItIs
+  walk player right 1
+  face player left
+  walk mira down 1
+  goto Gone
+label FromTheEast
+  place mira 42 53 left
+  face player right
+  emote mira exclaim
+  call ThereItIs
+  walk player up 1
+  face player down
+  walk mira left 1
+label Gone
+  hide mira
+  setflag FLAG_HIDE_WAYWARD_CAVE_1F_MIRA
+  setflag FLAG_TRAVELED_WITH_MIRA
+  setvar VAR_WAYWARD_CAVE_1F_FOLLOWER_MIRA_STATE 2
+  end
+
+script ThereItIs
+  speaker "Mira"
+  say "Oh! Daylight! That's the way out, isn't it? Thank you so much, {player}!"
+  say "I'll train harder and harder, so next time I won't get lost. Bye-bye!"
+  return

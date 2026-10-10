@@ -4,14 +4,12 @@
   "trees": "Pine",
   // The ledges over the route's east end, with the Iron and the Timer Ball, are reached from Mt. Coronet's second
   // floor (warp 1, plan 01 · M8)
+  // The assistant catches the player up before the mountain with the Vs. Seeker and the Dowsing Machine (plan 02 · S7)
+  "triggers": [ { "trigger": 0, "script": "Assistant" } ],
   "people": {
-    "cyclist_m": {
-      "name": "Cyclist",
-      "dialog": [
-        "That muddy slope is too steep to walk up, and in a slow gear even a Bicycle slides straight back down.",
-        "Switch to the fast gear, take a run at it and don't stop pedalling!"
-      ]
-    },
+    // The professor's assistant, who comes with the scene and leaves with it (FLAG_HIDE_ROUTE_207_COUNTERPART)
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "still": true, "dialog": [ "Good luck out there, {player}! I should get back to the lab." ] },
+    "cyclist_m": { "name": "Cyclist", "script": "Cyclist" },
     "camper_anthony": {
       "name": "Anthony",
       "trainer": {

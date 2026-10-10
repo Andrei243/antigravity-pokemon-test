@@ -41,6 +41,12 @@ public sealed class ScriptLibrary
     /// </summary>
     public const string ChapterThree = "common.ChapterThree";
 
+    /// <summary>
+    /// Who the fourth chapter keeps out of sight until their scenes (plan 02 · S7, "Hearthome and Solaceon"): called
+    /// by <see cref="ChapterThree"/>, and run for a save from before the chapter was written.
+    /// </summary>
+    public const string ChapterFour = "common.ChapterFour";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

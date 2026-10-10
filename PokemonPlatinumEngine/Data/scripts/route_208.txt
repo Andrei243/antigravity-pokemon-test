@@ -1,0 +1,16 @@
+# Route 208 (plan 02 · S7). docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_route_208.s).
+
+
+# The black belt by the pond (the original's script 4) has no use for the odd stone he dug up, and gives it away.
+# The Hallowed Tower on Route 209 is missing one (plan 08 · P12, scripts/route_209.txt).
+script BlackBelt
+  speaker "Black Belt"
+  if flag FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE goto Given
+  say "I dug this stone up on my travels. It's heavier than it looks, and it turns cold at night. Here, just take it!"
+  setflag FLAG_RECEIVED_ROUTE_208_ODD_KEYSTONE
+  give "Odd Keystone"
+  end
+label Given
+  say "On Route 209 there's a little tower of stones with one missing. I've a feeling that stone belongs there."
+  end

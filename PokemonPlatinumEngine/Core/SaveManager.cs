@@ -183,9 +183,15 @@ public class SaveData
     public string? PlayerStarter { get; set; }
     public string? RivalStarter { get; set; }
 
+    /// <summary>
+    /// Everyone the player has spoken to in the field, by the engine's key for each (plan 08 · P12): the count the
+    /// Hallowed Tower waits for. Empty in a save from before.
+    /// </summary>
+    public List<string> GreetedPeople { get; set; } = new();
+
     /// <summary>The story as the save has it.</summary>
     public Story.StorySnapshot ToStory() =>
-        new(StoryFlags, StoryVariables, DefeatedTrainers, TakenItems, Badges, PlayerStarter, RivalStarter);
+        new(StoryFlags, StoryVariables, DefeatedTrainers, TakenItems, Badges, PlayerStarter, RivalStarter, GreetedPeople);
 }
 
 public class SavedPokemonData

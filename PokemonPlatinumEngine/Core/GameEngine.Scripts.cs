@@ -700,6 +700,8 @@ public partial class GameEngine
 
         public string PlayerName => PlayerIdentity.Name;
         public PlayerLook PlayerLook => PlayerIdentity.Look;
+        public TimeOfDay TimeOfDay => GameClock.Now;
+        public int DexSeen => game.playerPokedex.SeenIn(PokedexMode.Sinnoh);
 
         // ---- the field
 

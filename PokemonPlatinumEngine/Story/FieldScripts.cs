@@ -101,6 +101,18 @@ public static class FieldScripts
         return npc.DialogLines.Count > 0 ? Talk : null;
     }
 
+    /// <summary>
+    /// Who someone spoken to is, for the count of people the player has greeted (plan 08 · P12, the stand-in for the
+    /// original's count of people spoken to in the Underground: <see cref="StoryState.Greeted"/>). Null for what
+    /// isn't a person: an item's ball, an obstacle, a Gym's thing, a Pokémon. A person is known by the map and the
+    /// place they belong to and their id, or their name where they have none.
+    /// </summary>
+    public static string? GreetingOf(Map map, NPC npc)
+    {
+        if (npc.IsThing || npc.IsPokemon) return null;
+        return $"{map.Name}/{npc.ScriptFile ?? ""}/{npc.Key ?? npc.Name}";
+    }
+
     /// <summary>What is hidden at a tile and hasn't been found yet, or null.</summary>
     public static HiddenItem? HiddenAt(Map map, int x, int y, StoryState story) =>
         map.HiddenItems.TryGetValue((x, y), out var hidden) && !story.Has(hidden.Flag) ? hidden : null;

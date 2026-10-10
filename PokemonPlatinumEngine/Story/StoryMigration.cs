@@ -51,6 +51,9 @@ public static class StoryMigration
         if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
         if (savedVersion < 7) TheDaysBegin(story, chance ?? Core.Dice.Shared);
         if (savedVersion < 8) AfterRoark(story);
+        // Version 9 (plan 02 · S7): a save from before Hearthome's and Solaceon's chapter is given ChapterFour, which
+        // the chain above has already run for a save older than version 4
+        if (savedVersion is >= 4 and < 9) Run(story, scripts, ScriptLibrary.ChapterFour);
     }
 
     /// <summary>What Roark's script sets beside the Coal Badge (scripts_oreburgh_city_gym.s), which plan 02 · S5's didn't.</summary>

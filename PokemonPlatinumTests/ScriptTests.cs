@@ -248,6 +248,7 @@ public class ScriptTests
               if partner end
               if weekday friday end
               if pocket berries end
+              if time morning end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

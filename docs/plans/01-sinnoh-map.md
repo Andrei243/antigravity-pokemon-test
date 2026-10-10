@@ -292,6 +292,7 @@ Fight Area, Survival Area, Resort Area, Routes 224–230, Stark Mountain, Snowpo
 
 ### M11 · Interiors
 Every house and special building from the event files: reuse the house, Pokémon Center, Mart and lab styles, and build the unique ones (Jubilife TV, Global Terminal, Pokétch Company, Trainers' School, department stores, Galactic buildings, Canalave Library, Hotel Grand Lake, Solaceon Day Care, the Pokémon Mansion).
+*Left by plan 02 · S7 (2026-10-10):* the Contest Hall's lobby is built (`ContestHallLobby`). The gate between Hearthome City and Route 209 is walked through, and its rival's battle is played outside beside its door (`hearthome_city.txt`, `Rival`, on a trigger of our own): when the gate's room is built, move the scene inside onto the original's trigger (`scripts_route_209_gate_to_hearthome_city.s`, rows 5 to 9) and take the outdoor trigger, the rival's `npcs` entry and its door out of Hearthome's overlay. The Lost Tower's five floors (15 by 16 tiles, stairs east and west, gravestones of two sizes, the top floor in fog until Defog with the Spell Tag and the Cleanse Tag from its two old women) need a gravestone prop and a room's fog; its door on Route 209 is shut until then. The Day Care's room waits for eggs (plan 06 · R15).
 
 ### M12 · Travel and polish
 Town Map and Fly destinations, day/night and weather polish, and a performance pass (chunk meshes built off the main thread or cached, draw distance, memory).

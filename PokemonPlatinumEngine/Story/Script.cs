@@ -56,7 +56,9 @@ public enum Query
 {
     Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, Pokerus, Safari, Rematch, Partner,
     // The day of the week, and a pocket of the bag with something in it (plan 06 · R14a)
-    Weekday, Pocket
+    Weekday, Pocket,
+    /// <summary>The time of day, as Platinum's five (plan 02 · S7): <c>if time morning</c>.</summary>
+    Time
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

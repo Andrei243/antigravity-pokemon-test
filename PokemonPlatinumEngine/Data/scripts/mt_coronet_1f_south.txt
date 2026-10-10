@@ -1,0 +1,33 @@
+# Mt. Coronet, the way through from Route 207 to Route 208 (plan 02 · S7). docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_mt_coronet_1f_south.s).
+#
+# Cyrus stands in the passage. As the player comes by he walks down to them and speaks of the mountain where Sinnoh
+# began, of the world as it was first made and of what became of it, then goes on his way west.
+# VAR_MT_CORONET_1F_SOUTH_STATE: 1 once he has spoken.
+
+
+# The passage's crossing (the original's trigger 0, a single tile at 14,23, state 0).
+script Cyrus
+  face player up
+  walk cyrus down 6
+  face cyrus left
+  face player right
+  speaker "Cyrus"
+  say "We meet again. Mt. Coronet... It is said that Sinnoh's history began on this very mountain."
+  face cyrus up
+  face player up
+  wait 0.3
+  face player right
+  say "In the world as it was first made, there can have been no strife. There was nothing yet to fight over."
+  face cyrus left
+  say "And what became of that world? People came, with their hearts, and their hearts brought quarrels. What a waste."
+  say "Excuse me. I have somewhere I must be."
+  walk player down 1
+  face player up
+  wait 0.3
+  face player left
+  walk cyrus left 10
+  hide cyrus
+  setflag FLAG_HIDE_MT_CORONET_1F_SOUTH_CYRUS
+  setvar VAR_MT_CORONET_1F_SOUTH_STATE 1
+  end

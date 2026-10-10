@@ -21,7 +21,7 @@ public sealed class StoryState
     /// How much of the story a save knows about. A save from before story state existed is 0; every chapter that
     /// needs older saves brought up to date raises it and adds a step to <see cref="Story.StoryMigration"/>.
     /// </summary>
-    public const int CurrentVersion = 8;
+    public const int CurrentVersion = 9;
 
     /// <summary>The Pokédex is the player's (the original's own flag, set as Rowan hands it over).</summary>
     public const string PokedexFlag = "FLAG_HAS_POKEDEX";
@@ -126,6 +126,25 @@ public sealed class StoryState
         if (taken.Add(itemId)) Revision++;
     }
 
+    // ------------------------------------------------------------------ people spoken to
+
+    private readonly HashSet<string> greeted = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// Everyone the player has spoken to in the field, each once, by a key the engine gives them (plan 08 · P12): what
+    /// stands in for the original's count of people spoken to in the Underground, which wakes the Hallowed Tower's
+    /// Spiritomb. Scripts read how many as the built-in variable <c>GREETINGS</c>.
+    /// </summary>
+    public IReadOnlyCollection<string> Greeted => greeted;
+
+    /// <summary>Counts someone as spoken to; true the first time.</summary>
+    public bool Greet(string person)
+    {
+        if (person.Length == 0 || !greeted.Add(person)) return false;
+        Revision++;
+        return true;
+    }
+
     // ------------------------------------------------------------------ badges
 
     /// <summary>The badges as the save and the Trainer Card keep them: one bit each, in <see cref="Badge"/>'s order.</summary>
@@ -196,6 +215,7 @@ public sealed class StoryState
         variables.Clear();
         defeated.Clear();
         taken.Clear();
+        greeted.Clear();
         BadgeMask = 0;
         PlayerStarter = RivalStarter = null;
         Revision++;
@@ -207,7 +227,8 @@ public sealed class StoryState
         variables.OrderBy(v => v.Key, StringComparer.Ordinal).ToDictionary(v => v.Key, v => v.Value),
         defeated.Order(StringComparer.Ordinal).ToList(),
         taken.Order(StringComparer.Ordinal).ToList(),
-        BadgeMask, PlayerStarter, RivalStarter);
+        BadgeMask, PlayerStarter, RivalStarter,
+        greeted.Order(StringComparer.Ordinal).ToList());
 
     public void Restore(StorySnapshot saved)
     {
@@ -217,6 +238,7 @@ public sealed class StoryState
             if (value != 0) variables[name] = value;
         foreach (string t in saved.DefeatedTrainers) defeated.Add(t);
         foreach (string i in saved.TakenItems) taken.Add(i);
+        foreach (string g in saved.Greeted ?? new List<string>()) greeted.Add(g);
         BadgeMask = saved.Badges & 0xFF;
         PlayerStarter = saved.PlayerStarter;
         RivalStarter = saved.RivalStarter ?? (saved.PlayerStarter != null ? RivalStarterFor(saved.PlayerStarter) : null);
@@ -236,4 +258,5 @@ public sealed record StorySnapshot(
     List<string> TakenItems,
     int Badges,
     string? PlayerStarter,
-    string? RivalStarter);
+    string? RivalStarter,
+    List<string>? Greeted = null);

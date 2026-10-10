@@ -142,7 +142,7 @@ What an `if` can ask:
 | Question | |
 |---|---|
 | `flag FLAG_X` | The flag is set. |
-| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`. |
+| `var VAR_X == 2`, `var VAR_X >= VAR_Y` | A variable against a number or another variable (`==`, `!=`, `<`, `<=`, `>`, `>=`). The game's own may be read too: `RESULT`, `PLAYER_X`, `PLAYER_Y`, `MONEY`, `PARTY_COUNT`, `BADGE_COUNT`, `GREETINGS` (how many different people the player has spoken to in the field, each counted once: what the Hallowed Tower's Spiritomb waits for, plan 08 · P12) and `DEX_SEEN` (the kinds of Pokémon the Sinnoh Pokédex has seen). |
 | `yes`, `no` | The answer to the last `ask`. |
 | `result == 1` | What the last question, battle, handing-over or taking came to. |
 | `won`, `lost` | The last battle. |
@@ -160,6 +160,7 @@ What an `if` can ask:
 | `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
 | `weekday friday` | The game's clock says it is that day of the week (`GameClock.Today`; plan 06 · R14a: the Valley Windworks' Drifloon comes on Fridays). |
 | `pocket berries` | That pocket of the bag holds anything (`ItemPocket`: `items`, `medicine`, `berries`…). |
+| `time morning` | The time of day, as Platinum's five: `morning`, `day`, `twilight`, `night`, `latenight` (plan 02 · S7: the joggers who battle only in the morning). |
 
 ### What the story remembers
 

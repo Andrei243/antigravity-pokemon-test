@@ -69,6 +69,32 @@ script ChapterThree
   setflag FLAG_HIDE_CYCLE_SHOP_CLEFAIRY
   setflag FLAG_HIDE_TEAM_GALACTIC_ETERNA_BUILDING_1F_LOOKER
   setflag FLAG_HIDE_ETERNA_CITY_SOUTH_HOUSE_PROF_OAK
+  call ChapterFour
+  return
+
+
+# Who the fourth chapter (plan 02 · S7, "Hearthome and Solaceon") keeps out of sight until their scenes, as the
+# original's new game does (scripts_init_new_game.s): the assistant on Route 207, Keira and her Buneary in Hearthome
+# City, the rival at the gate to Route 209 and in Solaceon Town, the Day Care's Gym Guide, and Cynthia on Route 210.
+# Called by ChapterThree, and run for a save from before (Story/StoryMigration.cs), which may have been past some of
+# them already: the rival at the gate waits there once Fantina's Badge has called him (her Gym's own script clears
+# his flag), and a save that has her Badge has been past the Gym Guide outside her Gym and Fantina in the Contest Hall.
+# It may only set flags and variables.
+script ChapterFour
+  setflag FLAG_HIDE_ROUTE_207_COUNTERPART
+  setflag FLAG_HIDE_HEARTHOME_CITY_BUNEARY
+  setflag FLAG_HIDE_HEARTHOME_CITY_KEIRA
+  if var VAR_ROUTE_209_GATE_TO_HEARTHOME_CITY_STATE == 0 setflag FLAG_HIDE_HEARTHOME_CITY_ROUTE_209_GATE_RIVAL
+  setflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
+  setflag FLAG_HIDE_SOLACEON_TOWN_RIVAL
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA
+  if badge relic setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
+  if badge relic setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
+  # The joggers of Routes 209 and 210 are each two people on one tile, one who battles and one who only jogs by; the
+  # routes' arrival scripts show the one for the hour, and until then the one who battles stands
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT_NO_BATTLE
   return
 
 

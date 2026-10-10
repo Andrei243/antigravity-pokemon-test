@@ -1,0 +1,104 @@
+# Route 209 (plan 02 · S7, and plan 08 · P12 for the Hallowed Tower). docs/scripts.md describes the language; the
+# lines are our own, on the original's beats (scripts_route_209.s).
+#
+# The joggers battle in the morning and only jog past at other hours; a fisherman gives away the Good Rod; and the
+# Hallowed Tower, a little tower of stones missing one, waits for the Odd Keystone from Route 208.
+# VAR_HALLOWED_TOWER_STATE: 1 once the keystone is set in it, 0 again once Spiritomb has come out.
+
+
+# Arriving (the original's OnTransition): in the morning the two joggers stop to battle; at other hours they only
+# jog by (each is two people of the area file, one a trainer, swapped by their flags).
+script OnEnter
+  if time morning goto Battle
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  end
+label Battle
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD
+  clearflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RICHARD_NO_BATTLE
+  setflag FLAG_HIDE_ROUTE_209_JOGGER_RAUL_NO_BATTLE
+  end
+
+
+# The joggers, when it isn't morning (the original's scripts 6 and 7).
+script JoggerRichard
+  speaker "Jogger"
+  say "Do you jog every morning? I do! But now it's later in the day, so I'm just jogging, not battling."
+  end
+
+script JoggerRaul
+  speaker "Jogger"
+  say "A wild Pokémon chased me down the road this morning. I've never run so fast in my life!"
+  end
+
+
+# The fisherman by the water (the original's script 5) gives away the Good Rod to anyone who wants it, and explains
+# how to fish whenever asked.
+script Fisherman
+  speaker "Fisherman"
+  if flag FLAG_RECEIVED_GOOD_ROD goto Explain
+  ask "A Good Rod catches much better fish than an Old Rod, you know. Would you like one?"
+  if no goto NotForYou
+  say "Ha! Here you are, then. Take good care of it."
+  give "Good Rod"
+  setflag FLAG_RECEIVED_GOOD_ROD
+label Explain
+  ask "Shall I tell you how to fish with a Good Rod?"
+  if no goto Reel
+  say "Face the water and use the rod. When something tugs on the line, press the button straight away to hook it!"
+  end
+label Reel
+  say "Reel one in, and it's a battle. Fishing's a battle of wits as much as anything."
+  end
+label NotForYou
+  say "You don't like fishing? Well, it takes all sorts."
+  end
+
+
+# The Hallowed Tower (plan 08 · P12; the original's script 2, read from any of its four stones' tiles). Without the
+# Odd Keystone it is only a broken little tower; with it, the keystone can be set in its gap. Then it stirs a little
+# more each time the player has spoken to more people (GREETINGS, the count of people spoken to in the field, which
+# stands in for the original's count of people spoken to in the Underground: docs/mechanics/rulings.md), and at
+# thirty-two Spiritomb comes out of it. Won or fled from, the tower is empty again.
+script HallowedTower
+  speaker none
+  if var VAR_HALLOWED_TOWER_STATE == 1 goto Set
+  if not item "Odd Keystone" goto Broken
+  ask "A little tower of stones, with one stone missing. Set the Odd Keystone in the gap?"
+  if no end
+  text "{player} set the Odd Keystone in the tower."
+  take "Odd Keystone"
+  setvar VAR_HALLOWED_TOWER_STATE 1
+  end
+label Broken
+  text "A little tower of stones, piled up long ago. One stone is missing, and it looks broken without it."
+  end
+label Set
+  if var GREETINGS >= 32 goto Spiritomb
+  if var GREETINGS >= 29 goto Presence
+  if var GREETINGS >= 22 goto Shaking
+  if var GREETINGS >= 15 goto Crying
+  if var GREETINGS >= 8 goto Shifted
+  text "The Hallowed Tower. Its stones were set here, one on another, a very long time ago."
+  end
+label Shifted
+  text "The stones seem to have shifted a little since the keystone was set."
+  end
+label Crying
+  text "A faint crying comes from inside the stones..."
+  end
+label Shaking
+  text "Is the tower shaking? The stones are trembling..."
+  end
+label Presence
+  text "Some kind of presence is gathering inside the tower..."
+  end
+label Spiritomb
+  cry "Spiritomb"
+  text "Hwoooooh!"
+  wildbattle "Spiritomb" 25
+  setvar VAR_HALLOWED_TOWER_STATE 0
+  end

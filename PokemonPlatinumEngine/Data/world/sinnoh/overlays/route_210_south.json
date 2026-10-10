@@ -4,16 +4,27 @@
   "trees": "Round",
   // Café Cabin has no rooms yet (plan 01 · M11)
   "locked": [ 0 ],
-  // Jogger Wyatt battles at some hours and only jogs past at others: the original's arrival script swaps the two
-  // objects by their FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT* flags, so both wait for that script (plan 02)
   "people": {
-    "ace_trainer_f": {
-      "name": "Trainer",
-      "dialog": [
-        "Further north the road climbs into a fog so thick you can barely see your own hand.",
-        "Battles up there are tricky. In fog, moves miss far more often than you'd think."
-      ]
+    // Four Psyduck with headaches block the narrow way north until the Secret Potion (FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK;
+    // plan 02 · S7 places them, S8 and S9 bring the potion)
+    "psyduck_1": { "name": "Psyduck", "script": "Psyduck" },
+    "psyduck_2": { "name": "Psyduck", "script": "Psyduck" },
+    "psyduck_3": { "name": "Psyduck", "script": "Psyduck" },
+    "psyduck_4": { "name": "Psyduck", "script": "Psyduck" },
+    // Cynthia comes up the road once the Psyduck are gone, with the Old Charm (FLAG_HIDE_ROUTE_210_SOUTH_CYNTHIA)
+    "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "still": true, "dialog": [ "Those poor Psyduck. Their heads ache so badly that they can't bring themselves to move." ] },
+    // She gives TM51 (plan 02 · S7)
+    "ace_trainer_f": { "name": "Trainer", "script": "AceTrainer" },
+    // Jogger Wyatt battles in the morning and only jogs past at other hours: the route's arrival script swaps the two
+    // objects by their FLAG_HIDE_ROUTE_210_SOUTH_JOGGER_WYATT* flags, as the original's does (plan 02 · S7)
+    "jogger_wyatt": {
+      "name": "Wyatt",
+      "trainer": {
+        "dialogueBefore": "Jogger Wyatt: A morning run and a morning battle, that's the way to start the day!",
+        "dialogueAfter": "Jogger Wyatt: Beaten! Well, I'll just have to keep running till I'm faster."
+      }
     },
+    "jogger_wyatt_no_battle": { "name": "Jogger", "script": "JoggerWyatt" },
     "ninja_boy_fabian": {
       "name": "Fabian",
       "trainer": {

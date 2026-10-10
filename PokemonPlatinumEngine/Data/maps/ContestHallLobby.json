@@ -1,0 +1,281 @@
+{
+  "name": "ContestHallLobby",
+  "displayName": "Contest Hall",
+  "bgmTrack": "sinnoh/hearthome",
+  "interior": "PokemonCenter",
+  "trees": "Round",
+  "width": 32,
+  "height": 15,
+  "ground": [
+    "################################",
+    "################################",
+    "################################",
+    "#__#_____#____#_____#____#____##",
+    "#__#_____#____#_____#____#____##",
+    "#______________________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "############___________________#",
+    "############___________________#",
+    "############___________________#",
+    "#______________________________#",
+    "#______________________________#",
+    "################D###############"
+  ],
+  "solid": [
+    "################################",
+    "################################",
+    "################################",
+    "####.....#.##.#.....#....#....##",
+    "#..#.....#....#.....#....#....##",
+    "#..#######....#######....#######",
+    "#..............................#",
+    "#..............................#",
+    "#.............................##",
+    "############..................##",
+    "############...........##......#",
+    "############...........##.....##",
+    "#.............................##",
+    "#..............................#",
+    "################.###############"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 5,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 5,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 25,
+      "y": 5,
+      "width": 6,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 23,
+      "y": 10,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Chair",
+      "x": 22,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 22,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 25,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Chair",
+      "x": 25,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Sofa",
+      "x": 30,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Sofa",
+      "x": 30,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 16,
+      "sourceY": 14,
+      "targetMap": "Sinnoh",
+      "targetX": 479,
+      "targetY": 692,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 11,
+      "text": "A photo frame. A winning Pokémon's portrait will hang here once a contest has a champion.",
+      "script": "Frame"
+    },
+    {
+      "x": 4,
+      "y": 11,
+      "text": "A photo frame. A winning Pokémon's portrait will hang here once a contest has a champion.",
+      "script": "Frame"
+    },
+    {
+      "x": 6,
+      "y": 11,
+      "text": "A photo frame. A winning Pokémon's portrait will hang here once a contest has a champion.",
+      "script": "Frame"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "text": "A photo frame. A winning Pokémon's portrait will hang here once a contest has a champion.",
+      "script": "Frame"
+    },
+    {
+      "x": 10,
+      "y": 11,
+      "text": "A photo frame. A winning Pokémon's portrait will hang here once a contest has a champion.",
+      "script": "Frame"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist_official_contest",
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "x": 16,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "receptionist_link_contest",
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "receptionist_practice_contest",
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "x": 27,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "ace_trainer_f",
+      "name": "Trainer",
+      "npcType": "Lass",
+      "x": 28,
+      "y": 9,
+      "facing": "Left",
+      "script": "AceTrainer"
+    },
+    {
+      "id": "clown",
+      "name": "Clown",
+      "npcType": "Clown",
+      "x": 25,
+      "y": 10,
+      "facing": "Down",
+      "script": "Clown"
+    },
+    {
+      "id": "mom",
+      "name": "Mom",
+      "npcType": "Mom",
+      "x": 16,
+      "y": 10,
+      "facing": "Right",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_MOM"
+    },
+    {
+      "id": "keira",
+      "name": "Keira",
+      "npcType": "Lass",
+      "x": 17,
+      "y": 10,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_KEIRA"
+    },
+    {
+      "id": "school_kid_f",
+      "name": "Girl",
+      "npcType": "Lass",
+      "x": 4,
+      "y": 13,
+      "facing": "Left",
+      "script": "SchoolKid",
+      "movement": "wander_west_and_east",
+      "rangeX": 2
+    },
+    {
+      "id": "rich_boy",
+      "name": "Boy",
+      "npcType": "Gentleman",
+      "x": 16,
+      "y": 6,
+      "facing": "Up",
+      "script": "RichBoy"
+    },
+    {
+      "id": "fantina",
+      "name": "Fantina",
+      "npcType": "Fantina",
+      "x": 22,
+      "y": 9,
+      "facing": "Left",
+      "script": "Fantina",
+      "hiddenBy": "FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA"
+    }
+  ],
+  "wildEncounters": []
+}

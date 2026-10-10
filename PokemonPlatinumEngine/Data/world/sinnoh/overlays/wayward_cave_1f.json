@@ -1,7 +1,11 @@
 {
   "area": "wayward_cave_1f",
   "bgmTrack": "sinnoh/cave",
+  // Mira walks with the player to the way out, if asked, and leaves at it (plan 02 · S7)
+  "triggers": [ { "trigger": 0, "script": "Exit" } ],
   "people": {
+    // Lost in the dark, wandering about her corner; her look stands in until plan 11 · C5 makes hers
+    "mira": { "name": "Mira", "script": "Mira" },
     "camper_diego": {
       "name": "Diego",
       "trainer": {

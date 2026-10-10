@@ -431,6 +431,37 @@ public sealed class HabitatArea
 }
 
 /// <summary>
+/// Where Pokémon are met that no table of wild Pokémon lists (plan 08 · P12): a place of their own, which a script
+/// puts in the player's way (Spiritomb at the Hallowed Tower). Written by hand in <c>world/&lt;region&gt;/special.json</c>;
+/// the map importer's <c>--data</c> never touches it. <see cref="Habitats"/> reads it beside the habitats file, so the
+/// Pokédex's area page names the place.
+/// </summary>
+public sealed class WorldSpecialFile
+{
+    public const string FileName = "special.json";
+
+    public List<SpecialPlace> Places { get; set; } = new();
+}
+
+/// <summary>One place a species is met outside the tables, and how, in a few words of our own for the area page.</summary>
+public sealed class SpecialPlace
+{
+    public string Species { get; set; } = "";
+
+    /// <summary>The place's name on the area page.</summary>
+    public string Name { get; set; } = "";
+
+    /// <summary>The area of the world it is in, by its key.</summary>
+    public string Area { get; set; } = "";
+
+    /// <summary>The chunks of the overworld the place is shown on, <c>"x,y"</c> each, as a habitat's are.</summary>
+    public string Cells { get; set; } = "";
+
+    /// <summary>How the species is met there, for the area page.</summary>
+    public string How { get; set; } = "";
+}
+
+/// <summary>
 /// Platinum's tables of wild Pokémon that belong to no one area's header (plan 06 · R13; the original's
 /// <c>encdata_ex</c> archive, written by <c>tools/MapImporter --data</c> into <c>world/&lt;region&gt;/encounters.json</c>):
 /// the honey trees', the Great Marsh's daily Pokémon, the Trophy Garden's and Feebas's tiles.
