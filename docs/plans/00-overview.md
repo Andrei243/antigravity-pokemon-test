@@ -10,22 +10,22 @@ About 350 sittings are left, some twenty of them marked optional.
 
 | Plan | Done | Left (sittings) | Notes |
 |---|---|---|---|
-| 01 · Sinnoh map | M1–M8, M9 part 1 | ~13 | M9's leftover (rooms with relief, Pastoria, Oreburgh rebuilt) had no owner: it is wave 1's |
+| 01 · Sinnoh map | M1–M8, M9 parts 1 and 1b | ~12 | M9 part 2 (2a–2d), M10, M11, M12 |
 | 02 · Story | S1, S2, S4–S7 | ~12 | S8 to S15; S11 and S15 are more than one sitting |
 | 03 · National Pokédex | D1, D5–D11, every model batch to Klawf (950 hand-built) | 7 | the last 75 species (Paldea 3a–3c), D12 (three parts), D13 |
 | 04 · Graphics | everything | 0 | what G11 owes (the M6–M9 cities in `profile`) goes to 01 · M12 |
 | 05 · Sound and music | A1–A5, A7 | ~3 | A6 rolls on inside the sessions that open places and scenes |
-| 06 · Game mechanics | R1–R13 | ~26 | R14, R16, R17 and R18 are several sittings each |
+| 06 · Game mechanics | R1–R13, R14a | ~25 | R14, R16, R17 and R18 are several sittings each |
 | 07 · Online | — | 8 | most of O2 and O3 came with plan 06; O8 optional |
-| 08 · Platinum's details | P6 | 22 | P3's met data and markings came with R12 |
+| 08 · Platinum's details | P6, P7, P12 | 20 | P3's met data and markings came with R12 |
 | 09 · Looks | — | 15 | |
 | 10 · Companions | F1 | 11 | F8 optional |
-| 11 · People | — | 13 | 25 looks already sit in `CharacterStyle`'s switch, to move into C1's table |
+| 11 · People | C1 | 12 | the looks are a table, `characters.json` |
 | 12 · Quality of life | — | 30 | |
 | 13 · Ways to play | — | 26 | V11, V14, V25 optional |
 | 14 · Battle formats | — | 15 | B2, B13 optional |
 | 15 · Side activities | — | 8 | E6–E8 optional |
-| 16 · Tooling and shipping | T5 (and a CI build-and-test workflow) | 23 | |
+| 16 · Tooling and shipping | T5, T16 (and a CI build-and-test workflow) | 22 | |
 | 17 · Localisation | — | 6 | only if a second language is wanted |
 | 18 · Other regions | — | 10 | |
 | 19 · Kanto | — | 9 | |
@@ -379,9 +379,9 @@ The main session starts one agent per cell of the wave, each in its own worktree
 
 ## Status
 
-- [ ] Wave 0 · 16 · T5 (beside: 03 · Paldea 3a)
-- [ ] Wave 1 · 08 · P7, 01 · M9 1b, 06 · R14a, 11 · C1, 10 · F1, 16 · T16 (beside: Paldea 3b)
-- [ ] Wave 2 · 02 · S7 with 08 · P12, 01 · M9 2a, 06 · R14b, 12 · Q10, 11 · C5, 24 · X1 (beside: Paldea 3c)
+- [x] Wave 0 · 16 · T5 (2026-10-08; beside it, 03 · Paldea 3a is still to do)
+- [x] Wave 1 · 08 · P7, 01 · M9 1b, 06 · R14a, 11 · C1, 10 · F1, 16 · T16 (2026-10-10; beside it, Paldea 3b is still to do)
+- [ ] Wave 2 · 02 · S7 with 08 · P12 (done 2026-10-10, merged with wave 1's last two), 01 · M9 2a, 06 · R14b, 12 · Q10, 11 · C5, 24 · X1 (beside: Paldea 3c)
 - [ ] Wave 3 · 02 · S8, 01 · M9 2b, 06 · R14c, 12 · Q11, 09 · L11, 24 · X2
 - [ ] Wave 4 · 02 · S9, 01 · M9 2c, 06 · R15, 11 · C12, 11 · C6, 24 · X3
 - [ ] Wave 5 · 02 · S10, 01 · M9 2d, 06 · R17a, 25 · Y1, 11 · C11, 12 · Q1
