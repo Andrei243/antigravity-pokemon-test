@@ -501,6 +501,6 @@ public class HearthomeTests
         StoryMigration.Upgrade(won, 8, Array.Empty<Pokemon>(), Scripts, new Inventory());
         Assert.True(won.Has("FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE"));
         Assert.True(won.Has("FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA"));
-        Assert.Equal(9, StoryState.CurrentVersion);
+        Assert.True(StoryState.CurrentVersion >= 9);
     }
 }

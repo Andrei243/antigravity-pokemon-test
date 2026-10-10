@@ -1,0 +1,65 @@
+# The Snowpoint Gym (plan 01 · M9, part 2b), rebuilt to the original's plan. docs/scripts.md describes the language;
+# the lines are our own, on the original's beats (scripts_snowpoint_city_gym.s).
+#
+# A bowl of ice in four rings, each a tile lower than the one round it, joined by icy slopes, with Candice's dais at
+# the top of the far side. Ice slides the player on until something stops them or they come onto snow; going down a
+# slope gathers speed, going up one loses it, and a slide with speed in it smashes the snowballs in its way (the
+# game's own rule, IceSlide). The snowballs are all back each time the player comes in. The room's own script in the
+# original hides Candice in Snowpoint City behind a flag nothing ever sets (FLAG_DUMMY_0x00EB), so it has no part here.
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge icicle goto Won
+  say "Hey there! How's it going, future Champ?"
+  say "See those giant snowballs all over the place? Get a good slide going down the ice and you'll smash straight through them!"
+  say "Candice uses Ice types. Thaw them out with some red-hot Fire moves!"
+  say "This Gym is all about focus. Keep your head clear and your feet moving!"
+  end
+label Won
+  say "{player}! You beat Candice! Your focus was even sharper than hers, and your Pokémon could feel it!"
+  end
+
+
+script GymStatue
+  speaker none
+  if badge icicle goto Won
+  say "SNOWPOINT CITY POKéMON GYM. Leader: Candice. Certified Trainers: {rival}"
+  end
+label Won
+  say "SNOWPOINT CITY POKéMON GYM. Leader: Candice. Certified Trainers: {rival}, {player}"
+  end
+
+
+script Candice
+  speaker "Candice"
+  if badge icicle goto Won
+  say "A challenger? For me? All right! I've been hoping somebody tough would come along!"
+  say "Just so you know, I'm tough too. And it's because I know how to focus."
+  say "Battling, picking out the perfect scarf, falling for someone... Whatever it is, it all comes down to focus!"
+  say "I'll show you exactly what I mean. Get ready to lose!"
+  battle self as "leader_candice"
+  say "Wow, you're amazing! You've totally earned my respect."
+  say "Your focus and your will just bowled my team right over. Oh, that's right! I'm meant to give you this!"
+  givebadge icicle
+  text "{player} received the Icicle Badge from Candice!"
+  defeat "ace_trainer_sergio"
+  defeat "ace_trainer_isaiah"
+  defeat "ace_trainer_anton"
+  defeat "ace_trainer_savannah"
+  defeat "ace_trainer_alicia"
+  defeat "ace_trainer_brenna"
+  setflag FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS
+  say "With the Icicle Badge, your Pokémon can use Rock Climb whenever you like, even outside of battle!"
+  say "Oh, and take this too!"
+label Tm
+  give "TM72"
+  setflag FLAG_RECEIVED_CANDICE_TM72
+  say "TM72 is Avalanche. If the user gets hit before it moves, the move comes crashing back twice as hard!"
+  say "Can you imagine the focus it takes to stand there and wait for that hit?"
+  end
+label Won
+  if not flag FLAG_RECEIVED_CANDICE_TM72 goto Tm
+  say "Hey, do you think I should act more like an Ice-type Leader? You know, all cool and aloof?"
+  say "I tried it once. I lasted about five seconds before I started giggling!"
+  end

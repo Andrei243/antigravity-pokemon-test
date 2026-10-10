@@ -82,3 +82,66 @@ label Gone
   setflag FLAG_HIDE_CONTEST_HALL_LOBBY_FANTINA
   setflag FLAG_HIDE_HEARTHOME_CITY_GYM_GUIDE
   end
+
+
+# The boy at the official counter (the original's script 9, plan 06 · R14c): the first time he is spoken to he looks
+# for a Poffin Case and gives a Mild Poffin to a player who has one (60 of each flavour but 30, smoothness 40, the
+# original's GivePoffin), then goes off along the counters; afterwards he gives it to a player who has come back with a
+# case, and otherwise says to practise.
+script RichBoy
+  speaker "Boy"
+  if not flag FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY goto First
+  if not flag FLAG_RECEIVED_CONTEST_HALL_LOBBY_MILD_POFFIN goto NotYet
+label Practice
+  say "Same as with anything, the basics come first. It takes practice to win a contest!"
+  end
+label NotYet
+  if not item "Poffin Case" goto Practice
+  say "You're entering contests? And yes, you've got a Poffin Case."
+  poffin room
+  if result == 0 goto FullNow
+  say "Then let me give you this simply splendid Poffin!"
+  call GiveMild
+  setflag FLAG_RECEIVED_CONTEST_HALL_LOBBY_MILD_POFFIN
+  say "Feed it to the Pokémon you mean to enter. And take my advice: practise at the counter on the right first!"
+  end
+label FullNow
+  say "Oh, no. Your Poffin Case is full."
+  end
+label First
+  setflag FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+  if not item "Poffin Case" goto NoCase
+  say "You're entering contests? And yes, you've got a Poffin Case."
+  poffin room
+  if result == 0 goto FullFirst
+  say "Then let me give you this simply splendid Poffin!"
+  call GiveMild
+  setflag FLAG_RECEIVED_CONTEST_HALL_LOBBY_MILD_POFFIN
+  say "Feed it to the Pokémon you mean to enter. And take my advice: practise at the counter on the right first!"
+  goto WalkAway
+label FullFirst
+  say "Oh, no. Your Poffin Case is full. I'll give it to you another time."
+  say "A word of advice, though: don't just rush into a contest. Practise at the counter on the right first!"
+  goto WalkAway
+label NoCase
+  say "You're entering contests? But I don't see a Poffin Case..."
+  say "It's hard to win without one. Still, if you're set on it, I won't stop you."
+  say "You could always practise at the counter on the right."
+label WalkAway
+  if facing left goto Around
+  walk self right 8
+  face self down
+  end
+label Around
+  walk self down 1 right 8 up 1
+  face self down
+  end
+
+
+# GivePoffin VAR_RESULT, 60, 30, 30, 30, 30, 40: a Mild Poffin into the case, with the item fanfare
+script GiveMild
+  poffin give 60 30 30 30 30 40
+  fanfare item
+  text "{player} received a Mild Poffin!"
+  text "The Mild Poffin was put away in the Poffin Case."
+  return

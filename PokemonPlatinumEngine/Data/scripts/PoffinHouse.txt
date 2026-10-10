@@ -1,0 +1,73 @@
+# The Poffin House in Hearthome City (plan 06 · R14c), rebuilt to the original's plan. docs/scripts.md describes the
+# language; the lines are our own, on the original's beats (scripts_poffin_house.s, scripts_poffin_common.s).
+#
+# The cook by the near table asks whether the player wants to cook: with a Poffin Case (the Pokémon Fan Club's
+# chairman gives it) and a Berry in the bag, the bag opens on its Berries and each one chosen is stirred into a Poffin
+# (UI/PoffinCookingScreen.cs, Models/PoffinPot.cs), until the player stops. Cooking in a group needs wireless play,
+# which this game hasn't yet (plan 07), so only cooking alone is offered. The reporter of the TV's Poffin corner waits
+# for plan 08's programmes.
+
+
+# The cook (the original's common script 9400, PoffinCommon_PokefanF)
+script Cook
+  speaker "Cook"
+  say "Hello there! This is where Berries are cooked into Poffins."
+label Menu
+  choose "Would you like to do some cooking?" "COOK" "INFO" "EXIT"
+  if result == 0 goto Cook
+  if result == 1 goto Info
+  goto Bye
+label Info
+  say "Choose a Berry from your Bag and drop it into the pot, then get stirring!"
+  say "An arrow tells you which way to stir. Mind your speed: stir too slowly and the batter burns..."
+  say "...stir too quickly and it slops over the side. Do it well, and out comes a tasty Poffin!"
+  say "Cooks can share a pot, up to four of them, and the more there are, the more Poffins each takes home."
+  goto Menu
+label Cook
+  if not item "Poffin Case" goto NoCase
+  poffin check
+  if result == 1 goto NoBerry
+  if result == 2 goto Full
+  wait 0.5
+  poffin cook
+  goto Bye
+label NoCase
+  say "Oh, I'm sorry, dear. You'll need a Poffin Case to keep the Poffins you cook."
+  end
+label NoBerry
+  say "Oh dear, you haven't a single Berry to cook!"
+  goto Bye
+label Full
+  say "Your Poffin Case is full to the brim!"
+  goto Bye
+label Bye
+  say "Come back whenever you feel like cooking!"
+  end
+
+
+# By the window, the original's idol: how to stir through the three stages
+script Idol
+  say "Hi there! Let's get cooking!"
+  say "Want my secret for Poffins your Pokémon will love? At the start, while it's runny, stir gently so nothing spills."
+  say "Once it starts to thicken, stir hard, in big circles!"
+  say "And at the very end, make a wish for something yummy and whisk away like mad!"
+  end
+
+
+# At the long table: rare Berries, and more cooks round the pot
+script OldMan
+  say "Got some Berries with you? The rarer the Berry, the tastier the Poffin."
+  say "And the more cooks round a pot, the better it turns out."
+  end
+
+
+script OldWoman
+  say "A good meal puts a spring in anyone's step, people and Pokémon alike."
+  say "We're not so very different, are we?"
+  end
+
+
+# The girl at the near table: cooking with friends (the original's Wi-Fi Club)
+script SchoolKid
+  say "When my friends come round we all stir the same pot. Everybody gets more Poffins that way!"
+  end

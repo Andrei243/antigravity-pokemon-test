@@ -16,8 +16,9 @@ label Battle
 
 
 # The Psyduck across the road north (the original's script 1). They hold their heads and won't budge until the
-# SecretPotion cures them; then they go off and stay gone (FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK). The SecretPotion, and
-# Cynthia, who comes up the road after they leave, are the next chapter's (plan 02 · S9).
+# SecretPotion cures them; then they go off and stay gone (FLAG_HIDE_ROUTE_210_SOUTH_PSYDUCK). Cynthia gives the
+# SecretPotion at Valor Lakefront (plan 02 · S8, valor_lakefront.txt); she comes up the road after they leave in the
+# next chapter (plan 02 · S9).
 script Psyduck
   cry "Psyduck"
   if item "Secret Potion" goto Potion

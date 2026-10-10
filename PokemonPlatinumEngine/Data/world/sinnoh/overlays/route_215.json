@@ -38,13 +38,8 @@
         "If you want a battle, find me in the morning. That's when I'm at my best."
       ]
     },
-    "black_belt": {
-      "name": "Black Belt",
-      "dialog": [
-        "The rain on this road never stops. Not for a single day.",
-        "I train out here anyway. If you can fight in this, you can fight anywhere!"
-      ]
-    },
+    // He gives TM66 (plan 02 · S8, scripts/route_215.txt)
+    "black_belt": { "name": "Black Belt", "script": "BlackBelt" },
     "black_belt_derek": {
       "name": "Derek",
       "trainer": {

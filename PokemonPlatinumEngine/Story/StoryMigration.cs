@@ -54,6 +54,24 @@ public static class StoryMigration
         if (savedVersion < 8) Run(story, scripts, ScriptLibrary.CampaignOver);
         // Version 9: the fourth chapter's people kept out of sight until their scenes (plan 02 · S7)
         if (savedVersion < 9) Run(story, scripts, ScriptLibrary.ChapterFour);
+        // Version 10: the fifth chapter's (plan 02 · S8), and the gate to Route 212 opened for a save that has been to
+        // Pastoria City, whose arrival lifts its television crew's blockade
+        if (savedVersion < 10) ChapterFive(story, scripts);
+    }
+
+    /// <summary>The flag that first arriving in Pastoria City sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
+    public const string ArrivedInPastoriaFlag = "FLAG_FIRST_ARRIVAL_PASTORIA_CITY";
+
+    /// <summary>
+    /// Version 10, a save from before the fifth chapter was written (plan 02 · S8): its people are hidden until their
+    /// scenes by <see cref="ScriptLibrary.ChapterFive"/>, which a new game runs too. The television crew who keep the
+    /// gate between Hearthome City and Route 212 shut until the player has come to Pastoria City from the other side
+    /// have gone for a save that has already been there.
+    /// </summary>
+    private static void ChapterFive(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.ChapterFive);
+        if (story.Has(ArrivedInPastoriaFlag)) story.Set("FLAG_HIDE_ROUTE_212_BLOCKADE");
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>

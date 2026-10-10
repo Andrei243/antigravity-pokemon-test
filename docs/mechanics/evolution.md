@@ -54,7 +54,7 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 | `LevelAttackHigher` / `LevelAttackEqual` / `LevelDefenseHigher` | Level 20, Attack compared with Defense | Tyrogue → Hitmonlee / Hitmontop / Hitmonchan | 2 | |
 | `LevelPersonalityLow` / `LevelPersonalityHigh` | Level 7; the upper half of the personality value, modulo 10, below 5 or not | Wurmple → Silcoon / Cascoon | 3 | |
 | `LevelNinjask` + `LevelShedinja` | Level 20; Shedinja as described above | Nincada | 3 | |
-| `Beauty` | Beauty 170 or more | Feebas | 3 | Poffins (plan 06 · R14) |
+| `Beauty` | Beauty 170 or more | Feebas | 3 | Nothing since plan 06 · R14c: Poffins raise it (`Poffins.Feed`) |
 | `LevelMale` / `LevelFemale` | The level and the gender | Burmy, Combee, Salandit, Espurr | 4 | |
 | `LevelHoldingItemDay` / `LevelHoldingItemNight` | Holding the item at that time | Happiny + Oval Stone; Gligar + Razor Fang, Sneasel + Razor Claw | 4 | |
 | `LevelHoldingItem` | Holding the item | (none in the data yet) | 4 | |

@@ -430,6 +430,18 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The floors' heights | Ten tiles apart, by the walker's height | The same; the floor someone is on is the nearest to their height (`CanalaveLifts.FloorOf`) | |
 | A save made on an upper floor | The platforms are laid out by the room's own script as the map loads | The same: they come back at their first ends | |
 
+**The Snowpoint Gym** (plan 01 · M9 2b)
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The ice's speed | Nought to three, one more for each tile sloping down the way the slider goes and one less for each sloping up, measured a quarter of a tile ahead of the tile's middle (`PlayerAvatar_CheckIceHeightChange`); stopped, it is gone | The same (`IceSlide`, `Player.IceSpeed`) | |
+| No speed left on the way up | The slider walks a tile back down slowly, facing up the slope, and stands; so does a slider stopped by something on the way up | The same, at a quarter of the ice's pace (the original's sixteen frames against its four) | |
+| The pace of a slide | A fast walk of four frames a tile at nought, three at one, two at two and three | Our run's eight tiles a second at nought, faster in the original's ratios (10.7, then 16) | The game's paces are its own; the ratios are the original's |
+| A slide into a ledge, a ramp or a climb | Any collision stops the slide | The slide goes on into whatever the step would do, as this game's ice always did | No ice of the open world lies against one; left as it was so nothing outside the Gym moves |
+| A snowball | Broken by a slide whose speed is one or more when it stands on the next tile (`ov5_021E06A8`); the slide goes on through its place; deleted until the map's objects are made again | The same (`IceSlide.Breaks`); back the next time the player comes in, as anything taken off a map is | |
+| A save made with snowballs broken | The map's objects are saved, so a broken snowball stays broken | Every snowball is back after loading | The save keeps no map's things but its trainers and items; coming in again brings them back anyway |
+| The room's own script | Hides Candice in Snowpoint City if `FLAG_DUMMY_0x00EB` is set | Left out | Nothing sets that flag |
+
 ## The first chapter (2026-10-06, plan 02 · S4)
 
 **Platinum's rules, kept as they are** (`res/field/scripts/scripts_twinleaf_town*.s`, `scripts_route_201.s`, `scripts_verity_lakefront.s`, `scripts_lake_verity_low_water.s`, `scripts_sandgem_town*.s`, `scripts_route_202.s`, `src/field/field_system.c`'s `InitNewGame`)
@@ -594,7 +606,44 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Unown inscriptions | Written in the Unown alphabet | Read out in letters | No Unown typeface yet |
 | The Lost Tower's music | A theme of its own | Route 209's | No song for it yet |
 | The Lost Tower's look | The original's tower models | A room of our kit with headstones and tombs where its graves stand | The kit has no tower interior yet |
-| Cynthia after the Psyduck | Comes up Route 210 and gives the Old Charm | Not yet | The Secret Potion and what follows are plan 02 · S9's |
+| Cynthia after the Psyduck | Comes up Route 210 and gives the Old Charm | Not yet | What follows the Psyduck is plan 02 · S9's (the Secret Potion came in S8, at Valor Lakefront) |
+
+## The fifth chapter (2026-10-10, plan 02 · S8)
+
+**Platinum's rules, kept as they are** (`res/field/scripts/scripts_route_215.s`, `scripts_veilstone_city.s`, `scripts_veilstone_city_gym.s`, `scripts_veilstone_city_galactic_warehouse.s`, `scripts_pastoria_city.s`, `scripts_pastoria_city_gym.s`, `scripts_route_213.s`, `scripts_valor_lakefront.s`, `scripts_route_212_gate_to_hearthome_city.s`, `scripts_init_new_game.s`)
+
+- **The original's `RemoveObject` hides for good.** It sets the flag that hides whoever it takes off the map (`MapObject_SetFlagAndDeleteObject`), so everyone a scene of the original sends away is hidden by their flag here as well: the assistant after Crasher Wake's song (until Maylene's Badge clears it), the warehouse's three grunts together (`FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS`), the rival after his battle in Pastoria, the grunt who runs east to Route 213. Read without that, the original's scripts seem to leave the rival standing in the Pastoria Gym's doorway after his battle.
+- **The rival keeps Pastoria's Gym door while Crasher Wake is away** (`FLAG_HIDE_PASTORIA_CITY_RIVAL`, clear in a new game), saying the Leader has gone to Veilstone; he steps out of it once Looker has found HM02, and comes back down the street to battle at the door (`VAR_PASTORIA_CITY_STATE` 1, the warehouse's). So Crasher Wake can't be challenged before the warehouse, as in the original.
+- **The television crew keeps the gate between Hearthome City and Route 212 shut** until the player has come to Pastoria City from the other side, whose arrival lifts it (`FLAG_HIDE_ROUTE_212_BLOCKADE`, set by Pastoria's `OnEnter` every time, as the original's OnTransition does). Veilstone, and Route 214 and 213 after it, are the only way to Pastoria before.
+- **HM02 is an item in its ball** in the warehouse, picked up by the player after Looker has said to keep it, as in the original: it isn't handed over. The Dusk Stone lies behind the rusty door, which is plan 02 · S11's.
+- **The Secret Potion comes at Valor Lakefront, in this chapter**, from Cynthia once the grunt who carried the bomb is beaten there, as the original's order has it; plan 02's outline gave it to S9, which begins at the Psyduck.
+- **The road east to Sunyshore City is closed** by a man at Valor Lakefront who steps across it and turns the player back (`VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE` 0) until the professor's lab sees to it after the Distortion World (plan 02 · S13; the original's `scripts_sandgem_town_pokemon_research_lab.s`).
+- **Saves from before**: `common.ChapterFive` (story version 10) hides the chapter's people until their scenes. A save that already holds Maylene's Badge has had Crasher Wake come out of her Gym before it (`VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE` 1); one that holds Crasher Wake's, or has been to Pastoria City (`FLAG_FIRST_ARRIVAL_PASTORIA_CITY`), has seen the rival leave the Gym's doorway and the television crew leave the gate. The scenes the Badges' own scripts set going (the assistant's call for help, Crasher Wake coming out of his Gym) play as such a save next comes to the town.
+
+**Our own choices**
+
+- **The rival's battle in Pastoria is shown for the scene alone.** The original clears his flag for the battle and sets it again if the player loses; here his flag stays set and the scene shows him, so a battle lost leaves the Gym's doorway clear and the trigger waiting, whatever the field does with his place meanwhile.
+- **Crasher Wake leaves his Gym** while he is after the bomber (`FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE`, set as he comes out after the Fen Badge and cleared when Cynthia has given the Secret Potion). The Gym's map gives its Leader no flag of his own, so the Gym's arrival script sends him away (`PastoriaGym.txt`, `hide`), until lane 2 gives his map entry the flag.
+- **A scene played from where the player stands** follows the original's tile tables: the assistant from the warehouse's west, north or south (east of her is the gap between the guards, which nobody reaches before the scene), Crasher Wake to each of the four tiles before the Veilstone Gym, Looker on Route 213 and Cynthia and the rival at the lakefront to each side of the grunt, the man by the road to Sunyshore at each of its three tiles. The player's facing is read before anything turns them, since a scene's `face player` would change it.
+- **Pastoria's arrival scene puts the player at the Gym's door** before it plays, as the original's OnFrame finds them there: coming out of the Gym is the only way to state 3, but a save loaded elsewhere in town would otherwise watch the scene from a distance.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The bomb's sound | Its own explosion | Thunder (`thunder`) with the camera shaken | No explosion sound yet (plan 05) |
+| Crasher Wake's song | Lines of his own theme in the text box, with music notes | Our own verses, without the notes | The interface's font has no music note (Latin-1 only) |
+| Looker's music | A theme of his own as he arrives | The place's own | No song for him yet (plan 05) |
+| The television crew | In the gate's room, before its far door | In its doorway on Hearthome's side, our own people with the original's flag | The gate's room is plan 01 · M11's |
+| Looker in the Game Corner | Talks of Team Galactic's logo on the reels | Not there | The Game Corner's room is plan 06 · R16b's; Maylene's Badge sets his flag all the same |
+| Looker in the Hotel Grand Lake's lobby | Asks the player to search outside | His flag is set and cleared, nobody stands there | The hotel's lobby is plan 01 · M11's |
+| The Croagunk by Pastoria's board | Hops past now and then (one time in ten) | Left out (its flags are kept) | A Pokémon's walk past is a flourish no beat needs; plan 10 can bring it |
+| The beauty's Suite Key | Taken, and a reward in her cottage | She talks of the key she lost | Her cottage is plan 01 · M11's |
+| The meteorites | Change a Deoxys's forme | Are read | No command changes a Pokémon's form yet |
+| The warehouse's rusty door | A door in the wall between the hall and the back room | The wall itself, with the door's line read on its two tiles | The room renderer draws no door inside a room, only the way out |
+| Maylene's Mega Evolution | Not in Platinum | Left out | The later mechanics' beats wait for plan 06 · R20 (decision 06 · 2's default): it goes into `VeilstoneGym.txt` after her battle |
+| The cameramen at Lake Valor | Keep the lake shut until the Canalave Library's meeting | Not placed | Placed with the scene that sends them off (plan 02 · S10), or nobody could reach the lake meanwhile |
+| Maniac Tunnel | The Ruin Maniac digs on as more Unown forms are seen | His short cave only | No count of the Unown forms seen yet (the Pokédex's forms) |
 
 ## The Pokétch's apps (2026-10-10, plan 06 · R14b)
 
@@ -667,3 +716,32 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 - The Move Tester's words for how well a move works are our own: IT HAS NO EFFECT, IT BARELY WORKS, NOT VERY EFFECTIVE, IT HITS NORMALLY, SUPER EFFECTIVE, EXTREMELY EFFECTIVE.
 - The Day-Care Checker's mosaic is a dissolve from the paper in cells of two blocks, fewer at each of the original's ten steps.
 - The fish, hearts, egg, gender signs, arrows and marks are block patterns of our own.
+
+## Poffins and the contest condition (2026-10-10, plan 06 · R14c)
+
+**Platinum's rules, kept as they are** (`src/poffin.c`, `src/overlay083/ov83_0223F7F4.c` and `ov83_0223B5A0.c`, `src/applications/poffin_case/main.c`, `src/applications/poffin_berry_selection/`, `src/applications/pokemon_summary_screen/`, `src/scrcmd.c`, `res/field/scripts/scripts_poffin_*.s`, `scripts_hearthome_city_pokemon_fan_club.s`, `scripts_contest_hall_lobby.s`)
+
+- **The condition** is six bytes of a Pokémon: cool, beauty, cute, smart, tough and the sheen, each 0 to 255. Feebas evolves on its beauty (170) at a level up, as since R10; a person's trade gives the original's (Charap's Chatot comes with 20 of each of the five and no sheen).
+- **A Poffin** (`Poffin_MakePoffin`) is named for its flavours: one alone is that flavour's, two the stronger first (the first of the five on a tie), three rich, four or five overripe; any flavour of 50 or more makes it mild; none at all, or a mistake in the pot, makes it foul, with three of the missing flavours set to 2 by the game's generator and its smoothness kept. Its level (`Poffin_CalcLevel`) is the flavour it is named for first, or the strongest for a rich, overripe, foul or mild one, never over 99. Flavours and smoothness are bytes.
+- **The pot** (`ov83_0223FDD8` and the functions it calls), thirty frames to the second: the stylus's stroke between two frames is measured along the place it came from (`ApproximateArcLength`, × 160), counting in full where it passes the four points straight across from the middle and nothing half way between them; a stroke in the very middle (within 16 pixels) counts half, one past the batter's rim (72 pixels, out to 88 as the batter speeds up) nothing, and the cooks' strokes are averaged and pushed in at 8, 7 and 7 parts in 204 for the three stages; the batter slows by 64, 72 and 80 a frame by itself, never past standing still, and goes no faster than 3640. It turns by `CalcRadialAngle(68, speed / 160)`, and a turn counts when it goes the arrow's way. A stage ends after 600 frames or 16 such turns. The arrow is drawn as the cooking opens and again 150, 120 or 90 frames later and up to 59 more by the stage, counting down only while the batter goes its way: it keeps its way with odds that lean further from it each time it is kept, and turns back to even odds when it changes. A second at 3640 spills the batter over, again and again, but in the last stage; three seconds at 910 or under warn that it will burn and each three more burn it, the time slow adding up over the whole cooking until it is counted (the original's counter is not cleared by stirring well, only by reaching its three seconds). Cooks stir together (more than one, every one in the batter and stroking hard, the batter at a good speed the arrow's way, each within 32 pixels of the first) after four such frames, each frame counting.
+- **What comes out** (`ov83_0223FFD4`): the berries' flavours added up, each less the next round (spicy less dry … sour less spicy), each less one for every one of those below nought; four or five below nought, or two cooks with the same berry, make it foul. The flavours are scaled by the time (× 1,800,000 ÷ the frames, rounded to a whole per cent, so a minute is × 1 and half a minute × 2), rounded, less one for each burn and each spill, never below nought. The smoothness is the berries' average less the number of cooks, less a sixth of the frames stirred together × 0, 1, 5 or 10 for one to four cooks ÷ 10 (at most 10 off), and at least 15. Each cook takes home as many Poffins as there were cooks.
+- **The case** (`PoffinCase`) holds a hundred, filled from the first empty place; one eaten or thrown away leaves the rest to close up in order. It lists newest first, under a flavour's tab those with any of it (`PoffinManager_FilterPoffins`). The Poffin House's cook asks for the case and a berry first (`CheckCanCookPoffin`: no berry, or a full case), and "cook another?" asks the same.
+- **Eating one** (`PoffinCase_UpdateMonContestStats`): each flavour is added to its quality and the smoothness to the sheen, held to 255; the flavour the nature likes counts a tenth more and the one it dislikes a tenth less, multiplied in single precision and cut to a byte as the original does (`(u8)(attr × 1.1f)`, so 7 stays 7 and 10 × 0.9 stays 9); the Pokémon likes its trainer one point more. One whose sheen is 255 won't eat (`TryFeedPoffin`), however much room its qualities have. How it takes the Poffin (`PoffinCase_GetPoffinPreference`): happily when there is more of the liked flavour than of the disliked, sourly when less, plainly when they are the same or its nature likes nothing.
+- **The summary's condition page** is shown once the Contest Hall has been visited (`PokemonSummaryScreen_ShowContestData`: `FLAG_CONTEST_HALL_VISITED`, which the lobby's first scene sets), and always while feeding. The sheen shows as twelve sparkles at most, `(12 << 8) / 255 × sheen >> 8` of them, all twelve at 255.
+- **Who gives what**: the Pokémon Fan Club's chairman gives the Poffin Case once; the Contest Hall's boy at the official counter gives a Mild Poffin (60, 30, 30, 30, 30, smoothness 40) to a player with a case and room in it, the first time he is spoken to or later (`GivePoffin`). A Poffin cooked alone adds 3 to the Trainer Card's score (`TRAINER_SCORE_EVENT_UNK_12`).
+
+**Our own choices**
+
+- **The spoon.** The original is stirred with the stylus. Here the left and right arrows turn a spoon round the pot, 48 of the pot screen's pixels from its middle, 32 pixels a frame while held (fast enough to keep the last stage's batter going, as `PoffinCookingScreen.SpoonStep` says), and it stands still when let go; so the batter's speed is kept in its band by holding and letting go. The rules read the spoon as the stylus, the frame late the original's game hears its own stylus (its touch goes out through the link and comes back with everyone's). A tool can touch any point instead (`PoffinCookingScreen.Touch`).
+- **The unit vector** of the stroke's measure is worked out in double precision and rounded to the console's fixed point; the SDK's own square root may differ by one part in four thousand, which can move a stroke's measure by a pixel at a boundary.
+- **A speed gauge** beside the pot shows the batter's speed against the band that neither burns nor spills, which the original leaves to the look of the batter and the flames; the stage, the time and the burns and spills are shown at the side too.
+- **The lines** are our own words on the original's beats (the warnings, the results, "cook another?", the case's messages, the people's lines). The Poffin House's idol, old couple and girl, the fan club's woman (the first Pokémon's friendship in the original's seven steps) and its three Pokémon of the field stand on the original's tiles.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| Cooking in a group | Up to four by wireless, or at the Wi-Fi Club; the sparkles and the bonus of stirring together | Only alone: the cook offers COOK, INFO and EXIT. The rules of a group are written and tested (`PoffinPot` takes up to four cooks) | Wireless play is plan 07's |
+| The TV's Poffin corner | A reporter in the Poffin House and in the fan club, a programme of the Poffins cooked | The reporters are left out; nothing is broadcast | The TV is plan 08's |
+| The Poffin Case's look | Its own touch screen of flavour buttons and a list of names | The interface kit's tabs and rows | One screen and no touch |
+| Feeding | The party menu, then the summary's condition page, then a scene of the Pokémon eating | All in the case: the team's cards, the condition before, the line as it eats, the condition after with the change | The summary here is a page of the party menu |

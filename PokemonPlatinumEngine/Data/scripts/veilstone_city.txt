@@ -1,0 +1,282 @@
+# Veilstone City (plan 02 · S8). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_veilstone_city.s).
+#
+# The assistant waits before the Gym from the start. As the player first comes up to its door (the original's trigger
+# 1, a row of four tiles at y 616, VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE 0) she asks after the Gym challenge, and
+# Crasher Wake, in town for a practice match with Maylene, comes out of the Gym, sings his theme, says who he is and
+# goes. Maylene's Badge brings the assistant back (VeilstoneGym.txt clears her flag and sets
+# VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE 1): Team Galactic took her Pokédex, and she waits outside their
+# warehouse (state 2). Its two guards push the player back until the Badge (trigger 0,
+# VAR_VEILSTONE_WAREHOUSE_GUARDS_FIGHTABLE); with the assistant they battle two on two, give the Pokédex back and run
+# into the warehouse, and Looker takes the player in (VeilstoneGalacticWarehouse.txt).
+#
+# The original's RemoveObject also sets the flag that hides whoever it takes off the map, so everyone sent away here is
+# hidden by their flag as well (FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS takes the third grunt, by the Game Corner, with the
+# other two). The Storage Key's grunt and Looker by the Galactic building are plan 02 · S11's.
+
+
+# Arriving: the assistant asks for help once Maylene is beaten (the original's OnFrame, state 1), and waits by the
+# warehouse after that (its OnTransition, state 2 and on).
+script OnEnter
+  if var VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE == 1 goto NeedsHelp
+  if var VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE >= 2 place counterpart 696 596 right
+  end
+label NeedsHelp
+  clearflag FLAG_HIDE_VEILSTONE_COUNTERPART
+  place counterpart 682 614 up
+  show counterpart
+  music "common/assistant"
+  emote counterpart exclaim
+  walk counterpart right 2 up 1
+  speaker "{assistant}"
+  say "{player}! I'm so glad you're here. Something awful's happened: Team Galactic snatched my Pokédex!"
+  say "I'm not letting them keep it. They have a warehouse at the north end of town."
+  say "Meet me in front of it, please, as fast as you can!"
+  walk counterpart down 9
+  hide counterpart
+  place counterpart 696 596 right
+  show counterpart
+  music area
+  setvar VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE 2
+  end
+
+
+# Before the Gym's door (trigger 1): the assistant comes up to the player, and Crasher Wake comes out of the Gym.
+script CrasherWake
+  emote counterpart exclaim
+  music "common/assistant"
+  if var PLAYER_X == 681 walk counterpart left 1 down 1
+  if var PLAYER_X == 682 walk counterpart down 1
+  if var PLAYER_X == 683 walk counterpart right 1 down 1
+  if var PLAYER_X == 684 walk counterpart right 2 down 1
+  face player up
+  speaker "{assistant}"
+  say "{player}! Going to try the Gym? Every time we meet, your Pokémon look stronger."
+  say "Me? I, um, might have spent the morning in the Department Store... But the Pokédex is coming along too! Honestly!"
+  music area
+  sound "door_open"
+  clearflag FLAG_HIDE_VEILSTONE_CRASHER_WAKE
+  place crasher_wake 684 611 down
+  show crasher_wake
+  walk crasher_wake down 1
+  face counterpart up
+  speaker "Crasher Wake"
+  say "Here comes the swell, here comes the spray! Wake! Wake! Crasher Wake!"
+  say "Fire fizzles out and the rocks wash away! Wake! Wake! Crasher Wake!"
+  say "Just keep the lightning well away from me... Wake! Wake! Crasher Wake! King of the ring and the stormy sea!"
+  emote crasher_wake exclaim
+  if var PLAYER_X == 681 goto WakeFrom681
+  if var PLAYER_X == 682 goto WakeFrom682
+  if var PLAYER_X == 683 goto WakeFrom683
+  walk crasher_wake down 1 left 1 down 3
+  face crasher_wake right
+  face counterpart left
+  face player left
+  goto WakeTalks
+label WakeFrom681
+  walk crasher_wake down 4 left 2
+  goto WakeFacesWest
+label WakeFrom682
+  walk crasher_wake down 4 left 1
+  goto WakeFacesWest
+label WakeFrom683
+  walk crasher_wake down 4
+label WakeFacesWest
+  face crasher_wake left
+  face counterpart right
+  face player right
+label WakeTalks
+  say "Ho there, you two! Come to test yourselves against this city's Gym?"
+  say "Don't let Maylene's age fool you. We sparred this morning, and she had me flat on the mat before I could blink!"
+  say "Ha! Here I am rambling, and you don't even know me. Pokémon, wrestling, singing: I do the lot! I'm Crasher Wake, Leader of the Pastoria Gym!"
+  say "Come and find me in my ring one of these days!"
+  walk crasher_wake down 8
+  hide crasher_wake
+  setflag FLAG_HIDE_VEILSTONE_CRASHER_WAKE
+  wait 0.3
+  speaker "{assistant}"
+  say "..."
+  face player up
+  face counterpart down
+  say "Anyway... you'll do great at the Gym, {player}!"
+  if var PLAYER_X <= 682 walk counterpart right 1 down 9
+  if var PLAYER_X >= 683 walk counterpart left 1 down 9
+  hide counterpart
+  setflag FLAG_HIDE_VEILSTONE_COUNTERPART
+  setvar VAR_VEILSTONE_CITY_CRASHER_WAKE_STATE 1
+  end
+
+
+# By the warehouse (the original's script 16): once Maylene is beaten, the assistant asks the player to battle its
+# two guards with her. From whichever side the player speaks to her, the two of them line up before the guards: the
+# player beside the northern one, she beside the southern one, or the other way round.
+script Assistant
+  speaker "{assistant}"
+  if var VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE < 2 goto Waiting
+  music "common/assistant"
+  say "{player}, you came! It's those Team Galactic people again, the ones who were after the professor's research in Jubilife."
+  say "Two of them are guarding that warehouse, and they've got my Pokédex!"
+  ask "Will you take them on with me, two against two?"
+  if no goto Later
+  say "With your Pokémon and mine side by side, how could we possibly lose?"
+  say "Let's get my Pokédex back!"
+  if facing right goto FromTheWest
+  if facing up goto FromTheSouth
+  walk counterpart down 1
+  goto Ready
+label FromTheWest
+  walk counterpart down 1
+  walk player up 1 right 1
+  goto Ready
+label FromTheSouth
+  walk counterpart up 1
+label Ready
+  face counterpart right
+  face player right
+  # The assistant brings the team that has the upper hand of nobody's starter (the original's
+  # VeilstoneCity_SetPlayerCounterpartPartnerTeam: Dawn's when the player is the boy)
+  if boy goto Dawn
+  if starter "Chimchar" goto LucasChimchar
+  if starter "Piplup" goto LucasPiplup
+  battle grunt_m_warehouse_north and grunt_m_warehouse_south with "lucas_veilstone_city_turtwig"
+  goto Beaten
+label LucasChimchar
+  battle grunt_m_warehouse_north and grunt_m_warehouse_south with "lucas_veilstone_city_chimchar"
+  goto Beaten
+label LucasPiplup
+  battle grunt_m_warehouse_north and grunt_m_warehouse_south with "lucas_veilstone_city_piplup"
+  goto Beaten
+label Dawn
+  if starter "Chimchar" goto DawnChimchar
+  if starter "Piplup" goto DawnPiplup
+  battle grunt_m_warehouse_north and grunt_m_warehouse_south with "dawn_veilstone_city_turtwig"
+  goto Beaten
+label DawnChimchar
+  battle grunt_m_warehouse_north and grunt_m_warehouse_south with "dawn_veilstone_city_chimchar"
+  goto Beaten
+label DawnPiplup
+  battle grunt_m_warehouse_north and grunt_m_warehouse_south with "dawn_veilstone_city_piplup"
+label Beaten
+  speaker "Galactic Grunt"
+  say "Gah! Useless, the lot of them! Headquarters had better send us stronger Pokémon."
+  say "Who needs your Pokédex anyway? Team Galactic's going to have every Pokémon there is! This world's, and every other world's too!"
+  say "Here, take the stupid thing!"
+  walk grunt_m_warehouse_north right 4 up 4 fast
+  hide grunt_m_warehouse_north
+  speaker "Galactic Grunt"
+  say "Doesn't matter anyway. Everything worth having in that warehouse went off to Pastoria City ages ago."
+  say "Right. Time for the bit where we shout \"This isn't over!\" and scarper."
+  walk grunt_m_warehouse_south right 4 up 6 fast
+  hide grunt_m_warehouse_south
+  setflag FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS
+  speaker "{assistant}"
+  say "What are they even up to? Team Galactic seem to think they can do whatever they like in this city!"
+  face counterpart player
+  face player counterpart
+  say "{player}, thank you so much. The professor's whole study depends on that Pokédex. I don't know what I'd have done."
+  say "Where are you off to next? I'm going to the Pokémon Mansion on Route 212. I've heard the owner lets visitors see his rare Pokémon."
+  music area
+  # Looker comes running from the south of the street
+  clearflag FLAG_HIDE_VEILSTONE_CITY_LOOKER
+  place looker 692 606 up
+  show looker
+  walk looker up 10 right 3 fast
+  speaker "Looker"
+  say "Aha! Word reached me that children were standing up to Team Galactic in the street. And who should it be? You, naturally!"
+  face counterpart left
+  face player left
+  speaker "{assistant}"
+  say "Oh... the odd detective from Jubilife City."
+  speaker "Looker"
+  say "Odd? I am standing right here, you know!"
+  speaker "{assistant}"
+  say "Sorry! I'm still all worked up about my Pokédex. I didn't mean it like that..."
+  say "I'll leave the rest to you two. Look after yourself around Team Galactic, {player}."
+  walk counterpart left 3 down 10
+  hide counterpart
+  setflag FLAG_HIDE_VEILSTONE_COUNTERPART
+  walk looker right 1
+  face looker player
+  face player looker
+  speaker "Looker"
+  say "Never mind it. Team Galactic is the matter at hand."
+  say "Snatching a child's Pokédex... petty theft. Yet a gang that bothers with petty theft is a gang that will dare anything."
+  say "I mean to see what they keep in that warehouse. You will come too, yes? Follow me!"
+  walk looker right 5 up 4
+  hide looker
+  setflag FLAG_HIDE_VEILSTONE_CITY_LOOKER
+  if var PLAYER_Y == 595 walk player down 1 right 5 up 4
+  if var PLAYER_Y == 597 walk player up 1 right 5 up 4
+  # The rival leaves the Pastoria Gym's door, Looker waits inside the warehouse
+  setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
+  clearflag FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER
+  setvar VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 1
+  sound "door_open"
+  warp "VeilstoneGalacticWarehouse" 8 11 up
+  end
+label Later
+  say "All right. I'll wait here while you get ready. Don't be long!"
+  music area
+  end
+label Waiting
+  say "There are so many Pokémon I've never seen around Veilstone. My Pokédex is filling up nicely!"
+  end
+
+
+# Its two guards push the player back from the warehouse until Maylene's Badge (trigger 0).
+script GruntsBlock
+  face grunt_m_warehouse_north down
+  emote grunt_m_warehouse_north exclaim
+  face player up
+  speaker "Galactic Grunt"
+  say "Halt! This warehouse belongs to Team Galactic. No kids allowed, so shove off!"
+  move grunt_m_warehouse_north down 1 fast
+  walk player left 1
+  waitmoves
+  wait 0.3
+  walk grunt_m_warehouse_north up 1
+  face grunt_m_warehouse_north left
+  face player right
+  end
+
+
+# The guards spoken to (the original's scripts 11 and 12): before Maylene's Badge, and after it, when the assistant
+# waits beside them.
+script GruntNorth
+  speaker "Galactic Grunt"
+  if badge cobble goto Backup
+  say "This warehouse belongs to Team Galactic. No kids allowed!"
+  end
+label Backup
+  say "Brought backup, have you? Fine by us. We'll beat the pair of you just as easily."
+  end
+
+script GruntSouth
+  speaker "Galactic Grunt"
+  if badge cobble goto Fight
+  say "Nothing to see here. Go and bother the Gym instead. It's more your size."
+  end
+label Fight
+  say "Come for that Pokédex? Ha! Still, standing guard all day is mind-numbing."
+  say "Two on two, then. Let's have some fun!"
+  end
+
+
+# A man by the meteorites who gives TM63 (the original's VeilstoneCity_Roughneck2).
+script Roughneck2
+  if flag FLAG_RECEIVED_VEILSTONE_CITY_TM63 goto Given
+  say "See those rocks at the edge of town? They fell from space! Doesn't get more Veilstone than that."
+  say "Anyway, I've a spare TM going. Here!"
+  give "TM63"
+  setflag FLAG_RECEIVED_VEILSTONE_CITY_TM63
+label Given
+  say "It's Embargo. Hit a Pokémon with it, and its trainer can't use items on it for a while. Handy, that."
+  end
+
+
+# The meteorites at the east end of town (the original's scripts 25 to 28). Touching them changes a Deoxys's forme in
+# the original, which waits for a command that changes a Pokémon's form.
+script Meteorite
+  speaker none
+  say "A mysterious stone that fell from the stars long, long ago. It is faintly warm to the touch."
+  end

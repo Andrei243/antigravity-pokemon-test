@@ -32,7 +32,12 @@ public class RoomPlanTests
         // Hearthome City's of plan 02 · S7, part 1
         new object[] { "ContestHallLobby", 1, 3, 16, 13 },
         // Route 209's Lost Tower, plan 02 · S7, part 2
-        new object[] { "LostTower1F", 1, 3, 7, 14 }
+        new object[] { "LostTower1F", 1, 3, 7, 14 },
+        // Hearthome City's Poffin House and Pokémon Fan Club, plan 06 · R14c
+        new object[] { "PoffinHouse", 1, 3, 8, 13 },
+        new object[] { "HearthomeFanClub", 1, 3, 6, 17 },
+        // Veilstone City's Galactic warehouse, plan 02 · S8
+        new object[] { "VeilstoneGalacticWarehouse", 1, 3, 8, 11 }
     };
 
     /// <summary>Gate houses rebuilt to the original's plans: a door in each side wall, both to the map of Sinnoh.</summary>
@@ -97,7 +102,18 @@ public class RoomPlanTests
         new object[] { "LostTower1F", "pokemon_breeder_f_2", 2, 4, Direction.Right },
         new object[] { "LostTower2F", "youngster_oliver", 8, 10, Direction.Up },
         new object[] { "LostTower5F", "old_woman_1", 7, 9, Direction.Down },
-        new object[] { "LostTower5F", "old_woman_2", 8, 9, Direction.Down }
+        new object[] { "LostTower5F", "old_woman_2", 8, 9, Direction.Down },
+        new object[] { "PoffinHouse", "idol", 6, 5, Direction.Down },
+        new object[] { "PoffinHouse", "old_woman", 11, 8, Direction.Down },
+        new object[] { "PoffinHouse", "old_man", 11, 9, Direction.Up },
+        new object[] { "PoffinHouse", "pokefan_f", 5, 10, Direction.Down },
+        new object[] { "PoffinHouse", "school_kid_f", 3, 8, Direction.Right },
+        new object[] { "HearthomeFanClub", "gentleman", 6, 7, Direction.Down },
+        new object[] { "HearthomeFanClub", "beauty", 2, 4, Direction.Down },
+        new object[] { "HearthomeFanClub", "psyduck", 9, 5, Direction.Down },
+        new object[] { "HearthomeFanClub", "buneary", 7, 13, Direction.Down },
+        new object[] { "HearthomeFanClub", "clefairy", 3, 11, Direction.Down },
+        new object[] { "VeilstoneGalacticWarehouse", "looker", 12, 8, Direction.Down }
     };
 
     [Theory]

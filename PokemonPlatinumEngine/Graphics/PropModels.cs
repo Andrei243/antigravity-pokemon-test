@@ -98,7 +98,56 @@ internal static class PropModels
             case PropType.Wardrobe: Wardrobe(kit); break;
             case PropType.ClothesRack: kit.Sprite(kit.Face($"clothesrack.{w}", w - 4, 44, c => PaintClothesRack(c, w - 4)), w / 2f, d / 2f + 4); break;
             case PropType.Crates: Boxes(kit, p); break;
+            // The Poffin House's tables (plan 06 · R14c)
+            case PropType.CookingTable: CookingTable(kit, w, d); break;
         }
+    }
+
+    /// <summary>
+    /// A table as wide as its tiles under a cloth checked in red and cream, with a squat iron pot on a steel burner at
+    /// its middle and a pale batter in the pot.
+    /// </summary>
+    private static void CookingTable(KitBuilder kit, int w, int d)
+    {
+        int tw = w - 6, td = d - 10;
+        var cloth = Rgb(248, 240, 226);
+        var check = Rgb(214, 102, 96);
+        var top = kit.Face($"cookingtable.top.{tw}x{td}", tw, td, c =>
+        {
+            c.Rect(0, 0, tw, td, cloth);
+            // Gingham: red bands each way, darker where they cross
+            for (int x = 2; x < tw; x += 8) c.Rect(x, 0, 4, td, PixelCanvas.Mix(cloth, check, 0.55f));
+            for (int y = 2; y < td; y += 8) c.Rect(0, y, tw, 4, PixelCanvas.Mix(cloth, check, 0.55f));
+            for (int x = 2; x < tw; x += 8)
+                for (int y = 2; y < td; y += 8) c.Rect(x, y, 4, 4, check);
+            Pix.Border(c, 0, 0, tw, td, PixelCanvas.Shadow(check, 0.25f));
+        });
+        var hem = Tone.Of(214, 102, 96);
+        var edge = kit.Face($"cookingtable.edge.{tw}", tw, 5, c => Edge(c, hem));
+        var edgeSide = kit.Face($"cookingtable.edge.side.{td}", td, 5, c => Edge(c, hem));
+        kit.Box(3, w - 3, 5, d - 5, 18, 23, top, edge, edgeSide, edgeSide);
+        foreach (int x in new[] { 5, w - 8 })
+            foreach (int z in new[] { 7, d - 10 })
+                kit.Block("table.leg", WoodDark, x, x + 3, z, z + 3, 0, 18);
+
+        // The burner and the pot on it, the batter showing in its mouth
+        float cx = w / 2f, cz = d / 2f;
+        kit.Block("cookingtable.burner", Steel, cx - 11, cx + 11, cz - 8, cz + 8, 23, 26);
+        var potTop = kit.Face("cookingtable.pot.top", 22, 16, c =>
+        {
+            c.Rect(0, 0, 22, 16, Dark.Base);
+            Pix.Border(c, 0, 0, 22, 16, Dark.Light);
+            c.Rect(3, 3, 16, 10, Rgb(238, 214, 164));
+            c.Rect(5, 4, 6, 2, Rgb(250, 238, 210));
+            c.HLine(3, 12, 16, Rgb(214, 182, 128));
+        });
+        var potFront = kit.Face("cookingtable.pot.front", 22, 12, c =>
+        {
+            Pix.Raised(c, 0, 0, 22, 12, Dark);
+            c.HLine(1, 2, 20, Dark.Light);
+        });
+        var potSide = kit.Face("cookingtable.pot.side", 16, 12, c => Pix.Raised(c, 0, 0, 16, 12, Dark));
+        kit.Box(cx - 11, cx + 11, cz - 8, cz + 8, 26, 38, potTop, potFront, potSide, potSide);
     }
 
     // ------------------------------------------------------------------ Eterna City's rooms (plan 02 · S6)

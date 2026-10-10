@@ -1,0 +1,143 @@
+# Valor Lakefront (plan 02 · S8). docs/scripts.md describes the language; the lines are our own, on the original's
+# beats (scripts_valor_lakefront.s).
+#
+# The grunt who carried the Galactic Bomb has run here from Route 213 (route_213.txt clears his flag). Caught talking
+# to himself, he runs up the road toward the lake; caught there, he battles, and gives up. Then Cynthia comes down
+# from the lake, which is closed to visitors (its scene is plan 02 · S10's), and the rival runs up after the grunt and
+# off again; Cynthia asks about the Psyduck on Route 210 and gives the Secret Potion for them (route_210_south.txt).
+# Crasher Wake is back in his Gym and the rival gone from Pastoria (VAR_PASTORIA_CITY_STATE 6).
+#
+# The road east to Sunyshore City is closed after the city's blackout: a man turns the player back (the original's
+# trigger 0, VAR_VALOR_LAKEFRONT_BLOCK_SUNYSHORE_STATE 0) until the professor's lab sees to it (plan 02 · S13).
+
+
+# The original's OnTransition: the grunt by the road to the lake once he has run from the player.
+script OnEnter
+  if flag FLAG_TALKED_TO_VALOR_LAKEFRONT_GRUNT_M place grunt_m 723 769 up
+  end
+
+
+# The grunt (the original's script 3).
+script Grunt
+  speaker "Galactic Grunt"
+  if flag FLAG_TALKED_TO_VALOR_LAKEFRONT_GRUNT_M goto Cornered
+  say "Gasp... wheeze... Remind me why I'm doing all this running?"
+  say "Oh, right. The brand-new world the boss has promised us... A whole universe made over, just for us..."
+  say "And once this thing's been set off..."
+  face self player
+  emote self exclaim
+  say "Not you AGAIN?! Can't you see I'm busy having private thoughts?!"
+  say "You just don't quit, do you? I'm completely worn out... but I'm still not... battling... you..."
+  if facing down goto RoundThePlayer
+  walk self up 10 fast
+  goto Moved
+label RoundThePlayer
+  walk self right 1 up 11 fast
+label Moved
+  place self 723 769 up
+  setflag FLAG_TALKED_TO_VALOR_LAKEFRONT_GRUNT_M
+  end
+label Cornered
+  say "Ugh... still behind me? And with the lake so close I can almost touch it..."
+  face self player
+  say "Fine! Have it your way! My Pokémon will knock you flat!"
+  battle self as "galactic_grunt_valor_lakefront"
+  speaker "Galactic Grunt"
+  say "That's it... I've got nothing left... not one more step..."
+  say "The Commander can have this thing, then. I really wanted to be the one who used it at the lake..."
+  if facing down goto Round
+  walk self up 10
+  goto Gone
+label Round
+  walk self right 1 up 9
+label Gone
+  hide self
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_GRUNT_M
+  setflag FLAG_HIDE_GRAND_LAKE_ROUTE_213_LOBBY_LOOKER
+  clearflag FLAG_BLOCK_PASTORIA_CITY_CROAGUNK_EVENT
+  # Cynthia comes down from the lake to where the grunt stood
+  if facing up place cynthia 723 761 down
+  if facing down place cynthia 723 759 down
+  if facing left place cynthia 724 760 down
+  if facing right place cynthia 722 760 down
+  clearflag FLAG_HIDE_VALOR_LAKEFRONT_CYNTHIA
+  show cynthia
+  walk cynthia down 4
+  face cynthia up
+  wait 0.6
+  walk cynthia down 4
+  speaker "Cynthia"
+  say "Why, it's you! We meet again. Has your Pokédex grown since I saw you last?"
+  say "I came hoping to study the tales told about this lake. But it seems nobody's being let near it at the moment."
+  say "Do you know the story? People say an island lies out in the middle of the water..."
+  say "...and on it a Pokémon that shimmers like a mirage. Its chamber is meant to be left alone, always."
+  say "Oh, but that's not what I wanted to ask you about..."
+  # The rival runs up the road after the grunt
+  if facing up place rival 724 780 up
+  if facing down place rival 724 778 up
+  if facing left place rival 723 779 up
+  if facing right place rival 723 779 up
+  clearflag FLAG_HIDE_VALOR_LAKEFRONT_RIVAL
+  show rival
+  music "common/rival"
+  walk rival up 10 fast
+  if facing left face rival right
+  if not facing left face rival left
+  face player rival
+  speaker "{rival}"
+  say "{player}! Which way did that Galactic creep go?"
+  face rival up
+  say "Huh? Who's this? A relative of yours? ...No? Never mind, then."
+  face rival player
+  say "Oh, and Mr. Wake says the bang in the Great Marsh didn't do any real harm. He wanted you to know."
+  say "But Team Galactic, honestly! They're going way too far. If they cross my path again, they'll be sorry!"
+  say "Later!"
+  face player up
+  walk rival up 8 fast
+  hide rival
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_RIVAL
+  music area
+  speaker "Cynthia"
+  say "A friend of yours? He's certainly in a hurry, isn't he?"
+  face cynthia down
+  face player up
+  ask "Now, what I meant to ask... Have you come across the Psyduck on Route 210?"
+  if no goto NotSeen
+  say "Yes, those! The little crowd by the café on Route 210, all of them clutching their heads."
+  goto Medicine
+label NotSeen
+  say "You haven't? Then look for them by the café on Route 210: a little crowd of Psyduck, all clutching their heads."
+label Medicine
+  say "Give them this medicine. It should ease their aching heads, and you'll want to see them for your Pokédex."
+  give "Secret Potion"
+  say "I travelled with a Pokédex of my own once, when I was about your age."
+  say "Meet as many Pokémon as you can. Who knows? It may lead you to the mirage Pokémon's secret."
+  say "Take care!"
+  walk cynthia up 9
+  hide cynthia
+  setflag FLAG_HIDE_VALOR_LAKEFRONT_CYNTHIA
+  # The rival leaves Pastoria's marsh door, and Crasher Wake is back in his Gym
+  setflag FLAG_HIDE_PASTORIA_CITY_RIVAL
+  clearflag FLAG_HIDE_PASTORIA_CITY_GYM_CRASHER_WAKE
+  setvar VAR_PASTORIA_CITY_STATE 6
+  end
+
+
+# The road to Sunyshore City (trigger 0): the man by it steps across and turns the player back.
+script BlockSunyshore
+  emote collector exclaim
+  if var PLAYER_Y == 789 walk collector right 1 down 1
+  if var PLAYER_Y == 790 walk collector right 1 down 2
+  if var PLAYER_Y == 791 walk collector right 1 down 3
+  move collector left 1
+  walk player left 1
+  waitmoves
+  face player right
+  speaker "Collector"
+  say "Hold it right there! You can't go this way."
+  say "Sunyshore City's had a blackout, and the road's shut while the crews get the power back. Try again later!"
+  if var PLAYER_Y == 789 walk collector up 1
+  if var PLAYER_Y == 790 walk collector up 2
+  if var PLAYER_Y == 791 walk collector up 3
+  face collector down
+  end

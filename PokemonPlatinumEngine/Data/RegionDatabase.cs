@@ -128,7 +128,7 @@ public static class RegionDatabase
                 "DistortionWorld1F", "DistortionWorldB1F", "DistortionWorldB2F", "DistortionWorldB3F", "DistortionWorldB4F",
                 "DistortionWorldB5F", "DistortionWorldB6F", "DistortionWorldB7F", "DistortionWorldGiratinaRoom", "DistortionWorldTurnbackCaveRoom",
                 // Plan 01 · M9, part 1: the Gyms rebuilt to the original's plans, with their puzzles
-                "EternaGym", "HearthomeGym", "HearthomeGymRoom1", "HearthomeGymRoom2", "HearthomeGymLeaderRoom", "VeilstoneGym", "PastoriaGym", "CanalaveGym",
+                "EternaGym", "HearthomeGym", "HearthomeGymRoom1", "HearthomeGymRoom2", "HearthomeGymLeaderRoom", "VeilstoneGym", "PastoriaGym", "CanalaveGym", "SnowpointGym",
                 // Rooms, still made by hand (plan 01 · M11)
                 "PlayerHouse", "PlayerHouse2F", "RivalHouse", "RivalHouse2F", "PokemonCenter", "PokeMart", "RowanLab",
                 "JubilifePokemonCenter", "JubilifePokeMart", "JubilifeBoutique", "JubilifeTV1F", "TrainersSchool", "PoketchCompany",
@@ -146,7 +146,11 @@ public static class RegionDatabase
                 // Hearthome's rooms of plan 02 · S7: the Contest Hall's lobby and the gate to Route 209
                 "ContestHallLobby", "Route209GateToHearthomeCity",
                 // Route 209's Lost Tower, its five floors of graves (plan 02 · S7)
-                "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F"
+                "LostTower1F", "LostTower2F", "LostTower3F", "LostTower4F", "LostTower5F",
+                // Hearthome's Poffin House and Pokémon Fan Club (plan 06 · R14c)
+                "PoffinHouse", "HearthomeFanClub",
+                // Veilstone City's Galactic warehouse, where HM02 lies (plan 02 · S8)
+                "VeilstoneGalacticWarehouse"
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

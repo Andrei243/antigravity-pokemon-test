@@ -1,0 +1,178 @@
+{
+  "name": "VeilstoneGalacticWarehouse",
+  "displayName": "Galactic Warehouse",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 13,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#____#__________#",
+    "#____#__________#",
+    "#____###__#######",
+    "#____###__#######",
+    "#____############",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "#....##.......###",
+    "####.##.......###",
+    "####.###..#######",
+    "#....###..#######",
+    "#....############",
+    "####......##..###",
+    "####......##..###",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 3,
+      "y": 4,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 3,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 10,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 14,
+      "y": 8,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Computer",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 6,
+      "y": 4,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 12,
+      "targetMap": "Sinnoh",
+      "targetX": 701,
+      "targetY": 592,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 7,
+      "text": "Rust has crept all over this heavy door. It won't open without some special key."
+    },
+    {
+      "x": 9,
+      "y": 7,
+      "text": "Rust has crept all over this heavy door. It won't open without some special key."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "looker",
+      "name": "Looker",
+      "npcType": "Looker",
+      "x": 12,
+      "y": 8,
+      "facing": "Down",
+      "script": "Looker",
+      "hiddenBy": "FLAG_HIDE_VEILSTONE_CITY_GALACTIC_WAREHOUSE_LOOKER"
+    },
+    {
+      "name": "Dusk Stone",
+      "npcType": "ItemBall",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_VEILSTONE_CITY_GALACTIC_WAREHOUSE_DUSK_STONE",
+      "item": "Dusk Stone"
+    },
+    {
+      "name": "HM02",
+      "npcType": "ItemBall",
+      "x": 13,
+      "y": 8,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_VEILSTONE_CITY_GALACTIC_WAREHOUSE_HM02",
+      "item": "HM02"
+    }
+  ],
+  "wildEncounters": []
+}

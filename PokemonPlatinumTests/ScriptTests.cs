@@ -191,6 +191,10 @@ public class ScriptTests
           lottery boxed
           chooseitem berries
           berry status
+          poffin check
+          poffin cook
+          poffin room
+          poffin give 60 30 30 30 30 40
         script Other
           end
         """;
@@ -1030,6 +1034,7 @@ public class ScriptTests
         public SpecialEncounters Encounters => inner.Encounters;
         public BerryPatches Berries => inner.Berries;
         public string? ChosenItem => inner.ChosenItem;
+        public PoffinCase Poffins => inner.Poffins;
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

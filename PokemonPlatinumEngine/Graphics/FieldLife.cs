@@ -170,16 +170,29 @@ internal sealed class FieldLife
     // The rock's browns, for the dust and the chips it breaks into
     private static readonly Color RockDust = Rgb(168, 128, 92), RockLight = Rgb(204, 168, 126), RockDark = Rgb(122, 90, 70);
 
+    // A snowball's whites and blues, for the puffs and the lumps it bursts into (plan 01 · M9, part 2b)
+    private static readonly Color SnowPuff = Rgb(244, 248, 255), SnowLight = Rgb(240, 246, 255), SnowShade = Rgb(176, 196, 230);
+
     /// <summary>
     /// An obstacle gives way on a tile (plan 02 · S2; style guide, "Obstacles giving way"): a tree that is cut
     /// down bursts into leaf bits thrown higher and wider than the grass's, with a puff of dust; a rock that is
-    /// smashed into puffs of its own brown and chips flung out low.
+    /// smashed into puffs of its own brown and chips flung out low; a snowball of the Snowpoint Gym that someone
+    /// slides into bursts into puffs of snow and lumps of it thrown up and out to both sides.
     /// </summary>
     public void GiveWay(Map map, int x, int y, PropType obstacle)
     {
         if (!map.InBounds(x, y)) return;
         float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
         float[] sides = { -0.8f, -0.5f, -0.2f, 0.2f, 0.5f, 0.8f };
+        if (obstacle == PropType.Snowball)
+        {
+            foreach (float side in new[] { -0.35f, 0f, 0.35f })
+                pieces.Add(new Piece(Kind.Puff, new Vector3(cx + side, ground + 0.1f, cz + 0.25f), Now, SnowPuff, 0, side, 2.2f));
+            for (int i = 0; i < sides.Length; i++)
+                pieces.Add(new Piece(Kind.Leaf, new Vector3(cx, ground + 0.3f, cz + 0.2f), Now, i % 2 == 0 ? SnowLight : SnowShade, 0,
+                    sides[i], MathF.Abs(sides[i]) < 0.3f ? 1.5f : 1.1f));
+            return;
+        }
         if (obstacle == PropType.CutTree)
         {
             for (int i = 0; i < sides.Length; i++)

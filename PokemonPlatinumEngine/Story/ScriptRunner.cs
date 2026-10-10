@@ -622,6 +622,11 @@ public sealed class ScriptRunner
                 else Result = lottery.InBox ? 1 : 0;
                 break;
 
+            // Poffins (plan 06 · R14c)
+            case Op.Poffin:
+                Poffin(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -676,6 +681,36 @@ public sealed class ScriptRunner
     /// the bag; <c>pick</c> the berries into the bag, their number in RESULT; <c>berries</c> and <c>mulches</c> 1 when
     /// the bag has a berry that grows, or a mulch.
     /// </summary>
+    /// <summary>
+    /// The Poffin House's commands (plan 06 · R14c): <c>check</c> is the original's <c>CheckCanCookPoffin</c> (RESULT 1
+    /// with no berry in the bag, 2 with the case full, else 0); <c>cook</c> opens the cooking, berry by berry, until the
+    /// player stops; <c>room</c> is <c>CheckHasEmptyPoffinCaseSlot</c> (RESULT 1 when there is room); <c>give</c> is
+    /// <c>GivePoffin</c>: a Poffin of those flavours and that smoothness into the case, RESULT its kind, or 65,535
+    /// (<c>POFFIN_NONE</c>) when the case was full.
+    /// </summary>
+    private void Poffin(Instruction i)
+    {
+        var poffins = host.Poffins;
+        switch (i.Name)
+        {
+            case "check":
+                Result = !host.Bag.AllItems.Any(s => s.Quantity > 0 && s.Data.Pocket == ItemPocket.Berries) ? 1 : poffins.IsFull ? 2 : 0;
+                break;
+            case "cook":
+                host.Open(ScriptScreen.PoffinCooking, Subject);
+                break;
+            case "room":
+                Result = poffins.IsFull ? 0 : 1;
+                break;
+            case "give":
+            {
+                var made = Models.Poffins.Make(i.Numbers.Take(5).ToList(), i.Numbers[5], false, host.Chance);
+                Result = poffins.Add(made) ? (int)made.Type : 0xFFFF;
+                break;
+            }
+        }
+    }
+
     private void Berry(Instruction i)
     {
         var patches = host.Berries;
@@ -790,6 +825,8 @@ public sealed class ScriptRunner
         "BADGE_COUNT" => host.Story.BadgeCount,
         "GREETINGS" => host.Story.Greetings,
         "SEEN" => host.SeenInSinnoh,
+        // The friendship of the first of the team (the original's GetFirstNonEggInParty and GetPartyMonFriendship)
+        "LEAD_FRIENDSHIP" => host.Party.Count > 0 ? host.Party.Members[0].Friendship : 0,
         _ => host.Story.Var(variable)
     };
 

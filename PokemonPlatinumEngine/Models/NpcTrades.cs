@@ -56,7 +56,12 @@ public static class NpcTrades
             Ball = "Poké Ball",
             OriginalTrainer = new TrainerMark(trade.TrainerName, trade.TrainerId, trade.TrainerLook),
             Language = trade.Language,
+            // The table's cool, beauty, cute, smart and tough (NPCTrade_CreateMon); never the sheen
+            Cool = trade.Contest,
             Beauty = trade.Contest,
+            Cute = trade.Contest,
+            Smart = trade.Contest,
+            Tough = trade.Contest,
             IvHP = trade.Ivs[0],
             IvAttack = trade.Ivs[1],
             IvDefense = trade.Ivs[2],

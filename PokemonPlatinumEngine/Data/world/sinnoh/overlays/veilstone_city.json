@@ -6,7 +6,9 @@
   "doors": [
     { "warp": 10, "map": "VeilstonePokemonCenter", "x": 5, "y": 7, "facing": "Up" },
     // Maylene's Gym and its punching bags, built to the original's plan (plan 01 · M9)
-    { "warp": 13, "map": "VeilstoneGym", "x": 12, "y": 30, "facing": "Up" }
+    { "warp": 13, "map": "VeilstoneGym", "x": 12, "y": 30, "facing": "Up" },
+    // Team Galactic's warehouse, built to the original's plan, where HM02 lies (plan 02 · S8)
+    { "warp": 4, "map": "VeilstoneGalacticWarehouse", "x": 8, "y": 11, "facing": "Up" }
   ],
   // Gate houses are passed through; their rooms come with plan 01 · M11
   "through": [
@@ -15,14 +17,46 @@
     { "warp": 11, "to": "route_214", "toWarp": 0 },
     { "warp": 12, "to": "route_214", "toWarp": 1 }
   ],
-  // The Game Corner, the Department Store, the warehouse, the prize exchange, the houses and the Galactic building have no rooms yet (plan 01 · M11)
-  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 16 ],
+  // The Game Corner (plan 06 · R16b), the Department Store, the prize exchange and the houses (plan 01 · M11) have no
+  // rooms yet, and the Galactic building waits for plan 02 · S11
+  "locked": [ 2, 3, 5, 6, 7, 8, 9, 14, 15, 16 ],
+  // Plan 02 · S8 (scripts/veilstone_city.txt): the warehouse's guards pushing the player back until Maylene's Badge
+  // (trigger 0), and Crasher Wake coming out of the Gym (trigger 1)
+  "triggers": [ { "trigger": 0, "script": "GruntsBlock" }, { "trigger": 1, "script": "CrasherWake" } ],
+  // The meteorites at the east end of town
+  "read": { "25": "Meteorite", "26": "Meteorite", "27": "Meteorite", "28": "Meteorite" },
   "people": {
+    // The assistant before the Gym, and later by the warehouse; Crasher Wake, out of the Gym for one scene; the
+    // warehouse's guards, whom a script battles; Looker, who takes the player into the warehouse (plan 02 · S8)
+    "counterpart": { "name": "{assistant}", "npcType": "Assistant", "script": "Assistant" },
+    "crasher_wake": { "name": "Crasher Wake", "dialog": [ "Crasher Wake: Wahahaha! See you in my ring!" ] },
+    "grunt_m_warehouse_north": {
+      "name": "Grunt",
+      "script": "GruntNorth",
+      "trainer": { "id": "galactic_grunt_veilstone_city_1",
+        "dialogueBefore": "Galactic Grunt: Two on two, is it? You'll both be crying in a minute!",
+        "dialogueAfter": "Galactic Grunt: Our Pokémon are rubbish!" }
+    },
+    "grunt_m_warehouse_south": {
+      "name": "Grunt",
+      "script": "GruntSouth",
+      "trainer": { "id": "galactic_grunt_veilstone_city_2",
+        "dialogueBefore": "Galactic Grunt: Finally, something to do! Let's go!",
+        "dialogueAfter": "Galactic Grunt: That's it. I'm asking for a transfer." }
+    },
+    "grunt_m_southeast": {
+      "name": "Grunt",
+      "dialog": [
+        "Galactic Grunt: There's an HM for Fly in our warehouse. I'm next in line for it...",
+        "...once I've impressed the higher-ups. Which could take a while, to be honest."
+      ]
+    },
+    "looker": { "name": "Looker", "dialog": [ "Looker: That warehouse... I would very much like to see inside." ] },
     "guitarist_1": {
       "name": "Guitarist",
       "dialog": [
-        "The cliffs all round this city keep the wind off.",
-        "Best place in Sinnoh to play outdoors, if you ask me. Listen to that echo!"
+        "Ever wondered what Team Galactic keep behind those warehouse doors?",
+        "Rumour has it one of the boxes holds an HM. I'd write a song about it if I knew which one!"
       ]
     },
     "pokefan_m": {
@@ -67,13 +101,8 @@
         "Me? I'm saving up for a new set of strings."
       ]
     },
-    "roughneck_2": {
-      "name": "Tough Guy",
-      "dialog": [
-        "Everyone in this city is training at something.",
-        "Even my old gran does press-ups on the doorstep every morning."
-      ]
-    },
+    // He gives TM63 (plan 02 · S8)
+    "roughneck_2": { "name": "Tough Guy", "script": "Roughneck2" },
     "battle_girl_3": {
       "name": "Girl",
       "dialog": [

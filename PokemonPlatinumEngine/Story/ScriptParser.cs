@@ -20,7 +20,7 @@ namespace PokemonPlatinumEngine.Story;
 public static class ScriptParser
 {
     /// <summary>Variables a script may read but not write: the game keeps them.</summary>
-    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN" };
+    public static readonly string[] BuiltInVariables = { "RESULT", "PLAYER_X", "PLAYER_Y", "MONEY", "PARTY_COUNT", "BADGE_COUNT", "GREETINGS", "SEEN", "LEAD_FRIENDSHIP" };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
     private static readonly Regex FlagName = new("^(FLAG_[A-Z0-9_]+|[A-Z][A-Za-z]+HallOfFame)$", RegexOptions.Compiled);
@@ -424,6 +424,21 @@ public static class ScriptParser
                 string trade = r.Word("a trade");
                 if (Models.NpcTrades.Get(trade) == null) throw r.Error($"'{trade}' is no trade (NpcTrades)");
                 return new Instruction { Op = Op.Trade, Line = line, Name = trade };
+            }
+
+            // Poffins (plan 06 · R14c): can the player cook, cook, is there room, and a Poffin given
+            case "poffin":
+            {
+                string what = r.OneOf("check", "cook", "room", "give");
+                if (what != "give") return new Instruction { Op = Op.Poffin, Line = line, Name = what };
+                var numbers = new List<int>();
+                for (int k = 0; k < 6; k++)
+                {
+                    int n = r.Int(k < 5 ? "a flavour, 0 to 255" : "a smoothness, 0 to 255");
+                    if (n is < 0 or > 255) throw r.Error($"{n} is no byte: a Poffin's flavours and smoothness are 0 to 255");
+                    numbers.Add(n);
+                }
+                return new Instruction { Op = Op.Poffin, Line = line, Name = what, Numbers = numbers };
             }
 
             case "script":

@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Story;
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -230,4 +230,9 @@ public interface IScriptHost
 
     /// <summary>The item the bag chose last for <c>chooseitem</c> (<see cref="ScriptScreen.ChooseItem"/>); null for none.</summary>
     string? ChosenItem { get; }
+
+    // ------------------------------------------------------------------ Poffins (plan 06 · R14c)
+
+    /// <summary>The player's Poffin Case.</summary>
+    PoffinCase Poffins { get; }
 }

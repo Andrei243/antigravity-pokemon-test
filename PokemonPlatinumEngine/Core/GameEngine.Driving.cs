@@ -52,6 +52,7 @@ public partial class GameEngine
         public Poketch Poketch => game.poketch;
         public SpecialEncounters Encounters => game.encounters;
         public BerryPatches Berries => game.berries;
+        public PoffinCase Poffins => game.poffinCase;
         public RadarChain Radar => game.radar;
         public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }
 
@@ -85,6 +86,8 @@ public partial class GameEngine
         public OptionsScreen Options => game.optionsScreen;
         public WardrobeScreen WardrobeScreen => game.wardrobeScreen;
         public FlyScreen FlyScreen => game.flyScreen;
+        public PoffinCookingScreen Cooking => game.cookingScreen;
+        public PoffinCaseScreen PoffinCaseScreen => game.poffinCaseScreen;
         public PoketchView PoketchView => game.poketchView;
         public PoketchContext PoketchContext => game.PoketchNow();
 

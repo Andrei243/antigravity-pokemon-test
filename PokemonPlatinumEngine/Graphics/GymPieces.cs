@@ -38,6 +38,9 @@ internal sealed class GymPieces
     private readonly Piece?[] decks = new Piece?[CanalaveLifts.Floors];
     private readonly Dictionary<CanalaveLifts.Kind, Piece> platforms = new();
 
+    // The Snowpoint Gym's: a snowball's card, drawn on the tile of each one standing
+    private Piece? snowball;
+
     /// <summary>The height the player stands at, for a puzzle that hides what is above them.</summary>
     private float viewer;
 
@@ -68,6 +71,13 @@ internal sealed class GymPieces
 
     private IEnumerable<(Piece Piece, Matrix4x4 Transform)> Placed(Map map)
     {
+        if (snowball != null)
+        {
+            // The snowballs still standing, each on its tile; a broken one is off the map until the player comes in again
+            foreach (var npc in map.NPCs)
+                if (npc.IsSnowball) yield return (snowball, Matrix4x4.CreateTranslation(npc.GridX, Relief.At(map, npc.GridX + 0.5f, npc.GridY + 0.5f), npc.GridY));
+            yield break;
+        }
         if (map.Name.StartsWith(HearthomeDoors.Entrance, StringComparison.Ordinal))
         {
             if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
@@ -127,7 +137,8 @@ internal sealed class GymPieces
     private bool Ready(Map map)
     {
         bool hearthome = map.Name.StartsWith(HearthomeDoors.Entrance, StringComparison.Ordinal) && map.IsIndoors;
-        if (map.Puzzle == null && !hearthome) return false;
+        bool snowy = map.Puzzle == null && map.IsIndoors && map.Everyone.Any(n => n.IsSnowball);
+        if (map.Puzzle == null && !hearthome && !snowy) return false;
         if (builtFor == map) return true;
         Unload();
         builtFor = map;
@@ -135,6 +146,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
         else if (hearthome) BuildHearthome(map);
+        else if (snowy) BuildSnowpoint(map);
         return true;
     }
 
@@ -659,6 +671,23 @@ internal sealed class GymPieces
             }
     }
 
+    // ------------------------------------------------------------------ the Snowpoint Gym
+
+    /// <summary>
+    /// The Snowpoint Gym (style guide, "Gyms"): a snowball is a card of the scenery, lit as the ice it stands on is
+    /// (<see cref="KitBuilder.CardNormal"/>), so it reads as the snow it is; a sprite's warmer light greyed it. The
+    /// snowballs stay things of the map (their rules are the ice's, <see cref="IceSlide"/>); only their picture is here.
+    /// </summary>
+    private void BuildSnowpoint(Map map)
+    {
+        var sheet = new ArtSheet();
+        var kit = new KitBuilder(sheet, MapScene.VerticalScaleOf(map));
+        kit.Origin = Vector3.Zero;
+        kit.Sprite(kit.Face("snowball", 30, 30, GymArt.PaintSnowball), GroundBaker.ArtTile / 2f, ThingCards.FootOf(PropType.Snowball) * GroundBaker.ArtTile);
+        art = Upload(sheet);
+        snowball = Make(kit);
+    }
+
     // ------------------------------------------------------------------ the GPU
 
     private Texture2D Upload(ArtSheet sheet)
@@ -701,6 +730,7 @@ internal sealed class GymPieces
         buttons.Clear();
         Array.Clear(decks);
         platforms.Clear();
+        snowball = null;
         rafts.Clear();
         clues.Clear();
     }

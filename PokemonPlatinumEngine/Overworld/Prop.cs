@@ -46,6 +46,8 @@ public enum PropType
     Wardrobe,
     /// <summary>A rail of clothes on hangers, as wide as its tiles: what a boutique shows (plan 11 · C10).</summary>
     ClothesRack,
+    /// <summary>A table under a checked cloth with a pot on its burner in the middle: where Poffins are cooked (the Poffin House, plan 06 · R14c).</summary>
+    CookingTable,
 
     // Outdoors: a rock too big to step over, on land or standing in water
     Boulder,
@@ -135,6 +137,8 @@ public enum PropType
     TireStack,
     /// <summary>A post in the way out of the Hearthome Gym's Leader's room, gone once she is beaten.</summary>
     Bollard,
+    /// <summary>A great ball of packed snow on the Snowpoint Gym's ice, broken by sliding into it fast enough.</summary>
+    Snowball,
 
     // Decoration: floor rugs and things hung on the back wall, never solid
     Rug,
