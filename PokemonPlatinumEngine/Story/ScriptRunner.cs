@@ -47,6 +47,12 @@ public sealed class ScriptRunner
     private Pokemon? ownPokemon;
     private string lastUser = "";
 
+    // What the last word on a berry patch and the lottery came to (plan 06 · R14a): {berry}, {berries}, {mulch},
+    // {lotterymon}
+    private string lastBerry = "", lastMulch = "";
+    private int lastYield;
+    private Lottery.Match lastLottery;
+
     public ScriptRunner(ScriptLibrary library, IScriptHost host)
     {
         this.library = library;
@@ -263,17 +269,8 @@ public sealed class ScriptRunner
             {
                 // Handed over or picked up: the same fanfare and the same putting away, in other words
                 var (item, count) = Given(i);
-                host.Bag.AddItem(item, count);
-                lastItem = item.Name;
-                host.Fanfare(FanfareFor(item));
                 // A ball picked up off the ground is a line of the Journal (scripts_visible_items.s); a gift or a hidden find isn't
-                if (i.Op == Op.Find && Subject?.IsItemBall == true) host.Note(new JournalEvent(JournalEventKind.ItemWasObtained, item.Name));
-                string verb = i.Op == Op.Find ? "found" : "received";
-                var lines = new List<string> { count == 1 ? $"{{player}} {verb} the {item.Name}!" : $"{{player}} {verb} {count} × {item.Name}!" };
-                // A TM or an HM says what it holds
-                if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add($"{item.Name} holds the move {item.TeachesMove}.");
-                lines.Add($"{{player}} put {(count == 1 ? "it" : "them")} away in the {PocketName(item.Pocket)} pocket.");
-                host.Say(null, lines);
+                Hand(item, count, i.Op == Op.Find ? "found" : "received", journal: i.Op == Op.Find && Subject?.IsItemBall == true);
                 break;
             }
             case Op.AddItem:
@@ -583,6 +580,24 @@ public sealed class ScriptRunner
                 break;
             }
 
+            // The day's events, berries and the lottery (plan 06 · R14a)
+            case Op.Berry:
+                Berry(i);
+                break;
+            case Op.ChooseItem:
+                // OpenBerriesBag / OpenItemsBag, then GetSelectedItem: RESULT 1 and {item} the one picked, 0 backed out
+                host.Open(ScriptScreen.ChooseItem, Subject, i.Name);
+                afterBusy = () =>
+                {
+                    var picked = ItemDatabase.ById(host.Answer);
+                    Result = picked != null ? 1 : 0;
+                    if (picked != null) lastItem = picked.Name;
+                };
+                break;
+            case Op.Lottery:
+                LotteryCorner(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -629,6 +644,132 @@ public sealed class ScriptRunner
         new($"{script?.File ?? "?"}.txt({at.Line}): {what}.");
 
     private ItemData ItemOf(Instruction i) => ItemDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no item '{i.Name}'");
+
+    /// <summary>
+    /// Puts an item in the bag with its fanfare and the lines that say so (<c>give</c>, <c>find</c>, a lottery's
+    /// prize): "received" or "found", what a TM or an HM holds, and the pocket it went into.
+    /// </summary>
+    private void Hand(ItemData item, int count, string verb, bool journal = false)
+    {
+        host.Bag.AddItem(item, count);
+        lastItem = item.Name;
+        host.Fanfare(FanfareFor(item));
+        if (journal) host.Note(new JournalEvent(JournalEventKind.ItemWasObtained, item.Name));
+        var lines = new List<string> { count == 1 ? $"{{player}} {verb} the {item.Name}!" : $"{{player}} {verb} {count} × {item.Name}!" };
+        // A TM or an HM says what it holds
+        if (!string.IsNullOrEmpty(item.TeachesMove)) lines.Add($"{item.Name} holds the move {item.TeachesMove}.");
+        lines.Add($"{{player}} put {(count == 1 ? "it" : "them")} away in the {PocketName(item.Pocket)} pocket.");
+        host.Say(null, lines);
+    }
+
+    /// <summary>The berry patch the script belongs to: the soft soil spoken to, or faced as the bag was used.</summary>
+    private int PatchOf(Instruction i) =>
+        Subject?.Patch ?? throw Wrong(i, "this script belongs to no patch of soft soil");
+
+    /// <summary>The item a line plants or lays: the script's own (one used from the bag), or the one chosen last (<c>chooseitem</c>).</summary>
+    private ItemData? Sown(Instruction i) => i.Own ? Given(i).Item : ItemDatabase.Get(lastItem);
+
+    /// <summary>
+    /// A word on the berry patch the script belongs to (plan 06 · R14a; <c>scrcmd_berry.c</c>): what grows there,
+    /// how wet the soil is, planting, mulch, watering and picking. What is planted or laid comes out of the bag here.
+    /// </summary>
+    private void Berry(Instruction i)
+    {
+        int patch = PatchOf(i);
+        var patches = host.Berries;
+        var p = patches[patch] ?? throw Wrong(i, $"there is no berry patch {patch}");
+        switch (i.Name)
+        {
+            case "status":
+                // GetBerryGrowthStage, GetBerryItemID, GetBerryYield, GetBerryMulchType
+                Result = (int)p.Stage;
+                lastBerry = p.Berry ?? "";
+                lastYield = p.Yield;
+                lastMulch = BerryPatches.NameOf(p.Mulch) ?? "";
+                break;
+            case "moisture":
+                Result = (int)patches.MoistureOf(patch);
+                break;
+            case "mulched":
+                // GetBerryMulchType, asked as the soil's own question: 1 when mulch is down
+                Result = p.Mulch != Mulch.None ? 1 : 0;
+                lastMulch = BerryPatches.NameOf(p.Mulch) ?? "";
+                break;
+            case "plant":
+            {
+                // PlantBerry, with the RemoveItem before it: nothing happens where nothing can be planted
+                Result = 0;
+                if (Sown(i) is not { } berry || !BerryPatches.CanPlant(berry) || !patches.IsEmpty(patch) || !host.Bag.RemoveItem(berry, 1)) break;
+                patches.Plant(patch, berry.Name);
+                lastBerry = lastItem = berry.Name;
+                Result = 1;
+                break;
+            }
+            case "mulch":
+            {
+                // SetBerryMulch, with the RemoveItem before it
+                Result = 0;
+                if (Sown(i) is not { } mulch || BerryPatches.MulchOf(mulch) is var kind && kind == Mulch.None
+                    || !patches.CanMulch(patch) || !host.Bag.RemoveItem(mulch, 1)) break;
+                patches.LayMulch(patch, kind);
+                lastMulch = lastItem = mulch.Name;
+                Result = 1;
+                break;
+            }
+            case "water":
+                // The Sprayduck's watering (BerryPatches_ResetMoisture)
+                Result = patches.HasBerry(patch) ? 1 : 0;
+                patches.Water(patch);
+                break;
+            default:
+            {
+                // HarvestBerry: the berries into the bag, and a point on the Trainer Card
+                var (berry, count) = patches.Pick(patch);
+                Result = count;
+                if (berry == null || count == 0) break;
+                host.Bag.AddItem(ItemDatabase.Get(berry) ?? throw Wrong(i, $"there is no item '{berry}'"), count);
+                host.AddScore(TrainerScore.BerryHarvested);
+                lastBerry = lastItem = berry;
+                lastYield = count;
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// A word on Jubilife TV's lottery (plan 06 · R14a; <c>scrcmd_jubilife_lottery.c</c>): the day's number against the
+    /// trainer IDs of the team and the PC, whether the best match is in the PC, and its prize.
+    /// </summary>
+    private void LotteryCorner(Instruction i)
+    {
+        switch (i.Name)
+        {
+            case "check":
+                lastLottery = Models.Lottery.Check(host.Story.Var(Models.Lottery.NumberVar), host.Party.Members, host.Stored, (int)(host.TrainerNumber & 0xffff));
+                Result = lastLottery.Digits;
+                break;
+            case "boxed":
+                Result = lastLottery.InBox ? 1 : 0;
+                break;
+            default:
+            {
+                // The prize of the last check, handed over with its fanfare as the corner's Common_GiveItemQuantity does
+                Result = 0;
+                if (Models.Lottery.PrizeFor(lastLottery.Digits) is not { } prize) break;
+                Hand(ItemDatabase.Get(prize) ?? throw Wrong(i, $"there is no item '{prize}'"), 1, "received");
+                Result = 1;
+                break;
+            }
+        }
+    }
+
+    /// <summary>"an Oran Berry" or "3 Oran Berries": a count of berries in words.</summary>
+    public static string Berries(string berry, int count)
+    {
+        if (berry.Length == 0) return "";
+        if (count != 1) return $"{count} {(berry.EndsWith('y') ? berry[..^1] + "ies" : berry + "s")}";
+        return ("AEIOU".Contains(char.ToUpperInvariant(berry[0])) ? "an " : "a ") + berry;
+    }
 
     /// <summary>The item a line gives and how many: the one it names, or the script's own.</summary>
     private (ItemData Item, int Count) Given(Instruction i)
@@ -717,6 +858,10 @@ public sealed class ScriptRunner
             Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),
+            // GetDayOfWeek (plan 06 · R14a): the Valley Windworks' Drifloon comes on Fridays
+            Query.Weekday => host.Today.DayOfWeek.ToString() == c.Name,
+            // CheckPocketHasItems
+            Query.Pocket => host.Bag.GetPocketItems(Enum.Parse<ItemPocket>(c.Name)).Count > 0,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -760,6 +905,13 @@ public sealed class ScriptRunner
             "swarm" => Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "trophygarden" => TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden) ?? "",
+            // A berry patch's last word (plan 06 · R14a): its berry, its berries counted ("an Oran Berry", "3 Oran
+            // Berries"), its mulch; the lottery's number of the day in five digits, and the Pokémon its last check matched
+            "berry" => lastBerry,
+            "berries" => Berries(lastBerry, lastYield),
+            "mulch" => lastMulch,
+            "lottery" => host.Story.Var(Models.Lottery.NumberVar).ToString("D5"),
+            "lotterymon" => lastLottery.Pokemon?.Nickname ?? "",
             _ => match.Value
         };
     }) : text;

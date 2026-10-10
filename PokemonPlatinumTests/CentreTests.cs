@@ -239,4 +239,29 @@ public class CentreTests
         Assert.Equal(record.Party.Select(p => (p.Species, p.Level)), jack.TrainerData!.Party.Members.Select(p => (p.Species.Name, p.Level)));
         Assert.Equal(record.PrizeMoney, jack.TrainerData.PrizeMoney);
     }
+
+    // ------------------------------------------------------------------ soft soil (plan 06 · R14a)
+
+    [Fact]
+    public void SoftSoilIsABerryPatchOfTheOriginalsNumber()
+    {
+        var soil = BuiltMaps.Value.Values.SelectMany(m => m.Everyone.Where(n => n.IsBerryPatch).Select(s => (Map: m, Soil: s))).ToList();
+        // Every open area's soil objects (Floaroma Town's two and four in each of the 21 other places with soil), each with its
+        // own number of the original's 128 (the object's first datum; Floaroma's west patch writes none, so 0)
+        string where = string.Join(", ", soil.GroupBy(s => AreaKey(s.Map, s.Soil.GridX, s.Soil.GridY)).Select(g => $"{g.Key} {g.Count()}"));
+        Assert.True(soil.Count >= 86, $"only {soil.Count} patches of soft soil: {where}");
+        Assert.Equal(soil.Count, soil.Select(s => s.Soil.Patch).Distinct().Count());
+        Assert.All(soil, s => Assert.InRange(s.Soil.Patch!.Value, 0, BerryPatches.Count - 1));
+        var floaroma = soil.Where(s => AreaKey(s.Map, s.Soil.GridX, s.Soil.GridY) == "floaroma_town").OrderBy(s => s.Soil.GridX).ToList();
+        Assert.Equal(new int?[] { 0, 1 }, floaroma.Select(s => s.Soil.Patch));
+        // Each is a thing of the map, spoken to through the common script, on a tile of bare earth: the soil's own
+        // behaviour but for Floaroma's east patch, whose tile the original leaves plain (under the flower shop's model)
+        Assert.All(soil, s =>
+        {
+            Assert.True(s.Soil.IsThing);
+            Assert.Equal(PokemonPlatinumEngine.Story.FieldScripts.BerryPatch, PokemonPlatinumEngine.Story.FieldScripts.For(s.Soil));
+            Assert.Equal(TileType.Dirt, s.Map.GetGroundTile(s.Soil.GridX, s.Soil.GridY));
+        });
+        Assert.Equal(soil.Count - 1, soil.Count(s => s.Map.BehaviourAt(s.Soil.GridX, s.Soil.GridY) == TileBehavior.BerrySoil));
+    }
 }

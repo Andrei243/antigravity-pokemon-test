@@ -408,7 +408,8 @@ public class WorldTests
                 people++;
                 string who = $"{map.Name}: {npc.Name} at ({npc.GridX},{npc.GridY})";
                 Assert.True(map.AreaAt(npc.GridX, npc.GridY)?.Open, $"{who} stands outside the open areas");
-                Assert.False(map.IsSolid(npc.GridX, npc.GridY), $"{who} stands in something solid");
+                // (Soft soil is in the way itself, and the original blocks the tiles of some of it too: plan 06 · R14a)
+                Assert.False(map.IsSolid(npc.GridX, npc.GridY) && !npc.IsBerryPatch, $"{who} stands in something solid");
                 // Someone on a bridge's deck may stand over a way in on the ground beneath (the Cycling Road over Wayward Cave's),
                 // and someone the story sends away may stand in a doorway until it does (Floaroma's grunts at the meadow's)
                 Assert.True(map.GetWarpAt(npc.GridX, npc.GridY) == null || npc.Level is { } level && level - map.HeightAt(npc.GridX, npc.GridY) >= FieldMovement.StepLimit

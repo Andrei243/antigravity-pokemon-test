@@ -109,5 +109,8 @@ public static class TrainerScore
     public const int WonWildBattle = 2, CaughtRegional = 2, CaughtNational = 3, WonTrainerBattle = 3,
         CaughtNewSpecies = 20, Badge = 30, HallOfFame = 35;
 
+    /// <summary>A plant's berries picked (<c>TRAINER_SCORE_EVENT_BERRY_HARVESTED</c>, plan 06 · R14a).</summary>
+    public const int BerryHarvested = 1;
+
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }

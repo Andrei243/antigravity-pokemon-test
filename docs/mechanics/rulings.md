@@ -517,6 +517,38 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | Who is where | The Pokétch's marking map shows the roamers; the TV tells of swarms | Neither yet | The Pokétch's map is plan 06 · R14's, the TV plan 08's |
 | Poison by the modern rules | Generation 5 on: poison does nothing outside battle | So (`Ruleset.PoisonInTheField`) | The modern preset's ruling |
 
+## The day's events, berries and the lottery (2026-10-10, plan 06 · R14a)
+
+**Platinum's rules, kept as they are** (`src/unk_020559DC.c`, `src/field_system.c`, `src/berry_patches.c`, `src/berry_patch_manager.c`, `include/data/berry_init.h`, `res/items/data/`, `src/scrcmd_berry.c`, `res/field/scripts/scripts_berry_tree_interaction.s`, `src/scrcmd_jubilife_lottery.c`, `src/system_vars.c`, `res/field/scripts/scripts_jubilife_tv_1f.s`, `scripts_init_new_game.s`, `scripts_valley_windworks_outside.s`)
+
+- **A new day** (`FieldSystem_HandleDailyEvents`), once for any number of days passed, in its order: the daily flags (`FLAG_DAILY_...`) cleared; the record-mixing group's number moved on, with the Great Marsh's and the swarm's (R13); a day off Pokérus for each day; the Solaceon News Press's deadline counted down, never under nothing; the lottery's number of the day; a new level of the day, 2 to 99 (`VAR_DAILY_RANDOM_LEVEL`); and the hidden items that come back: two draws among Iron Island's four Star Pieces, each brought back unless the player is in its room, then, unless the player is in Floaroma Meadow, two draws among its six Honeys (a draw can fall twice on the same one). A clock turned back counts nothing.
+- **The minutes** (`sub_02055B64`) since the clock was last read go to the berry patches and then to the honey trees.
+- **Berry patches** (`BerryPatches_*`): 128 patches by the original's numbers. A stage lasts the berry's hours (three quarters with Growth Mulch, half as long again with Damp Mulch). The soil drinks the berry's drain an hour (half with Damp Mulch, half as much again with Growth Mulch), counted by whole hours with the minutes short of one kept for the next, and never while the plant is in fruit; every hour spent bone dry costs a point of the yield rating (out of 5). Coming into fruit, a plant bears its berry's yield for each point of its rating, two at the least. It stays in fruit four stages (six with Stable Mulch), then drops its berries and seeds itself again with its rating whole, ten times (fifteen with Gooey Mulch), and then is gone; a patch whose whole life has passed is empty at once. Planting and watering set the soil's moisture to 100; very dry is nothing, dry up to half, moist above. Picking empties the patch, mulch and all, and counts a point on the Trainer Card.
+- **What a new game finds growing** (`sBerryInitTable`): a plant in fruit in each of the table's patches with its number of berries, its rating 3 and its soil moist. None of them grows until the player has seen it (the original asks, as the player comes into a place, which patches the screen shows: eight tiles either side and six up and down), so the first crop waits for the player.
+- **Facing soft soil** (`BerryTree_Main`): what grows is told from any side and its fruit picked; planting, laying mulch and the Sprayduck's water are offered facing the soil from the south (`GetPlayerDir` 0), and a Berry is offered for soil with mulch on it from anywhere, as the original's script does. A Berry, a mulch and the Sprayduck used from the bag work on the patch ahead (the script's entries 1 to 3); elsewhere the bag says they can't be used here.
+- **The lottery** (`ScrCmd_CheckForJubilifeLotteryWinner`): the trainer ID of every Pokémon on the team and in the PC, 16 bits of it, matched against the day's number from the last digit up to the first that differs; the most digits on the team and in the PC are compared and the team wins a tie. One digit is an Ultra Ball, two a PP Up, three an Exp. Share, four a Max Revive and five the Master Ball, one prize a day, and the number can be looked at again until one is won. **The number shown is the high half of what was drawn**: the original means to keep 32 bits in two variables but writes both halves into `VAR_LOTTERY_TRAINER_ID_LOW_HALF`, the high half last, and the script reads that one. A new game's is the second of two 16-bit draws; each new day's is the group's number once round the general generator with the lottery's increment (× 1,103,515,245 + 12,345).
+- **The Valley Windworks' Drifloon** comes on Fridays once the windworks are free (`VAR_VALLEY_WINDWORKS_STATE` 2 or more), at level 15, until a battle with it on that day (`FLAG_DAILY_WON_AGAINST_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON`).
+
+**Our own choices**
+
+- The lines of the soft soil, the Sprayduck, the mulches, the lottery corner and the Drifloon are our own words.
+- The day's draws (the level of the day, the hidden items that come back) and a new game's lottery number come from the field's chance (`Dice`), as R13's day's number does; a game saved before the day's events is given a number and a level as it loads (`StoryMigration`, version 7).
+- The original's table of first crops has 119 rows and its loop reads past them for patches 119 to 127; no soil of the map uses those, and here they start empty.
+- A plant is drawn by its stage, coloured by its strongest flavour (spicy red, dry blue, sweet pink, bitter green, sour yellow) on a mound coloured by its soil's moisture (style guide, "Berry plants"). The original has a sprite of its own for each berry.
+- A Berry or a mulch is chosen from the bag opened on its pocket alone, under a title that asks for it ("PLANT WHICH BERRY?"), where the original opens a bag of its own.
+
+**Stand-ins for what this game lacks**
+
+| What | The original | Here | Why |
+| --- | --- | --- | --- |
+| The clock the day's events read | The DS's real-time clock, against the save's own | `GameClock` | `WallClock`, the one reader of real time, is plan 24 · X1's (wave 2) |
+| A Pokémon's trainer ID for the lottery | `MON_DATA_OT_ID`, every Pokémon's own | The trainer it came from (`Pokemon.OriginalTrainer`), or the card's number for the player's own | Pokémon carry no ID of their own until plan 07 · O2 (`Lottery.IdOf`) |
+| The lottery's counter | The woman at Jubilife TV's ground floor | `common.Lottery` is ready and nobody runs it yet | The TV's rooms are plan 01 · M11's |
+| A prize with no room | Kept back (`VAR_LOTTERY_PRIZE_ITEM`) for the next visit | Always handed over | The bag holds anything |
+| Who gives mulch, the Sprayduck and Berries | Floaroma's flower shop, the Berry Master's house, people of Routes 208 and 210 | Nobody yet; they are items of the data and work from the bag | Their rooms are plan 01 · M11's |
+| The other daily events | The Underground's, the badges' dust, the Villa's visitor, the Battle Tower's, the Geonet's and the TV's | Not run | Their places are R16's, the Trainer Card's badges, plan 08's |
+| The Pokétch's berry searcher | An app that marks the patches in fruit | Not yet | Plan 06 · R14b |
+
 ## The third chapter, second half (2026-10-07, plan 02 · S6)
 
 **Platinum's rules, kept as they are** (`res/field/scripts/scripts_eterna_city.s`, `scripts_team_galactic_eterna_building_1f.s` to `_4f.s`, `scripts_cycle_shop.s`, `scripts_eterna_city_underground_man_house.s`, `scripts_eterna_city_pokecenter_1f.s`, `scripts_eterna_forest.s`, `scripts_eterna_city_gym.s`, `src/map_object.c`)

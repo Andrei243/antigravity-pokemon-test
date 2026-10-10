@@ -1293,6 +1293,27 @@ public sealed partial class Importer
         item.BattleUse = Named("battleUseCategory", "BATTLE_USE_CATEGORY_");
         item.BattlePocket = Named("battlePocket", "BATTLE_POCKET_MASK_");
         if (hold == "HOLD_EFFECT_NONE") item.EffectParam = d.GetProperty("effectParam").GetInt32();
+        // A berry's growing and flavours (plan 06 · R14a): the numbers of the original's berry table, the firmness by
+        // the order of its FIRMNESS_ constants (berry_data.h)
+        if (d.TryGetProperty("berryData", out var berry) && berry.ValueKind == JsonValueKind.Object)
+            item.Berry = new BerryData
+            {
+                Size = berry.GetProperty("size").GetInt32(),
+                Firmness = berry.GetProperty("firmness").GetString() switch
+                {
+                    "FIRMNESS_VERY_SOFT" => 1, "FIRMNESS_SOFT" => 2, "FIRMNESS_HARD" => 3, "FIRMNESS_VERY_HARD" => 4, "FIRMNESS_SUPER_HARD" => 5,
+                    var other => throw new InvalidDataException($"{name}: unknown firmness {other}")
+                },
+                Yield = berry.GetProperty("baseYield").GetInt32(),
+                StageHours = berry.GetProperty("stageDuration").GetInt32(),
+                Drain = berry.GetProperty("moistureDrainRate").GetInt32(),
+                Spicy = berry.GetProperty("spiciness").GetInt32(),
+                Dry = berry.GetProperty("dryness").GetInt32(),
+                Sweet = berry.GetProperty("sweetness").GetInt32(),
+                Bitter = berry.GetProperty("bitterness").GetInt32(),
+                Sour = berry.GetProperty("sourness").GetInt32(),
+                Smoothness = berry.GetProperty("smoothness").GetInt32()
+            };
         if (p.ValueKind == JsonValueKind.Object)
         {
             var use = new Dictionary<string, int>();

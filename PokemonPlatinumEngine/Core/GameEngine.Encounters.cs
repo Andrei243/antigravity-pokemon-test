@@ -165,18 +165,4 @@ public partial class GameEngine
             Roamers.AfterBattle(encounters, foe, won, caught, PlaceKey(), story, fieldRandom);
         radar.AfterBattle(won && !defeat, caught, fieldRandom);
     }
-
-    /// <summary>
-    /// The clock's part (<c>FieldSystem_HandleDailyEvents</c> and the minutes after it): each new day moves the day's
-    /// number on and clears the story's daily flags, and the honey trees count the minutes.
-    /// </summary>
-    private void KeepTheEncounterClock(int daysPassed)
-    {
-        if (daysPassed > 0)
-        {
-            encounters.DaysPass(daysPassed);
-            story.ClearDaily();
-        }
-        encounters.ClockTo(GameClock.Moment);
-    }
 }

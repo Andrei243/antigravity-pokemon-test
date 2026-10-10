@@ -278,6 +278,12 @@ public sealed class WorldRenderer
     /// </summary>
     internal List<(int X, int Y, bool Hard)> Stirring { get; } = new();
 
+    /// <summary>
+    /// What grows in the soft soil (plan 06 · R14a): each patch of the map is drawn as its plant (<see cref="BerryArt"/>).
+    /// The game hands its own over as a game begins or is loaded; null draws bare soil.
+    /// </summary>
+    internal Models.BerryPatches? Berries { get; set; }
+
     // How far the light has gone over to snow country's (0 to 1), the field clock when it was last eased, and the map
     private float snowMix;
     private double snowClock;
@@ -835,10 +841,21 @@ public sealed class WorldRenderer
         actors.Clear();
         mount = null;
         things.Clear();
+        plants.Clear();
         pokemon.Clear();
         foreach (var npc in map.NPCs)
         {
             if (npc.IsPCTerminal || !InSight(npc)) continue;
+            if (npc.IsBerryPatch)
+            {
+                // Soft soil shows what grows in it, on the middle of its tile; bare, it is only the ground's earth
+                if (PlantOf(npc) is { } plant)
+                {
+                    float bx = npc.DrawX + 0.5f, bz = npc.DrawY + 0.5f;
+                    plants.Add((new Vector3(bx, Relief.At(map, bx, bz), bz), plant));
+                }
+                continue;
+            }
             if (npc is { IsPokemon: true, Species: { } species })
             {
                 // A Pokémon of the map stands on its tile as a person does; on the move it hops a texel or two
@@ -941,6 +958,23 @@ public sealed class WorldRenderer
             if (!thingCards.TryGetValue(kind, out var card)) thingCards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind));
             CharacterSprites.DrawCard(card, at, VerticalScale, pass);
         }
+        foreach (var (at, plant) in plants)
+        {
+            if (!plantCards.TryGetValue(plant, out var card) && BerryArt.Paint(plant.Stage, plant.Flavour, plant.Moisture) is { } art)
+                plantCards[plant] = card = CharacterSprites.MakeCard(context, art);
+            if (card != null) CharacterSprites.DrawCard(card, at, VerticalScale, pass);
+        }
+    }
+
+    // The berry plants in view (plan 06 · R14a) and the card of each stage, flavour and soil, made the first time one shows
+    private readonly List<(Vector3 At, (Models.BerryStage Stage, BerryArt.Flavour Flavour, Models.SoilMoisture Moisture) Plant)> plants = new();
+    private readonly Dictionary<(Models.BerryStage Stage, BerryArt.Flavour Flavour, Models.SoilMoisture Moisture), CharacterSprites.Card> plantCards = new();
+
+    /// <summary>What a patch of soft soil shows: its plant's stage, the berry's flavour and the soil's moisture; null when nothing grows there.</summary>
+    private (Models.BerryStage Stage, BerryArt.Flavour Flavour, Models.SoilMoisture Moisture)? PlantOf(NPC soil)
+    {
+        if (Berries == null || soil.Patch is not { } patch || Berries[patch] is not { Stage: not Models.BerryStage.None } p) return null;
+        return (p.Stage, BerryArt.FlavourOf(Models.BerryPatches.GrowthOf(p.Berry)), Berries.MoistureOf(patch));
     }
 
     private void DrawActors(CharacterPass pass)
@@ -1206,8 +1240,9 @@ public sealed class WorldRenderer
 
         foreach (var npc in map.NPCs)
         {
-            // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
-            if (!npc.IsPCTerminal && InSight(npc))
+            // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller; soft
+            // soil has none, its plant's leaves shade it)
+            if (!npc.IsPCTerminal && !npc.IsBerryPatch && InSight(npc))
                 Blob(npc.DrawX + 0.5f, npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
                     npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : npc.IsPokemon ? 0.75f : 1f);
         }

@@ -99,18 +99,22 @@ public sealed class SpecialEncounters
         MarshDaily = SwarmDaily = DailyNumber;
     }
 
-    /// <summary>The clock has moved on to <paramref name="now"/>: the honey trees count the whole minutes since it was last read. A clock turned back counts nothing.</summary>
-    public void ClockTo(DateTime now)
+    /// <summary>
+    /// The clock has moved on to <paramref name="now"/>: the whole minutes since it was last read, which the honey
+    /// trees and the berry patches count (<see cref="DailyEvents.MinutesPass"/>; the original's game clock, whose
+    /// minutes <c>inline_020559DC</c> hands on). The first reading and a clock turned back count nothing.
+    /// </summary>
+    public int ClockTo(DateTime now)
     {
         if (Clock is { } before && now > before)
         {
             int minutes = (int)Math.Min(int.MaxValue, (now - before).TotalMinutes);
-            if (minutes <= 0) return;
-            Overworld.HoneyTrees.MinutesPass(this, minutes);
+            if (minutes <= 0) return 0;
             Clock = before.AddMinutes(minutes);
-            return;
+            return minutes;
         }
         Clock = now;
+        return 0;
     }
 
     /// <summary>The player has come to another place (<c>SpecialEncounter_UpdateRecentRoutes</c>): the one they were in becomes the one before.</summary>

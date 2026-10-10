@@ -107,16 +107,18 @@ public static class Coverage
     /// <summary>
     /// What using it from the bag outside a battle does (plan 06 · R11): the field's own uses (the Bicycle, the rods,
     /// an Escape Rope, a Repel, a flute, Sacred Ash), teaching a TM or an HM, evolving, the Gracidea, and an item used
-    /// on a Pokémon by the parameters above. A berry is also planted in soil, which waits for berry soil (R14).
+    /// on a Pokémon by the parameters above. A berry is also planted in soft soil (R14a: every one of Platinum's 64,
+    /// which have the berry table's growing numbers), and the mulches and the Sprayduck are used on it.
     /// </summary>
     private static Works FieldUseOf(ItemData item)
     {
         if (BagScreen.UsedInField(item) || BagScreen.UsedInBag(item) || MoveTeaching.IsMachine(item) || item.FieldUse == "Gracidea")
             return Works.Fully;
         if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item)) return Works.Fully;
-        if (!BagScreen.CanUse(item)) return Works.NotYet;
+        bool planted = BerryPatches.CanPlant(item);
+        if (!BagScreen.CanUse(item)) return planted ? Works.Fully : Works.NotYet;
         bool runs = item.Use == null || item.Use.Keys.All(FieldRuns.Contains);
-        return runs && item.FieldUse != "Berry" ? Works.Fully : Works.Partly;
+        return runs && (item.FieldUse != "Berry" || planted) ? Works.Fully : Works.Partly;
     }
 
     private static string Word(Works works) => works switch

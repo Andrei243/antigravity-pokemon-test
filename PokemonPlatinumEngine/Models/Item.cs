@@ -87,6 +87,12 @@ public class ItemData
     /// </summary>
     public Dictionary<string, int>? Use { get; set; }
 
+    /// <summary>
+    /// A berry's own numbers (plan 06 · R14a): how it grows in soft soil and how it tastes, from the original's berry
+    /// table (each item file's <c>berryData</c>). Null for anything that isn't one of Platinum's 64 berries.
+    /// </summary>
+    public BerryData? Berry { get; set; }
+
     // ---- The later mechanics' items
 
     /// <summary>A Mega Stone: the species it belongs to and the form it brings out.</summary>
@@ -94,6 +100,34 @@ public class ItemData
 
     /// <summary>A Z-Crystal: the type it is for, or the one species' move it turns into a Z-Move of its own.</summary>
     public ZCrystal? ZCrystal { get; set; }
+}
+
+/// <summary>
+/// A berry as the original's berry table has it (<c>BerryData</c>, <c>berry_data.h</c>): its size in millimetres and
+/// firmness (the tag's), what growing it takes (<see cref="Models.BerryPatches"/>: the hours of each stage, the soil's
+/// moisture it drinks an hour, the berries a plant bears for each point of its yield rating), and its five flavours
+/// and smoothness, which Poffins are cooked from (plan 06 · R14c).
+/// </summary>
+public class BerryData
+{
+    public int Size { get; set; }
+    public int Firmness { get; set; }
+
+    /// <summary>The berries a plant bears for each point of its yield rating (<c>baseYield</c>).</summary>
+    public int Yield { get; set; }
+
+    /// <summary>The hours each stage of its growth takes (<c>stageDuration</c>).</summary>
+    public int StageHours { get; set; }
+
+    /// <summary>The soil's moisture it drinks in an hour, out of 100 (<c>moistureDrainRate</c>).</summary>
+    public int Drain { get; set; }
+
+    public int Spicy { get; set; }
+    public int Dry { get; set; }
+    public int Sweet { get; set; }
+    public int Bitter { get; set; }
+    public int Sour { get; set; }
+    public int Smoothness { get; set; }
 }
 
 public class MegaStone

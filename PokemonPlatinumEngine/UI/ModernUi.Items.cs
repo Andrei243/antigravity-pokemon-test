@@ -35,8 +35,10 @@ internal static partial class ModernUi
     public static void DrawBag(int sw, int sh, BagScreen bag, Inventory inventory, float appear = 1f)
     {
         Backdrop(sw, sh);
-        ScreenTitle("BAG");
-        Hints(sw - Margin, 44, ("Left / Right", "Pocket"), ("Z", "Choose"), ("Esc", "Back"));
+        // Open for a script to have an item chosen (a berry to plant, plan 06 · R14a), it asks what for and keeps to one pocket
+        ScreenTitle(bag.Choosing ? bag.Prompt ?? "BAG" : "BAG");
+        if (bag.Choosing) Hints(sw - Margin, 44, ("Z", "Choose"), ("Esc", "Back"));
+        else Hints(sw - Margin, 44, ("Left / Right", "Pocket"), ("Z", "Choose"), ("Esc", "Back"));
 
         int pocket = Math.Max(0, Array.IndexOf(BagScreen.Pockets, bag.CurrentPocket));
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), PocketTabs, pocket);

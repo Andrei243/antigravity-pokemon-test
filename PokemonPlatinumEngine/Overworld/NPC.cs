@@ -153,11 +153,25 @@ public class NPC
         _ => throw new ArgumentException($"{obstacle} is no obstacle a field move clears.")
     };
 
+    // ---- Soft soil (plan 06 · R14a)
+
     /// <summary>
-    /// A thing rather than a person: an item's ball or an obstacle. It is drawn as a card, never as a character,
-    /// and never turns to face anyone.
+    /// The <see cref="NpcType"/> of a patch of soft soil, an object of the map as the original's is: in the way like a
+    /// person, drawn as what grows in it (<see cref="Graphics.BerryArt"/>), and spoken to through the common
+    /// <c>BerryPatch</c>.
     /// </summary>
-    public bool IsThing => IsItemBall || IsObstacle || GymThing != null;
+    public const string BerryPatchType = "BerryPatch";
+
+    /// <summary>For soft soil: the original's number of the patch (<see cref="Models.BerryPatches"/>), which says what grows in it.</summary>
+    public int? Patch { get; set; }
+
+    public bool IsBerryPatch => NpcType == BerryPatchType;
+
+    /// <summary>
+    /// A thing rather than a person: an item's ball, an obstacle, a thing of a Gym's puzzle or soft soil. It is drawn
+    /// as a card, never as a character, and never turns to face anyone.
+    /// </summary>
+    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerryPatch;
 
     // ---- The story (plan 02 · S1)
 

@@ -601,6 +601,9 @@ public class StoryTests
         // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag, poison's survivors, and the assistant's
         // sister's news of swarms (her house is plan 01 · M11's)
         started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived, FieldScripts.SwarmNews });
+        // Berries and the lottery (plan 06 · R14a): soft soil, a berry, a mulch or the Sprayduck used from the bag on
+        // it, and Jubilife TV's lottery corner (the TV's rooms are plan 01 · M11's)
+        started.UnionWith(new[] { FieldScripts.BerryPatch, FieldScripts.PlantBerry, FieldScripts.UseMulch, FieldScripts.UseSprayduck, FieldScripts.Lottery });
         // Two trainers who saw the player at once (plan 02 · S6)
         started.Add(FieldScripts.TrainerPair);
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
@@ -770,6 +773,26 @@ public class StoryTests
                     host.Encounters.Trees[0].Group = 1;
                     if (honey > 0) host.Bag.AddItem(ItemDatabase.Get("Honey")!, honey);
                 }))).ToList(),
+                // Soft soil (plan 06 · R14a) at every stage, with and without mulch on it, faced from the south and from
+                // the side, with a berry, a mulch and the Sprayduck in the bag or nothing
+                FieldScripts.BerryPatch or FieldScripts.PlantBerry or FieldScripts.UseMulch or FieldScripts.UseSprayduck =>
+                    Enum.GetValues<BerryStage>().SelectMany(stage => new[] { false, true }.SelectMany(mulched => new[] { Direction.Up, Direction.Left }.SelectMany(facing =>
+                        new[] { false, true }.SelectMany(stocked => EveryWayThrough(script, new Map(8, 8), new NPC { NpcType = NPC.BerryPatchType, Name = "Soft soil", Patch = 0, GridX = 2, GridY = 2 },
+                            item: script.FullName == FieldScripts.UseMulch ? ("Growth Mulch", 1) : ("Oran Berry", 1), before: host =>
+                            {
+                                foreach (var p in host.Berries.Patches) p.Clear();
+                                if (mulched) host.Berries.LayMulch(0, Mulch.Gooey);
+                                if (stage != BerryStage.None)
+                                {
+                                    host.Berries.Plant(0, "Oran Berry");
+                                    host.Berries[0]!.Stage = stage;
+                                    host.Berries[0]!.Yield = stage == BerryStage.Fruit ? 3 : 0;
+                                }
+                                host.PlayerFacing = facing;
+                                if (!stocked) return;
+                                foreach (string item in new[] { "Oran Berry", "Growth Mulch", "Sprayduck" }) host.Bag.AddItem(ItemDatabase.Get(item)!);
+                                host.ItemChoice = "Oran Berry";
+                            }))))).ToList(),
                 _ => EveryWayThrough(script, new Map(8, 8), AnyTrainer(), new[] { "A line of its own." })
             };
             if (script.FullName is FieldScripts.CutTree or FieldScripts.Rock or FieldScripts.Boulder or FieldScripts.Waterfall or FieldScripts.RockFace)

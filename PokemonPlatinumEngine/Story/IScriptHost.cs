@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Story;
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -202,4 +202,18 @@ public interface IScriptHost
 
     /// <summary>Where a script's own draws come from: a honey tree slathered, a Trophy Garden Pokémon, a roamer set loose.</summary>
     System.Random Chance { get; }
+
+    // ------------------------------------------------------------------ the day's events (plan 06 · R14a)
+
+    /// <summary>Today, by the game's calendar (<see cref="GameClock.Today"/>): what <c>if weekday</c> asks.</summary>
+    System.DateTime Today { get; }
+
+    /// <summary>The berry patches: what grows in each patch of soft soil (<see cref="BerryPatches"/>).</summary>
+    BerryPatches Berries { get; }
+
+    /// <summary>The Pokémon in the PC, box by box and place by place: the lottery reads their trainer IDs too.</summary>
+    IEnumerable<Pokemon> Stored { get; }
+
+    /// <summary>Adds points to the Trainer Card's score (<see cref="TrainerScore"/>): a berry picked is one.</summary>
+    void AddScore(int points);
 }

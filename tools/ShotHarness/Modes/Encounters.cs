@@ -1,5 +1,129 @@
 partial class Harness
 {
+    // ---------------------------------------------------------------- the day's events and berries (plan 06 · R14a)
+
+    // Berries on soft soil in a game of their own (bp*; not part of "all"): Route 205's first crop as a new game finds
+    // it, its fruit picked, a berry chosen from the bag and planted, a row of plants at every stage in Eterna Forest's
+    // soil, in every flavour's colour and on soil wet and bone dry, and the Valley Windworks' Drifloon of Fridays. It
+    // prints what each left behind (the bag, the patch's stage, the Trainer Card's score).
+    public void BerriesMode()
+    {
+        engine.StartNewGame();
+        PastTheOpening();
+        game.State = GameState.Overworld;
+        var bag = game.Bag;
+        var berries = game.Berries;
+        var sinnoh = MapDatabase.Get("Sinnoh");
+
+        void Go(int x, int y, Direction facing)
+        {
+            At("Sinnoh", x, y, facing);
+            game.LocationSign.Hide();
+        }
+        DialogueManager Box() => game.Dialogue;
+        void Until(Func<bool> holds, string what, int most = 900)
+        {
+            for (int i = 0; i < most && !holds(); i++) Frames(1);
+            if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+        }
+        void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+        void Next() { Box().Advance(); Frames(2); }
+        void ReadOn(int most = 12)
+        {
+            for (int i = 0; i < most && Box().IsActive && !Box().IsQuestion; i++) { Whole(); Next(); }
+        }
+        NPC SoilAt(int x, int y) => sinnoh.Everyone.First(n => n.IsBerryPatch && (n.GridX, n.GridY) == (x, y));
+
+        // ---- Route 205's south, by Floaroma Town: two patches the new game found in fruit (2: a Chesto, 3: a Pecha)
+        var chesto = SoilAt(202, 658);
+        Go(202, 659, Direction.Up);
+        // Seen as the player comes by, they grow from now on
+        foreach (var soil in new[] { chesto, SoilAt(203, 658) }) berries.See(soil.Patch!.Value);
+        Frames(20); Shot("bp01_first_crop");
+        Console.WriteLine($"berries: patch {chesto.Patch} holds {berries[chesto.Patch!.Value]!.Yield} × {berries[chesto.Patch.Value]!.Berry} at {berries.StageOf(chesto.Patch.Value)}");
+
+        // Faced from the south: the fruit is offered, and picked
+        int score = game.TrainerScore;
+        game.Interact(); Frames(3);
+        Until(() => engine.Choice.IsOpen, "the picking question"); Frames(20); Shot("bp02_pick_question");
+        engine.Choice.Confirm(); Frames(4);
+        Whole(); Shot("bp03_picked");
+        ReadOn();
+        Until(() => !engine.ScriptRunning, "the patch's script to end");
+        // A step back, or the player's own head hides the patch from the field's steep camera
+        Go(202, 660, Direction.Up);
+        Frames(10); Shot("bp04_soil_bare");
+        Go(202, 659, Direction.Up);
+        Console.WriteLine($"berries: picked, {bag.GetQuantity(ItemDatabase.Get("Chesto Berry")!)} Chesto Berry in the bag, the patch {berries.StageOf(chesto.Patch.Value)}, score {score} → {game.TrainerScore}");
+
+        // A berry chosen from the bag, opened on the berries alone, and planted
+        bag.AddItem(ItemDatabase.Get("Oran Berry")!, 3);
+        bag.AddItem(ItemDatabase.Get("Sitrus Berry")!, 2);
+        bag.AddItem(ItemDatabase.Get("Potion")!, 2);
+        game.Interact(); Frames(3);
+        Whole(); Next();
+        Until(() => engine.Choice.IsOpen, "the planting question"); Frames(20);
+        engine.Choice.Confirm(); Frames(6);
+        Until(() => game.State == GameState.BagMenu, "the bag to choose from"); Frames(30); Shot("bp05_bag_chooses_a_berry");
+        game.BagScreen.Confirm(bag, game.Party, _ => { }); Frames(4);
+        Whole(); Shot("bp06_planted_line");
+        ReadOn();
+        Until(() => !engine.ScriptRunning, "the planting to end");
+        Go(202, 660, Direction.Up);
+        Frames(10); Shot("bp07_planted");
+        Console.WriteLine($"berries: planted {berries[chesto.Patch.Value]!.Berry} at {berries.StageOf(chesto.Patch.Value)}, {bag.GetQuantity(ItemDatabase.Get("Chesto Berry")!)} Chesto Berry left");
+
+        // ---- Eterna Forest's edge: four patches in a row, at each stage, then in fruit in four flavours
+        var row = sinnoh.Everyone.Where(n => n.IsBerryPatch && n.GridY == 554 && n.GridX is >= 230 and <= 233).OrderBy(n => n.GridX).ToList();
+        int fx = row[1].GridX, fy = row[1].GridY + 1;
+        while (!sinnoh.IsWalkable(fx, fy) && fy < 562) fy++;
+        // Two tiles back from the row, so the player's head is below the plants
+        if (sinnoh.IsWalkable(fx, fy + 1)) fy++;
+        Go(fx, fy, Direction.Up);
+        void Grow(int i, string berry, BerryStage stage, int moisture)
+        {
+            int patch = row[i].Patch!.Value;
+            berries.Plant(patch, berry);
+            berries[patch]!.Stage = stage;
+            berries[patch]!.Moisture = moisture;
+            berries[patch]!.Yield = stage == BerryStage.Fruit ? 4 : 0;
+        }
+        Grow(0, "Cheri Berry", BerryStage.Planted, 100);
+        Grow(1, "Chesto Berry", BerryStage.Sprouted, 100);
+        Grow(2, "Pecha Berry", BerryStage.Growing, 100);
+        Grow(3, "Rawst Berry", BerryStage.Blooming, 100);
+        Frames(20); Shot("bp08_stages");
+        Grow(0, "Cheri Berry", BerryStage.Fruit, 100);
+        Grow(1, "Chesto Berry", BerryStage.Fruit, 100);
+        Grow(2, "Pecha Berry", BerryStage.Fruit, 100);
+        Grow(3, "Aspear Berry", BerryStage.Fruit, 100);
+        Frames(20); Shot("bp09_fruit_flavours");
+        Grow(0, "Cheri Berry", BerryStage.Sprouted, 100);
+        Grow(1, "Chesto Berry", BerryStage.Growing, 40);
+        Grow(2, "Pecha Berry", BerryStage.Growing, 0);
+        Grow(3, "Rawst Berry", BerryStage.Blooming, 0);
+        Frames(20); Shot("bp10_soil_wet_to_dry");
+        // After dark
+        var settings = engine.Settings;
+        var time = settings.TimeOfDay;
+        settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        Frames(20); Shot("bp11_night");
+        settings.TimeOfDay = time;
+        engine.ApplySettings(window: false);
+
+        // ---- the Valley Windworks' Drifloon, on a Friday once the windworks are free
+        var day = GameClock.FixedDate;
+        GameClock.FixedDate = new DateTime(2026, 6, 5);
+        game.Story.SetVar("VAR_VALLEY_WINDWORKS_STATE", 2);
+        Go(241, 663, Direction.Up);
+        game.ArriveOnMap();
+        Until(() => !engine.ScriptRunning, "the windworks' arrival", 300);
+        Frames(30); Shot("bp12_friday_drifloon");
+        Console.WriteLine($"drifloon: on {GameClock.Today.DayOfWeek} it is {(game.Story.Has("FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON") ? "away" : "there")}");
+        GameClock.FixedDate = day;
+    }
+
     // ---------------------------------------------------------------- wild Pokémon (plan 06 · R13)
 
     // The wild Pokémon beyond the tables, in a game of their own (en*; not part of "all"): the Poké Radar's patches
