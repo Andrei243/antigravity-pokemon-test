@@ -4,6 +4,7 @@ Rebuilds the game's data files from public sources:
 
 - `PokemonPlatinumEngine/Data/species.json`, `moves.json`, `abilities.json` and `items.json`
 - `PokemonPlatinumEngine/Data/trainers.json`, Platinum's 927 trainers (plan 06 · R9), and `marts.json`, its Marts' stock
+- `PokemonPlatinumEngine/Data/contests.json`, the Super Contests' tables (plan 06 · R17a)
 - `docs/mechanics/coverage.md`, the report of what the battle engine runs and what is still to write
 
 ```bash
@@ -25,6 +26,8 @@ The run is deterministic: the same sources and overrides give the same files, so
 | Names (in their modern spelling), categories, generations, legendary and mythical flags, heights, weights, egg groups, colours, shapes, hidden abilities, punch/sound/bite/pulse/ball/powder/dance flags | [PokeAPI](https://github.com/PokeAPI/pokeapi)'s CSV files (`data/v2/csv`) |
 | Species 494–1025, moves 468 on, abilities 124 on, items after Generation 4 | PokeAPI: each species' default form with its newest learnset (Scarlet and Violet first) and current values |
 | Trainers: each one's name, class, AI flags, items, double flag and team (species, form, level, IV scale, personality, held item, chosen moves) | the decompilation (`res/trainers/data/<trainer>.json`, `Importer.Trainers.cs`); never what a trainer says. The prize money is the class's multiplier (`include/data/trainer_class_prize_mul.h`) times the last Pokémon's level times four, doubled in a double battle. The imported world's trainers are these alone: an overlay gives them our lines (plan 08 · P7) |
+| Each move's quality and effect on the contest stage (`contest` in `moves.json`) | the decompilation (`res/moves/<move>/data.json`'s `contest`) |
+| The Super Contests' tables (`contests.json`): the 96 contestants (name, the Pokémon's nickname, species, moves and condition, rank, contests, when they turn up, their way of acting and dancing, their dressing for each theme), the twelve judges, the 96 dressings (which accessories where), what each of the hundred accessories scores for each of the twelve themes, and the accessories' and themes' names | the decompilation's one archive of them, `res/prebuilt/contest/data/contest_data.narc`, read as the original reads it (`src/unk_02094EDC.c`: the structs' fields by their offsets), and its banks of names (`res/text/contest_opponent_names.json`, `contest_judge_names.json`, `contest_accessory_names.json`, the theme names of `unk_0385.json`); `Importer.Contests.cs`. Never a picture of an accessory, a judge or a backdrop, and never a line the announcer or anyone else says |
 | Descriptions of moves, abilities and items | PokeAPI's short effect texts (written by PokeAPI's contributors, not taken from the games) |
 | Descriptions of TMs and HMs | written here from the move Platinum's machine teaches: "Teaches Focus Punch to a compatible Pokémon." and that move's own description. PokeAPI's text for a machine names the move a later generation gave it (Hone Claws for TM01) |
 | Pokédex entries | generated from the data in our own words |

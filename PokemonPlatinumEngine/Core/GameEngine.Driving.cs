@@ -53,6 +53,11 @@ public partial class GameEngine
         public SpecialEncounters Encounters => game.encounters;
         public BerryPatches Berries => game.berries;
         public PoffinCase Poffins => game.poffinCase;
+
+        /// <summary>The Fashion Case, the Super Contest's screen and how the last contest came out (plan 06 · R17a).</summary>
+        public Models.SuperContests.FashionCase FashionCase => game.fashionCase;
+        public SuperContestScreen SuperContest => game.contestScreen;
+        public Models.SuperContests.ContestOutcome? ContestOutcome => game.contestOutcome;
         public DayCare DayCare => game.dayCare;
         public RadarChain Radar => game.radar;
         public FishingAttempt? Fishing { get => game.fishing; set => game.fishing = value; }

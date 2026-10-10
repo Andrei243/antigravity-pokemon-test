@@ -116,5 +116,8 @@ public static class TrainerScore
     /// <summary>An Egg hatched (plan 06 · R15; <c>TRAINER_SCORE_EVENT_UNK_15</c>, given by <c>Field_UpdateDaycare</c>).</summary>
     public const int HatchedEgg = 7;
 
+    /// <summary>A Super Contest won (plan 06 · R17a; <c>TRAINER_SCORE_EVENT_WIN_OFFICIAL_CONTEST</c>).</summary>
+    public const int WonContest = 7;
+
     public static int Add(int score, int points) => (int)Math.Min(Limit, (long)score + points);
 }

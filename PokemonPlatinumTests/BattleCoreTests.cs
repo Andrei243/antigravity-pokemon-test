@@ -475,6 +475,7 @@ public class BattleCoreTests
         p.Personality = 0xBEEF;
         p.IsEgg = true;
         p.EvolutionProgress["uses:Rage Fist"] = 4;
+        p.Ribbons.Add("RIBBON_COOL");
         p.ReplaceMove(0, "Razor Leaf");
         p.Moves[1].CurrentPP = 2;
         var keptMove = copy.Moves[1];
@@ -493,6 +494,10 @@ public class BattleCoreTests
                 {
                     case List<Move> moves:
                         Assert.Equal(moves.Select(m => (m.Data, m.CurrentPP)), ((List<Move>)y!).Select(m => (m.Data, m.CurrentPP)));
+                        Assert.NotSame(x, y);
+                        break;
+                    case ISet<string> set:
+                        Assert.True(set.SetEquals((ISet<string>)y!), $"{property.Name}: {string.Join(", ", set)} and {string.Join(", ", (ISet<string>)y!)}");
                         Assert.NotSame(x, y);
                         break;
                     case IDictionary dictionary:

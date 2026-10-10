@@ -414,6 +414,13 @@ public class Pokemon
     public int Marks { get; set; }
 
     /// <summary>
+    /// The ribbons it has won (plan 06 · R17a), each by the original's name (<c>RIBBON_COOL</c>, <c>RIBBON_CUTE_GREAT</c>):
+    /// so far the twenty a Super Contest gives (<see cref="SuperContests.ContestRules.Ribbon"/>). Plan 06 · R17b keeps
+    /// the rest of Platinum's here and shows them.
+    /// </summary>
+    public SortedSet<string> Ribbons { get; private set; } = new(StringComparer.Ordinal);
+
+    /// <summary>
     /// Where it was met (plan 06 · R12): the name of the place, as the original writes the location's name, or a
     /// name of its own for how it came ("a trade"); null for one met before this was kept.
     /// </summary>
@@ -978,6 +985,7 @@ public class Pokemon
         copy.Moves = Moves.Select(m => new Move(m.Data, m.CurrentPP, m.PPUps)).ToList();
         copy.StatStages = new Dictionary<StatType, int>(StatStages);
         copy.EvolutionProgress = new Dictionary<string, int>(EvolutionProgress);
+        copy.Ribbons = new SortedSet<string>(Ribbons, StringComparer.Ordinal);
         return copy;
     }
 
@@ -1044,6 +1052,8 @@ public class Pokemon
         foreach (var (stat, stage) in other.StatStages) StatStages[stat] = stage;
         EvolutionProgress.Clear();
         foreach (var (key, count) in other.EvolutionProgress) EvolutionProgress[key] = count;
+        Ribbons.Clear();
+        Ribbons.UnionWith(other.Ribbons);
 
         for (int i = 0; i < other.Moves.Count; i++)
         {

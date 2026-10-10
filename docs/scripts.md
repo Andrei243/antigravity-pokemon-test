@@ -330,6 +330,23 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 
+### The Super Contests
+
+Plan 06 · R17a. A Super Contest is held by `Models/SuperContests/` (the contest, its dance, its acting; `docs/mechanics/rulings.md`, "Super Contests") on `UI/SuperContestScreen.cs`; the Fashion Case (`FashionCase`, saved) holds the accessories a Pokémon is dressed up with. One command, as the original's `NewContest`, `OpenPartyMenuForContest`, `RunContestApplication`, `EndContest`, `CheckPlayerMonHasRibbon` and `GetFirstTimeVictoryAccessory` are six, and one for `Common_GiveAccessory`.
+
+| Command | What it does |
+|---|---|
+| `supercontest rank normal` | The rank to be entered: `normal`, `great`, `ultra` or `master`. `RESULT` is left alone (so a menu's answer can pick it line by line). |
+| `supercontest category cool` | The contest: `cool`, `beauty`, `cute`, `smart` or `tough`. |
+| `supercontest mode official` | What is held: `official` (a whole contest, for a ribbon) or one round for practice, `visual`, `dance` or `acting` (at the Normal Rank whatever rank is set). |
+| `supercontest check` | Whether the Pokémon last chosen with `choosepokemon` (its place is `RESULT`) may enter (`CheckContestEligibility`): `RESULT` 0 it may, and it is the one `enter` enters; 1 none was chosen; 2 an Egg or fainted; 3 it lacks the ribbon of the rank before; 4 it knows fewer than two moves. |
+| `supercontest enter` | Holds the contest for the Pokémon checked, and the script waits for it. `RESULT` is the player's place, 0 for the winner (in a practice round, how many did better). A win has already given the ribbon, the friendship and the accessory. |
+| `supercontest ribbon` | `RESULT` 1 when that win gave a ribbon the Pokémon hadn't; `{ribbon}` names it. |
+| `supercontest prize` | `RESULT` 1 when that win put its accessory in the Fashion Case; `{accessory}` names it. |
+| `giveaccessory "Glitter Powder" [2]` | An accessory (`contests.json`'s names) into the Fashion Case, with the item fanfare and the lines that say so. `RESULT` 1, or 0 and not a word when the case has no room for it (nine of a kind, one of the kinds that come alone). |
+
+`{contestant}` is the Pokémon checked for the contest, `{ribbon}` the ribbon the last contest gave, `{accessory}` the accessory last given or won.
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

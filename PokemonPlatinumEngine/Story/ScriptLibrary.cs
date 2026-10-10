@@ -179,6 +179,9 @@ public sealed class ScriptLibrary
                     case Op.GivePokemon or Op.WildBattle or Op.CatchingLesson or Op.GiveEgg when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
+                    case Op.GiveAccessory when SuperContestDatabase.Accessory(i.Name) < 0:
+                        Wrong(i, $"there is no accessory '{i.Name}'");
+                        break;
                     case Op.Battle when i.PartnerById && TrainerDatabase.Get(i.Partner) == null:
                         Wrong(i, $"there is no trainer '{i.Partner}'");
                         break;

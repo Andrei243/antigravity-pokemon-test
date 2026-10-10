@@ -46,6 +46,8 @@ public enum GameState
     PoffinCase,
     /// <summary>An Egg hatching (plan 06 · R15).</summary>
     Hatch,
+    /// <summary>A Super Contest in the Contest Hall (plan 06 · R17a).</summary>
+    SuperContest,
     Transition
 }
 
@@ -279,6 +281,8 @@ public partial class GameEngine
         encounters = SpecialEncounters.NewGame(fieldRandom);
         berries = BerryPatches.NewGame();
         poffinCase.Clear();
+        fashionCase.Load(null);
+        contestOutcome = null;
         radar.Clear();
         registeredItem = null;
         exitSpot = null;
@@ -422,6 +426,10 @@ public partial class GameEngine
         encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
         berries = save.Berries ?? BerryPatches.NewGame();
         poffinCase.Restore(save.Poffins);
+        // A save from before the Fashion Case that has been through the Contest Hall's first scene is owed its Glitter Powder (plan 06 · R17a)
+        fashionCase.Load(save.FashionCase);
+        if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) fashionCase.Add("Glitter Powder");
+        contestOutcome = null;
         radar.Clear();
         Roamers.Scatter(encounters, fieldRandom);
 
@@ -536,6 +544,7 @@ public partial class GameEngine
             Encounters = encounters,
             Berries = berries,
             Poffins = poffinCase.Count > 0 ? poffinCase.All.ToList() : null,
+            FashionCase = fashionCase.ToSave(),
             DayCare = DayCareSave.From(dayCare),
             WorldVersion = SaveData.CurrentWorld,
             Party = playerParty.Members.Select(SavedPokemonData.FromPokemon).ToList(),
@@ -806,6 +815,9 @@ public partial class GameEngine
                 break;
             case GameState.PoffinCase:
                 UpdatePoffinCase(dt);
+                break;
+            case GameState.SuperContest:
+                UpdateContest(dt);
                 break;
             case GameState.Journal:
                 journalScreen.Update(journal, dt);
@@ -1849,6 +1861,9 @@ public partial class GameEngine
             case GameState.PoffinCase:
                 poffinCaseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
+            case GameState.SuperContest:
+                contestScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
             case GameState.PCStorage:
                 pcScreen.Draw(VirtualWidth, VirtualHeight, playerParty, pcBoxStorage);
                 break;
@@ -1865,6 +1880,7 @@ public partial class GameEngine
                 else if (scene == GameState.Evolution) evolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) hatchScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) bagScreen.Draw(VirtualWidth, VirtualHeight, playerInventory, playerParty, EvolutionContextNow());
+                else if (scene == GameState.SuperContest) contestScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
         }
 

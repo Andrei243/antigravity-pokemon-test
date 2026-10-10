@@ -58,6 +58,13 @@ public sealed class ScriptRunner
     // The Pokémon last left at the Day Care and last taken back (plan 06 · R15)
     private string lastLeft = "", lastTaken = "";
 
+    // The contest being entered and the Pokémon chosen for it, and the accessory last given (plan 06 · R17a)
+    private Models.SuperContests.ContestRank contestRank;
+    private ContestStat contestCategory;
+    private Models.SuperContests.ContestMode contestMode;
+    private int contestSlot = -1;
+    private string lastAccessory = "";
+
     public ScriptRunner(ScriptLibrary library, IScriptHost host)
     {
         this.library = library;
@@ -659,6 +666,31 @@ public sealed class ScriptRunner
                 Result = host.Hatch() ? 1 : 0;
                 break;
 
+            // The Super Contests and the Fashion Case (plan 06 · R17a)
+            case Op.SuperContest:
+                SuperContest(i);
+                break;
+            case Op.GiveAccessory:
+            {
+                // Common_GiveAccessory: into the Fashion Case with the item fanfare and a line, when it fits
+                int accessory = SuperContestDatabase.Accessory(i.Name);
+                if (accessory < 0) throw Wrong(i, $"there is no accessory '{i.Name}'");
+                lastAccessory = SuperContestDatabase.AccessoryName(accessory);
+                if (!host.FashionCase.Add(accessory, i.Number))
+                {
+                    Result = 0;
+                    break;
+                }
+                Result = 1;
+                host.Fanfare(MusicRole.FanfareItem);
+                host.Say(null, new List<string>
+                {
+                    i.Number == 1 ? $"{{player}} received the {lastAccessory}!" : $"{{player}} received {i.Number} × {lastAccessory}!",
+                    $"{{player}} put {(i.Number == 1 ? "it" : "them")} away in the Fashion Case."
+                });
+                break;
+            }
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -740,6 +772,75 @@ public sealed class ScriptRunner
                 Result = poffins.Add(made) ? (int)made.Type : 0xFFFF;
                 break;
             }
+        }
+    }
+
+    /// <summary>
+    /// The Contest Hall's commands (plan 06 · R17a), on the original's contest script commands: <c>rank</c>,
+    /// <c>category</c> and <c>mode</c> set what is to be held (the original's <c>VAR_0x8004</c>, <c>VAR_0x8005</c> and
+    /// <c>VAR_0x8007</c>); <c>check</c> takes the place of the team <c>choosepokemon</c> left in RESULT and says
+    /// whether that Pokémon may enter (<c>CheckContestEligibility</c>: 0 it may, 1 none chosen, 2 an Egg or fainted, 3
+    /// it lacks the ribbon of the rank before, 4 it knows fewer than two moves); <c>enter</c> holds the contest for the
+    /// Pokémon checked (<c>NewContest</c>, <c>RunContestApplication</c>, <c>EndContest</c>), the script waiting for it,
+    /// and RESULT is the player's place, 0 for the winner; <c>ribbon</c> and <c>prize</c> ask what that win gave: RESULT
+    /// 1 with a ribbon the Pokémon hadn't (<c>{ribbon}</c>) or an accessory put in the Fashion Case
+    /// (<c>{accessory}</c>; <c>GetFirstTimeVictoryAccessory</c>). <c>{contestant}</c> names the Pokémon entered.
+    /// </summary>
+    private void SuperContest(Instruction i)
+    {
+        switch (i.Name)
+        {
+            case "rank":
+                contestRank = Enum.Parse<Models.SuperContests.ContestRank>(i.Other, ignoreCase: true);
+                break;
+            case "category":
+                contestCategory = Enum.Parse<ContestStat>(i.Other, ignoreCase: true);
+                break;
+            case "mode":
+                contestMode = i.Other switch
+                {
+                    "visual" => Models.SuperContests.ContestMode.PracticeVisual,
+                    "dance" => Models.SuperContests.ContestMode.PracticeDance,
+                    "acting" => Models.SuperContests.ContestMode.PracticeActing,
+                    _ => Models.SuperContests.ContestMode.Official
+                };
+                break;
+            case "check":
+            {
+                int slot = Result;
+                contestSlot = -1;
+                if (slot < 0 || slot >= host.Party.Count)
+                {
+                    Result = 1;
+                    break;
+                }
+                // A practice round asks no ribbon (the original holds it at the Normal Rank)
+                var rank = contestMode == Models.SuperContests.ContestMode.Official ? contestRank : Models.SuperContests.ContestRank.Normal;
+                Result = Models.SuperContests.ContestRules.WhyNot(host.Party.Members[slot], contestCategory, rank) switch
+                {
+                    null => 0,
+                    "egg" or "fainted" => 2,
+                    "rank" => 3,
+                    _ => 4
+                };
+                if (Result == 0) contestSlot = slot;
+                break;
+            }
+            case "enter":
+            {
+                if (contestSlot < 0 || contestSlot >= host.Party.Count) throw Wrong(i, "no Pokémon has been checked for the contest (supercontest check)");
+                var rank = contestMode == Models.SuperContests.ContestMode.Official ? contestRank : Models.SuperContests.ContestRank.Normal;
+                host.HoldContest(contestSlot, contestCategory, rank, contestMode);
+                afterBusy = () => Result = host.ContestOutcome?.Placement ?? 0;
+                break;
+            }
+            case "ribbon":
+                Result = host.ContestOutcome?.NewRibbon != null ? 1 : 0;
+                break;
+            case "prize":
+                Result = host.ContestOutcome?.Prize != null ? 1 : 0;
+                if (host.ContestOutcome?.Prize is { } won) lastAccessory = won;
+                break;
         }
     }
 
@@ -1038,6 +1139,10 @@ public sealed class ScriptRunner
             "fee" when DayCarePlace(argument) is { } at => host.DayCare.Fee(at).ToString(),
             "left" => lastLeft,
             "taken" => lastTaken,
+            // The Super Contests (plan 06 · R17a): the accessory last given, the ribbon last won, and who was entered
+            "accessory" => lastAccessory,
+            "ribbon" => host.ContestOutcome?.NewRibbon ?? "",
+            "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };
     }) : text;

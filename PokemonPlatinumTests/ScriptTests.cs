@@ -206,6 +206,14 @@ public class ScriptTests
           daycare compatibility
           giveegg "Togepi"
           hatch
+          supercontest rank great
+          supercontest category cute
+          supercontest mode official
+          supercontest check
+          supercontest enter
+          supercontest ribbon
+          supercontest prize
+          giveaccessory "Glitter Powder"
         script Other
           end
         """;
@@ -1048,6 +1056,9 @@ public class ScriptTests
         public PoffinCase Poffins => inner.Poffins;
         public DayCare DayCare => inner.DayCare;
         public bool Hatch() => inner.Hatch();
+        public PokemonPlatinumEngine.Models.SuperContests.FashionCase FashionCase => inner.FashionCase;
+        public PokemonPlatinumEngine.Models.SuperContests.ContestOutcome? ContestOutcome => inner.ContestOutcome;
+        public void HoldContest(int slot, ContestStat category, PokemonPlatinumEngine.Models.SuperContests.ContestRank rank, PokemonPlatinumEngine.Models.SuperContests.ContestMode mode) => inner.HoldContest(slot, category, rank, mode);
         public int? HoneyTreeFaced => inner.HoneyTreeFaced;
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;

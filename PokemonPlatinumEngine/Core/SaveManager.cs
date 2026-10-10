@@ -110,6 +110,12 @@ public class SaveData
     /// <summary>The Poffin Case's Poffins in their places (plan 06 · R14c). Null when it is empty, and in older saves.</summary>
     public List<Poffin>? Poffins { get; set; }
 
+    /// <summary>
+    /// The Fashion Case's accessories, each kind's name and how many (plan 06 · R17a). Null in saves from before it:
+    /// such a save that has been through the Contest Hall's first scene is given the Glitter Powder that scene gives.
+    /// </summary>
+    public Dictionary<string, int>? FashionCase { get; set; }
+
     /// <summary>Solaceon Town's Day Care (plan 06 · R15). Null while it is empty with no cycle under way, and in older saves.</summary>
     public DayCareSave? DayCare { get; set; }
 
@@ -300,6 +306,9 @@ public class SavedPokemonData
 
     /// <summary>Steps, move uses and knock-outs counted toward an evolution; left out when there are none.</summary>
     public Dictionary<string, int>? EvolutionProgress { get; set; }
+
+    /// <summary>The ribbons it has won (plan 06 · R17a), by the original's names; left out for one with none.</summary>
+    public List<string>? Ribbons { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -347,7 +356,8 @@ public class SavedPokemonData
             MetLevel = p.MetLevel,
             MetDate = p.MetDate,
             Language = p.Language,
-            EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null
+            EvolutionProgress = p.EvolutionProgress.Count > 0 ? new Dictionary<string, int>(p.EvolutionProgress) : null,
+            Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null
         };
 
         foreach (var m in p.Moves)
@@ -400,6 +410,7 @@ public class SavedPokemonData
         if (Friendship is { } friendship) p.Friendship = friendship;
         if (Personality is { } personality) p.Personality = personality;
         foreach (var (key, count) in EvolutionProgress ?? new()) p.EvolutionProgress[key] = count;
+        if (Ribbons != null) p.Ribbons.UnionWith(Ribbons);
         p.RecalculateStats();
         p.CurrentHP = Math.Clamp(CurrentHP, 0, p.MaxHP);
         if (p.CurrentHP <= 0)

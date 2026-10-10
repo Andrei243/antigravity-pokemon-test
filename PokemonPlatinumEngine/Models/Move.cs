@@ -87,6 +87,12 @@ public class MoveData
         effectId ??= battleEffect != null && Enum.TryParse(battleEffect.Length > 0 && char.IsDigit(battleEffect[0]) ? "N" + battleEffect : battleEffect, out Battle.Sim.Ai.MoveEffectId id)
             ? id : Battle.Sim.Ai.MoveEffectId.Hit;
 
+    /// <summary>
+    /// The move on the contest stage (plan 06 · R17a): the quality it shows and what it does in a Super Contest's
+    /// Acting Competition, from the decompilation's move data. Null for the moves that came after Platinum.
+    /// </summary>
+    public SuperContests.MoveContest? Contest { get; set; }
+
     /// <summary>How much of the move the engine runs; anything but Full has an <see cref="Effect"/> still to write.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public MoveEffectSupport Support { get; set; } = MoveEffectSupport.Full;
