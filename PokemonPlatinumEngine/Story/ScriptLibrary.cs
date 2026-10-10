@@ -46,6 +46,7 @@ public sealed class ScriptLibrary
     /// called by <see cref="ChapterThree"/>, and run for a save from before.
     /// </summary>
     public const string TimedPeople = "common.TimedPeople";
+    public const string CampaignOver = "common.CampaignOver";
 
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 

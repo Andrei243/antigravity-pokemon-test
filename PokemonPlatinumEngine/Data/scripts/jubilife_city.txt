@@ -217,6 +217,12 @@ label Beaten
   music area
   setvar VAR_JUBILIFE_CITY_STATE 4
   setvar VAR_OREBURGH_CITY_STATE 3
+  # The campaign is over: its three clowns leave with them (JubilifeCity_CollectorJubilifeTV's RemoveObject), the
+  # third from Jubilife TV's door
+  call CampaignOver
+  hide clown_1
+  hide clown_2
+  hide clown_3
   end
 
 

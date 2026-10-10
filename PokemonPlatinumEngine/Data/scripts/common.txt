@@ -91,6 +91,17 @@ script TimedPeople
   return
 
 
+# The Pokétch campaign's clowns, gone from Jubilife City once Team Galactic is beaten at its north gate (the
+# original's JubilifeCity_CollectorJubilifeTV): the third stands in front of Jubilife TV's door until then. Called by
+# that scene, and run for a save from before Jubilife TV opened (Story/StoryMigration.cs, version 8).
+script CampaignOver
+  if var VAR_JUBILIFE_CITY_STATE < 4 goto Before
+  setflag FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2
+  setflag FLAG_HIDE_JUBILIFE_CITY_CLOWN_3
+label Before
+  return
+
+
 # What the first chapter (plan 02 · S4, "Lake Verity and a Pokédex") leaves behind once it is played: run with no
 # screen for a save from before the chapter was written, whose game began with a Pokémon, a Pokédex and the
 # Running Shoes already (Story/StoryMigration.cs). Everyone the chapter sends away is gone, every scene played.

@@ -174,7 +174,25 @@ public class JubilifeAndRoarkTests
         Assert.False(game.Story.Has("FLAG_HIDE_SANDGEM_TOWN_LAB_PROF_ROWAN"));
         Assert.Null(game.Present("prof_rowan", "jubilife_city"));
         Assert.Null(game.Present("counterpart", "jubilife_city"));
+        // The campaign's clowns leave with them, the third from in front of Jubilife TV's door
+        Assert.Null(game.Present("clown_3", "jubilife_city"));
+        Assert.True(game.Story.Has("FLAG_HIDE_JUBILIFE_CITY_CLOWN_3"));
         Assert.False(game.Fires("TeamGalactic"));
+    }
+
+    [Fact]
+    public void ASaveFromAfterTheNorthGateLosesTheCampaignsClowns()
+    {
+        var after = new StoryState();
+        after.SetVar("VAR_JUBILIFE_CITY_STATE", 4);
+        StoryMigration.Upgrade(after, 7, Array.Empty<Pokemon>(), Scripts, new Inventory());
+        Assert.True(after.Has("FLAG_HIDE_JUBILIFE_CITY_CLOWNS_1_AND_2"));
+        Assert.True(after.Has("FLAG_HIDE_JUBILIFE_CITY_CLOWN_3"));
+        // Before the battle the third is still at the door, waiting to give out his coupon
+        var before = new StoryState();
+        before.SetVar("VAR_JUBILIFE_CITY_STATE", 3);
+        StoryMigration.Upgrade(before, 7, Array.Empty<Pokemon>(), Scripts, new Inventory());
+        Assert.False(before.Has("FLAG_HIDE_JUBILIFE_CITY_CLOWN_3"));
     }
 
     [Fact]

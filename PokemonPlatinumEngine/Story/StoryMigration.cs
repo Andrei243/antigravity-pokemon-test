@@ -50,6 +50,8 @@ public static class StoryMigration
         if (savedVersion < 6) RenameTrainers(story, SouthWestTrainers);
         // Version 7: the people who come and go with the clock, and the Windworks' Drifloon (plan 06 · R14a)
         if (savedVersion < 7) Run(story, scripts, ScriptLibrary.TimedPeople);
+        // Version 8: the Pokétch campaign's clowns gone after the north gate's battle, the third from Jubilife TV's door
+        if (savedVersion < 8) Run(story, scripts, ScriptLibrary.CampaignOver);
     }
 
     /// <summary>The flag set as Oreburgh Gate's hiker hands over HM06 (scripts/oreburgh_gate_1f.txt).</summary>
