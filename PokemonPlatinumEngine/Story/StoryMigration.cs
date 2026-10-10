@@ -67,6 +67,25 @@ public static class StoryMigration
         // Version 13: the eighth chapter's (plan 02 · S11, part a), and the rival gone from the head of Acuity
         // Lakefront's rock face for a save that has already been past it to Snowpoint City
         if (savedVersion < 13) ChapterEight(story, scripts);
+        // Version 14: the people of Team Galactic's headquarters (plan 02 · S11, part b), and the grunt with the Storage
+        // Key shown again for a save that has already seen Commander Jupiter at Lake Acuity
+        if (savedVersion < 14) Headquarters(story, scripts);
+    }
+
+    /// <summary>The flag that keeps the grunt with the Storage Key off Veilstone City's terrace (scripts/veilstone_city.txt).</summary>
+    public const string StorageKeyGruntFlag = "FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY";
+
+    /// <summary>
+    /// Version 14, a save from before Team Galactic's headquarters were written (plan 02 · S11, part b): its people are
+    /// hidden until their scenes by <see cref="ScriptLibrary.Headquarters"/>, which a new game runs too (called by the
+    /// chapter's script). The grunt who lets the Storage Key fall is one of them, and the scene at Lake Acuity is what
+    /// brings him to Veilstone City: a save that has played it (<c>VAR_LAKE_ACUITY_STATE</c> 2) had his flag cleared
+    /// when it meant nothing yet, so it is cleared again, or nobody would ever open the warehouse's door.
+    /// </summary>
+    private static void Headquarters(StoryState story, ScriptLibrary scripts)
+    {
+        Run(story, scripts, ScriptLibrary.Headquarters);
+        if (story.Var("VAR_LAKE_ACUITY_STATE") >= 2) story.Unset(StorageKeyGruntFlag);
     }
 
     /// <summary>The flag that takes the rival from the head of Acuity Lakefront's rock face (scripts/acuity_lakefront.txt).</summary>

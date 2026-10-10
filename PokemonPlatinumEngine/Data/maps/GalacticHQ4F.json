@@ -1,0 +1,282 @@
+{
+  "name": "GalacticHQ4F",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 24,
+  "height": 20,
+  "ground": [
+    "########################",
+    "########################",
+    "########################",
+    "#______________##______#",
+    "#______________##______#",
+    "#______________________#",
+    "#______________________#",
+    "#______________##______#",
+    "#______________##______#",
+    "#______________##______#",
+    "###____________##____###",
+    "###____________##____###",
+    "########__########__####",
+    "########__########__####",
+    "########__########__####",
+    "#______________##______#",
+    "#______________##______#",
+    "#______________##______#",
+    "#______________##______#",
+    "########################"
+  ],
+  "solid": [
+    "########################",
+    "########################",
+    "########################",
+    "####..........######...#",
+    "#..............##......#",
+    "##.....................#",
+    "##....#####............#",
+    "#.....#####....##......#",
+    "#..............##......#",
+    "#..............##......#",
+    "###............##....###",
+    "###............##....###",
+    "########..########..####",
+    "########..########..####",
+    "########..########..####",
+    "###............##......#",
+    "###............##......#",
+    "#..............##......#",
+    "#..............##......#",
+    "########################"
+  ],
+  "behaviours": [
+    { "x": 22, "y": 3, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 21, "y": 17, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 8, "y": 3, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "SideStairsDownWest",
+      "x": 1,
+      "y": 15,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "WarpPanelOut",
+      "x": 21,
+      "y": 17,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 6,
+      "y": 6,
+      "width": 5,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 22,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Computer",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 3,
+      "sourceY": 15,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 9,
+      "targetY": 11,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 22,
+      "sourceY": 3,
+      "targetMap": "GalacticHQLaboratory",
+      "targetX": 1,
+      "targetY": 11,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 21,
+      "sourceY": 17,
+      "targetMap": "GalacticHQ1F",
+      "targetX": 41,
+      "targetY": 14,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 8,
+      "sourceY": 3,
+      "targetMap": "GalacticHQHall",
+      "targetX": 17,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 21,
+      "y": 14,
+      "text": "Team Galactic warp panels!\nThe green panel takes you back down to the ground floor. Onward to a new universe!",
+      "script": "Notice"
+    },
+    {
+      "x": 1,
+      "y": 6,
+      "text": "Team Galactic's reports are kept on this machine.",
+      "script": "Reports"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "cyrus",
+      "name": "Cyrus",
+      "npcType": "Cyrus",
+      "x": 8,
+      "y": 8,
+      "facing": "Up",
+      "script": "Cyrus",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_4F_CYRUS"
+    },
+    {
+      "id": "galactic_hq_door_west",
+      "name": "Door",
+      "npcType": "GalacticDoor",
+      "x": 8,
+      "y": 14,
+      "facing": "Down",
+      "script": "Door",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_4F_DOOR"
+    },
+    {
+      "id": "galactic_hq_door_east",
+      "name": "Door",
+      "npcType": "GalacticDoor",
+      "x": 9,
+      "y": 14,
+      "facing": "Down",
+      "script": "Door",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_4F_DOOR"
+    },
+    {
+      "id": "bollard_west",
+      "name": "Bollard",
+      "npcType": "Bollard",
+      "x": 18,
+      "y": 14,
+      "facing": "Down",
+      "dialog": [
+        "A steel post has risen out of the floor. It won't budge."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC"
+    },
+    {
+      "id": "bollard_east",
+      "name": "Bollard",
+      "npcType": "Bollard",
+      "x": 19,
+      "y": 14,
+      "facing": "Down",
+      "dialog": [
+        "A steel post has risen out of the floor. It won't budge."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 8,
+      "y": 11,
+      "width": 2,
+      "depth": 1,
+      "script": "Cyrus",
+      "variable": "VAR_GALACTIC_HQ_4F_STATE",
+      "value": 0
+    }
+  ],
+  "hiddenItems": [
+    {
+      "x": 20,
+      "y": 7,
+      "item": "Razor Claw",
+      "flag": "FLAG_OBTAINED_HIDDEN_GALACTIC_HQ_4F_RAZOR_CLAW"
+    }
+  ],
+  "wildEncounters": []
+}

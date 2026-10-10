@@ -1,0 +1,693 @@
+{
+  "name": "GalacticHQ2F",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 54,
+  "height": 24,
+  "ground": [
+    "######################################################",
+    "######################################################",
+    "######################################################",
+    "#__##__________##__________##________##_______##_____#",
+    "#__##__________##__________##________##_______##_____#",
+    "#______________##__________##________##_______##_____#",
+    "#______________##__________##________##______________#",
+    "#############################________##______________#",
+    "#############################________#################",
+    "#############################________#################",
+    "#############################________#################",
+    "#____##______####__________##________#################",
+    "#____##______####__________##________####_____##_____#",
+    "#____##______####__________##________####_____##_____#",
+    "#____##____________________##________##_______##_____#",
+    "#____##____________________#####__#####_______##_____#",
+    "#####################______#####__#####_______##_____#",
+    "#####################______#####__#####_______##_____#",
+    "#####################______#####__#####_______##_____#",
+    "#####################_________________________##_____#",
+    "#__________________##_________________________##_____#",
+    "#__________________##_________________________##_____#",
+    "#__________________##_________________________##_____#",
+    "######################################################"
+  ],
+  "solid": [
+    "######################################################",
+    "######################################################",
+    "######################################################",
+    "#..####......#####.......#####..##..###.#...#.####...#",
+    "#..####......####........####........##.#...#.####...#",
+    "#..............##..........##........##.#...#.##.....#",
+    "#..............##..........##........##..............#",
+    "#############################........##..............#",
+    "#############################........#################",
+    "#############################........#################",
+    "#############################........#################",
+    "###..###...##################........#################",
+    "###..##....##########..######........######...####...#",
+    "#....##......####..........##........####.....####...#",
+    "#....##....................##........###......####...#",
+    "#....##....................#####..#####.......####...#",
+    "#####################......#####..#####.......##.....#",
+    "#####################......#####..#####..##...##.....#",
+    "#####################......#####..#####..##...##.....#",
+    "#####################.........................##.....#",
+    "#..................##.........................##.....#",
+    "#..................##.........................##.....#",
+    "#..................##.........................##.....#",
+    "######################################################"
+  ],
+  "behaviours": [
+    { "x": 1, "y": 3, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 17, "y": 5, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 1, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 45, "y": 12, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 52, "y": 6, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 29, "y": 13, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 52, "y": 12, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 18, "y": 20, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 1, "y": 22, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 45, "y": 22, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "SideStairsUpEast",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 5,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 11,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 25,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 2,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 18,
+      "y": 20,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 22,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 17,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 29,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 21,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 22,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 7,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 29,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 25,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 26,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 23,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 24,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 17,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 18,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 19,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 20,
+      "y": 11,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsUp",
+      "x": 48,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Television",
+      "x": 32,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
+      "x": 33,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bed",
+      "x": 44,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bed",
+      "x": 40,
+      "y": 3,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 41,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 42,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 39,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 52,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 45,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 45,
+      "y": 22,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 52,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 36,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 48,
+      "y": 12,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 49,
+      "y": 12,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 48,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 49,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Painting",
+      "x": 42,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 41,
+      "y": 17,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ1F",
+      "targetX": 3,
+      "targetY": 3,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 24,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ1F",
+      "targetX": 28,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 11,
+      "targetMap": "GalacticHQ1F",
+      "targetX": 20,
+      "targetY": 14,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 16,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 50,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 46,
+      "targetY": 3,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 1,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 17,
+      "targetY": 5,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 17,
+      "sourceY": 5,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 1,
+      "targetY": 3,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 1,
+      "sourceY": 14,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 45,
+      "targetY": 12,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 45,
+      "sourceY": 12,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 1,
+      "targetY": 14,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 52,
+      "sourceY": 6,
+      "targetMap": "GalacticHQHall",
+      "targetX": 1,
+      "targetY": 12,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 29,
+      "sourceY": 13,
+      "targetMap": "GalacticHQHall",
+      "targetX": 24,
+      "targetY": 6,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 52,
+      "sourceY": 12,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 18,
+      "targetY": 20,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 18,
+      "sourceY": 20,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 52,
+      "targetY": 12,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 1,
+      "sourceY": 22,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 45,
+      "targetY": 22,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 45,
+      "sourceY": 22,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 1,
+      "targetY": 22,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 40,
+      "y": 4,
+      "text": "It's a bed.",
+      "script": "Bed"
+    },
+    {
+      "x": 40,
+      "y": 5,
+      "text": "It's a bed.",
+      "script": "Bed"
+    },
+    {
+      "x": 44,
+      "y": 4,
+      "text": "It's a bed.",
+      "script": "Bed"
+    },
+    {
+      "x": 42,
+      "y": 2,
+      "text": "Team Galactic Nap Room\nMake sure the bed is empty before you get into it!",
+      "script": "Notice"
+    },
+    {
+      "x": 31,
+      "y": 18,
+      "text": "Team Galactic TV Room\nThe finest sound and picture there is, for members only. Onward to a new universe!",
+      "script": "Notice"
+    },
+    {
+      "x": 9,
+      "y": 19,
+      "text": "A notice on the wall:\n\"Team Galactic's creed! All that there is belongs to Team Galactic. Lift your eyes past this world: the stars shall be Team Galactic's too!\"",
+      "script": "Notice"
+    },
+    {
+      "x": 39,
+      "y": 14,
+      "text": "A note is taped to the fridge:\n\"Drink your fill, and find the strength to drive us on!\"\nInside there is nothing but bottles of something murky...",
+      "script": "Notice"
+    },
+    {
+      "x": 41,
+      "y": 12,
+      "text": "A note is pinned up over the sink:\n\"Eat what you love, and thrive!\"\nSomething nobody could put a name to has dried in a crust all round the basin...",
+      "script": "Notice"
+    },
+    {
+      "x": 42,
+      "y": 12,
+      "text": "A note is pinned up over the sink:\n\"Eat what you love, and thrive!\"\nSomething nobody could put a name to has dried in a crust all round the basin...",
+      "script": "Notice"
+    },
+    {
+      "x": 41,
+      "y": 17,
+      "text": "A report lies on the table: \"The Pokémon Statue of Eterna City\".",
+      "script": "Report"
+    }
+  ],
+  "npcs": [
+    {
+      "name": "Max Revive",
+      "npcType": "ItemBall",
+      "x": 48,
+      "y": 21,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_GALACTIC_HQ_2F_REVIVE",
+      "item": "Max Revive"
+    },
+    {
+      "id": "galactic_grunt_1",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 6,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_2f_1",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: The boss is about to speak, and you barge in now? Out you go!",
+        "dialogueAfter": "Galactic Grunt: Now I'll miss the speech AND get a telling-off...",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "galactic_grunt_2",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 21,
+      "y": 16,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_2f_2",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: These machines are worth more than you are. Hands off!",
+        "dialogueAfter": "Galactic Grunt: Fine. Touch what you like. See if I care.",
+        "sightRange": 4
+      },
+      "movement": "look_north_and_east"
+    },
+    {
+      "id": "galactic_grunt_3",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 26,
+      "y": 16,
+      "facing": "Left",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_2f_3",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: Lost, are you? This floor is for Team Galactic and nobody else!",
+        "dialogueAfter": "Galactic Grunt: You don't battle like somebody who's lost.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "scientist_darrius",
+      "name": "Scientist",
+      "npcType": "Scientist",
+      "x": 32,
+      "y": 6,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "scientist_darrius",
+        "name": "Darrius",
+        "trainerClass": "Scientist",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Scientist Darrius: Shh! Our broadcast is on. ...Wait. You're no member!",
+        "dialogueAfter": "Scientist Darrius: And now I've missed the best part.",
+        "sightRange": 2
+      }
+    },
+    {
+      "name": "Green Shard",
+      "npcType": "ItemBall",
+      "x": 3,
+      "y": 11,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_GALACTIC_HQ_2F_GREEN_SHARD",
+      "item": "Green Shard"
+    }
+  ],
+  "hiddenItems": [
+    {
+      "x": 44,
+      "y": 5,
+      "item": "Poké Doll",
+      "flag": "FLAG_OBTAINED_HIDDEN_GALACTIC_HQ_2F_POKE_DOLL"
+    },
+    {
+      "x": 1,
+      "y": 12,
+      "item": "Max Potion",
+      "flag": "FLAG_OBTAINED_HIDDEN_GALACTIC_HQ_2F_MAX_POTION"
+    }
+  ],
+  "wildEncounters": []
+}

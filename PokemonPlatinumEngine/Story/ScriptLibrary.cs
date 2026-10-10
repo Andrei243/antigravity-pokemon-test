@@ -68,6 +68,10 @@ public sealed class ScriptLibrary
     /// scenes: called by <see cref="ChapterSeven"/>, and run for a save from before.</summary>
     public const string ChapterEight = "common.ChapterEight";
 
+    /// <summary>The script that hides the people of Team Galactic's headquarters until their scenes (plan 02 · S11,
+    /// part b): called by <see cref="ChapterEight"/>, and run for a save from before.</summary>
+    public const string Headquarters = "common.Headquarters";
+
     private readonly Dictionary<string, Script> scripts = new(StringComparer.Ordinal);
 
     public IReadOnlyCollection<Script> All => scripts.Values;

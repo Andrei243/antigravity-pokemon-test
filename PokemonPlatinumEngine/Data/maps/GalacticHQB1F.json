@@ -1,0 +1,105 @@
+{
+  "name": "GalacticHQB1F",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 15,
+  "height": 10,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "###___________#",
+    "#_____________#",
+    "#_____________#",
+    "###############"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "####........###",
+    "#...........###",
+    "#.............#",
+    "###...........#",
+    "###...........#",
+    "###...........#",
+    "###############"
+  ],
+  "props": [
+    {
+      "type": "SideStairsUpEast",
+      "x": 12,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDownWest",
+      "x": 1,
+      "y": 7,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ1F",
+      "targetX": 47,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 7,
+      "targetMap": "GalacticHQB2F",
+      "targetX": 80,
+      "targetY": 3,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "grunt_m",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 5,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "I'm in Team Galactic, and I haven't got a single Pokémon. The lowest of the low, that's me.",
+        "It's my own fault, mind. I still can't work out which warp panel goes where."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC"
+    }
+  ],
+  "wildEncounters": []
+}

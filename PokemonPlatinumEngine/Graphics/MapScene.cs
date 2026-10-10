@@ -73,6 +73,9 @@ internal sealed class MapScene
     /// </summary>
     public int RoomDepth => Map.Height - roomCorner.Back + 2;
 
+    /// <summary>How many tiles of floor a room is across, between its side walls.</summary>
+    public int RoomWidth => Map.Width - 1 - roomCorner.Left;
+
     // Where a room's floor begins (Map.RoomCorner): its side wall stands west of it and its back wall north
     private readonly (int Left, int Back) roomCorner;
 
@@ -870,15 +873,44 @@ internal sealed class MapScene
             Plinths(batches, lx, by, wallFoot);
         }
         kit.Origin = new Vector3(0, wallFoot, 0);
-        var backWall = kit.Face("wall.back", right - left, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+        // A wall longer than the art sheet is wide (a hall of more than sixty-three tiles: the basement of Team Galactic's
+        // headquarters, plan 02 · S11) is laid in lengths of thirty-two tiles. The wall's pattern repeats every sixteen
+        // texels, so the lengths meet without a seam, and a top's pale line is left off where two of them meet
+        const int length = 32 * T;
+        bool whole = right - left <= length;
+        for (int a = left; a < right; a += length)
+        {
+            int run = Math.Min(length, right - a);
+            var backWall = kit.Face(whole ? "wall.back" : $"wall.back.{run}", run, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+            kit.Quad(kit.At(a, 0, back), kit.At(a + run, 0, back), kit.At(a + run, wallH, back), kit.At(a, wallH, back), backWall, KitBuilder.FrontNormal);
+        }
         var sideWall = kit.Face("wall.side", front - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
-        kit.Quad(kit.At(left, 0, back), kit.At(right, 0, back), kit.At(right, wallH, back), kit.At(left, wallH, back), backWall, KitBuilder.FrontNormal);
         kit.Quad(kit.At(left, 0, front), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, front), sideWall, Vector3.UnitX);
         kit.Quad(kit.At(right, 0, back), kit.At(right, 0, front), kit.At(right, wallH, front), kit.At(right, wallH, back), sideWall, -Vector3.UnitX);
 
+        // A way on through the back wall of a room that is no Gym (a warp on the row behind the floor: the laboratory
+        // of Team Galactic's headquarters, plan 02 · S11): a doorway on the wall, which whoever takes it walks into
+        if (style != InteriorStyle.Gym)
+            foreach (var warp in Map.Warps)
+            {
+                if (warp.SourceY != by - 1 || warp.SourceX < lx || warp.SourceX >= w - 1) continue;
+                const int dw = GalacticArt.DoorwayWidth, dh = GalacticArt.DoorwayHeight;
+                var doorway = kit.Face("wall.doorway", dw, dh, GalacticArt.PaintDoorway);
+                float x0 = warp.SourceX * T + (T - dw) / 2f, z = back + 0.5f;
+                kit.Quad(kit.At(x0, 0, z), kit.At(x0 + dw, 0, z), kit.At(x0 + dw, dh, z), kit.At(x0, dh, z), doorway, KitBuilder.FrontNormal);
+            }
+
         // The dark tops of the cut-away walls frame the room
         Art Top(int tw, int td) => kit.Face($"wall.top.{tw}x{td}", tw, td, GroundBaker.PaintWallTop);
-        kit.Box(left - cap, right + cap, back - cap, back, wallH - 1, wallH, top: Top(right - left + 2 * cap, cap));
+        // One length of a long top or kerb: its pale line along its sides, and at an end only where the whole run ends
+        Art TopOf(string what, int tw, int td, bool west, bool east) => west && east ? what == "top" ? Top(tw, td) : kit.Face($"wall.{what}.{tw}", tw, td, GroundBaker.PaintWallTop)
+            : kit.Face($"wall.{what}.{tw}x{td}.{(west ? "w" : "")}{(east ? "e" : "")}", tw, td, c => GroundBaker.PaintWallTop(c, true, true, west, east));
+        for (int a = left - cap, end = right + cap; a < end; a += length)
+        {
+            int run = end - a <= length + 2 * cap ? end - a : length;
+            kit.Box(a, a + run, back - cap, back, wallH - 1, wallH, top: TopOf("top", run, cap, a == left - cap, a + run == end));
+            if (a + run == end) break;
+        }
         kit.Box(left - cap, left, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
         kit.Box(right, right + cap, back, front + cap, wallH - 1, wallH, top: Top(cap, front - back + cap));
 
@@ -898,7 +930,12 @@ internal sealed class MapScene
             int end = tx;
             while (end + 1 < w - 1 && Map.GetGroundTile(end + 1, h - 1) != TileType.Door) end++;
             int run = (end - tx + 1) * T;
-            kit.Box(tx * T, tx * T + run, front, front + cap, 0, 8, Top(run, cap), kit.Face($"wall.kerb.{run}", run, 8, GroundBaker.PaintWallTop));
+            for (int a = tx * T, last = tx * T + run; a < last; a += length)
+            {
+                int part = Math.Min(length, last - a);
+                bool west = a == tx * T, east = a + part == last;
+                kit.Box(a, a + part, front, front + cap, 0, 8, TopOf("top", part, cap, west, east), TopOf("kerb", part, 8, west, east));
+            }
             tx = end;
         }
         kit.Origin = Vector3.Zero;

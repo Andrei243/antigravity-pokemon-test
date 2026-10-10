@@ -148,6 +148,14 @@ public class NPC
     /// </summary>
     public const string LeagueDoorType = "LeagueDoor";
 
+    /// <summary>
+    /// A leaf of one of Team Galactic's locked doors (plan 02 · S11, part b; the original's
+    /// <c>OBJ_EVENT_GFX_GALACTIC_HQ_DOOR</c>): a thing of the map that stands across a gap in a wall while its flag
+    /// lets it, in the way like a person and read like one (its script asks for the key). Drawn as a card, a shutter as
+    /// high as a room's inner walls are cut (style guide, "Rooms").
+    /// </summary>
+    public const string GalacticDoorType = "GalacticDoor";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -156,6 +164,7 @@ public class NPC
         BollardType => PropType.Bollard,
         SnowballType => PropType.Snowball,
         LeagueDoorType => PropType.LeagueDoor,
+        GalacticDoorType => PropType.GalacticDoor,
         _ => null
     };
 

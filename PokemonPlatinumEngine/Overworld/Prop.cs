@@ -155,7 +155,18 @@ public enum PropType
     Window,
     Painting,
     Clock,
-    WallEmblem
+    WallEmblem,
+
+    // Team Galactic's headquarters (plan 02 · S11, part b). Appended here, past the decorations: none of them blocks by
+    // itself, the room's own tiles say where one can walk
+    /// <summary>A warp panel set into the floor (a tile of <see cref="TileBehavior.WarpPanel"/>): a ring of teal light on a dark plate.</summary>
+    WarpPanel,
+    /// <summary>The panel that leads out of the building, and the pad it lands on: the same plate with its ring in green.</summary>
+    WarpPanelOut,
+    /// <summary>A leaf of a locked door of Team Galactic's: a thing of the map (<see cref="NPC.GalacticDoorType"/>), drawn as a card.</summary>
+    GalacticDoor,
+    /// <summary>A tank of the laboratory, two tiles by two: a glass cylinder of green fluid between a steel foot and cap.</summary>
+    Tank
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

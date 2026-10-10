@@ -12,12 +12,23 @@
 #
 # The original's RemoveObject also sets the flag that hides whoever it takes off the map, so everyone sent away here is
 # hidden by their flag as well (FLAG_HIDE_VEILSTONE_GALACTIC_GRUNTS takes the third grunt, by the Game Corner, with the
-# other two). The Storage Key's grunt and Looker by the Galactic building are plan 02 · S11's.
+# other two).
+#
+# Plan 02 · S11, part b: once Commander Jupiter has been to Lake Acuity (lake_acuity.txt clears
+# FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY), a grunt stands on the terrace before the Galactic building, admiring
+# the antennae. Spoken to, he knows the player (he is the one who lost his Clefairy after Jubilife City), swears he
+# knows nothing about any Storage Key and runs, and the key is what he leaves behind: Looker comes up with it in his
+# hand (FLAG_VEILSTONE_CITY_GRUNT_DROPPED_STORAGE_KEY) and asks whether the player will come into the hideout with
+# him. A yes sends him to the warehouse (VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 3,
+# FLAG_AGREED_WITH_LOOKER_TO_ENTER_HIDEOUT), where he unlocks the door (VeilstoneGalacticWarehouse.txt). In Platinum
+# the player never holds the Storage Key: Looker does.
 
 
 # Arriving: the assistant asks for help once Maylene is beaten (the original's OnFrame, state 1), and waits by the
 # warehouse after that (its OnTransition, state 2 and on).
 script OnEnter
+  # Looker waits before the Galactic building once the Storage Key is his (the original's OnTransition)
+  if flag FLAG_VEILSTONE_CITY_GRUNT_DROPPED_STORAGE_KEY place looker 717 593 up
   if var VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE == 1 goto NeedsHelp
   if var VAR_VEILSTONE_CITY_COUNTERPART_NEEDS_HELP_STATE >= 2 place counterpart 696 596 right
   end
@@ -260,6 +271,82 @@ label Fight
   say "Come for that Pokédex? Ha! Still, standing guard all day is mind-numbing."
   say "Two on two, then. Let's have some fun!"
   end
+
+
+# The grunt on the terrace before the Galactic building (the original's VeilstoneCity_GruntMStorageKey), spoken to
+# from any side: he runs down the steps into the town, and Looker comes up them with the key the grunt let fall and
+# stops a tile south of the player.
+script GruntStorageKey
+  speaker "Galactic Grunt"
+  say "Look at them! Just look at those antennae up there!"
+  say "No idea what they're for, mind. But have you ever seen antennae like it?"
+  face self player
+  emote self exclaim
+  say "Hey! It's you! You won't know me from the next grunt, but I know you all right!"
+  say "Thanks to you they took my Clefairy off me. And then my partner packed it all in and went back home..."
+  say "Waah! I don't know anything! I've never even heard of any Storage Key!"
+  setflag FLAG_VEILSTONE_CITY_GRUNT_DROPPED_STORAGE_KEY
+  # He stands at 721, 593: round the player and down the steps at the terrace's south-east corner
+  if var PLAYER_X == 722 goto GruntFromTheEast
+  if var PLAYER_Y == 594 face player right
+  walk self right 1 down 2 right 1 down 9 fast
+  goto GruntGone
+label GruntFromTheEast
+  walk self down 2 right 2 down 9 fast
+label GruntGone
+  face player down
+  hide self
+  setflag FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
+  clearflag FLAG_HIDE_VEILSTONE_CITY_LOOKER
+  place looker 723 601 up
+  show looker
+  walk looker up 6
+  if var PLAYER_Y == 594 goto LookerFromTheSouth
+  if var PLAYER_X == 720 walk looker left 3 up 1
+  if var PLAYER_Y == 592 walk looker left 2 up 2
+  if var PLAYER_X == 722 walk looker left 1 up 1
+  call AskHideout
+  end
+label LookerFromTheSouth
+  walk looker left 2
+  face looker up
+  call AskHideout
+  end
+
+
+# Looker before the building (the original's VeilstoneCity_Looker), until he has gone ahead into the warehouse.
+script Looker
+  speaker "Looker"
+  face self player
+  emote self exclaim
+  say "{player}!"
+  if flag FLAG_AGREED_WITH_LOOKER_TO_ENTER_HIDEOUT goto Agreed
+  call AskHideout
+  end
+label Agreed
+  call MeetInside
+  end
+
+# His question, from the grunt's scene and from Looker spoken to (VeilstoneCity_AskWillYouEnterTheHideout).
+script AskHideout
+  speaker "Looker"
+  say "Aha! This, you may leave to me, my friend. The Storage Key that opens the way into Team Galactic's hideout: I have it, right here!"
+  say "To march in through their front door, that we cannot do. But to slip in by the back? That we can."
+  ask "Well? You will come into the hideout with me? You have your own reasons to, I think."
+  if no goto Daunting
+  call MeetInside
+  return
+label Daunting
+  say "...Yes. I take your point. To creep into the lair of Team Galactic... it is no small thing."
+  return
+
+script MeetInside
+  setvar VAR_VEILSTONE_CITY_GALACTIC_WAREHOUSE_STATE 3
+  setflag FLAG_AGREED_WITH_LOOKER_TO_ENTER_HIDEOUT
+  speaker "Looker"
+  say "Very good. The warehouse of Team Galactic: inside it, we meet."
+  say "Make yourself as ready as you can. I will be along directly."
+  return
 
 
 # A man by the meteorites who gives TM63 (the original's VeilstoneCity_Roughneck2).

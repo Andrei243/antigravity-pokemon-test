@@ -216,12 +216,15 @@ public class PokemonTests
 
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
         // warp need only be reached from one arrival or another (RoomPlanTests holds how their stairs join).
-        bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName);
+        // So are the floors of Team Galactic's headquarters (plan 02 · S11): each is cut into parts joined by warp panels.
+        bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName) || RoomPlanTests.GalacticHeadquarters.Contains(mapName);
         var reachedFromAny = new HashSet<(int, int)>();
 
         foreach (var (startX, startY) in arrivals)
         {
-            Assert.True(map.IsWalkable(startX, startY), $"{mapName}: arrival tile ({startX},{startY}) is not walkable");
+            // Someone a flag keeps off the map but for their scene may stand on the tile they come by (Cyrus, on the
+            // warp panel of the dais he speaks from in Team Galactic's hall, as the original stands him)
+            Assert.True(Open(startX, startY), $"{mapName}: arrival tile ({startX},{startY}) is not walkable");
 
             // Flood fill; stepping onto a warp tile triggers it, so don't expand past one. Someone a story flag takes
             // off the map isn't in the way for good (the bollards in Fantina's room, gone once she is beaten), and nor is

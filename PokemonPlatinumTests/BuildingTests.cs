@@ -571,7 +571,9 @@ public class BuildingTests
             // A room with relief stands each piece on the floor under it (the Oreburgh Gym's emblem on the dais)
             float foot = Relief.At(map, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f);
             Assert.True(max.Y - foot <= PropModels.WallHeight / 32f * IndoorVS + 0.01f, $"{mapName}: the {prop.Type} is taller than the walls");
-            if (prop.IsSolid)
+            // A tank stands in the room on tiles its plan blocks, and a warp panel lies on the floor as a rug does
+            // (Team Galactic's headquarters, plan 02 · S11)
+            if (prop.IsSolid || prop.Type is PropType.Tank or PropType.WarpPanel or PropType.WarpPanelOut)
                 Assert.True(min.Z >= prop.Y - slack && max.Z <= prop.Y + prop.Depth + slack, $"{mapName}: the {prop.Type} at {prop.X},{prop.Y} is deeper than its tiles");
             else if (prop.Type != PropType.Rug)
                 // Things on the back wall hang on its face, two tiles in (more in a room rebuilt to the original's plan)

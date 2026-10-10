@@ -1,0 +1,259 @@
+{
+  "name": "GalacticHQControlRoom",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "####..#####..####",
+    "####..#####..####",
+    "#.....#####.....#",
+    "#...............#",
+    "#...............#",
+    "#......###......#",
+    "#......###......#",
+    "#......###......#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabDesk",
+      "x": 6,
+      "y": 5,
+      "width": 5,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "LabMachine",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "LabMachine",
+      "x": 8,
+      "y": 8,
+      "width": 1,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "GalacticHQLaboratory",
+      "targetX": 36,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 10,
+      "text": "One of Team Galactic's sinister machines. Uxie was held inside it.",
+      "script": "Notice"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "text": "One of Team Galactic's sinister machines. Mesprit was held inside it.",
+      "script": "Notice"
+    },
+    {
+      "x": 14,
+      "y": 4,
+      "text": "One of Team Galactic's sinister machines. Azelf was held inside it.",
+      "script": "Notice"
+    },
+    {
+      "x": 8,
+      "y": 5,
+      "text": "A single button sits in the middle of the console.",
+      "script": "Button"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "saturn",
+      "name": "Saturn",
+      "npcType": "Grunt",
+      "x": 8,
+      "y": 6,
+      "facing": "Up",
+      "script": "Saturn",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC"
+    },
+    {
+      "id": "azelf",
+      "name": "Azelf",
+      "npcType": "Pokemon",
+      "x": 14,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Azelf is shut inside! It shudders, as if it is in pain."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_LAKE_GUARDIANS",
+      "species": "Azelf"
+    },
+    {
+      "id": "mesprit",
+      "name": "Mesprit",
+      "npcType": "Pokemon",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Mesprit is shut inside! Its tails twitch, as if it is in pain."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_LAKE_GUARDIANS",
+      "species": "Mesprit"
+    },
+    {
+      "id": "uxie",
+      "name": "Uxie",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 10,
+      "facing": "Down",
+      "dialog": [
+        "Uxie is shut inside! Its eyes are screwed tight, as if it is in pain."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_LAKE_GUARDIANS",
+      "species": "Uxie"
+    },
+    {
+      "id": "charon",
+      "name": "Charon",
+      "npcType": "Charon",
+      "x": 7,
+      "y": 6,
+      "facing": "Up",
+      "script": "Charon",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_CHARON"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 8,
+      "y": 13,
+      "width": 1,
+      "depth": 1,
+      "script": "CallBack",
+      "variable": "VAR_GALACTIC_HQ_CONTROL_ROOM_STATE",
+      "value": 1
+    }
+  ],
+  "wildEncounters": []
+}

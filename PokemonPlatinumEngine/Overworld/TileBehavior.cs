@@ -271,7 +271,7 @@ public static class TileBehaviors
             or TileBehavior.EntranceNorth or TileBehavior.EntranceSouth or TileBehavior.ExitEast or TileBehavior.ExitWest
             or TileBehavior.ExitNorth or TileBehavior.ExitSouth
             => (BehaviourSupport.Waiting, "Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11)."),
-        TileBehavior.WarpPanel or TileBehavior.EscalatorFacingBack or TileBehavior.Escalator
+        TileBehavior.EscalatorFacingBack or TileBehavior.Escalator
             => (BehaviourSupport.Waiting, "Comes with the buildings that have them (plan 01 · M11)."),
         TileBehavior.Unknown3C or TileBehavior.Unknown3D or TileBehavior.Unknown60 or TileBehavior.Unknown88 or TileBehavior.Unknown8E
             or TileBehavior.Unknown8F => (BehaviourSupport.Waiting, "Not understood."),
@@ -284,6 +284,8 @@ public static class TileBehaviors
         TileBehavior.ShinyFloor => (BehaviourSupport.Plain, "Walked on; whoever stands on it is mirrored in the floor."),
         TileBehavior.Sand or TileBehavior.ShadedSnow => (BehaviourSupport.Plain, "Walked on; every step leaves a footprint that fades."),
         TileBehavior.Door => (BehaviourSupport.Plain, "A blocked tile until a warp opens it."),
+        // A step onto a panel is a step like any other: what it does comes once the step has ended (plan 02 · S11)
+        TileBehavior.WarpPanel => (BehaviourSupport.Plain, "Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters)."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")
     };

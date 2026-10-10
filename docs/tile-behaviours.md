@@ -63,7 +63,7 @@ Every tile of the imported world carries two things from Platinum's own map data
 | `0x63` | `EntranceWest` | An opening entered walking west. | *Not yet.* Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11). |  |  | 41 | 30 | 21 places |
 | `0x64` | `EntranceNorth` | An opening entered walking north. | *Not yet.* Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11). |  |  | 2 | 1 | Contest Hall, Mt. Coronet |
 | `0x65` | `EntranceSouth` | An opening entered walking south. | *Not yet.* Its warp is taken by stepping onto the tile; taking it by walking off the right way comes with the rooms (plan 01 · M11). |  |  | 187 | 43 | 98 places |
-| `0x67` | `WarpPanel` | A panel that warps whoever steps on it. | *Not yet.* Comes with the buildings that have them (plan 01 · M11). |  |  | 86 | 0 | Global Terminal, Hearthome City, Galactic HQ, union room |
+| `0x67` | `WarpPanel` | A panel that warps whoever steps on it. | Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters). |  |  | 86 | 0 | Global Terminal, Hearthome City, Galactic HQ, union room |
 | `0x69` | `Door` | A door: blocked, but walking into it opens it and takes the warp there. | A blocked tile until a warp opens it. |  |  | 192 | 192 | 46 places |
 | `0x6A` | `EscalatorFacingBack` | An escalator that turns its rider round. | *Not yet.* Comes with the buildings that have them (plan 01 · M11). |  |  | 6 | 0 | 17 places |
 | `0x6B` | `Escalator` | An escalator. | *Not yet.* Comes with the buildings that have them (plan 01 · M11). |  |  | 11 | 0 | Veilstone Store, Pal Park |
@@ -114,7 +114,7 @@ Every tile of the imported world carries two things from Platinum's own map data
 
 ## What the game does with them
 
-The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: 41 of the behaviours have a rule there, 30 are ground like any other as far as a step goes, and 23 wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
+The rules of walking are `Overworld/FieldMovement.cs` (plan 01 · M3), which follows the original's `src/player_move.c`: 41 of the behaviours have a rule there, 31 are ground like any other as far as a step goes, and 22 wait for the place that needs them. `FieldMovementTests.EveryBehaviourIsAccountedFor` fails if this table and the rules disagree.
 
 - **A step** onto a tile is refused if the tile is blocked, if someone stands on it, or if its ground is 1.25 tiles or more above or below; otherwise the behaviours of the tile left and the tile entered decide.
 - **Pace** is Platinum's five speeds. A walk is 4.5 tiles a second and a run 8; surfing goes at a run; the Bicycle at a run in its low gear and half as fast again in its high one.

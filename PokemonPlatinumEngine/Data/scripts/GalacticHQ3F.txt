@@ -1,0 +1,30 @@
+# Team Galactic's headquarters, the third floor (plan 02 · S11, part b), rebuilt to the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats (scripts_galactic_hq_3f.s).
+#
+# A floor of store rooms and machines in six parts, joined by warp panels. A shutter across the corridor in its
+# south wall opens to the Galactic Key (FLAG_HIDE_GALACTIC_HQ_3F_DOOR), and the stairs in its middle room lead up to
+# the floor where Cyrus waits.
+
+
+# The shutter across the corridor (the original's script 2): it opens to the Galactic Key, for good.
+script Door
+  speaker none
+  if item "Galactic Key" goto HasKey
+  say "The shutter is locked. It wants a special key."
+  end
+label HasKey
+  ask "The shutter is locked. It wants a special key. Use the Galactic Key?"
+  if no goto Leave
+  sound "door_slide"
+  hide galactic_hq_door_west
+  hide galactic_hq_door_east
+  setflag FLAG_HIDE_GALACTIC_HQ_3F_DOOR
+  say "The shutter slid open."
+label Leave
+  end
+
+# The creed on the wall, read with no name on the box.
+script Notice
+  speaker none
+  sayown
+  end

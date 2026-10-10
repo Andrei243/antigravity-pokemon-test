@@ -1,0 +1,637 @@
+{
+  "name": "GalacticHQ3F",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 54,
+  "height": 24,
+  "ground": [
+    "######################################################",
+    "######################################################",
+    "######################################################",
+    "#__________##_____##_________________________________#",
+    "#__________##_____##_________________________________#",
+    "#__________##_____##___##################____________#",
+    "#_________________##___##################___________##",
+    "#___################___##################____________#",
+    "#___################___###############################",
+    "#___################___##____________#################",
+    "#___################___##____________#################",
+    "#___##_______####______##____________#################",
+    "#___##_______####______##____________####____________#",
+    "#___##_______##________##____________####____________#",
+    "#___##_______##________##______________##____________#",
+    "#___##_______##________##______________##_____##_____#",
+    "#___#####################______________##_____##_____#",
+    "#___#######################__############____________#",
+    "#___#######################__############____________#",
+    "#___#######################__############____________#",
+    "#_____________________________##______________##_____#",
+    "##___________________________###______________##_____#",
+    "#_____________________________##_____________________#",
+    "######################################################"
+  ],
+  "solid": [
+    "######################################################",
+    "######################################################",
+    "######################################################",
+    "##........#####...##............................##..##",
+    "#..........####...##............................##...#",
+    "#..........##.....##...##################............#",
+    "#.................##...##################...........##",
+    "#...################...##################...........##",
+    "#...################...###############################",
+    "#...################...###############################",
+    "#...################...####..##..##..#################",
+    "#...##.....######......##............#################",
+    "#...##.....######......##............##########......#",
+    "#...##.......##........####..##..##..####............#",
+    "#...##.......##........####..##..##..####............#",
+    "#...##.......##........####..##..##..####.....##.....#",
+    "#...#####################..............##.....##.....#",
+    "#...#######################..############..........###",
+    "#...#######################..############..........###",
+    "#...#######################..############..........###",
+    "#.............................##.......##.....##...###",
+    "##...........................###.....####.....##...###",
+    "##...........................###.....##............###",
+    "######################################################"
+  ],
+  "behaviours": [
+    { "x": 6, "y": 14, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 15, "y": 13, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 17, "y": 11, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 52, "y": 12, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 19, "y": 11, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 32, "y": 22, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "SideStairsDownWest",
+      "x": 13,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsUpEast",
+      "x": 11,
+      "y": 11,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "WarpPanel",
+      "x": 6,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 17,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 19,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 15,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 27,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 28,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 31,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 32,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 25,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 26,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 25,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 26,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 29,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 30,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 29,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 30,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Plant",
+      "x": 29,
+      "y": 22,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 22,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 52,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 32,
+      "y": 22,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 39,
+      "y": 20,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 37,
+      "y": 21,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "SideStairsDown",
+      "x": 48,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 35,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 36,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 37,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 38,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 33,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 34,
+      "y": 14,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 33,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "LabMachine",
+      "x": 34,
+      "y": 9,
+      "width": 1,
+      "depth": 2
+    },
+    {
+      "type": "Bookshelf",
+      "x": 41,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 42,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 43,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 44,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 45,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 46,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 52,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 52,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 51,
+      "y": 21,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 51,
+      "y": 19,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Crates",
+      "x": 51,
+      "y": 17,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 15,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 11,
+      "targetY": 3,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 47,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 51,
+      "targetY": 3,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 11,
+      "targetMap": "GalacticHQ4F",
+      "targetX": 4,
+      "targetY": 15,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 14,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 15,
+      "targetY": 13,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 15,
+      "sourceY": 13,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 6,
+      "targetY": 14,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 17,
+      "sourceY": 11,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 52,
+      "targetY": 12,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 52,
+      "sourceY": 12,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 17,
+      "targetY": 11,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 19,
+      "sourceY": 11,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 32,
+      "targetY": 22,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 32,
+      "sourceY": 22,
+      "targetMap": "GalacticHQ3F",
+      "targetX": 19,
+      "targetY": 11,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 6,
+      "y": 19,
+      "text": "A notice on the wall:\n\"Team Galactic's creed! All that there is belongs to Team Galactic. Lift your eyes past this world: the stars shall be Team Galactic's too!\"",
+      "script": "Notice"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "grunt_m",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "The locked doors in this building all open with one special key.",
+        "If I were the sort of villain who's only here for the laughs, I'd let slip where it is. But I honestly haven't a clue!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC"
+    },
+    {
+      "name": "TM21",
+      "npcType": "ItemBall",
+      "x": 36,
+      "y": 12,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_GALACTIC_HQ_3F_TM21",
+      "item": "TM21"
+    },
+    {
+      "id": "galactic_grunt_2",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 20,
+      "facing": "Right",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_3f_2",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: Up and down, up and down... Oh! At last, something to do!",
+        "dialogueAfter": "Galactic Grunt: Back to pacing, then.",
+        "sightRange": 2
+      },
+      "movement": "walk_back_and_forth",
+      "rangeX": 8
+    },
+    {
+      "id": "galactic_grunt_3",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 42,
+      "y": 7,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_3f_3",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: The boss said nobody goes past. So nobody goes past!",
+        "dialogueAfter": "Galactic Grunt: Somebody went past.",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "galactic_grunt_4",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 42,
+      "y": 3,
+      "facing": "Down",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_3f_4",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: A brand-new world is on its way, and there's no room in it for you!",
+        "dialogueAfter": "Galactic Grunt: Will there be room in it for me, though?",
+        "sightRange": 3
+      }
+    },
+    {
+      "id": "galactic_hq_door_west",
+      "name": "Door",
+      "npcType": "GalacticDoor",
+      "x": 27,
+      "y": 19,
+      "facing": "Down",
+      "script": "Door",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_3F_DOOR"
+    },
+    {
+      "id": "galactic_hq_door_east",
+      "name": "Door",
+      "npcType": "GalacticDoor",
+      "x": 28,
+      "y": 19,
+      "facing": "Down",
+      "script": "Door",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_3F_DOOR"
+    },
+    {
+      "id": "galactic_grunt_1",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 4,
+      "y": 6,
+      "facing": "Up",
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC",
+      "trainer": {
+        "id": "galactic_grunt_galactic_hq_3f_1",
+        "name": "Grunt",
+        "trainerClass": "Galactic",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Galactic Grunt: No key, no business up here. Out!",
+        "dialogueAfter": "Galactic Grunt: Who needs a key when you battle like that...",
+        "sightRange": 3
+      },
+      "movement": "look_north_and_west"
+    },
+    {
+      "name": "Max Elixir",
+      "npcType": "ItemBall",
+      "x": 50,
+      "y": 21,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_GALACTIC_HQ_3F_MAX_ELIXIR",
+      "item": "Max Elixir"
+    },
+    {
+      "name": "Protein",
+      "npcType": "ItemBall",
+      "x": 38,
+      "y": 20,
+      "facing": "Down",
+      "hiddenBy": "FLAG_OBTAINED_GALACTIC_HQ_3F_PROTEIN",
+      "item": "Protein"
+    }
+  ],
+  "hiddenItems": [
+    {
+      "x": 39,
+      "y": 21,
+      "item": "Elixir",
+      "flag": "FLAG_OBTAINED_HIDDEN_GALACTIC_HQ_3F_ELIXIR"
+    },
+    {
+      "x": 2,
+      "y": 18,
+      "item": "Rare Candy",
+      "flag": "FLAG_OBTAINED_HIDDEN_GALACTIC_HQ_3F_RARE_CANDY"
+    },
+    {
+      "x": 21,
+      "y": 14,
+      "item": "Nugget",
+      "flag": "FLAG_OBTAINED_HIDDEN_GALACTIC_HQ_3F_NUGGET"
+    }
+  ],
+  "wildEncounters": []
+}

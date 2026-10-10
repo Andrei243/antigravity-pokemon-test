@@ -1,0 +1,1151 @@
+{
+  "name": "GalacticHQHall",
+  "displayName": "Galactic HQ",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 27,
+  "height": 19,
+  "ground": [
+    "###########################",
+    "###########################",
+    "###########################",
+    "########__#######__########",
+    "########__#######__########",
+    "########__#######__########",
+    "########___________#####__#",
+    "############___#########__#",
+    "########___#___#___#####__#",
+    "########___________#####__#",
+    "########___________#####__#",
+    "########___________#####__#",
+    "#_________________________#",
+    "#_________________________#",
+    "######_______________######",
+    "######_______________######",
+    "######_______________######",
+    "######_______________######",
+    "###########################"
+  ],
+  "solid": [
+    "###########################",
+    "###########################",
+    "###########################",
+    "########..#######..########",
+    "########..#######..########",
+    "########..#######..########",
+    "########...........#####..#",
+    "############...#########..#",
+    "########...#####...#####..#",
+    "########...........#####..#",
+    "########...........#####..#",
+    "########...........#####..#",
+    "#.........................#",
+    "#.........................#",
+    "######...............######",
+    "######...............######",
+    "######...............######",
+    "########...........########",
+    "###########################"
+  ],
+  "behaviours": [
+    { "x": 24, "y": 6, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 1, "y": 12, "width": 1, "depth": 1, "behaviour": "WarpPanel" },
+    { "x": 17, "y": 3, "width": 1, "depth": 1, "behaviour": "WarpPanel" }
+  ],
+  "props": [
+    {
+      "type": "WarpPanel",
+      "x": 24,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 1,
+      "y": 12,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WarpPanel",
+      "x": 17,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 20,
+      "y": 17,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 19,
+      "y": 17,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 17,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 6,
+      "y": 17,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabDesk",
+      "x": 12,
+      "y": 8,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 24,
+      "sourceY": 6,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 29,
+      "targetY": 13,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 1,
+      "sourceY": 12,
+      "targetMap": "GalacticHQ2F",
+      "targetX": 52,
+      "targetY": 6,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 17,
+      "sourceY": 3,
+      "targetMap": "GalacticHQ4F",
+      "targetX": 8,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "looker",
+      "name": "Looker",
+      "npcType": "Looker",
+      "x": 19,
+      "y": 12,
+      "facing": "Left",
+      "dialog": [
+        "Looker: Shh! Something is about to happen up there."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_LOOKER"
+    },
+    {
+      "id": "cyrus",
+      "name": "Cyrus",
+      "npcType": "Cyrus",
+      "x": 17,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Cyrus: ..."
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_CYRUS"
+    },
+    {
+      "id": "grunt_1",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_2",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_3",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_4",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_5",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_6",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_7",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_8",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_9",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 9,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_10",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_11",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_12",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_13",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_14",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_15",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_16",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_17",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_18",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_19",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_20",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_21",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_22",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_23",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_24",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_25",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_26",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_27",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 11,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_28",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_29",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_30",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_31",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_32",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_33",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_34",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_35",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_36",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 12,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_37",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_38",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_39",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_40",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_41",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_42",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_43",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_44",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_45",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_46",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_47",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_48",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_49",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_50",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_51",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_52",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_53",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_54",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 14,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_55",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_56",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_57",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_58",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_59",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_60",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_61",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_62",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_63",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 15,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_64",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_65",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_66",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_67",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_68",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_69",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_70",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_71",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_72",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 16,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_73",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 9,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_74",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 10,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_75",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 11,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_76",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 12,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_77",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 13,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_78",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 14,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_79",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 15,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_80",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 16,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    },
+    {
+      "id": "grunt_81",
+      "name": "Galactic Grunt",
+      "npcType": "Grunt",
+      "x": 17,
+      "y": 17,
+      "facing": "Up",
+      "dialog": [
+        "Galactic Grunt: Quiet! Master Cyrus is about to speak!"
+      ],
+      "hiddenBy": "FLAG_HIDE_GALACTIC_HQ_HALL_GRUNTS"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 20,
+      "y": 12,
+      "width": 1,
+      "depth": 2,
+      "script": "Speech",
+      "variable": "VAR_GALACTIC_HQ_HALL_STATE",
+      "value": 0
+    }
+  ],
+  "wildEncounters": []
+}

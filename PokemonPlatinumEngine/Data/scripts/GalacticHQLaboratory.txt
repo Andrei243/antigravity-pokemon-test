@@ -1,0 +1,15 @@
+# Team Galactic's headquarters, the laboratory (plan 02 · S11, part b), rebuilt to the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_galactic_hq_laboratory.s).
+#
+# The room the warp panel in Cyrus's own leads to: two rows of tanks with something hanging in each, two scientists
+# sick at what was done here, and at its east end a doorway in the back wall to the control room, where the three
+# Pokémon of the lakes are held. The scientists leave with the rest of Team Galactic once the three are free
+# (FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC, GalacticHQControlRoom.txt).
+
+
+# A tank (the original's script 3), read from in front of it with no name on the box.
+script Notice
+  speaker none
+  sayown
+  end

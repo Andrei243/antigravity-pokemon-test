@@ -250,8 +250,10 @@ public class VeilstoneAndPastoriaTests
         var looker = game.Present("looker")!;
         Assert.Equal((12, 8), (looker.GridX, looker.GridY));
         Assert.Contains("Pastoria City", game.Talk("looker").Transcript[0].Text);
-        Assert.True(game.Map.IsSolid(8, 7) && game.Map.IsSolid(9, 7));
-        Assert.Contains("special key", game.Map.GetSignboardAt(8, 7));
+        // The door is the original's two leaves across the corridor, which Looker's Storage Key opens (plan 02 · S11)
+        Assert.True(game.Map.GetNpcAt(8, 7) is { IsThing: true } && game.Map.GetNpcAt(9, 7) is { IsThing: true });
+        Assert.False(game.Map.IsWalkable(8, 7) || game.Map.IsWalkable(9, 7));
+        Assert.Contains("special key", game.Talk("galactic_hq_door_west").Transcript[0].Text);
 
         // Out again: the guards and the assistant are gone, and the way to the warehouse is open
         game.Through("Sinnoh");
@@ -559,14 +561,16 @@ public class VeilstoneAndPastoriaTests
     });
 
     [Fact]
-    public void TheChaptersPlacesAreReachedAndTheWarehousesWayOnIsLocked()
+    public void TheChaptersPlacesAreReachedAndTheWarehousesWayOnOpensLater()
     {
         var walked = Walked.Value;
         var warehouse = walked.Keys.Single(m => m.Name == "VeilstoneGalacticWarehouse");
-        // Where HM02 is picked up from, and not past the rusty door, where the Dusk Stone lies
+        // Where HM02 is picked up from. Past the rusty door, where the Dusk Stone lies, is come to once Looker has
+        // opened it (plan 02 · S11, part b: the door's leaves are things of the map, which a walk of the whole game
+        // goes through as it does an obstacle; GalacticHeadquartersTests holds that they stand until then)
         Assert.Contains((13, 9), walked[warehouse]);
-        Assert.DoesNotContain((8, 6), walked[warehouse]);
-        Assert.DoesNotContain((7, 3), walked[warehouse]);
+        Assert.Contains((8, 6), walked[warehouse]);
+        Assert.Contains((7, 3), walked[warehouse]);
         var sinnoh = walked.Keys.Single(m => m.Name == "Sinnoh");
         // The Gyms' doors, Route 212 under the rain and the road on to Sunyshore beyond the man who closes it
         Assert.Contains((589, 828), walked[sinnoh]);

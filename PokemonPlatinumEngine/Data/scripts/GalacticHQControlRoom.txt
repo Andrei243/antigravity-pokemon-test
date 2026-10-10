@@ -1,0 +1,178 @@
+# Team Galactic's headquarters, the control room (plan 02 · S11, part b), rebuilt to the original's plan.
+# docs/scripts.md describes the language; the lines are our own, on the original's beats
+# (scripts_galactic_hq_control_room.s).
+#
+# The room behind the laboratory where Uxie, Mesprit and Azelf are held, each in a machine of its own, with a console
+# across the back wall and one button on it. Commander Saturn stands before the button and Charon beside him. Saturn
+# battles when spoken to, and beaten (FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN,
+# VAR_GALACTIC_HQ_CONTROL_ROOM_STATE 1) steps away from the console; until the button has been pressed he calls
+# back whoever makes for the door (the original's trigger on the exit mat). The button sets the three free
+# (FLAG_FREED_GALACTIC_HQ_POKEMON): they drift out of their machines and are gone
+# (FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_LAKE_GUARDIANS). Saturn tells of the Red Chain his boss made from them and
+# leaves, and Team Galactic leaves the building with him (FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC, the flag that hides
+# him and every member of the headquarters' floors, which the original's RemoveObject sets as it takes him away): its
+# trainers, its scientists, and the bollards that shut the way out on the fourth floor.
+#
+# What the button leaves for Mt. Coronet (plan 02 · S12): the grunt back in its northern hall
+# (FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNT_F cleared), the cave painting on its second floor broken into shards
+# (FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING set, FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING_SHARDS cleared) and
+# VAR_MT_CORONET_2F_STATE 1.
+#
+# The original lights and darkens the three machines (its containment units' own animation) and flickers the three
+# Pokémon out; here the machines are racks either side of each Pokémon, and the three cry, flicker and are gone (the
+# story's effects: plan 09 · L11). Charon stays until the Distortion World
+# (FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_CHARON, plan 02 · S12).
+
+
+# Arriving: Saturn before the button until he is beaten, and aside from it afterwards (the original keeps him where
+# he walked to, and its OnTransition stands him east of the button once the three are free).
+script OnEnter
+  if flag FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN goto Aside
+  place saturn 8 6 up
+  end
+label Aside
+  place saturn 9 6 down
+  end
+
+
+# Commander Saturn (the original's script 3), spoken to from the south or from the east.
+script Saturn
+  speaker "Saturn"
+  if flag FLAG_FREED_GALACTIC_HQ_POKEMON goto RedChain
+  if flag FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN goto PressIt
+  say "You... You came all this way to save a few Pokémon?"
+  say "It's nothing new, but I can't claim to understand our boss. Why let a child wander in and out of here as they please?"
+  say "We of Team Galactic take what we need and throw out what we don't."
+  say "Still. You've gone to the trouble of coming. Let me give you a proper welcome. Call it payback for the cheek you gave me at the lake!"
+  battle saturn as "commander_saturn_galactic_hq"
+  setflag FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN
+  setvar VAR_GALACTIC_HQ_CONTROL_ROOM_STATE 1
+  speaker "Saturn"
+  say "...Gah! What is it that makes you so tough?"
+  say "Fine. Do what you like with those three. The button on that machine sets them free."
+  # He steps away from the button: east, or south when the player stands to the east
+  if facing left goto StepsSouth
+  walk saturn right 1
+  if facing up face saturn down
+  if facing right face saturn left
+  end
+label StepsSouth
+  walk saturn down 1
+  face saturn up
+  end
+label PressIt
+  say "Press the button and set them free. That's what you came for, isn't it?"
+  end
+label RedChain
+  call TheRedChain
+  end
+
+script TheRedChain
+  speaker "Saturn"
+  say "Our boss made a Red Chain out of the crystals he drew from those three Pokémon."
+  say "The Red Chain is what he needs to bind something on Mt. Coronet. And to make something with, so I hear."
+  say "That's all I know. What he means to do up there is anybody's guess."
+  return
+
+
+# Making for the door with the three still shut in (the original's coordinate event on the exit mat).
+script CallBack
+  face saturn down
+  speaker "Saturn"
+  say "Press the button and set them free. That's what you came for, isn't it?"
+  walk player up 1
+  end
+
+
+# Charon (the original's script 15).
+script Charon
+  speaker "Charon"
+  if flag FLAG_DEFEATED_GALACTIC_HQ_CONTROL_ROOM_SATURN goto Another
+  face charon up
+  say "Fuhyahya! The Pokémon of the lakes... Where do you suppose they would go, hmm?"
+  face saturn left
+  wait 0.6
+  speaker "Saturn"
+  say "And what is that supposed to mean?"
+  speaker "Charon"
+  say "Nothing, nothing. Pay an old man no mind."
+  say "A new world is no great matter in itself. But if Cyrus is right, Team Galactic will rule it, and that is where the interest lies. A chance to taste its sweets!"
+  say "So I do hope our visionary leader gets his dream. I look forward to whatever he has planned for the top of Mt. Coronet."
+  wait 0.6
+  face saturn up
+  speaker "Saturn"
+  say "Old man. The boss can manage without that kind of encouragement."
+  end
+label Another
+  face charon player
+  say "Hmph. Saturn, and Cyrus himself, brought low by a mere child... Team Galactic is in a sorry state."
+  say "And that scheme of Cyrus's on Mt. Coronet: who is to say it will even work?"
+  say "...Hm. Perhaps it is time another way was thought of. One worthy of the genius of Charon!"
+  end
+
+
+# The button on the console (the original's script 10).
+script Button
+  speaker none
+  if flag FLAG_FREED_GALACTIC_HQ_POKEMON goto Pressed
+  ask "A single button sits in the middle of the console. Press it, and set the Pokémon free?"
+  if no goto Leave
+  setvar VAR_GALACTIC_HQ_CONTROL_ROOM_STATE 0
+  sound "select"
+  say "{player} pressed the button. One after another, the machines fell silent."
+  clearflag FLAG_HIDE_MT_CORONET_1F_NORTH_ROOM_1_GRUNT_F
+  setflag FLAG_FREED_GALACTIC_HQ_POKEMON
+  sound "pc_off"
+  wait 1.0
+  # Out of their machines, each two tiles toward the middle of the room
+  move mesprit down 2
+  move azelf down 2
+  move uxie down 2
+  waitmoves
+  cry "Mesprit"
+  wait 0.5
+  cry "Azelf"
+  wait 0.5
+  cry "Uxie"
+  wait 0.6
+  call Flicker
+  call Flicker
+  call Flicker
+  hide mesprit
+  hide azelf
+  hide uxie
+  setflag FLAG_HIDE_GALACTIC_HQ_CONTROL_ROOM_LAKE_GUARDIANS
+  wait 0.6
+  face saturn player
+  face player saturn
+  call TheRedChain
+  fade out
+  hide saturn
+  setflag FLAG_HIDE_GALACTIC_HQ_TEAM_GALACTIC
+  setflag FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING
+  clearflag FLAG_HIDE_MT_CORONET_2F_CAVE_PAINTING_SHARDS
+  setvar VAR_MT_CORONET_2F_STATE 1
+  fade in
+  end
+label Pressed
+  say "The button has been pressed already. There is nothing more to do here."
+label Leave
+  end
+
+# The three blink out of sight and back, as they do before they are gone.
+script Flicker
+  hide mesprit
+  hide azelf
+  hide uxie
+  wait 0.07
+  show mesprit
+  show azelf
+  show uxie
+  wait 0.07
+  return
+
+# A machine once the Pokémon it held is gone, read with no name on the box.
+script Notice
+  speaker none
+  sayown
+  end
